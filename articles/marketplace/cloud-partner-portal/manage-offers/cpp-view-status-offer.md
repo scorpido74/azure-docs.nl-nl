@@ -1,6 +1,6 @@
 ---
-title: Bekijk de status van marktplaatsaanbiedingen | Azure Marketplace
-description: Bekijk de status van aanbiedingen op de Azure- en AppSource Marketplaces met behulp van de Cloud Partner Portal
+title: Bekijk de status van Marketplace-aanbiedingen | Azure Marketplace
+description: Bekijk de status van aanbiedingen op de Azure-en AppSource-markt plaatsen met behulp van de Cloud Partner-portal
 author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
@@ -8,42 +8,42 @@ ms.topic: conceptual
 ms.date: 01/11/2019
 ms.author: dsindona
 ms.openlocfilehash: 0cbe6a45ba205f32a764bdadb021dc0dcf5bf0cc
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80275965"
 ---
-# <a name="view-the-publishing-status-of-azure-marketplace-and-appsource-offers"></a>Bekijk de publicatiestatus van Azure Marketplace- en AppSource-aanbiedingen
+# <a name="view-the-publishing-status-of-azure-marketplace-and-appsource-offers"></a>De publicatie status van Azure Marketplace-en AppSource-aanbiedingen bekijken
 
-Nadat u een aanbieding hebt gemaakt, en vooral tijdens het publicatieproces, u de status van uw aanbieding bekijken in de Cloud Partner Portal.  De algemene publicatiestatus is beschikbaar op de [**pagina's Alle aanbiedingen**](../portal-tour/cpp-all-offers-page.md) en [**goedkeuringen**](../portal-tour/cpp-approvals-page.md) van de portal.  Voor elke aanbieding moet een van de volgende statusindicatoren worden weergegeven.  
+Nadat u een aanbieding hebt gemaakt en vooral tijdens het publicatie proces, kunt u de status van uw aanbieding bekijken in de Cloud Partner-portal.  De algemene publicatie status is beschikbaar op de pagina's [**alle aanbiedingen**](../portal-tour/cpp-all-offers-page.md) en [**goed keuringen**](../portal-tour/cpp-approvals-page.md) van de portal.  Voor elke aanbieding moet een van de volgende status indicatoren worden weer gegeven.  
 
 |            Status              |   Beschrijving                                                           |
 |            ------              |   -----------                                                           |
-| **-**                          | Aanbieding is gemaakt, maar het publicatieproces is nog niet begonnen.            |
-| **Publiceren in uitvoering**        | Offer werkt zich een weg door de stappen van het publicatieproces.   |
-| **Publiceren is mislukt**             | Er is een kritiek probleem ontdekt tijdens validatie of beoordeling door Microsoft. |
-| **Publicatie geannuleerd**           | De uitgever heeft het publicatieproces van de aanbieding geannuleerd.  Deze status onttrekt een bestaand aanbod niet in de markt. | 
-| **In afwachting van publisher afmelden** | Aanbieding is beoordeeld door Microsoft en wacht nu op een definitieve verificatie door de uitgever. |
-| **Geschrapt**                   | Een eerder gepubliceerde aanbieding op de marktplaats is verwijderd.      | 
+| **-**                          | Het aanbod is gemaakt, maar het publicatie proces is niet gestart.            |
+| **Publicatie wordt uitgevoerd**        | De aanbieding werkt aan de hand van de stappen van het publicatie proces.   |
+| **Publiceren is mislukt**             | Er is een kritiek probleem ontdekt tijdens de validatie of door micro soft te controleren. |
+| **Publiceren geannuleerd**           | De uitgever heeft het publicatie proces voor de aanbieding geannuleerd.  Met deze status wordt de opsomming van een bestaande aanbieding op Marketplace niet opgedaan. | 
+| **Afmelden bij Uitgever** | Het aanbod is door micro soft gecontroleerd en wacht nu op een definitieve verificatie door de uitgever. |
+| **Niet vermeld**                   | Een eerder gepubliceerde aanbieding in Marketplace is verwijderd.      | 
 |  |  |
 
 
-## <a name="publishing-status-details"></a>Statusgegevens publiceren 
+## <a name="publishing-status-details"></a>Status Details van publicatie 
 
-Meer details over de status van een aanbieding tijdens het publicatieproces vindt u op het tabblad **Status** van de pagina **Nieuwe aanbieding.**  Op deze pagina worden alle publicatiestappen voor dat aanbiedingstype weergegeven.  *Houd er rekening mee dat het aantal en de specifieke stappen vaak verschillen tussen aanbiedingstypen.*  Op deze pagina worden ook openstaande problemen weergegeven die zijn opgeworpen door de validatie- en beoordelingsstappen van Microsoft, waarvoor vaak actie van de uitgever vereist is voordat het publicatieproces kan worden voortgezet.  In de volgende afbeelding wordt bijvoorbeeld het tabblad **Status** voor een nieuwe virtuele machineaanbieding weergegeven. 
+Meer informatie over de status van een aanbieding tijdens het publicatie proces vindt u op het tabblad **status** van de pagina **nieuw aanbod** .  Op deze pagina vindt u alle publicatie stappen voor het type aanbieding.  *Houd er rekening mee dat het aantal en de specifieke stappen vaak verschillen tussen aanbiedings typen.*  Deze pagina geeft ook een overzicht van openstaande problemen die zijn opgetreden tijdens de validatie en controle stappen van micro soft, die vaak actie vereisen door de uitgever voordat het publicatie proces kan door gaan.  De volgende afbeelding toont bijvoorbeeld het tabblad **status** voor een nieuwe aanbieding van de virtuele machine. 
 
-![Tabblad Status voor VM-aanbieding](./media/vm-offer-pub-steps1.png)
+![Tabblad status voor de VM-aanbieding](./media/vm-offer-pub-steps1.png)
 
-Het volgende voorbeeld **statustabblad** voor een consultingservice, met een gerapporteerde fout in de instellingen voor leadbeheer.  Omdat leadbeheer vereist is voor consultingservices, moet deze fout worden gecorrigeerd voordat publicatie kan worden voortgezet.
+Het volgende voor beeld van het tabblad **status** voor een advies service, met een gemelde fout in de instellingen voor lead beheer.  Omdat Lead beheer is vereist voor advies Services, moet deze fout worden gecorrigeerd voordat de publicatie kan worden voortgezet.
 
-![Tabblad Status voor consultingservice die fout weergeeft](./media/consulting-service-error.png)
+![Tabblad status voor advies service met fout](./media/consulting-service-error.png)
 
-De laatste voorbeeldstatus van een Azure-toepassing toont een kritiek microsoft-beoordelingsprobleem.  Het bevat een hot link naar het Azure DevOps-item dat gedetailleerde informatie over dit beoordelingsprobleem bevat.  Zie [Azure-toepassingsaanbieding publiceren](cpp-publish-offer.md)voor meer informatie .
+De laatste voorbeeld status van een Azure-toepassing toont een kritiek micro soft Review-probleem.  Het bevat een koppeling naar het Azure DevOps-item dat gedetailleerde informatie over dit controle probleem bevat.  Zie voor meer informatie [Azure-toepassings aanbieding publiceren](cpp-publish-offer.md).
 
-![Tabblad Status voor Azure-app met beoordelingsprobleem](../azure-applications/media/status-tab-ms-review.png)
+![Tabblad status voor de Azure-app met een beoordelings probleem](../azure-applications/media/status-tab-ms-review.png)
 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Als u openstaande problemen wilt oplossen of de aanbiedingsinstellingen wilt bijwerken, moet u [een aanbieding bijwerken.](./cpp-update-offer.md) 
+Als u uitstaande problemen of instellingen voor het update aanbod wilt corrigeren, moet u [een aanbieding bijwerken](./cpp-update-offer.md). 

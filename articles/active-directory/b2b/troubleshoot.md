@@ -1,6 +1,6 @@
 ---
-title: Problemen met B2B-samenwerking oplossen - Azure Active Directory | Microsoft Documenten
-description: Remedies voor veelvoorkomende problemen met Azure Active Directory B2B-samenwerking
+title: Problemen met B2B-samen werking oplossen-Azure Active Directory | Microsoft Docs
+description: Oplossingen voor veelvoorkomende problemen met Azure Active Directory B2B-samen werking
 services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
@@ -15,96 +15,96 @@ ms.custom:
 - seo-update-azuread-jan"
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 5f8bafb04d0a5d9c6d25a7ed7e155888d492e9fc
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80050789"
 ---
-# <a name="troubleshooting-azure-active-directory-b2b-collaboration"></a>Azure Active Directory B2B-samenwerking oplossen
+# <a name="troubleshooting-azure-active-directory-b2b-collaboration"></a>Problemen oplossen Azure Active Directory B2B-samen werking
 
-Hier volgen enkele remedies voor veelvoorkomende problemen met Azure Active Directory (Azure AD) B2B-samenwerking.
+Hier volgen enkele oplossingen voor veelvoorkomende problemen met Azure Active Directory (Azure AD) B2B-samen werking.
 
    > [!IMPORTANT]
-   > **Vanaf 31 maart 2021**ondersteunt Microsoft niet langer het inwisselen van uitnodigingen door onbeheerde Azure AD-accounts en tenants te maken voor B2B-samenwerkingsscenario's. Ter voorbereiding moedigen we klanten aan om te kiezen voor [eenmalige wachtwoordverificatie voor e-mail.](one-time-passcode.md) We zijn blij met uw feedback over deze openbare preview-functie en zijn verheugd om nog meer manieren te creëren om samen te werken.
+   > **Vanaf 31 maart 2021**biedt micro soft geen ondersteuning meer voor de terugbetaling van uitnodigingen door het maken van niet-beheerde Azure AD-accounts en-tenants voor B2B-samenwerkings scenario's. In de voor bereiding raden wij klanten aan om te kiezen voor [verificatie via een eenmalige wachtwoord code](one-time-passcode.md). We hebben uw feedback over deze open bare preview-functie en zijn enthousiast om nog meer manieren te maken om samen te werken.
 
-## <a name="ive-added-an-external-user-but-do-not-see-them-in-my-global-address-book-or-in-the-people-picker"></a>Ik heb een externe gebruiker toegevoegd, maar zie deze niet in mijn globale adresboek of in de lijst met mensen
+## <a name="ive-added-an-external-user-but-do-not-see-them-in-my-global-address-book-or-in-the-people-picker"></a>Ik heb een externe gebruiker toegevoegd, maar deze wordt niet weer geven in het algemene adres boek of in de kiezer personen
 
-In gevallen waarin externe gebruikers niet in de lijst worden ingevuld, kan het enkele minuten duren voordat het object is gerepliceerd.
+In gevallen waarin externe gebruikers niet zijn ingevuld in de lijst, kan het enkele minuten duren voordat het object wordt gerepliceerd.
 
-## <a name="a-b2b-guest-user-is-not-showing-up-in-sharepoint-onlineonedrive-people-picker"></a>Een B2B-gastgebruiker wordt niet weergegeven in SharePoint Online/OneDrive-personenkiezer
+## <a name="a-b2b-guest-user-is-not-showing-up-in-sharepoint-onlineonedrive-people-picker"></a>Een B2B-gast gebruiker wordt niet weer gegeven in share point online/personen selecteren in OneDrive
 
-De mogelijkheid om te zoeken naar bestaande gastgebruikers in de SharePoint Online (SPO)-personenkiezer is STANDAARD UITGESCHAKELD om het gedrag van oudere gegevens te matchen.
+De mogelijkheid om te zoeken naar bestaande gast gebruikers in de share point online (SPO) persoons kiezer is standaard uitgeschakeld om te voldoen aan verouderd gedrag.
 
-U deze functie inschakelen met de instelling 'ShowPeoplePickerSuggestionsForGuestUsers' op tenant- en siteverzamelingsniveau. U de functie instellen met de cmdlets Set-SPOTenant en Set-SPOSite, waarmee leden alle bestaande gastgebruikers in de map kunnen doorzoeken. Wijzigingen in het tenantbereik hebben geen invloed op reeds ingerichte SPO-sites.
+U kunt deze functie inschakelen met behulp van de instelling ' ShowPeoplePickerSuggestionsForGuestUsers ' op het niveau van de Tenant en site verzameling. U kunt de functie instellen met behulp van de cmdlets set-SPOTenant en set-SPOSite, waarmee leden alle bestaande gast gebruikers in de Directory kunnen doorzoeken. Wijzigingen in het Tenant bereik hebben geen invloed op reeds ingerichte SPO-sites.
 
-## <a name="invitations-have-been-disabled-for-directory"></a>Uitnodigingen zijn uitgeschakeld voor directory
+## <a name="invitations-have-been-disabled-for-directory"></a>Uitnodigingen zijn uitgeschakeld voor de map
 
-Als u een melding krijgt dat u geen machtigingen hebt om gebruikers uit te nodigen, controleert u of uw gebruikersaccount is geautoriseerd om externe gebruikers uit te nodigen onder Azure Active Directory > gebruikersinstellingen > Externe gebruikers > Instellingen voor externe samenwerking beheren:
+Als u een melding krijgt dat u geen machtigingen hebt om gebruikers uit te nodigen, controleert u of uw gebruikers account gemachtigd is om externe gebruikers uit te nodigen onder Azure Active Directory > gebruikers instellingen > externe gebruikers > externe samenwerkings instellingen beheren:
 
-![Schermafbeelding van de instellingen voor externe gebruikers](media/troubleshoot/external-user-settings.png)
+![Scherm opname met de instellingen van externe gebruikers](media/troubleshoot/external-user-settings.png)
 
-Als u deze instellingen onlangs hebt gewijzigd of de rol Gastuitnodigingsuitnodiging aan een gebruiker hebt toegewezen, kan er een vertraging van 15-60 minuten optreden voordat de wijzigingen van kracht worden.
+Als u deze instellingen onlangs hebt gewijzigd of als u de rol van de gast-uitnodiging hebt toegewezen aan een gebruiker, is er mogelijk een vertraging van 15-60 minuten om de wijzigingen van kracht te laten worden.
 
-## <a name="the-user-that-i-invited-is-receiving-an-error-during-redemption"></a>De gebruiker die ik heb uitgenodigd, ontvangt een foutmelding tijdens het inwisselen
+## <a name="the-user-that-i-invited-is-receiving-an-error-during-redemption"></a>De gebruiker die ik heb uitgenodigd, ontvangt een fout tijdens de inwisseling
 
-Veelvoorkomende fouten zijn:
+Veelvoorkomende fouten zijn onder andere:
 
-### <a name="invitees-admin-has-disallowed-emailverified-users-from-being-created-in-their-tenant"></a>De beheerder van de genodigde heeft e-mailgeverifieerde gebruikers niet kunnen maken in hun tenant
+### <a name="invitees-admin-has-disallowed-emailverified-users-from-being-created-in-their-tenant"></a>De beheerder van de uitnodiging heeft niet toegestaan dat EmailVerified-gebruikers worden gemaakt in hun Tenant
 
-Wanneer u gebruikers uitnodigt waarvan de organisatie Azure Active Directory gebruikt, maar waar het account van de specifieke gebruiker niet bestaat (de gebruiker bestaat bijvoorbeeld niet in Azure AD-contoso.com). De beheerder van contoso.com kan een beleid hebben dat voorkomt dat gebruikers worden gemaakt. De gebruiker moet contact opnemen met de beheerder om te bepalen of externe gebruikers zijn toegestaan. De beheerder van de externe gebruiker moet mogelijk e-mail geverifieerde gebruikers toestaan in hun domein (zie dit [artikel](/powershell/module/msonline/set-msolcompanysettings?view=azureadps-1.0) over het toestaan van e-mail geverifieerde gebruikers).
+Wanneer u gebruikers uitnodigt waarvan de organisatie gebruikmaakt van Azure Active Directory, maar waarbij het account van de specifieke gebruiker niet bestaat (bijvoorbeeld omdat de gebruiker niet bestaat in azure AD contoso.com). De beheerder van contoso.com kan een beleid hebben om te voor komen dat gebruikers worden gemaakt. De gebruiker moet contact met hun beheerder controleren om te bepalen of externe gebruikers zijn toegestaan. De beheerder van de externe gebruiker moet mogelijk geverifieerde gebruikers in hun domein toestaan (zie dit [artikel](/powershell/module/msonline/set-msolcompanysettings?view=azureadps-1.0) over het toestaan van geverifieerde e-mail gebruikers).
 
-![Fout met vermelding van de tenant staat e-mail geverifieerde gebruikers niet toe](media/troubleshoot/allow-email-verified-users.png)
+![Fout met de mede deling dat de Tenant gebruikers geen geverifieerde e-mail berichten toestaan](media/troubleshoot/allow-email-verified-users.png)
 
-### <a name="external-user-does-not-exist-already-in-a-federated-domain"></a>Externe gebruiker bestaat nog niet in een federatief domein
+### <a name="external-user-does-not-exist-already-in-a-federated-domain"></a>De externe gebruiker bestaat al in een federatief domein
 
-Als u federatieverificatie gebruikt en de gebruiker nog niet bestaat in Azure Active Directory, kan de gebruiker niet worden uitgenodigd.
+Als u Federatie verificatie gebruikt en de gebruiker nog niet bestaat in Azure Active Directory, kan de gebruiker niet worden uitgenodigd.
 
 Om dit probleem op te lossen, moet de beheerder van de externe gebruiker het account van de gebruiker synchroniseren met Azure Active Directory.
 
-## <a name="how-does--which-is-not-normally-a-valid-character-sync-with-azure-ad"></a>Hoe synchroniseert ',\#wat normaal gesproken geen geldig teken is, met Azure AD?
+## <a name="how-does--which-is-not-normally-a-valid-character-sync-with-azure-ad"></a>Hoe is '\#', wat normaal gesp roken geen geldig teken is, synchroniseer ik met Azure AD?
 
-"\#is een gereserveerd teken in UPN's voor Azure AD B2B-samenwerking of externe gebruikers, omdat het uitgenodigde account user@contoso.com wordt user_contoso.com#EXT#@fabrikam.onmicrosoft.com. Daarom \# mogen UPN's die afkomstig zijn van on-premises niet inloggen bij de Azure-portal. 
+"\#" is een gereserveerd teken in Upn's voor Azure AD B2B-samen werking of externe gebruikers, omdat het user@contoso.com uitgenodigde account wordt USER_CONTOSO.@fabrikam.onmicrosoft.comcom # ext #. Daarom kunnen \# upn's die afkomstig zijn van on-premises, zich niet aanmelden bij de Azure Portal. 
 
-## <a name="i-receive-an-error-when-adding-external-users-to-a-synchronized-group"></a>Ik ontvang een foutmelding bij het toevoegen van externe gebruikers aan een gesynchroniseerde groep
+## <a name="i-receive-an-error-when-adding-external-users-to-a-synchronized-group"></a>Er wordt een fout bericht weer gegeven bij het toevoegen van externe gebruikers aan een gesynchroniseerde groep
 
-Externe gebruikers kunnen alleen worden toegevoegd aan 'toegewezen' of 'Beveiligingsgroepen' en niet aan groepen die on-premises worden gemasterd.
+Externe gebruikers kunnen alleen worden toegevoegd aan groepen ' toegewezen ' of ' Beveiliging ' en niet aan groepen die on-premises zijn gemastereerd.
 
-## <a name="my-external-user-did-not-receive-an-email-to-redeem"></a>Mijn externe gebruiker heeft geen e-mail ontvangen om in te wisselen
+## <a name="my-external-user-did-not-receive-an-email-to-redeem"></a>Mijn externe gebruiker heeft geen e-mail bericht ontvangen om in te wisselen
 
-De genodigde moet contact opnemen met hun ISP of spam filter om ervoor te zorgen dat het volgende adres is toegestaan:Invites@microsoft.com
+De genodigde moet met hun ISP-of spam filter controleren om ervoor te zorgen dat het volgende adres is toegestaan:Invites@microsoft.com
 
-## <a name="i-notice-that-the-custom-message-does-not-get-included-with-invitation-messages-at-times"></a>Ik merk dat het aangepaste bericht soms niet wordt opgenomen in uitnodigingsberichten
+## <a name="i-notice-that-the-custom-message-does-not-get-included-with-invitation-messages-at-times"></a>Ik zie dat het aangepaste bericht niet op momenten wordt opgenomen in uitnodigings berichten
 
-Om te voldoen aan de privacywetgeving, bevatten onze API's geen aangepaste berichten in de e-mailuitnodiging wanneer:
+Om te voldoen aan de privacy-wetten, bevatten onze Api's geen aangepaste berichten in de uitnodiging voor het e-mail bericht wanneer:
 
-- De genodigde heeft geen e-mailadres in de uitnodigende tenant
-- Wanneer een medewerker van de appservice de uitnodiging verzendt
+- De uitnodiging heeft geen e-mail adres in de uitnodigende Tenant
+- Wanneer een appservice-principal de uitnodiging verzendt
 
-Als dit scenario belangrijk voor u is, u onze e-mail met API-uitnodigingen onderdrukken en verzenden via het e-mailmechanisme van uw keuze. Raadpleeg de juridisch adviseur van uw organisatie om ervoor te zorgen dat elke e-mail die u op deze manier verzendt, ook voldoet aan de privacywetgeving.
+Als dit scenario belang rijk voor u is, kunt u onze API-uitnodiging e-mail onderdrukken en verzenden via het e-mail mechanisme van uw keuze. Raadpleeg de juridische afdeling van uw organisatie om ervoor te zorgen dat alle e-mail berichten die u op deze manier verzendt, ook voldoen aan de wetten van de privacy.
 
-## <a name="you-receive-an-aadsts65005-error-when-you-try-to-log-in-to-an-azure-resource"></a>U ontvangt een foutmelding 'AADSTS65005' wanneer u zich probeert aan te melden bij een Azure-bron
+## <a name="you-receive-an-aadsts65005-error-when-you-try-to-log-in-to-an-azure-resource"></a>Er wordt een fout bericht ' AADSTS65005 ' weer gegeven wanneer u zich probeert aan te melden bij een Azure-resource
 
-Een gebruiker met een gastaccount kan zich niet aanmelden en ontvangt het volgende foutbericht:
+Een gebruiker met een gast account kan zich niet aanmelden en ontvangt het volgende fout bericht:
 
     AADSTS65005: Using application 'AppName' is currently not supported for your organization contoso.com because it is in an unmanaged state. An administrator needs to claim ownership of the company by DNS validation of contoso.com before the application AppName can be provisioned.
 
-De gebruiker heeft een Azure-gebruikersaccount en is een virale tenant die is verlaten of onbeheerd. Bovendien zijn er geen globale of bedrijfsbeheerders in de tenant.
+De gebruiker heeft een Azure-gebruikers account en is een virale Tenant die is verlaten of onbeheerd. Daarnaast zijn er geen globale of bedrijfs beheerders in de Tenant.
 
-Om dit probleem op te lossen, moet u de verlaten tenant overnemen. Raadpleeg [Een niet-beheerde map overnemen als beheerder in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/users-groups-roles/domains-admin-takeover). U moet ook toegang krijgen tot het dns-internet voor het domeinachtervoegsel in kwestie om direct bewijs te leveren dat u de naamruimte beheert. Nadat de tenant is teruggebracht naar een beheerde status, bespreek dan met de klant of het verlaten van de gebruikers en geverifieerde domeinnaam de beste optie is voor hun organisatie.
+Om dit probleem op te lossen, moet u de afgebroken Tenant overnemen. Raadpleeg een niet- [beheerde Directory als beheerder in azure Active Directory](https://docs.microsoft.com/azure/active-directory/users-groups-roles/domains-admin-takeover). U moet ook toegang krijgen tot de Internet gerichte DNS voor het betreffende domein achtervoegsel om direct bewijs te geven dat u de controle hebt over de naam ruimte. Nadat de Tenant naar een beheerde status is geretourneerd, kunt u met de klant bespreken of de gebruikers-en geverifieerde domein naam de beste optie is voor hun organisatie.
 
-## <a name="a-guest-user-with-a-just-in-time-or-viral-tenant-is-unable-to-reset-their-password"></a>Een gastgebruiker met een just-in-time of "virale" tenant kan zijn wachtwoord niet opnieuw instellen
+## <a name="a-guest-user-with-a-just-in-time-or-viral-tenant-is-unable-to-reset-their-password"></a>Een gast gebruiker met een just-in-time-of virus-Tenant kan het wacht woord niet opnieuw instellen
 
-Als de identiteitstenant een just-in-time (JIT) of virale tenant is (wat betekent dat het een aparte, onbeheerde Azure-tenant is), kan alleen de gastgebruiker zijn wachtwoord opnieuw instellen. Soms neemt een organisatie [het beheer over van virale tenants](https://docs.microsoft.com/azure/active-directory/users-groups-roles/domains-admin-takeover) die worden gemaakt wanneer werknemers hun e-mailadressen op het werk gebruiken om zich aan te melden voor services. Nadat de organisatie een virale tenant heeft overneemt, kan alleen een beheerder in die organisatie het wachtwoord van de gebruiker opnieuw instellen of SSPR inschakelen. Indien nodig u als uitnodigende organisatie het gastgebruikersaccount uit uw directory verwijderen en een uitnodiging opnieuw verzenden.
+Als de identiteits Tenant een just-in-time (JIT) of virale Tenant is (wat betekent dat het een afzonderlijke, niet-beheerde Azure-Tenant is), kan alleen de gast gebruiker het wacht woord opnieuw instellen. Soms neemt een organisatie het [beheer van virale tenants over](https://docs.microsoft.com/azure/active-directory/users-groups-roles/domains-admin-takeover) die worden gemaakt wanneer werk nemers hun werk-e-mail adressen gebruiken om zich aan te melden voor services. Nadat de organisatie een virale Tenant heeft overgenomen, kan alleen een beheerder in die organisatie het wacht woord van de gebruiker opnieuw instellen of SSPR inschakelen. Als dat nodig is, kunt u, als de uitnodigende organisatie, het gast gebruikers account uit uw Directory verwijderen en een uitnodiging opnieuw verzenden.
 
-## <a name="a-guest-user-is-unable-to-use-the-azuread-powershell-v1-module"></a>Een gastgebruiker kan de AzureAD PowerShell V1-module niet gebruiken
+## <a name="a-guest-user-is-unable-to-use-the-azuread-powershell-v1-module"></a>Een gast gebruiker kan de AzureAD Power shell v1-module niet gebruiken
 
-Vanaf 18 november 2019 kunnen gastgebruikers in uw directory (gedefinieerd als gebruikersaccounts waarvan de eigenschap **userType** gelijk is aan **Gast)** de AzureAD PowerShell V1-module niet meer gebruiken. In de toekomst moet een gebruiker lid zijn (waarbij **userType** gelijk is aan **lid)** of de AzureAD PowerShell V2-module gebruiken.
+Met ingang van 18 november 2019 kunnen gast gebruikers in uw directory (gedefinieerd als gebruikers accounts waarvan de eigenschap **User type** gelijk is aan **gast**) worden geblokkeerd voor het gebruik van de AzureAD Power shell v1-module. Als een gebruiker verdergaat, moet deze lid zijn van een gebruiker (waarbij **User type** gelijk is aan **lid**) of gebruikmaken van de AzureAD Power shell V2-module.
 
-## <a name="in-an-azure-us-government-tenant-i-cant-invite-a-b2b-collaboration-guest-user"></a>In een Azure Us Government-tenant kan ik geen gastgebruiker voor B2B-samenwerking uitnodigen
+## <a name="in-an-azure-us-government-tenant-i-cant-invite-a-b2b-collaboration-guest-user"></a>In een Azure US Government-Tenant kan ik geen gast gebruiker voor B2B-samen werking uitnodigen
 
-Binnen de Azure US Government-cloud wordt B2B-samenwerking momenteel alleen ondersteund tussen tenants die zich zowel in de Azure US Government-cloud bevinden als die beide B2B-samenwerking ondersteunen. Als u een gebruiker uitnodigt in een tenant die geen deel uitmaakt van de Azure US Government-cloud of die b2b-samenwerking nog niet ondersteunt, krijgt u een foutmelding. Zie Azure Active [Directory Premium P1- en P2-variaties](https://docs.microsoft.com/azure/azure-government/documentation-government-services-securityandidentity#azure-active-directory-premium-p1-and-p2)voor meer informatie en beperkingen.
+Binnen de Azure-Cloud voor de Amerikaanse overheid wordt B2B-samen werking momenteel alleen ondersteund tussen tenants die zich in de cloud van Azure Amerikaanse overheid bevinden en die allebei ondersteuning bieden voor B2B-samen werking. Als u een gebruiker uitnodigt in een Tenant die geen deel uitmaakt van de Azure-Cloud voor de Amerikaanse overheid of die geen ondersteuning biedt voor B2B-samen werking, krijgt u een fout melding. Zie [Azure Active Directory Premium P1 en P2-variaties](https://docs.microsoft.com/azure/azure-government/documentation-government-services-securityandidentity#azure-active-directory-premium-p1-and-p2)voor meer informatie en beperkingen.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-[Krijg ondersteuning voor B2B-samenwerking](get-support.md)
+[Ondersteuning voor B2B-samen werking verkrijgen](get-support.md)

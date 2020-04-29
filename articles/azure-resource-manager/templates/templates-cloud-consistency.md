@@ -1,61 +1,61 @@
 ---
-title: Sjablonen opnieuw gebruiken in verschillende clouds
-description: Ontwikkel Azure Resource Manager-sjablonen die consistent werken voor verschillende cloudomgevingen. Maak nieuwe of werk bestaande sjablonen voor Azure Stack bij.
+title: Sjablonen opnieuw gebruiken voor verschillende Clouds
+description: Ontwikkel Azure Resource Manager sjablonen die consistent werken voor verschillende Cloud omgevingen. Maak nieuwe sjablonen voor de Azure Stack of werk deze bij.
 author: marcvaneijk
 ms.topic: conceptual
 ms.date: 12/09/2018
 ms.author: mavane
 ms.custom: seodec18
 ms.openlocfilehash: c5095efef5d4bef44993bdd9cd52dbdef17378a8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80156103"
 ---
-# <a name="develop-arm-templates-for-cloud-consistency"></a>ARM-sjablonen ontwikkelen voor cloudconsistentie
+# <a name="develop-arm-templates-for-cloud-consistency"></a>ARM-sjablonen ontwikkelen voor Cloud consistentie
 
 [!INCLUDE [requires-azurerm](../../../includes/requires-azurerm.md)]
 
-Een belangrijk voordeel van Azure is consistentie. Ontwikkelingsinvesteringen voor de ene locatie zijn herbruikbaar in een andere. Een ARM-sjabloon (Azure Resource Manager) maakt uw implementaties consistent en herhaalbaar in alle omgevingen, waaronder de wereldwijde Azure-, Azure-soevereine clouds en Azure Stack. Als u sjablonen in verschillende clouds wilt hergebruiken, moet u echter rekening houden met cloudspecifieke afhankelijkheden, zoals in deze handleiding wordt uitgelegd.
+Een belang rijk voor deel van Azure is consistentie. Ontwikkelings investeringen voor één locatie kunnen in een ander worden herbruikbaar. Met een Azure Resource Manager ARM-sjabloon kunnen uw implementaties consistent en herhaald worden in omgevingen, waaronder de wereld wijde Azure, Azure soevereine Clouds en Azure Stack. Als u sjablonen voor verschillende Clouds wilt gebruiken, moet u echter rekening houden met de Cloud afhankelijke afhankelijkheden, zoals in deze hand leiding wordt uitgelegd.
 
-Microsoft biedt intelligente, bedrijfsklare cloudservices op vele locaties, waaronder:
+Micro soft biedt intelligente, zakelijke kant-en-klare Cloud Services op verschillende locaties, waaronder:
 
-* Het wereldwijde Azure-platform wordt ondersteund door een groeiend netwerk van door Microsoft beheerde datacenters in regio's over de hele wereld.
-* Geïsoleerde soevereine clouds zoals Azure Germany, Azure Government en Azure China 21Vianet. Soevereine clouds bieden een consistent platform met de meeste van dezelfde geweldige functies waarwereldwijde Azure-klanten toegang toe hebben.
-* Azure Stack, een hybride cloudplatform waarmee u Azure-services leveren vanuit het datacenter van uw organisatie. Ondernemingen kunnen Azure Stack instellen in hun eigen datacenters of Azure Services van serviceproviders gebruiken, waarbij Azure Stack wordt uitgevoerd in hun faciliteiten (ook wel gehoste regio's genoemd).
+* Het wereld wijde Azure-platform wordt ondersteund door een groeiend netwerk van door micro soft beheerde data centers in regio's over de hele wereld.
+* Geïsoleerde onafhankelijke Clouds, zoals Azure Duitsland, Azure Government en Azure China 21Vianet. Soevereine Clouds bieden een consistent platform met de meeste dezelfde fantastische functies die wereld wijde Azure-klanten toegang hebben.
+* Azure Stack, een hybride Cloud platform waarmee u Azure-Services kunt leveren vanuit het Data Center van uw organisatie. Ondernemingen kunnen Azure Stack instellen in hun eigen data centers of Azure-Services gebruiken van service providers, waarop Azure Stack wordt uitgevoerd in hun faciliteiten (ook wel gehoste regio's genoemd).
 
-In de kern van al deze clouds biedt Azure Resource Manager een API waarmee een breed scala aan gebruikersinterfaces kan communiceren met het Azure-platform. Deze API biedt u krachtige infrastructure-as-code-mogelijkheden. Elk type resource dat beschikbaar is op het Azure-cloudplatform kan worden geïmplementeerd en geconfigureerd met Azure Resource Manager. Met één sjabloon u uw volledige toepassing implementeren en configureren naar een operationele eindstatus.
+Azure Resource Manager biedt de kern van al deze Clouds een API waarmee een groot aantal gebruikers interfaces kan communiceren met het Azure-platform. Deze API biedt u krachtige functionaliteit voor infrastructuur codes. Elk type resource dat beschikbaar is op het Azure-Cloud platform kan worden geïmplementeerd en geconfigureerd met Azure Resource Manager. Met één sjabloon kunt u uw volledige toepassing implementeren en configureren in een operationele eind status.
 
 ![Azure-omgevingen](./media/templates-cloud-consistency/environments.png)
 
-De consistentie van wereldwijde Azure, de soevereine clouds, gehoste clouds en een cloud in uw datacenter helpt u te profiteren van Azure Resource Manager. U uw ontwikkelingsinvesteringen in deze clouds opnieuw gebruiken wanneer u op sjablonen gebaseerde bronimplementatie en -configuratie instelt.
+Dankzij de consistentie van wereld wijd Azure, de soevereine Clouds, gehoste Clouds en een Cloud in uw Data Center kunt u profiteren van Azure Resource Manager. U kunt uw ontwikkelings investeringen in deze Clouds hergebruiken wanneer u de implementatie en configuratie van op basis van een sjabloon hebt ingesteld.
 
-Hoewel de wereldwijde, soevereine, gehoste en hybride clouds consistente services bieden, zijn niet alle clouds identiek. Als gevolg hiervan u een sjabloon maken met afhankelijkheden van functies die alleen beschikbaar zijn in een specifieke cloud.
+Hoewel de globale, soevereine, gehoste en hybride Clouds echter consistente services bieden, zijn niet alle Clouds identiek. Als gevolg hiervan kunt u een sjabloon maken met afhankelijkheden voor functies die alleen beschikbaar zijn in een specifieke Cloud.
 
-De rest van deze handleiding beschrijft de gebieden waarmee u rekening moet houden bij het plannen om nieuwe OF het bijwerken van bestaande ARM-sjablonen voor Azure Stack te ontwikkelen. In het algemeen moet uw checklist de volgende items bevatten:
+In de rest van deze hand leiding worden de gebieden beschreven waarmee u rekening moet houden bij het plannen van het ontwikkelen van nieuwe en het bijwerken van bestaande ARM-sjablonen voor Azure Stack. In het algemeen moet uw controle lijst de volgende items bevatten:
 
-* Controleer of de functies, eindpunten, services en andere bronnen in uw sjabloon beschikbaar zijn op de doelimplementatielocaties.
-* Sla geneste sjablonen en configuratieartefacten op toegankelijke locaties op, zodat u toegang krijgt in verschillende clouds.
-* Gebruik dynamische referenties in plaats van harde codering links en elementen.
-* Controleer de sjabloonparameters die u gebruikt voor werk in de doelwolken.
-* Controleer of resourcespecifieke eigenschappen beschikbaar zijn voor de doelwolken.
+* Controleer of de functies, eind punten, services en andere resources in uw sjabloon beschikbaar zijn op de doel implementatie locaties.
+* Bewaar geneste sjablonen en configuratie artefacten op toegankelijke locaties en zorg ervoor dat u toegang hebt tot meerdere clouds.
+* Gebruik dynamische verwijzingen in plaats van koppelingen en elementen met vaste code ring.
+* Zorg ervoor dat de sjabloon parameters die u gebruikt, werken in de doel-Clouds.
+* Controleer of de resource-specifieke eigenschappen beschikbaar zijn voor de doel-Clouds.
 
-Zie [Sjabloonimplementatie](overview.md)voor een inleiding tot ARM-sjablonen.
+Zie [Sjabloonimlementatie](overview.md)voor een inleiding tot arm-sjablonen.
 
-## <a name="ensure-template-functions-work"></a>Ervoor zorgen dat sjabloonfuncties werken
+## <a name="ensure-template-functions-work"></a>Zorg ervoor dat sjabloon functies werken
 
-De basissyntaxis van een ARM-sjabloon is JSON. Sjablonen maken gebruik van een superset JSON, waarmee de syntaxis wordt uitgebreid met expressies en functies. De sjabloontaalprocessor wordt regelmatig bijgewerkt om extra sjabloonfuncties te ondersteunen. Zie [ARM-sjabloonfuncties](template-functions.md)voor een gedetailleerde uitleg van de beschikbare sjabloonfuncties.
+De basis syntaxis van een ARM-sjabloon is JSON. Sjablonen gebruiken een superset van JSON, waardoor de syntaxis wordt uitgebreid met expressies en functies. De sjabloon taal processor wordt regel matig bijgewerkt ter ondersteuning van extra sjabloon functies. Zie [arm-sjabloon functies](template-functions.md)voor een gedetailleerde uitleg van de beschik bare sjabloon functies.
 
-Nieuwe sjabloonfuncties die worden geïntroduceerd in Azure Resource Manager zijn niet onmiddellijk beschikbaar in de soevereine clouds of Azure Stack. Als u een sjabloon wilt implementeren, moeten alle functies waarnaar in de sjabloon wordt verwezen, beschikbaar zijn in de doelcloud.
+Nieuwe sjabloon functies die worden geïntroduceerd in Azure Resource Manager zijn niet onmiddellijk beschikbaar in soevereine Clouds of Azure Stack. Als u een sjabloon wilt implementeren, moeten alle functies waarnaar in de sjabloon wordt verwezen, beschikbaar zijn in de doel-Cloud.
 
-Azure Resource Manager-mogelijkheden worden altijd eerst geïntroduceerd in het wereldwijde Azure. U het volgende PowerShell-script gebruiken om te controleren of nieuw ingevoerde sjabloonfuncties ook beschikbaar zijn in Azure Stack:
+Azure Resource Manager mogelijkheden zullen altijd eerst worden geïntroduceerd in globaal Azure. U kunt het volgende Power shell-script gebruiken om te controleren of nieuw geïntroduceerde-sjabloon functies ook beschikbaar zijn in Azure Stack:
 
-1. Maak een kloon van de GitHub repository: [https://github.com/marcvaneijk/arm-template-functions](https://github.com/marcvaneijk/arm-template-functions).
+1. Maak een kloon van de GitHub-opslag [https://github.com/marcvaneijk/arm-template-functions](https://github.com/marcvaneijk/arm-template-functions)plaats:.
 
-1. Zodra u een lokale kloon van de opslagplaats hebt, maakt u verbinding met Azure Resource Manager van de bestemming met PowerShell.
+1. Zodra u een lokale kloon van de opslag plaats hebt, maakt u verbinding met de Azure Resource Manager van het doel met Power shell.
 
-1. Importeer de psm1-module en voer de cmdlet Test-AzureRmTemplateFunctions uit:
+1. Importeer de psm1-module en voer de cmdlet test-AzureRmTemplateFunctions uit:
 
    ```powershell
    # Import the module
@@ -65,19 +65,19 @@ Azure Resource Manager-mogelijkheden worden altijd eerst geïntroduceerd in het 
    Test-AzureRmTemplateFunctions -path <path to local clone>
    ```
 
-Het script implementeert meerdere, geminimaliseerde sjablonen, die elk alleen unieke sjabloonfuncties bevatten. De uitvoer van het script rapporteert de ondersteunde en niet-beschikbare sjabloonfuncties.
+Het script implementeert meerdere, geminimaliseerde sjablonen, elk met alleen unieke sjabloon functies. De uitvoer van het script rapporteert de ondersteunde en niet-beschik bare sjabloon functies.
 
 ## <a name="working-with-linked-artifacts"></a>Werken met gekoppelde artefacten
 
-Een sjabloon kan verwijzingen bevatten naar gekoppelde artefacten en een implementatiebron bevatten die naar een andere sjabloon wordt gekoppeld. De gekoppelde sjablonen (ook wel geneste sjabloon genoemd) worden opgehaald door Resource Manager tijdens runtime. Een sjabloon kan ook verwijzingen bevatten naar artefacten voor VM-extensies (virtual machine). Deze artefacten worden opgehaald door de VM-extensie die in de VM wordt uitgevoerd voor de configuratie van de VM-extensie tijdens de sjabloonimplementatie.
+Een sjabloon kan verwijzingen bevatten naar gekoppelde artefacten en een implementatie bron bevatten die aan een andere sjabloon is gekoppeld. De gekoppelde sjablonen (ook wel geneste sjabloon genoemd) worden tijdens runtime opgehaald door Resource Manager. Een sjabloon kan ook verwijzingen bevatten naar artefacten voor VM-extensies (virtuele machine). Deze artefacten worden opgehaald door de VM-extensie die in de virtuele machine wordt uitgevoerd voor configuratie van de VM-extensie tijdens de sjabloon implementatie.
 
-In de volgende secties worden overwegingen voor cloudconsistentie beschreven bij het ontwikkelen van sjablonen die artefacten bevatten die buiten de hoofdimplementatiesjabloon vallen.
+In de volgende secties worden overwegingen voor Cloud consistentie beschreven bij het ontwikkelen van sjablonen met artefacten die extern zijn voor de hoofd implementatie sjabloon.
 
 ### <a name="use-nested-templates-across-regions"></a>Geneste sjablonen gebruiken in verschillende regio's
 
-Sjablonen kunnen worden opgesplitst in kleine, herbruikbare sjablonen, die elk een specifiek doel hebben en kunnen worden hergebruikt voor implementatiescenario's. Als u een implementatie wilt uitvoeren, geeft u één sjabloon op die bekend staat als de hoofd- of hoofdsjabloon. Hierin worden de resources opgegeven die moeten worden geïmplementeerd, zoals virtuele netwerken, VM's en web-apps. De hoofdsjabloon kan ook een koppeling naar een andere sjabloon bevatten, wat betekent dat u sjablonen nesten. Op dezelfde manier kan een geneste sjabloon koppelingen naar andere sjablonen bevatten. U nesten tot vijf niveaus diep.
+Sjablonen kunnen worden onderverdeeld in kleine, herbruikbare sjablonen, die allemaal een specifiek doel hebben en kunnen opnieuw worden gebruikt in verschillende implementatie scenario's. Als u een implementatie wilt uitvoeren, geeft u één sjabloon op die ook wel het hoofd-of hoofd sjabloon wordt genoemd. Hiermee geeft u de resources op die moeten worden geïmplementeerd, zoals virtuele netwerken, Vm's en web-apps. De hoofd sjabloon kan ook een koppeling naar een andere sjabloon bevatten, wat betekent dat u sjablonen kunt nesten. Een geneste sjabloon kan ook koppelingen naar andere sjablonen bevatten. U kunt Maxi maal vijf niveaus dieper nesten.
 
-In de volgende code ziet u hoe de parameter templateLink verwijst naar een geneste sjabloon:
+De volgende code toont hoe de templateLink-para meter verwijst naar een geneste sjabloon:
 
 ```json
 "resources": [
@@ -96,17 +96,17 @@ In de volgende code ziet u hoe de parameter templateLink verwijst naar een genes
 ]
 ```
 
-Azure Resource Manager evalueert de hoofdsjabloon tijdens runtime en haalt elke geneste sjabloon op en evalueert deze. Nadat alle geneste sjablonen zijn opgehaald, wordt de sjabloon afgevlakt en wordt de verdere verwerking gestart.
+Azure Resource Manager evalueert de hoofd sjabloon tijdens runtime en haalt elke geneste sjabloon op en evalueert deze. Nadat alle geneste sjablonen zijn opgehaald, wordt de sjabloon afgevlakt en wordt verdere verwerking gestart.
 
-### <a name="make-linked-templates-accessible-across-clouds"></a>Gekoppelde sjablonen toegankelijk maken voor verschillende clouds
+### <a name="make-linked-templates-accessible-across-clouds"></a>Gekoppelde sjablonen toegankelijk maken voor verschillende Clouds
 
-Bedenk waar en hoe u gekoppelde sjablonen opslaat die u gebruikt. Bij runtime haalt Azure Resource Manager op en vereist daarom directe toegang tot alle gekoppelde sjablonen. Een gangbare praktijk is om GitHub te gebruiken om de geneste sjablonen op te slaan. Een GitHub-repository kan bestanden bevatten die openbaar toegankelijk zijn via een URL. Hoewel deze techniek goed werkt voor de openbare cloud en de soevereine clouds, bevindt zich mogelijk een Azure Stack-omgeving op een bedrijfsnetwerk of op een niet-gekoppelde externe locatie, zonder uitgaande internettoegang. In die gevallen kan Azure Resource Manager de geneste sjablonen niet ophalen.
+Denk na over waar en hoe u de gekoppelde sjablonen opslaat die u gebruikt. Tijdens runtime, Azure Resource Manager opgehaald, en hiervoor is direct toegang nodig tot alle gekoppelde sjablonen. Een veelvoorkomende procedure is het gebruik van GitHub voor het opslaan van de geneste sjablonen. Een GitHub-opslag plaats kan bestanden bevatten die openbaar toegankelijk zijn via een URL. Hoewel deze techniek goed werkt voor de open bare Cloud en de soevereine Clouds, bevindt een Azure Stack omgeving zich mogelijk in een bedrijfs netwerk of op een niet-verbonden externe locatie, zonder uitgaande internet toegang. In dergelijke gevallen kan Azure Resource Manager de geneste sjablonen niet ophalen.
 
-Een betere praktijk voor cross-cloud implementaties is het opslaan van uw gekoppelde sjablonen op een locatie die toegankelijk is voor de doelcloud. Idealiter worden alle implementatieartefacten onderhouden en geïmplementeerd vanuit een CI/CD-pijplijn (continuous integration/continuous development). U ook geneste sjablonen opslaan in een blob-opslagcontainer, waaruit Azure Resource Manager ze kan ophalen.
+Een betere gewoonte voor implementaties in meerdere Clouds is het opslaan van uw gekoppelde sjablonen op een locatie die toegankelijk is voor de doel-Cloud. In het ideale geval worden alle implementatie artefacten onderhouden in en geïmplementeerd op basis van een continue integratie/doorlopende ontwikkeling (CI/CD)-pijp lijn. U kunt ook geneste sjablonen opslaan in een BLOB storage-container waarvan Azure Resource Manager ze kunt ophalen.
 
-Aangezien de blob-opslag op elke cloud een ander eindpunt volledig gekwalificeerde domeinnaam (FQDN) gebruikt, configureert u de sjabloon met de locatie van de gekoppelde sjablonen met twee parameters. Parameters kunnen gebruikersinvoer accepteren tijdens de implementatie. Sjablonen worden meestal door meerdere personen geschreven en gedeeld, dus het is een goede gewoonte om een standaardnaam voor deze parameters te gebruiken. Naamgevingsconventies helpen sjablonen beter bruikbaar te maken voor regio's, clouds en auteurs.
+Aangezien de Blob-opslag op elke Cloud een andere eindpunt Fully Qualified Domain Name (FQDN) gebruikt, configureert u de sjabloon met de locatie van de gekoppelde sjablonen met twee para meters. Para meters kunnen gebruikers invoer accepteren tijdens de implementatie. Sjablonen worden meestal gemaakt en gedeeld door meerdere personen, zodat een best practice een standaard naam moet gebruiken voor deze para meters. Met behulp van naam conventies kunt u sjablonen herbruikbaarder maken voor verschillende regio's, Clouds en auteurs.
 
-In de volgende `_artifactsLocation` code wordt gebruikt om naar één locatie te wijzen, met alle implementatiegerelateerde artefacten. Merk op dat een standaardwaarde wordt opgegeven. Als er bij implementatietijd geen `_artifactsLocation`invoerwaarde is opgegeven, wordt de standaardwaarde gebruikt. Het `_artifactsLocationSasToken` wordt gebruikt als `sasToken`input voor de . De standaardwaarde moet een lege tekenreeks `_artifactsLocation` zijn voor scenario's waarin deze niet is beveiligd, bijvoorbeeld een openbare GitHub-opslagplaats.
+In de volgende code `_artifactsLocation` wordt gebruikt om te verwijzen naar één locatie, die alle implementatie-gerelateerde artefacten bevat. U ziet dat er een standaard waarde wordt gegeven. Als er bij de implementatie geen invoer waarde is opgegeven voor `_artifactsLocation`, wordt de standaard waarde gebruikt. De `_artifactsLocationSasToken` wordt gebruikt als invoer voor de `sasToken`. De standaard waarde moet een lege teken reeks zijn voor scenario's waarbij `_artifactsLocation` het niet is beveiligd, bijvoorbeeld een open bare github-opslag plaats.
 
 ```json
 "parameters": {
@@ -127,7 +127,7 @@ In de volgende `_artifactsLocation` code wordt gebruikt om naar één locatie te
 }
 ```
 
-In de hele sjabloon worden koppelingen gegenereerd door `_artifactsLocation` de basis-URI (van de `_artifactsLocationSasToken`parameter) te combineren met een artefact-relatieve pad en de . In de volgende code ziet u hoe u de koppeling naar de geneste sjabloon opgeeft met de functie uri-sjabloon:
+In de hele sjabloon worden koppelingen gegenereerd door de basis-URI (van de `_artifactsLocation` para meter) te combi neren met een pad dat `_artifactsLocationSasToken`relatief is voor artefacten en de. De volgende code laat zien hoe u de koppeling met de geneste sjabloon kunt opgeven met behulp van de URI-sjabloon functie:
 
 ```json
 "resources": [
@@ -146,11 +146,11 @@ In de hele sjabloon worden koppelingen gegenereerd door `_artifactsLocation` de 
 ]
 ```
 
-Met deze benadering wordt de `_artifactsLocation` standaardwaarde voor de parameter gebruikt. Als de gekoppelde sjablonen van een andere locatie moeten worden opgehaald, kan de parameterinvoer worden gebruikt op implementatietijd om de standaardwaarde te overschrijven: er is geen wijziging in de sjabloon zelf nodig.
+Door deze methode te gebruiken, wordt de standaard waarde `_artifactsLocation` voor de para meter gebruikt. Als de gekoppelde sjablonen moeten worden opgehaald van een andere locatie, kan de parameter invoer worden gebruikt tijdens de implementatie om de standaard waarde te overschrijven. u hoeft de sjabloon zelf niet te wijzigen.
 
-### <a name="use-_artifactslocation-instead-of-hardcoding-links"></a>Gebruik _artifactsLocation in plaats van hardcoderingskoppelingen
+### <a name="use-_artifactslocation-instead-of-hardcoding-links"></a>_ArtifactsLocation gebruiken in plaats van hardcoding-koppelingen
 
-Naast het gebruik voor geneste sjablonen `_artifactsLocation` wordt de URL in de parameter gebruikt als basis voor alle gerelateerde artefacten van een implementatiesjabloon. Sommige VM-extensies bevatten een koppeling naar een script dat buiten de sjabloon is opgeslagen. Voor deze extensies moet u de koppelingen niet hardcoderen. De Custom Script- en PowerShell DSC-extensies kunnen bijvoorbeeld worden gekoppeld aan een extern script op GitHub, zoals weergegeven:
+Naast het gebruik van geneste sjablonen, wordt de `_artifactsLocation` URL in de para meter gebruikt als basis voor alle gerelateerde artefacten van een implementatie sjabloon. Sommige VM-extensies bevatten een koppeling naar een script dat buiten de sjabloon is opgeslagen. Voor deze uitbrei dingen mag u de koppelingen niet voorlopig hardcoderen we. De aangepaste scripts en Power shell DSC-uitbrei dingen kunnen bijvoorbeeld worden gekoppeld aan een extern script op GitHub, zoals wordt weer gegeven:
 
 ```json
 "properties": {
@@ -166,9 +166,9 @@ Naast het gebruik voor geneste sjablonen `_artifactsLocation` wordt de URL in de
 }
 ```
 
-Als u de koppelingen naar het script hardcodeert, wordt mogelijk voorkomen dat de sjabloon met succes naar een andere locatie wordt geïmplementeerd. Tijdens de configuratie van de VM-bron initieert de VM-agent die in de VM wordt uitgevoerd een download van alle scripts die zijn gekoppeld in de VM-extensie en slaat vervolgens de scripts op de lokale schijf van de VM op. Deze benadering functioneert zoals de geneste sjabloonkoppelingen die eerder zijn uitgelegd in de sectie 'Geneste sjablonen in verschillende regio's gebruiken'.
+Als u de koppelingen naar het script hardcoding, kan het zijn dat de sjabloon niet kan worden geïmplementeerd op een andere locatie. Tijdens de configuratie van de VM-resource initieert de VM-agent die wordt uitgevoerd in de virtuele machine een down load van alle scripts die zijn gekoppeld aan de VM-extensie en slaat vervolgens de scripts op de lokale schijf van de virtuele machine op. Deze aanpak fungeert als de geneste sjabloon koppelingen die eerder zijn uitgelegd in de sectie geneste sjablonen gebruiken voor verschillende regio's.
 
-Resource Manager haalt geneste sjablonen op tijdens runtime. Voor VM-extensies wordt het ophalen van externe artefacten uitgevoerd door de VM-agent. Naast de verschillende initiator van het ophalen van artefact, is de oplossing in de sjabloondefinitie hetzelfde. Gebruik de parameter _artifactsLocation met een standaardwaarde van het basispad waar alle artefacten `_artifactsLocationSasToken` zijn opgeslagen (inclusief de VM-extensiescripts) en de parameter voor de invoer voor de sasToken.
+Resource Manager haalt geneste sjablonen op tijdens runtime. Voor VM-extensies wordt het ophalen van externe artefacten uitgevoerd door de VM-agent. Naast de andere initiator van het ophalen van artefacten, is de oplossing in de sjabloon definitie hetzelfde. Gebruik de para meter _artifactsLocation met een standaard waarde van het basispad waar alle artefacten worden opgeslagen (met inbegrip van de VM-extensie scripts `_artifactsLocationSasToken` ) en de para meter voor de invoer voor de sasToken.
 
 ```json
 "parameters": {
@@ -189,7 +189,7 @@ Resource Manager haalt geneste sjablonen op tijdens runtime. Voor VM-extensies w
 }
 ```
 
-Als u de absolute URI van een artefact wilt construeren, is de voorkeursmethode het gebruik van de functie uri-sjabloon in plaats van de sjabloonfunctie concat. Door hardcoded koppelingen naar de scripts in de VM-extensie te vervangen door de uri-sjabloonfunctie, wordt deze functionaliteit in de sjabloon geconfigureerd voor cloudconsistentie.
+Als u de absolute URI van een artefact wilt maken, is het gebruik van de functie URI-sjabloon in plaats van de functie concat de voorkeurs methode. Door hardcoded koppelingen te vervangen door de scripts in de VM-extensie met de URI-sjabloon functie, is deze functionaliteit in de sjabloon geconfigureerd voor consistentie in de Cloud.
 
 ```json
 "properties": {
@@ -205,57 +205,57 @@ Als u de absolute URI van een artefact wilt construeren, is de voorkeursmethode 
 }
 ```
 
-Met deze aanpak kunnen alle implementatieartefacten, inclusief configuratiescripts, op dezelfde locatie worden opgeslagen met de sjabloon zelf. Als u de locatie van alle koppelingen wilt wijzigen, hoeft u alleen een andere basis-URL op te geven voor de _parameters artefactenLocatie._
+Met deze aanpak kunnen alle implementatie artefacten, inclusief configuratie scripts, op dezelfde locatie worden opgeslagen als de sjabloon zelf. Als u de locatie van alle koppelingen wilt wijzigen, hoeft u alleen een andere basis-URL voor de _artifactsLocation-para meters_op te geven.
 
-## <a name="factor-in-differing-regional-capabilities"></a>Factor in verschillende regionale capaciteiten
+## <a name="factor-in-differing-regional-capabilities"></a>Factor in verschillende regionale mogelijkheden
 
-Met de flexibele ontwikkeling en continue stroom van updates en nieuwe services die in Azure zijn geïntroduceerd, [kunnen regio's verschillen](https://azure.microsoft.com/regions/services/) in beschikbaarheid van services of updates. Na rigoureuze interne tests worden nieuwe services of updates van bestaande services meestal geïntroduceerd in een klein publiek van klanten die deelnemen aan een validatieprogramma. Na succesvolle klantvalidatie worden de services of updates beschikbaar gesteld binnen een subset van Azure-regio's, vervolgens geïntroduceerd in meer regio's, uitgerold naar de soevereine clouds en mogelijk ook beschikbaar gesteld voor Azure Stack-klanten.
+Met de flexibele ontwikkeling en doorlopende stroom van updates en nieuwe services die worden geïntroduceerd in azure, [kunnen regio's verschillen](https://azure.microsoft.com/regions/services/) in de beschik baarheid van services of updates. Na strenge interne tests worden nieuwe services of updates voor bestaande services doorgaans geïntroduceerd in een klein publiek van klanten die deel uitmaken van een validatie programma. Na een geslaagde klant validatie worden de services of updates beschikbaar gesteld binnen een subset van Azure-regio's en vervolgens geïntroduceerd in meer regio's, naar de soevereine Clouds, en mogelijk ook beschikbaar gesteld voor Azure Stack klanten.
 
-In de wetenschap dat Azure-regio's en clouds kunnen verschillen in hun beschikbare services, u een aantal proactieve beslissingen nemen over uw sjablonen. Een goede plek om te beginnen is door het onderzoeken van de beschikbare resource providers voor een cloud. Een resourceprovider vertelt u de set resources en bewerkingen die beschikbaar zijn voor een Azure-service.
+Als u weet dat Azure-regio's en-Clouds in hun beschik bare Services kunnen verschillen, kunt u proactieve beslissingen nemen over uw sjablonen. Een goede plaats om te beginnen is door de beschik bare resource providers voor een cloud te onderzoeken. Een resource provider vertelt u de set resources en bewerkingen die beschikbaar zijn voor een Azure-service.
 
-Een sjabloon implementeert en configureert resources. Een resourcetype wordt geleverd door een resourceprovider. De compute resource provider (Microsoft.Compute) biedt bijvoorbeeld meerdere resourcetypen, zoals virtualMachines en availabilitySets. Elke resourceprovider biedt een API voor Azure Resource Manager, gedefinieerd door een gemeenschappelijk contract, waardoor een consistente, uniforme ontwerpervaring mogelijk is voor alle resourceproviders. Een resourceprovider die beschikbaar is in het wereldwijde Azure, is echter mogelijk niet beschikbaar in een soevereine cloud of een Azure Stack-regio.
+Met een sjabloon worden bronnen geïmplementeerd en geconfigureerd. Een resource type wordt door een resource provider verschaft. De compute resource provider (micro soft. Compute) biedt bijvoorbeeld meerdere resource typen, zoals informatie en Availability sets. Elke resource provider biedt een API voor het Azure Resource Manager dat is gedefinieerd door een gemeen schappelijk contract, waardoor een consistente, uniforme ervaring voor het ontwerpen van alle resource providers mogelijk wordt. Een resource provider die beschikbaar is in wereld wijd Azure is echter mogelijk niet beschikbaar in een soevereine Cloud of een Azure Stack regio.
 
 ![Resourceproviders](./media/templates-cloud-consistency/resource-providers.png)
 
-Als u de resourceproviders wilt verifiëren die beschikbaar zijn in een bepaalde cloud, voert u het volgende script uit in de Azure-opdrachtregelinterface[(CLI):](/cli/azure/install-azure-cli)
+Als u de resource providers wilt controleren die beschikbaar zijn in een bepaalde Cloud, voert u het volgende script uit in de Azure-opdracht regel interface ([cli](/cli/azure/install-azure-cli)):
 
 ```azurecli-interactive
 az provider list --query "[].{Provider:namespace, Status:registrationState}" --out table
 ```
 
-U ook de volgende PowerShell-cmdlet gebruiken om beschikbare resourceproviders te bekijken:
+U kunt ook de volgende Power shell-cmdlet gebruiken om beschik bare resource providers te bekijken:
 
 ```azurepowershell-interactive
 Get-AzureRmResourceProvider -ListAvailable | Select-Object ProviderNamespace, RegistrationState
 ```
 
-### <a name="verify-the-version-of-all-resource-types"></a>De versie van alle resourcetypen verifiëren
+### <a name="verify-the-version-of-all-resource-types"></a>De versie van alle resource typen controleren
 
-Een set eigenschappen is gebruikelijk voor alle resourcetypen, maar elke resource heeft ook zijn eigen specifieke eigenschappen. Nieuwe functies en gerelateerde eigenschappen worden soms aan bestaande brontypen toegevoegd via een nieuwe API-versie. Een resource in een sjabloon heeft `apiVersion`een eigen eigenschap API-versie - . Deze versieing zorgt ervoor dat een bestaande resourceconfiguratie in een sjabloon niet wordt beïnvloed door wijzigingen op het platform.
+Een set eigenschappen is gebruikelijk voor alle resource typen, maar elke resource heeft ook eigen specifieke eigenschappen. Nieuwe functies en gerelateerde eigenschappen worden op momenten door een nieuwe API-versie toegevoegd aan bestaande resource typen. Een resource in een sjabloon heeft een eigen API-versie- `apiVersion`eigenschap. Deze versie wordt gegarandeerd dat een bestaande bron configuratie in een sjabloon niet wordt beïnvloed door wijzigingen op het platform.
 
-Nieuwe API-versies die zijn geïntroduceerd in bestaande brontypen in het wereldwijde Azure, zijn mogelijk niet onmiddellijk beschikbaar in alle regio's, soevereine clouds of Azure Stack. Als u een lijst wilt weergeven met de beschikbare resourceproviders, resourcetypen en API-versies voor een cloud, u Resource Explorer gebruiken in Azure-portal. Zoeken naar Resource Explorer in het menu Alle services. Vouw het knooppunt Providers uit in Resource Explorer om alle beschikbare resourceproviders, hun resourcetypen en API-versies in die cloud terug te sturen.
+Nieuwe API-versies die zijn geïntroduceerd in bestaande resource typen in Global Azure zijn mogelijk niet onmiddellijk beschikbaar in alle regio's, soevereine Clouds of Azure Stack. Als u een lijst wilt weer geven van de beschik bare resource providers, resource typen en API-versies voor een Cloud, kunt u resource Explorer gebruiken in Azure Portal. Zoek naar resource Explorer in het menu alle services. Vouw het knoop punt providers in resource Explorer uit om alle beschik bare resource providers, hun resource typen en API-versies in die cloud te retour neren.
 
-Voer het volgende script uit als u de beschikbare API-versie wilt weergeven voor alle resourcetypen in een bepaalde cloud in Azure CLI:
+Als u de beschik bare API-versie voor alle resource typen in een bepaalde Cloud in azure CLI wilt weer geven, voert u het volgende script uit:
 
 ```azurecli-interactive
 az provider list --query "[].{namespace:namespace, resourceType:resourceType[]}"
 ```
 
-U ook de volgende PowerShell-cmdlet gebruiken:
+U kunt ook de volgende Power shell-cmdlet gebruiken:
 
 ```azurepowershell-interactive
 Get-AzureRmResourceProvider | select-object ProviderNamespace -ExpandProperty ResourceTypes | ft ProviderNamespace, ResourceTypeName, ApiVersions
 ```
 
-### <a name="refer-to-resource-locations-with-a-parameter"></a>Verwijzen naar resourcelocaties met een parameter
+### <a name="refer-to-resource-locations-with-a-parameter"></a>Verwijzen naar resource locaties met een para meter
 
-Een sjabloon wordt altijd geïmplementeerd in een resourcegroep die zich in een regio bevindt. Naast de implementatie zelf heeft elke resource in een sjabloon ook een locatieeigenschap die u gebruikt om de regio op te geven waarin u moet implementeren. Als u uw sjabloon wilt ontwikkelen voor cloudconsistentie, hebt u een dynamische manier nodig om naar resourcelocaties te verwijzen, omdat elke Azure Stack unieke locatienamen kan bevatten. Meestal worden resources geïmplementeerd in dezelfde regio als de resourcegroep, maar om scenario's zoals de beschikbaarheid van toepassingen in verschillende regio's te ondersteunen, kan het handig zijn om resources over regio's te verspreiden.
+Een sjabloon wordt altijd geïmplementeerd in een resource groep die zich in een regio bevindt. Naast de implementatie zelf heeft elke resource in een sjabloon ook een locatie-eigenschap die u kunt gebruiken om de regio op te geven waarin u wilt implementeren. Als u uw sjabloon voor Cloud consistentie wilt ontwikkelen, hebt u een dynamische manier nodig om naar resource locaties te verwijzen, omdat elke Azure Stack unieke locatie namen kan bevatten. Doorgaans worden resources geïmplementeerd in dezelfde regio als de resource groep, maar om scenario's te ondersteunen, zoals de beschik baarheid van meerdere regio's, kan het handig zijn om resources over verschillende regio's te verdelen.
 
-Hoewel u de regionamen hardcoderen wanneer u de resourceeigenschappen in een sjabloon opgeeft, garandeert deze benadering niet dat de sjabloon kan worden geïmplementeerd in andere Azure Stack-omgevingen, omdat de regionaam daar waarschijnlijk niet bestaat.
+Hoewel u de regio namen kunt voorlopig hardcoderen we wanneer u de bron eigenschappen in een sjabloon opgeeft, garandeert deze benadering niet dat de sjabloon kan worden geïmplementeerd in andere Azure Stack omgevingen, omdat de naam van de regio waarschijnlijk niet aanwezig is.
 
-Als u verschillende regio's wilt aanpassen, voegt u een invoerparameterlocatie toe aan de sjabloon met een standaardwaarde. De standaardwaarde wordt gebruikt als er geen waarde is opgegeven tijdens de implementatie.
+Als u wilt dat verschillende regio's worden opgegeven, voegt u een locatie voor invoer parameters toe aan de sjabloon met een standaard waarde. Als er tijdens de implementatie geen waarde is opgegeven, wordt de standaard waarde gebruikt.
 
-De sjabloonfunctie `[resourceGroup()]` retourneert een object dat de volgende sleutel-/waardeparen bevat:
+De functie `[resourceGroup()]` Temp late retourneert een object dat de volgende sleutel/waarde-paren bevat:
 
 ```json
 {
@@ -270,7 +270,7 @@ De sjabloonfunctie `[resourceGroup()]` retourneert een object dat de volgende sl
 }
 ```
 
-Door te verwijzen naar de locatiesleutel van het object in de standaardwaarde van de `[resourceGroup().location]` invoerparameter, vervangt Azure Resource Manager bij uitvoering de sjabloonfunctie door de naam van de locatie van de resourcegroep waaraan de sjabloon is geïmplementeerd.
+Door te verwijzen naar de locatie sleutel van het object in de defaultValue van de invoer parameter, moet Azure Resource Manager tijdens runtime de `[resourceGroup().location]` sjabloon functie vervangen door de naam van de resource groep waarin de sjabloon is geïmplementeerd.
 
 ```json
 "parameters": {
@@ -291,13 +291,13 @@ Door te verwijzen naar de locatiesleutel van het object in de standaardwaarde va
     ...
 ```
 
-Met deze sjabloonfunctie u uw sjabloon in elke cloud implementeren zonder de regionamen van tevoren te kennen. Bovendien kan een locatie voor een specifieke resource in de sjabloon verschillen van de locatie van de resourcegroep. In dit geval u deze configureren met behulp van extra invoerparameters voor die specifieke resource, terwijl de andere resources in dezelfde sjabloon nog steeds de parameter in de oorspronkelijke locatieinvoer gebruiken.
+Met deze sjabloon functie kunt u uw sjabloon implementeren in een wille keurige Cloud zonder dat u de regio namen vooraf hoeft te weten. Daarnaast kan een locatie voor een specifieke resource in de sjabloon afwijken van de locatie van de resource groep. In dit geval kunt u deze configureren met behulp van aanvullende invoer parameters voor die specifieke resource, terwijl de andere resources in dezelfde sjabloon nog steeds de invoer parameter voor de eerste locatie gebruiken.
 
 ### <a name="track-versions-using-api-profiles"></a>Versies bijhouden met API-profielen
 
-Het kan zeer uitdagend zijn om alle beschikbare resourceproviders en gerelateerde API-versies die aanwezig zijn in Azure Stack bij te houden. Op het moment van schrijven is `2018-04-01`bijvoorbeeld de nieuwste API-versie voor **Microsoft.Compute/availabilitySets** in Azure , `2016-03-30`terwijl de beschikbare API-versie die algemeen is voor Azure en Azure Stack . De gemeenschappelijke API-versie voor **Microsoft.Storage/storageAccounts** die worden `2016-01-01`gedeeld tussen alle Azure- `2018-02-01`en Azure Stack-locaties is , terwijl de nieuwste API-versie in Azure .
+Het kan zeer lastig zijn om alle beschik bare resource providers en gerelateerde API-versies bij te houden die aanwezig zijn in Azure Stack. Op het moment van schrijven is `2018-04-01`de nieuwste API-versie voor **micro soft. Compute/Availability sets** in azure bijvoorbeeld, terwijl de beschik bare API-versie gemeen schappelijk `2016-03-30`is voor Azure en Azure stack is. De common API-versie voor **micro soft. Storage/Storage accounts** die wordt gedeeld tussen alle Azure `2016-01-01`-en Azure stack locaties, is, terwijl de `2018-02-01`nieuwste API-versie in Azure is.
 
-Om deze reden introduceerde Resource Manager het concept van API-profielen in sjablonen. Zonder API-profielen is elke resource in `apiVersion` een sjabloon geconfigureerd met een element dat de API-versie voor die specifieke bron beschrijft.
+Daarom heeft Resource Manager het concept van API-profielen in sjablonen geïntroduceerd. Zonder API-profielen wordt elke bron in een sjabloon geconfigureerd met een `apiVersion` -element dat de API-versie voor die specifieke resource beschrijft.
 
 ```json
 {
@@ -338,7 +338,7 @@ Om deze reden introduceerde Resource Manager het concept van API-profielen in sj
 }
 ```
 
-Een API-profielversie fungeert als alias voor één API-versie per resourcetype dat algemeen is voor Azure en Azure Stack. In plaats van een API-versie op te geven voor elke resource in een `apiProfile` sjabloon, `apiVersion` geeft u alleen de API-profielversie op in een nieuw hoofdelement dat het element voor de afzonderlijke resources wordt aangeroepen en weglaat.
+Een API-profiel versie fungeert als een alias voor een enkele API-versie per resource type die gemeen schappelijk is voor Azure en Azure Stack. In plaats van een API-versie op te geven voor elke resource in een sjabloon, geeft u alleen de API-profiel versie op `apiProfile` in een nieuw `apiVersion` hoofd element, met de naam en laat u het element voor de afzonderlijke resources weg.
 
 ```json
 {
@@ -378,9 +378,9 @@ Een API-profielversie fungeert als alias voor één API-versie per resourcetype 
 }
 ```
 
-Het API-profiel zorgt ervoor dat de API-versies beschikbaar zijn op verschillende locaties, zodat u de apiVersies die beschikbaar zijn op een specifieke locatie niet handmatig hoeft te verifiëren. Om ervoor te zorgen dat de API-versies waarnaar wordt verwezen door uw API-profiel aanwezig zijn in een Azure Stack-omgeving, moeten de Azure Stack-operators de oplossing up-to-date houden op basis van het ondersteuningsbeleid. Als een systeem meer dan zes maanden verouderd is, wordt het als niet-naleving beschouwd en moet het milieu worden bijgewerkt.
+Met het API-profiel zorgt u ervoor dat de API-versies beschikbaar zijn op verschillende locaties. u hoeft dus niet hand matig de apiVersions te controleren die beschikbaar zijn op een specifieke locatie. Om ervoor te zorgen dat de API-versies waarnaar wordt verwezen door uw API-profiel in een Azure Stack omgeving aanwezig zijn, moeten de Azure Stack-Opera tors de oplossing up-to-date houden op basis van het beleid voor ondersteuning. Als een systeem meer dan zes maanden verouderd is, wordt het beschouwd als niet-naleving en moet de omgeving worden bijgewerkt.
 
-Het API-profiel is geen vereist element in een sjabloon. Zelfs als u het element toevoegt, wordt het `apiVersion` alleen gebruikt voor resources waarvoor geen is opgegeven. Dit element zorgt voor geleidelijke wijzigingen, maar vereist geen wijzigingen in bestaande sjablonen.
+Het API-profiel is geen vereist element in een sjabloon. Zelfs als u het element toevoegt, wordt het alleen gebruikt voor resources waarvoor geen `apiVersion` is opgegeven. Met dit element kunnen geleidelijke wijzigingen worden aangebracht, maar zijn er geen wijzigingen in bestaande sjablonen nodig.
 
 ```json
 {
@@ -421,42 +421,42 @@ Het API-profiel is geen vereist element in een sjabloon. Zelfs als u het element
 }
 ```
 
-## <a name="check-endpoint-references"></a>Eindpuntverwijzingen controleren
+## <a name="check-endpoint-references"></a>Eindpunt verwijzingen controleren
 
-Bronnen kunnen verwijzingen naar andere services op het platform hebben. Een openbaar IP kan bijvoorbeeld een openbare DNS-naam hebben toegewezen. De public cloud, de soevereine clouds en Azure Stack-oplossingen hebben hun eigen afzonderlijke eindpuntnaamruimten. In de meeste gevallen vereist een resource alleen een voorvoegsel als invoer in de sjabloon. Tijdens runtime voegt Azure Resource Manager de eindpuntwaarde eraan toe. Sommige eindpuntwaarden moeten expliciet in de sjabloon worden opgegeven.
+Resources kunnen verwijzingen naar andere services op het platform bevatten. Aan een openbaar IP-adres kan bijvoorbeeld een open bare DNS-naam worden toegewezen. De open bare Cloud, de soevereine Clouds en Azure Stack oplossingen hebben hun eigen verschillende naam ruimten voor eind punten. In de meeste gevallen vereist een resource alleen een voor voegsel als invoer in de sjabloon. Tijdens runtime voegt Azure Resource Manager de eindpunt waarde toe. Sommige eindpunt waarden moeten expliciet worden opgegeven in de sjabloon.
 
 > [!NOTE]
-> Als u sjablonen wilt ontwikkelen voor cloudconsistentie, hoeft u geen naamruimten voor eindpunten hardcoderen.
+> Voor het ontwikkelen van sjablonen voor Cloud consistentie, voorlopig hardcoderen we u geen eindpunt naam ruimten.
 
-De volgende twee voorbeelden zijn algemene eindpuntnaamruimten die expliciet moeten worden opgegeven bij het maken van een resource:
+De volgende twee voor beelden zijn algemene eindpunt naam ruimten die expliciet moeten worden opgegeven bij het maken van een resource:
 
-* Opslagaccounts (blob, wachtrij, tabel en bestand)
-* Verbindingstekenreeksen voor databases en Azure Cache voor Redis
+* Opslag accounts (BLOB, wachtrij, tabel en bestand)
+* Verbindings reeksen voor data bases en Azure cache voor redis
 
-Endpoint-naamruimten kunnen ook worden gebruikt in de uitvoer van een sjabloon als informatie voor de gebruiker wanneer de implementatie is voltooid. De volgende voorbeelden zijn:
+Naam ruimten van eind punten kunnen ook worden gebruikt in de uitvoer van een sjabloon als informatie voor de gebruiker wanneer de implementatie is voltooid. Hier volgen enkele algemene voor beelden:
 
-* Opslagaccounts (blob, wachtrij, tabel en bestand)
-* Verbindingstekenreeksen (MySql, SQLServer, SQLAzure, Custom, NotificationHub, ServiceBus, EventHub, ApiHub, DocDb, RedisCache, PostgreSQL)
+* Opslag accounts (BLOB, wachtrij, tabel en bestand)
+* Verbindings reeksen (MySql, SQLServer, SQLAzure, Custom, NotificationHub, ServiceBus, EventHub, ApiHub, DocDb, RedisCache, PostgreSQL)
 * Traffic Manager
-* domainNameLabel van een openbaar IP-adres
+* Domeinnaam label van een openbaar IP-adres
 * Cloud services
 
-Over het algemeen vermijdt u hardcoded eindpunten in een sjabloon. De beste praktijk is om de functie referentiesjabloon te gebruiken om de eindpunten dynamisch op te halen. Het eindpunt dat het meest hardcoded is, is bijvoorbeeld de naamruimte voor eindpunten voor opslagaccounts. Elk opslagaccount heeft een unieke FQDN die is opgebouwd door de naam van het opslagaccount samen te brengen met de naamruimte voor eindpunten. Een blob-opslagaccount met de naam mystorageaccount1 resulteert in verschillende FQDN's, afhankelijk van de cloud:
+In het algemeen vermijdt u hardcoded eind punten in een sjabloon. De best practice is het gebruik van de functie voor de verwijzings sjabloon om de eind punten dynamisch op te halen. Zo is het eind punt meestal hardcoded de naam ruimte van het eind punt voor opslag accounts. Elk opslag account heeft een unieke FQDN die wordt samengesteld door de naam van het opslag account samen te voegen met de eindpunt naam ruimte. Een Blob Storage-account met de naam mystorageaccount1 resulteert in verschillende FQDN-namen, afhankelijk van de Cloud:
 
-* **mystorageaccount1.blob.core.windows.net** wanneer deze is gemaakt in de wereldwijde Azure-cloud.
-* **mystorageaccount1.blob.core.chinacloudapi.cn** wanneer deze zijn gemaakt in de Azure China 21Vianet-cloud.
+* **mystorageaccount1.blob.core.Windows.net** wanneer deze wordt gemaakt in de wereld wijde Azure-Cloud.
+* **mystorageaccount1.blob.core.chinacloudapi.cn** wanneer deze wordt gemaakt in de Azure China 21vianet-Cloud.
 
-Met de volgende functie referentiesjabloon wordt de naamruimte van het eindpunt opgehaald bij de opslagbronprovider:
+Met de volgende functie van de referentie sjabloon wordt de naam ruimte van het eind punt opgehaald van de opslag Resource provider:
 
 ```json
 "diskUri":"[concat(reference(resourceId('Microsoft.Storage/storageAccounts', variables('storageAccountName'))).primaryEndpoints.blob, 'container/myosdisk.vhd')]"
 ```
 
-Door de hardcoded waarde van het eindpunt `reference` van het opslagaccount te vervangen door de sjabloonfunctie, u dezelfde sjabloon gebruiken om met succes naar verschillende omgevingen te implementeren zonder de eindpuntverwijzing aan te brengen.
+Door de hardcoded waarde van het eind punt van het opslag account `reference` te vervangen door de sjabloon functie, kunt u dezelfde sjabloon gebruiken om te implementeren in verschillende omgevingen zonder wijzigingen aan te brengen in de eindpunt referentie.
 
-### <a name="refer-to-existing-resources-by-unique-id"></a>Verwijzen naar bestaande bronnen door unieke ID
+### <a name="refer-to-existing-resources-by-unique-id"></a>Verwijzen naar bestaande resources op unieke ID
 
-U ook verwijzen naar een bestaande bron uit dezelfde of een andere resourcegroep en binnen hetzelfde abonnement of een ander abonnement, binnen dezelfde tenant in dezelfde cloud. Als u de resourceeigenschappen wilt ophalen, moet u de unieke id voor de bron zelf gebruiken. Met `resourceId` de sjabloonfunctie wordt de unieke id van een bron zoals SQL Server opgehaald, zoals de volgende code wordt weergegeven:
+U kunt ook verwijzen naar een bestaande resource van dezelfde of een andere resource groep, en binnen hetzelfde abonnement of een ander abonnement binnen dezelfde Tenant in dezelfde Cloud. Als u de resource-eigenschappen wilt ophalen, moet u de unieke id voor de resource zelf gebruiken. De `resourceId` sjabloon functie haalt de unieke id op van een resource, zoals SQL Server, zoals in de volgende code wordt weer gegeven:
 
 ```json
 "outputs": {
@@ -467,37 +467,37 @@ U ook verwijzen naar een bestaande bron uit dezelfde of een andere resourcegroep
 }
 ```
 
-U de `resourceId` functie `reference` in de sjabloonfunctie vervolgens gebruiken om de eigenschappen van een database op te halen. Het retourobject `fullyQualifiedDomainName` bevat de eigenschap met de volledige eindpuntwaarde. Deze waarde wordt opgehaald tijdens runtime en biedt de naamruimte voor de cloudomgeving. Als u de verbindingstekenreeks wilt definiëren zonder de naamruimte van het eindpunt te hardcoderen, u rechtstreeks in de weergegeven verbindingstekenreeks verwijzen naar de eigenschap van het retourobject:
+U kunt vervolgens de `resourceId` functie binnen de `reference` sjabloon functie gebruiken om de eigenschappen van een Data Base op te halen. Het object Return bevat de `fullyQualifiedDomainName` eigenschap met de volledige eindpunt waarde. Deze waarde wordt tijdens runtime opgehaald en biedt de Cloud-specifieke eindpunt naam ruimte. Als u de connection string wilt definiëren zonder hardcoding u de naam ruimte van het eind punt, kunt u de eigenschap van het retour object rechtstreeks in de connection string verwijzen, zoals wordt weer gegeven:
 
 ```json
 "[concat('Server=tcp:', reference(resourceId('sql', 'Microsoft.Sql/servers', parameters('test')), '2015-05-01-preview').fullyQualifiedDomainName, ',1433;Initial Catalog=', parameters('database'),';User ID=', parameters('username'), ';Password=', parameters('pass'), ';Encrypt=True;')]"
 ```
 
-## <a name="consider-resource-properties"></a>Resourceeigenschappen overwegen
+## <a name="consider-resource-properties"></a>Resource-eigenschappen overwegen
 
-Specifieke resources binnen Azure Stack-omgevingen hebben unieke eigenschappen die u in uw sjabloon moet overwegen.
+Specifieke resources binnen Azure Stack omgevingen hebben unieke eigenschappen die u in uw sjabloon moet overwegen.
 
-### <a name="ensure-vm-images-are-available"></a>Ervoor zorgen dat VM-afbeeldingen beschikbaar zijn
+### <a name="ensure-vm-images-are-available"></a>Controleren of VM-installatie kopieën beschikbaar zijn
 
-Azure biedt een uitgebreide selectie van VM-afbeeldingen. Deze afbeeldingen worden gemaakt en voorbereid voor implementatie door Microsoft en partners. De beelden vormen de basis voor VM's op het platform. Een sjabloon die in de cloud consistent is, moet echter alleen verwijzen naar beschikbare parameters, met name de uitgever, aanbieding en SKU van de VM-afbeeldingen die beschikbaar zijn voor de wereldwijde Azure-, Azure-soevereine clouds of een Azure Stack-oplossing.
+Azure biedt een uitgebreide selectie van VM-installatie kopieën. Deze installatie kopieën worden gemaakt en voor bereid voor implementatie door micro soft en partners. De afbeeldingen vormen de basis voor Vm's op het platform. Een Cloud consistente sjabloon moet echter alleen verwijzen naar beschik bare para meters, met name de uitgever, de aanbieding en de SKU van de VM-installatie kopieën die beschikbaar zijn voor de wereld wijde Azure, Azure soevereine Clouds of een Azure Stack oplossing.
 
-Als u een lijst met beschikbare VM-afbeeldingen op een locatie wilt ophalen, voert u de volgende opdracht Azure CLI uit:
+Voer de volgende Azure CLI-opdracht uit om een lijst met beschik bare VM-installatie kopieën op een locatie op te halen:
 
 ```azurecli-interactive
 az vm image list -all
 ```
 
-U dezelfde lijst ophalen met de Azure PowerShell-cmdlet [Get-AzureRmVMImagePublisher](/powershell/module/az.compute/get-azvmimagepublisher) en de gewenste locatie opgeven met de `-Location` parameter. Bijvoorbeeld:
+U kunt dezelfde lijst ophalen met de Azure PowerShell cmdlet [Get-AzureRmVMImagePublisher](/powershell/module/az.compute/get-azvmimagepublisher) en de gewenste locatie opgeven met de `-Location` para meter. Bijvoorbeeld:
 
 ```azurepowershell-interactive
 Get-AzureRmVMImagePublisher -Location "West Europe" | Get-AzureRmVMImageOffer | Get-AzureRmVMImageSku | Get-AzureRmVMImage
 ```
 
-Deze opdracht duurt een paar minuten om alle beschikbare afbeeldingen in de regio West-Europa van de wereldwijde Azure-cloud terug te sturen.
+Het duurt enkele minuten om alle beschik bare installatie kopieën te retour neren in de Europa-west regio van de wereld wijde Azure-Cloud.
 
-Als u deze VM-afbeeldingen beschikbaar hebt gesteld voor Azure Stack, wordt alle beschikbare opslagruimte verbruikt. Azure Stack u de afbeeldingen selecteren die u aan een omgeving wilt toevoegen om zelfs de kleinste schaaleenheid te kunnen huisvesten.
+Als u deze VM-installatie kopieën beschikbaar hebt gemaakt voor Azure Stack, wordt alle beschik bare opslag verbruikt. Azure Stack kunt de installatie kopieën die u wilt toevoegen aan een omgeving selecteren als u de kleinste schaal eenheid wilt aanpassen.
 
-In het volgende voorbeeld van de code wordt een consistente benadering weergegeven om te verwijzen naar de parameters voor de uitgever, aanbieding en SKU in uw ARM-sjablonen:
+Het volgende code voorbeeld toont een consistente benadering om te verwijzen naar de uitgevers-, aanbiedings-en SKU-para meters in uw ARM-sjablonen:
 
 ```json
 "storageProfile": {
@@ -510,29 +510,29 @@ In het volgende voorbeeld van de code wordt een consistente benadering weergegev
 }
 ```
 
-### <a name="check-local-vm-sizes"></a>Lokale VM-formaten controleren
+### <a name="check-local-vm-sizes"></a>Lokale VM-grootten controleren
 
-Als u uw sjabloon wilt ontwikkelen voor cloudconsistentie, moet u ervoor zorgen dat de gewenste VM-grootte beschikbaar is in alle doelomgevingen. VM-formaten zijn een groepering van prestatiekenmerken en -mogelijkheden. Sommige VM-formaten zijn afhankelijk van de hardware waarop de VM wordt uitgevoerd. Als u bijvoorbeeld een vm met GPU-geoptimaliseerde hardware wilt implementeren, moet de hardware waarop de hypervisor wordt uitgevoerd, de hardware-GPU's hebben.
+Als u uw sjabloon voor Cloud consistentie wilt ontwikkelen, moet u ervoor zorgen dat de VM-grootte die u wilt instellen beschikbaar is in alle doel omgevingen. VM-grootten zijn een groepering van prestatie kenmerken en mogelijkheden. Sommige VM-grootten zijn afhankelijk van de hardware waarop de virtuele machine wordt uitgevoerd. Als u bijvoorbeeld een door GPU geoptimaliseerde virtuele machine wilt implementeren, moet de hardware-Gpu's worden geïnstalleerd op de computer waarop de Hyper Visor wordt uitgevoerd.
 
-Wanneer Microsoft een nieuwe grootte van VM introduceert met bepaalde hardwareafhankelijkheden, wordt de VM-grootte meestal eerst beschikbaar gesteld in een kleine subset van regio's in de Azure-cloud. Later wordt het beschikbaar gesteld aan andere regio's en wolken. Als u wilt dat de VM-grootte bestaat in elke cloud waarnaar u implementeert, u de beschikbare grootten ophalen met de volgende opdracht Azure CLI:
+Wanneer micro soft een nieuwe grootte van een VM met bepaalde hardwarevereisten introduceert, wordt de grootte van de virtuele machine doorgaans eerst beschikbaar gemaakt in een kleine subset van regio's in de Azure-Cloud. Later wordt deze beschikbaar gesteld aan andere regio's en Clouds. Om ervoor te zorgen dat de VM-grootte bestaat in elke Cloud die u implementeert naar, kunt u de beschik bare grootten ophalen met de volgende Azure CLI-opdracht:
 
 ```azurecli-interactive
 az vm list-sizes --location "West Europe"
 ```
 
-Gebruik voor Azure PowerShell:
+Voor Azure PowerShell gebruikt u:
 
 ```azurepowershell-interactive
 Get-AzureRmVMSize -Location "West Europe"
 ```
 
-Zie [Producten die beschikbaar zijn per regio voor](https://azure.microsoft.com/global-infrastructure/services/?cdn=disable)een volledige lijst met beschikbare services.
+Zie [producten beschikbaar per regio](https://azure.microsoft.com/global-infrastructure/services/?cdn=disable)voor een volledige lijst met beschik bare Services.
 
-### <a name="check-use-of-azure-managed-disks-in-azure-stack"></a>Het gebruik van Azure Managed Disks in Azure Stack controleren
+### <a name="check-use-of-azure-managed-disks-in-azure-stack"></a>Het gebruik van Azure-Managed Disks in Azure Stack controleren
 
-Beheerde schijven verwerken de opslag voor een Azure-tenant. In plaats van expliciet een opslagaccount aan te maken en de URI voor een virtuele harde schijf (VHD) op te geven, u beheerde schijven gebruiken om deze acties impliciet uit te voeren wanneer u een VM implementeert. Beheerde schijven verbeteren de beschikbaarheid door alle schijven van VM's in dezelfde beschikbaarheid te plaatsen in verschillende opslageenheden. Bovendien kunnen bestaande VHD's worden omgezet van Standaard naar Premium-opslag met aanzienlijk minder downtime.
+Beheerde schijven verwerken de opslag voor een Azure-Tenant. In plaats van een opslag account expliciet te maken en de URI voor een virtuele harde schijf (VHD) op te geven, kunt u beheerde schijven gebruiken om deze acties impliciet uit te voeren wanneer u een virtuele machine implementeert. Met Managed disks wordt de beschik baarheid verbeterd doordat alle schijven van virtuele machines in dezelfde beschikbaarheidsset in verschillende opslag eenheden worden geplaatst. Daarnaast kunnen bestaande Vhd's van de standaard-naar Premium-opslag worden geconverteerd met een aanzienlijk minder downtime.
 
-Hoewel beheerde schijven op de roadmap voor Azure Stack staan, worden ze momenteel niet ondersteund. Totdat dit het geval is, u cloudconsistente sjablonen voor Azure `vhd` Stack ontwikkelen door vhd's expliciet op te geven met behulp van het element in de sjabloon voor de VM-bron zoals weergegeven:
+Hoewel beheerde schijven zich op het schema voor Azure Stack bevinden, worden ze momenteel niet ondersteund. Tot die manier kunt u Cloud consistente sjablonen voor Azure Stack ontwikkelen door expliciet Vhd's op te geven met behulp van het `vhd` -element in de sjabloon voor de VM-resource, zoals wordt weer gegeven:
 
 ```json
 "storageProfile": {
@@ -553,7 +553,7 @@ Hoewel beheerde schijven op de roadmap voor Azure Stack staan, worden ze momente
 }
 ```
 
-Als u daarentegen een beheerde schijfconfiguratie `vhd` in een sjabloon wilt opgeven, verwijdert u het element uit de schijfconfiguratie.
+Als u daarentegen een configuratie van een beheerde schijf in een sjabloon wilt opgeven `vhd` , verwijdert u het element uit de configuratie van de schijf.
 
 ```json
 "storageProfile": {
@@ -570,35 +570,35 @@ Als u daarentegen een beheerde schijfconfiguratie `vhd` in een sjabloon wilt opg
 }
 ```
 
-Dezelfde wijzigingen zijn ook van toepassing [op gegevensschijven](../../virtual-machines/windows/using-managed-disks-template-deployments.md).
+Met dezelfde wijzigingen worden ook [gegevens schijven](../../virtual-machines/windows/using-managed-disks-template-deployments.md)toegepast.
 
-### <a name="verify-that-vm-extensions-are-available-in-azure-stack"></a>Controleren of VM-extensies beschikbaar zijn in Azure Stack
+### <a name="verify-that-vm-extensions-are-available-in-azure-stack"></a>Controleer of er VM-extensies beschikbaar zijn in Azure Stack
 
-Een andere overweging voor cloudconsistentie is het gebruik van [virtuele machine-extensies](../../virtual-machines/windows/extensions-features.md) om de bronnen in een VM te configureren. Niet alle VM-extensies zijn beschikbaar in Azure Stack. Een sjabloon kan de resources opgeven die zijn toegewezen aan de VM-extensie, waardoor afhankelijkheden en voorwaarden in de sjabloon worden gemaakt.
+Een andere overweging voor Cloud consistentie is het gebruik van [extensies van virtuele machines](../../virtual-machines/windows/extensions-features.md) voor het configureren van de resources in een VM. Niet alle VM-uitbrei dingen zijn beschikbaar in Azure Stack. Met een sjabloon kunt u de resources die zijn toegewezen aan de VM-extensie opgeven, afhankelijkheden en voor waarden maken in de sjabloon.
 
-Als u bijvoorbeeld een VM met Microsoft SQL Server wilt configureren, kan de VM-extensie SQL Server configureren als onderdeel van de sjabloonimplementatie. Bedenk wat er gebeurt als de implementatiesjabloon ook een toepassingsserver bevat die is geconfigureerd om een database te maken op de VM met SQL Server. Naast het gebruik van een VM-extensie voor de toepassingsservers, u de afhankelijkheid van de toepassingsserver configureren bij de succesvolle terugkeer van de SQL Server VM-extensiebron. Deze benadering zorgt ervoor dat de VM met SQL Server is geconfigureerd en beschikbaar is wanneer de toepassingsserver wordt geïnstrueerd om de database te maken.
+Als u bijvoorbeeld een virtuele machine met Microsoft SQL Server wilt configureren, kan de VM-extensie SQL Server als onderdeel van de sjabloon implementatie configureren. Bedenk wat er gebeurt als de implementatie sjabloon ook een toepassings server bevat die is geconfigureerd voor het maken van een Data Base op de virtuele machine met SQL Server. Naast het gebruik van een VM-extensie voor de toepassings servers, kunt u ook de afhankelijkheid van de toepassings server configureren op basis van de geslaagde retour van de SQL Server VM-extensie resource. Deze aanpak zorgt ervoor dat de virtuele machine met SQL Server is geconfigureerd en beschikbaar is wanneer de toepassings server de instructie krijgt om de data base te maken.
 
-Met de declaratieve benadering van de sjabloon u de eindstatus van de resources en hun onderlinge afhankelijkheden definiëren, terwijl het platform zorgt voor de logica die nodig is voor de afhankelijkheden.
+Met de declaratieve aanpak van de sjabloon kunt u de eind status van de resources en de bijbehorende onderlinge afhankelijkheden definiëren, terwijl het platform de vereiste logica voor de afhankelijkheden onderneemt.
 
-#### <a name="check-that-vm-extensions-are-available"></a>Controleren of VM-extensies beschikbaar zijn
+#### <a name="check-that-vm-extensions-are-available"></a>Controleer of er VM-extensies beschikbaar zijn
 
-Er bestaan veel soorten VM-extensies. Wanneer u een sjabloon ontwikkelt voor cloudconsistentie, moet u alleen de extensies gebruiken die beschikbaar zijn in alle regio's waarop de sjabloon doelen.
+Er bestaan veel typen VM-extensies. Bij het ontwikkelen van een sjabloon voor consistentie in de Cloud, moet u ervoor zorgen dat u alleen de extensies gebruikt die beschikbaar zijn in alle regio's van de sjabloon doelen.
 
-Als u een lijst met vm-extensies wilt ophalen die `myLocation`beschikbaar zijn voor een specifieke regio (in dit voorbeeld), voert u de volgende opdracht Azure CLI uit:
+Voer de volgende Azure CLI-opdracht uit om een lijst op te halen van de VM-extensies die `myLocation`beschikbaar zijn voor een specifieke regio (in dit voor beeld):
 
 ```azurecli-interactive
 az vm extension image list --location myLocation
 ```
 
-U ook de cmdlet Azure PowerShell [Get-AzureRmVmImagePublisher](/powershell/module/az.compute/get-azvmimagepublisher) uitvoeren en gebruiken `-Location` om de locatie van de virtuele machineafbeelding op te geven. Bijvoorbeeld:
+U kunt ook de Azure PowerShell [Get-AzureRmVmImagePublisher-](/powershell/module/az.compute/get-azvmimagepublisher) cmdlet uitvoeren en `-Location` gebruiken om de locatie van de installatie kopie van de virtuele machine op te geven. Bijvoorbeeld:
 
 ```azurepowershell-interactive
 Get-AzureRmVmImagePublisher -Location myLocation | Get-AzureRmVMExtensionImageType | Get-AzureRmVMExtensionImage | Select Type, Version
 ```
 
-#### <a name="ensure-that-versions-are-available"></a>Ervoor zorgen dat versies beschikbaar zijn
+#### <a name="ensure-that-versions-are-available"></a>Zorg ervoor dat de versies beschikbaar zijn
 
-Aangezien VM-extensies first-party Resource Manager-bronnen zijn, hebben ze hun eigen API-versies. Zoals de volgende code laat zien, is het vm-extensietype een geneste bron in de Microsoft.Compute-bronprovider.
+Omdat VM-extensies resources van Resource Manager voor de eerste partij zijn, hebben ze hun eigen API-versies. Zoals in de volgende code wordt weer gegeven, is het VM-extensie type een geneste resource in de resource provider micro soft. compute.
 
 ```json
 {
@@ -609,21 +609,21 @@ Aangezien VM-extensies first-party Resource Manager-bronnen zijn, hebben ze hun 
     ...
 ```
 
-De API-versie van de VM-extensiebron moet aanwezig zijn op alle locaties die u wilt targeten met uw sjabloon. De locatieafhankelijkheid werkt zoals de beschikbaarheid van api-versie van de resourceprovider die eerder in de sectie 'De versie van alle resourcetypen verifiëren' is besproken.
+De API-versie van de VM-extensie resource moet aanwezig zijn op alle locaties die u wilt richten op uw sjabloon. De locatie afhankelijkheid werkt als de beschik baarheid van de resource provider API-versie die eerder is besproken in de sectie ' de versie van alle resource typen controleren '.
 
-Als u een lijst met beschikbare API-versies voor de VM-extensiebron wilt ophalen, gebruikt u de cmdlet [Get-AzureRmResourceProvider](/powershell/module/az.resources/get-azresourceprovider) met de **Microsoft.Compute-bronprovider** zoals weergegeven:
+Als u een lijst met de beschik bare API-versies voor de VM-extensie resource wilt ophalen, gebruikt u de cmdlet [Get-AzureRmResourceProvider](/powershell/module/az.resources/get-azresourceprovider) met de resource provider **micro soft. Compute** , zoals wordt weer gegeven:
 
 ```azurepowershell-interactive
 Get-AzureRmResourceProvider -ProviderNamespace "Microsoft.Compute" | Select-Object -ExpandProperty ResourceTypes | Select ResourceTypeName, Locations, ApiVersions | where {$_.ResourceTypeName -eq "virtualMachines/extensions"}
 ```
 
-U vm-extensies ook gebruiken in virtuele machineschaalsets. Dezelfde locatievoorwaarden zijn van toepassing. Als u uw sjabloon wilt ontwikkelen voor cloudconsistentie, controleert u of de API-versies beschikbaar zijn op alle locaties waarnaar u van plan bent te implementeren. Als u de API-versies van de VM-extensiebron voor schaalsets wilt ophalen, gebruikt u dezelfde cmdlet als voorheen, maar geeft u het resourcetype voor virtuele machineschaalsets op zoals weergegeven:
+U kunt ook VM-extensies gebruiken in virtuele-machine schaal sets. Dezelfde locatie voorwaarden zijn van toepassing. Als u uw sjabloon voor consistentie in de Cloud wilt ontwikkelen, moet u ervoor zorgen dat de API-versies beschikbaar zijn op alle locaties die u wilt implementeren. Als u de API-versies van de VM-extensie resource voor schaal sets wilt ophalen, gebruikt u dezelfde cmdlet als voorheen, maar geeft u het resource type voor de virtuele-machine schaal sets op zoals weer gegeven:
 
 ```azurepowershell-interactive
 Get-AzureRmResourceProvider -ProviderNamespace "Microsoft.Compute" | Select-Object -ExpandProperty ResourceTypes | Select ResourceTypeName, Locations, ApiVersions | where {$_.ResourceTypeName -eq "virtualMachineScaleSets/extensions"}
 ```
 
-Elke specifieke extensie is ook versie. Deze versie wordt `typeHandlerVersion` weergegeven in de eigenschap van de VM-extensie. Zorg ervoor dat de `typeHandlerVersion` versie die is opgegeven in het element van de VM-extensies van uw sjabloon beschikbaar is op de locaties waar u de sjabloon wilt implementeren. De volgende code geeft bijvoorbeeld versie 1.7 op:
+Er is ook een versie van elke specifieke extensie. Deze versie wordt weer gegeven in `typeHandlerVersion` de eigenschap van de VM-extensie. Zorg ervoor dat de versie die is opgegeven `typeHandlerVersion` in het element van de VM-extensies van uw sjabloon beschikbaar is op de locaties waar u de sjabloon wilt implementeren. Met de volgende code wordt bijvoorbeeld versie 1,7 opgegeven:
 
 ```json
 {
@@ -641,31 +641,31 @@ Elke specifieke extensie is ook versie. Deze versie wordt `typeHandlerVersion` w
         ...
 ```
 
-Als u een lijst met beschikbare versies voor een specifieke VM-extensie wilt ophalen, gebruikt u de cmdlet [Get-AzureRmVMExtensionImage.](/powershell/module/az.compute/get-azvmextensionimage) In het volgende voorbeeld worden de beschikbare versies voor de POWERShell DSC-vm-extensie (Gewenste statusconfiguratie) opgehaald van **myLocation:**
+Als u een lijst met de beschik bare versies voor een specifieke VM-extensie wilt ophalen, gebruikt u de cmdlet [Get-AzureRmVMExtensionImage](/powershell/module/az.compute/get-azvmextensionimage) . In het volgende voor beeld worden de beschik bare versies van de VM-extensie voor Power shell DSC (desired state Configuration) opgehaald van **myLocation**:
 
 ```azurepowershell-interactive
 Get-AzureRmVMExtensionImage -Location myLocation -PublisherName Microsoft.PowerShell -Type DSC | FT
 ```
 
-Als u een lijst met uitgevers wilt krijgen, gebruikt u de opdracht [Get-AzureRmVmImagePublisher.](/powershell/module/az.compute/get-azvmimagepublisher) Als u tekst wilt aanvragen, gebruikt u de aanbeveling [get-AzureRmVMExtensionImageType.](/powershell/module/az.compute/get-azvmextensionimagetype)
+Gebruik de opdracht [Get-AzureRmVmImagePublisher](/powershell/module/az.compute/get-azvmimagepublisher) om een lijst met uitgevers op te halen. Gebruik de [Get-AzureRmVMExtensionImageType](/powershell/module/az.compute/get-azvmextensionimagetype) Commend om het type aanvraag te verkrijgen.
 
 ## <a name="tips-for-testing-and-automation"></a>Tips voor testen en automatisering
 
-Het is een uitdaging om alle gerelateerde instellingen, mogelijkheden en beperkingen bij te houden tijdens het ontwerpen van een sjabloon. De gemeenschappelijke aanpak is het ontwikkelen en testen van sjablonen tegen één cloud voordat andere locaties worden getarget. Echter, hoe eerder tests worden uitgevoerd in het ontwerpproces, hoe minder probleemoplossing en code herschrijven van uw ontwikkelteam zal moeten doen. Implementaties die mislukken vanwege locatieafhankelijkheden kunnen tijdrovend zijn om problemen op te lossen. Daarom raden we u aan om zo vroeg mogelijk in de ontwerpcyclus geautomatiseerd te testen. Uiteindelijk hebt u minder ontwikkelingstijd en minder resources nodig en worden uw cloudconsistente artefacten nog waardevoller.
+Het is een uitdaging om alle gerelateerde instellingen, mogelijkheden en beperkingen bij te houden tijdens het ontwerpen van een sjabloon. De gemeen schappelijke aanpak is het ontwikkelen en testen van sjablonen op één Cloud voordat andere locaties zijn gericht. De eerdere tests die worden uitgevoerd in het ontwerp proces, zijn echter de minder probleem oplossing en code die uw ontwikkel team opnieuw moet schrijven. Implementaties die mislukken vanwege locatie afhankelijkheden, kunnen tijdrovend zijn om problemen op te lossen. Daarom raden we u aan om zo snel mogelijk geautomatiseerd testen in de ontwerp cyclus uit te voeren. U hebt uiteindelijk minder ontwikkel tijd en minder resources nodig en uw Cloud-consistente artefacten zullen nog waardevoler worden.
 
-De volgende afbeelding toont een typisch voorbeeld van een ontwikkelingsproces voor een team met behulp van een geïntegreerde ontwikkelomgeving (IDE). In verschillende stadia van de tijdlijn worden verschillende testtypen uitgevoerd. Hier werken twee ontwikkelaars aan dezelfde oplossing, maar dit scenario geldt ook voor een enkele ontwikkelaar of een groot team. Elke ontwikkelaar maakt meestal een lokale kopie van een centrale opslagplaats, zodat elk een van de lokale kopie te werken zonder dat de anderen die kunnen werken aan dezelfde bestanden.
+De volgende afbeelding toont een typisch voor beeld van een ontwikkelings proces voor een team met behulp van een Integrated Development Environment (IDE). In verschillende fasen van de tijd lijn worden verschillende test typen uitgevoerd. Hier werken twee ontwikkel aars aan dezelfde oplossing, maar dit scenario is ook van toepassing op één ontwikkelaar of een groot team. Elke ontwikkelaar maakt normaal gesp roken een lokale kopie van een centrale opslag plaats, waardoor elk item kan werken aan de lokale kopie zonder dat dit van invloed is op de andere bestanden die met dezelfde bestands namen werken.
 
 ![Werkstroom](./media/templates-cloud-consistency/workflow.png)
 
 Houd rekening met de volgende tips voor testen en automatisering:
 
-* Maak gebruik van testtools. Visual Studio Code en Visual Studio bevatten bijvoorbeeld IntelliSense en andere functies waarmee u uw sjablonen valideren.
-* Om de codekwaliteit tijdens de ontwikkeling op de lokale IDE te verbeteren, voert u statische codeanalyse uit met unittests en integratietests.
-* Voor een nog betere ervaring tijdens de eerste ontwikkeling, moeten unittests en integratietests alleen waarschuwen wanneer er een probleem wordt gevonden en doorgaan met de tests. Op die manier u de problemen identificeren om de volgorde van de wijzigingen aan te pakken en prioriteren, ook wel testgestuurde implementatie (TDD) genoemd.
-* Houd er rekening mee dat sommige tests kunnen worden uitgevoerd zonder dat ze zijn verbonden met Azure Resource Manager. Voor andere acties, zoals het testen van de implementatie van sjablonen, moet Resource Manager bepaalde acties uitvoeren die niet offline kunnen worden uitgevoerd.
-* Het testen van een implementatiesjabloon op de validatie-API is niet gelijk aan een daadwerkelijke implementatie. Zelfs als u een sjabloon implementeert uit een lokaal bestand, worden verwijzingen naar geneste sjablonen in de sjabloon rechtstreeks opgehaald door Resource Manager en worden artefacten waarnaar door VM-extensies wordt verwezen opgehaald door de VM-agent die in de geïmplementeerde VM wordt uitgevoerd.
+* Maak gebruik van hulpprogram ma's voor testen. Visual Studio code en Visual Studio bevatten bijvoorbeeld IntelliSense en andere functies die u kunnen helpen bij het valideren van uw sjablonen.
+* Als u de code kwaliteit tijdens de ontwikkeling van de lokale IDE wilt verbeteren, voert u statische code analyses uit met eenheids testen en integratie tests.
+* Voor een nog betere ervaring tijdens de eerste ontwikkeling moet u testen en integratie tests alleen waarschuwen wanneer een probleem wordt gevonden en door gaan met de tests. Op die manier kunt u de problemen identificeren die moeten worden opgelost en de volg orde van de wijzigingen bepalen, ook wel test-aangedreven implementatie (TDD) genoemd.
+* Houd er rekening mee dat sommige tests kunnen worden uitgevoerd zonder te zijn verbonden met Azure Resource Manager. Andere, zoals de implementatie van een sjabloon testen, vereisen dat Resource Manager bepaalde acties uitvoert die niet offline kunnen worden uitgevoerd.
+* Het testen van een implementatie sjabloon met de validatie-API is niet gelijk aan een werkelijke implementatie. Ook als u een sjabloon uit een lokaal bestand implementeert, worden verwijzingen naar geneste sjablonen in de sjabloon rechtstreeks opgehaald door Resource Manager en worden artefacten waarnaar wordt verwezen door VM-extensies opgehaald door de VM-agent die wordt uitgevoerd in de geïmplementeerde VM.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Overwegingen van Azure Resource Manager-sjabloon](/azure-stack/user/azure-stack-develop-templates)
+* [Overwegingen voor Azure Resource Manager sjablonen](/azure-stack/user/azure-stack-develop-templates)
 * [Aanbevolen procedures voor ARM-sjablonen](template-syntax.md)

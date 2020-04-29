@@ -1,7 +1,7 @@
 ---
-title: Voorbeeld van Azure CLI-script - IPv6-frontend configureren
+title: Voor beeld van Azure CLI-script-IPv6-front-end configureren
 titlesuffix: Azure Virtual Network
-description: IPv6-eindpunten inschakelen met Azure CLI in Azure Virtual Network
+description: IPv6-eind punten inschakelen met behulp van Azure CLI in azure Virtual Network
 services: virtual-network
 documentationcenter: na
 author: KumudD
@@ -13,36 +13,36 @@ ms.workload: infrastructure-services
 ms.date: 04/23/2019
 ms.author: kumud
 ms.openlocfilehash: 1ef8742bc4f8de2d08d9bb4fc98b3df6f9420737
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80235030"
 ---
-# <a name="configure-ipv6-endpoints-in-virtual-network-script-sample-preview"></a>IPv6-eindpunten configureren in voorbeeld van virtuele netwerkscript (voorbeeld)
+# <a name="configure-ipv6-endpoints-in-virtual-network-script-sample-preview"></a>IPv6-eind punten configureren in het voor beeld van een virtueel netwerk script (preview-versie)
 
-In dit artikel ziet u hoe u een IPv4 + IPv6-toepassing (Dual Stack + IPv6) implementeert in Azure met een dual stack virtueel netwerk met een dual stack-subnet, een load balancer met dubbele (IPv4 + IPv6) front-endconfiguraties, VM's met NIC's met een dubbele IP-configuratie, dubbele netwerk beveiliging groep regels, en dubbele openbare IP's.
+In dit artikel wordt beschreven hoe u een dual stack (IPv4 + IPv6)-toepassing implementeert in azure, met een virtueel netwerk van twee stacks met een dual stack-subnet, een load balancer met dubbele (IPv4 + IPv6) front-end configuraties, Vm's met Nic's met een dubbele IP-configuratie, dubbele netwerk beveiligings groeps regels en dubbele open bare Ip's.
 
 U kunt het script uitvoeren vanuit de Azure [Cloud Shell](https://shell.azure.com/bash), of vanuit een lokale installatie van Azure CLI. Als u de CLI lokaal gebruikt, hebt u versie 2.0.28 of hoger nodig om dit script uit te voeren. Voer `az --version` uit om te zien welke versie is geïnstalleerd. Als u uw CLI wilt installeren of upgraden, raadpleegt u [De Azure CLI installeren](/cli/azure/install-azure-cli). Als u de CLI lokaal uitvoert, moet u ook `az login` uitvoeren om verbinding te maken met Azure.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="prerequisites"></a>Vereisten
-Als u de virtuele netwerkfunctie IPv6 voor Azure wilt gebruiken, moet u uw abonnement slechts één keer als volgt configureren:
+Als u de IPv6-functie voor virtuele netwerken van Azure wilt gebruiken, moet u uw abonnement slechts eenmaal configureren als volgt:
 
 ```azurecli
 az feature register --name AllowIPv6VirtualNetwork --namespace Microsoft.Network
 az feature register --name AllowIPv6CAOnStandardLB --namespace Microsoft.Network
 ```
 
-Het duurt maximaal 30 minuten voordat de functieregistratie is voltooid. U uw registratiestatus controleren door de volgende opdracht Azure CLI uit te voeren:
+Het duurt Maxi maal 30 minuten voordat de functie registratie is voltooid. U kunt de registratie status controleren door de volgende Azure CLI-opdracht uit te voeren:
 
 ```azurecli
 az feature show --name AllowIPv6VirtualNetwork --namespace Microsoft.Network
 az feature show --name AllowIPv6CAOnStandardLB --namespace Microsoft.Network
 ```
 
-Voer de volgende opdracht uit nadat de registratie is voltooid:
+Nadat de registratie is voltooid, voert u de volgende opdracht uit:
 
 ```azurecli
 az provider register --namespace Microsoft.Network

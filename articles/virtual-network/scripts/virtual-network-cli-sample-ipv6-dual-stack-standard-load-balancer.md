@@ -1,7 +1,7 @@
 ---
-title: Voorbeeld van Azure CLI-script - IPv6 frontend configureren - StandaardloadBalancer
+title: Voor beeld van Azure CLI-script-IPv6-front-end configureren-Standard Load Balancer
 titlesuffix: Azure Virtual Network
-description: IPv6-eindpunten inschakelen met Azure CLI in Azure Virtual Network
+description: IPv6-eind punten inschakelen met behulp van Azure CLI in azure Virtual Network
 services: virtual-network
 documentationcenter: na
 author: KumudD
@@ -13,36 +13,36 @@ ms.workload: infrastructure-services
 ms.date: 07/15/2019
 ms.author: kumud
 ms.openlocfilehash: 5f5856a89a04b58b138ee23a5f289ceff0915acf
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80235041"
 ---
-# <a name="configure-ipv6-endpoints-in-virtual-network-script-sample-using-standard-load-balancerpreview"></a>IPv6-eindpunten configureren in voorbeeld van virtuele netwerkscript met standaardloadbalancer(voorbeeld)
+# <a name="configure-ipv6-endpoints-in-virtual-network-script-sample-using-standard-load-balancerpreview"></a>IPv6-eind punten configureren in het voorbeeld script van een virtueel netwerk met behulp van Standard Load Balancer (preview-versie)
 
-In dit artikel ziet u hoe u een Dual Stack (IPv4 + IPv6)-toepassing implementeert in Azure met een dual stack virtueel netwerk met een dual stack-subnet, een Standaard Load Balancer met dubbele (IPv4 + IPv6) front-endconfiguraties, VM's met NIC's met een dual IP configuratie, dubbele netwerkbeveiligingsgroepregels en dubbele openbare IP's.
+In dit artikel wordt beschreven hoe u een dual stack (IPv4 + IPv6)-toepassing implementeert in azure, met een virtueel netwerk van twee stacks met een dual stack-subnet, een Standard Load Balancer met dubbele (IPv4 + IPv6) front-end configuraties, Vm's met Nic's met een dubbele IP-configuratie, dubbele netwerk beveiligings groeps regels en dubbele open bare Ip's.
 
 U kunt het script uitvoeren vanuit de Azure [Cloud Shell](https://shell.azure.com/bash), of vanuit een lokale installatie van Azure CLI. Als u de CLI lokaal gebruikt, hebt u versie 2.0.28 of hoger nodig om dit script uit te voeren. Voer `az --version` uit om te zien welke versie is geïnstalleerd. Als u uw CLI wilt installeren of upgraden, raadpleegt u [De Azure CLI installeren](/cli/azure/install-azure-cli). Als u de CLI lokaal uitvoert, moet u ook `az login` uitvoeren om verbinding te maken met Azure.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="prerequisites"></a>Vereisten
-Als u de virtuele netwerkfunctie IPv6 voor Azure wilt gebruiken, moet u uw abonnement slechts één keer als volgt configureren:
+Als u de IPv6-functie voor virtuele netwerken van Azure wilt gebruiken, moet u uw abonnement slechts eenmaal configureren als volgt:
 
 ```azurecli
 az feature register --name AllowIPv6VirtualNetwork --namespace Microsoft.Network
 az feature register --name AllowIPv6CAOnStandardLB --namespace Microsoft.Network
 ```
 
-Het duurt maximaal 30 minuten voordat de functieregistratie is voltooid. U uw registratiestatus controleren door de volgende opdracht Azure CLI uit te voeren:
+Het duurt Maxi maal 30 minuten voordat de functie registratie is voltooid. U kunt de registratie status controleren door de volgende Azure CLI-opdracht uit te voeren:
 
 ```azurecli
 az feature show --name AllowIPv6VirtualNetwork --namespace Microsoft.Network
 az feature show --name AllowIPv6CAOnStandardLB --namespace Microsoft.Network
 ```
 
-Voer de volgende opdracht uit nadat de registratie is voltooid:
+Nadat de registratie is voltooid, voert u de volgende opdracht uit:
 
 ```azurecli
 az provider register --namespace Microsoft.Network
@@ -282,13 +282,13 @@ az vm create \
 --image MicrosoftWindowsServer:WindowsServer:2019-Datacenter:latest 
 ```
 
-## <a name="view-ipv6-dual-stack-virtual-network-in-azure-portal"></a>IPv6 dual stack virtueel netwerk weergeven in Azure portal
-U het virtuele IPv6-dual stack-netwerk in Azure-portal als volgt bekijken:
-1. Voer in de zoekbalk van het portaal *dsVnet*in.
-2. Wanneer **myVirtualNetwork** wordt weergegeven in de zoekresultaten, selecteert u dit. Hiermee wordt de **overzichtspagina** van het virtuele dual stack-netwerk genaamd *dsVnet*gelanceerd. De dual stack virtuele netwerk toont de twee NIC's met zowel IPv4 en IPv6 configuraties gelegen in de dual stack subnet genaamd *dsSubnet*. 
+## <a name="view-ipv6-dual-stack-virtual-network-in-azure-portal"></a>Virtueel IPv6-netwerk met dubbele stack in Azure Portal weer geven
+U kunt het virtuele IPv6-netwerk met dubbele stack als volgt weer geven in Azure Portal:
+1. Voer in de zoek balk van de portal *dsVnet*in.
+2. Wanneer **myVirtualNetwork** wordt weergegeven in de zoekresultaten, selecteert u dit. Hiermee opent u de **overzichts** pagina van het virtuele netwerk met dubbele stack met de naam *dsVnet*. Het virtuele netwerk met dubbele stack toont de twee Nic's met zowel IPv4-als IPv6-configuraties die zich bevinden in het dubbele stack-subnet met de naam *dsSubnet*. 
 
 > [!NOTE]
-> Het virtuele IPv6 voor Azure-netwerk is beschikbaar in de Azure-portal in alleen-lezen voor deze preview-release.
+> Het virtuele netwerk van IPv6 voor Azure is beschikbaar in het Azure Portal alleen-lezen voor deze preview-versie.
 
 ## <a name="clean-up-deployment"></a>Opschonen van implementatie
 

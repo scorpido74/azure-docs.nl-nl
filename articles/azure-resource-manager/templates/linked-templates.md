@@ -1,30 +1,30 @@
 ---
-title: Koppelingssjablonen voor implementatie
-description: Beschrijft hoe u gekoppelde sjablonen in een Azure Resource Manager-sjabloon gebruiken om een modulaire sjabloonoplossing te maken. Toont hoe u parameterswaarden doorgeeft, een parameterbestand opgeeft en dynamisch gemaakte URL's.
+title: Koppelings sjablonen voor implementatie
+description: Hierin wordt beschreven hoe u gekoppelde sjablonen in een Azure Resource Manager sjabloon gebruikt om een modulaire sjabloon oplossing te maken. Toont hoe parameter waarden worden door gegeven, geef een parameter bestand op en dynamisch gemaakte Url's.
 ms.topic: conceptual
 ms.date: 12/11/2019
 ms.openlocfilehash: 322797383ee865ceb66c44793387da827aeb8879
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80131916"
 ---
 # <a name="using-linked-and-nested-templates-when-deploying-azure-resources"></a>Gekoppelde en geneste sjablonen gebruiken bij het implementeren van Azure-resources
 
-Als u complexe oplossingen wilt implementeren, u uw sjabloon opsplitsen in veel gerelateerde sjablonen en deze vervolgens samen implementeren via een hoofdsjabloon. De bijbehorende sjablonen kunnen afzonderlijke bestanden of sjabloonsyntaxis zijn die zijn ingesloten in de hoofdsjabloon. In dit artikel wordt de term **gekoppelde sjabloon** gebruikt om te verwijzen naar een afzonderlijk sjabloonbestand waarnaar wordt verwezen via een koppeling van de hoofdsjabloon. Het gebruikt de term **geneste sjabloon** om te verwijzen naar ingesloten sjabloonsyntaxis in de hoofdsjabloon.
+Als u complexe oplossingen wilt implementeren, kunt u uw sjabloon opdelen in veel gerelateerde sjablonen en deze vervolgens samen implementeren via een hoofd sjabloon. De gerelateerde sjablonen kunnen afzonderlijke bestanden of sjabloon syntaxis zijn die is inge sloten in de hoofd sjabloon. In dit artikel wordt gebruikgemaakt van de term **gekoppelde sjabloon** om te verwijzen naar een afzonderlijk sjabloon bestand waarnaar wordt verwezen via een koppeling vanuit de hoofd sjabloon. De term **geneste sjabloon** wordt gebruikt om te verwijzen naar de Inge sloten sjabloon syntaxis binnen de hoofd sjabloon.
 
-Voor kleine tot middelgrote oplossingen is één sjabloon gemakkelijker te begrijpen en te onderhouden. U alle bronnen en waarden in één bestand bekijken. Voor geavanceerde scenario's u met gekoppelde sjablonen de oplossing opsplitsen in gerichte componenten. U deze sjablonen eenvoudig opnieuw gebruiken voor andere scenario's.
+Voor kleine tot middel grote oplossingen is één sjabloon eenvoudiger te begrijpen en te onderhouden. U kunt alle resources en waarden in één bestand weer geven. Voor geavanceerde scenario's kunt u met gekoppelde sjablonen de oplossing opsplitsen in doel onderdelen. U kunt deze sjablonen eenvoudig opnieuw gebruiken voor andere scenario's.
 
-Zie [Zelfstudie: gekoppelde Azure Resource Manager-sjablonen maken](template-tutorial-create-linked-templates.md)voor een zelfstudie.
+Zie [zelf studie: gekoppelde Azure Resource Manager sjablonen maken](template-tutorial-create-linked-templates.md)voor een zelf studie.
 
 > [!NOTE]
-> Voor gekoppelde of geneste sjablonen u alleen [incrementele](deployment-modes.md) implementatiemodus gebruiken.
+> Voor gekoppelde of geneste sjablonen kunt u alleen [incrementele](deployment-modes.md) implementatie modus gebruiken.
 >
 
 ## <a name="nested-template"></a>Geneste sjabloon
 
-Als u een sjabloon wilt nesten, voegt u een [implementatiebron](/azure/templates/microsoft.resources/deployments) toe aan uw hoofdsjabloon. Geef in de eigenschap **sjabloon** de syntaxis van de sjabloon op.
+Als u een sjabloon wilt nesten, moet u een implementatie van een [resource](/azure/templates/microsoft.resources/deployments) toevoegen aan uw hoofd sjabloon. Geef in de **sjabloon** eigenschap de syntaxis van de sjabloon op.
 
 ```json
 {
@@ -50,7 +50,7 @@ Als u een sjabloon wilt nesten, voegt u een [implementatiebron](/azure/templates
 }
 ```
 
-In het volgende voorbeeld wordt een opslagaccount geïmplementeerd via een geneste sjabloon.
+In het volgende voor beeld wordt een opslag account met een geneste sjabloon geïmplementeerd.
 
 ```json
 {
@@ -92,11 +92,11 @@ In het volgende voorbeeld wordt een opslagaccount geïmplementeerd via een genes
 }
 ```
 
-### <a name="expression-evaluation-scope-in-nested-templates"></a>Expressiebeoordelingsbereik in geneste sjablonen
+### <a name="expression-evaluation-scope-in-nested-templates"></a>Expressie-evaluatie bereik in geneste sjablonen
 
-Wanneer u een geneste sjabloon gebruikt, u opgeven of sjabloonexpressies worden geëvalueerd binnen het bereik van de bovenliggende sjabloon of de geneste sjabloon. Het bereik bepaalt hoe parameters, variabelen en functies zoals [resourceGroup](template-functions-resource.md#resourcegroup) en [abonnement](template-functions-resource.md#subscription) worden opgelost.
+Wanneer u een geneste sjabloon gebruikt, kunt u opgeven of sjabloon expressies worden geëvalueerd binnen het bereik van de bovenliggende sjabloon of de geneste sjabloon. Het bereik bepaalt hoe para meters, variabelen en functies, zoals [resourceGroup](template-functions-resource.md#resourcegroup) en [abonnementen](template-functions-resource.md#subscription) , worden opgelost.
 
-U stelt de `expressionEvaluationOptions` scope in via het pand. Standaard is `expressionEvaluationOptions` de eigenschap `outer`ingesteld op , wat betekent dat het de bovenliggende sjabloonbereik wordt gebruikt. Stel de `inner` waarde in om ervoor te zorgen dat expressies worden geëvalueerd binnen het bereik van de geneste sjabloon.
+U stelt het bereik in via `expressionEvaluationOptions` de eigenschap. De `expressionEvaluationOptions` eigenschap is standaard ingesteld op `outer`, wat inhoudt dat het bereik van de bovenliggende sjabloon wordt gebruikt. Stel de waarde in `inner` op om te zorgen dat expressies worden geëvalueerd binnen het bereik van de geneste sjabloon.
 
 ```json
 {
@@ -110,7 +110,7 @@ U stelt de `expressionEvaluationOptions` scope in via het pand. Standaard is `ex
   ...
 ```
 
-In de volgende sjabloon wordt uitgelegd hoe sjabloonexpressies worden opgelost op basis van het bereik. Het bevat een `exampleVar` variabele met de naam die is gedefinieerd in zowel de bovenliggende sjabloon als de geneste sjabloon. Hiermee wordt de waarde van de variabele geretourneerd.
+In de volgende sjabloon ziet u hoe sjabloon expressies worden omgezet volgens het bereik. Het bevat een variabele met `exampleVar` de naam die is gedefinieerd in zowel de bovenliggende sjabloon als de geneste sjabloon. Hiermee wordt de waarde van de variabele geretourneerd.
 
 ```json
 {
@@ -158,14 +158,14 @@ In de volgende sjabloon wordt uitgelegd hoe sjabloonexpressies worden opgelost o
 }
 ```
 
-De waarde `exampleVar` van veranderingen afhankelijk van `scope` de `expressionEvaluationOptions`waarde van de eigenschap in . In de volgende tabel worden de resultaten voor beide scopes weergegeven.
+De waarde van `exampleVar` wijzigingen, afhankelijk van de waarde van de `scope` eigenschap in `expressionEvaluationOptions`. In de volgende tabel ziet u de resultaten voor beide bereiken.
 
 | `expressionEvaluationOptions` `scope` | Uitvoer |
 | ----- | ------ |
-| Innerlijke | van geneste sjabloon |
-| buitenste (of standaard) | van bovenliggende sjabloon |
+| wend | van geneste sjabloon |
+| Outer (of standaard) | van bovenliggende sjabloon |
 
-In het volgende voorbeeld wordt een SQL-server geïmplementeerd en wordt een sleutelkluisgeheim opgehaald dat moet worden gebruikt voor het wachtwoord. Het bereik is `inner` ingesteld op omdat het dynamisch `adminPassword.reference.keyVault` de sleutelkluis-ID maakt (zie in de buitenste sjablonen) `parameters`en deze als parameter doorgeeft aan de geneste sjabloon.
+In het volgende voor beeld wordt een SQL Server geïmplementeerd en wordt een sleutel kluis geheim opgehaald dat moet worden gebruikt voor het wacht woord. Het bereik is ingesteld op `inner` omdat het de sleutel kluis-id dynamisch maakt ( `adminPassword.reference.keyVault` Zie in de buitenste sjablonen `parameters`) en geeft deze door als een para meter voor de geneste sjabloon.
 
 ```json
 {
@@ -277,11 +277,11 @@ In het volgende voorbeeld wordt een SQL-server geïmplementeerd en wordt een sle
 
 > [!NOTE]
 >
-> Wanneer bereik is `outer`ingesteld op , `reference` kunt u de functie niet gebruiken in het gedeelte uitvoer van een geneste sjabloon voor een resource die u hebt geïmplementeerd in de geneste sjabloon. Als u de waarden voor een geïmplementeerde resource `inner` wilt retourneren in een geneste sjabloon, gebruikt u bereik of converteert u uw geneste sjabloon naar een gekoppelde sjabloon.
+> Wanneer Scope is ingesteld op `outer`, kunt u de `reference` functie niet gebruiken in de sectie outputs van een geneste sjabloon voor een resource die u in de geneste sjabloon hebt geïmplementeerd. Als u de waarden voor een geïmplementeerde resource in een geneste sjabloon `inner` wilt retour neren, gebruikt u bereik of converteert u uw geneste sjabloon naar een gekoppelde sjabloon.
 
 ## <a name="linked-template"></a>Gekoppelde sjabloon
 
-Als u een sjabloon wilt koppelen, voegt u een [implementatiebron](/azure/templates/microsoft.resources/deployments) toe aan uw hoofdsjabloon. Geef in de eigenschap **templateLink** de URI op van de sjabloon die moet worden opgenomen. In het volgende voorbeeld wordt koppelingen gemaakt naar een sjabloon waarmee een nieuw opslagaccount wordt geïmplementeerd.
+Als u een sjabloon wilt koppelen, moet u een implementatie van een [resource](/azure/templates/microsoft.resources/deployments) toevoegen aan uw hoofd sjabloon. Geef in de eigenschap **templateLink** de URI op van de sjabloon die u wilt toevoegen. Het volgende voor beeld is een koppeling naar een sjabloon waarmee een nieuw opslag account wordt geïmplementeerd.
 
 ```json
 {
@@ -308,19 +308,19 @@ Als u een sjabloon wilt koppelen, voegt u een [implementatiebron](/azure/templat
 }
 ```
 
-Wanneer u naar een gekoppelde `uri` sjabloon verwijst, mag de waarde van geen lokaal bestand of een bestand zijn dat alleen beschikbaar is op uw lokale netwerk. U moet een URI-waarde opgeven die kan worden gedownload als **http** of **https.** 
+Bij het verwijzen naar een gekoppelde sjabloon, mag de `uri` waarde van niet een lokaal bestand zijn of een bestand dat alleen beschikbaar is op uw lokale netwerk. U moet een URI-waarde opgeven die kan worden gedownload als **http** of **https**. 
 
 > [!NOTE]
 >
-> U naar sjablonen verwijzen met behulp van parameters die uiteindelijk worden `_artifactsLocation` opgelost tot iets dat **http** of **https**gebruikt, bijvoorbeeld met behulp van de parameter zoals:`"uri": "[concat(parameters('_artifactsLocation'), '/shared/os-disk-parts-md.json', parameters('_artifactsLocationSasToken'))]",`
+> U kunt verwijzen naar sjablonen met behulp van para meters die uiteindelijk worden **https**omgezet in iets waarbij gebruik wordt gemaakt `_artifactsLocation` van **http** of HTTPS, bijvoorbeeld met behulp van de para meter als volgt:`"uri": "[concat(parameters('_artifactsLocation'), '/shared/os-disk-parts-md.json', parameters('_artifactsLocationSasToken'))]",`
 
 
 
-Resourcemanager moet toegang hebben tot de sjabloon. Een optie is om uw gekoppelde sjabloon in een opslagaccount te plaatsen en de URI voor dat item te gebruiken.
+Resource Manager moet toegang hebben tot de sjabloon. U kunt ook de gekoppelde sjabloon in een opslag account plaatsen en de URI voor dat item gebruiken.
 
-### <a name="parameters-for-linked-template"></a>Parameters voor gekoppelde sjabloon
+### <a name="parameters-for-linked-template"></a>Para meters voor gekoppelde sjabloon
 
-U de parameters voor uw gekoppelde sjabloon opgeven in een extern bestand of inline. Wanneer u een extern parameterbestand opgeeft, gebruikt u de eigenschap **parametersLink:**
+U kunt de para meters voor de gekoppelde sjabloon opgeven in een extern bestand of in inline. Wanneer u een extern parameter bestand opgeeft, gebruikt u de eigenschap **parametersLink** :
 
 ```json
 "resources": [
@@ -343,7 +343,7 @@ U de parameters voor uw gekoppelde sjabloon opgeven in een extern bestand of inl
 ]
 ```
 
-Als u parameterwaarden inline wilt doorgeven, gebruikt u de eigenschap **parameters.**
+Gebruik de eigenschap **para meters** om parameter waarden inline door te geven.
 
 ```json
 "resources": [
@@ -365,17 +365,17 @@ Als u parameterwaarden inline wilt doorgeven, gebruikt u de eigenschap **paramet
 ]
 ```
 
-U niet zowel inlineparameters als een koppeling naar een parameterbestand gebruiken. De implementatie mislukt met `parametersLink` een `parameters` fout wanneer beide en zijn opgegeven.
+U kunt niet zowel inline-para meters als een koppeling naar een parameter bestand gebruiken. De implementatie mislukt met een fout als beide `parametersLink` en `parameters` zijn opgegeven.
 
 ## `contentVersion`
 
-U hoeft de `contentVersion` accommodatie niet te `templateLink` `parametersLink` voorzien voor de woning. Als u geen `contentVersion`nieuwe versie van de sjabloon verstrekt, wordt de huidige versie van de sjabloon geïmplementeerd. Als u een waarde voor inhoudsversie opgeeft, moet deze overeenkomen met de versie in de gekoppelde sjabloon. anders mislukt de implementatie met een fout.
+U hoeft de `contentVersion` eigenschap voor de `templateLink` eigenschap of `parametersLink` niet op te geven. Als u geen opgeeft `contentVersion`, wordt de huidige versie van de sjabloon geïmplementeerd. Als u een waarde voor de inhouds versie opgeeft, moet deze overeenkomen met de versie in de gekoppelde sjabloon. anders mislukt de implementatie met een fout.
 
 ## <a name="using-variables-to-link-templates"></a>Variabelen gebruiken om sjablonen te koppelen
 
-De vorige voorbeelden toonden hard-gecodeerde URL-waarden voor de sjabloonkoppelingen. Deze aanpak werkt mogelijk voor een eenvoudige sjabloon, maar werkt niet goed voor een grote set modulaire sjablonen. In plaats daarvan u een statische variabele maken die een basis-URL voor de hoofdsjabloon opslaat en vervolgens dynamisch URL's maakt voor de gekoppelde sjablonen van die basis-URL. Het voordeel van deze aanpak is dat u de sjabloon gemakkelijk verplaatsen of vorken omdat u alleen de statische variabele in de hoofdsjabloon moet wijzigen. De hoofdsjabloon geeft de juiste URI's door de ontbonden sjabloon.
+In de vorige voor beelden zijn in code vastgelegde URL-waarden voor de sjabloon koppelingen weer gegeven. Deze benadering werkt mogelijk voor een eenvoudige sjabloon, maar werkt niet goed voor een groot aantal modulaire sjablonen. In plaats daarvan kunt u een statische variabele maken om een basis-URL voor de hoofd sjabloon op te slaan en vervolgens dynamisch Url's te maken voor de gekoppelde sjablonen van die basis-URL. Het voor deel van deze benadering is dat u de sjabloon eenvoudig kunt verplaatsen of splitsen omdat u alleen de statische variabele in de hoofd sjabloon hoeft te wijzigen. In de hoofd sjabloon worden de juiste Uri's door gegeven in de sjabloon die is samengesteld.
 
-In het volgende voorbeeld ziet u hoe u een basis-URL gebruiken om twee URL's te maken voor gekoppelde sjablonen **(sharedTemplateUrl** en **vmTemplate).**
+In het volgende voor beeld ziet u hoe u een basis-URL gebruikt om twee Url's te maken voor gekoppelde sjablonen (**sharedTemplateUrl** en **vmTemplate**).
 
 ```json
 "variables": {
@@ -385,7 +385,7 @@ In het volgende voorbeeld ziet u hoe u een basis-URL gebruiken om twee URL's te 
 }
 ```
 
-U [ook deployment()](template-functions-deployment.md#deployment) gebruiken om de basis-URL voor de huidige sjabloon op te halen en deze te gebruiken om de URL voor andere sjablonen op dezelfde locatie te krijgen. Deze benadering is handig als de locatie van uw sjabloon verandert of als u harde coderings-URL's in het sjabloonbestand wilt vermijden. De eigenschap templateLink wordt alleen geretourneerd wanneer u een koppeling maakt naar een externe sjabloon met een URL. Als u een lokale sjabloon gebruikt, is die eigenschap niet beschikbaar.
+U kunt ook [Implementatie ()](template-functions-deployment.md#deployment) gebruiken om de basis-URL voor de huidige sjabloon op te halen en gebruiken om de URL voor andere sjablonen op dezelfde locatie op te halen. Deze aanpak is nuttig als de locatie van uw sjabloon verandert of als u wilt voor komen dat de Url's van harde code in het sjabloon bestand worden gebruikt. De eigenschap templateLink wordt alleen geretourneerd wanneer u een koppeling maakt naar een externe sjabloon met een URL. Als u een lokale sjabloon gebruikt, is deze eigenschap niet beschikbaar.
 
 ```json
 "variables": {
@@ -393,7 +393,7 @@ U [ook deployment()](template-functions-deployment.md#deployment) gebruiken om d
 }
 ```
 
-Uiteindelijk zou u gebruik maken `uri` van de `templateLink` variabele in het pand van een woning.
+Uiteindelijk gebruikt u de variabele in de `uri` eigenschap van een `templateLink` eigenschap.
 
 ```json
 "templateLink": {
@@ -404,9 +404,9 @@ Uiteindelijk zou u gebruik maken `uri` van de `templateLink` variabele in het pa
 
 ## <a name="using-copy"></a>Kopiëren gebruiken
 
-Als u meerdere exemplaren van een resource met een geneste sjabloon wilt maken, voegt u het kopieerelement toe op het niveau van de bron **Microsoft.Resources/Deployments.** Of als het bereik binnen is, u de kopie toevoegen in de geneste sjabloon.
+Als u meerdere exemplaren van een resource met een geneste sjabloon wilt maken, voegt u het element Copy toe op het niveau van de resource **micro soft. resources/Deployments** . Of, als de scope binnenste is, kunt u de kopie binnen de geneste sjabloon toevoegen.
 
-In de volgende voorbeeldsjabloon ziet u hoe u kopiëren gebruikt met een geneste sjabloon.
+In de volgende voorbeeld sjabloon ziet u hoe u een kopie gebruikt met een geneste sjabloon.
 
 ```json
 "resources": [
@@ -453,11 +453,11 @@ In de volgende voorbeeldsjabloon ziet u hoe u kopiëren gebruikt met een geneste
 
 ## <a name="get-values-from-linked-template"></a>Waarden ophalen uit de gekoppelde sjabloon
 
-Als u een uitvoerwaarde wilt ophalen uit een gekoppelde sjabloon, haalt u de eigenschapswaarde op met syntaxis als: `"[reference('deploymentName').outputs.propertyName.value]"`.
+Als u een uitvoer waarde van een gekoppelde sjabloon wilt ophalen, haalt u de eigenschaps waarde `"[reference('deploymentName').outputs.propertyName.value]"`op met de syntaxis zoals:.
 
-Wanneer u een uitvoereigenschap van een gekoppelde sjabloon krijgt, mag de eigenschapsnaam geen streepje bevatten.
+Bij het ophalen van een uitvoer eigenschap van een gekoppelde sjabloon, mag de naam van de eigenschap geen streepje bevatten.
 
-In de volgende voorbeelden wordt uitgelegd hoe u naar een gekoppelde sjabloon verwijzen en een uitvoerwaarde ophalen. De gekoppelde sjabloon retourneert een eenvoudig bericht.  Ten eerste de gekoppelde sjabloon:
+De volgende voor beelden laten zien hoe u kunt verwijzen naar een gekoppelde sjabloon en een uitvoer waarde kunt ophalen. De gekoppelde sjabloon retourneert een eenvoudig bericht.  Eerst de gekoppelde sjabloon:
 
 ```json
 {
@@ -475,7 +475,7 @@ In de volgende voorbeelden wordt uitgelegd hoe u naar een gekoppelde sjabloon ve
 }
 ```
 
-De hoofdsjabloon implementeert de gekoppelde sjabloon en krijgt de geretourneerde waarde. Deze verwijst naar de implementatiebron op naam en gebruikt de naam van de eigenschap die wordt geretourneerd door de gekoppelde sjabloon.
+Met de hoofd sjabloon wordt de gekoppelde sjabloon geïmplementeerd en wordt de geretourneerde waarde opgehaald. Er wordt verwezen naar de implementatie bron op naam en de naam van de eigenschap die wordt geretourneerd door de gekoppelde sjabloon.
 
 ```json
 {
@@ -506,9 +506,9 @@ De hoofdsjabloon implementeert de gekoppelde sjabloon en krijgt de geretourneerd
 }
 ```
 
-Net als bij andere resourcetypen u afhankelijkheden instellen tussen de gekoppelde sjabloon en andere bronnen. Wanneer andere resources een uitvoerwaarde van de gekoppelde sjabloon vereisen, controleert u of de gekoppelde sjabloon vóór deze gegevens is geïmplementeerd. Of, wanneer de gekoppelde sjabloon afhankelijk is van andere bronnen, moet u ervoor zorgen dat andere bronnen worden geïmplementeerd vóór de gekoppelde sjabloon.
+Net als bij andere resource typen kunt u afhankelijkheden instellen tussen de gekoppelde sjabloon en andere resources. Als voor andere resources een uitvoer waarde van de gekoppelde sjabloon is vereist, moet u ervoor zorgen dat de gekoppelde sjabloon wordt geïmplementeerd. Of, wanneer de gekoppelde sjabloon afhankelijk is van andere resources, moet u ervoor zorgen dat andere resources worden geïmplementeerd vóór de gekoppelde sjabloon.
 
-In het volgende voorbeeld wordt een sjabloon weergegeven die een openbaar IP-adres implementeert en de bron-id van de Azure-bron voor dat openbare IP retourneert:
+In het volgende voor beeld ziet u een sjabloon waarmee een openbaar IP-adres wordt geïmplementeerd en de resource-ID van de Azure-resource wordt geretourneerd voor die open bare IP:
 
 ```json
 {
@@ -543,7 +543,7 @@ In het volgende voorbeeld wordt een sjabloon weergegeven die een openbaar IP-adr
 }
 ```
 
-Als u het openbare IP-adres van de voorgaande sjabloon wilt gebruiken bij het implementeren `Microsoft.Resources/deployments` van een load balancer, koppelt u een koppeling aan de sjabloon en verklaart u een afhankelijkheid van de bron. Het openbare IP-adres op de load balancer is ingesteld op de uitvoerwaarde van de gekoppelde sjabloon.
+Als u het open bare IP-adres uit de vorige sjabloon wilt gebruiken bij het implementeren van een load balancer, koppelt u deze `Microsoft.Resources/deployments` aan de sjabloon en declareert u een afhankelijkheid van de resource. Het open bare IP-adres op de load balancer wordt ingesteld op de uitvoer waarde van de gekoppelde sjabloon.
 
 ```json
 {
@@ -610,13 +610,13 @@ Als u het openbare IP-adres van de voorgaande sjabloon wilt gebruiken bij het im
 }
 ```
 
-## <a name="deployment-history"></a>Implementatiegeschiedenis
+## <a name="deployment-history"></a>Implementatie geschiedenis
 
-Resource manager verwerkt elke sjabloon als een afzonderlijke implementatie in de implementatiegeschiedenis. Een hoofdsjabloon met drie gekoppelde of geneste sjablonen wordt in de implementatiegeschiedenis weergegeven als:
+Resource Manager verwerkt elke sjabloon als een afzonderlijke implementatie in de implementatie geschiedenis. Een hoofd sjabloon met drie gekoppelde of geneste sjablonen wordt weer gegeven in de implementatie geschiedenis als:
 
-![Implementatiegeschiedenis](./media/linked-templates/deployment-history.png)
+![Implementatie geschiedenis](./media/linked-templates/deployment-history.png)
 
-U deze afzonderlijke vermeldingen in de geschiedenis gebruiken om uitvoerwaarden op te halen na de implementatie. Met de volgende sjabloon wordt een openbaar IP-adres gemaakt en wordt het IP-adres uitgevoerd:
+U kunt deze afzonderlijke vermeldingen in de geschiedenis gebruiken om uitvoer waarden na de implementatie op te halen. Met de volgende sjabloon maakt u een openbaar IP-adres en voert u het IP-adres uit:
 
 ```json
 {
@@ -654,7 +654,7 @@ U deze afzonderlijke vermeldingen in de geschiedenis gebruiken om uitvoerwaarden
 }
 ```
 
-De volgende sjabloon wordt koppelingen naar de voorgaande sjabloon. Het creëert drie openbare IP-adressen.
+De volgende sjabloon is een koppeling naar de vorige sjabloon. Er worden drie open bare IP-adressen gemaakt.
 
 ```json
 {
@@ -687,7 +687,7 @@ De volgende sjabloon wordt koppelingen naar de voorgaande sjabloon. Het creëert
 }
 ```
 
-Na de implementatie u de uitvoerwaarden ophalen met het volgende PowerShell-script:
+Na de implementatie kunt u de uitvoer waarden ophalen met het volgende Power shell-script:
 
 ```azurepowershell-interactive
 $loopCount = 3
@@ -699,7 +699,7 @@ for ($i = 0; $i -lt $loopCount; $i++)
 }
 ```
 
-Of Azure CLI-script in een Bash-shell:
+Of Azure CLI-script in een bash-shell:
 
 ```azurecli-interactive
 #!/bin/bash
@@ -715,13 +715,13 @@ done
 
 ## <a name="securing-an-external-template"></a>Een externe sjabloon beveiligen
 
-Hoewel de gekoppelde sjabloon extern beschikbaar moet zijn, hoeft deze niet algemeen beschikbaar te zijn voor het publiek. U uw sjabloon toevoegen aan een privéopslagaccount dat alleen toegankelijk is voor de eigenaar van het opslagaccount. Vervolgens maakt u een SAS-token (Shared Access Signature) om toegang tijdens de implementatie in te schakelen. U voegt dat SAS-token toe aan de URI voor de gekoppelde sjabloon. Hoewel het token wordt doorgegeven als een beveiligde tekenreeks, wordt de URI van de gekoppelde sjabloon, inclusief het SAS-token, aangemeld bij de implementatiebewerkingen. Als u de blootstelling wilt beperken, stelt u een vervaldatum in voor het token.
+Hoewel de gekoppelde sjabloon extern beschikbaar moet zijn, hoeft deze niet algemeen beschikbaar te zijn voor het publiek. U kunt uw sjabloon toevoegen aan een privé-opslag account dat alleen toegankelijk is voor de eigenaar van het opslag account. Vervolgens maakt u een SAS-token (Shared Access Signature) om toegang tijdens de implementatie in te scha kelen. U voegt die SAS-token toe aan de URI voor de gekoppelde sjabloon. Hoewel het token wordt door gegeven als een beveiligde teken reeks, wordt de URI van de gekoppelde sjabloon, met inbegrip van de SAS-token, geregistreerd in de implementatie bewerkingen. Stel een verloop voor het token in om de bloot stelling te beperken.
 
-Het parameterbestand kan ook worden beperkt tot toegang via een SAS-token.
+Het parameter bestand kan ook worden beperkt tot toegang via een SAS-token.
 
-Momenteel u geen koppeling maken naar een sjabloon in een opslagaccount dat zich achter een [Azure Storage-firewall bevindt.](../../storage/common/storage-network-security.md)
+Op dit moment kunt u geen koppeling maken met een sjabloon in een opslag account dat zich achter een [Azure Storage firewall](../../storage/common/storage-network-security.md)bevindt.
 
-In het volgende voorbeeld ziet u hoe u een SAS-token doorgeeft bij het koppelen aan een sjabloon:
+In het volgende voor beeld ziet u hoe u een SAS-token kunt door geven wanneer u een koppeling maakt naar een sjabloon:
 
 ```json
 {
@@ -749,7 +749,7 @@ In het volgende voorbeeld ziet u hoe u een SAS-token doorgeeft bij het koppelen 
 }
 ```
 
-In PowerShell krijgt u een token voor de container en implementeert u de sjablonen met de volgende opdrachten. De parameter **containerSasToken** wordt gedefinieerd in de sjabloon. Het is geen parameter in de opdracht **Nieuw-AzResourceGroupDeployment.**
+In Power shell krijgt u een token voor de container en implementeert u de sjablonen met de volgende opdrachten. U ziet dat de para meter **containerSasToken** is gedefinieerd in de sjabloon. Het is geen para meter in de opdracht **New-AzResourceGroupDeployment** .
 
 ```azurepowershell-interactive
 Set-AzCurrentStorageAccount -ResourceGroupName ManageGroup -Name storagecontosotemplates
@@ -758,7 +758,7 @@ $url = (Get-AzStorageBlob -Container templates -Blob parent.json).ICloudBlob.uri
 New-AzResourceGroupDeployment -ResourceGroupName ExampleGroup -TemplateUri ($url + $token) -containerSasToken $token
 ```
 
-Voor Azure CLI in een Bash-shell krijgt u een token voor de container en implementeert u de sjablonen met de volgende code:
+Voor Azure CLI in een bash-shell krijgt u een token voor de container en implementeert u de sjablonen met de volgende code:
 
 ```azurecli-interactive
 #!/bin/bash
@@ -783,19 +783,19 @@ parameter='{"containerSasToken":{"value":"?'$token'"}}'
 az deployment group create --resource-group ExampleGroup --template-uri $url?$token --parameters $parameter
 ```
 
-## <a name="example-templates"></a>Voorbeeldsjablonen
+## <a name="example-templates"></a>Voorbeeld sjablonen
 
-In de volgende voorbeelden worden veelvoorkomende toepassingen van gekoppelde sjablonen weergegeven.
+In de volgende voor beelden ziet u veelvoorkomende toepassingen van gekoppelde sjablonen.
 
-|Hoofdsjabloon  |Gekoppelde sjabloon |Beschrijving  |
+|Hoofd sjabloon  |Gekoppelde sjabloon |Beschrijving  |
 |---------|---------| ---------|
-|[Hallo mensen](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/helloworldparent.json) |[gekoppelde sjabloon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/helloworld.json) | Retourneert tekenreeks van gekoppelde sjabloon. |
-|[Load Balancer met openbaar IP-adres](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/public-ip-parentloadbalancer.json) |[gekoppelde sjabloon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/public-ip.json) |Retourneert het openbare IP-adres van gekoppelde sjabloon en stelt die waarde in de load balancer in. |
-|[Meerdere IP-adressen](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/static-public-ip-parent.json) | [gekoppelde sjabloon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/static-public-ip.json) |Hiermee maakt u verschillende openbare IP-adressen in gekoppelde sjabloon.  |
+|[Hallo wereld](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/helloworldparent.json) |[gekoppelde sjabloon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/helloworld.json) | Retourneert een teken reeks uit een gekoppelde sjabloon. |
+|[Load Balancer met openbaar IP-adres](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/public-ip-parentloadbalancer.json) |[gekoppelde sjabloon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/public-ip.json) |Hiermee wordt het open bare IP-adres uit de gekoppelde sjabloon geretourneerd en wordt die waarde ingesteld in load balancer. |
+|[Meerdere IP-adressen](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/static-public-ip-parent.json) | [gekoppelde sjabloon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/static-public-ip.json) |Maakt verschillende open bare IP-adressen in gekoppelde sjabloon.  |
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Zie [Zelfstudie: gekoppelde Azure Resource Manager-sjablonen maken](template-tutorial-create-linked-templates.md)om een zelfstudie te doorlopen.
-* Zie [Afhankelijkheden definiëren in Azure Resource Manager-sjablonen](define-resource-dependency.md)voor meer informatie over het definiëren van de implementatievolgorde voor uw resources.
-* Zie Meerdere exemplaren van resources maken [in Azure Resource Manager](copy-resources.md)voor meer informatie over het definiëren van één resource, maar er veel exemplaren van maken.
-* Zie Resources implementeren [met Resource Manager-sjablonen en Azure PowerShell-](deploy-powershell.md) of [Deploy-resources met Resource Manager-sjablonen voor](deploy-cli.md)stappen bij het instellen van een sjabloon in een opslagaccount en het genereren van een SAS-token.
+* Zie [zelf studie: gekoppelde Azure Resource Manager sjablonen maken](template-tutorial-create-linked-templates.md)om een zelf studie te door lopen.
+* Zie [afhankelijkheden definiëren in azure Resource Manager sjablonen](define-resource-dependency.md)voor meer informatie over het definiëren van de implementatie volgorde voor uw resources.
+* Zie [meerdere exemplaren van resources maken in azure Resource Manager](copy-resources.md)voor meer informatie over het definiëren van één resource, maar het maken van een groot aantal exemplaren.
+* Zie [resources implementeren met Resource Manager-sjablonen en Azure PowerShell](deploy-powershell.md) of [resources implementeren met Resource Manager-sjablonen en Azure cli](deploy-cli.md)voor stappen voor het instellen van een sjabloon in een opslag account en het genereren van een SAS-token.

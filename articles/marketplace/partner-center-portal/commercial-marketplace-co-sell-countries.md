@@ -1,6 +1,6 @@
 ---
-title: Code voor medeverkoop van producten en regio's | Azure Marketplace
-description: Gebruik deze land-/regiocodes met twee letters wanneer u contactgegevens opgeeft op de co-verkooppagina van uw aanbieding.
+title: Land-en regio codes voor co-verkoop | Azure Marketplace
+description: Gebruik deze land/regio codes van twee letters wanneer u contact gegevens opgeeft op de pagina voor co-sell van uw aanbieding.
 author: dsindona
 ms.author: dsindona
 ms.service: marketplace
@@ -8,37 +8,37 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 08/27/2019
 ms.openlocfilehash: 097fe2c394cb48a13fbc9cb253ef4df9c9959713
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80277053"
 ---
-# <a name="co-sell-country-and-region-codes"></a>Code voor co-sellen van land- en regio's
+# <a name="co-sell-country-and-region-codes"></a>Land-en regio codes voor co-verkoop
 
-Gebruik deze land-/regiocodes met twee letters wanneer [u contactgegevens opgeeft op de medeverkooppagina van uw aanbieding.](commercial-marketplace-co-sell.md)
+Gebruik deze land/regio codes van twee letters wanneer u [contact gegevens opgeeft op de pagina voor co-sell van uw aanbieding](commercial-marketplace-co-sell.md).
 
-Als de contactpersoon alle landen/regio's bestrijkt, gebruikt u de drielettercode "OOO".
+Als de contact persoon alle landen/regio's omvat, gebruikt u de drie letter code ' OOO '.
 
-Als een contactpersoon meer dan één land/regio bestrijkt, voert u elk van de twee lettercodes in die zijn gescheiden door een komma (voer bijvoorbeeld 'VS, CA, FR' zonder aanhalingstekens in).
+Als een contact persoon meer dan één land/regio omvat, voert u elk van de twee letter codes gescheiden door een komma in (Voer bijvoorbeeld ' US, CA, FR ' in zonder aanhalings tekens).
 
-## <a name="countryregion-table"></a>Tabel Land/regio
+## <a name="countryregion-table"></a>Tabel land/regio
 
-|   Naam land/regio               |   ISO-2   |
+|   Naam van land/regio               |   ISO-2   |
 |-------------------------------------|-----------|
-| Wereldwijde contacten                     | Ooo       |
+| Wereld wijde contact personen                     | OOO       |
 | Afghanistan                         | AF        |
-| Åland eilanden                       | Ax        |
+| Åland-eilanden                       | AX        |
 | Albanië                             | AL        |
 | Algerije                             | DZ        |
 | Amerikaans-Samoa                      | AS        |
 | Andorra                             | AD        |
 | Angola                              | AO        |
-| Antarctica                          | Aq        |
+| Antarctica                          | AQ        |
 | Antigua en Barbuda                 | AG        |
 | Argentinië                           | AR        |
 | Armenië                             | AM        |
-| Aruba                               | Aw        |
+| Aruba                               | AW        |
 | Australië                           | AU        |
 | Oostenrijk                             | AT        |
 | Azerbeidzjan                          | AZ        |
@@ -50,13 +50,13 @@ Als een contactpersoon meer dan één land/regio bestrijkt, voert u elk van de t
 | België                             | BE        |
 | Belize                              | BZ        |
 | Benin                               | BJ        |
-| Bermuda                             | Bm        |
+| Bermuda                             | BM        |
 | Bhutan                              | BT        |
 | Bolivia                             | BO        |
-| Bonaire                             | Bq        |
+| Bonaire                             | BV        |
 | Bosnië en Herzegovina              | BA        |
 | Botswana                            | BW        |
-| Bouveteiland                       | Bv        |
+| Bouveteiland                       | BW        |
 | Brazilië                              | BR        |
 | Brits Territorium in de Indische Oceaan      | I/O        |
 | Britse Maagdeneilanden              | VG        |
@@ -71,59 +71,59 @@ Als een contactpersoon meer dan één land/regio bestrijkt, voert u elk van de t
 | Kaaimaneilanden                      | KY        |
 | Centraal-Afrikaanse Republiek            | CF        |
 | Tsjaad                                | TD        |
-| Tsjechië                             | CZ        |
+| Czechia                             | CZ        |
 | Chili                               | CL        |
 | China                               | CN        |
 | Christmaseiland                    | CX        |
 | Cocoseilanden             | CC        |
 | Colombia                            | CO        |
-| Comoren                             | Km        |
-| Congo                               | Cg        |
+| Comoren                             | KM        |
+| Congo                               | CG        |
 | Congo (DRC)                         | CD        |
-| Cookeilanden                        | Ck        |
+| Cookeilanden                        | CK        |
 | Costa Rica                          | CR        |
 | Cote d'Ivoire                       | CI        |
 | Kroatië                             | HR        |
 | Cuba                                | CU        |
-| Curaçao                             | Cw        |
+| Curaçao                             | WAARNAAR        |
 | Cyprus                              | CY        |
 | Denemarken                             | DK        |
-| Djibouti                            | Dj        |
+| Djibouti                            | DJ        |
 | Dominica                            | DM        |
 | Dominicaanse Republiek                  | DO        |
 | Ecuador                             | EC        |
 | Egypte                               | EG        |
 | El Salvador                         | SV        |
-| Equatoriaal-Guinea                   | Gq        |
+| Equatoriaal-Guinea                   | GQ        |
 | Eritrea                             | ER        |
 | Estland                             | EE        |
 | eSwatini                            | SZ        |
 | Ethiopië                            | ET        |
-| Faeröer                       | Fo        |
+| Faeröer                       | FO        |
 | Fiji                                | FJ        |
 | Finland                             | FI        |
 | Frankrijk                              | FR        |
 | Frans-Guyana                       | GF        |
-| Frans-Polynesië                    | Pf        |
-| Franse Gebieden in de zuidelijke Indische Oceaan         | Tf        |
+| Frans-Polynesië                    | PF        |
+| Franse Gebieden in de zuidelijke Indische Oceaan         | TF        |
 | Gabon                               | Algemene beschikbaarheid        |
 | Gambia                              | GM        |
 | Georgië                             | GE        |
 | Duitsland                             | DE        |
 | Ghana                               | GH        |
-| Gibraltar                           | Gi        |
+| Gibraltar                           | GI        |
 | Griekenland                              | GR        |
-| Groenland                           | Gl        |
-| Grenada                             | Gd        |
+| Groenland                           | BOEKHOUD        |
+| Grenada                             | GD        |
 | Guadeloupe                          | GP        |
 | Guam                                | GU        |
 | Guatemala                           | GT        |
-| Guernsey                            | Gg        |
+| Guernsey                            | GG        |
 | Guinee                              | GN        |
-| Guinee-Bissau                       | Gw        |
+| Guinee-Bissau                       | GW        |
 | Guyana                              | GY        |
 | Haiti                               | HT        |
-| Gehoord eiland en McDonald Eilanden   | Hm        |
+| Heard Island en McDonald eilanden   | HM        |
 | Honduras                            | HN        |
 | Hongkong SAR                       | HK        |
 | Hongarije                             | HU        |
@@ -165,7 +165,7 @@ Als een contactpersoon meer dan één land/regio bestrijkt, voert u elk van de t
 | Marshalleilanden                    | MH        |
 | Martinique                          | MQ        |
 | Mauretanië                          | MR        |
-| Mauritius                           | Mu        |
+| Mauritius                           | MU        |
 | Mayotte                             | YT        |
 | Mexico                              | MX        |
 | Micronesia                          | FM        |
@@ -187,7 +187,7 @@ Als een contactpersoon meer dan één land/regio bestrijkt, voert u elk van de t
 | Niger                               | NE        |
 | Nigeria                             | NG        |
 | Niue                                | NU        |
-| Norfolk                      | Nf        |
+| Norfolk                      | NF        |
 | Noord-Korea                         | KP        |
 | Noordelijke Marianen            | MP        |
 | Noord-Macedonië                     | MK        |
@@ -197,11 +197,11 @@ Als een contactpersoon meer dan één land/regio bestrijkt, voert u elk van de t
 | Palau                               | PW        |
 | Palestijnse Autoriteit               | PS        |
 | Panama                              | PA        |
-| Papoea-Nieuw-Guinea                    | Pg        |
+| Papoea-Nieuw-Guinea                    | 3000CN        |
 | Paraguay                            | PY        |
 | Peru                                | PE        |
 | Filipijnen                         | PH        |
-| Pitcairn eilanden                    | Pn        |
+| Pitcairneilanden                    | PN        |
 | Polen                              | PL        |
 | Portugal                            | PT        |
 | Puerto Rico                         | PR        |
@@ -210,45 +210,45 @@ Als een contactpersoon meer dan één land/regio bestrijkt, voert u elk van de t
 | Roemenië                             | RO        |
 | Rusland                              | RU        |
 | Rwanda                              | RW        |
-| Sint-Barthélemie                    | BL        |
+| Saint--Barthélemy                    | BL        |
 | Saint Kitts en Nevis               | KN        |
-| Saint Lucia                         | Lc        |
-| Saint-Martin                        | Mf        |
-| Saint Pierre en Miquelon           | PM        |
+| Saint Lucia                         | KREDIET        |
+| Saint-Martin                        | V        |
+| Saint-Pierre en Miquelon           | PM        |
 | Saint Vincent en de Grenadines    | VC        |
 | Samoa                               | WS        |
-| San Marino                          | Sm        |
-| São Tomé en Príncipe               | ST        |
+| San Marino                          | 'S        |
+| Sao Tomé en principe               | ST        |
 | Saoedi-Arabië                        | SA        |
 | Senegal                             | SN        |
 | Servië                              | RS        |
 | Seychellen                          | SC        |
 | Sierra Leone                        | SL        |
 | Singapore                           | SG        |
-| Sint Maarten                        | Sx        |
+| Sint Maarten                        | SX        |
 | Slowakije                            | SK        |
 | Slovenië                            | SI        |
-| Salomonseilanden                     | Sb        |
+| Salomonseilanden                     | SB        |
 | Somalië                             | SO        |
 | Zuid-Afrika                        | ZA        |
-| Zuid-Georgië en Zuid-Sandwich eilanden | Gs    |
+| Zuid-Georgië en de zuidelijke Sandwich eilanden | GS    |
 | Zuid-Soedan                         | SS        |
 | Spanje                               | ES        |
 | Sri Lanka                           | LK        |
-| St Helena, Hemelvaart, Tristan da Cunha | SH     |
+| Sint-Helena, Ascension en Tristan da Cunha | SH     |
 | Soedan                               | SD        |
 | Suriname                            | SR        |
-| Svalbard                            | Sj        |
+| Jan                            | SJ        |
 | Zweden                              | SE        |
 | Zwitserland                         | CH        |
 | Syrië                               | SY        |
 | Taiwan                              | TW        |
-| Tadzjikistan                          | Tj        |
+| Tadzjikistan                          | TJ        |
 | Tanzania                            | TZ        |
 | Thailand                            | TH        |
 | Timor-Leste                         | TL        |
 | Togo                                | TG        |
-| Tokelau                             | Tk        |
+| Tokelau                             | TK        |
 | Tonga                               | Aan        |
 | Trinidad en Tobago                 | TT        |
 | Tunesië                             | TN        |
@@ -262,19 +262,19 @@ Als een contactpersoon meer dan één land/regio bestrijkt, voert u elk van de t
 | Verenigd Koninkrijk                      | GB        |
 | Verenigde Staten                       | VS        |
 | Uruguay                             | UY        |
-| Amerikaanse afgelegen eilanden               | UM        |
-| Amerikaanse Maagdeneilanden                 | VI        |
+| Amerikaanse ondergeschikte afgelegen eilanden               | UM        |
+| Amerikaanse Maagden eilanden                 | VI        |
 | Oezbekistan                          | UZ        |
-| Vanuatu                             | Vu        |
-| Vaticaanstad                        | VA        |
+| Vanuatu                             | VU        |
+| Vaticaan stad                        | VA        |
 | Venezuela                           | VE        |
 | Vietnam                             | VN        |
-| Wallis en Futuna                   | Wf        |
-| Jemen                               | Gij        |
+| Wallis en Futuna                   | WF        |
+| Jemen                               | TEZAM        |
 | Zambia                              | ZM        |
 | Zimbabwe                            | ZW        |
 |   |   |   |
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Meer informatie over de [optie co-verkoop in partnercentrum](./commercial-marketplace-co-sell.md).
+- Meer informatie over de [optie voor gezamenlijk verkopen in Partner Center](./commercial-marketplace-co-sell.md).

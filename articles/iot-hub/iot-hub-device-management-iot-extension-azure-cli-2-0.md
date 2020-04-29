@@ -1,9 +1,9 @@
 ---
-title: Azure IoT-apparaatbeheer met IoT-extensie voor Azure CLI | Microsoft Documenten
-description: Gebruik de IoT-extensie voor Azure CLI-tool voor Azure IoT Hub-apparaatbeheer, met de Direct-methoden en de gewenste opties voor eigenschappenbeheer van de Tweeling.
+title: Azure IoT-Apparaatbeheer met IoT-extensie voor Azure CLI | Microsoft Docs
+description: Gebruik de IoT-extensie voor Azure CLI-hulp programma voor Azure IoT Hub Apparaatbeheer, met de methoden direct en de gewenste eigenschappen beheer opties.
 author: chrissie926
 manager: ''
-keywords: azure iot-apparaatbeheer, azure iot-hub-apparaatbeheer, iot-apparaatbeheer voor apparaatbeheer van apparaten
+keywords: Apparaatbeheer van Azure IOT, Azure IOT hub-Apparaatbeheer, beheer van IOT-apparaten in IOT hub
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
@@ -11,57 +11,57 @@ ms.tgt_pltfrm: arduino
 ms.date: 01/16/2018
 ms.author: menchi
 ms.openlocfilehash: 88c3d1f4213b161d5e322349a7f0e1bc1dd952e7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80239646"
 ---
-# <a name="use-the-iot-extension-for-azure-cli-for-azure-iot-hub-device-management"></a>De IoT-extensie voor Azure CLI gebruiken voor Azure IoT Hub-apparaatbeheer
+# <a name="use-the-iot-extension-for-azure-cli-for-azure-iot-hub-device-management"></a>De IoT-extensie voor Azure CLI gebruiken voor Azure IoT Hub Apparaatbeheer
 
-![End-to-end diagram](media/iot-hub-get-started-e2e-diagram/2.png)
+![End-to-end-diagram](media/iot-hub-get-started-e2e-diagram/2.png)
 
 [!INCLUDE [iot-hub-get-started-note](../../includes/iot-hub-get-started-note.md)]
 
-[De IoT-extensie voor Azure CLI](https://github.com/Azure/azure-iot-cli-extension) is een open-source IoT-extensie die bijdraagt aan de mogelijkheden van de [Azure CLI.](https://docs.microsoft.com/cli/azure/overview?view=azure-cli-latest) De Azure CLI bevat opdrachten voor interactie met Azure Resource Manager en beheereindpunten. U Azure CLI bijvoorbeeld gebruiken om een Azure VM of een IoT-hub te maken. Met een CLI-extensie kan een Azure-service de Azure CLI uitbreiden, zodat u toegang hebt tot aanvullende servicespecifieke mogelijkheden. De IoT-extensie geeft IoT-ontwikkelaars command-line toegang tot alle IoT Hub-, IoT Edge- en IoT Hub Device Provisioning Service-mogelijkheden.
+[De IOT-extensie voor Azure cli](https://github.com/Azure/azure-iot-cli-extension) is een open-source IOT-extensie die wordt toegevoegd aan de mogelijkheden van de [Azure cli](https://docs.microsoft.com/cli/azure/overview?view=azure-cli-latest). De Azure CLI bevat opdrachten voor interactie met Azure Resource Manager-en beheer eindpunten. U kunt bijvoorbeeld Azure CLI gebruiken om een Azure VM of een IoT-hub te maken. Een CLI-uitbrei ding stelt een Azure-service in staat om de Azure CLI te verbeteren, zodat u toegang hebt tot aanvullende servicespecifieke mogelijkheden. De IoT-extensie biedt IoT-ontwikkel aars opdracht regel toegang tot alle IoT Hub, IoT Edge en IoT Hub Device Provisioning Service mogelijkheden.
 
 [!INCLUDE [iot-hub-cli-version-info](../../includes/iot-hub-cli-version-info.md)]
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-whole.md)]
 
-| Beheeroptie          | Taak  |
+| Beheer optie          | Taak  |
 |----------------------------|-----------|
-| Directe methoden             | Laat een apparaat handelen, zoals het starten of stoppen van het verzenden van berichten of het opnieuw opstarten van het apparaat.                                        |
-| Dubbele gewenste eigenschappen    | Plaats een apparaat in bepaalde toestanden, zoals het instellen van een LED op groen of het instellen van het telemetrie-verzendinterval op 30 minuten.         |
-| Dubbele gerapporteerde eigenschappen   | De gerapporteerde status van een apparaat opteweeren. Het apparaat meldt bijvoorbeeld dat de LED nu knippert.                                    |
-| Dubbele tags                  | Bewaar apparaatspecifieke metagegevens in de cloud. Bijvoorbeeld de inzetlocatie van een automaat.                         |
-| Dubbele query's van het apparaat        | Vraag alle apparaattweelingen op om die tweelingen met willekeurige omstandigheden op te halen, zoals het identificeren van de apparaten die beschikbaar zijn voor gebruik. |
+| Directe methoden             | Zorg ervoor dat een apparaat functioneert, zoals het starten of stoppen van het verzenden van berichten of het opnieuw opstarten van het apparaat.                                        |
+| Dubbele gewenste eigenschappen    | Plaats een apparaat in bepaalde staten, zoals het instellen van een LED op groen of het instellen van het verzend interval van de telemetrie naar 30 minuten.         |
+| Dubbele gerapporteerde eigenschappen   | De gerapporteerde status van een apparaat ophalen. Zo rapporteert het apparaat dat de LED nu knippert.                                    |
+| Dubbele Tags                  | Sla apparaatspecifieke meta gegevens op in de Cloud. Bijvoorbeeld de locatie van de implementatie van een computer.                         |
+| Dubbele query's van het apparaat        | Voer een query uit op alle apparaatdubbels om deze apparaatdubbels met wille keurige voor waarden op te halen, zoals het identificeren van de apparaten die beschikbaar zijn voor gebruik. |
 
-Zie [Device-to-cloud communicatiebegeleiding](iot-hub-devguide-d2c-guidance.md) en [communicatiebegeleiding](iot-hub-devguide-c2d-guidance.md)tussen apparaten naar de cloud voor meer gedetailleerde uitleg over de verschillen en richtlijnen voor het gebruik van deze opties.
+Zie voor meer gedetailleerde informatie over de verschillen en richt lijnen over het gebruik van deze opties [apparaat-naar-Cloud communicatie richtlijnen](iot-hub-devguide-d2c-guidance.md) en [Cloud-naar-apparaat-communicatie richtlijnen](iot-hub-devguide-c2d-guidance.md).
 
-Apparaatdubbels zijn JSON-documenten waarin statusinformatie van een apparaat (metagegevens, configuraties en voorwaarden) zijn opgeslagen. IoT Hub blijft bestaan voor elk apparaat dat er verbinding mee maakt. Zie Aan de slag [met apparaattweelingen](iot-hub-node-node-twin-getstarted.md)voor meer informatie over apparaattweelingen.
+Apparaatdubbels zijn JSON-documenten waarin statusinformatie van een apparaat (metagegevens, configuraties en voorwaarden) zijn opgeslagen. IoT Hub persistent voor elk apparaat dat verbinding maakt met het apparaat. Zie [aan de slag met apparaat apparaatdubbels](iot-hub-node-node-twin-getstarted.md)voor meer informatie over apparaatdubbels.
 
 ## <a name="what-you-learn"></a>Wat u leert
 
-U leert de IoT-extensie voor Azure CLI te gebruiken met verschillende beheeropties op uw ontwikkelingsmachine.
+U leert hoe u de IoT-extensie voor Azure CLI gebruikt met verschillende beheer opties op uw ontwikkel computer.
 
-## <a name="what-you-do"></a>Wat je doet
+## <a name="what-you-do"></a>Wat u doet
 
-Voer Azure CLI en de IoT-extensie voor Azure CLI uit met verschillende beheeropties.
+Voer Azure CLI en de IoT-extensie voor Azure CLI uit met verschillende beheer opties.
 
 ## <a name="what-you-need"></a>Wat u nodig hebt
 
-* Voltooi de [Raspberry Pi online simulator](iot-hub-raspberry-pi-web-simulator-get-started.md) tutorial of een van de apparaat tutorials; bijvoorbeeld [Raspberry Pi met node.js](iot-hub-raspberry-pi-kit-node-get-started.md). Deze artikelen voldoen aan de volgende eisen:
+* Voltooi de zelf studie [Raspberry Pi online Simulator](iot-hub-raspberry-pi-web-simulator-get-started.md) of een van de zelf studies van het apparaat. bijvoorbeeld [Raspberry Pi met node. js](iot-hub-raspberry-pi-kit-node-get-started.md). Deze items gelden voor de volgende vereisten:
 
   - Een actief Azure-abonnement.
-  - Een Azure IoT-hub onder uw abonnement.
-  - Een clienttoepassing die berichten verzendt naar uw Azure IoT-hub.
+  - Een Azure IoT hub onder uw abonnement.
+  - Een client toepassing die berichten verzendt naar uw Azure IoT hub.
 
-* Controleer tijdens deze zelfstudie of uw apparaat wordt uitgevoerd met de clienttoepassing.
+* Zorg ervoor dat uw apparaat wordt uitgevoerd met de client toepassing tijdens deze zelf studie.
 
-* [Python 2.7x of Python 3.x](https://www.python.org/downloads/)
+* [Python 2.7 x of python 3. x](https://www.python.org/downloads/)
 
-* De Azure CLI. Zie De Azure CLI [installeren](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)als u deze wilt installeren. Uw Azure CLI-versie moet minimaal 2.0.70 of hoger zijn. Gebruik `az –version` om de versie te valideren.
+* De Azure CLI. Als u de app wilt installeren, raadpleegt u [de Azure cli installeren](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest). Uw Azure CLI-versie moet mini maal 2.0.70 of hoger zijn. Gebruik `az –version` om de versie te valideren.
 
 [!INCLUDE [iot-hub-cli-version-info](../../includes/iot-hub-cli-version-info.md)]
 
@@ -84,9 +84,9 @@ az iot hub invoke-device-method --device-id <your device id> \
   --method-payload <the method payload>
 ```
 
-## <a name="device-twin-desired-properties"></a>Apparaat twin gewenste eigenschappen
+## <a name="device-twin-desired-properties"></a>Dubbele gewenste eigenschappen van apparaat
 
-Stel een gewenst eigenschapsinterval = 3000 in door de volgende opdracht uit te voeren:
+Stel een gewenste eigenschaps interval = 3000 in door de volgende opdracht uit te voeren:
 
 ```azurecli
 az iot hub device-twin update -n <your hub name> \
@@ -95,17 +95,17 @@ az iot hub device-twin update -n <your hub name> \
 
 Deze eigenschap kan worden gelezen vanaf uw apparaat.
 
-## <a name="device-twin-reported-properties"></a>Gemelde eigenschappen van apparaattweeling
+## <a name="device-twin-reported-properties"></a>Dubbele gerapporteerde eigenschappen van het apparaat
 
-Download de gerapporteerde eigenschappen van het apparaat door de volgende opdracht uit te voeren:
+De gerapporteerde eigenschappen van het apparaat ophalen door de volgende opdracht uit te voeren:
 
 ```azurecli
 az iot hub device-twin show -n <your hub name> -d <your device id>
 ```
 
-Een van de twee gerapporteerde eigenschappen is $metadata.$lastUpdated, die de laatste keer dat de apparaat-app de gerapporteerde eigenschapset heeft bijgewerkt, weergeeft.
+Een van de dubbele gerapporteerde eigenschappen is $metadata. $lastUpdated, waarin de laatst ingestelde eigenschaps van de apparaat-app wordt weer gegeven.
 
-## <a name="device-twin-tags"></a>Dubbele tags van het apparaat
+## <a name="device-twin-tags"></a>Dubbele Tags voor apparaten
 
 Geef de tags en eigenschappen van het apparaat weer door de volgende opdracht uit te voeren:
 
@@ -113,7 +113,7 @@ Geef de tags en eigenschappen van het apparaat weer door de volgende opdracht ui
 az iot hub device-twin show --hub-name <your hub name> --device-id <your device id>
 ```
 
-Voeg een veldrol = temperatuur&vochtigheid toe aan het apparaat door de volgende opdracht uit te voeren:
+Voeg een veld Role = Tempe ratuur&vochtigheid toe aan het apparaat door de volgende opdracht uit te voeren:
 
 ```azurecli
 az iot hub device-twin update \
@@ -124,14 +124,14 @@ az iot hub device-twin update \
 
 ## <a name="device-twin-queries"></a>Dubbele query's van het apparaat
 
-Queryapparaten met een tag van rol = 'temperatuur&vochtigheid' door de volgende opdracht uit te voeren:
+Query's uitvoeren op apparaten met een tag van Role = ' Tempe ratuur&vochtigheid ' door de volgende opdracht uit te voeren:
 
 ```azurecli
 az iot hub query --hub-name <your hub name> \
   --query-command "SELECT * FROM devices WHERE tags.role = 'temperature&humidity'"
 ```
 
-Bevraag alle apparaten behalve apparaten met een tag van rol = 'temperatuur&vochtigheid' door de volgende opdracht uit te voeren:
+Query's uitvoeren op alle apparaten behalve die met een tag van Role = ' Tempe ratuur&vochtigheid ' door de volgende opdracht uit te voeren:
 
 ```azurecli
 az iot hub query --hub-name <your hub name> \
@@ -140,6 +140,6 @@ az iot hub query --hub-name <your hub name> \
 
 ## <a name="next-steps"></a>Volgende stappen
 
-U hebt geleerd hoe u device-to-cloud-berichten controleren en cloud-to-device-berichten verzenden tussen uw IoT-apparaat en Azure IoT Hub.
+U hebt geleerd hoe u apparaat-naar-Cloud-berichten kunt bewaken en Cloud-naar-apparaat-berichten kunt verzenden tussen uw IoT-apparaat en Azure IoT Hub.
 
 [!INCLUDE [iot-hub-get-started-next-steps](../../includes/iot-hub-get-started-next-steps.md)]

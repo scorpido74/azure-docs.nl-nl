@@ -1,6 +1,6 @@
 ---
-title: Ondersteuning voor cloudpartnerportal | Azure Marketplace
-description: Krijg ondersteuning in de Cloud Partner Portal.
+title: Ondersteuning voor Cloud Partner-portal | Azure Marketplace
+description: Ontvang ondersteuning in de Cloud Partner-portal.
 author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
@@ -8,53 +8,53 @@ ms.topic: conceptual
 ms.date: 09/17/2018
 ms.author: dsindona
 ms.openlocfilehash: d27482fbec91700f24e5d0f25d4796ab24f1a9e5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80276169"
 ---
-# <a name="get-support-for-cloud-partner-portal"></a>Ondersteuning krijgen voor Cloud Partner Portal
+# <a name="get-support-for-cloud-partner-portal"></a>Ondersteuning voor Cloud Partner-portal krijgen
 
-Microsoft biedt ondersteuning voor een breed scala aan producten en services.
-Ervoor zorgen dat uw zoekopdracht het juiste ondersteuningsteam vindt, is belangrijk om een passend en tijdig antwoord te garanderen. Houd rekening met de volgende scenario's, waarmee u uw query moet doorsturen naar het juiste team:
+Micro soft biedt ondersteuning voor een groot aantal producten en services.
+Als u ervoor zorgt dat uw query het juiste ondersteunings team vindt, is het belang rijk om te zorgen voor een passend en tijdig antwoord. Houd rekening met de volgende scenario's, waarmee u uw query naar het juiste team kunt routeren:
 
--   Als u een uitgever bent en een vraag hebt van een klant, vraagt u uw klant om ondersteuning aan te vragen via de ondersteuningskoppelingen op [Azure Portal](https://portal.azure.com/)
+-   Als u een uitgever bent en u een vraag hebt van een klant, vraagt u uw klant om ondersteuning te vragen met behulp van de ondersteunings koppelingen in [Azure Portal](https://portal.azure.com/)
 
--   Als u een uitgever bent en een vraag hebt met betrekking tot uw app of service, bekijkt u de volgende stappen voor het openen van een ondersteuningsticket.
+-   Als u een uitgever bent en een vraag hebt met betrekking tot uw app of service, raadpleegt u de volgende stappen voor het openen van een ondersteunings ticket.
 
-## <a name="to-open-a-support-ticket"></a>Een ondersteuningsticket openen
+## <a name="to-open-a-support-ticket"></a>Een ondersteunings ticket openen
 
-1. Ga naar [Cloud Partner Portal](https://cloudpartner.azure.com/) en meld je aan met je werk- of schoolaccount.
+1. Ga naar [Cloud Partner-Portal](https://cloudpartner.azure.com/) en meld u aan met uw werk-of school account.
 
-2. Selecteer in het bovenste menu aan de rechterkant van de pagina het pictogram **Help** en selecteer **Vervolgens Ondersteuning**.
+2. Selecteer in het bovenste menu aan de rechter kant van de pagina **Help** -pictogram en selecteer vervolgens **ondersteuning**.
 
-![ondersteuning1](./media/cloud-partner-portal-support-for-cloud-partner-portal/support1.png)
-
-
-1. Identificeer **bij Een incident maken**het type **probleem** en de **categorie**.
+![support1](./media/cloud-partner-portal-support-for-cloud-partner-portal/support1.png)
 
 
-![ondersteuning2](./media/cloud-partner-portal-support-for-cloud-partner-portal/support2.png)
+1. Bij het **maken van een incident**identificeert u het **probleem type** en de **categorie**.
 
 
-1. Selecteer **Aanvraag starten**.
-
-1. Geef contactgegevens op en beschrijf het probleem. Beschrijf het probleem zo volledig als je. Geef bestanden op (bijvoorbeeld schermopnamen, foutbeschrijvingen of netwerksporen) die nuttig kunnen zijn bij het oplossen van uw probleem.
-
-![ondersteuning3](./media/cloud-partner-portal-support-for-cloud-partner-portal/support3.png)
-
-1. Selecteer **Verzenden** om het ticket te maken.
-
-### <a name="support-followup"></a>Follow-up van ondersteuning
-
-We bevestigen de ontvangst van uw ticket binnen 24 uur en wijzen uw probleem een prioriteit en ernst toe. Ons toegewijde team van ondersteuningstechnici zal u helpen met de oplossing volgens onze responstijden van serviceniveauovereenkomsten. 
-
-De volgende schermopname toont de incidentgegevens die u ontvangt als bevestiging van Microsoft-ondersteuning.
-
-![ondersteuning4](./media/cloud-partner-portal-support-for-cloud-partner-portal/support4.png)
+![support2](./media/cloud-partner-portal-support-for-cloud-partner-portal/support2.png)
 
 
--   Als u met ons over uw probleem wilt praten, beantwoordt u de e-mail die u hebt ontvangen voor de ondersteuningstijd en kunnen we tijd plannen om met u te praten.
+1. Selecteer **aanvraag starten**.
 
--   U de voortgang van uw probleem op elk gewenst moment bekijken door de online koppeling **Incident weergeven** te selecteren die in de vorige schermopname wordt weergegeven.
+1. Geef contact gegevens op en beschrijf het probleem. Beschrijf het probleem zo volledig mogelijk. Geef alle bestanden (bijvoorbeeld scherm opnamen, fout beschrijvingen of netwerk traceringen) op die handig kunnen zijn bij het oplossen van uw probleem.
+
+![support3](./media/cloud-partner-portal-support-for-cloud-partner-portal/support3.png)
+
+1. Selecteer **verzenden** om het ticket te maken.
+
+### <a name="support-followup"></a>Follow-out ondersteuning
+
+We bevestigen de ontvangst van uw ticket binnen 24 uur en wijzen uw probleem toe aan een prioriteit en ernst. Ons specifieke team van ondersteunings technici helpt bij de oplossing op basis van onze Service Level Agreement reactie tijden. 
+
+Op de volgende scherm afbeelding ziet u de incident informatie die u ontvangt als bevestiging van micro soft-ondersteuning.
+
+![support4](./media/cloud-partner-portal-support-for-cloud-partner-portal/support4.png)
+
+
+-   Als u contact met ons op wilt nemen over uw probleem, beantwoordt u de e-mail die u hebt ontvangen voor de ondersteunings periode en kunnen we de tijd plannen om te communiceren.
+
+-   U kunt de voortgang van uw probleem op elk gewenst moment weer geven door de koppeling **incident online weer geven** te selecteren, zoals weer gegeven in de vorige scherm opname.

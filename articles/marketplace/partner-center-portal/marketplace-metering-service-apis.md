@@ -1,6 +1,6 @@
 ---
-title: Api's voor marktplaatsmeetservice | Azure Marketplace
-description: Gebruiksgebeurtenis voor SaaS-aanbiedingen in de Azure Marketplace.
+title: Api's voor Marketplace-meet service | Azure Marketplace
+description: Gebruiks gebeurtenis voor SaaS-aanbiedingen in azure Marketplace.
 author: dsindona
 ms.author: dsindona
 ms.service: marketplace
@@ -8,35 +8,35 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 07/11/2019
 ms.openlocfilehash: 315f36e5aed9dee0a89e1f9f504b18a6bed806e0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80275744"
 ---
 # <a name="marketplace-metering-service-apis"></a>Service-API's voor Marketplace-meting
 
-Met de API voor gebruiksgebeurtenissen u gebruiksgebeurtenissen uitzenden voor een specifieke gekochte entiteit. De aanvraag voor gebruiksgebeurtenis verwijst naar de dimensie metingservices die door de uitgever is gedefinieerd bij het publiceren van de aanbieding.
+Met de gebruiks gebeurtenis-API kunt u gebruiks gebeurtenissen voor een specifieke aangeschafte entiteit verzenden. De gebruiks gebeurtenis aanvraag verwijst naar de meet dimensie services die door de uitgever is gedefinieerd bij het publiceren van de aanbieding.
 
-## <a name="usage-event"></a>Gebruiksgebeurtenis
+## <a name="usage-event"></a>Gebruiks gebeurtenis
 
-**POST**:`https://marketplaceapi.microsoft.com/api/usageEvent?api-version=<ApiVersion>`
+**Post**:`https://marketplaceapi.microsoft.com/api/usageEvent?api-version=<ApiVersion>`
 
-*Queryparameters:*
+*Query parameters:*
 
 |            |          |
 | ---------- | ---------------------- |
-| `ApiVersion` | De versie van de bewerking die voor dit verzoek moet worden gebruikt. Nieuwste API-versie is 2018-08-31. |
+| `ApiVersion` | De versie van de bewerking die moet worden gebruikt voor deze aanvraag. De nieuwste API-versie is 2018-08-31. |
 
-*Kopteksten aanvragen:*
+*Aanvraag headers:*
 
-| Inhoudstype       | `application/json`    |
+| Inhouds type       | `application/json`    |
 | ------------------ | ---------------------------- |
-| `x-ms-requestid`     | Unieke tekenreekswaarde voor het bijhouden van de aanvraag van de client, bij voorkeur een GUID. Als deze waarde niet wordt opgegeven, wordt er een gegenereerd en wordt deze weergegeven in de antwoordkoppen. |
-| `x-ms-correlationid` | Unieke tekenreekswaarde voor bewerking op de client. Deze parameter correleert alle gebeurtenissen van clientbewerking met gebeurtenissen aan de serverzijde. Als deze waarde niet wordt opgegeven, wordt er een gegenereerd en wordt deze weergegeven in de antwoordkoppen. |
-| `authorization`   | [Download JSON webtoken (JWT) toondertoken.](https://docs.microsoft.com/azure/marketplace/partner-center-portal/pc-saas-registration#get-a-token-based-on-the-azure-ad-app) Opmerking: Bij het indienen van `Bearer` het HTTP-verzoek u het voorvoegsel van het token dat is verkregen via de koppeling waarnaar wordt verwezen, worden uitgevoerd. |
+| `x-ms-requestid`     | Een unieke teken reeks waarde voor het bijhouden van de aanvraag van de client, bij voor keur een GUID. Als deze waarde niet wordt gegeven, wordt er een gegenereerd en weer gegeven in de antwoord headers. |
+| `x-ms-correlationid` | Unieke teken reeks waarde voor de bewerking op de client. Deze para meter verbindt alle gebeurtenissen van de client bewerking met gebeurtenissen aan de server zijde. Als deze waarde niet is opgenomen, wordt er een gegenereerd en geleverd in de antwoord headers. |
+| `authorization`   | [Het JWT-Bearer-token (JSON Web token) ophalen.](https://docs.microsoft.com/azure/marketplace/partner-center-portal/pc-saas-registration#get-a-token-based-on-the-azure-ad-app) Opmerking: bij het maken van de HTTP- `Bearer` aanvraag, voor voegsel voor het token dat is verkregen van de koppeling waarnaar wordt verwezen. |
 
-*Verzoek:*
+*Schot*
 
 ```json
 {
@@ -67,7 +67,7 @@ OK
 ```
 
 Code: 400 <br>
-Slecht verzoek, ontbrekende of ongeldige gegevens verstrekt of verlopen
+Ongeldige aanvraag, ontbrekende of ongeldige gegevens verschaft of verlopen
 
 ```json
 {
@@ -85,7 +85,7 @@ Slecht verzoek, ontbrekende of ongeldige gegevens verstrekt of verlopen
 ```
 
 Code: 403<br>
-Slecht verzoek, ontbrekende of ongeldige gegevens verstrekt of verlopen
+Ongeldige aanvraag, ontbrekende of ongeldige gegevens verschaft of verlopen
 
 ```json
 {
@@ -95,7 +95,7 @@ Slecht verzoek, ontbrekende of ongeldige gegevens verstrekt of verlopen
 ```
 
 Code: 409<br>
-Conflict, wanneer we het gebruik oproep voor het gebruik resource ID ontvangen, en effectief gebruik, die al bestaat. Het antwoord `additionalInfo` bevat een veld met informatie over het geaccepteerde bericht.
+Er is een conflict opgetreden bij het ontvangen van de gebruiks oproep voor de resource-ID van het gebruik en het daad werkelijke gebruik dat al bestaat. Het antwoord bevat een `additionalInfo` veld met informatie over het geaccepteerde bericht.
 
 ```json
 {
@@ -113,30 +113,30 @@ Conflict, wanneer we het gebruik oproep voor het gebruik resource ID ontvangen, 
 }
 ```
 
-## <a name="batch-usage-event"></a>Gebeurtenis Batchgebruik
+## <a name="batch-usage-event"></a>Batch Usage-gebeurtenis
 
-Met de API voor batchgebruikgebeurtenissen u gebruiksgebeurtenissen voor meer dan één gekochte entiteit tegelijk uitzenden. De gebeurtenisaanvraag batchgebruik verwijst naar de dimensie metingservices die door de uitgever is gedefinieerd bij het publiceren van de aanbieding.
+Met de gebeurtenis-API voor batch gebruik kunt u gebruiks gebeurtenissen voor meer dan één aangeschafte entiteit in één keer verzenden. De gebeurtenis aanvraag voor batch gebruik verwijst naar de meet dimensie services die door de uitgever is gedefinieerd bij het publiceren van de aanbieding.
 
 >[!Note]
->U meerdere SaaS-aanbiedingen registreren op de commerciële marktplaats van Microsoft. Elke geregistreerde SaaS-aanbieding heeft een unieke Azure AD-toepassing die is geregistreerd voor verificatie- en autorisatiedoeleinden. De gebeurtenissen die in batch worden uitgestoten, moeten behoren tot aanbiedingen met dezelfde Azure AD-toepassing op het moment van registratie van de aanbieding.
+>U kunt meerdere SaaS-aanbiedingen registreren in de commerciële Marketplace van micro soft. Elke geregistreerde SaaS-aanbieding heeft een unieke Azure AD-toepassing die is geregistreerd voor verificatie-en autorisatie doeleinden. De gebeurtenissen die in batch worden gegenereerd, moeten deel uitmaken van aanbiedingen met dezelfde Azure AD-toepassing op het moment van de registratie van de aanbieding.
 
-**POST:**`https://marketplaceapi.microsoft.com/api/batchUsageEvent?api-version=<ApiVersion>`
+**Post:**`https://marketplaceapi.microsoft.com/api/batchUsageEvent?api-version=<ApiVersion>`
 
-*Queryparameters:*
+*Query parameters:*
 
 |            |     |
 | ---------- | -------------------- |
-| `ApiVersion` | De versie van de bewerking die voor dit verzoek moet worden gebruikt. Nieuwste API-versie is 2018-08-31. |
+| `ApiVersion` | De versie van de bewerking die moet worden gebruikt voor deze aanvraag. De nieuwste API-versie is 2018-08-31. |
 
-*Kopteksten aanvragen:*
+*Aanvraag headers:*
 
-| Inhoudstype       | `application/json`       |
+| Inhouds type       | `application/json`       |
 | ------------------ | ------ |
-| `x-ms-requestid`     | Unieke tekenreekswaarde voor het bijhouden van de aanvraag van de client, bij voorkeur een GUID. Als deze waarde niet wordt opgegeven, wordt er een gegenereerd en wordt deze weergegeven in de antwoordkoppen. |
-| `x-ms-correlationid` | Unieke tekenreekswaarde voor bewerking op de client. Deze parameter correleert alle gebeurtenissen van clientbewerking met gebeurtenissen aan de serverzijde. Als deze waarde niet wordt opgegeven, wordt er een gegenereerd en wordt deze weergegeven in de antwoordkoppen. |
-| `authorization`      | [Download JSON webtoken (JWT) toondertoken.](https://docs.microsoft.com/azure/marketplace/partner-center-portal/pc-saas-registration#get-a-token-based-on-the-azure-ad-app) Opmerking: Bij het indienen van `Bearer` het HTTP-verzoek u het voorvoegsel van het token dat is verkregen via de koppeling waarnaar wordt verwezen, worden uitgevoerd.  |
+| `x-ms-requestid`     | Een unieke teken reeks waarde voor het bijhouden van de aanvraag van de client, bij voor keur een GUID. Als deze waarde niet wordt gegeven, wordt er een gegenereerd en gegeven in de antwoord headers. |
+| `x-ms-correlationid` | Unieke teken reeks waarde voor de bewerking op de client. Deze para meter verbindt alle gebeurtenissen van de client bewerking met gebeurtenissen aan de server zijde. Als deze waarde niet is opgenomen, wordt er een gegenereerd en gegeven in de antwoord headers. |
+| `authorization`      | [Het JWT-Bearer-token (JSON Web token) ophalen.](https://docs.microsoft.com/azure/marketplace/partner-center-portal/pc-saas-registration#get-a-token-based-on-the-azure-ad-app) Opmerking: bij het maken van de HTTP- `Bearer` aanvraag, voor voegsel voor het token dat is verkregen van de koppeling waarnaar wordt verwezen.  |
 
-*Verzoek:*
+*Schot*
 ```json
 {
   "request": [
@@ -192,22 +192,22 @@ OK
 }
 ```
 
-Beschrijving van de statuscode waarnaar wordt verwezen in `BatchUsageEvent` API-respons:
+Beschrijving van de status code waarnaar wordt `BatchUsageEvent` verwezen in de API-reactie:
 
 | Statuscode  | Beschrijving |
 | ---------- | -------------------- |
 | `Accepted` | Geaccepteerde code. |
 | `Expired` | Verlopen gebruik. |
-| `Duplicate` | Dupliceer het gebruik. |
+| `Duplicate` | Er is een dubbel gebruik gegeven. |
 | `Error` | Foutcode. |
-| `ResourceNotFound` | De geleverde gebruiksbron is ongeldig. |
-| `ResourceNotAuthorized` | U bent niet bevoegd om gebruik te maken van deze bron. |
-| `InvalidDimension` | De dimensie waarvoor het gebruik wordt doorgegeven, is ongeldig voor deze aanbieding/abonnement. |
-| `InvalidQuantity` | De doorgegeven hoeveelheid is < 0. |
-| `BadArgument` | De invoer ontbreekt of misvormd is. |
+| `ResourceNotFound` | De gegeven gebruiks resource is ongeldig. |
+| `ResourceNotAuthorized` | U bent niet gemachtigd om gebruik te maken van deze resource. |
+| `InvalidDimension` | De dimensie waarvoor het gebruik wordt door gegeven, is ongeldig voor deze aanbieding/dit plan. |
+| `InvalidQuantity` | De door gegeven hoeveelheid is < 0. |
+| `BadArgument` | De invoer ontbreekt of is onjuist. |
 
 Code: 400<br>
-Slecht verzoek, ontbrekende of ongeldige gegevens verstrekt of verlopen
+Ongeldige aanvraag, ontbrekende of ongeldige gegevens verschaft of verlopen
 
 ```json
 {
@@ -224,7 +224,7 @@ Slecht verzoek, ontbrekende of ongeldige gegevens verstrekt of verlopen
 }
 ```
 Code: 403<br>
-Gebruiker is onbevoegd om dit gesprek te voeren
+De gebruiker is niet gemachtigd om deze aanroep uit te voeren
 
 ```json
 {
@@ -235,4 +235,4 @@ Gebruiker is onbevoegd om dit gesprek te voeren
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie [Facturering met een gemeten factuur met een datameter](./saas-metered-billing.md)voor meer informatie.
+Zie voor meer informatie [SaaS-data limiet voor gefactureerd](./saas-metered-billing.md).

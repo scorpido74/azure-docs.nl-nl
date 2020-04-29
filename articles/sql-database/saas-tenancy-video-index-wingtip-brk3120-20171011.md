@@ -10,10 +10,10 @@ ms.reviewer: billgib, sstein
 ms.date: 12/18/2018
 ms.topic: conceptual
 ms.openlocfilehash: 1ee8f2fff958045f652b72358ab928f82920fd6b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80067619"
 ---
 # <a name="video-indexed-and-annotated-for-multi-tenant-saas-app-using-azure-sql-database"></a>Video die is geïndexeerd en annotaties voor een SaaS-app met meerdere tenants met behulp van Azure SQL Database

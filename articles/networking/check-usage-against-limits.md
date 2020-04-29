@@ -1,6 +1,6 @@
 ---
-title: Azure-brongebruik controleren aan de hand van limieten | Microsoft Documenten
-description: Meer informatie over het controleren van uw Azure-brongebruik aan de hand van azure-abonnementslimieten.
+title: Azure-resource gebruik controleren op limieten | Microsoft Docs
+description: Meer informatie over het controleren van uw Azure-resource gebruik op Azure-abonnements limieten.
 services: networking
 documentationcenter: na
 author: KumudD
@@ -13,42 +13,42 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/05/2018
 ms.openlocfilehash: cffa5677c5531f3887639c049998523d7d07586a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79455559"
 ---
-# <a name="check-resource-usage-against-limits"></a>Resourcegebruik controleren aan de hand van limieten
+# <a name="check-resource-usage-against-limits"></a>Gebruik van resources controleren op basis van limieten
 
-In dit artikel leert u hoe u het aantal van elk netwerkbrontype ziet dat u in uw abonnement hebt geïmplementeerd en wat uw [abonnementslimieten](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fnetworking%2ftoc.json#networking-limits) zijn. De mogelijkheid om het gebruik van resources te bekijken tegen limieten is handig om het huidige gebruik bij te houden en te plannen voor toekomstig gebruik. U de [Azure Portal,](#azure-portal) [PowerShell](#powershell)of de [Azure CLI](#azure-cli) gebruiken om het gebruik bij te houden.
+In dit artikel leert u hoe u het nummer kunt zien van elk netwerk bron type dat u in uw abonnement hebt geïmplementeerd en wat uw [abonnements limieten](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fnetworking%2ftoc.json#networking-limits) zijn. De mogelijkheid om het gebruik van resources op basis van limieten te bekijken is handig voor het bijhouden van het huidige gebruik en het plannen van toekomstig gebruik. U kunt de [Azure-Portal](#azure-portal), [Power shell](#powershell)of de [Azure cli](#azure-cli) gebruiken om het gebruik bij te houden.
 
 ## <a name="azure-portal"></a>Azure-portal
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
-2. Selecteer Alle **services**boven, links van de Azure-portal .
-3. Voer *Abonnementen* in het vak **Filter** in. Wanneer **Abonnementen** in de zoekresultaten wordt weergegeven, selecteert u deze optie.
-4. Selecteer de naam van het abonnement waarvoor u gebruiksgegevens wilt weergeven.
-5. Selecteer **onder INSTELLINGEN**de optie Gebruik + **quotum**.
+1. Meld u aan bij Azure [Portal](https://portal.azure.com).
+2. Selecteer boven aan de linkerbovenhoek van de Azure Portal **alle services**.
+3. Voer *abonnementen* in het vak **filter** in. Wanneer **Abonnementen** in de zoekresultaten wordt weergegeven, selecteert u deze optie.
+4. Selecteer de naam van het abonnement waarvoor u gebruiks gegevens wilt bekijken.
+5. Selecteer onder **instellingen**de optie **gebruik en quotum**.
 6. U kunt de volgende opties selecteren:
-   - **Resourcetypen:** u alle resourcetypen selecteren of de specifieke typen resources selecteren die u wilt weergeven.
-   - **Providers**: U alle resourceproviders selecteren of **Compute,** **Network**of **Storage**selecteren.
-   - **Locaties**: U alle Azure-locaties selecteren of specifieke locaties selecteren.
-   - U selecteren om alle resources weer te geven, of alleen de resources waar ten minste één is geïmplementeerd.
+   - **Resource typen**: u kunt alle resource typen selecteren of de specifieke typen resources selecteren die u wilt weer geven.
+   - **Providers**: u kunt alle resource providers selecteren of **Compute**, **netwerk**of **Storage**selecteren.
+   - **Locaties**: u kunt alle Azure-locaties selecteren of specifieke locaties selecteren.
+   - U kunt selecteren om alle resources weer te geven, of alleen de resources waarvoor ten minste één is geïmplementeerd.
 
-     In het voorbeeld in de volgende afbeelding worden alle netwerkbronnen weergegeven met ten minste één resource die in de Oostelijke VS is geïmplementeerd:
+     In het voor beeld in de volgende afbeelding ziet u alle netwerk resources met ten minste één resource die is geïmplementeerd in het VS-Oost:
 
-       ![Gebruiksgegevens weergeven](./media/check-usage-against-limits/view-usage.png)
+       ![Gebruiks gegevens weer geven](./media/check-usage-against-limits/view-usage.png)
 
-     U de kolommen sorteren door de kolomkop te selecteren. De weergegeven limieten zijn de limieten voor uw abonnement. Als u een standaardlimiet wilt verhogen, selecteert u **Verhoging aanvragen**en voltooit u vervolgens de ondersteuningsaanvraag en dient u deze in. Alle resources hebben een maximumlimiet die wordt vermeld in [Azure-limieten.](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fnetworking%2ftoc.json#networking-limits) Als uw huidige limiet al op het maximale aantal zit, kan de limiet niet worden verhoogd.
+     U kunt de kolommen sorteren door de kolomkop te selecteren. De limieten die worden weer gegeven, zijn de limieten voor uw abonnement. Als u een standaard limiet wilt verhogen, selecteert u **aanvraag verg Roten**, voltooit u de ondersteunings aanvraag en verzendt u deze. Voor alle resources geldt een limiet van Maxi maal [Azure-limieten](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fnetworking%2ftoc.json#networking-limits). Als uw huidige limiet al het maximum aantal is, kan de limiet niet worden verhoogd.
 
 ## <a name="powershell"></a>PowerShell
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-U de opdrachten uitvoeren die volgen in de [Azure Cloud Shell](https://shell.azure.com/powershell)of door PowerShell vanaf uw computer uit te voeren. De Azure Cloud Shell is een gratis interactieve shell. In deze shell zijn algemene Azure-hulpprogramma's vooraf geïnstalleerd en geconfigureerd voor gebruik met uw account. Als u PowerShell vanaf uw computer uitvoert, hebt u de Azure PowerShell-module, versie 1.0.0 of hoger, nodig. Voer `Get-Module -ListAvailable Az` uit op uw computer om de geïnstalleerde versie te vinden. Als u PowerShell wilt upgraden, raadpleegt u [De Azure PowerShell-module installeren](/powershell/azure/install-az-ps). Als u PowerShell lokaal uitvoert, moet u `Login-AzAccount` ook worden uitgevoerd om u aan te melden bij Azure.
+U kunt de opdrachten uitvoeren die volgen in de [Azure Cloud shell](https://shell.azure.com/powershell), of door Power shell uit te voeren vanaf uw computer. De Azure Cloud Shell is een gratis interactieve shell. In deze shell zijn algemene Azure-hulpprogramma's vooraf geïnstalleerd en geconfigureerd voor gebruik met uw account. Als u Power shell vanaf uw computer uitvoert, hebt u de Azure PowerShell module versie 1.0.0 of hoger nodig. Voer `Get-Module -ListAvailable Az` uit op uw computer om de geïnstalleerde versie te vinden. Als u PowerShell wilt upgraden, raadpleegt u [De Azure PowerShell-module installeren](/powershell/azure/install-az-ps). Als u Power shell lokaal uitvoert, moet u ook uitvoeren `Login-AzAccount` om u aan te melden bij Azure.
 
-Bekijk uw gebruik tegen limieten met [Get-AzNetworkUsage](https://docs.microsoft.com/powershell/module/az.network/get-aznetworkusage). In het volgende voorbeeld wordt het gebruik voor resources waarbij ten minste één resource is geïmplementeerd op de locatie Oost-VS:
+Bekijk uw gebruik op basis van limieten met [Get-AzNetworkUsage](https://docs.microsoft.com/powershell/module/az.network/get-aznetworkusage). In het volgende voor beeld wordt het gebruik opgehaald voor resources waarbij ten minste één resource wordt geïmplementeerd op de locatie VS-Oost:
 
 ```azurepowershell-interactive
 Get-AzNetworkUsage `
@@ -57,7 +57,7 @@ Get-AzNetworkUsage `
   | Format-Table ResourceType, CurrentValue, Limit
 ```
 
-U ontvangt uitvoer die hetzelfde is opgemaakt als de volgende voorbeelduitvoer:
+U ontvangt uitvoer met dezelfde indeling als in de volgende voorbeeld uitvoer:
 
 ```output
 ResourceType            CurrentValue Limit
@@ -71,9 +71,9 @@ Network Watchers                   1     1
 
 ## <a name="azure-cli"></a>Azure CLI
 
-Als u CLI-opdrachten (Azure Command-line interface) gebruikt om taken in dit artikel uit te voeren, voert u de opdrachten uit in de [Azure Cloud Shell](https://shell.azure.com/bash)of door de CLI vanaf uw computer uit te voeren. Dit artikel vereist de Azure CLI-versie 2.0.32 of hoger. Voer `az --version` uit om te kijken welke versie is geïnstalleerd. Als u uw CLI wilt installeren of upgraden, raadpleegt u [De Azure CLI installeren](/cli/azure/install-azure-cli). Als u de Azure CLI lokaal uitvoert, moet `az login` u ook worden uitgevoerd om u aan te melden bij Azure.
+Als u Azure-opdracht regel interface opdrachten gebruikt om taken in dit artikel te volt ooien, moet u de opdrachten uitvoeren in de [Azure Cloud shell](https://shell.azure.com/bash)of door de CLI vanaf uw computer uit te voeren. Voor dit artikel is de Azure CLI-versie 2.0.32 of hoger vereist. Voer `az --version` uit om te kijken welke versie is geïnstalleerd. Als u uw CLI wilt installeren of upgraden, raadpleegt u [De Azure CLI installeren](/cli/azure/install-azure-cli). Als u de Azure CLI lokaal uitvoert, moet u ook uitvoeren `az login` om u aan te melden bij Azure.
 
-Bekijk uw gebruik tegen limieten met [az-netwerklijstgebruik.](/cli/azure/network?view=azure-cli-latest#az-network-list-usages) In het volgende voorbeeld wordt het gebruik voor resources op de locatie Oost-VS:
+Uw gebruik weer geven op basis van limieten met [AZ Network List-usages](/cli/azure/network?view=azure-cli-latest#az-network-list-usages). In het volgende voor beeld wordt het gebruik opgehaald voor resources op de locatie VS-Oost:
 
 ```azurecli-interactive
 az network list-usages \
@@ -81,7 +81,7 @@ az network list-usages \
   --out table
 ```
 
-U ontvangt uitvoer die hetzelfde is opgemaakt als de volgende voorbeelduitvoer:
+U ontvangt uitvoer met dezelfde indeling als in de volgende voorbeeld uitvoer:
 
 ```output
 Name                    CurrentValue Limit

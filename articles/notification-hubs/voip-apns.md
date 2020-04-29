@@ -7,42 +7,42 @@ ms.date: 3/23/2020
 ms.topic: how-to
 ms.service: notification-hubs
 ms.openlocfilehash: c99af881b8f93b75633741c2352dc5df17dd2963
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80146886"
 ---
-# <a name="use-apns-voip-through-notification-hubs-not-officially-supported"></a>APNS VOIP gebruiken via Meldingshubs (niet officieel ondersteund)
+# <a name="use-apns-voip-through-notification-hubs-not-officially-supported"></a>APNS VOIP gebruiken via Notification Hubs (niet officieel ondersteund)
 
-Het is mogelijk om APNS VOIP-meldingen te gebruiken via Azure Notification Hubs; er is echter geen officiële steun voor dit scenario.
+Het is mogelijk om APNS VOIP-meldingen te gebruiken via Azure Notification Hubs; Er is echter geen officiële ondersteuning voor dit scenario.
 
 ## <a name="considerations"></a>Overwegingen
 
-Als u er nog steeds voor kiest om APNS VOIP-meldingen via Notification Hubs te verzenden, moet u rekening houden met de volgende beperkingen:
+Als u nog steeds APNS VOIP-meldingen via Notification Hubs wilt verzenden, moet u rekening houden met de volgende beperkingen:
 
-- Voor het verzenden van `apns-topic` een VOIP-melding moet de `.voip` koptekst worden ingesteld op de toepassingsbundel-id + het achtervoegsel. Voor een voorbeeld-app met de `com.microsoft.nhubsample`bundel-id moet de `apns-topic` koptekst bijvoorbeeld worden ingesteld op`com.microsoft.nhubsample.voip.`
+- Voor het verzenden van een VOIP `apns-topic` -melding moet de header worden ingesteld op de Application Bundel- `.voip` id + het achtervoegsel. Bijvoorbeeld: voor een voor beeld-app met de bundel- `com.microsoft.nhubsample`id moet `apns-topic` de header worden ingesteld op`com.microsoft.nhubsample.voip.`
 
-   Deze methode werkt niet goed met Azure Notification Hubs, omdat de bundel-id van de app moet worden geconfigureerd als onderdeel van de APNS-referenties van de hub en de waarde niet kan worden gewijzigd. Ook betekent Notification Hubs niet dat `apns-topic` de waarde van de koptekst wordt overschreven tijdens runtime.
+   Deze methode werkt niet goed met Azure Notification Hubs, omdat de bundel-ID van de app moet worden geconfigureerd als onderdeel van de APNS-referenties van de hub en de waarde kan niet worden gewijzigd. Daarnaast staat Notification Hubs niet toe dat de waarde van de `apns-topic` header tijdens runtime wordt overschreven.
 
-   Als u VOIP-meldingen wilt verzenden, moet `.voip` u een afzonderlijke meldingshub configureren met de app-bundel-id.
+   Als u VOIP-meldingen wilt verzenden, moet u een afzonderlijke notification hub `.voip` configureren met de app-bundel-id.
 
-- Voor het verzenden van `apns-push-type` een VOIP-melding `voip`moet de koptekst worden ingesteld op de waarde .
+- Voor het verzenden van een VOIP `apns-push-type` -melding moet de header worden ingesteld `voip`op de waarde.
 
-   Om klanten te helpen bij de overgang naar iOS 13, `apns-push-type` probeert Notification Hubs de juiste waarde voor de header af te leiden. De gevolgtrekking logica is opzettelijk eenvoudig, in een poging om te voorkomen dat het breken van standaard meldingen. Helaas veroorzaakt deze methode problemen met VOIP-meldingen, omdat Apple VOIP-meldingen behandelt als een speciaal geval dat niet dezelfde regels volgt als standaardmeldingen.
+   Om klanten te helpen met de overgang naar iOS 13, probeert Notification Hubs de juiste waarde voor de `apns-push-type` header af te leiden. De interferentie logica is opzettelijk eenvoudig, in het belang om te voor komen dat standaard meldingen worden verbroken. Helaas veroorzaakt deze methode problemen met VOIP-meldingen, omdat Apple VOIP-meldingen behandelt als een speciaal geval dat niet dezelfde regels heeft als standaard meldingen.
 
-   Als u VOIP-meldingen wilt verzenden, `apns-push-type` moet u een expliciete waarde voor de koptekst opgeven.
+   Als u VOIP-meldingen wilt verzenden, moet u een expliciete `apns-push-type` waarde voor de header opgeven.
 
-- Notification Hubs beperkt APNS-payloads tot 4 KB, zoals gedocumenteerd door Apple. Voor VOIP-meldingen staat Apple payloads tot 5 KB toe. Notification Hubs maakt geen onderscheid tussen standaard- en VOIP-meldingen; daarom zijn alle meldingen beperkt tot 4 KB.
+- Met Notification Hubs worden APNS-nettoladingen beperkt tot 4 KB, zoals beschreven door Apple. Voor VOIP-meldingen biedt Apple payloads tot wel 5 KB. Notification Hubs maakt geen onderscheid tussen de standaard-en VOIP-meldingen. Daarom zijn alle meldingen beperkt tot 4 KB.
 
-   Als u VOIP-meldingen wilt verzenden, mag u de limiet voor de grootte van het laadvermogen van 4 KB niet overschrijden.
+   Als u VOIP-meldingen wilt verzenden, moet u de maximale grootte van 4 KB voor de nettolading niet overschrijden.
 
 ## <a name="next-steps"></a>Volgende stappen
 
 Zie de volgende koppelingen voor meer informatie:
 
-- [Documentatie `apns-topic` voor `apns-push-type` en headers en waarden, inclusief de speciale gevallen voor VOIP-meldingen.](https://developer.apple.com/documentation/usernotifications/setting_up_a_remote_notification_server/sending_notification_requests_to_apns)
+- [Documentatie voor `apns-topic` en `apns-push-type` kopteksten en waarden, met inbegrip van de speciale gevallen voor VoIP-meldingen](https://developer.apple.com/documentation/usernotifications/setting_up_a_remote_notification_server/sending_notification_requests_to_apns).
 
-- [Documentatie voor de limiet voor de grootte van het laadvermogen](https://developer.apple.com/documentation/usernotifications/setting_up_a_remote_notification_server/generating_a_remote_notification).
+- [Documentatie voor maximale grootte van nettolading](https://developer.apple.com/documentation/usernotifications/setting_up_a_remote_notification_server/generating_a_remote_notification).
 
-- [Updaten van Notification Hubs voor iOS 13](push-notification-updates-ios-13.md#apns-push-type).
+- [Notification hubs updates voor IOS 13](push-notification-updates-ios-13.md#apns-push-type).

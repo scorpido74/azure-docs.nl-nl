@@ -1,6 +1,6 @@
 ---
-title: CLI-voorbeeld- BYOK TDE inschakelen - Azure SQL Database Managed Instance
-description: Meer informatie over het configureren van een Azure SQL Managed Instance om BYOK Transparent Data Encryption (TDE) te gebruiken voor versleuteling in rust met PowerShell.
+title: CLI-voor beeld-BYOK TDE-Azure SQL Database beheerd exemplaar inschakelen
+description: Meer informatie over het configureren van een Azure SQL Managed instance om te beginnen met het gebruik van BYOK Transparent Data Encryption (TDE) voor versleuteling-at-rest met behulp van Power shell.
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
@@ -12,15 +12,15 @@ ms.author: mlandzic
 ms.reviewer: vanto, carlrab
 ms.date: 11/05/2019
 ms.openlocfilehash: 8e8c0e2db1f87cca52c44d33ce14d7ce4f00e895
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80061738"
 ---
 # <a name="manage-transparent-data-encryption-in-a-managed-instance-using-your-own-key-from-azure-key-vault"></a>Transparent Data Encryption beheren in een beheerd exemplaar met behulp van uw eigen sleutel uit Azure Key Vault
 
-In dit voorbeeld van Azure CLI-script wordt Transparent Data Encryption (TDE) geconfigureerd met een door de klant beheerde sleutel voor Azure SQL Managed Instance, met behulp van een sleutel uit Azure Key Vault. Dit wordt vaak aangeduid als een Bring Your Own Key scenario voor TDE. Zie [TDE Bring Your Own Key to Azure SQL](../transparent-data-encryption-byok-azure-sql.md)voor meer informatie over de TDE met door de klant beheerde sleutel.
+In dit voor beeld van Azure CLI-script wordt Transparent Data Encryption (TDE) met door de klant beheerde sleutel geconfigureerd voor Azure SQL Managed instance, met behulp van een sleutel van Azure Key Vault. Dit wordt vaak een Bring Your Own Key scenario genoemd voor TDE. Zie [TDE Bring your own Key naar Azure SQL](../transparent-data-encryption-byok-azure-sql.md)voor meer informatie over de TDe met door de klant beheerde sleutels.
 
 Als u ervoor kiest om de CLI lokaal te installeren en te gebruiken, moet u voor dit artikel gebruikmaken van Azure CLI versie 2.0 of hoger. Voer `az --version` uit om de versie te bekijken. Als u uw CLI wilt installeren of upgraden, raadpleegt u [De Azure CLI installeren](/cli/azure/install-azure-cli).
 
@@ -28,7 +28,7 @@ Als u ervoor kiest om de CLI lokaal te installeren en te gebruiken, moet u voor 
 
 ### <a name="prerequisites"></a>Vereisten
 
-Zie Azure CLI [gebruiken om een azure SQL Database-beheerde instantie te maken.](sql-database-create-configure-managed-instance-cli.md)
+Een bestaand beheerd exemplaar, Zie [Azure CLI gebruiken om een Azure SQL database beheerd exemplaar te maken](sql-database-create-configure-managed-instance-cli.md).
 
 ### <a name="sign-in-to-azure"></a>Aanmelden bij Azure
 
@@ -46,20 +46,20 @@ az account set -s $subscription # ...or use 'az login'
 
 ### <a name="clean-up-deployment"></a>Opschonen van implementatie
 
-Gebruik de volgende opdracht om de resourcegroep en alle bijbehorende resources te verwijderen.
+Gebruik de volgende opdracht om de resource groep en alle bijbehorende resources te verwijderen.
 
 ```azurecli-interactive
 az group delete --name $resource
 ```
 
-## <a name="sample-reference"></a>Voorbeeldverwijzing
+## <a name="sample-reference"></a>Voorbeeld verwijzing
 
 In dit script worden de volgende opdrachten gebruikt. Elke opdracht in de tabel is gekoppeld aan de specifieke documentatie over de opdracht.
 
 | | |
 |---|---|
-| [az sql db](/cli/azure/sql/db) | Databaseopdrachten. |
-| [az sql failover-group](/cli/azure/sql/failover-group) | Opdrachten voor failovergroepen. |
+| [AZ SQL DB](/cli/azure/sql/db) | Data base-opdrachten. |
+| [AZ SQL failover-Group](/cli/azure/sql/failover-group) | Failover-groeps opdrachten. |
 
 ## <a name="next-steps"></a>Volgende stappen
 

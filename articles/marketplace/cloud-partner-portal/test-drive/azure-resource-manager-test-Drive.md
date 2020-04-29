@@ -1,6 +1,6 @@
 ---
-title: Azure Resource Manager-teststation | Azure Marketplace
-description: Een Marketplace-teststation maken met Azure Resource Manager
+title: Azure Resource Manager test station | Azure Marketplace
+description: Een Marketplace-test station bouwen met behulp van Azure Resource Manager
 author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
@@ -8,61 +8,61 @@ ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: dsindona
 ms.openlocfilehash: 6125aa010d8676518b84f866343b01f95246160f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80275931"
 ---
 # <a name="azure-resource-manager-test-drive"></a>Test Drive voor Azure Resource Manager
 
-Dit artikel is voor uitgevers die hun aanbieding op de Azure Marketplace hebben of die zich op AppSource bevinden, maar hun teststation willen bouwen met alleen Azure-bronnen.
+Dit artikel is voor uitgevers die hun aanbieding op de Azure Marketplace hebben of die zich op AppSource bevinden, maar willen hun test station alleen bouwen met Azure-resources.
 
-Een azure resource manager-sjabloon (Resource Manager) is een gecodeerde container met Azure-resources die u ontwerpt om uw oplossing het beste weer te geven. Als u niet bekend bent met wat een Resource Manager-sjabloon is, leest u het [begrijpen van Resource Manager-sjablonen](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) en [het ontwerpen van Resource Manager-sjablonen](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-authoring-templates) om ervoor te zorgen dat u weet hoe u uw eigen sjablonen maken en testen.
+Een Azure Resource Manager-sjabloon (Resource Manager) is een gecodeerde container van Azure-resources die u ontwerpt om uw oplossing het beste weer te geven. Als u niet bekend bent met wat een resource manager-sjabloon is, leest u meer over [Resource Manager-sjablonen](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) en [ontwerp Resource Manager-sjablonen](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-authoring-templates) om er zeker van te zijn dat u weet hoe u uw eigen sjablonen kunt bouwen en testen.
 
-Wat Test Drive doet, is dat de meegeleverde resourcemanagersjabloon wordt opgenomen en dat alle resources die nodig zijn van die resourcemanagersjabloon, worden geïmplementeerd in een resourcegroep.
+Welk test station gebruikt de opgegeven resource manager-sjabloon en maakt een implementatie van alle resources die nodig zijn van die resource manager-sjabloon in een resource groep.
 
-Als u ervoor kiest een Azure Resource Manager-teststation te bouwen, zijn de vereisten voor u om:
+Als u ervoor kiest om een Azure Resource Manager test station te bouwen, zijn de vereisten voor u:
 
-- Bouw, test en upload vervolgens de sjabloon Test Drive Resource Manager.
-- Configureer alle vereiste metagegevens en instellingen om uw teststation in te schakelen.
-- Publiceer uw aanbieding opnieuw met Test Drive ingeschakeld.
+- Bouw, test en upload uw Resource Manager-sjabloon voor testen.
+- Configureer alle vereiste meta gegevens en instellingen om uw test station in te scha kelen.
+- Publiceer uw aanbieding opnieuw met een test station ingeschakeld.
 
-## <a name="how-to-build-an-azure-resource-manager-test-drive"></a>Een Azure Resource Manager-teststation maken
+## <a name="how-to-build-an-azure-resource-manager-test-drive"></a>Een Azure Resource Manager-test station bouwen
 
-Hier is het proces voor het bouwen van een Azure Resource Manager Test Drive:
+Dit is het proces voor het bouwen van een Azure Resource Manager test station:
 
-1. Ontwerp wat u wilt dat uw klanten doen in een stroomdiagram.
-1. Definieer welke ervaringen u wilt dat uw klanten bouwen.
-1. Op basis van de bovenstaande definities, beslissen welke stukken en middelen nodig zijn voor klanten om een dergelijke ervaring te bereiken: bijvoorbeeld, D365 instantie, of een website met een database.
+1. Ontwerp wat u met uw klanten wilt doen in een stroom diagram.
+1. Definieer welke ervaringen u uw klanten wilt laten bouwen.
+1. Bepaal op basis van de bovenstaande definities welke onderdelen en resources nodig zijn voor klanten om een dergelijke ervaring te bereiken: bijvoorbeeld D365 instance of een website met een Data Base.
 1. Bouw het ontwerp lokaal en test de ervaring.
-1. Verpak de ervaring in een ARM-sjabloonimplementatie en van daaruit:
-    1. Definieer welke onderdelen van de resources invoerparameters zijn;
-    1. Welke variabelen zijn;
-    1. Welke outputs worden gegeven aan de klantervaring.
-1. Publiceer, test en ga live.
+1. Verdeel de ervaring in een ARM-sjabloon implementatie en van daaruit:
+    1. Definiëren welke onderdelen van de resources invoer parameters zijn;
+    1. Wat variabelen zijn;
+    1. De resultaten van de klant.
+1. Publiceren, testen en live gaan.
 
-Het belangrijkste onderdeel van het bouwen van een Azure Resource Manager Test Drive is om te definiëren welk scenario(en) u wilt dat uw klanten ervaren. Bent u een firewall product en u wilt demo hoe goed je omgaan met script injectie aanvallen? Bent u een opslagproduct en wilt u demo hoe snel en eenvoudig uw oplossing bestanden comprimeert?
+Het belangrijkste deel van het bouwen van een Azure Resource Manager test station is het definiëren van de scenario ('s) die uw klanten moeten ervaren. Bent u een firewall product en wilt u zelf bepalen hoe goed u de aanvallen voor script injecties kunt afhandelen? Bent u een opslag product en wilt u een demonstratie doen over hoe snel en eenvoudig uw oplossing bestanden comprimeert?
 
-Zorg ervoor dat u voldoende tijd besteedt aan het evalueren van wat de beste manieren zijn om met uw product te pronken. Met name rond alle benodigde resources die u nodig zou hebben, omdat het verpakken van de Resource Manager-sjabloon voldoende eenvoudiger maakt.
+Zorg ervoor dat u voldoende tijd besteedt aan het evalueren van de beste manieren om uw product uit te geven. In het bijzonder rond alle vereiste bronnen die u nodig hebt, wordt de Resource Manager-sjabloon nu voldoende gebundeld.
 
-Om verder te gaan met ons firewallvoorbeeld, kan de architectuur zijn dat u een openbare IP-URL voor uw service en een andere openbare IP-URL voor de website die uw firewall beschermt, nodig hebt. Elk IP-adres wordt geïmplementeerd op een virtuele machine en verbonden met een netwerkbeveiligingsgroep + netwerkinterface.
+Om door te gaan met ons Firewall-voor beeld is het mogelijk dat u een open bare IP-URL nodig hebt voor uw service en een andere open bare IP-URL voor de website die uw firewall beveiligt. Elk IP-adres wordt geïmplementeerd op een virtuele machine en verbonden met een netwerk beveiligings groep + netwerk interface.
 
-Zodra u het gewenste pakket van resources hebt ontworpen, komt nu het schrijven en bouwen van de Test Drive Resource Manager sjabloon.
+Zodra u het gewenste pakket met resources hebt ontworpen, wordt nu het schrijven en maken van de Resource Manager-sjabloon voor het test station geleverd.
 
-## <a name="writing-test-drive-resource-manager-templates"></a>Sjablonen voor Test Drive Resource Manager schrijven
+## <a name="writing-test-drive-resource-manager-templates"></a>Resource Manager-sjablonen voor test stations schrijven
 
-Test drive voert implementaties uit in een volledig geautomatiseerde modus en daarom hebben Test Drive-sjablonen een aantal beperkingen die hieronder worden beschreven.
+Test Drive voert implementaties uit in een volledig geautomatiseerde modus. als gevolg hiervan worden er door het testen van drive-sjablonen een aantal beperkingen beschreven.
 
 ### <a name="parameters"></a>Parameters
 
-De meeste sjablonen hebben een reeks parameters. Parameters definiëren resourcenamen, resources-grootte (bijvoorbeeld typen opslagaccounts of virtuele machineformaten), gebruikersnamen en wachtwoorden, DNS-namen enzovoort. Wanneer u oplossingen implementeert met Azure-portal, u al deze parameters handmatig invullen, beschikbare DNS-namen of namen van opslagaccountkiezen kiezen, enzovoort.
+De meeste sjablonen hebben een aantal para meters. Para meters definiëren resource namen, bronnen grootten (bijvoorbeeld typen opslag accounts of grootte van virtuele machines), gebruikers namen en wacht woorden, DNS-namen, enzovoort. Wanneer u oplossingen implementeert met behulp van Azure Portal, kunt u alle para meters hand matig invullen, beschik bare DNS-namen of namen van opslag accounts kiezen, enzovoort.
 
-![Lijst met parameters in een Azure Resource Manager](./media/azure-resource-manager-test-drive/param1.png)
+![Lijst met para meters in een Azure Resource Manager](./media/azure-resource-manager-test-drive/param1.png)
 
-Testdrive werkt echter in een volledig automatische modus, zonder menselijke interactie, dus het ondersteunt slechts een beperkte set parametercategorieën. Als een parameter in de sjabloon Test Drive Resource Manager niet in een van de ondersteunde categorieën valt, moet u **deze parameter vervangen door een variabele of constante waarde.**
+Test drive werkt echter in een volledig automatische modus, zonder menselijke tussen komst, zodat alleen een beperkt aantal parameter categorieën wordt ondersteund. Als een para meter in de Resource Manager-sjabloon van het test station niet in een van de ondersteunde categorieën valt, moet u **deze para meter vervangen door een variabele of constante waarde.**
 
-U elke geldige naam voor uw parameters gebruiken, Test Drive herkent parametercategorie met behulp van metagegevens-type waarde. U **moet metagegevens type opgeven voor elke sjabloonparameter,** anders wordt de validatie niet doorgegeven:
+U kunt een geldige naam voor uw para meters gebruiken. test station herkent parameter categorie door gebruik te maken van de waarde van het meta gegevens type. U **moet het meta gegevens type voor elke sjabloon parameter opgeven**, anders wordt de validatie door de sjabloon niet door gegeven:
 
 ```json
 "parameters": {
@@ -77,20 +77,20 @@ U elke geldige naam voor uw parameters gebruiken, Test Drive herkent parameterca
 }
 ```
 
-Het is ook belangrijk op te merken dat **alle parameters zijn optioneel,** dus als je niet\'wilt gebruiken, hoeft\'u niet te doen.
+Het is ook belang rijk om te weten dat **alle para meters optioneel zijn**,\'dus als u geen gebruik wilt maken van\', hoeft u dit niet te doen.
 
-### <a name="accepted-parameter-metadata-types"></a>Geaccepteerde parametermetagegevenstypen
+### <a name="accepted-parameter-metadata-types"></a>Geaccepteerde meta gegevens typen
 
-| Metagegevenstype   | Parametertype  | Beschrijving     | Voorbeeldwaarde    |
+| Meta gegevens type   | Parameter type  | Beschrijving     | Voorbeeld waarde    |
 |---|---|---|---|
-| **baseuri baseuri**     | tekenreeks          | Uri baseren op uw implementatiepakket| \//\<https:\.. \>.blob.core.windows.net/\<\..\> |
-| **Gebruikersnaam**    | tekenreeks          | Nieuwe willekeurige gebruikersnaam.| beheerder68876      |
-| **wachtwoord**    | beveiligde tekenreeks    | Nieuw willekeurig wachtwoord | Lp!ACS\^2kh     |
-| **sessie-id**   | tekenreeks          | Unieke testdrive-sessie-id (GUID)    | b8c8693e-5673-449c-badd-257a405a6dee |
+| **baseuri**     | tekenreeks          | Basis-URI van uw implementatie pakket| https:\//\<.\. \>. blob.core.Windows.net/\<\..\> |
+| **gebruikers**    | tekenreeks          | Nieuwe wille keurige gebruikers naam.| admin68876      |
+| **wachtwoord**    | beveiligde teken reeks    | Nieuw wille keurig wacht woord | LP! ACS\^2kh     |
+| **sessie-id**   | tekenreeks          | Unieke sessie-ID van het test station (GUID)    | b8c8693e-5673-449c-badd-257a405a6dee |
 
-#### <a name="baseuri"></a>baseuri baseuri
+#### <a name="baseuri"></a>baseuri
 
-Test Drive initialiseert deze parameter met een **Base Uri** van uw implementatiepakket, zodat u deze parameter gebruiken om Uri te construeren van elk bestand dat in uw pakket is opgenomen.
+Het test station initialiseert deze para meter met een **basis-URI** van uw implementatie pakket. u kunt deze para meter gebruiken om URI te maken van elk bestand dat in uw pakket is opgenomen.
 
 ```json
 "parameters": {
@@ -106,7 +106,7 @@ Test Drive initialiseert deze parameter met een **Base Uri** van uw implementati
 }
 ```
 
-In uw sjabloon u deze parameter gebruiken om een Uri van een bestand te maken vanuit uw implementatiepakket teststation. In het onderstaande voorbeeld ziet u hoe u een Uri van de gekoppelde sjabloon maakt:
+In uw sjabloon kunt u deze para meter gebruiken om een URI te maken van elk bestand uit het implementatie pakket voor test stations. In het volgende voor beeld ziet u hoe u een URI van de gekoppelde sjabloon bouwt:
 
 ```json
 "templateLink": {
@@ -117,7 +117,7 @@ In uw sjabloon u deze parameter gebruiken om een Uri van een bestand te maken va
 
 #### <a name="username"></a>gebruikersnaam
 
-Test Drive initialiseert deze parameter met een nieuwe willekeurige gebruikersnaam:
+Het test station initialiseert deze para meter met een nieuwe wille keurige gebruikers naam:
 
 ```json
 "parameters": {
@@ -133,15 +133,15 @@ Test Drive initialiseert deze parameter met een nieuwe willekeurige gebruikersna
 }
 ```
 
-Voorbeeldwaarde:
+Voorbeeld waarde:
 
     admin68876
 
-U willekeurige of constante gebruikersnamen gebruiken voor uw oplossing.
+U kunt wille keurige of constante gebruikers namen gebruiken voor uw oplossing.
 
 #### <a name="password"></a>wachtwoord
 
-Test Drive initialiseert deze parameter met een nieuw willekeurig wachtwoord:
+Het test station initialiseert deze para meter met een nieuw wille keurig wacht woord:
 
 ```json
 "parameters": {
@@ -157,15 +157,15 @@ Test Drive initialiseert deze parameter met een nieuw willekeurig wachtwoord:
 }
 ```
 
-Voorbeeldwaarde:
+Voorbeeld waarde:
 
     Lp!ACS^2kh
 
-U willekeurige of constante wachtwoorden gebruiken voor uw oplossing.
+U kunt wille keurige of constante wacht woorden gebruiken voor uw oplossing.
 
-#### <a name="session-id"></a>sessie-id
+#### <a name="session-id"></a>sessie-ID
 
-Test Drive initialiseer deze parameter met een unieke GUID die testdrive-sessie-id vertegenwoordigt:
+Test station Initialiseer deze para meter met een unieke GUID die de sessie-ID van het test station vertegenwoordigt:
 
 ```json
 "parameters": {
@@ -181,17 +181,17 @@ Test Drive initialiseer deze parameter met een unieke GUID die testdrive-sessie-
 }
 ```
 
-Voorbeeldwaarde:
+Voorbeeld waarde:
 
     b8c8693e-5673-449c-badd-257a405a6dee
 
-U deze parameter gebruiken om de Test Drive-sessie op unieke wijze te identificeren, als dat nodig is.
+U kunt deze para meter gebruiken om de sessie van het test station uniek te identificeren, als dat nodig is.
 
 ### <a name="unique-names"></a>Unieke namen
 
-Voor sommige Azure-bronnen, zoals opslagaccounts of DNS-namen, zijn wereldwijd unieke namen vereist.
+Voor sommige Azure-resources, zoals opslag accounts of DNS-namen, zijn wereld wijd unieke namen vereist.
 
-Dit betekent dat elke keer dat Test Drive de resourcemanagersjabloon implementeert, een\' **nieuwe resourcegroep** wordt gemaakt met een unieke naam voor al zijn resources. Daarom is het vereist om de [unieke string-functie](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-functions#uniquestring) te gebruiken die is gekoppeld aan uw variabele namen op namen van resourcegroepen om willekeurige unieke waarden te genereren:
+Dit betekent dat elke keer dat test station de Resource Manager-sjabloon implementeert, een **nieuwe resource groep wordt gemaakt met een unieke naam** voor\' alle bijbehorende resources. Daarom is het nodig om de functie [Unique string](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-functions#uniquestring) te gebruiken die is gekoppeld aan de namen van de variabelen van de resource groep-id's voor het genereren van wille keurige unieke waarden:
 
 ```json
 "variables": {
@@ -202,17 +202,17 @@ Dit betekent dat elke keer dat Test Drive de resourcemanagersjabloon implementee
 }
 ```
 
-Zorg ervoor dat u uw parameter/variabele\'tekenreeksen (contosovm)\'samenvoegt met een\'unieke tekenreeksuitvoer (resourceGroup().id),\'omdat dit de uniciteit en betrouwbaarheid van elke variabele garandeert.
+Zorg ervoor dat u de para meters en variabelen teken\'reeksen\'(contosovm) samen voegt met\'een unieke teken reeks uitvoer\'(resourceGroup (). id), omdat dit de unieke waarde en betrouw baarheid van elke variabele waarborgt.
 
-De meeste resourcenamen kunnen bijvoorbeeld niet beginnen met een cijfer, maar de unieke tekenreeksfunctie kan een tekenreeks retourneren, die begint met een cijfer. Dus als u onbewerkte unieke tekenreeksuitvoer gebruikt, mislukken uw implementaties. 
+De meeste resource namen kunnen bijvoorbeeld niet beginnen met een cijfer, maar een unieke teken reeks functie kan een teken reeks retour neren die begint met een cijfer. Als u onbewerkte unieke teken reeks uitvoer gebruikt, mislukken uw implementaties. 
 
-In [dit artikel](/azure/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging)vindt u aanvullende informatie over regels en beperkingen voor het benoemen van resources.
+In [dit artikel](/azure/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging)vindt u meer informatie over regels en beperkingen voor de naamgeving van resources.
 
-### <a name="deployment-location"></a>Implementatielocatie
+### <a name="deployment-location"></a>Implementatie locatie
 
-U u Test Drive beschikbaar maken in verschillende Azure-regio's. Het idee is om een gebruiker in staat te stellen de dichtstbijzijnde regio te kiezen, om de gebruikerservaring van het beest te bieden.
+U kunt het testen van het station beschikbaar maken in verschillende Azure-regio's. Het is een goed idee om een gebruiker te laten kiezen uit de dichtstbijzijnde regio om te voorzien in de Beast-gebruikers ervaring.
 
-Wanneer Test Drive een instantie van het lab maakt, wordt er altijd een resourcegroep in de regio gemaakt die door een gebruiker is gekozen en wordt de implementatiesjabloon in deze groepscontext uitgevoerd. Uw sjabloon moet dus de implementatielocatie kiezen uit de resourcegroep:
+Wanneer een test station een exemplaar van het Lab maakt, wordt er altijd een resource groep gemaakt in de regio die is gekozen door een gebruiker en wordt uw implementatie sjabloon uitgevoerd in deze groeps context. Uw sjabloon moet dus de implementatie locatie van de resource groep kiezen:
 
 ```json
 "variables": {
@@ -222,7 +222,7 @@ Wanneer Test Drive een instantie van het lab maakt, wordt er altijd een resource
 }
 ```
 
-En gebruik deze locatie vervolgens voor elke resource voor een specifiek Lab-exemplaar:
+En gebruik deze locatie voor elke resource voor een specifiek Lab-exemplaar:
 
 ```json
 "resources": [
@@ -254,15 +254,15 @@ En gebruik deze locatie vervolgens voor elke resource voor een specifiek Lab-exe
 ]
 ```
 
-U moet ervoor zorgen dat uw abonnement alle resources kan implementeren die u wilt implementeren in elk van de regio's die u selecteert. U moet er ook voor zorgen dat uw virtuele machineafbeeldingen beschikbaar zijn in alle regio's die u gaat inschakelen, anders werkt uw implementatiesjabloon niet voor sommige regio's.
+U moet ervoor zorgen dat uw abonnement alle resources mag implementeren die u wilt implementeren in elk van de regio's die u selecteert. U moet er ook voor zorgen dat de installatie kopieën van uw virtuele machines beschikbaar zijn in alle regio's die u wilt inschakelen. anders werkt uw implementatie sjabloon niet voor bepaalde regio's.
 
 ### <a name="outputs"></a>Uitvoer
 
-Normaal gesproken u met Resource Manager-sjablonen implementeren zonder dat u uitvoer produceert. Dit komt omdat u alle waarden kent die u gebruikt om sjabloonparameters in te vullen en u altijd handmatig eigenschappen van een resource inspecteren.
+Normaal gesp roken met Resource Manager-sjablonen kunt u implementeren zonder dat er uitvoer wordt geproduceerd. Dit komt doordat u alle waarden kent die u gebruikt om sjabloon parameters te vullen en u kunt altijd hand matig eigenschappen van een resource controleren.
 
-Voor Test Drive Resource Manager-sjablonen is het\'echter belangrijk om alle informatie terug te sturen naar Test Drive, die nodig is om toegang te krijgen tot het lab (website-URI's, hostnamen van virtuele machines, gebruikersnamen en wachtwoorden). Zorg ervoor dat al uw uitvoernamen leesbaar zijn omdat deze variabelen aan de klant worden gepresenteerd.
+Voor testen van Resource Manager-sjablonen is het\'echter belang rijk om terug te gaan naar alle informatie die is vereist om toegang te krijgen tot de test omgeving (website-uri's, hostnamen van virtuele machines, gebruikers namen en wacht woorden). Zorg ervoor dat alle namen van uw uitvoer leesbaar zijn omdat deze variabelen aan de klant worden gepresenteerd.
 
-Er zijn geen beperkingen met betrekking tot sjabloonuitvoer. Vergeet niet dat Test Drive alle uitvoerwaarden omzet in **tekenreeksen,** dus als u een object naar de uitvoer verzendt, ziet een gebruiker JSON-tekenreeks.
+Er zijn geen beperkingen met betrekking tot sjabloon uitvoer. Houd er rekening mee dat met test drive alle uitvoer waarden worden geconverteerd naar **teken reeksen**, dus als u een object naar de uitvoer verzendt, ziet de gebruiker een JSON-teken reeks.
 
 Voorbeeld:
 
@@ -283,145 +283,145 @@ Voorbeeld:
 }
 ```
 
-### <a name="subscription-limits"></a>Abonnementslimieten
+### <a name="subscription-limits"></a>Abonnements limieten
 
-Nog een ding dat je moet rekening houden is abonnement en service grenzen. Als u bijvoorbeeld maximaal tien virtuele 4-core virtuele machines wilt implementeren, moet u ervoor zorgen dat het abonnement dat u voor uw Lab gebruikt, u 40 cores gebruiken.
+U moet rekening houden met de limieten voor abonnementen en services. Als u bijvoorbeeld Maxi maal tien virtuele machines met 4 kernen wilt implementeren, moet u ervoor zorgen dat het abonnement dat u gebruikt voor uw Lab, gebruikmaakt van 40-kernen.
 
-Meer informatie over Azure-abonnements- en servicelimieten vindt u in [dit artikel.](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits) Aangezien meerdere teststations tegelijkertijd kunnen worden gemaakt, controleert u \# of uw abonnement het aantal cores kan verwerken dat wordt vermenigvuldigd met het totale aantal gelijktijdige teststations dat kan worden gemaakt.
+In [dit artikel](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits)vindt u meer informatie over Azure-abonnement en service limieten. Als er meerdere test stations tegelijk kunnen worden gemaakt, controleert u of uw abonnement de \# kern geheugens kan verwerken vermenigvuldigd met het totale aantal gelijktijdige test schijven dat kan worden gemaakt.
 
-### <a name="what-to-upload"></a>Wat te uploaden
+### <a name="what-to-upload"></a>Wat u kunt uploaden
 
-De sjabloon Test Drive Resource Manager wordt geüpload als een zip-bestand, dat verschillende implementatieartefacten kan bevatten, maar moet één bestand hebben met de naam **main-template.json**. Dit bestand is azure resource manager-implementatiesjabloon en Test Drive gebruikt het om een lab te instantiëren.
+Test Drive-Resource Manager-sjabloon wordt geüpload als een zip-bestand, dat verschillende implementatie artefacten kan bevatten, maar moet één bestand hebben met de naam **Main-Temp late. json**. Dit bestand is Azure Resource Manager implementatie sjabloon en het test station gebruikt het om een lab te instantiëren.
 
-Als u extra bronnen buiten dit bestand hebt, u ernaar verwijzen als een externe bron in de sjabloon of u de bron opnemen in het zip-bestand.
+Als u meer resources voorbij dit bestand hebt, kunt u ernaar verwijzen als een externe resource in de sjabloon, of u kunt de resource in het zip-bestand toevoegen.
 
-Tijdens de publicatiecertificering ritst Test Drive uw implementatiepakket uit en stopt de inhoud ervan in een interne Blob-container voor teststations. De containerstructuur weerspiegelt de structuur van uw implementatiepakket:
+Tijdens de publicatie certificering pakt test station uw implementatie pakket uit en wordt de inhoud ervan in een interne BLOB-container van het test station geplaatst. De container structuur weerspiegelt de structuur van uw implementatie pakket:
 
-| package.zip                       | Blobcontainer teststation         |
+| package. zip                       | BLOB-container van test station         |
 |---|---|
-| main-template.json                | \//\<https:\... \>.blob.core.windows.net/\<\.. \>/main-template.json  |
-| sjablonen/solution.json           | \//\<https:\... \>.blob.core.windows.net/\<\.. \>/templates/solution.json |
-| scripts/warming-up.ps1                | \//\<https:\... \>.blob.core.windows.net/\<\.. \>/scripts/warming-up.ps1  |
+| Main-Temp late. json                | \//\<https:\... \>. blob.core.Windows.net/\<\... \>/Main-template.json  |
+| sjablonen/oplossing. json           | \//\<https:\... \>. blob.core.Windows.net/\<\... \>/templates/Solution.json |
+| scripts/opwarm. ps1                | \//\<https:\... \>. blob.core.Windows.net/\<\... \>/scripts/Warmup.ps1  |
 
 
-We noemen een Uri van deze blob container Base Uri. Elke revisie van uw lab heeft zijn eigen blobcontainer, en daarom heeft elke revisie van uw lab zijn eigen Base Uri. Testdrive kan een Base Uri van uw uitgepakte implementatiepakket in uw sjabloon passeren via sjabloonparameters.
+We noemen een URI van deze basis-URI voor de BLOB-container. Elke revisie van uw Lab heeft een eigen BLOB-container en daarom heeft elke revisie van uw Lab een eigen basis-URI. Het test station kan een basis-URI van uw uitgepakt implementatie pakket door geven aan uw sjabloon via sjabloon parameters.
 
-## <a name="transforming-template-examples-for-test-drive"></a>Sjabloonvoorbeelden transformeren voor teststation
+## <a name="transforming-template-examples-for-test-drive"></a>Sjabloon voorbeelden voor een test station transformeren
 
-Het proces van het omzetten van een architectuur van resources in een Test Drive Resource Manager-sjabloon kan ontmoedigend zijn. Om dit proces gemakkelijker te\'maken, hebben we voorbeelden gemaakt over hoe [u de huidige implementatiesjablonen hier](./transforming-examples-for-test-drive.md)het beste transformeren.
+Het proces van het omzetten van een architectuur van resources in een resource manager-sjabloon voor test schijven kan bevallen. Om dit proces gemakkelijker te maken, hebben we\'voor beelden gemaakt van de beste [trans formatie van huidige implementatie sjablonen](./transforming-examples-for-test-drive.md).
 
-## <a name="how-to-publish-a-test-drive"></a>Een teststation publiceren
+## <a name="how-to-publish-a-test-drive"></a>Een test station publiceren
 
-Nu u uw testrit hebt laten bouwen, loopt deze sectie door elk van de velden die nodig zijn om uw testrit met succes te publiceren.
+Nu u uw test station hebt gemaakt, gaat u in deze sectie naar elk van de velden die nodig zijn voor het publiceren van uw test station.
 
-![Teststation inschakelen in de gebruikersinterface](./media/azure-resource-manager-test-drive/howtopub1.png)
+![Test station inschakelen in de gebruikers interface](./media/azure-resource-manager-test-drive/howtopub1.png)
 
-Het eerste en belangrijkste veld is om te schakelen of u testdrive wilt inschakelen voor uw aanbieding of niet. Wanneer u **Ja selecteert,** wordt de rest van het formulier met alle vereiste velden weergegeven die u invullen. Wanneer u **Nee selecteert,** wordt het formulier uitgeschakeld en als u opnieuw publiceert met de testdrive uitgeschakeld, wordt uw teststation uit de productie verwijderd.
+Het eerste en belangrijkste veld is om te scha kelen of u een test station wilt inschakelen voor uw aanbieding of niet. Als u **Ja selecteert,** wordt de rest van het formulier met alle vereiste velden weer gegeven om in te vullen. Wanneer u **Nee selecteert,** wordt het formulier uitgeschakeld en als u opnieuw publiceert met het test station is uitgeschakeld, wordt het test station uit productie verwijderd.
 
-Opmerking: Als er testsstations zijn die actief door gebruikers worden gebruikt, blijven deze teststations worden uitgevoerd totdat hun sessie is verlopen.
+Opmerking: als er tests zijn die actief worden gebruikt door gebruikers, blijven die test stations actief totdat de sessie is verlopen.
 
 ### <a name="details"></a>Details
 
-Het volgende gedeelte dat u moet invullen, zijn de details over uw testdrive-aanbieding.
+De volgende sectie die u moet invullen, is de details van de aanbieding voor uw test drive.
 
-![Gedetailleerde informatie over teststation](./media/azure-resource-manager-test-drive/howtopub2.png)
+![Gedetailleerde gegevens van het test station](./media/azure-resource-manager-test-drive/howtopub2.png)
 
-**Beschrijving -** *Vereist* Dit is waar u de hoofdbeschrijving schrijft over wat er op uw proefrit staat. De klant komt hier om te lezen welke scenario's uw testdrive zal behandelen over uw product. 
+**Beschrijving:** *vereist* dit is de plaats waar u de hoofd beschrijving schrijft over wat er op uw test station staat. De klant komt hier om te lezen welke scenario's uw test station zal bedekken over uw product. 
 
-**Handleiding -** *Vereist* Dit is de diepgaande doorloop van uw Test Drive-ervaring. De klant opent dit en kan precies doorlopen wat u wilt dat ze doen tijdens hun proefrit. Het is belangrijk dat deze inhoud gemakkelijk te begrijpen en te volgen is! (Moet een .pdf-bestand zijn)
+**Gebruikers handleiding:** *vereist* dit is het gedetailleerde overzicht van uw test drive-ervaring. De klant opent dit en kan leiden tot precies wat u nodig hebt voor hun test station. Het is belang rijk dat deze inhoud eenvoudig te begrijpen is en volgt. (Moet een PDF-bestand zijn)
 
-**Demovideo teststation -** *Aanbevolen* Net als in de gebruikershandleiding u het beste een video-zelfstudie van uw Test Drive-ervaring opnemen. De klant zal dit voorafgaand of tijdens zijn proefrit bekijken en kan precies doorlopen wat u wilt dat ze doen tijdens hun proefrit. Het is belangrijk dat deze inhoud gemakkelijk te begrijpen en te volgen is!
+**Demo video testen:** *Aanbevolen* , vergelijkbaar met de gebruikers handleiding, het is het beste om een video-zelf studie voor uw test beleving op te vragen. De klant zal dit vóór of tijdens hun test station bekijken en kunnen door lopen wat u nodig hebt voor hun test station. Het is belang rijk dat deze inhoud eenvoudig te begrijpen is en volgt.
 
-- **Naam** - Titel van je video
-- **Link** - Moet een ingesloten URL van uw tube of video zijn. Voorbeeld over hoe u de ingesloten url krijgt, vindt u:
-- **Miniatuur** - Moet een afbeelding van hoge kwaliteit (533x324) pixels zijn. Het wordt aanbevolen om hier een screenshot te maken van een deel van je Test Drive-ervaring.
+- **Naam** : titel van uw video
+- **Link** -moet een Inge sloten URL van uw buis of video zijn. Hieronder vindt u een voor beeld van het ophalen van de Inge sloten URL:
+- **Miniatuur** : moet een afbeelding van hoge kwaliteit (533x324) zijn. Het is raadzaam om hier een scherm opname van een deel van de test drive-ervaring te maken.
 
-Hieronder vindt u hoe deze velden voor uw klant worden weergegeven tijdens hun Test Drive-ervaring.
+Hieronder ziet u hoe deze velden voor uw klant worden weer gegeven tijdens hun test beleving.
 
-![Locatie van testdrive-velden in de Marketplace-aanbieding](./media/azure-resource-manager-test-drive/howtopub4.png)
+![Locatie van de velden van het test station in de Marketplace-aanbieding](./media/azure-resource-manager-test-drive/howtopub4.png)
 
 ### <a name="technical-configuration"></a>Technische configuratie
 
-De volgende sectie die u moet invullen, is waar u de sjabloon Test Drive Resource Manager uploadt en bepaalt hoe specifiek uw Test Drive-exemplaren werken.
+In het volgende gedeelte om in te vullen kunt u uw Resource Manager-sjabloon voor testen uploaden en definiëren hoe specifiek uw exemplaren van het test station werken.
 
 ![](./media/azure-resource-manager-test-drive/howtopub5.png)
 
-**Instanties -** *Vereist* Dit is waar u configureert hoeveel exemplaren u wilt, in welke regio(s) en hoe snel uw klanten de testdrive kunnen krijgen.
+**Instanties-** *vereist* dit is de locatie van het aantal instanties dat u wilt, in welke regio (en) en hoe snel uw klanten het test station kunnen verkrijgen.
 
-- **Instanties** : de regio's selecteren is de plaats waar u kiest waar de sjabloon Test Drive Resource Manager is geïmplementeerd. Het wordt aanbevolen om gewoon één regio te kiezen waar u het meest verwacht dat uw klanten zich bevinden.
-- **Hot** - Aantal teststation-exemplaren dat al is geïmplementeerd en in afwachting van toegang per geselecteerde regio. Klanten hebben direct toegang tot deze testritten in plaats van te hoeven wachten op een implementatie. De afweging is dat deze exemplaren altijd worden uitgevoerd op uw Azure-abonnement, zodat ze een grotere uptime kosten. Het wordt ten zeerste aanbevolen om **ten minste één Hot-exemplaar**te hebben, omdat de meeste van uw klanten niet willen wachten tot volledige implementaties zijn voltooid en er dus een drop-off is in het gebruik van de klant.
-- **Warm** - Aantal teststation-exemplaren per regio die zijn geïmplementeerd en vervolgens is de VM gestopt en opgeslagen in Azure-opslag. De wachttijd voor Warme exemplaren is langzamer dan Hot-exemplaren, maar de uptime-kosten van opslag zijn ook goedkoper.
-- **Koud** - Aantal testdrive-exemplaren per regio die mogelijk kunnen worden geïmplementeerd. Koude instanties vereisen dat de volledige sjabloon Test Drive Resource Manager een implementatie doorloopt op het moment dat een klant de testdrive aanvraagt, dus het is langzamer dan warme of warme exemplaren. De afweging is echter dat u alleen hoeft te betalen voor de duur van de proefrit.
+- **Instanties** : in de geselecteerde regio's kunt u kiezen waar u de Resource Manager-sjabloon voor testen hebt geïmplementeerd. Het is raadzaam om slechts één regio te kiezen waarin u uw klanten het beste kunt vinden.
+- **Het aantal** exemplaren van een test station dat al is geïmplementeerd en nog niet toegankelijk is op basis van de geselecteerde regio. Klanten hebben direct toegang tot deze test stations in plaats van te wachten op een implementatie. De balans is dat deze instanties altijd worden uitgevoerd op uw Azure-abonnement, zodat de kosten voor de uptime groter worden. Het wordt ten zeerste aanbevolen om **ten minste één Hot instance**te hebben, omdat de meeste klanten niet willen wachten op volledige implementaties om te volt ooien, zodat er sprake is van een afname van het gebruik door de klant.
+- **Warm** : aantal exemplaren van het test station per regio die zijn geïmplementeerd en vervolgens de virtuele machine is gestopt en opgeslagen in azure Storage. De wacht tijd voor warme instanties is trager dan hot instances, maar de kosten voor de uptime van opslag zijn ook minder duur.
+- **Koude** -aantal exemplaren van het test station per regio die mogelijk kunnen worden geïmplementeerd. Voor koude instanties is het hele test station Resource Manager-sjabloon vereist om een implementatie te door lopen op het moment van een klant die het test station aanvraagt, zodat het langzamer is dan warme of warme exemplaren. De balans is echter dat u alleen betaalt voor de duur van de test schijf.
 
-Berekent op dit moment het totale aantal potentiële gelijktijdige teststations dat u beschikbaar gaat maken en controleer of uw quotumlimiet voor uw abonnement dat gelijktijdige bedrag aankan:
+Op dit moment wordt het totale aantal mogelijke gelijktijdige test stations berekend dat u beschikbaar wilt maken en controleren of uw quotum limiet voor uw abonnement de gelijktijdige hoeveelheid kan verwerken:
 
-**(Aantal geselecteerde regio's x Hotspots) + (Aantal geselecteerde regio's x Warme instanties) + (Aantal geselecteerde regio's x Koude instanties)**
+**(Aantal geselecteerde regio's x Hot instances) + (aantal geselecteerde regio's x warme instanties) + (aantal geselecteerde regio's x koude instanties)**
 
-**Testritduur (uren) -** *Vereiste* duur voor hoe lang \# de testrit binnen enkele uren actief blijft. De testdrive eindigt automatisch nadat deze periode is afgelopen.
+**Test drive duur (uren):** *vereiste* duur voor hoe lang het test station actief blijft, in \# uren. Het test station wordt automatisch beëindigd nadat deze periode is verstreken.
 
-**Sjabloon Test Drive Resource Manager -** *Vereiste* Upload hier uw resourcemanagersjabloon. Dit is het bestand dat u in de vorige sectie hierboven hebt gebouwd. Geef het hoofdsjabloonbestand een naam: "main-template.json" en zorg ervoor dat uw resourcemanagersjabloon uitvoerparameters bevat voor belangrijke variabelen die nodig zijn. (Moet een .zip-bestand zijn)
+De resource **Manager-sjabloon testen:** u *moet* uw Resource Manager-sjabloon hier uploaden. Dit is het bestand dat u in de vorige sectie hebt gemaakt. Noem het hoofd sjabloon bestand: ' Main-Temp late. json ' en zorg ervoor dat uw Resource Manager-sjabloon uitvoer parameters bevat voor sleutel variabelen die nodig zijn. (Moet een zip-bestand zijn)
 
-**Toegangsgegevens -** *Vereist* Nadat een klant zijn teststation heeft opgevraagd, wordt de toegangsinformatie aan hem of haar gepresenteerd. Deze instructies zijn bedoeld om de nuttige uitvoerparameters te delen van de sjabloon Test Drive Resource Manager. Als u uitvoerparameters wilt opnemen, gebruikt u dubbele krullende haakjes (bijvoorbeeld **{{outputname}}** en worden ze correct ingevoegd op de locatie. (HTML-tekenreeksopmaak wordt hier aanbevolen om aan de voorkant weer te geven).
+**Toegangs gegevens:** *vereist* nadat een klant hun test station heeft opgehaald, de toegangs gegevens worden weer gegeven. Deze instructies zijn bedoeld voor het delen van de bruikbare uitvoer parameters van uw test station Resource Manager-sjabloon. Als u uitvoer parameters wilt toevoegen, gebruikt u dubbele accolades (bijvoorbeeld **{{uitvoermap}}**). deze worden op de juiste wijze ingevoegd op de locatie. (De opmaak van HTML-teken reeksen wordt hier aanbevolen om weer te geven in de front-end).
 
-### <a name="test-drive-deployment-subscription-details"></a>Abonnementsgegevens voor implementatie van teststation
+### <a name="test-drive-deployment-subscription-details"></a>Details van implementatie abonnement testen
 
-Het laatste gedeelte dat moet worden ingevuld, is om de teststations automatisch te kunnen implementeren door uw Azure Subscription en Azure Active Directory (AD) met elkaar te verbinden.
+De laatste sectie die moet worden ingevuld, is om de test stations automatisch te kunnen implementeren door uw Azure-abonnement en Azure Active Directory (AD) te verbinden.
 
-![Abonnementsgegevens voor implementatie van Test Drive](./media/azure-resource-manager-test-drive/subdetails1.png)
+![Details van implementatie abonnement testen](./media/azure-resource-manager-test-drive/subdetails1.png)
 
-**Azure Subscription ID -** *Vereist* Dit verleent toegang tot Azure-services en de Azure-portal. Het abonnement is waar resourcegebruik wordt gerapporteerd en services worden gefactureerd. Als u nog niet alleen een **apart** Azure-abonnement voor teststations hebt, gaat u verder en maakt u er een. U Azure Subscription Id's vinden door u aan te melden bij azure portal en te navigeren naar de abonnementen in het menu aan de linkerkant. (Voorbeeld: "a83645ac-1234-5ab6-6789-1h234g764ghty")
+**Azure-abonnements-id:** dit is *vereist* voor toegang tot Azure-Services en de Azure Portal. In het abonnement wordt het resource gebruik gerapporteerd en de services worden gefactureerd. Als u nog geen **apart** Azure-abonnement voor test stations hebt, kunt u er een maken. U kunt Azure-abonnement-Id's vinden door u aan te melden bij Azure Portal en te navigeren naar de abonnementen in het menu aan de linkerkant. (Bijvoorbeeld: "a83645ac-1234-5ab6-6789-1h234g764ghty")
 
 ![Azure-abonnementen](./media/azure-resource-manager-test-drive/subdetails2.png)
 
-**Azure AD-tenant-id -** *vereist* Als u al een tenant-id\> beschikbaar hebt, u deze hieronder vinden in de eigenschappen - directory-id.
+**Azure AD-Tenant-id:** *vereist* als u een Tenant-id al beschikbaar hebt, kunt u deze hieronder in\> de eigenschappen-map-id vinden.
 
-![Azure Active Directory-eigenschappen](./media/azure-resource-manager-test-drive/subdetails3.png)
+![Azure Active Directory eigenschappen](./media/azure-resource-manager-test-drive/subdetails3.png)
 
-Maak anders een nieuwe tenant in Azure Active Directory.
+Als dat niet het geval is, maakt u een nieuwe Tenant in Azure Active Directory.
 
-![Lijst met Azure Active Directory-tenants](./media/azure-resource-manager-test-drive/subdetails4.png)
+![Lijst met Azure Active Directory tenants](./media/azure-resource-manager-test-drive/subdetails4.png)
 
-![De organisatie, het domein en land/regio definiëren voor de Azure AD-tenant](./media/azure-resource-manager-test-drive/subdetails5.png)
+![De organisatie, het domein en het land/de regio van de Azure AD-Tenant definiëren](./media/azure-resource-manager-test-drive/subdetails5.png)
 
 ![De selectie bevestigen](./media/azure-resource-manager-test-drive/subdetails6.png)
 
-**Azure AD App ID -** *Vereist* Volgende stap is het maken en registreren van een nieuwe toepassing. We gebruiken deze toepassing om bewerkingen uit te voeren op uw Test Drive-exemplaar.
+**Azure AD-App-ID:** de volgende stap is *vereist* om een nieuwe toepassing te maken en te registreren. Deze toepassing wordt gebruikt voor het uitvoeren van bewerkingen op uw exemplaar van het test station.
 
-1. Navigeer naar de nieuw gemaakte map of reeds bestaande map en selecteer Azure Active-map in het filtervenster.
-2. Zoek op 'App-registraties' en klik op 'Toevoegen'
-3. Geef een toepassingsnaam op.
-4. Selecteer het type als "Web-app / API"
-5. Geef enige waarde op in de\'URL van aanmelding, we gebruiken dat veld niet.
-6. Klik op Maken.
-7. Nadat de toepassing is gemaakt,\> gaat u naar Eigenschappen - Stel de toepassing in als meervoudige tenant en gaat u op Opslaan.
+1. Ga naar de zojuist gemaakte map of al een bestaande map en selecteer Azure Active Directory in het deel venster filter.
+2. Zoek "App-registraties" en klik op toevoegen.
+3. Geef een toepassings naam op.
+4. Het type van als web-app/API selecteren
+5. Geef een waarde op voor de aanmeldings-URL, die\'we hebben gewonnen door dit veld te gebruiken.
+6. Klik op maken.
+7. Nadat de toepassing is gemaakt, gaat u naar eigenschappen:\> Stel de toepassing in als multi tenant en druk op opslaan.
 
-Klik op Opslaan. De laatste stap is om de applicatie-id voor deze geregistreerde app te pakken en deze hier in het veld Testdrive te plakken.
+Klik op Opslaan. De laatste stap bestaat uit het oppakken van de toepassings-ID voor deze geregistreerde app en deze in het veld test station te plakken.
 
-![Azure AD-toepassingsid-detail](./media/azure-resource-manager-test-drive/subdetails7.png)
+![Details van Azure AD-toepassings-ID](./media/azure-resource-manager-test-drive/subdetails7.png)
 
-Aangezien we de toepassing gebruiken om te implementeren op het abonnement, moeten we de toepassing toevoegen als bijdrager aan het abonnement. De instructies hiervoor zijn hieronder:
+Omdat we de toepassing gebruiken om te implementeren in het abonnement, moeten we de toepassing toevoegen als een bijdrager aan het abonnement. Hieronder vindt u instructies:
 
-1. Navigeer naar het blad Abonnementen en selecteer het juiste abonnement dat u alleen voor het teststation gebruikt.
+1. Navigeer naar de Blade abonnementen en selecteer het juiste abonnement dat u alleen voor het test station gebruikt.
 1. Klik op **Toegangsbeheer (IAM)**.
-1. Klik op het tabblad **Roltoewijzingen.**  ![Een nieuwe hoofdvoor toegangsbeheer toevoegen](./media/azure-resource-manager-test-drive/SetupSub7_1.jpg)
-1. Klik **op Roltoewijzing toevoegen**.
-1. Stel de rol in als **bijdrager**.
+1. Klik op **het tabblad roltoewijzingen.**  ![Een nieuwe Access Control Principal toevoegen](./media/azure-resource-manager-test-drive/SetupSub7_1.jpg)
+1. Klik op **roltoewijzing toevoegen**.
+1. Stel de rol in als **Inzender**.
 1. Typ de naam van de Azure AD-toepassing en selecteer de toepassing om de rol toe te wijzen.
     ![De machtigingen toevoegen](./media/azure-resource-manager-test-drive/SetupSub7_2.jpg)
 1. Klik op **Opslaan**.
 
-**Azure AD-appsleutel -** *Vereist* Het laatste veld is het genereren van een verificatiesleutel. Voeg onder toetsen een sleutelbeschrijving toe, stel de duur in om nooit te verlopen en selecteer opslaan. Het is **belangrijk** om te voorkomen dat u een verlopen sleutel, die uw proefrit in productie zal breken. Kopieer deze waarde en plak deze in het veld Vereist Testdrive.
+**Azure AD-App sleutel:** *het laatste veld moet een* verificatie sleutel genereren. Voeg onder sleutels een sleutel beschrijving toe, stel de duur in op nooit verlopen en selecteer vervolgens opslaan. Het is **belang rijk** om te voor komen dat u een verlopen sleutel hebt, waardoor uw test drive in productie worden verbroken. Kopieer deze waarde en plak deze in het verplichte veld test station.
 
-![Toont de sleutels voor de Azure AD-toepassing](./media/azure-resource-manager-test-drive/subdetails8.png)
+![Hiermee worden de sleutels voor de Azure AD-toepassing weer gegeven](./media/azure-resource-manager-test-drive/subdetails8.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Nu u al uw testdrive-velden hebt ingevuld, gaat u door en publiceert u uw aanbieding **opnieuw.** Zodra uw testdrive is geslaagd voor certificering, moet u de klantervaring uitgebreid testen in de **preview** van uw aanbieding. Start een teststation in de gebruikersinterface en open uw Azure-abonnement in de Azure-portal en controleer of uw teststations volledig correct worden geïmplementeerd.
+Nu u alle velden van het test station hebt ingevuld, gaat u naar uw aanbieding en publiceert u deze **opnieuw** . Zodra uw test station is door gegeven, kunt u de gebruikers ervaring uitgebreid testen in de **Preview** van uw aanbieding. Start een test station in de gebruikers interface en open vervolgens uw Azure-abonnement in de Azure Portal en controleer of uw test stations volledig correct zijn geïmplementeerd.
 
 ![Azure Portal](./media/azure-resource-manager-test-drive/subdetails9.png)
 
-Het is belangrijk op te merken dat u geen Test Drive-exemplaren verwijdert omdat deze zijn ingericht voor uw klanten, dus de Test Drive-service zal deze resourcegroepen automatisch opschonen nadat een klant ermee is voltooid.
+Het is belang rijk te weten dat u geen exemplaren van een test station verwijdert wanneer deze zijn ingericht voor uw klanten, zodat de service van de test drive deze bron groepen automatisch opschoont nadat een klant is voltooid.
 
-Zodra u zich comfortabel voelt met uw Preview-aanbod, is het nu tijd om live te **gaan!** Er is een laatste beoordelingsproces van Microsoft zodra de aanbieding is gepubliceerd om de volledige ervaring van eind tot eind te controleren. Als om de een of andere reden het aanbod wordt afgewezen, sturen we een melding naar de contactpersoon voor uw aanbieding waarin wordt uitgelegd wat er moet worden opgelost.
+Zodra u vertrouwd bent met uw preview-aanbieding, is het tijd om **Live te gaan**! Er is een laatste beoordelings proces van micro soft wanneer de aanbieding is gepubliceerd om de volledige end-to-end-ervaring dubbel te controleren. Als het aanbod om de een of andere reden wordt afgewezen, wordt er een melding verzonden naar de technische contact persoon van uw aanbieding waarin wordt uitgelegd wat er moet worden opgelost.
 
-Als u meer vragen hebt, op zoek bent naar advies over het oplossen van problemen of uw testrit succesvoller wilt maken, gaat u naar [veelgestelde vragen, probleemoplossing, & Best Practices.](./marketing-and-best-practices.md)
+Als u meer vragen hebt, zoekt u naar advies over het oplossen van problemen of wilt u uw test station sneller laten verlopen, ga dan naar [Veelgestelde vragen, probleem oplossing & aanbevolen procedures](./marketing-and-best-practices.md).

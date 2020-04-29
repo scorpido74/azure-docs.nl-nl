@@ -1,6 +1,6 @@
 ---
-title: Netwerkverkeer filteren - Azure CLI | Microsoft Documenten
-description: In dit artikel leert u hoe u netwerkverkeer filtert naar een subnet, met een netwerkbeveiligingsgroep, met behulp van de Azure CLI.
+title: Netwerk verkeer filteren-Azure CLI | Microsoft Docs
+description: In dit artikel leert u hoe u netwerk verkeer kunt filteren op een subnet, met een netwerk beveiligings groep, met behulp van de Azure CLI.
 services: virtual-network
 documentationcenter: virtual-network
 author: KumudD
@@ -18,13 +18,13 @@ ms.date: 03/30/2018
 ms.author: kumud
 ms.custom: ''
 ms.openlocfilehash: 72c8b4d57b5064af34665cff1386179e62324938
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80235078"
 ---
-# <a name="filter-network-traffic-with-a-network-security-group-using-the-azure-cli"></a>Netwerkverkeer filteren met een netwerkbeveiligingsgroep met de Azure CLI
+# <a name="filter-network-traffic-with-a-network-security-group-using-the-azure-cli"></a>Netwerk verkeer filteren met een netwerk beveiligings groep met behulp van de Azure CLI
 
 U kunt het netwerkverkeer inkomend in en uitgaand naar een subnet van een virtueel netwerk filteren met een netwerkbeveiligingsgroep. Netwerkbeveiligingsgroepen bevatten beveiligingsregels die netwerkverkeer filteren op IP-adres, poort en protocol. Beveiligingsregels worden toegepast op resources die zijn geïmplementeerd in een subnet. In dit artikel leert u het volgende:
 
@@ -33,11 +33,11 @@ U kunt het netwerkverkeer inkomend in en uitgaand naar een subnet van een virtue
 * Virtuele machines (VM) implementeren in een subnet
 * Verkeersfilters testen
 
-Als u geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) voordat u begint.
+Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Als u ervoor kiest de CLI lokaal te installeren en te gebruiken, moet u in dit artikel de Azure CLI-versie 2.0.28 of hoger uitvoeren. Voer `az --version` uit om de versie te bekijken. Als u Azure CLI 2.0 wilt installeren of upgraden, raadpleegt u [Azure CLI 2.0 installeren](/cli/azure/install-azure-cli). 
+Als u ervoor kiest om de CLI lokaal te installeren en te gebruiken, moet u voor dit artikel de Azure CLI-versie 2.0.28 of hoger uitvoeren. Voer `az --version` uit om de versie te bekijken. Als u Azure CLI 2.0 wilt installeren of upgraden, raadpleegt u [Azure CLI 2.0 installeren](/cli/azure/install-azure-cli). 
 
 
 ## <a name="create-a-network-security-group"></a>Een netwerkbeveiligingsgroep maken
@@ -46,7 +46,7 @@ Een netwerkbeveiligingsgroep bevat beveiligingsregels. Beveiligingsregels geven 
 
 ### <a name="create-application-security-groups"></a>Toepassingsbeveiligingsgroepen maken
 
-Maak eerst een resourcegroep voor alle bronnen die in dit artikel zijn gemaakt met [de AZ-groep maken](/cli/azure/group). In het volgende voorbeeld wordt een resourcegroep met de naam gemaakt op de locatie *eastus*: 
+Maak eerst een resource groep voor alle resources die in dit artikel zijn gemaakt met [AZ Group Create](/cli/azure/group). In het volgende voorbeeld wordt een resourcegroep met de naam gemaakt op de locatie *eastus*: 
 
 ```azurecli-interactive
 az group create \
@@ -54,7 +54,7 @@ az group create \
   --location eastus
 ```
 
-Maak een applicatiebeveiligingsgroep met [az-netwerkasg create](/cli/azure/network/asg). Met een toepassingsbeveiligingsgroep kunt u servers met vergelijkbare poortfiltervereisten groeperen. In het volgende voorbeeld worden twee toepassingsbeveiligingsgroepen gemaakt.
+Maak een toepassings beveiligings groep met [AZ Network ASG Create](/cli/azure/network/asg). Met een toepassingsbeveiligingsgroep kunt u servers met vergelijkbare poortfiltervereisten groeperen. In het volgende voorbeeld worden twee toepassingsbeveiligingsgroepen gemaakt.
 
 ```azurecli-interactive
 az network asg create \
@@ -70,7 +70,7 @@ az network asg create \
 
 ### <a name="create-a-network-security-group"></a>Een netwerkbeveiligingsgroep maken
 
-Maak een netwerkbeveiligingsgroep met [het AZ-netwerk nsg maken](/cli/azure/network/nsg). In het volgende voorbeeld wordt een netwerkbeveiligingsgroep met de naam *myNsg* gemaakt: 
+Maak een netwerk beveiligings groep met [AZ Network NSG Create](/cli/azure/network/nsg). In het volgende voorbeeld wordt een netwerkbeveiligingsgroep met de naam *myNsg* gemaakt: 
 
 ```azurecli-interactive 
 # Create a network security group
@@ -81,7 +81,7 @@ az network nsg create \
 
 ### <a name="create-security-rules"></a>Beveiligingsregels maken
 
-Maak een beveiligingsregel met [de NSG-regel van het AZ-netwerk.](/cli/azure/network/nsg/rule) In het volgende voorbeeld wordt een regel gemaakt die inkomend verkeer van internet naar de toepassingsbeveiligingsgroep *myWebServers* toestaat via de poorten 80 en 443:
+Maak een beveiligings regel met [AZ Network NSG Rule Create](/cli/azure/network/nsg/rule). In het volgende voorbeeld wordt een regel gemaakt die inkomend verkeer van internet naar de toepassingsbeveiligingsgroep *myWebServers* toestaat via de poorten 80 en 443:
 
 ```azurecli-interactive
 az network nsg rule create \
@@ -98,7 +98,7 @@ az network nsg rule create \
   --destination-port-range 80 443
 ```
 
-In het volgende voorbeeld wordt een regel verbonden waarmee verkeer van internet naar de beveiligingsgroep *van de myMgmtServers-toepassing* via poort 22 kan worden binnengeleid:
+In het volgende voor beeld wordt een regel gemaakt waarmee binnenkomend verkeer van Internet naar de *myMgmtServers* -toepassings beveiligings groep via poort 22 wordt toegestaan:
 
 ```azurecli-interactive
 az network nsg rule create \
@@ -115,7 +115,7 @@ az network nsg rule create \
   --destination-port-range 22
 ```
 
-In dit artikel wordt SSH (poort 22) blootgesteld aan het internet voor de *myAsgMgmtServers* VM. Voor productieomgevingen wordt in plaats van poort 22 bloot te stellen aan het internet, aanbevolen om verbinding te maken met Azure-bronnen die u wilt beheren via een [VPN-](../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=%2fazure%2fvirtual-network%2ftoc.json) of [privénetwerkverbinding.](../expressroute/expressroute-introduction.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
+In dit artikel wordt SSH (poort 22) blootgesteld aan Internet voor de *myAsgMgmtServers* -VM. Voor productie omgevingen, in plaats van poort 22 op internet weer te geven, is het raadzaam om verbinding te maken met Azure-resources die u wilt beheren met een [VPN-](../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=%2fazure%2fvirtual-network%2ftoc.json) of [particuliere](../expressroute/expressroute-introduction.md?toc=%2fazure%2fvirtual-network%2ftoc.json) netwerk verbinding.
 
 ## <a name="create-a-virtual-network"></a>Een virtueel netwerk maken
 
@@ -128,7 +128,7 @@ az network vnet create \
   --address-prefixes 10.0.0.0/16
 ```
 
-Voeg een subnet toe aan een virtueel netwerk met [het az-netwerk vnet subnet maken](/cli/azure/network/vnet/subnet). In het volgende voorbeeld wordt een subnet met de naam *mySubnet* toegevoegd aan het virtuele netwerk en wordt de netwerkbeveiligingsgroep *myNsg* hieraan gekoppeld:
+Voeg een subnet toe aan een virtueel netwerk met [AZ Network vnet subnet Create](/cli/azure/network/vnet/subnet). In het volgende voorbeeld wordt een subnet met de naam *mySubnet* toegevoegd aan het virtuele netwerk en wordt de netwerkbeveiligingsgroep *myNsg* hieraan gekoppeld:
 
 ```azurecli-interactive
 az network vnet subnet create \
@@ -143,9 +143,9 @@ az network vnet subnet create \
 
 Maak twee virtuele machines in het virtuele netwerk, zodat u het filteren van verkeer in een latere stap kunt controleren. 
 
-Maak een VM met [az vm create](/cli/azure/vm). In het volgende voorbeeld wordt een virtuele machine gemaakt die als een webserver fungeert. De `--asgs myAsgWebServers` optie zorgt ervoor dat Azure de netwerkinterface die het maakt voor de VM een lid van de *myAsgWebServers-toepassingsbeveiligingsgroep* maakt.
+Maak een VM met [az vm create](/cli/azure/vm). In het volgende voorbeeld wordt een virtuele machine gemaakt die als een webserver fungeert. De `--asgs myAsgWebServers` optie zorgt ervoor dat Azure de netwerk interface maakt die wordt gemaakt voor de virtuele machine lid is van de *myAsgWebServers* -toepassings beveiligings groep.
 
-De `--nsg ""` optie is opgegeven om te voorkomen dat Azure een standaardnetwerkbeveiligingsgroep maakt voor de netwerkinterface die Azure maakt wanneer de vm wordt gemaakt. Om dit artikel te stroomlijnen, wordt een wachtwoord gebruikt. Sleutels worden meestal gebruikt in productie-implementaties. Als u sleutels gebruikt, moet u ook SSH-agent forwarding configureren voor de resterende stappen. Zie voor meer informatie de documentatie voor uw SSH-client. Vervang `<replace-with-your-password>` in de volgende opdracht een wachtwoord naar keuze.
+De `--nsg ""` optie is opgegeven om te voor komen dat Azure een standaard netwerk beveiligings groep maakt voor de netwerk interface die Azure maakt wanneer de virtuele machine wordt gemaakt. Er wordt een wacht woord gebruikt om dit artikel te stroom lijnen. Sleutels worden doorgaans gebruikt in productie-implementaties. Als u sleutels gebruikt, moet u ook het door sturen van SSH-agents configureren voor de resterende stappen. Zie de documentatie voor uw SSH-client voor meer informatie. Vervang `<replace-with-your-password>` in de volgende opdracht door een wacht woord van uw keuze.
 
 ```azurecli-interactive
 adminPassword="<replace-with-your-password>"
@@ -162,7 +162,7 @@ az vm create \
   --admin-password $adminPassword
 ```
 
-Het maken van de virtuele machine duurt een paar minuten. Nadat de VM is gemaakt, wordt de uitvoer die vergelijkbaar is met het volgende voorbeeld geretourneerd: 
+Het maken van de virtuele machine duurt een paar minuten. Nadat de VM is gemaakt, wordt de uitvoer vergelijkbaar met het volgende voor beeld geretourneerd: 
 
 ```output
 {
@@ -177,7 +177,7 @@ Het maken van de virtuele machine duurt een paar minuten. Nadat de VM is gemaakt
 }
 ```
 
-Let op het **openbare IP-adres**. Dit adres wordt gebruikt om toegang te krijgen tot de VM vanaf het internet in een latere stap.  Maak een VM die fungeert als een beheerserver:
+Let op het **openbare IP-adres**. Dit adres wordt gebruikt voor toegang tot de virtuele machine via internet in een latere stap.  Maak een VM die fungeert als een beheerserver:
 
 ```azurecli-interactive
 az vm create \
@@ -192,29 +192,29 @@ az vm create \
   --admin-password $adminPassword
 ```
 
-Het maken van de virtuele machine duurt een paar minuten. Nadat de VM is gemaakt, noteert u het **publicIpAddress** in de geretourneerde uitvoer. Dit adres wordt gebruikt om toegang te krijgen tot de VM in de volgende stap. Ga pas verder met de volgende stap als Azure klaar is met het maken van de virtuele machine.
+Het maken van de virtuele machine duurt een paar minuten. Nadat de VM is gemaakt, noteert u de **publicIpAddress** in de geretourneerde uitvoer. Dit adres wordt gebruikt voor toegang tot de virtuele machine in de volgende stap. Ga pas verder met de volgende stap als Azure klaar is met het maken van de virtuele machine.
 
 ## <a name="test-traffic-filters"></a>Verkeersfilters testen
 
-Gebruik de opdracht die volgt om een SSH-sessie te maken met de *myVmMgmt* VM. Vervang * \<publicIpAddress>* door het openbare IP-adres van uw vm. In het bovenstaande voorbeeld is het IP-adres *13.90.242.231*.
+Gebruik de volgende opdracht om een SSH-sessie te maken met de *VM myvmmgmt* -VM. Vervang * \<publicIpAddress>* door het open bare IP-adres van uw VM. In het bovenstaande voor beeld is het IP-adres *13.90.242.231*.
 
 ```bash 
 ssh azureuser@<publicIpAddress>
 ```
 
-Wanneer u om een wachtwoord wordt gevraagd, voert u het wachtwoord in dat u hebt ingevoerd in [VM's maken.](#create-virtual-machines)
+Wanneer u wordt gevraagd om een wacht woord, voert u het wacht woord in dat u hebt opgegeven in [Vm's maken](#create-virtual-machines).
 
-De verbinding slaagt, omdat poort 22 is toegestaan inkomende van het internet naar de *myAsgMgmtServers* applicatie beveiligingsgroep die de netwerkinterface gekoppeld aan de *myVmMgmt* VM is in.
+De verbinding is geslaagd, omdat poort 22 wordt toegestaan van het internet naar de *myAsgMgmtServers* -toepassings beveiligings groep waaraan de netwerk interface in de *VM myvmmgmt* -VM is gekoppeld.
 
-Gebruik de volgende opdracht om SSH naar de *myVmWeb* VM te gaan vanuit de *myVmMgmt* VM:
+Gebruik de volgende opdracht voor het SSHen van de *VM myvmweb* -VM vanaf de *VM myvmmgmt* VM:
 
 ```bash 
 ssh azureuser@myVmWeb
 ```
 
-De verbinding slaagt omdat een standaardbeveiligingsregel binnen elke netwerkbeveiligingsgroep verkeer via alle poorten tussen alle IP-adressen binnen een virtueel netwerk toestaat. U Niet SSH naar de *myVmWeb* VM vanaf het internet, omdat de beveiligingsregel voor de *myAsgWebServers* niet toestaan poort 22 inkomende van het internet.
+De verbinding slaagt omdat een standaardbeveiligingsregel binnen elke netwerkbeveiligingsgroep verkeer via alle poorten tussen alle IP-adressen binnen een virtueel netwerk toestaat. U kunt geen SSH-verbinding maken met de *VM myvmweb* -VM via internet omdat de beveiligings regel voor de *myAsgWebServers* geen poort 22 van het Internet toestaat.
 
-Gebruik de volgende opdrachten om de nginx-webserver op de *myVmWeb* VM te installeren:
+Gebruik de volgende opdrachten om de nginx-webserver te installeren op de *VM myvmweb* -VM:
 
 ```bash 
 # Update package source
@@ -224,17 +224,17 @@ sudo apt-get -y update
 sudo apt-get -y install nginx
 ```
 
-De *myVmWeb* VM mag uitgaan naar het internet om nginx op te halen, omdat een standaard beveiligingsregel al het uitgaande verkeer naar het internet toestaat. Sluit de *myVmWeb* SSH-sessie af, waardoor u op de `username@myVmMgmt:~$` prompt van de *myVmMgmt* VM overblijft. Voer de volgende opdracht in om het welkomstscherm van nginx op te halen van de *myVmWeb* VM:
+De *VM myvmweb* -VM is uitgaand naar Internet om nginx op te halen omdat al het uitgaande verkeer naar Internet wordt toegestaan door een standaard beveiligings regel. Sluit de *VM myvmweb* SSH-sessie, waarmee u op de `username@myVmMgmt:~$` vraag van de *VM myvmmgmt* -VM kunt blijven. Voer de volgende opdracht in om het welkomst scherm van nginx op te halen van de *VM myvmweb* -VM:
 
 ```bash
 curl myVmWeb
 ```
 
-Afmelden bij de *myVmMgmt* VM. Voer de myVmWeb-webserver van buiten Azure in `curl <publicIpAddress>` om te controleren of u de *myVmWeb-webserver* van buiten Azure openen. De verbinding slaagt, omdat poort 80 is toegestaan inkomende van het internet naar de *myAsgWebServers* applicatie beveiligingsgroep die de netwerkinterface gekoppeld aan de *myVmWeb* VM is in.
+Afmelden van de *VM myvmmgmt* -VM. Voer `curl <publicIpAddress>` vanaf uw eigen computer in om te controleren of u toegang hebt tot de *VM myvmweb* -webserver vanaf een andere locatie dan Azure. De verbinding is geslaagd, omdat poort 80 is toegestaan van het internet naar de *myAsgWebServers* -toepassings beveiligings groep waaraan de netwerk interface is gekoppeld met de *VM myvmweb* -VM.
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
-Wanneer u niet meer nodig bent, gebruikt u de verwijdering van [de AZ-groep](/cli/azure/group) om de brongroep en alle bronnen die deze bevat te verwijderen.
+Gebruik [AZ Group delete](/cli/azure/group) om de resource groep en alle resources die deze bevat te verwijderen wanneer u deze niet meer nodig hebt.
 
 ```azurecli-interactive
 az group delete --name myResourceGroup --yes
@@ -242,6 +242,6 @@ az group delete --name myResourceGroup --yes
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In dit artikel hebt u een netwerkbeveiligingsgroep gemaakt en deze gekoppeld aan een virtueel netwerksubnet. Zie [Overzicht van netwerkbeveiligingsgroepen](security-overview.md) en [Een beveiligingsgroep beheren](manage-network-security-group.md) voor meer informatie over netwerkbeveiligingsgroepen.
+In dit artikel hebt u een netwerk beveiligings groep gemaakt en gekoppeld aan een subnet van een virtueel netwerk. Zie [Overzicht van netwerkbeveiligingsgroepen](security-overview.md) en [Een beveiligingsgroep beheren](manage-network-security-group.md) voor meer informatie over netwerkbeveiligingsgroepen.
 
-Azure routeert standaard verkeer tussen subnetten. In plaats daarvan kunt u verkeer routeren tussen subnetten via een virtuele machine, die bijvoorbeeld als een firewall fungeert. Zie [Een routetabel maken](tutorial-create-route-table-cli.md)voor meer informatie.
+Azure routeert standaard verkeer tussen subnetten. In plaats daarvan kunt u verkeer routeren tussen subnetten via een virtuele machine, die bijvoorbeeld als een firewall fungeert. Zie [een route tabel maken](tutorial-create-route-table-cli.md)voor meer informatie.

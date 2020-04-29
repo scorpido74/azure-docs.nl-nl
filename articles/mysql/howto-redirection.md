@@ -1,86 +1,86 @@
 ---
-title: Verbinding maken met omleiding - Azure Database voor MySQL
-description: In dit artikel wordt beschreven hoe u uw toepassing configureren om verbinding te maken met Azure Database voor MySQL met omleiding.
+title: Verbinding maken met omleiding-Azure Database for MySQL
+description: In dit artikel wordt beschreven hoe u een toepassing kunt configureren om verbinding te maken met Azure Database for MySQL met behulp van omleiding.
 author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 03/16/2020
 ms.openlocfilehash: f987d5d9640c3bfef61320df379a68eae2f4712b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80246332"
 ---
-# <a name="connect-to-azure-database-for-mysql-with-redirection"></a>Verbinding maken met Azure Database voor MySQL met omleiding
+# <a name="connect-to-azure-database-for-mysql-with-redirection"></a>Verbinding maken met Azure Database for MySQL met behulp van omleiding
 
-In dit onderwerp wordt uitgelegd hoe u een toepassing met uw Azure Database voor MySQL-server met de omleidingsmodus verbindt. Omleiding heeft tot doel de netwerklatentie tussen clienttoepassingen en MySQL-servers te verminderen door toepassingen in staat te stellen rechtstreeks verbinding te maken met backend-serverknooppunten.
+In dit onderwerp wordt uitgelegd hoe u met de omleidings modus verbinding maakt met een toepassing op uw Azure Database for MySQL-server. Omleiding is gericht op het verminderen van de netwerk latentie tussen client toepassingen en MySQL-servers door toepassingen toe te staan rechtstreeks verbinding te maken met back-end-server knooppunten.
 
 ## <a name="before-you-begin"></a>Voordat u begint
-Meld u aan bij [Azure Portal](https://portal.azure.com). Maak een Azure Database voor MySQL-server met engineversie 5.6, 5.7 of 8.0. Zie [Azure Database voor MySQL-server maken voor](quickstart-create-mysql-server-database-using-azure-portal.md) meer informatie via Portal of Azure Database voor [MySQL-server maken met CLI](quickstart-create-mysql-server-database-using-azure-cli.md).
+Meld u aan bij de [Azure-portal](https://portal.azure.com). Een Azure Database for MySQL-server met Engine versie 5,6, 5,7 of 8,0 maken. Raadpleeg voor meer informatie [hoe u Azure database for mysql server maakt vanuit de portal](quickstart-create-mysql-server-database-using-azure-portal.md) of [hoe u Azure database for mysql server maakt met behulp van CLI](quickstart-create-mysql-server-database-using-azure-cli.md).
 
-Omleiding wordt momenteel alleen ondersteund wanneer **SSL is ingeschakeld** op uw Azure Database voor MySQL-server. Zie [SSL gebruiken met Azure Database voor MySQL voor](howto-configure-ssl.md#step-3--enforcing-ssl-connections-in-azure)meer informatie over het configureren van SSL.
+Omleiding wordt momenteel alleen ondersteund als **SSL is ingeschakeld** op uw Azure database for mysql server. Zie [using SSL with Azure database for MySQL](howto-configure-ssl.md#step-3--enforcing-ssl-connections-in-azure)voor meer informatie over het configureren van SSL.
 
 ## <a name="php"></a>PHP
 
-Ondersteuning voor omleiding in PHP-toepassingen is beschikbaar via de [mysqlnd_azure](https://github.com/microsoft/mysqlnd_azure) extensie, ontwikkeld door Microsoft. 
+Ondersteuning voor omleiding in PHP-toepassingen is beschikbaar via de extensie [mysqlnd_azure](https://github.com/microsoft/mysqlnd_azure) , ontwikkeld door micro soft. 
 
-De mysqlnd_azure extensie is beschikbaar om toe te voegen aan PHP-toepassingen via PECL en het is sterk aanbevolen om de extensie te installeren en configureren via het officieel gepubliceerde [PECL-pakket.](https://pecl.php.net/package/mysqlnd_azure)
+De uitbrei ding mysqlnd_azure is beschikbaar om toe te voegen aan PHP-toepassingen via PECL en het wordt ten zeerste aanbevolen om de uitbrei ding te installeren en te configureren via het officieel gepubliceerde [PECL-pakket](https://pecl.php.net/package/mysqlnd_azure).
 
 > [!IMPORTANT]
-> Ondersteuning voor omleiding in de PHP [mysqlnd_azure](https://github.com/microsoft/mysqlnd_azure) extensie is momenteel in preview.
+> Ondersteuning voor omleiding in de PHP [mysqlnd_azure](https://github.com/microsoft/mysqlnd_azure) -uitbrei ding is momenteel als preview-versie beschikbaar.
 
-### <a name="redirection-logic"></a>Omleidingslogica
+### <a name="redirection-logic"></a>Logica voor omleiding
 
 >[!IMPORTANT]
-> Omleidingslogica/gedrag beginversie 1.1.0 is bijgewerkt en **het wordt aanbevolen om versie 1.1.0+ te gebruiken.**
+> De logica/het gedrag van het omleidings scenario 1.1.0 is bijgewerkt en **wordt aanbevolen om versie 1.1.0 + te gebruiken**.
 
-Het omleidingsgedrag wordt bepaald `mysqlnd_azure.enableRedirect`door de waarde van . De onderstaande tabel schetst het gedrag van omleiding op basis van de waarde van deze parameter die begint in **versie 1.1.0+**.
+Het omleidings gedrag wordt bepaald door de waarde van `mysqlnd_azure.enableRedirect`. De onderstaande tabel geeft een overzicht van het gedrag van omleiding op basis van de waarde van deze para meter vanaf **versie 1.1.0 +**.
 
-Als u een oudere versie van de mysqlnd_azure extensie gebruikt (versie 1.0.0-1.0.3), `mysqlnd_azure.enabled`wordt het omleidingsgedrag bepaald door de waarde van . De geldige `off` waarden zijn (werkt op dezelfde manier als `on` het gedrag `preferred` dat in de onderstaande tabel wordt beschreven) en (werkt zoals in de onderstaande tabel).  
+Als u een oudere versie van de mysqlnd_azure extensie (versie 1.0.0-1.0.3) gebruikt, wordt het omleidings gedrag bepaald door de waarde van `mysqlnd_azure.enabled`. De geldige waarden zijn `off` (reageren op dezelfde manier als het gedrag dat wordt beschreven in de onderstaande tabel `on` ) en ( `preferred` in de onderstaande tabel).  
 
-|**mysqlnd_azure., waarde voor omleiding inschakelen**| **Gedrag**|
+|**waarde van mysqlnd_azure. enableRedirect**| **Gedrag**|
 |----------------------------------------|-------------|
 |`off` of `0`|Omleiding wordt niet gebruikt. |
-|`on` of `1`|- Als SSL niet is ingeschakeld op de Azure Database voor MySQL-server, wordt er geen verbinding gemaakt. De volgende fout wordt geretourneerd: *"mysqlnd_azure.enableRedirect is ingeschakeld, maar de SSL-optie is niet ingesteld in verbindingstekenreeks. Omleiding is alleen mogelijk met SSL."*<br>- Als SSL is ingeschakeld op de MySQL-server, maar omleiding niet wordt ondersteund op de server, wordt de eerste verbinding afgebroken en wordt de volgende fout geretourneerd: *"Verbinding afgebroken omdat omleiding niet is ingeschakeld op de MySQL-server of het netwerkpakket voldoet niet aan het omleidingsprotocol."*<br>- Als de MySQL-server omleiding ondersteunt, maar de omgeleide verbinding om welke reden dan ook is mislukt, wordt ook de eerste proxyverbinding afgebroken. De fout van de omgeleide verbinding retourneren.|
-|`preferred` of `2`<br> (standaardwaarde)|- mysqlnd_azure zal indien mogelijk gebruik maken van omleiding.<br>- Als de verbinding geen SSL gebruikt, de server geen omleiding ondersteunt of als de omgeleide verbinding om een niet-fatale reden geen verbinding maakt terwijl de proxyverbinding nog steeds geldig is, valt deze terug naar de eerste proxyverbinding.|
+|`on` of `1`|-Als SSL niet is ingeschakeld op de Azure Database for MySQL server, wordt er geen verbinding gemaakt. De volgende fout wordt geretourneerd: *"mysqlnd_azure. enableRedirect is ingeschakeld, maar de SSL-optie is niet ingesteld in Connection String. Omleiding is alleen mogelijk met SSL. "*<br>-Als SSL is ingeschakeld op de MySQL-server, maar de omleiding wordt niet ondersteund op de server, wordt de eerste verbinding afgebroken en wordt de volgende fout geretourneerd: *' de verbinding is afgebroken omdat omleiding is niet ingeschakeld op de mysql-server of het netwerk pakket komt niet overeen met het omleidings Protocol '. '*<br>-Als de MySQL-server omleiding ondersteunt, maar de omgeleide verbinding om een of andere reden mislukt, wordt ook de eerste proxy verbinding afgebroken. Retourneert de fout van de omgeleide verbinding.|
+|`preferred` of `2`<br> (standaard waarde)|-mysqlnd_azure wordt indien mogelijk omleiding gebruikt.<br>-Als de verbinding geen gebruikmaakt van SSL, biedt de server geen ondersteuning voor omleiding of de omgeleide verbinding kan geen verbinding maken voor een niet-fatale reden terwijl de proxy verbinding nog steeds een geldig is, wordt deze teruggestuurd naar de eerste proxy verbinding.|
 
-In de volgende delen van het `mysqlnd_azure` document wordt beschreven hoe u de extensie met PECL installeert en de waarde van deze parameter instellen.
+In de volgende secties van het document wordt uitgelegd hoe u de `mysqlnd_azure` uitbrei ding installeert met behulp van PECL en de waarde van deze para meter instelt.
 
 ### <a name="ubuntu-linux"></a>Ubuntu Linux
 
 #### <a name="prerequisites"></a>Vereisten 
-- PHP-versies 7.2.15+ en 7.3.2+
-- PHP-PEER 
+- PHP-versies 7.2.15 + en 7.3.2 +
+- PHP PEER 
 - php-mysql
-- Azure Database voor MySQL-server met SSL ingeschakeld
+- Azure Database for MySQL server waarop SSL is ingeschakeld
 
-1. Installeer [mysqlnd_azure](https://github.com/microsoft/mysqlnd_azure) met [PECL](https://pecl.php.net/package/mysqlnd_azure). Het wordt aanbevolen om versie 1.1.0+ te gebruiken.
+1. Installeer [mysqlnd_azure](https://github.com/microsoft/mysqlnd_azure) met [PECL](https://pecl.php.net/package/mysqlnd_azure). Het is raadzaam versie 1.1.0 + te gebruiken.
 
     ```bash
     sudo pecl install mysqlnd_azure
     ```
 
-2. Zoek de extensiemap (`extension_dir`) door het onderstaande uit te voeren:
+2. Ga naar de extensie Directory`extension_dir`() door de onderstaande stappen uit te voeren:
 
     ```bash
     php -i | grep "extension_dir"
     ```
 
-3. Wijzig mappen in de geretourneerde map en zorg ervoor dat `mysqlnd_azure.so` deze zich in deze map bevindt. 
+3. Wijzig mappen in de map die wordt geretourneerd `mysqlnd_azure.so` en zorg ervoor dat deze zich in deze map bevindt. 
 
-4. Zoek de map voor .ini-bestanden door het onderstaande uit te voeren: 
+4. Ga naar de map voor. ini-bestanden door de onderstaande stappen uit te voeren: 
 
     ```bash
     php -i | grep "dir for additional .ini files"
     ```
 
-5. Mappen wijzigen in deze geretourneerde map. 
+5. Wijzig de mappen in deze geretourneerde map. 
 
-6. Maak een nieuw .ini-bestand voor `mysqlnd_azure`. Zorg ervoor dat de alfabetvolgorde van de naam achter die van mysqnld aanzit, omdat de modules worden geladen volgens de naamvolgorde van de ini-bestanden. Als `mysqlnd` bijvoorbeeld .ini een `10-mysqlnd.ini`naam heeft, geeft u `20-mysqlnd-azure.ini`de mysqlnd ini een naam als .
+6. Maak een nieuw. ini-bestand `mysqlnd_azure`voor. Zorg ervoor dat de alfabetische volg orde van de naam na mysqnld is, omdat de modules zijn geladen op basis van de naam volgorde van de ini-bestanden. Bijvoorbeeld, als `mysqlnd` . ini een naam heeft `10-mysqlnd.ini`, de mysqlnd ini als `20-mysqlnd-azure.ini`.
 
-7. Voeg in het nieuwe .ini-bestand de volgende regels toe om omleiding in te schakelen.
+7. Voeg in het nieuwe ini-bestand de volgende regels toe om omleiding in te scha kelen.
 
     ```bash
     extension=mysqlnd_azure
@@ -90,42 +90,42 @@ In de volgende delen van het `mysqlnd_azure` document wordt beschreven hoe u de 
 ### <a name="windows"></a>Windows
 
 #### <a name="prerequisites"></a>Vereisten 
-- PHP-versies 7.2.15+ en 7.3.2+
+- PHP-versies 7.2.15 + en 7.3.2 +
 - php-mysql
-- Azure Database voor MySQL-server met SSL ingeschakeld
+- Azure Database for MySQL server waarop SSL is ingeschakeld
 
-1. Bepaal of u een x64- of x86-versie van PHP uitvoert door de volgende opdracht uit te voeren:
+1. Bepaal of u een x64-of x86-versie van PHP gebruikt door de volgende opdracht uit te voeren:
 
     ```cmd
     php -i | findstr "Thread"
     ```
 
-2. Download de bijbehorende x64- of x86-versie van de [mysqlnd_azure](https://github.com/microsoft/mysqlnd_azure) DLL van [PECL](https://pecl.php.net/package/mysqlnd_azure) die overeenkomt met uw versie van PHP. Het wordt aanbevolen om versie 1.1.0+ te gebruiken.
+2. Down load de bijbehorende x64-of x86-versie van de [mysqlnd_azure](https://github.com/microsoft/mysqlnd_azure) dll van [PECL](https://pecl.php.net/package/mysqlnd_azure) die overeenkomt met uw versie van PHP. Het is raadzaam versie 1.1.0 + te gebruiken.
 
-3. Haal het zip-bestand eruit `php_mysqlnd_azure.dll`en zoek de DLL met de naam .
+3. Pak het zip-bestand uit en zoek de `php_mysqlnd_azure.dll`naam van de dll.
 
-4. Zoek de uitbreidingsmap ( )`extension_dir`door de onderstaande opdracht uit te voeren:
+4. Zoek de extensie Directory (`extension_dir`) door de onderstaande opdracht uit te voeren:
 
     ```cmd
     php -i | find "extension_dir"
     ```
 
-5. Kopieer `php_mysqlnd_azure.dll` het bestand naar de map die in stap 4 is geretourneerd. 
+5. Kopieer het `php_mysqlnd_azure.dll` bestand naar de map die is geretourneerd in stap 4. 
 
-6. Zoek de PHP-map `php.ini` met het bestand met de volgende opdracht:
+6. Zoek de PHP-map met `php.ini` het bestand met behulp van de volgende opdracht:
 
     ```cmd
     php -i | find "Loaded Configuration File"
     ```
 
-7. Wijzig `php.ini` het bestand en voeg de volgende extra regels toe om omleiding in te schakelen. 
+7. Wijzig het `php.ini` bestand en voeg de volgende extra regels toe om omleiding in te scha kelen. 
 
-    Onder de sectie Dynamische extensies: 
+    Onder de sectie dynamische extensies: 
     ```cmd
     extension=mysqlnd_azure
     ```
     
-    Onder de sectie Module-instellingen:     
+    Klik onder de sectie module-instellingen op:     
     ```cmd 
     [mysqlnd_azure]
     mysqlnd_azure.enableRedirect = on/off/preferred
@@ -133,7 +133,7 @@ In de volgende delen van het `mysqlnd_azure` document wordt beschreven hoe u de 
 
 ### <a name="confirm-redirection"></a>Omleiding bevestigen
 
-U ook bevestigen dat omleiding is geconfigureerd met de onderstaande PHP-code. Maak een PHP-bestand genaamd `mysqlConnect.php` en plak de onderstaande code. Werk de servernaam, gebruikersnaam en wachtwoord bij met uw eigen wachtwoord. 
+U kunt ook bevestigen dat de omleiding is geconfigureerd met behulp van de onderstaande PHP-voorbeeld code. Maak een PHP-bestand `mysqlConnect.php` met de naam en plak de onderstaande code. Werk de server naam, gebruikers naam en het wacht woord bij met uw eigen account. 
  
  ```php
 <?php
@@ -158,4 +158,4 @@ $db_name = 'testdb';
  ```
 
 ## <a name="next-steps"></a>Volgende stappen
-Zie [Verbindingstekenreeksen](howto-connection-string.md)voor meer informatie over verbindingstekenreeksen.
+Zie [verbindings reeksen](howto-connection-string.md)voor meer informatie over verbindings reeksen.

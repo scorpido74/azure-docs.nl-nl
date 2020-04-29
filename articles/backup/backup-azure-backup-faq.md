@@ -4,10 +4,10 @@ description: 'Antwoorden op veelgestelde vragen over de functies van Azure Backu
 ms.topic: conceptual
 ms.date: 07/07/2019
 ms.openlocfilehash: 039666c4b54da6ac5444f5aa5acda5f1bb438782
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80156052"
 ---
 # <a name="azure-backup---frequently-asked-questions"></a>Azure Backup - veelgestelde vragen
@@ -22,7 +22,7 @@ Ja. U kunt per abonnement maximaal 500 Recovery Services-kluizen maken, per onde
 
 ### <a name="are-there-limits-on-the-number-of-serversmachines-that-can-be-registered-against-each-vault"></a>Zijn er beperkingen met betrekking tot het aantal servers/machines dat kan worden geregistreerd voor elke kluis?
 
-U kunt per kluis maximaal 1000 virtuele Azure-machines registreren. Als u de Microsoft Azure Backup Agent gebruikt, u maximaal 50 MARS-agents per kluis registreren. En u 50 MABS-servers/DPM-servers registreren bij een kluis.
+U kunt per kluis maximaal 1000 virtuele Azure-machines registreren. Als u de Microsoft Azure Backup-agent gebruikt, kunt u Maxi maal 50 MARS-agents per kluis registreren. En u kunt 50 MABS-servers/DPM-servers registreren bij een kluis.
 
 ### <a name="how-many-datasourcesitems-can-be-protected-in-a-vault"></a>Hoeveel gegevensbronnen/items kunnen worden beveiligd in een kluis?
 
@@ -75,7 +75,7 @@ Ja.
 
 Azure Backup biedt ondersteuning voor deze besturingssystemen voor het maken van back-ups van bestanden en mappen, en apps die worden beveiligd met Azure Backup Server en SCDPM.
 
-**Besturingssysteem** | **Sku** | **Details**
+**Besturingssysteem** | **SKU** | **Nadere**
 --- | --- | ---
 Werkstation | |
 Windows 10 64-bits | Enterprise, Pro, Home | Op machines moeten de nieuwste servicepacks en updates worden uitgevoerd.
@@ -113,7 +113,7 @@ Azure VM | 16 gegevensschijven<br/> Als u zich wilt aanmelden voor de persoonlij
 
 In de volgende tabel wordt uitgelegd hoe de grootte voor elke gegevensbron wordt bepaald.
 
-**Gegevensbron** | **Details**
+**Gegevensbron** | **Nadere**
 --- | ---
 Volume |De hoeveelheid gegevens van één volume-VM waarvan een back-up wordt gemaakt.
 SQL Server-database |Grootte van één SQL-database waarvan een back-up wordt gemaakt.
@@ -123,7 +123,7 @@ BMR/systeemstatus |Elke afzonderlijke kopie van de BMR of systeemstatus van de m
 
 ### <a name="is-there-a-limit-on-the-amount-of-data-backed-up-using-a-recovery-services-vault"></a>Is er een limiet voor de hoeveelheid gegevens waarvan een back-up wordt gemaakt met een Recovery Services-kluis?
 
-Er is geen limiet aan de totale hoeveelheid gegevens die u back-ups maken met behulp van een vault van Recovery Services. De afzonderlijke gegevensbronnen (met andere dan Azure VM's) kunnen maximaal 54.400 GB groot zijn. Zie de [sectie kluislimieten in de ondersteuningsmatrix voor](https://docs.microsoft.com/azure/backup/backup-support-matrix#vault-support)meer informatie over limieten.
+Er is geen limiet voor de totale hoeveelheid gegevens waarvan u een back-up kunt maken met behulp van een Recovery Services kluis. De afzonderlijke gegevens bronnen (met uitzonde ring van virtuele machines van Azure) kunnen Maxi maal 54.400 GB groot zijn. Zie de [sectie kluis limieten in de ondersteunings matrix](https://docs.microsoft.com/azure/backup/backup-support-matrix#vault-support)voor meer informatie over limieten.
 
 ### <a name="why-is-the-size-of-the-data-transferred-to-the-recovery-services-vault-smaller-than-the-data-selected-for-backup"></a>Waarom is de omvang van de gegevens die worden overgebracht naar de Recovery Services-kluis, kleiner dan de hoeveelheid gegevens die zijn geselecteerd voor een back-up?
 

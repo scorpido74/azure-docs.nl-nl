@@ -1,6 +1,6 @@
 ---
-title: Azure Cloud Services Definition Schema (.csdef-bestand) | Microsoft Documenten
-description: Een servicedefinitiebestand (.csdef) definieert een servicemodel voor een toepassing met beschikbare rollen, eindpunten en configuratiewaarden voor de service.
+title: Azure Cloud Services definition-schema (csdef-bestand) | Microsoft Docs
+description: Een bestand met een service definitie (. csdef) definieert een service model voor een toepassing, met beschik bare rollen, eind punten en configuratie waarden voor de service.
 ms.custom: ''
 ms.date: 04/14/2015
 services: cloud-services
@@ -10,23 +10,23 @@ caps.latest.revision: 42
 author: tgore03
 ms.author: tagore
 ms.openlocfilehash: dadb50bd0663f47e6a1bf3d58b5187c8b466964d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79528367"
 ---
-# <a name="azure-cloud-services-definition-schema-csdef-file"></a>Azure Cloud Services-definitieschema (.csdef-bestand)
-Het servicedefinitiebestand definieert het servicemodel voor een toepassing. Het bestand bevat de definities voor de rollen die beschikbaar zijn voor een cloudservice, geeft de serviceeindpunten op en stelt configuratie-instellingen voor de service in. De configuratie-instellingswaarden worden ingesteld in het serviceconfiguratiebestand, zoals beschreven in het [Configuratieschema (Cloud Service).](/previous-versions/azure/reference/ee758710(v=azure.100))
+# <a name="azure-cloud-services-definition-schema-csdef-file"></a>Azure Cloud Services definition-schema (csdef-bestand)
+Het service definitie bestand definieert het service model voor een toepassing. Het bestand bevat de definities voor de functies die beschikbaar zijn voor een Cloud service, geeft de service-eind punten op en stelt configuratie-instellingen voor de service in. Waarden voor configuratie-instellingen worden ingesteld in het service configuratie bestand, zoals beschreven in het [Configuratie schema van de Cloud service (klassiek)](/previous-versions/azure/reference/ee758710(v=azure.100)).
 
-Standaard is het configuratieschemabestand azure diagnostics `C:\Program Files\Microsoft SDKs\Windows Azure\.NET SDK\<version>\schemas` geïnstalleerd in de map. Vervang `<version>` door de geïnstalleerde versie van de [Azure SDK](https://www.windowsazure.com/develop/downloads/).
+Het Azure Diagnostics-configuratie schema bestand wordt standaard geïnstalleerd in de `C:\Program Files\Microsoft SDKs\Windows Azure\.NET SDK\<version>\schemas` map. Vervang `<version>` door de geïnstalleerde versie van de [Azure SDK](https://www.windowsazure.com/develop/downloads/).
 
-De standaardextensie voor het servicedefinitiebestand is .csdef.
+De standaard extensie voor het service definitie bestand is. csdef.
 
-## <a name="basic-service-definition-schema"></a>Basisservicedefinitieschema
-Het servicedefinitiebestand moet `ServiceDefinition` één element bevatten. De servicedefinitie moet ten minste`WebRole` `WorkerRole`één rol (of ) element bevatten. Het kan maximaal 25 rollen bevatten die in één definitie zijn gedefinieerd en u roltypen combineren. De servicedefinitie bevat `NetworkTrafficRules` ook het optionele element dat beperkt welke rollen kunnen communiceren met opgegeven interne eindpunten. De servicedefinitie bevat `LoadBalancerProbes` ook het optionele element dat door de klant gedefinieerde statussondes van eindpunten bevat.
+## <a name="basic-service-definition-schema"></a>Basis schema voor service definitie
+Het service definitie bestand moet één `ServiceDefinition` element bevatten. De service definitie moet ten minste één Role-element`WebRole` ( `WorkerRole`of) bevatten. Het kan Maxi maal 25 rollen bevatten die in één definitie zijn gedefinieerd, en u kunt typen van rollen combi neren. De service definitie bevat ook het optionele `NetworkTrafficRules` element waarmee wordt beperkt welke rollen kunnen communiceren met opgegeven interne eind punten. De service definitie bevat ook het optionele `LoadBalancerProbes` element dat door de klant gedefinieerde status controles van eind punten bevat.
 
-De basisindeling van het servicedefinitiebestand is als volgt.
+De basis indeling van het service definitie bestand is als volgt.
 
 ```xml
 <ServiceDefinition name="<service-name>" topologyChangeDiscovery="<change-type>" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceDefinition" upgradeDomainCount="<number-of-upgrade-domains>" schemaVersion="<version>">
@@ -50,22 +50,22 @@ De basisindeling van het servicedefinitiebestand is als volgt.
 </ServiceDefinition>
 ```
 
-## <a name="schema-definitions"></a>Schemadefinities
-De volgende onderwerpen beschrijven het schema:
+## <a name="schema-definitions"></a>Schema definities
+In de volgende onderwerpen wordt het schema beschreven:
 
 - [LoadBalancerProbe-schema](schema-csdef-loadbalancerprobe.md)
 - [WebRole-schema](schema-csdef-webrole.md)
 - [WorkerRole-schema](schema-csdef-workerrole.md)
 - [NetworkTrafficRules-schema](schema-csdef-networktrafficrules.md)
 
-##  <a name="servicedefinition-element"></a><a name="ServiceDefinition"></a>Element ServiceDedefinitie
-Het `ServiceDefinition` element is het element op het hoogste niveau van het servicedefinitiebestand.
+##  <a name="servicedefinition-element"></a><a name="ServiceDefinition"></a>ServiceDefinition-element
+Het `ServiceDefinition` element is het element op het hoogste niveau van het service definitie bestand.
 
-In de volgende tabel worden `ServiceDefinition` de kenmerken van het element beschreven.
+In de volgende tabel worden de kenmerken van `ServiceDefinition` het element beschreven.
 
 | Kenmerk               | Beschrijving |
 | ----------------------- | ----------- |
-| name                    |Vereist. De naam van de service. De naam moet uniek zijn binnen het serviceaccount.|
-| topologyChangeDiscovery | Optioneel. Hiermee geeft u het type topologiewijzigingsmelding op. Mogelijke waarden zijn:<br /><br /> -   `Blast`- Stuurt de update zo snel mogelijk naar alle rolinstanties. Als u de optie kiest, moet de rol de topologie-update kunnen verwerken zonder opnieuw te worden gestart.<br />-   `UpgradeDomainWalk`– Hiermee verzendt u de update op een sequentiële manier naar elke rolinstantie nadat de vorige instantie de update heeft geaccepteerd.|
-| schemaVersie           | Optioneel. Hiermee geeft u de versie van het servicedefinitieschema op. Met de schemaversie kan Visual Studio de juiste SDK-hulpprogramma's selecteren die u gebruiken voor schemavalidatie als er meer dan één versie van de SDK naast elkaar is geïnstalleerd.|
-| upgradeDomainCount      | Optioneel. Hiermee geeft u het aantal upgradedomeinen op over welke rollen in deze service worden toegewezen. Rolexemplaren worden toegewezen aan een upgradedomein wanneer de service wordt geïmplementeerd. Zie [Een cloudservicerol of -implementatie bijwerken](cloud-services-how-to-manage-portal.md#update-a-cloud-service-role-or-deployment), [De beschikbaarheid van virtuele machines beheren](https://docs.microsoft.com/azure/virtual-machines/windows/manage-availability) en Wat is een Cloud Service [Model](https://docs.microsoft.com/azure/cloud-services/cloud-services-model-and-package)voor meer informatie.<br /><br /> U maximaal 20 upgradedomeinen opgeven. Als dit niet is opgegeven, is het standaardaantal upgradedomeinen 5.|
+| name                    |Vereist. De naam van de service. De naam moet uniek zijn binnen het service account.|
+| topologyChangeDiscovery | Optioneel. Hiermee geeft u het type melding voor de topologie wijziging op. Mogelijke waarden zijn:<br /><br /> -   `Blast`-Hiermee wordt de update zo snel mogelijk verzonden naar alle rolinstanties. Als u optie kiest, moet de rol de update van de topologie kunnen afhandelen zonder opnieuw te worden opgestart.<br />-   `UpgradeDomainWalk`– Verzendt de update naar elke rolinstantie op een opeenvolgende manier nadat het vorige exemplaar de update heeft geaccepteerd.|
+| schemaVersion           | Optioneel. Hiermee geeft u de versie van het service definitie schema op. Met de schema versie kan Visual Studio de juiste SDK-hulpprogram ma's selecteren die voor schema validatie moeten worden gebruikt als meer dan één versie van de SDK naast elkaar is geïnstalleerd.|
+| upgradeDomainCount      | Optioneel. Hiermee geeft u het aantal upgrade domeinen op waarmee rollen in deze service worden toegewezen. Rolinstanties worden toegewezen aan een upgrade domein wanneer de service wordt geïmplementeerd. Zie [Update a Cloud Service Role of Deployment](cloud-services-how-to-manage-portal.md#update-a-cloud-service-role-or-deployment)( [de beschik baarheid van virtuele machines beheren](https://docs.microsoft.com/azure/virtual-machines/windows/manage-availability) en [Wat is een Cloud service model](https://docs.microsoft.com/azure/cloud-services/cloud-services-model-and-package)) voor meer informatie.<br /><br /> U kunt Maxi maal 20 upgrade domeinen opgeven. Als u niets opgeeft, is het standaard aantal upgrade domeinen 5.|

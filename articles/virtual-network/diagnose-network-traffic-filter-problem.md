@@ -1,6 +1,6 @@
 ---
-title: Diagnose van een probleem met het netwerkfilter van een virtuele machine | Microsoft Documenten
-description: Meer informatie over het diagnosticeren van een probleem met het filterprobleem van een virtuele machinenetwerkfilter door de effectieve beveiligingsregels voor een virtuele machine te bekijken.
+title: Een probleem met het netwerk verkeer van een virtuele machine diagnosticeren | Microsoft Docs
+description: Meer informatie over het vaststellen van een probleem met het netwerk verkeer van een virtuele machine door de juiste beveiligings regels voor een virtuele machine weer te geven.
 services: virtual-network
 documentationcenter: na
 author: KumudD
@@ -16,72 +16,72 @@ ms.workload: infrastructure-services
 ms.date: 05/29/2018
 ms.author: kumud
 ms.openlocfilehash: 6939ea2497a9f12321e1a6dfb9bf9fbb353bc7db
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80240781"
 ---
-# <a name="diagnose-a-virtual-machine-network-traffic-filter-problem"></a>Diagnose van een probleem met het filterprobleem van het netwerkvan een virtuele machine
+# <a name="diagnose-a-virtual-machine-network-traffic-filter-problem"></a>Een probleem met het netwerk verkeer van een virtuele machine vaststellen
 
-In dit artikel leert u hoe u een probleem met netwerkverkeerfilter diagnosticeren door de beveiligingsregels van de netwerkbeveiligingsgroep (NSG) te bekijken die effectief zijn voor een virtuele machine (VM).
+In dit artikel leert u hoe u een probleem met een netwerk verkeer filter kunt vaststellen door de beveiligings regels voor de netwerk beveiligings groep (NSG) weer te geven die van kracht zijn voor een virtuele machine (VM).
 
-Met NSG's u de typen verkeer beheren die in en uit een VM stromen. U een NSG koppelen aan een subnet in een virtueel Azure-netwerk, een netwerkinterface die is gekoppeld aan een vm of beide. De effectieve beveiligingsregels die op een netwerkinterface worden toegepast, zijn een aggregatie van de regels die bestaan in de NSG die zijn gekoppeld aan een netwerkinterface en het subnet waarin de netwerkinterface zich bevindt. Regels in verschillende NSG's kunnen soms met elkaar in conflict komen en van invloed zijn op de netwerkconnectiviteit van een VM. U alle effectieve beveiligingsregels van NSG's bekijken die worden toegepast op de netwerkinterfaces van uw VM. Zie Overzicht van virtuele [netwerknetwerken,](virtual-networks-overview.md) [netwerknetwerken](virtual-network-network-interface.md)en netwerkbeveiligingsgroepen als u niet bekend bent met virtuele netwerk-, netwerkinterface- of [NSG-concepten.](security-overview.md)
+Met Nsg's kunt u de typen verkeer bepalen die in en uit een virtuele machine stromen. U kunt een NSG koppelen aan een subnet in een virtueel Azure-netwerk, een netwerk interface die is gekoppeld aan een virtuele machine of beide. De geldende beveiligings regels die worden toegepast op een netwerk interface zijn een aggregatie van de regels die bestaan in de NSG die zijn gekoppeld aan een netwerk interface en het subnet waarin de netwerk interface zich bevindt. Regels in verschillende Nsg's kunnen soms conflicteren met elkaar en invloed hebben op de netwerk connectiviteit van een virtuele machine. U kunt alle effectief beveiligings regels van Nsg's weer geven die worden toegepast op de netwerk interfaces van uw VM. Zie overzicht van [virtueel netwerk](virtual-networks-overview.md), [netwerk interface](virtual-network-network-interface.md)en [netwerk beveiligings groepen](security-overview.md)voor meer informatie over het gebruik van virtuele netwerken, netwerk interfaces en NSG-concepten.
 
 ## <a name="scenario"></a>Scenario
 
-U probeert verbinding te maken met een VM over poort 80 vanaf het internet, maar de verbinding mislukt. Als u wilt bepalen waarom u geen toegang hebt tot poort 80 vanaf internet, u de effectieve beveiligingsregels voor een netwerkinterface bekijken via de [Azure-portal,](#diagnose-using-azure-portal) [PowerShell](#diagnose-using-powershell)of azure [CLI.](#diagnose-using-azure-cli)
+U probeert verbinding te maken met een virtuele machine via poort 80 van Internet, maar de verbinding is mislukt. Om te bepalen waarom u geen toegang hebt tot poort 80 vanaf internet, kunt u de effectief beveiligings regels voor een netwerk interface weer geven met behulp van de Azure- [Portal](#diagnose-using-azure-portal), [Power shell](#diagnose-using-powershell)of de [Azure cli](#diagnose-using-azure-cli).
 
-De volgende stappen gaan ervan uit dat u een bestaande VM hebt om de effectieve beveiligingsregels voor te bekijken. Als u geen bestaande VM hebt, implementeert u eerst een [Linux-](../virtual-machines/linux/quick-create-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json) of [Windows-VM](../virtual-machines/windows/quick-create-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json) om de taken in dit artikel te voltooien. De voorbeelden in dit artikel zijn voor een VM met de naam *myVM* met een netwerkinterface met de naam *myVMVMNic*. De VM- en netwerkinterface bevinden zich in een resourcegroep met de naam *myResourceGroup*en bevinden zich in de regio *Oost-VS.* Wijzig de waarden in de stappen, indien van toepassing, voor de VM waarvoor u het probleem diagnosticeert.
+Bij de volgende stappen wordt ervan uitgegaan dat u een bestaande virtuele machine hebt om de juiste beveiligings regels voor te bekijken. Als u geen bestaande VM hebt, implementeert u eerst een [Linux](../virtual-machines/linux/quick-create-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json) -of [Windows](../virtual-machines/windows/quick-create-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json) -VM om de taken in dit artikel uit te voeren met. De voor beelden in dit artikel zijn voor een virtuele machine met de naam *myVM* met een netwerk interface met de naam *myVMVMNic*. De virtuele machine en netwerk interface bevinden zich in een resource groep met de naam *myResourceGroup*en bevinden zich in de regio *VS-Oost* . Wijzig de waarden in de stappen, indien van toepassing, voor de virtuele machine waarvoor u het probleem wilt vaststellen.
 
-## <a name="diagnose-using-azure-portal"></a>Diagnose stellen met Azure-portal
+## <a name="diagnose-using-azure-portal"></a>Problemen vaststellen met behulp van Azure Portal
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com) met een Azure-account met de [benodigde machtigingen.](virtual-network-network-interface.md#permissions)
-2. Voer boven aan de Azure-portal de naam van de VM in het zoekvak in. Wanneer de naam van de virtuele machine wordt weergegeven in de zoekresultaten, selecteert u deze.
-3. Selecteer **onder INSTELLINGEN**de optie **Netwerken**, zoals in de volgende afbeelding wordt weergegeven:
+1. Meld u aan bij Azure [Portal](https://portal.azure.com) met een Azure-account dat over de [benodigde machtigingen](virtual-network-network-interface.md#permissions)beschikt.
+2. Voer boven aan de Azure Portal de naam van de virtuele machine in het zoekvak in. Wanneer de naam van de virtuele machine wordt weer gegeven in de zoek resultaten, selecteert u deze.
+3. Onder **instellingen**selecteert u **netwerken**, zoals wordt weer gegeven in de volgende afbeelding:
 
-   ![Beveiligingsregels weergeven](./media/diagnose-network-traffic-filter-problem/view-security-rules.png)
+   ![Beveiligings regels weer geven](./media/diagnose-network-traffic-filter-problem/view-security-rules.png)
 
-   De regels die u in de vorige afbeelding ziet, zijn voor een netwerkinterface met de naam **myVMVMNic**. U ziet dat er **inbound PORT-regels** zijn voor de netwerkinterface van twee verschillende netwerkbeveiligingsgroepen:
+   De regels die in de vorige afbeelding worden weer gegeven, zijn voor een netwerk interface met de naam **myVMVMNic**. U ziet dat er **Binnenkomende poort regels** zijn voor de netwerk interface van twee verschillende netwerk beveiligings groepen:
    
-   - **mySubnetNSG**: Gekoppeld aan het subnet waarin de netwerkinterface zich bevindt.
-   - **myVMNSG**: Gekoppeld aan de netwerkinterface in de VM met de naam **myVMVMNic**.
+   - **mySubnetNSG**: gekoppeld aan het subnet waarin de netwerk interface zich bevindt.
+   - **myVMNSG**: gekoppeld aan de netwerk interface in de virtuele machine met de naam **myVMVMNic**.
 
-   De regel met de naam **DenyAllInBound** is wat inkomende communicatie naar de VM via poort 80 verhindert, vanaf het internet, zoals beschreven in het [scenario.](#scenario) De regel bevat *0.0.0.0/0* voor **SOURCE**, waaronder het internet. Geen enkele andere regel met een hogere prioriteit (lager getal) staat poort 80 inkomende toe. Zie [Een probleem oplossen](#resolve-a-problem)om poort 80 toe te staan die vanaf internet naar de vm wordt toegekoppeld. Zie [Netwerkbeveiligingsgroepen](security-overview.md)voor meer informatie over beveiligingsregels en hoe Azure deze toepast.
+   De regel met de naam **DenyAllInBound** is wat voor komt dat binnenkomende communicatie met de virtuele machine via poort 80, via internet, wordt voor komen, zoals beschreven in het [scenario](#scenario). De regel bevat *0.0.0.0/0* voor de **bron**, inclusief Internet. Voor geen enkele andere regel met een hogere prioriteit (lager nummer) is poort 80 inkomend toegestaan. Zie [een probleem oplossen](#resolve-a-problem)om poort 80 van inkomend verkeer naar de virtuele machine via Internet toe te staan. Zie [netwerk beveiligings groepen](security-overview.md)voor meer informatie over beveiligings regels en hoe Azure deze toepast.
 
-   Onder aan de foto ziet u ook **UITGAANDE POORTREGELS.** Daaronder gelden de uitgaande poortregels voor de netwerkinterface. Hoewel de afbeelding slechts vier binnenkomende regels voor elke NSG weergeeft, kunnen uw NSG's veel meer dan vier regels hebben. Op de afbeelding ziet u **VirtualNetwork** onder **BRON** en **BESTEMMING** en **AzureLoadBalancer** onder **SOURCE**. **VirtualNetwork** en **AzureLoadBalancer** zijn [servicetags.](security-overview.md#service-tags) Servicetags vertegenwoordigen een groep IP-adresvoorvoegsels om de complexiteit voor het maken van beveiligingsregels te minimaliseren.
+   Onder aan de afbeelding ziet u ook **uitgaande poort regels**. Onder dit zijn de regels voor uitgaande poorten voor de netwerk interface. Hoewel in de afbeelding slechts vier regels voor binnenkomende verbindingen voor elk NSG worden weer gegeven, heeft uw Nsg's mogelijk veel meer dan vier regels. In de afbeelding ziet u **VirtualNetwork** onder **bron** en **doel** en **AzureLoadBalancer** onder **bron**. **VirtualNetwork** en **AzureLoadBalancer** zijn [service Tags](security-overview.md#service-tags). Service Tags vertegenwoordigen een groep IP-adres voorvoegsels om de complexiteit voor het maken van beveiligings regels te minimaliseren.
 
-4. Controleer of de vm zich in de uitvoeringsstatus bevindt en selecteer vervolgens **Effectieve beveiligingsregels**, zoals in de vorige afbeelding wordt weergegeven, om de effectieve beveiligingsregels in de volgende afbeelding weer te geven:
+4. Zorg ervoor dat de virtuele machine wordt uitgevoerd en selecteer vervolgens de **juiste beveiligings regels**, zoals wordt weer gegeven in de vorige afbeelding, om de juiste beveiligings regels te zien, zoals wordt weer gegeven in de volgende afbeelding:
 
-   ![Effectieve beveiligingsregels weergeven](./media/diagnose-network-traffic-filter-problem/view-effective-security-rules.png)
+   ![Effectief beveiligings regels weer geven](./media/diagnose-network-traffic-filter-problem/view-effective-security-rules.png)
 
-   De genoemde regels zijn hetzelfde als je zag in stap 3, maar er zijn verschillende tabbladen voor de NSG gekoppeld aan de netwerkinterface en het subnet. Zoals u zien op de foto, worden alleen de eerste 50 regels weergegeven. Als u een CSV-bestand wilt downloaden dat alle regels bevat, selecteert u **Downloaden**.
+   De regels die worden weer gegeven, zijn hetzelfde als u in stap 3 hebt gezien, maar er zijn verschillende tabbladen voor de NSG die zijn gekoppeld aan de netwerk interface en het subnet. Zoals u in de afbeelding kunt zien, worden alleen de eerste 50 regels weer gegeven. Als u een CSV-bestand wilt downloaden dat alle regels bevat, selecteert u **downloaden**.
 
-   Als u wilt zien welke voorvoegsels elke servicetag vertegenwoordigt, selecteert u een regel, zoals de regel met de naam **AllowAzureLoadBalancerInbound**. In de volgende afbeelding worden de voorvoegsels voor de **AzureLoadBalancer-servicetag** weergegeven:
+   Als u wilt zien welke voor voegsels elke servicetag vertegenwoordigt, selecteert u een regel, bijvoorbeeld de regel met de naam **AllowAzureLoadBalancerInbound**. In de volgende afbeelding ziet u de voor voegsels voor de **AzureLoadBalancer** -servicetag:
 
-   ![Effectieve beveiligingsregels weergeven](./media/diagnose-network-traffic-filter-problem/address-prefixes.png)
+   ![Effectief beveiligings regels weer geven](./media/diagnose-network-traffic-filter-problem/address-prefixes.png)
 
-   Hoewel de **AzureLoadBalancer-servicetag** slechts één voorvoegsel vertegenwoordigt, vertegenwoordigen andere servicetags verschillende voorvoegsels.
+   Hoewel de servicetag **AzureLoadBalancer** alleen één voor voegsel vertegenwoordigt, vertegenwoordigen andere service Tags verschillende voor voegsels.
 
-5. De vorige stappen toonden de beveiligingsregels voor een netwerkinterface genaamd **myVMVMNic,** maar je hebt ook een netwerkinterface met de naam **myVMVMNic2** gezien in sommige van de vorige foto's. De VM in dit voorbeeld heeft twee netwerkinterfaces aan verbonden. De effectieve beveiligingsregels kunnen voor elke netwerkinterface verschillend zijn.
+5. In de vorige stappen zijn de beveiligings regels voor een netwerk interface met de naam **myVMVMNic**weer gegeven, maar u hebt ook een netwerk interface met de naam **myVMVMNic2** in enkele van de vorige afbeeldingen gezien. Er zijn twee netwerk interfaces gekoppeld aan de virtuele machine in dit voor beeld. De juiste beveiligings regels kunnen verschillen voor elke netwerk interface.
 
-   Als u de regels voor de **myVMVMNic2-netwerkinterface** wilt bekijken, selecteert u deze. Zoals te zien is in de afbeelding die volgt, heeft de netwerkinterface dezelfde regels die aan het subnet zijn gekoppeld als de **myVMVMNic-netwerkinterface,** omdat beide netwerkinterfaces zich in hetzelfde subnet bevinden. Wanneer u een NSG aan een subnet koppelt, worden de regels toegepast op alle netwerkinterfaces in het subnet.
+   Als u de regels voor de **myVMVMNic2** -netwerk interface wilt weer geven, selecteert u deze. Zoals in de volgende afbeelding wordt weer gegeven, heeft de netwerk interface dezelfde regels als de netwerk interface van het **myVMVMNic** , omdat beide netwerk interfaces zich in hetzelfde subnet bevinden. Wanneer u een NSG aan een subnet koppelt, worden de bijbehorende regels toegepast op alle netwerk interfaces in het subnet.
 
-   ![Beveiligingsregels weergeven](./media/diagnose-network-traffic-filter-problem/view-security-rules2.png)
+   ![Beveiligings regels weer geven](./media/diagnose-network-traffic-filter-problem/view-security-rules2.png)
 
-   In tegenstelling tot de **myVMVMNic-netwerkinterface** heeft de **myVMVMNic2-netwerkinterface** geen netwerkbeveiligingsgroep. Elke netwerkinterface en subnet kan nul, of één, NSG verbonden aan het hebben. De NSG die is gekoppeld aan elke netwerkinterface of subnet kan hetzelfde zijn, of anders. U dezelfde netwerkbeveiligingsgroep koppelen aan zoveel netwerkinterfaces en subnetten als u wilt.
+   In tegens telling tot de **myVMVMNic** -netwerk interface is er geen netwerk beveiligings groep gekoppeld aan de **myVMVMNic2** -netwerk interface. Elke netwerk interface en elk subnet kunnen een of meer NSG hebben. De NSG die is gekoppeld aan elke netwerk interface of elk subnet kan hetzelfde zijn of een andere. U kunt dezelfde netwerk beveiligings groep koppelen aan net zoveel netwerk interfaces en subnetten als u kiest.
 
-Hoewel effectieve beveiligingsregels via de VM zijn bekeken, u ook effectieve beveiligingsregels bekijken via een individu:
-- **Netwerkinterface:** meer informatie over het [weergeven van een netwerkinterface.](virtual-network-network-interface.md#view-network-interface-settings)
-- **NSG**: Meer informatie over het [bekijken van een NSG.](manage-network-security-group.md#view-details-of-a-network-security-group)
+Hoewel effectief beveiligings regels zijn bekeken via de virtuele machine, kunt u ook de meest efficiënte beveiligings regels bekijken via een individu:
+- **Netwerk interface**: meer informatie over het [weer geven van een netwerk interface](virtual-network-network-interface.md#view-network-interface-settings).
+- **NSG**: meer informatie over het [weer geven van een NSG](manage-network-security-group.md#view-details-of-a-network-security-group).
 
-## <a name="diagnose-using-powershell"></a>Diagnose stellen met PowerShell
+## <a name="diagnose-using-powershell"></a>Problemen vaststellen met Power shell
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-U de opdrachten uitvoeren die volgen in de [Azure Cloud Shell](https://shell.azure.com/powershell)of door PowerShell vanaf uw computer uit te voeren. De Azure Cloud Shell is een gratis interactieve shell. In deze shell zijn algemene Azure-hulpprogramma's vooraf geïnstalleerd en geconfigureerd voor gebruik met uw account. Als u PowerShell vanaf uw computer uitvoert, hebt u de Azure PowerShell-module, versie 1.0.0 of hoger, nodig. Voer `Get-Module -ListAvailable Az` uit op uw computer om de geïnstalleerde versie te vinden. Als u PowerShell wilt upgraden, raadpleegt u [De Azure PowerShell-module installeren](/powershell/azure/install-az-ps). Als u PowerShell lokaal uitvoert, moet `Connect-AzAccount` u ook uitvoeren om u aan te melden bij Azure met een account dat de [benodigde machtigingen](virtual-network-network-interface.md#permissions)heeft].
+U kunt de opdrachten uitvoeren die volgen in de [Azure Cloud shell](https://shell.azure.com/powershell), of door Power shell uit te voeren vanaf uw computer. De Azure Cloud Shell is een gratis interactieve shell. In deze shell zijn algemene Azure-hulpprogramma's vooraf geïnstalleerd en geconfigureerd voor gebruik met uw account. Als u Power shell vanaf uw computer uitvoert, hebt u de Azure PowerShell module versie 1.0.0 of hoger nodig. Voer `Get-Module -ListAvailable Az` uit op uw computer om de geïnstalleerde versie te vinden. Als u PowerShell wilt upgraden, raadpleegt u [De Azure PowerShell-module installeren](/powershell/azure/install-az-ps). Als u Power shell lokaal uitvoert, moet u ook uitvoeren `Connect-AzAccount` om u aan te melden bij Azure met een account met de [vereiste machtigingen](virtual-network-network-interface.md#permissions)].
 
-Profiteer van de effectieve beveiligingsregels voor een netwerkinterface met [Get-AzEffectiveNetworkSecurityGroup.](/powershell/module/az.network/get-azeffectivenetworksecuritygroup) In het volgende voorbeeld worden de effectieve beveiligingsregels voor een netwerkinterface met de naam *myVMVMNic*, die zich in een resourcegroep met de naam *myResourceGroup bevindt:*
+Haal de juiste beveiligings regels op voor een netwerk interface met [Get-AzEffectiveNetworkSecurityGroup](/powershell/module/az.network/get-azeffectivenetworksecuritygroup). In het volgende voor beeld worden de effectief beveiligings regels opgehaald voor een netwerk interface met de naam *myVMVMNic*, die zich in een resource groep met de naam *myResourceGroup*bevindt:
 
 ```azurepowershell-interactive
 Get-AzEffectiveNetworkSecurityGroup `
@@ -89,19 +89,19 @@ Get-AzEffectiveNetworkSecurityGroup `
   -ResourceGroupName myResourceGroup
 ```
 
-De uitvoer wordt geretourneerd in json-indeling. Zie [Opdrachtuitvoer interpreteren](#interpret-command-output)om de uitvoer te begrijpen.
-Uitvoer wordt alleen geretourneerd als een NSG is gekoppeld aan de netwerkinterface, het subnet waarin de netwerkinterface zich bevindt of beide. De VM moet in de loopstatus zijn. Een VM kan meerdere netwerkinterfaces met verschillende NSG's toepassen. Voer bij het oplossen van problemen de opdracht uit voor elke netwerkinterface.
+Uitvoer wordt geretourneerd in JSON-indeling. Zie [interpretatie van opdracht uitvoer](#interpret-command-output)voor meer informatie over de uitvoer.
+De uitvoer wordt alleen geretourneerd als een NSG is gekoppeld aan de netwerk interface, het subnet waarin de netwerk interface zich bevindt of beide. De virtuele machine moet de status actief hebben. Een virtuele machine kan meerdere netwerk interfaces hebben waarop verschillende Nsg's zijn toegepast. Bij het oplossen van problemen voert u de opdracht uit voor elke netwerk interface.
 
-Als u nog steeds een verbindingsprobleem hebt, raadpleegt u [aanvullende diagnose](#additional-diagnosis) en [overwegingen.](#considerations)
+Als u nog steeds een probleem met de verbinding hebt, raadpleegt u [aanvullende diagnose](#additional-diagnosis) en [overwegingen](#considerations).
 
-Als u de naam van een netwerkinterface niet kent, maar wel de naam weet van de VM waaraan de netwerkinterface is gekoppeld, worden de iD's van alle netwerkinterfaces die aan een VM zijn gekoppeld, als volgt teruggegeven:
+Als u de naam van een netwerk interface niet kent, maar wel de naam weet van de VM waaraan de netwerk interface is gekoppeld, retour neren de volgende opdrachten de Id's van alle netwerk interfaces die zijn gekoppeld aan een virtuele machine:
 
 ```azurepowershell-interactive
 $VM = Get-AzVM -Name myVM -ResourceGroupName myResourceGroup
 $VM.NetworkProfile
 ```
 
-U ontvangt uitvoer die vergelijkbaar is met het volgende voorbeeld:
+U ontvangt uitvoer die er ongeveer zo uitziet als in het volgende voor beeld:
 
 ```output
 NetworkInterfaces
@@ -109,13 +109,13 @@ NetworkInterfaces
 {/subscriptions/<ID>/resourceGroups/myResourceGroup/providers/Microsoft.Network/networkInterfaces/myVMVMNic
 ```
 
-In de vorige uitvoer is de naam van de netwerkinterface *myVMVMNic*.
+In de vorige uitvoer is de naam van de netwerk interface *myVMVMNic*.
 
-## <a name="diagnose-using-azure-cli"></a>Diagnose stellen met Azure CLI
+## <a name="diagnose-using-azure-cli"></a>Diagnoses uitvoeren met Azure CLI
 
-Als u CLI-opdrachten (Azure Command-line interface) gebruikt om taken in dit artikel uit te voeren, voert u de opdrachten uit in de [Azure Cloud Shell](https://shell.azure.com/bash)of door de CLI vanaf uw computer uit te voeren. Dit artikel vereist de Azure CLI-versie 2.0.32 of hoger. Voer `az --version` uit om te kijken welke versie is geïnstalleerd. Als u Azure CLI 2.0 wilt installeren of upgraden, raadpleegt u [Azure CLI 2.0 installeren](/cli/azure/install-azure-cli). Als u de Azure CLI lokaal uitvoert, `az login` moet u ook Azure uitvoeren en aanmelden met een account dat over de [vereiste machtigingen beschikt.](virtual-network-network-interface.md#permissions)
+Als u Azure-opdracht regel interface opdrachten gebruikt om taken in dit artikel te volt ooien, moet u de opdrachten uitvoeren in de [Azure Cloud shell](https://shell.azure.com/bash)of door de CLI vanaf uw computer uit te voeren. Voor dit artikel is de Azure CLI-versie 2.0.32 of hoger vereist. Voer `az --version` uit om te kijken welke versie is geïnstalleerd. Als u Azure CLI 2.0 wilt installeren of upgraden, raadpleegt u [Azure CLI 2.0 installeren](/cli/azure/install-azure-cli). Als u de Azure CLI lokaal uitvoert, moet u ook uitvoeren `az login` en u aanmelden bij Azure met een account dat over de [benodigde machtigingen](virtual-network-network-interface.md#permissions)beschikt.
 
-Haal de effectieve beveiligingsregels voor een netwerkinterface met [az network nic list-effective-nsg](/cli/azure/network/nic#az-network-nic-list-effective-nsg). In het volgende voorbeeld worden de effectieve beveiligingsregels voor een netwerkinterface met de naam *myVMVMNic* gekregen die zich in een resourcegroep met de naam *myResourceGroup bevindt:*
+Haal de juiste beveiligings regels op voor een netwerk interface met [AZ Network NIC List-effectief-NSG](/cli/azure/network/nic#az-network-nic-list-effective-nsg). In het volgende voor beeld worden de effectief beveiligings regels opgehaald voor een netwerk interface met de naam *myVMVMNic* die zich in een resource groep met de naam *myResourceGroup*bevindt:
 
 ```azurecli-interactive
 az network nic list-effective-nsg \
@@ -123,12 +123,12 @@ az network nic list-effective-nsg \
   --resource-group myResourceGroup
 ```
 
-De uitvoer wordt geretourneerd in json-indeling. Zie [Opdrachtuitvoer interpreteren](#interpret-command-output)om de uitvoer te begrijpen.
-Uitvoer wordt alleen geretourneerd als een NSG is gekoppeld aan de netwerkinterface, het subnet waarin de netwerkinterface zich bevindt of beide. De VM moet in de loopstatus zijn. Een VM kan meerdere netwerkinterfaces met verschillende NSG's toepassen. Voer bij het oplossen van problemen de opdracht uit voor elke netwerkinterface.
+Uitvoer wordt geretourneerd in JSON-indeling. Zie [interpretatie van opdracht uitvoer](#interpret-command-output)voor meer informatie over de uitvoer.
+De uitvoer wordt alleen geretourneerd als een NSG is gekoppeld aan de netwerk interface, het subnet waarin de netwerk interface zich bevindt of beide. De virtuele machine moet de status actief hebben. Een virtuele machine kan meerdere netwerk interfaces hebben waarop verschillende Nsg's zijn toegepast. Bij het oplossen van problemen voert u de opdracht uit voor elke netwerk interface.
 
-Als u nog steeds een verbindingsprobleem hebt, raadpleegt u [aanvullende diagnose](#additional-diagnosis) en [overwegingen.](#considerations)
+Als u nog steeds een probleem met de verbinding hebt, raadpleegt u [aanvullende diagnose](#additional-diagnosis) en [overwegingen](#considerations).
 
-Als u de naam van een netwerkinterface niet kent, maar wel de naam weet van de VM waaraan de netwerkinterface is gekoppeld, worden de iD's van alle netwerkinterfaces die aan een VM zijn gekoppeld, als volgt teruggegeven:
+Als u de naam van een netwerk interface niet kent, maar wel de naam weet van de VM waaraan de netwerk interface is gekoppeld, retour neren de volgende opdrachten de Id's van alle netwerk interfaces die zijn gekoppeld aan een virtuele machine:
 
 ```azurecli-interactive
 az vm show \
@@ -136,7 +136,7 @@ az vm show \
   --resource-group myResourceGroup
 ```
 
-Binnen de geretourneerde uitvoer ziet u informatie die vergelijkbaar is met het volgende voorbeeld:
+Binnen de geretourneerde uitvoer ziet u informatie die lijkt op het volgende voor beeld:
 
 ```output
 "networkProfile": {
@@ -150,58 +150,58 @@ Binnen de geretourneerde uitvoer ziet u informatie die vergelijkbaar is met het 
       },
 ```
 
-In de vorige uitvoer is de naam van de netwerkinterface *de myVMVMNic-interface.*
+In de vorige uitvoer is de naam van de netwerk interface *myVMVMNic-interface*.
 
-## <a name="interpret-command-output"></a>Opdrachtuitvoer interpreteren
+## <a name="interpret-command-output"></a>Opdracht uitvoer interpreteren
 
-Ongeacht of u de [PowerShell](#diagnose-using-powershell)of de [Azure CLI](#diagnose-using-azure-cli) hebt gebruikt om het probleem te diagnosticeren, u ontvangt uitvoer die de volgende informatie bevat:
+Ongeacht of u de [Power shell](#diagnose-using-powershell)of de [Azure cli](#diagnose-using-azure-cli) hebt gebruikt om de oorzaak van het probleem vast te stellen, ontvangt u uitvoer die de volgende gegevens bevat:
 
-- **NetworkSecurityGroup**: De ID van de netwerkbeveiligingsgroep.
-- **Koppeling**: Of de netwerkbeveiligingsgroep is gekoppeld aan een *NetworkInterface* of *Subnet*. Als een NSG aan beide is gekoppeld, wordt de uitvoer geretourneerd met **NetworkSecurityGroup,** **Association**en **EffectiveSecurityRules**voor elke NSG. Als de NSG wordt gekoppeld of losgekoppeld voordat de opdracht wordt uitgevoerd om de effectieve beveiligingsregels weer te geven, moet u mogelijk een paar seconden wachten voordat de wijziging wordt weergegeven in de opdrachtuitvoer.
-- **EffectiveSecurityRules**: Een uitleg van elke eigenschap wordt beschreven in [Een beveiligingsregel maken.](manage-network-security-group.md#create-a-security-rule) Regelnamen die voorafgaan aan *defaultSecurityRules/* zijn standaardbeveiligingsregels die in elke NSG bestaan. Regelnamen die voorafgaan aan *securityRules/* zijn regels die u hebt gemaakt. Regels die een [servicetag](security-overview.md#service-tags)opgeven , zoals **Internet**, **VirtualNetwork**en **AzureLoadBalancer** voor de eigenschappen **destinationAddressPrefix** of **sourceAddressPrefix,** bevatten ook waarden voor de eigenschap **expandedDestinationAddressPrefix.** De eigenschap **expandedDestinationAddressPrefix** bevat alle adresvoorvoegsels die worden weergegeven door de servicetag.
+- **NetworkSecurityGroup**: de id van de netwerk beveiligings groep.
+- **Koppeling**: of de netwerk beveiligings groep is gekoppeld aan een *Network Interface* of *subnet*. Als een NSG is gekoppeld aan beide, wordt er voor elke NSG een uitvoer geretourneerd met **NetworkSecurityGroup**, **Association**en **EffectiveSecurityRules**. Als de NSG direct is gekoppeld of ontstaat voordat de opdracht wordt uitgevoerd om de juiste beveiligings regels weer te geven, moet u mogelijk enkele seconden wachten voordat de wijziging in de uitvoer van de opdracht voor komt.
+- **EffectiveSecurityRules**: een uitleg van elke eigenschap wordt beschreven in [een beveiligings regel maken](manage-network-security-group.md#create-a-security-rule). Regel namen die zijn voorafgegaan door *defaultSecurityRules/* zijn standaard beveiligings regels die aanwezig zijn in elke NSG. Regel namen die zijn voorafgegaan door *securityRules/* zijn regels die u hebt gemaakt. Regels [die een servicetag](security-overview.md#service-tags)opgeven, zoals **Internet**, **VirtualNetwork**en **AzureLoadBalancer** voor de eigenschappen **destinationAddressPrefix** of **sourceAddressPrefix** , hebben ook waarden voor de eigenschap **expandedDestinationAddressPrefix** . De eigenschap **expandedDestinationAddressPrefix** geeft een lijst van alle adres voorvoegsels die door de servicetag worden vertegenwoordigd.
 
-Als u dubbele regels in de uitvoer ziet, is dit omdat een NSG is gekoppeld aan zowel de netwerkinterface als het subnet. Beide NSG's hebben dezelfde standaardregels en kunnen aanvullende dubbele regels hebben als u uw eigen regels hebt gemaakt die in beide NSG's hetzelfde zijn.
+Als er dubbele regels worden weer gegeven in de uitvoer, komt dit doordat er een NSG is gekoppeld aan de netwerk interface en het subnet. Beide Nsg's hebben dezelfde standaard regels en kunnen extra dubbele regels hebben als u uw eigen regels hebt gemaakt die in beide Nsg's hetzelfde zijn.
 
-De regel met de naam **defaultSecurityRules/DenyAllInBound** is wat inkomende communicatie naar de VM via poort 80 verhindert, vanaf het internet, zoals beschreven in het [scenario.](#scenario) Geen enkele andere regel met een hogere prioriteit (lager getal) maakt poort 80 binnenkomend vanaf het internet mogelijk.
+De regel met de naam **defaultSecurityRules/DenyAllInBound** is wat het voor komen van binnenkomende communicatie met de virtuele machine via poort 80, via internet, zoals beschreven in het [scenario](#scenario). Geen andere regel met een hogere prioriteit (lager nummer) staat poort 80 inkomende van Internet toe.
 
 ## <a name="resolve-a-problem"></a>Een probleem oplossen
 
-Of u nu de [Azure-portal,](#diagnose-using-azure-portal) [PowerShell](#diagnose-using-powershell)of de [Azure CLI](#diagnose-using-azure-cli) gebruikt om het probleem te diagnosticeren dat in het [scenario](#scenario) in dit artikel wordt gepresenteerd, de oplossing is het maken van een netwerkbeveiligingsregel met de volgende eigenschappen:
+Of u de Azure- [Portal](#diagnose-using-azure-portal), [Power shell](#diagnose-using-powershell)of de [Azure cli](#diagnose-using-azure-cli) gebruikt om vast te stellen welk probleem in het [scenario](#scenario) in dit artikel wordt weer gegeven, is de oplossing om een netwerk beveiligings regel te maken met de volgende eigenschappen:
 
 | Eigenschap                | Waarde                                                                              |
 |---------                |---------                                                                           |
 | Bron                  | Alle                                                                                |
 | Poortbereiken van bron      | Alle                                                                                |
-| Doel             | Het IP-adres van de VM, een reeks IP-adressen of alle adressen in het subnet. |
+| Doel             | Het IP-adres van de virtuele machine, een bereik van IP-adressen of alle adressen in het subnet. |
 | Poortbereiken van doel | 80                                                                                 |
 | Protocol                | TCP                                                                                |
-| Actie                  | Toestaan                                                                              |
+| Bewerking                  | Toestaan                                                                              |
 | Prioriteit                | 100                                                                                |
-| Name                    | Allow-HTTP-All                                                                     |
+| Naam                    | Allow-HTTP-all                                                                     |
 
-Nadat u de regel hebt gemaakt, is poort 80 toegestaan om van internet te worden opgenomen, omdat de prioriteit van de regel hoger is dan de standaardbeveiligingsregel met de naam *DenyAllInBound*, die het verkeer weigert. Meer informatie over het [maken van een beveiligingsregel](manage-network-security-group.md#create-a-security-rule). Als er verschillende NSG's zijn gekoppeld aan zowel de netwerkinterface als het subnet, moet u in beide NSG's dezelfde regel maken.
+Nadat u de regel hebt gemaakt, wordt poort 80 inkomende van Internet toegestaan, omdat de prioriteit van de regel hoger is dan de standaard beveiligings regel met de naam *DenyAllInBound*, die het verkeer weigert. Meer informatie over het [maken van een beveiligings regel](manage-network-security-group.md#create-a-security-rule). Als verschillende Nsg's zijn gekoppeld aan de netwerk interface en het subnet, moet u dezelfde regel maken in beide Nsg's.
 
-Wanneer Azure binnenkomend verkeer verwerkt, worden regels verwerkt in de NSG die aan het subnet zijn gekoppeld (als er een bijbehorende NSG is) en verwerkt het vervolgens de regels in de NSG die zijn gekoppeld aan de netwerkinterface. Als er een NSG is gekoppeld aan de netwerkinterface en het subnet, moet de poort in beide NSG's geopend zijn, om het verkeer de VM te kunnen bereiken. Om administratieve en communicatieproblemen te verlichten, raden we u aan een NSG te koppelen aan een subnet, in plaats van aan individuele netwerkinterfaces. Als VM's binnen een subnet andere beveiligingsregels nodig hebben, u de netwerkinterfaces lid maken van een toepassingsbeveiligingsgroep (ASG) en een ASG opgeven als bron en bestemming van een beveiligingsregel. Meer informatie over [toepassingsbeveiligingsgroepen](security-overview.md#application-security-groups).
+Wanneer het inkomende verkeer door Azure wordt verwerkt, worden de regels in de NSG die zijn gekoppeld aan het subnet (als er een gekoppelde NSG is) verwerkt. vervolgens worden de regels verwerkt in de NSG die aan de netwerk interface is gekoppeld. Als er een NSG is gekoppeld aan de netwerk interface en het subnet, moet de poort zijn geopend in beide Nsg's, zodat het verkeer de virtuele machine kan bereiken. Voor het vereenvoudigen van beheer-en communicatie problemen raden wij aan dat u een NSG aan een subnet koppelt in plaats van afzonderlijke netwerk interfaces. Als Vm's binnen een subnet verschillende beveiligings regels nodig hebben, kunt u de netwerk interfaces lid maken van een toepassings beveiligings groep (ASG) en een ASG opgeven als de bron en het doel van een beveiligings regel. Meer informatie over [toepassings beveiligings groepen](security-overview.md#application-security-groups).
 
-Zie [Overwegingen](#considerations) en aanvullende diagnose als u nog steeds communicatieproblemen hebt.
+Als u nog steeds communicatie problemen ondervindt, raadpleegt u [overwegingen](#considerations) en aanvullende diagnose.
 
 ## <a name="considerations"></a>Overwegingen
 
-Houd rekening met de volgende punten bij het oplossen van verbindingsproblemen:
+Houd rekening met de volgende punten bij het oplossen van verbindings problemen:
 
-* Standaardbeveiligingsregels blokkeren binnenkomende toegang vanaf het internet en staan alleen binnenkomend verkeer van het virtuele netwerk toe. Als u binnenkomend verkeer van internet wilt toestaan, voegt u beveiligingsregels toe met een hogere prioriteit dan standaardregels. Meer informatie over [standaardbeveiligingsregels](security-overview.md#default-security-rules)of het [toevoegen van een beveiligingsregel](manage-network-security-group.md#create-a-security-rule).
-* Als u virtuele netwerken hebt peered, wordt de **VIRTUAL_NETWORK** servicetag standaard automatisch uitgebreid met voorvoegsels voor virtuele netwerken met peered. Als u problemen met virtuele netwerkpeering wilt oplossen, u de voorvoegsels weergeven in de lijst **ExpandedAddressPrefix.** Meer informatie over [virtuele netwerkpeering](virtual-network-peering-overview.md) en [servicetags](security-overview.md#service-tags).
-* Effectieve beveiligingsregels worden alleen weergegeven voor een netwerkinterface als er een NSG is gekoppeld aan de netwerkinterface van de VM en of subnet of als de VM in de uitvoeringsstatus is.
-* Als er geen NSG's zijn gekoppeld aan de netwerkinterface of het subnet en u een [openbaar IP-adres](virtual-network-public-ip-address.md) hebt toegewezen aan een VM, zijn alle poorten open voor inkomende toegang van en uitgaande toegang tot overal. Als de VM een openbaar IP-adres heeft, raden we u aan een NSG toe te passen op het subnet van de netwerkinterface.
+* Standaard beveiligings regels blok keren binnenkomende toegang vanaf het internet en geven alleen binnenkomend verkeer van het virtuele netwerk toe. Als u inkomend verkeer van het Internet wilt toestaan, voegt u beveiligings regels toe met een hogere prioriteit dan standaard regels. Meer informatie over [standaard beveiligings regels](security-overview.md#default-security-rules)of over het [toevoegen van een beveiligings regel](manage-network-security-group.md#create-a-security-rule).
+* Als u gepeerde virtuele netwerken hebt, wordt de **VIRTUAL_NETWORK** service-tag standaard automatisch uitgebreid met voor voegsels voor gekoppelde virtuele netwerken. U kunt de voor voegsels in de lijst **ExpandedAddressPrefix** bekijken om problemen met de peering van het virtuele netwerk op te lossen. Meer informatie over [peering](virtual-network-peering-overview.md) en [service Tags](security-overview.md#service-tags)voor virtuele netwerken.
+* Effectief beveiligings regels worden alleen weer gegeven voor een netwerk interface als er een NSG is gekoppeld aan de netwerk interface van de VM en, of subnet, en als de virtuele machine de status actief heeft.
+* Als er geen Nsg's is gekoppeld aan de netwerk interface of het subnet en u een [openbaar IP-adres](virtual-network-public-ip-address.md) hebt toegewezen aan een virtuele machine, zijn alle poorten geopend voor inkomende toegang vanaf en uitgaande toegang tot elke locatie. Als de virtuele machine een openbaar IP-adres heeft, kunt u het beste een NSG Toep assen op het subnet van de netwerk interface.
 
 ## <a name="additional-diagnosis"></a>Aanvullende diagnose
 
-* Als u een snelle test wilt uitvoeren om te bepalen of verkeer van of naar een vm is toegestaan, gebruikt u de [IP-stroomverificatiemogelijkheid](../network-watcher/diagnose-vm-network-traffic-filtering-problem.md) van Azure Network Watcher. Ip-stroomcontrole geeft aan of verkeer is toegestaan of geweigerd. Als geweigerd wordt, geeft IP-stroomverificatie aan welke beveiligingsregel het verkeer wordt geweigerd.
-* Als er geen beveiligingsregels zijn waardoor de netwerkverbinding van een VM mislukt, kan het probleem te wijten zijn aan:
-  * Firewallsoftware die binnen het besturingssysteem van de VM wordt uitgevoerd
-  * Routes geconfigureerd voor virtuele apparaten of on-premises verkeer. Internetverkeer kan via [geforceerde tunneling](../vpn-gateway/vpn-gateway-forced-tunneling-rm.md?toc=%2fazure%2fvirtual-network%2ftoc.json)naar uw on-premises netwerk worden doorgestuurd. Als u tunnelinternet naar een virtueel apparaat of on-premises forceert, u mogelijk geen verbinding maken met de vm via internet. Zie Een probleem met het routeren van [virtuele machines diagnosticeren](diagnose-network-routing-problem.md)voor meer informatie over het diagnosticeren van routeproblemen die de doorstroming van het verkeer uit de VM kunnen belemmeren.
+* Als u een snelle test wilt uitvoeren om te bepalen of verkeer is toegestaan van of naar een virtuele machine, gebruikt u de [IP-stroom controle](../network-watcher/diagnose-vm-network-traffic-filtering-problem.md) van Azure Network Watcher. Met IP-stroom controle wordt aangegeven of verkeer wordt toegestaan of geweigerd. Als u deze weigert, geeft u aan welke beveiligings regel het verkeer weigert.
+* Als er geen beveiligings regels zijn die de netwerk connectiviteit van een virtuele machine laten mislukken, kan dit probleem worden veroorzaakt door:
+  * Firewall software die wordt uitgevoerd binnen het besturings systeem van de virtuele machine
+  * Routes die zijn geconfigureerd voor virtuele apparaten of on-premises verkeer. Internet verkeer kan worden omgeleid naar uw on-premises netwerk via [geforceerde tunneling](../vpn-gateway/vpn-gateway-forced-tunneling-rm.md?toc=%2fazure%2fvirtual-network%2ftoc.json). Als u het Internet verkeer van de tunnel naar een virtueel apparaat of on-premises afdwingt, kunt u mogelijk geen verbinding maken met de virtuele machine via internet. Zie [een probleem met een netwerk verkeer van een virtuele machine diagnosticeren](diagnose-network-routing-problem.md)voor meer informatie over het vaststellen van route problemen die de stroom van verkeer van de VM kunnen belemmeren.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Meer informatie over alle taken, eigenschappen en instellingen voor een [netwerkbeveiligingsgroep](manage-network-security-group.md#work-with-network-security-groups) en [beveiligingsregels](manage-network-security-group.md#work-with-security-rules).
-- Meer informatie over [standaardbeveiligingsregels,](security-overview.md#default-security-rules) [servicetags](security-overview.md#service-tags)en [hoe Azure beveiligingsregels voor binnenkomend en uitgaand verkeer](security-overview.md#network-security-groups) voor een virtuele machine verwerkt.
+- Meer informatie over alle taken, eigenschappen en instellingen voor een [netwerk beveiligings groep](manage-network-security-group.md#work-with-network-security-groups) en [beveiligings regels](manage-network-security-group.md#work-with-security-rules).
+- Meer informatie over [standaard beveiligings regels](security-overview.md#default-security-rules), [service Tags](security-overview.md#service-tags)en [hoe Azure beveiligings regels voor binnenkomend en uitgaand verkeer](security-overview.md#network-security-groups) voor een virtuele machine verwerkt.

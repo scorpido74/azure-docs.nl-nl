@@ -1,6 +1,6 @@
 ---
-title: Scriptactie voor Python-pakketten met Jupyter op Azure HDInsight
-description: Stapsgewijze instructies voor het gebruik van scriptactie om Jupyter-laptops te configureren die beschikbaar zijn met HDInsight Spark-clusters om externe python-pakketten te gebruiken.
+title: Script actie voor python-pakketten met Jupyter in azure HDInsight
+description: Stapsgewijze instructies voor het gebruik van script actie voor het configureren van Jupyter-notebooks die beschikbaar zijn met HDInsight Spark-clusters voor het gebruik van externe Python-pakketten.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -8,45 +8,45 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 03/16/2020
 ms.openlocfilehash: 659af8b85cb3736d663e79676b04af8041aeabfb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80129598"
 ---
 # <a name="safely-manage-python-environment-on-azure-hdinsight-using-script-action"></a>Een Python-omgeving veilig beheren in Azure HDInsight met scriptactie
 
 > [!div class="op_single_selector"]
-> * [Celmagie gebruiken](apache-spark-jupyter-notebook-use-external-packages.md)
-> * [Scriptactie gebruiken](apache-spark-python-package-installation.md)
+> * [Cell Magic gebruiken](apache-spark-jupyter-notebook-use-external-packages.md)
+> * [Script actie gebruiken](apache-spark-python-package-installation.md)
 
-HDInsight heeft twee ingebouwde Python-installaties in het Spark-cluster, Anaconda Python 2.7 en Python 3.5. In sommige gevallen moeten klanten de Python-omgeving aanpassen, zoals het installeren van externe Python-pakketten of een andere Python-versie. In dit artikel tonen we de beste praktijken van het veilig beheren van Python-omgevingen voor een [Apache Spark-cluster](./apache-spark-overview.md) op HDInsight.
+HDInsight heeft twee ingebouwde python-installaties in het Spark-cluster, Anaconda python 2,7 en python 3,5. In sommige gevallen moeten klanten de python-omgeving aanpassen, zoals het installeren van externe Python-pakketten of een andere python-versie. In dit artikel laten we de best practice zien van het veilig beheren van python-omgevingen voor een [Apache Spark](./apache-spark-overview.md) cluster op HDInsight.
 
 ## <a name="prerequisites"></a>Vereisten
 
-Een Apache Spark-cluster in HDInsight. Zie [Apache Spark-clusters maken in Azure HDInsight](apache-spark-jupyter-spark-sql.md) voor instructies. Als u nog geen Spark-cluster op HDInsight hebt, u scriptacties uitvoeren tijdens het maken van een cluster. Ga naar de documentatie over [het gebruik van aangepaste scriptacties.](../hdinsight-hadoop-customize-cluster-linux.md)
+Een Apache Spark-cluster in HDInsight. Zie [Apache Spark-clusters maken in Azure HDInsight](apache-spark-jupyter-spark-sql.md) voor instructies. Als u nog geen Spark-cluster op HDInsight hebt, kunt u script acties uitvoeren tijdens het maken van het cluster. Raadpleeg de documentatie over [het gebruik van aangepaste script acties](../hdinsight-hadoop-customize-cluster-linux.md).
 
-## <a name="support-for-open-source-software-used-on-hdinsight-clusters"></a>Ondersteuning voor open-source software die wordt gebruikt op HDInsight-clusters
+## <a name="support-for-open-source-software-used-on-hdinsight-clusters"></a>Ondersteuning voor open-source software die wordt gebruikt in HDInsight-clusters
 
-De Microsoft Azure HDInsight-service maakt gebruik van een ecosysteem van open-source technologieën die zijn gevormd rond Apache Hadoop. Microsoft Azure biedt een algemeen ondersteuningsniveau voor open-sourcetechnologieën. Zie [De veelgestelde vragen over Azure Support](https://azure.microsoft.com/support/faq/)voor meer informatie. De HDInsight-service biedt een extra ondersteuningsniveau voor ingebouwde componenten.
+De Microsoft Azure HDInsight-service gebruikt een ecosysteem van open-source technologieën die zijn gevormd rond Apache Hadoop. Microsoft Azure biedt een algemeen ondersteunings niveau voor open-source technologieën. Zie de [website met veelgestelde vragen over Azure-ondersteuning](https://azure.microsoft.com/support/faq/)voor meer informatie. De HDInsight-service biedt een extra ondersteunings niveau voor ingebouwde componenten.
 
-Er zijn twee soorten opensourcecomponenten die beschikbaar zijn in de HDInsight-service:
+Er zijn twee soorten open source-onderdelen die beschikbaar zijn in de HDInsight-service:
 
 |Onderdeel |Beschrijving |
 |---|---|
-|Ingebouwd|Deze componenten zijn vooraf geïnstalleerd op HDInsight-clusters en bieden kernfunctionaliteit van het cluster. Apache Hadoop YARN Resource Manager, de Apache Hive-querytaal (HiveQL) en de Mahout-bibliotheek behoren bijvoorbeeld tot deze categorie. Een volledige lijst met clustercomponenten is beschikbaar in [Wat nieuw is in de Apache Hadoop-clusterversies van HDInsight.](../hdinsight-component-versioning.md)|
-|Aangepast telefoonnummer|U, als gebruiker van het cluster, elk onderdeel dat beschikbaar is in de community of door u is gemaakt, in uw werkbelasting installeren of gebruiken.|
+|Ingebouwd|Deze onderdelen zijn vooraf geïnstalleerd op HDInsight-clusters en bieden kern functionaliteit van het cluster. Bijvoorbeeld Apache Hadoop GARENs Resource Manager, de Apache Hive query language (HiveQL) en de mahout-bibliotheek behoren tot deze categorie. Een volledige lijst met cluster onderdelen is beschikbaar in [Wat is er nieuw in de Apache Hadoop cluster versies van HDInsight](../hdinsight-component-versioning.md).|
+|Aangepast|Als gebruiker van het cluster kan in uw workload elk onderdeel dat beschikbaar is in de community, worden geïnstalleerd of gebruikt, of door u gemaakt.|
 
 > [!IMPORTANT]
-> Onderdelen die bij het HDInsight-cluster worden geleverd, worden volledig ondersteund. Microsoft Support helpt bij het isoleren en oplossen van problemen met betrekking tot deze onderdelen.
+> Onderdelen die worden meegeleverd met het HDInsight-cluster, worden volledig ondersteund. Microsoft Ondersteuning helpt bij het isoleren en oplossen van problemen met betrekking tot deze onderdelen.
 >
-> Aangepaste componenten ontvangen commercieel redelijke ondersteuning om u te helpen het probleem verder op te lossen. Microsoft-ondersteuning kan het probleem mogelijk oplossen OF ze kunnen u vragen om beschikbare kanalen in te schakelen voor de open source-technologieën waar diepgaande expertise voor die technologie wordt gevonden. Er zijn bijvoorbeeld veel communitysites die kunnen worden gebruikt, zoals: [https://stackoverflow.com](https://stackoverflow.com) [MSDN-forum voor HDInsight](https://social.msdn.microsoft.com/Forums/azure/home?forum=hdinsight), . Ook Apache projecten hebben [https://apache.org](https://apache.org)projectsites op , bijvoorbeeld: [Hadoop](https://hadoop.apache.org/).
+> Aangepaste onderdelen ontvangen commercieel redelijke ondersteuning om u te helpen het probleem verder op te lossen. Micro soft ondersteuning kan het probleem mogelijk oplossen of u wordt gevraagd beschik bare kanalen te betrekken voor de open source-technologieën waar diep gaande expertise voor die technologie wordt gevonden. Er zijn bijvoorbeeld veel community-sites die kunnen worden gebruikt, zoals: MSDN- [https://stackoverflow.com](https://stackoverflow.com) [forum voor HDInsight](https://social.msdn.microsoft.com/Forums/azure/home?forum=hdinsight). Ook Apache-projecten hebben project sites [https://apache.org](https://apache.org)op, bijvoorbeeld: [Hadoop](https://hadoop.apache.org/).
 
-## <a name="understand-default-python-installation"></a>Standaardpython-installatie begrijpen
+## <a name="understand-default-python-installation"></a>Informatie over de standaard installatie van python
 
-HDInsight Spark cluster is gemaakt met Anaconda installatie. Er zijn twee Python-installaties in het cluster, Anaconda Python 2.7 en Python 3.5. De onderstaande tabel toont de standaard Python-instellingen voor Spark, Livy en Jupyter.
+HDInsight Spark-cluster wordt gemaakt met Anaconda-installatie. Er zijn twee python-installaties in het cluster, Anaconda python 2,7 en python 3,5. In de volgende tabel ziet u de standaard python-instellingen voor Spark, livy en Jupyter.
 
-| |Python 2.7|Python 3.5|
+| |Python 2,7|Python 3,5|
 |----|----|----|
 |Pad|/usr/bin/anaconda/bin|/usr/bin/anaconda/envs/py35/bin|
 |Spark|Standaard ingesteld op 2,7|N.v.t.|
@@ -55,103 +55,103 @@ HDInsight Spark cluster is gemaakt met Anaconda installatie. Er zijn twee Python
 
 ## <a name="safely-install-external-python-packages"></a>Externe Python-pakketten veilig installeren
 
-HdInsight-cluster is afhankelijk van de ingebouwde Python-omgeving, zowel Python 2.7 als Python 3.5. Het direct installeren van aangepaste pakketten in die standaard ingebouwde omgevingen kan onverwachte wijzigingen in de bibliotheekversie veroorzaken en het cluster verder breken. Volg de volgende stappen om op maat gemaakte externe Python-pakketten voor uw Spark-toepassingen veilig te installeren.
+HDInsight-cluster is afhankelijk van de ingebouwde python-omgeving, zowel python 2,7 als python 3,5. Rechtstreeks installeren van aangepaste pakketten in deze ingebouwde omgevingen kan leiden tot onverwachte wijzigingen in de bibliotheek versie en het cluster verder verstoren. Volg de onderstaande stappen om veilig aangepaste externe Python-pakketten voor uw Spark-toepassingen te installeren.
 
-1. Maak de virtuele omgeving van Python met behulp van conda. Een virtuele omgeving biedt een geïsoleerde ruimte voor uw projecten zonder anderen te breken. Bij het maken van de virtuele Python-omgeving u de python-versie opgeven die u wilt gebruiken. Houd er rekening mee dat u nog steeds een virtuele omgeving moet maken, ook al wilt u Python 2.7 en 3.5 gebruiken. Dit is om ervoor te zorgen dat de standaardomgeving van het cluster niet wordt verbroken. Voer scriptacties uit op uw cluster voor alle knooppunten met onderstaand script om een virtuele Python-omgeving te maken.
+1. Maak een virtuele python-omgeving met behulp van Conda. Een virtuele omgeving biedt een geïsoleerde ruimte voor uw projecten zonder dat anderen dat doen. Bij het maken van de virtuele python-omgeving kunt u een python-versie opgeven die u wilt gebruiken. U moet nog steeds een virtuele omgeving maken, zelfs als u python 2,7 en 3,5 wilt gebruiken. Zo zorgt u ervoor dat de standaard omgeving van het cluster niet wordt verbroken. Voer script acties uit op uw cluster voor alle knoop punten met het onderstaande script om een virtuele python-omgeving te maken.
 
-    -   `--prefix`hiermee wordt een pad opgegeven waar een virtuele conda-omgeving leeft. Er zijn verschillende configs die verder moeten worden gewijzigd op basis van het pad dat hier is opgegeven. In dit voorbeeld gebruiken we de py35new, omdat het cluster al een bestaande virtuele omgeving heeft die py35 heet.
-    -   `python=`hiermee wordt de Python-versie voor de virtuele omgeving opgegeven. In dit voorbeeld gebruiken we versie 3.5, dezelfde versie als het cluster dat in één is ingebouwd. U ook andere Python-versies gebruiken om de virtuele omgeving te maken.
-    -   `anaconda`geeft de package_spec als anaconda om Anaconda-pakketten in de virtuele omgeving te installeren.
+    -   `--prefix`Hiermee geeft u een pad op waar de virtuele Conda-omgeving zich bevindt. Er zijn verschillende configuraties die verder moeten worden gewijzigd op basis van het pad dat hier wordt opgegeven. In dit voor beeld gebruiken we de py35new, omdat het cluster al een bestaande virtuele omgeving met de naam py35 bevat.
+    -   `python=`Hiermee geeft u de python-versie op voor de virtuele omgeving. In dit voor beeld gebruiken we versie 3,5, dezelfde versie als het cluster dat in één is ingebouwd. U kunt ook andere python-versies gebruiken om de virtuele omgeving te maken.
+    -   `anaconda`Hiermee geeft u de package_spec als Anaconda voor het installeren van Anaconda-pakketten in de virtuele omgeving.
     
     ```bash
     sudo /usr/bin/anaconda/bin/conda create --prefix /usr/bin/anaconda/envs/py35new python=3.5 anaconda --yes
     ```
 
-2. Installeer indien nodig externe Python-pakketten in de gemaakte virtuele omgeving. Voer scriptacties uit op uw cluster voor alle knooppunten met onderstaand script om externe Python-pakketten te installeren. Je moet sudo privilege hier hebben om bestanden te schrijven naar de virtuele omgeving map.
+2. Installeer indien nodig externe Python-pakketten in de gemaakte virtuele omgeving. Voer script acties uit op uw cluster voor alle knoop punten met het onderstaande script om externe Python-pakketten te installeren. U moet hier sudo-bevoegdheden hebben om bestanden te kunnen schrijven naar de map virtuele omgeving.
 
-    U zoeken in de [pakketindex](https://pypi.python.org/pypi) voor de volledige lijst met pakketten die beschikbaar zijn. U ook een lijst met beschikbare pakketten uit andere bronnen krijgen. U bijvoorbeeld pakketten installeren die beschikbaar worden gesteld via [conda-forge.](https://conda-forge.org/feedstocks/)
+    U kunt de [pakket index](https://pypi.python.org/pypi) doorzoeken voor de volledige lijst met pakketten die beschikbaar zijn. U kunt ook een lijst met beschik bare pakketten uit andere bronnen ophalen. U kunt bijvoorbeeld pakketten installeren die beschikbaar worden gesteld via [Conda-vervalsing](https://conda-forge.org/feedstocks/).
 
-    Gebruik onderstaande opdracht als u een bibliotheek met de nieuwste versie wilt installeren:
+    Gebruik de onderstaande opdracht als u een bibliotheek met de meest recente versie wilt installeren:
 
-    - Gebruik conda-kanaal:
+    - Conda-kanaal gebruiken:
 
-        -   `seaborn`is de pakketnaam die u wilt installeren.
-        -   `-n py35new`de naam van de virtuele omgeving opgeven die net wordt gemaakt. Zorg ervoor dat u de naam dienovereenkomstig wijzigt op basis van het maken van uw virtuele omgeving.
+        -   `seaborn`is de naam van het pakket dat u wilt installeren.
+        -   `-n py35new`Geef de naam op van de virtuele omgeving die zojuist wordt gemaakt. Zorg ervoor dat u de naam wijzigt die overeenkomt met het maken van uw virtuele omgeving.
 
         ```bash
         sudo /usr/bin/anaconda/bin/conda install seaborn -n py35new --yes
         ```
 
-    - Of gebruik PyPi repo, wijzigen `seaborn` en `py35new` overeenkomstig:
+    - Of gebruik PyPi opslag plaats, Wijzig `seaborn` en `py35new` dienovereenkomstig:
         ```bash
         sudo /usr/bin/anaconda/env/py35new/bin/pip install seaborn
         ```
 
-    Gebruik onderstaande opdracht als u een bibliotheek met een specifieke versie wilt installeren:
+    Gebruik de onderstaande opdracht als u een bibliotheek met een specifieke versie wilt installeren:
 
-    - Gebruik conda-kanaal:
+    - Conda-kanaal gebruiken:
 
-        -   `numpy=1.16.1`is de naam en versie van het pakket die u wilt installeren.
-        -   `-n py35new`de naam van de virtuele omgeving opgeven die net wordt gemaakt. Zorg ervoor dat u de naam dienovereenkomstig wijzigt op basis van het maken van uw virtuele omgeving.
+        -   `numpy=1.16.1`is de naam en versie van het pakket dat u wilt installeren.
+        -   `-n py35new`Geef de naam op van de virtuele omgeving die zojuist wordt gemaakt. Zorg ervoor dat u de naam wijzigt die overeenkomt met het maken van uw virtuele omgeving.
 
         ```bash
         sudo /usr/bin/anaconda/bin/conda install numpy=1.16.1 -n py35new --yes
         ```
 
-    - Of gebruik PyPi repo, wijzigen `numpy==1.16.1` en `py35new` overeenkomstig:
+    - Of gebruik PyPi opslag plaats, Wijzig `numpy==1.16.1` en `py35new` dienovereenkomstig:
 
         ```bash
         sudo /usr/bin/anaconda/env/py35new/bin/pip install numpy==1.16.1
         ```
 
-    Als u de naam van de virtuele omgeving niet kent, u `/usr/bin/anaconda/bin/conda info -e` SSH naar het hoofdknooppunt van het cluster leiden en uitvoeren om alle virtuele omgevingen weer te geven.
+    Als u de naam van de virtuele omgeving niet weet, kunt u SSHen naar het hoofd knooppunt van het `/usr/bin/anaconda/bin/conda info -e` cluster en uitvoeren om alle virtuele omgevingen weer te geven.
 
-3. Verander Spark en Livy configs en wijs naar de gecreëerde virtuele omgeving.
+3. Wijzig Spark-en livy-configuraties en ga naar de gemaakte virtuele omgeving.
 
-    1. Open Ambari UI, ga naar Spark2-pagina, tabblad Configs.
+    1. Open Ambari-gebruikers interface, ga naar Spark2-pagina, tabblad Configuratie.
 
-        ![Verandering Spark en Livy config via Ambari](./media/apache-spark-python-package-installation/ambari-spark-and-livy-config.png)
+        ![Spark-en livy-configuratie wijzigen via Ambari](./media/apache-spark-python-package-installation/ambari-spark-and-livy-config.png)
 
-    2. Vouw Geavanceerde livy2-env uit en voeg hieronder onderstaande instructies toe onderaan. Als u de virtuele omgeving met een ander voorvoegsel hebt geïnstalleerd, wijzigt u het pad overeenkomstig.
+    2. Vouw Geavanceerd livy2-env uit en voeg onderaan de instructies toe. Als u de virtuele omgeving met een ander voor voegsel hebt geïnstalleerd, wijzigt u het pad dienovereenkomstig.
 
         ```
         export PYSPARK_PYTHON=/usr/bin/anaconda/envs/py35new/bin/python
         export PYSPARK_DRIVER_PYTHON=/usr/bin/anaconda/envs/py35new/bin/python
         ```
 
-        ![Verandering Livy config via Ambari](./media/apache-spark-python-package-installation/ambari-livy-config.png)
+        ![Livy-configuratie wijzigen via Ambari](./media/apache-spark-python-package-installation/ambari-livy-config.png)
 
-    3. Breid Advanced spark2-env uit en vervang de bestaande exportPYSPARK_PYTHON-instructie onderaan. Als u de virtuele omgeving met een ander voorvoegsel hebt geïnstalleerd, wijzigt u het pad overeenkomstig.
+    3. Vouw Advanced spark2-env uit en vervang de bestaande instructie export PYSPARK_PYTHON onderaan. Als u de virtuele omgeving met een ander voor voegsel hebt geïnstalleerd, wijzigt u het pad dienovereenkomstig.
 
         ```
         export PYSPARK_PYTHON=${PYSPARK_PYTHON:-/usr/bin/anaconda/envs/py35new/bin/python}
         ```
 
-        ![Verander Spark config via Ambari](./media/apache-spark-python-package-installation/ambari-spark-config.png)
+        ![Spark-configuratie wijzigen via Ambari](./media/apache-spark-python-package-installation/ambari-spark-config.png)
 
-    4. Sla de wijzigingen op en start de getroffen services opnieuw op. Deze wijzigingen moeten opnieuw worden gestart met de Spark2-service. Ambari UI vraagt een vereiste herinnering voor het opnieuw starten, klik op Opnieuw starten om alle betrokken services opnieuw te starten.
+    4. Sla de wijzigingen op en start de betrokken services opnieuw. Voor deze wijzigingen moet de Spark2-service opnieuw worden gestart. De Ambari-gebruikers interface vraagt een vereiste herinnering opnieuw op te starten. Klik op opnieuw opstarten om alle betrokken services opnieuw te starten.
 
-        ![Verander Spark config via Ambari](./media/apache-spark-python-package-installation/ambari-restart-services.png)
+        ![Spark-configuratie wijzigen via Ambari](./media/apache-spark-python-package-installation/ambari-restart-services.png)
 
-4. Als u de nieuwe gecreëerde virtuele omgeving op Jupyter wilt gebruiken. Je moet Jupyter configs veranderen en Jupyter opnieuw opstarten. Voer scriptacties uit op alle kopknooppunten met onderstaande instructie om Jupyter naar de nieuwe virtuele omgeving te wijzen. Zorg ervoor dat u het pad wijzigt naar het voorvoegsel dat u hebt opgegeven voor uw virtuele omgeving. Nadat u deze scriptactie hebt uitgevoerd, start u de Jupyter-service opnieuw op via de Ambari-gebruikersinterface om deze wijziging beschikbaar te maken.
+4. Als u de nieuwe virtuele omgeving die u hebt gemaakt, wilt gebruiken op Jupyter. U moet Jupyter-configuraties wijzigen en Jupyter opnieuw starten. Voer script acties uit op alle hoofd knooppunten met de instructie hieronder om Jupyter naar de nieuwe virtuele omgeving te wijzen. Zorg ervoor dat u het pad naar het voor voegsel dat u hebt opgegeven voor uw virtuele omgeving wijzigt. Nadat u deze script actie hebt uitgevoerd, start u de Jupyter-service opnieuw via de Ambari-gebruikers interface om deze wijziging beschikbaar te maken.
 
     ```bash
     sudo sed -i '/python3_executable_path/c\ \"python3_executable_path\" : \"/usr/bin/anaconda/envs/py35new/bin/python3\"' /home/spark/.sparkmagic/config.json
     ```
 
-    U de Python-omgeving in Jupyter Notebook dubbel bevestigen door onderstaande code uit te voeren:
+    U kunt de python-omgeving in Jupyter Notebook dubbel bevestigen door de volgende code uit te voeren:
 
-    ![Python-versie controleren in Jupyter-notitieblok](./media/apache-spark-python-package-installation/check-python-version-in-jupyter.png)
+    ![Python-versie controleren in Jupyter Notebook](./media/apache-spark-python-package-installation/check-python-version-in-jupyter.png)
 
 ## <a name="known-issue"></a>Bekend probleem
 
-Er is een bekende bug voor Anaconda versie 4.7.11, 4.7.12 en 4.8.0. Als u ziet dat `"Collecting package metadata (repodata.json): ...working..."` uw script `"Python script has been killed due to timeout after waiting 3600 secs"`acties opknoping op en niet met . U [dit script](https://gregorysfixes.blob.core.windows.net/public/fix-conda.sh) downloaden en uitvoeren als scriptacties op alle knooppunten om het probleem op te lossen.
+Er is een bekende fout voor Anaconda-versie 4.7.11, 4.7.12 en 4.8.0. Als uw script acties zijn vastgelopen in `"Collecting package metadata (repodata.json): ...working..."` en mislukken met. `"Python script has been killed due to timeout after waiting 3600 secs"` U kunt [Dit script](https://gregorysfixes.blob.core.windows.net/public/fix-conda.sh) downloaden en uitvoeren als script acties op alle knoop punten om het probleem op te lossen.
 
-Als u uw Anaconda-versie wilt controleren, u `/usr/bin/anaconda/bin/conda --v`SSH naar het clusterheaderknooppunt en uitvoeren.
+Als u uw Anaconda-versie wilt controleren, kunt u SSHen naar het knoop `/usr/bin/anaconda/bin/conda --v`punt cluster header en uitvoeren.
 
 ## <a name="next-steps"></a>Volgende stappen
 
 * [Overzicht: Apache Spark in Azure HDInsight](apache-spark-overview.md)
-* [Apache Spark met BI: interactieve data-analyse uitvoeren met Spark in HDInsight met BI-tools](apache-spark-use-bi-tools.md)
+* [Apache Spark met BI: interactieve gegevens analyses uitvoeren met behulp van Spark in HDInsight met BI-hulpprogram ma's](apache-spark-use-bi-tools.md)
 * [Resources beheren voor het Apache Spark-cluster in Azure HDInsight](apache-spark-resource-manager.md)
 * [Taken die worden uitgevoerd in een Apache Spark-cluster in HDInsight, traceren en er fouten in oplossen](apache-spark-job-debugging.md)

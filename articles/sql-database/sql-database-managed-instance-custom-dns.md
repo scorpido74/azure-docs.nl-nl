@@ -1,6 +1,6 @@
 ---
-title: Aangepaste DNS voor beheerde instantie
-description: In dit onderwerp worden configuratieopties beschreven voor een aangepaste DNS met een Azure SQL Database Managed Instance.
+title: Aangepaste DNS voor het beheerde exemplaar
+description: In dit onderwerp worden configuratie opties beschreven voor een aangepaste DNS met een Azure SQL Database beheerd exemplaar.
 services: sql-database
 ms.service: sql-database
 ms.subservice: managed-instance
@@ -12,26 +12,26 @@ ms.author: srbozovi
 ms.reviewer: sstein, bonova, carlrab
 ms.date: 07/17/2019
 ms.openlocfilehash: 9c98176413f858d236902c332553d47f749aa3c0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80247075"
 ---
 # <a name="configuring-a-custom-dns-for-azure-sql-database-managed-instance"></a>Een aangepaste DNS configureren voor Azure SQL Database Managed Instance
 
-Een Azure SQL Database Managed Instance moet worden geïmplementeerd binnen een Virtual [Network (Azure Virtual Network).](../virtual-network/virtual-networks-overview.md) Er zijn een paar scenario's (bijvoorbeeld db-mail, gekoppelde servers met andere SQL-exemplaren in uw cloud of hybride omgeving) waarvoor privéhostnamen moeten worden opgelost vanuit het beheerde exemplaar. In dit geval moet u een aangepaste DNS configureren in Azure. 
+Een Azure SQL Database beheerd exemplaar moet worden geïmplementeerd in een [virtueel Azure-netwerk (VNet)](../virtual-network/virtual-networks-overview.md). Er zijn enkele scenario's (bijvoorbeeld DB mail, gekoppelde servers naar andere SQL-exemplaren in uw Cloud of hybride omgeving) waarvoor de namen van particuliere hosts moeten worden omgezet van het beheerde exemplaar. In dit geval moet u een aangepaste DNS-server in azure configureren. 
 
-Omdat Managed Instance dezelfde DNS gebruikt voor de interne werking, configureert u de aangepaste DNS-server zodat deze openbare domeinnamen kan oplossen.
-
-> [!IMPORTANT]
-> Gebruik altijd een volledig gekwalificeerde domeinnaam (FQDN) voor de mailserver, het SQL Server-exemplaar en voor andere services, zelfs als deze zich binnen uw privé-DNS-zone bevinden. Gebruik bijvoorbeeld `smtp.contoso.com` voor uw e-mailserver omdat `smtp` deze niet correct wordt opgelost. Voor het maken van een gekoppelde server of replicatie die verwijst naar SQL VM's binnen hetzelfde virtuele netwerk, is ook een FQDN en een standaard DNS-achtervoegsel vereist. Bijvoorbeeld `SQLVM.internal.cloudapp.net`. Zie [Naamomzetting die uw eigen DNS-server gebruikt](https://docs.microsoft.com/azure/virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances#name-resolution-that-uses-your-own-dns-server)voor meer informatie.
+Omdat voor het beheerde exemplaar dezelfde DNS wordt gebruikt voor de interne werking, moet u de aangepaste DNS-server zo configureren dat open bare domein namen kunnen worden omgezet.
 
 > [!IMPORTANT]
-> Het bijwerken van DNS-servers van virtuele netwerken heeft niet onmiddellijk invloed op Managed Instance. Managed Instance DNS-configuratie wordt bijgewerkt nadat de DHCP-lease is verlopen of na de platformupgrade, wat het geval is. **Gebruikers wordt geadviseerd om hun virtuele netwerk DNS-configuratie in te stellen voordat ze hun eerste Managed Instance maken.**
+> Gebruik altijd een Fully Qualified Domain Name (FQDN) voor de e-mail server, de SQL Server instantie en voor andere services, zelfs als ze zich in uw privé-DNS-zone bevinden. Gebruik `smtp.contoso.com` bijvoorbeeld voor uw e-mail server omdat `smtp` deze niet correct kan worden omgezet. Als u een gekoppelde server of replicatie wilt maken die verwijst naar SQL-Vm's binnen hetzelfde virtuele netwerk, hebt u ook een FQDN en een standaard-DNS-achtervoegsel nodig. Bijvoorbeeld `SQLVM.internal.cloudapp.net`. Zie [naam omzetting die gebruikmaakt van uw eigen DNS-server](https://docs.microsoft.com/azure/virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances#name-resolution-that-uses-your-own-dns-server)voor meer informatie.
+
+> [!IMPORTANT]
+> Het bijwerken van de DNS-servers van het virtuele netwerk heeft geen invloed op het beheerde exemplaar direct. De DNS-configuratie van het beheerde exemplaar wordt bijgewerkt nadat de DHCP-lease verloopt of na de platform upgrade, afhankelijk van wat er eerst gebeurt. **Gebruikers wordt aangeraden hun DNS-configuratie voor het virtuele netwerk in te stellen voordat ze hun eerste beheerde exemplaar maken.**
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Zie [Wat is een beheerde instantie voor](sql-database-managed-instance.md) een overzicht
-- Zie [Een beheerde instantie maken](sql-database-managed-instance-get-started.md)voor een zelfstudie waarin u laat zien hoe u een nieuw beheerde instantie maakt.
-- Zie [VNet-configuratie voor beheerde exemplaren voor](sql-database-managed-instance-connectivity-architecture.md) informatie over het configureren van een VNet voor een beheerde instantie
+- Zie [Wat is een beheerd exemplaar](sql-database-managed-instance.md) ? voor een overzicht.
+- Zie [een beheerd exemplaar maken](sql-database-managed-instance-get-started.md)voor een zelf studie waarin wordt getoond hoe u een nieuw beheerd exemplaar maakt.
+- Zie [vnet-configuratie voor beheerde instanties](sql-database-managed-instance-connectivity-architecture.md) voor meer informatie over het configureren van een vnet voor een beheerd exemplaar

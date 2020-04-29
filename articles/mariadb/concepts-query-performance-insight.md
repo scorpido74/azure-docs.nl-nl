@@ -1,35 +1,35 @@
 ---
-title: Queryprestatieinzicht - Azure-database voor MariaDB
-description: In dit artikel wordt de functie QueryPerformance Insight beschreven in Azure Database voor MariaDB
+title: Query Performance Insight-Azure Database for MariaDB
+description: In dit artikel wordt de Query Performance Insight functie in Azure Database for MariaDB beschreven
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 3/18/2020
 ms.openlocfilehash: 88777ee44551ed6abdb7a6c7c909d6bf55db48c0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79527841"
 ---
 # <a name="query-performance-insight-in-azure-database-for-mariadb"></a>Inzicht in queryprestaties in Azure Database for MariaDB
 
-**Geldt voor:** Azure-database voor MariaDB 10.2
+**Van toepassing op:** Azure Database for MariaDB 10,2
 
-Met Query Performance Insight u snel bepalen wat uw langstlopende query's zijn, hoe deze in de loop van de tijd veranderen en welke wachttijden deze beïnvloeden.
+Query Performance Insight helpt u snel te identificeren wat uw langste query's zijn, hoe ze in de loop van de tijd veranderen en welke wacht tijden van invloed zijn op deze.
 
 ## <a name="common-scenarios"></a>Algemene scenario's
 
 ### <a name="long-running-queries"></a>Langdurige query's
 
-- Het identificeren van langstlopende query's in de afgelopen X-uren
-- Top N-query's identificeren die op resources wachten
+- Langst uitgevoerde query's in de afgelopen X uur identificeren
+- Eerste N query's identificeren die op resources wachten
  
-### <a name="wait-statistics"></a>Wachtstatistieken
+### <a name="wait-statistics"></a>Wacht statistieken
 
-- De aard van de wachttijd op een query begrijpen
-- Trends voor resource wachttijden begrijpen en waar resourcetwist bestaat
+- Wat is de wacht aard van een query?
+- Uitleg over trends voor de resource wacht en waar de bron conflicten bestaan
 
 ## <a name="permissions"></a>Machtigingen
 
@@ -37,35 +37,35 @@ De machtigingen **Eigenaar** of **Inzender** zijn vereist om de tekst van de que
 
 ## <a name="prerequisites"></a>Vereisten
 
-Als u inzicht in queryprestaties wilt uitvoeren, moeten gegevens bestaan in het [queryarchief](concepts-query-store.md).
+Query Performance Insight werkt alleen als de gegevens in het [query archief](concepts-query-store.md)aanwezig zijn.
 
-## <a name="viewing-performance-insights"></a>Prestatieinzichten bekijken
+## <a name="viewing-performance-insights"></a>Prestatie inzichten weer geven
 
 De weergave [Query Performance Insight](concepts-query-performance-insight.md) in de Azure Portal toont visualisaties van belangrijke informatie uit de Query Store.
 
-Selecteer **queryprestatieinzicht** op de portalpagina van uw Azure Database voor MariaDB-server onder de sectie **Intelligente prestaties** van de menubalk.
+Selecteer op de pagina Portal van uw Azure Database for MariaDB-server **query Performance Insight** onder het gedeelte **intelligente prestaties** van de menu balk.
 
 ### <a name="long-running-queries"></a>Langdurige query's
 
-Op het tabblad **Langlopende query's** worden de top 5 query's weergegeven op basis van de gemiddelde duur per uitvoering, samengevoegd in intervallen van 15 minuten. U meer query's weergeven door te selecteren in de vervolgkeuzelijst **Aantal query's.** Het is mogelijk dat de grafiekkleuren voor een specifieke query-id verschillen wanneer u dit doet.
+Op het tabblad **langlopende query's** worden de top 5 query's weer gegeven op gemiddelde duur per uitvoering, samengevoegd in intervallen van 15 minuten. U kunt meer query's weer geven door te selecteren in de vervolg keuzelijst **aantal query's** . Het is mogelijk dat de grafiekkleuren voor een specifieke query-id verschillen wanneer u dit doet.
 
-U kunt in de grafiek klikken en slepen om de tijdspanne te beperken tot een specifiek tijdvenster. U ook de in- en uitzoompictogrammen gebruiken om respectievelijk een kleinere of grotere periode weer te geven.
+U kunt in de grafiek klikken en slepen om de tijdspanne te beperken tot een specifiek tijdvenster. U kunt ook de pictogrammen in-en uitzoomen gebruiken om respectievelijk een kleinere of grotere tijds periode weer te geven.
 
-![Langlopende query's van queryprestaties](./media/concepts-query-performance-insight/query-performance-insight-landing-page.png)
+![Langlopende query's Query Performance Insight](./media/concepts-query-performance-insight/query-performance-insight-landing-page.png)
 
-### <a name="wait-statistics"></a>Wachtstatistieken 
+### <a name="wait-statistics"></a>Wacht statistieken 
 
 > [!NOTE]
-> Wachtstatistieken zijn bedoeld voor het oplossen van problemen met queryprestaties. Het wordt aanbevolen om alleen te worden ingeschakeld voor probleemoplossingsdoeleinden. <br>Als u het foutbericht ontvangt in de Azure-portal "*Het probleem dat is opgetreden voor 'Microsoft.DBforMariaDB'; kan niet voldoen aan het verzoek. Als dit probleem blijft bestaan of onverwacht is, neem dan contact op met de ondersteuning met deze informatie.*" tijdens het bekijken van wachtstatistieken, gebruik maken van een kleinere periode.
+> Wacht statistieken zijn bedoeld voor het oplossen van problemen met de prestaties van query's. U wordt aangeraden alleen in te scha kelen voor het oplossen van problemen. <br>Als het fout bericht wordt weer gegeven in de Azure Portal *, wordt het probleem ' micro soft. DBforMariaDB ' aangetroffen. kan de aanvraag niet uitvoeren. Als dit probleem zich blijft voordoen of onverwacht, kunt u contact opnemen met ondersteuning met deze informatie.* gebruik tijdens het weer geven van wacht statistieken een kleinere periode.
 
-Wachtstatistieken geven een overzicht van de wachtgebeurtenissen die plaatsvinden tijdens het uitvoeren van een specifieke query. Meer informatie over de typen wachtgebeurtenissen vindt u in de documentatie van de [MySQL-engine](https://go.microsoft.com/fwlink/?linkid=2098206).
+Wacht statistieken bieden een weer gave van de wacht gebeurtenissen die optreden tijdens het uitvoeren van een specifieke query. Meer informatie over de gebeurtenis typen wacht in de [documentatie](https://go.microsoft.com/fwlink/?linkid=2098206)van de MySQL-engine.
 
 Selecteer het tabblad **Wachtstatistieken** om de bijbehorende visualisaties voor wachttijden in de server weer te geven.
 
-Query's die worden weergegeven in de weergave wachtstatistieken worden gegroepeerd op de query's die de grootste wachttijden vertonen tijdens het opgegeven tijdsinterval.
+Query's die worden weer gegeven in de weer gave wachten statistieken, worden gegroepeerd op de query's die de grootste wacht tijden tijdens het opgegeven tijds interval vertonen.
 
-![QueryPerformance Insight wacht op statistieken](./media/concepts-query-performance-insight/query-performance-insight-wait-statistics.png)
+![Query Performance Insight wacht op statistieken](./media/concepts-query-performance-insight/query-performance-insight-wait-statistics.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Meer informatie over [monitoring en tuning](concepts-monitoring.md) in Azure Database voor MariaDB.
+- Meer informatie over het [bewaken en afstemmen](concepts-monitoring.md) van Azure database for MariaDB.

@@ -1,6 +1,6 @@
 ---
-title: Een VNet TAP - Azure CLI maken, wijzigen of verwijderen
-description: Meer informatie over het maken, wijzigen of verwijderen van een virtueel netwerk TAP met behulp van azure cli.
+title: Een VNet-Tik maken, wijzigen of verwijderen-Azure CLI
+description: Meer informatie over het maken, wijzigen of verwijderen van een virtueel netwerk Tik met behulp van de Azure CLI.
 services: virtual-network
 documentationcenter: na
 author: karthikananth
@@ -16,21 +16,21 @@ ms.workload: infrastructure-services
 ms.date: 03/18/2018
 ms.author: kaanan
 ms.openlocfilehash: 56288a65dc9e5b12a12393965b9670e394146181
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80234952"
 ---
-# <a name="work-with-a-virtual-network-tap-using-the-azure-cli"></a>Werken met een virtueel netwerk TAP met de Azure CLI
+# <a name="work-with-a-virtual-network-tap-using-the-azure-cli"></a>Een virtueel netwerk gebruiken Tik op de Azure CLI
 
-Azure virtual network TAP (Terminal Access Point) stelt u in staat om uw netwerkverkeer voor virtuele machines continu te streamen naar een netwerkpakketverzamelaar of analysetool. De collector- of analysetool wordt geleverd door een [netwerkpartner voor virtuele apparaten.](https://azure.microsoft.com/solutions/network-appliances/) Zie [partneroplossingen](virtual-network-tap-overview.md#virtual-network-tap-partner-solutions)voor een lijst met partneroplossingen die zijn gevalideerd om met het virtuele netwerk TAP te werken. 
+Met het virtuele netwerk van Azure (Terminal Access Point) kunt u het netwerk verkeer van de virtuele machine continu streamen naar een netwerk pakket verzamelaar of een analyse programma. Het hulp programma Collector of Analytics wordt verschaft door een [virtuele netwerk apparaat](https://azure.microsoft.com/solutions/network-appliances/) -partner. Zie [partner oplossingen](virtual-network-tap-overview.md#virtual-network-tap-partner-solutions)voor een lijst met partner oplossingen die zijn gevalideerd om te werken met Virtual Network tikken. 
 
-## <a name="create-a-virtual-network-tap-resource"></a>Een TAP-bron voor virtueel netwerk maken
+## <a name="create-a-virtual-network-tap-resource"></a>Een virtueel netwerk maken tik op resource
 
-Lees [vereisten](virtual-network-tap-overview.md#prerequisites) voordat u een tap-bron voor virtueel netwerk maakt. U de opdrachten uitvoeren die volgen in de [Azure Cloud Shell](https://shell.azure.com/bash)of door de Azure command-line interface (CLI) vanaf uw computer uit te voeren. De Azure Cloud Shell is een gratis interactieve shell, waarvoor de Azure CLI niet op uw computer hoeft te worden geïnstalleerd. U moet zich aanmelden bij Azure met een account dat over de juiste [machtigingen beschikt.](virtual-network-tap-overview.md#permissions) Dit artikel vereist de Azure CLI-versie 2.0.46 of hoger. Voer `az --version` uit om te kijken welke versie is geïnstalleerd. Als u Azure CLI 2.0 wilt installeren of upgraden, raadpleegt u [Azure CLI 2.0 installeren](/cli/azure/install-azure-cli). Virtueel netwerk TAP is momenteel beschikbaar als extensie. Als u de extensie `az extension add -n virtual-network-tap`wilt installeren, moet u deze uitvoeren. Als u de Azure CLI lokaal uitvoert, `az login` moet u ook worden uitgevoerd om een verbinding met Azure te maken.
+Lees de [vereisten](virtual-network-tap-overview.md#prerequisites) voordat u een virtueel netwerk tikt op resource. U kunt de opdrachten uitvoeren die volgen in de [Azure Cloud shell](https://shell.azure.com/bash), of door de Azure-opdracht regel interface (CLI) uit te voeren vanaf uw computer. De Azure Cloud Shell is een gratis interactieve shell, waarvoor geen Azure CLI op uw computer hoeft te worden geïnstalleerd. U moet zich aanmelden bij Azure met een account met de juiste [machtigingen](virtual-network-tap-overview.md#permissions). Voor dit artikel is de Azure CLI-versie 2.0.46 of hoger vereist. Voer `az --version` uit om te kijken welke versie is geïnstalleerd. Als u Azure CLI 2.0 wilt installeren of upgraden, raadpleegt u [Azure CLI 2.0 installeren](/cli/azure/install-azure-cli). Virtual Network TIKT is momenteel beschikbaar als een uitbrei ding. Als u de extensie wilt installeren, moet `az extension add -n virtual-network-tap`u deze uitvoeren. Als u de Azure CLI lokaal uitvoert, moet u ook uitvoeren `az login` om een verbinding te maken met Azure.
 
-1. Haal de id van uw abonnement op in een variabele die in een latere stap wordt gebruikt:
+1. Haal de ID van uw abonnement op in een variabele die in een latere stap wordt gebruikt:
 
    ```azurecli-interactive
    subscriptionId=$(az account show \
@@ -38,21 +38,21 @@ Lees [vereisten](virtual-network-tap-overview.md#prerequisites) voordat u een ta
    --out tsv)
    ```
 
-2. Stel de abonnements-id in die u gebruikt om een TAP-bron voor virtueel netwerk te maken.
+2. Stel de abonnements-id in die u gaat gebruiken voor het maken van een virtueel netwerk Tik op resource.
 
    ```azurecli-interactive
    az account set --subscription $subscriptionId
    ```
 
-3. Registreer de abonnements-id die u gebruikt om een TAP-bron voor virtueel netwerk te maken opnieuw. Als u een registratiefout krijgt wanneer u een TAP-bron maakt, voert u de volgende opdracht uit:
+3. Registreer de abonnements-ID die u gebruikt voor het maken van een virtueel netwerk Tik op resource opnieuw. Als er een registratie fout optreedt wanneer u een TAP-resource maakt, voert u de volgende opdracht uit:
 
    ```azurecli-interactive
    az provider register --namespace Microsoft.Network --subscription $subscriptionId
    ```
 
-4. Als de bestemming voor het virtuele netwerk TAP de netwerkinterface op het virtuele netwerktoestel is voor collector- of analysetool -
+4. Als de bestemming voor het virtuele netwerk is, wordt de netwerk interface op het virtuele netwerk apparaat voor de collector of het analyse hulpprogramma
 
-   - Haal de IP-configuratie van de netwerknetwerkinterface van het netwerk op in een variabele die in een latere stap wordt gebruikt. De ID is het eindpunt dat het TAP-verkeer verzamelt. In het volgende voorbeeld wordt de ID van de *IP-configuratie ipconfig1* opgehaald voor een netwerkinterface met de naam *myNetworkInterface,* in een brongroep met de naam *myResourceGroup:*
+   - Haal de IP-configuratie van de netwerk interface van het virtuele netwerk apparaat op in een variabele die in een latere stap wordt gebruikt. De ID is het eind punt waarmee het Tik-verkeer wordt geaggregeerd. In het volgende voor beeld wordt de ID van de *ipconfig1* IP-configuratie opgehaald voor een netwerk interface met de naam *myNetworkInterface*, in een resource groep met de naam *myResourceGroup*:
 
       ```azurecli-interactive
        IpConfigId=$(az network nic ip-config show \
@@ -63,7 +63,7 @@ Lees [vereisten](virtual-network-tap-overview.md#prerequisites) voordat u een ta
        --out tsv)
       ```
 
-   - Maak het virtuele netwerk TAP in het Azure-gebied westcentralus met de ID van de IP-configuratie als bestemming en een optionele poorteigenschap. De poort geeft de doelpoort op de IP-configuratie van de netwerkinterface aan waar het TAP-verkeer wordt ontvangen:  
+   - Maak het virtuele netwerk Tik in de Azure-regio westcentralus met de ID van de IP-configuratie als doel en een optionele poort eigenschap. De poort specificeert de doel poort op de IP-configuratie van de netwerk interface, waarbij het tikken verkeer wordt ontvangen:  
 
       ```azurecli-interactive
        az network vnet tap create \
@@ -74,9 +74,9 @@ Lees [vereisten](virtual-network-tap-overview.md#prerequisites) voordat u een ta
        --location westcentralus
       ```
 
-5. Als de bestemming voor het virtuele netwerk TAP een azure internal load balancer is:
+5. Als het doel voor de virtuele netwerk kraan een interne load balancer van Azure is:
   
-   - Haal de front-end IP-configuratie van de interne load balancer van Azure op in een variabele die in een latere stap wordt gebruikt. De ID is het eindpunt dat het TAP-verkeer verzamelt. In het volgende voorbeeld wordt de ID van de *frontendipconfig1* front-end IP-configuratie opgehaald voor een load balancer met de naam *myInternalLoadBalancer,* in een resourcegroep met de naam *myResourceGroup:*
+   - Haal de front-end-IP-configuratie van de interne Azure-load balancer op in een variabele die in een latere stap wordt gebruikt. De ID is het eind punt waarmee het Tik-verkeer wordt geaggregeerd. In het volgende voor beeld wordt de ID van de *frontendipconfig1* front-end-IP-configuratie opgehaald voor een Load Balancer met de naam *myInternalLoadBalancer*, in een resource groep met de naam *myResourceGroup*:
 
       ```azurecli-interactive
       FrontendIpConfigId=$(az network lb frontend-ip show \
@@ -87,7 +87,7 @@ Lees [vereisten](virtual-network-tap-overview.md#prerequisites) voordat u een ta
       --out tsv)
       ```
 
-   - Maak het virtuele netwerk TAP met de ID van de IP-configuratie aan de frontend als bestemming en een optionele poorteigenschap. De poort geeft de doelpoort op front-end IP-configuratie waar het TAP-verkeer zal worden ontvangen:  
+   - Het virtuele netwerk maken tik met de ID van de front-end-IP-configuratie als doel en een optionele poort eigenschap. De poort specificeert de doel poort op de front-end-IP-configuratie waar het tikken verkeer wordt ontvangen:  
 
       ```azurecli-interactive
       az network vnet tap create \
@@ -98,7 +98,7 @@ Lees [vereisten](virtual-network-tap-overview.md#prerequisites) voordat u een ta
      --location westcentralus
      ```
 
-6. Bevestig de creatie van het virtuele netwerk TAP:
+6. Het maken van het virtuele netwerk bevestigen:
 
    ```azurecli-interactive
    az network vnet tap show \
@@ -106,9 +106,9 @@ Lees [vereisten](virtual-network-tap-overview.md#prerequisites) voordat u een ta
    --name myTap
    ```
 
-## <a name="add-a-tap-configuration-to-a-network-interface"></a>Een TAP-configuratie toevoegen aan een netwerkinterface
+## <a name="add-a-tap-configuration-to-a-network-interface"></a>Een tik-configuratie toevoegen aan een netwerk interface
 
-1. Haal de ID van een bestaande TAP-bron voor virtueel netwerk op. In het volgende voorbeeld wordt een virtueel netwerk TAP met de naam *myTap* opgehaald in een resourcegroep met de naam *myResourceGroup:*
+1. Haal de ID op van een bestaand virtueel netwerk Tik op resource. In het volgende voor beeld wordt een virtueel netwerk met de naam *myTap* in een resource groep met de naam *myResourceGroup*opgehaald:
 
    ```azurecli-interactive
    tapId=$(az network vnet tap show \
@@ -118,7 +118,7 @@ Lees [vereisten](virtual-network-tap-overview.md#prerequisites) voordat u een ta
    --out tsv)
    ```
 
-2. Maak een TAP-configuratie op de netwerkinterface van de bewaakte virtuele machine. In het volgende voorbeeld wordt een TAP-configuratie voor een netwerkinterface met de naam *myNetworkInterface:*
+2. Maak een tik-configuratie op de netwerk interface van de bewaakte virtuele machine. In het volgende voor beeld wordt een tik-configuratie gemaakt voor een netwerk interface met de naam *myNetworkInterface*:
 
    ```azurecli-interactive
    az network nic vtap-config create \
@@ -129,7 +129,7 @@ Lees [vereisten](virtual-network-tap-overview.md#prerequisites) voordat u een ta
    --subscription subscriptionId
    ```
 
-3. Bevestig het maken van de TAP-configuratie:
+3. Het maken van de TAP-configuratie bevestigen:
 
    ```azurecli-interactive
    az network nic vtap-config show \
@@ -139,7 +139,7 @@ Lees [vereisten](virtual-network-tap-overview.md#prerequisites) voordat u een ta
    --subscription subscriptionId
    ```
 
-## <a name="delete-the-tap-configuration-on-a-network-interface"></a>De TAP-configuratie op een netwerkinterface verwijderen
+## <a name="delete-the-tap-configuration-on-a-network-interface"></a>De TAP-configuratie op een netwerk interface verwijderen
 
    ```azurecli-interactive
    az network nic vtap-config delete \
@@ -149,13 +149,13 @@ Lees [vereisten](virtual-network-tap-overview.md#prerequisites) voordat u een ta
    --subscription subscriptionId
    ```
 
-## <a name="list-virtual-network-taps-in-a-subscription"></a>Virtuele netwerk-TAP's in een abonnement weergeven
+## <a name="list-virtual-network-taps-in-a-subscription"></a>Een lijst met virtuele netwerk kranen in een abonnement
 
    ```azurecli-interactive
    az network vnet tap list
    ```
 
-## <a name="delete-a-virtual-network-tap-in-a-resource-group"></a>Een virtueel netwerk TAP in een resourcegroep verwijderen
+## <a name="delete-a-virtual-network-tap-in-a-resource-group"></a>Een virtueel netwerk kraan in een resource groep verwijderen
 
    ```azurecli-interactive
    az network vnet tap delete \

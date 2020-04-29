@@ -1,6 +1,6 @@
 ---
 title: Regels en acties configureren in Azure IoT Central | Microsoft Docs
-description: In dit artikel ziet u als bouwer hoe u op telemetrie gebaseerde regels en acties configureert in uw Azure IoT Central-toepassing.
+description: In dit artikel wordt uitgelegd hoe u als een bouwer op telemetrie regels en acties in uw Azure IoT Central-toepassing kunt configureren.
 author: vavilla
 ms.author: vavilla
 ms.date: 11/27/2019
@@ -9,10 +9,10 @@ ms.service: iot-central
 services: iot-central
 manager: philmea
 ms.openlocfilehash: 509f9557a8128df12353ad02a7c7db02b7b42631
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80158447"
 ---
 # <a name="configure-rules"></a>Regels configureren
@@ -21,35 +21,35 @@ ms.locfileid: "80158447"
 
 *Dit artikel is van toepassing op operators, opbouwfuncties en beheerders.*
 
-Regels in IoT Central dienen als een aanpasbaar responshulpmiddel dat activeert op actief bewaakte gebeurtenissen vanaf verbonden apparaten. In de volgende secties wordt beschreven hoe regels worden geëvalueerd.
+Regels in IoT Central fungeren als een hulp programma voor aanpas bare reactie dat actief bewaakte gebeurtenissen van verbonden apparaten activeren. In de volgende secties wordt beschreven hoe regels worden geëvalueerd.
 
-## <a name="select-target-devices"></a>Doelapparaten selecteren
+## <a name="select-target-devices"></a>Doel apparaten selecteren
 
-Gebruik de sectie doelapparaten om te selecteren op welk type apparaat deze regel wordt toegepast. Met filters u verder verfijnen welke apparaten moeten worden opgenomen. De filters gebruiken eigenschappen op de apparaatsjabloon om de set apparaten te filteren. Filters zelf leiden niet tot een actie. In de volgende schermafbeelding zijn de apparaten waarop wordt getarget **apparaatsjabloontype Koelkast**. Het filter stelt dat de regel alleen koelkasten moet bevatten waar de **fabricerende staat** eigendom is gelijk aan **Washington**. **Refrigerators**
+Gebruik de sectie doel apparaten om te selecteren op welk soort apparaten deze regel wordt toegepast. Met filters kunt u verder verfijnen welke apparaten moeten worden opgenomen. De filters gebruiken eigenschappen op het apparaatprofiel om de set apparaten te filteren. Filters zelf activeren geen actie. In de volgende scherm afbeelding zijn de apparaten waarop de doel **machine**wordt toegepast, het type apparaat sjabloon. Met het filter wordt aangegeven dat de regel alleen **koel kasten** moet bevatten waarvan de eigenschap **gefabriceerde status** gelijk is aan **Washington**.
 
 ![Voorwaarden](media/howto-configure-rules/filters.png)
 
-## <a name="use-multiple-conditions"></a>Meerdere voorwaarden gebruiken
+## <a name="use-multiple-conditions"></a>Meerdere voor waarden gebruiken
 
-Voorwaarden zijn waar regels op leiden. Op dit moment, wanneer u meerdere voorwaarden toevoegt aan een regel, zijn ze logisch en samen. Met andere woorden, aan alle voorwaarden moet worden voldaan om de regel als waar te laten beoordelen.  
+Voor waarden worden de regels geactiveerd. Wanneer u op dit moment meerdere voor waarden aan een regel toevoegt, zijn ze logisch en samen. Met andere woorden: aan alle voor waarden moet worden voldaan voordat de regel als waar kan worden geëvalueerd.  
 
-In de volgende schermafbeelding controleren de omstandigheden wanneer&deg; de temperatuur hoger is dan 70 F en de luchtvochtigheid lager is dan 10. Wanneer beide instructies waar zijn, wordt de regel geëvalueerd en wordt een actie geactiveerd.
+In de volgende scherm afbeelding worden de voor waarden gecontroleerd wanneer de Tempe ratuur groter&deg; is dan 70 F en de vochtigheid kleiner is dan 10. Wanneer beide instructies waar zijn, evalueert de regel naar waar en wordt een actie geactiveerd.
 
 ![Voorwaarden](media/howto-configure-rules/conditions.png)
 
-## <a name="use-aggregate-windowing"></a>Geaggregeerde venstering gebruiken
+## <a name="use-aggregate-windowing"></a>Aggregatie venster gebruiken
 
-Regels evalueren geaggregeerde tijdvensters als tuimelende vensters. In de screenshot hieronder, het tijdvenster is vijf minuten. Elke vijf minuten evalueert de regel op de laatste vijf minuten van de gegevens. De gegevens worden slechts eenmaal geëvalueerd in het venster waarnaar zij overeenkomen.
+Regels evalueren cumulatieve tijd Vensters als tumblingvenstertriggers Windows. In de onderstaande scherm afbeelding is het tijd venster vijf minuten. De regel wordt elke vijf minuten geëvalueerd op de laatste vijf minuten van de gegevens. De gegevens worden slechts eenmaal geëvalueerd in het venster waarin deze overeenkomt.
 
-![Tumbling Windows](media/howto-configure-rules/tumbling-window.png)
+![Tumblingvenstertriggers Windows](media/howto-configure-rules/tumbling-window.png)
 
-## <a name="use-rules-with-iot-edge-modules"></a>Regels gebruiken met IoT Edge-modules
+## <a name="use-rules-with-iot-edge-modules"></a>Regels gebruiken met IoT Edge modules
 
-Er geldt een beperking voor regels die worden toegepast op IoT Edge-modules. Regels voor telemetrie van verschillende modules worden niet beoordeeld als geldige regels. Neem het volgende als voorbeeld. De eerste voorwaarde van de regel is op een temperatuur telemetrie van Module A. De tweede voorwaarde van de regel is op een vochtigheidstelemetrie op Module B. Aangezien de twee voorwaarden zijn van verschillende modules, dit is een ongeldige set van voorwaarden. De regel is niet geldig en zal een fout op het proberen om de regel op te slaan gooien.
+Een beperking geldt voor regels die worden toegepast op IoT Edge modules. Regels op telemetrie van verschillende modules worden niet als geldige regels geëvalueerd. Doe het volgende als voor beeld. De eerste voor waarde van de regel bevindt zich op een temperatuur telemetrie van module A. De tweede voor waarde van de regel bevindt zich op een vochtigheids-telemetrie in module B. Aangezien de twee voor waarden afkomstig zijn uit verschillende modules, is dit een ongeldige set voor waarden. De regel is ongeldig en er treedt een fout op bij het opslaan van de regel.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Nu u hebt geleerd hoe u een regel in uw Azure IoT Central-toepassing configureren, u het als:
+Nu u hebt geleerd hoe u een regel in uw Azure IoT Central-toepassing configureert, kunt u het volgende doen:
 
 > [!div class="nextstepaction"]
-> [Analyseer uw gegevens on the fly](howto-create-analytics.md)
+> [Uw gegevens onderweg analyseren](howto-create-analytics.md)

@@ -18,104 +18,104 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 2910933e2c57a8bc80a220726462b02915c4a8eb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80246514"
 ---
 # <a name="sign-in-activity-reports-in-the-azure-active-directory-portal"></a>Aanmeldactiviteitenrapporten in Azure Active Directory Portal
 
-De rapportagearchitectuur in Azure Active Directory (Azure AD) bestaat uit de volgende onderdelen:
+De rapportage architectuur in Azure Active Directory (Azure AD) bestaat uit de volgende onderdelen:
 
 - **Activiteit** 
-    - **Aanmeldingsprogramma's** : informatie over het gebruik van beheerde toepassingen en aanmeldingsactiviteiten voor gebruikers.
-    - **Controlelogboeken** - [Auditlogs](concept-audit-logs.md) bieden systeemactiviteitsinformatie over gebruikers en groepsbeheer, beheerde toepassingen en directoryactiviteiten.
+    - **Aanmeldingen** : informatie over het gebruik van beheerde toepassingen en aanmeldings activiteiten voor gebruikers.
+    - **Audit logboeken** - [audit logboeken](concept-audit-logs.md) bevatten informatie over de systeem activiteit van gebruikers en groeps beheer, beheerde toepassingen en Directory-activiteiten.
 - **Beveiliging** 
-    - **Riskante aanmeldingen** - Een [riskante aanmelding](concept-risky-sign-ins.md) is een indicator voor een aanmeldingspoging door iemand die niet de rechtmatige eigenaar van een gebruikersaccount is.
-    - **Gebruikers gemarkeerd voor risico** - Een [riskante gebruiker](concept-user-at-risk.md) is een indicator voor een gebruikersaccount die mogelijk is gecompromitteerd.
+    - **Risk ante aanmeldingen** : een [Risk ante aanmelding](concept-risky-sign-ins.md) is een indicator voor een aanmeldings poging door iemand die niet de rechtmatige eigenaar van een gebruikers account is.
+    - **Gebruikers die zijn gemarkeerd voor risico** : een [Risk ante gebruiker](concept-user-at-risk.md) is een indicator voor een gebruikers account dat mogelijk is aangetast.
 
-Dit artikel geeft u een overzicht van het aanmeldingsrapport.
+In dit artikel vindt u een overzicht van het rapport met aanmeldingen.
 
 ## <a name="prerequisites"></a>Vereisten
 
 ### <a name="who-can-access-the-data"></a>Wie heeft er toegang tot de gegevens?
 
-* Gebruikers in de rollen Beveiligingsbeheerder, Beveiligingslezer, Global Reader en Report Reader
+* Gebruikers in de beveiligings beheerder, beveiligings lezer, globale lezer en rapport lezers rollen
 * Globale beheerders
 * Alle gebruiker (niet-beheerders) hebben toegang tot hun eigen aanmeldingen 
 
 ### <a name="what-azure-ad-license-do-you-need-to-access-sign-in-activity"></a>Welke Azure AD-licentie heb ik nodig voor toegang tot aanmeldingsactiviteiten?
 
-- Het aanmeldingsactiviteitsrapport is beschikbaar in [alle edities van Azure AD.](reference-reports-data-retention.md#how-long-does-azure-ad-store-the-data)
+- Het rapport voor de aanmeldings activiteit is beschikbaar in [alle edities van Azure AD](reference-reports-data-retention.md#how-long-does-azure-ad-store-the-data).
 
-- Als u toegang wilt krijgen tot de aanmeldingsgegevens met behulp van een API, moet uw tenant een [Azure Active Directory Premium-licentie](../fundamentals/active-directory-get-started-premium.md) hebben die eraan is gekoppeld.
+- Als u toegang wilt tot de aanmeldings gegevens met behulp van een API, moet aan uw Tenant een [Azure Active Directory Premium](../fundamentals/active-directory-get-started-premium.md) -licentie zijn gekoppeld.
 
 
 
 ## <a name="sign-ins-report"></a>Aanmeldingenrapport
 
-Het rapport aanmeldingen van gebruikers geeft antwoorden op de volgende vragen:
+Het rapport gebruikers aanmeldingen bevat antwoorden op de volgende vragen:
 
 * Wat is het aanmeldingspatroon van een gebruiker?
 * Hoeveel gebruikers hebben zich gedurende een week aangemeld?
 * Wat is de status van deze aanmeldingen?
 
-Selecteer in het menu [Azure portal](https://portal.azure.com) Azure **Active Directory**of zoek naar En selecteer Azure **Active Directory** op een pagina.
+Selecteer in het menu [Azure Portal](https://portal.azure.com) **Azure Active Directory**of zoek en selecteer **Azure Active Directory** op een wille keurige pagina.
 
 ![Azure Active Directory selecteren](./media/concept-sign-ins/select-azure-active-directory.png "Azure Active Directory")
 
-Selecteer **onder Controleren**de optie **Aanmeldingen** om het [rapport Aanmeldingen te openen](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/SignIns).
+Onder **bewaking**selecteert u **aanmeldingen** om het [rapport aanmeldingen](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/SignIns)te openen.
 
-![Aanmeldingsactiviteit](./media/concept-sign-ins/monitoring-sign-ins-in-azure-active-directory.png "Aanmeldingsactiviteit")
+![Aanmeldings activiteit](./media/concept-sign-ins/monitoring-sign-ins-in-azure-active-directory.png "Aanmeldingsactiviteit")
 
-Het kan tot twee uur duren voordat sommige aanmeldingsrecords in het portaal worden weergegeven.
+Het kan tot twee uur duren voordat sommige registratie records worden weer gegeven in de portal.
 
 > [!IMPORTANT]
-> In het aanmeldingsrapport worden alleen de **interactieve** aanmeldingen weergegeven, dat wil zeggen aanmeldingen waarbij een gebruiker zich handmatig aanmeldt met zijn gebruikersnaam en wachtwoord. Niet-interactieve aanmeldingen, zoals service-to-service-verificatie, worden niet weergegeven in het aanmeldingsrapport. 
+> Het rapport met aanmeldingen bevat alleen de **interactieve** aanmeldingen, dat wil zeggen, aanmeldingen waarbij een gebruiker zich hand matig aanmeldt met de gebruikers naam en het wacht woord. Niet-interactieve aanmeldingen, zoals service-naar-service-verificatie, worden niet weer gegeven in het rapport aanmeldingen. 
 
 Een aanmeldingslogboek heeft een standaardlijstweergave die het volgende laat zien:
 
 - De aanmeldingsdatum
 - De gerelateerde gebruiker
-- De toepassing die de gebruiker heeft aangemeld bij
+- De toepassing waarmee de gebruiker zich heeft aangemeld
 - De aanmeldingsstatus
 - De status van de risicodetectie
 - De status van de vereiste voor meervoudige verificatie (MFA)
 
-![Aanmeldingsactiviteit](./media/concept-sign-ins/sign-in-activity.png "Aanmeldingsactiviteit")
+![Aanmeldings activiteit](./media/concept-sign-ins/sign-in-activity.png "Aanmeldingsactiviteit")
 
 U kunt de lijstweergave aanpassen door te klikken op **Kolommen** op de werkbalk.
 
-![Aanmeldingsactiviteit](./media/concept-sign-ins/19.png "Aanmeldingsactiviteit")
+![Aanmeldings activiteit](./media/concept-sign-ins/19.png "Aanmeldingsactiviteit")
 
-In het dialoogvenster **Kolommen** hebt u toegang tot de selecteerbare kenmerken. In een aanmeldingsrapport u geen velden hebben die meer dan één waarde hebben voor een bepaald aanmeldingsverzoek als kolom. Dit geldt bijvoorbeeld voor verificatiegegevens, gegevens over voorwaardelijke toegang en netwerklocatie.   
+Het dialoog venster **kolommen** biedt u toegang tot de selecteerbaar kenmerken. In een aanmeldings rapport kunt u geen velden hebben met meer dan één waarde voor een bepaalde aanmeldings aanvraag als kolom. Dit is bijvoorbeeld waar voor verificatie Details, gegevens van voorwaardelijke toegang en de netwerk locatie.   
 
-![Aanmeldingsactiviteit](./media/concept-sign-ins/columns.png "Aanmeldingsactiviteit")
+![Aanmeldings activiteit](./media/concept-sign-ins/columns.png "Aanmeldingsactiviteit")
 
-Selecteer een item in de lijstweergave voor meer gedetailleerde informatie.
+Selecteer een item in de lijst weergave voor meer gedetailleerde informatie.
 
-![Aanmeldingsactiviteit](./media/concept-sign-ins/basic-sign-in.png "Aanmeldingsactiviteit")
+![Aanmeldings activiteit](./media/concept-sign-ins/basic-sign-in.png "Aanmeldingsactiviteit")
 
 > [!NOTE]
-> Klanten kunnen nu probleemvoorwaardenbeleid oplossen via alle aanmeldingsrapporten. Door op het tabblad **Voorwaardelijke toegang** te klikken voor een aanmeldingsrecord, kunnen klanten de status Voorwaardelijke toegang controleren en de details bekijken van de beleidsregels die van toepassing zijn op de aanmelding en het resultaat voor elk beleid.
-> Zie [de veelgestelde vragen over CA-informatie in alle aanmeldingen](reports-faq.md#conditional-access)voor meer informatie.
+> Klanten kunnen nu het beleid voor voorwaardelijke toegang oplossen via alle aanmeldings rapporten. Door op het tabblad **voorwaardelijke toegang** voor een aanmeldings record te klikken, kunnen klanten de status van de voorwaardelijke toegang controleren en de Details bekijken van de beleids regels die zijn toegepast op de aanmelding en het resultaat van elk beleid.
+> Raadpleeg de [Veelgestelde vragen over ca-informatie in alle aanmeldingen](reports-faq.md#conditional-access)voor meer informatie.
 
 
 
 ## <a name="filter-sign-in-activities"></a>Aanmeldactiviteiten filteren
 
-Ten eerste, het beperken van de gerapporteerde gegevens tot een niveau dat voor u werkt. Ten tweede filtert u aanmeldingen met datumveld als standaardfilter. Azure AD biedt u een breed scala aan extra filters die u instellen:
+U moet eerst de gerapporteerde gegevens beperken tot een niveau dat geschikt is voor u. Ten tweede filtert u aanmeldings gegevens met een datum veld als standaard filter. Azure AD biedt u een breed scala aan extra filters die u kunt instellen:
 
-![Aanmeldingsactiviteit](./media/concept-sign-ins/04.png "Aanmeldingsactiviteit")
+![Aanmeldings activiteit](./media/concept-sign-ins/04.png "Aanmeldingsactiviteit")
 
-**Aanvraag ID** - De ID van het verzoek dat u de zorg over.
+**Aanvraag-id** : de id van de aanvraag die u vindt.
 
-**Gebruiker** - De naam of de gebruikersnaam (UPN) van de gebruiker waar u om geeft.
+**Gebruiker** -de naam of de User Principal Name (UPN) van de gebruiker die u bezorgt.
 
-**Toepassing** - De naam van de doeltoepassing.
+**Toepassing** -de naam van de doel toepassing.
  
-**Status** - De aanmeldingsstatus waar u om geeft:
+**Status** -de aanmeldings status die u bevalt:
 
 - Geslaagd
 
@@ -124,67 +124,67 @@ Ten eerste, het beperken van de gerapporteerde gegevens tot een niveau dat voor 
 - Onderbroken
 
 
-**IP-adres** - Het IP-adres van het apparaat dat wordt gebruikt om verbinding te maken met uw tenant.
+**IP-adres** : het IP-adres van het apparaat dat wordt gebruikt om verbinding te maken met uw Tenant.
 
-De **locatie** - de locatie waar de verbinding is gestart vanuit:
+De **locatie** -de locatie van de verbinding vanaf:
 
 - Plaats
 
-- Staat / Provincie
+- Provincie
 
 - Land/regio
 
 
-**Resource** - De naam van de service die wordt gebruikt voor de aanmelding.
+**Resource** -de naam van de service die wordt gebruikt voor de aanmelding.
 
 
-**Resource-id** - de id van de service die wordt gebruikt voor de aanmelding.
+**Resource-id** : de id van de service die wordt gebruikt voor de aanmelding.
 
 
-**Client-app** - Het type client-app dat wordt gebruikt om verbinding te maken met uw tenant:
+**Client-app** : het type client-app dat wordt gebruikt om verbinding te maken met uw Tenant:
 
-![Clientapp-filter](./media/concept-sign-ins/client-app-filter.png)
+![Client-App-filter](./media/concept-sign-ins/client-app-filter.png)
 
 
-|Name|Moderne verificatie|Beschrijving|
+|Naam|Moderne verificatie|Beschrijving|
 |---|:-:|---|
-|Geverifieerde SMTP| |Gebruikt door POP en IMAP client's om e-mailberichten te verzenden.|
-|Autodiscover| |Wordt gebruikt door Outlook- en EAS-clients om postvakken in Exchange Online te vinden en te verbinden.|
-|Exchange ActiveSync| |Dit filter toont alle aanmeldingspogingen waarbij het EAS-protocol is geprobeerd.|
-|Browser|![Selecteren](./media/concept-sign-ins/check.png)|Toont alle aanmeldingspogingen van gebruikers die webbrowsers gebruiken|
-|Exchange ActiveSync| | Toont alle aanmeldingspogingen van gebruikers met client-apps die Exchange ActiceSync gebruiken om verbinding te maken met Exchange Online|
-|Exchange Online PowerShell| |Wordt gebruikt om verbinding te maken met Exchange Online met externe PowerShell. Als u basisverificatie voor Exchange Online PowerShell blokkeert, moet u de Exchange Online PowerShell-module gebruiken om verbinding te maken. Zie Verbinding [maken met Exchange Online PowerShell met behulp van meervoudige verificatie](https://docs.microsoft.com/powershell/exchange/exchange-online/connect-to-exchange-online-powershell/mfa-connect-to-exchange-online-powershell)voor instructies.|
-|Exchange-webservices| |Een programmeerinterface die wordt gebruikt door Outlook, Outlook voor Mac en apps van derden.|
-|IMAP4| |Een oudere e-mailclient die IMAP gebruikt om e-mail op te halen.|
-|MAPI over HTTP| |Gebruikt door Outlook 2010 en hoger.|
-|Mobiele apps en desktopclients|![Selecteren](./media/concept-sign-ins/check.png)|Toont alle aanmeldingspogingen van gebruikers die mobiele apps en desktopclients gebruiken.|
-|Offline adresboek| |Een kopie van adreslijstverzamelingen die worden gedownload en gebruikt door Outlook.|
+|Geverifieerde SMTP| |Wordt gebruikt door de POP-en IMAP-client om e-mail berichten te verzenden.|
+|Autodis cover| |Wordt gebruikt door Outlook-en EAS-clients om post vakken in Exchange Online te vinden en er verbinding mee te maken.|
+|Exchange ActiveSync| |Dit filter geeft alle aanmeldings pogingen weer waarin is geprobeerd het EAS-protocol uit te voeren.|
+|Browser|![Selecteren](./media/concept-sign-ins/check.png)|Toont alle aanmeldings pogingen van gebruikers met behulp van webbrowsers|
+|Exchange ActiveSync| | Geeft alle aanmeldings pogingen van gebruikers met client-apps met behulp van Exchange ActiceSync om verbinding te maken met Exchange Online|
+|Exchange Online Power shell| |Wordt gebruikt om verbinding te maken met Exchange Online met externe Power shell. Als u basis verificatie voor Exchange Online Power shell blokkeert, moet u de Exchange Online Power shell-module gebruiken om verbinding te maken. Zie [verbinding maken met Exchange Online Power shell met multi-factor Authentication](https://docs.microsoft.com/powershell/exchange/exchange-online/connect-to-exchange-online-powershell/mfa-connect-to-exchange-online-powershell)voor instructies.|
+|Exchange-webservices| |Een programmeer interface die wordt gebruikt door Outlook, Outlook voor Mac en apps van derden.|
+|IMAP4| |Een verouderde e-mailclient die gebruikmaakt van IMAP om e-mail op te halen.|
+|MAPI via HTTP| |Gebruikt door Outlook 2010 en hoger.|
+|Mobiele apps en desktop-clients|![Selecteren](./media/concept-sign-ins/check.png)|Toont alle aanmeldings pogingen van gebruikers die mobiele apps en desktop-clients gebruiken.|
+|Offline adresboek| |Een kopie van de adres lijst verzamelingen die worden gedownload en gebruikt door Outlook.|
 |Outlook Anywhere (RPC via HTTP)| |Gebruikt door Outlook 2016 en eerder.|
-|Outlook-service| |Wordt gebruikt door de mail- en agenda-app voor Windows 10.|
-|POP3| |Een oudere e-mailclient die POP3 gebruikt om e-mail op te halen.|
-|Webservices rapporteren| |Wordt gebruikt om rapportgegevens op te halen in Exchange Online.|
-|Andere clients| |Toont alle aanmeldingspogingen van gebruikers waarbij de client-app niet of onbekend is opgenomen.|
+|Outlook-service| |Wordt gebruikt door de mail-en agenda-app voor Windows 10.|
+|POP3| |Een legacy-mailclient die gebruikmaakt van POP3 om e-mail op te halen.|
+|Reporting Web Services| |Wordt gebruikt om rapport gegevens op te halen in Exchange Online.|
+|Andere clients| |Toont alle aanmeldings pogingen van gebruikers, waarbij de client-app niet is opgenomen of onbekend.|
 
 
 
-**Besturingssysteem** - Het besturingssysteem dat op het apparaat wordt gebruikt, wordt aangemeld bij uw tenant. 
+**Besturings systeem** : het besturings systeem dat wordt uitgevoerd op het apparaat dat wordt gebruikt voor aanmelding bij uw Tenant. 
 
 
-**Apparaatbrowser** - Als de verbinding vanuit een browser is gestart, u met dit veld filteren op browsernaam.
+**Browser voor apparaten** : als de verbinding is gestart vanuit een browser, kunt u in dit veld filteren op browser naam.
 
 
-**Correlatie-ID** - De correlatie-ID van de activiteit.
+**Correlatie-id** : de correlatie-id van de activiteit.
 
 
 
 
-**Voorwaardelijke toegang** - De status van de toegepaste regels voor voorwaardelijke toegang
+**Voorwaardelijke toegang** : de status van de toegepaste regels voor voorwaardelijke toegang
 
-- **Niet toegepast**: Geen beleid toegepast op de gebruiker en toepassing tijdens het aanmelden.
+- **Niet toegepast**: tijdens het aanmelden wordt er geen beleid toegepast op de gebruiker en de toepassing.
 
-- **Succes**: Een of meer voorwaardelijke toegangsbeleidsregels die tijdens het aanmelden op de gebruiker en toepassing worden toegepast (maar niet noodzakelijkerwijs de andere voorwaarden). 
+- **Geslaagd**: een of meer beleids regels voor voorwaardelijke toegang die worden toegepast op de gebruiker en toepassing (maar niet noodzakelijkerwijs de andere voor waarden) tijdens het aanmelden. 
 
-- **Fout**: Een of meer voorwaardelijke toegangsbeleidsregels zijn toegepast en is niet voldaan tijdens het aanmelden.
+- **Fout**: er is een of meer beleids regels voor voorwaardelijke toegang toegepast en er is niet voldaan aan het aanmelden.
 
 
 
@@ -196,28 +196,28 @@ De **locatie** - de locatie waar de verbinding is gestart vanuit:
 
 ## <a name="download-sign-in-activities"></a>Aanmeldactiviteiten downloaden
 
-Klik **op** de optie Downloaden om een CSV- of JSON-bestand te maken van de meest recente 250.000 records. Begin met [het downloaden van de aanmeldingsgegevens](quickstart-download-sign-in-report.md) als u ermee wilt werken buiten de Azure-portal.  
+Klik op de **Download** optie om een CSV-of JSON-bestand te maken van de meest recente 250.000 records. Begin met [het downloaden van de gegevens van de aanmeldingen](quickstart-download-sign-in-report.md) als u wilt werken buiten de Azure Portal.  
 
 ![Downloaden](./media/concept-sign-ins/71.png "Download")
 
 > [!IMPORTANT]
-> Het aantal records dat u downloaden, wordt beperkt door het [azure Active Directory-rapportbehoudbeleid](reference-reports-data-retention.md).  
+> Het aantal records dat u kunt downloaden, is beperkt door het [Bewaar beleid](reference-reports-data-retention.md)voor de Azure Active Directory-rapport.  
 
 
-## <a name="sign-ins-data-shortcuts"></a>Snelkoppelingen naar aanmeldingen
+## <a name="sign-ins-data-shortcuts"></a>Gegevens snelkoppelingen voor aanmeldingen
 
-Azure AD en de Azure-portal bieden u beide extra toegangspunten voor aanmeldingen:
+Azure AD en de Azure Portal bieden u extra toegangs punten voor het registreren van gegevens:
 
-- Het overzicht van de beveiliging van de identiteit
+- Het overzicht van identiteits beveiligings beveiliging
 - Gebruikers
 - Groepen
 - Bedrijfstoepassingen
 
-### <a name="users-sign-ins-data-in-identity-security-protection"></a>Gebruikers aanmelden gegevens in de beveiliging van de beveiliging van identiteit
+### <a name="users-sign-ins-data-in-identity-security-protection"></a>Gebruikers aanmeldingen gegevens in identiteits beveiliging beveiligen
 
-De aanmeldingsgrafiek van de gebruiker op de overzichtspagina **beveiliging van de identiteit** toont wekelijkse aggregaties van aanmeldingen. De standaardwaarde voor de periode is 30 dagen.
+De aanmeldings grafiek van gebruikers op de overzichts pagina voor **identiteits beveiligings beveiliging** bevat wekelijkse aggregaties van aanmeldingen. De standaard waarde voor de tijds periode is 30 dagen.
 
-![Aanmeldingsactiviteit](./media/concept-sign-ins/06.png "Aanmeldingsactiviteit")
+![Aanmeldings activiteit](./media/concept-sign-ins/06.png "Aanmeldingsactiviteit")
 
 Als u in de aanmeldingsgrafiek op een dag klikt, ziet u een overzicht van de aanmeldingsactiviteiten voor die dag.
 
@@ -243,45 +243,45 @@ Door op een item te klikken, krijgt u meer informatie over de aanmelding:
 - Aanmeldingsstatus
 
 > [!NOTE]
-> IP-adressen worden zodanig uitgegeven dat er geen definitief verband bestaat tussen een IP-adres en dat de computer met dat adres zich fysiek bevindt. Het toewijzen van IP-adressen wordt bemoeilijkt door het feit dat mobiele providers en VPN's IP-adressen uitcentrale pools uitgeven die vaak ver verwijderd zijn van de plaats waar het clientapparaat daadwerkelijk wordt gebruikt. Momenteel in Azure AD-rapporten is het converteren van IP-adres naar een fysieke locatie een beste inspanning op basis van traces, registergegevens, reverse look ups en andere informatie.
+> IP-adressen worden zodanig uitgegeven dat er geen definitieve verbinding is tussen een IP-adres en waar de computer met dat adres zich fysiek bevindt. Het toewijzen van IP-adressen is gecompliceerd door het feit dat mobiele providers en Vpn's IP-adressen van centrale Pools uitgeven die vaak zeer veel van elkaar zijn waar het client apparaat daad werkelijk wordt gebruikt. Op dit moment in azure AD-rapporten is het converteren van een IP-adres naar een fysieke locatie een beste werk op basis van traceringen, register gegevens, het terugdraaien van de ups en andere informatie.
 
 Op de pagina **Gebruikers** krijgt u een volledig overzicht van alle aanmeldingen van gebruikers door in de sectie **Activiteit** op **Aanmelden** te klikken.
 
-![Aanmeldingsactiviteit](./media/concept-sign-ins/08.png "Aanmeldingsactiviteit")
+![Aanmeldings activiteit](./media/concept-sign-ins/08.png "Aanmeldingsactiviteit")
 
 ## <a name="usage-of-managed-applications"></a>Het gebruik van beheerde toepassingen
 
 Met een toepassingsgerichte weergave van uw aanmeldingsgegevens kunt u antwoord vinden op vragen zoals:
 
 * Wie gebruikt mijn toepassingen?
-* Wat zijn de top drie toepassingen in uw organisatie?
-* Hoe gaat het met mijn nieuwste applicatie?
+* Wat zijn de belangrijkste drie toepassingen in uw organisatie?
+* Hoe wordt mijn nieuwste toepassing uitgevoerd?
 
-Het toegangspunt tot deze gegevens is de top drie toepassingen in uw organisatie. De gegevens worden opgenomen in het rapport van de laatste 30 dagen in de sectie **Overzicht** onder **Enterprise-toepassingen**.
+Het ingangs punt voor deze gegevens is de drie belangrijkste toepassingen in uw organisatie. De gegevens bevinden zich in het rapport van de afgelopen 30 dagen in het gedeelte **overzicht** onder **bedrijfs toepassingen**.
 
-![Aanmeldingsactiviteit](./media/concept-sign-ins/10.png "Aanmeldingsactiviteit")
+![Aanmeldings activiteit](./media/concept-sign-ins/10.png "Aanmeldingsactiviteit")
 
-De app-gebruik grafieken wekelijkse aggregaties van aanmeldingen voor uw top drie toepassingen in een bepaalde periode. De standaard ingestelde periode is 30 dagen.
+De grafieken voor het gebruik van de app en wekelijkse aggregaties van aanmeldingen voor uw eerste drie toepassingen in een bepaalde periode. De standaard ingestelde periode is 30 dagen.
 
-![Aanmeldingsactiviteit](./media/concept-sign-ins/graph-chart.png "Aanmeldingsactiviteit")
+![Aanmeldings activiteit](./media/concept-sign-ins/graph-chart.png "Aanmeldingsactiviteit")
 
 Als u wilt, kunt u de focus instellen op een specifieke toepassing.
 
-![Rapportage](./media/concept-sign-ins/single-app-usage-graph.png "Rapportage")
+![Rapporten](./media/concept-sign-ins/single-app-usage-graph.png "Rapporten")
 
 Als u op een dag in de appgebruikgrafiek klikt, ziet u een gedetailleerd overzicht van de aanmeldactiviteiten.
 
 Met de optie **Aanmeldingen** krijgt u een volledig overzicht van alle aanmeldingsgebeurtenissen voor uw toepassingen.
 
-## <a name="office-365-activity-logs"></a>Office 365-activiteitslogboeken
+## <a name="office-365-activity-logs"></a>Office 365-activiteiten logboeken
 
-U Office 365-activiteitslogboeken bekijken vanuit het [Microsoft 365-beheercentrum](https://docs.microsoft.com/office365/admin/admin-overview/about-the-admin-center). Houd rekening met het punt dat office 365-activiteitslogboeken en AZURE AD-activiteitslogboeken een aanzienlijk aantal directorybronnen delen. Alleen het Microsoft 365-beheercentrum biedt een volledig overzicht van de office 365-activiteitslogboeken. 
+U kunt activiteiten logboeken van Office 365 bekijken vanuit het [Microsoft 365-beheer centrum](https://docs.microsoft.com/office365/admin/admin-overview/about-the-admin-center). Denk na over het punt dat, Office 365-activiteit en Azure AD-activiteiten Logboeken een aanzienlijk aantal Directory bronnen delen. Alleen het Microsoft 365-beheer centrum biedt een volledig overzicht van de activiteiten logboeken van Office 365. 
 
-U de Office 365-activiteitslogboeken ook programmatisch openen met behulp van de [OFFICE 365 Management API's.](https://docs.microsoft.com/office/office-365-management-api/office-365-management-apis-overview)
+U kunt de activiteiten logboeken van Office 365 ook programmatisch openen met behulp van de [office 365-beheer-api's](https://docs.microsoft.com/office/office-365-management-api/office-365-management-apis-overview).
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Foutcodes van aanmeldingsactiviteitsrapport](reference-sign-ins-error-codes.md)
-* [Azure AD-beleid voor het bewaren van gegevens](reference-reports-data-retention.md)
-* [Latenlaten azure AD-rapport](reference-reports-latencies.md)
+* [Fout codes voor aanmeldings activiteiten rapport](reference-sign-ins-error-codes.md)
+* [Beleid voor het bewaren van Azure AD-gegevens](reference-reports-data-retention.md)
+* [Vertragingen van Azure AD-rapporten](reference-reports-latencies.md)
 

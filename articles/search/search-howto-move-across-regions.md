@@ -1,7 +1,7 @@
 ---
-title: Uw servicebron verplaatsen tussen regio's
+title: Uw service resource verplaatsen tussen regio's
 titleSuffix: Azure Cognitive Search
-description: In dit artikel ziet u hoe u uw Azure Cognitive Search-resources van de ene regio naar de andere verplaatst in de Azure-cloud.
+description: In dit artikel wordt uitgelegd hoe u uw Azure Cognitive Search-resources verplaatst van de ene regio naar de andere in de Azure-Cloud.
 manager: nitinme
 author: HeidiSteen
 ms.author: heidist
@@ -10,47 +10,47 @@ ms.topic: how-to
 ms.custom: subject-moving-resources
 ms.date: 03/24/2020
 ms.openlocfilehash: 00f16d11f7a9cd276772eda5e91d6e117ada8c9f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80246299"
 ---
-# <a name="move-your-azure-cognitive-search-service-to-another-azure-region"></a>Uw Azure Cognitive Search-service verplaatsen naar een andere Azure-regio
+# <a name="move-your-azure-cognitive-search-service-to-another-azure-region"></a>Verplaats uw Azure Cognitive Search-service naar een andere Azure-regio
 
-Af en toe vragen klanten naar het verplaatsen van een zoekservice naar een andere regio. Momenteel is er geen ingebouwd mechanisme of tooling om te helpen met die taak, maar dit artikel kan u helpen de handmatige stappen voor het bereiken van hetzelfde resultaat te begrijpen.
+Af en toe vragen klanten om een zoek service te verplaatsen naar een andere regio. Er is momenteel geen ingebouwd mechanisme of hulp programma beschikbaar voor deze taak, maar in dit artikel krijgt u inzicht in de hand matige stappen om hetzelfde resultaat te bereiken.
 
 > [!NOTE]
-> In de Azure-portal hebben alle services een opdracht **Voor een sjabloon exporteren.** In het geval van Azure Cognitive Search produceert deze opdracht een basisdefinitie van een service (naam, locatie, laag, replica en partitietelling), maar herkent deze de inhoud van uw service niet en draagt deze ook geen sleutels, rollen of logboeken over. Hoewel de opdracht bestaat, raden we u niet aan deze te gebruiken voor het verplaatsen van een zoekservice.
+> In de Azure Portal hebben alle services een opdracht **sjabloon exporteren** . In het geval van Azure Cognitive Search, wordt met deze opdracht een basis definitie van een service (naam, locatie, laag, replica en aantal partities) gemaakt, maar wordt de inhoud van uw service niet herkend en worden er geen sleutels, rollen of Logboeken uitgevoerd. Hoewel de opdracht bestaat, is het niet raadzaam om deze te gebruiken voor het verplaatsen van een zoek service.
 
-## <a name="guidance-for-moving-a-service"></a>Richtlijnen voor het verplaatsen van een service
+## <a name="guidance-for-moving-a-service"></a>Richt lijnen voor het verplaatsen van een service
 
-1. Identificeer afhankelijkheden en gerelateerde services om de volledige impact van het verplaatsen van een service te begrijpen, voor het geval u meer moet verplaatsen dan alleen Azure Cognitive Search.
+1. Identificeer afhankelijkheden en gerelateerde services om inzicht te krijgen in de volledige impact van het verplaatsen van een service. voor het geval moet u meer dan alleen Azure Cognitive Search.
 
-   Azure Storage wordt gebruikt voor logboekregistratie, het maken van een kennisarchief en is een veelgebruikte externe gegevensbron voor AI-verrijking en indexering. Cognitive Services is een afhankelijkheid in AI-verrijking. Zowel Cognitive Services als uw zoekservice moeten zich in dezelfde regio bevinden als u AI-verrijking gebruikt.
+   Azure Storage wordt gebruikt voor logboek registratie, het maken van een kennis archief en is een veelgebruikte externe gegevens bron voor AI-verrijking en indexering. Cognitive Services is een afhankelijkheid in AI-verrijking. Zowel Cognitive Services als uw zoek service moeten zich in dezelfde regio bevinden als u gebruikmaakt van AI-verrijking.
 
-1. Maak een inventaris van alle objecten op de service, zodat u weet wat u moet verplaatsen: indexen, synoniemenkaarten, indexeerders, gegevensbronnen, skillsets. Als u logboekregistratie hebt ingeschakeld, maakt en archiveert u alle rapporten die u mogelijk nodig hebt voor een historische record.
+1. Maak een inventarisatie van alle objecten op de service, zodat u weet wat u moet verplaatsen: indexen, synoniemen, Indexeer functies, gegevens bronnen, vaardig heden. Als u logboek registratie hebt ingeschakeld, maakt en archiveert u rapporten die u mogelijk nodig hebt voor een historische record.
 
-1. Controleer de prijzen en beschikbaarheid in de nieuwe regio om de beschikbaarheid van Azure Cognitive Search plus gerelateerde services in de nieuwe regio te garanderen. De meeste functies zijn beschikbaar in alle regio's, maar sommige preview-functies hebben de beschikbaarheid beperkt.
+1. Controleer de prijzen en beschik baarheid in de nieuwe regio om de beschik baarheid van Azure Cognitive Search plus alle gerelateerde services in de nieuwe regio te garanderen. De meeste functies zijn beschikbaar in alle regio's, maar sommige preview-functies hebben beperkte Beschik baarheid.
 
-1. Maak een service in de nieuwe regio en publiceer vanuit de broncode alle bestaande indexen, synoniemenkaarten, indexers, gegevensbronnen en skillsets. Vergeet niet dat servicenamen uniek moeten zijn, zodat u de bestaande naam niet opnieuw gebruiken. Controleer elke skillset om te zien of verbindingen met cognitieve services nog steeds geldig zijn in termen van dezelfde regiovereiste. Als er kennisopslag wordt gemaakt, controleert u ook de verbindingstekenreeksen voor Azure Storage als u een andere service gebruikt.
+1. Maak een service in de nieuwe regio en publiceer opnieuw vanuit de bron code alle bestaande indexen, synoniemen, Indexeer functies, gegevens bronnen en vaardig heden. Houd er rekening mee dat service namen uniek moeten zijn, zodat u de bestaande naam niet opnieuw kunt gebruiken. Controleer elke vaardig heden om te zien of verbindingen met Cognitive Services nog steeds geldig zijn in termen van dezelfde-regio vereiste. Als er ook kennis archieven worden gemaakt, controleert u de verbindings reeksen voor Azure Storage als u een andere service gebruikt.
 
-1. Herlaad indexen en kenniswinkels, indien van toepassing. U gebruikt toepassingscode om JSON-gegevens in een index te duwen of indexeerders opnieuw uit te voeren om documenten uit externe bronnen op te halen. 
+1. Herlaad indexen en kennis winkels, indien van toepassing. U gebruikt toepassings code om JSON-gegevens naar een index te pushen of om Indexeer functies opnieuw uit te voeren om documenten uit externe bronnen te halen. 
 
-1. Schakel logboekregistratie in en als u ze gebruikt, maakt u opnieuw beveiligingsrollen.
+1. Schakel logboek registratie in en als u deze gebruikt, maakt u de beveiligings rollen opnieuw.
 
-1. Werk clienttoepassingen en testsuites bij om de nieuwe servicenaam en API-sleutels te gebruiken en test alle toepassingen.
+1. Update client toepassingen en test suites voor het gebruik van de nieuwe service naam en API-sleutels en test alle toepassingen.
 
-1. Verwijder de oude service zodra de nieuwe service volledig is getest en operationeel is.
+1. Verwijder de oude service zodra de nieuwe service volledig getest en operationeel is.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Met de volgende koppelingen u meer informatie vinden bij het voltooien van de hierboven beschreven stappen.
+U kunt de volgende koppelingen gebruiken om meer informatie te vinden bij het uitvoeren van de hierboven beschreven stappen.
 
-+ [Azure Cognitive Search-prijzen en -regio's](https://azure.microsoft.com/pricing/details/search/)
++ [Prijzen en regio's van Azure Cognitive Search](https://azure.microsoft.com/pricing/details/search/)
 + [Een laag kiezen](search-sku-tier.md)
-+ [Een zoekservice maken](search-create-service-portal.md)
-+ [Zoekdocumenten laden](search-what-is-data-import.md)
++ [Een zoek service maken](search-create-service-portal.md)
++ [Zoek documenten laden](search-what-is-data-import.md)
 + [Logboekregistratie inschakelen](search-monitor-logs.md)
 
 

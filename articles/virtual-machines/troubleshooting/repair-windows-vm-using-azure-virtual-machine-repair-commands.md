@@ -1,6 +1,6 @@
 ---
-title: Een Windows-vm herstellen met de reparatieopdrachten van Azure Virtual Machine | Microsoft Documenten
-description: In dit artikel wordt beschreven hoe u Azure VM-reparatieopdrachten gebruikt om de schijf aan te sluiten op een andere Windows-vm om eventuele fouten op te lossen en vervolgens uw oorspronkelijke vm opnieuw op te bouwen.
+title: Een Windows-VM herstellen met behulp van de opdrachten voor het herstellen van virtuele Azure-machines | Microsoft Docs
+description: In dit artikel wordt beschreven hoe u de herstel opdrachten van Azure VM kunt gebruiken om de schijf te verbinden met een andere Windows-VM om eventuele fouten op te lossen en vervolgens de oorspronkelijke VM opnieuw op te bouwen.
 services: virtual-machines-windows
 documentationcenter: ''
 author: v-miegge
@@ -15,86 +15,86 @@ ms.devlang: azurecli
 ms.date: 09/10/2019
 ms.author: v-miegge
 ms.openlocfilehash: 2055558ef80a641084a7cf9d299281497d282936
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80060674"
 ---
 # <a name="repair-a-windows-vm-by-using-the-azure-virtual-machine-repair-commands"></a>Een Windows-VM herstellen met de reparatieopdrachten van Azure Virtual Machine
 
-Als uw virtuele Windows-machine (VM) in Azure een opstart- of schijffout tegenkomt, moet u mogelijk mitigatie uitvoeren op de schijf zelf. Een veelvoorkomend voorbeeld is een mislukte toepassingsupdate die voorkomt dat de VM kan opstarten. In dit artikel wordt beschreven hoe u Azure VM-reparatieopdrachten gebruikt om de schijf aan te sluiten op een andere Windows-vm om eventuele fouten op te lossen en vervolgens uw oorspronkelijke vm opnieuw op te bouwen.
+Als op uw virtuele Windows-machine (VM) in azure een opstart-of schijf fout optreedt, moet u mogelijk de schijf zelf beperken. Een veelvoorkomend voor beeld hiervan is een mislukte toepassings update waarmee wordt voor komen dat de virtuele machine kan worden opgestart. In dit artikel wordt beschreven hoe u de herstel opdrachten van Azure VM kunt gebruiken om de schijf te verbinden met een andere Windows-VM om eventuele fouten op te lossen en vervolgens de oorspronkelijke VM opnieuw op te bouwen.
 
 > [!IMPORTANT]
-> De scripts in dit artikel zijn alleen van toepassing op de VM's die [Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview)gebruiken.
+> De scripts in dit artikel zijn alleen van toepassing op de virtuele machines die gebruikmaken van [Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview).
 
-## <a name="repair-process-overview"></a>Overzicht van reparatieprocessen
+## <a name="repair-process-overview"></a>Overzicht van het reparatie proces
 
-U nu Azure VM-reparatieopdrachten gebruiken om de OS-schijf voor een virtuele machine te wijzigen en u hoeft de VM niet langer te verwijderen en opnieuw te maken.
+U kunt nu de reparatie opdrachten van Azure VM gebruiken om de besturingssysteem schijf voor een virtuele machine te wijzigen en u hoeft de virtuele machine niet meer te verwijderen en opnieuw te maken.
 
-Voer de volgende stappen uit om het VM-probleem op te lossen:
+Volg deze stappen om het VM-probleem op te lossen:
 
 1. Azure Cloud Shell starten
-2. Run az extension add/update.
-3. Run az vm repair create.
-4. Voer de AZ VM-reparatie uit.
-5. Voer het herstel van az vm-reparatie uit.
+2. Voer AZ extension add/update uit.
+3. Voer AZ VM Repair Create.
+4. Voer AZ VM Repair run uit.
+5. Voer AZ VM Repair Restore.
 
-Zie [az vm repair](https://docs.microsoft.com/cli/azure/ext/vm-repair/vm/repair)voor aanvullende documentatie en instructies.
+Zie [AZ VM Repair](https://docs.microsoft.com/cli/azure/ext/vm-repair/vm/repair)(Engelstalig) voor aanvullende documentatie en instructies.
 
-## <a name="repair-process-example"></a>Voorbeeld van reparatieproces
+## <a name="repair-process-example"></a>Voor beeld van reparatie proces
 
 > [!NOTE]
-> * Uitgaande connectiviteit van de VM (poort 443) is vereist om het script uit te voeren.
-> * Er mag slechts één script tegelijk worden uitgevoerd.
-> * Een lopend script kan niet worden geannuleerd.
-> * De maximale tijd die een script kan uitvoeren is 90 minuten, waarna het een time-out krijgt.
+> * De uitgaande verbinding van de virtuele machine (poort 443) is vereist om het script uit te voeren.
+> * Er kan slechts één script tegelijk worden uitgevoerd.
+> * Een actief script kan niet worden geannuleerd.
+> * De maximale tijd dat een script kan worden uitgevoerd, is 90 minuten, waarna er een time-out optreedt.
 
 1. Azure Cloud Shell starten
 
-   Azure Cloud Shell is een gratis interactieve shell waarmee u de stappen in dit artikel kunt uitvoeren. Het bevat algemene Azure-hulpprogramma's die vooraf zijn geïnstalleerd en geconfigureerd om te gebruiken met uw account.
+   Azure Cloud Shell is een gratis interactieve shell waarmee u de stappen in dit artikel kunt uitvoeren. Het bevat algemene Azure-hulpprogram ma's die vooraf zijn geïnstalleerd en geconfigureerd voor gebruik met uw account.
 
-   Als u de Cloud Shell wilt openen, selecteert **u Probeer deze** in de rechterbovenhoek van een codeblok. U Cloud Shell ook openen op [https://shell.azure.com](https://shell.azure.com)een apart browsertabblad door naar.
+   Als u de Cloud Shell wilt openen, selecteert u **deze** in de rechter bovenhoek van een code blok. U kunt Cloud Shell ook openen op een afzonderlijk browser tabblad door te [https://shell.azure.com](https://shell.azure.com)bezoeken.
 
-   Selecteer **Kopiëren** om de codeblokken te kopiëren, plak de code vervolgens in de Cloud Shell en selecteer **Enter** om deze uit te voeren.
+   Selecteer **kopiëren** om de blokken code te kopiëren en plak de code in het Cloud shell en selecteer **Enter** om het programma uit te voeren.
 
-   Als u ervoor kiest om de CLI lokaal te installeren en te gebruiken, hebt u voor deze snelstart versie 2.0.30 of hoger van Azure CLI nodig. Voer ``az --version`` uit om de versie te bekijken. Zie [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)installeren als u uw Azure CLI moet installeren of upgraden.
+   Als u ervoor kiest om de CLI lokaal te installeren en te gebruiken, hebt u voor deze snelstart versie 2.0.30 of hoger van Azure CLI nodig. Voer ``az --version`` uit om de versie te bekijken. Als u Azure CLI wilt installeren of upgraden, raadpleegt u [Azure cli installeren](https://docs.microsoft.com/cli/azure/install-azure-cli).
 
-2. Als dit de eerste keer `az vm repair` is dat u de opdrachten hebt gebruikt, voegt u de CLI-extensie vm-reparatie toe.
+2. Als dit de eerste keer is dat u de `az vm repair` opdrachten gebruikt, voegt u de extensie VM-herstel cli toe.
 
    ```azurecli-interactive
    az extension add -n vm-repair
    ```
 
-   Als u de `az vm repair` opdrachten eerder hebt gebruikt, past u eventuele updates toe op de vm-reparatieextensie.
+   Als u de `az vm repair` opdrachten eerder hebt gebruikt, moet u alle updates Toep assen op de extensie voor VM-herstel.
 
    ```azurecli-interactive
    az extension update -n vm-repair
    ```
 
-3. Voer `az vm repair create` uit. Met deze opdracht wordt een kopie van de OS-schijf gemaakt voor de niet-functionele vm, wordt een reparatie-vm gemaakt en wordt de schijf bevestigd.
+3. Voer `az vm repair create` uit. Met deze opdracht maakt u een kopie van de besturingssysteem schijf voor de niet-functionele VM, maakt u een herstel-VM en koppelt u de schijf.
 
    ```azurecli-interactive
    az vm repair create -g MyResourceGroup -n myVM --repair-username username --repair-password password!234 --verbose
    ```
 
-4. Voer `az vm repair run` uit. Met deze opdracht wordt het opgegeven reparatiescript op de aangesloten schijf uitgevoerd via de reparatie-VM.
+4. Voer `az vm repair run` uit. Met deze opdracht wordt het opgegeven herstel script op de gekoppelde schijf uitgevoerd via de reparatie-VM.
 
    ```azurecli-interactive
    az vm repair run  –g MyResourceGroup –n MyVM -–run-on-repair --run-id 2 --verbose
    ```
 
-5. Voer `az vm repair restore` uit. Met deze opdracht wordt de gerepareerde osschijf verwisseld met de oorspronkelijke osschijf van de VM.
+5. Voer `az vm repair restore` uit. Met deze opdracht wordt de gerepareerde besturingssysteem schijf vervangen door de oorspronkelijke besturingssysteem schijf van de virtuele machine.
 
    ```azurecli-interactive
    az vm repair restore -g MyResourceGroup -n MyVM --verbose
    ```
 
-## <a name="verify-and-enable-boot-diagnostics"></a>Opstartdiagnose verifiëren en inschakelen
+## <a name="verify-and-enable-boot-diagnostics"></a>Diagnostische gegevens over opstarten controleren en inschakelen
 
-In het volgende voorbeeld wordt de ``myVMDeployed`` diagnostische extensie ``myResourceGroup``op de VM ingeschakeld die is genoemd in de resourcegroep met de naam :
+``myVMDeployed`` In het volgende voor beeld wordt de diagnostische uitbrei ding ingeschakeld op de virtuele ``myResourceGroup``machine met de naam in de resource groep met de naam:
 
-Azure-CLI
+Azure CLI
 
 ```azurecli-interactive
 az vm boot-diagnostics enable --name myVMDeployed --resource-group myResourceGroup --storage https://mystor.blob.core.windows.net/
@@ -102,6 +102,6 @@ az vm boot-diagnostics enable --name myVMDeployed --resource-group myResourceGro
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Zie Problemen [met RDP-verbindingen met een Azure VM](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/troubleshoot-rdp-connection)als u problemen ondervindt bij het maken van verbinding met uw VM.
-* Zie Problemen met [de toepassingsconnectiviteit oplossen op virtuele machines in Azure](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/troubleshoot-app-connection)voor problemen met de toegang tot toepassingen die op uw vm worden uitgevoerd.
-* Zie overzicht van Azure Resource Manager voor meer informatie over het gebruik van Resource [Manager.](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview)
+* Zie [problemen met RDP-verbindingen met een Azure VM oplossen](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/troubleshoot-rdp-connection)als u problemen ondervindt bij het maken van verbinding met uw virtuele machine.
+* Zie problemen met [toepassings connectiviteit oplossen op virtuele machines in azure](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/troubleshoot-app-connection)voor problemen met het openen van toepassingen die op uw virtuele machine worden uitgevoerd.
+* Zie [Azure Resource Manager Overview](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview)voor meer informatie over het gebruik van Resource Manager.

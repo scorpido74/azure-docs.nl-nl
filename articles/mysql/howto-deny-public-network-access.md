@@ -1,46 +1,46 @@
 ---
-title: Openbare netwerktoegang weigeren - Azure-portal - Azure-database voor MySQL
-description: Meer informatie over het configureren van Verweertoegang voor openbare netwerken met Azure-portal voor uw Azure Database voor MySQL
+title: Open bare toegang tot het netwerk weigeren-Azure Portal-Azure Database for MySQL
+description: Meer informatie over het configureren van toegang tot open bare netwerken met behulp van Azure Portal voor uw Azure Database for MySQL
 author: kummanish
 ms.author: manishku
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 03/10/2020
 ms.openlocfilehash: b5f93f3a3583900810ca75f925c6a88df9102652
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79374951"
 ---
-# <a name="deny-public-network-access-in-azure-database-for-mysql-using-azure-portal"></a>Openbare netwerktoegang weigeren in Azure-database voor MySQL met Azure-portal
+# <a name="deny-public-network-access-in-azure-database-for-mysql-using-azure-portal"></a>Open bare netwerk toegang in Azure Database for MySQL weigeren met Azure Portal
 
-In dit artikel wordt beschreven hoe u een Azure Database voor MySQL-server configureren om alle openbare configuraties te weigeren en alleen verbindingen via privéeindpunten toe te staan om de netwerkbeveiliging verder te verbeteren.
+In dit artikel wordt beschreven hoe u een Azure Database for MySQL server kunt configureren om alle open bare configuraties te weigeren en alleen verbindingen via persoonlijke eind punten toe te staan om de netwerk beveiliging verder uit te breiden.
 
 ## <a name="prerequisites"></a>Vereisten
 
-Om deze handleiding te voltooien, moet u het:
+U hebt het volgende nodig om deze hand leiding te volt ooien:
 
-* Een [Azure-database voor MySQL](quickstart-create-mysql-server-database-using-azure-portal.md)
+* Een [Azure database for MySQL](quickstart-create-mysql-server-database-using-azure-portal.md)
 
-## <a name="set-deny-public-network-access"></a>Toegang tot openbare netwerken weigeren instellen
+## <a name="set-deny-public-network-access"></a>Instellen van open bare netwerk toegang weigeren
 
-Volg de volgende stappen om MySQL-server Deny Public Network Access in te stellen:
+Voer de volgende stappen uit om de MySQL-server toegang tot het open bare netwerk te geven:
 
-1. Selecteer in de [Azure-portal](https://portal.azure.com/)uw bestaande Azure-database voor MySQL-server.
+1. Selecteer in de [Azure Portal](https://portal.azure.com/)uw bestaande Azure database for mysql-server.
 
-1. Klik op de pagina MySQL-server onder **Instellingen**op **Verbindingsbeveiliging** om de pagina met verbindingsbeveiliging te openen.
+1. Klik op de pagina MySQL-server onder **instellingen**op **verbindings beveiliging** om de pagina verbindings beveiliging configureren te openen.
 
-1. Selecteer In **Openbare netwerktoegang weigeren**de optie **Ja** om openbare toegang voor uw MySQL-server te weigeren.
+1. Selecteer in **open bare netwerk toegang weigeren**de optie **Ja** om open bare toegang voor uw MySQL-server in te scha kelen.
 
-    ![Azure Database voor MySQL Deny-netwerktoegang](./media/howto-deny-public-network-access/setting-deny-public-network-access.PNG)
+    ![Netwerk toegang Azure Database for MySQL weigeren](./media/howto-deny-public-network-access/setting-deny-public-network-access.PNG)
 
 1. Klik op **Opslaan** om de wijzigingen op te slaan.
 
-1. Een melding bevestigt dat de verbindingsbeveiligingsinstelling is ingeschakeld.
+1. Bij een melding wordt bevestigd dat de instelling verbindings beveiliging is ingeschakeld.
 
-    ![Azure Database voor succes met MySQL Deny-netwerktoegang](./media/howto-deny-public-network-access/setting-deny-public-network-access-success.png)
+    ![Azure Database for MySQL netwerk toegang weigeren](./media/howto-deny-public-network-access/setting-deny-public-network-access-success.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Meer informatie over [het maken van waarschuwingen over statistieken](howto-alert-on-metric.md).
+Meer informatie over [het maken van waarschuwingen over metrische gegevens](howto-alert-on-metric.md).

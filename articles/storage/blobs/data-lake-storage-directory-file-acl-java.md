@@ -1,6 +1,6 @@
 ---
-title: Azure Data Lake Storage Gen2 Java SDK voor bestanden & ACL's
-description: Gebruik Azure Storage-bibliotheken voor Java om mappen en lijsten met bestands- en adresmaptoegangsbeheer (ACL) te beheren in opslagaccounts waarvoor hiërarchische naamruimte (HNS) is ingeschakeld.
+title: Azure Data Lake Storage Gen2 Java SDK voor bestanden & Acl's
+description: Gebruik Azure Storage bibliotheken voor Java voor het beheren van mappen en toegangs beheer lijsten (ACL'S) voor bestands-en Directory bestanden in opslag accounts met een hiërarchische naam ruimte (HNS) ingeschakeld.
 author: normesta
 ms.service: storage
 ms.date: 03/20/2020
@@ -9,31 +9,31 @@ ms.topic: conceptual
 ms.subservice: data-lake-storage-gen2
 ms.reviewer: prishet
 ms.openlocfilehash: 45870dd7d3035b6b49340fd6e8016794088e775a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80061561"
 ---
-# <a name="use-java-to-manage-directories-files-and-acls-in-azure-data-lake-storage-gen2"></a>Java gebruiken om mappen, bestanden en ACL's te beheren in Azure Data Lake Storage Gen2
+# <a name="use-java-to-manage-directories-files-and-acls-in-azure-data-lake-storage-gen2"></a>Java gebruiken voor het beheren van mappen, bestanden en Acl's in Azure Data Lake Storage Gen2
 
-In dit artikel ziet u hoe u Java gebruiken om mappen, bestanden en machtigingen te maken en te beheren in opslagaccounts waarop hiërarchische naamruimte (HNS) is ingeschakeld. 
+In dit artikel leest u hoe u Java gebruikt om directory's, bestanden en machtigingen te maken en te beheren in opslag accounts met een hiërarchische naam ruimte (HNS) ingeschakeld. 
 
-[Pakket (Maven)](https://search.maven.org/artifact/com.azure/azure-storage-file-datalake) | [Samples](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/storage/azure-storage-file-datalake) | [API referentie](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-file-datalake/12.0.1/index.html) | [Gen1 naar Gen2 mapping](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/storage/azure-storage-file-datalake/GEN1_GEN2_MAPPING.md) | [Feedback geven](https://github.com/Azure/azure-sdk-for-java/issues)
+[Pakket (Maven)](https://search.maven.org/artifact/com.azure/azure-storage-file-datalake) | [beelden](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/storage/azure-storage-file-datalake) | van API-[verwijzing](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-file-datalake/12.0.1/index.html) | [gen1 naar Gen2-toewijzing](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/storage/azure-storage-file-datalake/GEN1_GEN2_MAPPING.md) | [geven feedback](https://github.com/Azure/azure-sdk-for-java/issues)
 
 ## <a name="prerequisites"></a>Vereisten
 
 > [!div class="checklist"]
 > * Een Azure-abonnement. Zie [Gratis proefversie van Azure ophalen](https://azure.microsoft.com/pricing/free-trial/).
-> * Een opslagaccount met hiërarchische naamruimte (HNS) ingeschakeld. Volg [deze](data-lake-storage-quickstart-create-account.md) instructies om er een te maken.
+> * Een opslag account met een hiërarchische naam ruimte (HNS) ingeschakeld. Volg [deze](data-lake-storage-quickstart-create-account.md) instructies om er een te maken.
 
 ## <a name="set-up-your-project"></a>Uw project instellen
 
-Open [deze pagina](https://search.maven.org/artifact/com.azure/azure-storage-file-datalake) om aan de slag te gaan en de nieuwste versie van de Java-bibliotheek te vinden. Open vervolgens het *pom.xml-bestand* in uw teksteditor. Voeg een afhankelijkheidselement toe dat naar die versie verwijst.
+Open [Deze pagina](https://search.maven.org/artifact/com.azure/azure-storage-file-datalake) en zoek de meest recente versie van de Java-bibliotheek om aan de slag te gaan. Open vervolgens het bestand *pom. XML* in de tekst editor. Voeg een afhankelijkheids element toe dat verwijst naar die versie.
 
-Als u van plan bent uw clienttoepassing te verifiëren met Behulp van Azure Active Directory (AD), voegt u een afhankelijkheid toe aan de Azure Secret Client Library. Zie [Het pakket Geheime clientbibliotheek toevoegen aan uw project](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/identity/azure-identity#adding-the-package-to-your-project).
+Als u van plan bent om uw client toepassing te verifiëren met behulp van Azure Active Directory (AD), voegt u een afhankelijkheid toe aan de Azure Secret-client bibliotheek. Zie [het geheim-client bibliotheek pakket toevoegen aan uw project](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/identity/azure-identity#adding-the-package-to-your-project).
 
-Voeg vervolgens deze importinstructies toe aan uw codebestand.
+Voeg vervolgens deze Imports-instructies toe aan het code bestand.
 
 ```java
 import com.azure.core.credential.TokenCredential;
@@ -53,13 +53,13 @@ import com.azure.storage.file.datalake.models.RolePermissions;
 
 ## <a name="connect-to-the-account"></a>Verbinding maken met het account 
 
-Als u de fragmenten in dit artikel wilt gebruiken, moet u een **Instantie DataLakeServiceClient** maken die het opslagaccount vertegenwoordigt. 
+Als u de fragmenten in dit artikel wilt gebruiken, moet u een **DataLakeServiceClient** -exemplaar maken dat het opslag account vertegenwoordigt. 
 
-### <a name="connect-by-using-an-account-key"></a>Verbinding maken met een accountsleutel
+### <a name="connect-by-using-an-account-key"></a>Verbinding maken met behulp van een account sleutel
 
 Dit is de eenvoudigste manier om verbinding te maken met een account. 
 
-In dit voorbeeld wordt een **Instantie DataLakeServiceClient** gemaakt met behulp van een accountsleutel.
+In dit voor beeld wordt een **DataLakeServiceClient** -exemplaar gemaakt met behulp van een account sleutel.
 
 ```java
 
@@ -78,11 +78,11 @@ static public DataLakeServiceClient GetDataLakeServiceClient
 }      
 ```
 
-### <a name="connect-by-using-azure-active-directory-azure-ad"></a>Verbinding maken met Azure Active Directory (Azure AD)
+### <a name="connect-by-using-azure-active-directory-azure-ad"></a>Verbinding maken met behulp van Azure Active Directory (Azure AD)
 
-U de [Azure-identiteitsclientbibliotheek voor Java](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/identity/azure-identity) gebruiken om uw toepassing te verifiëren met Azure AD.
+U kunt de [Azure Identity client-bibliotheek voor Java](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/identity/azure-identity) gebruiken om uw toepassing te verifiëren met Azure AD.
 
-In dit voorbeeld wordt een **GegevensLakeServiceClient-exemplaar** gemaakt met behulp van een client-id, een clientgeheim en een tenant-id.  Zie Een token [van Azure AD ophalen van Azure AD voor het toestaan van aanvragen van een clienttoepassing](../common/storage-auth-aad-app.md)om deze waarden te verkrijgen.
+In dit voor beeld wordt een **DataLakeServiceClient** -exemplaar gemaakt met behulp van een client-id, een client geheim en een Tenant-id.  Zie [een Token ophalen uit Azure AD voor het machtigen van aanvragen van een client toepassing](../common/storage-auth-aad-app.md)om deze waarden op te halen.
 
 ```java
 static public DataLakeServiceClient GetDataLakeServiceClient
@@ -102,14 +102,14 @@ static public DataLakeServiceClient GetDataLakeServiceClient
 ```
 
 > [!NOTE]
-> Zie voor meer voorbeelden de [Azure-identiteitsclientbibliotheek voor Java-documentatie.](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/identity/azure-identity)
+> Zie de [Azure Identity client-bibliotheek voor Java](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/identity/azure-identity) -documentatie voor meer voor beelden.
 
 
 ## <a name="create-a-file-system"></a>Een bestandssysteem maken
 
-Een bestandssysteem fungeert als een container voor uw bestanden. U er een maken door de **methode DataLakeServiceClient.createFileSystem aan** te roepen.
+Een bestands systeem fungeert als een container voor uw bestanden. U kunt er een maken door de methode **DataLakeServiceClient. createFileSystem** aan te roepen.
 
-In dit voorbeeld wordt `my-file-system`een bestandssysteem met de naam . 
+In dit voor beeld wordt een bestands `my-file-system`systeem gemaakt met de naam. 
 
 ```java
 static public DataLakeFileSystemClient CreateFileSystem
@@ -121,9 +121,9 @@ static public DataLakeFileSystemClient CreateFileSystem
 
 ## <a name="create-a-directory"></a>Een map maken
 
-Maak een adreslijstverwijzing door de methode **DataLakeFileSystemClient.createDirectory aan** te roepen.
+Maak een verwijzing naar een directory door de methode **DataLakeFileSystemClient. createDirectory** aan te roepen.
 
-In dit voorbeeld `my-directory` wordt een map toegevoegd met de naam `my-subdirectory`aan een bestandssysteem en wordt een submap met de naam toegevoegd. 
+In dit voor beeld wordt een `my-directory` map met de naam van een bestands systeem toegevoegd en wordt vervolgens een `my-subdirectory`submap met de naam toegevoegd. 
 
 ```java
 static public DataLakeDirectoryClient CreateDirectory
@@ -139,11 +139,11 @@ static public DataLakeDirectoryClient CreateDirectory
 }
 ```
 
-## <a name="rename-or-move-a-directory"></a>De naam van een map wijzigen of verplaatsen
+## <a name="rename-or-move-a-directory"></a>Een map een andere naam geven of verplaatsen
 
-Wijzig de naam of verplaats een map door de **methode DataLakeDirectoryClient.rename** aan te roepen. Geef het pad van de gewenste map een parameter. 
+Wijzig de naam of verplaats een map door de methode **DataLakeDirectoryClient. rename** aan te roepen. Geef een para meter door aan het pad van de gewenste map. 
 
-In dit voorbeeld wordt de naam `my-subdirectory-renamed`van een submap gewijzigd in de naam .
+In dit voor beeld wordt de naam van een submap gewijzigd in `my-subdirectory-renamed`de naam.
 
 ```java
 static public DataLakeDirectoryClient
@@ -157,7 +157,7 @@ static public DataLakeDirectoryClient
 }
 ```
 
-In dit voorbeeld `my-subdirectory-renamed` wordt een map met de `my-directory-2`naam verplaatst naar een submap van een map met de naam . 
+In dit voor beeld wordt een `my-subdirectory-renamed` map verplaatst met de naam naar een submap van `my-directory-2`een map met de naam. 
 
 ```java
 static public DataLakeDirectoryClient MoveDirectory
@@ -173,9 +173,9 @@ static public DataLakeDirectoryClient MoveDirectory
 
 ## <a name="delete-a-directory"></a>Een map verwijderen
 
-Een map verwijderen door de methode **DataLakeDirectoryClient.deleteWithte aan** te roepen.
+Verwijder een directory door de methode **DataLakeDirectoryClient. deleteWithResponse** aan te roepen.
 
-In dit voorbeeld wordt `my-directory`een map met de naam .   
+In dit voor beeld wordt een `my-directory`map met de naam verwijderd.   
 
 ```java
 static public void DeleteDirectory(DataLakeFileSystemClient fileSystemClient){
@@ -187,12 +187,12 @@ static public void DeleteDirectory(DataLakeFileSystemClient fileSystemClient){
 }
 ```
 
-## <a name="manage-a-directory-acl"></a>Een map ACL beheren
+## <a name="manage-a-directory-acl"></a>Een directory-ACL beheren
 
-In dit voorbeeld wordt de ACL `my-directory`van een map met de naam . In dit voorbeeld leest, schrijft en voert u machtigingen uit, geeft de eigenaarsgroep alleen lees- en uitvoermachtigingen en geeft alle anderen leestoegang.
+In dit voor beeld wordt de ACL van een directory met de `my-directory`naam opgehaald en ingesteld. In dit voor beeld worden de machtigingen lezen, schrijven en uitvoeren voor de gebruiker die eigenaar is, de groep die eigenaar is, de machtigingen lezen en uitvoeren, en krijgt alle andere Lees toegang.
 
 > [!NOTE]
-> Als uw toepassing de toegang autoriseert met Azure Active Directory (Azure AD), controleert u of de beveiligingsprincipal die uw toepassing gebruikt om toegang te autoriseren, is toegewezen aan de [rol Opslagblob-gegevenseigenaar](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-owner). Zie [Toegangsbeheer in Azure Data Lake Storage Gen2](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-access-control)voor meer informatie over hoe ACL-machtigingen worden toegepast en de effecten van het wijzigen ervan.
+> Als uw toepassing toegang autoriseert met behulp van Azure Active Directory (Azure AD), moet u ervoor zorgen dat de beveiligings-principal die door uw toepassing wordt gebruikt om toegang te verlenen, is toegewezen aan de [rol Storage BLOB data owner](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-owner). Zie voor meer informatie over hoe ACL-machtigingen worden toegepast en de gevolgen van het wijzigen van [toegangs beheer in azure data Lake Storage Gen2](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-access-control).
 
 ```java
 static public void ManageDirectoryACLs(DataLakeFileSystemClient fileSystemClient){
@@ -234,9 +234,9 @@ static public void ManageDirectoryACLs(DataLakeFileSystemClient fileSystemClient
 
 ## <a name="upload-a-file-to-a-directory"></a>Een bestand uploaden naar een map
 
-Maak eerst een bestandsverwijzing in de doelmap door een instantie van de klasse **DataLakeFileClient te** maken. Upload een bestand door de methode **DataLakeFileClient.append aan te** roepen. Zorg ervoor dat u de upload voltooit door de **methode DataLakeFileClient.FlushAsync** aan te roepen.
+Maak eerst een bestands verwijzing in de doel directory door een instantie van de klasse **DataLakeFileClient** te maken. Upload een bestand door de methode **DataLakeFileClient. Append aan** te roepen. Zorg ervoor dat u de upload voltooit door de methode **DataLakeFileClient. FlushAsync** aan te roepen.
 
-In dit voorbeeld wordt een tekstbestand geüpload naar een map met de naam `my-directory`.'
+In dit voor beeld wordt een tekst bestand geüpload naar een map `my-directory`met de naam.
 
 ```java
 static public void UploadFile(DataLakeFileSystemClient fileSystemClient) 
@@ -260,13 +260,13 @@ static public void UploadFile(DataLakeFileSystemClient fileSystemClient)
 ```
 
 > [!TIP]
-> Als uw bestandsgrootte groot is, moet uw code meerdere oproepen doen naar de methode **DataLakeFileClient.append.** Overweeg in plaats daarvan de methode **DataLakeFileClient.uploadFromFile** te gebruiken. Op die manier u het hele bestand in één gesprek uploaden. 
+> Als de bestands grootte groot is, moet uw code meerdere aanroepen naar de methode **DataLakeFileClient. append** maken. U kunt in plaats daarvan de methode **DataLakeFileClient. uploadFromFile** gebruiken. Op die manier kunt u het volledige bestand in één aanroep uploaden. 
 >
-> Zie de volgende sectie voor een voorbeeld.
+> Zie de volgende sectie voor een voor beeld.
 
 ## <a name="upload-a-large-file-to-a-directory"></a>Een groot bestand uploaden naar een map
 
-Gebruik de **methode DataLakeFileClient.uploadFromFile** om grote bestanden te uploaden zonder meerdere oproepen te hoeven voeren naar de **methode DataLakeFileClient.append.**
+Gebruik de methode **DataLakeFileClient. uploadFromFile** om grote bestanden te uploaden zonder meerdere aanroepen naar de methode **DataLakeFileClient. append** te hoeven maken.
 
 ```java
 static public void UploadFileBulk(DataLakeFileSystemClient fileSystemClient) 
@@ -284,12 +284,12 @@ static public void UploadFileBulk(DataLakeFileSystemClient fileSystemClient)
 ```
 
 
-## <a name="manage-a-file-acl"></a>Een bestand ACL beheren
+## <a name="manage-a-file-acl"></a>Een bestands-ACL beheren
 
-In dit voorbeeld wordt de ACL `upload-file.txt`van een bestand met de naam . In dit voorbeeld leest, schrijft en voert u machtigingen uit, geeft de eigenaarsgroep alleen lees- en uitvoermachtigingen en geeft alle anderen leestoegang.
+In dit voor beeld wordt de ACL van een bestand met de `upload-file.txt`naam opgehaald en ingesteld. In dit voor beeld worden de machtigingen lezen, schrijven en uitvoeren voor de gebruiker die eigenaar is, de groep die eigenaar is, de machtigingen lezen en uitvoeren, en krijgt alle andere Lees toegang.
 
 > [!NOTE]
-> Als uw toepassing de toegang autoriseert met Azure Active Directory (Azure AD), controleert u of de beveiligingsprincipal die uw toepassing gebruikt om toegang te autoriseren, is toegewezen aan de [rol Opslagblob-gegevenseigenaar](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-owner). Zie [Toegangsbeheer in Azure Data Lake Storage Gen2](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-access-control)voor meer informatie over hoe ACL-machtigingen worden toegepast en de effecten van het wijzigen ervan.
+> Als uw toepassing toegang autoriseert met behulp van Azure Active Directory (Azure AD), moet u ervoor zorgen dat de beveiligings-principal die door uw toepassing wordt gebruikt om toegang te verlenen, is toegewezen aan de [rol Storage BLOB data owner](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-owner). Zie voor meer informatie over hoe ACL-machtigingen worden toegepast en de gevolgen van het wijzigen van [toegangs beheer in azure data Lake Storage Gen2](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-access-control).
 
 ```java
 static public void ManageFileACLs(DataLakeFileSystemClient fileSystemClient){
@@ -331,9 +331,9 @@ static public void ManageFileACLs(DataLakeFileSystemClient fileSystemClient){
 }
 ```
 
-## <a name="download-from-a-directory"></a>Downloaden uit een map
+## <a name="download-from-a-directory"></a>Downloaden uit een directory
 
-Maak eerst een **Instantie DataLakeFileClient** die het bestand vertegenwoordigt dat u wilt downloaden. Gebruik de **methode DataLakeFileClient.read** om het bestand te lezen. Gebruik een .NET-api voor bestandsverwerking om bytes van de stream in een bestand op te slaan. 
+Maak eerst een **DataLakeFileClient** -exemplaar dat het bestand vertegenwoordigt dat u wilt downloaden. Gebruik de methode **DataLakeFileClient. Read** om het bestand te lezen. Gebruik een API voor het verwerken van .NET-bestanden om bytes van de stroom naar een bestand op te slaan. 
 
 ```java
 static public void DownloadFile(DataLakeFileSystemClient fileSystemClient)
@@ -359,7 +359,7 @@ static public void DownloadFile(DataLakeFileSystemClient fileSystemClient)
 
 ## <a name="list-directory-contents"></a>Mapinhoud weergeven
 
-In dit voorbeeld worden de namen van elk `my-directory`bestand met de naam .
+In dit voor beeld worden de namen van elk bestand dat zich in een map met `my-directory`de naam bevindt.
 
 ```java
 static public void ListFilesInDirectory(DataLakeFileSystemClient fileSystemClient){
@@ -394,7 +394,7 @@ static public void ListFilesInDirectory(DataLakeFileSystemClient fileSystemClien
 
 * [API-referentiedocumentatie](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-file-datalake/12.0.1/index.html)
 * [Pakket (Maven)](https://search.maven.org/artifact/com.azure/azure-storage-file-datalake)
-* [Monsters](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/storage/azure-storage-file-datalake)
-* [Gen1 naar Gen2 mapping](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/storage/azure-storage-file-datalake/GEN1_GEN2_MAPPING.md)
+* [Voorbeelden](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/storage/azure-storage-file-datalake)
+* [Toewijzing van gen1 naar Gen2](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/storage/azure-storage-file-datalake/GEN1_GEN2_MAPPING.md)
 * [Bekende problemen](data-lake-storage-known-issues.md#api-scope-data-lake-client-library)
 * [Feedback geven](https://github.com/Azure/azure-sdk-for-java/issues)

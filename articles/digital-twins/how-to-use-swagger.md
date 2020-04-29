@@ -1,6 +1,6 @@
 ---
-title: Referentie-Swagger-documentatie gebruiken - Azure Digital Twins | Microsoft Documenten
-description: Inzicht in het gebruik van Azure Digital Twins Swagger-referentiedocumentatie.
+title: Naslag informatie over Swagger gebruiken-Azure Digital Apparaatdubbels | Microsoft Docs
+description: Meer informatie over het gebruik van Azure Digital Apparaatdubbels Swagger naslag documentatie.
 ms.author: alinast
 author: alinamstanciu
 manager: bertvanhoof
@@ -10,126 +10,126 @@ ms.topic: conceptual
 ms.date: 02/03/2020
 ms.custom: seodec18
 ms.openlocfilehash: 27874e5731bd6fb9821e7aeda9333adbdbb79099
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77023290"
 ---
-# <a name="azure-digital-twins-swagger-reference-documentation"></a>Azure Digital Twins Swagger referentiedocumentatie
+# <a name="azure-digital-twins-swagger-reference-documentation"></a>Naslag documentatie voor Azure Digital Apparaatdubbels Swagger
 
-Elk ingerichte Azure Digital Twins-exemplaar bevat zijn eigen automatisch gegenereerde Swagger-referentiedocumentatie.
+Elk ingericht Azure Digital Apparaatdubbels-exemplaar bevat een eigen automatisch gegenereerde Swagger-referentie documentatie.
 
-[Swagger](https://swagger.io/), of [OpenAPI,](https://www.openapis.org/)verenigt complexe API-informatie in een interactieve en taal-agnostische referentiebron. Swagger biedt kritisch referentiemateriaal waarover JSON-payloads, HTTP-methoden en specifieke eindpunten moeten worden gebruikt om bewerkingen uit te voeren tegen een API.
+[Swagger](https://swagger.io/), of [OpenAPI](https://www.openapis.org/), bedeelt complexe API-informatie in een interactieve en taal-neutraal verwijzings bron. Swagger biedt essentiële referentie materiaal over welke JSON-nettoladingen, HTTP-methoden en specifieke eind punten moeten worden gebruikt om bewerkingen uit te voeren op een API.
 
-## <a name="swagger-summary"></a>Swagger samenvatting
+## <a name="swagger-summary"></a>Swagger-samen vatting
 
-Swagger biedt een interactieve samenvatting van uw API, waaronder:
+Swagger biedt een interactieve samen vatting van uw API, waaronder:
 
-* API- en objectmodelgegevens.
-* REST API-eindpunten die de vereiste aanvraagpayloads, kopteksten, parameters, contextpaden en HTTP-methoden opgeven.
+* Informatie over API en object model.
+* REST API eind punten die de vereiste nettoladingen voor aanvragen, headers, para meters, context paden en HTTP-methoden opgeven.
 * Testen van API-functionaliteiten.
-* Voorbeeldinformatie die wordt gebruikt om HTTP-antwoorden te valideren en te bevestigen.
-* Foutcode-informatie.
+* Voorbeeld reactie gegevens die worden gebruikt om HTTP-antwoorden te valideren en te bevestigen.
+* Informatie over de fout code.
 
-Swagger is een handig hulpmiddel om te helpen bij het ontwikkelen en testen van oproepen naar de Azure Digital Twins Management API's.
+Swagger is een handig hulp middel om te helpen bij het ontwikkelen en testen van aanroepen naar de Azure Digital Apparaatdubbels Management-Api's.
 
 [!INCLUDE [Digital Twins Swagger](../../includes/digital-twins-swagger.md)]
 
-## <a name="reference-material"></a>Referentiemateriaal
+## <a name="reference-material"></a>Referentie materiaal
 
-Het automatisch gegenereerde Swagger-referentiemateriaal biedt een snel overzicht van belangrijke concepten, beschikbare Management API-eindpunten en een beschrijving van elk objectmodel om de ontwikkeling en het testen te ondersteunen.
+Het automatisch gegenereerde Swagger-referentie materiaal bevat een kort overzicht van belang rijke concepten, beschik bare Management API-eind punten en een beschrijving van elk object model om te helpen bij het ontwikkelen en testen.
 
-Een beknopte samenvatting beschrijft de API.
+Een beknopt overzicht bevat een beschrijving van de API.
 
-[![Swagger samenvatting en API overzichtinformatie](media/how-to-use-swagger/swagger-management-top-img.png)](media/how-to-use-swagger/swagger-management-top-img.png#lightbox)
+[![Overzichts informatie voor Swagger en API](media/how-to-use-swagger/swagger-management-top-img.png)](media/how-to-use-swagger/swagger-management-top-img.png#lightbox)
 
-Beheer API-objectmodellen worden ook vermeld.
+Beheer-API-object modellen worden ook weer gegeven.
 
-[![Swagger modellen vermeld aan de onderkant van Swagger UI](media/how-to-use-swagger/swagger-management-models-img.png)](media/how-to-use-swagger/swagger-management-models-img.png#lightbox)
+[![Swagger-modellen onder in de Swagger-gebruikers interface](media/how-to-use-swagger/swagger-management-models-img.png)](media/how-to-use-swagger/swagger-management-models-img.png#lightbox)
 
-U elk opgenomen objectmodel selecteren voor een gedetailleerder overzicht van belangrijke kenmerken.
+U kunt elk weer gegeven object model selecteren voor een gedetailleerd overzicht van belang rijke kenmerken.
 
-[![Swagger modellen uitgebreid om de inhoud van modellen te lezen](media/how-to-use-swagger/swagger-management-model-img.png)](media/how-to-use-swagger/swagger-management-model-img.png#lightbox)
+[![Swagger-modellen zijn uitgevouwen om de inhoud van modellen te lezen](media/how-to-use-swagger/swagger-management-model-img.png)](media/how-to-use-swagger/swagger-management-model-img.png#lightbox)
 
-De gegenereerde Swagger-objectmodellen zijn handig om alle beschikbare Azure Digital [Twins-objecten en API's](./concepts-objectmodel-spatialgraph.md)te lezen. Ontwikkelaars kunnen deze bron gebruiken wanneer ze oplossingen bouwen op Azure Digital Twins.
+De gegenereerde Swagger-object modellen zijn handig om alle beschik bare [objecten en api's](./concepts-objectmodel-spatialgraph.md)van Azure Digital apparaatdubbels te lezen. Ontwikkel aars kunnen deze resource gebruiken wanneer ze oplossingen bouwen op Azure Digital Apparaatdubbels.
 
-## <a name="endpoint-summary"></a>Eindpuntoverzicht
+## <a name="endpoint-summary"></a>Eind punt overzicht
 
-Swagger biedt ook een grondig overzicht van alle eindpunten die de Management API's opstellen.
+Swagger biedt ook een uitgebreid overzicht van alle eind punten die de beheer-Api's vormen.
 
-Elk vermeld eindpunt bevat ook de vereiste aanvraaggegevens, zoals:
+Elk eind punt in de lijst bevat ook de vereiste aanvraag informatie, zoals:
 
-* Vereiste parameters.
-* Vereiste parametergegevenstypen.
-* HTTP-methode om toegang te krijgen tot de bron.
+* Vereiste para meters.
+* Vereiste parameter gegevens typen.
+* HTTP-methode voor toegang tot de bron.
 
-[![Swagger eindpunten weergegeven in Swagger UI](media/how-to-use-swagger/swagger-management-endpoints-img.png)](media/how-to-use-swagger/swagger-management-endpoints-img.png#lightbox)
+[![Swagger-eind punten die worden weer gegeven in de Swagger-gebruikers interface](media/how-to-use-swagger/swagger-management-endpoints-img.png)](media/how-to-use-swagger/swagger-management-endpoints-img.png#lightbox)
 
 Selecteer elke resource om de extra inhoud weer te geven voor een gedetailleerder overzicht.
 
-## <a name="use-swagger-to-test-endpoints"></a>Swagger gebruiken om eindpunten te testen
+## <a name="use-swagger-to-test-endpoints"></a>Swagger gebruiken om eind punten te testen
 
-Een van de krachtige functionaliteiten die Swagger biedt, is de mogelijkheid om een API-eindpunt rechtstreeks te testen via de documentatie-gebruikersinterface.
+Een van de krachtige functies Swagger biedt de mogelijkheid om een API-eind punt rechtstreeks te testen via de gebruikers interface van de documentatie.
 
-Nadat u een specifiek eindpunt hebt geselecteerd, wordt de knop **Try it out** weergegeven.
+Wanneer u een bepaald eind punt selecteert, wordt de knop **try-out** weer gegeven.
 
-[![Swagger Probeer het uit knop](media/how-to-use-swagger/swagger-management-try-img.png)](media/how-to-use-swagger/swagger-management-try-img.png#lightbox)
+[![Swagger try it out-knop](media/how-to-use-swagger/swagger-management-try-img.png)](media/how-to-use-swagger/swagger-management-try-img.png#lightbox)
 
-Vouw die sectie uit om invoervelden weer te geven voor elke vereiste en optionele parameter. Voer de juiste waarden in en selecteer **Uitvoeren**.
+Vouw deze sectie uit om invoer velden weer te geven voor elke vereiste en optionele para meter. Voer de juiste waarden in en selecteer **uitvoeren**.
 
-[![Swagger Probeer het uit resultaat voorbeeld](media/how-to-use-swagger/swagger-management-tried-img.png)](media/how-to-use-swagger/swagger-management-tried-img.png#lightbox)
+[![Voor beeld van het resultaat van Swagger try](media/how-to-use-swagger/swagger-management-tried-img.png)](media/how-to-use-swagger/swagger-management-tried-img.png#lightbox)
 
-Nadat u de test hebt uitgevoerd, u de responsgegevens valideren.
+Nadat u de test hebt uitgevoerd, kunt u de antwoord gegevens valideren.
 
-## <a name="swagger-response-data"></a>Swagger responsgegevens
+## <a name="swagger-response-data"></a>Reactie gegevens van Swagger
 
-Elk vermeld eindpunt bevat ook gegevens over de responsbody om uw ontwikkeling en tests te valideren. Deze voorbeelden zijn de statuscodes en JSON voor succesvolle HTTP-aanvragen.
+Elk eind punt in de lijst bevat ook gegevens over de antwoord tekst om uw ontwikkeling en tests te valideren. Deze voor beelden bevatten de status codes en JSON voor geslaagde HTTP-aanvragen.
 
-[![Voorbeeld van Swagger JSON response](media/how-to-use-swagger/swagger-management-response-img.png)](media/how-to-use-swagger/swagger-management-response-img.png#lightbox)
+[![Voor beeld van het JSON-antwoord Swagger](media/how-to-use-swagger/swagger-management-response-img.png)](media/how-to-use-swagger/swagger-management-response-img.png#lightbox)
 
-De voorbeelden bevatten ook foutcodes om foutopsporing of verbetering van falende tests te helpen.
+De voor beelden bevatten ook fout codes voor het oplossen van fouten of het verbeteren van mislukte testen.
 
-## <a name="swagger-oauth-20-authorization"></a>Swagger OAuth 2.0 autorisatie
+## <a name="swagger-oauth-20-authorization"></a>Swagger OAuth 2,0-autorisatie
 
 > [!NOTE]
-> * De gebruikersprincipal die de Azure Digital Twins-bron heeft gemaakt, heeft een roltoewijzing voor ruimtebeheerders en kan extra roltoewijzingen maken voor andere gebruikers. Deze gebruikers en hun rollen kunnen worden gemachtigd om de API's te bellen.
+> * De gebruikers-principal die de Azure Digital Apparaatdubbels-resource heeft gemaakt, heeft een rol voor ruimte-beheerdersrol en kan extra roltoewijzingen maken voor andere gebruikers. Deze gebruikers en hun rollen kunnen worden gemachtigd om de Api's aan te roepen.
 
-1. Volg de stappen in [de Quickstart](quickstart-view-occupancy-dotnet.md#set-permissions-for-your-app) om een Azure Active Directory-toepassing te maken en te configureren. U ook een bestaande app-registratie opnieuw gebruiken.
+1. Volg de stappen in [de Quick](quickstart-view-occupancy-dotnet.md#set-permissions-for-your-app) start om een Azure Active Directory-toepassing te maken en te configureren. U kunt ook een bestaande app-registratie hergebruiken.
 
-1. Voeg de volgende **URI omleiden** toe aan de registratie van uw Azure Active Directory-app:
+1. Voeg de volgende **omleidings-URI** toe aan de registratie van uw Azure Active Directory-app:
 
-    [![Swagger redirect url registreren in AAD](media/how-to-use-swagger/swagger-aad-redirect-url-registration.png)](media/how-to-use-swagger/swagger-aad-redirect-url-registration.png#lightbox)
+    [![URL voor Swagger-omleiding registreren in AAD](media/how-to-use-swagger/swagger-aad-redirect-url-registration.png)](media/how-to-use-swagger/swagger-aad-redirect-url-registration.png#lightbox)
 
     ```plaintext
     https://YOUR_SWAGGER_URL/ui/oauth2-redirect-html
     ```
-    | Name  | Vervangen door | Voorbeeld |
+    | Naam  | Vervangen door | Voorbeeld |
     |---------|---------|---------|
-    | YOUR_SWAGGER_URL | Uw URL van de BeheerREST API-documentatie in de portal  | `https://yourDigitalTwinsName.yourLocation.azuresmartspaces.net/management/swagger` |
+    | YOUR_SWAGGER_URL | Uw management REST API-documentatie-URL gevonden in de portal  | `https://yourDigitalTwinsName.yourLocation.azuresmartspaces.net/management/swagger` |
 
-1. Schakel het selectievakje Impliciete > **toekenningstoegangstokens** in om de impliciete subsidiestroom van OAuth 2.0 te kunnen gebruiken. **Implicit grant** Selecteer **Configureren**en vervolgens **Opslaan**.
+1. Schakel het selectie vakje **impliciete** > **toegangs tokens** in om toe te staan dat de OAuth 2,0 impliciete toekennings stroom moet worden gebruikt. Selecteer **configureren**en vervolgens **Opslaan**.
 
 1. Kopieer de **client-id** van uw Azure Active Directory-app.
 
-Na het voltooien van de Azure Active Directory-registratie:
+Na het volt ooien van de Azure Active Directory registratie:
 
-1. Selecteer de knop **Autoriseren** op uw braniepagina.
+1. Selecteer de knop **autoriseren** op uw Swagger-pagina.
 
-    [![De knop Swagger autoriseren selecteren](media/how-to-use-swagger/swagger-select-authorize-btn.png)](media/how-to-use-swagger/swagger-select-authorize-btn.png#lightbox)
+    [![De knop voor Swagger-autorisatie selecteren](media/how-to-use-swagger/swagger-select-authorize-btn.png)](media/how-to-use-swagger/swagger-select-authorize-btn.png#lightbox)
 
-1. Plak de toepassings-id in het **client_id** veld.
+1. Plak de toepassings-ID in het veld **client_id** .
 
-    [![Swagger client_id gebied](media/how-to-use-swagger/swagger-auth-form.png)](media/how-to-use-swagger/swagger-auth-form.png#lightbox)
+    [![Swagger-client_id veld](media/how-to-use-swagger/swagger-auth-form.png)](media/how-to-use-swagger/swagger-auth-form.png#lightbox)
 
-1. U wordt dan doorgestuurd naar het volgende succes modal.
+1. U wordt vervolgens doorgestuurd naar het volgende geslaagde modale.
 
-    [![Swagger redirect modal](media/how-to-use-swagger/swagger-auth-redirect-img.png)](media/how-to-use-swagger/swagger-auth-redirect-img.png#lightbox)
+    [![Swagger-omleiding modaal](media/how-to-use-swagger/swagger-auth-redirect-img.png)](media/how-to-use-swagger/swagger-auth-redirect-img.png#lightbox)
 
-Voor meer informatie over interactief testen van aanvragen beschermd door OAuth 2.0, lees de [officiële documentatie](https://swagger.io/docs/specification/authentication/oauth2/).
+Lees de [officiële documentatie](https://swagger.io/docs/specification/authentication/oauth2/)voor meer informatie over het interactief testen van aanvragen die worden beveiligd door OAuth 2,0.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Lees [De objectmodellen van Begrijpen Azure Digital Twins](./concepts-objectmodel-spatialgraph.md)voor meer informatie over Azure Digital Twins-objectmodellen .
+- Lees informatie over [Azure Digital apparaatdubbels-object modellen](./concepts-objectmodel-spatialgraph.md)voor meer informatie over Azure Digital apparaatdubbels-object modellen en de ruimtelijke Intelligence-grafiek.
 
-- Lees [Authenticeren met API's](./security-authenticating-apis.md)voor meer informatie over hoe u zich verifiëren met uw Beheer-API.
+- Lees [verificatie met api's](./security-authenticating-apis.md)voor meer informatie over het verifiëren met uw beheer-API.

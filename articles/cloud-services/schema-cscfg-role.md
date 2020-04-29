@@ -1,6 +1,6 @@
 ---
-title: Functieschema Azure Cloud Services | Microsoft Documenten
-description: Het functie-element van een serviceconfiguratiebestand geeft aan hoeveel rolinstanties moeten worden geïmplementeerd voor elke rol, configuratiewaarden en duimafdrukken van certificaten.
+title: Rollen schema voor Azure Cloud Services | Microsoft Docs
+description: Het element Role van een service configuratie bestand geeft aan hoeveel rolinstanties er moeten worden geïmplementeerd voor elke rol, configuratie waarden en certificaat vingerafdrukken.
 ms.custom: ''
 ms.date: 12/07/2016
 services: cloud-services
@@ -10,20 +10,20 @@ caps.latest.revision: 12
 author: tgore03
 ms.author: tagore
 ms.openlocfilehash: b64f9d27e382a39b132593502fed32c565af473a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79528418"
 ---
-# <a name="azure-cloud-services-config-role-schema"></a>Azure Cloud Services Config-rolschema
+# <a name="azure-cloud-services-config-role-schema"></a>Rollen schema voor Azure Cloud Services Configuration
 
-Het `Role` element van het configuratiebestand geeft het aantal rolinstanties op dat moet worden geïmplementeerd voor elke rol in de service, de waarden van alle configuratie-instellingen en de duimafdrukken voor certificaten die aan een rol zijn gekoppeld.
+Het `Role` element van het configuratie bestand bevat het aantal rolinstanties dat moet worden geïmplementeerd voor elke rol in de service, de waarden van configuratie-instellingen en de vinger afdrukken voor alle certificaten die aan een rol zijn gekoppeld.
 
-Zie [Cloud Service (klassiek) configuratieschema voor](schema-cscfg-file.md)meer informatie over het Azure Service Configuration Schema. Zie [Cloud Service (klassiek) definitieschema voor](schema-csdef-file.md)meer informatie over het Azure Service Definition-schema .
+Zie [Cloud service (klassiek)-configuratie schema](schema-cscfg-file.md)voor meer informatie over het configuratie schema van de Azure-service. Zie het [definitie schema voor Cloud service (klassiek)](schema-csdef-file.md)voor meer informatie over het Azure service definition-schema.
 
-##  <a name="role-element"></a><a name="Role"></a>Rolelement
-In het volgende `Role` voorbeeld worden het element en de onderliggende elementen weergegeven.
+##  <a name="role-element"></a><a name="Role"></a>Role-element
+In het volgende voor beeld `Role` ziet u het element en de onderliggende elementen.
 
 ```xml 
 <ServiceConfiguration>
@@ -39,20 +39,20 @@ In het volgende `Role` voorbeeld worden het element en de onderliggende elemente
 </ServiceConfiguration>
 ```
 
-In de volgende tabel worden `Role` de kenmerken voor het element beschreven.
+In de volgende tabel worden de kenmerken voor `Role` het element beschreven.
 
 | Kenmerk | Beschrijving |
 | --------- | ----------- |
-| name   | Vereist. Hiermee geeft u de naam van de rol op. De naam moet overeenkomen met de naam die is opgegeven voor de rol in het servicedefinitiebestand.|
-| vmName | Optioneel. Hiermee geeft u de DNS-naam voor een virtuele machine op. De naam moet 10 tekens of minder zijn.|
+| name   | Vereist. Hiermee geeft u de naam van de rol op. De naam moet overeenkomen met de naam die is opgegeven voor de rol in het service definitie bestand.|
+| vmName | Optioneel. Hiermee geeft u de DNS-naam voor een virtuele machine. De naam mag Maxi maal 10 tekens bevatten.|
 
-In de volgende tabel worden `Role` de onderliggende elementen van het element beschreven.
+In de volgende tabel worden de onderliggende elementen van `Role` het element beschreven.
 
 | Element | Beschrijving |
 | ------- | ----------- |
-| exemplaren | Vereist. Hiermee geeft u het aantal exemplaren op dat moet worden geïmplementeerd voor de rol. Het aantal instanties wordt gedefinieerd door `count` een geheel getal voor het kenmerk.|
-| Instelling   | Optioneel. Hiermee geeft u een instellingsnaam en waarde op in een verzameling instellingen voor een rol. De instellingsnaam wordt gedefinieerd door `name` een tekenreeks voor het kenmerk en `value` de instellingswaarde wordt gedefinieerd door een tekenreeks voor het kenmerk.|
-| Certificaat | Optioneel. Hiermee geeft u de naam, duimafdruk en het algoritme op van een servicecertificaat dat aan de rol moet worden gekoppeld. De certificaatnaam wordt gedefinieerd door `name` een tekenreeks voor het kenmerk. De duimafdruk van het certificaat wordt gedefinieerd door een tekenreeks `thumbprint` van hexadecimale getallen die geen spaties voor het kenmerk bevatten. De hexadecimale getallen moeten worden weergegeven met cijfers en alfatekens in hoofdletters. Het certificaatalgoritme wordt gedefinieerd door `thumbprintAlgorithm` een tekenreeks voor het kenmerk.|
+| exemplaren | Vereist. Hiermee geeft u het aantal instanties op dat moet worden geïmplementeerd voor de rol. Het aantal exemplaren wordt gedefinieerd door een geheel getal voor het `count` kenmerk.|
+| Instelling   | Optioneel. Hiermee geeft u een naam en waarde voor de instelling op in een verzameling instellingen voor een rol. De naam van de instelling wordt gedefinieerd door een teken `name` reeks voor het kenmerk en de waarde van de instelling wordt gedefinieerd `value` door een teken reeks voor het kenmerk.|
+| Certificaat | Optioneel. Hiermee geeft u de naam, vinger afdruk en het algoritme op van een service certificaat dat moet worden gekoppeld aan de rol. De naam van het certificaat wordt gedefinieerd door een teken `name` reeks voor het kenmerk. De vinger afdruk van het certificaat wordt gedefinieerd door een reeks hexadecimale getallen die geen `thumbprint` spaties voor het kenmerk bevatten. De hexadecimale getallen moeten worden weer gegeven met cijfers en hoofd letters. Het certificaat algoritme wordt gedefinieerd door een teken reeks voor `thumbprintAlgorithm` het kenmerk.|
 
 ## <a name="see-also"></a>Zie ook
-[Cloud Service (klassiek) configuratieschema](schema-cscfg-file.md)
+[Configuratie schema van Cloud service (klassiek)](schema-cscfg-file.md)

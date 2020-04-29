@@ -1,6 +1,6 @@
 ---
-title: Beveiligingstoken genereren om toegang te krijgen tot IoT Plug and Play Preview-repository | Microsoft Documenten
-description: Genereer een handtekeningtoken voor gedeelde toegang om te gebruiken wanneer u een Programmatisch IoT Plug and Play Preview-modelrepository inziet.
+title: Beveiligings token genereren voor toegang tot IoT Plug en Play preview-opslag plaats | Microsoft Docs
+description: Genereer een token voor een Shared Access-hand tekening dat moet worden gebruikt wanneer u via een programma toegang hebt tot een IoT Plug en Play preview model-opslag.
 author: Philmea
 ms.author: philmea
 ms.date: 12/27/2019
@@ -9,19 +9,19 @@ ms.service: iot-pnp
 services: iot-pnp
 manager: philmea
 ms.openlocfilehash: f008627317588467d731ccc03aec7738f58e46e0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80159197"
 ---
 # <a name="generate-sas-token"></a>SAS-token genereren
 
-Deze handleiding laat u zien hoe u programmatisch een SAS-token (Shared Access Signature) genereren om te gebruiken met de API's van het IoT Plug and Play Preview-model repository.
+In deze hand leiding wordt uitgelegd hoe u programmatisch een SAS-token (Shared Access Signature) kunt genereren voor gebruik met de IoT-Plug en Play preview-model opslagplaats-Api's.
 
 ## <a name="python"></a>Python
 
-In het volgende fragment ziet u hoe u een SAS-token genereren met Python:
+Het volgende code fragment laat zien hoe u een SAS-token kunt genereren met behulp van python:
 
 ```python
 from base64 import b64decode, b64encode
@@ -46,7 +46,7 @@ def calculate_sas_token(hostname, repo_id, key_name, key, expiry_in_second):
 
 ## <a name="c"></a>C\#
 
-In het volgende fragment ziet u hoe\#u een SAS-token genereert met C:
+Het volgende code fragment laat zien hoe u een SAS-token kunt\#genereren met C:
 
 ```csharp
 public static string generateSasToken(string hostName, string repoId, string key, string keyName, int expiryInSeconds = 3600)
@@ -74,14 +74,14 @@ public static string generateSasToken(string hostName, string repoId, string key
 
 ## <a name="use-the-sas-token"></a>Het SAS-token gebruiken
 
-Nadat u een SAS-token hebt gegenereerd, u het gebruiken om een HTTP POST-verzoek in te dienen. Bijvoorbeeld:
+Nadat u een SAS-token hebt gegenereerd, kunt u dit gebruiken om een HTTP POST-aanvraag te maken. Bijvoorbeeld:
 
 ```text
 POST https:///models/{modelId}?repositoryId={repositoryId}&api-version=2019-07-01-preview
 ```
 
-Als u een client een SAS-token geeft, heeft de client de primaire sleutel van de resource niet en kan hij de hash niet omkeren om deze te verkrijgen. Een SAS-token geeft u controle over waartoe de client toegang heeft en voor hoe lang. Wanneer u de primaire sleutel in het beleid wijzigt, worden alle SAS-tokens die hiermee zijn gemaakt, ongeldig verklaard.
+Als u een SAS-token aan een client toewijst, heeft de client niet de primaire sleutel van de resource en kan de hash niet worden teruggedraaid om deze te verkrijgen. Met een SAS-token kunt u bepalen wat de client toegang heeft en hoe lang. Wanneer u de primaire sleutel in het beleid wijzigt, worden alle SAS-tokens die zijn gemaakt op basis van deze, ongeldig.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Nu u hebt geleerd over het genereren van beveiligingstokens om te gebruiken om toegang te krijgen tot het model IoT Plug and Play Preview-modelrepositories, is een voorgestelde volgende stap om meer te weten te komen in de [handleiding voor modelleringsontwikkelaars van IoT Plug and Play Preview.](concepts-developer-guide.md)
+Nu u hebt geleerd over het genereren van beveiligings tokens die u kunt gebruiken om toegang te krijgen tot het model IoT Plug en Play preview model-opslag plaatsen, is een voorgestelde volgende stap meer informatie in de [ontwikkel gids voor IoT Plug en Play preview Modeler](concepts-developer-guide.md).

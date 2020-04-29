@@ -1,59 +1,59 @@
 ---
-title: Inleiding tot de Azure Cosmos DB etcd API
-description: Dit artikel bevat een overzicht en de belangrijkste voordelen van de ETCD API in Azure Cosmos DB
+title: Inleiding tot de Azure Cosmos DB etcd-API
+description: In dit artikel vindt u een overzicht van de belangrijkste voor delen van etcd-API in Azure Cosmos DB
 author: deborahc
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/06/2019
 ms.author: dech
 ms.reviewer: sngun
-ms.openlocfilehash: acd87fac5ec2edc40d27d98f073e13c0acae8d8a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6c7fcb1429438ee024cb226b63cfcdcab05ed9f8
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79498591"
 ---
-# <a name="introduction-to-the-azure-cosmos-db-etcd-api-preview"></a>Inleiding tot de Azure Cosmos DB etcd API (preview)
+# <a name="introduction-to-the-azure-cosmos-db-etcd-api-preview"></a>Inleiding tot de Azure Cosmos DB etcd-API (preview)
 
-Azure Cosmos DB is de wereldwijd gedistribueerde databaseservice met meerdere modellen van Microsoft voor essentiële toepassingen. Het biedt kant-en-klare wereldwijde distributie, elastische schaling van doorvoer en opslag, enkelcijferige milliseconde latencies op het 99e percentiel en gegarandeerde hoge beschikbaarheid, allemaal ondersteund door toonaangevende SLA's.
+Azure Cosmos DB is de wereldwijd gedistribueerde databaseservice met meerdere modellen van Microsoft voor essentiële toepassingen. Het biedt kant-en-klare wereld wijde distributie, elastische schaal baarheid van door Voer en opslag, latenties in milliseconden van één cijfer op het 99e percentiel en gegarandeerd hoge Beschik baarheid, die allemaal worden ondersteund door toonaangevende SLA.
 
-[Etcd](https://github.com/etcd-io/etcd) is een gedistribueerde sleutel /waarde winkel. In [Kubernetes](https://kubernetes.io/)wordt etcd gebruikt om de status en de configuratie van de Kubernetes-clusters op te slaan. Het waarborgen van beschikbaarheid, betrouwbaarheid en prestaties van etcd is cruciaal voor de algehele clusterstatus, schaalbaarheid, elasticiteitsbeschikbaarheid en prestaties van een Kubernetes-cluster. 
+[Etcd](https://github.com/etcd-io/etcd) is een gedistribueerd sleutel/waarde-archief. In [Kubernetes](https://kubernetes.io/)wordt etcd gebruikt om de status en de configuratie van de Kubernetes-clusters op te slaan. Het garanderen van de beschik baarheid, betrouw baarheid en prestaties van etcd is van cruciaal belang voor de algehele cluster status, schaal baarheid, beschik bare elasticiteit en prestaties van een Kubernetes-cluster. 
 
-Met de geëetcd-API in Azure Cosmos DB u Azure Cosmos DB gebruiken als backend-store voor [Azure Kubernetes.](../aks/index.yml) etcd API in Azure Cosmos DB is momenteel in preview. Azure Cosmos DB implementeert het etcd-draadprotocol. Met de ETCD API in Azure Cosmos DB krijgen ontwikkelaars automatisch zeer betrouwbare, [beschikbare,](high-availability.md) [wereldwijd gedistribueerde](distribute-data-globally.md) Kubernetes. Met deze API kunnen ontwikkelaars Kubernetes state management schalen op een volledig beheerde cloud native PaaS-service. 
+Met de etcd-API in Azure Cosmos DB kunt u Azure Cosmos DB gebruiken als back-end-Archief voor [Azure Kubernetes](../aks/index.yml). etcd-API in Azure Cosmos DB is momenteel beschikbaar als preview-versie. Azure Cosmos DB implementeert het etcd wire-protocol. Met etcd-API in Azure Cosmos DB krijgen ontwikkel aars automatisch een zeer betrouw [bare](high-availability.md), [wereld wijd gedistribueerde](distribute-data-globally.md) Kubernetes. Met deze API kunnen ontwikkel aars Kubernetes-status beheer schalen op een volledig beheerde PaaS-service in de Cloud. 
 
 > [!NOTE]
-> In tegenstelling tot andere API's in Azure Cosmos DB u geen geëetcd API-account inrichten via de Azure-portal, CLI of SDKs. U een geëetcd API-account inrichten door alleen de resourcemanagersjabloon te implementeren. zie [Azure Kubernetes inrichten met](bootstrap-kubernetes-cluster.md) het azure cosmos DB-artikel voor gedetailleerde stappen. Azure Cosmos DB etcd API is momenteel in beperkte preview. U [zich aanmelden voor de preview](https://aka.ms/cosmosetcdapi-signup)door het inschrijfformulier in te vullen.
+> In tegens telling tot andere Api's in Azure Cosmos DB kunt u geen etcd-API-account inrichten via de Azure Portal, CLI of Sdk's. U kunt een etcd-API-account inrichten door alleen de Resource Manager-sjabloon te implementeren. Zie voor gedetailleerde stappen [Azure Kubernetes inrichten met Azure Cosmos DB](bootstrap-kubernetes-cluster.md) -artikel. Azure Cosmos DB etcd-API is momenteel een beperkte preview-versie. U kunt [zich registreren voor de preview-versie](https://aka.ms/cosmosetcdapi-signup)door het aanmeldings formulier in te vullen.
 
-## <a name="wire-level-compatibility"></a>Compatibiliteit op draadniveau
+## <a name="wire-level-compatibility"></a>Compatibiliteit met Wire-level
 
-Azure Cosmos DB implementeert het wire-protocol van versie 3 en stelt de API-servers van het [hoofdknooppunt](https://kubernetes.io/docs/concepts/overview/components/) in staat azure Cosmos DB te gebruiken, net zoals het zou doen in een lokaal geïnstalleerde etcd-omgeving. De etcd API ondersteunt TLS wederzijdse authenticatie. 
+Azure Cosmos DB implementeert het wire-protocol van etcd versie 3 en maakt de API-servers [van het hoofd knooppunt](https://kubernetes.io/docs/concepts/overview/components/) Azure Cosmos DB net als in een lokaal geïnstalleerde etcd-omgeving. De etcd-API ondersteunt wederzijdse TLS-verificatie. 
 
-In het volgende diagram worden de componenten van een Kubernetes-cluster weergegeven. In de clustermaster gebruikt de API Server Azure Cosmos DB etcd API, in plaats van lokaal geïnstalleerde etcd. 
+In het volgende diagram ziet u de onderdelen van een Kubernetes-cluster. In de cluster Master gebruikt de API-server Azure Cosmos DB etcd API, in plaats van lokaal geïnstalleerde etcd. 
 
-![Azure Cosmos DB implementeert het geëetcd-draadprotocol](./media/etcd-api-introduction/etcd-api-wire-protocol.png)
+![Azure Cosmos DB implementeren van het etcd wire-protocol](./media/etcd-api-introduction/etcd-api-wire-protocol.png)
 
 ## <a name="key-benefits"></a>Belangrijkste voordelen
 
-### <a name="no-etcd-operations-management"></a>Geen etcd operations management
+### <a name="no-etcd-operations-management"></a>Geen etcd-beheer van bewerkingen
 
-Als volledig beheerde native cloudservice verwijdert Azure Cosmos DB de noodzaak voor Kubernetes-ontwikkelaars om etcd in te stellen en te beheren. De geëetcd-API in Azure Cosmos DB is schaalbaar, zeer beschikbaar, fouttolerant en biedt hoge prestaties. De overhead van het instellen van replicatie op meerdere knooppunten, het uitvoeren van rolling updates, beveiligingspatches en het bewaken van de geëetcd-status worden verwerkt door Azure Cosmos DB.
+Als volledig beheerde Cloud service biedt Azure Cosmos DB de nood zaak van Kubernetes-ontwikkel aars om etcd in te stellen en te beheren. De etcd-API in Azure Cosmos DB is schaalbaar, Maxi maal beschikbaar, fout tolerant en biedt hoge prestaties. De overhead voor het instellen van replicatie op meerdere knoop punten, het uitvoeren van Rolling updates, beveiligings patches en het controleren van de status van de etcd wordt afgehandeld door Azure Cosmos DB.
 
-### <a name="global-distribution--high-availability"></a>Wereldwijde distributie & hoge beschikbaarheid 
+### <a name="global-distribution--high-availability"></a>Globale distributie & hoge Beschik baarheid 
 
-Door de GEËD API te gebruiken, garandeert Azure Cosmos DB 99,99% beschikbaarheid voor gegevenslezen en schrijven in één regio en 99,999% beschikbaarheid in meerdere regio's. 
+Met behulp van de etcd-API biedt Azure Cosmos DB gegarandeerd 99,99% Beschik baarheid voor het lezen en schrijven van gegevens in één regio, en beschik baarheid van 99,999% voor meerdere regio's. 
 
 ### <a name="elastic-scalability"></a>Elastische schaalbaarheid
 
-Azure Cosmos DB biedt elastische schaalbaarheid voor lees- en schrijfverzoeken in verschillende regio's.
-Naarmate het Kubernetes-cluster groeit, schaalt het geëetcd API-account in Azure Cosmos DB elastisch zonder downtime. Het opslaan van etcd-gegevens in Azure Cosmos DB, in plaats van de Hoofdknooppunten van Kubernetes, maakt ook flexibelere hoofdknooppuntschaling mogelijk. 
+Azure Cosmos DB biedt elastische schaal baarheid voor lees-en schrijf aanvragen in verschillende regio's.
+Naarmate het Kubernetes-cluster groeit, wordt het etcd-API-account in Azure Cosmos DB elastisch geschaald zonder uitval tijd. Het opslaan van etcd-gegevens in Azure Cosmos DB, in plaats van de Kubernetes-hoofd knooppunten, biedt ook meer flexibiliteit voor het schalen van hoofd knooppunten. 
 
-### <a name="security--enterprise-readiness"></a>Gereedheid voor beveiliging & onderneming
+### <a name="security--enterprise-readiness"></a>Beveiliging & voor bereiding op bedrijfs niveau
 
-Wanneer etcd-gegevens worden opgeslagen in Azure Cosmos DB, krijgen Kubernetes-ontwikkelaars automatisch de [ingebouwde versleuteling in rust,](database-encryption-at-rest.md) [certificeringen en naleving](compliance.md)en [back-up- en herstelmogelijkheden](../synapse-analytics/sql-data-warehouse/backup-and-restore.md) die worden ondersteund door Azure Cosmos DB. 
+Wanneer etcd-gegevens worden opgeslagen in Azure Cosmos DB, krijgen Kubernetes-ontwikkel aars automatisch de [ingebouwde versleuteling op rest](database-encryption-at-rest.md), [certificeringen en naleving](compliance.md), en [back-up-en herstel functies](online-backup-and-restore.md) die door Azure Cosmos DB worden ondersteund. 
 
 ## <a name="next-steps"></a>Volgende stappen
 
 * [Azure Kubernetes gebruiken met Azure Cosmos DB](bootstrap-kubernetes-cluster.md)
-* [Belangrijkste voordelen van Azure Cosmos DB](introduction.md)
-* [AKS-engine Quickstart-handleiding](https://github.com/Azure/aks-engine/blob/master/docs/tutorials/quickstart.md)
+* [Belangrijkste voor delen van Azure Cosmos DB](introduction.md)
+* [Snelstartgids voor AKS-engine](https://github.com/Azure/aks-engine/blob/master/docs/tutorials/quickstart.md)

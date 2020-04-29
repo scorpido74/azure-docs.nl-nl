@@ -1,5 +1,5 @@
 ---
-title: IP-adressen van azure API Management-service | Microsoft Documenten
+title: IP-adressen van de Azure API Management-service | Microsoft Docs
 description: Meer informatie over het ophalen van de IP-adressen van een Azure API Management-service en wanneer deze worden gewijzigd.
 services: api-management
 documentationcenter: ''
@@ -13,33 +13,33 @@ ms.topic: article
 ms.date: 08/26/2019
 ms.author: apimpm
 ms.openlocfilehash: 45501fee9ae6ff47643a1ed197a07c4ba598e981
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80047733"
 ---
 # <a name="ip-addresses-of-azure-api-management"></a>IP-adressen van Azure API Management
 
-In dit artikel beschrijven we hoe u de IP-adressen van de Azure API Management-service ophalen. IP-adressen kunnen openbaar of privé zijn als de service zich in een virtueel netwerk bevindt.
+In dit artikel wordt beschreven hoe u de IP-adressen van de Azure API Management-service ophaalt. IP-adressen kunnen openbaar of privé zijn als de service zich in een virtueel netwerk bevindt.
 
-U IP-adressen gebruiken om firewallregels te maken, het binnenkomende verkeer naar de backendservices te filteren of het uitgaande verkeer te beperken.
+U kunt IP-adressen gebruiken om firewall regels te maken, het binnenkomende verkeer te filteren op de back-end-services of het uitgaande verkeer te beperken.
 
 ## <a name="ip-addresses-of-api-management-service"></a>IP-adressen van API Management-service
 
-Elke API Management-serviceinstantie in de laag Ontwikkelaars, Basic, Standard of Premium heeft openbare IP-adressen, die alleen exclusief zijn voor die service-instantie (ze worden niet gedeeld met andere bronnen). 
+Elk exemplaar van de API Management service in de laag ontwikkelaar, Basic, Standard of Premium heeft open bare IP-adressen, die uitsluitend voor dat service-exemplaar zijn bedoeld (ze worden niet gedeeld met andere resources). 
 
-U de IP-adressen ophalen uit het overzichtsdashboard van uw resource in de Azure-portal.
+U kunt de IP-adressen ophalen uit het overzichts Dashboard van uw resource in de Azure Portal.
 
-![IP-adres API-beheer](media/api-management-howto-ip-addresses/public-ip.png)
+![API Management IP-adres](media/api-management-howto-ip-addresses/public-ip.png)
 
-U ze ook programmatisch ophalen met de volgende API-aanroep:
+U kunt deze ook programmatisch ophalen met de volgende API-aanroep:
 
 ```
 GET https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group>/providers/Microsoft.ApiManagement/service/<service-name>?api-version=<api-version>
 ```
 
-Openbare IP-adressen maken deel uit van het antwoord:
+Open bare IP-adressen zullen deel uitmaken van het antwoord:
 
 ```json
 {
@@ -55,19 +55,19 @@ Openbare IP-adressen maken deel uit van het antwoord:
 }
 ```
 
-Bij [multiregionale implementaties](api-management-howto-deploy-multi-region.md)heeft elke regionale implementatie één openbaar IP-adres.
+In [meerdere regionale implementaties](api-management-howto-deploy-multi-region.md)heeft elke regionale implementatie één openbaar IP-adres.
 
-## <a name="ip-addresses-of-api-management-service-in-vnet"></a>IP-adressen van API Management-service in VNet
+## <a name="ip-addresses-of-api-management-service-in-vnet"></a>IP-adressen van API Management service in VNet
 
 Als uw API Management-service zich in een virtueel netwerk bevindt, heeft deze twee typen IP-adressen: openbaar en privé.
 
-Openbare IP-adressen worden gebruikt voor `3443` interne communicatie op de poort - voor het beheren van configuratie (bijvoorbeeld via Azure Resource Manager). In de externe VNet-configuratie worden ze ook gebruikt voor runtime API-verkeer. Wanneer een aanvraag wordt verzonden van API-beheer naar een openbare back-end (internetgerichte) backend, is een openbaar IP-adres zichtbaar als de oorsprong van de aanvraag.
+Open bare IP-adressen worden gebruikt voor interne communicatie `3443` op poort-voor het beheren van de configuratie (bijvoorbeeld via Azure Resource Manager). In de externe VNet-configuratie worden ze ook gebruikt voor runtime-API-verkeer. Wanneer een aanvraag wordt verzonden van API Management naar een open bare back-end (Internet Facing), is een openbaar IP-adres zichtbaar als de oorsprong van de aanvraag.
 
-Vip-adressen (Private virtual IP), **die alleen** beschikbaar zijn in de [interne VNet-modus,](api-management-using-with-internal-vnet.md)worden gebruikt om vanuit het netwerk verbinding te maken met API Management-eindpunten - gateways, de ontwikkelaarsportal en het beheervlak voor directe API-toegang. U ze gebruiken voor het instellen van DNS-records binnen het netwerk.
+Privé-IP-adressen (VIP), **alleen** beschikbaar in de [interne VNet-modus](api-management-using-with-internal-vnet.md), worden gebruikt om vanuit het netwerk verbinding te maken met API Management eind punten-gateways, de ontwikkelaars Portal en het beheer vlak voor directe API-toegang. U kunt deze gebruiken voor het instellen van DNS-records in het netwerk.
 
-U ziet adressen van beide typen in de Azure-portal en in de reactie van de API-aanroep:
+U ziet adressen van beide typen in de Azure Portal en in het antwoord van de API-aanroep:
 
-![API-beheer in VNet-IP-adres](media/api-management-howto-ip-addresses/vnet-ip.png)
+![API Management in IP-adres van VNet](media/api-management-howto-ip-addresses/vnet-ip.png)
 
 
 ```json
@@ -91,19 +91,19 @@ GET https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/
 
 API Management gebruikt een openbaar IP-adres voor verbindingen buiten het VNet en een privé-IP-adres voor verbindingen binnen het VNet.
 
-## <a name="ip-addresses-of-consumption-tier-api-management-service"></a>IP-adressen van de API-beheerservice voor verbruikslagen
+## <a name="ip-addresses-of-consumption-tier-api-management-service"></a>IP-adressen van API Management service voor verbruiks lagen
 
-Als uw API Management-service een service voor verbruikslaag is, heeft deze geen specifiek IP-adres. De service voor verbruikslagen wordt uitgevoerd op een gedeelde infrastructuur en zonder een deterministisch IP-adres. 
+Als uw API Management-service een verbruiks tier-service is, heeft deze geen toegewezen IP-adres. De service verbruiks tier wordt uitgevoerd op een gedeelde infra structuur en zonder een deterministisch IP-adres. 
 
-Voor verkeersbeperkingsdoeleinden u het bereik van IP-adressen van Azure-datacenters gebruiken. Raadpleeg [het documentatieartikel voor Azure Functions](../azure-functions/ip-addresses.md#data-center-outbound-ip-addresses) voor precieze stappen.
+U kunt het bereik van IP-adressen van Azure-Data Centers gebruiken voor het beperken van verkeers doeleinden. Raadpleeg [het artikel over Azure functions documentatie voor een](../azure-functions/ip-addresses.md#data-center-outbound-ip-addresses) nauw keurige procedure.
 
 ## <a name="changes-to-the-ip-addresses"></a>Wijzigingen in de IP-adressen
 
-In de lagen Developer, Basic, Standard en Premium van API Management zijn de openbare IP-adressen (VIP) statisch voor de levensduur van een service, met de volgende uitzonderingen:
+In de lagen ontwikkelaar, basis, standaard en Premium van API Management zijn de open bare IP-adressen (VIP) statisch voor de levens duur van een service, met de volgende uitzonde ringen:
 
 * De service wordt verwijderd en vervolgens opnieuw gemaakt.
-* Het serviceabonnement [wordt opgeschort](https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/subscription-lifecycle-api-reference.md#subscription-states) of [gewaarschuwd](https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/subscription-lifecycle-api-reference.md#subscription-states) (bijvoorbeeld voor niet-betaling) en vervolgens opnieuw ingesteld.
+* Het service abonnement wordt [opgeschort](https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/subscription-lifecycle-api-reference.md#subscription-states) of [gewaarschuwd](https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/subscription-lifecycle-api-reference.md#subscription-states) (bijvoorbeeld voor niet-betaling) en vervolgens opnieuw ingesteld.
 * Azure Virtual Network wordt toegevoegd aan of verwijderd uit de service.
-* API Management-service wordt geschakeld tussen externe en interne VNet-implementatiemodus.
+* API Management-service wordt overgeschakeld tussen de externe en interne VNet-implementatie modus.
 
-Bij [multiregionale implementaties](api-management-howto-deploy-multi-region.md)verandert het regionale IP-adres als een regio wordt ontruimd en vervolgens wordt hersteld.
+In [meerdere regionale implementaties](api-management-howto-deploy-multi-region.md)verandert het regionale IP-adres als een regio leeg is en opnieuw wordt ingesteld.
