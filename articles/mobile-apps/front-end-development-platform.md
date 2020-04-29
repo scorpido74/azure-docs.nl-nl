@@ -1,6 +1,6 @@
 ---
-title: Kies het front-end ontwikkelplatform voor het bouwen van clienttoepassingen met Visual Studio- en Azure-services
-description: Meer informatie over de ondersteunde native en cross-platform talen om clienttoepassingen te bouwen.
+title: Het front-end-ontwikkel platform voor het bouwen van client toepassingen met Visual Studio en Azure-Services kiezen
+description: Meer informatie over de ondersteunde systeem eigen en andere platform talen voor het bouwen van client toepassingen.
 author: codemillmatt
 ms.service: vs-appcenter
 ms.assetid: 355f0959-aa7f-472c-a6c7-9eecea3a34b9
@@ -8,80 +8,80 @@ ms.topic: conceptual
 ms.date: 03/24/2020
 ms.author: masoucou
 ms.openlocfilehash: 714916c755ce50f6e596cee4be85ceb0b142c789
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80240866"
 ---
-# <a name="choose-mobile-development-frameworks"></a>Kies mobiele ontwikkelingskaders
-Ontwikkelaars kunnen client-side technologieën gebruiken om zelf mobiele applicaties te bouwen door specifieke frameworks en patronen te gebruiken voor een cross-platform aanpak. Op basis van hun beslissingsfactoren kunnen ontwikkelaars bouwen:
-- Native single-platform applicaties met talen als Objective C en Java
-- Cross-platform applicaties met Xamarin, .NET en C #
-- Hybride toepassingen met behulp van Cordova en zijn varianten
+# <a name="choose-mobile-development-frameworks"></a>Kaders voor mobiele ontwikkeling kiezen
+Ontwikkel aars kunnen client-side technologieën gebruiken om mobiele toepassingen zelf te bouwen met behulp van specifieke frameworks en patronen voor een platformoverschrijdende benadering. Ontwikkel aars kunnen op basis van hun beslissings factoren het volgende bouwen:
+- Systeem eigen toepassingen met één platform door gebruik te maken van talen als objectieve C en Java
+- Toepassingen voor meerdere platforms met Xamarin, .NET en C #
+- Hybride toepassingen met behulp van Cordova en de varianten daarvan
 
-## <a name="native-platforms"></a>Native platforms
-Het bouwen van een native applicatie vereist platformspecifieke programmeertalen, SDK's, ontwikkelomgevingen en andere tools die worden geleverd door OS-leveranciers.
+## <a name="native-platforms"></a>Systeem eigen platforms
+Voor het bouwen van een systeem eigen toepassing zijn platformspecifieke programmeer talen, Sdk's, ontwikkel omgevingen en andere hulpprogram ma's van leveranciers van het besturings systeem vereist.
 
 ### <a name="ios"></a>iOS
-IOS is gemaakt en ontwikkeld door Apple en wordt gebruikt om apps te bouwen op Apple-apparaten, namelijk de iPhone en de iPad.
+IOS wordt gemaakt en ontwikkeld door Apple en wordt gebruikt om apps op Apple-apparaten te bouwen, namelijk de iPhone en de iPad.
 
-- **Programmeertalen**: Objective-C, Swift
+- **Programmeer talen**: objectief-C, Swift
 - **IDE**: Xcode
-- **SDK**: iOS SDK
+- **SDK**: IOS SDK
 
 ### <a name="android"></a>Android
-Ontworpen door Google en het populairste besturingssysteem ter wereld, wordt Android gebruikt om toepassingen te bouwen die kunnen draaien op een reeks smartphones en tablets.
+Android is ontworpen door Google en het populairste besturings systeem ter wereld en wordt gebruikt voor het bouwen van toepassingen die kunnen worden uitgevoerd op verschillende smartphones en tablets.
 
-- **Programmeertaal**: Java, Kotlin 
-- **IDE**: Android Studio en Android developer tools 
+- **Programmeer taal**: Java, Kotlin 
+- **IDE**: Android Studio-en Android-ontwikkel hulpprogramma's 
 - **SDK**: Android SDK
 
 ### <a name="windows"></a>Windows
-- **Programmeertaal**: C #
-- **IDE**: Visual Studio, Visual Studio Code
+- **Programmeer taal**: C #
+- **IDE**: Visual Studio, Visual Studio code
 - **SDK**: Windows SDK
 
 #### <a name="pros"></a>Voordelen
-- Goede gebruikerservaring
-- Responsieve toepassingen met hoge prestaties en de mogelijkheid om te communiceren met native bibliotheken
+- Goede gebruikers ervaring
+- Responsieve toepassingen met hoge prestaties en de mogelijkheid om te voorzien in een interface met systeem eigen bibliotheken
 - Zeer veilige toepassingen
 
 #### <a name="cons"></a>Nadelen
-- Toepassing draait op slechts één platform
-- Meer ontwikkelaar resource intensief en duur om een applicatie te bouwen
-- Lagere code hergebruik
+- Toepassing wordt op slechts één platform uitgevoerd
+- Meer resource-intensieve en dure resources voor het bouwen van een toepassing
+- Lagere code gebruiken
 
-## <a name="cross-platforms-and-hybrid-applications"></a>Cross-platforms en hybride toepassingen
-Cross-platform applicaties geven je de kracht om eenmaal native mobiele applicaties te schrijven, code te delen en ze uit te voeren op iOS, Android en Windows.
+## <a name="cross-platforms-and-hybrid-applications"></a>Meerdere platforms en hybride toepassingen
+Toepassingen voor meerdere platformen bieden u de mogelijkheid om systeem eigen mobiele toepassingen te schrijven, code te delen en ze uit te voeren op iOS, Android en Windows.
 
 ### <a name="xamarin"></a>Xamarin
-[Xamarin](https://visualstudio.microsoft.com/xamarin/) is eigendom van Microsoft en wordt gebruikt om robuuste, cross-platform mobiele applicaties te bouwen in C#. Xamarin heeft een klassenbibliotheek en runtime die werkt op veel platforms, zoals iOS, Android en Windows. Het compileert ook native (niet-geïnterpreteerde) toepassingen die hoge prestaties leveren. Xamarin combineert alle mogelijkheden van de native platforms en voegt een aantal krachtige functies van zijn eigen.
+Het eigendom van micro soft, [Xamarin](https://visualstudio.microsoft.com/xamarin/) wordt gebruikt voor het bouwen van robuuste, platformoverschrijdende mobiele toepassingen in C#. Xamarin heeft een klassen bibliotheek en runtime die werkt op verschillende platforms, zoals iOS, Android en Windows. Het compileert ook systeem eigen (niet-geïnterpreteerde) toepassingen die hoge prestaties leveren. Xamarin combineert alle mogelijkheden van de systeem eigen platforms en voegt een aantal krachtige functies van eigen platformen toe.
 
-- **Programmeertaal**: C #
-- **IDE**: Visual Studio op Windows of Mac
+- **Programmeer taal**: C #
+- **IDE**: Visual Studio in Windows of Mac
 
-### <a name="react-native"></a>Reageren Native
-[React Native,](https://facebook.github.io/react-native/) uitgebracht door Facebook in 2015, is een [open-source JavaScript-framework](https://github.com/facebook/react-native) voor het schrijven van echte, native renderende mobiele applicaties voor iOS en Android. Het is gebaseerd op React, Facebook's JavaScript-bibliotheek voor het bouwen van gebruikersinterfaces. In plaats van zich op de browser te richten, richt het zich op mobiele platforms. React Native gebruikt native componenten in plaats van webcomponenten als bouwstenen.
+### <a name="react-native"></a>Systeem eigen
+Op basis van Facebook in 2015, [reageert systeem eigen](https://facebook.github.io/react-native/) is een [open source](https://github.com/facebook/react-native) java script-Framework voor het schrijven van echte, systeem eigen mobiele toepassingen voor IOS en Android. Het is gebaseerd op reageren, de Java script-bibliotheek van Facebook voor het bouwen van gebruikers interfaces. In plaats van de browser te richten, streeft het naar mobiele platforms. Systeem eigen systeem eigen onderdelen reageren in plaats van webonderdelen als bouw stenen.
  
-- **Programmeertaal**: JavaScript
-- **IDE**: Visual Studio Code
+- **Programmeer taal**: Java script
+- **IDE**: Visual Studio code
 
 ### <a name="unity"></a>Unity
- Unity is een engine die geoptimaliseerd is voor het maken van games. U het gebruiken om 2D- of 3D-toepassingen van hoge kwaliteit te maken met C# voor platforms zoals Windows, iOS, Android en Xbox.
+ Unity is een engine die is geoptimaliseerd voor het maken van games. U kunt dit gebruiken om 2D-of 3D-toepassingen van hoge kwaliteit te voorzien van C# voor platforms zoals Windows, iOS, Android en Xbox.
 
 ### <a name="cordova"></a>Cordova
-Met Cordova u hybride toepassingen bouwen met Behulp van Visual Studio Tools voor Apache Cordova of Visual Studio Code met extensies voor Cordova. Met de hybride aanpak u componenten delen met websites en webservergebaseerde toepassingen hergebruiken met gehoste webapplicatiebenaderingen op basis van Cordova.
+Met Cordova kunt u hybride toepassingen bouwen met behulp van Visual Studio Tools voor Apache Cordova of Visual Studio code met extensies voor Cordova. Met de hybride benadering kunt u onderdelen delen met websites en webserver toepassingen hergebruiken met gehoste webtoepassingen op basis van Cordova.
 
 #### <a name="pros"></a>Voordelen
-- Verhoogde gebruiksvriendelijkheid van code door één codebase te maken voor meerdere platforms
-- Tegemoet te komen aan een breder publiek op vele platforms
-- Drastische vermindering van de ontwikkelingstijd
+- Verhoogde code-bruikbaarheid door één code basis voor meerdere platforms te maken
+- Keuken naar een breder publiek op verschillende platforms
+- Aanzienlijke vermindering van de ontwikkelings tijd
 - Eenvoudig te starten en bij te werken
 
 #### <a name="cons"></a>Nadelen
 - Lagere prestaties
-- Gebrek aan flexibiliteit
-- Elk platform heeft een unieke set functies en functionaliteit om de native applicatie creatiever te maken
-- Verhoogde ui-ontwerptijd
-- Gereedschapsbeperking
+- Geen flexibiliteit
+- Elk platform heeft een unieke set functies en functionaliteit om de systeem eigen toepassing creatiever te maken
+- Verbeterde ontwerp tijd van de gebruikers interface
+- Beperking van het hulp programma

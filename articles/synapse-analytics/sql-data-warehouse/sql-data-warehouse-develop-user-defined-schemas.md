@@ -1,6 +1,6 @@
 ---
 title: Door de gebruiker gedefinieerde schema's gebruiken
-description: Tips voor het gebruik van Door T-SQL door de gebruiker gedefinieerde schema's om oplossingen te ontwikkelen in Synapse SQL-pool.
+description: Tips voor het gebruik van door de gebruiker gedefinieerde T-SQL-schema's voor het ontwikkelen van oplossingen in de Synapse SQL-groep.
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
@@ -12,50 +12,50 @@ ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
 ms.openlocfilehash: 7144fa75d156ca7aed9d8215592f89c167cfb221
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/03/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80633454"
 ---
-# <a name="user-defined-schemas-in-synapse-sql-pool"></a>Door de gebruiker gedefinieerde schema's in de Synapse SQL-groep
-Dit artikel richt zich op het geven van verschillende tips voor het gebruik van Door T-SQL door de gebruiker gedefinieerde schema's om oplossingen te ontwikkelen in Synapse SQL-pool.
+# <a name="user-defined-schemas-in-synapse-sql-pool"></a>Door de gebruiker gedefinieerde schema's in Synapse SQL-groep
+Dit artikel is gericht op het bieden van verschillende tips voor het gebruik van door de gebruiker gedefinieerde T-SQL-schema's voor het ontwikkelen van oplossingen in de Synapse SQL-groep.
 
-## <a name="schemas-for-application-boundaries"></a>Schema's voor toepassingsgrenzen
+## <a name="schemas-for-application-boundaries"></a>Schema's voor toepassings grenzen
 
-Traditionele gegevensmagazijnen gebruiken vaak afzonderlijke databases om toepassingsgrenzen te creëren op basis van werkbelasting, domein of beveiliging. 
+Traditionele data warehouses gebruiken vaak afzonderlijke data bases om toepassings grenzen te maken op basis van de werk belasting, het domein of de beveiliging. 
 
-Een traditioneel SQL Server-gegevensmagazijn kan bijvoorbeeld een faseringsdatabase, een gegevensmagazijndatabase en enkele databases voor gegevensopslag bevatten. In deze topologie werkt elke database als een werkbelasting en beveiligingsgrens in de architectuur.
+Een voor beeld: een traditioneel SQL Server Data Warehouse kan een faserings database, een Data Warehouse-data base en enkele datamart-data bases bevatten. In deze topologie fungeert elke Data Base als een werk belasting en beveiligings grens in de architectuur.
 
-SQL-pool voert daarentegen de volledige gegevensmagazijnworkload uit binnen één database. Cross database joins zijn niet toegestaan. SQL-groep verwacht dat alle tabellen die door het magazijn worden gebruikt, in één database worden opgeslagen.
+De SQL-pool voert daarentegen de volledige werk belasting van het data warehouse in één Data Base uit. Cross-data base-samen voegingen zijn niet toegestaan. De SQL-pool verwacht dat alle tabellen die worden gebruikt door het magazijn, worden opgeslagen in de ene data base.
 
 > [!NOTE]
-> SQL-pool biedt geen ondersteuning voor cross database query's van welke aard dan ook. Daarom moeten de implementaties van gegevensmagazijnen die dit patroon gebruiken, worden herzien.
+> SQL-pool biedt geen ondersteuning voor query's van alle typen van meerdere data bases. Data Warehouse-implementaties die gebruikmaken van dit patroon moeten daarom worden gereviseerd.
 > 
 > 
 
 ## <a name="recommendations"></a>Aanbevelingen
-Wat volgt zijn aanbevelingen voor het consolideren van workloads, beveiliging, domein en functionele grenzen met behulp van door de gebruiker gedefinieerde schema's:
+Hieronder vindt u aanbevelingen voor het samen voegen van werk belastingen, beveiliging, domein en functionele grenzen door gebruik te maken van door de gebruiker gedefinieerde schema's:
 
-- Gebruik één SQL-pooldatabase om uw volledige gegevensmagazijnwerkuitvoeren ingevoeren.
-- Consolideer uw bestaande gegevensmagazijnomgeving om één SQL-pooldatabase te gebruiken.
-- Maak gebruik van **door de gebruiker gedefinieerde schema's** om de eerder geïmplementeerde grens met behulp van databases te bieden.
+- Gebruik één SQL-groeps database om uw hele Data Warehouse-werk belasting uit te voeren.
+- Consolideer uw bestaande data warehouse-omgeving om één data base van SQL-groep te gebruiken.
+- Gebruik door de **gebruiker gedefinieerde schema's** om de grens te leveren die eerder is geïmplementeerd met behulp van data bases.
 
-Als door de gebruiker gedefinieerde schema's niet eerder zijn gebruikt, hebt u een schone lei. Gebruik de oude databasenaam als basis voor uw door gebruikers gedefinieerde schema's in de SQL-groepdatabase.
+Als door de gebruiker gedefinieerde schema's niet eerder zijn gebruikt, hebt u een schone pastel. Gebruik de oude database naam als basis voor uw door de gebruiker gedefinieerde schema's in de data base van de SQL-groep.
 
 Als er al schema's zijn gebruikt, hebt u een aantal opties:
 
-- Verwijder de oude schemanamen en begin opnieuw.
-- Bewaar de oude schemanamen door de verouderde schemanaam in afwachting van de tabelnaam.
-- Bewaar de oudere schemanamen door weergaven over de tabel te implementeren in een extra schema om de oude schemastructuur opnieuw te maken.
+- Verwijder de oude schema namen en begin vers.
+- Behoud de oude schema namen door de oude schema naam vooraf in behandeling te laten nemen aan de naam van de tabel.
+- Behoud de oude schema namen door weer gaven te implementeren in de tabel in een extra schema om de oude schema structuur opnieuw te maken.
 
 > [!NOTE]
-> Op de eerste inspectie optie 3 lijkt misschien wel de meest aantrekkelijke optie. Echter, de duivel is in het detail. Weergaven worden alleen gelezen in SQL-pool. Alle gegevens of tabelwijzigingen moeten worden uitgevoerd tegen de basistabel. Optie 3 introduceert ook een laag weergaven in uw systeem. Misschien wilt u hier nog wat extra aandacht aan geven als u al weergaven in uw architectuur gebruikt.
+> Op de eerste inspectie optie 3 lijkt de meest aantrekkelijke optie. De zon bevindt zich echter in het detail. Weer gaven zijn alleen-lezen in de SQL-groep. Eventuele gegevens of tabel wijzigingen moeten worden uitgevoerd voor de basis tabel. Met optie 3 wordt ook een laag van weer gaven in uw systeem geïntroduceerd. U kunt hiervan een extra idee geven als u al gebruikmaakt van weer gaven in uw architectuur.
 > 
 > 
 
 ### <a name="examples"></a>Voorbeelden:
-Implementeer door de gebruiker gedefinieerde schema's op basis van databasenamen:
+Door de gebruiker gedefinieerde schema's implementeren op basis van database namen:
 
 ```sql
 CREATE SCHEMA [stg]; -- stg previously database name for staging database
@@ -73,7 +73,7 @@ CREATE TABLE [edw].[customer] -- create data warehouse tables in the edw schema
 );
 ```
 
-Houd oudere schemanamen door ze vooraf in behandeling te nemen bij de tabelnaam. Schema's gebruiken voor de werkbelastinggrens:
+Behoud oude schema namen door deze vooraf in te wachten op de tabel naam. Schema's gebruiken voor de grens van de werk belasting:
 
 ```sql
 CREATE SCHEMA [stg]; -- stg defines the staging boundary
@@ -91,7 +91,7 @@ CREATE TABLE [edw].[dim_customer] --pre-pend the old schema name to the table an
 );
 ```
 
-Houd oudere schemanamen bij met weergaven:
+Oude schema namen met behulp van weer gaven blijven gebruiken:
 
 ```sql
 CREATE SCHEMA [stg]; -- stg defines the staging boundary
@@ -119,10 +119,10 @@ FROM    [edw].customer
 ```
 
 > [!NOTE]
-> Elke wijziging in de schemastrategie moet worden herzien van het beveiligingsmodel voor de database. In veel gevallen u het beveiligingsmodel vereenvoudigen door machtigingen toe te wijsop schemaniveau. Als er meer gedetailleerde machtigingen nodig zijn, u databaserollen gebruiken.
+> Voor elke wijziging in de schema strategie moet het beveiligings model voor de Data Base worden gecontroleerd. In veel gevallen kunt u het beveiligings model vereenvoudigen door machtigingen toe te wijzen op schema niveau. Als u meer gedetailleerde machtigingen nodig hebt, kunt u database rollen gebruiken.
 > 
 > 
 
 ## <a name="next-steps"></a>Volgende stappen
-Zie voor meer ontwikkelingstips [het ontwikkelingsoverzicht.](sql-data-warehouse-overview-develop.md)
+Zie [ontwikkelings overzicht](sql-data-warehouse-overview-develop.md)voor meer tips voor ontwikkel aars.
 

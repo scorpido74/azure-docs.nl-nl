@@ -1,6 +1,6 @@
 ---
-title: Labels gebruiken voor instrumentquery's
-description: Tips voor het gebruik van labels voor instrumentquery's in Synapse SQL-pool voor het ontwikkelen van oplossingen.
+title: Labels gebruiken voor instrument query's
+description: Tips voor het gebruik van labels voor instrument query's in Synapse SQL pool voor het ontwikkelen van oplossingen.
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
@@ -12,21 +12,21 @@ ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
 ms.openlocfilehash: 5e2cd03ae878e80139a7f7a8ba67cef15b24d571
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/03/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80633497"
 ---
-# <a name="using-labels-to-instrument-queries-in-synapse-sql-pool"></a>Labels gebruiken voor instrumentquery's in de Synapse SQL-groep
+# <a name="using-labels-to-instrument-queries-in-synapse-sql-pool"></a>Labels gebruiken voor instrument query's in de SQL-groep Synapse
 
-In dit artikel zijn tips opgenomen voor het ontwikkelen van oplossingen met behulp van labels voor instrumentquery's in SQL-pool.
+In dit artikel vindt u tips voor het ontwikkelen van oplossingen met behulp van labels voor instrument query's in de SQL-groep.
 
-Tips voor het gebruik van labels voor instrumentquery's in Azure SQL Data Warehouse voor het ontwikkelen van oplossingen.
+Tips voor het gebruik van labels voor instrument query's in Azure SQL Data Warehouse voor het ontwikkelen van oplossingen.
 
 ## <a name="what-are-labels"></a>Wat zijn labels?
 
-SQL-groep ondersteunt een concept dat querylabels wordt genoemd. Voordat we in gaan op een diepte, laten we eens kijken naar een voorbeeld:
+SQL-pool ondersteunt een concept met de naam query labels. We kijken naar een voor beeld voordat u naar een andere diepte gaat:
 
 ```sql
 SELECT *
@@ -35,13 +35,13 @@ OPTION (LABEL = 'My Query Label')
 ;
 ```
 
-De laatste regel tagt de tekenreeks 'Mijn querylabel' aan de query. Deze tag is handig omdat het label query-able is via de DMVs.
+Met de laatste regel wordt de teken reeks ' mijn query label ' gelabeld in de query. Deze tag is handig omdat het label query's kan uitvoeren via de Dmv's.
 
-Zoeken naar labels biedt een mechanisme voor het lokaliseren van probleemquery's en het helpen identificeren van de voortgang via een ELT-run.
+Het uitvoeren van query's voor labels biedt een mechanisme voor het vinden van probleem query's en het identificeren van de voortgang van een ELT-uitvoering.
 
-Een goede naamgeving conventie helpt echt. Als u het label bijvoorbeeld start met PROJECT, PROCEDURE, STATEMENT of COMMENT, wordt de query op unieke wijze geïdentificeerd tussen alle code in bronbeheer.
+Een goede naam Conventie is echt handig. Als u bijvoorbeeld het label met PROJECT, PROCEDURE, instructie of opmerking start, wordt de query op unieke wijze geïdentificeerd voor alle code in broncode beheer.
 
-In de volgende query wordt een dynamische beheerweergave gebruikt om op label te zoeken:
+De volgende query gebruikt een dynamische beheer weergave om te zoeken op label:
 
 ```sql
 SELECT  *
@@ -51,8 +51,8 @@ WHERE   r.[label] = 'My Query Label'
 ```
 
 > [!NOTE]
-> Het is essentieel om vierkante haakjes of dubbele aanhalingstekens rond het woordetiket te zetten wanneer het vragen. Label is een gereserveerd woord en veroorzaakt een fout wanneer het niet wordt afgebakend.
+> Het is essentieel om rechte haken of dubbele aanhalings tekens rond het woord label te plaatsen tijdens het uitvoeren van query's. Label is een gereserveerd woord dat een fout veroorzaakt wanneer het niet wordt gescheiden.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie voor meer ontwikkelingstips [het ontwikkelingsoverzicht.](sql-data-warehouse-overview-develop.md)
+Zie [ontwikkelings overzicht](sql-data-warehouse-overview-develop.md)voor meer tips voor ontwikkel aars.

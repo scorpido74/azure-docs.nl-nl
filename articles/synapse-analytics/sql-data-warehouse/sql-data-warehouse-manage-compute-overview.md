@@ -1,6 +1,6 @@
 ---
-title: Compute resource voor SQL-groep beheren
-description: Meer informatie over de mogelijkheden voor het uitschalen van prestaties in een Azure Synapse Analytics SQL-groep. Schaal uit door DBO's aan te passen of verlaag de kosten door het gegevensmagazijn te pauzeren.
+title: Reken resource voor SQL-groep beheren
+description: Meer informatie over de mogelijkheden voor het uitbreiden van prestaties in een Azure Synapse Analytics SQL-groep. Uitschalen door Dwu's aan te passen of door de kosten te verlagen door het Data Warehouse te onderbreken.
 services: synapse-analytics
 author: ronortloff
 manager: craigg
@@ -12,31 +12,31 @@ ms.author: rortloff
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
 ms.openlocfilehash: daf57c7e6ef40f75eac070c06547cf2a28338f21
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/03/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80633244"
 ---
-# <a name="manage-compute-in-azure-synapse-analytics-data-warehouse"></a>Compute beheren in Azure Synapse Analytics-gegevensmagazijn
+# <a name="manage-compute-in-azure-synapse-analytics-data-warehouse"></a>Reken kracht beheren in azure Synapse Analytics Data Warehouse
 
-Meer informatie over het beheren van compute resources in Azure Synapse Analytics SQL-groep. Verlaag de kosten door de SQL-groep te pauzeren of schaal het gegevensmagazijn om aan prestatievereisten te voldoen.
+Meer informatie over het beheren van reken resources in azure Synapse Analytics SQL-groep. Lagere kosten door de SQL-groep te onderbreken of het Data Warehouse te schalen om te voldoen aan de prestatie vereisten.
 
-## <a name="what-is-compute-management"></a>Wat is compute management?
+## <a name="what-is-compute-management"></a>Wat is reken beheer?
 
-De architectuur van het datawarehouse scheidt opslag en rekenkracht, waardoor elk afzonderlijk kan worden geschaald. Daardoor kunt u de rekenkracht aanpassen om aan prestatievereisten te voldoen zonder dat dit consequenties heeft voor de opslag van gegevens. U kunt ook rekenresources pauzeren en hervatten. Een natuurlijk gevolg van deze architectuur is dat [facturering](https://azure.microsoft.com/pricing/details/sql-data-warehouse/) voor compute en storage gescheiden is. U kunt op de kosten voor rekenuren besparen door de berekeningen te onderbreken als u uw datawarehouse een tijdje niet nodig hebt.
+De architectuur van het Data Warehouse scheidt opslag en reken kracht, zodat elk onafhankelijk van elkaar kan worden geschaald. Daardoor kunt u de rekenkracht aanpassen om aan prestatievereisten te voldoen zonder dat dit consequenties heeft voor de opslag van gegevens. U kunt ook rekenresources pauzeren en hervatten. Een natuurlijk gevolg van deze architectuur is dat de [facturering](https://azure.microsoft.com/pricing/details/sql-data-warehouse/) voor reken capaciteit en opslag gescheiden is. U kunt op de kosten voor rekenuren besparen door de berekeningen te onderbreken als u uw datawarehouse een tijdje niet nodig hebt.
 
-## <a name="scaling-compute"></a>Compute schalen
+## <a name="scaling-compute"></a>Berekening schalen
 
-U de rekenkracht uitschalen of terugschalen door de instelling [voor gegevensmagazijnen](what-is-a-data-warehouse-unit-dwu-cdwu.md) voor uw SQL-groep aan te passen. De prestaties voor het laden en voor query's kunnen lineair toenemen als u meer datawarehouse-eenheden wilt toevoegen.
+U kunt de schaal omhoog of omlaag schalen door de instellingen voor het [Data Warehouse-eenheden](what-is-a-data-warehouse-unit-dwu-cdwu.md) voor uw SQL-groep aan te passen. De prestaties voor het laden en voor query's kunnen lineair toenemen als u meer datawarehouse-eenheden wilt toevoegen.
 
-Zie de [Azure-portal](quickstart-scale-compute-portal.md), [PowerShell](quickstart-scale-compute-powershell.md)of [T-SQL](quickstart-scale-compute-tsql.md) snelstarts voor schaalstappen. U ook scale-outbewerkingen uitvoeren met een [REST API.](sql-data-warehouse-manage-compute-rest-api.md#scale-compute)
+Zie [Azure Portal](quickstart-scale-compute-portal.md), [Power shell](quickstart-scale-compute-powershell.md)of [T-SQL](quickstart-scale-compute-tsql.md) Quick starts (Engelstalig) voor stapsgewijze instructies. U kunt ook uitschaal bewerkingen uitvoeren met een [rest API](sql-data-warehouse-manage-compute-rest-api.md#scale-compute).
 
-Als u een schaalbewerking wilt uitvoeren, doodt SQL-groep eerst alle binnenkomende query's en rolt vervolgens transacties terug om een consistente status te garanderen. Het aanpassen van de schaal vindt alleen plaats als de transactie is teruggedraaid. Voor een schaalbewerking ontkoppelt het systeem de opslaglaag van de compute-knooppunten, voegt het compute-knooppunten toe en voegt het de opslaglaag opnieuw toe aan de compute-laag. Elke SQL-groep wordt opgeslagen als 60 distributies, die gelijkmatig worden gedistribueerd naar de compute-knooppunten. Als u meer compute nodes toevoegt, wordt meer rekenkracht toegevoegd. Naarmate het aantal compute nodes toeneemt, neemt het aantal distributies per compute node af, waardoor uw query's meer rekenkracht krijgen. Ook het verminderen van gegevensmagazijneenheden vermindert het aantal compute nodes, waardoor de rekenbronnen voor query's worden verminderd.
+Als u een schaal bewerking wilt uitvoeren, worden alle binnenkomende query's eerst door de SQL-groep afgemeld en worden vervolgens de trans acties teruggedraaid om een consistente status te krijgen. Het aanpassen van de schaal vindt alleen plaats als de transactie is teruggedraaid. Voor een schaal bewerking koppelt het systeem de opslaglaag van de reken knooppunten en voegt reken knooppunten toe en koppelt de opslaglaag vervolgens opnieuw aan de compute-laag. Elke SQL-groep wordt opgeslagen als 60-distributies die gelijkmatig worden gedistribueerd naar de reken knooppunten. Het toevoegen van meer reken knooppunten voegt meer reken kracht toe. Naarmate het aantal reken knooppunten toeneemt, neemt het aantal verdelingen per reken knooppunt af, waardoor er meer reken kracht is voor uw query's. Evenzo verlagen Data Warehouse-eenheden het aantal reken knooppunten, waardoor de reken resources voor query's worden verminderd.
 
-In de volgende tabel ziet u hoe het aantal distributies per Compute-knooppunt verandert naarmate de gegevensmagazijnen veranderen.  DW30000c biedt 60 Compute-knooppunten en bereikt veel hogere queryprestaties dan DW100c.
+De volgende tabel laat zien hoe het aantal distributies per Compute-knoop punt verandert naarmate de Data Warehouse-eenheden worden gewijzigd.  DW30000c biedt 60 Compute-knoop punten en behaalt veel hogere query prestaties dan DW100c.
 
-| Datawarehouse-eenheden  | \#van compute nodes | \#van de distributies per knooppunt |
+| Datawarehouse-eenheden  | \#van reken knooppunten | \#distributies per knoop punt |
 | -------- | ---------------- | -------------------------- |
 | DW100c   | 1                | 60                         |
 | DW200c   | 1                | 60                         |
@@ -55,75 +55,75 @@ In de volgende tabel ziet u hoe het aantal distributies per Compute-knooppunt ve
 | DW15000c | 30               | 2                          |
 | DW30000c | 60               | 1                          |
 
-## <a name="finding-the-right-size-of-data-warehouse-units"></a>De juiste grootte van gegevensmagazijneenheden zoeken
+## <a name="finding-the-right-size-of-data-warehouse-units"></a>De juiste grootte van de Data Warehouse-eenheden zoeken
 
-Als u de prestatievoordelen wilt zien van uitschalen, met name voor grotere gegevensmagazijnen, wilt u ten minste een gegevensset van 1 TB gebruiken. Als u het beste aantal gegevensmagazijneenheden voor uw SQL-groep wilt vinden, probeert u op en neer te schalen. Voer een paar query's uit met verschillende aantallen gegevensmagazijneenheden na het laden van uw gegevens. Omdat schalen snel is, u verschillende prestatieniveaus in een uur of minder proberen.
+Voor een overzicht van de prestatie voordelen van uitschalen, met name voor grotere Data Warehouse-eenheden, wilt u ten minste één data set van 1 TB gebruiken. Als u het beste aantal data warehouse-eenheden voor uw SQL-groep wilt zoeken, kunt u omhoog en omlaag schalen. Voer enkele query's uit met verschillende aantallen Data Warehouse-eenheden na het laden van uw gegevens. Omdat schalen snel is, kunt u verschillende prestatie niveaus uitproberen in een uur of minder.
 
-Aanbevelingen voor het vinden van het beste aantal datawarehouse-eenheden:
+Aanbevelingen voor het zoeken naar het beste aantal data warehouse-eenheden:
 
-- Voor een SQL-pool in ontwikkeling, begin met het selecteren van een kleiner aantal gegevensmagazijneenheden.  Een goed uitgangspunt is DW400c of DW200c.
-- Controleer de prestaties van uw toepassing en observeer het aantal geselecteerde gegevensmagazijneenheden in vergelijking met de prestaties die u waarneemt.
-- Ga uit van een lineaire schaal en bepaal hoeveel u nodig hebt om de eenheden voor gegevensmagazijnen te verhogen of te verkleinen.
-- Blijf aanpassingen maken totdat u een optimaal prestatieniveau voor uw bedrijfsbehoeften hebt bereikt.
+- Voor een SQL-groep in ontwikkeling begint u met het selecteren van een kleiner aantal data warehouse-eenheden.  Een goed uitgangs punt is DW400c of DW200c.
+- Bewaak de prestaties van uw toepassing, waarbij het aantal geselecteerde data warehouse-eenheden wordt geobserveerd vergeleken met de prestaties die u ziet.
+- Stel dat er een lineaire schaal is en bepaal hoeveel u nodig hebt om de Data Warehouse-eenheden te verg Roten of te verkleinen.
+- Blijf aanpassingen aanbrengen totdat u een optimaal prestatie niveau bereikt voor uw bedrijfs vereisten.
 
-## <a name="when-to-scale-out"></a>Wanneer moet u uitschalen
+## <a name="when-to-scale-out"></a>Wanneer uitschalen
 
-Het uitschalen van datawarehouse-eenheden heeft invloed op deze aspecten van prestaties:
+Het uitschalen van data warehouse-eenheden heeft gevolgen voor de volgende aspecten van prestaties:
 
-- Verbetert lineair de prestaties van het systeem voor scans, aggregaties en CTAS-instructies.
+- Zorgt voor een lineaire verbetering van de prestaties van het systeem voor scans, aggregaties en CTAS-instructies.
 - Verhoogt het aantal lezers en schrijvers voor het laden van gegevens.
-- Maximaal aantal gelijktijdige query's en gelijktijdige sleuven.
+- Maximum aantal gelijktijdige query's en gelijktijdigheids sleuven.
 
-Aanbevelingen voor wanneer gegevensmagazijnen moeten worden uitschalen:
+Aanbevelingen voor het schalen van data warehouse-eenheden:
 
-- Voordat u een zware bewerking voor het laden of transformeren van gegevens uitvoert, schaalt u deze uit om de gegevens sneller beschikbaar te maken.
-- Schaal tijdens piekuren uit om grotere aantallen gelijktijdige query's aan te kunnen.
+- Voordat u een zware gegevens laad-of transformatie bewerking uitvoert, kunt u uitschalen om de gegevens sneller beschikbaar te maken.
+- Uitschalen tijdens de piek uren om grotere aantallen gelijktijdige query's toe te passen.
 
-## <a name="what-if-scaling-out-does-not-improve-performance"></a>Wat gebeurt er als uitschaling de prestaties niet verbetert?
+## <a name="what-if-scaling-out-does-not-improve-performance"></a>Wat gebeurt er als de prestaties niet worden verbeterd door het uitschalen?
 
-Het toevoegen van data warehouse units verhogen van de parallellisme. Als het werk gelijkmatig wordt verdeeld over de Compute-knooppunten, verbetert het extra parallellisme de queryprestaties. Als uitschalen uw prestaties niet verandert, zijn er enkele redenen waarom dit zou kunnen gebeuren. Uw gegevens kunnen over de distributies worden scheefgetrokken of query's introduceren mogelijk een grote hoeveelheid gegevensverplaatsing. Zie Problemen met prestaties [uitvoeren](sql-data-warehouse-troubleshoot.md#performance)voor problemen met queryprestaties.
+Het toevoegen van data warehouse-eenheden verhoogt de parallelle factor. Als het werk gelijkmatig wordt verdeeld tussen de reken knooppunten, verbetert de extra parallelle uitvoering query prestaties. Als u de prestaties niet wijzigt, zijn er enkele redenen waarom dit kan gebeuren. Het kan zijn dat uw gegevens over de distributies worden schuingetrokken, of query's kunnen een grote hoeveelheid gegevens verplaatsing introduceren. Zie [prestaties oplossen](sql-data-warehouse-troubleshoot.md#performance)voor meer informatie over het onderzoeken van prestatie problemen.
 
 ## <a name="pausing-and-resuming-compute"></a>Onderbreken en hervatten van rekenactiviteiten
 
-Als u de compute pauzeert, wordt de opslaglaag losgekoppeld van de Compute-knooppunten. De compute resources worden vrijgegeven van uw account. U wordt niet in rekening gebracht voor compute terwijl de compute wordt onderbroken. Als u de compute hervat, wordt de opslag opnieuw gekoppeld aan de Compute-knooppunten en worden de kosten voor Compute hervat.
-Wanneer u een SQL-groep pauzeert:
+Als u de reken kracht onderbreekt, ontkoppelt u de opslaglaag van de reken knooppunten. De reken resources worden vrijgegeven uit uw account. Er worden geen kosten in rekening gebracht voor de reken kracht terwijl de reken kracht wordt onderbroken. Als u de compute hervat, wordt de opslag opnieuw gekoppeld aan de reken knooppunten en worden de kosten voor Compute hervat.
+Wanneer u een SQL-groep onderbreekt:
 
-- Reken- en geheugenbronnen worden geretourneerd naar de groep beschikbare resources in het datacenter
-- Kosten voor de eenheid van gegevensmagazijnen zijn nul voor de duur van de pauze.
-- Gegevensopslag wordt niet beïnvloed en uw gegevens blijven intact.
-- Alle bewerkingen voor het uitvoeren of in de wachtrij worden geannuleerd.
+- Reken-en geheugen bronnen worden geretourneerd naar de groep beschik bare resources in het Data Center
+- De kosten voor de eenheid van het Data Warehouse zijn nul voor de duur van de onderbreking.
+- Gegevens opslag wordt niet beïnvloed en uw gegevens blijven intact.
+- Alle actieve of in de wachtrij geplaatste bewerkingen worden geannuleerd.
 
 Wanneer u een SQL-groep hervat:
 
-- De SQL-groep krijgt reken- en geheugenbronnen voor de instelling van gegevensmagazijnen.
-- Rekenkosten voor uw gegevensmagazijnen worden hervat.
-- Uw gegevens worden beschikbaar.
-- Nadat de SQL-groep online is, moet u uw workloadquery's opnieuw starten.
+- De SQL-pool heeft reken-en geheugen resources opgehaald voor de instellingen van uw data warehouse-eenheden.
+- Reken kosten voor uw data warehouse-eenheden hervatten.
+- Uw gegevens worden nu beschikbaar.
+- Nadat de SQL-groep online is, moet u de query's voor de werk belasting opnieuw opstarten.
 
-Als u altijd wilt dat uw SQL-groep toegankelijk is, u deze verkleinen tot de kleinste grootte in plaats van onderbreken.
+Als u de SQL-groep altijd toegankelijk wilt maken, kunt u deze omlaag schalen naar de kleinste grootte in plaats van te onderbreken.
 
-Zie de [Azure-portal](pause-and-resume-compute-portal.md)of [PowerShell](pause-and-resume-compute-powershell.md) snel start voor het onderbreken en hervatten van stappen. U ook de [pause REST API](sql-data-warehouse-manage-compute-rest-api.md#pause-compute) of de RESUME REST [API](sql-data-warehouse-manage-compute-rest-api.md#resume-compute)gebruiken.
+Raadpleeg de [Azure Portal](pause-and-resume-compute-portal.md)of [Power shell](pause-and-resume-compute-powershell.md) -Quick starts voor instructies voor onderbreken en hervatten. U kunt ook de [pause-rest API](sql-data-warehouse-manage-compute-rest-api.md#pause-compute) of de [hervattings rest API](sql-data-warehouse-manage-compute-rest-api.md#resume-compute)gebruiken.
 
 ## <a name="drain-transactions-before-pausing-or-scaling"></a>Transacties stoppen voor onderbreken of schalen
 
-We raden u aan bestaande transacties te laten voltooien voordat u een pauze- of schaalbewerking start.
+We raden aan om bestaande trans acties te volt ooien voordat u een pauze of schaal bewerking initieert.
 
-Wanneer u uw SQL-pool pauzeert of schaalt, worden uw query's achter de schermen geannuleerd wanneer u de pauze- of schaalaanvraag initieert. Een eenvoudige SELECT-query annuleren is een snelle bewerking en heeft zo goed als geen invloed op de duur van het onderbreken of schalen van uw instantie.  Maar transactiequery’s, die uw gegevens of de structuur van uw gegevens wijzigen, kunnen mogelijk niet snel worden stopgezet. **Transactiequery’s moeten per definitie volledig worden voltooid of hun wijzigingen volledig terugdraaien.** Het kan even lang of langer duren om het werk dat door een transactiequery is voltooid, terug te draaien, als het uitvoeren van de oorspronkelijke opdracht van de query. Als u bijvoorbeeld een query annuleert voor het verwijderen van rijen die al een uur wordt uitgevoerd, kan het systeem er een uur over doen om de verwijderde rijen terug te plaatsen. Als u onderbreken of schalen uitvoert terwijl er transacties bezig zijn, kan het schalen of onderbreken lang lijken te duren omdat het schalen of onderbreken moet wachten op het terugdraaien van de transacties voordat het kan worden voortgezet.
+Wanneer u uw SQL-groep pauzeert of schaalt, worden uw query's achter de schermen geannuleerd wanneer u de aanvraag voor onderbreken of schalen initieert. Een eenvoudige SELECT-query annuleren is een snelle bewerking en heeft zo goed als geen invloed op de duur van het onderbreken of schalen van uw instantie.  Maar transactiequery’s, die uw gegevens of de structuur van uw gegevens wijzigen, kunnen mogelijk niet snel worden stopgezet. **Transactiequery’s moeten per definitie volledig worden voltooid of hun wijzigingen volledig terugdraaien.** Het kan even lang of langer duren om het werk dat door een transactiequery is voltooid, terug te draaien, als het uitvoeren van de oorspronkelijke opdracht van de query. Als u bijvoorbeeld een query annuleert voor het verwijderen van rijen die al een uur wordt uitgevoerd, kan het systeem er een uur over doen om de verwijderde rijen terug te plaatsen. Als u onderbreken of schalen uitvoert terwijl er transacties bezig zijn, kan het schalen of onderbreken lang lijken te duren omdat het schalen of onderbreken moet wachten op het terugdraaien van de transacties voordat het kan worden voortgezet.
 
-Zie ook [Inzicht in transacties](sql-data-warehouse-develop-transactions.md)en Het optimaliseren van [transacties](sql-data-warehouse-develop-best-practices-transactions.md).
+Zie ook [informatie over trans acties](sql-data-warehouse-develop-transactions.md)en het [optimaliseren van trans acties](sql-data-warehouse-develop-best-practices-transactions.md).
 
-## <a name="automating-compute-management"></a>Compute management automatiseren
+## <a name="automating-compute-management"></a>Reken beheer automatiseren
 
-Zie Compute beheren met [Azure-functies](manage-compute-with-azure-functions.md)voor het automatiseren van de compute management-bewerkingen.
+Zie [Compute-functies beheren met Azure functions](manage-compute-with-azure-functions.md)voor het automatiseren van de bewerkingen voor Compute management.
 
-Elk van de scale-out-, pauze- en hervattingsbewerkingen kan enkele minuten duren. Als u automatisch schaalt, pauzeert of hervat, raden we u aan logica te implementeren om ervoor te zorgen dat bepaalde bewerkingen zijn voltooid voordat u doorgaat met een andere actie. Als u de SQL-poolstatus controleert via verschillende eindpunten, u de automatisering van dergelijke bewerkingen correct implementeren.
+Het kan enkele minuten duren voordat elk van de bewerkingen scale-out, Pause en resume is voltooid. Als u automatisch wilt schalen, onderbreken of hervatten, wordt u aangeraden logica te implementeren om ervoor te zorgen dat bepaalde bewerkingen zijn voltooid voordat u doorgaat met een andere actie. Door de status van de SQL-groep via verschillende eind punten te controleren, kunt u automatisering van dergelijke bewerkingen op de juiste manier implementeren.
 
-Zie de [QuickStart powershell](quickstart-scale-compute-powershell.md#check-data-warehouse-state) of [T-SQL](quickstart-scale-compute-tsql.md#check-data-warehouse-state) om de SQL-poolstatus te controleren. U ook de SQL-poolstatus controleren met een [REST-API.](sql-data-warehouse-manage-compute-rest-api.md#check-database-state)
+Zie de Snelstartgids [Power shell](quickstart-scale-compute-powershell.md#check-data-warehouse-state) of [T-SQL](quickstart-scale-compute-tsql.md#check-data-warehouse-state) om de status van de SQL-groep te controleren. U kunt ook de status van de SQL-groep controleren met een [rest API](sql-data-warehouse-manage-compute-rest-api.md#check-database-state).
 
 ## <a name="permissions"></a>Machtigingen
 
-Voor het schalen van de SQL-groep zijn de machtigingen vereist die zijn beschreven in [ALTER DATABASE.](/sql/t-sql/statements/alter-database-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)  Voor Onderbreken en hervatten is de SQL [DB Contributor-toestemming](../../role-based-access-control/built-in-roles.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json#sql-db-contributor) vereist, met name Microsoft.Sql/servers/databases/action.
+Voor het schalen van de SQL-groep zijn de machtigingen vereist die worden beschreven in [ALTER data base](/sql/t-sql/statements/alter-database-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest).  Voor onderbreken en hervatten is de machtiging [SQL DB-Inzender](../../role-based-access-control/built-in-roles.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json#sql-db-contributor) vereist, met name micro soft. SQL/servers/data bases/action.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie de handleiding voor [het beheren van compute](manage-compute-with-azure-functions.md) Een ander aspect van het beheren van compute resources is het toewijzen van verschillende compute resources voor afzonderlijke query's. Zie [Resourceklassen voor werkbelastingbeheer voor](resource-classes-for-workload-management.md)meer informatie .
+Zie de hand leiding voor het [beheren van reken kracht](manage-compute-with-azure-functions.md) een ander aspect van het beheren van reken resources is het toewijzen van verschillende reken bronnen voor afzonderlijke query's. Zie [resource klassen voor workload Management](resource-classes-for-workload-management.md)voor meer informatie.

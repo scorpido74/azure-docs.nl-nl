@@ -12,53 +12,53 @@ ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
 ms.openlocfilehash: 17877a1ef5d949fbbee080b6157844ac5b516fe7
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/03/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80633688"
 ---
 # <a name="synapse-sql-recommendations"></a>Synapse SQL-aanbevelingen
 
-In dit artikel worden de Synapse SQL-aanbevelingen beschreven die via Azure Advisor worden weergegeven.  
+In dit artikel worden de Synapse SQL-aanbevelingen beschreven die worden aangeboden via Azure Advisor.  
 
-SQL Analytics bevat aanbevelingen om ervoor te zorgen dat uw werkbelasting voor gegevensmagazijnen consistent is geoptimaliseerd voor prestaties. Aanbevelingen zijn nauw geïntegreerd met [Azure Advisor](../../advisor/advisor-performance-recommendations.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) om u direct binnen de [Azure-portal](https://aka.ms/Azureadvisor)van best practices te voorzien. SQL Analytics verzamelt telemetrie en brengt aanbevelingen voor uw actieve workload op een dagelijkse cadans. De ondersteunde aanbevelingsscenario's worden hieronder beschreven, samen met hoe aanbevolen acties kunnen worden toegepast.
+SQL Analytics biedt aanbevelingen om ervoor te zorgen dat de werk belasting van uw data warehouse consistent is geoptimaliseerd voor prestaties. Aanbevelingen worden nauw geïntegreerd met [Azure Advisor](../../advisor/advisor-performance-recommendations.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) om u te voorzien van best practices direct binnen de [Azure Portal](https://aka.ms/Azureadvisor). Met SQL Analytics worden de aanbevelingen van telemetrie en Opper vlakken voor uw actieve workload op een dagelijks uitgebracht verzameld. De ondersteunde aanbevelings scenario's worden hieronder beschreven, samen met het Toep assen van aanbevolen acties.
 
-U uw aanbevelingen vandaag [nog bekijken!](https://aka.ms/Azureadvisor) Momenteel is deze functie alleen van toepassing op Gen2-gegevensmagazijnen.
+U kunt [uw aanbevelingen](https://aka.ms/Azureadvisor) vandaag nog controleren. Deze functie is momenteel alleen van toepassing op Gen2-data warehouses.
 
-## <a name="data-skew"></a>Gegevensscheeftrekking
+## <a name="data-skew"></a>Gegevens scheef trekken
 
-Het scheeftrekken van gegevens kan leiden tot extra gegevensverplaatsing of knelpunten in de bron bij het uitvoeren van uw werkbelasting. De volgende documentatie beschrijft laten zien om gegevens scheeftrekking te identificeren en te voorkomen dat het gebeurt door het selecteren van een optimale distributiesleutel.
+Gegevens scheefheid kan leiden tot extra gegevens bewegingen of bron knelpunten wanneer uw werk belasting wordt uitgevoerd. In de volgende documentatie wordt beschreven hoe u het scheef trekken van gegevens identificeert en voor komt dat dit gebeurt door een optimale distributie sleutel te selecteren.
 
-- [Scheeftrekken identificeren en verwijderen](sql-data-warehouse-tables-distribute.md#how-to-tell-if-your-distribution-column-is-a-good-choice)
+- [Scheefheid identificeren en verwijderen](sql-data-warehouse-tables-distribute.md#how-to-tell-if-your-distribution-column-is-a-good-choice)
 
 ## <a name="no-or-outdated-statistics"></a>Geen of verouderde statistieken
 
-Het hebben van suboptimale statistieken kan ernstige gevolgen hebben voor de queryprestaties, omdat dit ertoe kan leiden dat de SQL-queryoptimizer suboptimale queryplannen genereert. In de volgende documentatie worden de aanbevolen procedures beschreven rond het maken en bijwerken van statistieken:
+Het uitvoeren van suboptimale statistieken kan een grote invloed hebben op de query prestaties, omdat de SQL-query Optimizer zo kan leiden dat er suboptimale query plannen worden gegenereerd. De volgende documentatie bevat informatie over de aanbevolen procedures voor het maken en bijwerken van statistieken:
 
-- [Tabelstatistieken maken en bijwerken](sql-data-warehouse-tables-statistics.md)
+- [Tabel statistieken maken en bijwerken](sql-data-warehouse-tables-statistics.md)
 
-Als u de lijst met beïnvloede tabellen door deze aanbevelingen wilt weergeven, voert u het volgende [T-SQL-script](https://github.com/Microsoft/sql-data-warehouse-samples/blob/master/samples/sqlops/MonitoringScripts/ImpactedTables)uit. Advisor voert continu hetzelfde T-SQL-script uit om deze aanbevelingen te genereren.
+Voer het volgende [T-SQL-script](https://github.com/Microsoft/sql-data-warehouse-samples/blob/master/samples/sqlops/MonitoringScripts/ImpactedTables)uit om de lijst met betrokken tabellen te bekijken met deze aanbevelingen. Advisor voert continu hetzelfde T-SQL-script uit om deze aanbevelingen te genereren.
 
 ## <a name="replicate-tables"></a>Tabellen repliceren
 
-Voor gerepliceerde tabelaanbevelingen detecteert Advisor tabelkandidaten op basis van de volgende fysieke kenmerken:
+Voor de aanbevelingen van een gerepliceerde tabel, adviseur detecteert de kandidaten van een tabel op basis van de volgende fysieke kenmerken:
 
-- Gerepliceerde tabelgrootte
+- Grootte van gerepliceerde tabel
 - Aantal kolommen
-- Tabeldistributietype
+- Type tabel distributie
 - Aantal partities
 
-Advisor maakt continu gebruik van op workloads gebaseerde heuristiek, zoals de frequentie van tabeltoegang, rijen die gemiddeld worden geretourneerd en drempels rond de grootte van het gegevensmagazijn en de activiteit om ervoor te zorgen dat aanbevelingen van hoge kwaliteit worden gegenereerd.
+Advisor maakt continu gebruik van heuristiek op basis van werk belastingen, zoals de frequentie van tabel toegang, rijen die gemiddeld worden geretourneerd en drempel waarden rond Data Warehouse-grootte en-activiteit, om ervoor te zorgen dat aanbevelingen van hoge kwaliteit worden gegenereerd.
 
-In de volgende beschrijving van op workloads gebaseerde heuristiek die u vinden in de Azure-portal voor elke gerepliceerde tabelaanbeveling:
+Hieronder vindt u een beschrijving van de heuristische op basis van werk belastingen die u kunt vinden in de Azure Portal voor elke gerepliceerde tabel aanbeveling:
 
-- Scan avg- het gemiddelde percentage rijen dat in de afgelopen zeven dagen van de tabel is geretourneerd voor elke tabeltoegang
-- Veelvuldig lezen, geen update - geeft aan dat de tabel niet is bijgewerkt in de afgelopen zeven dagen, terwijl het weergeven van toegang activiteit
-- Lees/update-verhouding - de verhouding van hoe vaak de tabel is benaderd ten opzichte van wanneer deze in de afgelopen zeven dagen wordt bijgewerkt
-- Activiteit - meet het gebruik op basis van toegangsactiviteit. Hiermee wordt de activiteit voor tabeltoegang vergeleken met de gemiddelde activiteit voor tabeltoegang in het gegevensmagazijn van de afgelopen zeven dagen.
+- Controle Gem: het gemiddelde aantal rijen dat is geretourneerd uit de tabel voor elke toegang tot de tabel gedurende de afgelopen zeven dagen
+- Veelvuldig gelezen: geen update: geeft aan dat de tabel in de afgelopen zeven dagen niet is bijgewerkt terwijl de toegangs activiteit wordt weer gegeven
+- Verhouding van lezen/bijwerken: de verhouding van hoe vaak de tabel is geopend ten opzichte van wanneer deze in de afgelopen zeven dagen wordt bijgewerkt
+- Activiteit: Hiermee wordt het gebruik gemeten op basis van de toegangs activiteit. Hiermee wordt de activiteit voor de tabel toegang vergeleken met de gemiddelde activiteit van de tabel toegang in het data warehouse in de afgelopen zeven dagen.
 
-Momenteel toont Advisor hooguit vier gerepliceerde tabelkandidaten tegelijk met geclusterde kolomarchiefindexen die prioriteit geven aan de hoogste activiteit.
+Momenteel worden in Advisor alleen Maxi maal vier gerepliceerde tabel kandidaten tegelijk met geclusterde column Store-indexen met de prioriteit van de hoogste activiteit weer gegeven.
 
 > [!IMPORTANT]
-> De aanbeveling van de gerepliceerde tabel is niet volledig bewijs en houdt geen rekening met gegevensverplaatsingsbewerkingen. We werken eraan om dit toe te voegen als een heuristische, maar in de tussentijd moet u altijd uw werklast valideren na het toepassen van de aanbeveling. Neem sqldwadvisor@service.microsoft.com contact op als u gerepliceerde tabelaanbevelingen ontdekt waardoor uw werkbelasting achteruitgaat. Ga voor meer informatie over gerepliceerde tabellen naar de volgende [documentatie](design-guidance-for-replicated-tables.md#what-is-a-replicated-table).
+> De aanbeveling van de gerepliceerde tabel is geen volledige controle en houdt geen rekening met het verplaatsen van gegevens. We werken eraan om dit als een heuristisch toe te voegen, maar ondertussen moet u uw workload altijd valideren nadat u de aanbeveling hebt toegepast. Neem contact sqldwadvisor@service.microsoft.com op met de voor bereidingen van gerepliceerde tabellen die ervoor zorgen dat uw werk belasting Regress. Raadpleeg de volgende [documentatie](design-guidance-for-replicated-tables.md#what-is-a-replicated-table)voor meer informatie over gerepliceerde tabellen.

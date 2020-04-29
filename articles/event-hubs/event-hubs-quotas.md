@@ -1,6 +1,6 @@
 ---
-title: Quota en limieten - Azure Event Hubs | Microsoft Documenten
-description: In dit artikel worden limieten en quota voor Azure Event Hubs aante bieden. Bijvoorbeeld het aantal naamruimten per abonnement, het aantal gebeurtenishubs per naamruimte.
+title: Quota en limieten-Azure Event Hubs | Microsoft Docs
+description: In dit artikel vindt u limieten en quota's voor Azure Event Hubs. Bijvoorbeeld aantal naam ruimten per abonnement, aantal Event hubs per naam ruimte.
 services: event-hubs
 documentationcenter: na
 author: ShubhaVijayasarathy
@@ -16,15 +16,15 @@ ms.workload: na
 ms.date: 12/06/2018
 ms.author: shvija
 ms.openlocfilehash: bbe747228fa2f587bc1369c3cb1fbbc91d1817e2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76309537"
 ---
 # <a name="azure-event-hubs-quotas-and-limits"></a>Quota en limieten van Azure Event Hubs
 
-In deze sectie worden basisquota en -limieten weergegeven in Azure Event Hubs.
+In deze sectie vindt u een overzicht van de basis quota's en limieten in azure Event Hubs.
 
 [!INCLUDE [event-hubs-limits](../../includes/event-hubs-limits.md)]
 
@@ -32,6 +32,6 @@ In deze sectie worden basisquota en -limieten weergegeven in Azure Event Hubs.
 
 U kunt meer informatie over Event Hubs vinden via de volgende koppelingen:
 
-* [Overzicht van gebeurtenishubs](event-hubs-what-is-event-hubs.md)
-* [Gebeurtenishubs automatisch opblazen](event-hubs-auto-inflate.md)
+* [Overzicht van Event Hubs](event-hubs-what-is-event-hubs.md)
+* [Event Hubs automatisch verg Roten](event-hubs-auto-inflate.md)
 * [Veelgestelde vragen over Event Hubs](event-hubs-faq.md)

@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 05/31/2019
 ms.author: TomSh
 ms.openlocfilehash: 61afad1d9994fd703bd8df047d1861baddeae997
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76845340"
 ---
 # <a name="azure-security-technical-capabilities"></a>Technische mogelijkheden van Azure-beveiliging
@@ -515,6 +515,6 @@ Lees meer over beveiliging door enkele van onze diep gaande onderwerpen over bev
 
 - [Identiteits- en toegangsbeheer](https://www.microsoft.com/en-us/trustcenter/security/identity)
 
-- [Netwerk beveiliging](https://www.microsoft.com/en-us/trustcenter/security/networksecurity)
+- [Netwerkbeveiliging](https://www.microsoft.com/en-us/trustcenter/security/networksecurity)
 
 - [Beveiligingsbeheer](https://www.microsoft.com/en-us/trustcenter/security/threatmanagement)

@@ -4,19 +4,19 @@ description: Prestaties bewaken en problemen detecteren in Node.js-services met 
 ms.topic: conceptual
 ms.date: 03/14/2019
 ms.openlocfilehash: 38336e3faf3764233dd94bffbfb24421e054496a
-ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/31/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80411585"
 ---
 # <a name="monitor-your-nodejs-services-and-apps-with-application-insights"></a>Node.js-services en -apps bewaken met Application Insights
 
-[Azure Application Insights](../../azure-monitor/app/app-insights-overview.md) bewaakt uw backendservices en -componenten na implementatie, om u te helpen prestaties en andere problemen te ontdekken en snel te diagnosticeren. U kunt Application Insights voor Node.js-services die worden gehost in uw datacenter, gebruiken in virtuele Azure-machines en web-apps en zelfs in andere openbare clouds.
+[Azure-toepassing Insights](../../azure-monitor/app/app-insights-overview.md) bewaakt uw back-end-services en-onderdelen na de implementatie, om u te helpen de prestaties en andere problemen snel te detecteren en te onderzoeken. U kunt Application Insights voor Node.js-services die worden gehost in uw datacenter, gebruiken in virtuele Azure-machines en web-apps en zelfs in andere openbare clouds.
 
 Neem de SDK op in de code en stel vervolgens een bijbehorende Application Insights-resource in Azure in om uw bewakingsgegevens te ontvangen, op te slaan en te onderzoeken. Met de SDK worden gegevens naar deze resource verzonden voor verdere analyse en onderzoek.
 
-De Node.js SDK kan binnenkomende en uitgaande HTTP-aanvragen, uitzonderingen en verschillende systeemmeetgegevens automatisch bewaken. Vanaf versie 0.20 kan de SDK ook enkele veelvoorkomende [pakketten van derden](https://github.com/microsoft/node-diagnostic-channel/tree/master/src/diagnostic-channel-publishers#currently-supported-modules)controleren, zoals MongoDB, MySQL en Redis. Alle gebeurtenissen met betrekking tot een binnenkomende HTTP-aanvraag worden gecorreleerd voor snellere probleemoplossing.
+De Node.js SDK kan binnenkomende en uitgaande HTTP-aanvragen, uitzonderingen en verschillende systeemmeetgegevens automatisch bewaken. Vanaf versie 0,20 kan de SDK ook enkele algemene [pakketten van derden](https://github.com/microsoft/node-diagnostic-channel/tree/master/src/diagnostic-channel-publishers#currently-supported-modules)bewaken, zoals MongoDb, MySQL en redis. Alle gebeurtenissen met betrekking tot een binnenkomende HTTP-aanvraag worden gecorreleerd voor snellere probleemoplossing.
 
 U kunt de TelemetryClient-API gebruiken om handmatig aanvullende aspecten van de app en het systeem te instrumenteren en te bewaken. De TelemetryClient-API wordt verderop in dit artikel meer gedetailleerd beschreven.
 
@@ -32,11 +32,11 @@ Voordat u begint, moet u ervoor zorgen dat u een Azure-abonnement hebt of moet u
 [add-aad-user]: https://docs.microsoft.com/azure/active-directory/active-directory-users-create-azure-portal
 
 
-### <a name="set-up-an-application-insights-resource"></a><a name="resource"></a>Een Application Insights-bron instellen
+### <a name="set-up-an-application-insights-resource"></a><a name="resource"></a>Een Application Insights resource instellen
 
 
-1. Meld u aan bij [Azure Portal][portal].
-2. Selecteer De**toepassingsinzichten van hulpprogramma's** >  **voor resourceontwikkelaars** > **maken**. De resource bevat een eindpunt voor het ontvangen van telemetriegegevens, opslag voor deze gegevens, opgeslagen rapporten en dashboards, regel- en waarschuwingsconfiguratie en meer.
+1. Meld u aan bij de [Azure-portal][portal].
+2. Selecteer **een resource** > **maken hulp programma** > voor ontwikkel aars**Application Insights**. De resource bevat een eindpunt voor het ontvangen van telemetriegegevens, opslag voor deze gegevens, opgeslagen rapporten en dashboards, regel- en waarschuwingsconfiguratie en meer.
 
 3. Selecteer op de pagina voor het maken van de resource in het vak **Toepassingstype** de optie **Node.js-toepassing**. Het apptype bepaalt de standaardashboards en -rapporten die worden gemaakt. (elke Application Insights-resource kan gegevens verzamelen vanuit elke taal en elk platform.)
 

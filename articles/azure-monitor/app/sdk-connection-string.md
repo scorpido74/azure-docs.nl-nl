@@ -1,51 +1,51 @@
 ---
-title: Verbindingstekenreeksen in Azure Application Insights | Microsoft Documenten
-description: Verbindingstekenreeksen gebruiken.
+title: Verbindings reeksen in Azure-toepassing inzichten | Microsoft Docs
+description: Verbindings reeksen gebruiken.
 ms.topic: conceptual
 author: timothymothra
 ms.author: tilee
 ms.date: 01/17/2020
 ms.reviewer: mbullwin
 ms.openlocfilehash: 25eda0ae2b0d873fe9850e5b886489a5f2590e69
-ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/31/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80410612"
 ---
 # <a name="connection-strings"></a>Verbindingsreeksen
 
 ## <a name="overview"></a>Overzicht
 
-Verbindingstekenreeksen bieden gebruikers van Application Insight één configuratie-instelling, waardoor meerdere proxy-instellingen niet nodig zijn. Zeer nuttig voor intranet webservers, soevereine of hybride cloudomgevingen die gegevens naar de monitoringservice willen verzenden.
+Met verbindings reeksen kunnen gebruikers van toepassings inzicht beschikken over een enkele configuratie-instelling, waardoor meerdere proxy-instellingen niet meer nodig zijn. Zeer nuttig voor intranet webservers, soevereine of hybride Cloud omgevingen die in gegevens willen verzenden naar de bewakings service.
 
-De key value pairs bieden gebruikers een eenvoudige manier om een voorvoegsel-achtervoegselcombinatie te definiëren voor elke AI-service/-product (Application Insights).
+De sleutel-waardeparen bieden een eenvoudige manier om gebruikers een combi natie van achtervoegsel voor voor voegsel te definiëren voor elke Application Insights (AI) service/product.
 
 > [!IMPORTANT]
-> We raden u aan zowel verbindingstekenreeks als instrumentatietoets in te stellen. In het geval dat een gebruiker beide instelt, heeft de laatste plaats voorrang. 
+> Het is niet raadzaam om zowel de verbindings reeks als de instrumentatie sleutel in te stellen. In het geval dat een gebruiker beide heeft ingesteld, is de laatste ingesteld, afhankelijk van de waarde van de vorige. 
 
 
 ## <a name="scenario-overview"></a>Overzicht van scenario's 
 
-Klantscenario's waarbij we dit visualiseren met de meeste impact:
+Klanten scenario's waarin we dit hebben gevisualiseerd, hebben de meeste impact:
 
-- Firewalluitzonderingen of proxyomleidingen 
+- Firewall-uitzonde ringen of proxy omleidingen 
 
-    In gevallen waarin monitoring voor intranet webserver vereist is, vroeg onze eerdere oplossing klanten om individuele serviceeindpunten toe te voegen aan uw configuratie. Voor meer informatie, zie [hier](https://docs.microsoft.com/azure/azure-monitor/app/troubleshoot-faq#can-i-monitor-an-intranet-web-server). 
-    Verbindingstekenreeksen bieden een beter alternatief door deze inspanning te reduceren tot één instelling. Een eenvoudig voorvoegsel, achtervoegsel wijziging maakt automatische populatie en omleiding van alle eindpunten naar de juiste diensten. 
+    In gevallen waarin de bewaking voor intranet webserver is vereist, hebben onze oudere oplossingen klanten de mogelijkheid verleend om afzonderlijke service-eind punten toe te voegen aan uw configuratie. Zie [hier](https://docs.microsoft.com/azure/azure-monitor/app/troubleshoot-faq#can-i-monitor-an-intranet-web-server)voor meer informatie. 
+    Verbindings reeksen bieden een beter alternatief door deze moeite te beperken tot één instelling. Een eenvoudig voor voegsel, achtervoegsel wijziging maakt automatische populatie en omleiding van alle eind punten naar de juiste services mogelijk. 
 
-- Soevereine of hybride cloudomgevingen
+- Soevereine of hybride Cloud omgevingen
 
-    Gebruikers kunnen gegevens verzenden naar een gedefinieerd [Azure Government-gebied.](https://docs.microsoft.com/azure/azure-government/documentation-government-services-monitoringandmanagement#application-insights)
-    Met verbindingstekenreeksen u eindpuntinstellingen definiëren voor uw intranetservers of hybride cloudinstellingen. 
+    Gebruikers kunnen gegevens verzenden naar een gedefinieerde [Azure Government regio](https://docs.microsoft.com/azure/azure-government/documentation-government-services-monitoringandmanagement#application-insights).
+    Met verbindings reeksen kunt u eindpunt instellingen definiëren voor uw intranet servers of Hybrid Cloud-instellingen. 
 
 ## <a name="getting-started"></a>Aan de slag
 
-### <a name="finding-my-connection-string"></a>Vind je mijn verbindingstekenreeks?
+### <a name="finding-my-connection-string"></a>Mijn connection string vinden?
 
-Uw verbindingstekenreeks wordt weergegeven op het overzichtsblad van uw Application Insights-bron.
+Uw connection string wordt weer gegeven op de Blade overzicht van uw Application Insights resource.
 
-![verbindingstekenreeks op overzichtsblad](media/overview-dashboard/overview-connection-string.png)
+![connection string op de Blade overzicht](media/overview-dashboard/overview-connection-string.png)
 
 ### <a name="schema"></a>Schema
 
@@ -55,29 +55,29 @@ De verbinding heeft een maximale ondersteunde lengte van 4096 tekens.
 
 #### <a name="key-value-pairs"></a>Sleutel-waardeparen
 
-Verbindingstekenreeks bestaat uit een lijst met instellingen die worden weergegeven als sleutelwaardeparen gescheiden door puntkomma:`key1=value1;key2=value2;key3=value3`
+De verbindings reeks bestaat uit een lijst met instellingen die worden weer gegeven als sleutel-waardeparen, gescheiden door punt komma's:`key1=value1;key2=value2;key3=value3`
 
 #### <a name="syntax"></a>Syntaxis
 
-- `InstrumentationKey`(v. 00000000-0000-0000-0000-00000000000000000)  De verbindingstekenreeks is een **vereist** veld.
-- `Authorization`(bijvoorbeeld ikey) (Deze instelling is optioneel omdat we vandaag alleen ikey-autorisatie ondersteunen.)
-- `EndpointSuffix`(bijvoorbeeld applicationinsights.azure.cn) Als u het eindpuntachtervoegsel instelt, wordt de SDK inopdracht gegeven met welke Azure-cloud u verbinding moet maken. De SDK zal de rest van het eindpunt assembleren voor individuele diensten.
-- Expliciete eindpunten.
-  Elke service kan expliciet worden overschreven in de verbindingstekenreeks.
-   - `IngestionEndpoint`(ex)https://dc.applicationinsights.azure.com)
-   - `LiveEndpoint`(ex)https://live.applicationinsights.azure.com)
-   - `ProfilerEndpoint`(ex)https://profiler.applicationinsights.azure.com)
-   - `SnapshotEndpoint`(ex)https://snapshot.applicationinsights.azure.com)
+- `InstrumentationKey`(bijvoorbeeld: 00000000-0000-0000-0000-000000000000)  Het connection string is een **verplicht** veld.
+- `Authorization`(bijvoorbeeld: Ikey) (Deze instelling is optioneel, omdat we alleen iKey-autorisatie ondersteunen.)
+- `EndpointSuffix`(bijvoorbeeld: applicationinsights.azure.cn) Als u het eind punt achtervoegsel instelt, wordt de SDK geïnstrueerd waarmee de Azure-Cloud verbinding maakt. De SDK stelt de rest van het eind punt samen voor afzonderlijke services.
+- Expliciete eind punten.
+  Elke service kan expliciet worden overschreven in de connection string.
+   - `IngestionEndpoint`kadehttps://dc.applicationinsights.azure.com)
+   - `LiveEndpoint`kadehttps://live.applicationinsights.azure.com)
+   - `ProfilerEndpoint`kadehttps://profiler.applicationinsights.azure.com)
+   - `SnapshotEndpoint`kadehttps://snapshot.applicationinsights.azure.com)
 
-#### <a name="endpoint-schema"></a>Eindpuntschema
+#### <a name="endpoint-schema"></a>Eindpunt schema
 
 `<prefix>.<suffix>`
-- Voorvoegsel: definieert een service. 
-- Achtervoegsel: definieert de algemene domeinnaam.
+- Voor voegsel: definieert een service. 
+- Achtervoegsel: Hiermee wordt de algemene domein naam gedefinieerd.
 
 ##### <a name="valid-suffixes"></a>Geldige achtervoegsels
 
-Hier is een lijst met geldige achtervoegsels 
+Hier volgt een lijst met geldige achtervoegsels 
 - applicationinsights.azure.cn
 - applicationinsights.us
 
@@ -85,85 +85,85 @@ Hier is een lijst met geldige achtervoegsels
 Zie ook:https://docs.microsoft.com/azure/azure-monitor/app/custom-endpoints#regions-that-require-endpoint-modification
 
 
-##### <a name="valid-prefixes"></a>Geldige voorvoegsels
+##### <a name="valid-prefixes"></a>Geldige voor voegsels
 
 - [Telemetrie-opname](./app-insights-overview.md):`dc`
-- [Live statistieken:](./live-stream.md)`live`
-- [Profiler](./profiler-overview.md): Profiler :`profiler`
-- [Momentopname](./snapshot-debugger.md):`snapshot`
+- [Live metrische gegevens](./live-stream.md):`live`
+- [Profiler](./profiler-overview.md):`profiler`
+- [Moment opname](./snapshot-debugger.md):`snapshot`
 
 
 
-## <a name="connection-string-examples"></a>Voorbeelden van verbindingstekenreeksen
+## <a name="connection-string-examples"></a>Voor beelden van verbindings reeksen
 
 
-### <a name="minimal-valid-connection-string"></a>Minimale geldige verbindingstekenreeks
+### <a name="minimal-valid-connection-string"></a>Minimale geldige connection string
 
 `InstrumentationKey=00000000-0000-0000-0000-000000000000;`
 
-In dit voorbeeld is alleen de instrumentatiesleutel ingesteld.
+In dit voor beeld is alleen de instrumentatie sleutel ingesteld.
 
-- Autorisatieregeling wordt standaard 'ikey' 
-- Instrumentatiesleutel: 00000000-0000-0000-0000-000000000000000000
-- De URL's van de regionale service zijn gebaseerd op de [SDK-standaardinstellingen](https://github.com/microsoft/ApplicationInsights-dotnet/blob/e50d569cebf485e72e98f4a08a0bc0e30cdf42bc/BASE/src/Microsoft.ApplicationInsights/Extensibility/Implementation/Endpoints/Constants.cs#L6) en maken verbinding met de openbare globale Azure:
-   - Ingestion:https://dc.services.visualstudio.com/
-   - Live statistieken:https://rt.services.visualstudio.com/
-   - Profiler:https://agent.azureserviceprofiler.net/
-   - Debugger:https://agent.azureserviceprofiler.net/  
+- Het autorisatie schema wordt standaard ingesteld op ' iKey ' 
+- Instrumentatie sleutel: 00000000-0000-0000-0000-000000000000
+- De regionale service-Uri's zijn gebaseerd op de [standaard instellingen](https://github.com/microsoft/ApplicationInsights-dotnet/blob/e50d569cebf485e72e98f4a08a0bc0e30cdf42bc/BASE/src/Microsoft.ApplicationInsights/Extensibility/Implementation/Endpoints/Constants.cs#L6) van de SDK en er wordt verbinding gemaakt met de open bare wereld wijde Azure:
+   - Opnamehttps://dc.services.visualstudio.com/
+   - Live metrische gegevens:https://rt.services.visualstudio.com/
+   - Profilerhttps://agent.azureserviceprofiler.net/
+   - Foutopsporingsversiehttps://agent.azureserviceprofiler.net/  
 
 
 
-### <a name="connection-string-with-endpoint-suffix"></a>Verbindingstekenreeks met eindpuntachtervoegsel
+### <a name="connection-string-with-endpoint-suffix"></a>Verbindings reeks met eindpunt achtervoegsel
 
 `InstrumentationKey=00000000-0000-0000-0000-000000000000;EndpointSuffix=ai.contoso.com;`
 
-In dit voorbeeld geeft deze verbindingstekenreeks het eindpuntachtervoegsel op en de SDK worden serviceeindpunten gebouwd.
+In dit voor beeld geeft deze connection string het eindpunt achtervoegsel op en de SDK maakt service-eind punten.
 
-- Autorisatieregeling wordt standaard 'ikey' 
-- Instrumentatiesleutel: 00000000-0000-0000-0000-000000000000000000
-- De URL's van de regionale dienst zijn gebaseerd op het meegeleverde eindpuntachtervoegsel: 
-   - Ingestion:https://dc.ai.contoso.com
-   - Live statistieken:https://live.ai.contoso.com
-   - Profiler:https://profiler.ai.contoso.com 
-   - Debugger:https://snapshot.ai.contoso.com   
+- Het autorisatie schema wordt standaard ingesteld op ' iKey ' 
+- Instrumentatie sleutel: 00000000-0000-0000-0000-000000000000
+- De regionale service-Uri's zijn gebaseerd op het gegeven eind punt achtervoegsel: 
+   - Opnamehttps://dc.ai.contoso.com
+   - Live metrische gegevens:https://live.ai.contoso.com
+   - Profilerhttps://profiler.ai.contoso.com 
+   - Foutopsporingsversiehttps://snapshot.ai.contoso.com   
 
 
 
-### <a name="connection-string-with-explicit-endpoint-overrides"></a>Verbindingstekenreeks met expliciete eindpuntoverschrijvingen 
+### <a name="connection-string-with-explicit-endpoint-overrides"></a>Verbindings reeks met expliciete onderdrukkingen van eind punten 
 
 `InstrumentationKey=00000000-0000-0000-0000-000000000000;IngestionEndpoint=https://custom.com:111/;LiveEndpoint=https://custom.com:222/;ProfilerEndpoint=https://custom.com:333/;SnapshotEndpoint=https://custom.com:444/;`
 
-In dit voorbeeld geeft deze verbindingstekenreeks expliciete overschrijvingen op voor elke service. De SDK zal gebruik maken van de exacte eindpunten die zonder wijziging.
+In dit voor beeld geeft deze connection string expliciete onderdrukkingen voor elke service op. De SDK gebruikt de exacte eind punten die zijn meegeleverd zonder aanpassing.
 
-- Autorisatieregeling wordt standaard 'ikey' 
-- Instrumentatiesleutel: 00000000-0000-0000-0000-000000000000000000
-- De URL's van de regionale dienst zijn gebaseerd op de expliciete overschrijfwaarden: 
-   - Inname:\/https: /custom.com:111/
-   - Live metrics:\/https: /custom.com:222/
-   - Profiler: https:\//custom.com:333/ 
-   - Foutopsporing: https:\//custom.com:444/   
+- Het autorisatie schema wordt standaard ingesteld op ' iKey ' 
+- Instrumentatie sleutel: 00000000-0000-0000-0000-000000000000
+- De regionale service-Uri's zijn gebaseerd op de expliciete onderdrukkings waarden: 
+   - Opname: https:\//Custom.com:111/
+   - Live metrieken: https:\//Custom.com:222/
+   - Profiler: https:\//Custom.com:333/ 
+   - Fout opsporing: https\/:/Custom.com:444/   
 
 
-## <a name="how-to-set-a-connection-string"></a>Een verbindingstekenreeks instellen
+## <a name="how-to-set-a-connection-string"></a>Een connection string instellen
 
-Verbindingstekenreeksen worden ondersteund in de volgende SDK-versies:
-- .NET en .NET Core v2.12.0
-- Java v2.5.1 en Java 3.0
-- Javascript v2.3.0
-- NodeJS v1.5.0
-- Python v1.0.0
+Verbindings reeksen worden ondersteund in de volgende SDK-versies:
+- .NET en .NET core v 2.12.0
+- Java v 2.5.1 en Java 3,0
+- Java script v-2.3.0
+- NodeJS v 1.5.0
+- Python v-1.0.0
 
-Een verbindingstekenreeks kan worden ingesteld op code, omgevingsvariabele of configuratiebestand.
+Een connection string kan worden ingesteld met behulp van code, omgevings variabele of configuratie bestand.
 
 
 
 ### <a name="environment-variable"></a>Omgevingsvariabele
 
-- Verbindingsreeks:`APPLICATIONINSIGHTS_CONNECTION_STRING`
+- Verbindings reeks:`APPLICATIONINSIGHTS_CONNECTION_STRING`
 
-# <a name="netnetcore"></a>[.NET/.NetCore](#tab/net)
+# <a name="netnetcore"></a>[.NET/. NetCore](#tab/net)
 
-TelemetrieConfiguratie.ConnectionString:https://github.com/microsoft/ApplicationInsights-dotnet/blob/add45ceed35a817dc7202ec07d3df1672d1f610d/BASE/src/Microsoft.ApplicationInsights/Extensibility/TelemetryConfiguration.cs#L271-L274
+TelemetryConfiguration. Connections Tring:https://github.com/microsoft/ApplicationInsights-dotnet/blob/add45ceed35a817dc7202ec07d3df1672d1f610d/BASE/src/Microsoft.ApplicationInsights/Extensibility/TelemetryConfiguration.cs#L271-L274
 
 .Net expliciet ingesteld:
 ```csharp
@@ -173,7 +173,7 @@ var configuration = new TelemetryConfiguration
 };
 ```
 
-.Net Config-bestand:
+.NET-configuratie bestand:
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -183,7 +183,7 @@ var configuration = new TelemetryConfiguration
 ```
 
 
-NetCore config.json: 
+NetCore config. json: 
 
 ```json
 {
@@ -197,12 +197,12 @@ NetCore config.json:
 # <a name="java"></a>[Java](#tab/java)
 
 
-Java (v2.5.x) Expliciet ingesteld:
+Java (v 2.5. x) expliciet ingesteld:
 ```java
 TelemetryConfiguration.getActive().setConnectionString("InstrumentationKey=00000000-0000-0000-0000-000000000000");
 ```
 
-ApplicationInsights.xml
+ApplicationInsights. XML
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
 <ApplicationInsights xmlns="http://schemas.microsoft.com/ApplicationInsights/2013/Settings">
@@ -212,9 +212,9 @@ ApplicationInsights.xml
 
 # <a name="javascript"></a>[Javascript](#tab/js)
 
-Belangrijk: Javascript ondersteunt het gebruik van omgevingsvariabelen niet.
+Belang rijk: Java script biedt geen ondersteuning voor het gebruik van omgevings variabelen.
 
-Met behulp van het fragment:
+Het fragment gebruiken:
 
 ```javascript
 <script type="text/javascript">
@@ -227,7 +227,7 @@ var sdkInstance="appInsightsSDK";window[sdkInstance]="appInsights";var aiName=wi
 ```
 
 
-Handmatig instellen:
+Hand matige installatie:
 ```javascript
 import { ApplicationInsights } from '@microsoft/applicationinsights-web'
 
@@ -249,9 +249,9 @@ appInsights.start();
 
 # <a name="python"></a>[Python](#tab/python)
 
-We raden gebruikers aan de omgevingsvariabele in te stellen.
+Gebruikers wordt aangeraden de omgevings variabele in te stellen.
 
-Ga als u de verbindingstekenreeks expliciet instelt:
+De connection string expliciet instellen:
 
 ```python
 from opencensus.ext.azure.trace_exporter import AzureExporter
@@ -266,7 +266,7 @@ tracer = Tracer(exporter=AzureExporter(connection_string='InstrumentationKey=000
 
 Gebruik tijdens runtime:
 
-* [Azure VM- en Azure-apps voor virtuele machines](../../azure-monitor/app/azure-vm-vmss-apps.md)
+* [Door IIS gehoste apps voor Azure VM en Azure virtual machine Scale set](../../azure-monitor/app/azure-vm-vmss-apps.md)
 * [IIS-server](../../azure-monitor/app/monitor-performance-live-website-now.md)
 * [Azure Web Apps](../../azure-monitor/app/azure-web-apps.md)
 

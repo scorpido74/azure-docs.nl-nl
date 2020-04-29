@@ -1,7 +1,7 @@
 ---
-title: Interpreteerbaarheid modelleren in Azure Machine Learning
+title: De interpretatie van modellen in Azure Machine Learning
 titleSuffix: Azure Machine Learning
-description: Meer informatie over hoe u uitleggen waarom uw model voorspellingen doet met de Azure Machine Learning SDK. Het kan worden gebruikt tijdens de training en gevolgtrekking om te begrijpen hoe uw model voorspellingen maakt.
+description: Meer informatie over hoe u uw model voorspellingen maakt met behulp van de Azure Machine Learning SDK. Het kan worden gebruikt tijdens de training en om te begrijpen hoe uw model voor spellingen doet.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,113 +11,113 @@ author: mesameki
 ms.reviewer: Luis.Quintanilla
 ms.date: 04/02/2020
 ms.openlocfilehash: fcb837af85a54102e8c9eafc33249af9dba6b5ce
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/03/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80631393"
 ---
-# <a name="model-interpretability-in-azure-machine-learning"></a>Interpreteerbaarheid modelleren in Azure Machine Learning
+# <a name="model-interpretability-in-azure-machine-learning"></a>De interpretatie van modellen in Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-## <a name="overview-of-model-interpretability"></a>Overzicht van de interpreteerbaarheid van het model
+## <a name="overview-of-model-interpretability"></a>Overzicht van de interpretatie van modellen
 
-Interpreteerbaarheid is van cruciaal belang voor gegevenswetenschappers, auditors en besluitvormers van bedrijven om ervoor te zorgen dat het bedrijfsbeleid, de industrienormen en overheidsvoorschriften worden nageleefd:
+Interpretbaarheid is van cruciaal belang voor gegevens wetenschappers, Audi tors en besluit vormers van de onderneming om te zorgen voor naleving van het bedrijfs beleid, de industrie normen en regerings voorschriften:
 
-+ Gegevenswetenschappers hebben de mogelijkheid nodig om hun modellen uit te leggen aan leidinggevenden en belanghebbenden, zodat ze de waarde en nauwkeurigheid van hun bevindingen kunnen begrijpen. Ze vereisen ook interpreteerbaarheid om hun modellen te debuggen en weloverwogen beslissingen te nemen over hoe ze te verbeteren. 
++ Gegevens wetenschappers hebben de mogelijkheid nodig om hun modellen te uitleggen aan leidinggevenden en belanghebbenden, zodat ze inzicht hebben in de waarde en nauw keurigheid van hun bevindingen. Ze moeten ook interpreteren om fouten in hun modellen op te sporen en weloverwogen beslissingen te nemen over hoe ze kunnen worden verbeterd. 
 
-+ Juridische auditors hebben tools nodig om modellen te valideren met betrekking tot naleving van de regelgeving en te controleren hoe de beslissingen van modellen van invloed zijn op mensen. 
++ Juridische controleurs hebben hulpprogram ma's nodig om modellen te valideren met betrekking tot de naleving van de regelgeving en te controleren hoe de beslissingen van de modellen van invloed zijn op de mens. 
 
-+ Zakelijke besluitvormers hebben gemoedsrust nodig door de mogelijkheid te hebben om eindgebruikers transparantie te bieden. Dit stelt hen in staat om vertrouwen te verdienen en te behouden.
++ Zakelijke besluit vormers hebben gemoeds rust door de mogelijkheid om transparantie voor eind gebruikers te bieden. Op die manier kunnen ze vertrouwens relaties verdienen en onderhouden.
 
 
-Het inschakelen van de mogelijkheid om een machine learning-model uit te leggen is belangrijk tijdens twee hoofdfasen van modelontwikkeling:
-+ Tijdens de trainingsfase kunnen modelontwerpers en beoordelaars de interpretatievan een model gebruiken om hypothesen te verifiëren en vertrouwen op te bouwen met belanghebbenden. Ze gebruiken ook de inzichten in het model voor het debuggen, valideren van modelgedrag komt overeen met hun doelstellingen en om te controleren op modeloneerlijkheid of onbelangrijke functies.
+Het inschakelen van de mogelijkheid om een machine learning model uit te leggen, is belang rijk tijdens twee belang rijke fasen van model ontwikkeling:
++ Tijdens de trainings fase kunnen model ontwerpers en evaluatoren de interpretatieve uitvoer van een model gebruiken om hypo Thesen te controleren en om vertrouwen te bouwen met belanghebbenden. Ze gebruiken ook de inzichten in het model voor het opsporen van fouten, het valideren van het model gedrag aan hun doel stellingen en het controleren op modelloze of onbeduidende functies.
 
-+ Tijdens de inferencing fase, als het hebben van transparantie rond geïmplementeerde modellen stelt leidinggevenden in staat om te begrijpen "wanneer ingezet" hoe het model werkt en hoe de beslissingen zijn de behandeling en impact van mensen in het echte leven. 
++ Tijdens de versterkings fase is het met transparantie rond geïmplementeerde modellen het mogelijk dat leidinggevenden begrijpen "wanneer geïmplementeerd" hoe het model werkt en hoe de beslissingen in werkelijkheid worden behandeld en wat van invloed is op mensen in het leven. 
 
-## <a name="interpretability-with-azure-machine-learning"></a>Interpreteerbaarheid met Azure Machine Learning
+## <a name="interpretability-with-azure-machine-learning"></a>Interpretiteit met Azure Machine Learning
 
-De interpreteerbaarheidsklassen worden beschikbaar gesteld via meerdere SDK-pakketten: (Meer informatie over het [installeren van SDK-pakketten voor Azure Machine Learning](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py))
+De interpretatieve klassen worden beschikbaar gesteld via meerdere SDK-pakketten: (informatie over het [installeren van SDK-pakketten voor Azure machine learning](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py))
 
-* `azureml.interpret`, het hoofdpakket, met functionaliteiten die door Microsoft worden ondersteund.
+* `azureml.interpret`, het hoofd pakket, dat functionaliteiten bevat die door micro soft worden ondersteund.
 
-* `azureml.contrib.interpret`, voorbeeld en experimentele functionaliteiten die u uitproberen.
+* `azureml.contrib.interpret`, de preview-versie en experimentele functionele functies die u kunt proberen.
 
-* `azureml.train.automl.automlexplainer`pakket voor het interpreteren van geautomatiseerde machine learning-modellen.
+* `azureml.train.automl.automlexplainer`pakket voor het interpreteren van automatische machine learning modellen.
 
-Gebruik `pip install azureml-interpret` `pip install azureml-interpret-contrib` en voor algemeen `pip install azureml-interpret-contrib` gebruik, en voor AutoML gebruik om de interpreteerbaarheid pakketten te krijgen.
+Gebruik `pip install azureml-interpret` en `pip install azureml-interpret-contrib` voor algemeen gebruik en `pip install azureml-interpret-contrib` voor AutoML gebruik voor het verkrijgen van de interpreter-pakketten.
 
 
 > [!IMPORTANT]
-> Inhoud in `contrib` de naamruimte wordt niet volledig ondersteund. Naarmate de experimentele functionaliteiten volwassen worden, worden ze geleidelijk verplaatst naar de hoofdnaamruimte.
+> Inhoud in de `contrib` naam ruimte wordt niet volledig ondersteund. Naarmate de experimentele functionele onderdelen rijp worden, worden ze geleidelijk verplaatst naar de hoofd naam ruimte.
 .
 
 
 
-## <a name="how-to-interpret-your-model"></a>Hoe interpreteer je je model?
+## <a name="how-to-interpret-your-model"></a>Het model interpreteren
 
-Met behulp van de klassen en methoden in de SDK u het nieuwe volgen van het nieuwe:
-+ Leg modelvoorspelling uit door functiebelangwaarden te genereren voor het hele model en/of afzonderlijke datapunten. 
-+ Bereik modelinterpreteerbaarheid op real-world datasets op schaal, tijdens training en gevolgtrekking.
-+ Gebruik een interactief visualisatiedashboard om patronen in gegevens en uitleg te ontdekken tijdens de training
-
-
-In machine learning zijn **functies** de gegevensvelden die worden gebruikt om een doelgegevenspunt te voorspellen. Om bijvoorbeeld kredietrisico's te voorspellen, kunnen gegevensvelden voor leeftijd, accountgrootte en accountleeftijd worden gebruikt. In dit geval zijn leeftijd, accountgrootte en accountleeftijd **kenmerken.** Functiebelang vertelt u hoe elk gegevensveld de voorspellingen van het model beïnvloedde. Leeftijd kan bijvoorbeeld intensief worden gebruikt in de voorspelling, terwijl accountgrootte en leeftijd geen invloed hebben op de voorspellingswaarden. Dit proces stelt gegevenswetenschappers in staat om resulterende voorspellingen uit te leggen, zodat belanghebbenden inzicht hebben in welke functies het belangrijkst zijn in het model.
-
-Lees hier meer over ondersteunde interpreteerbaarheidstechnieken, ondersteunde machine learning-modellen en ondersteunde runomgevingen.
+Met de klassen en methoden in de SDK kunt u het volgende doen:
++ Uitleg over model voorspellingen door het genereren van belang rijke waarden voor het hele model en/of afzonderlijke data Points. 
++ Behaal de model interpreteer baarheid van de gegevens sets op schaal, tijdens de training en de interferentie.
++ Gebruik een interactief visualisatie dashboard om patronen in gegevens en uitleg te ontdekken tijdens de trainings tijd
 
 
-## <a name="supported-interpretability-techniques"></a>Ondersteunde interpreteerbaarheidstechnieken
+In machine learning zijn **functies** de gegevens velden die worden gebruikt om een doel gegevens punt te voors pellen. Bijvoorbeeld, om het krediet risico te voors pellen, kunnen gegevens velden voor leeftijd, account grootte en account leeftijd worden gebruikt. In dit geval zijn de leeftijd, de account grootte en de account duur **functies**. Functie belang vertelt u hoe elk gegevens veld de voor spellingen van het model beïnvloedt. Leeftijd kan bijvoorbeeld intensief worden gebruikt in de voor spelling, terwijl de grootte van het account en de leeftijd geen invloed hebben op de Voorspellings waarden. Met dit proces kunnen gegevens wetenschappers de resulterende voor spellingen uitleggen, zodat de belanghebbenden inzicht hebben in de functies die het belangrijkst zijn in het model.
 
- `azureml-interpret`maakt gebruik van de interpreteerbaarheidstechnieken die zijn ontwikkeld in [Interpret-Community](https://github.com/interpretml/interpret-community/), een open source python-pakket voor het trainen van interpreteerbare modellen en het helpen verklaren van blackbox AI-systemen. [Interpret-Community](https://github.com/interpretml/interpret-community/) fungeert als gastheer voor de ondersteunde explainers van deze SDK en ondersteunt momenteel de volgende interpreteerbaarheidstechnieken:
+Meer informatie over ondersteunde technieken voor interpretatie, ondersteunde machine learning modellen en ondersteunde uitvoerings omgevingen.
 
-|Techniek voor interpreteerbaarheid|Beschrijving|Type|
+
+## <a name="supported-interpretability-techniques"></a>Ondersteunde technieken voor interpretatie
+
+ `azureml-interpret`maakt gebruik van de technieken voor interpretaties die zijn ontwikkeld in [interprete-Community](https://github.com/interpretml/interpret-community/), een open source python-pakket voor het interpreteren van modellen en helpen bij het uitleggen van blackbox AI-systemen. [Interpreteren: Community](https://github.com/interpretml/interpret-community/) fungeert als host voor de ondersteunde uitlegers van deze SDK en ondersteunt momenteel de volgende methoden voor interpretatie:
+
+|Geïnterpreteerde techniek|Beschrijving|Type|
 |--|--|--------------------|
-|1. SHAP Tree Explainer| [SHAP](https://github.com/slundberg/shap)'s tree explainer, die zich richt op polynomial tijd snel SHAP waarde schatting algoritme specifiek voor **bomen en ensembles van bomen**.|Modelspecifiek|
-|2. SHAP Deep Explainer| Gebaseerd op de uitleg van [SHAP](https://github.com/slundberg/shap), Deep Explainer "is een high-speed benadering algoritme voor SHAP waarden in deep learning modellen die voortbouwt op een verbinding met DeepLIFT beschreven in de [SHAP NIPS papier](https://papers.nips.cc/paper/7062-a-unified-approach-to-interpreting-model-predictions). **TensorFlow-modellen** en **Keras-modellen** met de TensorFlow-backend worden ondersteund (er is ook voorlopige ondersteuning voor PyTorch)".|Modelspecifiek|
-|3. SHAP Linear Explainer| [SHAP](https://github.com/slundberg/shap)'s Linear explainer berekent SHAP-waarden voor een **lineair model**, waarbij optioneel rekening wordt gehouden met correlaties tussen functies.|Modelspecifiek|
-|4. SHAP Kernel Explainer| [SHAP](https://github.com/slundberg/shap)'s Kernel explainer gebruikt een speciaal gewogen lokale lineaire regressie om SHAP-waarden voor **elk model**te schatten.|Modelagtisch|
-|5. Mimic Explainer (Global Surrogate)| Mimic explainer is gebaseerd op het idee van de opleiding van [wereldwijde surrogaat modellen](https://christophm.github.io/interpretable-ml-book/global.html) om blackbox modellen na te bootsen. Een globaal surrogaatmodel is een intrinsiek interpreteerbaar model dat is getraind om de voorspellingen van **een black box-model** zo nauwkeurig mogelijk te benaderen. Gegevenswetenschappers kunnen het surrogaatmodel interpreteren om conclusies te trekken over het black box-model. U een van de volgende interpreteerbare modellen gebruiken als surrogaatmodel: LightGBM (LGBMExplainableModel), Linear Regression (LinearExplainableModel), Stochastic Gradient Descent explainable model (SGDExplainableModel) en Decision Tree (DecisionTreeExplainableModel).|Modelagtisch|
-|6. Permutatie Feature Importance Explainer (PFI)| Permutatie Feature Importance is een techniek die wordt gebruikt om classificatie- en regressiemodellen uit te leggen die is geïnspireerd op [Breiman's Random Forests paper](https://www.stat.berkeley.edu/~breiman/randomforest2001.pdf) (zie sectie 10). Op een hoog niveau, de manier waarop het werkt is door willekeurig schuifelen gegevens een functie tegelijk voor de hele gegevensset en het berekenen van hoeveel de prestaties metrische van belang verandert. Hoe groter de verandering, hoe belangrijker die functie is. PFI kan het algehele gedrag van **elk onderliggend model** verklaren, maar verklaart geen individuele voorspellingen. |Modelagtisch|
+|1. uitleg van de SHAP-structuur| De boom uitleg van de [Shap](https://github.com/slundberg/shap), die gericht is op een polynomiale, snelle Shap waarde schattings algoritme die specifiek is voor **bomen en ensembles van structuren**.|Model-specifiek|
+|2. SHAP diepe uitleg| Op basis van de uitleg van [Shap](https://github.com/slundberg/shap)is diepe uitleg een uiterst snelle benaderings ALGORITME voor Shap-waarden in diepe leer modellen die zijn gebaseerd op een verbinding met DeepLIFT beschreven in het [Shap NIPS-papier](https://papers.nips.cc/paper/7062-a-unified-approach-to-interpreting-model-predictions). **Tensor flow** -modellen en **Keras** -modellen met behulp van de tensor flow-backend worden ondersteund (er is ook voorlopige ondersteuning voor PyTorch) '.|Model-specifiek|
+|3. SHAP lineaire uitleg| De lineaire uitleg van [Shap](https://github.com/slundberg/shap)berekent Shap-waarden voor een **lineair model**, eventueel administratief voor correlaties tussen functies.|Model-specifiek|
+|4. SHAP-kernel-uitleg| De kernel-uitleg van [Shap](https://github.com/slundberg/shap)maakt gebruik van een speciaal gewogen lokale lineaire REGRESSIE om Shap-waarden voor **elk model**te schatten.|Model-neutraal|
+|5. imiteer de Uitleger (globale vervanging)| Nabooter is gebaseerd op het idee van [globale surrogaat modellen](https://christophm.github.io/interpretable-ml-book/global.html) met training om blackbox modellen te simuleren. Een globaal surrogaat model is een intrinsiek interpretable model dat is getraind om de voor spellingen van **een zwart box-model** zo nauw keurig mogelijk te benaderen. Gegevens wetenschappers kunnen het surrogaat model interpreteren om conclusies over het zwarte box-model te tekenen. U kunt een van de volgende verwerkte modellen gebruiken als surrogaat model: LightGBM (LGBMExplainableModel), lineaire regressie (LinearExplainableModel), stochastische Gradient Daal verklarend model (SGDExplainableModel) en beslissings structuur (DecisionTreeExplainableModel).|Model-neutraal|
+|6. de belang rijke uitleg van de functie van permutatie (PFI)| Het belang van de permutatie functie is een techniek die wordt gebruikt om classificatie-en regressie modellen te verklaren die zijn geïnspireerd op [het breiman van een wille keurige bossen](https://www.stat.berkeley.edu/~breiman/randomforest2001.pdf) (zie sectie 10). Op hoog niveau kan de manier waarop het werkt, worden uitgevoerd door in wille keurige volg orde de gegevens per functie op te nemen voor de hele gegevensset en te berekenen hoeveel de prestatie metriek van de interesses is gewijzigd. Hoe groter de verandering, des te belang rijker deze functie is. PFI kan het algemene gedrag van **elk onderliggend model** uitleggen, maar verklaart geen afzonderlijke voor spellingen. |Model-neutraal|
 
 
 
 
-Naast de hierboven beschreven interpreteerbaarheidstechnieken ondersteunen we een `TabularExplainer`andere [SHAP-gebaseerde explainer](https://github.com/slundberg/shap), genaamd . Afhankelijk van het `TabularExplainer` model, maakt gebruik van een van de ondersteunde SHAP explainers:
+Naast de methoden voor het interpreteren die hierboven worden beschreven, ondersteunen we nog een [op Shap gebaseerde uitleg](https://github.com/slundberg/shap), ook wel genoemd `TabularExplainer`. Afhankelijk van het model gebruikt een `TabularExplainer` van de ondersteunde Shap-uitleg:
 
-* TreeExplainer voor alle boommodellen
+* TreeExplainer voor alle modellen op basis van een structuur
 * DeepExplainer voor DNN-modellen
 * LinearExplainer voor lineaire modellen
 * KernelExplainer voor alle andere modellen
 
-`TabularExplainer`heeft ook aanzienlijke functie- en prestatieverbeteringen aangebracht ten opzichte van de directe SHAP Explainers:
+`TabularExplainer`heeft ook aanzienlijke verbeteringen aangebracht in de functie en prestaties ten opzichte van de directe SHAP-uitleg:
 
-* **Samenvatting van de initialisatiegegevensset**. In gevallen waar de snelheid van uitleg het belangrijkst is, vatten we de initialisatiegegevensset samen en genereren we een kleine set representatieve monsters, die het genereren van algemene en individuele functiewaardewaarden versnellen.
-* **Bemonstering van de evaluatiegegevensset**. Als de gebruiker in een grote reeks evaluatiemonsters slaagt, maar ze niet allemaal hoeft te evalueren, kan de parameter voor de bemonstering worden ingesteld op true om de berekening van de algemene modeluitleg te versnellen.
+* **Samen vatting van de initialisatie-gegevensset**. In gevallen waarin de snelheid van uitleg het belangrijkst is, vatten we de initialisatie-gegevensset samen en genereren ze een kleine set representatieve voor beelden, waardoor de generatie van de belang rijke waarden van de algemene en afzonderlijke onderdelen wordt versneld.
+* **Bemonstert u de set evaluatie gegevens**. Als de gebruiker een grote set evaluatie voorbeelden heeft door gegeven, maar niet alle moet worden geëvalueerd, kan de para meter sample worden ingesteld op True om de berekening van de algehele model verklaringen te versnellen.
 
-Het volgende diagram toont de huidige structuur van ondersteunde explainers.
+In het volgende diagram ziet u de huidige structuur van ondersteunde uitlegers.
 
-[![Machine Learning Interpretability Architecture](./media/how-to-machine-learning-interpretability/interpretability-architecture.png)](./media/how-to-machine-learning-interpretability/interpretability-architecture.png#lightbox)
+[![Architectuur van Machine Learning-interpretaties](./media/how-to-machine-learning-interpretability/interpretability-architecture.png)](./media/how-to-machine-learning-interpretability/interpretability-architecture.png#lightbox)
 
 
-## <a name="supported-machine-learning-models"></a>Ondersteunde machine learning-modellen
+## <a name="supported-machine-learning-models"></a>Ondersteunde machine learning modellen
 
-Het `azureml.interpret` pakket van de SDK ondersteunt modellen die zijn getraind met de volgende gegevenssetindelingen:
+Het `azureml.interpret` pakket van de SDK ondersteunt modellen die zijn getraind met de volgende indelingen voor gegevensset:
 - `numpy.array`
 - `pandas.DataFrame`
 - `iml.datatypes.DenseData`
 - `scipy.sparse.csr_matrix`
 
-De uitlegfuncties accepteren zowel modellen als pijplijnen als invoer. Als een model wordt geleverd, moet `predict` het `predict_proba` model de voorspellingsfunctie implementeren of die voldoet aan het Scikit-verdrag. Als uw model dit niet ondersteunt, u uw model verpakken `predict` `predict_proba` in een functie die hetzelfde resultaat genereert als of in Scikit en die wrapperfunctie gebruiken met de geselecteerde uitleg. Als een pijplijn wordt geleverd, gaat de uitlegfunctie ervan uit dat het lopende pijplijnscript een voorspelling retourneert. Met behulp van `azureml.interpret` deze verpakkingstechniek kunnen modellen die zijn getraind via PyTorch, TensorFlow en Keras deep learning-frameworks en klassieke machine learning-modellen worden ondersteund.
+De uitleg functies accepteren zowel modellen als pijp lijnen als invoer. Als er een model wordt gegeven, moet het model de Voorspellings functie `predict` implementeren `predict_proba` of voldoet aan de Scikit-Conventie. Als uw model dit niet ondersteunt, kunt u uw model inpakken in een functie die hetzelfde resultaat genereert als `predict` of `predict_proba` in Scikit en die wrapper-functie gebruiken met de geselecteerde uitleger. Als er een pijp lijn wordt gegeven, wordt ervan uitgegaan dat het actieve pijplijn script een voor spelling retourneert. Het gebruik van deze terugloop `azureml.interpret` techniek kan modellen ondersteunen die zijn getraind via PyTorch, tensor flow en Kerase diep leer frameworks en klassieke machine learning modellen.
 
-## <a name="local-and-remote-compute-target"></a>Lokaal en extern rekendoel
+## <a name="local-and-remote-compute-target"></a>Lokaal en extern Compute-doel
 
-Het `azureml.interpret` pakket is ontworpen om te werken met zowel lokale als externe rekendoelen. Als de SDK-functies lokaal worden uitgevoerd, worden geen contact opgenomen met Azure-services. 
+Het `azureml.interpret` pakket is ontworpen om te werken met zowel lokale als externe Compute-doelen. Als de SDK-functies lokaal worden uitgevoerd, worden er geen contact opgenomen met Azure-Services. 
 
-U uitleg op afstand uitvoeren op Azure Machine Learning Compute en de uitleggegevens aanmelden bij de Azure Machine Learning Run History Service. Zodra deze informatie is vastgelegd, zijn rapporten en visualisaties uit de uitleg direct beschikbaar in Azure Machine Learning-studio voor gebruikersanalyse.
+U kunt uitleg op afstand uitvoeren op Azure Machine Learning Compute en de uitleg informatie vastleggen in de Azure Machine Learning uitvoerings geschiedenis service. Zodra deze informatie is geregistreerd, zijn rapporten en visualisaties van de uitleg beschikbaar op Azure Machine Learning Studio voor gebruikers analyse.
 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Bekijk de [how-to](how-to-machine-learning-interpretability-aml.md) voor het inschakelen van interpreteerbaarheid voor modellen die zowel lokaal als op Azure Machine Learning remote compute resources trainen. Zie de [voorbeeldnotitieblokken](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/explain-model) voor extra scenario's.
+Zie de [procedure](how-to-machine-learning-interpretability-aml.md) voor het inschakelen van de functie voor interpretering voor model training zowel lokaal als op Azure machine learning externe Compute-resources. Raadpleeg de [voorbeeld notitieblokken](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/explain-model) voor aanvullende scenario's.

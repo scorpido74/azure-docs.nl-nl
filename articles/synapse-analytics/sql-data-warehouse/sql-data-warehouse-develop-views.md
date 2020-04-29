@@ -1,6 +1,6 @@
 ---
-title: T-SQL-weergaven gebruiken
-description: Tips voor het gebruik van T-SQL-weergaven en het ontwikkelen van oplossingen in Synapse SQL-pool.
+title: T-SQL-weer gaven gebruiken
+description: Tips voor het gebruik van T-SQL-weer gaven en het ontwikkelen van oplossingen in Synapse SQL-pool.
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
@@ -12,55 +12,55 @@ ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
 ms.openlocfilehash: 76442368fe4b3e498f622a8a3cd5b5b973f16bd6
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/03/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80633398"
 ---
-# <a name="views-in-synapse-sql-pool"></a>Weergaven in de Synapse SQL-pool
+# <a name="views-in-synapse-sql-pool"></a>Weer gaven in de SQL-groep Synapse
 
-Weergaven kunnen op verschillende manieren worden gebruikt om de kwaliteit van uw oplossing te verbeteren.
+Weer gaven kunnen op verschillende manieren worden gebruikt om de kwaliteit van uw oplossing te verbeteren.
 
-SQL-pool ondersteunt zowel standaard- als gematerialiseerde weergaven. Beide zijn virtuele tabellen gemaakt met SELECT-expressies en gepresenteerd aan query's als logische tabellen.
+SQL-pool ondersteunt zowel standaard als gerealiseerde weer gaven. Beide zijn virtuele tabellen die zijn gemaakt met SELECT-expressies en worden weer gegeven als logische tabellen.
 
-Weergaven bevatten de complexiteit van algemene gegevensberekening en voegen een abstractielaag toe aan berekeningswijzigingen, zodat query's niet hoeven te worden herschreven.
+Met weer gaven wordt de complexiteit van common data computing ingekapseld en wordt een abstractie laag aan berekenings wijzigingen toegevoegd, zodat u geen query's hoeft te schrijven.
 
-## <a name="standard-view"></a>Standaardweergave
+## <a name="standard-view"></a>Standaard weergave
 
-Een standaardweergave berekent de gegevens telkens wanneer de weergave wordt gebruikt. Er zijn geen gegevens opgeslagen op schijf. Mensen gebruiken standaardweergaven meestal als een hulpmiddel waarmee de logische objecten en query's in een database kunnen worden georganiseerd.
+Een standaard weergave berekent de gegevens telkens wanneer de weer gave wordt gebruikt. Er zijn geen gegevens opgeslagen op schijf. Personen gebruiken meestal standaard weergaven als een hulp middel waarmee u de logische objecten en query's in een Data Base kunt ordenen.
 
-Als u een standaardweergave wilt gebruiken, moet een query er rechtstreeks naar verwijzen. Zie de documentatie [WEERGAVE MAKEN](/sql/t-sql/statements/create-view-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) voor meer informatie.
+Als u een standaard weergave wilt gebruiken, moet er direct naar een query worden verwezen. Zie de documentatie voor het [maken van weer gaven](/sql/t-sql/statements/create-view-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) voor meer informatie.
 
-Weergaven in SQL-pool worden alleen als metagegevens opgeslagen. De volgende opties zijn dan ook niet beschikbaar:
+Weer gaven in de SQL-groep worden alleen opgeslagen als meta gegevens. De volgende opties zijn daarom niet beschikbaar:
 
-* Er is geen schemabindingsoptie
-* Basistabellen kunnen niet worden bijgewerkt via de weergave
-* Weergaven kunnen niet worden gemaakt via tijdelijke tabellen
-* Er is geen ondersteuning voor de EXPAND / NOEXPAND hints
-* Er zijn geen geïndexeerde weergaven in SQL-pool
+* Er is geen optie voor schema bindingen
+* Basis tabellen kunnen niet worden bijgewerkt in de weer gave
+* Er kunnen geen weer gaven worden gemaakt over tijdelijke tabellen
+* Er wordt geen ondersteuning geboden voor de instructie EXPAND/deexpand.
+* Er zijn geen geïndexeerde weer gaven in de SQL-groep
 
-Standaardweergaven kunnen worden gebruikt om prestatiegeoptimaliseerde joins tussen tabellen af te dwingen. Een weergave kan bijvoorbeeld een redundante distributiesleutel bevatten als onderdeel van de verbindingscriteria om gegevensverplaatsing te minimaliseren.
+Standaard weergaven kunnen worden gebruikt voor het afdwingen van prestaties geoptimaliseerde samen voegingen tussen tabellen. Een weer gave kan bijvoorbeeld een redundante distributie sleutel bevatten als onderdeel van de samenvoegings criteria om de verplaatsing van gegevens te minimaliseren.
 
-Een ander voordeel van een weergave zou kunnen zijn om een specifieke query of join hint te forceren. Het gebruik van weergaven op deze manier garandeert dat joins altijd optimaal worden uitgevoerd en voorkomen dat gebruikers de juiste constructie voor hun joins hoeven te onthouden.
+Een ander voor deel van een weer gave is het afdwingen van een specifieke query of hint voor samen voegen. Als u weer gaven op deze manier gebruikt, zorgt u ervoor dat samen voegingen altijd worden uitgevoerd op een optimale manier om te voor komen dat gebruikers de juiste construct voor hun deelname kunnen onthouden.
 
 ## <a name="materialized-view"></a>Gerealiseerde weergave
 
-Een gematerialiseerde weergave berekent, slaat en onderhoudt de gegevens in SQL-groep, net als een tabel. Er is geen herberekening nodig elke keer wanneer een gematerialiseerde weergave wordt gebruikt.
+Met een gerealiseerde weer gave worden de gegevens in de SQL-groep, net als in een tabel, opgeslagen en bewaard. Telkens wanneer een gerealiseerde weer gave wordt gebruikt, is er geen herberekening nodig.
 
-Terwijl de gegevens in basistabellen worden geladen, vernieuwt SQL-groep synchroon de gematerialiseerde weergaven.  De queryoptimizer gebruikt automatisch geïmplementeerde gematerialiseerde weergaven om de queryprestaties te verbeteren, zelfs als er geen naar de weergaven wordt verwezen in de query.  
+Wanneer de gegevens in basis tabellen worden geladen, vernieuwt de SQL-pool de gerealiseerde weer gaven synchroon.  De query optimalisatie maakt automatisch gebruik van geïmplementeerde gerealiseerde weer gaven om de query prestaties te verbeteren, zelfs als niet in de query wordt verwezen naar de weer gaven.  
 
-Query's die het meest profiteren van gematerialiseerde weergaven zijn complexe query's (meestal query's met joins en aggregaties) op grote tabellen die een klein resultaatset produceren.  
+Query's die het meest geschikt zijn voor gerealiseerde weer gaven zijn complexe query's (doorgaans query's met samen voegingen en aggregaties) in grote tabellen die een kleine resultatenset genereren.  
 
-Zie [GEMATERIALISEERDE WEERGAVE MAKEN ALS SELECT](/sql/t-sql/statements/create-materialized-view-as-select-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)voor meer informatie over de gematerialiseerde weergavesyntaxis en andere vereisten .  
+Zie [gerealiseerde weer gave maken als selecteren](/sql/t-sql/statements/create-materialized-view-as-select-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)voor meer informatie over de syntaxis van gerealiseerde weer gaven en andere vereisten.  
 
-Controleer [Prestatieafstemming met gematerialiseerde weergaven voor](performance-tuning-materialized-views.md)richtlijnen voor queryafstemming.
+Voor hulp bij het afstemmen van query's controleert u de [prestaties afstemmen met gerealiseerde weer gaven](performance-tuning-materialized-views.md).
 
 ## <a name="example"></a>Voorbeeld
 
-Een veelvoorkomend toepassingspatroon is het opnieuw maken van tabellen met CREATE TABLE AS SELECT (CTAS), gevolgd door een object dat de naam van het patroon hernoemt tijdens het laden van gegevens.  
+Een algemeen toepassings patroon is het opnieuw maken van tabellen met CREATE TABLE als SELECT (CTAS), gevolgd door een patroon voor het wijzigen van de naam van een object tijdens het laden van gegevens.  
 
-In het volgende voorbeeld worden nieuwe datumrecords toegevoegd aan een datumdimensie. Houd er rekening mee hoe een nieuwe tabel, DimDate_New, eerst wordt gemaakt en vervolgens wordt hernoemd om de oorspronkelijke versie van de tabel te vervangen.
+In het volgende voor beeld worden nieuwe datum records toegevoegd aan een datum dimensie. U ziet dat een nieuwe tabel, DimDate_New, eerst wordt gemaakt en de naam ervan wordt gewijzigd om de oorspronkelijke versie van de tabel te vervangen.
 
 ```sql
 CREATE TABLE dbo.DimDate_New
@@ -79,12 +79,12 @@ RENAME OBJECT DimDate_New TO DimDate;
 
 ```
 
-Deze benadering kan er echter toe leiden dat tabellen worden weergegeven en uit de weergave van een gebruiker verdwijnen, samen met het uitgeven van een foutberichten 'tabel bestaat niet'.
+Deze benadering kan echter leiden tot het weer geven en weer geven van tabellen uit de weer gave van een gebruiker samen met het uitgeven van de fout berichten ' tabel bestaat niet '.
 
-Weergaven kunnen worden gebruikt om gebruikers een consistente presentatielaag te bieden terwijl de onderliggende objecten een andere naam krijgen. Door toegang te bieden tot gegevens via weergaven, hebben gebruikers geen zichtbaarheid nodig voor de onderliggende tabellen.
+Weer gaven kunnen worden gebruikt om gebruikers een consistente presentatielaag te geven terwijl de namen van de onderliggende objecten worden gewijzigd. Door toegang te bieden tot gegevens via weer gaven, hebben gebruikers geen zicht baarheid van de onderliggende tabellen nodig.
 
-Deze laag biedt een consistente gebruikerservaring en zorgt ervoor dat de ontwerpers van het datawarehouse het gegevensmodel kunnen ontwikkelen. Als u de onderliggende tabellen ontwikkelen, kunnen ontwerpers CTAS gebruiken om de prestaties tijdens het gegevenslaadproces te maximaliseren.
+Deze laag biedt een consistente gebruikers ervaring en zorgt ervoor dat de Data Warehouse-ontwerpers het gegevens model kunnen ontwikkelen. Het is mogelijk om de onderliggende tabellen te ontwikkelen. ontwerpers kunnen CTAS gebruiken om de prestaties tijdens het proces voor het laden van gegevens te maximaliseren.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie [SQL-pool-ontwikkelingsoverzicht](sql-data-warehouse-overview-develop.md)voor meer ontwikkelingstips.
+Zie [overzicht van SQL pool-ontwikkeling](sql-data-warehouse-overview-develop.md)voor meer tips voor ontwikkel aars.

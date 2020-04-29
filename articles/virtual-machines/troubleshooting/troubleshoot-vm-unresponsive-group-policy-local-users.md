@@ -1,6 +1,6 @@
 ---
-title: Virtual Machine reageert niet tijdens het toepassen van het beleid 'Groepsbeleid lokale gebruikers & groepen'
-description: In dit artikel worden stappen weergegeven om problemen op te lossen waarbij het laadscherm vastzit bij het toepassen van een beleid tijdens het opstarten in een Virtuele Azure Machine (VM).
+title: De virtuele machine reageert niet tijdens het Toep assen van ' groepsbeleid lokale gebruikers & groeps beleid
+description: Dit artikel bevat stappen voor het oplossen van problemen waarbij het laad scherm is vastgelopen tijdens het opstarten van een Azure virtual machine (VM).
 services: virtual-machines-windows
 documentationcenter: ''
 author: v-miegge
@@ -15,112 +15,112 @@ ms.topic: troubleshooting
 ms.date: 04/02/2020
 ms.author: v-mibufo
 ms.openlocfilehash: 085880122e9a80e976cfe59686748b58aeba1922
-ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/02/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80620855"
 ---
-# <a name="virtual-machine-is-unresponsive-while-applying-group-policy-local-users--groups-policy"></a>Virtual Machine reageert niet tijdens het toepassen van het beleid 'Groepsbeleid lokale gebruikers & groepen'
+# <a name="virtual-machine-is-unresponsive-while-applying-group-policy-local-users--groups-policy"></a>De virtuele machine reageert niet tijdens het Toep assen van ' groepsbeleid lokale gebruikers & groeps beleid
 
-In dit artikel worden stappen weergegeven om problemen op te lossen waarbij het laadscherm vastzit bij het toepassen van een beleid tijdens het opstarten in een Virtuele Azure Machine (VM).
+In dit artikel worden de stappen beschreven voor het oplossen van problemen waarbij het laad scherm is vastgelopen tijdens het opstarten, in een virtuele machine van Azure (VM).
 
 ## <a name="symptom"></a>Symptoom
 
-Wanneer u [Opstartdiagnostiek](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/boot-diagnostics) gebruikt om de schermafbeelding van de vm weer te geven, ziet u dat het scherm vastzit aan het bericht: Beleid *groepsbeleid lokaal toepassen*.
+Wanneer u [Diagnostische gegevens over opstarten](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/boot-diagnostics) gebruikt om de scherm opname van de virtuele machine weer te geven, ziet u dat het scherm is geladen met het volgende bericht: *Toep assen Groepsbeleid beleid voor lokale gebruikers en groepen*.
 
-![Alternatieve tekst: scherm met het laden van groepsbeleid lokale gebruikers en groepen (Windows Server 2012).](media/troubleshoot-vm-unresponsive-group-policy-local-users/1.png)
+![ALT-tekst: scherm met het Toep assen van groepsbeleid lokale gebruikers en groeps beleid laden (Windows Server 2012).](media/troubleshoot-vm-unresponsive-group-policy-local-users/1.png)
 
 Windows Server 2012
 
-![Alternatieve tekst: scherm met het laden van groepsbeleid lokale gebruikers en groepen (Windows Server 2012 R2).](media/troubleshoot-vm-unresponsive-group-policy-local-users/2.png)
+![ALT-tekst: scherm met het Toep assen van groepsbeleid lokale gebruikers en groeps beleid laden (Windows Server 2012 R2).](media/troubleshoot-vm-unresponsive-group-policy-local-users/2.png)
 
 Windows Server 2012 R2
 
 ## <a name="cause"></a>Oorzaak
 
-De symptomen van deze bevriezing worden veroorzaakt door een codedefect in de Windows Profile Service Dynamic Link Library *(profsvc.dll).*
+De symptomen van deze blok kering worden veroorzaakt door een code fout in de Dynamic Link Library (*profsvc. dll*) van de Windows-profiel service.
 
 > [!NOTE]
-> Dit defect is alleen van toepassing op Windows Server 2012 en Windows Server 2012 R2.
+> Dit defect geldt alleen voor Windows Server 2012 en Windows Server 2012 R2.
 
-### <a name="the-policy-in-question"></a>Het beleid in kwestie
+### <a name="the-policy-in-question"></a>Het desbetreffende beleid
 
-Het beleid dat wordt toegepast dat de processen niet zal voltooien, is:
+Het beleid dat wordt toegepast waarbij de processen niet worden voltooid, is:
 
-* *Computerconfiguratie\Beleid\Beheersjablonen\Systeem/gebruikersprofielen\Gebruikersprofielen verwijderen die ouder zijn dan een bepaald aantal dagen bij het opnieuw opstarten van het systeem*
+* *Computerconfiguratie\beleid\beheersjablonen\windows-onderdelen\Extern sjablonen \ systeem/gebruiker Profiles\Delete gebruikers profielen ouder dan het opgegeven aantal dagen bij het opnieuw opstarten van het systeem*
 
-Dit beleid blijft alleen hangen als de volgende zes voorwaarden waar zijn:
+Dit beleid loopt alleen vast als aan de volgende zes voor waarden wordt voldaan:
 
-* Het *gebruikersprofiel verwijderen dat ouder is dan een bepaald aantal dagen voor het* beleid voor het opnieuw opstarten van het systeem, is ingeschakeld.
-* U hebt profielen die voldoen aan de leeftijdsvereisten om opteis te moeten worden opgeschoond.
-* U hebt onderdelen die zijn geregistreerd voor verwijderingsmelding voor profielen.
-* De componenten maken oproepen (direct of indirect) die gegevens moeten verkrijgen van de SCM-onderdelen (Service Control Manager) van Windows, zoals Start,Stop of Query-informatie over een service.
+* De *gebruikers profielen verwijderen die ouder zijn dan het opgegeven aantal dagen voor het beleid voor het opnieuw opstarten van het systeem* is ingeschakeld.
+* U hebt profielen die voldoen aan de leeftijds vereisten om opschonen te vereisen.
+* U hebt onderdelen waarvoor een melding voor het verwijderen van profielen is geregistreerd.
+* De onderdelen maken aanroepen (direct of indirect) die gegevens moeten ophalen uit de SCM-onderdelen (Service Control Manager) van Windows, zoals het starten, stoppen of opvragen van informatie over een service.
 * U hebt een service geconfigureerd om te starten als *automatisch*.
-* Deze service is ingesteld om te worden uitgevoerd onder de context van een domeinaccount (in tegenstelling tot het gebruik van een ingebouwd account, zoals een lokaal systeem).
+* Deze service wordt ingesteld om te worden uitgevoerd onder de context van een domein account (in plaats van een ingebouwd account, zoals een lokaal systeem).
 
-### <a name="the-code-defect"></a>Het codedefect
+### <a name="the-code-defect"></a>Het code defect
 
-Het codedefect is te wijten aan de Service Control Manager (SCM) en de Profielservices die tegelijkertijd vergrendelingen op elkaar proberen toe te passen. Er bestaan vergrendelingen om te voorkomen dat meerdere services tegelijkertijd wijzigingen aanbrengen op dezelfde gegevens, wat corruptie zou veroorzaken. Normaal gesproken zouden meerdere vergrendelingsaanvragen geen probleem veroorzaken. Echter, omdat dit gebeurt tijdens het opstarten, kan geen van beide service hun processen voltooien, omdat ze op elkaar wachten.
+Het defecte code wordt veroorzaakt door de Service Control Manager (SCM) en de profiel services proberen gelijktijdig vergren delingen op elkaar toe te passen. Er bestaan vergren delingen om te voor komen dat meerdere services tegelijkertijd wijzigingen aanbrengen op dezelfde gegevens, wat een beschadiging zou veroorzaken. Normaal gesp roken veroorzaken meerdere vergrendelings aanvragen een probleem. Omdat dit tijdens het opstarten plaatsvindt, kan de service echter hun processen volt ooien, omdat ze niet meer op elkaar wachten.
 
-### <a name="os-bug-5880648---service-control-manager-deadlocks-with-the-delete-user-profiles-on-restart-policy"></a>OS Bug 5880648 - Service Control Manager impasses met de "Gebruikersprofielen verwijderen bij opnieuw opstarten" beleid
+### <a name="os-bug-5880648---service-control-manager-deadlocks-with-the-delete-user-profiles-on-restart-policy"></a>OS-fout 5880648-Service Control Manager deadlocks met het beleid ' gebruikers profielen verwijderen bij opnieuw opstarten '
 
-Er zijn twee acties die elkaar overlappen, zodat:
+Er zijn twee acties die elkaar overlappen:
 
-* Action 1 verwerft het profielslot, maar heeft het SCM-slot nog niet overgenomen.
+* Actie 1 heeft de profiel vergrendeling opgehaald, maar heeft de SCM-vergren deling nog niet verkregen.
 
-  **En**
+  **MAAR**
 
-* Action 2 verwerft het SCM-slot, maar heeft de profielvergrendeling nog niet verworven.
+* Met actie 2 wordt de SCM-vergren deling opgehaald, maar de profiel vergrendeling nog niet is verkregen.
 
-Zodra deze impasse optreedt, de poging om de tweede vereiste slot te verwerven hangt de actie.
+Zodra deze deadlock zich voordoet, wordt de poging om de tweede vereiste vergren deling te verkrijgen, de actie verloopt.
 
-### <a name="action-1---old-profile-deletion-notification-has-profile-lock-needs-scm-lock"></a>Actie 1 - Melding voor het verwijderen van oude profielen (heeft **Profielvergrendeling**, heeft **SCM-vergrendeling**nodig)
+### <a name="action-1---old-profile-deletion-notification-has-profile-lock-needs-scm-lock"></a>Actie 1-melding van oude verwijdering van profiel (heeft **profiel vergrendeling**vereist **SCM-vergren deling**)
 
-1. Ten eerste krijgt het beleid voor het verwijderen van oude profielen een intern profielserviceslot.
+1. Eerst wordt met het beleid dat is ingesteld om oude profielen te verwijderen, een interne profiel service vergrendeling verkregen.
 
-   * Dit slot is er om te voorkomen dat twee threads interactie hebben met de profielen terwijl de *verwijderingsbewerking* vordert.
+   * Deze vergren deling is er om te voor komen dat twee threads communiceren met de profielen terwijl de *Verwijder bewerking* wordt uitgevoerd.
 
-2. In het beleid worden profielen gevonden die oud genoeg zijn om te worden verwijderd.
-3. Als onderdeel van het verwijderen van het profiel probeert een onderdeel dat is geregistreerd voor meldingen van het verwijderen van een profiel een service te **starten.**
-4. Voordat de service wordt gestart, moet de Service Control Manager (SCM) een **intern SCM-slot** aanschaffen dat wordt vastgehouden door threads in **Actie 2.**
+2. Het beleid zoekt naar profielen die oud genoeg zijn om te worden verwijderd.
+3. Als onderdeel van het verwijderen van het profiel probeert een onderdeel dat is geregistreerd voor meldingen van de verwijderingen van een profiel, een **service te starten**.
+4. Voordat de service wordt gestart, moet de Service Control Manager (SCM) een **interne SCM-vergrendeling** verkrijgen die wordt gehouden door threads in **actie 2**.
 
-### <a name="action-2---profile-loadcreation-for-user-specific-data-has-scm-lock-needs-profile-lock"></a>Actie 2 - Profielbelasting/-creatie voor gebruikersspecifieke gegevens (heeft **SCM-vergrendeling**, heeft **profielvergrendeling**nodig )
+### <a name="action-2---profile-loadcreation-for-user-specific-data-has-scm-lock-needs-profile-lock"></a>Actie 2: een profiel laden/maken voor gebruikersspecifieke gegevens (heeft **SCM-vergren deling**, **profiel vergrendeling**vereist)
 
-1. Bij het opstarten moet SCM alle *automatische startservices* per hun groep bestellen, evenals alle services waarvan deze services afhankelijk zijn.
+1. Bij het opstarten moet SCM alle services voor *automatisch starten* door hun groep best Ellen, evenals alle services waarvan deze services afhankelijk zijn.
 
-2. **SCM verwerft een intern SCM-slot** dat wordt gebruikt om de toegang tot het starten, stoppen of configureren van services te beheren terwijl het de services bestelt.
+2. **SCM verkrijgt een interne SCM-vergrendeling** die wordt gebruikt voor het beheren van de toegang tot het starten, stoppen of configureren van services terwijl de services worden gesorteerd.
 
-3. Zodra de services in orde zijn, loopt de SCM door elke service en start deze.
+3. Zodra de services in orde zijn, wordt de SCM door elke service door lopen en wordt deze gestart.
 
-4. Als de service wordt uitgevoerd onder de context van een domeinaccount, moet een profiel worden geladen of gemaakt voor het domeinaccount, zodat het gebruikersspecifieke gegevens kan opslaan.
+4. Als de service wordt uitgevoerd onder de context van een domein account, moet een profiel worden geladen of gemaakt voor het domein account, zodat de gebruikersspecifieke gegevens kunnen worden opgeslagen.
 
-5. Dit verzoek wordt verzonden naar de **Profielservice.**
+5. Deze aanvraag wordt verzonden naar de **profiel service**.
 
-6. De profielservice heeft toegang nodig tot het **interne slot** dat is verkregen in **actie 1**.
+6. De profiel service moet toegang hebben tot de **interne vergren deling** die is verkregen in **actie 1**.
 
 ## <a name="solution"></a>Oplossing
 
-### <a name="process-overview"></a>Overzicht van proces
+### <a name="process-overview"></a>Overzicht van het proces
 
-1. Een reparatievm maken en openen
-2. Seriële console- en geheugendumpverzameling inschakelen
-3. De VM opnieuw opbouwen
-4. Het geheugendumpbestand verzamelen
+1. Een herstel-VM maken en openen
+2. Seriële console-en geheugen dump verzameling inschakelen
+3. De virtuele machine opnieuw bouwen
+4. Het geheugen dump bestand verzamelen
 
    > [!NOTE]
-   > Bij het tegenkomen van deze opstartfout is het besturingssysteem van de gast niet operationeel. U lost problemen op in de offlinemodus om dit probleem op te lossen.
+   > Wanneer deze opstart fout optreedt, is het gast besturingssysteem niet operationeel. U kunt problemen oplossen in de offline modus om dit probleem op te lossen.
 
-### <a name="create-and-access-a-repair-vm"></a>Een reparatievm maken en openen
+### <a name="create-and-access-a-repair-vm"></a>Een herstel-VM maken en openen
 
-1. Gebruik [stap 1-3 van de VM-reparatieopdrachten](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/repair-windows-vm-using-azure-virtual-machine-repair-commands#repair-process-example) om een reparatie-vm voor te bereiden.
-2. Verbinding met extern bureaublad gebruiken verbinding maken met de VM Repareren.
+1. Gebruik [stap 1-3 van de VM-reparatie opdrachten](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/repair-windows-vm-using-azure-virtual-machine-repair-commands#repair-process-example) om een herstel-VM voor te bereiden.
+2. Gebruik Verbinding met extern bureaublad verbinding maken met de herstel-VM.
 
-### <a name="enable-serial-console-and-memory-dump-collection"></a>Seriële console- en geheugendumpverzameling inschakelen
+### <a name="enable-serial-console-and-memory-dump-collection"></a>Seriële console-en geheugen dump verzameling inschakelen
 
-Voer het script hieronder uit om geheugendumpverzameling en seriële console in te schakelen:
+Voer het volgende script uit om geheugen dump verzameling en seriële console in te scha kelen:
 
-1. Open een opdrachtpromptsessie met verhoogde bevoegdheid (Uitvoeren als beheerder).
+1. Open een opdracht prompt sessie met verhoogde bevoegdheden (als administrator uitvoeren).
 2. Voer de volgende opdrachten uit:
 
    * Seriële console inschakelen:
@@ -129,13 +129,13 @@ Voer het script hieronder uit om geheugendumpverzameling en seriële console in 
 
      `bcdedit /store <VOLUME LETTER WHERE THE BCD FOLDER IS>:\boot\bcd /emssettings EMSPORT:1 EMSBAUDRATE:115200`
 
-3. Controleer of de vrije ruimte op de OS-schijf evenveel is als de geheugengrootte (RAM) op de VM.
+3. Controleer of de beschik bare ruimte op de besturingssysteem schijf net zo groot is als de geheugen grootte (RAM) op de virtuele machine.
 
-   * Als er niet genoeg ruimte op de OS-schijf is, moet u de locatie wijzigen waar het geheugendumpbestand wordt gemaakt en verwijzen naar een gegevensschijf die is gekoppeld aan de VM die voldoende vrije ruimte heeft. Als u de `%SystemRoot%` locatie wilt wijzigen, vervangt u de stationsletter (zoals 'F:') van de gegevensschijf in de onderstaande opdrachten.
+   * Als er onvoldoende ruimte beschikbaar is op de besturingssysteem schijf, wijzigt u de locatie waar het geheugen dump bestand wordt gemaakt en verwijst naar alle gegevens schijven die zijn gekoppeld aan de VM met voldoende vrije ruimte. Als u de locatie wilt wijzigen `%SystemRoot%` , vervangt u door de stationsletter (zoals ' F: ') van de gegevens schijf in de onderstaande opdrachten.
 
-#### <a name="suggested-configuration-to-enable-os-dump"></a>Voorgestelde configuratie om OS Dump in te schakelen
+#### <a name="suggested-configuration-to-enable-os-dump"></a>Voorgestelde configuratie voor het inschakelen van de dump van het besturings systeem
 
-**Kapotte OS-schijf laden:**
+**Beschadigde besturingssysteem schijf laden:**
 
 `REG LOAD HKLM\BROKENSYSTEM <VOLUME LETTER OF BROKEN OS DISK>:\windows\system32\config\SYSTEM`
 
@@ -155,24 +155,24 @@ Voer het script hieronder uit om geheugendumpverzameling en seriële console in 
 
 `REG ADD "HKLM\BROKENSYSTEM\ControlSet002\Control\CrashControl" /v NMICrashDump /t REG_DWORD /d 1 /f`
 
-### <a name="rebuild-the-vm"></a>De VM opnieuw opbouwen
+### <a name="rebuild-the-vm"></a>De virtuele machine opnieuw bouwen
 
-Gebruik [stap 5 van de VM-reparatieopdrachten](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/repair-windows-vm-using-azure-virtual-machine-repair-commands#repair-process-example) om de VM opnieuw in elkaar te zetten.
+Gebruik [stap 5 van de opdrachten voor het herstellen van de virtuele machine](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/repair-windows-vm-using-azure-virtual-machine-repair-commands#repair-process-example) om de virtuele machine opnieuw samen te stellen.
 
-### <a name="collect-the-memory-dump-file"></a>Het geheugendumpbestand verzamelen
+### <a name="collect-the-memory-dump-file"></a>Het geheugen dump bestand verzamelen
 
-Om dit probleem op te lossen, moet u eerst het geheugendumpbestand verzamelen voor de crash en contact opnemen met ondersteuning voor het geheugendumpbestand. Voer de volgende stappen uit om het dumpbestand te verzamelen:
+Als u dit probleem wilt oplossen, moet u eerst het geheugen dump bestand voor de crash verzamelen en contact opnemen met ondersteuning met het geheugen dump bestand. Voer de volgende stappen uit om het dump bestand te verzamelen:
 
-#### <a name="attach-the-os-disk-to-a-new-repair-vm"></a>De OS-schijf koppelen aan een nieuwe reparatie-vm
+#### <a name="attach-the-os-disk-to-a-new-repair-vm"></a>De besturingssysteem schijf koppelen aan een nieuwe herstel-VM
 
-1. Gebruik stap [1-3 van de VM-reparatieopdrachten](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/repair-windows-vm-using-azure-virtual-machine-repair-commands#repair-process-example) om een nieuwe reparatie-vm voor te bereiden.
+1. Gebruik stap [1-3 van de VM-reparatie opdrachten](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/repair-windows-vm-using-azure-virtual-machine-repair-commands#repair-process-example) om een nieuwe herstel-VM voor te bereiden.
 
-2. Verbinding met extern bureaublad gebruiken verbinding maken met de VM Repareren.
+2. Gebruik Verbinding met extern bureaublad verbinding maken met de herstel-VM.
 
-#### <a name="locate-the-dump-file-and-submit-a-support-ticket"></a>Zoek het dumpbestand en stuur een ondersteuningsticket in
+#### <a name="locate-the-dump-file-and-submit-a-support-ticket"></a>Het dump bestand zoeken en een ondersteunings ticket verzenden
 
-1. Ga op de reparatie-vm naar de Windows-map in de bijgevoegde OS-schijf. Als de stuurprogrammaletter die is toegewezen aan de gekoppelde osschijf F is, moet u naar F:\Windows gaan.
+1. Ga op de virtuele machine herstellen naar de map Windows in de gekoppelde besturingssysteem schijf. Als de stuur programma-letter die is toegewezen aan de gekoppelde besturingssysteem schijf F is, moet u naar F:\Windows.
 
-2. Zoek het memory.dmp-bestand en [dien vervolgens een ondersteuningsticket in](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) bij het geheugendumpbestand.
+2. Zoek het bestand Memory. dmp en [Verzend een ondersteunings ticket](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) met het geheugen dump bestand.
 
-3. Als u problemen ondervindt bij het lokaliseren van het memory.dmp-bestand, u in plaats daarvan [niet-maskerbare interrupt-oproepen (NMI) in de seriële console](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/serial-console-windows#use-the-serial-console-for-nmi-calls) gebruiken. U de handleiding volgen om [een kernel of volledig crashdumpbestand](https://docs.microsoft.com/windows/client-management/generate-kernel-or-complete-crash-dump) te genereren met BEHULP van NMI-aanroepen.
+3. Als u problemen ondervindt bij het vinden van het bestand Memory. dmp, wilt u in plaats daarvan mogelijk [niet-maskeer bare interrupt-aanroepen (NMI) gebruiken in de seriële console](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/serial-console-windows#use-the-serial-console-for-nmi-calls) . U kunt de gids volgen voor het [genereren van een kernel of het volt ooien van een crash dump](https://docs.microsoft.com/windows/client-management/generate-kernel-or-complete-crash-dump) bestand met behulp van NMI-aanroepen.

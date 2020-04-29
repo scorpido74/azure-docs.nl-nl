@@ -1,6 +1,6 @@
 ---
-title: Code voor co-sell van staats- en provincies | Azure Marketplace
-description: Gebruik deze staats- en provinciecodes bij het verstrekken van contactgegevens op de co-verkooppagina van uw aanbieding.
+title: Status-en provincie codes voor co-verkoop | Azure Marketplace
+description: Gebruik deze provincie-en provincie codes bij het verstrekken van contact gegevens op de pagina voor co-sell van uw aanbieding.
 author: dsindona
 ms.author: dsindona
 ms.service: marketplace
@@ -8,44 +8,44 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/01/2020
 ms.openlocfilehash: 782f2d6facb28630989f086a68c551314e02e48e
-ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/02/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80619366"
 ---
-# <a name="co-sell-state-and-province-codes"></a>Co-sell staats- en provinciecodes
+# <a name="co-sell-state-and-province-codes"></a>Status-en provincie codes co-sell
 
-Gebruik deze codes indien van toepassing om staats-/provinciegegevens te verstrekken wanneer [u contactgegevens opdeed op de pagina Co-sell van uw aanbieding.](commercial-marketplace-co-sell.md#contacts)
+Gebruik, indien van toepassing, deze codes om informatie over de staat/provincie te verstrekken bij het [verstrekken van contact gegevens op de pagina voor co-sell van uw aanbieding](commercial-marketplace-co-sell.md#contacts).
 
-## <a name="us-states-and-territories"></a>Amerikaanse staten en gebieden
+## <a name="us-states-and-territories"></a>Staten en regio's in de VS
 
-|   Naam van staat en grondgebied          |   Code    |
+|   Provincie en regio naam          |   Code    |
 |-------------------------------------|-----------|
-| Alabama                             | US-AL     |
+| Alabama                             | VS-AL     |
 | Alaska                              | VS-AK     |
-| Arizona                             | VS-AZ     |
+| Arizona                             | US-AZ     |
 | Arkansas                            | VS-AR     |
-| Californië                          | US-CA     |
+| Californië                          | VS-CA     |
 | Colorado                            | VS-CO     |
-| Connecticut                         | US-CT     |
-| Delaware                            | US-DE     |
+| Connecticut                         | VS-CT     |
+| Delaware                            | VS-DE     |
 | Florida                             | VS-FL     |
 | Georgië                             | VS-GA     |
-| Hawaii                              | US-HI     |
+| Hawaii                              | VS-HOOG     |
 | Idaho                               | US-ID     |
-| Illinois                            | VS-IL     |
-| Indiana                             | US-IN     |
-| Iowa                                | VS-IA     |
-| Kansas                              | US-KS     |
+| Illinois                            | US-IL     |
+| Indiana                             | VS-IN     |
+| Iowa                                | US-IA     |
+| Kansas                              | VS-KS     |
 | Kentucky                            | VS-KY     |
 | Louisiana                           | VS-LA     |
-| Maine                               | VS-ME     |
+| Maine                               | VS     |
 | Maryland                            | US-MD     |
-| Massachusetts                       | US-MA     |
+| Massachusetts                       | VS-MA     |
 | Michigan                            | VS-MI     |
 | Minnesota                           | VS-MN     |
-| Mississippi                         | VS-LIDSTATEN     |
+| Mississippi                         | VS-MS     |
 | Missouri                            | VS-MO     |
 | Montana                             | VS-MT     |
 | Nebraska                            | VS-NE     |
@@ -54,35 +54,35 @@ Gebruik deze codes indien van toepassing om staats-/provinciegegevens te verstre
 | New Jersey                          | VS-NJ     |
 | New Mexico                          | VS-NM     |
 | New York                            | VS-NY     |
-| North Carolina                      | VS-NC     |
+| North Carolina                      | US-NC     |
 | Dakota                        | VS-ND     |
 | Ohio                                | US-OH     |
-| Oklahoma                            | US-OK     |
+| Oklahoma                            | VS-OK     |
 | Oregon                              | VS-OF     |
 | Pennsylvania                        | VS-PA     |
-| Rhode Island                        | US-RI     |
-| South Carolina                      | US-SC     |
-| South Dakota                        | US-SD     |
+| Rhode Island                        | VS-RI     |
+| South Carolina                      | VS-SC     |
+| South Dakota                        | VS-SD     |
 | Tennessee                           | VS-TN     |
-| Texas                               | US-TX     |
+| Texas                               | VS-TX     |
 | Utah                                | US-UT     |
 | Vermont                             | VS-VT     |
 | Virginia                            | VS-VA     |
-| Washington                          | US-WA     |
+| Washington                          | VS-WA     |
 | West Virginia                       | VS-WV     |
-| Wisconsin                           | US-WI     |
-| Wyoming                             | US-WY     |
+| Wisconsin                           | VS-WI     |
+| Wyoming                             | VS-WY     |
 | District of Columbia                | VS-DC     |
 | Amerikaans-Samoa                      | US-AS     |
-| Guam                                | VS-GU     |
-| Noordelijke Marianen            | VS-MP     |
-| Puerto Rico                         | VS-PR     |
-| Verenigde Staten Kleine Afgelegen eilanden | VS-UM    |
+| Guam                                | US-GU     |
+| Noordelijke Marianen            | US-MP     |
+| Puerto Rico                         | US-PR     |
+| Verenigde Staten ondergeschikte afgelegen eilanden | VS-UM    |
 | Amerikaanse Maagdeneilanden                 | VS-VI    |
 
 ## <a name="canadian-provinces-and-territories"></a>Canadese provincies en gebieden
 
-|   Provincie en grondgebied naam       |   Code    |
+|   Provincie en regio naam       |   Code    |
 |-------------------------------------|-----------|
 | Alberta                             |  CA-AB    |
 | Brits-Columbia                    |  CA-BC    |
@@ -101,7 +101,7 @@ Gebruik deze codes indien van toepassing om staats-/provinciegegevens te verstre
 
 ## <a name="australian-states-and-territories"></a>Australische staten en gebieden
 
-|   Naam van staat en grondgebied          |   Code    |
+|   Provincie en regio naam          |   Code    |
 |-------------------------------------|-----------|
 | New South Wales                     |  AU-NSW   |
 | Queensland                          |  AU-QLD   |
@@ -115,4 +115,4 @@ Gebruik deze codes indien van toepassing om staats-/provinciegegevens te verstre
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Meer informatie over de [optie co-verkoop in partnercentrum](./commercial-marketplace-co-sell.md).
+- Meer informatie over de [optie voor gezamenlijk verkopen in Partner Center](./commercial-marketplace-co-sell.md).

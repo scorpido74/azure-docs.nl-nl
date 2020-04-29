@@ -1,6 +1,6 @@
 ---
-title: Het belang van pushmeldingen in uw mobiele apps met Visual Studio App Center en Azure Notification Hubs
-description: Meer informatie over services zoals Visual Studio App Center die u gebruiken om contact te leggen met uw gebruikers van mobiele toepassingen.
+title: Het belang van push meldingen in uw mobiele apps met Visual Studio App Center en Azure Notification Hubs
+description: Meer informatie over services, zoals Visual Studio App Center, die u kunt gebruiken om uw mobiele toepassings gebruikers te benaderen.
 author: codemillmatt
 ms.assetid: 12bbb070-9b3c-4faf-8588-ccff02097224
 ms.service: vs-appcenter
@@ -8,66 +8,66 @@ ms.topic: article
 ms.date: 03/24/2020
 ms.author: masoucou
 ms.openlocfilehash: bc59857cdb843dfff54e69f2226f13cfe70df8f0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80235337"
 ---
-# <a name="engage-with-your-application-users-by-sending-push-notifications"></a>Contact opnemen met uw gebruikers van toepassingen door pushmeldingen te verzenden
+# <a name="engage-with-your-application-users-by-sending-push-notifications"></a>Neem contact op met uw toepassings gebruikers door push meldingen te verzenden
 
-Of u nu consumenten- of bedrijfstoepassingen bouwt, u wilt dat gebruikers uw toepassing actief gebruiken. Er zijn vaak momenten waarop u het laatste nieuws, game-updates, spannende aanbiedingen, productupdates of andere relevante informatie met uw gebruikers wilt delen. Om de betrokkenheid bij uw gebruikers te vergroten en ze terug te laten keren naar uw toepassing, hebt u een manier nodig om in realtime met uw gebruikers te communiceren.
+Of u nu consumenten-of bedrijfs toepassingen bouwt, u wilt dat gebruikers uw toepassing actief gebruiken. Er zijn vaak momenten waarop u het aantal nieuws, game updates, interessante aanbiedingen, product updates of andere relevante informatie met uw gebruikers wilt delen. Als u de betrokkenheid wilt verg Roten met uw gebruikers en ze wilt teruggaan naar uw toepassing, hebt u een manier nodig om in realtime met uw gebruikers te communiceren.
 
-Pushmeldingen bieden een snelle en efficiënte manier om te communiceren met uw gebruikers van de toepassing. U uw gebruikers op het juiste moment bereiken en hen op de hoogte stellen van de gewenste informatie, meestal in een pop-upitem of dialoogvenster op een mobiel apparaat, ongeacht wat ze doen.
+Push meldingen bieden een snelle en efficiënte manier om te communiceren met uw toepassings gebruikers. U kunt uw gebruikers op het juiste moment bereiken en op de hoogte stellen van de gewenste informatie, meestal in een pop-upitem of dialoog venster op een mobiel apparaat, ongeacht wat ze doen.
 
-## <a name="value-of-push-notifications"></a>Waarde van pushmeldingen
-Pushmeldingen bieden waarde aan gebruikers en bedrijven.
+## <a name="value-of-push-notifications"></a>Waarde van push meldingen
+Push meldingen bieden een waarde aan gebruikers en bedrijven.
 
 Bedrijven kunnen:
-- Communiceer rechtstreeks met gebruikers door berichten op ondersteunde platforms op het juiste moment te verzenden.
-- Vergroot de betrokkenheid van gebruikers door realtime updates en herinneringen naar gebruikers te sturen en hen aan te moedigen regelmatig met de toepassing in contact te komen.
-- Bewaar gebruikers en neem opnieuw contact op met inactieve gebruikers die de toepassing hebben gedownload, maar deze niet gebruiken om weer actief te worden.
-- Verhoog de conversieratio's door het gedrag van gebruikers te analyseren, gebruikers te segmenteren en campagnes te gebruiken op basis van mobiele pushmeldingen.
-- Promoot producten en services door pushberichten en tijdige updates naar gebruikers te sturen.
-- Target gebruikers door gepersonaliseerde pushberichten te verzenden.
+- Communiceer rechtstreeks met gebruikers door op het juiste moment berichten te verzenden op ondersteunde platforms.
+- Verbeter de gebruikers betrokkenheid door realtime-updates en herinneringen naar gebruikers te sturen, zodat ze de toepassing regel matig kunnen benaderen.
+- Gebruikers behouden en contact opnemen met inactieve gebruikers die de toepassing hebben gedownload, maar deze niet gebruiken om opnieuw actief te worden.
+- Verhoog de conversie snelheid door gebruikers gedrag te analyseren, gebruikers te segmenteren en campagnes te benutten op basis van mobiele push meldingen.
+- Promoot producten en services door push berichten en tijdige updates naar gebruikers te verzenden.
+- Doel gebruikers door persoonlijke push berichten te verzenden.
 
-Voor gebruikers van toepassingen, pushmeldingen:
-- Geef waarde en informatie in real time.
-- Gebruikers eraan herinneren de toepassing te gebruiken.
+Voor toepassings gebruikers, Push meldingen:
+- Geef in realtime waarden en informatie op.
+- Herinner gebruikers om de toepassing te gebruiken.
 
-Gebruik de volgende services om pushmeldingen in te schakelen in uw mobiele apps.
+Gebruik de volgende services om Push meldingen in te scha kelen in uw mobiele apps.
 
 ## <a name="visual-studio-app-center"></a>Visual Studio App Center
-Met [App Center Push](/appcenter/push/)u gerichte berichten verzenden naar iOS-, Android- en Windows-gebruikers zonder dat u het proces van het verzenden van meldingen naar apparaten hoeft te beheren met behulp van Push Notification Services (PNS). Deze service is gebouwd bovenop Azure Notification Hubs en elimineert complexiteiten die gepaard gaan met het handmatig pushen van meldingen door een krachtig dashboard te bieden.
+Met [app Center push](/appcenter/push/)kunt u gerichte berichten verzenden naar IOS-, Android-en Windows-gebruikers zonder dat u het proces voor het verzenden van meldingen naar apparaten hoeft te beheren door gebruik te maken van Push Notification Services (PNS). Deze service is gebouwd op basis van Azure Notification Hubs en elimineert complexer voor het hand matig pushen van meldingen door een krachtig dash board te bieden.
 
 **Belangrijke functies**
-- Stuur pushmeldingen naar mobiele apparaten op verschillende platforms.
-- Gebruik meldingen om gegevens naar een toepassing te verzenden, een bericht aan de gebruiker weer te geven of een actie van de toepassing te activeren.
-- Gebruik meldingsdoelen om: 
-    - Berichten uitzenden naar alle geregistreerde apparaten.
-    - Stuur meldingen naar doelgroepen op basis van apparaatgegevens en aangepaste eigenschappen.
-    - Stuur meldingen naar specifieke gebruikers.
+- Verzend push meldingen naar mobiele apparaten op verschillende platforms.
+- Gebruik meldingen om gegevens te verzenden naar een toepassing, een bericht weer te geven voor de gebruiker of een actie te activeren door de toepassing.
+- Gebruik meldings doelen voor het volgende: 
+    - Berichten broadcasten naar alle geregistreerde apparaten.
+    - Meldingen verzenden naar doel groepen op basis van informatie over apparaten en aangepaste eigenschappen.
+    - Meldingen verzenden naar specifieke gebruikers.
     - Meldingen verzenden naar specifieke apparaten.
-- Maak gebruik van de rijke telemetrie op pushes, apparaten en fouten die beschikbaar zijn in de App Center-portal.
-- Krijg platformondersteuning voor iOS, Android, macOS, Xamarin, React Native, Unity en Cordova.
+- Maak gebruik van de rijke telemetrie voor pushes, apparaten en fouten die beschikbaar zijn in de App Center Portal.
+- Profiteer van platform ondersteuning voor iOS, Android, macOS, Xamarin, reageert systeem eigen, eenheids-en Cordova.
 
 **Verwijzingen**
-- [Meld u aan bij Visual Studio App Center](https://appcenter.ms/signup?utm_source=Mobile%20Development%20Docs&utm_medium=Azure&utm_campaign=New%20azure%20docs)
-- [Aan de slag met App Center Push](/appcenter/push/)
+- [Meld u aan met Visual Studio App Center](https://appcenter.ms/signup?utm_source=Mobile%20Development%20Docs&utm_medium=Azure&utm_campaign=New%20azure%20docs)
+- [Aan de slag met App Center push](/appcenter/push/)
 
 ## <a name="azure-notification-hubs"></a>Azure Notification Hubs
-[Notification Hubs](/azure/notification-hubs/notification-hubs-push-notification-overview) biedt een gebruiksvriendelijke en geschaalde pushengine. U het gebruiken om meldingen te verzenden naar elk platform en vanaf elke back-end in de cloud of on-premises.
+[Notification hubs](/azure/notification-hubs/notification-hubs-push-notification-overview) biedt een eenvoudig te gebruiken en uitgeschaalde Push Engine. U kunt deze gebruiken om meldingen te verzenden naar een wille keurig platform en vanaf elke back-end in de Cloud of on-premises.
 
 **Belangrijke functies**
-- Stuur pushmeldingen naar elk platform vanaf elke back-end, in de cloud of on-premises.
-- Snelle uitzending push naar miljoenen mobiele apparaten met een enkele API-aanroep.
-- Pas pushmeldingen aan op klant, taal en locatie.
-- Dynamisch klantsegmenten definiëren en op de hoogte stellen.
+- Verzend push meldingen naar elk platform vanuit elke back-end, in de Cloud of on-premises.
+- Snel broadcasten pushen naar miljoenen mobiele apparaten met één API-oproep.
+- Push meldingen aanpassen op basis van klant, taal en locatie.
+- Definieer en meld klant segmenten dynamisch.
 - Schaal direct naar miljoenen mobiele apparaten.
-- Krijg platformondersteuning voor iOS, Android, Windows, Kindle en Baidu.
+- Profiteer van platform ondersteuning voor iOS, Android, Windows, Kindle en Baidu.
         
 **Verwijzingen**
-- [Azure-portal](https://portal.azure.com) 
+- [Azure Portal](https://portal.azure.com) 
 - [Aan de slag met Azure Notification Hubs](/azure/notification-hubs/)
-- [Snel gestart](/azure/notification-hubs/create-notification-hub-portal)
-- [Monsters](/azure/notification-hubs/samples)
+- [Snelstartgidsen](/azure/notification-hubs/create-notification-hub-portal)
+- [Voorbeelden](/azure/notification-hubs/samples)

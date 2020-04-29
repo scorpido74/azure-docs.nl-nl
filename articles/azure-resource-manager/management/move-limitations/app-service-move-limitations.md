@@ -1,57 +1,57 @@
 ---
-title: Azure App Service-resources verplaatsen
-description: Gebruik Azure Resource Manager om App Service-resources te verplaatsen naar een nieuwe brongroep of -abonnement.
+title: Azure App Service resources verplaatsen
+description: Gebruik Azure Resource Manager om App Service resources te verplaatsen naar een nieuwe resource groep of een nieuw abonnement.
 ms.topic: conceptual
 ms.date: 12/13/2019
 ms.openlocfilehash: d0ecd117bdcda9238e310a3020dba19a6871a3fc
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/03/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80655770"
 ---
-# <a name="move-guidance-for-app-service-resources"></a>Richtlijnen verplaatsen voor App-servicebronnen
+# <a name="move-guidance-for-app-service-resources"></a>Richt lijnen voor App Service resources verplaatsen
 
-In dit artikel worden de stappen beschreven om app-servicebronnen te verplaatsen. Er zijn specifieke vereisten voor het verplaatsen van App Service-resources naar een nieuw abonnement.
+In dit artikel worden de stappen beschreven voor het verplaatsen van App Service resources. Er zijn specifieke vereisten voor het verplaatsen van App Service-resources naar een nieuw abonnement.
 
-## <a name="move-across-subscriptions"></a>Over abonnement heen gaan
+## <a name="move-across-subscriptions"></a>Scha kelen tussen abonnementen
 
-Wanneer u een web-app over abonnementen verplaatst, geldt de volgende richtlijnen:
+Bij het verplaatsen van een web-app tussen abonnementen, gelden de volgende richt lijnen:
 
-- De resourcegroep bestemming mag geen bestaande App Service-bronnen hebben. Bronnen voor app-service omvatten:
+- De doel resource groep mag geen bestaande App Service resources hebben. App Service resources zijn onder andere:
     - Web Apps
     - App Service-abonnementen
     - Geüploade of geïmporteerde TLS/SSL-certificaten
     - App Service-omgevingen
-- Alle App-servicebronnen in de resourcegroep moeten samen worden verplaatst. Houd er rekening mee dat App-serviceomgevingen niet kunnen worden verplaatst naar een nieuwe resourcegroep of naar een nieuw abonnement.
-- U een certificaat verplaatsen dat naar een web is gebonden zonder de TLS-bindingen te verwijderen, zolang het certificaat wordt verplaatst met alle andere bronnen in de resourcegroep.
-- App Service-resources kunnen alleen worden verplaatst van de resourcegroep waarin ze oorspronkelijk zijn gemaakt. Als een App Service-bron zich niet meer in de oorspronkelijke resourcegroep bevindt, verplaatst u deze terug naar de oorspronkelijke brongroep. Verplaats de resource vervolgens over abonnementen.
+- Alle App Service resources in de resource groep moeten samen worden verplaatst. Houd er rekening mee dat App Service omgevingen niet kunnen worden verplaatst naar een nieuwe resource groep of naar een nieuw abonnement.
+- U kunt een certificaat dat is gebonden aan een web verplaatsen zonder de TLS-bindingen te verwijderen, zolang het certificaat met alle andere resources in de resource groep is verplaatst.
+- App Service resources kunnen alleen worden verplaatst van de resource groep waarin ze oorspronkelijk zijn gemaakt. Als een App Service resource niet langer in de oorspronkelijke resource groep staat, zet u deze terug naar de oorspronkelijke resource groep. Verplaats vervolgens de resource over abonnementen.
 
-Als u de oorspronkelijke brongroep niet meer weet, u deze vinden via diagnostische gegevens. Selecteer voor uw web-app **Diagnose en los problemen op.** Selecteer vervolgens **Configuratie en beheer**.
+Als u de oorspronkelijke resource groep niet meer weet, kunt u deze vinden via diagnostische gegevens. Selecteer voor uw web-app **diagnose en los problemen**op. Selecteer vervolgens **configuratie en beheer**.
 
 ![Diagnostische gegevens selecteren](./media/app-service-move-limitations/select-diagnostics.png)
 
-Selecteer **Migratieopties**.
+Selecteer **migratie opties**.
 
-![Migratieopties selecteren](./media/app-service-move-limitations/select-migration.png)
+![Migratie opties selecteren](./media/app-service-move-limitations/select-migration.png)
 
-Selecteer de optie voor aanbevolen stappen om de web-app te verplaatsen.
+Selecteer de optie voor de aanbevolen stappen voor het verplaatsen van de web-app.
 
 ![Aanbevolen stappen selecteren](./media/app-service-move-limitations/recommended-steps.png)
 
-U ziet de aanbevolen acties die u moet uitvoeren voordat u de resources verplaatst. De informatie bevat de oorspronkelijke brongroep voor de web-app.
+U ziet de aanbevolen acties die u moet uitvoeren voordat u de resources verplaatst. De informatie bevat de oorspronkelijke resource groep voor de web-app.
 
 ![Aanbevelingen](./media/app-service-move-limitations/recommendations.png)
 
 ## <a name="move-support"></a>Ondersteuning verplaatsen
 
-Zie Ondersteuningsstatus verplaatsen voor:
+Zie de ondersteunings status verplaatsen voor het volgende om te bepalen welke App Service resources kunnen worden verplaatst:
 
-- [Microsoft.AppService](../move-support-resources.md#microsoftappservice)
+- [Micro soft. AppService](../move-support-resources.md#microsoftappservice)
 - [Microsoft.CertificateRegistration](../move-support-resources.md#microsoftcertificateregistration)
-- [Microsoft.DomainRegistration](../move-support-resources.md#microsoftdomainregistration)
+- [Micro soft. DomainRegistration](../move-support-resources.md#microsoftdomainregistration)
 - [Microsoft.Web](../move-support-resources.md#microsoftweb)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie Resources verplaatsen naar [een nieuwe resourcegroep of -abonnement](../move-resource-group-and-subscription.md)voor opdrachten om resources te verplaatsen.
+Zie [resources verplaatsen naar een nieuwe resource groep of een nieuw abonnement](../move-resource-group-and-subscription.md)voor opdrachten voor het verplaatsen van resources.

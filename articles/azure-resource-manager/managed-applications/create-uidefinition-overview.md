@@ -1,20 +1,20 @@
 ---
-title: Bestand CreateUiDefinition.json voor portalvenster
-description: Beschrijft hoe u gebruikersinterfacedefinities maakt voor de Azure-portal. Wordt gebruikt bij het definiëren van Azure Managed Applications.
+title: CreateUiDefinition. JSON-bestand voor het deel venster Portal
+description: Hierin wordt beschreven hoe u gebruikers interface definities maakt voor de Azure Portal. Wordt gebruikt bij het definiëren van Azure Managed Applications.
 author: tfitzmac
 ms.topic: conceptual
 ms.date: 08/06/2019
 ms.author: tomfitz
 ms.openlocfilehash: 2956c76f5bec353639b39228b982db21b6932deb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80294896"
 ---
 # <a name="createuidefinitionjson-for-azure-managed-applications-create-experience"></a>CreateUiDefinition. json voor het maken van beheerde Azure-toepassingen
 
-Dit document introduceert de kernconcepten van het **createUiDefinition.json-bestand dat Azure-portal** gebruikt om de gebruikersinterface te definiëren bij het maken van een beheerde toepassing.
+In dit document worden de belangrijkste concepten van het bestand **createUiDefinition. json** geïntroduceerd dat Azure Portal gebruikt om de gebruikers interface te definiëren bij het maken van een beheerde toepassing.
 
 De sjabloon is als volgt
 
@@ -34,31 +34,31 @@ De sjabloon is als volgt
 
 Een CreateUiDefinition bevat altijd drie eigenschappen: 
 
-* Handler
+* afhandelingsprocedure
 * versie
 * parameters
 
-De handler moet `Microsoft.Azure.CreateUIDef`altijd zijn, en `0.1.2-preview`de nieuwste ondersteunde versie is .
+De handler moet altijd zijn `Microsoft.Azure.CreateUIDef`en de meest recente ondersteunde versie is `0.1.2-preview`.
 
-Het schema van de eigenschap parameters is afhankelijk van de combinatie van de opgegeven handler en versie. Voor beheerde toepassingen worden `basics`de `steps`ondersteunde `outputs`eigenschappen , en . De eigenschappen basis- en stappen bevatten de [elementen](create-uidefinition-elements.md) - zoals tekstvakken en vervolgkeuzelijsten - die in de Azure-portal worden weergegeven. De eigenschap uitvoer wordt gebruikt om de uitvoerwaarden van de opgegeven elementen toe te passen aan de parameters van de azure resource manager-implementatiesjabloon.
+Het schema van de eigenschap para meters is afhankelijk van de combi natie van de opgegeven handler en versie. Voor beheerde toepassingen zijn `basics`de ondersteunde eigenschappen, `steps`en. `outputs` De eigenschappen van de basis beginselen en de stappen bevatten de [elementen](create-uidefinition-elements.md) , zoals tekst vakken en vervolg keuzelijsten, die moeten worden weer gegeven in de Azure Portal. De eigenschap outputs wordt gebruikt om de uitvoer waarden van de opgegeven elementen toe te wijzen aan de para meters van de Azure Resource Manager-implementatie sjabloon.
 
-Inclusief `$schema` is aanbevolen, maar optioneel. Indien opgegeven, moet `version` de waarde voor `$schema` de versie binnen de URI overeenkomen.
+Inclusief `$schema` wordt aanbevolen, maar is optioneel. Indien opgegeven, moet de waarde `version` voor overeenkomen met de versie `$schema` in de URI.
 
-U een JSON-editor gebruiken om uw createUiDefinition te maken en deze vervolgens te testen in de [createUiDefinition Sandbox](https://portal.azure.com/?feature.customPortal=false&#blade/Microsoft_Azure_CreateUIDef/SandboxBlade) om deze te bekijken. Zie [Uw portalinterface voor Azure Managed Applications testen voor](test-createuidefinition.md)meer informatie over de sandbox.
+U kunt een JSON-editor gebruiken om uw createUiDefinition te maken en deze vervolgens te testen in de [createUiDefinition-sandbox](https://portal.azure.com/?feature.customPortal=false&#blade/Microsoft_Azure_CreateUIDef/SandboxBlade) om deze te bekijken. Zie [uw portal-interface testen voor Azure Managed Applications](test-createuidefinition.md)voor meer informatie over de sandbox.
 
 ## <a name="basics"></a>Basisbeginselen
 
-Basisbeginselen is de eerste stap die wordt gegenereerd wanneer de Azure-portal het bestand ontleden. Naast het weergeven van `basics`de elementen die zijn opgegeven in , injecteert de portal elementen voor gebruikers om het abonnement, de brongroep en de locatie voor de implementatie te kiezen. Indien mogelijk moeten elementen die parameters voor de implementatie van de implementatie opvragen, zoals de naam van een cluster of beheerdersreferenties, in deze stap worden gebruikt.
+Basis beginselen is de eerste stap die wordt gegenereerd wanneer de Azure Portal het bestand parseert. Naast het weer geven van de elementen die `basics`zijn opgegeven in, injecteert de portal elementen voor gebruikers om het abonnement, de resource groep en de locatie voor de implementatie te kiezen. Als dat mogelijk is, moeten elementen die para meters voor implementatie query's uitvoeren, zoals de naam van een cluster of beheerders referenties, in deze stap gaan.
 
 ## <a name="steps"></a>Stappen
 
-De eigenschap stappen kan nul of meer extra stappen bevatten om na basisbeginselen weer te geven, die elk een of meer elementen bevatten. Overweeg stappen toe te voegen per rol of laag van de toepassing die wordt geïmplementeerd. Voeg bijvoorbeeld een stap toe voor hoofdknooppuntingangen en een stap voor de werknemersknooppunten in een cluster.
+De eigenschap Steps kan nul of meer extra stappen bevatten om weer te geven na basis beginselen, die elk een of meer elementen bevatten. U kunt stappen toevoegen per rol of laag van de toepassing die wordt geïmplementeerd. Voeg bijvoorbeeld een stap toe voor invoer van hoofd knooppunten en een stap voor de worker-knoop punten in een cluster.
 
 ## <a name="outputs"></a>Uitvoer
 
-De Azure-portal `outputs` gebruikt de `basics` eigenschap `steps` om elementen van en naar de parameters van de azure resource manager-implementatiesjabloon in kaart te brengen. De sleutels van dit woordenboek zijn de namen van de sjabloonparameters en de waarden zijn eigenschappen van de uitvoerobjecten van de naar de verwijzing genoemde elementen verwezen.
+De Azure Portal gebruikt de `outputs` eigenschap om elementen van `basics` en `steps` toe te wijzen aan de para meters van de sjabloon Azure Resource Manager-implementatie. De sleutels van deze woorden lijst zijn de namen van de sjabloon parameters en de waarden zijn eigenschappen van de uitvoer objecten van de elementen waarnaar wordt verwezen.
 
-Als u de naam van de beheerde `applicationResourceName` toepassingsbron wilt instellen, moet u een waarde opnemen die is vernoemd in de eigenschap uitvoer. Als u deze waarde niet instelt, wijst de toepassing een GUID toe voor de naam. U een tekstvak opnemen in de gebruikersinterface waarin een naam van de gebruiker wordt opgevraagd.
+Als u de resource naam voor een beheerde toepassing wilt instellen, moet u `applicationResourceName` een waarde met de naam opgeven in de eigenschap outputs. Als u deze waarde niet instelt, wijst de toepassing een GUID toe voor de naam. U kunt een tekstvak in de gebruikers interface toevoegen dat een naam aanvraagt bij de gebruiker.
 
 ```json
 "outputs": {
@@ -72,7 +72,7 @@ Als u de naam van de beheerde `applicationResourceName` toepassingsbron wilt ins
 
 ## <a name="resource-types"></a>Resourcetypen
 
-Als u de beschikbare locaties wilt filteren op alleen de locaties die de te implementeren resourcetypen ondersteunen, geeft u een array van de resourcetypen. Als u meer dan één resourcetype opgeeft, worden alleen de locaties die alle resourcetypen ondersteunen, geretourneerd. Deze eigenschap is optioneel.
+Als u de beschik bare locaties wilt filteren op alleen de locaties die ondersteuning bieden voor de resource typen die moeten worden geïmplementeerd, geeft u een matrix van de resource typen op. Als u meer dan één resource type opgeeft, worden alleen de locaties geretourneerd die alle resource typen ondersteunen. Deze eigenschap is optioneel.
 
 ```json
 {
@@ -87,15 +87,15 @@ Als u de beschikbare locaties wilt filteren op alleen de locaties die de te impl
 
 ## <a name="functions"></a>Functions
 
-CreateUiDefinition biedt [functies](create-uidefinition-functions.md) voor het werken met de ingangen en uitgangen van elementen en functies zoals conditionalen. Deze functies zijn qua syntaxis en functionaliteit vergelijkbaar met sjabloonfuncties van Azure Resource Manager.
+CreateUiDefinition biedt [functies](create-uidefinition-functions.md) voor het werken met de invoer en uitvoer van elementen en functies, zoals voor waarden. Deze functies zijn vergelijkbaar in zowel de syntaxis als de functionaliteit voor het Azure Resource Manager van sjabloon functies.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Het bestand createUiDefinition.json zelf heeft een eenvoudig schema. De echte diepte van het komt van alle ondersteunde elementen en functies. Deze items worden nader beschreven op:
+Het bestand createUiDefinition. json heeft zelf een eenvoudig schema. De reële diepte van het is afkomstig van alle ondersteunde elementen en functies. Deze items worden in meer detail beschreven op:
 
 - [Elementen](create-uidefinition-elements.md)
-- [Functies](create-uidefinition-functions.md)
+- [Functions](create-uidefinition-functions.md)
 
-Een actueel JSON-schema voor createUiDefinition is hier beschikbaar: `https://schema.management.azure.com/schemas/0.1.2-preview/CreateUIDefinition.MultiVm.json`.
+Een huidig JSON-schema voor createUiDefinition is hier beschikbaar `https://schema.management.azure.com/schemas/0.1.2-preview/CreateUIDefinition.MultiVm.json`:.
 
-Zie [createUiDefinition.json](https://github.com/Azure/azure-managedapp-samples/blob/master/Managed%20Application%20Sample%20Packages/201-managed-app-using-existing-vnet/createUiDefinition.json)voor een voorbeeldvan user interface bestand .
+Zie [createUiDefinition. json](https://github.com/Azure/azure-managedapp-samples/blob/master/Managed%20Application%20Sample%20Packages/201-managed-app-using-existing-vnet/createUiDefinition.json)voor een voor beeld van een gebruikers interface bestand.

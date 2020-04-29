@@ -1,6 +1,6 @@
 ---
-title: 'Zelfstudie: Gegevens over New York Taxicab laden'
-description: Zelfstudie maakt gebruik van Azure portal en SQL Server Management Studio om New York Taxicab-gegevens te laden vanuit een wereldwijde Azure-blob voor Synapse SQL.
+title: "Zelf studie: over taxi's-gegevens voor New York laden"
+description: In de zelf studie worden Azure Portal en SQL Server Management Studio gebruikt voor het laden van nieuwe over taxi's-gegevens uit een globale Azure-Blob voor Synapse SQL.
 services: synapse-analytics
 author: kevinvngo
 manager: craigg
@@ -12,19 +12,19 @@ ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
 ms.openlocfilehash: 741779e8328c38e544b1ad297e59155dab4e8c0d
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/03/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80633908"
 ---
-# <a name="tutorial-load-the-new-york-taxicab-dataset"></a>Zelfstudie: Laad de gegevensset Van New York Taxicab
+# <a name="tutorial-load-the-new-york-taxicab-dataset"></a>Zelf studie: de over taxi's-gegevensset van New York laden
 
-Deze zelfstudie gebruikt PolyBase om New York Taxicab-gegevens te laden van een wereldwijd Azure blob-opslagaccount. De zelfstudie gebruikt [Azure Portal](https://portal.azure.com) en [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) (SSMS) voor het volgende:
+In deze zelf studie wordt gebruikgemaakt van poly Base voor het laden van New York over taxi's-gegevens uit een globaal Azure Blob-opslag account. De zelfstudie gebruikt [Azure Portal](https://portal.azure.com) en [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) (SSMS) voor het volgende:
 
 > [!div class="checklist"]
 >
-> * Een SQL-groep maken in de Azure-portal
+> * Een SQL-groep maken in de Azure Portal
 > * Een serverfirewallregel ingesteld in Azure Portal
 > * Verbinding maken met het datawarehouse met SMMS
 > * Een gebruiker maken die wordt aangewezen om gegevens te laden
@@ -33,7 +33,7 @@ Deze zelfstudie gebruikt PolyBase om New York Taxicab-gegevens te laden van een 
 > * De voortgang van de gegevens weergeven terwijl deze worden geladen
 > * Statistieken maken voor de nieuw geladen gegevens
 
-Als u geen Azure-abonnement hebt, [maakt u een gratis account](https://azure.microsoft.com/free/) voordat u begint.
+Als u nog geen abonnement op Azure hebt, [Maak dan een gratis account](https://azure.microsoft.com/free/) aan voordat u begint.
 
 ## <a name="before-you-begin"></a>Voordat u begint
 
@@ -41,17 +41,17 @@ Download en installeer voordat u met deze zelfstudie begint de nieuwste versie v
 
 ## <a name="log-in-to-the-azure-portal"></a>Aanmelden bij Azure Portal
 
-Log in bij de [Azure-portal](https://portal.azure.com/).
+Meld u aan bij de [Azure Portal](https://portal.azure.com/).
 
 ## <a name="create-a-blank-database"></a>Een lege database maken
 
-Er wordt een SQL-groep gemaakt met een gedefinieerde set [compute resources.](memory-concurrency-limits.md) De database wordt gemaakt in een [Azure-resourcegroep](../../azure-resource-manager/management/overview.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) en in een [logische Azure SQL-server](../../sql-database/sql-database-features.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json).
+Een SQL-groep wordt gemaakt met een gedefinieerde set [reken resources](memory-concurrency-limits.md). De database wordt gemaakt in een [Azure-resourcegroep](../../azure-resource-manager/management/overview.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) en in een [logische Azure SQL-server](../../sql-database/sql-database-features.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json).
 
-Volg deze stappen om een lege database te maken.
+Volg deze stappen om een lege data base te maken.
 
 1. Selecteer in de linkerbovenhoek van Azure Portal **Een resource maken**.
 
-2. Selecteer **Databases** op de pagina **Nieuw** en selecteer **Azure Synapse Analytics** onder **Aanbevolen** op de pagina **Nieuw.**
+2. Selecteer **data bases** op de pagina **Nieuw** en selecteer **Azure Synapse Analytics** onder **Aanbevolen** op de pagina **Nieuw** .
 
     ![datawarehouse maken](./media/load-data-from-azure-blob-storage-using-polybase/create-empty-data-warehouse.png)
 
@@ -59,7 +59,7 @@ Volg deze stappen om een lege database te maken.
 
    | Instelling            | Voorgestelde waarde       | Beschrijving                                                  |
    | ------------------ | --------------------- | ------------------------------------------------------------ |
-   | *Naam**            | mySampleDataWarehouse | Zie [Database-id's voor](/sql/relational-databases/databases/database-identifiers?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)geldige databasenamen . |
+   | *Naam**            | mySampleDataWarehouse | Zie [Data Base-id's](/sql/relational-databases/databases/database-identifiers?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)voor geldige database namen. |
    | **Abonnement**   | Uw abonnement     | Zie [Abonnementen](https://account.windowsazure.com/Subscriptions) voor meer informatie over uw abonnementen. |
    | **Resourcegroep** | myResourceGroup       | Zie [Naming conventions](/azure/architecture/best-practices/resource-naming?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) (Naamgevingsconventies) voor geldige namen van resourcegroepen. |
    | **Bron selecteren**  | Lege database        | Geeft aan dat er een lege database wordt gemaakt. Opmerking: een datawarehouse is een type database. |
@@ -70,48 +70,48 @@ Volg deze stappen om een lege database te maken.
 
     | Instelling                | Voorgestelde waarde          | Beschrijving                                                  |
     | ---------------------- | ------------------------ | ------------------------------------------------------------ |
-    | **Servernaam**        | Een wereldwijd unieke naam | Zie [Naming conventions](/azure/architecture/best-practices/resource-naming?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) (Naamgevingsconventies) voor geldige servernamen. |
-    | **Inloggen voor serverbeheerder** | Een geldige naam           | Zie [Database-id's voor](/sql/relational-databases/databases/database-identifiers?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)geldige aanmeldingsnamen . |
+    | **Server naam**        | Een wereldwijd unieke naam | Zie [Naming conventions](/azure/architecture/best-practices/resource-naming?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) (Naamgevingsconventies) voor geldige servernamen. |
+    | **Aanmelding bij de server beheerder** | Een geldige naam           | Zie [Data Base-id's](/sql/relational-databases/databases/database-identifiers?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)voor geldige aanmeldings namen. |
     | **Wachtwoord**           | Een geldig wachtwoord       | Uw wachtwoord moet uit minstens acht tekens bestaan en moet tekens bevatten uit drie van de volgende categorieën: hoofdletters, kleine letters, cijfers en niet-alfanumerieke tekens. |
-    | **Locatie**           | Een geldige locatie       | Zie [Azure-regio's](https://azure.microsoft.com/regions/)voor informatie over regio's . |
+    | **Locatie**           | Een geldige locatie       | Zie [Azure-regio's](https://azure.microsoft.com/regions/)voor meer informatie over regio's. |
 
     ![databaseserver maken](./media/load-data-from-azure-blob-storage-using-polybase/create-database-server.png)
 
 5. Kies **Selecteren**.
 
-6. Selecteer **Prestatieniveau** om op te geven of het gegevensmagazijn Gen1 of Gen2 is en het aantal gegevensmagazijneenheden.
+6. Selecteer **prestatie niveau** om op te geven of het Data Warehouse gen1 of Gen2 is en het aantal data warehouse-eenheden.
 
-7. Selecteer VOOR deze zelfstudie SQL-pool **Gen2**. De schuifregelaar is standaard ingesteld op **DW1000c.**  Verplaats de regelaar omhoog en omlaag om te zien hoe dit werkt.
+7. Voor deze zelf studie selecteert u de SQL-groep **Gen2**. De schuif regelaar wordt standaard ingesteld op **DW1000c** .  Verplaats de regelaar omhoog en omlaag om te zien hoe dit werkt.
 
     ![prestaties configureren](./media/load-data-from-azure-blob-storage-using-polybase/configure-performance.png)
 
 8. Selecteer **Toepassen**.
-9. Selecteer in het inrichtingsblad een **collatie** voor de lege database. Gebruik voor deze zelfstudie de standaardwaarde. Zie [Collations](/sql/t-sql/statements/collations?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) (Sorteringen) voor meer informatie over sorteringen
+9. Selecteer op de Blade inrichten een **sortering** voor de lege data base. Gebruik voor deze zelfstudie de standaardwaarde. Zie [Collations](/sql/t-sql/statements/collations?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) (Sorteringen) voor meer informatie over sorteringen
 
-10. Nu u het formulier hebt ingevuld, selecteert u **Maken** om de database in te richten. De inrichting duurt een paar minuten.
+10. Nu u het formulier hebt ingevuld, selecteert u **maken** om de data base in te richten. De inrichting duurt een paar minuten.
 
-11. Selecteer op de werkbalk **Meldingen** om het implementatieproces te controleren.
+11. Selecteer op de werk balk **meldingen** om het implementatie proces te bewaken.
   
      ![melding](./media/load-data-from-azure-blob-storage-using-polybase/notification.png)
 
 ## <a name="create-a-server-level-firewall-rule"></a>Een serverfirewallregel maken
 
-Een firewall op serverniveau die voorkomt dat externe toepassingen en hulpprogramma's verbinding maken met de server of databases op de server. Als u de connectiviteit wilt inschakelen, kunt u firewallregels toevoegen waarmee connectiviteit voor bepaalde IP-adressen wordt ingeschakeld.  Volg deze stappen om een [firewallregel op serverniveau](../../sql-database/sql-database-firewall-configure.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) te maken voor het IP-adres van uw client.
+Een firewall op server niveau die voor komt dat externe toepassingen en hulpprogram ma's verbinding maken met de server of data bases op de server. Als u de connectiviteit wilt inschakelen, kunt u firewallregels toevoegen waarmee connectiviteit voor bepaalde IP-adressen wordt ingeschakeld.  Volg deze stappen om een [firewallregel op serverniveau](../../sql-database/sql-database-firewall-configure.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) te maken voor het IP-adres van uw client.
 
 > [!NOTE]
 > SQL Database Warehouse communiceert via poort 1433. Als u verbinding wilt maken vanuit een bedrijfsnetwerk, is uitgaand verkeer via poort 1433 mogelijk niet toegestaan vanwege de firewall van het netwerk. In dat geval kunt u geen verbinding maken met uw Azure SQL Database-server, tenzij de IT-afdeling poort 1433 openstelt.
 
-1. Nadat de implementatie is voltooid, selecteert u **SQL-databases** in het linkermenu en selecteert u **mySampleDatabase** op de pagina **SQL-databases.** De overzichtspagina voor uw database wordt geopend, waarin u de volledig gekwalificeerde servernaam (zoals **mynewserver-20180430.database.windows.net)** toont en opties biedt voor verdere configuratie.
+1. Nadat de implementatie is voltooid, selecteert u **SQL-data bases** in het menu aan de linkerkant en selecteert u vervolgens **mySampleDatabase** op de pagina **SQL-data bases** . De overzichts pagina voor de data base wordt geopend, met de volledig gekwalificeerde server naam (zoals **mynewserver-20180430.database.Windows.net**) en biedt opties voor verdere configuratie.
 
-2. Kopieer deze volledig gekwalificeerde servernaam om in volgende Quick Starts verbinding te maken met de server en de bijbehorende databases. Selecteer vervolgens op de servernaam om serverinstellingen te openen.
+2. Kopieer deze volledig gekwalificeerde servernaam om in volgende Quick Starts verbinding te maken met de server en de bijbehorende databases. Selecteer vervolgens de server naam om de server instellingen te openen.
 
     ![servernaam zoeken](././media/load-data-from-azure-blob-storage-using-polybase/find-server-name.png)
 
-3. Selecteer de servernaam om serverinstellingen te openen.
+3. Selecteer de server naam om de server instellingen te openen.
 
     ![serverinstellingen](./media/load-data-from-azure-blob-storage-using-polybase/server-settings.png)
 
-4. Selecteer **Firewall-instellingen weergeven**. De pagina **Firewall-instellingen** voor de SQL Database-server wordt geopend.
+4. Selecteer **firewall instellingen weer geven**. De pagina **firewall instellingen** voor de SQL database-server wordt geopend.
 
     ![serverfirewallregel](./media/load-data-from-azure-blob-storage-using-polybase/server-firewall-rule.png)
 
@@ -124,15 +124,15 @@ Een firewall op serverniveau die voorkomt dat externe toepassingen en hulpprogra
 U kunt nu via dit IP-adres verbinding maken met de SQL-server en de bijbehorende datawarehouses. De verbinding werkt met SQL Server Management Studio of een ander hulpprogramma van uw keuze. Wanneer u verbinding maakt, gebruikt u het ServerAdmin-account dat u eerder hebt gemaakt.  
 
 > [!IMPORTANT]
-> Voor alle Azure-services is toegang via de SQL Database-firewall standaard ingeschakeld. Selecteer **UIT** op deze pagina en selecteer **Opslaan** om de firewall voor alle Azure-services uit te schakelen.
+> Voor alle Azure-services is toegang via de SQL Database-firewall standaard ingeschakeld. Selecteer **uit** op deze pagina en selecteer vervolgens **Opslaan** om de firewall voor alle Azure-Services uit te scha kelen.
 
 ## <a name="get-the-fully-qualified-server-name"></a>De volledig gekwalificeerde servernaam ophalen
 
 Haal de volledig gekwalificeerde servernaam van uw SQL-server op uit Azure Portal. Later gebruikt u de volledig gekwalificeerde servernaam bij het maken van verbinding met de server.
 
-1. Log in bij de [Azure-portal](https://portal.azure.com/).
-2. Selecteer **Azure Synapse Analytics** in het linkermenu en selecteer uw database op de pagina Azure **Synapse Analytics.**
-3. In het deelvenster **Essentials** van de Azure Portal-pagina van uw database kopieert u de **servernaam**. In dit voorbeeld wordt de volledig gekwalificeerde naam mynewserver-20180430.database.windows.net.
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com/).
+2. Selecteer **Azure Synapse Analytics** in het menu aan de linkerkant en selecteer uw Data Base op de pagina **Azure Synapse Analytics** .
+3. In het deelvenster **Essentials** van de Azure Portal-pagina van uw database kopieert u de **servernaam**. In dit voor beeld is de volledig gekwalificeerde naam mynewserver-20180430.database.windows.net.
 
     ![verbindingsgegevens](././media/load-data-from-azure-blob-storage-using-polybase/find-server-name.png)  
 
@@ -147,7 +147,7 @@ In deze sectie wordt gebruikgemaakt van [SSMS](/sql/ssms/download-sql-server-man
     | Instelling        | Voorgestelde waarde                            | Beschrijving                                                  |
     | -------------- | ------------------------------------------ | ------------------------------------------------------------ |
     | Servertype    | Database-engine                            | Deze waarde is verplicht                                       |
-    | Servernaam    | De volledig gekwalificeerde servernaam            | De naam moet zoiets als dit: **mynewserver-20180430.database.windows.net**. |
+    | Servernaam    | De volledig gekwalificeerde servernaam            | De naam moet er ongeveer als volgt uitzien: **mynewserver-20180430.database.Windows.net**. |
     | Verificatie | SQL Server-verificatie                  | SQL-verificatie is het enige verificatietype dat we in deze zelfstudie hebben geconfigureerd. |
     | Aanmelden          | Het beheerdersaccount voor de server                   | Dit is het account dat u hebt opgegeven tijdens het maken van de server. |
     | Wachtwoord       | Het wachtwoord voor het beheerdersaccount voor de server | Dit is het wachtwoord dat u hebt opgegeven tijdens het maken van de server. |
@@ -162,13 +162,13 @@ In deze sectie wordt gebruikgemaakt van [SSMS](/sql/ssms/download-sql-server-man
 
 ## <a name="create-a-user-for-loading-data"></a>Een gebruiker maken voor het laden van gegevens
 
-De serverbeheerdersaccount is bedoeld voor het uitvoeren van beheerbewerkingen en is niet geschikt voor het uitvoeren van query's op gebruikersgegevens. Het laden van gegevens is een geheugenintensieve bewerking. Geheugenmaxima worden gedefinieerd op basis van de [geconfigureerde gegevensmagazijneenheden](what-is-a-data-warehouse-unit-dwu-cdwu.md) en [resourceklasse.](resource-classes-for-workload-management.md)
+De serverbeheerdersaccount is bedoeld voor het uitvoeren van beheerbewerkingen en is niet geschikt voor het uitvoeren van query's op gebruikersgegevens. Het laden van gegevens is een geheugenintensieve bewerking. Geheugen limieten worden gedefinieerd op basis van de geconfigureerde [Data Warehouse-eenheden](what-is-a-data-warehouse-unit-dwu-cdwu.md) en de [resource klasse](resource-classes-for-workload-management.md) .
 
 Het is raadzaam een aanmelding en gebruiker te maken die speciaal wordt toegewezen voor het laden van gegevens. Voeg vervolgens de ladende gebruiker toe aan een [bronklasse](resource-classes-for-workload-management.md). Hiermee wordt een maximale hoeveelheid geheugen ingesteld.
 
 Omdat u momenteel bent aangemeld als serverbeheerder, kunt u aanmeldingen en gebruikers maken. Gebruik deze stappen om een aanmelding en gebruiker te maken met de naam **LoaderRC20**. Wijs de gebruiker vervolgens toe aan de bronklasse **staticrc20**.
 
-1. Selecteer in SSMS het **volgende model** om een vervolgkeuzemenu weer te geven en kies **Nieuwe query**. Een nieuwe queryvenster wordt geopend.
+1. Klik in SSMS met de rechter muisknop op **model** om een vervolg keuzelijst weer te geven en kies **nieuwe query**. Een nieuwe queryvenster wordt geopend.
 
     ![Nieuwe query in Hoofd](./media/load-data-from-azure-blob-storage-using-polybase/create-loader-login.png)
 
@@ -199,7 +199,7 @@ Omdat u momenteel bent aangemeld als serverbeheerder, kunt u aanmeldingen en geb
 
 De eerste stap voor het laden van gegevens bestaat uit aanmelding als LoaderRC20.  
 
-1. Selecteer in Object Explorer het vervolgkeuzemenu **Verbinden** en selecteer **Databaseengine**. Het dialoogvenster **Verbinding maken met server** wordt geopend.
+1. Selecteer in Objectverkenner de vervolg keuzelijst **verbinding maken** en selecteer **Data base-engine**. Het dialoogvenster **Verbinding maken met server** wordt geopend.
 
     ![Verbinding maken met nieuwe aanmelding](./media/load-data-from-azure-blob-storage-using-polybase/connect-as-loading-user.png)
 
@@ -213,7 +213,7 @@ De eerste stap voor het laden van gegevens bestaat uit aanmelding als LoaderRC20
 
 ## <a name="create-external-tables-for-the-sample-data"></a>Externe tabellen voor de voorbeeldgegevens maken
 
-U bent klaar om te beginnen met het laden van gegevens in uw nieuwe datawarehouse. In deze zelfstudie ziet u hoe u externe tabellen gebruiken om taxigegevens van New York City te laden vanuit een Azure Storage-blob. Zie het [laadoverzicht](design-elt-data-loading.md)voor toekomstige informatie over hoe u uw gegevens naar Azure blob-opslag krijgen of rechtstreeks vanuit uw bron laden.
+U bent klaar om te beginnen met het laden van gegevens in uw nieuwe datawarehouse. In deze zelf studie leert u hoe u externe tabellen kunt gebruiken voor het laden van een taxi cab-gegevens van New York in een Azure Storage-blob. Zie het [overzicht van laden](design-elt-data-loading.md)voor meer informatie over het ophalen van uw gegevens naar Azure Blob-opslag of het rechtstreeks laden vanuit uw bron.
 
 Voer de volgende SQL-scripts uit en geef informatie op over de gegevens die u wilt laden. Deze informatie omvat de locatie waar de gegevens zich bevinden, de indeling van de inhoud van de gegevens en de tabeldefinitie voor de gegevens.
 
@@ -229,7 +229,7 @@ Voer de volgende SQL-scripts uit en geef informatie op over de gegevens die u wi
     CREATE MASTER KEY;
     ```
 
-4. Voer de volgende instructie [CREATE EXTERNAL DATA SOURCE](/sql/t-sql/statements/create-external-data-source-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) uit om de locatie van de Azure-blob te definiëren. Dit is de locatie van de externe taxigegevens.  Als u een opdracht wilt uitvoeren die u aan het queryvenster hebt toegevoegd, markeert u de opdrachten die u wilt uitvoeren en selecteert u **Uitvoeren**.
+4. Voer de volgende instructie [CREATE EXTERNAL DATA SOURCE](/sql/t-sql/statements/create-external-data-source-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) uit om de locatie van de Azure-blob te definiëren. Dit is de locatie van de externe taxigegevens.  Als u een opdracht wilt uitvoeren die u aan het query venster hebt toegevoegd, markeert u de opdrachten die u wilt uitvoeren en selecteert u **uitvoeren**.
 
     ```sql
     CREATE EXTERNAL DATA SOURCE NYTPublic
@@ -271,7 +271,7 @@ Voer de volgende SQL-scripts uit en geef informatie op over de gegevens die u wi
     CREATE SCHEMA ext;
     ```
 
-7. Maak de externe tabellen. De tabeldefinities worden opgeslagen in het gegevensmagazijn, maar de referentiegegevens van tabellen die zijn opgeslagen in Azure blob-opslag. Voer de volgende T-SQL-opdrachten uit om verschillende externe tabellen te maken die allemaal verwijzen naar de Azure-blob die eerder is gedefinieerd in de externe gegevensbron.
+7. Maak de externe tabellen. De tabel definities worden opgeslagen in het Data Warehouse, maar de tabellen verwijzen naar gegevens die zijn opgeslagen in Azure Blob Storage. Voer de volgende T-SQL-opdrachten uit om verschillende externe tabellen te maken die allemaal verwijzen naar de Azure-blob die eerder is gedefinieerd in de externe gegevensbron.
 
     ```sql
     CREATE EXTERNAL TABLE [ext].[Date]
@@ -442,12 +442,12 @@ Voer de volgende SQL-scripts uit en geef informatie op over de gegevens die u wi
 
 ## <a name="load-the-data-into-your-data-warehouse"></a>De gegevens in uw datawarehouse laden
 
-In deze sectie worden de externe tabellen gebruikt die u zojuist hebt gedefinieerd om de voorbeeldgegevens uit Azure Storage Blob te laden.  
+In deze sectie worden de externe tabellen gebruikt die u zojuist hebt gedefinieerd voor het laden van de voorbeeld gegevens van Azure Storage Blob.  
 
 > [!NOTE]
 > In deze zelfstudie worden de gegevens rechtstreeks in de definitieve tabel geladen. In een productieomgeving gebruikt u meestal CREATE TABLE AS SELECT om naar een faseringstabel te laden. U kunt alle benodigde transformaties uitvoeren wanneer de gegevens zich in de faseringstabel bevinden. Als u de gegevens in de faseringstabel wilt toevoegen aan een productietabel, kunt u de instructie INSERT... SELECT gebruiken. Zie [Gegevens in een productietabel invoegen](guidance-for-loading-data.md#inserting-data-into-a-production-table) voor meer informatie.
 
-Het script gebruikt de T-SQL-instructie [CREATE TABLE AS SELECT (CTAS)](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) om de gegevens uit Azure Storage Blob naar de nieuwe tabellen in het datawarehouse te laden. CTAS maakt een nieuwe tabel op basis van de resultaten van een SELECT-instructie. De nieuwe tabel heeft dezelfde gegevenstypen en kolommen als de resultaten van de selecteerinstructie. Wanneer de selecte instructie uit een externe tabel wordt geselecteerd, worden gegevens geïmporteerd in een relationele tabel in het gegevensmagazijn.
+Het script gebruikt de T-SQL-instructie [CREATE TABLE AS SELECT (CTAS)](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) om de gegevens uit Azure Storage Blob naar de nieuwe tabellen in het datawarehouse te laden. CTAS maakt een nieuwe tabel op basis van de resultaten van een SELECT-instructie. De nieuwe tabel heeft dezelfde gegevenstypen en kolommen als de resultaten van de selecteerinstructie. Wanneer de SELECT-instructie uit een externe tabel wordt geselecteerd, worden gegevens in een relationele tabel in het Data Warehouse geïmporteerd.
 
 1. Voer het volgende script uit om de gegevens in de nieuwe tabellen in uw datawarehouse te laden.
 
@@ -518,7 +518,7 @@ Het script gebruikt de T-SQL-instructie [CREATE TABLE AS SELECT (CTAS)](/sql/t-s
     ;
     ```
 
-2. Bekijk uw gegevens tijdens het laden. U laadt verschillende GB's aan gegevens en comprimeert deze in sterk performante geclusterde kolomarchiefindexen. Voer de volgende query uit, die gebruikmaakt van dynamische beheerweergaven (DMV's) om de status van de belasting weer te geven.
+2. Bekijk uw gegevens tijdens het laden. U laadt verschillende GB van gegevens en comprimeert deze in zeer krachtige, geclusterde column Store-indexen. Voer de volgende query uit, die gebruikmaakt van dynamische beheerweergaven (DMV's) om de status van de belasting weer te geven.
 
     ```sql
     SELECT
@@ -558,19 +558,19 @@ Het script gebruikt de T-SQL-instructie [CREATE TABLE AS SELECT (CTAS)](/sql/t-s
 
     ![Geladen tabellen weergeven](./media/load-data-from-azure-blob-storage-using-polybase/view-loaded-tables.png)
 
-## <a name="authenticate-using-managed-identities-to-load-optional"></a>Verifiëren met beheerde identiteiten om te laden (optioneel)
+## <a name="authenticate-using-managed-identities-to-load-optional"></a>Verifiëren met behulp van beheerde identiteiten om te laden (optioneel)
 
-Laden met PolyBase en authenticeren via beheerde identiteiten is het veiligste mechanisme en stelt u in staat om gebruik te maken van eindpunten van virtuele netwerkservices met Azure Storage.
+Het laden met poly base en verificatie via beheerde identiteiten is het veiligste mechanisme en maakt het u mogelijk om service-eind punten van virtuele netwerken te gebruiken met Azure Storage.
 
 ### <a name="prerequisites"></a>Vereisten
 
-1. Installeer Azure PowerShell met behulp van deze [handleiding](/powershell/azure/install-az-ps?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json).
-2. Als u een v1- of blobopslagaccount voor algemene doeleinden hebt, moet u eerst upgraden naar v2 voor algemene doeleinden met behulp van deze [handleiding.](../../storage/common/storage-account-upgrade.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)
-3. U moet **vertrouwde Microsoft-services toegang** hebben tot dit opslagaccount dat is ingeschakeld onder het instellingenmenu firewalls voor Azure Storage-account **Firewalls en Virtuele netwerken.** Raadpleeg deze [gids](../../storage/common/storage-network-security.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json#exceptions) voor meer informatie.
+1. Installeer Azure PowerShell met behulp van deze [hand leiding](/powershell/azure/install-az-ps?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json).
+2. Als u een v1-of Blob-opslag account voor algemeen gebruik hebt, moet u eerst een upgrade uitvoeren naar de v2 voor algemeen gebruik met behulp van deze [hand leiding](../../storage/common/storage-account-upgrade.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json).
+3. U moet **vertrouwde micro soft-Services toegang geven tot dit opslag account** ingeschakeld onder Azure Storage account **firewalls en instellingen voor virtuele netwerken** . Raadpleeg deze [hand leiding](../../storage/common/storage-network-security.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json#exceptions) voor meer informatie.
 
 #### <a name="steps"></a>Stappen
 
-1. Registreer in PowerShell **uw SQL-server** met Azure Active Directory (AAD):
+1. **Registreer uw SQL Server** bij Azure Active Directory (Aad) in Power shell:
 
    ```powershell
    Connect-AzAccount
@@ -578,19 +578,19 @@ Laden met PolyBase en authenticeren via beheerde identiteiten is het veiligste m
    Set-AzSqlServer -ResourceGroupName your-database-server-resourceGroup -ServerName your-database-servername -AssignIdentity
    ```
 
-2. Maak een **v2-opslagaccount voor algemene doeleinden** met deze [handleiding](../../storage/common/storage-account-create.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json).
+2. Maak met behulp van deze [hand leiding](../../storage/common/storage-account-create.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)een **v2-opslag account voor algemeen** gebruik.
 
    > [!NOTE]
-   > Als u een v1- of blobopslagaccount voor algemene doeleinden hebt, moet u **eerst upgraden naar v2** met behulp van deze [handleiding.](../../storage/common/storage-account-upgrade.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)
+   > Als u een v1-of Blob-opslag account voor algemeen gebruik hebt, moet u **eerst een upgrade uitvoeren naar v2** met behulp van deze [hand leiding](../../storage/common/storage-account-upgrade.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json).
 
-3. Navigeer onder uw opslagaccount naar **Toegangsbeheer (IAM)** en selecteer **Roltoewijzing toevoegen**. Wijs **de RBAC-rol Storage Blob Data Contributor** toe aan uw SQL Database-server.
+3. Navigeer onder uw opslag account naar **Access Control (IAM)** en selecteer **roltoewijzing toevoegen**. Wijs de RBAC-rol **Storage BLOB data Inzender** toe aan uw SQL database-server.
 
    > [!NOTE]
-   > Alleen leden met eigenaarbevoegdheid kunnen deze stap uitvoeren. Raadpleeg deze [handleiding](../../role-based-access-control/built-in-roles.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)voor verschillende ingebouwde rollen voor Azure-resources.
+   > Alleen leden met de bevoegdheid eigenaar kunnen deze stap uitvoeren. Raadpleeg deze [hand leiding](../../role-based-access-control/built-in-roles.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)voor verschillende ingebouwde rollen voor Azure-resources.
   
-**Polybase-connectiviteit met het Azure Storage-account:**
+**Poly base-verbinding met het Azure Storage-account:**
 
-1. Uw databasescoped referentie met **ID = 'Managed Service Identity':**
+1. Maak een Data Base-bereik referentie met **identiteit = ' managed service Identity '**:
 
    ```SQL
    CREATE DATABASE SCOPED CREDENTIAL msi_cred WITH IDENTITY = 'Managed Service Identity';
@@ -598,14 +598,14 @@ Laden met PolyBase en authenticeren via beheerde identiteiten is het veiligste m
 
    > [!NOTE]
    >
-   > * Het is niet nodig om SECRET op te geven met azure storage-toegangssleutel, omdat dit mechanisme [Managed Identity](../../active-directory/managed-identities-azure-resources/overview.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) onder de covers gebruikt.
-   > * De naam van de identiteit moet **'Managed Service Identity'** zijn voor PolyBase-connectiviteit om te werken met Azure Storage-account.
+   > * U hoeft geen geheim op te geven met Azure Storage toegangs sleutel, omdat dit mechanisme gebruikmaakt van [beheerde identiteiten](../../active-directory/managed-identities-azure-resources/overview.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) onder de voor vallen.
+   > * De IDENTITEITs naam moet **Managed Service Identity** zijn voor poly base-connectiviteit om met Azure Storage-account te kunnen werken.
 
-2. Maak de externe gegevensbron die de databasescopedreferentie met de beheerde service-identiteit opgeeft.
+2. Maak de externe gegevens bron waarmee de data base met bereik referenties wordt opgegeven met de Managed Service Identity.
 
-3. Query als normaal met behulp van [externe tabellen](/sql/t-sql/statements/create-external-table-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest).
+3. Query's uitvoeren als normaal met [externe tabellen](/sql/t-sql/statements/create-external-table-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest).
 
-Raadpleeg de volgende [documentatie](../../sql-database/sql-database-vnet-service-endpoint-rule-overview.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) als u eindpunten voor virtuele netwerkservices wilt instellen voor Azure Synapse Analytics.
+Raadpleeg de volgende [documentatie](../../sql-database/sql-database-vnet-service-endpoint-rule-overview.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) als u service-eind punten voor virtuele netwerken wilt instellen voor Azure Synapse Analytics.
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
@@ -616,17 +616,17 @@ Er kunnen kosten in rekening worden gebracht voor rekenresources en gegevens die
 
 Volg deze stappen om de resources op te schonen zoals gewenst.
 
-1. Meld u aan bij de [Azure-portal,](https://portal.azure.com)selecteer uw gegevensmagazijn.
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com)en selecteer uw data warehouse.
 
     ![Resources opschonen](./media/load-data-from-azure-blob-storage-using-polybase/clean-up-resources.png)
 
-2. Als u de berekening wilt onderbreken, selecteert u de knop **Onderbreken.** Als het datawarehouse is onderbroken, ziet u de knop **Start**.  Als u de gegevens wilt hervatten, selecteert u **Start**.
+2. Selecteer de knop **pause** om de berekening te onderbreken. Als het datawarehouse is onderbroken, ziet u de knop **Start**.  Selecteer **Start**om de compute te hervatten.
 
-3. Als u het gegevensmagazijn wilt verwijderen zodat er geen kosten in rekening worden gebracht voor rekenkracht of opslag, selecteert u **Verwijderen**.
+3. Selecteer **verwijderen**om het Data Warehouse te verwijderen, zodat er geen kosten in rekening worden gebracht voor berekenen of opslag.
 
-4. Als u de SQL-server wilt verwijderen die u hebt gemaakt, selecteert u **mynewserver-20180430.database.windows.net** in de vorige afbeelding en selecteert u **Verwijderen**.  Wees hiermee voorzichtig. Als u de server verwijdert, worden ook alle databases verwijderd die zijn toegewezen aan de server.
+4. Als u de door u gemaakte SQL-Server wilt verwijderen, selecteert u **mynewserver-20180430.database.Windows.net** in de vorige installatie kopie en selecteert u vervolgens **verwijderen**.  Wees hiermee voorzichtig. Als u de server verwijdert, worden ook alle databases verwijderd die zijn toegewezen aan de server.
 
-5. Als u de brongroep wilt verwijderen, selecteert u **myResourceGroup**en selecteert u **Resourcegroep verwijderen**.
+5. Als u de resource groep wilt verwijderen, selecteert u **myResourceGroup**en selecteert u **resource groep verwijderen**.
 
 ## <a name="next-steps"></a>Volgende stappen
 
@@ -644,7 +644,7 @@ U hebt het volgende gedaan:
 > * De voortgang van de gegevens weergegeven terwijl deze werden geladen
 > * Statistieken gemaakt voor de nieuw geladen gegevens
 
-Ga verder naar het ontwikkelingsoverzicht voor meer informatie over het migreren van een bestaande database naar Azure Synapse Analytics.
+Ga naar het overzicht voor ontwikkel aars voor meer informatie over het migreren van een bestaande Data Base naar Azure Synapse Analytics.
 
 > [!div class="nextstepaction"]
-> [Ontwerpbeslissingen om een bestaande database te migreren naar Azure Synapse Analytics](sql-data-warehouse-overview-develop.md)
+> [Ontwerp beslissingen voor het migreren van een bestaande Data Base naar Azure Synapse Analytics](sql-data-warehouse-overview-develop.md)

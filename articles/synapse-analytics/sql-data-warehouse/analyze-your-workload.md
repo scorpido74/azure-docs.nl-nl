@@ -1,6 +1,6 @@
 ---
 title: Uw workload analyseren
-description: Technieken voor het analyseren van queryprioritering voor uw werkbelasting in Azure Synapse Analytics.
+description: Technieken voor het analyseren van de query prioriteit voor uw werk belasting in azure Synapse Analytics.
 services: synapse-analytics
 author: ronortloff
 manager: craigg
@@ -12,23 +12,23 @@ ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
 ms.openlocfilehash: 6a38fe65b4aedf4f594531f5e9cd8cf9b5dfaac7
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/03/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80631234"
 ---
-# <a name="analyze-your-workload-in-azure-synapse-analytics"></a>Uw werkbelasting analyseren in Azure Synapse Analytics
+# <a name="analyze-your-workload-in-azure-synapse-analytics"></a>Analyseer uw werk belasting in azure Synapse Analytics
 
-Technieken voor het analyseren van uw Synapse SQL-workload in Azure Synapse Analytics.
+Technieken voor het analyseren van uw Synapse SQL-werk belasting in azure Synapse Analytics.
 
 ## <a name="resource-classes"></a>Resourceklassen
 
-Synapse SQL biedt resourceklassen om systeembronnen toe te wijzen aan query's.  Zie [Resourceklassen & workloadmanagement](resource-classes-for-workload-management.md)voor meer informatie over resourceklassen.  Query's wachten als de resourceklasse die aan een query is toegewezen, meer resources nodig heeft dan momenteel beschikbaar is.
+Synapse SQL biedt resource klassen om systeem bronnen aan query's toe te wijzen.  Zie [resource klassen & workload Management](resource-classes-for-workload-management.md)voor meer informatie over resource klassen.  Query's wachten of de resource klasse die aan een query is toegewezen, meer resources nodig heeft dan momenteel beschikbaar zijn.
 
-## <a name="queued-query-detection-and-other-dmvs"></a>Querydetectie in de wachtrij en andere DMVs
+## <a name="queued-query-detection-and-other-dmvs"></a>Detectie van query's in de wachtrij en andere Dmv's
 
-U `sys.dm_pdw_exec_requests` de DMV gebruiken om query's te identificeren die in een gelijktijdigheidswachtrij wachten. Query's die wachten op een gelijktijdigheidssleuf hebben de status **van opgeschort**.
+U kunt de `sys.dm_pdw_exec_requests` dmv gebruiken om query's te identificeren die in een gelijktijdigheids wachtrij wachten. Query's die wachten op een gelijktijdigheids sleuf hebben de status **opgeschort**.
 
 ```sql
 SELECT  r.[request_id]                           AS Request_ID
@@ -41,7 +41,7 @@ FROM    sys.dm_pdw_exec_requests r
 ;
 ```
 
-Functies voor werkbelastingbeheer `sys.database_principals`kunnen worden bekeken met .
+Werkbelasting beheer rollen kunnen worden weer `sys.database_principals`gegeven met.
 
 ```sql
 SELECT  ro.[name]           AS [db_role_name]
@@ -51,7 +51,7 @@ AND     ro.[is_fixed_role]  = 0
 ;
 ```
 
-In de volgende query wordt weergegeven aan welke rol elke gebruiker is toegewezen.
+De volgende query geeft aan aan welke rol elke gebruiker is toegewezen.
 
 ```sql
 SELECT  r.name AS role_principal_name
@@ -63,14 +63,14 @@ WHERE   r.name IN ('mediumrc','largerc','xlargerc')
 ;
 ```
 
-Synapse SQL heeft de volgende wachttypen:
+Synapse SQL heeft de volgende wacht typen:
 
-* **LocalQueriesConcurrencyResourceType:** query's die buiten het gelijktijdigheidssleufkader zitten. DMV-query's en `SELECT @@VERSION` systeemfuncties, zoals voorbeelden van lokale query's.
-* **UserConcurrencyResourceType:** query's die binnen het gelijktijdigheidssleufkader zitten. Query's tegen tabellen voor eindgebruikers vertegenwoordigen voorbeelden die dit resourcetype zouden gebruiken.
-* **DmsConcurrencyResourceType**: Wacht als gevolg van gegevensverplaatsingsbewerkingen.
-* **BackupConcurrencyResourceType**: Deze wachttijd geeft aan dat er een back-up van een database wordt gemaakt. De maximale waarde voor dit resourcetype is 1. Als er meerdere back-ups tegelijk zijn aangevraagd, staan de andere back-ups in de wachtrij. In het algemeen raden we een minimale tijd aan tussen opeenvolgende momentopnamen van 10 minuten.
+* **LocalQueriesConcurrencyResourceType**: query's die buiten het Framework voor gelijktijdigheids sleuven vallen. DMV query's en systeem functies zoals `SELECT @@VERSION` voor beelden van lokale query's.
+* **UserConcurrencyResourceType**: query's die binnen het Framework voor gelijktijdigheids sleuven zitten. Query's voor de tabellen van de eind gebruiker zijn voor beelden die gebruikmaken van dit resource type.
+* **DmsConcurrencyResourceType**: er wordt gewacht op het verplaatsen van gegevens.
+* **BackupConcurrencyResourceType**: deze wacht tijd geeft aan dat er een back-up van een Data Base wordt gemaakt. De maximum waarde voor dit resource type is 1. Als er tegelijkertijd meerdere back-ups zijn aangevraagd, de andere wachtrij. Over het algemeen raden we een minimum tijd aan tussen opeenvolgende moment opnamen van 10 minuten.
 
-De `sys.dm_pdw_waits` DMV kan worden gebruikt om te zien op welke resources een aanvraag wacht.
+De `sys.dm_pdw_waits` dmv kan worden gebruikt om te zien op welke bronnen een aanvraag wordt gewacht.
 
 ```sql
 SELECT  w.[wait_id]
@@ -107,7 +107,7 @@ WHERE    w.[session_id] <> SESSION_ID()
 ;
 ```
 
-De `sys.dm_pdw_resource_waits` DMV toont de wachtinformatie voor een bepaalde query. Wachttijd voor resources meet de wachttijd voor resources die moeten worden verstrekt. De wachttijd van het signaal is de tijd die nodig is voor de onderliggende SQL-servers om de query op de CPU te plannen.
+De `sys.dm_pdw_resource_waits` dmv toont de wacht gegevens voor een bepaalde query. De tijds duur van de resource meet de tijd die wacht totdat de resources zijn opgenomen. De wacht tijd voor het signaal is de tijd die nodig is voor de onderliggende SQL-servers voor het plannen van de query op de CPU.
 
 ```sql
 SELECT  [session_id]
@@ -126,7 +126,7 @@ WHERE    [session_id] <> SESSION_ID()
 ;
 ```
 
-U ook `sys.dm_pdw_resource_waits` gebruik maken van de DMV berekenen hoeveel gelijktijdigheid slots zijn toegekend.
+U kunt ook het `sys.dm_pdw_resource_waits` dmv gebruiken om te berekenen hoeveel gelijktijdigheids sleuven zijn toegekend.
 
 ```sql
 SELECT  SUM([concurrency_slots_used]) as total_granted_slots
@@ -137,7 +137,7 @@ AND     [session_id]     <> session_id()
 ;
 ```
 
-De `sys.dm_pdw_wait_stats` DMV kan worden gebruikt voor historische trendanalyse van wachttijden.
+De `sys.dm_pdw_wait_stats` dmv kan worden gebruikt voor historische trend analyse van wacht tijden.
 
 ```sql
 SELECT   w.[pdw_node_id]
@@ -153,4 +153,4 @@ FROM    sys.dm_pdw_wait_stats w
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie [Een database beveiligen in Synapse SQL](sql-data-warehouse-overview-manage-security.md)voor meer informatie over het beheren van databasegebruikers en beveiliging. Zie [Indexen opnieuw opbouwen om de segmentkwaliteit te verbeteren voor](sql-data-warehouse-tables-index.md#rebuilding-indexes-to-improve-segment-quality)meer informatie over hoe grotere resourceklassen de kwaliteit van de geclusterde kolomarchiefindex kunnen verbeteren.
+Zie [een Data Base beveiligen in Synapse SQL](sql-data-warehouse-overview-manage-security.md)voor meer informatie over het beheren van database gebruikers en beveiliging. Zie [indexen opnieuw samen stellen om de segment kwaliteit te verbeteren](sql-data-warehouse-tables-index.md#rebuilding-indexes-to-improve-segment-quality)voor meer informatie over hoe grotere resource klassen de geclusterde column store-index kwaliteit kunnen verbeteren.

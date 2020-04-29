@@ -1,6 +1,6 @@
 ---
-title: Back-up maken en herstellen - momentopnamen, geo-redundant
-description: Meer informatie over hoe back-up en herstel werkt in Azure Synapse Analytics SQL-pool. Gebruik back-ups om uw gegevensmagazijn te herstellen naar een herstelpunt in de primaire regio. Gebruik georedundante back-ups om te herstellen naar een andere geografische regio.
+title: 'Back-ups maken en herstellen: moment opnamen, geografisch redundant'
+description: Meer informatie over het werken met back-ups en herstellen in de SQL-groep voor Azure Synapse Analytics. Gebruik back-ups om uw data warehouse te herstellen naar een herstel punt in de primaire regio. Gebruik geo-redundante back-ups om te herstellen naar een andere geografische regio.
 services: synapse-analytics
 author: kevinvngo
 manager: craigg
@@ -12,29 +12,29 @@ ms.author: anjangsh
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019"
 ms.openlocfilehash: 1d82c7c22bb5aeb2740884b0d7ede4a4d8f07f86
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/03/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80631222"
 ---
-# <a name="backup-and-restore-in-azure-synapse-sql-pool"></a>Back-upmaken en herstellen in Azure Synapse SQL-pool
+# <a name="backup-and-restore-in-azure-synapse-sql-pool"></a>Back-ups maken en herstellen in azure Synapse SQL-pool
 
-Meer informatie over het gebruik van back-ups en herstelin Azure Synapse SQL-pool. Gebruik SQL-groepherstelpunten om uw gegevensmagazijn te herstellen of te kopiëren naar een eerdere status in het primaire gebied. Gebruik georedundante back-ups van datawarehouses om te herstellen naar een andere geografische regio.
+Meer informatie over het gebruik van back-up en herstel in azure Synapse SQL-pool. Herstel punten voor SQL-groep gebruiken om uw data warehouse te herstellen of kopiëren naar een eerdere status in de primaire regio. Gebruik geo-redundante back-ups van data warehouse om te herstellen naar een andere geografische regio.
 
-## <a name="what-is-a-data-warehouse-snapshot"></a>Wat is een momentopname van een gegevensmagazijn
+## <a name="what-is-a-data-warehouse-snapshot"></a>Wat is een moment opname van een Data Warehouse
 
-Een *momentopname voor een gegevensmagazijn* maakt een herstelpunt dat u gebruiken om uw gegevensmagazijn te herstellen of te kopiëren naar een eerdere status.  Aangezien SQL-pool een gedistribueerd systeem is, bestaat een momentopname van een gegevensmagazijn uit veel bestanden die zich in Azure-opslag bevinden. Snapshots leggen incrementele wijzigingen vast ten opzichte van de gegevens die zijn opgeslagen in uw gegevensmagazijn.
+Een *moment opname van een Data Warehouse* maakt u een herstel punt dat u kunt gebruiken voor het herstellen of kopiëren van uw data warehouse naar een eerdere status.  Aangezien de SQL-groep een gedistribueerd systeem is, bestaat een moment opname van een Data Warehouse uit veel bestanden die zich in azure Storage bevinden. Met moment opnamen worden incrementele wijzigingen vastgelegd op basis van de gegevens die zijn opgeslagen in uw data warehouse.
 
-Een *gegevensmagazijnherstel* is een nieuw gegevensmagazijn dat wordt gemaakt vanuit een herstelpunt van een bestaand of verwijderd gegevensmagazijn. Het herstellen van uw gegevensmagazijn is een essentieel onderdeel van elke bedrijfscontinuïteits- en disaster recovery-strategie, omdat het uw gegevens opnieuw maakt na onbedoelde beschadiging of verwijdering. Data warehouse is ook een krachtig mechanisme om kopieën van uw data warehouse te maken voor test- of ontwikkelingsdoeleinden.  De herstelpercentages van SQL-groep kunnen variëren afhankelijk van de databasegrootte en locatie van het bron- en doelgegevensmagazijn.
+Een *Data Warehouse Restore* is een nieuw data warehouse dat is gemaakt op basis van een herstel punt van een bestaand of verwijderd Data Warehouse. Het herstellen van uw data warehouse is een essentieel onderdeel van een strategie voor bedrijfs continuïteit en herstel na nood gevallen, omdat de gegevens na een onbedoeld beschadiging of verwijdering opnieuw worden gemaakt. Data Warehouse is ook een krachtig mechanisme voor het maken van kopieën van uw data warehouse voor test-of ontwikkelings doeleinden.  De tarieven voor het herstellen van SQL-groepen kunnen variëren, afhankelijk van de grootte van de data base en de locatie van het bron-en doel-Data Warehouse.
 
 ## <a name="automatic-restore-points"></a>Automatische herstelpunten
 
-Momentopnamen zijn een ingebouwde functie van de service die herstelpunten maakt. U hoeft deze mogelijkheid niet in te schakelen. De SQL-groep moet echter actief zijn voor het maken van herstelpunten. Als de SQL-groep vaak wordt onderbroken, worden mogelijk geen automatische herstelpunten gemaakt, dus zorg ervoor dat u een door de gebruiker gedefinieerd herstelpunt maakt voordat u de SQL-groep pauzeert. Automatische herstelpunten kunnen momenteel niet door gebruikers worden verwijderd omdat de service deze herstelpunten gebruikt om SLA's te behouden voor herstel.
+Moment opnamen zijn een ingebouwde functie van de service waarmee herstel punten worden gemaakt. U hoeft deze mogelijkheid niet in te scha kelen. De SQL-groep moet echter een actieve status hebben voor het maken van herstel punten. Als de SQL-groep regel matig wordt onderbroken, kunnen er geen automatische herstel punten worden gemaakt, dus zorg ervoor dat u een door de gebruiker gedefinieerd herstel punt maakt voordat u de SQL-groep onderbreekt. Automatische herstel punten op dit moment kunnen niet door gebruikers worden verwijderd omdat de service deze herstel punten gebruikt om de Sla's voor herstel te onderhouden.
 
-Snapshots van uw gegevensmagazijn worden gedurende de dag gemaakt door herstelpunten te maken die zeven dagen beschikbaar zijn. Deze bewaartermijn kan niet worden gewijzigd. SQL-pool ondersteunt een acht uur durende doelstelling voor herstelpunten (RPO). U uw gegevensmagazijn in het primaire gebied herstellen van een van de momentopnamen die in de afgelopen zeven dagen zijn gemaakt.
+Moment opnamen van uw data warehouse worden gedurende de hele dag genomen om herstel punten te maken die zeven dagen beschikbaar zijn. Deze Bewaar periode kan niet worden gewijzigd. SQL-pool ondersteunt een RPO (acht Recovery Point Objective uur). U kunt uw data warehouse in de primaire regio herstellen vanuit een van de moment opnamen die in de afgelopen zeven dagen zijn gemaakt.
 
-Voer deze query uit op uw online SQL-groep om te zien wanneer de laatste momentopname is gestart.
+Voer deze query uit voor uw online SQL-groep om te zien wanneer de laatste moment opname is gestart.
 
 ```sql
 select   top 1 *
@@ -45,66 +45,66 @@ order by run_id desc
 
 ## <a name="user-defined-restore-points"></a>Door de gebruiker gedefinieerde herstelpunten
 
-Met deze functie u handmatig momentopnamen activeren om herstelpunten van uw gegevensmagazijn te maken voor en na grote wijzigingen. Deze mogelijkheid zorgt ervoor dat herstelpunten logisch consistent zijn, wat extra gegevensbescherming biedt in geval van werkonderbrekingen of gebruikersfouten voor een snelle hersteltijd. Door de gebruiker gedefinieerde herstelpunten zijn zeven dagen beschikbaar en worden namens u automatisch verwijderd. U de bewaarperiode van door de gebruiker gedefinieerde herstelpunten niet wijzigen. **42 door de gebruiker gedefinieerde herstelpunten** zijn op elk moment gegarandeerd, dus ze moeten worden [verwijderd](https://go.microsoft.com/fwlink/?linkid=875299) voordat ze een ander herstelpunt maken. U momentopnamen activeren om door de gebruiker gedefinieerde herstelpunten te maken via [PowerShell](/powershell/module/az.sql/new-azsqldatabaserestorepoint?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.jsont#examples) of de Azure-portal.
+Met deze functie kunt u hand matig moment opnamen activeren om herstel punten van uw data warehouse te maken voor en na grote wijzigingen. Deze functionaliteit zorgt ervoor dat herstel punten logisch consistent zijn, wat een extra gegevens bescherming biedt bij onderbrekingen van de werk belasting of gebruikers fouten voor snelle herstel tijd. Door de gebruiker gedefinieerde herstel punten zijn zeven dagen beschikbaar en worden namens u automatisch verwijderd. U kunt de Bewaar periode van door de gebruiker gedefinieerde herstel punten niet wijzigen. **42 door de gebruiker gedefinieerde herstel punten** worden op elk moment gegarandeerd, zodat ze moeten worden [verwijderd](https://go.microsoft.com/fwlink/?linkid=875299) voordat er een nieuw herstel punt wordt gemaakt. U kunt moment opnamen activeren om door de gebruiker gedefinieerde herstel punten te maken via [Power shell](/powershell/module/az.sql/new-azsqldatabaserestorepoint?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.jsont#examples) of de Azure Portal.
 
 > [!NOTE]
-> Als u herstelpunten langer dan 7 dagen nodig hebt, stem dan [hier](https://feedback.azure.com/forums/307516-sql-data-warehouse/suggestions/35114410-user-defined-retention-periods-for-restore-points)voor deze mogelijkheid. U ook een door de gebruiker gedefinieerd herstelpunt maken en herstellen van het nieuw gemaakte herstelpunt naar een nieuw gegevensmagazijn. Zodra u hersteld bent, hebt u de SQL-pool online en u deze voor onbepaalde tijd onderbreken om rekenkosten te besparen. De onderbroken database brengt opslagkosten met zich mee tegen het Azure Premium-opslagtarief. Als u een actieve kopie van het herstelde gegevensmagazijn nodig hebt, u deze hervatten, wat slechts enkele minuten in beslag moet nemen.
+> Als u herstel punten van meer dan zeven dagen nodig hebt, kunt u [hier](https://feedback.azure.com/forums/307516-sql-data-warehouse/suggestions/35114410-user-defined-retention-periods-for-restore-points)stemmen voor deze functie. U kunt ook een door de gebruiker gedefinieerd herstel punt maken en herstellen vanuit het zojuist gemaakte herstel punt naar een nieuw data warehouse. Nadat u hebt hersteld, hebt u de SQL-groep online en kunt u deze voor onbepaalde tijd pauzeren om reken kosten op te slaan. De gepauzeerde data base maakt kosten per seconde op het Premium Storage tarief van Azure. Als u een actieve kopie van het herstelde data warehouse nodig hebt, kunt u hervatten. dit duurt slechts enkele minuten.
 
-### <a name="restore-point-retention"></a>Puntbehoud herstellen
+### <a name="restore-point-retention"></a>Bewaar periode van het herstel punt
 
-In de volgende gegevens worden gegevens vermeld voor de bewaartermijnen voor herstelpunten:
+De volgende lijst bevat Details voor de Bewaar periode van het herstel punt:
 
-1. SQL-groep verwijdert een herstelpunt wanneer deze de bewaarperiode van 7 dagen bereikt **en** wanneer er ten minste 42 totale herstelpunten zijn (inclusief zowel door de gebruiker gedefinieerd als automatisch).
-2. Momentopnamen worden niet gemaakt wanneer een SQL-pool wordt onderbroken.
-3. De leeftijd van een herstelpunt wordt gemeten aan de basiskalenderdagen vanaf het moment dat het herstelpunt wordt genomen, inclusief wanneer de SQL-groep wordt onderbroken.
-4. Op elk moment kan een SQL-pool gegarandeerd maximaal 42 door de gebruiker gedefinieerde herstelpunten en 42 automatische herstelpunten opslaan zolang deze herstelpunten de bewaartermijn van 7 dagen niet hebben bereikt
-5. Als een momentopname wordt gemaakt, wordt de SQL-groep vervolgens langer dan 7 dagen onderbroken en wordt het herstelpunt hervat totdat er 42 totale herstelpunten zijn (inclusief zowel door de gebruiker gedefinieerd als automatisch)
+1. De SQL-groep verwijdert een herstel punt wanneer deze de Bewaar periode van 7 dagen aantreft **en** wanneer er ten minste 42 totale herstel punten zijn (inclusief de door de gebruiker gedefinieerde en automatische).
+2. Moment opnamen worden niet uitgevoerd wanneer een SQL-groep wordt onderbroken.
+3. De leeftijd van een herstel punt wordt gemeten door de absolute kalender dagen vanaf het moment dat het herstel punt wordt gemaakt, inclusief wanneer de SQL-groep wordt gepauzeerd.
+4. Op elk moment is een SQL-groep gegarandeerd dat er Maxi maal 42 door de gebruiker gedefinieerde herstel punten en 42 automatische herstel punten kunnen worden opgeslagen zolang deze herstel punten de Bewaar periode van 7 dagen niet hebben bereikt
+5. Als er een moment opname wordt gemaakt, wordt de SQL-groep vervolgens langer dan zeven dagen onderbroken en vervolgens hervat, wordt het herstel punt bewaard totdat er 42 totaal herstel punten zijn (inclusief door de gebruiker gedefinieerde en automatische)
 
-### <a name="snapshot-retention-when-a-sql-pool-is-dropped"></a>Momentopnameretentie wanneer een SQL-groep wordt verwijderd
+### <a name="snapshot-retention-when-a-sql-pool-is-dropped"></a>Moment opname bewaren wanneer een SQL-groep wordt verwijderd
 
-Wanneer u een SQL-pool neerzet, wordt een laatste momentopname gemaakt en gedurende zeven dagen opgeslagen. U de SQL-groep herstellen naar het uiteindelijke herstelpunt dat bij verwijdering is gemaakt. Als de SQL-groep in een onderbroken status wordt gedropt, wordt er geen momentopname gemaakt. Zorg er in dat scenario voor dat u een door de gebruiker gedefinieerd herstelpunt maakt voordat u de SQL-groep laat vallen.
+Wanneer u een SQL-groep verwijdert, wordt een laatste moment opname gemaakt en gedurende zeven dagen opgeslagen. U kunt de SQL-groep herstellen naar het laatste herstel punt dat bij het verwijderen is gemaakt. Als de SQL-groep wordt verwijderd in een onderbroken status, wordt er geen moment opname gemaakt. Zorg er in dat scenario voor dat u een door de gebruiker gedefinieerd herstel punt maakt voordat u de SQL-groep verwijdert.
 
 > [!IMPORTANT]
-> Als u een logische SQL-serverinstantie verwijdert, worden alle databases die tot de instantie behoren ook verwijderd en kunnen ze niet worden hersteld. U een verwijderde server niet herstellen.
+> Als u een logisch exemplaar van SQL Server verwijdert, worden ook alle data bases die deel uitmaken van het exemplaar, verwijderd en kunnen ze niet worden hersteld. U kunt een verwijderde server niet herstellen.
 
-## <a name="geo-backups-and-disaster-recovery"></a>Geo-back-ups en noodherstel
+## <a name="geo-backups-and-disaster-recovery"></a>Geo-back-ups en herstel na nood gevallen
 
-Een geoback-up wordt eenmaal per dag gemaakt naar een [gekoppeld datacenter.](../../best-practices-availability-paired-regions.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) De RPO voor een geo-herstel is 24 uur. U de geoback-up herstellen naar een server in een ander gebied waar SQL-pool wordt ondersteund. Een geoback-up zorgt ervoor dat u het gegevensmagazijn herstellen voor het geval u geen toegang hebt tot de herstelpunten in uw primaire regio.
-
-> [!NOTE]
-> Als u een kortere RPO voor geo-back-ups nodig hebt, stem dan [hier](https://feedback.azure.com/forums/307516-sql-data-warehouse)voor deze mogelijkheid. U ook een door de gebruiker gedefinieerd herstelpunt maken en herstellen van het nieuw gemaakte herstelpunt naar een nieuw gegevensmagazijn in een andere regio. Zodra u hersteld bent, hebt u het gegevensmagazijn online en u het voor onbepaalde tijd onderbreken om rekenkosten te besparen. De onderbroken database brengt opslagkosten met zich mee tegen het Azure Premium-opslagtarief. Als u een actieve kopie van het gegevensmagazijn nodig hebt, u deze hervatten, wat slechts enkele minuten in beslag moet nemen.
-
-## <a name="backup-and-restore-costs"></a>Kosten voor back-ups en herstel
-
-U zult merken dat de Azure-factuur een regelitem voor opslag en een regelitem voor disaster recovery storage heeft. De opslagkosten zijn de totale kosten voor het opslaan van uw gegevens in het primaire gebied, samen met de incrementele wijzigingen die door momentopnamen zijn vastgelegd. Raadpleeg voor een meer gedetailleerde uitleg over de manier waarop momentopnamen in rekening worden [gebracht, naar Inzicht in hoe kosten voor momentopnamen worden gegenereerd](/rest/api/storageservices/Understanding-How-Snapshots-Accrue-Charges?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json). De georedundante kosten dekken de kosten voor het opslaan van de geo-back-ups.  
-
-De totale kosten voor uw primaire gegevensmagazijn en zeven dagen van momentopnamewijzigingen worden afgerond op de dichtstbijzijnde TB. Als uw gegevensmagazijn bijvoorbeeld 1,5 TB bedraagt en de momentopnamen 100 GB bevatten, wordt er 2 TB aan gegevens in rekening gebracht met Azure Premium Storage-tarieven.
-
-Als u georedundante opslag gebruikt, ontvangt u een aparte opslagtoeslag. De georedundante opslag wordt gefactureerd op het standaard Ra-GRS-tarief (Read-Access Geographically Redundant Storage).
-
-Zie [Azure Synapse-prijzen](https://azure.microsoft.com/pricing/details/sql-data-warehouse/gen2/)voor meer informatie over azure synapse-prijzen. Er worden geen kosten in rekening gebracht voor gegevensdie worden uitgevoerd bij het herstellen van verschillende regio's.
-
-## <a name="restoring-from-restore-points"></a>Herstellen vanaf herstelpunten
-
-Elke momentopname maakt een herstelpunt dat de tijd aangeeft waarop de momentopname is gestart. Als u een gegevensmagazijn wilt herstellen, kiest u een herstelpunt en geeft u een herstelopdracht uit.  
-
-U het magazijn voor herstelde gegevens en het huidige magazijn behouden of een van deze items verwijderen. Als u het huidige gegevensmagazijn wilt vervangen door het herstelde gegevensmagazijn, u de naam wijzigen met DE OPTIE [WIJZIGINGSDATABASE (SQL-pool)](/sql/t-sql/statements/alter-database-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) wijzigen.
-
-Zie [Een SQL-groep herstellen](sql-data-warehouse-restore-points.md#create-user-defined-restore-points-through-the-azure-portal)als u een gegevensmagazijn wilt herstellen.
-
-Als u een verwijderd of onderbroken gegevensmagazijn wilt herstellen, u [een ondersteuningsticket maken.](sql-data-warehouse-get-started-create-support-ticket.md)
-
-## <a name="cross-subscription-restore"></a>Herstel van kruisabonnementen
-
-Als u direct moet herstellen over het abonnement, stem dan [hier](https://feedback.azure.com/forums/307516-sql-data-warehouse/suggestions/36256231-enable-support-for-cross-subscription-restore)voor deze mogelijkheid. Herstellen naar een andere logische server en ['Verplaats'](/azure/azure-resource-manager/resource-group-move-resources?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) de server over abonnementen om een cross-abonnement te herstellen.
-
-## <a name="geo-redundant-restore"></a>Georedundante herstel
-
-U [uw SQL-pool herstellen](sql-data-warehouse-restore-from-geo-backup.md#restore-from-an-azure-geographical-region-through-powershell) naar elke regio die SQL-pool ondersteunt op het door u gekozen prestatieniveau.
+Er wordt één keer per dag een geo-back-up gemaakt naar een [gekoppeld Data Center](../../best-practices-availability-paired-regions.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json). De RPO voor een geo-Restore is 24 uur. U kunt de geo-back-up naar een server herstellen in een andere regio waar SQL-pool wordt ondersteund. Een geo-back-up zorgt ervoor dat u Data Warehouse kunt herstellen als u geen toegang hebt tot de herstel punten in uw primaire regio.
 
 > [!NOTE]
-> Als u een geo-redundant herstel wilt uitvoeren, moet u zich niet hebben afgemeld voor deze functie.
+> Als u een korte RPO voor geo-back-ups nodig hebt, stem dan op [deze functie.](https://feedback.azure.com/forums/307516-sql-data-warehouse) U kunt ook een door de gebruiker gedefinieerd herstel punt maken en herstellen vanuit het zojuist gemaakte herstel punt naar een nieuw data warehouse in een andere regio. Nadat u de gegevens hebt hersteld, hebt u het Data Warehouse online en kunt u het voor onbepaalde tijd pauzeren om reken kosten op te slaan. De gepauzeerde data base maakt kosten per seconde op het Premium Storage tarief van Azure. Als u een actieve kopie van het Data Warehouse nodig hebt, kunt u hervatten. dit duurt slechts enkele minuten.
+
+## <a name="backup-and-restore-costs"></a>Kosten voor back-up en herstel
+
+U ziet dat de Azure-factuur een regel item bevat voor opslag en een regel item voor nood herstel opslag. De opslag kosten zijn de totale kosten voor het opslaan van uw gegevens in de primaire regio, samen met de incrementele wijzigingen die zijn vastgelegd door moment opnamen. Raadpleeg de [informatie over het samen voegen](/rest/api/storageservices/Understanding-How-Snapshots-Accrue-Charges?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)van moment opnamen voor een gedetailleerde uitleg over de kosten voor moment opnamen. De geo-redundante kosten omvatten de kosten voor het opslaan van de geo-back-ups.  
+
+De totale kosten voor uw primaire Data Warehouse en zeven dagen aan momentopname wijzigingen worden afgerond op de dichtstbijzijnde TB. Als uw data warehouse bijvoorbeeld 1,5 TB is en de moment opnamen 100 GB worden vastgelegd, worden er twee TB aan gegevens in rekening gebracht op Azure Premium Storage-tarieven.
+
+Als u geografisch redundante opslag gebruikt, ontvangt u afzonderlijke opslag kosten. De geo-redundante opslag wordt gefactureerd op basis van het standaard-GRS-snelheid (geografisch redundante opslag met lees toegang).
+
+Zie [prijzen voor Azure Synapse](https://azure.microsoft.com/pricing/details/sql-data-warehouse/gen2/)voor meer informatie over de prijzen van Azure Synapse. Er worden geen kosten in rekening gebracht voor het afrekenen van gegevens bij het herstellen tussen regio's.
+
+## <a name="restoring-from-restore-points"></a>Herstellen vanaf herstel punten
+
+Elke moment opname maakt een herstel punt dat staat voor de tijd waarop de moment opname is gestart. Als u een Data Warehouse wilt herstellen, kiest u een herstel punt en geeft u een opdracht herstellen op.  
+
+U kunt het herstelde data warehouse en de huidige herstellen, of een van beide verwijderen. Als u het huidige Data Warehouse wilt vervangen door het herstelde data warehouse, kunt u de naam ervan wijzigen met behulp van [ALTER data base (SQL-groep)](/sql/t-sql/statements/alter-database-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) met de optie naam wijzigen.
+
+Als u een Data Warehouse wilt herstellen, raadpleegt u [een SQL-groep herstellen](sql-data-warehouse-restore-points.md#create-user-defined-restore-points-through-the-azure-portal).
+
+Als u een verwijderd of onderbroken Data Warehouse wilt herstellen, kunt u [een ondersteunings ticket maken](sql-data-warehouse-get-started-create-support-ticket.md).
+
+## <a name="cross-subscription-restore"></a>Meerdere abonnementen herstellen
+
+Als u het abonnement direct wilt herstellen, moet u [hier](https://feedback.azure.com/forums/307516-sql-data-warehouse/suggestions/36256231-enable-support-for-cross-subscription-restore)stemmen voor deze functie. Herstel op een andere logische server en [Verplaats](/azure/azure-resource-manager/resource-group-move-resources?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) de server over abonnementen om een abonnement op meerdere abonnementen uit te voeren.
+
+## <a name="geo-redundant-restore"></a>Geografisch redundant herstel
+
+U kunt [uw SQL-groep herstellen](sql-data-warehouse-restore-from-geo-backup.md#restore-from-an-azure-geographical-region-through-powershell) naar elke regio die de SQL-groep op het gekozen prestatie niveau ondersteunt.
+
+> [!NOTE]
+> Als u een geo-redundante terugzet bewerking wilt uitvoeren, moet u deze functie niet gebruiken.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie [Overzicht bedrijfscontinuïteit](../../sql-database/sql-database-business-continuity.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) voor meer informatie over rampenplanning
+Zie [overzicht van bedrijfs continuïteit](../../sql-database/sql-database-business-continuity.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) voor meer informatie over planning voor nood gevallen

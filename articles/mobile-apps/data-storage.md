@@ -1,6 +1,6 @@
 ---
-title: Toepassingsgegevens opslaan, beheren en blijven bestaan in de cloud met Visual Studio App Center en Azure-services
-description: Meer informatie over services zoals Visual Studio App Center waarmee u mobiele toepassingsgegevens in de cloud opslaan, beheren en voortbestaan.
+title: Toepassings gegevens in de Cloud opslaan, beheren en persistent maken met Visual Studio App Center en Azure-Services
+description: Meer informatie over services zoals Visual Studio App Center waarmee u mobiele toepassings gegevens in de cloud kunt opslaan, beheren en behouden.
 author: codemillmatt
 ms.assetid: 12344321-0123-4678-8588-ccff02097224
 ms.service: vs-appcenter
@@ -8,66 +8,66 @@ ms.topic: article
 ms.date: 03/24/2020
 ms.author: masoucou
 ms.openlocfilehash: 166847325fa9094136f1c2a143f1751420f05f66
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80240917"
 ---
-# <a name="store-sync-and-query-mobile-application-data-from-the-cloud"></a>Mobiele toepassingsgegevens opslaan, synchroniseren en opvragen vanuit de cloud
-Het maakt niet uit wat voor soort applicatie je bouwt, zult u waarschijnlijk genereren en verwerken van gegevens. De gebruikers van uw toepassing hebben hoge verwachtingen. Ze willen dat de applicatie snel en naadloos werkt, onder alle omstandigheden. De meeste toepassingen werken ook op meerdere apparaten. Mogelijk hebt u toegang tot uw toepassing vanaf een desktop of mobiel apparaat. Meerdere gebruikers kunnen de toepassing tegelijkertijd gebruiken en gegevens delen met de verwachting dat ze direct en realtime toegang krijgen tot gegevens.
+# <a name="store-sync-and-query-mobile-application-data-from-the-cloud"></a>Mobiele toepassings gegevens vanuit de Cloud opslaan, synchroniseren en doorzoeken
+Ongeacht het soort toepassing dat u bouwt, zult u waarschijnlijk gegevens genereren en verwerken. De gebruikers van uw toepassing hebben hoge verwachtingen. Ze willen dat de toepassing in alle omstandigheden snel en probleemloos werkt. De meeste toepassingen werken ook op meerdere apparaten. U kunt toegang krijgen tot uw toepassing vanaf een bureau blad of een mobiel apparaat. Meerdere gebruikers kunnen de toepassing tegelijkertijd gebruiken en gegevens delen met de verwachting van de toegang tot gegevens en real-time.
 
-Uw toepassingsgebruikers hebben niet altijd een internetverbinding. Toepassingen zijn ontworpen en naar verwachting werken met of zonder een internetverbinding. Ontwikkelaars moeten de juiste oplossing kiezen voor het opslaan en synchroniseren van hun gegevens naar de cloud om een geweldige klantervaring voor hun toepassing te bieden.
+Uw toepassings gebruikers hebben niet altijd een Internet verbinding. Toepassingen zijn ontworpen en verwacht om te werken met of zonder een Internet verbinding. Ontwikkel aars moeten de juiste oplossing kiezen om hun gegevens in de Cloud op te slaan en te synchroniseren om een goede klant ervaring te bieden voor de toepassing.
 
-Microsoft biedt een verscheidenheid aan services die het niet nodig hebben om servers op te draaien, uw database te kiezen of zich zorgen te maken over schaal of beveiliging om een zo rijke ervaring mogelijk te bieden. Deze services bieden een geweldige ontwikkelaarservaring waarmee u toepassingsgegevens in de cloud opslaan met SQL- of NoSQL-API's. U ook gegevens synchroniseren op alle apparaten en de toepassing in staat stellen om te werken met of zonder netwerkverbinding om schaalbare en robuuste toepassingen te bouwen.
+Micro soft biedt diverse services waarmee u geen servers hoeft in te zetten, uw data base te kiezen of u zorgen te maken over schalen of beveiliging om zo veel mogelijk ervaring te bieden. Deze services bieden een fantastische ervaring voor ontwikkel aars waarmee u toepassings gegevens kunt opslaan in de Cloud met behulp van SQL-of NoSQL-Api's. U kunt ook gegevens op alle apparaten synchroniseren en de toepassing inschakelen voor gebruik met of zonder een netwerk verbinding om schaal bare en robuuste toepassingen te bouwen.
 
-Gebruik de volgende services voor het beheren en opslaan van mobiele toepassingsgegevens in de cloud.
+Gebruik de volgende services om mobiele toepassings gegevens in de cloud te beheren en op te slaan.
 
 ## <a name="visual-studio-app-center"></a>Visual Studio App Center
-[App Center Data](/appcenter/data/) is een datamanagementservice. Het stelt toepassingen in staat om toepassingsgegevens in de cloud te beheren, te blijven bestaan en te synchroniseren op verschillende apparaten en platforms in online en offline scenario's. App Center Data is gebouwd bovenop Azure Cosmos DB en schaalt naarmate uw gebruikersbasis en het aantal toepassingen toenemen. Het zorgt voor een lage latentie, hoge beschikbaarheid en hoge schaalbaarheid voor al uw gegevens.
+[App Center gegevens](/appcenter/data/) is een service voor gegevens beheer. Hierdoor kunnen toepassingen toepassings gegevens in de Cloud beheren, persistent maken en synchroniseren tussen verschillende apparaten en platforms in online-en offline scenario's. App Center gegevens worden geschaald op basis van Azure Cosmos DB, is het gebruik van uw gebruikers database en het aantal toepassingen verg root. Het zorgt voor lage latentie, hoge Beschik baarheid en hoge schaal baarheid voor al uw gegevens.
 
 **Belangrijke functies**
-- Eenvoudige inrichten op een nieuwe Azure Cosmos DB-database of een bestaande Azure Cosmos DB-database vanuit de Visual Studio App Center-portal.
-- NoSQL-databaseondersteuning voor het eenvoudig opslaan, synchroniseren en querytoepassingsgegevens.
-- Deze service is gebouwd bovenop Azure Cosmos DB en erft de meeste belangrijke functies die azure cosmos DB bieden en kan wereldwijd worden geschaald om aan uw bedrijfsbehoeften te voldoen.
-- Online en offline synchronisatiemogelijkheden om gegevens op verschillende apparaten te synchroniseren.
-- SDK's van mobiele klanten die u gebruiken om eenvoudig privétoepassingsgegevens te beheren.
-- Platformondersteuning voor iOS, Android, Xamarin en React Native.
+- Eenvoudig inrichten voor een nieuwe Azure Cosmos DB-Data Base of een bestaande Azure Cosmos DB-Data Base vanuit de Visual Studio App Center Portal.
+- NoSQL data base-ondersteuning om toepassings gegevens eenvoudig op te slaan, te synchroniseren en op te vragen.
+- Deze service neemt boven op Azure Cosmos DB de meeste van de belangrijkste functies van Azure Cosmos DB over en kan wereld wijd schalen om te voldoen aan de behoeften van uw bedrijf.
+- Mogelijkheden voor online-en offline synchronisatie om gegevens op verschillende apparaten te synchroniseren.
+- Mobiele client-Sdk's die u kunt gebruiken om eenvoudig persoonlijke toepassings gegevens te beheren.
+- Platform ondersteuning voor iOS, Android, Xamarin en reageren systeem eigen.
 
 **Verwijzingen**
-- [Meld u aan bij Visual Studio App Center](https://appcenter.ms/signup?utm_source=Mobile%20Development%20Docs&utm_medium=Azure&utm_campaign=New%20azure%20docs)
-- [Aan de slag met App Center Data](/appcenter/data/getting-started)
+- [Meld u aan met Visual Studio App Center](https://appcenter.ms/signup?utm_source=Mobile%20Development%20Docs&utm_medium=Azure&utm_campaign=New%20azure%20docs)
+- [Aan de slag met App Center gegevens](/appcenter/data/getting-started)
 
 ## <a name="azure-cosmos-db"></a>Azure Cosmos DB
-[Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) is een wereldwijd gedistribueerde databaseservice met meerdere modellen. U het gebruiken om toepassingen op planeetschaal te bouwen. Met Azure Cosmos DB u de doorvoer en opslag in elk aantal Azure-regio's wereldwijd elastisch en onafhankelijk schalen. U profiteren van snelle gegevenstoegang met één cijfer met behulp van uw favoriete API-oppervlakken. Deze oppervlakken omvatten SQL, MongoDB, Cassandra, Tabellen of Gremlin. Azure Cosmos DB biedt op unieke wijze uitgebreide servicelevelovereenkomsten (SLA's) voor doorvoer, latentie, beschikbaarheid en consistentie.
+[Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) is een wereld wijd gedistribueerde, multi-model database service. U kunt deze gebruiken om toepassingen op basis van planeet te schalen. Met Azure Cosmos DB kunt u de door Voer en opslag op een flexibele en onafhankelijke manier schalen voor elk wille keurig aantal Azure-regio's wereld wijd. U kunt profiteren van snelle toegang tot gegevens met één cijfer en data-milliseconden met behulp van uw favoriete API-Opper vlakken. Deze Opper vlakken bevatten SQL, MongoDB, Cassandra, Tables of Gremlin. Azure Cosmos DB biedt unieke service overeenkomsten (Sla's) voor door Voer, latentie, Beschik baarheid en consistentie.
 
 **Belangrijke functies**
-- Ondersteunt een breed scala aan API's, waaronder de SQL (Core) API, Cassandra API, MongoDB API, Gremlin API en Table API.
-- Turnkey global distribution repliceert uw gegevens waar uw gebruikers zich ook bevinden. Uw gebruikers kunnen communiceren met een replica van de gegevens die het dichtst bij hen staan.
-- Geen schema- of indexbeheer omdat de databaseengine volledig schemaagnostisch is.
-- Alomtegenwoordige regionale aanwezigheid omdat Azure Cosmos DB beschikbaar is in alle Azure-regio's wereldwijd, waaronder 54+ regio's in de openbare cloud.
-- Precies gedefinieerde, meerdere consistentiekeuzes omdat het multimasterreplicatieprotocol van Azure Cosmos DB zorgvuldig is ontworpen om vijf goed gedefinieerde consistentiekeuzes te bieden. Deze vijf keuzes zijn sterk, begrensd staleness, sessie, consistente voorvoegsel, en uiteindelijk.
-- 99.999% beschikbaarheid voor zowel leest als schrijft.
-- Programmatisch (of via de Azure-portal) beroept u op de regionale failover van uw Azure Cosmos DB-account om ervoor te zorgen dat uw toepassing is ontworpen om een regionale ramp te weerstaan.
-- Gegarandeerde lage latency bij het 99e percentiel wereldwijd.
+- Ondersteunt een breed scala aan Api's, waaronder de SQL-API (core), Cassandra-API, MongoDB API, Gremlin API en Table-API.
+- Kant-en-klare wereld wijde distributie repliceert uw gegevens overal waar uw gebruikers zich bevinden. Uw gebruikers kunnen communiceren met een replica van de gegevens die het dichtst bij hen ligt.
+- Er is geen schema-of index beheer, omdat de data base-engine volledig schema-neutraal is.
+- Alomtegenwoordige regionale aanwezigheid omdat Azure Cosmos DB beschikbaar is in alle Azure-regio's over de hele wereld, waaronder 54 en regio's in de open bare Cloud.
+- Nauw keurig gedefinieerd, meerdere consistentie mogelijkheden omdat het multi-master replicatie Protocol van Azure Cosmos DB nauw keurig is ontworpen om vijf goed gedefinieerde consistentie mogelijkheden te bieden. Deze vijf opties zijn Strong, gebonden veroudering, sessie, consistent voor voegsel en uiteindelijk.
+- 99,999% Beschik baarheid voor zowel lees-als schrijf bewerkingen.
+- Via een programma (of via de Azure Portal) wordt de regionale failover van uw Azure Cosmos DB-account aangeroepen om ervoor te zorgen dat uw toepassing is ontworpen voor een regionale nood geval.
+- Gegarandeerde lage latentie bij het 99e percentiel over de hele wereld.
 
 **Verwijzingen**
-- [Azure-portal](https://portal.azure.com) 
-- [Azure Cosmos DB-documentatie](/azure/cosmos-db/introduction)
+- [Azure Portal](https://portal.azure.com) 
+- [Documentatie over Azure Cosmos DB](/azure/cosmos-db/introduction)
 
 ## <a name="azure-sql-database"></a>Azure SQL Database
- [Azure SQL Database](https://azure.microsoft.com/services/sql-database/) is een beheerde service voor algemene doeleinden relationele database. U het gebruiken om een zeer beschikbare en krachtige gegevensopslaglaag te maken voor toepassingen en oplossingen in de Azure-cloud.
+ [Azure SQL database](https://azure.microsoft.com/services/sql-database/) is een service voor algemeen gebruik van relationele data bases. U kunt deze gebruiken om een Maxi maal beschik bare gegevenslaag met hoge prestaties te maken voor toepassingen en oplossingen in de Azure-Cloud.
 
 **Belangrijke functies**
-- **Elastische databasemodellen en -hulpprogramma's:** Met een elastische database kunnen ontwikkelaars resources bundelen tussen een groep databases voor schalen. Als u deze resources administratief wilt beheren, verzendt u een script als taak. De SQL-database voert vervolgens het script uit in de databases.
-- **Hoge prestaties:** Toepassingen met een hoge doorvoer kunnen profiteren van de nieuwste versie. Het levert 25% meer premium database vermogen.
-- **Back-ups, replicatie en hoge beschikbaarheid:** Ingebouwde replicatie en een door Microsoft gesteunde SLA op databaseniveau bieden de continuïteit en bescherming van toepassingen tegen catastrofale gebeurtenissen. Met actieve georeplicatie u failover- en selfserviceherstel configureren, die volledige controle bieden over 'oeps-herstel'. Gegevensherstel is beschikbaar via back-ups van gegevens tot 35 dagen.
-- **Bijna nul onderhoud:** Automatische software maakt deel uit van de service. Ingebouwde systeemreplica's helpen om inherente gegevensbescherming, databaseuptime en systeemstabiliteit te bieden. Systeemreplica's worden automatisch verplaatst naar nieuwe computers. Ze zijn on the fly ingericht als oude falen.
-- **Beveiliging:** Azure SQL Database biedt een portfolio van beveiligingsfuncties om te voldoen aan het nalevingsbeleid voor organisaties of in de branche:
-    - Auditing biedt ontwikkelaars de mogelijkheid om compliance-gerelateerde taken uit te voeren en kennis op te doen over activiteiten.
-    - Ontwikkelaars en IT kunnen beleid op databaseniveau implementeren om de toegang tot gevoelige gegevens te beperken met beveiliging op rijniveau, dynamische gegevensmaskering en transparante gegevensversleuteling voor Azure SQL Database.
-    - Azure SQL Database wordt geverifieerd door belangrijke cloudauditors als onderdeel van het bereik van belangrijke Azure-nalevingscertificeringen en -goedkeuringen, zoals HIPAA BAA, ISO/IEC 27001:2005, FedRAMP en EU-modelclausules.
+- **Modellen en hulpprogram ma's voor elastische data bases:** Met een elastische data base kunnen ontwikkel aars resources groeperen in een groep data bases voor schalen. Als u deze resources wilt beheren, dient u een script als een taak in te dienen. Het SQL database voert vervolgens het script uit op de data bases.
+- **Hoge prestaties:** Toepassingen met een hoge door Voer kunnen profiteren van de nieuwste versie. Het biedt 25% meer Premium-database kracht.
+- **Back-ups, replicatie en hoge Beschik baarheid:** Ingebouwde replicatie en een door micro soft ondersteunde SLA op database niveau bieden de continuïteit van toepassingen en bescherming tegen onherstelbare gebeurtenissen. Met actieve geo-replicatie kunt u failover en self-service herstel configureren, waarmee u volledige controle over ' huidige herstel ' krijgt. Het terugzetten van gegevens is beschikbaar via gegevens back-ups van Maxi maal 35 dagen.
+- **Bijna nul onderhoud:** Automatische software maakt deel uit van de service. Ingebouwde systeem replica's helpen u bij het leveren van inherente gegevens beveiliging, Beschik baarheid van de data base en systeem stabiliteit. Systeem replica's worden automatisch verplaatst naar nieuwe computers. Deze worden op de vlucht ingericht als oude.
+- **Beveiliging:** Azure SQL Database biedt een port Folio met beveiligings functies die voldoen aan het nalevings beleid van de organisatie of de branche:
+    - Auditing biedt ontwikkel aars de mogelijkheid om aan naleving gerelateerde taken uit te voeren en kennis te krijgen over activiteiten.
+    - Ontwikkel aars en IT kunnen beleid op database niveau implementeren om de toegang tot gevoelige gegevens te helpen beperken met beveiliging op rijniveau, dynamische gegevens maskering en transparante gegevens versleuteling voor Azure SQL Database.
+    - Azure SQL Database wordt gecontroleerd door belang rijke Cloud controleurs als onderdeel van de belangrijkste Azure-nalevings certificeringen en-goed keuringen, zoals HIPAA BAA, ISO/IEC 27001:2005, FedRAMP en EU-model clausules.
 
 **Verwijzingen**
-- [Azure-portal](https://portal.azure.com) 
+- [Azure Portal](https://portal.azure.com) 
 - [Documentatie voor Azure SQL Database](/azure/sql-database/) 

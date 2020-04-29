@@ -1,48 +1,48 @@
 ---
-title: Ingenomen telemetriegegevens opvragen
-description: In dit artikel wordt beschreven hoe u ingenomen telemetriegegevens opvragen.
+title: Door query opgenomen telemetriegegevens
+description: In dit artikel wordt beschreven hoe u opgenomen telemetriegegevens opvraagt.
 author: sunasing
 ms.topic: article
 ms.date: 03/11/2020
 ms.author: sunasing
 ms.openlocfilehash: f717903b3f953e04c793092c86802f2006de7e82
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80349804"
 ---
-# <a name="query-ingested-telemetry-data"></a>Ingenomen telemetriegegevens opvragen
+# <a name="query-ingested-telemetry-data"></a>Door query opgenomen telemetriegegevens
 
-In dit artikel wordt beschreven hoe u ingenomen sensorgegevens van Azure FarmBeats opvragen.
+In dit artikel wordt beschreven hoe u een query kunt uitvoeren op opgenomen sensor gegevens van Azure FarmBeats.
 
-Het innemen van gegevens uit IoT-bronnen (Internet of Things), zoals apparaten en sensoren, is een veelvoorkomend scenario in FarmBeats. U maakt metadata voor apparaten en sensoren en neemt vervolgens de historische gegevens in farmbeats in een canonieke indeling in. Zodra de sensorgegevens beschikbaar zijn op FarmBeats Datahub, kunnen we hetzelfde opvragen om bruikbare inzichten te genereren of modellen te bouwen.
+Het opnemen van gegevens uit Internet of Things IoT-resources zoals apparaten en Sens oren is een veelvoorkomend scenario in FarmBeats. U maakt meta gegevens voor apparaten en Sens oren en vervolgens neemt u de historische data op in een canonieke notatie van FarmBeats. Zodra de sensor gegevens beschikbaar zijn op FarmBeats Datahub, kunnen we een query uitvoeren op dezelfde voor het genereren van met actie bare inzichten of build-modellen.
 
 ## <a name="before-you-begin"></a>Voordat u begint
 
-Voordat u verder gaat met dit artikel, moet u ervoor zorgen dat u FarmBeats hebt geïnstalleerd en sensortelemetriegegevens van uw IoT-apparaten hebt ingenomen op FarmBeats.
+Voordat u verder gaat met dit artikel, moet u ervoor zorgen dat u FarmBeats en geconsumeerde telemetrie-sensor gegevens van uw IoT-apparaten hebt geïnstalleerd naar FarmBeats.
 
-Om sensor telemetriegegevens in te nemen, bezoek je [historische telemetriegegevens](ingest-historical-telemetry-data-in-azure-farmbeats.md)
+Als u telemetrie-sensor gegevens wilt opnemen, gaat u naar [historische telemetriegegevens gegevens](ingest-historical-telemetry-data-in-azure-farmbeats.md)
 
-Voordat u verder gaat, moet u er ook voor zorgen dat u bekend bent met FarmBeats REST API's, omdat u telemetrie met behulp van de API's zult opvragen. Zie [FarmBeats REST API's voor](rest-api-in-azure-farmbeats.md)meer informatie over FarmBeats API's. **Zorg ervoor dat u API-aanvragen indienen bij uw FarmBeats Datahub-eindpunt.**
+Voordat u doorgaat, moet u er ook voor zorgen dat u bekend bent met FarmBeats REST-Api's wanneer u een query uitvoert op opgenomen telemetrie met behulp van de Api's. Zie [FARMBEATS rest api's](rest-api-in-azure-farmbeats.md)(Engelstalig) voor meer informatie over FarmBeats-api's. **Zorg ervoor dat u API-aanvragen kunt maken naar uw FarmBeats Datahub-eind punt**.
 
-## <a name="query-ingested-sensor-telemetry-data"></a>Ingenomen sensortelemetriegegevens van query's
+## <a name="query-ingested-sensor-telemetry-data"></a>Gegevensgestuurde telemetrie-sensor gegevens opvragen
 
-Er zijn twee manieren om telemetriegegevens van FarmBeats te openen en op te vragen:
+Er zijn twee manieren om toegang te krijgen tot telemetriegegevens en gegevens op te vragen vanuit FarmBeats:
 
 - API en
 - Time Series Insights (TSI).
 
-### <a name="query-using-rest-api"></a>Query met REST API
+### <a name="query-using-rest-api"></a>Query's uitvoeren met REST API
 
-Volg de stappen om de ingenomen sensortelemetriegegevens op te vragen met FarmBeats REST API's:
+Volg de stappen om een query uit te voeren op de gegevensgestuurde sensor-telemetrie met behulp van FarmBeats REST-Api's:
 
-1. Identificeer de sensor waarin u geïnteresseerd bent. U dit doen door een GET-aanvraag in te dienen op /Sensor API.
+1. Identificeer de sensor waarin u bent geïnteresseerd. U kunt dit doen door een GET-aanvraag te maken op/sensor-API.
 
 > [!NOTE]
-> De **id** en de **sensorModelId** van de geïnteresseerde sensor object.
+> De **id** en de **sensorModelId** van het object voor de geïnteresseerde sensor.
 
-2. Maak een GET/{id} op /SensorModel API voor de **sensorModelId** zoals aangegeven in stap 1. De "Sensor Model" heeft alle metadata en details over de ingenomen telemetrie van de sensor. **Sensormeting** binnen het **sensormodelobject** bevat bijvoorbeeld details over welke maatregelen de sensor verzendt en in welke typen en eenheden. Bijvoorbeeld:
+2. Maak een GET/{id} op de/SensorModel-API voor de **sensorModelId** zoals vermeld in stap 1. Het sensor model bevat alle meta gegevens en Details over de opgenomen telemetrie van de sensor. De meting van de **sensor** in het **sensor model** object heeft bijvoorbeeld informatie over welke metingen de sensor verzendt en in welke typen en eenheden. Bijvoorbeeld:
 
   ```json
   {
@@ -54,9 +54,9 @@ Volg de stappen om de ingenomen sensortelemetriegegevens op te vragen met FarmBe
       "description": "<Description of the measure>"
   }
   ```
-Noteer het antwoord van de GET/{id} oproep voor het sensormodel.
+Noteer de reactie van de aanroep GET/{id} voor het sensor model.
 
-3. Een POST-aanroep op /Telemetrie-API doen met de volgende invoerpayload
+3. Een POST-aanroep uitvoeren op/Telemetry-API met de volgende invoer lading
 
   ```json
   {
@@ -77,7 +77,7 @@ Noteer het antwoord van de GET/{id} oproep voor het sensormodel.
     ]
   }
   ```
-4. Het antwoord van de /Telemetrie API ziet er ongeveer als volgt uit:
+4. Het antwoord van de/Telemetry-API ziet er ongeveer als volgt uit:
 
   ```json
   {
@@ -105,21 +105,21 @@ Noteer het antwoord van de GET/{id} oproep voor het sensormodel.
     ]
   }
   ```
-In het bovenstaande voorbeeldantwoord geeft de opgevraagde sensor telemetrie gegevens voor twee tijdstempels samen met de maatnaam ('moist_soil_last') en waarden van de gerapporteerde telemetrie in de twee tijdstempels. U moet verwijzen naar het bijbehorende sensormodel (zoals beschreven in stap 2) om het type en de eenheid van de gerapporteerde waarden te interpreteren.
+In het bovenstaande voor beeld geeft de query op sensor-telemetrie gegevens voor twee tijds tempels samen met de naam van de meting (' moist_soil_last ') en de waarden van de gerapporteerde telemetrie in de twee tijds tempels. U moet verwijzen naar het bijbehorende sensor model (zoals beschreven in stap 2) om het type en de eenheid van de gerapporteerde waarden te interpreteren.
 
-### <a name="query-using-azure-time-series-insights-tsi"></a>Query met Azure Time Series Insights (TSI)
+### <a name="query-using-azure-time-series-insights-tsi"></a>Query's uitvoeren met behulp van Azure Time Series Insights (TSI)
 
-FarmBeats maakt gebruik van [Azure Time Series Insights (TSI)](https://azure.microsoft.com/services/time-series-insights/) om gegevens op IoT-schaal in te nemen, op te slaan, op te vragen en te visualiseren- gegevens die sterk gecontextualiseerd en geoptimaliseerd zijn voor tijdreeksen.
+FarmBeats maakt gebruik van [Azure time series Insights (TSI)](https://azure.microsoft.com/services/time-series-insights/) om gegevens op IOT-schaal te opnemen, op te slaan, op te vragen en te visualiseren, en gegevens die zeer gevoelig en geoptimaliseerd voor time series zijn.
 
-Telemetriegegevens worden ontvangen op een EventHub en vervolgens verwerkt en naar een TSI-omgeving binnen farmbeats-resourcegroep geduwd. Gegevens kunnen dan rechtstreeks worden opgevraagd vanuit de TSI. Zie [TSI-documentatie](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-explorer) voor meer informatie
+Telemetriegegevens worden ontvangen op een EventHub en vervolgens verwerkt en gepusht naar een TSI-omgeving binnen FarmBeats-resource groep. Gegevens kunnen vervolgens rechtstreeks vanuit de TSI worden opgevraagd. Raadpleeg de [TSI-documentatie](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-explorer) voor meer informatie.
 
-Volg de stappen om gegevens over TSI te visualiseren:
+Volg de stappen voor het visualiseren van gegevens op TSI:
 
-1. Ga naar **Azure Portal** > **FarmBeats DataHub-brongroep** > selecteer **Time Series Insights-omgeving** (tsi-xxxx) > **Beleid voor gegevenstoegang.** Voeg de gebruiker toe met toegang tot reader of inzender.
-2. Ga naar de **overzichtspagina** van **de Time Series Insights-omgeving** (tsi-xxxx) en selecteer de URL van Time Series **Insights Explorer.** Je nu de ingenomen telemetrie visualiseren.
+1. Ga naar **Azure Portal** > **FarmBeats DataHub resource groep** > Selecteer **Time Series Insights** omgeving (TSI-xxxx) > **beleid voor gegevens toegang**. Voeg een gebruiker toe met toegang voor lezer of Inzender.
+2. Ga naar de pagina **overzicht** van **Time Series Insights** omgeving (TSI-xxxx) en selecteer de **URL van Time Series Insights Explorer**. U kunt nu de opgenomen telemetrie visualiseren.
 
-Naast het opslaan, opvragen en visualiseren van telemetrie, maakt TSI ook integratie met een Power BI-dashboard mogelijk. Zie [hier]( https://docs.microsoft.com/azure/time-series-insights/how-to-connect-power-bi) voor meer informatie
+Naast het opslaan, doorzoeken en visualisatie van telemetrie, biedt TSI ook integratie met een Power BI dash board. Zie [hier]( https://docs.microsoft.com/azure/time-series-insights/how-to-connect-power-bi) voor meer informatie.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-U hebt nu opgevraagde sensorgegevens van uw Azure FarmBeats-exemplaar. Leer nu hoe u kaarten voor uw boerderijen [genereren.](generate-maps-in-azure-farmbeats.md#generate-maps)
+U hebt nu sensor gegevens opgevraagd van uw Azure FarmBeats-exemplaar. Nu leert u hoe u [kaarten](generate-maps-in-azure-farmbeats.md#generate-maps) voor uw Farms kunt genereren.

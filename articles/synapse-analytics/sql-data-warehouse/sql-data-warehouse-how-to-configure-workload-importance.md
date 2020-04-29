@@ -1,6 +1,6 @@
 ---
 title: Het belang van workload configureren
-description: Meer informatie over het instellen van het belang van het aanvraagniveau in Azure Synapse Analytics.
+description: Meer informatie over het instellen van de urgentie van het aanvraag niveau in azure Synapse Analytics.
 services: synapse-analytics
 author: ronortloff
 manager: craigg
@@ -12,25 +12,25 @@ ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
 ms.openlocfilehash: 0ab7b8be8780f7edb2734d99587bc7709ced9436
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/03/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80633351"
 ---
-# <a name="configure-workload-importance-in-azure-synapse-analytics"></a>Het werkgebied configureren in Azure Synapse Analytics
+# <a name="configure-workload-importance-in-azure-synapse-analytics"></a>Urgentie van werk belasting configureren in azure Synapse Analytics
 
-Als u belangrijk bent in Synapse SQL voor Azure Synapse, u de planning van query's beïnvloeden. Query's met een groter belang worden gepland om uit te voeren vóór query's met een lager belang. Als u belangrijk wilt zijn voor query's, moet u een classificatie voor werkbelasting maken.
+Als u de urgentie instelt in Synapse SQL voor Azure Synapse, kunt u de planning van query's beïnvloeden. Query's met een hogere urgentie worden gepland om te worden uitgevoerd vóór query's met een lagere urgentie. Als u belang rijk aan query's wilt toewijzen, moet u een classificatie voor de werk belasting maken.
 
-## <a name="create-a-workload-classifier-with-importance"></a>Een workloadclassificatie maken met belang
+## <a name="create-a-workload-classifier-with-importance"></a>Een classificatie van een werk belasting met urgentie maken
 
-Vaak heb je in een datawarehousescenario gebruikers die hun query's snel moeten uitvoeren.  De gebruiker kan leidinggevenden van het bedrijf zijn die rapporten moeten uitvoeren of de gebruiker kan een analist zijn die een adhocquery uitvoert. U maakt een classificatie voor werkbelasting om belang toe te wijzen aan een query.  In de onderstaande voorbeelden wordt de syntaxis van de classificatie [voor de werkbelasting gemaakt](/sql/t-sql/statements/create-workload-classifier-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) om twee classificaties te maken. `Membername`kan een enkele gebruiker of een groep zijn. Individuele gebruikersclassificaties hebben voorrang op rolclassificaties. Voer het als u bestaande gebruikers van het gegevensmagazijn wilt vinden:
+Vaak bevat een scenario voor een Data Warehouse gebruikers die hun query's nodig hebben om snel uit te voeren.  De gebruiker kan leidinggevenden zijn van het bedrijf waarvoor rapporten moeten worden uitgevoerd of de gebruiker kan worden uitgevoerd als een adhoc-query. U maakt een classificatie van de werk belasting om belang rijk aan een query toe te wijzen.  De volgende voor beelden gebruiken de nieuwe [classificatie syntaxis CREATE workload](/sql/t-sql/statements/create-workload-classifier-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) om twee classificaties te maken. `Membername`Dit kan één gebruiker of een groep zijn. Afzonderlijke gebruikers classificaties hebben voor rang op classificaties van rollen. Voer de volgende opdracht uit om bestaande Data Warehouse-gebruikers te zoeken:
 
 ```sql
 Select name from sys.sysusers
 ```
 
-Ga als beste de geclassificeerde workload voor een gebruiker met een hoger belang:
+Voor het maken van een classificatie van een werk belasting voor een gebruiker met een hogere urgentie:
 
 ```sql
 CREATE WORKLOAD CLASSIFIER ExecReportsClassifier  
@@ -40,7 +40,7 @@ CREATE WORKLOAD CLASSIFIER ExecReportsClassifier 
 
 ```
 
-Ga als u een classificatie voor werkbelasting maakt voor een gebruiker die adhocquery's met een lager belang uitvoert:  
+Voor het maken van een classificatie van werk belasting voor een gebruiker die adhoc-query's uitvoert met een lagere urgentie:  
 
 ```sql
 CREATE WORKLOAD CLASSIFIER AdhocClassifier  
@@ -51,8 +51,8 @@ CREATE WORKLOAD CLASSIFIER AdhocClassifier 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Zie Workloadclassification voor meer informatie over [workloadmanagement](sql-data-warehouse-workload-classification.md)
-- Zie [Werklastbelang](sql-data-warehouse-workload-importance.md) voor meer informatie over Belang
+- Zie [workload-classificatie](sql-data-warehouse-workload-classification.md) voor meer informatie over workload Management
+- Zie [urgentie van werk belasting](sql-data-warehouse-workload-importance.md) voor meer informatie over belang rijkheid
 
 > [!div class="nextstepaction"]
-> [Ga naar Het belang van de werkbelasting beheren en bewaken](sql-data-warehouse-how-to-manage-and-monitor-workload-importance.md)
+> [Ga naar de urgentie van het workload beheren en bewaken](sql-data-warehouse-how-to-manage-and-monitor-workload-importance.md)

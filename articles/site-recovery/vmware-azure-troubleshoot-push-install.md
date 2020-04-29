@@ -1,6 +1,6 @@
 ---
-title: Problemen met de push-installatie van Mobility Service oplossen met Azure Site Recovery
-description: Problemen met de installatiefouten van Mobility Services oplossen wanneer replicatie wordt ingesloten voor herstel na noodgevallen met Azure Site Recovery.
+title: Problemen met push-installatie van de Mobility-service met Azure Site Recovery oplossen
+description: Problemen met de installatie van Mobility Services oplossen bij het inschakelen van replicatie voor herstel na nood gevallen met Azure Site Recovery.
 author: Rajeswari-Mamilla
 manager: rochakm
 ms.service: site-recovery
@@ -8,220 +8,220 @@ ms.topic: conceptual
 ms.author: ramamill
 ms.date: 04/03/2020
 ms.openlocfilehash: 1afd931249d4dbeda2b4b25f822837e2a564f959
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/03/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80656312"
 ---
-# <a name="troubleshoot-mobility-service-push-installation"></a>Problemen met de push-installatie van mobility-services oplossen
+# <a name="troubleshoot-mobility-service-push-installation"></a>Problemen met push-installatie van Mobility service oplossen
 
-De installatie van de Mobility-service is een belangrijke stap om replicatie mogelijk te maken. Het succes van deze stap hangt af van het voldoen aan de vereisten en het werken met ondersteunde configuraties. De meest voorkomende storingen die u tijdens de installatie van de Mobiliteitsservice ondervinden, zijn te wijten aan:
+De installatie van de Mobility-service is een belang rijke stap voor het inschakelen van replicatie. Het slagen van deze stap is afhankelijk van de vereisten van de vergadering en het werken met ondersteunde configuraties. De meest voorkomende fouten die u tijdens de installatie van de Mobility-service kunt voor komen, zijn als volgt:
 
-* [Fouten in referenties/bevoegdheden](#credentials-check-errorid-95107--95108)
-* [Inlogfouten](#login-failures-errorid-95519-95520-95521-95522)
+* [Referentie-en bevoegdheids fouten](#credentials-check-errorid-95107--95108)
+* [Mislukte aanmeldingen](#login-failures-errorid-95519-95520-95521-95522)
 * [Connectiviteitsfouten](#connectivity-failure-errorid-95117--97118)
-* [Fouten in het delen van bestanden en printers](#file-and-printer-sharing-services-check-errorid-95105--95106)
-* [WMI-fouten (Windows Management Instrumentation)](#windows-management-instrumentation-wmi-configuration-check-error-code-95103)
+* [Fouten bij bestands-en printer deling](#file-and-printer-sharing-services-check-errorid-95105--95106)
+* [Windows Management Instrumentation (WMI)-fouten](#windows-management-instrumentation-wmi-configuration-check-error-code-95103)
 * [Niet-ondersteunde besturingssystemen](#unsupported-operating-systems)
-* [Niet-ondersteunde opstartconfiguraties](#unsupported-boot-disk-configurations-errorid-95309-95310-95311)
-* [VSS-installatiefouten (Volume Shadow copy Service)](#vss-installation-failures)
-* [Apparaatnaam in GRUB-configuratie in plaats van apparaat UUID](#enable-protection-failed-as-device-name-mentioned-in-the-grub-configuration-instead-of-uuid-errorid-95320)
-* [Lvm-volumevolume (Logical Volume Manager)](#lvm-support-from-920-version)
-* [Waarschuwingen voor opnieuw opstarten](#install-mobility-service-completed-with-warning-to-reboot-errorid-95265--95266)
+* [Niet-ondersteunde opstart configuraties](#unsupported-boot-disk-configurations-errorid-95309-95310-95311)
+* [Installatie fouten van de Volume Shadow Copy-service (VSS)](#vss-installation-failures)
+* [De apparaatnaam in de GRUB-configuratie in plaats van de UUID van het apparaat](#enable-protection-failed-as-device-name-mentioned-in-the-grub-configuration-instead-of-uuid-errorid-95320)
+* [Volume voor Logical Volume Manager (LVM)](#lvm-support-from-920-version)
+* [Waarschuwingen opnieuw opstarten](#install-mobility-service-completed-with-warning-to-reboot-errorid-95265--95266)
 
-Wanneer u replicatie inschakelt, probeert Azure Site Recovery de mobiliteitsserviceagent op uw virtuele machine (VM) te installeren. Als onderdeel van dit proces probeert de configuratieserver verbinding te maken met de virtuele machine en de agent te kopiëren. Volg de stapsgewijze richtlijnen voor het oplossen van problemen om een succesvolle installatie mogelijk te maken.
+Wanneer u replicatie inschakelt, probeert Azure Site Recovery de Mobility Service-agent op uw virtuele machine (VM) te installeren. Als onderdeel van dit proces probeert de configuratie server verbinding te maken met de virtuele machine en de agent te kopiëren. Als u de installatie wilt inschakelen, volgt u de stapsgewijze richt lijnen voor het oplossen van problemen.
 
-## <a name="credentials-check-errorid-95107--95108"></a>Referentiescontrole (Foutid: 95107 & 95108)
+## <a name="credentials-check-errorid-95107--95108"></a>Controle van referenties (ErrorID: 95107 & 95108)
 
-Controleer of het gebruikersaccount dat tijdens de replicatie is ingeschakeld, geldig en nauwkeurig is. Azure Site Recovery vereist het **hoofdaccount** of het gebruikersaccount met **beheerdersbevoegdheden** om een push-installatie uit te voeren. Anders wordt de duwinstallatie geblokkeerd op de bronmachine.
+Controleer of het gebruikers account dat u tijdens replicatie inschakelen hebt gekozen, geldig en nauw keurig is. Azure Site Recovery moet het **hoofd** account of gebruikers account met **beheerders bevoegdheden** hebben om een push-installatie uit te voeren. Anders wordt de push-installatie geblokkeerd op de bron machine.
 
-Controleer voor Windows **(fout 95107)** of het gebruikersaccount beheerderstoegang heeft op de broncomputer, met een lokaal account of domeinaccount. Als u geen domeinaccount gebruikt, moet u het besturingselement voor rasgebruikerstoegang op de lokale computer uitschakelen.
+Voor Windows (**fout 95107**) controleert u of het gebruikers account beheerders toegang heeft op de bron computer, met een lokaal account of een domein account. Als u geen domein account gebruikt, moet u toegangs beheer voor externe gebruikers uitschakelen op de lokale computer.
 
-* Ga als lid of nieuw om handmatig een registersleutel toe te voegen waarmee het besturingselement voor externe gebruikerstoegang wordt uitgeschakeld:
+* Hand matig een register sleutel toevoegen die toegangs beheer voor externe gebruikers uitschakelt:
 
   * `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System`
-  * Voeg een `DWORD`nieuwe:`LocalAccountTokenFilterPolicy`
-  * De waarde instellen op`1`
+  * Nieuwe `DWORD`toevoegen:`LocalAccountTokenFilterPolicy`
+  * Stel de waarde in op`1`
 
-* Voer de volgende opdracht uit om de registersleutel toe te voegen vanuit een opdrachtprompt:
+* Voer de volgende opdracht uit vanaf een opdracht prompt om de register sleutel toe te voegen:
 
   `REG ADD HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System /v LocalAccountTokenFilterPolicy /t REG_DWORD /d 1`
 
-Voor Linux **(fout 95108)** moet u de **hoofdaccount** kiezen voor een succesvolle installatie van Mobility service agent. Bovendien moeten SSH File Transfer Protocol (SFTP)-services worden uitgevoerd. Ga als bedoeld als u het SFTP-subsysteem en de wachtwoordverificatie inschakelt in het _sshd_config_ bestand:
+Voor Linux (**fout 95108**), moet u het **hoofd** account kiezen voor een geslaagde installatie van de Mobility Service-agent. Daarnaast moeten SSH-File Transfer Protocol (SFTP)-services worden uitgevoerd. Het SFTP-subsysteem en de wachtwoord verificatie inschakelen in het _sshd_config_ bestand:
 
 1. Meld u aan als **rootgebruiker**.
-1. Ga naar _/ etc / ssh / sshd_config bestand,_ vind de lijn die begint met `PasswordAuthentication`.
-1. De opmerking van de regel `yes`ongedaan maken en de waarde wijzigen in .
-1. Zoek de regel `Subsystem`die begint met en geef geen commentaar op de regel.
-1. Start `sshd` de service opnieuw.
+1. Ga naar _/etc/ssh/sshd_config-bestand_, zoek de regel die begint `PasswordAuthentication`met.
+1. Verwijder de opmerking bij de regel en wijzig de waarde `yes`in.
+1. Zoek de regel die begint met `Subsystem`en verwijder de opmerking over de regel.
+1. Start de `sshd` service opnieuw.
 
-Als u de referenties van het gekozen gebruikersaccount wilt wijzigen, volgt u [deze instructies.](vmware-azure-manage-configuration-server.md#modify-credentials-for-mobility-service-installation)
+Als u de referenties van het gekozen gebruikers account wilt wijzigen, volgt u [deze instructies](vmware-azure-manage-configuration-server.md#modify-credentials-for-mobility-service-installation).
 
-## <a name="insufficient-privileges-failure-errorid-95517"></a>Onvoldoende bevoegdheden mislukken (ErrorID: 95517)
+## <a name="insufficient-privileges-failure-errorid-95517"></a>Onvoldoende privileges-fouten (ErrorID: 95517)
 
-Wanneer de gebruiker ervoor heeft gekozen om de Mobiliteitsagent te installeren, heeft hij geen beheerdersbevoegdheden, mag de processerver voor configuratieservers/scale-outs de software van de Mobiliteitsagent niet kopiëren naar de bronmachine. Deze fout is het gevolg van een weigering van de toegang. Controleer of het gebruikersaccount beheerdersrechten heeft.
+Als de gebruiker die de Mobility agent heeft gekozen, geen beheerders bevoegdheden heeft, mag de configuratie server/scale-out-proces server de software van de Mobility-agent niet kopiëren naar de bron machine. Deze fout is het gevolg van een fout bij het geweigerd van de toegang. Zorg ervoor dat het gebruikers account beheerders rechten heeft.
 
-Als u de referenties van het gekozen gebruikersaccount wilt wijzigen, volgt u [deze instructies.](vmware-azure-manage-configuration-server.md#modify-credentials-for-mobility-service-installation)
+Als u de referenties van het gekozen gebruikers account wilt wijzigen, volgt u [deze instructies](vmware-azure-manage-configuration-server.md#modify-credentials-for-mobility-service-installation).
 
-## <a name="insufficient-privileges-failure-errorid-95518"></a>Onvoldoende bevoegdheden mislukken (ErrorID: 95518)
+## <a name="insufficient-privileges-failure-errorid-95518"></a>Onvoldoende privileges-fouten (ErrorID: 95518)
 
-Wanneer de domeinvertrouwensrelatie tussen het primaire domein en het werkstation mislukt terwijl u zich probeert aan te melden bij de bronmachine, mislukt de installatie van de mobiliteitsagent met fout-ID 95518. Controleer of het gebruikersaccount dat wordt gebruikt om de mobiliteitsagent te installeren, beheerdersbevoegdheden heeft om in te loggen via het primaire domein van de bronmachine.
+Wanneer de instelling voor het vertrouwen van een domein vertrouwensrelatie tussen het primaire domein en werk station mislukt tijdens het aanmelden bij de bron machine, mislukt de installatie van de Mobility-agent met fout-ID 95518. Zorg ervoor dat het gebruikers account dat wordt gebruikt voor het installeren van de Mobility-agent, beheerders bevoegdheden heeft om zich aan te melden via het primaire domein van de bron machine.
 
-Als u de referenties van het gekozen gebruikersaccount wilt wijzigen, volgt u de [volgende instructies.](vmware-azure-manage-configuration-server.md#modify-credentials-for-mobility-service-installation)
+Als u de referenties van het gekozen gebruikers account wilt wijzigen, volgt u de [volgende instructies](vmware-azure-manage-configuration-server.md#modify-credentials-for-mobility-service-installation).
 
-## <a name="login-failures-errorid-95519-95520-95521-95522"></a>Inlogfouten (Foutnummer: 95519, 95520, 95521, 95522)
+## <a name="login-failures-errorid-95519-95520-95521-95522"></a>Mislukte aanmeldingen (ErrorID: 95519, 95520, 95521, 95522)
 
-In deze sectie worden referenties en inlogfoutberichten beschreven.
+In deze sectie worden de referentie-en aanmeldings fout berichten beschreven.
 
-### <a name="credentials-of-the-user-account-have-been-disabled-errorid-95519"></a>Referenties van het gebruikersaccount zijn uitgeschakeld (ErrorID: 95519)
+### <a name="credentials-of-the-user-account-have-been-disabled-errorid-95519"></a>De referenties van het gebruikers account zijn uitgeschakeld (ErrorID: 95519)
 
-Het gebruikersaccount dat tijdens de replicatie is gekozen, is uitgeschakeld. Als u het gebruikersaccount wilt inschakelen, verwijst u naar [dit artikel](/powershell/module/Microsoft.PowerShell.LocalAccounts/Enable-LocalUser) of voert u de volgende opdracht uit door _de_ gebruikersnaam van tekst te vervangen door de werkelijke gebruikersnaam.
+Het gebruikers account dat u hebt gekozen tijdens het inschakelen van replicatie, is uitgeschakeld. Als u het gebruikers account wilt inschakelen, raadpleegt u [dit artikel](/powershell/module/Microsoft.PowerShell.LocalAccounts/Enable-LocalUser) of voert u de volgende opdracht uit door de naam van de gebruiker te vervangen door de _werkelijke naam van_ de gebruikers.
 
 `net user 'username' /active:yes`
 
-### <a name="credentials-locked-out-because-of-multiple-failed-login-attempts-errorid-95520"></a>Referenties vergrendeld vanwege meerdere mislukte inlogpogingen (ErrorID: 95520)
+### <a name="credentials-locked-out-because-of-multiple-failed-login-attempts-errorid-95520"></a>Referenties zijn vergrendeld vanwege meerdere mislukte aanmeldings pogingen (ErrorID: 95520)
 
-Meerdere mislukte pogingen om toegang te krijgen tot een machine vergrendelen het gebruikersaccount. De storing kan te wijten zijn aan:
+Meerdere mislukte pogingen om toegang te krijgen tot een computer, vergren delen het gebruikers account. De fout kan worden veroorzaakt door:
 
-* Referenties die tijdens de configuratie zijn opgegeven, zijn onjuist.
-* Het gebruikersaccount dat tijdens het inschakelen van replicatie is gekozen, is onjuist.
+* De referenties die zijn verschaft tijdens de configuratie-instellingen zijn onjuist.
+* Het gebruikers account dat tijdens het inschakelen van de replicatie is gekozen, is onjuist.
 
-Wijzig de referenties die zijn gekozen door [deze instructies](vmware-azure-manage-configuration-server.md#modify-credentials-for-mobility-service-installation) op te volgen en probeer de bewerking opnieuw.
+Wijzig de gekozen referenties door [deze instructies](vmware-azure-manage-configuration-server.md#modify-credentials-for-mobility-service-installation) te volgen en voer de bewerking opnieuw uit.
 
-### <a name="logon-servers-arent-available-on-the-source-machine-errorid-95521"></a>Aanmeldingsservers zijn niet beschikbaar op de bronmachine (Foutid: 95521)
+### <a name="logon-servers-arent-available-on-the-source-machine-errorid-95521"></a>Er zijn geen aanmeldings servers beschikbaar op de bron machine (ErrorID: 95521)
 
-Deze fout treedt op wanneer de aanmeldingsservers niet beschikbaar zijn op de bronmachine. Als aanmeldingsservers niet beschikbaar zijn, mislukken aanmeldingsaanvragen en kan de mobiliteitsagent niet worden geïnstalleerd. Voor een succesvolle login moet u ervoor zorgen dat aanmeldingsservers beschikbaar zijn op de bronmachine en de Netlogon-service starten. Zie [Windows-aanmeldingsscenario's voor](/windows-server/security/windows-authentication/windows-logon-scenarios)meer informatie .
+Deze fout treedt op wanneer de aanmeldings servers niet beschikbaar zijn op de bron machine. Als er geen aanmeldings servers beschikbaar zijn, mislukken aanmeldings aanvragen en kan de Mobility-agent niet worden geïnstalleerd. Zorg ervoor dat aanmeldings servers beschikbaar zijn op de bron machine en start de Netlogon-service voor een geslaagde aanmelding. Zie [Windows-aanmeldings scenario's](/windows-server/security/windows-authentication/windows-logon-scenarios)voor meer informatie.
 
-### <a name="logon-service-isnt-running-on-the-source-machine-errorid-95522"></a>Aanmeldingsservice wordt niet uitgevoerd op de bronmachine (Foutid: 95522)
+### <a name="logon-service-isnt-running-on-the-source-machine-errorid-95522"></a>De aanmeldings service wordt niet uitgevoerd op de bron machine (ErrorID: 95522)
 
-De inlogservice wordt niet uitgevoerd op uw bronmachine en veroorzaakt het inlogverzoek. De Mobiliteitsagent kan niet worden geïnstalleerd. Als u de fout wilt oplossen, gebruikt `Netlogon` u een van de volgende methoden om de service op de bronmachine te starten:
+De aanmeldings service wordt niet uitgevoerd op de bron machine en heeft de aanmeldings aanvraag mislukt. De Mobility-agent kan niet worden geïnstalleerd. Gebruik een van de volgende methoden om de `Netlogon` service op de bron computer te starten om de fout op te lossen:
 
-* Als u `Netlogon` de service wilt starten `net start Netlogon`vanuit een opdrachtprompt, voert u de opdracht uit .
-* Start de `Netlogon` service vanuit Taakbeheer.
+* Voer de opdracht `Netlogon` `net start Netlogon`uit om de service te starten vanaf een opdracht prompt.
+* Start de `Netlogon` service vanuit taak beheer.
 
-## <a name="connectivity-failure-errorid-95117--97118"></a>Verbindingsfout (Fout-id: 95117 & 97118)
+## <a name="connectivity-failure-errorid-95117--97118"></a>Connectiviteits fout (ErrorID: 95117 & 97118)
 
-Configuratieserver/scale-out processerver probeert verbinding te maken met de bron-VM om de Mobility-agent te installeren. Deze fout treedt op wanneer de bronmachine niet bereikbaar is omdat er problemen zijn met de netwerkverbinding.
+De configuratie server/scale-out proces server probeert verbinding te maken met de bron-VM om de Mobility-agent te installeren. Deze fout treedt op wanneer de bron machine niet bereikbaar is, omdat er problemen zijn met de netwerk verbinding.
 
-Ga als een besluit over de fout:
+Om de fout op te lossen:
 
-* Zorg ervoor dat u uw bronmachine pingen vanaf de configuratieserver. Als u de scale-outprocesserver hebt gekozen tijdens het inschakelen van replicatie, moet u ervoor zorgen dat u uw bronmachine pingen vanaf de processerver.
+* Zorg ervoor dat u de bron computer kunt pingen vanaf de configuratie server. Als u tijdens het inschakelen van de replicatie de scale-out proces server hebt gekozen, moet u ervoor zorgen dat u de bron computer kunt pingen vanaf de proces server.
 
-* Gebruik vanaf de opdrachtregel `Telnet` van de bronservermachine de configuratieserver of scale-out processerver op HTTPS-poort 135, zoals in de volgende opdracht wordt weergegeven. Met deze opdracht wordt gecontroleerd of er problemen zijn met de netwerkverbinding of problemen met het blokkeren van de firewallpoort.
+* Gebruik `Telnet` de opdracht regel van de bron server om de configuratie server of scale-out proces server op HTTPS-poort 135 te pingen, zoals wordt weer gegeven in de volgende opdracht. Met deze opdracht wordt gecontroleerd of er problemen zijn met de netwerk verbinding of het blok keren van de firewall poort.
 
   `telnet <CS/ scale-out PS IP address> <135>`
 
-* Bovendien, voor een Linux VM:
-  * Controleer of de nieuwste OpenSSH-, OpenSSH-server- en OpenSSL-pakketten zijn geïnstalleerd.
-  * Controleer en zorg ervoor dat Secure Shell (SSH) is ingeschakeld en op poort 22 draait.
-  * SFTP-services moeten worden uitgevoerd. Ga als bedoeld als _sshd_config-bestand_ in om sftp-subsysteem- en wachtwoordverificatie in te schakelen:
+* Daarnaast geldt voor een virtuele Linux-machine:
+  * Controleer of de meest recente OpenSSH, OpenSSH-server en OpenSSL-pakketten zijn geïnstalleerd.
+  * Controleer en of Secure Shell (SSH) is ingeschakeld en wordt uitgevoerd op poort 22.
+  * SFTP-services moeten worden uitgevoerd. SFTP-subsysteem en-wachtwoord verificatie inschakelen in het _sshd_config_ -bestand:
 
     1. Meld u aan als **rootgebruiker**.
-    1. Ga naar _/ etc / ssh / sshd_config_ `PasswordAuthentication`bestand, vind de lijn die begint met .
-    1. De opmerking van de regel `yes`ongedaan maken en de waarde wijzigen in .
-    1. Zoek de regel `Subsystem`die begint met en de regel ongedaan maken
-    1. Start `sshd` de service opnieuw.
+    1. Ga naar _/etc/ssh/sshd_config_ -bestand, zoek de regel die begint `PasswordAuthentication`met.
+    1. Verwijder de opmerking bij de regel en wijzig de waarde `yes`in.
+    1. Zoek de regel die begint met `Subsystem`en verwijder de opmerking bij de regel
+    1. Start de `sshd` service opnieuw.
 
-* Een verbindingspoging kan zijn mislukt als er na verloop van tijd geen goede antwoorden zijn of als een gevestigde verbinding is mislukt omdat een verbonden host niet heeft gereageerd.
-* Het kan een verbindings-/netwerk-/domeingerelateerd probleem zijn. Dit kan ook komen doordat dns-naam probleem of tcp-poortuitputtingsprobleem oplost. Controleer of er dergelijke bekende problemen in uw domein.
+* Een poging om verbinding te maken is mislukt als er na een bepaalde tijd geen geldige antwoorden zijn of als een tot stand gebrachte verbinding is mislukt omdat een verbonden host niet kan reageren.
+* Dit kan een probleem zijn met de verbinding/het netwerk/het domein. Dit kan ook worden veroorzaakt door het oplossen van problemen met de DNS-naam of het probleem met de TCP-poort. Controleer of er bekende problemen in uw domein zijn.
 
-## <a name="connectivity-failure-errorid-95523"></a>Verbindingsfout (Fout-id: 95523)
+## <a name="connectivity-failure-errorid-95523"></a>Connectiviteits fout (ErrorID: 95523)
 
-Deze fout treedt op wanneer het netwerk dat de bronmachine zich bevindt niet is gevonden, mogelijk is verwijderd of niet meer beschikbaar is. De enige manier om de fout op te lossen is ervoor te zorgen dat het netwerk bestaat.
+Deze fout treedt op wanneer het netwerk dat de bron machine niet kan worden gevonden, is verwijderd of niet langer beschikbaar is. De enige manier om de fout op te lossen is om er zeker van te zijn dat het netwerk bestaat.
 
-## <a name="file-and-printer-sharing-services-check-errorid-95105--95106"></a>Services voor het delen van bestanden en printers controleren (Fout-id: 95105 & 95106)
+## <a name="file-and-printer-sharing-services-check-errorid-95105--95106"></a>Controle van bestands-en printer deling-Services (ErrorID: 95105 & 95106)
 
-Controleer na een connectiviteitscontrole of de service voor het delen van bestanden en printers is ingeschakeld op uw virtuele machine. Deze instellingen zijn vereist om de Mobiliteitsagent naar de bronmachine te kopiëren.
+Controleer na een connectiviteits controle of de service Bestands-en printer deling is ingeschakeld op de virtuele machine. Deze instellingen zijn vereist voor het kopiëren van de Mobility-agent naar de bron machine.
 
-Voor **Windows 2008 R2 en eerdere versies:**
+Voor **Windows 2008 R2 en eerdere versies**:
 
-* Als u het delen van bestanden en afdrukken via Windows Firewall wilt inschakelen,
-  1. Open **Configuratiescherm** > **Systeem en Beveiliging** > **Windows Firewall**. Selecteer in het linkerdeelvenster De optie **Geavanceerde instellingen** > **Binnenkomende regels** in de consolestructuur.
-  1. Zoek regels Bestand en Printer sharing (NB-Session-In) en File and Printer Sharing (SMB-In).
-  1. Klik voor elke regel met de rechtermuisknop op de regel en klik vervolgens op **Regel inschakelen**.
+* Om bestands-en printer deling via Windows Firewall in te scha kelen,
+  1. Open **configuratie scherm** > **systeem-en beveiligings** > **Windows Firewall**. **Selecteer in** > het linkerdeel venster de optie**regels voor inkomend verkeer** in de console structuur.
+  1. Regels bestand en printer deling (NB-session-in) en bestands-en printer deling (SMB-in) zoeken.
+  1. Voor elke regel klikt u met de rechter muisknop op de regel en klikt u vervolgens op **regel inschakelen**.
 
-* Ga als het gaat om het delen van bestanden met groepsbeleid:
-  1. Ga naar **Start,** typ `gpmc.msc` en zoek.
-  1. Open in het navigatiedeelvenster de volgende mappen:**Gebruikersconfiguratiebeheersjablonen** > **Windows Components** > voor**gebruikersconfiguratie** > voor lokale **computers** > Windows Components**Network Sharing**.
-  1. Dubbelklik in het detailvenster op **Voorkomen dat gebruikers bestanden delen in hun profiel.**
+* Het delen van bestanden met groepsbeleid inschakelen:
+  1. Ga naar **Start**, typ `gpmc.msc` en zoek.
+  1. Open in het navigatie deel venster de volgende mappen:**gebruikers configuratie** > van het **lokale computer beleid** > **Beheersjablonen** > **Windows-onderdelen** > **netwerk delen**.
+  1. Dubbel klik in het detail venster op **voor komen dat gebruikers bestanden binnen hun profiel delen**.
 
-     Als u de instelling Groepsbeleid wilt uitschakelen en de mogelijkheid van de gebruiker om bestanden te delen wilt inschakelen, selecteert **u Uitgeschakeld**.
+     Selecteer **uitgeschakeld**om de instelling Groepsbeleid uit te scha kelen en de gebruiker in staat te stellen bestanden te delen.
 
   1. Selecteer **OK** om uw wijzigingen op te slaan.
 
-  Zie [Bestandsdelen inschakelen of uitschakelen met groepsbeleid](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc754359(v=ws.10))voor meer informatie .
+  Zie voor meer informatie over het [delen van bestanden in-of uitschakelen met Groepsbeleid](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc754359(v=ws.10)).
 
-Als u het delen van bestanden en printers voor latere versies van Windows of Linux wilt inschakelen, volgt u de instructies in [De mobiliteitsservice installeren voor noodherstel van Vm's en fysieke servers .](vmware-azure-install-mobility-service.md)
+Als u bestands-en printer deling voor latere versies van Windows of Linux wilt inschakelen, volgt u de instructies in [de Mobility-service installeren voor nood herstel van virtuele VMware-machines en fysieke servers](vmware-azure-install-mobility-service.md) .
 
-## <a name="windows-management-instrumentation-wmi-configuration-check-error-code-95103"></a>Configuratiecontrole van Windows Management Instrumentation (WMI) (foutcode: 95103)
+## <a name="windows-management-instrumentation-wmi-configuration-check-error-code-95103"></a>Controle van configuratie van Windows Management Instrumentation (WMI) (fout code: 95103)
 
-Nadat bestands- en printerservices zijn gecontroleerd, schakelt u de WMI-service in voor privé-, openbare en domeinprofielen via de firewall. Deze instellingen zijn vereist om de uitvoering op afstand op de bronmachine te voltooien.
+Nadat u de bestands-en printer services hebt gecontroleerd, schakelt u de WMI-service voor privé-, open bare en domein profielen in via de firewall. Deze instellingen zijn vereist voor het volt ooien van externe uitvoering op de bron machine.
 
-Wmi inschakelen:
+WMI inschakelen:
 
-1. Ga naar **Beveiliging van het Configuratiescherm** > **en** selecteer Windows **Firewall**.
-1. Selecteer **Instellingen wijzigen** en selecteer vervolgens het tabblad **Uitzonderingen.**
-1. Schakel in het venster **Uitzonderingen** het selectievakje voor WMI (Windows Management Instrumentation) in om WMI-verkeer via de firewall in te schakelen.
+1. Ga naar**beveiliging** van **het configuratie scherm** > en selecteer **Windows Firewall**.
+1. Selecteer **instellingen wijzigen** en selecteer vervolgens het tabblad **uitzonde ringen** .
+1. Schakel in het venster **uitzonde ringen** het selectie vakje voor Windows Management INSTRUMENTATION (WMI) in om WMI-verkeer via de firewall in te scha kelen.
 
-U WMI-verkeer via de firewall ook inschakelen via de opdrachtprompt met de volgende opdracht:
+U kunt ook WMI-verkeer via de firewall inschakelen vanaf de opdracht prompt met de volgende opdracht:
 
 `netsh advfirewall firewall set rule group="windows management instrumentation (wmi)" new enable=yes`
 
-Andere WMI-artikelen voor het oplossen van problemen kunnen worden gevonden in de volgende artikelen.
+Andere artikelen over het oplossen van problemen met WMI vindt u in de volgende artikelen.
 
-* [BasisWMI-tests](https://blogs.technet.microsoft.com/askperf/2007/06/22/basic-wmi-testing/)
-* [WMI-probleemoplossing](/windows/win32/wmisdk/wmi-troubleshooting)
+* [Eenvoudige WMI-tests](https://blogs.technet.microsoft.com/askperf/2007/06/22/basic-wmi-testing/)
+* [WMI-problemen oplossen](/windows/win32/wmisdk/wmi-troubleshooting)
 * [Problemen met WMI-scripts en WMI-services oplossen](/previous-versions/tn-archive/ff406382(v=msdn.10))
 
 ## <a name="unsupported-operating-systems"></a>Niet-ondersteunde besturingssystemen
 
-Een andere veel voorkomende reden voor een storing kan zijn vanwege een niet-ondersteund besturingssysteem. Gebruik een ondersteund besturingssysteem en kernelversie voor een succesvolle installatie van de Mobility-service. Vermijd het gebruik van privépatches.
+Een andere veelvoorkomende reden voor de fout is mogelijk veroorzaakt door een niet-ondersteund besturings systeem. Gebruik een ondersteunde versie van het besturings systeem en de kernel voor een geslaagde installatie van de Mobility-service. Vermijd het gebruik van persoonlijke patches.
 
-Zie het [ondersteuningsmatrixdocument](vmware-physical-azure-support-matrix.md#replicated-machines)om de lijst met besturingssystemen en kernelversies te bekijken die worden ondersteund door Azure Site Recovery.
+Als u de lijst met besturings systemen en kernel-versies wilt weer geven die worden ondersteund door Azure Site Recovery, raadpleegt u het document met de [ondersteunings matrix](vmware-physical-azure-support-matrix.md#replicated-machines).
 
-## <a name="unsupported-boot-disk-configurations-errorid-95309-95310-95311"></a>Niet-ondersteunde configuratie van opstartschijven (Fout-id: 95309, 95310, 95311)
+## <a name="unsupported-boot-disk-configurations-errorid-95309-95310-95311"></a>Niet-ondersteunde configuraties voor opstart schijven (ErrorID: 95309, 95310, 95311)
 
-### <a name="boot-and-system-partitions--volumes-arent-the-same-disk-errorid-95309"></a>Opstart- en systeempartities / volumes zijn niet dezelfde schijf (ErrorID: 95309)
+### <a name="boot-and-system-partitions--volumes-arent-the-same-disk-errorid-95309"></a>Opstart-en systeem partities/-volumes zijn niet dezelfde schijf (ErrorID: 95309)
 
-Vóór de 9.20-versie waren opstart- en systeempartities/volumes op verschillende schijven een niet-ondersteunde configuratie. Te beginnen met de [9.20 versie,](https://support.microsoft.com/help/4478871/update-rollup-31-for-azure-site-recovery)deze configuratie wordt ondersteund.
+Voordat de 9,20-versie, opstart-en systeem partities/-volumes op verschillende schijven worden niet-ondersteunde configuratie. Met ingang van de [9,20-versie](https://support.microsoft.com/help/4478871/update-rollup-31-for-azure-site-recovery)wordt deze configuratie ondersteund.
 
-### <a name="the-boot-disk-isnt-available-errorid-95310"></a>De opstartschijf is niet beschikbaar (Foutid: 95310)
+### <a name="the-boot-disk-isnt-available-errorid-95310"></a>De opstart schijf is niet beschikbaar (ErrorID: 95310)
 
-Een virtuele machine zonder opstartschijf kan niet worden beschermd. Een opstartschijf zorgt voor een soepel herstel van een virtuele machine tijdens een failoveroperatie. Als er geen opstartschijf is, wordt de machine niet opgestart na een failover. Zorg ervoor dat de virtuele machine een opstartschijf bevat en probeer de bewerking opnieuw. Ook worden meerdere opstartschijven op dezelfde machine niet ondersteund.
+Een virtuele machine zonder een opstart schijf kan niet worden beveiligd. Een opstart schijf zorgt voor een probleemloze herstel bewerking van een virtuele machine tijdens een failoverbewerking. Afwezigheid van een opstart schijf resulteert in een fout bij het opstarten van de computer na een failover. Zorg ervoor dat de virtuele machine een opstart schijf bevat en voer de bewerking opnieuw uit. Meerdere opstart schijven op dezelfde computer worden ook niet ondersteund.
 
-### <a name="multiple-boot-disks-present-on-the-source-machine-errorid-95311"></a>Meerdere opstartschijven aanwezig op de bronmachine (ErrorID: 95311)
+### <a name="multiple-boot-disks-present-on-the-source-machine-errorid-95311"></a>Meerdere opstart schijven aanwezig op de bron machine (ErrorID: 95311)
 
-Een virtuele machine met meerdere opstartschijven is geen [ondersteunde configuratie.](vmware-physical-azure-support-matrix.md#linux-file-systemsguest-storage)
+Een virtuele machine met meerdere opstart schijven is geen [ondersteunde configuratie](vmware-physical-azure-support-matrix.md#linux-file-systemsguest-storage).
 
-## <a name="system-partition-on-multiple-disks-errorid-95313"></a>Systeempartitie op meerdere schijven (Foutid: 95313)
+## <a name="system-partition-on-multiple-disks-errorid-95313"></a>Systeem partitie op meerdere schijven (ErrorID: 95313)
 
-Vóór de 9.20-versie was een hoofdpartitie of volume-instelling op meerdere schijven een niet-ondersteunde configuratie. Te beginnen met de [9.20 versie,](https://support.microsoft.com/help/4478871/update-rollup-31-for-azure-site-recovery)deze configuratie wordt ondersteund.
+Vóór de 9,20-versie werd een basis partitie of het instellen van een volume op meerdere schijven een niet-ondersteunde configuratie. Met ingang van de [9,20-versie](https://support.microsoft.com/help/4478871/update-rollup-31-for-azure-site-recovery)wordt deze configuratie ondersteund.
 
-## <a name="enable-protection-failed-as-device-name-mentioned-in-the-grub-configuration-instead-of-uuid-errorid-95320"></a>Beveiliging inschakelen mislukt als apparaatnaam die in de GRUB-configuratie wordt genoemd in plaats van UUID (ErrorID: 95320)
+## <a name="enable-protection-failed-as-device-name-mentioned-in-the-grub-configuration-instead-of-uuid-errorid-95320"></a>Het inschakelen van de beveiliging is mislukt als de apparaatnaam die wordt vermeld in de GRUB-configuratie in plaats van de UUID (ErrorID: 95320)
 
 ### <a name="possible-cause"></a>Mogelijke oorzaak
 
-De Configuratiebestanden van Grand Unified Bootloader (GRUB)_(/boot/grub/menu.lst_, _boot/grub/grub.cfg_, _/boot/grub2/grub.cfg_, of _/etc/default/grub)_ kunnen de waarde voor de parameters **root** bevatten en **hervatten** als de werkelijke apparaatnamen in plaats van een universeel unieke id (UUID). Site Recovery mandaten de UUID-aanpak als het apparaat namen kunnen veranderen over reboot van de VM. De VM komt bijvoorbeeld niet online met dezelfde naam bij failover en dat resulteert in problemen.
+De Grand Unified Bootloader (GRUB) configuratie bestanden (_/boot/grub/menu.lst_, _/boot/grub/grub.cfg_, _/boot/grub2/grub.cfg_of _/etc/default/grub_) kunnen de waarde voor de **hoofdmap** van para meters bevatten en **hervatten** als de werkelijke apparaatnamen in plaats van een Universally Unique Identifier (UUID). Site Recovery moet de UUID-benadering hebben als de apparaatnamen kunnen veranderen tijdens het opnieuw opstarten van de virtuele machine. Het is bijvoorbeeld mogelijk dat de virtuele machine niet online is met dezelfde naam als de failover en dat er problemen zijn.
 
 Bijvoorbeeld:
 
-- De volgende regel is uit het GRUB-bestand _/boot/grub2/grub.cfg:_
+- De volgende regel is afkomstig uit het GRUB-bestand _/boot/grub2/grub.cfg_:
 
   `linux /boot/vmlinuz-3.12.49-11-default root=/dev/sda2  ${extra_cmdline} resume=/dev/sda1 splash=silent quiet showopts`
 
-- De volgende regel is van het GRUB-bestand _/boot/grub/menu.lst:_
+- De volgende regel is afkomstig uit het GRUB-bestand _/boot/grub/menu.lst_:
 
   `kernel /boot/vmlinuz-3.0.101-63-default root=/dev/sda2 resume=/dev/sda1 splash=silent crashkernel=256M-:128M showopts vga=0x314`
 
 > [!NOTE]
-> De GRUB-regels bevatten werkelijke apparaatnamen voor de parameters **die worden gebruikt** en **hervatten** in plaats van de UUID.
+> De GRUB-regels bevatten werkelijke apparaatnamen voor de para meters **root** en **Resume** in plaats van de uuid.
 
-### <a name="how-to-fix"></a>Hoe op te lossen
+### <a name="how-to-fix"></a>Oplossen
 
 De apparaatnamen moeten worden vervangen door de bijbehorende UUID.
 
-1. Zoek de UUID van het apparaat `blkid \<device name>`door de opdracht uit te voeren.
+1. Zoek de UUID van het apparaat door de opdracht `blkid \<device name>`uit te voeren.
 
    Bijvoorbeeld:
 
@@ -232,83 +232,83 @@ De apparaatnamen moeten worden vervangen door de bijbehorende UUID.
    /dev/sda2: UUID="62927e85-f7ba-40bc-9993-cc1feeb191e4" TYPE="ext3"
    ```
 
-1. Vervang nu de naam van het apparaat `root=UUID=\<UUID>`door de UUID in het formaat zoals . Bijvoorbeeld, als we de apparaatnamen vervangen door UUID voor root en cv parameter genoemd in de bestanden _/ boot/grub2/grub.cfg_, _/ boot/grub2/grub.cfg_, of _/etc/default/grub_ dan zien de lijnen in de bestanden eruit als de volgende regel:
+1. Vervang nu de naam van het apparaat door de bijbehorende UUID in `root=UUID=\<UUID>`de indeling zoals. Als we bijvoorbeeld de apparaatnaam vervangen door UUID voor de para meter root en resume die wordt vermeld in de bestanden _/boot/grub2/grub.cfg_, _/boot/grub2/grub.cfg_of _/etc/default/grub_ , zien de regels in de bestanden eruit als in de volgende regel:
 
    `kernel /boot/vmlinuz-3.0.101-63-default root=UUID=62927e85-f7ba-40bc-9993-cc1feeb191e4 resume=UUID=6f614b44-433b-431b-9ca1-4dd2f6f74f6b splash=silent crashkernel=256M-:128M showopts vga=0x314`
 
 1. Start de beveiliging opnieuw.
 
-## <a name="install-mobility-service-completed-with-warning-to-reboot-errorid-95265--95266"></a>Installatie Mobiliteitsservice voltooid met waarschuwing om opnieuw op te starten (ErrorID: 95265 & 95266)
+## <a name="install-mobility-service-completed-with-warning-to-reboot-errorid-95265--95266"></a>De installatie van de Mobility-service is voltooid met een waarschuwing voor opnieuw opstarten (ErrorID: 95265 & 95266)
 
-Site Recovery Mobility service heeft vele componenten, waarvan er een filterdriver wordt genoemd. Het filterstuurprogramma wordt alleen tijdens een herstart van het systeem in het systeemgeheugen geladen. Filterstuurprogrammafixes kunnen alleen worden gerealiseerd wanneer een nieuw filterstuurprogramma wordt geladen op het moment van een herstart van het systeem.
+Site Recovery Mobility-service heeft veel onderdelen, een van de het filter stuur programma genoemd. Het filter stuur programma wordt alleen in het systeem geheugen geladen tijdens het opnieuw opstarten van het systeem. Oplossingen voor filter Stuur Programma's kunnen alleen worden gerealiseerd wanneer een nieuw filter stuur programma wordt geladen op het moment dat het systeem opnieuw wordt opgestart.
 
 > [!IMPORTANT]
-> Dit is een waarschuwing en bestaande replicatie werkt zelfs na de nieuwe agentupdate. U ervoor kiezen om opnieuw op te starten wanneer u de voordelen van een nieuw filterstuurprogramma wilt, maar als u niet opnieuw opstart, blijft het oude filterstuurprogramma werken. Dus, na een update zonder een reboot, met uitzondering van de filter driver, **voordelen van andere verbeteringen en fixes in Mobility service worden gerealiseerd**. Hoewel aanbevolen, is het niet verplicht om opnieuw op te starten na elke upgrade. Voor informatie over wanneer een reboot verplicht is, stelt u de upgradesectie [Opnieuw opstarten na de upgrade van de mobiliteitsservice](service-updates-how-to.md#reboot-after-mobility-service-upgrade) in Service-updates in Azure Site Recovery in.
+> Dit is een waarschuwing dat de bestaande replicatie kan worden uitgevoerd, zelfs na de nieuwe update van de agent. U kunt ervoor kiezen om op elk gewenst moment opnieuw op te starten om de voor delen van het nieuwe filter stuur programma te krijgen, maar als u niet opnieuw opstart, blijft het oude filter stuur programma actief. Na een update zonder opnieuw opstarten, met uitzonde ring van het filter stuur programma, **profiteren de voor delen van andere verbeteringen en oplossingen in Mobility service gerealiseerd**. Hoewel het wordt aanbevolen, is het niet verplicht om opnieuw op te starten na elke upgrade. Voor informatie over wanneer het opnieuw opstarten verplicht is, stelt u de sectie [opnieuw opstarten na de upgrade](service-updates-how-to.md#reboot-after-mobility-service-upgrade) van de Mobility-service in bij service-updates in azure site Recovery.
 
 > [!TIP]
->Zie de [ondersteuning voor het nieuwste besturingssysteem/de beste](service-updates-how-to.md#support-for-latest-operating-systemskernels) procedures voor het plannen van upgrades tijdens uw onderhoudsvenster in Azure Site Recovery.
+>Voor aanbevolen procedures voor het plannen van upgrades tijdens het onderhouds venster raadpleegt u de [ondersteuning voor het meest recente besturings systeem/kernel](service-updates-how-to.md#support-for-latest-operating-systemskernels) in service-updates in azure site Recovery.
 
-## <a name="lvm-support-from-920-version"></a>LVM-ondersteuning vanaf 9.20 versie
+## <a name="lvm-support-from-920-version"></a>LVM-ondersteuning van 9,20-versie
 
-Vóór de 9.20-versie werd Logische Volume Manager (LVM) alleen voor gegevensschijven ondersteund. De `/boot` partitie moet zich op een schijfpartitie begeven en geen LVM-volume.
+Voor de 9,20-versie werd Logical Volume Manager (LVM) alleen ondersteund voor gegevens schijven. De `/boot` partitie moet zich op een schijf partitie benemen en niet op een LVM-volume.
 
-Vanaf de [9.20 versie](https://support.microsoft.com/help/4478871/update-rollup-31-for-azure-site-recovery)wordt de [OS-schijf op LVM](vmware-physical-azure-support-matrix.md#linux-file-systemsguest-storage) ondersteund.
+Vanaf de [9,20-versie](https://support.microsoft.com/help/4478871/update-rollup-31-for-azure-site-recovery)wordt de [besturingssysteem schijf op LVM](vmware-physical-azure-support-matrix.md#linux-file-systemsguest-storage) ondersteund.
 
-## <a name="insufficient-space-errorid-95524"></a>Onvoldoende ruimte (Foutid: 95524)
+## <a name="insufficient-space-errorid-95524"></a>Onvoldoende ruimte (ErrorID: 95524)
 
-Wanneer de Mobiliteitsagent naar de bronmachine wordt gekopieerd, is ten minste 100 MB vrije ruimte vereist. Zorg ervoor dat uw bronmachine de vereiste hoeveelheid vrije ruimte heeft en probeer de bewerking opnieuw.
+Wanneer de Mobility-agent naar de bron machine wordt gekopieerd, is ten minste 100 MB beschik bare ruimte vereist. Zorg ervoor dat op de bron machine de vereiste hoeveelheid beschik bare ruimte is en voer de bewerking opnieuw uit.
 
-## <a name="vss-installation-failures"></a>VSS-installatiefouten
+## <a name="vss-installation-failures"></a>VSS-installatie fouten
 
-De Installatie van de Volume Shadow copy Service (VSS) maakt deel uit van de installatie van de Mobility agent. Deze service wordt in het proces gebruikt om toepassingsconsistente herstelpunten te genereren. Storingen tijdens de VSS-installatie kunnen optreden als gevolg van meerdere redenen. Als u de exacte fouten wilt identificeren, raadpleegt u _C:\ProgramData\ASRSetupLogs\ASRUnifiedAgentInstaller.log_. Enkele van de veelvoorkomende fouten en de oplossingsstappen worden in de volgende sectie gemarkeerd.
+De installatie van de Volume Shadow Copy-service (VSS) is onderdeel van de installatie van de Mobility-agent. Deze service wordt in het proces gebruikt voor het genereren van toepassings consistente herstel punten. Fouten tijdens de installatie van VSS kunnen om verschillende redenen optreden. Raadpleeg _C:\ProgramData\ASRSetupLogs\ASRUnifiedAgentInstaller.log_om de exacte fouten te identificeren. Enkele veelvoorkomende fouten en de oplossings stappen worden in de volgende sectie gemarkeerd.
 
-### <a name="vss-error--2147023170-0x800706be---exit-code-511"></a>VSS-fout -2147023170 [0x800706BE] - exitcode 511
+### <a name="vss-error--2147023170-0x800706be---exit-code-511"></a>VSS-fout-2147023170 [0x800706BE]-afsluit code 511
 
-Dit probleem wordt meestal gezien wanneer antivirussoftware de bewerkingen van Azure Site Recovery-services blokkeert.
+Dit probleem wordt doorgaans weer gegeven wanneer antivirus software de bewerkingen van Azure Site Recovery Services blokkeert.
 
 Los dit probleem als volgt op:
 
-1. Bekijk de lijst met uitsluitingen van [mappen van antivirusprogramma](vmware-azure-set-up-source.md#azure-site-recovery-folder-exclusions-from-antivirus-program).
-1. Volg de richtlijnen die door uw antivirusprovider zijn gepubliceerd om de registratie van DLL in Windows te deblokkeren.
+1. Bekijk de lijst met [uitgesloten mappen van het antivirus programma](vmware-azure-set-up-source.md#azure-site-recovery-folder-exclusions-from-antivirus-program).
+1. Volg de richt lijnen die zijn gepubliceerd door uw antivirus provider om de registratie van de DLL in Windows te blok keren.
 
-### <a name="vss-error-7-0x7---exit-code-511"></a>VSS-fout 7 [0x7] - exitcode 511
+### <a name="vss-error-7-0x7---exit-code-511"></a>VSS-fout 7 [0x7]-afsluit code 511
 
-Deze fout is een runtime-fout die wordt veroorzaakt omdat er onvoldoende geheugen is om VSS te installeren. Verhoog de schijfruimte voor een succesvolle voltooiing van deze bewerking.
+Deze fout is een runtime-fout die wordt veroorzaakt omdat er onvoldoende geheugen is om VSS te installeren. Verg root de schijf ruimte voor het volt ooien van deze bewerking.
 
-### <a name="vss-error--2147023824-0x80070430---exit-code-517"></a>VSS-fout -2147023824 [0x80070430] - exitcode 517
+### <a name="vss-error--2147023824-0x80070430---exit-code-517"></a>VSS-fout-2147023824 [0x80070430]-afsluit code 517
 
-Deze fout treedt op wanneer de Azure Site Recovery VSS Provider-service is [gemarkeerd voor verwijdering.](/previous-versions/ms838153(v=msdn.10)) Probeer VSS handmatig op de bronmachine te installeren door de volgende opdracht uit te voeren:
-
-`"C:\Program Files (x86)\Microsoft Azure Site Recovery\agent\InMageVSSProvider_Install.cmd"`
-
-### <a name="vss-error--2147023841-0x8007041f---exit-code-512"></a>VSS-fout -2147023841 [0x8007041F] - exitcode 512
-
-Deze fout treedt op wanneer de Azure Site Recovery VSS Provider-servicedatabase is [vergrendeld.](/previous-versions/ms833798(v=msdn.10)) Probeer VSS handmatig op de bronmachine te installeren door de volgende opdracht uit te voeren vanuit een opdrachtprompt:
+Deze fout treedt op wanneer Azure Site Recovery VSS-Provider service is [gemarkeerd voor verwijdering](/previous-versions/ms838153(v=msdn.10)). Probeer VSS hand matig te installeren op de bron machine door de volgende opdracht uit te voeren:
 
 `"C:\Program Files (x86)\Microsoft Azure Site Recovery\agent\InMageVSSProvider_Install.cmd"`
 
-Wanneer er een storing optreedt, controleert u of een antivirusprogramma of andere services vast zitten in **een beginstatus.** Een proces in een **beginstatus** kan het slot op databaseservices behouden. Het zal leiden tot storingen in het installeren van VSS provider. Controleer of er geen service in **de beginstatus** staat en probeer de bovenstaande bewerking opnieuw.
+### <a name="vss-error--2147023841-0x8007041f---exit-code-512"></a>VSS-fout-2147023841 [0x8007041F]-afsluit code 512
 
-### <a name="vss-exit-code-806"></a>VSS-exitcode 806
+Deze fout treedt op wanneer Azure Site Recovery VSS Provider service-data base is [vergrendeld](/previous-versions/ms833798(v=msdn.10)). Probeer VSS hand matig te installeren op de bron machine door de volgende opdracht uit te voeren vanaf een opdracht prompt:
 
-Deze fout treedt op wanneer het gebruikersaccount dat voor `CSScript` de installatie wordt gebruikt, geen machtigingen heeft om de opdracht uit te voeren. Geef de benodigde machtigingen aan het gebruikersaccount om het script uit te voeren en de bewerking opnieuw te proberen.
+`"C:\Program Files (x86)\Microsoft Azure Site Recovery\agent\InMageVSSProvider_Install.cmd"`
+
+Als er een fout optreedt, controleert u of een antivirus programma of andere services zijn vastgelopen in een **begin** status. Een proces in een **begin** status kan de vergren deling van database services behouden. Dit leidt tot fouten bij het installeren van de VSS-provider. Zorg ervoor dat er geen service in het **begin** stadium is en probeer het opnieuw.
+
+### <a name="vss-exit-code-806"></a>VSS-afsluit code 806
+
+Deze fout treedt op wanneer het gebruikers account dat wordt gebruikt voor de installatie, niet `CSScript` over de machtigingen beschikt om de opdracht uit te voeren. Geef de benodigde machtigingen voor het gebruikers account op om het script uit te voeren en voer de bewerking opnieuw uit.
 
 ### <a name="other-vss-errors"></a>Andere VSS-fouten
 
-Probeer de VSS-providerservice handmatig op de bronmachine te installeren door de volgende opdracht uit te voeren vanuit een opdrachtprompt:
+Probeer de VSS-Provider service hand matig te installeren op de bron machine door de volgende opdracht uit te voeren vanaf een opdracht prompt:
 
 `"C:\Program Files (x86)\Microsoft Azure Site Recovery\agent\InMageVSSProvider_Install.cmd"`
 
-## <a name="vss-error---0x8004e00f"></a>VSS-fout - 0x8004E00F
+## <a name="vss-error---0x8004e00f"></a>VSS-fout-0x8004E00F
 
-Deze fout treedt meestal op tijdens de installatie `DCOM` van `DCOM` de mobiliteitsagent vanwege problemen in en bevindt zich in een kritieke toestand.
+Deze fout treedt doorgaans op tijdens de installatie van de Mobility-agent vanwege problemen `DCOM` in `DCOM` en is een kritieke status.
 
 Gebruik de volgende procedure om de oorzaak van de fout te bepalen.
 
-### <a name="examine-the-installation-logs"></a>De installatielogboeken onderzoeken
+### <a name="examine-the-installation-logs"></a>De installatie logboeken controleren
 
-1. Open het installatielogboek op _C:\ProgramData\ASRSetupLogs\ASRUnifiedAgentInstaller.log_.
-2. De aanwezigheid van de volgende fout geeft dit probleem aan:
+1. Open het installatie logboek op _C:\ProgramData\ASRSetupLogs\ASRUnifiedAgentInstaller.log_.
+2. De aanwezigheid van de volgende fout wijst op dit probleem:
 
     ```Output
     Unregistering the existing application...
@@ -321,25 +321,25 @@ Gebruik de volgende procedure om de oorzaak van de fout te bepalen.
     - Exit code: 802
     ```
 
-Ga als ander op zoek naar het probleem:
+Om het probleem op te lossen:
 
-Neem contact op met het [Microsoft Windows-platformteam](https://aka.ms/Windows_Support) om hulp te krijgen bij het oplossen van het DCOM-probleem.
+Neem contact op met het [micro soft Windows-platform](https://aka.ms/Windows_Support) om hulp te krijgen bij het oplossen van het probleem met DCOM.
 
-Wanneer het DCOM-probleem is opgelost, installeert u de Azure Site Recovery VSS-provider handmatig met de volgende opdracht van een opdrachtprompt:
+Wanneer het DCOM-probleem is opgelost, installeert u de Azure Site Recovery VSS-provider hand matig met behulp van de volgende opdracht vanaf een opdracht prompt:
 
 `"C:\Program Files (x86)\Microsoft Azure Site Recovery\agent\InMageVSSProvider_Install.cmd"`
 
-Als consistentie van de toepassing niet essentieel is voor uw vereisten voor noodherstel, u de installatie van de VSS-provider omzeilen.
+Als toepassings consistentie niet essentieel is voor uw vereisten voor nood herstel, kunt u de installatie van de VSS-provider overs Laan.
 
-Ga als het gaat om het omzeilen van de installatie van azure site recovery VSS-provider en het handmatig installeren van de installatie van Azure Site Recovery VSS Provider-post:
+Als u de installatie van de Azure Site Recovery VSS-provider wilt overs Laan en hand matig wilt installeren Azure Site Recovery VSS-provider na de installatie:
 
-1. Installeer de Mobiliteitsservice. De installatie mislukt in de stap: **Installatieconfiguratie na installeren**.
-1. Ga als een te werk om de VSS-installatie te omzeilen:
-   1. Open de installatiemap azure site recovery mobility service op:
+1. De Mobility-service installeren. De installatie mislukt bij stap: **configuratie na installatie**.
+1. De VSS-installatie overs Laan:
+   1. Open de installatie directory van de Azure Site Recovery Mobility-service op de locatie:
 
-      _C:\Program Files (x86)\Microsoft Azure Site Recovery\agent_
+      _C:\Program Files (x86) \Microsoft Azure site Recovery\agent._
 
-   1. Wijzig de installatiescripts van Azure Site Recovery VSS Provider _InMageVSSProvider_Install_ en _InMageVSSProvider_Uninstall.cmd_ om altijd te slagen door de volgende regels toe te voegen:
+   1. Wijzig de installatie scripts van de Azure Site Recovery VSS-provider _InMageVSSProvider_Install_ en _InMageVSSProvider_Uninstall. cmd_ om altijd slagen door de volgende regels toe te voegen:
 
       ```plaintext
       rem @echo off
@@ -347,51 +347,51 @@ Ga als het gaat om het omzeilen van de installatie van azure site recovery VSS-p
       exit /B 0
       ```
 
-1. Doe een handmatige installatie van de Mobiliteitsagent.
-1. Wanneer de installatie slaagt en naar de volgende stap gaat, verwijdert **u**de regels die u hebt toegevoegd.
-1. Als u de VSS-provider wilt installeren, opent u een opdrachtprompt als beheerder en voert u de volgende opdracht uit:
+1. Voer een hand matige installatie van de Mobility-agent uit.
+1. Wanneer de installatie is voltooid en naar de volgende **stap wordt verplaatst**, moet u de regels die u hebt toegevoegd, verwijderen.
+1. Als u de VSS-provider wilt installeren, opent u een opdracht prompt als beheerder en voert u de volgende opdracht uit:
 
    `"C:\Program Files (x86)\Microsoft Azure Site Recovery\agent\InMageVSSProvider_Install.cmd"`
 
-1. Controleer of de Azure Site Recovery VSS-provider is geïnstalleerd als service in Windows Services. Open de Component Service MMC om te controleren of de VSS-provider wordt vermeld.
-1. Als de installatie van de VSS-provider blijft mislukken, werkt u met technische ondersteuning om de fouten in de Cryptographic Application Programming Interface (CAPI2) op te lossen.
+1. Controleer of de Azure Site Recovery VSS-provider is geïnstalleerd als een service in Windows Services. Open de MMC van de component service om te controleren of de VSS-provider wordt vermeld.
+1. Als de installatie van de VSS-provider blijft mislukken, werkt u met technische ondersteuning om de machtigingen fouten in de cryptografische Application Programming Interface (diagnostische CAPI2) op te lossen.
 
-## <a name="vss-provider-installation-fails-because-the-cluster-service-being-enabled-on-non-cluster-machine"></a>Installatie VSS-provider mislukt omdat de clusterservice is ingeschakeld op niet-clustermachine
+## <a name="vss-provider-installation-fails-because-the-cluster-service-being-enabled-on-non-cluster-machine"></a>De installatie van de VSS-provider is mislukt omdat de Cluster service is ingeschakeld op de niet-cluster machine
 
-Dit probleem zorgt ervoor dat de installatie van Azure Site Recovery Mobility Agent mislukt tijdens de installatie van Azure Site Recovery VSS Provider. De fout is omdat er `COM+` een probleem met dat voorkomt dat de VSS provider installatie.
+Dit probleem leidt ertoe dat de Azure Site Recovery Mobility agent-installatie mislukt tijdens de installatie van de Azure Site Recovery VSS-provider. De fout is omdat er een probleem is met `COM+` de installatie van de VSS-provider.
 
-### <a name="to-identify-the-issue"></a>Om het probleem te identificeren
+### <a name="to-identify-the-issue"></a>Het probleem identificeren
 
-In het logboek op de configuratieserver op _C:\ProgramData\ASRSetupLogs\UploadedLogs-datum>\<UA_InstallLogFile.log_ vindt u de volgende uitzondering:
+In het logboek op de configuratie server op _C:\ProgramData\ASRSetupLogs\UploadedLogs\<datum/tijd->UA_InstallLogFile. log_ vindt u de volgende uitzonde ring:
 
 ```plaintext
 COM+ was unable to talk to the Microsoft Distributed Transaction Coordinator (Exception from HRESULT: 0x8004E00F)
 ```
 
-Ga als ander op zoek naar het probleem:
+Om het probleem op te lossen:
 
-1. Controleer of deze machine een niet-clustermachine is en of de clusteronderdelen niet worden gebruikt.
-1. Als de onderdelen niet worden gebruikt, verwijdert u de clusteronderdelen uit de machine.
+1. Controleer of deze computer een niet-cluster machine is en of de cluster onderdelen niet worden gebruikt.
+1. Als de onderdelen niet worden gebruikt, verwijdert u de cluster onderdelen van de machine.
 
-## <a name="drivers-are-missing-on-the-source-server"></a>Stuurprogramma's ontbreken op de bronserver
+## <a name="drivers-are-missing-on-the-source-server"></a>Er ontbreken Stuur Programma's op de bron server
 
-Als de installatie van de Mobiliteitsagent mislukt, controleert u de logboeken onder _C:\ProgramData\ASRSetupLogs_ om te bepalen of sommige van de vereiste stuurprogramma's ontbreken in sommige controlesets.
+Als de installatie van de Mobility-agent mislukt, raadpleegt u de Logboeken onder _C:\ProgramData\ASRSetupLogs_ om te bepalen of sommige van de vereiste Stuur Programma's in sommige besturings sets ontbreken.
 
-Ga als ander op zoek naar het probleem:
+Om het probleem op te lossen:
 
-1. Met behulp van `regedit.msc`een registereditor zoals , open het register.
-1. Open `HKEY_LOCAL_MACHINE\SYSTEM` het knooppunt.
-1. Zoek `SYSTEM` in het knooppunt de besturingssets.
-1. Open elke besturingselementset en controleer of de volgende Windows-stuurprogramma's aanwezig zijn:
+1. Open het REGI ster met behulp van een REGI ster `regedit.msc`-editor, zoals.
+1. Open het `HKEY_LOCAL_MACHINE\SYSTEM` knoop punt.
+1. Zoek de `SYSTEM` besturings sets in het knoop punt.
+1. Open elke set besturings elementen en controleer of de volgende Windows-Stuur Programma's aanwezig zijn:
 
-   * Atapi
-   * Vmbus (Vmbus)
-   * Storflt Storflt
-   * Storvsc Storvsc
-   * Intelide (Intelide)
+   * ATAPI
+   * Vmbus
+   * Storflt
+   * Storvsc
+   * Intelide
 
-1. Installeer ontbrekende stuurprogramma's opnieuw.
+1. Installeer de ontbrekende Stuur Programma's opnieuw.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-[Meer informatie](vmware-azure-tutorial.md) over het instellen van noodherstel voor VMware VM's.
+Meer [informatie](vmware-azure-tutorial.md) over het instellen van herstel na nood geval voor virtuele VMware-machines.

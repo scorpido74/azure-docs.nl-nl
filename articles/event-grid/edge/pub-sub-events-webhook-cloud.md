@@ -1,6 +1,6 @@
 ---
-title: Publiceren, abonneren op gebeurtenissen in de cloud - Azure Event Grid IoT Edge | Microsoft Documenten
-description: Publiceren, abonneren op gebeurtenissen in de cloud met Webhook met Event Grid op IoT Edge
+title: Publiceren, abonneren op gebeurtenissen in Cloud-Azure Event Grid IoT Edge | Microsoft Docs
+description: Publiceren, abonneren op gebeurtenissen in de Cloud met behulp van een webhook met Event Grid op IoT Edge
 author: VidyaKukke
 manager: rajarv
 ms.author: vkukke
@@ -10,31 +10,31 @@ ms.topic: article
 ms.service: event-grid
 services: event-grid
 ms.openlocfilehash: c82f1edfc3acd73c1d38425f963aaaf2976a1cc5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76844583"
 ---
-# <a name="tutorial-publish-subscribe-to-events-in-cloud"></a>Zelfstudie: Publiceren, abonneren op gebeurtenissen in de cloud
+# <a name="tutorial-publish-subscribe-to-events-in-cloud"></a>Zelf studie: publiceren, abonneren op gebeurtenissen in de Cloud
 
-In dit artikel worden alle stappen doorlopen die nodig zijn om evenementen te publiceren en u te abonneren met behulp van Gebeurtenisraster op IoT Edge. Deze zelfstudie gebruikt en Azure-functie als gebeurtenishandler. Zie [gebeurtenishandlers](event-handlers.md)voor extra doeltypen .
+In dit artikel worden alle stappen beschreven die nodig zijn voor het publiceren en abonneren op gebeurtenissen met behulp van Event Grid op IoT Edge. Deze zelf studie maakt gebruik van en Azure function als gebeurtenis-handler. Zie voor aanvullende doel typen [gebeurtenis-handlers](event-handlers.md).
 
-Zie [Gebeurtenisrasterconcepten](concepts.md) om te begrijpen wat een gebeurtenisrasteronderwerp en -abonnement zijn voordat u verdergaat.
+Zie [Event grid concepten](concepts.md) om te begrijpen wat een event grid-onderwerp en-abonnement zijn voordat u verdergaat.
 
 ## <a name="prerequisites"></a>Vereisten 
-Om deze tutorial te voltooien, moet je:
+Als u deze zelf studie wilt volt ooien, hebt u het volgende nodig:
 
-* **Azure-abonnement** - Maak een [gratis account](https://azure.microsoft.com/free) als u er nog geen hebt. 
-* **Azure IoT Hub en IoT Edge-apparaat** - Volg de stappen in de snelle start voor [Linux-](../../iot-edge/quickstart-linux.md) of [Windows-apparaten](../../iot-edge/quickstart.md) als u er nog geen hebt.
+* **Azure-abonnement** : Maak een [gratis account](https://azure.microsoft.com/free) als u er nog geen hebt. 
+* **Azure IOT hub en IOT edge apparaat** : Volg de stappen in de Quick start voor [Linux](../../iot-edge/quickstart-linux.md) -of [Windows-apparaten](../../iot-edge/quickstart.md) als u er nog geen hebt.
 
 [!INCLUDE [event-grid-deploy-iot-edge](../../../includes/event-grid-deploy-iot-edge.md)]
 
-## <a name="create-an-azure-function-in-the-azure-portal"></a>Een Azure-functie maken in de Azure-portal
+## <a name="create-an-azure-function-in-the-azure-portal"></a>Een Azure-functie maken in de Azure Portal
 
-Volg de stappen die in de [zelfstudie](../../azure-functions/functions-create-first-azure-function.md) worden beschreven om een Azure-functie te maken. 
+Volg de stappen die worden beschreven in de [zelf studie](../../azure-functions/functions-create-first-azure-function.md) voor het maken van een Azure-functie. 
 
-Vervang het codefragment door de volgende code:
+Vervang het code fragment door de volgende code:
 
 ```csharp
 #r "Newtonsoft.Json"
@@ -58,16 +58,16 @@ public static async Task<IActionResult> Run(HttpRequest req, ILogger log)
 }
 ```
 
-Selecteer in de nieuwe functie **DE URL** van de functie ophalen rechtsboven, selecteer standaard (**functietoets)** en selecteer **Vervolgens Kopiëren**. U gebruikt de URL-waarde van de functie later in de zelfstudie.
+Selecteer in de nieuwe functie rechtsboven **functie-URL ophalen** , Selecteer standaard (**functie toets**) en selecteer vervolgens **kopiëren**. Verderop in de zelf studie gebruikt u de waarde van de functie-URL.
 
 > [!NOTE]
-> Raadpleeg de documentatie [azure-functies](../../azure-functions/functions-overview.md) voor meer voorbeelden en zelfstudies over het reageren op gebeurtenissen en het gebruik van EventGrid-gebeurtenistriggers.
+> Raadpleeg de [Azure functions](../../azure-functions/functions-overview.md) -documentatie voor meer voor beelden en zelf studies over het opnieuw handelen van gebeurtenissen met behulp van EventGrid-gebeurtenis triggers.
 
 ## <a name="create-a-topic"></a>Een onderwerp maken
 
-Als uitgever van een gebeurtenis moet u een gebeurtenisrasteronderwerp maken. Onderwerp verwijst naar een eindpunt waar uitgevers gebeurtenissen naartoe kunnen sturen.
+Als uitgever van een gebeurtenis moet u een event grid-onderwerp maken. Onderwerp verwijst naar een eind punt waarnaar uitgevers gebeurtenissen kunnen verzenden.
 
-1. Maak topic2.json met de volgende inhoud. Zie onze [API-documentatie](api.md) voor meer informatie over de payload.
+1. Maak topic2. json met de volgende inhoud. Zie onze [API-documentatie](api.md) voor meer informatie over de payload.
 
     ```json
          {
@@ -77,12 +77,12 @@ Als uitgever van een gebeurtenis moet u een gebeurtenisrasteronderwerp maken. On
           }
         }
     ```
-1. Voer de volgende opdracht uit om het onderwerp te maken. HTTP-statuscode van 200 OK moet worden geretourneerd.
+1. Voer de volgende opdracht uit om het onderwerp te maken. De HTTP-status code van 200 OK moet worden geretourneerd.
 
     ```sh
     curl -k -H "Content-Type: application/json" -X PUT -g -d @topic2.json https://<your-edge-device-public-ip-here>:4438/topics/sampleTopic2?api-version=2019-01-01-preview
     ```
-1. Voer de volgende opdracht uit om te controleren of het onderwerp is gemaakt. HTTP-statuscode van 200 OK moet worden geretourneerd.
+1. Voer de volgende opdracht uit om het onderwerp te controleren dat is gemaakt. De HTTP-status code van 200 OK moet worden geretourneerd.
 
     ```sh
     curl -k -H "Content-Type: application/json" -X GET -g https://<your-edge-device-public-ip-here>:4438/topics/sampleTopic2?api-version=2019-01-01-preview
@@ -106,11 +106,11 @@ Als uitgever van een gebeurtenis moet u een gebeurtenisrasteronderwerp maken. On
 
 ## <a name="create-an-event-subscription"></a>Een gebeurtenisabonnement maken
 
-Abonnees kunnen zich inschrijven voor evenementen die zijn gepubliceerd in een onderwerp. Om een evenement te ontvangen, moeten de abonnees een abonnement op het eventraster maken voor een interessant onderwerp.
+Abonnees kunnen zich registreren voor gebeurtenissen die naar een onderwerp worden gepubliceerd. Als u een gebeurtenis wilt ontvangen, moeten de abonnees een event grid-abonnement maken op een onderwerp van belang.
 
 [!INCLUDE [event-grid-deploy-iot-edge](../../../includes/event-grid-edge-persist-event-subscriptions.md)]
 
-1. Maak subscription2.json met de volgende content. Raadpleeg onze [API-documentatie](api.md) voor meer informatie over de payload.
+1. Maak subscription2. json met de volgende inhoud. Raadpleeg onze [API-documentatie](api.md) voor meer informatie over de payload.
 
     ```json
         {
@@ -126,13 +126,13 @@ Abonnees kunnen zich inschrijven voor evenementen die zijn gepubliceerd in een o
     ```
 
    >[!NOTE]
-   > Het **endpointType** geeft aan dat de abonnee een Webhook is.  De **endpointUrl** geeft de URL op waarop de abonnee naar gebeurtenissen luistert. Deze URL komt overeen met het voorbeeld van de Azure-functie dat u eerder hebt ingesteld.
-2. Voer de volgende opdracht uit om het abonnement te maken. HTTP-statuscode van 200 OK moet worden geretourneerd.
+   > De **endpointType** geeft aan dat de abonnee een webhook is.  De **endpointUrl** geeft de URL aan waar de abonnee naar gebeurtenissen luistert. Deze URL komt overeen met de Azure function-voor beeld die u eerder hebt ingesteld.
+2. Voer de volgende opdracht uit om het abonnement te maken. De HTTP-status code van 200 OK moet worden geretourneerd.
 
     ```sh
     curl -k -H "Content-Type: application/json" -X PUT -g -d @subscription2.json https://<your-edge-device-public-ip-here>:4438/topics/sampleTopic2/eventSubscriptions/sampleSubscription2?api-version=2019-01-01-preview
     ```
-3. Voer de volgende opdracht uit om te controleren of het abonnement is gemaakt. HTTP-statuscode van 200 OK moet worden geretourneerd.
+3. Voer de volgende opdracht uit om het abonnement te controleren dat is gemaakt. De HTTP-status code van 200 OK moet worden geretourneerd.
 
     ```sh
     curl -k -H "Content-Type: application/json" -X GET -g https://<your-edge-device-public-ip-here>:4438/topics/sampleTopic2/eventSubscriptions/sampleSubscription2?api-version=2019-01-01-preview
@@ -159,7 +159,7 @@ Abonnees kunnen zich inschrijven voor evenementen die zijn gepubliceerd in een o
 
 ## <a name="publish-an-event"></a>Een gebeurtenis publiceren
 
-1. Maak event2.json met de volgende inhoud. Raadpleeg onze [API-documentatie](api.md) voor meer informatie over de payload.
+1. Maak event2. json met de volgende inhoud. Raadpleeg onze [API-documentatie](api.md) voor meer informatie over de payload.
 
     ```json
         [
@@ -176,33 +176,33 @@ Abonnees kunnen zich inschrijven voor evenementen die zijn gepubliceerd in een o
           }
         ]
     ```
-1. De volgende opdracht uitvoeren om gebeurtenis te publiceren
+1. Voer de volgende opdracht uit om de gebeurtenis te publiceren
 
     ```sh
     curl -k -H "Content-Type: application/json" -X POST -g -d @event2.json https://<your-edge-device-public-ip-here>:4438/topics/sampleTopic2/events?api-version=2019-01-01-preview
     ```
 
-## <a name="verify-event-delivery"></a>De levering van gebeurtenissen verifiëren
+## <a name="verify-event-delivery"></a>Gebeurtenis levering verifiëren
 
-U de gebeurtenis bekijken die wordt geleverd in de Azure-portal onder de optie **Monitor** van uw functie.
+U kunt de gebeurtenis weer geven die in de Azure Portal is geleverd met de optie **monitor** van uw functie.
 
 ## <a name="cleanup-resources"></a>Resources opruimen
 
-* Voer de volgende opdracht uit om het onderwerp en alle abonnementen te verwijderen
+* Voer de volgende opdracht uit om het onderwerp en alle bijbehorende abonnementen te verwijderen
 
     ```sh
     curl -k -H "Content-Type: application/json" -X DELETE https://<your-edge-device-public-ip-here>:4438/topics/sampleTopic2?api-version=2019-01-01-preview
     ```
 
-* Verwijder de Azure-functie die is gemaakt in de Azure-portal.
+* Verwijder de Azure-functie die in de Azure Portal is gemaakt.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze zelfstudie hebt u een onderwerp, abonnement en gepubliceerde gebeurtenissen voor een gebeurtenisraster gemaakt. Nu u de basisstappen kent, raadpleegt u de volgende artikelen:
+In deze zelf studie hebt u een event grid-onderwerp,-abonnement en-gepubliceerde gebeurtenissen gemaakt. Nu u de basis stappen kent, raadpleegt u de volgende artikelen:
 
-* Zie [Gids voor probleemoplossing](troubleshoot.md)voor het oplossen van problemen met het gebruik van Azure Event Grid op IoT Edge.
-* Abonnement maken/bijwerken met [filters](advanced-filtering.md).
-* Persistentie van Event Grid-module instellen op [linux](persist-state-linux.md) of [Windows](persist-state-windows.md)
-* [Documentatie volgen](configure-client-auth.md) om clientverificatie te configureren
-* Gebeurtenissen doorsturen naar Azure Event Grid in de cloud door deze [zelfstudie](forward-events-event-grid-cloud.md) te volgen
-* [Onderwerpen en abonnementen op de rand bewaken](monitor-topics-subscriptions.md)
+* Zie [probleemoplossings gids voor informatie](troubleshoot.md)over het oplossen van problemen met het gebruik van Azure Event Grid op IOT Edge.
+* Een abonnement met [filters](advanced-filtering.md)maken/bijwerken.
+* Persistentie van Event Grid module instellen in [Linux](persist-state-linux.md) of [Windows](persist-state-windows.md)
+* Volg de [documentatie](configure-client-auth.md) voor het configureren van client verificatie
+* Door sturen van gebeurtenissen naar Azure Event Grid in de Cloud door deze [zelf studie](forward-events-event-grid-cloud.md) te volgen
+* [Onderwerpen en abonnementen bewaken aan de rand](monitor-topics-subscriptions.md)

@@ -1,6 +1,6 @@
 ---
-title: 'Zelfstudie: Compute beheren met Azure-functies'
-description: Azure-functies gebruiken om de compute van uw SQL-groep in Azure Synapse Analytics te beheren.
+title: 'Zelf studie: Compute beheren met Azure Functions'
+description: Azure functions gebruiken voor het beheren van de reken kracht van uw SQL-groep in azure Synapse Analytics.
 services: synapse-analytics
 author: julieMSFT
 manager: craigg
@@ -12,49 +12,49 @@ ms.author: jrasnick
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
 ms.openlocfilehash: aa2cff552b49bceeaf6fd46510bf78384f0e7bfb
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/03/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80631963"
 ---
-# <a name="use-azure-functions-to-manage-compute-resources-in-azure-synapse-analytics-sql-pool"></a>Azure-functies gebruiken om rekenresources te beheren in Azure Synapse Analytics SQL-groep
+# <a name="use-azure-functions-to-manage-compute-resources-in-azure-synapse-analytics-sql-pool"></a>Azure Functions gebruiken om reken resources te beheren in azure Synapse Analytics SQL-groep
 
-Deze zelfstudie gebruikt Azure-functies om rekenresources voor een SQL-groep in Azure Synapse Analytics te beheren.
+In deze zelf studie wordt gebruikgemaakt van Azure Functions om reken resources te beheren voor een SQL-groep in azure Synapse Analytics.
 
-Als u Azure Function App met SQL-groep wilt gebruiken, moet u een [Service Principal-account](../../active-directory/develop/howto-create-service-principal-portal.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) maken met toegang tot bijdragen onder hetzelfde abonnement als uw SQL-poolinstantie.
+Als u Azure functie-app wilt gebruiken met SQL-pool, moet u een [Service-Principal-account](../../active-directory/develop/howto-create-service-principal-portal.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) maken met toegang tot Inzender onder hetzelfde abonnement als uw exemplaar van SQL-groep.
 
-## <a name="deploy-timer-based-scaling-with-an-azure-resource-manager-template"></a>Schalen op basis van timer implementeren met een Azure Resource Manager-sjabloon
+## <a name="deploy-timer-based-scaling-with-an-azure-resource-manager-template"></a>Schalen op basis van een timer met een Azure Resource Manager sjabloon implementeren
 
 Als u de sjabloon wilt implementeren, hebt u de volgende informatie nodig:
 
-- Naam van de resourcegroep waarin uw SQL-groep instantie zich bevindt
-- Naam van de logische server waarin uw SQL-poolinstantie zich bevindt
-- Naam van uw SQL-poolinstantie
+- De naam van de resource groep waaraan uw exemplaar van SQL-groep is in
+- Naam van de logische server waarvan uw SQL-groeps instantie zich bevindt
+- De naam van het exemplaar van de SQL-groep
 - Tenant-id (directory-id) van de Azure Active Directory
 - Abonnements-id
 - Toepassings-id van de service-principal
 - Geheime sleutel van de service-principal
 
-Zodra u de voorgaande informatie hebt, implementeert u deze sjabloon:
+Wanneer u de voor gaande informatie hebt, implementeert u deze sjabloon:
 
 <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FMicrosoft%2Fsql-data-warehouse-samples%2Fmaster%2Farm-templates%2FsqlDwTimerScaler%2Fazuredeploy.json" target="_blank">
 <img src="https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.png"/>
 </a>
 
-Zodra u de sjabloon hebt geïmplementeerd, moet u drie nieuwe bronnen vinden: een gratis Azure App Service Plan, een op verbruik gebaseerd Functie-app-plan en een opslagaccount dat de logboekregistratie en de wachtrij voor bewerkingen afhandelt. Lees ook de overige secties om te zien hoe u de geïmplementeerde functies aan uw behoeften kunt aanpassen.
+Nadat u de sjabloon hebt geïmplementeerd, moet u drie nieuwe resources vinden: een gratis Azure App Service plan, een functie-app plan op basis van verbruik en een opslag account waarmee de logboek registratie en de bewerkings wachtrij worden verwerkt. Lees ook de overige secties om te zien hoe u de geïmplementeerde functies aan uw behoeften kunt aanpassen.
 
-## <a name="change-the-compute-level"></a>Het rekenniveau wijzigen
+## <a name="change-the-compute-level"></a>Het reken niveau wijzigen
 
 1. Ga naar de functie-app-service. Als u de sjabloon met de standaardwaarden hebt geïmplementeerd, wordt *DWOperations* de naam van deze service. Als de functie-app is geopend, ziet u dat er vijf functies voor de functie-app-service zijn geïmplementeerd.
 
    ![Functies die met sjabloon zijn geïmplementeerd](./media/manage-compute-with-azure-functions/five-functions.png)
 
-2. Selecteer *DWScaleDownTrigger* of *DWScaleUpTrigger*, afhankelijk van of u de tijd voor omhoog of omlaag schalen wilt wijzigen. Selecteer In het vervolgkeuzemenu de optie Integreren.
+2. Selecteer *DWScaleDownTrigger* of *DWScaleUpTrigger*, afhankelijk van of u de tijd voor omhoog of omlaag schalen wilt wijzigen. Selecteer integreren in de vervolg keuzelijst.
 
    ![Integreren als functie selecteren](./media/manage-compute-with-azure-functions/select-integrate.png)
 
-3. De waarde die momenteel moeten worden weergegeven is *%ScaleDownTime%* of *%ScaleUpTime%*. Deze waarden geven aan dat de planning is gebaseerd op waarden die zijn gedefinieerd in de [Toepassingsinstellingen](../../azure-functions/functions-how-to-use-azure-function-app-settings.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json). Voor nu u deze waarde negeren en de planning wijzigen in de gewenste tijd op basis van de volgende stappen.
+3. De waarde die momenteel moeten worden weergegeven is *%ScaleDownTime%* of *%ScaleUpTime%*. Deze waarden geven aan dat de planning is gebaseerd op waarden die zijn gedefinieerd in de [Toepassingsinstellingen](../../azure-functions/functions-how-to-use-azure-function-app-settings.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json). U kunt deze waarde nu negeren en de planning wijzigen in uw voorkeurs tijd op basis van de volgende stappen.
 
 4. Voeg in het gedeelte met de planning de tijd toe die door de CRON-expressie moet worden uitgedrukt. Deze tijd geeft aan hoe vaak u SQL Data Warehouse omhoog wilt schalen.
 
@@ -66,9 +66,9 @@ Zodra u de sjabloon hebt geïmplementeerd, moet u drie nieuwe bronnen vinden: ee
    {second} {minute} {hour} {day} {month} {day-of-week}
    ```
 
-   Bijvoorbeeld, *"0 30 9 * * 1-5"* zou een trigger elke weekdag om 9:30 uur weerspiegelen. Ga naar Azure Functions [Voorbeelden van de planning](../../azure-functions/functions-bindings-timer.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json#example) voor meer informatie.
+   *"0 30 9 * * 1-5"* zou bijvoorbeeld elke weekdag op 9: om 9:30 uur weer geven. Ga naar Azure Functions [Voorbeelden van de planning](../../azure-functions/functions-bindings-timer.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json#example) voor meer informatie.
 
-## <a name="change-the-time-of-the-scale-operation"></a>De tijd van de schaalbewerking wijzigen
+## <a name="change-the-time-of-the-scale-operation"></a>De tijd van de schaal bewerking wijzigen
 
 1. Ga naar de functie-app-service. Als u de sjabloon met de standaardwaarden hebt geïmplementeerd, wordt *DWOperations* de naam van deze service. Als de functie-app is geopend, ziet u dat er vijf functies voor de functie-app-service zijn geïmplementeerd.
 
@@ -76,7 +76,7 @@ Zodra u de sjabloon hebt geïmplementeerd, moet u drie nieuwe bronnen vinden: ee
 
    ![Rekenniveau van functietrigger wijzigen](././media/manage-compute-with-azure-functions/index-js.png)
 
-3. Wijzig de waarde van *ServiceLevelObjective* tot het gewenste niveau en druk op Opslaan. Deze waarde is het rekenniveau waarop uw gegevensmagazijninstantie wordt geschaald op basis van de planning die is gedefinieerd in de sectie Integreren.
+3. Wijzig de waarde van *ServiceLevelObjective* tot het gewenste niveau en druk op Opslaan. Deze waarde is het reken niveau dat door uw data warehouse-instantie wordt geschaald op basis van de planning die is gedefinieerd in de sectie integreren.
 
 ## <a name="use-pause-or-resume-instead-of-scale"></a>Onderbreken of Hervatten gebruiken in plaats van Schalen
 
@@ -91,13 +91,13 @@ De functies die momenteel standaard zijn ingeschakeld zijn *DWScaleDownTrigger* 
 3. Ga naar de tabbladen *Integreren* van de bijbehorende triggers om de planning te wijzigen.
 
    > [!NOTE]
-   > Het functionele verschil tussen de schalingstriggers en de pauze-/hervattingstriggers is het bericht dat naar de wachtrij wordt verzonden. Zie [Een nieuwe triggerfunctie toevoegen](manage-compute-with-azure-functions.md#add-a-new-trigger-function)voor meer informatie.
+   > Het functionele verschil tussen de triggers voor schalen en onderbreken/hervatten is het bericht dat naar de wachtrij wordt verzonden. Zie [een nieuwe trigger functie toevoegen](manage-compute-with-azure-functions.md#add-a-new-trigger-function)voor meer informatie.
 
 ## <a name="add-a-new-trigger-function"></a>Een nieuwe triggerfunctie toevoegen
 
-Er zijn momenteel slechts twee schaalfuncties in de sjabloon opgenomen. Met deze functies u in de loop van een dag slechts één keer omlaag en omhoog. Voor meer gedetailleerde besturingselementen, zoals meerdere keren per dag verkleinen of verschillende schalinggedrag hebben in het weekend, moet u een andere trigger toevoegen.
+Er zijn momenteel slechts twee schaalfuncties in de sjabloon opgenomen. Met deze functies kunt u in de loop van een dag slechts één keer omhoog en omlaag schalen. Voor een gedetailleerdere controle, zoals het omlaag schalen van meerdere tijden per dag of het afwijkend gedrag van schalen in het weekend, moet u een andere trigger toevoegen.
 
-1. Maak een nieuwe, lege functie. Selecteer *+* de knop in de buurt van de locatie Functies om het functiesjabloonvenster weer te geven.
+1. Maak een nieuwe, lege functie. Selecteer de *+* knop in de buurt van de locatie waar u het deel venster functie sjabloon wilt weer geven.
 
    ![Nieuwe functie maken](./media/manage-compute-with-azure-functions/create-new-function.png)
 
@@ -113,7 +113,7 @@ Er zijn momenteel slechts twee schaalfuncties in de sjabloon opgenomen. Met deze
 
    ![index.js kopiëren](././media/manage-compute-with-azure-functions/index-js.png)
 
-5. Stel uw bewerkingsvariabele als volgt in op het gewenste gedrag:
+5. Stel de bewerkings variabele als volgt in op het gewenste gedrag:
 
    ```javascript
    // Resume the SQL pool instance
@@ -135,7 +135,7 @@ Er zijn momenteel slechts twee schaalfuncties in de sjabloon opgenomen. Met deze
 
 ## <a name="complex-scheduling"></a>Complex plannen
 
-In deze sectie wordt kort getoond wat nodig is om complexere plannings-, hervattings- en schaalmogelijkheden te krijgen.
+In deze sectie wordt uitgelegd wat u nodig hebt om een complexere planning van onderbrekingen, cv's en schaal mogelijkheden te verkrijgen.
 
 ### <a name="example-1"></a>Voorbeeld 1
 
@@ -148,7 +148,7 @@ Elke dag om 8:00 uur omhoog schalen naar DW600 en om 20:00 uur omlaag schalen na
 
 ### <a name="example-2"></a>Voorbeeld 2
 
-Dagelijks opschalen om 8.00 uur naar DW1000, eenmaal naar DW600 om 16.00 uur en om 22.00 uur naar DW200 schalen.
+Schaal dagelijks op 8 a.m. naar DW1000, schaal omlaag naar DW600 op 4 p.m. en schaal omlaag naar 10pm naar DW200.
 
 | Functie  | Planning     | Bewerking                                |
 | :-------- | :----------- | :--------------------------------------- |
@@ -171,4 +171,4 @@ Op weekdagen om 8:00 uur omhoog schalen naar DW1000 en om 16:00 uur omlaag schal
 
 Meer informatie over Azure-functies die door een [timertrigger](../../azure-functions/functions-create-scheduled-function.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) worden geactiveerd.
 
-De [SQL-poolsamplesrepository afrekenen.](https://github.com/Microsoft/sql-data-warehouse-samples)
+De [opslag plaats voor beelden](https://github.com/Microsoft/sql-data-warehouse-samples)van SQL-pool wordt uitgecheckt.

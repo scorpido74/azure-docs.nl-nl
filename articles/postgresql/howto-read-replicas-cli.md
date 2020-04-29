@@ -1,119 +1,119 @@
 ---
-title: Lees-replica's beheren - Azure CLI, REST API - Azure Database voor PostgreSQL - Single Server
-description: Meer informatie over het beheren van leesreplica's in Azure Database voor PostgreSQL - Single Server vanuit de Azure CLI- en REST-API
+title: Lees replica's beheren-Azure CLI, REST API-Azure Database for PostgreSQL-één server
+description: Meer informatie over het beheren van Lees replica's in Azure Database for PostgreSQL-één server van de Azure CLI en REST API
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 01/23/2020
 ms.openlocfilehash: b10ac3b4bc9dacd723b8b1265911df721b781189
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76774805"
 ---
-# <a name="create-and-manage-read-replicas-from-the-azure-cli-rest-api"></a>Lees-replica's maken en beheren vanuit de Azure CLI, REST API
+# <a name="create-and-manage-read-replicas-from-the-azure-cli-rest-api"></a>Maak en beheer Lees replica's vanuit Azure CLI, REST API
 
-In dit artikel leert u hoe u leesreplica's maakt en beheert in Azure Database voor PostgreSQL met behulp van de Azure CLI- en REST-API. Zie het [overzicht](concepts-read-replicas.md)voor meer informatie over gelezen replica's.
+In dit artikel leert u hoe u in Azure Database for PostgreSQL Lees replica's maakt en beheert met behulp van de Azure CLI en REST API. Zie het [overzicht](concepts-read-replicas.md)voor meer informatie over het lezen van replica's.
 
-## <a name="azure-cli"></a>Azure-CLI
-U leesreplica's maken en beheren met de Azure CLI.
+## <a name="azure-cli"></a>Azure CLI
+U kunt met behulp van de Azure CLI Lees replica's maken en beheren.
 
 ### <a name="prerequisites"></a>Vereisten
 
 - [Installeer Azure CLI 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)
-- Een [Azure-database voor PostgreSQL-server](quickstart-create-server-up-azure-cli.md) als hoofdserver.
+- Een [Azure database for postgresql-server](quickstart-create-server-up-azure-cli.md) als de hoofd server.
 
 
-### <a name="prepare-the-master-server"></a>De hoofdserver voorbereiden
-Deze stappen moeten worden gebruikt om een hoofdserver voor te bereiden in de lagen Algemeen Doel of Geheugengeoptimaliseerd.
+### <a name="prepare-the-master-server"></a>De hoofd server voorbereiden
+Deze stappen moeten worden gebruikt om een hoofd server voor te bereiden in de lagen Algemeen of geoptimaliseerd voor geheugen.
 
-De `azure.replication_support` parameter moet zijn ingesteld op **REPLICA** op de hoofdserver. Wanneer deze statische parameter wordt gewijzigd, is een serveropnieuw opstarten vereist om de wijziging van kracht te laten worden.
+De `azure.replication_support` para meter moet worden ingesteld op **replica** op de hoofd server. Wanneer deze statische para meter wordt gewijzigd, moet de server opnieuw worden opgestart om de wijziging van kracht te laten worden.
 
-1. Ingesteld `azure.replication_support` op REPLICA.
+1. Stel `azure.replication_support` in op replica.
 
    ```azurecli-interactive
    az postgres server configuration set --resource-group myresourcegroup --server-name mydemoserver --name azure.replication_support --value REPLICA
    ```
 
 > [!NOTE]
-> Als u de fout 'Ongeldige waarde gegeven' krijgt terwijl u azure.replication_support van de Azure CLI probeert in te stellen, is het waarschijnlijk dat uw server al standaard REPLICA heeft ingesteld. Een bug voorkomt dat deze instelling correct wordt weergegeven op nieuwere servers waar REPLICA de interne standaard is. <br><br>
-> U de hoofdstappen voor bereiden overslaan en de replica maken. <br><br>
-> Als u wilt bevestigen dat uw server zich in deze categorie bevindt, gaat u naar de replicatiepagina van de server in de Azure-portal. 'Replicatie uitschakelen' wordt grijs weergegeven en 'Replica toevoegen' is actief op de werkbalk.
+> Als u de fout ' ongeldige waarde gegeven ' krijgt tijdens het instellen van Azure. replication_support vanuit de Azure CLI, is het waarschijnlijk dat uw server standaard al een REPLICA heeft ingesteld. Er wordt voor komen dat deze instelling correct wordt weer gegeven op nieuwere servers waarbij REPLICA de interne standaard is. <br><br>
+> U kunt de stappen voor het voorbereiden van de hoofd stap overs Laan en de replica maken. <br><br>
+> Als u wilt bevestigen dat uw server zich in deze categorie bevindt, gaat u naar de pagina replicatie van de server in de Azure Portal. ' Replicatie uitschakelen ' wordt grijs weer gegeven en ' replica toevoegen ' is actief op de werk balk.
 
-2. Start de server opnieuw om de wijziging toe te passen.
+2. Start de server opnieuw op om de wijziging toe te passen.
 
    ```azurecli-interactive
    az postgres server restart --name mydemoserver --resource-group myresourcegroup
    ```
 
-### <a name="create-a-read-replica"></a>Een gelezen replica maken
+### <a name="create-a-read-replica"></a>Een lees replica maken
 
-De opdracht voor het [maken van replica's voor az-postgres-server](/cli/azure/postgres/server/replica?view=azure-cli-latest#az-postgres-server-replica-create) vereist de volgende parameters:
+De opdracht [AZ post gres Server replica Create](/cli/azure/postgres/server/replica?view=azure-cli-latest#az-postgres-server-replica-create) vereist de volgende para meters:
 
 | Instelling | Voorbeeldwaarde | Beschrijving  |
 | --- | --- | --- |
-| resource-group | myResourceGroup |  De brongroep waar de replicaserver wordt gemaakt.  |
-| name | mydemoserver-replica | De naam van de nieuwe replicaserver die is gemaakt. |
-| source-server | mydemoserver | De naam of bron-id van de bestaande hoofdserver om van te repliceren. |
+| resource-group | myResourceGroup |  De resource groep waar de replica-server wordt gemaakt.  |
+| name | mydemoserver-replica | De naam van de nieuwe replica server die wordt gemaakt. |
+| source-server | mydemoserver | De naam of bron-ID van de bestaande hoofd server waaruit moet worden gerepliceerd. |
 
-In het onderstaande VOORBEELD CLI wordt de replica gemaakt in dezelfde regio als de master.
+In het CLI-voor beeld hieronder wordt de replica gemaakt in dezelfde regio als de Master.
 
 ```azurecli-interactive
 az postgres server replica create --name mydemoserver-replica --source-server mydemoserver --resource-group myresourcegroup
 ```
 
-Als u een replica voor `--location` het gebied sinterland wilt maken, gebruikt u de parameter. In het onderstaande VOORBEELD CLI wordt de replica in West-US gemaakt.
+Gebruik de `--location` para meter om een lees replica te maken. In het CLI-voor beeld hieronder wordt de replica in VS West gemaakt.
 
 ```azurecli-interactive
 az postgres server replica create --name mydemoserver-replica --source-server mydemoserver --resource-group myresourcegroup --location westus
 ```
 
 > [!NOTE]
-> Ga voor meer informatie over welke regio's u een replica maken in het [artikel Voor replicaconcepten](concepts-read-replicas.md). 
+> Ga naar het [artikel concepten van replica's lezen](concepts-read-replicas.md)voor meer informatie over de regio's die u kunt maken in de replica. 
 
-Als u de `azure.replication_support` parameter niet hebt ingesteld op **REPLICA** op een hoofdserver voor algemeen gebruik of geheugengeoptimaliseerden en de server opnieuw hebt opgestart, ontvangt u een fout. Voer deze twee stappen uit voordat u een replica maakt.
+Als u de `azure.replication_support` para meter niet op **replica** hebt ingesteld op een master server met algemeen of geoptimaliseerd voor geheugen en de server opnieuw hebt opgestart, wordt een fout bericht weer gegeven. Voer de volgende twee stappen uit voordat u een replica maakt.
 
-Er wordt een replica gemaakt met dezelfde reken- en opslaginstellingen als het stramien. Nadat een replica is gemaakt, kunnen verschillende instellingen onafhankelijk van de hoofdserver worden gewijzigd: rekengeneratie, vCores, opslag en back-upbewaarperiode. De prijscategorie kan ook onafhankelijk worden gewijzigd, behalve van of naar de basislaag.
+Een replica wordt gemaakt met behulp van dezelfde berekenings-en opslag instellingen als de hoofd server. Nadat een replica is gemaakt, kunnen verschillende instellingen onafhankelijk van de hoofd server worden gewijzigd: generatie van compute, vCores, opslag en back-up van Bewaar periode. De prijs categorie kan ook onafhankelijk worden gewijzigd, met uitzonde ring van of van de Basic-laag.
 
 > [!IMPORTANT]
-> Voordat een hoofdserverinstelling wordt bijgewerkt naar een nieuwe waarde, werkt u de replica-instelling bij naar een evengrote of grotere waarde. Met deze actie kan de replica gelijke tred houden met eventuele wijzigingen in het model.
+> Werk de replica-instelling bij naar een gelijke of grotere waarde voordat een master server-instelling wordt bijgewerkt naar een nieuwe waarde. Met deze actie wordt de replica zo aangepast dat er wijzigingen in de master worden aangebracht.
 
-### <a name="list-replicas"></a>Replica's weergeven
-U de lijst met replica's van een hoofdserver bekijken met de opdracht replicalijst van [az postgres server.](/cli/azure/postgres/server/replica?view=azure-cli-latest#az-postgres-server-replica-list)
+### <a name="list-replicas"></a>Replica's weer geven
+U kunt de lijst met replica's van een hoofd server weer geven met de opdracht [AZ post gres Server replica list](/cli/azure/postgres/server/replica?view=azure-cli-latest#az-postgres-server-replica-list) .
 
 ```azurecli-interactive
 az postgres server replica list --server-name mydemoserver --resource-group myresourcegroup 
 ```
 
-### <a name="stop-replication-to-a-replica-server"></a>Replicatie naar een replicaserver stoppen
-U de replicatie tussen een hoofdserver en een gelezen replica stoppen met de opdracht [Replicastop voor AZ-postgresserver.](/cli/azure/postgres/server/replica?view=azure-cli-latest#az-postgres-server-replica-stop)
+### <a name="stop-replication-to-a-replica-server"></a>Replicatie naar een replica server stoppen
+U kunt de replicatie tussen een hoofd server en een lees replica stoppen met de opdracht [AZ post gres Server replica stop](/cli/azure/postgres/server/replica?view=azure-cli-latest#az-postgres-server-replica-stop) .
 
-Nadat u de replicatie naar een hoofdserver en een gelezen replica hebt gestopt, kan deze niet ongedaan worden gemaakt. De gelezen replica wordt een standalone server die zowel leest als schrijft ondersteunt. De standalone server kan niet opnieuw worden omgezet in een replica.
+Nadat u de replicatie naar een hoofd server en een lees replica hebt gestopt, kunt u deze niet meer ongedaan maken. De Lees replica wordt een zelfstandige server die zowel lees-als schrijf bewerkingen ondersteunt. De zelfstandige server kan niet opnieuw in een replica worden gemaakt.
 
 ```azurecli-interactive
 az postgres server replica stop --name mydemoserver-replica --resource-group myresourcegroup 
 ```
 
-### <a name="delete-a-master-or-replica-server"></a>Een stramien- of replicaserver verwijderen
-Als u een stramien- of replicaserver wilt verwijderen, gebruikt u de opdracht voor het verwijderen van de [AZ-postgres-server.](/cli/azure/postgres/server?view=azure-cli-latest#az-postgres-server-delete)
+### <a name="delete-a-master-or-replica-server"></a>Een Master-of replica server verwijderen
+Als u een Master-of replica server wilt verwijderen, gebruikt u de opdracht [AZ post gres server delete](/cli/azure/postgres/server?view=azure-cli-latest#az-postgres-server-delete) .
 
-Wanneer u een hoofdserver verwijdert, wordt replicatie naar alle gelezen replica's gestopt. De gelezen replica's worden standalone servers die nu ondersteuning voor zowel leest en schrijft.
+Wanneer u een master-server verwijdert, wordt de replicatie naar alle Lees replica's gestopt. De Lees replica's worden zelfstandige servers die nu zowel lees-als schrijf bewerkingen ondersteunen.
 
 ```azurecli-interactive
 az postgres server delete --name myserver --resource-group myresourcegroup
 ```
 
-## <a name="rest-api"></a>REST API
-U leesreplica's maken en beheren met de [Azure REST API.](/rest/api/azure/)
+## <a name="rest-api"></a>REST-API
+U kunt met behulp van de [Azure rest API](/rest/api/azure/)Lees replica's maken en beheren.
 
-### <a name="prepare-the-master-server"></a>De hoofdserver voorbereiden
-Deze stappen moeten worden gebruikt om een hoofdserver voor te bereiden in de lagen Algemeen Doel of Geheugengeoptimaliseerd.
+### <a name="prepare-the-master-server"></a>De hoofd server voorbereiden
+Deze stappen moeten worden gebruikt om een hoofd server voor te bereiden in de lagen Algemeen of geoptimaliseerd voor geheugen.
 
-De `azure.replication_support` parameter moet zijn ingesteld op **REPLICA** op de hoofdserver. Wanneer deze statische parameter wordt gewijzigd, is een serveropnieuw opstarten vereist om de wijziging van kracht te laten worden.
+De `azure.replication_support` para meter moet worden ingesteld op **replica** op de hoofd server. Wanneer deze statische para meter wordt gewijzigd, moet de server opnieuw worden opgestart om de wijziging van kracht te laten worden.
 
-1. Ingesteld `azure.replication_support` op REPLICA.
+1. Stel `azure.replication_support` in op replica.
 
    ```http
    PUT https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/servers/{masterServerName}/configurations/azure.replication_support?api-version=2017-12-01
@@ -127,14 +127,14 @@ De `azure.replication_support` parameter moet zijn ingesteld op **REPLICA** op d
    }
    ```
 
-2. [Start de server opnieuw](/rest/api/postgresql/servers/restart) om de wijziging toe te passen.
+2. [Start de server opnieuw](/rest/api/postgresql/servers/restart) op om de wijziging toe te passen.
 
    ```http
    POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/servers/{masterServerName}/restart?api-version=2017-12-01
    ```
 
-### <a name="create-a-read-replica"></a>Een gelezen replica maken
-U een leesreplica maken met de [API maken:](/rest/api/postgresql/servers/create)
+### <a name="create-a-read-replica"></a>Een lees replica maken
+U kunt een lees replica maken met behulp van de [API Create](/rest/api/postgresql/servers/create):
 
 ```http
 PUT https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/servers/{replicaName}?api-version=2017-12-01
@@ -151,27 +151,27 @@ PUT https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{
 ```
 
 > [!NOTE]
-> Ga voor meer informatie over welke regio's u een replica maken in het [artikel Voor replicaconcepten](concepts-read-replicas.md). 
+> Ga naar het [artikel concepten van replica's lezen](concepts-read-replicas.md)voor meer informatie over de regio's die u kunt maken in de replica. 
 
-Als u de `azure.replication_support` parameter niet hebt ingesteld op **REPLICA** op een hoofdserver voor algemeen gebruik of geheugengeoptimaliseerden en de server opnieuw hebt opgestart, ontvangt u een fout. Voer deze twee stappen uit voordat u een replica maakt.
+Als u de `azure.replication_support` para meter niet op **replica** hebt ingesteld op een master server met algemeen of geoptimaliseerd voor geheugen en de server opnieuw hebt opgestart, wordt een fout bericht weer gegeven. Voer de volgende twee stappen uit voordat u een replica maakt.
 
-Er wordt een replica gemaakt met dezelfde reken- en opslaginstellingen als het stramien. Nadat een replica is gemaakt, kunnen verschillende instellingen onafhankelijk van de hoofdserver worden gewijzigd: rekengeneratie, vCores, opslag en back-upbewaarperiode. De prijscategorie kan ook onafhankelijk worden gewijzigd, behalve van of naar de basislaag.
+Een replica wordt gemaakt met behulp van dezelfde berekenings-en opslag instellingen als de hoofd server. Nadat een replica is gemaakt, kunnen verschillende instellingen onafhankelijk van de hoofd server worden gewijzigd: generatie van compute, vCores, opslag en back-up van Bewaar periode. De prijs categorie kan ook onafhankelijk worden gewijzigd, met uitzonde ring van of van de Basic-laag.
 
 
 > [!IMPORTANT]
-> Voordat een hoofdserverinstelling wordt bijgewerkt naar een nieuwe waarde, werkt u de replica-instelling bij naar een evengrote of grotere waarde. Met deze actie kan de replica gelijke tred houden met eventuele wijzigingen in het model.
+> Werk de replica-instelling bij naar een gelijke of grotere waarde voordat een master server-instelling wordt bijgewerkt naar een nieuwe waarde. Met deze actie wordt de replica zo aangepast dat er wijzigingen in de master worden aangebracht.
 
-### <a name="list-replicas"></a>Replica's weergeven
-U de lijst met replica's van een hoofdserver bekijken met behulp van de [API voor replicalijst:](/rest/api/postgresql/replicas/listbyserver)
+### <a name="list-replicas"></a>Replica's weer geven
+U kunt de lijst met replica's van een hoofd server weer geven met behulp van de [replica lijst-API](/rest/api/postgresql/replicas/listbyserver):
 
 ```http
 GET https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/servers/{masterServerName}/Replicas?api-version=2017-12-01
 ```
 
-### <a name="stop-replication-to-a-replica-server"></a>Replicatie naar een replicaserver stoppen
-U de replicatie tussen een hoofdserver en een gelezen replica stoppen met behulp van de [update-API.](/rest/api/postgresql/servers/update)
+### <a name="stop-replication-to-a-replica-server"></a>Replicatie naar een replica server stoppen
+U kunt de replicatie tussen een hoofd server en een lees replica stoppen met de [Update-API](/rest/api/postgresql/servers/update).
 
-Nadat u de replicatie naar een hoofdserver en een gelezen replica hebt gestopt, kan deze niet ongedaan worden gemaakt. De gelezen replica wordt een standalone server die zowel leest als schrijft ondersteunt. De standalone server kan niet opnieuw worden omgezet in een replica.
+Nadat u de replicatie naar een hoofd server en een lees replica hebt gestopt, kunt u deze niet meer ongedaan maken. De Lees replica wordt een zelfstandige server die zowel lees-als schrijf bewerkingen ondersteunt. De zelfstandige server kan niet opnieuw in een replica worden gemaakt.
 
 ```http
 PATCH https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/servers/{masterServerName}?api-version=2017-12-01
@@ -185,15 +185,15 @@ PATCH https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups
 }
 ```
 
-### <a name="delete-a-master-or-replica-server"></a>Een stramien- of replicaserver verwijderen
-Als u een stramien- of replicaserver wilt verwijderen, gebruikt u de [delete-API:](/rest/api/postgresql/servers/delete)
+### <a name="delete-a-master-or-replica-server"></a>Een Master-of replica server verwijderen
+Als u een Master-of replica server wilt verwijderen, gebruikt u de [API verwijderen](/rest/api/postgresql/servers/delete):
 
-Wanneer u een hoofdserver verwijdert, wordt replicatie naar alle gelezen replica's gestopt. De gelezen replica's worden standalone servers die nu ondersteuning voor zowel leest en schrijft.
+Wanneer u een master-server verwijdert, wordt de replicatie naar alle Lees replica's gestopt. De Lees replica's worden zelfstandige servers die nu zowel lees-als schrijf bewerkingen ondersteunen.
 
 ```http
 DELETE https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/servers/{serverName}?api-version=2017-12-01
 ```
 
 ## <a name="next-steps"></a>Volgende stappen
-* Meer informatie over [leesreplica's in Azure Database voor PostgreSQL](concepts-read-replicas.md).
-* Meer informatie over het [maken en beheren van leesreplica's in de Azure-portal.](howto-read-replicas-portal.md)
+* Meer informatie over het [lezen van replica's in azure database for PostgreSQL](concepts-read-replicas.md).
+* Meer informatie over [het maken en beheren van Lees replica's in de Azure Portal](howto-read-replicas-portal.md).

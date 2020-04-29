@@ -1,47 +1,47 @@
 ---
 title: Waarschuwingen van Azure Monitor voor VM's
-description: Beschrijft hoe u waarschuwingsregels maakt op basis van prestatiegegevens die zijn verzameld door Azure Monitor voor VM's.
+description: Hierin wordt beschreven hoe u waarschuwings regels maakt op basis van prestatie gegevens die worden verzameld door Azure Monitor voor VM's.
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/23/2020
 ms.openlocfilehash: 987537d8497b3d8f2728941334d8328320ec6997
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80289600"
 ---
-# <a name="how-to-create-alerts-from-azure-monitor-for-vms"></a>Waarschuwingen maken vanuit Azure Monitor voor VM's
-[Waarschuwingen in Azure Monitor](../platform/alerts-overview.md) stellen u proactief op de hoogte van interessante gegevens en patronen in uw bewakingsgegevens. Azure Monitor voor VM's bevat geen vooraf geconfigureerde waarschuwingsregels, maar u uw eigen regels maken op basis van gegevens die worden gegenereerd. In dit artikel vindt u richtlijnen voor het maken van waarschuwingsregels, waaronder een reeks voorbeeldquery's.
+# <a name="how-to-create-alerts-from-azure-monitor-for-vms"></a>Waarschuwingen maken op basis van Azure Monitor voor VM's
+[Waarschuwingen in azure monitor](../platform/alerts-overview.md) proactief u op de hoogte stellen van interessante gegevens en patronen in uw bewakings gegevens. Azure Monitor voor VM's bevat geen vooraf geconfigureerde waarschuwings regels, maar u kunt uw eigen waarschuwing maken op basis van de gegevens die worden verzameld. Dit artikel bevat richt lijnen voor het maken van waarschuwings regels, met inbegrip van een aantal voorbeeld query's.
 
 
-## <a name="alert-rule-types"></a>Waarschuwingsregeltypen
-Azure Monitor heeft [verschillende typen waarschuwingsregels](../platform/alerts-overview.md#what-you-can-alert-on) op basis van de gegevens die worden gebruikt om de waarschuwing te maken. Alle gegevens die door Azure Monitor voor VM's worden verzameld, worden opgeslagen in Azure Monitor-logboeken die [logboekwaarschuwingen](../platform/alerts-log.md)ondersteunen. U momenteel geen [metrische waarschuwingen](../platform/alerts-log.md) gebruiken met prestatiegegevens die zijn verzameld uit Azure Monitor voor VM's, omdat de gegevens niet worden verzameld in Azure Monitor Metrics. Als u gegevens wilt verzamelen voor metrische waarschuwingen, installeert u de [diagnostische extensie](../platform/diagnostics-extension-overview.md) voor Windows VM's of de [Telegraf-agent](../platform/collect-custom-metrics-linux-telegraf.md) voor Linux-VM's om prestatiegegevens te verzamelen in Metrische gegevens.
+## <a name="alert-rule-types"></a>Typen waarschuwings regels
+Azure Monitor heeft [verschillende typen waarschuwings regels](../platform/alerts-overview.md#what-you-can-alert-on) op basis van de gegevens die worden gebruikt om de waarschuwing te maken. Alle gegevens die door Azure Monitor voor VM's worden verzameld, worden opgeslagen in Azure Monitor logboeken die [logboek waarschuwingen](../platform/alerts-log.md)ondersteunt. U kunt momenteel geen [metrische waarschuwingen](../platform/alerts-log.md) gebruiken met prestatie gegevens die zijn verzameld uit Azure monitor voor VM's, omdat de gegevens niet in azure monitor metrieken worden verzameld. Als u gegevens voor metrische waarschuwingen wilt verzamelen, installeert u de [Diagnostische uitbrei ding](../platform/diagnostics-extension-overview.md) voor Windows-vm's of de [telegrafa-agent](../platform/collect-custom-metrics-linux-telegraf.md) voor Linux-vm's om prestatie gegevens te verzamelen in meet waarden.
 
-Er zijn twee typen logboekwaarschuwingen in Azure Monitor:
+Er zijn twee typen logboek waarschuwingen in Azure Monitor:
 
-- [Het aantal resultatenwaarschuwingen](../platform/alerts-unified-log.md#number-of-results-alert-rules) maakt één waarschuwing wanneer een query ten minste een opgegeven aantal records retourneert. Deze zijn ideaal voor niet-numerieke gegevens zoals Windows- en Syslog-gebeurtenissen die zijn verzameld door de [log-analyseagent](../platform/log-analytics-agent.md) of voor het analyseren van prestatietrends op meerdere computers.
-- [Metrische metingswaarschuwingen](../platform/alerts-unified-log.md#metric-measurement-alert-rules) maken een afzonderlijke waarschuwing voor elke record in een query met een waarde die een drempelwaarde overschrijdt die is gedefinieerd in de waarschuwingsregel. Deze waarschuwingsregels zijn ideaal voor prestatiegegevens die door Azure Monitor voor VM's worden verzameld, omdat ze voor elke computer afzonderlijke waarschuwingen kunnen maken.
-
-
-## <a name="alert-rule-walkthrough"></a>Waarschuwingsregel-walkthrough
-In deze sectie wordt een metrische meetwaarschuwingsregel gemaakt met prestatiegegevens van Azure Monitor voor VM's. U dit basisproces gebruiken met verschillende logboekquery's om te waarschuwen op verschillende prestatiemeteritems.
-
-Begin met het maken van een nieuwe waarschuwingsregel volgens de procedure in [Logboekwaarschuwingen maken, weergeven en beheren met Azure Monitor](../platform/alerts-log.md). Selecteer voor de **bron**de werkruimte Log Analytics die Azure Monitor VM's in uw abonnement gebruikt. Aangezien de doelbron voor logboekwaarschuwingsregels altijd een Log Analytics-werkruimte is, moet de logboekquery elk filter bevatten voor bepaalde virtuele machines of virtuele machineschaalsets. 
-
-Gebruik **voor** de voorwaarde van de waarschuwingsregel een van de query's in de [sectie hieronder](#sample-alert-queries) als **de zoekopdracht .** De query moet een numerieke eigenschap met de naam *AggregatedValue*retourneren. Het moet een samenvatting van de gegevens per computer, zodat u een aparte waarschuwing voor elke virtuele machine die de drempel overschrijdt maken.
-
-Selecteer in de **logica Waarschuwing** **metrische meting** en geef vervolgens een **drempelwaarde**op . Geef **in Trigger Alert Based On**op hoe vaak de drempelwaarde moet worden overschreden voordat er een waarschuwing wordt gemaakt. Het kan u bijvoorbeeld waarschijnlijk niet schelen of de processor een keer een drempel overschrijdt en vervolgens weer normaal wordt, maar het kan u wel schelen of deze de drempel over meerdere opeenvolgende metingen blijft overschrijden.
-
-In **de sectie Geëvalueerd** wordt gedefinieerd hoe vaak de query wordt uitgevoerd en hoe vaak de query wordt uitgevoerd en hoe lang het venster voor de query is. In het onderstaande voorbeeld wordt de query elke 15 minuten uitgevoerd en worden prestatiewaarden geëvalueerd die in de afgelopen 15 minuten zijn verzameld.
+- [Met het aantal resultaten waarschuwingen](../platform/alerts-unified-log.md#number-of-results-alert-rules) wordt een enkele waarschuwing gemaakt wanneer een query ten minste een opgegeven aantal records retourneert. Deze zijn ideaal voor niet-numerieke gegevens, zoals Windows-en syslog-gebeurtenissen die worden verzameld door de [log Analytics agent](../platform/log-analytics-agent.md) of voor het analyseren van prestatie trends op meerdere computers.
+- Met [metrische metings waarschuwingen](../platform/alerts-unified-log.md#metric-measurement-alert-rules) wordt een afzonderlijke waarschuwing gemaakt voor elke record in een query met een waarde die hoger is dan een drempelwaarde die is gedefinieerd in de waarschuwings regel. Deze waarschuwings regels zijn ideaal voor prestatie gegevens die door Azure Monitor voor VM's worden verzameld, omdat ze afzonderlijke waarschuwingen voor elke computer kunnen maken.
 
 
-![Waarschuwingsregel met metrische meting](media/vminsights-alerts/metric-measurement-alert.png)
+## <a name="alert-rule-walkthrough"></a>Scenario voor waarschuwings regels
+In deze sectie wordt uitgelegd hoe u een waarschuwings regel voor metrische metingen maakt met behulp van prestatie gegevens van Azure Monitor voor VM's. U kunt dit basis proces met verschillende logboek query's gebruiken om te waarschuwen voor verschillende prestatie meter items.
 
-## <a name="sample-alert-queries"></a>Waarschuwingsquery's van een voorbeeld
-De volgende query's kunnen worden gebruikt met een metrische meetwaarschuwingsregel met prestatiegegevens die zijn verzameld door Azure Monitor voor VM's. Elk vat gegevens per computer samen, zodat er voor elke computer een waarschuwing wordt gemaakt met een waarde die de drempelwaarde overschrijdt.
+Begin met het maken van een nieuwe waarschuwings regel volgens de procedure in [logboek waarschuwingen maken, weer geven en beheren met behulp van Azure monitor](../platform/alerts-log.md). Selecteer voor de **resource**de log Analytics-werk ruimte die Azure monitor vm's gebruikt in uw abonnement. Omdat de doel resource voor regels voor logboek waarschuwingen altijd een Log Analytics werk ruimte is, moet de logboek query een filter voor bepaalde virtuele machines of virtuele-machine schaal sets bevatten. 
+
+Voor de **voor waarde** van de waarschuwings regel gebruikt u een van de query's in de [volgende sectie](#sample-alert-queries) als de **Zoek query**. De query moet een numerieke eigenschap met de naam *AggregatedValue*retour neren. De gegevens moeten worden samenvatten op computer zodat u een afzonderlijke waarschuwing kunt maken voor elke virtuele machine die de drempel waarde overschrijdt.
+
+Selecteer **metrische meting** in de **waarschuwings logica**en geef vervolgens een **drempel waarde**op. Geef bij **trigger waarschuwing op basis van op**hoe vaak de drempel waarde moet worden overschreden voordat een waarschuwing wordt gemaakt. U kunt er waarschijnlijk niet voor zorgen dat de processor eenmaal een drempel waarde overschrijdt en vervolgens terugkeert naar normaal, maar u kunt er wel voor zorgen dat de drempel waarde ten opzichte van meerdere opeenvolgende metingen wordt overschreden.
+
+Het **geëvalueerd op basis van** sectie bepaalt hoe vaak de query wordt uitgevoerd en het tijd venster voor de query. In het onderstaande voor beeld wordt de query elke 15 minuten uitgevoerd en worden de prestatie waarden geëvalueerd die in de afgelopen 15 minuten zijn verzameld.
+
+
+![Waarschuwings regel voor metrische meting](media/vminsights-alerts/metric-measurement-alert.png)
+
+## <a name="sample-alert-queries"></a>Voorbeeld waarschuwings query's
+De volgende query's kunnen worden gebruikt met een waarschuwings regel voor metrische metingen met behulp van prestatie gegevens die zijn verzameld door Azure Monitor voor VM's. Elk bevat een overzicht van gegevens per computer, zodat er een waarschuwing wordt gemaakt voor elke computer met een waarde die de drempel overschrijdt.
 
 ### <a name="cpu-utilization"></a>CPU-gebruik
 
@@ -72,7 +72,7 @@ InsightsMetrics
 | summarize AggregatedValue = avg(AvailableMemoryPercentage) by bin(TimeGenerated, 15m), Computer, _ResourceId 
 ```
 
-### <a name="logical-disk-used---all-disks-on-each-computer"></a>Logische schijf gebruikt - alle schijven op elke computer
+### <a name="logical-disk-used---all-disks-on-each-computer"></a>Gebruikte logische schijf-alle schijven op elke computer
 
 ```kusto
 InsightsMetrics
@@ -81,7 +81,7 @@ InsightsMetrics
 | summarize AggregatedValue = avg(Val) by bin(TimeGenerated, 15m), Computer, _ResourceId 
 ```
 
-### <a name="logical-disk-used---individual-disks"></a>Gebruikte logische schijf - afzonderlijke schijven
+### <a name="logical-disk-used---individual-disks"></a>Gebruikt logische schijf-afzonderlijke schijven
 
 ```kusto
 InsightsMetrics
@@ -91,7 +91,7 @@ InsightsMetrics
 | summarize AggregatedValue = avg(Val) by bin(TimeGenerated, 15m), Computer, _ResourceId, Disk
 ```
 
-### <a name="logical-disk-iops"></a>Logische schijf IOPS
+### <a name="logical-disk-iops"></a>IOPS van logische schijf
 
 ```kusto
 InsightsMetrics
@@ -101,7 +101,7 @@ InsightsMetrics
 | summarize AggregatedValue = avg(Val) by bin(TimeGenerated, 15m) ), Computer, _ResourceId, Disk
 ```
 
-### <a name="logical-disk-data-rate"></a>Logische schijfgegevenssnelheid
+### <a name="logical-disk-data-rate"></a>Gegevens verhouding van logische schijf
 
 ```kusto
 InsightsMetrics
@@ -111,7 +111,7 @@ InsightsMetrics
 | summarize AggregatedValue = avg(Val) by bin(TimeGenerated, 15m) , Computer, _ResourceId, Disk
 ```
 
-### <a name="network-interfaces-bytes-received---all-interfaces"></a>Ontvangen bytes voor netwerkinterfaces - alle interfaces
+### <a name="network-interfaces-bytes-received---all-interfaces"></a>Netwerk interfaces ontvangen bytes-alle interfaces
 
 ```kusto
 InsightsMetrics
@@ -120,7 +120,7 @@ InsightsMetrics
 | summarize AggregatedValue = avg(Val) by bin(TimeGenerated, 15m), Computer, _ResourceId 
 ```
 
-### <a name="network-interfaces-bytes-received---individual-interfaces"></a>Ontvangen bytes netwerkinterfaces - afzonderlijke interfaces
+### <a name="network-interfaces-bytes-received---individual-interfaces"></a>Ontvangen netwerk interfaces-bytes-afzonderlijke interfaces
 
 ```kusto
 InsightsMetrics
@@ -130,7 +130,7 @@ InsightsMetrics
 | summarize AggregatedValue = avg(Val) by bin(TimeGenerated, 15m), Computer, _ResourceId, NetworkInterface
 ```
 
-### <a name="network-interfaces-bytes-sent---all-interfaces"></a>Netwerkinterfaces bytes verzonden - alle interfaces
+### <a name="network-interfaces-bytes-sent---all-interfaces"></a>Verzonden network interfaces-bytes-alle interfaces
 
 ```kusto
 InsightsMetrics
@@ -139,7 +139,7 @@ InsightsMetrics
 | summarize AggregatedValue = avg(Val) by bin(TimeGenerated, 15m), Computer, _ResourceId
 ```
 
-### <a name="network-interfaces-bytes-sent---individual-interfaces"></a>Verzonden bytes voor netwerkinterfaces - afzonderlijke interfaces
+### <a name="network-interfaces-bytes-sent---individual-interfaces"></a>Verzonden network interfaces-bytes-afzonderlijke interfaces
 
 ```kusto
 InsightsMetrics
@@ -150,7 +150,7 @@ InsightsMetrics
 ```
 
 ### <a name="virtual-machine-scale-set"></a>Schaalset voor virtuele machines
-Wijzigen met de naam van uw abonnements-id, resourcegroep en de naam van de virtuele machineschaalset.
+Wijzig met de abonnements-ID, resource groep en naam van de virtuele-machine schaalset.
 
 ```kusto
 InsightsMetrics
@@ -161,7 +161,7 @@ InsightsMetrics
 ```
 
 ### <a name="specific-virtual-machine"></a>Specifieke virtuele machine
-Wijzigen met uw abonnements-ID, resourcegroep en VM-naam.
+Wijzig met uw abonnements-ID, resource groep en naam van de virtuele machine.
 
 ```kusto
 InsightsMetrics
@@ -171,8 +171,8 @@ InsightsMetrics
 | summarize AggregatedValue = avg(Val) by bin(TimeGenerated, 15m)
 ```
 
-### <a name="cpu-utilization-for-all-compute-resources-in-a-subscription"></a>CPU-gebruik voor alle rekenbronnen in een abonnement
-Wijzigen met uw abonnements-ID.
+### <a name="cpu-utilization-for-all-compute-resources-in-a-subscription"></a>CPU-gebruik voor alle reken resources in een abonnement
+Wijzig met uw abonnements-ID.
 
 ```kusto
 InsightsMetrics
@@ -182,8 +182,8 @@ InsightsMetrics
 | summarize AggregatedValue = avg(Val) by bin(TimeGenerated, 15m), _ResourceId
 ```
 
-### <a name="cpu-utilization-for-all-compute-resources-in-a-resource-group"></a>CPU-gebruik voor alle rekenbronnen in een resourcegroep
-Wijzigen met uw abonnements-ID en resourcegroep.
+### <a name="cpu-utilization-for-all-compute-resources-in-a-resource-group"></a>CPU-gebruik voor alle reken resources in een resource groep
+Wijzig met uw abonnements-ID en resource groep.
 
 ```kusto
 InsightsMetrics
@@ -197,5 +197,5 @@ or _ResourceId startswith "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/r
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Meer informatie over [waarschuwingen in Azure Monitor](../platform/alerts-overview.md).
-- Meer informatie over [logboekquery's met gegevens uit Azure Monitor voor VM's](vminsights-log-search.md).
+- Meer informatie over [waarschuwingen vindt u in azure monitor](../platform/alerts-overview.md).
+- Meer informatie over [logboek query's met behulp van gegevens uit Azure monitor voor VM's](vminsights-log-search.md).

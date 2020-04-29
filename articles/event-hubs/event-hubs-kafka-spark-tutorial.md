@@ -10,17 +10,17 @@ ms.topic: how-to
 ms.date: 04/02/2020
 ms.author: shvija
 ms.openlocfilehash: 1b292f9b894dac7df6b9634ce1bad627c8d24fe6
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/03/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80632769"
 ---
 # <a name="connect-your-apache-spark-application-with-azure-event-hubs"></a>Uw Apache Spark-toepassing verbinden met Azure Event Hubs
-Deze zelfstudie leidt je door het verbinden van je Spark-applicatie met Event Hubs voor real-time streaming. Dankzij deze integratie maakt u streaming mogelijk zonder dat u uw protocolclients hoeft te wijzigen of uw eigen Kafka- of Zookeeper-clusters hoeft uit te voeren. Voor deze zelfstudie is Apache Spark v2.4+ en Apache Kafka v2.0+ vereist.
+In deze zelf studie wordt u begeleid bij het koppelen van uw Spark-toepassing aan Event Hubs voor realtime-streaming. Dankzij deze integratie maakt u streaming mogelijk zonder dat u uw protocolclients hoeft te wijzigen of uw eigen Kafka- of Zookeeper-clusters hoeft uit te voeren. Voor deze zelfstudie is Apache Spark v2.4+ en Apache Kafka v2.0+ vereist.
 
 > [!NOTE]
-> Dit voorbeeld is beschikbaar op [GitHub](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/tutorials/spark/)
+> Dit voor beeld is beschikbaar op [github](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/tutorials/spark/)
 
 In deze zelfstudie leert u het volgende:
 > [!div class="checklist"]
@@ -43,7 +43,7 @@ Zorg ervoor dat u het volgende hebt voordat u aan deze zelfstudie begint:
 
 
 ## <a name="create-an-event-hubs-namespace"></a>Een Event Hubs-naamruimte maken
-Er is een Event Hubs-naamruimte vereist om gegevens te verzenden naar en te ontvangen van Event Hubs-services. Zie [Een gebeurtenishub maken](event-hubs-create.md) voor instructies voor het maken van een naamruimte en een gebeurtenishub. Haal de Event Hubs-verbindingsreeks en de Fully Qualified Domain Name (FQDN) op voor later gebruik. Zie [Get an Event Hubs connection string](event-hubs-get-connection-string.md). (Een Event Hubs-verbindingsreeks ophalen). 
+Er is een Event Hubs-naamruimte vereist om gegevens te verzenden naar en te ontvangen van Event Hubs-services. Zie [een event hub maken](event-hubs-create.md) voor instructies voor het maken van een naam ruimte en een event hub. Haal de Event Hubs-verbindingsreeks en de Fully Qualified Domain Name (FQDN) op voor later gebruik. Zie [Get an Event Hubs connection string](event-hubs-get-connection-string.md). (Een Event Hubs-verbindingsreeks ophalen). 
 
 ## <a name="clone-the-example-project"></a>Het voorbeeldproject klonen
 Kloon de Azure Event Hubs-opslagplaats en ga naar submap `tutorials/spark`:
@@ -99,12 +99,12 @@ df.writeStream
 
 
 ## <a name="next-steps"></a>Volgende stappen
-Zie de volgende artikelen voor meer informatie over gebeurtenishubs en gebeurtenishubs voor Kafka:  
+Raadpleeg de volgende artikelen voor meer informatie over Event Hubs en Event Hubs voor Kafka:  
 
 - [Een Kafka-broker spiegelen in een Event Hub](event-hubs-kafka-mirror-maker-tutorial.md)
 - [Apache Flink aan een Event Hub koppelen](event-hubs-kafka-flink-tutorial.md)
-- [Integreer Kafka Connect met een gebeurtenishub](event-hubs-kafka-connect-tutorial.md)
+- [Kafka integreren met een Event Hub](event-hubs-kafka-connect-tutorial.md)
 - [Explore samples on our GitHub](https://github.com/Azure/azure-event-hubs-for-kafka) (Voorbeelden bekijken op GitHub)
-- [Akka Streams verbinden met een gebeurtenishub](event-hubs-kafka-akka-streams-tutorial.md)
-- [Apache Kafka-ontwikkelaarshandleiding voor Azure Event Hubs](apache-kafka-developer-guide.md)
+- [Akka-streams verbinden met een Event Hub](event-hubs-kafka-akka-streams-tutorial.md)
+- [Apache Kafka ontwikkelaars handleiding voor Azure Event Hubs](apache-kafka-developer-guide.md)
 

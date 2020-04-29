@@ -1,6 +1,6 @@
 ---
 title: Quota en limieten in Azure Media Services
-description: In dit onderwerp worden quota en limieten in Microsoft Azure Media Services beschreven.
+description: In dit onderwerp worden de quota en limieten in Microsoft Azure Media Services beschreven.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -12,101 +12,101 @@ ms.topic: article
 ms.date: 04/01/2020
 ms.author: juliako
 ms.openlocfilehash: e9855a02a57d71793f3a5d6c5ce01cbfda341b70
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/03/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80632214"
 ---
 <!-- If you update limits in this topic, make sure to also update https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#media-services-limits -->
-# <a name="azure-media-services-quotas-and-limits"></a>Azure Media Services-quota en -limieten
+# <a name="azure-media-services-quotas-and-limits"></a>Quota en limieten Azure Media Services
 
-In dit artikel worden enkele van de meest voorkomende Microsoft Azure Media Services-limieten weergegeven, die ook wel quota worden genoemd.
+In dit artikel vindt u een aantal van de meest voorkomende Microsoft Azure Media Services limieten, ook wel quota's genoemd.
 
 > [!NOTE]
-> Voor resources die niet zijn vastgesteld, opent u een ondersteuningsticket om een verhoging van de quota te vragen. Maak geen extra Azure Media Services-accounts in een poging hogere limieten te verkrijgen.
+> Voor bronnen die niet zijn opgelost, opent u een ondersteunings ticket om te vragen om een toename van de quota's. Maak geen aanvullende Azure Media Services accounts in een poging om hogere limieten te verkrijgen.
 
-## <a name="account-limits"></a>Accountlimieten
-
-| Resource | Standaardlimiet | 
-| --- | --- | 
-| [Media Services-accounts](media-services-account-concept.md) in één abonnement | 25 (vast) |
-
-## <a name="asset-limits"></a>Activalimieten
+## <a name="account-limits"></a>Account limieten
 
 | Resource | Standaardlimiet | 
 | --- | --- | 
-| [Assets](assets-concept.md) per Media Services-account | 1.000.000|
+| [Media Services accounts](media-services-account-concept.md) in één abonnement | 25 (vast) |
 
-## <a name="storage-limits"></a>Opslaglimieten
+## <a name="asset-limits"></a>Activa limieten
 
 | Resource | Standaardlimiet | 
 | --- | --- | 
-| Bestandsgrootte| In sommige scenario's is er een limiet voor de maximale bestandsgrootte die wordt ondersteund voor verwerking in Media Services. <sup>(1)</sup> |
+| [Activa](assets-concept.md) per Media Services account | 1.000.000|
+
+## <a name="storage-limits"></a>Opslag limieten
+
+| Resource | Standaardlimiet | 
+| --- | --- | 
+| Bestandsgrootte| In sommige scenario's geldt een limiet voor de maximale bestands grootte die wordt ondersteund voor verwerking in Media Services. <sup>i</sup> |
 | [Opslagaccounts](storage-account-concept.md) | 100<sup>(2)</sup> (vast) |
 
-<sup>1</sup> De maximale grootte die wordt ondersteund voor één blob is momenteel maximaal 5 TB in Azure Blob Storage. Er gelden extra limieten in Media Services op basis van de VM-formaten die door de service worden gebruikt. De groottelimiet is van toepassing op de bestanden die u uploadt en ook op de bestanden die worden gegenereerd als gevolg van verwerking van Media Services (coderen of analyseren). Als uw bronbestand groter is dan 260 GB, mislukt uw taak waarschijnlijk. 
+<sup>1</sup> de maximale grootte die voor één BLOB wordt ondersteund, is momenteel Maxi maal 5 TB in Azure Blob Storage. Er zijn extra limieten van toepassing op Media Services op basis van de VM-grootten die worden gebruikt door de service. De limiet voor de grootte is van toepassing op de bestanden die u uploadt en ook de bestanden die worden gegenereerd als gevolg van de verwerking van Media Services (code ring of analyse). Als uw bron bestand groter is dan 260-GB, zal uw taak waarschijnlijk mislukken. 
 
-In de volgende tabel worden de limieten weergegeven voor de mediagereserveerde eenheden S1, S2 en S3. Als uw bronbestand groter is dan de limieten die in de tabel zijn gedefinieerd, mislukt uw coderingstaak. Als u bronnen met een 4K-resolutie van lange duur codeert, moet u gereserveerde S3-media-eenheden gebruiken om de vereiste prestaties te bereiken. Als u 4K-inhoud hebt die groter is dan de limiet van 260 GB voor de gereserveerde S3-media, opent u een ondersteuningsticket.
+De volgende tabel bevat de limieten voor de gereserveerde media-eenheden S1, S2 en S3. Als het bron bestand groter is dan de limieten die in de tabel zijn gedefinieerd, mislukt de coderings taak. Als u resources van 4 KB met een lange duur wilt coderen, moet u gereserveerde S3-media-eenheden gebruiken om de benodigde prestaties te verzorgen. Als u onbewerkte inhoud hebt die groter is dan de limiet van 260 GB op de gereserveerde S3-media-eenheden, opent u een ondersteunings ticket.
 
-|Media gereserveerd eenheidstype|Maximale invoergrootte (GB)|
+|Type gereserveerde media-eenheid|Maximale invoer grootte (GB)|
 |---|---|
 |S1 |    26|
 |S2    | 60|
 |S3    |260|
 
-<sup>2</sup> De opslagaccounts moeten van hetzelfde Azure-abonnement zijn.
+<sup>2</sup> de opslag accounts moeten afkomstig zijn uit hetzelfde Azure-abonnement.
 
-## <a name="jobs-encoding--analyzing-limits"></a>Limieten voor taken (codering & analyseren)
-
-| Resource | Standaardlimiet | 
-| --- | --- | 
-| [Vacatures](transforms-jobs-concept.md) per Media Services-account | 500.000 <sup>(3)</sup> (vast)|
-| Jobinput per job per job | 50 (vast)|
-| Taakuitvoer per taak | 20 (vast) |
-| [Transformeert](transforms-jobs-concept.md) per Media Services-account | 100 (vast)|
-| Uitvoer omzetten in een transformatie | 20 (vast) |
-| Bestanden per taakinvoer|10 (vast)|
-
-<sup>3</sup> Dit nummer omvat in de wachtrij staande, voltooide, actieve en geannuleerde taken. Het bevat geen verwijderde vacatures. 
-
-Elke record in uw account ouder dan 90 dagen wordt automatisch verwijderd, zelfs als het totale aantal records lager is dan het maximumquotum. 
-
-## <a name="live-streaming-limits"></a>Limieten voor live streaming
+## <a name="jobs-encoding--analyzing-limits"></a>Limieten voor taken (coderings &-analyse)
 
 | Resource | Standaardlimiet | 
 | --- | --- | 
-| [Live Events](live-events-outputs-concept.md) <sup>(4)</sup> per Media Services-account |5|
-| Live-uitgangen per live-evenement |3 <sup>.5.</sup> |
-| Maximale duur van de live-uitvoer | 25 uur |
+| [Taken](transforms-jobs-concept.md) per Media Services-account | 500.000 <sup>(3)</sup> (vast)|
+| Taak invoer per taak | 50 (vast)|
+| Taak uitvoer per taak | 20 (vast) |
+| [Trans formaties](transforms-jobs-concept.md) per Media Services account | 100 (vast)|
+| Uitvoer van een trans formatie transformeren | 20 (vast) |
+| Bestanden per taak invoer|10 (vast)|
 
-<sup>4</sup> Zie Vergelijking en limieten voor [live-evenementen](live-event-types-comparison.md)voor gedetailleerde informatie over limieten voor live-evenementen.
+<sup>3</sup> dit aantal bevat taken in de wachtrij, voltooid, actief en geannuleerd. Het bevat geen verwijderde taken. 
 
-<sup>5</sup> Live-uitgangen beginnen bij het maken en stoppen wanneer ze worden verwijderd.
+Alle taak records in uw account die ouder zijn dan 90 dagen worden automatisch verwijderd, zelfs als het totale aantal records lager is dan het maximum quotum. 
 
-## <a name="packaging--delivery-limits"></a>Verpakkings- & leveringslimieten
+## <a name="live-streaming-limits"></a>Limieten voor live streamen
 
 | Resource | Standaardlimiet | 
 | --- | --- | 
-| [Streaming eindpunten](streaming-endpoint-concept.md) (gestopt of uitgevoerd) per Media Services-account|2 |
+| [Live-gebeurtenissen](live-events-outputs-concept.md) <sup>(4)</sup> per Media Services-account |5|
+| Live outputs per live gebeurtenis |3 <sup>(5)</sup> |
+| Maximale duur van live uitvoer | 25 uur |
+
+<sup>4</sup> Zie [vergelijking van live-gebeurtenis typen en limieten](live-event-types-comparison.md)voor meer informatie over limieten voor Live-gebeurtenissen.
+
+<sup>5</sup> actieve uitvoer bewerkingen beginnen bij het maken en stoppen wanneer deze worden verwijderd.
+
+## <a name="packaging--delivery-limits"></a>Leverings limieten voor verpakking &
+
+| Resource | Standaardlimiet | 
+| --- | --- | 
+| [Streaming-eind punten](streaming-endpoint-concept.md) (gestopt of actief) per Media Services-account|2 |
 | [Dynamisch-manifestfilters](filters-dynamic-manifest-overview.md)|100|
 | [Beleid voor streaming](streaming-policy-concept.md) | 100 <sup>(6)</sup> |
-| Unieke [streaming locators](streaming-locators-concept.md) in verband met een asset in één keer | 100<sup>(7)</sup> (vast) |
+| Unieke [streaming-Locators](streaming-locators-concept.md) die zijn gekoppeld aan een asset in één keer | 100<sup>(7)</sup> (vast) |
 
-<sup>6</sup> Wanneer u een aangepast [streamingbeleid gebruikt,](https://docs.microsoft.com/rest/api/media/streamingpolicies)moet u een beperkt aantal van dergelijke beleidsregels voor uw Media Service-account ontwerpen en deze opnieuw gebruiken voor uw StreamingLocators wanneer dezelfde versleutelingsopties en -protocollen nodig zijn. U hoeft geen nieuw streaming-beleid te maken voor elke streaming-locator.
+<sup>6</sup> wanneer u een aangepast [streaming-beleid](https://docs.microsoft.com/rest/api/media/streamingpolicies)gebruikt, moet u een beperkt aantal beleids regels voor uw media service-account ontwerpen en ze opnieuw gebruiken voor uw StreamingLocators wanneer dezelfde versleutelings opties en protocollen nodig zijn. U hoeft geen nieuw streaming-beleid te maken voor elke streaming-locator.
 
-<sup>7</sup> Streaming Locators zijn niet ontworpen voor het beheren van toegangsbeheer per gebruiker. Gebruik DRM-oplossingen (Digital Rights Management) als u afzonderlijke gebruikers verschillende toegangsrechten wilt geven.
+<sup>7</sup> streaming-locators zijn niet ontworpen voor het beheren van toegangs beheer per gebruiker. Gebruik DRM-oplossingen (Digital Rights Management) als u afzonderlijke gebruikers verschillende toegangsrechten wilt geven.
 
-## <a name="protection-limits"></a>Beschermingslimieten
+## <a name="protection-limits"></a>Beveiligings limieten
 
 | Resource | Standaardlimiet | 
 | --- | --- | 
-| Opties per [inhoudssleutelbeleid](content-key-policy-concept.md) |30 | 
-| Licenties per maand voor elk van de DRM-typen op de hoofdleveringsservice van Media Services per account|1.000.000|
+| Opties per [inhouds sleutel beleid](content-key-policy-concept.md) |30 | 
+| Licenties per maand voor elk van de DRM-typen op Media Services key delivery service per account|1.000.000|
 
-## <a name="support-ticket"></a>Ondersteuningsticket
+## <a name="support-ticket"></a>Ondersteunings ticket
 
-Voor resources die niet zijn vastgesteld, u vragen om de quota's te verhoogd, door het openen van een [support ticket](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest). Neem gedetailleerde informatie op in de aanvraag over de gewenste quotawijzigingen, gebruiksscenario's en vereiste regio's. <br/>Maak **geen** extra Azure Media Services-accounts in een poging om de limieten te verhogen.
+Voor bronnen die niet zijn hersteld, kunt u vragen of de quota's moeten worden gegenereerd door een [ondersteunings ticket](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)te openen. Neem gedetailleerde informatie op in de aanvraag voor de gewenste quotum wijzigingen, use-case scenario's en regio's vereist. <br/>Maak **geen** extra Azure Media Services-accounts in een poging om de limieten te verhogen.
 
 ## <a name="next-steps"></a>Volgende stappen
 

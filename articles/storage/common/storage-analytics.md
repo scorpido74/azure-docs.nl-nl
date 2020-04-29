@@ -1,6 +1,6 @@
 ---
-title: Azure Storage-analyses gebruiken om logboeken en metrische gegevens te verzamelen | Microsoft Documenten
-description: Met Storage Analytics u statistiekengegevens voor alle opslagservices bijhouden en logboeken verzamelen voor blob-, wachtrij- en tabelopslag.
+title: Azure Storage Analytics gebruiken voor het verzamelen van Logboeken en metrische gegevens | Microsoft Docs
+description: Met Opslaganalyse kunt u metrische gegevens voor alle opslag services bijhouden en logboeken voor blob-, wachtrij-en tabel opslag verzamelen.
 author: normesta
 ms.service: storage
 ms.topic: conceptual
@@ -9,42 +9,42 @@ ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
 ms.openlocfilehash: 4ad9f13bcdf36b67400adb62d58ee260ff256bb3
-ms.sourcegitcommit: 0450ed87a7e01bbe38b3a3aea2a21881f34f34dd
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/03/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80637148"
 ---
 # <a name="storage-analytics"></a>Storage Analytics
 
-Azure Storage Analytics voert logboekregistratie uit en biedt metrische gegevens voor een opslagaccount. U deze gegevens gebruiken om aanvragen te traceren, gebruikstrends te analyseren en problemen met uw opslagaccount te diagnosticeren.
+Azure Opslaganalyse voert logboek registratie uit en geeft metrische gegevens voor een opslag account. U kunt deze gegevens gebruiken om aanvragen te traceren, gebruiks trends te analyseren en problemen met uw opslag account op te sporen.
 
-Als u Storage Analytics wilt gebruiken, moet u deze afzonderlijk inschakelen voor elke service die u wilt controleren. U het inschakelen via de [Azure-portal.](https://portal.azure.com) Zie Een [opslagaccount controleren in de Azure-portal](storage-monitor-storage-account.md)voor meer informatie. U Storage Analytics ook programmatisch inschakelen via de REST API of de clientbibliotheek. Gebruik de [eigenschappen van Blob-service](/rest/api/storageservices/set-blob-service-properties)instellen , [Serviceeigenschappen voor wachtrijservice instellen,](/rest/api/storageservices/set-queue-service-properties) [Eigenschappen van tabelservice instellen](/rest/api/storageservices/set-table-service-properties)en Eigenschappen van [bestandsservice instellen](/rest/api/storageservices/Get-File-Service-Properties) om Storage Analytics voor elke service in te schakelen.
+Als u Opslaganalyse wilt gebruiken, moet u deze afzonderlijk inschakelen voor elke service die u wilt bewaken. U kunt deze functie inschakelen via de [Azure Portal](https://portal.azure.com). Zie [een opslag account bewaken in de Azure Portal](storage-monitor-storage-account.md)voor meer informatie. U kunt Opslaganalyse ook via een programma inschakelen via de REST API of de client bibliotheek. Gebruik de [Eigenschappen van de set BLOB service](/rest/api/storageservices/set-blob-service-properties), [Stel Queue service](/rest/api/storageservices/set-queue-service-properties)-eigenschappen in, [Stel Table service-eigenschappen](/rest/api/storageservices/set-table-service-properties)in en [Stel bestands service-eigenschappen](/rest/api/storageservices/Get-File-Service-Properties) bewerkingen in om Opslaganalyse voor elke service in te scha kelen.
 
-De geaggregeerde gegevens worden opgeslagen in een bekende blob (voor logboekregistratie) en in bekende tabellen (voor metrische gegevens), die toegankelijk kunnen zijn via de Blob-service en Tabelservice-API's.
+De geaggregeerde gegevens worden opgeslagen in een bekende BLOB (voor logboek registratie) en in bekende tabellen (voor metrieken), die mogelijk worden geopend met behulp van de Blob service-en Table service-Api's.
 
-Storage Analytics heeft een limiet van 20 TB voor de hoeveelheid opgeslagen gegevens die onafhankelijk is van de totale limiet voor uw opslagaccount. Zie [Schaalbaarheids- en prestatiedoelen voor standaardopslagaccounts voor](scalability-targets-standard-account.md)meer informatie over opslagaccountlimieten.
+Opslaganalyse heeft een limiet van 20 TB voor de hoeveelheid opgeslagen gegevens die onafhankelijk is van de totale limiet voor uw opslag account. Zie [schaalbaarheids-en prestatie doelen voor standaard opslag accounts](scalability-targets-standard-account.md)voor meer informatie over limieten voor opslag accounts.
 
-Zie [Microsoft Azure Storage controleren, diagnosticeren en oplossen](storage-monitoring-diagnosing-troubleshooting.md)van Problemen met Azure Storage voor een uitgebreide handleiding voor het gebruik van Storage Analytics en andere hulpprogramma's voor het identificeren, diagnosticeren en oplossen van azure storage.
+Zie [Microsoft Azure Storage controleren, diagnosticeren en problemen oplossen](storage-monitoring-diagnosing-troubleshooting.md)voor meer informatie over het gebruik van Opslaganalyse en andere hulpprogram ma's voor het identificeren, vaststellen en oplossen van problemen met Azure Storage.
 
-## <a name="billing-for-storage-analytics"></a>Facturering voor opslaganalyse
+## <a name="billing-for-storage-analytics"></a>Facturering voor Opslaganalyse
 
-Alle metrische gegevens worden geschreven door de services van een opslagaccount. Als gevolg hiervan is elke schrijfbewerking uitgevoerd door Storage Analytics factureerbaar. Bovendien is de hoeveelheid opslag die wordt gebruikt door metrische gegevens ook factureerbaar.
+Alle metrische gegevens worden geschreven door de services van een opslag account. Als gevolg hiervan is elke schrijf bewerking die door Opslaganalyse is uitgevoerd Factureerbaar. Daarnaast is de hoeveelheid opslag ruimte die wordt gebruikt door de metrische gegevens ook Factureerbaar.
 
-De volgende acties van Storage Analytics zijn factureerbaar:
+De volgende acties die door Opslaganalyse worden uitgevoerd, zijn Factureerbaar:
 
-* Verzoeken om blobs te maken voor logboekregistratie.
-* Verzoeken om tabelentiteiten voor statistieken te maken.
+* Aanvragen voor het maken van blobs voor logboek registratie.
+* Aanvragen voor het maken van tabel entiteiten voor metrische gegevens.
 
-Als u een beleid voor gegevensbewaring hebt geconfigureerd, worden er geen kosten in rekening gebracht voor het verwijderen van transacties wanneer Storage Analytics oude logboekregistratie- en metrische gegevens verwijdert. Het verwijderen van transacties van een klant is echter factureerbaar. Zie Een beleid voor het bewaren van gegevens voor [opslaganalyse instellen](https://msdn.microsoft.com/library/azure/hh343263.aspx)voor meer informatie over bewaarbeleid voor opslaganalyse .
+Als u een Bewaar beleid voor gegevens hebt geconfigureerd, worden er geen kosten in rekening gebracht voor verwijderings transacties wanneer Opslaganalyse oude logboeken en metrische gegevens verwijdert. Het verwijderen van trans acties van een client is echter Factureerbaar. Zie [een Opslaganalyse Bewaar beleid voor gegevens instellen](https://msdn.microsoft.com/library/azure/hh343263.aspx)voor meer informatie over het Bewaar beleid.
 
-### <a name="understanding-billable-requests"></a>Inzicht in factureerbare aanvragen
+### <a name="understanding-billable-requests"></a>Informatie over factureer bare aanvragen
 
-Elk verzoek aan de opslagservice van een account is factureerbaar of niet-factureerbaar. Storage Analytics registreert elke afzonderlijke aanvraag die aan een service wordt gedaan, inclusief een statusbericht dat aangeeft hoe de aanvraag is afgehandeld. Op dezelfde manier slaat Storage Analytics statistieken op voor zowel een service als de API-bewerkingen van die service, inclusief de percentages en het aantal statusberichten. Samen kunnen deze functies u helpen uw factureerbare verzoeken te analyseren, verbeteringen aan te brengen in uw toepassing en problemen met aanvragen voor uw services te diagnosticeren. Zie [Inzicht in Azure Storage Billing - Bandbreedte, Transacties en Capaciteit](https://docs.microsoft.com/archive/blogs/windowsazurestorage/understanding-windows-azure-storage-billing-bandwidth-transactions-and-capacity)voor meer informatie over facturering.
+Elke aanvraag voor de opslag service van een account is Factureerbaar of niet factureerbaar. Opslaganalyse registreert elke afzonderlijke aanvraag voor een service, met inbegrip van een status bericht dat aangeeft hoe de aanvraag is verwerkt. Op dezelfde manier Opslaganalyse worden metrische gegevens opgeslagen voor zowel een service als de API-bewerkingen van die service, inclusief de percentages en het aantal bepaalde status berichten. Samen kunnen deze functies u helpen bij het analyseren van uw factureer bare aanvragen, het aanbrengen van verbeteringen in uw toepassing en het vaststellen van problemen met aanvragen voor uw services. Zie [Wat is Azure Storage facturering: band breedte, trans acties en capaciteit](https://docs.microsoft.com/archive/blogs/windowsazurestorage/understanding-windows-azure-storage-billing-bandwidth-transactions-and-capacity)voor meer informatie over facturering.
 
-Wanneer u storageanalytics-gegevens bekijkt, u de tabellen in het onderwerp [Aangemelde bewerkingen en statusberichten](/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages) van Storage Analytics gebruiken om te bepalen welke aanvragen factureerbaar zijn. Vervolgens u uw logboeken en metrische gegevens vergelijken met de statusberichten om te zien of er kosten in rekening zijn gebracht voor een bepaald verzoek. U de tabellen in het vorige onderwerp ook gebruiken om de beschikbaarheid voor een opslagservice of afzonderlijke API-bewerking te onderzoeken.
+Wanneer u Opslaganalyse gegevens bekijkt, kunt u de tabellen in het onderwerp [Opslaganalyse vastgelegde bewerkingen en status berichten](/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages) gebruiken om te bepalen welke aanvragen Factureerbaar zijn. Vervolgens kunt u uw logboeken en metrische gegevens vergelijken met de status berichten om te zien of er een bepaalde aanvraag in rekening is gebracht. U kunt ook de tabellen in het vorige onderwerp gebruiken om de beschik baarheid voor een opslag service of afzonderlijke API-bewerking te onderzoeken.
 
 ## <a name="next-steps"></a>Volgende stappen
 * [Een Storage-account bewaken in de Azure-portal](storage-monitor-storage-account.md)
-* [Statistieken over opslaganalyses](storage-analytics-metrics.md)
+* [Opslaganalyse metrische gegevens](storage-analytics-metrics.md)
 * [Logboekregistratie van Opslaganalyse](storage-analytics-logging.md)

@@ -1,6 +1,6 @@
 ---
-title: Apache Flink gebruiken voor Apache Kafka - Azure Event Hubs | Microsoft Documenten
-description: In dit artikel vindt u informatie over het verbinden van Apache Flink met een Azure-gebeurtenishub
+title: Apache flink gebruiken voor Apache Kafka-Azure Event Hubs | Microsoft Docs
+description: Dit artikel bevat informatie over het verbinden van Apache flink met een Azure-Event Hub
 services: event-hubs
 documentationcenter: ''
 author: ShubhaVijayasarathy
@@ -10,30 +10,30 @@ ms.topic: how-to
 ms.date: 04/02/2020
 ms.author: shvija
 ms.openlocfilehash: 2e5a2924cdc00c1cc057d71c40645085df4bae6a
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/03/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80632813"
 ---
 # <a name="use-apache-flink-with-azure-event-hubs-for-apache-kafka"></a>Apache Flink gebruiken met Azure Event Hubs voor Apache Kafka
-In deze zelfstudie ziet u hoe u Apache Flink verbinden met een gebeurtenishub zonder uw protocolclients te wijzigen of uw eigen clusters uit te voeren. Azure Event Hubs ondersteunt [Apache Kafka versie 1.0.](https://kafka.apache.org/10/documentation.html).
+In deze zelf studie leert u hoe u Apache flink verbindt met een Event Hub zonder uw protocol-clients te wijzigen of uw eigen clusters uit te voeren. Azure Event Hubs ondersteunt [Apache Kafka versie 1,0.](https://kafka.apache.org/10/documentation.html).
 
-Een van de belangrijkste voordelen van het gebruik van Apache Kafka is het ecosysteem van frameworks waarmee het verbinding kan maken. Event Hubs combineert de flexibiliteit van Kafka met de schaalbaarheid, consistentie en ondersteuning van het Azure-ecosysteem.
+Een van de belangrijkste voor delen van het gebruik van Apache Kafka is het ecosysteem van frameworks waarmee het kan worden verbonden. Event Hubs combineert de flexibiliteit van Kafka met de schaal baarheid, consistentie en ondersteuning van het Azure-ecosysteem.
 
 In deze zelfstudie leert u het volgende:
 > [!div class="checklist"]
 > * Een Event Hubs-naamruimte maken
 > * Het voorbeeldproject klonen
-> * Run Flink producent 
-> * Run Flink consument
+> * Flink-producer uitvoeren 
+> * Flink-consument uitvoeren
 
 > [!NOTE]
-> Dit voorbeeld is beschikbaar op [GitHub](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/tutorials/flink)
+> Dit voor beeld is beschikbaar op [github](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/tutorials/flink)
 
 ## <a name="prerequisites"></a>Vereisten
 
-Als u deze zelfstudie wilt voltooien, moet u de volgende vereisten hebben:
+Als u deze zelf studie wilt volt ooien, moet u beschikken over de volgende vereisten:
 
 * Lees het artikel [Event Hubs voor Apache Kafka](event-hubs-for-kafka-ecosystem-overview.md) door. 
 * Een Azure-abonnement. Als u nog geen account hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) voordat u begint.
@@ -47,26 +47,26 @@ Als u deze zelfstudie wilt voltooien, moet u de volgende vereisten hebben:
 
 ## <a name="create-an-event-hubs-namespace"></a>Een Event Hubs-naamruimte maken
 
-Een naamruimte voor Gebeurtenishubs is vereist om te verzenden of te ontvangen van een Event Hubs-service. Zie [Een gebeurtenishub maken](event-hubs-create.md) voor instructies voor het maken van een naamruimte en een gebeurtenishub. Zorg ervoor dat u de verbindingstekenreeks Voor gebeurtenishubs kopieert voor later gebruik.
+Een Event Hubs naam ruimte is vereist voor het verzenden of ontvangen van een Event Hubs service. Zie [een event hub maken](event-hubs-create.md) voor instructies voor het maken van een naam ruimte en een event hub. Zorg ervoor dat u de Event Hubs-connection string kopieert voor later gebruik.
 
 ## <a name="clone-the-example-project"></a>Het voorbeeldproject klonen
 
-Nu u de verbindingstekenreeks Event Hubs hebt, kloont u de `flink` Azure Event Hubs voor Kafka-opslagplaats en navigeert u naar de submap:
+Nu u de Event Hubs connection string hebt, kloont u de Azure Event Hubs voor de Kafka-opslag plaats `flink` en navigeert u naar de submap:
 
 ```shell
 git clone https://github.com/Azure/azure-event-hubs-for-kafka.git
 cd azure-event-hubs-for-kafka/tutorials/flink
 ```
 
-## <a name="run-flink-producer"></a>Run Flink producent
+## <a name="run-flink-producer"></a>Flink-producer uitvoeren
 
-Met behulp van het meegeleverde voorbeeld van Flink-producent stuur je berichten naar de Event Hubs-service.
+Gebruik het meegeleverde flink producer-voor beeld om berichten te verzenden naar de Event Hubs-service.
 
-### <a name="provide-an-event-hubs-kafka-endpoint"></a>Een eindpunt van gebeurtenishubs Kafka geven
+### <a name="provide-an-event-hubs-kafka-endpoint"></a>Een Event Hubs Kafka-eind punt opgeven
 
-#### <a name="producerconfig"></a>producent.config
+#### <a name="producerconfig"></a>producer. config
 
-Werk `bootstrap.servers` de `sasl.jaas.config` waarden `producer/src/main/resources/producer.config` en waarden in om de producent naar het Kafka-eindpunt van gebeurtenishubs te leiden met de juiste verificatie.
+Werk de `bootstrap.servers` waarden `sasl.jaas.config` en in `producer/src/main/resources/producer.config` om de producent om te leiden naar het event hubs Kafka-eind punt met de juiste authenticatie.
 
 ```xml
 bootstrap.servers={YOUR.EVENTHUBS.FQDN}:9093
@@ -78,26 +78,26 @@ sasl.jaas.config=org.apache.kafka.common.security.plain.PlainLoginModule require
    password="{YOUR.EVENTHUBS.CONNECTION.STRING}";
 ```
 
-### <a name="run-producer-from-the-command-line"></a>Producent uitvoeren vanaf de opdrachtregel
+### <a name="run-producer-from-the-command-line"></a>Producer uitvoeren vanaf de opdracht regel
 
-Als u de producent vanaf de opdrachtregel wilt uitvoeren, genereert u de JAR en loopt u vervolgens vanuit Maven (of genereert u de JAR met Maven en wordt u op Java uitgevoerd door de nodige Kafka JAR(s) toe te voegen aan het klassenpad):
+Als u de producent wilt uitvoeren vanaf de opdracht regel, genereert u het JAR en voert u uit in maven (of Genereer u het JAR met Maven, voert u in Java uit door de benodigde Kafka JAR (s) toe te voegen aan het klassenpad):
 
 ```shell
 mvn clean package
 mvn exec:java -Dexec.mainClass="FlinkTestProducer"
 ```
 
-De producent zal nu beginnen met het `test` verzenden van evenementen naar de gebeurtenis hub op het onderwerp en het afdrukken van de gebeurtenissen naar stdout.
+De producent begint nu met het verzenden van gebeurtenissen naar de Event Hub `test` in het onderwerp en het afdrukken van de gebeurtenissen naar stdout.
 
-## <a name="run-flink-consumer"></a>Run Flink consument
+## <a name="run-flink-consumer"></a>Flink-consument uitvoeren
 
-Ontvang berichten van de gebeurtenishub via het meegeleverde consumentenvoorbeeld. 
+Gebruik het voor beeld van de meegeleverde gebruiker om berichten te ontvangen van de Event Hub. 
 
-### <a name="provide-an-event-hubs-kafka-endpoint"></a>Een eindpunt van gebeurtenishubs Kafka geven
+### <a name="provide-an-event-hubs-kafka-endpoint"></a>Een Event Hubs Kafka-eind punt opgeven
 
-#### <a name="consumerconfig"></a>consumer.config
+#### <a name="consumerconfig"></a>Consumer. config
 
-Werk `bootstrap.servers` de `sasl.jaas.config` waarden `consumer/src/main/resources/consumer.config` en waarden in om de consument naar het Kafka-eindpunt van gebeurtenishubs te leiden met de juiste verificatie.
+Werk de `bootstrap.servers` en `sasl.jaas.config` waarden in `consumer/src/main/resources/consumer.config` bij om de consument om te leiden naar het event hubs Kafka-eind punt met de juiste authenticatie.
 
 ```xml
 bootstrap.servers={YOUR.EVENTHUBS.FQDN}:9093
@@ -109,25 +109,25 @@ sasl.jaas.config=org.apache.kafka.common.security.plain.PlainLoginModule require
    password="{YOUR.EVENTHUBS.CONNECTION.STRING}";
 ```
 
-### <a name="run-consumer-from-the-command-line"></a>Voer de consument uit de opdrachtregel
+### <a name="run-consumer-from-the-command-line"></a>Consument uitvoeren vanaf de opdracht regel
 
-Als u de consument vanaf de opdrachtregel wilt uitvoeren, genereert u de JAR en loopt u vervolgens vanuit Maven (of genereert u de JAR met Maven en wordt u op Java uitgevoerd door de nodige Kafka JAR(s) toe te voegen aan het klassenpad):
+Als u de gebruiker wilt uitvoeren vanaf de opdracht regel, genereert u het JAR en voert u uit in maven (of genereert u het JAR met Maven, voert u in Java uit door de benodigde Kafka JAR (s) toe te voegen aan het klassenpad):
 
 ```shell
 mvn clean package
 mvn exec:java -Dexec.mainClass="FlinkTestConsumer"
 ```
 
-Als de gebeurtenishub gebeurtenissen heeft (bijvoorbeeld als uw producent ook actief is), `test`begint de consument nu gebeurtenissen van het onderwerp te ontvangen.
+Als de Event Hub gebeurtenissen heeft (bijvoorbeeld als uw producent ook wordt uitgevoerd), begint de Consumer nu met het ontvangen van gebeurtenissen van het `test`onderwerp.
 
-Bekijk [flink's Kafka Connector Guide](https://ci.apache.org/projects/flink/flink-docs-stable/dev/connectors/kafka.html) voor meer gedetailleerde informatie over het verbinden van Flink met Kafka.
+Bekijk [de Kafka-connector gids van flink](https://ci.apache.org/projects/flink/flink-docs-stable/dev/connectors/kafka.html) voor meer gedetailleerde informatie over het verbinden van flink met Kafka.
 
 ## <a name="next-steps"></a>Volgende stappen
-Zie de volgende artikelen voor meer informatie over gebeurtenishubs voor Kafka:  
+Raadpleeg de volgende artikelen voor meer informatie over Event Hubs voor Kafka:  
 
 - [Een Kafka-broker spiegelen in een Event Hub](event-hubs-kafka-mirror-maker-tutorial.md)
 - [Apache Spark aan een Event Hub koppelen](event-hubs-kafka-spark-tutorial.md)
-- [Integreer Kafka Connect met een gebeurtenishub](event-hubs-kafka-connect-tutorial.md)
+- [Kafka integreren met een Event Hub](event-hubs-kafka-connect-tutorial.md)
 - [Explore samples on our GitHub](https://github.com/Azure/azure-event-hubs-for-kafka) (Voorbeelden bekijken op GitHub)
-- [Akka Streams verbinden met een gebeurtenishub](event-hubs-kafka-akka-streams-tutorial.md)
-- [Apache Kafka-ontwikkelaarshandleiding voor Azure Event Hubs](apache-kafka-developer-guide.md)
+- [Akka-streams verbinden met een Event Hub](event-hubs-kafka-akka-streams-tutorial.md)
+- [Apache Kafka ontwikkelaars handleiding voor Azure Event Hubs](apache-kafka-developer-guide.md)

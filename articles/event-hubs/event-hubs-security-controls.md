@@ -1,6 +1,6 @@
 ---
-title: Beveiligingsbesturingselementen voor Azure Event Hubs
-description: In dit artikel vindt u een checklist met beveiligingscontroles voor de evaluatie van Azure Event Hubs (netwerk, identiteit, gegevensbescherming, enz.).
+title: Beveiligings controles voor Azure Event Hubs
+description: Dit artikel bevat een controle lijst met beveiligings controles voor het evalueren van Azure-Event Hubs (netwerk, identiteit, gegevens beveiliging, enz.).
 services: event-hubs
 ms.service: event-hubs
 author: spelluru
@@ -8,58 +8,58 @@ ms.topic: conceptual
 ms.date: 09/23/2019
 ms.author: spelluru
 ms.openlocfilehash: 0769e88eb72b5b347dd9ebf4b1634501ca54098e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76309503"
 ---
-# <a name="security-controls-for-azure-event-hubs"></a>Beveiligingsbesturingselementen voor Azure Event Hubs
+# <a name="security-controls-for-azure-event-hubs"></a>Beveiligings controles voor Azure Event Hubs
 
-In dit artikel worden de beveiligingsbesturingselementen die zijn ingebouwd in Azure Event Hubs document.
+In dit artikel worden de beveiligings besturings elementen gedocumenteerd die zijn ingebouwd in azure Event Hubs.
 
 [!INCLUDE [Security controls Header](../../includes/security-controls-header.md)]
 
 ## <a name="network"></a>Netwerk
 
-| Beveiligingscontrole | Ja/Nee | Opmerkingen | Documentatie |
+| Beveiligings beheer | Ja/Nee | Opmerkingen | Documentatie |
 |---|---|--|--|
-| Ondersteuning voor serviceeindpunten| Ja |  |  |
+| Ondersteuning voor service-eind punten| Ja |  |  |
 | Ondersteuning voor VNet-injectie| Nee | |  |
-| Ondersteuning voor netwerkisolatie en firewalling| Ja |  |  |
-| Ondersteuning voor gedwongen tunneling| Nee |  |  |
+| Ondersteuning voor netwerk isolatie en firewalling| Ja |  |  |
+| Ondersteuning voor geforceerde tunneling| Nee |  |  |
 
-## <a name="monitoring--logging"></a>Controle & logboekregistratie
+## <a name="monitoring--logging"></a>& logboek registratie controleren
 
-| Beveiligingscontrole | Ja/Nee | Opmerkingen| Documentatie |
+| Beveiligings beheer | Ja/Nee | Opmerkingen| Documentatie |
 |---|---|--|--|
-| Azure-bewakingsondersteuning (logboekanalyses, app-inzichten, enz.)| Ja | |  |
-| Logboekregistratie en audit van het controle- en beheervlak| Ja |  |  |
-| Logboekregistratie en -audit van gegevensvliegtuigen| Ja |   |  |
+| Ondersteuning voor Azure-bewaking (log Analytics, app Insights, enz.)| Ja | |  |
+| Logboek registratie en controle op het vlak van controle en beheer| Ja |  |  |
+| Logboek registratie en controle van het gegevens vlak| Ja |   |  |
 
 ## <a name="identity"></a>Identiteit
 
-| Beveiligingscontrole | Ja/Nee | Opmerkingen| Documentatie |
+| Beveiligings beheer | Ja/Nee | Opmerkingen| Documentatie |
 |---|---|--|--|
-| Authentication| Ja | | [Toegang tot Azure Event Hubs autoriseren,](authorize-access-event-hubs.md) [toegang tot Gebeurtenishubs-bronnen autoriseren met Azure Active Directory](authorize-access-azure-active-directory.md), Toegang tot bronnen voor [gebeurtenishubs toestaan met shared access-handtekeningen](authorize-access-shared-access-signature.md) |
-| Autorisatie|  Ja | | [Een beheerde identiteit verifiëren met Azure Active Directory om toegang te krijgen tot Gebeurtenishubsresources](authenticate-managed-identity.md), [Een toepassing verifiëren met Azure Active Directory om toegang te krijgen tot Bronnen van Event Hubs](authenticate-application.md), Toegang tot Bronnen van [Gebeurtenishubs verifiëren met behulp van sas (Shared Access Signatures)](authenticate-shared-access-signature.md) |
+| Verificatie| Ja | | [Toegang tot Azure Event hubs autoriseren](authorize-access-event-hubs.md), [toegang tot Event hubs resources autoriseren met behulp van Azure Active Directory](authorize-access-azure-active-directory.md), [toegang verlenen tot Event hubs resources met behulp van Shared Access signatures](authorize-access-shared-access-signature.md) |
+| Autorisatie|  Ja | | [Verifieer een beheerde identiteit met Azure Active Directory om toegang te krijgen tot Event hubs resources](authenticate-managed-identity.md), [een toepassing te verifiëren met Azure Active Directory om toegang te krijgen tot Event hubs bronnen, de](authenticate-application.md) [toegang tot Event hubs resources te verifiëren met behulp van Shared Access signatures (SAS)](authenticate-shared-access-signature.md) |
 
 ## <a name="data-protection"></a>Gegevensbeveiliging
 
-| Beveiligingscontrole | Ja/Nee | Opmerkingen | Documentatie |
+| Beveiligings beheer | Ja/Nee | Opmerkingen | Documentatie |
 |---|---|--|--|
-| Server-side encryptie in rust: door Microsoft beheerde sleutels |  Ja | |  |
-| Server-side encryptie in rust: door de klant beheerde sleutels (BYOK) | Ja. Beschikbaar voor speciale clusters. | Een door de klant beheerde sleutel in Azure KeyVault kan worden gebruikt om de gegevens in rust op een gebeurtenishub te versleutelen. | [Door de klant beheerde sleutels configureren voor het in rust versleutelen van Azure Event Hubs-gegevens met behulp van de Azure-portal](configure-customer-managed-key.md) |
-| Versleuteling op kolomniveau (Azure Data Services)| N.v.t. | |  |
-| Versleuteling tijdens het transport (zoals ExpressRoute-versleuteling, vnet-versleuteling en VNet-VNet-versleuteling)| Ja | |  |
-| API-aanroepen versleuteld| Ja |  |  |
+| Versleuteling aan server zijde op rest: door micro soft beheerde sleutels |  Ja | |  |
+| Versleuteling aan server zijde op rest: door de klant beheerde sleutels (BYOK) | Ja. Beschikbaar voor toegewezen clusters. | Een door de klant beheerde sleutel in azure-hoofd kluis kan worden gebruikt voor het versleutelen van de gegevens op een event hub in rust. | [Door de klant beheerde sleutels voor het versleutelen van Azure Event Hubs-gegevens op rest configureren met behulp van de Azure Portal](configure-customer-managed-key.md) |
+| Versleuteling op kolom niveau (Azure Data Services)| N.v.t. | |  |
+| Versleuteling in transit (zoals ExpressRoute-versleuteling, in VNet-versleuteling en VNet-VNet-versleuteling)| Ja | |  |
+| Versleutelde API-aanroepen| Ja |  |  |
 
 ## <a name="configuration-management"></a>Configuratiebeheer
 
-| Beveiligingscontrole | Ja/Nee | Opmerkingen| Documentatie |
+| Beveiligings beheer | Ja/Nee | Opmerkingen| Documentatie |
 |---|---|--|--|
-| Ondersteuning voor configuratiebeheer (versiebeheer van configuratie, enz.)| Ja | |  |
+| Ondersteuning voor configuratie beheer (versie van configuratie, enz.)| Ja | |  |
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Meer informatie over de [ingebouwde beveiligingsbesturingselementen voor Azure-services](../security/fundamentals/security-controls.md).
+- Meer informatie over de [ingebouwde beveiligings controles in Azure-Services](../security/fundamentals/security-controls.md).

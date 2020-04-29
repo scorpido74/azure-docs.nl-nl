@@ -1,6 +1,6 @@
 ---
-title: Gegevensmagazijnen collatietypen
-description: Collatietypen die worden ondersteund in Azure Synapse Analytics SQL-groep.
+title: Data Warehouse-sorterings typen
+description: Sorterings typen die worden ondersteund in de Azure Synapse Analytics SQL-groep.
 services: synapse-analytics
 author: antvgski
 manager: igorstan
@@ -11,25 +11,25 @@ ms.author: anvang
 ms.reviewer: jrasnick
 ms.custom: seo-lt-2019, azure-synapse
 ms.openlocfilehash: 202bbaf4ea53dd6ba285e79dfa9e6ce782c0903e
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/03/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80633090"
 ---
-# <a name="database-collation-support-for-azure-synapse-analytics-sql-pool"></a>Ondersteuning voor databaseverzameling voor Azure Synapse Analytics SQL-groep
+# <a name="database-collation-support-for-azure-synapse-analytics-sql-pool"></a>Ondersteuning voor database sortering voor Azure Synapse Analytics SQL-groep
 
-U de standaarddatabaseverzameling van de Azure-portal wijzigen wanneer u een nieuwe Azure Synapse SQL-groepdatabase maakt. Deze mogelijkheid maakt het nog eenvoudiger om een nieuwe database te maken met behulp van een van de 3800 ondersteunde databasecollaties.
+U kunt de standaard sortering van de data base wijzigen van de Azure Portal wanneer u een nieuwe Azure Synapse SQL-groeps database maakt. Hierdoor is het nog eenvoudiger om een nieuwe Data Base te maken met behulp van een van de ondersteunde database sorteringen van 3800.
 
-Collaties bieden de landvermelding, codepagina, sorteervolgorde- en tekengevoeligheidsregels voor op tekens gebaseerde gegevenstypen. Eenmaal gekozen, erven alle kolommen en expressies die collatie-informatie vereisen de gekozen collatie van de database-instelling. De standaardovererving kan worden overschreven door expliciet een andere collatie voor een op tekens gebaseerd gegevenstype te vermelden.
+Met sorteringen kunt u de land instelling, de code pagina, de sorteer volgorde en de teken gevoeligheids regels voor gegevens typen op basis van tekens opgeven. Nadat u hebt gekozen, nemen alle kolommen en expressies die sorteer gegevens vereisen de gekozen sortering van de data base-instelling over. De standaard overname kan worden overschreven door expliciet een andere sortering voor een gegevens type op basis van een teken te vermelden.
 
-## <a name="changing-collation"></a>Veranderende collatie
+## <a name="changing-collation"></a>Sortering wijzigen
 
-Als u de standaardcollatie wilt wijzigen, werkt u het veld Collatie bij in de inrichtingservaring.
+Als u de standaard sortering wilt wijzigen, moet u bijwerken naar het veld sortering in de inrichtings ervaring.
 
-Als u bijvoorbeeld de standaardcollatie wilt wijzigen in hoofdlettergevoelig, wijzigt u de naam van de Collatie eenvoudig van SQL_Latin1_General_CP1_CI_AS naar SQL_Latin1_General_CP1_CS_AS.
+Als u de standaard sortering bijvoorbeeld wilt wijzigen in hoofdletter gevoelig, wijzigt u de naam van de sortering van SQL_Latin1_General_CP1_CI_AS in SQL_Latin1_General_CP1_CS_AS.
 
-## <a name="list-of-unsupported-collation-types"></a>Lijst met niet-ondersteunde collatietypen
+## <a name="list-of-unsupported-collation-types"></a>Lijst met niet-ondersteunde sorterings typen
 
 * Japanese_Bushu_Kakusu_140_BIN
 * Japanese_Bushu_Kakusu_140_BIN2
@@ -102,12 +102,12 @@ Als u bijvoorbeeld de standaardcollatie wilt wijzigen in hoofdlettergevoelig, wi
 * SQL_EBCDIC1141_CP1_CS_AS
 * SQL_EBCDIC277_2_CP1_CS_AS
 
-## <a name="checking-the-current-collation"></a>De huidige collatie controleren
+## <a name="checking-the-current-collation"></a>De huidige sortering controleren
 
-Als u de huidige collatie voor de database wilt controleren, u het volgende T-SQL-fragment uitvoeren:
+Als u de huidige sortering voor de Data Base wilt controleren, kunt u het volgende T-SQL-fragment uitvoeren:
 
 ```sql
 SELECT DATABASEPROPERTYEX(DB_NAME(), 'Collation') AS Collation;
 ```
 
-Wanneer de eigenschapparameter 'Collation' wordt doorgegeven, retourneert de functie DatabasePropertyEx de huidige collatie voor de opgegeven database. Zie [DatabasePropertyEx voor](/sql/t-sql/functions/databasepropertyex-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)meer informatie .
+Als Sortation is door gegeven als eigenschaps parameter, retourneert de functie DatabasePropertyEx de huidige sortering voor de opgegeven Data Base. Zie [DatabasePropertyEx](/sql/t-sql/functions/databasepropertyex-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)voor meer informatie.

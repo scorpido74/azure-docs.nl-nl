@@ -1,49 +1,49 @@
 ---
 title: Overzicht van aangepaste providers
-description: Meer informatie over Azure Custom Resource Providers en hoe u het Azure API-vlak uitbreidt naar uw werkstromen.
+description: Meer informatie over aangepaste Azure-resource providers en hoe u het Azure API-vlak kunt uitbreiden zodat het past bij uw werk stromen.
 author: jjbfour
 ms.topic: conceptual
 ms.date: 06/19/2019
 ms.author: jobreen
 ms.openlocfilehash: 68b8bd187d58cd71778b8a922684cc3817a0715d
-ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/30/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80398463"
 ---
-# <a name="azure-custom-resource-providers-overview"></a>Overzicht van Azure Custom Resource Providers
+# <a name="azure-custom-resource-providers-overview"></a>Overzicht van aangepaste Azure-resource providers
 
-Azure Custom Resource Providers is een uitbreidbaarheidsplatform voor Azure. Hiermee u aangepaste API's definiëren die kunnen worden gebruikt om de standaardAzure-ervaring te verrijken. In deze documentatie wordt beschreven:
+Aangepaste Azure-resource providers is een uitbreidbaar platform voor Azure. Hiermee kunt u aangepaste Api's definiëren die kunnen worden gebruikt om de standaard Azure-ervaring te verrijken. Deze documentatie beschrijft:
 
-- Een Azure Custom Resource Provider bouwen en implementeren.
-- Azure Custom Resource Providers gebruiken om bestaande werkstromen uit te breiden.
-- Waar gidsen en codevoorbeelden te vinden om aan de slag te gaan.
+- Een aangepaste Azure-resource provider bouwen en implementeren.
+- Het gebruik van aangepaste Azure-resource providers om bestaande werk stromen uit te breiden.
+- Waar u gidsen en code voorbeelden kunt vinden om aan de slag te gaan.
 
 ![Overzicht van aangepaste provider](./media/overview/overview.png)
 
 > [!IMPORTANT]
-> Aangepaste providers is momenteel in openbare preview.
+> Aangepaste providers zijn momenteel beschikbaar als open bare preview.
 > Deze preview-versie wordt aangeboden zonder service level agreement en wordt niet aanbevolen voor productieworkloads. Misschien worden bepaalde functies niet ondersteund of zijn de mogelijkheden ervan beperkt.
-> Zie [Aanvullende gebruiksvoorwaarden voor Microsoft Azure Previews voor](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)meer informatie.
+> Zie voor meer informatie [aanvullende gebruiks voorwaarden voor Microsoft Azure-previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-## <a name="what-can-custom-resource-providers-do"></a>Wat kunnen aangepaste resourceproviders doen
+## <a name="what-can-custom-resource-providers-do"></a>Wat kunnen aangepaste resource providers doen
 
-Hier volgen enkele voorbeelden van wat u bereiken met Azure Custom Resource Providers:
+Hier volgen enkele voor beelden van wat u kunt doen met aangepaste Azure-resource providers:
 
-- Breid de REST API van Azure Resource Manager uit met interne en externe services.
-- Aangepaste scenario's inschakelen bovenop bestaande Azure-werkstromen.
-- Het besturingselement en het effect azure resource beheersjablonen aanpassen.
+- Breid Azure Resource Manager REST API uit voor het toevoegen van interne en externe services.
+- Schakel aangepaste scenario's in op bestaande Azure-werk stromen.
+- Het besturings element en het effect van Azure Resource Manager sjablonen aanpassen.
 
-## <a name="what-is-a-custom-resource-provider"></a>Wat is een aangepaste resourceprovider
+## <a name="what-is-a-custom-resource-provider"></a>Wat is een aangepaste resource provider?
 
-Azure Custom Resource Providers worden gemaakt door een contract te maken tussen Azure en een eindpunt. In dit contract wordt een lijst met nieuwe bronnen en acties gedefinieerd via een nieuwe bron, **Microsoft.CustomProviders/resourceProviders.** De aangepaste resourceprovider stelt deze nieuwe API's vervolgens bloot in Azure. Azure Custom Resource Providers bestaan uit drie delen: aangepaste resourceprovider, **eindpunten**en aangepaste resources.
+Aangepaste Azure-resource providers worden gemaakt door een contract te maken tussen Azure en een eind punt. Dit contract definieert een lijst met nieuwe resources en acties via een nieuwe resource, **micro soft. CustomProviders/resourceProviders**. De aangepaste resource provider maakt deze nieuwe Api's vervolgens beschikbaar in Azure. Aangepaste Azure-resource providers bestaan uit drie delen: aangepaste resource provider, **eind punten**en aangepaste resources.
 
-## <a name="how-to-build-custom-resource-providers"></a>Aangepaste resourceproviders bouwen
+## <a name="how-to-build-custom-resource-providers"></a>Aangepaste resource providers bouwen
 
-Aangepaste resourceproviders zijn een lijst met contracten tussen Azure en eindpunten. In dit contract wordt beschreven hoe Azure moet omgaan met een eindpunt. De resourceprovider werkt als een proxy en stuurt aanvragen en antwoorden door naar en van het opgegeven **eindpunt.** Een resourceprovider kan twee soorten contracten opgeven: [**resourcetypen**](./custom-providers-resources-endpoint-how-to.md) en [**acties**](./custom-providers-action-endpoint-how-to.md). Deze zijn ingeschakeld door middel van endpoint definities. Een eindpuntdefinitie bestaat uit drie velden: **naam,** **routingType**en **eindpunt**.
+Aangepaste resource providers zijn een lijst met contracten tussen Azure en eind punten. In dit contract wordt beschreven hoe Azure moet communiceren met een eind punt. De resource provider fungeert als een proxy, stuurt aanvragen en antwoorden van en naar het opgegeven **eind punt**. Een resource provider kan twee soorten contracten opgeven: [**resourceTypes**](./custom-providers-resources-endpoint-how-to.md) en [**Actions**](./custom-providers-action-endpoint-how-to.md). Deze zijn ingeschakeld via eindpunt definities. Een eindpunt definitie bestaat uit drie velden: **naam**, **routingType**en **eind punt**.
 
-Voorbeeldeindpunt:
+Voor beeld-eind punt:
 
 ```JSON
 {
@@ -55,15 +55,15 @@ Voorbeeldeindpunt:
 
 Eigenschap | Vereist | Beschrijving
 ---|---|---
-name | *Ja* | De naam van de eindpuntdefinitie. Azure stelt deze naam bloot via de API onder '/abonnementen/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomProviders/<br>resourceProviders/{resourceProviderName}/{endpointDefinitionName}'
-routingType | *nee* | Hiermee bepaalt u het contracttype met het **eindpunt**. Als dit niet is opgegeven, wordt deze standaard 'Proxy' weergegeven.
-endpoint | *Ja* | Het eindpunt om de aanvragen naar te leiden. Dit zal omgaan met de reactie en eventuele bijwerkingen van het verzoek.
+name | *klikt* | De naam van de eindpunt definitie. Azure geeft deze naam beschikbaar via de API onder/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomProviders/<br>resourceProviders/{resourceProviderName}/{endpointDefinitionName}'
+routingType | *geen* | Bepaalt het contract type met het **eind punt**. Als u niets opgeeft, wordt het standaard ingesteld op proxy.
+endpoint | *klikt* | Het eind punt waarnaar de aanvragen worden gerouteerd. Hiermee worden de reactie en eventuele neven effecten van de aanvraag verwerkt.
 
 ### <a name="building-custom-resources"></a>Aangepaste resources bouwen
 
-**ResourceTypes** beschrijven nieuwe aangepaste resources die aan Azure worden toegevoegd. Deze leggen basisRESTful CRUD-methoden bloot. Meer [informatie over het maken van aangepaste bronnen](./custom-providers-resources-endpoint-how-to.md)
+**ResourceTypes** beschrijven nieuwe aangepaste resources die worden toegevoegd aan Azure. Deze beschikken over elementaire, geruste ruwe methoden. [Meer informatie over het maken van aangepaste resources](./custom-providers-resources-endpoint-how-to.md)
 
-Voorbeeld van aangepaste resourceprovider met **resourcetypen:**
+Voor beeld van een aangepaste resource provider met **resourceTypes**:
 
 ```JSON
 {
@@ -80,20 +80,20 @@ Voorbeeld van aangepaste resourceprovider met **resourcetypen:**
 }
 ```
 
-API's die aan Azure zijn toegevoegd voor het bovenstaande voorbeeld:
+Api's die zijn toegevoegd aan Azure voor het bovenstaande voor beeld:
 
-HttpMethod | Voorbeeld VAN URI | Beschrijving
+HttpMethod | Voor beeld-URI | Beschrijving
 ---|---|---
-PUT | /abonnementen/{subscriptionId}/resourceGroepen/{resourceGroupName}/<br>providers/Microsoft.CustomProviders/resourceProviders/{resourceProviderName}/<br>myCustomResources/{customResourceName}?api-version=2018-09-01-preview | De Azure REST API-aanroep om een nieuwe bron te maken.
-DELETE | /abonnementen/{subscriptionId}/resourceGroepen/{resourceGroupName}/<br>providers/Microsoft.CustomProviders/resourceProviders/{resourceProviderName}/<br>myCustomResources/{customResourceName}?api-version=2018-09-01-preview | De Azure REST API-aanroep om een bestaande bron te verwijderen.
-GET | /abonnementen/{subscriptionId}/resourceGroepen/{resourceGroupName}/<br>providers/Microsoft.CustomProviders/resourceProviders/{resourceProviderName}/<br>myCustomResources/{customResourceName}?api-version=2018-09-01-preview | De Azure REST API-aanroep om een bestaande bron op te halen.
-GET | /abonnementen/{subscriptionId}/resourceGroepen/{resourceGroupName}/<br>providers/Microsoft.CustomProviders/resourceProviders/{resourceProviderName}/<br>myCustomResources?api-version=2018-09-01-preview | De Azure REST API-aanroep om de lijst met bestaande resources op te halen.
+PUT | /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/<br>providers/micro soft. CustomProviders/resourceProviders/{resourceProviderName}/<br>myCustomResources/{customResourceName}? API-Version = 2018-09 -01-preview | De Azure REST API-aanroep voor het maken van een nieuwe resource.
+DELETE | /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/<br>providers/micro soft. CustomProviders/resourceProviders/{resourceProviderName}/<br>myCustomResources/{customResourceName}? API-Version = 2018-09 -01-preview | De Azure REST API-aanroep voor het verwijderen van een bestaande resource.
+GET | /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/<br>providers/micro soft. CustomProviders/resourceProviders/{resourceProviderName}/<br>myCustomResources/{customResourceName}? API-Version = 2018-09 -01-preview | De Azure REST API-aanroep om een bestaande resource op te halen.
+GET | /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/<br>providers/micro soft. CustomProviders/resourceProviders/{resourceProviderName}/<br>myCustomResources? API-Version = 2018-9 -01-preview | De Azure REST API-aanroep voor het ophalen van de lijst met bestaande resources.
 
 ### <a name="building-custom-actions"></a>Aangepaste acties bouwen
 
-**Acties** beschrijven nieuwe acties die zijn toegevoegd aan Azure. Deze kunnen worden blootgesteld op de top van de resource provider of genest onder een **resourceType**. Meer [informatie over het maken van aangepaste acties](./custom-providers-action-endpoint-how-to.md)
+**Acties** beschrijven nieuwe acties die aan Azure worden toegevoegd. Deze kunnen worden weer gegeven boven op de resource provider of genest zijn onder een resource **type**. [Meer informatie over het maken van aangepaste acties](./custom-providers-action-endpoint-how-to.md)
 
-Voorbeeld van aangepaste resourceprovider met **acties:**
+Voor beeld van een aangepaste resource provider met **acties**:
 
 ```JSON
 {
@@ -110,21 +110,21 @@ Voorbeeld van aangepaste resourceprovider met **acties:**
 }
 ```
 
-API's die aan Azure zijn toegevoegd voor het bovenstaande voorbeeld:
+Api's die zijn toegevoegd aan Azure voor het bovenstaande voor beeld:
 
-HttpMethod | Voorbeeld VAN URI | Beschrijving
+HttpMethod | Voor beeld-URI | Beschrijving
 ---|---|---
-POST | /abonnementen/{subscriptionId}/resourceGroepen/{resourceGroupName}/<br>providers/Microsoft.CustomProviders/resourceProviders/{resourceProviderName}/<br>myCustomAction?api-version=2018-09-01-preview | De Azure REST API-aanroep om de actie te activeren.
+POST | /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/<br>providers/micro soft. CustomProviders/resourceProviders/{resourceProviderName}/<br>myCustomAction? API-Version = 2018-9 -01-preview | De aanroep van Azure REST API om de actie te activeren.
 
-## <a name="looking-for-help"></a>Op zoek naar hulp
+## <a name="looking-for-help"></a>Zoeken naar Help
 
-Als u vragen hebt over de ontwikkeling van Azure Custom Resource Provider, probeert u vragen te stellen op [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-custom-providers). Een soortgelijke vraag kan al zijn gesteld en beantwoord, dus controleer eerst voor het posten. Voeg de ```azure-custom-providers``` tag toe om snel te reageren!
+Als u vragen hebt over de ontwikkeling van de aangepaste Azure-resource provider, kunt u de vragen stellen op [stack overflow](https://stackoverflow.com/questions/tagged/azure-custom-providers). Er is mogelijk al een vergelijk bare vraag gesteld en beantwoord, dus controleer eerst vóór het boeken. Voeg de tag ```azure-custom-providers``` toe om een snel antwoord te krijgen.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In dit artikel leerde u over aangepaste providers. Ga naar het volgende artikel om een aangepaste provider te maken.
+In dit artikel hebt u geleerd over aangepaste providers. Ga naar het volgende artikel om een aangepaste provider te maken.
 
-- [Snelstart: Azure Custom Resource Provider maken en aangepaste resources implementeren](./create-custom-provider.md)
-- [Zelfstudie: Aangepaste acties en resources maken in Azure](./tutorial-get-started-with-custom-providers.md)
-- [How To: Aangepaste acties toevoegen aan Azure REST API](./custom-providers-action-endpoint-how-to.md)
-- [How To: Aangepaste resources toevoegen aan Azure REST API](./custom-providers-resources-endpoint-how-to.md)
+- [Snelstartgids: een aangepaste Azure-resource provider maken en aangepaste resources implementeren](./create-custom-provider.md)
+- [Zelf studie: aangepaste acties en resources maken in azure](./tutorial-get-started-with-custom-providers.md)
+- [Procedure: aangepaste acties toevoegen aan Azure REST API](./custom-providers-action-endpoint-how-to.md)
+- [Procedure: aangepaste resources toevoegen aan Azure REST API](./custom-providers-resources-endpoint-how-to.md)

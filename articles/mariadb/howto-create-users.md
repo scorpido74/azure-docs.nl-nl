@@ -1,38 +1,38 @@
 ---
-title: Gebruikers maken - Azure Database voor MariaDB
-description: In dit artikel wordt beschreven hoe u nieuwe gebruikersaccounts maken om te communiceren met een Azure Database voor MariaDB-server.
+title: Gebruikers maken-Azure Database for MariaDB
+description: In dit artikel wordt beschreven hoe u nieuwe gebruikers accounts kunt maken om te communiceren met een Azure Database for MariaDB-server.
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 4/2/2020
 ms.openlocfilehash: 1b79a49b2fb87ebf180aaaa40447f40c5a982c2e
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/03/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80632291"
 ---
 # <a name="create-users-in-azure-database-for-mariadb"></a>Create users in Azure Database for MariaDB (Gebruikers maken in Azure Database for MariaDB) 
-In dit artikel wordt beschreven hoe u gebruikers maken in Azure Database voor MariaDB.
+In dit artikel wordt beschreven hoe u gebruikers kunt maken in Azure Database for MariaDB.
 
-Toen u uw Azure Database voor MariaDB voor het eerst hebt gemaakt, hebt u een gebruikersnaam en wachtwoord voor het inloggen van een serverbeheerder opgegeven. Voor meer informatie u de [Quickstart](quickstart-create-mariadb-server-database-using-azure-portal.md)volgen. U de gebruikersnaam van uw serverbeheerder inlogfunctie vinden via de Azure-portal.
+Wanneer u uw Azure Database for MariaDB voor het eerst hebt gemaakt, hebt u de gebruikers naam en het wacht woord van de server beheerder aangemeld. Voor meer informatie kunt u de [Snelstartgids](quickstart-create-mariadb-server-database-using-azure-portal.md)volgen. U kunt de gebruikers naam van de server beheerder aanmelden via de Azure Portal.
 
-De serverbeheerder krijgt bepaalde bevoegdheden voor uw server zoals vermeld: SELECT, INSERT, UPDATE, Delete, CREATE, DROP, RELOAD, PROCESS, REFERENCES, INDEX, ALTER, SHOW DATABASES, CREATE TEMPORARY TABLES, LOCK TABLES, EXECUTE, REPLICATION SLAVE, REPLICATION CLIENT, CREATE VIEW, SHOW VIEW, CREATE ROUTINE, ALTER ROUTINE, CREATE USER, CREATE, EVENT, TRIGGER
+De gebruiker van de server beheerder heeft bepaalde bevoegdheden voor uw server als vermeld: selecteren, invoegen, bijwerken, verwijderen, maken, verwijderen, opnieuw laden, verwerken, verwijzingen, INDEX, wijzigen, data BASEs, tijdelijke tabellen maken, tabellen vergren delen, uitvoeren, replicatie slave, replicatie CLIENT, weer gave, gebruiker weer geven, gebeurtenis, TRIGGER
 
-Zodra de Azure Database voor MariaDB-server is gemaakt, u het eerste gebruikersaccount voor serverbeheerders gebruiken om extra gebruikers te maken en beheerders toegang tot deze server te verlenen. Het serverbeheeraccount kan ook worden gebruikt om minder bevoorrechte gebruikers te maken die toegang hebben tot afzonderlijke databaseschema's.
+Zodra de Azure Database for MariaDB-server is gemaakt, kunt u het eerste gebruikers account van de server beheerder gebruiken om extra gebruikers te maken en beheerders toegang te verlenen. Het account voor de server beheerder kan ook worden gebruikt om gebruikers met minder bevoegdheden te maken die toegang hebben tot afzonderlijke database schema's.
 
 > [!NOTE]
-> De SUPER privilege en DBA rol worden niet ondersteund. Bekijk de [bevoegdheden](concepts-limits.md#privilege-support) in het artikel beperkingen om te begrijpen wat er niet wordt ondersteund in de service.
+> De rol SUPER privilege en DBA worden niet ondersteund. Lees de [bevoegdheden](concepts-limits.md#privilege-support) in het artikel beperkingen om te begrijpen wat er niet wordt ondersteund in de service.
 
-## <a name="create-additional-admin-users"></a>Extra beheerdersgebruikers maken
-1. Download de verbindingsgegevens en de gebruikersnaam van de beheerder.
-   Voor verbinding met uw databaseserver moet u beschikken over de volledige servernaam en aanmeldingsreferenties van de beheerder. U de servernaam en aanmeldingsgegevens eenvoudig vinden op de pagina **serveroverzicht** of de pagina **Eigenschappen** in de Azure-portal. 
+## <a name="create-additional-admin-users"></a>Extra gebruikers met beheerders rechten maken
+1. De verbindings gegevens en de gebruikers naam van de beheerder ophalen.
+   Voor verbinding met uw databaseserver moet u beschikken over de volledige servernaam en aanmeldingsreferenties van de beheerder. U kunt eenvoudig de server naam en aanmeldings gegevens vinden op de pagina **overzicht** van de server of op de pagina **eigenschappen** in de Azure Portal. 
 
-2. Gebruik het beheerdersaccount en het wachtwoord om verbinding te maken met uw databaseserver. Gebruik uw voorkeursclienttool, zoals MySQL Workbench, mysql.exe, HeidiSQL of anderen. 
-   Zie [MySQL Workbench gebruiken om verbinding te maken en querygegevens op te vragen](./connect-workbench.md) als u niet zeker weet hoe u verbinding maken.
+2. Gebruik het beheerders account en-wacht woord om verbinding te maken met uw database server. Gebruik het client hulpprogramma van uw voor keur, zoals MySQL Workbench, mysql. exe, HeidiSQL of anderen. 
+   Als u niet zeker weet hoe u verbinding kunt maken, raadpleegt u [MySQL Workbench gebruiken om verbinding te maken en gegevens op te vragen](./connect-workbench.md)
 
-3. Bewerk en voer de volgende SQL-code uit. Vervang uw nieuwe gebruikersnaam voor `new_master_user`de waarde van de tijdelijke aanduiding . Met deze syntaxis worden de vermelde bevoegdheden voor alle databaseschema *'s*( . ) toegewezen aan de gebruikersnaam (new_master_user in dit voorbeeld). 
+3. Bewerk de volgende SQL-code en voer deze uit. Vervang de nieuwe gebruikers naam voor de waarde `new_master_user`van de tijdelijke aanduiding. Met deze syntaxis worden de vermelde bevoegdheden voor alle database schema's (*.*) verleend aan de gebruikers naam (new_master_user in dit voor beeld). 
 
    ```sql
    CREATE USER 'new_master_user'@'%' IDENTIFIED BY 'StrongPassword!';
@@ -42,24 +42,24 @@ Zodra de Azure Database voor MariaDB-server is gemaakt, u het eerste gebruikersa
    FLUSH PRIVILEGES;
    ```
 
-4. Controleer de subsidies 
+4. De subsidies verifiëren 
    ```sql
    USE sys;
    
    SHOW GRANTS FOR 'new_master_user'@'%';
    ```
 
-## <a name="create-database-users"></a>Databasegebruikers maken
+## <a name="create-database-users"></a>Database gebruikers maken
 
-1. Download de verbindingsgegevens en de gebruikersnaam van de beheerder.
-   Voor verbinding met uw databaseserver moet u beschikken over de volledige servernaam en aanmeldingsreferenties van de beheerder. U de servernaam en aanmeldingsgegevens eenvoudig vinden op de pagina **serveroverzicht** of de pagina **Eigenschappen** in de Azure-portal. 
+1. De verbindings gegevens en de gebruikers naam van de beheerder ophalen.
+   Voor verbinding met uw databaseserver moet u beschikken over de volledige servernaam en aanmeldingsreferenties van de beheerder. U kunt eenvoudig de server naam en aanmeldings gegevens vinden op de pagina **overzicht** van de server of op de pagina **eigenschappen** in de Azure Portal. 
 
-2. Gebruik het beheerdersaccount en het wachtwoord om verbinding te maken met uw databaseserver. Gebruik uw voorkeursclienttool, zoals MySQL Workbench, mysql.exe, HeidiSQL of anderen. 
-   Zie [MySQL Workbench gebruiken om verbinding te maken en querygegevens op te vragen](./connect-workbench.md) als u niet zeker weet hoe u verbinding maken.
+2. Gebruik het beheerders account en-wacht woord om verbinding te maken met uw database server. Gebruik het client hulpprogramma van uw voor keur, zoals MySQL Workbench, mysql. exe, HeidiSQL of anderen. 
+   Als u niet zeker weet hoe u verbinding kunt maken, raadpleegt u [MySQL Workbench gebruiken om verbinding te maken en gegevens op te vragen](./connect-workbench.md)
 
-3. Bewerk en voer de volgende SQL-code uit. Vervang de tijdelijke `db_user` aanduidingswaarde door uw beoogde nieuwe `testdb` gebruikersnaam en tijdelijke waarde door uw eigen databasenaam.
+3. Bewerk de volgende SQL-code en voer deze uit. Vervang de waarde `db_user` van de tijdelijke aanduiding door de gewenste nieuwe gebruikers naam en `testdb` de tijdelijke aanduiding voor de naam van uw eigen data base.
 
-   Met deze syntaxis van sql-code wordt bijvoorbeeld een nieuwe database met de naam testdb gemaakt. Vervolgens wordt een nieuwe gebruiker gemaakt in de Azure Database for MariaDB-service en\*worden alle bevoegdheden toegekend aan het nieuwe databaseschema (testdb. ) voor die gebruiker. 
+   Deze SQL-code syntaxis maakt bijvoorbeeld een nieuwe Data Base met de naam testdb. Vervolgens wordt er een nieuwe gebruiker in de Azure Database for MariaDB-service gemaakt en worden alle bevoegdheden verleend aan het nieuwe database schema (\*testdb.) voor die gebruiker. 
 
    ```sql
    CREATE DATABASE testdb;
@@ -71,21 +71,21 @@ Zodra de Azure Database voor MariaDB-server is gemaakt, u het eerste gebruikersa
    FLUSH PRIVILEGES;
    ```
 
-4. Controleer de subsidies in de database.
+4. Controleer de subsidies in de data base.
    ```sql
    USE testdb;
    
    SHOW GRANTS FOR 'db_user'@'%';
    ```
 
-5. Meld u aan bij de server en geef de aangewezen database op met de nieuwe gebruikersnaam en het nieuwe wachtwoord. In dit voorbeeld wordt de opdrachtregel mysql weergegeven. Met deze opdracht wordt u gevraagd om het wachtwoord voor de gebruikersnaam. Vervang uw eigen servernaam, databasenaam en gebruikersnaam.
+5. Meld u aan bij de server, waarbij u de aangewezen data base opgeeft, met de nieuwe gebruikers naam en wacht woord. In dit voor beeld wordt de MySQL-opdracht regel weer gegeven. Met deze opdracht wordt u gevraagd om het wacht woord voor de gebruikers naam. Vervang uw eigen server naam, database naam en gebruikers naam.
 
    ```bash
    mysql --host mydemoserver.mariadb.database.azure.com --database testdb --user db_user@mydemoserver -p
    ```
-   Zie MariaDB-documentatie voor [gebruikersaccountbeheer](https://mariadb.com/kb/en/library/user-account-management/), [SUBSIDIEsyntaxis](https://mariadb.com/kb/en/library/grant/)en [Bevoegdheden](https://mariadb.com/kb/en/library/grant/#privilege-levels)voor meer informatie over gebruikersaccountbeheer .
+   Zie MariaDB-documentatie voor Gebruikersaccountbeheer, [syntaxis](https://mariadb.com/kb/en/library/grant/)voor [gebruikers](https://mariadb.com/kb/en/library/user-account-management/)en [bevoegdheden](https://mariadb.com/kb/en/library/grant/#privilege-levels)voor meer informatie over het beheer van gebruikers accounts.
 
 ## <a name="next-steps"></a>Volgende stappen
-Open de firewall voor de IP-adressen van de machines van de nieuwe gebruikers om verbinding te maken: [Azure Database maken en beheren voor MariaDB-firewallregels met behulp van de Azure-portal](howto-manage-firewall-portal.md)  
+Open de firewall voor de IP-adressen van de computers van de nieuwe gebruikers zodat ze verbinding kunnen maken: [Azure database for MariaDB firewall regels maken en beheren met behulp van de Azure Portal](howto-manage-firewall-portal.md)  
 
 <!--or [Azure CLI](howto-manage-firewall-using-cli.md).-->

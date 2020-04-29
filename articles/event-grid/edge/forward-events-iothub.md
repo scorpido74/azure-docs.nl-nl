@@ -1,6 +1,6 @@
 ---
-title: Gebeurtenisrastergebeurtenissen doorsturen naar IoTHub - Azure Event Grid IoT Edge | Microsoft Documenten
-description: Gebeurtenisrastergebeurtenissen doorsturen naar IoTHub
+title: Event Grid gebeurtenissen door sturen naar IoTHub-Azure Event Grid IoT Edge | Microsoft Docs
+description: Event Grid gebeurtenissen door sturen naar IoTHub
 author: VidyaKukke
 manager: rajarv
 ms.author: vkukke
@@ -10,37 +10,37 @@ ms.topic: article
 ms.service: event-grid
 services: event-grid
 ms.openlocfilehash: d0034810ff86de2a40e275ca54a2f0f9cbc856c2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76844697"
 ---
-# <a name="tutorial-forward-events-to-iothub"></a>Zelfstudie: Gebeurtenissen doorsturen naar IoTHub
+# <a name="tutorial-forward-events-to-iothub"></a>Zelf studie: gebeurtenissen door sturen naar IoTHub
 
-In dit artikel worden alle stappen doorlopen die nodig zijn om gebeurtenisrastergebeurtenissen door te sturen naar andere IoT Edge-modules, IoTHub met behulp van routes. Misschien wilt u dit doen om de volgende redenen:
+In dit artikel worden alle stappen beschreven die nodig zijn om Event Grid-gebeurtenissen door te sturen naar andere IoT Edge modules, IoTHub met routes. U kunt dit het beste doen om de volgende redenen:
 
-* Gebruik nog steeds bestaande investeringen die al zijn gedaan met de routering van EdgeHub
-* Stuur alle gebeurtenissen liever alleen vanaf een apparaat via IoT Hub
+* Blijf bestaande investeringen gebruiken die al aanwezig zijn met de route ring van edgeHub
+* Stuur liever alleen alle gebeurtenissen vanaf een apparaat via IoT Hub
 
-Als u deze zelfstudie wilt voltooien, moet u de volgende concepten begrijpen:
+Voor het volt ooien van deze zelf studie moet u de volgende concepten begrijpen:
 
-- [Concepten voor gebeurtenisrasters](concepts.md)
-- [IoT Edge-hub](../../iot-edge/module-composition.md) 
+- [Event Grid concepten](concepts.md)
+- [IoT Edge hub](../../iot-edge/module-composition.md) 
 
 ## <a name="prerequisites"></a>Vereisten 
-Om deze tutorial te voltooien, moet je:
+Als u deze zelf studie wilt volt ooien, hebt u het volgende nodig:
 
-* **Azure-abonnement** - Maak een [gratis account](https://azure.microsoft.com/free) als u er nog geen hebt. 
-* **Azure IoT Hub en IoT Edge-apparaat** - Volg de stappen in de snelle start voor [Linux-](../../iot-edge/quickstart-linux.md) of [Windows-apparaten](../../iot-edge/quickstart.md) als u er nog geen hebt.
+* **Azure-abonnement** : Maak een [gratis account](https://azure.microsoft.com/free) als u er nog geen hebt. 
+* **Azure IOT hub en IOT edge apparaat** : Volg de stappen in de Quick start voor [Linux](../../iot-edge/quickstart-linux.md) -of [Windows-apparaten](../../iot-edge/quickstart.md) als u er nog geen hebt.
 
 [!INCLUDE [event-grid-deploy-iot-edge](../../../includes/event-grid-deploy-iot-edge.md)]
 
 ## <a name="create-topic"></a>Onderwerp maken
 
-Als uitgever van een gebeurtenis moet u een gebeurtenisrasteronderwerp maken. Het onderwerp verwijst naar een eindpunt waar uitgevers vervolgens gebeurtenissen naartoe kunnen sturen.
+Als uitgever van een gebeurtenis moet u een event grid-onderwerp maken. Het onderwerp verwijst naar een eind punt waarnaar uitgevers gebeurtenissen vervolgens naar kunnen verzenden.
 
-1. Maak topic4.json met de volgende inhoud. Zie onze [API-documentatie](api.md) voor meer informatie over de payload.
+1. Maak topic4. json met de volgende inhoud. Zie onze [API-documentatie](api.md) voor meer informatie over de payload.
 
    ```json
     {
@@ -50,13 +50,13 @@ Als uitgever van een gebeurtenis moet u een gebeurtenisrasteronderwerp maken. He
           }
     }
     ```
-1. Voer de volgende opdracht uit om het onderwerp te maken. HTTP-statuscode van 200 OK moet worden geretourneerd.
+1. Voer de volgende opdracht uit om het onderwerp te maken. De HTTP-status code van 200 OK moet worden geretourneerd.
 
     ```sh
     curl -k -H "Content-Type: application/json" -X PUT -g -d @topic4.json https://<your-edge-device-public-ip-here>:4438/topics/sampleTopic4?api-version=2019-01-01-preview
     ```
 
-1. Voer de volgende opdracht uit om te controleren of het onderwerp is gemaakt. HTTP-statuscode van 200 OK moet worden geretourneerd.
+1. Voer de volgende opdracht uit om het onderwerp te controleren dat is gemaakt. De HTTP-status code van 200 OK moet worden geretourneerd.
 
     ```sh
     curl -k -H "Content-Type: application/json" -X GET -g https://<your-edge-device-public-ip-here>:4438/topics/sampleTopic4?api-version=2019-01-01-preview
@@ -78,13 +78,13 @@ Als uitgever van een gebeurtenis moet u een gebeurtenisrasteronderwerp maken. He
         ]
    ```
 
-## <a name="create-event-subscription"></a>Gebeurtenisabonnement maken
+## <a name="create-event-subscription"></a>Gebeurtenis abonnement maken
 
-Abonnees kunnen zich inschrijven voor evenementen die zijn gepubliceerd in een onderwerp. Om een evenement te ontvangen, moeten ze een abonnement op het evenementraster maken voor een interessant onderwerp.
+Abonnees kunnen zich registreren voor gebeurtenissen die naar een onderwerp worden gepubliceerd. Als u een gebeurtenis wilt ontvangen, moet u een event grid-abonnement maken op een onderwerp van belang.
 
 [!INCLUDE [event-grid-deploy-iot-edge](../../../includes/event-grid-edge-persist-event-subscriptions.md)]
 
-1. Maak subscription4.json met de onderstaande content. Raadpleeg onze [API-documentatie](api.md) voor meer informatie over de payload.
+1. Maak subscription4. json met de onderstaande inhoud. Raadpleeg onze [API-documentatie](api.md) voor meer informatie over de payload.
 
    ```json
     {
@@ -100,13 +100,13 @@ Abonnees kunnen zich inschrijven voor evenementen die zijn gepubliceerd in een o
    ```
 
    >[!NOTE]
-   > De `endpointType` geeft aan `edgeHub`dat de abonnee is . Hiermee `outputName` geeft u de uitvoer op waarop de module Gebeurtenisraster gebeurtenissen routeert die overeenkomen met dit abonnement op edgeHub. Gebeurtenissen die overeenkomen met het bovenstaande abonnement `/messages/modules/eventgridmodule/outputs/sampleSub4`worden bijvoorbeeld naar geschreven .
-2. Voer de volgende opdracht uit om het abonnement te maken. HTTP-statuscode van 200 OK moet worden geretourneerd.
+   > `endpointType` Hiermee geeft u op dat de `edgeHub`abonnee is. `outputName` Hiermee geeft u de uitvoer op waarop de Event grid-module gebeurtenissen stuurt die overeenkomen met dit abonnement op edgeHub. Bijvoorbeeld: gebeurtenissen die overeenkomen met het bovenstaande abonnement, worden geschreven `/messages/modules/eventgridmodule/outputs/sampleSub4`naar.
+2. Voer de volgende opdracht uit om het abonnement te maken. De HTTP-status code van 200 OK moet worden geretourneerd.
 
     ```sh
     curl -k -H "Content-Type: application/json" -X PUT -g -d @subscription4.json https://<your-edge-device-public-ip-here>:4438/topics/sampleTopic4/eventSubscriptions/sampleSubscription4?api-version=2019-01-01-preview
     ```
-3. Voer de volgende opdracht uit om te controleren of het abonnement is gemaakt. HTTP-statuscode van 200 OK moet worden geretourneerd.
+3. Voer de volgende opdracht uit om het abonnement te controleren dat is gemaakt. De HTTP-status code van 200 OK moet worden geretourneerd.
 
     ```sh
     curl -k -H "Content-Type: application/json" -X GET -g https://<your-edge-device-public-ip-here>:4438/topics/sampleTopic4/eventSubscriptions/sampleSubscription4?api-version=2019-01-01-preview
@@ -131,16 +131,16 @@ Abonnees kunnen zich inschrijven voor evenementen die zijn gepubliceerd in een o
         }
     ```
 
-## <a name="set-up-an-edge-hub-route"></a>Een randhubroute instellen
+## <a name="set-up-an-edge-hub-route"></a>Een Edge hub-route instellen
 
-Werk de route van de edge hub bij om de gebeurtenissen van het evenementabonnement door te sturen om als volgt naar IoTHub te worden doorgestuurd:
+Werk de route van de Edge hub bij om de gebeurtenissen van het gebeurtenis abonnement door te sturen naar IoTHub als volgt:
 
-1. Aanmelden bij de [Azure-portal](https://ms.portal.azure.com)
-1. Navigeer naar de **IoT-hub**.
-1. **IoT Edge selecteren** in het menu
-1. Selecteer de id van het doelapparaat in de lijst met apparaten.
-1. Selecteer **Modules instellen**.
-1. Selecteer **Volgende** en naar de sectie routes.
+1. Meld u aan bij de [Azure Portal](https://ms.portal.azure.com)
+1. Navigeer naar het **IOT hub**.
+1. **IOT Edge** selecteren in het menu
+1. Selecteer de ID van het doel apparaat in de lijst met apparaten.
+1. Selecteer **modules instellen**.
+1. Selecteer **volgende** en naar het gedeelte routes.
 1. Voeg in de routes een nieuwe route toe
 
   ```sh
@@ -158,17 +158,17 @@ Werk de route van de edge hub bij om de gebeurtenissen van het evenementabonneme
   ```
 
    >[!NOTE]
-   > De bovenstaande route stuurt alle gebeurtenissen door die overeenkomen met dit abonnement dat moet worden doorgestuurd naar de IoT-hub. U de functies voor het routeren van de [Edge-hub](../../iot-edge/module-composition.md) gebruiken om de gebeurtenissen in het gebeurtenisraster verder te filteren en door te sturen naar andere IoT Edge-modules.
+   > Met de bovenstaande route worden alle gebeurtenissen die overeenkomen voor dit abonnement, doorgestuurd naar de IoT-hub. U kunt de routerings functies van de [Edge hub](../../iot-edge/module-composition.md) gebruiken om de Event grid-gebeurtenissen te filteren op andere IOT Edge modules.
 
-## <a name="setup-iot-hub-route"></a>IoT-hubroute instellen
+## <a name="setup-iot-hub-route"></a>IoT Hub route instellen
 
-Bekijk de [zelfstudie voor het routeren van IoT-hub](../../iot-hub/tutorial-routing.md) om een route in te stellen vanuit de IoT-hub, zodat u gebeurtenissen bekijken die zijn doorgestuurd vanuit de module Gebeurtenisraster. Gebruik `true` voor de query om de zelfstudie eenvoudig te houden.  
+Raadpleeg de [zelf studie over IOT hub route ring](../../iot-hub/tutorial-routing.md) voor het instellen van een route van de IOT-hub, zodat u gebeurtenissen kunt weer geven die zijn doorgestuurd vanuit de module Event grid. Gebruiken `true` voor de query om de zelf studie eenvoudig te laten blijven.  
 
 
 
 ## <a name="publish-an-event"></a>Een gebeurtenis publiceren
 
-1. Maak event4.json met de volgende inhoud. Zie onze [API-documentatie](api.md) voor meer informatie over de payload.
+1. Maak event4. json met de volgende inhoud. Zie onze [API-documentatie](api.md) voor meer informatie over de payload.
 
     ```json
         [
@@ -186,32 +186,32 @@ Bekijk de [zelfstudie voor het routeren van IoT-hub](../../iot-hub/tutorial-rout
         ]
     ```
 
-1. Voer de volgende opdracht uit om gebeurtenis te publiceren:
+1. Voer de volgende opdracht uit om de gebeurtenis te publiceren:
 
     ```sh
     curl -k -H "Content-Type: application/json" -X POST -g -d @event4.json https://<your-edge-device-public-ip-here>:4438/topics/sampleTopic4/events?api-version=2019-01-01-preview
     ```
 
-## <a name="verify-event-delivery"></a>De levering van gebeurtenissen verifiëren
+## <a name="verify-event-delivery"></a>Gebeurtenis levering verifiëren
 
-Zie de zelfstudie voor [het routeren van](../../iot-hub/tutorial-routing.md) IoT-hub voor de stappen om de gebeurtenissen weer te geven.
+Raadpleeg de [zelf studie over IOT hub route ring](../../iot-hub/tutorial-routing.md) voor de stappen om de gebeurtenissen weer te geven.
 
 ## <a name="cleanup-resources"></a>Resources opruimen
 
-* Voer de volgende opdracht uit om het onderwerp en alle abonnementen aan de rand te verwijderen:
+* Voer de volgende opdracht uit om het onderwerp en alle bijbehorende abonnementen aan de rand te verwijderen:
 
     ```sh
     curl -k -H "Content-Type: application/json" -X DELETE https://<your-edge-device-public-ip-here>:4438/topics/sampleTopic4?api-version=2019-01-01-preview
     ```
-* Verwijder ook alle resources die zijn gemaakt tijdens het instellen van IoTHub-routering in de cloud.
+* Verwijder alle resources die zijn gemaakt bij het instellen van IoTHub-route ring in de Cloud.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze zelfstudie hebt u een onderwerp van het gebeurtenisraster, een abonnement op de edge-hub en gepubliceerde gebeurtenissen gemaakt. Nu u de basisstappen kent om door te sturen naar een randhub, raadpleegt u de volgende artikelen:
+In deze zelf studie hebt u een event grid-onderwerp, Edge hub-abonnement en gepubliceerde gebeurtenissen gemaakt. Nu u weet wat de basis stappen zijn om door te sturen naar een Edge hub, raadpleegt u de volgende artikelen:
 
-* Zie [Gids voor probleemoplossing](troubleshoot.md)voor het oplossen van problemen met het gebruik van Azure Event Grid op IoT Edge.
-* Filters [voor randhubroute](../../iot-edge/module-composition.md) gebruiken om gebeurtenissen te partitioneren
-* Persistentie van Event Grid-module instellen op [linux](persist-state-linux.md) of [Windows](persist-state-windows.md)
-* [Documentatie volgen](configure-client-auth.md) om clientverificatie te configureren
-* Gebeurtenissen doorsturen naar Azure Event Grid in de cloud door deze [zelfstudie](forward-events-event-grid-cloud.md) te volgen
-* [Onderwerpen en abonnementen op de rand bewaken](monitor-topics-subscriptions.md)
+* Zie [probleemoplossings gids voor informatie](troubleshoot.md)over het oplossen van problemen met het gebruik van Azure Event Grid op IOT Edge.
+* [Edge hub](../../iot-edge/module-composition.md) -route filters gebruiken om gebeurtenissen te partitioneren
+* Persistentie van Event Grid module instellen in [Linux](persist-state-linux.md) of [Windows](persist-state-windows.md)
+* Volg de [documentatie](configure-client-auth.md) voor het configureren van client verificatie
+* Door sturen van gebeurtenissen naar Azure Event Grid in de Cloud door deze [zelf studie](forward-events-event-grid-cloud.md) te volgen
+* [Onderwerpen en abonnementen bewaken aan de rand](monitor-topics-subscriptions.md)

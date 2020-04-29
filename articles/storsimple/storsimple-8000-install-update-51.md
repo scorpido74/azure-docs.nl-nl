@@ -1,6 +1,6 @@
 ---
-title: Installatieupdate 5.1 op storSimple 8000-serie apparaat | Microsoft Documenten
-description: Hier wordt uitgelegd hoe u StorSimple 8000 Series Update 5.1 installeert op uw StorSimple 8000-serie apparaat.
+title: Update 5,1 op StorSimple 8000 Series-apparaat installeren | Microsoft Docs
+description: In dit artikel wordt uitgelegd hoe u StorSimple 8000 Series Update 5,1 installeert op uw apparaat met de StorSimple 8000-serie.
 services: storsimple
 documentationcenter: NA
 author: priestlg
@@ -13,25 +13,25 @@ ms.workload: TBD
 ms.date: 03/05/2020
 ms.author: v-grpr
 ms.openlocfilehash: b90f0f35f908d16b0746075e638fe66769939a64
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/03/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80658038"
 ---
-# <a name="install-update-51-on-your-storsimple-device"></a>Update 5.1 installeren op uw StorSimple-apparaat
+# <a name="install-update-51-on-your-storsimple-device"></a>Update 5,1 op uw StorSimple-apparaat installeren
 
 ## <a name="overview"></a>Overzicht
 
-In deze zelfstudie wordt uitgelegd hoe u Update 5.1 installeert op een StorSimple-apparaat waarop een eerdere softwareversie wordt uitgevoerd via de Azure-portal. <!--The hotfix method is used when you are trying to install Update 5.1 on a device running pre-Update 3 versions. The hotfix method is also used when a gateway is configured on a network interface other than DATA 0 of the StorSimple device and you are trying to update from a pre-Update 1 software version.-->
+In deze zelf studie wordt uitgelegd hoe u update 5,1 installeert op een StorSimple-apparaat waarop een eerdere software versie wordt uitgevoerd via de Azure Portal. <!--The hotfix method is used when you are trying to install Update 5.1 on a device running pre-Update 3 versions. The hotfix method is also used when a gateway is configured on a network interface other than DATA 0 of the StorSimple device and you are trying to update from a pre-Update 1 software version.-->
 
-Update 5.1 bevat niet-storende beveiligingsupdates. De niet-storende of regelmatige updates kunnen worden toegepast via de Azure-portal <!--or by the hotfix method-->.
+Update 5,1 bevat niet-verstorende beveiligings updates. De niet-verstorende of reguliere updates kunnen worden toegepast via de Azure Portal <!--or by the hotfix method-->.
 
 > [!IMPORTANT]
 >
-> * Update 5.1 is een verplichte update en moet onmiddellijk worden geïnstalleerd. Zie [Update 5.1 release notes](storsimple-update51-release-notes.md)voor meer informatie.
-> * Voorafgaand aan de installatie wordt een reeks handmatige en automatische voorcontroles uitgevoerd om de status van het apparaat te bepalen in termen van hardwarestatus en netwerkconnectiviteit. Deze pre-checks worden alleen uitgevoerd als u de updates van de Azure-portal toepast.
-> * Als u wilt installeren met de hotfix-methode, neemt u contact op met [Microsoft Support](mailto:support@microsoft.com).
+> * Update 5,1 is een verplichte update die direct moet worden geïnstalleerd. Zie [Update 5,1 Release Notes](storsimple-update51-release-notes.md)(Engelstalig) voor meer informatie.
+> * Vóór de installatie wordt een set hand matig en automatische controles uitgevoerd om te bepalen wat de status is van de apparaatstatus en de netwerk verbinding. Deze controle vooraf wordt alleen uitgevoerd als u de updates van de Azure Portal toepast.
+> * Als u wilt installeren met behulp van de hotfix-methode, neemt u contact op met [Microsoft ondersteuning](mailto:support@microsoft.com).
 
 <!--
 > * We strongly recommend that when updating a device running versions prior to Update 3, you install the updates using hotfix method. If you encounter any issues, [log a support ticket](storsimple-8000-contact-microsoft-support.md). 
@@ -45,12 +45,12 @@ Update 5.1 bevat niet-storende beveiligingsupdates. De niet-storende of regelmat
 
 [!INCLUDE [storsimple-preparing-for-update](../../includes/storsimple-preparing-for-updates.md)]
 
-## <a name="install-update-51-through-the-azure-portal"></a>Update 5.1 installeren via de Azure-portal
+## <a name="install-update-51-through-the-azure-portal"></a>Installeer update 5,1 via de Azure Portal
 
-Voer de volgende stappen uit om uw apparaat bij te werken naar [Update 5.1](storsimple-update51-release-notes.md).
+Voer de volgende stappen uit om uw apparaat bij te werken naar [update 5,1](storsimple-update51-release-notes.md).
 
 > [!NOTE]
-> Microsoft haalt aanvullende diagnostische informatie van het apparaat. Als gevolg hiervan, wanneer ons operationele team apparaten identificeert die problemen hebben, zijn we beter uitgerust om informatie van het apparaat te verzamelen en problemen te diagnosticeren.
+> Micro soft haalt extra diagnostische gegevens van het apparaat op. Als het operationele team apparaten identificeert die problemen ondervinden, zijn we beter uitgerust met het verzamelen van gegevens van het apparaat en het vaststellen van problemen.
 
 #### <a name="to-install-an-update-from-the-azure-portal"></a>Een update installeren via Azure Portal
 
@@ -58,17 +58,17 @@ Voer de volgende stappen uit om uw apparaat bij te werken naar [Update 5.1](stor
 
     ![Apparaat selecteren](./media/storsimple-8000-install-update-51/update1.png)
 
-2. Ga naar > **Apparaatinstellingen-updates**. **Device settings**
+2. Navigeren > naar **Apparaatinstellingen apparaat-****updates**.
 
-    ![Klik op Apparaatupdates](./media/storsimple-8000-install-update-51/update2.png)
+    ![Klik op updates voor apparaten](./media/storsimple-8000-install-update-51/update2.png)
 
-3. Er verschijnt een melding als er nieuwe updates beschikbaar zijn. U ook in het blade **Apparaatupdates** klikken op **Updates scannen**. Er wordt een taak gemaakt om te zoeken naar beschikbare updates. U ontvangt een melding wanneer de taak is voltooid.
+3. Er wordt een melding weer gegeven als er nieuwe updates beschikbaar zijn. U kunt ook op de Blade **updates voor apparaten** klikken op **updates scannen**. Er wordt een taak gemaakt om te zoeken naar beschikbare updates. U ontvangt een melding wanneer de taak is voltooid.
 
-    ![Klik op Apparaatupdates](./media/storsimple-8000-install-update-51/update3.png)
+    ![Klik op updates voor apparaten](./media/storsimple-8000-install-update-51/update3.png)
 
-4. We raden u aan de releaseopmerkingen te bekijken voordat u een update toepast op uw apparaat. Als u updates wilt toepassen, klikt u op **Updates installeren**. Bekijk in het blade **Voor regelmatige updates bevestigen** de vereisten die u moet voltooien voordat u updates toepast. Schakel het selectievakje in om aan te geven dat u klaar bent om het apparaat bij te werken en klik op **Installeren**.
+4. We raden u aan de releaseopmerkingen te bekijken voordat u een update toepast op uw apparaat. Klik op **updates installeren**om updates toe te passen. Controleer op de Blade **regel matige updates bevestigen** de vereiste onderdelen om te volt ooien voordat u updates toepast. Schakel het selectie vakje in om aan te geven dat u klaar bent voor het bijwerken van het apparaat en klik vervolgens op **installeren**.
 
-    ![Klik op Apparaatupdates](./media/storsimple-8000-install-update-51/update4.png)
+    ![Klik op updates voor apparaten](./media/storsimple-8000-install-update-51/update4.png)
 
 5. Er wordt een reeks vereiste controles gestart. Deze controles zijn onder andere:
    
@@ -76,9 +76,9 @@ Voer de volgende stappen uit om uw apparaat bij te werken naar [Update 5.1](stor
    * **Statuscontroles hardwareonderdelen** om te controleren of alle hardwareonderdelen op uw StorSimple-apparaat in orde zijn.
    * **DATA 0-controles** om te controleren of DATA 0 is ingeschakeld op uw apparaat. Als deze interface niet is ingeschakeld, schakelt u deze in en probeert u het vervolgens opnieuw.
 
-     De update wordt alleen gedownload en geïnstalleerd als alle controles zijn voltooid. U krijgt een melding wanneer de controles worden uitgevoerd. Als de prechecks mislukken, dan krijgt u de redenen voor het mislukken. Deze problemen aanpakken en vervolgens de bewerking opnieuw proberen. Mogelijk moet u contact opnemen met Microsoft-ondersteuning als u deze problemen niet zelf kunt oplossen.
+     De update wordt alleen gedownload en geïnstalleerd als alle controles zijn voltooid. U krijgt een melding wanneer de controles worden uitgevoerd. Als de voor controle mislukt, dan worden de redenen voor de fout weer gegeven. Los deze problemen op en voer de bewerking opnieuw uit. Mogelijk moet u contact opnemen met Microsoft-ondersteuning als u deze problemen niet zelf kunt oplossen.
 
-7. Nadat de voorcontroles zijn voltooid, wordt een updatetaak gemaakt. U krijgt een melding wanneer de bijwerktaak is gemaakt.
+7. Nadat de voor controle is voltooid, wordt een update taak gemaakt. U krijgt een melding wanneer de bijwerktaak is gemaakt.
    
     ![Maken van bijwerktaak](./media/storsimple-8000-install-update-51/update6.png)
    
@@ -88,14 +88,14 @@ Voer de volgende stappen uit om uw apparaat bij te werken naar [Update 5.1](stor
 
     ![Maken van bijwerktaak](./media/storsimple-8000-install-update-51/update8.png)
 
-     U ook de voortgang van de updatetaak volgen vanuit **apparaatinstellingen > Vacatures.** Op het blade **Jobs** ziet u de voortgang van de update.
+     U kunt ook de voortgang van de update taak controleren op basis van **apparaatinstellingen > taken**. Op de Blade **taken** ziet u de voortgang van de update.
 
      ![Maken van bijwerktaak](./media/storsimple-8000-install-update-51/update7.png)
 
-10. Nadat de taak is voltooid, navigeert u naar de **apparaatinstellingen > apparaatupdates**. De softwareversie moet nu worden bijgewerkt.
+10. Nadat de taak is voltooid, gaat u naar de **apparaatinstellingen > updates**van het apparaat. De software versie moet nu worden bijgewerkt.
 
 
-Controleer of uw apparaat de **StorSimple 8000-serie Update 5.1 (6.3.9600.17885)** gebruikt. De **laatst bijgewerkte datum** moet worden gewijzigd.
+Controleer of de **StorSimple 8000 Series Update 5,1 (6.3.9600.17885)** op uw apparaat wordt uitgevoerd. De **laatst bijgewerkte datum** moet worden gewijzigd.
 <!-- 5.1 - KB 4542887-->
 
 <!--You will now see that the Maintenance mode updates are available (this message might continue to be displayed for up to 24 hours after you install the updates). The steps to install maintenance mode update are detailed in the next section.
@@ -168,4 +168,4 @@ Perform the following steps to download and install the hotfixes.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Meer informatie over de [update 5.1-versie](storsimple-update51-release-notes.md).
+Meer informatie over de [Update 5,1-release](storsimple-update51-release-notes.md).
