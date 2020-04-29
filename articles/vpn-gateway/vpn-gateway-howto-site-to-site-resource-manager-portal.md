@@ -1,5 +1,5 @@
 ---
-title: 'On-premises netwerk verbinden met het virtuele Azure-netwerk: VPN van site naar site: Portal'
+title: 'On-premises netwerk verbinden met een virtueel Azure-netwerk: site-naar-site-VPN: Portal'
 description: Stappen voor het maken van een IPSec-verbinding van uw on-premises netwerk met een virtueel Azure-netwerk via het openbare internet. Deze stappen helpen u een cross-premises site-naar-site-VPN-gatewayverbinding te maken met de portal.
 services: vpn-gateway
 titleSuffix: Azure VPN Gateway
@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 03/03/2020
 ms.author: cherylmc
 ms.openlocfilehash: 857b50a04466f43a25cf80d7930cfb4639dc9d65
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79244431"
 ---
 # <a name="create-a-site-to-site-connection-in-the-azure-portal"></a>Een site-naar-site-verbinding maken in Azure Portal
@@ -20,8 +20,8 @@ ms.locfileid: "79244431"
 In dit artikel leest u hoe u Azure Portal gebruikt om een site-naar-site-VPN-gatewayverbinding te maken vanaf uw on-premises netwerk naar het VNet. De stappen in dit artikel zijn van toepassing op het Resource Manager-implementatiemodel. U kunt deze configuratie ook maken met een ander implementatiehulpprogramma of een ander implementatiemodel door in de volgende lijst een andere optie te selecteren:
 
 > [!div class="op_single_selector"]
-> * [Azure-portal](vpn-gateway-howto-site-to-site-resource-manager-portal.md)
-> * [Powershell](vpn-gateway-create-site-to-site-rm-powershell.md)
+> * [Azure Portal](vpn-gateway-howto-site-to-site-resource-manager-portal.md)
+> * [PowerShell](vpn-gateway-create-site-to-site-rm-powershell.md)
 > * [CLI](vpn-gateway-howto-site-to-site-resource-manager-cli.md)
 > * [Azure Portal (klassiek)](vpn-gateway-howto-site-to-site-classic-portal.md)
 > 
@@ -39,31 +39,31 @@ Controleer voordat u met de configuratie begint of u aan de volgende criteria he
 * Controleer of u een extern gericht openbaar IPv4-adres voor het VPN-apparaat hebt.
 * Als u de IP-adresbereiken in uw on-premises netwerkconfiguratie niet kent, moet u contact opnemen met iemand die u hierbij kan helpen en de benodigde gegevens kan verstrekken. Wanneer u deze configuratie maakt, moet u de IP-adresbereikvoorvoegsels opgeven die Azure naar uw on-premises locatie doorstuurt. Geen van de subnetten van uw on-premises netwerk kan overlappen met de virtuele subnetten waarmee u verbinding wilt maken. 
 
-### <a name="example-values"></a><a name="values"></a>Voorbeeldwaarden
+### <a name="example-values"></a><a name="values"></a>Voorbeeld waarden
 
 In de voorbeelden in dit artikel worden de volgende waarden gebruikt. U kunt deze waarden gebruiken om een testomgeving te maken of ze raadplegen om meer inzicht te krijgen in de voorbeelden in dit artikel. Zie [Over instellingen voor VPN Gateway](vpn-gateway-about-vpn-gateway-settings.md) voor meer informatie over instellingen voor VPN-gateways in het algemeen.
 
-* **Virtuele netwerknaam:** VNet1 (VNet1)
+* **Naam van virtueel netwerk:** VNet1
 * **Adresruimte:** 10.1.0.0/16
 * **Abonnement:** Het gewenste abonnement
 * **Resourcegroep: **TestRG1
-* **Regio:** Oost-VS
+* **Regio:** VS-Oost
 * **Subnet:** FrontEnd: 10.1.0.0/24, BackEnd: 10.1.1.0/24 (optioneel voor deze oefening)
-* **Subnetadresbereik gateway:** 10.1.255.0/27
-* **Naam virtuele netwerkgateway:** VNet1GW (VNet1GW)
+* **Adres bereik gateway-subnet:** 10.1.255.0/27
+* **Naam van de virtuele netwerk gateway:** VNet1GW
 * **Openbare IP-adresnaam:** VNet1GWpip
-* **VPN-type:** Op route gebaseerd
-* **Verbindingstype:** Site-to-site (IPsec)
-* **Gatewaytype:** Vpn
-* **Lokale netwerkgatewaynaam:** Site1
-* **Verbindingsnaam:** VNet1toSite1
+* **VPN-type:** Op basis van route
+* **Verbindings type:** Site-naar-site (IPsec)
+* **Gateway type:** VPN
+* **Naam van lokale netwerk gateway:** Site1
+* **Verbindings naam:** VNet1toSite1
 * **Gedeelde sleutel:** In dit voorbeeld gebruiken we abc123. Maar u kunt datgene gebruiken wat compatibel is met uw VPN-hardware. Het belangrijkste is dat de waarden aan beide zijden van de verbinding met elkaar overeenkomen.
 
-## <a name="1-create-a-virtual-network"></a><a name="CreatVNet"></a>1. Een virtueel netwerk maken
+## <a name="1-create-a-virtual-network"></a><a name="CreatVNet"></a>1. een virtueel netwerk maken
 
 [!INCLUDE [Create a virtual network](../../includes/vpn-gateway-basic-vnet-rm-portal-include.md)]
 
-## <a name="2-create-the-vpn-gateway"></a><a name="VNetGateway"></a>2. Maak de VPN-gateway
+## <a name="2-create-the-vpn-gateway"></a><a name="VNetGateway"></a>2. de VPN-gateway maken
 
 In deze stap maakt u de virtuele netwerkgateway VNet. Het maken van een gateway duurt vaak 45 minuten of langer, afhankelijk van de geselecteerde gateway-SKU.
 
@@ -71,24 +71,24 @@ In deze stap maakt u de virtuele netwerkgateway VNet. Het maken van een gateway 
 
 ### <a name="example-settings"></a>Voorbeeldinstellingen
 
-* **Voorbeelddetails > regio:** Oost-VS
-* **Virtueel netwerk > virtueel netwerk:** VNet1 (VNet1)
-* **Voorbeelddetails > Naam:** VNet1GW (VNet1GW)
-* **Voorbeelddetails > Gateway-type:** Vpn
-* **Instantiedetails > VPN-type:** Op route gebaseerd
-* **Subnetadresbereik voor virtuele netwerken > Gateway:** 10.1.255.0/27
-* **Openbaar IP-adres > openbare IP-adresnaam:** VNet1GWpip
+* **Instantie details > regio:** VS-Oost
+* **Virtual Network > virtuele netwerk:** VNet1
+* **Exemplaar details > naam:** VNet1GW
+* **Exemplaar details > gateway type:** VPN
+* **Exemplaar details > VPN-type:** Op basis van route
+* **Adres bereik van > gateway-subnet Virtual Network:** 10.1.255.0/27
+* **Openbaar IP-adres > open bare IP-adres naam:** VNet1GWpip
 
 [!INCLUDE [Create a vpn gateway](../../includes/vpn-gateway-add-gw-rm-portal-include.md)]
 
 [!INCLUDE [NSG warning](../../includes/vpn-gateway-no-nsg-include.md)]
 
 
-## <a name="3-create-the-local-network-gateway"></a><a name="LocalNetworkGateway"></a>3. De lokale netwerkgateway maken
+## <a name="3-create-the-local-network-gateway"></a><a name="LocalNetworkGateway"></a>3. de lokale netwerk gateway maken
 
 De lokale netwerkgateway verwijst doorgaans naar uw on-premises locatie. U geeft de site een naam waarmee Azure hiernaar kan verwijzen en geeft vervolgens het IP-adres op van het on-premises VPN-apparaat waarmee u verbinding maakt. U geeft ook de IP-adresvoorvoegsels op die via de VPN-gateway worden doorgestuurd naar het VPN-apparaat. De adresvoorvoegsels die u opgeeft, zijn de voorvoegsels die zich in uw on-premises netwerk bevinden. Als uw on-premises netwerk verandert of als u het openbare IP-adres voor het VPN-apparaat moet wijzigen, kunt u de waarden later eenvoudig bijwerken.
 
-**Voorbeeldwaarden**
+**Voorbeeld waarden**
 
 * **Naam:** Site1
 * **Resourcegroep: **TestRG1
@@ -97,7 +97,7 @@ De lokale netwerkgateway verwijst doorgaans naar uw on-premises locatie. U geeft
 
 [!INCLUDE [Add a local network gateway](../../includes/vpn-gateway-add-local-network-gateway-portal-include.md)]
 
-## <a name="4-configure-your-vpn-device"></a><a name="VPNDevice"></a>4. Configureer uw VPN-apparaat
+## <a name="4-configure-your-vpn-device"></a><a name="VPNDevice"></a>4. uw VPN-apparaat configureren
 
 Voor site-naar-site-verbindingen met een on-premises netwerk is een VPN-apparaat vereist. In deze stap configureert u het VPN-apparaat. Bij de configuratie van uw VPN-apparaat hebt u het volgende nodig:
 
@@ -106,13 +106,13 @@ Voor site-naar-site-verbindingen met een on-premises netwerk is een VPN-apparaat
 
 [!INCLUDE [Configure a VPN device](../../includes/vpn-gateway-configure-vpn-device-include.md)]
 
-## <a name="5-create-the-vpn-connection"></a><a name="CreateConnection"></a>5. De VPN-verbinding maken
+## <a name="5-create-the-vpn-connection"></a><a name="CreateConnection"></a>5. de VPN-verbinding maken
 
 Maak de site-naar-site-VPN-verbinding tussen de gateway van uw virtuele netwerk en het on-premises VPN-apparaat.
 
 [!INCLUDE [Add a site-to-site connection](../../includes/vpn-gateway-add-site-to-site-connection-portal-include.md)]
 
-## <a name="6-verify-the-vpn-connection"></a><a name="VerifyConnection"></a>6. De VPN-verbinding verifiëren
+## <a name="6-verify-the-vpn-connection"></a><a name="VerifyConnection"></a>6. Controleer de VPN-verbinding
 
 [!INCLUDE [Verify the connection](../../includes/vpn-gateway-verify-connection-portal-include.md)]
 
@@ -144,5 +144,5 @@ U kunt extra verbindingen toevoegen, mits geen van de adresruimten tussen verbin
 * Zie [Maximaal beschikbare cross-premises en VNet-naar-VNet-connectiviteit](vpn-gateway-highlyavailable.md) voor meer informatie over maximaal beschikbare actieve verbindingen.
 * Zie [Netwerkbeveiliging](../virtual-network/security-overview.md) voor informatie over het beperken van netwerkverkeer tot resources in een virtueel netwerk.
 * Zie [Routering van verkeer in virtuele netwerken](../virtual-network/virtual-networks-udr-overview.md) voor informatie over hoe Azure verkeer routeert tussen Azure-resources, on-premises resources en resources op internet.
-* Zie [Een VPN-verbinding](https://azure.microsoft.com/resources/templates/101-site-to-site-vpn-create/)van site naar site maken voor informatie over het maken van een VPN-verbinding van site naar site met azure resourcemanager.
-* Zie Georeplicatie van [HBase](https://azure.microsoft.com/resources/templates/101-hdinsight-hbase-replication-geo/)implementeren voor informatie over het maken van een Vpn-verbinding tussen Vnet en Vnet met azure resource manager.
+* Zie [een site-naar-site-VPN-verbinding maken](https://azure.microsoft.com/resources/templates/101-site-to-site-vpn-create/)voor meer informatie over het maken van een site-naar-site-VPN-verbinding met behulp van Azure Resource Manager sjabloon.
+* Zie [HBase geo-replicatie implementeren](https://azure.microsoft.com/resources/templates/101-hdinsight-hbase-replication-geo/)voor meer informatie over het maken van een vnet-naar-VNET-VPN-verbinding met behulp van Azure Resource Manager sjabloon.

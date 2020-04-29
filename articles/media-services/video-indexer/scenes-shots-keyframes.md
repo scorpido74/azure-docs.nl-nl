@@ -1,7 +1,7 @@
 ---
-title: Video Indexer-scènes, opnamen en hoofdframes
+title: Video Indexer scènes, afbeeldingen en keyframes
 titleSuffix: Azure Media Services
-description: Dit onderwerp geeft een overzicht van de video-indexerscènes, shots en hoofdframes.
+description: In dit onderwerp vindt u een overzicht van de Video Indexer scènes, afbeeldingen en keyframes.
 services: media-services
 author: Juliako
 manager: femila
@@ -11,52 +11,52 @@ ms.topic: article
 ms.date: 07/05/2019
 ms.author: juliako
 ms.openlocfilehash: a833fd808049cfce95b182910e50e38d3c39f4e5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79245939"
 ---
 # <a name="scenes-shots-and-keyframes"></a>Scènes, opnamen en sleutelframes
 
-Video Indexer ondersteunt het segmenteren van video's in tijdelijke eenheden op basis van structurele en semantische eigenschappen. Met deze mogelijkheid kunnen klanten eenvoudig hun video-inhoud bekijken, beheren en bewerken op basis van verschillende granulariteiten. Bijvoorbeeld op basis van scènes, opnamen en hoofdframes, beschreven in dit onderwerp.   
+Video Indexer ondersteunt het segmenteren van Video's in tijdelijke eenheden op basis van structurele en semantische eigenschappen. Met deze mogelijkheid kunnen klanten eenvoudig hun video-inhoud zoeken, beheren en bewerken op basis van verschillende granulariteit. Bijvoorbeeld, op basis van scènes, afbeeldingen en keyframes, zoals beschreven in dit onderwerp.   
 
 ![Scènes, opnamen en sleutelframes](./media/scenes-shots-keyframes/scenes-shots-keyframes.png)
  
-## <a name="scene-detection"></a>Scènedetectie  
+## <a name="scene-detection"></a>Scène detectie  
  
-Videoindexer bepaalt wanneer een scène verandert in video op basis van visuele aanwijzingen. Een scène toont een enkele gebeurtenis en het is samengesteld uit een reeks opeenvolgende opnamen, die semantisch gerelateerd zijn. Een scèneminiatuur is het eerste hoofdframe van de onderliggende opname. Video-indexer segmenten van een video in scènes op basis van kleur coherentie over opeenvolgende opnamen en haalt het begin en de eindtijd van elke scène. Scènedetectie wordt beschouwd als een uitdagende taak omdat het gaat om het kwantificeren van semantische aspecten van video's.
+Video Indexer bepaalt wanneer een scène wordt gewijzigd in video op basis van visuele hints. In een scène wordt één gebeurtenis weer gegeven en deze bestaat uit een reeks opeenvolgende opnamen, die semantisch verwant zijn. Een scène miniatuur is het eerste keyframe van de onderliggende afbeelding. Video indexer segmenteert een video in scènes op basis van kleur consistentie op opeenvolgende Foto's en haalt de begin-en eind tijd van elke scène op. Scène detectie wordt beschouwd als een uitdagende taak, aangezien het gaat om semantische aspecten van Video's te kwantificeren.
 
 > [!NOTE]
-> Van toepassing op video's die ten minste 3 scènes bevatten.
+> Van toepassing op Video's die ten minste drie scènes bevatten.
 
-## <a name="shot-detection"></a>Shotdetectie
+## <a name="shot-detection"></a>Opname detectie
 
-VideoIndexer bepaalt wanneer een opname in de video verandert op basis van visuele aanwijzingen, door zowel abrupte als geleidelijke overgangen in het kleurenschema van aangrenzende frames bij te houden. De metagegevens van de opname bevatten een begin- en eindtijd, evenals de lijst met hoofdframes die in dat schot zijn opgenomen. De opnamen zijn opeenvolgende frames genomen van dezelfde camera op hetzelfde moment.
+Video Indexer bepaalt wanneer een foto in de video wordt gewijzigd op basis van visuele hints door zowel abrupte als geleidelijke overgangen in het kleuren schema van aangrenzende frames bij te houden. De meta gegevens van de opname bevatten een begin-en eind tijd, evenals de lijst met hoofd frames die in de afbeelding zijn opgenomen. De moment opnamen zijn opeenvolgende frames die tegelijkertijd zijn gemaakt van dezelfde camera.
 
-## <a name="keyframe-detection"></a>Detectie van hoofdframes
+## <a name="keyframe-detection"></a>Detectie van keyframe
 
-VideoIndexer selecteert het frame(s) dat elke opname het beste weergeeft. Hoofdframes zijn de representatieve frames die uit de hele video zijn geselecteerd op basis van esthetische eigenschappen (bijvoorbeeld contrast en stabielheid). Video Indexer haalt een lijst met hoofdframe-id's op als onderdeel van de metagegevens van de opname, op basis waarvan klanten het hoofdframe kunnen extraheren als een afbeelding met een hoge resolutie.  
+Video Indexer selecteert de frame (s) die elke opname het beste vertegenwoordigen. Keyframes zijn de representatieve frames die zijn geselecteerd uit de volledige video op basis van esthetische eigenschappen (bijvoorbeeld contrast en stabiele gegevens). Video Indexer haalt een lijst met hoofd frame-Id's op als onderdeel van de meta gegevens van de opname, op basis waarvan klanten het keyframe kunnen uitpakken als een afbeelding met een hoge resolutie.  
 
-### <a name="extracting-keyframes"></a>Hoofdframes extraheren
+### <a name="extracting-keyframes"></a>Hoofd frames extra heren
 
-Als u hoofdframes met hoge resolutie voor uw video wilt extraheren, moet u de video eerst uploaden en indexeren.
+Als u hoofd frames met hoge resolutie wilt uitpakken voor uw video, moet u eerst de video uploaden en indexeren.
 
-![Hoofdframes](./media/scenes-shots-keyframes/extracting-keyframes.png)
+![Keyframes](./media/scenes-shots-keyframes/extracting-keyframes.png)
 
-#### <a name="with-the-video-indexer-website"></a>Met de Website van Video Indexer
+#### <a name="with-the-video-indexer-website"></a>Met de Video Indexer-website
 
-Als u hoofdframes wilt extraheren met de website Video Indexer, uploadt en indexeert u uw video. Zodra de indexeringstaak is voltooid, klikt u op de knop **Downloaden** en selecteert u **Artefacten (ZIP).** Hiermee wordt de map met artefacten naar uw computer gedownload. 
+Als u hoofd frames wilt extra heren met behulp van de Video Indexer website, uploadt u uw video en indexeert u deze. Zodra de Indexeer taak is voltooid, klikt u op de knop **downloaden** en selecteert u **artefacten (zip)**. Hiermee wordt de map artefacten gedownload naar uw computer. 
 
-![Hoofdframes](./media/scenes-shots-keyframes/extracting-keyframes2.png)
+![Keyframes](./media/scenes-shots-keyframes/extracting-keyframes2.png)
  
-Rits de map uit en open deze. In de *map _KeyframeThumbnail* vindt u alle hoofdframes die uit uw video zijn gehaald. 
+Unzip en open de map. In de map *_KeyframeThumbnail* vindt u alle keyframes die zijn geëxtraheerd uit uw video. 
 
-#### <a name="with-the-video-indexer-api"></a>Met de API video-indexer
+#### <a name="with-the-video-indexer-api"></a>Met de Video Indexer-API
 
-Als u hoofdframes wilt ontvangen met de API voor videoindexer, uploadt en indexeert u uw video met behulp van het gesprek [Video uploaden.](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Upload-Video?) Zodra de indexeringstaak is voltooid, belt u [Videoindex op.](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Get-Video-Index?) Dit geeft u alle inzichten die Video Indexer uit uw inhoud in een JSON-bestand heeft gehaald.  
+Als u keyframes wilt ophalen met behulp van de API Video Indexer, uploadt u uw video en indexeert u deze met behulp van de video-oproep [uploaden](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Upload-Video?) Zodra de Indexeer taak is voltooid, roept u [video-index ophalen aan](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Get-Video-Index?). Hiermee krijgt u alle inzichten die Video Indexer opgehaald uit uw inhoud in een JSON-bestand.  
 
-U krijgt een lijst van keyframe-id's als onderdeel van de metadata van elk schot. 
+U krijgt een lijst met de keyframe-Id's als onderdeel van de meta gegevens van elke foto. 
 
 ```json
 "shots":[  
@@ -98,35 +98,35 @@ U krijgt een lijst van keyframe-id's als onderdeel van de metadata van elk schot
 ]
 ```
 
-U moet nu elk van deze hoofdframe-id's uitvoeren op het gesprek [Miniaturen weergeven.](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Get-Video-Thumbnail?) Hiermee worden alle hoofdframeafbeeldingen naar uw computer gedownload. 
+Nu moet u elk van deze keyframe-Id's uitvoeren op de aanroep [miniaturen ophalen](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Get-Video-Thumbnail?) . Hiermee worden alle keyframe-installatie kopieën naar uw computer gedownload. 
 
-## <a name="editorial-shot-type-detection"></a>Detectie van redactioneel schottype
+## <a name="editorial-shot-type-detection"></a>Detectie van redactionele type
 
-Hoofdframes worden gekoppeld aan opnamen in de uitvoer JSON. 
+Keyframes zijn gekoppeld aan opnamen in de uitvoer-JSON. 
 
-Het opnametype dat is gekoppeld aan een individuele opname in de inzichten die JSON vertegenwoordigt, vertegenwoordigt het redactionele type. U deze opnametypekenmerken nuttig vinden bij het bewerken van video's in clips, trailers of bij het zoeken naar een specifieke stijl van hoofdframe voor artistieke doeleinden. De verschillende typen worden bepaald op basis van de analyse van het eerste hoofdframe van elke opname. Foto's worden geïdentificeerd door de schaal, grootte en locatie van de gezichten die in hun eerste hoofdframe worden weergegeven. 
+Het bewerkings type dat is gekoppeld aan een afzonderlijke opname in de JSON van Insights vertegenwoordigt het redactionele type. U kunt deze kenmerken van de afbeeldings typen nuttig vinden bij het bewerken van Video's in clips, Trailers of bij het zoeken naar een specifieke stijl van keyframe voor artistieke doel einden. De verschillende typen worden bepaald op basis van de analyse van het eerste keyframe van elke opname. Foto's worden geïdentificeerd aan de hand van de schaal, de grootte en de locatie van de gezichten die in het eerste keyframe worden weer gegeven. 
 
-De opnamegrootte en -schaal worden bepaald op basis van de afstand tussen de camera en de gezichten die in het frame verschijnen. Met behulp van deze eigenschappen detecteert Video Indexer de volgende opnametypen:
+De grootte en schaal van de afbeelding worden bepaald op basis van de afstand tussen de camera en de gezichten die in het kader worden weer gegeven. Als u deze eigenschappen gebruikt, detecteert Video Indexer de volgende afbeeldings typen:
 
-* Breed: toont het lichaam van een hele persoon.
-* Medium: toont iemands bovenlichaam en gezicht.
-* Close-up: toont vooral iemands gezicht.
-* Extreme close-up: toont het gezicht van een persoon die het scherm vult. 
+* Breed: toont de hoofd tekst van de hele persoon.
+* Gemiddeld: toont de hoofd tekst en het gezicht van een persoon.
+* Sluiten: voornamelijk toont het gezicht van een persoon.
+* Extreem close: toont het gezicht van een persoon die het scherm vult. 
 
-Shottypes kunnen ook worden bepaald door de locatie van de onderwerptekens met betrekking tot het midden van het frame. Met deze eigenschap worden de volgende opnametypen gedefinieerd in Video-indexer:
+Opname typen kunnen ook worden bepaald door locatie van de onderwerps tekens ten opzichte van het midden van het kader. Deze eigenschap definieert de volgende afbeeldings typen in Video Indexer:
 
-* Linkergezicht: er verschijnt een persoon aan de linkerkant van het frame.
-* Middengezicht: een persoon wordt weergegeven in het centrale gebied van het frame.
-* Rechtergezicht: een persoon verschijnt in de rechterkant van het frame.
-* Buiten: een persoon verschijnt in een buitenomgeving.
-* Binnen: een persoon verschijnt in een binnenomgeving.
+* Links gezicht: er wordt een persoon weer gegeven aan de linkerkant van het kader.
+* Midden gezicht: een persoon wordt weer gegeven in de centrale regio van het kader.
+* Rechts gezicht: een persoon wordt weer gegeven aan de rechter kant van het kader.
+* Buiten: een persoon wordt weer gegeven in een instelling voor buitenste.
+* Binnen: een persoon wordt weer gegeven in een instelling in de binnenshuis.
 
 Aanvullende kenmerken:
 
-* Twee foto's: toont twee gezichten van gemiddelde grootte.
+* Twee opnamen: toont twee personen van de gemiddelde grootte.
 * Meerdere gezichten: meer dan twee personen.
 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-[De video-indexeruitvoer van de API onderzoeken](video-indexer-output-json-v2.md#scenes)
+[Bekijk de Video Indexer uitvoer die de API produceert](video-indexer-output-json-v2.md#scenes)

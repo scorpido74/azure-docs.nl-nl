@@ -1,6 +1,6 @@
 ---
-title: Handleiding voor ontwikkelaars op Azure | Microsoft Documenten
-description: Dit artikel bevat essentiële informatie voor ontwikkelaars die aan de slag willen met het Microsoft Azure-platform voor hun ontwikkelingsbehoeften.
+title: Aan de slag-hand leiding voor ontwikkel aars op Azure | Microsoft Docs
+description: Dit artikel bevat essentiële informatie voor ontwikkel aars die aan de slag willen gaan met behulp van het Microsoft Azure platform voor hun ontwikkelings behoeften.
 services: ''
 cloud: ''
 documentationcenter: ''
@@ -15,327 +15,327 @@ ms.topic: article
 ms.date: 11/18/2019
 ms.author: glenga
 ms.openlocfilehash: d74fd2e3f6b5cc090c6313aba67a1e139c713b85
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79245003"
 ---
-# <a name="get-started-guide-for-azure-developers"></a>Handleiding voor Azure-ontwikkelaars aan de slag
+# <a name="get-started-guide-for-azure-developers"></a>Introductiehandleiding voor Azure-ontwikkelaars
 
 ## <a name="what-is-azure"></a>Wat is Azure?
 
-Azure is een compleet cloudplatform dat uw bestaande toepassingen kan hosten en de ontwikkeling van nieuwe toepassingen kan stroomlijnen. Azure kan zelfs on-premises toepassingen verbeteren. Azure integreert de cloudservices die u nodig hebt om uw toepassingen te ontwikkelen, te testen, implementeren en beheren, terwijl u profiteert van de efficiëntie van cloud computing.
+Azure is een volledig Cloud platform dat uw bestaande toepassingen kan hosten en de ontwikkeling van nieuwe toepassingen stroom lijnen. Azure kan zelfs on-premises toepassingen verbeteren. Azure integreert de Cloud Services die u nodig hebt om uw toepassingen te ontwikkelen, testen, implementeren en beheren, en tegelijk profiteren van de efficiëntie van Cloud Computing.
 
-Door uw toepassingen in Azure te hosten, u uw toepassing klein en eenvoudig schalen naarmate de vraag van uw klant toeneemt. Azure biedt ook de betrouwbaarheid die nodig is voor toepassingen met hoge beschikbaarheid, zelfs met inbegrip van failover tussen verschillende regio's. Met de [Azure-portal](https://portal.azure.com) u eenvoudig al uw Azure-services beheren. U uw services ook programmatisch beheren met behulp van servicespecifieke API's en sjablonen.
+Door uw toepassingen in azure te hosten, kunt u kleine en eenvoudig uw toepassing schalen naarmate uw klant vraag groeit. Azure biedt ook de betrouw baarheid die nodig is voor toepassingen met een hoge Beschik baarheid, zelfs voor failover tussen verschillende regio's. Met de [Azure Portal](https://portal.azure.com) kunt u eenvoudig al uw Azure-Services beheren. U kunt uw services ook programmatisch beheren door gebruik te maken van servicespecifieke Api's en sjablonen.
 
-Deze handleiding is een inleiding tot het Azure-platform voor toepassingsontwikkelaars. Het biedt richtlijnen en aanwijzingen die u nodig hebt om te beginnen met het bouwen van nieuwe toepassingen in Azure of het migreren van bestaande toepassingen naar Azure.
+Deze hand leiding is een inleiding tot het Azure-platform voor toepassings ontwikkelaars. Het bevat richt lijnen en richting die u nodig hebt om nieuwe toepassingen te bouwen in azure of om bestaande toepassingen te migreren naar Azure.
 
 ## <a name="where-do-i-start"></a>Waar moet ik beginnen?
 
-Met alle services die Azure biedt, kan het een intimiderende taak zijn om erachter te komen welke services u nodig hebt om uw oplossingsarchitectuur te ondersteunen. In dit gedeelte worden de Azure-services belicht die ontwikkelaars vaak gebruiken. Zie de [Azure-documentatie](../../index.yml)voor een lijst met alle Azure-services.
+Met alle services die Azure biedt, kan dit een intimideren-taak zijn om te bepalen welke services u nodig hebt ter ondersteuning van uw oplossings architectuur. In deze sectie worden de Azure-Services uitgelegd die ontwikkel aars vaak gebruiken. Zie de [Azure-documentatie](../../index.yml)voor een lijst met alle Azure-Services.
 
-Eerst moet u beslissen hoe u uw toepassing in Azure host. Moet u uw hele infrastructuur beheren als een virtuele machine (VM). u gebruik maken van de platformbeheerfaciliteiten die Azure biedt? Misschien heb je een serverless framework nodig om alleen code-uitvoering te hosten?
+Eerst moet u bepalen hoe u uw toepassing in azure wilt hosten. Moet u uw volledige infra structuur beheren als een virtuele machine (VM). Kunt u gebruikmaken van de platform beheer faciliteiten die Azure biedt? Misschien hebt u een serverloos Framework nodig om alleen de uitvoering van de host te kunnen uitvoeren?
 
-Uw toepassing heeft cloudopslag nodig, waarvoor Azure verschillende opties biedt. U profiteren van de bedrijfsverificatie van Azure. Er zijn ook tools voor cloudgebaseerde ontwikkeling en monitoring, en de meeste hostingservices bieden DevOps-integratie.
+Voor uw toepassing is Cloud opslag vereist, waarvoor Azure verschillende opties biedt voor. U kunt profiteren van de Enter prise-verificatie van Azure. Er zijn ook hulpprogram ma's voor het ontwikkelen en bewaken van de Cloud, en de meeste hosting services bieden DevOps-integratie.
 
-Laten we nu eens kijken naar enkele van de specifieke services die we aanbevelen te onderzoeken voor uw toepassingen.
+Laten we nu eens kijken naar enkele van de specifieke services die we aanraden voor het onderzoeken van uw toepassingen.
 
-### <a name="application-hosting"></a>Toepassingshosting
+### <a name="application-hosting"></a>Hosting van toepassingen
 
-Azure biedt verschillende cloudgebaseerde compute-aanbiedingen om uw toepassing uit te voeren, zodat u zich geen zorgen hoeft te maken over de infrastructuurdetails. U uw resources eenvoudig opschalen of opschalen naarmate uw toepassingsgebruik toeneemt.
+Azure biedt verschillende Cloud-based Compute-aanbiedingen om uw toepassing uit te voeren, zodat u zich geen zorgen hoeft te maken over de details van de infra structuur. U kunt uw resources eenvoudig schalen of uitschalen naarmate het gebruik van uw toepassing toeneemt.
 
-Azure biedt services die uw toepassingsontwikkeling en hostingbehoeften ondersteunen. Azure biedt Infrastructure as a Service (IaaS) om u volledige controle te geven over uw toepassingshosting. Het Platform as a Service -aanbod (Platform as a Service) van Azure biedt de volledig beheerde services die nodig zijn om uw apps van stroom te voorzien. Er is zelfs echte serverloze hosting in Azure waar u alleen uw code hoeft te schrijven.
+Azure biedt services die ondersteuning bieden voor het ontwikkelen en hosten van toepassingen. Azure biedt een IaaS (Infrastructure as a Service) waarmee u volledige controle hebt over de hosting van uw toepassing. De PaaS-aanbiedingen (platform as a Service) van Azure bieden de volledig beheerde services die nodig zijn om uw apps uit te scha kelen. Er is zelfs sprake van een serverloze hosting in azure, waar u alleen uw code hoeft te schrijven.
 
-![Azure-toepassingshostingopties](./media/azure-developer-guide/azure-developer-hosting-options.png)
+![Opties voor Azure-hosting van toepassingen](./media/azure-developer-guide/azure-developer-hosting-options.png)
 
 
 #### <a name="azure-app-service"></a>Azure App Service
 
-Als u het snelste pad wilt publiceren om uw webprojecten te publiceren, u Azure App Service overwegen. App Service maakt het eenvoudig om uw web-apps uit te breiden om uw mobiele klanten te ondersteunen en gemakkelijk gebruikte REST API's te publiceren. Dit platform biedt verificatie met behulp van sociale providers, op verkeer gebaseerde autoscaling, testen in productie en continue en containergebaseerde implementaties.
+Als u wilt dat het snelste pad voor het publiceren van uw webprojecten, moet u Azure App Service. App Service maakt het eenvoudig om uw web-apps uit te breiden om uw mobiele clients te ondersteunen en eenvoudig geconsumeerde REST Api's te publiceren. Dit platform biedt verificatie met behulp van sociale providers, automatisch schalen op basis van verkeer, testen in productie en doorlopende implementaties op basis van containers.
 
-U web-apps, back-ends van mobiele apps en API-apps maken.
+U kunt web-apps, back-ends voor mobiele apps en API-apps maken.
 
-Omdat alle drie de app-typen de runtime van de App-service delen, u een website hosten, mobiele clients ondersteunen en uw API's in Azure blootstellen, allemaal vanuit hetzelfde project of dezelfde oplossing. Zie Wat is Azure Web Apps voor meer informatie over [App-service.](../../app-service/overview.md)
+Omdat alle drie de typen apps de App Service runtime delen, kunt u een website hosten, mobiele clients ondersteunen en uw Api's beschikbaar stellen in azure, allemaal vanuit hetzelfde project of dezelfde oplossing. Zie [Wat is Azure web apps](../../app-service/overview.md)? voor meer informatie over app service.
 
-App Service is ontworpen met DevOps in het achterhoofd. Het ondersteunt verschillende tools voor publicatie en implementaties van continue integratie. Deze tools omvatten GitHub webhooks, Jenkins, Azure DevOps, TeamCity en anderen.
+App Service is in het DevOps ontworpen met het oog. Het ondersteunt diverse hulpprogram ma's voor het publiceren en doorlopende integratie-implementaties. Tot deze hulpprogram ma's behoren GitHub-webhooks, Jenkins, Azure DevOps, TeamCity en anderen.
 
-U uw bestaande toepassingen migreren naar App Service met behulp van de [online migratietool.](https://appmigration.microsoft.com/)
+U kunt uw bestaande toepassingen migreren naar App Service met behulp van het [hulp programma online migratie](https://appmigration.microsoft.com/).
 
-> **Wanneer te gebruiken**: Gebruik App Service wanneer u bestaande webtoepassingen migreert naar Azure en wanneer u een volledig beheerd hostingplatform voor uw webapps nodig hebt. U appservice ook gebruiken wanneer u mobiele clients moet ondersteunen of REST API's met uw app wilt blootstellen.
+> **Wanneer gebruiken**: gebruik app service wanneer u bestaande webtoepassingen naar Azure migreert en wanneer u een volledig beheerd hosting platform voor uw web-apps nodig hebt. U kunt App Service ook gebruiken als u mobiele clients wilt ondersteunen of REST-Api's met uw app wilt weer geven.
 >
-> **Aan de slag:** App Service maakt het eenvoudig om uw eerste [web-app,](../../app-service/app-service-web-get-started-dotnet.md) [mobiele app](../../app-service-mobile/app-service-mobile-ios-get-started.md)of [API-app](../../app-service/app-service-web-tutorial-rest-api.md)te maken en te implementeren.
+> **Aan de slag**: app service maakt het eenvoudig om uw eerste web- [app](../../app-service/app-service-web-get-started-dotnet.md), [mobiele app](../../app-service-mobile/app-service-mobile-ios-get-started.md)of API- [app](../../app-service/app-service-web-tutorial-rest-api.md)te maken en te implementeren.
 >
-> **Probeer het nu:** met App Service u een app van korte duur inrichten om het platform uit te proberen zonder u aan te melden voor een Azure-account. Probeer het platform en [maak uw Azure App Service-app](https://tryappservice.azure.com/).
+> **Nu uitproberen**: met app service kunt u een app met korte levens duur inrichten om het platform te proberen zonder dat u zich hoeft aan te melden voor een Azure-account. Probeer het platform en [Maak uw Azure app service-app](https://tryappservice.azure.com/).
 
 #### <a name="azure-virtual-machines"></a>Azure Virtual Machines
 
-Als IaaS-provider (Infrastructure as a Service) u uw toepassing implementeren of migreren naar Windows- of Linux-vm's. Samen met Azure Virtual Network ondersteunt Azure Virtual Machines de implementatie van Windows- of Linux VM's in Azure. Met VM's hebt u totale controle over de configuratie van de machine. Bij het gebruik van VM's bent u verantwoordelijk voor alle patchs voor de installatie, configuratie, onderhoud en het besturingssysteem van de serversoftware.
+Als IaaS-provider (Infrastructure as a Service) kunt u met Azure uw toepassing implementeren naar of migreren naar virtuele Windows-of Linux-machines. In combi natie met Azure Virtual Network ondersteunt Azure Virtual Machines de implementatie van Windows-of Linux-Vm's naar Azure. Met Vm's hebt u de volledige controle over de configuratie van de computer. Wanneer u Vm's gebruikt, bent u verantwoordelijk voor alle patches voor de server software-installatie, configuratie, onderhoud en besturings systemen.
 
-Vanwege het controleniveau dat u met VM's hebt, u een breed scala aan serverworkloads op Azure uitvoeren die niet in een PaaS-model passen. Deze workloads omvatten databaseservers, Windows Server Active Directory en Microsoft SharePoint. Zie voor meer informatie de documentatie van virtuele machines voor [Linux](/azure/virtual-machines/linux/) of [Windows.](/azure/virtual-machines/windows/)
+Vanwege het beheer niveau dat u met Vm's hebt, kunt u een groot aantal server werkbelastingen uitvoeren op Azure die niet in een PaaS-model passen. Tot deze werk belastingen behoren database servers, Windows Server Active Directory en micro soft share point. Zie de Virtual Machines-documentatie voor [Linux](/azure/virtual-machines/linux/) of [Windows](/azure/virtual-machines/windows/)voor meer informatie.
 
-> **Wanneer te gebruiken**: Gebruik virtuele machines wanneer u volledige controle wilt over uw toepassingsinfrastructuur of on-premises toepassingsworkloads wilt migreren naar Azure zonder wijzigingen aan te brengen.
+> **Wanneer gebruiken**: gebruik virtual machines als u volledige controle over uw toepassings infrastructuur wilt of de werk belasting van on-premises toepassingen naar Azure wilt migreren zonder dat u wijzigingen hoeft aan te brengen.
 >
-> **Aan de slag:** maak een [Linux VM](../../virtual-machines/virtual-machines-linux-quick-create-portal.md) of [Windows VM](../../virtual-machines/virtual-machines-windows-hero-tutorial.md) vanuit de Azure-portal.
+> **Aan de slag**: een [virtuele Linux-machine](../../virtual-machines/virtual-machines-linux-quick-create-portal.md) of [Windows-VM](../../virtual-machines/virtual-machines-windows-hero-tutorial.md) maken op basis van de Azure Portal.
 
-#### <a name="azure-functions-serverless"></a>Azure-functies (serverloos)
+#### <a name="azure-functions-serverless"></a>Azure Functions (serverloos)
 
-In plaats van zorgen te maken over het bouwen en beheren van een hele applicatie of de infrastructuur om uw code uit te voeren, wat als je gewoon je code schrijven en deze laten uitvoeren in reactie op gebeurtenissen of op een schema?  [Azure Functions](../../azure-functions/functions-overview.md) is een serverless-stijl aanbod waarmee u alleen de code schrijven die u nodig hebt. Met Functions u code-uitvoering activeren met HTTP-aanvragen, webhooks, cloudservicegebeurtenissen of een planning. U coderen in uw ontwikkelingstaal\#naar\#keuze, zoals C, F, Node.js, Python of PHP. Met facturering op basis van verbruik betaalt u alleen voor de tijd die uw code uitvoert en Azure schaalt indien nodig.
+In plaats van dat u zich zorgen hoeft te maken over het bouwen en beheren van een hele toepassing of de infra structuur om uw code uit te voeren, wat als u uw code gewoon zou schrijven en deze laten uitvoeren als reactie op gebeurtenissen of volgens een planning?  [Azure functions](../../azure-functions/functions-overview.md) is een ' serverloze ' aanbieding waarmee u alleen de code kunt schrijven die u nodig hebt. Met functions kunt u code-uitvoering activeren met HTTP-aanvragen, webhooks, Cloud service gebeurtenissen of volgens een planning. U kunt code in uw door u gewenste programmeer taal gebruiken, zoals\#C,\#F, node. js, python of php. Met facturering op basis van verbruik betaalt u alleen voor de tijd dat uw code wordt uitgevoerd en Azure wordt geschaald als dat nodig is.
 
-> **Wanneer te gebruiken**: Gebruik Azure-functies wanneer u code hebt die wordt geactiveerd door andere Azure-services, op webgebaseerde gebeurtenissen of volgens een planning. U functies ook gebruiken wanneer u de overhead van een volledig gehost project niet nodig hebt of wanneer u alleen wilt betalen voor de tijd dat uw code wordt uitgevoerd. Zie Overzicht [van Azure-functies](../../azure-functions/functions-overview.md)voor meer informatie.
+> **Wanneer gebruiken**: gebruik Azure functions wanneer u code hebt die wordt geactiveerd door andere Azure-Services, op webgebaseerde gebeurtenissen of op basis van een schema. U kunt ook functies gebruiken wanneer u de overhead van een volledig gehost project niet nodig hebt of wanneer u alleen wilt betalen voor de tijd dat uw code wordt uitgevoerd. Zie [Azure functions-overzicht](../../azure-functions/functions-overview.md)voor meer informatie.
 >
-> **Aan de slag:** Volg de snelaanstudie Functies om je eerste functie vanuit de portal te [maken.](../../azure-functions/functions-create-first-azure-function.md)
+> **Aan de slag**: Volg de zelf studie over functies Snelstartgids om [uw eerste functie te maken](../../azure-functions/functions-create-first-azure-function.md) vanuit de portal.
 >
-> **Probeer het nu:** met Azure Functions u uw code uitvoeren zonder dat u zich hoeft aan te melden voor een Azure-account. Probeer het nu op en [maak uw eerste Azure-functie.](https://tryappservice.azure.com/)
+> **Nu uitproberen**: met Azure functions kunt u uw code uitvoeren zonder dat u zich hoeft aan te melden voor een Azure-account. Probeer het nu op en [Maak uw eerste Azure-functie](https://tryappservice.azure.com/).
 
 #### <a name="azure-service-fabric"></a>Azure Service Fabric
 
-Azure Service Fabric is een gedistribueerd systeemplatform. Dit platform maakt het eenvoudig om schaalbare en betrouwbare microservices te bouwen, te verpakken, implementeren en beheren. Het biedt ook uitgebreide mogelijkheden voor applicatiebeheer, zoals:
+Azure Service Fabric is een platform voor gedistribueerde systemen. Met dit platform kunnen schaal bare en betrouw bare micro services eenvoudig worden gebouwd, verpakt, geïmplementeerd en beheerd. Het biedt ook uitgebreide mogelijkheden voor toepassings beheer, zoals:
 
 * Inrichten
-* Implementeren
+* Installeert
 * Bewaking
-* Upgraden/patchen
-* Verwijderen
+* Bijwerken/patchen
+* Verwijder
 
-Apps, die op een gedeelde pool van machines worden uitgevoerd, kunnen klein starten en naar behoefte schalen naar honderden of duizenden machines.
+Apps, die worden uitgevoerd op een gedeelde groep machines, kunnen klein worden gestart en zo nodig worden geschaald naar honderden of duizenden machines.
 
-Service Fabric ondersteunt WebAPI met Open Web Interface voor .NET (OWIN) en ASP.NET Core. Het biedt SDKs voor het bouwen van diensten op Linux in zowel .NET Core en Java. Zie de [documentatie servicestof](https://docs.microsoft.com/azure/service-fabric/)voor meer informatie over Service Fabric.
+Service Fabric ondersteunt WebAPI met open web interface voor .NET (OWIN) en ASP.NET Core. Het biedt Sdk's voor het bouwen van services in Linux in zowel .NET Core als Java. Raadpleeg de [service Fabric-documentatie](https://docs.microsoft.com/azure/service-fabric/)voor meer informatie over service Fabric.
 
-> **Wanneer te gebruiken:** Service Fabric is een goede keuze wanneer u een toepassing maakt of een bestaande toepassing herschrijft om een microservicearchitectuur te gebruiken. Gebruik Service Fabric wanneer u meer controle nodig hebt over of directe toegang tot de onderliggende infrastructuur.
+> **Wanneer gebruiken:** Service Fabric is een goede keuze bij het maken van een toepassing of het herschrijven van een bestaande toepassing voor het gebruik van een micro service-architectuur. Gebruik Service Fabric wanneer u meer controle nodig hebt over, of rechtstreekse toegang tot, de onderliggende infra structuur.
 >
-> **Aan de slag:** [maak uw eerste Azure Service Fabric-toepassing.](../../service-fabric/service-fabric-create-your-first-application-in-visual-studio.md)
+> **Aan de slag:** [Maak uw eerste Azure service Fabric-toepassing](../../service-fabric/service-fabric-create-your-first-application-in-visual-studio.md).
 
-### <a name="enhance-your-applications-with-azure-services"></a>Uw toepassingen verbeteren met Azure-services
+### <a name="enhance-your-applications-with-azure-services"></a>Verbeter uw toepassingen met Azure-Services
 
-Samen met toepassingshosting biedt Azure serviceaanbiedingen die de functionaliteit kunnen verbeteren. Azure kan ook de ontwikkeling en het onderhoud van uw toepassingen verbeteren, zowel in de cloud als on-premises.
+Naast de hosting van toepassingen biedt Azure service aanbiedingen waarmee de functionaliteit kan worden verbeterd. Azure kan de ontwikkeling en het onderhoud van uw toepassingen ook verbeteren, zowel in de Cloud als on-premises.
 
-#### <a name="hosted-storage-and-data-access"></a>Gehoste opslag en toegang tot gegevens
+#### <a name="hosted-storage-and-data-access"></a>Gehoste opslag en gegevens toegang
 
-De meeste toepassingen moeten gegevens opslaan, dus hoe u ook besluit uw toepassing in Azure te hosten, overweeg een of meer van de volgende opslag- en gegevensservices.
+In de meeste toepassingen moeten gegevens worden opgeslagen. u kunt uw toepassing ook in azure hosten, maar ook een of meer van de volgende opslag-en gegevens Services.
 
-- **Azure Cosmos DB**: een wereldwijd gedistribueerde databaseservice met meerdere modellen. Met deze database u de doorvoer en opslag elastisch schalen in een willekeurig aantal geografische regio's met een uitgebreide SLA.
+- **Azure Cosmos DB**: een wereld wijd gedistribueerde, multi-model database service. Met deze data base kunt u de door Voer en opslag in een wille keurig aantal geografische regio's elastisch schalen met een uitgebreide SLA.
 
-  > **Wanneer te gebruiken:** Wanneer uw toepassing document-, tabel- of grafiekdatabases, waaronder MongoDB-databases, met meerdere goed gedefinieerde consistentiemodellen nodig heeft.
+  > **Wanneer gebruiken:** Wanneer uw toepassing document-, tabel-of grafiek databases, inclusief MongoDB-data bases, met meerdere duidelijk gedefinieerde consistentie modellen nodig heeft.
   >
-  > **Aan de slag:** [maak een Azure Cosmos DB-web-app](../../cosmos-db/create-sql-api-dotnet.md). Zie [Een MongoDB-webapp bouwen met Azure Cosmos DB](../../cosmos-db/create-mongodb-dotnet.md)als u een MongoDB-ontwikkelaar bent.
+  > **Aan de slag**: [een Azure Cosmos db-web-app bouwen](../../cosmos-db/create-sql-api-dotnet.md). Als u een MongoDB-ontwikkelaar bent, raadpleegt u [een MongoDb-web-app bouwen met Azure Cosmos DB](../../cosmos-db/create-mongodb-dotnet.md).
 
-- **Azure Storage:** biedt duurzame, zeer beschikbare opslag voor blobs, wachtrijen, bestanden en andere soorten niet-relationele gegevens. Opslag vormt de opslagbasis voor VM's.
+- **Azure Storage**: biedt duurzame, Maxi maal beschik bare opslag voor blobs, wacht rijen, bestanden en andere soorten niet-relationele gegevens. Storage biedt de opslag basis voor Vm's.
 
-  > **Wanneer moet worden gebruikt:** wanneer uw app niet-relationele gegevens opslaat, zoals sleutelwaardeparen (tabellen), blobs, bestandenshares of berichten (wachtrijen).
+  > **Wanneer gebruiken**: wanneer uw app niet-relationele gegevens opslaat, zoals sleutel-waardeparen (tabellen), blobs, bestands shares of berichten (wacht rijen).
   >
-  > **Aan de slag:** kies uit een van deze typen opslag: [blobs,](../../storage/blobs/storage-dotnet-how-to-use-blobs.md) [tabellen,](../../cosmos-db/table-storage-how-to-use-dotnet.md) [wachtrijen](../../storage/queues/storage-dotnet-how-to-use-queues.md)of [bestanden](../../storage/files/storage-dotnet-how-to-use-files.md).
+  > **Aan de slag**: Kies een van de volgende typen opslag: [blobs](../../storage/blobs/storage-dotnet-how-to-use-blobs.md), [tabellen](../../cosmos-db/table-storage-how-to-use-dotnet.md), [wacht rijen](../../storage/queues/storage-dotnet-how-to-use-queues.md)of [bestanden](../../storage/files/storage-dotnet-how-to-use-files.md).
 
-- **Azure SQL Database**: een op Azure gebaseerde versie van de Microsoft SQL Server-engine voor het opslaan van relationele tabelgegevens in de cloud. SQL Database biedt voorspelbare prestaties, schaalbaarheid zonder downtime, bedrijfscontinuïteit en gegevensbescherming.
+- **Azure SQL database**: een op Azure gebaseerde versie van de Microsoft SQL Server-engine voor het opslaan van relationele gegevens in tabel vorm in de Cloud. SQL Database biedt voorspel bare prestaties, schaal baarheid zonder uitval tijd, bedrijfs continuïteit en gegevens beveiliging.
 
-  > **Wanneer te gebruiken**: Wanneer uw toepassing gegevensopslag vereist met referentiële integriteit, transactionele ondersteuning en ondersteuning voor TSQL-query's.
+  > **Wanneer gebruiken**: wanneer uw toepassing gegevens opslag vereist met referentiële integriteit, transactionele ondersteuning en ondersteuning voor TSQL-query's.
   >
-  > **Aan de slag:** [maak binnen enkele minuten een SQL-database met behulp van de Azure-portal.](../../sql-database/sql-database-get-started.md)
+  > **Aan de slag**: [een SQL database binnen een paar minuten maken met behulp van de Azure Portal](../../sql-database/sql-database-get-started.md).
 
 
-U [Azure Data Factory](../../data-factory/introduction.md) gebruiken om bestaande on-premises gegevens naar Azure te verplaatsen. Als u nog niet klaar bent om gegevens naar de cloud te verplaatsen, u met [Hybride verbindingen](../../app-service/app-service-hybrid-connections.md) in Azure App Service uw door App Service gehoste app verbinden met on-premises resources. U ook verbinding maken met Azure-gegevens- en opslagservices vanuit uw on-premises toepassingen.
+U kunt [Azure Data Factory](../../data-factory/introduction.md) gebruiken om bestaande on-premises gegevens naar Azure te verplaatsen. Als u geen gegevens naar de cloud kunt verplaatsen, kunt u met [hybride verbindingen](../../app-service/app-service-hybrid-connections.md) in Azure App Service uw app service gehoste app verbinden met on-premises resources. U kunt ook verbinding maken met Azure-gegevens-en-opslag Services vanuit uw on-premises toepassingen.
 
-#### <a name="docker-support"></a>Ondersteuning voor Docker
+#### <a name="docker-support"></a>Docker-ondersteuning
 
-Docker-containers, een vorm van OS-virtualisatie, laten u toepassingen efficiënter en voorspelbaarder implementeren. Een gecontaineriseerde applicatie werkt in productie op dezelfde manier als op uw ontwikkelings- en testsystemen. U containers beheren met behulp van standaard Docker-tools. U uw bestaande vaardigheden en populaire open-sourcetools gebruiken om containergebaseerde toepassingen op Azure te implementeren en te beheren.
+Met docker-containers, een vorm van OS-virtualisatie, kunt u toepassingen op een efficiëntere en voorspel bare manier implementeren. Een container toepassing werkt op dezelfde manier als bij uw ontwikkel-en test systemen. U kunt containers beheren met behulp van standaard docker-hulpprogram ma's. U kunt uw bestaande vaardig heden en populaire open-source-hulpprogram ma's gebruiken voor het implementeren en beheren van op containers gebaseerde toepassingen op Azure.
 
 Azure biedt verschillende manieren om containers in uw toepassingen te gebruiken.
 
-- **Azure Docker VM-extensie:** hiermee u uw VM configureren met Docker-hulpprogramma's om als Docker-host te fungeren.
+- **Azure docker VM-extensie**: Hiermee kunt u uw virtuele machine configureren met docker-hulpprogram ma's om als docker-host te fungeren.
 
-  > **Wanneer u het gebruik**wilt gebruiken: wanneer u consistente containerimplementaties voor uw toepassingen op een vm wilt genereren of wanneer u [Docker Compose](https://docs.docker.com/compose/overview/)wilt gebruiken.
+  > **Wanneer gebruiken**: wanneer u een consistente container implementatie wilt genereren voor uw toepassingen op een virtuele machine of als u [docker opstellen](https://docs.docker.com/compose/overview/)wilt gebruiken.
   >
-  > **Aan de slag:** [maak een Docker-omgeving in Azure met behulp van de Docker VM-extensie](../../virtual-machines/virtual-machines-linux-dockerextension.md).
+  > **Aan de slag**: [een docker-omgeving maken in azure met behulp van de docker VM-extensie](../../virtual-machines/virtual-machines-linux-dockerextension.md).
 
-- **Azure Kubernetes-service:** hiermee u een cluster van virtuele machines maken, configureren en beheren die vooraf zijn geconfigureerd om gecontaineriseerde toepassingen uit te voeren. Zie [Azure Kubernetes Service-inleiding](../../aks/intro-kubernetes.md)voor meer informatie over Azure Kubernetes Service.
+- **Azure Kubernetes service**: Hiermee kunt u een cluster van virtuele machines maken, configureren en beheren die vooraf zijn geconfigureerd voor het uitvoeren van toepassingen met containers. Zie [Azure Kubernetes service Introduction](../../aks/intro-kubernetes.md)(Engelstalig) voor meer informatie over de Azure Kubernetes-service.
 
-  > **Wanneer u het gebruik wilt gebruiken:** wanneer u productieklare, schaalbare omgevingen moet bouwen die extra plannings- en beheertools bieden, of wanneer u een Docker Swarm-cluster implementeert.
+  > **Wanneer u wilt gebruiken**: wanneer u schaal bare omgevingen wilt bouwen die geschikt zijn voor de planning en het beheer, of wanneer u een docker Swarm-cluster implementeert.
   >
-  > **Aan de slag:** [een Kubernetes Service-cluster implementeren](../../aks/tutorial-kubernetes-deploy-cluster.md).
+  > **Aan de slag**: [Implementeer een Kubernetes-service cluster](../../aks/tutorial-kubernetes-deploy-cluster.md).
 
-- **Docker Machine:** Hiermee u een Docker Engine installeren en beheren op virtuele hosts met behulp van docker-machine commando's.
+- **Docker machine**: Hiermee kunt u een docker-engine op virtuele hosts installeren en beheren met behulp van docker-machine-opdrachten.
 
-  >**Wanneer te gebruiken:** Wanneer u snel een prototype van een app moet maken door één Docker-host te maken.
+  >**Wanneer**u moet gebruiken: wanneer u een app snel wilt prototypen door een afzonderlijke docker-host te maken.
 
-- **Aangepaste Docker-afbeelding voor App-service:** hiermee u Docker-containers gebruiken uit een containerregister of een klantcontainer wanneer u een web-app op Linux implementeert.
+- **Aangepaste docker-installatie kopie voor app service**: Hiermee kunt u docker-containers uit een container register of een klant container gebruiken wanneer u een web-app op Linux implementeert.
 
-  > **Wanneer te gebruiken**: Bij het implementeren van een web-app op Linux naar een Docker-afbeelding.
+  > **Wanneer gebruiken**: wanneer u een web-app op Linux implementeert in een docker-installatie kopie.
   >
-  > **Aan de slag:** [gebruik een aangepaste Docker-afbeelding voor App-service op Linux.](../../app-service/containers/quickstart-docker-go.md)
+  > **Aan de slag**: [gebruik een aangepaste docker-installatie kopie voor app service op Linux](../../app-service/containers/quickstart-docker-go.md).
 
-### <a name="authentication"></a>Authentication
+### <a name="authentication"></a>Verificatie
 
-Het is cruciaal om niet alleen te weten wie uw applicaties gebruikt, maar ook om ongeautoriseerde toegang tot uw bronnen te voorkomen. Azure biedt verschillende manieren om uw app-clients te verifiëren.
+Het is essentieel dat u niet alleen weet wie uw toepassingen gebruikt, maar ook om onbevoegde toegang tot uw resources te voor komen. Azure biedt verschillende manieren om uw app-clients te verifiëren.
 
-- **Azure Active Directory (Azure AD):** de microsoft multitenant, cloudgebaseerde identiteits- en toegangsbeheerservice. U single-sign on (SSO) toevoegen aan uw toepassingen door te integreren met Azure AD. U hebt toegang tot directory-eigenschappen door de Azure AD Graph-API rechtstreeks of de Microsoft Graph-API te gebruiken. U integreren met Azure AD-ondersteuning voor het OAuth2.0-autorisatiekader en Open ID Connect met behulp van native HTTP/REST-eindpunten en de multiplatform Azure AD-verificatiebibliotheken.
+- **Azure Active Directory (Azure AD)**: de micro soft multi tenant-service voor identiteits-en toegangs beheer op basis van de Cloud. U kunt eenmalige aanmelding (SSO) toevoegen aan uw toepassingen door te integreren met Azure AD. U kunt de eigenschappen van de Directory openen door de Azure AD-Graph API rechtstreeks of via de Microsoft Graph-API te gebruiken. U kunt integreren met Azure AD-ondersteuning voor het OAuth 2.0-autorisatie raamwerk en open-ID-verbinding door gebruik te maken van systeem eigen HTTP/REST-eind punten en de Azure AD-verificatie bibliotheken met meerdere platforms.
 
-  > **Wanneer u het gebruik wilt gebruiken:** Wanneer u een SSO-ervaring wilt bieden, werkt u met op grafieken gebaseerde gegevens of verifieert u gebruikers op basis van een domein.
+  > **Wanneer**u wilt gebruiken: als u een SSO-ervaring wilt bieden, kunt u werken met gegevens op basis van een grafiek of gebruikers op basis van een domein verifiëren.
   >
-  > **Aan de slag:** zie de handleiding van Azure [Active Directory-ontwikkelaars](../../active-directory/develop/v2-overview.md)voor meer informatie.
+  > **Aan de slag**: raadpleeg de [Azure Active Directory hand leiding voor ontwikkel aars](../../active-directory/develop/v2-overview.md)voor meer informatie.
 
-- **App Service-verificatie:** wanneer u App Service kiest om uw app te hosten, krijgt u ook ingebouwde verificatieondersteuning voor Azure AD, samen met aanbieders van sociale identiteit, waaronder Facebook, Google, Microsoft en Twitter.
+- **App service-verificatie**: wanneer u kiest voor app service om uw app te hosten, krijgt u ook ingebouwde verificatie ondersteuning voor Azure AD, samen met sociale id-providers, zoals Facebook, Google, micro soft en Twitter.
 
-  > **Wanneer u:** wanneer u verificatie in een App Service-app wilt inschakelen met Azure AD, sociale identiteitsproviders of beide.
+  > **Wanneer**u wilt gebruiken: als u verificatie wilt inschakelen in een app service-app met behulp van Azure AD, sociale id-providers of beide.
   >
-  > **Aan de slag:** zie Verificatie en [autorisatie in Azure App Service](../../app-service/overview-authentication-authorization.md)voor meer informatie over verificatie in App-service.
+  > **Aan de slag**: Zie [verificatie en autorisatie in azure app service](../../app-service/overview-authentication-authorization.md)voor meer informatie over verificatie in app service.
 
-Zie aanbevolen procedures en patronen voor [Azure-beveiliging](../../security/fundamentals/best-practices-and-patterns.md)voor meer informatie over aanbevolen procedures voor beveiliging in Azure.
+Zie [Aanbevolen procedures en patronen voor Azure-beveiliging](../../security/fundamentals/best-practices-and-patterns.md)voor meer informatie over aanbevolen beveiligings procedures in Azure.
 
 ### <a name="monitoring"></a>Bewaking
 
-Als uw toepassing in Azure wordt uitgevoerd, moet u de prestaties bewaken, problemen bekijken en zien hoe klanten uw app gebruiken. Azure biedt verschillende bewakingsopties.
+Als uw toepassing in azure actief is, moet u de prestaties bewaken, kijken of er problemen zijn en zien hoe klanten uw app gebruiken. Azure biedt verschillende controle opties.
 
--   **Application Insights:** een door Azure gehoste extensible analytics-service die integreert met Visual Studio om uw live webtoepassingen te monitoren. Het geeft u de gegevens die u nodig hebt om de prestaties en bruikbaarheid van uw apps continu te verbeteren. Deze verbetering vindt plaats, ongeacht of u uw toepassingen host op Azure of niet.
+-   **Application Insights**: een door Azure gehoste uitbreid bare analyse service die met Visual Studio kan worden geïntegreerd om uw Live webtoepassingen te controleren. Het biedt u de gegevens die u nodig hebt om de prestaties en bruikbaarheid van uw apps continu te verbeteren. Deze verbetering doet zich voor of u uw toepassingen host op Azure of niet.
 
-    >**Aan de slag:** Volg de [zelfstudie Application Insights](../../azure-monitor/app/app-insights-overview.md).
+    >**Aan de slag**: volg de [Application Insights zelf studie](../../azure-monitor/app/app-insights-overview.md).
 
--   **Azure Monitor:** een service waarmee u de statistieken en logboeken die u genereert met uw Azure-infrastructuur en -bronnen visualiseren, opvragen, routeren, archiveren en handelen. Monitor is één bron voor het bewaken van Azure-resources en biedt de gegevensweergaven die u in de Azure-portal ziet.
+-   **Azure monitor**: een service waarmee u de metrische gegevens en logboeken die u genereert met uw Azure-infra structuur en-resources kunt visualiseren, opvragen, routeren, archiveren en verwerken. Monitor is een enkele bron voor het bewaken van Azure-resources en biedt de gegevens weergaven die u ziet in de Azure Portal.
 
-    >**Aan de slag:** [Aan de slag met Azure Monitor](../../monitoring-and-diagnostics/monitoring-get-started.md).
+    >**Aan**de slag: aan de slag [met Azure monitor](../../monitoring-and-diagnostics/monitoring-get-started.md).
 
-### <a name="devops-integration"></a>DevOps integratie
+### <a name="devops-integration"></a>DevOps-integratie
 
-Of het nu gaat om het inrichten van VM's of het publiceren van uw web-apps met continue integratie, Azure integreert met de meeste populaire DevOps-hulpprogramma's. U werken met de tools die u al hebt en uw bestaande ervaring maximaliseren met ondersteuning voor tools zoals:
+Of het nu gaat om Vm's inrichten of het publiceren van uw web-apps met continue integratie, Azure integreert met de meeste populaire DevOps-hulpprogram ma's. U kunt werken met de hulpprogram ma's die u al hebt en uw bestaande ervaring maximaliseren met ondersteuning voor hulpprogram ma's zoals:
 
 * Jenkins
 * GitHub
 * Puppet
 * Chef
-* TeamCity (TeamCity)
+* TeamCity
 * Ansible
 * Azure DevOps
 
-> **Aan de slag:** zie Continue implementatie naar Azure App Service als u devOps-opties voor een App Service-app [wilt bekijken.](../../app-service/deploy-continuous-deployment.md)
+> Aan de **slag**: als u de DevOps-opties voor een app service-app wilt weer geven, raadpleegt [u continue implementatie naar Azure app service](../../app-service/deploy-continuous-deployment.md).
 >
-> **Probeer het nu:** [Probeer een aantal van de DevOps integraties](https://azure.microsoft.com/try/devops/).
+> **Probeer het nu:** [Probeer verschillende DevOps-integraties uit](https://azure.microsoft.com/try/devops/).
 
 
 ## <a name="azure-regions"></a>Azure-regio's
 
-Azure is een wereldwijd cloudplatform dat algemeen beschikbaar is in veel regio's over de hele wereld. Wanneer u een service, toepassing of VM indient in Azure, wordt u gevraagd een regio te selecteren. Deze regio vertegenwoordigt een specifiek datacenter waar uw toepassing wordt uitgevoerd of waar uw gegevens worden opgeslagen. Deze regio's komen overeen met specifieke locaties die worden gepubliceerd op de pagina [Azure-regio's.](https://azure.microsoft.com/regions/)
+Azure is een wereld wijd Cloud platform dat algemeen beschikbaar is in veel regio's over de hele wereld. Wanneer u een service, toepassing of virtuele machine inricht in azure, wordt u gevraagd om een regio te selecteren. Deze regio vertegenwoordigt een specifiek Data Center waarin uw toepassing wordt uitgevoerd of waar uw gegevens worden opgeslagen. Deze regio's komen overeen met specifieke locaties, die worden gepubliceerd op de pagina [Azure-regio's](https://azure.microsoft.com/regions/) .
 
-### <a name="choose-the-best-region-for-your-application-and-data"></a>Kies de beste regio voor uw toepassing en gegevens
+### <a name="choose-the-best-region-for-your-application-and-data"></a>De beste regio voor uw toepassing en gegevens kiezen
 
-Een van de voordelen van het gebruik van Azure is dat u uw toepassingen implementeren in verschillende datacenters over de hele wereld. De regio die u kiest, kan van invloed zijn op de prestaties van uw toepassing. Het is bijvoorbeeld beter om een regio te kiezen die dichter bij de meeste van uw klanten staat om de latentie in netwerkaanvragen te verminderen. U ook uw regio selecteren om te voldoen aan de wettelijke vereisten voor het distribueren van uw app in bepaalde landen/regio's. Het is altijd een goede gewoonte om toepassingsgegevens op te slaan in hetzelfde datacenter of in een datacenter zo dicht mogelijk bij het datacenter dat uw toepassing host.
+Een van de voor delen van het gebruik van Azure is dat u uw toepassingen kunt implementeren op verschillende data centers over de hele wereld. De regio die u kiest, kan invloed hebben op de prestaties van uw toepassing. Het is bijvoorbeeld beter om een regio te kiezen die dichter bij de meeste klanten ligt om de latentie in netwerk aanvragen te verminderen. Mogelijk wilt u ook uw regio selecteren om te voldoen aan de wettelijke vereisten voor het distribueren van uw app in bepaalde landen/regio's. Het is altijd een best practice om toepassings gegevens op te slaan in hetzelfde Data Center of in een Data Center zo dicht mogelijk bij het Data Center dat als host fungeert voor uw toepassing.
 
 ### <a name="multi-region-apps"></a>Apps met meerdere regio's
 
-Hoewel onwaarschijnlijk, is het niet onmogelijk voor een heel datacenter om offline te gaan vanwege een gebeurtenis zoals een natuurramp of internetstoring. Het is een beste gewoonte om vitale bedrijfstoepassingen in meer dan één datacenter te hosten om maximale beschikbaarheid te bieden. Het gebruik van meerdere regio's kan ook de latentie voor wereldwijde gebruikers verminderen en extra mogelijkheden bieden voor flexibiliteit bij het bijwerken van toepassingen.
+Hoewel het niet onwaarschijnlijk is, is het niet onmogelijk dat een volledig Data Center offline gaat vanwege een gebeurtenis zoals een natuur ramp of Internet fout. Het is een best practice voor het hosten van belang rijke zakelijke toepassingen in meer dan één Data Center om maximale Beschik baarheid te bieden. Het gebruik van meerdere regio's kan de latentie voor globale gebruikers ook verminderen en biedt extra mogelijkheden voor flexibiliteit bij het bijwerken van toepassingen.
 
-Sommige services, zoals Virtual Machine en App Services, gebruiken [Azure Traffic Manager](../../traffic-manager/traffic-manager-overview.md) om ondersteuning met meerdere regio's mogelijk te maken met failover tussen regio's om bedrijfstoepassingen met hoge beschikbaarheid te ondersteunen. Zie bijvoorbeeld [Azure-referentiearchitectuur: voer een webtoepassing uit in meerdere regio's](https://docs.microsoft.com/azure/architecture/reference-architectures/app-service-web-app/multi-region).
+Sommige services, zoals virtuele machine en App Services, gebruiken [Azure Traffic Manager](../../traffic-manager/traffic-manager-overview.md) om ondersteuning voor meerdere regio's in te scha kelen met failover tussen regio's voor het ondersteunen van zakelijke toepassingen met een hoge Beschik baarheid. Zie [Azure-referentie architectuur: een webtoepassing in meerdere regio's uitvoeren](https://docs.microsoft.com/azure/architecture/reference-architectures/app-service-web-app/multi-region)voor een voor beeld.
 
->**Wanneer te gebruiken:** Wanneer u bedrijfs- en toepassingen met hoge beschikbaarheid hebt die profiteren van failover en replicatie.
+>**Wanneer u gebruikt**: wanneer u toepassingen voor bedrijfs-en hoge Beschik baarheid hebt die van toepassing zijn op failover en replicatie.
 
 ## <a name="how-do-i-manage-my-applications-and-projects"></a>Hoe kan ik mijn toepassingen en projecten beheren?
 
-Azure biedt u een uitgebreide reeks ervaringen om uw Azure-resources, -toepassingen en -projecten te maken en te beheren, zowel programmatisch als in de [Azure-portal.](https://portal.azure.com/)
+Azure biedt een uitgebreide set ervaringen waarmee u uw Azure-resources,-toepassingen en-projecten kunt maken en beheren, zowel programmatisch als in de [Azure Portal](https://portal.azure.com/).
 
-### <a name="command-line-interfaces-and-powershell"></a>Command-line interfaces en PowerShell
+### <a name="command-line-interfaces-and-powershell"></a>Opdracht regel interfaces en Power shell
 
-Azure biedt twee manieren om uw toepassingen en services vanaf de opdrachtregel te beheren. U tools gebruiken zoals Bash, Terminal, de opdrachtprompt of uw opdrachtregelgereedschap naar keuze. Meestal u dezelfde taken uitvoeren vanaf de opdrachtregel als in de Azure-portal, zoals het maken en configureren van virtuele machines, virtuele netwerken, web-apps en andere services.
+Azure biedt twee manieren om uw toepassingen en services te beheren vanaf de opdracht regel. U kunt hulpprogram ma's zoals bash, Terminal, de opdracht prompt of het gewenste opdracht regel programma gebruiken. Normaal gesp roken kunt u dezelfde taken uitvoeren vanaf de opdracht regel als in de Azure Portal, zoals het maken en configureren van virtuele machines, virtuele netwerken, Web-apps en andere services.
 
--   [Azure Command-Line Interface (CLI)](../../xplat-cli-install.md): hiermee u verbinding maken met een Azure-abonnement en verschillende taken programmeren ten opzichte van Azure-resources van de opdrachtregel.
+-   [Azure-opdracht regel interface (CLI)](../../xplat-cli-install.md): Hiermee kunt u verbinding maken met een Azure-abonnement en verschillende taken Program meren met Azure-resources vanaf de opdracht regel.
 
--   [Azure PowerShell:](../../powershell-install-configure.md)biedt een reeks modules met cmdlets waarmee u Azure-resources beheren met Windows PowerShell.
+-   [Azure PowerShell](../../powershell-install-configure.md): voorziet in een set modules met cmdlets waarmee u Azure-resources kunt beheren met behulp van Windows Power shell.
 
 ### <a name="azure-portal"></a>Azure Portal
 
-De [Azure-portal](https://portal.azure.com) is een webgebaseerde toepassing. U de Azure-portal gebruiken om Azure-bronnen en -services te maken, te beheren en te verwijderen. Het omvat:
+De [Azure Portal](https://portal.azure.com) is een webtoepassing. U kunt de Azure Portal gebruiken om Azure-resources en-services te maken, te beheren en te verwijderen. Het bevat:
 
-* Een configureerbaar dashboard
-* Azure-hulpprogramma's voor resourcebeheer
-* Toegang tot abonnementsinstellingen en factureringsgegevens. Zie het overzicht van de [Azure-portal](../../azure-portal-overview.md)voor meer informatie.
+* Een configureerbaar dash board
+* Azure resource management-hulpprogram ma's
+* Toegang tot abonnements instellingen en facturerings gegevens. Zie [Azure Portal-overzicht](../../azure-portal-overview.md)voor meer informatie.
 
 ### <a name="rest-apis"></a>REST-API’s
 
-Azure is gebouwd op een set REST-API's die de gebruikersinterface van de Azure-portal ondersteunen. De meeste van deze REST-API's worden ook ondersteund om u programmatisch uw Azure-bronnen en -toepassingen te laten inrichten en beheren vanaf elk apparaat dat in internet is ingeschakeld. Zie de [Azure REST SDK-verwijzing](https://docs.microsoft.com/rest/api/)voor de volledige set REST API-documentatie.
+Azure is gebouwd op een set REST-Api's die ondersteuning bieden voor de Azure Portal-gebruikers interface. De meeste van deze REST Api's worden ook ondersteund om uw Azure-resources en-toepassingen programmatisch in te richten en te beheren vanaf elk apparaat met een Internet verbinding. Zie de [Naslag informatie voor Azure rest SDK](https://docs.microsoft.com/rest/api/)voor de volledige set rest API documentatie.
 
 ### <a name="apis"></a>API's
 
-Samen met REST API's u met veel Azure-services ook programmatisch resources uit uw toepassingen beheren met behulp van platformspecifieke Azure SDK's, waaronder SDK's voor de volgende ontwikkelplatforms:
+Naast REST Api's kunt u met veel Azure-Services ook programmatisch resources van uw toepassingen beheren met platformspecifieke Azure-Sdk's, waaronder Sdk's voor de volgende ontwikkel platforms:
 
 -   [.NET](https://go.microsoft.com/fwlink/?linkid=834925)
 -   [Node.js](https://docs.microsoft.com/azure/javascript/)
 -   [Java](https://docs.microsoft.com/java/azure)
--   [Php](https://github.com/Azure/azure-sdk-for-php/blob/master/README.md)
+-   [PHP](https://github.com/Azure/azure-sdk-for-php/blob/master/README.md)
 -   [Python](/azure/python/)
 -   [Ruby](https://github.com/Azure/azure-sdk-for-ruby/blob/master/README.md)
 -   [OK](https://docs.microsoft.com/azure/go)
 
-Services zoals [Mobile Apps](../../app-service-mobile/app-service-mobile-dotnet-how-to-use-client-library.md) en Azure Media [Services](../../media-services/previous/media-services-dotnet-how-to-use.md) bieden client-side SDKs waarmee u toegang hebt tot services van web- en mobiele client-apps.
+Services als [Mobile apps](../../app-service-mobile/app-service-mobile-dotnet-how-to-use-client-library.md) en [Azure Media Services](../../media-services/previous/media-services-dotnet-how-to-use.md) sdk's aan de client zijde om u toegang te geven tot services van web-en mobiele client-apps.
 
 ### <a name="azure-resource-manager"></a>Azure Resource Manager
 
-Het uitvoeren van uw app op Azure betekent waarschijnlijk het werken met meerdere Azure-services. Deze diensten volgen dezelfde levenscyclus en kunnen worden gezien als een logische eenheid. Een web-app kan bijvoorbeeld Web Apps, SQL Database, Storage, Azure Cache for Redis en Azure Content Delivery Network-services gebruiken. [Met Azure Resource](../../azure-resource-manager/management/overview.md) Manager u als groep werken met de resources in uw toepassing. U alle bronnen in één gecoördineerde bewerking implementeren, bijwerken of verwijderen.
+Als uw app wordt uitgevoerd in azure, is het mogelijk dat u werkt met meerdere Azure-Services. Deze services volgen dezelfde levens cyclus en kunnen worden beschouwd als een logische eenheid. Een web-app kan bijvoorbeeld Web Apps, SQL Database, opslag, Azure cache voor redis en Azure Content Delivery Network Services gebruiken. Met [Azure Resource Manager](../../azure-resource-manager/management/overview.md) kunt u als groep werken met de resources in uw toepassing. U kunt alle resources implementeren, bijwerken of verwijderen in een enkele, gecoördineerde bewerking.
 
-Samen met het logisch groeperen en beheren van gerelateerde resources, bevat Azure Resource Manager implementatiemogelijkheden waarmee u de implementatie en configuratie van gerelateerde resources aanpassen. U bijvoorbeeld Resource Manager implementeren gebruiken en een toepassing configureren. Deze toepassing kan bestaan uit meerdere virtuele machines, een load balancer en een Azure SQL-database als één eenheid.
+Naast het logisch groeperen en beheren van gerelateerde resources bevat Azure Resource Manager implementatie mogelijkheden waarmee u de implementatie en configuratie van gerelateerde resources kunt aanpassen. U kunt bijvoorbeeld Resource Manager gebruiken om een toepassing te implementeren en te configureren. Deze toepassing kan bestaan uit meerdere virtuele machines, een load balancer en een Azure SQL database als één eenheid.
 
-U ontwikkelt deze implementaties met behulp van een Azure Resource Manager-sjabloon, een document met JSON-indeling. Met sjablonen u een implementatie definiëren en uw toepassingen beheren met behulp van declaratieve sjablonen, in plaats van scripts. Uw sjablonen kunnen werken voor verschillende omgevingen, zoals testen, fasering en productie. U bijvoorbeeld sjablonen gebruiken om een knop toe te voegen aan een GitHub-repo die de code in de repo met één klik implementeert naar een set Azure-services.
+U kunt deze implementaties ontwikkelen met behulp van een Azure Resource Manager sjabloon. Dit is een document met JSON-indeling. Met sjablonen kunt u een implementatie definiëren en uw toepassingen beheren door gebruik te maken van declaratieve sjablonen in plaats van scripts. Uw sjablonen kunnen worden gebruikt voor verschillende omgevingen, zoals testen, faseren en productie. U kunt bijvoorbeeld sjablonen gebruiken om een knop toe te voegen aan een GitHub-opslag plaats die de code in de opslag plaats implementeert met een set van Azure-Services met één klik.
 
-> **Wanneer u het gebruik wilt gebruiken:** Gebruik Resource Manager-sjablonen wanneer u een op een sjabloon gebaseerde implementatie voor uw app wilt die u programmatisch beheren met behulp van REST-API's, Azure CLI en Azure PowerShell.
+> **Wanneer gebruiken**: gebruik Resource Manager-sjablonen als u een implementatie op basis van een sjabloon wilt voor uw app die u programmatisch kunt beheren met behulp van rest api's, de Azure CLI en Azure PowerShell.
 >
-> **Aan de slag:** Zie [Azure Resource Manager-sjablonen ontwerpen](../../resource-group-authoring-templates.md)om aan de slag te gaan met sjablonen.
+> Aan de **slag**: Zie [Azure Resource Manager sjablonen ontwerpen](../../resource-group-authoring-templates.md)voor meer informatie over het maken van sjablonen.
 
 ## <a name="understanding-accounts-subscriptions-and-billing"></a>Inzicht in accounts, abonnementen en facturering
 
-Als ontwikkelaars duiken we graag direct in de code en proberen we zo snel mogelijk aan de slag te gaan met het draaien van onze applicaties. We willen u zeker aanmoedigen om zo gemakkelijk mogelijk in Azure te gaan werken. Om het u gemakkelijk te maken, biedt Azure een [gratis proefversie.](https://azure.microsoft.com/free/) Sommige services hebben zelfs een 'Probeer het gratis'-functionaliteit, zoals [Azure App Service,](https://tryappservice.azure.com/)waarvoor u niet eens een account hoeft aan te maken. Hoe leuk het ook is om te duiken in codering en het implementeren van uw toepassing op Azure, het is ook belangrijk om enige tijd te nemen om te begrijpen hoe Azure werkt. U moet in het bijzonder begrijpen hoe het werkt vanuit het standpunt van gebruikersaccounts, abonnementen en facturering.
+Als ontwikkel aars willen we meteen beginnen met de code en proberen zo snel mogelijk aan de slag te gaan met het uitvoeren van onze toepassingen. We willen er zeker van zijn dat u zo snel mogelijk aan de slag kunt gaan met Azure. Om het eenvoudig te maken, biedt Azure een [gratis proef versie](https://azure.microsoft.com/free/). Sommige services hebben zelfs de functionaliteit gratis uitproberen, zoals [Azure app service](https://tryappservice.azure.com/), waarvoor u zelfs geen account hoeft te maken. Net als bij het maken van code ring en het implementeren van uw toepassing in azure, is het ook belang rijk om te begrijpen hoe Azure werkt. In het bijzonder moet u begrijpen hoe het werkt vanuit een oogpunt van gebruikers accounts, abonnementen en facturering.
 
 ### <a name="what-is-an-azure-account"></a>Wat is een Azure-account?
 
-Als u een Azure-abonnement wilt maken of gebruiken, moet u een Azure-account hebben. Een Azure-account is gewoon een identiteit in Azure AD of in een map, zoals een werk- of schoolorganisatie, die door Azure AD wordt vertrouwd. Als u niet tot een dergelijke organisatie behoort, u altijd een abonnement maken met uw Microsoft-account, dat wordt vertrouwd door Azure AD. Zie [Uw on-premises identiteiten integreren met Azure Active Directory](../../active-directory/hybrid/whatis-hybrid-identity.md)voor meer informatie over het integreren van on-premises Windows Server Active Directory met Azure AD.
+Als u een Azure-abonnement wilt maken of wilt gebruiken, moet u een Azure-account hebben. Een Azure-account is simpelweg een identiteit in azure AD of in een directory, zoals een werk-of school organisatie, die door Azure AD wordt vertrouwd. Als u geen deel uitmaakt van een dergelijke organisatie, kunt u altijd een abonnement maken met behulp van uw micro soft-account, dat wordt vertrouwd door Azure AD. Zie [uw on-premises identiteiten integreren met Azure Active Directory](../../active-directory/hybrid/whatis-hybrid-identity.md)voor meer informatie over het integreren van on-premises Windows Server-Active Directory met Azure AD.
 
-Voor elk Azure-abonnement is er een vertrouwensrelatie met een Azure AD-exemplaar. Dit betekent dat er op die directory wordt vertrouwd voor het verifiëren van gebruikers, services en apparaten. Meerdere abonnementen kunnen dezelfde directory vertrouwen, maar een abonnement vertrouwt slechts één directory. Zie hoe [Azure-abonnementen zijn gekoppeld aan Azure Active Directory](../../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md)voor meer informatie.
+Voor elk Azure-abonnement is er een vertrouwensrelatie met een Azure AD-exemplaar. Dit betekent dat er op die directory wordt vertrouwd voor het verifiëren van gebruikers, services en apparaten. Meerdere abonnementen kunnen dezelfde directory vertrouwen, maar een abonnement vertrouwt slechts één directory. Zie [hoe Azure-abonnementen worden gekoppeld aan Azure Active Directory](../../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md)voor meer informatie.
 
-Naast het definiëren van afzonderlijke Azure-accountidentiteiten, ook wel *gebruikers*genoemd, u *groepen* definiëren in Azure AD. Het maken van gebruikersgroepen is een goede manier om de toegang tot bronnen in een abonnement te beheren met behulp van rbac (role-based access control). Zie Een groep maken [in Azure Active Directory preview](../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md)voor meer informatie over het maken van groepen. U ook groepen maken en beheren [met PowerShell](../../active-directory/users-groups-roles/groups-settings-v2-cmdlets.md).
+En het definiëren van afzonderlijke Azure-account identiteiten, ook wel *gebruikers*genoemd, kunt u *groepen* definiëren in azure AD. Het maken van gebruikers groepen is een goede manier om de toegang tot resources in een abonnement te beheren met behulp van op rollen gebaseerd toegangs beheer (RBAC). Zie [een groep maken in azure Active Directory preview](../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md)voor meer informatie over het maken van groepen. U kunt ook groepen maken en beheren met [behulp van Power shell](../../active-directory/users-groups-roles/groups-settings-v2-cmdlets.md).
 
 ### <a name="manage-your-subscriptions"></a>Uw abonnementen beheren
 
-Een abonnement is een logische groepering van Azure-services die is gekoppeld aan een Azure-account. Eén Azure-account kan meerdere abonnementen bevatten. Facturering voor Azure-services gebeurt per abonnement. Zie [Microsoft Azure-aanbiedingsgegevens](https://azure.microsoft.com/support/legal/offer-details/)voor een lijst met beschikbare abonnementsaanbiedingen per type. Azure-abonnementen hebben een accountbeheerder die volledige controle heeft over het abonnement. Ze hebben ook een servicebeheerder die controle heeft over alle services in het abonnement. Zie [Azure-abonnementsbeheerders toevoegen of wijzigen](../../cost-management-billing/manage/add-change-subscription-administrator.md)voor informatie over beheerders van klassieke abonnementen. Afzonderlijke accounts kunnen gedetailleerde controle over Azure-resources krijgen met behulp van [rbac (Role-based access control).](../../role-based-access-control/overview.md)
+Een abonnement is een logische groepering van Azure-Services die zijn gekoppeld aan een Azure-account. Eén Azure-account kan meerdere abonnementen bevatten. Facturering voor Azure-Services wordt uitgevoerd op basis van per abonnement. Zie [Microsoft Azure Details](https://azure.microsoft.com/support/legal/offer-details/)van de aanbieding voor een lijst met de beschik bare abonnements aanbiedingen op type. Azure-abonnementen hebben een account beheerder die volledige controle heeft over het abonnement. Ze hebben ook een service beheerder die controle heeft over alle services in het abonnement. Zie [beheerders van Azure-abonnementen toevoegen of wijzigen](../../cost-management-billing/manage/add-change-subscription-administrator.md)voor meer informatie over klassieke abonnements beheerders. Aan afzonderlijke accounts kan gedetailleerde controle worden verleend over Azure-resources met behulp [van op rollen gebaseerd toegangs beheer (RBAC)](../../role-based-access-control/overview.md).
 
 #### <a name="resource-groups"></a>Resourcegroepen
 
-Wanneer u nieuwe Azure-services indient, doet u dit in een bepaald abonnement. Afzonderlijke Azure-services, die ook resources worden genoemd, worden gemaakt in de context van een resourcegroep. Resourcegroepen maken het eenvoudiger om de resources van uw toepassing te implementeren en te beheren. Een resourcegroep moet alle bronnen voor uw toepassing bevatten waarmee u als eenheid wilt werken. U resources verplaatsen tussen resourcegroepen en zelfs naar verschillende abonnementen. Zie [Resources verplaatsen naar een nieuwe resourcegroep of -abonnement](../../azure-resource-manager/management/move-resource-group-and-subscription.md)voor meer informatie over het verplaatsen van resources.
+Wanneer u nieuwe Azure-Services inricht, doet u dat in een bepaald abonnement. Afzonderlijke Azure-Services, die ook wel resources worden genoemd, worden gemaakt in de context van een resource groep. Resource groepen maken het gemakkelijker om de resources van uw toepassing te implementeren en beheren. Een resource groep moet alle resources bevatten voor uw toepassing die u als een eenheid wilt gebruiken. U kunt resources verplaatsen tussen resource groepen en zelfs naar verschillende abonnementen. Zie [resources verplaatsen naar een nieuwe resource groep of een nieuw abonnement](../../azure-resource-manager/management/move-resource-group-and-subscription.md)voor meer informatie over het verplaatsen van resources.
 
-De Azure Resource Explorer is een geweldig hulpmiddel voor het visualiseren van de bronnen die u al hebt gemaakt in uw abonnement. Zie [Azure Resource Explorer gebruiken om bronnen weer te geven en te wijzigen](../../resource-manager-resource-explorer.md)voor meer informatie.
+De Azure Resource Explorer is een uitstekend hulp programma voor het visualiseren van de resources die u al hebt gemaakt in uw abonnement. Zie [Azure resource Explorer gebruiken om resources te bekijken en te wijzigen](../../resource-manager-resource-explorer.md)voor meer informatie.
 
 #### <a name="grant-access-to-resources"></a>Toegang tot resources verlenen
 
-Wanneer u toegang tot Azure-bronnen toestaat, is het altijd een aanbevolen manier om gebruikers de minste bevoegdheden te bieden die nodig zijn om een bepaalde taak uit te voeren.
+Wanneer u toegang verleent tot Azure-resources, is het altijd een best practice om gebruikers de minste bevoegdheid te geven die nodig is om een bepaalde taak uit te voeren.
 
-- **RBAC (Role-based access control):** in Azure u toegang verlenen tot gebruikersaccounts (principals) op een bepaald bereik: abonnement, resourcegroep of afzonderlijke resources. Met RBAC u resources implementeren in een resourcegroep en machtigingen verlenen aan een specifieke gebruiker of groep. Hiermee u ook de toegang beperken tot alleen de resources die behoren tot de doelgroep. U ook toegang verlenen tot één resource, zoals een virtuele machine of virtueel netwerk. Als u toegang wilt verlenen, wijst u een rol toe aan de gebruiker, groep of serviceprincipal. Er zijn veel vooraf gedefinieerde rollen en u ook uw eigen aangepaste rollen definiëren. Zie [Wat is op rollen gebaseerd toegangscontrole (RBAC)?](../../role-based-access-control/overview.md).
+- **Op rollen gebaseerd toegangs beheer (RBAC)**: in azure kunt u toegang verlenen aan gebruikers accounts (principals) bij een opgegeven Scope: abonnement, resource groep of afzonderlijke resources. Met RBAC kunt u resources in een resource groep implementeren en machtigingen verlenen aan een specifieke gebruiker of groep. Daarnaast kunt u de toegang beperken tot de resources die deel uitmaken van de doel resource groep. U kunt ook toegang verlenen tot één resource, zoals een virtuele machine of een virtueel netwerk. Als u toegang wilt verlenen, wijst u een rol toe aan de gebruiker, groep of Service-Principal. Er zijn veel vooraf gedefinieerde rollen, en u kunt ook uw eigen aangepaste rollen definiëren. Zie [Wat is op rollen gebaseerd toegangs beheer (RBAC)?](../../role-based-access-control/overview.md)voor meer informatie.
 
-  > **Wanneer te gebruiken**: Wanneer u fijnkorrelig toegangsbeheer voor gebruikers en groepen nodig hebt of wanneer u een gebruiker eigenaar van een abonnement moet maken.
+  > **Wanneer u wilt gebruiken**: als u een nauw keurig toegangs beheer voor gebruikers en groepen nodig hebt of als u een gebruiker een eigenaar van een abonnement wilt maken.
   >
-  > **Aan de slag:** zie [Toegang beheren met RBAC en de Azure-portal](../../role-based-access-control/role-assignments-portal.md)voor meer informatie.
+  > Aan de **slag**: Zie [toegang beheren met RBAC en de Azure Portal](../../role-based-access-control/role-assignments-portal.md)voor meer informatie.
 
-- **Servicehoofdobjecten:** U dezelfde toegang verlenen tot een serviceprincipal, samen met het bieden van toegang tot gebruikersprincipals en -groepen.
+- **Service-Principal-objecten**: naast het verlenen van toegang tot gebruikers-principals en-groepen, kunt u dezelfde toegang verlenen aan een service-principal.
 
-  > **Wanneer te gebruiken:** Wanneer u Azure-resources programmatisch beheert of toegang verleent voor toepassingen. Zie [Active Directory-toepassing en serviceprincipal maken](../../active-directory/develop/howto-create-service-principal-portal.md)voor meer informatie.
+  > **Wanneer u gebruikt**: wanneer u programmatisch Azure-resources beheert of toegang verleent voor toepassingen. Zie [Active Directory-toepassing en service-principal maken](../../active-directory/develop/howto-create-service-principal-portal.md)voor meer informatie.
 
 #### <a name="tags"></a>Tags
 
-Met Azure Resource Manager u aangepaste tags toewijzen aan afzonderlijke bronnen. Tags, die sleutelwaardeparen zijn, kunnen handig zijn wanneer u resources moet ordenen voor facturering of bewaking. Tags bieden u een manier om resources in meerdere resourcegroepen bij te houden. U tags op de volgende manieren toewijzen:
+Met Azure Resource Manager kunt u aangepaste labels toewijzen aan afzonderlijke resources. Tags, die sleutel-waardeparen zijn, kunnen handig zijn wanneer u resources voor facturering of bewaking wilt indelen. Tags bieden u een manier om resources in meerdere resource groepen bij te houden. U kunt labels op de volgende manieren toewijzen:
 
-* In het portaal
+* In de portal
 * In de sjabloon Azure Resource Manager
 * Met behulp van de REST API
 * Azure CLI gebruiken
 * PowerShell gebruiken
 
-U meerdere tags toewijzen aan elke resource. Zie [Tags gebruiken om uw Azure-bronnen te ordenen](../../resource-group-using-tags.md)voor meer informatie.
+U kunt meerdere labels toewijzen aan elke resource. Zie [Tags gebruiken om uw Azure-resources te organiseren](../../resource-group-using-tags.md)voor meer informatie.
 
 ### <a name="billing"></a>Billing
 
-Bij de overgang van on-premises computing naar cloudgehoste services zijn het bijhouden en schatten van servicegebruik en gerelateerde kosten belangrijke zorgen. Het is belangrijk om in te schatten welke nieuwe resources maandelijks moeten worden uitgevoerd. U ook projecteren hoe de facturering er uitziet voor een bepaalde maand op basis van de huidige uitgaven.
+In de overstap van on-premises computing naar in de Cloud gehoste services zijn het bijhouden en ramen van service gebruik en gerelateerde kosten aanzienlijk van belang. Het is belang rijk om te schatten welke nieuwe resources maandelijks moeten worden uitgevoerd. U kunt ook projecteren hoe de facturering zoekt naar een bepaalde maand op basis van de huidige uitgaven.
 
-#### <a name="get-resource-usage-data"></a>Gegevens over resourcegebruik verzamelen
+#### <a name="get-resource-usage-data"></a>Gegevens over resource gebruik ophalen
 
-Azure biedt een set FactureringsREST-API's die toegang geven tot bronverbruik en metagegevens voor Azure-abonnementen. Deze Facturerings-API's bieden u de mogelijkheid om azure-kosten beter te voorspellen en te beheren. U uitgaven per uur bijhouden en analyseren en uitgavenwaarschuwingen maken. U ook toekomstige facturering voorspellen op basis van de huidige gebruikstrends.
+Azure biedt een set facturering REST-Api's waarmee u toegang krijgt tot Resource verbruik en meta gegevens gegevens voor Azure-abonnementen. Deze Billing-API's biedt u de mogelijkheid om de kosten van Azure beter te voors pellen en te beheren. U kunt uitgaven bijhouden en analyseren in een uurtarief en bestedings waarschuwingen maken. U kunt ook toekomstige facturering op basis van huidige gebruiks trends voors pellen.
 
->**Aan de slag:** zie overzicht van [Azure Billing Usage en RateCard API's](../../cost-management-billing/manage/usage-rate-card-overview.md)voor meer informatie over het gebruik van de facturerings-API's .
+>**Aan de slag**: Zie [overzicht van Azure Billing en RateCard api's](../../cost-management-billing/manage/usage-rate-card-overview.md)voor meer informatie over het gebruik van de Billing-API's.
 
-#### <a name="predict-future-costs"></a>Toekomstige kosten voorspellen
+#### <a name="predict-future-costs"></a>Toekomstige kosten voors pellen
 
-Hoewel het een uitdaging is om kosten van tevoren in te schatten, heeft Azure tools die u kunnen helpen. Het heeft een [prijscalculator](https://azure.microsoft.com/pricing/calculator/) om de kosten van geïmplementeerde resources te helpen schatten. U ook de factureringsresources in de portal en de API's voor factureringrest gebruiken om toekomstige kosten te schatten op basis van het huidige verbruik.
+Hoewel het lastig is om de kosten van tevoren te schatten, heeft Azure hulpprogram ma's die u kunnen helpen. Het heeft een [prijs calculator](https://azure.microsoft.com/pricing/calculator/) waarmee u de kosten van geïmplementeerde resources kunt schatten. U kunt ook de facturerings bronnen in de portal en de REST-Api's van de facturering gebruiken om toekomstige kosten te schatten, op basis van het huidige verbruik.
 
->**Aan de slag:** zie [overzicht van Azure Billing Usage en RateCard API's](../../cost-management-billing/manage/usage-rate-card-overview.md).
+>**Aan de slag**: Zie [Azure billing Usage and RateCard api's Overview](../../cost-management-billing/manage/usage-rate-card-overview.md)(Engelstalig).

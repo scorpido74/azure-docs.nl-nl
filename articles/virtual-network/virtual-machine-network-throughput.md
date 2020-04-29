@@ -1,6 +1,6 @@
 ---
-title: Azure virtual machine network throughput | Microsoft Documenten
-description: Meer informatie over de beheerdoorvoer van het azure-netwerk voor virtuele machines.
+title: Netwerk doorvoer van virtuele Azure-machine | Microsoft Docs
+description: Meer informatie over de netwerk doorvoer voor virtuele Azure-machines.
 services: virtual-network
 documentationcenter: na
 author: steveesp
@@ -16,59 +16,59 @@ ms.date: 4/26/2019
 ms.author: steveesp
 ms.reviewer: kumud, mareat
 ms.openlocfilehash: 47f58b25b082784177910d14ab95d8d242fda71a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79245432"
 ---
-# <a name="virtual-machine-network-bandwidth"></a>Bandbreedte van het virtuele machinenetwerk
+# <a name="virtual-machine-network-bandwidth"></a>Netwerk bandbreedte van virtuele machine
 
-Azure biedt een verscheidenheid aan VM-formaten en -typen, elk met een andere mix van prestatiemogelijkheden. Een mogelijkheid is netwerkdoorvoer (of bandbreedte), gemeten in megabits per seconde (Mbps). Omdat virtuele machines worden gehost op gedeelde hardware, moet de netwerkcapaciteit eerlijk worden gedeeld tussen de virtuele machines die dezelfde hardware delen. Grotere virtuele machines krijgen relatief meer bandbreedte dan kleinere virtuele machines.
+Azure biedt verschillende VM-grootten en-typen, elk met een andere combi natie van prestatie mogelijkheden. Eén mogelijkheid is netwerk doorvoer (of band breedte), gemeten in megabits per seconde (Mbps). Omdat virtuele machines worden gehost op gedeelde hardware, moet de netwerk capaciteit redelijk worden gedeeld tussen de virtuele machines die dezelfde hardware delen. Grotere virtuele machines hebben relatief meer band breedte toegewezen dan kleinere virtuele machines.
  
-De netwerkbandbreedte die aan elke virtuele machine wordt toegewezen, wordt gemeten op uitgaande (uitgaande) verkeer van de virtuele machine. Al het netwerkverkeer dat de virtuele machine verlaat, wordt meegeteld voor de toegewezen limiet, ongeacht de bestemming. Als een virtuele machine bijvoorbeeld een limiet van 1000 Mbps heeft, geldt die limiet of het uitgaande verkeer is bestemd voor een andere virtuele machine in hetzelfde virtuele netwerk of buiten Azure.
+De netwerk bandbreedte die aan elke virtuele machine wordt toegewezen, wordt gemeten op basis van uitgaand verkeer van de virtuele machine. Al het netwerk verkeer dat de virtuele machine verlaat, wordt meegeteld bij de toegewezen limiet, ongeacht de bestemming. Als een virtuele machine bijvoorbeeld een limiet van 1.000 Mbps heeft, is deze limiet van toepassing of het uitgaande verkeer bestemd is voor een andere virtuele machine in hetzelfde virtuele netwerk of buiten Azure.
  
-Ingress is niet direct gemeten of beperkt. Er zijn echter andere factoren, zoals CPU- en opslaglimieten, die van invloed kunnen zijn op het vermogen van een virtuele machine om binnenkomende gegevens te verwerken.
+Ingangs rechten worden niet rechtstreeks in een Data limiet gemeten. Er zijn echter andere factoren, zoals CPU-en opslag limieten, die van invloed kunnen zijn op de mogelijkheid van een virtuele machine om binnenkomende gegevens te verwerken.
 
-Versnelde netwerken is een functie die is ontworpen om de netwerkprestaties te verbeteren, inclusief latentie, doorvoer en CPU-gebruik. Hoewel versnelde netwerken de doorvoer van een virtuele machine kunnen verbeteren, kan dit alleen tot aan de toegewezen bandbreedte van de virtuele machine. Zie Versnelde netwerken voor [virtuele Windows-](create-vm-accelerated-networking-powershell.md) of [Linux-machines](create-vm-accelerated-networking-cli.md) voor meer informatie over versnelde netwerken.
+Versneld netwerken is een functie die is ontworpen om de netwerk prestaties te verbeteren, inclusief latentie, door Voer en CPU-gebruik. Hoewel versnelde netwerken de door Voer van een virtuele machine kunnen verbeteren, kan dit alleen tot aan de toegewezen band breedte van de virtuele machine. Zie versnelde netwerken voor virtuele [Windows](create-vm-accelerated-networking-powershell.md) -of [Linux](create-vm-accelerated-networking-cli.md) -machines voor meer informatie over versneld netwerken.
  
-Azure virtuele machines moeten een, maar kan meerdere, netwerkinterfaces aan hen zijn gekoppeld. Bandbreedte toegewezen aan een virtuele machine is de som van al het uitgaande verkeer over alle netwerkinterfaces die zijn gekoppeld aan een virtuele machine. Met andere woorden, de toegewezen bandbreedte is per virtuele machine, ongeacht het aantal netwerkinterfaces dat aan de virtuele machine is gekoppeld. Zie Azure [Windows-](../virtual-machines/windows/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json) en [Linux](../virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json) VM-formaten voor meer informatie over het aantal ondersteuningen voor verschillende Azure VM-formaten. 
+Virtuele Azure-machines moeten één hebben, maar er kunnen verschillende, netwerk interfaces aan zijn gekoppeld. De band breedte die is toegewezen aan een virtuele machine is de som van alle uitgaand verkeer voor alle netwerk interfaces die zijn gekoppeld aan een virtuele machine. Met andere woorden, de toegewezen band breedte is per virtuele machine, ongeacht het aantal netwerk interfaces dat aan de virtuele machine is gekoppeld. Zie Azure [Windows](../virtual-machines/windows/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json) -en [Linux](../virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json) -VM-grootten voor meer informatie over het aantal netwerk interfaces dat ondersteuning biedt voor verschillende Azure VM-grootten. 
 
-## <a name="expected-network-throughput"></a>Verwachte netwerkdoorvoer
+## <a name="expected-network-throughput"></a>Verwachte netwerk doorvoer
 
-De verwachte uitgaande doorvoer en het aantal netwerkinterfaces dat wordt ondersteund door elke VM-grootte wordt gedetailleerd in Azure [Windows-](../virtual-machines/windows/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json) en [Linux](../virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json) VM-formaten. Selecteer een type, zoals Algemeen doel, en selecteer vervolgens een groottereeks op de resulterende pagina, zoals de Dv2-serie. Elke serie heeft een tabel met netwerkspecificaties in de laatste kolom met de titel **Max NIC's / Verwachte netwerkprestaties (Mbps).** 
+De verwachte uitgaande door Voer en het aantal netwerk interfaces dat wordt ondersteund door elke VM-grootte, worden in azure [Windows](../virtual-machines/windows/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json) -en [Linux](../virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json) -VM-grootten gedetailleerd beschreven. Selecteer een type, zoals algemeen doel, en selecteer vervolgens een teken reeks op de resulterende pagina, zoals de dv2-serie. Elke reeks heeft een tabel met netwerk specificaties in de laatste kolom met de titel **maximum aantal nic's/verwachte netwerk prestaties (Mbps)**. 
 
-De doorvoerlimiet is van toepassing op de virtuele machine. Doorvoer wordt niet beïnvloed door de volgende factoren:
-- **Aantal netwerkinterfaces**: De bandbreedtelimiet is cumulatief van al het uitgaande verkeer van de virtuele machine.
-- **Versnelde netwerken:** Hoewel de functie nuttig kan zijn bij het bereiken van de gepubliceerde limiet, verandert de limiet niet.
-- **Verkeersbestemming**: Alle bestemmingen tellen mee voor de uitgaande limiet.
-- **Protocol:** Al het uitgaande verkeer over alle protocollen telt mee voor de limiet.
+De doorvoer limiet is van toepassing op de virtuele machine. De door Voer wordt niet beïnvloed door de volgende factoren:
+- **Aantal netwerk interfaces**: de bandbreedte limiet is cumulatief van al het uitgaande verkeer van de virtuele machine.
+- **Versneld netwerken**: Hoewel de functie nuttig kan zijn bij het bereiken van de gepubliceerde limiet, wordt de limiet niet gewijzigd.
+- **Verkeers bestemming**: alle doelen tellen mee voor de uitgaande limiet.
+- **Protocol**: al het uitgaande verkeer via alle protocollen telt de limiet.
 
-## <a name="network-flow-limits"></a>Netwerkstroomlimieten
+## <a name="network-flow-limits"></a>Limieten voor netwerk stroom
 
-Naast bandbreedte kan het aantal netwerkverbindingen dat op een vm op een bepaald moment aanwezig is, de netwerkprestaties beïnvloeden. De Azure-netwerkstack behoudt de status voor elke richting van een TCP/UDP-verbinding in gegevensstructuren die 'stromen' worden genoemd. Er wordt twee stromen gemaakt voor een typische TCP/UDP-verbinding, één voor de binnenkomende en een andere voor de uitgaande richting. 
+Naast band breedte kan het aantal netwerk verbindingen dat op een bepaald moment op een virtuele machine aanwezig is, invloed hebben op de netwerk prestaties. De Azure-netwerk stack houdt status in voor elke richting van een TCP/UDP-verbinding in gegevens structuren die ' stromen ' worden genoemd. Een typische TCP/UDP-verbinding heeft twee stromen die zijn gemaakt, één voor de binnenkomende en een andere voor de uitgaande richting. 
 
-Voor gegevensoverdracht tussen eindpunten moeten er meerdere stromen worden gemaakt, naast die welke de gegevensoverdracht uitvoeren. Enkele voorbeelden zijn stromen die zijn gemaakt voor DNS-resolutie en stromen die zijn gemaakt voor statussprobes voor load balancer. Houd er ook rekening mee dat netwerkvirtuele apparaten (NVA's) zoals gateways, proxy's, firewalls, stromen zien die worden gemaakt voor verbindingen die bij het toestel worden beëindigd en afkomstig zijn van het toestel. 
+Voor gegevens overdracht tussen eind punten is het maken van verschillende stromen vereist naast die voor het uitvoeren van de gegevens overdracht. Enkele voor beelden zijn stromen die zijn gemaakt voor de DNS-omzetting en stromen die zijn gemaakt voor load balancer status controles. Houd er ook rekening mee dat virtuele netwerk apparaten (Nva's), zoals gateways, proxy's, firewalls, stromen kunnen zien die worden gemaakt voor verbindingen die op het apparaat worden beëindigd en afkomstig zijn van het apparaat. 
 
-![Aantal stromen voor TCP-gesprek via een doorstuurtoestel](media/virtual-machine-network-throughput/flow-count-through-network-virtual-appliance.png)
+![Aantal flows voor TCP-conversatie via een doorstuur apparaat](media/virtual-machine-network-throughput/flow-count-through-network-virtual-appliance.png)
 
-## <a name="flow-limits-and-recommendations"></a>Stroomlimieten en aanbevelingen
+## <a name="flow-limits-and-recommendations"></a>Stroom limieten en aanbevelingen
 
-Vandaag de dag ondersteunt de Azure-netwerkstack de totale netwerkstromen van 250K met goede prestaties voor VM's met meer dan 8 CPU-cores en 100k totale stromen met goede prestaties voor VM's met minder dan 8 CPU-cores. Voorbij deze limiet desgradeert de netwerkprestaties sierlijk voor extra stromen tot een harde limiet van 500K totale stromen, 250K inkomende en 250K uitgaande, waarna extra stromen worden geschrapt.
+Vandaag ondersteunt de Azure-netwerk stack 250.000 totale netwerk stromen met goede prestaties voor Vm's met meer dan 8 CPU-kernen en het totale aantal stromen in 100.000 met goede prestaties voor Vm's met minder dan 8 CPU-kernen. In de meeste gevallen worden de netwerk prestaties op de juiste wijze gedegradeerd voor extra stromen tot een vaste limiet van 500.000 totale stromen, 250.000 inkomend en 250.000 uitgaand, waarna de extra stromen worden verwijderd.
 
-||VM's met <8 CPU-cores|VM's met 8+ CPU-cores|
+||Vm's met <8 CPU-kernen|Vm's met 8 en CPU-kernen|
 |---|---|---|
 |<b>Goede prestaties</b>|100.000 stromen |250.000 stromen|
-|<b>Gedegradeerde prestaties</b>|Boven de 100k stromen|Boven de 250K stromen|
-|<b>Stroomlimiet</b>|500K stromen|500K stromen|
+|<b>Verminderde prestaties</b>|Boven 100.000 stromen|Boven 250.000 stromen|
+|<b>Stroom limiet</b>|500.000 stromen|500.000 stromen|
 
-Statistieken zijn beschikbaar in [Azure Monitor](../azure-monitor/platform/metrics-supported.md#microsoftcomputevirtualmachines) om het aantal netwerkstromen en de stroomcreatiesnelheid op uw VM- of VMSS-exemplaren bij te houden.
+Er zijn metrische gegevens beschikbaar in [Azure monitor](../azure-monitor/platform/metrics-supported.md#microsoftcomputevirtualmachines) om het aantal netwerk stromen en de frequentie van het maken van de stroom op uw virtuele machine-of VMSS-instanties bij te houden.
 
-![azure-monitor-flow-metrics.png](media/virtual-machine-network-throughput/azure-monitor-flow-metrics.png)
+![Azure-monitor-flow-Metrics. png](media/virtual-machine-network-throughput/azure-monitor-flow-metrics.png)
 
-Verbindings- en beëindigingstarieven kunnen ook van invloed zijn op de netwerkprestaties, omdat verbindingsinstellingen en beëindiging CPU-gegevens deelt met pakketverwerkingsroutines. We raden u aan workloads te vergelijken met verwachte verkeerspatronen en workloads op de juiste manier uit te schalen om aan uw prestatiebehoeften te voldoen. 
+Het instellen en het beëindigen van de verbinding kan ook invloed hebben op de netwerk prestaties als de verbinding tot stand brengen en het beëindigen van de CPU met pakket verwerkings routines. We raden u aan werk belastingen te laten voldoen aan de verwachte verkeers patronen en de werk belasting adequaat uit te breiden zodat deze overeenkomen met uw prestatie behoeften. 
 
 ## <a name="next-steps"></a>Volgende stappen
 
 - [Netwerkdoorvoer optimaliseren voor het besturingssysteem van een virtuele machine](virtual-network-optimize-network-bandwidth.md)
-- [Test de netwerkdoorvoer](virtual-network-bandwidth-testing.md) voor een virtuele machine.
+- [Test de netwerk doorvoer](virtual-network-bandwidth-testing.md) voor een virtuele machine.
