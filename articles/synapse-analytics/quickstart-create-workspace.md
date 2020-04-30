@@ -1,6 +1,6 @@
 ---
-title: Snelstart - een werkruimte maken
-description: Maak een Azure Synapse Analytics-werkruimte door de stappen in deze handleiding te volgen.
+title: 'Quick Start: een werk ruimte maken'
+description: Maak een Azure Synapse Analytics-werk ruimte door de stappen in deze hand leiding te volgen.
 services: synapse-analytics
 author: malvenko
 ms.service: synapse-analytics
@@ -10,76 +10,76 @@ ms.date: 04/15/2020
 ms.author: josels
 ms.reviewer: jrasnick, carlrab
 ms.openlocfilehash: 1ccfb1b008a7e3e48f56b1af62087d303522ed73
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81676733"
 ---
-# <a name="quickstart-create-an-azure-synapse-analytics-workspace-preview"></a>Snelstart: een Azure Synapse Analytics-werkruimte maken (voorbeeld)
+# <a name="quickstart-create-an-azure-synapse-analytics-workspace-preview"></a>Snelstartgids: een Azure Synapse Analytics-werk ruimte maken (preview)
 
-Deze quickstart beschrijft de stappen om een Azure Synapse-werkruimte te maken met behulp van de Azure-portal.
+In deze Quick Start worden de stappen beschreven voor het maken van een Azure Synapse-werk ruimte met behulp van de Azure Portal.
 
-Als u geen Azure-abonnement hebt, [maakt u een gratis account voordat u begint.](https://azure.microsoft.com/free/)
+Als u nog geen abonnement op Azure hebt, [Maak dan een gratis account aan voordat u begint](https://azure.microsoft.com/free/).
 
 ## <a name="prerequisites"></a>Vereisten
 
-- [Azure Data Lake Storage Gen2-opslagaccount](../storage/common/storage-account-create.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)
+- [Azure Data Lake Storage Gen2 Storage-account](../storage/common/storage-account-create.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)
 
 ## <a name="sign-in-to-the-azure-portal"></a>Aanmelden bij Azure Portal
 
-Aanmelden bij de [Azure-portal](https://portal.azure.com/)
+Meld u aan bij de [Azure Portal](https://portal.azure.com/)
 
-## <a name="create-an-azure-synapse-workspace-using-the-azure-portal"></a>Een Azure Synapse-werkruimte maken met de Azure-portal
+## <a name="create-an-azure-synapse-workspace-using-the-azure-portal"></a>Een Azure Synapse-werk ruimte maken met behulp van de Azure Portal
 
-1. Voer in het zoekvenster van Microsoft Azure **synapse-werkruimte** in en selecteer deze service.
-![De zoekbalk van Azure-portalen met Azure](media/quickstart-create-synapse-workspace/workspace-search.png)Synapse-werkruimten is ingetypt. .
-2. Klik op de pagina **Synapse-werkruimten** op **+ Toevoegen**.
-![Opdracht om nieuwe Azure Synapse-werkruimte te maken gemarkeerd. ](media/quickstart-create-synapse-workspace/create-workspace-02.png).
-3. Vul het **azure Synapse-werkruimteformulier** in met de volgende gegevens:
+1. Voer in het zoek venster Microsoft Azure de **Synapse-werk ruimte** in en selecteer vervolgens deze service.
+![Azure Portal zoek balk met Azure Synapse-werk ruimten die zijn](media/quickstart-create-synapse-workspace/workspace-search.png)getypt in..
+2. Klik op de pagina **Synapse-werk ruimten** op **+ toevoegen**.
+![Opdracht voor het maken van een nieuwe Azure Synapse-werk ruimte gemarkeerd. ](media/quickstart-create-synapse-workspace/create-workspace-02.png).
+3. Vul het **Azure Synapse-werkruimte** formulier in met de volgende informatie:
 
     | Instelling | Voorgestelde waarde | Beschrijving |
     | :------ | :-------------- | :---------- |
     | **Abonnement** | *Uw abonnement* | Zie [Abonnementen](https://account.windowsazure.com/Subscriptions) voor meer informatie over uw abonnementen. |
-    | **Resourcegroep** | *Elke resourcegroep* | Zie [Naming conventions](/azure/architecture/best-practices/resource-naming.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) (Naamgevingsconventies) voor geldige namen van resourcegroepen. |
-    | **Werkruimtenaam** | mysampleworkspace | Hiermee geeft u de naam op van de werkruimte, die ook wordt gebruikt voor verbindingseindpunten.|
-    | **Regio** | VS - oost 2 | Hiermee geeft u de locatie van de werkruimte op.|
-    | **Data Lake Storage Gen2** | Account:`storage account name` </br> Bestandssysteem:`root file system to use` | Hiermee geeft u de naam van het ADLS Gen2-opslagaccount op dat moet worden gebruikt als primaire opslag en het te gebruiken bestandssysteem.|
+    | **Resourcegroep** | *Een resource groep* | Zie [Naming conventions](/azure/architecture/best-practices/resource-naming.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) (Naamgevingsconventies) voor geldige namen van resourcegroepen. |
+    | **Werkruimtenaam** | mysampleworkspace | Hiermee geeft u de naam van de werk ruimte, die ook wordt gebruikt voor verbindings eindpunten.|
+    | **Regio** | VS - oost 2 | Hiermee geeft u de locatie van de werk ruimte op.|
+    | **Data Lake Storage Gen2** | Account`storage account name` </br> Bestands systeem:`root file system to use` | Hiermee geeft u de naam van het opslag account van ADLS Gen2 moet worden gebruikt als primaire opslag en het bestands systeem dat moet worden gebruikt.|
     ||||
 
-    ![Werkruimteinrichtingsstroom - tabblad Basis.](media/quickstart-create-synapse-workspace/create-workspace-03.png).
+    ![Werk ruimte-inrichtings stroom-tabblad basis beginselen.](media/quickstart-create-synapse-workspace/create-workspace-03.png).
 
-    Het opslagaccount kan worden geselecteerd uit:
-    - Een lijst met ADLS Gen2-accounts beschikbaar in uw abonnement
-    - Handmatig ingevoerd met de accountnaam
+    Het opslag account kan worden geselecteerd vanuit:
+    - Een lijst met ADLS Gen2 accounts die beschikbaar zijn in uw abonnement
+    - Hand matig ingevoerd met de account naam
 
     > [!IMPORTANT]
-    > De Azure Synapse-werkruimte moet kunnen lezen en schrijven naar het geselecteerde ADLS Gen2-account. Bovendien moet u voor een opslagaccount dat u koppelt als het primaire opslagaccount, **hiërarchische naamruimte** hebben ingeschakeld bij het maken van het opslagaccount.
+    > De Azure Synapse-werk ruimte moet kunnen lezen en schrijven naar het geselecteerde ADLS Gen2-account. Bovendien moet u voor elk opslag account dat u als primair opslag account koppelt, een **hiërarchische naam ruimte** hebben ingeschakeld bij het maken van het opslag account.
     >
-    > Onder de selectievelden van ADLS Gen2 staat een notitie waarin staat dat de beheerde identiteit van de werkruimte de rol **Storaqe Blob Data Contributor** krijgt toegewezen op het geselecteerde Data Lake Storage Gen2-bestandssysteem dat deze volledige toegang verleent.
+    > Onder de ADLS Gen2 selectie velden ziet u een opmerking dat de beheerde identiteit van de werk ruimte wordt toegewezen aan de **Storaqe BLOB data contributor** -rol op het geselecteerde data Lake Storage Gen2 bestands systeem waarmee het volledige toegang wordt verleend.
 
-4. (Optioneel) Wijzig een van de **standaardinstellingen voor beveiliging + netwerken:**
-5. (Optioneel) Voeg tags toe op het tabblad **Labels.**
-6. Op het tabblad **Overzicht** worden de benodigde validaties uitgevoerd om ervoor te zorgen dat de werkruimte kan worden gemaakt. Zodra de validatie is geslaagd, drukt u](media/quickstart-create-synapse-workspace/create-workspace-05.png)op Werkruimte-inrichtingsstroom **maken** ![- het tabblad bevestiging. .
-7. Zodra het resourceinrichtingsproces is voltooid, ziet u een vermelding voor de gemaakte werkruimte in de lijst met Synapse-werkruimten. ![Vermelding van Synapse-werkruimten met de nieuw ingerichte werkruimte.](media/quickstart-create-synapse-workspace/create-workspace-07.png).
+4. Beschrijving Wijzig het tabblad **beveiliging en netwerk standaard instellingen** :
+5. Beschrijving Voeg labels toe op het tabblad **labels** .
+6. Op het tabblad **samen vatting** worden de benodigde validaties uitgevoerd om er zeker van te zijn dat de werk ruimte kan worden gemaakt. Zodra de validatie is gelukt, drukt u op werk ruimte inrichten stroom **maken** ![-](media/quickstart-create-synapse-workspace/create-workspace-05.png)bevestigings tabblad..
+7. Nadat het inrichtings proces voor de resource is voltooid, ziet u een vermelding voor de gemaakte werk ruimte in de lijst met Synapse-werk ruimten. ![Lijst met Synapse-werk ruimten waarin de zojuist ingerichte werk ruimte wordt weer gegeven.](media/quickstart-create-synapse-workspace/create-workspace-07.png).
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
-Volg de onderstaande stappen om de Azure Synapse-werkruimte te verwijderen.
+Volg de onderstaande stappen om de Azure Synapse-werk ruimte te verwijderen.
 > [!WARNING]
-> Als u een Azure Synapse-werkruimte verwijdert, worden de analyseengines en de gegevens die zijn opgeslagen in de database van de opgenomen SQL-groepen en metagegevens voor werkruimtes verwijderd. Het is niet langer mogelijk om verbinding te maken met de SQL-eindpunten, Apache Spark-eindpunten. Alle codeartefacten worden verwijderd (query's, notitieblokken, taakdefinities en pijplijnen).
+> Als u een Azure Synapse-werk ruimte verwijdert, worden de analyse-engines en de gegevens opgeslagen in de data base van de Inge sloten SQL-groepen en de meta gegevens van de werk ruimte verwijderd. Het is niet meer mogelijk om verbinding te maken met de SQL-eind punten, Apache Spark-eind punten. Alle code artefacten worden verwijderd (query's, notitie blokken, taak definities en pijp lijnen).
 >
-> Het verwijderen van de werkruimte heeft **geen** invloed op de gegevens in de Data Lake Store Gen2 die aan de werkruimte is gekoppeld.
+> Het verwijderen van de werk ruimte heeft **geen** invloed op de gegevens in de data Lake Store Gen2 die aan de werk ruimte zijn gekoppeld.
 
-Als u de Azure Synapse-werkruimte wilt verwijderen, voert u de volgende stappen uit:
+Als u de Azure Synapse-werk ruimte wilt verwijderen, voert u de volgende stappen uit:
 
-1. Navigeer naar de Azure Synapse-werkruimte om te verwijderen.
-1. Druk op **Delete** op de opdrachtbalk.
- ![Overzicht van Azure Synapse-werkruimte - opdracht verwijderen gemarkeerd.](media/quickstart-create-synapse-workspace/create-workspace-10.png)
-1. Bevestig de verwijdering en druk op **delete.**
- ![Overzicht van Azure Synapse-werkruimtes - dialoogvenster bevestiging van werkruimteverwijderen.](media/quickstart-create-synapse-workspace/create-workspace-11.png)
-1. Wanneer het proces is voltooid, wordt de Azure Synapse-werkruimte niet langer weergegeven in de lijst met werkruimten.
+1. Ga naar de Azure Synapse-werk ruimte die u wilt verwijderen.
+1. Druk op **verwijderen** op de opdracht balk.
+ ![Overzicht van de Azure Synapse-werk ruimte-opdracht verwijderen gemarkeerd.](media/quickstart-create-synapse-workspace/create-workspace-10.png)
+1. Bevestig het verwijderen en druk op de knop **verwijderen** .
+ ![Overzicht van de Azure Synapse-werk ruimte-bevestigings dialoogvenster voor werk ruimte verwijderen.](media/quickstart-create-synapse-workspace/create-workspace-11.png)
+1. Wanneer het proces is voltooid, wordt de Azure Synapse-werk ruimte niet meer weer gegeven in de lijst met werk ruimten.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Vervolgens u [SQL-pools maken](quickstart-create-sql-pool.md) of [Apache Spark-pools maken](quickstart-create-apache-spark-pool.md) om uw gegevens te analyseren en te verkennen.
+Vervolgens kunt u [SQL-groepen maken](quickstart-create-sql-pool.md) of [Apache Spark groepen maken](quickstart-create-apache-spark-pool.md) om uw gegevens te analyseren en te verkennen.

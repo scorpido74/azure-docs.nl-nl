@@ -1,122 +1,122 @@
 ---
-title: Sjabloon maken - Visual Studio Code
+title: Sjabloon maken-Visual Studio code
 description: Gebruik Visual Studio Code en de Azure Resource Manager-extensie voor hulpprogramma's om te werken met Resource Manager-sjablonen.
 author: neilpeterson
 ms.date: 04/17/2020
 ms.topic: quickstart
 ms.author: nepeters
 ms.openlocfilehash: cd107db5220a96d75092a94736e060ae46672926
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81686618"
 ---
-# <a name="quickstart-create-azure-resource-manager-templates-with-visual-studio-code"></a>Snelstart: Azure Resource Manager-sjablonen maken met Visual Studio-code
+# <a name="quickstart-create-azure-resource-manager-templates-with-visual-studio-code"></a>Snelstartgids: Azure Resource Manager sjablonen maken met Visual Studio code
 
-De Azure Resource Manager Tools for Visual Studio Code bieden taalondersteuning, resourcefragmenten en automatisch aanvullen van bronnen. Met deze hulpprogramma's u Azure Resource Manager-sjablonen maken en valideren. In deze quickstart gebruikt u de extensie om een Azure Resource Manager-sjabloon helemaal opnieuw te maken. Daarbij ervaart u de uitbreidingsmogelijkheden, zoals ARM-sjabloonfragmenten, validatie, voltooiingen en ondersteuning van parameterbestanden.
+De Azure Resource Manager-Hulpprogram Ma's voor Visual Studio code bieden taal ondersteuning, resource fragmenten en automatisch aanvullen van resources. Met deze hulpprogram ma's kunt u Azure Resource Manager sjablonen maken en valideren. In deze Quick Start gebruikt u de extensie om een volledig nieuwe Azure Resource Manager sjabloon te maken. U hebt nu de uitbreidings mogelijkheden, zoals de ARM-sjabloon fragmenten, validatie, voltooiing en ondersteuning voor het parameter bestand.
 
-Om deze quickstart te voltooien, hebt u [Visual Studio Code](https://code.visualstudio.com/)nodig, met de azure resource manager-extensie voor [hulpprogramma's](https://marketplace.visualstudio.com/items?itemName=msazurermtools.azurerm-vscode-tools) geïnstalleerd. U hebt ook de [Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) of de [Azure PowerShell-module](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.7.0) geïnstalleerd en geverifieerd.
+Als u deze Snelstartgids wilt volt ooien, hebt u [Visual Studio code](https://code.visualstudio.com/)nodig, waarop de [uitbrei ding Azure Resource Manager-hulpprogram ma's](https://marketplace.visualstudio.com/items?itemName=msazurermtools.azurerm-vscode-tools) is geïnstalleerd. U hebt ook de [Azure cli](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) of de [module Azure PowerShell](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.7.0) moet zijn geïnstalleerd en geverifieerd.
 
-Als u geen Azure-abonnement hebt, [maakt u een gratis account](https://azure.microsoft.com/free/) voordat u begint.
+Als u nog geen abonnement op Azure hebt, [Maak dan een gratis account](https://azure.microsoft.com/free/) aan voordat u begint.
 
 ## <a name="create-an-arm-template"></a>Een ARM-sjabloon maken
 
-Maak en open met Visual Studio Code een nieuw bestand met de naam *azuredeploy.json*. Voer `arm` de codeeditor in, die Azure Resource Manager-fragmenten initieert voor het uitzetten van een ARM-sjabloon.
+Maak en open met Visual Studio code een nieuw bestand met de naam *azuredeploy. json*. Voer `arm` in de code-editor, waarmee Azure Resource Manager fragmenten worden gestart voor het steigeren van een arm-sjabloon.
 
-Selecteer `arm!` om een sjabloon te maken die is geschikt voor een implementatie van een Azure-brongroep.
+Selecteer `arm!` deze optie om een sjabloon bereik te maken voor een implementatie van een Azure-resource groep.
 
-![Afbeelding met azure resource manager-steigers](./media/quickstart-create-templates-use-visual-studio-code/1.png)
+![Afbeelding van Azure Resource Manager steiger](./media/quickstart-create-templates-use-visual-studio-code/1.png)
 
-Dit fragment maakt de basisbouwstenen voor een ARM-sjabloon.
+Met dit fragment maakt u de basis bouwstenen voor een ARM-sjabloon.
 
-![Afbeelding met een volledig steigerende ARM-sjabloon](./media/quickstart-create-templates-use-visual-studio-code/2.png)
+![Afbeelding van een volledig gesteigerde ARM-sjabloon](./media/quickstart-create-templates-use-visual-studio-code/2.png)
 
-De taalmodus Visual Studio Code is gewijzigd van *JSON* naar *Azure Resource Manager-sjabloon*. De extensie bevat een taalserver die specifiek is voor ARM-sjablonen en die ARM-sjabloonspecifieke validatie, voltooiing en andere taalservices biedt.
+U ziet dat de Visual Studio code language-modus is gewijzigd van *JSON* in *Azure Resource Manager sjabloon*. De uitbrei ding bevat een taal server die specifiek is voor ARM-sjablonen die een ARM sjabloon-specifieke validatie, voltooiing en andere taal services bieden.
 
-![Afbeelding met Azure Resource Manager als de taalmodus Visual Studio Code](./media/quickstart-create-templates-use-visual-studio-code/3.png)
+![Afbeelding met Azure Resource Manager als de Visual Studio code language-modus](./media/quickstart-create-templates-use-visual-studio-code/3.png)
 
-## <a name="add-an-azure-resource"></a>Een Azure-bron toevoegen
+## <a name="add-an-azure-resource"></a>Een Azure-resource toevoegen
 
-De extensie bevat fragmenten voor veel Azure-bronnen. Deze fragmenten kunnen worden gebruikt om eenvoudig resources toe te voegen aan de implementatie van uw sjabloon.
+De uitbrei ding bevat fragmenten voor veel Azure-resources. Deze fragmenten kunnen worden gebruikt om eenvoudig resources aan uw sjabloon implementatie toe te voegen.
 
-Plaats de cursor in het blok `storage` **sjabloonbronnen,** typ in en selecteer het *armopslagfragment.*
+Plaats de cursor in het blok met sjabloon **resources** , typ `storage`in en selecteer het fragment voor *arm-opslag* .
 
 ![Afbeelding met een resource die wordt toegevoegd aan de ARM-sjabloon](./media/quickstart-create-templates-use-visual-studio-code/4.png)
 
-Met deze actie wordt een opslagbron aan de sjabloon toegevoegd.
+Met deze actie wordt een opslag resource aan de sjabloon toegevoegd.
 
-![Afbeelding met een Azure Storage-bron in een ARM-sjabloon](./media/quickstart-create-templates-use-visual-studio-code/5.png)
+![Afbeelding van een Azure Storage bron in een ARM-sjabloon](./media/quickstart-create-templates-use-visual-studio-code/5.png)
 
-De **tabtoets** kan worden gebruikt om het tabblad door configureerbare eigenschappen op het opslagaccount te gebruiken.
+De **Tab** -toets kan worden gebruikt om te tab via Configureer bare eigenschappen van het opslag account.
 
-![Afbeelding die laat zien hoe de tabtoets kan worden gebruikt om door resourceconfiguratie te navigeren](./media/quickstart-create-templates-use-visual-studio-code/6.png)
+![Afbeelding die laat zien hoe de tab-toets kan worden gebruikt om te navigeren door de resource configuratie](./media/quickstart-create-templates-use-visual-studio-code/6.png)
 
 ## <a name="completion-and-validation"></a>Voltooiing en validatie
 
-Een van de krachtigste mogelijkheden van de extensie is de integratie met Azure-schema's. Azure-schema's bieden de extensie validatie- en resourcebewuste voltooiingsmogelijkheden. Laten we het opslagaccount aanpassen om validatie en voltooiing in actie te zien. 
+Een van de krach tigste mogelijkheden van de uitbrei ding is de integratie met Azure-schema's. Azure-schema's bieden de uitbrei ding met validatie en resource-bewuste voltooiings mogelijkheden. We gaan het opslag account wijzigen om validatie en voltooiing in actie te zien. 
 
-Werk eerst de opslagaccountsoort bij naar `megaStorage`een ongeldige waarde, zoals . Deze actie geeft een waarschuwing weer `megaStorage` die aangeeft dat dit geen geldige waarde is.
+Werk eerst het type opslag account bij naar een ongeldige waarde, zoals `megaStorage`. U ziet dat met deze actie een waarschuwing wordt `megaStorage` gegenereerd die aangeeft dat dit geen geldige waarde is.
 
-![Afbeelding met een ongeldige opslagconfiguratie](./media/quickstart-create-templates-use-visual-studio-code/7.png)
+![Installatie kopie met een ongeldige opslag configuratie](./media/quickstart-create-templates-use-visual-studio-code/7.png)
 
-Als u de voltooiingsmogelijkheden wilt gebruiken, `megaStorage`verwijdert u de `ctrl`  +  `space`cursor in de dubbele aanhalingstekens en drukt u op . Deze actie bevat een voltooiingslijst met geldige waarden.
+Als u de voltooiings mogelijkheden wilt `megaStorage`gebruiken, verwijdert u de cursor binnen de dubbele aanhalings tekens `ctrl`  +  `space`en drukt u op. Met deze actie wordt een voltooiings lijst met geldige waarden weer gegeven.
 
-![Afbeelding met automatisch aanvullen van extensie](./media/quickstart-create-templates-use-visual-studio-code/8.png)
+![Afbeelding van de automatische aanvulling van de extensie](./media/quickstart-create-templates-use-visual-studio-code/8.png)
 
-## <a name="add-template-parameters"></a>Sjabloonparameters toevoegen
+## <a name="add-template-parameters"></a>Sjabloon parameters toevoegen
 
-Maak nu een parameter en gebruik deze om de naam van het opslagaccount op te geven.
+Maak nu een para meter en gebruik deze om de naam van het opslag account op te geven.
 
-Plaats de cursor in het parametersblok, `par`voeg een vervoerretour toe, typ en selecteer vervolgens het `arm-param-value` fragment. Met deze actie wordt een algemene parameter aan de sjabloon toegevoegd.
+Plaats de cursor in het blok para meters, voeg een regel terugloop `par`toe, typ en selecteer `arm-param-value` vervolgens het fragment. Met deze actie wordt een generieke para meter aan de sjabloon toegevoegd.
 
-![Afbeelding met een parameter die wordt toegevoegd aan de ARM-sjabloon](./media/quickstart-create-templates-use-visual-studio-code/9.png)
+![Afbeelding met een para meter die wordt toegevoegd aan de ARM-sjabloon](./media/quickstart-create-templates-use-visual-studio-code/9.png)
 
-Werk de naam van `storageAccountName` de parameter `Storage Account Name`bij en de beschrijving naar .
+Werk de naam van de para meter `storageAccountName` bij naar en de `Storage Account Name`beschrijving in.
 
-![Afbeelding met de voltooide parameter in een ARM-sjabloon](./media/quickstart-create-templates-use-visual-studio-code/10.png)
+![Afbeelding van de voltooide para meter in een ARM-sjabloon](./media/quickstart-create-templates-use-visual-studio-code/10.png)
 
-Azure-opslagaccountnamen hebben een minimale lengte van 3 tekens en een maximum van 24 tekens. Voeg `minLength` beide `maxLength` toe en aan de parameter en geef de juiste waarden.
+Namen van Azure Storage-accounts hebben een minimum lengte van drie tekens en een maximum van 24. Voeg zowel `minLength` als `maxLength` aan de para meter toe en geef de juiste waarden op.
 
-![Afbeelding met minLengte en maxLengte die worden toegevoegd aan een armsjabloonparameter](./media/quickstart-create-templates-use-visual-studio-code/11.png)
+![Afbeelding met minLength en maxLength die wordt toegevoegd aan een ARM-sjabloon parameter](./media/quickstart-create-templates-use-visual-studio-code/11.png)
 
-Werk nu op de opslagbron de eigenschap naam bij om de parameter te gebruiken. Verwijder hiervoor de huidige naam. Voer een dubbele offerte en `[`een vierkante haak openen in, die een lijst met ARM-sjabloonfuncties produceert. Selecteer *parameters* in de lijst. 
+Werk nu bij de opslag resource de eigenschap name bij om de para meter te gebruiken. Als u dit wilt doen, verwijdert u de huidige naam. Voer een dubbel aanhalings teken en een vier `[`kant haakje openen in, die een lijst met arm-sjabloon functies produceert. Selecteer *para meters* in de lijst. 
 
-![Afbeelding met automatische voltooiing bij het gebruik van parameters in ARM-sjabloonbronnen](./media/quickstart-create-templates-use-visual-studio-code/12.png)
+![Installatie kopie met automatische aanvulling bij het gebruik van para meters in ARM-sjabloon bronnen](./media/quickstart-create-templates-use-visual-studio-code/12.png)
 
-Als u `'` één aanhalingsteken in de ronde haakjes invoert, wordt een lijst weergegeven met alle parameters die in de sjabloon zijn gedefinieerd, in dit geval *storageAccountName*. Selecteer de parameter.
+Als u één aanhalings teken `'` in de ronde haakjes invoert, wordt een lijst met alle gedefinieerde para meters in de sjabloon gegenereerd, in dit geval *storageAccountName*. Selecteer de para meter.
 
-![Afbeelding met voltooide parameter in een ARM-sjabloonbron](./media/quickstart-create-templates-use-visual-studio-code/13.png)
+![Afbeelding van de voltooide para meter in een ARM-sjabloon resource](./media/quickstart-create-templates-use-visual-studio-code/13.png)
 
-## <a name="create-a-parameter-file"></a>Een parameterbestand maken
+## <a name="create-a-parameter-file"></a>Een parameter bestand maken
 
-Met een arm-sjabloonparameterbestand u omgevingsspecifieke parameterwaarden opslaan en deze waarden als groep doorgeven tijdens de implementatietijd. U bijvoorbeeld een parameterbestand hebben met waarden die specifiek zijn voor een testomgeving en een andere voor een productieomgeving.
+Met een ARM-sjabloon parameter bestand kunt u omgevings-specifieke parameter waarden opslaan en deze waarden in als een groep tijdens de implementatie door geven. U kunt bijvoorbeeld een parameter bestand hebben met waarden die specifiek zijn voor een test omgeving en een andere voor een productie omgeving.
 
-De extensie maakt het eenvoudig om een parameterbestand te maken op basis van uw bestaande sjablonen. Klik hiervoor met de rechtermuisknop op de sjabloon `Select/Create Parameter File`in de codeeditor en selecteer .
+Met deze extensie kunt u eenvoudig een parameter bestand maken op basis van uw bestaande sjablonen. Als u dit wilt doen, klikt u met de rechter muisknop op de sjabloon in `Select/Create Parameter File`de code-editor en selecteert u.
 
-![Afbeelding met het rechtsklikproces voor het maken van een parameterbestand op basis van een ARM-sjabloon](./media/quickstart-create-templates-use-visual-studio-code/14.png)
+![Afbeelding van het rechtermuisknop proces voor het maken van een parameter bestand op basis van een ARM-sjabloon](./media/quickstart-create-templates-use-visual-studio-code/14.png)
 
-`New`  >  Selecteer `All Parameters` > Selecteer een naam en locatie voor het parameterbestand.
+`New`  >  Selecteer `All Parameters` > een naam en locatie voor het parameter bestand te selecteren.
 
-![Afbeelding met de naam en het dialoogvenster Bestand opslaan bij het maken van een parametersbestand op basis van een ARM-sjabloon](./media/quickstart-create-templates-use-visual-studio-code/15.png)
+![Afbeelding van het dialoog venster naam en bestand opslaan bij het maken van een parameter bestand van een ARM-sjabloon](./media/quickstart-create-templates-use-visual-studio-code/15.png)
 
-Met deze actie wordt een nieuw parameterbestand gemaakt en wordt het toegewezen aan de sjabloon waaruit het is gemaakt. U de huidige sjabloon/parameterbestandstoewijzing in de statusbalk van de Visual Studio Code bekijken en wijzigen terwijl de sjabloon is geselecteerd.
+Met deze actie wordt een nieuw parameter bestand gemaakt en toegewezen aan de sjabloon waaruit het is gemaakt. U kunt in de status balk van Visual Studio code de huidige toewijzing van sjabloon/para meters weer geven en wijzigen terwijl de sjabloon wordt geselecteerd.
 
 ![](./media/quickstart-create-templates-use-visual-studio-code/16.png)
 
-Nu het parameterbestand is toegewezen aan de sjabloon, valideert de extensie zowel het sjabloon- als het parameterbestand samen. Als u deze validatie in de praktijk wilt `storageAccountName` bekijken, voegt u een waarde met twee tekens toe aan de parameter in het parameterbestand en slaat u het bestand op.
+Nu het parameter bestand is toegewezen aan de sjabloon, valideert de uitbrei ding zowel de sjabloon als het parameter bestand samen. Als u deze validatie in de praktijk wilt zien, voegt u een waarde van `storageAccountName` twee tekens toe aan de para meter in het parameter bestand en slaat u het bestand op.
 
-![Afbeelding met een ongeldig verklaringssjabloon vanwege het probleem met het parameterbestand](./media/quickstart-create-templates-use-visual-studio-code/17.png)
+![Afbeelding met een ongeldig sjabloon vanwege een probleem met het parameter bestand](./media/quickstart-create-templates-use-visual-studio-code/17.png)
 
-Navigeer terug naar de ARM-sjabloon en merk op dat er een fout is opgetreden die aangeeft dat de waarde niet aan de parametercriteria voldoet.
+Ga terug naar de ARM-sjabloon en u ziet dat er een fout is gegenereerd die aangeeft dat de waarde niet voldoet aan de criteria van de para meter.
 
 ![Afbeelding met een geldige ARM-sjabloon](./media/quickstart-create-templates-use-visual-studio-code/18.png)
 
-Werk de waarde bij naar iets dat geschikt is, sla het bestand op en navigeer terug naar de sjabloon. Merk op dat de fout op de parameter is opgelost.
+Werk de waarde bij naar iets wat van toepassing is, sla het bestand op en ga terug naar de sjabloon. U ziet dat de fout voor de para meter is opgelost.
 
 ## <a name="deploy-the-template"></a>De sjabloon implementeren
 
-Open de geïntegreerde Visual Studio `ctrl`  +  ```` ` ```` Code-terminal met de toetscombinatie en gebruik de Azure CLI- of Azure PowerShell-module om de sjabloon te implementeren.
+Open de geïntegreerde Visual Studio code-Terminal met `ctrl`  +  ```` ` ```` behulp van de toetscombinatie en gebruik de module Azure CLI of Azure PowerShell om de sjabloon te implementeren.
 
 # <a name="cli"></a>[CLI](#tab/CLI)
 
@@ -137,7 +137,7 @@ New-AzResourceGroupDeployment -ResourceGroupName arm-vscode -TemplateFile ./azur
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
-Wanneer de Azure-resources niet meer nodig zijn, gebruikt u de Azure CLI- of Azure PowerShell-module om de snelstartbrongroep te verwijderen.
+Wanneer de Azure-resources niet meer nodig zijn, gebruikt u de Azure CLI-of Azure PowerShell-module om de Quick Start-resource groep te verwijderen.
 
 # <a name="cli"></a>[CLI](#tab/CLI)
 

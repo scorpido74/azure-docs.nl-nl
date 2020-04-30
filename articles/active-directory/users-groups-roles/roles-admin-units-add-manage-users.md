@@ -1,6 +1,6 @@
 ---
-title: Gebruikers toevoegen, verwijderen en weergeven in een beheereenheid (voorbeeld) - Azure Active Directory | Microsoft Documenten
-description: Gebruikers en hun rolmachtigingen beheren in een beheereenheid in Azure Active Directory
+title: Gebruikers in een beheer eenheid toevoegen, verwijderen en weer geven (preview)-Azure Active Directory | Microsoft Docs
+description: Gebruikers en machtigingen voor rollen beheren in een beheer eenheid in Azure Active Directory
 services: active-directory
 documentationcenter: ''
 author: curtand
@@ -15,39 +15,39 @@ ms.reviewer: anandy
 ms.custom: oldportal;it-pro;
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 9c2c5c083115440e1e4da203f39f2b32734458c3
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81684959"
 ---
-# <a name="add-and-manage-users-in-an-administrative-unit-in-azure-active-directory"></a>Gebruikers toevoegen en beheren in een beheereenheid in Azure Active Directory
+# <a name="add-and-manage-users-in-an-administrative-unit-in-azure-active-directory"></a>Gebruikers toevoegen en beheren in een beheer eenheid in Azure Active Directory
 
-In Azure Active Directory (Azure AD) u gebruikers toevoegen aan een beheereenheid (AU) voor een gedetailleerder beheerbereik.
+In Azure Active Directory (Azure AD) kunt u gebruikers toevoegen aan een beheer eenheid (AU) voor een gedetailleerdere administratieve controle mogelijkheden.
 
-Zie [Aan](roles-admin-units-manage.md#get-started)de slag voor stappen om PowerShell en Microsoft Graph te gebruiken voor beheer van administratieve eenheden.
+Zie aan de [slag](roles-admin-units-manage.md#get-started)voor de stappen voor het voorbereiden van het gebruik van Power shell en Microsoft Graph voor beheer van beheer eenheden.
 
 ## <a name="add-users-to-an-au"></a>Gebruikers toevoegen aan een AU
 
 ### <a name="azure-portal"></a>Azure Portal
 
-U gebruikers op twee manieren toewijzen aan administratieve eenheden.
+U kunt op twee manieren gebruikers aan beheer eenheden toewijzen.
 
-1. Individuele opdracht
+1. Afzonderlijke toewijzing
 
-    1. U naar het Azure AD in de portal gaan en Gebruikers selecteren en de gebruiker selecteren die aan een beheereenheid moet worden toegewezen. Vervolgens u Administratieve eenheden selecteren in het linkerdeelvenster. De gebruiker kan aan een of meer administratieve eenheden worden toegewezen door op Toewijzen aan de administratieve eenheid te klikken en de administratieve eenheden te selecteren waar de gebruiker moet worden toegewezen.
+    1. U kunt in de portal naar Azure AD gaan en gebruikers selecteren en de gebruiker selecteren die aan een beheer eenheid moet worden toegewezen. U kunt vervolgens beheer eenheden selecteren in het linkerdeel venster. De gebruiker kan worden toegewezen aan een of meer beheer eenheden door te klikken op toewijzen aan administratieve eenheid en de beheer eenheden te selecteren waaraan de gebruiker moet worden toegewezen.
 
-       ![selecteer Toevoegen en voer vervolgens een naam in voor de administratieve eenheid](./media/roles-admin-units-add-manage-users/assign-users-individually.png)
+       ![Selecteer toevoegen en voer een naam in voor de beheer eenheid](./media/roles-admin-units-add-manage-users/assign-users-individually.png)
 
-    1. U naar Azure AD in de portal gaan en Beheereenheden in het linkerdeelvenster selecteren en vervolgens de administratieve eenheid selecteren waar de gebruikers moeten worden toegewezen. Selecteer Alle gebruikers in het linkerdeelvenster en selecteer Vervolgens Lid toevoegen. U vervolgens een of meer gebruikers selecteren die in het rechterdeelvenster aan de administratieve eenheid moeten worden toegewezen.
+    1. U kunt in de portal naar Azure AD gaan en administratieve eenheden selecteren in het linkerdeel venster en vervolgens de administratieve eenheid selecteren waaraan de gebruikers moeten worden toegewezen. Selecteer alle gebruikers in het linkerdeel venster en selecteer vervolgens lid toevoegen. U kunt vervolgens door gaan en een of meer gebruikers selecteren die moeten worden toegewezen aan de beheer eenheid in het rechterdeel venster.
 
-        ![een administratieve eenheid selecteren en vervolgens lid toevoegen selecteren](./media/roles-admin-units-add-manage-users/assign-to-admin-unit.png)
+        ![Selecteer een administratieve eenheid en selecteer lid toevoegen](./media/roles-admin-units-add-manage-users/assign-to-admin-unit.png)
 
-1. Bulktoewijzing
+1. Bulk toewijzing
 
-    Ga naar Azure AD in de portal en selecteer Beheereenheden. Selecteer de administratieve eenheid waar gebruikers moeten worden toegevoegd. Ga verder door te klikken op Alle gebruikers -> Voeg leden toe uit het CSV-bestand. U vervolgens de CSV-sjabloon downloaden en het bestand bewerken. Het formaat is eenvoudig en heeft een enkele UPN nodig om in elke regel te worden toegevoegd. Zodra het bestand klaar is, slaat u het op een geschikte locatie op en uploadt u het vervolgens in stap 3, zoals gemarkeerd in de momentopname.
+    Ga naar Azure AD in de portal en selecteer beheer eenheden. Selecteer de administratieve eenheid waar gebruikers moeten worden toegevoegd. Klik op alle gebruikers > leden uit het CSV-bestand toe te voegen. U kunt vervolgens de CSV-sjabloon downloaden en het bestand bewerken. De indeling is eenvoudig en er moet één UPN worden toegevoegd aan elke regel. Zodra het bestand klaar is, slaat u het op een geschikte locatie op en uploadt u het in stap 3 als gemarkeerd in de moment opname.
 
-    ![bulk gebruikers toewijzen aan een administratieve eenheid](./media/roles-admin-units-add-manage-users/bulk-assign-to-admin-unit.png)
+    ![gebruikers bulksgewijs toewijzen aan een beheer eenheid](./media/roles-admin-units-add-manage-users/bulk-assign-to-admin-unit.png)
 
 ### <a name="powershell"></a>PowerShell
 
@@ -55,7 +55,7 @@ U gebruikers op twee manieren toewijzen aan administratieve eenheden.
     $UserObj = Get-AzureADUser -Filter "UserPrincipalName eq 'billjohn@fabidentity.onmicrosoft.com'"
     Add-AzureADAdministrativeUnitMember -ObjectId $administrativeunitObj.ObjectId -RefObjectId $UserObj.ObjectId
 
-In het bovenstaande voorbeeld wordt de cmdlet Add-AzureADAdministrativeUnitMember gebruikt om de gebruiker toe te voegen aan de administratieve eenheid. De object-ID van de administratieve eenheid waar de gebruiker moet worden toegevoegd en de object-id van de gebruiker die moet worden toegevoegd, worden als argument gebruikt. De gemarkeerde sectie kan worden gewijzigd zoals vereist voor de specifieke omgeving.
+In het bovenstaande voor beeld wordt de cmdlet Add-AzureADAdministrativeUnitMember gebruikt om de gebruiker toe te voegen aan de beheer eenheid. De object-ID van de beheer eenheid waaraan de gebruiker moet worden toegevoegd en de object-ID van de gebruiker die moet worden toegevoegd, wordt als argument beschouwd. De gemarkeerde sectie kan worden gewijzigd als vereist voor de specifieke omgeving.
 
 ### <a name="microsoft-graph"></a>Microsoft Graph
 
@@ -72,17 +72,17 @@ Voorbeeld:
       "@odata.id":"https://graph.microsoft.com/beta/users/johndoe@fabidentity.com"
     }
 
-## <a name="list-administrative-units-for-a-user"></a>Beheerderseenheden voor een gebruiker aanbieden
+## <a name="list-administrative-units-for-a-user"></a>Beheer eenheden voor een gebruiker weer geven
 
 ### <a name="azure-portal"></a>Azure Portal
 
-In de Azure-portal u het profiel van een gebruiker openen door naar Azure AD->-gebruikers te gaan. Klik op de gebruiker om het profiel van de gebruiker te openen.
+In de Azure Portal kunt u een gebruikers profiel openen door naar Azure AD-> gebruikers te gaan. Klik op de gebruiker om het profiel van de gebruiker te openen.
 
-![Het profiel van een gebruiker openen in Azure Active Directory](./media/roles-admin-units-add-manage-users/user-profile-admin-units.png)
+![Open een gebruikers profiel in Azure Active Directory](./media/roles-admin-units-add-manage-users/user-profile-admin-units.png)
 
-Selecteer **Beheereenheden** in het linkerdeelvenster om de lijst met beheerderseenheden te zien waaraan de gebruiker is toegewezen.
+Selecteer **beheer eenheden** in het linkerdeel venster om de lijst met beheer eenheden te bekijken waaraan de gebruiker is toegewezen.
 
-![De beheerderseenheden voor een gebruiker weergeven](./media/roles-admin-units-add-manage-users/list-user-admin-units.png)
+![De beheer eenheden voor een gebruiker weer geven](./media/roles-admin-units-add-manage-users/list-user-admin-units.png)
 
 ### <a name="powershell"></a>PowerShell
 
@@ -96,13 +96,13 @@ Selecteer **Beheereenheden** in het linkerdeelvenster om de lijst met beheerders
 
 ### <a name="azure-portal"></a>Azure Portal
 
-Er zijn twee manieren waarop u een gebruiker uit een administratieve eenheid verwijderen. In de Azure-portal u het profiel van een gebruiker openen door naar **Azure AD-gebruikers** > **Users**te gaan. Selecteer de gebruiker om het profiel van de gebruiker te openen. Selecteer de administratieve eenheid waaruit de gebruiker moet worden verwijderd en selecteer **Verwijderen uit de administratieve eenheid**.
+Er zijn twee manieren om een gebruiker uit een beheer eenheid te verwijderen. In de Azure Portal kunt u een gebruikers profiel openen door naar **Azure AD** > -**gebruikers**te gaan. Selecteer de gebruiker om het profiel van de gebruiker te openen. Selecteer de beheer eenheid waaruit u de gebruiker wilt verwijderen en selecteer **verwijderen uit beheer eenheid**.
 
-![Een gebruiker uit een beheereenheid verwijderen uit het gebruikersprofiel](./media/roles-admin-units-add-manage-users/user-remove-admin-units.png)
+![Een gebruiker uit een beheer eenheid verwijderen uit het gebruikers profiel](./media/roles-admin-units-add-manage-users/user-remove-admin-units.png)
 
-U een gebruiker ook verwijderen in Azure > **AD-beheereenheden** door de beheereenheid te selecteren waaruit u gebruikers wilt verwijderen. **Azure AD** Selecteer de gebruiker en selecteer **Lid verwijderen**.
+U kunt een gebruiker ook verwijderen in **Azure AD** > -**administratieve eenheden** door de beheer eenheid te selecteren waarvan u gebruikers wilt verwijderen. Selecteer de gebruiker en selecteer **lid verwijderen**.
   
-![Een gebruiker verwijderen op het niveau van de administratieve eenheid](./media/roles-admin-units-add-manage-users/admin-units-remove-user.png)
+![Een gebruiker op het niveau van de beheer eenheid verwijderen](./media/roles-admin-units-add-manage-users/admin-units-remove-user.png)
 
 ### <a name="powershell"></a>PowerShell
 
@@ -112,19 +112,19 @@ U een gebruiker ook verwijderen in Azure > **AD-beheereenheden** door de beheere
 
    https://graph.microsoft.com/beta/administrativeUnits/<adminunit-id>/members/<user-id>/$ref
 
-## <a name="bulk-remove-more-than-one-user"></a>Bulk verwijdert meer dan één gebruiker
+## <a name="bulk-remove-more-than-one-user"></a>Meerdere gebruikers tegelijk verwijderen
 
-U naar Azure AD->-beheereenheden gaan en de beheereenheid selecteren waaruit u gebruikers wilt verwijderen. Klik op Bulk lid verwijderen. Download de CSV-sjabloon voor het verstrekken van de lijst met gebruikers die moeten worden verwijderd.
+U kunt naar Azure AD >-beheer eenheden gaan en de beheer eenheid selecteren waarvan u gebruikers wilt verwijderen. Klik op lid van bulk verwijdering. Down load de CSV-sjabloon voor het opgeven van de lijst met gebruikers die moeten worden verwijderd.
 
-Bewerk de gedownloade CSV-sjabloon met de relevante gebruikersvermeldingen. Verwijder de eerste twee rijen van de sjabloon niet. Voeg in elke rij één gebruiker UPN toe.
+Bewerk de gedownloade CSV-sjabloon met de relevante gebruikers vermeldingen. Verwijder de eerste twee rijen van de sjabloon niet. Voeg één gebruikers-UPN toe aan elke rij.
 
-![Het CSV-bestand bewerken voor het verwijderen van bulkgebruikers uit administratieve eenheden](./media/roles-admin-units-add-manage-users/bulk-user-entries.png)
+![Bewerk het CSV-bestand voor het verwijderen van bulk gebruikers uit administratieve eenheden](./media/roles-admin-units-add-manage-users/bulk-user-entries.png)
 
-Zodra u de vermeldingen in het bestand hebt opgeslagen, uploadt u het bestand en selecteert **u Verzenden**.
+Wanneer u de vermeldingen in het bestand hebt opgeslagen, uploadt u het bestand en selecteert u **verzenden**.
 
-![Het bestand voor het uploaden van bulk verzenden](./media/roles-admin-units-add-manage-users/bulk-user-remove.png)
+![Het bulk upload bestand verzenden](./media/roles-admin-units-add-manage-users/bulk-user-remove.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Een rol toewijzen aan een administratieve eenheid](roles-admin-units-assign-roles.md)
-- [Groepen toevoegen aan een administratieve eenheid](roles-admin-units-add-manage-groups.md)
+- [Een rol toewijzen aan een beheer eenheid](roles-admin-units-assign-roles.md)
+- [Groepen toevoegen aan een beheer eenheid](roles-admin-units-add-manage-groups.md)

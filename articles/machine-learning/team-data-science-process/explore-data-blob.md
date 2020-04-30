@@ -1,6 +1,6 @@
 ---
-title: Gegevens verkennen in Azure blob-opslag met panda's - Team Data Science Process
-description: Gegevens verkennen die zijn opgeslagen in Azure blob-container met behulp van het Python-pakket panda's.
+title: Gegevens in Azure Blob-opslag verkennen met Pandas-team data Science process
+description: Informatie over het verkennen van gegevens die zijn opgeslagen in Azure Blob-container met het python-pakket van Panda.
 services: machine-learning
 author: marktab
 manager: marktab
@@ -12,28 +12,28 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: e429dce497411305964cb1ec5298228dc4093b1f
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81685956"
 ---
-# <a name="explore-data-in-azure-blob-storage-with-pandas"></a>Gegevens verkennen in Azure blob-opslag met panda's
+# <a name="explore-data-in-azure-blob-storage-with-pandas"></a>Gegevens in Azure Blob-opslag verkennen met Pandas
 
-In dit artikel wordt ingaan op het verkennen van gegevens die zijn opgeslagen in Azure blob-container met behulp van [panda's](https://pandas.pydata.org/) Python-pakket.
+In dit artikel wordt beschreven hoe u gegevens die zijn opgeslagen in Azure Blob-container kunt verkennen met behulp van het python-pakket van [Panda](https://pandas.pydata.org/) .
 
-Deze taak is een stap in het [Team Data Science Process.](overview.md)
+Deze taak is een stap in het [team data Science process](overview.md).
 
 ## <a name="prerequisites"></a>Vereisten
-In dit artikel wordt ervan uitgegaan dat u:
+In dit artikel wordt ervan uitgegaan dat u het volgende hebt:
 
-* Een Azure-opslagaccount maken. Als u instructies nodig hebt, [raadpleegt u Een Azure Storage-account maken](../../storage/common/storage-account-create.md)
-* Uw gegevens zijn opgeslagen in een Azure blob-opslagaccount. Zie Gegevens verplaatsen [van en naar Azure Storage als](../../storage/common/storage-moving-data.md) u instructies nodig hebt
+* Een Azure-opslag account gemaakt. Als u instructies nodig hebt, raadpleegt u [een Azure Storage account maken](../../storage/common/storage-account-create.md)
+* Uw gegevens zijn opgeslagen in een Azure Blob-opslag account. Zie [gegevens verplaatsen van en naar Azure Storage](../../storage/common/storage-moving-data.md) als u instructies nodig hebt.
 
-## <a name="load-the-data-into-a-pandas-dataframe"></a>De gegevens in een panda's DataFrame laden
-Om een gegevensset te verkennen en te manipuleren, moet deze eerst worden gedownload van de blobbron naar een lokaal bestand, dat vervolgens kan worden geladen in een pandas DataFrame. Hier volgen de volgende stappen voor deze procedure:
+## <a name="load-the-data-into-a-pandas-dataframe"></a>De gegevens laden in een Panda data frame
+Als u een gegevensset wilt verkennen en bewerken, moet deze eerst worden gedownload van de BLOB-bron naar een lokaal bestand, dat vervolgens in een Panda data frame kan worden geladen. Dit zijn de stappen die u moet volgen voor deze procedure:
 
-1. Download de gegevens van Azure blob met het volgende Voorbeeld van Python-code met blobservice. Vervang de variabele in de volgende code door uw specifieke waarden:
+1. Down load de gegevens van Azure Blob met het volgende python-code voorbeeld met Blob service. Vervang de variabele in de volgende code door uw specifieke waarden:
 
     ```python
     from azure.storage.blob import BlockBlobService
@@ -54,25 +54,25 @@ Om een gegevensset te verkennen en te manipuleren, moet deze eerst worden gedown
     print(("It takes %s seconds to download "+blobname) % (t2 - t1))
     ```
 
-1. Lees de gegevens in een pandas DataFrame uit het gedownloade bestand.
+1. Lees de gegevens in een Panda data frame van het gedownloade bestand.
 
     ```python
     # LOCALFILE is the file path
     dataframe_blobdata = pd.read_csv(LOCALFILENAME)
     ```
 
-Nu bent u klaar om de gegevens te verkennen en functies op deze gegevensset te genereren.
+U bent nu klaar om de gegevens te verkennen en functies in deze gegevensset te genereren.
 
-## <a name="examples-of-data-exploration-using-pandas"></a><a name="blob-dataexploration"></a>Voorbeelden van data-exploratie met panda's
-Hier zijn een paar voorbeelden van manieren om gegevens te verkennen met behulp van panda's:
+## <a name="examples-of-data-exploration-using-pandas"></a><a name="blob-dataexploration"></a>Voor beelden van het verkennen van gegevens met behulp van Pandas
+Hier volgen enkele voor beelden van manieren om gegevens te verkennen met behulp van Panda:
 
-1. Het **aantal rijen en kolommen controleren**
+1. Het **aantal rijen en kolommen** controleren
 
     ```python
     print 'the size of the data is: %d rows and  %d columns' % dataframe_blobdata.shape
     ```
 
-1. **Controleer** de eerste of laatste **paar rijen** in de volgende gegevensset:
+1. **Inspecteer** de eerste of laatste paar **rijen** in de volgende gegevensset:
 
     ```python
     dataframe_blobdata.head(10)
@@ -80,47 +80,47 @@ Hier zijn een paar voorbeelden van manieren om gegevens te verkennen met behulp 
     dataframe_blobdata.tail(10)
     ```
 
-1. Controleer het **gegevenstype** dat elke kolom is geïmporteerd met behulp van de volgende voorbeeldcode
+1. Controleer het **gegevens type** dat elke kolom heeft geïmporteerd, zoals met behulp van de volgende voorbeeld code
 
     ```python
     for col in dataframe_blobdata.columns:
         print dataframe_blobdata[col].name, ':\t', dataframe_blobdata[col].dtype
     ```
 
-1. Controleer de **basisstatistieken** voor de kolommen in de gegevensset als volgt
+1. Controleer als volgt de **basis statistieken** voor de kolommen in de gegevensset
 
     ```python
     dataframe_blobdata.describe()
     ```
 
-1. Bekijk het aantal vermeldingen voor elke kolomwaarde als volgt
+1. Ga als volgt te kijken naar het aantal items voor elke kolom waarde
 
     ```python
     dataframe_blobdata['<column_name>'].value_counts()
     ```
 
-1. **Ontbrekende waarden tellen** ten opzichte van het werkelijke aantal vermeldingen in elke kolom met behulp van de volgende voorbeeldcode
+1. **Aantal ontbrekende waarden** ten opzichte van het werkelijke aantal vermeldingen in elke kolom met de volgende voorbeeld code
 
     ```python
     miss_num = dataframe_blobdata.shape[0] - dataframe_blobdata.count()
     print miss_num
     ```
 
-1. Als u **ontbrekende waarden** hebt voor een specifieke kolom in de gegevens, u deze als volgt neerzetten:
+1. Als u de **waarden** voor een bepaalde kolom in de gegevens ontbreken, kunt u deze als volgt verwijderen:
 
     ```python
     dataframe_blobdata_noNA = dataframe_blobdata.dropna()
     dataframe_blobdata_noNA.shape
     ```
 
-    Een andere manier om ontbrekende waarden te vervangen is met de modusfunctie:
+    Een andere manier om ontbrekende waarden te vervangen, is met de functie mode:
 
     ```python
     dataframe_blobdata_mode = dataframe_blobdata.fillna(
         {'<column_name>': dataframe_blobdata['<column_name>'].mode()[0]})
     ```
 
-1. Een **histogramplot** maken met behulp van een variabel aantal opslaglocaties om de verdeling van een variabele in kaart te brengen
+1. Een **histogram** maken met behulp van een variabel aantal opslag locaties om de distributie van een variabele uit te zetten
 
     ```python
     dataframe_blobdata['<column_name>'].value_counts().plot(kind='bar')
@@ -128,7 +128,7 @@ Hier zijn een paar voorbeelden van manieren om gegevens te verkennen met behulp 
     np.log(dataframe_blobdata['<column_name>']+1).hist(bins=50)
     ```
 
-1. Bekijk **correlaties** tussen variabelen met behulp van een scatterplot of met behulp van de ingebouwde correlatiefunctie
+1. Bekijk **correlaties** tussen variabelen met behulp van een scatterplot of gebruik de ingebouwde correlatie functie
 
     ```python
     # relationship between column_a and column_b using scatter plot

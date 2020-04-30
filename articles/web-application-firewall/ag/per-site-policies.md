@@ -1,7 +1,7 @@
 ---
-title: WAF-beleid per site configureren met PowerShell
+title: Beleid per site WAF configureren met behulp van Power shell
 titleSuffix: Azure Web Application Firewall
-description: Meer informatie over het configureren van firewallbeleid per site op een toepassingsgateway met Azure PowerShell.
+description: Meer informatie over het configureren van firewall beleid per site voor een toepassings gateway met behulp van Azure PowerShell.
 services: web-application-firewall
 author: winthrop28
 ms.service: web-application-firewall
@@ -9,19 +9,19 @@ ms.date: 01/24/2020
 ms.author: victorh
 ms.topic: conceptual
 ms.openlocfilehash: 1301db56cab36ae623bb94cfac97b8e4bdb934e5
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81682485"
 ---
-# <a name="configure-per-site-waf-policies-using-azure-powershell"></a>WAF-beleid per site configureren met Azure PowerShell
+# <a name="configure-per-site-waf-policies-using-azure-powershell"></a>WAF-beleid per site configureren met behulp van Azure PowerShell
 
-De WAF-instellingen (Web Application Firewall) zijn opgenomen in het WAF-beleid en om uw WAF-configuratie te wijzigen, wijzigt u het WAF-beleid.
+WAF-instellingen (Web Application firewall) bevinden zich in WAF-beleid en om uw WAF-configuratie te wijzigen, wijzigt u het WAF-beleid.
 
-Wanneer u bent gekoppeld aan uw application gateway, worden het beleid en alle instellingen wereldwijd weergegeven. Dus, als je vijf sites achter je WAF hebt, worden alle vijf sites beschermd door hetzelfde WAF-beleid. Dit is geweldig als je dezelfde beveiligingsinstellingen nodig hebt voor elke site. Maar u waf-beleid ook toepassen op individuele luisteraars om sitespecifieke WAF-configuratie mogelijk te maken.
+Wanneer het beleid is gekoppeld aan uw Application Gateway, worden de beleids regels en alle instellingen globaal weer gegeven. Als u dus vijf sites achter uw WAF hebt, worden alle vijf de sites beschermd door hetzelfde WAF-beleid. Dit is handig als u dezelfde beveiligings instellingen nodig hebt voor elke site. Maar u kunt ook WAF-beleid Toep assen op afzonderlijke listeners om een sitespecifieke WAF-configuratie toe te staan.
 
-Door WAF-beleid toe te passen op een listener, u WAF-instellingen configureren voor afzonderlijke sites zonder dat de wijzigingen van invloed zijn op elke site. Het meest specifieke beleid schept een precedent. Als er een globaal beleid en een beleid per site (een WAF-beleid dat is gekoppeld aan een listener), wordt het beleid per site overschreven in het algemene WAF-beleid voor die listener. Andere luisteraars zonder eigen beleid zullen alleen worden beïnvloed door het wereldwijde WAF-beleid.
+Door WAF-beleid toe te passen op een listener, kunt u WAF-instellingen configureren voor afzonderlijke sites zonder de wijzigingen die van invloed zijn op elke site. Het meest specifieke beleid neemt broncel. Als er een globaal beleid is en een beleid per site (een WAF-beleid dat is gekoppeld aan een listener), overschrijft het beleid per site het globale beleid voor WAF voor die listener. Andere listeners zonder eigen beleid worden alleen beïnvloed door het beleid voor globale WAF.
 
 In dit artikel leert u het volgende:
 
@@ -29,24 +29,24 @@ In dit artikel leert u het volgende:
 > * Netwerk instellen
 > * Een WAF-beleid maken
 > * Een toepassingsgateway maken met WAF ingeschakeld
-> * Het WAF-beleid wereldwijd, per site en per URI toepassen
+> * Het WAF-beleid globaal, per site en per URI Toep assen
 > * Een virtuele-machineschaalset maken
 > * Een opslagaccount maken en diagnostische gegevens configureren
 > * De toepassingsgateway testen
 
 ![Voorbeeld van een WAF (Web Application Firewall)](../media/tutorial-restrict-web-traffic-powershell/scenario-waf.png)
 
-Als u geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) voordat u begint.
+Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-Als u ervoor kiest om de PowerShell lokaal te installeren en te gebruiken, vereist dit artikel de Azure PowerShell-module versie 1.0.0 of hoger. Voer `Get-Module -ListAvailable Az` uit om de versie te bekijken. Als u PowerShell wilt upgraden, raadpleegt u [De Azure PowerShell-module installeren](/powershell/azure/install-az-ps). Als u PowerShell lokaal uitvoert, moet u ook `Login-AzAccount` uitvoeren om verbinding te kunnen maken met Azure.
+Als u ervoor kiest om Power shell lokaal te installeren en te gebruiken, moet u voor dit artikel gebruikmaken van de Azure PowerShell module versie 1.0.0 of hoger. Voer `Get-Module -ListAvailable Az` uit om de versie te bekijken. Als u PowerShell wilt upgraden, raadpleegt u [De Azure PowerShell-module installeren](/powershell/azure/install-az-ps). Als u PowerShell lokaal uitvoert, moet u ook `Login-AzAccount` uitvoeren om verbinding te kunnen maken met Azure.
 
 ## <a name="create-a-resource-group"></a>Een resourcegroep maken
 
-Een resourcegroep is een logische container waarin Azure-resources worden geïmplementeerd en beheerd. Maak een Azure-brongroep met [Nieuwe AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup).  
+Een resourcegroep is een logische container waarin Azure-resources worden geïmplementeerd en beheerd. Maak een Azure-resource groep met behulp van [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup).  
 
 ```azurepowershell-interactive
 $rgname = New-AzResourceGroup -Name myResourceGroupAG -Location eastus
@@ -54,7 +54,7 @@ $rgname = New-AzResourceGroup -Name myResourceGroupAG -Location eastus
 
 ## <a name="create-network-resources"></a>Netwerkbronnen maken 
 
-Maak de subnetconfiguraties met de naam *myBackendSubnet* en *myAGSubnet* met [new-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/new-azvirtualnetworksubnetconfig). Maak het virtuele netwerk *myVNet* met behulp van [New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork) met de subnetconfiguraties. En ten slotte, maak het openbare IP-adres genaamd *myAGPublicIPAddress* met behulp van [New-AzPublicIpAddress](/powershell/module/az.network/new-azpublicipaddress). Deze resources worden gebruikt om de netwerkverbinding naar de toepassingsgateway en de bijbehorende bronnen te leveren.
+Maak de subnet-configuraties met de naam *myBackendSubnet* en *myAGSubnet* met behulp van [New-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/new-azvirtualnetworksubnetconfig). Maak het virtuele netwerk met de naam *myVNet* met behulp van [New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork) met de subnet-configuraties. En ten slotte maakt u het open bare IP-adres met de naam *myAGPublicIPAddress* met behulp van [New-AzPublicIpAddress](/powershell/module/az.network/new-azpublicipaddress). Deze resources worden gebruikt om de netwerkverbinding naar de toepassingsgateway en de bijbehorende bronnen te leveren.
 
 ```azurepowershell-interactive
 $backendSubnetConfig = New-AzVirtualNetworkSubnetConfig `
@@ -82,7 +82,7 @@ $pip = New-AzPublicIpAddress `
 
 ## <a name="create-an-application-gateway"></a>Een toepassingsgateway maken
 
-In deze sectie maakt u resources die de toepassingsgateway ondersteunen en maakt u deze uiteindelijk en een WAF. De resources die u maakt, zijn onder andere:
+In deze sectie maakt u resources die ondersteuning bieden voor de toepassings gateway en maakt u deze vervolgens en een WAF. De resources die u maakt, zijn onder andere:
 
 - *IP-configuraties en front-endpoort*: hiermee koppelt u het subnet dat u eerder hebt gemaakt aan de toepassingsgateway en wijst u een poort toe die u gebruikt om de gateway te openen.
 - *Standaardpool*: alle toepassingsgateways moeten ten minste één back-endpool met servers hebben.
@@ -90,7 +90,7 @@ In deze sectie maakt u resources die de toepassingsgateway ondersteunen en maakt
 
 ### <a name="create-the-ip-configurations-and-frontend-port"></a>IP-configuraties en front-endpoort maken
 
-*MyAGSubnet* koppelen dat u eerder hebt gemaakt met de toepassingsgateway met [behulp van New-AzApplicationGatewayIPConfiguration](/powershell/module/az.network/new-azapplicationgatewayipconfiguration). Wijs *myAGPublicIPAddress* toe aan de toepassingsgateway met [nieuwe-AzApplicationGatewayFrontendIPConfig](/powershell/module/az.network/new-azapplicationgatewayfrontendipconfig).
+Koppel *myAGSubnet* die u eerder hebt gemaakt voor de toepassings gateway met behulp van [New-AzApplicationGatewayIPConfiguration](/powershell/module/az.network/new-azapplicationgatewayipconfiguration). Wijs *myAGPublicIPAddress* toe aan de toepassings gateway met behulp van [New-AzApplicationGatewayFrontendIPConfig](/powershell/module/az.network/new-azapplicationgatewayfrontendipconfig).
 
 ```azurepowershell-interactive
 $vnet = Get-AzVirtualNetwork `
@@ -118,7 +118,7 @@ $frontendport8080 = New-AzApplicationGatewayFrontendPort `
 
 ### <a name="create-the-backend-pool-and-settings"></a>Back-endpool en instellingen maken
 
-Maak de backend pool met de naam *appGatewayBackendPool* voor de toepassingsgateway met [New-AzApplicationGatewayBackendAddressPool](/powershell/module/az.network/new-azapplicationgatewaybackendaddresspool). Configureer de instellingen voor de backendadresgroepen met [Nieuwe-AzApplicationGatewayBackendHttpSettings](/powershell/module/az.network/new-azapplicationgatewaybackendhttpsetting).
+Maak de back-end-groep met de naam *appGatewayBackendPool* voor de toepassings gateway met behulp van [New-AzApplicationGatewayBackendAddressPool](/powershell/module/az.network/new-azapplicationgatewaybackendaddresspool). Configureer de instellingen voor de back-end-adres groepen met behulp van [New-AzApplicationGatewayBackendHttpSettings](/powershell/module/az.network/new-azapplicationgatewaybackendhttpsetting).
 
 ```azurepowershell-interactive
 $defaultPool = New-AzApplicationGatewayBackendAddressPool `
@@ -132,11 +132,11 @@ $poolSettings = New-AzApplicationGatewayBackendHttpSettings `
   -RequestTimeout 120
 ```
 
-### <a name="create-two-waf-policies"></a>Twee WAF-beleidsregels maken
+### <a name="create-two-waf-policies"></a>Twee WAF-beleids regels maken
 
-Maak twee WAF-beleidsregels, één globale en één per site, en voeg aangepaste regels toe. 
+Maak twee WAF-beleids regels, een globaal en één per locatie en voeg aangepaste regels toe. 
 
-Het beleid per site beperkt de limiet voor het uploaden van bestanden tot 5 MB. Al het andere is hetzelfde.
+Het beleid per site beperkt de upload limiet voor bestanden tot 5 MB. Alle andere opties zijn hetzelfde.
 
 ```azurepowershell-interactive
 $variable = New-AzApplicationGatewayFirewallMatchVariable -VariableName RequestUri
@@ -194,7 +194,7 @@ $wafPolicySite = New-AzApplicationGatewayFirewallPolicy `
 
 Een listener is vereist om de toepassingsgateway in te schakelen om het verkeer op de juiste manier te routeren naar de back-end-adrespools. In dit voorbeeld maakt u een basis-listener die luistert naar verkeer op de basis-URL. 
 
-Maak een listener met de naam *mydefaultListener* met [nieuw-AzApplicationGatewayHttpListener](/powershell/module/az.network/new-azapplicationgatewayhttplistener) met de frontend-configuratie en frontend-poort die u eerder hebt gemaakt. Er is een regel vereist, zodat de listener weet welke back-endpool moet worden gebruikt voor binnenkomend verkeer. Maak een basisregel met de naam *Rule1* met [nieuwe azApplicationGateway-routeregel](/powershell/module/az.network/new-azapplicationgatewayrequestroutingrule).
+Maak een listener met de naam *mydefaultListener* met behulp van [New-AzApplicationGatewayHttpListener](/powershell/module/az.network/new-azapplicationgatewayhttplistener) met de front-end-configuratie en de frontend-poort die u eerder hebt gemaakt. Er is een regel vereist, zodat de listener weet welke back-endpool moet worden gebruikt voor binnenkomend verkeer. Maak een basis regel met de naam *firewallregel1* met behulp van [New-AzApplicationGatewayRequestRoutingRule](/powershell/module/az.network/new-azapplicationgatewayrequestroutingrule).
 
 ```azurepowershell-interactive
 $globalListener = New-AzApplicationGatewayHttpListener `
@@ -227,7 +227,7 @@ $frontendRuleSite = New-AzApplicationGatewayRequestRoutingRule `
 
 ### <a name="create-the-application-gateway-with-the-waf"></a>De toepassingsgateway maken met de WAF
 
-Nu u de benodigde ondersteunende resources hebt gemaakt, geeft u parameters op voor de toepassingsgateway met [Nieuw-AzApplicationGatewaySku](/powershell/module/az.network/new-azapplicationgatewaysku). Geef het firewallbeleid op met [Nieuw-AzApplicationFirewallFirewallBeleid](/powershell/module/az.network/new-azapplicationgatewayfirewallpolicy). En maak vervolgens de applicatie gateway genaamd *myAppGateway* met behulp van [New-AzApplicationGateway](/powershell/module/az.network/new-azapplicationgateway).
+Nu u de nodige ondersteunende resources hebt gemaakt, geeft u para meters op voor de toepassings gateway met behulp van [New-AzApplicationGatewaySku](/powershell/module/az.network/new-azapplicationgatewaysku). Geef het firewall beleid op met behulp van [New-AzApplicationGatewayFirewallPolicy](/powershell/module/az.network/new-azapplicationgatewayfirewallpolicy). En maak vervolgens de toepassings gateway met de naam *myAppGateway* met behulp van [New-AzApplicationGateway](/powershell/module/az.network/new-azapplicationgateway).
 
 ```azurepowershell-interactive
 $sku = New-AzApplicationGatewaySku `
@@ -250,9 +250,9 @@ $appgw = New-AzApplicationGateway `
   -FirewallPolicy $wafPolicyGlobal
 ```
 
-### <a name="apply-a-per-uri-policy"></a>Een beleid per URI toepassen
+### <a name="apply-a-per-uri-policy"></a>Beleid per URI Toep assen
 
-Als u een per-URI-beleid wilt toepassen, maakt u eenvoudig een nieuw beleid en past u dit toe op de padregelconfig. 
+Als u een per-URI-beleid wilt Toep assen, maakt u gewoon een nieuw beleid en past u het toe op de regel configuratie van het pad. 
 
 ```azurepowershell-interactive
 $policySettingURI = New-AzApplicationGatewayFirewallPolicySetting `
@@ -368,11 +368,11 @@ Update-AzVmss `
 
 ## <a name="create-a-storage-account-and-configure-diagnostics"></a>Een opslagaccount maken en diagnostische gegevens configureren
 
-In dit artikel gebruikt de toepassingsgateway een opslagaccount om gegevens op te slaan voor detectie- en preventiedoeleinden. U kunt ook Azure Monitor-logboeken of Event Hub gebruiken om gegevens vast te leggen.
+In dit artikel maakt de toepassings gateway gebruik van een opslag account voor het opslaan van gegevens voor detectie en preventie. U kunt ook Azure Monitor-logboeken of Event Hub gebruiken om gegevens vast te leggen.
 
 ### <a name="create-the-storage-account"></a>Het opslagaccount maken
 
-Maak een opslagaccount met de naam *myagstore1* met [New-AzStorageAccount](/powershell/module/az.storage/new-azstorageaccount).
+Maak een opslag account met de naam *myagstore1* met behulp van [New-AzStorageAccount](/powershell/module/az.storage/new-azstorageaccount).
 
 ```azurepowershell-interactive
 $storageAccount = New-AzStorageAccount `
@@ -384,7 +384,7 @@ $storageAccount = New-AzStorageAccount `
 
 ### <a name="configure-diagnostics"></a>Diagnostische gegevens configureren
 
-Configureer diagnostische gegevens om gegevens op te nemen in de logboeken ApplicationGatewayAccessLog, ApplicationGatewayPerformanceLog en ApplicationGatewayFirewallLog met [set-azdiagnosticsetting](/powershell/module/az.monitor/set-azdiagnosticsetting).
+Configureer diagnoses om gegevens in de ApplicationGatewayAccessLog-, ApplicationGatewayPerformanceLog-en ApplicationGatewayFirewallLog-logboeken op te nemen met [set-AzDiagnosticSetting](/powershell/module/az.monitor/set-azdiagnosticsetting).
 
 ```azurepowershell-interactive
 $appgw = Get-AzApplicationGateway `
@@ -406,7 +406,7 @@ Set-AzDiagnosticSetting `
 
 ## <a name="test-the-application-gateway"></a>De toepassingsgateway testen
 
-U [Get-AzPublicIPAddress](/powershell/module/az.network/get-azpublicipaddress) gebruiken om het openbare IP-adres van de toepassingsgateway te krijgen. Gebruik dan dit IP-adres om tegen te krullen (vervang de 1.1.1.1 hieronder). 
+U kunt [Get-AzPublicIPAddress](/powershell/module/az.network/get-azpublicipaddress) gebruiken om het open bare IP-adres van de toepassings gateway op te halen. Gebruik dit IP-adres vervolgens om te krul (Vervang de 1.1.1.1 die hieronder worden weer gegeven). 
 
 ```azurepowershell-interactive
 Get-AzPublicIPAddress -ResourceGroupName myResourceGroupAG -Name myAGPublicIPAddress
@@ -437,7 +437,7 @@ curl 1.1.1.1/URIAllow?1=1
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
-Verwijder de brongroep, de toepassingsgateway en alle gerelateerde resources wanneer deze niet meer nodig zijn met [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup).
+Als u deze niet meer nodig hebt, verwijdert u de resource groep, toepassings gateway en alle gerelateerde resources met [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup).
 
 ```azurepowershell-interactive
 Remove-AzResourceGroup -Name myResourceGroupAG

@@ -1,6 +1,6 @@
 ---
-title: Blobgegevens uit de archieflaag opnieuw hydrateren
-description: Rehydrateer uw blobs uit archiefopslag, zodat u toegang hebt tot de gegevens.
+title: BLOB-gegevens worden opnieuw gehydrateerd op basis van de opslaglaag
+description: U kunt de blobs uit archief opslag opnieuw gebruiken zodat u toegang hebt tot de gegevens.
 services: storage
 author: mhopkins-msft
 ms.author: mhopkins
@@ -10,75 +10,75 @@ ms.subservice: blobs
 ms.topic: conceptual
 ms.reviewer: hux
 ms.openlocfilehash: 82ea4ad23e3207f5641ade196f69595cd1e7b323
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81684058"
 ---
-# <a name="rehydrate-blob-data-from-the-archive-tier"></a>Blobgegevens uit de archieflaag opnieuw hydrateren
+# <a name="rehydrate-blob-data-from-the-archive-tier"></a>BLOB-gegevens worden opnieuw gehydrateerd op basis van de opslaglaag
 
-Terwijl een blob zich in de archieftoegangslaag bevindt, wordt deze als offline beschouwd en kan deze niet worden gelezen of gewijzigd. De blob-metagegevens blijven online en beschikbaar, zodat u de blob en de eigenschappen ervan weergeven. Het lezen en wijzigen van blobgegevens is alleen beschikbaar met online lagen zoals hot of cool. Er zijn twee opties om gegevens op te halen en te openen die zijn opgeslagen in de categorie archieftoegang.
+Terwijl een BLOB zich in de Access-laag Archive bevindt, wordt deze als offline beschouwd en kan deze niet worden gelezen of gewijzigd. De meta gegevens van de BLOB blijven online en beschikbaar, zodat u de BLOB en de bijbehorende eigenschappen kunt weer geven. Het lezen en wijzigen van BLOB-gegevens is alleen beschikbaar voor online lagen, zoals warme of koud. Er zijn twee opties voor het ophalen en openen van gegevens die zijn opgeslagen in de toegangs laag voor het archief.
 
-1. [Een gearchiveerde blob opnieuw hydrateren naar een onlinelaag](#rehydrate-an-archived-blob-to-an-online-tier) : een archiefblob opnieuw hydrateren om te warmof koel door de laag te wijzigen met de bewerking [Blob Tier instellen.](https://docs.microsoft.com/rest/api/storageservices/set-blob-tier)
-2. [Een gearchiveerde blob kopiëren naar een onlinelaag](#copy-an-archived-blob-to-an-online-tier) - Een nieuwe kopie van een archiefblob maken met de bewerking [Blob kopiëren.](https://docs.microsoft.com/rest/api/storageservices/copy-blob) Geef een andere blobnaam en een doellaag van hot of cool op.
+1. [Een gearchiveerde BLOB opnieuw gehydrateerd naar een online-laag](#rehydrate-an-archived-blob-to-an-online-tier) -een archief-BLOB opnieuw laten worden gehydrateerd op warme of koud door de laag te wijzigen met de bewerking voor het instellen van de [BLOB-laag](https://docs.microsoft.com/rest/api/storageservices/set-blob-tier) .
+2. [Een gearchiveerde BLOB naar een online-laag kopiëren](#copy-an-archived-blob-to-an-online-tier) : Maak een nieuwe kopie van een archief-blob met behulp van de [Kopieer bewerking BLOB](https://docs.microsoft.com/rest/api/storageservices/copy-blob) . Geef een andere blobnaam en een bestemmings laag op met de naam Hot of cool.
 
- Zie [Azure Blob-opslag: hot, cool en archieftoegangslagen](storage-blob-storage-tiers.md)voor meer informatie over lagen.
+ Zie [Azure Blob Storage: warme, cool en archief toegangs lagen](storage-blob-storage-tiers.md)voor meer informatie over lagen.
 
-## <a name="rehydrate-an-archived-blob-to-an-online-tier"></a>Een gearchiveerde blob opnieuw hydrateren naar een onlinelaag
+## <a name="rehydrate-an-archived-blob-to-an-online-tier"></a>Een gearchiveerde BLOB opnieuw naar een online-laag gehydrateerd
 
 [!INCLUDE [storage-blob-rehydration](../../../includes/storage-blob-rehydrate-include.md)]
 
 ## <a name="copy-an-archived-blob-to-an-online-tier"></a>Een gearchiveerde blob naar een online laag kopiëren
 
-Als u uw archiefblob niet wilt rehydrateren, u ervoor kiezen om een [Copy Blob-bewerking](https://docs.microsoft.com/rest/api/storageservices/copy-blob) uit te voeren. Uw oorspronkelijke blob blijft ongewijzigd in het archief, terwijl een nieuwe blob wordt gemaakt in de online hot of cool tier waar u aan werken. In de bewerking Blob kopiëren u de optionele eigenschap *x-ms-rehydraatprioriteit* ook instellen op Standaard of Hoog om de prioriteit op te geven waarop u uw blobkopie wilt maken.
+Als u de archief-BLOB niet opnieuw wilt laten worden gehydrateerd, kunt u ervoor kiezen om een [Kopieer-BLOB](https://docs.microsoft.com/rest/api/storageservices/copy-blob) bewerking uit te voeren. De oorspronkelijke BLOB blijft ongewijzigd in archief terwijl er een nieuwe BLOB wordt gemaakt in de online hot of cool-laag, zodat u kunt werken. In de bewerking BLOB kopiëren kunt u ook de optionele *x-MS-autohydrat-Priority-* eigenschap instellen op Standard of High om de prioriteit op te geven waarop u de BLOB-kopie wilt maken.
 
-Het kopiëren van een blob uit het archief kan uren in beslag nemen, afhankelijk van de geselecteerde prioriteit voor rehydrateren. Achter de schermen leest de bewerking **Blob kopiëren** uw blob met archiefbron om een nieuwe online blob te maken in de geselecteerde doellaag. De nieuwe blob kan zichtbaar zijn wanneer u blobs aanvoert, maar de gegevens zijn pas beschikbaar nadat de blob is gelezen uit de blob van het bronarchief en de gegevens naar de nieuwe online bestemmingsblob zijn geschreven. De nieuwe blob is als een onafhankelijke kopie en elke wijziging of verwijdering ervan heeft geen invloed op de blob van het bronarchief.
+Het kopiëren van een BLOB uit het archief kan uren duren, afhankelijk van de geselecteerde opnieuw te maken prioriteit. Achter de schermen leest de bewerking **BLOB kopiëren** de bron-blob van het archief om een nieuwe online-Blob in de geselecteerde doellaag te maken. De nieuwe blob is mogelijk zichtbaar wanneer u blobs vermeldte, maar de gegevens zijn pas beschikbaar als de Lees bewerking van de blob van het bron archief is voltooid en de gegevens naar de nieuwe online-doel-BLOB zijn geschreven. De nieuwe blob is een onafhankelijke kopie en een wijziging of verwijdering hiervan heeft geen invloed op de bron archief-blob.
 
-Archiefblobs kunnen alleen worden gekopieerd naar online doellagen binnen hetzelfde opslagaccount. Het kopiëren van een archiefblob naar een andere archiefblob wordt niet ondersteund. In de volgende tabel worden de mogelijkheden van CopyBlob aangegeven.
+Archief-blobs kunnen alleen worden gekopieerd naar online doel lagen binnen hetzelfde opslag account. Het kopiëren van een archief-BLOB naar een andere archief-BLOB wordt niet ondersteund. De volgende tabel geeft de mogelijkheden van CopyBlob aan.
 
-|                                           | **Bron van hot tier**   | **Koele laagbron** | **Bron van archieflagen**    |
+|                                           | **Bron van warme laag**   | **Bron van de cool-laag** | **Bron van Archive-laag**    |
 | ----------------------------------------- | --------------------- | -------------------- | ------------------- |
-| **Bestemming hot tier**                  | Ondersteund             | Ondersteund            | Ondersteund binnen hetzelfde account; in afwachting van rehydrateren               |
-| **Koele laagbestemming**                 | Ondersteund             | Ondersteund            | Ondersteund binnen hetzelfde account; in afwachting van rehydrateren               |
-| **Bestemming archieflaag**              | Ondersteund             | Ondersteund            | Niet ondersteund         |
+| **Doel van de warme laag**                  | Ondersteund             | Ondersteund            | Ondersteund binnen hetzelfde account; opnieuw gehydrateerd in behandeling               |
+| **Doel van de cool-laag**                 | Ondersteund             | Ondersteund            | Ondersteund binnen hetzelfde account; opnieuw gehydrateerd in behandeling               |
+| **Doel van de archief laag**              | Ondersteund             | Ondersteund            | Niet ondersteund         |
 
 ## <a name="pricing-and-billing"></a>Prijzen en facturering
 
-Het hydrateren van blobs uit het archief in hete of koele lagen worden in rekening gebracht als leesbewerkingen en het ophalen van gegevens. Het gebruik van hoge prioriteit heeft hogere kosten voor het ophalen van gegevens in vergelijking met de standaardprioriteit. Rehydratie met hoge prioriteit wordt weergegeven als een afzonderlijk regelitem op uw factuur. Als een aanvraag met hoge prioriteit om een archiefblob van een paar gigabytes terug te sturen meer dan 5 uur in zich opneemt, wordt het percentage met hoge prioriteit niet in rekening gebracht. Echter, standaard retrieval tarieven nog steeds van toepassing als de rehydratie werd geprioriteerd boven andere verzoeken.
+Reactiveren-blobs uit het archief in warme of coole lagen worden in rekening gebracht als Lees bewerkingen en gegevens ophalen. Het gebruik van hoge prioriteit heeft hogere kosten voor bewerkingen en het ophalen van gegevens ten opzichte van de standaard prioriteit. Rehydratatie met hoge prioriteit worden weer gegeven als een afzonderlijk regel item op uw factuur. Als een aanvraag met een hoge prioriteit voor het retour neren van een archief-blob van een paar gigabytes meer dan vijf uur duurt, wordt niet het ophaal tarief met hoge prioriteit in rekening gebracht. Standaard tarieven voor het ophalen van zijn echter nog steeds van toepassing omdat de rehydratatie prioriteit heeft gegeven aan andere aanvragen.
 
-Het kopiëren van blobs uit archief naar hete of koele lagen worden in rekening gebracht als leesbewerkingen en het ophalen van gegevens. Er wordt een schrijfbewerking in rekening gebracht voor het maken van de nieuwe blobkopie. Vroege verwijderingskosten zijn niet van toepassing wanneer u naar een online blob kopieert, omdat de bronblob ongewijzigd blijft in de archieflaag. Als deze optie is geselecteerd, zijn er wel kosten voor het ophalen met hoge prioriteit.
+Het kopiëren van blobs van Archive in warme of coole lagen wordt in rekening gebracht als Lees bewerkingen en ophalen van gegevens. Voor het maken van de nieuwe BLOB-kopie wordt een schrijf bewerking in rekening gebracht. Kosten voor vroegtijdig verwijderen zijn niet van toepassing wanneer u naar een online-BLOB kopieert, omdat de bron-BLOB ongewijzigd blijft in de laag van het archief. De kosten voor het ophalen van hoge prioriteit zijn van toepassing indien geselecteerd.
 
-Blobs in de archieflaag moeten minimaal 180 dagen worden opgeslagen. Als u gearchiveerde blobs vóór 180 dagen verwijderde of opnieuw uitzet, worden er kosten in de vroege verwijdering verbonden.
+Blobs in de archief laag moeten mini maal 180 dagen worden opgeslagen. Als u gearchiveerde blobs verwijdert of reactiveren, worden de kosten 180 voor vroegtijdige verwijdering in rekening gebracht.
 
 > [!NOTE]
-> Zie [Azure Storage Pricing](https://azure.microsoft.com/pricing/details/storage/blobs/)voor meer informatie over prijzen voor blokblobs en gegevensrehydratie. Zie [Prijsgegevens voor gegevensoverdrachten](https://azure.microsoft.com/pricing/details/data-transfers/)voor meer informatie over uitgaande kosten voor gegevensoverdracht.
+> Zie [Azure Storage prijzen](https://azure.microsoft.com/pricing/details/storage/blobs/)voor meer informatie over de prijzen voor blok-blobs en gegevens rehydratatie. Zie [prijs informatie voor gegevens overdracht](https://azure.microsoft.com/pricing/details/data-transfers/)voor meer informatie over de kosten voor uitgaande gegevens overdracht.
 
 ## <a name="quickstart-scenarios"></a>Snelstartscenario's
 
-### <a name="rehydrate-an-archive-blob-to-an-online-tier"></a>Een archiefblob opnieuw hydrateren naar een onlinelaag
+### <a name="rehydrate-an-archive-blob-to-an-online-tier"></a>Een archief-BLOB naar een online-laag opnieuw gehydrateerd
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 
-1. Zoek en selecteer **alle bronnen**in de Azure-portal.
+1. Zoek in het Azure Portal **alle resources**en selecteer deze.
 
 1. Selecteer uw opslagaccount.
 
-1. Selecteer de container en selecteer vervolgens de blob.
+1. Selecteer uw container en selecteer vervolgens uw blob.
 
-1. Selecteer laag **Wijzigen**in de **eigenschappen van de Blob**.
+1. Selecteer in de **BLOB**-eigenschappen **laag wijzigen**.
 
-1. Selecteer de toegangslaag **Hot** or **Cool.** 
+1. Selecteer de laag **Hot** of **cool** Access. 
 
-1. Selecteer een prioriteit voor rehydrateren van **Standaard** of **Hoog**.
+1. Selecteer een opnieuw gehydrateerde prioriteit van **standaard** of **hoog**.
 
-1. Selecteer **Opslaan** onderin.
+1. Selecteer onder **Opslaan** onder.
 
-![Opslagaccountlaag](media/storage-tiers/blob-access-tier.png)
-![wijzigen De status Rehydraat controleren](media/storage-tiers/rehydrate-status.png)
+![De status van de](media/storage-tiers/blob-access-tier.png)
+![rehydratie controle van de laag van het opslag account wijzigen](media/storage-tiers/rehydrate-status.png)
 
-# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
-Het volgende PowerShell-script kan worden gebruikt om de bloblaag van een archiefblob te wijzigen. De `$rgName` variabele moet worden geïnitialiseerd met de naam van uw resourcegroep. De `$accountName` variabele moet worden geïnitialiseerd met de naam van uw opslagaccount. De `$containerName` variabele moet worden geïnitialiseerd met uw containernaam. De `$blobName` variabele moet worden geïnitialiseerd met de naam van uw blob. 
+# <a name="powershell"></a>[Zo](#tab/azure-powershell)
+Het volgende Power shell-script kan worden gebruikt om de BLOB-laag van een archief-BLOB te wijzigen. De `$rgName` variabele moet worden geïnitialiseerd met de naam van de resource groep. De `$accountName` variabele moet worden geïnitialiseerd met de naam van uw opslag account. De `$containerName` variabele moet worden geïnitialiseerd met de container naam. De `$blobName` variabele moet worden geïnitialiseerd met de naam van de blob. 
 ```powershell
 #Initialize the following with your resource group, storage account, container, and blob names
 $rgName = ""
@@ -98,8 +98,8 @@ $blob.ICloudBlob.SetStandardBlobTier("Hot", “Standard”)
 ```
 ---
 
-### <a name="copy-an-archive-blob-to-a-new-blob-with-an-online-tier"></a>Een archiefblob kopiëren naar een nieuwe blob met een onlinelaag
-Het volgende PowerShell-script kan worden gebruikt om een archiefblob te kopiëren naar een nieuwe blob binnen hetzelfde opslagaccount. De `$rgName` variabele moet worden geïnitialiseerd met de naam van uw resourcegroep. De `$accountName` variabele moet worden geïnitialiseerd met de naam van uw opslagaccount. De `$srcContainerName` `$destContainerName` variabelen en variabelen moeten worden geïnitialiseerd met uw containernamen. De `$srcBlobName` `$destBlobName` variabelen en variabelen moeten worden geïnitialiseerd met uw blobnamen. 
+### <a name="copy-an-archive-blob-to-a-new-blob-with-an-online-tier"></a>Een archief-BLOB kopiëren naar een nieuwe blob met een online-laag
+Het volgende Power shell-script kan worden gebruikt om een Archive-BLOB te kopiëren naar een nieuwe BLOB binnen hetzelfde opslag account. De `$rgName` variabele moet worden geïnitialiseerd met de naam van de resource groep. De `$accountName` variabele moet worden geïnitialiseerd met de naam van uw opslag account. De `$srcContainerName` variabelen `$destContainerName` en moeten worden geïnitialiseerd met de container namen. De `$srcBlobName` variabelen `$destBlobName` en moeten worden geïnitialiseerd met de namen van de blobs. 
 ```powershell
 #Initialize the following with your resource group, storage account, container, and blob names
 $rgName = ""
@@ -119,7 +119,7 @@ Start-AzStorageBlobCopy -SrcContainer $srcContainerName -SrcBlob $srcBlobName -D
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Meer informatie over Blob-opslaglagen](storage-blob-storage-tiers.md)
-* [Controleer de prijzen voor hot, cool en archiveren in Blob-opslag- en GPv2-accounts per regio](https://azure.microsoft.com/pricing/details/storage/)
+* [Meer informatie over Blob Storage lagen](storage-blob-storage-tiers.md)
+* [Controleer de prijzen voor warme, koude en archief in Blob Storage en GPv2-accounts per regio](https://azure.microsoft.com/pricing/details/storage/)
 * [De levenscyclus van Azure Blob-opslag beheren](storage-lifecycle-management-concepts.md)
 * [Prijzen voor gegevensoverdracht controleren](https://azure.microsoft.com/pricing/details/data-transfers/)

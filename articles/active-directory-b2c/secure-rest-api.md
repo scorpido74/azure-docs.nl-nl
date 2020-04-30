@@ -1,7 +1,7 @@
 ---
-title: Een rustgevende service beveiligen in uw Azure AD B2C
+title: Een rest-service in uw Azure AD B2C beveiligen
 titleSuffix: Azure AD B2C
-description: Beveilig uw aangepaste REST API-claims uitwisselingen in uw Azure AD B2C.
+description: Beveilig uw aangepaste REST API claim uitwisselingen in uw Azure AD B2C.
 services: active-directory-b2c
 author: msmimart
 manager: celestedg
@@ -12,67 +12,67 @@ ms.date: 04/20/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 34ed6d043f713aa55bfe464c48d4332364df805d
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81680382"
 ---
-# <a name="secure-your-restful-services"></a>Beveilig uw RESTful-services 
+# <a name="secure-your-restful-services"></a>Uw REST-services beveiligen 
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-Wanneer u een REST API integreert in een Azure AD B2C-gebruikerstraject, moet u uw REST API-eindpunt beveiligen met verificatie. Dit zorgt ervoor dat alleen services met de juiste referenties, zoals Azure AD B2C, kunnen aanbellen naar uw REST API-eindpunt.
+Wanneer u een REST API integreert binnen een Azure AD B2C gebruikers traject, moet u uw REST API-eind punt beveiligen met verificatie. Dit zorgt ervoor dat alleen services die de juiste referenties hebben, zoals Azure AD B2C, aanroepen van uw REST API-eind punt kunnen aanbrengen.
 
-Meer informatie over het integreren van een REST API in uw Azure AD B2C-gebruikerstraject in de [validatie van gebruikersinvoer](custom-policy-rest-api-claims-validation.md) en [het toevoegen van REST API-claimsuitwisselingen aan aangepaste beleidsregels.](custom-policy-rest-api-claims-exchange.md)
+Informatie over het integreren van een REST API binnen uw Azure AD B2C gebruikers traject in de gebruikers [invoer valideren](custom-policy-rest-api-claims-validation.md) en [rest API claims-uitwisselingen toevoegen aan aangepaste beleids](custom-policy-rest-api-claims-exchange.md) artikelen.
 
-In dit artikel wordt uitgelegd hoe u uw REST API beveiligen met HTTP basic, client certificate of OAuth2 authenticatie. 
+In dit artikel wordt uitgelegd hoe u uw REST API kunt beveiligen met HTTP Basic, client certificaat of OAuth2-verificatie. 
 
 ## <a name="prerequisites"></a>Vereisten
 
-Voer de stappen uit in een van de volgende handleidingen voor 'How to':
+Volg de stappen in een van de volgende ' instructies ':
 
-- [Integratie van REST API-claims uitwisselingen in uw Azure AD B2C-gebruikersreis om gebruikersinvoer te valideren.](custom-policy-rest-api-claims-validation.md)
-- [Rest API-claims uitwisselingen toevoegen aan aangepaste beleidsregels](custom-policy-rest-api-claims-exchange.md)
+- [Integreer rest API claim uitwisselingen in uw Azure AD B2C gebruikers traject om gebruikers invoer te valideren](custom-policy-rest-api-claims-validation.md).
+- [REST API claim uitwisselingen toevoegen aan aangepast beleid](custom-policy-rest-api-claims-exchange.md)
 
-## <a name="http-basic-authentication"></a>HTTP-basisverificatie
+## <a name="http-basic-authentication"></a>HTTP-basis verificatie
 
-HTTP basisverificatie wordt gedefinieerd in [RFC 2617](https://tools.ietf.org/html/rfc2617). Basisverificatie werkt als volgt: Azure AD B2C verzendt een HTTP-aanvraag met de clientreferenties in de kopautorisatie. De referenties zijn opgemaakt als de base64-gecodeerde tekenreeks "name:password".  
+Basis verificatie HTTP is gedefinieerd in [RFC 2617](https://tools.ietf.org/html/rfc2617). Basis verificatie werkt als volgt: Azure AD B2C verzendt een HTTP-aanvraag met de client referenties in de autorisatie-header. De referenties zijn ingedeeld als de base64-gecodeerde teken reeks ' naam: wacht woord '.  
 
-### <a name="add-rest-api-username-and-password-policy-keys"></a>Rest API-gebruikersnaam- en wachtwoordbeleidssleutels toevoegen
+### <a name="add-rest-api-username-and-password-policy-keys"></a>REST API gebruikers naam-en wachtwoord beleid sleutels toevoegen
 
-Als u een REST API-technisch profiel wilt configureren met HTTP-basisverificatie, maakt u de volgende cryptografische sleutels om de gebruikersnaam en het wachtwoord op te slaan:
+Als u een REST API technisch profiel met HTTP-basis verificatie wilt configureren, maakt u de volgende cryptografische sleutels om de gebruikers naam en het wacht woord op te slaan:
 
 1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
-1. Zorg ervoor dat u de map gebruikt die uw Azure AD B2C-tenant bevat. Selecteer het **filter Directory + abonnement** in het bovenste menu en kies uw Azure AD B2C-map.
+1. Zorg ervoor dat u de map gebruikt die uw Azure AD B2C-Tenant bevat. Selecteer het filter **Directory + abonnement** in het bovenste menu en kies uw Azure AD B2C Directory.
 1. Kies **Alle services** linksboven in de Azure Portal, zoek **Azure AD B2C** en selecteer deze.
-1. Selecteer op de pagina Overzicht de optie **Identity Experience Framework**.
-1. Selecteer **Beleidssleutels**en selecteer **Toevoegen**.
-1. Selecteer **Handmatig** **voor opties**.
+1. Selecteer op de pagina overzicht **identiteits ervaring-Framework**.
+1. Selecteer **beleids sleutels**en selecteer vervolgens **toevoegen**.
+1. Voor **Opties**selecteert u **hand matig**.
 1. Typ **RestApiUsername**voor **naam**.
-    Het voorvoegsel *B2C_1A_* kan automatisch worden toegevoegd.
-1. Voer **in** het vak Geheim de gebruikersnaam van de REST API in.
-1. Selecteer **Versleuteling** **voor sleutelgebruik**.
+    De prefix *B2C_1A_* kan automatisch worden toegevoegd.
+1. Voer in het vak **geheim** het rest API gebruikers naam in.
+1. Voor **sleutel gebruik**selecteert u **versleuteling**.
 1. Selecteer **Maken**.
-1. Selecteer opnieuw **Beleidssleutels.**
+1. Selecteer de **beleids sleutels** opnieuw.
 1. Selecteer **Toevoegen**.
-1. Selecteer **Handmatig** **voor opties**.
-1. Typ **RestApiPassword**voor **Naam**.
-    Het voorvoegsel *B2C_1A_* kan automatisch worden toegevoegd.
-1. Voer **in** het vak Geheim het WACHTWOORD VAN DE REST API in.
-1. Selecteer **Versleuteling** **voor sleutelgebruik**.
+1. Voor **Opties**selecteert u **hand matig**.
+1. Typ **RestApiPassword**voor **naam**.
+    De prefix *B2C_1A_* kan automatisch worden toegevoegd.
+1. Voer in het vak **geheim** het rest API wacht woord in.
+1. Voor **sleutel gebruik**selecteert u **versleuteling**.
 1. Selecteer **Maken**.
 
-### <a name="configure-your-rest-api-technical-profile-to-use-http-basic-authentication"></a>Uw REST API-technisch profiel configureren om HTTP-basisverificatie te gebruiken
+### <a name="configure-your-rest-api-technical-profile-to-use-http-basic-authentication"></a>Uw REST API technische profiel configureren voor het gebruik van HTTP-basis verificatie
 
-Nadat u de benodigde sleutels hebt gemaakt, configureert u de metagegevens van uw REST API-technische profielom verwijzing naar de referenties.
+Nadat u de benodigde sleutels hebt gemaakt, moet u de meta gegevens van uw REST API technische profiel configureren om te verwijzen naar de referenties.
 
-1. Open in uw werkmap het extensiebeleidsbestand (TrustFrameworkExtensions.xml).
-1. Zoek naar het technische profiel VAN de REST API. Bijvoorbeeld `REST-ValidateProfile`, `REST-GetProfile`of .
-1. Zoek `<Metadata>` het element.
-1. Wijzig het *AuthenticationType* in `Basic`.
+1. Open in uw werkmap het extensie beleids bestand (TrustFrameworkExtensions. XML).
+1. Zoek het technische profiel van REST API. Bijvoorbeeld `REST-ValidateProfile`of `REST-GetProfile`.
+1. Zoek het `<Metadata>` element op.
+1. Wijzig de *AuthenticationType* in `Basic`.
 1. Wijzig de *AllowInsecureAuthInProduction* in `false`.
-1. Voeg onmiddellijk `</Metadata>` na het slotelement het volgende XML-fragment toe:
+1. Voeg direct na het `</Metadata>` afsluitende element het volgende XML-fragment toe:
     ```xml
     <CryptographicKeys>
         <Key Id="BasicAuthenticationUsername" StorageReferenceId="B2C_1A_RestApiUsername" />
@@ -80,7 +80,7 @@ Nadat u de benodigde sleutels hebt gemaakt, configureert u de metagegevens van u
     </CryptographicKeys>
     ```
 
-Het volgende is een voorbeeld van een RESTful technisch profiel geconfigureerd met HTTP basisverificatie:
+Hier volgt een voor beeld van een onderliggend technisch profiel dat is geconfigureerd met HTTP-basis verificatie:
 
 ```xml
 <ClaimsProvider>
@@ -105,15 +105,15 @@ Het volgende is een voorbeeld van een RESTful technisch profiel geconfigureerd m
 </ClaimsProvider>
 ```
 
-## <a name="https-client-certificate-authentication"></a>HTTPS-clientcertificaatverificatie
+## <a name="https-client-certificate-authentication"></a>Verificatie van HTTPS-client certificaten
 
-Clientcertificaatverificatie is een verificatie op basis van wederzijdse certificaten, waarbij de client, Azure AD B2C, zijn clientcertificaat aan de server verstrekt om zijn identiteit te bewijzen. Dit gebeurt als onderdeel van de SSL-handshake. Alleen services met de juiste certificaten, zoals Azure AD B2C, hebben toegang tot uw REST API-service. Het clientcertificaat is een X.509 digitaal certificaat. In productieomgevingen moet het worden ondertekend door een certificaatautoriteit.
+Verificatie van client certificaten is een wederzijdse verificatie op basis van certificaten, waarbij de client, Azure AD B2C, het client certificaat levert aan de server om zijn identiteit te bewijzen. Dit gebeurt als onderdeel van de SSL-handshake. Alleen services die over de juiste certificaten beschikken, zoals Azure AD B2C, hebben toegang tot uw REST API-service. Het client certificaat is een X. 509-digitaal certificaat. In productie omgevingen moet het worden ondertekend door een certificerings instantie.
 
 ### <a name="prepare-a-self-signed-certificate-optional"></a>Een zelfondertekend certificaat voorbereiden (optioneel)
 
-Voor niet-productieomgevingen u, als u nog geen certificaat hebt, een zelfondertekend certificaat gebruiken. In Windows u de cmdlet [Nieuw-Zelfondertekendcertificaat](https://docs.microsoft.com/powershell/module/pkiclient/new-selfsignedcertificate) van PowerShell gebruiken om een certificaat te genereren.
+Als u nog geen certificaat hebt, kunt u voor niet-productie omgevingen een zelfondertekend certificaat gebruiken. In Windows kunt u de cmdlet [New-SelfSignedCertificate](https://docs.microsoft.com/powershell/module/pkiclient/new-selfsignedcertificate) van Power shell gebruiken voor het genereren van een certificaat.
 
-1. Voer deze PowerShell-opdracht uit om een zelfondertekend certificaat te genereren. Wijzig `-Subject` het argument waar nodig voor uw toepassing en de naam van Azure AD B2C-tenant. U ook `-NotAfter` de datum aanpassen om een andere vervaldatum voor het certificaat op te geven.
+1. Voer deze Power shell-opdracht uit om een zelfondertekend certificaat te genereren. Wijzig het `-Subject` argument naar wens voor uw toepassing en Azure AD B2C Tenant naam. U kunt ook de `-NotAfter` datum aanpassen om een andere verloop tijd voor het certificaat op te geven.
     ```PowerShell
     New-SelfSignedCertificate `
         -KeyExportPolicy Exportable `
@@ -124,43 +124,43 @@ Voor niet-productieomgevingen u, als u nog geen certificaat hebt, een zelfondert
         -NotAfter (Get-Date).AddMonths(12) `
         -CertStoreLocation "Cert:\CurrentUser\My"
     ```    
-1. Open **Gebruikerscertificaten beheren** > Huidige**persoonlijke** > **gebruikerscertificaten** > **Current User** > *yourappname.yourtenant.onmicrosoft.com*.
-1. Selecteer het certificaat > **Action** > **All Tasks** > **Export**.
-1. Selecteer **Ja** > **volgende** > **ja, exporteer de privésleutel** > **Volgende**.
-1. Accepteer de standaardinstellingen voor **Bestandsindeling exporteren**.
-1. Geef een wachtwoord op voor het certificaat.
+1. Open **gebruikers certificaten** > beheren**huidige gebruiker** > **persoonlijke** > **certificaten** > *yourappname.yourtenant.onmicrosoft.com*.
+1. Selecteer de **actie** > certificaat >**alle taken** > **exporteren**.
+1. Selecteer **Ja** > **volgende** > **Ja, de persoonlijke sleutel** > exporteren**volgende**.
+1. Accepteer de standaard instellingen voor de **export bestands indeling**.
+1. Geef een wacht woord op voor het certificaat.
 
-### <a name="add-a-client-certificate-policy-key"></a>Een beleidssleutel clientcertificaat toevoegen
+### <a name="add-a-client-certificate-policy-key"></a>Een beleids sleutel voor client certificaten toevoegen
 
 1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
-1. Zorg ervoor dat u de map gebruikt die uw Azure AD B2C-tenant bevat. Selecteer het **filter Directory + abonnement** in het bovenste menu en kies uw Azure AD B2C-map.
+1. Zorg ervoor dat u de map gebruikt die uw Azure AD B2C-Tenant bevat. Selecteer het filter **Directory + abonnement** in het bovenste menu en kies uw Azure AD B2C Directory.
 1. Kies **Alle services** linksboven in de Azure Portal, zoek **Azure AD B2C** en selecteer deze.
-1. Selecteer op de pagina Overzicht de optie **Identity Experience Framework**.
-1. Selecteer **Beleidssleutels**en selecteer **Toevoegen**.
-1. Selecteer **In** het vak Opties de optie **Uploaden**.
-1. Typ **RestApiClientCertificate**in het vak **Naam** .
-    Het voorvoegsel *B2C_1A_* wordt automatisch toegevoegd.
-1. Selecteer in het vak **Bestand uploaden** het PFX-bestand van uw certificaat met een privésleutel.
-1. Typ het wachtwoord van het certificaat in het vak **Wachtwoord.**
+1. Selecteer op de pagina overzicht **identiteits ervaring-Framework**.
+1. Selecteer **beleids sleutels**en selecteer vervolgens **toevoegen**.
+1. Selecteer **uploaden**in het vak **Opties** .
+1. Typ **RestApiClientCertificate**in het vak **naam** .
+    Het voor voegsel *B2C_1A_* automatisch toegevoegd.
+1. Selecteer in het vak **bestand uploaden** het pfx-bestand van uw certificaat met een persoonlijke sleutel.
+1. Typ in het vak **wacht** woord het wacht woord van het certificaat.
 1. Selecteer **Maken**.
 
-### <a name="configure-your-rest-api-technical-profile-to-use-client-certificate-authentication"></a>Uw REST API-technisch profiel configureren om clientcertificaatverificatie te gebruiken
+### <a name="configure-your-rest-api-technical-profile-to-use-client-certificate-authentication"></a>Uw REST API technische profiel configureren voor het gebruik van verificatie van client certificaten
 
-Nadat u de benodigde sleutel hebt gemaakt, configureert u de metagegevens van uw REST API-technische profielom verwijzing naar het clientcertificaat.
+Nadat u de benodigde sleutel hebt gemaakt, moet u de meta gegevens van uw REST API technische profiel configureren om te verwijzen naar het client certificaat.
 
-1. Open in uw werkmap het extensiebeleidsbestand (TrustFrameworkExtensions.xml).
-1. Zoek naar het technische profiel VAN de REST API. Bijvoorbeeld `REST-ValidateProfile`, `REST-GetProfile`of .
-1. Zoek `<Metadata>` het element.
-1. Wijzig het *AuthenticationType* in `ClientCertificate`.
+1. Open in uw werkmap het extensie beleids bestand (TrustFrameworkExtensions. XML).
+1. Zoek het technische profiel van REST API. Bijvoorbeeld `REST-ValidateProfile`of `REST-GetProfile`.
+1. Zoek het `<Metadata>` element op.
+1. Wijzig de *AuthenticationType* in `ClientCertificate`.
 1. Wijzig de *AllowInsecureAuthInProduction* in `false`.
-1. Voeg onmiddellijk `</Metadata>` na het slotelement het volgende XML-fragment toe:
+1. Voeg direct na het `</Metadata>` afsluitende element het volgende XML-fragment toe:
     ```xml
     <CryptographicKeys>
        <Key Id="ClientCertificate" StorageReferenceId="B2C_1A_RestApiClientCertificate" />
     </CryptographicKeys>
     ```
 
-Het volgende is een voorbeeld van een RESTful technisch profiel dat is geconfigureerd met een HTTP-clientcertificaat:
+Hier volgt een voor beeld van een onderliggend technisch profiel dat is geconfigureerd met een HTTP-client certificaat:
 
 ```xml
 <ClaimsProvider>
@@ -184,34 +184,34 @@ Het volgende is een voorbeeld van een RESTful technisch profiel dat is geconfigu
 </ClaimsProvider>
 ```
 
-## <a name="oauth2-bearer-authentication"></a>OAuth2 verificatie aan toonder 
+## <a name="oauth2-bearer-authentication"></a>OAuth2 Bearer-verificatie 
 
 [!INCLUDE [b2c-public-preview-feature](../../includes/active-directory-b2c-public-preview.md)]
 
-Tokenverificatie aan toonder wordt gedefinieerd in [OAuth2.0 Authorization Framework: Toondertokengebruik (RFC 6750).](https://www.rfc-editor.org/rfc/rfc6750.txt) Bij verificatie van token aan toonder verzendt Azure AD B2C een HTTP-aanvraag met een token in de autorisatiekoptekst.
+Verificatie van Bearer-tokens is gedefinieerd in het [OAuth 2.0-autorisatie raamwerk: Bearer-token gebruik (RFC 6750)](https://www.rfc-editor.org/rfc/rfc6750.txt). In Bearer-token authenticatie verzendt Azure AD B2C een HTTP-aanvraag met een token in de autorisatie-header.
 
 ```http
 Authorization: Bearer <token>
 ```
 
-Een token aan toonder is een ondoorzichtige tekenreeks. Het kan een JWT-toegangstoken zijn of een tekenreeks waarvan de REST API verwacht dat Azure AD B2C de autorisatiekop verzendt. Azure AD B2C ondersteunt de volgende typen:
+Een Bearer-token is een ondoorzichtige teken reeks. Dit kan een JWT-toegangs token zijn of een wille keurige teken reeks die de REST API verwacht Azure AD B2C te verzenden in de autorisatie-header. Azure AD B2C ondersteunt de volgende typen:
 
-- **Toondertoken**. Om het token aan toonder in het technische profiel van Restful te kunnen verzenden, moet uw beleid eerst het token aan toonder verwerven en vervolgens gebruiken in het technische profiel van RESTful.  
-- **Statisch token aan de drager**. Gebruik deze aanpak wanneer uw REST API een langdurend toegangstoken uitgeeft. Als u een statisch token aan toonder wilt gebruiken, maakt u een beleidssleutel en verwijst u vanuit het technische profiel RESTful naar uw beleidssleutel. 
+- **Bearer-token**. Om het Bearer-token in het onderdrukken bare technische profiel te kunnen verzenden, moet uw beleid eerst het Bearer-token verkrijgen en het vervolgens gebruiken in het onderhouds technische profiel.  
+- **Statisch Bearer-token**. Gebruik deze methode wanneer uw REST API een lange termijn toegangs token uitgeeft. Als u een statisch Bearer-token wilt gebruiken, maakt u een beleids sleutel en maakt u een verwijzing van het onderliggend technische profiel naar uw beleids sleutel. 
 
 
-## <a name="using-oauth2-bearer"></a>OAuth2-drager gebruiken  
+## <a name="using-oauth2-bearer"></a>OAuth2 Bearer gebruiken  
 
-De volgende stappen laten zien hoe u clientreferenties gebruiken om een token aan toonder te verkrijgen en door te geven aan de autorisatiekop van de REST API-aanroepen.  
+De volgende stappen laten zien hoe u client referenties gebruikt om een Bearer-token te verkrijgen en door te geven aan de autorisatie-header van de REST API-aanroepen.  
 
-### <a name="define-a-claim-to-store-the-bearer-token"></a>Een claim definiëren om het token aan toonder op te slaan
+### <a name="define-a-claim-to-store-the-bearer-token"></a>Een claim definiëren om het Bearer-token op te slaan
 
-Een claim biedt tijdelijke opslag van gegevens tijdens een Azure AD B2C-beleidsuitvoering. Het [schadeschema](claimsschema.md) is de plaats waar u uw claims declareert. Het toegangstoken moet worden opgeslagen in een claim die later moet worden gebruikt. 
+Een claim biedt tijdelijke opslag van gegevens tijdens het uitvoeren van een Azure AD B2C beleid. Het [claim schema](claimsschema.md) is de plaats waar u uw claims declareert. Het toegangs token moet worden opgeslagen in een claim om later te worden gebruikt. 
 
-1. Open het extensiesbestand van uw beleid. Bijvoorbeeld. <em> `SocialAndLocalAccounts/` </em>
-1. Zoek naar het element [Bouwstenen.](buildingblocks.md) Als het element niet bestaat, voeg je het toe.
-1. Zoek het element [ClaimSchema.](claimsschema.md) Als het element niet bestaat, voeg je het toe.
-1. Voeg de volgende claims toe aan het element **ClaimsSchema.**  
+1. Open het bestand extensies van uw beleid. Bijvoorbeeld <em> `SocialAndLocalAccounts/` </em>.
+1. Zoek het element [BuildingBlocks](buildingblocks.md) . Als het element niet bestaat, voegt u het toe.
+1. Zoek het element [ClaimsSchema](claimsschema.md) . Als het element niet bestaat, voegt u het toe.
+1. Voeg de volgende claims toe aan het **ClaimsSchema** -element.  
 
 ```xml
 <ClaimType Id="bearerToken">
@@ -228,13 +228,13 @@ Een claim biedt tijdelijke opslag van gegevens tijdens een Azure AD B2C-beleidsu
 </ClaimType>
 ```
 
-### <a name="acquiring-an-access-token"></a>Een toegangstoken aanschaffen 
+### <a name="acquiring-an-access-token"></a>Een toegangs token verkrijgen 
 
-U een toegangstoken op verschillende manieren verkrijgen: door het te verkrijgen [bij een federatieve identiteitsprovider,](idp-pass-through-custom.md)door een REST-API aan te roepen die een toegangstoken retourneert, met behulp van een [ROPC-stroom](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth-ropc)of door de [stroom van clientreferenties te gebruiken.](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-client-creds-grant-flow)  
+U kunt op een van de volgende manieren een toegangs token verkrijgen: door het te verkrijgen [bij een federatieve id-provider](idp-pass-through-custom.md), door een rest API aan te roepen dat een toegangs token retourneert, door gebruik te maken van een [ROPC-stroom](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth-ropc)of door gebruik te maken van de [client referentie stroom](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-client-creds-grant-flow).  
 
-In het volgende voorbeeld wordt een technisch rest-apiprofiel gebruikt om een aanvraag te doen voor het Azure AD-tokeneindpunt met behulp van de clientreferenties die worden doorgegeven als HTTP-basisverificatie. Zie [Microsoft-identiteitsplatform en de oauth 2.0-clientreferentiesstroom](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-client-creds-grant-flow)om dit te configureren in Azure AD. Mogelijk moet u dit wijzigen om te communiceren met uw identiteitsprovider. 
+In het volgende voor beeld wordt een REST API technisch profiel gebruikt om een aanvraag naar het Azure AD-token eindpunt te maken met behulp van de client referenties die zijn door gegeven als HTTP-basis verificatie. Als u dit wilt configureren in azure AD, raadpleegt u [micro soft Identity platform en de OAuth 2,0 client credentials flow](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-client-creds-grant-flow). Mogelijk moet u dit wijzigen in de interface met uw ID-provider. 
 
-Vervang voor de ServiceUrl de naam van uw tenant door de naam van uw Azure AD-tenant. Zie de [RESTful technische profiel](restful-technical-profile.md) referentie voor alle beschikbare opties.
+Vervang uw-Tenant naam voor de ServiceUrl door de naam van uw Azure AD-Tenant. Zie de naslag informatie over de [rest technische profielen](restful-technical-profile.md) voor alle beschik bare opties.
 
 ```xml
 <TechnicalProfile Id="SecureREST-AccessToken">
@@ -260,30 +260,30 @@ Vervang voor de ServiceUrl de naam van uw tenant door de naam van uw Azure AD-te
 </TechnicalProfile>
 ```
 
-### <a name="change-the-rest-technical-profile-to-use-bearer-token-authentication"></a>Het technische profiel VAN REST wijzigen om tokenverificatie aan toonder te gebruiken
+### <a name="change-the-rest-technical-profile-to-use-bearer-token-authentication"></a>Het REST-technische profiel voor het gebruik van Bearer-token authenticatie wijzigen
 
-Als u tokenverificatie aan toonder wilt ondersteunen in uw aangepaste beleid, wijzigt u het technische profiel VAN de REST API met het volgende:
+Als u Bearer-token verificatie wilt ondersteunen in uw aangepaste beleid, wijzigt u het technische profiel van REST API met de volgende opties:
 
-1. Open in uw werkmap het beleidsbestand *voor verlengingsbestanden van TrustFrameworkExtensions.xml.*
-1. Zoek naar `<TechnicalProfile>` het knooppunt `Id="REST-API-SignUp"`dat omvat .
-1. Zoek `<Metadata>` het element.
-1. Wijzig het *Verificatietype* als volgt in *Drager:*
+1. Open in uw werkmap het extensie beleids bestand *TrustFrameworkExtensions. XML* .
+1. Zoek het `<TechnicalProfile>` knoop punt dat bevat `Id="REST-API-SignUp"`.
+1. Zoek het `<Metadata>` element op.
+1. Wijzig de *AuthenticationType* als *volgt*:
     ```xml
     <Item Key="AuthenticationType">Bearer</Item>
     ```
-1. Wijzig of voeg de *UseClaimAsBearerToken* als volgt toe aan *bearerToken.* De *bearerToken* is de naam van de claim dat het token `SecureREST-AccessToken`aan toonder wordt opgehaald (de uitvoerclaim van ).
+1. Wijzig of Voeg de *UseClaimAsBearerToken* als volgt toe aan *bearerToken*. De *bearerToken* is de naam van de claim waarvan het Bearer-token wordt opgehaald (de uitvoer claim van `SecureREST-AccessToken`).
 
     ```xml
     <Item Key="UseClaimAsBearerToken">bearerToken</Item>
     ```
     
-1. Zorg ervoor dat u de bovenstaande claim toevoegt als invoerclaim:
+1. Zorg ervoor dat u de claim die hierboven is gebruikt, toevoegt als invoer claim:
 
     ```xml
     <InputClaim ClaimTypeReferenceId="bearerToken"/>
     ```    
 
-Nadat u de bovenstaande fragmenten hebt toegevoegd, moet uw technische profiel er uitzien als de volgende XML-code:
+Nadat u de bovenstaande fragmenten hebt toegevoegd, moet uw technische profiel eruitzien zoals in de volgende XML-code:
 
 ```XML
 <ClaimsProvider>
@@ -308,40 +308,40 @@ Nadat u de bovenstaande fragmenten hebt toegevoegd, moet uw technische profiel e
 </ClaimsProvider>
 ```
 
-## <a name="using-a-static-oauth2-bearer"></a>Met behulp van een statische OAuth2 drager 
+## <a name="using-a-static-oauth2-bearer"></a>Een statische OAuth2-Bearer gebruiken 
 
-### <a name="add-the-oauth2-bearer-token-policy-key"></a>De beleidssleutel oAuth2-token aan toonder toevoegen
+### <a name="add-the-oauth2-bearer-token-policy-key"></a>De sleutel voor het OAuth2 Bearer-token beleid toevoegen
 
-Maak een beleidssleutel om de tokenwaarde aan toonder op te slaan.
+Maak een beleids sleutel om de token waarde van de Bearer op te slaan.
 
 1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
-1. Zorg ervoor dat u de map gebruikt die uw Azure AD B2C-tenant bevat. Selecteer het **filter Directory + abonnement** in het bovenste menu en kies uw Azure AD B2C-map.
+1. Zorg ervoor dat u de map gebruikt die uw Azure AD B2C-Tenant bevat. Selecteer het filter **Directory + abonnement** in het bovenste menu en kies uw Azure AD B2C Directory.
 1. Kies **Alle services** linksboven in de Azure Portal, zoek **Azure AD B2C** en selecteer deze.
-1. Selecteer op de pagina Overzicht de optie **Identity Experience Framework**.
-1. Selecteer **Beleidssleutels**en selecteer **Toevoegen**.
-1. Kies **Options**voor `Manual`Opties .
-1. Voer een **naam** in voor de beleidssleutel. Bijvoorbeeld `RestApiBearerToken`. Het voorvoegsel `B2C_1A_` wordt automatisch toegevoegd aan de naam van uw sleutel.
-1. Voer in **Secret**het geheim van uw klant in dat u eerder hebt opgenomen.
-1. Selecteer **voor sleutelgebruik**. `Encryption`
+1. Selecteer op de pagina overzicht **identiteits ervaring-Framework**.
+1. Selecteer **beleids sleutels**en selecteer vervolgens **toevoegen**.
+1. Kies **Options** `Manual`voor opties.
+1. Voer een **naam** in voor de beleids sleutel. Bijvoorbeeld `RestApiBearerToken`. Het voor `B2C_1A_` voegsel wordt automatisch toegevoegd aan de naam van uw sleutel.
+1. Voer in het **geheim**uw client geheim in dat u eerder hebt vastgelegd.
+1. Selecteer `Encryption`voor **sleutel gebruik**.
 1. Selecteer **Maken**.
 
-### <a name="configure-your-rest-api-technical-profile-to-use-the-bearer-token-policy-key"></a>Uw REST API-technisch profiel configureren om de beleidssleutel voor token aan toonder te gebruiken
+### <a name="configure-your-rest-api-technical-profile-to-use-the-bearer-token-policy-key"></a>Uw REST API technische profiel configureren voor het gebruik van de sleutel voor het Bearer-token beleid
 
-Nadat u de benodigde sleutel hebt gemaakt, configureert u de metagegevens van uw REST API-profiel om naar het token aan de drager te verwijzen.
+Nadat u de benodigde sleutel hebt gemaakt, moet u de meta gegevens van uw REST API technische profiel configureren om te verwijzen naar het Bearer-token.
 
-1. Open in uw werkmap het extensiebeleidsbestand (TrustFrameworkExtensions.xml).
-1. Zoek naar het technische profiel VAN de REST API. Bijvoorbeeld `REST-ValidateProfile`, `REST-GetProfile`of .
-1. Zoek `<Metadata>` het element.
-1. Wijzig het *AuthenticationType* in `Bearer`.
+1. Open in uw werkmap het extensie beleids bestand (TrustFrameworkExtensions. XML).
+1. Zoek het technische profiel van REST API. Bijvoorbeeld `REST-ValidateProfile`of `REST-GetProfile`.
+1. Zoek het `<Metadata>` element op.
+1. Wijzig de *AuthenticationType* in `Bearer`.
 1. Wijzig de *AllowInsecureAuthInProduction* in `false`.
-1. Voeg onmiddellijk `</Metadata>` na het slotelement het volgende XML-fragment toe:
+1. Voeg direct na het `</Metadata>` afsluitende element het volgende XML-fragment toe:
     ```xml
     <CryptographicKeys>
        <Key Id="BearerAuthenticationToken" StorageReferenceId="B2C_1A_RestApiBearerToken" />
     </CryptographicKeys>
     ```
 
-Het volgende is een voorbeeld van een RESTful technisch profiel geconfigureerd met verificatie van tokens aan toonder:
+Hier volgt een voor beeld van een onderliggend technisch profiel dat is geconfigureerd met Bearer-token authenticatie:
 
 ```xml
 <ClaimsProvider>
@@ -367,4 +367,4 @@ Het volgende is een voorbeeld van een RESTful technisch profiel geconfigureerd m
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Lees meer over het [restful technische profielelement](restful-technical-profile.md) in de IEF-referentie. 
+- Meer informatie over het element van het [rest technische profiel](restful-technical-profile.md) vindt u in de IEF-verwijzing. 

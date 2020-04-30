@@ -1,5 +1,5 @@
 ---
-title: Verbinding maken met Go - Azure Database voor MySQL
+title: Verbinding maken met behulp van Go-Azure Database for MySQL
 description: Deze snelstartgids bevat enkele voorbeelden van Go-code die u kunt gebruiken om verbinding te maken met en gegevens op te vragen uit een Azure-database voor MySQL.
 author: ajlam
 ms.author: andrela
@@ -9,10 +9,10 @@ ms.devlang: go
 ms.topic: quickstart
 ms.date: 3/18/2020
 ms.openlocfilehash: 3b9b18585aac4e31af05218ff732569912508ce9
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81681873"
 ---
 # <a name="azure-database-for-mysql-use-go-language-to-connect-and-query-data"></a>Azure-database voor MySQL: de taal Go gebruiken om verbinding te maken en gegevens op te vragen
@@ -60,7 +60,7 @@ Installeer [Go](https://golang.org/doc/install) en het [Go-SQL-stuurprogramma vo
    ```
 
 ### <a name="apple-macos"></a>Apple macOS
-1. Download en installeer Go volgens de [installatie-instructies](https://golang.org/doc/install) die overeenkomen met uw platform. 
+1. Down load en installeer go volgens de [installatie-instructies](https://golang.org/doc/install) die overeenkomen met uw platform. 
 2. Open de Bash-shell.
 3. Maak in de basismap een map voor uw project, bijvoorbeeld `mkdir -p ~/go/src/mysqlgo/`.
 4. Wijzig de map in de map, bijvoorbeeld `cd ~/go/src/mysqlgo/`.
@@ -78,7 +78,7 @@ Installeer [Go](https://golang.org/doc/install) en het [Go-SQL-stuurprogramma vo
 ## <a name="get-connection-information"></a>Verbindingsgegevens ophalen
 Haal de verbindingsgegevens op die nodig zijn om verbinding te maken met de Azure Database voor MySQL. U hebt de volledig gekwalificeerde servernaam en aanmeldingsreferenties nodig.
 
-1. Log in bij de [Azure-portal](https://portal.azure.com/).
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com/).
 2. Klik in het menu aan de linkerkant in Azure Portal op **Alle resources** en zoek naar de server die u hebt gemaakt (bijvoorbeeld **mydemoserver**).
 3. Klik op de servernaam.
 4. Ga naar het venster **Overzicht** van de server en noteer de **Servernaam** en de **Aanmeldingsnaam van de serverbeheerder**. Als u uw wachtwoord vergeet, kunt u het wachtwoord in dit venster opnieuw instellen.
@@ -86,7 +86,7 @@ Haal de verbindingsgegevens op die nodig zijn om verbinding te maken met de Azur
    
 
 ## <a name="build-and-run-go-code"></a>Go-code schrijven en uitvoeren 
-1. Als u Golang-code wilt schrijven, gebruikt u een eenvoudige teksteditor zoals Kladblok in Microsoft Windows, [vi](https://manpages.ubuntu.com/manpages/xenial/man1/nvi.1.html#contenttoc5) of [Nano](https://www.nano-editor.org/) in Ubuntu en TextEdit in macOS. Als u liever een rijkere interactieve ontwikkelingsomgeving (IDE), probeer [Gogland](https://www.jetbrains.com/go/) door Jetbrains, [Visual Studio Code](https://code.visualstudio.com/) door Microsoft, of [Atom](https://atom.io/).
+1. Als u Golang-code wilt schrijven, gebruikt u een eenvoudige teksteditor zoals Kladblok in Microsoft Windows, [vi](https://manpages.ubuntu.com/manpages/xenial/man1/nvi.1.html#contenttoc5) of [Nano](https://www.nano-editor.org/) in Ubuntu en TextEdit in macOS. Als u liever een uitgebreide, interactieve ontwikkel omgeving (IDE) hebt, kunt u [Gogland](https://www.jetbrains.com/go/) door JetBrains, [Visual Studio code](https://code.visualstudio.com/) van micro soft of [Atom](https://atom.io/)proberen.
 2. Plak de Go-code uit de secties hieronder in tekstbestanden en sla deze in de projectmap op met de bestandsextensie \*.go, bijvoorbeeld het pad `%USERPROFILE%\go\src\mysqlgo\createtable.go` (voor Windows) of het pad `~/go/src/mysqlgo/createtable.go` (voor Linux).
 3. Zoek de constanten `HOST`, `DATABASE`, `USER` en `PASSWORD` in de code en vervang de voorbeeldwaarden door uw eigen waarden. 
 4. Open de opdrachtprompt of de Bash-shell. Wijzig de map in de projectmap. Voorbeeld voor Windows: `cd %USERPROFILE%\go\src\mysqlgo\`. Voorbeeld voor Linux: `cd ~/go/src/mysqlgo/`.  Sommige van de vermelde IDE-editors bieden mogelijkheden voor foutopsporing en runtime zonder dat daarvoor shell-opdrachten zijn vereist.

@@ -1,6 +1,6 @@
 ---
-title: OpenROWSET gebruiken in SQL on-demand (voorbeeld)
-description: In dit artikel wordt de syntaxis van OPENROWSET in SQL on-demand (voorbeeld) beschreven en wordt uitgelegd hoe argumenten moeten worden gebruikt.
+title: OPENROWSET in SQL on demand gebruiken (preview)
+description: In dit artikel wordt de syntaxis van OPENROWSET in SQL op aanvraag (preview) beschreven en wordt uitgelegd hoe u argumenten gebruikt.
 services: synapse-analytics
 author: filippopovic
 ms.service: synapse-analytics
@@ -10,19 +10,19 @@ ms.date: 04/15/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
 ms.openlocfilehash: 6325d5555b01373b148dce69731ec64896d6e1fd
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81680495"
 ---
-# <a name="how-to-use-openrowset-with-sql-on-demand-preview"></a>OpenROWSET gebruiken met SQL on-demand (voorbeeld)
+# <a name="how-to-use-openrowset-with-sql-on-demand-preview"></a>OPENROWSET gebruiken met SQL op aanvraag (preview)
 
-Met de functie OPENROWSET(BULK...) hebt u toegang tot bestanden in Azure Storage. Binnen de SQL on-demand (preview)-bron wordt de bulkrijsetprovider OPENROWSET geopend door de functie OPENROWSET aan te roepen en de optie BULK op te geven.  
+Met de functie OPENROWSET (BULK...) kunt u toegang krijgen tot bestanden in Azure Storage. In de SQL on-demand-resource (preview) wordt de functie OPENROWSET bulksgewijze rijenset geopend door het aanroepen van OPENROWSET en het opgeven van de optie BULK.  
 
-De functie OPENROWSET kan in de VAN-component van een query worden verwezen alsof het een tabelnaam OPENROWSET is. Het ondersteunt bulkbewerkingen via een ingebouwde BULK-provider waarmee gegevens uit een bestand kunnen worden gelezen en geretourneerd als een rijset.
+U kunt in de component FROM van een query naar de functie OPENROWSET verwijzen, alsof het een OPENROWSET-rijen tabel naam is. Het ondersteunt bulk bewerkingen via een ingebouwde BULK provider waarmee gegevens uit een bestand kunnen worden gelezen en geretourneerd als een rijenset.
 
-OPENROWSET wordt momenteel niet ondersteund in SQL-groep.
+OPENROWSET wordt momenteel niet ondersteund in de SQL-groep.
 
 ## <a name="syntax"></a>Syntaxis
 
@@ -54,59 +54,59 @@ WITH ( {'column_name' 'column_type' [ 'column_ordinal'] })
 
 ## <a name="arguments"></a>Argumenten
 
-U hebt twee opties voor invoerbestanden die de doelgegevens bevatten voor query's. Geldige waarden zijn:
+U hebt twee opties voor invoer bestanden die de doel gegevens voor het uitvoeren van query's bevatten. Geldige waarden zijn:
 
-- 'CSV' - Bevat elk afgebakend tekstbestand met rij-/kolomscheidingstekens. Elk teken kan worden gebruikt als veldafscheider, zoals TSV: FIELDTERMINATOR = tab.
+- CSV-bevat een tekst bestand met scheidings tekens met scheidings tekens voor rijen en kolommen. Elk wille keurig teken kan worden gebruikt als een veld scheidings element, zoals TSV: FIELDTERMINATOR = tab.
 
-- 'PARQUET' - Binair bestand in Parketformaat 
+- ' PARQUET '-binair bestand in Parquet-indeling 
 
-**'unstructured_data_path'**
+**' unstructured_data_path '**
 
-De unstructured_data_path die een pad naar de gegevens vaststelt, is als volgt gestructureerd:  
-'\<voorvoegsel\<>://\<storage_account_path>/ storage_path>"
+De unstructured_data_path die een pad naar de gegevens tot stand brengt, is als volgt gestructureerd:  
+'\<voor voegsel>:/\</storage_account_path>\</storage_path> '
  
  
- Hieronder vindt u de relevante opslagaccountpaden die worden gekoppeld aan uw specifieke externe gegevensbron. 
+ Hieronder vindt u de relevante paden voor opslag accounts die worden gekoppeld aan uw specifieke externe gegevens bron. 
 
-| Externe gegevensbron       | Voorvoegsel | Pad met opslagaccount                                 |
+| Externe gegevens bron       | Voorvoegsel | Pad naar het opslag account                                 |
 | -------------------------- | ------ | ---------------------------------------------------- |
-| Azure Blob Storage         | https  | \<storage_account>.blob.core.windows.net             |
-| Azure Data Lake Store Gen1 | https  | \<storage_account>.azuredatalakestore.net/webhdfs/v1 |
-| Azure Data Lake Store Gen2 | https  | \<storage_account>.dfs.core.windows.net              |
+| Azure Blob Storage         | https  | \<storage_account>. blob.core.windows.net             |
+| Azure Data Lake Store gen1 | https  | \<storage_account>. azuredatalakestore.net/webhdfs/v1 |
+| Azure Data Lake Store Gen2 | https  | \<storage_account>. dfs.core.windows.net              |
 ||||
 
-'storage_path\<>'
+'\<storage_path> '
 
- Hiermee geeft u een pad op in uw opslag dat verwijst naar de map of het bestand dat u wilt lezen. Als het pad naar een container of map verwijst, worden alle bestanden uit die specifieke container of map gelezen. Bestanden in submappen worden niet opgenomen. 
+ Hiermee geeft u een pad in uw opslag op dat verwijst naar de map of het bestand dat u wilt lezen. Als het pad naar een container of map verwijst, worden alle bestanden gelezen van die specifieke container of map. Bestanden in submappen worden niet opgenomen. 
  
- U jokertekens gebruiken om meerdere bestanden of mappen te targeten. Het gebruik van meerdere niet-opeenvolgende wildcards is toegestaan.
-Hieronder is een voorbeeld dat alle *csv-bestanden* leest die beginnen met *de bevolking* uit alle mappen te beginnen met / csv */ bevolking:*  
+ U kunt joker tekens gebruiken om te richten op meerdere bestanden of mappen. Het gebruik van meerdere niet-opeenvolgende joker tekens is toegestaan.
+Hieronder ziet u een voor beeld waarin alle *CSV* -bestanden worden gelezen die beginnen met de *populatie* vanuit alle mappen vanaf */CSV/population*:  
 `https://sqlondemandstorage.blob.core.windows.net/csv/population*/population*.csv`
 
-Als u de unstructured_data_path als map opgeeft, haalt een SQL on-demand query bestanden uit die map op. 
+Als u opgeeft dat de unstructured_data_path een map is, haalt een SQL op aanvraag-query bestanden uit die map op. 
 
 > [!NOTE]
-> In tegenstelling tot Hadoop en PolyBase retourneert SQL on-demand geen submappen. In tegenstelling tot Hadoop en PloyBase retourneert SQL on-demand bestanden waarvoor de bestandsnaam begint met een onderstreping (_) of een periode (.).
+> In tegens telling tot Hadoop en poly base retour neren SQL on-demand geen submappen. In tegens telling tot Hadoop en PloyBase worden door SQL op aanvraag ook bestanden geretourneerd waarvoor de bestands naam begint met een onderstreping (_) of een punt (.).
 
-In het onderstaande voorbeeld,`https://mystorageaccount.dfs.core.windows.net/webdata/`als de unstructured_data_path= , een SQL on-demand query zal rijen terug van mydata.txt en _hidden.txt. Het zal mydata2.txt en mydata3.txt niet retourneren omdat ze zich in een submap bevinden.
+Als in het onderstaande voor beeld de unstructured_data_path =`https://mystorageaccount.dfs.core.windows.net/webdata/`is, retourneert een SQL op aanvraag-query rijen van mydata. txt en _hidden. txt. Het retourneert niet mydata2. txt en mydata3. txt, omdat ze zich in een submap bevinden.
 
 ![Recursieve gegevens voor externe tabellen](./media/develop-openrowset/folder-traversal.png)
 
 `[WITH ( {'column_name' 'column_type' [ 'column_ordinal'] }) ]`
 
-Met de WITH-component u kolommen opgeven die u uit bestanden wilt lezen.
+MET de WITH-component kunt u kolommen opgeven die u wilt lezen uit bestanden.
 
-- Als u voor CSV-gegevensbestanden alle kolommen wilt lezen, worden kolomnamen en hun gegevenstypen verstrekt. Als u een subset van kolommen wilt, gebruikt u ordinale getallen om de kolommen uit de oorspronkelijke gegevensbestanden te kiezen op ordinaal. Kolommen zullen worden gebonden door de ordinale aanwijzing. 
+- Als u wilt dat alle kolommen worden gelezen met CSV-gegevens bestanden, geeft u kolom namen en de bijbehorende gegevens typen op. Als u een subset met kolommen wilt, gebruikt u ordinale getallen om de kolommen uit de oorspronkelijke gegevens bestanden op rang telwoord te kiezen. Kolommen worden gebonden aan de rang nummer aanduiding. 
 
 > [!IMPORTANT]
-> De WITH-clausule is verplicht voor CSV-bestanden.
-- Geef voor parketgegevensbestanden kolomnamen op die overeenkomen met de kolomnamen in de oorspronkelijke gegevensbestanden. Kolommen zijn gebonden aan de naam. Als de WITH-clausule wordt weggelaten, worden alle kolommen uit parketbestanden geretourneerd.
+> De WITH-component is verplicht voor CSV-bestanden.
+- Geef voor Parquet-gegevens bestanden kolom namen op die overeenkomen met de kolom namen in de oorspronkelijke gegevens bestanden. Kolommen worden gebonden op naam. Als de WITH-component wordt wegge laten, worden alle kolommen uit Parquet-bestanden geretourneerd.
 
-column_name = Naam voor de uitvoerkolom. Indien aanwezig, overschrijft deze naam de kolomnaam in het bronbestand.
+column_name = naam voor de uitvoer kolom. Als u deze naam opgeeft, wordt de naam van de kolom in het bron bestand overschreven.
 
-column_type = Gegevenstype voor de uitvoerkolom. De impliciete conversie van het gegevenstype vindt hier plaats.
+column_type = gegevens type voor de uitvoer kolom. De impliciete gegevens type conversie wordt hier uitgevoerd.
 
-column_ordinal = Ordinaal nummer van de kolom in het bronbestand(en). Dit argument wordt genegeerd voor Parketbestanden, omdat binding op naam wordt gedaan. In het volgende voorbeeld wordt een tweede kolom alleen uit een CSV-bestand teruggegeven:
+column_ordinal = rang nummer van de kolom in de bron bestand (en). Dit argument wordt genegeerd voor Parquet-bestanden omdat de binding op naam is uitgevoerd. In het volgende voor beeld wordt een tweede kolom alleen geretourneerd vanuit een CSV-bestand:
 
 ```sql
 WITH (
@@ -119,31 +119,31 @@ WITH (
 
 **\<bulk_options>**
 
-FIELDTERMINATOR ='field_terminator'
+FIELDTERMINATOR = ' field_terminator '
 
-Hiermee geeft u de veldbegeindiger op die moet worden gebruikt. De standaardveldterminator is een komma **(" ,**").
+Geeft aan welk veld scheidings teken moet worden gebruikt. De standaard veld scheidings teken is een komma ('**,**').
 
-ROWTERMINATOR ='row_terminator''
+ROWTERMINATOR = ' row_terminator ' '
 
-Hiermee geeft u de rijbeg op die moet worden gebruikt. De standaardrijbegeindiger is een nieuwregelteken zoals \r\n.
+Geeft het rij-einde op dat moet worden gebruikt. Het standaard einde van de rij is een teken voor een nieuwe regel, zoals \r\n.
 
-ESCAPE_CHAR = 'char'
+ESCAPE_CHAR = ' char '
 
-Hiermee geeft u het teken op in het bestand dat wordt gebruikt om aan zichzelf en alle delimiterwaarden in het bestand te ontsnappen. Als het escape-teken wordt gevolgd door een andere waarde dan zichzelf, of een van de waardevan de scheidingsteken, wordt het escape-teken verwijderd bij het lezen van de waarde. 
+Hiermee geeft u het teken in het bestand dat wordt gebruikt om zichzelf te escapen en alle scheidings waarden in het bestand. Als het escape teken wordt gevolgd door een andere waarde dan zichzelf of een van de scheidings waarden, wordt het escape-teken verwijderd bij het lezen van de waarde. 
 
-De parameter ESCAPE_CHAR wordt toegepast, ongeacht of de FIELDQUOTE wel of niet is ingeschakeld. Het zal niet worden gebruikt om te ontsnappen aan het citeren karakter. Het quotende teken wordt ontsnapt met dubbele aanhalingstekens in overeenstemming met het excel CSV-gedrag.
+De para meter ESCAPE_CHAR wordt toegepast, ongeacht of de FIELDQUOTE is of niet is ingeschakeld. Het wordt niet gebruikt om het aanhalings teken te escapepen. Het aanhalings teken wordt met dubbele aanhalings tekens in uitlijning met het CSV-gedrag van Excel.
 
-EERSTE RIJ = 'first_row' 
+FIRSTROW = ' first_row ' 
 
-Hiermee geeft u het nummer op van de eerste rij die moet worden geladen. De standaardwaarde is 1. Dit geeft de eerste rij in het opgegeven gegevensbestand aan. De rijnummers worden bepaald door de rijterminators te tellen. FIRSTROW is 1-based.
+Hiermee geeft u het nummer op van de eerste rij die moet worden geladen. De standaardwaarde is 1. Hiermee wordt de eerste rij in het opgegeven gegevens bestand aangegeven. De rijnummers worden bepaald door de afsluitingen van de rij te tellen. FIRSTROW is op 1 gebaseerd.
 
-FIELDQUOTE = 'field_quote' 
+FIELDQUOTE = ' field_quote ' 
 
-Hiermee geeft u een teken op dat wordt gebruikt als het teken in het CSV-bestand. Indien dit niet is opgegeven, wordt het aanhalingsteken (") gebruikt. 
+Hiermee geeft u een teken op dat wordt gebruikt als aanhalings teken in het CSV-bestand. Als u niets opgeeft, wordt het aanhalings teken (") gebruikt. 
 
 ## <a name="examples"></a>Voorbeelden
 
-In het volgende voorbeeld worden slechts twee kolommen geretourneerd met ordinale nummers 1 en 4 uit de bestanden van populatie*.csv. Aangezien er geen koptekstrij in de bestanden is, begint het lezen van de eerste regel:
+In het volgende voor beeld worden slechts twee kolommen met ordinale getallen 1 en 4 uit de population*. CSV-bestanden geretourneerd. Omdat de bestanden geen veldnamenrij bevatten, begint het lezen van de eerste regel:
 
 ```sql
 /* make sure you have credentials for storage account access created
@@ -171,7 +171,7 @@ WITH (
 
 
 
-In het volgende voorbeeld worden alle kolommen van de eerste rij van de verzameling volkstellingsgegevens in parketindeling geretourneerd zonder kolomnamen en gegevenstypen op te geven: 
+In het volgende voor beeld worden alle kolommen van de eerste rij als resultaat gegeven uit de set met gegevens in de Parquet-indeling zonder kolom namen en gegevens typen: 
 
 ```sql
 /* make sure you have credentials for storage account access created
@@ -198,4 +198,4 @@ FROM
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Ga voor meer voorbeelden naar [snel starten](query-data-storage.md) of sla de resultaten van uw query op in Azure Storage met [CETAS](develop-tables-cetas.md).
+Ga voor meer voor beelden naar [Quick](query-data-storage.md) starts of sla de resultaten van uw query op Azure Storage met behulp van [CETAS](develop-tables-cetas.md).

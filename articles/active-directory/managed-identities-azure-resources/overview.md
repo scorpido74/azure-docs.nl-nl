@@ -16,13 +16,13 @@ ms.date: 04/18/2020
 ms.author: markvi
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 2231d70e6c4368a7c896f9063b58cc97ee292f53
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81682591"
 ---
-# <a name="what-are-managed-identities-for-azure-resources"></a>Wat zijn beheerde identiteiten voor Azure-bronnen?
+# <a name="what-are-managed-identities-for-azure-resources"></a>Wat zijn beheerde identiteiten voor Azure-resources?
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-msi-preview-notice.md)]
 
@@ -39,9 +39,9 @@ De functie Beheerde identiteiten voor Azure-resources is gratis bij een abonneme
 
 De volgende termen worden in de beheerde identiteiten gebruikt voor de documentatieset van Azure-resources:
 
-- **Client-id** - een unieke id die is gegenereerd door Azure AD en die tijdens de eerste inlevering is gekoppeld aan een toepassing en serviceprincipal.
+- **Client-id** : een unieke id die wordt gegenereerd door Azure AD en die is gekoppeld aan een toepassing en Service-Principal tijdens de eerste inrichting.
 - **Principal-id**: de object-id van het service-principal-object van uw beheerde identiteit. Deze wordt gebruikt om op basis van rollen toegang te verlenen tot een Azure-resource.
-- **IMDS (Azure Instance Metadata Service)** - een REST-eindpunt dat toegankelijk is voor alle IaaS VM's die zijn gemaakt via Azure Resource Manager. Het eindpunt is beschikbaar via een bekend, niet-routeerbaar IP-adres (169.254.169.254) dat alleen kan worden benaderd vanuit de virtuele machine.
+- **Azure instance metadata service (IMDS)** : een rest-eind punt dat toegankelijk is voor alle virtuele machines van IaaS die via de Azure Resource Manager zijn gemaakt. Het eindpunt is beschikbaar via een bekend, niet-routeerbaar IP-adres (169.254.169.254) dat alleen kan worden benaderd vanuit de virtuele machine.
 
 ## <a name="how-does-the-managed-identities-for-azure-resources-work"></a>Hoe werken beheerde identiteiten voor Azure-resources?
 
@@ -50,13 +50,13 @@ Er zijn twee typen beheerde identiteit:
 - Een **door het systeem toegewezen beheerde identiteit** wordt rechtstreeks op een Azure-service-exemplaar ingeschakeld. Wanneer de identiteit is ingeschakeld, wordt een identiteit voor het service-exemplaar in de Azure AD-tenant gemaakt, dat wordt vertrouwd door het abonnement van het service-exemplaar. Nadat de identiteit is gemaakt, worden de referenties op het exemplaar ingericht. De levenscyclus van een door het systeem toegewezen identiteit is rechtstreeks gekoppeld aan het Azure-service-exemplaar waarop de identiteit is ingeschakeld. Als het exemplaar wordt verwijderd, ruimt Azure automatisch de referenties en de identiteit in Azure AD op.
 - Een **door de gebruiker toegewezen beheerde identiteit** wordt gemaakt als een zelfstandige Azure-resource. Via een productieproces maakt Azure een identiteit in de Azure AD-tenant, die wordt vertrouwd door het gebruikte abonnement. Nadat de identiteit is gemaakt, kan deze worden toegewezen aan een of meer Azure-service-exemplaren. De levenscyclus van een door de gebruiker toegewezen identiteit wordt afzonderlijk beheerd van de levenscyclus van de Azure Service-exemplaren waaraan de identiteit is toegewezen.
 
-Intern zijn beheerde identiteiten serviceprincipals van een speciaal type, die zijn vergrendeld om alleen te worden gebruikt met Azure-resources. Wanneer de beheerde identiteit wordt verwijderd, wordt de bijbehorende serviceprincipal automatisch verwijderd.
-Wanneer een door de gebruiker toegewezen of systeemtoegewezen identiteit wordt gemaakt, geeft de Managed Identity Resource Provider (MSRP) een certificaat intern af aan die identiteit. 
+Interne beheerde identiteiten zijn service-principals van een speciaal type, die zijn vergrendeld om alleen te worden gebruikt met Azure-resources. Wanneer de beheerde identiteit wordt verwijderd, wordt de bijbehorende service-principal automatisch verwijderd.
+Wanneer er een door de gebruiker toegewezen of door het systeem toegewezen identiteit wordt gemaakt, geeft de beheerde ID-Resource provider (MSRP) een certificaat intern door aan die identiteit. 
 
 De code kan gebruikmaken van een beheerde identiteit om toegangstokens aan te vragen voor services die ondersteuning bieden voor Azure AD-verificatie. Azure zorgt voor het implementeren van de referenties die worden gebruikt door het service-exemplaar. 
 
-## <a name="credential-rotation"></a>Referentierotatie
-De rotatie van referenties wordt beheerd door de resourceprovider die de Azure-bron host. De standaardrotatie van de referentie vindt elke 46 dagen plaats. Het is aan de resourceprovider om nieuwe referenties op te vragen, zodat de resourceprovider langer dan 46 dagen kan wachten.
+## <a name="credential-rotation"></a>Referentie rotatie
+De verwijzings rotatie wordt bepaald door de resource provider die als host fungeert voor de Azure-resource. De standaard rotatie van de referentie vindt elke 46 dagen plaats. Het is de resource provider om nieuwe referenties aan te roepen, zodat de resource provider langer dan 46 dagen kan wachten.
 
 In het volgende diagram ziet u hoe beheerde service-identiteiten samenwerken met virtuele machines (VM's) van Azure:
 
@@ -64,10 +64,10 @@ In het volgende diagram ziet u hoe beheerde service-identiteiten samenwerken met
 
 |  Eigenschap    | Door het systeem toegewezen beheerde identiteit | Door een gebruiker toegewezen beheerde identiteit |
 |------|----------------------------------|--------------------------------|
-| Maken |  Gemaakt als onderdeel van een Azure-bron (bijvoorbeeld een Azure-virtuele machine of Azure App Service) | Gemaakt als een zelfstandige Azure-bron |
-| Levenscyclus | Gedeelde levenscyclus met de Azure-bron waarmee de beheerde identiteit is gemaakt. <br/> Wanneer de bovenliggende bron wordt verwijderd, wordt de beheerde identiteit ook verwijderd. | Onafhankelijke levenscyclus. <br/> Moet expliciet worden verwijderd. |
-| Delen tussen Azure-bronnen | Kan niet gedeeld worden. <br/> Het kan alleen worden gekoppeld aan één Azure-bron. | Kan worden gedeeld <br/> Dezelfde door de gebruiker toegewezen beheerde identiteit kan worden gekoppeld aan meer dan één Azure-bron. |
-| Algemene scenario’s | Workloads die zich in één Azure-bron bevinden <br/> Workloads waarvoor je onafhankelijke identiteiten nodig hebt. <br/> Een toepassing die bijvoorbeeld op één virtuele machine wordt uitgevoerd | Workloads die op meerdere resources worden uitgevoerd en die één identiteit kunnen delen. <br/> Workloads die vooraf moeten worden autorisatie voor een beveiligde resource als onderdeel van een inrichtingsstroom. <br/> Workloads waarbij resources vaak worden gerecycled, maar machtigingen moeten consistent blijven. <br/> Bijvoorbeeld een werkbelasting waarbij meerdere virtuele machines toegang moeten krijgen tot dezelfde resource |
+| Maken |  Gemaakt als onderdeel van een Azure-resource (bijvoorbeeld een virtuele machine van Azure of Azure App Service) | Gemaakt als een zelfstandige Azure-resource |
+| Levenscyclus | Gedeelde levens cyclus met de Azure-resource waarmee de beheerde identiteit wordt gemaakt. <br/> Wanneer de bovenliggende resource wordt verwijderd, wordt ook de beheerde identiteit verwijderd. | Onafhankelijke levens cyclus. <br/> Moet expliciet worden verwijderd. |
+| Delen tussen Azure-resources | Kan niet worden gedeeld. <br/> Deze kan alleen worden gekoppeld aan één Azure-resource. | Kan worden gedeeld <br/> Dezelfde door de gebruiker toegewezen beheerde identiteit kan worden gekoppeld aan meer dan één Azure-resource. |
+| Algemene scenario’s | Werk belastingen die zijn opgenomen in één Azure-resource <br/> Werk belastingen waarvoor u onafhankelijke identiteiten nodig hebt. <br/> Bijvoorbeeld een toepassing die op één virtuele machine wordt uitgevoerd | Workloads die worden uitgevoerd op meerdere resources en die één identiteit kunnen delen. <br/> Workloads waarvoor vooraf autorisatie is vereist voor een beveiligde bron als onderdeel van een inrichtings stroom. <br/> Werk belastingen waarbij resources regel matig worden gerecycled, maar de machtigingen moeten consistent blijven. <br/> Bijvoorbeeld een werk belasting waarbij meerdere virtuele machines toegang moeten hebben tot dezelfde resource |
 
 ### <a name="how-a-system-assigned-managed-identity-works-with-an-azure-vm"></a>Hoe een door het systeem toegewezen beheerde identiteit samenwerkt met een Azure-VM
 
@@ -75,11 +75,11 @@ In het volgende diagram ziet u hoe beheerde service-identiteiten samenwerken met
 
 2. Azure Resource Manager maakt een service-principal in Azure AD voor de identiteit van de VM. De service-principal wordt gemaakt in de Azure AD-tenant die wordt vertrouwd door het abonnement.
 
-3. Azure Resource Manager configureert de identiteit van de VM door het identiteitseindpunt van de Azure Instance Metadata Service bij te werken met de serviceprincipalclient-id en het certificaat.
+3. Azure Resource Manager configureert de identiteit op de virtuele machine door het Azure Instance Metadata Service Identity-eind punt bij te werken met de client-ID en het certificaat van de Service-Principal.
 
 4. Als de VM een identiteit heeft, gebruikt u de informatie van de service-principal om de VM toegang te verlenen tot Azure-resources. Voor het aanroepen van Azure Resource Manager gebruikt u op rollen gebaseerd toegangsbeheer (RBAC) in Azure AD om de juiste rol aan de VM-service-principal toe te wijzen. Als u Key Vault wilt aanroepen, geeft u de code toegang tot het specifieke geheim of de specifieke sleutel in Key Vault.
 
-5. Uw code die op de VM wordt uitgevoerd, kan een token aanvragen bij het eindpunt van de Azure Instance Metadata-service, dat alleen toegankelijk is vanuit de VM:`http://169.254.169.254/metadata/identity/oauth2/token`
+5. Uw code die op de virtuele machine wordt uitgevoerd, kan een token aanvragen bij het Azure instance meta data service-eind punt dat alleen toegankelijk is vanuit de VM:`http://169.254.169.254/metadata/identity/oauth2/token`
     - De resourceparameter geeft de service op waarnaar het token wordt verzonden. Gebruik `resource=https://management.azure.com/` om bij Azure Resource Manager te verificatie uit te voeren.
     - De API-versieparameter specificeert de IMDS-versie, gebruik api-version=2018-02-01 of hoger.
 
@@ -93,14 +93,14 @@ In het volgende diagram ziet u hoe beheerde service-identiteiten samenwerken met
 
 2. Azure Resource Manager maakt een service-principal in Azure AD voor de door de gebruiker toegewezen beheerde identiteit. De service-principal wordt gemaakt in de Azure AD-tenant die wordt vertrouwd door het abonnement.
 
-3. Azure Resource Manager ontvangt een verzoek om de door de gebruiker toegewezen beheerde identiteit op een vm te configureren en het endpoint van de Azure Instance Metadata Service-identiteit bij te werken met de door de gebruiker toegewezen hoofdclient-id en -certificaat met beheerde identiteitsservice.
+3. Azure Resource Manager ontvangt een aanvraag om de door de gebruiker toegewezen beheerde identiteit op een virtuele machine te configureren en werkt het Azure Instance Metadata Service Identity-eind punt bij met de door de gebruiker toegewezen beheerde ID-client-ID en het certificaat van de Service-Principal.
 
 4. Nadat de door de gebruiker toegewezen beheerde identiteit is gemaakt, gebruikt u de informatie van de service-principal om de identiteit toegang te verlenen tot Azure-resources. Voor het aanroepen van Azure Resource Manager gebruikt u RBAC in Azure AD om de juiste rol aan de service-principal van de door de gebruiker toegewezen identiteit toe te wijzen. Als u Key Vault wilt aanroepen, geeft u de code toegang tot het specifieke geheim of de specifieke sleutel in Key Vault.
 
    > [!Note]
    > U kunt deze stap ook vóór stap 3 uitvoeren.
 
-5. Uw code die op de VM wordt uitgevoerd, kan een token aanvragen bij het identiteitseindpunt van de Azure Instance Metadata Service, die alleen toegankelijk is vanuit de VM:`http://169.254.169.254/metadata/identity/oauth2/token`
+5. Uw code die op de virtuele machine wordt uitgevoerd, kan een token aanvragen bij het Azure Instance Metadata Service Identity-eind punt dat alleen toegankelijk is vanuit de VM:`http://169.254.169.254/metadata/identity/oauth2/token`
     - De resourceparameter geeft de service op waarnaar het token wordt verzonden. Gebruik `resource=https://management.azure.com/` om bij Azure Resource Manager te verificatie uit te voeren.
     - De client-id-parameter bevat de identiteit waarvoor het token wordt aangevraagd. Deze waarde is vereist om ambiguïteit op te heffen wanneer meer dan een door de gebruiker toegewezen identiteit aanwezig is op één VM.
     - De parameter voor de API-versie geeft de versie van Azure Instance Metadata Service op. Gebruik `api-version=2018-02-01` of hoger.

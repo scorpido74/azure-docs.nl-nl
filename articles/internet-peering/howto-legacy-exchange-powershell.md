@@ -1,7 +1,7 @@
 ---
-title: Een verouderde Exchange-peering converteren naar een Azure-bron met PowerShell
+title: Een verouderde Exchange-peering converteren naar een Azure-resource met behulp van Power shell
 titleSuffix: Azure
-description: Een verouderde Exchange-peering converteren naar een Azure-bron met PowerShell
+description: Een verouderde Exchange-peering converteren naar een Azure-resource met behulp van Power shell
 services: internet-peering
 author: prmitiki
 ms.service: internet-peering
@@ -9,38 +9,38 @@ ms.topic: article
 ms.date: 11/27/2019
 ms.author: prmitiki
 ms.openlocfilehash: eedf87548d62e05d4940911ed3dcd821077acb27
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81686781"
 ---
-# <a name="convert-a-legacy-exchange-peering-to-an-azure-resource-by-using-powershell"></a>Een verouderde Exchange-peering converteren naar een Azure-bron met PowerShell
+# <a name="convert-a-legacy-exchange-peering-to-an-azure-resource-by-using-powershell"></a>Een verouderde Exchange-peering converteren naar een Azure-resource met behulp van Power shell
 
-In dit artikel wordt beschreven hoe u een bestaande verouderde Exchange-peering converteert naar een Azure-bron met PowerShell-cmdlets.
+In dit artikel wordt beschreven hoe u een bestaande verouderde Exchange-peering converteert naar een Azure-resource met behulp van Power shell-cmdlets.
 
-Als u dat liever hebt, u deze handleiding voltooien met behulp van de [Azure-portal.](howto-legacy-exchange-portal.md)
+Als u wilt, kunt u deze hand leiding volt ooien met behulp van Azure [Portal](howto-legacy-exchange-portal.md).
 
 ## <a name="before-you-begin"></a>Voordat u begint
-* Bekijk de [vereisten](prerequisites.md) en de [Exchange-peering-walkthrough](walkthrough-exchange-all.md) voordat u met de configuratie begint.
+* Controleer de [vereisten](prerequisites.md) en de [Exchange peering-walkthrough](walkthrough-exchange-all.md) voordat u begint met de configuratie.
 
 ### <a name="work-with-azure-powershell"></a>Werken met Azure PowerShell
 [!INCLUDE [CloudShell](./includes/cloudshell-powershell-about.md)]
 
-## <a name="convert-a-legacy-exchange-peering-to-an-azure-resource"></a>Een verouderde Exchange-peering converteren naar een Azure-bron
+## <a name="convert-a-legacy-exchange-peering-to-an-azure-resource"></a>Een verouderde Exchange-peering converteren naar een Azure-resource
 
 ### <a name="sign-in-to-your-azure-account-and-select-your-subscription"></a>Meld u aan bij uw Azure-account en selecteer uw abonnement
 [!INCLUDE [Account](./includes/account-powershell.md)]
 
-### <a name="get-legacy-exchange-peering-for-conversion"></a><a name= get></a>Ontvang legacy Exchange-peering voor conversie
-In dit voorbeeld ziet u hoe u legacy Exchange-peering krijgen op de locatie voor peering in Seattle:
+### <a name="get-legacy-exchange-peering-for-conversion"></a><a name= get></a>Oudere uitwisselings peering voor conversie ophalen
+In dit voor beeld ziet u hoe u verouderde uitwisseling van Exchange kunt verkrijgen op de locatie in Seattle peering:
 
 ```powershell
 $legacyPeering = Get-AzLegacyPeering -Kind Exchange -PeeringLocation "Seattle"
 $legacyPeering
 ```
 
-Het antwoord lijkt op het volgende voorbeeld:
+Het antwoord ziet er ongeveer uit als in het volgende voor beeld:
 ```powershell
     Kind                     : Exchange
     PeeringLocation          : Seattle
@@ -57,8 +57,8 @@ Het antwoord lijkt op het volgende voorbeeld:
     ConnectionState          : Active
 ```
 
-### <a name="convert-legacy-peering"></a>Legacy peering converteren
-Deze opdracht kan worden gebruikt om verouderde Exchange-peering om te zetten naar een Azure-bron:
+### <a name="convert-legacy-peering"></a>Verouderde peering converteren
+Deze opdracht kan worden gebruikt om verouderde uitwisseling van Exchange naar een Azure-resource te converteren:
 
 ```powershell
 $legacyPeering[0] | New-AzPeering `
@@ -69,10 +69,10 @@ $legacyPeering[0] | New-AzPeering `
 
 &nbsp;
 > [!IMPORTANT] 
-> Wanneer u legacy-peering converteert naar een Azure-bron, worden wijzigingen niet ondersteund.
+> Wanneer u verouderde peering converteert naar een Azure-resource, worden wijzigingen niet ondersteund.
 &nbsp;
 
-In dit voorbeeldwordt weergegeven wanneer de end-to-end provisioning is voltooid:
+In dit voor beeld wordt weer gegeven wanneer de end-to-end-inrichting is voltooid:
 
 ```powershell
     Name                     : SeattleExchangePeering
@@ -92,13 +92,13 @@ In dit voorbeeldwordt weergegeven wanneer de end-to-end provisioning is voltooid
     ConnectionState          : Active
 ```
 ## <a name="additional-resources"></a>Aanvullende bronnen
-U gedetailleerde beschrijvingen van alle parameters krijgen door de volgende opdracht uit te voeren:
+U kunt gedetailleerde beschrijvingen van alle para meters verkrijgen door de volgende opdracht uit te voeren:
 
 ```powershell
 Get-Help Get-AzPeering -detailed
 ```
-Zie [veelgestelde vragen over internetpeering voor](faqs.md)meer informatie.
+Zie [Veelgestelde vragen over Internet peering](faqs.md)voor meer informatie.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Een Exchange-peering maken of wijzigen met PowerShell](howto-exchange-powershell.md)
+* [Een Exchange-peering maken of wijzigen met behulp van Power shell](howto-exchange-powershell.md)

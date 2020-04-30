@@ -1,6 +1,6 @@
 ---
-title: Over Azure Key Vault-geheimen - Azure Key Vault
-description: Overzicht van azure key vault rest-interface en details van ontwikkelaars voor geheimen.
+title: Over Azure Key Vault geheimen-Azure Key Vault
+description: Overzicht van Azure Key Vault REST interface en Details voor ontwikkel aars voor geheimen.
 services: key-vault
 author: msmbaldwin
 manager: rkarlin
@@ -11,99 +11,99 @@ ms.topic: overview
 ms.date: 09/04/2019
 ms.author: mbaldwin
 ms.openlocfilehash: eabfa03aa70f54a967fe256f694ef59ad0fe7ebe
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81685441"
 ---
-# <a name="about-azure-key-vault-secrets"></a>Over Azure Key Vault-geheimen
+# <a name="about-azure-key-vault-secrets"></a>Over Azure Key Vault geheimen
 
-Key Vault biedt veilige opslag van geheimen, zoals wachtwoorden en databaseverbindingstekenreeksen.
+Key Vault biedt beveiligde opslag van geheimen, zoals wacht woorden en database verbindings reeksen.
 
-Vanuit het perspectief van een ontwikkelaar accepteren en retourneren Key Vault API's geheime waarden als tekenreeksen. Intern slaat Key Vault geheimen op en beheert deze als sequenties van octetten (8-bits bytes), met een maximale grootte van 25k bytes per stuk. De Key Vault-service biedt geen semantiek voor geheimen. Het accepteert alleen de gegevens, versleutelt deze, slaat deze op en retourneert een geheime id ('id'). De id kan worden gebruikt om het geheim op een later tijdstip op te halen.  
+Vanuit het oogpunt van een ontwikkelaar Key Vault Api's accepteren en geheime waarden retour neren als teken reeksen. Intern worden geheimen door Key Vault opgeslagen en beheerd als reeksen van octetten (8-bits bytes), met een maximale grootte van 25k bytes. De Key Vault-service biedt geen semantiek voor geheimen. Alleen de gegevens worden geaccepteerd, versleuteld, opgeslagen en een geheime id (' id ') wordt geretourneerd. De id kan worden gebruikt om het geheim op een later tijdstip op te halen.  
 
 In het geval van zeer gevoelige gegevens is het raadzaam dat klanten extra beveiligingslagen overwegen. Dit kan bijvoorbeeld door het versleutelen van gegevens met behulp van een afzonderlijke beveiligingssleutel vóór de opslag in Key Vault.  
 
-Key Vault ondersteunt ook een contentType-veld voor geheimen. Clients kunnen het inhoudstype van een geheim opgeven om te helpen bij het interpreteren van de geheime gegevens wanneer deze worden opgehaald. De maximale lengte van dit veld is 255 tekens. Er zijn geen vooraf gedefinieerde waarden. Het voorgestelde gebruik is als een hint voor het interpreteren van de geheime gegevens. Een implementatie kan bijvoorbeeld zowel wachtwoorden als certificaten opslaan als geheimen en dit veld vervolgens gebruiken om te differentiëren. Er zijn geen vooraf gedefinieerde waarden.  
+Key Vault biedt ook ondersteuning voor een veld Content type voor geheimen. Clients kunnen het inhouds type van een geheim opgeven om te helpen bij het interpreteren van de geheime gegevens wanneer deze worden opgehaald. De maximale lengte van dit veld is 255 tekens. Er zijn geen vooraf gedefinieerde waarden. Het voorgestelde gebruik is als hint voor het interpreteren van de geheime gegevens. Een implementatie kan bijvoorbeeld beide wacht woorden en certificaten opslaan als geheimen en vervolgens dit veld gebruiken om onderscheid te maken. Er zijn geen vooraf gedefinieerde waarden.  
 
 ## <a name="secret-attributes"></a>Geheime kenmerken
 
 Naast de geheime gegevens kunnen de volgende kenmerken worden opgegeven:  
 
-- *exp*: IntDate, optioneel, standaard is **voor altijd**. Het *kenmerk exp* (vervaldatum) identificeert de vervaldatum op of waarna de geheime gegevens NIET mogen worden opgehaald, behalve in bepaalde [situaties](#date-time-controlled-operations). Dit veld is alleen voor **informatieve** doeleinden omdat het gebruikers van de sleutelkluisservice informeert dat een bepaald geheim niet mag worden gebruikt. De waarde moet een getal zijn dat een IntDate-waarde bevat.   
-- *nbf*: IntDate, optioneel, standaard is **nu**. Het *nbf* (niet eerder) attribuut identificeert de tijd vóór die de geheime gegevens niet mogen worden opgehaald, behalve in [bepaalde situaties](#date-time-controlled-operations). Dit veld is alleen voor **informatieve** doeleinden. De waarde moet een getal zijn dat een IntDate-waarde bevat. 
-- *ingeschakeld*: booleaan, optioneel, standaard is **waar**. Dit kenmerk geeft aan of de geheime gegevens kunnen worden opgehaald. Het ingeschakelde attribuut wordt gebruikt in combinatie met *nbf* en *exp* wanneer een bewerking plaatsvindt tussen *nbf* en *exp,* het zal alleen worden toegestaan als ingeschakeld is ingesteld op **true**. Bewerkingen buiten het *nbf-* en *exp-venster* worden automatisch geweigerd, behalve in [bepaalde situaties](#date-time-controlled-operations).  
+- *exp*: IntDate, optioneel, standaard waarde is **permanent**. Met het kenmerk *exp* (verval tijd) geeft u de verval tijd op of waarna de geheime gegevens niet moeten worden opgehaald, behalve in [bepaalde situaties](#date-time-controlled-operations). Dit veld is alleen ter **informatie** bedoeld omdat gebruikers van de sleutel kluis service informeert dat een bepaald geheim niet mag worden gebruikt. De waarde moet een getal zijn dat een IntDate-waarde bevat.   
+- *NBF*: IntDate, optioneel, standaard is **nu**. Het kenmerk *NBF* (niet voor voor) geeft aan hoe lang de geheime gegevens niet moeten worden opgehaald, behalve in het [geval van bepaalde situaties](#date-time-controlled-operations). Dit veld is alleen ter **informatie** bedoeld. De waarde moet een getal zijn dat een IntDate-waarde bevat. 
+- *ingeschakeld*: Boole, optioneel, standaard waarde is **True**. Dit kenmerk geeft aan of de geheime gegevens kunnen worden opgehaald. Het kenmerk enabled wordt gebruikt in combi natie met *NBF* en *exp* wanneer een bewerking plaatsvindt tussen *NBF* en *exp*, maar is alleen toegestaan als ingeschakeld is ingesteld op **waar**. Bewerkingen buiten het venster *NBF* en *exp* worden automatisch niet toegestaan, behalve in [bepaalde situaties](#date-time-controlled-operations).  
 
-Er zijn extra alleen-lezen kenmerken die zijn opgenomen in een reactie die geheime kenmerken bevat:  
+Er zijn aanvullende alleen-lezen kenmerken die zijn opgenomen in een antwoord dat geheime kenmerken bevat:  
 
-- *gemaakt*: IntDate, optioneel. Het gemaakte kenmerk geeft aan wanneer deze versie van het geheim is gemaakt. Deze waarde is null voor geheimen die zijn gemaakt vóór de toevoeging van dit kenmerk. De waarde moet een getal zijn dat een IntDate-waarde bevat.  
-- *bijgewerkt*: IntDate, optioneel. Het bijgewerkte kenmerk geeft aan wanneer deze versie van het geheim is bijgewerkt. Deze waarde is null voor geheimen die voor het laatst zijn bijgewerkt voordat dit kenmerk werd toegegeven. De waarde moet een getal zijn dat een IntDate-waarde bevat.
+- *gemaakt*: IntDate, optioneel. Het kenmerk gemaakt geeft aan wanneer deze versie van het geheim is gemaakt. Deze waarde is null voor geheimen die zijn gemaakt vóór het toevoegen van dit kenmerk. De waarde moet een getal zijn dat een IntDate-waarde bevat.  
+- *bijgewerkt*: IntDate, optioneel. Het kenmerk bijgewerkt geeft aan wanneer deze versie van het geheim is bijgewerkt. Deze waarde is null voor geheimen die voor het laatst zijn bijgewerkt vóór het toevoegen van dit kenmerk. De waarde moet een getal zijn dat een IntDate-waarde bevat.
 
-### <a name="date-time-controlled-operations"></a>Datumgecontroleerde bewerkingen
+### <a name="date-time-controlled-operations"></a>Datum-en tijd beheer bewerkingen
 
-Een geheim **te krijgen** operatie zal werken voor niet-nog-geldig en verlopen geheimen, buiten de *nbf* / *exp* venster. Het aanroepen van een **geheim's krijgen** operatie, voor een nog niet-geldig geheim, kan worden gebruikt voor testdoeleinden. Ophalen **(get**ting) een verlopen geheim, kan worden gebruikt voor herstelbewerkingen.
+De **Get** -bewerking van een geheim werkt voor niet-geldige en verlopen geheimen, buiten het venster *NBF* / *exp* . Het aanroepen van de **Get** -bewerking van een geheim voor een niet-geldig geheim, kan worden gebruikt voor test doeleinden. Het**ophalen (** afmaken) van een verlopen geheim dat kan worden gebruikt voor herstel bewerkingen.
 
 ## <a name="secret-access-control"></a>Toegangsbeheer voor geheimen
 
-Toegangscontrole voor geheimen die worden beheerd in Key Vault, wordt geleverd op het niveau van de Key Vault dat deze geheimen bevat. Het toegangscontrolebeleid voor geheimen onderscheidt zich van het toegangscontrolebeleid voor sleutels in dezelfde Key Vault. Gebruikers kunnen een of meer kluizen maken om geheimen te bewaren en zijn verplicht om scenario's te onderhouden die geschikt zijn voor segmentatie en beheer van geheimen.   
+Access Control voor geheimen die worden beheerd in Key Vault, wordt op het niveau van de Key Vault die deze geheimen bevat, vermeld. Het toegangs beheer beleid voor geheimen verschilt van het toegangs beheer beleid voor sleutels in dezelfde Key Vault. Gebruikers kunnen een of meer kluizen maken om geheimen te bewaren en zijn vereist voor het bijhouden van de juiste segmentatie en het beheer van geheimen.   
 
-De volgende machtigingen kunnen per hoofd worden gebruikt in de toegang tot de toegangscontrole op een kluis en de toegestane bewerkingen op een geheim object nauwkeurig weerspiegelen:  
+De volgende machtigingen kunnen per principal worden gebruikt, in de toegangscontrole vermelding geheimen in een kluis en de bewerkingen die zijn toegestaan voor een geheim object, nauw keurig spie gelen:  
 
-- Machtigingen voor geheime beheerbewerkingen
-  - *get*: Lees een geheim  
-  - *lijst:* Vermeld de geheimen of versies van een geheim dat is opgeslagen in een Key Vault  
-  - *set:* Een geheim maken  
-  - *verwijderen:* Een geheim verwijderen  
-  - *herstellen*: Een verwijderd geheim herstellen
-  - *back-up:* Maak een back-up van een geheim in een sleutelkluis
-  - *herstellen:* Een back-up geheim herstellen naar een sleutelkluis
+- Machtigingen voor geheime beheer bewerkingen
+  - *ophalen*: een geheim lezen  
+  - *lijst*: vermeld de geheimen of versies van een geheim dat is opgeslagen in een Key Vault  
+  - *instellen*: een geheim maken  
+  - *verwijderen*: een geheim verwijderen  
+  - *herstellen*: een verwijderd geheim herstellen
+  - *Backup*: een back-up maken van een geheim in een sleutel kluis
+  - *herstellen*: een back-up van een geheim naar een sleutel kluis herstellen
 
-- Machtigingen voor bevoorrechte bewerkingen
-  - *zuivering*: Purge (permanent verwijderen) een verwijderd geheim
+- Machtigingen voor bevoegde bewerkingen
+  - *opschonen*: leegmaken (permanent verwijderen) een verwijderd geheim
 
-Zie [Geheime bewerkingen in de Key Vault REST API-referentie](/rest/api/keyvault)voor meer informatie over het werken met geheimen. Zie [Kluizen - Gewaarmaak of Update](/rest/api/keyvault/vaults/createorupdate) en [Kluizen - Toegangsbeleid bijwerken](/rest/api/keyvault/vaults/updateaccesspolicy)voor informatie over het instellen van machtigingen. 
+Zie voor meer informatie over het werken met geheimen [geheime bewerkingen in de naslag informatie over Key Vault rest API](/rest/api/keyvault). Zie voor meer informatie over het instellen van machtigingen [-kluizen-maken of bijwerken](/rest/api/keyvault/vaults/createorupdate) en [kluizen-toegangs beleid bijwerken](/rest/api/keyvault/vaults/updateaccesspolicy). 
 
-## <a name="secret-tags"></a>Geheime tags  
-U aanvullende toepassingsspecifieke metagegevens opgeven in de vorm van tags. Key Vault ondersteunt maximaal 15 tags, die elk een naam van 256 tekens en een tekenwaarde van 256 kunnen hebben.  
+## <a name="secret-tags"></a>Geheime Tags  
+U kunt aanvullende toepassingsspecifieke meta gegevens opgeven in de vorm van tags. Key Vault ondersteunt Maxi maal 15 Tags, die elk een 256-teken naam en een 256-teken waarde kunnen bevatten.  
 
 >[!Note]
->Tags zijn leesbaar door een beller als ze de *lijst* hebben of toestemming *krijgen.*
+>Labels kunnen worden gelezen door een beller als ze de machtiging *lijst* of *ophalen* hebben.
 
-## <a name="azure-storage-account-key-management"></a>Beheer van azure Storage-accountsleutels
+## <a name="azure-storage-account-key-management"></a>Sleutel beheer van Azure Storage account
 
-Key Vault kan Azure-opslagaccountsleutels beheren:
+Key Vault kunt sleutels van Azure Storage-account beheren:
 
-- Intern kan Key Vault sleutels (synchronisatie) weergeven met een Azure-opslagaccount. 
-- Key Vault regenereert (roteert) de toetsen periodiek.
-- Belangrijke waarden worden nooit geretourneerd in reactie op de beller.
-- Key Vault beheert sleutels van zowel opslagaccounts als klassieke opslagaccounts.
+- Intern kunnen Key Vault een lijst met sleutels (Sync) met een Azure-opslag account. 
+- Key Vault de sleutels regel matig opnieuw genereren (roteert).
+- Sleutel waarden worden nooit geretourneerd als antwoord op de aanroeper.
+- Key Vault beheert sleutels van zowel opslag accounts als klassieke opslag accounts.
 
-Zie [Azure Key Vault Storage Account Keys](../secrets/overview-storage-keys.md)voor meer informatie)
+Zie Azure Key Vault-Storage- [account sleutels](../secrets/overview-storage-keys.md)) voor meer informatie.
 
-## <a name="storage-account-access-control"></a>Toegangsbeheer voor opslagaccount
+## <a name="storage-account-access-control"></a>Toegangs beheer voor opslag accounts
 
-De volgende machtigingen kunnen worden gebruikt wanneer een gebruiker of toepassingsprincipal toestemming wordt gegeven om bewerkingen uit te voeren op een beheerde opslagaccount:  
+De volgende machtigingen kunnen worden gebruikt voor het autoriseren van een gebruiker of toepassings-principal voor het uitvoeren van bewerkingen op een beheerd opslag account:  
 
-- Machtigingen voor beheerde opslagaccount en SaS-definitiebewerkingen
-  - *get:* Krijgt informatie over een opslagaccount 
-  - *lijst:* Opslagaccounts aanbieden die worden beheerd door een sleutelkluis
-  - *update*: Een opslagaccount bijwerken
-  - *verwijderen:* een opslagaccount verwijderen  
-  - *herstellen*: Een verwijderd opslagaccount herstellen
-  - *back-up:* een back-up maken van een opslagaccount
-  - *herstellen:* een back-upopslagaccount herstellen naar een Key Vault
-  - *instellen:* een opslagaccount maken of bijwerken
-  - *regenererende sleutel*: Een opgegeven sleutelwaarde voor een opslagaccount regenereren
-  - *getsas*: Informatie over een SAS-definitie voor een opslagaccount
-  - *listsas*: Lijst opslag SAS definities voor een opslagaccount
-  - *deletesas*: Een SAS-definitie verwijderen uit een opslagaccount
-  - *sets:* een nieuwe SAS-definitie/-kenmerken maken of bijwerken voor een opslagaccount
+- Machtigingen voor beheerde opslag accounts en SaS-definitie bewerkingen
+  - *ophalen*: Hiermee wordt informatie over een opslag account opgehaald 
+  - *lijst*: opslag accounts weer geven die worden beheerd door een Key Vault
+  - *bijwerken*: een opslag account bijwerken
+  - *verwijderen*: een opslag account verwijderen  
+  - *herstellen*: een verwijderd opslag account herstellen
+  - *back-up*: back-up maken van een opslag account
+  - *herstellen*: een back-up van een opslag account terugzetten naar een Key Vault
+  - *instellen*: een opslag account maken of bijwerken
+  - *regeneratekey*: een opgegeven sleutel waarde voor een opslag account opnieuw genereren
+  - *getsas*: informatie over een SAS-definitie voor een opslag account ophalen
+  - *listsas*: SAS-definities voor opslag accounts weer geven
+  - *deletesas*: een SAS-definitie uit een opslag account verwijderen
+  - *setsas*: een nieuwe SAS-definitie/kenmerken voor een opslag account maken of bijwerken
 
-- Machtigingen voor bevoorrechte bewerkingen
-  - *zuivering*: Een beheerd opslagaccount verwijderen (permanent verwijderen)
+- Machtigingen voor bevoegde bewerkingen
+  - *opschonen*: een beheerd opslag Account leegmaken (definitief verwijderen)
 
-Zie de [bewerkingen van het opslagaccount in de referentie key vault rest API](/rest/api/keyvault)voor meer informatie. Zie [Kluizen - Gewaarmaak of Update](/rest/api/keyvault/vaults/createorupdate) en [Kluizen - Toegangsbeleid bijwerken](/rest/api/keyvault/vaults/updateaccesspolicy)voor informatie over het instellen van machtigingen.
+Zie voor meer informatie de [bewerkingen voor opslag accounts in de naslag informatie over Key Vault rest API](/rest/api/keyvault). Zie voor meer informatie over het instellen van machtigingen [-kluizen-maken of bijwerken](/rest/api/keyvault/vaults/createorupdate) en [kluizen-toegangs beleid bijwerken](/rest/api/keyvault/vaults/updateaccesspolicy).
 
 ## <a name="next-steps"></a>Volgende stappen
 

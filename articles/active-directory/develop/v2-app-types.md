@@ -1,6 +1,6 @@
 ---
-title: Toepassingstypen voor microsoft-identiteitsplatform | Azure
-description: De typen apps en scenario's die worden ondersteund door het eindpunt van het Microsoft-identiteitsplatform (v2.0).
+title: Toepassings typen voor micro soft Identity platform | Azure
+description: De typen apps en scenario's die worden ondersteund door het micro soft Identity platform (v 2.0)-eind punt.
 services: active-directory
 author: rwike77
 manager: CelesteDG
@@ -13,46 +13,46 @@ ms.author: ryanwi
 ms.reviewer: saeeda, jmprieur
 ms.custom: aaddev
 ms.openlocfilehash: def92071496716f90b24158a50e4a5233e93c994
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81677992"
 ---
-# <a name="application-types-for-microsoft-identity-platform"></a>Toepassingstypen voor Microsoft-identiteitsplatform
+# <a name="application-types-for-microsoft-identity-platform"></a>Toepassings typen voor micro soft Identity platform
 
-Het Microsoft Identity Platform (v2.0) endpoint ondersteunt authenticatie voor een verscheidenheid aan moderne app-architecturen, allemaal op basis van industriestandaard protocollen [OAuth 2.0 of OpenID Connect.](active-directory-v2-protocols.md) In dit artikel worden de typen apps beschreven die u bouwen met behulp van het Microsoft-identiteitsplatform, ongeacht uw voorkeurstaal of -platform. De informatie is ontworpen om u te helpen scenario's op hoog niveau te begrijpen voordat u [met de code gaat werken.](v2-overview.md#getting-started)
+Het micro soft Identity platform (v 2.0)-eind punt ondersteunt verificatie voor verschillende moderne app-architecturen, die allemaal zijn gebaseerd op gestandaardiseerde protocollen [OAuth 2,0 of OpenID Connect Connect](active-directory-v2-protocols.md). In dit artikel worden de typen apps beschreven die u kunt bouwen met behulp van micro soft Identity platform, ongeacht uw voorkeurs taal of-platform. De informatie is ontworpen om u te helpen bij het begrijpen van scenario's met een hoog niveau voordat u [met de code aan de slag gaat](v2-overview.md#getting-started).
 
 ## <a name="the-basics"></a>De basisbeginselen
 
-U moet elke app registreren die het eindpunt van het Microsoft-identiteitsplatform gebruikt in de nieuwe [portal voor app-registraties.](https://go.microsoft.com/fwlink/?linkid=2083908) Het registratieproces van de app verzamelt en wijst deze waarden toe voor uw app:
+U moet elke app registreren die gebruikmaakt van het micro soft Identity platform-eind punt in de nieuwe [app-registraties-Portal](https://go.microsoft.com/fwlink/?linkid=2083908). Het registratie proces van de app verzamelt en wijst deze waarden voor uw app toe:
 
-* Een **toepassings-id (client)** die uw app op een unieke basis identificeert
-* Een **OMLEIDINGsURI** die u gebruiken om reacties terug te sturen naar uw app
-* Een paar andere scenariospecifieke waarden, zoals ondersteunde accounttypen
+* Een **toepassings-id (client)** waarmee uw app op unieke wijze wordt geïdentificeerd
+* Een **omleidings-URI** die u kunt gebruiken om antwoorden terug te sturen naar uw app
+* Een paar andere scenario-specifieke waarden, zoals ondersteunde account typen
 
-Voor meer informatie, meer informatie over het [registreren van een app](quickstart-register-app.md).
+Meer informatie over hoe u [een app kunt registreren](quickstart-register-app.md).
 
-Nadat de app is geregistreerd, communiceert de app met het identiteitsplatform van Microsoft door verzoeken naar het eindpunt te verzenden. Wij bieden open-source frameworks en bibliotheken die de details van deze verzoeken behandelen. U hebt ook de optie om de verificatielogica zelf te implementeren door aanvragen voor deze eindpunten te maken:
+Nadat de app is geregistreerd, communiceert de app met het micro soft-identiteits platform door aanvragen naar het eind punt te verzenden. We bieden open-source frameworks en bibliotheken die de details van deze aanvragen verwerken. U hebt ook de optie om de verificatie logica zelf te implementeren door aanvragen voor deze eind punten te maken:
 
 ```HTTP
 https://login.microsoftonline.com/common/oauth2/v2.0/authorize
 https://login.microsoftonline.com/common/oauth2/v2.0/token
 ```
 
-## <a name="single-page-apps-javascript"></a>Apps met één pagina (JavaScript)
+## <a name="single-page-apps-javascript"></a>Apps met één pagina (Java script)
 
-Veel moderne apps hebben een app-front-end van één pagina die voornamelijk in JavaScript is geschreven. Vaak wordt het geschreven met behulp van een framework zoals Angular, React of Vue. Het eindpunt van het Microsoft-identiteitsplatform ondersteunt deze apps met behulp van de [impliciete stroom van OAuth 2.0.](v2-oauth2-implicit-grant-flow.md)
+Veel moderne apps hebben een front-end van de app met één pagina die voornamelijk is geschreven in Java script. Vaak wordt deze geschreven met behulp van een kader zoals hoek, reageren of Vue. Het micro soft Identity platform-eind punt ondersteunt deze apps met behulp van de [impliciete OAuth 2,0-stroom](v2-oauth2-implicit-grant-flow.md).
 
-In deze stroom ontvangt de app tokens rechtstreeks van het Microsoft-identiteitsplatform om het eindpunt te autoriseren, zonder dat er server-naar-server-uitwisselingen zijn. Alle verificatielogica en sessieafhandeling vindt volledig plaats in de JavaScript-client, zonder extra paginaomleidingen.
+In deze stroom ontvangt de app tokens rechtstreeks van het micro soft Identity platform Authorization-eind punt, zonder server-naar-server-uitwisselingen. Alle verificatie logica en sessie afhandeling vindt volledig plaats in de Java script-client, zonder extra pagina omleidingen.
 
-![Toont de impliciete verificatiestroom](./media/v2-app-types/convergence-scenarios-implicit.svg)
+![Toont de impliciete verificatie stroom](./media/v2-app-types/convergence-scenarios-implicit.svg)
 
-Als u dit scenario in actie wilt zien, probeert u een van de app-codevoorbeelden van één pagina in de sectie [Microsoft-identiteitsplatform aan de slag.](v2-overview.md#getting-started)
+Als u dit scenario in actie wilt zien, kunt u een van de app-code voorbeelden van één pagina proberen in de sectie [micro soft Identity platform aan de slag](v2-overview.md#getting-started) .
 
 ## <a name="web-apps"></a>Web-apps
 
-Voor web-apps (.NET, PHP, Java, Ruby, Python, Node) die de gebruiker via een browser opent, u [OpenID Connect](active-directory-v2-protocols.md) gebruiken voor aanmelding door gebruikers. In OpenID Connect ontvangt de web-app een ID-token. Een ID-token is een beveiligingstoken dat de identiteit van de gebruiker verifieert en informatie over de gebruiker verstrekt in de vorm van claims:
+Voor web-apps (.NET, PHP, Java, Ruby, Python, node) die de gebruiker via een browser opent, kunt u [OpenID Connect Connect](active-directory-v2-protocols.md) gebruiken voor aanmelding door gebruikers. In OpenID Connect Connect wordt de web-app een ID-token ontvangen. Een ID-token is een beveiligings token waarmee de identiteit van de gebruiker wordt geverifieerd en informatie wordt verstrekt over de gebruiker in de vorm van claims:
 
 ```JSON
 // Partial raw ID token
@@ -67,21 +67,21 @@ eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6ImtyaU1QZG1Cd...
 }
 ```
 
-Verdere details van verschillende soorten tokens die worden gebruikt in het eindpunt van het Microsoft-identiteitsplatform zijn beschikbaar in de referentie [voor toegangstokens](access-tokens.md) en [id_token](id-tokens.md)
+Meer informatie over de verschillende typen tokens die worden gebruikt in het micro soft Identity platform-eind punt zijn beschikbaar in de naslag informatie voor het [toegangs token](access-tokens.md) en de [referentie id_token](id-tokens.md)
 
-In webserver-apps voert de verificatiestroom op hoog niveau de volgende stappen uit:
+In web server-apps neemt de aanmeldings verificatie stroom de volgende stappen op hoog niveau:
 
-![Toont de verificatiestroom voor web-apps](./media/v2-app-types/convergence-scenarios-webapp.svg)
+![Toont de verificatie stroom van de web-app](./media/v2-app-types/convergence-scenarios-webapp.svg)
 
-U de identiteit van de gebruiker waarborgen door het ID-token te valideren met een openbare ondertekeningssleutel die wordt ontvangen van het eindpunt van het Microsoft-identiteitsplatform. Er wordt een sessiecookie ingesteld die kan worden gebruikt om de gebruiker te identificeren op basis van volgende paginaverzoeken.
+U kunt de identiteit van de gebruiker controleren door de ID-token te valideren met een open bare handtekening sleutel die wordt ontvangen van het micro soft Identity platform-eind punt. Er wordt een sessie cookie ingesteld die kan worden gebruikt om de gebruiker te identificeren op volgende pagina-aanvragen.
 
-Als u dit scenario in actie wilt zien, probeert u een van de aanmeldingscodevoorbeelden van de web-app in de sectie [Microsoft-identiteitsplatform aan de slag.](v2-overview.md#getting-started)
+Als u dit scenario in actie wilt zien, kunt u een van de voor beelden van de aanmeldings code voor de web-app in het gedeelte [aan de slag met micro soft Identity platform](v2-overview.md#getting-started) uitproberen.
 
-Naast eenvoudige aanmelding moet een webserver-app mogelijk ook toegang krijgen tot een andere webservice, zoals een REST API. In dit geval voert de webserver-app een gecombineerde OpenID Connect- en OAuth 2.0-stroom uit met behulp van de [OAuth 2.0-autorisatiecodestroom.](active-directory-v2-protocols.md) Lees voor meer informatie over dit scenario over [aan de slag met web-apps en web-API's](active-directory-v2-devquickstarts-webapp-webapi-dotnet.md).
+Naast het gebruik van een eenvoudige aanmelding moet een webserver-app mogelijk toegang hebben tot een andere webservice, zoals een REST API. In dit geval maakt de webserver-app deel uit van een gecombineerde OpenID connect-verbinding en OAuth 2,0-stroom met behulp van de [OAuth 2,0-autorisatie code stroom](active-directory-v2-protocols.md). Meer informatie over dit scenario vindt u [in aan de slag met web apps en Web-api's](active-directory-v2-devquickstarts-webapp-webapi-dotnet.md).
 
 ## <a name="web-apis"></a>Web-API's
 
-U het eindpunt van het Microsoft-identiteitsplatform gebruiken om webservices te beveiligen, zoals de RESTful-web-API van uw app. Web API's kunnen worden geïmplementeerd in tal van platforms en talen. Ze kunnen ook worden geïmplementeerd met HTTP Triggers in Azure-functies. In plaats van ID-tokens en sessiecookies gebruikt een web-API een OAuth 2.0-toegangstoken om de gegevens te beveiligen en inkomende aanvragen te verifiëren. De beller van een web-API voegt een toegangstoken toe in de autorisatiekop van een HTTP-aanvraag, zoals dit:
+U kunt het micro soft Identity platform-eind punt gebruiken voor het beveiligen van webservices, zoals de REST Web API van uw app. Web-Api's kunnen worden geïmplementeerd in talloze platforms en talen. Ze kunnen ook worden geïmplementeerd met behulp van HTTP-triggers in Azure Functions. In plaats van ID-tokens en sessie cookies gebruikt een web-API een OAuth 2,0-toegangs token om de gegevens te beveiligen en inkomende aanvragen te verifiëren. De aanroeper van een web-API voegt een toegangs token toe in de autorisatie-header van een HTTP-aanvraag, zoals:
 
 ```HTTP
 GET /api/items HTTP/1.1
@@ -91,32 +91,32 @@ Accept: application/json
 ...
 ```
 
-De web-API gebruikt het toegangstoken om de identiteit van de API-beller te verifiëren en om informatie over de beller te extraheren uit claims die zijn gecodeerd in het toegangstoken. Verdere details van verschillende soorten tokens die worden gebruikt in het eindpunt van het Microsoft-identiteitsplatform zijn beschikbaar in de referentie [van het toegangstoken](access-tokens.md) en [id_token](id-tokens.md) referentie.
+De Web-API gebruikt het toegangs token om de identiteit van de API-aanroeper te controleren en om informatie over de aanroeper op te halen uit claims die zijn gecodeerd in het toegangs token. Meer informatie over de verschillende typen tokens die worden gebruikt in het micro soft Identity platform-eind punt zijn beschikbaar in de naslag informatie voor het [toegangs token](access-tokens.md) en het [id_token](id-tokens.md) .
 
-Een web-API kan gebruikers de mogelijkheid geven om zich aan te melden of af te melden voor specifieke functionaliteit of gegevens door machtigingen bloot te leggen, ook wel [scopes](v2-permissions-and-consent.md)genoemd. Voor een aanroepende app om toestemming te krijgen voor een bereik, moet de gebruiker toestemming geven voor het bereik tijdens een stroom. Het eindpunt van het Microsoft-identiteitsplatform vraagt de gebruiker om toestemming en registreert vervolgens machtigingen in alle toegangstokens die de web-API ontvangt. De web-API valideert de toegangstokens die het ontvangt bij elke oproep en voert autorisatiecontroles uit.
+Een web-API kan gebruikers de bevoegdheid geven om zich aan te melden of om specifieke functionaliteit of gegevens uit te scha kelen door machtigingen (ook wel [scopes](v2-permissions-and-consent.md)genoemd) te bieden. Voor een aanroep-app om machtigingen voor een bereik te verkrijgen, moet de gebruiker toestemming geven voor het bereik tijdens een stroom. Het micro soft Identity platform-eind punt vraagt de gebruiker om toestemming en registreert vervolgens de machtigingen in alle toegangs tokens die de Web-API ontvangt. De Web-API valideert de toegangs tokens die op elke aanroep worden ontvangen en voert autorisatie controles uit.
 
-Een web-API kan toegangstokens ontvangen van alle soorten apps, waaronder webserver-apps, desktop- en mobiele apps, apps voor één pagina, daemons aan de serverzijde en zelfs andere web-API's. De stroom op hoog niveau voor een web-API ziet er als volgt uit:
+Een web-API kan toegangs tokens ontvangen van alle typen apps, waaronder web server apps, desktop-en Mobile apps, apps met één pagina, daemons aan server zijde en zelfs andere web-Api's. De stroom op hoog niveau voor een web-API ziet er als volgt uit:
 
-![Toont de verificatiestroom voor web-API's](./media/v2-app-types/convergence-scenarios-webapi.svg)
+![Hiermee wordt de Web-API-verificatie stroom weer gegeven](./media/v2-app-types/convergence-scenarios-webapi.svg)
 
-Bekijk de web API-codevoorbeelden in de sectie [Microsoft-identiteitsplatform aan](v2-overview.md#getting-started) de slag voor meer informatie over het beveiligen van een web-API met OAuth2-toegangstokens.
+Als u wilt weten hoe u een web-API kunt beveiligen met behulp van OAuth2-toegangs tokens, raadpleegt u de voor beelden van de Web-API in de sectie aan de slag met [micro soft Identity platform](v2-overview.md#getting-started) .
 
-In veel gevallen moeten web-API's ook uitgaande verzoeken indienen bij andere downstream web-API's die zijn beveiligd door het Microsoft-identiteitsplatform. Hiervoor kunnen web-API's profiteren van de **on-behalf-of-flow,** waarmee de web-API een binnenkomend toegangstoken kan uitwisselen voor een ander toegangstoken dat kan worden gebruikt in uitgaande aanvragen. Zie [Microsoft-identiteitsplatform en OAuth 2.0 On-Behalf-Of flow voor](v2-oauth2-on-behalf-of-flow.md)meer informatie.
+In veel gevallen moeten Web-Api's ook uitgaande aanvragen indienen bij andere stroomafwaartse Web-Api's die worden beveiligd door het micro soft Identity-platform. Om dit te doen, kunnen Web-Api's gebruikmaken van de **namen van** de stroom, waarmee de Web-API een binnenkomend toegangs token kan uitwisselen voor een ander toegangs token dat in uitgaande aanvragen moet worden gebruikt. Zie voor meer informatie [micro soft Identity platform and OAuth 2,0 voor-of-flow](v2-oauth2-on-behalf-of-flow.md).
 
 ## <a name="mobile-and-native-apps"></a>Mobiele en systeemeigen apps
 
-Apparaatgeïnstalleerde apps, zoals mobiele en desktop-apps, moeten vaak toegang krijgen tot back-endservices of web-API's die gegevens opslaan en functies uitvoeren namens een gebruiker. Deze apps kunnen aanmelding en autorisatie toevoegen aan back-endservices met behulp van de [OAuth 2.0-autorisatiecodestroom](v2-oauth2-auth-code-flow.md).
+Apps die zijn geïnstalleerd op apparaten, zoals mobiele en desktop-apps, hebben vaak toegang tot back-end-services of Web-Api's waarmee gegevens worden opgeslagen en functies kunnen worden uitgevoerd namens een gebruiker. Deze apps kunnen aanmelding en autorisatie toevoegen aan back-end-services met behulp van de [OAuth 2,0-autorisatie code stroom](v2-oauth2-auth-code-flow.md).
 
-In deze stroom ontvangt de app een autorisatiecode van het eindpunt van het Microsoft-identiteitsplatform wanneer de gebruiker zich aanmeldt. De autorisatiecode vertegenwoordigt de toestemming van de app om back-endservices te bellen namens de gebruiker die is aangemeld. De app kan de autorisatiecode op de achtergrond uitwisselen voor een OAuth 2.0-toegangstoken en een vernieuwingstoken. De app kan het toegangstoken gebruiken om zich te authenticeren tot web-API's in HTTP-aanvragen en het vernieuwingstoken gebruiken om nieuwe toegangstokens te krijgen wanneer oudere toegangstokens verlopen.
+In deze stroom ontvangt de app een autorisatie code van het micro soft Identity platform-eind punt wanneer de gebruiker zich aanmeldt. De autorisatie code vertegenwoordigt de machtiging van de app voor het aanroepen van back-end-services namens de gebruiker die zich heeft aangemeld. De app kan de autorisatie code op de achtergrond voor een OAuth 2,0-toegangs token en een vernieuwings token uitwisselen. De app kan het toegangs token gebruiken om te verifiëren bij Web-Api's in HTTP-aanvragen en het vernieuwings token gebruiken om nieuwe toegangs tokens op te halen wanneer oudere toegangs tokens verlopen.
 
-![Toont de verificatiestroom van de native app](./media/v2-app-types/convergence-scenarios-native.svg)
+![Toont de systeem eigen app-verificatie stroom](./media/v2-app-types/convergence-scenarios-native.svg)
 
-## <a name="daemons-and-server-side-apps"></a>Daemons en server-apps
+## <a name="daemons-and-server-side-apps"></a>Daemons en apps aan de server zijde
 
-Apps die langlopende processen hebben of die werken zonder interactie met een gebruiker, hebben ook een manier nodig om toegang te krijgen tot beveiligde bronnen, zoals web-API's. Deze apps kunnen tokens verifiëren en ontvangen met behulp van de identiteit van de app, in plaats van de gedelegeerde identiteit van een gebruiker, met de oauth 2.0-clientreferentiesstroom. U de identiteit van de app bewijzen met behulp van een geheim of certificaat van een client. Zie [.NET Core daemon console-toepassing voor](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2)meer informatie met behulp van het Microsoft-identiteitsplatform .
+Apps die langlopende processen hebben of die werken zonder interactie met een gebruiker, hebben ook een manier nodig om toegang te krijgen tot beveiligde bronnen, zoals web-Api's. Deze apps kunnen tokens verifiëren en ophalen met behulp van de identiteit van de app, in plaats van de gedelegeerde identiteit van een gebruiker, met de OAuth 2,0-client referenties stroom. U kunt de identiteit van de app bewijzen met behulp van een client geheim of certificaat. Zie de [.net core daemon-console toepassing met micro soft Identity platform](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2)voor meer informatie.
 
-In deze stroom werkt de app `/token` rechtstreeks samen met het eindpunt om toegang te krijgen:
+In deze stroom communiceert de app rechtstreeks met het `/token` eind punt om toegang te krijgen:
 
-![Toont de verificatiestroom van de daemon-app](./media/v2-app-types/convergence-scenarios-daemon.svg)
+![Toont de verificatie stroom van de daemon-app](./media/v2-app-types/convergence-scenarios-daemon.svg)
 
-Als u een daemon-app wilt maken, raadpleegt u de documentatie van de [clientreferenties](v2-oauth2-client-creds-grant-flow.md)of probeert u een [.NET-voorbeeld-app](https://github.com/Azure-Samples/active-directory-dotnet-daemon-v2).
+Als u een daemon-app wilt maken, raadpleegt u de [documentatie van client referenties](v2-oauth2-client-creds-grant-flow.md)of probeert u een [.net-voorbeeld toepassing](https://github.com/Azure-Samples/active-directory-dotnet-daemon-v2).

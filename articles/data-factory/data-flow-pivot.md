@@ -1,6 +1,6 @@
 ---
-title: Draaitransformatie in kaartgegevensstroom
-description: Gegevens draaien van rijen naar kolommen met azure data factory-toewijzing van gegevensstroomdraaitransformatie
+title: Draai transformatie in toewijzings gegevens stroom
+description: Gegevens uit rijen naar kolommen draaien met Azure Data Factory de draai transformatie van de gegevens stroom koppelen
 author: kromerm
 ms.author: makromer
 ms.service: data-factory
@@ -8,76 +8,76 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 01/30/2019
 ms.openlocfilehash: a58444f81f60b48f9c2c76f13257a6a2431158a8
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81686428"
 ---
-# <a name="pivot-transformation-in-mapping-data-flow"></a>Draaitransformatie in kaartgegevensstroom
+# <a name="pivot-transformation-in-mapping-data-flow"></a>Draai transformatie in toewijzings gegevens stroom
 
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-Gebruik de draaitransformatie om meerdere kolommen te maken op basis van de unieke rijwaarden van één kolom. Pivot is een aggregatietransformatie waarbij u groep op kolommen selecteert en draaikolommen genereert met behulp van [aggregaatfuncties](data-flow-expression-functions.md#aggregate-functions).
+Gebruik de draai transformatie om meerdere kolommen te maken op basis van de unieke rijwaarden van één kolom. Pivot is een aggregatie transformatie waarbij u groeperen op kolommen selecteert en draai tabel kolommen genereert met behulp van [statistische functies](data-flow-expression-functions.md#aggregate-functions).
 
 ## <a name="configuration"></a>Configuratie
 
-De draaitransformatie vereist drie verschillende ingangen: groeperen op kolommen, de draaitoets en het genereren van de gedraaide kolommen
+Voor de draai transformatie zijn drie verschillende invoer waarden vereist: groeperen op kolommen, de draai sleutel en het genereren van de gedraaide kolommen
 
 ### <a name="group-by"></a>Groeperen op
 
-![Groeperen op opties](media/data-flow/pivot2.png "[Groeperen op opties")
+![Groeperen op opties](media/data-flow/pivot2.png "[Groeperen op Opties")
 
-Selecteer welke kolommen de gedraaide kolommen wilt samenvoegen. De uitvoergegevens groeperen alle rijen met dezelfde groep op waarden in één rij. De aggregatie in de draaikolom vindt plaats in elke groep.
+Selecteer de kolommen waarin de gedraaide kolommen moeten worden geaggregeerd. In de uitvoer gegevens worden alle rijen met dezelfde groep door waarden gegroepeerd in één rij. De aggregatie die in de gedraaide kolom wordt uitgevoerd, vindt plaats boven elke groep.
 
-Deze sectie is optioneel. Als er geen groep per kolom is geselecteerd, wordt de volledige gegevensstroom samengevoegd en wordt slechts één rij uitgevoerd.
+Deze sectie is optioneel. Als er geen kolommen voor groeperen op zijn geselecteerd, wordt de volledige gegevens stroom geaggregeerd en wordt er slechts één rij gegenereerd.
 
-### <a name="pivot-key"></a>Draaitoets
+### <a name="pivot-key"></a>Draai sleutel
 
-![Draaitoets](media/data-flow/pivot3.png "Draaitoets")
+![Draai sleutel](media/data-flow/pivot3.png "Draai sleutel")
 
-De draaitoets is de kolom waarvan de rijwaarden in nieuwe kolommen worden gedraaid. Standaard maakt de draaitransformatie een nieuwe kolom voor elke unieke rijwaarde.
+De draai tabel is de kolom waarvan de rijwaarden in nieuwe kolommen worden weer geven. Standaard maakt de draai transformatie een nieuwe kolom voor elke unieke Rijwaarde.
 
-In de sectie met het label **Waarde**u specifieke rijwaarden invoeren die moeten worden gedraaid. Alleen de rijwaarden die in deze sectie zijn ingevoerd, worden gedraaid. Als **u null-waarde** inschakelt, wordt een draaikolom gemaakt voor de null-waarden in de kolom.
+In de sectie met de label **waarde**kunt u specifieke rijgegevens opgeven die moeten worden gedraaid. Alleen de rijwaarden die in deze sectie worden ingevoerd, worden gedraaid. Als u een **Null-waarde** inschakelt, wordt er een gedraaide kolom gemaakt voor de Null-waarden in de kolom.
 
 ### <a name="pivoted-columns"></a>Gedraaide kolommen
 
 ![Gedraaide kolommen](media/data-flow/pivot4.png "Gedraaide kolommen")
 
-Geneer voor elke unieke draaisleutelwaarde die een kolom wordt, een geaggregeerde rijwaarde voor elke groep. U meerdere kolommen per draaitoets maken. Elke draaikolom moet ten minste één [aggregaatfunctie](data-flow-expression-functions.md#aggregate-functions)bevatten .
+Genereer voor elke unieke draai tabel waarde die een kolom wordt een geaggregeerde Rijwaarde voor elke groep. U kunt meerdere kolommen per draai sleutel maken. Elke draai kolom moet ten minste één [statistische functie](data-flow-expression-functions.md#aggregate-functions)bevatten.
 
-**Kolomnaampatroon:** Selecteer hoe u de kolomnaam van elke draaikolom opmaakt. De uitvoerde kolomnaam is een combinatie van de waarde van de draaitoets, kolomvoorvoegsel en optioneel voorvoegsel, volstaan, middelste tekens. 
+**Patroon voor kolom naam:** Selecteren hoe de kolom naam van elke draai kolom moet worden opgemaakt. De kolom naam die u hebt gegenereerd, is een combi natie van de waarde van de draai sleutel, het voor voegsel van de kolom en het optionele voor voegsel, voldoende, middelste tekens. 
 
-**Kolomregeling:** Als u meer dan één draaikolom per draaitoets genereert, kiest u hoe u de kolommen wilt bestellen. 
+Volg **orde van kolommen:** Als u per draai tabel meer dan één draai kolom wilt genereren, kiest u hoe u de kolommen wilt belasten. 
 
-**Kolomvoorvoegsel:** Als u meer dan één draaikolom per draaisleutel genereert, voert u voor elke kolom een kolomvoorvoegsel in. Deze instelling is optioneel als u slechts één draaikolom hebt.
+**Kolom voorvoegsel:** Als u per draai tabel meer dan één draai kolom wilt genereren, voert u een kolom voorvoegsel in voor elke kolom. Deze instelling is optioneel als u slechts één gedraaide kolom hebt.
 
 ## <a name="help-graphic"></a>Help-afbeelding
 
-De onderstaande help-afbeelding laat zien hoe de verschillende draaicomponenten met elkaar omgaan
+De onderstaande Help-afbeelding laat zien hoe de verschillende draai grafiek onderdelen met elkaar communiceren
 
-![Help-afbeeldingen van Pivot](media/data-flow/pivot5.png "Knop Pivot Help")
+![Help grafische objecten draaien](media/data-flow/pivot5.png "Help-afbeelding van Pivot")
 
-## <a name="pivot-metadata"></a>Pivot-metagegevens
+## <a name="pivot-metadata"></a>Meta gegevens van draai tabel
 
-Als er geen waarden zijn opgegeven in de configuratie van de draaitoets, worden de gedraaide kolommen dynamisch gegenereerd tijdens uitvoering. Het aantal draaikolommen is gelijk aan het aantal unieke draaisleutelwaarden vermenigvuldigd met het aantal draaikolommen. Aangezien dit een veranderend getal kan zijn, geeft de UX de kolommetagegevens niet weer op het tabblad **Inspect** en is er geen kolompropagatie. Als u deze kolommen wilt transformeren, gebruikt u de mogelijkheden voor [kolompatroon](concepts-data-flow-column-pattern.md) van het toewijzen van gegevensstroom. 
+Als er geen waarden zijn opgegeven in de configuratie van de draai sleutel, worden de gedraaide kolommen dynamisch gegenereerd tijdens runtime. Het aantal gedraaide kolommen is gelijk aan het aantal unieke draai sleutel waarden vermenigvuldigd met het aantal draai tabel kolommen. Aangezien dit een wijzigings nummer kan zijn, worden de meta gegevens van de kolom niet weer gegeven in de UX op het tabblad **controleren** en is er geen doorgifte van de kolom. Als u deze kolommen wilt transformeren, gebruikt u de [kolom patroon](concepts-data-flow-column-pattern.md) mogelijkheden van toewijzing van gegevens stroom. 
 
-Als specifieke draaisleutelwaarden zijn ingesteld, worden de draaipuntenkolommen weergegeven in de metagegevens.e kolomnamen zijn voor u beschikbaar in de toewijzing van Inspect en Sink.
+Als er specifieke waarden voor de draai tabel worden ingesteld, worden de gedraaide kolommen weer gegeven in de meta gegevens. e kolom namen worden voor u beschikbaar gesteld in de inspectie-en Sink-toewijzing.
 
-### <a name="generate-metadata-from-drifted-columns"></a>Metagegevens genereren uit zwevende kolommen
+### <a name="generate-metadata-from-drifted-columns"></a>Meta gegevens genereren op basis van gedrijfte kolommen
 
-Pivot genereert dynamisch nieuwe kolomnamen op basis van rijwaarden. U deze nieuwe kolommen toevoegen aan de metagegevens waarnaar later in uw gegevensstroom kan worden verwezen. Gebruik hiervoor de [snelle](concepts-data-flow-schema-drift.md#map-drifted-columns-quick-action) actie van de kaart in het voorbeeld van gegevens. 
+Met Pivot worden nieuwe kolom namen dynamisch gegenereerd op basis van rijwaarden. U kunt deze nieuwe kolommen toevoegen aan de meta gegevens waarnaar later in uw gegevens stroom kan worden verwezen. U doet dit door de snelle actie [toewijzen](concepts-data-flow-schema-drift.md#map-drifted-columns-quick-action) in de voorbeeld gegevens te gebruiken. 
 
-![Kolommen draaien](media/data-flow/newpivot1.png "Zwevende draaikolommen toewijzen")
+![Kolommen draaien](media/data-flow/newpivot1.png "Geplaatste draai kolommen toewijzen")
 
-### <a name="sinking-pivoted-columns"></a>Dalende draaikolommen
+### <a name="sinking-pivoted-columns"></a>Zinkt gedraaide kolommen
 
-Hoewel draaikolommen dynamisch zijn, kunnen ze nog steeds worden geschreven in uw doelgegevensarchief. Schemadrift **toestaan in** de sink-instellingen inschakelen. Hiermee u kolommen schrijven die niet zijn opgenomen in metagegevens. uw kolommetagegevens, maar met de optie schemadrift u de gegevens landen.
+Hoewel gedraaide kolommen dynamisch zijn, kunnen ze nog steeds worden geschreven in de doel gegevens opslag. Schakel **schema-drift toestaan** in uw Sink-instellingen in. Hiermee kunt u kolommen schrijven die niet zijn opgenomen in de meta gegevens. met de meta gegevens van de kolom, maar met de optie schema-drift kunt u de gegevens in de landset.
 
-### <a name="rejoin-original-fields"></a>Opnieuw deelnemen aan oorspronkelijke velden
+### <a name="rejoin-original-fields"></a>Oorspronkelijke velden opnieuw samen voegen
 
-De draaitransformatie projecteert de groep alleen op en wordt gepivoteerd. Als u wilt dat uw uitvoergegevens andere invoerkolommen bevatten, gebruikt u een [zelfjoinpatroon.](data-flow-join.md#self-join)
+Met de draai transformatie worden alleen de groep gegroepeerd op en de gedraaide kolommen geprojecteerd. Als u wilt dat uw uitvoer gegevens andere invoer kolommen bevatten, gebruikt u een [Self-deel nemende](data-flow-join.md#self-join) patroon.
 
 ## <a name="data-flow-script"></a>Script voor gegevensstroom
 
@@ -94,7 +94,7 @@ De draaitransformatie projecteert de groep alleen op en wordt gepivoteerd. Als u
 ```
 ### <a name="example"></a>Voorbeeld
 
-De schermen in de configuratiesectie hebben het volgende script voor gegevensstromen:
+De schermen die in de configuratie sectie worden weer gegeven, hebben het volgende gegevens stroom script:
 
 ```
 BasketballPlayerStats pivot(groupBy(Tm),
@@ -107,4 +107,4 @@ BasketballPlayerStats pivot(groupBy(Tm),
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Probeer de [draaibare transformatie om](data-flow-unpivot.md) kolomwaarden om te zetten in rijwaarden. 
+Voer de [trans formatie van het draai diagram](data-flow-unpivot.md) uit om kolom waarden om te zetten in rijwaarden. 

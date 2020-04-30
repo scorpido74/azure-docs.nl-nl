@@ -1,6 +1,6 @@
 ---
-title: Betrokkenheid van co-sell partners | Azure Marketplace
-description: Microsoft's co-sell programma voor partners kan u helpen een uitgebreid klantenbestand te bereiken en nieuwe verkopen te genereren.
+title: Verkoop partner-betrokkenheid | Azure Marketplace
+description: Het programma voor co-sell van micro soft voor partners kan u helpen bij het bereiken van een enorme klanten basis en het genereren van nieuwe verkopen.
 author: dsindona
 ms.author: dsindona
 ms.service: marketplace
@@ -8,29 +8,29 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/16/2020
 ms.openlocfilehash: 5cae07f02c62db0fbeb4043f9804fffe461ce1a0
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81684389"
 ---
 # <a name="co-sell-partner-engagement"></a>Betrokkenheid van partner bij collectieve verkoop
 
-Microsoft's co-sell programma stelt partners in staat om rechtstreeks met Microsoft samen te werken aan gezamenlijke verkoopmogelijkheden. U een uitgebreide gemeenschap van klanten bereiken en nieuwe verkoopkansen creëren die kunnen helpen bij het versnellen van de groei van het bedrijf.
+Met het programma voor co-sell van micro soft kunnen partners rechtstreeks met micro soft werken in gezamenlijke verkoop kansen. U kunt een enorme community van klanten bereiken en nieuwe verkoop kansen creëren waarmee de groei van uw bedrijf kan worden versneld.
 
-## <a name="partner-selling-motions"></a>Partner die moties verkoopt
+## <a name="partner-selling-motions"></a>Bewegingen voor het verkopen van partners
 
-Er zijn drie partner verkoop moties:
+Er zijn drie bewegingen voor het verkopen van partners:
 
-* *Verkopen via partner*: U Microsoft-technologie doorverkopen via uw eigen verkopers.
-* *Services co-sell:* Verkopers en partners werken samen om uw project of beheerde services te verkopen met microsoft-technologie ingebed.
-* *IP co-sell*: Verkopers/partners werken samen om uw herhaalbare, verpakte IP-oplossing* te verkopen.
+* *Verkopen via partner*: u kunt micro soft-technologie verkopen via uw eigen verkopers.
+* *Services voor co-sell*: verkopers en partners kunnen samen werken met het verkopen van uw project of beheerde services met micro soft-technologie Embedded.
+* *IP-co-sell*: verkopers/partners kunnen samen werken met uw Herhaal bare, verpakte IP-oplossing *.
 
-\*Sommige van deze IP-co-sell-oplossingen kunnen extra stimulansen ontvangen wanneer ze met succes worden verkocht en geïmplementeerd bij de verkoopteams van Microsoft.
+\*Sommige van deze oplossingen voor het verkopen van IP-adressen kunnen extra prikkels ontvangen wanneer ze zijn verkocht en geïmplementeerd met de verkoop teams van micro soft.
 
-![Co-sell gebeurt](./media/marketplace-publishers-guide/marketplace-co-sell.png)
+![Samen verkoop plaatsvindt](./media/marketplace-publishers-guide/marketplace-co-sell.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Meer informatie over [verkopen met Microsoft](https://partner.microsoft.com/membership/sell-with-microsoft).
-- Meer informatie over de [optie Co-verkoop in partnercentrum](./partner-center-portal/commercial-marketplace-co-sell.md) .
+- Meer informatie over [verkopen met micro soft](https://partner.microsoft.com/membership/sell-with-microsoft).
+- Meer informatie over de [optie voor gezamenlijk verkopen in Partner Center](./partner-center-portal/commercial-marketplace-co-sell.md) .

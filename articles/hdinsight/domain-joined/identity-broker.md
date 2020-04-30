@@ -1,6 +1,6 @@
 ---
-title: 'ID Broker (preview) gebruiken voor referentiebeheer: Azure HDInsight'
-description: Meer informatie over HDInsight ID Broker om verificatie voor met een domein verbonden Apache Hadoop-clusters te vereenvoudigen.
+title: ID-Broker (preview-versie) gebruiken voor referentie beheer-Azure HDInsight
+description: Meer informatie over HDInsight ID Broker voor het vereenvoudigen van de verificatie voor Apache Hadoop clusters die lid zijn van een domein.
 ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
@@ -8,46 +8,46 @@ ms.reviewer: jasonh
 ms.topic: conceptual
 ms.date: 12/12/2019
 ms.openlocfilehash: 1e7eaf49fb8b62259b8c619c89edffd629dfde7f
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81685512"
 ---
-# <a name="use-id-broker-preview-for-credential-management"></a>ID Broker (voorbeeld) gebruiken voor referentiebeheer
+# <a name="use-id-broker-preview-for-credential-management"></a>ID-Broker (preview-versie) gebruiken voor referentie beheer
 
-In dit artikel wordt beschreven hoe u de functie ID Broker in Azure HDInsight instelt en gebruikt. U deze functie gebruiken om u aan te melden bij Apache Ambari via Azure Multi-Factor Authentication en de vereiste Kerberos-tickets te krijgen zonder wachtwoordhashes in Azure Active Directory Domain Services (Azure AD DS) te verkrijgen.
+In dit artikel wordt beschreven hoe u de functie ID Broker kunt instellen en gebruiken in azure HDInsight. U kunt deze functie gebruiken om u aan te melden bij Apache Ambari via Azure Multi-Factor Authentication en de vereiste Kerberos-tickets te verkrijgen zonder wacht woord-hashes te hoeven gebruiken in Azure Active Directory Domain Services (Azure AD DS).
 
 ## <a name="overview"></a>Overzicht
 
-ID Broker vereenvoudigt complexe verificatie-instellingen in de volgende scenario's:
+De ID-Broker vereenvoudigt complexe verificatie-instellingen in de volgende scenario's:
 
-* Uw organisatie vertrouwt op federatie om gebruikers te authenticeren voor toegang tot cloudbronnen. Voorheen moest u, om ESP-clusters (HDInsight Enterprise Security Package) te gebruiken, wachtwoordhashsynchronisatie inschakelen vanuit uw on-premises omgeving naar Azure Active Directory. Deze eis kan moeilijk of ongewenst zijn voor sommige organisaties.
+* Uw organisatie is afhankelijk van Federatie om gebruikers te verifiëren voor het openen van cloud resources. Voor het gebruik van HDInsight-clusters (ESP Enterprise Security Package) moest u voorheen wachtwoord hash-synchronisatie inschakelen vanuit uw on-premises omgeving tot Azure Active Directory. Deze vereiste kan moeilijk of onwenselijk zijn voor sommige organisaties.
 
-* U bouwt oplossingen die gebruikmaken van technologieën die afhankelijk zijn van verschillende authenticatiemechanismen. Apache Hadoop en Apache Ranger vertrouwen bijvoorbeeld op Kerberos, terwijl Azure Data Lake Storage afhankelijk is van OAuth.
+* U bouwt oplossingen die gebruikmaken van technologieën die afhankelijk zijn van verschillende verificatie mechanismen. Apache Hadoop en Apache zwerver zijn bijvoorbeeld afhankelijk van Kerberos, terwijl Azure Data Lake Storage afhankelijk is van OAuth.
 
-ID Broker biedt een uniforme verificatie-infrastructuur en verwijdert de vereiste voor het synchroniseren van wachtwoordhashes naar Azure AD DS. ID Broker bestaat uit onderdelen die worden uitgevoerd op een Windows Server VM (ID Broker-knooppunt), samen met clustergatewayknooppunten. 
+ID Broker biedt een uniforme verificatie-infra structuur en verwijdert de vereiste voor het synchroniseren van wacht woord-hashes naar Azure AD DS. ID Broker bestaat uit onderdelen die worden uitgevoerd op een Windows Server-VM (ID Broker-knoop punt), samen met cluster gateway-knoop punten. 
 
-In het volgende diagram ziet u de verificatiestroom voor alle gebruikers, inclusief federatieve gebruikers, nadat ID Broker is ingeschakeld:
+In het volgende diagram ziet u de verificatie stroom voor alle gebruikers, met inbegrip van federatieve gebruikers, nadat ID Broker is ingeschakeld:
 
-![Verificatiestroom met ID Broker](./media/identity-broker/identity-broker-architecture.png)
+![Verificatie stroom met ID-Broker](./media/identity-broker/identity-broker-architecture.png)
 
-Met ID Broker u zich aanmelden bij ESP-clusters met behulp van Multi-Factor Authentication, zonder wachtwoorden te verstrekken. Als u zich al hebt aangemeld bij andere Azure-services, zoals de Azure-portal, u zich aanmelden bij uw HDInsight-cluster met één SSO-ervaring (sign-on).
+Met ID Broker kunt u zich aanmelden bij ESP-clusters met behulp van Multi-Factor Authentication, zonder dat u een wacht woord hoeft op te geven. Als u zich al hebt aangemeld bij andere Azure-Services, zoals de Azure Portal, kunt u zich aanmelden bij uw HDInsight-cluster met een SSO-ervaring (eenmalige aanmelding).
 
 ## <a name="enable-hdinsight-id-broker"></a>HDInsight ID Broker inschakelen
 
-Ga als volgt te werk om een ESP-cluster te maken met ID Broker ingeschakeld:
+Voer de volgende stappen uit om een ESP-cluster met de ID-Broker te maken:
 
 1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
-1. Volg de basisstappen voor het maken van een ESP-cluster. Zie [Een HDInsight-cluster maken met ESP](apache-domain-joined-configure-using-azure-adds.md#create-an-hdinsight-cluster-with-esp)voor meer informatie.
-1. Selecteer **HDInsight ID Broker inschakelen**.
+1. Volg de basis stappen voor het maken van een ESP-cluster. Zie [een HDInsight-cluster met ESP maken](apache-domain-joined-configure-using-azure-adds.md#create-an-hdinsight-cluster-with-esp)voor meer informatie.
+1. Selecteer **HDINSIGHT id Broker inschakelen**.
 
-De functie ID Broker voegt één extra VM toe aan het cluster. Deze VM is het ID Broker-knooppunt en bevat servercomponenten ter ondersteuning van verificatie. Het id-broker-knooppunt is domein dat is verbonden met het Azure AD DS-domein.
+Met de functie ID Broker wordt één extra virtuele machine aan het cluster toegevoegd. Deze VM is het ID Broker-knoop punt en bevat Server onderdelen ter ondersteuning van de verificatie. Het knoop punt ID Broker is een domein dat is gekoppeld aan het Azure AD DS-domein.
 
-![Optie om ID Broker in te schakelen](./media/identity-broker/identity-broker-enable.png)
+![Optie voor het inschakelen van ID-Broker](./media/identity-broker/identity-broker-enable.png)
 
 ### <a name="using-azure-resource-manager-templates"></a>Azure Resource Manager-sjablonen gebruiken
-Als u een nieuwe `idbrokernode` rol met de volgende kenmerken toevoegt aan het rekenprofiel van uw sjabloon, wordt het cluster gemaakt met het knooppunt ID-broker ingeschakeld:
+Als u een nieuwe rol met de `idbrokernode` naam met de volgende kenmerken aan het reken Profiel van uw sjabloon toevoegt, wordt het cluster gemaakt met het ID Broker-knoop punt ingeschakeld:
 
 ```json
 .
@@ -86,26 +86,26 @@ Als u een nieuwe `idbrokernode` rol met de volgende kenmerken toevoegt aan het r
 .
 ```
 
-## <a name="tool-integration"></a>Gereedschapsintegratie
+## <a name="tool-integration"></a>Integratie van hulp programma
 
-De HDInsight [IntelliJ plug-in](https://docs.microsoft.com/azure/hdinsight/spark/apache-spark-intellij-tool-plugin#integrate-with-hdinsight-identity-broker-hib) is bijgewerkt om OAuth te ondersteunen. U deze plug-in gebruiken om verbinding te maken met het cluster en taken in te dienen.
+De HDInsight [IntelliJ-invoeg toepassing](https://docs.microsoft.com/azure/hdinsight/spark/apache-spark-intellij-tool-plugin#integrate-with-hdinsight-identity-broker-hib) is bijgewerkt voor de ondersteuning van OAuth. U kunt deze invoeg toepassing gebruiken om verbinding te maken met het cluster en taken te verzenden.
 
-## <a name="ssh-access-without-a-password-hash-in-azure-ad-ds"></a>SSH-toegang zonder wachtwoordhash in Azure AD DS
+## <a name="ssh-access-without-a-password-hash-in-azure-ad-ds"></a>SSH-toegang zonder wacht woord-hash in azure AD DS
 
-Nadat ID Broker is ingeschakeld, hebt u nog steeds een wachtwoordhash nodig die is opgeslagen in Azure AD DS voor SSH-scenario's met domeinaccounts. Als u SSH wilt gebruiken voor een `kinit` vm die is verbonden met een domein of als u de opdracht wilt uitvoeren, moet u een wachtwoord opgeven. 
+Nadat ID Broker is ingeschakeld, hebt u nog steeds een wacht woord-hash die is opgeslagen in azure AD DS voor SSH-scenario's met domein accounts. Als u SSH wilt maken naar een VM die lid is van een `kinit` domein of als u de opdracht wilt uitvoeren, moet u een wacht woord opgeven. 
 
-SSH-verificatie vereist dat de hash beschikbaar is in Azure AD DS. Als u SSH alleen voor administratieve scenario's wilt gebruiken, u één cloudaccount maken en dat gebruiken om SSH in het cluster te gebruiken. Andere gebruikers kunnen nog steeds Ambari- of HDInsight-hulpprogramma's gebruiken (zoals de IntelliJ-plug-in) zonder dat de wachtwoordhash beschikbaar is in Azure AD DS.
+Voor SSH-verificatie moet de hash beschikbaar zijn in azure AD DS. Als u SSH alleen wilt gebruiken voor beheer scenario's, kunt u één alleen-Cloud account maken en gebruiken om te SSHen naar het cluster. Andere gebruikers kunnen nog steeds gebruikmaken van Ambari-of HDInsight-hulpprogram ma's (zoals de IntelliJ-invoeg toepassing) zonder dat de wacht woord-hash beschikbaar is in azure AD DS.
 
-## <a name="clients-using-oauth-to-connect-to-hdinsight-gateway-with-id-broker-setup"></a>Clients die OAuth gebruiken om verbinding te maken met HDInsight-gateway met ID Broker-installatie
+## <a name="clients-using-oauth-to-connect-to-hdinsight-gateway-with-id-broker-setup"></a>Clients die OAuth gebruiken om verbinding te maken met de HDInsight-gateway met de ID Broker-installatie
 
-In de id-broker-instelling kunnen aangepaste apps en clients die verbinding maken met de gateway worden bijgewerkt om eerst het vereiste OAuth-token te verkrijgen. U de stappen in dit [document](https://docs.microsoft.com/azure/storage/common/storage-auth-aad-app) volgen om het token te verkrijgen met de volgende informatie:
+In de Setup van ID Broker kunnen aangepaste apps en clients die verbinding maken met de gateway, worden bijgewerkt om eerst het vereiste OAuth-token te verkrijgen. U kunt de stappen in dit [document](https://docs.microsoft.com/azure/storage/common/storage-auth-aad-app) volgen om het token te verkrijgen met de volgende informatie:
 
-*   OAuth resource uri:https://hib.azurehdinsight.net 
+*   OAuth-resource-URI:https://hib.azurehdinsight.net 
 * AppId: 7865c1d2-f040-46cc-875f-831a1ef6a28a
-*   Toestemming: (naam: Cluster.ReadWrite, id: 8f89faa0-ffef-4007-974d-4989b39ad77d)
+*   Machtiging: (naam: cluster. ReadWrite, id: 8f89faa0-ffef-4007-974d-4989b39ad77d)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Een HDInsight-cluster configureren met Enterprise Security Package met Azure Active Directory Domain Services](apache-domain-joined-configure-using-azure-adds.md)
+* [Een HDInsight-cluster met Enterprise Security Package configureren met behulp van Azure Active Directory Domain Services](apache-domain-joined-configure-using-azure-adds.md)
 * [Azure Active Directory-gebruikers synchroniseren met een HDInsight-cluster](../hdinsight-sync-aad-users-to-cluster.md)
 * [Cluster-prestaties bewaken](../hdinsight-key-scenarios-to-monitor.md)

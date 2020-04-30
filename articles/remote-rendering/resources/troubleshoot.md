@@ -1,108 +1,108 @@
 ---
 title: Problemen oplossen
-description: Informatie over probleemoplossing voor Azure Remote Rendering
+description: Probleemoplossings informatie voor de externe rendering van Azure
 author: florianborn71
 ms.author: flborn
 ms.date: 02/25/2020
 ms.topic: troubleshooting
 ms.openlocfilehash: b86af2ff8fad3793fc47cec9399fd499c1cabba7
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81681859"
 ---
 # <a name="troubleshoot"></a>Problemen oplossen
 
-Op deze pagina worden veelvoorkomende problemen weergegeven die azure remote rendering verstoren en manieren om deze op te lossen.
+Op deze pagina vindt u veelvoorkomende problemen met betrekking tot de externe rendering van Azure en manieren om deze op te lossen.
 
-## <a name="client-cant-connect-to-server"></a>Client kan geen verbinding maken met server
+## <a name="client-cant-connect-to-server"></a>Client kan geen verbinding maken met de server
 
-Zorg ervoor dat uw firewalls (op het apparaat, in routers, enz.) de volgende poorten niet blokkeren:
+Zorg ervoor dat de firewalls (op het apparaat, binnen routers, enzovoort) niet de volgende poorten blok keren:
 
-* **50051 (TCP)** - vereist voor de eerste verbinding (HTTP-handdruk)
-* **8266 (TCP+UDP)** - vereist voor gegevensoverdracht
-* **5000 (TCP)**, **5433 (TCP)**, **8443 (TCP)** - vereist voor [ArrInspector](tools/arr-inspector.md)
+* **50051 (TCP)** : vereist voor de eerste verbinding (http-Handshake)
+* **8266 (TCP + UDP)** -vereist voor gegevens overdracht
+* **5000 (TCP)**, **5433 (tcp)**, **8443 (TCP)** -vereist voor [ArrInspector](tools/arr-inspector.md)
 
-## <a name="error-disconnected-videoformatnotavailable"></a>Fout 'Losgekoppeld: videoformatniet beschikbaar'
+## <a name="error-disconnected-videoformatnotavailable"></a>Fout ' verbinding verbroken: VideoFormatNotAvailable '
 
-Controleer of uw GPU hardwarevideodecodering ondersteunt. Zie [Development PC](../overview/system-requirements.md#development-pc).
+Controleer of uw GPU hardware-video-decodering ondersteunt. Zie [ontwikkel-PC](../overview/system-requirements.md#development-pc).
 
-Als u werkt aan een laptop met twee GPU's, is het mogelijk dat de GPU waarop u werkt standaard geen hardwarevideodecoderingsfunctionaliteit biedt. Als dat het zo is, probeert u uw app te dwingen de andere GPU te gebruiken. Dit is vaak mogelijk in de GPU-driverinstellingen.
+Als u werkt met een laptop met twee Gpu's, is het mogelijk dat de GPU waarop u uitvoert standaard niet de functionaliteit voor het decoderen van hardware-video biedt. Als dit het geval is, probeert u uw app te dwingen de andere GPU te gebruiken. Dit is vaak mogelijk in de instellingen van het GPU-stuur programma.
 
-## <a name="h265-codec-not-available"></a>H265-codec niet beschikbaar
+## <a name="h265-codec-not-available"></a>De H265-codec is niet beschikbaar
 
-Er zijn twee redenen waarom de server kan weigeren verbinding te maken met een **codec die niet beschikbaar** is.
+Er zijn twee redenen waarom de server geen verbinding kan maken met een **niet-beschik bare codec** .
 
 **De H265-codec is niet geïnstalleerd:**
 
-Zorg er eerst voor dat u de **HEVC-video-extensies** installeert zoals vermeld in het gedeelte [Software](../overview/system-requirements.md#software) van de systeemvereisten.
+Zorg er eerst voor dat u de **HEVC-video-uitbrei dingen** installeert zoals vermeld in de sectie [Software](../overview/system-requirements.md#software) van de systeem vereisten.
 
-Als u nog steeds problemen ondervindt, moet u ervoor zorgen dat uw grafische kaart H265 ondersteunt en dat u het nieuwste grafische stuurprogramma hebt geïnstalleerd. Zie het gedeelte [Development PC](../overview/system-requirements.md#development-pc) van de systeemvereisten voor leveranciersspecifieke informatie.
+Als u nog steeds problemen ondervindt, moet u ervoor zorgen dat uw grafische kaart ondersteuning biedt voor H265 en dat het nieuwste grafische stuur programma is geïnstalleerd. Zie de sectie [ontwikkel-PC](../overview/system-requirements.md#development-pc) van de systeem vereisten voor leverancierspecifieke informatie.
 
 **De codec is geïnstalleerd, maar kan niet worden gebruikt:**
 
-De reden voor dit probleem is een onjuiste beveiligingsinstelling voor de DLL's. Dit probleem manifesteert zich niet wanneer u video's probeert te bekijken die zijn gecodeerd met H265. Het opnieuw installeren van de codec lost het probleem ook niet op. Voer in plaats daarvan de volgende stappen uit:
+De reden voor dit probleem is een onjuiste beveiligings instelling voor de Dll's. Dit probleem treedt niet op bij het bekijken van Video's die zijn gecodeerd met H265. Als u de codec opnieuw installeert, wordt het probleem niet opgelost. Voer in plaats daarvan de volgende stappen uit:
 
-1. Een **PowerShell openen met beheerdersrechten** en uitvoeren
+1. Open een **Power shell met beheerders rechten** en voer uit
 
     ```PowerShell
     Get-AppxPackage -Name Microsoft.HEVCVideoExtension
     ```
   
-    Die opdracht moet `InstallLocation` de uitvoer van de codec, zoiets als:
+    Met deze opdracht moet de `InstallLocation` van de codec worden uitgevoerd, ongeveer als volgt:
   
     ```cmd
     InstallLocation   : C:\Program Files\WindowsApps\Microsoft.HEVCVideoExtension_1.0.23254.0_x64__5wasdgertewe
     ```
 
-1. Die map openen in Windows Verkenner
-1. Er moet een **x86** en een **x64** submap. Klik met de rechtermuisknop op een van de mappen en kies **Eigenschappen**
-    1. Selecteer het tabblad **Beveiliging** en klik op de knop **Geavanceerde** instellingen
-    1. Klik **op Wijzigen** voor de **eigenaar**
-    1. **Beheerders** in het tekstveld typen
-    1. Klik **op Namen controleren** en **OK**
-1. De bovenstaande stappen voor de andere map herhalen
-1. Herhaal ook de bovenstaande stappen op elk DLL-bestand in beide mappen. Er moeten in totaal vier DLL's zijn.
+1. Deze map openen in Windows Verkenner
+1. Er moet een **x86** -en een **x64** -submap zijn. Klik met de rechter muisknop op een van de mappen en kies **Eigenschappen**
+    1. Selecteer het tabblad **beveiliging** en klik op de knop **Geavanceerde** instellingen.
+    1. Klik op **wijzigen** voor de **eigenaar**
+    1. Typ **beheerders** in het tekst veld
+    1. Klik op **Namen controleren** en vervolgens op **OK**
+1. Herhaal de bovenstaande stappen voor de andere map
+1. Herhaal ook de bovenstaande stappen voor elk DLL-bestand in beide mappen. Er moeten vier dll-bestanden aanwezig zijn.
 
-Als u wilt controleren of de instellingen nu correct zijn, doet u dit voor elk van de vier DLL's:
+Ga als volgt te werk om te controleren of de instellingen nu juist zijn, voor elk van de vier Dll's:
 
-1. Selecteer **Eigenschappen > beveiliging > bewerken**
-1. Ga door de lijst van alle **groepen / gebruikers** en zorg ervoor dat elk heeft de Read & **Execute** juiste set (het vinkje in de kolom **toestaan** moet worden aangevinkt)
+1. **Eigenschappen > beveiliging > bewerken** selecteren
+1. Door loop de lijst met alle **groepen/gebruikers** en zorg ervoor dat elke groep de machtiging **lezen & uitvoeren** is ingesteld (het vinkje in de kolom **toestaan** moet worden getickd)
 
-## <a name="low-video-quality"></a>Lage videokwaliteit
+## <a name="low-video-quality"></a>Lage video kwaliteit
 
-De videokwaliteit kan worden aangetast door de netwerkkwaliteit of de ontbrekende H265-videocodec.
+De video kwaliteit kan worden aangetast door netwerk kwaliteit of de ontbrekende H265-videocodec.
 
-* Bekijk de stappen om netwerkproblemen te [identificeren.](#unstable-holograms)
-* Bekijk de [systeemvereisten](../overview/system-requirements.md#development-pc) voor het installeren van het nieuwste grafische stuurprogramma.
+* Zie de stappen om [netwerk problemen te identificeren](#unstable-holograms).
+* Zie de [systeem vereisten](../overview/system-requirements.md#development-pc) voor het installeren van het nieuwste grafische stuur programma.
 
-## <a name="video-recorded-with-mrc-does-not-reflect-the-quality-of-the-live-experience"></a>Video opgenomen met MRC weerspiegelt niet de kwaliteit van de live-ervaring
+## <a name="video-recorded-with-mrc-does-not-reflect-the-quality-of-the-live-experience"></a>Video die is opgenomen in MRC weerspiegelt niet de kwaliteit van de Live-ervaring
 
-Een video kan worden opgenomen op Hololens via [Mixed Reality Capture (MRC)](https://docs.microsoft.com/windows/mixed-reality/mixed-reality-capture-for-developers). Maar de resulterende video heeft een slechtere kwaliteit dan de live-ervaring om twee redenen:
-* De videoframerate is beperkt tot 30 Hz in tegenstelling tot 60 Hz.
-* De videobeelden gaan niet door de [late fase reprojection](../overview/features/late-stage-reprojection.md) verwerking stap, dus de video lijkt te zijn choppier.
+Een video kan worden vastgelegd op Hololens via [Mixed Reality Capture (MRC)](https://docs.microsoft.com/windows/mixed-reality/mixed-reality-capture-for-developers). De resulterende video heeft echter een slechterere kwaliteit dan de Live-ervaring om twee redenen:
+* De video weergave snelheid wordt beperkt tot 30 Hz, in tegens telling tot 60 Hz.
+* De video-installatie kopieën worden niet door de verwerkings stap voor het [vertraagd](../overview/features/late-stage-reprojection.md) verwerken van taken uitgevoerd, dus de video lijkt choppier te zijn.
 
-Beide zijn inherente beperkingen van de opnametechniek.
+Beide zijn inherente beperkingen van de opname techniek.
 
-## <a name="black-screen-after-successful-model-loading"></a>Zwart scherm na succesvol laden van het model
+## <a name="black-screen-after-successful-model-loading"></a>Zwart scherm nadat het laden van het model is geslaagd
 
-Als u verbonden bent met de rendering runtime en een model met succes hebt geladen, maar pas daarna een zwart scherm ziet, dan kan dit een paar verschillende oorzaken hebben.
+Als u verbonden bent met de rendering-runtime en een model hebt geladen, maar er een zwart scherm wordt weer gegeven, kan dit een aantal verschillende oorzaken hebben.
 
-We raden u aan de volgende dingen te testen voordat u een meer diepgaande analyse doet:
+Het is raadzaam om de volgende dingen te testen voordat u een uitgebreidere analyse uitvoert:
 
-* Is de H265 codec geïnstalleerd? Hoewel er een terugval naar de H264 codec zou moeten zijn, hebben we gevallen gezien waarin deze terugval niet goed werkte. Bekijk de [systeemvereisten](../overview/system-requirements.md#development-pc) voor het installeren van het nieuwste grafische stuurprogramma.
-* Sluit bij het gebruik van een Unity-project Unity, verwijdert de tijdelijke *bibliotheek-* en *obj-mappen* in de projectmap en laadt/bouwt het project opnieuw. In sommige gevallen in de cache opgeslagen gegevens veroorzaakt het monster niet goed functioneren zonder voor de hand liggende reden.
+* Is de H265-codec geïnstalleerd? Hoewel er sprake is van een terugval van de H264-codec, hebben we gevallen gezien waarin deze terugval niet goed werkt. Zie de [systeem vereisten](../overview/system-requirements.md#development-pc) voor het installeren van het nieuwste grafische stuur programma.
+* Wanneer u een unit-project gebruikt, sluit eenheid, verwijdert u de map tijdelijke *bibliotheek* en *obj* in de projectmap en laadt u het project opnieuw en bouwt u het opnieuw. In sommige gevallen hebben gegevens in de cache het voor beeld niet goed functioneren om een duidelijke reden.
 
-Als deze twee stappen niet hebben geholpen, is het nodig om uit te vinden of videoframes worden ontvangen door de client of niet. Dit kan programmatisch worden opgevraagd, zoals uitgelegd in het hoofdstuk [prestatiequery's aan de serverzijde.](../overview/features/performance-queries.md) Het `FrameStatistics struct` heeft een lid dat aangeeft hoeveel videoframes zijn ontvangen. Als dit aantal groter is dan 0 en na verloop van tijd toeneemt, ontvangt de client werkelijke videoframes van de server. Daarom moet het een probleem zijn aan de clientkant.
+Als deze twee stappen niet helpen, is het nodig om erachter te komen of video frames zijn ontvangen door de client of niet. Dit kan via een programma worden opgevraagd, zoals wordt uitgelegd in het hoofd stuk [server-side performance query's](../overview/features/performance-queries.md) . De `FrameStatistics struct` bevat een lid dat aangeeft hoeveel video frames zijn ontvangen. Als dit aantal groter is dan 0 en de tijd toeneemt, ontvangt de client daad werkelijke video frames van de server. Daarom moet het een probleem zijn aan de client zijde.
 
-### <a name="common-client-side-issues"></a>Veelvoorkomende problemen aan de klantzijde
+### <a name="common-client-side-issues"></a>Veelvoorkomende problemen aan de client zijde
 
-**Het model is niet binnen de weergave frustum:**
+**Het model bevindt zich niet in de weer gave-frustum:**
 
-In veel gevallen wordt het model correct weergegeven, maar zich buiten het camerafrustum bevinden. Een veel voorkomende reden is dat het model is geëxporteerd met een ver off-center pivot, zodat het wordt geknipt door het verre knipvlak van de camera. Het helpt om het selectiekader van het model programmatisch op te vragen en het vak met Unity als regelvak te visualiseren of de waarden ervan af te drukken op het foutopsporingslogboek.
+In veel gevallen wordt het model correct weer gegeven, maar buiten de camera frustum. Een veelvoorkomende reden is dat het model is geëxporteerd met een uit de weg geplaatste draaiing, zodat het wordt geknipt door het ver knip vlak van de camera. Het helpt het model in het kader van een programma op te vragen en het vak met eenheid als een lijn vak te visualiseren of de waarden in het logboek voor fout opsporing af te drukken.
 
-Bovendien genereert het conversieproces een [uitvoerjson-bestand](../how-tos/conversion/get-information.md) naast het geconverteerde model. Om model positionering problemen debuggen, `boundingBox` is het de moeite waard te kijken naar de vermelding in de [outputStatistieken sectie:](../how-tos/conversion/get-information.md#the-outputstatistics-section)
+Bovendien genereert het conversie proces een [JSON-uitvoer bestand](../how-tos/conversion/get-information.md) naast het geconverteerde model. Als u fouten wilt opsporen in model positionering, is het `boundingBox` een goed idee om de vermelding in de [sectie outputStatistics](../how-tos/conversion/get-information.md#the-outputstatistics-section)te bekijken:
 
 ```JSON
 {
@@ -125,31 +125,31 @@ Bovendien genereert het conversieproces een [uitvoerjson-bestand](../how-tos/con
 }
 ```
 
-Het selectiekader wordt beschreven `min` `max` als een en positie in 3D-ruimte, in meters. Dus een coördinaat van 1000,0 betekent dat het 1 kilometer van de oorsprong verwijderd is.
+Het selectie kader wordt beschreven als een `min` en `max` -positie in 3D-ruimte, uitgedrukt in meters. Een coördinaat van 1000,0 betekent dus 1 kilo meter weg van de oorsprong.
 
-Er kunnen twee problemen zijn met dit omsluitende vak dat leidt tot onzichtbare geometrie:
-* **De doos kan ver uit het midden,** zodat het object helemaal wordt geknipt als gevolg van ver vlak knippen. De `boundingBox` waarden in dit geval `min = [-2000, -5,-5], max = [-1990, 5,5]`zou er als volgt uitzien: , met behulp van een grote verschuiving op de x-as als een voorbeeld hier. Als u dit type probleem `recenterToOrigin` wilt oplossen, schakelt u de optie in de [modelconversieconfiguratie in.](../how-tos/conversion/configure-model-conversion.md)
-* **De doos kan worden gecentreerd, maar worden ordes van grootte te groot**. Dat betekent dat, hoewel de camera begint in het midden van het model, de geometrie is geknipt in alle richtingen. Typische `boundingBox` waarden in dit geval `min = [-1000,-1000,-1000], max = [1000,1000,1000]`zou er als volgt uitzien: . De reden voor dit soort problemen is meestal een eenheid schaal mismatch. Als u dit wilt compenseren, geeft u een [schaalwaarde op tijdens de conversie](../how-tos/conversion/configure-model-conversion.md#geometry-parameters) of markeert u het bronmodel met de juiste eenheden. Schalen kan ook worden toegepast op het hoofdknooppunt bij het laden van het model tijdens runtime.
+Er kunnen twee problemen zijn met dit selectie kader die leiden tot onzichtbare geometrie:
+* **Het vak kan niet uit het midden worden bevinden**, zodat het object volledig is afgekapt vanwege de meeste knip knippen. De `boundingBox` waarden in dit geval zien er als volgt uit `min = [-2000, -5,-5], max = [-1990, 5,5]`:, met behulp van een grote offset op de x-as als hier een voor beeld. Schakel de `recenterToOrigin` optie in de configuratie van de [model conversie](../how-tos/conversion/configure-model-conversion.md)in om dit type probleem op te lossen.
+* **Het vak kan worden gecentreerd, maar de volg orde van de grootte is te groot**. Dit betekent dat hoewel de camera wordt gestart in het midden van het model, de geometrie ervan in alle richtingen is afgekapt. Typische `boundingBox` waarden in dit geval zien er als volgt uit `min = [-1000,-1000,-1000], max = [1000,1000,1000]`:. De reden voor dit type probleem is doorgaans een niet-overeenkomende eenheids schaal. Als u wilt compenseren, geeft u een [schaal waarde op tijdens de conversie](../how-tos/conversion/configure-model-conversion.md#geometry-parameters) of markeert u het bron model met de juiste eenheden. Schalen kan ook worden toegepast op het hoofd knooppunt wanneer het model tijdens runtime wordt geladen.
 
-**De Unity render pipeline bevat niet de renderhaken:**
+**De unit weergave-pijp lijn bevat geen render-hooks:**
 
-Azure Remote Rendering haakt in de Unity render-pijplijn om de framesamenstelling met de video uit te voeren en de herprojectie uit te voeren. Als u wilt controleren of deze haken bestaan, opent u het menu *Venster > Analyse > Framefoutbugger*. Schakel deze in en zorg ervoor `HolographicRemotingCallbackPass` dat er twee vermeldingen voor de in de pijplijn:
+Azure remote rendering hooks in de unit weergave-pijp lijn voor het samen stellen van de kader samenstelling met de video en om de herprojectie uit te voeren. Als u wilt controleren of deze hooks bestaan, opent u het menu *venster > analyse > frame debugger*. Schakel dit in en zorg ervoor dat er twee vermeldingen zijn `HolographicRemotingCallbackPass` voor de in de pijp lijn:
 
 ![Unity frame debugger](./media/troubleshoot-unity-pipeline.png)
 
-## <a name="unity-code-using-the-remote-rendering-api-doesnt-compile"></a>Eenheidscode met de API voor externe rendering wordt niet gecompileerd
+## <a name="unity-code-using-the-remote-rendering-api-doesnt-compile"></a>Unit code met behulp van de remote rendering API wordt niet gecompileerd
 
-Schakel het *buildtype* van de Unity-oplossing over op **Foutopsporing.** Bij het testen van ARR `UNITY_EDITOR` in de Unity editor is de define alleen beschikbaar in 'Debug' builds. Houd er rekening mee dat dit niets te maken heeft met het buildtype dat wordt gebruikt voor [geïmplementeerde toepassingen,](../quickstarts/deploy-to-hololens.md)waarbij u de voorkeur geeft aan 'Release'-builds.
+Schakel het *type Build* van unit Solution in op **debug**. Bij het testen van ARR in de eenheids `UNITY_EDITOR` editor is de definitie alleen beschikbaar in builds voor fout opsporing. Houd er rekening mee dat dit niet gerelateerd is aan het build-type dat wordt gebruikt voor [geïmplementeerde toepassingen](../quickstarts/deploy-to-hololens.md), waarbij u de voor keur geeft aan release-builds.
 
 ## <a name="unstable-holograms"></a>Onstabiele hologrammen
 
-In het geval dat gerenderde objecten lijken te bewegen samen met hoofdbewegingen, u problemen ondervinden met *Late Stage Reprojection* (LSR). Raadpleeg het gedeelte late [fase reprojectie](../overview/features/late-stage-reprojection.md) voor richtlijnen over hoe een dergelijke situatie te benaderen.
+In het geval dat gerenderde objecten samen met de hoofd bewegingen worden verplaatst, kunnen er problemen optreden met de *vertraagde fase* van het project (lsr). Raadpleeg de sectie over [vertraagde fase](../overview/features/late-stage-reprojection.md) ring van het project voor richt lijnen voor het aanpaken van een dergelijke situatie.
 
-Een andere reden voor onstabiele hologrammen (wiebelen, kromtrekken, jittering, of springen hologrammen) kan een slechte netwerkconnectiviteit, met name onvoldoende netwerkbandbreedte, of te hoge latentie. Een goede indicator voor de kwaliteit van uw `ARRServiceStats.VideoFramesReused`netwerkverbinding is de waarde van de [prestatiestatistieken.](../overview/features/performance-queries.md) Hergebruikte frames geven situaties aan waarin een oud videoframe aan de clientzijde opnieuw moest worden gebruikt omdat er geen nieuw videoframe beschikbaar was , bijvoorbeeld vanwege pakketverlies of vanwege variaties in netwerklatentie. Als `ARRServiceStats.VideoFramesReused` dit vaak groter is dan nul, duidt dit op een netwerkprobleem.
+Een andere reden voor onstabiele hologrammen (Wobbling, krom trekken, jitteren of springende Holograms) kan een slechte netwerk verbinding zijn, met name onvoldoende netwerk bandbreedte of te hoge latentie. Een goede indicator voor de kwaliteit van uw netwerk verbinding is de waarde `ARRServiceStats.VideoFramesReused`voor [prestatie statistieken](../overview/features/performance-queries.md) . Hergebruikte frames geven situaties aan waarbij een oud video frame moet worden hergebruikt aan de client zijde omdat er geen nieuw video frame beschikbaar was, bijvoorbeeld vanwege pakket verlies of vanwege afwijkingen in de netwerk latentie. Als `ARRServiceStats.VideoFramesReused` het regel matig groter is dan nul, duidt dit op een netwerk probleem.
 
-Een andere waarde `ARRServiceStats.LatencyPoseToReceiveAvg`om naar te kijken is. Het moet consequent onder de 100 ms. Als u hogere waarden ziet, geeft dit aan dat u bent verbonden met een datacenter dat te ver weg is.
+U kunt ook `ARRServiceStats.LatencyPoseToReceiveAvg`een andere waarde zoeken in. Deze moet consistent zijn onder 100 MS. Als u hogere waarden ziet, betekent dit dat u verbonden bent met een Data Center dat te ver weg is.
 
-Zie de [richtlijnen voor netwerkconnectiviteit voor](../reference/network-requirements.md#guidelines-for-network-connectivity)een lijst met mogelijke oplossingen.
+Zie de [richt lijnen voor netwerk connectiviteit](../reference/network-requirements.md#guidelines-for-network-connectivity)voor een lijst met mogelijke oplossingen.
 
 ## <a name="next-steps"></a>Volgende stappen
 

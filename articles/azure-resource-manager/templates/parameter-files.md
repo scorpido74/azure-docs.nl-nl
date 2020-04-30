@@ -1,22 +1,22 @@
 ---
 title: Parameterbestand maken
-description: Parameterbestand maken voor het doorgeven van waarden tijdens de implementatie van een Azure Resource Manager-sjabloon
+description: Parameter bestand maken voor het door geven van waarden tijdens de implementatie van een Azure Resource Manager sjabloon
 ms.topic: conceptual
 ms.date: 04/20/2020
 ms.openlocfilehash: a1a1f703594f8eaa572ea38ecef88b4cd6ba5a4b
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81682896"
 ---
-# <a name="create-resource-manager-parameter-file"></a>Parameterbestand Resourcebeheer maken
+# <a name="create-resource-manager-parameter-file"></a>Resource Manager-parameter bestand maken
 
-In plaats van parameters door te geven als inlinewaarden in uw script, u het gemakkelijker vinden om een JSON-bestand te gebruiken dat de parameterwaarden bevat. In dit artikel ziet u hoe u het parameterbestand maakt.
+In plaats van para meters als inline waarden door te geven in uw script, is het wellicht eenvoudiger een JSON-bestand te gebruiken dat de parameter waarden bevat. In dit artikel wordt beschreven hoe u het parameter bestand maakt.
 
-## <a name="parameter-file"></a>Parameterbestand
+## <a name="parameter-file"></a>Parameter bestand
 
-Het parameterbestand heeft de volgende indeling:
+Het parameter bestand heeft de volgende indeling:
 
 ```json
 {
@@ -33,9 +33,9 @@ Het parameterbestand heeft de volgende indeling:
 }
 ```
 
-Merk op dat de parameterwaarden worden opgeslagen als platte tekst in het parameterbestand. Deze benadering werkt voor waarden die niet gevoelig zijn, zoals het opgeven van de SKU voor een resource. Het werkt niet voor gevoelige waarden, zoals wachtwoorden. Als u een gevoelige waarde als parameter moet doorgeven, slaat u de waarde op in een sleutelkluis en verwijst u naar de sleutelkluis in uw parameterbestand. De gevoelige waarde wordt veilig opgehaald tijdens de implementatie.
+U ziet dat de parameter waarden worden opgeslagen als tekst zonder opmaak in het parameter bestand. Deze aanpak werkt voor waarden die niet gevoelig zijn, zoals het opgeven van de SKU voor een resource. Het werkt niet voor gevoelige waarden, zoals wacht woorden. Als u een gevoelige waarde wilt door geven als een para meter, slaat u de waarde op in een sleutel kluis en verwijst u naar de sleutel kluis in het parameter bestand. De gevoelige waarde wordt veilig opgehaald tijdens de implementatie.
 
-Het volgende parameterbestand bevat een waarde met effen tekst en een waarde die is opgeslagen in een sleutelkluis.
+Het volgende parameter bestand bevat een onbewerkte tekst waarde en een waarde die is opgeslagen in een sleutel kluis.
 
 ```json
 {
@@ -57,11 +57,11 @@ Het volgende parameterbestand bevat een waarde met effen tekst en een waarde die
 }
 ```
 
-Zie Azure Key Vault gebruiken om [veilige parameterwaarde tijdens de implementatie door te geven voor](key-vault-parameter.md)meer informatie over het gebruik van waarden uit een sleutelkluis.
+Zie [Azure Key Vault gebruiken om de waarde van een beveiligde para meter door te geven tijdens de implementatie](key-vault-parameter.md)voor meer informatie over het gebruik van waarden uit een sleutel kluis.
 
-## <a name="define-parameter-values"></a>Parameterwaarden definiëren
+## <a name="define-parameter-values"></a>Parameter waarden definiëren
 
-Als u wilt weten hoe u de parameterwaarden definiëren, opent u de sjabloon die u implementeert. Bekijk het gedeelte parameters van de sjabloon. In het volgende voorbeeld worden de parameters van een sjabloon weergegeven.
+Als u wilt weten hoe u de parameter waarden definieert, opent u de sjabloon die u implementeert. Bekijk de sectie para meters van de sjabloon. In het volgende voor beeld worden de para meters uit een sjabloon weer gegeven.
 
 ```json
 "parameters": {
@@ -82,7 +82,7 @@ Als u wilt weten hoe u de parameterwaarden definiëren, opent u de sjabloon die 
 }
 ```
 
-Het eerste detail dat opvalt is de naam van elke parameter. De waarden in uw parameterbestand moeten overeenkomen met de namen.
+De eerste details die u ziet, is de naam van elke para meter. De waarden in het parameter bestand moeten overeenkomen met de namen.
 
 ```json
 {
@@ -97,7 +97,7 @@ Het eerste detail dat opvalt is de naam van elke parameter. De waarden in uw par
 }
 ```
 
-Let op het type parameter. De waarden in het parameterbestand moeten dezelfde typen hebben. Voor deze sjabloon u beide parameters als tekenreeksen opgeven.
+Let op het type van de para meter. De waarden in het parameter bestand moeten van hetzelfde type zijn. Voor deze sjabloon kunt u beide para meters opgeven als teken reeksen.
 
 ```json
 {
@@ -114,7 +114,7 @@ Let op het type parameter. De waarden in het parameterbestand moeten dezelfde ty
 }
 ```
 
-Zoek vervolgens naar een standaardwaarde. Als een parameter een standaardwaarde heeft, u een waarde opgeven, maar dat hoeft niet.
+Vervolgens zoekt u naar een standaard waarde. Als een para meter een standaard waarde heeft, kunt u een waarde opgeven, maar hoeft u dit niet te doen.
 
 ```json
 {
@@ -131,7 +131,7 @@ Zoek vervolgens naar een standaardwaarde. Als een parameter een standaardwaarde 
 }
 ```
 
-Tot slot, kijk naar de toegestane waarden en eventuele beperkingen zoals maximale lengte. Ze vertellen u het bereik van waarden die u bieden voor de parameter.
+Bekijk ten slotte de toegestane waarden en eventuele beperkingen, zoals de maximale lengte. Ze geven u het bereik van de waarden die u kunt opgeven voor de para meter.
 
 ```json
 {
@@ -148,9 +148,9 @@ Tot slot, kijk naar de toegestane waarden en eventuele beperkingen zoals maximal
 }
 ```
 
-## <a name="parameter-type-formats"></a>Parametertype-indelingen
+## <a name="parameter-type-formats"></a>Notaties van het parameter type
 
-In het volgende voorbeeld worden de opaties van verschillende parametertypen weergegeven.
+In het volgende voor beeld ziet u de indelingen van verschillende parameter typen.
 
 ```json
 {
@@ -184,23 +184,23 @@ In het volgende voorbeeld worden de opaties van verschillende parametertypen wee
 
 ## <a name="file-name"></a>Bestandsnaam
 
-De algemene conventie voor het benoemen van het parameterbestand is het toevoegen van **.parameters** aan de sjabloonnaam. Als uw sjabloon bijvoorbeeld **azuredeploy.json**wordt genoemd, krijgt uw parameterbestand de naam **azuredeploy.parameters.json**. Met deze naamgevingsconventie u de verbinding tussen de sjabloon en de parameters zien.
+De algemene Conventie voor het benoemen van het parameter bestand is het toevoegen van **. para meters** aan de naam van de sjabloon. Als uw sjabloon bijvoorbeeld de naam **azuredeploy. json**heeft, heet het parameter bestand **azuredeploy. para meters. json**. Deze naamgevings Conventie helpt u de verbinding tussen de sjabloon en de para meters te zien.
 
-Als u wilt implementeren in verschillende omgevingen, maakt u meer dan één parameterbestand. Voeg bij het benoemen van het parameterbestand een manier toe om het gebruik ervan te identificeren. Gebruik bijvoorbeeld **azuredeploy.parameters-dev.json** en **azuredeploy.parameters-prod.json**
+Als u wilt implementeren in verschillende omgevingen, moet u meer dan één parameter bestand maken. Wanneer u het parameter bestand een naam geeft, voegt u een manier toe om het te identificeren. Gebruik bijvoorbeeld **azuredeploy. para meters-dev. json** en **azuredeploy. para meters-Prod. json**
 
 
-## <a name="parameter-precedence"></a>Parametervoorrang
+## <a name="parameter-precedence"></a>Parameter prioriteit
 
-U inlineparameters en een lokaal parameterbestand gebruiken in dezelfde implementatiebewerking. U bijvoorbeeld bepaalde waarden opgeven in het lokale parameterbestand en tijdens de implementatie andere waarden toevoegen. Als u waarden opgeeft voor een parameter in zowel het lokale parameterbestand als inline, heeft de inlinewaarde voorrang.
+U kunt inline-para meters en een lokaal parameter bestand gebruiken in dezelfde implementatie bewerking. U kunt bijvoorbeeld een aantal waarden opgeven in het lokale parameter bestand en andere waarden inline toevoegen tijdens de implementatie. Als u waarden opgeeft voor een para meter in zowel het lokale parameter bestand als inline, heeft de inline-waarde prioriteit.
 
-Wanneer u echter een extern parameterbestand gebruikt, u geen andere waarden doorgeven, noch inline als vanuit een lokaal bestand. Alle inline parameters worden genegeerd. Geef alle parameterwaarden op in het externe bestand.
+Wanneer u echter een extern parameter bestand gebruikt, kunt u geen andere waarden door geven in line of vanuit een lokaal bestand. Alle inline-para meters worden genegeerd. Geef alle parameter waarden op in het externe bestand.
 
-## <a name="parameter-name-conflicts"></a>Parameternaamconflicten
+## <a name="parameter-name-conflicts"></a>Conflicten met parameter namen
 
-Als uw sjabloon een parameter bevat met dezelfde naam als een van de parameters in de opdracht PowerShell, presenteert PowerShell de parameter van uw sjabloon met het postfix **FromTemplate**. Een parameter met de naam **ResourceGroupName** in uw sjabloon komt bijvoorbeeld in conflict met de parameter **ResourceGroupName** in de cmdlet [Nieuw-AzResourceGroupDeployment.](/powershell/module/az.resources/new-azresourcegroupdeployment) U wordt gevraagd een waarde op te geven voor **ResourceGroupNameFromTemplate**. U deze verwarring voorkomen door parameternamen te gebruiken die niet worden gebruikt voor implementatieopdrachten.
+Als uw sjabloon een para meter bevat met dezelfde naam als een van de para meters in de Power shell-opdracht, geeft Power shell de para meter van uw sjabloon weer met de achtervoegsel **FromTemplate**. Een para meter met de naam **ResourceGroupName** in uw sjabloon is bijvoorbeeld strijdig met de para meter **ResourceGroupName** in de cmdlet [New-AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment) . U wordt gevraagd een waarde voor **ResourceGroupNameFromTemplate**op te geven. U kunt deze Verwar ring vermijden door parameter namen te gebruiken die niet worden gebruikt voor implementatie opdrachten.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Zie [Parameters in Azure Resource Manager-sjablonen](template-parameters.md)voor meer informatie over het definiëren van parameters in uw sjabloon.
-- Zie Azure Key Vault gebruiken om [veilige parameterwaarde tijdens de implementatie door te geven voor](key-vault-parameter.md)meer informatie over het gebruik van waarden uit een sleutelkluis.
-- Zie [Parameters in Azure Resource Manager-sjablonen](template-parameters.md)voor meer informatie over parameters.
+- Zie [para meters in azure Resource Manager sjablonen](template-parameters.md)voor meer informatie over het definiëren van para meters in uw sjabloon.
+- Zie [Azure Key Vault gebruiken om de waarde van een beveiligde para meter door te geven tijdens de implementatie](key-vault-parameter.md)voor meer informatie over het gebruik van waarden uit een sleutel kluis.
+- Zie [para meters in azure Resource Manager-sjablonen](template-parameters.md)voor meer informatie over para meters.

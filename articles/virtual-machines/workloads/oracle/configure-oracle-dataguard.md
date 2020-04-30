@@ -1,6 +1,6 @@
 ---
-title: Oracle Data Guard implementeren op een virtuele Azure Linux-machine | Microsoft Documenten
-description: Zorg dat Oracle Data Guard snel operationeel is in uw Azure-omgeving.
+title: Oracle Data Guard implementeren op een virtuele machine van Azure Linux | Microsoft Docs
+description: Profiteer snel van Oracle-gegevens beveiliging in uw Azure-omgeving.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: BorisB2015
@@ -15,31 +15,31 @@ ms.workload: infrastructure
 ms.date: 08/02/2018
 ms.author: borisb
 ms.openlocfilehash: 96528dc34305e77602634110a0153f7623a15c96
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81676774"
 ---
-# <a name="implement-oracle-data-guard-on-an-azure-linux-virtual-machine"></a>Oracle Data Guard implementeren op een virtuele Azure Linux-machine 
+# <a name="implement-oracle-data-guard-on-an-azure-linux-virtual-machine"></a>Oracle Data Guard implementeren op een virtuele machine van Azure Linux 
 
-Azure CLI wordt gebruikt voor het maken en beheren van Azure-resources vanaf de opdrachtregel of in scripts. In dit artikel wordt beschreven hoe u Azure CLI gebruiken om een Oracle Database 12c-database te implementeren vanuit de Azure Marketplace-afbeelding. In dit artikel ziet u vervolgens stap voor stap hoe u Data Guard installeren en configureren op een virtuele Azure-machine (VM).
+Azure CLI wordt gebruikt voor het maken en beheren van Azure-resources vanaf de opdrachtregel of in scripts. In dit artikel wordt beschreven hoe u Azure CLI gebruikt om een Oracle Database 12c-data base te implementeren vanuit de Azure Marketplace-installatie kopie. In dit artikel ziet u vervolgens stapsgewijze instructies, hoe u Data Guard kunt installeren en configureren op een virtuele Azure-machine (VM).
 
-Controleer voordat u begint of Azure CLI is geïnstalleerd. Zie de azure [CLI-installatiehandleiding](https://docs.microsoft.com/cli/azure/install-azure-cli)voor meer informatie.
+Voordat u begint, moet u ervoor zorgen dat Azure CLI is geïnstalleerd. Raadpleeg de [installatie handleiding voor Azure cli](https://docs.microsoft.com/cli/azure/install-azure-cli)voor meer informatie.
 
 ## <a name="prepare-the-environment"></a>De omgeving voorbereiden
 ### <a name="assumptions"></a>Veronderstellingen
 
-Als u Oracle Data Guard wilt installeren, moet u twee Azure VM's maken op dezelfde beschikbaarheidsset:
+Als u Oracle Data Guard wilt installeren, moet u twee virtuele Azure-machines maken op dezelfde beschikbaarheidsset:
 
-- De primaire VM (myVM1) heeft een draaiende Oracle-instantie.
-- De stand-by VM (myVM2) heeft de Oracle-software alleen geïnstalleerd.
+- De primaire virtuele machine (myVM1) heeft een actief Oracle-exemplaar.
+- De stand-by-VM (myVM2) heeft de Oracle-software alleen geïnstalleerd.
 
-De Marketplace-afbeelding die u gebruikt om de VM's te maken, is Oracle:Oracle-Database-Ee:12.1.0.2:latest.
+De Marketplace-installatie kopie die u gebruikt om de Vm's te maken, is Oracle: Oracle-data base-ee: 12.1.0.2: Latest.
 
 ### <a name="sign-in-to-azure"></a>Aanmelden bij Azure 
 
-Meld u aan bij uw Azure-abonnement met de opdracht [AZ-inlogservice](/cli/azure/reference-index) en volg de aanwijzingen op het scherm.
+Meld u aan bij uw Azure-abonnement met de opdracht [AZ login](/cli/azure/reference-index) en volg de instructies op het scherm.
 
 ```azurecli
 az login
@@ -47,7 +47,7 @@ az login
 
 ### <a name="create-a-resource-group"></a>Een resourcegroep maken
 
-Maak een resourcegroep met de opdracht [az group create](/cli/azure/group). Een Azure-brongroep is een logische container waarin Azure-resources worden geïmplementeerd en beheerd. 
+Maak een resourcegroep met de opdracht [az group create](/cli/azure/group). Een Azure-resource groep is een logische container waarin Azure-resources worden geïmplementeerd en beheerd. 
 
 In het volgende voorbeeld wordt een resourcegroep met de naam `myResourceGroup` gemaakt op de locatie `westus`:
 
@@ -57,7 +57,7 @@ az group create --name myResourceGroup --location westus
 
 ### <a name="create-an-availability-set"></a>Een beschikbaarheidsset maken
 
-Het maken van een beschikbaarheidsset is optioneel, maar we raden het aan. Zie [Richtlijnen voor Azure-beschikbaarheidssets](https://docs.microsoft.com/azure/virtual-machines/windows/infrastructure-availability-sets-guidelines)voor meer informatie.
+Het maken van een beschikbaarheidsset is optioneel, maar we raden het aan. Zie de [richt lijnen voor Azure-beschikbaarheids sets](https://docs.microsoft.com/azure/virtual-machines/windows/infrastructure-availability-sets-guidelines)voor meer informatie.
 
 ```azurecli
 az vm availability-set create \
@@ -71,9 +71,9 @@ az vm availability-set create \
 
 Maak een VM met de opdracht [az vm create](/cli/azure/vm). 
 
-In het volgende voorbeeld `myVM1` worden `myVM2`twee VM's met de naam en . Het maakt ook SSH-toetsen, als ze nog niet bestaan op een standaardsleutellocatie. Als u een specifieke set sleutels wilt gebruiken, gebruikt u de optie `--ssh-key-value`.
+In het volgende voor beeld worden twee `myVM1` virtuele `myVM2`machines gemaakt met de naam en. Ook worden er SSH-sleutels gemaakt, als deze nog niet bestaan op een standaard sleutel locatie. Als u een specifieke set sleutels wilt gebruiken, gebruikt u de optie `--ssh-key-value`.
 
-MyVM1 (primair) maken:
+MyVM1 maken (primair):
 ```azurecli
 az vm create \
      --resource-group myResourceGroup \
@@ -85,7 +85,7 @@ az vm create \
      --generate-ssh-keys \
 ```
 
-Nadat u de VM hebt gemaakt, worden in Azure CLI informatie weergegeven die vergelijkbaar is met het volgende voorbeeld. Let op `publicIpAddress`de waarde van . U gebruikt dit adres om toegang te krijgen tot de VM.
+Nadat u de virtuele machine hebt gemaakt, toont Azure CLI soort gelijke informatie als in het volgende voor beeld. Noteer de waarde van `publicIpAddress`. U gebruikt dit adres voor toegang tot de virtuele machine.
 
 ```output
 {
@@ -100,7 +100,7 @@ Nadat u de VM hebt gemaakt, worden in Azure CLI informatie weergegeven die verge
 }
 ```
 
-MyVM2 (stand-by) maken:
+MyVM2 maken (stand-by):
 
 ```azurecli
 az vm create \
@@ -113,11 +113,11 @@ az vm create \
      --generate-ssh-keys \
 ```
 
-Let op `publicIpAddress` de waarde van nadat u myVM2 hebt gemaakt.
+Noteer de waarde van `publicIpAddress` nadat u myVM2 hebt gemaakt.
 
-### <a name="open-the-tcp-port-for-connectivity"></a>De TCP-poort openen voor connectiviteit
+### <a name="open-the-tcp-port-for-connectivity"></a>Open de TCP-poort voor connectiviteit
 
-Met deze stap worden externe eindpunten geconfigureerd, waarmee externe toegang tot de Oracle-database mogelijk is.
+Met deze stap configureert u externe eind punten, waardoor externe toegang tot de Oracle-data base mogelijk is.
 
 Open de poort voor myVM1:
 
@@ -129,7 +129,7 @@ az network nsg rule create --resource-group myResourceGroup\
     --destination-address-prefix '*' --destination-port-range 1521 --access allow
 ```
 
-Het resultaat moet op het volgende antwoord lijken:
+Het resultaat moet er ongeveer uitzien als het volgende antwoord:
 
 ```output
 {
@@ -162,23 +162,23 @@ az network nsg rule create --resource-group myResourceGroup\
 
 ### <a name="connect-to-the-virtual-machine"></a>Verbinding maken met de virtuele machine
 
-Gebruik de volgende opdracht om een SSH-sessie te starten voor de virtuele machine. Vervang het IP-adres door de `publicIpAddress` waarde voor uw virtuele machine.
+Gebruik de volgende opdracht om een SSH-sessie te starten voor de virtuele machine. Vervang het IP-adres door `publicIpAddress` de waarde voor de virtuele machine.
 
 ```bash 
 $ ssh azureuser@<publicIpAddress>
 ```
 
-### <a name="create-the-database-on-myvm1-primary"></a>De database maken op myVM1 (primair)
+### <a name="create-the-database-on-myvm1-primary"></a>De Data Base op myVM1 maken (primair)
 
-De Oracle-software is al geïnstalleerd op de Marketplace-afbeelding, dus de volgende stap is het installeren van de database. 
+De Oracle-software is al geïnstalleerd op de Marketplace-installatie kopie, dus de volgende stap is het installeren van de data base. 
 
-Overschakelen naar de Oracle-superuser:
+Schakel over naar de Oracle-super gebruiker:
 
 ```bash
 $ sudo su - oracle
 ```
 
-Maak de database:
+Maak de Data Base:
 
 ```bash
 $ dbca -silent \
@@ -200,7 +200,7 @@ $ dbca -silent \
    -ignorePreReqs
 ```
 
-Uitgangen moeten er hetzelfde uitzien als het volgende antwoord:
+De uitvoer moet er ongeveer uitzien als het volgende antwoord:
 
 ```output
 Copying database files
@@ -232,14 +232,14 @@ Creating Pluggable Databases
 Look at the log file "/u01/app/oracle/cfgtoollogs/dbca/cdb1/cdb1.log" for further details.
 ```
 
-Stel de ORACLE_SID- en ORACLE_HOME variabelen in:
+Stel de ORACLE_SID-en ORACLE_HOME variabelen in:
 
 ```bash
 $ ORACLE_HOME=/u01/app/oracle/product/12.1.0/dbhome_1; export ORACLE_HOME
 $ ORACLE_SID=cdb1; export ORACLE_SID
 ```
 
-Optioneel u ORACLE_HOME en ORACLE_SID toevoegen aan het bestand /home/oracle/.bashrc, zodat deze instellingen worden opgeslagen voor toekomstige aanmeldingen:
+Desgewenst kunt u ORACLE_HOME en ORACLE_SID toevoegen aan het/Home/Oracle/.bashrc-bestand, zodat deze instellingen worden opgeslagen voor toekomstige aanmeldingen:
 
 ```bash
 # add oracle home
@@ -248,9 +248,9 @@ export ORACLE_HOME=/u01/app/oracle/product/12.1.0/dbhome_1
 export ORACLE_SID=cdb1
 ```
 
-## <a name="configure-data-guard"></a>Gegevensbeveiliging configureren
+## <a name="configure-data-guard"></a>Data Guard configureren
 
-### <a name="enable-archive-log-mode-on-myvm1-primary"></a>Archieflogboekmodus inschakelen op myVM1 (primair)
+### <a name="enable-archive-log-mode-on-myvm1-primary"></a>Logboek modus voor archiveren op myVM1 inschakelen (primair)
 
 ```bash
 $ sqlplus / as sysdba
@@ -266,14 +266,14 @@ SQL> ALTER DATABASE ARCHIVELOG;
 SQL> ALTER DATABASE OPEN;
 ```
 
-Schakel forcelogging in en controleer of er ten minste één logboekbestand aanwezig is:
+Schakel logboek registratie in en zorg ervoor dat er ten minste één logboek bestand aanwezig is:
 
 ```bash
 SQL> ALTER DATABASE FORCE LOGGING;
 SQL> ALTER SYSTEM SWITCH LOGFILE;
 ```
 
-Stand-by redo-logboeken maken:
+Restands logboeken voor opnieuw maken:
 
 ```bash
 SQL> ALTER DATABASE ADD STANDBY LOGFILE ('/u01/app/oracle/oradata/cdb1/standby_redo01.log') SIZE 50M;
@@ -282,7 +282,7 @@ SQL> ALTER DATABASE ADD STANDBY LOGFILE ('/u01/app/oracle/oradata/cdb1/standby_r
 SQL> ALTER DATABASE ADD STANDBY LOGFILE ('/u01/app/oracle/oradata/cdb1/standby_redo04.log') SIZE 50M;
 ```
 
-Schakel Flashback in (wat herstel een stuk\_eenvoudiger\_maakt) en stel STANDBY FILE MANAGEMENT in op automatisch. Exit SQL*Plus daarna.
+Schakel Flashback (waardoor herstel veel gemakkelijker te maken) in en stel stand\_-\_by bestands beheer in op automatisch. Sluit SQL * Plus daarna af.
 
 ```bash
 SQL> ALTER DATABASE FLASHBACK ON;
@@ -292,7 +292,7 @@ SQL> EXIT;
 
 ### <a name="set-up-service-on-myvm1-primary"></a>Service instellen op myVM1 (primair)
 
-Bewerk of maak het bestand tnsnames.ora, dat zich bevindt in de map $ORACLE_HOME\network\admin.
+Bewerk of maak het bestand bestand Tnsnames. ora, dat zich in de map $ORACLE _HOME \network\admin bevindt.
 
 Voeg de volgende vermeldingen toe:
 
@@ -318,7 +318,7 @@ cdb1_stby =
   )
 ```
 
-Bewerk of maak het listener.ora-bestand, dat zich bevindt in de map $ORACLE_HOME\network\admin.
+Bewerk of maak het bestand listener. ora, dat zich in de map $ORACLE _HOME \network\admin bevindt.
 
 Voeg de volgende vermeldingen toe:
 
@@ -351,7 +351,7 @@ SQL> ALTER SYSTEM SET dg_broker_start=true;
 SQL> EXIT;
 ```
 
-Start de luisteraar:
+De listener starten:
 
 ```bash
 $ lsnrctl stop
@@ -360,19 +360,19 @@ $ lsnrctl start
 
 ### <a name="set-up-service-on-myvm2-standby"></a>Service instellen op myVM2 (stand-by)
 
-SSH naar myVM2:
+SSH-naar-myVM2:
 
 ```bash 
 $ ssh azureuser@<publicIpAddress>
 ```
 
-Log in als Oracle:
+Meld u aan als Oracle:
 
 ```bash
 $ sudo su - oracle
 ```
 
-Bewerk of maak het bestand tnsnames.ora, dat zich bevindt in de map $ORACLE_HOME\network\admin.
+Bewerk of maak het bestand bestand Tnsnames. ora, dat zich in de map $ORACLE _HOME \network\admin bevindt.
 
 Voeg de volgende vermeldingen toe:
 
@@ -398,7 +398,7 @@ cdb1_stby =
   )
 ```
 
-Bewerk of maak het listener.ora-bestand, dat zich bevindt in de map $ORACLE_HOME\network\admin.
+Bewerk of maak het bestand listener. ora, dat zich in de map $ORACLE _HOME \network\admin bevindt.
 
 Voeg de volgende vermeldingen toe:
 
@@ -423,7 +423,7 @@ SID_LIST_LISTENER =
 ADR_BASE_LISTENER = /u01/app/oracle
 ```
 
-Start de luisteraar:
+De listener starten:
 
 ```bash
 $ lsnrctl stop
@@ -431,9 +431,9 @@ $ lsnrctl start
 ```
 
 
-### <a name="restore-the-database-to-myvm2-standby"></a>De database herstellen naar myVM2 (stand-by)
+### <a name="restore-the-database-to-myvm2-standby"></a>De data base herstellen naar myVM2 (stand-by)
 
-Maak het parameterbestand /tmp/initcdb1_stby.ora met de volgende inhoud:
+Maak het parameter bestand/tmp/initcdb1_stby. ora met de volgende inhoud:
 
 ```bash
 *.db_name='cdb1'
@@ -448,13 +448,13 @@ mkdir -p /u01/app/oracle/fast_recovery_area/cdb1
 mkdir -p /u01/app/oracle/admin/cdb1/adump
 ```
 
-Een wachtwoordbestand maken:
+Een wachtwoord bestand maken:
 
 ```bash
 $ orapwd file=/u01/app/oracle/product/12.1.0/dbhome_1/dbs/orapwcdb1 password=OraPasswd1 entries=10
 ```
 
-Start de database op myVM2:
+De data base starten op myVM2:
 
 ```bash
 $ export ORACLE_SID=cdb1
@@ -464,7 +464,7 @@ SQL> STARTUP NOMOUNT PFILE='/tmp/initcdb1_stby.ora';
 SQL> EXIT;
 ```
 
-Herstel de database met het gereedschap RMAN:
+Herstel de data base met behulp van het RMAN-hulp programma:
 
 ```bash
 $ rman TARGET sys/OraPasswd1@cdb1 AUXILIARY sys/OraPasswd1@cdb1_stby
@@ -482,7 +482,7 @@ DUPLICATE TARGET DATABASE
   NOFILENAMECHECK;
 ```
 
-U ziet berichten die vergelijkbaar zijn met de volgende wanneer de opdracht is voltooid. Exit RMAN.
+Wanneer de opdracht is voltooid, ziet u berichten die er ongeveer als volgt uitzien. Sluit RMAN af.
 
 ```output
 media recovery complete, elapsed time: 00:00:00
@@ -494,7 +494,7 @@ Finished Duplicate Db at 29-JUN-17
 RMAN> EXIT;
 ```
 
-Optioneel u ORACLE_HOME en ORACLE_SID toevoegen aan het bestand /home/oracle/.bashrc, zodat deze instellingen worden opgeslagen voor toekomstige aanmeldingen:
+Desgewenst kunt u ORACLE_HOME en ORACLE_SID toevoegen aan het/Home/Oracle/.bashrc-bestand, zodat deze instellingen worden opgeslagen voor toekomstige aanmeldingen:
 
 ```bash
 # add oracle home
@@ -512,7 +512,7 @@ SQL> EXIT;
 
 ### <a name="configure-data-guard-broker-on-myvm1-primary"></a>Data Guard Broker configureren op myVM1 (primair)
 
-Start Data Guard Manager en meld je aan met SYS en een wachtwoord. (Gebruik geen os-verificatie.) Voer het volgende uit:
+Start Data Guard Manager en meld u aan met SYS en een wacht woord. (Gebruik geen OS-verificatie.) Voer de volgende handelingen uit:
 
 ```bash
 $ dgmgrl sys/OraPasswd1@cdb1
@@ -548,13 +548,13 @@ Configuration Status:
 SUCCESS   (status updated 26 seconds ago)
 ```
 
-U hebt de oracle Data Guard-installatie voltooid. In het volgende gedeelte ziet u hoe u de connectiviteit testen en overschakelen.
+U hebt de installatie van Oracle Data Guard voltooid. In de volgende sectie ziet u hoe u de verbinding kunt testen en overschakelen.
 
-### <a name="connect-the-database-from-the-client-machine"></a>De database verbinden vanaf de clientmachine
+### <a name="connect-the-database-from-the-client-machine"></a>Verbinding maken tussen de data base en de client computer
 
-Werk het tnsnames.ora-bestand op uw clientmachine bij of maak deze. Dit bestand bevindt zich meestal in $ORACLE_HOME\network\admin.
+Werk het bestand bestand Tnsnames. ora op de client computer bij of maak het. Dit bestand bevindt zich doorgaans in $ORACLE _HOME \network\admin.
 
-Vervang de IP-adressen `publicIpAddress` door uw waarden voor myVM1 en myVM2:
+Vervang de IP-adressen door `publicIpAddress` de waarden voor MyVM1 en myVM2:
 
 ```bash
 cdb1=
@@ -584,7 +584,7 @@ cdb1_stby=
   )
 ```
 
-SQL*Plus starten:
+Start SQL * Plus:
 
 ```bash
 $ sqlplus sys/OraPasswd1@cdb1
@@ -601,7 +601,7 @@ SQL>
 
 ## <a name="test-the-data-guard-configuration"></a>De Data Guard-configuratie testen
 
-### <a name="switch-over-the-database-on-myvm1-primary"></a>De database overschakelen op myVM1 (primair)
+### <a name="switch-over-the-database-on-myvm1-primary"></a>Scha kelen tussen de Data Base op myVM1 (primair)
 
 Overschakelen van primair naar stand-by (cdb1 naar cdb1_stby):
 
@@ -627,9 +627,9 @@ Switchover succeeded, new primary is "cdb1_stby"
 DGMGRL>
 ```
 
-U nu verbinding maken met de stand-by database.
+U kunt nu verbinding maken met de standby-data base.
 
-SQL*Plus starten:
+Start SQL * Plus:
 
 ```bash
 
@@ -645,9 +645,9 @@ With the Partitioning, OLAP, Advanced Analytics and Real Application Testing opt
 SQL>
 ```
 
-### <a name="switch-over-the-database-on-myvm2-standby"></a>De database overschakelen op myVM2 (stand-by)
+### <a name="switch-over-the-database-on-myvm2-standby"></a>Scha kelen tussen de Data Base op myVM2 (stand-by)
 
-Voer het volgende uit op myVM2:
+Als u wilt scha kelen, voert u het volgende uit op myVM2:
 
 ```bash
 $ dgmgrl sys/OraPasswd1@cdb1_stby
@@ -670,9 +670,9 @@ Database mounted.
 Switchover succeeded, new primary is "cdb1"
 ```
 
-Nogmaals, je moet nu in staat zijn om verbinding te maken met de primaire database.
+U kunt nu weer verbinding maken met de primaire data base.
 
-SQL*Plus starten:
+Start SQL * Plus:
 
 ```bash
 
@@ -688,12 +688,12 @@ With the Partitioning, OLAP, Advanced Analytics and Real Application Testing opt
 SQL>
 ```
 
-U bent klaar met de installatie en configuratie van Data Guard op Oracle Linux.
+U hebt de installatie en configuratie van Data Guard op Oracle Linux voltooid.
 
 
 ## <a name="delete-the-virtual-machine"></a>Verwijder de virtuele machine
 
-Wanneer u de vm niet meer nodig hebt, u de volgende opdracht gebruiken om de resourcegroep, VM en alle gerelateerde bronnen te verwijderen:
+Wanneer u de virtuele machine niet meer nodig hebt, kunt u de volgende opdracht gebruiken om de resource groep, de VM en alle gerelateerde resources te verwijderen:
 
 ```azurecli
 az group delete --name myResourceGroup
@@ -701,6 +701,6 @@ az group delete --name myResourceGroup
 
 ## <a name="next-steps"></a>Volgende stappen
 
-[Zelfstudie: Hoogst beschikbare virtuele machines maken](../../linux/create-cli-complete.md)
+[Zelf studie: Maxi maal beschik bare virtuele machines maken](../../linux/create-cli-complete.md)
 
-[Azure CLI-voorbeelden voor VM-implementatie verkennen](../../linux/cli-samples.md)
+[Azure CLI-voor beelden van VM-implementatie verkennen](../../linux/cli-samples.md)

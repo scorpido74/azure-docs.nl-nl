@@ -1,6 +1,6 @@
 ---
-title: Een veilige webapplicatie ontwikkelen | Microsoft Documenten
-description: Deze eenvoudige voorbeeld-app implementeert best practices voor beveiliging die uw toepassing en de beveiligingshouding van uw organisatie verbeteren wanneer u zich ontwikkelt op Azure.
+title: Een veilige webtoepassing ontwikkelen | Microsoft Docs
+description: Deze eenvoudige voor beeld-app implementeert aanbevolen beveiligings procedures voor het verbeteren van uw toepassing en de beveiligings postuur van uw organisatie bij het ontwikkelen op Azure.
 keywords: nb
 services: security
 documentationcenter: na
@@ -17,80 +17,80 @@ ms.workload: na
 ms.date: 07/23/2019
 ms.author: terrylan
 ms.openlocfilehash: 730e478622da8cd90af1c559e4d0c6fd04151cca
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81686797"
 ---
 # <a name="develop-a-secure-web-app"></a>Een beveiligde web-app ontwikkelen
 
-Dit voorbeeld is een eenvoudige Python-app die een webpagina weergeeft met koppelingen naar beveiligingsbronnen voor het ontwikkelen van apps op Azure. De app implementeert best practices voor beveiliging die uw toepassing en de beveiligingshouding van uw organisatie kunnen verbeteren wanneer u apps op Azure ontwikkelt.
+Dit voor beeld is een eenvoudige python-app die een webpagina weergeeft met koppelingen naar beveiligings bronnen voor het ontwikkelen van apps in Azure. De app implementeert aanbevolen beveiligings procedures waarmee u uw toepassing en de beveiligings postuur van uw organisatie kunt verbeteren wanneer u apps op Azure ontwikkelt.
 
-Volg de in dit artikel beschreven stappen achtereenvolgens om ervoor te zorgen dat de toepassingsonderdelen correct zijn geconfigureerd. De database, Azure App Service, Azure Key Vault-instantie en azure application gateway-instantie zijn van elkaar afhankelijk.
+Volg de stappen in dit artikel sequentieel om te controleren of de toepassings onderdelen correct zijn geconfigureerd. De data base, Azure App Service, Azure Key Vault instantie en Azure-toepassing gateway-exemplaar, zijn afhankelijk van elkaar.
 
-De implementatiescripts stellen de infrastructuur in. Nadat u de implementatiescripts hebt uitgevoerd, moet u een handmatige configuratie uitvoeren in de Azure-portal om de componenten en services aan elkaar te koppelen.
+De implementatie scripts instellen de infra structuur. Nadat u de implementatie scripts hebt uitgevoerd, moet u een aantal hand matige configuratie in het Azure Portal uitvoeren om de onderdelen en services samen te koppelen.
 
-De voorbeeld-app is gericht op beginners die toepassingen op Azure ontwikkelen die beveiligingsmaatregelen in hun toepassingen willen implementeren.
+De voor beeld-app is gericht op beginners ontwikkelende toepassingen op Azure die beveiligings maatregelen willen implementeren in hun toepassingen.
 
-Bij het ontwikkelen en implementeren van deze app leert u hoe u:
+Bij het ontwikkelen en implementeren van deze app leert u het volgende:
 
-- Maak een Azure Key Vault-exemplaar, sla er geheimen uit op en haal deze op.
-- Implementeer Azure Database voor PostgreSQL, stel veilige wachtwoorden in en vernieuw de toegang tot deze database.
-- Voer een Alpine Linux-container uit op Azure Web Apps voor Linux en schakel beheerde identiteiten in voor Azure-bronnen.
-- Een Azure Application Gateway-instantie maken en configureren met een firewall die gebruikmaakt van [OWASP Top 10 Ruleset](https://coreruleset.org/).
-- Schakel versleuteling van gegevens in transit en in rust in met behulp van Azure-services.
+- Maak een Azure Key Vault-exemplaar, sla het op en haal er geheimen van op.
+- Azure Database for PostgreSQL implementeren, beveiligde wacht woorden instellen en toegang verlenen.
+- Voer een alpine Linux-container uit op Azure Web Apps voor Linux en schakel beheerde identiteiten in voor Azure-resources.
+- Een Azure-toepassing gateway-exemplaar maken en configureren met een firewall die gebruikmaakt van de [Rule OWASP Top 10](https://coreruleset.org/).
+- Versleuteling van gegevens in door Voer en op rest inschakelen met behulp van Azure-Services.
 
-Nadat u deze app hebt ontwikkeld en geïmplementeerd, hebt u de volgende voorbeeldweb-app ingesteld, samen met de configuratie- en beveiligingsmaatregelen die worden beschreven.
+Nadat u deze app hebt ontwikkeld en geïmplementeerd, hebt u de volgende voor beeld-web-app ingesteld, samen met de configuratie-en beveiligings maatregelen die worden beschreven.
 
-![Voorbeeld web-app](./media/secure-web-app/demo-app.png)
+![Voor beeld-web-app](./media/secure-web-app/demo-app.png)
 
 ## <a name="architecture"></a>Architectuur
 
-De app is een typische n-tier applicatie met drie lagen. De front-end, back-end en database laag met monitoring en secret-management componenten geïntegreerd worden hier weergegeven:
+De app is een typische toepassing met n-tier met drie lagen. De front-end, de back-end en de data base-laag met de bewakings-en geheim beheer onderdelen die zijn geïntegreerd, worden hier weer gegeven:
 
 ![App-architectuur](./media/secure-web-app/architecture.png)
 
-De architectuur bestaat uit deze componenten:
+De architectuur bestaat uit de volgende onderdelen:
 
-- [Azure Application Gateway](../../application-gateway/index.yml). Biedt de gateway en firewall voor onze applicatiearchitectuur.
-- [Azure Web Apps op Linux](../../app-service/containers/app-service-linux-intro.md). Hiermee wordt de containerruntijd mogelijk om de Python-app in een Linux-omgeving uit te voeren.
-- [Azure Key Vault](../../key-vault/index.yml). Slaat de geheimen van onze app op en versleutelt en beheert het maken van toegangsbeleid eromheen.
-- [Azure-database voor PostgreSQL](https://azure.microsoft.com/services/postgresql/). Slaat de gegevens van onze app veilig op.
-- [Azure Security Center](../../security-center/index.yml) en [Azure Application Insights](../../azure-monitor/app/app-insights-overview.md). Biedt monitoring en waarschuwingen over de werking van onze app.
+- [Azure-toepassing gateway](../../application-gateway/index.yml). Biedt de gateway en Firewall voor onze toepassings architectuur.
+- [Azure web apps op Linux](../../app-service/containers/app-service-linux-intro.md). Biedt de container runtime voor het uitvoeren van de python-app in een Linux-omgeving.
+- [Azure Key Vault](../../key-vault/index.yml). De geheimen van onze app worden opgeslagen en versleuteld en het maken van toegangs beleid wordt beheerd.
+- [Azure database for PostgreSQL](https://azure.microsoft.com/services/postgresql/). De gegevens van onze app veilig opslaan.
+- [Azure Security Center](../../security-center/index.yml) en [Azure-toepassing Insights](../../azure-monitor/app/app-insights-overview.md). Voorziet in bewaking en waarschuwingen over de werking van de app.
 
-## <a name="threat-model"></a>Bedreigingsmodel
+## <a name="threat-model"></a>Bedreigings model
 
-Bedreigingsmodellering is het proces van het identificeren van potentiële beveiligingsbedreigingen voor uw bedrijf en toepassing en vervolgens ervoor te zorgen dat er een goed mitigatieplan is.
+Bedreigings modellering is het proces van het identificeren van mogelijke beveiligings Risico's voor uw bedrijf en toepassing en zorgt ervoor dat er een goed risico op de juiste wijze wordt uitgevoerd.
 
-In dit voorbeeld wordt de [Microsoft Threat Modeling Tool](threat-modeling-tool.md) gebruikt om bedreigingsmodellering voor de beveiligde voorbeeld-app te implementeren. Door de componenten en de gegevensstromen in kaart te brengen, u problemen en bedreigingen al vroeg in het ontwikkelingsproces identificeren. Dit bespaart later tijd en geld.
+In dit voor beeld wordt de [Microsoft Threat Modeling tool](threat-modeling-tool.md) gebruikt voor het implementeren van bedreigings modellen voor de beveiligde voor beeld-app. Door de componenten en de gegevens stromen te ontwikkelen, kunt u problemen en bedreigingen vroegtijdig in het ontwikkelings proces identificeren. Dit bespaart tijd en geld later.
 
-Dit is het bedreigingsmodel voor de voorbeeld-app:
+Dit is het bedreigings model voor de voor beeld-app:
 
-![Bedreigingsmodel](./media/secure-web-app/threat-model.png)
+![Bedreigings model](./media/secure-web-app/threat-model.png)
 
-Sommige voorbeeldbedreigingen en potentiële kwetsbaarheden die de hulpprogramma voor bedreigingsmodellering genereert, worden weergegeven in de volgende schermafbeelding. Het dreigingsmodel geeft een overzicht van het blootgestelde aanvalsoppervlak en vraagt de ontwikkelaars na te denken over hoe de problemen kunnen worden beperkt.
+Enkele voor beelden van bedreigingen en mogelijke beveiligings problemen die het hulp programma voor het maken van dreigingen worden gegenereerd, worden weer gegeven in de volgende scherm afbeelding. Het bedreigings model biedt een overzicht van de beschik bare kwets baarheid en vraagt de ontwikkel aars om te zien hoe ze de problemen kunnen oplossen.
 
-![Uitvoer van bedreigingsmodellen](./media/secure-web-app/threat-model-output.png)
+![Bedreigings model uitvoer](./media/secure-web-app/threat-model-output.png)
 
-Sql-injectie in de vorige uitvoer van het bedreigingsmodel wordt bijvoorbeeld beperkt door gebruikersinvoer te ontsmetten en opgeslagen functies in Azure Database voor PostgreSQL te gebruiken. Deze beperking voorkomt willekeurige uitvoering van query's tijdens het lezen en schrijven van gegevens.
+SQL-injectie in de voor gaande bedreigings model uitvoer wordt bijvoorbeeld verholpen door het opschonen van gebruikers invoer en het gebruik van opgeslagen functies in Azure Database for PostgreSQL. Deze oplossing voor komt een wille keurige uitvoering van query's tijdens het lezen en schrijven van gegevens.
 
-Ontwikkelaars verbeteren de algehele beveiliging van het systeem door het beperken van elk van de bedreigingen in het bedreigingsmodel output.
+Ontwikkel aars verbeteren de algehele beveiliging van het systeem door elk van de bedreigingen in de uitvoer van het bedreigings model te verminderen.
 
 ## <a name="deployment"></a>Implementatie
 
-Met de volgende opties u Linux uitvoeren op Azure App Service:
+Met de volgende opties kunt u Linux uitvoeren op Azure App Service:
 
-- Kies een container in de lijst met vooraf gebouwde Microsoft-containers op Azure die zijn gemaakt met ondersteunende technologieën (Python, Ruby, PHP, Java, Node.js, .NET Core).
-- Gebruik een op maat gemaakte container. Selecteer uw eigen containerregisters als bron van de afbeelding en bouw voort op de vele beschikbare technologieën die HTTP ondersteunen.
+- Kies een container in de lijst met vooraf ontwikkelde micro soft-containers in azure die zijn gemaakt met ondersteunende technologieën (python, Ruby, PHP, Java, node. js, .NET core).
+- Gebruik een aangepaste, gebouwde container. Selecteer uw eigen container registers als bron van de installatie kopie en bouw op de vele beschik bare technologieën die ondersteuning bieden voor HTTP.
 
-In dit voorbeeld voert u het implementatiescript uit waarmee de webapp wordt geïmplementeerd in de app-service en de bronnen wordt gemaakt.
+In dit voor beeld voert u het implementatie script uit dat de webapp implementeert op App Service en hoe u de resources maakt.
 
-De app kan de verschillende implementatiemodellen hieronder gebruiken:
+De app kan de verschillende implementatie modellen gebruiken die hieronder worden weer gegeven:
 
-![Diagram implementatiegegevensstroom](./media/secure-web-app/deployment.png)
+![Diagram van de implementatie gegevensstroom](./media/secure-web-app/deployment.png)
 
-Er zijn veel manieren om apps op Azure te implementeren, waaronder:
+Er zijn veel manieren om apps te implementeren op Azure, waaronder:
 
 - Azure Resource Manager-sjablonen
 - PowerShell
@@ -98,119 +98,119 @@ Er zijn veel manieren om apps op Azure te implementeren, waaronder:
 - Azure Portal
 - Azure DevOps
 
-Deze toepassing wordt gebruikt:
+Deze toepassing gebruikt:
 
-- [Docker](https://docs.docker.com/) om de containerafbeeldingen te maken en te bouwen.
-- [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) voor implementatie.
-- [Docker Hub](https://hub.docker.com/) als containerregister.
+- [Docker](https://docs.docker.com/) om de container installatie kopieën te maken en te bouwen.
+- [Azure cli](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) voor implementatie.
+- [Docker hub](https://hub.docker.com/) als container register.
 
 ## <a name="security-considerations"></a>Beveiligingsoverwegingen
 
 ### <a name="network"></a>Netwerk
 
-De voorbeeld-app maakt gebruik van end-to-end TLS/SSL-versleuteling voor binnenkomende gegevens die in en uit het netwerk stromen. De gateway is geconfigureerd met een zelfondertekend certificaat.
+De voor beeld-app maakt gebruik van end-to-end TLS/SSL-versleuteling voor in-transit gegevens die naar en van het netwerk stromen. De gateway is geconfigureerd met een zelfondertekend certificaat.
 > [!IMPORTANT]
-> In deze demonstratie wordt een zelfondertekend certificaat gebruikt. In een productieomgeving moet u certificaten verkrijgen van een geverifieerde certificeringsinstantie (CA).
+> In deze demonstratie wordt een zelfondertekend certificaat gebruikt. In een productie omgeving moet u certificaten verkrijgen van een geverifieerde certificerings instantie (CA).
 
-De toepassingsfirewall inspecteert ook binnenkomend verkeer en waarschuwt beheerders wanneer kwaadaardig verkeer wordt gedetecteerd in het netwerkverkeer.
-Application Gateway vermindert de mogelijkheid voor DDoS- en SQL-injectiebedreigingen die in het bedreigingsmodel worden ontdekt.
+De toepassings Firewall inspecteert ook het binnenkomende verkeer en de beheerders van waarschuwingen wanneer er schadelijke verkeer wordt gedetecteerd in het netwerk verkeer.
+Application Gateway verkleint de kans op bedreigingen voor DDoS en SQL-injecties die zijn gedetecteerd in het bedreigings model.
 
 ### <a name="identity"></a>Identiteit
 
-Als u zich wilt aanmelden bij de portal, gebruikt de voorbeeld-app Multi-Factor Authentication voor Azure Active Directory-beheerders (Azure AD) die toegang hebben gekregen tot de bronnen.
-De voorbeeld-app gebruikt beheerde identiteiten om machtigingen te verkrijgen voor het lezen en ophalen van geheimen uit Azure Key Vault, zodat de app geen speciale referenties en tokens hoeft te gebruiken om de geheimen te lezen. Azure AD maakt automatisch de serviceprincipals die de app moet lezen en wijzigt de geheimen wanneer beheerde identiteiten worden gebruikt.
+Om u aan te melden bij de portal, gebruikt de voor beeld-app Multi-Factor Authentication voor Azure Active Directory (Azure AD)-beheerders die toegang hebben gekregen tot de resources.
+De voor beeld-app gebruikt beheerde identiteiten om machtigingen te krijgen om geheimen van Azure Key Vault te lezen en op te halen, zodat de app niet nodig is om de referenties en tokens voor het lezen van de geheimen te controleren. Azure AD maakt automatisch de service-principals die de app moet lezen en wijzigt de geheimen wanneer beheerde identiteiten worden gebruikt.
 
-Beheerde identiteiten voor Azure-resources en MFA maken het moeilijker voor tegenstanders om privileges te verkrijgen en hun bevoegdheden in het systeem te escaleren. Deze dreiging werd opgemerkt in het dreigingsmodel.
-De app maakt gebruik van OAuth, waarmee gebruikers die zijn geregistreerd in de OAuth-applicatie zich kunnen aanmelden bij de app.
+Beheerde identiteiten voor Azure-resources en MFA maken het voor aanvallers moeilijker om bevoegdheden te krijgen en hun bevoegdheden in het systeem te escaleren. Deze dreiging is gewijsd in het bedreigings model.
+De app maakt gebruik van OAuth, waarmee gebruikers die zijn geregistreerd in de OAuth-toepassing zich kunnen aanmelden bij de app.
 
 ### <a name="storage"></a>Storage
 
-Gegevens in de PostgreSQL-database worden in rust automatisch versleuteld door Azure Database voor PostgreSQL. De database autoriseert de IP-adressen van de App Service, zodat alleen de geïmplementeerde App Service-webapp toegang heeft tot de databasebronnen met de juiste verificatiereferenties.
+Gegevens in de PostgreSQL-Data Base worden automatisch op rest versleuteld door Azure Database for PostgreSQL. De data base autoriseert de App Service IP-adressen, zodat alleen de geïmplementeerde App Service web-app toegang kan krijgen tot de database bronnen met de juiste verificatie referenties.
 
 ### <a name="logging-and-auditing"></a>Logboekregistratie en bewaking
 
-De app implementeert logboekregistratie door Application Insights te gebruiken om statistieken, logboeken en uitzonderingen die zich voordoen bij te houden. Deze logboekregistratie biedt voldoende metagegevens van apps om ontwikkelaars en teamleden te informeren over de status van de app. Het biedt ook voldoende gegevens om terug te krabbelen in geval van beveiligingsincidenten.
+De app implementeert logboek registratie met behulp van Application Insights voor het bijhouden van metrische gegevens, logboeken en uitzonde ringen die optreden. Deze logboek registratie biedt voldoende app-meta gegevens om ontwikkel aars en operationele team leden te informeren over de status van de app. Het biedt ook voldoende gegevens voor Backtrack in het geval van beveiligings incidenten.
 
 ## <a name="cost-considerations"></a>Kostenoverwegingen
 
-Als u nog geen Azure-account hebt, u een gratis account maken. Ga naar de [gratis accountpagina](https://azure.microsoft.com/free/) om aan de slag te gaan, zie wat u doen met een gratis Azure-account en ontdek welke producten 12 maanden gratis zijn.
+Als u nog geen Azure-account hebt, kunt u een gratis versie maken. Ga naar de [pagina gratis account](https://azure.microsoft.com/free/) om aan de slag te gaan. Zie wat u kunt doen met een gratis Azure-account en ontdek welke producten gedurende 12 maanden gratis zijn.
 
-Als u de resources in de voorbeeld-app wilt implementeren met de beveiligingsfuncties, moet u betalen voor een aantal premiumfuncties. Aangezien de app schaalt en de gratis lagen en proefversies die door Azure worden aangeboden, moeten worden geüpgraded om te voldoen aan de vereisten voor toepassingen, kunnen uw kosten stijgen. Gebruik de [Azure-prijscalculator](https://azure.microsoft.com/pricing/calculator/) om uw kosten te schatten.
+Als u de resources in de voor beeld-app wilt implementeren met behulp van de beveiligings functies, moet u betalen voor een aantal Premium-functies. Wanneer de app wordt geschaald en de gratis lagen en tests die door Azure worden aangeboden, moeten worden bijgewerkt om te voldoen aan de toepassings vereisten, kunnen uw kosten toenemen. Gebruik de [prijs calculator](https://azure.microsoft.com/pricing/calculator/) van Azure om uw kosten te schatten.
 
 ## <a name="deploy-the-solution"></a>De oplossing implementeren
 
 ### <a name="prerequisites"></a>Vereisten
 
-Als u de toepassing operationeel wilt krijgen, moet u de volgende hulpprogramma's installeren:
+Als u de toepassing wilt uitvoeren, moet u deze hulpprogram ma's installeren:
 
-- Een codeeditor om de toepassingscode te wijzigen en te bekijken. [Visual Studio Code](https://code.visualstudio.com/) is een open source optie.
-- [Azure CLI](/cli/azure/install-azure-cli) op uw ontwikkelcomputer.
-- [Git](https://git-scm.com/) op uw systeem. Git wordt gebruikt om de broncode lokaal te klonen.
-- [jq](https://stedolan.github.io/jq/), een UNIX-tool voor het op een gebruiksvriendelijke manier opvragen van JSON.
+- Een code-editor om de toepassings code te wijzigen en weer te geven. [Visual Studio code](https://code.visualstudio.com/) is een open source-optie.
+- [Azure cli](/cli/azure/install-azure-cli) op uw ontwikkel computer.
+- [Git](https://git-scm.com/) op uw systeem. Git wordt gebruikt om de bron code lokaal te klonen.
+- [JQ](https://stedolan.github.io/jq/), een UNIX-hulp programma voor het uitvoeren van QUERY'S in JSON op een gebruiks vriendelijke manier.
 
-U hebt een Azure-abonnement nodig om de bronnen van de voorbeeld-app te implementeren. Als u geen Azure-abonnement hebt, u [een gratis account maken](https://azure.microsoft.com/free/) om de voorbeeld-app te testen.
+U hebt een Azure-abonnement nodig om de resources van de voor beeld-app te implementeren. Als u geen Azure-abonnement hebt, kunt u [een gratis account maken](https://azure.microsoft.com/free/) om de voor beeld-app te testen.
 
-Nadat u deze hulpprogramma's hebt geïnstalleerd, u de app op Azure implementeren.
+Na de installatie van deze hulpprogram ma's bent u klaar om de app te implementeren in Azure.
 
 ### <a name="environment-setup"></a>Configuratie van de omgeving
 
-Voer de implementatiescripts uit om de omgeving en het abonnement in te stellen:
+Voer de implementatie scripts uit om de omgeving en het abonnement in te stellen:
 
-1. Als u de broncoderepository wilt klonen, gebruikt u deze opdracht Git:
+1. Gebruik deze git-opdracht om de opslag plaats van de bron code te klonen:
 
    ```shell
    git clone https://github.com/Azure-Samples/sample-linux-python-app tutorial-project
    ```
 
-2. Als u naar de map wilt gaan, gebruikt u deze opdracht:
+2. Als u de map wilt verplaatsen, gebruikt u deze opdracht:
 
    ```shell
    cd tutorial-project/scripts
    ```
 
-3. Er zijn bestanden in de map scripts die specifiek zijn voor het platform dat u gebruikt (Windows of Linux). Als de Azure CLI al is geïnstalleerd, meldt u zich aan bij het Azure-account bij de opdrachtprompt door deze opdracht Azure CLI uit te voeren:
+3. Er zijn bestanden in de map scripts die specifiek zijn voor het platform dat u gebruikt (Windows of Linux). Als de Azure CLI al is geïnstalleerd, meldt u zich bij de opdracht prompt aan bij het Azure-account door de volgende Azure CLI-opdracht uit te voeren:
 
    ```azurecli-interactive
    az login
    ```
 
-De browser wordt geopend en meldt u zich aan met uw referenties. Nadat u zich hebt aanmeldt, u beginnen met het implementeren van de resources van de opdrachtprompt.
+De browser wordt geopend, Meld u aan met uw referenties. Nadat u zich hebt aangemeld, kunt u beginnen met het implementeren van de resources vanaf de opdracht prompt.
 
-De `deploy-powershell.ps1` implementatiescripts `deploy-bash.sh` en bevatten code die de hele toepassing implementeert.
-Ga als het gaat om de implementatie van de oplossing:
+De implementatie scripts `deploy-powershell.ps1` en `deploy-bash.sh` bevatten code waarmee de volledige toepassing wordt geïmplementeerd.
+De oplossing implementeren:
 
-1. Als u op PowerShell `deploy-powershell.ps1` het `./deploy-powershell.ps1 REGION RESOURCE_GROUP_NAME` bestand uitvoert door de naam van de regio en de resourcegroep te vervangen door geschikte Azure-regio's en een naam voor de resourcegroep
-2. Als u op Linux `deploy-bash.sh` het `/deploy-bash.sh REGION RESOURCE_GROUP_NAME`bestand uitvoert door te typen, moet u het bestand mogelijk uitvoerbaar maken door te typen`chmod +x deploy-bash.sh`
+1. Als u het `deploy-powershell.ps1` bestand in Power shell uitvoert, typt `./deploy-powershell.ps1 REGION RESOURCE_GROUP_NAME` u de naam van de regio en de resource groep vervangen door de juiste Azure-regio's en een naam voor de resource groep
+2. Als u zich in Linux bevindt `deploy-bash.sh` `/deploy-bash.sh REGION RESOURCE_GROUP_NAME`, voert u het bestand uit door te typen.`chmod +x deploy-bash.sh`
 
-In de volgende voorbeelden worden fragmenten van de belangrijkste onderdelen weergegeven. U de voorbeelden afzonderlijk of met de rest van de componenten implementeren door de deploy-bestanden uit te voeren.
+In de volgende voor beelden worden de fragmenten van de belangrijkste onderdelen gedemonstreerd. U kunt de voor beelden afzonderlijk of met de rest van de onderdelen implementeren door de Deploy-bestanden uit te voeren.
 
-### <a name="implementation-guidance"></a>Uitvoeringsrichtsnoeren
+### <a name="implementation-guidance"></a>Implementatie richtlijnen
 
-Het implementatiescript is een script dat in vier fasen kan worden opgesplitst. Elke fase implementeert en configureert een Azure-bron die zich in het [architectuurdiagram bevindt.](#architecture)
+Het implementatie script is een script dat kan worden onderverdeeld in vier fasen. Elke fase implementeert en configureert een Azure-resource in het [architectuur diagram](#architecture).
 
 De vier fasen zijn:
 
 - Azure Key Vault implementeren.
-- Azure-database implementeren voor PostgreSQL.
-- Azure Web Apps implementeren op Linux.
-- Application Gateway implementeren met firewall voor webtoepassingen.
+- Azure Database for PostgreSQL implementeren.
+- Implementeer Azure Web Apps op Linux.
+- Implementeer Application Gateway met Web Application Firewall.
 
-Elke fase bouwt voort op de voorgaande fase met behulp van configuratie van de eerder geïmplementeerde resources.
+Elke fase bouwt voort op het bovenstaande door gebruik te maken van de configuratie van de eerder geïmplementeerde resources.
 
-Als u de implementatiestappen wilt voltooien, controleert u of u de hulpprogramma's hebt geïnstalleerd die worden vermeld onder [Vereisten](#prerequisites).
+Als u de implementaties tappen wilt volt ooien, moet u ervoor zorgen dat u de hulpprogram ma's hebt geïnstalleerd die worden vermeld onder [vereisten](#prerequisites).
 
 #### <a name="deploy-azure-key-vault"></a>Azure Key Vault implementeren
 
-In deze sectie maakt en implementeert u een Azure Key Vault-exemplaar dat wordt gebruikt om geheimen en certificaten op te slaan.
+In deze sectie maakt en implementeert u een Azure Key Vault-exemplaar dat wordt gebruikt voor het opslaan van geheimen en certificaten.
 
-Nadat u de implementatie hebt voltooid, wordt een Azure Key Vault-exemplaar geïmplementeerd op Azure.
+Nadat u de implementatie hebt voltooid, hebt u een Azure Key Vault-exemplaar geïmplementeerd in Azure.
 
-Azure Key Vault implementeren met Azure CLI:
+Azure Key Vault implementeren met behulp van Azure CLI:
 
 1. Declareer de variabelen voor Azure Key Vault.
-2. Registreer de Azure Key Vault-provider.
-3. Maak de resourcegroep voor de instantie.
-4. Maak de instantie Azure Key Vault in de resourcegroep die in stap 3 is gemaakt.
+2. Registreer de Azure Key Vault provider.
+3. Maak de resource groep voor het exemplaar.
+4. Maak het Azure Key Vault-exemplaar in de resource groep die u in stap 3 hebt gemaakt.
 
    ```powershell-interactive
 
@@ -248,23 +248,23 @@ Azure Key Vault implementeren met Azure CLI:
 
    ```
 
-Het is een aanbevolen manier om beheerde identiteiten voor Azure-bronnen te gebruiken in apps die Key Vault gebruiken om toegang te krijgen tot bronnen. Uw beveiligingshouding neemt toe wanneer toegangssleutels tot Key Vault niet in code of in configuratie worden opgeslagen.
+Het is een best practice voor het gebruik van beheerde identiteiten voor Azure-resources in apps die gebruikmaken van Key Vault om toegang te krijgen tot bronnen. Uw beveiligings postuur neemt toe wanneer toegangs sleutels voor Key Vault niet worden opgeslagen in code of in configuratie.
 
-#### <a name="deploy-azure-database-for-postgresql"></a>Azure-database implementeren voor PostgreSQL
+#### <a name="deploy-azure-database-for-postgresql"></a>Azure Database for PostgreSQL implementeren
 
-Azure Database voor PostgreSQL werkt op de volgende manier, maak eerst de databaseserver en maak vervolgens de database waarop het schema en de gegevens moeten worden opgeslagen.
+Azure Database for PostgreSQL op de volgende manier werkt, maakt u eerst de database server en maakt u vervolgens de data base waarop u het schema en de gegevens wilt opslaan.
 
-Nadat u de implementatie hebt voltooid, hebt u een PostgreSQL-server en -database die op Azure worden uitgevoerd.
+Nadat u de implementatie hebt voltooid, hebt u een PostgreSQL-server en-data base die wordt uitgevoerd op Azure.
 
-Azure Database voor PostgreSQL implementeren met Azure CLI:
+Azure Database for PostgreSQL implementeren met behulp van Azure CLI:
 
-1. Open een terminal met Azure CLI en de installatie van uw Azure-abonnement.
-2. Genereer een veilige combinatie van gebruikersnaam en wachtwoord die wordt gebruikt om toegang te krijgen tot de database. (Deze moeten worden opgeslagen in Azure Key Vault voor apps die ze gebruiken.)
-3. De instantie PostgreSQL-server maken.
-4. Maak een database op de serverinstantie die u in stap 3 hebt gemaakt.
-5. Voer PostgreSQL-scripts uit op de PostgreSQL-instantie.
+1. Open een Terminal met Azure CLI en de installatie van uw Azure-abonnement.
+2. Genereer een veilige combi natie van gebruikers naam en wacht woord die wordt gebruikt voor toegang tot de data base. (Deze moeten worden opgeslagen in Azure Key Vault voor apps die deze gebruiken.)
+3. Maak het PostgreSQL-Server exemplaar.
+4. Maak een Data Base op het Server exemplaar dat u in stap 3 hebt gemaakt.
+5. Voer PostgreSQL-scripts uit op het PostgreSQL-exemplaar.
 
-De onderstaande code is gebaseerd op de PGUSERNAME- en PGPASSWORD-geheimen die zijn opgeslagen in Azure KeyVault van de bovenstaande implementatie-KeyVault-stap.
+De onderstaande code is afhankelijk van de PGUSERNAME-en PGPASSWORD-geheimen die zijn opgeslagen in azure-sleutel kluis van de bovenstaande stap voor het implementeren van de sleutel kluis.
 
    ```powershell-interactive
    $pgUsername = $(az keyvault secret show --name PGUSERNAME --vault-name $kvName --query value) -replace '"',''
@@ -307,29 +307,29 @@ De onderstaande code is gebaseerd op de PGUSERNAME- en PGPASSWORD-geheimen die z
        --verbose
    ```
 
-Nadat u de database hebt geïmplementeerd, moet u de referenties en verbindingstekenreeks opslaan in Azure Key Vault.
-In de map scripts is `functions.sql` er een bestand dat de PL/pgSQL-code bevat waarmee opgeslagen functies worden gemaakt wanneer u deze uitvoert. Als u dit bestand uitvoert, worden de ingangen parameteriseert om SQL-injectie te beperken.
+Nadat u de Data Base hebt geïmplementeerd, moet u de referenties en connection string opslaan in Azure Key Vault.
+In de map scripts bevindt zich `functions.sql` een bestand met de PL/pgSQL-code die opgeslagen functies maakt wanneer u deze uitvoert. Het uitvoeren van dit bestand parameterizes de invoer om SQL-injectie te beperken.
 
-PostgreSQL wordt gebundeld met `psql` een tool genaamd die wordt gebruikt om verbinding te maken met de database. Als `functions.sql`u wilt uitvoeren, moet u vanaf uw lokale machine verbinding maken met de Azure Database voor PostgreSQL-instantie en deze vanaf daar uitvoeren. De installatie van het psql-hulpprogramma is opgenomen in de standaardinstallatie voor PostgreSQL op elk besturingssysteem.
-Zie de [psql-documentatie voor](https://www.postgresql.org/docs/9.3/app-psql.html)meer informatie.
+PostgreSQL is gebundeld met een `psql` hulp programma dat wordt gebruikt om verbinding te maken met de data base. Als u `functions.sql`wilt uitvoeren, moet u verbinding maken met het Azure database for PostgreSQL exemplaar van uw lokale computer en het van daaruit uitvoeren. De installatie van het hulp programma psql is opgenomen in de standaard installatie voor PostgreSQL op elk besturings systeem.
+Zie de [psql-documentatie](https://www.postgresql.org/docs/9.3/app-psql.html)voor meer informatie.
 
-Azure Cloud Shell `psql` bevat ook de tool. U Cloud Shell rechtstreeks vanuit de Azure-portal gebruiken door het Cloud Shell-pictogram te selecteren.
+Azure Cloud Shell ook het `psql` hulp programma bevat. U kunt Cloud Shell rechtstreeks vanuit de Azure Portal gebruiken door het pictogram Cloud Shell te selecteren.
 
-Als u externe toegang tot de PostgreSQL-instantie wilt inschakelen, moet u het IP-adres in PostgreSQL autoriseren.
-U schakelt deze toegang in door naar het tabblad **Verbindingsbeveiliging** te gaan, **client-IP toevoegen**te selecteren en de nieuwe instellingen op te slaan.
+Als u externe toegang tot het PostgreSQL-exemplaar wilt inschakelen, moet u het IP-adres in PostgreSQL autoriseren.
+U schakelt deze toegang in door naar het tabblad **verbindings beveiliging** te gaan en **client-IP toevoegen**te selecteren en de nieuwe instellingen op te slaan.
 
-![Client-IP autoriseren](./media/secure-web-app/add-client-ip-postgres.png)
+![IP-adres van client autoriseren](./media/secure-web-app/add-client-ip-postgres.png)
 
-Als u Cloud Shell gebruikt in plaats van het lokale psql-hulpprogramma, selecteert u **Toegang tot Azure-services toestaan** en de waarde ervan wijzigen in **AAN** om uw Cloud Shell-toegang toe te staan.
+Als u Cloud Shell gebruikt in plaats van het lokale psql-hulp programma, selecteert u **toegang tot Azure-Services toestaan** en wijzigt u de waarde in **ON** om uw Cloud shell toegang toe te staan.
 
-Maak vervolgens verbinding met de instantie door de opdracht onder psql met verbindingstekenreeksparameters uit te voeren vanaf het tabblad **Verbindingstekenreeksen** van de instantie PostgreSQL op de Azure-portal.
-Vervang de lege accolades door parameters uit het verbindingstekenreeksblad van de database en het wachtwoord door het wachtwoord van Azure Key Vault.
+Maak vervolgens verbinding met het exemplaar door de onderstaande opdracht psql uit te voeren met connection string para meters van het tabblad **verbindings reeksen** van het postgresql-exemplaar op de Azure Portal.
+Vervang de lege accolades door para meters van de Blade verbindingsteken reeks van de data base en het wacht woord met het wacht woord van Azure Key Vault.
 
 ```shell
 psql "host={} port=5432 dbname=hellodb user={} password=PGPASSWORD sslmode=require"
 ```
 
-Voer het volgende PL/pgSQL-script uit nadat u ervoor hebt gezorgd dat u bent verbonden met de database. Het script maakt de opgeslagen functies die worden gebruikt om gegevens in de database in te voegen.
+Voer het volgende PL/pgSQL-script uit nadat u hebt gecontroleerd of u verbinding hebt met de data base. Het script maakt de opgeslagen functies die worden gebruikt om gegevens in de data base in te voegen.
 
 ```shell
 CREATE OR REPLACE FUNCTION insert_visitor(country VARCHAR(40), browser VARCHAR(40), operating_system VARCHAR(40)) RETURNS void AS $$
@@ -363,27 +363,27 @@ END;
 $$ LANGUAGE PLPGSQL;
 ```
 
-Zie [TLS-connectiviteit configureren in Azure Database voor PostgreSQL voor](/azure/postgresql/concepts-ssl-connection-security)meer informatie over het instellen van TLS- en Certificate Authority (CA)-verificatie voor PostgreSQL.
+Zie [TLS-connectiviteit configureren in azure database for PostgreSQL](/azure/postgresql/concepts-ssl-connection-security)voor meer informatie over het instellen van TLS en verificatie van de certificerings instantie (CA) voor postgresql.
 
-Een rootcertificaat is opgenomen in de container. De stappen die zijn genomen om het certificaat te verkrijgen zijn:
+Een basis certificaat is opgenomen in de container. De stappen voor het verkrijgen van het certificaat zijn:
 
-1. Download het certificaatbestand van de [Certificeringsinstantie](https://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt).
-2. [Download en installeer OpenSSL op uw machine.](/azure/postgresql/concepts-ssl-connection-security)
-3. Decoderen van uw certificaatbestand:
+1. Down load het certificaat bestand van de [certificerings instantie](https://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt).
+2. [Down load en installeer openssl op uw computer](/azure/postgresql/concepts-ssl-connection-security).
+3. Uw certificaat bestand decoderen:
 
    ```shell
    openssl x509 -inform DER -in BaltimoreCyberTrustRoot.crt -text -out root.crt
    ```
 
-Lees hier meer over het configureren van TLS-beveiliging voor PostgreSQL, [TLS Connection Security configureren.](/azure/postgresql/concepts-ssl-connection-security)
+Meer informatie over het configureren van TLS-beveiliging voor PostgreSQL hier [configureren TLS-verbindings beveiliging](/azure/postgresql/concepts-ssl-connection-security).
 
-#### <a name="deploy-azure-web-apps-on-linux"></a>Azure Web Apps implementeren op Linux
+#### <a name="deploy-azure-web-apps-on-linux"></a>Azure Web Apps implementeren in Linux
 
-U eenvoudig Linux-services bouwen bovenop Azure App Service, omdat Azure een set vooraf gebouwde containers en afbeeldingen biedt voor veelgebruikte talen zoals Python, Ruby, C#en Java. Azure ondersteunt ook aangepaste containers, waardoor vrijwel alle programmeertalen kunnen worden uitgevoerd op het Azure App Service-platform.
+U kunt eenvoudig Linux-Services maken boven op Azure App Service, omdat Azure een reeks vooraf ontwikkelde containers en installatie kopieën biedt voor veelgebruikte talen als Python, Ruby, C# en Java. Azure biedt ook ondersteuning voor aangepaste containers, waardoor vrijwel alle programmeer talen kunnen worden uitgevoerd op het Azure App Service platform.
 
-De app die wordt geïmplementeerd is een eenvoudige Python-app die draait op de nieuwste Ubuntu Linux-distributie. Het maakt verbinding met de Azure Key Vault- en PostgreSQL-exemplaren die in de vorige secties zijn gemaakt voor respectievelijk referentiebeheer en gegevensopslag.
+De app die wordt geïmplementeerd, is een eenvoudige python-app die wordt uitgevoerd op de nieuwste Ubuntu Linux-distributie. Het maakt verbinding met de Azure Key Vault-en PostgreSQL-instanties die in de voor gaande secties zijn gemaakt, respectievelijk referentie beheer en gegevens opslag.
 
-Het volgende Docker-bestand wordt weergegeven in de hoofdmap van de app:
+Het volgende docker-bestand bevindt zich in de hoofdmap van de app:
 
 ```dockerfile
 # Docker file for the basic web app
@@ -436,15 +436,15 @@ USER appuser
 ENTRYPOINT ["/usr/local/bin/init.sh"]
 ```
 
-Het Dockerfile hierboven wordt gebruikt om de container te `mcr.microsoft.com/samples/basic-linux-app`bouwen die wordt gehost in het Azure Container Registry op .
+De Dockerfile hierboven wordt gebruikt voor het bouwen van de container die wordt gehost op de `mcr.microsoft.com/samples/basic-linux-app`Azure container Registry op.
 
 De onderstaande code:
 
-1. Hiermee worden de variabelen en namen voor de instantie App-service declareert.
-2. Hiermee maakt u de resourcegroep voor het App-serviceplan.
-3. Voorziet in een instantie Azure Web Apps op Linux-containers.
-4. Hiermee u logboekregistratie voor de web-app-container in.
-5. Hiermee stelt u bepaalde app-configuraties in de app-instellingen van de container in.
+1. Declareert de variabelen en namen voor het App Service exemplaar.
+2. Hiermee maakt u de resource groep voor het App Service plan.
+3. Voorziet in een Azure Web Apps-exemplaar voor Linux-containers.
+4. Hiermee schakelt u de logboek registratie in voor de web-app-container.
+5. Hiermee stelt u enkele app-configuraties in de app-instellingen van de container in.
 
    ```powershell-interactive
    Write-Host "Retrieving the Azure Key Vault URL"
@@ -517,32 +517,32 @@ De onderstaande code:
    }
    ```
 
-Met dit script wordt een toegewezen identiteit gemaakt voor de app-service-instantie die met MSI kan worden gebruikt om te communiceren met Azure Key Vault zonder harde coderingsgeheimen in code of configuratie.
+Met dit script maakt u een toegewezen identiteit voor het App Service-exemplaar dat kan worden gebruikt met MSI om te communiceren met Azure Key Vault zonder geheimen voor vaste code ring in code of configuratie.
 
-Ga naar de instantie Azure Key Vault in de portal om de toegewezen identiteit te autoriseren op het tabblad toegangsbeleid. Selecteer **Nieuw toegangsbeleid toevoegen**. Zoek **onder Hoofd selecteren**de toepassingsnaam die vergelijkbaar is met de naam van de instantie App-service die is gemaakt.
-Een serviceprincipal die aan de toepassing is gekoppeld, moet zichtbaar zijn. Selecteer deze en sla de pagina toegangsbeleid op, zoals in de volgende schermafbeelding wordt weergegeven.
+Ga naar het Azure Key Vault-exemplaar in de portal om de toegewezen identiteit te autoriseren op het tabblad toegangs beleid. Selecteer **nieuw toegangs beleid toevoegen**. Zoek onder **Principal selecteren**naar de toepassings naam die lijkt op de naam van het app service exemplaar dat is gemaakt.
+Een service-principal die aan de toepassing is gekoppeld, moet zichtbaar zijn. Selecteer de pagina en sla het toegangs beleid op, zoals wordt weer gegeven in de volgende scherm afbeelding.
 
-Omdat de toepassing alleen sleutels hoeft op te halen, selecteert u de machtiging **Ophalen** in de geheimenopties, waarbij toegang wordt toegestaan terwijl de verleende bevoegdheden worden verminderd.
+Omdat de toepassing alleen sleutels hoeft op te halen, selecteert u de machtiging **Get** in de geheimen opties, waardoor toegang is toegestaan terwijl de verleende bevoegdheden worden verminderd.
 
-![Key Vault Access Policy](./media/secure-web-app/kv-access-policy.png)
+![Toegangs beleid Key Vault](./media/secure-web-app/kv-access-policy.png)
 
-*Een toegangsbeleid voor key vault maken*
+*Een Key Vault toegangs beleid maken*
 
-Sla het toegangsbeleid op en sla de nieuwe wijziging op op het tabblad **Toegangsbeleid** om het beleid bij te werken.
+Sla het toegangs beleid op en sla de nieuwe wijziging op het tabblad **toegangs beleid** op om de beleids regels bij te werken.
 
-#### <a name="deploy-application-gateway-with-web-application-firewall-enabled"></a>Application Gateway implementeren met firewall voor webtoepassingen ingeschakeld
+#### <a name="deploy-application-gateway-with-web-application-firewall-enabled"></a>Application Gateway implementeren met Web Application Firewall ingeschakeld
 
-In web apps, is het niet aan te raden dat u diensten rechtstreeks bloot aan de buitenwereld op het internet.
-Load balancing en firewall regels bieden meer veiligheid en controle over het binnenkomende verkeer en helpen u het te beheren.
+In web apps is het niet raadzaam om services rechtstreeks aan de buiten wereld op internet beschikbaar te stellen.
+Taak verdeling en firewall regels bieden meer beveiliging en controle over het binnenkomende verkeer en helpen u het te beheren.
 
-Een toepassingsgateway-instantie implementeren:
+Een Application Gateway-exemplaar implementeren:
 
-1. Maak de resourcegroep om de toepassingsgateway te huisvesten.
-2. Een virtueel netwerk inrichten om aan de gateway te koppelen.
+1. Maak de resource groep om de toepassings gateway te maken.
+2. Richt een virtueel netwerk in om aan de gateway te koppelen.
 3. Maak een subnet voor de gateway in het virtuele netwerk.
-4. Een openbaar IP-adres opgeven.
-5. Inrichten van de toepassingsgateway.
-6. Firewall voor webtoepassingen inschakelen op de gateway.
+4. Richt een openbaar IP-adres in.
+5. Richt de toepassings gateway in.
+6. Schakel Web Application Firewall in op de gateway.
 
    ```powershell-interactive
    az keyvault certificate create --vault-name $kvName `
@@ -569,15 +569,15 @@ Een toepassingsgateway-instantie implementeren:
    Export-PfxCertificate -PFXData $pfxFile -FilePath $certPath -Password $signPassword
    ```
 
-Het voorgaande script:
+Het voor gaande script:
 
-1. Hiermee maakt u een nieuw zelfondertekend certificaat op Azure.
-2. Downloadt het zelfondertekende certificaat als een bestand met basis64.Downloadt het zelfondertekende certificaat als een bestand met basis64.
-3. Hiermee genereert u een wachtwoord voor het zelfondertekende certificaat.
-4. Hiermee exporteert u het certificaat als een PFX-bestand dat is ondertekend met het wachtwoord.
-5. Slaat het wachtwoord van het certificaat op in Azure Key Vault.
+1. Hiermee maakt u een nieuw zelfondertekend certificaat in Azure.
+2. Hiermee wordt het zelfondertekende certificaat gedownload als een base64-gecodeerd bestand.
+3. Hiermee genereert u een wacht woord voor het zelfondertekende certificaat.
+4. Exporteert het certificaat als een PFX-bestand dat is ondertekend met het wacht woord.
+5. Hiermee wordt het wacht woord van het certificaat opgeslagen in Azure Key Vault.
 
-In deze sectie wordt de toepassingsgateway geïmplementeerd:
+In deze sectie wordt de toepassings gateway geïmplementeerd:
 
 ```powershell-interactive
 # Create a virtual network required by the gateway
@@ -677,217 +677,217 @@ az network application-gateway http-settings update --gateway-name $gwName `
     --verbose
 ```
 
-Nadat u de implementatie hebt voltooid, hebt u een toepassingsgateway met firewall voor webtoepassingen ingeschakeld.
+Nadat u de implementatie hebt voltooid, hebt u een toepassings gateway met Web Application Firewall ingeschakeld.
 
-De gateway-instantie stelt poort 443 voor HTTPS bloot. Deze configuratie zorgt ervoor dat onze app alleen toegankelijk is op poort 443 via HTTPS.
+Het gateway-exemplaar geeft poort 443 voor HTTPS weer. Deze configuratie zorgt ervoor dat onze app alleen toegankelijk is via poort 443 via HTTPS.
 
-Het blokkeren van ongebruikte poorten en het beperken van de blootstelling aan het aanvalsoppervlak is een beveiligingstoepassing.
+Het blok keren van ongebruikte poorten is een beveiligings best practice.
 
-#### <a name="add-network-security-groups-to-the-app-service-instance"></a>Netwerkbeveiligingsgroepen toevoegen aan het exemplaar app-service
+#### <a name="add-network-security-groups-to-the-app-service-instance"></a>Netwerk beveiligings groepen toevoegen aan het App Service-exemplaar
 
-App Service-exemplaren kunnen worden geïntegreerd met virtuele netwerken. Met deze integratie kunnen ze worden geconfigureerd met netwerkbeveiligingsgroepen die het inkomende en uitgaande verkeer van de app beheren.
+App Service-exemplaren kunnen worden geïntegreerd met virtuele netwerken. Met deze integratie kunnen ze worden geconfigureerd met beleids regels voor netwerk beveiligings groepen die het binnenkomende en uitgaande verkeer van de app beheren.
 
-1. Als u deze functie wilt inschakelen, selecteert u in het azure app-serviceinstantieblad onder **Instellingen**de optie **Netwerken**. Selecteer in het rechterdeelvenster onder **VNet-integratie**De optie **Klik hier om te configureren**.
+1. Als u deze functie wilt inschakelen, selecteert u op de Blade Azure-app service-exemplaar onder **instellingen**de optie **netwerken**. Selecteer in het rechterdeel venster onder **VNet-integratie**de optie **Klik hier om te configureren**.
 
-   ![Nieuwe virtuele netwerkintegratie](./media/secure-web-app/app-vnet-menu.png)
+   ![Nieuwe integratie van virtueel netwerk](./media/secure-web-app/app-vnet-menu.png)
 
-    *Nieuwe virtuele netwerkintegratie voor App Service*
+    *Nieuwe integratie van virtuele netwerken voor App Service*
 
-1. Selecteer **VNET toevoegen (voorbeeld)** op de volgende pagina.
+1. Selecteer op de volgende pagina **VNET toevoegen (preview)**.
 
-1. Selecteer in het volgende menu het virtuele netwerk `hello-vnet`dat is gemaakt in de implementatie die begint met . U een nieuw subnet maken of een bestaand subnet selecteren.
-   Maak in dit geval een nieuw subnet. Stel het **bereik van** het adres in op **10.0.3.0/24** en geef een naam aan het subnet **app-subnet**.
+1. Selecteer in het volgende menu het virtuele netwerk dat u hebt gemaakt in de implementatie die `hello-vnet`begint met. U kunt een nieuw subnet maken of een bestaande selecteren.
+   In dit geval maakt u een nieuw subnet. Stel het **adres bereik** in op **10.0.3.0/24** en noem het subnet **app-subnet**.
 
-   ![Virtuele netwerkconfiguratie van App Service](./media/secure-web-app/app-vnet-config.png)
+   ![Configuratie van virtuele netwerk App Service](./media/secure-web-app/app-vnet-config.png)
 
-    *Virtuele netwerkconfiguratie voor App-service*
+    *Configuratie van het virtuele netwerk voor App Service*
 
-Nu u de virtuele netwerkintegratie hebt ingeschakeld, u netwerkbeveiligingsgroepen toevoegen aan onze app.
+Nu u de integratie van het virtuele netwerk hebt ingeschakeld, kunt u netwerk beveiligings groepen toevoegen aan de app.
 
-1. Gebruik het zoekvak, zoek naar **netwerkbeveiligingsgroepen.** Selecteer **Netwerkbeveiligingsgroepen** in de resultaten.
+1. Zoek in het zoekvak naar **netwerk beveiligings groepen**. Selecteer **netwerk beveiligings groepen** in de resultaten.
 
-    ![Zoeken naar netwerkbeveiligingsgroepen](./media/secure-web-app/nsg-search-menu.png)
+    ![Zoeken naar netwerk beveiligings groepen](./media/secure-web-app/nsg-search-menu.png)
 
-    *Zoeken naar netwerkbeveiligingsgroepen*
+    *Zoeken naar netwerk beveiligings groepen*
 
-2. Selecteer In het volgende menu De optie **Toevoegen**. Voer de **naam** van de NSG en de **resourcegroep** in waarin deze zich moet bevinden. Deze NSG wordt toegepast op het subnet van de applicatiegateway.
+2. Selecteer in het volgende menu de optie **toevoegen**. Voer de **naam** in van de NSG en de **resource groep** waarin deze zich bevindt. Deze NSG wordt toegepast op het subnet van de toepassings gateway.
 
     ![Een NSG maken](./media/secure-web-app/nsg-create-new.png)
 
     *Een NSG maken*
 
-3. Nadat de NSG is gemaakt, selecteert u deze. Selecteer in het blad onder **Instellingen**de **inkomende beveiligingsregels**. Configureer deze instellingen zodat verbindingen in de toepassingsgateway via poort 443 kunnen worden opgenomen.
+3. Nadat de NSG is gemaakt, selecteert u deze. Selecteer in de Blade onder **instellingen**de optie **regels voor inkomende beveiliging**. Configureer deze instellingen om verbindingen toe te staan in de toepassings gateway via poort 443.
 
    ![De NSG configureren](./media/secure-web-app/nsg-gateway-config.png)
 
    *De NSG configureren*
 
-4. Voeg in de uitgaande regels voor de gateway NSG een regel toe die uitgaande verbindingen met `AppService`de instantie App-service toestaat door een regel te maken die zich richt op de servicetag:
+4. Voeg in de uitgaande regels voor de gateway NSG een regel toe waarmee uitgaande verbindingen met het App Service-exemplaar worden toegestaan door een regel te maken die de `AppService`servicetag van de service bedoelt:
 
    ![Uitgaande regels voor de NSG toevoegen](./media/secure-web-app/nsg-outbound-allowappserviceout.png)
 
    *Uitgaande regels voor de NSG toevoegen*
 
-    Voeg nog een uitgaande regel toe om de gateway uitgaande regels naar een virtueel netwerk te laten verzenden.
+    Voeg nog een regel voor uitgaande verbindingen toe zodat de gateway uitgaande regels kan verzenden naar een virtueel netwerk.
 
    ![Een andere uitgaande regel toevoegen](./media/secure-web-app/nsg-outbound-vnet.png)
 
     *Een andere uitgaande regel toevoegen*
 
-5. Selecteer **Op**het subnet van het NSG Associate, selecteer je het virtuele netwerk dat in de implementatie is gemaakt en selecteer je het gatewaysubnet met de naam **gw-subnet**. De NSG wordt toegepast op het subnet.
+5. Selecteer **koppelen**op de Blade subnetten van de NSG, selecteer het virtuele netwerk dat u in de implementatie hebt gemaakt en selecteer het gateway-subnet met de naam **gw-subnet**. De NSG wordt toegepast op het subnet.
 
-6. Maak een andere NSG zoals in de eerdere stap, dit keer voor het app-service-exemplaar. Geef het een naam. Voeg de inkomende regel voor poort 443 toe, net als voor de toepassingsgateway NSG.
+6. Maak een andere NSG, zoals in de vorige stap, de tijd voor de App Service-instantie. Geef het een naam. Voeg de regel voor binnenkomende verbindingen toe voor poort 443, zoals u dat voor de Application Gateway NSG hebt gedaan.
 
-   Als u een App Service-instantie hebt geïmplementeerd op een app-serviceomgeving-instantie, wat niet het geval is voor deze app, u binnenkomende regels toevoegen om Azure Service Health-sondes toe te staan door poorten 454-455 te openen voor de binnenkomende beveiligingsgroepen van uw App Service NSG. Hier is de configuratie:
+   Als er een App Service-exemplaar is geïmplementeerd op een App Service Environment exemplaar, wat niet het geval is voor deze app, kunt u regels voor binnenkomend verkeer toevoegen om Azure Service Health tests toe te staan door poorten 454-455 te openen in de binnenkomende beveiligings groepen van uw App Service NSG. Hier is de configuratie:
 
-   ![Regels toevoegen voor Azure Service Health-sondes](./media/secure-web-app/nsg-create-healthprobes.png)
+   ![Regels voor Azure Service Health tests toevoegen](./media/secure-web-app/nsg-create-healthprobes.png)
 
-    *Regels toevoegen voor Azure Service Health-sondes (alleen App-serviceomgeving)*
+    *Regels voor Azure Service Health tests toevoegen (alleen App Service Environment)*
 
-7. Maak in de uitgaande beveiligingsregels een nieuwe uitgaande beveiligingsregel waarmee de instantie App Service kan communiceren met de PostgreSQL-database. Configureer het als volgt:
+7. Maak in de regels voor uitgaande beveiliging een nieuwe regel voor uitgaande beveiliging waarmee het App Service exemplaar kan communiceren met de PostgreSQL-data base. Configureer deze als volgt:
 
-   ![Regel om uitgaande PostgreSQL-verbindingen toe te staan](./media/secure-web-app/nsg-outbound-postgresql.png)
+   ![Regel voor het toestaan van uitgaande PostgreSQL-verbindingen](./media/secure-web-app/nsg-outbound-postgresql.png)
 
-   *Een regel toevoegen om uitgaande PostgreSQL-verbindingen toe te staan*
+   *Een regel toevoegen voor het toestaan van uitgaande PostgreSQL-verbindingen*
 
-Als u het aanvalsoppervlak wilt beperken, wijzigt u de netwerkinstellingen van App Service zodat alleen de toepassingsgateway toegang heeft tot de toepassing.
-U doet dit door naar het tabblad App Service-netwerk te gaan, het tabblad **IP-beperkingen te** selecteren en een allow-regel te maken waarmee alleen het IP-adres van de toepassingsgateway rechtstreeks toegang heeft tot de service.
+Als u de kwets baarheid wilt beperken, wijzigt u de App Service netwerk instellingen zodanig dat alleen de toepassings gateway toegang heeft tot de toepassing.
+Hiertoe gaat u naar het tabblad App Service netwerk, selecteert u het tabblad **IP-beperkingen** en maakt u een regel voor toestaan waarmee alleen het IP-adres van de toepassings gateway rechtstreeks toegang heeft tot de service.
 
-U het IP-adres van de gateway ophalen op de overzichtspagina. Voer op het tabblad **CIDR IP-adres** het `<GATEWAY_IP_ADDRESS>/32`IP-adres in deze indeling in: .
+U kunt het IP-adres van de gateway ophalen van de pagina overzicht. Geef op het tabblad **IP-adres CIDR** het IP-adres op in de `<GATEWAY_IP_ADDRESS>/32`volgende indeling:.
 
 ![Alleen de gateway toestaan](./media/secure-web-app/app-allow-gw-only.png)
 
-*Alleen het gateway-IP toestaan om toegang te krijgen tot de App-service*
+*Alleen het gateway-IP-adres toegang geven tot de App Service*
 
 #### <a name="implement-azure-active-directory-oauth"></a>Azure Active Directory OAuth implementeren
 
-De Azure-documenten die op de voorbeeldwebpagina worden gedistribueerd, zijn bronnen in onze app die mogelijk bescherming nodig hebben. U Azure Active Directory (Azure AD) gebruiken om verificatie voor web-, bureaublad- en mobiele apps te implementeren met behulp van verschillende verificatiestromen.
-De app maakt gebruik **van Login With Microsoft**, waarmee de app profielen kan lezen van gebruikers die zijn toegevoegd aan de lijst van onze Azure AD-gebruiker met één tenant.
+De Azure-documenten die worden gedistribueerd op de pagina voor beeld-web-app, zijn resources in onze app die mogelijk bescherming nodig hebben. U kunt Azure Active Directory (Azure AD) gebruiken om verificatie voor web-, desktop-en Mobile-apps te implementeren met behulp van verschillende verificatie stromen.
+De app maakt gebruik **van aanmelden bij micro soft**, waarmee de app profielen kan lezen van gebruikers die zijn toegevoegd aan de lijst met één Tenant van Azure AD-gebruikers.
 
-Configureer de app in de Azure-portal om de vereiste referenties te gebruiken:
+Configureer in de Azure Portal de app zodanig dat de vereiste referenties worden gebruikt:
 
-1. Selecteer **Azure Active Directory**of zoek ernaar met het zoekvak.
+1. Selecteer **Azure Active Directory**of zoek ernaar door middel van het zoekvak.
 
-2. Selecteer **Nieuwe registratie:**
+2. Selecteer **nieuwe registratie**:
 
    ![Een registratie maken](./media/secure-web-app/ad-auth-create.png)
 
-   *Een Azure AD-app-registratie maken*
+   *Een Azure AD-App-registratie maken*
 
-3. Voer op de volgende pagina de naam van de app in. Selecteer onder **Ondersteunde accounttypen** **alleen Accounts in deze organisatiemap**.
-    Voer **onder Uri omleiden**het basisdomein in waarop de app wordt uitgevoerd plus één met het tokeneindpunt. Bijvoorbeeld: *GATEWAY_HASH*.cloudapp.net/token.
+3. Voer op de volgende pagina de naam van de app in. Onder **ondersteunde account typen**selecteert u **alleen accounts in deze organisatie Directory**.
+    Onder **omleidings-URI**voert u het basis domein in waarop de app wordt uitgevoerd plus een met het token eindpunt. Bijvoorbeeld: *GATEWAY_HASH*. cloudapp.net/token.
 
-   ![Azure AD-appregistratie configureren](./media/secure-web-app/ad-auth-type.png)
+   ![Azure AD-App-registratie configureren](./media/secure-web-app/ad-auth-type.png)
 
-   *Azure AD-appregistratie configureren*
+   *Azure AD-App-registratie configureren*
 
-4. U krijgt een scherm te zien dat de geregistreerde app en de bijbehorende informatie weergeeft. U moet deze informatie toevoegen aan het exemplaar Azure Key Vault.
-   1. Kopieer de toepassings-id (client) en `CLIENTID`sla deze op in Key Vault als .
-   2. Kopieer de omleidings-URI die u in `REDIRECTURI`de vorige stap hebt ingevoerd en sla deze op als .
-   3. Kopieer de standaardnaam van de Azure AD-standaardmap, die de `TENANT` *opmaaknaam*.microsoftonline.com heeft, en sla deze op in Key Vault als .
-   4. Ga naar het tabblad **Certificaten & geheimen** van de Azure AD-app die u eerder hebt gemaakt en selecteer Nieuw **clientgeheim**, zoals in de volgende schermafbeelding wordt weergegeven. Stel een vervaldatum in en kopieer de gegenereerde waarde `CLIENTSECRET`en sla deze op in Key Vault als .
+4. Er wordt een scherm weer gegeven waarin de geregistreerde app en de bijbehorende informatie worden weer gegeven. U moet deze gegevens toevoegen aan het Azure Key Vault-exemplaar.
+   1. Kopieer de client-ID en sla deze op in Key Vault als `CLIENTID`.
+   2. Kopieer de omleidings-URI die u in de vorige stap hebt ingevoerd `REDIRECTURI`en sla deze op als.
+   3. Kopieer de naam van de standaardmap van Azure AD, met de indelings *naam*. microsoftonline.com, en sla deze op `TENANT`in Key Vault als.
+   4. Ga naar het tabblad **certificaten & geheimen** van de Azure AD-app die u eerder hebt gemaakt en selecteer **Nieuw client geheim**, zoals wordt weer gegeven in de volgende scherm afbeelding. Stel een verval datum in en kopieer de gegenereerde waarde en sla deze op Key Vault als `CLIENTSECRET`.
 
-      ![Azure AD-autorisatiegeheim](./media/secure-web-app/ad-auth-secrets.png)
+      ![Azure AD-autorisatie geheim](./media/secure-web-app/ad-auth-secrets.png)
 
-      *Azure AD-autorisatiegeheim*
+      *Azure AD-autorisatie geheim*
 
-   5. Genereer een veilige willekeurige geheime sleutel met behulp van een command-line / online tool. Bewaar het in `FLASKSECRETKEY`Key Vault als . Het toepassingskader gebruikt deze sleutel om sessies te maken.
-        Zie [Flask Sessions](http://flask.pocoo.org/docs/1.0/quickstart/#sessions)voor meer informatie over het genereren van een geheime sleutel.
+   5. Genereer een veilige wille keurige geheime sleutel met behulp van een opdracht regel/online hulp programma. Sla het op in Key Vault `FLASKSECRETKEY`als. Het toepassings raamwerk gebruikt deze sleutel om sessies te maken.
+        Zie [fles-sessies](http://flask.pocoo.org/docs/1.0/quickstart/#sessions)voor meer informatie over het genereren van een geheime sleutel.
 
-5. Nadat u de aanmelding hebt geconfigureerd, moet u gebruikers toevoegen aan de Azure AD-koppeling om hen in staat te stellen zich bij de bron aan te melden. Als u ze wilt toevoegen, gaat u naar het tabblad **Gebruikers** in Azure AD, selecteert u **Alle gebruikers**en selecteert u Vervolgens **Nieuwe gebruiker** of **Nieuwe gastgebruiker**. Voor het testen u een gastgebruiker toevoegen en de gebruiker uitnodigen in de directory. U ook een nieuwe gebruiker toevoegen als het domein waarop de app wordt uitgevoerd, is gevalideerd. In dit voorbeeld kunnen alleen gebruikers die zijn geregistreerd in de Azure AD-tenant worden geregistreerd voor toegang. Zie de documentatie voor informatie over aanmeldingstoegang voor meerdere huurders.
+5. Nadat u de aanmelding hebt geconfigureerd, moet u gebruikers toevoegen aan de Azure AD-koppeling zodat ze zich kunnen aanmelden bij de bron. Als u deze wilt toevoegen, gaat u naar het tabblad **gebruikers** in azure AD, selecteert u **alle gebruikers**en selecteert u vervolgens **nieuwe gebruiker** of **nieuwe gast gebruiker**. Voor het testen kunt u een gast gebruiker toevoegen en de gebruiker uitnodigen voor de Directory. U kunt ook een nieuwe gebruiker toevoegen als het domein waarop de app wordt uitgevoerd, is gevalideerd. In dit voor beeld kunnen alleen gebruikers die zijn geregistreerd in de Azure AD-Tenant, worden geregistreerd voor toegang. Raadpleeg de documentatie voor meer informatie over de toegang tot multi tenants.
 
-   ![Gebruikers toevoegen aan standaarddomein](./media/secure-web-app/ad-auth-add-user.png)
+   ![Gebruikers toevoegen aan het standaard domein](./media/secure-web-app/ad-auth-add-user.png)
 
-   *Gebruikers toevoegen aan het standaard Azure Active Directory-domein*
+   *Gebruikers toevoegen aan het standaard Azure Active Directory domein*
 
-Nadat u de Azure AD-configuratie en -geheimen aan Key Vault hebt toegevoegd, kunnen gebruikers worden geverifieerd in de app met Azure OAuth-verificatie.
-In de app-code wordt dit afgehandeld door de Azure Active Directory Authentication Library (ADAL).
+Nadat u de Azure AD-configuratie en geheimen aan Key Vault hebt toegevoegd, kunnen gebruikers worden geverifieerd in de app met behulp van Azure OAuth-verificatie.
+In de app-code wordt dit verwerkt door de Azure Active Directory Authentication Library (ADAL).
 
-Nadat de geheimen zich in Key Vault bevinden en de toepassing toegang heeft tot de geheimen en de\/database, kan de applicatieservice worden bereikt via de url van de toepassing van de gateway (https: /GATEWAY_HASH.cloudapp.net), die u krijgen van het blad.
+Nadat de geheimen zich in Key Vault bevinden en de toepassing toegang heeft tot de geheimen en de data base, kan de toepassings service worden bereikt via de toepassings-URL van\/de gateway (https:/GATEWAY_HASH. cloudapp. net), die u vanaf de Blade kunt ophalen.
 
-Als u zich bij Azure AD aanmeldt bij Azure AD, krijgt u een foutmelding met de tekst 'Gebruiker is niet geregistreerd in de map waarop u zich probeert aan te melden', moet u de gebruiker toevoegen. Als u de gebruiker wilt toevoegen, gaat u naar het tabblad **Gebruikers** van Azure AD en voegt u de gebruiker handmatig toe door zijn gegevens in te voeren of de gebruiker uit te nodigen door zijn e-mailadres in te voeren als gastgebruiker in Azure AD in het gastenblad **Uitnodigen.**
+Als u zich bij Azure AD aanmeldt, krijgt u een fout bericht ' gebruiker is niet geregistreerd in de directory waarin u zich probeert aan te melden ', moet u de gebruiker toevoegen. Als u de gebruiker wilt toevoegen, gaat u naar het tabblad **gebruikers** van Azure AD en voegt u de gebruiker hand matig toe door hun gegevens in te voeren of door de gebruiker uit te nodigen door hun e-mail adres als gast gebruiker in te voeren op Azure AD in de Blade **gasten uitnodigen** .
 
 #### <a name="deploy-application-insights"></a>Application Insights implementeren
-Nu de app is geïmplementeerd en werkt, moet u fouten verwerken die zich in de app voordoen, samen met het registreren en traceren van gegevensverzameling.
-Logboekregistratie en traceergegevens verzameling biedt een overzicht van audit gebeurtenissen die zich voordoen in de app.
+Nu de app is geïmplementeerd en werkt, moet u fouten in de app afhandelen, samen met de gegevens verzameling logboek registratie en tracering.
+De gegevens verzameling logboek registratie en tracering biedt een overzicht van de controle gebeurtenissen die in de app plaatsvinden.
 
-Application Insights is een service die logboeken verzamelt die kunnen worden gegenereerd door gebruikers of door het systeem.
+Application Insights is een service waarmee logboeken worden verzameld die kunnen worden gegenereerd door gebruikers of het systeem.
 
-Ga als u een instantie Application Insights maken:
+Een Application Insights-exemplaar maken:
 
-1. Zoek **naar toepassingsinzichten** met behulp van het zoekvak in de Azure-portal.
-2. Selecteer **Application Insights**. Geef de details op die hier worden weergegeven om een instantie te maken.
+1. Zoek naar **Application Insights** met behulp van het zoekvak in de Azure Portal.
+2. Selecteer **Application Insights**. Geef de details op die hier worden weer gegeven om een exemplaar te maken.
 
-   ![Een instantie Application Insights maken](./media/secure-web-app/app-insights-data.png)
+   ![Een Application Insights-exemplaar maken](./media/secure-web-app/app-insights-data.png)
 
-Nadat de implementatie is voltooid, hebt u een instantie Application Insights.
+Nadat de implementatie is voltooid, hebt u een Application Insights-exemplaar.
 
-Nadat u het exemplaar Applications Insights hebt gemaakt, moet u de app bewust maken van de instrumentatiesleutel waarmee logboeken naar de cloud kunnen worden verzonden. U doet dit door de toepassingsinzichten op te halen en te gebruiken in de toepassingsbibliotheken die Azure biedt voor Toepassingsinzichten. Het beste is om sleutels en geheimen op te slaan in Azure Key Vault om ze veilig te houden.
+Nadat u het Application Insights-exemplaar hebt gemaakt, moet u de app op de hoogte stellen van de instrumentatie sleutel waarmee logboeken naar de Cloud kunnen worden verzonden. U doet dit door de Application Insights sleutel op te halen en deze te gebruiken in de toepassings bibliotheken die Azure biedt voor Application Insights. Het best practice is om sleutels en geheimen op te slaan in Azure Key Vault om ze te beveiligen.
 
-Voor de basisvoorbeeld-app moet u, nadat u het exemplaar Applications Insights hebt gemaakt, de app bewust maken van de instrumentatiesleutel waarmee de app logboeken naar de cloud kan verzenden.
-Stel in Key `APPINSIGHTSKEY` Vault een geheim in en stel de waarde ervan in als instrumentatietoets. Hierdoor kan de app logboeken en statistieken naar Application Insights verzenden.
+Nadat u het Application Insights-exemplaar hebt gemaakt, moet u de app op de hoogte stellen van de instrumentatie sleutel waarmee logboeken naar de Cloud kunnen worden verzonden, voor de basis voorbeeld-app.
+Stel in Key Vault een `APPINSIGHTSKEY` geheim in en stel de waarde ervan in als de instrumentatie sleutel. Hiermee kan de app logboeken en metrische gegevens naar Application Insights verzenden.
 
-#### <a name="implement-multi-factor-authentication-for-azure-active-directory"></a>Multi-Factor-verificatie implementeren voor Azure Active Directory
+#### <a name="implement-multi-factor-authentication-for-azure-active-directory"></a>Multi-Factor Authentication implementeren voor Azure Active Directory
 
-Beheerders moeten ervoor zorgen dat de abonnementsaccounts in de portal worden beveiligd. Het abonnement is kwetsbaar voor aanvallen omdat het de resources beheert die u hebt gemaakt. Als u het abonnement wilt beveiligen, schakelt u Multi-Factor Authentication in op het tabblad **Azure Active Directory** van het abonnement.
+Beheerders moeten ervoor zorgen dat de abonnements accounts in de portal zijn beveiligd. Het abonnement is kwetsbaar voor aanvallen omdat het de resources beheert die u hebt gemaakt. Als u het abonnement wilt beveiligen, schakelt u Multi-Factor Authentication in op het tabblad **Azure Active Directory** van het abonnement.
 
-Azure AD werkt op basis van beleidsregels die worden toegepast op een gebruiker of groepen gebruikers die aan een bepaalde criteria voldoen.
-Azure maakt een standaardbeleid waarin wordt aangegeven dat beheerders tweestapsverificatie nodig hebben om zich aan te melden bij de portal.
-Nadat u dit beleid hebt ingevonden, wordt u mogelijk gevraagd om u af te melden en u weer aan te melden bij de Azure-portal.
+Azure AD werkt op basis van beleids regels die worden toegepast op een gebruiker of groepen gebruikers die aan een bepaald criterium voldoen.
+Er wordt door Azure een standaard beleid gemaakt om aan te geven dat beheerders twee ledige verificatie nodig hebben om zich aan te melden bij de portal.
+Nadat u dit beleid hebt ingeschakeld, wordt u mogelijk gevraagd om u af te melden en weer aan te melden bij de Azure Portal.
 
-Ga als bedoeld als u MFA inschakelt voor beheerdersaanmeldingen:
+MFA inschakelen voor beheerders aanmeldingen:
 
-1. Ga naar het tabblad **Azure Active Directory** in de Azure-portal
-2. Selecteer onder de beveiligingscategorie voorwaardelijke toegang. U ziet dit scherm:
+1. Ga naar het tabblad **Azure Active Directory** in het Azure Portal
+2. Onder de categorie beveiliging selecteert u voorwaardelijke toegang. U ziet dit scherm:
 
-   ![Voorwaardelijke toegang - Beleid](./media/secure-web-app/ad-mfa-conditional-add.png)
+   ![Voorwaardelijke toegang-beleids regels](./media/secure-web-app/ad-mfa-conditional-add.png)
 
-Als u geen nieuw beleid maken:
+Als u geen nieuw beleid kunt maken:
 
-1. Ga naar het **MFA-tabblad.**
-2. Selecteer de proefversiekoppeling Azure AD Premium **Free** om u te abonneren op de gratis proefversie.
+1. Ga naar het tabblad **MFA** .
+2. Selecteer de koppeling **gratis proef versie** van Azure AD Premium om u te abonneren op de gratis proef versie.
 
-   ![Gratis proefversie van Azure AD Premium](./media/secure-web-app/ad-trial-premium.png)
+   ![Azure AD Premium gratis proef versie](./media/secure-web-app/ad-trial-premium.png)
 
-Terug naar het scherm met voorwaardelijke toegang.
+Ga terug naar het scherm voorwaardelijke toegang.
 
-1. Selecteer het nieuwe tabblad beleid.
+1. Selecteer het tabblad Nieuw beleid.
 2. Voer de naam van het beleid in.
 3. Selecteer de gebruikers of groepen waarvoor u MFA wilt inschakelen.
-4. Selecteer **onder Toegangsbesturingselementen**het tabblad **Verlening** en selecteer Desgewenst **multifactorauthenticatie** (en andere instellingen vereisen).
+4. Selecteer onder **besturings elementen voor toegang**het tabblad **Grant** en selecteer vervolgens **multi-factor Authentication vereisen** (en andere instellingen indien gewenst).
 
    ![MFA vereisen](./media/secure-web-app/ad-mfa-conditional-add.png)
 
-U het beleid inschakelen door het selectievakje boven aan het scherm in te schakelen of dit te doen op het tabblad **Voorwaardelijke toegang.** Wanneer het beleid is ingeschakeld, hebben gebruikers MFA nodig om zich aan te melden bij de portal.
+U kunt het beleid inschakelen door het selectie vakje boven aan het scherm te selecteren of op het tabblad **voorwaardelijke toegang** . Wanneer het beleid is ingeschakeld, hebben gebruikers MFA nodig om zich aan te melden bij de portal.
 
-Er is een basislijnbeleid waarvoor MFA vereist is voor alle Azure-beheerders. U het direct inschakelen in de portal. Als u dit beleid inschakelt, kan de huidige sessie ongeldig worden gemaakt en u zich opnieuw aanmelden.
+Er is een basislijn beleid waarvoor MFA is vereist voor alle Azure-beheerders. U kunt deze direct inschakelen in de portal. Als u dit beleid inschakelt, wordt de huidige sessie mogelijk ongeldig en wordt u afgedwongen om u opnieuw aan te melden.
 
-Als het basislijnbeleid niet is ingeschakeld:
+Als het basislijn beleid niet is ingeschakeld:
 
 1. Selecteer **MFA vereisen voor beheerders**.
-2. Selecteer **Beleid gebruiken onmiddellijk**.
+2. Selecteer **beleid direct gebruiken**.
 
-   ![Beleid gebruiken onmiddellijk selecteren](./media/secure-web-app/ad-mfa-conditional-enable.png)
+   ![Selecteer beleid direct gebruiken](./media/secure-web-app/ad-mfa-conditional-enable.png)
 
-#### <a name="use-azure-sentinel-to-monitor-apps-and-resources"></a>Azure Sentinel gebruiken om apps en resources te controleren
+#### <a name="use-azure-sentinel-to-monitor-apps-and-resources"></a>Azure Sentinel gebruiken om apps en resources te bewaken
 
-Naarmate een toepassing groeit, wordt het moeilijk om alle beveiligingssignalen en statistieken die van resources zijn ontvangen, samen te voegen en ze op een actiegerichte manier nuttig te maken.
+Naarmate een toepassing groeit, is het lastig om alle beveiligings signalen en metrische gegevens die van resources zijn ontvangen samen te voegen en ze nuttig te maken op een op actie gerichte manier.
 
-Azure Sentinel is ontworpen om gegevens te verzamelen, de soorten bedreigingen te detecteren die mogelijk zijn en inzicht te bieden in beveiligingsincidenten.
-Terwijl het wacht op handmatige interventie, kan Azure Sentinel vertrouwen op vooraf geschreven playbooks om waarschuwingen en incidentbeheerprocessen te starten.
+Azure Sentinel is ontworpen voor het verzamelen van gegevens, het detecteren van mogelijke soorten bedreigingen en het geven van inzicht in beveiligings incidenten.
+Hoewel er wordt gewacht op hand matige interventie, kan Azure Sentinel afhankelijk zijn van vooraf geschreven playbooks om waarschuwingen en incident beheer processen te starten.
 
-De voorbeeld-app bestaat uit verschillende bronnen die Azure Sentinel kan controleren.
-Als u Azure Sentinel wilt instellen, moet u eerst een Log Analytics-werkruimte maken die alle gegevens opslaat die zijn verzameld uit de verschillende bronnen.
+De voor beeld-app bestaat uit verschillende bronnen die door Azure Sentinel kunnen worden bewaakt.
+Als u Azure Sentinel wilt instellen, moet u eerst een Log Analytics-werk ruimte maken waarin alle verzamelde gegevens van de verschillende bronnen worden opgeslagen.
 
-Ga als volgt te werk om deze werkruimte te maken:
+Deze werk ruimte maken:
 
-1. Zoek in het zoekvak in de Azure-portal naar **Log Analytics**. Selecteer **Logboekanalysewerkruimten**.
+1. Zoek in het zoekvak in het Azure Portal naar **log Analytics**. Selecteer **log Analytics-werk ruimten**.
 
-   ![Zoeken naar Log Analytics-werkruimten](./media/secure-web-app/sentinel-log-analytics.png)
+   ![Zoeken naar Log Analytics-werk ruimten](./media/secure-web-app/sentinel-log-analytics.png)
 
-    *Zoeken naar Log Analytics-werkruimten*
+    *Zoeken naar Log Analytics-werk ruimten*
 
-2. Selecteer op de volgende pagina **Toevoegen** en geef vervolgens een naam, resourcegroep en locatie op voor de werkruimte.
+2. Selecteer op de volgende pagina **toevoegen** en geef vervolgens een naam, resource groep en locatie op voor de werk ruimte.
    ![Een Log Analytics-werkruimte maken](./media/secure-web-app/sentinel-log-analytics-create.png)
 
    *Een Log Analytics-werkruimte maken*
@@ -898,98 +898,98 @@ Ga als volgt te werk om deze werkruimte te maken:
 
     *Zoeken naar Azure Sentinel*
 
-4. Selecteer **Toevoegen** en selecteer vervolgens de werkruimte Log Analytics die u eerder hebt gemaakt.
+4. Selecteer **toevoegen** en selecteer vervolgens de log Analytics werk ruimte die u eerder hebt gemaakt.
 
-   ![Een werkruimte Logboekanalyse toevoegen](./media/secure-web-app/sentinel-workspace-add.png)
+   ![Een Log Analytics-werk ruimte toevoegen](./media/secure-web-app/sentinel-workspace-add.png)
 
-    *Een werkruimte Logboekanalyse toevoegen*
+    *Een Log Analytics-werk ruimte toevoegen*
 
-5. Selecteer op de pagina **Azure Sentinel - Gegevensconnectoren** onder **Configuratie**de optie **Gegevensconnectoren**. U ziet een array met Azure-services die u koppelen aan de opslaginstantie Log Analytics voor analyse in Azure Sentinel.
+5. Op de **Azure Sentinel-data connectors-** pagina onder **configuratie**selecteert u **gegevens connectors**. U ziet een matrix met Azure-Services die u kunt koppelen aan het Log Analytics Storage-exemplaar voor analyse in azure Sentinel.
 
-   ![Gegevensconnectors voor Log Analytics](./media/secure-web-app/sentinel-connectors.png)
+   ![Log Analytics gegevens connectors](./media/secure-web-app/sentinel-connectors.png)
 
-    *Een gegevensconnector toevoegen aan Azure Sentinel*
+    *Een gegevens connector toevoegen aan Azure Sentinel*
 
-   Als u bijvoorbeeld de toepassingsgateway wilt verbinden, neemt u de volgende stappen:
+   Als u bijvoorbeeld verbinding wilt maken met de toepassings gateway, voert u de volgende stappen uit:
 
-   1. Open het instantieblad azure application gateway.
+   1. Open de Blade Azure-toepassing gateway-exemplaar.
    2. Selecteer **Diagnostische instellingen** onder **Controle**.
    3. Selecteer **Diagnostische instelling toevoegen**.
 
-      ![Application Gateway-diagnose toevoegen](./media/secure-web-app/sentinel-gateway-connector.png)
+      ![Application Gateway diagnostische gegevens toevoegen](./media/secure-web-app/sentinel-gateway-connector.png)
 
-      *Application Gateway-diagnose toevoegen*
+      *Application Gateway diagnostische gegevens toevoegen*
 
-   4. Selecteer **op** de pagina Diagnostische instellingen de werkruimte Log Analytics die u hebt gemaakt en selecteer vervolgens alle statistieken die u wilt verzamelen en verzenden naar Azure Sentinel. Selecteer **Opslaan**.
+   4. Selecteer op de pagina **Diagnostische instellingen** de log Analytics werk ruimte die u hebt gemaakt en selecteer vervolgens alle metrische gegevens die u wilt verzamelen en verzenden naar Azure Sentinel. Selecteer **Opslaan**.
 
-        ![Azure Sentinel-connectorinstellingen](./media/secure-web-app/sentinel-connector-settings.png)
+        ![Instellingen voor de Azure Sentinel connector](./media/secure-web-app/sentinel-connector-settings.png)
 
-        *Azure Sentinel-connectorinstellingen*
+        *Instellingen voor de Azure Sentinel connector*
 
-  De statistieken van de bron bevinden zich in Azure Sentinel, waar u ze opvragen en onderzoeken.
+  De metrische gegevens van de resource bevinden zich in azure Sentinel, waar u query's kunt uitvoeren en onderzoeken.
 
-   Voeg dezelfde statistieken toe aan diagnostische instellingen voor Azure Key Vault, het openbare IP-adres, Azure Database voor PostgreSQL en alle services die diagnostische logboeken in uw account ondersteunen.
+   Voeg dezelfde metrische gegevens toe aan de diagnostische instellingen voor Azure Key Vault, het open bare IP-adres, de Azure Database for PostgreSQL en alle services die Diagnostische logboeken in uw account ondersteunen.
 
-Nadat u de statistieken hebt ingesteld, moet Azure Sentinel gegevens analyseren.
+Nadat u de metrieken hebt ingesteld, heeft Azure Sentinel gegevens die moeten worden geanalyseerd.
 
 ## <a name="evaluate-and-verify"></a>Evalueren en verifiëren
 
-Nadat u de architectuur hebt ontwikkeld en geïmplementeerd, moet u ervoor zorgen dat de code en de geïmplementeerde services voldoen aan beveiligingsstandaarden. Dit zijn enkele stappen die u nemen om de software te verifiëren:
+Nadat u de architectuur hebt ontwikkeld en geïmplementeerd, moet u ervoor zorgen dat de code en de geïmplementeerde services voldoen aan de beveiligings normen. Dit zijn enkele stappen die u kunt nemen om de software te controleren:
 
 - Analyse van statische code
-- Kwetsbaarheid scannen
-- Kwetsbaarheden in toepassingsafhankelijkheden vinden en oplossen
+- Scannen van beveiligings problemen
+- Beveiligings problemen in toepassings afhankelijkheden zoeken en oplossen
 
-Dit zijn de basisbouwstenen voor best practices in veilige ontwikkeling.
+Dit zijn de basis bouwstenen voor aanbevolen procedures voor veilige ontwikkeling.
 
 ### <a name="static-code-analysis"></a>Analyse van statische code
 
-Voor de voorbeeld-app omvat verificatie met statische analysetools het vinden van kwetsbaarheden in de app-code met behulp van technieken zoals taint checking en data-flow analyse. Python statische analyse tools geven u meer vertrouwen dat uw app veilig is.
+Voor de voor beeld-app heeft verificatie met statische analyse hulpprogramma's betrekking op het vinden van beveiligings problemen in de app-code met behulp van technieken als Taint-controle en gegevens stroom analyse. Met de hulpprogram ma's voor statische analyse van python hebt u meer zekerheid over de beveiliging van uw app.
 
-**Linting (Linting)**
+**Linten**
 
-PyFlakes, een Python linting bibliotheek, helpt u dode code en ongebruikte functies uit apps te verwijderen, zoals hier wordt weergegeven:
+PyFlakes, een python-lint bibliotheek, helpt u bij het verwijderen van dode code en ongebruikte functies uit apps, zoals hier wordt weer gegeven:
 
-![Pyflakes](./media/secure-web-app/pyflakes.png)
+![PyFlakes](./media/secure-web-app/pyflakes.png)
 
-Linting geeft tips en mogelijke wijzigingen die uw code schoner en minder foutgevoelig kunnen maken tijdens runtime.
+Het maken van linten biedt hints en mogelijke wijzigingen die uw code kunnen opschonen en minder fout gevoelig tijdens runtime.
 
-**Pylint**
+**PyLint**
 
-PyLint gaf de meeste waarde voor dit project. Het voert code-standaard controles, foutcontrole, en refactoring tips om ervoor te zorgen dat de code die op de server is veilig. Door PyLint te gebruiken om uw code bij te werken, u bugs elimineren en de PyLint-beoordeling verbeteren, zoals de volgende afbeeldingen laten zien.
+PyLint heeft de hoogste waarde voor dit project gegeven. Het programma voert code-standaard controles, fout controle en herstructureer tips uit om ervoor te zorgen dat de code die op de server wordt uitgevoerd, veilig is. Door PyLint te gebruiken om uw code bij te werken, kunt u fouten elimineren en de PyLint-classificatie verbeteren, zoals in de volgende afbeeldingen wordt weer gegeven.
 
 ![Vóór PyLint](./media/secure-web-app/before-pylint.png)
 
 *Vóór PyLint*
 
-Nadat u een aantal codefouten hebt opgelost die door de lintingtools zijn gevonden, hebt u er meer vertrouwen in dat de code niet gevoelig is voor fouten. Het oplossen van de fouten vermindert aanzienlijk de beveiligingsrisico's die kunnen optreden wanneer de code wordt geïmplementeerd in productieomgevingen.
+Nadat u een aantal van de code fouten hebt opgelost die zijn gevonden door de hulpprogram ma's, weet u zeker dat de code niet gevoelig is voor fouten. Het oplossen van de fouten vermindert de beveiligings Risico's die zich kunnen voordoen wanneer de code wordt geïmplementeerd in productie omgevingen.
 
-![Na Pylint](./media/secure-web-app/after-pylint.png)
+![Na pylint](./media/secure-web-app/after-pylint.png)
 
 *Na PyLint*
 
-### <a name="vulnerability-scanning"></a>Kwetsbaarheid scannen
+### <a name="vulnerability-scanning"></a>Scannen van beveiligings problemen
 
-[OWASP's ZAP](https://www.zaproxy.org/) tool is een open-source web applicatie kwetsbaarheid scanner die u gebruiken om de sample app te controleren op kwetsbaarheden. Het uitvoeren van het gereedschap op de voorbeeld-app onthult een aantal mogelijke fouten en aanvalsvectoren.
+Het ZAP-hulp programma [van OWASP](https://www.zaproxy.org/) is een open-source beveiligings scanner voor webtoepassingen die u kunt gebruiken om de voor beeld-app te controleren op beveiligings problemen. Als het hulp programma wordt uitgevoerd op de voor beeld-app, worden er mogelijk fouten en aanvals vectoren gemeld.
 
-![Zap, gereedschap](./media/secure-web-app/zap-tool.png)
+![ZAP-hulp programma](./media/secure-web-app/zap-tool.png)
 
-*Zap, gereedschap*
+*ZAP-hulp programma*
 
-### <a name="find-and-fix-vulnerabilities-in-app-dependencies"></a>Kwetsbaarheden in app-afhankelijkheden zoeken en oplossen
+### <a name="find-and-fix-vulnerabilities-in-app-dependencies"></a>Beveiligings problemen in app-afhankelijkheden detecteren en oplossen
 
-Als u toepassingsafhankelijkheden wilt zoeken en oplossen, u [de afhankelijkheidscontrole van OWASP gebruiken.](https://owasp.org/www-project-dependency-check/)
+U kunt [de afhankelijkheids controle van OWASP](https://owasp.org/www-project-dependency-check/)gebruiken om toepassings afhankelijkheden te vinden en op te lossen.
 
-Veiligheid is een vergelijkbare toepassing die afhankelijkheden controleert. Je het vinden op [GitHub.](https://github.com/pyupio/safety) Veiligheidsscans voor kwetsbaarheden gevonden in bekende kwetsbaarheid databases.
+Beveiliging is een soort gelijke toepassing die afhankelijkheden controleert. U kunt het vinden op [github](https://github.com/pyupio/safety). Veiligheids scans voor beveiligings problemen gevonden in bekende beveiligings databases.
 
-![Veiligheid](./media/secure-web-app/pysafety.png)
+![Schadelijk](./media/secure-web-app/pysafety.png)
 
-*Veiligheid*
+*Schadelijk*
 
 ## <a name="next-steps"></a>Volgende stappen
 
 De volgende artikelen kunnen u helpen bij het ontwerpen, ontwikkelen en implementeren van beveiligde toepassingen.
 
-- [Ontwerp](secure-design.md)
+- [Ontwerpen](secure-design.md)
 - [Ontwikkelen](secure-develop.md)
 - [Implementeren](secure-deploy.md)

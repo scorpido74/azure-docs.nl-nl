@@ -1,6 +1,6 @@
 ---
-title: Gegevens die u moet verzamelen wanneer u een aanvraag opent voor Microsoft Azure Automation| Microsoft Documenten
-description: In dit artikel worden enkele gegevens beschreven die u moet verzamelen voordat u een aanvraag opent voor Azure Automation met Microsoft Azure Support.
+title: Gegevens die moeten worden verzameld wanneer u een case opent voor Microsoft Azure automatisering | Microsoft Docs
+description: In dit artikel wordt een deel van de informatie beschreven die u moet verzamelen voordat u een aanvraag voor Azure Automation opent met Microsoft Azure-ondersteuning.
 services: virtual-machines-windows, azure-resource-manager
 documentationcenter: ''
 author: v-miegge
@@ -14,83 +14,83 @@ ms.topic: troubleshooting
 ms.date: 09/23/2019
 ms.author: v-miegge
 ms.openlocfilehash: e1d5d791a58f301991819b41757b9021f6e30fc0
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81679408"
 ---
 # <a name="data-to-collect-when-you-open-a-case-for-microsoft-azure-automation"></a>Te verzamelen gegevens wanneer u een case opent voor Microsoft Azure Automation
 
-In dit artikel worden enkele gegevens beschreven die u moet verzamelen voordat u een aanvraag opent voor Azure Automation met Microsoft Azure Support. Deze informatie is niet vereist om de aanvraag te openen. Het kan Microsoft echter helpen uw probleem sneller op te lossen. Ook kan u worden gevraagd om deze gegevens door de support engineer nadat u de aanvraag hebt geopend.
+In dit artikel wordt een deel van de informatie beschreven die u moet verzamelen voordat u een aanvraag voor Azure Automation opent met Microsoft Azure-ondersteuning. Deze informatie is niet vereist om de aanvraag te openen. Het kan micro soft echter helpen om uw probleem sneller op te lossen. Het is ook mogelijk dat u voor deze gegevens wordt gevraagd door de ondersteunings technicus nadat u de aanvraag hebt geopend.
 
-## <a name="basic-data"></a>Basisgegevens
+## <a name="basic-data"></a>Basis gegevens
 
-Verzamel de basisgegevens die worden beschreven in het Knowledge Base-artikel [4034605 - Hoe maak je azure automation-scripted diagnostics vast .](https://support.microsoft.com/help/4034605/how-to-capture-azure-automation-scripted-diagnostics)
+Verzamel de basis gegevens die zijn beschreven in Knowledge Base [-artikel 4034605-procedures voor het vastleggen van diagnostische Azure Automation scripts](https://support.microsoft.com/help/4034605/how-to-capture-azure-automation-scripted-diagnostics).
 
-## <a name="data-for-update-management-issues-on-linux"></a>Problemen met het beheer van gegevens voor updates op Linux
+## <a name="data-for-update-management-issues-on-linux"></a>Gegevens voor Updatebeheer problemen op Linux
 
-1. Voer naast de items die in KB [4034605](https://support.microsoft.com/help/4034605/how-to-capture-azure-automation-scripted-diagnostics)worden aangeboden, het volgende gereedschap logboekverzameling uit:
+1. Naast de items die worden vermeld in KB [4034605](https://support.microsoft.com/help/4034605/how-to-capture-azure-automation-scripted-diagnostics), voert u het volgende hulp programma voor het verzamelen van Logboeken uit:
 
-   [OMS Linux Agent Log Collector](https://github.com/Microsoft/OMS-Agent-for-Linux/blob/master/tools/LogCollector/OMS_Linux_Agent_Log_Collector.md)
+   [Logboek verzamelaar van OMS Linux-agent](https://github.com/Microsoft/OMS-Agent-for-Linux/blob/master/tools/LogCollector/OMS_Linux_Agent_Log_Collector.md)
  
-2. Comprimeer de inhoud van de **map /var/opt/microsoft/omsagent/run/automationworker/map** en stuur het gecomprimeerde bestand vervolgens naar Azure Support.
+2. Comprimeer de inhoud van de map **/var/opt/Microsoft/omsagent/run/automationworker/** en verzend vervolgens het gecomprimeerde bestand naar de ondersteuning van Azure.
  
-3. Controleer of de id voor de werkruimte waaraan de Log Analytics-agent voor Linux rapporteert, dezelfde is als de id voor de werkruimte die wordt gecontroleerd op updates.
+3. Controleer of de ID van de werk ruimte die de Log Analytics agent voor Linux rapporteert, hetzelfde is als de ID voor de werk ruimte die wordt gecontroleerd op updates.
 
-## <a name="data-for-update-management-issues-on-windows"></a>Problemen met gegevens voor updatebeheer op Windows
+## <a name="data-for-update-management-issues-on-windows"></a>Gegevens voor Updatebeheer problemen in Windows
 
-1. Gegevens verzamelen voor de items in [4034605](https://support.microsoft.com/help/4034605/how-to-capture-azure-automation-scripted-diagnostics).
+1. Gegevens verzamelen voor de items die worden vermeld in [4034605](https://support.microsoft.com/help/4034605/how-to-capture-azure-automation-scripted-diagnostics).
 
-2. Exporteer de volgende gebeurtenislogboeken naar de EVTX-indeling:
+2. Exporteer de volgende gebeurtenis logboeken naar de EVTX-indeling:
 
    * Systeem
    * Toepassing
    * Beveiliging
    * Operations Manager
-   * Microsoft-SMA/Operationeel
+   * Micro soft-SMA/operationeel
 
-3. Controleer of de id van de werkruimte waaraan de agent rapporteert, dezelfde is als de id voor de werkruimte die wordt bewaakt door Windows Updates.
+3. Controleer of de ID van de werk ruimte waarmee de agent rapporteert, overeenkomt met de ID van de werk ruimte die wordt bewaakt door Windows-updates.
 
-## <a name="data-for-job-issues"></a>Gegevens voor taakproblemen
+## <a name="data-for-job-issues"></a>Gegevens voor taak problemen
 
-1. Gegevens verzamelen voor de items in [4034605](https://support.microsoft.com/help/4034605/how-to-capture-azure-automation-scripted-diagnostics).
+1. Gegevens verzamelen voor de items die worden vermeld in [4034605](https://support.microsoft.com/help/4034605/how-to-capture-azure-automation-scripted-diagnostics).
 
-2. Verzamel de taak-id voor de taak die een probleem heeft:
+2. De taak-ID voor de taak met een probleem verzamelen:
 
-   1. Ga in de Azure-portal naar **Automatiseringsaccounts**.
-   2. Selecteer het automatiseringsaccount dat u probleemoplossing biedt en noteer de naam.
-   3. Selecteer **Vacatures**.
-   4. Kies de taak die u probleemoplossing voor komt.
-   5. Zoek in het deelvenster Taakoverzicht naar de GUID-waarde in **Taak-ID**.
+   1. Ga in Azure Portal naar **Automation-accounts**.
+   2. Selecteer het Automation-account dat u wilt oplossen en noteer de naam.
+   3. Selecteer **taken**.
+   4. Kies de taak die u wilt oplossen.
+   5. Zoek in het deel venster taak overzicht naar de GUID-waarde in **taak-id**.
 
-   ![Taak-id in het deelvenster Overzicht van taken](media/collect-data-microsoft-azure-automation-case/job-summary-job-id.png)
+   ![Taak-ID in deel venster taak overzicht](media/collect-data-microsoft-azure-automation-case/job-summary-job-id.png)
 
-3. Verzamel een voorbeeld van het script dat u uitvoert.
+3. Verzamel een voor beeld van het script dat u uitvoert.
 
-4. Verzamel de logbestanden:
+4. De logboek bestanden verzamelen:
 
-   1. Ga in de Azure-portal naar **Automatiseringsaccounts**.
-   2. Selecteer het automatiseringsaccount dat u probleemoplossing biedt.
-   3. Selecteer **Vacatures**.
-   4. Kies de taak die u probleemoplossing voor komt.
-   5. Selecteer **Alle logboeken**.
-   6. Verzamel de gegevens in het resulterende deelvenster.
+   1. Ga in Azure Portal naar **Automation-accounts**.
+   2. Selecteer het Automation-account dat u wilt oplossen.
+   3. Selecteer **taken**.
+   4. Kies de taak die u wilt oplossen.
+   5. Selecteer **alle logboeken**.
+   6. Verzamel de gegevens in het resulterende deel venster.
 
-   ![Gegevens die worden vermeld onder Alle logboeken](media/collect-data-microsoft-azure-automation-case/all-logs-data.png)
+   ![Gegevens die worden vermeld in alle logboeken](media/collect-data-microsoft-azure-automation-case/all-logs-data.png)
 
-## <a name="data-for-module-issues"></a>Gegevens voor moduleproblemen
+## <a name="data-for-module-issues"></a>Gegevens voor module problemen
 
-Naast de [basisgegevens items](#basic-data), verzamelen van de volgende informatie:
+Naast de [basis gegevens items](#basic-data), moet u de volgende informatie verzamelen:
 
 * De stappen die u hebt gevolgd, zodat het probleem kan worden gereproduceerd.
-* Schermafbeeldingen van foutberichten.
-* Screenshots van de huidige modules en hun versienummers.
+* Scherm opnamen van fout berichten.
+* Scherm afbeeldingen van de huidige modules en hun versie nummers.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Als je meer hulp nodig hebt:
+Als u meer hulp nodig hebt:
 
-* Krijg antwoorden van Azure-experts via [Azure Forums.](https://azure.microsoft.com/support/forums/)
-* Maak [@AzureSupport](https://twitter.com/azuresupport)verbinding met het officiële Microsoft Azure-account voor het verbeteren van de klantervaring door de Azure-community te verbinden met de juiste bronnen: antwoorden, ondersteuning en experts.
-* Een Azure-ondersteuningsincident indienen. Ga naar de [Azure-ondersteuningssite](https://azure.microsoft.com/support/options/) en selecteer **Ondersteuning opdoen**.
+* Krijg antwoorden van Azure-experts via [Azure-forums](https://azure.microsoft.com/support/forums/).
+* Maak verbinding [@AzureSupport](https://twitter.com/azuresupport)met, het officiële Microsoft Azure account voor het verbeteren van de gebruikers ervaring door de Azure-community te verbinden met de juiste resources: antwoorden, ondersteuning en experts.
+* Een ondersteunings incident voor Azure. Ga naar de [ondersteunings site van Azure](https://azure.microsoft.com/support/options/) en selecteer **ondersteuning verkrijgen**.

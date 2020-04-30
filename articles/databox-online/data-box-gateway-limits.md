@@ -1,6 +1,6 @@
 ---
-title: Azure Data Box Gateway-limieten | Microsoft Documenten
-description: Beschrijft systeemlimieten en aanbevolen formaten voor de Microsoft Azure Data Box Gateway.
+title: Azure Data Box Gateway limieten | Microsoft Docs
+description: Hierin worden systeem limieten en aanbevolen grootten voor de Microsoft Azure Data Box Gateway beschreven.
 services: databox
 author: alkohli
 ms.service: databox
@@ -9,32 +9,32 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: alkohli
 ms.openlocfilehash: 641d7410e414be2adae2a83840c90a680aedd2fc
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
-ms.translationtype: MT
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81683357"
 ---
-# <a name="azure-data-box-gateway-limits"></a>Azure Data Box Gateway-limieten
+# <a name="azure-data-box-gateway-limits"></a>Azure Data Box Gateway limieten
 
-Houd rekening met deze limieten wanneer u uw Microsoft Azure Data Box Gateway-oplossing implementeert en exploiteert. 
+Houd rekening met deze beperkingen wanneer u uw Microsoft Azure Data Box Gateway oplossing implementeert en gebruikt. 
 
-## <a name="data-box-gateway-service-limits"></a>Servicelimieten voor Data Box Gateway
+## <a name="data-box-gateway-service-limits"></a>Data Box Gateway-Service limieten
 
 [!INCLUDE [data-box-edge-gateway-service-limits](../../includes/data-box-edge-gateway-service-limits.md)]
 
-## <a name="data-box-gateway-device-limits"></a>Beperkingen van databoxgateway-apparaten
+## <a name="data-box-gateway-device-limits"></a>Limieten voor Data Box Gateway apparaten
 
-In de volgende tabel worden de limieten voor het gegevensboxgatewayapparaat beschreven.
+In de volgende tabel worden de limieten voor het Data Box Gateway apparaat beschreven.
 
 | Beschrijving | Waarde |
 |---|---|
-|Nee. bestanden per apparaat |100 miljoen <br> Voor elke 25 miljoen bestanden die worden toegevoegd (met maximale limiet van 100 miljoen), moet u 2 TB schijfruimte, 8 GB RAM en 4 cpu-cores toevoegen. |
-|Nee. aandelen per apparaat |24 |
-|Nee. aandelen per Azure-opslagcontainer |1 |
-|Maximale bestandsgrootte geschreven naar een aandeel|Voor een virtueel apparaat van 2 TB is de maximale bestandsgrootte 500 GB. <br> De maximale bestandsgrootte neemt toe met de grootte van de gegevensschijf in de voorgaande verhouding tot maximaal 5 TB. |
+|Nee. bestanden per apparaat |100.000.000 <br> Voor elke 25.000.000 bestanden die worden toegevoegd (met een maximum limiet van 100.000.000), moet u 2 TB aan schijf ruimte, 8 GB aan RAM-geheugen en 4 kernen CPU toevoegen. |
+|Nee. van shares per apparaat |24 |
+|Nee. van shares per Azure-opslag container |1 |
+|De maximale bestands grootte die naar een share is geschreven|Voor een virtueel apparaat van 2 TB is de maximale bestands grootte 500 GB. <br> De maximale bestands grootte neemt toe met de grootte van de gegevens schijf in de vorige verhouding tot deze Maxi maal 5 TB bereikt. |
 
-## <a name="azure-storage-limits"></a>Azure-opslaglimieten
+## <a name="azure-storage-limits"></a>Limieten voor Azure Storage
 
 [!INCLUDE [data-box-edge-gateway-storage-limits](../../includes/data-box-edge-gateway-storage-limits.md)]
 
@@ -42,11 +42,11 @@ In de volgende tabel worden de limieten voor het gegevensboxgatewayapparaat besc
 
 [!INCLUDE [data-box-edge-gateway-storage-data-upload-caveats](../../includes/data-box-edge-gateway-storage-data-upload-caveats.md)]
 
-## <a name="azure-storage-account-size-and-object-size-limits"></a>Grootte van Azure-opslagaccount en objectgroottelimieten
+## <a name="azure-storage-account-size-and-object-size-limits"></a>Limieten voor Azure Storage-account en object grootte
 
 [!INCLUDE [data-box-edge-gateway-storage-acct-limits](../../includes/data-box-edge-gateway-storage-acct-limits.md)]
 
-## <a name="azure-object-size-limits"></a>Limieten voor azure-objectgrootte
+## <a name="azure-object-size-limits"></a>Limieten voor Azure-object grootte
 
 [!INCLUDE [data-box-edge-gateway-storage-object-limits](../../includes/data-box-edge-gateway-storage-object-limits.md)]
 

@@ -1,66 +1,66 @@
 ---
-title: Noodherstel voor FarmBeats
-description: In dit artikel wordt beschreven hoe gegevensherstel beschermt tegen het verlies van uw gegevens.
+title: Herstel na nood geval voor FarmBeats
+description: In dit artikel wordt beschreven hoe gegevens herstel bescherming biedt tegen het verlies van uw gegevens.
 author: uhabiba04
 ms.topic: article
 ms.date: 04/13/2020
 ms.author: v-umha
 ms.openlocfilehash: 1665c535d4b1fb6190ee5736b688b402f8b4a541
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81683897"
 ---
-# <a name="disaster-recovery-for-farmbeats"></a>Noodherstel voor FarmBeats
+# <a name="disaster-recovery-for-farmbeats"></a>Herstel na nood geval voor FarmBeats
 
-Gegevensherstel beschermt u tegen het verlies van uw gegevens in een gebeurtenis zoals het invouwen van Azure-regio. In een dergelijk geval u failover starten en de gegevens herstellen die zijn opgeslagen in uw FarmBeats-implementatie.
+Met gegevens herstel kunt u uw gegevens verliezen in een gebeurtenis zoals het samen vouwen van de Azure-regio. In een dergelijk geval kunt u een failover starten en de gegevens herstellen die zijn opgeslagen in uw FarmBeats-implementatie.
 
-Gegevensherstel is geen standaardfunctie in Azure FarmBeats. U deze functie handmatig configureren door de vereiste Azure-resources te configureren die door FarmBeats worden gebruikt om gegevens op te slaan in een gekoppelde Azure-regio. Gebruik Active – Passieve aanpak om herstel mogelijk te maken.
+Gegevens herstel is geen standaard functie in azure FarmBeats. U kunt deze functie hand matig configureren door de vereiste Azure-resources te configureren die worden gebruikt door FarmBeats om gegevens op te slaan in een Azure-gekoppelde regio. Gebruik actief – passieve benadering om herstel in te scha kelen.
 
-In de volgende secties vindt u informatie over hoe u gegevensherstel configureren in Azure FarmBeats:
+De volgende secties bevatten informatie over het configureren van gegevens herstel in azure FarmBeats:
 
-- [Gegevensredundantie inschakelen](#enable-data-redundancy)
+- [Gegevens redundantie inschakelen](#enable-data-redundancy)
 - [Service herstellen vanuit online back-up](#restore-service-from-online-backup)
 
 
-## <a name="enable-data-redundancy"></a>Gegevensredundantie inschakelen
+## <a name="enable-data-redundancy"></a>Gegevens redundantie inschakelen
 
-FarmBeats slaat gegevens op in drie Azure first party-services, die **Azure-opslag,** **Cosmos DB** en Time **Series Insights**zijn. Gebruik de volgende stappen om gegevensredundantie voor deze services in te schakelen naar een gekoppeld Azure-gebied:
+FarmBeats slaat gegevens op in drie Azure-Services voor de eerste partij, die **Azure Storage**zijn, **Cosmos DB** en **Time Series Insights**. Gebruik de volgende stappen om gegevens redundantie voor deze services in te scha kelen voor een gekoppelde Azure-regio:
 
-1.  **Azure Storage** : volg deze richtlijn om gegevensredundantie in te schakelen voor elk opslagaccount in uw FarmBeats-implementatie.
-2.  **Azure Cosmos DB** - Volg deze richtlijn om gegevensredundantie voor Cosmos DB-account uw FarmBeats-implementatie in te schakelen.
-3.  **Azure Time Series Insights (TSI)** - TSI biedt momenteel geen redundantie voor gegevens. Als u Time Series Insights-gegevens wilt herstellen, gaat u naar uw sensor/weerpartner en duwt u de gegevens opnieuw naar farmbeats-implementatie.
+1.  **Azure Storage** : Volg deze richt lijnen om gegevens redundantie in te scha kelen voor elk opslag account in uw FarmBeats-implementatie.
+2.  **Azure Cosmos DB** : Volg deze richt lijnen om gegevens redundantie in te scha kelen voor Cosmos DB account van uw FarmBeats-implementatie.
+3.  **Azure time series Insights (TSI)** -TSI biedt momenteel geen gegevens redundantie. Als u Time Series Insights gegevens wilt herstellen, gaat u naar uw sensor/weer partner en pusht u de gegevens naar FarmBeats-implementatie.
 
 ## <a name="restore-service-from-online-backup"></a>Service herstellen vanuit online back-up
 
-U failover starten en gegevens herstellen waarvoor elk van de bovengenoemde gegevensopslag voor uw FarmBeats-implementatie wordt opgeslagen. Zodra u de gegevens voor Azure-opslag en Cosmos DB hebt hersteld, maakt u een andere FarmBeats-implementatie in het gekoppelde Azure-gebied en configureert u de nieuwe implementatie om gegevens uit herstelde gegevensopslag (d.w.z. Azure Storage en Cosmos DB) te gebruiken met de onderstaande stappen:
+U kunt een failover initiëren en de opgeslagen gegevens herstellen waarvoor elk van de hierboven genoemde gegevens archieven voor uw FarmBeats-implementatie. Wanneer u de gegevens voor Azure Storage en Cosmos DB hebt hersteld, maakt u een andere FarmBeats-implementatie in de Azure-gekoppelde regio en configureert u vervolgens de nieuwe implementatie voor het gebruik van gegevens uit de herstelde gegevens archieven (Azure Storage en Cosmos DB) met behulp van de onderstaande stappen:
 
 1. [Cosmos DB configureren](#configure-cosmos-db)
-2. [Opslagaccount configureren](#configure-storage-account)
+2. [Opslag account configureren](#configure-storage-account)
 
 
 ### <a name="configure-cosmos-db"></a>Cosmos DB configureren
 
-Kopieer de toegangssleutel van de herstelde Cosmos DB en werk de nieuwe FarmBeats Datahub Key Vault bij.
+Kopieer de toegangs sleutel van de herstelde Cosmos DB en werk de nieuwe FarmBeats Datahub-Key Vault bij.
 
 
   ![Herstel na noodgevallen](./media/disaster-recovery-for-farmbeats/key-vault-secrets.png)
 
 > [!NOTE]
-> Kopieer de URL van herstelde Cosmos DB en werk deze bij in de nieuwe FarmBeats Datahub App Service Configuration. U nu cosmos DB-account verwijderen in de nieuwe FarmBeats-implementatie.
+> Kopieer de URL van de herstelde Cosmos DB en werk deze bij in de nieuwe FarmBeats-Datahub App Service-configuratie. U kunt nu Cosmos DB-account verwijderen in de nieuwe FarmBeats-implementatie.
 
   ![Herstel na noodgevallen](./media/disaster-recovery-for-farmbeats/configuration.png)
 
-### <a name="configure-storage-account"></a>Opslagaccount configureren
+### <a name="configure-storage-account"></a>Opslag account configureren
 
-Kopieer de toegangssleutel van het herstelde opslagaccount en werk deze bij in de nieuwe FarmBeats Datahub Key Vault.
+Kopieer de toegangs sleutel van het herstelde opslag account en werk het bij in de nieuwe FarmBeats Datahub Key Vault.
 
 ![Herstel na noodgevallen](./media/disaster-recovery-for-farmbeats/key-vault-7-secrets.png)
 
 >[!NOTE]
-> Zorg ervoor dat de naam van het opslagaccount wordt bijgewerkt in het nieuwe VM-config-bestand farmBeats Batch.
+> Zorg ervoor dat u de naam van het opslag account bijwerkt in het nieuwe FarmBeats batch-configuratie bestand voor de VM.
 
 ![Herstel na noodgevallen](./media/disaster-recovery-for-farmbeats/batch-prep-files.png)
 
-Als u gegevensherstel voor uw Accelerator-opslagaccount hebt ingeschakeld, volgt u de stap 2 om de toegangssleutel en naam van het accelerator-opslagaccount bij te werken in het nieuwe farmbeats-exemplaar.
+Als u gegevens herstel voor uw Accelerator Storage-account hebt ingeschakeld, volgt u de stap 2 voor het bijwerken van de toegangs sleutel en naam van het Accelerator Storage-account in het nieuwe FarmBeats-exemplaar.

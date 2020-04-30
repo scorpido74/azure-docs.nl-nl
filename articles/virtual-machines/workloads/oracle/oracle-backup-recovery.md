@@ -1,6 +1,6 @@
 ---
-title: Een back-up maken en een Oracle Database 12c-database herstellen op een virtuele Azure Linux-machine | Microsoft Documenten
-description: Meer informatie over het maken van een back-up en het herstellen van een Oracle Database 12c-database in uw Azure-omgeving.
+title: Back-ups maken en herstellen van een Oracle Database 12c-Data Base op een virtuele Azure Linux-machine | Microsoft Docs
+description: Meer informatie over het maken van een back-up en het herstellen van een Oracle Database 12c-data base in uw Azure-omgeving.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: BorisB2015
@@ -15,40 +15,40 @@ ms.workload: infrastructure
 ms.date: 08/02/2018
 ms.author: borisb
 ms.openlocfilehash: c5f02117d3af7fb411c75d783df82f6008d8104e
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81687008"
 ---
-# <a name="back-up-and-recover-an-oracle-database-12c-database-on-an-azure-linux-virtual-machine"></a>Een back-up maken en een Oracle Database 12c-database herstellen op een virtuele Azure Linux-machine
+# <a name="back-up-and-recover-an-oracle-database-12c-database-on-an-azure-linux-virtual-machine"></a>Back-ups maken en herstellen van een Oracle Database 12c-Data Base op een virtuele Azure Linux-machine
 
-U Azure CLI gebruiken om Azure-resources te maken en te beheren met een opdrachtprompt of scripts te gebruiken. In dit artikel gebruiken we Azure CLI-scripts om een Oracle Database 12c-database te implementeren vanuit een Azure Marketplace-galerieafbeelding.
+U kunt Azure CLI gebruiken om Azure-resources te maken en te beheren via een opdracht prompt of scripts te gebruiken. In dit artikel gebruiken we Azure CLI-scripts om een Oracle Database 12c-data base te implementeren vanuit een galerie met installatie kopieën van Azure Marketplace.
 
-Controleer voordat u begint of Azure CLI is geïnstalleerd. Zie de azure [CLI-installatiehandleiding](https://docs.microsoft.com/cli/azure/install-azure-cli)voor meer informatie.
+Voordat u begint, moet u ervoor zorgen dat Azure CLI is geïnstalleerd. Raadpleeg de [installatie handleiding voor Azure cli](https://docs.microsoft.com/cli/azure/install-azure-cli)voor meer informatie.
 
 ## <a name="prepare-the-environment"></a>De omgeving voorbereiden
 
-### <a name="step-1-prerequisites"></a>Stap 1: Voorwaarden
+### <a name="step-1-prerequisites"></a>Stap 1: vereisten
 
-*   Als u het back-up- en herstelproces wilt uitvoeren, moet u eerst een Linux-vm maken met een geïnstalleerd exemplaar van Oracle Database 12c. De Marketplace-afbeelding die u gebruikt om de VM te maken, heet *Oracle:Oracle-Database-Ee:12.1.0.2:latest*.
+*   Als u het back-up-en herstel proces wilt uitvoeren, moet u eerst een virtuele Linux-machine maken met een geïnstalleerd exemplaar van Oracle Database 12c. De Marketplace-installatie kopie die u gebruikt om de virtuele machine te maken heet *Oracle: Oracle-data base-ee: 12.1.0.2: Latest*.
 
-    Zie de [oracle-database snelaan de slag voor](https://docs.microsoft.com/azure/virtual-machines/workloads/oracle/oracle-database-quick-create)het maken van een Oracle-database voor meer informatie over het maken van een Oracle-database.
+    Zie de [Snelstartgids Oracle Create Data Base](https://docs.microsoft.com/azure/virtual-machines/workloads/oracle/oracle-database-quick-create)(Engelstalig) voor meer informatie over het maken van een Oracle-data base.
 
 
-### <a name="step-2-connect-to-the-vm"></a>Stap 2: Verbinding maken met de VM
+### <a name="step-2-connect-to-the-vm"></a>Stap 2: verbinding maken met de virtuele machine
 
-*   Als u een SSH-sessie (Secure Shell) wilt maken met de VM, gebruikt u de volgende opdracht. Vervang het IP-adres en de `publicIpAddress` combinatie van hostnaam door de waarde voor uw vm.
+*   Gebruik de volgende opdracht om een SSH-sessie (Secure Shell) met de virtuele machine te maken. Vervang het IP-adres en de hostnaam combi natie met `publicIpAddress` de waarde voor uw VM.
 
     ```bash
     ssh <publicIpAddress>
     ```
 
-### <a name="step-3-prepare-the-database"></a>Stap 3: De database voorbereiden
+### <a name="step-3-prepare-the-database"></a>Stap 3: de data base voorbereiden
 
-1.  Deze stap gaat ervan uit dat u een Oracle-instantie (cdb1) hebt die wordt uitgevoerd op een VM met de naam *myVM*.
+1.  Bij deze stap wordt ervan uitgegaan dat u een Oracle-exemplaar (cdb1) hebt dat wordt uitgevoerd op een virtuele machine met de naam *myVM*.
 
-    Voer de *hoofdwortel* van oracle-superuser uit en initialiseer vervolgens de listener:
+    Voer de root van de *Oracle* -super gebruiker uit en Initialiseer vervolgens de listener:
 
     ```bash
     $ sudo su - oracle
@@ -78,7 +78,7 @@ Controleer voordat u begint of Azure CLI is geïnstalleerd. Zie de azure [CLI-in
     The command completed successfully
     ```
 
-2.  (Optioneel) Controleer of de database zich in de archieflogboekmodus bevindt:
+2.  Beschrijving Zorg ervoor dat de data base zich in de archief modus Archive bevindt:
 
     ```bash
     $ sqlplus / as sysdba
@@ -95,7 +95,7 @@ Controleer voordat u begint of Azure CLI is geïnstalleerd. Zie de azure [CLI-in
     SQL> ALTER SYSTEM SWITCH LOGFILE;
     ```
 
-3.  (Optioneel) Maak een tabel om de commit te testen:
+3.  Beschrijving Een tabel maken om de door voer te testen:
 
     ```bash
     SQL> alter session set "_ORACLE_SCRIPT"=true ;
@@ -117,7 +117,7 @@ Controleer voordat u begint of Azure CLI is geïnstalleerd. Zie de azure [CLI-in
     Commit complete.
     ```
 
-4.  Controleer of wijzig de locatie en grootte van het back-upbestand:
+4.  De locatie en grootte van het back-upbestand controleren of wijzigen:
 
     ```bash
     $ sqlplus / as sysdba
@@ -128,20 +128,20 @@ Controleer voordat u begint of Azure CLI is geïnstalleerd. Zie de azure [CLI-in
     db_recovery_file_dest_size           big integer 4560M
     ```
 
-5. Gebruik Oracle Recovery Manager (RMAN) om een back-up van de database te maken:
+5. Oracle Recovery Manager (RMAN) gebruiken voor het maken van een back-up van de Data Base:
 
     ```bash
     $ rman target /
     RMAN> backup database plus archivelog;
     ```
 
-### <a name="step-4-application-consistent-backup-for-linux-vms"></a>Stap 4: Applicatieconsistente back-up voor Linux VM's
+### <a name="step-4-application-consistent-backup-for-linux-vms"></a>Stap 4: toepassings consistente back-up voor virtuele Linux-machines
 
-Toepassingsconsistente back-ups is een nieuwe functie in Azure Backup. U scripts maken en selecteren die voor en na de VM-momentopname moeten worden uitgevoerd (pre-snapshot en post-snapshot).
+Toepassings consistente back-ups is een nieuwe functie in Azure Backup. U kunt scripts maken en selecteren die moeten worden uitgevoerd vóór en na de moment opname van de virtuele machine (vóór de moment opname en na de moment opname).
 
-1. Download het JSON-bestand.
+1. Down load het JSON-bestand.
 
-    Download VMSnapshotScriptPluginConfig.json https://github.com/MicrosoftAzureBackup/VMSnapshotPluginConfigvan . De inhoud van het bestand lijkt op het volgende:
+    Down load VMSnapshotScriptPluginConfig. json https://github.com/MicrosoftAzureBackup/VMSnapshotPluginConfigvan. De bestands inhoud ziet er ongeveer als volgt uit:
 
     ```output
     {
@@ -158,7 +158,7 @@ Toepassingsconsistente back-ups is een nieuwe functie in Azure Backup. U scripts
     }
     ```
 
-2. Maak de map /etc/azure op de VM:
+2. Maak de map/etc/Azure op de VM:
 
     ```bash
     $ sudo su -
@@ -168,11 +168,11 @@ Toepassingsconsistente back-ups is een nieuwe functie in Azure Backup. U scripts
 
 3. Kopieer het JSON-bestand.
 
-    Kopieer VMSnapshotScriptPluginConfig.json naar de map /etc/azure.
+    Kopieer VMSnapshotScriptPluginConfig. json naar de map/etc/Azure.
 
 4. Bewerk het JSON-bestand.
 
-    Bewerk het VMSnapshotScriptPluginConfig.json-bestand `PreScriptLocation` `PostScriptlocation` om de parameters en parameters op te nemen. Bijvoorbeeld:
+    Bewerk het bestand VMSnapshotScriptPluginConfig. json om de `PreScriptLocation` para meters en `PostScriptlocation` te bevatten. Bijvoorbeeld:
 
     ```output
     {
@@ -189,11 +189,11 @@ Toepassingsconsistente back-ups is een nieuwe functie in Azure Backup. U scripts
     }
     ```
 
-5. Maak de pre-snapshot- en post-snapshot scriptbestanden.
+5. Maak de script bestanden vóór de moment opname en de post momentopnamen.
 
-    Hier volgt een voorbeeld van pre-snapshot en post-snapshot scripts voor een "koude back-up" (een offline back-up, met afsluiten en opnieuw opstarten):
+    Hier volgt een voor beeld van scripts van vóór moment opnamen en post momentopnamen voor een ' koude back-up ' (een offline back-up, met afsluiten en opnieuw opstarten):
 
-    Voor /etc/azure/pre_script.sh:
+    Voor/etc/Azure/pre_script. v:
 
     ```bash
     v_date=`date +%Y%m%d%H%M`
@@ -202,7 +202,7 @@ Toepassingsconsistente back-ups is een nieuwe functie in Azure Backup. U scripts
     su - $ORA_OWNER -c "$ORA_HOME/bin/dbshut $ORA_HOME" > /etc/azure/pre_script_$v_date.log
     ```
 
-    Voor /etc/azure/post_script.sh:
+    Voor/etc/Azure/post_script. v:
 
     ```bash
     v_date=`date +%Y%m%d%H%M`
@@ -211,7 +211,7 @@ Toepassingsconsistente back-ups is een nieuwe functie in Azure Backup. U scripts
     su - $ORA_OWNER -c "$ORA_HOME/bin/dbstart $ORA_HOME" > /etc/azure/post_script_$v_date.log
     ```
 
-    Hier is een voorbeeld van pre-snapshot en post-snapshot scripts voor een "hot backup" (een online back-up):
+    Hier volgt een voor beeld van scripts van vóór moment opnamen en post momentopnamen voor een ' hot backup ' (een online back-up):
 
     ```bash
     v_date=`date +%Y%m%d%H%M`
@@ -220,7 +220,7 @@ Toepassingsconsistente back-ups is een nieuwe functie in Azure Backup. U scripts
     su - $ORA_OWNER -c "sqlplus / as sysdba @/etc/azure/pre_script.sql" > /etc/azure/pre_script_$v_date.log
     ```
 
-    Voor /etc/azure/post_script.sh:
+    Voor/etc/Azure/post_script. v:
 
     ```bash
     v_date=`date +%Y%m%d%H%M`
@@ -229,7 +229,7 @@ Toepassingsconsistente back-ups is een nieuwe functie in Azure Backup. U scripts
     su - $ORA_OWNER -c "sqlplus / as sysdba @/etc/azure/post_script.sql" > /etc/azure/pre_script_$v_date.log
     ```
 
-    Wijzig voor /etc/azure/pre_script.sql de inhoud van het bestand volgens uw vereisten:
+    Voor/etc/Azure/pre_script. SQL wijzigt u de inhoud van het bestand volgens uw vereisten:
 
     ```bash
     alter tablespace SYSTEM begin backup;
@@ -239,7 +239,7 @@ Toepassingsconsistente back-ups is een nieuwe functie in Azure Backup. U scripts
     alter system archive log stop;
     ```
 
-    Wijzig voor /etc/azure/post_script.sql de inhoud van het bestand volgens uw vereisten:
+    Voor/etc/Azure/post_script. SQL wijzigt u de inhoud van het bestand volgens uw vereisten:
 
     ```bash
     alter tablespace SYSTEM end backup;
@@ -248,7 +248,7 @@ Toepassingsconsistente back-ups is een nieuwe functie in Azure Backup. U scripts
     alter system archive log start;
     ```
 
-6. Bestandsmachtigingen wijzigen:
+6. Bestands machtigingen wijzigen:
 
     ```bash
     # chmod 600 /etc/azure/VMSnapshotScriptPluginConfig.json
@@ -256,75 +256,75 @@ Toepassingsconsistente back-ups is een nieuwe functie in Azure Backup. U scripts
     # chmod 700 /etc/azure/post_script.sh
     ```
 
-7. Test de scripts.
+7. De scripts testen.
 
-    Als u de scripts wilt testen, moet u zich eerst aanmelden als root. Zorg er vervolgens voor dat er geen fouten zijn:
+    Als u de scripts eerst wilt testen, meldt u zich aan als root. Controleer vervolgens of er geen fouten zijn:
 
     ```bash
     # /etc/azure/pre_script.sh
     # /etc/azure/post_script.sh
     ```
 
-Zie [Toepassingsconsistente back-up voor Linux VM's voor](https://azure.microsoft.com/blog/announcing-application-consistent-backup-for-linux-vms-using-azure-backup/)meer informatie.
+Zie [toepassings consistente back-ups voor virtuele Linux-machines](https://azure.microsoft.com/blog/announcing-application-consistent-backup-for-linux-vms-using-azure-backup/)voor meer informatie.
 
 
-### <a name="step-5-use-azure-recovery-services-vaults-to-back-up-the-vm"></a>Stap 5: Vaults van Azure Recovery Services gebruiken om een back-up van de VM te maken
+### <a name="step-5-use-azure-recovery-services-vaults-to-back-up-the-vm"></a>Stap 5: Azure Recovery Services-kluizen gebruiken om een back-up te maken van de VM
 
-1.  Zoek in de Azure-portal naar **Vaults van Recovery Services.**
+1.  Zoek in het Azure Portal naar **Recovery Services-kluizen**.
 
-    ![Pagina Kluizen van Recovery Services](./media/oracle-backup-recovery/recovery_service_01.png)
+    ![Pagina Recovery Services kluizen](./media/oracle-backup-recovery/recovery_service_01.png)
 
-2.  Klik op het **kluizenblad van De Herstelservices** om een nieuwe kluis toe te voegen op **Toevoegen**.
+2.  Klik op de Blade **Recovery Services kluizen** op **toevoegen**om een nieuwe kluis toe te voegen.
 
-    ![Pagina kluizen voor Herstelservices toevoegen](./media/oracle-backup-recovery/recovery_service_02.png)
+    ![Pagina Recovery Services kluizen toevoegen](./media/oracle-backup-recovery/recovery_service_02.png)
 
-3.  Als u wilt doorgaan, klikt u op **myVault**.
+3.  Klik op **myVault**om door te gaan.
 
-    ![Detailpagina Vaults vaults van Recovery Services](./media/oracle-backup-recovery/recovery_service_03.png)
+    ![Detail pagina Recovery Services kluizen](./media/oracle-backup-recovery/recovery_service_03.png)
 
-4.  Klik op het **myVault-blad** op **Back-up**.
+4.  Klik op de Blade **myVault** op **back-up**.
 
-    ![Back-uppagina van Recovery Services-kluizen](./media/oracle-backup-recovery/recovery_service_04.png)
+    ![Back-uppagina Recovery Services kluizen](./media/oracle-backup-recovery/recovery_service_04.png)
 
-5.  Gebruik op het blade **Back-updoel** de standaardwaarden van **Azure** en **Virtual-machine**. Klik op **OK**.
+5.  Gebruik op de Blade **back-updoel** de standaard waarden van **Azure** en de **virtuele machine**. Klik op **OK**.
 
-    ![Detailpagina Vaults vaults van Recovery Services](./media/oracle-backup-recovery/recovery_service_05.png)
+    ![Detail pagina Recovery Services kluizen](./media/oracle-backup-recovery/recovery_service_05.png)
 
-6.  Gebruik **Standaardbeleid**voor **back-upbeleid**of selecteer **Nieuw beleid maken**. Klik op **OK**.
+6.  Gebruik **defaultpolicy bij**voor het **back-upbeleid**of selecteer **Nieuw beleid maken**. Klik op **OK**.
 
-    ![Detailpagina back-upbeleid van Recovery Services](./media/oracle-backup-recovery/recovery_service_06.png)
+    ![Detail pagina Recovery Services kluizen back-upbeleid](./media/oracle-backup-recovery/recovery_service_06.png)
 
-7.  Schakel in het blad **Virtuele machines selecteren** het selectievakje **myVM1** in en klik op **OK**. Klik op de knop **Back-up inschakelen.**
+7.  Schakel op de Blade **virtuele machines selecteren** het selectie vakje **myVM1** in en klik vervolgens op **OK**. Klik op de knop **back-up inschakelen** .
 
-    ![Vaults items van Recovery Services naar de pagina back-updetails](./media/oracle-backup-recovery/recovery_service_07.png)
+    ![Recovery Services kluizen-items naar de detail pagina van de back-up](./media/oracle-backup-recovery/recovery_service_07.png)
 
     > [!IMPORTANT]
-    > Nadat u op **Back-up inschakelen**hebt geklikt, wordt het back-upproces pas gestart nadat de geplande tijd is verstreken. Als u een onmiddellijke back-up wilt instellen, voert u de volgende stap uit.
+    > Nadat u op **back-up inschakelen**hebt geklikt, wordt het back-upproces pas gestart nadat de geplande tijd is verstreken. Voer de volgende stap uit om een onmiddellijke back-up in te stellen.
 
-8.  Selecteer op het blade **myVault - Backup items** onder **AANTAL BACK-upitems**het aantal back-upitems.
+8.  Selecteer op de Blade **myVault-back-** **upitems, onder aantal back-** items, het aantal back-upitems.
 
-    ![De pagina MyVault-gegevens van Recovery Services wordt gevaultd](./media/oracle-backup-recovery/recovery_service_08.png)
+    ![Detail pagina Recovery Services kluizen myVault](./media/oracle-backup-recovery/recovery_service_08.png)
 
-9.  Klik op het hoofd **van back-upitems (Azure Virtual Machine)** aan de rechterkant van de pagina op de knop alipsis (**... )** en klik vervolgens nu op **Back-up**.
+9.  Klik op de Blade **Back-upitems (virtuele machine van Azure)** aan de rechter kant van de pagina op de knop met het weglatings teken (**...**) en klik vervolgens op **Nu back-up maken**.
 
-    ![Vaults Backup nu vaults Backup now, opdracht](./media/oracle-backup-recovery/recovery_service_09.png)
+    ![De opdracht nu back-ups Recovery Services-kluizen](./media/oracle-backup-recovery/recovery_service_09.png)
 
-10. Klik op de knop **Back-up.** Wacht tot het back-upproces is voltooid. Ga vervolgens naar [Stap 6: Verwijder de databasebestanden.](#step-6-remove-the-database-files)
+10. Klik op de knop **back-up** . Wacht totdat het back-upproces is voltooid. Ga vervolgens naar [stap 6: de database bestanden verwijderen](#step-6-remove-the-database-files).
 
-    Als u de status van de back-uptaak wilt weergeven, klikt u op **Taken**.
+    Als u de status van de back-uptaak wilt weer geven, klikt u op **taken**.
 
-    ![Vacaturepagina Vaults van Recovery Services](./media/oracle-backup-recovery/recovery_service_10.png)
+    ![Taak pagina Recovery Services kluizen](./media/oracle-backup-recovery/recovery_service_10.png)
 
-    De status van de back-uptaak wordt weergegeven in de volgende afbeelding:
+    De status van de back-uptaak wordt weer gegeven in de volgende afbeelding:
 
-    ![De taakpagina van Recovery Services vaults met status](./media/oracle-backup-recovery/recovery_service_11.png)
+    ![Taak pagina Recovery Services kluizen met status](./media/oracle-backup-recovery/recovery_service_11.png)
 
-11. Voor een toepassingsconsistente back-up u eventuele fouten in het logboekbestand oplossen. Het logboekbestand bevindt zich op /var/log/azure/Microsoft.Azure.RecoveryServices.VMSnapshotLinux/1.0.9114.0.
+11. Voor een toepassings consistente back-up verhelpt u eventuele fouten in het logboek bestand. Het logboek bestand bevindt zich op/var/log/azure/Microsoft.Azure.RecoveryServices.VMSnapshotLinux/1.0.9114.0.
 
-### <a name="step-6-remove-the-database-files"></a>Stap 6: De databasebestanden verwijderen 
-Later in dit artikel leert u hoe u het herstelproces testen. Voordat u het herstelproces testen, moet u de databasebestanden verwijderen.
+### <a name="step-6-remove-the-database-files"></a>Stap 6: de database bestanden verwijderen 
+Verderop in dit artikel leert u hoe u het herstel proces kunt testen. Voordat u het herstel proces kunt testen, moet u de database bestanden verwijderen.
 
-1.  Verwijder de tabelruimte en back-upbestanden:
+1.  Verwijder de tabel ruimte en de back-upbestanden:
 
     ```bash
     $ sudo su - oracle
@@ -334,7 +334,7 @@ Later in dit artikel leert u hoe u het herstelproces testen. Voordat u het herst
     $ rm -rf *
     ```
     
-2.  (Optioneel) Sluit de Oracle-instantie af:
+2.  Beschrijving Het Oracle-exemplaar afsluiten:
 
     ```bash
     $ sqlplus / as sysdba
@@ -342,39 +342,39 @@ Later in dit artikel leert u hoe u het herstelproces testen. Voordat u het herst
     ORACLE instance shut down.
     ```
 
-## <a name="restore-the-deleted-files-from-the-recovery-services-vaults"></a>De verwijderde bestanden herstellen uit de vaults van Recovery Services
+## <a name="restore-the-deleted-files-from-the-recovery-services-vaults"></a>De verwijderde bestanden herstellen vanuit de Recovery Services kluizen
 Voer de volgende stappen uit om de verwijderde bestanden te herstellen:
 
-1. Zoek in de Azure-portal naar het object *myVault* Recovery Services vaults. Selecteer op het **blad Overzicht** onder **Back-upitems**het aantal items.
+1. Zoek in het Azure Portal naar het item *myVault* Recovery Services kluizen. Selecteer op de Blade **overzicht** onder **Back-upitems**het aantal items.
 
-    ![Recovery Services kluizen myVault back-up items](./media/oracle-backup-recovery/recovery_service_12.png)
+    ![Recovery Services kluizen myVault back-upitems](./media/oracle-backup-recovery/recovery_service_12.png)
 
-2. Selecteer **onder AANTAL BACK-upobjecten**het aantal items.
+2. Selecteer onder **aantal back-UPitems**het aantal items.
 
-    ![Vaults Azure Virtual Machine-back-upitem aantal Vaults Azure Virtual Machine](./media/oracle-backup-recovery/recovery_service_13.png)
+    ![Recovery Services kluizen voor het aantal back-items van Azure virtual machine](./media/oracle-backup-recovery/recovery_service_13.png)
 
-3. Klik op het **myvm1-blad** op **Bestandsherstel (voorbeeld)**.
+3. Klik op de Blade **myvm1** op **bestands herstel (preview-versie)**.
 
-    ![Schermafbeelding van de pagina Herstelservices van Herstelservices](./media/oracle-backup-recovery/recovery_service_14.png)
+    ![Scherm afbeelding van de pagina Recovery Services kluizen bestands herstel](./media/oracle-backup-recovery/recovery_service_14.png)
 
-4. Klik in het deelvenster **Bestandsherstel (voorbeeld)** op **Script downloaden**. Sla vervolgens het downloadbestand (.sh) op in een map op de clientcomputer.
+4. Klik in het deel venster **bestands herstel (preview)** op **script downloaden**. Sla het Download bestand (. sh) vervolgens op in een map op de client computer.
 
-    ![Opties voor het opslaan van scriptbestanden downloaden](./media/oracle-backup-recovery/recovery_service_15.png)
+    ![Opties voor downloaden script bestand opslaan](./media/oracle-backup-recovery/recovery_service_15.png)
 
-5. Kopieer het .sh-bestand naar de VM.
+5. Kopieer het. sh-bestand naar de virtuele machine.
 
-    In het volgende voorbeeld ziet u hoe u een opdracht voor beveiligde kopieën (scp) gebruikt om het bestand naar de vm te verplaatsen. U de inhoud ook naar het klembord kopiëren en vervolgens de inhoud plakken in een nieuw bestand dat is ingesteld op de vm.
+    In het volgende voor beeld ziet u hoe u een Secure copy-opdracht (SCP) gebruikt om het bestand naar de virtuele machine te verplaatsen. U kunt de inhoud ook kopiëren naar het klem bord en vervolgens de inhoud plakken in een nieuw bestand dat is ingesteld op de virtuele machine.
 
     > [!IMPORTANT]
-    > Zorg er in het volgende voorbeeld voor dat u de IP-adres- en mapwaarden bijwerkt. De waarden moeten worden toegewezen aan de map waar het bestand is opgeslagen.
+    > Zorg er in het volgende voor beeld voor dat u de waarden voor het IP-adres en de map bijwerkt. De waarden moeten worden toegewezen aan de map waarin het bestand is opgeslagen.
 
     ```bash
     $ scp Linux_myvm1_xx-xx-2017 xx-xx-xx PM.sh <publicIpAddress>:/<folder>
     ```
 
-6. Wijzig het bestand, zodat het eigendom is van de root.
+6. Wijzig het bestand, zodat het eigendom is van de hoofdmap.
 
-    Wijzig in het volgende voorbeeld het bestand zodat het eigendom is van de root. Wijzig vervolgens machtigingen.
+    In het volgende voor beeld wijzigt u het bestand zodat het eigendom is van de hoofdmap. Wijzig vervolgens de machtigingen.
 
     ```bash 
     $ ssh <publicIpAddress>
@@ -384,7 +384,7 @@ Voer de volgende stappen uit om de verwijderde bestanden te herstellen:
     # /<folder>/Linux_myvm1_xx-xx-2017 xx-xx-xx PM.sh
     ```
 
-    In het volgende voorbeeld ziet u wat u moet zien nadat u het vorige script hebt uitgevoerd. Wanneer u wordt gevraagd door te gaan, voert u **Y**in.
+    In het volgende voor beeld ziet u wat u moet zien nadat u het voor gaande script hebt uitgevoerd. Wanneer u wordt gevraagd om door te gaan, voert u **Y**in.
 
     ```output
     Microsoft Azure VM Backup - File Recovery
@@ -416,11 +416,11 @@ Voer de volgende stappen uit om de verwijderde bestanden te herstellen:
     Please enter 'q/Q' to exit...
     ```
 
-7. De toegang tot de gemonteerde volumes wordt bevestigd.
+7. De toegang tot de gekoppelde volumes wordt bevestigd.
 
-    Als u wilt afsluiten, voert u **q**in en zoekt u vervolgens naar de gemonteerde volumes. Als u een lijst met de toegevoegde volumes wilt maken, voert u bij een opdrachtprompt **df -k in.**
+    Als u wilt afsluiten, typt u **q**en zoekt u naar de gekoppelde volumes. Als u een lijst met de toegevoegde volumes wilt maken, voert u bij de opdracht prompt **VG-k**in.
 
-    ![De opdracht df -k](./media/oracle-backup-recovery/recovery_service_16.png)
+    ![De df-k-opdracht](./media/oracle-backup-recovery/recovery_service_16.png)
 
 8. Gebruik het volgende script om de ontbrekende bestanden terug te kopiëren naar de mappen:
 
@@ -435,7 +435,7 @@ Voer de volgende stappen uit om de verwijderde bestanden te herstellen:
     # chown oracle:oinstall *.dbf
     ```
 
-9. Gebruik RMAN in het volgende script om de database te herstellen:
+9. In het volgende script gebruikt u RMAN om de data base te herstellen:
 
     ```bash
     # sudo su - oracle
@@ -449,90 +449,90 @@ Voer de volgende stappen uit om de verwijderde bestanden te herstellen:
 
 10. Ontkoppel de schijf.
 
-    Klik in de Azure-portal in het blade **Bestandsherstel (Preview)** op **Schijven ontmonteren**.
+    Klik in de Azure Portal op de Blade **bestands herstel (preview-versie)** op **schijven ontkoppelen**.
 
-    ![Schijven ongedaan maken, opdracht](./media/oracle-backup-recovery/recovery_service_17.png)
+    ![Schijven ontkoppelen, opdracht](./media/oracle-backup-recovery/recovery_service_17.png)
 
-## <a name="restore-the-entire-vm"></a>De hele VM herstellen
+## <a name="restore-the-entire-vm"></a>De volledige VM herstellen
 
-In plaats van de verwijderde bestanden uit de vaults van Recovery Services te herstellen, u de hele vm herstellen.
+In plaats van de verwijderde bestanden van de Recovery Services kluizen te herstellen, kunt u de hele virtuele machine herstellen.
 
-### <a name="step-1-delete-myvm"></a>Stap 1: MyVM verwijderen
+### <a name="step-1-delete-myvm"></a>Stap 1: myVM verwijderen
 
-*   Ga in de Azure-portal naar de **myVM1-kluis** en selecteer **Verwijderen**.
+*   Ga in het Azure Portal naar de **myVM1** -kluis en selecteer vervolgens **verwijderen**.
 
-    ![Vault delete, opdracht](./media/oracle-backup-recovery/recover_vm_01.png)
+    ![Opdracht kluis verwijderen](./media/oracle-backup-recovery/recover_vm_01.png)
 
-### <a name="step-2-recover-the-vm"></a>Stap 2: De VM herstellen
+### <a name="step-2-recover-the-vm"></a>Stap 2: de virtuele machine herstellen
 
-1.  Ga naar **Vaults van Recovery Services**en selecteer **myVault**.
+1.  Ga naar **Recovery Services kluizen**en selecteer vervolgens **myVault**.
 
     ![myVault-vermelding](./media/oracle-backup-recovery/recover_vm_02.png)
 
-2.  Selecteer op het **blad Overzicht** onder **Back-upitems**het aantal items.
+2.  Selecteer op de Blade **overzicht** onder **Back-upitems**het aantal items.
 
-    ![myVault back-upitems](./media/oracle-backup-recovery/recover_vm_03.png)
+    ![myVault back-up maken van items](./media/oracle-backup-recovery/recover_vm_03.png)
 
-3.  Selecteer **myvm1**in het blade **Back-upitems (Azure Virtual Machine).**
+3.  Selecteer op de Blade **Back-upitems (Azure virtual machine)** de optie **myvm1**.
 
-    ![Pagina HerstelVM](./media/oracle-backup-recovery/recover_vm_04.png)
+    ![Pagina herstel-VM](./media/oracle-backup-recovery/recover_vm_04.png)
 
-4.  Klik op het **myvm1-blad** op de knop ellips (**...**) en klik vervolgens op **VM herstellen**.
+4.  Klik op de Blade **myvm1** op de knop met het weglatings teken (**...**) en klik vervolgens op **VM herstellen**.
 
-    ![VM herstellen, opdracht](./media/oracle-backup-recovery/recover_vm_05.png)
+    ![VM-opdracht herstellen](./media/oracle-backup-recovery/recover_vm_05.png)
 
-5.  Selecteer in het **puntblad Herstellen** herstellen het item dat u wilt herstellen en klik op **OK**.
+5.  Selecteer op de Blade **herstel punt selecteren** het item dat u wilt herstellen en klik vervolgens op **OK**.
 
-    ![Het herstelpunt selecteren](./media/oracle-backup-recovery/recover_vm_06.png)
+    ![Het herstel punt selecteren](./media/oracle-backup-recovery/recover_vm_06.png)
 
-    Als u een back-up voor toepassingconsistent hebt ingeschakeld, wordt een verticale blauwe balk weergegeven.
+    Als u toepassings consistente back-up hebt ingeschakeld, wordt er een verticale blauwe balk weer gegeven.
 
-6.  Selecteer in het **configuratieblad Het herstellen** de naam van de virtuele machine, selecteer de brongroep en klik op **OK**.
+6.  Selecteer op de Blade **herstel configuratie** de naam van de virtuele machine, selecteer de resource groep en klik vervolgens op **OK**.
 
-    ![Configuratiewaarden herstellen](./media/oracle-backup-recovery/recover_vm_07.png)
+    ![Configuratie waarden herstellen](./media/oracle-backup-recovery/recover_vm_07.png)
 
-7.  Als u de vm wilt herstellen, klikt u op de knop **Herstellen.**
+7.  Als u de virtuele machine wilt herstellen, klikt u op de knop **herstellen** .
 
-8.  Als u de status van het herstelproces wilt weergeven, klikt u op **Taken**en klikt u vervolgens op **Back-uptaken**.
+8.  Als u de status van het herstel proces wilt weer geven, klikt u op **taken**en vervolgens op **back-uptaken**.
 
-    ![Status van back-ups maken, opdracht](./media/oracle-backup-recovery/recover_vm_08.png)
+    ![Opdracht status van back-uptaken](./media/oracle-backup-recovery/recover_vm_08.png)
 
-    De volgende afbeelding toont de status van het herstelproces:
+    In de volgende afbeelding ziet u de status van het herstel proces:
 
-    ![Status van het herstelproces](./media/oracle-backup-recovery/recover_vm_09.png)
+    ![Status van het herstel proces](./media/oracle-backup-recovery/recover_vm_09.png)
 
-### <a name="step-3-set-the-public-ip-address"></a>Stap 3: Het openbare IP-adres instellen
-Nadat de vm is hersteld, stelt u het openbare IP-adres in.
+### <a name="step-3-set-the-public-ip-address"></a>Stap 3: het open bare IP-adres instellen
+Nadat de virtuele machine is hersteld, stelt u het open bare IP-adres in.
 
-1.  Voer in het zoekvak **openbaar IP-adres in**.
+1.  Voer in het zoekvak het **open bare IP-adres**in.
 
-    ![Lijst met openbare IP-adressen](./media/oracle-backup-recovery/create_ip_00.png)
+    ![Lijst met open bare IP-adressen](./media/oracle-backup-recovery/create_ip_00.png)
 
-2.  Klik op het blad **Openbare IP-adressen** op **Toevoegen**. Selecteer op **het ip-adresblad Openbaar IP-adres** voor **Naam**de openbare IP-naam. Voor **Resourcegroep** selecteert u **Bestaande gebruiken**. Klik vervolgens op **Maken**.
+2.  Klik op de Blade **open bare IP-adressen** op **toevoegen**. Selecteer op de Blade **openbaar IP-adres maken** bij **naam**de open bare IP-naam. Voor **Resourcegroep** selecteert u **Bestaande gebruiken**. Klik vervolgens op **Maken**.
 
     ![IP-adres maken](./media/oracle-backup-recovery/create_ip_01.png)
 
-3.  Als u het openbare IP-adres wilt koppelen aan de netwerkinterface voor de VM, zoekt en selecteert u **myVMip**. Klik vervolgens op **Koppelen**.
+3.  Als u het open bare IP-adres wilt koppelen aan de netwerk interface voor de virtuele machine, zoekt en selecteert u **myVMip**. Klik vervolgens op **koppelen**.
 
     ![IP-adres koppelen](./media/oracle-backup-recovery/create_ip_02.png)
 
-4.  Selecteer **Netwerkinterface**voor **resourcetype**. Selecteer de netwerkinterface die wordt gebruikt door de instantie myVM en klik op **OK**.
+4.  Selecteer **netwerk interface**bij **bron type**. Selecteer de netwerk interface die wordt gebruikt door het myVM-exemplaar en klik vervolgens op **OK**.
 
-    ![Resourcetype en NIC-waarden selecteren](./media/oracle-backup-recovery/create_ip_03.png)
+    ![Resource type en NIC-waarden selecteren](./media/oracle-backup-recovery/create_ip_03.png)
 
-5.  Zoek naar en open het exemplaar van myVM dat is geport vanaf de portal. Het IP-adres dat aan de VM **Overview** is gekoppeld, wordt weergegeven op het myVM-overzichtsblad.
+5.  Zoek en open het exemplaar van myVM dat is geporteerd vanuit de portal. Het IP-adres dat is gekoppeld aan de virtuele machine wordt weer gegeven op de Blade **overzicht** van myVM.
 
-    ![WAARDE IP-adres](./media/oracle-backup-recovery/create_ip_04.png)
+    ![Waarde van IP-adres](./media/oracle-backup-recovery/create_ip_04.png)
 
-### <a name="step-4-connect-to-the-vm"></a>Stap 4: Verbinding maken met de VM
+### <a name="step-4-connect-to-the-vm"></a>Stap 4: verbinding maken met de virtuele machine
 
-*   Als u verbinding wilt maken met de virtuele machine, gebruikt u het volgende script:
+*   Gebruik het volgende script om verbinding te maken met de virtuele machine:
 
     ```bash
     ssh <publicIpAddress>
     ```
 
-### <a name="step-5-test-whether-the-database-is-accessible"></a>Stap 5: Testen of de database toegankelijk is
+### <a name="step-5-test-whether-the-database-is-accessible"></a>Stap 5: testen of de data base toegankelijk is
 *   Als u de toegankelijkheid wilt testen, gebruikt u het volgende script:
 
     ```bash
@@ -542,10 +542,10 @@ Nadat de vm is hersteld, stelt u het openbare IP-adres in.
     ```
 
     > [!IMPORTANT]
-    > Als de **opstartopdracht** van de database een fout genereert, raadpleegt u [Stap 6: RMAN gebruiken om de database te herstellen.](#step-6-optional-use-rman-to-recover-the-database)
+    > Als de opdracht voor het **opstarten** van de Data Base een fout genereert, raadpleegt u [stap 6: rman gebruiken om de data](#step-6-optional-use-rman-to-recover-the-database)Base te herstellen als u de Data Base wilt herstellen.
 
-### <a name="step-6-optional-use-rman-to-recover-the-database"></a>Stap 6: (Optioneel) RMAN gebruiken om de database te herstellen
-*   Als u de database wilt herstellen, gebruikt u het volgende script:
+### <a name="step-6-optional-use-rman-to-recover-the-database"></a>Stap 6: (optioneel) gebruik RMAN om de data base te herstellen
+*   Gebruik het volgende script om de data base te herstellen:
 
     ```bash
     # sudo su - oracle
@@ -557,11 +557,11 @@ Nadat de vm is hersteld, stelt u het openbare IP-adres in.
     RMAN> SELECT * FROM scott.scott_table;
     ```
 
-De back-up en het herstel van de Oracle Database 12c-database op een Azure Linux VM is nu voltooid.
+De back-up en het herstel van de Oracle Database 12c-Data Base op een Azure Linux VM is nu voltooid.
 
 ## <a name="delete-the-vm"></a>De VM verwijderen
 
-Wanneer u de vm niet meer nodig hebt, u de volgende opdracht gebruiken om de resourcegroep, de vm en alle gerelateerde resources te verwijderen:
+Wanneer u de virtuele machine niet meer nodig hebt, kunt u de volgende opdracht gebruiken om de resource groep, de virtuele machine en alle gerelateerde resources te verwijderen:
 
 ```azurecli
 az group delete --name myResourceGroup
@@ -569,9 +569,9 @@ az group delete --name myResourceGroup
 
 ## <a name="next-steps"></a>Volgende stappen
 
-[Zelfstudie: zeer beschikbare VM's maken](../../linux/create-cli-complete.md)
+[Zelf studie: Maxi maal beschik bare Vm's maken](../../linux/create-cli-complete.md)
 
-[Azure CLI-voorbeelden voor VM-implementatie verkennen](../../linux/cli-samples.md)
+[Azure CLI-voor beelden van VM-implementatie verkennen](../../linux/cli-samples.md)
 
 
 

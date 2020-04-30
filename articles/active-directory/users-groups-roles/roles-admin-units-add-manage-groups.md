@@ -1,6 +1,6 @@
 ---
-title: Groepen toevoegen, verwijderen en weergeven in een beheereenheid (voorbeeld) - Azure Active Directory | Microsoft Documenten
-description: Groepen en hun rolmachtigingen beheren in een beheereenheid in Azure Active Directory
+title: Groepen toevoegen, verwijderen en weer geven in een beheer eenheid (preview)-Azure Active Directory | Microsoft Docs
+description: Groepen en machtigingen voor rollen beheren in een beheer eenheid in Azure Active Directory
 services: active-directory
 documentationcenter: ''
 author: curtand
@@ -15,35 +15,35 @@ ms.reviewer: anandy
 ms.custom: oldportal;it-pro;
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 1f0b0c0a7b666aed56ad24625c80c0a57683b998
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81683261"
 ---
-# <a name="add-and-manage-groups-in-administrative-units-in-azure-active-directory"></a>Groepen toevoegen en beheren in beheerderseenheden in Azure Active Directory
+# <a name="add-and-manage-groups-in-administrative-units-in-azure-active-directory"></a>Groepen toevoegen en beheren in beheer eenheden in Azure Active Directory
 
-In Azure Active Directory (Azure AD) u groepen toevoegen aan een beheereenheid (AU) voor een gedetailleerder beheerbereik.
+In Azure Active Directory (Azure AD) kunt u groepen toevoegen aan een beheer eenheid (AU) voor een gedetailleerdere administratieve controle mogelijkheden.
 
-Zie [Aan](roles-admin-units-manage.md#get-started)de slag voor stappen om PowerShell en Microsoft Graph te gebruiken voor beheer van administratieve eenheden.
+Zie aan de [slag](roles-admin-units-manage.md#get-started)voor de stappen voor het voorbereiden van het gebruik van Power shell en Microsoft Graph voor beheer van beheer eenheden.
 
 ## <a name="add-groups-to-an-au"></a>Groepen toevoegen aan een AU
 
 ### <a name="azure-portal"></a>Azure Portal
 
-In het voorbeeld u groepen alleen afzonderlijk toewijzen aan een administratieve eenheid. Er is geen mogelijkheid om groepen in bulk aan een administratieve eenheid toe te zetten. U een groep toewijzen aan een administratieve eenheid op een van de twee manieren in portal:
+In het voor beeld kunt u groepen alleen afzonderlijk toewijzen aan een beheer eenheid. Er is geen optie voor het bulksgewijs toewijzen van groepen aan een beheer eenheid. U kunt een groep toewijzen aan een beheer eenheid op een van de twee manieren in de portal:
 
-1. Vanaf de pagina **Azure AD-> groepen**
+1. Op de pagina **Azure AD >-groepen**
 
-    Open de overzichtspagina Groepen in Azure AD en selecteer de groep die moet worden toegewezen aan de beheereenheid. Selecteer aan de linkerkant **Administratieve eenheden** om de administratieve eenheden aan te geven waaraan de groep is toegewezen. Bovenaan vindt u de optie Toewijzen aan administratieve eenheid en als er op wordt geklikt, wordt een paneel aan de rechterkant aan de rechterkant de administratieve eenheid gekozen.
+    Open de pagina overzicht van groepen in azure AD en selecteer de groep die moet worden toegewezen aan de beheer eenheid. Selecteer aan de linkerkant **beheer eenheden** om de administratieve eenheden die aan de groep zijn toegewezen, weer te geven. Aan de bovenkant ziet u de optie toewijzen aan beheer eenheid en klikt u op de knop aan de rechter kant om de beheer eenheid te kiezen.
 
-    ![een groep individueel toewijzen aan een administratieve eenheid](./media/roles-admin-units-add-manage-groups/assign-to-group-1.png)
+    ![een groep afzonderlijk toewijzen aan een beheer eenheid](./media/roles-admin-units-add-manage-groups/assign-to-group-1.png)
 
-1. Vanuit de pagina **Azure AD >-beheereenheden > alle groepen**
+1. Van de pagina **Azure AD >-beheer eenheden > alle groepen**
 
-    Open het blad Alle groepen in Azure AD->-beheereenheden. Als er al groepen zijn toegewezen aan de administratieve eenheid, worden deze aan de rechterkant weergegeven. Selecteer **Toevoegen** aan de bovenkant en een rechterdeelvenster wordt weergegeven in een lijst van de groepen die beschikbaar zijn in uw Azure AD-organisatie. Selecteer een of meer groepen die aan de beheerderseenheden moeten worden toegewezen.
+    Open de Blade alle groepen in azure AD >-beheer eenheden. Als er al groepen zijn toegewezen aan de beheer eenheid, worden ze weer gegeven aan de rechter kant. Selecteer **toevoegen** bovenaan en een venster aan de rechter kant om de groepen weer te geven die beschikbaar zijn in uw Azure AD-organisatie. Selecteer een of meer groepen die moeten worden toegewezen aan de beheer eenheden.
 
-    ![een administratieve eenheid selecteren en vervolgens lid toevoegen selecteren](./media/roles-admin-units-add-manage-groups/assign-to-admin-unit.png)
+    ![Selecteer een administratieve eenheid en selecteer lid toevoegen](./media/roles-admin-units-add-manage-groups/assign-to-admin-unit.png)
 
 ### <a name="powershell"></a>PowerShell
 
@@ -51,7 +51,7 @@ In het voorbeeld u groepen alleen afzonderlijk toewijzen aan een administratieve
     $GroupObj = Get-AzureADGroup -Filter "displayname eq 'TestGroup'"
     Add-AzureADAdministrativeUnitMember -ObjectId $administrative unitObj.ObjectId -RefObjectId $GroupObj.ObjectId
 
-In dit voorbeeld wordt de cmdlet Add-AzureADAdministrativeUnitMember gebruikt om de groep toe te voegen aan de administratieve eenheid. De object-ID van de administratieve eenheid en de object-ID van de groep die moet worden toegevoegd, worden als argument gebruikt. De gemarkeerde sectie kan worden gewijzigd zoals vereist voor de specifieke omgeving.
+In dit voor beeld wordt de cmdlet Add-AzureADAdministrativeUnitMember gebruikt om de groep toe te voegen aan de beheer eenheid. De object-ID van de beheer eenheid en de object-ID van de groep die moet worden toegevoegd, worden als argument beschouwd. De gemarkeerde sectie kan worden gewijzigd als vereist voor de specifieke omgeving.
 
 ### <a name="microsoft-graph"></a>Microsoft Graph
 
@@ -69,20 +69,20 @@ Voorbeeld:
       "@odata.id":"https://graph.microsoft.com/beta/users/ 871d21ab-6b4e-4d56-b257-ba27827628f3"
     }
 
-## <a name="list-groups-in-an-au"></a>Groepen in een AU aanbieden
+## <a name="list-groups-in-an-au"></a>Groepen in een AU weer geven
 
 ### <a name="azure-portal"></a>Azure Portal
 
-Ga naar **Azure AD->-beheereenheden** in de portal. Selecteer de administratieve eenheid waarvoor u de gebruikers wilt aanbieden. Standaard zijn **alle gebruikers** al geselecteerd in het linkerdeelvenster. Selecteer **Alle groepen** en aan de rechterkant vindt u de lijst met groepen die lid zijn van de geselecteerde administratieve eenheid.
+Ga naar **Azure AD >-beheer eenheden** in de portal. Selecteer de administratieve eenheid waarvoor u de gebruikers wilt weer geven. Standaard wordt **alle gebruikers** al geselecteerd in het linkerdeel venster. Selecteer **alle groepen** en aan de rechter kant ziet u de lijst met groepen die lid zijn van de geselecteerde beheer eenheid.
 
-![Een administratieve eenheid selecteren die u wilt verwijderen](./media/roles-admin-units-add-manage-groups/list-groups-in-admin-units.png)
+![Selecteer een beheer eenheid die u wilt verwijderen](./media/roles-admin-units-add-manage-groups/list-groups-in-admin-units.png)
 
 ### <a name="powershell"></a>PowerShell
 
     $administrative unitObj = Get-AzureADAdministrativeUnit -Filter "displayname eq 'Test administrative unit 2'"
     Get-AzureADAdministrativeUnitMember -ObjectId $administrative unitObj.ObjectId
 
-Dit zal u helpen om alle leden van de administratieve eenheid. Als u alle groepen wilt weergeven die lid zijn van de administratieve eenheid, u het onderstaande codefragment gebruiken:
+Dit helpt u alle leden van de beheer eenheid op te halen. Als u alle groepen wilt weer geven die lid van de beheer eenheid zijn, kunt u het onderstaande code fragment gebruiken:
 
     foreach ($member in (Get-AzureADAdministrativeUnitMember -ObjectId $administrative unitObj.ObjectId)) 
     {
@@ -99,13 +99,13 @@ Dit zal u helpen om alle leden van de administratieve eenheid. Als u alle groepe
     Request body
     {}
 
-## <a name="list-aus-for-a-group"></a>AU's voor een groep weergeven
+## <a name="list-aus-for-a-group"></a>AUs voor een groep vermelden
 
 ### <a name="azure-portal"></a>Azure Portal
 
-In de Azure AD-portal u de gegevens van een groep openen door **Groepen**te openen. Selecteer een groep om het profiel van de groep te openen. Selecteer **Administratieve eenheden** om alle administratieve eenheden weer te geven waar de groep lid van is.
+In de Azure AD-Portal kunt u de details van een groep openen door **groepen**te openen. Selecteer een groep om het profiel van de groep te openen. Selecteer **beheer eenheden** om alle administratieve eenheden weer te geven waarvan de groep lid is.
 
-![Administratieve eenheden voor een groep opsommen](./media/roles-admin-units-add-manage-groups/list-group-au.png)
+![Beheer eenheden voor een groep weer geven](./media/roles-admin-units-add-manage-groups/list-group-au.png)
 
 ### <a name="powershell"></a>PowerShell
 
@@ -119,15 +119,15 @@ In de Azure AD-portal u de gegevens van een groep openen door **Groepen**te open
 
 ### <a name="azure-portal"></a>Azure Portal
 
-Er zijn twee manieren waarop u een groep verwijderen uit een beheereenheid in de Azure-portal.
+Er zijn twee manieren waarop u een groep kunt verwijderen uit een administratieve eenheid in de Azure Portal.
 
-Open **Azure AD-groepen** > **Groups** en open het profiel voor de groep die u uit de beheereenheid wilt verwijderen. Selecteer **Administratieve eenheden** in het linkerdeelvenster om alle administratieve eenheden weer te geven waar de groep lid van is. Selecteer de administratieve eenheid waaruit u de groep wilt verwijderen en selecteer **Vervolgens Verwijderen uit de administratieve eenheid**.
+Open **Azure AD** > -**groepen** en open het profiel voor de groep die u wilt verwijderen uit de beheer eenheid. Selecteer **beheer eenheden** in het linkerdeel venster om een lijst weer te geven met alle administratieve eenheden waarvan de groep lid is. Selecteer de beheer eenheid waarvan u de groep wilt verwijderen en selecteer vervolgens **verwijderen uit beheer eenheid**.
 
-![Een groep uit een administratieve eenheid verwijderen](./media/roles-admin-units-add-manage-groups/group-au-remove.png)
+![Een groep verwijderen uit een beheer eenheid](./media/roles-admin-units-add-manage-groups/group-au-remove.png)
 
-U ook naar azure > **AD-beheereenheden** gaan en de administratieve eenheid selecteren waar de groep lid van is. **Azure AD** Selecteer **Groepen** in het linkerdeelvenster om de ledengroepen weer te geven. Selecteer de groep die uit de administratieve eenheid moet worden verwijderd en selecteer **vervolgens Groepen verwijderen**.
+U kunt ook naar **Azure AD** > -**beheer eenheden** gaan en de administratieve eenheid selecteren waarvan de groep lid is. Selecteer **groepen** in het linkerdeel venster om de leden groepen weer te geven. Selecteer de groep die u wilt verwijderen uit de beheer eenheid en selecteer vervolgens **groepen verwijderen**.
 
-![Groepen in een administratieve eenheid vermelden](./media/roles-admin-units-add-manage-groups/list-groups-in-admin-units.png)
+![Lijst groepen in een beheer eenheid](./media/roles-admin-units-add-manage-groups/list-groups-in-admin-units.png)
 
 ### <a name="powershell"></a>PowerShell
 
@@ -139,5 +139,5 @@ U ook naar azure > **AD-beheereenheden** gaan en de administratieve eenheid sele
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Een rol toewijzen aan een administratieve eenheid](roles-admin-units-assign-roles.md)
-- [Gebruikers beheren in een administratieve eenheid](roles-admin-units-add-manage-users.md)
+- [Een rol toewijzen aan een beheer eenheid](roles-admin-units-assign-roles.md)
+- [Gebruikers beheren in een beheer eenheid](roles-admin-units-add-manage-users.md)

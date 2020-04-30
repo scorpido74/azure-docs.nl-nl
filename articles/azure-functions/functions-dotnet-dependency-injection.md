@@ -1,39 +1,39 @@
 ---
 title: Afhankelijkheidsinjectie gebruiken in .NET Azure Functions
-description: Meer informatie over het gebruik van afhankelijkheidsinjectie voor het registreren en gebruiken van services in .NET-functies
+description: Meer informatie over het gebruik van afhankelijkheids injectie voor het registreren en gebruiken van services in .NET functions
 author: craigshoemaker
 ms.topic: reference
 ms.date: 09/05/2019
 ms.author: cshoe
 ms.reviewer: jehollan
 ms.openlocfilehash: a1ff8e0aedce5d3a6acc9a39084cf0839efdd88e
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81678445"
 ---
 # <a name="use-dependency-injection-in-net-azure-functions"></a>Afhankelijkheidsinjectie gebruiken in .NET Azure Functions
 
-Azure Functions ondersteunt het modelontwerpvan de afhankelijkheidsinjectie (DI), een techniek om [Inversion of Control (IoC)](https://docs.microsoft.com/dotnet/standard/modern-web-apps-azure-architecture/architectural-principles#dependency-inversion) tussen klassen en hun afhankelijkheden te bereiken.
+Azure Functions ondersteunt het ' Dependency Injection (DI)-ontwerp patroon voor software. Dit is een techniek voor het bezorgen [van een inversie van het besturings element (IOC)](https://docs.microsoft.com/dotnet/standard/modern-web-apps-azure-architecture/architectural-principles#dependency-inversion) tussen klassen en hun afhankelijkheden.
 
-- Afhankelijkheidsinjectie in Azure-functies is gebaseerd op de functies .NET Core Dependency Injection. Vertrouwdheid met [.NET Core afhankelijkheidsinjectie](https://docs.microsoft.com/aspnet/core/fundamentals/dependency-injection) wordt aanbevolen. Er zijn verschillen in de manier waarop u afhankelijkheden overschrijft en hoe configuratiewaarden worden gelezen met Azure-functies op het beheerplan.
+- Het invoegen van afhankelijkheden in Azure Functions is gebaseerd op de functies van de .NET core-invoeg injectie. Het is raadzaam om vertrouwd te raken met het [invoeren van .net core-afhankelijkheid](https://docs.microsoft.com/aspnet/core/fundamentals/dependency-injection) . Er zijn verschillen in hoe u afhankelijkheden overschrijft en hoe configuratie waarden worden gelezen met Azure Functions op het verbruiks plan.
 
-- Ondersteuning voor afhankelijkheidsinjectie begint met Azure Functions 2.x.
+- Ondersteuning voor het invoegen van afhankelijkheden begint met Azure Functions 2. x.
 
 ## <a name="prerequisites"></a>Vereisten
 
-Voordat u een afhankelijkheidsinjectie gebruiken, moet u de volgende NuGet-pakketten installeren:
+Voordat u afhankelijkheids injectie kunt gebruiken, moet u de volgende NuGet-pakketten installeren:
 
-- [Microsoft.Azure.Functions.Extensions](https://www.nuget.org/packages/Microsoft.Azure.Functions.Extensions/)
+- [Micro soft. Azure. functions. Extensions](https://www.nuget.org/packages/Microsoft.Azure.Functions.Extensions/)
 
-- [Microsoft.NET.Sdk.Functions pakket](https://www.nuget.org/packages/Microsoft.NET.Sdk.Functions/) versie 1.0.28 of hoger
+- [Micro soft. net. SDK. functions pakket](https://www.nuget.org/packages/Microsoft.NET.Sdk.Functions/) versie 1.0.28 of hoger
 
-## <a name="register-services"></a>Diensten registreren
+## <a name="register-services"></a>Services registreren
 
-Als u services wilt registreren, maakt u `IFunctionsHostBuilder` een methode om onderdelen te configureren en toe te voegen aan een instantie.  De Azure Functions-host `IFunctionsHostBuilder` maakt een exemplaar van en geeft deze rechtstreeks door aan uw methode.
+Als u services wilt registreren, maakt u een methode om onderdelen te configureren `IFunctionsHostBuilder` en toe te voegen aan een exemplaar.  Op de Azure Functions-host wordt een `IFunctionsHostBuilder` exemplaar van gemaakt en direct in uw methode door gegeven.
 
-Als u de methode `FunctionsStartup` wilt registreren, voegt u het kenmerk van de verzameling toe dat de typenaam opgeeft die tijdens het opstarten wordt gebruikt.
+Als u de methode wilt registreren, `FunctionsStartup` voegt u het kenmerk assembly toe dat de type naam specificeert die wordt gebruikt tijdens het opstarten.
 
 ```csharp
 using System;
@@ -64,17 +64,17 @@ namespace MyNamespace
 
 ### <a name="caveats"></a>Waarschuwingen
 
-Een reeks registratiestappen die voor en na de runtime worden uitgevoerd, verwerkt de opstartklasse. Houd daarom rekening met de volgende items:
+Een reeks registratie stappen die vóór en na de uitvoering van de runtime worden uitgevoerd, wordt de opstart klasse. Denk daarom aan de volgende punten:
 
-- *De opstartklasse is alleen bedoeld voor het instellen en registreren.* Vermijd het gebruik van services die tijdens het opstartproces zijn geregistreerd bij het opstarten. Probeer bijvoorbeeld niet een bericht in te loggen in een logger die wordt geregistreerd tijdens het opstarten. Dit punt van het registratieproces is te vroeg om uw diensten beschikbaar te maken voor gebruik. Nadat `Configure` de methode is uitgevoerd, blijft de runtime Van Functies extra afhankelijkheden registreren, wat van invloed kan zijn op de werking van uw services.
+- *De klasse Startup is uitsluitend bedoeld voor installatie en registratie.* Vermijd het gebruik van services die bij het opstarten worden geregistreerd tijdens het opstart proces. Probeer bijvoorbeeld niet een bericht in een logboek te registreren dat tijdens het opstarten wordt geregistreerd. Dit moment van het registratie proces is te vroeg om uw services beschikbaar te maken voor gebruik. Nadat de `Configure` methode is uitgevoerd, blijft de runtime van functions extra afhankelijkheden registreren. Dit kan van invloed zijn op de werking van uw services.
 
-- *De afhankelijkheidsinjectiecontainer bevat alleen expliciet geregistreerde typen*. De enige services die beschikbaar zijn als `Configure` injecteerbare typen zijn wat er in de methode wordt ingesteld. Als gevolg hiervan zijn functiesspecifieke typen zoals `BindingContext` en `ExecutionContext` zijn ze niet beschikbaar tijdens de installatie of als injecteerbare typen.
+- *De container voor de injectie van afhankelijkheden bevat alleen expliciet geregistreerde typen*. De enige services die beschikbaar zijn als Injecteer bare typen, zijn wat is `Configure` ingesteld in de-methode. Als gevolg hiervan zijn functies-specifieke typen zoals `BindingContext` en `ExecutionContext` niet beschikbaar tijdens de installatie of als Injecteer bare typen.
 
 ## <a name="use-injected-dependencies"></a>Geïnjecteerde afhankelijkheden gebruiken
 
-Constructor injectie wordt gebruikt om uw afhankelijkheden beschikbaar te maken in een functie. Het gebruik van constructeurinjectie vereist dat u geen statische klassen gebruikt.
+Injectie van constructor wordt gebruikt om uw afhankelijkheden beschikbaar te maken in een functie. Voor het gebruik van een constructor-injectie moet u geen statische klassen gebruiken.
 
-In het volgende voorbeeld `IMyService` `HttpClient` wordt aangetoond hoe de afhankelijkheden en afhankelijkheden worden geïnjecteerd in een HTTP-geactiveerde functie. In dit voorbeeld wordt het [Microsoft.Extensions.Http-pakket](https://www.nuget.org/packages/Microsoft.Extensions.Http/) gebruikt dat nodig is om een `HttpClient` bij het opstarten te registreren.
+In het volgende voor beeld ziet u `IMyService` hoe `HttpClient` de en-afhankelijkheden worden geïnjecteerd in een functie die door http wordt geactiveerd. In dit voor beeld wordt het pakket [micro soft. Extensions. http](https://www.nuget.org/packages/Microsoft.Extensions.Http/) gebruikt `HttpClient` om een bij het opstarten te registreren.
 
 ```csharp
 using System;
@@ -115,27 +115,27 @@ namespace MyNamespace
 }
 ```
 
-## <a name="service-lifetimes"></a>Levensduur van de levensduur
+## <a name="service-lifetimes"></a>Levens duur van service
 
-Azure Functions-apps bieden dezelfde servicelevensduur als [ASP.NET afhankelijkheidsinjectie.](https://docs.microsoft.com/aspnet/core/fundamentals/dependency-injection#service-lifetimes) Voor een functie-app gedragen de verschillende levensduuren zich als volgt:
+Azure Functions-apps bieden dezelfde levens duur van de service als [ASP.net-afhankelijkheids injectie](https://docs.microsoft.com/aspnet/core/fundamentals/dependency-injection#service-lifetimes). Voor een functions-app gedragen de verschillende levens duur van de service er als volgt uit:
 
-- **Tijdelijk:** tijdelijke services worden gemaakt op elk verzoek van de service.
-- **Scoped**: De levensduur van de scope's komt overeen met de levensduur van de functieuitvoering. Scoped-services worden eenmaal per uitvoering gemaakt. Latere aanvragen voor die service tijdens de uitvoering hergebruiken het bestaande service-exemplaar.
-- **Singleton**: De levensduur van de singleton-service komt overeen met de levensduur van de host en wordt opnieuw gebruikt voor functieuitvoeringen op die instantie. Singleton lifetime services worden aanbevolen voor verbindingen `SqlConnection` `HttpClient` en clients, bijvoorbeeld of instanties.
+- **Tijdelijk**: tijdelijke services worden op elke aanvraag van de service gemaakt.
+- **Bereik**: de levens duur van het bereik van de service komt overeen met de levens duur van een functie. Services met een bereik worden eenmaal per uitvoering gemaakt. Latere aanvragen voor die service tijdens het uitvoeren van het bestaande service-exemplaar opnieuw gebruiken.
+- **Singleton**: de levens duur van de singleton-service komt overeen met de levens duur van de host en wordt opnieuw gebruikt voor het uitvoeren van functies voor dat exemplaar. Services voor de singleton-levens duur worden aanbevolen voor verbindingen en `SqlConnection` clients `HttpClient` , bijvoorbeeld of exemplaren.
 
-Bekijk of download een [voorbeeld van verschillende servicelevensduuren](https://aka.ms/functions/di-sample) op GitHub.
+Bekijk of down load een voor [beeld van de verschillende levens duur](https://aka.ms/functions/di-sample) van de service op github.
 
-## <a name="logging-services"></a>Logging-services
+## <a name="logging-services"></a>Logboek registratie Services
 
-Als u uw eigen logboekprovider nodig hebt, registreert u een aangepast type als `ILoggerProvider` instantie. Application Insights wordt automatisch toegevoegd door Azure Functions.
+Als u uw eigen registratie provider nodig hebt, moet u een aangepast type `ILoggerProvider` registreren als een exemplaar. Application Insights wordt automatisch toegevoegd door Azure Functions.
 
 > [!WARNING]
-> - Niet toevoegen `AddApplicationInsightsTelemetry()` aan de diensten collectie als het registreert diensten die in strijd zijn met diensten die door het milieu.
-> - Registreer uw eigen `TelemetryConfiguration` `TelemetryClient` functionaliteit niet of gebruik de ingebouwde Application Insights-functionaliteit. Als u uw eigen `TelemetryClient` exemplaar moet configureren, `TelemetryConfiguration` maakt u er een via de geïnjecteerde zoals weergegeven in [Azure-functies van de monitor.](./functions-monitoring.md#version-2x-and-later-2)
+> - Voeg niets toe `AddApplicationInsightsTelemetry()` aan de services-verzameling omdat hiermee services worden geregistreerd die conflicteren met services die worden meegeleverd door de omgeving.
+> - Registreer uw eigen `TelemetryConfiguration` functies niet of `TelemetryClient` als u de ingebouwde Application Insights functionaliteit gebruikt. Als u uw eigen `TelemetryClient` exemplaar moet configureren, maakt u er een via het geïnjecteerde, `TelemetryConfiguration` zoals wordt weer gegeven in de [monitor Azure functions](./functions-monitoring.md#version-2x-and-later-2).
 
 ### <a name="iloggert-and-iloggerfactory"></a>ILogger<T> en ILoggerFactory
 
-De gastheer `ILogger<T>` zal `ILoggerFactory` injecteren en diensten in constructors.  Deze nieuwe logboekfilters worden echter standaard uit de functielogboeken gefilterd.  U moet het `host.json` bestand wijzigen om u aan te melden voor extra filters en categorieën.  In het volgende voorbeeld `ILogger<HttpTrigger>` wordt een met logboeken toegevoegd die door de host worden weergegeven.
+De host gaat `ILogger<T>` injecteren `ILoggerFactory` en services in constructors.  Deze nieuwe logboek registratie filters worden echter standaard uit de functie Logboeken gefilterd.  U moet het `host.json` bestand wijzigen om extra filters en categorieën te kunnen kiezen.  In het volgende voor beeld ziet u `ILogger<HttpTrigger>` hoe u een with-logboeken toevoegt die door de host wordt weer gegeven.
 
 ```csharp
 namespace MyNamespace
@@ -160,7 +160,7 @@ namespace MyNamespace
 }
 ```
 
-En `host.json` een bestand dat het logboekfilter toevoegt.
+En een `host.json` bestand waarmee het logboek filter wordt toegevoegd.
 
 ```json
 {
@@ -179,28 +179,28 @@ En `host.json` een bestand dat het logboekfilter toevoegt.
 }
 ```
 
-## <a name="function-app-provided-services"></a>Functie-app aangeboden diensten
+## <a name="function-app-provided-services"></a>Services die door de functie-app worden meegeleverd
 
-De functiehost registreert veel services. De volgende services zijn veilig om als afhankelijkheid in uw toepassing te nemen:
+De functie-host registreert veel services. De volgende services zijn veilig als afhankelijkheid in uw toepassing:
 
-|Servicetype|Levensduur|Beschrijving|
+|Servicetype|Dood|Beschrijving|
 |--|--|--|
-|`Microsoft.Extensions.Configuration.IConfiguration`|Singleton|Runtime-configuratie|
-|`Microsoft.Azure.WebJobs.Host.Executors.IHostIdProvider`|Singleton|Verantwoordelijk voor het verstrekken van de ID van de host instance|
+|`Microsoft.Extensions.Configuration.IConfiguration`|Singleton|Runtime configuratie|
+|`Microsoft.Azure.WebJobs.Host.Executors.IHostIdProvider`|Singleton|Verantwoordelijk voor het opgeven van de ID van het exemplaar van de host|
 
-Als er andere services zijn waar u afhankelijk van wilt zijn, [maakt u een probleem en stelt u deze voor op GitHub.](https://github.com/azure/azure-functions-host)
+Als er andere services zijn waarvoor u een afhankelijkheid wilt maken, [maakt u een probleem en stelt u deze Voorst Ellen op github](https://github.com/azure/azure-functions-host).
 
-### <a name="overriding-host-services"></a>Allesoverheersende hostdiensten
+### <a name="overriding-host-services"></a>Host-Services overschrijven
 
-Overheersende diensten die door de host worden geleverd, worden momenteel niet ondersteund.  Als er services zijn die u wilt overschrijven, [maakt u een probleem en stelt u deze voor op GitHub.](https://github.com/azure/azure-functions-host)
+Het overschrijven van services die door de host worden geboden, wordt momenteel niet ondersteund.  Als er services zijn die u wilt overschrijven, kunt u [een probleem maken en deze Voorst Ellen op github](https://github.com/azure/azure-functions-host).
 
 ## <a name="working-with-options-and-settings"></a>Werken met opties en instellingen
 
-Waarden die zijn gedefinieerd in `IConfiguration` [app-instellingen](./functions-how-to-use-azure-function-app-settings.md#settings) zijn beschikbaar in een instantie, waarmee u app-instellingenwaarden in de opstartklasse lezen.
+De waarden die zijn gedefinieerd in de [app](./functions-how-to-use-azure-function-app-settings.md#settings) - `IConfiguration` instellingen zijn beschikbaar in een exemplaar, waarmee u waarden voor app-instellingen in de klasse Startup kunt lezen.
 
-U waarden `IConfiguration` uit de instantie extraheren tot een aangepast type. Als u de waarden van de app-instellingen kopieert naar een aangepast type, u uw services eenvoudig testen door deze waarden injecteerbaar te maken. Instellingen die in de configuratie-instantie worden gelezen, moeten eenvoudige sleutel-/waardeparen zijn.
+U kunt waarden uit het `IConfiguration` exemplaar extra heren in een aangepast type. Als u de waarden van de app-instellingen naar een aangepast type kopieert, kunt u uw services eenvoudig testen door deze waarden Injecteer te maken. De instellingen die in het configuratie-exemplaar worden gelezen, moeten eenvoudige sleutel-waardeparen zijn.
 
-Houd rekening met de volgende klasse met een eigenschap met de naam consistent met een app-instelling:
+Houd rekening met de volgende klasse die een eigenschap bevat met de naam consistent met een app-instelling:
 
 ```csharp
 public class MyOptions
@@ -209,7 +209,7 @@ public class MyOptions
 }
 ```
 
-En `local.settings.json` een bestand dat de aangepaste instelling als volgt kan structureren:
+En een `local.settings.json` bestand dat de aangepaste instelling als volgt kan structureren:
 ```json
 {
   "IsEncrypted": false,
@@ -219,7 +219,7 @@ En `local.settings.json` een bestand dat de aangepaste instelling als volgt kan 
 }
 ```
 
-Vanuit de `Startup.Configure` methode u waarden `IConfiguration` uit de instantie extraheren in uw aangepaste type met behulp van de volgende code:
+Vanuit de `Startup.Configure` methode kunt u waarden uit het `IConfiguration` exemplaar in uw aangepaste type ophalen met de volgende code:
 
 ```csharp
 builder.Services.AddOptions<MyOptions>()
@@ -229,9 +229,9 @@ builder.Services.AddOptions<MyOptions>()
                                            });
 ```
 
-Het `Bind` aanroepen van kopieën van waarden met overeenkomende eigenschapsnamen uit de configuratie naar de aangepaste instantie. De optieinstantie is nu beschikbaar in de IoC-container om in een functie te injecteren.
+Het `Bind` aanroepen van kopieën waarden die overeenkomende eigenschapnamen van eigenschappen van de configuratie in het aangepaste exemplaar hebben. Het optie-exemplaar is nu beschikbaar in de IoC-container om in een functie te injecteren.
 
-Het optieobject wordt in de functie geïnjecteerd `IOptions` als instantie van de generieke interface. Gebruik `Value` de eigenschap om toegang te krijgen tot de waarden in uw configuratie.
+Het object Options wordt in de functie als een exemplaar van de algemene `IOptions` interface ingevoegd. Gebruik de `Value` eigenschap om toegang te krijgen tot de waarden die in uw configuratie zijn gevonden.
 
 ```csharp
 using System;
@@ -248,14 +248,14 @@ public class HttpTrigger
 }
 ```
 
-Raadpleeg [het patroon Opties in ASP.NET Core](https://docs.microsoft.com/aspnet/core/fundamentals/configuration/options) voor meer informatie over het werken met opties.
+Raadpleeg het [Opties patroon in ASP.net core](https://docs.microsoft.com/aspnet/core/fundamentals/configuration/options) voor meer informatie over het werken met opties.
 
 > [!WARNING]
-> Probeer geen waarden te lezen uit bestanden zoals *local.settings.json* of *appsettings.{ milieu}.json* op het verbruiksplan. Waarden die worden gelezen uit deze bestanden met betrekking tot triggerverbindingen zijn niet beschikbaar omdat de app wordt geschaald omdat de hostinginfrastructuur geen toegang heeft tot de configuratie-informatie.
+> Vermijd het lezen van waarden van bestanden zoals *lokaal. settings. json* of *appSettings. { Environment}. json* op het verbruiks plan. Waarden die zijn gelezen van deze bestanden met betrekking tot trigger verbindingen zijn niet beschikbaar als de app wordt geschaald omdat de hosting-infra structuur geen toegang heeft tot de configuratie gegevens.
 
 ## <a name="next-steps"></a>Volgende stappen
 
 Zie de volgende bronnen voor meer informatie:
 
-- [Uw functie-app controleren](functions-monitoring.md)
+- [Uw functie-app bewaken](functions-monitoring.md)
 - [Aanbevolen procedures voor functies](functions-best-practices.md)
