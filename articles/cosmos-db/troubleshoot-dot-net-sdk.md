@@ -8,18 +8,18 @@ ms.author: jawilley
 ms.subservice: cosmosdb-sql
 ms.topic: troubleshooting
 ms.reviewer: sngun
-ms.openlocfilehash: 5f92d98630c6fb875babeb907f92732b0c24bb52
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e015c1ee335cbdfed7964d63b1f4600bc6a4cb77
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 04/28/2020
-ms.locfileid: "79137951"
+ms.locfileid: "82208734"
 ---
 # <a name="diagnose-and-troubleshoot-issues-when-using-azure-cosmos-db-net-sdk"></a>Problemen vaststellen en oplossen bij het gebruik van Azure Cosmos DB .NET SDK
 Dit artikel heeft betrekking op veelvoorkomende problemen, tijdelijke oplossingen, diagnostische stappen en hulpprogram ma's wanneer u de [.NET SDK](sql-api-sdk-dotnet.md) gebruikt met Azure Cosmos DB SQL API-accounts.
 De .NET-SDK biedt logische weer gave aan de client zijde om toegang te krijgen tot de Azure Cosmos DB SQL-API. In dit artikel worden tools en benaderingen beschreven om u te helpen bij eventuele problemen.
 
-## <a name="checklist-for-troubleshooting-issues"></a>Controle lijst voor het oplossen van problemen:
+## <a name="checklist-for-troubleshooting-issues"></a>Controle lijst voor het oplossen van problemen
 Bekijk de volgende controle lijst voordat u uw toepassing naar productie gaat verplaatsen. Met de controle lijst voor komt u dat er verschillende veelvoorkomende problemen worden weer geven. U kunt ook snel vaststellen wanneer er een probleem optreedt:
 
 *    De nieuwste [SDK](sql-api-sdk-dotnet-standard.md)gebruiken. Preview-Sdk's mogen niet worden gebruikt voor productie. Dit voor komt dat bekende problemen die al zijn opgelost, worden gerepareerd.
@@ -101,6 +101,30 @@ Met de [metrische gegevens](sql-api-query-metrics.md) van de query kunt u bepale
 * Als de back-end-query snel wordt geretourneerd en een grote tijd op de client wordt gespendeerd, controleert u de belasting van de computer. Het is waarschijnlijk dat er onvoldoende bronnen zijn en de SDK wacht totdat de resources beschikbaar zijn voor het verwerken van het antwoord.
 * Als de back-end-query langzaam is, [optimaliseert u de query](optimize-cost-queries.md) en bekijkt u het huidige [indexerings beleid](index-overview.md) 
 
+### <a name="http-401-the-mac-signature-found-in-the-http-request-is-not-the-same-as-the-computed-signature"></a>HTTP 401: de MAC-hand tekening die in de HTTP-aanvraag is gevonden, is niet hetzelfde als de berekende hand tekening
+Als u het volgende fout bericht van 401 hebt ontvangen: de MAC-hand tekening in de HTTP-aanvraag is niet hetzelfde als de berekende hand tekening. Dit kan worden veroorzaakt door de volgende scenario's.
+
+1. De sleutel is gedraaid en voldoet niet aan de [Aanbevolen procedures](secure-access-to-data.md#key-rotation). Dit is meestal het geval. Het kan een paar seconden duren voordat de draaiing van de account sleutel van Cosmos DB kan worden uitgevoerd, afhankelijk van de grootte van het Cosmos DB-account.
+   1. 401 MAC-hand tekening wordt kort na het draaien van een sleutel weer gegeven en stopt uiteindelijk zonder wijzigingen. 
+2. De sleutel is onjuist geconfigureerd op de toepassing, zodat de sleutel niet overeenkomt met het account.
+   1. 401 MAC-handtekening probleem is consistent en gebeurt voor alle aanroepen
+3. Er is een race voorwaarde bij het maken van een container. Een instantie van de toepassing probeert toegang te krijgen tot de container voordat het maken van de container is voltooid. Het meest voorkomende scenario als de toepassing wordt uitgevoerd, en de container wordt verwijderd en opnieuw gemaakt met dezelfde naam terwijl de toepassing wordt uitgevoerd. De SDK probeert de nieuwe container te gebruiken, maar het maken van de container wordt nog uitgevoerd, zodat deze de sleutels niet bevat.
+   1. 401 MAC-handtekening probleem wordt kort weer gegeven na het maken van een container en pas nadat het maken van de container is voltooid.
+ 
+ ### <a name="http-error-400-the-size-of-the-request-headers-is-too-long"></a>HTTP-fout 400. De grootte van de aanvraag headers is te lang.
+ De grootte van de koptekst is groter geworden en overschrijdt de Maxi maal toegestane grootte. Het wordt altijd aanbevolen de nieuwste SDK te gebruiken. Zorg ervoor dat u ten minste versie [3. x](https://github.com/Azure/azure-cosmos-dotnet-v3/blob/master/changelog.md) of [2. x](https://github.com/Azure/azure-cosmos-dotnet-v2/blob/master/changelog.md)gebruikt, waardoor het traceren van de header grootte wordt toegevoegd aan het uitzonderings bericht.
+
+Mogelijke
+ 1. Het sessie token is te groot geworden. Het sessie token groeit naarmate het aantal partities toeneemt in de container.
+ 2. Het vervolg token is groter geworden. Verschillende query's hebben verschillende voortzettings tokens.
+ 3. Dit wordt veroorzaakt door een combi natie van het sessie token en vervolg token.
+
+Oplossing:
+   1. Volg de [Tips voor prestaties](performance-tips.md) en converteer de toepassing naar de modus direct en TCP-verbinding. Direct + TCP heeft geen beperking voor de header grootte, zoals HTTP, waardoor dit probleem wordt voor komen.
+   2. Als het sessie token de oorzaak is, dan is een tijdelijke oplossing om de toepassing opnieuw te starten. Wanneer het toepassings exemplaar opnieuw wordt gestart, wordt het sessie token opnieuw ingesteld. Als de uitzonde ringen worden gestopt nadat de computer opnieuw is opgestart, wordt de oorzaak van het sessie token bevestigd. Uiteindelijk wordt de grootte van de uitzonde ring verg root.
+   3. Als de toepassing niet kan worden geconverteerd naar direct en TCP en het sessie token de oorzaak is, kan de oplossing worden uitgevoerd door het [consistentie niveau](consistency-levels.md)van de client te wijzigen. Het sessie token wordt alleen gebruikt voor de consistentie van de sessie, wat de standaard waarde is voor Cosmos DB. Elk ander consistentie niveau maakt geen gebruik van het sessie token. 
+   4. Als de toepassing niet kan worden geconverteerd naar direct en TCP en het vervolg token de oorzaak is, probeert u de optie ResponseContinuationTokenLimitInKb in te stellen. De optie is te vinden in de FeedOptions voor v2 of QueryRequestOptions in v3.
+
  <!--Anchors-->
 [Common issues and workarounds]: #common-issues-workarounds
 [Enable client SDK logging]: #logging
@@ -108,5 +132,3 @@ Met de [metrische gegevens](sql-api-query-metrics.md) van de query kunt u bepale
 [Request Timeouts]: #request-timeouts
 [Azure SNAT (PAT) port exhaustion]: #snat
 [Production check list]: #production-check-list
-
-

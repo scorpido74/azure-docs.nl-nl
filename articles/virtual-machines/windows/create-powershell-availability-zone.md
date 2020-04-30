@@ -1,5 +1,5 @@
 ---
-title: Een gezonde Windows-vm maken met Azure PowerShell
+title: Een Windows-VM in de zone maken met behulp van Azure PowerShell
 description: Een virtuele Windows-machine maken in een beschikbaarheidszone met Azure PowerShell
 author: cynthn
 ms.service: virtual-machines-windows
@@ -8,18 +8,18 @@ ms.workload: infrastructure
 ms.date: 03/27/2018
 ms.author: cynthn
 ms.custom: ''
-ms.openlocfilehash: 26ddc6be744e823cffc213798c73568d19ad82dd
-ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
+ms.openlocfilehash: 60ce5b868b2a8f955b32e372201613ba66d49eff
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/23/2020
-ms.locfileid: "82084087"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82208972"
 ---
 # <a name="create-a-windows-virtual-machine-in-an-availability-zone-with-powershell"></a>Een virtuele Windows-machine maken in een beschikbaarheidszone met PowerShell
 
 In dit artikel wordt beschreven hoe u Azure PowerShell gebruikt om in een Azure-beschikbaarheidszone een virtuele Azure-machine te maken waarop Windows Server 2016 wordt uitgevoerd. Een [beschikbaarheidszone](../../availability-zones/az-overview.md) is een fysiek afgescheiden zone in een Azure-regio. Gebruik beschikbaarheidszones om uw apps en gegevens te beschermen tegen het onwaarschijnlijke risico van een storing of het verloren gaan van een heel datacenter.
 
-Als u een beschikbaarheidszone wilt gebruiken, maakt u een virtuele machine in een [ondersteunde Azure-regio](../../availability-zones/az-overview.md#services-support-by-region).
+Als u een beschikbaarheidszone wilt gebruiken, maakt u een virtuele machine in een [ondersteunde Azure-regio](../../availability-zones/az-region.md).
 
  
 
@@ -170,4 +170,4 @@ Tags               : {}
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In dit artikel hebt u geleerd hoe u een VM maakt in een beschikbaarheidszone. Meer informatie over [de beschikbaarheid](availability.md) voor Azure VM's.
+In dit artikel hebt u geleerd hoe u een VM maakt in een beschikbaarheidszone. Meer informatie over [Beschik baarheid](availability.md) voor virtuele Azure-machines.

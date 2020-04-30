@@ -1,6 +1,6 @@
 ---
 title: Hoge beschikbaarheid
-description: Meer informatie over de mogelijkheden en functies van de Azure SQL Database-service met hoge beschikbaarheid
+description: Meer informatie over de mogelijkheden en functies van de Azure SQL Database-Service voor hoge Beschik baarheid
 services: sql-database
 ms.service: sql-database
 ms.subservice: high-availability
@@ -11,100 +11,100 @@ author: sashan
 ms.author: sashan
 ms.reviewer: carlrab, sashan
 ms.date: 04/02/2020
-ms.openlocfilehash: 1c4ed77112e8c06db1946d756239e02cb187f3ef
-ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
+ms.openlocfilehash: b8958d9a035c3cc502384e2f378bf428d517a1fc
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80618499"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82208700"
 ---
-# <a name="high-availability-and-azure-sql-database"></a>Hoge beschikbaarheid en Azure SQL-database
+# <a name="high-availability-and-azure-sql-database"></a>Hoge Beschik baarheid en Azure SQL Database
 
-Het doel van de architectuur met hoge beschikbaarheid in Azure SQL Database is om te garanderen dat uw database minimaal 99,99% van de tijd operationeel is (Voor meer informatie over specifieke SLA voor verschillende lagen raadpleegt u [SLA voor SQL Azure Database),](https://azure.microsoft.com/support/legal/sla/sql-database/)zonder u zorgen te maken over de impact van onderhoudsbewerkingen en uitval. Azure verwerkt automatisch kritieke onderhoudstaken, zoals patching, back-ups, Windows- en SQL-upgrades, evenals ongeplande gebeurtenissen zoals onderliggende hardware-, software- of netwerkfouten.  Wanneer de onderliggende SQL-instantie is gepatcht of mislukt, is de downtime niet merkbaar als u een nieuwe logica in uw app [gebruikt.](sql-database-develop-overview.md#resiliency) Azure SQL Database kan snel herstellen, zelfs in de meest kritieke omstandigheden, zodat uw gegevens altijd beschikbaar zijn.
+Het doel van de architectuur met hoge Beschik baarheid in Azure SQL Database is om te garanderen dat uw data base ten minste 99,99% van de tijd actief is (Zie voor meer informatie over de specifieke SLA voor de verschillende lagen de [Sla voor Azure SQL database](https://azure.microsoft.com/support/legal/sla/sql-database/)) zonder dat u zich zorgen hoeft te maken over het effect van onderhouds bewerkingen en storingen. Azure beheert automatisch essentiële onderhouds taken, zoals patches, back-ups, Windows-en SQL-upgrades, en niet-geplande gebeurtenissen, zoals onderliggende hardware, software of netwerk fouten.  Wanneer er een patch wordt uitgevoerd voor het onderliggende SQL-exemplaar of een failover wordt uitgevoerd, is de downtime niet merkbaar als u [probeert logica](sql-database-develop-overview.md#resiliency) in uw app te gebruiken. Azure SQL Database kan snel worden hersteld, zelfs in de meest kritieke omstandigheden, zodat uw gegevens altijd beschikbaar zijn.
 
-De oplossing met hoge beschikbaarheid is ontworpen om ervoor te zorgen dat vastgelegde gegevens nooit verloren gaan als gevolg van storingen, dat onderhoudsbewerkingen geen invloed hebben op uw werkbelasting en dat de database geen enkel storingspunt in uw softwarearchitectuur is. Er zijn geen onderhoudsvensters of stilstandtijden waarvoor u de werkbelasting moet stoppen terwijl de database wordt bijgewerkt of onderhouden. 
+De oplossing voor hoge Beschik baarheid is zodanig ontworpen dat doorgevoerde gegevens nooit verloren gaan als gevolg van fouten, dat de onderhouds bewerkingen geen invloed hebben op uw werk belasting en dat de data base geen Single Point of Failure is in uw software architectuur. Er zijn geen onderhouds Vensters of downtime die vereisen dat u de werk belasting stopt wanneer de data base wordt bijgewerkt of onderhouden. 
 
-Er zijn twee architecturale modellen met hoge beschikbaarheid die worden gebruikt in Azure SQL Database:
+Er zijn twee architectuur modellen met hoge Beschik baarheid die worden gebruikt in Azure SQL Database:
 
-- Standaardbeschikbaarheidsmodel dat is gebaseerd op een scheiding van rekenkracht en opslag.  Het is afhankelijk van een hoge beschikbaarheid en betrouwbaarheid van de externe opslaglaag. Deze architectuur richt zich op budgetgerichte bedrijfstoepassingen die enige prestatiedegradatie tijdens onderhoudsactiviteiten kunnen verdragen.
-- Premium beschikbaarheidsmodel dat is gebaseerd op een cluster van databaseengineprocessen. Het is gebaseerd op het feit dat er altijd een quorum van beschikbare database engine nodes. Deze architectuur richt zich op bedrijfskritieke toepassingen met hoge IO-prestaties, een hoge transactiesnelheid en garandeert minimale impact op de prestaties van uw werklast tijdens onderhoudsactiviteiten.
+- Standaard beschikbaarheids model dat is gebaseerd op een schei ding van Compute en opslag.  Het is afhankelijk van de hoge Beschik baarheid en betrouw baarheid van de laag voor externe opslag. Deze architectuur streeft naar budget gerichte zakelijke toepassingen die tijdens onderhouds activiteiten een prestatie vermindering kunnen verdragen.
+- Premium-beschikbaarheids model dat is gebaseerd op een cluster met data base-engine processen. Het is afhankelijk van het feit dat er altijd een quorum van de beschik bare data base-engine knooppunten is. Deze architectuur streeft naar essentiële bedrijfs toepassingen met hoge i/o-prestaties, een hoge transactie snelheid en garandeert minimale prestatie gevolgen voor uw werk belasting tijdens onderhouds activiteiten.
 
-Azure SQL Database draait op de nieuwste stabiele versie van SQL Server Database Engine en Windows OS, en de meeste gebruikers zouden niet merken dat upgrades continu worden uitgevoerd.
+Azure SQL Database wordt uitgevoerd op de nieuwste stabiele versie van SQL Server data base engine en Windows-besturings systeem, en de meeste gebruikers merken niet dat upgrades voortdurend worden uitgevoerd.
 
-## <a name="basic-standard-and-general-purpose-service-tier-availability"></a>Beschikbaarheid van basis-, standaard- en algemene serviceniveaus
+## <a name="basic-standard-and-general-purpose-service-tier-availability"></a>Beschik baarheid van Basic, Standard en Algemeen service tier
 
-Deze servicelagen maken gebruik van de standaardbeschikbaarheidsarchitectuur. De volgende afbeelding toont vier verschillende knooppunten met de gescheiden reken- en opslaglagen.
+De service lagen Basic, Standard en Algemeen maken gebruik van de standaard beschik baarheids architectuur voor zowel serverloze als ingerichte reken kracht. In de volgende afbeelding ziet u vier verschillende knoop punten met de gescheiden reken-en opslag lagen.
 
-![Scheiding van rekenkracht en opslag](media/sql-database-high-availability/general-purpose-service-tier.png)
+![Schei ding van Compute en opslag](media/sql-database-high-availability/general-purpose-service-tier.png)
 
-Het standaardbeschikbaarheidsmodel bevat twee lagen:
+Het standaard beschikbaarheids model bevat twee lagen:
 
-- Een stateloze rekenlaag `sqlservr.exe` die het proces uitvoert en alleen tijdelijke en cachegegevens bevat, zoals TempDB, modeldatabases op de gekoppelde SSD en cache, buffergroep en kolomarchiefgroep in het geheugen plannen. Dit stateloze knooppunt wordt beheerd door Azure `sqlservr.exe`Service Fabric die de status van het knooppunt initialiseert, de status van het knooppunt initieert en indien nodig failover uitvoert naar een ander knooppunt.
-- Een stateful gegevenslaag met de databasebestanden (.mdf/.ldf) die zijn opgeslagen in Azure Blob-opslag. Azure blob-opslag heeft de ingebouwde beschikbaarheid en redundantiefunctie voor gegevens. Het garandeert dat elke record in het logboekbestand of de pagina in het gegevensbestand wordt bewaard, zelfs als het SQL Server-proces vastloopt.
+- Een stateless Compute-laag die het `sqlservr.exe` proces uitvoert en bevat alleen tijdelijke en in de cache opgeslagen gegevens, zoals TempDB, model databases op de gekoppelde SSD en de plannings cache, de buffer groep en de column Store-groep in het geheugen. Dit stateless knoop punt wordt gebruikt door Azure Service Fabric dat initialiseert `sqlservr.exe`, de status van het knoop punt beheert en failover naar een ander knoop punt uitvoert, indien nodig.
+- Een stateful gegevenslaag met de database bestanden (. MDF/. ldf) die zijn opgeslagen in Azure Blob Storage. Azure Blob-opslag heeft ingebouwde functie voor gegevens beschikbaarheid en redundantie. Hiermee wordt gegarandeerd dat elke record in het logboek bestand of de pagina in het gegevens bestand blijft behouden, zelfs als SQL Server proces vastloopt.
 
-Wanneer de databaseengine of het besturingssysteem wordt geüpgraded of een fout wordt gedetecteerd, verplaatst Azure Service Fabric het stateloze SQL Server-proces naar een ander stateless compute-knooppunt met voldoende vrije capaciteit. Gegevens in Azure Blob-opslag worden niet beïnvloed door de verplaatsing en de gegevens-/logboekbestanden worden gekoppeld aan het nieuw geïnitialiseerde SQL Server-proces. Dit proces garandeert 99,99% beschikbaarheid, maar een zware werkbelasting kan enige prestatiedegradatie ervaren tijdens de overgang, omdat de nieuwe SQL Server-instantie begint met koude cache.
+Wanneer de data base-engine of het besturings systeem wordt bijgewerkt, of als er een fout wordt gedetecteerd, wordt het stateless SQL Server proces door Azure Service Fabric verplaatst naar een ander stateless reken knooppunt met voldoende vrije capaciteit. Gegevens in Azure Blob-opslag worden niet beïnvloed door de verplaatsing en de gegevens/logboek bestanden zijn gekoppeld aan het zojuist geïnitialiseerde SQL Server proces. Dit proces garandeert een Beschik baarheid van 99,99%, maar een zware werk belasting kan tijdens de overgang enige prestatie vermindering veroorzaken, omdat de nieuwe SQL Server-instantie begint met koude cache.
 
-## <a name="premium-and-business-critical-service-tier-availability"></a>Beschikbaarheid van premium- en bedrijfskritieke serviceniveaus
+## <a name="premium-and-business-critical-service-tier-availability"></a>Beschik baarheid van Premium-en Bedrijfskritiek-servicelaag
 
-Premium- en Business Critical-servicelagen maken gebruik van het Premium-beschikbaarheidsmodel, dat compute resources (SQL Server Database Engine-proces) en opslag (lokaal gekoppelde SSD) integreert op één knooppunt. Hoge beschikbaarheid wordt bereikt door zowel rekenkracht als opslag te repliceren naar extra knooppunten die een cluster met drie tot vier knooppunten maken. 
+Premium-en Bedrijfskritiek-service lagen maken gebruik van het Premium-beschikbaarheids model, dat reken bronnen (SQL Server data base-engine proces) en opslag (lokaal gekoppelde SSD) integreert op één knoop punt. Hoge Beschik baarheid wordt bereikt door zowel Compute als Storage te repliceren naar extra knoop punten die een drie-tot vier knoop punt-cluster maken. 
 
-![Cluster van database-engineknooppunten](media/sql-database-high-availability/business-critical-service-tier.png)
+![Cluster van data base-engine knooppunten](media/sql-database-high-availability/business-critical-service-tier.png)
 
-De onderliggende databasebestanden (.mdf/.ldf) worden op de bijgevoegde SSD-opslag geplaatst om uw workload zeer laag te latentie IO te bieden. Hoge beschikbaarheid wordt geïmplementeerd met behulp van een technologie die lijkt op SQL Server [Always On Availability Groups.](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/overview-of-always-on-availability-groups-sql-server) Het cluster bevat één primaire replica (SQL Server-proces) die toegankelijk is voor lees-schrijfklantworkloads en maximaal drie secundaire replica's (rekenkracht en opslag) die kopieën van gegevens bevatten. Het primaire knooppunt duwt voortdurend wijzigingen in de secundaire knooppunten in volgorde en zorgt ervoor dat de gegevens worden gesynchroniseerd met ten minste één secundaire replica voordat u elke transactie begaat. Dit proces garandeert dat als het primaire knooppunt om welke reden dan ook crasht, er altijd een volledig gesynchroniseerd knooppunt is om niet naar toe te gaan. De failover wordt geïnitieerd door de Azure Service Fabric. Zodra de secundaire replica het nieuwe primaire knooppunt wordt, wordt een andere secundaire replica gemaakt om ervoor te zorgen dat het cluster voldoende knooppunten heeft (quorumset). Zodra failover is voltooid, worden SQL-verbindingen automatisch doorgestuurd naar het nieuwe primaire knooppunt.
+De onderliggende database bestanden (. MDF/. ldf) worden geplaatst op de gekoppelde SSD-opslag om een lage latentie-IO te bieden voor uw werk belasting. Hoge Beschik baarheid wordt geïmplementeerd met behulp van een technologie die vergelijkbaar is met SQL Server AlwaysOn- [beschikbaarheids groepen](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/overview-of-always-on-availability-groups-sql-server). Het cluster bevat een enkele primaire replica (SQL Server proces) die toegankelijk is voor werk belastingen van de klant lezen en schrijven, en Maxi maal drie secundaire replica's (reken kracht en opslag) die kopieën van gegevens bevatten. Het primaire knoop punt duwt voortdurend wijzigingen in de secundaire knoop punten en zorgt ervoor dat de gegevens worden gesynchroniseerd naar ten minste één secundaire replica voordat elke trans actie wordt doorgevoerd. Dit proces zorgt ervoor dat als het primaire knoop punt om een of andere reden vastloopt, er altijd een volledig gesynchroniseerd knoop punt wordt uitgevoerd. De failover wordt gestart door de Azure-Service Fabric. Zodra de secundaire replica het nieuwe primaire knoop punt wordt, wordt er een andere secundaire replica gemaakt om ervoor te zorgen dat het cluster voldoende knoop punten (quorum set) heeft. Zodra de failover is voltooid, worden SQL-verbindingen automatisch omgeleid naar het nieuwe primaire knoop punt.
 
-Als extra voordeel omvat het premium beschikbaarheidsmodel de mogelijkheid om alleen-lezen SQL-verbindingen om te leiden naar een van de secundaire replica's. Deze functie heet [Read Scale-Out](sql-database-read-scale-out.md). Het biedt 100% extra rekencapaciteit zonder extra kosten voor off-load read-only bewerkingen, zoals analytische workloads, van de primaire replica.
+Een extra voor deel is dat het Premium-beschikbaarheids model de mogelijkheid biedt om alleen-lezen SQL-verbindingen om te leiden naar een van de secundaire replica's. Deze functie heet [Uitschalen lezen](sql-database-read-scale-out.md). Het biedt 100% extra reken capaciteit zonder extra kosten voor het laden van alleen-lezen bewerkingen, zoals analytische werk belastingen, van de primaire replica.
 
-## <a name="hyperscale-service-tier-availability"></a>Beschikbaarheid van hyperscale servicelagen
+## <a name="hyperscale-service-tier-availability"></a>Beschik baarheid van grootschalige-servicelaag
 
-De hyperscale service tier architectuur wordt beschreven in [Distributed functions architectuur](https://docs.microsoft.com/azure/sql-database/sql-database-service-tier-hyperscale#distributed-functions-architecture). 
+De grootschalige is een beschrijving van de architectuur van [gedistribueerde functies](https://docs.microsoft.com/azure/sql-database/sql-database-service-tier-hyperscale#distributed-functions-architecture). 
 
-![Hyperscale functionele architectuur](./media/sql-database-hyperscale/hyperscale-architecture.png)
+![Functionele architectuur grootschalige](./media/sql-database-hyperscale/hyperscale-architecture.png)
 
-Het beschikbaarheidsmodel in Hyperscale bevat vier lagen:
+Het beschikbaarheids model in grootschalige bevat vier lagen:
 
-- Een stateloze rekenlaag `sqlservr.exe` die de processen uitvoert en alleen tijdelijke en cachegegevens bevat, zoals niet-dekkende RBPEX-cache, TempDB, modeldatabase, enz. Deze statusloze laag bevat de primaire compute-replica en optioneel een aantal secundaire compute-replica's die als failoverdoelen kunnen dienen.
-- Een stateloze opslaglaag gevormd door paginaservers. Deze laag is de gedistribueerde `sqlservr.exe` opslagengine voor de processen die op de compute-replica's worden uitgevoerd. Elke paginaserver bevat alleen tijdelijke en in de cache opgeslagen gegevens, zoals rbpex-cache op de bijgevoegde SSD en gegevenspagina's die in het geheugen zijn opgeslagen. Elke paginaserver heeft een gekoppelde paginaserver in een actief actieve configuratie om taakverdeling, redundantie en hoge beschikbaarheid te bieden.
-- Een stateful transaction log storage layer gevormd door het compute node met het Log-serviceproces, de landingszone voor transactielogboeken en opslag op lange termijn. Landingszone en opslag op lange termijn maken gebruik van Azure Storage, dat beschikbaarheid en [redundantie](https://docs.microsoft.com/azure/storage/common/storage-redundancy) biedt voor transactielogboeken, waardoor de duurzaamheid van gegevens voor vastgelegde transacties wordt gewaarborgd.
-- Een stateful data-opslaglaag met de databasebestanden (.mdf/.ndf) die zijn opgeslagen in Azure Storage en worden bijgewerkt door paginaservers. Deze laag maakt gebruik van gegevensbeschikbaarheids- en [redundantiefuncties](https://docs.microsoft.com/azure/storage/common/storage-redundancy) van Azure Storage. Het garandeert dat elke pagina in een gegevensbestand wordt bewaard, zelfs als processen in andere lagen hyperscale-architectuur crashen of als compute nodes mislukken.
+- Een stateless Compute-laag waarmee de `sqlservr.exe` processen worden uitgevoerd en die alleen tijdelijke en in de cache opgeslagen gegevens bevatten, zoals niet-bedekkende RBPEX-cache, tempdb, model database, enzovoort, op de gekoppelde SSD en de plannings cache, buffer groep en de column Store-groep in het geheugen. Deze stateless laag bevat de primaire Compute-replica en optioneel een aantal secundaire Compute-replica's die als failover-doelen kunnen fungeren.
+- Een stateless opslagbus gevormd door pagina servers. Deze laag is de gedistribueerde opslag engine `sqlservr.exe` voor de processen die worden uitgevoerd op de reken replica's. Elke pagina Server bevat alleen tijdelijke en in de cache opgeslagen gegevens, zoals het bedekken van RBPEX cache op de gekoppelde SSD en gegevens pagina's in het cache geheugen. Elke pagina Server heeft een gekoppelde pagina server in een actief/actief-configuratie om taak verdeling, redundantie en hoge Beschik baarheid te bieden.
+- Een stateful opslag laag voor transactie logboeken, gevormd door het reken knooppunt waarop het logboek service proces wordt uitgevoerd, de overloop zone voor het transactie logboek en de lange termijn opslag van transactie Logboeken. Voor de opslag zone en de lange termijn wordt Azure Storage gebruikt. Dit biedt Beschik baarheid en [Redundantie](https://docs.microsoft.com/azure/storage/common/storage-redundancy) voor het transactie logboek en zorgt voor de duurzaamheid van gegevens voor doorgevoerde trans acties.
+- Een stateful gegevensopslag laag met de database bestanden (. MDF/. ndf) die zijn opgeslagen in Azure Storage en worden bijgewerkt door pagina servers. Deze laag maakt gebruik van de functies voor Beschik baarheid en [Redundantie](https://docs.microsoft.com/azure/storage/common/storage-redundancy) van gegevens van Azure Storage. Hiermee wordt gegarandeerd dat elke pagina in een gegevens bestand blijft behouden, zelfs als processen in andere lagen van de grootschalige-architectuur vastlopen of als reken knooppunten mislukken.
 
-Compute-knooppunten in alle Hyperscale-lagen worden uitgevoerd op Azure Service Fabric, dat de status van elk knooppunt regelt en waar nodig failovers uitvoert naar beschikbare gezonde knooppunten.
+Reken knooppunten in alle grootschalige-lagen worden uitgevoerd op Azure Service Fabric, waarmee de status van elk knoop punt wordt gecontroleerd en waar nodig failovers worden uitgevoerd naar beschik bare, gezonde knoop punten.
 
-Zie [Database Hoge beschikbaarheid in Hyperscale](https://docs.microsoft.com/azure/sql-database/sql-database-service-tier-hyperscale#database-high-availability-in-hyperscale)voor meer informatie over hoge beschikbaarheid in Hyperscale.
+Zie voor meer informatie over hoge Beschik baarheid in grootschalige [Data Base hoge Beschik baarheid in grootschalige](https://docs.microsoft.com/azure/sql-database/sql-database-service-tier-hyperscale#database-high-availability-in-hyperscale).
 
-## <a name="zone-redundant-configuration"></a>Redundante zoneconfiguratie
+## <a name="zone-redundant-configuration"></a>Zone redundante configuratie
 
-Standaard wordt het cluster knooppunten voor het premium beschikbaarheidsmodel gemaakt in hetzelfde datacenter. Met de introductie van [Azure Availability Zones](../availability-zones/az-overview.md)kan SQL Database verschillende replica's van de Business Critical-database plaatsen in verschillende beschikbaarheidszones in dezelfde regio. Om een enkel storingspunt te elimineren, wordt de besturingsring ook in meerdere zones gedupliceerd als drie gatewayringen (GW). De routering naar een specifieke gatewayring wordt beheerd door [Azure Traffic Manager](../traffic-manager/traffic-manager-overview.md) (ATM). Omdat de zoneredundante configuratie in de servicelagen Premium of Business Critical geen extra databaseredundantie creëert, u deze zonder extra kosten inschakelen. Door een zoneredundante configuratie te selecteren, u uw Premium- of Business Critical-databases bestand maken tegen een veel grotere reeks fouten, waaronder catastrofale datacenterstoringen, zonder wijzigingen in de toepassingslogica. U ook bestaande Premium- of Business Critical-databases of -groepen converteren naar de redundante zoneconfiguratie.
+Het cluster met knoop punten voor het Premium-beschikbaarheids model wordt standaard in hetzelfde Data Center gemaakt. Met de introductie van [Azure-beschikbaarheidszones](../availability-zones/az-overview.md)kan SQL database verschillende replica's van de bedrijfskritiek-data base plaatsen in verschillende beschikbaarheids zones in dezelfde regio. Om een Single Point of Failure te elimineren, wordt de controle ring ook gedupliceerd over meerdere zones als drie gateway ringen (GW). De route ring naar een specifieke gateway ring wordt beheerd door [Azure Traffic Manager](../traffic-manager/traffic-manager-overview.md) (ATM). Omdat de zone redundante configuratie in de service lagen van Premium of Bedrijfskritiek geen extra database redundantie maakt, kunt u deze zonder extra kosten inschakelen. Als u een zone redundante configuratie selecteert, kunt u uw Premium-of Bedrijfskritiek-data bases tot een veel grotere set storingen leiden, inclusief een onherstelbare uitval van het Data Center, zonder dat u de toepassings logica hoeft te wijzigen. U kunt ook bestaande Premium-of Bedrijfskritiek-data bases of-groepen converteren naar de zone redundante configuratie.
 
-Omdat de zoneredundante databases replica's hebben in verschillende datacenters met enige afstand tussen deze databases, kan de verhoogde netwerklatentie de committijd verhogen en dus de prestaties van sommige OLTP-workloads beïnvloeden. U altijd terugkeren naar de configuratie met één zone door de instelling voor zoneredundantie uit te schakelen. Dit proces is een online bewerking die vergelijkbaar is met de upgrade van de reguliere servicelaag. Aan het einde van het proces wordt de database of groep gemigreerd van een zoneredundante ring naar een ring met één zone of vice versa.
-
-> [!IMPORTANT]
-> Zoneredundante databases en elastische pools worden momenteel alleen ondersteund in de servicelagen Premium en Business Critical in bepaalde regio's. Bij het gebruik van de laag Bedrijfskritiek is zoneredundante configuratie alleen beschikbaar wanneer de Gen5-rekenhardware is geselecteerd. Zie Ondersteuning per [regio voor](../availability-zones/az-overview.md#services-support-by-region)actuele informatie over de regio's die redundante databases in de zone ondersteunen.  
-> Deze functie is niet beschikbaar in de instantie Beheerd.
-
-De zoneredundante versie van de architectuur met hoge beschikbaarheid wordt geïllustreerd door het volgende diagram:
-
-![architectuurzone met hoge beschikbaarheid overbodig](./media/sql-database-high-availability/zone-redundant-business-critical-service-tier.png)
-
-## <a name="accelerated-database-recovery-adr"></a>Versnelde databaseherstel (ADR)
-
-[Accelerated Database Recovery (ADR)](sql-database-accelerated-database-recovery.md) is een nieuwe SQL-databaseenginedie de beschikbaarheid van gegevens aanzienlijk verbetert, vooral in aanwezigheid van langlopende transacties. ADR is momenteel beschikbaar voor afzonderlijke databases, elastische pools en Azure SQL Data Warehouse.
-
-## <a name="testing-application-fault-resiliency"></a>Het testen van toepassingsfouttolerantie
-
-Hoge beschikbaarheid is een fundamenteel onderdeel van azure SQL Database-platform dat transparant werkt voor uw databasetoepassing. We erkennen echter dat u mogelijk wilt testen hoe de automatische failoverbewerkingen die tijdens geplande of ongeplande gebeurtenissen zijn gestart, van invloed kunnen zijn op de toepassing voordat u deze in productie neemt. U een speciale API aanroepen om een database of een elastische pool opnieuw op te starten, wat op zijn beurt een failover zal veroorzaken. In het geval van een zoneredundante database of elastische groep, zou de API-aanroep resulteren in het omleiden van clientverbindingen naar het nieuwe primaire in een beschikbaarheidszone die verschilt van de beschikbaarheidszone van het oude primaire. Dus naast het testen hoe failover invloed heeft op bestaande databasesessies, u ook controleren of het de end-to-end prestaties verandert als gevolg van wijzigingen in de netwerklatentie. Omdat de herstartbewerking opdringerig is en een groot aantal van hen het platform kan benadrukken, is er elke 30 minuten slechts één failovergesprek toegestaan voor elke database of elastische pool. 
-
-Een failover kan worden gestart met rest API of PowerShell. Zie [Databasefailover](https://docs.microsoft.com/rest/api/sql/databases(failover)/failover) en [Elastic pool failover voor](https://docs.microsoft.com/rest/api/sql/elasticpools(failover)/failover)REST API. Zie [Invoke-AzSqlDatabaseFailover](https://docs.microsoft.com/powershell/module/az.sql/invoke-azsqldatabasefailover) en [Invoke-AzSqlElasticPoolFailover](https://docs.microsoft.com/powershell/module/az.sql/invoke-azsqlelasticpoolfailover)voor PowerShell . De REST API-aanroepen kunnen ook vanuit Azure CLI worden uitgevoerd met de [az-restopdracht.](https://docs.microsoft.com/cli/azure/reference-index?view=azure-cli-latest#az-rest)
+Omdat de redundante data bases van de zone replica's hebben in verschillende data centers met een aantal onderlinge afstanden, kan de verhoogde netwerk latentie de doorvoer tijd verhogen en de prestaties van bepaalde OLTP-workloads beïnvloeden. U kunt altijd terugkeren naar de configuratie met één zone door de instelling voor zone redundantie uit te scha kelen. Dit proces is een online bewerking die vergelijkbaar is met de normale upgrade van de servicelaag. Aan het einde van het proces wordt de data base of groep gemigreerd van een redundante ring zone naar een enkele zone ring of andersom.
 
 > [!IMPORTANT]
-> De opdracht Failover is momenteel niet beschikbaar in de servicelaag Hyperscale en voor Beheerde instantie.
+> Zone redundante data bases en elastische Pools worden momenteel alleen ondersteund in de service lagen Premium en Bedrijfskritiek in regio's selecteren. Wanneer u de laag Bedrijfskritiek gebruikt, is de redundante configuratie van de zone alleen beschikbaar wanneer de GEN5 Compute-hardware is geselecteerd. Zie [Services ondersteunen per regio](../availability-zones/az-region.md)voor actuele informatie over de regio's die zone redundante data bases ondersteunen.  
+> Deze functie is niet beschikbaar in een beheerd exemplaar.
+
+De zone redundante versie van de architectuur met hoge Beschik baarheid wordt geïllustreerd in het volgende diagram:
+
+![architectuur zone met hoge Beschik baarheid, redundant](./media/sql-database-high-availability/zone-redundant-business-critical-service-tier.png)
+
+## <a name="accelerated-database-recovery-adr"></a>Versneld database herstel (ADR)
+
+[Versneld database herstel (ADR)](sql-database-accelerated-database-recovery.md) is een nieuwe functie van SQL database engine waarmee de beschik baarheid van de data base aanzienlijk wordt verbeterd, met name in de aanwezigheid van langlopende trans acties. ADR is momenteel beschikbaar voor afzonderlijke data bases, elastische Pools en Azure SQL Data Warehouse.
+
+## <a name="testing-application-fault-resiliency"></a>Toepassings fout tolerantie testen
+
+Hoge Beschik baarheid is een fundamenteel onderdeel van Azure SQL Database platform dat transparant werkt voor uw database toepassing. We erkennen echter dat u wellicht wilt testen hoe de automatische failover-bewerkingen die worden geïnitieerd tijdens geplande of niet-geplande gebeurtenissen, van invloed zijn op de toepassing voordat u deze implementeert voor productie. U kunt een speciale API aanroepen om een Data Base of een elastische pool opnieuw op te starten, waardoor een failover wordt geactiveerd. In het geval van een zone redundante data base of elastische pool zou de API-aanroep ertoe leiden dat client verbindingen worden omgeleid naar de nieuwe primaire in een beschikbaarheids zone die afwijkt van de beschikbaarheids zone van de oude primaire. Naast het testen van de manier waarop failover van invloed is op bestaande database sessies, kunt u ook controleren of de end-to-end-prestaties worden gewijzigd vanwege wijzigingen in de netwerk latentie. Omdat de computer opnieuw moet worden opgestart, is er voor elke Data Base of elastische pool slechts één failover-aanroep elke 30 minuten toegestaan. 
+
+Een failover kan worden gestart met behulp van REST API of Power shell. Zie failover van een [Data Base](https://docs.microsoft.com/rest/api/sql/databases(failover)/failover) en een [elastische pool](https://docs.microsoft.com/rest/api/sql/elasticpools(failover)/failover)voor rest API. Zie [invoke-AzSqlDatabaseFailover](https://docs.microsoft.com/powershell/module/az.sql/invoke-azsqldatabasefailover) en [invoke-AzSqlElasticPoolFailover](https://docs.microsoft.com/powershell/module/az.sql/invoke-azsqlelasticpoolfailover)voor Power shell. De REST API-aanroepen kunnen ook vanuit Azure CLI worden gemaakt met behulp van [AZ rest](https://docs.microsoft.com/cli/azure/reference-index?view=azure-cli-latest#az-rest) Command.
+
+> [!IMPORTANT]
+> De opdracht failover is momenteel niet beschikbaar in de grootschalige en voor het beheerde exemplaar.
 
 ## <a name="conclusion"></a>Conclusie
 
-Azure SQL Database beschikt over een ingebouwde oplossing met hoge beschikbaarheid, die nauw is geïntegreerd met het Azure-platform. Het is afhankelijk van Service Fabric voor foutdetectie en -herstel, van Azure Blob-opslag voor gegevensbescherming en beschikbaarheidszones voor een hogere fouttolerantie. Bovendien maakt Azure SQL-database gebruik van de Always On Availability Group-technologie van SQL Server voor replicatie en failover. De combinatie van deze technologieën stelt toepassingen in staat om de voordelen van een gemengd opslagmodel volledig te realiseren en de meest veeleisende SLA's te ondersteunen.
+Azure SQL Database bevat een ingebouwde oplossing voor hoge Beschik baarheid, die nauw is geïntegreerd met het Azure-platform. Het is afhankelijk van Service Fabric voor fout detectie en herstel, in Azure Blob-opslag voor gegevens beveiliging en op Beschikbaarheidszones voor hogere fout tolerantie. Bovendien maakt Azure SQL database gebruik van de technologie van de AlwaysOn-beschikbaarheids groep van SQL Server voor replicatie en failover. De combi natie van deze technologieën stelt toepassingen in staat om de voor delen van een gemengd opslag model volledig te benutten en de meest veeleisende Sla's te ondersteunen.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Meer informatie over [Azure Availability Zones](../availability-zones/az-overview.md)
-- Meer informatie over [servicestof](../service-fabric/service-fabric-overview.md)
+- Meer informatie over [Azure-beschikbaarheidszones](../availability-zones/az-overview.md)
+- Meer informatie over [service Fabric](../service-fabric/service-fabric-overview.md)
 - Meer informatie over [Azure Traffic Manager](../traffic-manager/traffic-manager-overview.md)
-- Zie [Business Continuity](sql-database-business-continuity.md) voor meer opties voor hoge beschikbaarheid en disaster recovery
+- Zie [bedrijfs continuïteit](sql-database-business-continuity.md) voor meer opties voor hoge Beschik baarheid en herstel na nood gevallen.

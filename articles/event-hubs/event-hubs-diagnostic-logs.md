@@ -14,60 +14,59 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.custom: seodec18
-ms.date: 12/06/2018
+ms.date: 04/28/2020
 ms.author: shvija
-ms.openlocfilehash: 68aa62ad34f8db531d439a581ef024862da0f90c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: HT
+ms.openlocfilehash: 3010ee7b996c9d3e96082edeb9447c960da321bd
+ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77162307"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82509763"
 ---
 # <a name="set-up-diagnostic-logs-for-an-azure-event-hub"></a>Diagnostische logboeken instellen voor een Azure Event Hub
 
 U kunt twee typen logboeken voor Azure Event Hubs bekijken:
 
-* **[Activiteiten logboeken](../azure-monitor/platform/platform-logs-overview.md)**: deze logboeken bevatten informatie over de bewerkingen die worden uitgevoerd op een taak. De logboeken zijn altijd ingeschakeld.
+* **[Activiteiten logboeken](../azure-monitor/platform/platform-logs-overview.md)**: deze logboeken bevatten informatie over bewerkingen die zijn uitgevoerd voor een taak. De logboeken zijn altijd ingeschakeld. U kunt de vermeldingen in het activiteiten logboek bekijken door **activiteiten logboek** te selecteren in het linkerdeel venster voor uw event hub naam ruimte in de Azure Portal. Bijvoorbeeld: ' naam ruimte maken of bijwerken ', ' event hub maken of bijwerken '.
+
+    ![Activiteiten logboek voor een Event Hubs naam ruimte](./media/event-hubs-diagnostic-logs/activity-log.png)
 * **[Diagnostische logboeken](../azure-monitor/platform/platform-logs-overview.md)**: u kunt Diagnostische logboeken configureren voor een uitgebreidere weer gave van alles wat er gebeurt met een taak. Diagnostische logboeken behandelen activiteiten vanaf het moment dat de taak wordt gemaakt, totdat de taak wordt verwijderd, inclusief updates en activiteiten die optreden terwijl de taak wordt uitgevoerd.
 
-## <a name="enable-diagnostic-logs"></a>Diagnostische logboeken inschakelen
+    In de volgende sectie wordt beschreven hoe u Diagnostische logboeken inschakelt voor een Event Hubs naam ruimte.
 
+## <a name="enable-diagnostic-logs"></a>Diagnostische logboeken inschakelen
 Diagnostische logboeken zijn standaard uitgeschakeld. Voer de volgende stappen uit om Diagnostische logboeken in te scha kelen:
 
-1.  Klik in de [Azure Portal](https://portal.azure.com)onder **controle en beheer**op **Diagnostische logboeken**.
+1.  Navigeer in het [Azure Portal](https://portal.azure.com)naar uw event hubs naam ruimte. 
+2. Selecteer **Diagnostische instellingen** onder **bewaking** in het linkerdeel venster en selecteer **+ Diagnostische instelling toevoegen**. 
 
-    ![Deel venster navigatie naar Diagnostische logboeken](./media/event-hubs-diagnostic-logs/image1.png)
+    ![Pagina Diagnostische instellingen-diagnostische instelling toevoegen](./media/event-hubs-diagnostic-logs/diagnostic-settings-page.png)
+4. Selecteer in de sectie **categorie Details** de **typen Diagnostische logboeken** die u wilt inschakelen. Verderop in dit artikel vindt u meer informatie over deze categorieën. 
+5. Stel in de sectie **doel Details** het archief doel (doel) in dat u wilt. bijvoorbeeld een opslag account, een Event Hub of een Log Analytics-werk ruimte.
 
-2.  Klik op de resource die u wilt bewaken.
+    ![Pagina Diagnostische instellingen toevoegen](./media/event-hubs-diagnostic-logs/aDD-diagnostic-settings-page.png)
+6.  Selecteer **Opslaan** op de werk balk om de diagnostische instellingen op te slaan.
 
-3.  Klik op **Diagnostische gegevens inschakelen**.
+    Nieuwe instellingen worden in ongeveer 10 minuten van kracht. Daarna worden logboeken weer gegeven in het geconfigureerde archief doel in het deel venster **Diagnostische logboeken** .
 
-    ![Diagnostische logboeken inschakelen](./media/event-hubs-diagnostic-logs/image2.png)
-
-4.  Voor **status** **, klikt u op.**
-
-    ![De status van Diagnostische logboeken wijzigen](./media/event-hubs-diagnostic-logs/image3.png)
-
-5.  Stel het gewenste archief doel in; bijvoorbeeld een opslag account, een Event Hub of Azure Monitor Logboeken.
-
-6.  Sla de nieuwe instellingen voor diagnostische gegevens op.
-
-Nieuwe instellingen worden in ongeveer 10 minuten van kracht. Daarna worden logboeken weer gegeven in het geconfigureerde archief doel in het deel venster **Diagnostische logboeken** .
-
-Zie voor meer informatie over het configureren van diagnostische gegevens het [overzicht van Azure Diagnostische logboeken](../azure-monitor/platform/platform-logs-overview.md).
+    Zie voor meer informatie over het configureren van diagnostische gegevens het [overzicht van Azure Diagnostische logboeken](../azure-monitor/platform/platform-logs-overview.md).
 
 ## <a name="diagnostic-logs-categories"></a>Categorieën met Diagnostische logboeken
 
-Event Hubs Diagnostische logboeken voor twee categorieën worden vastgelegd:
+Event Hubs Diagnostische logboeken vastleggen voor de volgende categorieën:
 
-* **Archief logboeken**: Logboeken gerelateerd aan Event hubs archieven, met name logboeken die betrekking hebben op archief fouten.
-* **Operationele logboeken**: informatie over wat er gebeurt tijdens Event hubs bewerkingen, met name het bewerkings type, inclusief Event hub maken, gebruikte resources en de status van de bewerking.
+- **Archief logboeken**: Logboeken gerelateerd aan Event hubs archieven, met name logboeken die betrekking hebben op archief fouten.
+- **Operationele logboeken**: informatie over wat er gebeurt tijdens Event hubs bewerkingen, met name het bewerkings type, inclusief Event hub maken, gebruikte resources en de status van de bewerking.
+- **Logboeken voor automatisch schalen**: informatie over bewerkingen met automatische schaling die worden uitgevoerd op een event hubs naam ruimte. 
+- **Kafka Coordinator-logboeken** : informatie over de Kafka-coördinator bewerkingen met betrekking tot Event hubs. 
+- **Kafka-gebruikers Logboeken**: informatie over Kafka-gebruikers bewerkingen met betrekking tot Event hubs. 
+- **Event hubs verbinding met het virtuele netwerk (VNet)**: informatie over de verbindings gebeurtenissen van een virtueel netwerk event hubs. 
+- Door de **klant beheerde sleutel gebruikers Logboeken**: informatie over bewerkingen met betrekking tot door de klant beheerde sleutel. 
 
-## <a name="diagnostic-logs-schema"></a>Schema voor Diagnostische logboeken
 
-Alle logboeken worden opgeslagen in de indeling van de JavaScript Object Notation (JSON). Elke vermelding bevat teken reeks velden die gebruikmaken van de indeling die wordt beschreven in de volgende secties.
+    Alle logboeken worden opgeslagen in de indeling van de JavaScript Object Notation (JSON). Elke vermelding bevat teken reeks velden die gebruikmaken van de indeling die wordt beschreven in de volgende secties.
 
-### <a name="archive-logs-schema"></a>Schema voor archief logboeken
+## <a name="archive-logs-schema"></a>Schema voor archief logboeken
 
 De JSON-teken reeksen van het archief logboek bevatten elementen die in de volgende tabel worden weer gegeven:
 
@@ -105,7 +104,7 @@ De volgende code is een voor beeld van een JSON-teken reeks in het archief logbo
 }
 ```
 
-### <a name="operational-logs-schema"></a>Schema van operationele logboeken
+## <a name="operational-logs-schema"></a>Schema van operationele logboeken
 
 De JSON-teken reeksen van het operationele logboek bevatten elementen die in de volgende tabel worden weer gegeven:
 
@@ -137,6 +136,72 @@ Example:
    "category": "OperationalLogs"
 }
 ```
+
+## <a name="autoscale-logs-schema"></a>Schema voor automatisch schalen van Logboeken
+JSON van het logboek voor automatisch schalen bevat elementen die in de volgende tabel worden weer gegeven:
+
+| Naam | Beschrijving |
+| ---- | ----------- | 
+| trackingId | Interne ID, die wordt gebruikt voor tracerings doeleinden |
+| resourceId | Interne ID, die de ID van het Azure-abonnement en de naam van de naam ruimte bevat |
+| message | Informatief bericht, dat details bevat over het automatisch verg Roten van de actie. Het bericht bevat de vorige en huidige waarde van de doorvoer eenheid voor een opgegeven naam ruimte en wat de verg Roten van de TU heeft veroorzaakt. |
+
+## <a name="kafka-coordinator-logs-schema"></a>Kafka Coordinator-logboeken schema
+Kafka Coordinator-logboek JSON bevat elementen die in de volgende tabel worden weer gegeven:
+
+| Naam | Beschrijving |
+| ---- | ----------- | 
+| requestId | aanvraag-ID, die wordt gebruikt voor tracerings doeleinden |
+| resourceId | Interne ID, die de ID van het Azure-abonnement en de naam van de naam ruimte bevat |
+| operationName | De naam van de bewerking die wordt uitgevoerd tijdens de groeps coördinatie |
+| clientId | Client-id |
+| namespaceName | Naam van naamruimte | 
+| subscriptionId | Azure-abonnements-ID |
+| message | Informatief bericht, dat details bevat over acties die zijn uitgevoerd tijdens de coördinatie van de consumenten groep. |
+
+## <a name="kafka-user-error-logs-schema"></a>Schema voor Kafka-gebruikers fout logboeken
+Kafka voor fout logboek van gebruikers bevat elementen die in de volgende tabel worden weer gegeven:
+
+| Naam | Beschrijving |
+| ---- | ----------- |
+| trackingId | tracerings-ID, die wordt gebruikt voor tracerings doeleinden. |
+| namespaceName | Naam van naamruimte |
+| eventhub | Naam van Event Hub |
+| partitionId | Partitie-id |
+| groupId | Groeps-id |
+| ClientId | Client-id |
+| resourceId | Interne ID, die de ID van het Azure-abonnement en de naam van de naam ruimte bevat |
+| message | Informatief bericht, dat details bevat over een fout |
+
+## <a name="event-hubs-virtual-network-connection-event-schema"></a>Verbindings gebeurtenis schema voor virtuele netwerk Event Hubs
+
+De JSON-verbindings gebeurtenis van het Event Hubs virtuele netwerk (VNet) bevat elementen die in de volgende tabel worden weer gegeven:
+
+| Naam | Beschrijving |
+| ---  | ----------- | 
+| subscriptionId | Azure-abonnements-ID |
+| namespaceName | Naam van naamruimte |
+| IPAdres | IP-adres van een client die verbinding maakt met de Event Hubs-service |
+| action | De actie die door de Event Hubs-service wordt uitgevoerd bij de evaluatie van verbindings aanvragen. Ondersteunde acties zijn **AcceptConnection** en **RejectConnection**. |
+| reason | Geeft een reden waarom de actie is uitgevoerd |
+| count | Aantal exemplaren voor de opgegeven actie |
+| resourceId | De interne Resource-ID, die de abonnements-ID en naam van de naam ruimte bevat. |
+
+## <a name="customer-managed-key-user-logs"></a>Door de klant beheerde sleutel gebruikers Logboeken
+Door de klant beheerde Key gebruikers logboek JSON bevat elementen die in de volgende tabel worden weer gegeven:
+
+| Naam | Beschrijving |
+| ---- | ----------- | 
+| category | Type categorie voor een bericht. Dit is een van de volgende waarden: **fout** en **info** |
+| resourceId | Interne Resource-ID, waaronder de Azure-abonnements-ID en naam van de naam ruimte |
+| keyVault | De naam van de Key Vault resource |
+| sleutel | De naam van de Key Vault sleutel. |
+| versie | Versie van de Key Vault sleutel |
+| schijf | De naam van een bewerking die is uitgevoerd om aanvragen te behandelen |
+| code | Statuscode |
+| message | Bericht, dat details over een fout of informatief bericht bevat |
+
+
 
 ## <a name="next-steps"></a>Volgende stappen
 - [Inleiding tot Event Hubs](event-hubs-what-is-event-hubs.md)

@@ -3,14 +3,14 @@ title: Vm's starten/stoppen buiten kantoor uren
 description: Deze VM-beheer oplossing Start en stopt uw virtuele Azure-machines volgens een planning en proactief bewaakt van Azure Monitor-Logboeken.
 services: automation
 ms.subservice: process-automation
-ms.date: 04/01/2020
+ms.date: 04/28/2020
 ms.topic: conceptual
-ms.openlocfilehash: 631c9b37cf1fec0d39c3c362c6bc303a576d6b7c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f7e30fd0d53af7ee61d919b56e9ffcd1f1b6bd36
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 04/28/2020
-ms.locfileid: "82187327"
+ms.locfileid: "82207595"
 ---
 # <a name="startstop-vms-during-off-hours-solution-in-azure-automation"></a>Vm's starten/stoppen buiten kantoor uren in Azure Automation
 
@@ -19,7 +19,7 @@ Het **starten/stoppen van vm's buiten kantoor uren** oplossing start of stopt uw
 Deze oplossing maakt gebruik van de cmdlet [Start-AzureRmVM](https://docs.microsoft.com/powershell/module/azurerm.compute/start-azurermvm?view=azurermps-6.13.0) om vm's te starten. Er wordt gebruikgemaakt van [Stop-AzureRmVM](https://docs.microsoft.com/powershell/module/AzureRM.Compute/Stop-AzureRmVM?view=azurermps-6.13.0) voor het stoppen van vm's.
 
 > [!NOTE]
-> De oplossing voor het **starten/stoppen van vm's buiten kantoor uren** is bijgewerkt ter ondersteuning van de nieuwste versies van de Azure-modules die beschikbaar zijn.
+> De oplossing voor het **starten/stoppen van vm's buiten kantoor uren** is bijgewerkt ter ondersteuning van de nieuwste versies van de Azure-modules die beschikbaar zijn. De bijgewerkte versie van deze oplossing, die beschikbaar is in Marketplace, biedt geen ondersteuning voor AzureRM-modules omdat we hebben gemigreerd van AzureRM naar AZ-modules.
 
 De oplossing biedt een gecentraliseerde automatiserings optie met lage kosten voor gebruikers die hun VM-kosten willen optimaliseren. Met deze oplossing kunt u het volgende doen:
 

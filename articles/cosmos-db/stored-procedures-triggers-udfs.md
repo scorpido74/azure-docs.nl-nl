@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/09/2020
 ms.author: tisande
 ms.reviewer: sngun
-ms.openlocfilehash: 13256377b8a8aaebf59196df57eef67d3b960cb8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: HT
+ms.openlocfilehash: 5fc74c554cbb283bc6bbfee737ef98e59dd4b0ea
+ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81010542"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82509666"
 ---
 # <a name="stored-procedures-triggers-and-user-defined-functions"></a>Opgeslagen procedures, triggers en door de gebruiker gedefinieerde functies
 
@@ -64,6 +64,9 @@ Trans acties zijn systeem eigen geïntegreerd in het Azure Cosmos DB java script
 ### <a name="data-consistency"></a>Gegevensconsistentie
 
 Opgeslagen procedures en triggers worden altijd uitgevoerd op de primaire replica van een Azure Cosmos-container. Deze functie zorgt ervoor dat lees bewerkingen van opgeslagen procedures een [sterke consistentie](consistency-levels-tradeoffs.md)bieden. Query's met door de gebruiker gedefinieerde functies kunnen worden uitgevoerd op de primaire of een secundaire replica. Opgeslagen procedures en triggers zijn bedoeld ter ondersteuning van transactionele schrijf bewerkingen. in de richting van alleen-lezen logica wordt het beste geïmplementeerd als logica en query's op toepassings zijde met behulp van de [Azure Cosmos DB SQL API sdk's](sql-api-dotnet-samples.md), helpt u de door Voer van de data base te verzadigen. 
+
+> [!TIP]
+> De query's die in een opgeslagen procedure of trigger worden uitgevoerd, zien mogelijk geen wijzigingen in items die door dezelfde script transactie zijn gemaakt. Deze instructie is van toepassing op SQL-query's, `getContent().getCollection.queryDocuments()`zoals, en geïntegreerde taal query's, zoals `getContext().getCollection().filter()`.
 
 ## <a name="bounded-execution"></a>Gebonden uitvoering
 

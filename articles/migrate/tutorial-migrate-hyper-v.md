@@ -6,12 +6,12 @@ ms.date: 04/15/2020
 ms.custom:
 - MVC
 - fasttrack-edit
-ms.openlocfilehash: 6b9732aab9e3fe0d26b4c572efe87c3a9d3e29f6
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 3b68531319e83eece11833dba475020060e280b6
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 04/29/2020
-ms.locfileid: "81535346"
+ms.locfileid: "82583314"
 ---
 # <a name="migrate-hyper-v-vms-to-azure"></a>Hyper-V-VM's migreren naar Azure 
 
@@ -40,7 +40,7 @@ Voordat u aan deze zelfstudie begint, dient u eerst:
 1. [Controleer](hyper-v-migration-architecture.md) de Hyper-V-migratie architectuur.
 2. [Controleren](migrate-support-matrix-hyper-v-migration.md#hyper-v-hosts) De vereisten voor de hyper-v-host en de Azure-Url's die de Hyper-V-hosts moeten openen.
 3. [Bekijk](migrate-support-matrix-hyper-v-migration.md#hyper-v-vms) de vereisten voor virtuele Hyper-V-machines die u wilt migreren. Virtuele Hyper-V-machines moeten voldoen aan de vereisten van de [Azure-VM](migrate-support-matrix-hyper-v-migration.md#azure-vm-requirements).
-2. U wordt aangeraden de vorige zelf studies in deze serie te volt ooien. De [eerste zelf studie](tutorial-prepare-hyper-v.md) laat zien hoe u Azure en Hyper-V instelt voor migratie. De tweede zelf studie laat zien hoe u [Hyper-V-Vm's kunt beoordelen] (zelf studie-evaluatie-hyper-v.md vóór migratie met behulp van Azure Migrate: Server beoordeling. 
+2. U wordt aangeraden de vorige zelf studies in deze serie te volt ooien. De [eerste zelf studie](tutorial-prepare-hyper-v.md) laat zien hoe u Azure en Hyper-V instelt voor migratie. De tweede zelf studie laat zien hoe u [virtuele Hyper-V-machines](tutorial-assess-hyper-v.md) controleert vóór de migratie, met behulp van Azure migrate: Server Assessment. 
     > [!NOTE]
     > We raden u aan om een evaluatie uit te voeren, maar u hoeft geen beoordeling te verrichten voordat u virtuele machines migreert.
     > Voor de migratie van Hyper-V-Vm's, Azure Migrate: Server migratie voert software agents (Microsoft Azure Site Recovery provider en Microsoft Azure Recovery Service agent) op Hyper-V-hosts of cluster knooppunten uit om gegevens te organiseren en te repliceren naar Azure Migrate. Het [Azure migrate apparaat](migrate-appliance.md) wordt niet gebruikt voor de migratie van Hyper-V.

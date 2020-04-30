@@ -1,5 +1,5 @@
 ---
-title: Zelf`:` studie een beheerde identiteit gebruiken om toegang te krijgen tot Azure Cosmos DB-Windows-Azure AD
+title: 'Zelf studie: een beheerde identiteit gebruiken om toegang te krijgen tot Azure Cosmos DB-Windows-Azure AD'
 description: Een zelfstudie die u helpt bij het gebruiken van een door het systeem toegewezen beheerde identiteit op een Windows-VM voor toegang tot Azure Cosmos DB.
 services: active-directory
 documentationcenter: ''
@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 01/14/2020
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9648c714ddbac93bcc76d84e7f6d8f2fcfaed992
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 11b7f8eeb94fb2d6f197af2d40b120c5f74d6128
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 04/29/2020
-ms.locfileid: "78248224"
+ms.locfileid: "82583073"
 ---
 # <a name="tutorial-use-a-windows-vm-system-assigned-managed-identity-to-access-azure-cosmos-db"></a>Zelfstudie: een door het Windows-VM-systeem toegewezen beheerde identiteit gebruiken voor toegang tot Azure Cosmos DB
 

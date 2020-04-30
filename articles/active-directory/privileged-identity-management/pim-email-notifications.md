@@ -1,6 +1,6 @@
 ---
-title: E-mailmeldingen in PIM - Azure Active Directory | Microsoft Documenten
-description: Beschrijft e-mailmeldingen in Azure AD Privileged Identity Management (PIM).
+title: E-mail meldingen in PIM-Azure Active Directory | Microsoft Docs
+description: Beschrijft e-mail meldingen in Azure AD Privileged Identity Management (PIM).
 services: active-directory
 documentationcenter: ''
 author: curtand
@@ -11,107 +11,107 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.subservice: pim
-ms.date: 04/21/2020
+ms.date: 04/28/2020
 ms.author: curtand
 ms.reviewer: hanki
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 201abd24bc4056337f1ffecd2dabd002ae352c74
-ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
+ms.openlocfilehash: 02fbfc83c16cb13376cce820f19b247a7cd7db59
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/22/2020
-ms.locfileid: "81866425"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82232305"
 ---
-# <a name="email-notifications-in-pim"></a>E-mailmeldingen in PIM
+# <a name="email-notifications-in-pim"></a>E-mail meldingen in PIM
 
-Met Privileged Identity Management (PIM) u weten wanneer belangrijke gebeurtenissen plaatsvinden in uw Azure Active Directory-organisatie (Azure AD), zoals wanneer een rol is toegewezen of geactiveerd. Privileged Identity Management houdt u op de hoogte door u en andere deelnemers e-mailmeldingen te sturen. Deze e-mails kunnen ook koppelingen bevatten naar relevante taken, zoals het activeren of vernieuwen van een rol. In dit artikel wordt beschreven hoe deze e-mails eruit zien, wanneer ze worden verzonden en wie ze ontvangt.
+Met Privileged Identity Management (PIM) kunt u weten wanneer er belang rijke gebeurtenissen optreden in uw Azure Active Directory-organisatie (Azure AD), bijvoorbeeld wanneer een rol is toegewezen of geactiveerd. Privileged Identity Management houdt u op de hoogte door u en andere deel nemers e-mail meldingen te sturen. Deze e-mail berichten kunnen ook koppelingen naar relevante taken bevatten, zoals het activeren of vernieuwen van een rol. In dit artikel wordt beschreven hoe deze e-mails eruitzien wanneer ze worden verzonden en wie ze ontvangt.
 
-## <a name="sender-email-address-and-subject-line"></a>E-mailadres en onderwerpregel van afzender
+## <a name="sender-email-address-and-subject-line"></a>E-mail adres van afzender en onderwerpregel
 
-E-mails die zijn verzonden vanuit Privileged Identity Management voor zowel Azure AD- als Azure-bronrollen hebben het volgende e-mailadres van afzender:
+E-mails die zijn verzonden vanuit Privileged Identity Management voor zowel Azure AD-als Azure-resource rollen, hebben het volgende e-mail adres van de afzender:
 
-- E-mailadres: **azure-noreply\@microsoft.com**
-- Weergavenaam: Microsoft Azure
+- E-mail adres: **Azure-\@Microsoft.com-antwoord**
+- Weergave naam: Microsoft Azure
 
-Deze e-mails bevatten een PIM-voorvoegsel in de onderwerpregel. **PIM** Hier volgt een voorbeeld:
+Deze e-mail berichten bevatten een **PIM** -voor voegsel in de onderwerpregel. Hier volgt een voorbeeld:
 
-- PIM: Alain Charon kreeg de rol Backup Reader permanent toegewezen
+- PIM: Alain Charon is permanent toegewezen aan de rol van back-uplezer
 
 ## <a name="notifications-for-azure-ad-roles"></a>Meldingen voor Azure AD-rollen
 
-Privileged Identity Management verzendt e-mails wanneer de volgende gebeurtenissen plaatsvinden voor Azure AD-rollen:
+Privileged Identity Management verzendt e-mails wanneer de volgende gebeurtenissen optreden voor Azure AD-rollen:
 
-- Wanneer een geprivilegieerde rolactivering in behandeling is, moet deze worden goedgekeurd
-- Wanneer een geprivilegieerde activeringsaanvraag is voltooid
+- Wanneer de activering van een bevoorrechte rol in behandeling is
+- Wanneer een aanvraag voor het activeren van een bevoorrechte rol is voltooid
 - Wanneer Azure AD Privileged Identity Management is ingeschakeld
 
-Wie deze e-mails ontvangt voor Azure AD-rollen, is afhankelijk van uw rol, de gebeurtenis en de instelling voor meldingen:
+Wie deze e-mails voor Azure AD-rollen ontvangt, is afhankelijk van uw rol, de gebeurtenis en de instelling voor meldingen:
 
-| Gebruiker | Rolactivering is in afwachting van goedkeuring | Aanvraag voor activering van rollen is voltooid | PIM is ingeschakeld |
+| Gebruiker | Activering van rol is in behandeling | De activerings aanvraag voor de rol is voltooid | PIM is ingeschakeld |
 | --- | --- | --- | --- |
-| Beheerder van een bevoorrechte rol</br>(Geactiveerd/in aanmerking komend) | Ja</br>(alleen als er geen expliciete fiatteurs zijn opgegeven) | Ja* | Ja |
+| Beheerder van geprivilegieerde rol</br>(Geactiveerd/in aanmerking komend) | Ja</br>(alleen als er geen expliciete goed keurders zijn opgegeven) | Ja* | Ja |
 | Beveiligingsbeheer</br>(Geactiveerd/in aanmerking komend) | Nee | Ja* | Ja |
 | Globale beheerder</br>(Geactiveerd/in aanmerking komend) | Nee | Ja* | Ja |
 
-\*Als de instelling [ **Meldingen** ](pim-how-to-change-default-settings.md#notifications) is ingesteld **op Inschakelen**.
+\*Als de [instelling **meldingen** ](pim-how-to-change-default-settings.md#notifications) is ingesteld op **inschakelen**.
 
-In het volgende ziet u een voorbeelde-mail die wordt verzonden wanneer een gebruiker een Azure AD-rol activeert voor de fictieve Contoso-organisatie.
+Hieronder ziet u een voor beeld van een e-mail bericht dat wordt verzonden wanneer een gebruiker een Azure AD-rol activeert voor de fictieve Contoso-organisatie.
 
-![Nieuwe e-mail voor privileged identity management voor Azure AD-rollen](./media/pim-email-notifications/email-directory-new.png)
+![Nieuwe Privileged Identity Management e-mail voor Azure AD-rollen](./media/pim-email-notifications/email-directory-new.png)
 
-### <a name="weekly-privileged-identity-management-digest-email-for-azure-ad-roles"></a>Wekelijkse privileged identity management digest e-mail voor Azure AD rollen
+### <a name="weekly-privileged-identity-management-digest-email-for-azure-ad-roles"></a>Wekelijks Privileged Identity Management Digest-e-mail voor Azure AD-rollen
 
-Een wekelijkse samenvatting van het overzicht voor bestandsbeheer van Azure-functies wordt verzonden naar beheerders van bevoorrechte rollen, beveiligingsbeheerders en globale beheerders die Privileged Identity Management hebben ingeschakeld. Deze wekelijkse e-mail bevat een momentopname van privileged identity management-activiteiten voor de week en bevoorrechte roltoewijzingen. Het is alleen beschikbaar voor huurders in de openbare cloud. Hier is een voorbeeld e-mail:
+Een wekelijks Privileged Identity Management overzichts-e-mail voor Azure AD-rollen wordt verzonden naar bevoegde beheerdersrol, beveiligings beheerders en globale beheerders die Privileged Identity Management hebben ingeschakeld. Deze wekelijkse e-mail bevat een moment opname van Privileged Identity Management activiteiten voor de week, evenals privileged Role Assignments. Het is alleen beschikbaar voor Azure AD-organisaties in de open bare Cloud. Hier volgt een voor beeld van een e-mail bericht:
 
-![Wekelijkse privileged identity management digest e-mail voor Azure AD rollen](./media/pim-email-notifications/email-directory-weekly.png)
+![Wekelijks Privileged Identity Management Digest-e-mail voor Azure AD-rollen](./media/pim-email-notifications/email-directory-weekly.png)
 
-De e-mail bevat vier tegels:
+Het e-mail bericht bevat vier tegels:
 
 | Tegel | Beschrijving |
 | --- | --- |
-| **Gebruikers geactiveerd** | Het aantal keren dat gebruikers hun in aanmerking komende rol in de tenant hebben geactiveerd. |
-| **Gebruikers maakten permanente** | Het aantal keren dat gebruikers met een in aanmerking komende opdracht permanent worden gemaakt. |
-| **Roltoewijzingen in Privileged Identity Management** | Het aantal keren dat gebruikers een in aanmerking komende rol krijgen toegewezen binnen Privileged Identity Management. |
-| **Rolopdrachten buiten PIM** | Het aantal keren dat gebruikers een permanente rol krijgen buiten Privileged Identity Management (binnen Azure AD). |
+| **Geactiveerde gebruikers** | Aantal keren dat gebruikers hun in aanmerking komende rol in de organisatie hebben geactiveerd. |
+| **Gebruikers die permanent zijn gemaakt** | Aantal keren dat gebruikers met een in aanmerking komende toewijzing permanent worden gemaakt. |
+| **Roltoewijzingen in Privileged Identity Management** | Aantal keren dat gebruikers een in aanmerking komende rol binnen Privileged Identity Management worden toegewezen. |
+| **Roltoewijzingen buiten PIM** | Aantal keren dat gebruikers een permanente rol hebben gekregen buiten Privileged Identity Management (binnen Azure AD). |
 
-In het overzicht van de sectie **Toprollen** worden de vijf belangrijkste rollen in uw tenant weergegeven op basis van het totale aantal permanente en in aanmerking komende beheerders voor elke rol. Met de koppeling **Actie uitvoeren** wordt de wizard [PIM geopend,](pim-security-wizard.md) waar u permanente beheerders converteren naar in aanmerking komende beheerders in batches.
+In het gedeelte **overzicht van uw belangrijkste rollen** worden de vijf meest voorkomende rollen in uw organisatie weer gegeven op basis van het totale aantal permanente en in aanmerking komende beheerders voor elke rol. Met de koppeling **actie ondernemen** opent u de [PIM-wizard](pim-security-wizard.md) waarin u permanente beheerders kunt converteren naar in aanmerking komende beheerders in batches.
 
-## <a name="email-timing-for-activation-approvals"></a>E-mailtiming voor activeringsgoedkeuringen
+## <a name="email-timing-for-activation-approvals"></a>E-mail tijd voor de activerings goedkeuringen
 
-Wanneer gebruikers hun rol activeren en de rolinstelling goedkeuring vereist, ontvangen fiatteurs drie e-mails voor elke goedkeuring:
+Wanneer gebruikers hun rol activeren en de functie-instelling goed keuring vereist, ontvangen goed keurders drie e-mail berichten voor elke goed keuring:
 
-- Verzoek om het activeringsverzoek van de gebruiker goed te keuren of te weigeren (verzonden door de goedkeuringsengine voor aanvragen)
-- Het verzoek van de gebruiker wordt goedgekeurd (verzonden door de engine voor aanvraaggoedkeuring)
+- Aanvraag voor het goed keuren of weigeren van de activerings aanvraag van de gebruiker (verzonden door de aanvraag goedkeurings Engine)
+- De aanvraag van de gebruiker wordt goedgekeurd (verzonden door de engine voor het goed keuren van aanvragen)
 - De rol van de gebruiker wordt geactiveerd (verzonden door Privileged Identity Management)
 
-De eerste twee e-mails die door de goedkeuringsengine van het verzoek worden verzonden, kunnen worden vertraagd. Momenteel duurt 90% van de e-mails drie tot tien minuten, maar voor 1% klanten kan het veel langer zijn, tot vijftien minuten.
+De eerste twee e-mail berichten die worden verzonden door de engine voor aanvraag goedkeuring, kunnen worden uitgesteld. Momenteel duurt 90% van de e-mails drie tot tien minuten, maar voor 1% klanten kan het veel langer duren, Maxi maal vijf tien minuten.
 
-Als een goedkeuringsaanvraag is goedgekeurd in de Azure-portal voordat de eerste e-mail wordt verzonden, wordt de eerste e-mail niet meer geactiveerd en worden andere fiatteurs niet per e-mail op de hoogte gesteld van de goedkeuringsaanvraag. Het lijkt misschien alsof ze geen e-mail hebben ontvangen, maar het is het verwachte gedrag.
+Als een goedkeurings aanvraag wordt goedgekeurd in de Azure Portal voordat het eerste e-mail bericht wordt verzonden, wordt de eerste e-mail niet meer geactiveerd en worden andere goed keurders niet meer op de hoogte gesteld van de goedkeurings aanvraag. Het bericht kan worden weer gegeven alsof het geen e-mail heeft ontvangen, maar het is het verwachte gedrag.
 
-## <a name="pim-emails-for-azure-resource-roles"></a>PIM-e-mails voor Azure-bronrollen
+## <a name="pim-emails-for-azure-resource-roles"></a>PIM-e-mails voor Azure-resource rollen
 
-Privileged Identity Management stuurt e-mails naar eigenaren en beheerders van gebruikerstoegang wanneer de volgende gebeurtenissen plaatsvinden voor Azure-bronrollen:
+Privileged Identity Management verzendt e-mails naar eigen aars en beheerders van gebruikers toegang wanneer de volgende gebeurtenissen optreden voor Azure-resource rollen:
 
-- Wanneer een roltoewijzing in behandeling is, moet deze worden goedgekeurd
+- Wanneer een roltoewijzing in afwachting is van goed keuring
 - Wanneer een rol is toegewezen
 - Wanneer een rol binnenkort verloopt
-- Wanneer een rol in aanmerking komt om
-- Wanneer een rol wordt vernieuwd door een eindgebruiker
-- Wanneer een aanvraag voor activering van een rol is voltooid
+- Wanneer een rol in aanmerking komt voor uitbrei ding
+- Wanneer een rol wordt vernieuwd door een eind gebruiker
+- Wanneer een aanvraag voor het activeren van een rol is voltooid
 
-Privileged Identity Management stuurt e-mails naar eindgebruikers wanneer de volgende gebeurtenissen plaatsvinden voor Azure-bronrollen:
+Privileged Identity Management stuurt e-mail berichten naar eind gebruikers wanneer de volgende gebeurtenissen optreden voor Azure-resource rollen:
 
 - Wanneer een rol aan de gebruiker is toegewezen
 - Wanneer de rol van een gebruiker is verlopen
 - Wanneer de rol van een gebruiker wordt uitgebreid
-- Wanneer de activeringsaanvraag van een gebruiker is voltooid
+- Wanneer de activerings aanvraag van een gebruiker is voltooid
 
-In het volgende ziet u een voorbeelde-mail die wordt verzonden wanneer een gebruiker een Azure-bronrol voor de fictieve Contoso-organisatie krijgt toegewezen.
+Hieronder ziet u een voor beeld van een e-mail bericht dat wordt verzonden wanneer aan een gebruiker een Azure-resource functie is toegewezen voor de fictieve Contoso-organisatie.
 
-![Nieuwe e-mail voor privileged identity management voor Azure-bronrollen](./media/pim-email-notifications/email-resources-new.png)
+![Nieuw Privileged Identity Management e-mail voor Azure-resource rollen](./media/pim-email-notifications/email-resources-new.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Azure AD-rolinstellingen configureren in Privileged Identity Management](pim-how-to-change-default-settings.md)
-- [Aanvragen voor Azure AD-rollen in Privileged Identity Management goedkeuren of weigeren](azure-ad-pim-approval-workflow.md)
+- [Instellingen voor Azure AD-functies configureren in Privileged Identity Management](pim-how-to-change-default-settings.md)
+- [Aanvragen voor Azure AD-rollen in Privileged Identity Management goed keuren of weigeren](azure-ad-pim-approval-workflow.md)
