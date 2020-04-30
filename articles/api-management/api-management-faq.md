@@ -13,20 +13,17 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/19/2017
 ms.author: apimpm
-ms.openlocfilehash: c32fdc67c74e100e0e31dad3afde128c05c356d6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 219681351159de6ac6bb48ff979cc68aa4ee18d3
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80335974"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82233479"
 ---
 # <a name="azure-api-management-faqs"></a>Veelgestelde vragen over Azure API Management
 Krijg antwoorden op veelgestelde vragen, patronen en aanbevolen procedures voor Azure API Management.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
-
-## <a name="contact-us"></a>Contact opnemen
-* [Hoe kan ik de Microsoft Azure API Management team een vraag stellen?](#how-can-i-ask-the-microsoft-azure-api-management-team-a-question)
 
 ## <a name="frequently-asked-questions"></a>Veelgestelde vragen
 * [Wat betekent dit wanneer een functie in preview is?](#what-does-it-mean-when-a-feature-is-in-preview)
@@ -48,18 +45,11 @@ Krijg antwoorden op veelgestelde vragen, patronen en aanbevolen procedures voor 
 * [Can I move an API Management service from one subscription to another?](#can-i-move-an-api-management-service-from-one-subscription-to-another) (Kan ik een API Management-service overzetten naar een ander abonnement?)
 * [Zijn er beperkingen voor of bekende problemen met het importeren van mijn API?](#are-there-restrictions-on-or-known-issues-with-importing-my-api)
 
-### <a name="how-can-i-ask-the-microsoft-azure-api-management-team-a-question"></a>Hoe kan ik de Microsoft Azure API Management team een vraag stellen?
-U kunt contact met ons opnemen via een van de volgende opties:
-
-* Plaats uw vragen op het [MSDN-forum van API Management](https://social.msdn.microsoft.com/forums/azure/home?forum=azureapimgmt).
-* Stuur een e-mail naar <mailto:apimgmt@microsoft.com>.
-* Stuur ons een aanvraag voor een functie in het [Feedback forum van Azure](https://feedback.azure.com/forums/248703-api-management).
-
 ### <a name="what-does-it-mean-when-a-feature-is-in-preview"></a>Wat betekent dit wanneer een functie in preview is?
-Wanneer een functie in preview is, betekent dit dat er actief feedback wordt gegeven over de manier waarop de functie werkt. Een functie in preview is functioneel voltooid, maar het is mogelijk dat we een belang rijke wijziging aanbrengen in reactie op feedback van klanten. Het is raadzaam dat u niet afhankelijk bent van een functie die in uw productie omgeving wordt weer gegeven. Als u feedback hebt over de preview-functies, laat het ons dan weten via een van de contact opties in [Hoe kan ik de Microsoft Azure API management een vraag stellen?](#how-can-i-ask-the-microsoft-azure-api-management-team-a-question)
+Wanneer een functie in preview is, betekent dit dat er actief feedback wordt gegeven over de manier waarop de functie werkt. Een functie in preview is functioneel voltooid, maar het is mogelijk dat we een belang rijke wijziging aanbrengen in reactie op feedback van klanten. Het is raadzaam dat u niet afhankelijk bent van een functie die in uw productie omgeving wordt weer gegeven.
 
 ### <a name="how-can-i-secure-the-connection-between-the-api-management-gateway-and-my-back-end-services"></a>Hoe kan ik de verbinding tussen de API Management-gateway en mijn back-endservices beveiligen?
-U hebt verschillende opties om de verbinding tussen de API Management Gateway en uw back-end-services te beveiligen. U kunt:
+U hebt verschillende opties om de verbinding tussen de API Management Gateway en uw back-end-services te beveiligen. U kunt het volgende doen:
 
 * Gebruik HTTP-basis verificatie. Zie [uw eerste API importeren en publiceren](import-and-publish.md)voor meer informatie.
 * Gebruik verificatie op basis van TLS, zoals beschreven in [How to Secure back-end services met behulp van client certificaat authenticatie in Azure API Management](api-management-howto-mutual-certificates.md).
@@ -67,7 +57,7 @@ U hebt verschillende opties om de verbinding tussen de API Management Gateway en
 * Verbind uw API Management-exemplaar met een Azure Virtual Network.
 
 ### <a name="how-do-i-copy-my-api-management-service-instance-to-a-new-instance"></a>How do I copy my API Management service instance to a new instance? (Hoe kopieer ik mijn exemplaar van de API Management service naar een nieuw exemplaar?)
-U hebt verschillende opties als u een API Management exemplaar wilt kopiëren naar een nieuw exemplaar. U kunt:
+U hebt verschillende opties als u een API Management exemplaar wilt kopiëren naar een nieuw exemplaar. U kunt het volgende doen:
 
 * Gebruik de functie back-up en herstellen in API Management. Zie herstel [na nood gevallen implementeren met behulp van service back-up en herstellen in Azure API Management](api-management-howto-disaster-recovery-backup-restore.md)voor meer informatie.
 * Maak uw eigen functie voor back-up en herstel met behulp van de [API Management rest API](/rest/api/apimanagement/). Gebruik de REST API om de entiteiten van het gewenste service-exemplaar op te slaan en te herstellen.
@@ -98,7 +88,7 @@ De zojuist toegevoegde mede werker kan nu Azure PowerShell- [cmdlets](https://do
 Als het beleid dat u wilt toevoegen lichter gekleurd of grijs wordt weer gegeven in de beleids editor, moet u ervoor zorgen dat u het juiste bereik voor het beleid hebt. Elke beleids instructie is ontworpen voor gebruik in specifieke bereiken en beleids secties. Zie de sectie gebruik van het beleid in [API management-beleid](/azure/api-management/api-management-policies)voor het controleren van de beleids secties en-bereiken voor een beleid.
 
 ### <a name="how-do-i-set-up-multiple-environments-in-a-single-api"></a>Hoe kan ik meerdere omgevingen in één API in te stellen?
-Als u meerdere omgevingen, bijvoorbeeld een test omgeving en een productie omgeving, in één API wilt instellen, hebt u twee opties. U kunt:
+Als u meerdere omgevingen, bijvoorbeeld een test omgeving en een productie omgeving, in één API wilt instellen, hebt u twee opties. U kunt het volgende doen:
 
 * Host verschillende Api's op dezelfde Tenant.
 * Host dezelfde Api's op verschillende tenants.

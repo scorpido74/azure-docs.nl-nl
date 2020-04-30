@@ -9,12 +9,12 @@ ms.custom: mvc
 ms.date: 04/23/2020
 ms.author: victorh
 Customer intent: As an administrator, I want to evaluate Azure Firewall so I can determine if I want to use it.
-ms.openlocfilehash: a3a81513773ef6d826ad354d47a3e7ec83e75d65
-ms.sourcegitcommit: 354a302d67a499c36c11cca99cce79a257fe44b0
+ms.openlocfilehash: 81adf005c2e39d9bb585c005f51ab3f89e4c8ff0
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/23/2020
-ms.locfileid: "82106641"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82209125"
 ---
 # <a name="what-is-azure-firewall"></a>Wat is Azure Firewall?
 
@@ -40,12 +40,12 @@ U kunt Azure Firewall ook koppelen aan een specifieke zone, net om redenen voor 
 
 Er zijn geen extra kosten verbonden aan een firewall die is geïmplementeerd in een beschikbaarheids zone. Er zijn echter extra kosten voor inkomende en uitgaande gegevens overdrachten die zijn gekoppeld aan Beschikbaarheidszones. Zie [prijs informatie voor band breedte](https://azure.microsoft.com/pricing/details/bandwidth/)voor meer informatie.
 
-Azure Firewall Beschikbaarheidszones zijn beschikbaar in regio's die ondersteuning bieden voor Beschikbaarheidszones. Zie [Wat zijn Beschikbaarheidszones in azure?](../availability-zones/az-overview.md#services-support-by-region) voor meer informatie.
+Azure Firewall Beschikbaarheidszones zijn beschikbaar in regio's die ondersteuning bieden voor Beschikbaarheidszones. Zie [regio's die Beschikbaarheidszones in azure ondersteunen](../availability-zones/az-region.md) voor meer informatie.
 
 > [!NOTE]
 > Beschikbaarheidszones kan alleen worden geconfigureerd tijdens de implementatie. U kunt een bestaande firewall niet configureren om Beschikbaarheidszones op te kunnen bevatten.
 
-Zie [Wat zijn Beschikbaarheidszones in azure?](../availability-zones/az-overview.md) voor meer informatie over Beschikbaarheidszones.
+Zie [regio's en Beschikbaarheidszones in azure](../availability-zones/az-overview.md) voor meer informatie over Beschikbaarheidszones.
 
 ## <a name="unrestricted-cloud-scalability"></a>Onbeperkte cloudschaalbaarheid
 

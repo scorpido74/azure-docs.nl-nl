@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 01/22/2019
 ms.author: vitalyg
 ms.subservice: metrics
-ms.openlocfilehash: 2df1e0bb7d586edb13dc86e163f0e5728608d2a2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8d15c217f2e65877ea3baa18f6ba847492bc7fa1
+ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80371605"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82509819"
 ---
 # <a name="advanced-features-of-azure-metrics-explorer"></a>Geavanceerde functies van Azure Metrics Explorer
 
@@ -47,6 +47,25 @@ Klik op de **grafiek toevoegen** en maak een andere grafiek met een andere metri
 ### <a name="order-or-delete-multiple-charts"></a>Meerdere grafieken best Ellen of verwijderen
 
 Als u meerdere grafieken wilt best Ellen of verwijderen, klikt u op het symbool met weglatings tekens ( **...** ) om het menu grafiek te openen en kiest u de juiste menu **opdracht van omhoog**, **omlaag**of **verwijderen**.
+
+## <a name="changing-aggregation"></a>Aggregatie wijzigen
+
+Wanneer u een metriek toevoegt aan een grafiek, selecteert Metrics Explorer automatisch de standaard aggregatie. De standaard instelling is zinvol in de basis scenario's, maar u kunt een andere aggregatie gebruiken om extra inzichten over de metriek te krijgen. Voor het weer geven van verschillende aggregaties in een grafiek is het vereist dat u begrijpt hoe Metrics Explorer ze verwerkt. 
+
+Metrische gegevens zijn de reeks metingen (of metrische waarden) die gedurende de tijds periode zijn vastgelegd. Wanneer u een grafiek uitzet, worden de waarden van de geselecteerde metriek afzonderlijk geaggregeerd tijdens de *tijd korrel*. U selecteert de grootte van de tijd korrel [met het deel venster Metrics Explorer tijd kiezer](metrics-getting-started.md#select-a-time-range). Als u geen expliciete selectie van de tijd korrel maakt, wordt de tijd granulatie automatisch geselecteerd op basis van het momenteel geselecteerde tijds bereik. Zodra de graan tijd is vastgesteld, worden de metrische waarden die zijn vastgelegd tijdens elke periode van het tijds interval geaggregeerd en op de grafiek geplaatst, één data Point per tijd.
+
+Stel bijvoorbeeld dat in de grafiek de waarde voor de **reactie tijd** van de server wordt weer gegeven met behulp van de **gemiddelde** aggregatie over de tijds duur van de **laatste 24 uur** :
+
+- Als de tijd granulatie is ingesteld op 30 minuten, wordt de grafiek getekend vanuit 48 geaggregeerde data Points (het lijn diagram verbindt bijvoorbeeld 48 punten in het teken gebied van de grafiek). Dat wil zeggen 24 uur x 2 data Points per uur. Elk data Point vertegenwoordigt het *gemiddelde* van alle vastgelegde reactie tijden voor server aanvragen die zijn opgetreden tijdens elk van de relevante 30 minuten.
+- Als u de tijd granulatie naar 15 minuten overschakelt, krijgt u 96 geaggregeerde data Points.  Dat wil zeggen 24 uur x 4 Data Points per uur.
+
+Er zijn vijf aggregatie typen voor basis statistieken beschikbaar in de metrische gegevens Verkenner: **som**, **aantal**, **min**, **Max**en **gemiddeld**. De **som** aggregatie wordt soms ook wel de **totale** aggregatie genoemd. Voor veel metrische gegevens worden in Metrics Explorer de aggregaties die volledig irrelevant zijn, verborgen en kunnen ze niet worden gebruikt.
+
+- **Sum** : de som van alle waarden die zijn vastgelegd in het aggregatie-interval
+- **Count** : het aantal metingen dat over het aggregatie-interval is vastgelegd. Houd er rekening mee dat **Count** gelijk is aan **Sum** in gevallen waarin de metrische gegevens altijd worden vastgelegd met de waarde 1. Dit is gebruikelijk wanneer de metrische gegevens het aantal afzonderlijke gebeurtenissen bijhouden, en elke meting vertegenwoordigt één gebeurtenis (dat wil zeggen dat de code een metrische record afrondt wanneer een nieuwe aanvraag binnenkomt)
+- **Gemiddeld** : het gemiddelde van de metrische waarden die zijn vastgelegd in het aggregatie-interval
+- **Min** -de kleinste waarde die is vastgelegd tijdens het aggregatie-interval
+- **Max** : de grootste waarde die over het aggregatie-interval is vastgelegd
 
 ## <a name="apply-filters-to-charts"></a>Filters toep assen op grafieken
 

@@ -3,12 +3,12 @@ title: Java-toepassingen bewaken op elke omgeving-Azure Monitor Application Insi
 description: Bewaking van toepassings prestaties voor Java-toepassingen die worden uitgevoerd in een wille keurige omgeving zonder de app te instrumenteren. Gedistribueerde tracering en toepassings toewijzing.
 ms.topic: conceptual
 ms.date: 03/29/2020
-ms.openlocfilehash: b9c1a52051e63beee9a784714a7bb1a6a79e8759
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: HT
+ms.openlocfilehash: 591cfad0f4719595835f212b9205354aad7cb9e8
+ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81687720"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82508068"
 ---
 # <a name="java-codeless-application-monitoring-azure-monitor-application-insights---public-preview"></a>Bewaking van Java-toepassingen Azure Monitor Application Insights-open bare preview-versie
 
@@ -24,11 +24,11 @@ U kunt nog steeds aangepaste telemetrie verzenden vanuit uw toepassing. De 3,0-a
 
 **1. de agent downloaden**
 
-[Applicationinsights-agent-3.0.0-Preview. 3. jar](https://github.com/microsoft/ApplicationInsights-Java/releases/download/3.0.0-PREVIEW.3/applicationinsights-agent-3.0.0-PREVIEW.3.jar) downloaden
+[Applicationinsights-agent-3.0.0-Preview. 4. jar](https://github.com/microsoft/ApplicationInsights-Java/releases/download/3.0.0-PREVIEW.4/applicationinsights-agent-3.0.0-PREVIEW.4.jar) downloaden
 
 **2. Wijs de JVM naar de agent**
 
-Toevoegen `-javaagent:path/to/applicationinsights-agent-3.0.0-PREVIEW.3.jar` aan de JVM-argumenten van uw toepassing
+Toevoegen `-javaagent:path/to/applicationinsights-agent-3.0.0-PREVIEW.4.jar` aan de JVM-argumenten van uw toepassing
 
 Typische argumenten voor JVM `-Xmx512m` zijn `-XX:+UseG1GC`onder andere en. Als u weet waar u deze toevoegt, weet u dus al waar u dit kunt toevoegen.
 
@@ -44,7 +44,7 @@ Wijs de agent naar uw Application Insights-bron, door een omgevings variabele in
 APPLICATIONINSIGHTS_CONNECTION_STRING=InstrumentationKey=00000000-0000-0000-0000-000000000000
 ```
 
-U kunt ook een configuratie bestand maken `ApplicationInsights.json`met de naam en dit in dezelfde map plaatsen `applicationinsights-agent-3.0.0-PREVIEW.3.jar`als met de volgende inhoud:
+U kunt ook een configuratie bestand maken `ApplicationInsights.json`met de naam en dit in dezelfde map plaatsen `applicationinsights-agent-3.0.0-PREVIEW.4.jar`als met de volgende inhoud:
 
 ```json
 {
@@ -117,7 +117,7 @@ Bekijk de Details voor de [open bare preview van 3,0: configuratie opties](https
 
 ### <a name="metrics"></a>Metrische gegevens
 
-* Micrometer
+* Micrometer (met inbegrip van gegevens over de veer boot-klep)
 * Metrische gegevens van JMX
 
 ## <a name="sending-custom-telemetry-from-your-application"></a>Aangepaste telemetrie van uw toepassing verzenden

@@ -1,7 +1,7 @@
 ---
-title: ADFS toevoegen als SAML-identiteitsprovider met behulp van aangepast beleid
+title: ADFS toevoegen als een SAML-ID-provider met behulp van aangepast beleid
 titleSuffix: Azure AD B2C
-description: ADFS 2016 instellen met het SAML-protocol en het aangepaste beleid in Azure Active Directory B2C
+description: ADFS 2016 instellen met het SAML-protocol en aangepaste beleids regels in Azure Active Directory B2C
 services: active-directory-b2c
 author: msmimart
 manager: celestedg
@@ -11,48 +11,48 @@ ms.topic: conceptual
 ms.date: 02/27/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 000f63ef5f73e77eb22fb539fc6736b929ac6bcc
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.openlocfilehash: 12845f09ac2eb2342cdb1ab82b703ebd3a67c706
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81451564"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82229726"
 ---
-# <a name="add-adfs-as-a-saml-identity-provider-using-custom-policies-in-azure-active-directory-b2c"></a>ADFS toevoegen als SAML-identiteitsprovider met aangepaste beleidsregels in Azure Active Directory B2C
+# <a name="add-adfs-as-a-saml-identity-provider-using-custom-policies-in-azure-active-directory-b2c"></a>Voeg ADFS toe als een SAML-ID-provider met behulp van aangepast beleid in Azure Active Directory B2C
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-In dit artikel ziet u hoe u aanmelding voor een ADFS-gebruikersaccount inschakelt met behulp van [aangepast beleid](custom-policy-overview.md) in Azure Active Directory B2C (Azure AD B2C). U schakelt aanmelden in door een [SAML-technisch profiel](saml-technical-profile.md) toe te voegen aan een aangepast beleid.
+In dit artikel wordt beschreven hoe u aanmelden voor een AD FS-gebruikers account inschakelt met [aangepaste beleids regels](custom-policy-overview.md) in Azure Active Directory B2C (Azure AD B2C). U schakelt aanmelden in door een SAML- [identiteits provider technisch profiel](saml-identity-provider-technical-profile.md) toe te voegen aan een aangepast beleid.
 
 ## <a name="prerequisites"></a>Vereisten
 
-- Voer de stappen uit in [Aan de slag met aangepast beleid in Azure Active Directory B2C](custom-policy-get-started.md).
-- Zorg ervoor dat u toegang hebt tot een certificaat .pfx-bestand met een privésleutel. U uw eigen ondertekende certificaat genereren en uploaden naar Azure AD B2C. Azure AD B2C gebruikt dit certificaat om het SAML-verzoek te ondertekenen dat naar uw SAML-identiteitsprovider is verzonden.
-- Om het wachtwoord van het PFX-bestand te accepteren, moet het wachtwoord worden versleuteld met de optie TripleDES-SHA1 in Windows Certificate Store Export utility in tegenstelling tot AES256-SHA256.
+- Voer de stappen in aan de [slag met aangepast beleid in azure Active Directory B2C](custom-policy-get-started.md).
+- Zorg ervoor dat u toegang hebt tot een pfx-bestand van het certificaat met een persoonlijke sleutel. U kunt een eigen ondertekend certificaat genereren en dit uploaden naar Azure AD B2C. Azure AD B2C gebruikt dit certificaat voor het ondertekenen van de SAML-aanvraag die is verzonden naar uw SAML-ID-provider.
+- Om Azure het wacht woord voor het pfx-bestand te accepteren, moet het wacht woord worden versleuteld met de optie TripleDES-SHA1 in het export hulpprogramma voor Windows-certificaat archief in plaats van AES256-SHA256.
 
-## <a name="create-a-policy-key"></a>Een beleidssleutel maken
+## <a name="create-a-policy-key"></a>Een beleids sleutel maken
 
-U moet uw certificaat opslaan in uw Azure AD B2C-tenant.
+U moet uw certificaat opslaan in uw Azure AD B2C-Tenant.
 
 1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
-2. Zorg ervoor dat u de map gebruikt die uw Azure AD B2C-tenant bevat. Selecteer het **filter Directory + abonnement** in het bovenste menu en kies de map met uw tenant.
+2. Zorg ervoor dat u de map gebruikt die uw Azure AD B2C-Tenant bevat. Selecteer het filter **Directory + abonnement** in het bovenste menu en kies de map die uw Tenant bevat.
 3. Kies **Alle services** linksboven in de Azure Portal, zoek **Azure AD B2C** en selecteer deze.
-4. Selecteer op de pagina Overzicht de optie **Identity Experience Framework**.
-5. Selecteer **Beleidssleutels** en selecteer **Vervolgens Toevoegen**.
-6. Kies **Options**voor `Upload`Opties .
-7. Voer een **naam** in voor de beleidssleutel. Bijvoorbeeld `SamlCert`. Het voorvoegsel `B2C_1A_` wordt automatisch toegevoegd aan de naam van uw sleutel.
-8. Blader naar en selecteer uw certificaat .pfx-bestand met de privésleutel.
-9. Klik **op Maken**.
+4. Selecteer op de pagina overzicht **identiteits ervaring-Framework**.
+5. Selecteer **beleids sleutels** en selecteer vervolgens **toevoegen**.
+6. Kies **Options** `Upload`voor opties.
+7. Voer een **naam** in voor de beleids sleutel. Bijvoorbeeld `SamlCert`. Het voor `B2C_1A_` voegsel wordt automatisch toegevoegd aan de naam van uw sleutel.
+8. Blader naar en selecteer het pfx-bestand van het certificaat met de persoonlijke sleutel.
+9. Klik op **maken**.
 
-## <a name="add-a-claims-provider"></a>Een claimprovider toevoegen
+## <a name="add-a-claims-provider"></a>Een claim provider toevoegen
 
-Als u wilt dat gebruikers zich aanmelden met een ADFS-account, moet u het account definiëren als een claimprovider waarmee Azure AD B2C via een eindpunt kan communiceren. Het eindpunt biedt een reeks claims die worden gebruikt door Azure AD B2C om te controleren of een specifieke gebruiker is geverifieerd.
+Als u wilt dat gebruikers zich aanmelden met een ADFS-account, moet u het account definiëren als een claim provider waarmee Azure AD B2C met behulp van een eind punt kunnen communiceren. Het eind punt biedt een set claims die wordt gebruikt door Azure AD B2C om te controleren of een specifieke gebruiker is geverifieerd.
 
-U een ADFS-account definiëren als claimprovider door het toe te voegen aan het element **ClaimsProviders** in het uitbreidingsbestand van uw beleid. Zie voor meer informatie [een SAML-technisch profiel definiëren.](saml-technical-profile.md)
+U kunt een ADFS-account definiëren als een claim provider door deze toe te voegen aan het **ClaimsProviders** -element in het extensie bestand van uw beleid. Zie [het technische profiel van een SAML-identiteits provider definiëren](saml-identity-provider-technical-profile.md)voor meer informatie.
 
-1. Open de *TrustFrameworkExtensions.xml*.
-1. Zoek het element **Claimproviders.** Als het niet bestaat, voeg het onder het hoofdelement.
-1. Voeg als volgt een nieuwe **ClaimProvider** toe:
+1. Open *TrustFrameworkExtensions. XML*.
+1. Zoek het element **ClaimsProviders** . Als deze niet bestaat, voegt u deze toe onder het hoofd element.
+1. Voeg als volgt een nieuwe **ClaimsProvider** toe:
 
     ```xml
     <ClaimsProvider>
@@ -93,9 +93,9 @@ U een ADFS-account definiëren als claimprovider door het toe te voegen aan het 
     </ClaimsProvider>
     ```
 
-1. Vervang `your-ADFS-domain` de naam van uw ADFS-domein en vervang de waarde van de **identiteitsclaim Van Provider** door uw DNS (willekeurige waarde die uw domein aangeeft).
+1. Vervang `your-ADFS-domain` door de naam van het ADFS-domein en vervang de waarde van de **Identity provider** -uitvoer claim door uw DNS (wille keurige waarde die uw domein aangeeft).
 
-1. Zoek `<ClaimsProviders>` de sectie en voeg het volgende XML-fragment toe. Als uw beleid `SM-Saml-idp` al het technische profiel bevat, gaat u naar de volgende stap. Zie voor meer informatie [het beheer van eenmalige aanmeldingssessie](custom-policy-reference-sso.md).
+1. Zoek de `<ClaimsProviders>` sectie en voeg het volgende XML-fragment toe. Als uw beleid al het `SM-Saml-idp` technische profiel bevat, gaat u verder met de volgende stap. Zie [sessie beheer voor eenmalige aanmelding](custom-policy-reference-sso.md)voor meer informatie.
 
     ```XML
     <ClaimsProvider>
@@ -115,58 +115,58 @@ U een ADFS-account definiëren als claimprovider door het toe te voegen aan het 
 
 1. Sla het bestand op.
 
-### <a name="upload-the-extension-file-for-verification"></a>Het extensiebestand uploaden ter verificatie
+### <a name="upload-the-extension-file-for-verification"></a>Upload het extensie bestand voor verificatie
 
-U hebt uw beleid inmiddels zo geconfigureerd dat Azure AD B2C weet hoe u met adfs-account moet communiceren. Probeer het extensiebestand van uw beleid te uploaden om te bevestigen dat het tot nu toe geen problemen heeft.
+Nu hebt u uw beleid zodanig geconfigureerd dat Azure AD B2C weet hoe u kunt communiceren met ADFS-account. Upload het extensie bestand van uw beleid alleen om te bevestigen dat er tot nu toe geen problemen zijn.
 
-1. Selecteer Op de pagina **Aangepast beleid** in uw Azure AD B2C-tenant de optie **Beleid uploaden**.
-2. Het **beleid overschrijven inschakelen als het bestaat,** en blader naar en selecteer het bestand *TrustFrameworkExtensions.xml.*
+1. Selecteer op de pagina **aangepaste beleids regels** in uw Azure AD B2C-Tenant de optie **beleid uploaden**.
+2. Schakel **het beleid overschrijven als dit bestaat**in en selecteer vervolgens het *TrustFrameworkExtensions. XML-* bestand.
 3. Klik op **Uploaden**.
 
 > [!NOTE]
-> De Visual Studio-code B2C-extensie gebruikt 'socialIdpUserId'. Voor ADFS is ook een sociaal beleid vereist.
+> De B2C-extensie van Visual Studio code maakt gebruik van ' socialIdpUserId '. Er is ook een sociaal beleid vereist voor ADFS.
 >
 
-## <a name="register-the-claims-provider"></a>Registreer de schadeprovider
+## <a name="register-the-claims-provider"></a>De claim provider registreren
 
-Op dit moment is de identiteitsprovider ingesteld, maar deze is niet beschikbaar in een van de aanmeldings- of aanmeldingsschermen. Als u deze beschikbaar wilt maken, maakt u een duplicaat van een bestaande sjabloongebruikersreis en wijzigt u deze vervolgens zodat deze ook de ADFS-identiteitsprovider heeft.
+Op dit moment is de ID-provider ingesteld, maar is deze niet beschikbaar in de beschik bare registratie-of aanmeldings schermen. Om het beschikbaar te maken, maakt u een kopie van een bestaande sjabloon gebruiker en wijzigt u deze zo dat deze ook de ADFS-ID-provider heeft.
 
-1. Open het bestand *TrustFrameworkBase.xml* vanuit het startpakket.
-2. De volledige inhoud van het **UserJourney-element,** dat het element UserJourney bevat, zoeken en kopiëren. `Id="SignUpOrSignIn"`
-3. Open het *element TrustFrameworkExtensions.xml* en zoek het element **UserJourneys.** Als het element niet bestaat, voegt u er een toe.
-4. Plak de volledige inhoud van het **Element UserJourney** die u als onderliggend element van het element **UserJourneys** hebt gekopieerd.
-5. Wijzig de naam van de id van de gebruikersreis. Bijvoorbeeld `SignUpSignInADFS`.
+1. Open het bestand *TrustFrameworkBase. XML* van het Starter Pack.
+2. Zoek en kopieer de volledige inhoud van het **UserJourney** -element dat `Id="SignUpOrSignIn"`bevat.
+3. Open *TrustFrameworkExtensions. XML* en zoek het element **UserJourneys** . Als het element niet bestaat, voegt u er een toe.
+4. Plak de volledige inhoud van het **UserJourney** -element dat u hebt gekopieerd als onderliggend element van het onderdeel **UserJourneys** .
+5. Wijzig de naam van de gebruikers traject. Bijvoorbeeld `SignUpSignInADFS`.
 
-### <a name="display-the-button"></a>De knop weergeven
+### <a name="display-the-button"></a>De knop weer geven
 
-Het **element ClaimsProviderSelection** is analoog aan een knop van identiteitsprovider op een aanmeldings- of aanmeldingsscherm. Als u een **ClaimProviderSelection-element** toevoegt voor een ADFS-account, wordt er een nieuwe knop weergegeven wanneer een gebruiker op de pagina landt.
+Het element **ClaimsProviderSelection** is vergelijkbaar met een id-provider knop op een registratie-of aanmeldings scherm. Als u een **ClaimsProviderSelection** -element toevoegt voor een ADFS-account, wordt een nieuwe knop weer gegeven wanneer een gebruiker op de pagina terechtkomt.
 
-1. Zoek het element **OrchestrationStep** dat is onderdeel van `Order="1"` het gebruikerstraject dat u hebt gemaakt.
-2. Voeg onder **ClaimsProviderSelections**het volgende element toe. Stel de waarde van **TargetClaimsExchangeId** in `ContosoExchange`op een geschikte waarde, bijvoorbeeld:
+1. Zoek het **OrchestrationStep** -element dat `Order="1"` is opgenomen in de gebruikers traject die u hebt gemaakt.
+2. Voeg onder **ClaimsProviderSelections**het volgende element toe. Stel de waarde van **TargetClaimsExchangeId** in op een geschikte waarde, bijvoorbeeld `ContosoExchange`:
 
     ```XML
     <ClaimsProviderSelection TargetClaimsExchangeId="ContosoExchange" />
     ```
 
-### <a name="link-the-button-to-an-action"></a>De knop koppelen aan een actie
+### <a name="link-the-button-to-an-action"></a>De knop aan een actie koppelen
 
-Nu je een knop hebt, moet je deze koppelen aan een actie. De actie is in dit geval dat Azure AD B2C communiceert met een ADFS-account om een token te ontvangen.
+Nu er een knop aanwezig is, moet u deze koppelen aan een actie. De actie in dit geval is voor Azure AD B2C om te communiceren met een ADFS-account om een token te ontvangen.
 
-1. Zoek de **OrchestrationStep** die in het gebruikerstraject is meegemaakt. `Order="2"`
-2. Voeg het volgende **Element ClaimsExchange** toe om ervoor te zorgen dat u dezelfde waarde gebruikt voor de id die u hebt gebruikt voor **TargetClaimsExchangeId:**
+1. Zoek de **OrchestrationStep** die in `Order="2"` de gebruikers reis zijn opgenomen.
+2. Voeg het volgende **ClaimsExchange** -element toe om ervoor te zorgen dat u dezelfde waarde gebruikt voor de id die u hebt gebruikt voor **TargetClaimsExchangeId**:
 
     ```XML
     <ClaimsExchange Id="ContosoExchange" TechnicalProfileReferenceId="Contoso-SAML2" />
     ```
 
-    Werk de waarde van **TechnicalProfileReferenceId bij** naar de ID van het technische profiel dat u eerder hebt gemaakt. Bijvoorbeeld `Contoso-SAML2`.
+    Werk de waarde van **TechnicalProfileReferenceId** bij naar de id van het technische profiel dat u eerder hebt gemaakt. Bijvoorbeeld `Contoso-SAML2`.
 
-3. Sla het *bestand TrustFrameworkExtensions.xml op* en upload het opnieuw voor verificatie.
+3. Sla het bestand *TrustFrameworkExtensions. XML* op en upload het opnieuw voor verificatie.
 
 
-## <a name="configure-an-adfs-relying-party-trust"></a>Een aDFS-vertrouwensrelatie van de relying-partij configureren
+## <a name="configure-an-adfs-relying-party-trust"></a>Een ADFS Relying Party-vertrouwens relatie configureren
 
-Als u ADFS wilt gebruiken als identiteitsprovider in Azure AD B2C, moet u een ADFS Relying Party-vertrouwensrelatie maken met de Azure AD B2C SAML-metagegevens. In het volgende voorbeeld wordt een URL-adres weergegeven voor de SAML-metagegevens van een technisch azure AD B2C-profiel:
+Als u ADFS als een id-provider in Azure AD B2C wilt gebruiken, moet u een AD FS-Relying Party vertrouwens relatie met de Azure AD B2C SAML-meta gegevens maken. In het volgende voor beeld ziet u een URL-adres naar de SAML-meta gegevens van een Azure AD B2C technisch profiel:
 
 ```
 https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/your-policy/samlp/metadata?idptp=your-technical-profile
@@ -174,52 +174,52 @@ https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/your-poli
 
 Vervang de volgende waarden:
 
-- **uw huurder** met uw tenantnaam, zoals your-tenant.onmicrosoft.com.
-- **uw polis** met uw polisnaam. Bijvoorbeeld, B2C_1A_signup_signin_adfs.
-- **uw-technisch-profiel** met de naam van uw SAML-identiteitsprovider technisch profiel. Bijvoorbeeld Contoso-SAML2.
+- **uw-Tenant** met de naam van uw Tenant, zoals your-Tenant.onmicrosoft.com.
+- **uw-beleid** met de naam van uw beleid. Bijvoorbeeld B2C_1A_signup_signin_adfs.
+- **uw technische profiel** met de naam van uw technische profiel voor de SAML-identiteits provider. Bijvoorbeeld contoso-SAML2.
 
-Open een browser en navigeer naar de URL. Zorg ervoor dat u de juiste URL typt en dat u toegang hebt tot het XML-metagegevensbestand. Als u een nieuwe vertrouwensrelatie van relying party wilt toevoegen door de module ADFS-beheer te gebruiken en de instellingen handmatig te configureren, voert u de volgende procedure uit op een federatieserver. Lidmaatschap **van beheerders** of equivalent op de lokale computer is het minimum dat nodig is om deze procedure te voltooien.
+Open een browser en navigeer naar de URL. Zorg ervoor dat u de juiste URL typt en dat u toegang hebt tot het XML-bestand met meta gegevens. Als u een nieuwe Relying Party-vertrouwens relatie wilt toevoegen met behulp van de AD FS-beheer module en de instellingen hand matig wilt configureren, voert u de volgende procedure uit op een Federatie server. Lidmaatschap van **Administrators** of gelijkwaardig op de lokale computer is de minimale vereiste om deze procedure te volt ooien.
 
-1. Selecteer in Serverbeheer **Extra**en selecteer **Vervolgens ADFS-beheer**.
-2. Selecteer **Vertrouwensrelatie van relying party toevoegen**.
-3. Kies **op** de pagina Welkom **de optie Claims bewust**en klik op **Start**.
-4. Selecteer op de pagina **Gegevensbron selecteren** de optie **Gegevens importeren over de relying party die online of op een lokaal netwerk publiceert,** geef uw URL van Azure AD B2C-metagegevens op en klik vervolgens op **Volgende**.
-5. Voer op de pagina **Weergavenaam opgeven** een **weergavenaam**in onder **Notities,** voer een beschrijving in voor deze vertrouwensrelatie van deze relying party en klik op **Volgende**.
-6. Selecteer op de pagina **Beleid voor toegangsbeheer** kiezen een beleid en klik op **Volgende**.
-7. Controleer op de pagina **Vertrouwensrelatie klaar om toe te voegen** en klik op **Volgende** om vertrouwensgegevens van uw relying party op te slaan.
-8. Klik op de pagina **Voltooien** op **Sluiten**, in deze actie wordt automatisch het dialoogvenster **Claimregels bewerken** weergegeven.
-9. Selecteer **Regel toevoegen**.
-10. Selecteer **ldap-kenmerken verzenden als claims**in **de sjabloon Claimregel**.
-11. Geef een **naam van de claimregel**op . Selecteer voor het **kenmerkarchief** **Active Directory selecteren,** voeg de volgende claims toe en klik vervolgens op **Voltooien** en **OK**.
+1. Selecteer in Serverbeheer **extra**en selecteer vervolgens ADFS- **beheer**.
+2. Selecteer **vertrouwens relatie van Relying Party toevoegen**.
+3. Kies op de pagina **Welkom** de optie **claims herkennen**en klik vervolgens op **starten**.
+4. Selecteer op de pagina **gegevens bron selecteren** de optie **gegevens importeren over de relying party online publiceren of op een lokaal netwerk**, geef uw Azure AD B2C meta gegevens-URL op en klik op **volgende**.
+5. Voer op de pagina **weergave naam opgeven** een **weergave naam**in, onder **notities**, voer een beschrijving in voor deze Relying Party-vertrouwens relatie en klik vervolgens op **volgende**.
+6. Selecteer op de pagina **Access Control beleid kiezen** een beleid en klik vervolgens op **volgende**.
+7. Controleer de instellingen op de pagina **gereed om een vertrouwens relatie toe te voegen** en klik vervolgens op **volgende** om uw Relying Party vertrouwens gegevens op te slaan.
+8. Klik op de pagina **volt ooien** op **sluiten**. met deze actie wordt automatisch het dialoog venster **claim regels bewerken** weer gegeven.
+9. Selecteer **regel toevoegen**.
+10. Selecteer in **claim regel sjabloon** **LDAP-kenmerken als claims verzenden**.
+11. Geef een **claim regel naam**op. Selecteer voor het **kenmerk archief** **Active Directory selecteren**, voeg de volgende claims toe en klik vervolgens op **volt ooien** en **OK**.
 
-    | LDAP-kenmerk | Type uitgaande claim |
+    | LDAP-kenmerk | Uitgaand claim type |
     | -------------- | ------------------- |
     | Principal-naam van gebruiker | userPrincipalName |
     | Achternaam | family_name |
-    | Given-Name | given_name |
-    | E-mailadres | e-mail |
-    | Weergavenaam | name |
+    | Opgegeven naam | given_name |
+    | E-mail adres | e-mail |
+    | Weergave naam | name |
 
-    Houd er rekening mee dat deze namen niet worden weergegeven in de vervolgkeuzelijst van het uitgaande claimtype. Je moet ze handmatig intypen. (De dropdown is eigenlijk bewerkbaar).
+    Houd er rekening mee dat deze namen niet worden weer gegeven in de vervolg keuzelijst uitgaand claim type. U moet deze hand matig invoeren in. (De vervolg keuzelijst kan feitelijk worden bewerkt).
 
-12.  Op basis van uw certificaattype moet u mogelijk het HASH-algoritme instellen. Selecteer op het eigenschappenvenster relying party trust (B2C Demo) het `SHA-256`tabblad **Geavanceerd** en wijzig het **beveiligde hash-algoritme** in en klik op **Ok**.
-13. Selecteer in Serverbeheer **Extra**en selecteer **Vervolgens ADFS-beheer**.
-14. Selecteer de vertrouwensrelatie van de relying party die u hebt gemaakt, selecteer **Bijwerken in federatiemetagegevens**en klik op **Bijwerken**.
+12.  Op basis van uw certificaat type moet u mogelijk het HASH-algoritme instellen. Selecteer in het venster Eigenschappen van Relying Party Trust (B2C demonstratie) het tabblad **Geavanceerd** en wijzig het **algoritme voor beveiligde hashes** in `SHA-256`en klik op **OK**.
+13. Selecteer in Serverbeheer **extra**en selecteer vervolgens ADFS- **beheer**.
+14. Selecteer de Relying Party-vertrouwens relatie die u hebt gemaakt, selecteer **bijwerken uit federatieve meta gegevens**en klik vervolgens op **bijwerken**.
 
 ## <a name="create-an-azure-ad-b2c-application"></a>Een Azure AD B2C-toepassing maken
 
-Communicatie met Azure AD B2C vindt plaats via een toepassing die u registreert in uw B2C-tenant. In deze sectie worden optionele stappen weergegeven die u voltooien om een testtoepassing te maken als u dit nog niet hebt gedaan.
+Communicatie met Azure AD B2C vindt plaats via een toepassing die u registreert in uw B2C-Tenant. In deze sectie vindt u optionele stappen die u kunt uitvoeren om een test toepassing te maken als u dit nog niet hebt gedaan.
 
 [!INCLUDE [active-directory-b2c-appreg-idp](../../includes/active-directory-b2c-appreg-idp.md)]
 
-### <a name="update-and-test-the-relying-party-file"></a>Het bestand van de relying party bijwerken en testen
+### <a name="update-and-test-the-relying-party-file"></a>Het Relying Party bestand bijwerken en testen
 
-Werk het RP-bestand (relying party) bij waarmee u de gebruikersreis initieert die u hebt gemaakt.
+Werk het Relying Party (RP)-bestand bij waarmee de door u gemaakte gebruikers traject wordt gestart.
 
-1. Maak een kopie van *SignUpOrSignIn.xml* in uw werkmap en wijzig de naam ervan. Wijzig de naam bijvoorbeeld in *SignUpSignInADFS.xml*.
-2. Open het nieuwe bestand en werk de waarde van het kenmerk **PolicyId** voor **TrustFrameworkPolicy** bij met een unieke waarde. Bijvoorbeeld `SignUpSignInADFS`.
-3. Werk de waarde van **PublicPolicyUri bij** met de URI voor het beleid. Bijvoorbeeld,`http://contoso.com/B2C_1A_signup_signin_adfs`
-4. Werk de waarde van het kenmerk **ReferenceId** bij in **DefaultUserJourney** zodat deze overeenkomt met de id van het nieuwe gebruikerstraject dat u hebt gemaakt (SignUpSignInADFS).
-5. Sla uw wijzigingen op, upload het bestand en selecteer vervolgens het nieuwe beleid in de lijst.
-6. Controleer of de Azure AD B2C-toepassing die u hebt gemaakt, is geselecteerd in het veld **Toepassing selecteren** en test deze door nu op **Uitvoeren**te klikken .
+1. Maak een kopie van *SignUpOrSignIn. XML* in uw werkmap en wijzig de naam ervan. Wijzig de naam bijvoorbeeld in *SignUpSignInADFS. XML*.
+2. Open het nieuwe bestand en werk de waarde van het kenmerk **PolicyId** voor **TrustFrameworkPolicy** met een unieke waarde bij. Bijvoorbeeld `SignUpSignInADFS`.
+3. Werk de waarde van **PublicPolicyUri** bij met de URI voor het beleid. Bijvoorbeeld:`http://contoso.com/B2C_1A_signup_signin_adfs`
+4. Werk de waarde van het kenmerk **ReferenceId** in **DefaultUserJourney** bij zodat dit overeenkomt met de id van de nieuwe gebruikers traject die u hebt gemaakt (SignUpSignInADFS).
+5. Sla de wijzigingen op, upload het bestand en selecteer vervolgens het nieuwe beleid in de lijst.
+6. Zorg ervoor dat Azure AD B2C toepassing die u hebt gemaakt, is geselecteerd in het veld **toepassing selecteren** en test deze door op **nu uitvoeren**te klikken.
 

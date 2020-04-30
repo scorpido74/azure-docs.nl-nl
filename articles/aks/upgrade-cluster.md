@@ -1,77 +1,77 @@
 ---
 title: Een AKS-cluster (Azure Kubernetes Service) upgraden
-description: Meer informatie over het upgraden van een AKS-cluster (Azure Kubernetes Service) om de nieuwste functies en beveiligingsupdates te ontvangen.
+description: Meer informatie over hoe u een AKS-cluster (Azure Kubernetes service) bijwerkt om de nieuwste functies en beveiligings updates te downloaden.
 services: container-service
 ms.topic: article
 ms.date: 05/31/2019
-ms.openlocfilehash: 183e0a85f65d24dc7133307391931bea754a456d
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.openlocfilehash: 7e9a47b7bda4cdb0ff6f1983bc884f7441a26d9b
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80632612"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82207969"
 ---
 # <a name="upgrade-an-azure-kubernetes-service-aks-cluster"></a>Een AKS-cluster (Azure Kubernetes Service) upgraden
 
-Als onderdeel van de levenscyclus van een AKS-cluster moet u vaak upgraden naar de nieuwste Kubernetes-versie. Het is belangrijk dat u de nieuwste Kubernetes-beveiligingsreleases toepast of een upgrade uitvoert om de nieuwste functies te krijgen. In dit artikel ziet u hoe u de hoofdcomponenten of een enkele standaardknooppuntgroep in een AKS-cluster upgraden.
+Als onderdeel van de levens cyclus van een AKS-cluster moet u vaak een upgrade uitvoeren naar de nieuwste versie van Kubernetes. Het is belang rijk dat u de meest recente Kubernetes-beveiligings releases toepast of een upgrade uitvoert om de nieuwste functies op te halen. In dit artikel wordt beschreven hoe u de hoofd onderdelen of een enkele standaard knooppunt groep in een AKS-cluster bijwerkt.
 
-Zie [Een knooppuntgroep in AKS][nodepool-upgrade]upgraden voor AKS-clusters die meerdere knooppuntgroepen of Windows Server-knooppunten gebruiken (momenteel in preview in AKS.
+Zie [een knooppunt groep bijwerken in AKS][nodepool-upgrade]voor AKS-clusters die gebruikmaken van meerdere knooppunt groepen.
 
 ## <a name="before-you-begin"></a>Voordat u begint
 
-In dit artikel moet u de Azure CLI-versie 2.0.65 of hoger uitvoeren. Voer `az --version` uit om de versie te bekijken. Als u Azure CLI 2.0 wilt installeren of upgraden, raadpleegt u [Azure CLI 2.0 installeren][azure-cli-install].
+Voor dit artikel moet u de Azure CLI-versie 2.0.65 of hoger uitvoeren. Voer `az --version` uit om de versie te bekijken. Als u Azure CLI 2.0 wilt installeren of upgraden, raadpleegt u [Azure CLI 2.0 installeren][azure-cli-install].
 
 > [!WARNING]
-> Een AKS-clusterupgrade activeert een cordon en drain van uw knooppunten. Als er een laag rekenquotum beschikbaar is, kan de upgrade mislukken. Zie [verhoging van de quota](https://docs.microsoft.com/azure/azure-portal/supportability/resource-manager-core-quotas-request) voor meer informatie.
-> Als u uw eigen cluster autoscaler implementatie uit te schakelen (u schalen naar nul replica's) tijdens de upgrade als er een kans is dat het zal interfereren met het upgradeproces. Managed autoscaler verwerkt dit automatisch. 
+> Een AKS-cluster upgrade activeert een cordon en afvoer van uw knoop punten. Als er een beperkt reken quotum beschikbaar is, kan de upgrade mislukken. Zie [quota verg Roten](https://docs.microsoft.com/azure/azure-portal/supportability/resource-manager-core-quotas-request) voor meer informatie.
+> Als u uw eigen implementatie van de automatische schaal van het cluster uitvoert, schakelt u deze uit (u kunt deze schalen naar nul replica's) tijdens de upgrade, omdat er sprake is van een kans dat het upgrade proces wordt verstoord. Met Managed automatische schalen wordt dit automatisch afgehandeld. 
 
-## <a name="check-for-available-aks-cluster-upgrades"></a>Controleren op beschikbare AKS-clusterupgrades
+## <a name="check-for-available-aks-cluster-upgrades"></a>Controleren op beschik bare AKS-cluster upgrades
 
-Om te controleren welke Kubernetes releases beschikbaar zijn voor uw cluster, gebruik maken van de [az aks get-upgrades][az-aks-get-upgrades] commando. In het volgende voorbeeld wordt gecontroleerd op beschikbare upgrades van het cluster met de naam *myAKSCluster* in de brongroep *myResourceGroup:*
+Als u wilt controleren welke Kubernetes-releases beschikbaar zijn voor uw cluster, gebruikt u de opdracht [AZ AKS Get-upgrades][az-aks-get-upgrades] . In het volgende voor beeld wordt gecontroleerd op beschik bare upgrades voor het cluster met de naam *myAKSCluster* in de resource groep met de naam *myResourceGroup*:
 
 ```azurecli-interactive
 az aks get-upgrades --resource-group myResourceGroup --name myAKSCluster --output table
 ```
 
 > [!NOTE]
-> Wanneer u een AKS-cluster upgradet, kunnen kleine versies van Kubernetes niet worden overgeslagen. Upgrades tussen *1.12.x* -> *1.13.x* of *1.13.x* -> *1.14.x* zijn bijvoorbeeld toegestaan, maar *1.12.x* -> *1.14.x* niet.
+> Wanneer u een upgrade uitvoert voor een AKS-cluster, kunnen secundaire versies van Kubernetes niet worden overgeslagen. Bijvoorbeeld: upgrades tussen *1.12. x* -> *1.13. x* of *1.13. x* -> *1.14. x* zijn toegestaan, maar *1.12. x* -> *1.14. x* is niet.
 >
-> Upgraden, van *1.12.x* -> *1.14.x*, eerste upgrade van *1.12.x* -> *1.13.x*, en vervolgens upgraden van *1.13.x* -> *1.14.x*.
+> Als u een upgrade wilt uitvoeren, van *1.12. x* -> *1.14. x*, moet u eerst een upgrade uitvoeren van *1.12. x* -> *1.13. x*en vervolgens een upgrade uitvoeren van *1.13. x* -> *1.14. x*.
 
-Uit de volgende voorbeelduitvoer blijkt dat het cluster kan worden geüpgraded naar versies *1.13.9* en *1.13.10:*
+In de volgende voorbeeld uitvoer ziet u dat het cluster kan worden bijgewerkt naar versies *1.13.9* en *1.13.10*:
 
 ```console
 Name     ResourceGroup     MasterVersion    NodePoolVersion    Upgrades
 -------  ----------------  ---------------  -----------------  ---------------
 default  myResourceGroup   1.12.8           1.12.8             1.13.9, 1.13.10
 ```
-Als er geen upgrade beschikbaar is, krijgt u het:
+Als er geen upgrade beschikbaar is, krijgt u het volgende:
 ```console
 ERROR: Table output unavailable. Use the --query option to specify an appropriate query. Use --debug for more info.
 ```
 
 ## <a name="upgrade-an-aks-cluster"></a>Een AKS-cluster upgraden
 
-Gebruik met een lijst met beschikbare versies voor uw AKS-cluster de [upgradeopdracht az aks][az-aks-upgrade] om te upgraden. Tijdens het upgradeproces voegt AKS een nieuw knooppunt toe aan het cluster dat de opgegeven Kubernetes-versie uitvoert, en vervolgens zorgvuldig een van de oude knooppunten [te cordonen en leeg][kubernetes-drain] te voeren om onderbreking van het uitvoeren van toepassingen te minimaliseren. Wanneer het nieuwe knooppunt wordt bevestigd als het uitvoeren van toepassingspods, wordt het oude knooppunt verwijderd. Dit proces wordt herhaald totdat alle knooppunten in het cluster zijn bijgewerkt.
+Met een lijst met beschik bare versies voor uw AKS-cluster gebruikt u de opdracht [AZ AKS upgrade][az-aks-upgrade] . Tijdens het upgrade proces voegt AKS een nieuw knoop punt toe aan het cluster waarop de opgegeven Kubernetes-versie wordt uitgevoerd. vervolgens wordt een van de oude knoop punten door [Cordon en][kubernetes-drain] vertraagd, zodat de onderbreking van de toepassingen tot een minimum wordt beperkt. Wanneer het nieuwe knoop punt is bevestigd als het uitvoeren van de toepassing Peul, wordt het oude knoop punt verwijderd. Dit proces wordt herhaald totdat alle knoop punten in het cluster zijn bijgewerkt.
 
-In het volgende voorbeeld wordt een cluster geopwaardeerd naar versie *1.13.10:*
+In het volgende voor beeld wordt een cluster bijgewerkt naar versie *1.13.10*:
 
 ```azurecli-interactive
 az aks upgrade --resource-group myResourceGroup --name myAKSCluster --kubernetes-version 1.13.10
 ```
 
-Het duurt een paar minuten om het cluster te upgraden, afhankelijk van het aantal knooppunten dat u hebt. 
+Het duurt enkele minuten om het cluster bij te werken, afhankelijk van het aantal knoop punten dat u hebt. 
 
 > [!NOTE]
-> Er is een totale toegestane tijd voor een clusterupgrade om te voltooien. Deze tijd wordt berekend door `10 minutes * total number of nodes in the cluster`het product van . In een cluster met 20 node moeten upgradebewerkingen bijvoorbeeld binnen 200 minuten slagen of wordt de bewerking mislukt om een niet-herstelbare clusterstatus te voorkomen. Als u wilt herstellen bij een upgradefout, probeert u de upgradebewerking opnieuw nadat de time-out is getroffen.
+> Er is een totale toegestane tijd voor het volt ooien van een cluster upgrade. Deze tijd wordt berekend door het product van `10 minutes * total number of nodes in the cluster`te nemen. Voor beeld: in een cluster met 20 knoop punten moeten upgrade bewerkingen in 200 minuten slagen of AKS de bewerking mislukken om een onherstelbare cluster status te voor komen. Als u het probleem wilt herstellen tijdens de upgrade, voert u de upgrade bewerking opnieuw uit nadat de time-out is bereikt.
 
-Gebruik de opdracht [az aks show][az-aks-show] om te bevestigen dat de upgrade succesvol is geweest:
+Als u wilt controleren of de upgrade is voltooid, gebruikt u de opdracht [AZ AKS show][az-aks-show] :
 
 ```azurecli-interactive
 az aks show --resource-group myResourceGroup --name myAKSCluster --output table
 ```
 
-Uit de volgende voorbeelduitvoer blijkt dat het cluster nu *1.13.10*draait:
+In de volgende voorbeeld uitvoer ziet u dat het cluster nu *1.13.10*uitvoert:
 
 ```json
 Name          Location    ResourceGroup    KubernetesVersion    ProvisioningState    Fqdn
@@ -81,10 +81,10 @@ myAKSCluster  eastus      myResourceGroup  1.13.10               Succeeded      
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In dit artikel ziet u hoe u een bestaand AKS-cluster upgraden. Zie de set zelfstudies voor meer informatie over het implementeren en beheren van AKS-clusters.
+In dit artikel wordt uitgelegd hoe u een bestaand AKS-cluster bijwerkt. Zie de set zelf studies voor meer informatie over het implementeren en beheren van AKS-clusters.
 
 > [!div class="nextstepaction"]
-> [AKS-zelfstudies][aks-tutorial-prepare-app]
+> [Zelf studies voor AKS][aks-tutorial-prepare-app]
 
 <!-- LINKS - external -->
 [kubernetes-drain]: https://kubernetes.io/docs/tasks/administer-cluster/safely-drain-node/

@@ -5,12 +5,12 @@ description: Meer informatie over het installeren en configureren van een NGINX 
 services: container-service
 ms.topic: article
 ms.date: 05/24/2019
-ms.openlocfilehash: 27b80b1f0b6728b5ad69edae51f0d42bfac351d0
-ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
-ms.translationtype: MT
+ms.openlocfilehash: f0a8f1f1e1b724745e69aef30e2e6404ff6a5484
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82145505"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82207357"
 ---
 # <a name="create-an-ingress-controller-with-a-static-public-ip-address-in-azure-kubernetes-service-aks"></a>Een ingangs controller maken met een statisch openbaar IP-adres in azure Kubernetes service (AKS)
 
@@ -56,7 +56,7 @@ U moet twee extra para meters door geven aan de helm-release, zodat de ingangs c
 1. Voeg de `--set controller.service.loadBalancerIP` para meter toe. Geef uw eigen open bare IP-adres op dat u in de vorige stap hebt gemaakt.
 1. Voeg de `--set controller.service.annotations."service\.beta\.kubernetes\.io/azure-dns-label-name"` para meter toe. Geef een DNS-naam label op dat moet worden toegepast op het open bare IP-adres dat in de vorige stap is gemaakt.
 
-De ingangscontroller moet ook worden gepland op een Linux-knooppunt. Windows Server-knoop punten (momenteel in de preview-versie van AKS) mogen de ingangs controller niet uitvoeren. Er wordt een knooppuntselector opgegeven met behulp van de parameter `--set nodeSelector` om de Kubernetes-planner te laten weten dat de NGINX-ingangscontroller moet worden uitgevoerd op een Linux-knooppunt.
+De ingangscontroller moet ook worden gepland op een Linux-knooppunt. Windows Server-knooppunten mogen de ingangscontroller niet uitvoeren. Er wordt een knooppuntselector opgegeven met behulp van de parameter `--set nodeSelector` om de Kubernetes-planner te laten weten dat de NGINX-ingangscontroller moet worden uitgevoerd op een Linux-knooppunt.
 
 > [!TIP]
 > In het volgende voor beeld wordt een Kubernetes-naam ruimte gemaakt voor de ingangs resources met de naam *ingress-Basic*. Geef waar nodig een naam ruimte op voor uw eigen omgeving. Als op uw AKS-cluster geen RBAC is ingeschakeld `--set rbac.create=false` , voegt u toe aan de helm-opdrachten.
@@ -285,7 +285,7 @@ certificate.cert-manager.io/tls-secret created
 
 ## <a name="test-the-ingress-configuration"></a>De ingangs configuratie testen
 
-Open een webbrowser naar de FQDN van uw Kubernetes ingress-controller, zoals *https://demo-aks-ingress.eastus.cloudapp.azure.com*.
+Open een webbrowser naar de FQDN van uw Kubernetes ingress-controller, zoals *`https://demo-aks-ingress.eastus.cloudapp.azure.com`*.
 
 Zoals deze voor beelden `letsencrypt-staging`worden gebruikt, wordt het uitgegeven TLS/SSL-certificaat niet vertrouwd door de browser. Accepteer de waarschuwing om door te gaan naar uw toepassing. In de certificaat informatie ziet u dat dit *valse Le-tussenliggend x1* -certificaat wordt uitgegeven door de code ring. Dit valse certificaat geeft `cert-manager` aan dat de aanvraag correct is verwerkt en dat er een certificaat van de provider is ontvangen:
 
@@ -299,7 +299,7 @@ De demo toepassing wordt weer gegeven in de webbrowser:
 
 ![Voor beeld van toepassing 1](media/ingress/app-one.png)
 
-Voeg nu het */Hello-World-Two* -pad toe aan de FQDN, *https://demo-aks-ingress.eastus.cloudapp.azure.com/hello-world-two*zoals. De tweede demo toepassing met de aangepaste titel wordt weer gegeven:
+Voeg nu het */Hello-World-Two* -pad toe aan de FQDN, *`https://demo-aks-ingress.eastus.cloudapp.azure.com/hello-world-two`* zoals. De tweede demo toepassing met de aangepaste titel wordt weer gegeven:
 
 ![Voor beeld van toepassing twee](media/ingress/app-two.png)
 

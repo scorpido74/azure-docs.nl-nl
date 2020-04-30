@@ -12,16 +12,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 10/03/2019
+ms.date: 04/28/2020
 ms.author: mimart
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 563c049bf3d1606e87db54e3b003dac987594610
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0355bb1c4255e6de4ed17d55097b7b22d6b37db6
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 04/28/2020
-ms.locfileid: "80154624"
+ms.locfileid: "82229898"
 ---
 # <a name="application-provisioning-in-quarantine-status"></a>Toepassing inrichten in quarantaine status
 
@@ -33,7 +33,7 @@ In quarantaine wordt de frequentie van incrementele cycli geleidelijk per dag ge
 
 Er zijn drie manieren om te controleren of een toepassing in quarantaine is geplaatst:
   
-- Ga in het Azure Portal naar **Azure Active Directory** > **bedrijfs toepassingen** > &lt;*toepassings naam*&gt; > **inrichten** en schuif naar de voortgangs balk onderaan.  
+- Ga in het Azure Portal naar **Azure Active Directory** > **bedrijfs toepassingen** > &lt;*toepassings naam*&gt; > **inrichten** en controleer de voortgangs balk voor een quarantaine bericht.   
 
   ![Status balk van de inrichting met de status van de quarantaine](./media/application-provisioning-quarantine-status/progress-bar-quarantined.png)
 
@@ -51,7 +51,13 @@ Er zijn drie manieren om te controleren of een toepassing in quarantaine is gepl
 
 ## <a name="why-is-my-application-in-quarantine"></a>Waarom wordt mijn toepassing in quarantaine geplaatst?
 
-Een Microsoft Graph aanvraag voor het ophalen van de status van de inrichtings taak bevat de volgende reden voor quarantaine:
+|Beschrijving|Aanbevolen actie|
+|---|---|
+|**Probleem met scim-naleving:** Er is een antwoord HTTP/404 niet gevonden geretourneerd in plaats van het verwachte HTTP/200 OK-antwoord. In dit geval heeft de Azure AD-inrichtings service een aanvraag ingediend bij de doel toepassing en heeft deze een onverwacht antwoord ontvangen.|Controleer de sectie beheerders referenties om te zien of de toepassing de Tenant-URL moet opgeven en zorg ervoor dat de URL juist is. Als er geen probleem wordt weer geven, neemt u contact op met de ontwikkelaar van de toepassing om te controleren of hun service SCIM-compatibel is. https://tools.ietf.org/html/rfc7644#section-3.4.2 |
+|**Ongeldige referenties:** Als er wordt geprobeerd toegang te verlenen tot de doel toepassing, is er een reactie ontvangen van de doel toepassing die aangeeft dat de ingevoerde referenties ongeldig zijn.|Ga naar de sectie beheerders referenties van de gebruikers interface van de inrichtings configuratie en autoriseer Access opnieuw met geldige referenties. Als de toepassing zich in de galerie bevindt, raadpleegt u de zelf studie over de configuratie van de toepassing voor aanvullende stappen die vereist zijn.|
+|**Dubbele rollen:** Rollen die zijn geïmporteerd uit bepaalde toepassingen, zoals Sales Force en Zendesk, moeten uniek zijn. |Navigeer naar het toepassings [manifest](https://docs.microsoft.com/azure/active-directory/develop/reference-app-manifest) in het Azure Portal en verwijder de dubbele rol.|
+
+ Een Microsoft Graph aanvraag voor het ophalen van de status van de inrichtings taak bevat de volgende reden voor quarantaine:
 
 - `EncounteredQuarantineException`geeft aan dat er ongeldige referenties zijn geleverd. De inrichtings service kan geen verbinding tot stand brengen tussen het bron systeem en het doel systeem.
 

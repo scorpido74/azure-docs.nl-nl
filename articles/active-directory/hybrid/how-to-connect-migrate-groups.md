@@ -1,5 +1,5 @@
 ---
-title: 'Azure AD Connect: groepen migreren van het ene forest naar het andere | Microsoft Documenten'
+title: 'Azure AD Connect: groepen migreren van het ene forest naar het andere'
 description: In dit artikel worden de stappen beschreven die nodig zijn om groepen van het ene forest naar het andere te migreren voor Azure AD Connect.
 services: active-directory
 author: billmath
@@ -11,29 +11,31 @@ ms.date: 04/02/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 602c60de392afbff18bc141605a936636e48dbfe
-ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
+ms.openlocfilehash: da2328674fd601f2e04684e8a9af1ae242ff6106
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81729690"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82229796"
 ---
 # <a name="migrate-groups-from-one-forest-to-another-for-azure-ad-connect"></a>Groepen migreren van het ene forest naar het andere voor Azure AD Connect
 
-In dit artikel worden de stappen beschreven die nodig zijn om groepen van het ene forest naar het andere te migreren, zodat de gemigreerde groepsobjecten overeenkomen met de bestaande objecten in de cloud.
+In dit artikel wordt beschreven hoe u groepen van het ene forest naar het andere migreert, zodat de gemigreerde groeps objecten overeenkomen met de bestaande objecten in de Cloud.
 
 ## <a name="prerequisites"></a>Vereisten
 
-- Azure AD Connect-versie 1.5.18.0 of hoger
-- Kenmerk Bronanker is`mS-DS-ConsistencyGuid`
+- Azure AD Connect versie 1.5.18.0 of hoger
+- Kenmerk bron anker ingesteld op`mS-DS-ConsistencyGuid`
 
-Vanaf versie 1.5.18.0 is Azure AD Connect begonnen `mS-DS-ConsistencyGuid` met het ondersteunen van het gebruik van groepen. Als `mS-DS-ConsistencyGuid` het kenmerk bronanker wordt gekozen en de waarde wordt ingevuld in `mS-DS-ConsistencyGuid` AD, gebruikt Azure AD Connect de waarde van de onveranderlijke id. Anders valt het terug `objectGUID`naar het gebruik . Houd er echter rekening **DOES NOT** mee dat Azure AD `mS-DS-ConsistencyGuid` Connect de waarde van het kenmerk in AD NIET terugschrijft.
+## <a name="migrate-groups"></a>Groepen migreren
 
-Tijdens een scenario voor het verplaatsen van een forestwaarin een groepsobject van het ene forest (bijvoorbeeld F1) naar een ander forest gaat (bijvoorbeeld F2), moeten we de `mS-DS-ConsistencyGuid` waarde (Als AANWEZIG) of `objectGUID` de waarde van het object in forest F1 naar het `mS-DS-ConsistencyGuid` kenmerk van het object in F2 kopiëren. 
+Vanaf versie 1.5.18.0 ondersteunt Azure AD Connect het gebruik van het `mS-DS-ConsistencyGuid` kenmerk voor groepen. Als u kiest `mS-DS-ConsistencyGuid` als bron anker kenmerk en de waarde wordt ingevuld in Active Directory, Azure AD Connect gebruikt de waarde van `mS-DS-ConsistencyGuid` als. `immutableId` Anders gaat u terug naar het gebruik `objectGUID`van. Maar houd er rekening mee dat Azure AD Connect de waarde niet naar `mS-DS-ConsistencyGuid` het kenmerk in Active Directory schrijft.
 
-Gebruik de volgende scripts als richtlijn om te zien hoe u één groep migreren van forest F1 naar forest F2. Gebruik dit gratis als richtlijn om de migratie voor meerdere groepen uit te brengen.
+Tijdens een cross-forest verplaatsen, wanneer een groeps object van het ene forest (F1) wordt verplaatst naar een ander forest (bijvoorbeeld F2), moet u ofwel de `mS-DS-ConsistencyGuid` waarde (als deze aanwezig is) of de `objectGUID` waarde van het object in forest F1 kopiëren naar `mS-DS-ConsistencyGuid` het kenmerk van het object in F2.
 
-Eerst krijgen we `objectGUID` `mS-DS-ConsistencyGuid` het en van de groep object in bos F1. Deze kenmerken worden geëxporteerd naar een CSV-bestand.
+Gebruik de volgende scripts als richt lijn voor meer informatie over het migreren van één groep van het ene forest naar het andere. U kunt deze scripts ook gebruiken als richt lijn voor de migratie van meerdere groepen. De scripts gebruiken de Forestnaam F1 voor het bron-forest en F2 voor de doel-forest.
+
+Eerst krijgen we het `objectGUID` en `mS-DS-ConsistencyGuid` het groeps object in forest F1. Deze kenmerken worden geëxporteerd naar een CSV-bestand.
 ```
 <#
 DESCRIPTION
@@ -41,7 +43,7 @@ DESCRIPTION
 This script will take DN of a group as input.
 It then copies the objectGUID and mS-DS-ConsistencyGuid values along with other attributes of the given group to a CSV file.
 
-This CSV file can then be used as input to Export-Group script
+This CSV file can then be used as input to the Export-Group script.
 #>
 Param(
        [ValidateNotNullOrEmpty()]
@@ -81,15 +83,15 @@ $results | Export-Csv "$outputCsv" -NoTypeInformation
 
 ```
 
-Vervolgens gebruiken we het CSV-bestand `mS-DS-ConsistencyGuid` voor gegenereerde uitvoer om het kenmerk op het doelobject in forest F2 te stempelen.
+Vervolgens gebruiken we het gegenereerde CSV-bestand voor uitvoer om `mS-DS-ConsistencyGuid` het kenmerk van het doel object in het F2 te stem pelen:
 
 
 ```
 <#
 DESCRIPTION
 ============
-This script will take DN of a group as input and the CSV file that was generated by Import-Group script
-It copies either the objectGUID or mS-DS-ConsistencyGuid value from CSV file to the given object.
+This script will take DN of a group as input and the CSV file that was generated by the Import-Group script.
+It copies either the objectGUID or the mS-DS-ConsistencyGuid value from the CSV file to the given object.
 
 #>
 Param(
@@ -123,4 +125,4 @@ Set-ADGroup -Identity $dn -Replace @{'mS-DS-ConsistencyGuid'=$targetGuid} -Error
 ```
 
 ## <a name="next-steps"></a>Volgende stappen
-Lees meer over het [integreren van uw on-premises identiteiten met Azure Active Directory](whatis-hybrid-identity.md).
+Meer informatie over [het integreren van uw on-premises identiteiten met Azure Active Directory](whatis-hybrid-identity.md).

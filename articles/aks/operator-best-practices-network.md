@@ -5,12 +5,12 @@ description: Meer informatie over de aanbevolen procedures voor cluster operator
 services: container-service
 ms.topic: conceptual
 ms.date: 12/10/2018
-ms.openlocfilehash: d887f084ae329be30579b3400b4dc6cfb22c64ca
-ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
+ms.openlocfilehash: 560a832821f5e5ff2fbbc2d66252945951d69511
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82145471"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82208054"
 ---
 # <a name="best-practices-for-network-connectivity-and-security-in-azure-kubernetes-service-aks"></a>Best practices voor netwerkverbinding en -beveiliging in Azure Kubernetes Service (AKS)
 
@@ -45,7 +45,7 @@ Wanneer u Azure CNI-netwerken gebruikt, bevindt de virtuele netwerk resource zic
 
 Zie [toegang tot andere Azure-resources delegeren][sp-delegation]voor meer informatie over delegering van AKS-Service-Principal. In plaats van een Service-Principal kunt u ook de door het systeem toegewezen beheerde identiteit voor machtigingen gebruiken. Zie [beheerde identiteiten gebruiken](use-managed-identity.md)voor meer informatie.
 
-Plan de adresbereiken voor de AKS-subnetten, aangezien elk knoop punt en pod zijn eigen IP-adres ontvangen. Het subnet moet groot genoeg zijn om IP-adressen op te geven voor elk knoop punt, elk van beide en netwerk bronnen die u implementeert. Elk AKS-cluster moet in een eigen subnet worden geplaatst. Om verbinding te kunnen maken met on-premises of peered netwerken in azure, kunt u geen IP-adresbereiken gebruiken die overlappen met bestaande netwerk bronnen. Er zijn standaard limieten voor het aantal peulen dat elke knoop punt wordt uitgevoerd met zowel kubenet als Azure CNI-netwerken. Voor het afhandelen van scale-out gebeurtenissen of cluster upgrades moet u ook extra IP-adressen beschikbaar voor gebruik in het toegewezen subnet. Deze extra adres ruimte is vooral belang rijk als u Windows Server-containers gebruikt (momenteel als preview-versie in AKS), omdat voor deze knooppunt groepen een upgrade moet worden uitgevoerd om de meest recente beveiligings patches toe te passen. Zie [een knooppunt groep bijwerken in AKS][nodepool-upgrade]voor meer informatie over Windows Server-knoop punten.
+Plan de adresbereiken voor de AKS-subnetten, aangezien elk knoop punt en pod zijn eigen IP-adres ontvangen. Het subnet moet groot genoeg zijn om IP-adressen op te geven voor elk knoop punt, elk van beide en netwerk bronnen die u implementeert. Elk AKS-cluster moet in een eigen subnet worden geplaatst. Om verbinding te kunnen maken met on-premises of peered netwerken in azure, kunt u geen IP-adresbereiken gebruiken die overlappen met bestaande netwerk bronnen. Er zijn standaard limieten voor het aantal peulen dat elke knoop punt wordt uitgevoerd met zowel kubenet als Azure CNI-netwerken. Voor het afhandelen van scale-out gebeurtenissen of cluster upgrades moet u ook extra IP-adressen beschikbaar voor gebruik in het toegewezen subnet. Deze extra adres ruimte is vooral belang rijk als u Windows Server-containers gebruikt, omdat voor deze knooppunt groepen een upgrade moet worden uitgevoerd om de meest recente beveiligings patches toe te passen. Zie [een knooppunt groep bijwerken in AKS][nodepool-upgrade]voor meer informatie over Windows Server-knoop punten.
 
 Zie [Azure cni-netwerken configureren in AKS][advanced-networking]voor het berekenen van het vereiste IP-adres.
 
@@ -99,7 +99,7 @@ spec:
 
 Een ingangs controller is een daemon die wordt uitgevoerd op een AKS-knoop punt en controleert op inkomende aanvragen. Verkeer wordt vervolgens gedistribueerd op basis van de regels die zijn gedefinieerd in de bron ingang. De meest voorkomende ingress-controller is gebaseerd op [NGINX]. AKS beperkt u niet tot een specifieke controller, zodat u andere controllers, zoals [Contour][contour], [HAProxy][haproxy]of [Traefik][traefik], kunt gebruiken.
 
-Ingangs controllers moeten worden gepland op een Linux-knoop punt. Windows Server-knoop punten (momenteel in de preview-versie van AKS) mogen de ingangs controller niet uitvoeren. Gebruik een knooppunt kiezer in uw YAML-manifest of helm-grafiek implementatie om aan te geven dat de resource moet worden uitgevoerd op een Linux-knoop punt. Zie [knooppunt selectie vakjes gebruiken om te bepalen waar peulingen worden gepland in AKS][concepts-node-selectors]voor meer informatie.
+Ingangs controllers moeten worden gepland op een Linux-knoop punt. Windows Server-knooppunten mogen de ingangscontroller niet uitvoeren. Gebruik een knooppunt kiezer in uw YAML-manifest of helm-grafiek implementatie om aan te geven dat de resource moet worden uitgevoerd op een Linux-knoop punt. Zie [knooppunt selectie vakjes gebruiken om te bepalen waar peulingen worden gepland in AKS][concepts-node-selectors]voor meer informatie.
 
 Er zijn veel scenario's voor inkomend verkeer, met inbegrip van de volgende hand leidingen:
 

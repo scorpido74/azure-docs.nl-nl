@@ -16,12 +16,12 @@ ms.date: 03/22/2020
 ms.author: barclayn
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7c38e1a61827da547bb39a699a0e92043e63466c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5ddd8e1c64f4db8221937abc54e88d9a884acf3e
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 04/28/2020
-ms.locfileid: "80128477"
+ms.locfileid: "82207241"
 ---
 # <a name="troubleshoot-azure-ad-entitlement-management"></a>Het beheer van rechten voor Azure AD oplossen
 
@@ -87,13 +87,19 @@ In dit artikel worden enkele items beschreven die u moet controleren om te helpe
 
     Als de aanvraag een leverings fout bevat, wordt de status van de aanvraag niet **bezorgd** of **gedeeltelijk bezorgd**.
 
-    Als er bezorgings fouten zijn, wordt in het detail venster van de aanvraag een telling van de bezorgings fouten weer gegeven.
+    Als er bezorgings fouten zijn, wordt er een telling van de bezorgings fouten weer gegeven in het detail venster van de aanvraag.
 
 1. Klik op het aantal om alle bezorgings fouten van de aanvraag weer te geven.
 
 ### <a name="reprocess-a-request"></a>Een aanvraag opnieuw verwerken
 
-Als een aanvraag een fout tegen komt, kunt u de aanvraag opnieuw verwerken om deze opnieuw te proberen. U kunt alleen een aanvraag met de status **bezorgd** of **gedeeltelijk** opnieuw verwerken, en een voltooide datum van minder dan een week.
+Als er een fout is opgetreden na het activeren van een aanvraag voor het opnieuw verwerken van een toegangs pakket, moet u wachten tot de aanvraag opnieuw wordt verwerkt door het systeem. Het systeem probeert gedurende een aantal uur meerdere keren opnieuw te verwerken, zodat u de herverwerking tijdens deze periode niet kunt afdwingen. 
+
+U kunt alleen een aanvraag met de status **bezorgd** of **gedeeltelijk** opnieuw verwerken, en een voltooide datum van minder dan een week.
+
+- Als de fout is opgelost tijdens het venster trials, wordt de status van de aanvraag gewijzigd in **bezorgd**. De aanvraag wordt opnieuw verwerkt zonder aanvullende acties van de gebruiker.
+
+- Als de fout **niet is** opgelost tijdens het venster experimenten, kan de status van de aanvraag mogelijk niet worden **bezorgd of gedeeltelijk geleverd**. Vervolgens kunt u de knop opnieuw **verwerken** gebruiken. U hebt zeven dagen nodig om de aanvraag opnieuw te verwerken.
 
 **Vereiste rol:** Globale beheerder, gebruikers beheerder, catalogus eigenaar of toegangs pakket beheer
 

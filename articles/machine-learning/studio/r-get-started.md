@@ -1,7 +1,6 @@
 ---
-title: Aan de slag met R
-titleSuffix: ML Studio (classic) - Azure
-description: Gebruik deze zelf studie voor R-Program ma's om aan de slag te gaan met de R-taal met Azure Machine Learning Studio (klassiek) om een prognose oplossing te maken.
+title: R gebruiken met ML Studio (klassiek)-Azure
+description: Gebruik deze zelf studie voor R-Program ma's om aan de slag te gaan met Azure Machine Learning Studio (klassiek) in R om een prognose oplossing te maken.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
@@ -10,21 +9,18 @@ author: likebupt
 ms.author: keli19
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/01/2019
-ms.openlocfilehash: 1b347707b3c656bd692a29f0fd748c1503be4fb8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1dcda3efe3872100100d6e85b68a36359b7eab84
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79217997"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82209499"
 ---
-# <a name="getting-started-with-the-r-programming-language-in-azure-machine-learning-studio-classic"></a>Aan de slag met de programmeer taal R in Azure Machine Learning Studio (klassiek)
+# <a name="get-started-with-azure-machine-learning-studio-classic-in-r"></a>Aan de slag met Azure Machine Learning Studio (klassiek) in R
 
 [!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 
 <!-- Stephen F Elston, Ph.D. -->
-
-## <a name="introduction"></a>Inleiding
-
 Deze zelf studie helpt u bij het uitbreiden van Azure Machine Learning Studio (klassiek) met behulp van de programmeer taal R. Volg deze zelf studie over R-Program ma's om R-code te maken, te testen en uit te voeren in Studio (klassiek). Tijdens het werken met de zelf studie maakt u een volledige prognose oplossing met behulp van de R-taal in Studio (klassiek).  
 
 Azure Machine Learning Studio (klassiek) bevat veel krachtige modules voor machine learning en gegevens manipulatie. De krachtige R-taal is beschreven als franca van Analytics. U kunt met behulp van R de analyse en gegevens manipulatie in Studio (klassiek) opwaarderen. Deze combi natie biedt de schaal baarheid en eenvoudigere implementatie van Studio (klassiek) met de flexibiliteit en diepe analyse van R.

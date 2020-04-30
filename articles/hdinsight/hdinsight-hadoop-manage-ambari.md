@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/16/2020
-ms.openlocfilehash: 53d8da3f5ff715fa34f007272214823ed60e6326
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2c0e95b71ec21b384f17a44ebf5cfd4f33b45f0f
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 04/28/2020
-ms.locfileid: "82192056"
+ms.locfileid: "82232850"
 ---
 # <a name="manage-hdinsight-clusters-by-using-the-apache-ambari-web-ui"></a>HDInsight-clusters beheren met behulp van de Apache Ambari-webinterface
 
@@ -135,7 +135,7 @@ Als u een van deze koppelingen selecteert, wordt er een nieuw tabblad in de brow
 
 ### <a name="ambari-users-groups-and-permissions"></a>Ambari-gebruikers,-groepen en-machtigingen
 
-Werken met gebruikers, groepen en machtigingen wordt ondersteund bij het gebruik van een HDInsight-cluster dat is toegevoegd aan een domein. Zie [HDInsight-clusters](./domain-joined/hdinsight-security-overview.md)die zijn gekoppeld aan een domein voor meer informatie over het gebruik van de Ambari-beheer gebruikersinterface op een cluster dat aan een domein is gekoppeld.
+Werken met gebruikers, groepen en machtigingen wordt ondersteund. Zie [gebruikers autoriseren voor Apache Ambari-weer gaven](./hdinsight-authorize-users-to-ambari.md)voor lokaal beheer. Zie [HDInsight-clusters](./domain-joined/hdinsight-security-overview.md)die zijn gekoppeld aan een domein voor clusters die lid zijn van een domein.
 
 > [!WARNING]  
 > Wijzig het wacht woord van de Ambari-watchdog (hdinsightwatchdog) niet in uw HDInsight-cluster op basis van Linux. Als u het wacht woord wijzigt, is het niet meer mogelijk om script acties te gebruiken of om schaal bewerkingen uit te voeren met uw cluster.

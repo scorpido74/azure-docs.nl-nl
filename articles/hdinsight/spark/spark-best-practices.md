@@ -1,22 +1,22 @@
 ---
-title: Aanbevolen procedures voor het Apache Spark van Azure HDInsight
-description: Lees de aanbevolen procedures voor het gebruik van Apache Spark in azure HDInsight.
+title: Apache Spark richtlijnen voor Azure HDInsight
+description: Meer informatie over richt lijnen voor het gebruik van Apache Spark in azure HDInsight.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 09/18/2019
-ms.openlocfilehash: 20033e52e862f086d1491c06d38cdf4f2c57ba8d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.date: 04/28/2020
+ms.openlocfilehash: 424a0cfd02cfce9fb87bc3e21d7b067740df8218
+ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "71106123"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82509411"
 ---
-# <a name="apache-spark-best-practices"></a>Aanbevolen procedures Apache Spark
+# <a name="apache-spark-guidelines"></a>Apache Spark richtlijnen
 
-In dit artikel vindt u diverse aanbevolen procedures voor het gebruik van Apache Spark in azure HDInsight.
+Dit artikel bevat verschillende richt lijnen voor het gebruik van Apache Spark in azure HDInsight.
 
 ## <a name="how-do-i-run-or-submit-spark-jobs"></a>Hoe kan ik u Spark-taken uitvoeren of verzenden?
 
@@ -28,6 +28,10 @@ In dit artikel vindt u diverse aanbevolen procedures voor het gebruik van Apache
 | IntelliJ | [Zelfstudie: Een Scala Maven-toepassing maken voor Apache Spark in HDInsight met behulp van IntelliJ](./apache-spark-create-standalone-application.md) |
 | Zeppelin-notebooks | [Apache Zeppelin-notebooks gebruiken met Apache Spark-cluster in Azure HDInsight](./apache-spark-zeppelin-notebook.md) |
 | Externe taak verzenden met livy | [Apache Spark REST API gebruiken voor het verzenden van externe taken naar een HDInsight Spark-cluster](./apache-spark-livy-rest-interface.md) |
+|[Apache Oozie](../hdinsight-use-oozie-linux-mac.md)|Oozie is een werk stroom-en coördinatie systeem waarmee Hadoop-taken worden beheerd.|
+|[Apache Livy](./apache-spark-livy-rest-interface.md)|U kunt livy gebruiken om interactieve Spark-shells uit te voeren of om batch taken te verzenden die moeten worden uitgevoerd op Spark.|
+|[Azure Data Factory voor Apache Spark](/../data-factory/transform-data-using-spark.md)|De Spark-activiteit in een Data Factory pijp lijn voert een Spark-programma uit op uw eigen of [HDInsight-cluster op aanvraag.|
+|[Azure Data Factory voor Apache Hive](/../data-factory/transform-data-using-hadoop-hive.md)|De HDInsight Hive-activiteit in een Data Factory pijp lijn voert Hive-query's uit op uw eigen of HDInsight-cluster op aanvraag.|
 
 ## <a name="how-do-i-monitor-and-debug-spark-jobs"></a>Hoe kan ik controleren en fouten opsporen in Spark-taken?
 

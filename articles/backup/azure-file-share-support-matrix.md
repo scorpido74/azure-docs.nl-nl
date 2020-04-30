@@ -3,12 +3,12 @@ title: Ondersteunings matrix voor back-up van Azure-bestands share
 description: Hierin wordt een overzicht gegeven van de ondersteunings instellingen en beperkingen bij het maken van back-ups van Azure-bestands shares.
 ms.topic: conceptual
 ms.date: 1/26/2020
-ms.openlocfilehash: 03190c6b83fceec88442583a57ff46756cfe6221
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 3f154f92d8d094654301bc319003adc22299017b
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.translationtype: HT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 04/28/2020
-ms.locfileid: "82195686"
+ms.locfileid: "82207986"
 ---
 # <a name="support-matrix-for-azure-file-share-backup"></a>Ondersteunings matrix voor back-up van Azure-bestands share
 
@@ -20,13 +20,13 @@ Back-ups voor Azure-bestands shares zijn beschikbaar in de volgende geografische
 
 | GA-regio's | Ondersteunde regio's, maar geen GA                                                      |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| Australië-Zuid-Oost (ASE), Canada-centraal (CNC), VS-West-Centraal (WCUS), VS-West 2 (WUS 2), India Zuid (invoeg toepassingen), Noord-Centraal VS (NCUS), Japan-Oost (JPE), Brazilië-zuid (BRS), Zuid Azië-oost (SEA)                                                     |Australië-oost (AE), Canada-oost (CE), Azië-oost (EA), VS-Oost (EUS), VS-Oost 2 (EUS2), Japan-West (JPW), India centraal (INC.), Korea-centraal (KRC), Korea-zuid (KRS), Europa-noord (NE), Zuid-Centraal VS (SCUS), UK-zuid (UKS), UK-west (UKW), Europa-west (WE), VS-West (WUS), US Gov-Arizona (UGA), US gov-Texas (UGT), US Gov-Virginia (UGV), Australië-centraal (ACL) , India West (INW), Zuid-Afrika-noord (SAN), UAE-noord (UAN), Frankrijk-centraal (FRC), Duitsland-noord (GN), Duitsland-west-centraal (GWC), Zuid-Afrika-west (zaag), UAE-centraal (UAC), Noor wegen Oost (NAANBEVOLEN), Noor wegen West (NWW), Zwitserland-noord (SZN), VS-Midden (CUS)           |
+| Australië-Zuid-Oost (ASE), Canada-centraal (CNC), VS-West-Centraal (WCUS), VS-West 2 (WUS 2), India Zuid (invoeg toepassingen), Noord-Centraal VS (NCUS), Japan-Oost (JPE), Brazilië-zuid (BRS), Zuid Azië-oost (SEA), Zwitserland-west (SZW), UAE-centraal (UAC), Noor wegen Oost (NAANBEVOLEN), India (ACL)                                                  |Australië-oost (AE), Canada-oost (CE), Azië-oost (EA), VS-Oost (EUS), VS-Oost 2 (EUS2), Japan-West (JPW), India Central (INC), Korea-centraal (KRC), Korea-zuid (KRS), Europa-noord (NE), Zuid-Centraal VS (SCUS), UK-zuid (UKS), UK-west (UKW), Europa-west (WE), VS-West (WUS), US Gov-Arizona (UGA), US gov-Texas (UGT), US Gov-Virginia (UGV), Zuid-Afrika-noord (SAN) , UAE-noord (UAN), Frankrijk-centraal (FRC), Duitsland-noord (GN), Duitsland-west-centraal (GWC), Zuid-Afrika-west (zaag), Noor wegen West (NWW), Zwitserland-noord (SZN), VS-centraal (CUS)           |
 
 ## <a name="supported-storage-accounts"></a>Ondersteunde opslagaccounts
 
 | Details van opslag account | Ondersteuning                                                      |
 | ------------------------ | ------------------------------------------------------------ |
-| Soort account            | Azure Backup biedt ondersteuning voor Azure-bestands shares die beschikbaar zijn in de algemene versie van v1, algemeen gebruik v2 en bestands share type opslag accounts |
+| Soort account            | Azure Backup biedt ondersteuning voor Azure-bestands shares die beschikbaar zijn in het algemeen gebruik van v1, algemeen gebruik v2 en opslag accounts voor bestands opslag. |
 | Prestaties              | Azure Backup ondersteunt bestands shares in zowel standaard-als Premium Storage-accounts |
 | Replicatie              | Azure-bestands shares in opslag accounts met elk replicatie type worden ondersteund |
 

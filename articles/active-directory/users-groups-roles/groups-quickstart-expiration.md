@@ -9,17 +9,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: quickstart
-ms.date: 11/08/2019
+ms.date: 04/29/2020
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 16b6e4f521568c89e415e6e9fa621175052cf34d
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 616910eda33b3ddc49fa6233ccb3989c5e4214e2
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "74026900"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82582844"
 ---
 # <a name="quickstart-set-office-365-groups-to-expire-in-azure-active-directory"></a>Snelstart: Office 365-groepen voor verloop instellen in Azure Active Directory
 
@@ -73,7 +73,7 @@ Dat is alles. In deze snelstart hebt u het verloopbeleid ingesteld voor de gesel
 
 ### <a name="to-remove-the-expiration-policy"></a>Verloopbeleid verwijderen
 
-1. Zorg dat u bent aangemeld bij de [Azure-portal](https://portal.azure.com) met een account van een globale beheerder voor de tenant.
+1. Zorg ervoor dat u bent aangemeld bij de [Azure Portal](https://portal.azure.com) met een account dat de globale beheerder is voor uw Azure AD-organisatie.
 2. Selecteer de**verval datum**voor **Azure Active Directory** > **groepen** > .
 3. Stel **Enable expiration for these Office 365 groups** in op **Geen**.
 

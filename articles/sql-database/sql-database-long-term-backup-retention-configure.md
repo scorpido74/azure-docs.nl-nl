@@ -12,19 +12,19 @@ ms.author: sashan
 ms.reviewer: mathoma, carlrab
 manager: craigg
 ms.date: 04/14/2020
-ms.openlocfilehash: 2564fd0ffd980dae4ca1835f4211fee0a0cf040c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: HT
+ms.openlocfilehash: 1fedf889fa8d39a926067eb227b895d4fe1e3c39
+ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81380922"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82509343"
 ---
 # <a name="manage-azure-sql-database-long-term-backup-retention"></a>Azure SQL Database lange termijn retentie van back-ups beheren
 
 In Azure SQL Database kunt u een enkele of een gegroepeerde Data Base configureren met een Bewaar beleid voor [lange termijn back-ups](sql-database-long-term-retention.md) (LTR) voor het automatisch bewaren van back-ups van de data base in afzonderlijke Azure Blob Storage-containers voor Maxi maal tien jaar. U kunt vervolgens met behulp van de Azure Portal of Power shell een Data Base herstellen met behulp van deze back-ups.
 
 > [!IMPORTANT]
-> [Azure SQL database Managed instance](sql-database-managed-instance.md) biedt momenteel geen ondersteuning voor het bewaren van back-ups op lange termijn.
+> Zie [LTR-ondersteuning voor een beheerd exemplaar](sql-database-long-term-retention.md#managed-instance-support)voor het beheerde exemplaar van Azure SQL database.
 
 ## <a name="using-azure-portal"></a>Azure Portal gebruiken
 

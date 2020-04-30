@@ -1,32 +1,32 @@
 ---
-title: Azure-bestanden handmatig maken
+title: Azure Files share hand matig maken
 titleSuffix: Azure Kubernetes Service
-description: Meer informatie over het handmatig maken van een volume met Azure Files voor gebruik met meerdere gelijktijdige pods in Azure Kubernetes Service (AKS)
+description: Meer informatie over het hand matig maken van een volume met Azure Files voor gebruik met meerdere gelijktijdige peulen in azure Kubernetes service (AKS)
 services: container-service
 ms.topic: article
 ms.date: 03/01/2019
-ms.openlocfilehash: 412b7158ea366eefb1c3e9c1d2586d54c316aa6c
-ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
+ms.openlocfilehash: 144d93cbb3b66f260dbd9d92863ca5fb13ed00a5
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/07/2020
-ms.locfileid: "80803446"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82207663"
 ---
-# <a name="manually-create-and-use-a-volume-with-azure-files-share-in-azure-kubernetes-service-aks"></a>Handmatig een volume maken en gebruiken met Azure Files share in Azure Kubernetes Service (AKS)
+# <a name="manually-create-and-use-a-volume-with-azure-files-share-in-azure-kubernetes-service-aks"></a>Hand matig een volume maken en gebruiken met Azure Files share in azure Kubernetes service (AKS)
 
-Containergebaseerde toepassingen moeten vaak toegang krijgen tot en blijven gegevens in een extern gegevensvolume. Als meerdere pods gelijktijdige toegang tot hetzelfde opslagvolume nodig hebben, u Azure Files gebruiken om verbinding te maken met het [SMB-protocol (Server Message Block).][smb-overview] In dit artikel ziet u hoe u handmatig een Azure-bestandenshare maakt en deze aan een pod in AKS koppelt.
+Op containers gebaseerde toepassingen moeten vaak toegang hebben tot gegevens en deze persistent maken in een extern gegevens volume. Als meerdere peulen gelijktijdig gelijktijdige toegang tot hetzelfde opslag volume nodig hebben, kunt u Azure Files gebruiken om verbinding te maken met het [SMB-protocol (Server Message Block)][smb-overview]. In dit artikel wordt beschreven hoe u hand matig een Azure Files share maakt en deze koppelt aan een pod in AKS.
 
-Zie [Opslagopties voor toepassingen in AKS voor][concepts-storage]meer informatie over Kubernetes-volumes.
+Zie [opslag opties voor toepassingen in AKS][concepts-storage]voor meer informatie over Kubernetes-volumes.
 
 ## <a name="before-you-begin"></a>Voordat u begint
 
-In dit artikel wordt ervan uitgegaan dat u een bestaand AKS-cluster hebt. Als u een AKS-cluster nodig hebt, raadpleegt u de AKS snelstart [met de Azure CLI][aks-quickstart-cli] of met behulp van de [Azure-portal][aks-quickstart-portal].
+In dit artikel wordt ervan uitgegaan dat u beschikt over een bestaand AKS-cluster. Als u een AKS-cluster nodig hebt, raadpleegt u de AKS Quick Start [met behulp van de Azure cli][aks-quickstart-cli] of [met behulp van de Azure Portal][aks-quickstart-portal].
 
-U hebt ook de Azure CLI-versie 2.0.59 of hoger geïnstalleerd en geconfigureerd. Voer  `az --version` uit om de versie te bekijken. Als u de Azure CLI wilt installeren of upgraden, raadpleegt u  [Azure CLI installeren][install-azure-cli].
+Ook moet de Azure CLI-versie 2.0.59 of hoger zijn geïnstalleerd en geconfigureerd. Voer  `az --version` uit om de versie te bekijken. Als u de Azure CLI wilt installeren of upgraden, raadpleegt u  [Azure CLI installeren][install-azure-cli].
 
 ## <a name="create-an-azure-file-share"></a>Een Azure-bestandsshare maken
 
-Voordat u Azure Files als Kubernetes-volume gebruiken, moet u een Azure Storage-account en het bestandsshare maken. Met de volgende opdrachten wordt een resourcegroep gemaakt met de naam *myAKSShare,* een opslagaccount en een delen met de naam *aksshare:*
+Voordat u Azure Files als een Kubernetes-volume kunt gebruiken, moet u een Azure Storage-account en de bestands share maken. Met de volgende opdrachten maakt u een resource groep met de naam *myAKSShare*, een opslag account en een bestands share met de naam *aksshare*:
 
 ```azurecli-interactive
 # Change these four parameters as needed for your own environment
@@ -55,21 +55,21 @@ echo Storage account name: $AKS_PERS_STORAGE_ACCOUNT_NAME
 echo Storage account key: $STORAGE_KEY
 ```
 
-Noteer de naam en sleutel van het opslagaccount die aan het einde van de scriptuitvoer worden weergegeven. Deze waarden zijn nodig wanneer u het Kubernetes-volume maakt in een van de volgende stappen.
+Noteer de naam van het opslag account en de sleutel die aan het einde van de script uitvoer wordt weer gegeven. Deze waarden zijn nodig wanneer u het Kubernetes-volume maakt in een van de volgende stappen.
 
-## <a name="create-a-kubernetes-secret"></a>Maak een Kubernetes-geheim
+## <a name="create-a-kubernetes-secret"></a>Een Kubernetes-geheim maken
 
-Kubernetes heeft referenties nodig om toegang te krijgen tot het bestandsaandeel dat in de vorige stap is gemaakt. Deze referenties worden opgeslagen in een [Kubernetes-geheim,][kubernetes-secret]waarnaar wordt verwezen wanneer u een Kubernetes-pod maakt.
+Kubernetes heeft referenties nodig om toegang te krijgen tot de bestands share die u in de vorige stap hebt gemaakt. Deze referenties worden opgeslagen in een [Kubernetes-geheim][kubernetes-secret], waarnaar wordt verwezen bij het maken van een Kubernetes-pod.
 
-Gebruik `kubectl create secret` de opdracht om het geheim te maken. In het volgende voorbeeld wordt een gedeelde *azure-secret* gemaakt en wordt de *azurestorageaccountnaam* en *azurestorageaccountsleutel* van de vorige stap ingevuld. Als u een bestaand Azure-opslagaccount wilt gebruiken, geeft u de naam en de sleutel van het account op.
+Gebruik de `kubectl create secret` opdracht om het geheim te maken. In het volgende voor beeld wordt een gedeeld *Azure-geheim* gemaakt en worden de *azurestorageaccountname* en *azurestorageaccountkey* van de vorige stap gevuld. Als u een bestaand Azure Storage-account wilt gebruiken, geeft u de account naam en de sleutel op.
 
 ```console
 kubectl create secret generic azure-secret --from-literal=azurestorageaccountname=$AKS_PERS_STORAGE_ACCOUNT_NAME --from-literal=azurestorageaccountkey=$STORAGE_KEY
 ```
 
-## <a name="mount-the-file-share-as-a-volume"></a>Het bestandsaandeel als volume monteren
+## <a name="mount-the-file-share-as-a-volume"></a>De bestands share koppelen als een volume
 
-Als u het aandeel Azure-bestanden in uw pod wilt monteren, `azure-files-pod.yaml` configureert u het volume in de containerspec. Maak een nieuw bestand met de volgende inhoud. Als u de naam van de delen van bestanden of de geheime naam hebt gewijzigd, werkt u de *shareName* en *secretName*bij . Werk desgewenst `mountPath`het pad bij waar de delen van bestanden in de pod is gemonteerd. Voor Windows Server-containers (momenteel in preview in AKS) geeft u een *mountPath* op met behulp van de Windows-padconventie, zoals *'D:'.*
+Als u de Azure Files share in uw Pod wilt koppelen, configureert u het volume in de container specificatie. Maak een `azure-files-pod.yaml` nieuw bestand met de naam met de volgende inhoud. Als u de naam van de bestands share of geheime naam hebt gewijzigd, werkt u de *sharename* en de *secretnaam*bij. Als dat gewenst is, `mountPath`werkt u de, die het pad is naar de bestands share in de pod. Voor Windows Server-containers geeft u een *mountPath* op met behulp van de Windows Path-Conventie, zoals *":"*.
 
 ```yaml
 apiVersion: v1
@@ -98,13 +98,13 @@ spec:
       readOnly: false
 ```
 
-Gebruik `kubectl` de opdracht om de pod te maken.
+Gebruik de `kubectl` opdracht om de Pod te maken.
 
 ```console
 kubectl apply -f azure-files-pod.yaml
 ```
 
-U hebt nu een lopende pod met een Azure Files-share die is gemonteerd op */mnt/azure.* U kunt `kubectl describe pod mypod` ervoor controleren of het aandeel is gemonteerd. De volgende verkorte voorbeelduitvoer toont het volume dat in de container is gemonteerd:
+U hebt nu een actieve pod met een Azure Files-share gekoppeld op */mnt/Azure*. U kunt gebruiken `kubectl describe pod mypod` om te controleren of de share is gekoppeld. De volgende gecomprimeerde voorbeeld uitvoer toont het volume dat in de container is gekoppeld:
 
 ```
 Containers:
@@ -133,7 +133,7 @@ Volumes:
 
 ## <a name="mount-options"></a>Koppelingsopties
 
-De standaardwaarde voor *fileMode* en *dirMode* is *0755* voor Kubernetes versie 1.9.1 en hoger. Als u een cluster met Kubernetes-versie 1.8.5 of hoger gebruikt en statisch het permanente volumeobject maakt, moeten bevestigingsopties worden opgegeven op het object *PersistentVolume.* In het volgende voorbeeld wordt *0777 ingesteld:*
+De standaard waarde voor *file mode* en *dirMode* is *0755* voor Kubernetes-versie 1.9.1 en hoger. Als u een cluster met Kubernetes-versie 1.8.5 of hoger gebruikt en het permanente volume statisch maakt, moeten er koppelings opties worden opgegeven voor het *PersistentVolume* -object. In het volgende voor beeld wordt *0777*ingesteld:
 
 ```yaml
 apiVersion: v1
@@ -159,9 +159,9 @@ spec:
   - nobrl
 ```
 
-Als u een cluster van versie 1.8.0 - 1.8.4 gebruikt, kan een beveiligingscontext worden opgegeven met de *waarde runAsUser* ingesteld op *0*. Zie [Een beveiligingscontext configureren][kubernetes-security-context]voor meer informatie over de beveiligingscontext van de pod .
+Als u een cluster van versie 1.8.0-1.8.4 gebruikt, kan een beveiligings context worden opgegeven met de *runAsUser* -waarde ingesteld op *0*. Zie [Configure a security context][kubernetes-security-context](Engelstalig) voor meer informatie over pod-beveiligings context.
 
-Als u uw bevestigingsopties wilt bijwerken, maakt u een *azurefile-mount-options-pv.yaml-bestand* met een *PersistentVolume.* Bijvoorbeeld:
+Als u de koppelings opties wilt bijwerken, maakt u een *azurefile-mount-options-PV. yaml-* bestand met een *PersistentVolume*. Bijvoorbeeld:
 
 ```yaml
 apiVersion: v1
@@ -187,7 +187,7 @@ spec:
   - nobrl
 ```
 
-Maak een *azurefile-mount-options-pvc.yaml-bestand* met een *PersistentVolumeClaim* dat het *PersistentVolume*gebruikt. Bijvoorbeeld:
+Maak een *azurefile-mount-options-PVC. yaml-* bestand met een *PersistentVolumeClaim* die gebruikmaakt van de *PersistentVolume*. Bijvoorbeeld:
 
 ```yaml
 apiVersion: v1
@@ -203,14 +203,14 @@ spec:
       storage: 5Gi
 ```
 
-Gebruik `kubectl` de opdrachten om de *persistentevolume-* en *persistentevolumeclaim*te maken.
+Gebruik de `kubectl` opdrachten om de *PersistentVolume* en *PersistentVolumeClaim*te maken.
 
 ```console
 kubectl apply -f azurefile-mount-options-pv.yaml
 kubectl apply -f azurefile-mount-options-pvc.yaml
 ```
 
-Controleer of uw *PersistentVolumeClaim* is gemaakt en gebonden is aan het *persistente volume*.
+Controleer of uw *PersistentVolumeClaim* is gemaakt en gekoppeld aan de *PersistentVolume*.
 
 ```console
 $ kubectl get pvc azurefile
@@ -219,7 +219,7 @@ NAME        STATUS   VOLUME      CAPACITY   ACCESS MODES   STORAGECLASS   AGE
 azurefile   Bound    azurefile   5Gi        RWX            azurefile      5s
 ```
 
-Werk de containerspecificaties bij om naar uw *PersistentVolumeClaim* te verwijzen en uw pod bij te werken. Bijvoorbeeld:
+Werk uw container specificatie bij om naar uw *PersistentVolumeClaim* te verwijzen en uw pod bij te werken. Bijvoorbeeld:
 
 ```yaml
 ...
@@ -231,9 +231,9 @@ Werk de containerspecificaties bij om naar uw *PersistentVolumeClaim* te verwijz
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie [Aanbevolen procedures voor opslag en back-ups in AKS voor][operator-best-practices-storage]bijbehorende aanbevolen procedures.
+Zie [Aanbevolen procedures voor opslag en back-ups in AKS][operator-best-practices-storage]voor gekoppelde aanbevolen procedures.
 
-Zie de [Kubernetes-plug-in voor Azure Files voor][kubernetes-files]meer informatie over AKS-clusters.
+Zie de [Kubernetes-invoeg toepassing voor Azure files][kubernetes-files]voor meer informatie over AKS-clusters die communiceren met Azure files.
 
 <!-- LINKS - external -->
 [kubectl-create]: https://kubernetes.io/docs/user-guide/kubectl/v1.8/#create

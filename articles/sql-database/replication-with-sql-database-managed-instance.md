@@ -10,17 +10,20 @@ ms.topic: conceptual
 author: MashaMSFT
 ms.author: ferno
 ms.reviewer: mathoma
-ms.date: 02/07/2019
-ms.openlocfilehash: 9af7b471210ca3cc69428e68aef4aafaee159344
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/28/2020
+ms.openlocfilehash: 9ac30b6d502bb0fbdb454d7a3c36cde23a57fb6b
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79299070"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82231625"
 ---
 # <a name="configure-replication-in-an-azure-sql-database-managed-instance-database"></a>Replicatie configureren in een Azure SQL Database beheerde exemplaar database
 
-Met transactionele replicatie kunt u gegevens repliceren naar een Azure SQL Database beheerde exemplaar database vanuit een SQL Server-Data Base of een andere exemplaar database. 
+Met transactionele replicatie kunt u gegevens repliceren naar een Azure SQL Database beheerde exemplaar database vanuit een SQL Server-Data Base of een andere exemplaar database.
+
+> [!NOTE]
+> In dit artikel wordt het gebruik van [transactionele replicatie](https://docs.microsoft.com/sql/relational-databases/replication/transactional/transactional-replication) in Azure SQL Managed instance beschreven. Het is niet gerelateerd aan actieve geo-replicatie of [failover-groepen](https://docs.microsoft.com/azure/sql-database/sql-database-auto-failover-group), een Azure SQL Managed instance-functie waarmee u volledige lees bare replica's van afzonderlijke instanties kunt maken.
 
 In dit artikel wordt uitgelegd hoe u replicatie kunt configureren tussen een beheerde exemplaar van een uitgever/een distributeur en een beheerde exemplaar-abonnee. 
 

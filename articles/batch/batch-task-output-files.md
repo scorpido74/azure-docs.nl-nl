@@ -4,12 +4,12 @@ description: Meer informatie over het gebruik van de batch-Service-API voor het 
 ms.topic: article
 ms.date: 03/05/2019
 ms.custom: seodec18
-ms.openlocfilehash: 5fbbf75defcfe976e59d38ae76341e71feee9f53
-ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
+ms.openlocfilehash: d9c6465a553e5652ecab5dcd167bb4058ff5cc08
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82116465"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82234278"
 ---
 # <a name="persist-task-data-to-azure-storage-with-the-batch-service-api"></a>Taak gegevens persistent maken voor Azure Storage met de API voor de batch-service
 
@@ -26,7 +26,7 @@ Azure Batch biedt meer dan één manier om taak uitvoer te behouden. Het gebruik
 - U wilt code schrijven om de taak uitvoer te behouden vanuit uw client toepassing, zonder de toepassing te wijzigen die door de taak wordt uitgevoerd.
 - U wilt de uitvoer behouden van batch taken en taak beheer taken in Pools die zijn gemaakt met de configuratie van de virtuele machine.
 - U wilt de uitvoer persistent maken naar een Azure Storage container met een wille keurige naam.
-- U wilt uitvoer persistent maken naar een Azure Storage-container met de naam volgens de [conventies van het batch-bestand Standard](https://github.com/Azure/azure-sdk-for-net/tree/psSdkJson6/src/SDKs/Batch/Support/FileConventions#conventions). 
+- U wilt uitvoer persistent maken naar een Azure Storage-container met de naam volgens de [conventies van het batch-bestand Standard](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/batch/Microsoft.Azure.Batch.Conventions.Files). 
 
 Als uw scenario verschilt van wat hierboven wordt vermeld, moet u mogelijk een andere benadering overwegen. De batch-Service-API biedt momenteel geen ondersteuning voor streaming-uitvoer naar Azure Storage terwijl de taak wordt uitgevoerd. Voor het streamen van uitvoer kunt u de conventies bibliotheek voor batch bestanden gebruiken die beschikbaar is voor .NET. Voor andere talen moet u uw eigen oplossing implementeren. Zie voor meer informatie over andere opties voor het persistent maken van taak uitvoer de optie [persistente taak en taak uitvoer naar Azure Storage](batch-task-output.md).
 
@@ -155,7 +155,7 @@ De `fileuploadout.txt` voortgang van het uploaden van bestands Logboeken. U kunt
 
 ## <a name="use-the-batch-service-api-with-the-batch-file-conventions-standard"></a>De batch-Service-API gebruiken met de conventies van het batch-bestand Standard
 
-Wanneer u de taak uitvoer persistent maakt met de API van de batch-service, kunt u uw doel container en blobs naar wens benoemen. U kunt er ook voor kiezen om deze een naam te geven op basis van de [conventies standaard voor batch-bestanden](https://github.com/Azure/azure-sdk-for-net/tree/psSdkJson6/src/SDKs/Batch/Support/FileConventions#conventions). De file conventies Standard bepaalt de namen van de doel container en Blob in Azure Storage voor een bepaald uitvoer bestand op basis van de namen van de taak en de taak. Als u de bestands conventies standaard gebruikt voor de naamgeving van uitvoer bestanden, zijn uw uitvoer bestanden beschikbaar voor weer gave in de [Azure Portal](https://portal.azure.com).
+Wanneer u de taak uitvoer persistent maakt met de API van de batch-service, kunt u uw doel container en blobs naar wens benoemen. U kunt er ook voor kiezen om deze een naam te geven op basis van de [conventies standaard voor batch-bestanden](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/batch/Microsoft.Azure.Batch.Conventions.Files). De file conventies Standard bepaalt de namen van de doel container en Blob in Azure Storage voor een bepaald uitvoer bestand op basis van de namen van de taak en de taak. Als u de bestands conventies standaard gebruikt voor de naamgeving van uitvoer bestanden, zijn uw uitvoer bestanden beschikbaar voor weer gave in de [Azure Portal](https://portal.azure.com).
 
 Als u in C# ontwikkelt, kunt u de methoden gebruiken die zijn ingebouwd in de [Conventie bibliotheek voor batch bestanden voor .net](https://www.nuget.org/packages/Microsoft.Azure.Batch.Conventions.Files). Deze bibliotheek maakt de juiste namen voor containers en blobs voor u. U kunt bijvoorbeeld de API aanroepen om de juiste naam voor de container op te halen, op basis van de taak naam:
 

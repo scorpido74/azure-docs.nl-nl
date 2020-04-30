@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: deli, klam, logicappspm
 ms.topic: conceptual
 ms.date: 05/25/2019
-ms.openlocfilehash: a9c167c5767a4156147e13a1e4ae21162e506474
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3618e6d3fe919bc06496d5b41d162bd211c3d404
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 04/28/2020
-ms.locfileid: "75445858"
+ms.locfileid: "82231931"
 ---
 # <a name="create-schedule-and-run-recurring-tasks-and-workflows-with-the-recurrence-trigger-in-azure-logic-apps"></a>Terugkerende taken en werk stromen maken, plannen en uitvoeren met de trigger voor terugkeer patroon in Azure Logic Apps
 
@@ -77,7 +77,7 @@ Zie [terugkerende geautomatiseerde taken, processen en werk stromen plannen en u
    | **Tijdzone** | `timeZone` | Nee | Tekenreeks | Is alleen van toepassing wanneer u een start tijd opgeeft, omdat deze trigger geen [UTC-offset](https://en.wikipedia.org/wiki/UTC_offset)accepteert. Selecteer de tijd zone die u wilt Toep assen. |
    | **Begintijd** | `startTime` | Nee | Tekenreeks | Geef een begin datum en-tijd op in de volgende indeling: <p>JJJJ-MM-DDTuu: mm: SS als u een tijd zone selecteert <p>-of- <p>JJJJ-MM-DDTuu: mm: ssZ als u geen tijd zone selecteert <p>Als u bijvoorbeeld 18 september 2017 om 2:00 uur wilt, geeft u "2017-09-18T14:00:00" op en selecteert u een tijd zone zoals Pacific (standaard tijd). U kunt ook "2017-09-18T14:00:00Z" opgeven zonder tijd zone. <p>**Opmerking:** Deze begin tijd heeft een maximum van 49 jaar in de toekomst en moet voldoen aan de [ISO 8601 date time-specificatie](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations) in [UTC datum tijd notatie](https://en.wikipedia.org/wiki/Coordinated_Universal_Time), maar zonder een [UTC-afwijking](https://en.wikipedia.org/wiki/UTC_offset). Als u geen tijd zone selecteert, moet u de letter ' Z ' aan het einde toevoegen zonder spaties. Deze "Z" verwijst naar de equivalente [zeemijl tijd](https://en.wikipedia.org/wiki/Nautical_time). <p>Voor eenvoudige schema's is de start tijd het eerste voorval, terwijl voor complexe schema's de trigger niet eerder dan de begin tijd wordt geactiveerd. [*Wat zijn de manieren waarop ik de begin datum en-tijd kan gebruiken?*](../logic-apps/concepts-schedule-automated-recurring-tasks-workflows.md#start-time) |
    | **Deze dagen** | `weekDays` | Nee | Teken reeks of teken reeks matrix | Als u week selecteert, kunt u een of meer dagen selecteren wanneer u de werk stroom wilt uitvoeren: **maandag**, **dinsdag**, **woensdag**, **donderdag**, **vrijdag**, **zaterdag**en **zondag** |
-   | **Deze uren** | `hours` | Nee | Geheel getal of gehele matrix | Als u dag of week selecteert, kunt u een of meer gehele getallen van 0 tot en met 23 selecteren als de uren van de dag waarop u de werk stroom wilt uitvoeren. <p><p>Als u bijvoorbeeld "10", "12" en "14" opgeeft, krijgt u 10 uur, 12 uur en 2 uur voor de uren van de dag, maar wordt het aantal minuten van de dag berekend op basis van het moment waarop het terugkeer patroon start. Als u het aantal minuten van de dag wilt instellen, geeft u de waarde op voor de eigenschap **in deze minuten** . |
+   | **Deze uren** | `hours` | Nee | Geheel getal of gehele matrix | Als u dag of week selecteert, kunt u een of meer gehele getallen van 0 tot en met 23 selecteren als de uren van de dag waarop u de werk stroom wilt uitvoeren. <p><p>Als u bijvoorbeeld "10", "12" en "14" opgeeft, krijgt u 10 uur, 12 uur en 2 uur voor de uren van de dag, maar wordt het aantal minuten van de dag berekend op basis van het moment waarop het terugkeer patroon start. Als u specifieke minuten van de dag wilt instellen, bijvoorbeeld 10:00 AM, 12:00 PM en 2:00 uur, geeft u deze waarden op met behulp van de eigenschap **in deze minuten** . |
    | **Deze minuten** | `minutes` | Nee | Geheel getal of gehele matrix | Als u dag of week selecteert, kunt u een of meer gehele getallen van 0 tot en met 59 selecteren als de minuten van het uur wanneer u de werk stroom wilt uitvoeren. <p>U kunt bijvoorbeeld "30" opgeven als het minuut merk en het vorige voor beeld gebruiken voor uren van de dag, u krijgt 10:30 uur, 12:30 uur en 2:30 uur. |
    |||||
 

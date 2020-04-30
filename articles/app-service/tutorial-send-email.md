@@ -4,12 +4,12 @@ description: Meer informatie over het aanroepen van bedrijfs processen vanuit uw
 ms.topic: tutorial
 ms.date: 04/08/2020
 ms.custom: mvc
-ms.openlocfilehash: 4073b49a134356943bd7da8d54bf574f2e0d5eea
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: a8b94d626916b00d75eea3fea0567fa33df3382c
+ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 04/29/2020
-ms.locfileid: "81604856"
+ms.locfileid: "82562301"
 ---
 # <a name="tutorial-send-email-and-invoke-other-business-processes-from-app-service"></a>Zelf studie: e-mail verzenden en andere bedrijfs processen aanroepen via App Service
 
@@ -26,27 +26,27 @@ In deze zelf studie verzendt u e-mail berichten met Gmail vanuit uw App Service-
 
 Implementeer een app met het taal raamwerk van uw keuze om App Service. Zie hieronder om een zelf studie te volgen voor het implementeren van een voor beeld-app:
 
-# <a name="aspnet"></a>[ASP.NET](#tab/dotnet)
+### <a name="aspnet"></a>[ASP.NET](#tab/dotnet)
 
 [Zelfstudie: Een ASP.NET-app bouwen in Azure met SQL Database](app-service-web-tutorial-dotnet-sqldatabase.md)
 
-# <a name="aspnet-core"></a>[ASP.NET Core](#tab/dotnetcore)
+### <a name="aspnet-core"></a>[ASP.NET Core](#tab/dotnetcore)
 
 [Zelf studie: een ASP.NET Core-en SQL Database-app bouwen in Azure App Service](app-service-web-tutorial-dotnetcore-sqldb.md)
 
-# <a name="nodejs"></a>[Node.js](#tab/node)
+### <a name="nodejs"></a>[Node.js](#tab/node)
 
 [Zelf studie: een node. js-en MongoDB-app bouwen in azure](app-service-web-tutorial-nodejs-mongodb-app.md)
 
-# <a name="php"></a>[PHP](#tab/php)
+### <a name="php"></a>[PHP](#tab/php)
 
 [Zelf studie: een PHP-en MySQL-app bouwen in azure](app-service-web-tutorial-php-mysql.md)
 
-# <a name="python"></a>[Python](#tab/python)
+### <a name="python"></a>[Python](#tab/python)
 
 [Zelf studie: een Python-web-app (Django) uitvoeren met PostgreSQL in Azure App Service](containers/tutorial-python-postgresql-app.md)
 
-# <a name="ruby"></a>[Ruby](#tab/ruby)
+### <a name="ruby"></a>[Ruby](#tab/ruby)
 
 [Een Ruby- en een Postgres-app maken in Azure App Service op Linux](containers/tutorial-ruby-postgres-app.md)
 
@@ -150,7 +150,7 @@ Maak in uw code een standaard HTTP post naar de URL met behulp van een HTTP-clie
 
 Klik op het tabblad Voorkeurs taal/Framework hieronder om een voor beeld te bekijken.
 
-# <a name="aspnet"></a>[ASP.NET](#tab/dotnet)
+### <a name="aspnet"></a>[ASP.NET](#tab/dotnet)
 
 In ASP.NET kunt u het HTTP-bericht verzenden met de klasse [System .net. http. httpclient maakt](https://docs.microsoft.com/dotnet/api/system.net.http.httpclient) . Bijvoorbeeld:
 
@@ -175,7 +175,7 @@ var statusCode = result.StatusCode.ToString();
 
 Als u deze code test op de voor beeld-app voor de [zelf studie: een ASP.net-app bouwen in azure met SQL database](app-service-web-tutorial-dotnet-sqldatabase.md), u kunt deze gebruiken om een e-mail bevestiging te verzenden `Todo` in de [actie maken](https://github.com/Azure-Samples/dotnet-sqldb-tutorial/blob/master/DotNetAppSqlDb/Controllers/TodosController.cs#L52-L63)nadat het item is toegevoegd. Als u de asynchrone code hierboven wilt gebruiken, moet u de actie maken in asynchroon omzetten.
 
-# <a name="aspnet-core"></a>[ASP.NET Core](#tab/dotnetcore)
+### <a name="aspnet-core"></a>[ASP.NET Core](#tab/dotnetcore)
 
 In ASP.NET Core kunt u het HTTP-bericht verzenden met de klasse [System .net. http. httpclient maakt](https://docs.microsoft.com/dotnet/api/system.net.http.httpclient) . Bijvoorbeeld:
 
@@ -203,7 +203,7 @@ var statusCode = result.StatusCode.ToString();
 
 Als u deze code op de voor beeld-app test [: een ASP.net core-en SQL database-app bouwen in azure app service](app-service-web-tutorial-dotnetcore-sqldb.md), kunt u deze gebruiken om een e-mail bevestiging te verzenden in de [actie maken](https://github.com/Azure-Samples/dotnetcore-sqldb-tutorial/blob/master/Controllers/TodosController.cs#L56-L65)nadat het `Todo` item is toegevoegd.
 
-# <a name="nodejs"></a>[Node.js](#tab/node)
+### <a name="nodejs"></a>[Node.js](#tab/node)
 
 In node. js kunt u het HTTP-bericht eenvoudig verzenden met een NPM-pakket, zoals [Axios](https://www.npmjs.com/package/axios). Bijvoorbeeld:
 
@@ -230,7 +230,7 @@ var jsonData = {
 
 Als u deze code test op de voor beeld-app voor de [zelf studie: een node. js-en MongoDb-app bouwen in azure](app-service-web-tutorial-nodejs-mongodb-app.md), u kunt deze gebruiken om een e-mail bevestiging te verzenden in de [functie Create](https://github.com/Azure-Samples/meanjs/blob/master/modules/articles/server/controllers/articles.server.controller.js#L14-L27)nadat [het artikel is opgeslagen](https://github.com/Azure-Samples/meanjs/blob/master/modules/articles/server/controllers/articles.server.controller.js#L24).
 
-# <a name="php"></a>[PHP](#tab/php)
+### <a name="php"></a>[PHP](#tab/php)
 
 In PHP kunt u het HTTP-bericht eenvoudig verzenden met [Guzzle](http://docs.guzzlephp.org/en/stable/index.html). Bijvoorbeeld:
 
@@ -262,7 +262,7 @@ Log::info(print_r($response, TRUE));
 
 Als u deze code op de voor beeld-app test [: een PHP-en MySQL-app bouwen in azure](app-service-web-tutorial-php-mysql.md), kunt u deze gebruiken om een e-mail bevestiging te verzenden in de [functie route::p ost](https://github.com/Azure-Samples/laravel-tasks/blob/master/routes/web.php#L30-L48), net vóór de instructie return.
 
-# <a name="python"></a>[Python](#tab/python)
+### <a name="python"></a>[Python](#tab/python)
 
 In python kunt u het HTTP-bericht eenvoudig verzenden met [aanvragen](https://pypi.org/project/requests/). Bijvoorbeeld:
 
@@ -293,7 +293,7 @@ async with aiohttp.post('http://httpbin.org/post', data=json.dump(payload)) as r
 
 Als u deze code test op de voor beeld-app voor de [zelf studie: een Python-web-app (Django) uitvoeren met postgresql in azure app service](containers/tutorial-python-postgresql-app.md), kunt u deze gebruiken om een e-mail bevestiging te verzenden in de [ost-functie:p](https://github.com/Azure-Samples/laravel-tasks/blob/master/routes/web.php#L30-L48), net vóór de instructie return.
 
-# <a name="ruby"></a>[Ruby](#tab/ruby)
+### <a name="ruby"></a>[Ruby](#tab/ruby)
 
 In Ruby kunt u het HTTP-bericht eenvoudig verzenden met [JSONClient](https://www.rubydoc.info/gems/httpclient/JSONClient). Bijvoorbeeld:
 
@@ -312,7 +312,7 @@ Als u deze code test in de voor beeld-app voor het [bouwen van een Ruby-en post 
 
 ---
 
-# <a name="more-resources"></a>Meer bronnen
+## <a name="more-resources"></a>Meer bronnen
 
 [Zelfstudie: een RESTful API hosten met CORS in Azure App Service](app-service-web-tutorial-rest-api.md)  
 [HTTP-aanvraag/antwoord referentie voor Logic Apps](../connectors/connectors-native-reqres.md)  

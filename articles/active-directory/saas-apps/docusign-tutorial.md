@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 04/21/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 02b0d8290e279b6ed4de08d074597154208cac6b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b827c2e949502ad8bd19378a84ea89947929459d
+ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82183978"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82509360"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-docusign"></a>Zelf studie: Azure Active Directory de integratie van eenmalige aanmelding (SSO) met DocuSign
 
@@ -221,7 +221,7 @@ In deze sectie verleent u B. Simon toegang tot DocuSign, zodat deze gebruiker de
        
        1. Kopieer de service **provider Assertion Consumer Service-URL**en plak deze in het vak **antwoord-URL** in de sectie **basis configuratie van SAML** in de Azure Portal.
        
-       1. Kopieer de **aanmeldings-URL van de service provider**en plak deze in het vak **Sign on URL** in het gedeelte **basis configuratie van SAML** in de Azure Portal.
+       1. Kopieer de **aanmeldings-URL van de service provider**en plak deze in het vak **Sign on URL** in het gedeelte **basis configuratie van SAML** in de Azure Portal. Aan het einde van de **aanmeldings-URL van de service provider** krijgt u de waarde IDPID.
 
        1. Selecteer **Sluiten**.
 

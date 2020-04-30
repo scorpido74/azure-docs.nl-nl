@@ -1,6 +1,6 @@
 ---
-title: Opzoektransformatie in kaartgegevensstroom
-description: Referentiegegevens van een andere bron met behulp van de opzoektransformatie in de toewijzingsgegevensstroom.
+title: Trans formatie opzoeken in toewijzings gegevens stroom
+description: Referentie gegevens uit een andere bron met behulp van de opzoek transformatie in de toewijzing van gegevens stroom.
 author: kromerm
 ms.reviewer: daperlov
 ms.author: makromer
@@ -8,58 +8,58 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 03/23/2020
-ms.openlocfilehash: 24fe11610d2a91fcdb0f09b8e45ea6ff4b81bd70
-ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
+ms.openlocfilehash: af4e33e2653aebe5d1c979aa314463e4beb7b0d7
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "81606385"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82233394"
 ---
-# <a name="lookup-transformation-in-mapping-data-flow"></a>Opzoektransformatie in kaartgegevensstroom
+# <a name="lookup-transformation-in-mapping-data-flow"></a>Trans formatie opzoeken in toewijzings gegevens stroom
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-Gebruik de opzoektransformatie om gegevens van een andere bron in een gegevensstroomstroom te referentieeren. De opzoektransformatie voegt kolommen toe van gekoppelde gegevens tot uw brongegevens.
+Gebruik de lookup-trans formatie om te verwijzen naar gegevens uit een andere bron in een gegevens stroom stroom. De opzoek transformatie voegt kolommen toe van overeenkomende gegevens aan de bron gegevens.
 
-Een lookup transformatie is vergelijkbaar met een linker buitenste join. Alle rijen uit de primaire stroom zullen bestaan in de uitvoerstroom met extra kolommen uit de opzoekstream. 
+Een zoek transformatie is vergelijkbaar met een left outer join. Alle rijen van de primaire stroom bevinden zich in de uitvoer stroom met aanvullende kolommen uit de opzoek stroom. 
 
 ## <a name="configuration"></a>Configuratie
 
-![Opzoektransformatie](media/data-flow/lookup1.png "Opzoeken")
+![Zoek transformatie](media/data-flow/lookup1.png "Opzoeken")
 
-**Primaire stream:** De binnenkomende stroom van gegevens. Deze stroom is gelijk aan de linkerkant van een join.
+**Primaire stroom:** De binnenkomende gegevens stroom. Deze stroom is gelijk aan de linkerkant van een samen voeging.
 
-**Opzoekstroom:** De gegevens die zijn toegevoegd aan de primaire stroom. Welke gegevens worden toegevoegd, wordt bepaald door de opzoekvoorwaarden. Deze stroom is gelijk aan de rechterkant van een join.
+**Opzoek stroom:** De gegevens die worden toegevoegd aan de primaire stroom. Welke gegevens worden toegevoegd, wordt bepaald door de zoek voorwaarden. Deze stroom is gelijk aan de rechter kant van een koppeling.
 
-**Overeenkomen met meerdere rijen:** Als dit is ingeschakeld, wordt een rij met meerdere overeenkomsten in de primaire stream meerdere rijen teruggekeerd. Anders wordt slechts één rij geretourneerd op basis van de voorwaarde 'Match on'.
+**Overeenkomen met meerdere rijen:** Als deze functie is ingeschakeld, retourneert een rij met meerdere overeenkomsten in de primaire stroom meerdere rijen. Anders wordt slechts één rij geretourneerd op basis van de voor waarde match on.
 
-**Wedstrijd op:** Alleen zichtbaar als 'Meerdere rijen matchen' is ingeschakeld. Kies of u wilt overeenkomen op een rij, de eerste wedstrijd of de laatste wedstrijd. Elke rij wordt aanbevolen omdat deze het snelst wordt uitgevoerd. Als de eerste rij of de laatste rij is geselecteerd, moet u sorteervoorwaarden opgeven.
+**Zoeken op:** Alleen zichtbaar als ' overeenkomen met meerdere rijen ' is ingeschakeld. Kies of u wilt zoeken naar een wille keurige rij, de eerste of de laatste overeenkomst. Elke rij wordt aanbevolen omdat deze het snelst uitvoert. Als de eerste rij of laatste rij is geselecteerd, moet u de sorteer voorwaarden opgeven.
 
-**Opzoekvoorwaarden:** Kies op welke kolommen u wilt overeenkomen. Als aan de gelijkheidsvoorwaarde is voldaan, worden de rijen als een overeenkomst beschouwd. Plaats de boventoon en selecteer 'Berekende kolom' om een waarde te extraheren met behulp van de taal van de [gegevensstroomexpressie](data-flow-expression-functions.md).
+**Zoek voorwaarden:** Selecteer de kolommen die u wilt laten overeenkomen. Als aan de gelijkheids voorwaarde wordt voldaan, worden de rijen als een overeenkomst beschouwd. Houd de muis aanwijzer en selecteer berekende kolom om een waarde op te halen met behulp van de taal van de [Data flow-expressie](data-flow-expression-functions.md).
 
-De opzoektransformatie ondersteunt alleen gelijkheidsovereenkomsten. Als u de opzoekexpressie wilt aanpassen aan andere operatoren, zoals groter dan, wordt aanbevolen om een kruislid te gebruiken [bij de join-transformatie.](data-flow-join.md#custom-cross-join) Een cross join voorkomt eventuele cartesiaanse productfouten bij de uitvoering.
+De zoek transformatie ondersteunt alleen gelijkheids overeenkomsten. Als u de opzoek expressie wilt aanpassen om andere opera tors op te nemen, zoals groter dan, kunt u het beste een [Cross-koppeling gebruiken in de trans formatie voor samen voegen](data-flow-join.md#custom-cross-join). Een cross-koppeling voor komt mogelijke Cartesisch product fouten bij de uitvoering.
 
-Alle kolommen van beide streams zijn opgenomen in de uitvoergegevens. Als u dubbele of ongewenste kolommen wilt laten vallen, voegt u een [geselecteerde transformatie](data-flow-select.md) toe na uw opzoektransformatie. Kolommen kunnen ook worden verwijderd of hernoemd in een gootsteentransformatie.
+Alle kolommen van beide stromen worden opgenomen in de uitvoer gegevens. Als u dubbele of ongewenste kolommen wilt verwijderen, voegt u een [selectie transformatie](data-flow-select.md) toe na uw lookup-trans formatie. Kolommen kunnen ook worden verwijderd of de naam ervan worden gewijzigd in een Sink-trans formatie.
 
 ## <a name="analyzing-matched-rows"></a>Overeenkomende rijen analyseren
 
-Na uw opzoektransformatie `isMatch()` kan de functie worden gebruikt om te zien of de opzoeking overeenkomt met afzonderlijke rijen.
+Na uw lookup-trans formatie kan `isMatch()` de functie worden gebruikt om te zien of de zoek opdracht overeenkomt met afzonderlijke rijen.
 
-![Opzoekpatroon](media/data-flow/lookup111.png "Opzoekpatroon")
+![Zoek patroon](media/data-flow/lookup111.png "Zoek patroon")
 
-Een voorbeeld van dit patroon is het gebruik `isMatch()` van de voorwaardelijke gesplitste transformatie om te splitsen op de functie. In het bovenstaande voorbeeld gaan overeenkomende rijen door de bovenste ```NoMatch``` stream en stromen niet-overeenkomende rijen door de stream.
+Een voor beeld van dit patroon is het gebruik van de Conditional Split trans formatie `isMatch()` voor het splitsen van de functie. In het bovenstaande voor beeld passeren overeenkomende rijen de bovenste stroom en niet-overeenkomende rijen stromen via de ```NoMatch``` stroom.
 
-## <a name="testing-lookup-conditions"></a>Zoekomstandigheden testen
+## <a name="testing-lookup-conditions"></a>Zoek voorwaarden testen
 
-Gebruik bij het testen van de opzoektransformatie met gegevensvoorbeeld in de foutopsporingsmodus een kleine set bekende gegevens. Wanneer u rijen uit een grote gegevensset bemonstert, u niet voorspellen welke rijen en sleutels worden gelezen voor het testen. Het resultaat is niet-deterministisch, wat betekent dat uw join voorwaarden mogen geen wedstrijden terug.
+Gebruik een kleine set bekende gegevens bij het testen van de zoek transformatie met de preview-versie van gegevens in de foutopsporingsmodus. Wanneer u rijen van een grote gegevensset bemonstert, kunt u niet voors pellen welke rijen en sleutels worden gelezen voor testen. Het resultaat is niet-deterministisch, wat betekent dat uw samenvoegings voorwaarden geen overeenkomsten kunnen retour neren.
 
-## <a name="broadcast-optimization"></a>Broadcast optimalisatie
+## <a name="broadcast-optimization"></a>Optimalisatie van broadcast berichten
 
-In Azure Data Factory worden gegevensstromen uitgevoerd in geschaalde Spark-omgevingen. Als uw gegevensset past in de geheugenruimte van het werknemersknooppunt, kunnen uw opzoekprestaties worden geoptimaliseerd door uitzendingen in te schakelen.
+![Broadcast-koppeling](media/data-flow/broadcast.png "Broadcast-koppeling")
 
-![Uitzending Word lid](media/data-flow/broadcast.png "Uitzending Word lid")
+In samen voegingen, zoek acties en bestaande trans formatie, als een of beide gegevens stromen in het geheugen van het worker-knoop punt passen, kunt u de prestaties optimaliseren door **broadcast**in te scha kelen. Standaard wordt door de Spark-Engine automatisch besloten of één zijde al dan niet moet worden uitgezonden. Selecteer **vast**om hand matig te kiezen welke zijde u wilt uitzenden.
 
-Door uitzending in te schakelen wordt de hele gegevensset in het geheugen gepusht. Voor kleinere gegevenssets met slechts een paar duizend rijen kan het uitzenden uw opzoekprestaties sterk verbeteren. Voor grote gegevenssets kan deze optie leiden tot een uitzondering buiten het geheugen.
+Het is niet raadzaam om Broadcasting uit te scha kelen via de optie **uit** , tenzij uw samen voegingen worden uitgevoerd in time-outfouten.
 
 ## <a name="data-flow-script"></a>Script voor gegevensstroom
 
@@ -72,24 +72,24 @@ Door uitzending in te schakelen wordt de hele gegevensset in het geheugen gepush
         multiple: { true | false },
         pickup: { 'first' | 'last' | 'any' },  ## Only required if false is selected for multiple
         { desc | asc }( <sortColumn>, { true | false }), ## Only required if 'first' or 'last' is selected. true/false determines whether to put nulls first
-        broadcast: { 'none' | 'left' | 'right' | 'both' }
+        broadcast: { 'auto' | 'left' | 'right' | 'both' | 'off' }
     ) ~> <lookupTransformationName>
 ```
 ### <a name="example"></a>Voorbeeld
 
-![Opzoektransformatie](media/data-flow/lookup-dsl-example.png "Opzoeken")
+![Zoek transformatie](media/data-flow/lookup-dsl-example.png "Opzoeken")
 
-Het gegevensstroomscript voor de bovenstaande opzoekconfiguratie bevindt zich in het onderstaande codefragment.
+Het gegevens stroom script voor de bovenstaande opzoek configuratie bevindt zich in het onderstaande code fragment.
 
 ```
 SQLProducts, DimProd lookup(ProductID == ProductKey,
     multiple: false,
     pickup: 'first',
     asc(ProductKey, true),
-    broadcast: 'none')~> LookupKeys
+    broadcast: 'auto')~> LookupKeys
 ```
 ## 
 Volgende stappen
 
-* De [join](data-flow-join.md) en [bestaande](data-flow-exists.md) transformaties nemen beide meerdere streamingangen op
-* Een [voorwaardelijke gesplitste transformatie](data-flow-conditional-split.md) gebruiken om ```isMatch()``` rijen te splitsen op overeenkomende en niet-overeenkomende waarden
+* De trans formaties [koppelen](data-flow-join.md) en [bestaan](data-flow-exists.md) beide nemen in meerdere stream-invoer
+* Een [Conditional Split trans formatie](data-flow-conditional-split.md) gebruiken ```isMatch()``` om rijen te splitsen op overeenkomende en niet-overeenkomende waarden

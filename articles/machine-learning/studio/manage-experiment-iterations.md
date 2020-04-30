@@ -1,7 +1,7 @@
 ---
-title: Experimentherhalingen beheren
+title: Experimenten weer geven & opnieuw uitvoeren
 titleSuffix: ML Studio (classic) - Azure
-description: Experimentiteraties beheren in Azure Machine Learning Studio (klassiek). U eerdere uitvoeringen van uw experimenten op elk gewenst moment bekijken om eerdere veronderstellingen uit te dagen, opnieuw te bekijken en uiteindelijk te bevestigen of te verfijnen.
+description: Experiment-uitvoeringen beheren in Azure Machine Learning Studio (klassiek). U kunt op elk gewenst moment eerdere uitvoeringen van uw experimenten bekijken om te controleren, opnieuw te bezoeken en uiteindelijk de vorige hypo Thesen te bevestigen of te verfijnen.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
@@ -10,72 +10,70 @@ author: likebupt
 ms.author: keli19
 ms.custom: seodec18
 ms.date: 03/20/2017
-ms.openlocfilehash: 5c8a278f09fdb3b605020e4c2fcf7aa2776906e7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d2ace48ff1b2027a95aef2100540edc10aebb4cc
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79204304"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82208411"
 ---
-# <a name="manage-experiment-iterations-in-azure-machine-learning-studio-classic"></a>Experimentiteraties beheren in Azure Machine Learning Studio (klassiek)
+# <a name="manage-experiment-runs-in-azure-machine-learning-studio-classic"></a>Experiment-uitvoeringen beheren in Azure Machine Learning Studio (klassiek)
 
 [!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 
-Het ontwikkelen van een voorspellend analysemodel is een iteratief proces - als u de verschillende functies en parameters van uw experiment wijzigt, convergeren uw resultaten totdat u tevreden bent dat u een getraind, effectief model hebt. De sleutel tot dit proces is het bijhouden van de verschillende iteraties van uw experimentparameters en -configuraties.
+Het ontwikkelen van een voorspellend analyse model is een iteratief proces: wanneer u de verschillende functies en para meters van uw experiment wijzigt, worden de resultaten geconvergeerd voordat u tevreden bent over een getraind, effectief model. De sleutel voor dit proces is het bijhouden van de verschillende iteraties van uw experiment-para meters en configuraties.
 
-
-
-U eerdere uitvoeringen van uw experimenten op elk gewenst moment bekijken om eerdere veronderstellingen uit te dagen, opnieuw te bekijken en uiteindelijk te bevestigen of te verfijnen. Wanneer u een experiment uitvoert, houdt Machine Learning Studio (klassiek) een geschiedenis van de uitvoering bij, inclusief gegevensset, module en poortverbindingen en parameters. Deze geschiedenis legt ook resultaten, runtime-informatie zoals start- en stoptijden, logboekberichten en uitvoeringsstatus vast. U op elk van deze runs op elk gewenst moment terugkijken om de chronologie van uw experiment en tussentijdse resultaten te bekijken. U zelfs een eerdere uitvoering van uw experiment gebruiken om een nieuwe fase van onderzoek en ontdekking te starten op uw pad naar het maken van eenvoudige, complexe of zelfs ensemblemodelleringsoplossingen.
+U kunt op elk gewenst moment eerdere uitvoeringen van uw experimenten bekijken om te controleren, opnieuw te bezoeken en uiteindelijk de vorige hypo Thesen te bevestigen of te verfijnen. Wanneer u een experiment uitvoert, houdt Machine Learning Studio (klassiek) een geschiedenis bij van de uitvoering, met inbegrip van gegevensset, module en poort verbindingen en-para meters. Deze geschiedenis legt ook resultaten vast, runtime-informatie, zoals start-en stop tijden, logboek berichten en uitvoerings status. U kunt op elk gewenst moment terugkeren naar een van deze uitvoeringen om de weer gave van uw experiment en de tussenliggende resultaten te bekijken. U kunt zelfs een vorige uitvoering van uw experiment gebruiken om te starten in een nieuwe fase van de query en detectie op uw pad om eenvoudige, complexe of zelfs ensemble-model oplossingen te maken.
 
 > [!NOTE]
-> Wanneer u een eerdere uitvoering van een experiment bekijkt, is die versie van het experiment vergrendeld en kan deze niet worden bewerkt. U er echter een kopie van opslaan door op **OPSLAAN AS** te klikken en een nieuwe naam voor de kopie op te geven. Machine Learning Studio (klassiek) opent het nieuwe exemplaar, dat u vervolgens bewerken en uitvoeren. Deze kopie van uw experiment is beschikbaar in de **lijst EXPERIMENTEN** samen met al uw andere experimenten.
+> Wanneer u een vorige uitvoering van een experiment bekijkt, is die versie van het experiment vergrendeld en kan het niet worden bewerkt. U kunt echter een kopie ervan opslaan door te klikken op **Opslaan als** en een nieuwe naam op te geven voor de kopie. Machine Learning Studio (klassiek) Hiermee opent u de nieuwe kopie, die u vervolgens kunt bewerken en uitvoeren. Deze kopie van uw experiment is beschikbaar in de lijst met **experimenten** en al uw andere experimenten.
 > 
 > 
 
-## <a name="viewing-the-prior-run"></a>De eerdere run bekijken
-Wanneer u een experiment hebt geopend dat u ten minste één keer hebt uitgevoerd, u de vorige uitvoering van het experiment bekijken door op **Prior Run** in het eigenschappenvenster te klikken.
+## <a name="view-the-prior-run"></a>De eerdere uitvoering weer geven
+Wanneer u een experiment hebt geopend dat u ten minste één keer hebt uitgevoerd, kunt u de voor gaande uitvoering van het experiment bekijken door te klikken op **vorige uitvoeren** in het deel venster Eigenschappen.
 
-Stel dat u een experiment maakt en versies ervan uitvoert op 11:23, 11:42 en 11:55. Als u de laatste uitvoering van het experiment opent (11:55) en op **Prior Run klikt,** wordt de versie die u om 11:42 hebt uitgevoerd, geopend.
+Stel dat u een experiment maakt en voert u een van de volgende versies uit op 11:23, 11:42 en 11:55. Als u de laatste uitvoering van het experiment (11:55) opent en op **eerdere uitvoering**klikt, wordt de versie 11:42 geopend.
 
-## <a name="viewing-the-run-history"></a>De rungeschiedenis weergeven
-U alle eerdere uitvoeringen van een experiment bekijken door in een geopend experiment op **Run-geschiedenis weergeven** te klikken.
+## <a name="view-the-run-history"></a>De uitvoerings geschiedenis weer geven
+U kunt alle vorige uitvoeringen van een experiment bekijken door te klikken op **uitvoerings geschiedenis bekijken** in een open experiment.
 
-Stel dat u een experiment maakt met de module [Lineaire regressie][linear-regression] en het effect wilt waarnemen van het wijzigen van de waarde van **de leersnelheid** op uw experimentresultaten. U voert het experiment meerdere keren uit met verschillende waarden voor deze parameter, als volgt:
+Stel dat u een experiment met de [lineaire regressie][linear-regression] module maakt en u wilt weten hoe u de waarde van het **leer tempo** van de resultaten van uw experiment kunt wijzigen. U voert het experiment meerdere keren uit met verschillende waarden voor deze para meter, als volgt:
 
-| Waarde leersnelheid | Begintijd uitvoeren |
+| Waarde leer tempo | Begin tijd van uitvoering |
 | --- | --- |
-| 0.1 |9/11/2014 16:18:58 |
-| 0,2 |9/11/2014 16:24:33 |
-| 0,4 |9/11/2014 16:28:36 |
-| 0.5 |9/11/2014 16:33:31 |
+| 0.1 |9/11/2014 4:18:58 uur |
+| 0,2 |9/11/2014 4:24:33 uur |
+| 0,4 |9/11/2014 4:28:36 uur |
+| 0.5 |9/11/2014 4:33:31 uur |
 
-Als u op **GESCHIEDENIS VAN WEERGAVE KLIKT,** ziet u een lijst met al deze uitvoeringen:
+Als u op **uitvoerings geschiedenis weer geven**klikt, ziet u een lijst met al deze uitvoeringen:
 
-![Voorbeeld run geschiedenis](./media/manage-experiment-iterations/viewrunhistory.jpg)
+![Voor beeld van uitvoerings geschiedenis](./media/manage-experiment-iterations/viewrunhistory.jpg)
 
-Klik op een van deze uitvoeringen om een momentopname van het experiment te bekijken op het moment dat u het experiment hebt uitgevoerd. De configuratie, parameterwaarden, opmerkingen en resultaten blijven behouden om u een volledige registratie te geven van die uitvoering van uw experiment.
+Klik op een van deze uitvoeringen om een moment opname van het experiment weer te geven op het moment dat u het hebt uitgevoerd. De configuratie, parameter waarden, opmerkingen en de resultaten worden allemaal bewaard, zodat u een volledig overzicht krijgt van de uitvoering van uw experiment.
 
 > [!TIP]
-> Als u uw iteraties van het experiment wilt documenteren, u de titel elke keer wijzigen wanneer u het uitvoert, u het **overzicht** van het experiment bijwerken in het eigenschappenvenster en u opmerkingen over afzonderlijke modules toevoegen of bijwerken om uw wijzigingen op te nemen. De opmerkingen over titel, overzicht en module worden opgeslagen bij elke run van het experiment.
+> Als u de iteraties van het experiment wilt documenteren, kunt u de titel wijzigen telkens wanneer u deze uitvoert. u kunt de **samen vatting** van het experiment bijwerken in het deel venster Eigenschappen en u kunt opmerkingen toevoegen of bijwerken voor afzonderlijke modules om uw wijzigingen vast te leggen. De opmerkingen titel, samen vatting en module worden bij elke uitvoering van het experiment opgeslagen.
 > 
 > 
 
-De lijst met experimenten op het tabblad **EXPERIMENTEN** in Machine Learning Studio (klassiek) geeft altijd de nieuwste versie van een experiment weer. Als u een eerdere uitvoering van het experiment opent (met de geschiedenis van **Prior Run** of **VIEW RUN),** u terugkeren naar de conceptversie door op DE GESCHIEDENIS VAN DE UITVOERING **BEKIJKEN** te klikken en de iteratie te selecteren met een **status** van **bewerkbaar**.
+In de lijst met experimenten op het tabblad **experimenten** in machine learning Studio (klassiek) wordt altijd de nieuwste versie van een experiment weer gegeven. Als u een vorige uitvoering van het experiment (met **eerdere uitvoering** of **uitvoerings geschiedenis**) opent, kunt u terugkeren naar de concept versie door te klikken op **uitvoerings geschiedenis weer geven** en de iteratie te selecteren met de **status** **bewerkbaar**.
 
-## <a name="iterating-on-a-previous-run"></a>Herhalen op een vorige run
-Wanneer u op **Eerdere run-** of **RUN-GESCHIEDENIS** klikt en een vorige run opent, u een voltooid experiment weergeven in de alleen-lezen modus.
+## <a name="run-a-previous-experiment"></a>Een vorig experiment uitvoeren
+Wanneer u klikt op **vorige uitvoeren** of **uitvoerings geschiedenis bekijken** en een eerdere uitvoering openen, kunt u een voltooid experiment bekijken in de modus alleen-lezen.
 
-Als u een iteratie van uw experiment wilt starten, te beginnen met de manier waarop u het voor een vorige run hebt geconfigureerd, u dit doen door de run te openen en op **OPSLAAN ALS**te klikken. Hiermee wordt een nieuw experiment gemaakt, met een nieuwe titel, een lege rungeschiedenis en alle componenten en parameterwaarden van de vorige run. Dit nieuwe experiment wordt vermeld op het tabblad **EXPERIMENTEN** op de startpagina van Machine Learning Studio (klassieke) en u het wijzigen en uitvoeren, waarbij een nieuwe rungeschiedenis wordt gestart voor deze iteratie van uw experiment. 
+Als u een herhaling van uw experiment wilt beginnen, te beginnen met de manier waarop u deze hebt geconfigureerd voor een eerdere uitvoering, kunt u dit doen door de uitvoeren te openen en op **Opslaan als**te klikken. Hiermee maakt u een nieuw experiment, met een nieuwe titel, een lege uitvoerings geschiedenis en alle onderdelen en parameter waarden van de vorige uitvoering. Dit nieuwe experiment wordt vermeld op het tabblad **experimenten** op de start pagina van machine learning Studio (klassiek) en u kunt het wijzigen en uitvoeren, zodat er een nieuwe uitvoerings geschiedenis wordt weer gegeven voor deze herhaling van uw experiment. 
 
-Stel dat u de geschiedenis van de experimentrun in de vorige sectie hebt weergegeven. U wilt observeren wat er gebeurt wanneer u de parameter **Leersnelheid** instelt op 0,4 en verschillende waarden voor de parameter **Aantal trainingstijdperken** proberen.
+Stel dat u de geschiedenis voor het uitvoeren van experimenten hebt weer gegeven in de vorige sectie. U wilt weten wat er gebeurt wanneer u de para meter **Learning rate** instelt op 0,4 en verschillende waarden voor de para meter **aantal trainings-epoches** probeert.
 
-1. Klik op **RUN HISTORY BEKIJKEN** en open de iteratie van het experiment dat u hebt uitgevoerd om 16:28:36 uur (waarbij u de parameterwaarde instelt op 0,4).
-2. Klik **op OPSLAAN ALS**.
-3. Voer een nieuwe titel in en klik op het **OK-vinkje.** Er wordt een nieuwe kopie van het experiment gemaakt.
-4. Wijzig de parameter **Aantal trainingstijdperken.**
-5. Klik **op UITVOEREN**.
+1. Klik op **uitvoerings geschiedenis weer geven** en open de herhaling van het experiment dat u hebt uitgevoerd om 4:28:36 uur (waarin u de waarde van de para meter instelt op 0,4).
+2. Klik op **Opslaan als**.
+3. Voer een nieuwe titel in en klik op het selectie vakje **OK** . Er wordt een nieuw exemplaar van het experiment gemaakt.
+4. Wijzig de para meter **aantal trainings-epoches** .
+5. Klik op **uitvoeren**.
 
-U deze versie van uw experiment nu blijven wijzigen en uitvoeren, waarbij een nieuwe rungeschiedenis wordt opgebouwd om uw werk op te nemen.
+U kunt nu door gaan met het wijzigen en uitvoeren van deze versie van uw experiment, een nieuwe uitvoerings geschiedenis bouwen om uw werk vast te leggen.
 
 <!-- Module References -->
 [linear-regression]: https://msdn.microsoft.com/library/azure/31960a6f-789b-4cf7-88d6-2e1152c0bd1a/

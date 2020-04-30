@@ -8,12 +8,12 @@ ms.subservice: gateway
 ms.topic: tutorial
 ms.date: 03/18/2019
 ms.author: alkohli
-ms.openlocfilehash: b3cf4fd958202c28586b7c15932dc88a21d7c60f
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: HT
+ms.openlocfilehash: 78c06cc7f08fe94a25ea63d9bf76cc1352d9f2b7
+ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
+ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 04/29/2020
-ms.locfileid: "81686864"
+ms.locfileid: "82561667"
 ---
 # <a name="tutorial-connect-set-up-activate-azure-data-box-gateway"></a>Zelf studie: verbinding maken, instellen, Azure Data Box Gateway activeren
 
@@ -65,7 +65,7 @@ Uw dash board geeft de verschillende instellingen weer die nodig zijn om het vir
    
 ![De pagina dash board van lokale webgebruikersinterface](./media/data-box-gateway-deploy-connect-setup-activate/image5.png)
 
-1. Selecteer **apparaatnaam**in het linkerdeel venster en geef een beschrijvende naam op voor het apparaat. De beschrijvende naam moet tussen 1 en 15 tekens lang zijn en mag alleen bestaan uit letters, cijfers en afbreek streepjes.
+1. Selecteer **apparaatnaam**in het linkerdeel venster en geef een beschrijvende naam op voor het apparaat. De beschrijvende naam moet tussen 1 en 15 tekens lang zijn en mag alleen bestaan uit letters, cijfers en afbreek streepjes. 
 
     ![Pagina apparaatnaam van lokale webgebruikersinterface](./media/data-box-gateway-deploy-connect-setup-activate/image6.png)
 

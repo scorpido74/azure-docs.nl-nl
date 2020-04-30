@@ -11,21 +11,20 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 manager: craigg
-ms.date: 04/19/2020
-ms.openlocfilehash: 24eacb555704593fe44bc2d949de44de163345bc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: HT
+ms.date: 04/29/2020
+ms.openlocfilehash: fba1dcdb8c4e5cfaa8071ae58ad75432b526c887
+ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81677103"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82509700"
 ---
 # <a name="manage-azure-sql-database-managed-instance-long-term-backup-retention-powershell"></a>De lange termijn retentie van Azure SQL Database Managed instance beheren (Power shell)
 
 In Azure SQL Database beheerde instantie kunt u een langdurige Bewaar beleid (LTR) voor [back-ups voor de lange termijn](sql-database-long-term-retention.md#managed-instance-support) configureren als een beperkte open bare preview-functie. Zo kunt u automatisch back-ups van data bases in afzonderlijke Azure Blob-opslag containers bewaren gedurende Maxi maal tien jaar. U kunt vervolgens een Data Base met behulp van deze back-ups herstellen met Power shell.
 
    > [!IMPORTANT]
-   > LTR voor beheerde instanties is momenteel een beperkte preview-versie en is per geval beschikbaar voor EA-en CSP-abonnementen. Als u de inschrijving wilt aanvragen, maakt u een [ondersteunings ticket voor Azure](https://azure.microsoft.com/support/create-ticket/) onder het ondersteunings onderwerp **back-ups maken, herstellen en bedrijfs continuïteit/lange termijn back-ups bewaren**. 
-
+   > LTR voor beheerde instanties is momenteel een beperkte preview-versie en is per geval beschikbaar voor EA-en CSP-abonnementen. Als u de inschrijving wilt aanvragen, moet u een [ondersteunings ticket voor Azure](https://azure.microsoft.com/support/create-ticket/)maken. Voor het probleem type SELECT Technical issue, voor service Kies SQL Database Managed instance en voor het probleem type Selecteer **back-up, herstel en bedrijfs continuïteit/lange termijn retentie van back-ups**. In uw aanvraag moet u aangeven dat u wilt worden inge schreven in de beperkte open bare preview van LTR voor een beheerd exemplaar.
 
 In de volgende secties ziet u hoe u Power shell kunt gebruiken voor het configureren van de lange termijn retentie van back-ups, het weer geven van back-ups in Azure SQL Storage en het herstellen van een back-up in Azure SQL Storage.
 

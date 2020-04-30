@@ -1,9 +1,9 @@
 ---
-title: 'Snelstart: een Azure Kubernetes Service-cluster implementeren'
+title: 'Snelstartgids: een Azure Kubernetes service-cluster implementeren'
 description: Ontdek hoe u snel een Kubernetes-cluster kunt maken, een toepassing kunt implementeren en de prestaties in Azure Kubernetes Service (AKS) kunt bewaken met behulp van de Azure CLI.
 services: container-service
 ms.topic: quickstart
-ms.date: 09/13/2019
+ms.date: 04/28/2020
 ms.custom:
 - H1Hack27Feb2017
 - mvc
@@ -11,35 +11,35 @@ ms.custom:
 - seo-javascript-september2019
 - seo-javascript-october2019
 - seo-python-october2019
-ms.openlocfilehash: 369e0da49064197524ee20bb8a0050c00c242260
-ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
+ms.openlocfilehash: 2b45154a0198fe0845649167d0fa35aabfd0625e
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/15/2020
-ms.locfileid: "81392765"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82207391"
 ---
-# <a name="quickstart-deploy-an-azure-kubernetes-service-cluster-using-the-azure-cli"></a>Snelstart: een Azure Kubernetes Service-cluster implementeren met behulp van de Azure CLI
+# <a name="quickstart-deploy-an-azure-kubernetes-service-cluster-using-the-azure-cli"></a>Snelstartgids: een Azure Kubernetes service-cluster implementeren met behulp van Azure CLI
 
-In deze quickstart implementeert u een AKS-cluster (Azure Kubernetes Service) met behulp van het Azure CLI. AKS is een managed Kubernetes-service waarmee u snel clusters implementeren en beheren. Een toepassing met meerdere containers die bestaat uit een web-front-end en een Redis-exemplaar wordt uitgevoerd in het cluster. Vervolgens ziet u hoe u de status van het cluster en de pods kunt bewaken die uw toepassing uitvoeren.
+In deze Quick Start implementeert u een Azure Kubernetes service (AKS)-cluster met behulp van de Azure CLI. AKS is een beheerde Kubernetes-service waarmee u snel clusters kunt implementeren en beheren. Een toepassing met meerdere containers die bestaat uit een web-front-end en een Redis-exemplaar wordt uitgevoerd in het cluster. Vervolgens ziet u hoe u de status van het cluster en de pods kunt bewaken die uw toepassing uitvoeren.
 
-Zie [Een AKS-cluster maken dat Windows Server-containers ondersteunt][windows-container-cli]als u Windows Server-containers wilt gebruiken (momenteel in preview in AKS).
+Zie [een AKS-cluster maken dat Windows Server-containers ondersteunt][windows-container-cli]voor meer informatie over het maken van een Windows Server-knooppunt groep.
 
-![Stem-app geïmplementeerd in Azure Kubernetes-service](./media/container-service-kubernetes-walkthrough/voting-app-deployed-in-azure-kubernetes-service.png)
+![Stem-app geïmplementeerd in azure Kubernetes service](./media/container-service-kubernetes-walkthrough/voting-app-deployed-in-azure-kubernetes-service.png)
 
 In deze quickstart wordt ervan uitgegaan dat u een basisbegrip hebt van Kubernetes-concepten. Zie [Kubernetes-kernconcepten voor Azure Kubernetes Service-cluster (AKS)][kubernetes-concepts] voor meer informatie.
 
-Als u geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) voordat u begint.
+Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Als u ervoor kiest om de CLI lokaal te installeren en te gebruiken, moet u met deze quickstart de Azure CLI-versie 2.0.64 of hoger uitvoeren. Voer `az --version` uit om de versie te bekijken. Als u Azure CLI 2.0 wilt installeren of upgraden, raadpleegt u [Azure CLI 2.0 installeren][azure-cli-install].
+Als u ervoor kiest om de CLI lokaal te installeren en te gebruiken, moet u voor deze Quick Start de Azure CLI-versie 2.0.64 of hoger uitvoeren. Voer `az --version` uit om de versie te bekijken. Als u Azure CLI 2.0 wilt installeren of upgraden, raadpleegt u [Azure CLI 2.0 installeren][azure-cli-install].
 
 > [!NOTE]
-> Als u de opdrachten in deze quickstart lokaal uitvoert (in plaats van Azure Cloud Shell), moet u ervoor zorgen dat u de opdrachten als beheerder uitvoert.
+> Als u de opdrachten in deze Snelstartgids lokaal uitvoert (in plaats van Azure Cloud Shell), moet u ervoor zorgen dat u de opdrachten als beheerder uitvoert.
 
 ## <a name="create-a-resource-group"></a>Een resourcegroep maken
 
-Een Azure-resourcegroep is een logische groep waarin Azure-resources worden geïmplementeerd en beheerd. Wanneer u een resourcegroep maakt, wordt u gevraagd een locatie op te geven. Op deze locatie worden metagegevens van de brongroep opgeslagen, maar ook waar uw resources in Azure worden uitgevoerd als u geen andere regio opgeeft tijdens het maken van resources. Maak een resourcegroep met de opdracht [az group create][az-group-create].
+Een Azure-resourcegroep is een logische groep waarin Azure-resources worden geïmplementeerd en beheerd. Wanneer u een resourcegroep maakt, wordt u gevraagd een locatie op te geven. Op deze locatie worden de meta gegevens van de resource groep opgeslagen, maar ook de resources die in Azure worden uitgevoerd als u geen andere regio opgeeft tijdens het maken van resources. Maak een resourcegroep met de opdracht [az group create][az-group-create].
 
 In het volgende voorbeeld wordt een resourcegroep met de naam *myResourceGroup* gemaakt op de locatie *VS - oost*.
 
@@ -64,10 +64,10 @@ In de volgende voorbeelduitvoer ziet u dat de resourcegroep is gemaakt:
 
 ## <a name="create-aks-cluster"></a>AKS-cluster maken
 
-Gebruik de opdracht [az aks create][az-aks-create] om een AKS-cluster te maken. In het volgende voorbeeld wordt een cluster met de naam *myAKSCluster* gemaakt met één knooppunt. Azure Monitor voor containers kan ook worden ingeschakeld met behulp van de parameter *--enable-addons monitoring*.  Dit duurt enkele minuten om te voltooien.
+Gebruik de opdracht [az aks create][az-aks-create] om een AKS-cluster te maken. In het volgende voorbeeld wordt een cluster met de naam *myAKSCluster* gemaakt met één knooppunt. Azure Monitor voor containers kan ook worden ingeschakeld met behulp van de parameter *--enable-addons monitoring*.  Dit kan enkele minuten duren.
 
 > [!NOTE]
-> Bij het maken van een AKS-cluster wordt automatisch een tweede resourcegroep gemaakt om de AKS-resources op te slaan. Zie Waarom [zijn twee resourcegroepen gemaakt met AKS voor](https://docs.microsoft.com/azure/aks/faq#why-are-two-resource-groups-created-with-aks) meer informatie?
+> Bij het maken van een AKS-cluster wordt automatisch een tweede resource groep gemaakt voor het opslaan van de AKS-resources. Zie [Waarom zijn er twee resource groepen gemaakt met AKS?](https://docs.microsoft.com/azure/aks/faq#why-are-two-resource-groups-created-with-aks) voor meer informatie.
 
 ```azurecli-interactive
 az aks create --resource-group myResourceGroup --name myAKSCluster --node-count 1 --enable-addons monitoring --generate-ssh-keys
@@ -221,7 +221,7 @@ Gebruik de opdracht [kubectl get service][kubectl-get] met het argument `--watch
 kubectl get service azure-vote-front --watch
 ```
 
-In eerste instantie wordt het *EXTERNE-IP* voor de *azure-vote-front-service* weergegeven als *in behandeling*.
+In eerste instantie wordt het *externe IP-adres* voor de service *Azure-stemmen* als *in behandeling*weer gegeven.
 
 ```output
 NAME               TYPE           CLUSTER-IP   EXTERNAL-IP   PORT(S)        AGE
@@ -236,20 +236,20 @@ azure-vote-front   LoadBalancer   10.0.37.27   52.179.23.131   80:30572/TCP   2m
 
 Open een webbrowser naar het externe IP-adres van uw service om de Azure Vote-app te zien.
 
-![Stem-app geïmplementeerd in Azure Kubernetes-service](./media/container-service-kubernetes-walkthrough/voting-app-deployed-in-azure-kubernetes-service.png)
+![Stem-app geïmplementeerd in azure Kubernetes service](./media/container-service-kubernetes-walkthrough/voting-app-deployed-in-azure-kubernetes-service.png)
 
-Toen het AKS-cluster werd gemaakt, is [Azure Monitor voor containers](../azure-monitor/insights/container-insights-overview.md) ingeschakeld om statusstatistieken vast te leggen voor zowel de clusterknooppunten als de pods. Deze metrische gegevens over de status zijn in de Azure-portal beschikbaar.
+Wanneer het AKS-cluster is gemaakt, is [Azure monitor voor containers](../azure-monitor/insights/container-insights-overview.md) ingeschakeld voor het vastleggen van metrische gegevens over de status van de cluster knooppunten en de peul. Deze metrische gegevens over de status zijn in de Azure-portal beschikbaar.
 
 ## <a name="delete-the-cluster"></a>Het cluster verwijderen
 
-Om Azure-kosten te voorkomen, moet u onnodige resources opschonen.  Gebruik de opdracht [az group delete][az-group-delete] om de resourcegroep, de containerservice en alle gerelateerde resources te verwijderen wanneer u het cluster niet meer nodig hebt.
+Om Azure-kosten te vermijden, moet u overbodige resources opschonen.  Gebruik de opdracht [az group delete][az-group-delete] om de resourcegroep, de containerservice en alle gerelateerde resources te verwijderen wanneer u het cluster niet meer nodig hebt.
 
 ```azurecli-interactive
 az group delete --name myResourceGroup --yes --no-wait
 ```
 
 > [!NOTE]
-> Wanneer u het cluster verwijdert, wordt de Azure Active Directory-service-principal die door het AKS-cluster wordt gebruikt niet verwijderd. Zie [Overwegingen voor en verwijdering van AKS service-principal][sp-delete] voor stappen voor het verwijderen van de service-principal. Als u een beheerde identiteit hebt gebruikt, wordt de identiteit beheerd door het platform en hoeft deze niet te worden verwijderd.
+> Wanneer u het cluster verwijdert, wordt de Azure Active Directory-service-principal die door het AKS-cluster wordt gebruikt niet verwijderd. Zie [Overwegingen voor en verwijdering van AKS service-principal][sp-delete] voor stappen voor het verwijderen van de service-principal. Als u een beheerde identiteit hebt gebruikt, wordt de identiteit beheerd door het platform en hoeft niet te worden verwijderd.
 
 ## <a name="get-the-code"></a>Code ophalen
 
@@ -259,7 +259,7 @@ In deze snelstartgids zijn vooraf gemaakte containerinstallatiekopieën gebruikt
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze snelstart hebt u een Kubernetes-cluster geïmplementeerd en vervolgens een toepassing met meerdere containers geïmplementeerd. U hebt ook [toegang tot het Kubernetes-webdashboard][kubernetes-dashboard] voor uw AKS-cluster.
+In deze snelstart hebt u een Kubernetes-cluster geïmplementeerd en vervolgens een toepassing met meerdere containers geïmplementeerd. U hebt ook [toegang tot het Kubernetes Web dash board][kubernetes-dashboard] voor uw AKS-cluster.
 
 Voor meer informatie over AKS en een volledig stapsgewijs voorbeeld van code tot implementatie gaat u naar de zelfstudie over Kubernetes-clusters.
 

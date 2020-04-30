@@ -1,255 +1,255 @@
 ---
-title: REST API-foutcodes - Azure Machine Learning Studio (klassiek) | Microsoft Documenten
-description: Deze foutcodes kunnen worden geretourneerd door een bewerking op een Azure Machine Learning-webservice.
+title: REST API fout codes
+titleSuffix: ML Studio (classic) - Azure
+description: Deze fout codes kunnen worden geretourneerd door een bewerking op een Azure Machine Learning-webservice.
 keywords: ''
 services: machine-learning
-author: xiaoharper
-ms.custom: seodec18
-ms.author: amlstudiodocs
+author: likebupt
+ms.author: keli19
 editor: cgronlun
 ms.assetid: 0923074b-3728-439d-a1b8-8a7245e39be4
 ms.service: machine-learning
 ms.subservice: studio
 ms.topic: reference
 ms.date: 11/16/2016
-ms.openlocfilehash: 9e25f2fbc10eb07cc71f2a7bd34247c0191f61b9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a47550771180411277d21f7acf47ad0a28b6fb9e
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79217760"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82209516"
 ---
-# <a name="azure-machine-learning-studio-classic-rest-api-error-codes"></a>Azure Machine Learning Studio (klassieke) REST API-foutcodes
+# <a name="azure-machine-learning-studio-classic-rest-api-error-codes"></a>Azure Machine Learning Studio (klassiek) REST API fout codes
 
 [!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
  
-De volgende foutcodes kunnen worden geretourneerd door een bewerking op een Azure Machine Learning Studio (klassieke) webservice.
+De volgende fout codes kunnen worden geretourneerd door een bewerking op een webservice Azure Machine Learning Studio (klassiek).
  
-## <a name="badargument-http-status-code-400"></a>BadArgument (HTTP-statuscode 400)
+## <a name="badargument-http-status-code-400"></a>BadArgument (HTTP-status code 400)
  
-Ongeldig argument verstrekt.
+Er is een ongeldig argument gegeven.
  
-Deze klasse van fouten betekent dat een argument dat ergens is opgegeven, ongeldig was. Dit kan een referentie of locatie van Azure-opslag zijn voor iets dat is doorgegeven aan de webservice. Kijk naar het veld foutcode in de sectie 'details' om te kunnen vaststellen welk specifiek argument ongeldig was.
+Deze klasse van fouten betekent dat een argument dat ergens wordt gegeven, ongeldig is. Dit kan een referentie of locatie zijn van Azure Storage naar iets dat is door gegeven aan de webservice. Raadpleeg het fout veld ' code ' in de sectie ' Details ' om vast te stellen welke specifieke argumenten ongeldig zijn.
  
-| Foutcode | Gebruikersbericht |
+| Foutcode | Gebruikers bericht |
 | ---------- |--------------|
-| BadParameterWaarde | De opgegeven parameterwaarde voldoet niet aan de parameterregel op de parameter |
-| BadSubscriptionId | De abonnements-id die wordt gebruikt om te scoren is niet degene die aanwezig is in de resource |
-| BadVersionCall (BadVersionCall) | Ongeldige versieparameter is doorgegeven {0}tijdens de API-aanroep: . Controleer de HELP-pagina api's voor het passeren van de juiste versie en probeer het opnieuw. |
-| BatchJobInputsNotSpecified | Met de aanvraag zijn niet de volgende {0}vereiste input(s) opgegeven: . Zorg ervoor dat alle invoergegevens zijn opgegeven en probeer het opnieuw. |
-| BatchJobInputsTooManySpecified | De aanvraag specificeerde meer ingangen dan gedefinieerd in de service. Lijst van geaccepteerde {0}input(en): . Zorg ervoor dat alle invoergegevens correct zijn opgegeven en probeer het opnieuw. |
-| BlobNameTooLong | Azure blob-opslagpad dat is opgegeven {0}voor diagnostische uitvoer is te lang: . Verkort het pad en probeer het opnieuw. |
-| BlobNotFound | Geen toegang tot de {0}meegeleverde Azure-blob - .  Azure-foutbericht: {1}. |
-| ContainerIsEmpty | Er is geen naam van een Azure-opslagcontainer opgegeven. Geef een geldige containernaam op en probeer het opnieuw. |
-| ContainerSegmentOngeldig | Ongeldige containernaam. Geef een geldige containernaam op en probeer het opnieuw. |
-| ContainerValidatie is mislukt | Blobcontainervalidatie is mislukt {0}met deze fout: . |
-| DataTypeNotSupported | Niet-ondersteunde gegevenstype opgegeven. Geef geldige gegevenstype(s) op en probeer het opnieuw. |
-| Inputinbatchcall dupliceren | De batchaanvraag is ongeldig. Kan niet zowel enkele als meerdere invoer op hetzelfde moment opgeven. Verwijder een van deze items uit het verzoek en probeer het opnieuw. |
-| ExpiryTimeInThePast | De verstrekte vervaldatum is in {0}het verleden: . Geef een toekomstige vervaldatum op in UTC en probeer het opnieuw. Als u nooit wilt verlopen, stelt u de vervaldatum in op NULL. |
-| Onvolledige instellingen | Diagnostische instellingen zijn onvolledig. |
-| InvoerBlobRelativeLocationOngeldig | Er is geen naam van azure-opslagblob s. Geef een geldige blobnaam op en probeer het opnieuw. |
-| Ongeldig Blob | Ongeldige blobspecificatie {0}voor blob: . Controleer of de verbindingstekenreeks / relatieve pad- of SAS-tokenspecificatie correct is en probeer het opnieuw. |
-| Ongeldige klodderverbinding | De verbindingstekenreeks die is opgegeven voor een van {0}de invoer-/uitvoerblobs in ongeldig: . Corrigeer dit en probeer het opnieuw. |
-| Ongeldige BlobExtensie | De blob-verwijzing: {0} heeft een ongeldige of ontbrekende bestandsextensie. Ondersteunde bestandsextensies voor dit uitvoertype{1}zijn: " ". |
-| Ongeldige invoernamen | Ongeldige serviceinvoernaam(en) die {0}in de aanvraag is opgegeven: . Breng de invoergegevens naar de juiste service-ingangen en probeer het opnieuw. |
-| Ongeldigenaam voor overridese uitvoer | Ongeldige uitvoer {0}overschrijven naam: . De service heeft geen uitvoerknooppunt met deze naam. Geef een correcte uitvoerknooppuntnaam door om te overschrijven (de hoofdlettergevoeligheid is van toepassing). |
-| OngeldigeQueryParameter | Ongeldige queryparameter '{0}'. {1} |
-| MissingInputBlobInformatie | Ontbrekende Azure-opslagblobgegevens. Geef een geldige verbindingstekenreeks en relatief pad of URI op en probeer het opnieuw. |
-| Vermiste JobId | Geen job Id verstrekt. Een taak-id wordt geretourneerd wanneer een taak voor de eerste keer is ingediend. Controleer of de taak-id correct is en probeer het opnieuw. |
-| Ontbrekende sleutels | Er worden geen sleutels opgegeven of een primaire of secundaire sleutel wordt niet verstrekt. |
-| VermistModelPakket | Geen modelpakket Id of modelpakket aanwezig. Geef een geldig modelpakket-id of modelpakket op en probeer het opnieuw. |
-| MissingoutputoverrideSpecificatie | De aanvraag ontbreekt de blob-specificatie voor het overschrijven {0}van uitvoer. Geef bij het verzoek een geldige bloblocatie op of verwijder de uitvoerspecificatie als er geen locatieoverschrijving gewenst is. |
-| MissingRequestInput | De webservice verwacht een ingang, maar er is geen input geleverd. Zorg ervoor dat geldige ingangen worden geleverd op basis van de gepubliceerde invoerpoorten in het model en probeer het opnieuw. |
-| MissingRequiredGlobalParameters | Niet alle vereiste webserviceparameter(s) aanwezig. Controleer of de verwachte parameter(s) voor de module(s) correct zijn en probeer het opnieuw. |
-| MissingRequiredOutputOverrides | Bij het aanroepen van een versleuteld serviceeindpunt is het verplicht om uitvoeroverschrijvingen door te geven voor alle uitvoervan de service. Ontbrekende overschrijvingen op dit moment voor deze uitgangen:{0} |
-| MissingWebServiceGroupId | Geen webservicegroep Id verstrekt. Geef een geldige webservicegroep-id op en probeer het opnieuw. |
-| MissingWebServiceId | Geen webservice-id verstrekt. Geef een geldige webservice-id op en probeer het opnieuw. |
-| MissingWebServicePakket | Geen webservicepakket aanwezig. Zorg voor een geldig webservicepakket en probeer het opnieuw. |
-| MissingWorkspaceId | Er is geen werkplek-id aanwezig. Geef een geldig werk-id op en probeer het opnieuw. |
-| ModelConfiguratie ongeldig | Ongeldige modelconfiguratie in het modelpakket. Zorg ervoor dat de modelconfiguratie de definitie van uitvoereindpunt(s), het eindpunt van de STD-fout en het eindpunt voor std-out bevat en probeer het opnieuw. |
-| ModelPackageIdInvalid | Ongeldig modelpakket Id. Controleer of de id van het modelpakket correct is en probeer het opnieuw. |
-| RequestBodyInvalid | Geen aanvraaginstantie verstrekt of fout bij het deserialiseren van de aanvraaginstantie. |
-| Aanvraag is leeg | Geen verzoek verstrekt. Geef een geldig verzoek op en probeer het opnieuw. |
-| Onverwachte parameter | Onverwachte parameters aanwezig. Controleer of alle parameternamen correct zijn gespeld, alleen verwachte parameters worden doorgegeven en probeer het opnieuw. |
-| UnknownError UnknownError UnknownError UnknownError | Onbekende fout. |
-| UserParameterOngeldig | {0} |
-| WebServiceConcurrentRequestRequirementOngeldig | De vereisten voor {0} gelijktijdige aanvragen voor webservice kan niet worden gewijzigd. |
-| WebServiceIdInvalid | Ongeldige webservice-id. Webservice-id moet een geldige guid zijn. |
-| WebServiceTooManyGelijktijdigRequestRequirement | Kan de vereiste gelijktijdige {0}aanvragen niet instellen op meer dan . |
-| WebServiceTypeOngeldig | Ongeldig webservicetype. Controleer of het geldige webservicetype correct is en probeer het opnieuw. Geldige webservicetypen: {0}. |
+| BadParameterValue | De opgegeven parameter waarde voldoet niet aan de parameter regel voor de para meter |
+| BadSubscriptionId | De abonnements-id die wordt gebruikt om een score te geven, komt niet voor in de resource |
+| BadVersionCall | Er is een ongeldige versie parameter door gegeven tijdens de {0}API-aanroep:. Controleer de Help-pagina van de API voor het door geven van de juiste versie en probeer het opnieuw. |
+| BatchJobInputsNotSpecified | De volgende vereiste invoer (nen) is niet opgegeven bij de aanvraag: {0}. Controleer of alle invoer gegevens zijn opgegeven en probeer het opnieuw. |
+| BatchJobInputsTooManySpecified | De aanvraag heeft meer invoer opgegeven dan is gedefinieerd in de service. Lijst met geaccepteerde invoer (n) {0}:. Controleer of alle invoer gegevens juist zijn opgegeven en probeer het opnieuw. |
+| BlobNameTooLong | Het opslag traject voor Azure Blob dat is ingevoerd voor de diagnostische uitvoer is te lang: {0}. Verklein het pad en probeer het opnieuw. |
+| BlobNotFound | Kan geen toegang krijgen tot de beschik {0}bare Azure-Blob.  Azure-fout bericht {1}:. |
+| ContainerIsEmpty | Er is geen Azure storage-container naam gegeven. Geef een geldige container naam op en probeer het opnieuw. |
+| ContainerSegmentInvalid | Ongeldige container naam. Geef een geldige container naam op en probeer het opnieuw. |
+| ContainerValidationFailed | Validatie van de BLOB-container is mislukt {0}met de volgende fout:. |
+| DataTypeNotSupported | Er is een niet-ondersteund gegevens type gegeven. Geef geldige gegevens typen op en probeer het opnieuw. |
+| DuplicateInputInBatchCall | De batch-aanvraag is ongeldig. U kunt niet zowel één als meerdere invoer tegelijk opgeven. Verwijder een van deze items uit de aanvraag en probeer het opnieuw. |
+| ExpiryTimeInThePast | De gegeven verloop tijd bevindt zich in {0}het verleden:. Geef een toekomstige verloop tijd in UTC op en probeer het opnieuw. Stel de verloop tijd in op NULL om nooit te verlopen. |
+| IncompleteSettings | De diagnostische instellingen zijn onvolledig. |
+| InputBlobRelativeLocationInvalid | Er is geen blob-naam voor Azure Storage gegeven. Geef een geldige naam voor de BLOB op en probeer het opnieuw. |
+| InvalidBlob | Ongeldige BLOB-specificatie voor BLOB {0}:. Controleer of connection string/relatieve pad of SAS-token specificatie juist is en probeer het opnieuw. |
+| InvalidBlobConnectionString | De connection string die is opgegeven voor een van de blobs voor invoer/uitvoer {0}, is ongeldig:. Corrigeer dit en probeer het opnieuw. |
+| InvalidBlobExtension | De BLOB-verwijzing {0} : heeft een ongeldige of ontbrekende bestands extensie. Ondersteunde bestands extensies voor dit uitvoer type zijn:{1}. |
+| InvalidInputNames | Ongeldige service-invoer naam (en) opgegeven in de aanvraag {0}:. Wijs de invoer gegevens toe aan de juiste service-invoer en probeer het opnieuw. |
+| InvalidOutputOverrideName | Ongeldige uitvoer onderdrukkings naam {0}:. De service heeft geen uitvoer knooppunt met deze naam. Geef een juiste naam op voor het uitvoer knooppunt dat moet worden overschreven (hoofdletter gevoeligheid is van toepassing). |
+| InvalidQueryParameter | Ongeldige query parameter{0}. {1} |
+| MissingInputBlobInformation | Ontbrekende informatie over Azure Storage-blob. Geef een geldig connection string en een relatief pad of URI op en probeer het opnieuw. |
+| MissingJobId | Er is geen taak-id gegeven. Er wordt een taak-id geretourneerd wanneer een taak voor de eerste keer is verzonden. Controleer of de taak-id juist is en probeer het opnieuw. |
+| MissingKeys | Er is geen sleutel of een primaire of secundaire sleutel gegeven. |
+| MissingModelPackage | Er is geen model pakket-id of model pakket opgenomen. Geef een geldige model pakket-id of model pakket op en probeer het opnieuw. |
+| MissingOutputOverrideSpecification | In de aanvraag ontbreekt de BLOB-specificatie voor het {0}overschrijven van de uitvoer. Geef een geldige BLOB-locatie op met de aanvraag of verwijder de uitvoer specificatie als er geen locatie is die u wilt overschrijven. |
+| MissingRequestInput | De webservice verwacht een invoer, maar er is geen invoer opgegeven. Zorg ervoor dat geldige invoer waarden worden opgegeven op basis van de gepubliceerde invoer poorten in het model en probeer het opnieuw. |
+| MissingRequiredGlobalParameters | Niet alle vereiste web service-para meter (s) opgegeven. Controleer of de para meter (s) die worden verwacht voor de module (s) juist zijn en probeer het opnieuw. |
+| MissingRequiredOutputOverrides | Bij het aanroepen van een versleuteld service-eind punt is het verplicht om de uitvoer onderdrukkingen voor alle uitvoer van de service door te geven. Ontbrekende onderdrukkingen op dit moment voor deze uitvoer:{0} |
+| MissingWebServiceGroupId | Er is geen groeps-id voor de webservice gegeven. Geef een geldige id voor de webservice-groep op en probeer het opnieuw. |
+| MissingWebServiceId | Er is geen webservice-id gegeven. Geef een geldige webservice-id op en probeer het opnieuw. |
+| MissingWebServicePackage | Er is geen pakket voor de webservice opgenomen. Geef een geldig webservice-pakket op en probeer het opnieuw. |
+| MissingWorkspaceId | Er is geen werk ruimte-id gegeven. Geef een geldige werk ruimte-id op en probeer het opnieuw. |
+| ModelConfigurationInvalid | Ongeldige model configuratie in het model pakket. Zorg ervoor dat de model configuratie een definitie van een uitvoer eindpunt, een Std-fout eindpunt en een standaard eind punt bevat en probeer het opnieuw. |
+| ModelPackageIdInvalid | Ongeldige model pakket-id. Controleer of de model pakket-id juist is en probeer het opnieuw. |
+| RequestBodyInvalid | Er is geen aanvraag tekst gegeven of er is een fout opgetreden bij het deserialiseren van de aanvraag tekst. |
+| RequestIsEmpty | Geen aanvraag ontvangen. Geef een geldige aanvraag op en probeer het opnieuw. |
+| UnexpectedParameter | Er zijn onverwachte para meters opgegeven. Controleer of alle parameter namen juist zijn gespeld, alleen de verwachte para meters worden door gegeven en probeer het opnieuw. |
+| UnknownError | Onbekende fout. |
+| UserParameterInvalid | {0} |
+| WebServiceConcurrentRequestRequirementInvalid | Kan de vereisten voor gelijktijdige aanvragen {0} niet wijzigen voor de webservice. |
+| WebServiceIdInvalid | Ongeldige webservice-id gegeven. De webservice-id moet een geldige GUID zijn. |
+| WebServiceTooManyConcurrentRequestRequirement | Kan niet gelijktijdige aanvraag vereisten instellen op meer {0}dan. |
+| WebServiceTypeInvalid | Er is een ongeldig type webservice gegeven. Controleer of het geldige type Web service juist is en probeer het opnieuw. Geldige typen web-service {0}:. |
  
-## <a name="baduserargument-http-status-code-400"></a>BadUserArgument (HTTP-statuscode 400)
+## <a name="baduserargument-http-status-code-400"></a>BadUserArgument (HTTP-status code 400)
  
-Ongeldig gebruikersargument verstrekt.
+Er is een ongeldig gebruikers argument gegeven.
  
-| Foutcode | Gebruikersbericht |
+| Foutcode | Gebruikers bericht |
 | ---------- |--------------|
-| InvoerMismatchError | Invoergegevens komen niet overeen met het invoerpoortschema. |
-| InvoerParseD | Parsing van invoervector is mislukt.  Controleer of de invoervector het juiste aantal kolommen en gegevenstypen heeft.  Aanvullende details: {0}. |
-| MissingRequiredGlobalParameters | Parameter(s) die door de webservice worden verwacht, ontbreken. Controleer of alle vereiste parameters die door de webservice worden verwacht, correct zijn en probeer het opnieuw. |
-| Onverwachte parameter | Controleer of alleen de vereiste parameters die door de webservice worden verwacht, worden doorgegeven en probeer het opnieuw. |
-| UserParameterOngeldig | {0} |
+| InputMismatchError | De invoer gegevens komen niet overeen met het invoer poort schema. |
+| InputParseError | Het parseren van invoer vector is mislukt.  Controleer of de invoer vector het juiste aantal kolommen en gegevens typen heeft.  Aanvullende details: {0}. |
+| MissingRequiredGlobalParameters | De para meter (s) die worden verwacht door de webservice ontbreken. Controleer of alle vereiste para meters die worden verwacht door de webservice juist zijn en probeer het opnieuw. |
+| UnexpectedParameter | Controleer of alleen de vereiste para meters die door de webservice worden verwacht, worden door gegeven en probeer het opnieuw. |
+| UserParameterInvalid | {0} |
  
-## <a name="invalidoperation-http-status-code-400"></a>InvalidOperation (HTTP-statuscode 400)
+## <a name="invalidoperation-http-status-code-400"></a>InvalidOperation (HTTP-status code 400)
  
 De aanvraag is ongeldig in de huidige context.
  
-| Foutcode | Gebruikersbericht |
+| Foutcode | Gebruikers bericht |
 | ---------- |--------------|
-| Kan niet startenJob | De taak kan niet worden {0} gestart omdat deze in staat is. |
-| OnverenigbaarModel | Het model is niet compatibel met de aanvraagversie. De aanvraagversie ondersteunt slechts afzonderlijke uitvoermodellen van gegevenstabel. |
-| MultipleInputsNotA toegestaan | Het model staat geen meerdere ingangen toe. |
+| CannotStartJob | De taak kan niet worden gestart omdat deze de {0} status heeft. |
+| IncompatibleModel | Het model is niet compatibel met de aanvraag versie. De aanvraag versie ondersteunt alleen uitvoer modellen met één DataTable. |
+| MultipleInputsNotAllowed | Het model staat geen meerdere invoer toe. |
  
-## <a name="libraryexecutionerror-http-status-code-400"></a>LibraryExecutionError (HTTP-statuscode 400)
+## <a name="libraryexecutionerror-http-status-code-400"></a>LibraryExecutionError (HTTP-status code 400)
  
-Bij de uitvoering van de module is een interne bibliotheekfout opgetreden.
- 
- 
-## <a name="moduleexecutionerror-http-status-code-400"></a>ModuleExecutionError (HTTP-statuscode 400)
- 
-Er is een fout opgetreden bij de uitvoering van de module.
+Er is een interne bibliotheek fout opgetreden tijdens de uitvoering van de module.
  
  
-## <a name="webservicepackageerror-http-status-code-400"></a>WebServicePackageError (HTTP-statuscode 400)
+## <a name="moduleexecutionerror-http-status-code-400"></a>ModuleExecutionError (HTTP-status code 400)
  
-Ongeldig webservicepakket. Controleer of het geleverde webservicepakket correct is en probeer het opnieuw.
+Er is een fout opgetreden bij het uitvoeren van de module.
  
-| Foutcode | Gebruikersbericht |
+ 
+## <a name="webservicepackageerror-http-status-code-400"></a>WebServicePackageError (HTTP-status code 400)
+ 
+Ongeldig web service-pakket. Controleer of het meegeleverde pakket voor de webservice juist is en probeer het opnieuw.
+ 
+| Foutcode | Gebruikers bericht |
 | ---------- |--------------|
-| FormatError | Het webservicepakket is verkeerd gevormd. Details:{0} |
-| RuntimesError | De grafiek van het webservicepakket is ongeldig. Details:{0} |
-| ValidatieFout | De grafiek van het webservicepakket is ongeldig. Details:{0} |
+| FormatError | Het webservice-pakket is onjuist gevormd. Nadere{0} |
+| RuntimesError | De grafiek van het web service-pakket is ongeldig. Nadere{0} |
+| ValidationError | De grafiek van het web service-pakket is ongeldig. Nadere{0} |
  
-## <a name="unauthorized-http-status-code-401"></a>Ongeautoriseerd (HTTP-statuscode 401)
+## <a name="unauthorized-http-status-code-401"></a>Niet geautoriseerd (HTTP-status code 401)
  
-Aanvraag is ongeautoriseerd om toegang te krijgen tot resource.
+De aanvraag is niet gemachtigd om toegang te krijgen tot de resource.
  
-| Foutcode | Gebruikersbericht |
+| Foutcode | Gebruikers bericht |
 | ---------- |--------------|
 | AdminRequestUnauthorized | Niet geautoriseerd |
-| ManagementRequestOngeautoriseerd | Niet geautoriseerd |
-| ScoreRequestOngeautoriseerd | Ongeldige referenties verstrekt. |
+| ManagementRequestUnauthorized | Niet geautoriseerd |
+| ScoreRequestUnauthorized | Er zijn ongeldige referenties gegeven. |
  
-## <a name="notfound-http-status-code-404"></a>NotFound (HTTP-statuscode 404)
+## <a name="notfound-http-status-code-404"></a>NotFound (HTTP-status code 404)
  
-Bron niet gevonden.
+De resource is niet gevonden.
  
-| Foutcode | Gebruikersbericht |
+| Foutcode | Gebruikers bericht |
 | ---------- |--------------|
-| ModelPackageNotFound | Modelpakket niet gevonden. Controleer of de id van het modelpakket correct is en probeer het opnieuw. |
-| WebServiceIdNotfoundinWorkspace | Webservice onder deze werkruimte niet gevonden. Er is een mismatch tussen de webServiceId en de workspaceId. Controleer of de webservice deel uitmaakt van de werkruimte en probeer het opnieuw. |
-| WebServiceNotFound | Webservice niet gevonden. Controleer of de webservice-id correct is en probeer het opnieuw. |
-| Werkruimteniet gevonden | Werkruimte niet gevonden. Controleer of de werkruimte-id correct is en probeer het opnieuw. |
+| ModelPackageNotFound | Model pakket niet gevonden. Controleer of de model pakket-id juist is en probeer het opnieuw. |
+| WebServiceIdNotFoundInWorkspace | De webservice onder deze werk ruimte is niet gevonden. De webServiceId en de workspaceId komen niet overeen. Controleer of de meegeleverde webservice deel uitmaakt van de werk ruimte en probeer het opnieuw. |
+| WebServiceNotFound | De webservice is niet gevonden. Controleer of de webservice-id juist is en probeer het opnieuw. |
+| WorkspaceNotFound | De werk ruimte is niet gevonden. Controleer of de werk ruimte-id juist is en probeer het opnieuw. |
  
-## <a name="requesttimeout-http-status-code-408"></a>RequestTimeout (HTTP-statuscode 408)
+## <a name="requesttimeout-http-status-code-408"></a>RequestTimeout (HTTP-status code 408)
  
-De bewerking kon niet binnen de toegestane tijd worden voltooid.
+De bewerking kan niet worden voltooid binnen de toegestane tijd.
  
-| Foutcode | Gebruikersbericht |
+| Foutcode | Gebruikers bericht |
 | ---------- |--------------|
-| Aanvraag geannuleerd | Aanvraag is geannuleerd door de klant. |
-| ScoreRequestTime-out | Er is een time-out ophet moment van de uitvoeringsaanvraag. |
+| RequestCanceled | De aanvraag is geannuleerd door de client. |
+| ScoreRequestTimeout | Time-out bij uitvoerings aanvraag. |
  
-## <a name="conflict-http-status-code-409"></a>Conflict (HTTP-statuscode 409)
+## <a name="conflict-http-status-code-409"></a>Conflict (HTTP-status code 409)
  
-Resource bestaat al.
+De resource bestaat al.
  
-| Foutcode | Gebruikersbericht |
+| Foutcode | Gebruikers bericht |
 | ---------- |--------------|
-| ModelOutputMetadataMismatch | Naam van de ongeldige uitvoerparameter. Probeer de module metagegevenseditor te gebruiken om kolommen een andere naam te geven en het opnieuw te proberen. |
+| ModelOutputMetadataMismatch | Ongeldige naam van uitvoer parameter. Gebruik de module meta gegevens editor om de namen van kolommen te wijzigen en probeer het opnieuw. |
  
-## <a name="memoryquotaviolation-http-status-code-413"></a>MemoryQuotaViolation (HTTP-statuscode 413)
+## <a name="memoryquotaviolation-http-status-code-413"></a>MemoryQuotaViolation (HTTP-status code 413)
  
-Het model had het geheugenquotum overschreden dat eraan was toegewezen.
+Het model heeft het toegewezen geheugen quotum overschreden.
  
-| Foutcode | Gebruikersbericht |
+| Foutcode | Gebruikers bericht |
 | ---------- |--------------|
-| OutofMemoryLimit | Het model verbruikt meer geheugen dan was toegeëigend voor het. Maximaal toegestaan geheugen voor {0} het model is MB. Controleer uw model op problemen. |
+| OutOfMemoryLimit | Het model heeft meer geheugen verbruikt dan het meest geschikt is voor IT. Het Maxi maal toegestane geheugen voor het {0} model is MB. Raadpleeg uw model voor problemen. |
  
-## <a name="internalerror-http-status-code-500"></a>InternalError (HTTP-statuscode 500)
+## <a name="internalerror-http-status-code-500"></a>InternalError (HTTP-status code 500)
  
-Bij de uitvoering is een interne fout opgetreden.
+Er is een interne fout opgetreden in de uitvoering.
  
-| Foutcode | Gebruikersbericht |
+| Foutcode | Gebruikers bericht |
 | ---------- |--------------|
-| Beheerverificatie is mislukt |  |
+| AdminAuthenticationFailed |  |
 | BackendArgumentError |  |
 | BackendBadRequest |  |
-| ClusterConfigBlobMisconfigureerd |  |
-| ContainerProcessTerminatedWithSystemError | Het containerproces is gecrasht met systeemfout |
-| ContainerProcessTerminatedWithUnknownError | Het containerproces is gecrasht met onbekende fout |
-| ContainerValidatie is mislukt | Blobcontainervalidatie is mislukt {0}met deze fout: . |
-| DeleteWebServiceResource is mislukt |  |
-| ExceptionDeserializationError ExceptionDeserializationError ExceptionDeserializationError ExceptionDe |  |
+| ClusterConfigBlobMisconfigured |  |
+| ContainerProcessTerminatedWithSystemError | Het container proces is vastgelopen met een systeem fout |
+| ContainerProcessTerminatedWithUnknownError | Het container proces is vastgelopen met een onbekende fout |
+| ContainerValidationFailed | Validatie van de BLOB-container is mislukt {0}met de volgende fout:. |
+| DeleteWebServiceResourceFailed |  |
+| ExceptionDeserializationError |  |
 | FailedGettingApiDocument |  |
 | FailedStoringWebService |  |
-| Ongeldige geheugenconfiguratie | InvalidMemoryConfiguration, ConfigValue:{0} |
-| Ongeldige CacheCacheConfiguratie |  |
-| Ongeldige ResourceDownloadconfiguratie |  |
-| Ongeldig WebServiceResources |  |
-| MissingTaskInstance MissingTaskInstance | Geen argumenten verstrekt. Controleer of geldige argumenten worden doorgegeven en probeer het opnieuw. |
-| ModelPakketOngeldig |  |
-| Moduleuitvoering mislukt |  |
-| Moduleladen is mislukt |  |
-| ModuleObjectClone mislukt |  |
-| Uitvoerconversie is mislukt |  |
-| PortDataTypeNotSupported | Poortid={0} heeft een niet-ondersteund {1}gegevenstype: . |
+| InvalidMemoryConfiguration | InvalidMemoryConfiguration, ConfigValue:{0} |
+| InvalidResourceCacheConfiguration |  |
+| InvalidResourceDownloadConfiguration |  |
+| InvalidWebServiceResources |  |
+| MissingTaskInstance | Er zijn geen argumenten gegeven. Controleer of de geldige argumenten zijn door gegeven en probeer het opnieuw. |
+| ModelPackageInvalid |  |
+| ModuleExecutionFailed |  |
+| ModuleLoadFailed |  |
+| ModuleObjectCloneFailed |  |
+| OutputConversionFailed |  |
+| PortDataTypeNotSupported | Poort-id{0} = heeft een niet-ondersteund gegevens type {1}:. |
 | ResourceDownload |  |
-| ResourceLoad is mislukt |  |
+| ResourceLoadFailed |  |
 | ServiceUrisNotFound |  |
-| SwaggerGeneratie | Swagger generatie mislukt, Details:{0} |
-| Onverwachte scorestatus |  |
+| SwaggerGeneration | Kan Swagger niet genereren, Details:{0} |
+| UnexpectedScoreStatus |  |
 | UnknownBackendErrorResponse |  |
-| UnknownError UnknownError UnknownError UnknownError |  |
-| UnknownJobStatusCode | Onbekende statuscode {0}voor vacatures . |
-| UnknownModuleFout |  |
-| UpdateWebServiceResource is mislukt |  |
-| WebServiceGroupNotfound |  |
-| WebServicePackageOngeldig | InvalidWebServicePackage, Details:{0} |
-| WorkerAuthorization is mislukt |  |
-| WorkerOnbereikbaar |  |
+| UnknownError |  |
+| UnknownJobStatusCode | Onbekende taak status code {0}. |
+| UnknownModuleError |  |
+| UpdateWebServiceResourceFailed |  |
+| WebServiceGroupNotFound |  |
+| WebServicePackageInvalid | InvalidWebServicePackage, Details:{0} |
+| WorkerAuthorizationFailed |  |
+| WorkerUnreachable |  |
  
-## <a name="internalerrorsystemlowonmemory-http-status-code-500"></a>InternalErrorSystemLowOnMemory (HTTP-statuscode 500)
+## <a name="internalerrorsystemlowonmemory-http-status-code-500"></a>InternalErrorSystemLowOnMemory (HTTP-status code 500)
  
-Bij de uitvoering is een interne fout opgetreden. Systeem met weinig geheugen. Probeer het opnieuw.
- 
- 
-## <a name="modelpackageformaterror-http-status-code-500"></a>ModelPackageFormatError (HTTP-statuscode 500)
- 
-Ongeldig modelpakket. Controleer of het meegeleverde modelpakket correct is en probeer het opnieuw.
+Er is een interne fout opgetreden in de uitvoering. Systeem weinig geheugen. Probeer het opnieuw.
  
  
-## <a name="webservicepackageinternalerror-http-status-code-500"></a>WebServicePackageInternalError (HTTP-statuscode 500)
+## <a name="modelpackageformaterror-http-status-code-500"></a>ModelPackageFormatError (HTTP-status code 500)
  
-Ongeldig webservicepakket. Controleer of het meegeleverde webpakket correct is en probeer het opnieuw.
+Ongeldig model pakket. Controleer of het gegeven model pakket juist is en probeer het opnieuw.
  
-| Foutcode | Gebruikersbericht |
+ 
+## <a name="webservicepackageinternalerror-http-status-code-500"></a>WebServicePackageInternalError (HTTP-status code 500)
+ 
+Ongeldig web service-pakket. Controleer of het gegeven webpakket juist is en probeer het opnieuw.
+ 
+| Foutcode | Gebruikers bericht |
 | ---------- |--------------|
-| ModuleFout | De grafiek van het webservicepakket is ongeldig. Details:{0} |
+| ModuleError | De grafiek van het web service-pakket is ongeldig. Nadere{0} |
  
-## <a name="initializingcontainers-http-status-code-503"></a>Containers initialiseren (HTTP-statuscode 503)
+## <a name="initializingcontainers-http-status-code-503"></a>InitializingContainers (HTTP-status code 503)
  
 De aanvraag kan niet worden uitgevoerd omdat de containers worden geïnitialiseerd.
  
  
-## <a name="serviceunavailable-http-status-code-503"></a>ServiceNiet beschikbaar (HTTP-statuscode 503)
+## <a name="serviceunavailable-http-status-code-503"></a>ServiceUnavailable (HTTP-status code 503)
  
-Service is tijdelijk niet beschikbaar.
+De service is tijdelijk niet beschikbaar.
  
-| Foutcode | Gebruikersbericht |
+| Foutcode | Gebruikers bericht |
 | ---------- |--------------|
-| NoMoreResources | Er zijn geen bronnen beschikbaar voor aanvraag. |
-| AanvraagThrottled | Verzoek was voor {0} eindpunt beperkt. De maximale gelijktijdigheid voor {1}het eindpunt is . |
-| TeVeelGelijktijdigverzoeken | Te veel gelijktijdige verzoeken verzonden. |
-| TooManyHostsBeingInitialized | Te veel hosts worden tegelijkertijd geïnitialiseerd. Overweeg throttling / opnieuw proberen. |
-| TooManyHostsBeingInitializedPerModel TooManyHostsBeingInitializedPerModel TooManyHostsBeingInitializedPerModel TooMany | Te veel hosts worden tegelijkertijd geïnitialiseerd. Overweeg throttling / opnieuw proberen. |
+| NoMoreResources | Er zijn geen resources beschikbaar voor de aanvraag. |
+| RequestThrottled | De aanvraag is beperkt voor {0} het eind punt. De maximale gelijktijdigheid voor het eind punt {1}is. |
+| TooManyConcurrentRequests | Er zijn te veel gelijktijdige aanvragen verzonden. |
+| TooManyHostsBeingInitialized | Er worden te veel hosts tegelijk geïnitialiseerd. Overweeg het beperken/opnieuw proberen. |
+| TooManyHostsBeingInitializedPerModel | Er worden te veel hosts tegelijk geïnitialiseerd. Overweeg het beperken/opnieuw proberen. |
  
-## <a name="gatewaytimeout-http-status-code-504"></a>GatewayTimeout (HTTP-statuscode 504)
+## <a name="gatewaytimeout-http-status-code-504"></a>GatewayTimeout (HTTP-status code 504)
  
-De bewerking kon niet binnen de toegestane tijd worden voltooid.
+De bewerking kan niet worden voltooid binnen de toegestane tijd.
  
-| Foutcode | Gebruikersbericht |
+| Foutcode | Gebruikers bericht |
 | ---------- |--------------|
-| Back-endInitialisatieTime-out | De initialisatie van de webservice kan niet binnen de toegestane tijd worden voltooid. |
-| BackendScoreTimeout | De uitvoering van de webserviceaanvraag kan niet binnen de toegestane tijd worden voltooid. |
+| BackendInitializationTimeout | De initialisatie van de webservice kan niet worden voltooid binnen de toegestane tijd. |
+| BackendScoreTimeout | De uitvoering van de webservice-aanvraag kan niet worden voltooid binnen de toegestane tijd. |
  

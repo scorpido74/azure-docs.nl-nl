@@ -4,12 +4,12 @@ description: Meer informatie over welke poorten en adressen vereist zijn voor he
 services: container-service
 ms.topic: article
 ms.date: 03/10/2020
-ms.openlocfilehash: daf17ee4d6518de63dc642fd64acd6b4c5be7d2f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d723f7b1e7331e65d17dca5873b891ec46d76c0e
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 04/28/2020
-ms.locfileid: "82183922"
+ms.locfileid: "82207170"
 ---
 # <a name="control-egress-traffic-for-cluster-nodes-in-azure-kubernetes-service-aks"></a>Uitgaand verkeer beheren voor cluster knooppunten in azure Kubernetes service (AKS)
 
@@ -165,19 +165,15 @@ De volgende FQDN/toepassings regels zijn vereist voor AKS-clusters waarvoor de A
 | *. GK. \<location\>. azmk8s.io | HTTPS: 443    | Azure Policy invoeg toepassing die het gate keeper-controle-eind punt dat wordt uitgevoerd op de master server voor de controle resultaten krijgt. |
 | dc.services.visualstudio.com | HTTPS: 443 | Azure Policy-invoeg toepassing waarmee telemetriegegevens worden verzonden naar het apps Insights-eind punt. |
 
-## <a name="required-by-windows-server-based-nodes-in-public-preview-enabled"></a>Vereist voor knoop punten op basis van Windows Server (in open bare preview-versie) ingeschakeld
+## <a name="required-by-windows-server-based-nodes-enabled"></a>Vereist voor knoop punten die op Windows Server zijn ingeschakeld
 
-> [!CAUTION]
-> Enkele van de onderstaande functies zijn beschikbaar als preview-versie.  De suggesties in dit artikel zijn onderhevig aan wijzigingen wanneer de functie wordt verplaatst naar de open bare preview-versie en toekomstige release fasen.
-
-De volgende FQDN/toepassings regels zijn vereist voor op Windows Server gebaseerde AKS-clusters:
+De volgende FQDN/toepassings regels zijn vereist voor het gebruik van Windows Server-knooppunt groepen:
 
 | FQDN                                    | Poort      | Gebruiken      |
 |-----------------------------------------|-----------|----------|
 | onegetcdn.azureedge.net, winlayers.blob.core.windows.net, winlayers.cdn.mscr.io, go.microsoft.com | HTTPS: 443 | Windows-gerelateerde binaire bestanden installeren |
 | mp.microsoft.com, www<span></span>. msftconnecttest.com, ctldl.windowsupdate.com | HTTP: 80 | Windows-gerelateerde binaire bestanden installeren |
 | kms.core.windows.net | TCP: 1688 | Windows-gerelateerde binaire bestanden installeren |
-
 
 ## <a name="next-steps"></a>Volgende stappen
 
