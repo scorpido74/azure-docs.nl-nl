@@ -1,6 +1,6 @@
 ---
-title: CLI-voorbeeld Geoback-up herstellen - Azure SQL-database
-description: Azure CLI-voorbeeldscript om een Azure SQL Managed Instance Database te herstellen vanuit een georedundante back-up.
+title: CLI-voor beeld geo-backup-Azure SQL Database herstellen
+description: Azure CLI-voorbeeld script voor het herstellen van een Azure SQL Managed instance-data base vanuit een geografisch redundante back-up.
 services: sql-database
 ms.service: sql-database
 ms.subservice: backup-restore
@@ -12,15 +12,15 @@ ms.author: jovanpop
 ms.reviewer: sstein
 ms.date: 07/03/2019
 ms.openlocfilehash: 1bd0322aee83fb980c60382a2ff3eaab1cd1313c
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80061753"
 ---
-# <a name="use-cli-to-restore-a-managed-instance-database-to-another-geo-region"></a>CLI gebruiken om een database voor beheerde instantie te herstellen naar een andere georegio
+# <a name="use-cli-to-restore-a-managed-instance-database-to-another-geo-region"></a>CLI gebruiken om een Data Base van een beheerd exemplaar te herstellen naar een andere geo-regio
 
-In dit voorbeeld van het Azure CLI-script wordt een Azure SQL Managed Instance-database hersteld vanuit een extern geo-gebied (geo-restore).  
+In dit voor beeld van Azure CLI-script wordt een Data Base van Azure SQL Managed instance teruggezet vanuit een externe geografische regio (geo-Restore).  
 
 Als u ervoor kiest om de CLI lokaal te installeren en te gebruiken, moet u voor dit artikel gebruikmaken van Azure CLI versie 2.0 of hoger. Voer `az --version` uit om de versie te bekijken. Als u uw CLI wilt installeren of upgraden, raadpleegt u [De Azure CLI installeren](/cli/azure/install-azure-cli).
 
@@ -28,7 +28,7 @@ Als u ervoor kiest om de CLI lokaal te installeren en te gebruiken, moet u voor 
 
 ### <a name="prerequisites"></a>Vereisten
 
-Zie Azure CLI gebruiken [om een azure SQL Database-beheerde instantie te maken.](sql-database-create-configure-managed-instance-cli.md)
+Een bestaand paar beheerde exemplaren, Zie [Azure CLI gebruiken om een Azure SQL database beheerd exemplaar te maken](sql-database-create-configure-managed-instance-cli.md).
 
 ### <a name="sign-in-to-azure"></a>Aanmelden bij Azure
 
@@ -52,13 +52,13 @@ echo "Restoring $($managedDatabase) to $($targetInstance)..."
 az sql midb restore -g $resource --mi $instance -n $managedDatabase --dest-name $targetInstance --time "2018-05-20T05:34:22"
 ```
 
-## <a name="sample-reference"></a>Voorbeeldverwijzing
+## <a name="sample-reference"></a>Voorbeeld verwijzing
 
 In dit script worden de volgende opdrachten gebruikt. Elke opdracht in de tabel is gekoppeld aan de specifieke documentatie over de opdracht.
 
 | | |
 |---|---|
-| [az sql midb](/cli/azure/sql/midb) | Opdrachten voor beheerde instantiedatabase. |
+| [AZ SQL DEELB](/cli/azure/sql/midb) | Managed instance data base commands. |
 
 ## <a name="next-steps"></a>Volgende stappen
 

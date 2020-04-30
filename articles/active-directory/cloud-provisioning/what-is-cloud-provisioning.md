@@ -1,6 +1,6 @@
 ---
-title: Wat is Azure AD Connect cloud provisioning. | Microsoft Docs
-description: Beschrijft Azure AD Connect cloud provisioning.
+title: Wat is Azure AD Connect Cloud inrichting. | Microsoft Docs
+description: Hierin wordt Azure AD Connect Cloud inrichting beschreven.
 services: active-directory
 author: billmath
 manager: daveba
@@ -12,60 +12,60 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: a86d34fca9a88b0df601533a0f3de1cc97ad1a2f
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80050599"
 ---
 # <a name="what-is-azure-ad-connect-cloud-provisioning"></a>Wat is Azure AD Connect-cloudinrichting?
-Azure AD Connect cloud provisioning is een nieuwe Microsoft-agent die is ontworpen om uw hybride identiteitsdoelen voor synchronisatie van gebruikers, groepen en contactpersonen naar Azure AD te bereiken en te verwezenlijken.  Het kan worden gebruikt naast Azure AD Connect-synchronisatie en biedt de volgende voordelen:
+Azure AD Connect Cloud inrichting is een nieuwe micro soft-agent die is ontworpen om tegemoet te komen aan uw hybride identiteits doelstellingen voor synchronisatie van gebruikers, groepen en contact personen naar Azure AD.  Deze kan naast Azure AD Connect Sync worden gebruikt en biedt de volgende voor delen:
     
-- Ondersteuning voor het synchroniseren met een Azure AD-tenant vanuit een active directory-forestomgeving met meerdere forestverbindingen: de veelvoorkomende scenario's omvatten fusie & overname, waarbij de AD-forests van het overgenomen bedrijf zijn geïsoleerd van de AD-forests van het moederbedrijf en bedrijven die historisch gezien meerdere AD-forests hebben gehad.
-- Vereenvoudigde installatie met lichtgewicht provisioning agents: de agents fungeren als een brug van AD naar Azure AD, waarbij alle synchronisatieconfiguratie wordt beheerd in de cloud. 
-- Meerdere inrichtingsagents kunnen worden gebruikt om implementaties met hoge beschikbaarheid te vereenvoudigen, met name voor organisaties die vertrouwen op wachtwoordhashsynchronisatie van AD naar Azure AD.
+- Ondersteuning voor het synchroniseren naar een Azure AD-Tenant vanuit een niet-verbonden omgeving met meerdere forests Active Directory-forest: de algemene scenario's omvatten fusie & acquisitie, waarbij de AD-forests van het verkregen bedrijf zijn geïsoleerd van de AD-forests van het moeder bedrijf en bedrijven die historisch meerdere AD-forests hebben.
+- Vereenvoudigde installatie met licht gewicht: de agents fungeren als een brug van AD naar Azure AD, met alle synchronisatie configuratie die in de Cloud wordt beheerd. 
+- Meerdere inrichtings agenten kunnen worden gebruikt om implementaties met een hoge Beschik baarheid te vereenvoudigen, met name kritiek voor organisaties die vertrouwen op wachtwoord hash-synchronisatie van AD naar Azure AD.
 
 
 ![Wat is Azure AD Connect?](media/what-is-cloud-provisioning/architecture.png)
 
-## <a name="how-is-azure-ad-connect-cloud-provisioning-different-from-azure-ad-connect-sync"></a>Hoe verschilt azure AD Connect cloudprovisioning van Azure AD Connect sync?
-Met Azure AD Connect-cloudinrichting wordt de inrichting van AD naar Azure AD georkestreerd in Microsoft Online Services. Een organisatie hoeft alleen in hun on-premises en iaas-omgeving een lichtgewicht agent te implementeren die fungeert als een brug tussen Azure AD en AD. De inrichtingsconfiguratie wordt opgeslagen in Azure AD en beheerd als onderdeel van de service.
+## <a name="how-is-azure-ad-connect-cloud-provisioning-different-from-azure-ad-connect-sync"></a>Hoe wijkt Azure AD Connect Cloud inrichting af van Azure AD Connect synchronisatie?
+Met Azure AD Connect Cloud inrichting wordt het inrichten van AD naar Azure AD ingedeeld in micro soft Online Services. Een organisatie hoeft alleen in hun on-premises en IaaS omgeving te implementeren, een licht gewicht agent die fungeert als een brug tussen Azure AD en AD. De inrichtings configuratie wordt opgeslagen in azure AD en beheerd als onderdeel van de service.
 
-In de volgende tabel vindt u een vergelijking tussen Azure AD Connect en Azure AD Connect-cloudinrichting:
+De volgende tabel bevat een vergelijking tussen Azure AD Connect en Azure AD Connect Cloud inrichting:
 
-| Functie | Azure Active Directory Connect-synchronisatie| Azure Active Directory Connect-cloudinrichting |
+| Functie | Azure Active Directory Connect synchronisatie| Azure Active Directory Connect Cloud inrichting |
 |:--- |:---:|:---:|
 |Verbinding maken met één on-premises AD-forest|● |● |
 | Verbinding maken met meerdere on-premises AD-forests |● |● |
-| Verbinding maken met meerdere losgekoppelde on-premises AD-forests | |● |
-| Lichtgewicht agent installatiemodel | |● |
-| Meerdere actieve agenten voor hoge beschikbaarheid | |● |
-| Verbinding maken met LDAP-mappen|●| | 
-| Ondersteuning voor gebruikersobjecten |● |● |
-| Ondersteuning voor groepsobjecten |● |● |
-| Ondersteuning voor contactobjecten |● |● |
-| Ondersteuning voor apparaatobjecten |● | |
-| Basisaanpassing toestaan voor kenmerkstromen |● |● |
-| Sychronize Exchange online attributen |● |● |
-| Extensiekenmerken 1-15 synchroniseren |● |● |
-| Door de klant gedefinieerde AD-kenmerken synchroniseren (directory-extensies) |● | |
-| Ondersteuning voor wachtwoordhashsynchronisatie |●|●|
-| Ondersteuning voor pass-through-verificatie |●||
-| Steun voor federatie |●|●|
+| Verbinding maken met meerdere niet-verbonden on-premises AD-forests | |● |
+| Lightweight agent-installatie model | |● |
+| Meerdere actieve agents voor hoge Beschik baarheid | |● |
+| Verbinding maken met LDAP-directory's|●| | 
+| Ondersteuning voor gebruikers objecten |● |● |
+| Ondersteuning voor groeps objecten |● |● |
+| Ondersteuning voor contact objecten |● |● |
+| Ondersteuning voor apparaatgroepen |● | |
+| Basis aanpassing toestaan voor kenmerk stromen |● |● |
+| Sychronize Exchange Online-kenmerken |● |● |
+| Extensie kenmerken synchroniseren 1-15 |● |● |
+| Door de klant gedefinieerde AD-kenmerken (Directory-extensies) synchroniseren |● | |
+| Ondersteuning voor wachtwoord-hash-synchronisatie |●|●|
+| Ondersteuning voor Pass-Through-verificatie |●||
+| Ondersteuning voor Federatie |●|●|
 | Naadloze eenmalige aanmelding|● |●|
 | Biedt ondersteuning voor installatie op een domeincontroller |● |● |
 | Ondersteuning voor Windows Server 2012 en Windows Server 2012 R2 |● |● |
-| Filteren op domeinen/oe's/groepen |● |● |
-| Filteren op kenmerkwaarden van objecten |● | |
+| Filteren op domeinen/Ou's/groepen |● |● |
+| Filteren op kenmerk waarden van objecten |● | |
 | Toestaan dat minimale set kenmerken worden gesynchroniseerd (MinSync) |● |● |
 | Toestaan dat het verwijderen van kenmerken van AD naar Azure AD stroomt |● |● |
 | Geavanceerd aanpassen voor kenmerkstromen toestaan |● | |
-| Ondersteuning voor terugschrijven (wachtwoorden, apparaten, groepen) |● | |
+| Ondersteuning voor write-back (wacht woorden, apparaten, groepen) |● | |
 | Ondersteuning voor Azure AD Domain Services|● | |
-| [Hybride terugschrijftekst van Exchange](../hybrid/reference-connect-sync-attributes-synchronized.md#exchange-hybrid-writeback) |● | |
+| [Hybride write-back van Exchange](../hybrid/reference-connect-sync-attributes-synchronized.md#exchange-hybrid-writeback) |● | |
 | Ondersteuning voor meer dan 50.000 objecten per AD-domein |● | |
 
 ## <a name="next-steps"></a>Volgende stappen 
 
 - [Wat is inrichting?](what-is-provisioning.md)
-- [Cloudprovisioning installeren](how-to-install.md)
+- [Cloud inrichting installeren](how-to-install.md)

@@ -1,50 +1,50 @@
 ---
 title: Containerinstallatiekopieën importeren
-description: Containerafbeeldingen importeren in een Azure-containerregister met Azure API's, zonder dat dockeropdrachten hoeven uit te voeren.
+description: Container installatie kopieën importeren in een Azure container Registry met behulp van Azure Api's, zonder dat u docker-opdrachten hoeft uit te voeren.
 ms.topic: article
 ms.date: 03/16/2020
 ms.openlocfilehash: caf7a47ac8f7ff0e72d2e049a7013542d274a225
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80051927"
 ---
-# <a name="import-container-images-to-a-container-registry"></a>Containerafbeeldingen importeren in een containerregister
+# <a name="import-container-images-to-a-container-registry"></a>Container installatie kopieën importeren in een container register
 
-U containerafbeeldingen eenvoudig importeren (kopiëren) naar een Azure-containerregister, zonder docker-opdrachten te gebruiken. Importeer bijvoorbeeld afbeeldingen uit een ontwikkelingsregister naar een productieregister of kopieer basisafbeeldingen uit een openbaar register.
+U kunt container installatie kopieën eenvoudig importeren (kopiëren) naar een Azure container Registry zonder gebruik te maken van docker-opdrachten. Importeer bijvoorbeeld installatie kopieën van een ontwikkelings register naar een productie register of kopieer basis installatie kopieën uit een openbaar REGI ster.
 
-Azure Container Registry verwerkt een aantal veelvoorkomende scenario's om afbeeldingen uit een bestaand register te kopiëren:
+Azure Container Registry verwerkt een aantal algemene scenario's voor het kopiëren van installatie kopieën uit een bestaand REGI ster:
 
-* Importeren uit een openbaar register
+* Importeren uit een openbaar REGI ster
 
-* Importeren uit een ander Azure-containerregister, in hetzelfde of een ander Azure-abonnement
+* Importeren vanuit een ander Azure container registry in hetzelfde of een ander Azure-abonnement
 
-* Importeren uit een niet-Azure-privécontainerregister
+* Importeren uit een persoonlijk niet-Azure-container register
 
-Het importeren van afbeeldingen in een Azure-containerregister heeft de volgende voordelen ten opzichte van het gebruik van Docker CLI-opdrachten:
+Het importeren van afbeeldingen in een Azure container Registry heeft de volgende voor delen ten opzichte van het gebruik van docker CLI-opdrachten:
 
-* Omdat uw clientomgeving geen lokale Docker-installatie nodig heeft, importeert u een containerafbeelding, ongeacht het ondersteunde besturingssysteemtype.
+* Omdat uw client omgeving geen lokale docker-installatie nodig heeft, importeert u een container installatie kopie, ongeacht het ondersteunde type besturings systeem.
 
-* Wanneer u afbeeldingen met meerdere architectuur importeert (zoals officiële Docker-afbeeldingen), worden afbeeldingen voor alle architecturen en platforms die in de manifestlijst zijn opgegeven, gekopieerd.
+* Bij het importeren van installatie kopieën met meerdere architecturen (zoals officiële docker-installatie kopieën), worden installatie kopieën voor alle architecturen en platformen die zijn opgegeven in de manifest lijst gekopieerd.
 
-Als u containerafbeeldingen wilt importeren, moet u in dit artikel de Azure CLI uitvoeren in Azure Cloud Shell of lokaal (versie 2.0.55 of hoger aanbevolen). Voer `az --version` uit om de versie te bekijken. Als u Azure CLI 2.0 wilt installeren of upgraden, raadpleegt u [Azure CLI 2.0 installeren][azure-cli].
+Als u container installatie kopieën wilt importeren, moet u de Azure CLI in Azure Cloud Shell of lokaal uitvoeren (versie 2.0.55 of hoger aanbevolen). Voer `az --version` uit om de versie te bekijken. Als u Azure CLI 2.0 wilt installeren of upgraden, raadpleegt u [Azure CLI 2.0 installeren][azure-cli].
 
 > [!NOTE]
-> Als u identieke containerafbeeldingen over meerdere Azure-regio's moet distribueren, ondersteunt Azure Container Registry ook [georeplicatie.](container-registry-geo-replication.md) Door een register te geo-repliceren (Premium-servicelaag vereist), u meerdere regio's met identieke afbeeldings- en tagnamen uit één register weergeven.
+> Als u identieke container installatie kopieën wilt distribueren over meerdere Azure-regio's, ondersteunt Azure Container Registry ook [geo-replicatie](container-registry-geo-replication.md). Door Geo-replicatie van een REGI ster (Premium-servicelaag vereist), kunt u meerdere regio's met identieke installatie kopieën en label namen uit één REGI ster gebruiken.
 >
 
 ## <a name="prerequisites"></a>Vereisten
 
-Als u nog geen Azure-containerregister hebt, maakt u een register. Zie [Snelstart: Een privécontainerregister maken met azure cli](container-registry-get-started-azure-cli.md)voor stappen.
+Als u nog geen Azure container Registry hebt, maakt u een REGI ster. Zie [Quick Start: een persoonlijk container register maken met behulp van de Azure cli](container-registry-get-started-azure-cli.md)voor stappen.
 
-Als u een afbeelding wilt importeren in een Azure-containerregister, moet uw identiteit schrijfmachtigingen hebben voor het doelregister (ten minste de rol van inzender). Zie [rollen en machtigingen voor Azure Container Registry](container-registry-roles.md). 
+Als u een installatie kopie naar een Azure container Registry wilt importeren, moet uw identiteit schrijf machtigingen hebben voor het doel register (ten minste de rol van bijdrager). Zie [Azure container Registry-rollen en-machtigingen](container-registry-roles.md). 
 
-## <a name="import-from-a-public-registry"></a>Importeren uit een openbaar register
+## <a name="import-from-a-public-registry"></a>Importeren uit een openbaar REGI ster
 
-### <a name="import-from-docker-hub"></a>Importeren vanuit Docker Hub
+### <a name="import-from-docker-hub"></a>Importeren uit docker hub
 
-Gebruik bijvoorbeeld de opdracht [az acr-import][az-acr-import] om `hello-world:latest` de afbeelding met meerdere architectuur van Docker Hub te importeren in een register met de naam *myregistry.* Omdat `hello-world` het een officiële afbeelding van Docker Hub `library` is, bevindt deze afbeelding zich in de standaardrepository. Voeg de naam van de opslagplaats en eventueel `--source` een tag toe in de waarde van de afbeeldingsparameter. (U optioneel een afbeelding identificeren aan de doorsnede ervan in plaats van op tag, wat een bepaalde versie van een afbeelding garandeert.)
+Gebruik bijvoorbeeld de opdracht [AZ ACR import][az-acr-import] om de installatie kopie met meerdere architecturen `hello-world:latest` te importeren vanuit docker hub naar een REGI ster met de naam *myregistry*. Omdat `hello-world` een officiële installatie kopie van docker hub is, bevindt deze installatie `library` kopie zich in de standaard opslagplaats. Neem de naam van de opslag plaats en eventueel een tag op in de `--source` waarde van de para meter image. (U kunt een installatie kopie eventueel identificeren met de samen vatting van het manifest in plaats van met een tag, waarmee een bepaalde versie van een installatie kopie wordt gegarandeerd.)
  
 ```azurecli
 az acr import \
@@ -53,7 +53,7 @@ az acr import \
   --image hello-world:latest
 ```
 
-U controleren of aan deze afbeelding meerdere `az acr repository show-manifests` manifesten zijn gekoppeld door de opdracht uit te voeren:
+U kunt controleren of er meerdere manifesten zijn gekoppeld aan deze installatie kopie door `az acr repository show-manifests` de opdracht uit te voeren:
 
 ```azurecli
 az acr repository show-manifests \
@@ -61,7 +61,7 @@ az acr repository show-manifests \
   --repository hello-world
 ```
 
-In het volgende voorbeeld wordt `tensorflow` een openbare afbeelding uit de opslagplaats in Docker Hub geïmporteerd:
+In het volgende voor beeld wordt een open bare `tensorflow` installatie kopie uit de opslag plaats in docker hub geïmporteerd:
 
 ```azurecli
 az acr import \
@@ -70,9 +70,9 @@ az acr import \
   --image tensorflow:latest-gpu
 ```
 
-### <a name="import-from-microsoft-container-registry"></a>Importeren uit Microsoft Container Registry
+### <a name="import-from-microsoft-container-registry"></a>Importeren uit micro soft Container Registry
 
-Importeer bijvoorbeeld de nieuwste Windows Server `windows` Core-afbeelding uit de opslagplaats in Microsoft Container Registry.
+U kunt bijvoorbeeld de meest recente installatie kopie van Windows Server importeren `windows` uit de opslag plaats in micro soft container Registry.
 
 ```azurecli
 az acr import \
@@ -81,17 +81,17 @@ az acr import \
 --image servercore:latest
 ```
 
-## <a name="import-from-another-azure-container-registry"></a>Importeren uit een ander Azure-containerregister
+## <a name="import-from-another-azure-container-registry"></a>Importeren vanuit een ander Azure container Registry
 
-U een afbeelding importeren uit een ander Azure-containerregister met geïntegreerde Azure Active Directory-machtigingen.
+U kunt een installatie kopie vanuit een ander Azure container Registry importeren met behulp van geïntegreerde Azure Active Directory-machtigingen.
 
-* Uw identiteit moet azure Active Directory-machtigingen hebben om uit het bronregister (leesfunctie) te lezen en te schrijven naar het doelregister (rol inzender).
+* Uw identiteit moet Azure Active Directory machtigingen hebben voor het lezen van het bron register (rol van lezer) en voor het schrijven naar het doel register (rol Inzender).
 
-* Het register kan zich in dezelfde of een ander Azure-abonnement in dezelfde Active Directory-tenant bevinden.
+* Het REGI ster kan zich in hetzelfde of een ander Azure-abonnement bevindt als de Tenant van hetzelfde Active Directory.
 
-### <a name="import-from-a-registry-in-the-same-subscription"></a>Importeren uit een register in hetzelfde abonnement
+### <a name="import-from-a-registry-in-the-same-subscription"></a>Importeren uit een REGI ster in hetzelfde abonnement
 
-Importeer de `aci-helloworld:latest` afbeelding bijvoorbeeld uit een bronregister *mysourceregistry* naar *myregistry* in hetzelfde Azure-abonnement.
+Importeer bijvoorbeeld de `aci-helloworld:latest` installatie kopie van een bron register *mysourceregistry* naar *myregistry* in hetzelfde Azure-abonnement.
 
 ```azurecli
 az acr import \
@@ -100,7 +100,7 @@ az acr import \
   --image aci-helloworld:latest
 ```
 
-In het volgende voorbeeld wordt een afbeelding geïmporteerd op manifestdigest `sha256:...`(SHA-256 hash, weergegeven als ) in plaats van op tag:
+In het volgende voor beeld wordt een installatie kopie geïmporteerd door de manifest Digest (SHA- `sha256:...`256-Hash, weer gegeven als) in plaats van op label:
 
 ```azurecli
 az acr import \
@@ -108,9 +108,9 @@ az acr import \
   --source mysourceregistry.azurecr.io/aci-helloworld@sha256:123456abcdefg 
 ```
 
-### <a name="import-from-a-registry-in-a-different-subscription"></a>Importeren uit een register in een ander abonnement
+### <a name="import-from-a-registry-in-a-different-subscription"></a>Importeren uit een REGI ster in een ander abonnement
 
-In het volgende voorbeeld bevindt *mysourceregistry* zich in een ander abonnement dan *myregistry* in dezelfde Active Directory-tenant. Lever de resource-id van `--registry` het bronregister met de parameter. Merk op `--source` dat de parameter alleen de bronopslagplaats en -tag opgeeft, niet de naam van de registerinlogserver.
+In het volgende voor beeld bevindt *mysourceregistry* zich in een ander abonnement dan *myregistry* in dezelfde Active Directory Tenant. Geef de bron-ID van het bron register op `--registry` met de para meter. U ziet dat `--source` de para meter alleen de bron opslagplaats en-tag opgeeft, niet de naam van de aanmeldings server van het REGI ster.
 
 ```azurecli
 az acr import \
@@ -120,9 +120,9 @@ az acr import \
   --registry /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/sourceResourceGroup/providers/Microsoft.ContainerRegistry/registries/mysourceregistry
 ```
 
-### <a name="import-from-a-registry-using-service-principal-credentials"></a>Importeren uit een register met behulp van hoofdreferenties van de service
+### <a name="import-from-a-registry-using-service-principal-credentials"></a>Importeren uit een REGI ster met de referenties van de Service-Principal
 
-Als u wilt importeren uit een register dat u niet openen met Active Directory-machtigingen, u serviceprincipal-referenties gebruiken (indien beschikbaar). Geef de appID en het wachtwoord van een Active [Directory-serviceprincipal](container-registry-auth-service-principal.md) met ACRPull-toegang tot het bronregister. Het gebruik van een serviceprincipal is handig voor het bouwen van systemen en andere onbeheerde systemen die afbeeldingen in uw register moeten importeren.
+Als u wilt importeren uit een REGI ster waartoe u geen toegang hebt met behulp van Active Directory machtigingen, kunt u de referenties van de Service-Principal gebruiken (indien beschikbaar). Geef de appID en het wacht woord op van een Active Directory [Service-Principal](container-registry-auth-service-principal.md) die toegang heeft tot het bron register ACRPull. Het gebruik van een Service-Principal is handig voor het bouwen van systemen en andere systemen zonder toezicht die installatie kopieën naar uw REGI ster moeten importeren.
 
 ```azurecli
 az acr import \
@@ -133,9 +133,9 @@ az acr import \
   –-password <SP_Passwd>
 ```
 
-## <a name="import-from-a-non-azure-private-container-registry"></a>Importeren uit een niet-Azure-privécontainerregister
+## <a name="import-from-a-non-azure-private-container-registry"></a>Importeren uit een persoonlijk niet-Azure-container register
 
-Importeer een afbeelding uit een privéregister door referenties op te geven waarmee u toegang tot het register ophalen. Trek bijvoorbeeld een afbeelding uit een privé Docker-register: 
+Importeer een installatie kopie uit een persoonlijk REGI ster door referenties op te geven waarmee toegang tot het REGI ster wordt ingeschakeld. U kunt bijvoorbeeld een installatie kopie uit een privé-docker-REGI ster halen: 
 
 ```azurecli
 az acr import \
@@ -148,7 +148,7 @@ az acr import \
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In dit artikel hebt u geleerd over het importeren van containerafbeeldingen naar een Azure-containerregister vanuit een openbaar register of een ander privéregister. Zie de opdrachtreferentie [az acr import][az-acr-import] voor extra opties voor het importeren van afbeeldingen. 
+In dit artikel hebt u geleerd over het importeren van container installatie kopieën naar een Azure container Registry vanuit een openbaar REGI ster of een ander privé register. Zie voor aanvullende opties voor het importeren van installatie kopieën de verwijzing [AZ ACR import][az-acr-import] Command. 
 
 
 <!-- LINKS - Internal -->

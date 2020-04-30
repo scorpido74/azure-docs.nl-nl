@@ -1,6 +1,6 @@
 ---
-title: CLI-voorbeeld toevoegen aan failovergroep - Azure SQL Database
-description: Azure CLI-voorbeeldscript om een enkele database van Azure SQL Database te maken, deze toe te voegen aan een failovergroep en failover te testen.
+title: CLI-voor beeld-een afzonderlijke data base aan een failovergroep toevoegen-Azure SQL Database
+description: Azure CLI-voorbeeld script om een Azure SQL Database afzonderlijke Data Base te maken, deze toe te voegen aan een failovergroep en failover te testen.
 services: sql-database
 ms.service: sql-database
 ms.subservice: high-availability
@@ -12,15 +12,15 @@ ms.author: mathoma
 ms.reviewer: carlrab
 ms.date: 07/16/2019
 ms.openlocfilehash: bc238f08021bb9fb16b8c7319e63acebdfec3948
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80061894"
 ---
-# <a name="use-cli-to-add-an-azure-sql-database-into-a-failover-group"></a>CLI gebruiken om een Azure SQL-database toe te voegen aan een failovergroep
+# <a name="use-cli-to-add-an-azure-sql-database-into-a-failover-group"></a>CLI gebruiken om een Azure SQL Database toe te voegen aan een failovergroep
 
-Met dit Voorbeeld van azure CLI-script wordt één database gemaakt, wordt een failovergroep gemaakt, wordt de database eraan toegevoegd en wordt failover getest.
+In dit voor beeld van Azure CLI-script wordt één data base gemaakt, wordt er een failovergroep gemaakt, wordt de data base aan toegevoegd en wordt de failover getest.
 
 Als u ervoor kiest om de CLI lokaal te installeren en te gebruiken, moet u voor dit onderwerp gebruikmaken van Azure CLI versie 2.0 of hoger. Voer `az --version` uit om de versie te bekijken. Als u uw CLI wilt installeren of upgraden, raadpleegt u [De Azure CLI installeren]( /cli/azure/install-azure-cli).
 
@@ -42,20 +42,20 @@ az account set -s $subscription # ...or use 'az login'
 
 ### <a name="clean-up-deployment"></a>Opschonen van implementatie
 
-Gebruik de volgende opdracht om de resourcegroep en alle bijbehorende resources te verwijderen.
+Gebruik de volgende opdracht om de resource groep en alle bijbehorende resources te verwijderen.
 
 ```azurecli-interactive
 az group delete --name $resource
 ```
 
-## <a name="sample-reference"></a>Voorbeeldverwijzing
+## <a name="sample-reference"></a>Voorbeeld verwijzing
 
 In dit script worden de volgende opdrachten gebruikt. Elke opdracht in de tabel is gekoppeld aan de specifieke documentatie over de opdracht.
 
 | | |
 |---|---|
-| [az sql db](/cli/azure/sql/db) | Databaseopdrachten. |
-| [az sql failover-group](/cli/azure/sql/failover-group) | Opdrachten voor failovergroepen. |
+| [AZ SQL DB](/cli/azure/sql/db) | Data base-opdrachten. |
+| [AZ SQL failover-Group](/cli/azure/sql/failover-group) | Failover-groeps opdrachten. |
 
 ## <a name="next-steps"></a>Volgende stappen
 
