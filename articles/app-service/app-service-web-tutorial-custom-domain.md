@@ -5,14 +5,14 @@ keywords: app service, azure app service, domeintoewijzing, domeinnaam, bestaand
 ms.assetid: dc446e0e-0958-48ea-8d99-441d2b947a7c
 ms.devlang: nodejs
 ms.topic: tutorial
-ms.date: 06/06/2019
+ms.date: 04/27/2020
 ms.custom: mvc, seodec18
-ms.openlocfilehash: adc9b60ce1c31076a91ec44b9656752b464e024d
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: HT
+ms.openlocfilehash: 116ec218b1f3947b85b4ab865df30477f05c601a
+ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
+ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 04/29/2020
-ms.locfileid: "80811782"
+ms.locfileid: "82559924"
 ---
 # <a name="tutorial-map-an-existing-custom-dns-name-to-azure-app-service"></a>Zelf studie: een bestaande aangepaste DNS-naam toewijzen aan Azure App Service
 
@@ -93,6 +93,12 @@ Wanneer u de volgende melding ziet, is de schaalbewerking voltooid.
 
 <a name="cname" aria-hidden="true"></a>
 
+## <a name="get-domain-verification-id"></a>Domein verificatie-ID ophalen
+
+Als u een aangepast domein wilt toevoegen aan uw app, moet u uw eigendom van het domein controleren door een verificatie-ID toe te voegen als een TXT-record met uw domein provider. Klik in de linkernavigatiebalk van uw app-pagina op **resource Explorer** onder **ontwikkelingsprogram ma's**en klik vervolgens op **Go**.
+
+In de JSON-weer gave van de eigenschappen van uw app `customDomainVerificationId`zoekt en kopieert u de waarde binnen de dubbele aanhalings tekens. U hebt deze verificatie-ID nodig voor de volgende stap.
+
 ## <a name="map-your-domain"></a>Uw domein toewijzen
 
 U kunt ofwel een **CNAME-record** of een **A-record** gebruiken voor het toewijzen van een aangepaste DNS-naam aan App Service. Volg de bijbehorende stappen:
@@ -114,11 +120,14 @@ In het voorbeeld van de zelfstudie voegt u toe een CNAME-record toe voor het sub
 
 #### <a name="create-the-cname-record"></a>Het CNAME-record maken
 
-Voeg een CNAME-record toe om een subdomein toe te wijzen aan de standaard domein`<app_name>.azurewebsites.net`naam van `<app_name>` de app (, waarbij de naam van uw app is).
+Wijs een subdomein toe aan de standaard domein naam van de`<app_name>.azurewebsites.net`app ( `<app_name>` , waarbij de naam van uw app is). Als u een CNAME-toewijzing voor `www` het subdomein wilt maken, maakt u twee records:
 
-Voeg voor het voorbeelddomein `www.contoso.com` een CNAME-record, dat is toegewezen aan de naam `www`, toe aan `<app_name>.azurewebsites.net`.
+| Recordtype | Host | Waarde | Opmerkingen |
+| - | - | - |
+| CNAME | `www` | `<app_name>.azurewebsites.net` | De domein toewijzing zelf. |
+| TXT | `asuid.www` | [De verificatie-ID die u eerder hebt ontvangen](#get-domain-verification-id) | App Service opent de `asuid.<subdomain>` TXT-record om uw eigendom van het aangepaste domein te controleren. |
 
-Nadat u de CNAME toevoegt, lijkt de pagina DNS-records op het volgende voorbeeld:
+Nadat u de records CNAME en TXT hebt toegevoegd, ziet de pagina DNS-records eruit als in het volgende voor beeld:
 
 ![Navigatie naar Azure-app in de portal](./media/app-service-web-tutorial-custom-domain/cname-record.png)
 
@@ -183,17 +192,12 @@ Op de pagina **Aangepaste domeinen** kopieert u het IP-adres van de app.
 
 #### <a name="create-the-a-record"></a>Een A-record maken
 
-Als u een A-record wilt toewijzen aan een app, vereist App Service **twee** DNS-records:
+Als u een A-record wilt toewijzen aan een app, meestal aan het hoofd domein, maakt u twee records:
 
-- Een **A**-record toewijzen aan het IP-adres van de app.
-- Een **txt** -record die moet worden toegewezen aan de standaard domein `<app_name>.azurewebsites.net`naam van de app. App Service gebruikt dit record alleen tijdens de configuratie, om te controleren of u de eigenaar bent van het aangepaste domein. Nadat uw aangepaste domein is gevalideerd en geconfigureerd in App Service, kunt u dit TXT-record verwijderen.
-
-Maak voor het domeinvoorbeeld `contoso.com` de A- en TXT-records overeenkomstig de volgende tabel (`@` vertegenwoordigt doorgaans het hoofddomein).
-
-| Recordtype | Host | Waarde |
+| Recordtype | Host | Waarde | Opmerkingen |
 | - | - | - |
-| A | `@` | IP-adres uit [Het IP-adres van de app kopiëren](#info) |
-| TXT | `@` | `<app_name>.azurewebsites.net` |
+| A | `@` | IP-adres uit [Het IP-adres van de app kopiëren](#info) | De domein toewijzing zelf (`@` staat meestal voor het hoofd domein). |
+| TXT | `asuid` | [De verificatie-ID die u eerder hebt ontvangen](#get-domain-verification-id) | App Service opent de `asuid.<subdomain>` TXT-record om uw eigendom van het aangepaste domein te controleren. Gebruik `asuid`voor het hoofd domein. |
 
 > [!NOTE]
 > Als u een subdomein (zoals `www.contoso.com`) wilt toevoegen met behulp van een A-record in plaats van een aanbevolen [CNAME-record](#map-a-cname-record), moeten uw A-record en TXT-record eruitzien zoals in de volgende tabel:
@@ -201,7 +205,7 @@ Maak voor het domeinvoorbeeld `contoso.com` de A- en TXT-records overeenkomstig 
 > | Recordtype | Host | Waarde |
 > | - | - | - |
 > | A | `www` | IP-adres uit [Het IP-adres van de app kopiëren](#info) |
-> | TXT | `www` | `<app_name>.azurewebsites.net` |
+> | TXT | `asuid.www` | `<app_name>.azurewebsites.net` |
 >
 
 Wanneer de records worden toegevoegd, lijkt de pagina met DNS-records op het volgende voorbeeld:

@@ -1,26 +1,25 @@
 ---
-title: 'Zelfstudie: uw ASP.NET-app en Azure SQL Database-code implementeren met behulp van Azure DevOps Projects'
-description: Met DevOps Projects kunt u eenvoudig aan de slag met Azure. Met DevOps Projects kunt u in slechts enkele stappen een ASP.NET-app en Azure SQL Database-code implementeren.
+title: 'Zelf studie: uw ASP.NET-app en Azure SQL Database code implementeren met behulp van Azure DevOps starter'
+description: DevOps Starter maakt het eenvoudig om aan de slag te gaan met Azure. Met DevOps starter kunt u in een paar snelle stappen uw ASP.NET-app en Azure SQL Database-code implementeren.
 ms.author: mlearned
 ms.manager: gwallace
 ms.prod: devops
 ms.technology: devops-cicd
 ms.topic: tutorial
-ms.date: 07/09/2018
+ms.date: 03/24/2020
 author: mlearned
-monikerRange: vsts
-ms.openlocfilehash: 560b16a40d73d07df6c9f446c7196cd930e2274e
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 93b150d47f1703662ebda5b017e1824cf74b7ab0
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "71971490"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82233700"
 ---
-# <a name="tutorial-deploy-your-aspnet-app-and-azure-sql-database-code-by-using-azure-devops-projects"></a>Zelfstudie: uw ASP.NET-app en Azure SQL Database-code implementeren met behulp van Azure DevOps Projects
+# <a name="tutorial-deploy-your-aspnet-app-and-azure-sql-database-code-by-using-azure-devops-starter"></a>Zelf studie: uw ASP.NET-app en Azure SQL Database code implementeren met behulp van Azure DevOps starter
 
-Azure DevOps Projects biedt een vereenvoudigde ervaring waar u uw bestaande code en Git-opslagplaats gebruikt of een voorbeeldtoepassing kiest voor het maken van een pijplijn voor CI (Continue integratie) en CD (Continue levering) naar Azure. 
+Azure DevOps starter biedt een vereenvoudigde ervaring waar u uw bestaande code en git opslag plaats kunt meenemen, of een voorbeeld toepassing moet kiezen voor het maken van een doorlopende integratie (CI) en continue levering (CD)-pijp lijn naar Azure. 
 
-In DevOps Projects gebeurt ook het volgende:
+DevOps Starter:
 * Er worden automatisch Azure-resources gemaakt, zoals een Azure SQL-database.
 * Er wordt een release-pijplijn gemaakt en geconfigureerd in Azure Pipelines die een build-pijplijn voor CI bevat.
 * Er wordt een release-pijplijn voor CD ingesteld. 
@@ -29,7 +28,7 @@ In DevOps Projects gebeurt ook het volgende:
 In deze zelfstudie leert u het volgende:
 
 > [!div class="checklist"]
-> * Azure DevOps Projects gebruiken om uw ASP.NET-app en Azure SQL Database-code te implementeren
+> * Azure DevOps starter gebruiken om uw ASP.NET-app en Azure SQL Database code te implementeren
 > * Azure DevOps en een Azure-abonnement configureren 
 > * De CI-pijplijn onderzoeken
 > * De CD-pijplijn onderzoeken
@@ -43,24 +42,21 @@ In deze zelfstudie leert u het volgende:
 
 ## <a name="create-a-project-in-devops-projects-for-an-aspnet-app-and-an-azure-sql-database"></a>Een project in DevOps Projects maken voor een ASP.NET-app en een Azure SQL-database
 
-In DevOps Projects wordt een CI/CD-pijplijn gemaakt in Azure Pipelines. U kunt een nieuwe Azure DevOps-organisatie maken of een bestaande organisatie gebruiken. Het DevOps Projects maakt ook Azure-resources, zoals een Azure SQL-database, in het Azure-abonnement van uw keuze.
+DevOps Starter maakt een CI/CD-pijp lijn in azure-pijp lijnen. U kunt een nieuwe Azure DevOps-organisatie maken of een bestaande organisatie gebruiken. DevOps Starter maakt ook Azure-resources, zoals een Azure-SQL database, in het Azure-abonnement van uw keuze.
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 
-1. Selecteer **Een resource maken** in het linkerdeelvenster.
+1. Typ **DevOps starter**in het zoekvak en selecteer. Klik op **toevoegen** om een nieuw item te maken.
 
-1. Typ in het zoekvak **DevOps Projects** en selecteer **Maken**.
-
-    ![Het DevOps Projects-dashboard](_img/azure-devops-project-github/fullbrowser.png)
+    ![Het DevOps-starter dash board](_img/azure-devops-starter-aks/search-devops-starter.png)
 
 1. Selecteer **.NET** en vervolgens **Volgende**.
 
 1. Selecteer bij **Een toepassingsframework kiezen** de optie **ASP.NET**.
 
-1. Selecteer **Een database toevoegen** en selecteer **Volgende**.  
-    Het toepassingsframework dat u in een vorige stap hebt gekozen, bepaalt welk type implementatiedoel hier beschikbaar is voor de Azure-service. 
+1. Selecteer **Een database toevoegen** en selecteer **Volgende**. Het toepassingsframework dat u in een vorige stap hebt gekozen, bepaalt welk type implementatiedoel hier beschikbaar is voor de Azure-service. 
     
-1. Selecteer **Volgende**.
+1. Selecteer **Next**.
 
 ## <a name="configure-azure-devops-and-an-azure-subscription"></a>Azure DevOps en een Azure-abonnement configureren
 
@@ -68,57 +64,45 @@ In DevOps Projects wordt een CI/CD-pijplijn gemaakt in Azure Pipelines. U kunt e
 
 1. Voer een naam in voor het Azure DevOps-project. 
 
-1. Selecteer uw Azure-abonnementsservices.  
-    U kunt **Wijzigen** selecteren als u aanvullende configuratie-instellingen van Azure wilt bekijken en de gebruikersnaam in de sectie **Informatie over de aanmeldingsgegevens voor de databaseserver** wilt identificeren. Bewaar de gebruikersnaam voor toekomstige stappen in deze zelfstudie. Als u deze optionele stap uitvoert, sluit u het gebied met de Azure-configuratie voordat u **Gereed** selecteert.
+1. Selecteer uw Azure-abonnementsservices. U kunt **Wijzigen** selecteren als u aanvullende configuratie-instellingen van Azure wilt bekijken en de gebruikersnaam in de sectie **Informatie over de aanmeldingsgegevens voor de databaseserver** wilt identificeren. Bewaar de gebruikersnaam voor toekomstige stappen in deze zelfstudie. Als u deze optionele stap uitvoert, sluit u het gebied met de Azure-configuratie voordat u **Gereed** selecteert.
  
-1. Selecteer **Done**.  
-    Na enkele minuten is het proces voltooid en wordt het dashboard van DevOps Projects geopend in de Azure-portal. U kunt ook rechtstreeks vanuit **Alle resources** in de Azure-portal naar het dashboard navigeren. Selecteer aan de rechterkant **Bladeren** om uw actieve toepassing weer te geven.
+1. Selecteer **Done**. Na een paar minuten wordt het proces voltooid en wordt het DevOps starter-dash board geopend in de Azure Portal. U kunt ook rechtstreeks vanuit **Alle resources** in de Azure-portal naar het dashboard navigeren. Selecteer aan de rechterkant **Bladeren** om uw actieve toepassing weer te geven.
     
 ## <a name="examine-the-ci-pipeline"></a>De CI-pijplijn onderzoeken
 
-In DevOps Projects wordt automatisch een volledige CI/CD-pijplijn geconfigureerd in Azure Repos. U kunt de pijplijn verkennen en aanpassen. Ga als volgt te werk om vertrouwd te raken met de Azure DevOps-build-pijplijn:
+DevOps starter configureert automatisch een volledige CI/CD-pijp lijn in azure opslag plaatsen. U kunt de pijplijn verkennen en aanpassen. Ga als volgt te werk om vertrouwd te raken met de Azure DevOps-build-pijplijn:
 
-1. Selecteer boven aan het dashboard DevOps Projects de optie **Pijplijnen bouwen**.  
-    Op een tabblad in de browser wordt de build-pijplijn voor het nieuwe project weergegeven.
+1. Selecteer boven aan het DevOps-starter-dash board **Build pijp lijnen**. Op een tabblad in de browser wordt de build-pijplijn voor het nieuwe project weergegeven.
 
-1. Wijs het veld **Status** aan en selecteer het beletselteken (...).  
-    Er wordt een menu met verschillende opties weergegeven, bijvoorbeeld om een nieuwe build in de wachtrij te plaatsen, een build te onderbreken of de build-pijplijn te bewerken.
+1. Wijs het veld **status** aan en selecteer vervolgens het weglatings teken (...). In een menu worden verschillende opties weer gegeven, zoals het in de wachtrij plaatsen van een nieuwe build, het onderbreken van een build en het bewerken van de build-pijp lijn.
 
-1. Selecteer **Bewerken**.
+1. Selecteer **bewerken**.
 
-1. In dit deelvenster kunt u de verschillende taken voor uw build-pijplijn onderzoeken.  
-    De build voert verschillende taken uit, zoals het ophalen van bronnen uit de Git-opslagplaats, het herstellen van afhankelijkheden en het publiceren van uitvoer die wordt gebruikt voor implementaties.
+1. In dit deelvenster kunt u de verschillende taken voor uw build-pijplijn onderzoeken. De build voert verschillende taken uit, zoals het ophalen van bronnen uit de Git-opslagplaats, het herstellen van afhankelijkheden en het publiceren van uitvoer die wordt gebruikt voor implementaties.
 
 1. Selecteer bovenaan de build-pijplijn de naam van de build-pijplijn.
 
 1. Wijzig de naam van de build-pijplijn in een meer beschrijvende naam. Selecteer **Opslaan en wachtrij** en selecteer vervolgens **Opslaan**.
 
-1. Selecteer onder de naam van de build-pipeline de optie **Geschiedenis**.  
-    In dit deelvenster ziet u een audittrail van recente wijzigingen voor de build. Azure Pipelines houdt alle wijzigingen in de build-pijplijn bij en biedt de mogelijkheid om versies te vergelijken.
+1. Selecteer onder de naam van de build-pipeline de optie **Geschiedenis**. In dit deelvenster ziet u een audittrail van recente wijzigingen voor de build. Azure Pipelines houdt alle wijzigingen in de build-pijplijn bij en biedt de mogelijkheid om versies te vergelijken.
 
-1. Selecteer **Triggers**.  
-    In DevOps Projects wordt automatisch een CI-trigger gemaakt en met elke doorvoering naar de opslagplaats wordt een nieuwe build gestart. Desgewenst kunt u kiezen of u vertakkingen van het CI-proces wilt opnemen of uitsluiten.
+1. Selecteer **Triggers**. DevOps Starter maakt automatisch een CI-trigger en elke door voering aan de opslag plaats start een nieuwe build. Desgewenst kunt u kiezen of u vertakkingen van het CI-proces wilt opnemen of uitsluiten.
 
-1. Selecteer **Retentie**.  
-    Afhankelijk van het scenario kunt u beleidsregels opgeven om een bepaald aantal builds te behouden of te verwijderen.
+1. Selecteer **Retentie**. Afhankelijk van het scenario kunt u beleidsregels opgeven om een bepaald aantal builds te behouden of te verwijderen.
 
 ## <a name="examine-the-cd-pipeline"></a>De CD-pijplijn onderzoeken
 
-In DevOps Projects worden automatisch de benodigde stappen gemaakt en geconfigureerd om vanuit uw Azure DevOps-organisatie te implementeren naar uw Azure-abonnement. Deze stappen omvatten het configureren van een Azure-serviceverbinding om Azure DevOps te verifiëren bij uw Azure-abonnement. Er wordt ook automatisch een CD-pijplijn gemaakt die de CD aan de virtuele machine van Azure verstrekt. Voor meer informatie over de CD-pijplijn van Azure DevOps doet u het volgende:
+DevOps Starter maakt en configureert automatisch de benodigde stappen voor het implementeren van uw Azure DevOps-organisatie naar uw Azure-abonnement. Deze stappen omvatten het configureren van een Azure-serviceverbinding om Azure DevOps te verifiëren bij uw Azure-abonnement. Er wordt ook automatisch een CD-pijplijn gemaakt die de CD aan de virtuele machine van Azure verstrekt. Voor meer informatie over de CD-pijplijn van Azure DevOps doet u het volgende:
 
-1. Selecteer **Build en release** en selecteer vervolgens **Releases**.  
-    In DevOps Projects wordt een release-pijplijn gemaakt om implementaties in Azure te beheren.
+1. Selecteer **Build en release** en selecteer vervolgens **Releases**. DevOps Starter maakt een release pijplijn voor het beheren van implementaties naar Azure.
 
-1. Selecteer het beletselteken (...) naast de release-pijplijn en selecteer **Bewerken**.  
-    De release-pijplijn bevat een *pijplijn* die het releaseproces definieert.
+1. Selecteer het beletselteken (...) naast de release-pijplijn en selecteer **Bewerken**. De release-pijplijn bevat een *pijplijn* die het releaseproces definieert.
 
-1. Onder **Artefacten** selecteert u **Neerzetten**.  
-    Met de build-pijplijn die u in de vorige stappen hebt onderzocht, wordt de uitvoer geproduceerd die wordt gebruikt voor het artefact. 
+1. Onder **Artefacten** selecteert u **Neerzetten**. Met de build-pijplijn die u in de vorige stappen hebt onderzocht, wordt de uitvoer geproduceerd die wordt gebruikt voor het artefact. 
 
-1. Selecteer **Continue implementatietrigger** rechts van het pictogram **Neerzetten**.  
-    Deze release-pijplijn heeft een ingeschakelde CD-trigger die een implementatie uitvoert telkens wanneer een nieuw build-artefact beschikbaar is. U kunt de trigger eventueel uitschakelen zodat de implementaties handmatig moeten worden uitgevoerd. 
+1. Selecteer **Continue implementatietrigger** rechts van het pictogram **Neerzetten**. Deze release-pijplijn heeft een ingeschakelde CD-trigger die een implementatie uitvoert telkens wanneer een nieuw build-artefact beschikbaar is. U kunt de trigger eventueel uitschakelen zodat de implementaties handmatig moeten worden uitgevoerd. 
 
-    DevOps Projects stelt een willekeurig SQL-wachtwoord in en gebruikt dit voor de release-pijplijn.
+    DevOps starter stelt een wille keurig SQL-wacht woord in en gebruikt dit voor de release pijplijn.
     
 1. Selecteer aan de linkerkant **Variabelen**. 
 
@@ -127,22 +111,17 @@ In DevOps Projects worden automatisch de benodigde stappen gemaakt en geconfigur
   
 1. Selecteer het hangslotpictogram naast het vak **Waarde**, voer het nieuwe wachtwoord in en selecteer **Opslaan**.
 
-1. Selecteer aan de linkerkant **Taken** en selecteer uw omgeving.  
-    Taken zijn de activiteiten die door het implementatieproces worden uitgevoerd. Ze zijn gegroepeerd in fasen. Deze release-pijplijn heeft één fase. Deze bevat een taak voor een *Azure App Service-implementatie* en een voor een *Azure SQL Database-implementatie*.
+1. Selecteer aan de linkerkant **Taken** en selecteer uw omgeving. Taken zijn de activiteiten die door het implementatieproces worden uitgevoerd. Ze zijn gegroepeerd in fasen. Deze release-pijplijn heeft één fase. Deze bevat een taak voor een *Azure App Service-implementatie* en een voor een *Azure SQL Database-implementatie*.
 
-1. Selecteer de taak *Azure SQL uitvoeren* en controleer de verschillende eigenschappen die worden gebruikt voor de SQL-implementatie.  
-    Onder **Implementatiepakket** ziet u dat de taak gebruikmaakt van een *SQL DACPAC-bestand*.
+1. Selecteer de taak *Azure SQL uitvoeren* en controleer de verschillende eigenschappen die worden gebruikt voor de SQL-implementatie. Onder **Implementatiepakket** ziet u dat de taak gebruikmaakt van een *SQL DACPAC-bestand*.
 
 1. Selecteer aan de rechterkant **Versies weergeven** om een versiegeschiedenis weer te geven.
 
-1. Selecteer het beletselteken (...) naast een versie en selecteer **Openen**.  
-     U kunt verschillende menu's verkennen, zoals een versieoverzicht, gekoppelde werkitems en tests.
+1. Selecteer het beletselteken (...) naast een versie en selecteer **Openen**. U kunt verschillende menu's verkennen, zoals een versieoverzicht, gekoppelde werkitems en tests.
 
-1. Selecteer **Doorvoeringen**.  
-     In deze weergave worden de codedoorvoeringen weergegeven die zijn gekoppeld aan deze implementatie. Vergelijk versies om de doorvoerverschillen tussen implementaties weer te geven.
+1. Selecteer **Doorvoeringen**. In deze weergave worden de codedoorvoeringen weergegeven die zijn gekoppeld aan deze implementatie. Vergelijk versies om de doorvoerverschillen tussen implementaties weer te geven.
 
-1. Selecteer **Logboeken**.  
-     De logboeken bevatten nuttige informatie over het implementatieproces. U kunt beide weergeven tijdens en na de implementaties.
+1. Selecteer **Logboeken**. De logboeken bevatten nuttige informatie over het implementatieproces. U kunt beide weergeven tijdens en na de implementaties.
 
 ## <a name="commit-changes-to-azure-repos-and-automatically-deploy-them-to-azure"></a>Wijzigingen doorvoeren in Azure Repos en automatisch implementeren naar Azure 
 
@@ -157,8 +136,7 @@ U bent nu klaar om met een team samen te werken aan de app met behulp van een CI
 
 1. Breng een wijziging aan in het bestand, bijvoorbeeld door wat tekst toe te voegen in een van de div-tags. 
 
-1. Selecteer in de rechterbovenhoek **Doorvoeren** en selecteer vervolgens nogmaals **Doorvoeren** om de wijziging te pushen.  
-    Na een paar seconden wordt er in Azure DevOps een build gestart en wordt er een versie uitgevoerd om de wijzigingen te implementeren. Bewaak de buildstatus op het DevOps Projects-dashboard of in de browser met uw Azure DevOps-organisatie.
+1. Selecteer in de rechterbovenhoek **Doorvoeren** en selecteer vervolgens nogmaals **Doorvoeren** om de wijziging te pushen. Na een paar seconden wordt er in Azure DevOps een build gestart en wordt er een versie uitgevoerd om de wijzigingen te implementeren. Bewaak de status van de build in het DevOps-start dashboard of in de browser met uw Azure DevOps-organisatie.
 
 1. Wanneer de release is voltooid, vernieuwt u de toepassing om de wijzigingen te controleren.
 
@@ -166,44 +144,42 @@ U bent nu klaar om met een team samen te werken aan de app met behulp van een CI
 
 U hebt de juiste machtigingen nodig om verbinding te kunnen maken met de Azure SQL-database.
 
-1. Selecteer **SQL Database** in het dashboard van DevOps Projects om naar de beheerpagina voor de SQL-database te gaan.
+1. Selecteer in het DevOps-start dashboard **SQL database** om naar de beheer pagina voor de SQL database te gaan.
    
 1. Selecteer **Serverfirewall instellen** en vervolgens **IP van client toevoegen**. 
 
-1. Selecteer **Opslaan**.  
-    Het IP-adres van de client heeft nu toegang tot de SQL Server Azure-resource.
+1. Selecteer **Opslaan**. Het IP-adres van de client heeft nu toegang tot de SQL Server Azure-resource.
 
 1. Ga terug naar het deelvenster **SQL Database**. 
 
 1. Selecteer rechts de servernaam om naar de configuratiepagina voor **SQL Server** te navigeren.
 
-1. Selecteer **Wachtwoord opnieuw instellen**, voer een wachtwoord in voor de aanmeldgegevens van de SQL Server-beheerder en selecteer **Opslaan**.  
-    Zorg dat u dit wachtwoord bewaart voor gebruik verderop in deze zelfstudie.
+1. Selecteer **Wachtwoord opnieuw instellen**, voer een wachtwoord in voor de aanmeldgegevens van de SQL Server-beheerder en selecteer **Opslaan**. Zorg dat u dit wachtwoord bewaart voor gebruik verderop in deze zelfstudie.
 
     U kunt nu desgewenst gebruikmaken van clienthulpprogramma's zoals SQL Server Management Studio of Visual Studio om verbinding te maken met SQL Server en de Azure SQL-database. Gebruik de eigenschap **Servernaam** om verbinding te maken.
 
-    Als u de gebruikersnaam van de database niet hebt gewijzigd tijdens de eerste configuratie van het project in DevOps Projects, is uw gebruikersnaam het lokale gedeelte van uw e-mailadres. Als uw e-mailadres bijvoorbeeld *johndoe-microsoft.com\@* is, is uw gebruikersnaam *johndoe.*
+    Als u de gebruikersnaam van de database niet hebt gewijzigd tijdens de eerste configuratie van het project in DevOps Projects, is uw gebruikersnaam het lokale gedeelte van uw e-mailadres. Als uw e-mail adres bijvoorbeeld *\@JANJANSEN Microsoft.com*is, is uw gebruikers naam *JANJANSEN*.
 
    > [!NOTE]
-   > Als u uw wachtwoord voor de SQL-aanmelding wijzigt, moet u het wachtwoord in de variabele van de release-pijplijn wijzigen zoals staat beschreven in de sectie De CD-pijplijn onderzoeken.
+   > Als u uw wacht woord voor de SQL-aanmelding wijzigt, moet u het wacht woord wijzigen in de variabele release pijplijn, zoals wordt beschreven in de sectie [de cd-pipeline bekijken](#examine-the-cd-pipeline) .
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
-Tijdens het testen kunt u voorkomen dat de kosten oplopen door resources op te schonen. U kunt de Azure SQL-database en de gerelateerde resources die u in deze zelfstudie hebt gemaakt, verwijderen wanneer u ze niet meer nodig hebt. Hiertoe gebruikt u de functionaliteit **Verwijderen** op het dashboard van DevOps Projects.
+Tijdens het testen kunt u voorkomen dat de kosten oplopen door resources op te schonen. U kunt de Azure SQL-database en de gerelateerde resources die u in deze zelfstudie hebt gemaakt, verwijderen wanneer u ze niet meer nodig hebt. Als u dit wilt doen, gebruikt u de **verwijderings** functionaliteit op het DevOps starter-dash board.
 
 > [!IMPORTANT]
-> Met de volgende procedure worden resources permanent verwijderd. Met de functionaliteit *Verwijderen* verwijdert u de gegevens die door het project in DevOps Projects zijn gemaakt in zowel Azure als Azure DevOps. Als ze zijn verwijderd, kunt u ze niet meer terughalen. Gebruik deze procedure pas nadat u de prompts zorgvuldig hebt gelezen.
+> Met de volgende procedure worden resources permanent verwijderd. De functie *verwijderen* vernietigt de gegevens die door het project in DevOps starter zijn gemaakt in zowel Azure als Azure DevOps, en u kunt deze niet ophalen. Gebruik deze procedure pas nadat u de prompts zorgvuldig hebt gelezen.
 
-1. Ga in de Azure-portal naar het dashboard van DevOps Projects.
+1. Ga in het Azure Portal naar het DevOps starter-dash board.
 2. Selecteer in de rechterbovenhoek **Verwijderen**. 
 3. Selecteer **Ja** bij de prompt om de resources *definitief te verwijderen*.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-U kunt de build- en release-pijplijn desgewenst wijzigen in overeenstemming met de behoeften van uw team. U kunt dit CI/CD-patroon ook als een sjabloon voor uw andere pijplijnen gebruiken. In deze zelfstudie hebt u het volgende geleerd:
+U kunt de build- en release-pijplijn desgewenst wijzigen in overeenstemming met de behoeften van uw team. U kunt dit CI/CD-patroon ook als een sjabloon voor uw andere pijplijnen gebruiken. In deze zelfstudie heeft u het volgende geleerd:
 
 > [!div class="checklist"]
-> * Azure DevOps Projects gebruiken om uw ASP.NET-app en Azure SQL Database-code te implementeren
+> * Azure DevOps starter gebruiken om uw ASP.NET-app en Azure SQL Database code te implementeren
 > * Azure DevOps en een Azure-abonnement configureren 
 > * De CI-pijplijn onderzoeken
 > * De CD-pijplijn onderzoeken

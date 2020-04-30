@@ -9,19 +9,19 @@ ms.topic: include
 ms.date: 11/27/2019
 ms.author: prmitiki
 ms.openlocfilehash: c84cd8b1d7850576eb608d88ba91c3079edb0d68
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81680811"
 ---
-Voer de opdracht **Get-AzPeering uit** om de lijst met peerings te krijgen.
+Voer de opdracht **Get-AzPeering** uit om de lijst met peerings op te halen.
 
 ```powershell
 $directPeering = Get-AzPeering -ResourceGroupName "PeeringResourceGroup" -Name "SeattleDirectPeering"
 ```
 
-In het volgende voorbeeld wordt het antwoord weergegeven wanneer end-to-end provisioning is voltooid.
+In het volgende voor beeld wordt het antwoord weer gegeven wanneer end-to-end-inrichting is voltooid.
 
 ```powershell
     Name                 : SeattleDirectPeering

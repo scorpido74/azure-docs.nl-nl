@@ -7,10 +7,10 @@ ms.topic: include
 ms.date: 04/23/2020
 ms.author: dacoulte
 ms.openlocfilehash: 04e607296478520298a2febab61a7edac911a59c
-ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "82132125"
 ---
 Er is een maximum aantal voor elk object type voor Azure Policy. De vermelding _Bereik_ slaat op het abonnement of op de [beheergroep](../articles/governance/management-groups/overview.md).

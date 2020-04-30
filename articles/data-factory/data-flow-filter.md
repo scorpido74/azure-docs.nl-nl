@@ -1,6 +1,6 @@
 ---
-title: Filtertransformatie in kaartgegevensstroom
-description: Rijen filteren met de filtertransformatie in de toewijzingsgegevensstroom van Azure Data Factory
+title: Trans formatie filteren in gegevens stroom toewijzen
+description: Rijen filteren met behulp van de filter transformatie in Azure Data Factory gegevens stroom toewijzen
 author: kromerm
 ms.author: makromer
 ms.reviewer: daperlov
@@ -9,23 +9,23 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 10/16/2019
 ms.openlocfilehash: 32a40f3d4da93318c6d2ec25295c89a7b53141e4
-ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/17/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81606427"
 ---
-# <a name="filter-transformation-in-mapping-data-flow"></a>Filtertransformatie in kaartgegevensstroom
+# <a name="filter-transformation-in-mapping-data-flow"></a>Trans formatie filteren in gegevens stroom toewijzen
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-Met de filtertransformaties kan rijfilteren op basis van een voorwaarde. De uitvoerstroom bevat alle rijen die overeenkomen met de filtervoorwaarde. De filtertransformatie is vergelijkbaar met een WHERE-component in SQL.
+Met filter transformaties kunt u filteren op rijen op basis van een voor waarde. De uitvoer stroom bevat alle rijen die overeenkomen met de filter voorwaarde. De filter transformatie is vergelijkbaar met een WHERE-component in SQL.
 
 ## <a name="configuration"></a>Configuratie
 
-Gebruik de opbouw van gegevensstromenexpressie om een expressie voor de filtervoorwaarde in te voeren. Als u de opbouwfunctie voor expressies wilt openen, klikt u op het blauwe vak. De filterconditie moet van het type booleaan zijn. Zie de documentatie van de [expressiebouwer](concepts-data-flow-expression-builder.md) voor meer informatie over het maken van een expressie.
+Gebruik de opbouw functie voor de data flow-expressie om een expressie voor de filter voorwaarde in te voeren. Klik op het blauwe vak om de opbouw functie voor expressies te openen. De filter voorwaarde moet van het type Boolean zijn. Zie de documentatie over [Expression Builder](concepts-data-flow-expression-builder.md) voor meer informatie over het maken van een expressie.
 
-![Filtertransformatie](media/data-flow/filter1.png "Filtertransformatie")
+![Filter transformatie](media/data-flow/filter1.png "Filter transformatie")
 
 ## <a name="data-flow-script"></a>Script voor gegevensstroom
 
@@ -40,13 +40,13 @@ Gebruik de opbouw van gegevensstromenexpressie om een expressie voor de filtervo
 
 ### <a name="example"></a>Voorbeeld
 
-Het onderstaande voorbeeld is `FilterBefore1960` een filtertransformatie `CleanData`met de naam die inkomende stroom inneemt. De filtervoorwaarde is `year <= 1960`de expressie .
+Het onderstaande voor beeld is een filter transformatie `FilterBefore1960` met de naam die in `CleanData`de binnenkomende stroom neemt. De filter voorwaarde is de expressie `year <= 1960`.
 
-In de UX van de Data Factory lijkt deze transformatie op de onderstaande afbeelding:
+In de Data Factory UX ziet deze trans formatie er als volgt uit:
 
-![Filtertransformatie](media/data-flow/filter1.png "Filtertransformatie")
+![Filter transformatie](media/data-flow/filter1.png "Filter transformatie")
 
-Het gegevensstroomscript voor deze transformatie bevindt zich in het onderstaande fragment:
+Het gegevens stroom script voor deze trans formatie bevindt zich in het volgende fragment:
 
 ```
 CleanData
@@ -58,4 +58,4 @@ CleanData
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Kolommen filteren met de [geselecteerde transformatie](data-flow-select.md)
+Kolommen filteren met de [geselecteerde trans formatie](data-flow-select.md)

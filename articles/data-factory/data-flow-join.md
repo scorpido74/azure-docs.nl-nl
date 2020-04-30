@@ -1,6 +1,6 @@
 ---
-title: Deelnemen aan transformatie in het toewijzen van gegevensstroom
-description: Gegevens uit twee gegevensbronnen combineren met de jointransformatie in azure datafabriek
+title: Trans formatie koppelen in gegevens stroom toewijzen
+description: Gegevens uit twee gegevens bronnen combi neren met behulp van de deelname transformatie in Azure Data Factory gegevens stroom toewijzen
 author: kromerm
 ms.author: makromer
 ms.reviewer: daperlov
@@ -8,78 +8,80 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 01/02/2020
-ms.openlocfilehash: 5c388dd2b3e4f40fbf2ed75cf3f1b8ab31aee394
-ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
+ms.openlocfilehash: 9b720470ac406ed0730e6243262dcf33d2df169a
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "81606408"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82233415"
 ---
-# <a name="join-transformation-in-mapping-data-flow"></a>Deelnemen aan transformatie in het toewijzen van gegevensstroom
+# <a name="join-transformation-in-mapping-data-flow"></a>Trans formatie koppelen in gegevens stroom toewijzen
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-Gebruik de join-transformatie om gegevens uit twee bronnen of stromen te combineren in een kaartgegevensstroom. De uitvoerstroom bevat alle kolommen van beide bronnen die overeenkomen op basis van een joinvoorwaarde. 
+Gebruik de koppelings transformatie om gegevens uit twee bronnen of streams te combi neren in een toewijzings gegevens stroom. De uitvoer stroom bevat alle kolommen van beide bronnen die overeenkomen op basis van een samenvoegings voorwaarde. 
 
-## <a name="join-types"></a>Jointypen
+## <a name="join-types"></a>Koppelings typen
 
-Het toewijzen van gegevensstromen ondersteunt momenteel vijf verschillende jointypen.
+Toewijzing van gegevens stromen ondersteunt momenteel vijf verschillende jointypen.
 
-### <a name="inner-join"></a>Inner Join
+### <a name="inner-join"></a>Inner join
 
-Inner join-expressie levert alleen rijen op met overeenkomende waarden in beide tabellen.
+Inner join uitvoer rijen met overeenkomende waarden in beide tabellen.
 
-### <a name="left-outer"></a>Linkerbuitenkant
+### <a name="left-outer"></a>Linker outer join
 
-Linker buitenste join retourneert alle rijen van de linkerstream en overeenkomende records van de rechterstream. Als een rij van de linkerstream geen overeenkomst heeft, worden de uitvoerkolommen van de rechterstream ingesteld op NULL. De uitvoer zal de rijen zijn die door een binnenjoin plus de ongeëvenaarde rijen van de linkerstroom worden teruggegeven.
-
-> [!NOTE]
-> De Spark-engine die door gegevensstromen wordt gebruikt, zal af en toe uitvallen als gevolg van mogelijke cartesiaanse producten in uw join-omstandigheden. Als dit gebeurt, u overschakelen naar een aangepaste cross join en handmatig voer uw join conditie. Dit kan resulteren in tragere prestaties in uw gegevensstromen, omdat de uitvoeringsengine mogelijk alle rijen van beide zijden van de relatie moet berekenen en vervolgens rijen moet filteren.
-
-### <a name="right-outer"></a>Rechter buiten
-
-Rechts naaste join retourneert alle rijen van de rechterstream en overeenkomende records van de linkerstream. Als een rij van de rechterstream niet overeenkomt, worden de uitvoerkolommen van de linkerstream ingesteld op NULL. De uitvoer zal de rijen zijn die door een binnenjoin plus de ongeëvenaarde rijen van de juiste stroom worden teruggegeven.
-
-### <a name="full-outer"></a>Volledige buitenkant
-
-Volledige buitenste join-uitvoer maakt alle kolommen en rijen van beide zijden met NULL-waarden voor kolommen die niet overeenkomen.
-
-### <a name="custom-cross-join"></a>Aangepaste cross join
-
-Cross join uitgangen het kruisproduct van de twee stromen op basis van een aandoening. Als u een voorwaarde gebruikt die geen gelijkheid is, geeft u een aangepaste expressie op als voorwaarde voor cross-join. De uitvoerstroom zijn alle rijen die voldoen aan de joinvoorwaarde.
-
-U dit jointype gebruiken voor ```OR``` non-equi joins en voorwaarden.
-
-Als u expliciet een volledig cartesiaans product wilt produceren, gebruikt u de transformatie Afgeleide kolom in elk van de twee onafhankelijke streams voordat de join wordt samengevoegd om een synthetische sleutel te maken waarop u wilt overeenkomen. Maak bijvoorbeeld een nieuwe kolom in Afgeleide ```SyntheticKey``` kolom in elke ```1```stream die wordt aangeroepen en stel deze in op die gelijk is aan . Gebruik ```a.SyntheticKey == b.SyntheticKey``` dan als uw aangepaste join expressie.
+Links outer join retourneert alle rijen uit de linker stroom en overeenkomende records uit de juiste stroom. Als een rij uit de linker stroom niet overeenkomt, worden de uitvoer kolommen van de juiste stroom ingesteld op NULL. De uitvoer is de rijen die worden geretourneerd door een inner join plus de niet-overeenkomende rijen uit de linker stroom.
 
 > [!NOTE]
-> Zorg ervoor dat u ten minste één kolom van elke kant van uw linker- en rechterrelatie opneemt in een aangepaste cross join. Het uitvoeren van kruisjoins met statische waarden in plaats van kolommen van elke kant resulteert in volledige scans van de gehele gegevensset, waardoor uw gegevensstroom slecht presteert.
+> De Spark-engine die wordt gebruikt door gegevens stromen kan af en toe mislukken vanwege mogelijke Cartesische producten in uw samenvoegings voorwaarden. Als dit het geval is, kunt u overschakelen naar een aangepaste cross-koppeling en de voor waarde voor samen voegen hand matig invoeren. Dit kan leiden tot tragere prestaties in uw gegevens stromen, omdat de engine voor het uitvoeren van de uitvoering mogelijk alle rijen van beide kanten van de relatie moet berekenen en vervolgens rijen filtert.
+
+### <a name="right-outer"></a>Rechter outer join
+
+De rechter outer join retourneert alle rijen uit de juiste stroom en overeenkomende records uit de linker stroom. Als een rij uit de juiste stroom niet overeenkomt, worden de uitvoer kolommen van de linker stroom ingesteld op NULL. De uitvoer is de rijen die worden geretourneerd door een inner join plus de niet-overeenkomende rijen uit de juiste stroom.
+
+### <a name="full-outer"></a>Volledige outer join
+
+Volledige outer join alle kolommen en rijen van beide zijden met NULL-waarden voor kolommen die niet overeenkomen, worden uitgevoerd.
+
+### <a name="custom-cross-join"></a>Aangepaste cross-koppeling
+
+Met cross-koppeling wordt het cross-product van de twee stromen op basis van een voor waarde uitgevoerd. Als u een voor waarde gebruikt die niet gelijk is aan elkaar, geeft u een aangepaste expressie op als cross-samenvoegings voorwaarde. De uitvoer stroom is alle rijen die voldoen aan de voor waarde voor samen voegen.
+
+U kunt dit jointype gebruiken voor niet-equi-samen voegingen ```OR``` en voor waarden.
+
+Als u een volledig Cartesisch product expliciet wilt maken, gebruikt u de afgeleide kolom transformatie in elk van de twee onafhankelijke streams voordat de koppeling wordt gemaakt om een synthetische sleutel te maken die overeenkomt met. Maak bijvoorbeeld een nieuwe kolom in de afgeleide kolom in elke stroom ```SyntheticKey``` met de naam en stel ```1```deze in op gelijk aan. Gebruik ```a.SyntheticKey == b.SyntheticKey``` vervolgens als uw aangepaste joinexpressie voor samen voegen.
+
+> [!NOTE]
+> Zorg ervoor dat u ten minste één kolom toevoegt aan elke zijde van uw linker-en rechter relatie in een aangepaste cross-koppeling. Het uitvoeren van cross-samen voegingen met statische waarden in plaats van kolommen van elke kant resulteert in volledige scans van de hele gegevensset, waardoor uw gegevens stroom slecht kan worden uitgevoerd.
 
 ## <a name="configuration"></a>Configuratie
 
-1. Kies met welke gegevensstroom je lid wordt in de **vervolgkeuzelijst Rechtsstroom.**
-1. Selecteer het **type Join**
-1. Kies op welke belangrijke kolommen u wilt overeenkomen voor de voorwaarde. Standaard zoekt de gegevensstroom naar gelijkheid tussen één kolom in elke stream. Als u wilt vergelijken via een berekende waarde, zweeft u boven de kolomvervolgkeuzelijst en selecteert **u Berekende kolom**.
+1. Kies in de vervolg keuzelijst **juiste stream** de gegevens stroom waarmee u wilt samen voegen.
+1. Het **jointype** selecteren
+1. Kies welke sleutel kolommen u wilt vergelijken voor de voor waarde voor samen voegen. De gegevens stroom zoekt standaard naar gelijkheid tussen één kolom in elke stroom. Als u wilt vergelijken via een berekende waarde, houdt u de muis aanwijzer boven de vervolg keuzelijst kolom en selecteert u **berekende kolom**.
 
-![Deelnemen aan transformatie](media/data-flow/join.png "Koppelen")
+![Trans formatie koppelen](media/data-flow/join.png "Koppelen")
 
-## <a name="optimizing-join-performance"></a>De prestaties van de join optimaliseren
+## <a name="optimizing-join-performance"></a>Prestaties van deelname optimaliseren
 
-In tegenstelling tot samenvoegen in tools zoals SSIS, is de join-transformatie geen verplichte samenvoegbewerking. De jointoetsen hoeven niet te worden gesorteerd. De join-bewerking vindt plaats op basis van de optimale join-bewerking in Spark, uitzending of map-side join.
+In tegens telling tot merge-koppeling in hulpprogram ma's als SSIS is de koppelings transformatie geen verplichte samenvoeg bewerking samen voegen. De koppelings sleutels hoeven niet te worden gesorteerd. De koppelings bewerking vindt plaats op basis van de optimale koppelings bewerking in Spark, broadcast of toewijzing aan de kaart zijde.
 
-![Join Transformatie optimaliseren](media/data-flow/joinoptimize.png "Deelnemen aan optimalisatie")
+![Trans formatie optimaliseren](media/data-flow/joinoptimize.png "Deelname aan optimalisatie")
 
-Als een of beide gegevensstromen passen in het geheugen van het werknemersknooppunt, u uw prestaties verder optimaliseren door **Broadcast** in te schakelen op het tabblad Optimaliseren. U uw gegevens ook opnieuw verdelen over de join-bewerking, zodat deze beter in het geheugen per werknemer passen.
+In samen voegingen, zoek acties en bestaande trans formatie, als een of beide gegevens stromen in het geheugen van het worker-knoop punt passen, kunt u de prestaties optimaliseren door **broadcast**in te scha kelen. Standaard wordt door de Spark-Engine automatisch besloten of één zijde al dan niet moet worden uitgezonden. Selecteer **vast**om hand matig te kiezen welke zijde u wilt uitzenden.
 
-## <a name="self-join"></a>Zelf lid worden
+Het is niet raadzaam om Broadcasting uit te scha kelen via de optie **uit** , tenzij uw samen voegingen worden uitgevoerd in time-outfouten.
 
-Als u een gegevensstroom met zichzelf wilt aansluiten, alias een bestaande stroom met een geselecteerde transformatie. Maak een nieuwe vertakking door op het pluspictogram naast een transformatie te klikken en **Nieuwe vertakking te**selecteren. Voeg een selecte transformatie toe aan de alias van de oorspronkelijke stream. Voeg een jointransformatie toe en kies de oorspronkelijke stream als de **linkerstream** en de selectietransformatie als de **rechterstream**.
+## <a name="self-join"></a>Self-deelname
 
-![Zelf lid worden](media/data-flow/selfjoin.png "Zelf lid worden")
+Als u een gegevens stroom met zichzelf wilt samen voegen, maakt u een alias voor een bestaande stroom met een SELECT trans formatie. Maak een nieuwe vertakking door te klikken op het plus pictogram naast een trans formatie en **nieuwe vertakking**te selecteren. Voeg een SELECT trans formatie toe om de oorspronkelijke stroom te aliassen. Voeg een koppelings transformatie toe en kies de oorspronkelijke stroom als de **linker stroom** en de Selecteer trans formatie als de **juiste stroom**.
 
-## <a name="testing-join-conditions"></a>Testen join voorwaarden
+![Self-deelname](media/data-flow/selfjoin.png "Self-deelname")
 
-Gebruik bij het testen van de join-transformaties met gegevensvoorbeeld in de foutopsporingsmodus een kleine set bekende gegevens. Wanneer u rijen uit een grote gegevensset bemonstert, u niet voorspellen welke rijen en sleutels worden gelezen voor het testen. Het resultaat is niet-deterministisch, wat betekent dat uw join voorwaarden mogen geen wedstrijden terug.
+## <a name="testing-join-conditions"></a>Voor waarden voor samen voegen testen
+
+Wanneer u de trans formaties van de koppeling met de preview-versie van gegevens in de foutopsporingsmodus test, moet u een kleine set bekende gegevens gebruiken. Wanneer u rijen van een grote gegevensset bemonstert, kunt u niet voors pellen welke rijen en sleutels worden gelezen voor testen. Het resultaat is niet-deterministisch, wat betekent dat uw samenvoegings voorwaarden geen overeenkomsten kunnen retour neren.
 
 ## <a name="data-flow-script"></a>Script voor gegevensstroom
 
@@ -90,19 +92,19 @@ Gebruik bij het testen van de join-transformaties met gegevensvoorbeeld in de fo
     join(
         <conditionalExpression>,
         joinType: { 'inner'> | 'outer' | 'left_outer' | 'right_outer' | 'cross' }
-        broadcast: { 'none' | 'left' | 'right' | 'both' }
+        broadcast: { 'auto' | 'left' | 'right' | 'both' | 'off' }
     ) ~> <joinTransformationName>
 ```
 
-### <a name="inner-join-example"></a>Voorbeeld van Inner join
+### <a name="inner-join-example"></a>Voor beeld van inner join
 
-Het onderstaande voorbeeld is `JoinMatchedData` een join `TripData` transformatie `TripFare`met de naam die links stream en rechter stream neemt .  De aan/s-voorwaarde is `hack_license == { hack_license} && TripData@medallion == TripFare@medallion && vendor_id == { vendor_id} && pickup_datetime == { pickup_datetime}` de expressie die true retourneert als `hack_license`de , `medallion`, en `vendor_id` `pickup_datetime` kolommen in elke streamovereenkomst. De `joinType` `'inner'`is. We zijn het inschakelen van uitzendingen `broadcast` in `'left'`alleen de linker stream dus heeft waarde .
+Het onderstaande voor beeld is een koppelings `JoinMatchedData` transformatie met de naam `TripData` die de stream `TripFare`en de juiste stroom gebruikt.  De voor waarde voor samen voegen is de expressie `hack_license == { hack_license} && TripData@medallion == TripFare@medallion && vendor_id == { vendor_id} && pickup_datetime == { pickup_datetime}` die `hack_license`waar `medallion`retourneert `vendor_id`als de `pickup_datetime` kolommen,, en in elke stroom overeenkomen. De `joinType` is `'inner'`. Het inschakelen van de uitzending in alleen de linker stroom `broadcast` heeft een `'left'`waarde.
 
-In de UX van de Data Factory lijkt deze transformatie op de onderstaande afbeelding:
+In de Data Factory UX ziet deze trans formatie er als volgt uit:
 
-![Voorbeeld van deelnemen](media/data-flow/join-script1.png "Voorbeeld van deelnemen")
+![Voor beeld van koppeling](media/data-flow/join-script1.png "Voor beeld van koppeling")
 
-Het gegevensstroomscript voor deze transformatie bevindt zich in het onderstaande fragment:
+Het gegevens stroom script voor deze trans formatie bevindt zich in het volgende fragment:
 
 ```
 TripData, TripFare
@@ -116,15 +118,15 @@ TripData, TripFare
     )~> JoinMatchedData
 ```
 
-### <a name="custom-cross-join-example"></a>Voorbeeld van aangepaste cross-join
+### <a name="custom-cross-join-example"></a>Voor beeld van aangepaste cross-koppeling
 
-Het onderstaande voorbeeld is `JoiningColumns` een join `LeftStream` transformatie `RightStream`met de naam die links stream en rechter stream neemt . Deze transformatie neemt twee streams in en `leftstreamcolumn` voegt alle `rightstreamcolumn`rijen samen waar de kolom groter is dan kolom . De `joinType` `cross`is. Broadcasting is niet `broadcast` ingeschakeld `'none'`heeft waarde .
+Het onderstaande voor beeld is een koppelings `JoiningColumns` transformatie met de naam `LeftStream` die de stream `RightStream`en de juiste stroom gebruikt. Deze trans formatie heeft twee stromen en voegt samen met alle rijen waarin de `leftstreamcolumn` kolom groter is dan `rightstreamcolumn`de kolom. De `joinType` is `cross`. Broadcasting is niet ingeschakeld `broadcast` heeft waarde `'none'`.
 
-In de UX van de Data Factory lijkt deze transformatie op de onderstaande afbeelding:
+In de Data Factory UX ziet deze trans formatie er als volgt uit:
 
-![Voorbeeld van deelnemen](media/data-flow/join-script2.png "Voorbeeld van deelnemen")
+![Voor beeld van koppeling](media/data-flow/join-script2.png "Voor beeld van koppeling")
 
-Het gegevensstroomscript voor deze transformatie bevindt zich in het onderstaande fragment:
+Het gegevens stroom script voor deze trans formatie bevindt zich in het volgende fragment:
 
 ```
 LeftStream, RightStream
@@ -137,4 +139,4 @@ LeftStream, RightStream
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Nadat u gegevens hebt samengebracht, maakt u een [afgeleide kolom](data-flow-derived-column.md) en [laat u](data-flow-sink.md) uw gegevens zinken naar een doelgegevensarchief.
+Nadat u gegevens hebt toegevoegd, maakt u een [afgeleide kolom](data-flow-derived-column.md) en [sinkt](data-flow-sink.md) u uw gegevens naar een doel gegevens archief.

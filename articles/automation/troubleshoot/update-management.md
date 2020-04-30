@@ -1,6 +1,6 @@
 ---
-title: Azure Automation Update Management oplossen
-description: Meer informatie over het oplossen en oplossen van problemen met de oplossing voor updatebeheer in Azure Automation.
+title: Problemen met Azure Automation Updatebeheer oplossen
+description: Meer informatie over het oplossen van problemen met de Updatebeheer oplossing in Azure Automation.
 services: automation
 author: mgoedtel
 ms.author: magoedte
@@ -9,27 +9,27 @@ ms.topic: conceptual
 ms.service: automation
 manager: carmonm
 ms.openlocfilehash: 91ecff311b8820d3b97e1de0e4b4e87c150e749b
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81678926"
 ---
-# <a name="troubleshoot-issues-with-the-update-management-solution"></a>Problemen met de oplossing Updatebeheer oplossen
+# <a name="troubleshoot-issues-with-the-update-management-solution"></a>Problemen met de Updatebeheer oplossing oplossen
 
-In dit artikel worden problemen besproken die u mogelijk tegenkomt wanneer u de oplossing Updatebeheer gebruikt. Er is een probleemoplosser voor de hybride runbookworker om het onderliggende probleem te bepalen. Zie [Problemen met Windows-updateagent oplossen](update-agent-issues.md) en [problemen met linux-updateagentoplossen](update-agent-issues-linux.md)voor meer informatie over de probleemoplosser. Zie [Problemen met oplossingsonboarding oplossen](onboarding.md)voor andere onboarding problemen met onboarding.
-
->[!NOTE]
->Als u problemen vindt bij het inwerken van de oplossing op een virtuele machine (VM), controleert u het logboek **Operations Manager** onder **Logboeken van toepassing en services** op de lokale machine. Zoek naar gebeurtenissen met gebeurtenis-id 4502 en gebeurtenisdetails die bevatten. `Microsoft.EnterpriseManagement.HealthService.AzureAutomation.HybridAgent`
+In dit artikel worden problemen beschreven die u kunt uitvoeren bij het gebruik van de Updatebeheer-oplossing. Er is een agent probleem oplosser voor de Hybrid Runbook Worker-agent om het onderliggende probleem te bepalen. Zie problemen [met Windows Update agent oplossen](update-agent-issues.md) en problemen [met de Linux-Update agent oplossen](update-agent-issues-linux.md)voor meer informatie over de probleem Oplosser. Zie [problemen oplossen met onboarding van oplossingen](onboarding.md)voor andere voorbereidings problemen.
 
 >[!NOTE]
->Dit artikel is bijgewerkt voor het gebruik van de nieuwe Azure PowerShell Az-module. De AzureRM-module kan nog worden gebruikt en krijgt bugoplossingen tot ten minste december 2020. Zie voor meer informatie over de nieuwe Az-module en compatibiliteit met AzureRM [Introductie van de nieuwe Az-module van Azure PowerShell](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.5.0). Zie [De Azure PowerShell-module installeren](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0)voor installatie-instructies voor az-modules op uw hybride runbookworker. Voor uw Automatiseringsaccount u uw modules bijwerken naar de nieuwste versie met [Azure PowerShell-modules bijwerken in Azure Automation.](../automation-update-azure-modules.md)
+>Als u problemen ondervindt bij het voorbereiden van de oplossing op een virtuele machine (VM), raadpleegt u het **Operations Manager** logboek onder de **Logboeken toepassing en services** op de lokale computer. Zoek naar gebeurtenissen met gebeurtenis-ID 4502 en gebeurtenis details die `Microsoft.EnterpriseManagement.HealthService.AzureAutomation.HybridAgent`bevatten.
 
-## <a name="scenario-you-receive-the-error-failed-to-enable-the-update-solution"></a>Scenario: U ontvangt de fout 'Kan de update-oplossing niet inschakelen'
+>[!NOTE]
+>Dit artikel is bijgewerkt voor het gebruik van de nieuwe Azure PowerShell Az-module. De AzureRM-module kan nog worden gebruikt en krijgt bugoplossingen tot ten minste december 2020. Zie voor meer informatie over de nieuwe Az-module en compatibiliteit met AzureRM [Introductie van de nieuwe Az-module van Azure PowerShell](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.5.0). Zie [de module Azure PowerShell installeren](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0)voor de installatie-instructies voor AZ module op uw Hybrid Runbook Worker. Voor uw Automation-account kunt u uw modules bijwerken naar de nieuwste versie met behulp van [het bijwerken van Azure PowerShell-modules in azure Automation](../automation-update-azure-modules.md).
+
+## <a name="scenario-you-receive-the-error-failed-to-enable-the-update-solution"></a>Scenario: de fout ' kan de update oplossing niet inschakelen ' wordt weer gegeven
 
 ### <a name="issue"></a>Probleem
 
-Wanneer u de oplossing Updatebeheer in uw automatiseringsaccount probeert in te schakelen, krijgt u de volgende fout:
+Wanneer u probeert de Updatebeheer oplossing in te scha kelen in uw Automation-account, krijgt u de volgende fout melding:
 
 ```error
 Error details: Failed to enable the Update solution
@@ -37,31 +37,31 @@ Error details: Failed to enable the Update solution
 
 ### <a name="cause"></a>Oorzaak
 
-Deze fout kan optreden om de volgende redenen:
+Deze fout kan de volgende oorzaken hebben:
 
-* De vereisten voor netwerkfirewall voor de Log Analytics-agent zijn mogelijk niet correct geconfigureerd. Deze situatie kan ertoe leiden dat de agent faalt bij het oplossen van de DNS-URL's.
+* De netwerk firewall vereisten voor de Log Analytics-agent zijn mogelijk niet correct geconfigureerd. Deze situatie kan ertoe leiden dat de agent mislukt bij het omzetten van de DNS-Url's.
 
-* Oplossingstargeting is verkeerd geconfigureerd en de machine ontvangt geen updates zoals verwacht.
+* Doel items van oplossingen zijn onjuist geconfigureerd en de machine ontvangt geen updates zoals verwacht.
 
-* U ook merken dat de `Non-compliant` machine een status van onder **Compliance**toont. Tegelijkertijd rapporteert **Agent Desktop Analytics** de `Disconnected`agent als .
+* U kunt ook zien dat de machine de status `Non-compliant` onder **naleving**weergeeft. Tegelijkertijd rapporteert **Agent Desktop Analytics** de agent als `Disconnected`.
 
 ### <a name="resolution"></a>Oplossing
 
-* Voer de probleemoplosser voor [Windows](update-agent-issues.md#troubleshoot-offline) of [Linux](update-agent-issues-linux.md#troubleshoot-offline)uit, afhankelijk van het besturingssysteem.
+* Voer de probleem oplosser voor [Windows](update-agent-issues.md#troubleshoot-offline) of [Linux](update-agent-issues-linux.md#troubleshoot-offline)uit, afhankelijk van het besturings systeem.
 
-* Ga naar [Netwerkplanning](../automation-hybrid-runbook-worker.md#network-planning) om meer te weten te komen over welke adressen en poorten moeten worden toegestaan om UpdateBeheer te laten werken.  
+* Ga naar [netwerk planning](../automation-hybrid-runbook-worker.md#network-planning) voor meer informatie over welke adressen en poorten moeten worden toegestaan om updatebeheer te kunnen werken.  
 
-* Ga naar [Netwerkplanning](../../azure-monitor/platform/log-analytics-agent.md#network-requirements) om meer te weten te komen over welke adressen en poorten moeten worden toegestaan om de log-analyse-agent te laten werken.
+* Ga naar [netwerk planning](../../azure-monitor/platform/log-analytics-agent.md#network-requirements) voor meer informatie over welke adressen en poorten moeten worden toegestaan om de log Analytics-agent te laten werken.
 
-* Controleer op problemen met de scopeconfiguratie. [Scopeconfiguratie](../automation-onboard-solutions-from-automation-account.md#scope-configuration) bepaalt welke machines worden geconfigureerd voor de oplossing. Als uw machine wordt weergegeven in uw werkruimte, maar niet in de **Update Management Portal, moet u de scopeconfiguratie instellen om de machines te targeten. Zie [Onboard-machines in de werkruimte](../automation-onboard-solutions-from-automation-account.md#onboard-machines-in-the-workspace)voor meer informatie over de scopeconfiguratie.
+* Controleren op problemen met de scope configuratie. De [Scope configuratie](../automation-onboard-solutions-from-automation-account.md#scope-configuration) bepaalt welke computers voor de oplossing worden geconfigureerd. Als uw machine wordt weer gegeven in uw werk ruimte, maar niet in de * * Updatebeheer Portal, moet u de scope configuratie instellen op de doel computers. Zie [onboarding computers in de werk ruimte](../automation-onboard-solutions-from-automation-account.md#onboard-machines-in-the-workspace)voor meer informatie over de scope configuratie.
 
-* Verwijder de werknemersconfiguratie door de stappen te volgen in [Het verwijderen van de hybride runbookworker](../automation-hybrid-runbook-worker.md#remove-a-hybrid-runbook-worker). 
+* Verwijder de configuratie van de werk nemer door de stappen te volgen in [het hybride Runbook worker verwijderen](../automation-hybrid-runbook-worker.md#remove-a-hybrid-runbook-worker). 
 
-## <a name="scenario-superseded-update-indicated-as-missing-in-update-management"></a>Scenario: Vervangen update als ontbrekend in UpdateBeheer aangegeven
+## <a name="scenario-superseded-update-indicated-as-missing-in-update-management"></a>Scenario: vervangen update aangegeven als ontbreekt in Updatebeheer
 
 ### <a name="issue"></a>Probleem
 
-Oude updates worden weergegeven voor een Automation-account als ontbrekende, ook al zijn ze vervangen. Een vervangen update is een update die u niet hoeft te installeren omdat er een latere update beschikbaar is die hetzelfde beveiligingslek corrigeert. Update Management negeert de vervangen update en maakt deze niet van toepassing ten gunste van de vervangende update. Zie [Bijwerken is vervangen](https://docs.microsoft.com/windows/deployment/update/windows-update-troubleshooting#the-update-is-not-applicable-to-your-computer)voor informatie over een gerelateerd probleem.
+Oude updates worden voor een Automation-account weer gegeven, zelfs als ze zijn vervangen. Een vervangen update is één die u niet hoeft te installeren, omdat een latere update die hetzelfde beveiligings probleem verhelpt, beschikbaar is. Updatebeheer negeert de vervangen update en maakt deze niet van toepassing in de vervangende update. Zie [update is vervangen](https://docs.microsoft.com/windows/deployment/update/windows-update-troubleshooting#the-update-is-not-applicable-to-your-computer)voor informatie over een verwant probleem.
 
 ### <a name="cause"></a>Oorzaak
 
@@ -69,64 +69,64 @@ Vervangen updates worden niet correct aangegeven als geweigerd, zodat ze als nie
 
 ### <a name="resolution"></a>Oplossing
 
-Wanneer een vervangen update 100 procent niet van toepassing wordt, moet `Declined`u de goedkeuringsstatus van die update wijzigen in . Ga als lid van de goedkeuringsstatus van al uw updates:
+Wanneer een vervangen update wordt 100 procent niet van toepassing is, moet u de goedkeurings status van die update `Declined`wijzigen in. Goedkeurings status wijzigen voor alle updates:
 
-1. Selecteer in het automatiseringsaccount **Updatebeheer** om de status van de machine weer te geven. Zie [Updatebeoordelingen weergeven](../manage-update-multi.md#view-an-update-assessment).
+1. Selecteer in het Automation-account **updatebeheer** om de status van de machine weer te geven. Zie [Update-evaluaties weer geven](../manage-update-multi.md#view-an-update-assessment).
 
-2. Controleer de vervangen update om er zeker van te zijn dat deze 100 procent niet van toepassing is. 
+2. Controleer de vervangen update om er zeker van te zijn dat dit 100 procent niet van toepassing is. 
 
 3. Markeer de update als geweigerd, tenzij u een vraag hebt over de update. 
 
-4. Selecteer **Computers** en forceer in de kolom **Naleving** een rescan voor naleving. Zie [Updates voor meerdere machines beheren](../manage-update-multi.md).
+4. Selecteer **computers** en Forceer opnieuw scannen op naleving in de kolom **naleving** . Zie [updates voor meerdere machines beheren](../manage-update-multi.md).
 
 5. Herhaal de bovenstaande stappen voor andere vervangen updates.
 
-6. Voer de wizard Opscheerderen uit om bestanden uit de geweigerde updates te verwijderen. 
+6. Voer de wizard opruiming uit om bestanden te verwijderen van de geweigerde updates. 
 
-7. Voor Windows Server Update Services (WSUS) worden alle vervangen updates handmatig opschonen om de infrastructuur te vernieuwen.
+7. Voor Windows Server Update Services (WSUS) moet u alle vervangen updates hand matig opschonen om de infra structuur te vernieuwen.
 
-8. Herhaal deze procedure regelmatig om het weergaveprobleem te corrigeren en de hoeveelheid schijfruimte die wordt gebruikt voor updatebeheer te minimaliseren.
+8. Herhaal deze procedure regel matig om het weergave probleem te corrigeren en Minimaliseer de hoeveelheid schijf ruimte die wordt gebruikt voor update beheer.
 
-## <a name="scenario-machines-dont-show-up-in-the-portal-under-update-management"></a><a name="nologs"></a>Scenario: Machines worden niet weergegeven in de portal onder Updatebeheer
+## <a name="scenario-machines-dont-show-up-in-the-portal-under-update-management"></a><a name="nologs"></a>Scenario: computers worden niet weer gegeven in de portal onder Updatebeheer
 
 ### <a name="issue"></a>Probleem
 
 Uw machines hebben de volgende symptomen:
 
-* Uw machine `Not configured` wordt weergegeven in de weergave Updatebeheer van een virtuele machine.
+* Uw computer toont `Not configured` de weer gave van updatebeheer van een virtuele machine.
 
-* Uw machines ontbreken in de updatebeheerweergave van uw Azure Automation-account.
+* Uw computers ontbreken in de Updatebeheer weer gave van uw Azure Automation-account.
 
-* U hebt machines `Not assessed` die worden weergegeven als onder **Compliance**. U ziet echter heartbeatgegevens in Azure Monitor-logboeken voor de hybride runbookworker, maar niet voor Updatebeheer.
+* U hebt computers die als `Not assessed` onder **naleving**worden weer gegeven. U ziet echter heartbeat-gegevens in Azure Monitor logboeken voor de Hybrid Runbook Worker maar niet voor Updatebeheer.
 
 ### <a name="cause"></a>Oorzaak
 
-Dit probleem kan worden veroorzaakt door lokale configuratieproblemen of door onjuist geconfigureerde scopeconfiguratie. Mogelijke specifieke oorzaken zijn:
+Dit probleem kan worden veroorzaakt door lokale configuratie problemen of door een onjuist geconfigureerde Scope configuratie. Mogelijke specifieke oorzaken zijn:
 
-* Mogelijk moet u de hybride runbookworker opnieuw registreren en opnieuw installeren.
+* Mogelijk moet u de Hybrid Runbook Worker opnieuw registreren en opnieuw installeren.
 
-* Mogelijk hebt u een quotum in uw werkruimte gedefinieerd dat is bereikt en dat verdere gegevensopslag verhindert.
+* U hebt mogelijk een quotum gedefinieerd in uw werk ruimte die is bereikt en waardoor verdere gegevens opslag wordt voor komen.
 
 ### <a name="resolution"></a>Oplossing
 
-1. Voer de probleemoplosser voor [Windows](update-agent-issues.md#troubleshoot-offline) of [Linux](update-agent-issues-linux.md#troubleshoot-offline)uit, afhankelijk van het besturingssysteem.
+1. Voer de probleem oplosser voor [Windows](update-agent-issues.md#troubleshoot-offline) of [Linux](update-agent-issues-linux.md#troubleshoot-offline)uit, afhankelijk van het besturings systeem.
 
-2. Zorg ervoor dat uw machine rapporteert aan de juiste werkruimte. Zie De verbinding van de [agent met Logboekanalyse verifiëren](../../azure-monitor/platform/agent-windows.md#verify-agent-connectivity-to-log-analytics)voor richtlijnen voor het verifiëren van dit aspect. Zorg er ook voor dat deze werkruimte is gekoppeld aan uw Azure Automation-account. Als u dit wilt bevestigen, gaat u naar uw automatiseringsaccount en selecteert u **Gekoppelde werkruimte** onder **Gerelateerde resources**.
+2. Zorg ervoor dat uw computer rapporteert aan de juiste werk ruimte. Zie [agent connectiviteit controleren op Log Analytics](../../azure-monitor/platform/agent-windows.md#verify-agent-connectivity-to-log-analytics)voor meer informatie over hoe u dit aspect kunt controleren. Zorg er ook voor dat deze werk ruimte is gekoppeld aan uw Azure Automation-account. Als u wilt bevestigen, gaat u naar uw Automation-account en selecteert u **gekoppelde werk ruimte** onder **gerelateerde resources**.
 
-3. Zorg ervoor dat de machines worden weergegeven in de werkruimte Log Analytics die is gekoppeld aan uw Automatiseringsaccount. Voer de volgende query uit in de werkruimte Log Analytics.
+3. Zorg ervoor dat de computers worden weer gegeven in de Log Analytics werkruimte die aan uw Automation-account is gekoppeld. Voer de volgende query uit in de werk ruimte Log Analytics.
 
    ```kusto
    Heartbeat
    | summarize by Computer, Solutions
    ```
 
-4. Als u uw machine niet ziet in de queryresultaten, is deze niet onlangs ingecheckt. Er is waarschijnlijk een lokaal configuratieprobleem en u moet [de agent opnieuw installeren.](../../azure-monitor/learn/quick-collect-windows-computer.md#install-the-agent-for-windows) 
+4. Als uw computer niet in de query resultaten wordt weer geven, is deze niet recent ingecheckt. Er is waarschijnlijk een probleem met de lokale configuratie en u moet [de agent opnieuw installeren](../../azure-monitor/learn/quick-collect-windows-computer.md#install-the-agent-for-windows). 
 
-5. Als uw machine wordt weergegeven in de queryresultaten, controleert u op problemen met de scopeconfiguratie. [Scopeconfiguratie](../automation-onboard-solutions-from-automation-account.md#scope-configuration) bepaalt welke machines voor de oplossing zijn geconfigureerd. 
+5. Als uw computer in de query resultaten wordt weer gegeven, controleert u of er problemen zijn met de scope configuratie. De [Scope configuratie](../automation-onboard-solutions-from-automation-account.md#scope-configuration) bepaalt welke machines zijn geconfigureerd voor de oplossing. 
 
-6. Als uw machine wordt weergegeven in uw werkruimte, maar niet in Updatebeheer, moet u de scopeconfiguratie configureren om de machine te targeten. Zie Machines aan boord [in de werkruimte](../automation-onboard-solutions-from-automation-account.md#onboard-machines-in-the-workspace)voor meer informatie over hoe u dit doen.
+6. Als uw computer wordt weer gegeven in uw werk ruimte, maar niet in Updatebeheer, moet u de scope configuratie configureren voor de doel computer. Zie voor meer informatie over hoe u dit doet, [de onboarding-computers in de werk ruimte](../automation-onboard-solutions-from-automation-account.md#onboard-machines-in-the-workspace).
 
-7. Voer deze query in uw werkruimte uit.
+7. Voer deze query uit in uw werk ruimte.
 
    ```kusto
    Operation
@@ -134,15 +134,15 @@ Dit probleem kan worden veroorzaakt door lokale configuratieproblemen of door on
    | sort by TimeGenerated desc
    ```
 
-8. Als u `Data collection stopped due to daily limit of free data reached. Ingestion status = OverQuota` een resultaat krijgt, is het quotum dat is gedefinieerd op uw werkruimte bereikt, waardoor gegevens niet meer worden opgeslagen. Ga in uw werkruimte naar **gegevensvolumebeheer** onder **Gebruik en geschatte kosten**en wijzig of verwijder het quotum.
+8. Als er een resultaat `Data collection stopped due to daily limit of free data reached. Ingestion status = OverQuota` wordt weer gegeven, is de in uw werk ruimte gedefinieerde quota bereikt, waardoor er geen gegevens meer kunnen worden opgeslagen. Ga in uw werk ruimte naar **gegevens volume beheer** onder **gebruik en geschatte kosten**, en wijzig of verwijder het quotum.
 
-9. Als uw probleem nog steeds niet is opgelost, voert u de stappen uit in [Een Hybride Runbook Worker implementeren](../automation-windows-hrw-install.md) om de hybride werknemer voor Windows opnieuw te installeren. Volg voor Linux de stappen in [Een Linux Hybrid Runbook Worker implementeren.](../automation-linux-hrw-install.md)
+9. Als uw probleem nog steeds niet is opgelost, volgt u de stappen in [een Windows-Hybrid Runbook worker implementeren](../automation-windows-hrw-install.md) om de Hybrid worker voor Windows opnieuw te installeren. Volg voor Linux de stappen in [een Linux-Hybrid Runbook worker implementeren](../automation-linux-hrw-install.md).
 
-## <a name="scenario-unable-to-register-automation-resource-provider-for-subscriptions"></a><a name="rp-register"></a>Scenario: Kan geen automatiseringsserviceprovider voor abonnementen registreren
+## <a name="scenario-unable-to-register-automation-resource-provider-for-subscriptions"></a><a name="rp-register"></a>Scenario: kan Automation-resource provider niet registreren voor abonnementen
 
 ### <a name="issue"></a>Probleem
 
-Wanneer u met oplossingen in uw Automatiseringsaccount werkt, treedt de volgende fout op:
+Wanneer u met oplossingen in uw Automation-account werkt, treedt de volgende fout op:
 
 ```error
 Error details: Unable to register Automation Resource Provider for subscriptions
@@ -150,97 +150,97 @@ Error details: Unable to register Automation Resource Provider for subscriptions
 
 ### <a name="cause"></a>Oorzaak
 
-De resourceprovider Automation is niet geregistreerd in het abonnement.
+De resource provider voor Automation is niet geregistreerd in het abonnement.
 
 ### <a name="resolution"></a>Oplossing
 
-Als u de automatiseringsbronprovider wilt registreren, voert u deze stappen uit in de Azure-portal.
+Voer de volgende stappen uit in de Azure Portal om de resource provider Automation te registreren.
 
-1. Selecteer in de azure-servicelijst onder aan de portal **alle services**en selecteer **Vervolgens Abonnementen** in de servicegroep Algemeen.
+1. Selecteer in de lijst van de Azure-service aan de onderkant van de portal **alle services**en selecteer vervolgens **abonnementen** in de algemene service groep.
 
 2. Selecteer uw abonnement.
 
-3. Selecteer **Resourceproviders**onder **Instellingen**.
+3. Onder **instellingen**selecteert u **resource providers**.
 
-4. Controleer in de lijst met resourceproviders of de microsoft.automation-resourceprovider is geregistreerd.
+4. Controleer in de lijst met resource providers of de resource provider micro soft. Automation is geregistreerd.
 
-5. Als deze niet wordt vermeld, registreert u de Microsoft.Automation-provider door de stappen op te volgen bij [Fouten oplossen voor registratie van resourcesprovider.](/azure/azure-resource-manager/resource-manager-register-provider-errors)
+5. Als dit niet het geval is, registreert u de provider van micro soft. Automation door de stappen te volgen om [fouten bij de registratie van de resource provider op te lossen](/azure/azure-resource-manager/resource-manager-register-provider-errors).
 
-## <a name="scenario-scheduled-update-with-a-dynamic-schedule-missed-some-machines"></a><a name="scheduled-update-missed-machines"></a>Scenario: Geplande update met een dynamisch schema heeft sommige machines gemist
+## <a name="scenario-scheduled-update-with-a-dynamic-schedule-missed-some-machines"></a><a name="scheduled-update-missed-machines"></a>Scenario: geplande update met een dynamisch schema heeft sommige computers niet gemist
 
 ### <a name="issue"></a>Probleem
 
-Machines die zijn opgenomen in een updatevoorbeeld worden niet allemaal weergegeven in de lijst met machines die tijdens een geplande run zijn gepatcht.
+Computers die zijn opgenomen in een update-preview, worden niet allemaal weer gegeven in de lijst met computers die zijn patches tijdens een geplande uitvoering.
 
 ### <a name="cause"></a>Oorzaak
 
 Dit probleem kan een van de volgende oorzaken hebben:
 
-* De abonnementen die in het bereik in een dynamische query zijn gedefinieerd, zijn niet geconfigureerd voor de geregistreerde automatiseringsserviceprovider.
+* De abonnementen die zijn gedefinieerd in het bereik in een dynamische query, zijn niet geconfigureerd voor de geregistreerde Automation-resource provider.
 
-* De machines waren niet beschikbaar of hadden geen geschikte tags toen het schema werd uitgevoerd.
+* De computers zijn niet beschikbaar of hebben niet de juiste Labels wanneer de planning wordt uitgevoerd.
 
 ### <a name="resolution"></a>Oplossing
 
-#### <a name="subscriptions-not-configured-for-registered-automation-resource-provider"></a>Abonnementen die niet zijn geconfigureerd voor geregistreerde automatiseringsserviceprovider
+#### <a name="subscriptions-not-configured-for-registered-automation-resource-provider"></a>Abonnementen die niet zijn geconfigureerd voor de geregistreerde Automation-resource provider
 
-Als uw abonnement niet is geconfigureerd voor de resourceprovider Automation, u geen informatie opvragen of ophalen op machines in dat abonnement. Gebruik de volgende stappen om de registratie voor het abonnement te verifiëren.
+Als uw abonnement niet is geconfigureerd voor de Automation-resource provider, kunt u geen gegevens opvragen of ophalen op computers in dat abonnement. Gebruik de volgende stappen om de registratie voor het abonnement te controleren.
 
-1. Ga in de [Azure-portal](https://docs.microsoft.com/azure/azure-resource-manager/management/resource-providers-and-types#azure-portal)naar de Azure-servicelijst.
+1. Open de lijst met Azure-Services in het [Azure Portal](https://docs.microsoft.com/azure/azure-resource-manager/management/resource-providers-and-types#azure-portal).
 
-2. Selecteer **Alle services**en selecteer Vervolgens **Abonnementen** in de servicegroep Algemeen. 
+2. Selecteer **alle services**en selecteer vervolgens **abonnementen** in de algemene service groep. 
 
 3. Zoek het abonnement dat is gedefinieerd in het bereik voor uw implementatie.
 
-4. Kies **Resourceproviders**onder **Instellingen**.
+4. Kies onder **instellingen**de optie **resource providers**.
 
-5. Controleer of de Microsoft.Automation-resourceprovider is geregistreerd.
+5. Controleer of de resource provider micro soft. Automation is geregistreerd.
 
-6. Als deze niet wordt vermeld, registreert u de Microsoft.Automation-provider door de stappen op te volgen bij [Fouten oplossen voor registratie van resourcesprovider.](/azure/azure-resource-manager/resource-manager-register-provider-errors)
+6. Als dit niet het geval is, registreert u de provider van micro soft. Automation door de stappen te volgen om [fouten bij de registratie van de resource provider op te lossen](/azure/azure-resource-manager/resource-manager-register-provider-errors).
 
-#### <a name="machines-not-available-or-not-tagged-correctly-when-schedule-executed"></a>Machines die niet beschikbaar zijn of niet correct zijn getagd wanneer de planning is uitgevoerd
+#### <a name="machines-not-available-or-not-tagged-correctly-when-schedule-executed"></a>Machines zijn niet op de juiste wijze of zijn niet juist gelabeld wanneer het schema wordt uitgevoerd
 
-Gebruik de volgende procedure als uw abonnement is geconfigureerd voor de resourceprovider Automation, maar als u het updateschema uitvoert met de opgegeven [dynamische groepen,](../automation-update-management-groups.md) zijn sommige machines gemist.
+Gebruik de volgende procedure als uw abonnement is geconfigureerd voor de resource provider Automation, maar het uitvoeren van de update planning met de opgegeven [dynamische groepen](../automation-update-management-groups.md) geen enkele machine heeft gemist.
 
-1. Open in de Azure-portal het automatiseringsaccount en selecteer **Updatebeheer**.
+1. Open in het Azure Portal het Automation-account en selecteer **updatebeheer**.
 
-2. Controleer [de geschiedenis van Updatebeheer](https://docs.microsoft.com/azure/automation/manage-update-multi#view-results-of-an-update-deployment) om de exacte tijd te bepalen waarop de update-implementatie is uitgevoerd. 
+2. Controleer [updatebeheer geschiedenis](https://docs.microsoft.com/azure/automation/manage-update-multi#view-results-of-an-update-deployment) om te bepalen op welke tijdstippen de update-implementatie is uitgevoerd. 
 
-3. Gebruik Azure Resource Graph (ARG) om [machinewijzigingen](https://docs.microsoft.com/azure/governance/resource-graph/how-to/get-resource-changes#find-detected-change-events-and-view-change-details)te vinden voor machines waarvan u vermoedt dat deze zijn gemist door Update Management. 
+3. Voor computers waarvan u vermoedt dat deze niet zijn Updatebeheer, gebruikt u Azure resource Graph (ARG) om [computer wijzigingen te vinden](https://docs.microsoft.com/azure/governance/resource-graph/how-to/get-resource-changes#find-detected-change-events-and-view-change-details). 
 
-4. Zoek naar wijzigingen over een aanzienlijke periode, zoals één dag voordat de update-implementatie werd uitgevoerd.
+4. Zoek naar wijzigingen in een belang rijke periode, zoals een dag, voordat de update-implementatie werd uitgevoerd.
 
-5. Controleer de zoekresultaten op systemische wijzigingen, zoals het verwijderen of bijwerken van wijzigingen, in de machines in deze periode. Deze wijzigingen kunnen de status van de machine of tags wijzigen, zodat machines niet in de machinelijst worden geselecteerd wanneer updates worden geïmplementeerd.
+5. Controleer de zoek resultaten voor eventuele systeem wijzigingen, zoals het verwijderen of bijwerken van wijzigingen, op de computers in deze periode. Deze wijzigingen kunnen de machine status of-tags wijzigen zodat computers niet worden geselecteerd in de lijst met computers wanneer er updates worden geïmplementeerd.
 
-6. Pas de instellingen van de machines en resources zo nodig aan om te corrigeren op machinestatus of tagproblemen.
+6. Pas de instellingen van de machines en de bron zo nodig aan om te corrigeren voor computer status-of label problemen.
 
-7. Voer het updateschema opnieuw uit om ervoor te zorgen dat implementatie met de opgegeven dynamische groepen alle machines bevat.
+7. Voer de update planning opnieuw uit om ervoor te zorgen dat de implementatie met de opgegeven dynamische groepen alle machines bevat.
 
-## <a name="scenario-expected-machines-dont-appear-in-preview-for-dynamic-group"></a><a name="machines-not-in-preview"></a>Scenario: Verwachte machines worden niet weergegeven in preview voor dynamische groep
+## <a name="scenario-expected-machines-dont-appear-in-preview-for-dynamic-group"></a><a name="machines-not-in-preview"></a>Scenario: verwachte machines worden niet weer gegeven in de preview-versie van de dynamische groep
 
 ### <a name="issue"></a>Probleem
 
-Virtuele machines voor geselecteerde scopes van een dynamische groep worden niet weergegeven in de lijst met Azure-portalpreview. Deze lijst bestaat uit alle machines die worden opgehaald door een ARG-query voor de geselecteerde scopes. De scopes worden gefilterd op machines waarop Hybride Runbook Workers zijn geïnstalleerd en waarvoor u toegangsmachtigingen hebt. 
+Virtuele machines voor geselecteerde bereiken van een dynamische groep worden niet weer gegeven in de lijst Azure Portal preview. Deze lijst bestaat uit alle machines die worden opgehaald met een ARG-query voor de geselecteerde bereiken. De bereiken worden gefilterd op computers waarop Hybrid Runbook Workers zijn geïnstalleerd en waarvoor u toegangs machtigingen hebt. 
 
 ### <a name="cause"></a>Oorzaak
  
-Hier zijn mogelijke oorzaken voor dit probleem:
+Dit zijn mogelijke oorzaken voor dit probleem:
 
-* U hebt niet de juiste toegang tot de geselecteerde scopes.
-* De ARG-query haalt de verwachte machines niet op.
-* Hybride Runbook Worker is niet geïnstalleerd op de machines.
+* U hebt niet de juiste toegang tot de geselecteerde bereiken.
+* De opdracht ARG haalt de verwachte machines niet op.
+* Hybrid Runbook Worker is niet geïnstalleerd op de computers.
 
 ### <a name="resolution"></a>Oplossing 
 
-#### <a name="incorrect-access-on-selected-scopes"></a>Onjuiste toegang op geselecteerde scopes
+#### <a name="incorrect-access-on-selected-scopes"></a>Onjuiste toegang voor geselecteerde bereiken
 
-De Azure-portal geeft alleen machines weer waarvoor u schrijftoegang hebt in een bepaald bereik. Zie [Zelfstudie: Een gebruiker toegang verlenen tot Azure-bronnen met RBAC en de Azure-portal](https://docs.microsoft.com/azure/role-based-access-control/quickstart-assign-role-user-portal)als u niet over de juiste toegang voor een bereik beschikt.
+De Azure Portal alleen computers weer geven waarvoor u schrijf toegang hebt binnen een bepaald bereik. Zie [zelf studie: een gebruiker toegang verlenen tot Azure-resources met RBAC en de Azure Portal](https://docs.microsoft.com/azure/role-based-access-control/quickstart-assign-role-user-portal)als u niet over de juiste toegang voor een bereik beschikt.
 
-#### <a name="arg-query-doesnt-return-expected-machines"></a>ARG-query retourneert verwachte machines niet
+#### <a name="arg-query-doesnt-return-expected-machines"></a>De query ARG retourneert geen verwachte machines
 
-Volg de onderstaande stappen om erachter te komen of uw query's correct werken.
+Volg de onderstaande stappen om erachter te komen of uw query's goed werken.
 
-1. Voer een ARG-query uit die is opgemaakt zoals hieronder wordt weergegeven in het explorerblade resourcegrafiek in azure-portal. Met deze query worden de filters nabootst die u hebt geselecteerd toen u de dynamische groep hebt gemaakt in Updatebeheer. Zie [Dynamische groepen gebruiken met Updatebeheer](https://docs.microsoft.com/azure/automation/automation-update-management-groups). 
+1. Voer een ARG-query uit zoals hieronder wordt weer gegeven op de Blade resource Graph Explorer in Azure Portal. Deze query imiteert de filters die u hebt geselecteerd tijdens het maken van de dynamische groep in Updatebeheer. Zie [dynamische groepen gebruiken met updatebeheer](https://docs.microsoft.com/azure/automation/automation-update-management-groups). 
 
     ```kusto
     where (subscriptionId in~ ("<subscriptionId1>", "<subscriptionId2>") and type =~ "microsoft.compute/virtualmachines" and properties.storageProfile.osDisk.osType == "<Windows/Linux>" and resourceGroup in~ ("<resourceGroupName1>","<resourceGroupName2>") and location in~ ("<location1>","<location2>") )
@@ -259,33 +259,33 @@ Volg de onderstaande stappen om erachter te komen of uw query's correct werken.
     | project id, location, name, tags
     ```
  
-2. Controleer of de machines die u zoekt in de queryresultaten worden vermeld. 
+2. Controleer of de computers die u zoekt, worden weer gegeven in de query resultaten. 
 
-3. Als de machines niet worden vermeld, is er waarschijnlijk een probleem met het filter dat is geselecteerd in de dynamische groep. Pas de groepsconfiguratie zo nodig aan.
+3. Als de computers niet worden weer gegeven, is er waarschijnlijk een probleem met het filter dat is geselecteerd in de dynamische groep. Pas de groeps configuratie naar wens aan.
 
-#### <a name="hybrid-runbook-worker-not-installed-on-machines"></a>Hybride runbookworker niet geïnstalleerd op machines
+#### <a name="hybrid-runbook-worker-not-installed-on-machines"></a>Hybrid Runbook Worker niet geïnstalleerd op computers
 
-Machines worden wel weergegeven in ARG-queryresultaten, maar worden nog steeds niet weergegeven in het voorbeeld van de dynamische groep. In dit geval worden de machines mogelijk niet aangewezen als hybride werknemers en kunnen ze dus geen azure automation- en updatebeheertaken uitvoeren. Ga als u ervoor zorgen dat de machines die u verwacht te zien, zijn ingesteld als Hybride Runbook Workers:
+Computers worden weer gegeven in de query resultaten van ARG, maar worden nog steeds niet weer gegeven in de preview-versie van dynamische groepen. In dit geval zijn de machines mogelijk niet ingesteld als Hybrid Worker en kunnen Azure Automation en Updatebeheer taken niet worden uitgevoerd. Om ervoor te zorgen dat de computers die u verwacht te zien, worden ingesteld als Hybrid Runbook Workers:
 
-1. Ga in de Azure-portal naar het automatiseringsaccount voor een machine die niet correct wordt weergegeven.
+1. Ga in het Azure Portal naar het Automation-account voor een computer die niet correct wordt weer gegeven.
 
-2. Selecteer **Hybride werknemersgroepen** onder **Procesautomatisering**.
+2. Selecteer **Hybrid worker groups** onder **Process Automation**.
 
-3. Selecteer het tabblad **Hybride werknemersgroepen voor het systeem.**
+3. Selecteer het tabblad **systeem Hybrid worker-groepen** .
 
-4. Valideren of de hybride werknemer aanwezig is voor die machine.
+4. Controleer of de Hybrid worker aanwezig is voor die machine.
 
-5. Als de machine niet is ingesteld als een hybride werknemer, voert u aanpassingen aan met behulp van instructies bij [Resources automatiseren in uw datacenter of cloud met behulp van Hybride Runbook Worker.](https://docs.microsoft.com/azure/automation/automation-hybrid-runbook-worker)
+5. Als de computer niet is ingesteld als een Hybrid worker, neemt u aanpassingen op met behulp van instructies [in uw Data Center of in de Cloud met behulp van Hybrid Runbook worker](https://docs.microsoft.com/azure/automation/automation-hybrid-runbook-worker).
 
-6. Sluit je aan bij de groep Hybride Runbook Worker.
+6. Voeg de computer toe aan de Hybrid Runbook Worker groep.
 
-7. Herhaal de bovenstaande stappen voor alle machines die niet in de preview zijn weergegeven.
+7. Herhaal de bovenstaande stappen voor alle computers die niet in de preview-versie zijn weer gegeven.
 
-## <a name="scenario-components-for-update-management-solution-enabled-while-vm-continues-to-show-as-being-configured"></a><a name="components-enabled-not-working"></a>Scenario: Components for Update Management-oplossing ingeschakeld, terwijl VM blijft worden weergegeven als geconfigureerd
+## <a name="scenario-components-for-update-management-solution-enabled-while-vm-continues-to-show-as-being-configured"></a><a name="components-enabled-not-working"></a>Scenario: onderdelen voor Updatebeheer oplossing ingeschakeld, terwijl de virtuele machine wordt weer gegeven als geconfigureerd
 
 ### <a name="issue"></a>Probleem
 
-U ziet het volgende bericht nog steeds op een virtuele machine 15 minuten na het instappen:
+Het volgende bericht wordt op een virtuele machine 15 minuten na de onboarding weer gegeven:
 
 ```error
 The components for the 'Update Management' solution have been enabled, and now this virtual machine is being configured. Please be patient, as this can sometimes take up to 15 minutes.
@@ -293,17 +293,17 @@ The components for the 'Update Management' solution have been enabled, and now t
 
 ### <a name="cause"></a>Oorzaak
 
-Deze fout kan optreden om de volgende redenen:
+Deze fout kan de volgende oorzaken hebben:
 
 * De communicatie met het Automation-account wordt geblokkeerd.
 
-* Er is een dubbele computernaam met verschillende broncomputer-id's. Dit scenario treedt op wanneer een VM met een bepaalde computernaam wordt gemaakt in verschillende resourcegroepen en rapporteert aan dezelfde werkruimte van logistiek agent in het abonnement.
+* Er is een dubbele computer naam met verschillende bron computer-Id's. Dit scenario treedt op wanneer een virtuele machine met een bepaalde computer naam in verschillende resource groepen wordt gemaakt en wordt gerapporteerd aan dezelfde logistiek agent-werk ruimte in het abonnement.
 
-* De VM-afbeelding die wordt aanboord, kan afkomstig zijn van een gekloonde machine die niet is voorbereid met System Preparation (sysprep) met de Log Analytics-agent voor Windows geïnstalleerd.
+* De VM-installatie kopie die wordt uitgevoerd, kan afkomstig zijn van een gekloonde computer die niet is voor bereid met het uitvoeren van een systeem voorbereiding (Sysprep) met de Log Analytics-agent voor Windows geïnstalleerd.
 
 ### <a name="resolution"></a>Oplossing
 
-Voer de volgende query uit in de werkruimte Log Analytics die is gekoppeld aan uw automatiseringsaccount om het exacte probleem met de vm te bepalen.
+Voer de volgende query uit in de Log Analytics-werk ruimte die is gekoppeld aan uw Automation-account om het probleem met de virtuele machine te bepalen.
 
 ```
 Update
@@ -311,19 +311,19 @@ Update
 | project TimeGenerated, Computer, SourceComputerId, Title, UpdateState 
 ```
 
-#### <a name="communication-with-automation-account-blocked"></a>Communicatie met automation-account geblokkeerd
+#### <a name="communication-with-automation-account-blocked"></a>Communicatie met het Automation-account is geblokkeerd
 
-Ga naar [Netwerkplanning](../automation-update-management.md#ports) om meer te weten te komen over welke adressen en poorten moeten worden toegestaan om UpdateBeheer te laten werken.
+Ga naar [netwerk planning](../automation-update-management.md#ports) voor meer informatie over welke adressen en poorten moeten worden toegestaan om updatebeheer te kunnen werken.
 
-#### <a name="duplicate-computer-name"></a>Computernaam dupliceren
+#### <a name="duplicate-computer-name"></a>Dubbele computer naam
 
-Wijzig de naam van uw VM's om unieke namen in hun omgeving te garanderen.
+Wijzig de naam van uw Vm's zodat er unieke namen in hun omgeving worden gegarandeerd.
 
-#### <a name="onboarded-image-from-cloned-machine"></a>Aan boord van afbeelding van gekloonde machine
+#### <a name="onboarded-image-from-cloned-machine"></a>Onboarde installatie kopie van gekloonde computer
 
-Als u een gekloonde afbeelding gebruikt, hebben verschillende computernamen dezelfde broncomputer-id. In dat geval:
+Als u een gekloonde installatie kopie gebruikt, hebben verschillende computer namen dezelfde bron computer-ID. In dat geval:
 
-1. Verwijder de VM in uw werkruimte Log Analytics `MicrosoftDefaultScopeConfig-Updates` uit de opgeslagen zoekopdracht naar de scopeconfiguratie als deze wordt weergegeven. Opgeslagen zoekopdrachten zijn te vinden onder **Algemeen** in uw werkruimte.
+1. Verwijder in uw Log Analytics-werk ruimte de virtuele machine uit de opgeslagen Zoek `MicrosoftDefaultScopeConfig-Updates` opdracht voor de scope configuratie als deze wordt weer gegeven. U kunt opgeslagen Zoek opdrachten vinden onder **Algemeen** in uw werk ruimte.
 
 2. Voer de volgende cmdlet uit.
 
@@ -331,15 +331,15 @@ Als u een gekloonde afbeelding gebruikt, hebben verschillende computernamen deze
     Remove-Item -Path "HKLM:\software\microsoft\hybridrunbookworker" -Recurse -Force
     ```
 
-3. Voer `Restart-Service HealthService` deze uit om de statusservice opnieuw te starten. Deze bewerking maakt de sleutel opnieuw en genereert een nieuwe UUID.
+3. Voer `Restart-Service HealthService` uit om de Health-Service opnieuw te starten. Met deze bewerking wordt de sleutel opnieuw gemaakt en wordt een nieuwe UUID gegenereerd.
 
-4. Als deze aanpak niet werkt, voert u Sysprep eerst op de afbeelding uit en installeert u de MMA.
+4. Als deze aanpak niet werkt, voert u eerst Sysprep uit op de installatie kopie en installeert u vervolgens de MMA.
 
-## <a name="scenario-you-receive-a-linked-subscription-error-when-you-create-an-update-deployment-for-machines-in-another-azure-tenant"></a><a name="multi-tenant"></a>Scenario: U ontvangt een gekoppelde abonnementsfout wanneer u een update-implementatie maakt voor machines in een andere Azure-tenant
+## <a name="scenario-you-receive-a-linked-subscription-error-when-you-create-an-update-deployment-for-machines-in-another-azure-tenant"></a><a name="multi-tenant"></a>Scenario: er wordt een fout bij een gekoppeld abonnement weer gegeven wanneer u een update-implementatie maakt voor computers in een andere Azure-Tenant
 
 ### <a name="issue"></a>Probleem
 
-U komt de volgende fout tegen wanneer u een update-implementatie voor machines in een andere Azure-tenant probeert te maken:
+U ontvangt de volgende fout melding wanneer u probeert een update-implementatie te maken voor computers in een andere Azure-Tenant:
 
 ```error
 The client has permission to perform action 'Microsoft.Compute/virtualMachines/write' on scope '/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/resourceGroupName/providers/Microsoft.Automation/automationAccounts/automationAccountName/softwareUpdateConfigurations/updateDeploymentName', however the current tenant '00000000-0000-0000-0000-000000000000' is not authorized to access linked subscription '00000000-0000-0000-0000-000000000000'.
@@ -347,11 +347,11 @@ The client has permission to perform action 'Microsoft.Compute/virtualMachines/w
 
 ### <a name="cause"></a>Oorzaak
 
-Deze fout treedt op wanneer u een update-implementatie maakt met Azure VM's in een andere tenant die is opgenomen in een update-implementatie.
+Deze fout treedt op wanneer u een update-implementatie maakt met Azure-Vm's in een andere Tenant die is opgenomen in een update-implementatie.
 
 ### <a name="resolution"></a>Oplossing
 
-Gebruik de volgende tijdelijke oplossing om deze items gepland te krijgen. U de cmdlet [Nieuw-AzAutomationSchedule](https://docs.microsoft.com/powershell/module/az.automation/new-azautomationschedule?view=azps-3.7.0) met de `ForUpdateConfiguration` parameter gebruiken om een planning te maken. Gebruik vervolgens de cmdlet [Nieuw-AzAutomationSoftwareUpdateConfiguration](https://docs.microsoft.com/powershell/module/Az.Automation/New-AzAutomationSoftwareUpdateConfiguration?view=azps-3.7.0) en geef de `NonAzureComputer` machines in de andere tenant door aan de parameter. In het volgende voorbeeld ziet u hoe u dit doet:
+Gebruik de volgende tijdelijke oplossing om deze items te laten plannen. U kunt de cmdlet [New-AzAutomationSchedule](https://docs.microsoft.com/powershell/module/az.automation/new-azautomationschedule?view=azps-3.7.0) met de `ForUpdateConfiguration` para meter gebruiken om een schema te maken. Vervolgens gebruikt u de cmdlet [New-AzAutomationSoftwareUpdateConfiguration](https://docs.microsoft.com/powershell/module/Az.Automation/New-AzAutomationSoftwareUpdateConfiguration?view=azps-3.7.0) en geeft u de computers in de andere Tenant door `NonAzureComputer` aan de para meter. In het volgende voor beeld ziet u hoe u dit doet:
 
 ```azurepowershell-interactive
 $nonAzurecomputers = @("server-01", "server-02")
@@ -363,25 +363,25 @@ $s = New-AzAutomationSchedule -ResourceGroupName mygroup -AutomationAccountName 
 New-AzAutomationSoftwareUpdateConfiguration  -ResourceGroupName $rg -AutomationAccountName $aa -Schedule $s -Windows -AzureVMResourceId $azureVMIdsW -NonAzureComputer $nonAzurecomputers -Duration (New-TimeSpan -Hours 2) -IncludedUpdateClassification Security,UpdateRollup -ExcludedKbNumber KB01,KB02 -IncludedKbNumber KB100
 ```
 
-## <a name="scenario-unexplained-reboots"></a><a name="node-reboots"></a>Scenario: Onverklaarbare reboots
+## <a name="scenario-unexplained-reboots"></a><a name="node-reboots"></a>Scenario: niet-uitleg bij opnieuw opstarten
 
 ### <a name="issue"></a>Probleem
 
-Hoewel u de optie **Opnieuw opstarten** hebt ingesteld op Nooit opnieuw **opstarten,** worden machines nog steeds opnieuw opgestart nadat updates zijn geïnstalleerd.
+Hoewel u de optie voor het **opnieuw** opstarten van het systeem hebt ingesteld op **nooit opnieuw opstarten**, worden machines nog steeds opnieuw opgestart nadat updates zijn geïnstalleerd.
 
 ### <a name="cause"></a>Oorzaak
 
-Windows Update kan worden gewijzigd door verschillende registersleutels, die elk van deze kan wijzigen reboot gedrag.
+Windows Update kunnen worden gewijzigd door verschillende register sleutels, waarmee u het gedrag voor opnieuw opstarten kunt wijzigen.
 
 ### <a name="resolution"></a>Oplossing
 
-Controleer de registersleutels die worden vermeld onder [Automatische updates configureren door het register](/windows/deployment/update/waas-wu-settings#configuring-automatic-updates-by-editing-the-registry) en de registersleutels te bewerken die worden gebruikt om opnieuw te [starten](/windows/deployment/update/waas-restart#registry-keys-used-to-manage-restart) om ervoor te zorgen dat uw machines correct zijn geconfigureerd.
+Controleer de register sleutels die worden vermeld onder [Automatische updates configureren door het REGI ster en de](/windows/deployment/update/waas-wu-settings#configuring-automatic-updates-by-editing-the-registry) [register sleutels te bewerken die worden gebruikt voor het beheren van de herstart](/windows/deployment/update/waas-restart#registry-keys-used-to-manage-restart) om ervoor te zorgen dat uw computers correct zijn geconfigureerd.
 
-## <a name="scenario-machine-shows-failed-to-start-in-an-update-deployment"></a><a name="failed-to-start"></a>Scenario: Machine toont 'Kan niet starten' in een update-implementatie
+## <a name="scenario-machine-shows-failed-to-start-in-an-update-deployment"></a><a name="failed-to-start"></a>Scenario: in een update-implementatie wordt weer gegeven dat het starten van de computer is mislukt
 
 ### <a name="issue"></a>Probleem
 
-Een machine `Failed to start` toont een status. Wanneer u de specifieke details voor de machine bekijkt, ziet u de volgende fout:
+Een machine toont een `Failed to start` status. Wanneer u de specifieke Details voor de computer bekijkt, ziet u de volgende fout:
 
 ```error
 Failed to start the runbook. Check the parameters passed. RunbookName Patch-MicrosoftOMSComputer. Exception You have requested to create a runbook job on a hybrid worker group that does not exist.
@@ -392,50 +392,50 @@ Failed to start the runbook. Check the parameters passed. RunbookName Patch-Micr
 Deze fout kan een van de volgende oorzaken hebben:
 
 * De machine bestaat niet meer.
-* De machine is uitgeschakeld en onbereikbaar.
-* De machine heeft een probleem met de netwerkconnectiviteit en daarom is de hybride werknemer op de machine onbereikbaar.
-* Er was een update van de MMA die de broncomputer-ID heeft gewijzigd.
-* Uw updaterun is beperkt als u de limiet van 2000 gelijktijdige taken in een Automatiseringsaccount hebt bereikt. Elke implementatie wordt beschouwd als een taak en elke machine in een update-implementatie telt als een taak. Elke andere automatiseringstaak of update-implementatie die momenteel in uw Automatiseringsaccount wordt uitgevoerd, telt mee voor de gelijktijdige taaklimiet.
+* De computer is uitgeschakeld en kan niet worden bereikt.
+* De computer heeft een probleem met de netwerk verbinding en daarom is de Hybrid worker op de computer onbereikbaar.
+* Er is een update voor de MMA die de bron computer-ID heeft gewijzigd.
+* De update-uitvoering is beperkt als u de limiet van 2000 gelijktijdige taken in een Automation-account bereikt. Elke implementatie wordt beschouwd als een taak en elke computer in een update-implementatie telt als een taak. Alle andere Automation-taken of update-implementaties die momenteel worden uitgevoerd in uw Automation-account, tellen mee voor de limiet voor gelijktijdige taken.
 
 ### <a name="resolution"></a>Oplossing
 
-Gebruik indien van toepassing [dynamische groepen](../automation-update-management-groups.md) voor uw update-implementaties. Daarnaast u de volgende stappen nemen.
+Gebruik, indien van toepassing, [dynamische groepen](../automation-update-management-groups.md) voor uw update-implementaties. Daarnaast kunt u de volgende stappen uitvoeren.
 
-1. Controleer of de machine nog steeds bestaat en bereikbaar is. 
-2. Als de machine niet bestaat, bewerkt u de implementatie en verwijdert u de machine.
-3. Bekijk de sectie [netwerkplanning](../automation-update-management.md#ports) voor een lijst met poorten en adressen die nodig zijn voor Updatebeheer en controleer vervolgens of uw machine aan deze vereisten voldoet.
-4. Controleer de verbinding met de hybride runbookworker met de probleemoplosser voor hybride runbookworker. Zie Problemen met [de updateagent oplossen](update-agent-issues.md)voor meer informatie over de probleemoplosser.
-5. Voer de volgende query uit in Log Analytics om machines te zoeken in uw omgeving waarvoor de broncomputer-id is gewijzigd. Zoek naar computers met `Computer` dezelfde waarde, maar een andere `SourceComputerId` waarde.
+1. Controleer of de computer nog bestaat en bereikbaar is. 
+2. Als de computer niet bestaat, bewerkt u de implementatie en verwijdert u de computer.
+3. Zie de sectie [netwerk planning](../automation-update-management.md#ports) voor een lijst met poorten en adressen die vereist zijn voor updatebeheer en controleer vervolgens of uw computer aan deze vereisten voldoet.
+4. Controleer de verbinding met de Hybrid Runbook Worker met behulp van de Hybrid Runbook Worker agent-probleem Oplosser. Zie problemen [met Update agent oplossen](update-agent-issues.md)voor meer informatie over de probleem Oplosser.
+5. Voer de volgende query uit in Log Analytics om computers in uw omgeving te zoeken waarvoor de bron computer-ID is gewijzigd. Zoek naar computers die dezelfde `Computer` waarde hebben, maar een andere `SourceComputerId` waarde.
 
    ```kusto
    Heartbeat | where TimeGenerated > ago(30d) | distinct SourceComputerId, Computer, ComputerIP
    ```
 
-6. Nadat u de getroffen machines hebt gevonden, bewerkt u de update-implementaties `SourceComputerId` die deze machines targeten en verwijdert en leest u ze zodat de juiste waarde wordt weergegeven.
+6. Nadat u de betrokken computers hebt gevonden, bewerkt u de update-implementaties die zijn gericht op die computers en vervolgens verwijdert u `SourceComputerId` deze en leest u deze zodat deze overeenkomt met de juiste waarde.
 
-## <a name="scenario-updates-are-installed-without-a-deployment"></a><a name="updates-nodeployment"></a>Scenario: Updates worden geïnstalleerd zonder implementatie
+## <a name="scenario-updates-are-installed-without-a-deployment"></a><a name="updates-nodeployment"></a>Scenario: updates worden geïnstalleerd zonder een implementatie
 
 ### <a name="issue"></a>Probleem
 
-Wanneer u een Windows-machine inschrijft in Updatebeheer, ziet u updates die zijn geïnstalleerd zonder implementatie.
+Wanneer u een Windows-computer registreert in Updatebeheer, ziet u dat er updates zijn geïnstalleerd zonder een implementatie.
 
 ### <a name="cause"></a>Oorzaak
 
-In Windows worden updates automatisch geïnstalleerd zodra ze beschikbaar zijn. Dit gedrag kan verwarring veroorzaken als u geen update hebt gepland die naar de machine moet worden geïmplementeerd.
+In Windows worden updates automatisch geïnstalleerd zodra ze beschikbaar zijn. Dit gedrag kan leiden tot Verwar ring als u geen update hebt gepland voor implementatie op de computer.
 
 ### <a name="resolution"></a>Oplossing
 
-De `HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU` registersleutel wordt standaard ingesteld `auto download and install`op een instelling van 4: .
+De `HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU` register sleutel is standaard ingesteld op een instelling van `auto download and install`4:.
 
-Voor updatemanagementclients raden we u aan `auto download but do not auto install`deze sleutel in te stellen op 3: .
+Voor Updatebeheer-clients wordt aangeraden om deze sleutel in te `auto download but do not auto install`stellen op 3:.
 
 Zie [Automatische updates configureren](https://docs.microsoft.com/windows/deployment/update/waas-wu-settings#configure-automatic-updates)voor meer informatie.
 
-## <a name="scenario-machine-is-already-registered-to-a-different-account"></a><a name="machine-already-registered"></a>Scenario: Machine is al geregistreerd op een ander account
+## <a name="scenario-machine-is-already-registered-to-a-different-account"></a><a name="machine-already-registered"></a>Scenario: de computer is al geregistreerd voor een ander account
 
 ### <a name="issue"></a>Probleem
 
-U ontvangt het volgende foutbericht:
+Het volgende fout bericht wordt weer gegeven:
 
 ```error
 Unable to Register Machine for Patch Management, Registration Failed with Exception System.InvalidOperationException: {"Message":"Machine is already registered to a different account."}
@@ -443,18 +443,18 @@ Unable to Register Machine for Patch Management, Registration Failed with Except
 
 ### <a name="cause"></a>Oorzaak
 
-De machine is al aan boord van een andere werkruimte voor Update Management.
+De machine is al onboarded naar een andere werk ruimte voor Updatebeheer.
 
 ### <a name="resolution"></a>Oplossing
 
-1. Volg de stappen onder [Machines worden niet weergegeven in de portal onder Updatebeheer](#nologs) om te zien of de machine rapporteert aan de juiste werkruimte.
-2. Ruim artefacten op de machine op door [de hybride runbookgroep te verwijderen](../automation-hybrid-runbook-worker.md#remove-a-hybrid-worker-group)en probeer het vervolgens opnieuw.
+1. Volg de stappen onder [machines die niet worden weer gegeven in de portal onder updatebeheer](#nologs) om ervoor te zorgen dat de computer aan de juiste werk ruimte rapporteert.
+2. Reinig de artefacten op de machine door [de Hybrid runbook Group te verwijderen](../automation-hybrid-runbook-worker.md#remove-a-hybrid-worker-group)en probeer het opnieuw.
 
-## <a name="scenario-machine-cant-communicate-with-the-service"></a><a name="machine-unable-to-communicate"></a>Scenario: Machine kan niet communiceren met de service
+## <a name="scenario-machine-cant-communicate-with-the-service"></a><a name="machine-unable-to-communicate"></a>Scenario: de computer kan niet communiceren met de service
 
 ### <a name="issue"></a>Probleem
 
-U ontvangt een van de volgende foutmeldingen:
+U ontvangt een van de volgende fout berichten:
 
 ```error
 Unable to Register Machine for Patch Management, Registration Failed with Exception System.Net.Http.HttpRequestException: An error occurred while sending the request. ---> System.Net.WebException: The underlying connection was closed: An unexpected error occurred on a receive. ---> System.ComponentModel.Win32Exception: The client and server can't communicate, because they do not possess a common algorithm
@@ -474,17 +474,17 @@ Access is denied. (Exception form HRESULT: 0x80070005(E_ACCESSDENIED))
 
 ### <a name="cause"></a>Oorzaak
 
-Een proxy, gateway of firewall blokkeert mogelijk netwerkcommunicatie. 
+Een proxy, gateway of firewall blokkeert mogelijk netwerk communicatie. 
 
 ### <a name="resolution"></a>Oplossing
 
-Bekijk uw netwerk en zorg ervoor dat geschikte poorten en adressen zijn toegestaan. Zie [netwerkvereisten](../automation-hybrid-runbook-worker.md#network-planning) voor een lijst met poorten en adressen die vereist zijn voor Update Management en Hybrid Runbook Workers.
+Controleer uw netwerk en zorg ervoor dat de juiste poorten en adressen zijn toegestaan. Zie [netwerk vereisten](../automation-hybrid-runbook-worker.md#network-planning) voor een lijst met poorten en adressen die vereist zijn voor updatebeheer-en Hybrid Runbook-werk rollen.
 
-## <a name="scenario-unable-to-create-self-signed-certificate"></a><a name="unable-to-create-selfsigned-cert"></a>Scenario: Kan niet zelfondertekend certificaat maken
+## <a name="scenario-unable-to-create-self-signed-certificate"></a><a name="unable-to-create-selfsigned-cert"></a>Scenario: kan geen zelfondertekend certificaat maken
 
 ### <a name="issue"></a>Probleem
 
-U ontvangt een van de volgende foutmeldingen:
+U ontvangt een van de volgende fout berichten:
 
 ```error
 Unable to Register Machine for Patch Management, Registration Failed with Exception AgentService.HybridRegistration. PowerShell.Certificates.CertificateCreationException: Failed to create a self-signed certificate. ---> System.UnauthorizedAccessException: Access is denied.
@@ -492,108 +492,108 @@ Unable to Register Machine for Patch Management, Registration Failed with Except
 
 ### <a name="cause"></a>Oorzaak
 
-De hybride runbookworker kan geen zelfondertekend certificaat genereren.
+Het Hybrid Runbook Worker kan geen zelfondertekend certificaat genereren.
 
 ### <a name="resolution"></a>Oplossing
 
-Controleer of het systeemaccount leestoegang heeft tot de map **C:\ProgramData\Microsoft\Crypto\RSA** en probeer het opnieuw.
+Controleer of het systeem account lees toegang heeft tot de map **C:\ProgramData\Microsoft\Crypto\RSA** en probeer het opnieuw.
 
-## <a name="scenario-the-scheduled-update-failed-with-a-maintenancewindowexceeded-error"></a><a name="mw-exceeded"></a>Scenario: De geplande update is mislukt met een fout van MaintenanceWindowExceeded
+## <a name="scenario-the-scheduled-update-failed-with-a-maintenancewindowexceeded-error"></a><a name="mw-exceeded"></a>Scenario: de geplande update is mislukt met een MaintenanceWindowExceeded-fout
 
 ### <a name="issue"></a>Probleem
 
-Het standaardonderhoudsvenster voor updates is 120 minuten. U het onderhoudsvenster verhogen tot maximaal 6 uur of 360 minuten.
+Het standaard onderhouds venster voor updates is 120 minuten. U kunt het onderhouds venster tot Maxi maal 6 uur of 360 minuten verhogen.
 
 ### <a name="resolution"></a>Oplossing
 
-Bewerk eventuele niet-geplande update-implementaties en verhoog het onderhoudsvenster.
+Bewerk eventuele mislukte geplande update-implementaties en verg root het onderhouds venster.
 
-Zie [Updates installeren](../automation-tutorial-update-management.md#schedule-an-update-deployment)voor meer informatie over onderhoudsvensters.
+Zie [updates installeren](../automation-tutorial-update-management.md#schedule-an-update-deployment)voor meer informatie over onderhouds Vensters.
 
-## <a name="scenario-machine-shows-as-not-assessed-and-shows-an-hresult-exception"></a><a name="hresult"></a>Scenario: Machine wordt weergegeven als "Niet beoordeeld" en toont een HRESULT-uitzondering
+## <a name="scenario-machine-shows-as-not-assessed-and-shows-an-hresult-exception"></a><a name="hresult"></a>Scenario: de machine wordt weer gegeven als ' niet beoordeeld ' en toont een HRESULT-uitzonde ring
 
 ### <a name="issue"></a>Probleem
 
-* Je hebt machines `Not assessed` die worden weergegeven als onder **Compliance,** en je ziet een uitzonderingbericht eronder.
-* U ziet een HRESULT-foutcode in de portal.
+* U hebt computers die `Not assessed` onder **naleving**zien en er wordt een uitzonderings bericht weer gegeven.
+* Er wordt een HRESULT-fout code weer geven in de portal.
 
 ### <a name="cause"></a>Oorzaak
 
-De updateagent (Windows Update Agent op Windows; de package manager voor een Linux-distributie) is niet correct geconfigureerd. Update Management is afhankelijk van de updateagent van de machine om de updates te bieden die nodig zijn, de status van de patch en de resultaten van geïmplementeerde patches. Zonder deze informatie kan Update Management niet correct rapporteren over de patches die nodig zijn of geïnstalleerd.
+De Update Agent (Windows Update-agent in Windows; de Package Manager voor een Linux-distributie) is niet correct geconfigureerd. Updatebeheer is afhankelijk van de Update Agent van de machine om de benodigde updates, de status van de patch en de resultaten van geïmplementeerde patches op te geven. Zonder deze informatie kan Updatebeheer niet op de juiste manier rapporteren over de benodigde patches of geïnstalleerd.
 
 ### <a name="resolution"></a>Oplossing
 
-Probeer lokaal updates uit te voeren op de machine. Als deze bewerking mislukt, betekent dit meestal dat er een configuratiefout is voor de configuratie van een updateagent.
+Probeer updates lokaal op de computer uit te voeren. Als deze bewerking mislukt, betekent dit doorgaans dat er een configuratie fout van de Update Agent is.
 
-Dit probleem wordt vaak veroorzaakt door netwerkconfiguratie- en firewallproblemen. Gebruik de volgende controles om het probleem te verhelpen.
+Dit probleem wordt vaak veroorzaakt door netwerk configuratie-en Firewall problemen. Gebruik de volgende controles om het probleem te verhelpen.
 
-* Controleer voor Linux de juiste documentatie om te controleren of u het netwerkeindpunt van uw pakketopslagplaats bereiken.
+* Raadpleeg voor Linux de juiste documentatie om ervoor te zorgen dat u het netwerk eindpunt van uw pakket opslagplaats kunt bereiken.
 
-* Controleer voor Windows of de configuratie van uw agent zoals die in [Updates wordt vermeld, niet wordt gedownload vanaf het eindpunt van het intranet (WSUS/SCCM).](/windows/deployment/update/windows-update-troubleshooting#updates-arent-downloading-from-the-intranet-endpoint-wsussccm)
+* Controleer voor Windows of uw agent configuratie wordt weer gegeven in [updates die niet worden gedownload vanaf het intranet eindpunt (WSUS/SCCM)](/windows/deployment/update/windows-update-troubleshooting#updates-arent-downloading-from-the-intranet-endpoint-wsussccm).
 
-  * Als de machines zijn geconfigureerd voor Windows Update, moet u de eindpunten bereiken die zijn beschreven in [Problemen met betrekking tot HTTP/proxy.](/windows/deployment/update/windows-update-troubleshooting#issues-related-to-httpproxy)
-  * Als de machines zijn geconfigureerd voor Windows Server Update Services (WSUS), controleert u of u de WSUS-server bereiken die is geconfigureerd met de [WUServer-registersleutel.](/windows/deployment/update/waas-wu-settings)
+  * Als de computers zijn geconfigureerd voor Windows Update, moet u ervoor zorgen dat u de eind punten kunt bereiken die worden beschreven in [problemen die betrekking hebben op http/proxy](/windows/deployment/update/windows-update-troubleshooting#issues-related-to-httpproxy).
+  * Als de computers zijn geconfigureerd voor Windows Server Update Services (WSUS), moet u ervoor zorgen dat u de WSUS-server kunt bereiken die is geconfigureerd met de [register sleutel WUServer](/windows/deployment/update/waas-wu-settings).
 
-Als u een HRESULT ziet, dubbelklikt u op de uitzondering die in het rood wordt weergegeven om het volledige uitzonderingsbericht weer te geven. Bekijk de volgende tabel voor mogelijke oplossingen of aanbevolen acties.
+Als u een HRESULT ziet, dubbelklikt u op de uitzonde ring die rood wordt weer gegeven om het volledige uitzonderings bericht weer te geven. Raadpleeg de volgende tabel voor mogelijke oplossingen of aanbevolen acties.
 
 |Uitzondering  |Oplossing of actie  |
 |---------|---------|
-|`Exception from HRESULT: 0x……C`     | Zoek in de lijst met relevante foutcode in [Windows-update](https://support.microsoft.com/help/938205/windows-update-error-code-list) om aanvullende details over de oorzaak van de uitzondering te vinden.        |
-|`0x8024402C`</br>`0x8024401C`</br>`0x8024402F`      | Deze geven problemen met de netwerkconnectiviteit aan. Controleer of uw machine netwerkconnectiviteit heeft met Update Management. Zie de sectie [netwerkplanning](../automation-update-management.md#ports) voor een lijst met vereiste poorten en adressen.        |
-|`0x8024001E`| De updatebewerking is niet voltooid omdat de service of het systeem werd afgesloten.|
-|`0x8024002E`| De Windows Update-service is uitgeschakeld.|
-|`0x8024402C`     | Als u een WSUS-server gebruikt, controleert `WUServer` u `WUStatusServer` of `HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate` de registerwaarden voor en onder de registersleutel de juiste WSUS-server opgeven.        |
-|`0x80072EE2`|Er is een probleem met de netwerkverbinding of een probleem bij het praten met een geconfigureerde WSUS-server. Controleer de WSUS-instellingen en controleer of de service toegankelijk is vanaf de client.|
-|`The service cannot be started, either because it is disabled or because it has no enabled devices associated with it. (Exception from HRESULT: 0x80070422)`     | Controleer of de Windows Update-service (wuauserv) wordt uitgevoerd en niet is uitgeschakeld.        |
-|`0x80070005`| Een fout met toegang geweigerd kan worden veroorzaakt door een van de volgende:<br> Geïnfecteerde computer<br> Instellingen voor Windows Update niet correct geconfigureerd<br> Fout in bestandsmachtiging met de map %WinDir%\SoftwareDistribution<br> Onvoldoende schijfruimte op het systeemstation (C:).
-|Elke andere generieke uitzondering     | Voer een zoekopdracht uit op het internet naar mogelijke oplossingen en werk met uw lokale IT-ondersteuning.         |
+|`Exception from HRESULT: 0x……C`     | Zoek in de [lijst met fout codes voor Windows Update](https://support.microsoft.com/help/938205/windows-update-error-code-list) naar aanvullende informatie over de oorzaak van de uitzonde ring.        |
+|`0x8024402C`</br>`0x8024401C`</br>`0x8024402F`      | Deze duiden op problemen met de netwerk verbinding. Zorg ervoor dat uw computer netwerk verbinding heeft met Updatebeheer. Zie de sectie [netwerk planning](../automation-update-management.md#ports) voor een lijst met vereiste poorten en adressen.        |
+|`0x8024001E`| De update bewerking is niet voltooid omdat de service of het systeem is afgesloten.|
+|`0x8024002E`| Windows Update-service is uitgeschakeld.|
+|`0x8024402C`     | Als u een WSUS-server gebruikt, moet u ervoor zorgen dat de `WUServer` register `WUStatusServer` waarden voor `HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate` en onder de register sleutel de juiste WSUS-server opgeven.        |
+|`0x80072EE2`|Er is een probleem met de netwerk verbinding of een probleem in het praten met een geconfigureerde WSUS-server. Controleer de WSUS-instellingen en controleer of de service toegankelijk is vanaf de client.|
+|`The service cannot be started, either because it is disabled or because it has no enabled devices associated with it. (Exception from HRESULT: 0x80070422)`     | Zorg ervoor dat de Windows Update-service (wuauserv) wordt uitgevoerd en niet is uitgeschakeld.        |
+|`0x80070005`| Een fout bericht over geweigerde toegang kan een van de volgende oorzaken hebben:<br> Geïnfecteerde computer<br> De instellingen voor Windows Update zijn niet juist geconfigureerd<br> Fout bij bestands machtiging met map%WinDir%\SoftwareDistribution<br> Onvoldoende schijf ruimte op het systeem station (C:).
+|Een andere algemene uitzonde ring     | Voer een zoek opdracht op Internet uit voor mogelijke oplossingen en werk samen met uw lokale IT-ondersteuning.         |
 
-Als u het **bestand %Windir%\Windowsupdate.log bekijkt,** u ook mogelijke oorzaken vaststellen. Zie [Het bestand Windowsupdate.log lezen](https://support.microsoft.com/help/902093/how-to-read-the-windowsupdate-log-file)voor meer informatie over het lezen van het logboek.
+Door het **%windir%\Windowsupdate.log** -bestand te bekijken, kunt u ook mogelijke oorzaken bepalen. Zie [het bestand WindowsUpdate. log lezen](https://support.microsoft.com/help/902093/how-to-read-the-windowsupdate-log-file)voor meer informatie over het lezen van het logboek.
 
-U ook de [probleemoplosser voor Windows Update](https://support.microsoft.com/help/4027322/windows-update-troubleshooter) downloaden en uitvoeren om te controleren op eventuele problemen met Windows Update op de machine.
+U kunt de [Windows Update probleemoplossings](https://support.microsoft.com/help/4027322/windows-update-troubleshooter) programma ook downloaden en uitvoeren om te controleren of er problemen zijn met Windows Update op de computer.
 
 > [!NOTE]
-> De documentatie [over probleemoplossers voor Windows Update](https://support.microsoft.com/help/4027322/windows-update-troubleshooter) geeft aan dat deze voor windows-clients is, maar ook op Windows Server.
+> De documentatie van de [Windows Update-probleemoplossings](https://support.microsoft.com/help/4027322/windows-update-troubleshooter) functie geeft aan dat deze is voor gebruik op Windows-clients, maar ook werkt op Windows Server.
 
-## <a name="scenario-update-run-returns-failed-status-linux"></a>Scenario: Update run returns Failed status (Linux) Scenario: Update run returns Failed status (Linux) Scenario: Update run returns Failed status (Linux) Scenario:
+## <a name="scenario-update-run-returns-failed-status-linux"></a>Scenario: update uitvoering retourneert status mislukt (Linux)
 
 ### <a name="issue"></a>Probleem
 
-Een updaterun wordt gestart, maar er zijn fouten tijdens het uitvoeren.
+Er wordt een update-uitvoering gestart, maar er zijn fouten opgetreden tijdens de uitvoering.
 
 ### <a name="cause"></a>Oorzaak
 
 Mogelijke oorzaken:
 
-* Package manager is ongezond.
-* Update Agent (WUA voor Windows, distro-specifieke package manager voor Linux) is verkeerd geconfigureerd.
-* Specifieke pakketten verstoren cloudgebaseerde patching.
-* De machine is onbereikbaar.
-* Updates hadden afhankelijkheden die niet waren opgelost.
+* Pakket beheer is beschadigd.
+* Update Agent (WUA voor Windows, distributie pakket beheer voor Linux) is onjuist geconfigureerd.
+* Specifieke pakketten zijn van invloed op cloud-gebaseerde patches.
+* De computer is onbereikbaar.
+* Updates bevatten afhankelijkheden die niet zijn opgelost.
 
 ### <a name="resolution"></a>Oplossing
 
-Als er storingen optreden tijdens een updatedie wordt uitgevoerd nadat deze is gestart, [controleert u de taakuitvoer](../manage-update-multi.md#view-results-of-an-update-deployment) van de getroffen machine in de run. Mogelijk vindt u specifieke foutmeldingen van uw machines waarop u onderzoeken en actie ondernemen. Updatebeheer vereist dat de package manager in orde is voor succesvolle update-implementaties.
+Als er fouten optreden tijdens het uitvoeren van een update nadat deze is gestart, [controleert u de taak uitvoer](../manage-update-multi.md#view-results-of-an-update-deployment) van de betrokken computer in de uitvoering. Mogelijk vindt u specifieke fout berichten van uw computers die u kunt onderzoeken en actie onderneemt. Voor Updatebeheer moet pakket beheer in orde zijn voor geslaagde update-implementaties.
 
-Als specifieke patches, pakketten of updates worden gezien vlak voordat de taak mislukt, u proberen deze items [uit te sluiten](../automation-tutorial-update-management.md#schedule-an-update-deployment) van de volgende update-implementatie. Zie [Windows Update-logboekbestanden](/windows/deployment/update/windows-update-logs)voor het verzamelen van logboekgegevens uit Windows Update.
+Als specifieke patches, pakketten of updates onmiddellijk worden weer gegeven voordat de taak mislukt, kunt u deze items [uitsluiten](../automation-tutorial-update-management.md#schedule-an-update-deployment) van de volgende update-implementatie. Zie [Windows Update-logboek bestanden](/windows/deployment/update/windows-update-logs)voor informatie over het verzamelen van logboek gegevens van Windows Update.
 
-Als u een patchprobleem niet oplossen, maakt u een kopie van het **bestand /var/opt/microsoft/omsagent/run/automationworker/omsupdatemgmt.log** en bewaart u deze voor probleemoplossingsdoeleinden voordat de volgende update-implementatie wordt gestart.
+Als u een probleem met een patches niet kunt oplossen, maakt u een kopie van het **/var/opt/Microsoft/omsagent/run/automationworker/omsupdatemgmt.log** -bestand en behoudt u dit voor het oplossen van problemen voordat de volgende update-implementatie wordt gestart.
 
 ## <a name="patches-arent-installed"></a>Patches zijn niet geïnstalleerd
 
 ### <a name="machines-dont-install-updates"></a>Updates worden niet geïnstalleerd op machines
 
-Voer de updates rechtstreeks op de machine uit. Als de machine de updates niet kan toepassen, raadpleegt u de [lijst met mogelijke fouten in de handleiding voor probleemoplossing.](https://docs.microsoft.com/azure/automation/troubleshoot/update-management#hresult)
+Voer de updates rechtstreeks op de machine uit. Als de computer de updates niet kan Toep assen, raadpleegt u de [lijst met mogelijke fouten in de hand leiding voor het oplossen van problemen](https://docs.microsoft.com/azure/automation/troubleshoot/update-management#hresult).
 
-Als updates lokaal worden uitgevoerd, probeert u de agent op de machine te verwijderen en opnieuw te installeren door de richtlijnen te volgen bij [Een VM verwijderen uit Updatebeheer](https://docs.microsoft.com/azure/automation/automation-onboard-solutions-from-browse#clean-up-resources).
+Als updates lokaal worden uitgevoerd, kunt u de agent op de machine verwijderen en opnieuw installeren door de richt lijnen te volgen in [een VM verwijderen uit updatebeheer](https://docs.microsoft.com/azure/automation/automation-onboard-solutions-from-browse#clean-up-resources).
 
-### <a name="i-know-updates-are-available-but-they-dont-show-as-available-on-my-machines"></a>Ik weet dat er updates beschikbaar zijn, maar ze worden niet weergegeven zoals beschikbaar op mijn machines
+### <a name="i-know-updates-are-available-but-they-dont-show-as-available-on-my-machines"></a>Ik weet dat er updates beschikbaar zijn, maar ze worden niet weer gegeven als beschikbaar op mijn computers
 
-Dit gebeurt vaak als machines zijn geconfigureerd om updates te ontvangen van WSUS of Microsoft Endpoint Configuration Manager, maar WSUS en Configuration Manager de updates niet hebben goedgekeurd.
+Dit gebeurt vaak als machines zijn geconfigureerd voor het ophalen van updates van WSUS of micro soft endpoint Configuration Manager, maar WSUS en Configuration Manager de updates niet hebben goedgekeurd.
 
-U controleren of de machines zijn geconfigureerd voor WSUS en SCCM door de `UseWUServer` registersleutel te vergelijken met de registersleutels in de sectie Automatische updates configureren door de sectie Register van dit artikel te [bewerken.](https://support.microsoft.com/help/328010/how-to-configure-automatic-updates-by-using-group-policy-or-registry-s)
+U kunt controleren of de computers zijn geconfigureerd voor WSUS en SCCM door kruis verwijzingen `UseWUServer` te maken naar de register sleutel naar de register sleutels in de [Automatische updates configureren door de register sectie van dit artikel te bewerken](https://support.microsoft.com/help/328010/how-to-configure-automatic-updates-by-using-group-policy-or-registry-s).
 
-Als updates niet zijn goedgekeurd in WSUS, worden ze niet geïnstalleerd. U controleren op niet-goedgekeurde updates in Log Analytics door de volgende query uit te voeren.
+Als updates niet zijn goedgekeurd in WSUS, zijn ze niet geïnstalleerd. U kunt controleren op niet-goedgekeurde updates in Log Analytics door de volgende query uit te voeren.
 
   ```kusto
   Update | where UpdateState == "Needed" and ApprovalSource == "WSUS" and Approved == "False" | summarize max(TimeGenerated) by Computer, KBID, Title
@@ -601,20 +601,20 @@ Als updates niet zijn goedgekeurd in WSUS, worden ze niet geïnstalleerd. U cont
 
 ### <a name="updates-show-as-installed-but-i-cant-find-them-on-my-machine"></a>Updates verschijnen na installatie maar ik kan ze niet vinden op mijn machine
 
-Updates worden vaak verdrongen door andere updates. Zie [Bijwerken wordt vervangen](https://docs.microsoft.com/windows/deployment/update/windows-update-troubleshooting#the-update-is-not-applicable-to-your-computer) in de handleiding voor probleemoplossing voor Windows Update voor meer informatie.
+Updates worden vaak verdrongen door andere updates. Zie voor meer informatie [update is vervangen](https://docs.microsoft.com/windows/deployment/update/windows-update-troubleshooting#the-update-is-not-applicable-to-your-computer) in de Windows Update probleemoplossings handleiding.
 
 ### <a name="installing-updates-by-classification-on-linux"></a>Updates per classificatie installeren op Linux
 
-Het per classificatie implementeren van updates naar Linux ('Essentiële en beveiligingsupdates'), heeft belangrijke beperkingen, met name voor CentOS. Deze beperkingen zijn gedocumenteerd op de [overzichtspagina Updatebeheer](https://docs.microsoft.com/azure/automation/automation-update-management#linux-2).
+Het per classificatie implementeren van updates naar Linux ('Essentiële en beveiligingsupdates'), heeft belangrijke beperkingen, met name voor CentOS. Deze beperkingen worden beschreven op de [pagina overzicht van updatebeheer](https://docs.microsoft.com/azure/automation/automation-update-management#linux-2).
 
-### <a name="kb2267602-is-consistently-missing"></a>KB2267602 ontbreekt consequent
+### <a name="kb2267602-is-consistently-missing"></a>KB2267602 ontbreekt consistent
 
 KB2267602 is de [definitie-update voor Windows Defender](https://www.microsoft.com/wdsi/definitions). Het wordt dagelijks bijgewerkt.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Als u uw probleem niet ziet of het probleem niet oplossen, probeert u een van de volgende kanalen voor extra ondersteuning.
+Als u het probleem niet ziet of als u het probleem niet kunt oplossen, kunt u een van de volgende kanalen proberen voor aanvullende ondersteuning.
 
-* Krijg antwoorden van Azure-experts via [Azure Forums.](https://azure.microsoft.com/support/forums/)
-* Maak [@AzureSupport](https://twitter.com/azuresupport)verbinding met het officiële Microsoft Azure-account voor het verbeteren van de klantervaring.
-* Een Azure-ondersteuningsincident indienen. Ga naar de [Azure-ondersteuningssite](https://azure.microsoft.com/support/options/) en selecteer **Ondersteuning opdoen**.
+* Krijg antwoorden van Azure-experts via [Azure-forums](https://azure.microsoft.com/support/forums/).
+* Maak verbinding [@AzureSupport](https://twitter.com/azuresupport)met, het officiële Microsoft Azure account voor het verbeteren van de gebruikers ervaring.
+* Een ondersteunings incident voor Azure. Ga naar de [ondersteunings site van Azure](https://azure.microsoft.com/support/options/) en selecteer **ondersteuning verkrijgen**.

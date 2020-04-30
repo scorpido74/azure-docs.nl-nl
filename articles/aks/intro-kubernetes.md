@@ -5,20 +5,20 @@ services: container-service
 ms.topic: overview
 ms.date: 05/06/2019
 ms.custom: mvc
-ms.openlocfilehash: f78b65169899107bcd4626bbed65bd4fddd8af43
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: c36d651fde4c10157979e12fda12604153aefdfc
+ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "77595447"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82561876"
 ---
 # <a name="azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS)
 
 Azure Kubernetes Service (AKS) maakt het eenvoudig om een ​​beheerd Kubernetes-cluster in Azure te implementeren. AKS verkleint de complexiteit en de operationele overhead die gepaard gaan met het beheer van Kubernetes door veel van deze taken naar Azure over te hevelen. Azure handelt als een gehoste Kubernetes-service cruciale taken voor u af zoals statuscontrole en onderhoud. De Kubernetes-modellen worden beheerd door Azure. U beheert en onderhoudt alleen de agentknooppunten. Als een beheerde Kubernetes-service is AKS gratis. U betaalt alleen voor de agentknooppunten binnen uw clusters, niet voor de masters.
 
-U kunt een AKS-cluster maken in de Azure Portal, met de Azure CLI, of met de sjabloongestuurde implementatieopties, zoals Resource Manager-sjablonen en Terraform. Wanneer u een AKS-cluster implementeert, worden de Kubernetes-master en alle knooppunten voor u geïmplementeerd en geconfigureerd. Extra functies zoals geavanceerd netwerken, Azure Active Directory-integratie en bewaking kunnen ook tijdens het implementatieproces worden geconfigureerd. Ondersteuning voor Windows Server-containers bevindt zich momenteel in preview in AKS.
+U kunt een AKS-cluster maken in de Azure Portal, met de Azure CLI, of met de sjabloongestuurde implementatieopties, zoals Resource Manager-sjablonen en Terraform. Wanneer u een AKS-cluster implementeert, worden de Kubernetes-master en alle knooppunten voor u geïmplementeerd en geconfigureerd. Extra functies zoals geavanceerd netwerken, Azure Active Directory-integratie en bewaking kunnen ook tijdens het implementatieproces worden geconfigureerd. Windows Server-containers worden ondersteund in AKS.
 
-Zie [Kubernetes-kernconcepten voor AKS voor][concepts-clusters-workloads]meer informatie over kubernetes basics.
+Zie [Kubernetes core-concepten voor AKS][concepts-clusters-workloads]voor meer informatie over de basis principes van Kubernetes.
 
 Om aan de slag te gaan, voert u de AKS-snelstartgids uit [in de Azure Portal][aks-portal] of [met de Azure CLI][aks-cli].
 
@@ -32,7 +32,7 @@ Voor verbeterde beveiliging en verbeterd beheer kunt u AKS integreren met Azure 
 
 Om de toegang tot clusterresources te beperken, ondersteunt AKS [op Kubernetes-rollen gebaseerd toegangsbeheer (RBAC)][kubernetes-rbac]. Met RBAC kunt u de toegang instellen tot Kubernetes-resources en -naamruimten en kunt u de machtigingen voor deze bronnen instellen. U kunt een AKS-cluster ook configureren om te worden geïntegreerd met Azure Active Directory (AD). Met Azure AD-integratie kan Kubernetes-toegang worden geconfigureerd op basis van bestaande identiteiten en groepslidmaatschap. Aan uw bestaande Azure AD-gebruikers en -groepen kan toegang tot AKS-resources worden verleend met een geïntegreerde ervaring voor eenmalige aanmelding.
 
-Zie [Toegangs- en identiteitsopties voor AKS voor][concepts-identity]meer informatie over identiteit.
+Zie voor meer informatie over identiteit de [toegangs-en identiteits opties voor AKS][concepts-identity].
 
 Zie [Azure Active Directory integreren met AKS][aks-aad] voor informatie over het beveiligen van AKS-clusters.
 
@@ -42,9 +42,9 @@ Om inzicht te krijgen in hoe uw AKS-cluster en geïmplementeerde toepassingen fu
 
 Zie [Containerstatus van Azure Kubernetes Service bewaken][container-health] voor meer informatie.
 
-## <a name="clusters-and-nodes"></a>Clusters en knooppunten
+## <a name="clusters-and-nodes"></a>Clusters en knoop punten
 
-AKS-knooppunten worden uitgevoerd op virtuele machines in Azure. U kunt opslag met knooppunten en pods verbinden, clusteronderdelen bijwerken en GPU's gebruiken. AKS ondersteunt Kubernetes-clusters die meerdere knooppuntgroepen uitvoeren om gemengde besturingssystemen en Windows Server-containers te ondersteunen (momenteel in preview). Linux-knooppunten draaien een aangepaste Ubuntu OS-afbeelding en Windows Server-knooppunten draaien een aangepaste Windows Server 2019-afbeelding.
+AKS-knooppunten worden uitgevoerd op virtuele machines in Azure. U kunt opslag met knooppunten en pods verbinden, clusteronderdelen bijwerken en GPU's gebruiken. AKS ondersteunt Kubernetes-clusters die meerdere knooppunt groepen uitvoeren ter ondersteuning van gemengde besturings systemen en Windows Server-containers. Linux-knoop punten voeren een aangepaste Ubuntu-installatie kopie van het besturings systeem uit en Windows Server-knoop punten voeren een aangepaste installatie kopie van Windows Server 2019-besturings systeem
 
 ### <a name="cluster-node-and-pod-scaling"></a>Clusterknooppunten en pods schalen
 
@@ -68,15 +68,15 @@ Zie [GPU's gebruiken op AKS][aks-gpu] voor meer informatie.
 
 Ter ondersteuning van werkbelastingen kunt u opslagvolumes koppelen voor uw permanente gegevens. U kunt zowel statische als dynamische volumes gebruiken. Afhankelijk van het aantal verbonden pods waarmee de opslag moet worden gedeeld, kunt u opslag ondersteund door Azure Disks gebruiken voor toegang tot één pod, of opslag ondersteund door Azure Files voor toegang tot meerdere pods tegelijk.
 
-Zie [Opslagopties voor toepassingen in AKS voor][concepts-storage]meer informatie.
+Zie [opslag opties voor toepassingen in AKS][concepts-storage]voor meer informatie.
 
-Ga aan de slag met dynamische permanente volumes met [Azure Disks][azure-disk] of [Azure Files.][azure-files]
+Ga aan de slag met dynamische permanente volumes met behulp van [Azure-schijven][azure-disk] of [Azure files][azure-files].
 
 ## <a name="virtual-networks-and-ingress"></a>Virtual Networks en inkomend verkeer
 
 Een AKS-cluster kan worden geïmplementeerd in een bestaand virtueel netwerk. In deze configuratie krijgt elke pod in het cluster een IP-adres toegewezen in het virtueel netwerk. De pod kan direct communiceren met andere pods in het cluster en met andere knooppunten in het virtueel netwerk. Pods kunnen ook verbinding maken met andere services in een gekoppeld virtueel netwerk en met on-premises netwerken via ExpressRoute en S2S VPN-verbindingen (site-to-site).
 
-Zie voor meer informatie de [netwerkconcepten voor toepassingen in AKS.][aks-networking]
+Zie [Network concepten for Applications in AKS][aks-networking](Engelstalig) voor meer informatie.
 
 Zie [HTTP-toepassingsroutering][aks-http-routing] om aan de slag te gaan met inkomend verkeer.
 
@@ -88,7 +88,7 @@ Zie [HTTP-toepassingsroutering][aks-http-routing] om aan de slag te gaan met ink
 
 ## <a name="development-tooling-integration"></a>Integratie van ontwikkelingshulpprogramma’s
 
-Kubernetes heeft een uitgebreid ecosysteem van hulpprogramma’s voor ontwikkeling en beheer, zoals Helm, Draft en de Kubernetes-extensie voor Visual Studio Code. Deze hulpprogramma's werken naadloos met AKS.
+Kubernetes heeft een rijk ecosysteem van hulpprogram ma's voor ontwikkeling en beheer, zoals helm en de Kubernetes-extensie voor Visual Studio code. Deze hulpprogramma's werken naadloos met AKS.
 
 Bovendien biedt Azure Dev Spaces een snelle, iteratieve Kubernetes-ontwikkelervaring voor teams. Met een minimale configuratie kunt u containers rechtstreeks in AKS uitvoeren en debuggen. Zie [Azure Dev Spaces][azure-dev-spaces] om aan de slag te gaan.
 
@@ -108,7 +108,7 @@ De Azure Kubernetes Service (AKS) is door de CNCF gecertificeerd als compatibel 
 
 ## <a name="regulatory-compliance"></a>Naleving van regelgeving
 
-AKS (Azure Kubernetes Service) voldoet aan SOC, ISO, PCI DSS en HIPAA. Zie [Overzicht van microsoft Azure-compliance][compliance-doc]voor meer informatie.
+AKS (Azure Kubernetes Service) voldoet aan SOC, ISO, PCI DSS en HIPAA. Zie [overzicht van Microsoft Azure compatibiliteit][compliance-doc]voor meer informatie.
 
 ## <a name="next-steps"></a>Volgende stappen
 

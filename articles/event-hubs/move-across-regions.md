@@ -1,6 +1,6 @@
 ---
-title: Naamruimte azure-gebeurtenishubs naar een andere regio verplaatsen | Microsoft Documenten
-description: In dit artikel ziet u hoe u een naamruimte van Azure Event Hubs verplaatst van het huidige gebied naar een andere regio.
+title: Een Azure Event Hubs-naam ruimte naar een andere regio verplaatsen | Microsoft Docs
+description: In dit artikel leest u hoe u een Azure Event Hubs-naam ruimte van de huidige regio naar een andere regio kunt verplaatsen.
 services: event-hubs
 author: spelluru
 ms.service: event-hubs
@@ -10,46 +10,46 @@ ms.date: 04/14/2020
 ms.author: spelluru
 ms.reviewer: shvija
 ms.openlocfilehash: 2dfc9c517605bbb48bee0b306fb275464cfebe39
-ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/17/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81606806"
 ---
-# <a name="move-an-azure-event-hubs-namespace-to-another-region"></a>Een naamruimte voor Azure Event Hubs verplaatsen naar een ander gebied
-Er zijn verschillende scenario's waarin u de naamruimte van uw bestaande gebeurtenishubs van de ene regio naar de andere wilt verplaatsen. U bijvoorbeeld een naamruimte maken met dezelfde configuratie voor het testen. U ook een secundaire naamruimte in een andere regio maken als onderdeel van [noodherstelplanning.](event-hubs-geo-dr.md#setup-and-failover-flow)
+# <a name="move-an-azure-event-hubs-namespace-to-another-region"></a>Een Azure Event Hubs-naam ruimte verplaatsen naar een andere regio
+Er zijn verschillende scenario's waarin u uw bestaande Event Hubs naam ruimte wilt verplaatsen van de ene regio naar een andere. Het is bijvoorbeeld mogelijk dat u een naam ruimte met dezelfde configuratie voor testen wilt maken. U kunt ook een secundaire naam ruimte in een andere regio maken als onderdeel van de [planning voor nood herstel](event-hubs-geo-dr.md#setup-and-failover-flow).
 
 > [!NOTE]
-> In dit artikel ziet u hoe u een Azure Resource Manager-sjabloon exporteert voor een bestaande naamruimte voor gebeurtenishubs en vervolgens de sjabloon gebruikt om een naamruimte met dezelfde configuratie-instellingen in een andere regio te maken. Dit proces verplaatst echter geen gebeurtenissen die nog niet zijn verwerkt. U moet de gebeurtenissen uit de oorspronkelijke naamruimte verwerken voordat u deze verwijderd.
+> In dit artikel wordt beschreven hoe u een Azure Resource Manager sjabloon exporteert voor een bestaande Event Hubs naam ruimte en vervolgens de sjabloon gebruikt om een naam ruimte te maken met dezelfde configuratie-instellingen in een andere regio. Met dit proces worden echter geen gebeurtenissen verplaatst die nog niet zijn verwerkt. U moet de gebeurtenissen van de oorspronkelijke naam ruimte verwerken voordat u deze verwijdert.
 
 ## <a name="prerequisites"></a>Vereisten
 
-- Zorg ervoor dat de services en functies die uw account gebruikt, worden ondersteund in de doelregio.
-- Voor preview-functies moet u ervoor zorgen dat uw abonnement op de witte lijst staat voor de doelregio.
-- Als u **de opnamefunctie** hebt ingeschakeld voor gebeurtenishubs in de naamruimte, verplaatst u [Azure Storage- of Azure Data Lake Store Gen 2-](../storage/common/storage-account-move.md) of [Azure Data Lake Store Gen 1-accounts](../data-lake-store/data-lake-store-migration-cross-region.md) voordat u de naamruimte van gebeurtenishubs verplaatst. U de resourcegroep met naamruimten opslag- en gebeurtenishubs ook naar het andere gebied verplaatsen door stappen te volgen die vergelijkbaar zijn met die welke in dit artikel worden beschreven. 
-- Als de naamruimte van gebeurtenishubs zich in een **cluster van gebeurtenishubs**bevindt, [maakt u een speciaal cluster](event-hubs-dedicated-cluster-create-portal.md) in het **doelgebied** voordat u stappen in dit artikel doorloopt. 
+- Zorg ervoor dat de services en functies die uw account gebruikt worden ondersteund in de doel regio.
+- Zorg ervoor dat uw abonnement white list is voor de doel regio voor preview-functies.
+- Als u de **functie vastleggen** hebt ingeschakeld voor Event hubs in de naam ruimte, verplaatst u [Azure Storage of Azure data Lake Store gen 2](../storage/common/storage-account-move.md) -of [Azure data Lake Store gen 1](../data-lake-store/data-lake-store-migration-cross-region.md) -accounts voordat u de Event hubs naam ruimte verplaatst. U kunt ook de resource groep met zowel opslag-als Event Hubs-naam ruimten verplaatsen naar de andere regio door de stappen te volgen die vergelijkbaar zijn met die in dit artikel worden beschreven. 
+- Als de naam ruimte van de Event Hubs zich in een **Event hubs cluster**bevindt, [maakt u een toegewezen cluster](event-hubs-dedicated-cluster-create-portal.md) in de **doel regio** voordat u de stappen in dit artikel uitvoert. 
 
 ## <a name="prepare"></a>Voorbereiden
-Exporteer een resourcemanagersjabloon om aan de slag te gaan. Deze sjabloon bevat instellingen die de naamruimte van uw gebeurtenishubs beschrijven.
+Exporteer een resource manager-sjabloon om aan de slag te gaan. Deze sjabloon bevat instellingen die uw Event Hubs naam ruimte beschrijven.
 
 1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 
-2. Selecteer **Alle bronnen** en selecteer vervolgens de naamruimte van uw gebeurtenishubs.
+2. Selecteer **alle resources** en selecteer vervolgens uw event hubs naam ruimte.
 
-3. Selecteer > **>-instellingen-exportsjabloon**. **Settings**
+3. Selecteer > **instellingen** > **sjabloon exporteren**.
 
-4. Kies **Downloaden** op de pagina **Sjabloon exporteren.**
+4. Kies **downloaden** op de pagina **sjabloon exporteren** .
 
-    ![Sjabloon ResourceManager downloaden](./media/move-across-regions/download-template.png)
+    ![Resource Manager-sjabloon downloaden](./media/move-across-regions/download-template.png)
 
-5. Zoek het .zip-bestand dat u van de portal hebt gedownload en rits dat bestand uit naar een map naar keuze.
+5. Zoek het zip-bestand dat u hebt gedownload van de portal en pak het bestand uit naar een map van uw keuze.
 
-   Dit zip-bestand bevat de .json-bestanden die de sjabloon en scripts bevatten om de sjabloon te implementeren.
+   Dit zip-bestand bevat de. json-bestanden die de sjabloon en scripts bevatten voor het implementeren van de sjabloon.
 
 
 ## <a name="move"></a>Verplaatsen
 
-Implementeer de sjabloon om een naamruimte voor gebeurtenishubs in het doelgebied te maken. 
+Implementeer de sjabloon om een Event Hubs naam ruimte te maken in de doel regio. 
 
 
 1. Selecteer in Azure Portal **Een resource maken**.
@@ -62,56 +62,56 @@ Implementeer de sjabloon om een naamruimte voor gebeurtenishubs in het doelgebie
 
 5. Selecteer **Bouw uw eigen sjabloon in de editor**.
 
-6. Selecteer **Bestand laden**en volg de instructies om het **template.json-bestand** te laden dat u in de laatste sectie hebt gedownload.
+6. Selecteer **bestand laden**en volg de instructies voor het laden van het **sjabloon. json** -bestand dat u hebt gedownload in de laatste sectie.
 
 7. Selecteer **Opslaan** om de sjabloon op te slaan. 
 
-8. Voer op de pagina **Aangepaste implementatie** de volgende stappen uit: 
+8. Voer op de pagina **aangepaste implementatie** de volgende stappen uit: 
 
-    1. Selecteer een **Azure-abonnement**. 
+    1. Selecteer een Azure- **abonnement**. 
 
-    2. Selecteer een bestaande **resourcegroep** of maak er een. Als de bronnaamruimte zich in een cluster van Gebeurtenishubs bevond, selecteert u de brongroep die cluster bevat in het doelgebied. 
+    2. Selecteer een bestaande **resource groep** of maak een. Als de bron naam ruimte zich in een Event Hubs cluster bevindt, selecteert u de resource groep die het cluster in de doel regio bevat. 
 
-    3. Selecteer de **doellocatie** of -regio. Als u een bestaande resourcegroep hebt geselecteerd, is deze instelling alleen-lezen. 
+    3. Selecteer de doel **locatie** of-regio. Als u een bestaande resource groep hebt geselecteerd, is deze instelling alleen-lezen. 
 
-    4. Ga in de sectie **INSTELLINGEN** de volgende stappen uit:
+    4. Voer de volgende stappen uit in de sectie **instellingen** :
     
-        1. voer de nieuwe **naamruimtenaam**in . 
+        1. Voer de naam van de nieuwe **naam ruimte**in. 
 
-            ![Sjabloon Resourcemanager implementeren](./media/move-across-regions/deploy-template.png)
+            ![Resource Manager-sjabloon implementeren](./media/move-across-regions/deploy-template.png)
 
-        2. Als uw bronnaamruimte zich in een **cluster van gebeurtenishubs**bevond, voert u namen van **het cluster resourcegroep** en **gebeurtenishubs** in als onderdeel van **externe id**. 
+        2. Als uw bron naam ruimte zich in een **Event hubs cluster**bevindt, voert u de namen van de **resource groep** en het **Event hubs cluster** in als onderdeel van de **externe ID**. 
 
               ```
               /subscriptions/<AZURE SUBSCRIPTION ID>/resourceGroups/<CLUSTER'S RESOURCE GROUP>/providers/Microsoft.EventHub/clusters/<CLUSTER NAME>
               ```   
-        3. Als gebeurtenishub in uw naamruimte een opslagaccount gebruikt voor het vastleggen van `StorageAccounts_<original storage account name>_external` gebeurtenissen, geeft u de naam van de brongroep en het opslagaccount voor het veld op. 
+        3. Als Event Hub in uw naam ruimte een opslag account gebruikt voor het vastleggen van gebeurtenissen, geeft u de naam van de resource groep `StorageAccounts_<original storage account name>_external` en het veld opslag account voor op. 
             
             ```
             /subscriptions/0000000000-0000-0000-0000-0000000000000/resourceGroups/<STORAGE'S RESOURCE GROUP>/providers/Microsoft.Storage/storageAccounts/<STORAGE ACCOUNT NAME>
             ```    
-    5. Schakel het **selectievakje Ik ga akkoord met de bovenstaande voorwaarden.** 
+    5. Schakel het selectie vakje **Ik ga akkoord met de bovenstaande voor waarden in** . 
     
-    6. Selecteer nu **Aankoop selecteren** om het implementatieproces te starten. 
+    6. Selecteer nu **aankoop selecteren** om het implementatie proces te starten. 
 
-## <a name="discard-or-clean-up"></a>Weggooien of opruimen
-Als u na de implementatie opnieuw wilt beginnen, u de **naamruimte van doelgebeurtenishubs**verwijderen en de stappen herhalen die zijn beschreven in de secties [Voorbereiden](#prepare) en [verplaatsen](#move) van dit artikel.
+## <a name="discard-or-clean-up"></a>Verwijderen of opschonen
+Als u na de implementatie wilt beginnen, kunt u de naam ruimte van het **doel event hubs**verwijderen en herhaalt u de stappen die worden beschreven in de secties [voorbereiden](#prepare) en [verplaatsen](#move) van dit artikel.
 
-Als u de wijzigingen wilt vastleggen en de naamruimte van een gebeurtenishubs wilt voltooien, verwijdert u de naamruimte van de **brongebeurtenishubs**. Zorg ervoor dat u alle gebeurtenissen in de naamruimte hebt verwerkt voordat u de naamruimte verwijderd. 
+Als u de wijzigingen wilt door voeren en het verplaatsen van een Event Hubs naam ruimte wilt volt ooien, verwijdert u de **bron Event hubs naam ruimte**. Zorg ervoor dat u alle gebeurtenissen in de naam ruimte hebt verwerkt voordat u de naam ruimte verwijdert. 
 
-Ga als lid van de naamruimte van een gebeurtenishubs (bron of doel) met de Azure-portal:
+Een Event Hubs naam ruimte (bron of doel) verwijderen met behulp van de Azure Portal:
 
-1. Typ **Gebeurtenishubs**en selecteer Gebeurtenishubs in het zoekvenster boven aan de Azure-portal en selecteer **Gebeurtenishubs** in zoekresultaten. U ziet de naamruimten van gebeurtenishubs in een lijst.
+1. Typ **Event hubs**in het venster zoeken aan de bovenkant van Azure Portal en selecteer **Event hubs** in de zoek resultaten. U ziet de Event Hubs naam ruimten in een lijst.
 
-2. Selecteer de doelnaamruimte die u wilt verwijderen en selecteer **Verwijderen op** de werkbalk. 
+2. Selecteer de doel naam ruimte die u wilt verwijderen en selecteer **verwijderen** op de werk balk. 
 
-    ![Naamruimte verwijderen - knop](./media/move-across-regions/delete-namespace-button.png)
+    ![Naam ruimte verwijderen-knop](./media/move-across-regions/delete-namespace-button.png)
 
-3. Controleer op de pagina **Resources verwijderen*** de geselecteerde bronnen en bevestig de verwijdering door **ja**te typen en selecteer **Vervolgens Verwijderen**. 
+3. Controleer op de pagina **resources verwijderen*** de geselecteerde resources en bevestig de verwijdering door **Ja**te typen en vervolgens **verwijderen**te selecteren. 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze zelfstudie hebt u een naamruimte van Azure Event Hubs van de ene regio naar de andere verplaatst en de bronbronnen opgeschoond.  Zie voor meer informatie over het verplaatsen van resources tussen regio's en disaster recovery in Azure:
+In deze zelf studie hebt u een Azure Event Hubs-naam ruimte verplaatst van de ene regio naar een andere en de bron resources opgeschoond.  Raadpleeg voor meer informatie over het verplaatsen van resources tussen regio's en herstel na nood gevallen in Azure:
 
 
 - [Resources verplaatsen naar een nieuwe resourcegroep of een nieuw abonnement](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-move-resources)
