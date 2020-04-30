@@ -1,5 +1,5 @@
 ---
-title: Snelstart - Een blob maken met de Azure-portal
+title: 'Quick Start: een BLOB maken met de Azure Portal'
 titleSuffix: Azure Storage
 description: In deze snelstart gebruikt u Azure Portal in object-opslag (Blob). Vervolgens gebruikt u Azure Portal om een blob in Azure Storage te uploaden, een blob te downloaden en de blobs in een container te vermelden.
 services: storage
@@ -10,10 +10,10 @@ ms.topic: quickstart
 ms.date: 04/16/2020
 ms.author: tamram
 ms.openlocfilehash: a9a048801c6bea74e6b5318eeedf76f92709bee6
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81535163"
 ---
 # <a name="quickstart-upload-download-and-list-blobs-with-the-azure-portal"></a>Snelstart: Blobs uploaden, downloaden en vermelden met Azure Portal
@@ -29,9 +29,9 @@ In deze snelstartgids leert u hoe u [Azure Portal](https://portal.azure.com/) ge
 Als u een container wilt maken in Azure Portal, volgt u deze stappen:
 
 1. Navigeer naar het nieuwe opslagaccount in Azure Portal.
-2. Schuif in het linkermenu voor het opslagaccount naar de sectie **Klodderservice** en selecteer **Containers**.
+2. Schuif in het menu links voor het opslag account naar de sectie **BLOB service** en selecteer vervolgens **containers**.
 3. Selecteer de knop **+ Container**.
-4. Typ een naam voor de nieuwe container. De containernaam mag alleen kleine letters bevatten, moet beginnen met een letter of cijfer en mag alleen letters, cijfers en het streepje (-) bevatten. Zie [Containers, blobs en metagegevens benoemen en verwijzen](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata)voor meer informatie over container- en blobnamen.
+4. Typ een naam voor de nieuwe container. De containernaam mag alleen kleine letters bevatten, moet beginnen met een letter of cijfer en mag alleen letters, cijfers en het streepje (-) bevatten. Zie [containers, blobs en meta gegevens benoemen en hiernaar verwijzen](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata)voor meer informatie over container-en BLOB-namen.
 5. Stel het niveau van openbare toegang tot de container in. Het standaardniveau is **Persoonlijk (geen anonieme toegang)**.
 6. Selecteer **OK** om de container te maken.
 
@@ -44,12 +44,12 @@ Blok-blobs bestaan uit blokken met gegevens die worden samengevoegd tot een blob
 Als u een blok-blob wilt uploaden naar de nieuwe container in Azure Portal, volgt u deze stappen:
 
 1. Navigeer in Azure Portal naar de container die u in de vorige sectie hebt gemaakt.
-1. Selecteer de container om een lijst weer te geven met de blobs die deze bevat. Deze container is nieuw, dus het zal nog geen blobs bevatten.
-1. Selecteer de knop **Uploaden** om het uploadblad te openen en blader door uw lokale bestandssysteem om een bestand te vinden dat u als blokblob wilt uploaden. U de geavanceerde sectie optioneel uitbreiden om andere instellingen voor de uploadbewerking te configureren.
+1. Selecteer de container om een lijst weer te geven met de blobs die deze bevat. Deze container is nieuw, dus bevat deze nog geen blobs.
+1. Selecteer de knop **uploaden** om de Blade uploaden te openen en blader door het lokale bestands systeem om een bestand te vinden dat u wilt uploaden als een blok-blob. U kunt eventueel het gedeelte Geavanceerd uitvouwen om andere instellingen voor de upload bewerking te configureren.
 
     ![Schermopname van het uploaden van een blob vanaf de lokale schijf](media/storage-quickstart-blobs-portal/upload-blob.png)
 
-1. Selecteer de knop **Uploaden** om de blob te uploaden.
+1. Selecteer de knop **uploaden** om de BLOB te uploaden.
 1. U kunt op deze manier zoveel blobs uploaden als u wilt. De nieuwe blobs worden nu weergegeven in de container.
 
 ## <a name="download-a-block-blob"></a>Een blok-blob downloaden
