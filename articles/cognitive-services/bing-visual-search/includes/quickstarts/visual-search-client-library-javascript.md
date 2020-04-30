@@ -1,5 +1,5 @@
 ---
-title: Bing Visual Search JavaScript-clientbibliotheek snel aan de slag
+title: Snelstartgids voor Bing Visual Search java script-client bibliotheek
 titleSuffix: Azure Cognitive Services
 services: cognitive-services
 author: aahill
@@ -9,20 +9,20 @@ ms.topic: include
 ms.date: 03/26/2020
 ms.author: aahi
 ms.openlocfilehash: 404529bf269f899603b92c6c23b0d95cd2749ee5
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/02/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80550021"
 ---
-Gebruik deze snelle start om afbeeldingsinzichten te krijgen van de Bing Visual Search-service met behulp van de JavaScript-clientbibliotheek. Hoewel Bing Visual Search een REST API heeft die compatibel is met de meeste programmeertalen, biedt de clientbibliotheek een eenvoudige manier om de service in uw toepassingen te integreren. De broncode voor dit voorbeeld is te vinden op [GitHub.](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples/blob/master/Samples/visualSearch.js) 
+Gebruik deze Quick Start om image Insights te verkrijgen van de Bing Visual Search-service, met behulp van de Java script-client bibliotheek. Hoewel Bing Visual Search een REST API compatibel met de meeste programmeer talen heeft, biedt de client bibliotheek een eenvoudige manier om de service te integreren in uw toepassingen. De bron code voor dit voor beeld is te vinden op [github](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples/blob/master/Samples/visualSearch.js). 
 
-[NPM-voorbeelden (Reference documentation](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-visualsearch/?view=azure-node-latest) | [Library Source Code](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/cognitiveservices/cognitiveservices-visualsearch) | [Package)](https://www.npmjs.com/package/@azure/cognitiveservices-visualsearch) | [Samples](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples/)
+[Reference documentation](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-visualsearch/?view=azure-node-latest) | NPM-voor[beelden](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples/) ([Source code](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/cognitiveservices/cognitiveservices-visualsearch) | [package)](https://www.npmjs.com/package/@azure/cognitiveservices-visualsearch) | voor referentie documentatie
 
 ## <a name="prerequisites"></a>Vereisten
 * [Node.js](https://www.nodejs.org/)
-* De Bing Visual Search-clientbibliotheek voor JavaScript
-    * Voer de volgende opdrachten uit als u een consoletoepassing wilt instellen met de clientbibliotheek Van Bing Visual Search:
+* De Bing Visual Search-client bibliotheek voor Java script
+    * Voer de volgende opdrachten uit om een console toepassing in te stellen met behulp van de Bing Visual Search-client bibliotheek:
         1. `npm install ms-rest-azure`
         2. `npm install azure-cognitiveservices-visualsearch`.
 

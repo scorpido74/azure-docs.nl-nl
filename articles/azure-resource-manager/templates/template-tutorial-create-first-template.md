@@ -1,55 +1,55 @@
 ---
-title: Zelfstudie - & deploysjabloon maken
-description: Maak uw eerste Azure Resource Manager-sjabloon. In de zelfstudie leert u over de syntaxis van het sjabloonbestand en hoe u een opslagaccount implementeert.
+title: Zelf studie-& implementeren-sjabloon maken
+description: Maak uw eerste Azure Resource Manager sjabloon. In de zelf studie vindt u informatie over de syntaxis van het sjabloon bestand en het implementeren van een opslag account.
 author: mumian
 ms.date: 03/27/2020
 ms.topic: tutorial
 ms.author: jgao
 ms.openlocfilehash: 8b05bccf10ef5f273a74ca49e02162fd0408230f
-ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/31/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80411723"
 ---
-# <a name="tutorial-create-and-deploy-your-first-arm-template"></a>Zelfstudie: Uw eerste ARM-sjabloon maken en implementeren
+# <a name="tutorial-create-and-deploy-your-first-arm-template"></a>Zelf studie: uw eerste ARM-sjabloon maken en implementeren
 
-In deze zelfstudie wordt u kennis gemaakt met ARM-sjablonen (Azure Resource Manager). Het toont u hoe u een startersjabloon maakt en implementeert deze in Azure. U leert over de structuur van de sjabloon en de tools die u nodig hebt voor het werken met sjablonen. Het duurt ongeveer **12 minuten** om deze tutorial te voltooien, maar de werkelijke tijd zal variëren op basis van hoeveel tools je nodig hebt om te installeren.
+In deze zelf studie wordt uitgelegd hoe u Azure Resource Manager (ARM)-Sjablonen. U ziet hoe u een start sjabloon maakt en deze implementeert in Azure. Meer informatie over de structuur van de sjabloon en de hulpprogram ma's die u nodig hebt voor het werken met sjablonen. Het duurt ongeveer **12 minuten** om deze zelf studie te volt ooien, maar de werkelijke tijd is afhankelijk van het aantal hulpprogram ma's dat u moet installeren.
 
-Deze tutorial is de eerste van een serie. Naarmate u door de reeks heen gaat, wijzigt u de startsjabloon stap voor stap totdat u alle kernonderdelen van een ARM-sjabloon hebt verkend. Deze elementen zijn de bouwstenen voor veel complexere sjablonen. We hopen dat u aan het einde van de serie zeker bent van het maken van uw eigen sjablonen en klaar bent om uw implementaties te automatiseren met sjablonen.
+Deze zelf studie is het eerste van een reeks. Tijdens de voortgang van de reeks wijzigt u de stap-voor-stap voor het starten van de sjabloon totdat u alle kern onderdelen van een ARM-sjabloon hebt bekeken. Deze elementen zijn de bouw stenen voor veel complexere sjablonen. We hopen dat u aan het einde van de serie bent uw eigen sjablonen te maken en u klaar bent om uw implementaties te automatiseren met sjablonen.
 
-Zie [Azure Resource Manager-sjablonen](overview.md)als u meer wilt weten over de voordelen van het gebruik van sjablonen en waarom u de implementatie met sjablonen moet automatiseren.
+Zie [Azure Resource Manager-sjablonen](overview.md)als u meer wilt weten over de voor delen van het gebruik van sjablonen en waarom u de implementatie wilt automatiseren met sjablonen.
 
-Als u geen Azure-abonnement hebt, [maakt u een gratis account](https://azure.microsoft.com/free/) voordat u begint.
+Als u nog geen abonnement op Azure hebt, [Maak dan een gratis account](https://azure.microsoft.com/free/) aan voordat u begint.
 
-## <a name="get-tools"></a>Tools oppakken
+## <a name="get-tools"></a>Hulp middelen ophalen
 
-Laten we beginnen met ervoor te zorgen dat u de tools hebt die u nodig hebt om sjablonen te maken en te implementeren.
+Laten we beginnen door ervoor te zorgen dat u beschikt over de hulpprogram ma's die u nodig hebt voor het maken en implementeren van sjablonen.
 
 ### <a name="editor"></a>Editor
 
-Sjablonen zijn JSON-bestanden. Om sjablonen te maken, hebt u een goede JSON-editor nodig. We raden Visual Studio Code aan met de extensie Hulpmiddelen voor Resource Manager. Zie [Visual Studio Code gebruiken om ARM-sjablonen te maken](use-vs-code-to-create-template.md)als u deze hulpprogramma's wilt installeren.
+Sjablonen zijn JSON-bestanden. Als u sjablonen wilt maken, hebt u een goede JSON-editor nodig. We raden Visual Studio code aan met de uitbrei ding Resource Manager-Hulpprogram Ma's. Als u deze hulpprogram ma's wilt installeren, raadpleegt u [Visual Studio code gebruiken om arm-sjablonen te maken](use-vs-code-to-create-template.md).
 
-### <a name="command-line-deployment"></a>Opdrachtregelimplementatie
+### <a name="command-line-deployment"></a>Opdracht regel implementatie
 
-U hebt ook Azure PowerShell of Azure CLI nodig om de sjabloon te implementeren. Als u Azure CLI gebruikt, moet u de nieuwste versie hebben. Zie voor de installatie-instructies:
+U hebt ook een Azure PowerShell of Azure CLI nodig om de sjabloon te implementeren. Als u Azure CLI gebruikt, moet u de nieuwste versie hebben. Zie voor de installatie-instructies:
 
 - [Azure PowerShell installeren](/powershell/azure/install-az-ps)
 - [Azure CLI installeren in Windows](/cli/azure/install-azure-cli-windows)
-- [Azure CLI op Linux installeren](/cli/azure/install-azure-cli-linux)
+- [Azure CLI installeren in Linux](/cli/azure/install-azure-cli-linux)
 
-Nadat u Azure PowerShell of Azure CLI hebt geïnstalleerd, moet u zich voor de eerste keer aanmelden. Zie Aanmelden [- PowerShell](/powershell/azure/install-az-ps#sign-in) of [Aanmelden voor](/cli/azure/get-started-with-azure-cli#sign-in)hulp voor hulp.
+Nadat u Azure PowerShell of Azure CLI hebt geïnstalleerd, moet u zich voor de eerste keer aanmelden. Zie [Aanmelden bij Power shell](/powershell/azure/install-az-ps#sign-in) of [Aanmelden-Azure cli](/cli/azure/get-started-with-azure-cli#sign-in)voor meer informatie.
 
-Oké, je bent klaar om te beginnen met het leren over sjablonen.
+U bent nu klaar om te beginnen met het leren over sjablonen.
 
 ## <a name="create-your-first-template"></a>Uw eerste sjabloon maken
 
-1. Open Visual Studio Code met de extensie Hulpmiddelen voor ResourceBeheer geïnstalleerd.
-1. Selecteer **Nieuw** **bestand** in het menu Bestand om een nieuw bestand te maken.
-1. Selecteer **File** **Opslaan als**.
-1. Geef het bestand **een naam en** selecteer de **JSON-bestandsextensie.** De volledige naam van het bestand **azuredeploy.json**.
-1. Sla het bestand op in uw werkstation. Selecteer een pad dat gemakkelijk te onthouden is omdat u dat pad later opgeeft bij het implementeren van de sjabloon.
-1. Kopieer en plak de volgende JSON in het bestand:
+1. Open Visual Studio code met de uitbrei ding Resource Manager-Hulpprogram Ma's geïnstalleerd.
+1. Selecteer in het menu **bestand** de optie **nieuw bestand** om een nieuw bestand te maken.
+1. Selecteer in het menu **bestand** de optie **Opslaan als**.
+1. Geef het bestand de naam **azuredeploy** en selecteer de extensie van het **JSON** -bestand. De volledige naam van het bestand **azuredeploy. json**.
+1. Sla het bestand op uw werk station op. Selecteer een pad dat u gemakkelijk kunt onthouden omdat u het pad later bij het implementeren van de sjabloon opgeeft.
+1. Kopieer de volgende JSON en plak deze in het bestand:
 
     ```json
     {
@@ -59,25 +59,25 @@ Oké, je bent klaar om te beginnen met het leren over sjablonen.
     }
     ```
 
-    Zo ziet uw VS Code-omgeving eruit:
+    De VS code-omgeving ziet er als volgt uit:
 
-    ![Resource Manager-sjabloon visual studiocode eerste sjabloon](./media/template-tutorial-create-first-template/resource-manager-visual-studio-code-first-template.png)
+    ![Resource Manager-sjabloon Visual Studio code eerste sjabloon](./media/template-tutorial-create-first-template/resource-manager-visual-studio-code-first-template.png)
 
-    Deze sjabloon implementeert geen resources. We beginnen met een lege sjabloon, zodat u vertrouwd raken met de stappen om een sjabloon te implementeren terwijl de kans op iets misgaat wordt geminimaliseerd.
+    Met deze sjabloon worden geen resources geïmplementeerd. We beginnen met een lege sjabloon, zodat u vertrouwd kunt raken met de stappen voor het implementeren van een sjabloon, terwijl de kans op een probleem wordt geminimaliseerd.
 
-    Het JSON-bestand heeft de volgende elementen:
+    Het JSON-bestand bevat de volgende elementen:
 
-    - **$schema**: Hiermee geeft u de locatie van het JSON-schemabestand op. Het schemabestand beschrijft de eigenschappen die beschikbaar zijn in een sjabloon. Het schema definieert bijvoorbeeld **resources** als een van de geldige eigenschappen voor een sjabloon. Maak je geen zorgen dat de datum voor het schema 2019-04-01 is. Deze schemaversie is up-to-date en bevat alle nieuwste functies. De schemadatum is niet gewijzigd omdat er sinds de introductie geen wijzigingen zijn doorgevoerd.
-    - **inhoudVersie**: hiermee geeft u de versie van de sjabloon op (zoals 1.0.0.0). U elke waarde voor dit element bieden. Gebruik deze waarde om belangrijke wijzigingen in uw sjabloon vast te leggen. Bij het implementeren van resources met behulp van de sjabloon kan deze waarde worden gebruikt om ervoor te zorgen dat de juiste sjabloon wordt gebruikt.
-    - **bronnen:** bevat de resources die u wilt implementeren of bijwerken. Momenteel is het leeg, maar u voegt later resources toe.
+    - **$schema**: Hiermee geeft u de locatie van het JSON-schema bestand op. Het schema bestand beschrijft de eigenschappen die beschikbaar zijn in een sjabloon. Het schema definieert bijvoorbeeld **resources** als een van de geldige eigenschappen voor een sjabloon. U hoeft niet de datum voor het schema 2019-04-01. Deze schema versie is up-to-date en bevat alle nieuwste functies. De schema datum is niet gewijzigd omdat er sinds de introductie geen wijzigingen zijn opgegaan.
+    - **contentVersion**: Hiermee geeft u de versie van de sjabloon (bijvoorbeeld 1.0.0.0) op. U kunt een wille keurige waarde voor dit element opgeven. Gebruik deze waarde als u belang rijke wijzigingen in uw sjabloon wilt documenteren. Wanneer u resources implementeert met behulp van de sjabloon, kan deze waarde worden gebruikt om ervoor te zorgen dat de juiste sjabloon wordt gebruikt.
+    - **resources**: bevat de resources die u wilt implementeren of bijwerken. Het is momenteel leeg, maar u voegt later resources toe.
 
 1. Sla het bestand op.
 
-Gefeliciteerd, je hebt je eerste sjabloon gemaakt.
+Gefeliciteerd, u hebt uw eerste sjabloon gemaakt.
 
 ## <a name="sign-in-to-azure"></a>Aanmelden bij Azure
 
-Als u wilt beginnen te werken met Azure PowerShell/Azure CLI, meldt u zich aan met uw Azure-referenties.
+Meld u aan met uw Azure-referenties om aan de slag te gaan met Azure PowerShell/Azure CLI.
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -94,7 +94,7 @@ az login
 ---
 ## <a name="create-resource-group"></a>Een resourcegroep maken
 
-Wanneer u een sjabloon implementeert, geeft u een resourcegroep op die de bronnen bevat. Maak de resourcegroep met Azure CLI of Azure PowerShell voordat u de opdracht Implementatie uitvoert. Selecteer de tabbladen in de volgende codesectie om te kiezen tussen Azure PowerShell en Azure CLI. De CLI-voorbeelden in dit artikel zijn geschreven voor de Bash-shell.
+Wanneer u een sjabloon implementeert, geeft u een resource groep op die de resources zal bevatten. Voordat u de implementatie opdracht uitvoert, maakt u de resource groep met behulp van Azure CLI of Azure PowerShell. Selecteer de tabbladen in het volgende code gedeelte om te kiezen tussen Azure PowerShell en Azure CLI. De CLI-voor beelden in dit artikel zijn geschreven voor de bash-shell.
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -116,7 +116,7 @@ az group create \
 
 ## <a name="deploy-template"></a>Sjabloon implementeren
 
-Als u de sjabloon wilt implementeren, gebruikt u Azure CLI of Azure PowerShell. Gebruik de resourcegroep die u hebt gemaakt. Geef een naam aan de implementatie, zodat u deze gemakkelijk identificeren in de implementatiegeschiedenis. Maak voor het gemak ook een variabele die het pad opslaat naar het sjabloonbestand. Deze variabele maakt het eenvoudiger voor u om de implementatieopdrachten uit te voeren omdat u het pad niet elke keer opnieuw hoeft te typen wanneer u implementeert.
+Als u de sjabloon wilt implementeren, gebruikt u Azure CLI of Azure PowerShell. Gebruik de resource groep die u hebt gemaakt. Geef een naam op voor de implementatie, zodat u deze gemakkelijk kunt herkennen in de implementatie geschiedenis. Voor het gemak maakt u ook een variabele die het pad naar het sjabloon bestand opslaat. Met deze variabele kunt u de implementatie opdrachten eenvoudiger uitvoeren omdat u het pad niet telkens opnieuw hoeft te typen.
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -130,7 +130,7 @@ New-AzResourceGroupDeployment `
 
 # <a name="azure-cli"></a>[Azure-CLI](#tab/azure-cli)
 
-Als u deze implementatieopdracht wilt uitvoeren, moet u over de [nieuwste versie](/cli/azure/install-azure-cli) van Azure CLI beschikken.
+Als u deze implementatie opdracht wilt uitvoeren, moet u de [nieuwste versie](/cli/azure/install-azure-cli) van Azure cli hebben.
 
 ```azurecli
 templateFile="{provide-the-path-to-the-template-file}"
@@ -142,57 +142,57 @@ az deployment group create \
 
 ---
 
-De opdracht Implementatie retourneert resultaten. Zoek `ProvisioningState` naar om te zien of de implementatie is geslaagd.
+De implementatie opdracht retourneert resultaten. Zoek `ProvisioningState` naar om te zien of de implementatie is geslaagd.
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-![PowerShell-status voor het inrichten van powerShell-implementatie](./media/template-tutorial-create-first-template/resource-manager-deployment-provisioningstate.png)
+![Inrichtings status van Power shell-implementatie](./media/template-tutorial-create-first-template/resource-manager-deployment-provisioningstate.png)
 
 # <a name="azure-cli"></a>[Azure-CLI](#tab/azure-cli)
 
-![Azure CLI-implementatieinrichtingsstatus](./media/template-tutorial-create-first-template/azure-cli-provisioning-state.png)
+![Inrichtings status van Azure CLI-implementatie](./media/template-tutorial-create-first-template/azure-cli-provisioning-state.png)
 
 ---
 
 > [!NOTE]
-> Als de implementatie is mislukt, gebruikt u de **foutopsporingsschakelaar** met de opdracht implementatie om de foutopsporingslogboeken weer te geven.  U ook de **verbose-schakelaar** gebruiken om de volledige foutopsporingslogboeken weer te geven.
+> Als de implementatie is mislukt, gebruikt u de switch **debug** met de implementatie opdracht om de logboeken voor fout opsporing weer te geven.  U kunt ook de **uitgebreide** switch gebruiken om de volledige logboeken voor fout opsporing weer te geven.
 
 ## <a name="verify-deployment"></a>Implementatie verifiëren
 
-U de implementatie verifiëren door de brongroep te verkennen vanuit de Azure-portal.
+U kunt de implementatie controleren door de resource groep te verkennen van de Azure Portal.
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 
-1. Selecteer **Resourcegroepen**in het linkermenu .
+1. Selecteer **resource groepen**in het menu links.
 
-1. Selecteer de resourcegroep die in de laatste procedure wordt geïmplementeerd. De standaardnaam is **myResourceGroup**. U ziet geen resource die wordt geïmplementeerd binnen de resourcegroep.
+1. Selecteer in de laatste procedure de resource groep implementeren. De standaard naam is **myResourceGroup**. U ziet dat er geen resource is geïmplementeerd in de resource groep.
 
-1. Let op rechtsboven in het overzicht, de status van de implementatie wordt weergegeven. Selecteer **1 Geslaagd**.
+1. In de rechter bovenhoek van het overzicht wordt de status van de implementatie weer gegeven. Selecteer **1 geslaagd**.
 
-   ![Implementatiestatus weergeven](./media/template-tutorial-create-first-template/deployment-status.png)
+   ![Implementatie status weer geven](./media/template-tutorial-create-first-template/deployment-status.png)
 
-1. U ziet een geschiedenis van implementatie voor de resourcegroep. Selecteer **lege sjabloon**.
+1. U ziet een overzicht van de implementatie voor de resource groep. Selecteer **blanktemplate**.
 
    ![Implementatie selecteren](./media/template-tutorial-create-first-template/select-from-deployment-history.png)
 
-1. U ziet een samenvatting van de implementatie. In dit geval is er niet veel te zien omdat er geen resources zijn geïmplementeerd. Later in deze serie u het misschien nuttig vinden om het overzicht in de implementatiegeschiedenis te bekijken. Opmerking aan de linkerkant u ingangen, uitgangen en de sjabloon die tijdens de implementatie wordt gebruikt, weergeven.
+1. Er wordt een samen vatting van de implementatie weer gegeven. In dit geval is er geen partij om te zien, omdat er geen resources zijn geïmplementeerd. Verderop in deze reeks vindt u het handig om de samen vatting in de implementatie geschiedenis te bekijken. Aan de linkerkant ziet u de invoer, uitvoer en de sjabloon die wordt gebruikt tijdens de implementatie.
 
-   ![Implementatieoverzicht weergeven](./media/template-tutorial-create-first-template/view-deployment-summary.png)
+   ![Implementatie samenvatting weer geven](./media/template-tutorial-create-first-template/view-deployment-summary.png)
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
-Als u doorgaat naar de volgende zelfstudie, hoeft u de brongroep niet te verwijderen.
+Als u verdergaat met de volgende zelf studie, hoeft u de resource groep niet te verwijderen.
 
-Als u nu stopt, u de brongroep verwijderen.
+Als u nu stopt, wilt u mogelijk de resource groep verwijderen.
 
-1. Selecteer **resourcegroep** in de linkermenu in de Azure-portal.
+1. Selecteer in de Azure Portal **resource groep** in het menu links.
 2. Voer de naam van de resourcegroep in het veld **Filter by name** in.
 3. Selecteer de naam van de resourcegroep.
-4. Selecteer **Brongroep verwijderen** in het bovenste menu.
+4. Selecteer **resource groep verwijderen** in het bovenste menu.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-U hebt een eenvoudige sjabloon gemaakt die u wilt implementeren in Azure. In de volgende zelfstudie voegt u een opslagaccount toe aan de sjabloon en implementeert u deze in uw brongroep.
+U hebt een eenvoudige sjabloon gemaakt om te implementeren in Azure. In de volgende zelf studie voegt u een opslag account toe aan de sjabloon en implementeert u deze in uw resource groep.
 
 > [!div class="nextstepaction"]
-> [Bron toevoegen](template-tutorial-add-resource.md)
+> [Resource toevoegen](template-tutorial-add-resource.md)
