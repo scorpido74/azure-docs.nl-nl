@@ -1,6 +1,6 @@
 ---
-title: Snelstart - Dockercontainer implementeren in containerinstantie - Azure CLI
-description: In deze quickstart gebruikt u de Azure CLI om snel een gecontaineriseerde webapp te implementeren die wordt uitgevoerd in een geïsoleerde Azure-containerinstantie
+title: Snelstartgids-docker-container implementeren naar container exemplaar-Azure CLI
+description: In deze Quick Start gebruikt u de Azure CLI om snel een container web-app te implementeren die wordt uitgevoerd in een geïsoleerd Azure-container exemplaar
 ms.topic: quickstart
 ms.date: 03/21/2019
 ms.custom:
@@ -8,21 +8,21 @@ ms.custom:
 - seodec18
 - mvc
 ms.openlocfilehash: e5cad7d9141963e5062423545f7e5b94f0575152
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "78252190"
 ---
-# <a name="quickstart-deploy-a-container-instance-in-azure-using-the-azure-cli"></a>Snelstart: een containerinstantie implementeren in Azure met de Azure CLI
+# <a name="quickstart-deploy-a-container-instance-in-azure-using-the-azure-cli"></a>Snelstartgids: een container exemplaar implementeren in azure met behulp van Azure CLI
 
-Gebruik Azure Container Instances om serverloze Docker-containers in Azure uit te voeren met eenvoud en snelheid. Implementeer een toepassing op een containerexemplaar on-demand wanneer u geen volledig containerorchestration-platform zoals Azure Kubernetes Service nodig hebt.
+Gebruik Azure Container Instances om serverloze docker-containers in azure uit te voeren met eenvoud en snelheid. Implementeer een toepassing op een container exemplaar op aanvraag wanneer u geen volledig container Orchestration-platform zoals Azure Kubernetes service nodig hebt.
 
-In deze quickstart gebruikt u de Azure CLI om een geïsoleerde Docker-container te implementeren en de toepassing ervan beschikbaar te maken met een volledig gekwalificeerde domeinnaam (FQDN). Enkele seconden nadat u één implementatieopdracht hebt uitgevoerd, u naar de toepassing bladeren die in de container wordt uitgevoerd:
+In deze Quick Start gebruikt u de Azure CLI voor het implementeren van een geïsoleerde docker-container en maakt u de toepassing beschikbaar met een Fully Qualified Domain Name (FQDN). Een paar seconden nadat u één implementatie opdracht hebt uitgevoerd, kunt u bladeren naar de toepassing die in de container wordt uitgevoerd:
 
-![Een app weergeven die is geïmplementeerd in Azure Container Instances in de browser][aci-app-browser]
+![Een app weer geven die is geïmplementeerd in Azure Container Instances in browser][aci-app-browser]
 
-Als u geen Azure-abonnement hebt, maakt u een [gratis account][azure-account] voordat u begint.
+Als u nog geen abonnement op Azure hebt, maak dan een [gratis account][azure-account] aan voordat u begint.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -40,11 +40,11 @@ az group create --name myResourceGroup --location eastus
 
 ## <a name="create-a-container"></a>Een container maken
 
-Nu u een resourcegroep hebt, kunt u een container in Azure uitvoeren. Als u een containerinstantie met de Azure CLI wilt maken, geeft u de naam van een resourcegroep, de naam van een containerinstantie en een Docker-containerinstallatiekopie op voor de opdracht [az container create][az-container-create]. In deze quickstart gebruikt `mcr.microsoft.com/azuredocs/aci-helloworld` u de openbare afbeelding. Deze installatiekopie bevat een kleine web-app die is geschreven in Node.js en die een statische HTML-pagina dient.
+Nu u een resourcegroep hebt, kunt u een container in Azure uitvoeren. Als u een containerinstantie met de Azure CLI wilt maken, geeft u de naam van een resourcegroep, de naam van een containerinstantie en een Docker-containerinstallatiekopie op voor de opdracht [az container create][az-container-create]. In deze Quick Start gebruikt u de open `mcr.microsoft.com/azuredocs/aci-helloworld` bare installatie kopie. Deze installatiekopie bevat een kleine web-app die is geschreven in Node.js en die een statische HTML-pagina dient.
 
 Als u uw containers beschikbaar wilt maken op internet, moet u een of meer poorten om te openen of een DNS-naamlabel opgeven, of beide. In deze quickstart implementeert u een container met een DNS-naamlabel zodat de web-app openbaar bereikbaar is.
 
-Voer een opdracht uit die vergelijkbaar is met de volgende opdracht om een containerinstantie te starten. Stel `--dns-name-label` een waarde in die uniek is binnen het Azure-gebied waar u de instantie maakt. Als u een foutbericht 'DNS-naamlabel niet beschikbaar' ontvangt, probeert u een ander DNS-naamlabel.
+Voer een opdracht uit die vergelijkbaar is met de volgende om een container exemplaar te starten. Stel een `--dns-name-label` waarde in die uniek is binnen de Azure-regio waar u het exemplaar maakt. Als u een foutbericht 'DNS-naamlabel niet beschikbaar' ontvangt, probeert u een ander DNS-naamlabel.
 
 ```azurecli-interactive
 az container create --resource-group myResourceGroup --name mycontainer --image mcr.microsoft.com/azuredocs/aci-helloworld --dns-name-label aci-demo --ports 80
@@ -64,9 +64,9 @@ FQDN                               ProvisioningState
 aci-demo.eastus.azurecontainer.io  Succeeded
 ```
 
-Als de container `ProvisioningState` is **geslaagd,** ga dan naar de FQDN in uw browser. U moet nu een webpagina zien die lijkt op de volgende. U hebt een toepassing geïmplementeerd die wordt uitgevoerd in een Docker-container voor Azure.
+Als de container `ProvisioningState` is **voltooid**, gaat u naar de FQDN in uw browser. U moet nu een webpagina zien die lijkt op de volgende. U hebt een toepassing geïmplementeerd die wordt uitgevoerd in een Docker-container voor Azure.
 
-![Een app weergeven die is geïmplementeerd in Azure Container Instances in de browser][aci-app-browser]
+![Een app weer geven die is geïmplementeerd in Azure Container Instances in browser][aci-app-browser]
 
 Als de toepassing niet meteen wordt weergegeven, moet u mogelijk een paar seconden wachten terwijl DNS wordt doorgegeven. Probeer vervolgens de browser te vernieuwen.
 
@@ -142,7 +142,7 @@ az group delete --name myResourceGroup
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze quickstart hebt u een Azure-containerinstantie gemaakt met behulp van een openbare Microsoft-afbeelding. Als u zelf een containerinstallatiekopie wilt bouwen en deze wilt implementeren met behulp van een privé Azure Container-register, gaat u verder met de zelfstudie voor Azure Container Instances.
+In deze Quick Start hebt u een Azure-container exemplaar gemaakt met behulp van een open bare micro soft-installatie kopie. Als u zelf een containerinstallatiekopie wilt bouwen en deze wilt implementeren met behulp van een privé Azure Container-register, gaat u verder met de zelfstudie voor Azure Container Instances.
 
 > [!div class="nextstepaction"]
 > [Zelfstudie voor Azure Container Instances](./container-instances-tutorial-prepare-app.md)

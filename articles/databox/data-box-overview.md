@@ -10,10 +10,10 @@ ms.topic: overview
 ms.date: 09/17/2019
 ms.author: alkohli
 ms.openlocfilehash: a3e27cf427de3a33f71d6f4a0af9b1590abeb573
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "79240714"
 ---
 # <a name="what-is-azure-data-box"></a>Wat is Azure Data Box?
@@ -109,9 +109,9 @@ Tijdens dit proces wordt u via e-mail op de hoogte gesteld van alle statuswijzig
 
 ## <a name="region-availability"></a>Beschikbaarheid in regio’s
 
-Data Box kan gegevens overdragen op basis van de regio waarin de service wordt geïmplementeerd, land/regio waarnaar het apparaat wordt verzonden en het doelAzure-opslagaccount waar u de gegevens overdraagt. 
+Data Box kunt gegevens overdragen op basis van de regio waarin de service is geïmplementeerd, het land/de regio waarnaar het apparaat wordt verzonden en het Azure Storage-doel account waar u de gegevens overdraagt. 
 
-- **Beschikbaarheid van service** - Ga voor informatie over de beschikbaarheid van regio's naar [Azure-producten die beschikbaar zijn per regio.](https://azure.microsoft.com/global-infrastructure/services/?products=databox&regions=all) Data Box kan ook worden geïmplementeerd in de Azure Government Cloud. Zie [Wat is Azure-overheid voor](https://docs.microsoft.com/azure/azure-government/documentation-government-welcome)meer informatie?
+- Beschik baarheid van de **service** : Ga naar Azure- [producten die beschikbaar zijn per regio](https://azure.microsoft.com/global-infrastructure/services/?products=databox&regions=all)voor meer informatie over de beschik baarheid van regio's. Data Box kan ook in de Azure Government Cloud worden geïmplementeerd. Zie [Wat is Azure Government?](https://docs.microsoft.com/azure/azure-government/documentation-government-welcome)voor meer informatie.
 
 - **Doelopslagaccounts**: De opslagaccounts waarin de gegevens worden opgeslagen, zijn beschikbaar in alle Azure-regio’s waar de service beschikbaar is.  
 

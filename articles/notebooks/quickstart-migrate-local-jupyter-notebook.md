@@ -1,68 +1,68 @@
 ---
-title: Een lokaal Jupyter-notitieblok migreren naar Azure-notitieblok
-description: Breng snel een Jupyter-notitieblok over naar Azure Notebooks Preview vanaf uw lokale computer of een web-URL en deel het vervolgens voor samenwerking.
+title: Een lokale Jupyter-notebook migreren naar Azure Notebooks preview
+description: U kunt snel een Jupyter-notebook overdragen naar Azure Notebooks preview van uw lokale computer of een web-URL en deze vervolgens delen voor samen werking.
 ms.topic: quickstart
 ms.date: 12/04/2018
 ms.openlocfilehash: baf05d7adb1340d712ff0fc87436d5bbac51bc8f
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "77064322"
 ---
-# <a name="quickstart-migrate-a-local-jupyter-notebook-in-azure-notebooks-preview"></a>Snelstart: een lokaal Jupyter-notitieblok migreren in Azure-notitieblokkenproefversie
+# <a name="quickstart-migrate-a-local-jupyter-notebook-in-azure-notebooks-preview"></a>Snelstartgids: een lokaal Jupyter-notitie blok migreren in Azure Notebooks preview
 
-In deze quickstart migreert u een Jupyter-notitieblok van uw lokale computer of een andere toegankelijke bestands-URL naar Azure-notitieblokken. 
+In deze Snelstartgids migreert u een Jupyter-notebook van uw lokale computer of een andere toegankelijke bestands-URL naar Azure Notebooks. 
 
-Jupyter notebooks op uw eigen computer zijn alleen voor u toegankelijk. U uw bestanden delen, maar ontvangers hebben dan hun eigen lokale kopieën van het notitieblok en het is moeilijk om hun wijzigingen op te nemen. Zelfs als u notitieblokken opslaat in een gedeelde onlineopslagplaats zoals GitHub, moet elke medewerker een lokale Jupyter-installatie hebben geconfigureerd zoals de uwe.
+Jupyter-notebooks op uw eigen computer zijn alleen toegankelijk voor u. U kunt uw bestanden delen, maar ontvangers hebben vervolgens hun eigen lokale kopieën van het notitie blok, en het is moeilijk om hun wijzigingen op te nemen. Zelfs als u notitie blokken opslaat in een gedeelde online opslag plaats zoals GitHub, moet elke samen werker een lokale Jupyter-installatie configureren, zoals u dat wilt.
 
-Door uw lokale of op opslagplaatsen gebaseerde notitieblokken te migreren naar Azure-notitieblokken, u ze direct delen met uw bijdragers, die alleen een browser nodig hebben om uw notitieblokken te bekijken en uit te voeren. Als ze zich aanmelden bij Azure Notebooks, kunnen ze ook wijzigingen aanbrengen.
+Door uw lokale of opslagplaats notitieblokken te migreren naar Azure Notebooks, kunt u ze direct delen met uw mede werkers, die alleen een browser nodig hebben om uw notitie blokken weer te geven en uit te voeren. Als de gebruiker zich aanmeldt bij Azure Notebooks, kunnen ze ook wijzigingen aanbrengen.
 
 ## <a name="prerequisites"></a>Vereisten
 
-- Een [Jupyter-notitieblok](https://jupyter-notebook.readthedocs.io) op uw lokale computer of op een andere toegankelijke bestands-URL. 
+- Een [Jupyter-notebook](https://jupyter-notebook.readthedocs.io) op uw lokale computer of op een andere toegankelijke BESTANDS-URL. 
 
-## <a name="create-a-project-on-azure-notebooks"></a>Een project maken op Azure-notitieblokken
+## <a name="create-a-project-on-azure-notebooks"></a>Een project maken op Azure Notebooks
 
-Deze quickstart toont het migreren van een notitieblok vanaf uw lokale computer of een andere toegankelijke bestands-URL. Zie [Snelstart: Een notitieblok klonen](quickstart-clone-jupyter-notebook.md)als u notitieblokken wilt migreren vanuit een GitHub-opslagplaats.
+In deze Quick Start wordt gedemonstreerd hoe u een notebook migreert van uw lokale computer of een andere toegankelijke bestands-URL. Voor het migreren van notitie blokken vanuit een GitHub-opslag plaats raadpleegt u [Quick Start: een notitie blok klonen](quickstart-clone-jupyter-notebook.md).
 
 [!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
 
-1. Ga naar [Azure-notitieblokken](https://notebooks.azure.com) en meld u aan. (Zie [Snelstart - Aanmelden bij Azure-notitieblokken voor](quickstart-sign-in-azure-notebooks.md)meer informatie).
+1. Ga naar [Azure notebooks](https://notebooks.azure.com) en meld u aan. (Zie Quick Start ( [Aanmelden bij Azure notebooks](quickstart-sign-in-azure-notebooks.md)) voor meer informatie.
 
-1. Selecteer op uw openbare profielpagina **Mijn projecten** boven aan de pagina:
+1. Selecteer op de pagina openbaar profiel **Mijn projecten** boven aan de pagina:
 
-    ![Koppeling Mijn projecten boven aan het browservenster](media/quickstarts/my-projects-link.png)
+    ![De koppeling Mijn projecten bovenaan in het browser venster](media/quickstarts/my-projects-link.png)
 
-1. Selecteer **op** de pagina Mijn projecten de optie **Nieuw project** (sneltoets: n). De knop mag **+** alleen worden weergegeven alsof het browservenster smal is:
+1. Op de pagina **Mijn projecten** selecteert u **Nieuw project** (sneltoets: n). De knop kan alleen worden weer **+** gegeven alsof het browser venster smal is:
 
-    ![Opdracht Nieuw project op de pagina Mijn projecten](media/quickstarts/new-project-command.png)
+    ![De opdracht Nieuw project op de pagina Mijn projecten](media/quickstarts/new-project-command.png)
 
-1. Voer in de pop-up **Nieuw project maken** dat wordt weergegeven de juiste waarden in voor het notitieblok dat u migreert in de velden **Projectnaam** en **Project ID,** de opties voor **Openbaar project** wissen en een **README.md maken**en selecteer Vervolgens **Maken**.
+1. Voer in het pop-upvenster **Nieuw project maken** dat wordt weer gegeven de juiste waarden in voor het notitie blok dat u wilt migreren in de velden **project naam** en **project-id** , Wis de opties voor het **open bare project** en **Maak een README.MD**en selecteer vervolgens **maken**.
 
-## <a name="upload-the-local-notebook"></a>Het lokale notitieblok uploaden
+## <a name="upload-the-local-notebook"></a>Het lokale notitie blok uploaden
 
-1. Selecteer op de projectpagina **Uploaden** (die alleen als pijl-omhoog kan worden weergegeven als uw browservenster klein is) en selecteer 1. Selecteer in de pop-up die wordt weergegeven **van de computer** als uw notitieblok zich op uw lokale bestandssysteem bevindt of van **URL** als uw notitieblok zich online bevindt:
+1. Selecteer op de pagina project de optie **uploaden** (die kan worden weer gegeven als een pijl-omhoog als uw browser venster klein is) en selecteer vervolgens 1. Selecteer in het pop-upvenster dat wordt weer gegeven **van computer** als uw notitie blok zich op het lokale bestands systeem bevindt, of **van URL** als uw notitie blok online is:
 
-    ![Opdracht om een notitieblok te uploaden vanaf een URL of de lokale computer](media/quickstarts/upload-from-computer-url-command.png)
+    ![Opdracht voor het uploaden van een notitie blok vanuit een URL of de lokale computer](media/quickstarts/upload-from-computer-url-command.png)
 
-   Als uw notitieblok zich in een GitHub-opslagplaats bevindt, voert u de stappen uit op [Quickstart: Kloon in](quickstart-clone-jupyter-notebook.md) plaats daarvan een notitieblok.
+   Als uw notebook zich in een GitHub-opslag plaats bevindt, volgt u de stappen op [Quick Start: een notebook klonen](quickstart-clone-jupyter-notebook.md) .
 
-   - Als u **Van computer**gebruikt, sleept u uw *.ipynb-bestanden* en zet u deze neer in de pop-up of selecteert u **Bestanden kiezen**en bladert u naar de bestanden die u wilt importeren. Selecteer vervolgens **Uploaden**. De geüploade bestanden krijgen dezelfde naam als de lokale bestanden. U hoeft de inhoud van *ipynb_checkpoints* mappen niet te uploaden.
+   - Als u **vanaf computer**gebruikt, sleept u uw *. ipynb* -bestanden naar de pop-up of selecteert u **bestanden kiezen**, bladert u naar en selecteert u de bestanden die u wilt importeren. Selecteer vervolgens **Uploaden**. De geüploade bestanden krijgen dezelfde naam als de lokale bestanden. Het is niet nodig om de inhoud van een *ipynb_checkpoints* -map te uploaden.
 
-     ![Uploaden vanaf computerpop-up](media/quickstarts/upload-from-computer-popup.png)
+     ![Van de computer uploaden](media/quickstarts/upload-from-computer-popup.png)
 
-   - Als u **Van URL**gebruikt, voert u het bronadres in het veld **URL van** bestand en de bestandsnaam in die aan het notitieblok in uw project moet worden toegewezen in het veld **Bestandsnaam.** Selecteer vervolgens **Uploaden**. Als u meerdere bestanden met afzonderlijke URL's hebt, gebruikt u de opdracht **Bestand toevoegen** om de eerste URL te controleren die u hebt ingevoerd, waarna de pop-up nieuwe velden voor een ander bestand bevat.
+   - Als u **vanaf URL**gebruikt, voert u het bron adres in het veld **bestands-URL** in en de bestands naam die u wilt toewijzen aan het notitie blok in het project in het veld **Bestands naam** . Selecteer vervolgens **Uploaden**. Als u meerdere bestanden met afzonderlijke Url's hebt, gebruikt u de opdracht **bestand toevoegen** om de eerste URL die u hebt ingevoerd te controleren, waarna de pop-up nieuwe velden bevat voor een ander bestand.
 
-     ![Uploaden vanuit URL pop-up](media/quickstarts/upload-from-url-popup.png)
+     ![Uploaden via URL-pop-up](media/quickstarts/upload-from-url-popup.png)
 
-1. Open en voer uw nieuw geüploade notitieblok uit om de inhoud en werking ervan te verifiëren. Wanneer u klaar bent, selecteert u **Bestand** > Halt en sluit u het**notitieblok.**
+1. Open de zojuist geüploade notitie blok en voer deze uit om de inhoud en bewerking te controleren. Wanneer u klaar bent, selecteert u **bestand** > **stoppen en sluiten** om het notitie blok te sluiten.
 
-1. Als u een koppeling naar uw geüploade notitieblok wilt delen, klikt u met de rechtermuisknop op het bestand in het project en selecteert u **Koppeling kopiëren** (sneltoets: y) en plakt u die koppeling vervolgens in het juiste bericht. U het project als geheel delen met het besturingselement **Delen** op de projectpagina.
+1. Als u een koppeling naar uw geüploade notitie blok wilt delen, klikt u met de rechter muisknop op het bestand in het project en selecteert u **koppeling kopiëren** (sneltoets: y) en plakt u die koppeling in het juiste bericht. U kunt het project ook als geheel delen met behulp van het besturings element **delen** op de pagina project.
 
-1. Als u andere bestanden dan notitieblokken wilt bewerken, klikt u met de rechtermuisknop op het bestand in het project en selecteert u **Bestand bewerken** (sneltoets: i). De **standaardactie, Uitvoeren** (sneltoets: r), toont alleen de bestandsinhoud en staat bewerking niet toe.
+1. Als u andere bestanden dan notebooks wilt bewerken, klikt u met de rechter muisknop op het bestand in het project en selecteert u **bestand bewerken** (sneltoets: i). Met de standaard actie **(sneltoets** : r) wordt alleen de inhoud van het bestand weer gegeven en kan niet worden bewerkt.
 
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"]
-> [Zelfstudie: Een Jupyter-notitieblok maken en uitvoeren om lineaire regressie uit te voeren](tutorial-create-run-jupyter-notebook.md)
+> [Zelf studie: een Jupyter-notebook maken en uitvoeren om lineaire regressie uit te voeren](tutorial-create-run-jupyter-notebook.md)

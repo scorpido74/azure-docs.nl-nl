@@ -1,7 +1,7 @@
 ---
 title: Overzicht van Azure Media Services v3
 titleSuffix: Azure Media Services
-description: Een overzicht op hoog niveau van Azure Media Services v3 met koppelingen naar quickstarts, tutorials en codevoorbeelden.
+description: Een overzicht op hoog niveau van Azure Media Services V3 met koppelingen naar Quick starts, zelf studies en code voorbeelden.
 services: media-services
 documentationcenter: na
 author: Juliako
@@ -18,67 +18,67 @@ ms.date: 03/09/2020
 ms.author: juliako
 ms.custom: mvc
 ms.openlocfilehash: bd3890757377525cf9c178866a2a2fbc0791b9de
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "79461007"
 ---
 # <a name="azure-media-services-v3-overview"></a>Overzicht van Azure Media Services v3
 
-Azure Media Services is een cloudgebaseerd platform waarmee u oplossingen bouwt voor het creëren van videostreaming van broadcast-kwaliteit, het verbeteren van toegankelijkheid en distributie, het analyseren van inhoud en nog veel meer. Of u nu een app-ontwikkelaar, een callcenter, een overheidsinstantie of een entertainmentbedrijf bent, Media Services helpt u apps te maken die media-ervaringen van uitstekende kwaliteit leveren aan een groot publiek op de populairste mobiele apparaten en browsers van vandaag.
+Azure Media Services is een cloudgebaseerd platform waarmee u oplossingen bouwt voor het creëren van videostreaming van broadcast-kwaliteit, het verbeteren van toegankelijkheid en distributie, het analyseren van inhoud en nog veel meer. Of u nu een app-ontwikkelaar, een oproep centrum, een overheids instantie of een entertainment bedrijf bent, Media Services helpt u bij het maken van apps die media-ervaringen van een uitstekende kwaliteit leveren aan grote doel groepen op de meest populaire mobiele apparaten en browsers.
 
-De Media Services v3 SDKs zijn gebaseerd op [Media Services v3 OpenAPI Specification (Swagger).](https://aka.ms/ams-v3-rest-sdk)
+De Media Services v3 Sdk's zijn gebaseerd op [Media Services v3 OpenAPI Specification (Swagger)](https://aka.ms/ams-v3-rest-sdk).
 
 > [!NOTE]
-> Momenteel u de [Azure-portal](https://portal.azure.com/) gebruiken om: Media Services v3 [Live Events](live-events-outputs-concept.md)beheren, [v3-elementen](assets-concept.md)weergeven (niet beheren), [informatie krijgen over toegang tot API's](access-api-portal.md). Voor alle andere beheertaken (bijvoorbeeld [Transformaties en Taken](transforms-jobs-concept.md) en [Contentbescherming),](content-protection-overview.md)gebruikt u de [REST API](https://docs.microsoft.com/rest/api/media/), [CLI](https://aka.ms/ams-v3-cli-ref)of een van de ondersteunde [SDK's](media-services-apis-overview.md#sdks).
+> Op dit moment kunt u de [Azure Portal](https://portal.azure.com/) gebruiken om te: Media Services v3 [Live Events](live-events-outputs-concept.md)beheren, v3- [assets](assets-concept.md)weer geven (niet beheren), [informatie over het openen van api's ophalen](access-api-portal.md). Gebruik de [rest API](https://docs.microsoft.com/rest/api/media/), [cli](https://aka.ms/ams-v3-cli-ref)of een van de ondersteunde [sdk's](media-services-apis-overview.md#sdks)voor alle andere beheer taken (bijvoorbeeld [trans formaties en taken](transforms-jobs-concept.md) en [inhouds beveiliging](content-protection-overview.md)).
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="compliance-privacy-and-security"></a>Compliance, privacy en beveiliging
 
-Als een belangrijke herinnering moet u voldoen aan alle toepasselijke wetten bij uw gebruik van Azure Media Services en mag u Media Services of een Azure-service niet gebruiken op een manier die de rechten van anderen schendt of die schadelijk kan zijn voor anderen.
+Als belang rijke herinnering moet u zich houden aan alle toepasselijke wetgeving bij het gebruik van Azure Media Services en mag u Media Services of een Azure-service niet gebruiken op een manier die de rechten van anderen schendt of die schadelijk voor anderen kunnen zijn.
 
-Voordat u een video/afbeelding uploadt naar Media Services, moet u over alle juiste rechten beschikken om de video/afbeelding te gebruiken, inclusief, indien vereist door de wet, alle benodigde toestemmingen van personen (indien aanwezig) in de video/afbeelding, voor het gebruik, de verwerking en de opslag van hun gegevens in Media Services en Azure. Sommige rechtsgebieden kunnen speciale wettelijke vereisten opleggen voor het verzamelen, online verwerken en opslaan van bepaalde categorieën gegevens, zoals biometrische gegevens. Voordat u Media Services en Azure gebruikt voor de verwerking en opslag van gegevens die aan speciale wettelijke vereisten voldoen, moet u ervoor zorgen dat dergelijke wettelijke vereisten op u worden nageleefd.
+Voordat u een video/afbeelding naar Media Services uploadt, moet u over alle juiste rechten beschikken voor het gebruik van de video/afbeelding, inclusief, indien vereist door de wet, alle vereiste mede werkers (indien van toepassing) in de video/afbeelding, voor gebruik, verwerking en opslag van hun gegevens in Media Services en Azure. Sommige jurisdicties kunnen speciale wettelijke vereisten opleggen voor het verzamelen, online verwerken en opslaan van bepaalde gegevens categorieën, zoals biometrische gegevens. Voordat u Media Services en Azure gebruikt voor het verwerken en opslaan van gegevens die onder bijzondere wettelijke vereisten vallen, moet u ervoor zorgen dat u voldoet aan de wettelijke vereisten die voor u van toepassing kunnen zijn.
 
-Ga naar het Microsoft [Trust Center](https://www.microsoft.com/trust-center/?rtc=1)voor meer informatie over compliance, privacy en beveiliging in Media Services. Voor de privacyverplichtingen van Microsoft, gegevensverwerking en bewaarpraktijken, waaronder het verwijderen van uw gegevens, raadpleegt u de [privacyverklaring](https://privacy.microsoft.com/PrivacyStatement)van Microsoft, de [voorwaarden voor onlineservices](https://www.microsoft.com/licensing/product-licensing/products?rtc=1) (OST) en [het addendum voor gegevensverwerking](https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=67) (DPA"). Door mediaservices te gebruiken, stemt u ermee in gebonden te zijn door de OST, DPA en de Privacyverklaring.
+Ga naar het [vertrouwens centrum](https://www.microsoft.com/trust-center/?rtc=1)van micro soft voor meer informatie over naleving, privacy en beveiliging in Media Services. Raadpleeg de privacyverklaring van micro soft voor de privacy van micro soft, het verwerken en bewaren van gegevens, inclusief de manier waarop u uw gegevens kunt verwijderen, de [Privacy verklaring](https://privacy.microsoft.com/PrivacyStatement), de [voor waarden voor Online Services](https://www.microsoft.com/licensing/product-licensing/products?rtc=1) ("Ost") en de [gegevens verwerking](https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=67) ("DPA"). Door Media Services te gebruiken, gaat u ermee akkoord dat u bent gebonden aan de OST, DPA en de privacyverklaring.
  
 ## <a name="what-can-i-do-with-media-services"></a>Wat kan ik doen met Media Services?
 
-Met Media Services u verschillende mediaworkflows in de cloud bouwen. Enkele voorbeelden van wat u doen met Media Services zijn:
+Met Media Services kunt u diverse media werk stromen in de Cloud bouwen. Hieronder vindt u enkele voor beelden van wat u kunt doen met Media Services:
 
-* Video's in verschillende indelingen aanbieden, zodat deze kunnen worden afgespeeld in een groot aantal browsers en op diverse apparaten. Voor zowel on-demand als live streaming levering aan verschillende clients (mobiele apparaten, tv, pc, enzovoort), moet de video- en audio-inhoud op de juiste manier worden gecodeerd en verpakt. Zie [Snelstartgids: Videobestanden streamen - .NET](stream-files-dotnet-quickstart.md) om te lezen hoe u dergelijke inhoud kunt leveren en streamen.
-* Stream live sportevenementen voor een groot online publiek, zoals voetbal, honkbal, school- en middelbare schoolsporten en meer.
-* Publieke vergaderingen en evenementen uitzenden, zoals gemeentehuizen, gemeenteraadsvergaderingen en wetgevende organen.
+* Video's in verschillende indelingen aanbieden, zodat deze kunnen worden afgespeeld in een groot aantal browsers en op diverse apparaten. Voor zowel on-demand als live streaming-levering aan verschillende clients (mobiele apparaten, TV, PC, enzovoort) moet de video-en audio-inhoud worden gecodeerd en op de juiste manier worden verpakt. Zie [Snelstartgids: Videobestanden streamen - .NET](stream-files-dotnet-quickstart.md) om te lezen hoe u dergelijke inhoud kunt leveren en streamen.
+* U kunt live sport gebeurtenissen streamen naar een grote online publiek, zoals voetbal, voetbal, College, school sport en meer.
+* Open bare vergaderingen en gebeurtenissen, zoals stads huizen, steden vergaderingen en wetgevende instanties.
 * Opgenomen videobeelden of audio-inhoud analyseren. Zo kunnen organisaties bijvoorbeeld de klanttevredenheid verbeteren door spraak-naar-tekst te extraheren en zoekindexen en dashboards samen te stellen. Vervolgens kunnen ze informatie over veelvoorkomende klachten, bronnen van klachten en andere relevante gegevens verzamelen.
 * Een videoservice op abonnementsbasis maken en met DRM beveiligde inhoud streamen wanneer een klant (bijvoorbeeld een filmstudio) de toegang tot en het gebruik van bedrijfseigen, auteursrechtelijk beschermd werk moet beperken.
 * Offline inhoud aanbieden voor afspelen in vliegtuigen, treinen en auto's. Klanten willen bijvoorbeeld inhoud downloaden naar hun telefoon of tablet, omdat ze weten dat ze later geen toegang hebben tot het netwerk en dan toch deze inhoud kunnen afspelen.
-* Implementeer een educatief e-learning videoplatform met Azure Media Services en [Azure Cognitive Services API's](https://docs.microsoft.com/azure/?pivot=products&panel=ai) voor spraak-naar-tekst bijschriften, vertalen naar meerdere talen, enzovoort.
+* Implementeer een educatief e-learning video platform met Azure Media Services en [Azure Cognitive Services-API's](https://docs.microsoft.com/azure/?pivot=products&panel=ai) voor ondertiteling van spraak naar tekst, vertalen naar meerdere talen, enzovoort.
 * Gebruik Azure Media Services in combinatie met [Azure Cognitive Services API's](https://docs.microsoft.com/azure/?pivot=products&panel=ai) om ondertitels en bijschriften toe te voegen aan video's om een breder publiek te bereiken (bijvoorbeeld mensen met een gehoorbeperking of personen die de video in een andere taal willen volgen).
 * Schakel Azure CDN in om grote schaalbaarheid te bieden, zodat piekbelastingen beter kunnen worden verwerkt (bijvoorbeeld bij een productlancering).
 
 ## <a name="how-can-i-get-started-with-v3"></a>Hoe ga ik aan de slag met v3? 
 
-Meer informatie over het coderen en verpakken van inhoud, het streamen van video's op aanvraag, live uitzenden en analyseren van je video's met Media Services v3. Zelfstudies, API-verwijzingen en andere documentatie laten zien hoe u veilig on-demand of live video- of audiostromen levert aan miljoenen gebruikers.
+Meer informatie over het coderen en inpakken van inhoud, het streamen van Video's op aanvraag, live uitzenden en het analyseren van uw Video's met Media Services v3. Zelfstudies, API-verwijzingen en andere documentatie laten zien hoe u veilig on-demand of live video- of audiostromen levert aan miljoenen gebruikers.
 
 > [!TIP]
-> Voordat u begint met ontwikkelen, bekijkt u:<br/>* [Fundamentele concepten](concepts-overview.md) (incudes belangrijke concepten, zoals verpakking, codering, en bescherming)<br/>* [Ontwikkelen met Media Services v3 API's](media-services-apis-overview.md) (inclusief informatie over toegang tot API's, naamgevingsconventies, enzovoort)
+> Controleer het volgende voordat u begint met ontwikkelen:<br/>* [Basis concepten](concepts-overview.md) (incudes belang rijke concepten, zoals verpakking, code ring en bescherming)<br/>* [Ontwikkelen met Media Services v3-api's](media-services-apis-overview.md) (bevat informatie over het openen van api's, naam conventies, enzovoort)
 
 ### <a name="sdks"></a>SDK's
 
-Begin met het ontwikkelen met [Azure Media Services v3-client SDKs.](media-services-apis-overview.md#sdks)
+Begin met ontwikkelen met [Azure Media Services v3 client-sdk's](media-services-apis-overview.md#sdks).
 
 ### <a name="quickstarts"></a>Snelstartgidsen  
 
-De quickstarts tonen fundamentele dag-1 instructies voor nieuwe klanten om mediaservices snel uit te proberen.
+In de Quick starts worden de belangrijkste dag-1 instructies voor nieuwe klanten weer gegeven om Media Services snel uit te proberen.
 
 * [Videobestanden streamen - .NET](stream-files-dotnet-quickstart.md)
-* [Videobestanden streamen - CLI](stream-files-cli-quickstart.md)
+* [Video bestanden streamen-CLI](stream-files-cli-quickstart.md)
 * [Videobestanden streamen - Node.js](stream-files-nodejs-quickstart.md)
 
 ### <a name="tutorials"></a>Zelfstudies
 
-De zelfstudies tonen scenariogebaseerde procedures voor enkele van de belangrijkste Media Services-taken.
+De zelf studies tonen op scenario's gebaseerde procedures voor een aantal van de belangrijkste Media Services taken.
 
 * [Externe bestanden coderen en video streamen - REST](stream-files-tutorial-with-rest.md)
 * [Externe bestanden coderen en video streamen - .NET](stream-files-tutorial-with-api.md)
@@ -88,23 +88,23 @@ De zelfstudies tonen scenariogebaseerde procedures voor enkele van de belangrijk
 
 ### <a name="samples"></a>Voorbeelden
 
-Gebruik [deze voorbeeldbrowser](https://docs.microsoft.com/samples/browse/?products=azure-media-services) om door codevoorbeelden van Azure Media Services te bladeren.
+Gebruik [deze voorbeeld browser](https://docs.microsoft.com/samples/browse/?products=azure-media-services) om te bladeren door Azure Media Services code voorbeelden.
 
-### <a name="how-to-guides"></a>Handleidingen
+### <a name="how-to-guides"></a>Instructiegidsen
 
-Handleidingen bevatten codevoorbeelden die aantonen hoe u een taak voltooien. In deze sectie vindt u vele voorbeelden. Hier zijn een paar van hen:
+Instructies voor het uitvoeren van een taak zijn voorbeeld codes. In deze sectie vindt u veel voor beelden. Hier volgen enkele hiervan:
 
 * [Een account maken - CLI](create-account-cli-how-to.md)
 * [Toegang tot API's - CLI](access-api-cli-how-to.md)
-* [Coderen met HTTPS als taakinvoer - .NET](job-input-from-http-how-to.md)  
+* [Coderen met HTTPS als taak invoer-.NET](job-input-from-http-how-to.md)  
 * [Gebeurtenissen bewaken - Portal](monitor-events-portal-how-to.md)
-* [Dynamisch versleutelen met multi-DRM - .NET](protect-with-drm.md) 
-* [Hoe te coderen met een aangepaste transformatie - CLI](custom-preset-cli-howto.md)
+* [Dynamisch versleutelen met multi-DRM-.NET](protect-with-drm.md) 
+* [Coderen met een aangepaste transform-CLI](custom-preset-cli-howto.md)
 
-## <a name="ask-questions-give-feedback-get-updates"></a>Stel vragen, geef feedback, ontvang updates
+## <a name="ask-questions-give-feedback-get-updates"></a>Vragen stellen, feedback geven, updates ophalen
 
-Bekijk het communityartikel [van Azure Media Services](media-services-community.md) om verschillende manieren te zien waarop u vragen stellen, feedback geven en updates ontvangen over Media Services.
+Bekijk het [Azure Media Services Community](media-services-community.md) -artikel voor verschillende manieren om vragen te stellen, feedback te geven en updates te ontvangen over Media Services.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-[Meer informatie over fundamentele concepten](concepts-overview.md)
+[Meer informatie over basis concepten](concepts-overview.md)

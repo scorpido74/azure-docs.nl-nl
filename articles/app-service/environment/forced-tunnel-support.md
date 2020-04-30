@@ -1,6 +1,6 @@
 ---
 title: Geforceerde tunneling configureren
-description: Meer informatie over hoe u uw app-serviceomgeving laten werken wanneer uitgaand verkeer wordt gedwongen in uw virtuele netwerk.
+description: Meer informatie over hoe u uw App Service Environment kunt laten werken wanneer uitgaand verkeer in het virtuele netwerk geforceerd wordt getunneld.
 author: ccompy
 ms.assetid: 384cf393-5c63-4ffb-9eb2-bfd990bc7af1
 ms.topic: quickstart
@@ -8,10 +8,10 @@ ms.date: 05/29/2018
 ms.author: ccompy
 ms.custom: mvc, seodec18
 ms.openlocfilehash: 3334a19b1ba0e3949ab2670c5d2f70d3bcd02fe8
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/09/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80983907"
 ---
 # <a name="configure-your-app-service-environment-with-forced-tunneling"></a>De Azure App Service-omgeving configureren met geforceerde tunnels
@@ -60,7 +60,7 @@ U kunt uw ASE-subnet configureren om alle BGP-routes te negeren.  Wanneer de ASE
 Uw ASE-subnet configureren om BGP-routes te negeren:
 
 * Maak een UDR en wijs deze toe aan uw ASE-subnet, als u dit nog niet hebt gedaan.
-* Open in Azure Portal de gebruikersinterface voor de routetabel die aan uw ASE-subnet is toegewezen.  Selecteer Configuratie.  Stel de verspreiding van virtuele netwerkgatewayroute in op Uitgeschakeld.  Klik op Opslaan. Documentatie over hoe u dit kunt uitschakelen, vindt u in het document [Een routetabel maken][routetable].
+* Open in Azure Portal de gebruikersinterface voor de routetabel die aan uw ASE-subnet is toegewezen.  Selecteer Configuratie.  Doorgifte van gateway route van virtueel netwerk instellen op uitgeschakeld.  Klik op Opslaan. Documentatie over hoe u dit kunt uitschakelen, vindt u in het document [Een routetabel maken][routetable].
 
 Wanneer u het ASE-subnet hebt geconfigureerd om alle BGP-routes te negeren, hebben uw apps geen toegang meer tot on-premises resources. Als u de toegang tot on-premises weer wilt inschakelen voor uw apps, bewerkt u de UDR die is toegewezen aan uw ASE-subnet en voegt u routes toe voor uw on-premises adresbereiken. Het type van de volgende hop moet worden ingesteld op Virtueel-netwerkgateway. 
 
@@ -95,7 +95,7 @@ Voer de volgende stappen uit als u al het uitgaande verkeer vanuit uw ASE, behal
 
 3. Haal de adressen op die worden gebruikt voor al het uitgaande verkeer van uw App Service Environment naar het internet. Als u het verkeer on-premises omleidt, zijn deze adressen uw NAT's of gateway-IP-adressen. Als u het uitgaande verkeer van de App Service-omgeving wilt routeren via een NVA, is het uitgaande adres het openbare IP-adres van de NVA.
 
-4. _U stelt als volgt de uitgaande adressen in een bestaande App Service Environment in:_ ga naar resources.azure.com en ga naar Subscription/\<subscription id>/resourceGroups/\<ase resource group>/providers/Microsoft.Web/hostingEnvironments/\<ase name>. Vervolgens ziet u de JSON die de App Service-omgeving beschrijft. Controleer of bovenaan **lezen/schrijven** staat. Selecteer **Bewerken**. Schuif naar beneden. Wijzig de waarde **userWhitelistedIpRanges** van **null** in een waarde die lijkt op het volgende. Gebruik de adressen die u wilt instellen als het bereik met uitgaande adressen. 
+4. _U stelt als volgt de uitgaande adressen in een bestaande App Service Environment in:_ ga naar resources.azure.com en ga naar Subscription/\<subscription id>/resourceGroups/\<ase resource group>/providers/Microsoft.Web/hostingEnvironments/\<ase name>. Vervolgens ziet u de JSON die de App Service-omgeving beschrijft. Controleer of bovenaan **lezen/schrijven** staat. Selecteer **bewerken**. Schuif naar beneden. Wijzig de waarde **userWhitelistedIpRanges** van **null** in een waarde die lijkt op het volgende. Gebruik de adressen die u wilt instellen als het bereik met uitgaande adressen. 
 
         "userWhitelistedIpRanges": ["11.22.33.44/32", "55.66.77.0/24"] 
 

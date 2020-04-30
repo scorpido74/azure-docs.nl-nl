@@ -7,15 +7,15 @@ ms.date: 08/07/2019
 ms.author: cgillum
 ms.reviewer: azfuncdf
 ms.openlocfilehash: 5d454aefaba89bef9dc9009ff442fa5543dae2ef
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "79241344"
 ---
 # <a name="what-are-durable-functions"></a>Wat is Durable Functions?
 
-*Duurzame functies* is een uitbreiding van [Azure-functies](../functions-overview.md) waarmee u stateful-functies schrijven in een serverloze compute-omgeving. Met de extensie u stateful workflows definiëren door [*orchestrator-functies*](durable-functions-orchestrations.md) en stateful entiteiten te schrijven door [*entiteitsfuncties*](durable-functions-entities.md) te schrijven met behulp van het programmeermodel Azure Functions. Achter de schermen beheert de extensie status, controlepunten en opnieuw opstarten, zodat u zich concentreren op uw bedrijfslogica.
+*Durable functions* is een uitbrei ding van [Azure functions](../functions-overview.md) waarmee stateful functies kunnen worden geschreven in een serverloze reken omgeving. Met de uitbrei ding kunt u stateful werk stromen definiëren door [*Orchestrator-functies*](durable-functions-orchestrations.md) en stateful-entiteiten te schrijven door [*entiteits functies*](durable-functions-entities.md) te schrijven met behulp van het Azure functions-programmeer model. Achter de schermen beheert de uitbrei ding status, controle punten en wordt de computer opnieuw opgestart, zodat u zich kunt concentreren op uw bedrijfs logica.
 
 ## <a name="supported-languages"></a><a name="language-support"></a>Ondersteunde talen
 
@@ -27,30 +27,30 @@ Durable Functions ondersteunt momenteel de volgende talen:
 
 Durable Functions heeft als doel alle [Azure Functions-talen](../supported-languages.md) te ondersteunen. Zie [Durable Functions issues list](https://github.com/Azure/azure-functions-durable-extension/issues) voor de laatste voortgangsstatus van de ondersteuning voor meer talen.
 
-Net als Azure-functies zijn er sjablonen om u te helpen duurzame functies te ontwikkelen met behulp van [Visual Studio 2019,](durable-functions-create-first-csharp.md) [Visual Studio Code](quickstart-js-vscode.md)en de [Azure-portal.](durable-functions-create-portal.md)
+Net als Azure Functions zijn er sjablonen waarmee u Durable Functions kunt ontwikkelen met behulp van [Visual studio 2019](durable-functions-create-first-csharp.md), [Visual Studio Code](quickstart-js-vscode.md)en de [Azure Portal](durable-functions-create-portal.md).
 
 ## <a name="application-patterns"></a>Toepassingspatronen
 
-De primaire use case voor Durable Functions is het vereenvoudigen van complexe stateful coördinatievereisten in serverloze toepassingen. In de volgende secties worden typische toepassingspatronen beschreven die kunnen profiteren van duurzame functies:
+De primaire use case voor Durable Functions is het vereenvoudigen van complexe stateful coördinatievereisten in serverloze toepassingen. In de volgende secties worden typische toepassings patronen beschreven die kunnen profiteren van Durable Functions:
 
 * [Functiekoppeling](#chaining)
 * [Uit-/inwaaieren](#fan-in-out)
 * [Asynchrone HTTP-API's](#async-http)
-* [Monitoring](#monitoring)
+* [Bewaking](#monitoring)
 * [Menselijke tussenkomst](#human)
-* [Aggregator (stateful entiteiten)](#aggregator)
+* [Aggregator (stateful-entiteiten)](#aggregator)
 
-### <a name="pattern-1-function-chaining"></a><a name="chaining"></a>Patroon #1: Functiechaining
+### <a name="pattern-1-function-chaining"></a><a name="chaining"></a>Patroon #1: functie koppeling
 
-In het functieketenpatroon wordt een reeks functies in een specifieke volgorde uitgevoerd. In dit patroon wordt de uitvoer van de ene functie toegepast op de invoer van een andere functie.
+In het patroon functie koppeling wordt een reeks functies in een specifieke volg orde uitgevoerd. In dit patroon wordt de uitvoer van een functie toegepast op de invoer van een andere functie.
 
-![Een diagram van het functieketenpatroon](./media/durable-functions-concepts/function-chaining.png)
+![Een diagram van het patroon van de functie koppeling](./media/durable-functions-concepts/function-chaining.png)
 
-U Duurzame functies gebruiken om het functieketenpatroon beknopt te implementeren, zoals in het volgende voorbeeld wordt weergegeven.
+U kunt Durable Functions gebruiken om het patroon van de functie koppeling beknopt te implementeren, zoals wordt weer gegeven in het volgende voor beeld.
 
-In dit voorbeeld `F1`worden `F2` `F3`de `F4` waarden , en zijn de namen van andere functies in dezelfde functie-app. U de besturingsstroom implementeren met behulp van normale verplichte coderingsconstructies. Code wordt van boven naar beneden uitgevoerd. De code kan bestaan uit bestaande taalcontrolestroomsemantiek, zoals conditionals en loops. U logica voor `try` / `catch` / `finally` foutafhandeling in blokken opnemen.
+In dit voor beeld zijn de `F1`waarden `F2`, `F3`, en `F4` de namen van andere functies in dezelfde functie-app. U kunt de controle stroom implementeren met behulp van normale verplichte coderings constructies. Code wordt van boven naar beneden uitgevoerd. De code kan bestaan uit de bestaande semantiek van de taal besturings flow, zoals voor waarden en lussen. U kunt de logica voor fout afhandeling `try` / `catch` / `finally` in blokken toevoegen.
 
-# <a name="c"></a>[C #](#tab/csharp)
+# <a name="c"></a>[G #](#tab/csharp)
 
 ```csharp
 [FunctionName("Chaining")]
@@ -71,7 +71,7 @@ public static async Task<object> Run(
 }
 ```
 
-U `context` de parameter gebruiken om andere functies aan te roepen op naam, doorgeefparameters en uitvoer van de retourfunctie. Telkens wanneer de `await`code aanroept, controleert het framework Duurzame functies de voortgang van de huidige functie-instantie. Als het proces of de virtuele machine halverwege de uitvoering wordt `await` gerecycled, wordt de functie-instantie hervat vanaf de vorige aanroep. Zie voor meer informatie de volgende sectie, Pattern #2: Fan out/fan in.
+U kunt de `context` para meter gebruiken om andere functies aan te roepen op naam, para meters door geven en retour neren functie uitvoer. Telkens wanneer de code aanroept `await`, wordt in het Durable functions Framework de voortgang van het huidige functie-exemplaar gecontroleerd. Als het proces of de virtuele machine halverwege de uitvoering wordt gerecycled, wordt het functie-exemplaar hervat vanaf `await` de voor gaande aanroep. Zie de volgende sectie, patroon #2: uitwaaieren/ventilatoren in voor meer informatie.
 
 # <a name="javascript"></a>[Javascript](#tab/javascript)
 
@@ -90,24 +90,24 @@ module.exports = df.orchestrator(function*(context) {
 });
 ```
 
-U `context.df` het object gebruiken om andere functies aan te roepen op naam, doorgeefparameters en uitvoer van de retourfunctie. Telkens wanneer de `yield`code aanroept, controleert het framework Duurzame functies de voortgang van de huidige functie-instantie. Als het proces of de virtuele machine halverwege de uitvoering wordt `yield` gerecycled, wordt de functie-instantie hervat vanaf de vorige aanroep. Zie voor meer informatie de volgende sectie, Pattern #2: Fan out/fan in.
+U kunt het `context.df` object gebruiken om andere functies aan te roepen op naam, para meters door geven en retour neren functie uitvoer. Telkens wanneer de code aanroept `yield`, wordt in het Durable functions Framework de voortgang van het huidige functie-exemplaar gecontroleerd. Als het proces of de virtuele machine halverwege de uitvoering wordt gerecycled, wordt het functie-exemplaar hervat vanaf `yield` de voor gaande aanroep. Zie de volgende sectie, patroon #2: uitwaaieren/ventilatoren in voor meer informatie.
 
 > [!NOTE]
-> Het `context` object in JavaScript vertegenwoordigt de volledige [functiecontext](../functions-reference-node.md#context-object). Toegang tot de context `df` Duurzame functies met behulp van de eigenschap op de hoofdcontext.
+> Het `context` object in Java script vertegenwoordigt de volledige [functie context](../functions-reference-node.md#context-object). Open de Durable Functions context met behulp van de `df` eigenschap in de hoofd context.
 
 ---
 
-### <a name="pattern-2-fan-outfan-in"></a><a name="fan-in-out"></a>Patroon #2: Uitwaaieren/ventilator binnen
+### <a name="pattern-2-fan-outfan-in"></a><a name="fan-in-out"></a>Patroon #2: uitwaaieren/ventilator in
 
-In de ventilator uit/ventilator in patroon voert u meerdere functies parallel uit en wacht u tot alle functies zijn voltooid. Vaak wordt er wat aggregatiewerk gedaan aan de resultaten die worden geretourneerd uit de functies.
+In het patroon uitwaaieren/ventilatoren voert u meerdere functies parallel uit en wacht u totdat alle functies zijn voltooid. Vaak wordt een samen voeging uitgevoerd op de resultaten die worden geretourneerd door de functies.
 
-![Een diagram van het ventilatoruit/ventilatorpatroon](./media/durable-functions-concepts/fan-out-fan-in.png)
+![Een diagram van het uitwaaieren/ventilator patroon](./media/durable-functions-concepts/fan-out-fan-in.png)
 
-Met normale functies u uitwaaieren door de functie meerdere berichten naar een wachtrij te laten verzenden. Fanning terug in is veel uitdagender. Als u wilt inwaaieren, schrijft u in een normale functie code om bij te houden wanneer de door de wachtrij geactiveerde functies eindigen en vervolgens functie-uitvoer op te slaan.
+Met normale functies kunt u uitwaaieren door de functie meerdere berichten naar een wachtrij te verzenden. Fanning weer in is veel lastiger. Als u in een normale functie wilt inwaaieren, schrijft u code om bij te houden wanneer de functies die door de wachtrij worden geactiveerd, eindigen en vervolgens de functie-uitvoer op te slaan.
 
-De extensie Duurzame functies behandelt dit patroon met relatief eenvoudige code:
+Met de extensie Durable Functions wordt dit patroon afgehandeld met relatief eenvoudige code:
 
-# <a name="c"></a>[C #](#tab/csharp)
+# <a name="c"></a>[G #](#tab/csharp)
 
 ```csharp
 [FunctionName("FanOutFanIn")]
@@ -132,9 +132,9 @@ public static async Task Run(
 }
 ```
 
-Het uitwaaierwerk wordt verdeeld over meerdere `F2` exemplaren van de functie. Het werk wordt bijgehouden met behulp van een dynamische lijst met taken. `Task.WhenAll`wordt opgeroepen om te wachten tot alle zogenaamde functies zijn voltooid. Vervolgens worden `F2` de functie-uitgangen samengevoegd vanuit de dynamische `F3` takenlijst en doorgegeven aan de functie.
+Het werk van de ventilator wordt gedistribueerd naar meerdere exemplaren `F2` van de functie. Het werk wordt bijgehouden met behulp van een dynamische lijst met taken. `Task.WhenAll`wordt aangeroepen om te wachten tot alle aangeroepen functies zijn voltooid. Vervolgens worden de `F2` functie-uitvoer geaggregeerd van de lijst met dynamische taken en door gegeven aan de `F3` functie.
 
-De automatische controlecontrole die `await` plaatsvindt `Task.WhenAll` bij de aanroep zorgt ervoor dat een potentiële halverwege crash of reboot niet vereist dat een reeds voltooide taak opnieuw wordt opgestart.
+De automatische controle punten die zich bij de `await` aanroep voordoen, zorgen ervoor dat een mogelijke fout in `Task.WhenAll` de Midway of het opnieuw opstarten niet nodig is om een reeds voltooide taak opnieuw te starten.
 
 # <a name="javascript"></a>[Javascript](#tab/javascript)
 
@@ -158,24 +158,24 @@ module.exports = df.orchestrator(function*(context) {
 });
 ```
 
-Het uitwaaierwerk wordt verdeeld over meerdere `F2` exemplaren van de functie. Het werk wordt bijgehouden met behulp van een dynamische lijst met taken. `context.df.Task.all`API is geroepen om te wachten tot alle aangeroepen functies zijn voltooid. Vervolgens worden `F2` de functie-uitgangen samengevoegd vanuit de dynamische `F3` takenlijst en doorgegeven aan de functie.
+Het werk van de ventilator wordt gedistribueerd naar meerdere exemplaren `F2` van de functie. Het werk wordt bijgehouden met behulp van een dynamische lijst met taken. `context.df.Task.all`API wordt aangeroepen om te wachten tot alle aangeroepen functies zijn voltooid. Vervolgens worden de `F2` functie-uitvoer geaggregeerd van de lijst met dynamische taken en door gegeven aan de `F3` functie.
 
-De automatische controlecontrole die `yield` plaatsvindt `context.df.Task.all` bij de aanroep zorgt ervoor dat een potentiële halverwege crash of reboot niet vereist dat een reeds voltooide taak opnieuw wordt opgestart.
+De automatische controle punten die zich bij de `yield` aanroep voordoen, zorgen ervoor dat een mogelijke fout in `context.df.Task.all` de Midway of het opnieuw opstarten niet nodig is om een reeds voltooide taak opnieuw te starten.
 
 ---
 
 > [!NOTE]
-> In zeldzame omstandigheden is het mogelijk dat een crash in het venster kan plaatsvinden nadat een activiteitsfunctie is voltooid, maar voordat de voltooiing ervan is opgeslagen in de orkestratiegeschiedenis. Als dit gebeurt, wordt de activiteitsfunctie opnieuw uitgevoerd vanaf het begin nadat het proces is hersteld.
+> In zeldzame gevallen is het mogelijk dat er een crash in het venster kan optreden nadat een activiteit functie is voltooid, maar voordat de voltooiing wordt opgeslagen in de Orchestration-geschiedenis. Als dit gebeurt, wordt de activiteit functie opnieuw uitgevoerd vanaf het begin nadat het proces is hersteld.
 
-### <a name="pattern-3-async-http-apis"></a><a name="async-http"></a>Patroon #3: Async HTTP API's
+### <a name="pattern-3-async-http-apis"></a><a name="async-http"></a>Patroon #3: async HTTP-Api's
 
-Het async HTTP API-patroon lost het probleem op van het coördineren van de status van langlopende bewerkingen met externe clients. Een veelvoorkomende manier om dit patroon te implementeren is door een HTTP-eindpunt de langlopende actie te laten activeren. Verwijs de client vervolgens door naar een statuseindpunt dat de client peilt om te leren wanneer de bewerking is voltooid.
+Het asynchrone HTTP API-patroon is een oplossing voor het probleem van het coördineren van de status van langlopende bewerkingen met externe clients. Een veelvoorkomende manier om dit patroon te implementeren, is door een HTTP-eind punt te laten activeren van de langlopende actie. Leid vervolgens de client om naar een status eindpunt dat de client navraagt om te leren wanneer de bewerking is voltooid.
 
 ![Een diagram van het HTTP API-patroon](./media/durable-functions-concepts/async-http-api.png)
 
-Duurzame functies bieden **ingebouwde ondersteuning** voor dit patroon, waardoor de code die u moet schrijven om te communiceren met langlopende functie-uitvoeringen wordt vereenvoudigd of zelfs verwijderd. De snelstartvoorbeelden voor duurzame functies[(C#](durable-functions-create-first-csharp.md) en [JavaScript)](quickstart-js-vscode.md)tonen bijvoorbeeld een eenvoudige REST-opdracht die u gebruiken om nieuwe instanties voor orchestrator-functies te starten. Nadat een instantie is gestart, worden webhook HTTP-API's weergegeven die de status van de orchestrator-functie opvragen. 
+Durable Functions biedt **ingebouwde ondersteuning** voor dit patroon, waardoor de code die u moet schrijven om te communiceren met langlopende functie-uitvoeringen, wordt vereenvoudigd of verwijderd. De Durable Functions Quick start-voor beelden ([C#](durable-functions-create-first-csharp.md) en [Java script](quickstart-js-vscode.md)) tonen bijvoorbeeld een eenvoudige rest-opdracht die u kunt gebruiken om nieuwe Orchestrator-functie instanties te starten. Nadat een exemplaar is gestart, worden de HTTP-Api's van de webhook met de status van de Orchestrator-functie weer gegeven. 
 
-In het volgende voorbeeld worden REST-opdrachten weergegeven die een orchestrator starten en de status ervan opvragen. Voor de duidelijkheid, sommige protocoldetails worden weggelaten uit het voorbeeld.
+In het volgende voor beeld worden REST-opdrachten weer gegeven die een Orchestrator starten en de status ervan opvragen. Voor de duidelijkheid worden bepaalde protocol gegevens uit het voor beeld wegge laten.
 
 ```
 > curl -X POST https://myfunc.azurewebsites.net/orchestrators/DoWork -H "Content-Length: 0" -i
@@ -200,25 +200,25 @@ Content-Type: application/json
 {"runtimeStatus":"Completed","lastUpdatedTime":"2019-03-16T21:20:57Z", ...}
 ```
 
-Omdat de runtime duurzame functies de status voor u beheert, hoeft u uw eigen mechanisme voor statustracking niet te implementeren.
+Omdat de Durable Functions runtime de status voor u beheert, hoeft u uw eigen status tracking-mechanisme niet te implementeren.
 
-De extensie Duurzame functies legt ingebouwde HTTP-API's bloot die langdurige orkestraties beheren. U dit patroon ook zelf implementeren door uw eigen functietriggers (zoals HTTP, een wachtrij of Azure Event Hubs) en de [orchestration-clientbinding te gebruiken.](durable-functions-bindings.md#orchestration-client) U bijvoorbeeld een wachtrijbericht gebruiken om beëindiging te activeren. U ook een HTTP-trigger gebruiken die is beveiligd door een Azure Active Directory-verificatiebeleid in plaats van de ingebouwde HTTP-API's die een gegenereerde sleutel gebruiken voor verificatie.
+De uitbrei ding Durable Functions maakt ingebouwde HTTP-Api's beschikbaar waarmee langlopende integraties worden beheerd. U kunt dit patroon ook zelf implementeren door gebruik te maken van uw eigen functie Triggers (zoals HTTP, een wachtrij of Azure Event Hubs) en de [Orchestration client-binding](durable-functions-bindings.md#orchestration-client). U kunt bijvoorbeeld een wachtrij bericht gebruiken om beëindiging te activeren. U kunt ook een HTTP-trigger gebruiken die wordt beveiligd met een Azure Active Directory verificatie beleid in plaats van de ingebouwde HTTP-Api's die een gegenereerde sleutel voor verificatie gebruiken.
 
-Zie voor meer informatie het [http-functiesartikel,](durable-functions-http-features.md) waarin wordt uitgelegd hoe u asynchrone, langlopende processen via HTTP blootleggen met de extensie Duurzame functies.
+Zie het artikel [http-functies](durable-functions-http-features.md) voor meer informatie. hierin wordt uitgelegd hoe u asynchrone, langlopende processen via http kunt weer geven met behulp van de extensie Durable functions.
 
-### <a name="pattern-4-monitor"></a><a name="monitoring"></a>Patroon #4: Monitor
+### <a name="pattern-4-monitor"></a><a name="monitoring"></a>Patroon #4: monitor
 
-Het monitorpatroon verwijst naar een flexibel, terugkerend proces in een workflow. Een voorbeeld is polling totdat aan specifieke voorwaarden is voldaan. U een normale [timertrigger](../functions-bindings-timer.md) gebruiken om een basisscenario aan te pakken, zoals een periodieke opschoningstaak, maar het interval is statisch en het beheren van instantielevensduur wordt complex. U Duurzame functies gebruiken om flexibele herhalingsintervallen te maken, taaklevensduur te beheren en meerdere monitorprocessen te maken vanuit één orkestratie.
+Het monitor patroon verwijst naar een flexibel, terugkerend proces in een werk stroom. Een voor beeld is een polling totdat aan bepaalde voor waarden wordt voldaan. U kunt een normale [Timer trigger](../functions-bindings-timer.md) gebruiken om een basis scenario te verhelpen, zoals een periodieke opschoon taak, maar het bijbehorende interval is statisch en het beheren van de levens duur van het exemplaar wordt complex. U kunt Durable Functions gebruiken voor het maken van flexibele terugkeer intervallen, het beheren van de levens duur van taken en het maken van meerdere monitor processen vanuit één indeling.
 
-Een voorbeeld van het monitorpatroon is het omkeren van het eerdere async HTTP API-scenario. In plaats van een eindpunt bloot te stellen voor een externe client om een langdurige bewerking te controleren, verbruikt de langlopende monitor een extern eindpunt en wacht vervolgens op een statuswijziging.
+Een voor beeld van het monitor patroon is het terugdraaien van het eerdere async HTTP API-scenario. In plaats van een eind punt weer te geven voor een externe client om een langlopende bewerking te bewaken, gebruikt de langlopende monitor een extern eind punt en wordt er gewacht op een status wijziging.
 
-![Een diagram van het monitorpatroon](./media/durable-functions-concepts/monitor.png)
+![Een diagram van het monitor patroon](./media/durable-functions-concepts/monitor.png)
 
-In een paar regels code u duurzame functies gebruiken om meerdere monitoren te maken die willekeurige eindpunten observeren. De monitoren kunnen de uitvoering beëindigen wanneer aan een voorwaarde is voldaan, of een andere functie kan de duurzame orchestration-client gebruiken om de monitoren te beëindigen. U het interval `wait` van een monitor wijzigen op basis van een specifieke voorwaarde (bijvoorbeeld exponentiële backoff.) 
+In een paar regels code kunt u Durable Functions gebruiken om meerdere monitors te maken die wille keurige eind punten observeren. De monitors kunnen de uitvoering beëindigen wanneer aan een voor waarde wordt voldaan, of een andere functie kan de duurzame Orchestration-client gebruiken om de monitors te beëindigen. U kunt het interval van `wait` een monitor wijzigen op basis van een specifieke voor waarde (bijvoorbeeld exponentiële uitstel.) 
 
-De volgende code implementeert een basismonitor:
+Met de volgende code wordt een basis monitor geïmplementeerd:
 
-# <a name="c"></a>[C #](#tab/csharp)
+# <a name="c"></a>[G #](#tab/csharp)
 
 ```csharp
 [FunctionName("MonitorJobStatus")]
@@ -278,21 +278,21 @@ module.exports = df.orchestrator(function*(context) {
 
 ---
 
-Wanneer een aanvraag wordt ontvangen, wordt een nieuwe orchestration-instantie gemaakt voor die taak-id. De instantie peilt een status totdat aan een voorwaarde is voldaan en de lus wordt verlaten. Een duurzame timer regelt het polling-interval. Dan kan meer werk worden uitgevoerd, of de orkestratie kan eindigen. Wanneer `nextCheck` `expiryTime`groter is , eindigt de monitor.
+Wanneer een aanvraag wordt ontvangen, wordt er een nieuw Orchestration-exemplaar gemaakt voor die taak-ID. Het exemplaar pollt een status totdat aan een voor waarde wordt voldaan en de lus wordt afgesloten. Een duurzame timer bepaalt het polling-interval. Vervolgens kan er meer werk worden uitgevoerd of kan de indeling worden beëindigd. Wanneer `nextCheck` overschrijdt `expiryTime`, wordt de monitor beëindigd.
 
-### <a name="pattern-5-human-interaction"></a><a name="human"></a>Patroon #5: Menselijke interactie
+### <a name="pattern-5-human-interaction"></a><a name="human"></a>Patroon #5: menselijke interactie
 
-Veel geautomatiseerde processen betrekken een soort van menselijke interactie. Het betrekken van mensen bij een geautomatiseerd proces is lastig omdat mensen niet zo zeer beschikbaar en zo responsief zijn als cloudservices. Een geautomatiseerd proces kan deze interactie mogelijk maken door time-outs en compensatielogica te gebruiken.
+Veel geautomatiseerde processen omvatten een soort Human interactie. Mensen met een geautomatiseerd proces kunnen lastig zijn omdat ze niet als Maxi maal beschikbaar zijn en als reactie van Cloud Services. Een geautomatiseerd proces kan deze interactie toestaan door gebruik te maken van time-outs en compensatie logica.
 
-Een goedkeuringsproces is een voorbeeld van een bedrijfsproces waarbij menselijke interactie betrokken is. Goedkeuring van een manager kan nodig zijn voor een onkostenrapport dat een bepaald bedrag in dollars overschrijdt. Als de manager het onkostenrapport niet binnen 72 uur goedkeurt (misschien ging de manager op vakantie), een escalatieproces om de goedkeuring van iemand anders (misschien de manager van de manager) te krijgen.
+Een goedkeurings proces is een voor beeld van een bedrijfs proces waarbij menselijke interactie betrokken is. Goed keuring van een manager kan vereist zijn voor een onkosten rapport dat een bepaald bedrag in Euro's overschrijdt. Als het onkosten rapport binnen 72 uur niet door de Manager wordt goedgekeurd (misschien is de Manager op vakantie gezet), wordt een escalatie proces uitgevoerd om de goed keuring van iemand anders (mogelijk de Manager van de Manager) te verkrijgen.
 
-![Een diagram van het menselijke interactiepatroon](./media/durable-functions-concepts/approval.png)
+![Een diagram van het menselijke interactie patroon](./media/durable-functions-concepts/approval.png)
 
-U het patroon in dit voorbeeld implementeren met behulp van een orchestrator-functie. De orchestrator gebruikt een [duurzame timer](durable-functions-timers.md) om goedkeuring aan te vragen. De orchestrator escaleert als er een time-out optreedt. De orchestrator wacht op een [externe gebeurtenis,](durable-functions-external-events.md)zoals een melding die wordt gegenereerd door een menselijke interactie.
+U kunt het patroon in dit voor beeld implementeren met behulp van een Orchestrator-functie. De Orchestrator gebruikt een [duurzame timer](durable-functions-timers.md) om goed keuring aan te vragen. De Orchestrator escaleren als er een time-out optreedt. De Orchestrator wacht op een [externe gebeurtenis](durable-functions-external-events.md), zoals een melding die wordt gegenereerd door een menselijke interactie.
 
-Met deze voorbeelden wordt een goedkeuringsproces gemaakt om het menselijke interactiepatroon aan te tonen:
+In deze voor beelden wordt een goedkeurings proces voor het voor beeld van het menselijke interactie patroon gemaakt:
 
-# <a name="c"></a>[C #](#tab/csharp)
+# <a name="c"></a>[G #](#tab/csharp)
 
 ```csharp
 [FunctionName("ApprovalWorkflow")]
@@ -319,7 +319,7 @@ public static async Task Run(
 }
 ```
 
-Als u de duurzame `context.CreateTimer`timer wilt maken, belt u. De melding wordt `context.WaitForExternalEvent`ontvangen door . Vervolgens `Task.WhenAny` wordt opgeroepen om te beslissen of te escaleren (time-out gebeurt eerst) of het verwerken van de goedkeuring (de goedkeuring wordt ontvangen voordat time-out).
+Om de duurzame timer te maken `context.CreateTimer`. De melding is ontvangen door `context.WaitForExternalEvent`. Vervolgens `Task.WhenAny` wordt aangeroepen om te bepalen of er eerst een time-out optreedt of de goed keuring verwerken (de goed keuring wordt ontvangen vóór de time-out).
 
 # <a name="javascript"></a>[Javascript](#tab/javascript)
 
@@ -343,19 +343,19 @@ module.exports = df.orchestrator(function*(context) {
 });
 ```
 
-Als u de duurzame `context.df.createTimer`timer wilt maken, belt u. De melding wordt `context.df.waitForExternalEvent`ontvangen door . Vervolgens `context.df.Task.any` wordt opgeroepen om te beslissen of te escaleren (time-out gebeurt eerst) of het verwerken van de goedkeuring (de goedkeuring wordt ontvangen voordat time-out).
+Om de duurzame timer te maken `context.df.createTimer`. De melding is ontvangen door `context.df.waitForExternalEvent`. Vervolgens `context.df.Task.any` wordt aangeroepen om te bepalen of er eerst een time-out optreedt of de goed keuring verwerken (de goed keuring wordt ontvangen vóór de time-out).
 
 ---
 
-Een externe client kan de gebeurtenismelding leveren aan een wachtorkestorfunctie met behulp van de [ingebouwde HTTP-API's:](durable-functions-http-api.md#raise-event)
+Een externe client kan de gebeurtenis melding leveren aan een functie die wacht op een wachtrij met behulp van de [ingebouwde http-api's](durable-functions-http-api.md#raise-event):
 
 ```bash
 curl -d "true" http://localhost:7071/runtime/webhooks/durabletask/instances/{instanceId}/raiseEvent/ApprovalEvent -H "Content-Type: application/json"
 ```
 
-Een gebeurtenis kan ook worden verhoogd met behulp van de duurzame orchestration client van een andere functie in dezelfde functie-app:
+Een gebeurtenis kan ook worden gegenereerd met behulp van de duurzame Orchestration-client vanuit een andere functie in dezelfde functie-app:
 
-# <a name="c"></a>[C #](#tab/csharp)
+# <a name="c"></a>[G #](#tab/csharp)
 
 ```csharp
 [FunctionName("RaiseEventToOrchestration")]
@@ -382,17 +382,17 @@ module.exports = async function (context) {
 
 ---
 
-### <a name="pattern-6-aggregator-stateful-entities"></a><a name="aggregator"></a>Patroon #6: Aggregator (stateful entiteiten)
+### <a name="pattern-6-aggregator-stateful-entities"></a><a name="aggregator"></a>Pattern #6: aggregator (stateful entiteiten)
 
-Het zesde patroon gaat over het samenvoegen van gebeurtenisgegevens over een bepaalde periode in één enkele, adresseerbare *entiteit*. In dit patroon kunnen de gegevens die worden samengevoegd uit meerdere bronnen afkomstig zijn, in batches worden geleverd of over lange perioden worden verspreid. Mogelijk moet de aggregator actie ondernemen op gebeurtenisgegevens zodra deze binnenkomen en moeten externe clients mogelijk de geaggregeerde gegevens opvragen.
+Het zesde patroon is het verzamelen van gebeurtenis gegevens over een bepaalde periode in een enkele, adresseer bare *entiteit*. In dit patroon kunnen de gegevens die worden geaggregeerd afkomstig zijn uit meerdere bronnen, worden geleverd in batches of kunnen ze over een lange periode worden verspreid. De aggregator moet mogelijk actie ondernemen op gebeurtenis gegevens terwijl deze arriveert, en externe clients moeten mogelijk query's uitvoeren op de geaggregeerde gegevens.
 
-![Aggregator-diagram](./media/durable-functions-concepts/aggregator.png)
+![Aggregatie diagram](./media/durable-functions-concepts/aggregator.png)
 
-Het lastige van het proberen om dit patroon met normale, stateless functies uit te voeren is dat gelijktijdigheidscontrole een reusachtige uitdaging wordt. Niet alleen hoeft u zich zorgen te maken over meerdere threads die dezelfde gegevens tegelijkertijd wijzigen, u moet zich ook zorgen maken dat de aggregator alleen op één VM tegelijk wordt uitgevoerd.
+Het lastiger zijn om dit patroon te implementeren met normale, stateless functies is dat gelijktijdigheids beheer een enorme uitdaging wordt. U hoeft zich geen zorgen te maken over meerdere threads die tegelijkertijd dezelfde gegevens wijzigen. u moet er ook voor zorgen dat de aggregator alleen op één virtuele machine tegelijk wordt uitgevoerd.
 
-U [duurzame entiteiten](durable-functions-entities.md) gebruiken om dit patroon eenvoudig als één functie te implementeren.
+U kunt [duurzame entiteiten](durable-functions-entities.md) gebruiken om dit patroon eenvoudig te implementeren als een enkele functie.
 
-# <a name="c"></a>[C #](#tab/csharp)
+# <a name="c"></a>[G #](#tab/csharp)
 
 ```csharp
 [FunctionName("Counter")]
@@ -415,7 +415,7 @@ public static void Counter([EntityTrigger] IDurableEntityContext ctx)
 }
 ```
 
-Duurzame entiteiten kunnen ook worden gemodelleerd als klassen in .NET. Dit model kan handig zijn als de lijst met bewerkingen is opgelost en groot wordt. Het volgende voorbeeld is een `Counter` gelijkwaardige implementatie van de entiteit met behulp van .NET-klassen en -methoden.
+Duurzame entiteiten kunnen ook worden gemodelleerd als klassen in .NET. Dit model kan nuttig zijn als de lijst met bewerkingen is opgelost en groot wordt. Het volgende voor beeld is een gelijkwaardige implementatie `Counter` van de entiteit met behulp van .net-klassen en-methoden.
 
 ```csharp
 public class Counter
@@ -459,9 +459,9 @@ module.exports = df.entity(function(context) {
 
 ---
 
-Clients kunnen *bewerkingen* in de wachtrij plaatsen voor (ook wel 'signalering' genoemd) een entiteitsfunctie met behulp van de [entiteitsclientbinding](durable-functions-bindings.md#entity-client).
+Clients kunnen *bewerkingen* in de wachtrij plaatsen voor (ook wel ' Signa lering ' genoemd) een entiteits functie met de [client binding](durable-functions-bindings.md#entity-client)van de entiteit.
 
-# <a name="c"></a>[C #](#tab/csharp)
+# <a name="c"></a>[G #](#tab/csharp)
 
 ```csharp
 [FunctionName("EventHubTriggerCSharp")]
@@ -479,7 +479,7 @@ public static async Task Run(
 ```
 
 > [!NOTE]
-> Dynamisch gegenereerde proxy's zijn ook beschikbaar in .NET voor het signaleren van entiteiten op een typeveilige manier. En naast signalering kunnen clients ook vragen naar de status van een [entiteitsfunctie](durable-functions-bindings.md#entity-client-usage) met behulp van typeveilige methoden op de orchestration clientbinding.
+> Dynamische gegenereerde proxy's zijn ook beschikbaar in .NET voor het Signa leren van entiteiten op een type veilige manier. Naast Signa lering kunnen clients ook een query uitvoeren op de status van een entiteit functie met behulp van [type veilige methoden](durable-functions-bindings.md#entity-client-usage) op de Orchestration-client binding.
 
 # <a name="javascript"></a>[Javascript](#tab/javascript)
 
@@ -495,25 +495,25 @@ module.exports = async function (context) {
 
 ---
 
-Entiteitsfuncties zijn beschikbaar in [Duurzame functies 2.0](durable-functions-versions.md) en hoger.
+Entiteits functies zijn beschikbaar in [Durable Functions 2,0](durable-functions-versions.md) en hoger.
 
 ## <a name="the-technology"></a>De technologie
 
-Achter de schermen is de extensie Duurzame functies gebouwd bovenop het [Sustainable Task Framework](https://github.com/Azure/durabletask), een open-source bibliotheek op GitHub die wordt gebruikt om workflows in code te bouwen. Net als Azure Functions is de serverloze evolutie van Azure WebJobs, duurzame functies is de serverless evolutie van de Duurzame Taak Framework. Microsoft en andere organisaties gebruiken het Sustainable Task Framework uitgebreid om bedrijfskritieke processen te automatiseren. Het is een natuurlijke pasvorm voor de serverloze Azure Functions-omgeving.
+Achter de schermen is de uitbrei ding van de Durable Functions gebaseerd op het [duurzame taak raamwerk](https://github.com/Azure/durabletask), een open-source bibliotheek op github die wordt gebruikt voor het bouwen van werk stromen in code. Net als Azure Functions is de serverloze evolutie van Azure WebJobs, Durable Functions de serverloze evolutie van het duurzame taak raamwerk. Micro soft en andere organisaties gebruiken het duurzame taak raamwerk uitgebreid om essentiële processen te automatiseren. Het is natuurlijk geschikt voor de serverloze Azure Functions omgeving.
 
-## <a name="code-constraints"></a>Codebeperkingen
+## <a name="code-constraints"></a>Code beperkingen
 
-Om betrouwbare en langlopende uitvoeringsgaranties te bieden, hebben orchestrator-functies een reeks coderingsregels die moeten worden gevolgd. Zie het artikel [Orchestrator-functiecodebeperkingen](durable-functions-code-constraints.md) voor meer informatie.
+Orchestrator-functies hebben een set coderings regels die moeten worden gevolgd om betrouw bare en langdurige uitvoerings garanties te bieden. Zie het artikel [Orchestrator functie code constraints](durable-functions-code-constraints.md) voor meer informatie.
 
 ## <a name="billing"></a>Billing
 
-Durable Functions worden op dezelfde manier in rekening gebracht als Azure Functions. Zie [Prijzen voor Azure Functions](https://azure.microsoft.com/pricing/details/functions/) voor meer informatie. Bij het uitvoeren van orchestrator-functies in het Azure Functions [Consumption-plan](../functions-scale.md#consumption-plan)zijn er enkele factureringsgedragingen om rekening mee te houden. Zie het factureringsartikel Duurzame [functies](durable-functions-billing.md) voor meer informatie over dit gedrag.
+Durable Functions worden op dezelfde manier in rekening gebracht als Azure Functions. Zie [Prijzen voor Azure Functions](https://azure.microsoft.com/pricing/details/functions/) voor meer informatie. Bij het uitvoeren van Orchestrator-functies in het Azure Functions [verbruiks abonnement](../functions-scale.md#consumption-plan), zijn er enkele facturerings gedrag van belang. Zie het artikel over [Durable functions facturering](durable-functions-billing.md) voor meer informatie over deze problemen.
 
 ## <a name="jump-right-in"></a>Duik er meteen in
 
 U kunt in minder dan 10 minuten aan de slag gaan met Durable Functions door een van deze taalspecifieke quickstart-zelfstudies te volgen:
 
-* [C# met Visual Studio 2019](durable-functions-create-first-csharp.md)
+* [C# met behulp van Visual Studio 2019](durable-functions-create-first-csharp.md)
 * [JavaScript met Visual Studio Code](quickstart-js-vscode.md)
 
 In beide quickstarts maakt en test u een lokale ‘hallo wereld’-duurzame functie. Vervolgens publiceert u de functiecode op Azure. De functie die u maakt, organiseert en koppelt aanroepen naar andere functies.
@@ -524,7 +524,7 @@ De volgende video laat de voordelen van Durable Functions zien:
 
 > [!VIDEO https://channel9.msdn.com/Shows/Azure-Friday/Durable-Functions-in-Azure-Functions/player] 
 
-Voor een meer diepgaande bespreking van duurzame functies en de onderliggende technologie, zie de volgende video (het is gericht op .NET, maar de concepten zijn ook van toepassing op andere ondersteunde talen):
+Voor een uitgebreidere bespreking van Durable Functions en de onderliggende technologie raadpleegt u de volgende video (deze is gericht op .NET, maar de concepten zijn ook van toepassing op andere ondersteunde talen):
 
 > [!VIDEO https://channel9.msdn.com/Events/dotnetConf/2018/S204/player]
 
@@ -533,4 +533,4 @@ Omdat Durable Functions een geavanceerde extensie voor [Azure Functions](../func
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"]
-> [Functietypen en functies voor duurzame functies](durable-functions-types-features-overview.md)
+> [Functie typen en functies van Durable Functions](durable-functions-types-features-overview.md)

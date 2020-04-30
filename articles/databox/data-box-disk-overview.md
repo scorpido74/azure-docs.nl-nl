@@ -10,10 +10,10 @@ ms.date: 06/18/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand what Data Box Disk is and how it works so I can use it to import on-premises data into Azure.
 ms.openlocfilehash: 067d818b7d23fc0b83cb1d4255bfbb8659149412
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "79240728"
 ---
 # <a name="what-is-azure-data-box-disk"></a>Wat is Azure Data Box Disk?
@@ -89,7 +89,7 @@ Ga naar [Azure Data Box Disk-beveiliging en -gegevensbescherming](data-box-disk-
 
 ## <a name="region-availability"></a>Beschikbaarheid in regio’s
 
-Ga voor informatie over de beschikbaarheid van regio's naar [Azure-producten die beschikbaar zijn per regio.](https://azure.microsoft.com/global-infrastructure/services/?products=databox&regions=all) Data Box Disk kan ook worden geïmplementeerd in de Azure Government Cloud. Zie [Wat is Azure-overheid voor](https://docs.microsoft.com/azure/azure-government/documentation-government-welcome)meer informatie?
+Voor informatie over de beschik baarheid van regio's gaat u naar [Azure-producten beschikbaar per regio](https://azure.microsoft.com/global-infrastructure/services/?products=databox&regions=all). Data Box Disk kan ook in de Azure Government Cloud worden geïmplementeerd. Zie [Wat is Azure Government?](https://docs.microsoft.com/azure/azure-government/documentation-government-welcome)voor meer informatie.
 
 
 ## <a name="pricing"></a>Prijzen

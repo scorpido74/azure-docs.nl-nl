@@ -1,22 +1,22 @@
 ---
-title: Beheerde app servicecatalogus publiceren
+title: Door service catalog beheerde app publiceren
 description: In dit artikel leest u hoe u een beheerde Azure-toepassing maakt die is bedoeld voor leden van uw organisatie.
 author: tfitzmac
 ms.topic: quickstart
 ms.date: 04/14/2020
 ms.author: tomfitz
 ms.openlocfilehash: 48aaca64949aafecff27c76ad7572b3c2fa44732
-ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/15/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81391512"
 ---
-# <a name="quickstart-create-and-publish-a-managed-application-definition"></a>Snelstart: een beheerde toepassingsdefinitie maken en publiceren
+# <a name="quickstart-create-and-publish-a-managed-application-definition"></a>Snelstartgids: een definitie van een beheerde toepassing maken en publiceren
 
-Deze quickstart biedt een inleiding tot het werken met [Azure Managed Applications.](overview.md) U een beheerde toepassing maken en publiceren die is bedoeld voor leden van uw organisatie.
+Deze Snelstartgids bevat een inleiding tot het werken met [Azure Managed Applications](overview.md). U kunt een beheerde toepassing maken en publiceren die is bedoeld voor leden van uw organisatie.
 
-Als u een beheerde toepassing wilt publiceren in uw servicecatalogus, moet u het als:
+Als u een beheerde toepassing naar uw service catalogus wilt publiceren, moet u het volgende doen:
 
 * Een sjabloon maken die de resources definieert die met de beheerde toepassing moeten worden geïmplementeerd.
 * De elementen van de gebruikersinterface voor de portal definiëren bij het implementeren van de beheerde toepassing.
@@ -26,7 +26,7 @@ Als u een beheerde toepassing wilt publiceren in uw servicecatalogus, moet u het
 
 ## <a name="create-the-arm-template"></a>De ARM-sjabloon maken
 
-De definitie van een beheerde toepassing bevat altijd een bestand met de naam **mainTemplate.json**. Hierin definieert u de Azure-resources die u wilt implementeren. De sjabloon is niet anders dan een gewone ARM-sjabloon (Azure Resource Manager).
+De definitie van een beheerde toepassing bevat altijd een bestand met de naam **mainTemplate.json**. Hierin definieert u de Azure-resources die u wilt implementeren. De sjabloon is niet anders dan een sjabloon voor reguliere Azure Resource Manager (ARM).
 
 Maak een bestand met de naam **mainTemplate.json**. De naam is hoofdlettergevoelig.
 
@@ -75,13 +75,13 @@ Voeg de volgende JSON-code toe aan uw bestand. Hiermee definieert u de parameter
 
 Sla het bestand mainTemplate.json op.
 
-## <a name="define-your-create-experience"></a>Definieer uw maakervaring
+## <a name="define-your-create-experience"></a>Uw Maak ervaring definiëren
 
-Als uitgever definieert u de portalervaring voor het maken van de beheerde toepassing. Het **bestand createUiDefinition.json** genereert de portalinterface. U definieert hoe gebruikers invoer voor elke parameter leveren met behulp van [besturingselementelementen,](create-uidefinition-elements.md) waaronder vervolgkeuzelijsten, tekstvakken en wachtwoordvakken.
+Als uitgever definieert u de portal-ervaring voor het maken van de beheerde toepassing. Het bestand **createUiDefinition. json** genereert de portal-interface. U definieert hoe gebruikers invoer opgeven voor elke para meter met behulp van [besturings elementen](create-uidefinition-elements.md) , waaronder vervolg keuzelijsten, tekst vakken en wachtwoord vakken.
 
-Een bestand met de naam **createUiDefinition.json** maken (deze naam is hoofdlettergevoelig)
+Maak een bestand met de naam **createUiDefinition. json** (deze naam is hoofdletter gevoelig)
 
-Voeg de volgende starter JSON toe aan het bestand en sla het op.
+Voeg de volgende starter-JSON toe aan het bestand en sla het op.
 
 ```json
 {
@@ -132,13 +132,13 @@ Voeg de volgende starter JSON toe aan het bestand en sla het op.
 }
 ```
 
-Zie [Aan de slag met CreateUiDefinition voor](create-uidefinition-overview.md)meer informatie.
+Zie aan de [slag met CreateUiDefinition](create-uidefinition-overview.md)voor meer informatie.
 
 ## <a name="package-the-files"></a>De bestanden verpakken
 
 Voeg de twee bestanden toe aan een ZIP-bestand met de naam app.zip. De twee bestanden moeten zich in de hoofdmap van het ZIP-bestand bevinden. Als u ze in een map opslaat, treedt er een fout op bij het maken van de definitie van de beheerde toepassing met de mededeling dat de vereiste bestanden niet zijn gevonden.
 
-Upload het pakket naar een toegankelijke locatie vanaf waar het pakket kan worden gebruikt. Je moet een unieke naam opgeven voor het opslagaccount.
+Upload het pakket naar een toegankelijke locatie vanaf waar het pakket kan worden gebruikt. U moet een unieke naam opgeven voor het opslag account.
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -194,7 +194,7 @@ az storage blob upload \
 
 ### <a name="create-an-azure-active-directory-user-group-or-application"></a>Een Azure Active Directory-gebruikersgroep of -toepassing maken
 
-De volgende stap is het selecteren van een gebruikersgroep, gebruiker of toepassing voor het beheren van de resources voor de klant. Deze identiteit heeft machtigingen voor de beheerde resourcegroep die overeenkomen met de toegewezen rol. De rol kan elke ingebouwde rol van op rollen gebaseerd toegangsbeheer (RBAC) zijn, zoals Eigenaar of Inzender. Zie [Een groep maken en leden toevoegen in Azure Active Directory](../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md) voor instructies voor het maken van een nieuwe Active Directory-gebruikersgroep.
+De volgende stap is het selecteren van een gebruikers groep, gebruiker of toepassing voor het beheren van de resources voor de klant. Deze identiteit heeft machtigingen voor de beheerde resourcegroep die overeenkomen met de toegewezen rol. De rol kan elke ingebouwde rol van op rollen gebaseerd toegangsbeheer (RBAC) zijn, zoals Eigenaar of Inzender. Zie [Een groep maken en leden toevoegen in Azure Active Directory](../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md) voor instructies voor het maken van een nieuwe Active Directory-gebruikersgroep.
 
 U hebt de object-id van de gebruikersgroep nodig om de resources te beheren. 
 
@@ -288,38 +288,38 @@ Wanneer de opdracht is voltooid, hebt u de definitie van een beheerde toepassing
 
 Enkele parameters die in het voorgaande voorbeeld worden gebruikt, zijn:
 
-* **resourcegroep:** de naam van de resourcegroep waarin de beheerde toepassingsdefinitie wordt gemaakt.
-* **vergrendelingsniveau**: het type vergrendeling dat op de beheerde resourcegroep wordt geplaatst. Hiermee voorkomt u dat de klant ongewenste bewerkingen uitvoert op deze resourcegroep. ReadOnly is momenteel het enige ondersteunde vergrendelingsniveau. Als ReadOnly is opgegeven, kan de klant alleen de resources die aanwezig zijn in de beheerde resourcegroep lezen. De uitgeversidentiteiten die toegang tot de beheerde resourcegroep krijgen, zijn uitgesloten van de vergrendeling.
+* **resource groep**: de naam van de resource groep waarin de definitie van de beheerde toepassing wordt gemaakt.
+* **vergrendelings niveau**: het type vergren deling dat wordt geplaatst op de beheerde resource groep. Hiermee voorkomt u dat de klant ongewenste bewerkingen uitvoert op deze resourcegroep. ReadOnly is momenteel het enige ondersteunde vergrendelingsniveau. Als ReadOnly is opgegeven, kan de klant alleen de resources die aanwezig zijn in de beheerde resourcegroep lezen. De uitgeversidentiteiten die toegang tot de beheerde resourcegroep krijgen, zijn uitgesloten van de vergrendeling.
 * **authorizations**: beschrijft de principal-id en de roldefinitie-id die worden gebruikt om machtiging te verlenen aan de beheerde resourcegroep. Wordt opgegeven in de `<principalId>:<roleDefinitionId>`-indeling. Als meer dan één waarde is vereist, geeft u deze op in de vorm `<principalId1>:<roleDefinitionId1> <principalId2>:<roleDefinitionId2>`. De waarden worden gescheiden door een spatie.
-* **pakketbestand URI:** De locatie van een .zip-pakket dat de vereiste bestanden bevat.
+* **pakket bestands-URI**: de locatie van een zip-pakket dat de vereiste bestanden bevat.
 
-## <a name="bring-your-own-storage-for-the-managed-application-definition"></a>Breng uw eigen opslag mee voor de beheerde toepassingsdefinitie
+## <a name="bring-your-own-storage-for-the-managed-application-definition"></a>Uw eigen opslag plaatsen voor de definitie van de beheerde toepassing
 
-U ervoor kiezen om uw beheerde toepassingsdefinitie op te slaan in een opslagaccount dat door u wordt verstrekt tijdens het maken, zodat de locatie en toegang volledig door u kunnen worden beheerd voor uw wettelijke behoeften.
+U kunt ervoor kiezen om de definitie van de beheerde toepassing op te slaan in een opslag account dat u tijdens het maken hebt gemaakt, zodat de locatie en toegang volledig door u kan worden beheerd door u voor uw regelgevings behoeften.
 
 > [!NOTE]
-> Breng uw eigen opslag wordt alleen ondersteund met ARM Template of REST API implementaties van de beheerde toepassingsdefinitie.
+> Uw eigen opslag ruimte wordt alleen ondersteund met ARM-sjablonen of REST API implementaties van de definitie van de beheerde toepassing.
 
-### <a name="select-your-storage-account"></a>Selecteer uw opslagaccount
+### <a name="select-your-storage-account"></a>Uw opslag account selecteren
 
-U moet [een opslagaccount maken](../../storage/common/storage-account-create.md) om de beheerde toepassingsdefinitie te bevatten voor gebruik met Service Catalog.
+U moet [een opslag account maken](../../storage/common/storage-account-create.md) dat de definitie van de beheerde toepassing bevat voor gebruik met Service Catalog.
 
-Kopieer de bron-id van het opslagaccount. Het zal later worden gebruikt bij het implementeren van de definitie.
+Kopieer de resource-ID van het opslag account. Deze wordt later gebruikt bij het implementeren van de definitie.
 
-### <a name="set-the-role-assignment-for-appliance-resource-provider-in-your-storage-account"></a>De roltoewijzing voor 'Toestelserviceprovider' instellen in uw opslagaccount
+### <a name="set-the-role-assignment-for-appliance-resource-provider-in-your-storage-account"></a>Stel de roltoewijzing voor ' toestel resource provider ' in uw opslag account in
 
-Voordat uw beheerde toepassingsdefinitie kan worden geïmplementeerd in uw opslagaccount, moet u inzendermachtigingen geven aan de rol **van toestelbronprovider,** zodat de definitiebestanden naar de container van uw opslagaccount kunnen worden geschreven.
+Voordat de definitie van de beheerde toepassing kan worden geïmplementeerd in uw opslag account, moet u Inzender machtigingen verlenen aan de rol van de **resource provider** van het apparaat, zodat de definitie bestanden kunnen worden geschreven naar de container van uw opslag account.
 
-1. Navigeer in de [Azure-portal](https://portal.azure.com)naar uw opslagaccount.
-1. Selecteer **Toegangsbeheer (IAM)** om de toegangscontrole-instellingen voor het opslagaccount weer te geven. Selecteer het tabblad **Toewijzingen van rollen** om de lijst met roltoewijzingen weer te geven.
-1. Selecteer in het venster **Roltoewijzing toevoegen** de rol **Inzender.** 
-1. Selecteer **azure** **AD-gebruiker, -groep of serviceprincipal**in het veld Toegang toewijzen tot veld .
-1. Zoek **onder Selecteren**naar de rol **Toestelresourceprovider** en selecteer deze.
+1. Navigeer in het [Azure Portal](https://portal.azure.com)naar uw opslag account.
+1. Selecteer **toegangs beheer (IAM)** om de instellingen voor toegangs beheer voor het opslag account weer te geven. Selecteer het **tabblad roltoewijzingen om de lijst** met roltoewijzingen weer te geven.
+1. Selecteer de rol **Inzender** in het venster **roltoewijzing toevoegen** . 
+1. Selecteer in het veld **toegang toewijzen aan** de optie **Azure AD-gebruiker,-groep of-Service-Principal**.
+1. Zoek onder **selecteren**naar **toestel resource provider** functie en selecteer deze.
 1. Sla de roltoewijzing op.
 
-### <a name="deploy-the-managed-application-definition-with-an-arm-template"></a>De beheerde toepassingsdefinitie implementeren met een ARM-sjabloon 
+### <a name="deploy-the-managed-application-definition-with-an-arm-template"></a>De definitie van de beheerde toepassing implementeren met een ARM-sjabloon 
 
-Gebruik de volgende ARM-sjabloon om uw verpakte beheerde toepassing te implementeren als een nieuwe beheerde toepassingsdefinitie in servicecatalogus waarvan de definitiebestanden worden opgeslagen en onderhouden in uw eigen opslagaccount:
+Gebruik de volgende ARM-sjabloon om uw ingepakte, beheerde toepassing te implementeren als een nieuwe definitie van een beheerde toepassing in de Service catalogus waarvan de definitie bestanden worden opgeslagen en onderhouden in uw eigen opslag account:
    
 ```json
     {
@@ -391,12 +391,12 @@ Gebruik de volgende ARM-sjabloon om uw verpakte beheerde toepassing te implement
 }
 ```
 
-We hebben een nieuwe eigenschap met de naam **storageAccountId** toegevoegd aan de eigenschappen van uw applicatieDefintion en bieden opslagaccount-ID waar u uw definitie in wilt opslaan als de waarde:
+We hebben een nieuwe eigenschap met de naam **storageAccountId** toegevoegd aan de eigenschappen van uw applicationDefintion en geven de opslag account-id op die u wilt opslaan als waarde:
 
-U controleren of de toepassingsdefinitiebestanden zijn opgeslagen in uw opgegeven opslagaccount in een container met de **titel toepassingsdefinities**.
+U kunt controleren of de definitie bestanden van de toepassing worden opgeslagen in het opslag account in een container met de naam **applicationdefinitions**.
 
 > [!NOTE]
-> Voor extra beveiliging u een definitie van beheerde toepassingen maken, deze opslaan in een [blob met Azure-opslagaccount waar versleuteling is ingeschakeld.](../../storage/common/storage-service-encryption.md) De definitie-inhoud wordt versleuteld via de versleutelingsopties van het opslagaccount. Alleen gebruikers met machtigingen voor het bestand kunnen de definitie in de servicecatalogus zien.
+> Voor extra beveiliging kunt u een definitie van een beheerde toepassing maken en deze opslaan in een [Azure Storage-account-BLOB waarvoor versleuteling is ingeschakeld](../../storage/common/storage-service-encryption.md). De inhoud van de definitie wordt versleuteld via de versleutelings opties van het opslag account. Alleen gebruikers met machtigingen voor het bestand kunnen de definitie in de Service catalogus zien.
 
 ## <a name="make-sure-users-can-see-your-definition"></a>Ervoor zorgen dat gebruikers de definitie kunnen zien
 

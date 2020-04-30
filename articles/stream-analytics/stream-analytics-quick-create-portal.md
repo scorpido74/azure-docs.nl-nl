@@ -1,5 +1,5 @@
 ---
-title: Snelstart - Een Stream Analytics-taak maken met behulp van de Azure-portal
+title: 'Quick Start: een Stream Analytics-taak maken met behulp van de Azure Portal'
 description: In deze snelstart wordt getoond hoe u aan de slag kunt door een Stream Analytics-taak te maken, invoer en uitvoer te configureren en een query te definiëren.
 author: mamccrea
 ms.author: mamccrea
@@ -8,29 +8,29 @@ ms.topic: quickstart
 ms.service: stream-analytics
 ms.custom: mvc
 ms.openlocfilehash: 4abf5078a005f9d928397d9666e7f2bc55d65f19
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "75431555"
 ---
 # <a name="quickstart-create-a-stream-analytics-job-by-using-the-azure-portal"></a>Snelstart: Een Stream Analytics-taak maken via Azure Portal
 
-In deze snelstart wordt getoond hoe u aan de slag kunt door een Stream Analytics-taak te maken. In deze quickstart definieert u een Stream Analytics-taak waarmee streaminggegevens in realtime worden gelezen, en berichten worden gefilterd over een temperatuur die hoger is dan 27. Uw Stream Analytics-taak leest gegevens van IoT Hub, transformeert de gegevens en schrijft de gegevens terug naar een container in blobopslag. De invoergegevens in deze quickstart worden gegenereerd via een Raspberry Pi Online Simulator. 
+In deze snelstart wordt getoond hoe u aan de slag kunt door een Stream Analytics-taak te maken. In deze quickstart definieert u een Stream Analytics-taak waarmee streaminggegevens in realtime worden gelezen, en berichten worden gefilterd over een temperatuur die hoger is dan 27. Uw Stream Analytics-taak leest gegevens uit IoT Hub, transformeert de gegevens en schrijft de gegevens terug naar een container in Blob Storage. De invoergegevens in deze quickstart worden gegenereerd via een Raspberry Pi Online Simulator. 
 
 ## <a name="before-you-begin"></a>Voordat u begint
 
-* Als u geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/)aan.
+* Als u geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/).
 
-* Meld u aan bij [Azure Portal](https://portal.azure.com/).
+* Meld u aan bij de [Azure-portal](https://portal.azure.com/).
 
 ## <a name="prepare-the-input-data"></a>De invoergegevens voorbereiden
 
-Voordat u de taak Stream Analytics definieert, moet u de invoergegevens voorbereiden. De real-time sensorgegevens worden ingenomen naar IoT Hub, die later als taakinvoer wordt geconfigureerd. Voltooi de volgende stappen om de invoergegevens voor te bereiden die zijn vereist voor de taak:
+Voordat u de Stream Analytics-taak definieert, moet u de invoer gegevens voorbereiden. De real-time sensor gegevens worden opgenomen in IoT Hub, die later zijn geconfigureerd als de taak invoer. Voltooi de volgende stappen om de invoergegevens voor te bereiden die zijn vereist voor de taak:
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
 
-2. Selecteer **Een bron** > **Internet of Things** > **IoT Hub maken**.
+2. Selecteer **een resource** > **maken internet of Things** > **IOT hub**.
 
 3. Voer in het deelvenster **IoT Hub** de volgende informatie in:
    
@@ -49,7 +49,7 @@ Voordat u de taak Stream Analytics definieert, moet u de invoergegevens voorbere
 
    ![Grootte en schaal van de IoT-hub aanpassen](./media/stream-analytics-quick-create-portal/iot-hub-size-and-scale.png)
 
-6. Selecteer **Controleren + maken**. Controleer de informatie van de IoT-hub en klik op **Maken**. Het kan enkele minuten duren voordat de IoT-hub is gemaakt. U kunt de voortgang bewaken via het deelvenster **Meldingen**.
+6. Selecteer **controleren + maken**. Controleer de informatie van de IoT-hub en klik op **Maken**. Het kan enkele minuten duren voordat de IoT-hub is gemaakt. U kunt de voortgang bewaken via het deelvenster **Meldingen**.
 
 7. Klik in het IoT Hub-navigatiemenu onder **IoT-apparaten** op **Toevoegen**. Voeg een **Apparaat-id** toe en klik op **Opslaan**.
 
@@ -61,7 +61,7 @@ Voordat u de taak Stream Analytics definieert, moet u de invoergegevens voorbere
 
 ## <a name="create-blob-storage"></a>Blob-opslag maken
 
-1. Selecteer linksboven in de Azure-portal **de**optie Een > **bronopslagopslagaccount** > **Storage**maken .
+1. Selecteer in de linkerbovenhoek van de Azure Portal **een resource** > **opslag** > -opslag**account**maken.
 
 2. Voer in het deelvenster **Opslagaccount maken** een opslagaccountnaam, locatie en resourcegroep in. Kies dezelfde locatie en resourcegroep als de IoT-hub die u hebt gemaakt. Klik vervolgens op **Controleren en maken** om het account te maken.
 
@@ -81,7 +81,7 @@ Voordat u de taak Stream Analytics definieert, moet u de invoergegevens voorbere
 
 2. Selecteer in de linkerbovenhoek van Azure Portal **Een resource maken**.  
 
-3. Selecteer de taak **Analytics** > **Stream Analytics** in de resultatenlijst.  
+3. Selecteer **analyse** > **Stream Analytics taak** in de lijst met resultaten.  
 
 4. Vul de pagina voor de Storage-accounttaak in met de volgende gegevens:
 
@@ -92,7 +92,7 @@ Voordat u de taak Stream Analytics definieert, moet u de invoergegevens voorbere
    |Resourcegroep   |   asaquickstart-resourcegroup  |   Selecteer dezelfde resourcegroep als de IoT-hub. |
    |Locatie  |  \<Selecteer de regio die het dichtst bij uw gebruikers is gelegen\> | Selecteer de geografische locatie waar u de Stream Analytics-taak kunt hosten. Gebruik de locatie die het dichtst bij uw gebruikers is gelegen voor betere prestaties en om de kosten van gegevensoverdracht te verminderen. |
    |Streaming-eenheden  | 1  |   Streaming-eenheden vertegenwoordigen de computerresources die nodig zijn om een taak uit te voeren. Deze waarde is standaard ingesteld op 1. Zie het artikel [Streaming-eenheden begrijpen en aanpassen](stream-analytics-streaming-unit-consumption.md) voor meer informatie over het schalen van streaming-eenheden.   |
-   |Hostingomgeving  |  Cloud  |   Stream Analytics-taken kunnen worden geïmplementeerd in Cloud of in Edge. Cloud stelt u in staat om te implementeren in Azure Cloud en Edge u implementeren naar een IoT Edge-apparaat. |
+   |Hostingomgeving  |  Cloud  |   Stream Analytics-taken kunnen worden geïmplementeerd in Cloud of in Edge. Met cloud kunt u implementeren naar Azure Cloud en Edge kunt u implementeren op een IoT Edge apparaat. |
 
    ![Taak maken](./media/stream-analytics-quick-create-portal/create-asa-job.png)
 
@@ -106,7 +106,7 @@ In deze sectie configureert u IoT Hub-apparaatinvoer in de Stream Analytics-taak
 
 1. Ga naar de Stream Analytics-taak.  
 
-2. Selecteer **Invoer** > **Voeg IoT-hub met stroominvoer** > **toe**.  
+2.  > Selecteer **Inputs**inputs**add Stream Input** > **IOT hub**.  
 
 3. Vul de volgende waarden in op de pagina **IoT Hub**:
 
@@ -124,7 +124,7 @@ In deze sectie configureert u IoT Hub-apparaatinvoer in de Stream Analytics-taak
 
 1. Ga naar de Stream Analytics-taak die u eerder hebt gemaakt.  
 
-2. Selecteer **Uitvoer** > **Blob-opslag****toevoegen** > .  
+2. Selecteer **uitvoer** > van**Blob-opslag****toevoegen** > .  
 
 3. Vul de pagina **Blobopslag** in met de volgende waarden:
 
@@ -162,7 +162,7 @@ In deze sectie configureert u IoT Hub-apparaatinvoer in de Stream Analytics-taak
 
 2. Vervang de tijdelijke aanduiding in regel 15 door de verbindingsreeks van het Azure IoT Hub-apparaat die u hebt opgeslagen in de vorige sectie.
 
-3. Klik **op Uitvoeren**. De uitvoer geeft de sensorgegevens en berichten weer die worden verzonden naar de IoT-hub.
+3. Klik op **uitvoeren**. De uitvoer geeft de sensorgegevens en berichten weer die worden verzonden naar de IoT-hub.
 
    ![Raspberry Pi Azure IoT Online Simulator](./media/stream-analytics-quick-create-portal/ras-pi-connection-string.png)
 
@@ -178,7 +178,7 @@ In deze sectie configureert u IoT Hub-apparaatinvoer in de Stream Analytics-taak
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
-Wanneer u niet langer nodig bent, verwijdert u de brongroep, de taak Stream Analytics en alle gerelateerde resources. Door de taak te verwijderen, voorkomt u dat de streaming-eenheden die door de taak worden verbruikt, in rekening worden gebracht. Als u denkt dat u de taak in de toekomst nog gaat gebruiken, kunt u deze stoppen en later opnieuw starten wanneer dat nodig is. Als u deze taak niet meer gaat gebruiken, verwijdert u alle resources die in deze snelstart zijn gemaakt. Daarvoor voert u de volgende stappen uit:
+Als u deze niet meer nodig hebt, verwijdert u de resource groep, de Stream Analytics-taak en alle gerelateerde resources. Door de taak te verwijderen, voorkomt u dat de streaming-eenheden die door de taak worden verbruikt, in rekening worden gebracht. Als u denkt dat u de taak in de toekomst nog gaat gebruiken, kunt u deze stoppen en later opnieuw starten wanneer dat nodig is. Als u deze taak niet meer gaat gebruiken, verwijdert u alle resources die in deze snelstart zijn gemaakt. Daarvoor voert u de volgende stappen uit:
 
 1. Selecteer in het menu aan de linkerkant in Azure Portal de optie **Resourcegroepen** en selecteer vervolgens de resource die u hebt gemaakt.  
 
@@ -186,7 +186,7 @@ Wanneer u niet langer nodig bent, verwijdert u de brongroep, de taak Stream Anal
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze snelstart hebt u een eenvoudige Stream Analytics-taak met behulp van de Azure-portal geïmplementeerd. U Stream Analytics-taken ook implementeren met [PowerShell,](stream-analytics-quick-create-powershell.md) [Visual Studio](stream-analytics-quick-create-vs.md)en Visual [Studio Code.](quick-create-vs-code.md)
+In deze snelstart hebt u een eenvoudige Stream Analytics-taak met behulp van de Azure-portal geïmplementeerd. U kunt ook Stream Analytics-taken implementeren met behulp van [Power shell](stream-analytics-quick-create-powershell.md), [Visual Studio](stream-analytics-quick-create-vs.md)en [Visual Studio code](quick-create-vs-code.md).
 
 Voor informatie over het configureren van andere invoerbronnen en het uitvoeren van detectie in realtime gaat u door naar het volgende artikel:
 

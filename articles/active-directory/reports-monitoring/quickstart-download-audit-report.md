@@ -18,15 +18,15 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: a6cbea49fe39c92c8a2fc50e501cb4ef5cff74b1
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "68989677"
 ---
 # <a name="quickstart-download-an-audit-report-using-the-azure-portal"></a>Snelstart: Een auditrapport downloaden met behulp van de Azure Portal
 
-In deze quickstart leert u hoe u een CSV-bestand van de controlelogboeken voor uw tenant van de afgelopen 24 uur downloaden. U maximaal 250.000 records downloaden van de Azure-portal. De records zijn gesorteerd op de meest recente dus standaard, krijg je de meest recente 250.000 records. 
+In deze Quick Start leert u hoe u in de afgelopen 24 uur een CSV-bestand van de audit logboeken voor uw Tenant kunt downloaden. U kunt Maxi maal 250.000 records downloaden van de Azure Portal. De records worden standaard gesorteerd op de meest recente gegevens, maar u krijgt de meest recente 250.000 records. 
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -37,13 +37,13 @@ U hebt de volgende zaken nodig:
 
 ## <a name="quickstart-download-an-audit-report"></a>Snelstart: Een auditrapport downloaden
 
-1. Navigeer naar de [Azure-portal](https://portal.azure.com).
+1. Navigeer naar het [Azure Portal](https://portal.azure.com).
 2. Selecteer **Azure Active Directory** in het linker navigatiedeelvenster en gebruik de knop **Schakelen tussen mappen** om uw actieve map te selecteren.
 3. Selecteer in het dashboard, **Azure Active Directory** en selecteer vervolgens **Auditlogboeken**. 
 4. Kies **de afgelopen 24 uur** in de filter vervolgkeuzelijst **Datumbereik** en selecteer **Toepassen** om de auditlogboeken voor de afgelopen 24 uur weer te geven. 
-5. Selecteer de knop **Downloaden,** selecteer **CSV** als bestandsindeling en geef een bestandsnaam op om een CSV-bestand te downloaden dat de gefilterde records bevat. 
+5. Selecteer de knop **downloaden** , selecteer **CSV** als bestands indeling en geef een bestands naam op om een CSV-bestand met de gefilterde records te downloaden. 
 
-![Rapportage](./media/quickstart-download-audit-report/download-audit-logs.png)
+![Rapporten](./media/quickstart-download-audit-report/download-audit-logs.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 
