@@ -1,6 +1,6 @@
 ---
-title: 'Zelfstudie: Azure Active Directory-integratie met Prijsrapportage van Predictix | Microsoft Documenten'
-description: In deze zelfstudie leert u hoe u eenmalige aanmelding configureren tussen Azure Active Directory en Predictix Price Reporting.
+title: 'Zelf studie: integratie Azure Active Directory met Predictix-prijs rapportage | Microsoft Docs'
+description: In deze zelf studie leert u hoe u eenmalige aanmelding kunt configureren tussen Azure Active Directory-en Predictix-prijs rapportage.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -16,100 +16,100 @@ ms.topic: tutorial
 ms.date: 03/26/2019
 ms.author: jeedes
 ms.openlocfilehash: 808b2d964bb39af6b410a84563717102ebece454
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "67094113"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-predictix-price-reporting"></a>Zelfstudie: Azure Active Directory-integratie met Prijsrapportage van Predictix
+# <a name="tutorial-azure-active-directory-integration-with-predictix-price-reporting"></a>Zelf studie: integratie met Predictix-prijs rapportage Azure Active Directory
 
-In deze zelfstudie leert u hoe u Predictix-prijsrapportage integreren met Azure Active Directory (Azure AD).
+In deze zelf studie leert u hoe u Predictix Price Reporting integreert met Azure Active Directory (Azure AD).
 
-Deze integratie biedt deze voordelen:
+Deze integratie biedt de volgende voor delen:
 
-* U Azure AD gebruiken om te bepalen wie toegang heeft tot Prijsrapportage van Predictix.
-* U uw gebruikers automatisch laten inloggen op Prijsrapportage Van Predictix (enkele aanmelding) met hun Azure AD-accounts.
-* U uw accounts beheren op één centrale locatie: de Azure-portal.
+* U kunt Azure AD gebruiken om te bepalen wie toegang heeft tot Predictix-prijs rapportage.
+* U kunt ervoor zorgen dat uw gebruikers automatisch worden aangemeld bij Predictix-prijs rapportage (eenmalige aanmelding) met hun Azure AD-accounts.
+* U kunt uw accounts op één centrale locatie beheren: de Azure Portal.
 
 Zie [Eenmalige aanmelding voor toepassingen in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) voor meer informatie over de integratie van SaaS-apps met Azure AD.
 
-Als u geen Azure-abonnement hebt, [maakt u een gratis account](https://azure.microsoft.com/free/) voordat u begint.
+Als u nog geen abonnement op Azure hebt, [Maak dan een gratis account](https://azure.microsoft.com/free/) aan voordat u begint.
 
 ## <a name="prerequisites"></a>Vereisten
 
-Als u Azure AD-integratie wilt configureren met Predictix-prijsrapportage, hebt u het juiste nodig:
+Als u Azure AD-integratie met Predictix-prijs rapportage wilt configureren, hebt u het volgende nodig:
 
-* Een Azure AD-abonnement Als u geen Azure [AD-omgeving](https://azure.microsoft.com/pricing/free-trial/) hebt, u zich aanmelden voor een proefabonnement van één maand.
-* Een Predictix Price Reporting-abonnement dat één aanmelding heeft ingeschakeld.
+* Een Azure AD-abonnement Als u geen Azure AD-omgeving hebt, kunt u zich aanmelden voor een [proef abonnement van één maand](https://azure.microsoft.com/pricing/free-trial/) .
+* Een Predictix-abonnement waarvoor eenmalige aanmelding is ingeschakeld.
 
 ## <a name="scenario-description"></a>Scenariobeschrijving
 
-In deze zelfstudie configureert en test u Azure AD single sign-on in een testomgeving.
+In deze zelf studie configureert en test u eenmalige aanmelding voor Azure AD in een test omgeving.
 
-* Predictix Price Reporting ondersteunt door SP geïnitieerde SSO.
+* Predictix-prijs rapportage ondersteunt door SP geïnitieerde SSO.
 
-## <a name="adding-predictix-price-reporting-from-the-gallery"></a>Predictix-prijsrapportage toevoegen vanuit de galerie
+## <a name="adding-predictix-price-reporting-from-the-gallery"></a>Predictix-prijs rapportage toevoegen vanuit de galerie
 
-Als u de integratie van Predictix-prijsrapportage in Azure AD wilt instellen, moet u Predictix-prijsrapportage vanuit de galerie toevoegen aan uw lijst met beheerde SaaS-apps.
+Als u de integratie van Predictix-prijs rapportage wilt instellen in azure AD, moet u Predictix prijs rapportage van de galerie toevoegen aan uw lijst met beheerde SaaS-apps.
 
-1. Selecteer azure **active directory**in de [Azure-portal](https://portal.azure.com)in het linkerdeelvenster:
+1. Selecteer **Azure Active Directory**in het linkerdeel venster van de [Azure Portal](https://portal.azure.com):
 
     ![Selecteer Azure Active Directory](common/select-azuread.png)
 
-2. Ga naar **Enterprise-toepassingen** > **Alle toepassingen:**
+2. Ga naar**alle toepassingen**in **bedrijfs toepassingen** > :
 
     ![De blade Bedrijfstoepassingen](common/enterprise-applications.png)
 
-3. Als u een toepassing wilt toevoegen, selecteert u **Nieuwe toepassing** boven aan het venster:
+3. Als u een toepassing wilt toevoegen, selecteert u **nieuwe toepassing** boven aan het venster:
 
     ![Nieuwe toepassing selecteren](common/add-new-app.png)
 
-4. Voer in het zoekvak **Prijsrapportage Predictix**in . Selecteer **Prijsrapportage van Predictix** in de zoekresultaten en selecteer **Toevoegen**.
+4. Voer **Predictix-prijs rapportage**in het zoekvak in. Selecteer **Predictix-prijs rapportage** in de zoek resultaten en selecteer vervolgens **toevoegen**.
 
      ![Zoekresultaten](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD-eenmalige aanmelding configureren en testen
 
-In deze sectie configureert en test u Azure AD single sign-on met Predictix Price Reporting met behulp van een testgebruiker genaamd Britta Simon.
-Als u eenmalige aanmelding wilt inschakelen, moet u een relatie tot stand brengen tussen een Azure AD-gebruiker en de desbetreffende gebruiker in Prijsrapportage Predictix.
+In deze sectie kunt u eenmalige aanmelding voor Azure AD configureren en testen met Predictix-prijs rapportage door gebruik te maken van een test gebruiker met de naam Julia Simon.
+Om eenmalige aanmelding in te scha kelen, moet u een relatie tot stand brengen tussen een Azure AD-gebruiker en de bijbehorende gebruiker in Predictix-prijs rapportage.
 
-Als u Azure AD-singlesign-aan wilt configureren en testen met Prijsrapportage van Predictix, moet u de volgende stappen uitvoeren:
+U moet de volgende stappen uitvoeren om eenmalige aanmelding voor Azure AD te configureren en te testen met Predictix-prijs rapportage:
 
-1. **[Configureer de single sign-on van Azure AD](#configure-azure-ad-single-sign-on)** om de functie voor uw gebruikers in te schakelen.
-2. **[Configureer Predictix Price Reporting single sign-on](#configure-predictix-price-reporting-single-sign-on)** aan de toepassingszijde.
-3. **[Maak een Azure AD-testgebruiker](#create-an-azure-ad-test-user)** om azure AD-enkele aanmelding te testen.
-4. **[Wijs de Azure AD-testgebruiker](#assign-the-azure-ad-test-user)** toe om azure AD-enkele aanmelding voor de gebruiker in te schakelen.
-5. **[Maak een Predictix Price Reporting-testgebruiker](#create-a-predictix-price-reporting-test-user)** die is gekoppeld aan de Azure AD-weergave van de gebruiker.
+1. **[Eenmalige aanmelding voor Azure AD configureren](#configure-azure-ad-single-sign-on)** om de functie voor uw gebruikers in te scha kelen.
+2. **[Configureer eenmalige aanmelding voor Predictix-prijs rapportage](#configure-predictix-price-reporting-single-sign-on)** aan de kant van de toepassing.
+3. **[Maak een Azure AD-test gebruiker om de](#create-an-azure-ad-test-user)** eenmalige aanmelding van Azure ad te testen.
+4. **[Wijs de Azure AD-test gebruiker](#assign-the-azure-ad-test-user)** toe om eenmalige aanmelding voor Azure AD in te scha kelen voor de gebruiker.
+5. **[Maak een test gebruiker voor Predictix-prijs rapportage](#create-a-predictix-price-reporting-test-user)** die is gekoppeld aan de Azure AD-weer gave van de gebruiker.
 6. **[Test eenmalige aanmelding](#test-single-sign-on)** om te controleren of de configuratie werkt.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Azure AD configureren voor eenmalige aanmelding
 
-In deze sectie schakelt u Azure AD single sign-on in de Azure-portal in.
+In deze sectie schakelt u eenmalige aanmelding voor Azure AD in de Azure Portal.
 
-Ga als volgt te werk om Azure AD single sign-on te configureren met Predictix Price Reporting:
+Voer de volgende stappen uit om eenmalige aanmelding voor Azure AD te configureren met Predictix-prijs rapportage:
 
-1. Selecteer in de [Azure-portal](https://portal.azure.com/)op de pagina **Predictix Price** Reporting-toepassingsintegratie de optie **Enkele aanmelding:**
+1. Selecteer in de [Azure Portal](https://portal.azure.com/)op de pagina **Predictixing** Application Integration de optie **eenmalige aanmelding**:
 
-    ![Eén aanmelding selecteren](common/select-sso.png)
+    ![Eenmalige aanmelding selecteren](common/select-sso.png)
 
-2. Selecteer in het dialoogvenster **Een enkele aanmeldingsmethode** selecteren de **SAML/WS-Fed-modus** om eenmalige aanmelding in te schakelen:
+2. Selecteer in het dialoog venster **eenmalige aanmelding selecteren** de optie **SAML/WS-** gegevensinvoermodus om eenmalige aanmelding in te scha kelen:
 
-    ![Eén aanmeldingsmethode selecteren](common/select-saml-option.png)
+    ![Selecteer een methode voor eenmalige aanmelding](common/select-saml-option.png)
 
-3. Selecteer op de pagina **Eén aanmelding instellen met SAML** het pictogram **Bewerken** om het dialoogvenster **BasisSAML-configuratie** te openen:
+3. Selecteer op de pagina **eenmalige aanmelding met SAML instellen** het **bewerkings** pictogram om het dialoog venster **basis configuratie van SAML** te openen:
 
     ![Bewerkpictogram](common/edit-urls.png)
 
-4. Voer in het dialoogvenster **BasisSAML-configuratie** de volgende stappen uit.
+4. Voer in het dialoog venster **basis configuratie van SAML** de volgende stappen uit.
 
-    ![Dialoogvenster BasisSAML-configuratie](common/sp-identifier.png)
+    ![Het dialoog venster basis configuratie van SAML](common/sp-identifier.png)
 
-    1. Voer in het vak **Aanmelding smaken van URL** een URL in dit patroon in:
+    1. Voer in het vak **URL voor aanmelden** een URL in dit patroon in:
 
        `https://<companyname-pricing>.predictix.com/sso/request`
 
-    1. Voer in het vak **Id (Entity ID)** een URL in dit patroon in:
+    1. Voer in het vak **id (Entiteits-ID)** een URL in dit patroon in:
 
         | |
         |--|
@@ -118,63 +118,63 @@ Ga als volgt te werk om Azure AD single sign-on te configureren met Predictix Pr
         | |
 
     > [!NOTE]
-    > Deze waarden zijn tijdelijke aanduidingen. U moet de werkelijke aanmeldings-URL en id gebruiken. Neem contact op met het [supportteam van Predictix Price Reporting](https://www.infor.com/company/customer-center/) om de waarden te krijgen. U ook verwijzen naar de patronen die worden weergegeven in het dialoogvenster **BasisSAML-configuratie** in de Azure-portal.
+    > Deze waarden zijn tijdelijke aanduidingen. U moet de daad werkelijke aanmeldings-URL en-id gebruiken. Neem contact op met het [ondersteunings team van Predictix-prijs rapportage](https://www.infor.com/company/customer-center/) om de waarden op te halen. U kunt ook verwijzen naar de patronen die worden weer gegeven in het dialoog venster **basis configuratie van SAML** in de Azure Portal.
 
-5. Selecteer op de pagina **Eén aanmelding instellen met SAML** in de sectie **SAML-ondertekeningscertificaat** de koppeling **Downloaden** naast **Certificaat (Base64)** en sla het certificaat op uw computer op:
+5. Selecteer op de pagina **eenmalige aanmelding met SAML instellen** , in de sectie **SAML-handtekening certificaat** , de **Download** koppeling naast **certificaat (base64)**, volgens uw vereisten en sla het certificaat op uw computer op:
 
     ![De koppeling om het certificaat te downloaden](common/certificatebase64.png)
 
-6. Kopieer in de sectie **Predictix-prijsrapportage** instellen de juiste URL's op basis van uw vereisten.
+6. Kopieer in de sectie **Predictix-prijs rapportage instellen** de juiste url's, op basis van uw vereisten.
 
-    ![De configuratie-URL's kopiëren](common/copy-configuration-urls.png)
+    ![De configuratie-Url's kopiëren](common/copy-configuration-urls.png)
 
     1. **Aanmeldings-URL**.
 
-    1. **Azure AD-id**.
+    1. **Id van Azure AD**.
 
-    1. **Url van afmelden**.
+    1. **Afmeldings-URL**.
 
-### <a name="configure-predictix-price-reporting-single-sign-on"></a>Enkele aanmelding voor Predictix-prijsrapportage configureren
+### <a name="configure-predictix-price-reporting-single-sign-on"></a>Eenmalige aanmelding voor Predictix-prijs rapportage configureren
 
-Als u eenmalige aanmelding wilt configureren aan de kant van de Prijsrapportage van Predictix, moet u het certificaat dat u hebt gedownload en de URL's die u hebt gekopieerd van de Azure-portal naar het [ondersteuningsteam voor prijsrapportage van Predictix](https://www.infor.com/company/customer-center/)verzenden. Dit team zorgt ervoor dat de SAML SSO-verbinding aan beide kanten goed is ingesteld.
+Als u eenmalige aanmelding wilt configureren voor de Predictix, moet u het certificaat dat u hebt gedownload en de Url's die u hebt gekopieerd van de Azure Portal naar het [Predictix Price Reporting-ondersteunings team](https://www.infor.com/company/customer-center/)verzenden. Dit team zorgt ervoor dat de SAML SSO-verbinding aan beide zijden correct is ingesteld.
 
 ### <a name="create-an-azure-ad-test-user"></a>Een Azure AD-testgebruiker maken
 
-In deze sectie maakt u een testgebruiker met de naam Britta Simon in de Azure-portal.
+In deze sectie maakt u een test gebruiker met de naam Julia Simon in de Azure Portal.
 
-1. Selecteer in de Azure-portal **Azure Active Directory** in het linkerdeelvenster, selecteer **Gebruikers**en selecteer **Alle gebruikers:**
+1. Selecteer in de Azure Portal **Azure Active Directory** in het linkerdeel venster, selecteer **gebruikers**en selecteer vervolgens **alle gebruikers**:
 
     ![Selecteer Alle gebruikers](common/users.png)
 
-2. Selecteer **Nieuwe gebruiker** boven aan het scherm:
+2. Selecteer **nieuwe gebruiker** boven aan het scherm:
 
     ![Nieuwe gebruiker selecteren](common/new-user.png)
 
-3. Neem **in** het dialoogvenster Gebruiker de volgende stappen.
+3. Voer in het dialoog venster **gebruiker** de volgende stappen uit.
 
-    ![Dialoogvenster Gebruiker](common/user-properties.png)
+    ![Dialoog venster gebruiker](common/user-properties.png)
 
     1. Voer in het vak **Naam****Britta Simon**in.
   
-    1. Voer in het vak **Gebruikersnaam** **BrittaSimon@\<uw\< bedrijfsdomein in>. uitbreiding>**. (Bijvoorbeeld .) BrittaSimon@contoso.com
+    1. Voer in het vak **gebruikers naam** **BrittaSimon@\<yourcompanydomain> in.\< extensie>**. (Bijvoorbeeld BrittaSimon@contoso.com.)
 
-    1. Selecteer **Wachtwoord weergeven**en noteer de waarde in het vak **Wachtwoord.**
+    1. Selecteer **wacht woord weer geven**en noteer de waarde in het vak **wacht woord** .
 
     1. Selecteer **Maken**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>De Azure AD-testgebruiker toewijzen
 
-In deze sectie u Britta Simon inschakelen om Azure AD single sign-on te gebruiken door haar toegang te verlenen tot Predictix Price Reporting.
+In deze sectie schakelt u Julia Simon in om de eenmalige aanmelding van Azure AD te gebruiken door haar toegang tot Predictix-prijs rapportage te verlenen.
 
-1. Selecteer in de Azure-portal **Enterprise-toepassingen,** selecteer **Alle toepassingen**en selecteer **vervolgens Prijsrapportage Predictix**.
+1. Selecteer in het Azure Portal **bedrijfs toepassingen**, selecteer **alle toepassingen**en selecteer vervolgens Predictix- **prijs rapportage**.
 
     ![Bedrijfstoepassingen](common/enterprise-applications.png)
 
-2. Selecteer in de lijst met toepassingen de optie **Prijsrapportage van Predictix**.
+2. Selecteer **Predictix-prijs rapportage**in de lijst met toepassingen.
 
-    ![Lijst van aanvragen](common/all-applications.png)
+    ![Lijst met toepassingen](common/all-applications.png)
 
-3. Selecteer in het linkerdeelvenster **gebruikers en groepen:**
+3. Selecteer in het linkerdeel venster **gebruikers en groepen**:
 
     ![Gebruikers en groepen selecteren](common/users-groups-blade.png)
 
@@ -182,26 +182,26 @@ In deze sectie u Britta Simon inschakelen om Azure AD single sign-on te gebruike
 
     ![Gebruiker toevoegen selecteren](common/add-assign-user.png)
 
-5. Selecteer **In** het dialoogvenster Gebruikers en groepen de optie **Britta Simon** in de gebruikerslijst en klik op de knop **Selecteren** onder aan het scherm.
+5. Selecteer in het dialoog venster **gebruikers en groepen** de optie **Julia Simon** in de lijst met gebruikers en klik vervolgens op de knop **selecteren** onder aan het scherm.
 
-6. Als u een rolwaarde verwacht in de SAML-bewering, selecteert u in het dialoogvenster **Rol selecteren** de juiste rol voor de gebruiker in de lijst. Klik op de knop **Selecteren** onder aan het scherm.
+6. Als u een waarde van een rol verwacht in de SAML-verklaring, selecteert u in het dialoog venster **rol selecteren** de juiste rol voor de gebruiker in de lijst. Klik op de knop **selecteren** onder aan het scherm.
 
 7. Selecteer **Toewijzen** in het dialoogvenster **Toewijzing toevoegen**.
 
-### <a name="create-a-predictix-price-reporting-test-user"></a>Een testgebruiker voor Predictix-prijsrapportage maken
+### <a name="create-a-predictix-price-reporting-test-user"></a>Een test gebruiker voor Predictix-prijs rapportage maken
 
-Vervolgens moet u een gebruiker met de naam Britta Simon maken in Predictix Price Reporting. Werk samen met het [ondersteuningsteam voor Predictix Price Reporting](https://www.infor.com/company/customer-center/) om gebruikers toe te voegen. Gebruikers moeten worden gemaakt en geactiveerd voordat u eenmalige aanmelding gebruikt.
+Vervolgens moet u een gebruiker met de naam Julia Simon maken in Predictix Price Reporting. Werk samen met het [ondersteunings team voor Predictix-prijs rapportage](https://www.infor.com/company/customer-center/) om gebruikers toe te voegen. Gebruikers moeten worden gemaakt en geactiveerd voordat u eenmalige aanmelding kunt gebruiken.
 
 ### <a name="test-single-sign-on"></a>Eenmalige aanmelding testen
 
-Nu moet u uw Azure AD-configuratie met eenmalige aanmelding testen met behulp van het Access-paneel.
+Nu moet u de configuratie van de eenmalige aanmelding voor Azure AD testen met behulp van het toegangs venster.
 
-Wanneer u de tegel Prijsrapportage van Predictix selecteert in het toegangspaneel, moet u automatisch worden aangemeld bij het voorbeeld Van prijsrapportage van Predictix waarvoor u SSO hebt ingesteld. Zie [Apps openen en gebruiken op de portal Mijn apps](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)voor meer informatie.
+Wanneer u de tegel Predictix prijs rapportage selecteert in het toegangs venster, moet u automatisch worden aangemeld bij het Predictix-exemplaar voor prijs rapportage waarvoor u SSO hebt ingesteld. Zie voor meer informatie [apps openen en gebruiken in de portal mijn apps](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
 ## <a name="additional-resources"></a>Aanvullende bronnen
 
 - [Tutorials for integrating SaaS applications with Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list) (Zelfstudies voor het integreren van SaaS-toepassingen met Azure Active Directory)
 
-- [Wat is toepassingstoegang en eenmalige aanmelding met Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Wat is toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Wat is voorwaardelijke toegang in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

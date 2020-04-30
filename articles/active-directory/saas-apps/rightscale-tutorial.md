@@ -1,6 +1,6 @@
 ---
-title: 'Zelfstudie: Azure Active Directory-integratie met Rightscale | Microsoft Documenten'
-description: Meer informatie over het configureren van eenmalige aanmelding tussen Azure Active Directory en Rightscale.
+title: 'Zelf studie: integratie Azure Active Directory met RightScale | Microsoft Docs'
+description: Meer informatie over het configureren van eenmalige aanmelding tussen Azure Active Directory en RightScale.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -16,42 +16,42 @@ ms.topic: tutorial
 ms.date: 03/26/2019
 ms.author: jeedes
 ms.openlocfilehash: 53799b62da043b7680f010e1eaaf0d9243f07dd5
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "67093077"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-rightscale"></a>Zelfstudie: Azure Active Directory-integratie met Rightscale
+# <a name="tutorial-azure-active-directory-integration-with-rightscale"></a>Zelf studie: integratie Azure Active Directory met RightScale
 
-In deze zelfstudie leert u hoe u Rightscale integreert met Azure Active Directory (Azure AD).
-Het integreren van Rightscale met Azure AD biedt u de volgende voordelen:
+In deze zelf studie leert u hoe u RightScale integreert met Azure Active Directory (Azure AD).
+Het integreren van RightScale met Azure AD biedt de volgende voor delen:
 
-* U in Azure AD bepalen wie toegang heeft tot Rightscale.
-* U uw gebruikers automatisch laten aanmelden bij Rightscale (Single Sign-On) met hun Azure AD-accounts.
+* U kunt beheren in azure AD die toegang heeft tot RightScale.
+* U kunt ervoor zorgen dat uw gebruikers automatisch worden aangemeld bij RightScale (eenmalige aanmelding) met hun Azure AD-accounts.
 * U kunt uw accounts vanaf één centrale locatie beheren: de Azure-portal.
 
 Zie [What is application access and single sign-on with Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?) als u wilt graag meer wilt weten over de integratie van SaaS-apps met Azure AD.
-Als u geen Azure-abonnement hebt, [maakt u een gratis account](https://azure.microsoft.com/free/) voordat u begint.
+Als u nog geen abonnement op Azure hebt, [Maak dan een gratis account](https://azure.microsoft.com/free/) aan voordat u begint.
 
 ## <a name="prerequisites"></a>Vereisten
 
-Als u Azure AD-integratie met Rightscale wilt configureren, hebt u de volgende items nodig:
+Als u Azure AD-integratie met RightScale wilt configureren, hebt u de volgende items nodig:
 
-* Een Azure AD-abonnement Als u geen Azure AD-omgeving hebt, u een [gratis account](https://azure.microsoft.com/free/) krijgen
-* Abonnement met één aanmelding op de juiste schaal
+* Een Azure AD-abonnement Als u geen Azure AD-omgeving hebt, kunt u een [gratis account](https://azure.microsoft.com/free/) aanvragen
+* Abonnement voor eenmalige aanmelding RightScale ingeschakeld
 
 ## <a name="scenario-description"></a>Scenariobeschrijving
 
 In deze zelfstudie gaat u in een testomgeving eenmalige aanmelding van Azure AD configureren en testen.
 
-* Rightscale ondersteunt **SP en IDP** geïnitieerd sso
+* RightScale ondersteunt SSO die door **SP en IDP** is geïnitieerd
 
-## <a name="adding-rightscale-from-the-gallery"></a>Rechtsschaal toevoegen vanuit de galerie
+## <a name="adding-rightscale-from-the-gallery"></a>RightScale toevoegen uit de galerie
 
-Als u de integratie van Rightscale in Azure AD wilt configureren, moet u Rightscale vanuit de galerie toevoegen aan uw lijst met beheerde SaaS-apps.
+Als u de integratie van RightScale in azure AD wilt configureren, moet u RightScale uit de galerie toevoegen aan uw lijst met beheerde SaaS-apps.
 
-**Als u Rightscale vanuit de galerie wilt toevoegen, voert u de volgende stappen uit:**
+**Voer de volgende stappen uit om RightScale toe te voegen uit de galerie:**
 
 1. Klik in het linkernavigatievenster in de **[Azure-portal](https://portal.azure.com)** op het **Azure Active Directory**-pictogram.
 
@@ -65,31 +65,31 @@ Als u de integratie van Rightscale in Azure AD wilt configureren, moet u Rightsc
 
     ![De knop Nieuwe toepassing](common/add-new-app.png)
 
-4. Typ in het zoekvak **Rechtsschalen**, selecteer **Rechtsschalen** uit het resultaatpaneel en klik op **Knop Toevoegen** om de toepassing toe te voegen.
+4. Typ **RightScale**in het zoekvak, selecteer **RightScale** in het resultaten paneel en klik vervolgens op de knop **toevoegen** om de toepassing toe te voegen.
 
-     ![Rechtsschalen in de resultatenlijst](common/search-new-app.png)
+     ![RightScale in de lijst met resultaten](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD-eenmalige aanmelding configureren en testen
 
-In deze sectie configureert en test u Azure AD single sign-on met Rightscale op basis van een testgebruiker genaamd **Britta Simon**.
-Voor eenmalige aanmelding aan het werk moet een koppelingsrelatie worden ingesteld tussen een Azure AD-gebruiker en de gerelateerde gebruiker in Rightscale.
+In deze sectie kunt u eenmalige aanmelding voor Azure AD configureren en testen met RightScale op basis van een test gebruiker met de naam **Julia Simon**.
+Voor een goede werking van eenmalige aanmelding moet er een koppelings relatie tussen een Azure AD-gebruiker en de bijbehorende gebruiker in RightScale tot stand worden gebracht.
 
-Als u Azure AD-single sign-on met Rightscale wilt configureren en testen, moet u de volgende bouwstenen voltooien:
+Als u eenmalige aanmelding voor Azure AD wilt configureren en testen met RightScale, moet u de volgende bouw stenen volt ooien:
 
 1. **[Azure AD-eenmalige aanmelding configureren](#configure-azure-ad-single-sign-on)**: als u wilt dat uw gebruikers deze functie kunnen gebruiken.
-2. **[Configureer Rightscale Single Sign-On](#configure-rightscale-single-sign-on)** - om de instellingen voor eenmalig aanmelden aan de toepassingszijde te configureren.
+2. **[RightScale eenmalige aanmelding configureren](#configure-rightscale-single-sign-on)** : Hiermee configureert u de instellingen voor eenmalige aanmelding aan de kant van de toepassing.
 3. **[Een Azure AD-testgebruiker maken](#create-an-azure-ad-test-user)**: als u Azure AD-eenmalige aanmelding wil testen met Britta Simon.
 4. **[De testgebruiker van Azure AD-toewijzen](#assign-the-azure-ad-test-user)**: als u wilt dat Britta Simon gebruik kan maken van Azure AD-eenmalige aanmelding.
-5. **[Maak de testgebruiker van Rightscale](#create-rightscale-test-user)** - om een tegenhanger van Britta Simon in Rightscale te hebben die is gekoppeld aan de Azure AD-weergave van de gebruiker.
+5. **[Maak een RightScale-test gebruiker](#create-rightscale-test-user)** -om een equivalent van Julia Simon in RightScale te hebben dat is gekoppeld aan de Azure AD-representatie van de gebruiker.
 6. **[Eenmalige aanmelding testen](#test-single-sign-on)**: als u wilt controleren of de configuratie werkt.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Azure AD configureren voor eenmalige aanmelding
 
 In deze sectie gaat u Azure AD-eenmalige aanmelding in de Azure-portal inschakelen.
 
-Voer de volgende stappen uit om de volgende stappen uit te voeren om de enkele aanmelding van Azure AD met Rightscale te configureren:
+Voer de volgende stappen uit om eenmalige aanmelding voor Azure AD te configureren met RightScale:
 
-1. Selecteer in de [Azure-portal](https://portal.azure.com/)op de pagina **Integratie van de juiste toepassing** de optie Eén **aanmelding**.
+1. Selecteer in de [Azure Portal](https://portal.azure.com/)op de pagina **RightScale** Application Integration de optie **eenmalige aanmelding**.
 
     ![Koppeling Eenmalige aanmelding configureren](common/select-sso.png)
 
@@ -103,19 +103,19 @@ Voer de volgende stappen uit om de volgende stappen uit te voeren om de enkele a
 
 4. In de sectie **SAML-basisconfiguratie** hoeft de gebruiker geen enkele stap uit te voeren omdat de app al vooraf is geïntegreerd met Azure.
 
-    ![Informatie over het rechterwaardendomein en URL's met eenmalige aanmelding](common/preintegrated.png)
+    ![Informatie over eenmalige aanmelding voor RightScale domein en Url's](common/preintegrated.png)
 
 5. Klik op **Extra URL's instellen** en voer de volgende stap uit als u de toepassing in de door **SP** geïnitieerde modus wilt configureren:
 
-    ![Informatie over het rechterwaardendomein en URL's met eenmalige aanmelding](common/metadata-upload-additional-signon.png)
+    ![Informatie over eenmalige aanmelding voor RightScale domein en Url's](common/metadata-upload-additional-signon.png)
 
-    Typ de URL in het tekstvak **AANmeldings-URL:**`https://login.rightscale.com/`
+    Typ in het tekstvak **URL voor aanmelding** de URL:`https://login.rightscale.com/`
 
 6. Op de pagina **Eenmalige aanmelding met SAML instellen** in de sectie **SAML-handtekeningcertificaat** klikt u op **Downloaden** om het **Certificaat (Base64)** te downloaden uit de opgegeven opties overeenkomstig uw behoeften, en slaat u dit op uw computer op.
 
     ![De link om het certificaat te downloaden](common/certificatebase64.png)
 
-7. Kopieer in de sectie **Rechtsschalen instellen** de juiste URL(s) volgens uw vereiste.
+7. Kopieer op de sectie **RightScale instellen** de gewenste URL ('s) volgens uw vereiste.
 
     ![Configuratie-URL's kopiëren](common/copy-configuration-urls.png)
 
@@ -125,35 +125,35 @@ Voer de volgende stappen uit om de volgende stappen uit te voeren om de enkele a
 
     c. Afmeldings-URL
 
-### <a name="configure-rightscale-single-sign-on"></a>Rightscale Single Sign-On configureren
+### <a name="configure-rightscale-single-sign-on"></a>Eenmalige aanmelding voor RightScale configureren
 
-1. Als u SSO wilt configureren voor uw toepassing, moet u zich aanmelden bij uw RightScale-tenant als beheerder.
+1. Als u SSO wilt ophalen die voor uw toepassing is geconfigureerd, moet u zich aanmelden bij uw RightScale-Tenant als beheerder.
 
-2. Klik in het menu bovenaan op het tabblad **Instellingen** en selecteer **Eenmalig aanmelden**.
+2. Klik in het menu aan de bovenkant op het tabblad **instellingen** en selecteer **eenmalige aanmelding**.
 
     ![Eenmalige aanmelding configureren](./media/rightscale-tutorial/tutorial_rightscale_001.png)
 
-3. Klik op de **nieuwe** knop om **uw SAML-identiteitsproviders**toe te voegen.
+3. Klik op de knop **Nieuw** om **uw SAML-id-providers**toe te voegen.
 
     ![Eenmalige aanmelding configureren](./media/rightscale-tutorial/tutorial_rightscale_002.png)
 
-4. Voer in het tekstvak **van Weergavenaam**uw bedrijfsnaam in.
+4. Voer in het tekstvak van de **weergave naam**uw bedrijfs naam in.
 
     ![Eenmalige aanmelding configureren](./media/rightscale-tutorial/tutorial_rightscale_003.png)
 
-5. Selecteer SSO met **rechtsschaal toestaan met behulp van een detectiehint** en voer uw **domeinnaam** in het onderstaande tekstvak in.
+5. Selecteer **door RightScale geïnitieerde eenmalige aanmelding toestaan met een detectie Hint** en voer uw **domein naam** in het onderstaande tekstvak in.
 
     ![Eenmalige aanmelding configureren](./media/rightscale-tutorial/tutorial_rightscale_004.png)
 
-6. Plak de waarde van **de aanmeldings-URL** die u hebt gekopieerd van Azure-portal naar **SAML SSO-eindpunt** in RightScale.
+6. Plak de waarde van de **aanmeldings-URL** die u hebt gekopieerd van Azure Portal naar het **SAML SSO-eind punt** in RightScale.
 
     ![Eenmalige aanmelding configureren](./media/rightscale-tutorial/tutorial_rightscale_006.png)
 
-7. Plak de waarde van **Azure AD-id** die u hebt gekopieerd van Azure-portal in **SAML-entiteitsid** in RightScale.
+7. Plak de waarde van de **Azure ad-id** die u hebt gekopieerd van Azure Portal naar **SAML EntityID** in RightScale.
 
     ![Eenmalige aanmelding configureren](./media/rightscale-tutorial/tutorial_rightscale_008.png)
 
-8. Klik op de knop **Browser** om het certificaat te uploaden dat u hebt gedownload van de Azure-portal.
+8. Klik op de knop **browser** om het certificaat te uploaden dat u van Azure Portal hebt gedownload.
 
 
     ![Eenmalige aanmelding configureren](./media/rightscale-tutorial/tutorial_rightscale_009.png)
@@ -168,7 +168,7 @@ Het doel van deze sectie is om in de Azure-portal een testgebruiker met de naam 
 
     ![De koppelingen Gebruikers en groepen en Alle gebruikers](common/users.png)
 
-2. Selecteer **Nieuwe gebruiker** boven aan het scherm.
+2. Selecteer **nieuwe gebruiker** boven aan het scherm.
 
     ![Knop Nieuwe gebruiker](common/new-user.png)
 
@@ -183,19 +183,19 @@ Het doel van deze sectie is om in de Azure-portal een testgebruiker met de naam 
 
     c. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak Wachtwoord.
 
-    d. Klik **op Maken**.
+    d. Klik op **maken**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>De Azure AD-testgebruiker toewijzen
 
-In deze sectie stelt u Britta Simon in staat om Azure single sign-on te gebruiken door toegang te verlenen tot Rightscale.
+In deze sectie schakelt u Julia Simon in om eenmalige aanmelding van Azure te gebruiken door toegang te verlenen aan RightScale.
 
-1. Selecteer in de Azure-portal **Enterprise-toepassingen**, selecteer **Alle toepassingen**en selecteer **Vervolgens Rechterschaal**.
+1. Selecteer in het Azure Portal **bedrijfs toepassingen**, selecteer **alle toepassingen**en selecteer vervolgens **RightScale**.
 
     ![De blade Bedrijfstoepassingen](common/enterprise-applications.png)
 
-2. Selecteer **Rightscale**in de lijst met toepassingen .
+2. Selecteer in de lijst toepassingen de optie **RightScale**.
 
-    ![De koppeling Rechtsschalen in de lijst Toepassingen](common/all-applications.png)
+    ![De koppeling RightScale in de lijst met toepassingen](common/all-applications.png)
 
 3. Selecteer in het menu aan de linkerkant **Gebruikers en groepen**.
 
@@ -205,26 +205,26 @@ In deze sectie stelt u Britta Simon in staat om Azure single sign-on te gebruike
 
     ![Het deelvenster Toewijzing toevoegen](common/add-assign-user.png)
 
-5. Selecteer **In** het dialoogvenster Gebruikers en groepen **Britta Simon** in de lijst Gebruikers en klik je op de knop **Selecteren** onder aan het scherm.
+5. Selecteer in het dialoog venster **gebruikers en groepen** **Julia Simon** in de lijst gebruikers en klik vervolgens op de knop **selecteren** onder aan het scherm.
 
-6. Als u een rolwaarde verwacht in de SAML-bewering, selecteert u in het dialoogvenster **Rol selecteren** de juiste rol voor de gebruiker in de lijst en klikt u op de knop **Selecteren** onder aan het scherm.
+6. Als u een wille keurige rol verwacht in de SAML-bewering, selecteert u in het dialoog venster **rol selecteren** de juiste rol voor de gebruiker in de lijst en klikt u op de knop **selecteren** onder aan het scherm.
 
 7. Klik in het dialoogvenster **Toewijzing toevoegen** op de knop **Toewijzen**.
 
-### <a name="create-rightscale-test-user"></a>Rechterschaaltestgebruiker maken
+### <a name="create-rightscale-test-user"></a>RightScale-test gebruiker maken
 
-In deze sectie maakt u een gebruiker genaamd Britta Simon in Rightscale. Werk samen met [het ondersteuningsteam](mailto:support@rightscale.com) van Rightscale Client om de gebruikers toe te voegen in het Rightscale-platform. Er moeten gebruikers worden gemaakt en geactiveerd voordat u eenmalige aanmelding kunt gebruiken.
+In deze sectie maakt u een gebruiker met de naam Julia Simon in RightScale. Werk samen met het [RightScale-client ondersteunings team](mailto:support@rightscale.com) om de gebruikers toe te voegen in het RightScale-platform. Er moeten gebruikers worden gemaakt en geactiveerd voordat u eenmalige aanmelding kunt gebruiken.
 
 ### <a name="test-single-sign-on"></a>Eenmalige aanmelding testen
 
 In deze sectie gaat u uw configuratie van Azure AD-eenmalige aanmelding testen via het toegangsvenster.
 
-Wanneer u op de tegel Rechtsschalen in het toegangspaneel klikt, moet u automatisch worden aangemeld bij de juiste schaal waarvoor u SSO hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
+Wanneer u op de tegel RightScale in het toegangs venster klikt, moet u automatisch worden aangemeld bij de RightScale waarvoor u SSO hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
 
 ## <a name="additional-resources"></a>Aanvullende resources
 
 - [Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Wat is toepassingstoegang en eenmalige aanmelding met Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Wat is toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Wat is voorwaardelijke toegang in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

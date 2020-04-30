@@ -1,5 +1,5 @@
 ---
-title: 'Zelfstudie: Azure Active Directory-integratie met Skillport | Microsoft Documenten'
+title: 'Zelf studie: integratie Azure Active Directory met Skillport | Microsoft Docs'
 description: Meer informatie over het configureren van eenmalige aanmelding tussen Azure Active Directory en Skillport.
 services: active-directory
 documentationCenter: na
@@ -16,42 +16,42 @@ ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: jeedes
 ms.openlocfilehash: 09ccb9f095e58d8fa22ec3d119853c729f0c7026
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "67090576"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-skillport"></a>Zelfstudie: Azure Active Directory-integratie met Skillport
+# <a name="tutorial-azure-active-directory-integration-with-skillport"></a>Zelf studie: integratie Azure Active Directory met Skillport
 
-In deze zelfstudie leert u hoe u Skillport integreert met Azure Active Directory (Azure AD).
-De integratie van Skillport met Azure AD biedt u de volgende voordelen:
+In deze zelf studie leert u hoe u Skillport integreert met Azure Active Directory (Azure AD).
+Het integreren van Skillport met Azure AD biedt de volgende voor delen:
 
-* U in Azure AD bepalen wie toegang heeft tot Skillport.
-* U uw gebruikers automatisch laten inloggen op Skillport (Single Sign-On) met hun Azure AD-accounts.
+* U kunt beheren in azure AD die toegang heeft tot Skillport.
+* U kunt ervoor zorgen dat uw gebruikers automatisch worden aangemeld bij Skillport (eenmalige aanmelding) met hun Azure AD-accounts.
 * U kunt uw accounts vanaf één centrale locatie beheren: de Azure-portal.
 
 Zie [What is application access and single sign-on with Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?) als u wilt graag meer wilt weten over de integratie van SaaS-apps met Azure AD.
-Als u geen Azure-abonnement hebt, [maakt u een gratis account](https://azure.microsoft.com/free/) voordat u begint.
+Als u nog geen abonnement op Azure hebt, [Maak dan een gratis account](https://azure.microsoft.com/free/) aan voordat u begint.
 
 ## <a name="prerequisites"></a>Vereisten
 
-Als u de AD-integratie van Azure met Skillport wilt configureren, hebt u de volgende items nodig:
+Als u Azure AD-integratie met Skillport wilt configureren, hebt u de volgende items nodig:
 
-* Een Azure AD-abonnement Als u geen Azure AD-omgeving hebt, u een [gratis account](https://azure.microsoft.com/free/) krijgen
-* Abonnement met één aanmelding voor Skillport
+* Een Azure AD-abonnement Als u geen Azure AD-omgeving hebt, kunt u een [gratis account](https://azure.microsoft.com/free/) aanvragen
+* Abonnement voor eenmalige aanmelding Skillport ingeschakeld
 
 ## <a name="scenario-description"></a>Scenariobeschrijving
 
 In deze zelfstudie gaat u in een testomgeving eenmalige aanmelding van Azure AD configureren en testen.
 
-* Skillport ondersteunt **DOOR SP** geïnitieerde SSO
+* Skillport ondersteunt door **SP** GEÏNITIEERDe SSO
 
-## <a name="adding-skillport-from-the-gallery"></a>Skillport toevoegen vanuit de galerie
+## <a name="adding-skillport-from-the-gallery"></a>Skillport toevoegen uit de galerie
 
-Als u de integratie van Skillport in Azure AD wilt configureren, moet u Skillport vanuit de galerie toevoegen aan uw lijst met beheerde SaaS-apps.
+Als u de integratie van Skillport in azure AD wilt configureren, moet u Skillport uit de galerie toevoegen aan uw lijst met beheerde SaaS-apps.
 
-**Als u Skillport vanuit de galerie wilt toevoegen, voert u de volgende stappen uit:**
+**Voer de volgende stappen uit om Skillport toe te voegen uit de galerie:**
 
 1. Klik in het linkernavigatievenster in de **[Azure-portal](https://portal.azure.com)** op het **Azure Active Directory**-pictogram.
 
@@ -65,31 +65,31 @@ Als u de integratie van Skillport in Azure AD wilt configureren, moet u Skillpor
 
     ![De knop Nieuwe toepassing](common/add-new-app.png)
 
-4. Typ **Skillport**in het zoekvak , selecteer **Skillport** uit het resultaatpaneel en klik op **Knop Toevoegen** om de toepassing toe te voegen.
+4. Typ **Skillport**in het zoekvak, selecteer **Skillport** in het resultaten paneel en klik vervolgens op de knop **toevoegen** om de toepassing toe te voegen.
 
-    ![Skillport in de resultatenlijst](common/search-new-app.png)
+    ![Skillport in de lijst met resultaten](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD-eenmalige aanmelding configureren en testen
 
-In deze sectie configureert en test u Azure AD single sign-on met Skillport op basis van een testgebruiker genaamd **Britta Simon**.
-Voor eenmalige aanmelding om te werken, moet een koppelingsrelatie worden ingesteld tussen een Azure AD-gebruiker en de gerelateerde gebruiker in Skillport.
+In deze sectie kunt u eenmalige aanmelding voor Azure AD configureren en testen met Skillport op basis van een test gebruiker met de naam **Julia Simon**.
+Voor een goede werking van eenmalige aanmelding moet er een koppelings relatie tussen een Azure AD-gebruiker en de bijbehorende gebruiker in Skillport tot stand worden gebracht.
 
-Als u Azure AD-single sign-on met Skillport wilt configureren en testen, moet u de volgende bouwstenen voltooien:
+Als u eenmalige aanmelding voor Azure AD wilt configureren en testen met Skillport, moet u de volgende bouw stenen volt ooien:
 
 1. **[Azure AD-eenmalige aanmelding configureren](#configure-azure-ad-single-sign-on)**: als u wilt dat uw gebruikers deze functie kunnen gebruiken.
-2. **[Configureer Skillport Single Sign-On](#configure-skillport-single-sign-on)** - om de instellingen voor eenmalig aanmelden aan de toepassingszijde te configureren.
+2. **[Skillport eenmalige aanmelding configureren](#configure-skillport-single-sign-on)** : Hiermee configureert u de instellingen voor eenmalige aanmelding aan de kant van de toepassing.
 3. **[Een Azure AD-testgebruiker maken](#create-an-azure-ad-test-user)**: als u Azure AD-eenmalige aanmelding wil testen met Britta Simon.
 4. **[De testgebruiker van Azure AD-toewijzen](#assign-the-azure-ad-test-user)**: als u wilt dat Britta Simon gebruik kan maken van Azure AD-eenmalige aanmelding.
-5. **[Maak Skillport-testgebruiker](#create-skillport-test-user)** - om een tegenhanger van Britta Simon in Skillport te hebben die is gekoppeld aan de Azure AD-weergave van de gebruiker.
+5. **[Maak een Skillport-test gebruiker](#create-skillport-test-user)** -om een equivalent van Julia Simon in Skillport te hebben dat is gekoppeld aan de Azure AD-representatie van de gebruiker.
 6. **[Eenmalige aanmelding testen](#test-single-sign-on)**: als u wilt controleren of de configuratie werkt.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Azure AD configureren voor eenmalige aanmelding
 
 In deze sectie gaat u Azure AD-eenmalige aanmelding in de Azure-portal inschakelen.
 
-Voer de volgende stappen uit om de volgende stappen uit te voeren om de enkele aanmelding van Azure AD met Skillport te configureren:
+Voer de volgende stappen uit om eenmalige aanmelding voor Azure AD te configureren met Skillport:
 
-1. Selecteer in de [Azure-portal](https://portal.azure.com/)op de pagina **Skillport-toepassingsintegratie** de optie **Eén aanmelding**.
+1. Selecteer in de [Azure Portal](https://portal.azure.com/)op de pagina **Skillport** Application Integration de optie **eenmalige aanmelding**.
 
     ![Koppeling Eenmalige aanmelding configureren](common/select-sso.png)
 
@@ -103,31 +103,31 @@ Voer de volgende stappen uit om de volgende stappen uit te voeren om de enkele a
 
 4. In de sectie **Standaard SAML-configuratie** voert u de volgende stappen uit:
 
-    ![Informatie over Skillport-domein en URL's met eenmalige aanmelding](common/sp-identifier-reply.png)
+    ![Informatie over eenmalige aanmelding voor Skillport domein en Url's](common/sp-identifier-reply.png)
 
     a. In het tekstvak **Aanmeldings-URL** typt u de URL: 
 
-    EU-datacenter:`https://adfs.skillport.eu`
+    EU-data centrum:`https://adfs.skillport.eu`
 
-    Datacenter VS:`https://sso.skillport.com`
+    US Data Center:`https://sso.skillport.com`
 
     b. Typ in het vak **Id** de URL: 
 
-    EU-datacenter:`http://adfs.skillport.eu/adfs/services/trust`
+    EU-data centrum:`http://adfs.skillport.eu/adfs/services/trust`
 
-    Datacenter VS:`https://sso.skillport.com`
+    US Data Center:`https://sso.skillport.com`
 
     c. Typ in het tekstvak **Antwoord-URL** de URL: 
 
-    EU-datacenter:`https://adfs.skillport.eu/adfs/ls/`
+    EU-data centrum:`https://adfs.skillport.eu/adfs/ls/`
 
-      Datacenter VS:`https://sso.skillport.com/sp/ACS.saml2`
+      US Data Center:`https://sso.skillport.com/sp/ACS.saml2`
 
 5. Op de pagina **Eenmalige aanmelding met SAML instellen** in het gedeelte **SAML-handtekeningcertificaat** klikt u op **Downloaden** om het **XML-bestand met federatieve metagegevens** te downloaden uit de gegeven opties overeenkomstig met wat u nodig hebt, en slaat u dit op uw computer op.
 
     ![De link om het certificaat te downloaden](common/metadataxml.png)
 
-6. Kopieer in de sectie **Skillport instellen** de juiste URL(s) volgens uw vereiste.
+6. Kopieer op de sectie **Skillport instellen** de gewenste URL ('s) volgens uw vereiste.
 
     ![Configuratie-URL's kopiëren](common/copy-configuration-urls.png)
 
@@ -137,9 +137,9 @@ Voer de volgende stappen uit om de volgende stappen uit te voeren om de enkele a
 
     c. Afmeldings-URL
 
-### <a name="configure-skillport-single-sign-on"></a>Skillport-aanmelding configureren
+### <a name="configure-skillport-single-sign-on"></a>Eenmalige aanmelding voor Skillport configureren
 
-Als u eenmalige aanmelding aan **skillport-zijde** wilt configureren, moet u de gedownloade **XML met aalmetagegevens van federatiemetagegevens** en de juiste gekopieerde URL's van Azure-portal naar [het ondersteuningsteam van Skillport](https://www.skillsoft.com/contact.asp)verzenden. Het team stelt de instellingen zo in dat de verbinding tussen SAML en eenmalige aanmelding aan beide zijden goed is ingesteld.
+Als u eenmalige aanmelding wilt configureren op **Skillport** , moet u het gedownloade **XML-bestand met federatieve meta gegevens** en de juiste gekopieerde url's verzenden van Azure Portal naar [Skillport ondersteunings team](https://www.skillsoft.com/contact.asp). Het team stelt de instellingen zo in dat de verbinding tussen SAML en eenmalige aanmelding aan beide zijden goed is ingesteld.
 
 ### <a name="create-an-azure-ad-test-user"></a>Een Azure AD-testgebruiker maken
 
@@ -149,7 +149,7 @@ Het doel van deze sectie is om in de Azure-portal een testgebruiker met de naam 
 
     ![De koppelingen Gebruikers en groepen en Alle gebruikers](common/users.png)
 
-2. Selecteer **Nieuwe gebruiker** boven aan het scherm.
+2. Selecteer **nieuwe gebruiker** boven aan het scherm.
 
     ![Knop Nieuwe gebruiker](common/new-user.png)
 
@@ -164,19 +164,19 @@ Het doel van deze sectie is om in de Azure-portal een testgebruiker met de naam 
 
     c. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak Wachtwoord.
 
-    d. Klik **op Maken**.
+    d. Klik op **maken**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>De Azure AD-testgebruiker toewijzen
 
-In deze sectie stelt u Britta Simon in staat om Azure single sign-on te gebruiken door toegang te verlenen tot Skillport.
+In deze sectie schakelt u Julia Simon in om eenmalige aanmelding van Azure te gebruiken door toegang te verlenen aan Skillport.
 
-1. Selecteer in de Azure-portal **Enterprise-toepassingen**, selecteer **Alle toepassingen**en selecteer **Skillport**.
+1. Selecteer in het Azure Portal **bedrijfs toepassingen**, selecteer **alle toepassingen**en selecteer vervolgens **Skillport**.
 
     ![De blade Bedrijfstoepassingen](common/enterprise-applications.png)
 
-2. Selecteer **Skillport**in de lijst met toepassingen .
+2. Selecteer in de lijst toepassingen de optie **Skillport**.
 
-    ![De Skillport-koppeling in de lijst Toepassingen](common/all-applications.png)
+    ![De koppeling Skillport in de lijst met toepassingen](common/all-applications.png)
 
 3. Selecteer in het menu aan de linkerkant **Gebruikers en groepen**.
 
@@ -186,27 +186,27 @@ In deze sectie stelt u Britta Simon in staat om Azure single sign-on te gebruike
 
     ![Het deelvenster Toewijzing toevoegen](common/add-assign-user.png)
 
-5. Selecteer **In** het dialoogvenster Gebruikers en groepen **Britta Simon** in de lijst Gebruikers en klik je op de knop **Selecteren** onder aan het scherm.
+5. Selecteer in het dialoog venster **gebruikers en groepen** **Julia Simon** in de lijst gebruikers en klik vervolgens op de knop **selecteren** onder aan het scherm.
 
-6. Als u een rolwaarde verwacht in de SAML-bewering, selecteert u in het dialoogvenster **Rol selecteren** de juiste rol voor de gebruiker in de lijst en klikt u op de knop **Selecteren** onder aan het scherm.
+6. Als u een wille keurige rol verwacht in de SAML-bewering, selecteert u in het dialoog venster **rol selecteren** de juiste rol voor de gebruiker in de lijst en klikt u op de knop **selecteren** onder aan het scherm.
 
 7. Klik in het dialoogvenster **Toewijzing toevoegen** op de knop **Toewijzen**.
 
-### <a name="create-skillport-test-user"></a>Skillport-testgebruiker maken
+### <a name="create-skillport-test-user"></a>Skillport-test gebruiker maken
 
-Om skillport-testgebruiker te maken, moet u contact opnemen met het ondersteuningsteam van [Skillport,](https://www.skillsoft.com/contact.asp) omdat ze meerdere bedrijfsscenario's hebben volgens de vereiste van de eindgebruiker. Zij zullen het configureren na overleg met de gebruikers.
+Als u Skillport test gebruiker wilt maken, moet u contact opnemen met het [ondersteunings team van Skillport](https://www.skillsoft.com/contact.asp) , aangezien deze meerdere bedrijfs scenario's hebben, afhankelijk van de vereisten van de eind gebruiker. Ze worden geconfigureerd na discussie met de gebruikers.
 
 ### <a name="test-single-sign-on"></a>Eenmalige aanmelding testen
 
 In deze sectie gaat u uw configuratie van Azure AD-eenmalige aanmelding testen via het toegangsvenster.
 
-Wanneer u op de skillport-tegel in het toegangspaneel klikt, moet u automatisch worden aangemeld bij de Skillport waarvoor u SSO hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
+Wanneer u op de tegel Skillport in het toegangs venster klikt, moet u automatisch worden aangemeld bij de Skillport waarvoor u SSO hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
 
 ## <a name="additional-resources"></a>Aanvullende resources
 
 - [Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Wat is toepassingstoegang en eenmalige aanmelding met Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Wat is toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Wat is voorwaardelijke toegang in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

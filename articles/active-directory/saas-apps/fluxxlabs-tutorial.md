@@ -1,6 +1,6 @@
 ---
-title: 'Zelfstudie: Azure Active Directory-integratie met Fluxx Labs | Microsoft Documenten'
-description: Meer informatie over het configureren van eenmalige aanmelding tussen Azure Active Directory en Fluxx Labs.
+title: 'Zelf studie: integratie met Stroomx Labs Azure Active Directory | Microsoft Docs'
+description: Meer informatie over het configureren van eenmalige aanmelding tussen Azure Active Directory en Stroomx Labs.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -16,42 +16,42 @@ ms.topic: tutorial
 ms.date: 04/01/2019
 ms.author: jeedes
 ms.openlocfilehash: e624520a9d1f39bc8115ac72e9df0398065928f1
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "67102393"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-fluxx-labs"></a>Zelfstudie: Azure Active Directory-integratie met Fluxx Labs
+# <a name="tutorial-azure-active-directory-integration-with-fluxx-labs"></a>Zelf studie: integratie met Stroomx Labs Azure Active Directory
 
-In deze zelfstudie leert u hoe u Fluxx Labs integreert met Azure Active Directory (Azure AD).
-De integratie van Fluxx Labs met Azure AD biedt u de volgende voordelen:
+In deze zelf studie leert u hoe u Stroomx Labs kunt integreren met Azure Active Directory (Azure AD).
+Het integreren van de Stroomx Labs met Azure AD biedt de volgende voor delen:
 
-* U in Azure AD bepalen wie toegang heeft tot Fluxx Labs.
-* U uw gebruikers automatisch laten inloggen bij Fluxx Labs (Single Sign-On) met hun Azure AD-accounts.
+* U kunt beheren in azure AD die toegang heeft tot Stroomx Labs.
+* U kunt uw gebruikers automatisch aanmelden bij Stroomx Labs (eenmalige aanmelding) met hun Azure AD-accounts.
 * U kunt uw accounts vanaf één centrale locatie beheren: de Azure-portal.
 
 Zie [What is application access and single sign-on with Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?) als u wilt graag meer wilt weten over de integratie van SaaS-apps met Azure AD.
-Als u geen Azure-abonnement hebt, [maakt u een gratis account](https://azure.microsoft.com/free/) voordat u begint.
+Als u nog geen abonnement op Azure hebt, [Maak dan een gratis account](https://azure.microsoft.com/free/) aan voordat u begint.
 
 ## <a name="prerequisites"></a>Vereisten
 
-Als u azure AD-integratie met Fluxx Labs wilt configureren, hebt u de volgende items nodig:
+Als u Azure AD-integratie met Stroomx Labs wilt configureren, hebt u de volgende items nodig:
 
-* Een Azure AD-abonnement Als u geen Azure AD-omgeving hebt, u een [gratis account](https://azure.microsoft.com/free/) krijgen
-* Fluxx Labs single sign-on enabled subscription
+* Een Azure AD-abonnement Als u geen Azure AD-omgeving hebt, kunt u een [gratis account](https://azure.microsoft.com/free/) aanvragen
+* Abonnement voor eenmalige aanmelding bij stroomx Labs
 
 ## <a name="scenario-description"></a>Scenariobeschrijving
 
 In deze zelfstudie gaat u in een testomgeving eenmalige aanmelding van Azure AD configureren en testen.
 
-* Fluxx Labs ondersteunt **IDP** geïnitieerde SSO
+* Stroomx Labs ondersteunt **IDP** GEÏNITIEERDe SSO
 
-## <a name="adding-fluxx-labs-from-the-gallery"></a>Fluxx Labs toevoegen vanuit de galerie
+## <a name="adding-fluxx-labs-from-the-gallery"></a>Stroomx Labs toevoegen vanuit de galerie
 
-Als u de integratie van Fluxx Labs in Azure AD wilt configureren, moet u Fluxx Labs vanuit de galerie toevoegen aan uw lijst met beheerde SaaS-apps.
+Als u de integratie van Stroomx Labs in azure AD wilt configureren, moet u aan uw lijst met beheerde SaaS-apps een stroom diagram van de galerie toevoegen.
 
-**Voer de volgende stappen uit om Fluxx Labs vanuit de galerie toe te voegen:**
+**Voer de volgende stappen uit om Stroomx Labs toe te voegen vanuit de galerie:**
 
 1. Klik in het linkernavigatievenster in de **[Azure-portal](https://portal.azure.com)** op het **Azure Active Directory**-pictogram.
 
@@ -65,31 +65,31 @@ Als u de integratie van Fluxx Labs in Azure AD wilt configureren, moet u Fluxx L
 
     ![De knop Nieuwe toepassing](common/add-new-app.png)
 
-4. Selecteer **Fluxx Labs**in het zoekvak en selecteer **Fluxx Labs** in het resultaatpaneel en klik op **Knop Toevoegen** om de toepassing toe te voegen.
+4. In het zoekvak typt u **Labs**, selecteert u **stroomx Labs** uit het paneel resultaten en klikt u vervolgens op knop **toevoegen** om de toepassing toe te voegen.
 
-     ![Fluxx Labs in de resultatenlijst](common/search-new-app.png)
+     ![Stroomx Labs in de lijst met resultaten](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD-eenmalige aanmelding configureren en testen
 
-In deze sectie configureert en test u Azure AD single sign-on bij Fluxx Labs op basis van een testgebruiker genaamd **Britta Simon**.
-Voor eenmalige aanmelding aan het werk moet een koppelingsrelatie worden ingesteld tussen een Azure AD-gebruiker en de gerelateerde gebruiker in Fluxx Labs.
+In deze sectie kunt u eenmalige aanmelding voor Azure AD configureren en testen met Stroomx Labs op basis van een test gebruiker met de naam **Julia Simon**.
+Voor een goede werking van eenmalige aanmelding moet een koppelings relatie tussen een Azure AD-gebruiker en de bijbehorende gebruiker in de Stroomx Labs tot stand worden gebracht.
 
-Als u Azure AD-singlesign-aan met Fluxx Labs wilt configureren en testen, moet u de volgende bouwstenen voltooien:
+Als u eenmalige aanmelding voor Azure AD wilt configureren en testen met behulp van de Stroomx Labs, moet u de volgende bouw stenen volt ooien:
 
 1. **[Azure AD-eenmalige aanmelding configureren](#configure-azure-ad-single-sign-on)**: als u wilt dat uw gebruikers deze functie kunnen gebruiken.
-2. **[Configureer Fluxx Labs Single Sign-On](#configure-fluxx-labs-single-sign-on)** - om de instellingen voor één aanmelding aan de toepassingszijde te configureren.
+2. **[Eenmalige aanmelding voor stroomx Labs configureren](#configure-fluxx-labs-single-sign-on)** : Hiermee configureert u de instellingen voor eenmalige aanmelding aan de kant van de toepassing.
 3. **[Een Azure AD-testgebruiker maken](#create-an-azure-ad-test-user)**: als u Azure AD-eenmalige aanmelding wil testen met Britta Simon.
 4. **[De testgebruiker van Azure AD-toewijzen](#assign-the-azure-ad-test-user)**: als u wilt dat Britta Simon gebruik kan maken van Azure AD-eenmalige aanmelding.
-5. **[Maak De testgebruiker](#create-fluxx-labs-test-user)** van Fluxx Labs - om een tegenhanger van Britta Simon in Fluxx Labs te hebben die is gekoppeld aan de Azure AD-weergave van de gebruiker.
+5. **[Maak](#create-fluxx-labs-test-user)** een Julia-gebruiker in de stroom voor de gebruikers van de Labs-test, die is gekoppeld aan de Azure AD-representatie van de gebruiker.
 6. **[Eenmalige aanmelding testen](#test-single-sign-on)**: als u wilt controleren of de configuratie werkt.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Azure AD configureren voor eenmalige aanmelding
 
 In deze sectie gaat u Azure AD-eenmalige aanmelding in de Azure-portal inschakelen.
 
-Voer de volgende stappen uit om azure AD single sign-on te configureren met Fluxx Labs:
+Voer de volgende stappen uit om eenmalige aanmelding voor Azure AD te configureren met de Stroomx Labs:
 
-1. Selecteer in de [Azure-portal](https://portal.azure.com/)op de pagina **Fluxx** Labs-toepassingsintegratie de optie **Enkele aanmelding**.
+1. Selecteer in de [Azure Portal](https://portal.azure.com/)op de pagina voor de integratie van de **stroomx Labs** **-toepassing eenmalige aanmelding**.
 
     ![Koppeling Eenmalige aanmelding configureren](common/select-sso.png)
 
@@ -103,30 +103,30 @@ Voer de volgende stappen uit om azure AD single sign-on te configureren met Flux
 
 4. Op de pagina **Eenmalige aanmelding instellen met SAML** voert u de volgende stappen uit:
 
-    ![Fluxx Labs Domain en URL's single sign-on informatie](common/idp-intiated.png)
+    ![Gegevens over het domein en Url's voor de eenmalige aanmelding van de stroomx Labs](common/idp-intiated.png)
 
     a. In het tekstvak **Id** typt u een URL met het volgende patroon: 
 
     | Omgeving | URL-patroon|
     |-------------|------------|
     | Productie | `https://<subdomain>.fluxx.io` |
-    | Voorproductie | `https://<subdomain>.preprod.fluxxlabs.com`|
+    | Pre-productie | `https://<subdomain>.preprod.fluxxlabs.com`|
 
     b. In het tekstvak **Antwoord-URL** typt u een URL met de volgende notatie: 
 
     | Omgeving | URL-patroon|
     |-------------|------------|
     | Productie | `https://<subdomain>.fluxx.io/auth/saml/callback` |
-    | Voorproductie | `https://<subdomain>.preprod.fluxxlabs.com/auth/saml/callback`|
+    | Pre-productie | `https://<subdomain>.preprod.fluxxlabs.com/auth/saml/callback`|
 
     > [!NOTE]
-    > Dit zijn geen echte waarden. Werk deze waarden bij met de werkelijke id en antwoord-URL. Neem contact op met [het ondersteuningsteam van Fluxx Labs](mailto:travis@fluxxlabs.com) Om deze waarden te krijgen. U kunt ook verwijzen naar het patroon dat wordt weergegeven in de sectie **Standaard SAML-configuratie** in de Azure-portal.
+    > Dit zijn geen echte waarden. Werk deze waarden bij met de werkelijke id en antwoord-URL. Neem contact op met het [ondersteunings team van stroomx Labs](mailto:travis@fluxxlabs.com) om deze waarden te verkrijgen. U kunt ook verwijzen naar het patroon dat wordt weergegeven in de sectie **Standaard SAML-configuratie** in de Azure-portal.
 
 5. Op de pagina **Eenmalige aanmelding met SAML instellen** in de sectie **SAML-handtekeningcertificaat** klikt u op **Downloaden** om het **Certificaat (Base64)** te downloaden uit de opgegeven opties overeenkomstig uw behoeften, en slaat u dit op uw computer op.
 
     ![De link om het certificaat te downloaden](common/certificatebase64.png)
 
-6. Kopieer in de sectie **Fluxx Labs instellen** de juiste URL(s) volgens uw vereiste.
+6. Kopieer de gewenste URL ('s) volgens uw vereiste in het gedeelte de sectie **stroomx Labs instellen** .
 
     ![Configuratie-URL's kopiëren](common/copy-configuration-urls.png)
 
@@ -136,42 +136,42 @@ Voer de volgende stappen uit om azure AD single sign-on te configureren met Flux
 
     c. Afmeldings-URL
 
-### <a name="configure-fluxx-labs-single-sign-on"></a>Fluxx Labs-aanmelding configureren
+### <a name="configure-fluxx-labs-single-sign-on"></a>Eenmalige aanmelding voor Stroomx Labs configureren
 
-1. Meld u in een ander browservenster aan bij uw bedrijfsite van Fluxx Labs als beheerder.
+1. Meld u in een ander webbrowser venster als beheerder aan bij de bedrijfs site van uw stroom server.
 
-2. Selecteer **Beheerder** onder de sectie **Instellingen.**
+2. Selecteer **beheerder** onder de sectie **instellingen** .
 
-    ![Fluxx Labs-configuratie](./media/fluxxlabs-tutorial/config1.png)
+    ![Configuratie van de stroomx Labs](./media/fluxxlabs-tutorial/config1.png)
 
-3. Selecteer in het beheerpaneel **Integraties van plug-ins** > **Integrations** en selecteer **SAML SSO(Disabled)**
+3. Selecteer in het deel venster beheer de optie**integraties** van invoeg **toepassingen** > en selecteer vervolgens **SAML SSO-(uitgeschakeld)**
 
-    ![Fluxx Labs-configuratie](./media/fluxxlabs-tutorial/config2.png)
+    ![Configuratie van de stroomx Labs](./media/fluxxlabs-tutorial/config2.png)
 
-4. Voer in de sectie kenmerk de volgende stappen uit:
+4. Voer de volgende stappen uit in de sectie Attribute:
 
-    ![Fluxx Labs-configuratie](./media/fluxxlabs-tutorial/config3.png)
+    ![Configuratie van de stroomx Labs](./media/fluxxlabs-tutorial/config3.png)
 
-    a. Schakel het **selectievakje SAML SSO** in.
+    a. Selecteer het selectie vakje **SAML SSO** .
 
-    b. Typ **/auth/saml**in het tekstvak **Pad aanvragen** .
+    b. Typ **/auth/SAML**in het tekstvak **aanvraag pad** .
 
-    c. Typ in het tekstvak **Callback Path** **/auth/saml/callback**.
+    c. Typ **/auth/SAML/callback**in het tekstvak **call back pad** .
 
-    d. Voer in het tekstvak Url van de bevestigingsservice van de **consumentenservice (URL voor aanmelding smaken)** de **URL-waarde van antwoord** in, die u hebt ingevoerd in de Azure-portal.
+    d. Voer in het tekstvak **Assertion Consumer Service-URL (URL voor eenmalige aanmelding)** de waarde voor de **antwoord-URL** in die u hebt ingevoerd in de Azure Portal.
 
-    e. Voer in het tekstvak **Doelgroep(SP Entity ID)** de **id-waarde** in die u hebt ingevoerd in de Azure-portal.
+    e. Voer in het tekstvak **doel groep (SP-Entiteits-ID)** de **id** -waarde in die u hebt ingevoerd in de Azure Portal.
 
-    f. Plak in het tekstvak **URL-url van de identiteitsprovider SSO Target** de **waarde van de inlog-URL,** die u hebt gekopieerd van de Azure-portal.
+    f. Plak in het tekstvak **ID-provider SSO doel-URL** de waarde voor de **aanmeldings-URL** , die u hebt gekopieerd uit de Azure Portal.
 
-    g. Open uw basis-64 gecodeerd certificaat in kladblok, kopieer de inhoud ervan in uw klembord en plak het vervolgens in het textbox van het **identiteitsprovidercertificaat.**
+    g. Open uw met base 64 versleutelde certificaat in Klad blok, kopieer de inhoud ervan naar het klem bord en plak het in het tekstvak **ID-provider certificaat** .
 
-    h. Voer in **tekstvak Naam-id-indeling** de waarde `urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress`in .
+    h. Voer in het tekstvak **naam aanduiding notatie** de waarde `urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress`in.
 
     i. Klik op **Opslaan**.
 
     > [!NOTE]
-    > Zodra de inhoud is opgeslagen, wordt het veld leeg weergegeven voor beveiliging, maar is de waarde opgeslagen in de configuratie.
+    > Als de inhoud is opgeslagen, is het veld leeg voor beveiliging, maar is de waarde opgeslagen in de configuratie.
 
 ### <a name="create-an-azure-ad-test-user"></a>Een Azure AD-testgebruiker maken 
 
@@ -181,7 +181,7 @@ Het doel van deze sectie is om in de Azure-portal een testgebruiker met de naam 
 
     ![De koppelingen Gebruikers en groepen en Alle gebruikers](common/users.png)
 
-2. Selecteer **Nieuwe gebruiker** boven aan het scherm.
+2. Selecteer **nieuwe gebruiker** boven aan het scherm.
 
     ![Knop Nieuwe gebruiker](common/new-user.png)
 
@@ -191,23 +191,23 @@ Het doel van deze sectie is om in de Azure-portal een testgebruiker met de naam 
 
     a. Voer in het veld **Naam****Britta Simon**in.
   
-    b. In **User name** het veld brittasimon@yourcompanydomain.extensiontype gebruikersnaam . Bijvoorbeeld: BrittaSimon@contoso.com
+    b. Typ brittasimon@yourcompanydomain.extensionin het veld **gebruikers naam** . Bijvoorbeeld: BrittaSimon@contoso.com
 
     c. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak Wachtwoord.
 
-    d. Klik **op Maken**.
+    d. Klik op **maken**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>De Azure AD-testgebruiker toewijzen
 
-In deze sectie stelt u Britta Simon in staat om Azure single sign-on te gebruiken door toegang te verlenen tot Fluxx Labs.
+In deze sectie schakelt u Julia Simon in om de eenmalige aanmelding van Azure te gebruiken door toegang te verlenen aan de Stroomx Labs.
 
-1. Selecteer in de Azure-portal **Enterprise-toepassingen**, selecteer **Alle toepassingen**en selecteer **Vervolgens Fluxx Labs**.
+1. Selecteer in het Azure Portal **bedrijfs toepassingen**, selecteer **alle toepassingen**en selecteer vervolgens **stroomx Labs**.
 
     ![De blade Bedrijfstoepassingen](common/enterprise-applications.png)
 
-2. Selecteer **Fluxx Labs**in de lijst met toepassingen .
+2. Selecteer in de lijst toepassingen de optie **stroomx Labs**.
 
-    ![De Fluxx Labs-koppeling in de lijst Toepassingen](common/all-applications.png)
+    ![De stroom verbinding in de lijst met toepassingen](common/all-applications.png)
 
 3. Selecteer in het menu aan de linkerkant **Gebruikers en groepen**.
 
@@ -217,33 +217,33 @@ In deze sectie stelt u Britta Simon in staat om Azure single sign-on te gebruike
 
     ![Het deelvenster Toewijzing toevoegen](common/add-assign-user.png)
 
-5. Selecteer **In** het dialoogvenster Gebruikers en groepen **Britta Simon** in de lijst Gebruikers en klik je op de knop **Selecteren** onder aan het scherm.
+5. Selecteer in het dialoog venster **gebruikers en groepen** **Julia Simon** in de lijst gebruikers en klik vervolgens op de knop **selecteren** onder aan het scherm.
 
-6. Als u een rolwaarde verwacht in de SAML-bewering, selecteert u in het dialoogvenster **Rol selecteren** de juiste rol voor de gebruiker in de lijst en klikt u op de knop **Selecteren** onder aan het scherm.
+6. Als u een wille keurige rol verwacht in de SAML-bewering, selecteert u in het dialoog venster **rol selecteren** de juiste rol voor de gebruiker in de lijst en klikt u op de knop **selecteren** onder aan het scherm.
 
 7. Klik in het dialoogvenster **Toewijzing toevoegen** op de knop **Toewijzen**.
 
-### <a name="create-fluxx-labs-test-user"></a>Fluxx Labs-testgebruiker maken
+### <a name="create-fluxx-labs-test-user"></a>Een test gebruiker voor de Stroomx Labs maken
 
-Om Azure AD-gebruikers in staat te stellen zich aan te melden bij Fluxx Labs, moeten ze worden ingericht in Fluxx Labs. In het geval van Fluxx Labs is inrichten een handmatige taak.
+Als u Azure AD-gebruikers wilt inschakelen om zich aan te melden bij Stroomx Labs, moeten ze worden ingericht in Stroomx Labs. In het geval van een stroom-x-Labs is inrichting een hand matige taak.
 
 **Voer de volgende stappen uit als u een gebruikersaccount wilt inrichten:**
 
-1. Meld u aan bij uw bedrijf Fluxx Labs als beheerder.
+1. Meld u aan bij de bedrijfs site van uw Stroomx-Labs als beheerder.
 
-2. Klik op het onderstaande weergegeven **pictogram**.
+2. Klik op het **pictogram**hieronder weer gegeven.
 
-    ![Fluxx Labs-configuratie](./media/fluxxlabs-tutorial/config6.png)
+    ![Configuratie van de stroomx Labs](./media/fluxxlabs-tutorial/config6.png)
 
-3. Klik op het dashboard op het onderstaande weergegeven pictogram om de **Nieuwe PERSONEN-kaart** te openen.
+3. Klik op het dash board op het pictogram hieronder weer gegeven om de kaart **nieuwe personen** te openen.
 
-    ![Fluxx Labs-configuratie](./media/fluxxlabs-tutorial/config4.png)
+    ![Configuratie van de stroomx Labs](./media/fluxxlabs-tutorial/config4.png)
 
-4. Voer in de sectie **NIEUWE MENSEN** de volgende stappen uit:
+4. Voer de volgende stappen uit in de sectie **nieuwe personen** :
 
-    ![Fluxx Labs-configuratie](./media/fluxxlabs-tutorial/config5.png)
+    ![Configuratie van de stroomx Labs](./media/fluxxlabs-tutorial/config5.png)
 
-    a. Fluxx Labs gebruiken e-mail als de unieke id voor SSO logins. Vul het **SSO UID-veld** in met het e-mailadres van de gebruiker, dat overeenkomt met het e-mailadres dat ze gebruiken als login bij SSO.
+    a. In stroomx Labs wordt e-mail gebruikt als de unieke id voor SSO-aanmeldingen. Vul het veld **SSO-UID** in met het e-mail adres van de gebruiker, dat overeenkomt met het e-mail adres, dat wordt gebruikt als aanmelding met SSO.
 
     b. Klik op **Opslaan**.
 
@@ -251,13 +251,13 @@ Om Azure AD-gebruikers in staat te stellen zich aan te melden bij Fluxx Labs, mo
 
 In deze sectie gaat u uw configuratie van Azure AD-eenmalige aanmelding testen via het toegangsvenster.
 
-Wanneer u op de tegel Fluxx Labs in het toegangspaneel klikt, moet u automatisch worden aangemeld bij de Fluxx Labs waarvoor u SSO hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
+Wanneer u in het toegangs venster op de tegel van de stroom met de Labs klikt, moet u automatisch worden aangemeld bij de stroomx Labs waarvoor u SSO hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
 
 ## <a name="additional-resources"></a>Aanvullende resources
 
 - [Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Wat is toepassingstoegang en eenmalige aanmelding met Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Wat is toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Wat is voorwaardelijke toegang in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

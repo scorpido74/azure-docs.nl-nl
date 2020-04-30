@@ -1,6 +1,6 @@
 ---
-title: 'Zelfstudie: Azure Active Directory-integratie met dossier | Microsoft Documenten'
-description: Meer informatie over het configureren van eenmalige aanmelding tussen Azure Active Directory en Dossier.
+title: 'Zelf studie: integratie met het dossier Azure Active Directory | Microsoft Docs'
+description: Meer informatie over het configureren van eenmalige aanmelding tussen Azure Active Directory en een dossier.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -16,42 +16,42 @@ ms.topic: tutorial
 ms.date: 04/04/2019
 ms.author: jeedes
 ms.openlocfilehash: 2feb65384e8586b30840a37a66aaee5375881c22
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "67103939"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-dossier"></a>Zelfstudie: Azure Active Directory-integratie met Dossier
+# <a name="tutorial-azure-active-directory-integration-with-dossier"></a>Zelf studie: integratie met het dossier Azure Active Directory
 
-In deze zelfstudie leert u hoe u Dossier integreren met Azure Active Directory (Azure AD).
-Het integreren van Dossier met Azure AD biedt u de volgende voordelen:
+In deze zelf studie leert u hoe u een dossier integreert met Azure Active Directory (Azure AD).
+Het integreren van een dossier met Azure AD biedt de volgende voor delen:
 
-* U in Azure AD bepalen wie toegang heeft tot Dossier.
-* U uw gebruikers automatisch laten aanmelden bij Dossier (Single Sign-On) met hun Azure AD-accounts.
+* U kunt beheren in azure AD die toegang heeft tot het dossier.
+* U kunt ervoor zorgen dat uw gebruikers automatisch worden aangemeld bij een dossier (eenmalige aanmelding) met hun Azure AD-accounts.
 * U kunt uw accounts vanaf één centrale locatie beheren: de Azure-portal.
 
 Zie [What is application access and single sign-on with Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?) als u wilt graag meer wilt weten over de integratie van SaaS-apps met Azure AD.
-Als u geen Azure-abonnement hebt, [maakt u een gratis account](https://azure.microsoft.com/free/) voordat u begint.
+Als u nog geen abonnement op Azure hebt, [Maak dan een gratis account](https://azure.microsoft.com/free/) aan voordat u begint.
 
 ## <a name="prerequisites"></a>Vereisten
 
-Als u azure AD-integratie met Dossier wilt configureren, hebt u de volgende items nodig:
+Als u Azure AD-integratie met een dossier wilt configureren, hebt u de volgende items nodig:
 
-* Een Azure AD-abonnement Als u geen Azure AD-omgeving hebt, u een [gratis account](https://azure.microsoft.com/free/) krijgen
-* Dossier enkelaanmelding ingeschakeld abonnement
+* Een Azure AD-abonnement Als u geen Azure AD-omgeving hebt, kunt u een [gratis account](https://azure.microsoft.com/free/) aanvragen
+* Abonnement voor eenmalige aanmelding voor het dossier
 
 ## <a name="scenario-description"></a>Scenariobeschrijving
 
 In deze zelfstudie gaat u in een testomgeving eenmalige aanmelding van Azure AD configureren en testen.
 
-* Dossier steunt **SP** geïnitieerde SSO
+* Het dossier ondersteunt door **SP** GEÏNITIEERDe SSO
 
-## <a name="adding-dossier-from-the-gallery"></a>Dossier toevoegen vanuit de galerie
+## <a name="adding-dossier-from-the-gallery"></a>Een dossier toevoegen vanuit de galerie
 
-Als u de integratie van Dossier in Azure AD wilt configureren, moet u Dossier uit de galerie toevoegen aan uw lijst met beheerde SaaS-apps.
+Als u de integratie van een dossier wilt configureren in azure AD, moet u een dossier uit de galerie toevoegen aan uw lijst met beheerde SaaS-apps.
 
-**Voer de volgende stappen uit om dossier uit de galerie toe te voegen:**
+**Als u een dossier wilt toevoegen uit de galerie, voert u de volgende stappen uit:**
 
 1. Klik in het linkernavigatievenster in de **[Azure-portal](https://portal.azure.com)** op het **Azure Active Directory**-pictogram.
 
@@ -65,31 +65,31 @@ Als u de integratie van Dossier in Azure AD wilt configureren, moet u Dossier ui
 
     ![De knop Nieuwe toepassing](common/add-new-app.png)
 
-4. Typ **Dossier**in het zoekvak , selecteer **Dossier** uit het resultaatpaneel en klik op **Knop Toevoegen** om de toepassing toe te voegen.
+4. Typ in het zoekvak de tekst **dossier**, selecteer een **dossier** in het paneel resultaten en klik vervolgens op de knop **toevoegen** om de toepassing toe te voegen.
 
-     ![Dossier in de resultatenlijst](common/search-new-app.png)
+     ![Het dossier in de lijst met resultaten](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD-eenmalige aanmelding configureren en testen
 
-In deze sectie configureert en test u Azure AD single sign-on met Dossier op basis van een testgebruiker genaamd **Britta Simon**.
-Voor eenmalige aanmelding aan het werk moet een koppelingsrelatie worden ingesteld tussen een Azure AD-gebruiker en de gerelateerde gebruiker in Dossier.
+In deze sectie kunt u eenmalige aanmelding voor Azure AD configureren en testen met een dossier op basis van een test gebruiker met de naam **Julia Simon**.
+Voor een goede werking van eenmalige aanmelding moet een koppelings relatie tussen een Azure AD-gebruiker en de bijbehorende gebruiker in het dossier tot stand worden gebracht.
 
-Als u Azure AD-enkele aanmelding met Dossier wilt configureren en testen, moet u de volgende bouwstenen voltooien:
+Als u eenmalige aanmelding voor Azure AD wilt configureren en testen met een dossier, moet u de volgende bouw stenen volt ooien:
 
 1. **[Azure AD-eenmalige aanmelding configureren](#configure-azure-ad-single-sign-on)**: als u wilt dat uw gebruikers deze functie kunnen gebruiken.
-2. **[Configureer Dossier Single Sign-On](#configure-dossier-single-sign-on)** - om de instellingen voor eenmalig aanmelden aan de toepassingszijde te configureren.
+2. **[Eenmalige aanmelding voor het dossier configureren](#configure-dossier-single-sign-on)** : Hiermee configureert u de instellingen voor eenmalige aanmelding aan de kant van de toepassing.
 3. **[Een Azure AD-testgebruiker maken](#create-an-azure-ad-test-user)**: als u Azure AD-eenmalige aanmelding wil testen met Britta Simon.
 4. **[De testgebruiker van Azure AD-toewijzen](#assign-the-azure-ad-test-user)**: als u wilt dat Britta Simon gebruik kan maken van Azure AD-eenmalige aanmelding.
-5. **[De gebruiker van de Dossiertest maken](#create-dossier-test-user)** - om een tegenhanger van Britta Simon in Dossier te hebben die is gekoppeld aan de Azure AD-weergave van de gebruiker.
+5. Een **[test gebruiker voor een dossier maken](#create-dossier-test-user)** : een tegen hanger van Julia Simon in een dossier dat is gekoppeld aan de Azure AD-representatie van de gebruiker.
 6. **[Eenmalige aanmelding testen](#test-single-sign-on)**: als u wilt controleren of de configuratie werkt.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Azure AD configureren voor eenmalige aanmelding
 
 In deze sectie gaat u Azure AD-eenmalige aanmelding in de Azure-portal inschakelen.
 
-Voer de volgende stappen uit om de volgende stappen uit te voeren om de enkele aanmelding van Azure AD met Dossier te configureren:
+Voer de volgende stappen uit om eenmalige aanmelding voor Azure AD te configureren met een dossier:
 
-1. Selecteer in de [Azure-portal](https://portal.azure.com/)op de pagina **Integratie van de toepassing Dossier** de optie Eén **aanmelding**.
+1. Selecteer in de [Azure Portal](https://portal.azure.com/)op de pagina **dossier** toepassings integratie de optie **eenmalige aanmelding**.
 
     ![Koppeling Eenmalige aanmelding configureren](common/select-sso.png)
 
@@ -103,7 +103,7 @@ Voer de volgende stappen uit om de volgende stappen uit te voeren om de enkele a
 
 4. In de sectie **Standaard SAML-configuratie** voert u de volgende stappen uit:
 
-    ![Informatie over dossierdomein en URL's met eenmalige aanmelding](common/sp-identifier-reply.png)
+    ![Informatie over het dossier domein en Url's eenmalige aanmelding](common/sp-identifier-reply.png)
 
     a. In het tekstvak **Aanmeldings-URL** typt u een URL met de volgende notatie: 
 
@@ -116,7 +116,7 @@ Voer de volgende stappen uit om de volgende stappen uit te voeren om de enkele a
     b. In het tekstvak **Id (Entiteits-id)** typt u een URL met het volgende patroon: `Dossier/<CLIENTNAME>`
 
     > [!NOTE]
-    > Voor id-waarde moet het `Dossier/<CLIENTNAME>` in de vorm van of een gebruiker gepersonaliseerde waarde.
+    > Voor de id-waarde moet deze de notatie `Dossier/<CLIENTNAME>` of een door de gebruiker gepersonaliseerde waarde hebben.
 
     c. In het tekstvak **Antwoord-URL** typt u een URL met behulp van het volgende patroon: 
     
@@ -128,13 +128,13 @@ Voer de volgende stappen uit om de volgende stappen uit te voeren om de enkele a
 
 
     > [!NOTE]
-    > Dit zijn geen echte waarden. Werk deze waarden bij met de werkelijke aanmeldings-URL, id en antwoord-URL. Neem contact op met [het ondersteuningsteam van Dossier Client](mailto:support@intellimedia.ca) om deze waarden te krijgen. U kunt ook verwijzen naar het patroon dat wordt weergegeven in de sectie **Standaard SAML-configuratie** in de Azure-portal.
+    > Dit zijn geen echte waarden. Werk deze waarden bij met de werkelijke aanmeldings-URL, id en antwoord-URL. Neem contact op met het [ondersteunings team](mailto:support@intellimedia.ca) van het dossier om deze waarden te verkrijgen. U kunt ook verwijzen naar het patroon dat wordt weergegeven in de sectie **Standaard SAML-configuratie** in de Azure-portal.
 
-4. Klik op de pagina **Voormelding instellen met SAML** in de sectie **SAML-ondertekeningscertificaat** op de knop Kopiëren om de url van **de appfederatie-metagegevens** van de opgegeven opties te kopiëren naar gelang van uw vereiste en deze op uw computer op te slaan.
+4. Klik op de pagina **eenmalige aanmelding met SAML instellen** in het gedeelte **SAML-handtekening certificaat** op de knop kopiëren om de URL voor de **federatieve meta gegevens** van de app te kopiëren van de opgegeven opties volgens uw vereiste en op uw computer op te slaan.
 
     ![De link om het certificaat te downloaden](common/copy-metadataurl.png)
 
-6. Kopieer in de sectie **Dossier instellen** de juiste URL(s) volgens uw eis.
+6. Kopieer op de sectie **dossier instellen** de gewenste URL ('s) volgens uw vereiste.
 
     ![Configuratie-URL's kopiëren](common/copy-configuration-urls.png)
 
@@ -144,9 +144,9 @@ Voer de volgende stappen uit om de volgende stappen uit te voeren om de enkele a
 
     c. Afmeldings-URL
 
-### <a name="configure-dossier-single-sign-on"></a>Eenmalige aanmelding voor dossier configureren
+### <a name="configure-dossier-single-sign-on"></a>Eenmalige aanmelding voor het dossier configureren
 
-Als u eenmalige **Dossier** aanmelding wilt configureren op dossierzijde, moet u de url van de **app-federatie-metagegevens** naar [het ondersteuningsteam van Dossier](mailto:support@intellimedia.ca)verzenden. Het team stelt de instellingen zo in dat de verbinding tussen SAML en eenmalige aanmelding aan beide zijden goed is ingesteld.
+Als u eenmalige aanmelding wilt configureren voor een **dossier** , moet u de URL voor de **federatieve meta gegevens** van de app naar het [ondersteunings team](mailto:support@intellimedia.ca)voor het dossier verzenden. Het team stelt de instellingen zo in dat de verbinding tussen SAML en eenmalige aanmelding aan beide zijden goed is ingesteld.
 
 ### <a name="create-an-azure-ad-test-user"></a>Een Azure AD-testgebruiker maken 
 
@@ -156,7 +156,7 @@ Het doel van deze sectie is om in de Azure-portal een testgebruiker met de naam 
 
     ![De koppelingen Gebruikers en groepen en Alle gebruikers](common/users.png)
 
-2. Selecteer **Nieuwe gebruiker** boven aan het scherm.
+2. Selecteer **nieuwe gebruiker** boven aan het scherm.
 
     ![Knop Nieuwe gebruiker](common/new-user.png)
 
@@ -166,23 +166,23 @@ Het doel van deze sectie is om in de Azure-portal een testgebruiker met de naam 
 
     a. Voer in het veld **Naam****Britta Simon**in.
   
-    b. In **User name** het veld `brittasimon@yourcompanydomain.extension`type gebruikersnaam . Bijvoorbeeld: BrittaSimon@contoso.com
+    b. Typ `brittasimon@yourcompanydomain.extension`in het veld **gebruikers naam** . Bijvoorbeeld: BrittaSimon@contoso.com
 
     c. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak Wachtwoord.
 
-    d. Klik **op Maken**.
+    d. Klik op **maken**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>De Azure AD-testgebruiker toewijzen
 
-In deze sectie stelt u Britta Simon in staat om Azure single sign-on te gebruiken door toegang te verlenen tot Dossier.
+In deze sectie schakelt u Julia Simon in om de eenmalige aanmelding van Azure te gebruiken door toegang te verlenen aan het dossier.
 
-1. Selecteer in de Azure-portal **Enterprise-toepassingen**, selecteer **Alle toepassingen**en selecteer **Vervolgens Dossier**.
+1. Selecteer in het Azure Portal **bedrijfs toepassingen**, selecteer **alle toepassingen**en selecteer vervolgens **dossier**.
 
     ![De blade Bedrijfstoepassingen](common/enterprise-applications.png)
 
-2. Selecteer **Dossier**in de lijst met toepassingen .
+2. Selecteer in de lijst toepassingen de optie **dossier**.
 
-    ![De koppeling Dossier in de lijst Toepassingen](common/all-applications.png)
+    ![De koppeling van het dossier in de lijst met toepassingen](common/all-applications.png)
 
 3. Selecteer in het menu aan de linkerkant **Gebruikers en groepen**.
 
@@ -192,27 +192,27 @@ In deze sectie stelt u Britta Simon in staat om Azure single sign-on te gebruike
 
     ![Het deelvenster Toewijzing toevoegen](common/add-assign-user.png)
 
-5. Selecteer **In** het dialoogvenster Gebruikers en groepen **Britta Simon** in de lijst Gebruikers en klik je op de knop **Selecteren** onder aan het scherm.
+5. Selecteer in het dialoog venster **gebruikers en groepen** **Julia Simon** in de lijst gebruikers en klik vervolgens op de knop **selecteren** onder aan het scherm.
 
-6. Als u een rolwaarde verwacht in de SAML-bewering, selecteert u in het dialoogvenster **Rol selecteren** de juiste rol voor de gebruiker in de lijst en klikt u op de knop **Selecteren** onder aan het scherm.
+6. Als u een wille keurige rol verwacht in de SAML-bewering, selecteert u in het dialoog venster **rol selecteren** de juiste rol voor de gebruiker in de lijst en klikt u op de knop **selecteren** onder aan het scherm.
 
 7. Klik in het dialoogvenster **Toewijzing toevoegen** op de knop **Toewijzen**.
 
-### <a name="create-dossier-test-user"></a>Gebruiker dossiertest maken
+### <a name="create-dossier-test-user"></a>Test gebruiker voor een dossier maken
 
-In deze sectie maakt u een gebruiker genaamd Britta Simon in Dossier. Werk samen met [het ondersteuningsteam van Dossier](mailto:support@intellimedia.ca) om de gebruikers toe te voegen aan het Dossier-platform. Er moeten gebruikers worden gemaakt en geactiveerd voordat u eenmalige aanmelding kunt gebruiken.
+In deze sectie maakt u een gebruiker met de naam Julia Simon in het dossier. Werk samen met het [ondersteunings team](mailto:support@intellimedia.ca) voor het dossier om de gebruikers toe te voegen aan het dossier platform. Er moeten gebruikers worden gemaakt en geactiveerd voordat u eenmalige aanmelding kunt gebruiken.
 
 ### <a name="test-single-sign-on"></a>Eenmalige aanmelding testen 
 
 In deze sectie gaat u uw configuratie van Azure AD-eenmalige aanmelding testen via het toegangsvenster.
 
-Wanneer u op de tegel Dossier in het toegangspaneel klikt, moet u automatisch worden aangemeld bij het dossier waarvoor u SSO hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
+Wanneer u op de tegel dossier in het toegangs venster klikt, wordt u automatisch aangemeld bij het dossier waarvoor u SSO hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
 
 ## <a name="additional-resources"></a>Aanvullende resources
 
 - [Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Wat is toepassingstoegang en eenmalige aanmelding met Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Wat is toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Wat is voorwaardelijke toegang in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

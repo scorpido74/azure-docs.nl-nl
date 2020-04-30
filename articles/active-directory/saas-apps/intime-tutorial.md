@@ -1,6 +1,6 @@
 ---
-title: 'Zelfstudie: Azure Active Directory-integratie met InTime | Microsoft Documenten'
-description: Meer informatie over het configureren van eenmalige aanmelding tussen Azure Active Directory en InTime.
+title: 'Zelf studie: integratie Azure Active Directory met intime | Microsoft Docs'
+description: Meer informatie over het configureren van eenmalige aanmelding tussen Azure Active Directory en intime.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -16,42 +16,42 @@ ms.topic: tutorial
 ms.date: 03/14/2019
 ms.author: jeedes
 ms.openlocfilehash: 9183928100d1e184435910ee11571da798a5dcf9
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "67099901"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-intime"></a>Zelfstudie: Azure Active Directory-integratie met InTime
+# <a name="tutorial-azure-active-directory-integration-with-intime"></a>Zelf studie: integratie met Intijd Azure Active Directory
 
-In deze zelfstudie leert u hoe u InTime integreert met Azure Active Directory (Azure AD).
-De integratie van InTime met Azure AD biedt u de volgende voordelen:
+In deze zelf studie leert u hoe u Intijd integreert met Azure Active Directory (Azure AD).
+Integratie van Intijd met Azure AD biedt de volgende voor delen:
 
-* U in Azure AD bepalen wie toegang heeft tot InTime.
-* U uw gebruikers automatisch laten inloggen op InTime (Single Sign-On) met hun Azure AD-accounts.
+* U kunt beheren in azure AD die toegang tot intijden heeft.
+* U kunt ervoor zorgen dat uw gebruikers automatisch worden aangemeld bij Intijd (eenmalige aanmelding) met hun Azure AD-accounts.
 * U kunt uw accounts vanaf één centrale locatie beheren: de Azure-portal.
 
 Zie [What is application access and single sign-on with Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?) als u wilt graag meer wilt weten over de integratie van SaaS-apps met Azure AD.
-Als u geen Azure-abonnement hebt, [maakt u een gratis account](https://azure.microsoft.com/free/) voordat u begint.
+Als u nog geen abonnement op Azure hebt, [Maak dan een gratis account](https://azure.microsoft.com/free/) aan voordat u begint.
 
 ## <a name="prerequisites"></a>Vereisten
 
-Als u Azure AD-integratie met InTime wilt configureren, hebt u de volgende items nodig:
+Als u Azure AD-integratie met intime wilt configureren, hebt u de volgende items nodig:
 
 * Een Azure AD-abonnement Als u geen Azure AD-omgeving hebt, kunt u [hier](https://azure.microsoft.com/pricing/free-trial/) de proefversie van één maand krijgen.
-* InTime-abonnement met één aanmelding
+* Abonnement voor eenmalige aanmelding in realtime ingeschakeld
 
 ## <a name="scenario-description"></a>Scenariobeschrijving
 
 In deze zelfstudie gaat u in een testomgeving eenmalige aanmelding van Azure AD configureren en testen.
 
-* InTime ondersteunt **door SP** geïnitieerde SSO
+* Intijde ondersteunt door **SP** GEÏNITIEERDe SSO
 
-## <a name="adding-intime-from-the-gallery"></a>InTime toevoegen vanuit de galerie
+## <a name="adding-intime-from-the-gallery"></a>Intijden toevoegen vanuit de galerie
 
-Als u de integratie van InTime in Azure AD wilt configureren, moet u InTime vanuit de galerie toevoegen aan uw lijst met beheerde SaaS-apps.
+Als u de integratie van Intijd in azure AD wilt configureren, moet u in de galerie intijdnen toevoegen aan uw lijst met beheerde SaaS-apps.
 
-**Als u InTime vanuit de galerie wilt toevoegen, voert u de volgende stappen uit:**
+**Voer de volgende stappen uit om in te voegen in de galerie:**
 
 1. Klik in het linkernavigatievenster in de **[Azure-portal](https://portal.azure.com)** op het **Azure Active Directory**-pictogram.
 
@@ -65,31 +65,31 @@ Als u de integratie van InTime in Azure AD wilt configureren, moet u InTime vanu
 
     ![De knop Nieuwe toepassing](common/add-new-app.png)
 
-4. Typ **InTime**in het zoekvak , selecteer **InTime** uit het resultaatpaneel en klik op **Knop Toevoegen** om de toepassing toe te voegen.
+4. Typ in het zoekvak **intime**, selecteer **Intijd** in het deel venster voor resultaten en klik vervolgens op de knop **toevoegen** om de toepassing toe te voegen.
 
-     ![InTime in de resultatenlijst](common/search-new-app.png)
+     ![Intijd in de lijst met resultaten](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD-eenmalige aanmelding configureren en testen
 
-In deze sectie configureert en test u Azure AD single sign-on met InTime op basis van een testgebruiker genaamd **Britta Simon**.
-Voor eenmalige aanmelding aan het werk moet een koppelingsrelatie worden ingesteld tussen een Azure AD-gebruiker en de gerelateerde gebruiker in InTime.
+In deze sectie kunt u eenmalige aanmelding voor Azure AD configureren en testen met intijds op basis van een test gebruiker met de naam **Julia Simon**.
+Voor een goede werking van eenmalige aanmelding moet er een koppeling worden gemaakt tussen een Azure AD-gebruiker en de bijbehorende gebruiker.
 
-Als u Azure AD-single sign-on met InTime wilt configureren en testen, moet u de volgende bouwstenen voltooien:
+Als u eenmalige aanmelding voor Azure AD wilt configureren en testen met intime, moet u de volgende bouw stenen volt ooien:
 
 1. **[Azure AD-eenmalige aanmelding configureren](#configure-azure-ad-single-sign-on)**: als u wilt dat uw gebruikers deze functie kunnen gebruiken.
-2. **[InTime Single Sign-On configureren](#configure-intime-single-sign-on)** - om de instellingen voor eenmalig aanmelden aan de toepassingszijde te configureren.
+2. **[Eenmalige aanmelding in realtime configureren](#configure-intime-single-sign-on)** : Hiermee configureert u de instellingen voor eenmalige aanmelding aan de kant van de toepassing.
 3. **[Een Azure AD-testgebruiker maken](#create-an-azure-ad-test-user)**: als u Azure AD-eenmalige aanmelding wil testen met Britta Simon.
 4. **[De testgebruiker van Azure AD-toewijzen](#assign-the-azure-ad-test-user)**: als u wilt dat Britta Simon gebruik kan maken van Azure AD-eenmalige aanmelding.
-5. **[Maak InTime-testgebruiker](#create-intime-test-user)** - om een tegenhanger van Britta Simon in InTime te hebben die is gekoppeld aan de Azure AD-weergave van de gebruiker.
+5. **[Maak een gebruiker voor de test fase](#create-intime-test-user)** om een tegen hanger van Julia Simon in de tijd te hebben die is gekoppeld aan de Azure AD-representatie van de gebruiker.
 6. **[Eenmalige aanmelding testen](#test-single-sign-on)**: als u wilt controleren of de configuratie werkt.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Azure AD configureren voor eenmalige aanmelding
 
 In deze sectie gaat u Azure AD-eenmalige aanmelding in de Azure-portal inschakelen.
 
-Voer de volgende stappen uit om de volgende stappen uit te voeren om de enkele aanmelding van Azure AD met InTime te configureren:
+Voer de volgende stappen uit om eenmalige aanmelding voor Azure AD te configureren met intime:
 
-1. Selecteer in de [Azure-portal](https://portal.azure.com/)op de pagina **InTime-toepassingsintegratie** de optie **Eén aanmelding**.
+1. Selecteer in de [Azure Portal](https://portal.azure.com/)op de pagina **intime** -integratie van toepassing de optie **eenmalige aanmelding**.
 
     ![Koppeling Eenmalige aanmelding configureren](common/select-sso.png)
 
@@ -103,13 +103,13 @@ Voer de volgende stappen uit om de volgende stappen uit te voeren om de enkele a
 
 4. In de sectie **Standaard SAML-configuratie** voert u de volgende stappen uit:
 
-    ![InTime-domein- en URL's met eenmalige aanmelding](common/sp-identifier.png)
+    ![Informatie over eenmalige aanmelding in domein en Url's](common/sp-identifier.png)
 
     a. In het tekstvak **Aanmeldings-URL** typt u een URL: `https://intime6.intimesoft.com/mytime/login/login.xhtml`
 
     b. Typ een URL in het vak **Id (Entiteits-id)**: `https://auth.intimesoft.com/auth/realms/master`
 
-5. Uw InTime-toepassing verwacht de SAML-beweringen in een specifieke indeling, waarvoor u aangepaste kenmerktoewijzingen moet toevoegen aan uw SAML-tokenkenmerkenconfiguratie. In de volgende schermafbeelding ziet u de lijst met standaardkenmerken, waarbij **nameidentifier** is toegewezen aan **user.userprincipalname**. InTime-toepassing verwacht **dat naam-id** wordt toegewezen met **user.mail,** dus u moet de toewijzing van het kenmerk bewerken door te klikken op pictogram **Bewerken** en de toewijzing van het kenmerk wijzigen.
+5. Uw intime-toepassing verwacht de SAML-beweringen in een specifieke indeling. hiervoor moet u aangepaste kenmerk toewijzingen toevoegen aan de configuratie van uw SAML-token kenmerken. In de volgende schermafbeelding ziet u de lijst met standaardkenmerken, waarbij **nameidentifier** is toegewezen aan **user.userprincipalname**. Er wordt verwacht dat **nameidentifier** wordt toegewezen aan **gebruiker. mail**, dus u moet de kenmerk toewijzing bewerken door op het pictogram **bewerken** te klikken en de kenmerk toewijzing te wijzigen.
 
     ![installatiekopie](common/edit-attribute.png)
 
@@ -117,7 +117,7 @@ Voer de volgende stappen uit om de volgende stappen uit te voeren om de enkele a
 
     ![De link om het certificaat te downloaden](common/metadataxml.png)
 
-7. Kopieer in de sectie **InTime instellen** de juiste URL(s) volgens uw vereiste.
+7. Kopieer de gewenste URL ('s) volgens uw vereiste in de sectie **Intijd instellen** .
 
     ![Configuratie-URL's kopiëren](common/copy-configuration-urls.png)
 
@@ -127,9 +127,9 @@ Voer de volgende stappen uit om de volgende stappen uit te voeren om de enkele a
 
     c. Afmeldings-URL
 
-### <a name="configure-intime-single-sign-on"></a>Intime single sign-on configureren
+### <a name="configure-intime-single-sign-on"></a>Eenmalige aanmelding in realtime configureren
 
-Als u eenmalige aanmelding aan **de InTime-kant** wilt configureren, moet u de gedownloade **XML met aalmetagegevens van federatiemetagegevens** en de juiste gekopieerde URL's van Azure-portal naar het [InTime-ondersteuningsteam](mailto:hdollard@intimesoft.com)verzenden. Het team stelt de instellingen zo in dat de verbinding tussen SAML en eenmalige aanmelding aan beide zijden goed is ingesteld.
+Als u eenmalige aanmelding wilt configureren, moet u het gedownloade **XML-bestand met federatieve meta gegevens** en de juiste gekopieerde url's **verzenden van Azure Portal** naar het [ondersteunings team](mailto:hdollard@intimesoft.com). Het team stelt de instellingen zo in dat de verbinding tussen SAML en eenmalige aanmelding aan beide zijden goed is ingesteld.
 
 ### <a name="create-an-azure-ad-test-user"></a>Een Azure AD-testgebruiker maken 
 
@@ -139,7 +139,7 @@ Het doel van deze sectie is om in de Azure-portal een testgebruiker met de naam 
 
     ![De koppelingen Gebruikers en groepen en Alle gebruikers](common/users.png)
 
-2. Selecteer **Nieuwe gebruiker** boven aan het scherm.
+2. Selecteer **nieuwe gebruiker** boven aan het scherm.
 
     ![Knop Nieuwe gebruiker](common/new-user.png)
 
@@ -154,19 +154,19 @@ Het doel van deze sectie is om in de Azure-portal een testgebruiker met de naam 
 
     c. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak Wachtwoord.
 
-    d. Klik **op Maken**.
+    d. Klik op **maken**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>De Azure AD-testgebruiker toewijzen
 
-In deze sectie u Britta Simon inschakelen om Azure single sign-on te gebruiken door toegang te verlenen tot InTime.
+In deze sectie schakelt u Julia Simon in om de eenmalige aanmelding van Azure te gebruiken door toegang te verlenen aan Intijd.
 
-1. Selecteer in de Azure-portal **Enterprise-toepassingen**, selecteer **Alle toepassingen**en selecteer **Vervolgens InTime**.
+1. Selecteer in het Azure Portal **bedrijfs toepassingen**, selecteer **alle toepassingen**en selecteer **Intijd**.
 
     ![De blade Bedrijfstoepassingen](common/enterprise-applications.png)
 
-2. Selecteer **InTime in**de lijst met toepassingen .
+2. Selecteer in de lijst toepassingen de optie **intime**.
 
-    ![De InTime-koppeling in de lijst Toepassingen](common/all-applications.png)
+    ![De intime-koppeling in de lijst met toepassingen](common/all-applications.png)
 
 3. Selecteer in het menu aan de linkerkant **Gebruikers en groepen**.
 
@@ -176,26 +176,26 @@ In deze sectie u Britta Simon inschakelen om Azure single sign-on te gebruiken d
 
     ![Het deelvenster Toewijzing toevoegen](common/add-assign-user.png)
 
-5. Selecteer **In** het dialoogvenster Gebruikers en groepen **Britta Simon** in de lijst Gebruikers en klik je op de knop **Selecteren** onder aan het scherm.
+5. Selecteer in het dialoog venster **gebruikers en groepen** **Julia Simon** in de lijst gebruikers en klik vervolgens op de knop **selecteren** onder aan het scherm.
 
-6. Als u een rolwaarde verwacht in de SAML-bewering, selecteert u in het dialoogvenster **Rol selecteren** de juiste rol voor de gebruiker in de lijst en klikt u op de knop **Selecteren** onder aan het scherm.
+6. Als u een wille keurige rol verwacht in de SAML-bewering, selecteert u in het dialoog venster **rol selecteren** de juiste rol voor de gebruiker in de lijst en klikt u op de knop **selecteren** onder aan het scherm.
 
 7. Klik in het dialoogvenster **Toewijzing toevoegen** op de knop **Toewijzen**.
 
-### <a name="create-intime-test-user"></a>InTime-testgebruiker maken
+### <a name="create-intime-test-user"></a>Test gebruiker voor intijden maken
 
-In deze sectie maakt u een gebruiker genaamd Britta Simon in InTime. Werk samen met [intime-ondersteuningsteam](mailto:hdollard@intimesoft.com) om de gebruikers toe te voegen aan het InTime-platform. Er moeten gebruikers worden gemaakt en geactiveerd voordat u eenmalige aanmelding kunt gebruiken.
+In deze sectie maakt u in realtime een gebruiker met de naam Julia Simon. Werk met het [intime-ondersteunings team](mailto:hdollard@intimesoft.com) om de gebruikers toe te voegen in het inkeerde platform. Er moeten gebruikers worden gemaakt en geactiveerd voordat u eenmalige aanmelding kunt gebruiken.
 
 ### <a name="test-single-sign-on"></a>Eenmalige aanmelding testen
 
 In deze sectie gaat u uw configuratie van Azure AD-eenmalige aanmelding testen via het toegangsvenster.
 
-Wanneer u op de InTime-tegel in het toegangspaneel klikt, moet u automatisch worden aangemeld bij de InTime waarvoor u SSO hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
+Wanneer u op de tegel Intijd in het toegangs venster klikt, wordt u automatisch aangemeld bij de Intijd waarvoor u SSO hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
 
 ## <a name="additional-resources"></a>Aanvullende resources
 
 - [Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Wat is toepassingstoegang en eenmalige aanmelding met Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Wat is toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Wat is voorwaardelijke toegang in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

@@ -1,5 +1,5 @@
 ---
-title: 'Zelfstudie: Azure Active Directory-integratie met Insignia SAML SSO | Microsoft Documenten'
+title: 'Zelf studie: integratie Azure Active Directory met Insignia SAML SSO | Microsoft Docs'
 description: Meer informatie over het configureren van eenmalige aanmelding tussen Azure Active Directory en Insignia SAML SSO.
 services: active-directory
 documentationCenter: na
@@ -16,42 +16,42 @@ ms.topic: tutorial
 ms.date: 03/26/2019
 ms.author: jeedes
 ms.openlocfilehash: 47f3885d9bd71abeb2a1bffe27b3ca1b2aa611ae
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "67100029"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-insignia-saml-sso"></a>Zelfstudie: Azure Active Directory-integratie met Insignia SAML SSO
+# <a name="tutorial-azure-active-directory-integration-with-insignia-saml-sso"></a>Zelf studie: integratie Azure Active Directory met Insignia SAML SSO
 
-In deze zelfstudie leert u hoe u Insignia SAML SSO integreert met Azure Active Directory (Azure AD).
-De integratie van Insignia SAML SSO met Azure AD biedt u de volgende voordelen:
+In deze zelf studie leert u hoe u Insignia SAML SSO integreert met Azure Active Directory (Azure AD).
+Het integreren van Insignia SAML SSO met Azure AD biedt de volgende voor delen:
 
-* U in Azure AD bepalen wie toegang heeft tot Insignia SAML SSO.
-* U uw gebruikers automatisch laten inloggen op Insignia SAML SSO (Single Sign-On) met hun Azure AD-accounts.
+* U kunt beheren in azure AD die toegang heeft tot Insignia SAML SSO.
+* U kunt ervoor zorgen dat uw gebruikers automatisch worden aangemeld voor Insignia SAML SSO (eenmalige aanmelding) met hun Azure AD-accounts.
 * U kunt uw accounts vanaf één centrale locatie beheren: de Azure-portal.
 
 Zie [What is application access and single sign-on with Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?) als u wilt graag meer wilt weten over de integratie van SaaS-apps met Azure AD.
-Als u geen Azure-abonnement hebt, [maakt u een gratis account](https://azure.microsoft.com/free/) voordat u begint.
+Als u nog geen abonnement op Azure hebt, [Maak dan een gratis account](https://azure.microsoft.com/free/) aan voordat u begint.
 
 ## <a name="prerequisites"></a>Vereisten
 
-Als u Azure AD-integratie wilt configureren met Insignia SAML SSO, hebt u de volgende items nodig:
+Als u Azure AD-integratie met Insignia SAML SSO wilt configureren, hebt u de volgende items nodig:
 
-* Een Azure AD-abonnement Als u geen Azure AD-omgeving hebt, u een [gratis account](https://azure.microsoft.com/free/) krijgen
-* Insignia SAML SSO eenmalig aanmeldingsabonnement
+* Een Azure AD-abonnement Als u geen Azure AD-omgeving hebt, kunt u een [gratis account](https://azure.microsoft.com/free/) aanvragen
+* Abonnement voor eenmalige aanmelding voor Insignia SAML SSO
 
 ## <a name="scenario-description"></a>Scenariobeschrijving
 
 In deze zelfstudie gaat u in een testomgeving eenmalige aanmelding van Azure AD configureren en testen.
 
-* Insignia SAML SSO ondersteunt **SP** geïnitieerde SSO
+* Insignia SAML SSO ondersteunt door **SP** GEÏNITIEERDe SSO
 
 ## <a name="adding-insignia-saml-sso-from-the-gallery"></a>Insignia SAML SSO toevoegen vanuit de galerie
 
-Als u de integratie van Insignia SAML SSO in Azure AD wilt configureren, moet u Insignia SAML SSO vanuit de galerie toevoegen aan uw lijst met beheerde SaaS-apps.
+Als u de integratie van Insignia SAML SSO wilt configureren in azure AD, moet u Insignia SAML SSO van de galerie toevoegen aan uw lijst met beheerde SaaS-apps.
 
-**Als u Insignia SAML SSO vanuit de galerie wilt toevoegen, voert u de volgende stappen uit:**
+**Als u Insignia SAML SSO wilt toevoegen vanuit de galerie, voert u de volgende stappen uit:**
 
 1. Klik in het linkernavigatievenster in de **[Azure-portal](https://portal.azure.com)** op het **Azure Active Directory**-pictogram.
 
@@ -65,31 +65,31 @@ Als u de integratie van Insignia SAML SSO in Azure AD wilt configureren, moet u 
 
     ![De knop Nieuwe toepassing](common/add-new-app.png)
 
-4. Typ **Insignia SAML SSO**in het zoekvak , selecteer **Insignia SAML SSO** uit het resultaatpaneel en klik op **Knop Toevoegen** om de toepassing toe te voegen.
+4. Typ **INSIGNIA SAML SSO**in het zoekvak, selecteer **Insignia SAML SSO** uit het paneel result en klik vervolgens op de knop **toevoegen** om de toepassing toe te voegen.
 
-    ![Insignia SAML SSO in de resultatenlijst](common/search-new-app.png)
+    ![Insignia SAML SSO in de lijst met resultaten](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD-eenmalige aanmelding configureren en testen
 
-In deze sectie configureert en test u Azure AD single sign-on met Insignia SAML SSO op basis van een testgebruiker genaamd **Britta Simon**.
-Voor eenmalige aanmelding aan het werk moet een koppelingsrelatie worden ingesteld tussen een Azure AD-gebruiker en de gerelateerde gebruiker in Insignia SAML SSO.
+In deze sectie kunt u eenmalige aanmelding voor Azure AD configureren en testen met Insignia SAML SSO op basis van een test gebruiker met de naam **Julia Simon**.
+Voor een goede werking van eenmalige aanmelding moet er een koppelings relatie tussen een Azure AD-gebruiker en de bijbehorende gebruiker in Insignia SAML SSO tot stand worden gebracht.
 
-Als u Azure AD-singlesign-aan met Insignia SAML SSO wilt configureren en testen, moet u de volgende bouwstenen voltooien:
+Als u eenmalige aanmelding voor Azure AD wilt configureren en testen met Insignia SAML SSO, moet u de volgende bouw stenen volt ooien:
 
 1. **[Azure AD-eenmalige aanmelding configureren](#configure-azure-ad-single-sign-on)**: als u wilt dat uw gebruikers deze functie kunnen gebruiken.
-2. **[Configureer Insignia SAML SSO Single Sign-On](#configure-insignia-saml-sso-single-sign-on)** - om de instellingen voor één aanmelding aan de toepassingszijde te configureren.
+2. **[Eenmalige aanmelding voor INSIGNIA SAML SSO configureren](#configure-insignia-saml-sso-single-sign-on)** : Hiermee configureert u de instellingen voor eenmalige aanmelding aan de kant van de toepassing.
 3. **[Een Azure AD-testgebruiker maken](#create-an-azure-ad-test-user)**: als u Azure AD-eenmalige aanmelding wil testen met Britta Simon.
 4. **[De testgebruiker van Azure AD-toewijzen](#assign-the-azure-ad-test-user)**: als u wilt dat Britta Simon gebruik kan maken van Azure AD-eenmalige aanmelding.
-5. **[Maak Insignia SAML SSO-testgebruiker](#create-insignia-saml-sso-test-user)** - om een tegenhanger van Britta Simon in Insignia SAML SSO te hebben die is gekoppeld aan de Azure AD-weergave van de gebruiker.
+5. **[Maak een INSIGNIA SAML SSO-test gebruiker](#create-insignia-saml-sso-test-user)** -om een equivalent van Julia Simon in INSIGNIA SAML SSO te hebben dat is gekoppeld aan de Azure AD-representatie van de gebruiker.
 6. **[Eenmalige aanmelding testen](#test-single-sign-on)**: als u wilt controleren of de configuratie werkt.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Azure AD configureren voor eenmalige aanmelding
 
 In deze sectie gaat u Azure AD-eenmalige aanmelding in de Azure-portal inschakelen.
 
-Voer de volgende stappen uit om de volgende stappen uit te voeren om de enkele aanmelding van Azure AD met Insignia SAML SSO te configureren:
+Voer de volgende stappen uit om eenmalige aanmelding voor Azure AD te configureren met Insignia SAML SSO:
 
-1. Selecteer in de [Azure-portal](https://portal.azure.com/)op de pagina **Insignia SAML SSO-toepassingsintegratie** de optie **Enkele aanmelding**.
+1. Selecteer in de [Azure Portal](https://portal.azure.com/)op de pagina **Insignia SAML SSO** Application Integration de optie **eenmalige aanmelding**.
 
     ![Koppeling Eenmalige aanmelding configureren](common/select-sso.png)
 
@@ -103,7 +103,7 @@ Voer de volgende stappen uit om de volgende stappen uit te voeren om de enkele a
 
 4. In de sectie **Standaard SAML-configuratie** voert u de volgende stappen uit:
 
-    ![Insignia SAML SSO Domain en URL's single sign-on informatie](common/sp-identifier.png)
+    ![Informatie over eenmalige aanmelding voor Insignia SAML SSO-domein en Url's](common/sp-identifier.png)
 
     a. In het tekstvak **Aanmeldings-URL** typt u een URL met de volgende notatie: 
     
@@ -117,13 +117,13 @@ Voer de volgende stappen uit om de volgende stappen uit te voeren om de enkele a
     b. In het tekstvak **Id (Entiteits-id)** typt u een URL met het volgende patroon: `https://<customername>.insigniailsusa.com/<uniqueid>`
 
     > [!NOTE]
-    > Dit zijn geen echte waarden. Werk deze waarden bij met de werkelijke aanmeldings-URL en -id. Neem contact op met [insignia SAML SSO Client support team](https://www.insigniasoftware.com/insignia/Techsupport.aspx) om deze waarden te krijgen. U kunt ook verwijzen naar het patroon dat wordt weergegeven in de sectie **Standaard SAML-configuratie** in de Azure-portal.
+    > Dit zijn geen echte waarden. Werk deze waarden bij met de werkelijke aanmeldings-URL en -id. Neem contact op met het [ondersteunings team van INSIGNIA SAML SSO-client](https://www.insigniasoftware.com/insignia/Techsupport.aspx) om deze waarden te verkrijgen. U kunt ook verwijzen naar het patroon dat wordt weergegeven in de sectie **Standaard SAML-configuratie** in de Azure-portal.
 
 5. Op de pagina **Eenmalige aanmelding met SAML instellen** in de sectie **SAML-handtekeningcertificaat** klikt u op **Downloaden** om het **Certificaat (Base64)** te downloaden uit de opgegeven opties overeenkomstig uw behoeften, en slaat u dit op uw computer op.
 
     ![De link om het certificaat te downloaden](common/certificatebase64.png)
 
-6. Kopieer in de sectie **Insignia SAML SSO** de juiste URL(s) naar uw behoefte.
+6. Kopieer op de sectie **INSIGNIA SAML SSO instellen** de gewenste URL ('s) volgens uw vereiste.
 
     ![Configuratie-URL's kopiëren](common/copy-configuration-urls.png)
 
@@ -133,9 +133,9 @@ Voer de volgende stappen uit om de volgende stappen uit te voeren om de enkele a
 
     c. Afmeldings-URL
 
-### <a name="configure-insignia-saml-sso-single-sign-on"></a>Insignia SAML SSO Single Sign-On configureren
+### <a name="configure-insignia-saml-sso-single-sign-on"></a>Eenmalige aanmelding voor Insignia SAML SSO configureren
 
-Als u eenmalige aanmelding wilt configureren aan de **Insignia SAML SSO-zijde,** moet u het gedownloade **certificaat (Base64)** en de juiste gekopieerde URL's van Azure-portal naar [het ASL SSO-ondersteuningsteam](https://www.insigniasoftware.com/insignia/Techsupport.aspx)verzenden. Het team stelt de instellingen zo in dat de verbinding tussen SAML en eenmalige aanmelding aan beide zijden goed is ingesteld.
+Als u eenmalige aanmelding wilt configureren voor **INSIGNIA SAML SSO** , moet u het gedownloade **certificaat (base64)** en de juiste gekopieerde url's verzenden van Azure Portal naar [Insignia SAML SSO-ondersteunings team](https://www.insigniasoftware.com/insignia/Techsupport.aspx). Het team stelt de instellingen zo in dat de verbinding tussen SAML en eenmalige aanmelding aan beide zijden goed is ingesteld.
 
 ### <a name="create-an-azure-ad-test-user"></a>Een Azure AD-testgebruiker maken
 
@@ -145,7 +145,7 @@ Het doel van deze sectie is om in de Azure-portal een testgebruiker met de naam 
 
     ![De koppelingen Gebruikers en groepen en Alle gebruikers](common/users.png)
 
-2. Selecteer **Nieuwe gebruiker** boven aan het scherm.
+2. Selecteer **nieuwe gebruiker** boven aan het scherm.
 
     ![Knop Nieuwe gebruiker](common/new-user.png)
 
@@ -160,19 +160,19 @@ Het doel van deze sectie is om in de Azure-portal een testgebruiker met de naam 
 
     c. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak Wachtwoord.
 
-    d. Klik **op Maken**.
+    d. Klik op **maken**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>De Azure AD-testgebruiker toewijzen
 
-In deze sectie stelt u Britta Simon in staat om Azure single sign-on te gebruiken door toegang te verlenen tot Insignia SAML SSO.
+In deze sectie schakelt u Julia Simon in om eenmalige aanmelding van Azure te gebruiken door toegang te verlenen aan Insignia SAML SSO.
 
-1. Selecteer in de Azure-portal **Enterprise-toepassingen**, selecteer **Alle toepassingen**en selecteer Vervolgens **Insignia SAML SSO**.
+1. Selecteer in het Azure Portal **bedrijfs toepassingen**, selecteer **alle toepassingen**en selecteer vervolgens **Insignia SAML SSO**.
 
     ![De blade Bedrijfstoepassingen](common/enterprise-applications.png)
 
-2. Selecteer **Insignia SAML SSO**in de lijst met toepassingen .
+2. Selecteer in de lijst toepassingen de optie **INSIGNIA SAML SSO**.
 
-    ![De Insignia SAML SSO-koppeling in de lijst Toepassingen](common/all-applications.png)
+    ![De Insignia SAML SSO-koppeling in de lijst met toepassingen](common/all-applications.png)
 
 3. Selecteer in het menu aan de linkerkant **Gebruikers en groepen**.
 
@@ -182,26 +182,26 @@ In deze sectie stelt u Britta Simon in staat om Azure single sign-on te gebruike
 
     ![Het deelvenster Toewijzing toevoegen](common/add-assign-user.png)
 
-5. Selecteer **In** het dialoogvenster Gebruikers en groepen **Britta Simon** in de lijst Gebruikers en klik je op de knop **Selecteren** onder aan het scherm.
+5. Selecteer in het dialoog venster **gebruikers en groepen** **Julia Simon** in de lijst gebruikers en klik vervolgens op de knop **selecteren** onder aan het scherm.
 
-6. Als u een rolwaarde verwacht in de SAML-bewering, selecteert u in het dialoogvenster **Rol selecteren** de juiste rol voor de gebruiker in de lijst en klikt u op de knop **Selecteren** onder aan het scherm.
+6. Als u een wille keurige rol verwacht in de SAML-bewering, selecteert u in het dialoog venster **rol selecteren** de juiste rol voor de gebruiker in de lijst en klikt u op de knop **selecteren** onder aan het scherm.
 
 7. Klik in het dialoogvenster **Toewijzing toevoegen** op de knop **Toewijzen**.
 
-### <a name="create-insignia-saml-sso-test-user"></a>Insignia SAML SSO-testgebruiker maken
+### <a name="create-insignia-saml-sso-test-user"></a>Insignia SAML SSO-test gebruiker maken
 
-In deze sectie maakt u een gebruiker genaamd Britta Simon in Insignia SAML SSO. Werk samen met [insignia SAML SSO support team](https://www.insigniasoftware.com/insignia/Techsupport.aspx) om de gebruikers toe te voegen in het Insignia SAML SSO platform. Er moeten gebruikers worden gemaakt en geactiveerd voordat u eenmalige aanmelding kunt gebruiken.
+In deze sectie maakt u een gebruiker met de naam Julia Simon in Insignia SAML SSO. Werk samen met het [INSIGNIA SAML SSO-ondersteunings team](https://www.insigniasoftware.com/insignia/Techsupport.aspx) om de gebruikers toe te voegen in het INSIGNIA SAML SSO-platform. Er moeten gebruikers worden gemaakt en geactiveerd voordat u eenmalige aanmelding kunt gebruiken.
 
 ### <a name="test-single-sign-on"></a>Eenmalige aanmelding testen
 
 In deze sectie gaat u uw configuratie van Azure AD-eenmalige aanmelding testen via het toegangsvenster.
 
-Wanneer u op de Insignia SAML SSO-tegel in het Access-paneel klikt, moet u automatisch worden aangemeld bij de Insignia SAML SSO waarvoor u SSO hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
+Wanneer u op de tegel Insignia SAML SSO in het toegangs venster klikt, moet u automatisch worden aangemeld bij de Insignia SAML SSO waarvoor u SSO hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
 
 ## <a name="additional-resources"></a>Aanvullende bronnen
 
 - [Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Wat is toepassingstoegang en eenmalige aanmelding met Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Wat is toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Wat is voorwaardelijke toegang in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

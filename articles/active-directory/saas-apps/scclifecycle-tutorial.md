@@ -1,6 +1,6 @@
 ---
-title: 'Zelfstudie: Azure Active Directory-integratie met SCC LifeCycle | Microsoft Documenten'
-description: Meer informatie over het configureren van eenmalige aanmelding tussen Azure Active Directory en SCC LifeCycle.
+title: 'Zelf studie: integratie Azure Active Directory met SCC-levens cyclus | Microsoft Docs'
+description: Meer informatie over het configureren van eenmalige aanmelding tussen Azure Active Directory en de SCC-levens cyclus.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -16,42 +16,42 @@ ms.topic: tutorial
 ms.date: 03/22/2019
 ms.author: jeedes
 ms.openlocfilehash: 83974a57fe080e76dee26781abaddf2b0b884839
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "67091498"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-scc-lifecycle"></a>Zelfstudie: Azure Active Directory-integratie met SCC LifeCycle
+# <a name="tutorial-azure-active-directory-integration-with-scc-lifecycle"></a>Zelf studie: integratie Azure Active Directory met SCC-levens cyclus
 
-In deze zelfstudie leert u hoe u SCC LifeCycle integreert met Azure Active Directory (Azure AD).
-De integratie van SCC LifeCycle met Azure AD biedt u de volgende voordelen:
+In deze zelf studie leert u hoe u de SCC-levens cyclus integreert met Azure Active Directory (Azure AD).
+Het integreren van de SCC-levens cyclus met Azure AD biedt de volgende voor delen:
 
-* U in Azure AD bepalen wie toegang heeft tot SCC LifeCycle.
-* U uw gebruikers automatisch laten aanmelden bij SCC LifeCycle (Single Sign-On) met hun Azure AD-accounts.
+* U kunt beheren in azure AD die toegang heeft tot de SCC-levens cyclus.
+* U kunt ervoor zorgen dat uw gebruikers automatisch worden aangemeld bij de SCC-levens cyclus (eenmalige aanmelding) met hun Azure AD-accounts.
 * U kunt uw accounts vanaf één centrale locatie beheren: de Azure-portal.
 
 Zie [What is application access and single sign-on with Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?) als u wilt graag meer wilt weten over de integratie van SaaS-apps met Azure AD.
-Als u geen Azure-abonnement hebt, [maakt u een gratis account](https://azure.microsoft.com/free/) voordat u begint.
+Als u nog geen abonnement op Azure hebt, [Maak dan een gratis account](https://azure.microsoft.com/free/) aan voordat u begint.
 
 ## <a name="prerequisites"></a>Vereisten
 
-Als u Azure AD-integratie met SCC LifeCycle wilt configureren, hebt u de volgende items nodig:
+Als u Azure AD-integratie met SCC-levens cyclus wilt configureren, hebt u de volgende items nodig:
 
-* Een Azure AD-abonnement Als u geen Azure AD-omgeving hebt, u een [gratis account](https://azure.microsoft.com/free/) krijgen
-* SCC LifeCycle-abonnement voor één aanmelding
+* Een Azure AD-abonnement Als u geen Azure AD-omgeving hebt, kunt u een [gratis account](https://azure.microsoft.com/free/) aanvragen
+* Abonnement voor SCC-levens cyclus voor eenmalige aanmelding
 
 ## <a name="scenario-description"></a>Scenariobeschrijving
 
 In deze zelfstudie gaat u in een testomgeving eenmalige aanmelding van Azure AD configureren en testen.
 
-* SCC LifeCycle ondersteunt **SP** geïnitieerde SSO
+* SCC-levens cyclus ondersteunt door **SP** GEÏNITIEERDe SSO
 
-## <a name="adding-scc-lifecycle-from-the-gallery"></a>SCC LifeCycle toevoegen vanuit de galerie
+## <a name="adding-scc-lifecycle-from-the-gallery"></a>De SCC-levens cyclus wordt toegevoegd vanuit de galerie
 
-Als u de integratie van SCC LifeCycle in Azure AD wilt configureren, moet u SCC LifeCycle vanuit de galerie toevoegen aan uw lijst met beheerde SaaS-apps.
+Als u de integratie van de SCC-levens cyclus wilt configureren in azure AD, moet u de SCC-levens cyclus vanuit de galerie toevoegen aan uw lijst met beheerde SaaS-apps.
 
-**Als u SCC LifeCycle vanuit de galerie wilt toevoegen, voert u de volgende stappen uit:**
+**Voer de volgende stappen uit om de SCC-levens cyclus toe te voegen vanuit de galerie:**
 
 1. Klik in het linkernavigatievenster in de **[Azure-portal](https://portal.azure.com)** op het **Azure Active Directory**-pictogram.
 
@@ -65,31 +65,31 @@ Als u de integratie van SCC LifeCycle in Azure AD wilt configureren, moet u SCC 
 
     ![De knop Nieuwe toepassing](common/add-new-app.png)
 
-4. Selecteer **SCC**LifeCycle in het zoekvak, selecteer **SCC LifeCycle** uit het resultaatpaneel en klik op **Knop Toevoegen** om de toepassing toe te voegen.
+4. Typ in het zoekvak SCC- **levenscyclus**, selecteer **SCC-levens duur** in het paneel resultaten en klik vervolgens op knop **toevoegen** om de toepassing toe te voegen.
 
-    ![SCC LifeCycle in de resultatenlijst](common/search-new-app.png)
+    ![SCC-levens cyclus in de lijst met resultaten](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD-eenmalige aanmelding configureren en testen
 
-In deze sectie configureert en test u Azure AD single sign-on met SCC LifeCycle op basis van een testgebruiker genaamd **Britta Simon**.
-Voor eenmalige aanmelding aan het werk moet een koppelingsrelatie worden ingesteld tussen een Azure AD-gebruiker en de gerelateerde gebruiker in SCC LifeCycle.
+In deze sectie kunt u eenmalige aanmelding voor Azure AD configureren en testen met de SCC-levens cyclus op basis van een test gebruiker met de naam **Julia Simon**.
+Voor een goede werking van eenmalige aanmelding moet een koppelings relatie tussen een Azure AD-gebruiker en de bijbehorende gebruiker in de SCC-levens cyclus tot stand worden gebracht.
 
-Als u Azure AD Single Sign-on met SCC LifeCycle wilt configureren en testen, moet u de volgende bouwstenen voltooien:
+Als u eenmalige aanmelding voor Azure AD wilt configureren en testen met de SCC-levens cyclus, moet u de volgende bouw stenen volt ooien:
 
 1. **[Azure AD-eenmalige aanmelding configureren](#configure-azure-ad-single-sign-on)**: als u wilt dat uw gebruikers deze functie kunnen gebruiken.
-2. **[Configureer SCC LifeCycle Single Sign-On](#configure-scc-lifecycle-single-sign-on)** - om de instellingen voor één aanmelding aan de toepassingszijde te configureren.
+2. **[Eenmalige aanmelding voor de SCC-levens cyclus configureren](#configure-scc-lifecycle-single-sign-on)** voor het configureren van de instellingen voor eenmalige aanmelding aan de kant van de toepassing.
 3. **[Een Azure AD-testgebruiker maken](#create-an-azure-ad-test-user)**: als u Azure AD-eenmalige aanmelding wil testen met Britta Simon.
 4. **[De testgebruiker van Azure AD-toewijzen](#assign-the-azure-ad-test-user)**: als u wilt dat Britta Simon gebruik kan maken van Azure AD-eenmalige aanmelding.
-5. **[Maak SCC LifeCycle-testgebruiker](#create-scc-lifecycle-test-user)** - om een tegenhanger van Britta Simon in SCC LifeCycle te hebben die is gekoppeld aan de Azure AD-weergave van de gebruiker.
+5. **[Maak een SCC-test gebruiker](#create-scc-lifecycle-test-user)** voor de gebruikers-en Julia Simon in de SCC-levens cyclus die is gekoppeld aan de Azure AD-representatie van de gebruiker.
 6. **[Eenmalige aanmelding testen](#test-single-sign-on)**: als u wilt controleren of de configuratie werkt.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Azure AD configureren voor eenmalige aanmelding
 
 In deze sectie gaat u Azure AD-eenmalige aanmelding in de Azure-portal inschakelen.
 
-Voer de volgende stappen uit om de volgende stappen uit te voeren om de volgende stappen uit te voeren voor het configureren van Azure AD-eenmaligaanmelding met SCC LifeCycle:
+Voer de volgende stappen uit om eenmalige aanmelding voor Azure AD te configureren met de SCC-levens cyclus:
 
-1. Selecteer in de [Azure-portal](https://portal.azure.com/)op de pagina **SCC LifeCycle-toepassingsintegratie** de optie **Enkele aanmelding**.
+1. Selecteer in de [Azure Portal](https://portal.azure.com/)op de pagina **SCC-levenscyclus** toepassings integratie de optie **eenmalige aanmelding**.
 
     ![Koppeling Eenmalige aanmelding configureren](common/select-sso.png)
 
@@ -103,7 +103,7 @@ Voer de volgende stappen uit om de volgende stappen uit te voeren om de volgende
 
 4. In de sectie **Standaard SAML-configuratie** voert u de volgende stappen uit:
 
-    ![SCC LifeCycle Domain en URL's enkelvoudige aanmeldingsinformatie](common/sp-identifier.png)
+    ![Informatie over het SCC-levenscyclus domein en Url's eenmalige aanmelding](common/sp-identifier.png)
 
     a. In het tekstvak **Aanmeldings-URL** typt u een URL met de volgende notatie: `https://<sub-domain>.scc.com/ic7/welcome/customer/PICTtest.aspx`
 
@@ -115,13 +115,13 @@ Voer de volgende stappen uit om de volgende stappen uit te voeren om de volgende
     | `https://lifecycle.scc.com/<entity>`|
 
     > [!NOTE]
-    > Dit zijn geen echte waarden. Werk deze waarden bij met de werkelijke aanmeldings-URL en -id. Neem contact op met [het SCC LifeCycle Client support team](mailto:lifecycle.support@scc.com) om deze waarden te krijgen. U kunt ook verwijzen naar het patroon dat wordt weergegeven in de sectie **Standaard SAML-configuratie** in de Azure-portal.
+    > Dit zijn geen echte waarden. Werk deze waarden bij met de werkelijke aanmeldings-URL en -id. Neem contact op met het [client ondersteuning van het SCC-levenscyclus team](mailto:lifecycle.support@scc.com) om deze waarden op te halen. U kunt ook verwijzen naar het patroon dat wordt weergegeven in de sectie **Standaard SAML-configuratie** in de Azure-portal.
 
 5. Op de pagina **Eenmalige aanmelding met SAML instellen** in het gedeelte **SAML-handtekeningcertificaat** klikt u op **Downloaden** om het **XML-bestand met federatieve metagegevens** te downloaden uit de gegeven opties overeenkomstig met wat u nodig hebt, en slaat u dit op uw computer op.
 
     ![De link om het certificaat te downloaden](common/metadataxml.png)
 
-6. Kopieer in de sectie **SCC LifeCycle instellen** de juiste URL(s) volgens uw vereiste.
+6. Kopieer op de sectie **SCC-levenscyclus instellen** de gewenste URL ('s) volgens uw vereiste.
 
     ![Configuratie-URL's kopiëren](common/copy-configuration-urls.png)
 
@@ -131,12 +131,12 @@ Voer de volgende stappen uit om de volgende stappen uit te voeren om de volgende
 
     c. Afmeldings-URL
 
-### <a name="configure-scc-lifecycle-single-sign-on"></a>SCC LifeCycle Single Sign-On configureren
+### <a name="configure-scc-lifecycle-single-sign-on"></a>Eenmalige aanmelding voor de SCC-levens cyclus configureren
 
-Als u eenmalige aanmelding wilt configureren aan de **SCC LifeCycle-kant,** moet u de gedownloade **XML metagegevens** en de juiste gekopieerde URL's van Azure-portal naar [het SCC LifeCycle-ondersteuningsteam](mailto:lifecycle.support@scc.com)verzenden. Het team stelt de instellingen zo in dat de verbinding tussen SAML en eenmalige aanmelding aan beide zijden goed is ingesteld.
+Als u eenmalige aanmelding wilt configureren voor de **SCC-levenscyclus** , moet u de gedownloade **meta gegevens-XML** en de juiste gekopieerde url's verzenden van Azure Portal naar het [SCC Lifecycle-ondersteunings team](mailto:lifecycle.support@scc.com). Het team stelt de instellingen zo in dat de verbinding tussen SAML en eenmalige aanmelding aan beide zijden goed is ingesteld.
 
    > [!NOTE]
-   > Single sign-on moet worden ingeschakeld door het [SCC LifeCycle support team.](mailto:lifecycle.support@scc.com)
+   > Eenmalige aanmelding moet worden ingeschakeld door het [ondersteunings team voor de SCC-levens cyclus](mailto:lifecycle.support@scc.com).
 
 ### <a name="create-an-azure-ad-test-user"></a>Een Azure AD-testgebruiker maken
 
@@ -146,7 +146,7 @@ Het doel van deze sectie is om in de Azure-portal een testgebruiker met de naam 
 
     ![De koppelingen Gebruikers en groepen en Alle gebruikers](common/users.png)
 
-2. Selecteer **Nieuwe gebruiker** boven aan het scherm.
+2. Selecteer **nieuwe gebruiker** boven aan het scherm.
 
     ![Knop Nieuwe gebruiker](common/new-user.png)
 
@@ -161,19 +161,19 @@ Het doel van deze sectie is om in de Azure-portal een testgebruiker met de naam 
 
     c. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak Wachtwoord.
 
-    d. Klik **op Maken**.
+    d. Klik op **maken**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>De Azure AD-testgebruiker toewijzen
 
-In deze sectie stelt u Britta Simon in staat om Azure single sign-on te gebruiken door toegang te verlenen tot SCC LifeCycle.
+In deze sectie schakelt u Julia Simon in om eenmalige aanmelding van Azure te gebruiken door toegang te verlenen tot de SCC-levens cyclus.
 
-1. Selecteer in de Azure-portal **Enterprise-toepassingen**, selecteer **Alle toepassingen**en selecteer **Vervolgens SCC LifeCycle**.
+1. Selecteer in het Azure Portal **bedrijfs toepassingen**, selecteer **alle toepassingen**en selecteer vervolgens **SCC-levens cyclus**.
 
     ![De blade Bedrijfstoepassingen](common/enterprise-applications.png)
 
-2. Selecteer **SCC LifeCycle**in de lijst met toepassingen .
+2. Selecteer in de lijst toepassingen de optie **SCC-levens cyclus**.
 
-    ![De SCC LifeCycle-koppeling in de lijst Toepassingen](common/all-applications.png)
+    ![De koppeling naar de SCC-levens duur in de lijst met toepassingen](common/all-applications.png)
 
 3. Selecteer in het menu aan de linkerkant **Gebruikers en groepen**.
 
@@ -183,17 +183,17 @@ In deze sectie stelt u Britta Simon in staat om Azure single sign-on te gebruike
 
     ![Het deelvenster Toewijzing toevoegen](common/add-assign-user.png)
 
-5. Selecteer **In** het dialoogvenster Gebruikers en groepen **Britta Simon** in de lijst Gebruikers en klik je op de knop **Selecteren** onder aan het scherm.
+5. Selecteer in het dialoog venster **gebruikers en groepen** **Julia Simon** in de lijst gebruikers en klik vervolgens op de knop **selecteren** onder aan het scherm.
 
-6. Als u een rolwaarde verwacht in de SAML-bewering, selecteert u in het dialoogvenster **Rol selecteren** de juiste rol voor de gebruiker in de lijst en klikt u op de knop **Selecteren** onder aan het scherm.
+6. Als u een wille keurige rol verwacht in de SAML-bewering, selecteert u in het dialoog venster **rol selecteren** de juiste rol voor de gebruiker in de lijst en klikt u op de knop **selecteren** onder aan het scherm.
 
 7. Klik in het dialoogvenster **Toewijzing toevoegen** op de knop **Toewijzen**.
 
-### <a name="create-scc-lifecycle-test-user"></a>SCC LifeCycle-testgebruiker maken
+### <a name="create-scc-lifecycle-test-user"></a>Gebruikers van de SCC-levenscyclus test maken
 
-Om Azure AD-gebruikers in staat te stellen zich aan te melden bij SCC LifeCycle, moeten ze worden ingericht in SCC LifeCycle. Er is geen actie-item voor u om gebruikersinrichting te configureren voor SCC LifeCycle.
+Om ervoor te zorgen dat Azure AD-gebruikers zich kunnen aanmelden bij de SCC-levens cyclus, moeten ze worden ingericht in de SCC-levens cyclus. Er is geen actie-item waarmee u gebruikers inrichten kunt configureren voor de SCC-levens cyclus.
 
-Wanneer een toegewezen gebruiker zich probeert aan te melden bij SCC LifeCycle, wordt indien nodig automatisch een SCC LifeCycle-account gemaakt.
+Wanneer een toegewezen gebruiker zich probeert aan te melden bij de SCC-levens cyclus, wordt indien nodig automatisch een SCC-levenscyclus account gemaakt.
 
 > [!NOTE]
 > De houder van het Azure Active Directory-account ontvangt een e-mail en volgt een koppeling om het account te bevestigen voordat het actief wordt.
@@ -202,12 +202,12 @@ Wanneer een toegewezen gebruiker zich probeert aan te melden bij SCC LifeCycle, 
 
 In deze sectie gaat u uw configuratie van Azure AD-eenmalige aanmelding testen via het toegangsvenster.
 
-Wanneer u op de SCC LifeCycle-tegel in het toegangspaneel klikt, moet u automatisch worden aangemeld bij de SCC LifeCycle waarvoor u SSO hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
+Wanneer u op de tegel SCC-levens duur klikt in het toegangs venster, moet u automatisch worden aangemeld bij de SCC-levens cyclus waarvoor u SSO hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
 
 ## <a name="additional-resources"></a>Aanvullende resources
 
 - [Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Wat is toepassingstoegang en eenmalige aanmelding met Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Wat is toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Wat is voorwaardelijke toegang in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

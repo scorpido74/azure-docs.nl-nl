@@ -1,5 +1,5 @@
 ---
-title: 'Zelfstudie: Azure Active Directory-integratie met Sequr | Microsoft Documenten'
+title: 'Zelf studie: integratie Azure Active Directory met Sequr | Microsoft Docs'
 description: Meer informatie over het configureren van eenmalige aanmelding tussen Azure Active Directory en Sequr.
 services: active-directory
 documentationCenter: na
@@ -17,42 +17,42 @@ ms.date: 04/10/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 2eed00aab4296cb5352e74d9e6bfc014f2340646
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "67091089"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-sequr"></a>Zelfstudie: Azure Active Directory-integratie met Sequr
+# <a name="tutorial-azure-active-directory-integration-with-sequr"></a>Zelf studie: integratie Azure Active Directory met Sequr
 
-In deze zelfstudie leert u hoe u Sequr integreert met Azure Active Directory (Azure AD).
-De integratie van Sequr met Azure AD biedt u de volgende voordelen:
+In deze zelf studie leert u hoe u Sequr integreert met Azure Active Directory (Azure AD).
+Het integreren van Sequr met Azure AD biedt de volgende voor delen:
 
-* U in Azure AD bepalen wie toegang heeft tot Sequr.
-* U uw gebruikers automatisch laten aanmelden bij Sequr (Single Sign-On) met hun Azure AD-accounts.
+* U kunt beheren in azure AD die toegang heeft tot Sequr.
+* U kunt ervoor zorgen dat uw gebruikers automatisch worden aangemeld bij Sequr (eenmalige aanmelding) met hun Azure AD-accounts.
 * U kunt uw accounts vanaf één centrale locatie beheren: de Azure-portal.
 
 Zie [What is application access and single sign-on with Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?) als u wilt graag meer wilt weten over de integratie van SaaS-apps met Azure AD.
-Als u geen Azure-abonnement hebt, [maakt u een gratis account](https://azure.microsoft.com/free/) voordat u begint.
+Als u nog geen abonnement op Azure hebt, [Maak dan een gratis account](https://azure.microsoft.com/free/) aan voordat u begint.
 
 ## <a name="prerequisites"></a>Vereisten
 
-Als u de AD-integratie met Sequr wilt configureren, hebt u de volgende items nodig:
+Als u Azure AD-integratie met Sequr wilt configureren, hebt u de volgende items nodig:
 
-* Een Azure AD-abonnement Als u geen Azure AD-omgeving hebt, u een [gratis account](https://azure.microsoft.com/free/) krijgen
-* Abonnement met enkele aanmelding sequr ingeschakeld
+* Een Azure AD-abonnement Als u geen Azure AD-omgeving hebt, kunt u een [gratis account](https://azure.microsoft.com/free/) aanvragen
+* Abonnement voor eenmalige aanmelding Sequr ingeschakeld
 
 ## <a name="scenario-description"></a>Scenariobeschrijving
 
 In deze zelfstudie gaat u in een testomgeving eenmalige aanmelding van Azure AD configureren en testen.
 
-* Sequr ondersteunt **SP en IDP** geïnitieerd sso
+* Sequr ondersteunt SSO die door **SP en IDP** is geïnitieerd
 
-## <a name="adding-sequr-from-the-gallery"></a>Sequr toevoegen vanuit de galerie
+## <a name="adding-sequr-from-the-gallery"></a>Sequr toevoegen uit de galerie
 
-Als u de integratie van Sequr in Azure AD wilt configureren, moet u Sequr vanuit de galerie toevoegen aan uw lijst met beheerde SaaS-apps.
+Als u de integratie van Sequr in azure AD wilt configureren, moet u Sequr uit de galerie toevoegen aan uw lijst met beheerde SaaS-apps.
 
-**Als u Sequr vanuit de galerie wilt toevoegen, voert u de volgende stappen uit:**
+**Voer de volgende stappen uit om Sequr toe te voegen uit de galerie:**
 
 1. Klik in het linkernavigatievenster in de **[Azure-portal](https://portal.azure.com)** op het **Azure Active Directory**-pictogram.
 
@@ -66,31 +66,31 @@ Als u de integratie van Sequr in Azure AD wilt configureren, moet u Sequr vanuit
 
     ![De knop Nieuwe toepassing](common/add-new-app.png)
 
-4. Selecteer **Sequr** **Sequr**uit het resultaatpaneel in het zoekvak en klik op **Knop Toevoegen** om de toepassing toe te voegen.
+4. Typ **Sequr**in het zoekvak, selecteer **Sequr** in het resultaten paneel en klik vervolgens op de knop **toevoegen** om de toepassing toe te voegen.
 
-    ![Sequr in de resultatenlijst](common/search-new-app.png)
+    ![Sequr in de lijst met resultaten](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD-eenmalige aanmelding configureren en testen
 
-In deze sectie configureert en test u Azure AD single sign-on with Sequr op basis van een testgebruiker genaamd **Britta Simon**.
-Voor eenmalige aanmelding aan het werk moet een koppelingsrelatie worden ingesteld tussen een Azure AD-gebruiker en de gerelateerde gebruiker in Sequr.
+In deze sectie kunt u eenmalige aanmelding voor Azure AD configureren en testen met Sequr op basis van een test gebruiker met de naam **Julia Simon**.
+Voor een goede werking van eenmalige aanmelding moet er een koppelings relatie tussen een Azure AD-gebruiker en de bijbehorende gebruiker in Sequr tot stand worden gebracht.
 
-Als u Azure AD-enkele aanmelding met Sequr wilt configureren en testen, moet u de volgende bouwstenen voltooien:
+Als u eenmalige aanmelding voor Azure AD wilt configureren en testen met Sequr, moet u de volgende bouw stenen volt ooien:
 
 1. **[Azure AD-eenmalige aanmelding configureren](#configure-azure-ad-single-sign-on)**: als u wilt dat uw gebruikers deze functie kunnen gebruiken.
-2. **[Configureer Sequr Single Sign-On](#configure-sequr-single-sign-on)** - om de instellingen voor eenmalig aanmelden aan de toepassingszijde te configureren.
+2. **[Sequr eenmalige aanmelding configureren](#configure-sequr-single-sign-on)** : Hiermee configureert u de instellingen voor eenmalige aanmelding aan de kant van de toepassing.
 3. **[Een Azure AD-testgebruiker maken](#create-an-azure-ad-test-user)**: als u Azure AD-eenmalige aanmelding wil testen met Britta Simon.
 4. **[De testgebruiker van Azure AD-toewijzen](#assign-the-azure-ad-test-user)**: als u wilt dat Britta Simon gebruik kan maken van Azure AD-eenmalige aanmelding.
-5. **[Maak Sequr-testgebruiker](#create-sequr-test-user)** - om een tegenhanger van Britta Simon in Sequr te hebben die is gekoppeld aan de Azure AD-weergave van de gebruiker.
+5. **[Maak een Sequr-test gebruiker](#create-sequr-test-user)** -om een equivalent van Julia Simon in Sequr te hebben dat is gekoppeld aan de Azure AD-representatie van de gebruiker.
 6. **[Eenmalige aanmelding testen](#test-single-sign-on)**: als u wilt controleren of de configuratie werkt.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Azure AD configureren voor eenmalige aanmelding
 
 In deze sectie gaat u Azure AD-eenmalige aanmelding in de Azure-portal inschakelen.
 
-Voer de volgende stappen uit om de volgende stappen uit te voeren om de enkele aanmelding van Azure AD met Sequr te configureren:
+Voer de volgende stappen uit om eenmalige aanmelding voor Azure AD te configureren met Sequr:
 
-1. Selecteer in de [Azure-portal](https://portal.azure.com/)op de pagina **Sequr-toepassingsintegratie** de optie **Enkele aanmelding**.
+1. Selecteer in de [Azure Portal](https://portal.azure.com/)op de pagina **Sequr** Application Integration de optie **eenmalige aanmelding**.
 
     ![Koppeling Eenmalige aanmelding configureren](common/select-sso.png)
 
@@ -102,9 +102,9 @@ Voer de volgende stappen uit om de volgende stappen uit te voeren om de enkele a
 
     ![Standaard SAML-configuratie bewerken](common/edit-urls.png)
 
-4. Voer in de sectie **BasisSAML-configuratie** de volgende stap uit als u de toepassing in de **idp-modus** wilt configureren:
+4. Als u de toepassing in de gestarte modus **IDP** wilt configureren, voert u de volgende stap uit in de sectie **basis configuratie van SAML** :
 
-    ![Sequr Domain en URL's enkele aanmeldingsinformatie](common/idp-identifier.png)
+    ![Informatie over eenmalige aanmelding voor Sequr domein en Url's](common/idp-identifier.png)
 
     Typ de volgende URL in het tekstvak **Id**: `https://login.sequr.io`
 
@@ -114,13 +114,13 @@ Voer de volgende stappen uit om de volgende stappen uit te voeren om de enkele a
 
     a. In het tekstvak **Aanmeldings-URL** typt u de URL: `https://login.sequr.io`
 
-    b. In het tekstvak **Relay State** krijgt u deze waarde, die later in de zelfstudie wordt uitgelegd.
+    b. In het tekstvak **Relay-status** krijgt u deze waarde, die verderop in de zelf studie wordt beschreven.
 
 6. Op de pagina **Eenmalige aanmelding met SAML instellen** in de sectie **SAML-handtekeningcertificaat** klikt u op **Downloaden** om het **Certificaat (Base64)** te downloaden uit de opgegeven opties overeenkomstig uw behoeften, en slaat u dit op uw computer op.
 
     ![De link om het certificaat te downloaden](common/certificatebase64.png)
 
-7. Kopieer in de sectie **Sequr instellen** de juiste URL(s) volgens uw vereiste.
+7. Kopieer op de sectie **Sequr instellen** de gewenste URL ('s) volgens uw vereiste.
 
     ![Configuratie-URL's kopiëren](common/copy-configuration-urls.png)
 
@@ -130,27 +130,27 @@ Voer de volgende stappen uit om de volgende stappen uit te voeren om de enkele a
 
     c. Afmeldings-URL
 
-### <a name="configure-sequr-single-sign-on"></a>Sequr Single Sign-On configureren
+### <a name="configure-sequr-single-sign-on"></a>Eenmalige aanmelding voor Sequr configureren
 
-1. Meld u in een ander browservenster aan bij uw sequr-bedrijfssite als beheerder.
+1. Meld u in een ander webbrowser venster als beheerder aan bij uw Sequr-bedrijfs site.
 
-1. Klik op de **integraties** in het linkernavigatiedeelvenster.
+1. Klik op de **integraties** in het navigatie paneel aan de linkerkant.
 
     ![Sequr-configuratie](./media/sequr-tutorial/configure1.png)
 
-1. Schuif omlaag naar de sectie **Aanmelding** en klik op **Beheren**.
+1. Schuif omlaag naar de sectie **eenmalige aanmelding** en klik op **beheren**.
 
     ![Sequr-configuratie](./media/sequr-tutorial/configure2.png)
 
-1. Voer in de sectie **Eén aanmelding beheren** de volgende stappen uit:
+1. Voer de volgende stappen uit in de sectie **eenmalige aanmelding beheren** :
 
     ![Sequr-configuratie](./media/sequr-tutorial/configure3.png)
 
-    a. Plak in het tekstvak **Single Sign-On URL** van de identiteitsprovider de **URL-waarde aanmelden,** die u hebt gekopieerd uit de Azure-portal.
+    a. Plak in het tekstvak ID-provider voor de **URL voor eenmalige** aanmelding de waarde voor de **aanmeldings-URL** , die u hebt gekopieerd uit de Azure Portal.
 
-    b. Sleep en drop het **certificaatbestand,** dat u hebt gedownload van de Azure-portal of voer handmatig de inhoud van het certificaat in.
+    b. Slepen en neerzetten van het **certificaat** bestand, dat u hebt gedownload van de Azure portal of de inhoud van het certificaat hand matig invoeren.
 
-    c. Na het opslaan van de configuratie wordt de waarde van de relaystatus gegenereerd. Kopieer de waarde van de **relaystatus** en plak deze in het tekstvak **Relaystatus** van de sectie **BasisSAML-configuratie** in de Azure-portal.
+    c. Na het opslaan van de configuratie wordt de waarde voor de relay-status gegenereerd. Kopieer de waarde voor de **Relay-status** en plak deze in het tekstvak **Relay-status** van basis- **SAML-configuratie** in de Azure Portal.
 
     d. Klik op **Opslaan**.
 
@@ -162,7 +162,7 @@ Het doel van deze sectie is om in de Azure-portal een testgebruiker met de naam 
 
     ![De koppelingen Gebruikers en groepen en Alle gebruikers](common/users.png)
 
-2. Selecteer **Nieuwe gebruiker** boven aan het scherm.
+2. Selecteer **nieuwe gebruiker** boven aan het scherm.
 
     ![Knop Nieuwe gebruiker](common/new-user.png)
 
@@ -172,23 +172,23 @@ Het doel van deze sectie is om in de Azure-portal een testgebruiker met de naam 
 
     a. Voer in het veld **Naam****Britta Simon**in.
   
-    b. In **User name** het veld `brittasimon@yourcompanydomain.extension`type gebruikersnaam . Bijvoorbeeld: BrittaSimon@contoso.com
+    b. Typ `brittasimon@yourcompanydomain.extension`in het veld **gebruikers naam** . Bijvoorbeeld: BrittaSimon@contoso.com
 
     c. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak Wachtwoord.
 
-    d. Klik **op Maken**.
+    d. Klik op **maken**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>De Azure AD-testgebruiker toewijzen
 
-In deze sectie u Britta Simon inschakelen om Azure single sign-on te gebruiken door toegang te verlenen tot Sequr.
+In deze sectie schakelt u Julia Simon in om eenmalige aanmelding van Azure te gebruiken door toegang te verlenen aan Sequr.
 
-1. Selecteer in de Azure-portal **Enterprise-toepassingen**, selecteer **Alle toepassingen**en selecteer **Vervolgens Sequr**.
+1. Selecteer in het Azure Portal **bedrijfs toepassingen**, selecteer **alle toepassingen**en selecteer vervolgens **Sequr**.
 
     ![De blade Bedrijfstoepassingen](common/enterprise-applications.png)
 
-2. Selecteer **Sequr**in de lijst met toepassingen .
+2. Selecteer in de lijst toepassingen de optie **Sequr**.
 
-    ![De Koppeling Sequr in de lijst Toepassingen](common/all-applications.png)
+    ![De koppeling Sequr in de lijst met toepassingen](common/all-applications.png)
 
 3. Selecteer in het menu aan de linkerkant **Gebruikers en groepen**.
 
@@ -198,27 +198,27 @@ In deze sectie u Britta Simon inschakelen om Azure single sign-on te gebruiken d
 
     ![Het deelvenster Toewijzing toevoegen](common/add-assign-user.png)
 
-5. Selecteer **In** het dialoogvenster Gebruikers en groepen **Britta Simon** in de lijst Gebruikers en klik je op de knop **Selecteren** onder aan het scherm.
+5. Selecteer in het dialoog venster **gebruikers en groepen** **Julia Simon** in de lijst gebruikers en klik vervolgens op de knop **selecteren** onder aan het scherm.
 
-6. Als u een rolwaarde verwacht in de SAML-bewering, selecteert u in het dialoogvenster **Rol selecteren** de juiste rol voor de gebruiker in de lijst en klikt u op de knop **Selecteren** onder aan het scherm.
+6. Als u een wille keurige rol verwacht in de SAML-bewering, selecteert u in het dialoog venster **rol selecteren** de juiste rol voor de gebruiker in de lijst en klikt u op de knop **selecteren** onder aan het scherm.
 
 7. Klik in het dialoogvenster **Toewijzing toevoegen** op de knop **Toewijzen**.
 
-### <a name="create-sequr-test-user"></a>Sequr-testgebruiker maken
+### <a name="create-sequr-test-user"></a>Sequr-test gebruiker maken
 
-In deze sectie maakt u een gebruiker genaamd Britta Simon in Sequr. Werk samen met [sequr client support team](mailto:support@sequr.io) om de gebruikers toe te voegen in het Sequr-platform. Er moeten gebruikers worden gemaakt en geactiveerd voordat u eenmalige aanmelding kunt gebruiken.
+In deze sectie maakt u een gebruiker met de naam Julia Simon in Sequr. Werk samen met het [Sequr-client ondersteunings team](mailto:support@sequr.io) om de gebruikers toe te voegen in het Sequr-platform. Er moeten gebruikers worden gemaakt en geactiveerd voordat u eenmalige aanmelding kunt gebruiken.
 
 ### <a name="test-single-sign-on"></a>Eenmalige aanmelding testen 
 
 In deze sectie gaat u uw configuratie van Azure AD-eenmalige aanmelding testen via het toegangsvenster.
 
-Wanneer u op de Sequr-tegel in het toegangspaneel klikt, moet u automatisch worden aangemeld bij de Sequr waarvoor u SSO hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
+Wanneer u op de tegel Sequr in het toegangs venster klikt, moet u automatisch worden aangemeld bij de Sequr waarvoor u SSO hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
 
 ## <a name="additional-resources"></a>Aanvullende resources
 
 - [Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Wat is toepassingstoegang en eenmalige aanmelding met Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Wat is toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Wat is voorwaardelijke toegang in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

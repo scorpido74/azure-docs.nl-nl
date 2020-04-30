@@ -1,6 +1,6 @@
 ---
-title: 'Zelfstudie: Azure Active Directory-integratie met Attendance Management Services | Microsoft Documenten'
-description: Meer informatie over het configureren van eenmalige aanmelding tussen Azure Active Directory en Attendance Management Services.
+title: 'Zelf studie: integratie met beheer Services voor aanwezigheid Azure Active Directory | Microsoft Docs'
+description: Meer informatie over het configureren van eenmalige aanmelding tussen Azure Active Directory-en aanwezigheids beheer Services.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -17,42 +17,42 @@ ms.date: 04/15/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 7143d0afce7a3644286703a9eba0da1ee45305f2
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "67106544"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-attendance-management-services"></a>Zelfstudie: Azure Active Directory-integratie met Attendance Management Services
+# <a name="tutorial-azure-active-directory-integration-with-attendance-management-services"></a>Zelf studie: integratie met beheer services van de aanwezigheid Azure Active Directory
 
-In deze zelfstudie leert u hoe u Attendance Management Services integreren met Azure Active Directory (Azure AD).
-Het integreren van Attendance Management Services met Azure AD biedt u de volgende voordelen:
+In deze zelf studie leert u hoe u de services voor het beheer van de aanwezigheid kunt integreren met Azure Active Directory (Azure AD).
+Het integreren van de beheer Services voor de aanwezigheid van Azure AD biedt de volgende voor delen:
 
-* U in Azure AD bepalen wie toegang heeft tot Attendance Management Services.
-* U uw gebruikers automatisch laten aanmelden bij Attendance Management Services (Single Sign-On) met hun Azure AD-accounts.
+* U kunt beheren in azure AD die toegang heeft tot de beheer services van de aanwezigheid.
+* U kunt ervoor zorgen dat uw gebruikers automatisch worden aangemeld bij beheer Services (eenmalige aanmelding) met hun Azure AD-accounts.
 * U kunt uw accounts vanaf één centrale locatie beheren: de Azure-portal.
 
 Zie [What is application access and single sign-on with Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?) als u wilt graag meer wilt weten over de integratie van SaaS-apps met Azure AD.
-Als u geen Azure-abonnement hebt, [maakt u een gratis account](https://azure.microsoft.com/free/) voordat u begint.
+Als u nog geen abonnement op Azure hebt, [Maak dan een gratis account](https://azure.microsoft.com/free/) aan voordat u begint.
 
 ## <a name="prerequisites"></a>Vereisten
 
-Als u Azure AD-integratie wilt configureren met Attendance Management Services, hebt u de volgende items nodig:
+Als u Azure AD-integratie met beheer Services voor aanwezigheid wilt configureren, hebt u de volgende items nodig:
 
-* Een Azure AD-abonnement Als u geen Azure AD-omgeving hebt, u een [gratis account](https://azure.microsoft.com/free/) krijgen
-* Eenmalige aanmeldingingeschakeld abonnement voor Aanwezigheidbeheer Services
+* Een Azure AD-abonnement Als u geen Azure AD-omgeving hebt, kunt u een [gratis account](https://azure.microsoft.com/free/) aanvragen
+* Abonnement voor aanwezigheids beheer Services voor eenmalige aanmelding
 
 ## <a name="scenario-description"></a>Scenariobeschrijving
 
 In deze zelfstudie gaat u in een testomgeving eenmalige aanmelding van Azure AD configureren en testen.
 
-* Attendance Management Services ondersteunt **DOOR SP** geïnitieerde SSO
+* Aanwezigheids beheer services bieden ondersteuning voor door **SP** GEÏNITIEERDe SSO
 
-## <a name="adding-attendance-management-services-from-the-gallery"></a>Aanwezigheidsbeheerservices toevoegen vanuit de galerie
+## <a name="adding-attendance-management-services-from-the-gallery"></a>Beheer Services voor de aanwezigheid toevoegen vanuit de galerie
 
-Als u de integratie van Attendance Management Services in Azure AD wilt configureren, moet u Attendance Management Services uit de galerie toevoegen aan uw lijst met beheerde SaaS-apps.
+Als u de integratie van de beheer Services voor de aanwezigheid wilt configureren in azure AD, moet u beheer Services voor de aanwezigheid van de-galerie toevoegen aan uw lijst met beheerde SaaS-apps.
 
-**Voer de volgende stappen uit om aanwezigheidsbeheerservices vanuit de galerie toe te voegen:**
+**Voer de volgende stappen uit om de beheer Services voor de aanwezigheid van een beheerder toe te voegen in de galerie:**
 
 1. Klik in het linkernavigatievenster in de **[Azure-portal](https://portal.azure.com)** op het **Azure Active Directory**-pictogram.
 
@@ -66,31 +66,31 @@ Als u de integratie van Attendance Management Services in Azure AD wilt configur
 
     ![De knop Nieuwe toepassing](common/add-new-app.png)
 
-4. Typ Attendance Management **Services**in het zoekvak , selecteer **Attendance Management Services** uit het resultaatpaneel en klik op **Knop Toevoegen** om de toepassing toe te voegen.
+4. Typ in het zoekvak functie **Beheer Services**, selecteer functie voor het **beheer** van de aanwezigheid en klik vervolgens op de knop **toevoegen** om de toepassing toe te voegen.
 
-    ![Attendance Management Services in de resultatenlijst](common/search-new-app.png)
+    ![Aanwezigheids beheer Services in de lijst met resultaten](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD-eenmalige aanmelding configureren en testen
 
-In deze sectie configureert en test u Azure AD single sign-on met Attendance Management Services op basis van een testgebruiker genaamd **Britta Simon**.
-Voor eenmalige aanmelding aan het werk moet een koppelingsrelatie worden ingesteld tussen een Azure AD-gebruiker en de gerelateerde gebruiker in Attendance Management Services.
+In deze sectie kunt u eenmalige aanmelding voor Azure AD configureren en testen met aanwezigheids beheer Services op basis van een test gebruiker met de naam **Julia Simon**.
+Voor een goede werking van eenmalige aanmelding moet er een koppelings relatie tussen een Azure AD-gebruiker en de bijbehorende gebruiker in de Management Services voor aanwezigheid worden ingesteld.
 
-Als u Azure AD Single Sign-on wilt configureren en testen met Attendance Management Services, moet u de volgende bouwstenen voltooien:
+U moet de volgende bouw stenen volt ooien om de eenmalige aanmelding van Azure AD te configureren en te testen met beheer Services voor aanwezigheid:
 
 1. **[Azure AD-eenmalige aanmelding configureren](#configure-azure-ad-single-sign-on)**: als u wilt dat uw gebruikers deze functie kunnen gebruiken.
-2. **[Stel De instellingen voor aanwezigheidsbeheerservices eenmalig aan- configureren](#configure-attendance-management-services-single-sign-on)** om de instellingen voor één aanmelding aan de toepassingszijde te configureren.
+2. **[Eenmalige aanmelding voor aanwezigheids beheer Services configureren](#configure-attendance-management-services-single-sign-on)** : Hiermee configureert u de instellingen voor eenmalige aanmelding aan de kant van de toepassing.
 3. **[Een Azure AD-testgebruiker maken](#create-an-azure-ad-test-user)**: als u Azure AD-eenmalige aanmelding wil testen met Britta Simon.
 4. **[De testgebruiker van Azure AD-toewijzen](#assign-the-azure-ad-test-user)**: als u wilt dat Britta Simon gebruik kan maken van Azure AD-eenmalige aanmelding.
-5. **[Testgebruiker aanwezigheidsbeheerservices maken](#create-attendance-management-services-test-user)** - om een tegenhanger van Britta Simon in Attendance Management Services te hebben die is gekoppeld aan de Azure AD-weergave van de gebruiker.
+5. **[Maak een test gebruiker voor de beheer Services](#create-attendance-management-services-test-user)** voor de aanwezigheid van een beheerder, zodat er een soort Julia Simon in aanwezigheids beheer Services is gekoppeld aan de Azure AD-representatie van de gebruiker.
 6. **[Eenmalige aanmelding testen](#test-single-sign-on)**: als u wilt controleren of de configuratie werkt.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Azure AD configureren voor eenmalige aanmelding
 
 In deze sectie gaat u Azure AD-eenmalige aanmelding in de Azure-portal inschakelen.
 
-Voer de volgende stappen uit om de volgende stappen uit te voeren om de volgende stappen uit te voeren voor het configureren van Azure AD-eenmaligaanmelding met Attendance Management Services:
+Voer de volgende stappen uit om eenmalige aanmelding voor Azure AD te configureren met beheer Services voor aanwezigheid:
 
-1. Selecteer in de [Azure-portal](https://portal.azure.com/)op de pagina Integratie van de **Toepassing Aanwezigheidsbeheerservices** de optie **Eén aanmelding**.
+1. Selecteer in de [Azure Portal](https://portal.azure.com/)op de pagina voor de integratie van de **Beheer Services** -toepassing **eenmalige aanmelding**.
 
     ![Koppeling Eenmalige aanmelding configureren](common/select-sso.png)
 
@@ -104,20 +104,20 @@ Voer de volgende stappen uit om de volgende stappen uit te voeren om de volgende
 
 4. In de sectie **Standaard SAML-configuratie** voert u de volgende stappen uit:
 
-    ![Informatie over aanwezigheidsbeheerservices domein en URL's eenmalig aanmelden](common/sp-identifier.png)
+    ![Informatie over het domein en Url's voor aanwezigheids beheer Services voor eenmalige aanmelding](common/sp-identifier.png)
 
     a. In het tekstvak **Aanmeldings-URL** typt u een URL met de volgende notatie: `https://id.obc.jp/<tenant information >/`
 
     b. In het tekstvak **Id (Entiteits-id)** typt u een URL met het volgende patroon: `https://id.obc.jp/<tenant information >/`
 
     > [!NOTE]
-    > Dit zijn geen echte waarden. Werk deze waarden bij met de werkelijke aanmeldings-URL en -id. Neem contact op met [het ondersteuningsteam van Attendance Management Services](https://www.obcnet.jp/) om deze waarden te krijgen. U kunt ook verwijzen naar het patroon dat wordt weergegeven in de sectie **Standaard SAML-configuratie** in de Azure-portal.
+    > Dit zijn geen echte waarden. Werk deze waarden bij met de werkelijke aanmeldings-URL en -id. Neem contact op met het [ondersteunings team voor de aanwezigheid van Management Services-client](https://www.obcnet.jp/) om deze waarden te verkrijgen. U kunt ook verwijzen naar het patroon dat wordt weergegeven in de sectie **Standaard SAML-configuratie** in de Azure-portal.
 
 5. Op de pagina **Eenmalige aanmelding met SAML instellen** in de sectie **SAML-handtekeningcertificaat** klikt u op **Downloaden** om het **Certificaat (Base64)** te downloaden uit de opgegeven opties overeenkomstig uw behoeften, en slaat u dit op uw computer op.
 
     ![De link om het certificaat te downloaden](common/certificatebase64.png)
 
-6. Kopieer in de sectie **Aanwezigheidsbeheerservices instellen** de juiste URL(s) volgens uw vereiste.
+6. Kopieer de gewenste URL ('s) volgens uw vereiste in het gedeelte Beheer Services voor de functie voor het **instellen van** de functie voor het beheren van de aanwezigheid.
 
     ![Configuratie-URL's kopiëren](common/copy-configuration-urls.png)
 
@@ -127,29 +127,29 @@ Voer de volgende stappen uit om de volgende stappen uit te voeren om de volgende
 
     c. Afmeldings-URL
 
-### <a name="configure-attendance-management-services-single-sign-on"></a>Eenmalige aanmelding voor aanwezigheidsbeheerservices configureren
+### <a name="configure-attendance-management-services-single-sign-on"></a>Eenmalige aanmelding voor aanwezigheids beheer Services configureren
 
-1. Meld u in een ander browservenster aan op de bedrijfssite van Attendance Management Services als beheerder.
+1. Meld u in een ander browser venster aan bij de bedrijfs site van uw aanwezigheids beheer Services als beheerder.
 
-1. Klik op **SAML-verificatie** onder de **sectie Beveiligingsbeheer**.
+1. Klik op **SAML-verificatie** in het **gedeelte Security Management**.
 
-    ![Configuratie van aanwezigheidsbeheerservices](./media/attendancemanagementservices-tutorial/user1.png)
+    ![Configuratie van aanwezigheids beheer Services](./media/attendancemanagementservices-tutorial/user1.png)
 
 1. Voer de volgende stappen uit:
 
-    ![Configuratie van aanwezigheidsbeheerservices](./media/attendancemanagementservices-tutorial/user2.png)
+    ![Configuratie van aanwezigheids beheer Services](./media/attendancemanagementservices-tutorial/user2.png)
 
     a. Selecteer **SAML-verificatie gebruiken**.
 
-    b. Plak in het tekstvak **Id** de waarde van de waarde van **azure AD-id,** die u hebt gekopieerd van Azure-portal.
+    b. Plak in het tekstvak **id** de waarde van de **Azure ad-id** -waarde die u van Azure Portal hebt gekopieerd.
 
-    c. Plak in het tekstvak **voor het eindpunt-URL van verificatie** de waarde van de waarde van de **inlog-URL** die u hebt gekopieerd vanuit de Azure-portal.
+    c. Plak in het tekstvak **URL verificatie-eind punt** de waarde van de waarde van de **aanmeldings-URL** , die u hebt gekopieerd uit Azure Portal.
 
-    d. Klik **op Een bestand selecteren** om het certificaat te uploaden dat u hebt gedownload van Azure AD.
+    d. Klik op **Selecteer een bestand** om het certificaat te uploaden dat u hebt gedownload van Azure AD.
 
-    e. Selecteer **Wachtwoordverificatie uitschakelen**.
+    e. Selecteer **wachtwoord verificatie uitschakelen**.
 
-    f. Klik **op Registratie**
+    f. Klik op **registratie**
 
 ### <a name="create-an-azure-ad-test-user"></a>Een Azure AD-testgebruiker maken
 
@@ -159,7 +159,7 @@ Het doel van deze sectie is om in de Azure-portal een testgebruiker met de naam 
 
     ![De koppelingen Gebruikers en groepen en Alle gebruikers](common/users.png)
 
-2. Selecteer **Nieuwe gebruiker** boven aan het scherm.
+2. Selecteer **nieuwe gebruiker** boven aan het scherm.
 
     ![Knop Nieuwe gebruiker](common/new-user.png)
 
@@ -169,23 +169,23 @@ Het doel van deze sectie is om in de Azure-portal een testgebruiker met de naam 
 
     a. Voer in het veld **Naam****Britta Simon**in.
   
-    b. In **User name** het veld `brittasimon@yourcompanydomain.extension`type gebruikersnaam . Bijvoorbeeld: BrittaSimon@contoso.com
+    b. Typ `brittasimon@yourcompanydomain.extension`in het veld **gebruikers naam** . Bijvoorbeeld: BrittaSimon@contoso.com
 
     c. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak Wachtwoord.
 
-    d. Klik **op Maken**.
+    d. Klik op **maken**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>De Azure AD-testgebruiker toewijzen
 
-In deze sectie stelt u Britta Simon in staat om Azure single sign-on te gebruiken door toegang te verlenen tot Attendance Management Services.
+In deze sectie schakelt u Julia Simon in om gebruik te maken van eenmalige aanmelding van Azure door toegang te verlenen aan de beheer services van de aanwezigheid.
 
-1. Selecteer in de Azure-portal **Enterprise-toepassingen**, selecteer **Alle toepassingen**en selecteer vervolgens Attendance **Management Services**.
+1. Selecteer in het Azure Portal **bedrijfs toepassingen**, selecteer **alle toepassingen**en selecteer vervolgens **Beheer Services**voor de aanwezigheid.
 
     ![De blade Bedrijfstoepassingen](common/enterprise-applications.png)
 
-2. Selecteer Attendance Management **Services**in de lijst met toepassingen .
+2. Selecteer in de lijst toepassingen de optie **aanwezigheids beheer Services**.
 
-    ![De koppeling Aanwezigheidsbeheerservices in de lijst Toepassingen](common/all-applications.png)
+    ![De koppeling voor de beheer Services voor aanwezigheid in de lijst met toepassingen](common/all-applications.png)
 
 3. Selecteer in het menu aan de linkerkant **Gebruikers en groepen**.
 
@@ -195,48 +195,48 @@ In deze sectie stelt u Britta Simon in staat om Azure single sign-on te gebruike
 
     ![Het deelvenster Toewijzing toevoegen](common/add-assign-user.png)
 
-5. Selecteer **In** het dialoogvenster Gebruikers en groepen **Britta Simon** in de lijst Gebruikers en klik je op de knop **Selecteren** onder aan het scherm.
+5. Selecteer in het dialoog venster **gebruikers en groepen** **Julia Simon** in de lijst gebruikers en klik vervolgens op de knop **selecteren** onder aan het scherm.
 
-6. Als u een rolwaarde verwacht in de SAML-bewering, selecteert u in het dialoogvenster **Rol selecteren** de juiste rol voor de gebruiker in de lijst en klikt u op de knop **Selecteren** onder aan het scherm.
+6. Als u een wille keurige rol verwacht in de SAML-bewering, selecteert u in het dialoog venster **rol selecteren** de juiste rol voor de gebruiker in de lijst en klikt u op de knop **selecteren** onder aan het scherm.
 
 7. Klik in het dialoogvenster **Toewijzing toevoegen** op de knop **Toewijzen**.
 
-### <a name="create-attendance-management-services-test-user"></a>Testgebruiker aanwezigheidsbeheerservices maken
+### <a name="create-attendance-management-services-test-user"></a>Een test gebruiker voor de beheer Services voor de aanwezigheid maken
 
-Als u Azure AD-gebruikers in staat wilt stellen zich aan te melden bij Attendance Management Services, moeten ze zijn ingericht in Attendance Management Services. In het geval van Attendance Management Services is inrichten een handmatige taak.
+Om Azure AD-gebruikers in staat te stellen zich aan te melden bij de beheer services van de aanwezigheid, moeten ze worden ingericht in beheer Services voor aanwezigheid. In het geval van aanwezigheids beheer Services is inrichting een hand matige taak.
 
 **Voer de volgende stappen uit als u een gebruikersaccount wilt inrichten:**
 
-1. Meld u aan bij uw site van attendance management services als beheerder.
+1. Meld u aan bij de bedrijfs site van uw aanwezigheids beheer Services als beheerder.
 
-1. Klik op **Gebruikersbeheer** onder de **sectie Beveiligingsbeheer**.
+1. Klik op **gebruikers beheer** in het **gedeelte Security Management**.
 
     ![Werknemer toevoegen](./media/attendancemanagementservices-tutorial/user5.png)
 
-1. Klik **op Nieuwe regels inloggen**.
+1. Klik op **nieuwe regels aanmelden**.
 
     ![Werknemer toevoegen](./media/attendancemanagementservices-tutorial/user3.png)
 
-1. Voer in de sectie **OBCiD-informatie** de volgende stappen uit:
+1. Voer in de sectie **informatie over OBCiD** de volgende stappen uit:
 
     ![Werknemer toevoegen](./media/attendancemanagementservices-tutorial/user4.png)
 
-    a. Typ in het **OBCiD-tekstvak** de `BrittaSimon\@contoso.com`e-mail van de gebruiker als .
+    a. Typ in het tekstvak **OBCiD** het e-mail adres van `BrittaSimon\@contoso.com`de gebruiker zoals.
 
     b. In het tekstvak **Wachtwoord** typt u het wachtwoord van de gebruiker.
 
-    c. Klik **op Registratie**
+    c. Klik op **registratie**
 
 ### <a name="test-single-sign-on"></a>Eenmalige aanmelding testen
 
 In deze sectie gaat u uw configuratie van Azure AD-eenmalige aanmelding testen via het toegangsvenster.
 
-Wanneer u op de tegel Aanwezigheidsbeheerservices in het toegangspaneel klikt, moet u automatisch worden aangemeld bij de Attendance Management Services waarvoor u SSO hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
+Wanneer u op de tegel beheer Services voor aanwezigheid in het toegangs venster klikt, moet u automatisch worden aangemeld bij de beheer Services voor de aanwezigheid waarvoor u SSO hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
 
 ## <a name="additional-resources"></a>Aanvullende resources
 
 - [Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Wat is toepassingstoegang en eenmalige aanmelding met Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Wat is toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Wat is voorwaardelijke toegang in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
