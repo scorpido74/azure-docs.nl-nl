@@ -1,16 +1,16 @@
 ---
-title: Toegang tot een overdracht verwijderen
+title: Toegang tot een delegatie verwijderen
 description: Meer informatie over het verwijderen van de toegang tot resources die zijn overgedragen aan een service provider voor het beheer van gedelegeerde resources van Azure.
 ms.date: 04/24/2020
 ms.topic: conceptual
 ms.openlocfilehash: d0db809eb057f8b4bb48bdf9dd127f4d488f0406
-ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/24/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82149448"
 ---
-# <a name="remove-access-to-a-delegation"></a>Toegang tot een overdracht verwijderen
+# <a name="remove-access-to-a-delegation"></a>Toegang tot een delegatie verwijderen
 
 Nadat het abonnement of de resource groep van een klant is overgedragen aan een service provider voor [Azure delegated resource management](../concepts/azure-delegated-resource-management.md), kan de delegatie zo nodig worden verwijderd. Zodra een delegering is verwijderd, is de toegang die eerder is verleend aan gebruikers in de service provider Tenant niet langer van toepassing.
 
