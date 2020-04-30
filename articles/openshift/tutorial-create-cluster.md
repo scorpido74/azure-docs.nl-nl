@@ -6,12 +6,12 @@ ms.author: suvetriv
 ms.topic: tutorial
 ms.service: container-service
 ms.date: 04/24/2020
-ms.openlocfilehash: d9b02c11c055b4b072c5f8a1ff47e44001ec4580
-ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
-ms.translationtype: MT
+ms.openlocfilehash: 32069d9594d4579bd18ec3fd0e76af7bdc69f4d0
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82509717"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82232152"
 ---
 # <a name="tutorial-create-an-azure-red-hat-openshift-4-cluster"></a>Zelf studie: een Azure Red Hat open Shift 4-cluster maken
 
@@ -80,7 +80,7 @@ Vervolgens maakt u een virtueel netwerk met twee lege subnetten.
 
    ```console
    LOCATION=eastus                 # the location of your cluster
-   RESOURCEGROUP=aro-rg            # the name of the resource group where you want to create your cluster
+   RESOURCEGROUP="v4-$LOCATION"    # the name of the resource group where you want to create your cluster
    CLUSTER=cluster                 # the name of your cluster
    ```
 
@@ -89,7 +89,7 @@ Vervolgens maakt u een virtueel netwerk met twee lege subnetten.
     Een Azure-resourcegroep is een logische groep waarin Azure-resources worden geïmplementeerd en beheerd. Wanneer u een resourcegroep maakt, wordt u gevraagd een locatie op te geven. Op deze locatie worden de meta gegevens van de resource groep opgeslagen, maar ook de resources die in Azure worden uitgevoerd als u geen andere regio opgeeft tijdens het maken van resources. Maak een resource groep met de opdracht [AZ Group Create] [AZ-Group-Create].
 
     ```azurecli-interactive
-    az group create --name $RESOURCEGROUP --location $LOCATION
+    az group create --name $CLUSTER --location $LOCATION
     ```
 
     In de volgende voorbeelduitvoer ziet u dat de resourcegroep is gemaakt:
