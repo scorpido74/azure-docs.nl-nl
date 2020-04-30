@@ -1,63 +1,63 @@
 ---
-title: Aanbevelingssamenvatting voor Azure Advisor
-description: Ontvang periodiek overzicht voor uw actieve aanbevelingen
+title: Aanbevelings samenvatting voor Azure Advisor
+description: Periodieke samen vatting van uw actieve aanbevelingen ophalen
 ms.topic: article
 ms.date: 03/16/2020
 ms.author: sagupt
 ms.openlocfilehash: 98f1bfd42a486e005cd1e777a83f5b615a7c8304
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79502462"
 ---
-# <a name="configure-periodic-summary-for-recommendations"></a>Periodiek overzicht configureren voor aanbevelingen
+# <a name="configure-periodic-summary-for-recommendations"></a>Periodieke samen vatting voor aanbevelingen configureren
 
-**Aanbevelingsoverzichten** van adviseurs bieden een eenvoudige en proactieve manier om op de hoogte te blijven van uw actieve aanbevelingen, in verschillende categorieën. De functie biedt de mogelijkheid om periodieke meldingen te configureren voor het overzicht van al uw actieve aanbevelingen, in verschillende categorieën. Je je gewenste kanaal kiezen voor meldingen zoals e-mail, sms of anderen, met behulp van actiegroepen. In dit artikel ziet u hoe u een **aanbevelingsoverzicht kunt** instellen voor uw aanbevelingen van een adviseur.
+Advisor **Recommendation digesties** bieden een gemakkelijke en proactieve manier om op de hoogte te blijven van uw actieve aanbevelingen, in verschillende categorieën. De functie biedt de mogelijkheid om periodieke meldingen te configureren voor het overzicht van al uw actieve aanbevelingen, in verschillende categorieën. U kunt uw gewenste kanaal kiezen voor meldingen zoals e-mail, SMS of anderen, met behulp van actie groepen. Dit artikel laat u zien hoe u een **aanbevelings samenvatting** kunt instellen voor uw aanbevelingen voor Advisor.
 
 
-## <a name="setting-up-your-recommendation-digest"></a>Uw aanbevelingssamenvatting instellen 
+## <a name="setting-up-your-recommendation-digest"></a>Uw aanbevelings samenvatting instellen 
 
-Met de ervaring voor het maken van **aanbevelingssamenvatting** u het overzicht configureren. U onderstaande parameters voor configuraties selecteren:
-1. Categorie: We hebben aanbevelingscategorieën zoals kosten, hoge beschikbaarheid, prestaties en operationele uitmuntendheid. De mogelijkheid is nog niet beschikbaar voor beveiligingsaanbevelingen.
-2. Frequentie van de samenvatting: Frequentie voor de samenvatting meldingen kunnen wekelijks, tweewekelijks en maandelijks.
-3. Actiegroep: U een bestaande actiegroep selecteren of een nieuwe actiegroep maken. Zie Actiegroepen maken en beheren voor meer informatie over [actiegroepen.](https://docs.microsoft.com/azure/azure-monitor/platform/action-groups)
-4. Taal voor de samenvatting
-5. Aanbevelingssamenvattingnaam: U een gebruiksvriendelijke tekenreeks gebruiken om de samenvattingen beter bij te houden en te controleren.
+Met de functie voor het maken van **aanbevelings samenvatting** kunt u de samen vatting configureren. U kunt de onderstaande para meters voor configuraties selecteren:
+1. Categorie: we hebben aanbevelings categorieën zoals kosten, hoge Beschik baarheid, prestaties en bedrijfs kwaliteit. De mogelijkheid is nog niet beschikbaar voor beveiligings aanbevelingen.
+2. Frequentie van Digest: frequentie voor de samenvattings meldingen kan wekelijks, twee weken en maandelijks zijn.
+3. Actie groep: u kunt een bestaande actie groep selecteren of een nieuwe actie groep maken. Zie [actie groepen maken en beheren](https://docs.microsoft.com/azure/azure-monitor/platform/action-groups)voor meer informatie over actie groepen.
+4. Taal voor de samen vatting
+5. Naam van aanbevelings Samenvatting: u kunt een gebruiks vriendelijke teken reeks gebruiken om de samen vattingen beter bij te houden en te controleren.
 
-## <a name="steps-to-create-recommendation-digest-in-azure-portal"></a>Stappen om aanbevelingssamenvatting te maken in Azure-portal
+## <a name="steps-to-create-recommendation-digest-in-azure-portal"></a>Stappen voor het maken van aanbevelings samenvatting in Azure Portal
 
-Hier volgen de stappen om **aanbevelingssamenvatting** te maken:
-* **Stap 1:** Ga in de Azure-portal naar **Advisor** en selecteer onder **sectie Controle** de optie **Aanbevelingsoverzicht** 
+Hier volgen de stappen voor het maken van **aanbevelings Samenvatting:**
+* **Stap 1:** Ga in het Azure Portal naar **Advisor** en selecteer onder **bewaking** het gedeelte **aanbeveling samen vatting** 
 
-   ![Toegangspunt voor het verteren van aanbeveling](./media/digest-0.png)
+   ![Samenvattings vermelding van aanbeveling: punt](./media/digest-0.png)
 
-* **Stap 2:** Selecteer **Nieuwe aanbevelingssamenvatting** op de bovenste balk zoals hieronder:
+* **Stap 2:** Selecteer **nieuwe aanbevelings samenvatting** in de bovenste balk, zoals hieronder wordt beschreven:
 
-   ![Aanbevelingssamenvatting maken](./media/digest-5.png)
+   ![Aanbevelings samenvatting maken](./media/digest-5.png)
 
-* **Stap 3:** Selecteer in de **scopesectie** het **abonnement** voor uw samenvatting
+* **Stap 3:** Selecteer in de sectie **bereik** het **abonnement** voor uw Digest
 
-   ![Aanbevelingsinvoer voor het verteren geven](./media/digest-1.png)
+   ![Invoer van aanbevelings samenvatting opgeven](./media/digest-1.png)
 
-* **Stap 4:** Selecteer **in** de sectie voorwaarde de configuraties zoals **categorie,** **frequentie** en **taal**
+* **Stap 4:** Selecteer in de sectie **voor waarde** de configuraties, zoals **categorie**, **frequentie** en **taal**
 
-   ![Aanbevelingsoverzichtsinvoeromstandigheden bieden](./media/digest-2.png)
+   ![Invoer voorwaarden voor aanbevelings samenvatting opgeven](./media/digest-2.png)
 
-* **Stap 5:** Selecteer in de sectie **actiegroep** de **actiegroep** voor de samenvatting. U hier meer informatie vinden - [Actiegroepen maken en beheren](https://docs.microsoft.com/azure/azure-monitor/platform/action-groups)
+* **Stap 5:** Selecteer in de sectie **actie groep** de **actie groep** voor de samen vatting. Hier vindt u meer informatie- [actie groepen maken en beheren](https://docs.microsoft.com/azure/azure-monitor/platform/action-groups)
 
-   ![Aanbevelingsgroep voor het verteren van aanbevelingen bieden](./media/digest-3.png)
+   ![Invoer actie groep aanbevelings samenvatting opgeven](./media/digest-3.png)
 
-* **Stap 6:** In dit laatste gedeelte voor **digest-details**u naam en status toewijzen aan uw aanbevelingssamenvatting. Druk **op het maken van aanbevelingssamenvatting** om de set-up te voltooien.
-   ![Volledige aanbeveling digest creatie](./media/digest-4.png)
+* **Stap 6:** In dit laatste gedeelte voor **samenvattings Details**kunt u de naam en de status toewijzen aan uw aanbevelings samenvatting. Druk op **aanbevelings samenvatting maken** om de configuratie te volt ooien.
+   ![Volt ooien aanbevelings samenvatting maken](./media/digest-4.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie voor meer informatie over aanbevelingen van Advisor:
+Zie voor meer informatie over Advisor-aanbevelingen:
 * [Inleiding tot Azure Advisor](advisor-overview.md)
 * [Aan de slag met Advisor](advisor-get-started.md)
-* [Aanbevelingen voor kosten van adviseur](advisor-cost-recommendations.md)
-* [Aanbevelingen voor prestaties van adviseur](advisor-performance-recommendations.md)
-* [Aanbevelingen voor beveiliging van adviseur](advisor-security-recommendations.md)
-* [Aanbevelingen adviseur Operational Excellence](advisor-operational-excellence-recommendations.md)
+* [Aanbevelingen voor Advisor-kosten](advisor-cost-recommendations.md)
+* [Aanbevelingen voor Advisor-prestaties](advisor-performance-recommendations.md)
+* [Aanbevelingen voor de beveiliging van Advisor](advisor-security-recommendations.md)
+* [Aanbevelingen voor operationele uitmuntendheid van Advisor](advisor-operational-excellence-recommendations.md)
 * [Advisor REST API](https://docs.microsoft.com/rest/api/advisor/)

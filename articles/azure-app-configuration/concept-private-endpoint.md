@@ -1,6 +1,6 @@
 ---
-title: Privéeindpunten gebruiken voor Azure App-configuratie
-description: Uw App-configuratiewinkel beveiligen met privéeindpunten
+title: Privé-eind punten gebruiken voor Azure-app configuratie
+description: Uw app-configuratie archief beveiligen met behulp van privé-eind punten
 services: azure-app-configuration
 author: lisaguthrie
 ms.service: azure-app-configuration
@@ -8,75 +8,75 @@ ms.topic: conceptual
 ms.date: 3/12/2020
 ms.author: lcozzens
 ms.openlocfilehash: f18672b9e3a368a833fc8cba279d748dfe3c2a9e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79366765"
 ---
-# <a name="using-private-endpoints-for-azure-app-configuration"></a>Privéeindpunten gebruiken voor Azure App-configuratie
+# <a name="using-private-endpoints-for-azure-app-configuration"></a>Privé-eind punten gebruiken voor Azure-app configuratie
 
-U [privéeindpunten](../private-link/private-endpoint-overview.md) voor Azure App-configuratie gebruiken om clients op een virtueel netwerk (VNet) veilig toegang te geven tot gegevens via een [privékoppeling.](../private-link/private-link-overview.md) Het privéeindpunt gebruikt een IP-adres uit de VNet-adresruimte voor uw App Configuration Store. Netwerkverkeer tussen de clients op de VNet en de App Configuration store doorkruist het VNet met behulp van een privékoppeling op het Microsoft-backbonenetwerk, waardoor blootstelling aan het openbare internet wordt geëlimineerd.
+U kunt [privé-eind punten](../private-link/private-endpoint-overview.md) voor Azure-app configuratie gebruiken om clients in een virtueel netwerk (VNet) toe te staan om veilig toegang te krijgen tot gegevens via een [privé-koppeling](../private-link/private-link-overview.md). Het persoonlijke eind punt gebruikt een IP-adres uit de VNet-adres ruimte voor uw app-configuratie opslag. Netwerk verkeer tussen de clients in het VNet en de app-configuratie opslag gaat over op het VNet met behulp van een persoonlijke koppeling in het micro soft-backbone-netwerk, waardoor de bloot stelling aan het open bare Internet wordt geëlimineerd.
 
-Als u privéeindpunten gebruikt voor uw App Configuration Store, u:
-- Beveilig de configuratiegegevens van uw toepassing door de firewall te configureren om alle verbindingen met app-configuratie op het openbare eindpunt te blokkeren.
-- Verhoog de beveiliging van het virtuele netwerk (VNet) zodat gegevens niet uit het VNet ontsnappen.
-- Maak veilig verbinding met de App Configuration Store via on-premises netwerken die verbinding maken met het VNet via [VPN](../vpn-gateway/vpn-gateway-about-vpngateways.md) of [ExpressRoutes](../expressroute/expressroute-locations.md) met private-peering.
+Met persoonlijke eind punten voor uw app-configuratie archief kunt u het volgende doen:
+- Beveilig de configuratie gegevens van uw toepassing door de firewall zodanig te configureren dat alle verbindingen met de app-configuratie op het open bare eind punt worden geblokkeerd.
+- Verg root de beveiliging van het virtuele netwerk (VNet) zodat gegevens niet van het VNet te zien zijn.
+- Maak een beveiligde verbinding met het app-configuratie archief vanuit on-premises netwerken die verbinding maken met het VNet met behulp van [VPN](../vpn-gateway/vpn-gateway-about-vpngateways.md) of [expressroutes waaraan](../expressroute/expressroute-locations.md) met privé-peering.
 
 > [!NOTE]
-> Azure App Configuration biedt het gebruik van privéeindpunten als openbare preview. Openbare preview-aanbiedingen stellen klanten in staat om te experimenteren met nieuwe functies voordat ze officieel worden uitgebracht.  Openbare preview-functies en services zijn niet bedoeld voor productiegebruik.
+> Azure-app-configuratie biedt het gebruik van privé-eind punten als een open bare preview. Met open bare preview-aanbiedingen kunnen klanten experimenteren met nieuwe functies vóór hun officiële release.  Open bare preview-functies en-services zijn niet bedoeld voor gebruik in productie omgevingen.
 
 ## <a name="conceptual-overview"></a>Conceptueel overzicht
 
-Een privéeindpunt is een speciale netwerkinterface voor een Azure-service in uw [Virtual Network](../virtual-network/virtual-networks-overview.md) (VNet). Wanneer u een privéeindpunt maakt voor uw App Config-winkel, biedt dit veilige connectiviteit tussen clients op uw VNet en uw configuratiewinkel. Aan het privéeindpunt wordt een IP-adres toegewezen uit het IP-adresbereik van uw VNet. De verbinding tussen het privéeindpunt en het configuratiearchief maakt gebruik van een beveiligde privékoppeling.
+Een persoonlijk eind punt is een speciale netwerk interface voor een Azure-service in uw [Virtual Network](../virtual-network/virtual-networks-overview.md) (VNet). Wanneer u een persoonlijk eind punt maakt voor uw app-configuratie archief, biedt het een beveiligde verbinding tussen clients in uw VNet en uw configuratie-archief. Het persoonlijke eind punt krijgt een IP-adres uit het IP-adres bereik van uw VNet. Voor de verbinding tussen het persoonlijke eind punt en het configuratie archief wordt een beveiligde persoonlijke koppeling gebruikt.
 
-Toepassingen in het VNet kunnen verbinding maken met het configuratiearchief via het privéeindpunt **met behulp van dezelfde verbindingstekenreeksen en autorisatiemechanismen die ze anders zouden gebruiken.** Privéeindpunten kunnen worden gebruikt met alle protocollen die worden ondersteund door de App Configuration Store.
+Toepassingen in het VNet kunnen verbinding maken met de configuratie opslag via het persoonlijke eind punt **met behulp van dezelfde verbindings reeksen en autorisatie mechanismen die ze anders zouden gebruiken**. Privé-eind punten kunnen worden gebruikt met alle protocollen die worden ondersteund door de app-configuratie opslag.
 
-Hoewel app-configuratie geen serviceeindpunten ondersteunt, kunnen privéeindpunten worden gemaakt in subnetten die [Service-eindpunten gebruiken.](../virtual-network/virtual-network-service-endpoints-overview.md) Clients in een subnet kunnen veilig verbinding maken met een App Configuration Store met behulp van het privéeindpunt terwijl ze serviceeindpunten gebruiken om toegang te krijgen tot anderen.  
+Hoewel app-configuratie geen service-eind punten ondersteunt, kunnen privé-eind punten worden gemaakt in subnetten die gebruikmaken van [service-eind punten](../virtual-network/virtual-network-service-endpoints-overview.md). Clients in een subnet kunnen veilig verbinding maken met een app-configuratie archief met behulp van het privé-eind punt terwijl service-eind punten worden gebruikt voor toegang tot anderen.  
 
-Wanneer u een privéeindpunt maakt voor een service in uw VNet, wordt een toestemmingsaanvraag ter goedkeuring verzonden naar de eigenaar van het serviceaccount. Als de gebruiker die het privéeindpunt aanvraagt ook eigenaar is van het account, wordt deze toestemmingsaanvraag automatisch goedgekeurd.
+Wanneer u een persoonlijk eind punt voor een service in uw VNet maakt, wordt er een aanvraag voor goed keuring verzonden naar de eigenaar van het service account. Als de gebruiker die het persoonlijke eind punt wil maken ook een eigenaar van het account is, wordt deze aanvraag voor toestemming automatisch goedgekeurd.
 
-Eigenaren van service-account kunnen toestemmingsaanvragen `Private Endpoints` en privéeindpunten beheren via het tabblad van de config-winkel in de [Azure-portal.](https://portal.azure.com)
+De eigenaar van het service account kan toestemming aanvragen en persoonlijke eind punten `Private Endpoints` beheren via het tabblad van de configuratie opslag in de [Azure Portal](https://portal.azure.com).
 
-### <a name="private-endpoints-for-app-configuration"></a>Privéeindpunten voor app-configuratie 
+### <a name="private-endpoints-for-app-configuration"></a>Persoonlijke eind punten voor de app-configuratie 
 
-Wanneer u een privéeindpunt maakt, moet u het app-configuratiearchief opgeven waarmee het wordt verbonden. Als u meerdere app-configuratie-exemplaren in een account hebt, hebt u voor elke winkel een apart privéeindpunt nodig.
+Wanneer u een persoonlijk eind punt maakt, moet u de app-configuratie opslag opgeven waarmee de verbinding tot stand wordt gebracht. Als u meerdere app-configuratie-exemplaren binnen een account hebt, hebt u voor elke opslag een apart persoonlijk eind punt nodig.
 
-### <a name="connecting-to-private-endpoints"></a>Verbinding maken met privéeindpunten
+### <a name="connecting-to-private-endpoints"></a>Verbinding maken met privé-eind punten
 
-Azure vertrouwt op DNS-resolutie om verbindingen van het VNet naar het configuratiearchief over een privékoppeling te routeren. U snel verbindingstekenreeksen vinden in de Azure-portal door uw App Configuration Store te selecteren en vervolgens **Toegangssleutels instellingen** > **te**selecteren.  
+Azure is afhankelijk van de DNS-omzetting om verbindingen van het VNet naar de configuratie opslag via een persoonlijke koppeling te routeren. U kunt snel verbindings reeksen vinden in de Azure portal door uw app-configuratie archief te selecteren en vervolgens **instellingen** > **toegangs sleutels**te selecteren.  
 
 > [!IMPORTANT]
-> Gebruik dezelfde verbindingstekenreeks om verbinding te maken met uw App Configuration Store met behulp van privéeindpunten als u zou gebruiken voor een openbaar eindpunt. Maak geen verbinding met het `privatelink` opslagaccount via de URL van het subdomein.
+> Gebruik hetzelfde connection string om verbinding te maken met uw app-configuratie archief met behulp van persoonlijke eind punten zoals u zou gebruiken voor een openbaar eind punt. Maak geen verbinding met het opslag account met `privatelink` behulp van de subdomein-URL.
 
-## <a name="dns-changes-for-private-endpoints"></a>DNS-wijzigingen voor privéeindpunten
+## <a name="dns-changes-for-private-endpoints"></a>DNS-wijzigingen voor privé-eind punten
 
-Wanneer u een privéeindpunt maakt, wordt de DNS CNAME-bronrecord voor het configuratiearchief `privatelink`bijgewerkt naar een alias in een subdomein met het voorvoegsel . Azure maakt ook een [privé-DNS-zone](../dns/private-dns-overview.md) die overeenkomt met het `privatelink` subdomein, met de DNS A-bronrecords voor de privéeindpunten.
+Wanneer u een persoonlijk eind punt maakt, wordt de DNS CNAME-bron record voor het configuratie archief bijgewerkt naar een alias in een subdomein met `privatelink`het voor voegsel. Azure maakt ook een [persoonlijke DNS-zone](../dns/private-dns-overview.md) die overeenkomt met het `privatelink` subdomein, met de DNS a-bron records voor de privé-eind punten.
 
-Wanneer u de URL van het eindpunt van buiten het VNet oplost, wordt deze opgelost tot het openbare eindpunt van de winkel. Wanneer het privéeindpunt wordt opgelost vanuit het VNet dat het privéeindpunt host, wordt de URL van het eindpunt opgelost tot het privéeindpunt.
+Wanneer u de eind punt-URL van buiten het VNet oplost, wordt deze omgezet in het open bare eind punt van de Store. Bij omzetting in het VNet dat als host fungeert voor het persoonlijke eind punt, wordt de eind punt-URL omgezet naar het persoonlijke eind punt.
 
-U de toegang voor clients buiten het VNet beheren via het openbare eindpunt met behulp van de Azure Firewall-service.
+U kunt de toegang tot clients buiten het VNet beheren via het open bare eind punt met behulp van de Azure Firewall-service.
 
-Deze aanpak maakt toegang tot de winkel **met dezelfde verbindingstekenreeks** mogelijk voor clients op de VNet die de privéeindpunten hosten en clients buiten het VNet.
+Met deze aanpak is toegang tot de Store mogelijk **met dezelfde Connection String** voor clients op het VNet dat als host fungeert voor de persoonlijke eind punten en clients buiten het vnet.
 
-Als u een aangepaste DNS-server in uw netwerk gebruikt, moeten clients de volledig gekwalificeerde domeinnaam (FQDN) voor het serviceeindpunt kunnen oplossen naar het privé-eindpunt-IP-adres. Configureer uw DNS-server om uw subdomein voor privékoppelingen te delegeren `AppConfigInstanceA.privatelink.azconfig.io` aan de privé-DNS-zone voor de VNet of configureer de A-records voor met het privé-eindpunt-IP-adres.
+Als u een aangepaste DNS-server in uw netwerk gebruikt, moeten clients de Fully Qualified Domain Name (FQDN) voor het service-eind punt kunnen omzetten naar het IP-adres van het privé-eind punt. Configureer uw DNS-server voor het delegeren van het subdomein van uw privé-koppeling naar de privé-DNS-zone `AppConfigInstanceA.privatelink.azconfig.io` voor het VNet of configureer de A-records voor met het IP-adres van het privé-eind punt.
 
 > [!TIP]
-> Wanneer u een aangepaste of on-premises DNS-server gebruikt, moet u `privatelink` uw DNS-server configureren om de winkelnaam in het subdomein op te lossen naar het privé-eindpunt-IP-adres. U dit doen door `privatelink` het subdomein te delegeren naar de privé-DNS-zone van de VNet, of door de DNS-zone op uw DNS-server te configureren en de DNS A-records toe te voegen.
+> Wanneer u een aangepaste of lokale DNS-server gebruikt, moet u de DNS-server zo configureren dat de archief naam in `privatelink` het subdomein wordt omgezet in het IP-adres van het privé-eind punt. U kunt dit doen door het `privatelink` subdomein te delegeren aan de privé-DNS-zone van het VNet of door de DNS-zone op de DNS-server te configureren en de DNS A-records toe te voegen.
 
 ## <a name="pricing"></a>Prijzen
 
-Voor het inschakelen van privéeindpunten is een App-configuratiearchief [standaardlaag](https://azure.microsoft.com/pricing/details/app-configuration/) vereist.  Zie [Azure Private Link-prijzen](https://azure.microsoft.com/pricing/details/private-link)voor meer informatie over prijsgegevens voor privékoppelingen.
+Voor het inschakelen van privé-eind punten is een configuratie-archief van de [Standard](https://azure.microsoft.com/pricing/details/app-configuration/) -app vereist.  Zie [prijzen voor persoonlijke](https://azure.microsoft.com/pricing/details/private-link)koppelingen voor Azure voor meer informatie over de prijs informatie voor persoonlijke koppelingen.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Raadpleeg de volgende artikelen voor het maken van een privéeindpunt voor uw app-configuratiearchief:
+Raadpleeg de volgende artikelen voor meer informatie over het maken van een persoonlijk eind punt voor uw app-configuratie archief:
 
-- [Een privéeindpunt maken met het Private Link Center in de Azure-portal](../private-link/create-private-endpoint-portal.md)
-- [Een privéeindpunt maken met Azure CLI](../private-link/create-private-endpoint-cli.md)
-- [Een privéeindpunt maken met Azure PowerShell](../private-link/create-private-endpoint-powershell.md)
+- [Maak een persoonlijk eind punt met behulp van het privé koppelings centrum in de Azure Portal](../private-link/create-private-endpoint-portal.md)
+- [Een persoonlijk eind punt maken met behulp van Azure CLI](../private-link/create-private-endpoint-cli.md)
+- [Een persoonlijk eind punt maken met Azure PowerShell](../private-link/create-private-endpoint-powershell.md)
 
-Meer informatie over het configureren van uw DNS-server met privéeindpunten:
+Meer informatie over het configureren van uw DNS-server met persoonlijke eind punten:
 
 - [Naamomzetting voor resources in virtuele Azure-netwerken](/azure/virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances#name-resolution-that-uses-your-own-dns-server)
-- [DNS-configuratie voor privéeindpunten](/azure/private-link/private-endpoint-overview#dns-configuration)
+- [DNS-configuratie voor privé-eind punten](/azure/private-link/private-endpoint-overview#dns-configuration)

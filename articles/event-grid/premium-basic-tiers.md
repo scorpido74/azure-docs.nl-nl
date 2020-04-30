@@ -1,6 +1,6 @@
 ---
-title: Azure Event Grid Premium- en Basic-lagen
-description: In dit artikel wordt het verschil beschreven tussen Azure Event Grid Premium- en Basic-lagen en wanneer u elk
+title: Azure Event Grid Premium-en Basic-lagen
+description: In dit artikel wordt het verschil beschreven tussen de Azure Event Grid Premium-en Basic-lagen en wanneer u elk gebruikt
 services: event-grid
 author: banisadr
 ms.service: event-grid
@@ -8,43 +8,43 @@ ms.topic: overview
 ms.date: 03/11/2020
 ms.author: babanisa
 ms.openlocfilehash: 7ae73337ccccc2b7d2402cfa2a54ae93552d2465
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "79300716"
 ---
-# <a name="azure-event-grid-premium-and-basic-tiers"></a>Premium premium- en basislagen azure-gebeurtenisraster
-Azure Event Grid heeft twee lagen: **Premium** en **Basic**. De basislaag maakt gebruik van verbruik of betalen per gebruik. Het geeft je alle basistools voor pub/sub die je nodig hebt om Event Grid te gebruiken voor event-driven programmeermodellen. De premium laag gaat nog een stap verder met beveiligingsfuncties gericht op de onderneming. De premium tier is in de vroege **preview** met veel van de functies nog in ontwikkeling.
+# <a name="azure-event-grid-premium-and-basic-tiers"></a>Azure Event Grid Premium-en Basic-lagen
+Azure Event Grid heeft twee lagen: **Premium** en **Basic**. De laag basis maakt gebruik van verbruik of betalen per gebruik-prijzen. Hiermee beschikt u over alle eenvoudige pub/sub-hulpprogram ma's die u nodig hebt om Event Grid te gebruiken voor op gebeurtenissen gebaseerde programmeer modellen. De Premium-laag neemt deze stap verder met beveiligings functies die voor de onderneming zijn gericht. De Premium-laag bevindt zich in vroege **Preview** en veel functies zijn nog in ontwikkeling.
 
 ## <a name="overview"></a>Overzicht
-Alle aangepaste onderwerpen en domeinen in gebeurtenisraster behoren tot de basislaag of de premiumlaag. Vanaf `2020-04-01-preview` de API-versie u de gewenste laag kiezen als onderdeel van het maken van een onderwerp of domein. De standaardwaarde is de basislaag. De onderwerpen en domeinen die zijn gemaakt met oudere API-versies, worden standaard naar de basislaag geleid. Zie Hoe u de laag voor [onderwerpen en domeinen](update-tier.md)wilt bijwerken als u de prijscategorie voor uw onderwerpen en domeinen wilt wijzigen.
+Alle aangepaste onderwerpen en domeinen in Event Grid behoren tot de Basic-laag of de Premium-laag. Vanaf de `2020-04-01-preview` API-versie kunt u de gewenste laag kiezen als onderdeel van het maken van een onderwerp of domein. De standaard waarde is de laag Basic. De onderwerpen en domeinen die zijn gemaakt met oudere API-versies, worden standaard ingesteld op de Basic-laag. Zie [tier bijwerken voor onderwerpen en domeinen voor informatie over](update-tier.md)het wijzigen van de prijs categorie voor uw onderwerpen en domeinen.
 
 ## <a name="capabilities-and-features"></a>Mogelijkheden en functies
 
-In de volgende tabel worden verschillen tussen de lagen beschreven:
+In de volgende tabel worden de verschillen tussen de lagen beschreven:
 
 |       &nbsp;                                           | Basic           | Premium        |
 | ------------------------------------------------------ | --------------- | -------------- |
-| IP-firewallregels voor binnendringen                          | Preview  | Preview |
-| Servicetags voor uitgaande                                | Preview  | Preview |
-| Private endpoint VNet-integratie bij binnendringen          | Niet beschikbaar   | Preview |
+| IP-firewall regels voor binnenkomend verkeer                          | Preview  | Preview |
+| Service tags voor uitgaand verkeer                                | Preview  | Preview |
+| Integratie van het persoonlijke endpoint VNet op inkomend verkeer          | Niet beschikbaar   | Preview |
 
 ## <a name="availability"></a>Beschikbaarheid
-Tijdens de eerste preview zijn premium tier-onderwerpen en domeinen met private endpoint-integratie beschikbaar in de volgende regio's:
+Tijdens de eerste preview-versie van de Premium-laag zijn de onderwerpen en domeinen met persoonlijke endpoint Integration beschikbaar in de volgende regio's:
 
 - VS - oost
 - VS - west 2
 - VS - zuid-centraal
 
 ## <a name="pricing-and-quotas"></a>Prijzen en quota
-Zie [Rekeninghoudende prijzen](https://azure.microsoft.com/pricing/details/event-grid/) voor de prijsdetails van het gebruik van de basislaag. De Premium-laagprijzen zijn nog niet aangekondigd en zijn gratis totdat de prijzen beschikbaar zijn.
+Zie [Event grid prijzen](https://azure.microsoft.com/pricing/details/event-grid/) voor de prijs informatie over het gebruik van de Basic-laag. De prijs voor de Premium-laag is nog niet aangekondigd en is gratis, totdat de prijzen beschikbaar zijn.
 
-De bestaande quota voor onderwerp- en domeintelling en doorvoer zijn van toepassing op zowel premium- als basisniveauresources totdat premiumtier-prijzen zijn aangekondigd.
+De bestaande quota's op het niveau van het onderwerp en het domein en de door Voer zijn van toepassing op de resources Premium en Basic, totdat de prijzen voor de Premium-laag worden aangekondigd.
 
 ## <a name="next-steps"></a>Volgende stappen
 Zie de volgende artikelen:
 
-- Zie het artikel [Prijsprijsniveau bijwerken](update-tier.md) als u wilt upgraden van basislaag naar premiumlaag. 
-- U ip-firewall configureren voor uw Event Grid-bron om de toegang via het openbare internet te beperken vanuit slechts een selecte set IP-adressen of IP-adresbereiken. Zie [Firewall configureren](configure-firewall.md)voor stapsgewijze instructies.
-- U privéeindpunten configureren om de toegang alleen vanaf geselecteerde virtuele netwerken te beperken. Zie [Privéeindpunten configureren](configure-private-endpoints.md)voor stapsgewijze instructies.
+- Zie het artikel [prijs categorie bijwerken](update-tier.md) als u een upgrade wilt uitvoeren van de Basic-laag naar de Premium-laag. 
+- U kunt IP-Firewall voor uw Event Grid-bron configureren om de toegang via het open bare Internet te beperken tot alleen een select set met IP-adressen of IP-adresbereiken. Zie [Configure firewall](configure-firewall.md)(Engelstalig) voor stapsgewijze instructies.
+- U kunt privé-eind punten zo configureren dat alleen toegang wordt beperkt tot geselecteerde virtuele netwerken. Zie voor stapsgewijze instructies [persoonlijke eind punten configureren](configure-private-endpoints.md).

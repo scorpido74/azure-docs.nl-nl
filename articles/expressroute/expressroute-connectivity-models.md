@@ -1,6 +1,6 @@
 ---
-title: 'Azure ExpressRoute: connectiviteitsmodellen'
-description: In dit artikel worden de verschillende vormen van connectiviteit beschreven tussen het netwerk van de klant en Microsoft Azure en Office 365-services. Klanten kunnen gebruikmaken van MPLS-providers, cloudexchanges en Ethernet-providers.
+title: 'Azure-ExpressRoute: connectiviteits modellen'
+description: In dit artikel worden de verschillende modi van connectiviteit tussen het netwerk van de klant Microsoft Azure en de Office 365-Services beschreven. Klanten kunnen gebruikmaken van MPLS-providers, cloudexchanges en Ethernet-providers.
 services: expressroute
 author: cherylmc
 ms.service: expressroute
@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 09/18/2019
 ms.author: cherylmc
 ms.openlocfilehash: 375d2f9d3b455c0495c69f2b23d62b1ab6522710
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79280883"
 ---
 # <a name="expressroute-connectivity-models"></a>ExpressRoute-connectiviteitsmodellen
@@ -20,10 +20,10 @@ U kunt op drie verschillende manieren een verbinding maken tussen uw on-premises
 
 ![Diagram van ExpressRoute-connectiviteitsmodellen](./media/expressroute-connectivity-models/expressroute-connectivity-models-diagram.png)
 
-## <a name="co-located-at-a-cloud-exchange"></a><a name="CloudExchange"></a>Co-located bij een cloudexchange
+## <a name="co-located-at-a-cloud-exchange"></a><a name="CloudExchange"></a>Co-locatie op een Cloud Exchange
 Als u zich bevindt op dezelfde locatie als een exchange-cloud, kunt u virtuele overlappende verbindingen met de Microsoft Cloud aanvragen via de Ethernet exchange van de co-locatieprovider. Co-locatieproviders kunnen Laag-2-overlappende verbindingen of beheerde Laag-3 overlappende verbindingen tussen uw infrastructuur in de co-locatiefaciliteit en de Microsoft Cloud aanbieden.
 
-## <a name="point-to-point-ethernet-connections"></a><a name="Ethernet"></a>Point-to-point Ethernet-verbindingen
+## <a name="point-to-point-ethernet-connections"></a><a name="Ethernet"></a>Point-to-Point Ethernet-verbindingen
 U kunt uw on-premises datacenters/kantoren met de Microsoft Cloud verbinden via point-to-point Ethernet-koppelingen. Point-to-point Ethernet-providers kunnen Laag-2-verbindingen of beheerde Laag-3-verbindingen bieden tussen uw locatie en de Microsoft Cloud.
 
 ## <a name="any-to-any-ipvpn-networks"></a><a name="IPVPN"></a>Any-to-any (IPVPN) netwerken

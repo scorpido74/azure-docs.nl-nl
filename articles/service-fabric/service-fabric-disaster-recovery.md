@@ -1,216 +1,216 @@
 ---
-title: Azure Service Fabric-herstel na noodgevallen
-description: Azure Service Fabric biedt mogelijkheden om rampen het probleem aan te pakken. In dit artikel worden de soorten rampen beschreven die zich kunnen voordoen en hoe ermee om te gaan.
+title: Herstel na nood gevallen voor Azure Service Fabric
+description: Azure Service Fabric biedt mogelijkheden voor het afhandelen van rampen. In dit artikel worden de soorten rampen beschreven die zich kunnen voordoen en hoe u deze kunt verwerken.
 author: masnider
 ms.topic: conceptual
 ms.date: 08/18/2017
 ms.author: masnider
 ms.openlocfilehash: b29985d40ae3a1bf582099e998e000fed83460f6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79371644"
 ---
-# <a name="disaster-recovery-in-azure-service-fabric"></a>Herstel na noodgevallen in Azure Service Fabric
-Een essentieel onderdeel van het leveren van hoge beschikbaarheid is ervoor te zorgen dat services alle verschillende soorten storingen kunnen overleven. Dit is vooral belangrijk voor storingen die ongepland zijn en buiten uw controle vallen. 
+# <a name="disaster-recovery-in-azure-service-fabric"></a>Herstel na nood geval in azure Service Fabric
+Een essentieel onderdeel van het leveren van hoge Beschik baarheid zorgt ervoor dat Services alle verschillende soorten fouten kunnen overlaten. Dit is vooral belang rijk voor storingen die ongepland zijn en buiten uw besturings element vallen. 
 
-In dit artikel worden enkele veelvoorkomende foutmodi beschreven die mogelijk rampen zijn als ze niet correct zijn gemodelleerd en beheerd. Het bespreekt ook mitigaties en maatregelen te nemen als een ramp toch gebeurt. Het doel is om het risico van downtime of gegevensverlies te beperken of te elimineren wanneer er al dan niet geplande storingen optreden.
+In dit artikel worden enkele veelvoorkomende fout modi beschreven die nood herstel kunnen zijn als ze niet correct worden gemodelleerd en beheerd. Er worden ook oplossingen en acties beschreven die moeten worden uitgevoerd als er toch een nood geval is. Het doel is om het risico van uitval tijd of gegevens verlies te beperken of te elimineren wanneer er fouten optreden, gepland of anderszins.
 
-## <a name="avoiding-disaster"></a>Het vermijden van rampen
-Het belangrijkste doel van Azure Service Fabric is om u te helpen zowel uw omgeving als uw services zo te modelleren dat veelvoorkomende fouttypen geen rampen zijn. 
+## <a name="avoiding-disaster"></a>Nood gevallen voor komen
+Het belangrijkste doel van Azure Service Fabric is om u te helpen uw omgeving en uw services zo te model leren dat veelvoorkomende fout typen geen rampen zijn. 
 
-In het algemeen zijn er twee soorten scenario's voor rampen/storingen:
-- Hardware- en softwarefouten
+Over het algemeen zijn er twee soorten scenario's voor rampen/mislukken:
+- Hardware-en software fouten
 - Operationele fouten
 
-### <a name="hardware-and-software-faults"></a>Hardware- en softwarefouten
-Hardware- en softwarefouten zijn onvoorspelbaar. De eenvoudigste manier om fouten te overleven is het uitvoeren van meer kopieën van de service over hardware of software fout grenzen. 
+### <a name="hardware-and-software-faults"></a>Hardware-en software fouten
+Hardware-en software fouten zijn onvoorspelbaar. De eenvoudigste manier om fouten te overleven, is dat er meer exemplaren van de service worden uitgevoerd op de grenzen van hardware-of software fouten. 
 
-Als uw service bijvoorbeeld slechts op één machine wordt uitgevoerd, is het uitvallen van die ene machine een ramp voor die service. De eenvoudige manier om deze ramp te voorkomen is ervoor te zorgen dat de service op meerdere machines wordt uitgevoerd. Testen is ook nodig om ervoor te zorgen dat het uitvallen van één machine de bedrijfsservice niet verstoort. Capaciteitsplanning zorgt ervoor dat een vervangende instantie elders kan worden gemaakt en dat capaciteitsvermindering de resterende services niet overbelast. 
+Als uw service bijvoorbeeld op slechts één computer wordt uitgevoerd, is het mislukken van de ene computer een nood geval voor die service. De eenvoudige manier om deze nood geval te vermijden, is om ervoor te zorgen dat de service wordt uitgevoerd op meerdere computers. Testen is ook nodig om ervoor te zorgen dat de uitvoering van de actieve service niet wordt verstoord door de ene computer. Capaciteits planning zorgt ervoor dat een vervangend exemplaar op een andere locatie kan worden gemaakt en dat de resterende Services niet overbelasten. 
 
-Hetzelfde patroon werkt, ongeacht wat je probeert te voorkomen dat het falen van. Als u zich bijvoorbeeld zorgen maakt over het mislukken van een SAN, loopt u meerdere SAN's tegen. Als u zich zorgen maakt over het verlies van een rack van servers, loopt u over meerdere racks. Als u zich zorgen maakt over het verlies van datacenters, moet uw service worden uitgevoerd in meerdere Azure-regio's, in meerdere Azure Availability Zones of in uw eigen datacenters. 
+Hetzelfde patroon is afhankelijk van wat u wilt voor komen dat de fout optreedt. Als u zich bijvoorbeeld zorgen maakt over het mislukken van een SAN, voert u uit op meerdere San's. Als u zich zorgen maakt over het verlies van een rek met servers, voert u uit op meerdere racks. Als u zich zorgen maakt over het verlies van data centers, moet uw service worden uitgevoerd in meerdere Azure-regio's, op meerdere Azure-beschikbaarheidszones, of in uw eigen data centers. 
 
-Wanneer een service over meerdere fysieke instanties (machines, racks, datacenters, regio's) wordt overspannen, bent u nog steeds onderhevig aan bepaalde typen gelijktijdige fouten. Maar enkele en zelfs meerdere storingen van een bepaald type (bijvoorbeeld een enkele virtuele machine of netwerkkoppeling niet) worden automatisch verwerkt en dus zijn niet langer een "ramp." 
+Wanneer een service wordt verdeeld over meerdere fysieke instanties (machines, rekken, data centers, regio's), bent u nog steeds van toepassing op enkele typen gelijktijdige storingen. Maar eenmalige en zelfs meerdere storingen van een bepaald type (bijvoorbeeld een storing in één virtuele machine of netwerk koppeling) worden automatisch verwerkt en zijn dus niet langer een ' ramp '. 
 
-Service Fabric biedt mechanismen voor het uitbreiden van het cluster en behandelt het terugbrengen van mislukte knooppunten en services. Service Fabric maakt het ook mogelijk om veel exemplaren van uw services uit te voeren om te voorkomen dat ongeplande fouten in echte rampen worden omgezet.
+Service Fabric voorziet in mechanismen voor het uitbreiden van het cluster en het is niet meer gelukt om mislukte knoop punten en services terug te brengen. Service Fabric kunt ook veel exemplaren van uw services uitvoeren om ongeplande storingen te voor komen bij het omzetten in echte rampen.
 
-Er kunnen redenen zijn waarom het uitvoeren van een implementatie die groot genoeg is om storingen te overspannen, niet haalbaar is. Er zijn bijvoorbeeld meer hardwarebronnen nodig dan u bereid bent te betalen ten opzichte van de kans op een mislukking. Wanneer u te maken hebt met gedistribueerde toepassingen, kunnen extra communicatiehopof statusreplicatiekosten over geografische afstanden onaanvaardbare latentie veroorzaken. Waar deze lijn wordt getrokken verschilt voor elke toepassing. 
+Er kunnen redenen zijn waarom het uitvoeren van een implementatie die groot genoeg is voor uitval, niet haalbaar is. Het is bijvoorbeeld mogelijk dat er meer hardwarebronnen worden gebruikt dan u wilt betalen ten opzichte van de kans op fouten. Wanneer u met gedistribueerde toepassingen communiceert, kunnen er voor extra communicatie-of status replicatie kosten over geografische afstand een onaanvaardbaar latentie optreden. Wanneer deze regel wordt getekend, verschilt voor elke toepassing. 
 
-Voor softwarefouten in het bijzonder, de fout kan worden in de service die u probeert te schalen. In dit geval voorkomen meer kopieën de ramp niet, omdat de foutvoorwaarde in alle instanties is gecorreleerd.
+Voor software fouten is het mogelijk dat de fout zich in de service bevindt die u probeert te schalen. In dit geval is het niet mogelijk om de nood herstel bewerking te voor komen, omdat de fout voorwaarde is afgestemd op alle exemplaren.
 
 ### <a name="operational-faults"></a>Operationele fouten
-Zelfs als uw service is overspannen over de hele wereld met veel ontslagen, kan het nog steeds rampzalige gebeurtenissen ervaren. Iemand kan bijvoorbeeld per ongeluk de DNS-naam voor de service opnieuw configureren of deze zonder meer verwijderen. 
+Zelfs als uw service wordt verspreid over de hele wereld met veel redundantie, kan deze nog steeds disastrous-gebeurtenissen ervaren. Iemand kan bijvoorbeeld per ongeluk de DNS-naam voor de service opnieuw configureren of het verwijderen. 
 
-Stel dat u een stateful Service Fabric-service had en dat iemand die service per ongeluk heeft verwijderd. Tenzij er een andere mitigatie, die dienst en alle van de staat die het had zijn nu verdwenen. Dit soort operationele rampen ("oeps") vereisen andere oplossingen en stappen voor herstel dan reguliere ongeplande fouten. 
+Stel dat u een stateful Service Fabric-service hebt en iemand die service per ongeluk hebt verwijderd. Tenzij er sprake is van een andere beperking, wordt die service en alle statussen die het nu had, verwijderd. Voor deze typen operationele rampen (' al') zijn verschillende oplossingen vereist en de herstel stappen dan bij normale, niet-geplande storingen. 
 
-De beste manieren om dit soort operationele fouten te voorkomen zijn:
-- Beperk de operationele toegang tot de omgeving.
-- Controleer gevaarlijke operaties strikt.
-- Stel automatisering op, voorkom handmatige of out-of-bandwijzigingen en valideer specifieke wijzigingen ten opzichte van de omgeving voordat u deze opstelt.
-- Zorg ervoor dat destructieve bewerkingen 'zacht' zijn. Zachte bewerkingen worden niet onmiddellijk van kracht of kunnen binnen een tijdvenster ongedaan worden gemaakt.
+De beste manieren om deze typen operationele fouten te vermijden, zijn:
+- Beperk operationele toegang tot de omgeving.
+- Beoordeel gevaarlijke bewerkingen strikt.
+- Pas automatisering toe, voorkom hand matige of buiten-band wijzigingen en valideer specifieke wijzigingen in de omgeving voordat u ze toebrengt.
+- Zorg ervoor dat destructieve bewerkingen ' zacht ' zijn. Tijdelijke bewerkingen worden niet direct van kracht of kunnen ongedaan worden gemaakt binnen een tijd venster.
 
-Service Fabric biedt mechanismen om operationele fouten te voorkomen, zoals het bieden van [op rollen gebaseerde](service-fabric-cluster-security-roles.md) toegangscontrole voor clusterbewerkingen. De meeste van deze operationele fouten vereisen echter organisatorische inspanningen en andere systemen. Service Fabric biedt mechanismen voor het overleven van operationele fouten, met name [back-up en herstel voor stateful services.](service-fabric-backuprestoreservice-quickstart-azurecluster.md)
+Service Fabric biedt mechanismen om operationele fouten te voor komen, zoals het bieden van toegangs beheer op [basis van rollen](service-fabric-cluster-security-roles.md) voor cluster bewerkingen. Voor de meeste van deze operationele fouten zijn echter bedrijfs activiteiten en andere systemen vereist. Service Fabric biedt mechanismen voor het naleven van operationele fouten, met name [back-up en herstel voor stateful Services](service-fabric-backuprestoreservice-quickstart-azurecluster.md).
 
 ## <a name="managing-failures"></a>Fouten beheren
-Het doel van Service Fabric is het automatisch beheren van storingen. Maar om bepaalde soorten fouten te verwerken, moeten services extra code hebben. Andere soorten storingen mogen om veiligheidsredenen en _bedrijfscontinuïteitsredenen niet_ automatisch worden aangepakt. 
+Het doel van Service Fabric is het automatisch beheer van fouten. Voor het verwerken van bepaalde soorten fouten, moeten services echter extra code hebben. Andere soorten fouten mogen _niet_ automatisch worden aangepakt om redenen van veiligheid en bedrijfs continuïteit. 
 
-### <a name="handling-single-failures"></a>Afzonderlijke fouten verwerken
-Enkele machines kunnen om allerlei redenen uitvallen. Soms is het hardware oorzaken, zoals voedingen en netwerk hardware storingen. Andere storingen zijn in software. Deze omvatten storingen van het besturingssysteem en de service zelf. Service Fabric detecteert automatisch dit soort storingen, waaronder gevallen waarin de machine wordt geïsoleerd van andere machines als gevolg van netwerkproblemen.
+### <a name="handling-single-failures"></a>Verwerking van enkele fouten
+Eén machine kan om verschillende redenen mislukken. Soms zijn er hardware-oorzaken, zoals voedingen en netwerkhardware. Andere fouten bevinden zich in software. Dit zijn onder andere fouten van het besturings systeem en de service zelf. Service Fabric detecteert deze typen fouten automatisch, met inbegrip van gevallen waarin de computer wordt geïsoleerd van andere computers vanwege netwerk problemen.
 
-Ongeacht het type service resulteert het uitvoeren van één exemplaar in downtime voor die service als die ene kopie van de code om welke reden dan ook mislukt. 
+Ongeacht het type van de service, leidt het uitvoeren van één exemplaar tot uitval tijd voor die service als één exemplaar van de code om een of andere reden mislukt. 
 
-Om een enkele fout te verwerken, is het eenvoudigste wat u doen ervoor zorgen dat uw services standaard op meer dan één knooppunt worden uitgevoerd. Voor staatloze diensten, `InstanceCount` zorg ervoor dat groter is dan 1. Voor stateful diensten, de `TargetReplicaSetSize` minimale `MinReplicaSetSize` aanbeveling is dat en zijn beide ingesteld op 3. Het uitvoeren van meer kopieën van uw servicecode zorgt ervoor dat uw service elke enkele fout automatisch kan verwerken. 
+Als u één storing wilt verwerken, kunt u het eenvoudigste doen door ervoor te zorgen dat uw services standaard worden uitgevoerd op meer dan één knoop punt. Zorg ervoor dat `InstanceCount` er meer dan 1 is voor stateless Services. Voor stateful Services is `TargetReplicaSetSize` `MinReplicaSetSize` de minimale aanbeveling ingesteld op 3. Wanneer u meer exemplaren van uw service code uitvoert, zorgt u ervoor dat de service een enkele fout automatisch kan verwerken. 
 
-### <a name="handling-coordinated-failures"></a>Omgaan met gecoördineerde storingen
-Gecoördineerde fouten in een cluster kunnen het gevolg zijn van geplande of ongeplande infrastructuurfouten en -wijzigingen of geplande softwarewijzigingen. Service Fabric modelleert infrastructuurzones die gecoördineerde storingen ervaren als *foutdomeinen.* Gebieden die gecoördineerde softwarewijzigingen zullen ervaren, worden gemodelleerd als *upgradedomeinen.* Zie [Een cluster servicestructuur beschrijven met clusterbeheer voor](service-fabric-cluster-resource-manager-cluster-description.md)foutendomeinen, upgradedomeinen en clustertopologie.
+### <a name="handling-coordinated-failures"></a>Gecoördineerde fouten verwerken
+Gecoördineerde fouten in een cluster kunnen worden veroorzaakt door geplande of ongeplande infrastructuur fouten en wijzigingen, of geplande software wijzigingen. Service Fabric modellen infrastructuur zones die gecoördineerde fouten als *fout domeinen*ondervinden. Gebieden die gecoördineerde software wijzigingen zullen ondervinden, worden als *upgrade domeinen*gemodelleerd. Zie [een service Fabric cluster beschrijven met cluster resource manager](service-fabric-cluster-resource-manager-cluster-description.md)voor meer informatie over fout domeinen, upgrade domeinen en cluster topologie.
 
-Service Fabric houdt standaard rekening met fout- en upgradedomeinen bij het plannen van de plaats waar uw services moeten worden uitgevoerd. Service Fabric probeert er standaard voor te zorgen dat uw services in verschillende fout- en upgradedomeinen worden uitgevoerd, zodat uw services beschikbaar blijven als er geplande of ongeplande wijzigingen plaatsvinden. 
+Service Fabric houdt standaard rekening met de fout-en upgrade domeinen bij het plannen waar uw services moeten worden uitgevoerd. Service Fabric probeert standaard om ervoor te zorgen dat uw services worden uitgevoerd op verschillende fout-en upgrade domeinen, zodat de services beschikbaar blijven als er geplande of ongeplande wijzigingen plaatsvinden. 
 
-Stel dat het uitvallen van een stroombron ervoor zorgt dat alle machines op een rack tegelijkertijd uitvallen. Met meerdere exemplaren van de service draait, het verlies van veel machines in fout domein storing verandert in slechts een ander voorbeeld van een enkele fout voor een service. Daarom is het beheren van fout- en upgradedomeinen van cruciaal belang om een hoge beschikbaarheid van uw services te garanderen. 
+Stel bijvoorbeeld dat een storing van een energie bron ervoor zorgt dat alle machines in een rek gelijktijdig worden uitgevoerd. Als er meerdere exemplaren van de service worden uitgevoerd, wordt het verlies van veel computers in fout domein storing in slechts een ander voor beeld van één storing voor een service. Daarom is het beheer van fout-en upgrade domeinen essentieel om een hoge Beschik baarheid van uw services te garanderen. 
 
-Wanneer u Service Fabric in Azure uitvoert, worden foutdomeinen en upgradedomeinen automatisch beheerd. In andere omgevingen zijn ze dat misschien niet. Als u uw eigen clusters on-premises bouwt, moet u uw lay-out van het foutdomein correct toewijzen en plannen.
+Wanneer u Service Fabric in azure uitvoert, worden fout domeinen en upgrade domeinen automatisch beheerd. In andere omgevingen zijn ze mogelijk niet. Als u uw eigen clusters on-premises bouwt, moet u ervoor zorgen dat u de indeling van het fout domein correct toewijst en plant.
 
-Upgradedomeinen zijn handig voor het modelleren van gebieden waar software tegelijkertijd wordt geüpgraded. Hierdoor definiëren upgradedomeinen ook vaak de grenzen waar software wordt uitgeschakeld tijdens geplande upgrades. Upgrades van zowel Service Fabric als uw services volgen hetzelfde model. Zie voor meer informatie over het uitvoeren van upgrades, upgradedomeinen en het statusmodel Service Fabric dat helpt voorkomen dat onbedoelde wijzigingen van invloed zijn op het cluster en uw service:
+Upgrade domeinen zijn handig voor het maken van een upgrade van de software op hetzelfde moment. Als gevolg hiervan definiëren upgrade domeinen ook vaak de grenzen waarin software wordt uitgevoerd tijdens geplande upgrades. Upgrades van zowel Service Fabric als uw services volgen hetzelfde model. Zie voor meer informatie over rolling upgrades, het upgraden van domeinen en het Service Fabric status model waarmee wordt voor komen dat onbedoelde wijzigingen van invloed zijn op het cluster en uw service.
 
  - [Toepassingsupgrade](service-fabric-application-upgrade.md)
- - [Zelfstudie voor het bijwerken van toepassingen](service-fabric-application-upgrade-tutorial.md)
- - [Service Fabric-statusmodel](service-fabric-health-introduction.md)
+ - [Zelf studie voor toepassings upgrade](service-fabric-application-upgrade-tutorial.md)
+ - [Service Fabric status model](service-fabric-health-introduction.md)
 
-U de lay-out van uw cluster visualiseren met behulp van de clusterkaart in [Service Fabric Explorer:](service-fabric-visualizing-your-cluster.md)
+U kunt de indeling van uw cluster visualiseren met behulp van de cluster toewijzing in [service Fabric Explorer](service-fabric-visualizing-your-cluster.md):
 
 <center>
 
-![Knooppunten verspreid over foutdomeinen in Service Fabric Explorer][sfx-cluster-map]
+![Knoop punten worden verdeeld over fout domeinen in Service Fabric Explorer][sfx-cluster-map]
 </center>
 
 > [!NOTE]
-> Het modelleren van foutgebieden, het uitvoeren van upgrades, het uitvoeren van veel exemplaren van uw servicecode en -status, plaatsingsregels om ervoor te zorgen dat uw services over fout- en upgradedomeinen worden uitgevoerd en ingebouwde statusbewaking zijn slechts *enkele* van de functies die Service Fabric biedt om te voorkomen dat normale operationele problemen en fouten in rampen veranderen. 
+> Het model leren van fouten, rolling upgrades, het uitvoeren van veel exemplaren van uw service code en-status, plaatsings regels om ervoor te zorgen dat uw services worden uitgevoerd in fout-en upgrade domeinen en ingebouwde status controle is slechts *enkele* van de functies die service Fabric biedt om normale operationele problemen en storingen in nood gevallen te houden. 
 >
 
-### <a name="handling-simultaneous-hardware-or-software-failures"></a>Omgaan met gelijktijdige hardware- of softwarefouten
-We hebben het over losse mislukkingen gehad. Zoals u zien, zijn ze gemakkelijk te hanteren voor zowel stateless als stateful services door meer kopieën van de code (en status) te laten uitvoeren in fout- en upgradedomeinen. 
+### <a name="handling-simultaneous-hardware-or-software-failures"></a>Gelijktijdige verwerking van hardware-of software fouten
+Er zijn enkele fouten opgetreden. Zoals u kunt zien, is het eenvoudig om zowel stateless als stateful services te verwerken door meer kopieën van de code (en status) uit te voeren die worden uitgevoerd op fout-en upgrade domeinen. 
 
-Meerdere gelijktijdige willekeurige fouten kunnen ook gebeuren. Deze hebben meer kans om te leiden tot downtime of een werkelijke ramp.
+Er kunnen ook meerdere gelijktijdige, wille keurige fouten optreden. Dit is waarschijnlijker om te leiden tot downtime of een echte nood geval.
 
 
-#### <a name="stateless-services"></a>Staatloze diensten
-Het aantal instanties voor een statusloze service geeft het gewenste aantal exemplaren aan dat moet worden uitgevoerd. Wanneer een (of alle) exemplaren mislukken, reageert Service Fabric door automatisch vervangende exemplaren op andere knooppunten te maken. Service Fabric blijft vervangingen maken totdat de service weer op de gewenste instantie is.
+#### <a name="stateless-services"></a>Stateless Services
+Met het aantal exemplaren voor een stateless service wordt het gewenste aantal exemplaren aangegeven dat moet worden uitgevoerd. Wanneer een (of alle) van de instanties mislukt, Service Fabric reageert door automatisch vervangende instanties te maken op andere knoop punten. Service Fabric gaat door met het maken van vervangingen totdat de service weer het aantal gewenste instanties heeft bereikt.
 
-Stel dat de statusloze service `InstanceCount` een waarde van -1 heeft. Deze waarde betekent dat één instantie moet worden uitgevoerd op elk knooppunt in het cluster. Als sommige van deze exemplaren mislukken, detecteert Service Fabric dat de service niet in de gewenste status is en probeert het de exemplaren te maken op de knooppunten waar ze ontbreken.
+Stel bijvoorbeeld dat de stateless service de `InstanceCount` waarde-1 heeft. Deze waarde betekent dat er één exemplaar moet worden uitgevoerd op elk knoop punt in het cluster. Als sommige van deze instanties mislukken, detecteert Service Fabric dat de service niet de gewenste status heeft en probeert de instanties te maken op de knoop punten waar ze ontbreken.
 
-#### <a name="stateful-services"></a>Staatsdiensten
-Er zijn twee soorten stateful diensten:
-- Stateful met aanhoudende staat.
-- Stateful met niet-aanhoudende staat. (Staat wordt opgeslagen in het geheugen.)
+#### <a name="stateful-services"></a>Stateful Services
+Er zijn twee soorten stateful-Services:
+- Stateful met persistente status.
+- Stateful met niet-persistente status. (Status wordt opgeslagen in het geheugen.)
 
-Herstel van het mislukken van een stateful service is afhankelijk van het type van de stateful service, hoeveel replica's de service had en hoeveel replica's zijn mislukt.
+Herstel van uitval van een stateful service is afhankelijk van het type stateful service, hoeveel replica's de service had en hoeveel replica's er zijn mislukt.
 
-In een stateful service worden binnenkomende gegevens gerepliceerd tussen replica's (de primaire en alle actieve secondaries). Als een meerderheid van de replica's de gegevens ontvangt, worden gegevens beschouwd als *quorumvastgelegd.* (Voor vijf replica's zijn er drie een quorum.) Dit betekent dat er op elk moment ten minste een quorum van replica's met de nieuwste gegevens zal zijn. Als replica's mislukken (zeg twee van de vijf), kunnen we de quorumwaarde gebruiken om te berekenen of we kunnen herstellen. (Omdat de resterende drie van de vijf replica's nog steeds up, is het gegarandeerd dat ten minste een replica volledige gegevens zal hebben.)
+In een stateful service worden inkomende gegevens gerepliceerd tussen replica's (de primaire en eventuele actieve secundairen). Als een meerderheid van de replica's de gegevens ontvangt, worden gegevens beschouwd als *quorum* -vastgelegd. (Voor vijf replica's is drie een quorum.) Dit betekent dat er op elk moment ten minste een quorum van replica's is met de meest recente gegevens. Als replica's mislukken (bijvoorbeeld twee van vijf), kunnen we de quorum waarde gebruiken om te berekenen of we kunnen herstellen. (Omdat de resterende drie van de vijf replica's nog steeds actief zijn, is het gegarandeerd dat ten minste één replica volledige gegevens bevat.)
 
-Wanneer een quorum van replica's mislukt, wordt de partitie aangegeven in een *quorumverliesstatus* te zijn. Stel dat een partitie vijf replica's heeft, wat betekent dat ten minste drie gegarandeerd volledige gegevens hebben. Als een quorum (drie van de vijf) replica's mislukt, kan Service Fabric niet bepalen of de resterende replica's (twee van de vijf) voldoende gegevens hebben om de partitie te herstellen. In gevallen waarin Service Fabric quorumverlies detecteert, is het standaardgedrag ervan om extra schrijfbewerkingen naar de partitie te voorkomen, quorumverlies te declareren en te wachten tot een quorum replica's is hersteld.
+Wanneer een quorum van replica's mislukt, wordt de partitie gedeclareerd met de status *quorum verlies* . Stel dat een partitie vijf replica's bevat. Dit betekent dat ten minste drie de volledige gegevens zijn gegarandeerd. Als er sprake is van een quorum (drie uitgaand vijf) van replica's, kan Service Fabric niet bepalen of de resterende replica's (twee van de vijf) voldoende gegevens hebben om de partitie te herstellen. In gevallen waarin Service Fabric quorum verlies detecteert, is het standaard gedrag van het voor komen van extra schrijf bewerkingen naar de partitie, het declareren van quorum verlies en het wachten op het herstellen van een quorum van replica's.
 
-Bepalen of er een ramp is gebeurd voor een stateful service en deze vervolgens te beheren, volgt drie fasen:
+Als u wilt bepalen of een nood geval is opgetreden voor een stateful service en u deze vervolgens wilt beheren, volgt u drie fasen:
 
-1. Bepalen of er quorumverlies is geweest of niet.
+1. Vaststellen of er sprake is van quorum verlies of niet.
    
-   Quorumverlies wordt aangegeven wanneer een meerderheid van de replica's van een stateful service tegelijkertijd is uitgeschakeld.
-2. Bepalen of het quorumverlies permanent is of niet.
+   Quorum verlies wordt gedeclareerd wanneer een meerderheid van de replica's van een stateful service tegelijk actief is.
+2. Vaststellen of het quorum verlies permanent is of niet.
    
-   Meestal zijn storingen van voorbijgaande aard. Processen worden opnieuw gestart, knooppunten worden opnieuw gestart, virtuele machines worden opnieuw gestart en netwerkpartities genezen. Soms, hoewel, mislukkingen zijn permanent. Of fouten permanent zijn of niet hangt af van de vraag of de stateful service blijft zijn status of dat het houdt het alleen in het geheugen: 
+   De meeste tijd zijn fouten tijdelijk. De processen worden opnieuw gestart, de knoop punten opnieuw worden gestart, de virtuele machines opnieuw worden gestart en de netwerk partities worden hersteld. Soms zijn storingen permanent. Of storingen permanent zijn of niet afhankelijk zijn van het feit of de stateful service de status persistent houdt of dat deze alleen in het geheugen wordt bewaard: 
    
-   - Voor services zonder aanhoudende status leidt een fout van een quorum of meer replica's _onmiddellijk_ tot blijvend quorumverlies. Wanneer Service Fabric quorumverlies detecteert in een stateful niet-permanente service, gaat het onmiddellijk over tot stap 3 door (mogelijk) gegevensverlies aan te geven. Doorgaan naar gegevensverlies is logisch omdat Service Fabric weet dat het geen zin heeft om te wachten tot de replica's terugkomen. Zelfs als ze herstellen, zullen de gegevens verloren gaan vanwege het niet-aanhoudende karakter van de service.
-   - Voor stateful persistente services zorgt een fout van een quorum of meer replica's ervoor dat Service Fabric wacht tot de replica's terugkomen en het quorum herstellen. Dit resulteert in een servicestoring voor _eventuele schrijfbewerkingen_ naar de getroffen partitie (of 'replicaset') van de service. Echter, leest kan nog steeds mogelijk zijn met verminderde consistentie garanties. De standaardhoeveelheid tijd die Service Fabric wacht tot het quorum wordt hersteld, is *oneindig,* omdat doorgaan een (potentiële) gebeurtenis voor gegevensverlies is en andere risico's met zich meebrengt. Dit betekent dat Service Fabric niet doorgaat naar de volgende stap, tenzij een beheerder actie onderneemt om gegevensverlies te declareren.
-3. Bepalen of gegevens verloren gaan en herstellen van back-ups.
+   - Voor services zonder persistente status, een fout in een quorum of meer van replica's resulteert _onmiddellijk_ in permanent quorum verlies. Wanneer Service Fabric quorum verlies detecteert in een stateful, niet-persistente service, wordt dit onmiddellijk door gegeven aan stap 3 door het declareren van (potentieel) gegevens verlies. Door gaan met gegevens verlies is zinvol omdat Service Fabric weet dat er geen punt is om te wachten tot de replica's weer worden teruggestuurd. Zelfs als ze worden hersteld, gaan de gegevens verloren vanwege de niet-persistente aard van de service.
+   - Als er sprake is van stateful permanente Services, treedt er een fout op in een quorum of meer van replica's, Service Fabric wachten tot de replica's weer worden teruggezet en het quorum herstellen. Dit resulteert in een service onderbreking voor _schrijf bewerkingen_ naar de betrokken partitie (of ' replicaset ') van de service. Lees bewerkingen kunnen echter nog steeds mogelijk zijn met beperkte consistentie garanties. De standaard hoeveelheid tijd die Service Fabric wacht totdat het quorum is hersteld, is *oneindig*, omdat het volgen van een (mogelijke) gegevens verlies gebeurtenis plaatsvindt en andere Risico's ondervindt. Dit betekent dat Service Fabric niet verder gaat met de volgende stap, tenzij een beheerder actie onderneemt om gegevens verlies te declareren.
+3. Bepalen of gegevens verloren gaan en herstellen vanaf back-ups.
 
-   Als quorumverlies is gedeclareerd (automatisch of via administratieve actie), gaan Service Fabric en de services verder met het bepalen of gegevens daadwerkelijk verloren zijn gegaan. Op dit punt, Service Fabric weet ook dat de andere replica's niet terugkomen. Dat was de beslissing die werd genomen toen we niet langer wachtten tot het quorumverlies zichzelf zou oplossen. De beste manier van handelen voor de dienst is meestal te bevriezen en te wachten op specifieke administratieve interventie.
+   Als quorum verlies is gedeclareerd (automatisch of via beheer actie), Service Fabric en de Services verplaatsen op om te bepalen of de gegevens werkelijk verloren zijn gegaan. Op dit Service Fabric punt weet u ook dat de andere replica's niet meer terugkeren. Dit was de beslissing die werd genomen toen werd gewacht tot het quorum verlies vanzelf is opgelost. De beste actie voor de service is meestal om te blok keren en te wachten op specifieke administratieve interventie.
    
-   Wanneer Service Fabric `OnDataLossAsync` de methode aanroept, is dit altijd vanwege _vermoedelijk gegevensverlies._ Service Fabric zorgt ervoor dat deze oproep wordt geleverd aan de _best_ overgebleven replica. Dit is welke replica heeft de meeste vooruitgang geboekt. 
+   Als Service Fabric de `OnDataLossAsync` methode aanroept, is dit altijd het gevolg van _mogelijk_ gegevens verlies. Service Fabric zorgt ervoor dat deze aanroep wordt afgeleverd bij de _meest_ resterende replica. Dit is de meest voortgang van de replica. 
    
-   De reden waarom we altijd zeggen _dat er sprake_ is van vermoedelijk e-bestand verlies, is dat het mogelijk is dat de resterende replica dezelfde status heeft als de primaire status toen het quorum verloren ging. Echter, zonder die staat om het te vergelijken met, er is geen goede manier voor Service Fabric of operators om zeker te weten.     
+   De reden hiervoor is dat het waarschijnlijk is _dat gegevens verloren_ gaan, omdat de rest van de replica dezelfde status heeft als het primaire exemplaar toen het quorum werd verloren. Zonder deze status te vergelijken met, is er echter geen goede manier voor Service Fabric of Opera tors om zeker te weten.     
    
-   Dus wat doet een `OnDataLossAsync` typische implementatie van de methode doen?
-   1. De implementatie `OnDataLossAsync` logs die is geactiveerd, en het vuurt uit alle nodige administratieve waarschuwingen.
-   1. Meestal, de uitvoering pauzeert en wacht op verdere beslissingen en handmatige acties worden genomen. Dit komt omdat zelfs als back-ups beschikbaar zijn, ze mogelijk moeten worden voorbereid. 
+   Wat doet een typische implementatie van de `OnDataLossAsync` -methode?
+   1. De implementatie logboeken `OnDataLossAsync` die zijn geactiveerd en die eventuele nood zakelijke beheerders waarschuwingen worden gestopt.
+   1. Normaal gesp roken wordt de implementatie onderbroken en wordt gewacht op verdere beslissingen en hand matige acties die moeten worden ondernomen. Dit komt doordat zelfs als er back-ups beschikbaar zijn, ze mogelijk moeten worden voor bereid. 
    
-      Als bijvoorbeeld twee verschillende services informatie coördineren, moeten deze back-ups mogelijk worden gewijzigd om ervoor te zorgen dat de informatie waar deze twee services om geven, na het herstel consistent is. 
-   1. Vaak is er een andere telemetrie of uitlaat van de dienst. Deze metagegevens kunnen worden opgenomen in andere services of in logboeken. Deze informatie kan worden gebruikt als dat nodig is om te bepalen of er oproepen zijn ontvangen en verwerkt op de primaire die niet aanwezig waren in de back-up of gerepliceerd naar deze specifieke replica. Deze oproepen moeten mogelijk opnieuw worden afgespeeld of aan de back-up worden toegevoegd voordat herstel mogelijk is.  
-   1. De implementatie vergelijkt de status van de resterende replica met die in alle beschikbare back-ups. Als u betrouwbare collecties van Service Fabric gebruikt, zijn er [tools en processen](service-fabric-reliable-services-backup-restore.md) beschikbaar om dit te doen. Het doel is om te zien of de status binnen de replica voldoende is, en om te zien wat de back-up zou kunnen ontbreken.
-   1. Nadat de vergelijking is voltooid en nadat het herstel is voltooid (indien nodig), moet de servicecode **true** retourneren als er statuswijzigingen zijn aangebracht. Als de replica heeft vastgesteld dat het de best beschikbare kopie van de status was en geen wijzigingen heeft aangebracht, retourneert de code **false.** 
+      Als er bijvoorbeeld twee verschillende Services gegevens coördineren, moeten deze back-ups mogelijk worden gewijzigd om ervoor te zorgen dat na het herstellen de informatie over deze twee services consistent is. 
+   1. Vaak is er sprake van een andere telemetrie of een afzuig van de service. Deze meta gegevens kunnen in andere services of in Logboeken zijn opgenomen. Deze informatie kan zo nodig worden gebruikt om te bepalen of er aanroepen zijn ontvangen en verwerkt op de primaire server die niet aanwezig waren in de back-up of die zijn gerepliceerd naar deze specifieke replica. Deze aanroepen moeten mogelijk opnieuw worden afgespeeld of worden toegevoegd aan de back-up voordat de herstel bewerking kan worden uitgevoerd.  
+   1. De implementatie vergelijkt de resterende status van de replica naar die in alle beschik bare back-ups is opgenomen. Als u Service Fabric betrouw bare verzamelingen gebruikt, zijn er [hulpprogram ma's en processen](service-fabric-reliable-services-backup-restore.md) beschikbaar waarmee u dit kunt doen. Het doel is om te zien of de status binnen de replica voldoende is en om te zien wat de back-up kan ontbreken.
+   1. Nadat de vergelijking is uitgevoerd en de herstel bewerking is voltooid (indien nodig), moet de service code de **waarde True** retour neren als er status wijzigingen zijn aangebracht. Als de replica heeft vastgesteld dat het de beste beschik bare kopie van de status heeft en geen wijzigingen heeft aangebracht, retourneert de code **Onwaar**. 
    
-      Een waarde van **true** geeft aan dat alle _andere_ resterende replica's nu mogelijk niet in overeenstemming zijn met deze. Ze zullen worden gedropt en herbouwd van deze replica. Een waarde van **false** geeft aan dat er geen statuswijzigingen zijn aangebracht, zodat de andere replica's kunnen houden wat ze hebben. 
+      De waarde **True** geeft aan dat _andere_ Replicas nu mogelijk inconsistent zijn met deze naam. Ze worden verwijderd en opnieuw opgebouwd op basis van deze replica. De waarde **False** geeft aan dat er geen status wijzigingen zijn aangebracht, zodat de andere replica's kunnen blijven wat ze hebben. 
 
-Het is van cruciaal belang dat serviceauteurs potentiële scenario's voor gegevensverlies en -fouten uitvoeren voordat services in productie worden geïmplementeerd. Om te beschermen tegen de mogelijkheid van gegevensverlies, is het belangrijk om periodiek [een back-up](service-fabric-reliable-services-backup-restore.md) van de status van een van uw stateful diensten naar een geo-redundante winkel. 
+Het is zeer belang rijk dat service ontwerpers mogelijke scenario's voor gegevens verlies en-fouten oefenen voordat Services in productie worden geïmplementeerd. Ter bescherming tegen de mogelijkheid van gegevens verlies is het belang rijk om regel matig een [back-up te maken van de status](service-fabric-reliable-services-backup-restore.md) van uw stateful Services naar een geografisch redundante opslag. 
 
-U moet er ook voor zorgen dat u de mogelijkheid om de staat te herstellen. Omdat back-ups van veel verschillende services op verschillende tijdstippen worden genomen, moet u ervoor zorgen dat uw services na een herstel een consistent beeld van elkaar hebben. 
+U moet er ook voor zorgen dat u de mogelijkheid hebt om de status te herstellen. Omdat er op verschillende momenten back-ups van verschillende services worden gemaakt, moet u ervoor zorgen dat uw services na het herstellen een consistente weer gave van elkaar hebben. 
 
-Denk bijvoorbeeld aan een situatie waarin een service een nummer genereert en opslaat en deze vervolgens naar een andere service stuurt die deze ook opslaat. Na een herstel ontdekt u mogelijk dat de tweede service het nummer heeft, maar de eerste niet, omdat de back-up die bewerking niet heeft opgenomen.
+Denk bijvoorbeeld aan een situatie waarbij een service een nummer genereert en opslaat, en deze vervolgens verzendt naar een andere service die deze ook opslaat. Na het herstellen weet u mogelijk dat de tweede service het nummer heeft, maar de eerste niet, omdat deze bewerking niet door de back-up is toegevoegd.
 
-Als u erachter komt dat de resterende replica's onvoldoende zijn om door te gaan in een scenario voor gegevensverlies en u de servicestatus niet reconstrueren op basis van telemetrie of uitlaatgassen, bepaalt de frequentie van uw back-ups uw best mogelijke doel voor herstelpunten (RPO). Service Fabric biedt veel tools voor het testen van verschillende foutscenario's, waaronder permanent quorum en gegevensverlies dat moet worden hersteld van een back-up. Deze scenario's zijn opgenomen als onderdeel van de testability tools in Service Fabric, beheerd door de Fault Analysis Service. Zie Inleiding tot de Fault [Analysis Service](service-fabric-testability-overview.md)voor meer informatie over deze tools en patronen. 
+Als u merkt dat de resterende replica's onvoldoende zijn om door te gaan in een scenario met gegevens verlies en u de service status niet opnieuw kunt samen stellen op basis van telemetrie of uitgeput, bepaalt de frequentie van uw back-ups uw best mogelijke Recovery Point Objective (RPO). Service Fabric biedt veel hulpprogram ma's voor het testen van verschillende fout scenario's, waaronder permanent quorum en gegevens verlies waarvoor herstel vanuit een back-up is vereist. Deze scenario's zijn opgenomen als onderdeel van de hulpprogram ma's voor test baarheid in Service Fabric, beheerd door de fout analyse service. Zie [Inleiding tot de fout analyse service](service-fabric-testability-overview.md)voor meer informatie over deze hulpprogram ma's en patronen. 
 
 > [!NOTE]
-> Systeemdiensten kunnen ook quorumverlies lijden. De impact is specifiek voor de betreffende dienst. Quorumverlies in de naamgevingsservice is bijvoorbeeld van invloed op naamomzetting, terwijl quorumverlies in de Failover Manager-service nieuwe servicecreatie en failovers blokkeert. 
+> Systeem services kunnen ook quorum verlies lijden. De impact is specifiek voor de betreffende service. Quorum verlies in de naamgevings service is bijvoorbeeld van invloed op naam omzetting, terwijl quorum verlies in de Failover Manager-service het maken van nieuwe services en failovers blokkeert. 
 > 
-> De Service Fabric-systeemservices volgen hetzelfde patroon als uw services voor staatsbeheer, maar we raden u niet aan om ze uit quorumverlies te halen en in mogelijk gegevensverlies te verwerken. In plaats daarvan raden we u aan ondersteuning te [zoeken](service-fabric-support.md) om een oplossing te vinden die is gericht op uw situatie. Het is meestal beter om gewoon te wachten tot de down replica's terug te keren.
+> De Service Fabric-systeem services volgen hetzelfde patroon als uw services voor status beheer, maar we raden u niet aan om ze te verplaatsen uit het quorum verlies en naar potentieel gegevens verlies. In plaats daarvan raden we u aan [ondersteuning](service-fabric-support.md) te zoeken om een oplossing te vinden die is gericht op uw situatie. Normaal gesp roken moet u gewoon wachten tot de down keer dat er replica's worden geretourneerd.
 >
 
-#### <a name="troubleshooting-quorum-loss"></a>Problemen met quorumverlies oplossen
+#### <a name="troubleshooting-quorum-loss"></a>Problemen met quorum verlies oplossen
 
-Replica's kunnen met tussenpozen worden uitgeschakeld als gevolg van een tijdelijke storing. Wacht enige tijd als Service Fabric probeert om ze te brengen. Als replica's langer dan een verwachte duur zijn uitgevoerd, volgt u de volgende acties voor het oplossen van problemen:
-- Replica's kunnen crashen. Controleer statusrapporten op replicaniveau en uw toepassingslogboeken. Verzamel crash dumps en neem de nodige maatregelen om te herstellen.
-- Het replicaproces kan niet meer reageren. Controleer uw toepassingslogboeken om dit te verifiëren. Verzamel procesdumps en stop het niet-reagerende proces. Service Fabric maakt een vervangingsproces en probeert de replica terug te brengen.
-- Knooppunten die de replica's hosten, kunnen worden uitgeschakeld. Start de onderliggende virtuele machine opnieuw op om de knooppunten omhoog te brengen.
+Replica's zijn mogelijk tijdelijk niet actief vanwege een tijdelijke fout. Wacht enige tijd als Service Fabric probeert deze te halen. Als replica's langer dan een verwachte duur zijn, volgt u deze probleemoplossings acties:
+- Replica's kunnen vastlopen. Controleer status rapporten op replica niveau en uw toepassings Logboeken. Verzamel crash dumps en neem de nodige maat regelen om te herstellen.
+- Het replica proces reageert mogelijk niet meer. Controleer uw toepassings Logboeken om dit te controleren. Verzamel proces dumps en Stop vervolgens het niet-reagerende proces. Service Fabric maakt een vervangings proces en wordt geprobeerd de replica terug te brengen.
+- Knoop punten die de replica's hosten, zijn mogelijk niet beschikbaar. Start de onderliggende virtuele machine opnieuw op om de knoop punten omhoog te brengen.
 
-Soms is het mogelijk niet mogelijk om replica's te herstellen. De schijven zijn bijvoorbeeld mislukt of de machines reageren fysiek niet. In deze gevallen moet Service Fabric worden verteld niet te wachten op het herstel van replica's.
+Soms is het niet mogelijk om replica's te herstellen. De stations zijn bijvoorbeeld mislukt of de computers reageren niet meer. In deze gevallen moet Service Fabric worden verteld dat er niet moet worden gewacht op replica herstel.
 
-Gebruik deze methoden *niet* als mogelijk gegevensverlies onaanvaardbaar is om de service online te brengen. In dat geval moeten alle inspanningen worden geleverd om fysieke machines terug te winnen.
+Gebruik deze methoden *niet* als mogelijk gegevens verlies onaanvaardbaar is om de service online te brengen. In dat geval moeten alle inspanningen worden gedaan om fysieke machines te herstellen.
 
-De volgende acties kunnen leiden tot gegevensverlies. Controleer voordat je ze volgt.
+De volgende acties kunnen leiden tot gegevens verlies. Controleer voordat u deze volgt.
    
 > [!NOTE]
-> Het is _nooit_ veilig om deze methoden anders te gebruiken dan op een gerichte manier tegen specifieke partities. 
+> Het is _nooit_ veilig om deze methoden te gebruiken, maar niet op een gerichte manier voor specifieke partities. 
 >
 
-- Gebruik `Repair-ServiceFabricPartition -PartitionId` de `System.Fabric.FabricClient.ClusterManagementClient.RecoverPartitionAsync(Guid partitionId)` of API. Met deze API kan de id van de partitie worden opgegeven om uit quorumverlies te gaan en naar mogelijk gegevensverlies te gaan.
-- Als uw cluster regelmatig fouten ondervindt waardoor services in een quorumverliesstatus terecht komen en mogelijk _gegevensverlies acceptabel is,_ kan het opgeven van een geschikte [QuorumLossWaitDuration-waarde](https://docs.microsoft.com/powershell/module/servicefabric/update-servicefabricservice?view=azureservicefabricps) ervoor zorgen dat uw service automatisch herstelt. Service Fabric wacht op `QuorumLossWaitDuration` de opgegeven waarde (standaard is oneindig) voordat u herstel uitvoert. We raden deze methode *niet* aan omdat dit onverwachte gegevensverliezen kan veroorzaken.
+- Gebruik de `Repair-ServiceFabricPartition -PartitionId` API `System.Fabric.FabricClient.ClusterManagementClient.RecoverPartitionAsync(Guid partitionId)` of. Met deze API kunt u de ID van de partitie die uit het quorum verlies of het verlies van gegevens kan optreden, opgeven.
+- Als uw cluster veelvuldige storingen detecteert waardoor Services de status van een quorum verlies veroorzaken en mogelijk _gegevens verlies acceptabel is_, kunt u een geschikte [QuorumLossWaitDuration](https://docs.microsoft.com/powershell/module/servicefabric/update-servicefabricservice?view=azureservicefabricps) -waarde opgeven, zodat uw service automatisch kan worden hersteld. Service Fabric wordt gewacht op de `QuorumLossWaitDuration` gegeven waarde (de standaard instelling is oneindig) voordat het herstel wordt uitgevoerd. Deze methode wordt *niet* aanbevolen omdat dit kan leiden tot onverwachte gegevens verlies.
 
-## <a name="availability-of-the-service-fabric-cluster"></a>Beschikbaarheid van het cluster Service Fabric
-In het algemeen is het cluster Service Fabric een sterk gedistribueerde omgeving zonder enkele storingspunten. Een storing van één knooppunt veroorzaakt geen problemen met beschikbaarheid of betrouwbaarheid voor het cluster, voornamelijk omdat de servicefabric-systeemservices dezelfde richtlijnen volgen die eerder zijn opgegeven. Dat wil zeggen, ze worden standaard altijd uitgevoerd met drie of meer replica's en systeemservices die stateloos zijn, worden uitgevoerd op alle knooppunten. 
+## <a name="availability-of-the-service-fabric-cluster"></a>Beschik baarheid van het Service Fabric cluster
+Over het algemeen is het Service Fabric cluster een zeer gedistribueerde omgeving zonder storings punten. Als er een storing optreedt in een van de knoop punten, worden er geen Beschik baarheid of betrouwbaarheids problemen voor het cluster veroorzaakt, voornamelijk omdat de Service Fabric systeem services dezelfde richt lijnen volgen als hierboven. Dat wil zeggen dat ze altijd worden uitgevoerd met drie of meer replica's standaard, en systeem services die stateless worden uitgevoerd op alle knoop punten. 
 
-De onderliggende lagen voor netwerk- en storingsdetectie van Service Fabric zijn volledig verdeeld. De meeste systeemservices kunnen worden herbouwd met metagegevens in het cluster of weten hoe ze hun status vanaf andere plaatsen opnieuw kunnen synchroniseren. De beschikbaarheid van het cluster kan in het gedrang komen als systeemservices in situaties met quorumverlies komen, zoals eerder beschreven. In deze gevallen u bepaalde bewerkingen mogelijk niet uitvoeren op het cluster (zoals het starten van een upgrade of het implementeren van nieuwe services), maar het cluster zelf is nog steeds actief. 
+De onderliggende Service Fabric netwerk-en fout detectie lagen zijn volledig gedistribueerd. De meeste systeem services kunnen opnieuw worden opgebouwd op basis van meta gegevens in het cluster of u weet hoe u hun status opnieuw moet synchroniseren vanaf andere locaties. De beschik baarheid van het cluster kan worden aangetast als systeem services problemen in quorum verlies voordoen, zoals eerder beschreven. In dergelijke gevallen is het mogelijk dat u bepaalde bewerkingen op het cluster niet kunt uitvoeren (zoals het starten van een upgrade of het implementeren van nieuwe services), maar dat het cluster zelf actief is. 
 
-Services op een lopend cluster blijven in deze omstandigheden actief, tenzij ze schrijven aan de systeemservices vereisen om te blijven functioneren. Als Failovermanager bijvoorbeeld quorumverlies heeft, blijven alle services worden uitgevoerd. Maar alle services die niet mislukken, kunnen niet automatisch opnieuw worden opgestart, omdat dit de betrokkenheid van Failover Manager vereist. 
+Services op een actief cluster blijven in deze omstandigheden actief, tenzij ze moeten worden geschreven naar de systeem services om verder te kunnen werken. Als Failover Manager bijvoorbeeld zich in quorum verlies bevindt, blijven alle services worden uitgevoerd. Maar alle services die niet automatisch opnieuw kunnen worden opgestart, omdat hiervoor de betrokkenheid van Failover Manager nodig is. 
 
-### <a name="failures-of-a-datacenter-or-an-azure-region"></a>Fouten van een datacenter of een Azure-gebied
-In zeldzame gevallen kan een fysiek datacenter tijdelijk niet meer beschikbaar zijn door stroomverlies of netwerkconnectiviteit. In deze gevallen zijn uw Service Fabric-clusters en -services in dat datacenter of Azure-gebied niet beschikbaar. Uw gegevens blijven echter _behouden._ 
+### <a name="failures-of-a-datacenter-or-an-azure-region"></a>Storingen in een Data Center of een Azure-regio
+In zeldzame gevallen kan een fysiek Data Center tijdelijk niet beschikbaar worden gesteld van stroom uitval of netwerk verbindingen. In deze gevallen is uw Service Fabric-clusters en-services in dat Data Center of Azure-regio niet beschikbaar. _Uw gegevens blijven echter behouden_. 
 
-Voor clusters die in Azure worden uitgevoerd, u updates over storingen weergeven op de [Azure-statuspagina.][azure-status-dashboard] In het hoogst onwaarschijnlijke geval dat een fysiek datacenter gedeeltelijk of volledig wordt vernietigd, kunnen alle Service Fabric-clusters die daar worden gehost of de services erin, verloren gaan. Dit verlies omvat een status waarvan geen back-up is opgenomen buiten dat datacenter of deze regio.
+Voor clusters die in Azure worden uitgevoerd, kunt u updates op de Azure- [status pagina][azure-status-dashboard]bekijken op storingen. In het zeer onwaarschijnlijke geval dat een fysiek Data Center gedeeltelijk of volledig wordt vernietigd, kunnen eventuele Service Fabric clusters die daar worden gehost of de services erin, verloren gaan. Dit verlies omvat alle staten waarvan geen back-up is gemaakt buiten dat Data Center of de regio.
 
-Er zijn twee verschillende strategieën voor het overleven van de permanente of aanhoudende mislukking van een enkel datacenter of regio: 
+Er zijn twee verschillende strategieën voor het naleven van de permanente of aanhoudende storing van één Data Center of regio: 
 
-- Voer afzonderlijke Service Fabric-clusters uit in meerdere dergelijke regio's en gebruik een mechanisme voor failover en failback tussen deze omgevingen. Dit soort multi-cluster actief/actief/passief model vereist extra beheer- en operationele code. Dit model vereist ook coördinatie van back-ups van de services in een datacenter of regio, zodat ze beschikbaar zijn in andere datacenters of regio's wanneer deze mislukt. 
-- Voer één Cluster Servicefabric uit dat meerdere datacenters of regio's omvat. De minimaal ondersteunde configuratie voor deze strategie is drie datacenters of regio's. Het aanbevolen aantal regio's of datacenters is vijf. 
+- Voer afzonderlijke Service Fabric clusters uit in meerdere dergelijke regio's en gebruik een mechanisme voor failover en failback tussen deze omgevingen. Voor het type van het actieve/actieve of actieve/passieve model van meerdere clusters is meer beheer-en bewerkings code vereist. Dit model vereist ook coördinatie van back-ups van de services in één Data Center of regio, zodat deze beschikbaar zijn in andere data centers of regio's wanneer er een mislukt. 
+- Voer één Service Fabric-cluster uit dat meerdere data centers of regio's omvat. De mini maal ondersteunde configuratie voor deze strategie is drie data centers of regio's. Het aanbevolen aantal regio's of data centers is vijf. 
   
-  Dit model vereist een complexere clustertopologie. Het voordeel is echter dat het falen van een datacenter of regio wordt omgezet van een ramp in een normale fout. Deze fouten kunnen worden verwerkt door de mechanismen die werken voor clusters binnen één regio. Foutdomeinen, upgradedomeinen en servicefabric-plaatsingsregels zorgen ervoor dat workloads worden gedistribueerd, zodat ze normale fouten tolereren. 
+  Dit model vereist een complexere cluster topologie. Het voor deel is echter dat het ene Data Center of de regio niet kan worden geconverteerd van een nood geval naar een normale storing. Deze fouten kunnen worden verwerkt door de mechanismen die werken voor clusters binnen één regio. Fout domeinen, upgrade domeinen en Service Fabric plaatsings regels zorgen ervoor dat workloads worden gedistribueerd zodat ze normale storingen verdragen. 
   
-  Zie [Plaatsingsbeleid voor Service Fabric-services voor](service-fabric-cluster-resource-manager-advanced-placement-rules-placement-policies.md)meer informatie over beleidsregels waarmee services in dit type cluster kunnen worden ingeschakeld.
+  Zie voor meer informatie over beleids regels die kunnen helpen bij het gebruik van services in dit type cluster [plaatsings beleid voor service Fabric Services](service-fabric-cluster-resource-manager-advanced-placement-rules-placement-policies.md).
 
-### <a name="random-failures-that-lead-to-cluster-failures"></a>Willekeurige fouten die leiden tot clusterfouten
-Service Fabric heeft het concept van *zaadknooppunten.* Dit zijn knooppunten die de beschikbaarheid van het onderliggende cluster behouden. 
+### <a name="random-failures-that-lead-to-cluster-failures"></a>Wille keurige fouten die leiden tot cluster fouten
+Service Fabric heeft het concept van *Seed-knoop punten*. Dit zijn knoop punten die de beschik baarheid van het onderliggende cluster behouden. 
 
-Seed-knooppunten helpen ervoor te zorgen dat het cluster blijft bestaan door leases met andere knooppunten op te zetten en als tiebreakers te dienen tijdens bepaalde soorten fouten. Als willekeurige fouten een meerderheid van de seednodes in het cluster verwijderen en ze niet snel worden teruggebracht, wordt het cluster automatisch afgesloten. Het cluster mislukt dan. 
+Seed-knoop punten helpen ervoor te zorgen dat het cluster actief blijft door leases te maken met andere knoop punten en te fungeren als tiebreakers tijdens bepaalde soorten storingen. Als met wille keurige fouten een meerderheid van de Seed-knoop punten in het cluster wordt verwijderd en deze niet snel worden hersteld, wordt het cluster automatisch afgesloten. Vervolgens mislukt het cluster. 
 
-In Azure beheert Service Fabric Resource Provider clusterconfiguraties van Service Fabric. Resourceprovider verdeelt standaard seednodes over fout- en upgradedomeinen voor het *primaire knooppunttype.* Als het primaire knooppunttype is gemarkeerd als silver- of gold-duurzaamheid, probeert het cluster, wanneer u een zaadknooppunt verwijdert (door het primaire knooppunttype te schalen of handmatig te verwijderen), een ander niet-zaadknooppunt te promoten vanaf de beschikbare capaciteit van het primaire knooppunt. Deze poging mislukt als u minder beschikbare capaciteit hebt dan het betrouwbaarheidsniveau van uw cluster vereist voor uw primaire knooppunttype.
+In azure beheert Service Fabric resource provider Service Fabric cluster configuraties. Standaard worden Seed-knoop punten verdeeld over de fout-en upgrade domeinen voor het *primaire knooppunt type*. Als het primaire knooppunt type is gemarkeerd als zilver of Gold duurzaamheid, probeert het cluster een ander niet-Seed-knoop punt te promo veren van de beschik bare capaciteit van het primaire knooppunt type wanneer u een Seed-knoop punt verwijdert (door de schaal te schalen in het primaire knooppunt type of door het hand matig te verwijderen). Deze poging mislukt als u minder beschik bare capaciteit hebt dan het betrouwbaarheids niveau van het cluster vereist is voor uw primaire knooppunt type.
 
-In zowel zelfstandige Service Fabric-clusters als Azure is het primaire knooppunttype het type dat de zaden uitvoert. Wanneer u een primair knooppunttype definieert, maakt Service Fabric automatisch gebruik van het aantal knooppunten dat wordt geleverd door maximaal negen seedknooppunten en zeven replica's van elke systeemservice te maken. Als een reeks willekeurige fouten een meerderheid van deze replica's tegelijk uitschakelt, worden de systeemservices in het quorumverlies ingevoerd. Als een meerderheid van de zaadknooppunten verloren gaat, wordt het cluster kort daarna afgesloten.
+In zowel zelfstandige Service Fabric clusters en Azure is het primaire knooppunt type de seeding die de zaden uitvoert. Wanneer u een primair knooppunt type definieert, zal Service Fabric automatisch profiteren van het aantal knoop punten dat wordt gegeven door Maxi maal negen Seed-knoop punten te maken en zeven replica's van elke systeem service. Als een reeks wille keurige fouten tegelijkertijd een meerderheid van deze replica's uitmaakt, wordt quorum verlies door de systeem services ingevoerd. Als een meerderheid van de Seed-knoop punten verloren is gegaan, wordt het cluster binnenkort afgesloten.
 
 ## <a name="next-steps"></a>Volgende stappen
-- Meer informatie over het simuleren van verschillende fouten met behulp van het [testabiliteitsframework](service-fabric-testability-overview.md).
-- Lees andere resources voor noodherstel en hoge beschikbaarheid. Microsoft heeft een grote hoeveelheid richtlijnen over deze onderwerpen gepubliceerd. Hoewel sommige van deze bronnen verwijzen naar specifieke technieken voor gebruik in andere producten, bevatten ze veel algemene aanbevolen procedures die u toepassen in de context servicestructuur:
+- Meer informatie over het simuleren van verschillende fouten met behulp van het [Test-Framework](service-fabric-testability-overview.md).
+- Lees andere bronnen voor herstel na nood gevallen en hoge Beschik baarheid. Micro soft heeft een groot aantal richt lijnen gepubliceerd op deze onderwerpen. Hoewel sommige van deze resources verwijzen naar specifieke technieken voor gebruik in andere producten, bevatten ze veel algemene aanbevolen procedures die u kunt Toep assen in de Service Fabric context:
   - [Controlelijst voor beschikbaarheid](/azure/architecture/checklist/resiliency-per-service)
-  - [Een noodhersteloefening uitvoeren](../sql-database/sql-database-disaster-recovery-drills.md)
+  - [Een nood herstel analyse uitvoeren](../sql-database/sql-database-disaster-recovery-drills.md)
   - [Herstel na noodgevallen en hoge beschikbaarheid voor Azure-toepassingen][dr-ha-guide]
-- Meer informatie over [ondersteuningsopties voor Service Fabric](service-fabric-support.md).
+- Meer informatie over [service Fabric ondersteunings opties](service-fabric-support.md).
 
 
 <!-- External links -->

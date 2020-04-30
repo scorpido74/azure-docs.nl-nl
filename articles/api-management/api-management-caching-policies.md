@@ -1,6 +1,6 @@
 ---
-title: Azure API Management-cachingbeleid | Microsoft Documenten
-description: Meer informatie over het caching-beleid dat beschikbaar is voor gebruik in Azure API Management.
+title: Cache beleid voor Azure API Management | Microsoft Docs
+description: Meer informatie over de cache beleidsregels die beschikbaar zijn voor gebruik in azure API Management.
 services: api-management
 documentationcenter: ''
 author: vladvino
@@ -14,32 +14,32 @@ ms.topic: article
 ms.date: 11/27/2018
 ms.author: apimpm
 ms.openlocfilehash: 06c4ede12f939e48973d3e0b502d90b848d199bb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79280298"
 ---
 # <a name="api-management-caching-policies"></a>API Management caching policies (Cachebeleid API Management)
-In dit onderwerp wordt een verwijzing naar het volgende API-beheerbeleid bevat. Zie [Beleid in API-beheer](https://go.microsoft.com/fwlink/?LinkID=398186)voor informatie over het toevoegen en configureren van beleidsregels.
+In dit onderwerp vindt u een verwijzing naar de volgende API Management-beleids regels. Zie [beleid in API Management](https://go.microsoft.com/fwlink/?LinkID=398186)voor meer informatie over het toevoegen en configureren van beleid.
 
-## <a name="caching-policies"></a><a name="CachingPolicies"></a>Caching-beleid
+## <a name="caching-policies"></a><a name="CachingPolicies"></a>Cache beleidsregels
 
-- Beleid voor het kazelig beleid voor antwoorden
-    - [Haal uit de cache](api-management-caching-policies.md#GetFromCache) - Voer cache opzoeken uit en retourneer een geldige antwoorden in de cache indien beschikbaar.
-    - [Store to cache](api-management-caching-policies.md#StoreToCache) - Caches reacties volgens de opgegeven cache controle configuratie.
-- Beleid voor het plaatsen van waarden
-    - [Haal waarde uit cache](#GetFromCacheByKey) - Haal een item in de cache op per sleutel.
-    - [Winkelwaarde in cache](#StoreToCacheByKey) - Sla een item op de cache op per sleutel.
-    - [Waarde uit cache verwijderen](#RemoveCacheByKey) - Een item in de cache per sleutel verwijderen.
+- Beleid voor antwoord caching
+    - [Ophalen uit cache](api-management-caching-policies.md#GetFromCache) -cache uitvoeren en een geldig antwoord in de cache retour neren wanneer deze beschikbaar zijn.
+    - [Opslaan in cache](api-management-caching-policies.md#StoreToCache) -caches op basis van de opgegeven cache beheer configuratie.
+- Beleid voor waarde in cache opslaan
+    - [Waarde ophalen uit cache](#GetFromCacheByKey) -een item in de cache ophalen met behulp van sleutel.
+    - [Waarde voor opslaan in cache](#StoreToCacheByKey) : een item in de cache opslaan per sleutel.
+    - [Waarde uit cache verwijderen](#RemoveCacheByKey) : een item in de cache verwijderen per sleutel.
 
-## <a name="get-from-cache"></a><a name="GetFromCache"></a>Uit de cache halen
-Gebruik `cache-lookup` het beleid om cache op te zoeken en een geldig antwoord in de cache terug te sturen indien beschikbaar. Dit beleid kan worden toegepast in gevallen waarin de responsinhoud over een bepaalde periode statisch blijft. Response caching vermindert bandbreedte- en verwerkingsvereisten die worden opgelegd aan de backendwebserver en verlaagt de latentie die api-consumenten ervaren.
+## <a name="get-from-cache"></a><a name="GetFromCache"></a>Ophalen uit cache
+Gebruik het `cache-lookup` beleid voor het opzoeken van de cache en het retour neren van een geldig antwoord in de cache, indien beschikbaar. Dit beleid kan worden toegepast in gevallen waarin de inhoud van de reactie in een bepaalde periode statisch blijft. Antwoord caching vermindert de band breedte en de verwerkings vereisten op de back-end-webserver en verlaagt de latentie die wordt waargenomen door API-consumers.
 
 > [!NOTE]
-> Dit beleid moet een bijbehorend [opslagbeleid](api-management-caching-policies.md#StoreToCache) voor cache hebben.
+> Dit beleid moet een bijbehorend [Archief voor cache](api-management-caching-policies.md#StoreToCache) beleid hebben.
 
-### <a name="policy-statement"></a>Beleidsverklaring
+### <a name="policy-statement"></a>Beleids verklaring
 
 ```xml
 <cache-lookup vary-by-developer="true | false" vary-by-developer-groups="true | false" caching-type="prefer-external | external | internal" downstream-caching-type="none | private | public" must-revalidate="true | false" allow-private-response-caching="@(expression to evaluate)">
@@ -75,8 +75,8 @@ Gebruik `cache-lookup` het beleid om cache op te zoeken en een geldig antwoord i
 </policies>
 ```
 
-#### <a name="example-using-policy-expressions"></a>Voorbeeld van beleidsexpressies
-In dit voorbeeld ziet u hoe u de duur van api-beheerresponscache configureert die `Cache-Control` overeenkomt met de responscache van de backendservice zoals opgegeven door de richtlijn van de back-service. Zie [Cloud Cover Episode 177: Meer API-beheerfuncties met Vlad Vinogradsky](https://azure.microsoft.com/documentation/videos/episode-177-more-api-management-features-with-vlad-vinogradsky/) en fast-forward naar 25:25 voor een demonstratie van het configureren en gebruiken van dit beleid.
+#### <a name="example-using-policy-expressions"></a>Voor beeld van beleids expressies
+In dit voor beeld ziet u hoe u de tijds duur voor het opslaan van antwoorden in het cache geheugen van de back-end- `Cache-Control` service kunt API Management configureren, zoals opgegeven door de instructie van de back-upservice. Zie voor een demonstratie van het configureren en gebruiken van dit beleid [Cloud cover aflevering 177: meer API management functies met Vlad Vinogradsky](https://azure.microsoft.com/documentation/videos/episode-177-more-api-management-features-with-vlad-vinogradsky/) en Fast-forward to 25:25.
 
 ```xml
 <!-- The following cache policy snippets demonstrate how to control API Management response cache duration with Cache-Control headers sent by the backend service. -->
@@ -96,40 +96,40 @@ In dit voorbeeld ziet u hoe u de duur van api-beheerresponscache configureert di
  />
 ```
 
-Zie [Beleidsexpressies](api-management-policy-expressions.md) en [Contextvariabele](api-management-policy-expressions.md#ContextVariables)voor meer informatie.
+Zie [beleids expressies](api-management-policy-expressions.md) en [context variabelen](api-management-policy-expressions.md#ContextVariables)voor meer informatie.
 
 ### <a name="elements"></a>Elementen
 
-|Name|Beschrijving|Vereist|
+|Naam|Beschrijving|Vereist|
 |----------|-----------------|--------------|
-|cache-lookup|Hoofdelement.|Ja|
-|per kop|Begin met het in cache plaatsen van reacties per waarde van een opgegeven koptekst, zoals Accepteren, Accepteren-Charset, Accepteren-Codering, Accepteren-taal, Autorisatie, Verwachten, Van, Host, If-Match.|Nee|
-|per query-parameter variëren|Begin met het incacheeren van antwoorden per waarde van opgegeven queryparameters. Voer één of meerdere parameters in. Gebruik puntkomma als scheidingspunt. Als deze niet is opgegeven, worden alle queryparameters gebruikt.|Nee|
+|cache-opzoeken|Hoofd element.|Ja|
+|variëren per koptekst|Begin de caching van antwoorden per waarde van de opgegeven header, zoals accepteren, accepteren-charset, accepteren-coderen, accepteren-taal, autorisatie, verwachten van, host, if-match.|Nee|
+|variëren per query-para meter|Begin de caching van antwoorden per waarde van de opgegeven query parameters. Voer één of meerdere para meters in. Gebruik een punt komma als scheidings teken. Als er geen is opgegeven, worden alle query parameters gebruikt.|Nee|
 
 ### <a name="attributes"></a>Kenmerken
 
-| Name                           | Beschrijving                                                                                                                                                                                                                                                                                                                                                 | Vereist | Standaard           |
+| Naam                           | Beschrijving                                                                                                                                                                                                                                                                                                                                                 | Vereist | Standaard           |
 |--------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------|-------------------|
-| allow-private-response-caching | Wanneer ingesteld `true`op, caching van aanvragen die een autorisatie header bevatten.                                                                                                                                                                                                                                                                        | Nee       | false             |
-| caching-type               | Kies tussen de volgende waarden van het kenmerk:<br />- `internal`om de ingebouwde API Management-cache te gebruiken,<br />- `external`om de externe cache te gebruiken zoals beschreven in [Een externe Azure-cache voor Redis gebruiken in Azure API-beheer](api-management-howto-cache-external.md),<br />- `prefer-external`om externe cache te gebruiken als deze is geconfigureerd of als de interne cache anders is geconfigureerd. | Nee       | `prefer-external` |
-| downstream-caching-type        | Dit kenmerk moet zijn ingesteld op een van de volgende waarden.<br /><br /> - geen - downstream caching is niet toegestaan.<br />- privé - downstream privé-caching is toegestaan.<br />- openbare - private en gedeelde downstream caching is toegestaan.                                                                                                          | Nee       | geen              |
-| must-revalidate                | Wanneer downstream caching is ingeschakeld, schakelt `must-revalidate` dit kenmerk de richtlijn cachebeheer in gatewayreacties in of uit.                                                                                                                                                                                                                      | Nee       | waar              |
-| variëren per ontwikkelaar              | Ingesteld `true` op cachereacties per [abonnementssleutel.](https://docs.microsoft.com/azure/api-management/api-management-subscriptions)                                                                                                                                                                                                                                                                                                         | Ja      |         False          |
-| variëren per ontwikkelaar-groep       | Ingesteld `true` op cachereacties per [gebruikersgroep.](https://docs.microsoft.com/azure/api-management/api-management-howto-create-groups)                                                                                                                                                                                                                                                                                                             | Ja      |       False            |
+| toestaan: private-Response-caching | Als deze instelling `true`is ingesteld op, staat het opslaan van aanvragen in de cache toe die een autorisatie-header bevatten.                                                                                                                                                                                                                                                                        | Nee       | false             |
+| cache-type               | U kunt kiezen uit de volgende waarden van het kenmerk:<br />- `internal`de ingebouwde API Management-cache gebruiken<br />- `external`Als u de externe cache wilt gebruiken zoals wordt beschreven in [een externe Azure-cache gebruiken voor redis in Azure API Management](api-management-howto-cache-external.md),<br />- `prefer-external`Als u een externe cache wilt gebruiken als deze is geconfigureerd of als de interne cache anders. | Nee       | `prefer-external` |
+| downstream-caching-type        | Dit kenmerk moet worden ingesteld op een van de volgende waarden.<br /><br /> -geen-downstream-caching is niet toegestaan.<br />-Private-downstream-caching is toegestaan.<br />-openbaar-privé en gedeeld downstream-caching is toegestaan.                                                                                                          | Nee       | geen              |
+| moet opnieuw valideren                | Wanneer downstream-caching is ingeschakeld, wordt met dit kenmerk de `must-revalidate` Cache-Control-instructie in de gateway-antwoorden in-of uitgeschakeld.                                                                                                                                                                                                                      | Nee       | waar              |
+| variëren per ontwikkelaar              | Instellen op `true` het opslaan van antwoorden per [abonnements sleutel](https://docs.microsoft.com/azure/api-management/api-management-subscriptions).                                                                                                                                                                                                                                                                                                         | Ja      |         False          |
+| variëren per ontwikkelaar-groepen       | Instellen op `true` het opslaan van antwoorden per [gebruikers groep](https://docs.microsoft.com/azure/api-management/api-management-howto-create-groups).                                                                                                                                                                                                                                                                                                             | Ja      |       False            |
 
 ### <a name="usage"></a>Gebruik
-Dit beleid kan worden gebruikt in de volgende [beleidsonderdelen](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) en [-scopes](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).
+Dit beleid kan worden gebruikt in de volgende beleids [secties](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) en [bereiken](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).
 
-- **Beleidsonderdelen:** binnenkomend
-- **Beleidsscopes:** alle scopes
+- **Beleids secties:** binnenkomend
+- **Beleids bereik:** alle bereiken
 
-## <a name="store-to-cache"></a><a name="StoreToCache"></a>Opslaan naar cache
-Het `cache-store` beleid caches reacties volgens de opgegeven cache-instellingen. Dit beleid kan worden toegepast in gevallen waarin de responsinhoud over een bepaalde periode statisch blijft. Response caching vermindert bandbreedte- en verwerkingsvereisten die worden opgelegd aan de backendwebserver en verlaagt de latentie die api-consumenten ervaren.
+## <a name="store-to-cache"></a><a name="StoreToCache"></a>Opslaan in cache
+Het `cache-store` beleid slaat antwoorden op volgens de opgegeven cache-instellingen. Dit beleid kan worden toegepast in gevallen waarin de inhoud van de reactie in een bepaalde periode statisch blijft. Antwoord caching vermindert de band breedte en de verwerkings vereisten op de back-end-webserver en verlaagt de latentie die wordt waargenomen door API-consumers.
 
 > [!NOTE]
-> Dit beleid moet een [overeenkomstige Get from cache-beleid](api-management-caching-policies.md#GetFromCache) hebben.
+> Dit beleid moet een bijbehorende [Get van cache](api-management-caching-policies.md#GetFromCache) -beleid hebben.
 
-### <a name="policy-statement"></a>Beleidsverklaring
+### <a name="policy-statement"></a>Beleids verklaring
 
 ```xml
 <cache-store duration="seconds" />
@@ -154,8 +154,8 @@ Het `cache-store` beleid caches reacties volgens de opgegeven cache-instellingen
 </policies>
 ```
 
-#### <a name="example-using-policy-expressions"></a>Voorbeeld van beleidsexpressies
-In dit voorbeeld ziet u hoe u de duur van api-beheerresponscache configureert die `Cache-Control` overeenkomt met de responscache van de backendservice zoals opgegeven door de richtlijn van de back-service. Zie [Cloud Cover Episode 177: Meer API-beheerfuncties met Vlad Vinogradsky](https://azure.microsoft.com/documentation/videos/episode-177-more-api-management-features-with-vlad-vinogradsky/) en fast-forward naar 25:25 voor een demonstratie van het configureren en gebruiken van dit beleid.
+#### <a name="example-using-policy-expressions"></a>Voor beeld van beleids expressies
+In dit voor beeld ziet u hoe u de tijds duur voor het opslaan van antwoorden in het cache geheugen van de back-end- `Cache-Control` service kunt API Management configureren, zoals opgegeven door de instructie van de back-upservice. Zie voor een demonstratie van het configureren en gebruiken van dit beleid [Cloud cover aflevering 177: meer API management functies met Vlad Vinogradsky](https://azure.microsoft.com/documentation/videos/episode-177-more-api-management-features-with-vlad-vinogradsky/) en Fast-forward to 25:25.
 
 ```xml
 <!-- The following cache policy snippets demonstrate how to control API Management response cache duration with Cache-Control headers sent by the backend service. -->
@@ -175,33 +175,33 @@ In dit voorbeeld ziet u hoe u de duur van api-beheerresponscache configureert di
  />
 ```
 
-Zie [Beleidsexpressies](api-management-policy-expressions.md) en [Contextvariabele](api-management-policy-expressions.md#ContextVariables)voor meer informatie.
+Zie [beleids expressies](api-management-policy-expressions.md) en [context variabelen](api-management-policy-expressions.md#ContextVariables)voor meer informatie.
 
 ### <a name="elements"></a>Elementen
 
-|Name|Beschrijving|Vereist|
+|Naam|Beschrijving|Vereist|
 |----------|-----------------|--------------|
-|cache-store|Hoofdelement.|Ja|
+|cache-Store|Hoofd element.|Ja|
 
 ### <a name="attributes"></a>Kenmerken
 
-| Name             | Beschrijving                                                                                                                                                                                                                                                                                                                                                 | Vereist | Standaard           |
+| Naam             | Beschrijving                                                                                                                                                                                                                                                                                                                                                 | Vereist | Standaard           |
 |------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------|-------------------|
-| duur         | Time-to-live van de in de cache opgeslagen items, die in enkele seconden zijn opgegeven.                                                                                                                                                                                                                                                                                                   | Ja      | N.v.t.               |
+| duur         | De TTL (time-to-Live) van de in de cache opgeslagen vermeldingen, opgegeven in seconden.                                                                                                                                                                                                                                                                                                   | Ja      | N.v.t.               |
 
 ### <a name="usage"></a>Gebruik
-Dit beleid kan worden gebruikt in de volgende [beleidsonderdelen](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) en [-scopes](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).
+Dit beleid kan worden gebruikt in de volgende beleids [secties](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) en [bereiken](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).
 
-- **Beleidssecties:** uitgaand
-- **Beleidsscopes:** alle scopes
+- **Beleids secties:** uitgaand
+- **Beleids bereik:** alle bereiken
 
-## <a name="get-value-from-cache"></a><a name="GetFromCacheByKey"></a>Haal waarde uit cache
-Gebruik `cache-lookup-value` het beleid om cache opzoeken per sleutel uit te voeren en een in de cache opgeslagen waarde terug te geven. De sleutel kan een willekeurige tekenreekswaarde hebben en wordt meestal geleverd met behulp van een beleidsexpressie.
+## <a name="get-value-from-cache"></a><a name="GetFromCacheByKey"></a>Waarde uit cache ophalen
+Gebruik het `cache-lookup-value` beleid om zoek acties in de cache uit te voeren op sleutel en een waarde in de cache te retour neren. De sleutel kan een wille keurige teken reeks waarde hebben en wordt doorgaans verschaft met een beleids expressie.
 
 > [!NOTE]
-> Dit beleid moet een overeenkomstige [winkelwaarde in cachebeleid](#StoreToCacheByKey) hebben.
+> Dit beleid moet een overeenkomende [Store-waarde in het cache](#StoreToCacheByKey) beleid hebben.
 
-### <a name="policy-statement"></a>Beleidsverklaring
+### <a name="policy-statement"></a>Beleids verklaring
 
 ```xml
 <cache-lookup-value key="cache key value"
@@ -211,7 +211,7 @@ Gebruik `cache-lookup-value` het beleid om cache opzoeken per sleutel uit te voe
 ```
 
 ### <a name="example"></a>Voorbeeld
-Zie [Aangepaste caching in Azure API Management](https://azure.microsoft.com/documentation/articles/api-management-sample-cache-by-key/)voor meer informatie en voorbeelden van dit beleid.
+Zie [Custom caching in Azure API Management](https://azure.microsoft.com/documentation/articles/api-management-sample-cache-by-key/)voor meer informatie en voor beelden van dit beleid.
 
 ```xml
 <cache-lookup-value
@@ -222,39 +222,39 @@ Zie [Aangepaste caching in Azure API Management](https://azure.microsoft.com/doc
 
 ### <a name="elements"></a>Elementen
 
-|Name|Beschrijving|Vereist|
+|Naam|Beschrijving|Vereist|
 |----------|-----------------|--------------|
-|cache-lookup-waarde|Hoofdelement.|Ja|
+|cache-lookup-waarde|Hoofd element.|Ja|
 
 ### <a name="attributes"></a>Kenmerken
 
-| Name             | Beschrijving                                                                                                                                                                                                                                                                                                                                                 | Vereist | Standaard           |
+| Naam             | Beschrijving                                                                                                                                                                                                                                                                                                                                                 | Vereist | Standaard           |
 |------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------|-------------------|
-| caching-type | Kies tussen de volgende waarden van het kenmerk:<br />- `internal`om de ingebouwde API Management-cache te gebruiken,<br />- `external`om de externe cache te gebruiken zoals beschreven in [Een externe Azure-cache voor Redis gebruiken in Azure API-beheer](api-management-howto-cache-external.md),<br />- `prefer-external`om externe cache te gebruiken als deze is geconfigureerd of als de interne cache anders is geconfigureerd. | Nee       | `prefer-external` |
-| standaardwaarde    | Een waarde die aan de variabele wordt toegewezen als de cachesleutel opzoekt tot een misser. Als dit kenmerk niet `null` is opgegeven, wordt deze toegewezen.                                                                                                                                                                                                           | Nee       | `null`            |
-| sleutel              | Cachesleutelwaarde die u in de opzoekwaarde gebruiken.                                                                                                                                                                                                                                                                                                                       | Ja      | N.v.t.               |
-| variabele naam    | Naam van de [contextvariabele](api-management-policy-expressions.md#ContextVariables) waaraan de opgezochte waarde wordt toegewezen, als het opzoeken succesvol is. Als het opzoeken resulteert in een misser, krijgt `default-value` de `null`variabele `default-value` de waarde van het kenmerk toegewezen of , als het kenmerk wordt weggelaten.                                       | Ja      | N.v.t.               |
+| cache-type | U kunt kiezen uit de volgende waarden van het kenmerk:<br />- `internal`de ingebouwde API Management-cache gebruiken<br />- `external`Als u de externe cache wilt gebruiken zoals wordt beschreven in [een externe Azure-cache gebruiken voor redis in Azure API Management](api-management-howto-cache-external.md),<br />- `prefer-external`Als u een externe cache wilt gebruiken als deze is geconfigureerd of als de interne cache anders. | Nee       | `prefer-external` |
+| standaard waarde    | Een waarde die wordt toegewezen aan de variabele als de zoek actie in de cache sleutel een Missing heeft veroorzaakt. Als dit kenmerk niet is opgegeven, `null` wordt toegewezen.                                                                                                                                                                                                           | Nee       | `null`            |
+| sleutel              | De cache sleutel waarde die moet worden gebruikt in de zoek opdracht.                                                                                                                                                                                                                                                                                                                       | Ja      | N.v.t.               |
+| variabele-naam    | De naam van de [context variabele](api-management-policy-expressions.md#ContextVariables) waaraan de opgezochte waarde wordt toegewezen als de zoek actie is geslaagd. Als de `default-value` `default-value` zoek actie resulteert in een Missing, wordt de waarde van het kenmerk toegewezen aan `null`de variabele of wordt het kenmerk wegge laten.                                       | Ja      | N.v.t.               |
 
 ### <a name="usage"></a>Gebruik
-Dit beleid kan worden gebruikt in de volgende [beleidsonderdelen](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) en [-scopes](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).
+Dit beleid kan worden gebruikt in de volgende beleids [secties](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) en [bereiken](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).
 
-- **Beleidssecties:** binnenkomend, uitgaand, backend, on-error
-- **Beleidsscopes:** alle scopes
+- **Beleids secties:** inkomend, uitgaand, back-end, op fout
+- **Beleids bereik:** alle bereiken
 
-## <a name="store-value-in-cache"></a><a name="StoreToCacheByKey"></a>Winkelwaarde in cache
-De `cache-store-value` cacheopslag per sleutel uitvoert. De sleutel kan een willekeurige tekenreekswaarde hebben en wordt meestal geleverd met behulp van een beleidsexpressie.
+## <a name="store-value-in-cache"></a><a name="StoreToCacheByKey"></a>Waarde voor opslaan in cache
+Hiermee `cache-store-value` wordt de cache opslag per sleutel uitgevoerd. De sleutel kan een wille keurige teken reeks waarde hebben en wordt doorgaans verschaft met een beleids expressie.
 
 > [!NOTE]
-> Dit beleid moet een overeenkomstige [waarde ophalen uit cachebeleid](#GetFromCacheByKey) hebben.
+> Dit beleid moet een overeenkomende [Get-waarde van het cache](#GetFromCacheByKey) beleid hebben.
 
-### <a name="policy-statement"></a>Beleidsverklaring
+### <a name="policy-statement"></a>Beleids verklaring
 
 ```xml
 <cache-store-value key="cache key value" value="value to cache" duration="seconds" caching-type="prefer-external | external | internal" />
 ```
 
 ### <a name="example"></a>Voorbeeld
-Zie [Aangepaste caching in Azure API Management](https://azure.microsoft.com/documentation/articles/api-management-sample-cache-by-key/)voor meer informatie en voorbeelden van dit beleid.
+Zie [Custom caching in Azure API Management](https://azure.microsoft.com/documentation/articles/api-management-sample-cache-by-key/)voor meer informatie en voor beelden van dit beleid.
 
 ```xml
 <cache-store-value
@@ -265,28 +265,28 @@ Zie [Aangepaste caching in Azure API Management](https://azure.microsoft.com/doc
 
 ### <a name="elements"></a>Elementen
 
-|Name|Beschrijving|Vereist|
+|Naam|Beschrijving|Vereist|
 |----------|-----------------|--------------|
-|cache-store-waarde|Hoofdelement.|Ja|
+|cache-Store-waarde|Hoofd element.|Ja|
 
 ### <a name="attributes"></a>Kenmerken
 
-| Name             | Beschrijving                                                                                                                                                                                                                                                                                                                                                 | Vereist | Standaard           |
+| Naam             | Beschrijving                                                                                                                                                                                                                                                                                                                                                 | Vereist | Standaard           |
 |------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------|-------------------|
-| caching-type | Kies tussen de volgende waarden van het kenmerk:<br />- `internal`om de ingebouwde API Management-cache te gebruiken,<br />- `external`om de externe cache te gebruiken zoals beschreven in [Een externe Azure-cache voor Redis gebruiken in Azure API-beheer](api-management-howto-cache-external.md),<br />- `prefer-external`om externe cache te gebruiken als deze is geconfigureerd of als de interne cache anders is geconfigureerd. | Nee       | `prefer-external` |
-| duur         | De waarde wordt in de cache opgeslagen voor de opgegeven duurwaarde, die in seconden is opgegeven.                                                                                                                                                                                                                                                                                 | Ja      | N.v.t.               |
-| sleutel              | Cachesleutel de waarde wordt opgeslagen onder.                                                                                                                                                                                                                                                                                                                   | Ja      | N.v.t.               |
+| cache-type | U kunt kiezen uit de volgende waarden van het kenmerk:<br />- `internal`de ingebouwde API Management-cache gebruiken<br />- `external`Als u de externe cache wilt gebruiken zoals wordt beschreven in [een externe Azure-cache gebruiken voor redis in Azure API Management](api-management-howto-cache-external.md),<br />- `prefer-external`Als u een externe cache wilt gebruiken als deze is geconfigureerd of als de interne cache anders. | Nee       | `prefer-external` |
+| duur         | De waarde wordt in de cache opgeslagen voor de opgegeven duur waarde, opgegeven in seconden.                                                                                                                                                                                                                                                                                 | Ja      | N.v.t.               |
+| sleutel              | Cache sleutel de waarde wordt opgeslagen onder.                                                                                                                                                                                                                                                                                                                   | Ja      | N.v.t.               |
 | waarde            | De waarde die in de cache moet worden opgeslagen.                                                                                                                                                                                                                                                                                                                                     | Ja      | N.v.t.               |
 ### <a name="usage"></a>Gebruik
-Dit beleid kan worden gebruikt in de volgende [beleidsonderdelen](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) en [-scopes](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).
+Dit beleid kan worden gebruikt in de volgende beleids [secties](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) en [bereiken](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).
 
-- **Beleidssecties:** binnenkomend, uitgaand, backend, on-error
-- **Beleidsscopes:** alle scopes
+- **Beleids secties:** inkomend, uitgaand, back-end, op fout
+- **Beleids bereik:** alle bereiken
 
 ### <a name="remove-value-from-cache"></a><a name="RemoveCacheByKey"></a>Waarde uit cache verwijderen
-Het `cache-remove-value` verwijdert een item in de cache dat is geïdentificeerd door de sleutel. De sleutel kan een willekeurige tekenreekswaarde hebben en wordt meestal geleverd met behulp van een beleidsexpressie.
+`cache-remove-value` Hiermee verwijdert u een item in de cache, geïdentificeerd door de sleutel. De sleutel kan een wille keurige teken reeks waarde hebben en wordt doorgaans verschaft met een beleids expressie.
 
-#### <a name="policy-statement"></a>Beleidsverklaring
+#### <a name="policy-statement"></a>Beleids verklaring
 
 ```xml
 
@@ -304,28 +304,28 @@ Het `cache-remove-value` verwijdert een item in de cache dat is geïdentificeerd
 
 #### <a name="elements"></a>Elementen
 
-|Name|Beschrijving|Vereist|
+|Naam|Beschrijving|Vereist|
 |----------|-----------------|--------------|
-|waarde cache-verwijderen|Hoofdelement.|Ja|
+|cache-Remove-waarde|Hoofd element.|Ja|
 
 #### <a name="attributes"></a>Kenmerken
 
-| Name             | Beschrijving                                                                                                                                                                                                                                                                                                                                                 | Vereist | Standaard           |
+| Naam             | Beschrijving                                                                                                                                                                                                                                                                                                                                                 | Vereist | Standaard           |
 |------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------|-------------------|
-| caching-type | Kies tussen de volgende waarden van het kenmerk:<br />- `internal`om de ingebouwde API Management-cache te gebruiken,<br />- `external`om de externe cache te gebruiken zoals beschreven in [Een externe Azure-cache voor Redis gebruiken in Azure API-beheer](api-management-howto-cache-external.md),<br />- `prefer-external`om externe cache te gebruiken als deze is geconfigureerd of als de interne cache anders is geconfigureerd. | Nee       | `prefer-external` |
+| cache-type | U kunt kiezen uit de volgende waarden van het kenmerk:<br />- `internal`de ingebouwde API Management-cache gebruiken<br />- `external`Als u de externe cache wilt gebruiken zoals wordt beschreven in [een externe Azure-cache gebruiken voor redis in Azure API Management](api-management-howto-cache-external.md),<br />- `prefer-external`Als u een externe cache wilt gebruiken als deze is geconfigureerd of als de interne cache anders. | Nee       | `prefer-external` |
 | sleutel              | De sleutel van de eerder in de cache opgeslagen waarde die uit de cache moet worden verwijderd.                                                                                                                                                                                                                                                                                        | Ja      | N.v.t.               |
 
 #### <a name="usage"></a>Gebruik
-Dit beleid kan worden gebruikt in de volgende [beleidsonderdelen](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) en [-scopes](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes) .
+Dit beleid kan worden gebruikt in de volgende beleids [secties](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) en [bereiken](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes) .
 
-- **Beleidssecties:** binnenkomend, uitgaand, backend, on-error
-- **Beleidsscopes:** alle scopes
+- **Beleids secties:** inkomend, uitgaand, back-end, op fout
+- **Beleids bereik:** alle bereiken
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie voor meer informatie over beleid:
+Zie voor meer informatie over het gebruik van beleid:
 
-+ [Beleid in API-beheer](api-management-howto-policies.md)
-+ [API's transformeren](transform-api.md)
-+ [Beleidsreferentie](api-management-policy-reference.md) voor een volledige lijst met beleidsoverzichten en hun instellingen
-+ [Beleidsvoorbeelden](policy-samples.md)
++ [Beleid in API Management](api-management-howto-policies.md)
++ [Api's transformeren](transform-api.md)
++ [Beleids verwijzing](api-management-policy-reference.md) voor een volledige lijst met beleids instructies en hun instellingen
++ [Voor beelden van beleid](policy-samples.md)

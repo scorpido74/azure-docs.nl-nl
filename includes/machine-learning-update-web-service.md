@@ -5,22 +5,22 @@ ms.topic: include
 ms.date: 03/16/2020
 ms.author: larryfr
 ms.openlocfilehash: d36bf2db05113656a77e76ff900d95910f313c73
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79477252"
 ---
-Als u een webservice `update` wilt bijwerken, gebruikt u de methode. U de webservice bijwerken om een nieuw model, een nieuw invoerscript of nieuwe afhankelijkheden te gebruiken die kunnen worden opgegeven in een gevolgtrekkingsconfiguratie. Zie de documentatie voor [Webservice.update](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.webservice.webservice?view=azure-ml-py#update--args-)voor meer informatie.
+Als u een webservice wilt bijwerken, gebruikt `update` u de-methode. U kunt de webservice bijwerken voor het gebruik van een nieuw model, een nieuw invoer script of nieuwe afhankelijkheden die kunnen worden opgegeven in een Afleidings configuratie. Zie de documentatie voor [webservice-update](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.webservice.webservice?view=azure-ml-py#update--args-)voor meer informatie.
 
 > [!IMPORTANT]
-> Wanneer u een nieuwe versie van een model maakt, moet u elke service die u wilt gebruiken handmatig bijwerken.
+> Wanneer u een nieuwe versie van een model maakt, moet u elke service die u wilt gebruiken hand matig bijwerken.
 >
-> U de SDK niet gebruiken om een webservice bij te werken die is gepubliceerd vanuit de Azure Machine Learning-ontwerper.
+> U kunt de SDK niet gebruiken om een webservice bij te werken die is gepubliceerd vanuit de Azure Machine Learning Designer.
 
 **De SDK gebruiken**
 
-In de volgende code ziet u hoe u de SDK gebruikt om het model, de omgeving en het invoerscript voor een webservice bij te werken:
+De volgende code laat zien hoe u met behulp van de SDK het model, de omgeving en het invoer script voor een webservice bijwerkt:
 
 ```python
 from azureml.core import Environment
@@ -51,9 +51,9 @@ print(service.state)
 print(service.get_logs())
 ```
 
-**Met behulp van de CLI**
+**De CLI gebruiken**
 
-U een webservice ook bijwerken met de ML CLI. In het volgende voorbeeld wordt het registreren van een nieuw model en het bijwerken van een webservice om het nieuwe model te gebruiken, aangetoond:
+U kunt ook een webservice bijwerken met behulp van de versie van ML CLI. In het volgende voor beeld ziet u hoe u een nieuw model registreert en een webservice bijwerkt om het nieuwe model te gebruiken:
 
 ```azurecli
 az ml model register -n sklearn_mnist  --asset-path outputs/sklearn_mnist_model.pkl  --experiment-name myexperiment --output-metadata-file modelinfo.json
@@ -61,8 +61,8 @@ az ml service update -n myservice --model-metadata-file modelinfo.json
 ```
 
 > [!TIP]
-> In dit voorbeeld wordt een JSON-document gebruikt om de modelgegevens van de registratieopdracht door te geven aan de opdracht Bijwerken.
+> In dit voor beeld wordt een JSON-document gebruikt om de model gegevens van de registratie opdracht door te geven aan de opdracht update.
 >
-> Als u de service wilt bijwerken om een nieuw invoerscript of -omgeving `ic` te gebruiken, maakt u een [inferenceconfiguratiebestand](/azure/machine-learning/service/reference-azure-machine-learning-cli#inference-configuration-schema) en geeft u het op met de parameter.
+> Als u de service wilt bijwerken om een nieuw invoer script of-omgeving te gebruiken, maakt u een Afleidings [configuratie bestand](/azure/machine-learning/service/reference-azure-machine-learning-cli#inference-configuration-schema) en geeft u het op met de `ic` para meter.
 
-Zie voor meer informatie de documentatie van de [AZ ML-serviceupdate.](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/service?view=azure-cli-latest#ext-azure-cli-ml-az-ml-service-update)
+Zie de documentatie van [AZ ml service update](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/service?view=azure-cli-latest#ext-azure-cli-ml-az-ml-service-update) voor meer informatie.

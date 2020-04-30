@@ -1,6 +1,6 @@
 ---
-title: Overzicht van Azure virtual network TAP | Microsoft Documenten
-description: Meer informatie over het virtuele netwerk TAP. Virtueel netwerk TAP biedt u een diepe kopie van het netwerkverkeer van virtuele machines dat naar een pakketverzamelaar kan worden gestreamd.
+title: Overzicht van het virtuele netwerk van Azure Microsoft Docs
+description: Meer informatie over het tikken van een virtueel netwerk. Met het virtuele netwerk tikken kunt u een diepe kopie maken van het netwerk verkeer van de virtuele machine die kan worden gestreamd naar een pakket verzamelaar.
 services: virtual-network
 documentationcenter: na
 author: karthikananth
@@ -16,60 +16,60 @@ ms.workload: infrastructure-services
 ms.date: 04/14/2019
 ms.author: kaanan
 ms.openlocfilehash: 47db03460ad3c5194a5445f0b25cb8e742e60c21
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79279609"
 ---
 # <a name="virtual-network-tap"></a>Virtual Network TAP
 
-Azure virtual network TAP (Terminal Access Point) stelt u in staat om uw netwerkverkeer voor virtuele machines continu te streamen naar een netwerkpakketverzamelaar of analysetool. De collector- of analysetool wordt geleverd door een [netwerkpartner voor virtuele apparaten.](https://azure.microsoft.com/solutions/network-appliances/) Zie [partneroplossingen](#virtual-network-tap-partner-solutions)voor een lijst met partneroplossingen die zijn gevalideerd om met het virtuele netwerk TAP te werken.
+Met het virtuele netwerk van Azure (Terminal Access Point) kunt u het netwerk verkeer van de virtuele machine continu streamen naar een netwerk pakket verzamelaar of een analyse programma. Het hulp programma Collector of Analytics wordt verschaft door een [virtuele netwerk apparaat](https://azure.microsoft.com/solutions/network-appliances/) -partner. Zie [partner oplossingen](#virtual-network-tap-partner-solutions)voor een lijst met partner oplossingen die zijn gevalideerd om te werken met Virtual Network tikken.
 
 > [!IMPORTANT]
-> Virtueel netwerk TAP is momenteel in preview in alle Azure-regio's. Als u het virtuele netwerk TAP wilt gebruiken, moet <azurevnettap@microsoft.com> u zich inschrijven voor het voorbeeld door een e-mail te sturen naar uw abonnements-ID. U ontvangt een e-mailbevestiging zodra uw abonnement is geregistreerd. U de mogelijkheid pas gebruiken als u een bevestigingsmail hebt ontvangen. Deze preview wordt zonder serviceniveau geleverd en mag niet worden gebruikt voor productieworkloads. Bepaalde functies worden mogelijk niet ondersteund, zijn mogelijk beperkt of zijn mogelijk niet beschikbaar in alle Azure-locaties. Zie [de aanvullende gebruiksvoorwaarden voor Microsoft Azure Previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) voor meer informatie.
+> Virtual Network TIKT is momenteel beschikbaar als preview in alle Azure-regio's. Als u een virtueel netwerk wilt gebruiken, moet u zich inschrijven voor het voor beeld door <azurevnettap@microsoft.com> een e-mail te verzenden naar met uw abonnements-id. U ontvangt een e-mailbevestiging zodra uw abonnement is geregistreerd. U kunt de mogelijkheid niet gebruiken totdat u een bevestigings-e-mail ontvangt. Deze preview is beschikbaar zonder service level agreement en mag niet worden gebruikt voor werk belastingen voor de productie. Bepaalde functies worden mogelijk niet ondersteund, zijn mogelijk beperkt of zijn mogelijk niet beschikbaar in alle Azure-locaties. Zie de [aanvullende gebruiks voorwaarden voor Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) -voor beelden voor meer informatie.
 
-## <a name="virtual-network-tap-partner-solutions"></a>Tap-partneroplossingen voor virtueel netwerk
+## <a name="virtual-network-tap-partner-solutions"></a>Virtueel netwerk TIKT u op partner oplossingen
 
-### <a name="network-packet-brokers"></a>Netwerkpakketmakelaars
+### <a name="network-packet-brokers"></a>Netwerkpakket Brokers
 
-- [Big Switch Big Monitoring Fabric](https://www.bigswitch.com/products/big-monitoring-fabric/public-cloud/microsoft-azure)
+- [Big-Switch infrastructuur Big](https://www.bigswitch.com/products/big-monitoring-fabric/public-cloud/microsoft-azure)
 - [Gigamon GigaSECURE](https://blog.gigamon.com/2018/09/13/why-microsofts-new-vtap-service-works-even-better-with-gigasecure-for-azure)
 - [Ixia CloudLens](https://www.ixiacom.com/cloudlens/cloudlens-azure)
-- [Nubeva Prisma's](https://www.nubeva.com/azurevtap)
+- [Nubeva Prisms](https://www.nubeva.com/azurevtap)
 
-### <a name="security-analytics-networkapplication-performance-management"></a>Beveiligingsanalyses, netwerk-/applicatieprestatiebeheer
+### <a name="security-analytics-networkapplication-performance-management"></a>Beveiligings analyse, beheer van netwerk/toepassings prestaties
 
-- [Wakkere Veiligheid](https://awakesecurity.com/technology-partners/microsoft-azure/)
-- [Cisco Stealthwatch Cloud](https://blogs.cisco.com/security/cisco-stealthwatch-cloud-and-microsoft-azure-reliable-cloud-infrastructure-meets-comprehensive-cloud-security)
-- [Darktrace Darktrace](https://www.darktrace.com/en/azure/)
+- [Wakker-beveiliging](https://awakesecurity.com/technology-partners/microsoft-azure/)
+- [Cisco Stealthwatch-Cloud](https://blogs.cisco.com/security/cisco-stealthwatch-cloud-and-microsoft-azure-reliable-cloud-infrastructure-meets-comprehensive-cloud-security)
+- [Darktrace](https://www.darktrace.com/en/azure/)
 - [ExtraHop Reveal(x)](https://www.extrahop.com/partners/tech-partners/microsoft/)
-- [Fidelis Cybersecurity](https://www.fidelissecurity.com/technology-partners/microsoft-azure )
-- [Flowmon Flowmon](https://www.flowmon.com/blog/azure-vtap)
-- [NetFort LANGuardian](https://www.netfort.com/languardian/solutions/visibility-in-azure-network-tap/)
+- [Fidelis Cyber beveiliging](https://www.fidelissecurity.com/technology-partners/microsoft-azure )
+- [Flowmon](https://www.flowmon.com/blog/azure-vtap)
+- [Netfort LANGuardian](https://www.netfort.com/languardian/solutions/visibility-in-azure-network-tap/)
 - [Netscout vSTREAM]( https://www.netscout.com/technology-partners/microsoft/azure-vtap)
 - [Riverbed SteelCentral AppResponse]( https://www.riverbed.com/products/steelcentral/steelcentral-appresponse-11.html)
-- [RSA NetWitness® Platform](https://www.rsa.com/azure)
+- [® Platform voor RSA-netwitness](https://www.rsa.com/azure)
 - [Vectra Cognito](https://vectra.ai/microsoftazure)
 
-In de volgende afbeelding ziet u hoe het virtuele netwerk TAP werkt. U een TAP-configuratie toevoegen aan een [netwerkinterface](virtual-network-network-interface.md) die is gekoppeld aan een virtuele machine die in uw virtuele netwerk is geïmplementeerd. De bestemming is een virtueel netwerk-IP-adres in hetzelfde virtuele netwerk als de bewaakte netwerkinterface of een [peered virtueel](virtual-network-peering-overview.md) netwerk. De verzameloplossing voor virtueel netwerk TAP kan worden geïmplementeerd achter een Azure Internal Load-balancer voor hoge beschikbaarheid. Zie [partneroplossingen](#virtual-network-tap-partner-solutions)om implementatieopties voor afzonderlijke oplossingen te evalueren.
+In de volgende afbeelding ziet u hoe virtuele netwerk tikken werkt. U kunt een TAP-configuratie toevoegen aan een [netwerk interface](virtual-network-network-interface.md) die is gekoppeld aan een virtuele machine die is geïmplementeerd in uw virtuele netwerk. De bestemming is een IP-adres van een virtueel netwerk in hetzelfde virtuele netwerk als de bewaakte netwerk interface of een gekoppeld [virtueel](virtual-network-peering-overview.md) netwerk. De Collector-oplossing voor Virtual Network TIKT kan worden geïmplementeerd achter een interne Load Balancer van Azure voor hoge Beschik baarheid. Zie [partner oplossingen](#virtual-network-tap-partner-solutions)voor meer informatie over het evalueren van implementatie opties voor afzonderlijke oplossingen.
 
-![Hoe het virtuele netwerk TAP werkt](./media/virtual-network-tap/architecture.png)
+![Hoe Virtual Network TIKT werkt](./media/virtual-network-tap/architecture.png)
 
 ## <a name="prerequisites"></a>Vereisten
 
-Voordat u een eenvoudig netwerk TAP maakt, moet u een bevestigingsmail hebben ontvangen die u in de preview hebt ingeschreven en een of meer virtuele machines hebben gemaakt met behulp van [het Azure Resource Manager-implementatiemodel](../azure-resource-manager/management/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) en een partneroplossing voor het aggregeren van het TAP-verkeer in dezelfde azure-regio. Als u geen partneroplossing in uw virtuele netwerk hebt, raadpleegt u [partneroplossingen](#virtual-network-tap-partner-solutions) om er een te implementeren. U dezelfde tap-bron voor virtueel netwerk gebruiken om verkeer van meerdere netwerkinterfaces in dezelfde of verschillende abonnementen te verzamelen. Als de bewaakte netwerkinterfaces zich in verschillende abonnementen bevinden, moeten de abonnementen worden gekoppeld aan dezelfde Azure Active Directory-tenant. Bovendien kunnen de bewaakte netwerkinterfaces en het doeleindpunt voor het aggregeren van het TAP-verkeer zich in peered virtuele netwerken in dezelfde regio bevinden. Als u dit implementatiemodel gebruikt, moet u ervoor zorgen dat het [virtuele netwerkpeering](virtual-network-peering-overview.md) is ingeschakeld voordat u het virtuele netwerk TAP configureert.
+Voordat u een virtueel netwerk maakt, moet u een bevestigings bericht hebben ontvangen dat u in de preview hebt Inge schreven en dat er een of meer virtuele machines zijn gemaakt met [Azure Resource Manager](../azure-resource-manager/management/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) implementatie model en een partner oplossing voor het samen voegen van het tikken verkeer in dezelfde Azure-regio. Als u geen partner oplossing in uw virtuele netwerk hebt, raadpleegt u [partner oplossingen](#virtual-network-tap-partner-solutions) om er een te implementeren. U kunt hetzelfde virtuele netwerk tikken op resource om verkeer van meerdere netwerk interfaces in dezelfde of verschillende abonnementen samen te voegen. Als de bewaakte netwerk interfaces zich in verschillende abonnementen bevinden, moeten de abonnementen zijn gekoppeld aan dezelfde Azure Active Directory Tenant. Daarnaast kunnen de bewaakte netwerk interfaces en het bestemmings eindpunt voor het samen voegen van het TIKs verkeer zich in gekoppelde virtuele netwerken in dezelfde regio bevinden. Als u dit implementatie model gebruikt, moet u ervoor zorgen dat de [peering van het virtuele netwerk](virtual-network-peering-overview.md) is ingeschakeld voordat u tikt op het virtuele netwerk.
 
 ## <a name="permissions"></a>Machtigingen
 
-De accounts die u gebruikt om TAP-configuratie toe te passen op netwerkinterfaces, moeten worden toegewezen aan de [rol van netwerkinzender](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) of aan een [aangepaste rol](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) waaraan de nodige acties uit de volgende tabel zijn toegewezen:
+De accounts die u gebruikt voor het Toep assen van TIKT op netwerk interfaces, moeten worden toegewezen aan de rol [netwerk bijdrager](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) of aan een [aangepaste rol](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) waaraan de nodige acties zijn toegewezen in de volgende tabel:
 
-| Actie | Name |
+| Bewerking | Naam |
 |---|---|
-| Microsoft.Network/virtualNetworkTaps/* | Vereist voor het maken, bijwerken, lezen en verwijderen van een TAP-bron voor virtueel netwerk |
-| Microsoft.Network/networkInterfaces/read | Vereist om de netwerkinterfacebron te lezen waarop de TAP wordt geconfigureerd |
-| Microsoft.Network/tapConfiguraties/* | Vereist voor het maken, bijwerken, lezen en verwijderen van de TAP-configuratie op een netwerkinterface |
+| Micro soft. Network/virtualNetworkTaps/* | Vereist voor het maken, bijwerken, lezen en verwijderen van een virtueel netwerk Tik op resource |
+| Micro soft. Network/networkInterfaces/lezen | Vereist voor het lezen van de netwerk interface bron waarop de Tik wordt geconfigureerd |
+| Micro soft. Network/tapConfigurations/* | Vereist voor het maken, bijwerken, lezen en verwijderen van de TAP-configuratie op een netwerk interface |
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Meer informatie over het [maken van een virtueel netwerk TAP](tutorial-tap-virtual-network-cli.md).
+- Meer informatie over het [maken van een virtueel netwerk tikken](tutorial-tap-virtual-network-cli.md).

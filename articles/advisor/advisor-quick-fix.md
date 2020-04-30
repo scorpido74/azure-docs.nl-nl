@@ -1,53 +1,53 @@
 ---
-title: Quick Fix-herstel voor aanbevelingen van adviseurs
-description: Bulkherstel uitvoeren met Quick Fix in Advisor
+title: Snel oplossen van herbemiddeling voor Advisor-aanbevelingen
+description: Bulksgewijs herstel uitvoeren met snelle oplossing in Advisor
 ms.topic: article
 ms.date: 03/13/2020
 ms.author: sagupt
 ms.openlocfilehash: 3c3ac27f04aa516fbef1bfff30e3392659b58919
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79502488"
 ---
-# <a name="quick-fix-remediation-for-advisor"></a>Quick Fix-herstel voor adviseur
-**Quick Fix** maakt een snellere en eenvoudigere manier van herstel mogelijk voor aanbeveling over meerdere resources. Het biedt mogelijkheden voor bulkherstelmogelijkheden voor resources en helpt u uw abonnementen sneller te optimaliseren met herstel op schaal voor uw resources.
-De functie is alleen beschikbaar voor bepaalde aanbevelingen, via Azure portal.
+# <a name="quick-fix-remediation-for-advisor"></a>Snel oplossen van herstel voor Advisor
+Met **snel oplossen** kunt u een snellere en eenvoudiger herstel methode voor een aanbeveling op meerdere resources. Het biedt mogelijkheden voor het bulksgewijs oplossen van resources en helpt u uw abonnementen sneller te optimaliseren met herbemiddeling op schaal voor uw resources.
+De functie is alleen beschikbaar voor bepaalde aanbevelingen via Azure Portal.
 
 
-## <a name="steps-to-use-quick-fix"></a>Stappen om 'Quick Fix' te gebruiken
+## <a name="steps-to-use-quick-fix"></a>Stappen voor het gebruik van Quick Fix
 
-1. Klik in de lijst met aanbevelingen met het label **Quick Fix** op de aanbeveling.
+1. Klik in de lijst met aanbevelingen die het label **snel oplossen** hebben op de aanbeveling.
 
-   ![Adviseur quick fix](./media/quick-fix-1.png)
+   ![Snelle oplossing voor Advisor](./media/quick-fix-1.png)
    
-   *Prijzen in de afbeelding zijn bijvoorbeeld alleen doeleinden*
+   *De prijzen in de afbeelding zijn alleen bedoeld als voor beeld*
 
-2. Op de pagina Aanbevelingsdetails ziet u een lijst met bronnen waarvoor u deze aanbeveling hebt. Selecteer alle resources die u wilt herstellen voor de aanbeveling.
+2. Op de pagina aanbeveling details ziet u een lijst met resources waarvoor u deze aanbeveling hebt. Selecteer alle resources die u wilt herstellen voor de aanbeveling.
 
-   ![Adviseur quick fix](./media/quick-fix-2.png)
+   ![Snelle oplossing voor Advisor](./media/quick-fix-2.png)
    
-   *Prijzen in de afbeelding zijn bijvoorbeeld alleen doeleinden*
+   *De prijzen in de afbeelding zijn alleen bedoeld als voor beeld*
 
-3. Zodra u de resources hebt geselecteerd, klikt u op de knop **Snelle oplossing** om bulk te herstellen.
+3. Zodra u de resources hebt geselecteerd, klikt u op de knop **snel herstellen** om bulksgewijs te herstellen.
 
    > [!NOTE]
-   > Sommige van de vermelde bronnen kunnen zijn uitgeschakeld, omdat u niet over de juiste machtigingen beschikt om ze te wijzigen.
+   > Sommige van de vermelde bronnen zijn mogelijk uitgeschakeld, omdat u niet over de juiste machtigingen beschikt om deze te wijzigen.
    
    > [!NOTE]
-   > Als er andere implicaties zijn, wordt u, naast de in Advisor genoemde voordelen, in de ervaring gecommuniceerd om u te helpen weloverwogen herstelbeslissingen te nemen.
+   > Als er andere implicaties zijn, naast de voor delen die in Advisor worden genoemd, wordt u in de ervaring gecommuniceerd om u te helpen weloverwogen beslissingen te nemen.
    
-4. U ontvangt een melding voor de voltooiing van de sanering. Er wordt een fout weergegeven als er resources zijn die niet zijn gesaneerd en resources in de geselecteerde modus in de weergave resourcelijst.  
+4. U ontvangt een melding voor het volt ooien van het herstel. Er wordt een fout bericht weer gegeven als er resources zijn die niet zijn hersteld en resources in de geselecteerde modus in de resource lijst weergave.  
 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie voor meer informatie over aanbevelingen van Advisor:
+Zie voor meer informatie over Advisor-aanbevelingen:
 * [Inleiding tot Azure Advisor](advisor-overview.md)
 * [Aan de slag met Advisor](advisor-get-started.md)
-* [Aanbevelingen voor kosten van adviseur](advisor-cost-recommendations.md)
-* [Aanbevelingen voor prestaties van adviseur](advisor-performance-recommendations.md)
-* [Aanbevelingen voor beveiliging van adviseur](advisor-security-recommendations.md)
-* [Aanbevelingen adviseur Operational Excellence](advisor-operational-excellence-recommendations.md)
+* [Aanbevelingen voor Advisor-kosten](advisor-cost-recommendations.md)
+* [Aanbevelingen voor Advisor-prestaties](advisor-performance-recommendations.md)
+* [Aanbevelingen voor de beveiliging van Advisor](advisor-security-recommendations.md)
+* [Aanbevelingen voor operationele uitmuntendheid van Advisor](advisor-operational-excellence-recommendations.md)
 * [Advisor REST API](https://docs.microsoft.com/rest/api/advisor/)

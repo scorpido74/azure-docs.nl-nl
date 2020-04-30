@@ -1,27 +1,27 @@
 ---
-title: Referentie van het werkdefinitietaalschema
-description: Naslaggids voor het JSON-schema en de syntaxis voor de werkstroomdefinitietaal die werkstromen in Azure Logic Apps beschrijft
+title: Schema verwijzing werk stroom definitie taal
+description: Naslag Gids voor het JSON-schema en de syntaxis voor de werk stroom definitie taal waarmee werk stromen in Azure Logic Apps worden beschreven
 services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 05/13/2019
 ms.openlocfilehash: ff2267c2d03076d3abc44d0bd1dddc64577cc7f1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79283860"
 ---
-# <a name="schema-reference-guide-for-the-workflow-definition-language-in-azure-logic-apps"></a>Schema-naslaggids voor de taal voor werkstroomdefinitie in Azure Logic Apps
+# <a name="schema-reference-guide-for-the-workflow-definition-language-in-azure-logic-apps"></a>Naslag Gids voor schema's voor de taal van de werk stroom definitie in Azure Logic Apps
 
-Wanneer u een logische app maakt in [Azure Logic Apps,](../logic-apps/logic-apps-overview.md)heeft uw logische app een onderliggende werkstroomdefinitie die de werkelijke logica beschrijft die in uw logische app wordt uitgevoerd. Die werkstroomdefinitie maakt gebruik [van JSON](https://www.json.org/) en volgt een structuur die is gevalideerd door het schema Van de definitievan werkstroom. Deze verwijzing geeft een overzicht van deze structuur en hoe het schema kenmerken definieert in uw werkstroomdefinitie.
+Wanneer u een logische app in [Azure Logic apps](../logic-apps/logic-apps-overview.md)maakt, heeft uw logische app een onderliggende werk stroom definitie die de daad werkelijke logica beschrijft die in uw logische app wordt uitgevoerd. Deze werk stroom definitie maakt gebruik van [JSON](https://www.json.org/) en volgt een structuur die wordt gevalideerd door het taal schema voor de werk stroom definitie. Deze Naslag informatie bevat een overzicht van deze structuur en hoe het schema kenmerken in uw workflowdefinitie definieert.
 
-## <a name="workflow-definition-structure"></a>Werkstroomdefinitiestructuur
+## <a name="workflow-definition-structure"></a>Structuur van werk stroom definitie
 
-Een werkstroomdefinitie bevat altijd een trigger voor het instantiëren van uw logische app, plus een of meer acties die worden uitgevoerd nadat de trigger is geactiveerd.
+Een definitie van een werk stroom bevat altijd een trigger voor het instantiëren van uw logische app, plus een of meer acties die worden uitgevoerd nadat de trigger wordt geactiveerd.
 
-Hier is de structuur op hoog niveau voor een werkstroomdefinitie:
+Dit is de structuur op hoog niveau voor een werk stroom definitie:
 
 ```json
 "definition": {
@@ -37,29 +37,29 @@ Hier is de structuur op hoog niveau voor een werkstroomdefinitie:
 
 | Kenmerk | Vereist | Beschrijving |
 |-----------|----------|-------------|
-| `definition` | Ja | Het beginelement voor uw werkstroomdefinitie |
-| `$schema` | Alleen wanneer extern wordt verwezen naar een werkstroomdefinitie | De locatie voor het JSON-schemabestand dat de versie van de werkstroomdefinitietaal beschrijft, die u hier vinden: <p>`https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json`</p> |
-| `actions` | Nee | De definities voor een of meer acties die moeten worden uitgevoerd tijdens de werkstroomruntijd. Zie [Triggers en acties](#triggers-actions)voor meer informatie. <p><p>Maximale acties: 250 |
-| `contentVersion` | Nee | Het versienummer voor uw werkstroomdefinitie, die standaard '1.0.0.0' is. Als u wilt helpen bij het identificeren en bevestigen van de juiste definitie bij het implementeren van een werkstroom, geeft u een te gebruiken waarde op. |
-| `outputs` | Nee | De definities voor de uitvoer om terug te keren van een werkstroom worden uitgevoerd. Zie [Uitvoer voor](#outputs)meer informatie . <p><p>Maximale uitgangen: 10 |
-| `parameters` | Nee | De definities voor een of meer parameters die de waarden doorgeven die u wilt gebruiken tijdens de runtime van uw logische app. Zie [Parameters](#parameters)voor meer informatie . <p><p>Maximale parameters: 50 |
-| `staticResults` | Nee | De definities voor een of meer statische resultaten die worden geretourneerd door acties als mock-uitgangen wanneer statische resultaten zijn ingeschakeld voor deze acties. In elke actiedefinitie `runtimeConfiguration.staticResult.name` verwijst het kenmerk `staticResults`naar de overeenkomstige definitie binnenin . Zie [Statische resultaten voor](#static-results)meer informatie . |
-| `triggers` | Nee | De definities voor een of meer triggers die uw workflow instantiëren. U meer dan één trigger definiëren, maar alleen met de taal voor werkstroomdefinitie, niet visueel via de Logic Apps Designer. Zie [Triggers en acties](#triggers-actions)voor meer informatie. <p><p>Maximale triggers: 10 |
+| `definition` | Ja | Het begin element voor uw werk stroom definitie |
+| `$schema` | Alleen wanneer extern naar een werk stroom definitie verwijst | De locatie voor het JSON-schema bestand met een beschrijving van de versie van de werk stroom definitie taal, die u hier kunt vinden: <p>`https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json`</p> |
+| `actions` | Nee | De definities voor een of meer acties die tijdens de workflowruntime worden uitgevoerd. Zie [Triggers en acties](#triggers-actions)voor meer informatie. <p><p>Maximum aantal acties: 250 |
+| `contentVersion` | Nee | Het versie nummer voor de werk stroom definitie, die standaard de waarde 1.0.0.0 heeft. Geef een waarde op om te gebruiken voor het identificeren en bevestigen van de juiste definitie bij het implementeren van een werk stroom. |
+| `outputs` | Nee | De definities voor de uitvoer die moeten worden geretourneerd door de uitvoering van een werk stroom. Zie [uitvoer](#outputs)voor meer informatie. <p><p>Maximale uitvoer: 10 |
+| `parameters` | Nee | De definities voor een of meer para meters die de waarden door geven die moeten worden gebruikt tijdens de runtime van de logische app. Zie [para meters](#parameters)voor meer informatie. <p><p>Maximum aantal para meters: 50 |
+| `staticResults` | Nee | De definities voor een of meer statische resultaten die door acties worden geretourneerd als het model van de uitvoer wanneer statische resultaten op deze acties zijn ingeschakeld. In elke actie definitie verwijst het `runtimeConfiguration.staticResult.name` kenmerk naar de bijbehorende definitie in `staticResults`. Zie [static results (statische resultaten](#static-results)) voor meer informatie. |
+| `triggers` | Nee | De definities voor een of meer triggers die uw werk stroom instantiëren. U kunt meer dan één trigger definiëren, maar alleen met de taal van de werk stroom definitie, niet visueel door de Logic Apps Designer. Zie [Triggers en acties](#triggers-actions)voor meer informatie. <p><p>Maximum aantal triggers: 10 |
 ||||
 
 <a name="triggers-actions"></a>
 
 ## <a name="triggers-and-actions"></a>Triggers en acties
 
-In een werkstroomdefinitie definiëren de `triggers` secties de `actions` aanroepen die tijdens de uitvoering van uw werkstroom plaatsvinden. Zie [Werkstroomtriggers en -acties](../logic-apps/logic-apps-workflow-actions-triggers.md)voor syntaxis en meer informatie over deze secties.
+In een werk stroom definitie definiëren `triggers` de `actions` en-secties de aanroepen die tijdens de uitvoering van de werk stroom plaatsvinden. Zie [werk stroom triggers en acties](../logic-apps/logic-apps-workflow-actions-triggers.md)voor een syntaxis en meer informatie over deze secties.
 
 <a name="parameters"></a>
 
 ## <a name="parameters"></a>Parameters
 
-De implementatielevenscyclus heeft meestal verschillende omgevingen voor ontwikkeling, test, fasering en productie. Wanneer u logische apps implementeert in verschillende omgevingen, wilt u waarschijnlijk verschillende waarden gebruiken, zoals verbindingstekenreeksen, op basis van uw implementatiebehoeften. Of u hebt waarden die u in uw logische app opnieuw wilt gebruiken zonder hardcodering of die vaak veranderen. In de sectie `parameters` van uw werkstroomdefinitie u parameters definiëren of bewerken voor de waarden die uw logische app gebruikt tijdens uitvoering. U moet deze parameters eerst definiëren voordat u elders in uw werkstroomdefinitie naar deze parameters verwijzen.
+De levens cyclus van de implementatie heeft doorgaans verschillende omgevingen voor ontwikkeling, testen, faseren en productie. Wanneer u logische apps implementeert in verschillende omgevingen, wilt u waarschijnlijk verschillende waarden gebruiken, zoals verbindings reeksen, op basis van uw implementatie behoeften. Het kan ook zijn dat u waarden wilt gebruiken die u in de logische app wilt hergebruiken zonder hardcoding of die regel matig veranderen. In de `parameters` sectie werk stroom definitie kunt u para meters definiëren of bewerken voor de waarden die uw logische app gebruikt tijdens runtime. U moet deze para meters eerst definiëren voordat u deze para meters ergens anders in uw werk stroom definitie kunt raadplegen.
 
-Hier is de algemene structuur voor een parameterdefinitie:
+Hier volgt de algemene structuur voor een parameter definitie:
 
 ```json
 "parameters": {
@@ -76,20 +76,20 @@ Hier is de algemene structuur voor een parameterdefinitie:
 
 | Kenmerk | Vereist | Type | Beschrijving |
 |-----------|----------|------|-------------|
-| <*parameternaam*> | Ja | Tekenreeks | De naam voor de parameter die u wilt definiëren |
-| <*parametertype*> | Ja | int, float, string, bool, array, object, securestring, secureobject <p><p>**Opmerking:** Voor alle wachtwoorden, sleutels en `securestring` `secureobject` geheimen gebruikt `GET` u de typen of typen omdat de bewerking deze typen niet retourneert. Zie [Beveiligingsaanbevelingen voor actie en invoerparameters voor](../logic-apps/logic-apps-securing-a-logic-app.md#secure-action-parameters)meer informatie over het beveiligen van parameters. | Het type voor de parameter |
-| <*standaardparameterwaarde*> | Ja | Hetzelfde als`type` | De standaardparameterwaarde die moet worden gebruikt als er geen waarde is opgegeven wanneer de werkstroom wordt geinstantt. Het `defaultValue` kenmerk is vereist zodat de Logic App Designer de parameter correct kan weergeven, maar u een lege waarde opgeven. |
-| <*array-met-toegestane parameterwaarden*> | Nee | Matrix | Een array met waarden die de parameter kan accepteren |
-| <*parameterbeschrijving*> | Nee | JSON-object | Alle andere parameterdetails, zoals een beschrijving voor de parameter |
+| <*para meter-naam*> | Ja | Tekenreeks | De naam voor de para meter die u wilt definiëren |
+| <*parameter type*> | Ja | int, float, String, BOOL, array, object, securestring, secureobject <p><p>**Opmerking**: gebruik de `securestring` typen of `secureobject` voor alle wacht woorden, sleutels en geheimen, omdat de `GET` bewerking deze typen niet retourneert. Zie [beveiligings aanbevelingen voor actie-en invoer parameters](../logic-apps/logic-apps-securing-a-logic-app.md#secure-action-parameters)voor meer informatie over het beveiligen van para meters. | Het type voor de para meter |
+| <*default-para meter-value*> | Ja | Hetzelfde als`type` | De standaard parameter waarde die moet worden gebruikt als er geen waarde wordt opgegeven bij het instantiëren van de werk stroom. Het `defaultValue` kenmerk is vereist zodat de Logic app Designer de para meter correct kan weer geven, maar u kunt een lege waarde opgeven. |
+| <*matrix-met-toegestane-para meter-waarden*> | Nee | Matrix | Een matrix met waarden die door de para meter kunnen worden geaccepteerd |
+| <*para meter-beschrijving*> | Nee | JSON-object | Eventuele andere parameter Details, zoals een beschrijving van de para meter |
 ||||
 
-Maak vervolgens een [Azure Resource Manager-sjabloon](../azure-resource-manager/templates/overview.md) voor uw werkstroomdefinitie, definieer sjabloonparameters die de gewenste waarden bij implementatie accepteren, vervang hardcoded waarden met verwijzingen naar sjabloon- of werkstroomdefinitieparameters naar gelang van het geval en sla de waarden op die moeten worden gebruikt bij implementatie in een afzonderlijk [parameterbestand.](../azure-resource-manager/templates/parameter-files.md) Op die manier u deze waarden gemakkelijker wijzigen via het parameterbestand zonder dat u uw logische app hoeft bij te werken en opnieuw te implementeren. Voor informatie die gevoelig is of moet worden beveiligd, zoals gebruikersnamen, wachtwoorden en geheimen, u deze waarden opslaan in Azure Key Vault en uw parameterbestand deze waarden uit uw sleutelkluis laten ophalen. Zie [Overzicht: Implementatie automatiseren voor logische apps met Azure Resource Manager-sjablonen](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md)voor meer informatie en voorbeelden over het definiëren van parameters op de sjabloon- en werkstroomdefinitieniveaus.
+Maak vervolgens een [Azure Resource Manager sjabloon](../azure-resource-manager/templates/overview.md) voor de definitie van uw werk stroom, definieer sjabloon parameters die de waarden accepteren die u tijdens de implementatie wilt gebruiken, vervang hardcoded-waarden door verwijzingen naar sjabloon-of werk stroom definitie parameters en sla de waarden op die moeten worden gebruikt bij de implementatie in een afzonderlijk [parameter bestand](../azure-resource-manager/templates/parameter-files.md). Op die manier kunt u deze waarden gemakkelijker wijzigen via het parameter bestand zonder dat u uw logische app hoeft bij te werken en opnieuw te implementeren. Voor informatie die gevoelig is of die moet worden beveiligd, zoals gebruikers namen, wacht woorden en geheimen, kunt u deze waarden opslaan in Azure Key Vault en uw parameter bestand de waarden laten ophalen uit uw sleutel kluis. Zie [overzicht: implementatie voor Logic apps automatiseren met Azure Resource Manager sjablonen](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md)voor meer informatie en voor beelden over het definiëren van para meters in de sjabloon en de definities van werk stromen.
 
 <a name="static-results"></a>
 
 ## <a name="static-results"></a>Statische resultaten
 
-Definieer `staticResults` in het kenmerk de `outputs` mock `status` van een actie en dat de actie wordt geretourneerd wanneer de statische resultaatinstelling van de actie is ingeschakeld. In de definitie van `runtimeConfiguration.staticResult.name` de actie verwijst het kenmerk naar `staticResults`de naam voor de statische resultaatdefinitie binnenin . Ontdek hoe u logische apps [testen met nepgegevens door statische resultaten in te stellen.](../logic-apps/test-logic-apps-mock-data-static-results.md)
+Definieer in `staticResults` het-kenmerk een actie model `outputs` en `status` dat de actie retourneert wanneer de statische resultaat instelling van de actie is ingeschakeld. In de definitie van de actie verwijst `runtimeConfiguration.staticResult.name` het kenmerk naar de naam van de statische resultaat definitie `staticResults`in. Meer informatie over hoe u [logische apps kunt testen met gegevens over modellen door statische resultaten in te stellen](../logic-apps/test-logic-apps-mock-data-static-results.md).
 
 ```json
 "definition": {
@@ -114,14 +114,14 @@ Definieer `staticResults` in het kenmerk de `outputs` mock `status` van een acti
 
 | Kenmerk | Vereist | Type | Beschrijving |
 |-----------|----------|------|-------------|
-| <*statische-resultaat-definitie-naam*> | Ja | Tekenreeks | De naam voor een statische resultaatdefinitie die `runtimeConfiguration.staticResult` een actiedefinitie kan verwijzen via een object. Zie [Configuratie-instellingen voor Runtime voor](../logic-apps/logic-apps-workflow-actions-triggers.md#runtime-config-options)meer informatie . <p>U elke unieke naam gebruiken die u wilt. Standaard wordt deze unieke naam toegevoegd aan een getal, dat zo nodig wordt verhoogd. |
-| <*uitvoer-attributen-en-waarden-geretourneerd*> | Ja | Varieert | De vereisten voor deze kenmerken variëren op basis van verschillende voorwaarden. Wanneer het `status` kenmerk `Succeeded`bijvoorbeeld `outputs` kenmerken en waarden bevat die door de actie als mock-uitvoer worden geretourneerd. Als `status` het `Failed`kenmerk `outputs` het `errors` kenmerk bevat, is het een `message` array met een of meer foutobjecten met foutgegevens. |
-| <*koptekstwaarden*> | Nee | JSON | Koptekstwaarden die door de actie worden geretourneerd |
-| <*statuscode geretourneerd*> | Ja | Tekenreeks | De statuscode die door de actie wordt geretourneerd |
-| <*actiestatus*> | Ja | Tekenreeks | De status van de actie, bijvoorbeeld, `Succeeded` of`Failed` |
+| <*statisch resultaten-definitie naam*> | Ja | Tekenreeks | De naam voor een statische resultaat definitie waarmee een actie definitie kan verwijzen naar een `runtimeConfiguration.staticResult` object. Zie runtime-configuratie- [instellingen](../logic-apps/logic-apps-workflow-actions-triggers.md#runtime-config-options)voor meer informatie. <p>U kunt elke gewenste unieke naam gebruiken. Deze unieke naam wordt standaard toegevoegd met een nummer, dat zo nodig wordt verhoogd. |
+| <*uitvoer kenmerken-en-waarden-geretourneerd*> | Ja | Varieert | De vereisten voor deze kenmerken variëren op basis van verschillende voor waarden. Bijvoorbeeld, wanneer het `status` is, `Succeeded`bevat het `outputs` kenmerk kenmerken en waarden die worden geretourneerd als de uitvoer van de bewerking. Als dat `status` het `Failed`geval is `outputs` , bevat het `errors` kenmerk het kenmerk, een matrix met een of meer fout `message` objecten met fout gegevens. |
+| <*header-waarden*> | Nee | JSON | Eventuele header waarden die zijn geretourneerd door de actie |
+| <*status-code-geretourneerd*> | Ja | Tekenreeks | De status code die wordt geretourneerd door de actie |
+| <*actie-status*> | Ja | Tekenreeks | De status van de actie, bijvoorbeeld `Succeeded` of`Failed` |
 |||||
 
-In deze HTTP-actiedefinitie worden `runtimeConfiguration.staticResult.name` bijvoorbeeld `HTTP0` de `staticResults` verwijzingen in het kenmerk waar de mock-uitvoer voor de actie zijn gedefinieerd, verwijzingen naar het kenmerk. Het `runtimeConfiguration.staticResult.staticResultOptions` kenmerk geeft aan dat `Enabled` de statische resultaatinstelling zich op de HTTP-actie bevindt.
+In deze HTTP-actie definitie wordt bijvoorbeeld het `runtimeConfiguration.staticResult.name` kenmerk verwezen naar `HTTP0` het `staticResults` kenmerk waarin de uitvoer van de model voor de actie wordt gedefinieerd. Het `runtimeConfiguration.staticResult.staticResultOptions` kenmerk geeft aan dat de statische resultaat instelling `Enabled` is ingesteld op de http-actie.
 
 ```json
 "actions": {
@@ -142,7 +142,7 @@ In deze HTTP-actiedefinitie worden `runtimeConfiguration.staticResult.name` bijv
 },
 ```
 
-De HTTP-actie retourneert `HTTP0` de `staticResults`uitvoer in de definitie binnen . In dit voorbeeld is `OK`voor de statuscode de mock-uitvoer . Voor kopwaarden is `"Content-Type": "application/JSON"`de mock-uitvoer . Voor de status van de actie `Succeeded`is de mock-uitvoer .
+De HTTP-actie retourneert de uitvoer in de `HTTP0` definitie in `staticResults`. In dit voor beeld is `OK`voor de status code de uitvoer van de Modeler. Voor header waarden is `"Content-Type": "application/JSON"`de uitvoer van de Detrek. Voor de status van de actie is `Succeeded`de uitvoer van de activiteit.
 
 ```json
 "definition": {
@@ -170,7 +170,7 @@ De HTTP-actie retourneert `HTTP0` de `staticResults`uitvoer in de definitie binn
 
 ## <a name="expressions"></a>Expressies
 
-Met JSON u letterlijke waarden hebben die bestaan in het ontwerp, bijvoorbeeld:
+Met JSON kunt u letterlijke waarden hebben die tijdens de ontwerp fase bestaan, bijvoorbeeld:
 
 ```json
 "customerName": "Sophia Owen",
@@ -178,64 +178,64 @@ Met JSON u letterlijke waarden hebben die bestaan in het ontwerp, bijvoorbeeld:
 "rainbowColorsCount": 7
 ```
 
-U ook waarden hebben die niet bestaan tot de looptijd. Als u deze waarden wilt weergeven, u *expressies*gebruiken die worden geëvalueerd tijdens de looptijd. Een expressie is een reeks die een of meer [functies,](#functions) [operatoren,](#operators)variabelen, expliciete waarden of constanten kan bevatten. In uw werkstroomdefinitie u een expressie overal in een JSON-tekenreekswaarde\@gebruiken door de expressie vooraf te bevestigen met het bord ( ). Bij het evalueren van een expressie die een JSON-waarde \@ vertegenwoordigt, wordt de expressie-expressieexpressie geëxtraheerd door het teken te verwijderen en resulteert deze altijd in een andere JSON-waarde.
+U kunt ook waarden hebben die niet bestaan tot de uitvoerings tijd. Om deze waarden weer te geven, kunt u *expressies*gebruiken die tijdens runtime worden geëvalueerd. Een expressie is een reeks die een of meer [functies](#functions), [Opera tors](#operators), variabelen, expliciete waarden of constanten kan bevatten. In de definitie van uw werk stroom kunt u een expressie overal in een JSON-teken reeks waarde gebruiken door de expressie te voorzien van het\@plus teken (). Bij het evalueren van een expressie die een JSON-waarde vertegenwoordigt, wordt de hoofd tekst van de \@ expressie geëxtraheerd door het teken te verwijderen en wordt altijd een andere JSON-waarde geretourneerd.
 
-Voor de eerder gedefinieerde `customerName` eigenschap u bijvoorbeeld de eigenschapswaarde opvragen met de functie [parameters()](../logic-apps/workflow-definition-language-functions-reference.md#parameters) in een expressie en die waarde aan de `accountName` eigenschap toewijzen:
+Voor de eerder gedefinieerde `customerName` eigenschap kunt u bijvoorbeeld de waarde van de eigenschap ophalen met behulp van de functie [para meters ()](../logic-apps/workflow-definition-language-functions-reference.md#parameters) in een expressie en die waarde `accountName` toewijzen aan de eigenschap:
 
 ```json
 "customerName": "Sophia Owen",
 "accountName": "@parameters('customerName')"
 ```
 
-*Met stringinterpolatie* u ook meerdere expressies \@ in tekenreeksen gebruiken{}die zijn verpakt door het teken en de krullende accolade (). Hier is de syntaxis:
+Met de *interpolatie van teken* reeksen kunt u ook meerdere expressies gebruiken in teken reeksen die \@ worden verpakt door het teken en{}accolades (). Dit is de syntaxis:
 
 ```json
 @{ "<expression1>", "<expression2>" }
 ```
 
-Het resultaat is altijd een tekenreeks, waardoor `concat()` deze mogelijkheid vergelijkbaar is met de functie, bijvoorbeeld: 
+Het resultaat is altijd een teken reeks, waardoor deze functionaliteit vergelijkbaar is `concat()` met de functie, bijvoorbeeld: 
 
 ```json
 "customerName": "First name: @{parameters('firstName')} Last name: @{parameters('lastName')}"
 ```
 
-Als u een letterlijke tekenreeks \@ hebt die \@ begint met \@ het teken, moet u het teken met een ander teken als escape-teken voorzetten:\@\@
+Als u een letterlijke teken reeks hebt die begint \@ met het teken, \@ plaatst u een \@ voor voegsel van het teken met een ander teken als escape-teken:\@\@
 
-In deze voorbeelden ziet u hoe expressies worden geëvalueerd:
+In deze voor beelden ziet u hoe expressies worden geëvalueerd:
 
 | JSON-waarde | Resultaat |
 |------------|--------|
-| "Sophia Owen" | Geef deze personages terug: 'Sophia Owen' |
-| "Array[1]" | Deze tekens retourneren: 'array[1]' |
-| "\@\@" | Retourneer deze tekens als een\@tekenreeks met één teken: ' |
-| " \@" | Retourneer deze tekens als een \@tekenreeks met twee tekens: ' |
+| "Sophia Owen" | Deze tekens retour neren: ' Sophia Owen ' |
+| matrix [1] | Deze tekens retour neren: matrix [1] |
+| "\@\@" | Deze tekens retour neren als een teken reeks van één teken\@: |
+| " \@" | Deze tekens retour neren als een teken reeks van twee tekens \@: ' ' |
 |||
 
-Stel dat u voor deze voorbeelden 'myBirthMonth' definieert die gelijk is aan 'januari' en 'myAge' gelijk aan het getal 42:
+Voor deze voor beelden definieert u "myBirthMonth" gelijk aan "januari" en "myAge" gelijk aan het getal 42:
 
 ```json
 "myBirthMonth": "January",
 "myAge": 42
 ```
 
-In deze voorbeelden ziet u hoe de volgende expressies worden geëvalueerd:
+In deze voor beelden ziet u hoe de volgende expressies worden geëvalueerd:
 
 | JSON-expressie | Resultaat |
 |-----------------|--------|
-| "\@parameters('myBirthMonth')" | Deze tekenreeks retourneren: "Januari" |
-| "\@{parameters('myBirthMonth')}" | Deze tekenreeks retourneren: "Januari" |
-| "parameters('myAge')"\@ | Dit nummer retourneren: 42 |
-| "\@{parameters('myAge')}" | Dit nummer retourneren als tekenreeks: "42" |
-| "Mijn leeftijd \@is {parameters('myAge')}" | Geef deze tekenreeks terug: "Mijn leeftijd is 42" |
-| "\@concat('Mijn leeftijd is', string(parameters('myAge')))" | Geef deze tekenreeks terug: "Mijn leeftijd is 42" |
-| "Mijn leeftijd \@ \@is {parameters('myAge')}" | Retourneer deze tekenreeks, die de uitdrukking \@bevat: "Mijn leeftijd is {parameters('myAge')}' |
+| "\@para meters (' myBirthMonth ')" | Deze teken reeks retour neren: ' januari ' |
+| "\@{para meters (' myBirthMonth ')}" | Deze teken reeks retour neren: ' januari ' |
+| "\@para meters (' myAge ')" | Retour waarde: 42 |
+| "\@{para meters (' myAge ')}" | Dit getal als een teken reeks retour neren: "42" |
+| ' Mijn leeftijd is \@{para meters (' myAge ')} ' | Deze teken reeks retour neren: ' mijn leeftijd is 42 ' |
+| "\@concat (' mijn leeftijd is ', String (para meters (' myAge ')))" | Deze teken reeks retour neren: ' mijn leeftijd is 42 ' |
+| ' Mijn leeftijd is \@ \@{para meters (' myAge ')} ' | Retour neer deze teken reeks, die de volgende expressie bevat: ' \@mijn leeftijd is {para meters (' myAge ')} ' |
 |||
 
-Wanneer u visueel werkt in de Logic Apps Designer, u expressies maken via de opbouwfunctie Expressie, bijvoorbeeld:
+Wanneer u visueel met de Logic Apps Designer werkt, kunt u expressies maken via de opbouw functie van de expressie, bijvoorbeeld:
 
-![Logic Apps Designer >:](./media/logic-apps-workflow-definition-language/expression-builder.png)
+![Opbouw functie voor Logic Apps Designer > Expression](./media/logic-apps-workflow-definition-language/expression-builder.png)
 
-Wanneer u klaar bent, wordt de expressie weergegeven voor de overeenkomstige eigenschap in uw werkstroomdefinitie, bijvoorbeeld de `searchQuery` eigenschap hier:
+Wanneer u klaar bent, wordt de expressie weer gegeven voor de bijbehorende eigenschap in de definitie van de werk stroom `searchQuery` , bijvoorbeeld de eigenschap:
 
 ```json
 "Search_tweets": {
@@ -259,12 +259,12 @@ Wanneer u klaar bent, wordt de expressie weergegeven voor de overeenkomstige eig
 
 ## <a name="outputs"></a>Uitvoer
 
-Definieer `outputs` in de sectie de gegevens die uw werkstroom kan retourneren wanneer deze is voltooid. Als u bijvoorbeeld een specifieke status of waarde van elke uitvoering wilt bijhouden, geeft u op dat de werkstroomuitvoer die gegevens retourneert.
+In de `outputs` sectie definieert u de gegevens die uw werk stroom kan retour neren als de uitvoering is voltooid. Als u bijvoorbeeld een specifieke status of waarde van elke uitvoering wilt bijhouden, geeft u op dat de uitvoer van de werk stroom die gegevens retourneert.
 
 > [!NOTE]
-> Wanneer u reageert op binnenkomende aanvragen van de `outputs`REST-API van een service, gebruikt u geen . Gebruik in `Response` plaats daarvan het actietype. Zie [Werkstroomtriggers en -acties](../logic-apps/logic-apps-workflow-actions-triggers.md)voor meer informatie.
+> Gebruik `outputs`niet voor het beantwoorden van binnenkomende aanvragen van de rest API van een service. Gebruik in plaats daarvan `Response` het actie type. Zie [werk stroom triggers en acties](../logic-apps/logic-apps-workflow-actions-triggers.md)voor meer informatie.
 
-Hier is de algemene structuur voor een output definitie:
+Hier volgt de algemene structuur voor een uitvoer definitie:
 
 ```json
 "outputs": {
@@ -277,34 +277,34 @@ Hier is de algemene structuur voor een output definitie:
 
 | Kenmerk | Vereist | Type | Beschrijving |
 |-----------|----------|------|-------------|
-| <*sleutelnaam*> | Ja | Tekenreeks | De sleutelnaam voor de opbrengstretourwaarde |
-| <*sleuteltype*> | Ja | int, float, string, securestring, bool, array, JSON object | Het type voor de opbrengstretourwaarde |
-| <*sleutelwaarde*> | Ja | Hetzelfde als <*sleuteltype*> | De opbrengstretourwaarde |
+| <*sleutel naam*> | Ja | Tekenreeks | De naam van de sleutel voor de retour waarde van de uitvoer |
+| <*sleutel type*> | Ja | int, float, String, securestring, BOOL, array, JSON-object | Het type voor de uitvoer retour waarde |
+| <*sleutel waarde*> | Ja | Hetzelfde als <*sleutel type*> | De resultaat waarde van de uitvoer |
 |||||
 
-Als u de uitvoer uit een werkstroom wilt uitvoeren, controleert u de rungeschiedenis en details van uw logische app in de Azure-portal of gebruikt u de [API Voor werkstroomREST.](https://docs.microsoft.com/rest/api/logic/workflows) U de uitvoer ook doorgeven aan externe systemen, bijvoorbeeld Power BI, zodat u dashboards maken.
+Als u de uitvoer van een werk stroom wilt uitvoeren, controleert u de uitvoerings geschiedenis van de logische app en de details in de Azure Portal of gebruikt u de [werk stroom rest API](https://docs.microsoft.com/rest/api/logic/workflows). U kunt ook de uitvoer door geven aan externe systemen, bijvoorbeeld Power BI, zodat u Dash boards kunt maken.
 
 <a name="operators"></a>
 
 ## <a name="operators"></a>Operators
 
-In [expressies](#expressions) en [functies](#functions)voeren operators specifieke taken uit, zoals een eigenschap verwijzen of een waarde in een array.
+In [expressies](#expressions) en [functies](#functions)voeren Opera tors specifieke taken uit, zoals verwijzen naar een eigenschap of een waarde in een matrix.
 
 | Operator | Taak |
 |----------|------|
-| ' | Als u een tekenreeks letterlijk wilt gebruiken als invoer of in expressies `'<myString>'`en functies, wikkelt u de tekenreeks alleen met enkele aanhalingstekens, bijvoorbeeld . Gebruik geen dubbele aanhalingstekens (""), die in strijd zijn met de JSON-opmaak rond een hele expressie. Bijvoorbeeld: <p>**Ja**: lengte('Hallo') </br>**Nee**: lengte("Hallo") <p>Wanneer u arrays of getallen passeert, hebt u geen inloopinterpunctie nodig. Bijvoorbeeld: <p>**Ja**: lengte([1, 2, 3]) </br>**No**: lengte("[1, 2, 3]") |
-| [] | Als u wilt verwijzen naar een waarde op een specifieke positie (index) in een array, gebruikt u vierkante haakjes. Bijvoorbeeld om het tweede item in een array te krijgen: <p>`myArray[1]` |
-| . | Als u een eigenschap in een object wilt verwijzen, gebruikt u de puntoperator. Bijvoorbeeld om de `name` eigenschap voor `customer` een JSON-object op te halen: <p>`"@parameters('customer').name"` |
-| ? | Als u null-eigenschappen in een object wilt verwijzen zonder runtime-fout, gebruikt u de operator van het vraagteken. Als u bijvoorbeeld null-uitvoer van een trigger wilt verwerken, u deze expressie gebruiken: <p>`@coalesce(trigger().outputs?.body?.<someProperty>, '<property-default-value>')` |
+| ' | Als u een letterlijke teken reeks wilt gebruiken als invoer of in expressies en functies, plaatst u de teken reeks alleen met enkele `'<myString>'`aanhalings tekens, bijvoorbeeld. Gebruik geen dubbele aanhalings tekens (""), die conflicteren met de JSON-indeling rond een volledige expressie. Bijvoorbeeld: <p>**Ja**: lengte (' Hallo ') </br>**Nee**: lengte ("Hallo") <p>Wanneer u matrices of getallen doorgeeft, hoeft u geen interpunctie in te laten teruglopen. Bijvoorbeeld: <p>**Ja**: lengte ([1, 2, 3]) </br>**Nee**: lengte ("[1, 2, 3]") |
+| [] | Als u wilt verwijzen naar een waarde op een specifieke positie (index) in een matrix, gebruikt u vier Kante haken. Als u bijvoorbeeld het tweede item in een matrix wilt ophalen: <p>`myArray[1]` |
+| . | Als u wilt verwijzen naar een eigenschap in een object, gebruikt u de punt operator. Als u bijvoorbeeld de `name` eigenschap voor een `customer` JSON-object wilt ophalen: <p>`"@parameters('customer').name"` |
+| ? | Als u wilt verwijzen naar null-eigenschappen in een object zonder een runtime-fout, gebruikt u de operator vraag teken. Als u bijvoorbeeld null-uitvoer van een trigger wilt verwerken, kunt u deze expressie gebruiken: <p>`@coalesce(trigger().outputs?.body?.<someProperty>, '<property-default-value>')` |
 |||
 
 <a name="functions"></a>
 
 ## <a name="functions"></a>Functions
 
-Sommige expressies halen hun waarden uit runtime-acties die mogelijk nog niet bestaan wanneer de werkstroomdefinitie begint uit te voeren. Als u deze waarden wilt verwijzen of ermee wilt werken in expressies, u [*functies*](../logic-apps/workflow-definition-language-functions-reference.md) gebruiken die de taal voor werkstroomdefinitie biedt.
+Sommige expressies halen hun waarden uit runtime-acties die mogelijk nog niet bestaan wanneer de definitie van de werk stroom wordt gestart. Als u wilt verwijzen naar of wilt werken met deze waarden in expressies, kunt u [*functies*](../logic-apps/workflow-definition-language-functions-reference.md) gebruiken die door de werk stroom definitie taal zijn geleverd.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Meer informatie over acties en triggers voor [taalvan werkstroomdefinitie](../logic-apps/logic-apps-workflow-actions-triggers.md)
-* Meer informatie over het programmatisch maken en beheren van logische apps met de [Workflow REST API](https://docs.microsoft.com/rest/api/logic/workflows)
+* Meer informatie over [acties en triggers voor de werk stroom definitie taal](../logic-apps/logic-apps-workflow-actions-triggers.md)
+* Meer informatie over het programmatisch maken en beheren van logische apps met behulp van de [werk stroom rest API](https://docs.microsoft.com/rest/api/logic/workflows)

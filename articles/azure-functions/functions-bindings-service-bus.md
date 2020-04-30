@@ -1,50 +1,50 @@
 ---
-title: Azure Service Bus-bindingen voor Azure-functies
-description: Meer informatie over het verzenden van Azure Service Bus-triggers en bindingen in Azure-functies.
+title: Azure Service Bus bindingen voor Azure Functions
+description: Meer informatie over het verzenden van Azure Service Bus triggers en bindingen in Azure Functions.
 author: craigshoemaker
 ms.assetid: daedacf0-6546-4355-a65c-50873e74f66b
 ms.topic: reference
 ms.date: 02/19/2020
 ms.author: cshoe
 ms.openlocfilehash: 44e4114b328701d5de363e91f5562f1daad351c6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79277412"
 ---
-# <a name="azure-service-bus-bindings-for-azure-functions"></a>Azure Service Bus-bindingen voor Azure-functies
+# <a name="azure-service-bus-bindings-for-azure-functions"></a>Azure Service Bus bindingen voor Azure Functions
 
-Azure Functions integreert met [Azure Service Bus](https://azure.microsoft.com/services/service-bus) via triggers en [bindingen.](./functions-triggers-bindings.md) Met de integratie met Service Bus u functies bouwen die reageren op wachtrij- of onderwerpberichten en deze verzenden.
+Azure Functions integreert met [Azure service bus](https://azure.microsoft.com/services/service-bus) via [Triggers en bindingen](./functions-triggers-bindings.md). Door te integreren met Service Bus kunt u functies bouwen die reageren op berichten over de wachtrij of het onderwerp.
 
-| Actie | Type |
+| Bewerking | Type |
 |---------|---------|
-| Een functie uitvoeren wanneer een wachtrij of onderwerpbericht van een servicebus wordt gemaakt | [Trigger](./functions-bindings-service-bus-trigger.md) |
-| Azure Service Bus-berichten verzenden |[Uitvoerbinding](./functions-bindings-service-bus-output.md) |
+| Een functie uitvoeren wanneer een Service Bus wachtrij of onderwerps bericht wordt gemaakt | [Trigger](./functions-bindings-service-bus-trigger.md) |
+| Azure Service Bus berichten verzenden |[Uitvoer binding](./functions-bindings-service-bus-output.md) |
 
-## <a name="add-to-your-functions-app"></a>Toevoegen aan de app Functies
+## <a name="add-to-your-functions-app"></a>Toevoegen aan uw functions-app
 
-### <a name="functions-2x-and-higher"></a>Functies 2.x en hoger
+### <a name="functions-2x-and-higher"></a>Functies 2. x en hoger
 
-Werken met de trigger en bindingen vereist dat u verwijzen naar de juiste pakket. Het NuGet-pakket wordt gebruikt voor .NET-klassebibliotheken, terwijl de extensiebundel wordt gebruikt voor alle andere toepassingstypen.
+Voor het werken met de trigger en bindingen moet u verwijzen naar het juiste pakket. Het NuGet-pakket wordt gebruikt voor .NET-klassen bibliotheken terwijl de uitbreidings bundel wordt gebruikt voor alle andere toepassings typen.
 
 | Taal                                        | Toevoegen door...                                   | Opmerkingen 
 |-------------------------------------------------|---------------------------------------------|-------------|
-| C#                                              | Het [NuGet-pakket]installeren , versie 4.x | |
-| C# Script, Java, JavaScript, Python, PowerShell | De [uitbreidingsbundel registreren]          | De [Azure Tools-extensie] wordt aanbevolen om te gebruiken met Visual Studio Code. |
-| C# Script (alleen online in Azure-portal)         | Een binding toevoegen                            | Zie [Uw extensies bijwerken]als u bestaande bindende extensies wilt bijwerken zonder dat u uw functie-app opnieuw hoeft te publiceren. |
+| C#                                              | Het [NuGet-pakket]installeren, versie 4. x | |
+| C#-script, Java, java script, Python, Power shell | De [uitbreidings bundel] registreren          | De [extensie voor Azure-Hulpprogram ma's] wordt aanbevolen voor gebruik met Visual Studio code. |
+| C#-script (alleen online in Azure Portal)         | Een binding toevoegen                            | Zie [uw extensies bijwerken]om bestaande bindings extensies bij te werken zonder uw functie-app opnieuw te publiceren. |
 
 [NuGet-pakket]: https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.ServiceBus/
 [core tools]: ./functions-run-local.md
-[extensiebundel]: ./functions-bindings-register.md#extension-bundles
+[uitbreidings bundel]: ./functions-bindings-register.md#extension-bundles
 [Uw extensies bijwerken]: ./install-update-binding-extensions-manual.md
-[Azure Tools-extensie]: https://marketplace.visualstudio.com/items?itemName=ms-vscode.vscode-node-azure-pack
+[Extensie van Azure-Hulpprogram Ma's]: https://marketplace.visualstudio.com/items?itemName=ms-vscode.vscode-node-azure-pack
 
 ### <a name="functions-1x"></a>Functions 1.x
 
-Functies 1.x-apps hebben automatisch een verwijzing naar het [Microsoft.Azure.WebJobs](https://www.nuget.org/packages/Microsoft.Azure.WebJobs) NuGet-pakket, versie 2.x.
+Functions 1. x apps hebben automatisch een verwijzing naar het pakket [micro soft. Azure. webjobs](https://www.nuget.org/packages/Microsoft.Azure.WebJobs) , versie 2. x.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Een functie uitvoeren wanneer een wachtrij of onderwerpbericht van een servicebus wordt gemaakt (Trigger)](./functions-bindings-service-bus-trigger.md)
-- [Azure Service Bus-berichten verzenden vanuit Azure-functies (uitvoerbinding)](./functions-bindings-service-bus-output.md)
+- [Een functie uitvoeren wanneer een Service Bus wachtrij of onderwerp bericht wordt gemaakt (trigger)](./functions-bindings-service-bus-trigger.md)
+- [Azure Service Bus berichten verzenden vanuit Azure Functions (uitvoer binding)](./functions-bindings-service-bus-output.md)
