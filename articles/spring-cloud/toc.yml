@@ -8,30 +8,34 @@
 - name: Snelstartgidsen
   expanded: true
   items:
-    - name: Uw Spring Cloud-app starten met behulp van de portal
+    - name: Een Spring Cloud-app starten met behulp van de portal
       href: spring-cloud-quickstart-launch-app-portal.md
-    - name: Uw Spring Cloud-app starten met behulp van de Azure CLI
+    - name: Een Spring Cloud-app starten met behulp van de Azure CLI
       href: spring-cloud-quickstart-launch-app-cli.md
-    - name: Uw Spring Cloud-app starten vanuit de bron
+    - name: Een Spring Cloud-app starten vanuit de bron
       href: spring-cloud-launch-from-source.md
-    - name: Uw Spring Cloud-app starten met behulp van Maven
+    - name: Een Spring Cloud-app starten met behulp van Maven
       href: spring-cloud-quickstart-launch-app-maven.md
 - name: Zelfstudies
   items:
-    - name: Uw configuratieserver instellen
+    - name: Een configuratieserver instellen
       href: spring-cloud-tutorial-config-server.md
-    - name: Schaal van uw toepassing handmatig aanpassen
+    - name: De schaal van een toepassing handmatig aanpassen
       href: spring-cloud-tutorial-scale-manual.md
-    - name: Uw toepassing controleren met behulp van gedistribueerde tracering en App Insights
+    - name: Een toepassing bewaken met behulp van gedistribueerde tracering en App Insights
       href: spring-cloud-tutorial-distributed-tracing.md
     - name: Spring Cloud-resources bewaken met behulp van waarschuwingen en actiegroepen
       href: spring-cloud-tutorial-alerts-action-groups.md
-    - name: Uw toepassing verbinden met Azure CosmosDB
+    - name: Een toepassing verbinden met Azure CosmosDB
       href: spring-cloud-tutorial-bind-cosmos.md
-    - name: Uw toepassing verbinden met Azure-cache voor Redis
+    - name: Een toepassing verbinden met Azure-cache voor Redis
       href: spring-cloud-tutorial-bind-redis.md
-    - name: Uw toepassing verbinden met Azure MySQL
+    - name: Een toepassing verbinden met Azure MySQL
       href: spring-cloud-tutorial-bind-mysql.md
+    - name: Aangepaste DNS-naam toewijzen aan Azure Spring Cloud
+      href: spring-cloud-tutorial-custom-domain.md
+    - name: IntelliJ gebruiken om Azure Spring Cloud-toepassingen te implementeren
+      href: spring-cloud-tutorial-intellij-deploy-apps.md
 - name: Concepten
   items:
     - name: Informatie over quota en limieten voor Azure Spring Cloud
@@ -56,6 +60,9 @@
       href: spring-cloud-howto-log-streaming.md
     - name: Permanente opslag gebruiken in Azure Spring Cloud
       href: spring-cloud-howto-persistent-storage.md
+    - name: DevOps-implementatie naar Azure Spring Cloud
+    - name: Azure Spring Cloud integreren met Azure-oplossingen voor taakverdeling
+      href: spring-cloud-howto-integrate-azure-load-balancers.md
 - name: DevOps-implementatie naar Azure Spring Cloud
   items:
     - name: CI/CD met Azure DevOps

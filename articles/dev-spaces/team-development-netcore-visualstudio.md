@@ -10,10 +10,10 @@ ms.topic: tutorial
 description: Deze zelf studie laat zien hoe u Azure dev Spaces en Visual Studio kunt gebruiken om team ontwikkeling te doen op een .NET core-toepassing in azure Kubernetes service
 keywords: 'Docker, Kubernetes, azure, AKS, Azure Kubernetes service, containers, helm, service-net, service mesh routing, kubectl, K8S '
 ms.openlocfilehash: c84c77fe7a425318700903427ff1c4aaa4e73a11
-ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "82166033"
 ---
 # <a name="team-development-using-net-core-and-visual-studio-with-azure-dev-spaces"></a>Team ontwikkeling met behulp van .NET core en Visual Studio met Azure dev Spaces

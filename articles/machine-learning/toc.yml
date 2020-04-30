@@ -91,6 +91,8 @@
       href: /azure/open-datasets/samples?context=azure/machine-learning/service/context/ml-context
 - name: Concepten
   items:
+    - name: Kosten voorspellen en beheren
+      href: concept-plan-manage-cost.md
     - name: Werkruimte
       href: concept-workspace.md
     - name: Omgevingen
@@ -156,6 +158,8 @@
               href: how-to-use-azure-ad-identity.md
             - name: Opslagtoegangssleutels opnieuw genereren
               href: how-to-change-storage-access-key.md
+            - name: Azure Firewall gebruiken
+              href: how-to-access-azureml-behind-firewall.md
         - name: Verificatie instellen
           displayName: 'authentication, auth, oauth'
           href: how-to-setup-authentication.md

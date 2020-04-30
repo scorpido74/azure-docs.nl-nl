@@ -10,14 +10,8 @@
   items:
     - name: Content Moderator op internet proberen
       href: quick-start.md
-    - name: De client-SDK gebruiken
-      items:
-        - name: De .NET SDK gebruiken
-          href: dotnet-sdk-quickstart.md
-        - name: De Python-SDK gebruiken
-          href: python-sdk-quickstart.md
-        - name: De Java-SDK gebruiken
-          href: java-sdk-quickstart.md
+    - name: De clientbibliotheek gebruiken
+      href: client-libraries.md
 - name: Zelfstudies
   items:
     - name: E-commerce-installatiekopieën beheren
@@ -102,7 +96,7 @@
           href: 'https://docs.microsoft.com/python/api/overview/azure/cognitiveservices/contentmoderator?view=azure-python'
         - name: Aan de slag
           href: 'https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/contentmoderator'
-- name: Bronnen
+- name: Resources
   items:
     - name: Voorbeelden
       items:

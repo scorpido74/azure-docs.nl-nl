@@ -7,10 +7,10 @@ description: In deze Quick Start leert u hoe u Azure dev Spaces en de opdracht r
 keywords: Docker, Kubernetes, azure, AKS, Azure Kubernetes service, containers, helm, service-net, service mesh routing, kubectl, K8S
 manager: gwallace
 ms.openlocfilehash: 337c3cb139e1fe0c35344e49271503b98a59fa7b
-ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "82165999"
 ---
 # <a name="quickstart-develop-an-application-on-kubernetes---azure-dev-spaces"></a>Quick Start: een toepassing ontwikkelen op Kubernetes-Azure dev Spaces
