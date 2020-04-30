@@ -9,13 +9,13 @@ ms.date: 02/02/2018
 ms.author: cephalin
 ms.custom: include file
 ms.openlocfilehash: add73e1399b11d4bd8f039c72bb4e5e9f2b82cfa
-ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/23/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "82085194"
 ---
-Maak in de Cloud Shell een [`az appservice plan create`](/cli/azure/appservice/plan?view=azure-cli-latest) App Service-abonnement met de opdracht.
+Maak in de Cloud Shell een App Service-plan met de [`az appservice plan create`](/cli/azure/appservice/plan?view=azure-cli-latest) opdracht.
 
 <!-- [!INCLUDE [app-service-plan](app-service-plan.md)] -->
 
