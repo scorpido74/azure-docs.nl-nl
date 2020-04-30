@@ -1,5 +1,5 @@
 ---
-title: 'Zelfstudie: Azure Active Directory-integratie met Asana | Microsoft Documenten'
+title: 'Zelf studie: integratie Azure Active Directory met asana | Microsoft Docs'
 description: Ontdek hoe u eenmalige aanmelding configureert tussen Azure Active Directory en Asana.
 services: active-directory
 documentationCenter: na
@@ -17,13 +17,13 @@ ms.date: 12/31/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 5531a7c1a95e472239c639e3307623fc4ccedd37
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "73157866"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-asana"></a>Zelfstudie: Azure Active Directory-integratie met Asana
+# <a name="tutorial-azure-active-directory-integration-with-asana"></a>Zelf studie: integratie Azure Active Directory met asana
 
 In deze zelfstudie leert u hoe u Asana kunt integreren met Azure Active Directory (Azure AD).
 Asana integreren met Azure AD biedt u de volgende voordelen:
@@ -33,7 +33,7 @@ Asana integreren met Azure AD biedt u de volgende voordelen:
 * U kunt uw accounts vanaf één centrale locatie beheren: de Azure-portal.
 
 Zie [What is application access and single sign-on with Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?) als u wilt graag meer wilt weten over de integratie van SaaS-apps met Azure AD.
-Als u geen Azure-abonnement hebt, [maakt u een gratis account](https://azure.microsoft.com/free/) voordat u begint.
+Als u nog geen abonnement op Azure hebt, [Maak dan een gratis account](https://azure.microsoft.com/free/) aan voordat u begint.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -128,7 +128,7 @@ Voor het configureren van Azure AD-eenmalige aanmelding met Asana moet u de volg
 
 ### <a name="configure-asana-single-sign-on"></a>Asana-eenmalige aanmelding configureren
 
-1. Meld u in een ander browservenster aan bij uw Asana-toepassing. Voor het configureren van Asana-eenmalige aanmelding opent u de instellingen van de werkruimte door op de naam van de werkruimte in de rechterbovenhoek van het scherm te klikken. Klik vervolgens ** \<op de\> naam Instellingen van uw werkruimte**.
+1. Meld u in een ander browservenster aan bij uw Asana-toepassing. Voor het configureren van Asana-eenmalige aanmelding opent u de instellingen van de werkruimte door op de naam van de werkruimte in de rechterbovenhoek van het scherm te klikken. Klik vervolgens op ** \<de instellingen voor de\> naam van uw werk ruimte**.
 
     ![Instellingen voor Asana-eenmalige aanmelding](./media/asana-tutorial/tutorial_asana_09.png)
 
@@ -150,7 +150,7 @@ Het doel van deze sectie is om in de Azure-portal een testgebruiker met de naam 
 
     ![De koppelingen Gebruikers en groepen en Alle gebruikers](common/users.png)
 
-2. Selecteer **Nieuwe gebruiker** boven aan het scherm.
+2. Selecteer **nieuwe gebruiker** boven aan het scherm.
 
     ![Knop Nieuwe gebruiker](common/new-user.png)
 
@@ -160,12 +160,12 @@ Het doel van deze sectie is om in de Azure-portal een testgebruiker met de naam 
 
     a. Voer in het veld **Naam****Britta Simon**in.
   
-    b. In het **veld Type Gebruikersnaam** **brittasimon\@yourcompanydomain.extension**  
+    b. Typ in het veld **gebruikers naam** **brittasimon\@yourcompanydomain. extension**  
     Bijvoorbeeld: BrittaSimon@contoso.com
 
     c. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak Wachtwoord.
 
-    d. Klik **op Maken**.
+    d. Klik op **maken**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>De Azure AD-testgebruiker toewijzen
 
@@ -187,9 +187,9 @@ In dit gedeelte gaat u Britta Simon toestemming geven voor gebruik van eenmalige
 
     ![Het deelvenster Toewijzing toevoegen](common/add-assign-user.png)
 
-5. Selecteer **In** het dialoogvenster Gebruikers en groepen **Britta Simon** in de lijst Gebruikers en klik je op de knop **Selecteren** onder aan het scherm.
+5. Selecteer in het dialoog venster **gebruikers en groepen** **Julia Simon** in de lijst gebruikers en klik vervolgens op de knop **selecteren** onder aan het scherm.
 
-6. Als u een rolwaarde verwacht in de SAML-bewering, selecteert u in het dialoogvenster **Rol selecteren** de juiste rol voor de gebruiker in de lijst en klikt u op de knop **Selecteren** onder aan het scherm.
+6. Als u een wille keurige rol verwacht in de SAML-bewering, selecteert u in het dialoog venster **rol selecteren** de juiste rol voor de gebruiker in de lijst en klikt u op de knop **selecteren** onder aan het scherm.
 
 7. Klik in het dialoogvenster **Toewijzing toevoegen** op de knop **Toewijzen**.
 
@@ -205,7 +205,7 @@ In deze sectie maakt u in Asana een gebruiker met de naam Britta Simon.
 
     ![Een Azure AD-testgebruiker maken](./media/asana-tutorial/tutorial_asana_12.png)
 
-2. Typ de e-mail van de gebruiker zoals **\@britta.simon contoso.com** in het tekstvak en selecteer **Uitnodigen**.
+2. Typ het e-mail adres van de gebruiker zoals **Julia. simon\@contoso.com** in het tekstvak en selecteer vervolgens **uitnodigen**.
 
 3. Klik op **Uitnodiging verzenden**. De nieuwe gebruiker ontvangt een e-mailbericht in zijn of haar e-mailaccount. gebruiker moet het account maken en valideren.
 
@@ -219,8 +219,8 @@ Wanneer u op de tegel Asana in het toegangsvenster klikt, wordt u automatisch aa
 
 - [Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Wat is toepassingstoegang en eenmalige aanmelding met Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Wat is toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Wat is voorwaardelijke toegang in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
-- [Gebruikersinrichting configureren](asana-provisioning-tutorial.md)
+- [Gebruikers inrichten configureren](asana-provisioning-tutorial.md)

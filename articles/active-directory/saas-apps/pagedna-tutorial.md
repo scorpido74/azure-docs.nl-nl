@@ -1,5 +1,5 @@
 ---
-title: 'Zelfstudie: Azure Active Directory-integratie met PageDNA | Microsoft Documenten'
+title: 'Zelf studie: integratie Azure Active Directory met PageDNA | Microsoft Docs'
 description: Meer informatie over het configureren van eenmalige aanmelding tussen Azure Active Directory en PageDNA.
 services: active-directory
 documentationCenter: na
@@ -17,46 +17,46 @@ ms.date: 04/03/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 3c7f8c8efcad0a07a3d3a56925866b10d94f82ed
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "68227465"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-pagedna"></a>Zelfstudie: Azure Active Directory-integratie met PageDNA
+# <a name="tutorial-azure-active-directory-integration-with-pagedna"></a>Zelf studie: integratie Azure Active Directory met PageDNA
 
-In deze zelfstudie leert u hoe u PageDNA integreren met Azure Active Directory (Azure AD).
+In deze zelf studie leert u hoe u PageDNA integreert met Azure Active Directory (Azure AD).
 
-Het integreren van PageDNA met Azure AD biedt u de volgende voordelen:
+Het integreren van PageDNA met Azure AD biedt de volgende voor delen:
 
-* In Azure AD u bepalen wie toegang heeft tot PageDNA.
-* U uw gebruikers automatisch laten inloggen op PageDNA (single sign-on) met hun Azure AD-accounts.
-* U uw accounts beheren op één centrale locatie: de Azure-portal.
+* In azure AD kunt u bepalen wie toegang heeft tot PageDNA.
+* U kunt ervoor zorgen dat uw gebruikers automatisch worden aangemeld bij PageDNA (eenmalige aanmelding) met hun Azure AD-accounts.
+* U kunt uw accounts op één centrale locatie beheren: de Azure Portal.
 
-Zie [Wat is toepassingstoegang en eenmalige aanmelding met Azure Active Directory voor](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)meer informatie over de integratie van de App Voor software as a service (SaaS) met Azure AD.
+Zie [Wat is toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)voor meer informatie over de integratie van een SaaS-app (Software as a Service) met Azure AD.
 
 ## <a name="prerequisites"></a>Vereisten
 
 Als u Azure AD-integratie met PageDNA wilt configureren, hebt u de volgende items nodig:
 
-* Een Azure AD-abonnement Als u geen Azure-abonnement hebt, [maakt u een gratis account](https://azure.microsoft.com/free/) voordat u begint.
-* Een PageDNA-abonnement met eenmalige aanmelding ingeschakeld.
+* Een Azure AD-abonnement Als u nog geen abonnement op Azure hebt, [Maak dan een gratis account](https://azure.microsoft.com/free/) aan voordat u begint.
+* Een PageDNA-abonnement waarvoor eenmalige aanmelding is ingeschakeld.
 
 ## <a name="scenario-description"></a>Scenariobeschrijving
 
-In deze zelfstudie configureer en test u Azure AD single sign-on in een testomgeving en integreert u PageDNA met Azure AD.
+In deze zelf studie kunt u eenmalige aanmelding voor Azure AD configureren en testen in een test omgeving en PageDNA integreren met Azure AD.
 
-PageDNA ondersteunt de volgende functies:
+PageDNA biedt ondersteuning voor de volgende functies:
 
-* SP-geïnitieerde single sign-on (SSO).
+* Door SP geïnitieerde eenmalige aanmelding (SSO).
 
-* Just-in-time gebruikersinrichting.
+* Just-in-time-gebruikers inrichting.
 
-## <a name="add-pagedna-from-the-azure-marketplace"></a>PageDNA toevoegen vanuit de Azure Marketplace
+## <a name="add-pagedna-from-the-azure-marketplace"></a>PageDNA toevoegen vanuit Azure Marketplace
 
-Als u de integratie van PageDNA in Azure AD wilt configureren, moet u PageDNA van de Azure Marketplace toevoegen aan uw lijst met beheerde SaaS-apps:
+Als u de integratie van PageDNA in azure AD wilt configureren, moet u PageDNA van de Azure Marketplace toevoegen aan uw lijst met beheerde SaaS-apps:
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com?azure-portal=true).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com?azure-portal=true).
 1. Selecteer de knop **Azure Active Directory** in het linkerdeelvenster.
 
     ![De optie Azure Active Directory](common/select-azuread.png)
@@ -65,50 +65,50 @@ Als u de integratie van PageDNA in Azure AD wilt configureren, moet u PageDNA va
 
     ![Het deelvenster Bedrijfstoepassingen](common/enterprise-applications.png)
 
-1. Als u een nieuwe toepassing wilt toevoegen, selecteert u **+ Nieuwe toepassing** boven aan het deelvenster.
+1. Als u een nieuwe toepassing wilt toevoegen, selecteert u **+ nieuwe toepassing** boven aan het deel venster.
 
-    ![De optie Nieuwe toepassing](common/add-new-app.png)
+    ![De optie nieuwe toepassing](common/add-new-app.png)
 
-1. Voer in het zoekvak **PageDNA**in . Selecteer **PageDNA**in de zoekresultaten en selecteer **Toevoegen** om de toepassing toe te voegen.
+1. Typ **PageDNA**in het zoekvak. Selecteer in de zoek resultaten **PageDNA**en selecteer **toevoegen** om de toepassing toe te voegen.
 
-    ![PageDNA in de resultatenlijst](common/search-new-app.png)
+    ![PageDNA in de lijst met resultaten](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD-eenmalige aanmelding configureren en testen
 
-In deze sectie configureert en test u Azure AD single sign-on met PageDNA op basis van een testgebruiker met de naam **Britta Simon**. Voor eenmalige aanmelding aan het werk moet u een koppeling maken tussen een Azure AD-gebruiker en de gerelateerde gebruiker in PageDNA.
+In deze sectie kunt u eenmalige aanmelding voor Azure AD configureren en testen met PageDNA op basis van een test gebruiker met de naam **Julia Simon**. Als u eenmalige aanmelding wilt gebruiken, moet u een koppeling tot stand brengen tussen een Azure AD-gebruiker en de bijbehorende gebruiker in PageDNA.
 
-Als u Azure AD-single sign-on met PageDNA wilt configureren en testen, moet u de volgende bouwstenen voltooien:
+Als u eenmalige aanmelding voor Azure AD wilt configureren en testen met PageDNA, moet u de volgende bouw stenen volt ooien:
 
-1. **[Configureer azure AD single sign-on](#configure-azure-ad-single-sign-on)** om uw gebruikers in staat te stellen deze functie te gebruiken.
-1. **[Configureer PageDNA single sign-on](#configure-pagedna-single-sign-on)** om de instellingen voor één aanmelding aan de toepassingszijde te configureren.
-1. **[Maak een Azure AD-testgebruiker](#create-an-azure-ad-test-user)** om Azure AD-enkele aanmelding met Britta Simon te testen.
-1. **[Wijs de Azure AD-testgebruiker](#assign-the-azure-ad-test-user)** toe om Britta Simon in staat te stellen azure AD-aanmelding te gebruiken.
-1. **[Maak een PageDNA-testgebruiker,](#create-a-pagedna-test-user)** zodat er een gebruiker is die Britta Simon heet in PageDNA die is gekoppeld aan de Azure AD-gebruiker britta Simon.
+1. **[Eenmalige aanmelding voor Azure AD configureren](#configure-azure-ad-single-sign-on)** om uw gebruikers in staat te stellen deze functie te gebruiken.
+1. **[PageDNA eenmalige aanmelding configureren](#configure-pagedna-single-sign-on)** om de instellingen voor eenmalige aanmelding aan de kant van de toepassing te configureren.
+1. **[Een Azure AD-test gebruiker maken](#create-an-azure-ad-test-user)** om eenmalige aanmelding voor Azure ad te testen met Julia Simon.
+1. **[Wijs de Azure AD-test gebruiker](#assign-the-azure-ad-test-user)** toe om Julia Simon in staat te stellen om eenmalige aanmelding van Azure ad te gebruiken.
+1. **[Maak een PageDNA-test gebruiker](#create-a-pagedna-test-user)** zodat er een gebruiker is met de naam Julia Simon in PageDNA die is gekoppeld aan de Azure AD-gebruiker met de naam Julia Simon.
 1. **[Test eenmalige aanmelding](#test-single-sign-on)** om te controleren of de configuratie werkt.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Azure AD configureren voor eenmalige aanmelding
 
 In deze sectie gaat u Azure AD-eenmalige aanmelding in de Azure-portal inschakelen.
 
-Ga als volgt te werk om de volgende stappen uit te voeren om de enkele aanmelding van Azure AD met PageDNA te configureren:
+Voer de volgende stappen uit om eenmalige aanmelding voor Azure AD te configureren met PageDNA:
 
-1. Selecteer in de [Azure-portal](https://portal.azure.com/)op de pagina **PageDNA-toepassingsintegratie** de optie **Eén aanmelding .**
+1. Selecteer in de [Azure Portal](https://portal.azure.com/)op de pagina **PageDNA** Application Integration de optie **eenmalige aanmelding**.
 
-    ![Optie eenmalig aanmelden configureren](common/select-sso.png)
+    ![Optie voor eenmalige aanmelding configureren](common/select-sso.png)
 
-1. Selecteer in het deelvenster **Eenmalige aanmeldingsmethode** de **SAML/WS-Fed-modus** om eenmalige aanmelding in te schakelen.
+1. Selecteer in het deel venster **eenmalige aanmelding selecteren** de optie **SAML/WS-** gegevensinvoermodus om eenmalige aanmelding in te scha kelen.
 
     ![De modus Eenmalige aanmelding selecteren](common/select-saml-option.png)
 
-1. **Selecteer** bewerken (het potloodpictogram) in het deelvenster Eén aanmelding instellen met SAML om het deelvenster **BasisSAML-configuratie** te openen. **Set up Single Sign-On with SAML**
+1. Selecteer in het deel venster **eenmalige aanmelding met SAML instellen** de optie **bewerken** (het potlood pictogram) om het deel venster **basis-SAML-configuratie** te openen.
 
     ![Standaard SAML-configuratie bewerken](common/edit-urls.png)
 
-1. Neem in het deelvenster **BasisSAML-configuratie** de volgende stappen:
+1. Voer de volgende stappen uit in het deel venster **basis configuratie van SAML** :
 
-    ![Informatie over pageDNA-domeinen en URL's met eenmalige aanmelding](common/sp-identifier.png)
+    ![Informatie over eenmalige aanmelding voor PageDNA domein en Url's](common/sp-identifier.png)
 
-    1. Voer in het vak **Aanmelding op URL** een URL in met een van de volgende patronen:
+    1. Voer in het vak **AANMELDINGS URL** een URL in met behulp van een van de volgende patronen:
 
         ||
         |--|
@@ -118,7 +118,7 @@ Ga als volgt te werk om de volgende stappen uit te voeren om de enkele aanmeldin
         | `https://www.nationsprint.com/<your site>` |
         | |
 
-    1. Voer in het vak **Id (Entity ID)** een URL in met een van de volgende patronen:
+    1. Voer in het vak **id (Entiteits-ID)** een URL in met behulp van een van de volgende patronen:
 
         ||
         |--|
@@ -127,87 +127,87 @@ Ga als volgt te werk om de volgende stappen uit te voeren om de enkele aanmeldin
         | |
 
     > [!NOTE]
-    > Dit zijn geen echte waarden. Werk deze waarden bij met de werkelijke aanmeldings-URL en id. Neem contact op met het [PageDNA-ondersteuningsteam](mailto:success@pagedna.com)om deze waarden te bereiken. U ook verwijzen naar de patronen die worden weergegeven in het deelvenster **BasisSAML-configuratie** in de Azure-portal.
+    > Dit zijn geen echte waarden. Werk deze waarden bij met de werkelijke aanmeldings-URL en id. Neem contact op met het [ondersteunings team van PageDNA](mailto:success@pagedna.com)om deze waarden te verkrijgen. U kunt ook verwijzen naar de patronen die worden weer gegeven in het deel venster **basis-SAML-configuratie** in de Azure Portal.
 
-1. Selecteer in het deelvenster **Eén aanmelding instellen met SAML** in de sectie **SAML-ondertekeningscertificaat** de optie **Downloaden** om **certificaat (Raw)** te downloaden van de opgegeven opties en op te slaan op uw computer.
+1. Selecteer in het deel venster **eenmalige aanmelding met SAML instellen** in het gedeelte **SAML-handtekening certificaat** de optie **downloaden** om **certificaat (RAW)** te downloaden uit de opgegeven opties en op uw computer op te slaan.
 
-    ![De optie Certificaat (Raw) downloaden](common/certificateraw.png)
+    ![De optie voor het downloaden van certificaten (RAW)](common/certificateraw.png)
 
-1. Kopieer in de sectie **PageDNA instellen** de URL of URL's die u nodig hebt:
+1. Kopieer de URL of Url's die u nodig hebt in de sectie **PageDNA instellen** :
 
    * **Aanmeldings-URL**
    * **Azure AD-id**
    * **Afmeldings-URL**
 
-    ![De configuratie-URL's kopiëren](common/copy-configuration-urls.png)
+    ![De configuratie-Url's kopiëren](common/copy-configuration-urls.png)
 
-### <a name="configure-pagedna-single-sign-on"></a>PageDNA-aanmelding configureren
+### <a name="configure-pagedna-single-sign-on"></a>Eenmalige aanmelding voor PageDNA configureren
 
-Als u eenmalige aanmelding wilt configureren aan de PageDNA-kant, verzendt u het gedownloade certificaat (Raw) en de juiste gekopieerde URL's vanuit de Azure-portal naar het [PageDNA-ondersteuningsteam.](mailto:success@pagedna.com) Het PageDNA-team zorgt ervoor dat de SAML SSO-verbinding aan beide zijden goed is ingesteld.
+Als u eenmalige aanmelding wilt configureren aan de PageDNA zijde, verzendt u het gedownloade certificaat (RAW) en de juiste gekopieerde Url's van de Azure Portal naar het [ondersteunings team van PageDNA](mailto:success@pagedna.com). Het PageDNA-team zorgt ervoor dat de SAML SSO-verbinding aan beide zijden correct is ingesteld.
 
 ### <a name="create-an-azure-ad-test-user"></a>Een Azure AD-testgebruiker maken
 
 In dit gedeelte gaat u een testgebruiker met de naam Britta Simon maken in de Azure-portal.
 
-1. Selecteer in de Azure-portal in het linkerdeelvenster de optie **Azure Active Directory**   > **Users** > **All users All users**.
+1. Selecteer **Azure Active Directory**   > **gebruikers** > in het linkerdeel venster van de Azure Portal**alle gebruikers**.
 
-    ![De opties Gebruikers en 'Alle gebruikers'](common/users.png)
+    ![De opties gebruikers en alle gebruikers](common/users.png)
 
-1. Selecteer boven aan het scherm **+ Nieuwe gebruiker**.
+1. Selecteer boven aan het scherm **+ nieuwe gebruiker**.
 
-    ![Nieuwe gebruikersoptie](common/new-user.png)
+    ![Optie nieuwe gebruiker](common/new-user.png)
 
-1. Ga **in** het deelvenster Gebruiker de volgende stappen uit:
+1. Voer de volgende stappen uit in het deel venster van de **gebruiker** :
 
-    ![Het deelvenster Gebruiker](common/user-properties.png)
+    ![Het deel venster gebruiker](common/user-properties.png)
 
     1. Voer in het vak **Naam****Britta Simon**in.
   
-    1. Voer **in** het vak Gebruikersnaam **De> van BrittaSimon\@\<\< yourcompanydomain in. uitbreiding>**. Bijvoorbeeld, **BrittaSimon\@contoso.com**.
+    1. Voer in het vak **gebruikers naam** **BrittaSimon\@\<yourcompanydomain> in.\< extensie>**. Bijvoorbeeld **BrittaSimon\@contoso.com**.
 
-    1. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak **Wachtwoord.**
+    1. Schakel het selectie vakje **wacht woord weer geven** in en noteer de waarde die wordt weer gegeven in het vak **wacht woord** .
 
     1. Selecteer **Maken**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>De Azure AD-testgebruiker toewijzen
 
-In deze sectie stelt u de gebruiker Britta Simon in staat om Azure single sign-on te gebruiken door de gebruiker toegang te verlenen tot PageDNA.
+In deze sectie schakelt u de gebruiker Julia Simon in voor het gebruik van eenmalige aanmelding van Azure door de gebruikers toegang te verlenen tot PageDNA.
 
-1. Selecteer in de Azure-portal **Enterprise-toepassingen** > **Alle toepassingen** > **PageDNA**.
+1. Selecteer in de Azure Portal**alle toepassingen** > in **bedrijfs toepassingen** > **PageDNA**.
 
-    ![Deelvenster Ondernemingstoepassingen](common/enterprise-applications.png)
+    ![Deel venster ondernemings toepassingen](common/enterprise-applications.png)
 
-1. Selecteer **PageDNA**in de lijst met toepassingen .
+1. Selecteer in de lijst toepassingen de optie **PageDNA**.
 
     ![PageDNA in de lijst met toepassingen](common/all-applications.png)
 
-1. Selecteer in het linkerdeelvenster onder **BEHEREN**de optie **Gebruikers en groepen**.
+1. Selecteer in het linkerdeel venster onder **beheren**de optie **gebruikers en groepen**.
 
-    ![De optie 'Gebruikers en groepen'](common/users-groups-blade.png)
+    ![De optie gebruikers en groepen](common/users-groups-blade.png)
 
-1. Selecteer **+ Gebruiker toevoegen**en selecteer vervolgens Gebruikers en **groepen** in het deelvenster **Toewijzing toevoegen.**
+1. Selecteer **+ gebruiker toevoegen**en selecteer vervolgens **gebruikers en groepen** in het deel venster **toewijzing toevoegen** .
 
     ![Het deelvenster Toewijzing toevoegen](common/add-assign-user.png)
 
-1. Selecteer **In** het deelvenster Gebruikers en groepen de optie **Britta Simon** in de lijst **Gebruikers** en kies Selecteer Selecteer onder aan het deelvenster **Selecteren.**
+1. Selecteer in het deel venster **gebruikers en groepen** de optie **Julia Simon** in de lijst met **gebruikers** en kies vervolgens **selecteren** onder aan het deel venster.
 
-1. Als u een rolwaarde verwacht in de SAML-bewering, selecteert u in het deelvenster **Rol selecteren** de juiste rol voor de gebruiker in de lijst. Kies onder aan het deelvenster **selecteren**.
+1. Als u een waarde voor een rol in de SAML-bevestiging verwacht, selecteert u in het deel venster **rol selecteren** de juiste rol voor de gebruiker in de lijst. Klik onder aan het deel venster op **selecteren**.
 
-1. Selecteer **Toewijzing toewijzen** in het deelvenster Toewijzing **toevoegen**.
+1. Selecteer in het deel venster **toewijzing toevoegen** de optie **toewijzen**.
 
-### <a name="create-a-pagedna-test-user"></a>Een PageDNA-testgebruiker maken
+### <a name="create-a-pagedna-test-user"></a>Een PageDNA-test gebruiker maken
 
-Een gebruiker genaamd Britta Simon is nu gemaakt in PageDNA. U hoeft niets te doen om deze gebruiker te maken. PageDNA ondersteunt just-in-time gebruikersinrichting, die standaard is ingeschakeld. Als een gebruiker met de naam Britta Simon nog niet bestaat in PageDNA, wordt er een nieuwe gemaakt na verificatie.
+Een gebruiker met de naam Julia Simon is nu gemaakt in PageDNA. U hoeft niets te doen om deze gebruiker te maken. PageDNA biedt ondersteuning voor Just-in-time-gebruikers inrichting, die standaard is ingeschakeld. Als een gebruiker met de naam Julia Simon nog niet bestaat in PageDNA, wordt er een nieuwe gemaakt na verificatie.
 
 ### <a name="test-single-sign-on"></a>Eenmalige aanmelding testen
 
-In deze sectie test u uw Azure AD-configuratie met eenmalige aanmelding met de portal Mijn apps.
+In deze sectie test u de configuratie van eenmalige aanmelding voor Azure AD met behulp van de portal mijn apps.
 
-Wanneer u **PageDNA** selecteert in de portal Mijn apps, moet u automatisch worden aangemeld bij het PageDNA-abonnement waarvoor u eenmalige aanmelding instelt. Zie Apps openen en gebruiken [op de portal Mijn apps](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)voor meer informatie over de portal Mijn apps.
+Wanneer u **PageDNA** in de portal mijn apps selecteert, moet u automatisch worden aangemeld bij het PageDNA-abonnement waarvoor u eenmalige aanmelding hebt ingesteld. Zie [apps openen en gebruiken in de portal mijn apps](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)voor meer informatie over de portal mijn apps.
 
 ## <a name="additional-resources"></a>Aanvullende bronnen
 
-* [Lijst met zelfstudies voor het integreren van SaaS-toepassingen met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+* [Lijst met zelf studies voor het integreren van SaaS-toepassingen met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 * [Eenmalige aanmelding bij toepassingen in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 

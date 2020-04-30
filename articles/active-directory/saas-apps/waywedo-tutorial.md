@@ -1,6 +1,6 @@
 ---
-title: 'Zelfstudie: Azure Active Directory-integratie met Way We Do | Microsoft Documenten'
-description: Meer informatie over het configureren van eenmalige aanmelding tussen Azure Active Directory en Way We Do.
+title: 'Zelf studie: Azure Active Directory integratie met de manier waarop we | Microsoft Docs'
+description: Meer informatie over het configureren van eenmalige aanmelding tussen Azure Active Directory en hoe we dat doen.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -17,177 +17,177 @@ ms.date: 06/20/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: faa23f61e5a213c492a7fb51bfc5b108e5c77946
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "67310410"
 ---
-# <a name="tutorial-integrate-way-we-do-with-azure-active-directory"></a>Zelfstudie: Manier van werken integreren met Azure Active Directory
+# <a name="tutorial-integrate-way-we-do-with-azure-active-directory"></a>Zelf studie: de manier waarop we met Azure Active Directory worden geïntegreerd
 
-In deze zelfstudie leert u hoe u Way We Do integreert met Azure Active Directory (Azure AD). Wanneer u Way We Do integreert met Azure AD, u het als:
+In deze zelf studie leert u hoe u kunt integreren met Azure Active Directory (Azure AD). Wanneer u de manier integreert met Azure AD, kunt u het volgende doen:
 
-* Beheer in Azure AD die toegang heeft tot Way We Do.
-* Stel uw gebruikers in staat om automatisch te worden aangemeld bij Way We Do met hun Azure AD-accounts.
-* Beheer uw accounts op één centrale locatie: de Azure-portal.
+* Controle in azure AD die toegang heeft tot de manier waarop we dit doen.
+* Stel uw gebruikers in staat om automatisch te worden aangemeld met hun Azure AD-accounts.
+* Beheer uw accounts op één centrale locatie: de Azure Portal.
 
-Zie [Wat is toepassingstoegang en eenmalige aanmelding met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)voor meer informatie over de integratie van de SaaS-app met Azure AD.
+Zie [Wat is toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)voor meer informatie over SaaS-app-integratie met Azure AD.
 
 ## <a name="prerequisites"></a>Vereisten
 
-Om aan de slag te gaan, heb je de volgende items nodig:
+U hebt de volgende items nodig om aan de slag te gaan:
 
-* Een Azure AD-abonnement Als je geen abonnement hebt, kun je [hier](https://azure.microsoft.com/pricing/free-trial/)een gratis proefperiode van een maand krijgen.
-* Way We Do single sign-on (SSO) ingeschakeld abonnement.
+* Een Azure AD-abonnement Als u geen abonnement hebt, kunt u [hier](https://azure.microsoft.com/pricing/free-trial/)een gratis proef versie van één maand ontvangen.
+* Hoe we het abonnement voor eenmalige aanmelding (SSO) hebben ingeschakeld.
 
 ## <a name="scenario-description"></a>Scenariobeschrijving
 
-In deze zelfstudie configureert en test u Azure AD SSO in een testomgeving.
+In deze zelf studie configureert en test u Azure AD SSO in een test omgeving.
 
-* Way We Do ondersteunt **SP** geïnitieerde SSO
-* Way We Do ondersteunt **Just In Time** gebruikersinrichting
+* De manier waarop we de door **SP** geïnitieerde SSO ondersteunen
+* De manier waarop we de **just-in-time** -gebruikers inrichting ondersteunen
 
-## <a name="adding-way-we-do-from-the-gallery"></a>Manier toevoegen die wij van de galerij doen
+## <a name="adding-way-we-do-from-the-gallery"></a>De manier waarop we vanuit de galerie werken toevoegen
 
-Als u de integratie van Way We Do in Azure AD wilt configureren, moet u Way We Do vanuit de galerie toevoegen aan uw lijst met beheerde SaaS-apps.
+Als u de integratie van de manier van Azure AD wilt configureren, moet u de manier waarop we vanuit de galerie werken, toevoegen aan uw lijst met beheerde SaaS-apps.
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com) met een werk- of schoolaccount of een persoonlijk Microsoft-account.
-1. Selecteer in het linkernavigatiedeelvenster de **Azure Active Directory-service.**
-1. Navigeer naar **Ondernemingstoepassingen** en selecteer **Alle toepassingen**.
-1. Als u nieuwe toepassingen wilt toevoegen, selecteert u **Nieuwe toepassing**.
-1. Typ **Way We Do** in het zoekvak in de sectie Toevoegen in de sectie Toevoegen in de **galerie.**
-1. Selecteer **Manier die we doen** in het deelvenster Resultaten en voeg de app toe. Wacht een paar seconden terwijl de app wordt toegevoegd aan uw tenant.
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com) met behulp van een werk-of school account of een persoonlijke Microsoft-account.
+1. Selecteer de **Azure Active Directory** -service in het navigatie deel venster aan de linkerkant.
+1. Ga naar **bedrijfs toepassingen** en selecteer **alle toepassingen**.
+1. Selecteer **nieuwe toepassing**om een nieuwe toepassing toe te voegen.
+1. Typ in de sectie in **de galerie toevoegen** **hoe we dit doen** in het zoekvak.
+1. Selecteer **hoe we** het resultaten paneel doen en voeg vervolgens de app toe. Wacht een paar seconden wanneer de app aan uw Tenant is toegevoegd.
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD-eenmalige aanmelding configureren en testen
 
-Azure AD SSO configureren en testen met een testgebruiker genaamd **B.Simon**. Als SSO kan werken, moet u een koppelingsrelatie tot stand brengen tussen een Azure AD-gebruiker en de gerelateerde gebruiker op de manier waarop we dat doen.
+U kunt Azure AD SSO configureren en testen met een test gebruiker met de naam **B. Simon**. Voor het werken met SSO moet u een koppelings relatie tot stand brengen tussen een Azure AD-gebruiker en de bijbehorende gebruiker zoals we doen.
 
-Als u Azure AD SSO wilt configureren en testen met Way We Do, voert u de volgende bouwstenen in:
+Als u Azure AD SSO wilt configureren en testen met de manier waarop we dit doen, voltooit u de volgende bouw stenen:
 
-1. **[Configureer Azure AD SSO](#configure-azure-ad-sso)** - zodat uw gebruikers deze functie kunnen gebruiken.
-2. **[Manier configureren We Doen SSO](#configure-way-we-do-sso)** - om de instellingen voor één aanmelding aan de toepassingszijde te configureren.
+1. **[Configureer Azure AD SSO](#configure-azure-ad-sso)** -om uw gebruikers in staat te stellen deze functie te gebruiken.
+2. **[Configureren van de manier waarop we SSO uitvoeren](#configure-way-we-do-sso)** : Hiermee configureert u de instellingen voor eenmalige aanmelding aan de kant van de toepassing.
 3. **[Een Azure AD-testgebruiker maken](#create-an-azure-ad-test-user)**: als u Azure AD-eenmalige aanmelding wil testen met Britta Simon.
 4. **[De testgebruiker van Azure AD-toewijzen](#assign-the-azure-ad-test-user)**: als u wilt dat Britta Simon gebruik kan maken van Azure AD-eenmalige aanmelding.
-5. **[Create Way We Do test gebruiker](#create-way-we-do-test-user)** - om een tegenhanger van Britta Simon in way We Do die is gekoppeld aan de Azure AD vertegenwoordiging van de gebruiker.
-6. **[Test SSO](#test-sso)** - om te controleren of de configuratie werkt.
+5. **[Maak een manier](#create-way-we-do-test-user)** om de gebruiker te testen, zodat we een tegen hanger hebben van Julia Simon dat is gekoppeld aan de Azure AD-representatie van de gebruiker.
+6. **[SSO testen](#test-sso)** : om te controleren of de configuratie werkt.
 
 ### <a name="configure-azure-ad-sso"></a>Azure AD SSO-configureren
 
-Volg deze stappen om Azure AD SSO in te schakelen in de Azure-portal.
+Volg deze stappen om Azure AD SSO in te scha kelen in de Azure Portal.
 
-1. Zoek in de [Azure-portal](https://portal.azure.com/)op de pagina **Way We Do-toepassingsintegratie** de sectie **Beheren** en selecteer **Eenmalige aanmelding**.
-1. Selecteer **SAML**op de pagina **Eén aanmeldingsmethode** selecteren .
-1. Klik op de pagina **Eén aanmelding instellen met SAML** op het pictogram bewerken/pen voor **BasisSAML-configuratie** om de instellingen te bewerken.
+1. Ga in het [Azure Portal](https://portal.azure.com/)naar de pagina voor het beheren **van toepassingen en** Zoek het gedeelte **Manage** en selecteer **eenmalige aanmelding**.
+1. Selecteer op de pagina **Eén aanmeldings methode selecteren** de optie **SAML**.
+1. Klik op de pagina **eenmalige aanmelding met SAML instellen** op het pictogram bewerken/pen voor **eenvoudige SAML-configuratie** om de instellingen te bewerken.
 
    ![Standaard SAML-configuratie bewerken](common/edit-urls.png)
 
-1. Voer op de pagina **BasisSAML-configuratie** de waarden in voor de volgende velden:
+1. Voer op de pagina **basis configuratie van SAML** de waarden in voor de volgende velden:
 
     a. In het tekstvak **Aanmeldings-URL** typt u een URL met de volgende notatie: `https://<SUBDOMAIN>.waywedo.com/Authentication/ExternalSignIn`
 
     b. In het tekstvak **Id (Entiteits-id)** typt u een URL met het volgende patroon: `https://<SUBDOMAIN>.waywedo.com`
 
     > [!NOTE]
-    > Dit zijn geen echte waarden. Werk deze waarden bij met de werkelijke aanmeldings-URL en -id. Contact [Way We Do Client support team](mailto:support@waywedo.com) om deze waarden te krijgen. U kunt ook verwijzen naar het patroon dat wordt weergegeven in de sectie **Standaard SAML-configuratie** in de Azure-portal.
+    > Dit zijn geen echte waarden. Werk deze waarden bij met de werkelijke aanmeldings-URL en -id. Neem contact op met het [ondersteunings team](mailto:support@waywedo.com) van de client om deze waarden te verkrijgen. U kunt ook verwijzen naar het patroon dat wordt weergegeven in de sectie **Standaard SAML-configuratie** in de Azure-portal.
 
-1. Zoek op de pagina **Eén aanmelding instellen met SAML** in de sectie **SAML-ondertekeningscertificaat** **certificaat** en selecteer **Downloaden** om het certificaat te downloaden en op te slaan op uw computer.
+1. Zoek op de pagina **eenmalige aanmelding met SAML instellen** , in de sectie **SAML-handtekening certificaat** , **certificaat (RAW)** en selecteer **downloaden** om het certificaat te downloaden en op uw computer op te slaan.
 
    ![De link om het certificaat te downloaden](common/certificateraw.png)
 
-1. Kopieer in de sectie **Manier instellen we doen** de juiste URL(s) op basis van uw vereiste.
+1. Op de sectie **instellen hoe we dit doen** , kopieert u de juiste URL ('s) op basis van uw vereiste.
 
    ![Configuratie-URL's kopiëren](common/copy-configuration-urls.png)
 
-### <a name="configure-way-we-do-sso"></a>Manier configureren waarop we SSO doen
+### <a name="configure-way-we-do-sso"></a>Configureren van de manier waarop we SSO doen
 
-1. Als u de configuratie wilt automatiseren binnen Way We Do, moet u **de beveiligingsextensie Mijn apps secure aanmelden** installeren door op De extensie **installeren**te klikken.
+1. Als u de configuratie wilt automatiseren, moet u de **uitbrei ding mijn apps Secure Sign-in browser** installeren door te klikken op **de uitbrei ding installeren**.
 
-    ![Extensie Mijn apps](common/install-myappssecure-extension.png)
+    ![Uitbrei ding voor mijn apps](common/install-myappssecure-extension.png)
 
-1. Na het toevoegen van extensie aan de browser, klik op **Setup Way We Do** zal u direct naar de Manier Waarop We doen applicatie. Geef van daaruit de beheerdersreferenties op om u aan te melden bij Way We Do. De browserextensie configureert automatisch de toepassing voor u en automatiseert stappen 3-6.
+1. Nadat u de extensie aan de browser hebt toegevoegd, klikt u op de **manier** waarop we de toepassing gaan uitvoeren. Geef de beheerders referenties op om u aan te melden zoals we dat doen. Met de browser uitbreiding wordt de toepassing automatisch voor u geconfigureerd en wordt stap 3-6 geautomatiseerd.
 
-    ![Configuratie instellen](common/setup-sso.png)
+    ![Configuratie van Setup](common/setup-sso.png)
 
-1. Als u Way We Do handmatig wilt instellen, opent u een nieuw browservenster en meldt u zich aan bij uw Way We Do-bedrijfssite als beheerder en voert u de volgende stappen uit:
+1. Als u hand matig wilt instellen, opent u een nieuw webbrowser venster en meldt u zich aan als beheerder en voert u de volgende stappen uit:
 
-1. Klik op het **persoonspictogram** in de rechterbovenhoek van een pagina in Way We Do En klik vervolgens op **Account** in het vervolgkeuzemenu.
+1. Klik in de rechter bovenhoek van een wille keurige pagina op het **persoons pictogram** en klik vervolgens op **account** in de vervolg keuzelijst.
 
-    ![Manier waarop we doen account](./media/waywedo-tutorial/tutorial_waywedo_account.png)
+    ![De manier waarop we het account uitvoeren](./media/waywedo-tutorial/tutorial_waywedo_account.png)
 
-1. Klik op het **menupictogram** om het navigatiemenu van de push te openen en klik op **Eén teken aan**.
+1. Klik op het **menu pictogram** om het menu Push navigatie te openen en klik op **eenmalige aanmelding**.
 
-    ![Way We Do single](./media/waywedo-tutorial/tutorial_waywedo_single.png)
+    ![De manier waarop we één doen](./media/waywedo-tutorial/tutorial_waywedo_single.png)
 
-1. Voer **op** de installatiepagina Eenmalig aanmelden de volgende stappen uit:
+1. Voer de volgende stappen uit op de pagina **instellingen voor eenmalige aanmelding** :
 
-    ![Manier waarop we redden](./media/waywedo-tutorial/tutorial_waywedo_save.png)
+    ![De manier waarop we besparen](./media/waywedo-tutorial/tutorial_waywedo_save.png)
 
-    a. Klik **op** de schakelaar Voor eenmalig aanmelden inschakelen op **Ja** om eenmalig aanmelden in te schakelen.
+    a. Klik op de **Schakel optie eenmalige aanmelding in-of uitschakelen** op **Ja** om eenmalige aanmelding in te scha kelen.
 
-    b. Voer in het tekstvak Voor naam **met één aanmeldingsnaam** uw naam in.
+    b. Voer uw naam in het tekstvak **naam van eenmalige aanmelding** in.
 
-    c. Plak in het tekstvak **Entiteit-id** de waarde van **Azure AD-id**, die u hebt gekopieerd van de Azure-portal.
+    c. Plak in het tekstvak **Entiteits-ID** de waarde van de **Azure ad-id**, die u hebt gekopieerd van de Azure Portal.
 
     d. Plak in het tekstvak **SAML SSO URL** de waarde van **Aanmeldings-URL** die u hebt gekopieerd uit de Azure-portal.
 
-    e. Upload het certificaat door op de knop **selecteren** naast **Certificaat**te klikken .
+    e. Upload het certificaat door te klikken op de knop **selecteren** naast **certificaat**.
 
     f. **Optionele instellingen** -
     
-    * Wachtwoorden inschakelen - Wanneer deze optie is uitgeschakeld, wordt het reguliere wachtwoord functies voor Way We Do, zodat gebruikers alleen eenmalige aanmelding kunnen gebruiken.
+    * Wacht woorden inschakelen: wanneer deze optie is uitgeschakeld, worden de reguliere wachtwoord functies voor de manier gebruikt, zodat gebruikers alleen eenmalige aanmelding kunnen gebruiken.
 
-    * Automatisch inrichten inschakelen - Wanneer dit is ingeschakeld, wordt het e-mailadres dat wordt gebruikt om u aan te melden automatisch vergeleken met de lijst met gebruikers in Way We Do. Als het e-mailadres niet overeenkomt met een actieve gebruiker in Way We Do, wordt automatisch een nieuw gebruikersaccount toegevoegd voor de persoon die zich aanmeldt, waarbij ontbrekende informatie wordt opgevraagd.
+    * Automatische inrichting inschakelen: wanneer deze optie is ingeschakeld, wordt het e-mail adres dat is gebruikt om u aan te melden, automatisch vergeleken met de lijst met gebruikers zoals we dat doen. Als het e-mail adres niet overeenkomt met een actieve gebruiker zoals we dit doen, voegt het automatisch een nieuw gebruikers account toe voor de persoon die zich aanmeldt, waarbij de ontbrekende gegevens worden opgevraagd.
 
       > [!NOTE]
-      > Gebruikers die via eenmalige aanmelding zijn toegevoegd, worden toegevoegd als algemene gebruikers en krijgen geen rol toegewezen in het systeem. Een beheerder kan zijn beveiligingsrol als editor of beheerder wijzigen en kan ook een of meerdere orgchart-rollen toewijzen.
+      > Gebruikers die zijn toegevoegd via eenmalige aanmelding, worden toegevoegd als algemene gebruikers en er is geen rol toegewezen in het systeem. Een beheerder kan de beveiligingsrol door lopen en wijzigen als een editor of beheerder en kan ook een of meer rollen van een organigram toewijzen.
 
-    g. Klik **op Opslaan** om uw instellingen voort te houden.
+    g. Klik op **Opslaan** om uw instellingen te behouden.
 
 ### <a name="create-an-azure-ad-test-user"></a>Een Azure AD-testgebruiker maken
 
-In deze sectie maakt u een testgebruiker in de Azure-portal genaamd B.Simon.
+In deze sectie maakt u een test gebruiker in de Azure Portal met de naam B. Simon.
 
-1. Selecteer in het linkerdeelvenster in de Azure-portal **Azure Active Directory,** selecteer **Gebruikers**en selecteer **Alle gebruikers**.
-1. Selecteer **Nieuwe gebruiker** boven aan het scherm.
-1. Voer **in** de eigenschappen gebruiker de volgende stappen uit:
+1. Selecteer in het linkerdeel venster van de Azure Portal **Azure Active Directory**, selecteer **gebruikers**en selecteer vervolgens **alle gebruikers**.
+1. Selecteer **nieuwe gebruiker** boven aan het scherm.
+1. Voer de volgende stappen uit in de eigenschappen van de **gebruiker** :
    1. Voer in het veld **Naam**`B.Simon` in.  
-   1. Voer **in** het veld username@companydomain.extensionGebruikersnaam de . Bijvoorbeeld `B.Simon@contoso.com`.
-   1. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak **Wachtwoord.**
-   1. Klik **op Maken**.
+   1. Voer in het veld **gebruikers naam** het username@companydomain.extensionin. Bijvoorbeeld `B.Simon@contoso.com`.
+   1. Schakel het selectie vakje **wacht woord weer geven** in en noteer de waarde die wordt weer gegeven in het vak **wacht woord** .
+   1. Klik op **maken**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>De Azure AD-testgebruiker toewijzen
 
-In deze sectie u B.Simon inschakelen om Azure single sign-on te gebruiken door toegang te verlenen tot Way We Do.
+In deze sectie schakelt u B. Simon in voor het gebruik van eenmalige aanmelding van Azure door toegang te verlenen tot de manier waarop we dat doen.
 
-1. Selecteer in de Azure-portal **Enterprise-toepassingen**en selecteer **Alle toepassingen**.
-1. Selecteer In de lijst met toepassingen de optie **Manier waarop we doen**.
-1. Zoek op de overzichtspagina van de app de sectie **Beheren** en selecteer **Gebruikers en groepen**.
+1. Selecteer in het Azure Portal **bedrijfs toepassingen**en selecteer vervolgens **alle toepassingen**.
+1. Selecteer in de lijst toepassingen de **manier waarop we dat doen**.
+1. Ga op de pagina overzicht van de app naar de sectie **beheren** en selecteer **gebruikers en groepen**.
 
    ![De koppeling Gebruikers en groepen](common/users-groups-blade.png)
 
-1. Selecteer **Gebruiker toevoegen**en selecteer vervolgens Gebruikers en **groepen** in het dialoogvenster **Toewijzing toevoegen.**
+1. Selecteer **gebruiker toevoegen**en selecteer vervolgens **gebruikers en groepen** in het dialoog venster **toewijzing toevoegen** .
 
-    ![De koppeling Gebruiker toevoegen](common/add-assign-user.png)
+    ![De koppeling gebruiker toevoegen](common/add-assign-user.png)
 
-1. Selecteer **B.Simon** in het dialoogvenster **Gebruikers en groepen** in de lijst Gebruikers en klik vervolgens op de knop **Selecteren** onder aan het scherm.
-1. Als u een rolwaarde verwacht in de SAML-bewering, selecteert u in het dialoogvenster **Rol selecteren** de juiste rol voor de gebruiker in de lijst en klikt u op de knop **Selecteren** onder aan het scherm.
-1. Klik **in** het dialoogvenster Toewijzing toevoegen op de knop **Toewijzen.**
+1. Selecteer in het dialoog venster **gebruikers en groepen** **B. Simon** van de lijst gebruikers en klik vervolgens op de knop **selecteren** onder aan het scherm.
+1. Als u een wille keurige rol verwacht in de SAML-bewering, selecteert u in het dialoog venster **rol selecteren** de juiste rol voor de gebruiker in de lijst en klikt u op de knop **selecteren** onder aan het scherm.
+1. Klik in het dialoog venster **toewijzing toevoegen** op de knop **toewijzen** .
 
-### <a name="create-way-we-do-test-user"></a>Maak manier waarop we doen test gebruiker
+### <a name="create-way-we-do-test-user"></a>Maken van een manier waarop we gebruikers testen
 
-In deze sectie, een gebruiker genaamd Britta Simon is gemaakt in Way We Do. Way We Do ondersteunt just-in-time gebruikersinrichting, die standaard is ingeschakeld. Er is geen actie-item voor u in deze sectie. Als een gebruiker nog niet bestaat in Way We Do, wordt er een nieuwe gemaakt na verificatie.
+In deze sectie wordt een gebruiker met de naam Julia Simon gemaakt zoals we dat doen. De manier waarop we de just-in-time-gebruikers inrichting ondersteunen, is standaard ingeschakeld. Er is geen actie-item voor u in deze sectie. Als een gebruiker niet al op de werk wijze wordt uitgevoerd, wordt er een nieuwe gemaakt na verificatie.
 
 > [!Note]
-> Als u handmatig een gebruiker wilt maken, neemt u contact op met [het ondersteuningsteam van Way We Do Client.](mailto:support@waywedo.com)
+> Als u hand matig een gebruiker moet maken, neemt u contact op met het [ondersteunings team](mailto:support@waywedo.com)van de client.
 
-### <a name="test-sso"></a>Test SSO
+### <a name="test-sso"></a>SSO testen
 
-Wanneer u de tegel Way We Do selecteert in het toegangspaneel, moet u automatisch worden aangemeld bij de manier waarop u SSO hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
+Wanneer u de tegel in het toegangs venster selecteert, wordt u automatisch aangemeld bij de manier waarop u SSO hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
 
 ## <a name="additional-resources"></a>Aanvullende resources
 
 - [Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Wat is toepassingstoegang en eenmalige aanmelding met Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Wat is toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Wat is voorwaardelijke toegang in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

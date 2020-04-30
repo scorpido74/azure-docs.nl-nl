@@ -14,10 +14,10 @@ ms.custom: mvc, seodec18
 ms.date: 12/07/2018
 ms.author: mbaldwin
 ms.openlocfilehash: dd5ce117645ef2b368bbf8f0e441770d6e746b5b
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "70881074"
 ---
 # <a name="what-is-azure-dedicated-hsm"></a>Wat is Azure Toegewezen HSM?
@@ -68,7 +68,7 @@ Azure Dedicated HSM is het meest geschikt voor lift-and-shift-scenario's waarvoo
 
 ### <a name="not-a-fit"></a>Niet geschikt voor
 
-Azure Dedicated HSM past niet bij het volgende type scenario: Microsoft-cloudservices die versleuteling ondersteunen met door de klant beheerde sleutels (zoals Azure Information Protection, Azure Disk Encryption, Azure Data Lake Store, Azure Storage, Azure SQL Database en klantsleutel voor Office 365) die niet zijn geïntegreerd met Azure Dedicated HSM.
+De toegewezen HSM van Azure is niet geschikt voor het volgende type scenario: micro soft-Cloud Services die versleuteling ondersteunen met door de klant beheerde sleutels (zoals Azure Information Protection, Azure Disk Encryption, Azure Data Lake Store, Azure Storage, Azure SQL Database en de klant sleutel voor Office 365) die niet zijn geïntegreerd met de speciale HSM van Azure.
 
 ### <a name="it-depends"></a>Geschikt onder bepaalde omstandigheden
 
@@ -87,8 +87,8 @@ Dit is een zeer gespecialiseerde service. Het is daarom belangrijk dat u de bela
 
 De [Gemalto-integratiehandleidingen](https://safenet.gemalto.com/partners/microsoft/) helpen u bij de inrichting van HSM's in een bestaand virtueel netwerk. Er zijn ook handleidingen waarmee u kunt bepalen hoe u uw implementatiearchitectuur instelt.
 
-* [Hoge beschikbaarheid](high-availability.md)
+* [Hoge Beschik baarheid](high-availability.md)
 * [Fysieke beveiliging](physical-security.md)
-* [Networking](networking.md)
+* [Netwerken](networking.md)
 * [Ondersteuning](supportability.md)
-* [Monitoring](monitoring.md)
+* [Bewaking](monitoring.md)

@@ -1,6 +1,6 @@
 ---
-title: 'Zelfstudie: Azure Active Directory-integratie met Carbonite Endpoint Backup | Microsoft Documenten'
-description: Meer informatie over het configureren van eenmalige aanmelding tussen Azure Active Directory en Carbonite Endpoint Backup.
+title: 'Zelf studie: integratie Azure Active Directory met Carbonite-eind punt-back-up | Microsoft Docs'
+description: Meer informatie over het configureren van eenmalige aanmelding tussen Azure Active Directory en Carbonite-eind punt.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -17,72 +17,72 @@ ms.date: 08/06/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e078cb7daa787b9fe5e8bc996b36f0fef198f41c
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "68879685"
 ---
-# <a name="tutorial-integrate-carbonite-endpoint-backup-with-azure-active-directory"></a>Zelfstudie: Carbonite Endpoint Backup integreren met Azure Active Directory
+# <a name="tutorial-integrate-carbonite-endpoint-backup-with-azure-active-directory"></a>Zelf studie: Carbonite-eind punt-back-up integreren met Azure Active Directory
 
-In deze zelfstudie leert u hoe u Carbonite Endpoint Backup integreren met Azure Active Directory (Azure AD). Wanneer u Carbonite Endpoint Backup integreert met Azure AD, u het als:
+In deze zelf studie leert u hoe u Carbonite endpoint backup integreert met Azure Active Directory (Azure AD). Wanneer u Carbonite-eind punt back-up integreert met Azure AD, kunt u het volgende doen:
 
-* Beheer in Azure AD die toegang heeft tot Carbonite Endpoint Backup.
-* Stel uw gebruikers in staat om automatisch te worden aangemeld bij Carbonite Endpoint Backup met hun Azure AD-accounts.
-* Beheer uw accounts op één centrale locatie: de Azure-portal.
+* Controle in azure AD die toegang heeft tot Carbonite endpoint-back-up.
+* Stel in dat uw gebruikers automatisch worden aangemeld voor Carbonite endpoint backup met hun Azure AD-accounts.
+* Beheer uw accounts op één centrale locatie: de Azure Portal.
 
-Zie [Wat is toepassingstoegang en eenmalige aanmelding met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)voor meer informatie over de integratie van de SaaS-app met Azure AD.
+Zie [Wat is toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)voor meer informatie over SaaS-app-integratie met Azure AD.
 
 ## <a name="prerequisites"></a>Vereisten
 
-Om aan de slag te gaan, heb je de volgende items nodig:
+U hebt de volgende items nodig om aan de slag te gaan:
 
-* Een Azure AD-abonnement Wanneer je nog geen abonnement hebt kun je gratis een [account aanmaken.](https://azure.microsoft.com/free/)
-* Carbonite Endpoint Backup single sign-on (SSO) ingeschakeld abonnement.
+* Een Azure AD-abonnement Als u geen abonnement hebt, kunt u een [gratis account](https://azure.microsoft.com/free/)aanvragen.
+* Eenmalige aanmelding voor Carbonite-eind punt back-ups (SSO) is ingeschakeld.
 
 ## <a name="scenario-description"></a>Scenariobeschrijving
 
-In deze zelfstudie configureert en test u Azure AD SSO in een testomgeving.
+In deze zelf studie configureert en test u Azure AD SSO in een test omgeving.
 
-* Carbonite Endpoint Backup ondersteunt **SP en IDP** geïnitieerd SSO
+* Carbonite endpoint Backup ondersteunt door **SP en IDP** GEÏNITIEERDe SSO
 
-## <a name="adding-carbonite-endpoint-backup-from-the-gallery"></a>Carbonite Endpoint Backup toevoegen vanuit de galerie
+## <a name="adding-carbonite-endpoint-backup-from-the-gallery"></a>Carbonite-eind punt back-up toevoegen vanuit de galerie
 
-Als u de integratie van Carbonite Endpoint Backup in Azure AD wilt configureren, moet u Carbonite Endpoint Backup vanuit de galerie toevoegen aan uw lijst met beheerde SaaS-apps.
+Als u de integratie van Carbonite-eind punt-back-up wilt configureren in azure AD, moet u Carbonite-eindpunt back-up toevoegen vanuit de galerie aan uw lijst met beheerde SaaS-apps.
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com) met een werk- of schoolaccount of een persoonlijk Microsoft-account.
-1. Selecteer in het linkernavigatiedeelvenster de **Azure Active Directory-service.**
-1. Navigeer naar **Ondernemingstoepassingen** en selecteer **Alle toepassingen**.
-1. Als u nieuwe toepassingen wilt toevoegen, selecteert u **Nieuwe toepassing**.
-1. Typ **Carbonite Endpoint Backup** in de sectie **Toevoegen in de galeriesectie** in het zoekvak.
-1. Selecteer **Carbonite Endpoint Backup** in het deelvenster Resultaten en voeg de app toe. Wacht een paar seconden terwijl de app wordt toegevoegd aan uw tenant.
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com) met behulp van een werk-of school account of een persoonlijke Microsoft-account.
+1. Selecteer de **Azure Active Directory** -service in het navigatie deel venster aan de linkerkant.
+1. Ga naar **bedrijfs toepassingen** en selecteer **alle toepassingen**.
+1. Selecteer **nieuwe toepassing**om een nieuwe toepassing toe te voegen.
+1. Typ **Carbonite endpoint backup** in het zoekvak van de sectie **toevoegen vanuit de galerie** .
+1. Selecteer **Carbonite endpoint backup** in het paneel resultaten en voeg vervolgens de app toe. Wacht een paar seconden wanneer de app aan uw Tenant is toegevoegd.
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD-eenmalige aanmelding configureren en testen
 
-Azure AD SSO configureren en testen met Carbonite Endpoint Backup met behulp van een testgebruiker genaamd **B.Simon**. Als SSO kan werken, moet u een koppelingsrelatie tot stand brengen tussen een Azure AD-gebruiker en de gerelateerde gebruiker in Carbonite Endpoint Backup.
+Configureer en test Azure AD SSO met Carbonite endpoint backup met behulp van een test gebruiker met de naam **B. Simon**. Voor het werken met SSO moet u een koppelings relatie tot stand brengen tussen een Azure AD-gebruiker en de bijbehorende gebruiker in Carbonite-eind punt back-up.
 
-Als u Azure AD SSO wilt configureren en testen met Carbonite Endpoint Backup, voert u de volgende bouwstenen uit:
+Als u Azure AD SSO wilt configureren en testen met Carbonite endpoint backup, voltooit u de volgende bouw stenen:
 
-1. **[Configureer Azure AD SSO](#configure-azure-ad-sso)** - zodat uw gebruikers deze functie kunnen gebruiken.
-2. **[Configureer Carbonite Endpoint Backup SSO](#configure-carbonite-endpoint-backup-sso)** - om de instellingen voor één aanmelding aan de toepassingszijde te configureren.
-3. **[Een Azure AD-testgebruiker maken](#create-an-azure-ad-test-user)** - om Azure AD-enkele aanmelding te testen met B.Simon.
-4. **[De Azure AD-testgebruiker toewijzen](#assign-the-azure-ad-test-user)** - om B.Simon in staat te stellen azure AD-aanmelding te gebruiken.
-5. Maak de gebruiker van **[de Carbonite Endpoint Backup-test-](#create-carbonite-endpoint-backup-test-user)** om een tegenhanger van B.Simon in Carbonite Endpoint Backup te hebben die is gekoppeld aan de Azure AD-weergave van de gebruiker.
-6. **[Test SSO](#test-sso)** - om te controleren of de configuratie werkt.
+1. **[Configureer Azure AD SSO](#configure-azure-ad-sso)** -om uw gebruikers in staat te stellen deze functie te gebruiken.
+2. **[CONFIGUREER SSO van Carbonite-eind punt](#configure-carbonite-endpoint-backup-sso)** : voor het configureren van de instellingen voor eenmalige aanmelding aan de kant van de toepassing.
+3. **[Een Azure AD-test gebruiker maken](#create-an-azure-ad-test-user)** : u kunt eenmalige aanmelding voor Azure AD testen met B. Simon.
+4. **[Wijs de Azure AD-test gebruiker](#assign-the-azure-ad-test-user)** toe, zodat B. Simon de eenmalige aanmelding van Azure AD kan gebruiken.
+5. **[Maak een Carbonite-eind punt gebruiker](#create-carbonite-endpoint-backup-test-user)** voor het maken van een back-up, zodat het een soort is van B. Simon in Carbonite endpoint Backup dat is gekoppeld aan de Azure AD-representatie van de gebruiker.
+6. **[SSO testen](#test-sso)** : om te controleren of de configuratie werkt.
 
 ### <a name="configure-azure-ad-sso"></a>Azure AD SSO-configureren
 
-Volg deze stappen om Azure AD SSO in te schakelen in de Azure-portal.
+Volg deze stappen om Azure AD SSO in te scha kelen in de Azure Portal.
 
-1. Zoek in de [Azure-portal](https://portal.azure.com/)op de **integratiepagina van carbonite-eindpuntback-uptoepassingen** de sectie **Beheren** en selecteer **Eenmalige aanmelding**.
-1. Selecteer **SAML**op de pagina **Eén aanmeldingsmethode** selecteren .
-1. Klik op de pagina **Eén aanmelding instellen met SAML** op het pictogram bewerken/pen voor **BasisSAML-configuratie** om de instellingen te bewerken.
+1. Zoek in het [Azure Portal](https://portal.azure.com/)op de integratie pagina **Carbonite endpoint backup** de sectie **beheren** en selecteer **eenmalige aanmelding**.
+1. Selecteer op de pagina **Eén aanmeldings methode selecteren** de optie **SAML**.
+1. Klik op de pagina **eenmalige aanmelding met SAML instellen** op het pictogram bewerken/pen voor **eenvoudige SAML-configuratie** om de instellingen te bewerken.
 
    ![Standaard SAML-configuratie bewerken](common/edit-urls.png)
 
-1. Voer in de sectie **BasisSAML-configuratie** de waarden voor de volgende velden in als u de toepassing in de **idp-modus** wilt configureren:
+1. Als u de toepassing in de gestarte modus **IDP** wilt configureren, voert u in de sectie **basis configuratie van SAML** de waarden voor de volgende velden in:
 
-    a. Typ **in** het tekstvak Id een van de volgende URL's:
+    a. Typ in het tekstvak **id** een van de volgende url's:
 
     | | |
     |-|-|
@@ -93,7 +93,7 @@ Volg deze stappen om Azure AD SSO in te schakelen in de Azure-portal.
     | `https://kamino.mysecuredatavault.com`|
     | | |
 
-    b. Typ in het tekstvak **URL beantwoorden** een van de volgende URL's:
+    b. Typ in het tekstvak **antwoord-URL** een van de volgende url's:
 
     | | |
     |-|-|
@@ -105,7 +105,7 @@ Volg deze stappen om Azure AD SSO in te schakelen in de Azure-portal.
 
 1. Klik op **Extra URL's instellen** en voer de volgende stap uit als u de toepassing in de door **SP** geïnitieerde modus wilt configureren:
 
-    Typ in het tekstvak **AANmeldings-URL** een van de volgende URL's:
+    Typ in het tekstvak **URL voor aanmelding** een van de volgende url's:
 
     | | |
     |-|-|
@@ -115,105 +115,105 @@ Volg deze stappen om Azure AD SSO in te schakelen in de Azure-portal.
     | `https://red-emea.mysecuredatavault.com/`|
     | | |
 
-1. Zoek op de pagina **Eén aanmelding instellen met SAML** in de sectie **SAML-ondertekeningscertificaat** **certificaat** en selecteer **Downloaden** om het certificaat te downloaden en op te slaan op uw computer.
+1. Zoek op de pagina **eenmalige aanmelding met SAML instellen** , in de sectie **SAML-handtekening certificaat** , naar **certificaat (base64)** en selecteer **downloaden** om het certificaat te downloaden en op uw computer op te slaan.
 
     ![De link om het certificaat te downloaden](common/certificatebase64.png)
 
-1. Kopieer in de sectie **Carbonite Endpoint Backup instellen** de juiste URL(s) op basis van uw vereiste.
+1. Kopieer op de sectie **Carbonite endpoint backup** de juiste URL ('s) op basis van uw vereiste.
 
     ![Configuratie-URL's kopiëren](common/copy-configuration-urls.png)
 
-### <a name="configure-carbonite-endpoint-backup-sso"></a>Carbonite Endpoint Backup SSO configureren
+### <a name="configure-carbonite-endpoint-backup-sso"></a>EENMALIGe back-up van Carbonite-eind punt configureren
 
-1. Als u de configuratie binnen Carbonite Endpoint Backup wilt automatiseren, moet u **de beveiligingsextensie Mijn apps Secure Sign-in** installeren door op **De extensie installeren**te klikken.
+1. Als u de configuratie in Carbonite-eind punt back-up wilt automatiseren, moet u de **uitbrei ding mijn apps Secure Sign-in browser** installeren door te klikken op **de uitbrei ding installeren**.
 
-    ![Extensie Mijn apps](common/install-myappssecure-extension.png)
+    ![Uitbrei ding voor mijn apps](common/install-myappssecure-extension.png)
 
-2. Nadat u extensie aan de browser hebt toegevoegd, klikt u op **Setup Carbonite Endpoint Backup** en leidt u naar de Carbonite Endpoint Backup-toepassing. Geef van daaruit de beheerdersreferenties op om u aan te melden bij Carbonite Endpoint Backup. In de browserextensie wordt de toepassing automatisch voor u geconfigureerd en worden stappen 3-7 geautomatiseerd.
+2. Nadat u een uitbrei ding aan de browser hebt toegevoegd, klikt u op **Setup Carbonite endpoint backup** wordt u doorgestuurd naar de Carbonite-eindpunt back-uptoepassing. Geef de beheerders referenties op om u aan te melden bij het Carbonite-eind punt. In de browserextensie wordt de toepassing automatisch voor u geconfigureerd en worden stappen 3-7 geautomatiseerd.
 
-    ![Configuratie instellen](common/setup-sso.png)
+    ![Configuratie van Setup](common/setup-sso.png)
 
-3. Als u Carbonite Endpoint Backup handmatig wilt instellen, opent u een nieuw webbrowservenster en meldt u zich aan bij uw Carbonite Endpoint Backup-bedrijfssite als beheerder en voert u de volgende stappen uit:
+3. Als u Carbonite endpoint backup hand matig wilt instellen, opent u een nieuw webbrowser venster en meldt u zich aan bij de bedrijfs site van uw Carbonite-eind punt als beheerder en voert u de volgende stappen uit:
 
-4. Klik in het linkerdeelvenster op het **bedrijf.**
+4. Klik op het **bedrijf** in het linkerdeel venster.
 
-    ![Carbonite Endpoint Backup-configuratie ](media/carbonite-endpoint-backup-tutorial/configure1.png)
+    ![Back-upconfiguratie voor Carbonite-eind punt ](media/carbonite-endpoint-backup-tutorial/configure1.png)
 
-5. Klik op **Eenmalig aanmelden**.
+5. Klik op **eenmalige aanmelding**.
 
-    ![Carbonite Endpoint Backup-configuratie ](media/carbonite-endpoint-backup-tutorial/configure2.png)
+    ![Back-upconfiguratie voor Carbonite-eind punt ](media/carbonite-endpoint-backup-tutorial/configure2.png)
 
-6. Klik op **Inschakelen** en klik vervolgens op **Instellingen bewerken** om te configureren.
+6. Klik op **inschakelen** en klik vervolgens op **Instellingen bewerken** om te configureren.
 
-    ![Carbonite Endpoint Backup-configuratie ](media/carbonite-endpoint-backup-tutorial/configure3.png)
+    ![Back-upconfiguratie voor Carbonite-eind punt ](media/carbonite-endpoint-backup-tutorial/configure3.png)
 
-7. Voer op de pagina **Instellingen voor één aanmelding** de volgende stappen uit:
+7. Voer de volgende stappen uit op de pagina instellingen voor **eenmalige aanmelding** :
 
-    ![Carbonite Endpoint Backup-configuratie ](media/carbonite-endpoint-backup-tutorial/configure4.png)
+    ![Back-upconfiguratie voor Carbonite-eind punt ](media/carbonite-endpoint-backup-tutorial/configure4.png)
 
-    1. Plak in het tekstvak naam van de **identiteitsprovider** de azure **AD-id-waarde,** die u hebt gekopieerd van de Azure-portal.
+    1. Plak in het tekstvak naam van de **identiteits provider** de waarde van de **Azure ad-id** , die u hebt gekopieerd van de Azure Portal.
 
-    1. Plak in het **tekstvak URL-provider Identiteit** de **URL-waarde aanmelding,** die u hebt gekopieerd van de Azure-portal.
+    1. Plak in het tekstvak **ID-provider-URL** de waarde voor de AANMELDINGS- **URL** , die u hebt gekopieerd uit de Azure Portal.
 
-    1. Klik op **Bestand kiezen** om het gedownloade **certificaatbestand (Base64)** te uploaden vanuit de Azure-portal.
+    1. Klik op **bestand kiezen** om het gedownloade **certificaat bestand (base64)** te uploaden van de Azure Portal.
 
     1. Klik op **Opslaan**.
 
 ### <a name="create-an-azure-ad-test-user"></a>Een Azure AD-testgebruiker maken
 
-In deze sectie maakt u een testgebruiker in de Azure-portal genaamd B.Simon.
+In deze sectie maakt u een test gebruiker in de Azure Portal met de naam B. Simon.
 
-1. Selecteer in het linkerdeelvenster in de Azure-portal **Azure Active Directory,** selecteer **Gebruikers**en selecteer **Alle gebruikers**.
-1. Selecteer **Nieuwe gebruiker** boven aan het scherm.
-1. Voer **in** de eigenschappen gebruiker de volgende stappen uit:
+1. Selecteer in het linkerdeel venster van de Azure Portal **Azure Active Directory**, selecteer **gebruikers**en selecteer vervolgens **alle gebruikers**.
+1. Selecteer **nieuwe gebruiker** boven aan het scherm.
+1. Voer de volgende stappen uit in de eigenschappen van de **gebruiker** :
    1. Voer in het veld **Naam**`B.Simon` in.  
-   1. Voer **in** het veld username@companydomain.extensionGebruikersnaam de . Bijvoorbeeld `B.Simon@contoso.com`.
-   1. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak **Wachtwoord.**
-   1. Klik **op Maken**.
+   1. Voer in het veld **gebruikers naam** het username@companydomain.extensionin. Bijvoorbeeld `B.Simon@contoso.com`.
+   1. Schakel het selectie vakje **wacht woord weer geven** in en noteer de waarde die wordt weer gegeven in het vak **wacht woord** .
+   1. Klik op **maken**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>De Azure AD-testgebruiker toewijzen
 
-In deze sectie u B.Simon inschakelen om Azure single sign-on te gebruiken door toegang te verlenen tot Carbonite Endpoint Backup.
+In deze sectie schakelt u B. Simon in voor het gebruik van eenmalige aanmelding van Azure door toegang te verlenen tot Carbonite-eind punt.
 
-1. Selecteer in de Azure-portal **Enterprise-toepassingen**en selecteer **Alle toepassingen**.
-1. Selecteer **Carbonite Endpoint Backup**in de lijst met toepassingen .
-1. Zoek op de overzichtspagina van de app de sectie **Beheren** en selecteer **Gebruikers en groepen**.
+1. Selecteer in het Azure Portal **bedrijfs toepassingen**en selecteer vervolgens **alle toepassingen**.
+1. Selecteer **Carbonite endpoint backup**in de lijst toepassingen.
+1. Ga op de pagina overzicht van de app naar de sectie **beheren** en selecteer **gebruikers en groepen**.
 
    ![De koppeling Gebruikers en groepen](common/users-groups-blade.png)
 
-1. Selecteer **Gebruiker toevoegen**en selecteer vervolgens Gebruikers en **groepen** in het dialoogvenster **Toewijzing toevoegen.**
+1. Selecteer **gebruiker toevoegen**en selecteer vervolgens **gebruikers en groepen** in het dialoog venster **toewijzing toevoegen** .
 
-    ![De koppeling Gebruiker toevoegen](common/add-assign-user.png)
+    ![De koppeling gebruiker toevoegen](common/add-assign-user.png)
 
-1. Selecteer **B.Simon** in het dialoogvenster **Gebruikers en groepen** in de lijst Gebruikers en klik vervolgens op de knop **Selecteren** onder aan het scherm.
-1. Als u een rolwaarde verwacht in de SAML-bewering, selecteert u in het dialoogvenster **Rol selecteren** de juiste rol voor de gebruiker in de lijst en klikt u op de knop **Selecteren** onder aan het scherm.
-1. Klik **in** het dialoogvenster Toewijzing toevoegen op de knop **Toewijzen.**
+1. Selecteer in het dialoog venster **gebruikers en groepen** **B. Simon** van de lijst gebruikers en klik vervolgens op de knop **selecteren** onder aan het scherm.
+1. Als u een wille keurige rol verwacht in de SAML-bewering, selecteert u in het dialoog venster **rol selecteren** de juiste rol voor de gebruiker in de lijst en klikt u op de knop **selecteren** onder aan het scherm.
+1. Klik in het dialoog venster **toewijzing toevoegen** op de knop **toewijzen** .
 
-### <a name="create-carbonite-endpoint-backup-test-user"></a>Gebruiker van Carbonite Endpoint Backup-testmaken
+### <a name="create-carbonite-endpoint-backup-test-user"></a>Test gebruiker voor Carbonite-eind punt maken
 
-1. Meld u in een ander browservenster aan bij uw carbonite-eindpuntback-upsite als beheerder.
+1. Meld u in een ander webbrowser venster aan bij uw Carbonite endpoint backup-bedrijfs site als beheerder.
 
-1. Klik op de **gebruikers** in het linkerdeelvenster en klik vervolgens op **Gebruiker toevoegen**.
+1. Klik op **gebruikers** in het linkerdeel venster en klik vervolgens op **gebruiker toevoegen**.
 
-    ![Gebruiker toevoegen in Carbonite Endpoint Backup](media/carbonite-endpoint-backup-tutorial/adduser1.png)
+    ![Gebruiker toevoegen in Carbonite-eind punt back-up](media/carbonite-endpoint-backup-tutorial/adduser1.png)
 
-1. Voer op de pagina **Gebruiker toevoegen** de volgende stappen uit:
+1. Voer op de pagina **gebruiker toevoegen** de volgende stappen uit:
 
-    ![Gebruiker toevoegen in Carbonite Endpoint Backup](media/carbonite-endpoint-backup-tutorial/adduser2.png)
+    ![Gebruiker toevoegen in Carbonite-eind punt back-up](media/carbonite-endpoint-backup-tutorial/adduser2.png)
 
-    1. Voer de **e-mail**, **voornaam**, **achternaam** van de gebruiker in en geef de vereiste machtigingen aan de gebruiker op basis van de organisatorische vereisten.
+    1. Voer de **e-mail adres**, de **voor naam**, de **Achternaam** van de gebruiker en de vereiste machtigingen voor de gebruiker in op basis van de vereisten van de organisatie.
 
-    1. Klik **op Gebruiker toevoegen**.
+    1. Klik op **gebruiker toevoegen**.
 
-### <a name="test-sso"></a>Test SSO
+### <a name="test-sso"></a>SSO testen
 
 In deze sectie gaat u uw configuratie van Azure AD-eenmalige aanmelding testen via het toegangsvenster.
 
-Wanneer u op de tegel Carbonite Endpoint Backup in het toegangspaneel klikt, moet u automatisch worden aangemeld bij de Carbonite Endpoint Backup waarvoor u SSO instelt. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
+Wanneer u op de tegel Carbonite endpoint backup in het toegangs venster klikt, moet u automatisch worden aangemeld bij de Carbonite-eind punt back-up waarvoor u SSO hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
 
 ## <a name="additional-resources"></a>Aanvullende bronnen
 
-- [Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Lijst met zelf studies voor het integreren van SaaS-apps met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [What is application access and single sign-on with Azure Active Directory? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat is toegang tot toepassingen en eenmalige aanmelding bij Azure Active Directory?)
 

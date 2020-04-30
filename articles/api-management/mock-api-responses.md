@@ -14,10 +14,10 @@ ms.topic: tutorial
 ms.date: 06/15/2018
 ms.author: apimpm
 ms.openlocfilehash: 6841695cca5d3864e6823085520d8e9162e54043
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "70067945"
 ---
 # <a name="mock-api-responses"></a>Gesimuleerde antwoorden van een API
@@ -67,7 +67,7 @@ De stappen in deze sectie laten zien hoe u een lege API zonder back-end maakt. O
     |---------------------|-----------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
     | **Weergavenaam**    | *Testaanroep*                       | Deze naam wordt weergegeven in de **ontwikkelaarsportal**.                                                                                                                                       |
     | **URL** (HTTP-woord) | GET                               | U kunt kiezen uit een van de vooraf gedefinieerde HTTP-woorden.                                                                                                                                         |
-    | **Url**             | */test*                           | Een URL-pad voor de API.                                                                                                                                                                       |
+    | **URL**             | */test*                           | Een URL-pad voor de API.                                                                                                                                                                       |
     | **Beschrijving**     |                                   | Geef een beschrijving van de bewerking die wordt gebruikt voor documentatie voor de ontwikkelaars met behulp van deze API in de **ontwikkelaarsportal**.                                                    |
     | Tabblad **Query**       |                                   | U kunt queryparameters toevoegen. Naast het invoeren van een naam en beschrijving, kunt u waarden opgeven die kunnen worden toegewezen aan deze parameter. Een van de waarden kan worden gemarkeerd als standaardwaarde (optioneel). |
     | Tabblad **Aanvraag**     |                                   | U kunt aanvraaginhoudstypen, voorbeelden en schema's definiëren.                                                                                                                                  |
@@ -121,7 +121,7 @@ De stappen in deze sectie laten zien hoe u een lege API zonder back-end maakt. O
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze zelfstudie hebt u het volgende geleerd:
+In deze zelfstudie heeft u het volgende geleerd:
 
 > [!div class="checklist"]
 > * Een test-API maken
