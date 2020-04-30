@@ -10,18 +10,18 @@ author: trevorbye
 ms.author: trbye
 ms.reviewer: laobri
 ms.date: 03/11/2020
-ms.openlocfilehash: 1ccd7a7f33c6ee5cab8b7173d8eb93365b6cb587
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 41d68c58c43262b36b93af0008e7d35de13dff4d
+ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79472217"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82562267"
 ---
 # <a name="tutorial-build-an-azure-machine-learning-pipeline-for-batch-scoring"></a>Zelf studie: een Azure Machine Learning-pijp lijn bouwen voor batch Score
 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-Meer informatie over het bouwen van een pijp lijn in Azure Machine Learning om een batch Score taak uit te voeren. Machine learning-pijp lijnen Optimaliseer uw werk stroom met snelheid, portabiliteit en hergebruik, zodat u zich kunt concentreren op machine learning in plaats van infra structuur en automatisering. Nadat u een pijp lijn hebt gemaakt en gepubliceerd, configureert u een REST-eind punt dat u kunt gebruiken om de pijp lijn te activeren vanuit elke HTTP-bibliotheek op elk platform. 
+In deze geavanceerde zelf studie leert u hoe u een pijp lijn kunt bouwen in Azure Machine Learning om een batch Score taak uit te voeren. Machine learning-pijp lijnen Optimaliseer uw werk stroom met snelheid, portabiliteit en hergebruik, zodat u zich kunt concentreren op machine learning in plaats van infra structuur en automatisering. Nadat u een pijp lijn hebt gemaakt en gepubliceerd, configureert u een REST-eind punt dat u kunt gebruiken om de pijp lijn te activeren vanuit elke HTTP-bibliotheek op elk platform. 
 
 In het voor beeld wordt gebruikgemaakt van een vooraf getraind gemaakt [-v3](https://arxiv.org/abs/1512.00567) convolutional Neural-netwerk model dat is geïmplementeerd in tensor flow om niet-gelabelde afbeeldingen te classificeren. Meer [informatie over machine learning pijp lijnen](concept-ml-pipelines.md).
 
