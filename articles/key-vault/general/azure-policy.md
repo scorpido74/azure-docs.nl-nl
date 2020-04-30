@@ -1,5 +1,5 @@
 ---
-title: Azure Key Vault integreren met Azure-beleid
+title: Azure Key Vault integreren met Azure Policy
 description: Meer informatie over het integreren van Azure Key Vault met Azure Policy
 author: msmbaldwin
 ms.author: mbaldwin
@@ -8,149 +8,149 @@ ms.service: key-vault
 ms.subservice: general
 ms.topic: quickstart
 ms.openlocfilehash: 6b54dc27f8a3e88dedb0552b1ac7fb675d75121a
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81424592"
 ---
-# <a name="integrate-azure-key-vault-with-azure-policy"></a>Azure Key Vault integreren met Azure-beleid
+# <a name="integrate-azure-key-vault-with-azure-policy"></a>Azure Key Vault integreren met Azure Policy
 
-[Azure Policy](../../governance/policy/index.yml) is een governancetool waarmee gebruikers hun Azure-omgeving op schaal kunnen controleren en beheren. Azure Policy biedt de mogelijkheid om vangrails op Azure-resources te plaatsen om ervoor te zorgen dat ze voldoen aan toegewezen beleidsregels. Hiermee kunnen gebruikers audit, real-time handhaving en herstel van hun Azure-omgeving uitvoeren. De resultaten van audits die door het beleid worden uitgevoerd, zullen beschikbaar zijn voor gebruikers in een compliance-dashboard waar ze een drilldown kunnen zien van welke resources en componenten compatibel zijn en welke niet.  Zie het overzicht [van de Azure-beleidsservice](../../governance/policy/overview.md)voor meer informatie .
+[Azure Policy](../../governance/policy/index.yml) is een beheer programma waarmee gebruikers hun Azure-omgeving op schaal kunnen controleren en beheren. Azure Policy biedt de mogelijkheid om Guardrails te plaatsen op Azure-resources om ervoor te zorgen dat ze compatibel zijn met de toegewezen beleids regels. Hiermee kunnen gebruikers controle, realtime-afdwinging en herstel van hun Azure-omgeving uitvoeren. De resultaten van controles die door het beleid worden uitgevoerd, zijn beschikbaar voor gebruikers in een compatibiliteits dashboard, waar ze een drilldownbewerking kunnen zien van de resources en onderdelen die compatibel zijn en die niet.  Zie het [overzicht van de Azure Policy-service](../../governance/policy/overview.md)voor meer informatie.
 
-Voorbeeldgebruiksscenario's:
+Voor beelden van gebruiks Scenario's:
 
-- U wilt de beveiligingshouding van uw bedrijf verbeteren door vereisten te implementeren rond minimale sleutelgroottes en maximale geldigheidsperioden van certificaten in de belangrijkste kluizen van uw bedrijf, maar u weet niet welke teams compliant zijn en welke niet. 
-- U hebt momenteel geen oplossing om een audit in uw organisatie uit te voeren, of u voert handmatige audits uit van uw omgeving door individuele teams binnen uw organisatie te vragen hun naleving te melden. U bent op zoek naar een manier om deze taak te automatiseren, audits in real time uit te voeren en de nauwkeurigheid van de audit te garanderen.
-- U wilt uw bedrijfsbeveiligingsbeleid afdwingen en voorkomen dat personen zelfondertekende certificaten maken, maar u hebt geen geautomatiseerde manier om hun creatie te blokkeren. 
-- U wilt een aantal vereisten voor uw testteams versoepelen, maar u wilt strenge controle houden over uw productieomgeving. U hebt een eenvoudige geautomatiseerde manier nodig om de handhaving van uw resources te scheiden. 
-- U wilt er zeker van zijn dat u de handhaving van nieuw beleid terugdraaien in het geval van een probleem met een live-site. U hebt een oplossing met één klik nodig om de handhaving van het beleid uit te schakelen. 
-- U vertrouwt op een oplossing van derden voor het controleren van uw omgeving en u wilt een intern Microsoft-aanbod gebruiken. 
+- U wilt de beveiligings postuur van uw bedrijf verbeteren door vereisten te implementeren rond de minimale sleutel grootte en de maximale geldigheids periode van certificaten in de sleutel kluizen van uw bedrijf, maar u weet niet welke teams compatibel zijn en wat niet. 
+- U hebt momenteel geen oplossing voor het uitvoeren van een audit in uw organisatie, of u voert hand matige controles uit van uw omgeving door afzonderlijke teams binnen uw organisatie te vragen om hun naleving te rapporteren. U zoekt naar een manier om deze taak te automatiseren, controles in realtime uit te voeren en de nauw keurigheid van de audit te garanderen.
+- U wilt het beveiligings beleid van uw bedrijf afdwingen en wilt voor komen dat individuen zelf-ondertekende certificaten maken, maar u hebt geen geautomatiseerde manier om het maken ervan te blok keren. 
+- U wilt enkele vereisten voor uw test teams afwijzen, maar u wilt nauw keurige controle over uw productie omgeving behouden. U hebt een eenvoudige, geautomatiseerde manier nodig om de afdwinging van uw resources te scheiden. 
+- U wilt er zeker van zijn dat u het afdwingen van nieuwe beleids regels in het geval van een probleem met een live-site kunt terugdraaien. U hebt een oplossing met één klik nodig om de handhaving van het beleid uit te scha kelen. 
+- U bent afhankelijk van een oplossing van een derde partij voor het controleren van uw omgeving en u wilt een intern micro soft-aanbod gebruiken. 
 
-## <a name="types-of-policy-effects-and-guidance"></a>Soorten beleidseffecten en richtsnoeren
+## <a name="types-of-policy-effects-and-guidance"></a>Soorten beleids effecten en richt lijnen
 
-**Controle:** Wanneer het effect van een beleid is ingesteld op controle, zal het beleid geen baanbrekende wijzigingen in uw omgeving veroorzaken. Het waarschuwt u alleen voor onderdelen zoals certificaten die niet voldoen aan de beleidsdefinities binnen een bepaald bereik, door deze componenten als niet-compatibel te markeren in het dashboard voor naleving van het beleid. Audit is standaard als er geen beleidseffect is geselecteerd. 
+**Controle**: wanneer het effect van een beleid is ingesteld op audit, heeft het beleid geen invloed op de wijzigingen in uw omgeving. Er wordt alleen een waarschuwing weer gegeven voor onderdelen zoals certificaten die niet voldoen aan de beleids definities binnen een opgegeven bereik, door deze onderdelen te markeren als niet-compatibel in het dash board voor beleids naleving. De controle is standaard als er geen beleids effect is geselecteerd. 
 
-**Weigeren:** Wanneer het effect van een beleid is ingesteld om te weigeren, blokkeert het beleid het maken van nieuwe componenten zoals certificaten en blokkeert het nieuwe versies van bestaande componenten die niet voldoen aan de beleidsdefinitie. Bestaande niet-conforme resources in een sleutelkluis worden niet beïnvloed. De "audit"-mogelijkheden zullen blijven functioneren.
+**Weigeren**: wanneer het effect van een beleid is ingesteld op weigeren, blokkeert het beleid het maken van nieuwe onderdelen, zoals certificaten, en worden nieuwe versies van bestaande onderdelen die niet voldoen aan de beleids definitie, geblokkeerd. Bestaande niet-compatibele resources in een sleutel kluis worden niet beïnvloed. De controle mogelijkheden blijven actief.
 
-## <a name="available-built-in-policy-definitions"></a>Beschikbare beleidsdefinities voor "ingebouwde"
+## <a name="available-built-in-policy-definitions"></a>Beschik bare ' ingebouwde ' beleids definities
 
-Key Vault heeft een set beleidsregels gemaakt die u toewijzen voor veelvoorkomende scenario's om certificaten te beheren. Dit beleid is 'Ingebouwde', wat betekent dat u geen aangepaste JSON hoeft te schrijven om ze in te schakelen en ze zijn beschikbaar in de Azure-portal die u toewijzen. U bepaalde parameters nog steeds aanpassen aan de behoeften van uw organisatie. 
+Key Vault heeft een set beleids regels gemaakt die u kunt toewijzen voor algemene scenario's voor het beheren van certificaten. Deze beleids regels zijn ingebouwd, wat betekent dat u geen aangepaste JSON hoeft te schrijven om deze in te scha kelen en ze beschikbaar zijn in de Azure Portal die u wilt toewijzen. U kunt bepaalde para meters aanpassen aan de behoeften van uw organisatie. 
 
-De acht preview-beleidsregels zijn als volgt.
+De acht preview-beleids regels zijn als volgt.
 
-### <a name="manage-certificate-validity-period-preview"></a>Certificaatgeldigheidsperiode beheren (voorbeeld)
+### <a name="manage-certificate-validity-period-preview"></a>Geldigheids duur van certificaat beheren (preview-versie)
 
-Met dit beleid u de maximale geldigheidsperiode beheren van uw certificaten die zijn opgeslagen in de sleutelkluis. Het is een goede beveiligingspraktijk om de maximale geldigheidsperiode van uw certificaten te beperken. Als een privésleutel van uw certificaat zonder detectie wordt gecompromitteerd, minimaliseert het gebruik van certificaten van korte duur het tijdsbestek voor voortdurende schade en vermindert de waarde van het certificaat voor een aanvaller. 
+Met dit beleid kunt u de maximale geldigheids duur van uw certificaten beheren die zijn opgeslagen in de sleutel kluis. Het is een goede beveiligings procedure om de maximale geldigheids duur van uw certificaten te beperken. Als een persoonlijke sleutel van uw certificaat zonder detectie zou worden aangetast, wordt het tijds bestek voor de doorlopende schade geminimaliseerd en wordt de waarde van het certificaat gereduceerd met een aanvaller. 
 
-### <a name="manage-allowed-certificate-key-types-preview"></a>Toegestane certificaatsleuteltypen beheren (voorbeeld)
-Met dit beleid u het type certificaten beperken dat zich in uw sleutelkluis kan begeven. U dit beleid gebruiken om ervoor te zorgen dat uw privésleutels van uw certificaat RSA, ECC of HSM-backs zijn. U kiezen uit de volgende lijst welke certificaattypen zijn toegestaan.
+### <a name="manage-allowed-certificate-key-types-preview"></a>Toegestane certificaat sleutel typen beheren (preview-versie)
+Met dit beleid kunt u het type certificaten beperken dat zich in de sleutel kluis kan bevindt. U kunt dit beleid gebruiken om ervoor te zorgen dat uw persoonlijke sleutels voor certificaten RSA, ECC of een HSM-back-up zijn. U kunt kiezen uit de volgende lijst welke certificaat typen zijn toegestaan.
 - RSA
-- RSA - HSM
-- Ecc 
-- ECC - HSM 
+- RSA-HSM
+- ECC 
+- ECC-HSM 
 
-### <a name="manage-certificate-lifetime-action-triggers-preview"></a>Actietriggers voor de levensduur van certificaten beheren (voorbeeld)
+### <a name="manage-certificate-lifetime-action-triggers-preview"></a>Actie triggers voor levens duur van certificaten beheren (preview-versie)
 
-Met dit beleid u de levenslange actie beheren die is opgegeven voor certificaten die zich binnen een bepaald aantal dagen na hun vervaldatum bevinden of een bepaald percentage van hun gebruiksduur hebben bereikt. 
+Met dit beleid kunt u de levensduur actie beheren die is opgegeven voor certificaten die binnen een bepaald aantal dagen na verloop van tijd vallen of een bepaald percentage van hun gebruiks duur hebben bereikt. 
 
-### <a name="manage-certificates-issued-by-an-integrated-ca-preview"></a>Certificaten beheren die zijn uitgegeven door een geïntegreerde CA (voorbeeld)
+### <a name="manage-certificates-issued-by-an-integrated-ca-preview"></a>Certificaten beheren die zijn uitgegeven door een geïntegreerde certificerings instantie (preview-versie)
 
-Als u een geïntegreerde certificaatinstantie van Key Vault (Digicert of GlobalSign) gebruikt en u wilt dat gebruikers een of een van deze providers gebruiken, u dit beleid gebruiken om uw selectie te controleren of af te dwingen. Dit beleid kan ook worden gebruikt om het maken van zelfondertekende certificaten in sleutelkluis te controleren of te weigeren. 
+Als u gebruikmaakt van een Key Vault geïntegreerde certificerings instantie (Digicert of GlobalSign) en u wilt dat gebruikers een of een van deze providers gebruiken, kunt u dit beleid gebruiken om uw selectie te controleren of af te dwingen. Dit beleid kan ook worden gebruikt om het maken van zelfondertekende certificaten in de sleutel kluis te controleren of te weigeren. 
 
-### <a name="manage-certificates-issued-by-an-integrated-ca-preview"></a>Certificaten beheren die zijn uitgegeven door een geïntegreerde CA (voorbeeld)
+### <a name="manage-certificates-issued-by-an-integrated-ca-preview"></a>Certificaten beheren die zijn uitgegeven door een geïntegreerde certificerings instantie (preview-versie)
 
-Als u een interne certificaatinstantie of een certificaatinstantie gebruikt die niet is geïntegreerd met sleutelkluis en u wilt dat gebruikers een certificaatautoriteit gebruiken uit een lijst die u opgeeft, u dit beleid gebruiken om een toegestane lijst met certificaatautoriteiten te maken op naam van de uitgever. Dit beleid kan ook worden gebruikt om het maken van zelfondertekende certificaten in sleutelkluis te controleren of te weigeren. 
+Als u een interne certificerings instantie of certificerings instantie gebruikt die niet is geïntegreerd met sleutel kluis en u wilt dat gebruikers een certificerings instantie gebruiken uit een lijst die u opgeeft, kunt u dit beleid gebruiken om een lijst met toegestane certificerings instanties te maken op basis van de naam van de uitgever. Dit beleid kan ook worden gebruikt om het maken van zelfondertekende certificaten in de sleutel kluis te controleren of te weigeren. 
 
-### <a name="manage-allowed-curve-names-for-elliptic-curve-cryptography-certificates-preview"></a>Toegestane curvenamen voor certificaten voor elliptische curvecryptografie beheren (voorbeeld)
-Als u elliptische curvecryptografie- of ECC-certificaten gebruikt, u een toegestane lijst met curvenamen in de onderstaande lijst aanpassen. Met de standaardoptie staan alle volgende curvenamen toe. 
+### <a name="manage-allowed-curve-names-for-elliptic-curve-cryptography-certificates-preview"></a>Toegestane curve namen voor elliptische-curve certificaten beheren (preview-versie)
+Als u elliptische curve-of ECC-certificaten gebruikt, kunt u een lijst met toegestane curve namen aanpassen in de onderstaande lijst. Met de standaard optie worden alle volgende curve namen toegestaan. 
 - P-256
-- P-256K
+- P-256 KB
 - P-384
 - P-521
 
-### <a name="manage-minimum-key-size-for-rsa-certificates-preview"></a>Minimale sleutelgrootte voor RSA-certificaten beheren (voorbeeld)
-Als u RSA-certificaten gebruikt, u een minimale sleutelgrootte kiezen die uw certificaten moeten hebben. U een optie selecteren in de onderstaande lijst. 
+### <a name="manage-minimum-key-size-for-rsa-certificates-preview"></a>Minimale sleutel grootte voor RSA-certificaten beheren (preview-versie)
+Als u RSA-certificaten gebruikt, kunt u een minimale sleutel grootte kiezen die uw certificaten moeten hebben. U kunt één optie selecteren in de onderstaande lijst. 
 - 2048-bits
-- 3072 bits
-- 4096 bits
+- 3072-bits
+- 4096-bits
 
-### <a name="manage-certificates-that-are-within-a-specified-number-of-days-of-expiration-preview"></a>Certificaten beheren die zich binnen een bepaald aantal dagen na het verstrijken bevinden (voorbeeld)
-Uw service kan een storing ondervinden als een certificaat dat niet voldoende wordt gecontroleerd, niet wordt gedraaid voordat het verloopt. Dit beleid is essentieel om ervoor te zorgen dat uw certificaten die zijn opgeslagen in de sleutelkluis worden gecontroleerd. Het wordt aanbevolen dit beleid meerdere keren toe te passen met verschillende vervaldatums, bijvoorbeeld bij drempelwaarden van 180, 90, 60 en 30 dagen. Dit beleid kan worden gebruikt om de vervaldatum van het certificaat in uw organisatie te controleren en te triage. 
+### <a name="manage-certificates-that-are-within-a-specified-number-of-days-of-expiration-preview"></a>Certificaten beheren die binnen een opgegeven aantal dagen verlopen (preview-versie)
+Uw service kan een storing ondervinden als een certificaat dat niet op de juiste manier wordt bewaakt niet wordt gedraaid voordat het verloopt. Dit beleid is essentieel om ervoor te zorgen dat uw certificaten die zijn opgeslagen in de sleutel kluis, worden bewaakt. U wordt aangeraden dit beleid meerdere keren toe te passen met verschillende verval drempel waarden, bijvoorbeeld bij 180, 90, 60 en drempel waarden van 30 dagen. Dit beleid kan worden gebruikt om de verval datum van het certificaat in uw organisatie te controleren en te sorteren. 
 
 ## <a name="example-scenario"></a>Voorbeeldscenario
 
-U beheert een sleutelkluis die wordt gebruikt door meerdere teams die 100 certificaten bevatten, en u wilt ervoor zorgen dat geen van de certificaten in de sleutelkluis langer dan 2 jaar geldig is.
+U beheert een sleutel kluis die wordt gebruikt door meerdere teams met 100-certificaten, en u wilt er zeker van zijn dat geen van de certificaten in de sleutel kluis langer dan twee jaar geldig is.
 
-1. U wijst het beleid voor de [geldigheidsperiode van het certificaat beheren](#manage-certificate-validity-period-preview) toe, geeft op dat de maximale geldigheidsperiode van een certificaat 24 maanden is en stelt het effect van het beleid in op 'audit'. 
-1. U bekijkt het [nalevingsrapport op de Azure-portal](#view-compliance-results)en ontdekt dat 20 certificaten niet-compatibel zijn en > twee jaar geldig zijn en dat de overige certificaten compatibel zijn. 
-1. U neemt contact op met de eigenaren van deze certificaten en deelt de nieuwe beveiligingsvereiste mee dat certificaten niet langer dan 2 jaar geldig mogen zijn. Sommige teams reageren en 15 van de certificaten werden verlengd met een maximale geldigheidsduur van 2 jaar of minder. Andere teams reageren niet en je hebt nog steeds 5 niet-conforme certificaten in je sleutelkluis.
-1. U wijzigt het effect van het beleid dat u hebt toegewezen aan 'weigeren'. De 5 niet-conforme certificaten worden niet ingetrokken en blijven functioneren. Ze kunnen echter niet worden verlengd met een geldigheidsduur van meer dan 2 jaar. 
+1. U wijst het beleid [geldigheids periode beheren](#manage-certificate-validity-period-preview) toe, geeft aan dat de maximale geldigheids periode van een certificaat 24 maanden is en stelt het effect van het beleid in op ' audit '. 
+1. U bekijkt het [nalevings rapport op de Azure Portal](#view-compliance-results)en detecteert dat 20 certificaten niet-compatibel zijn en voor > 2 jaar geldig zijn, en de overige certificaten voldoen aan het beleid. 
+1. U neemt contact op met de eigen aren van deze certificaten en communiceert de nieuwe beveiligings vereiste die certificaten langer dan 2 jaar niet geldig zijn. Sommige teams reageren en 15 van de certificaten zijn vernieuwd met een maximale geldigheids periode van 2 jaar of minder. Andere teams reageren niet en er zijn nog steeds 5 niet-compatibele certificaten in uw sleutel kluis.
+1. U wijzigt het effect van het beleid dat u hebt toegewezen aan "weigeren". De 5 niet-compatibele certificaten worden niet ingetrokken en blijven functioneren. Ze kunnen echter niet worden verlengd met een geldigheids periode die langer is dan 2 jaar. 
 
-## <a name="enabling-and-managing-a-key-vault-policy-through-the-azure-portal"></a>Een Key Vault-beleid inschakelen en beheren via de Azure-portal
+## <a name="enabling-and-managing-a-key-vault-policy-through-the-azure-portal"></a>Het inschakelen en beheren van een Key Vault beleid via de Azure Portal
 
-### <a name="select-a-policy-definition"></a>Een beleidsdefinitie selecteren
+### <a name="select-a-policy-definition"></a>Een beleids definitie selecteren
 
 1. Meld u aan bij Azure Portal. 
-1. Zoek op 'Beleid' in de zoekbalk en **Selecteer beleid**.
+1. Zoek ' beleid ' in de zoek balk en selecteer **beleid**.
 
-    ![Overzicht van hoe Azure Key Vault werkt](../media/policy-img1.png)
+    ![Overzicht van de werking van Azure Key Vault](../media/policy-img1.png)
 
-1. Selecteer **Definities**in het venster Beleid .
+1. Selecteer in het venster beleid de optie **definities**.
 
-    ![Overzicht van hoe Azure Key Vault werkt](../media/policy-img2.png)
+    ![Overzicht van de werking van Azure Key Vault](../media/policy-img2.png)
 
-1. Schakel in het categoriefilter de optie **Alles selecteren** uit en selecteer **Toetskluis**. 
+1. Schakel in het categorie filter het selectie **vakje alles selecteren** uit en selecteer **Key Vault**. 
 
-    ![Overzicht van hoe Azure Key Vault werkt](../media/policy-img3.png)
+    ![Overzicht van de werking van Azure Key Vault](../media/policy-img3.png)
 
-1. Nu moet u alle beleidsregels kunnen zien die beschikbaar zijn voor Openbare proefversie, voor Azure Key Vault. Zorg ervoor dat u de sectie beleidsrichtlijnen hierboven hebt gelezen en begrepen en selecteer een beleid dat u aan een bereik wilt toewijzen.  
+1. Nu moet u alle beleids regels kunnen zien die beschikbaar zijn voor open bare preview, voor Azure Key Vault. Zorg ervoor dat u de sectie beleids richtlijnen hebt gelezen en begrepen en selecteer een beleid dat u aan een bereik wilt toewijzen.  
 
-    ![Overzicht van hoe Azure Key Vault werkt](../media/policy-img4.png)
+    ![Overzicht van de werking van Azure Key Vault](../media/policy-img4.png)
 
 ### <a name="assign-a-policy-to-a-scope"></a>Een beleid toewijzen aan een bereik 
 
-1. Selecteer een beleid dat u wilt toepassen, in dit voorbeeld wordt het beleid voor de **geldigheidsperiode beheren** weergegeven. Klik op de knop Toewijzen in de linkerbovenhoek.
+1. Selecteer een beleid dat u wilt Toep assen. in dit voor beeld wordt het beleid voor de **geldigheids periode van het certificaat beheren** weer gegeven. Klik op de knop toewijzen in de linkerbovenhoek.
 
-    ![Overzicht van hoe Azure Key Vault werkt](../media/policy-img5.png)
+    ![Overzicht van de werking van Azure Key Vault](../media/policy-img5.png)
   
-1. Selecteer het abonnement op de plaats waar u het beleid wilt toepassen. U ervoor kiezen om het bereik te beperken tot slechts één resourcegroep binnen een abonnement. Als u het beleid wilt toepassen op het hele abonnement en bepaalde brongroepen wilt uitsluiten, u ook een uitsluitingslijst configureren. Stel de beleidshandhavingskiezer in op **Ingeschakeld** als u wilt dat het effect van het beleid (controleren of weigeren) optreedt of **Uitgeschakeld** wordt om het effect (controleren of weigeren) uit te schakelen. 
+1. Selecteer het abonnement waarvoor u het beleid wilt Toep assen. U kunt ervoor kiezen om het bereik te beperken tot één resource groep binnen een abonnement. Als u het beleid wilt Toep assen op het hele abonnement en bepaalde resource groepen wilt uitsluiten, kunt u ook een uitsluitings lijst configureren. Stel de selector voor beleids afdwinging in op **ingeschakeld** als u wilt dat het effect van het beleid (controleren of weigeren) plaatsvindt of wordt **uitgeschakeld** om het effect (controleren of weigeren) uit te scha kelen. 
 
-    ![Overzicht van hoe Azure Key Vault werkt](../media/policy-img6.png)
+    ![Overzicht van de werking van Azure Key Vault](../media/policy-img6.png)
 
-1. Klik op het tabblad Parameters boven aan het scherm om de maximale geldigheidsperiode op te geven in de gewenste maanden. Selecteer **audit** of **weigeren** voor het effect van het beleid volgens de richtlijnen in de bovenstaande secties. Selecteer vervolgens de knop Recensie + maken. 
+1. Klik boven aan het scherm op het tabblad para meters om de maximale geldigheids periode op te geven die u wilt instellen. Selecteer **controleren** of **weigeren** voor het effect van het beleid volgens de richt lijnen in de bovenstaande secties. Selecteer vervolgens de knop beoordeling + maken. 
 
-    ![Overzicht van hoe Azure Key Vault werkt](../media/policy-img7.png)
+    ![Overzicht van de werking van Azure Key Vault](../media/policy-img7.png)
 
-### <a name="view-compliance-results"></a>Nalevingsresultaten weergeven
+### <a name="view-compliance-results"></a>Nalevings resultaten weer geven
 
-1. Ga terug naar het blad Beleid en selecteer het tabblad naleving. Klik op de beleidstoewijzing waarvoor u nalevingsresultaten wilt weergeven.
+1. Ga terug naar de Blade beleid en selecteer het tabblad naleving. Klik op de beleids toewijzing waarvan u de nalevings resultaten wilt weer geven.
 
-    ![Overzicht van hoe Azure Key Vault werkt](../media/policy-img8.png)
+    ![Overzicht van de werking van Azure Key Vault](../media/policy-img8.png)
 
-1. Vanaf deze pagina u resultaten filteren op compatibele of niet-conforme kluizen. Hier ziet u een lijst met niet-conforme sleutelkluizen binnen het bereik van de beleidstoewijzing. Een kluis wordt als niet-compatibel beschouwd als een van de onderdelen (certificaten) in de kluis niet-compatibel is. U een afzonderlijke kluis selecteren om de afzonderlijke niet-compatibele componenten (certificaten) weer te geven. 
-
-
-    ![Overzicht van hoe Azure Key Vault werkt](../media/policy-img9.png)
-
-1. De naam weergeven van de onderdelen in een kluis die niet voldoen
+1. Op deze pagina kunt u de resultaten filteren op compatibele of niet-compatibele kluizen. Hier vindt u een lijst met niet-compatibele sleutel kluizen binnen het bereik van de beleids toewijzing. Een kluis wordt als niet-compatibel beschouwd als een van de onderdelen (certificaten) in de kluis niet compatibel is. U kunt een afzonderlijke kluis selecteren om de afzonderlijke niet-compatibele onderdelen (certificaten) weer te geven. 
 
 
-    ![Overzicht van hoe Azure Key Vault werkt](../media/policy-img10.png)
+    ![Overzicht van de werking van Azure Key Vault](../media/policy-img9.png)
 
-1. Als u wilt controleren of gebruikers de mogelijkheid worden ontzegd om resources te maken in de sleutelkluis, u op het tabblad **Componentgebeurtenissen (voorbeeld)** klikken om een overzicht van geweigerde certificaatbewerkingen te bekijken met de aanvrager en tijdstempels van aanvragen. 
+1. De naam van de onderdelen in een kluis weer geven die niet-compatibel zijn
 
 
-    ![Overzicht van hoe Azure Key Vault werkt](../media/policy-img11.png)
+    ![Overzicht van de werking van Azure Key Vault](../media/policy-img10.png)
 
-## <a name="feature-limitations"></a>Functiebeperkingen
+1. Als u wilt controleren of gebruikers de mogelijkheid hebben om resources te maken in de sleutel kluis, klikt u op het tabblad **gebeurtenissen (voor beeld)** om een samen vatting van geweigerde certificaat bewerkingen met de aanvrager en tijds tempels van aanvragen weer te geven. 
 
-Het toewijzen van een beleid met een "ontkennen" effect kan tot 30 minuten (gemiddelde case) en 1 uur (worst case) duren om te beginnen met het ontkennen van de creatie van niet-conforme resources. De beleidsevaluatie van bestaande onderdelen in een kluis kan tot 1 uur (gemiddelde aanvraag) en 2 uur (in het ergste geval) duren voordat nalevingsresultaten zichtbaar zijn in de gebruikersinterface van de portal. Als de nalevingsresultaten worden weergegeven als 'Niet gestart' kan dit te wijten zijn aan de volgende redenen:
-- De beleidswaardering is nog niet voltooid. De initiële evaluatielatentie kan in het ergste geval tot 2 uur duren. 
-- Er zijn geen sleutelkluizen in het bereik van de beleidstoewijzing.
-- Er zijn geen sleutelkluizen met certificaten binnen het bereik van de beleidstoewijzing. 
+
+    ![Overzicht van de werking van Azure Key Vault](../media/policy-img11.png)
+
+## <a name="feature-limitations"></a>Functie beperkingen
+
+Het toewijzen van een beleid met een ' deny '-effect kan Maxi maal 30 minuten duren (gemiddeld hoofdletter gebruik) en 1 uur (slechtste) als u het maken van niet-compatibele resources wilt weigeren. De beleids evaluatie van bestaande onderdelen in een kluis kan Maxi maal 1 uur duren (gemiddeld aantal minuten) en 2 uur (slechtste) voordat de compatibiliteits resultaten zichtbaar zijn in de portal-gebruikers interface. Als de resultaten van de naleving als ' niet gestart ' worden weer gegeven, kan dit de volgende oorzaken hebben:
+- De beleids waardering is nog niet voltooid. De eerste evaluatie latentie kan Maxi maal twee uur duren in het slechtste scenario. 
+- Er zijn geen sleutel kluizen binnen het bereik van de beleids toewijzing.
+- Er zijn geen sleutel kluizen met certificaten binnen het bereik van de beleids toewijzing. 
 
 ## <a name="next-steps"></a>Volgende stappen
 
 - Meer informatie over de [Azure Policy-service](../../governance/policy/overview.md)
-- Zie Key Vault-voorbeelden: [ingebouwde beleidsdefinities van key vault](../../governance/policy/samples/built-in-policies.md#key-vault)
+- Zie Key Vault [-voor beelden: Key Vault ingebouwde beleids definities](../../governance/policy/samples/built-in-policies.md#key-vault)

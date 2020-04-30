@@ -1,5 +1,5 @@
 ---
-title: Snel start verbinding maken en query's
+title: Quick starts voor verbinding en Query's
 description: In deze snelstartgidsen voor Azure SQL Database wordt beschreven hoe u verbinding maakt met een Azure SQL-database en vervolgens een query uitvoert.
 services: sql-database
 ms.service: sql-database
@@ -12,13 +12,13 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 12/18/2018
 ms.openlocfilehash: 05ba54c10cc693f81115f364d7a400e2275a3875
-ms.sourcegitcommit: c5661c5cab5f6f13b19ce5203ac2159883b30c0e
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/01/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80528236"
 ---
-# <a name="quickstarts-azure-sql-database-connect-and-query"></a>Snelstarts: Verbinding maken en query's in Azure SQL Database
+# <a name="quickstarts-azure-sql-database-connect-and-query"></a>Quick starts: Azure SQL Database verbinding maken en query's uitvoeren
 
 Het volgende document bevat koppelingen naar voorbeelden van Azure die laten zien hoe u verbinding maakt met een Azure SQL-database en vervolgens een query uitvoert. Het bevat ook enkele aanbevelingen voor Transport Layer Security.
 
@@ -31,14 +31,14 @@ Het volgende document bevat koppelingen naar voorbeelden van Azure die laten zie
 |[Azure Portal](sql-database-connect-query-portal.md)|In deze quickstart ziet u hoe u de queryeditor gebruikt om verbinding te maken met een SQL-database en vervolgens Transact-SQL-instructies gebruikt om gegevens in de database te zoeken, in te voegen, bij te werken en te verwijderen.|
 |[Visual Studio Code](sql-database-connect-query-vscode.md)|In deze Quick Start ziet u hoe u Visual Studio Code gebruikt om verbinding te maken met een Azure SQL-database en vervolgens Transact-SQL-instructies gebruikt om gegevens in de database te zoeken, in te voegen, bij te werken en te verwijderen.|
 |[.NET met Visual Studio](sql-database-connect-query-dotnet-visual-studio.md)|In deze snelstart wordt gedemonstreerd hoe u .NET Framework gebruikt om een C#-programma te maken met Visual Studio dat verbinding maakt met een Azure SQL-database, en hoe u Transact-SQL-instructies gebruikt om gegevens te doorzoeken.|
-|[.NET-kern](sql-database-connect-query-dotnet-core.md)|In deze snelstart wordt gedemonstreerd hoe u .NET Core gebruikt in Windows/Linux/macOS om een C#-programma te maken dat verbinding maakt met een Azure SQL-database, en hoe u Transact-SQL-instructies gebruikt om een query uit te voeren voor de gegevens.|
+|[.NET core](sql-database-connect-query-dotnet-core.md)|In deze snelstart wordt gedemonstreerd hoe u .NET Core gebruikt in Windows/Linux/macOS om een C#-programma te maken dat verbinding maakt met een Azure SQL-database, en hoe u Transact-SQL-instructies gebruikt om een query uit te voeren voor de gegevens.|
 |[OK](sql-database-connect-query-go.md)|In deze snelstart ziet u hoe u Go kunt gebruiken om verbinding te maken met een Azure SQL-database. Bovendien worden er Transact-SQL-instructies voor het doorzoeken en wijzigen van gegevens beschreven.|
 |[Java](sql-database-connect-query-java.md)|In deze snelstart wordt gedemonstreerd hoe u Java gebruikt om verbinding te maken met een Azure SQL-database, en hoe u vervolgens Transact-SQL-instructies gebruikt om een query uit te voeren voor gegevens.|
 |[Node.js](sql-database-connect-query-nodejs.md)|In deze snelstart wordt gedemonstreerd hoe u Node.js gebruikt om een programma te maken dat verbinding maakt met een Azure SQL-database, en hoe u Transact-SQL-instructies gebruikt om een query uit te voeren voor gegevens.|
 |[PHP](sql-database-connect-query-php.md)|In deze snelstart wordt gedemonstreerd hoe u PHP gebruikt om een programma te maken dat verbinding maakt met een Azure SQL-database, en hoe u Transact-SQL-instructies gebruikt om gegevens te doorzoeken.|
 |[Python](sql-database-connect-query-python.md)|In deze snelstart wordt gedemonstreerd hoe u Python gebruikt om verbinding te maken met een Azure SQL-database, en hoe u Transact-SQL-instructies gebruikt om een query uit te voeren voor de gegevens. |
 |[Ruby](sql-database-connect-query-ruby.md)|In deze snelstart wordt gedemonstreerd hoe u Ruby gebruikt om een programma te maken dat verbinding maakt met een Azure SQL-database, en hoe u Transact-SQL-instructies gebruikt om gegevens te doorzoeken.|
-|[R](sql-database-connect-query-r.md)|Deze quickstart laat zien hoe u R gebruiken met Azure SQL Database Machine Learning Services om een programma te maken om verbinding te maken met een Azure SQL-database en Transact-SQL-instructies te gebruiken om gegevens op te vragen.|
+|[R](sql-database-connect-query-r.md)|In deze Snelstartgids ziet u hoe u met behulp van R met Azure SQL Database Machine Learning Services een programma maakt om verbinding te maken met een Azure-SQL database en hoe u Transact-SQL-instructies gebruikt om gegevens op te vragen.|
 |||
 
 ## <a name="tls-considerations-for-sql-database-connectivity"></a>TLS-overwegingen voor de connectiviteit van SQL Database
@@ -66,7 +66,7 @@ De volgende tabel bevat connectiviteitsbibliotheken of *stuurprogramma's* die cl
 | PHP | Windows, Linux, macOS| [PHP SQL-stuurprogramma voor SQL Server](https://docs.microsoft.com/sql/connect/php/microsoft-php-driver-for-sql-server) | [Downloaden](https://docs.microsoft.com/sql/connect/php/download-drivers-php-sql-server) | [Aan de slag](https://www.microsoft.com/sql-server/developer-get-started/php/ubuntu/)
 | Node.js | Windows, Linux, macOS | [Node.js-stuurprogramma voor SQL Server](https://msdn.microsoft.com/library/mt652093.aspx) | [Installeren](https://msdn.microsoft.com/library/mt652094.aspx) |  [Aan de slag](https://www.microsoft.com/sql-server/developer-get-started/node/ubuntu)
 | Python | Windows, Linux, macOS | [Python SQL-stuurprogramma](https://msdn.microsoft.com/library/mt652092.aspx) | Installatieopties: <br/> \* [pymssql](https://msdn.microsoft.com/library/mt694094.aspx) <br/> \* [pyodbc](https://msdn.microsoft.com/library/mt763257.aspx) |  [Aan de slag](https://www.microsoft.com/sql-server/developer-get-started/python/ubuntu)
-| Ruby | Windows, Linux, macOS | [Robijnstuurprogramma voor SQL Server](https://msdn.microsoft.com/library/mt691981.aspx) | [Installeren](https://msdn.microsoft.com/library/mt711041.aspx) | [Aan de slag](https://www.microsoft.com/sql-server/developer-get-started/ruby/ubuntu)
+| Ruby | Windows, Linux, macOS | [Ruby-stuur programma voor SQL Server](https://msdn.microsoft.com/library/mt691981.aspx) | [Installeren](https://msdn.microsoft.com/library/mt711041.aspx) | [Aan de slag](https://www.microsoft.com/sql-server/developer-get-started/ruby/ubuntu)
 | C++ | Windows, Linux, macOS | [Microsoft ODBC-stuurprogramma voor SQL Server](https://msdn.microsoft.com/library/mt654048(v=sql.1).aspx) | [Downloaden](https://msdn.microsoft.com/library/mt654048(v=sql.1).aspx) |  
 
 De volgende tabel bevat voorbeelden van ORM-frameworks (Object-Relational Mapping) en webframeworks die clienttoepassingen kunnen gebruiken met SQL Server on-premises of in de cloud. U kunt de frameworks gebruiken in Linux, Windows of Docker en om verbinding te maken met SQL Database en SQL Data Warehouse. 

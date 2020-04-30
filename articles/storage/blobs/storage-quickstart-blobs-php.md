@@ -8,10 +8,10 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
 ms.openlocfilehash: 0453d7465479fb1410d1436cc3fa53914633ece5
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "68726396"
 ---
 #  <a name="transfer-objects-tofrom-azure-blob-storage-using-php"></a>Objecten overdragen naar/van Azure Blob-opslag met PHP
@@ -23,7 +23,7 @@ In deze snelstart leert u hoe u PHP kunt gebruiken om blok-bobs te uploaden, te 
 
 Zorg dat u de volgende aanvullende vereisten hebt geïnstalleerd:
 
-* [Php](https://php.net/downloads.php)
+* [PHP](https://php.net/downloads.php)
 * [Azure Storage SDK voor PHP](https://github.com/Azure/azure-storage-php)
 
 ## <a name="download-the-sample-application"></a>De voorbeeldtoepassing downloaden
@@ -207,7 +207,7 @@ Zie de volgende aanvullende bronnen voor PHP-ontwikkeling met Blob-opslag:
 In deze snelstart hebt u geleerd hoe u bestanden overbrengt tussen een lokale schijf en Azure Blob-opslag met behulp van PHP. Ga naar ons PHP-ontwikkelaarscentrum voor meer informatie over werken met PHP.
 
 > [!div class="nextstepaction"]
-> [PHP-ontwikkelaarscentrum](https://azure.microsoft.com/develop/php/)
+> [PHP-ontwikkelaars centrum](https://azure.microsoft.com/develop/php/)
 
 
 Zie [Azure Blob-opslagresources beheren met Storage Explorer](../../vs-azure-tools-storage-explorer-blobs.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) voor meer informatie over Storage Explorer en blobs.

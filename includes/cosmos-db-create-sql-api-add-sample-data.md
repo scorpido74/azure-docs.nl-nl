@@ -9,15 +9,15 @@ ms.date: 08/07/2019
 ms.author: sngun
 ms.custom: include file
 ms.openlocfilehash: f80efbac256871af073354f23317c447d6a85f1e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "70020177"
 ---
-U nu gegevens toevoegen aan uw nieuwe container met Behulp van Data Explorer.
+U kunt nu gegevens aan uw nieuwe container toevoegen met behulp van Data Explorer.
 
-1. Vouw in de **gegevensverkenner**de database **Taken** uit en vouw de container **Items** uit. Selecteer **Objecten**en selecteer vervolgens **Nieuw object**.
+1. Vouw vanuit het **Data Explorer**de Data Base **taken** uit, vouw de container **items** uit. Selecteer **items**en selecteer vervolgens **Nieuw item**.
 
    ![Nieuwe documenten maken in Data Explorer in Azure Portal](./media/cosmos-db-create-sql-api-add-sample-data/azure-cosmosdb-data-explorer-new-document.png)
   
@@ -33,8 +33,8 @@ U nu gegevens toevoegen aan uw nieuwe container met Behulp van Data Explorer.
      }
      ```
 
-3. Nadat u de json aan het tabblad **Documenten** hebt toegevoegd, selecteert u **Opslaan**.
+3. Wanneer u de JSON hebt toegevoegd aan het tabblad **documenten** , selecteert u **Opslaan**.
 
-    ![Kopiëren in json-gegevens en selecteer Opslaan in Gegevensverkenner in de Azure-portal](./media/cosmos-db-create-sql-api-add-sample-data/azure-cosmosdb-data-explorer-save-document.png)
+    ![Kopieer in JSON-gegevens en selecteer Opslaan in Data Explorer in het Azure Portal](./media/cosmos-db-create-sql-api-add-sample-data/azure-cosmosdb-data-explorer-save-document.png)
 
 4.  Maak nog één document en sla dit op. In het document voegt u een unieke waarde toe voor de eigenschap `id`. Wijzig de andere eigenschappen naar eigen inzicht. De nieuwe documenten kunnen elke gewenste structuur hebben, omdat in Azure Cosmos DB uw gegevens geen schema krijgen opgelegd.

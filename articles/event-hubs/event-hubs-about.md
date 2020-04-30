@@ -11,10 +11,10 @@ ms.custom: seodec18
 ms.date: 12/06/2018
 ms.author: shvija
 ms.openlocfilehash: 45276ab59f1a3dabea42b904ff54bd37326fdeca
-ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/30/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80398112"
 ---
 # <a name="azure-event-hubs--a-big-data-streaming-platform-and-event-ingestion-service"></a>Azure Event Hubs — Een streamingplatform en service voor het opnemen van big data
@@ -61,7 +61,7 @@ Met Event Hubs kunt u beginnen met gegevensstromen van megabytes en uitgroeien t
 
 Met [Event Hubs voor Apache Kafka-ecosystemen](event-hubs-for-kafka-ecosystem-overview.md) kunnen [Apache Kafka](https://kafka.apache.org/)-clients (1.0 en later) en -toepassingen communiceren met Event Hubs. U hoeft niet uw eigen Apache Kafka-clusters in te stellen, te configureren of te beheren.
 
-Met een breed ecosysteem beschikbaar in verschillende talen [.NET](https://github.com/Azure/azure-sdk-for-net/), [Java](https://github.com/Azure/azure-sdk-for-java/), [Python](https://github.com/Azure/azure-sdk-for-python/), [JavaScript,](https://github.com/Azure/azure-sdk-for-js/)u eenvoudig beginnen met het verwerken van uw streams vanuit Event Hubs. Alle ondersteunde clienttalen bieden integratie op laag niveau. Het ecosysteem biedt u ook naadloze integratie met Azure-services zoals Azure Stream Analytics en Azure Functions, zodat u dus serverloze architecturen kunt bouwen.
+Met een breed ecosysteem dat beschikbaar is in verschillende talen [.net](https://github.com/Azure/azure-sdk-for-net/), [Java](https://github.com/Azure/azure-sdk-for-java/), [python](https://github.com/Azure/azure-sdk-for-python/), [Java script](https://github.com/Azure/azure-sdk-for-js/), kunt u eenvoudig uw stromen van Event hubs verwerken. Alle ondersteunde clienttalen bieden integratie op laag niveau. Het ecosysteem biedt u ook naadloze integratie met Azure-services zoals Azure Stream Analytics en Azure Functions, zodat u dus serverloze architecturen kunt bouwen.
 
 ## <a name="key-architecture-components"></a>Belangrijkste onderdelen van de architectuur
 Event Hubs bevat de volgende [belangrijke onderdelen](event-hubs-features.md):
@@ -76,17 +76,17 @@ In de volgende afbeelding ziet u de architectuur voor de verwerking van stromen 
 
 ![Event Hubs](./media/event-hubs-about/event_hubs_architecture.png)
 
-## <a name="event-hubs-on-azure-stack-hub"></a>Gebeurtenishubs op Azure Stack Hub
-Met Gebeurtenishubs op Azure Stack Hub u hybride cloudscenario's realiseren. Streaming- en eventgebaseerde oplossingen worden ondersteund, zowel voor on-premises als azure-cloudverwerking. Of uw scenario nu hybride is (verbonden) of losgekoppeld is, uw oplossing kan de verwerking van gebeurtenissen/streams op grote schaal ondersteunen. Uw scenario is alleen gebonden aan de clustergrootte van gebeurtenishubs, die u inrichten op basis van uw behoeften. 
+## <a name="event-hubs-on-azure-stack-hub"></a>Event Hubs op Azure Stack hub
+Met Event Hubs op Azure Stack hub kunt u hybride Cloud scenario's realiseren. Streaming en oplossingen op basis van gebeurtenissen worden ondersteund voor zowel on-premises als Azure-Cloud verwerking. Of uw scenario hybride (verbonden) is, of dat de verbinding is verbroken, uw oplossing kan de verwerking van gebeurtenissen/stromen op grote schaal ondersteunen. Uw scenario is alleen gebonden aan de Event Hubs cluster grootte, die u op basis van uw behoeften kunt inrichten. 
 
-De Event Hubs-edities (op Azure Stack Hub en op Azure) bieden een hoge mate van functiepariteit. Deze pariteit betekent Dat SDKs, samples, PowerShell, CLI en portals een vergelijkbare ervaring bieden, met weinig verschillen. 
+De Event Hubs-edities (op Azure Stack hub en op Azure) bieden een hoge mate van functie pariteit. Deze pariteit betekent dat Sdk's, voor beelden, Power shell, CLI en portals een vergelijk bare ervaring bieden, met enkele verschillen. 
 
-Event Hubs on Stack is gratis tijdens de openbare preview. Zie [Gebeurtenishubs in het overzicht van Azure Stack Hub](https://docs.microsoft.com/azure-stack/user/event-hubs-overview)voor meer informatie.
+Event Hubs op stack is gratis tijdens de open bare preview. Zie [Event hubs op Azure stack hub Overview](https://docs.microsoft.com/azure-stack/user/event-hubs-overview)(Engelstalig) voor meer informatie.
 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie de **zelfstudies voor gebeurtenishubs verzenden en ontvangen** om aan de slag te gaan met Gebeurtenishubs:
+Om aan de slag te gaan met Event Hubs, raadpleegt u de zelf studies voor het **verzenden en ontvangen van gebeurtenissen** :
 
 - [.NET Core](get-started-dotnet-standard-send-v2.md)
 - [Java](get-started-java-send-v2.md)
@@ -100,6 +100,6 @@ Zie de **zelfstudies voor gebeurtenishubs verzenden en ontvangen** om aan de sla
 Raadpleeg de volgende artikelen voor meer informatie over Event Hubs:
 
 - [Overzicht van functies van Event Hubs](event-hubs-features.md)
-- [Veelgestelde vragen.](event-hubs-faq.md)
+- [Veelgestelde vragen](event-hubs-faq.md).
 
 

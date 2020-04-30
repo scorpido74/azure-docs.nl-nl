@@ -1,6 +1,6 @@
 ---
-title: 'Snelstart: een gebeurtenishub maken met consumentengroep - Azure Event Hubs'
-description: 'Snelstart: een naamruimte voor gebeurtenishubs maken met een gebeurtenishub en een consumentengroep met Azure Resource Manager-sjablonen'
+title: 'Snelstartgids: een Event Hub maken met een consumenten groep-Azure Event Hubs'
+description: 'Snelstartgids: een Event Hubs naam ruimte met een Event Hub en een consument groep maken met behulp van Azure Resource Manager sjablonen'
 services: event-hubs
 documentationcenter: .net
 author: spelluru
@@ -15,19 +15,19 @@ ms.date: 02/11/2020
 ms.author: spelluru
 ms.custom: subject-armqs
 ms.openlocfilehash: c2221fe5b5ab38afbdde167e5bcbf6b47ed4f861
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "79528078"
 ---
-# <a name="quickstart-create-an-event-hub-by-using-an-azure-resource-manager-template"></a>Snelstart: een gebeurtenishub maken met behulp van een Azure Resource Manager-sjabloon
+# <a name="quickstart-create-an-event-hub-by-using-an-azure-resource-manager-template"></a>Snelstartgids: een Event Hub maken met behulp van een Azure Resource Manager sjabloon
 
-Azure Event Hubs is een big data-platform voor het streamen van gegevens en een gebeurtenisopneemservice die miljoenen gebeurtenissen per seconde kan opnemen en verwerken. Event Hubs kan gebeurtenissen, gegevens of telemetrie die wordt geproduceerd door gedistribueerde software en apparaten verwerken en opslaan. Gegevens die naar een Event Hub worden verzonden, kunnen worden omgezet en opgeslagen via een provider voor realtime analytische gegevens of batchverwerking/opslagadapters. Zie [Overzicht van Event Hubs](event-hubs-about.md) en [Functies van Event Hubs](event-hubs-features.md) voor een gedetailleerd overzicht van Event Hubs. In deze quickstart maakt u een gebeurtenishub met behulp van een [Azure Resource Manager-sjabloon](../azure-resource-manager/management/overview.md). U implementeert een Azure Resource Manager-sjabloon om een naamruimte van het type [Gebeurtenishubs](event-hubs-what-is-event-hubs.md)te maken met één gebeurtenishub.
+Azure Event Hubs is een big data-platform voor het streamen van gegevens en een gebeurtenisopneemservice die miljoenen gebeurtenissen per seconde kan opnemen en verwerken. Event Hubs kan gebeurtenissen, gegevens of telemetrie die wordt geproduceerd door gedistribueerde software en apparaten verwerken en opslaan. Gegevens die naar een Event Hub worden verzonden, kunnen worden omgezet en opgeslagen via een provider voor realtime analytische gegevens of batchverwerking/opslagadapters. Zie [Overzicht van Event Hubs](event-hubs-about.md) en [Functies van Event Hubs](event-hubs-features.md) voor een gedetailleerd overzicht van Event Hubs. In deze Quick Start maakt u een Event Hub met behulp van een [Azure Resource Manager sjabloon](../azure-resource-manager/management/overview.md). U implementeert een Azure Resource Manager sjabloon om een naam ruimte van het type [Event hubs](event-hubs-what-is-event-hubs.md)te maken met één event hub.
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
-Als u geen Azure-abonnement hebt, [maakt u een gratis account](https://azure.microsoft.com/free/) voordat u begint.
+Als u nog geen abonnement op Azure hebt, [Maak dan een gratis account](https://azure.microsoft.com/free/) aan voordat u begint.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -35,24 +35,24 @@ Geen.
 
 ## <a name="create-an-event-hub"></a>Een Event Hub maken
 
-### <a name="review-the-template"></a>De sjabloon bekijken
+### <a name="review-the-template"></a>De sjabloon controleren
 
-De sjabloon die in deze quickstart wordt gebruikt, is afkomstig van [Azure Quickstart-sjablonen.](https://azure.microsoft.com/resources/templates/101-eventhubs-create-namespace-and-eventhub/)
+De sjabloon die in deze Quick Start wordt gebruikt, is afkomstig uit [Azure Quick](https://azure.microsoft.com/resources/templates/101-eventhubs-create-namespace-and-eventhub/)start-sjablonen.
 
 :::code language="json" source="~/quickstart-templates/101-eventhubs-create-namespace-and-eventhub/azuredeploy.json" range="1-61" highlight="32-59":::
 
-De resources die in de sjabloon zijn gedefinieerd, zijn:
+De resources die in de sjabloon zijn gedefinieerd, zijn onder andere:
 
-- [**Microsoft.EventHub/naamruimten**](/azure/templates/microsoft.eventhub/namespaces)
-- [**Microsoft.EventHub/naamruimten/eventhubs**](/azure/templates/microsoft.eventhub/namespaces/eventhubs)
+- [**Micro soft. EventHub/naam ruimten**](/azure/templates/microsoft.eventhub/namespaces)
+- [**Micro soft. EventHub/naam ruimten/Event hubs**](/azure/templates/microsoft.eventhub/namespaces/eventhubs)
 
-Zie [Azure Quickstart-sjablonen](https://azure.microsoft.com/resources/templates/?term=eventhub&pageNumber=1&sort=Popular)voor meer sjabloonvoorbeelden .
+Zie [Azure Quick](https://azure.microsoft.com/resources/templates/?term=eventhub&pageNumber=1&sort=Popular)start-sjablonen voor meer voor beelden van sjablonen.
 
 ### <a name="deploy-the-template"></a>De sjabloon implementeren
 
-Ga als u de sjabloon inzet:
+De sjabloon implementeren:
 
-1. Selecteer **Probeer het** in het volgende codeblok en volg de instructies om u aan te melden bij de Azure Cloud Shell.
+1. Selecteer **Probeer het** uit het volgende code blok en volg de instructies om u aan te melden bij de Azure Cloud shell.
 
    ```azurepowershell-interactive
    $projectName = Read-Host -Prompt "Enter a project name that is used for generating resource names"
@@ -66,14 +66,14 @@ Ga als u de sjabloon inzet:
    Write-Host "Press [ENTER] to continue ..."
    ```
 
-   Het duurt even om een gebeurtenishub te maken.
+   Het duurt enkele minuten om een Event Hub te maken.
 
 1. Selecteer **Kopiëren** om het PowerShell-script te kopiëren.
-1. Klik met de rechtermuisknop op de shell console en selecteer **Plakken**.
+1. Klik met de rechter muisknop op de shell-console en selecteer vervolgens **Plakken**.
 
 ## <a name="verify-the-deployment"></a>De implementatie controleren
 
-Als u de implementatie wilt verifiëren, u de brongroep openen vanuit de [Azure-portal](https://portal.azure.com)of het volgende Azure PowerShell-script gebruiken.  Als de Cloud Shell nog steeds open is, hoeft u de eerste regel (Read-Host) niet te kopiëren/uitvoeren.
+Als u de implementatie wilt controleren, kunt u de resource groep openen vanuit het [Azure Portal](https://portal.azure.com)of het volgende Azure PowerShell script gebruiken.  Als de Cloud Shell nog steeds is geopend, hoeft u de eerste regel niet te kopiëren/uit te voeren (Read-host).
 
 ```azurepowershell-interactive
 $projectName = Read-Host -Prompt "Enter the same project name that you used in the last procedure"
@@ -87,7 +87,7 @@ Write-Host "Press [ENTER] to continue ..."
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
-Schoon de geïmplementeerd Azure-resources, wanneer u deze niet meer nodig hebt, op door de resourcegroep te verwijderen. Als de Cloud Shell nog steeds open is, hoeft u de eerste regel (Read-Host) niet te kopiëren/uitvoeren.
+Schoon de geïmplementeerd Azure-resources, wanneer u deze niet meer nodig hebt, op door de resourcegroep te verwijderen. Als de Cloud Shell nog steeds is geopend, hoeft u de eerste regel niet te kopiëren/uit te voeren (Read-host).
 
 ```azurepowershell-interactive
 $projectName = Read-Host -Prompt "Enter the same project name that you used in the last procedure"
@@ -100,7 +100,7 @@ Write-Host "Press [ENTER] to continue ..."
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In dit artikel hebt u een naamruimte voor gebeurtenishubs en een gebeurtenishub in de naamruimte gemaakt. Zie de zelfstudies voor het verzenden en ontvangen van evenementen voor stapsgewijze instructies om gebeurtenissen naar (of) ontvangen van gebeurtenissen van een gebeurtenishub **te verzenden en te ontvangen:**
+In dit artikel hebt u een Event Hubs naam ruimte gemaakt en een Event Hub in de naam ruimte. Voor stapsgewijze instructies voor het verzenden van gebeurtenissen naar (of) het ontvangen van gebeurtenissen van een Event Hub, raadpleegt u de zelf studies voor het **verzenden en ontvangen van gebeurtenissen** :
 
 - [.NET Core](get-started-dotnet-standard-send-v2.md)
 - [Java](get-started-java-send-v2.md)

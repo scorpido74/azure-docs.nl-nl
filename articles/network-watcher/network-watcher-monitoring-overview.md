@@ -15,15 +15,15 @@ ms.date: 04/24/2018
 ms.author: damendo
 ms.custom: mvc
 ms.openlocfilehash: 81621a2b63eec804aaa7c74e1d77b06ef1adb79a
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "76844986"
 ---
 # <a name="what-is-azure-network-watcher"></a>Wat is Azure Network Watcher?
 
-Azure Network Watcher biedt hulpprogramma's voor het controleren, diagnosticeren en weergeven van metrische gegevens en het in- of uitschakelen van logboekregistratie voor resources in een virtueel Azure-netwerk. Network Watcher is ontworpen om de netwerkstatus van IaaS -producten (Infrastructure-as-a-Service) te bewaken en te herstellen, waaronder virtuele machines, virtuele netwerken, application gateways, load balancers, enz. Opmerking: het is niet bedoeld voor en werkt niet voor PaaS-monitoring of webanalyses. 
+Azure Network Watcher biedt hulpprogramma's voor het controleren, diagnosticeren en weergeven van metrische gegevens en het in- of uitschakelen van logboekregistratie voor resources in een virtueel Azure-netwerk. Network Watcher is ontworpen om de netwerk status van IaaS-producten (Infrastructure-as-a-Service) te controleren en te herstellen, waaronder Virtual Machines, virtuele netwerken, toepassings gateways, load balancers, enzovoort. Opmerking: het is niet bedoeld voor en werkt niet voor PaaS-bewaking of Web Analytics. 
 
 ## <a name="monitoring"></a>Bewaking
 

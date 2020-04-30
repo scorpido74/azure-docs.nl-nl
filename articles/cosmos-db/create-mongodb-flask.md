@@ -1,5 +1,5 @@
 ---
-title: Een Python Flask-web-app bouwen met api van Azure Cosmos DB voor MongoDB
+title: Bouw een python-fles-web-app met de API van Azure Cosmos DB voor MongoDB
 description: Biedt een voorbeeld van Python Flask-code dat u kunt gebruiken om verbinding te maken met de Azure Cosmos DB-API's voor MongoDB en er query's op uit te voeren.
 author: markjbrown
 ms.author: mjbrown
@@ -9,13 +9,13 @@ ms.devlang: python
 ms.topic: quickstart
 ms.date: 12/26/2018
 ms.openlocfilehash: 43f4cf7e4008aa01a26c48a8e99f7465eeeb234b
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "77061740"
 ---
-# <a name="quickstart-build-a-python-app-using-azure-cosmos-dbs-api-for-mongodb"></a>Snelstart: een Python-app bouwen met de API van Azure Cosmos DB voor MongoDB
+# <a name="quickstart-build-a-python-app-using-azure-cosmos-dbs-api-for-mongodb"></a>Snelstartgids: een python-app bouwen met de API van Azure Cosmos DB voor MongoDB
 
 > [!div class="op_single_selector"]
 > * [.NET](create-mongodb-dotnet.md)
@@ -26,13 +26,13 @@ ms.locfileid: "77061740"
 > * [Golang](create-mongodb-golang.md)
 >  
 
-In deze quickstart gebruikt u een Azure Cosmos DB voor Mongo DB API-account of de Azure Cosmos DB Emulator om een Python Flask To-Do web-app uit te voeren die is gekloond vanuit GitHub. Azure Cosmos DB is een databaseservice met meerdere modellen waarmee u snel document-, tabel-, sleutelwaarde- en grafiekdatabases maken en opvragen met globale distributie- en horizontale schaalmogelijkheden.
+In deze Quick Start gebruikt u een Azure Cosmos DB voor Mongo DB API-account of de Azure Cosmos DB-emulator om een python-taak-web-app te klonen die is gekloond van GitHub. Azure Cosmos DB is een database service met meerdere modellen waarmee u snel documenten, tabellen, sleutel waarden en grafische data bases met globale distributie en mogelijkheden voor horizontale schaal kunt maken en er query's op uitvoert.
 
 ## <a name="prerequisites"></a>Vereisten
 
-- Een Azure-account met een actief abonnement. [Maak er gratis een.](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) Of [probeer Azure Cosmos DB gratis](https://azure.microsoft.com/try/cosmosdb/) zonder Azure-abonnement. U ook de [Azure Cosmos DB Emulator](local-emulator.md)gebruiken. 
+- Een Azure-account met een actief abonnement. [Maak er gratis een](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio). Of [Probeer gratis Azure Cosmos DB](https://azure.microsoft.com/try/cosmosdb/) zonder een Azure-abonnement. U kunt ook de Azure Cosmos DB- [emulator](local-emulator.md)gebruiken. 
 - [Python 3.6+](https://www.python.org/downloads/)
-- [Visual Studio Code](https://code.visualstudio.com/Download) met de [Python-extensie](https://marketplace.visualstudio.com/items?itemName=donjayamanne.python).
+- [Visual Studio code](https://code.visualstudio.com/Download) met de [python-extensie](https://marketplace.visualstudio.com/items?itemName=donjayamanne.python).
 
 ## <a name="clone-the-sample-application"></a>De voorbeeldtoepassing klonen
 
@@ -66,7 +66,7 @@ We gaan nu een Flask MongoDB-app klonen vanaf GitHub, de verbindingsreeks instel
 
 Deze stap is optioneel. Als u wilt weten hoe de databaseresources in de code worden gemaakt, kunt u de volgende codefragmenten bekijken. Sla dit anders over en ga naar [De web-app uitvoeren](#run-the-web-app). 
 
-De volgende fragmenten zijn allemaal afkomstig uit het *app.py-bestand* en maakt gebruik van de verbindingstekenreeks voor de lokale Azure Cosmos DB Emulator. Het wachtwoord moet worden opgesplitst, zoals hieronder wordt weergegeven, omdat de slashes anders niet kunnen worden geparseerd.
+De volgende code fragmenten zijn allemaal afkomstig uit het *app.py* -bestand en gebruiken de Connection String voor de lokale Azure Cosmos DB-emulator. Het wachtwoord moet worden opgesplitst, zoals hieronder wordt weergegeven, omdat de slashes anders niet kunnen worden geparseerd.
 
 * Initialiseer de MongoDB-client, haal de database op en doorloop de verificatie.
 
@@ -96,29 +96,29 @@ De volgende fragmenten zijn allemaal afkomstig uit het *app.py-bestand* en maakt
 
 2. Open een terminalvenster en ga met `cd` naar de map waarin de app wordt opgeslagen.
 
-3. Stel vervolgens de omgevingsvariabele in `set FLASK_APP=app.py` `$env:FLASK_APP = app.py` voor de Flask-app met , voor PowerShell-editors of `export FLASK_APP=app.py` als u een Mac gebruikt. 
+3. Stel de omgevings variabele voor de kolf-app `set FLASK_APP=app.py`in `$env:FLASK_APP = app.py` met, voor Power shell `export FLASK_APP=app.py` -editors, of als u een Mac gebruikt. 
 
-4. Voer de `flask run` app uit met en blader naar *http:\//127.0.0.1:5000/*.
+4. Voer de app uit `flask run` met en blader naar *http\/:/127.0.0.1:5000/*.
 
 5. Voeg taken toe en verwijder ze, en kijk hoe ze zijn toegevoegd en gewijzigd in de verzameling.
 
 ## <a name="create-a-database-account"></a>Een databaseaccount maken
 
-Als u de code wilt testen op een live Azure Cosmos DB-account, gaat u naar de Azure-portal om een account te maken.
+Als u de code wilt testen op een live Azure Cosmos DB-account, gaat u naar de Azure Portal om een account te maken.
 
 [!INCLUDE [cosmos-db-create-dbaccount](../../includes/cosmos-db-create-dbaccount-mongodb.md)]
 
 ## <a name="update-your-connection-string"></a>Uw verbindingsreeks bijwerken
 
-Als u de code wilt testen op het live Azure Cosmos DB-account, krijgt u uw verbindingstekenreeksgegevens. Kopieer deze vervolgens in de app.
+Als u de code wilt testen op het Live Azure Cosmos DB-account, kunt u uw connection string-gegevens ophalen. Kopieer deze vervolgens in de app.
 
-1. Selecteer in uw Azure Cosmos DB-account in de Azure-portal in de linkernavigatie **verbindingstekenreeks en**selecteer **Vervolgens Leesschrijftoetsen**. U gebruikt de kopieerknoppen aan de rechterkant van het scherm om de gebruikersnaam, verbindingstekenreeks en wachtwoord te kopiëren. 
+1. Selecteer in uw Azure Cosmos DB-account in de Azure Portal in de linkernavigatiebalk **verbindings reeks**en selecteer **sleutels voor lezen/schrijven**. U gebruikt de Kopieer knoppen aan de rechter kant van het scherm om de gebruikers naam, het connection string en het wacht woord te kopiëren. 
 
 2. Open het bestand *app.py* in de hoofdmap.
 
 3. Kopieer de waarde van **gebruikersnaam** van de portal (gebruik hiervoor de kopieerknop) en maak hiervan de waarde van **gebruikersnaam** in het bestand *app.py*.
 
-4. Kopieer vervolgens de waarde van de **verbindingstekenreeks** van de portal en maak er de waarde van de **MongoClient** van in uw *app.py* bestand.
+4. Kopieer vervolgens uw **Connection String** waarde vanuit de portal en geef deze als waarde aan de **MongoClient** in uw *app.py* -bestand.
 
 5. Kopieer ten slotte de waarde van **wachtwoord** van de portal en maak hiervan de waarde van **wachtwoord** in het bestand *app.py*.
 
@@ -138,7 +138,7 @@ Wanneer u Azure implementeert, moet u de sleutels van uw toepassing verwijderen 
 
 Vervolgens moet u uw MONGOURL, MONGO_PASSWORD en MONGO_USERNAME toevoegen aan de toepassingsinstellingen. In deze [zelfstudie](https://docs.microsoft.com/azure/app-service/configure-common#configure-app-settings) vindt u meer informatie over toepassingsinstellingen in Azure Web Apps.
 
-Als u geen vork van deze repo wilt maken, u hieronder ook de knop **Implementeren naar Azure** selecteren. U moet vervolgens naar Azure gaan en de toepassingsinstellingen instellen met uw Azure Cosmos DB-accountgegevens.
+Als u geen Fork van deze opslag plaats wilt maken, kunt u ook de onderstaande knop **implementeren naar Azure** selecteren. Vervolgens gaat u naar Azure en stelt u de toepassings instellingen in met uw Azure Cosmos DB-account gegevens.
 
 <a href="https://deploy.azure.com/?repository=https://github.com/heatherbshapiro/To-Do-List---Flask-MongoDB-Example" target="_blank">
 <img src="https://azuredeploy.net/deploybutton.png" alt="Click to Deploy to Azure">
@@ -157,7 +157,7 @@ Als u geen vork van deze repo wilt maken, u hieronder ook de knop **Implementere
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze quickstart hebt u geleerd hoe u een Azure Cosmos DB voor Mongo DB API-account maken en de Azure Cosmos DB Emulator gebruiken om een Python Flask To-Do web-app uit te voeren die is gekloond vanuit GitHub. Nu kunt u aanvullende gegevens in uw Azure Cosmos DB-account importeren. 
+In deze Quick Start hebt u geleerd hoe u een Azure Cosmos DB maakt voor Mongo DB API-account en hoe u de Azure Cosmos DB-emulator gebruikt voor het uitvoeren van een python-taak die is gekloond van GitHub. Nu kunt u aanvullende gegevens in uw Azure Cosmos DB-account importeren. 
 
 > [!div class="nextstepaction"]
 > [MongoDB-gegevens importeren in Azure Cosmos DB](mongodb-migrate.md)

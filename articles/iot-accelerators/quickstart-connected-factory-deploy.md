@@ -10,10 +10,10 @@ ms.custom: mvc
 ms.date: 03/08/2019
 ms.author: dobett
 ms.openlocfilehash: 6338403818259c7263fe66af7d8c8840d98efbcd
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "62127460"
 ---
 # <a name="quickstart-try-a-cloud-based-solution-to-manage-my-industrial-iot-devices"></a>Snelstart: Een cloudgebaseerde oplossing uitproberen voor het beheren van mijn industriële IoT-apparaten
@@ -26,7 +26,7 @@ In deze snelstart ziet u hoe de Azure IoT-oplossingsversneller voor verbonden fa
 
 U hebt een actief Azure-abonnement nodig om deze snelstart te voltooien.
 
-Als u geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) voordat u begint.
+Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
 
 ## <a name="deploy-the-solution"></a>De oplossing implementeren
 
@@ -64,7 +64,7 @@ Klik op **Accepteren** om de machtigingsaanvraag te accepteren. Het oplossingsda
 
 De standaardweergave is het *dashboard*. U kunt naar andere gebieden van de portal navigeren met het menu aan de linkerkant van de pagina:
 
-[![Oplossingsdashboard](./media/quickstart-connected-factory-deploy/dashboard-inline.png)](./media/quickstart-connected-factory-deploy/dashboard-expanded.png#lightbox)
+[![Oplossings dashboard](./media/quickstart-connected-factory-deploy/dashboard-inline.png)](./media/quickstart-connected-factory-deploy/dashboard-expanded.png#lightbox)
 
 U gebruikt het dashboard om uw industriële IoT-apparaten te beheren. Verbonden factory gebruikt een hiërarchie om een algemene factoryconfiguratie weer te geven. Het hoogste niveau van de hiërarchie is de onderneming die een of meer factory's bevat. Elke factory bevat productielijnen en elke productielijn bestaat uit stations. Op elk niveau kunt u OEE en KPI's weergeven, nieuwe knooppunten voor telemetrie publiceren en reageren op waarschuwingen.
 
@@ -74,13 +74,13 @@ Op het dashboard kunt u het volgende zien:
 
 In het deelvenster **Overall Equipment Efficiency** worden de OEE-waarden weergegeven voor de hele onderneming of voor de factory, de productielijn of het station die/dat u bekijkt. Deze waarde wordt geaggregeerd van de stationsweergave naar het ondernemingsniveau. De OEE-gegevens en de bijbehorende elementen kunnen nader worden geanalyseerd.
 
-[![Algehele efficiëntie van apparatuur](./media/quickstart-connected-factory-deploy/oee-inline.png)](./media/quickstart-connected-factory-deploy/oee-expanded.png#lightbox)
+[![Algemene efficiëntie van apparatuur](./media/quickstart-connected-factory-deploy/oee-inline.png)](./media/quickstart-connected-factory-deploy/oee-expanded.png#lightbox)
 
 De OEE bepaalt de efficiëntie van het productieproces met behulp van operationele parameters gerelateerd aan productie. OEE is een standaardmeeteenheid binnen de industrie die wordt berekend door de beschikbaarheidswaarde te vermenigvuldigen met de prestatiewaarde en de kwaliteitswaarde: OEE = beschikbaarheid x prestaties x kwaliteit.
 
 Verder kunt u de OEE voor elk niveau in de hiërarchiegegevens analyseren. Klik op het percentage voor OEE, beschikbaarheid, prestaties of kwaliteit. Er wordt een contextvenster weergegeven met visualisaties die gegevens weergeven voor verschillende tijdschalen:
 
-[![Algemene uitrustingsefficiëntie detail](./media/quickstart-connected-factory-deploy/oeedetail-inline.png)](./media/quickstart-connected-factory-deploy/oeedetail-expanded.png#lightbox)
+[![Algemene efficiëntie Details van apparatuur](./media/quickstart-connected-factory-deploy/oeedetail-inline.png)](./media/quickstart-connected-factory-deploy/oeedetail-expanded.png#lightbox)
 
 U kunt op een grafiek klikken om de gegevens verder te analyseren.
 
@@ -92,7 +92,7 @@ In het venster **Key Performance Indicators** worden het aantal geproduceerde ee
 
 Verder kunt u de KPI’s voor elk niveau in de hiërarchiegegevens analyseren. Klik op het percentage voor OEE, beschikbaarheid, prestaties of kwaliteit. Er wordt een contextvenster weergegeven met visualisaties die gegevens weergeven voor verschillende tijdschalen:
 
-[![KPI-detail](./media/quickstart-connected-factory-deploy/kpidetail-inline.png)](./media/quickstart-connected-factory-deploy/kpidetail-expanded.png#lightbox)
+[![KPI-Details](./media/quickstart-connected-factory-deploy/kpidetail-inline.png)](./media/quickstart-connected-factory-deploy/kpidetail-expanded.png#lightbox)
 
 U kunt op een grafiek klikken om de gegevens verder te analyseren.
 
@@ -100,7 +100,7 @@ U kunt op een grafiek klikken om de gegevens verder te analyseren.
 
 Een paneel met een **factorylijst** waarin de status, locatie en huidige productieconfiguratie in de oplossing worden weergegeven. Wanneer u de oplossingsversneller voor het eerst uitvoert,wordt in het dashboard een gesimuleerde set met factory's weergegeven. De simulatie van elke productielijn bestaat uit drie echte OPC UA-servers die gesimuleerde taken uitvoeren en gegevens delen. Zie de [veelgestelde vragen over verbonden factory's](iot-accelerators-faq-cf.md) voor meer informatie over OPC UA:
 
-[![Fabriekslocaties](./media/quickstart-connected-factory-deploy/factorylocations-inline.png)](./media/quickstart-connected-factory-deploy/factorylocations-expanded.png#lightbox)
+[![Fabrieks locaties](./media/quickstart-connected-factory-deploy/factorylocations-inline.png)](./media/quickstart-connected-factory-deploy/factorylocations-expanded.png#lightbox)
 
 U kunt door de oplossingshiërarchie navigeren en waarden van de OEE en KPI's op elk niveau weergeven:
 
@@ -112,7 +112,7 @@ U kunt door de oplossingshiërarchie navigeren en waarden van de OEE en KPI's op
 
 1. Klik op **Energieverbruik**. U ziet enkele grafieken waarin deze waarde in verschillende tijdschalen is uitgezet. U kunt op een grafiek klikken om de gegevens verder te analyseren.
 
-[![Bekijk het energieverbruik](./media/quickstart-connected-factory-deploy/explorelocations-inline.png)](./media/quickstart-connected-factory-deploy/explorelocations-expanded.png#lightbox)
+[![Energie verbruik weer geven](./media/quickstart-connected-factory-deploy/explorelocations-inline.png)](./media/quickstart-connected-factory-deploy/explorelocations-expanded.png#lightbox)
 
 ### <a name="map"></a>Kaart
 
@@ -124,7 +124,7 @@ Als u met uw abonnement toegang hebt tot de [Bing Kaarten-API](iot-accelerators-
 
 In het venster **Waarschuwingen** worden waarschuwingen weergegeven die worden gegenereerd wanneer een gemelde waarde of een berekende OEE-/KPI-waarde een drempelwaarde overschrijdt. In dit venster worden waarschuwingen van elk niveau van de hiërarchie weergegeven, van stationsniveau tot het gehele bedrijf. Elke waarschuwing bevat een beschrijving, datum, tijd, locatie en het aantal instanties:
 
-[![Alarmen](./media/quickstart-connected-factory-deploy/alarms-inline.png)](./media/quickstart-connected-factory-deploy/alarms-expanded.png#lightbox)
+[![Waarschuwingen](./media/quickstart-connected-factory-deploy/alarms-inline.png)](./media/quickstart-connected-factory-deploy/alarms-expanded.png#lightbox)
 
 U kunt de gegevens die de waarschuwing hebben veroorzaakt vanuit het dashboard analyseren. Als u een beheerder bent, kunt u standaardacties uitvoeren voor de waarschuwingen, zoals:
 
@@ -137,7 +137,7 @@ Klik op een van de waarschuwingen in de vervolgkeuzelijst **Kies een actie**, ki
 
 Klik op de grafiek in het paneel Waarschuwingen om de waarschuwingsgegevens verder te analyseren.
 
-Deze waarschuwingen worden gegenereerd door regels die zijn opgegeven in een configuratiebestand in de oplossingsversneller. Deze regels kunnen alarmen genereren wanneer de OEE- of KPI-cijfers of OPC UA-knooppuntwaarden over een drempelwaarde gaan. U kunt deze drempelwaarde instellen.
+Deze waarschuwingen worden gegenereerd door regels die zijn opgegeven in een configuratiebestand in de oplossingsversneller. Deze regels kunnen waarschuwingen genereren wanneer de waarden van de OEE-of KPI-cijfers of het OPC UA-knoop punt de drempel waarde overschrijden. U kunt deze drempelwaarde instellen.
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 

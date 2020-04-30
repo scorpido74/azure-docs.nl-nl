@@ -1,6 +1,6 @@
 ---
-title: 'Azure-portal: een beheerde instantie maken'
-description: Maak een SQL Database beheerde instantie, netwerkomgeving en client-VM voor toegang.
+title: 'Azure Portal: een beheerd exemplaar maken'
+description: Maak een SQL Database beheerde instantie, netwerk omgeving en VM-client voor toegang.
 services: sql-database
 ms.service: sql-database
 ms.subservice: managed-instance
@@ -12,146 +12,146 @@ ms.author: danil
 ms.reviewer: sstein, carlrab
 ms.date: 09/26/2019
 ms.openlocfilehash: 25128442cd922f6b9130586e245695b6880f661c
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80257611"
 ---
-# <a name="quickstart-create-an-azure-sql-database-managed-instance"></a>Snelstart: een azure SQL-databasebeheerexemplaar maken
+# <a name="quickstart-create-an-azure-sql-database-managed-instance"></a>Snelstartgids: een door Azure SQL Database beheerd exemplaar maken
 
-Met deze quickstart u een Azure SQL [Database-beheerde instantie](sql-database-managed-instance.md) maken in Azure-portal.
+In deze Quick Start leert u hoe u een Azure SQL Database [beheerd exemplaar](sql-database-managed-instance.md) maakt in azure Portal.
 
 > [!IMPORTANT]
-> Zie Ondersteunde [regio's](sql-database-managed-instance-resource-limits.md#supported-regions) en [ondersteunde abonnementstypen](sql-database-managed-instance-resource-limits.md#supported-subscription-types)voor beperkingen.
+> Zie [ondersteunde regio's](sql-database-managed-instance-resource-limits.md#supported-regions) en [ondersteunde abonnements typen](sql-database-managed-instance-resource-limits.md#supported-subscription-types)voor beperkingen.
 
 ## <a name="sign-in-to-azure-portal"></a>Meld u aan bij Azure Portal
 
-Als u geen Azure-abonnement hebt, [maakt u een gratis account](https://azure.microsoft.com/free/)aan.
+Als u geen Azure-abonnement hebt, [maakt u een gratis account](https://azure.microsoft.com/free/).
 
 Meld u aan bij de [Azure-portal](https://portal.azure.com/).
 
 ## <a name="create-a-managed-instance"></a>Een beheerd exemplaar maken
 
-In de volgende stappen ziet u hoe u een beheerde instantie maakt:
+De volgende stappen laten zien hoe u een beheerd exemplaar maakt:
 
-1. Selecteer **Azure SQL** in het linkermenu van Azure-portal. Als **Azure SQL** niet in de lijst staat, selecteert u Alle **services**en voert u Azure **SQL** in het zoekvak in.
-2. Selecteer **+Toevoegen** om de **optiepagina SQL-implementatie selecteren** te openen. U aanvullende informatie over een azure SQL Database-beheerde instantie weergeven door **Details weergeven** op de tegel **Beheerde instanties** te selecteren.
+1. Selecteer **Azure SQL** in het menu links van Azure Portal. Als **Azure SQL** niet voor komt in de lijst, selecteert u **alle services**en voert u vervolgens **Azure SQL** in het zoekvak in.
+2. Selecteer **+ toevoegen** om de **optie pagina SQL-implementatie selecteren** te openen. U kunt aanvullende informatie over een beheerde instantie van een Azure SQL Database bekijken door **Details weer geven** op de tegel **Managed instances** te selecteren.
 3. Selecteer **Maken**.
 
    ![Een beheerd exemplaar maken](./media/sql-database-managed-instance-get-started/create-managed-instance.png)
 
-4. Gebruik de tabbladen op het inrichtingsformulier **Beheerde instantie van Azure SQL Database Managed Instance** om vereiste en optionele informatie toe te voegen. In de volgende secties worden deze tabbladen beschreven.
+4. Gebruik de tabbladen in het formulier voor het inrichten van **Azure SQL database beheerde instantie maken** om vereiste en optionele informatie toe te voegen. Deze tabbladen worden beschreven in de volgende secties.
 
 ### <a name="basics"></a>Basisbeginselen
 
-- Vul de vereiste verplichte informatie in op het tabblad **Basisbeginselen.** Dit is een minimale set informatie die nodig is om een beheerde instantie in te dienen.
+- Vul verplichte vereiste gegevens in op het tabblad **basis beginselen** . Dit is een minimale set informatie die is vereist voor het inrichten van een beheerd exemplaar.
 
-   ![Tabblad Basisbeginselen voor het maken van een beheerde instantie](./media/sql-database-managed-instance-get-started/tabs/mi-create-tab-basics.png)
+   ![Tabblad ' basis principes ' voor het maken van een beheerd exemplaar](./media/sql-database-managed-instance-get-started/tabs/mi-create-tab-basics.png)
 
-   Gebruik de onderstaande tabel als referentie voor informatie die op dit tabblad vereist is.
+   Gebruik de onderstaande tabel als referentie voor informatie die op dit tabblad is vereist.
 
    | Instelling| Voorgestelde waarde | Beschrijving |
    | ------ | --------------- | ----------- |
-   | **Abonnement** | Uw abonnement. | Een abonnement dat u toestemming geeft om nieuwe bronnen te maken. |
+   | **Abonnement** | Uw abonnement. | Een abonnement dat u toestemming geeft om nieuwe resources te maken. |
    | **Resourcegroep** | een nieuwe of bestaande resourcegroep.|Zie [Naming conventions](/azure/architecture/best-practices/resource-naming) (Naamgevingsconventies) voor geldige namen van resourcegroepen.|
-   | **Naam van het beheerde exemplaar** | Elke geldige naam.|Zie [Naamregels en beperkingen voor](/azure/architecture/best-practices/resource-naming)geldige namen.|
-   | **Regio** |Het gebied waarin u de beheerde instantie wilt maken.|Zie [Azure-regio's](https://azure.microsoft.com/regions/) voor informatie over regio's.|
-   | **Beheerdersaanmeldgegevens voor het beheerde exemplaar** | Elke geldige gebruikersnaam. | Zie [Naamregels en beperkingen voor](/azure/architecture/best-practices/resource-naming)geldige namen. Gebruik geen "serveradmin", want dat is een gereserveerde rol op serverniveau.|
-   | **Wachtwoord** | Elk geldig wachtwoord.| Het wachtwoord moet minstens 16 tekens lang zijn en moet voldoen aan de [gedefinieerde complexiteitsvereisten](../virtual-machines/windows/faq.md#what-are-the-password-requirements-when-creating-a-vm).|
+   | **Naam van het beheerde exemplaar** | Een geldige naam.|Zie [naamgevings regels en beperkingen](/azure/architecture/best-practices/resource-naming)voor geldige namen.|
+   | **Regio** |De regio waarin u het beheerde exemplaar wilt maken.|Zie [Azure-regio's](https://azure.microsoft.com/regions/) voor informatie over regio's.|
+   | **Beheerdersaanmeldgegevens voor het beheerde exemplaar** | Een geldige gebruikers naam. | Zie [naamgevings regels en beperkingen](/azure/architecture/best-practices/resource-naming)voor geldige namen. Gebruik niet ' ServerAdmin ' omdat dat een gereserveerde rol op server niveau is.|
+   | **Wachtwoord** | Een geldig wacht woord.| Het wachtwoord moet minstens 16 tekens lang zijn en moet voldoen aan de [gedefinieerde complexiteitsvereisten](../virtual-machines/windows/faq.md#what-are-the-password-requirements-when-creating-a-vm).|
 
-- Selecteer **Beheerde instantie configureren** om reken- en opslagbronnen te vergroten en de prijsniveaus te controleren. Gebruik de schuifregelaars of tekstvakken om de hoeveelheid opslagruimte en het aantal virtuele kernen op te geven. Wanneer u klaar bent, selecteert u **Toepassen** om uw selectie op te slaan. 
+- Selecteer **beheerd exemplaar configureren** voor grootte van reken-en opslag resources en om de prijs categorieën te controleren. Gebruik de schuifregelaars of tekstvakken om de hoeveelheid opslagruimte en het aantal virtuele kernen op te geven. Wanneer u klaar bent, selecteert u **Toep assen** om uw selectie op te slaan. 
 
-   ![Beheerd instantieformulier](./media/sql-database-managed-instance-get-started/tabs/mi-create-tab-configure-performance.png)
+   ![Formulier beheerd exemplaar](./media/sql-database-managed-instance-get-started/tabs/mi-create-tab-configure-performance.png)
 
-- Als u uw keuzes wilt bekijken voordat u een beheerde instantie maakt, u **Controleren + maken selecteren.** Of configureer netwerkopties door **Volgende: Netwerken te**selecteren.
+- Als u uw keuzes wilt bekijken voordat u een beheerd exemplaar maakt, kunt u **bekijken en maken**selecteren. Of configureer netwerk opties door **volgende: netwerken**te selecteren.
 
 ### <a name="networking"></a>Netwerken
 
-- Vul optionele informatie in op het tabblad **Netwerken.** Als u deze informatie weglaat, past de portal standaardinstellingen toe.
+- Vul optionele informatie in op het tabblad **netwerk** . Als u deze informatie weglaat, worden de standaard instellingen toegepast op de portal.
 
-   ![Tabblad 'Netwerken' voor het maken van een beheerde instantie](./media/sql-database-managed-instance-get-started/tabs/mi-create-tab-networking.png)
+   ![Tabblad netwerken voor het maken van een beheerd exemplaar](./media/sql-database-managed-instance-get-started/tabs/mi-create-tab-networking.png)
 
-   Gebruik de onderstaande tabel als referentie voor informatie die op dit tabblad vereist is.
+   Gebruik de onderstaande tabel als referentie voor informatie die op dit tabblad is vereist.
 
    | Instelling| Voorgestelde waarde | Beschrijving |
    | ------ | --------------- | ----------- |
-   | **Virtueel netwerk** | Selecteer **Nieuw virtueel netwerk maken** of een geldig virtueel netwerk en subnet.| Als een netwerk of subnet niet beschikbaar is, moet het worden [gewijzigd om te voldoen aan de netwerkvereisten](sql-database-managed-instance-configure-vnet-subnet.md) voordat u het selecteert als doel voor het nieuwe beheerde exemplaar. Zie [Een virtueel netwerk configureren voor een beheerde instantie voor](sql-database-managed-instance-connectivity-architecture.md)informatie over de vereisten voor het configureren van de netwerkomgeving voor een beheerde instantie. |
-   | **Verbindingstype** | Kies tussen een proxy en een omleidingsverbindingstype.|Zie [Azure SQL Database-verbindingsbeleid](sql-database-connectivity-architecture.md#connection-policy)voor meer informatie over verbindingstypen van verbindingen .|
-   | **Openbaar eindpunt**  | Selecteer **Inschakelen**. | Als u wilt dat een beheerde instantie toegankelijk is via het eindpunt voor openbare gegevens, moet u deze optie inschakelen. | 
-   | **Toegang toestaan vanaf** (als **Openbaar eindpunt** is ingeschakeld) | Selecteer een van de opties.   |De portal-ervaring maakt het configureren van een beveiligingsgroep met een openbaar eindpunt mogelijk. </br> </br> Selecteer op basis van uw scenario een van de volgende opties: </br> <ul> <li>**Azure-services:** we raden deze optie aan wanneer u verbinding maakt vanuit Power BI of een andere multitenant-service. </li> <li> **Internet:** Gebruik voor testdoeleinden wanneer u snel een beheerde instantie wilt draaien. We raden het niet aan voor productieomgevingen. </li> <li> **Geen toegang:** met deze optie wordt een beveiligingsregel **weigeren.** Wijzig deze regel om een beheerde instantie toegankelijk te maken via een openbaar eindpunt. </li> </ul> </br> Zie [Een azure SQL Database-beheerde instantie veilig gebruiken met een openbaar eindpunt](sql-database-managed-instance-public-endpoint-securely.md)voor meer informatie over openbare endpoint-beveiliging.|
+   | **Virtueel netwerk** | Selecteer **Nieuw virtueel netwerk maken** of een geldig virtueel netwerk en subnet.| Als een netwerk of subnet niet beschikbaar is, moet dit worden [gewijzigd om aan de netwerk vereisten te voldoen](sql-database-managed-instance-configure-vnet-subnet.md) voordat u het selecteert als doel voor het nieuwe beheerde exemplaar. Zie [een virtueel netwerk configureren voor een beheerd exemplaar](sql-database-managed-instance-connectivity-architecture.md)voor informatie over de vereisten voor het configureren van de netwerk omgeving voor een beheerd exemplaar. |
+   | **Verbindings type** | Kies tussen een proxy en een verbindings type omleiden.|Zie [Azure SQL database verbindings beleid](sql-database-connectivity-architecture.md#connection-policy)voor meer informatie over verbindings typen.|
+   | **Openbaar eindpunt**  | Selecteer **Inschakelen**. | Als u wilt dat een beheerd exemplaar toegankelijk is via het eind punt voor open bare gegevens, moet u deze optie inschakelen. | 
+   | **Toegang toestaan vanaf** (als het **open bare eind punt** is ingeschakeld) | Selecteer een van de opties.   |Met de portal-ervaring kunt u een beveiligings groep configureren met een openbaar eind punt. </br> </br> Selecteer op basis van uw scenario een van de volgende opties: </br> <ul> <li>**Azure-Services**: we raden u aan deze optie te selecteren wanneer u verbinding maakt vanuit Power bi of een andere multi tenant-service. </li> <li> **Internet**: gebruik voor test doeleinden wanneer u snel een beheerd exemplaar wilt maken. Het wordt niet aanbevolen voor productie omgevingen. </li> <li> **Geen toegang**: met deze optie wordt een regel voor het **weigeren** van een beveiliging gemaakt. Wijzig deze regel om een beheerd exemplaar toegankelijk te maken via een openbaar eind punt. </li> </ul> </br> Zie voor meer informatie over de beveiliging van open bare endpoints [een Azure SQL database beheerde instantie veilig met een openbaar eind punt gebruiken](sql-database-managed-instance-public-endpoint-securely.md).|
 
-- Selecteer **Controleren + maken** om uw keuzes te bekijken voordat u een beheerde instantie maakt. Of configureer meer aangepaste instellingen door **Volgende: Aanvullende instellingen**te selecteren.
+- Selecteer **controleren + maken** om uw keuzes te bekijken voordat u een beheerd exemplaar maakt. Of configureer meer aangepaste instellingen door **volgende: extra instellingen**te selecteren.
 
 ### <a name="additional-settings"></a>Meer instellingen
 
-- Vul optionele informatie in op het tabblad **Extra instellingen.** Als u deze informatie weglaat, past de portal standaardinstellingen toe.
+- Vul optionele informatie in op het tabblad **extra instellingen** . Als u deze informatie weglaat, worden de standaard instellingen toegepast op de portal.
 
-   ![Tabblad 'Extra instellingen' voor het maken van een beheerde instantie](./media/sql-database-managed-instance-get-started/tabs/mi-create-tab-additional-settings.png)
+   ![Tabblad aanvullende instellingen voor het maken van een beheerd exemplaar](./media/sql-database-managed-instance-get-started/tabs/mi-create-tab-additional-settings.png)
 
-   Gebruik de onderstaande tabel als referentie voor informatie die op dit tabblad vereist is.
+   Gebruik de onderstaande tabel als referentie voor informatie die op dit tabblad is vereist.
 
    | Instelling| Voorgestelde waarde | Beschrijving |
    | ------ | --------------- | ----------- |
-   | **Sortering** | Kies de collatie die u wilt gebruiken voor uw beheerde instantie. Als u databases migreert vanuit SQL Server, `SELECT SERVERPROPERTY(N'Collation')` controleert u de bronverzameling met behulp van deze waarde en gebruikt u deze waarde.| Zie [De servercollatie instellen of wijzigen](https://docs.microsoft.com/sql/relational-databases/collations/set-or-change-the-server-collation)voor informatie over collaties.|   
-   | **Tijdzone** | Selecteer de tijdzone die uw beheerde instantie zal observeren.|Zie [Tijdzones voor](sql-database-managed-instance-timezone.md)meer informatie.|
-   | **Gebruiken als failover secundair** | Selecteer **Ja**. | Schakel deze optie in om de beheerde instantie te gebruiken als een secundaire failovergroep.|
-   | **Primaire beheerde instantie** (als **Gebruik als secundaire failover** is ingesteld op **Ja)** | Kies een bestaand primair beheerd exemplaar dat wordt samengevoegd in dezelfde DNS-zone met het beheerde exemplaar dat u maakt. | Met deze stap u de fail-over-groep na het maken van de status van failover mogelijk maken. Zie [Zelfstudie: een SQL Database-beheerde instantie toevoegen aan een failovergroep](sql-database-managed-instance-failover-group-tutorial.md)voor meer informatie.|
+   | **Sortering** | Kies de sortering die u wilt gebruiken voor uw beheerde exemplaar. Als u data bases migreert vanaf SQL Server, controleert u de bron `SELECT SERVERPROPERTY(N'Collation')` sortering door te gebruiken en deze waarde te gebruiken.| Zie [de server sortering instellen of wijzigen](https://docs.microsoft.com/sql/relational-databases/collations/set-or-change-the-server-collation)voor meer informatie over sorteringen.|   
+   | **Tijdzone** | Selecteer de tijd zone die het beheerde exemplaar moet zien.|Zie [tijd zones](sql-database-managed-instance-timezone.md)voor meer informatie.|
+   | **Gebruiken als secundaire failover** | Selecteer **Ja**. | Schakel deze optie in als u het beheerde exemplaar wilt gebruiken als een failovergroep secundair.|
+   | **Primair beheerd exemplaar** (als **secundair gebruiken als secundaire failover** is ingesteld op **Ja**) | Kies een bestaand primair beheerd exemplaar dat wordt toegevoegd aan dezelfde DNS-zone met het beheerde exemplaar dat u maakt. | Met deze stap wordt de configuratie van de failovergroep na het maken ingeschakeld. Zie [zelf studie: een door SQL database beheerd exemplaar toevoegen aan een failovergroep](sql-database-managed-instance-failover-group-tutorial.md)voor meer informatie.|
 
-### <a name="review--create"></a>Controleren + maken
+### <a name="review--create"></a>Controleren en maken
 
-5. Selecteer **Controleren + tabblad maken** om uw keuzes te bekijken voordat u de beheerde instantie maakt.
+5. Selecteer **controleren + tabblad maken** om uw keuzes te bekijken voordat u het beheerde exemplaar maakt.
 
-   ![Tabblad voor het bekijken en maken van een beheerde instantie](./media/sql-database-managed-instance-get-started/tabs/mi-create-tab-review-create.png)
+   ![Tabblad voor het controleren en maken van een beheerd exemplaar](./media/sql-database-managed-instance-get-started/tabs/mi-create-tab-review-create.png)
 
-6. Selecteer **Maken** om te beginnen met het inrichten van de beheerde instantie.
+6. Selecteer **maken** om te beginnen met het inrichten van het beheerde exemplaar.
 
 > [!IMPORTANT]
-> Het implementeren van een beheerde instantie is een langdurige bewerking. Implementatie van de eerste instantie in het subnet duurt doorgaans veel langer dan het implementeren in een subnet met bestaande beheerde exemplaren. Zie [Beheervan de beheerbewerkingen voor beheervan de instantie](sql-database-managed-instance.md#managed-instance-management-operations)voor gemiddelde indiktijden .
+> Het implementeren van een beheerd exemplaar is een langlopende bewerking. De implementatie van de eerste instantie in het subnet duurt doorgaans veel langer dan implementeren in een subnet met bestaande beheerde exemplaren. Zie [Managed instance Management Operations](sql-database-managed-instance.md#managed-instance-management-operations)(Engelstalig) voor gemiddelde inrichtings tijden.
 
-### <a name="monitor-deployment-progress"></a>Voortgang van de implementatie controleren
+### <a name="monitor-deployment-progress"></a>Voortgang van de implementatie bewaken
 
-7. Selecteer het pictogram **Meldingen** om de status van de implementatie weer te geven.
+7. Selecteer het pictogram **meldingen** om de status van de implementatie weer te geven.
 
-   ![Implementatievoortgang van een beheerde instantieimplementatie](./media/sql-database-managed-instance-get-started/in-progress/mi-create-deployment-in-progress.png)
+   ![Voortgang van de implementatie van de implementatie van een beheerd exemplaar](./media/sql-database-managed-instance-get-started/in-progress/mi-create-deployment-in-progress.png)
 
-8. Selecteer **Implementatie in uitvoering** in de melding om het beheerde instantievenster te openen en de voortgang van de implementatie verder te controleren. 
+8. Selecteer de implementatie die wordt **uitgevoerd** in de melding om het venster beheerd exemplaar te openen en de voortgang van de implementatie verder te bewaken. 
 
 > [!TIP]
-> Als u uw webbrowser hebt gesloten of bent verwijderd van het scherm implementatievoortgang, voert u de volgende stappen uit om het voortgangsscherm voor implementatie terug te zoeken:
-> 1. Open in Azure-portal de brongroep (op het tabblad **Basisbeginselen)** waaraan u een beheerde instantie implementeert.
-> 2. Selecteer **Implementaties**.
-> 3. Selecteer de beheerde instantieimplementatiebewerking die wordt uitgevoerd.
+> Als u de webbrowser hebt gesloten of als u het scherm voor de voortgang van de implementatie hebt verplaatst, voert u de volgende stappen uit om terug te gaan naar het scherm voor de voortgang van de implementatie:
+> 1. Open in Azure Portal de resource groep (op het tabblad **basis beginselen** ) waarnaar u een beheerd exemplaar implementeert.
+> 2. Selecteer **implementaties**.
+> 3. Selecteer de implementatie bewerking voor het beheerde exemplaar wordt uitgevoerd.
 
 > [!IMPORTANT]
-> Als u de status van beheerde instantiecreatie wilt krijgen, moet u **leesmachtigingen** hebben voor de resourcegroep. Als u deze toestemming niet hebt of intrekt terwijl de beheerde instantie in het creatieproces is, kan dit ertoe leiden dat beheerde instantie niet zichtbaar is in de lijst met implementaties van resourcegroepen.
+> Als u de status van het maken van beheerde instanties wilt ophalen, moet u **Lees machtigingen** hebben voor de resource groep. Als u deze machtiging niet hebt of intrekt terwijl het beheerde exemplaar wordt gemaakt, kan dit ertoe leiden dat het beheerde exemplaar niet zichtbaar is in de lijst met implementaties van resource groepen.
 >
 
-## <a name="post-deployment-operations"></a>Bewerkingen na implementatie
+## <a name="post-deployment-operations"></a>Bewerkingen na de implementatie
 
-Als u de gemaakte resources wilt controleren, moet u de netwerkinstellingen verfijnen en de gegevens van de hostverbinding (FQDN) opvragen, worden de stappen die in deze sectie zijn beschreven, uitgevoerd.
+Volg de stappen die worden beschreven in deze sectie om de resources te bekijken die zijn gemaakt, de netwerk instellingen te verfijnen en de gegevens van de host-verbinding op te halen (FQDN).
 
-### <a name="view-resources-created"></a>Resources weergeven die zijn gemaakt
+### <a name="view-resources-created"></a>Gemaakte resources weer geven
 
-Bij een succesvolle implementatie van beheerde instantie u resources bekijken die zijn gemaakt:
+Na een geslaagde implementatie van het beheerde exemplaar om de resources weer te geven die zijn gemaakt:
 
-1. Open de resourcegroep voor uw beheerde instantie. Bekijk de resources die voor u zijn gemaakt in de snelstart [van een beheerde instantie](#create-a-managed-instance) maken.
+1. Open de resource groep voor uw beheerde exemplaar. Bekijk de resources die voor u zijn gemaakt in de Snelstartgids [een beheerd exemplaar maken](#create-a-managed-instance) .
 
    ![Resources voor beheerd exemplaar](./media/sql-database-managed-instance-get-started/resources.png)
 
-### <a name="view-and-fine-tune-network-settings"></a>Netwerkinstellingen weergeven en verfijnen
+### <a name="view-and-fine-tune-network-settings"></a>Netwerk instellingen weer geven en aanpassen
 
-Als u de netwerkinstellingen optioneel wilt verfijnen, controleert u het volgende:
+Als u de netwerk instellingen optioneel wilt aanpassen, inspecteert u het volgende:
 
-1. Selecteer de routetabel om de door de gebruiker gedefinieerde route (UDR) te bekijken die voor u is gemaakt.
+1. Selecteer de route tabel om de door de gebruiker gedefinieerde route (UDR) die voor u is gemaakt, te controleren.
 
    ![Routetabel](./media/sql-database-managed-instance-get-started/route-table.png)
 
-2. Bekijk in de routetabel de vermeldingen om verkeer van en binnen het virtuele netwerk van de beheerde instantie te routeren. Als u de routetabel handmatig maakt of configureert, moet u ervoor zorgen dat deze vermeldingen worden gemaakt in de beheerde instantieroutetabel.
+2. Controleer in de route tabel de vermeldingen voor het routeren van verkeer van en binnen het virtuele netwerk van het beheerde exemplaar. Als u de route tabel hand matig maakt of configureert, moet u ervoor zorgen dat u deze vermeldingen maakt in de route tabel van het beheerde exemplaar.
 
-   ![Vermelding voor een beheerd instantiesubnet naar lokaal](./media/sql-database-managed-instance-get-started/udr.png)
+   ![Vermelding voor een subnet van een beheerd exemplaar naar lokaal](./media/sql-database-managed-instance-get-started/udr.png)
 
-3. Ga terug naar de brongroep en selecteer de netwerkbeveiligingsgroep.
+3. Ga terug naar de resource groep en selecteer de netwerk beveiligings groep.
 
    ![Netwerkbeveiligingsgroep](./media/sql-database-managed-instance-get-started/network-security-group.png)
 
@@ -160,32 +160,32 @@ Als u de netwerkinstellingen optioneel wilt verfijnen, controleert u het volgend
    ![Beveiligingsregels](./media/sql-database-managed-instance-get-started/security-rules.png)
 
 > [!IMPORTANT]
-> Als u een openbaar eindpunt voor uw beheerde instantie hebt geconfigureerd, moet u poorten openen om netwerkverkeer toe te staan waarmee verbindingen kunnen worden beheerd vanaf het openbare internet, zie [Een openbaar eindpunt configureren voor beheerde instantie](sql-database-managed-instance-public-endpoint-configure.md#allow-public-endpoint-traffic-on-the-network-security-group) voor meer informatie.
+> Als u het open bare eind punt voor uw beheerde exemplaar hebt geconfigureerd, moet u poorten openen om netwerk verkeer toe te staan dat verbindingen met een beheerd exemplaar toestaat via het open bare Internet. Zie [een openbaar eind punt voor een beheerd exemplaar configureren](sql-database-managed-instance-public-endpoint-configure.md#allow-public-endpoint-traffic-on-the-network-security-group) voor meer informatie.
 >
 
-### <a name="retrieve-connection-details-to-managed-instance"></a>Verbindingsgegevens ophalen naar beheerde instantie
+### <a name="retrieve-connection-details-to-managed-instance"></a>Verbindings Details ophalen voor een beheerd exemplaar
 
-Als u verbinding wilt maken met beheerde instantie, voert u deze stappen uit om de hostnaam en de volledig gekwalificeerde domeinnaam (FQDN) op te halen:
+Als u verbinding wilt maken met een beheerd exemplaar, voert u de volgende stappen uit om de hostnaam en het Fully Qualified Domain Name op te halen (FQDN-naam):
 
 1. Ga terug naar de resourcegroep en selecteer uw beheerde exemplaar.
 
-   ![Beheerde instantie in de resourcegroep](./media/sql-database-managed-instance-get-started/managed-instance.png)
+   ![Beheerd exemplaar in de resource groep](./media/sql-database-managed-instance-get-started/managed-instance.png)
 
-2. Zoek op het tabblad **Overzicht** de eigenschap **Host.** Kopieer de hostnaam voor het beheerde exemplaar voor gebruik in de volgende quickstart.
+2. Ga naar het tabblad **overzicht** en zoek de eigenschap **host** op. Kopieer de hostnaam voor het beheerde exemplaar voor gebruik in de volgende Snelstartgids.
 
    ![Hostnaam](./media/sql-database-managed-instance-get-started/host-name.png)
 
-   De gekopieerde waarde vertegenwoordigt een volledig gekwalificeerde domeinnaam (FQDN) die kan worden gebruikt om verbinding te maken met beheerde instantie. Het is vergelijkbaar met het volgende adresvoorbeeld: *your_host_name.a1b2c3d4e5f6.database.windows.net*.
+   De gekopieerde waarde vertegenwoordigt een Fully Qualified Domain Name (FQDN) die kan worden gebruikt om verbinding te maken met een beheerd exemplaar. Dit is vergelijkbaar met het volgende adres voorbeeld: *your_host_name. a1b2c3d4e5f6. data base. Windows. net*.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Ga als u meer te weten over het maken van verbinding met een beheerde instantie:
-- Zie [Uw toepassingen verbinden met een beheerde instantie voor](sql-database-managed-instance-connect-app.md)een overzicht van de verbindingsopties voor toepassingen.
-- Zie [Een azure-verbinding](sql-database-managed-instance-configure-vm.md)met een virtuele machine configureren voor een snelle start met een beheerde instantie.
-- Zie [Een point-to-site-verbinding configureren](sql-database-managed-instance-configure-p2s.md)voor een snelle start die laat zien hoe u verbinding maakt met een beheerde instantie via een on-premises clientcomputer.
+Voor meer informatie over hoe u verbinding maakt met een beheerd exemplaar:
+- Zie [uw toepassingen koppelen aan een beheerd exemplaar](sql-database-managed-instance-connect-app.md)voor een overzicht van de verbindings opties voor toepassingen.
+- Zie [een Azure virtual machine-verbinding configureren](sql-database-managed-instance-configure-vm.md)voor een Snelstartgids die laat zien hoe u verbinding maakt met een beheerd exemplaar vanuit een virtuele Azure-machine.
+- Zie [een punt-naar-site-verbinding configureren](sql-database-managed-instance-configure-p2s.md)voor een Snelstartgids die laat zien hoe u verbinding maakt met een beheerd exemplaar van een on-premises client computer met behulp van een punt-naar-site-verbinding.
 
-Ga als volgt te werk om een bestaande SQL Server-database te herstellen van on-premises naar een beheerde instantie: 
-- Gebruik de [Azure Database Migration Service voor migratie](../dms/tutorial-sql-server-to-managed-instance.md) om te herstellen vanuit een databaseback-upbestand. 
-- Gebruik de [opdracht T-SQL RESTORE](sql-database-managed-instance-get-started-restore.md) om te herstellen vanuit een databaseback-upbestand.
+Een bestaande SQL Server-Data Base van on-premises herstellen naar een beheerd exemplaar: 
+- Gebruik de [Azure database Migration service voor migratie](../dms/tutorial-sql-server-to-managed-instance.md) om te herstellen vanuit een back-upbestand van de data base. 
+- Gebruik de [T-SQL-opdracht herstellen](sql-database-managed-instance-get-started-restore.md) om een back-upbestand van een Data Base te herstellen.
 
-Zie Azure SQL Database controleren met Azure SQL [Analytics](../azure-monitor/insights/azure-sql.md)voor geavanceerde bewaking van beheerde instantiedatabaseprestaties met ingebouwde informatie over probleemoplossing.
+Zie [Azure SQL database bewaken met behulp van Azure SQL-analyse](../azure-monitor/insights/azure-sql.md)voor geavanceerde bewaking van beheerde exemplaar database prestaties met ingebouwde probleemoplossings informatie.

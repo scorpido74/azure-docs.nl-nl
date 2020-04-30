@@ -16,10 +16,10 @@ ms.date: 05/24/2018
 ms.author: allensu
 ms.custom: mvc
 ms.openlocfilehash: e11e6e4cc0194991b322d591049d7156b9979c45
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/13/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81254033"
 ---
 # <a name="quickstart-create-an-azure-cdn-profile-and-endpoint"></a>Snelstart: Een Azure CDN-profiel en een eindpunt maken
@@ -28,7 +28,7 @@ In deze snelstart wordt beschreven hoe u Azure Content Delivery Network (CDN) in
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="prerequisites"></a>Vereisten
-Voor deze snelstart moet u een opslagaccount hebben gemaakt met de naam *mystorageacct123*, die u gebruikt als de oorspronkelijke hostnaam. Zie [Een Azure-opslagaccount integreren met Azure CDN](cdn-create-a-storage-account-with-cdn.md)voor meer informatie.
+Voor deze snelstart moet u een opslagaccount hebben gemaakt met de naam *mystorageacct123*, die u gebruikt als de oorspronkelijke hostnaam. Zie [een Azure-opslag account integreren met Azure CDN](cdn-create-a-storage-account-with-cdn.md)voor meer informatie.
 
 ## <a name="log-in-to-the-azure-portal"></a>Aanmelden bij Azure Portal
 Meld u met uw Azure-account aan bij het [Azure Portal](https://portal.azure.com).
@@ -53,12 +53,12 @@ Nadat u een CDN-profiel hebt gemaakt, kunt u het gebruiken om een eindpunt te ma
 
     | Instelling | Waarde |
     | ------- | ----- |
-    | **Naam** | Voer *my-endpoint-123* in als hostnaam van uw eindpunt. Deze naam moet wereldwijd uniek zijn. Als deze al in gebruik is, kunt u een andere naam invoeren. Deze naam wordt gebruikt om toegang te krijgen tot uw bronnen in de cache op de _ &lt;domeineindpuntnaam&gt;_.azureedge.net.|
+    | **Naam** | Voer *my-endpoint-123* in als hostnaam van uw eindpunt. Deze naam moet wereldwijd uniek zijn. Als deze al in gebruik is, kunt u een andere naam invoeren. Deze naam wordt gebruikt om toegang te krijgen tot uw resources in de cache op de _ &lt;naam&gt;_ van het domein eindpunt. azureedge.net.|
     | **Oorsprongtype** | Selecteer **Opslag**. | 
     | **Hostnaam van oorsprong** | Voer *mystorageacct123.blob.core.windows.net* in als hostnaam. Deze naam moet wereldwijd uniek zijn. Als deze al in gebruik is, kunt u een andere naam invoeren. |
     | **Pad voor de oorsprong** | Leeg laten. |
     | **Host-header van oorsprong** | Laat de standaard gegenereerde waarde staan. |  
-    | **Protocol** | Laat de standaard geselecteerde opties **HTTP** en **HTTPS** staan. |
+    | **Protocolsubstatus** | Laat de standaard geselecteerde opties **HTTP** en **HTTPS** staan. |
     | **Poort van oorsprong** | Laat de standaard gegenereerde poortwaardes staan. | 
     | **Geoptimaliseerd voor** | Laat de standaardselectie **Algemene weboverdracht** staan. |
 

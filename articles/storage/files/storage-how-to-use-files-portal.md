@@ -8,18 +8,18 @@ ms.date: 10/18/2018
 ms.author: rogarana
 ms.subservice: files
 ms.openlocfilehash: fef3daf6e9e535736002e309e3d27491364dc553
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "71260294"
 ---
 # <a name="quickstart-create-and-manage-azure-file-shares-with-the-azure-portal"></a>Snelstart: Azure-bestandsshares maken en beheren met de Azure-portal 
 [Azure Files ](storage-files-introduction.md) is het eenvoudig te gebruiken cloudbestandssysteem van Microsoft. Azure-bestandsshares kunnen worden gekoppeld in Windows, Linux en macOS. In deze handleiding worden de basisbeginselen besproken van het werken met Azure-bestandsshares met behulp van [Azure Portal](https://portal.azure.com/).
 
-Als u geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) voordat u begint.
+Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
 
-## <a name="create-a-storage-account"></a>Een opslagaccount maken
+## <a name="create-a-storage-account"></a>Create a storage account
 [!INCLUDE [storage-files-create-storage-account-portal](../../../includes/storage-files-create-storage-account-portal.md)]
 
 ## <a name="create-an-azure-file-share"></a>Een Azure-bestandsshare maken
@@ -29,7 +29,7 @@ Een Azure-bestandsshare maken:
 2. Ga op de pagina van het opslagaccount naar het gedeelte **Services** en selecteer **Bestanden**.
     ![Een schermopname van het gedeelte Services van het opslagaccount, met de service Bestanden geselecteerd](media/storage-how-to-use-files-portal/create-file-share-1.png)
 
-3. Klik in het menu boven aan de pagina **Bestandsservice** op **Bestandsdelen**. De pagina **Nieuwe bestandsshare** wordt weergegeven.
+3. Klik in het menu boven aan de pagina **Bestands service** op **Bestands share**. De pagina **Nieuwe bestandsshare** wordt weergegeven.
 4. Typ *myshare* in het vak **Naam**.
 5. Klik op **OK** om de Azure-bestandsshare te maken.
 
@@ -41,12 +41,12 @@ Azure Files biedt twee methoden voor het werken met bestanden en mappen in uw Az
 Zie het volgende document op basis van uw besturingssysteem om een bestandsshare met SMB te koppelen:
 - [Windows](storage-how-to-use-files-windows.md)
 - [Linux](storage-how-to-use-files-linux.md)
-- [Macos](storage-how-to-use-files-mac.md)
+- [macOS](storage-how-to-use-files-mac.md)
 
 ### <a name="using-an-azure-file-share-from-the-azure-portal"></a>Een Azure-bestandsshare maken vanuit de Azure-portal
-Alle aanvragen via Azure Portal worden gedaan via de REST-API van File, zodat u bestanden en mappen kunt maken, wijzigen en verwijderen in clients zonder toegang tot SMB. Het is mogelijk om direct te werken met het File REST-protocol (dat wil zeggen, het uitwerken van REST HTTP roept zelf), maar de meest voorkomende manier (naast het gebruik van de Azure portal) om het File REST-protocol te gebruiken, is het gebruik van de [Azure PowerShell-module,](storage-how-to-use-files-powershell.md)de [Azure CLI](storage-how-to-use-files-cli.md)of een Azure Storage SDK, die allemaal een mooie wrapper bieden rond het File REST-protocol in de scripting/programmeertaal van uw keuze. 
+Alle aanvragen via Azure Portal worden gedaan via de REST-API van File, zodat u bestanden en mappen kunt maken, wijzigen en verwijderen in clients zonder toegang tot SMB. Het is mogelijk om rechtstreeks met het File REST protocol te werken (dat wil zeggen, handcrafting REST HTTP-aanroepen), maar de meest voorkomende manier (niet langer dan het gebruik van de Azure Portal) voor het gebruik van het bestand REST protocol is het gebruik van de [Azure PowerShell module](storage-how-to-use-files-powershell.md), de [Azure CLI](storage-how-to-use-files-cli.md)of een Azure Storage SDK, die allemaal een fraaie wrapper rond het File rest-protocol in de script 
 
-We verwachten dat de meeste gebruikers van Azure Files met hun Azure-bestandsshare via het SMB-protocol willen werken, omdat ze hiermee de bestaande toepassingen en hulpprogramma's kunnen gebruiken die ze verwachten te kunnen gebruiken, maar er zijn verschillende redenen waarom het voordelig is om de File REST API te gebruiken in plaats van KMO's, zoals:
+De meeste gebruikers van Azure Files willen werken met hun Azure-bestands share via het SMB-protocol, omdat hierdoor de bestaande toepassingen en hulpprogram ma's kunnen worden gebruikt die ze kunnen gebruiken, maar er zijn verschillende redenen om het bestand te gebruiken REST API in plaats van SMB, zoals:
 
 - U wilt een snelle wijziging in de Azure-bestandsshare aanbrengen vanaf een apparaat terwijl u onderweg bent, zoals vanaf een laptop zonder SMB-toegang, een tablet of een mobiel apparaat.
 - U wilt een script of toepassing uitvoeren vanaf een client die geen SMB-share kan koppelen, zoals on-premises clients waarvoor poort 445 niet is gedeblokkeerd.

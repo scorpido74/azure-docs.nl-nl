@@ -1,6 +1,6 @@
 ---
-title: Een Point-to-Site (P2S) VPN op Linux configureren voor gebruik met Azure Files | Microsoft Documenten
-description: Een Point-to-Site (P2S) VPN configureren op Linux voor gebruik met Azure Files
+title: Een punt-naar-site-VPN (P2S) op Linux configureren voor gebruik met Azure Files | Microsoft Docs
+description: Een punt-naar-site-VPN (P2S) op Linux configureren voor gebruik met Azure Files
 author: roygara
 ms.service: storage
 ms.topic: overview
@@ -8,30 +8,30 @@ ms.date: 10/19/2019
 ms.author: rogarana
 ms.subservice: files
 ms.openlocfilehash: cfff05ed52258ee448d83a521b99dca7d356a0f9
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80061054"
 ---
-# <a name="configure-a-point-to-site-p2s-vpn-on-linux-for-use-with-azure-files"></a>Een Point-to-Site (P2S) VPN op Linux configureren voor gebruik met Azure Files
-U een Point-to-Site (P2S) VPN-verbinding gebruiken om uw Azure-bestandsshares vanaf buiten Azure over SMB te monteren, zonder poort 445 te openen. Een Point-to-Site VPN-verbinding is een VPN-verbinding tussen Azure en een individuele client. Als u een P2S VPN-verbinding met Azure Files wilt gebruiken, moet een P2S VPN-verbinding worden geconfigureerd voor elke client die verbinding wil maken. Als u veel clients hebt die verbinding moeten maken met uw Azure-bestandsshares vanuit uw on-premises netwerk, u een Site-to-Site (S2S) VPN-verbinding gebruiken in plaats van een Point-to-Site-verbinding voor elke client. Zie [Een site-to-site VPN configureren voor gebruik met Azure Files voor](storage-files-configure-s2s-vpn.md)meer informatie.
+# <a name="configure-a-point-to-site-p2s-vpn-on-linux-for-use-with-azure-files"></a>Een punt-naar-site-VPN (P2S) op Linux configureren voor gebruik met Azure Files
+U kunt een punt-naar-site-VPN-verbinding (P2S) gebruiken om uw Azure-bestands shares te koppelen via SMB van buiten Azure, zonder dat u poort 445 hoeft te openen. Een punt-naar-site-VPN-verbinding is een VPN-verbinding tussen Azure en een afzonderlijke client. Als u een P2S VPN-verbinding met Azure Files wilt gebruiken, moet er een P2S VPN-verbinding worden geconfigureerd voor elke client die verbinding wil maken. Als u veel clients hebt die verbinding moeten maken met uw Azure-bestands shares van uw on-premises netwerk, kunt u een S2S-VPN-verbinding (site-naar-site) gebruiken in plaats van een punt-naar-site-verbinding voor elke client. Zie [een site-naar-site-VPN configureren voor gebruik met Azure files voor](storage-files-configure-s2s-vpn.md)meer informatie.
 
-We raden u ten zeerste aan [het netwerkoverzicht azure files](storage-files-networking-overview.md) te lezen voordat u verdergaat met dit artikel voor een volledige bespreking van de netwerkopties die beschikbaar zijn voor Azure Files.
+We raden u ten zeerste aan [Azure files netwerk overzicht](storage-files-networking-overview.md) te lezen voordat u verdergaat met dit artikel voor een volledige bespreking van de beschik bare netwerk opties voor Azure files.
 
-In het artikel worden de stappen beschreven om een Point-to-Site VPN op Linux te configureren om Azure-bestandsshares direct on-premises te monteren. Als u Azure File Sync-verkeer wilt routeren via een VPN, raadpleegt u [de proxy- en firewall-instellingen voor Azure File Sync configureren.](storage-sync-files-firewall-and-proxy.md)
+In het artikel worden de stappen beschreven voor het configureren van een punt-naar-site-VPN op Linux om Azure-bestands shares rechtstreeks on-premises te koppelen. Als u Azure File Sync verkeer via een VPN wilt omleiden, raadpleegt u [Azure file sync proxy-en Firewall instellingen configureren](storage-sync-files-firewall-and-proxy.md).
 
 ## <a name="prerequisites"></a>Vereisten
-- De meest recente versie van de Azure CLI. Zie [Azure PowerShell CLI installeren](https://docs.microsoft.com/cli/azure/install-azure-cli) en uw besturingssysteem selecteren voor meer informatie over het installeren van de Azure CLI. Als u de Azure PowerShell-module liever op Linux gebruikt, u, maar de onderstaande instructies worden gepresenteerd voor Azure CLI.
+- De meest recente versie van de Azure CLI. Zie voor meer informatie over het installeren van de Azure CLI [de Azure POWERSHELL cli installeren](https://docs.microsoft.com/cli/azure/install-azure-cli) en selecteer uw besturings systeem. Als u liever de module Azure PowerShell gebruikt in Linux, kunt u de onderstaande instructies echter voor Azure CLI weer geven.
 
-- Een Azure-bestandsshare dat u on-premises wilt monteren. Azure-bestandsshares worden geïmplementeerd in opslagaccounts, die beheerconstructies zijn die een gedeelde opslaggroep vertegenwoordigen waarin u meerdere bestandsshares implementeren, evenals andere opslagbronnen, zoals blobcontainers of wachtrijen. Meer informatie over het implementeren van Azure-bestandsshares en opslagaccounts in [Een Azure-bestandsshare maken.](storage-how-to-create-file-share.md)
+- Een Azure-bestands share die u on-premises wilt koppelen. Azure-bestands shares worden geïmplementeerd in opslag accounts. Dit zijn beheer constructies die een gedeelde opslag groep vertegenwoordigen, waarbij u meerdere bestands shares en andere opslag resources, zoals BLOB-containers of wacht rijen, kunt implementeren. Meer informatie over het implementeren van Azure-bestands shares en opslag accounts vindt u in [een Azure-bestands share maken](storage-how-to-create-file-share.md).
 
-- Een privéeindpunt voor het opslagaccount met het Azure-bestandsaandeel dat u on-premises wilt monteren. Zie [Eindpunten voor Azure Files-netwerk configureren](storage-files-networking-endpoints.md?tabs=azure-cli)voor meer informatie over het maken van een privéeindpunt. 
+- Een persoonlijk eind punt voor het opslag account dat de Azure-bestands share bevat die u on-premises wilt koppelen. Zie [Azure files Network-eind punten configureren](storage-files-networking-endpoints.md?tabs=azure-cli)voor meer informatie over het maken van een persoonlijk eind punt. 
 
 ## <a name="install-required-software"></a>Vereiste software installeren
-De Azure virtual network gateway kan VPN-verbindingen bieden via verschillende VPN-protocollen, waaronder IPsec en OpenVPN. Deze gids laat zien hoe ipsec te gebruiken en maakt gebruik van de strongSwan pakket om de ondersteuning op Linux. 
+De virtuele Azure-netwerk gateway kan VPN-verbindingen bieden met behulp van verschillende VPN-protocollen, waaronder IPsec en OpenVPN. In deze hand leiding wordt uitgelegd hoe u IPsec gebruikt en hoe u het strongSwan-pakket gebruikt om ondersteuning te bieden voor Linux. 
 
-> Geverifieerd met Ubuntu 18.10.
+> Geverifieerd met Ubuntu 18,10.
 
 ```bash
 sudo apt install strongswan strongswan-pki libstrongswan-extra-plugins curl libxml2-utils cifs-utils
@@ -40,11 +40,11 @@ installDir="/etc/"
 ```
 
 ### <a name="deploy-a-virtual-network"></a>Een virtueel netwerk implementeren 
-Als u uw Azure-bestandsshare en andere Azure-bronnen via een Point-to-Site VPN on-premises wilt openen, moet u een virtueel netwerk of VNet maken. De P2S VPN-verbinding die u automatisch maakt, is een brug tussen uw on-premises Linux-machine en dit virtuele Azure-netwerk.
+Als u toegang wilt krijgen tot uw Azure-bestands share en andere Azure-resources via een punt-naar-site-VPN, moet u een virtueel netwerk of VNet maken. De P2S VPN-verbinding die u automatisch maakt, is een brug tussen uw on-premises Linux-machine en dit virtuele Azure-netwerk.
 
-Met het volgende script wordt een Virtueel Azure-netwerk gemaakt met drie subnetten: een voor het serviceeindpunt van uw opslagaccount, één voor het privéeindpunt van uw opslagaccount, dat vereist is om on-premises toegang te krijgen tot het opslagaccount zonder aangepaste routering voor het openbare IP van het opslagaccount dat kan veranderen, en een voor uw virtuele netwerkgateway die de VPN-service biedt. 
+Met het volgende script maakt u een virtueel Azure-netwerk met drie subnetten: één voor het service-eind punt van uw opslag account, een voor het privé-eind punt van uw opslag account, dat is vereist voor toegang tot het opslag account op locatie zonder aangepaste route ring te maken voor het open bare IP-adres van het opslag account dat kan worden gewijzigd, en één voor de virtuele netwerk gateway 
 
-Vergeet niet `<region>` `<resource-group>`om `<desired-vnet-name>` te vervangen, , en met de juiste waarden voor uw omgeving.
+Vergeet niet om `<region>`, `<resource-group>`en `<desired-vnet-name>` met de juiste waarden voor uw omgeving te vervangen.
 
 ```bash
 region="<region>"
@@ -81,8 +81,8 @@ gatewaySubnet=$(az network vnet subnet create \
     --query "id" | tr -d '"')
 ```
 
-## <a name="create-certificates-for-vpn-authentication"></a>Certificaten maken voor VPN-verificatie
-Om vpn-verbindingen van uw on-premises Linux-machines te verifiëren om toegang te krijgen tot uw virtuele netwerk, moet u twee certificaten maken: een rootcertificaat, dat wordt verstrekt aan de gateway van de virtuele machine en een clientcertificaat, dat ondertekend met het basiscertificaat. In het volgende script worden de vereiste certificaten gemaakt.
+## <a name="create-certificates-for-vpn-authentication"></a>Certificaten voor VPN-verificatie maken
+Als u wilt dat VPN-verbindingen van uw on-premises Linux-machines worden geverifieerd om toegang te krijgen tot uw virtuele netwerk, moet u twee certificaten maken: een basis certificaat dat wordt verschaft aan de gateway van de virtuele machine en een client certificaat, dat wordt ondertekend met het basis certificaat. Met het volgende script worden de vereiste certificaten gemaakt.
 
 ```bash
 rootCertName="P2SRootCert"
@@ -111,13 +111,13 @@ sudo ipsec pki --pub --in "clientKey.pem" | \
 openssl pkcs12 -in "clientCert.pem" -inkey "clientKey.pem" -certfile rootCert.pem -export -out "client.p12" -password "pass:$password"
 ```
 
-## <a name="deploy-virtual-network-gateway"></a>Virtuele netwerkgateway implementeren
-De Azure virtual network gateway is de service waarmee uw on-premises Linux-machines verbinding maken. Het implementeren van deze service vereist twee basiscomponenten: een openbaar IP dat de gateway naar uw clients identificeert, waar ze zich ook in de wereld bevinden en een rootcertificaat dat u eerder hebt gemaakt en dat wordt gebruikt om uw klanten te verifiëren.
+## <a name="deploy-virtual-network-gateway"></a>Virtuele netwerk gateway implementeren
+De gateway van het virtuele Azure-netwerk is de service waarmee uw on-premises Linux-machines verbinding maken. Voor het implementeren van deze service zijn twee basis onderdelen vereist: een openbaar IP-adres waarmee de gateway naar uw clients wordt geïdentificeerd, waar deze zich ook in de wereld bevinden en een basis certificaat dat u eerder hebt gemaakt en dat wordt gebruikt om uw clients te verifiëren.
 
-Vergeet niet `<desired-vpn-name-here>` om te vervangen door de naam die u wilt voor deze bronnen.
+Vergeet niet door `<desired-vpn-name-here>` de gewenste naam voor deze resources te vervangen.
 
 > [!Note]  
-> Het implementeren van de Azure virtual network gateway kan tot 45 minuten duren. Terwijl deze bron wordt geïmplementeerd, wordt dit scriptscript voor bash geblokkeerd voordat de implementatie moet worden voltooid. Dit is normaal gedrag.
+> Het implementeren van de virtuele Azure-netwerk gateway kan Maxi maal 45 minuten duren. Tijdens de implementatie van deze resource wordt door dit script script voor bash geblokkeerd, zodat deze kan worden voltooid. Dit is normaal gedrag.
 
 ```bash
 vpnName="<desired-vpn-name-here>"
@@ -152,7 +152,7 @@ az network vnet-gateway root-cert create \
 ```
 
 ## <a name="configure-the-vpn-client"></a>De VPN-client configureren
-De Azure virtual network gateway maakt een downloadbaar pakket met configuratiebestanden die nodig zijn om de VPN-verbinding op uw on-premises Linux-machine te initialiseren. In het volgende script worden de certificaten die `ipsec.conf` u hebt gemaakt op de juiste plek geplaatst en wordt het bestand geconfigureerd met de juiste waarden uit het configuratiebestand in het downloadbare pakket.
+De gateway van het virtuele netwerk van Azure maakt een downloadbaar pakket met configuratie bestanden die nodig zijn om de VPN-verbinding op uw on-premises Linux-computer te initialiseren. Het volgende script plaatst de certificaten die u in de juiste plaats hebt gemaakt en configureert `ipsec.conf` het bestand met de juiste waarden uit het configuratie bestand in het Download bare pakket.
 
 ```bash
 vpnClient=$(az network vnet-gateway vpn-client generate \
@@ -190,8 +190,8 @@ sudo ipsec restart
 sudo ipsec up $virtualNetworkName 
 ```
 
-## <a name="mount-azure-file-share"></a>Azure-bestandsshare monteren
-Nu u uw Point-to-Site VPN hebt ingesteld, u uw Azure-bestandsshare instellen. In het volgende voorbeeld wordt het aandeel niet-voortdurend gemonteerd. Zie [Een Azure-bestandsshare gebruiken met Linux](storage-how-to-use-files-linux.md)als u voortdurend wilt monteren. 
+## <a name="mount-azure-file-share"></a>Azure-bestands share koppelen
+Nu u uw punt-naar-site-VPN hebt ingesteld, kunt u uw Azure-bestands share koppelen. In het volgende voor beeld wordt de share niet permanent gekoppeld. Zie [een Azure-bestands share gebruiken met Linux](storage-how-to-use-files-linux.md)voor meer informatie over het vastmaken van een permanente koppeling. 
 
 ```bash
 fileShareName="myshare"
@@ -209,6 +209,6 @@ sudo mount -t cifs $smbPath $mntPath -o vers=3.0,username=$storageAccountName,pa
 ```
 
 ## <a name="see-also"></a>Zie ook
-- [Overzicht van Azure Files-netwerken](storage-files-networking-overview.md)
-- [Een Point-to-Site (P2S) VPN op Windows configureren voor gebruik met Azure Files](storage-files-configure-p2s-vpn-windows.md)
-- [Een Site-to-Site (S2S) VPN configureren voor gebruik met Azure Files](storage-files-configure-s2s-vpn.md)
+- [Overzicht van Azure Files netwerken](storage-files-networking-overview.md)
+- [Een punt-naar-site-VPN (P2S) in Windows configureren voor gebruik met Azure Files](storage-files-configure-p2s-vpn-windows.md)
+- [Een site-naar-site-VPN (S2S) configureren voor gebruik met Azure Files](storage-files-configure-s2s-vpn.md)

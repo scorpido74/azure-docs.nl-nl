@@ -1,6 +1,6 @@
 ---
-title: Beheerd virtueel netwerk in Azure Synapse Analytics
-description: Een artikel waarin beheerd virtueel netwerk in Azure Synapse Analytics wordt uitgelegd
+title: Beheerd virtueel netwerk in azure Synapse Analytics
+description: Een artikel waarin het beheerde virtuele netwerk in azure Synapse Analytics wordt uitgelegd
 author: RonyMSFT
 ms.service: synapse-analytics
 ms.topic: overview
@@ -8,58 +8,58 @@ ms.date: 04/15/2020
 ms.author: ronytho
 ms.reviewer: jrasnick
 ms.openlocfilehash: 162d96244b01f8c5e1acf224475aadb9508f0aa5
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81423633"
 ---
-# <a name="azure-synapse-analytics-managed-virtual-network-preview"></a>Azure Synapse Analytics Managed Virtual Network (preview)
+# <a name="azure-synapse-analytics-managed-virtual-network-preview"></a>Beheerde Virtual Network Azure Synapse Analytics (preview)
 
-In dit artikel wordt Managed Virtual Network in Azure Synapse Analytics uitgelegd.
+In dit artikel worden beheerde Virtual Network in azure Synapse Analytics uitgelegd.
 
-## <a name="managed-workspace-vnet"></a>Beheerde werkruimte VNet
+## <a name="managed-workspace-vnet"></a>VNet beheerde werk ruimte
 
-Wanneer u uw Azure Synapse-werkruimte maakt, u ervoor kiezen deze aan een VNet te koppelen. De VNet die aan uw werkruimte is gekoppeld, wordt beheerd door Azure Synapse. Deze VNet wordt een *Beheerde werkruimte VNet*genoemd.
+Wanneer u de Azure Synapse-werk ruimte maakt, kunt u deze koppelen aan een VNet. Het VNet dat is gekoppeld aan uw werk ruimte wordt beheerd door Azure Synapse. Dit VNet wordt een *beheerde werk ruimte-vnet*genoemd.
 
-Beheerde werkruimte VNet biedt u waarde op vier manieren:
+Beheer van beheerde werk ruimten biedt u op vier manieren een waarde:
 
-- Met een Managed workspace VNet u de last van het beheer van de VNet naar Azure Synapse ontlasten.
-- U hoeft inkomende NSG-regels niet op uw eigen VNets te configureren, zodat Azure Synapse-beheerverkeer uw VNet kan invoeren. Verkeerde configuratie van deze NSG-regels veroorzaakt serviceonderbrekingen voor klanten.
-- U hoeft geen subnet te maken voor uw Spark-clusters op basis van piekbelasting.
-- Beheerde werkruimte VNet en beheerde privéeindpunten beschermt tegen gegevensexfiltratie. U alleen beheerde privéeindpunten maken in een werkruimte waar een Beheerde werkruimte VNet aan is gekoppeld.
+- Met een beheerde werk ruimte VNet kunt u de last van het beheer van VNet naar Azure Synapse.
+- U hoeft geen inkomende NSG-regels in te stellen op uw eigen VNets, zodat Azure Synapse Management-verkeer uw VNet kan invoeren. Een onjuiste configuratie van deze NSG-regels leidt ertoe dat de service wordt onderbroken door klanten.
+- U hoeft geen subnet voor uw Spark-clusters te maken op basis van de piek belasting.
+- Beheer van beheerde werk ruimte samen met beheerde persoonlijke eind punten beschermt tegen gegevens exfiltration. U kunt alleen beheerde persoonlijke eind punten maken in een werk ruimte waaraan een beheerde werk ruimte-VNet is gekoppeld.
 
-Het maken van een werkruimte met een VNet voor beheerde werkruimte die eraan is gekoppeld, zorgt ervoor dat uw werkruimte is geïsoleerd van andere werkruimten. Azure Synapse biedt verschillende analytische mogelijkheden in een werkruimte: gegevensintegratie, Apache Spark, SQL-pool en SQL on-demand.
+Als u een werk ruimte maakt waaraan een beheerde werk ruimte-VNet is gekoppeld, zorgt u ervoor dat uw werk ruimte in een netwerk is geïsoleerd van andere werk ruimten. Azure Synapse biedt verschillende analyse mogelijkheden in een werk ruimte: gegevens integratie, Apache Spark, SQL-pool en SQL op aanvraag.
 
-Als uw werkruimte een VNet voor beheerde werkruimte heeft, worden gegevensintegratie en Spark-resources daarin geïmplementeerd. Een Beheerde werkruimte VNet biedt ook isolatie op gebruikersniveau voor Spark-activiteiten omdat elk Spark-cluster zich in zijn eigen subnet bevindt.
+Als uw werk ruimte beschikt over een beheerde werk ruimte VNet, worden gegevens integratie en Spark-resources geïmplementeerd. Een beheerde werk ruimte VNet biedt ook isolatie op gebruikers niveau voor Spark-activiteiten, omdat elk Spark-cluster zich in een eigen subnet bevindt.
 
-SQL-pool en SQL on-demand zijn multi-tenantmogelijkheden en bevinden zich daarom buiten de Managed workspace VNet. Intra-workspace communicatie naar SQL pool en SQL on-demand gebruiken Azure private links. Deze privékoppelingen worden automatisch voor u gemaakt wanneer u een werkruimte maakt waaraan vnet voor beheerde werkruimte is gekoppeld.
-
->[!IMPORTANT]
->U deze werkruimteconfiguratie niet wijzigen nadat de werkruimte is gemaakt. U bijvoorbeeld geen werkruimte opnieuw configureren waaraan vnet van beheerde werkruimte is gekoppeld en waaraan een VNet is gekoppeld. U ook een werkruimte niet opnieuw configureren met een VNet voor beheerde werkruimte en het VNet ervan loskoppelen.
-
-## <a name="create-an-azure-synapse-workspace-with-a-managed-workspace-vnet"></a>Een Azure Synapse-werkruimte maken met een VNet voor beheerde werkruimte
-
-Als u een Azure Synapse-werkruimte wilt maken waaraan een VNet voor beheerde werkruimte is gekoppeld, schakelt u het tabblad **Beveiliging + netwerken** in Azure-portal in en schakelt u het selectievakje **Beheerd virtueel netwerk inschakelen** in.
-
-Als u het selectievakje niet hebt ingeschakeld, is er geen VNet aan uw werkruimte gekoppeld.
+SQL-groep en SQL on-demand zijn mogelijkheden voor meerdere tenants en zijn daarom buiten het VNet van de beheerde werk ruimte. Communicatie tussen de werk ruimte en SQL-groep en SQL op aanvraag gebruiken persoonlijke koppelingen van Azure. Deze persoonlijke koppelingen worden automatisch voor u gemaakt wanneer u een werk ruimte maakt waaraan een Managed Workspace VNet is gekoppeld.
 
 >[!IMPORTANT]
->U alleen privékoppelingen gebruiken in een werkruimte met een VNet voor beheerde werkruimte.
+>U kunt deze werkruimte configuratie niet wijzigen nadat de werk ruimte is gemaakt. U kunt bijvoorbeeld een werk ruimte waaraan geen Managed Workspace VNet is gekoppeld, opnieuw configureren en er een VNet aan koppelen. Op dezelfde manier kunt u een werk ruimte die is gekoppeld aan het beheerde werk ruimte VNet niet opnieuw configureren en de VNet loskoppelen.
 
-![Beheerde werkruimte VNet inschakelen](./media/synapse-workspace-managed-vnet/enable-managed-vnet-1.png)
+## <a name="create-an-azure-synapse-workspace-with-a-managed-workspace-vnet"></a>Een Azure Synapse-werk ruimte maken met een beheerde werk ruimte VNet
+
+Als u een Azure Synapse-werk ruimte wilt maken waaraan een beheerde werk ruimte VNet is gekoppeld, selecteert u het tabblad **beveiliging en netwerk** in azure Portal en schakelt u het selectie vakje **beheerd virtueel netwerk inschakelen** in.
+
+Als u het selectie vakje uitschakelt, is er geen VNet gekoppeld aan de werk ruimte.
+
+>[!IMPORTANT]
+>U kunt alleen persoonlijke koppelingen gebruiken in een werk ruimte die een beheerde werk ruimte VNet heeft.
+
+![Beheer van beheerde werk ruimte inschakelen](./media/synapse-workspace-managed-vnet/enable-managed-vnet-1.png)
 
 >[!NOTE]
->Al het uitgaande verkeer van de Beheerde werkruimte VNet wordt in de toekomst geblokkeerd. Het wordt aanbevolen om verbinding te maken met al uw gegevensbronnen met beheerde privéeindpunten.
+>Al het uitgaande verkeer van het beheerde werk ruimte VNet wordt in de toekomst geblokkeerd. Het is raadzaam om verbinding te maken met al uw gegevens bronnen met behulp van beheerde privé-eind punten.
 
-U controleren of uw Azure Synapse-werkruimte is gekoppeld aan een VNet voor beheerde werkruimte door **Overzicht** te selecteren in Azure-portal.
+U kunt controleren of uw Azure Synapse-werk ruimte is gekoppeld aan een beheerde werk ruimte VNet door **overzicht** te selecteren in azure Portal.
 
-![Overzicht van werkruimtein Azure-portal](./media/synapse-workspace-managed-vnet/enable-managed-vnet-2.png)
+![Overzicht van de werk ruimte in Azure Portal](./media/synapse-workspace-managed-vnet/enable-managed-vnet-2.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Een [Azure Synapse Workspace maken](../quickstart-create-workspace.md)
+Een [Azure Synapse-werk ruimte](../quickstart-create-workspace.md) maken
 
-Meer informatie over [beheerde privéeindpunten](./synapse-workspace-managed-private-endpoints.md)
+Meer informatie over [beheerde privé-eind punten](./synapse-workspace-managed-private-endpoints.md)
 
-[Beheerde privéeindpunten maken voor uw gegevensbronnen](./how-to-create-managed-private-endpoints.md)
+[Beheerde persoonlijke eind punten maken voor uw gegevens bronnen](./how-to-create-managed-private-endpoints.md)

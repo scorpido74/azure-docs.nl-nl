@@ -10,10 +10,10 @@ ms.date: 02/20/2020
 ms.author: babanisa
 ms.custom: seodec18
 ms.openlocfilehash: b6f987eb283edea7f2d8e6b207b5b4e5b14f9120
-ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/15/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81393189"
 ---
 # <a name="what-is-azure-event-grid"></a>Wat is Azure Event Grid?
@@ -22,7 +22,7 @@ Met Azure Event Grid kunt u eenvoudig toepassingen bouwen met op gebeurtenissen 
 
 U kunt filters gebruiken voor het doorsturen van specifieke gebeurtenissen naar verschillende eindpunten, multicasting uitvoeren naar meerdere eindpunten en ervoor zorgen dat uw gebeurtenissen op betrouwbare wijze worden bezorgd.
 
-Azure Event Grid wordt geïmplementeerd om de beschikbaarheid te maximaliseren door zich native te verspreiden over meerdere foutdomeinen in elke regio en over beschikbaarheidszones (in regio's die hen ondersteunen). Zie Producten die beschikbaar zijn [per regio](https://azure.microsoft.com/global-infrastructure/services/?products=event-grid&regions=all)voor een lijst met regio's die worden ondersteund door gebeurtenisraster.
+Azure Event Grid wordt geïmplementeerd om de beschik baarheid te maximaliseren door systeem eigen verspreiding uit te breiden over meerdere fout domeinen in elke regio, en over beschikbaarheids zones (in regio's die deze ondersteunen). Zie [producten beschikbaar per regio](https://azure.microsoft.com/global-infrastructure/services/?products=event-grid&regions=all)voor een lijst met regio's die door Event grid worden ondersteund.
 
 In dit artikel vindt u een overzicht van Azure Event Grid. Zie [Aangepaste gebeurtenissen maken en routeren met behulp van Azure Event Grid](custom-event-quickstart.md) als u aan de slag wilt met Azure Event Grid. 
 
@@ -36,14 +36,14 @@ Op dit moment ondersteunen de volgende Azure-services het verzenden van gebeurte
 
 - [Azure App Configuration](event-schema-app-configuration.md)
 - [Azure Blob Storage](event-schema-blob-storage.md)
-- [Azure-containerregister](event-schema-container-registry.md)
+- [Azure Container Registry](event-schema-container-registry.md)
 - [Azure Event Hubs](event-schema-event-hubs.md)
 - [Azure IoT Hub](event-schema-iot-hub.md)
 - [Azure Key Vault](event-schema-key-vault.md)
 - [Azure Machine Learning](event-schema-machine-learning.md)
 - [Azure Maps](event-schema-azure-maps.md)
 - [Azure Media Services](event-schema-media-services.md)
-- [Azure-brongroepen](event-schema-resource-groups.md)
+- [Azure-resourcegroepen](event-schema-resource-groups.md)
 - [Azure Service Bus](event-schema-service-bus.md)
 - [Azure SignalR](event-schema-azure-signalr.md)
 - [Azure-abonnementen](event-schema-subscriptions.md)
@@ -57,7 +57,7 @@ Zie [gebeurtenis-handlers](event-handlers.md) voor meer informatie over de mogel
 * [Event Hubs](event-handlers.md#event-hubs)
 * [Hybride verbindingen](event-handlers.md#hybrid-connections)
 * [Logic Apps](event-handlers.md#logic-apps)
-* [Power Automate (voorheen bekend als Microsoft Flow)](https://preview.flow.microsoft.com/connectors/shared_azureeventgrid/azure-event-grid/)
+* [Energie automatisering (voorheen bekend als Microsoft Flow)](https://preview.flow.microsoft.com/connectors/shared_azureeventgrid/azure-event-grid/)
 * [Service Bus](event-handlers.md#service-bus)
 * [Queue Storage](event-handlers.md#queue-storage)
 * [WebHooks](event-handlers.md#webhooks)
@@ -85,7 +85,7 @@ Hier volgt een aantal essentiële functies van Azure Event Grid:
 * **Betalen per gebeurtenis**: betaal alleen voor het bedrag waarvoor u Event Grid gebruikt.
 * **Hoge doorvoer**: maak workloads met een hoog volume in Event Grid met ondersteuning voor miljoenen gebeurtenissen per seconde.
 * **Ingebouwde gebeurtenissen**: ga snel aan de slag met voor resources gedefinieerde ingebouwde gebeurtenissen.
-* **Aangepaste gebeurtenissen** : gebruik gebeurtenisraster om aangepaste gebeurtenissen in uw app te routeren, te filteren en betrouwbaar te leveren.
+* **Aangepaste gebeurtenissen** : gebruik Event grid voor het routeren, filteren en betrouw bare levering van aangepaste gebeurtenissen in uw app.
 
 Zie [Een keuze maken tussen Azure-services die berichten bezorgen](compare-messaging-services.md) voor een vergelijking van Event Grid, Event Hubs en Service Bus.
 

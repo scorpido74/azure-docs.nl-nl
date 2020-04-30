@@ -1,6 +1,6 @@
 ---
-title: Snelstart - De toegang van een gebruiker tot Azure-bronnen weergeven
-description: In deze QuickStart leert u hoe u de toegang van een gebruiker of andere beveiligingsprincipal weergeeft tot Azure-resources met behulp van RBAC (Role-based access control) en de Azure-portal.
+title: 'Quick Start: toegang tot Azure-resources weer geven voor een gebruiker'
+description: In deze Quick Start leert u hoe u de toegang tot een gebruiker of een andere beveiligingsprincipal kunt weer geven met Azure-resources met behulp van op rollen gebaseerd toegangs beheer (RBAC) en de Azure Portal.
 services: role-based-access-control
 documentationCenter: ''
 author: rolyon
@@ -15,13 +15,13 @@ ms.date: 11/30/2018
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.openlocfilehash: b23c10fc2a551b8044b208911dbc048968b06564
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "74419618"
 ---
-# <a name="quickstart-view-the-access-a-user-has-to-azure-resources"></a>Snelstart: de toegang weergeven die een gebruiker heeft tot Azure-bronnen
+# <a name="quickstart-view-the-access-a-user-has-to-azure-resources"></a>Snelstartgids: de toegang van een gebruiker tot Azure-resources weer geven
 
 U kunt de blade **Toegangsbeheer (IAM)** in [Op rollen gebaseerd toegangsbeheer (RBAC)](overview.md) gebruiken om de toegang die een gebruiker of een andere beveiligings-principal tot de Azure-resources heeft te bekijken. Maar soms wilt u alleen snel de toegang van één gebruiker of een andere beveiligings-principal bekijken. De eenvoudigste manier om dit te doen, is met de functie **Toegang controleren** in de Azure-portal.
 
@@ -54,4 +54,4 @@ U kunt de blade **Toegangsbeheer (IAM)** in [Op rollen gebaseerd toegangsbeheer 
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"]
-> [Zelfstudie: Een gebruiker toegang verlenen tot Azure-bronnen met RBAC en de Azure-portal](quickstart-assign-role-user-portal.md)
+> [Zelf studie: een gebruiker toegang verlenen tot Azure-resources met RBAC en de Azure Portal](quickstart-assign-role-user-portal.md)

@@ -1,6 +1,6 @@
 ---
-title: TPM-apparaat inschrijven voor Azure Device Provisioning Service met Java
-description: Snelstart - TPM-apparaat inschrijven voor Azure IoT Hub Device Provisioning Service (DPS) met Java-service SDK. In deze snelstart wordt gebruikgemaakt van afzonderlijke inschrijvingen.
+title: TPM-apparaat inschrijven bij Azure Device Provisioning Service met behulp van Java
+description: 'Quick Start: TPM-apparaat inschrijven bij Azure IoT Hub Device Provisioning Service (DPS) met behulp van de Java Service-SDK. In deze snelstart wordt gebruikgemaakt van afzonderlijke inschrijvingen.'
 author: wesmc7777
 ms.author: wesmc
 ms.date: 11/08/2019
@@ -10,26 +10,26 @@ services: iot-dps
 ms.devlang: java
 ms.custom: mvc
 ms.openlocfilehash: c199d5be4c103c80a6fcc126af70f48367909f64
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "79241694"
 ---
-# <a name="quickstart-enroll-tpm-device-to-iot-hub-device-provisioning-service-using-java-service-sdk"></a>Snelstart: TPM-apparaat inschrijven voor IoT Hub-apparaatinrichtingsservice met Java Service SDK
+# <a name="quickstart-enroll-tpm-device-to-iot-hub-device-provisioning-service-using-java-service-sdk"></a>Quick Start: TPM-apparaat inschrijven voor IoT Hub Device Provisioning Service met behulp van de Java Service-SDK
 
 [!INCLUDE [iot-dps-selector-quick-enroll-device-tpm](../../includes/iot-dps-selector-quick-enroll-device-tpm.md)]
 
-In deze quickstart maakt u programmatisch een individuele inschrijving voor een gesimuleerd TPM-apparaat in de Azure IoT Hub Device Provisioning Service met behulp van de Java Service SDK met behulp van een voorbeeld java-toepassing.
+In deze Quick Start maakt u programmatisch een afzonderlijke inschrijving voor een gesimuleerd TPM-apparaat in de Azure IoT Hub Device Provisioning Service met behulp van de Java Service-SDK met behulp van een Java-voorbeeld toepassing.
 
 ## <a name="prerequisites"></a>Vereisten
 
-- Voltooiing van het instellen van [de IoT Hub Device Provisioning Service met de Azure-portal.](./quick-setup-auto-provision.md)
-- Voltooiing van [Lees cryptografische sleutels van het TPM-apparaat](quick-create-simulated-device.md#simulatetpm).
-- Een Azure-account met een actief abonnement. [Maak er gratis een.](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)
-- [Java SE Development Kit 8](https://aka.ms/azure-jdks). Deze quickstart installeert hieronder de [Java Service SDK.](https://azure.github.io/azure-iot-sdk-java/service/) Het werkt op zowel Windows als Linux. Deze quickstart maakt gebruik van Windows.
-- [Maven 3.](https://maven.apache.org/download.cgi)
-- [Git.](https://git-scm.com/download/)
+- Volt ooien van [het instellen van de IOT hub Device Provisioning Service met de Azure Portal](./quick-setup-auto-provision.md).
+- Het [lezen van cryptografische sleutels van het TPM-apparaat](quick-create-simulated-device.md#simulatetpm)is voltooid.
+- Een Azure-account met een actief abonnement. [Maak er gratis een](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
+- [Java SE Development Kit 8](https://aka.ms/azure-jdks). In deze Snelstartgids wordt de onderstaande SDK voor de [Java-service](https://azure.github.io/azure-iot-sdk-java/service/) geïnstalleerd. Het werkt op Windows en Linux. Deze Snelstartgids maakt gebruik van Windows.
+- [Maven 3](https://maven.apache.org/download.cgi).
+- [Git](https://git-scm.com/download/).
 
 <a id="setupdevbox"></a>
 
@@ -62,7 +62,7 @@ In deze quickstart maakt u programmatisch een individuele inschrijving voor een 
 
 In deze sectie ziet u hoe u de inrichtingsgegevens van het TPM-apparaat toevoegt aan de voorbeeldcode. 
 
-1. Open een opdrachtprompt. Kloon de GitHub repo voor het voorbeeld van apparaatinschrijvingscode met behulp van de [Java Service SDK:](https://azure.github.io/azure-iot-sdk-java/service/)
+1. Open een opdrachtprompt. Kloon de GitHub-opslag plaats voor de registratie code van het apparaat met behulp van de SDK van de [Java-service](https://azure.github.io/azure-iot-sdk-java/service/):
     
     ```cmd\sh
     git clone https://github.com/Azure/azure-iot-sdk-java.git --recursive
@@ -71,7 +71,7 @@ In deze sectie ziet u hoe u de inrichtingsgegevens van het TPM-apparaat toevoegt
 2. Navigeer in de gedownloade broncode naar de voorbeeldmap **_azure-iot-sdk-java/provisioning/provisioning-samples/service-enrollment-sample_**. Open het bestand **_/src/main/java/samples/com/microsoft/azure/sdk/iot/ServiceEnrollmentSample.java_** in een editor naar keuze, en voeg de volgende gegevens toe:
 
    1. Voeg de `[Provisioning Connection String]` voor de inrichtingsservice als volgt toe vanuit de portal:
-       1. Navigeer naar uw inrichtingsservice in de [Azure-portal.](https://portal.azure.com) 
+       1. Navigeer naar uw inrichtings service in de [Azure Portal](https://portal.azure.com). 
        2. Open **Gedeeld toegangsbeleid** en selecteer een beleid met de machtiging *EnrollmentWrite*.
        3. Kopieer de **Verbindingsreeks van de primaire sleutel**. 
 
@@ -130,7 +130,7 @@ In deze sectie ziet u hoe u de inrichtingsgegevens van het TPM-apparaat toevoegt
     mvn install -DskipTests
     ```
 
-   Deze opdracht downloadt [`com.microsoft.azure.sdk.iot.provisioning.service`](https://www.mvnrepository.com/artifact/com.microsoft.azure.sdk.iot.provisioning/provisioning-service-client) het Maven-pakket naar uw machine. Dit pakket bevat de binaire bestanden voor de [Java Service SDK](https://azure.github.io/azure-iot-sdk-java/service/), die de voorbeeldcode moet bouwen. 
+   Met deze opdracht wordt het maven [`com.microsoft.azure.sdk.iot.provisioning.service`](https://www.mvnrepository.com/artifact/com.microsoft.azure.sdk.iot.provisioning/provisioning-service-client) -pakket gedownload naar uw computer. Dit pakket bevat de binaire bestanden voor de [Java Service-SDK](https://azure.github.io/azure-iot-sdk-java/service/), die de voorbeeld code moet bouwen. 
 
 3. Voer het voorbeeld uit met behulp van deze opdrachten in het opdrachtvenster:
 
@@ -141,19 +141,19 @@ In deze sectie ziet u hoe u de inrichtingsgegevens van het TPM-apparaat toevoegt
 
 4. Houd het uitvoervenster in de gaten voor een geslaagde inschrijving. 
 
-5. Navigeer naar de inrichtingsservice in Azure Portal. Selecteer **Inschrijvingen beheren**en selecteer het tabblad Individuele *Registration ID* **inschrijvingen.** 
+5. Navigeer naar de inrichtingsservice in Azure Portal. Selecteer **inschrijvingen beheren**en selecteer het tabblad **afzonderlijke inschrijvingen** . u ziet dat de *registratie-id* van uw gesimuleerde TPM-apparaat nu wordt weer gegeven. 
 
     ![De TPM-inschrijving controleren in de portal](./media/quick-enroll-device-tpm-java/verify-tpm-enrollment.png)  
 
 ## <a name="clean-up-resources"></a>Resources opschonen
-Als u van plan bent het voorbeeld van de Java-service te verkennen, moet u de bronnen die in deze quickstart zijn gemaakt, niet opschonen. Als u niet van plan bent door te gaan, gebruikt u de volgende stappen om alle bronnen die door deze quickstart zijn gemaakt, te verwijderen.
+Als u van plan bent het Java service-voor beeld te verkennen, moet u de resources die u in deze Quick Start hebt gemaakt, niet opschonen. Als u niet wilt door gaan, gebruikt u de volgende stappen om alle resources te verwijderen die door deze Quick start zijn gemaakt.
 
 1. Sluit het uitvoervenster van het Java-voorbeeld op de computer.
 1. Sluit het venster van de TPM-simulator dat u wellicht hebt gemaakt om uw TPM-apparaat te simuleren.
-1. Navigeer naar de service Apparaatinrichting in de Azure-portal, selecteer Inschrijvingen beheren en schakel het tabblad **Individuele inschrijvingen** in. Schakel het selectievakje in naast de *registratie-id* voor het **inschrijvingsitem**dat u met deze quickstart hebt gemaakt en druk op de knop **Verwijderen** boven aan het deelvenster.
+1. Navigeer naar uw Device Provisioning Service in de Azure Portal, selecteer **inschrijvingen beheren**en selecteer vervolgens het tabblad **afzonderlijke inschrijvingen** . Schakel het selectie vakje in naast de *registratie-id* voor de inschrijvings vermelding die u hebt gemaakt met behulp van deze Quick Start. Klik vervolgens op de knop **verwijderen** boven aan het deel venster.
 
 ## <a name="next-steps"></a>Volgende stappen
-In deze quickstart hebt u een gesimuleerd TPM-apparaat ingeschreven bij uw service voor apparaatinrichting. Voor meer informatie over device provisioning, gaat u verder met de zelfstudie voor het instellen van Device Provisioning Service in Azure Portal. 
+In deze Quick Start hebt u een gesimuleerd TPM-apparaat Inge schreven bij de Device Provisioning Service. Voor meer informatie over device provisioning, gaat u verder met de zelfstudie voor het instellen van Device Provisioning Service in Azure Portal. 
 
 > [!div class="nextstepaction"]
 > [Zelfstudies over Azure IoT Hub Device Provisioning Service](./tutorial-set-up-cloud.md)

@@ -1,6 +1,6 @@
 ---
-title: SQL on-demand (voorbeeld)
-description: Meer informatie over Synapse SQL on-demand in Azure Synapse Analytics.
+title: SQL op aanvraag (preview-versie)
+description: Meer informatie over Synapse SQL on-demand in azure Synapse Analytics.
 services: synapse analytics
 author: filippopovic
 ms.service: synapse-analytics
@@ -9,138 +9,138 @@ ms.date: 04/15/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
 ms.openlocfilehash: 8d4de424d5d4d6da1ee80e04b35e63ae29df57c8
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81424907"
 ---
-# <a name="sql-on-demand-preview-in-azure-synapse-analytics"></a>SQL on-demand (preview) in Azure Synapse Analytics 
+# <a name="sql-on-demand-preview-in-azure-synapse-analytics"></a>SQL on-demand (preview) in azure Synapse Analytics 
 
-Elke Azure Synapse Analytics-werkruimte (preview) wordt geleverd met SQL on-demand (preview)-eindpunten die u gebruiken om gegevens in het meer op te vragen.
+Elke Azure Synapse Analytics-werk ruimte (preview) wordt geleverd met SQL on-demand-eind punten (preview) die u kunt gebruiken om gegevens op te vragen in het Lake.
 
-SQL on-demand is een queryservice over de gegevens in uw gegevensmeer. Het stelt u in staat om toegang te krijgen tot uw gegevens via de volgende functionaliteiten:
+SQL on-demand is een query service over de gegevens in uw data Lake. Hiermee hebt u toegang tot uw gegevens via de volgende functies:
  
-- Een bekende T-SQL-syntaxis om gegevens op te vragen zonder gegevens te hoeven kopiëren of laden naar een gespecialiseerde winkel. 
-- Geïntegreerde connectiviteit via de T-SQL-interface die een breed scala aan business intelligence- en ad-hoc querytools biedt, waaronder de populairste stuurprogramma's. 
+- Een bekende T-SQL-syntaxis om gegevens op te vragen, zonder dat u gegevens naar een gespecialiseerde Store hoeft te kopiëren of te laden. 
+- Geïntegreerde connectiviteit via de T-SQL-interface waarmee u beschikt over een breed scala aan business intelligence en ad-hoc hulp middelen voor query's, met inbegrip van de populairste Stuur Programma's. 
 
-SQL on-demand is een gedistribueerd gegevensverwerkingssysteem, gebouwd voor grote schaal van gegevens en compute. SQL on-demand stelt u in staat om uw Big Data in enkele seconden tot minuten te analyseren, afhankelijk van de werkbelasting. Dankzij de ingebouwde fouttolerantie voor queryuitvoering biedt het systeem hoge betrouwbaarheids- en slagingspercentages, zelfs voor langlopende query's met grote gegevenssets.
+SQL on-demand is een systeem voor gedistribueerde gegevens verwerking, gebouwd voor grote schaal van gegevens en reken kracht. Met SQL on-Demand kunt u uw Big data binnen enkele seconden tot minuten analyseren, afhankelijk van de werk belasting. Dankzij de ingebouwde fout tolerantie voor het uitvoeren van query's biedt het systeem hoge betrouw baarheid en succes tarieven, zelfs voor langlopende query's waarbij grote gegevens sets worden gebruikt.
 
-SQL on-demand is serverless, dus er is geen infrastructuur om in te stellen of clusters te onderhouden. Een standaardeindpunt voor deze service wordt geleverd binnen elke Azure Synapse-werkruimte, zodat u gegevens opvragen zodra de werkruimte is gemaakt. Er zijn geen kosten in rekening gebracht voor gereserveerde resources, u wordt alleen in rekening gebracht voor de gegevens die worden gescand door query's die u uitvoert, vandaar dat dit model een echt pay-per-use-model is.  
+SQL on-demand is serverloze, daarom is er geen infra structuur om te installeren of clusters te onderhouden. Er wordt een standaard eindpunt voor deze service gegeven binnen elke Azure Synapse-werk ruimte, zodat u een query kunt uitvoeren op gegevens zodra de werk ruimte is gemaakt. Er worden geen kosten in rekening gebracht voor de gereserveerde resources, u wordt alleen gefactureerd voor de gegevens die worden gescand door query's die u uitvoert, daarom is dit model een echt model voor betalen per gebruik.  
 
-Als u Spark in uw gegevenspijplijn gebruikt voor gegevensvoorbereiding, reiniging of verrijking, u [alle Spark-tabellen die](develop-storage-files-spark-tables.md) u in het proces hebt gemaakt, rechtstreeks vanuit SQL on-demand opvragen. Gebruik [Private Link](../security/how-to-connect-to-workspace-with-private-links.md) om uw SQL on-demand eindpunt naar uw [beheerde werkruimte VNet](../security/synapse-workspace-managed-vnet.md)te brengen.  
+Als u Spark gebruikt in uw gegevens pijplijn, kunt u bij het voorbereiden van gegevens, het opschonen of verrijken [een query uitvoeren op alle Spark-tabellen](develop-storage-files-spark-tables.md) die u in het proces hebt gemaakt, rechtstreeks vanuit SQL op aanvraag. Gebruik [persoonlijke koppeling](../security/how-to-connect-to-workspace-with-private-links.md) om uw SQL on-demand-eind punt naar uw [beheerde werk ruimte VNet](../security/synapse-workspace-managed-vnet.md)te brengen.  
 
-## <a name="who-is-sql-on-demand-for"></a>Wie is SQL on-demand voor
+## <a name="who-is-sql-on-demand-for"></a>Wie is SQL op aanvraag voor
 
-Als u gegevens in het datalake wilt verkennen, er inzichten uit wilt halen of uw bestaande pijplijn voor gegevenstransformatie wilt optimaliseren, u profiteren van het gebruik van SQL on-demand. Het is geschikt voor de volgende scenario's:
+Als u gegevens in de data Lake wilt verkennen, inzicht wilt krijgen in de gegevens en uw bestaande gegevens transformatie pijplijn wilt optimaliseren, kunt u profiteren van het gebruik van SQL op aanvraag. Het is geschikt voor de volgende scenario's:
 
-- Basisdetectie en -verkenning - Snel redeneren over de gegevens in verschillende formaten (Parket, CSV, JSON) in uw datalake, zodat u plannen hoe u er inzichten uit halen.
-- Logisch datawarehouse – Bied een relationele abstractie bovenop ruwe of ongelijksoortige gegevens zonder gegevens te verplaatsen en te transformeren, waardoor uw gegevens altijd up-to-date kunnen worden bekeken.
-- Gegevenstransformatie - Eenvoudige, schaalbare en performante manier om gegevens in het meer te transformeren met Behulp van T-SQL, zodat deze kan worden ingevoerd naar BI en andere hulpprogramma's, of kan worden geladen in een relationele gegevensopslag (Synapse SQL-databases, Azure SQL Database, enz.).
+- Basis detectie en-ontdekking: snelle reden voor de gegevens in verschillende indelingen (Parquet, CSV, JSON) in uw data Lake, zodat u kunt plannen hoe u inzichten uit het bestand haalt.
+- Logisch data warehouse: bieden een relationele samen vatting boven op onbewerkte gegevens, zonder gegevens te verplaatsen en te transformeren, waardoor altijd actuele weer gave van uw gegevens mogelijk is.
+- Gegevens transformatie: eenvoudige, schaal bare en beste manier om gegevens in het Lake te transformeren met behulp van T-SQL, zodat deze kan worden ingevoerd in BI en andere hulpprogram ma's of worden geladen in een relationele gegevens opslag (Synapse SQL-data bases, Azure SQL Database, enzovoort).
 
-Verschillende professionele rollen kunnen profiteren van SQL on-demand:
+Andere professionele rollen kunnen profiteren van SQL on-demand:
 
-- Data Engineers kunnen het meer verkennen, gegevens transformeren en voorbereiden met behulp van deze service en hun pijplijnen voor gegevenstransformatie vereenvoudigen. Voor meer informatie, check deze [tutorial](tutorial-data-analyst.md).
-- Gegevens Wetenschappers kunnen snel redeneren over de inhoud en structuur van de gegevens in het meer, dankzij functies zoals OPENROWSET en automatische schema-gevolgtrekking.
-- Data-analisten kunnen [gegevens en Spark-tabellen verkennen](develop-storage-files-spark-tables.md) die zijn gemaakt door Gegevenswetenschappers of Gegevenstechnici met behulp van bekende T-SQL-taal of hun favoriete tools, die on-demand verbinding kunnen maken met SQL.
-- BI-professionals kunnen snel [Power BI-rapporten maken bovenop gegevens in de meer-](tutorial-connect-power-bi-desktop.md) en Spark-tabellen.
+- Data engineers kunnen het Lake verkennen, gegevens transformeren en voorbereiden met behulp van deze service en de gegevens transformatie pijplijnen vereenvoudigen. Raadpleeg deze [zelf studie](tutorial-data-analyst.md)voor meer informatie.
+- Gegevens wetenschappers kunnen snel de oorzaak zijn van de inhoud en de structuur van de gegevens in het Lake, met functies zoals OPENROWSET en automatisch schema deinterferentie.
+- Gegevens analisten kunnen [gegevens en Spark-tabellen](develop-storage-files-spark-tables.md) die zijn gemaakt door gegevens wetenschappers of gegevens technici verkennen met behulp van vertrouwde T-SQL-taal of hun favoriete hulp middelen, die verbinding kunnen maken met SQL op aanvraag.
+- Met BI-professionals kunnen snel [Power bi rapporten worden gemaakt op gegevens in de tabellen Lake](tutorial-connect-power-bi-desktop.md) en Spark.
 
-## <a name="what-do-i-need-to-do-to-start-using-it"></a>Wat moet ik doen om het te gaan gebruiken?
+## <a name="what-do-i-need-to-do-to-start-using-it"></a>Wat moet ik doen om aan de slag te gaan met het gebruik ervan?
 
-SQL on-demand eindpunt wordt geleverd binnen elke Azure Synapse-werkruimte. U een werkruimte maken en direct gegevens opvragen met behulp van tools die u kent.
+SQL op aanvraag-eind punt wordt in elke Azure Synapse-werk ruimte vermeld. U kunt een werk ruimte maken en direct query's uitvoeren op gegevens met hulp middelen waarmee u bekend bent.
 
-## <a name="client-tools"></a>Clienthulpprogramma's
+## <a name="client-tools"></a>Client hulpprogramma's
 
-SQL on-demand stelt bestaande SQL ad-hoc query's en business intelligence-tools in staat om gebruik te maken van het datalake. Omdat het bekende T-SQL-syntaxis biedt, kan elk hulpprogramma dat geschikt is om SQL-aanbiedingen voor TDS-verbinding [vast te stellen, verbinding maken met en synapse SQL](connect-overview.md) on-demand querymen. U verbinding maken met Azure Data Studio en ad-hocquery's uitvoeren of verbinding maken met Power BI om binnen enkele minuten inzicht te krijgen.
+Met SQL on-demand kunnen bestaande SQL ad-hoc query's en business intelligence-hulpprogram ma's in de data Lake worden getikt. Omdat het een vertrouwde T-SQL-syntaxis biedt, kan een hulp programma waarmee SQL-aanbiedingen voor de TDS-verbinding kunnen worden [gemaakt, verbinding maken met en Synapse SQL](connect-overview.md) op aanvraag. U kunt verbinding maken met Azure Data Studio en ad-hoc query's uitvoeren of verbinding maken met Power BI om inzicht te krijgen in een paar minuten.
 
-## <a name="is-full-t-sql-supported"></a>Wordt volledige T-SQL ondersteund?
+## <a name="is-full-t-sql-supported"></a>Wordt de volledige T-SQL ondersteund?
 
-SQL on-demand biedt T-SQL-query's, die in sommige aspecten enigszins is verbeterd/uitgebreid om rekening te houden met ervaringen rond het opvragen van semi-gestructureerde en ongestructureerde gegevens. Bovendien worden sommige aspecten van de T-SQL-taal niet ondersteund vanwege het ontwerp van SQL on-demand, als voorbeeld wordt DML-functionaliteit momenteel niet ondersteund.
+SQL on-Demand biedt T-SQL-query's voor een surface area, wat in sommige aspecten iets verbeterd/uitgebreid is om te voorzien in de ervaring met het uitvoeren van query's op semi-gestructureerde en ongestructureerde gegevens. Bovendien worden sommige aspecten van de T-SQL-taal niet ondersteund vanwege het ontwerp van SQL on-demand, omdat DML-functionaliteit op dit moment niet wordt ondersteund.
 
-- Werkbelasting kan worden georganiseerd met behulp van bekende concepten:
-- Databases - SQL on-demand eindpunt kan meerdere databases hebben.
-- Schema's - In een database kunnen er een of meerdere objecteigendomsgroepen zijn die schema's worden genoemd.
+- De werk belasting kan worden georganiseerd met behulp van bekende concepten:
+- Data bases: SQL op aanvraag-eind punt kan meerdere data bases bevatten.
+- Schema's: in een Data Base kunnen er een of meer eigendoms groepen voor objecten worden aangeduid met de naam schemas.
 - Weergaven
-- Externe bronnen – gegevensbronnen, bestandsindelingen en tabellen
+- Externe bronnen – gegevens bronnen, bestands indelingen en tabellen
 
 Beveiliging kan worden afgedwongen met:
 
 - Aanmeldingen en gebruikers
-- Referenties om de toegang tot opslagaccounts te beheren
-- Machtigingen per objectniveau verlenen, weigeren en intrekken
+- Referenties voor het beheren van de toegang tot opslag accounts
+- Machtigingen per object niveau toekennen, weigeren en intrekken
 - Integratie van Azure Active Directory
 
 Ondersteunde T-SQL:
 
-- Volledig [SELECT-oppervlak](/sql/t-sql/queries/select-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) wordt ondersteund, inclusief een meerderheid van de SQL-functies
-- CETAS - EXTERNE TABEL MAKEN ALS SELECTEERT
-- DDL-verklaringen met betrekking tot weergaven en beveiliging alleen
+- Volledige [selectie](/sql/t-sql/queries/select-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) Surface Area wordt ondersteund, met inbegrip van een meerderheid van SQL-functies
+- CETAS: EXTERNE TABEL MAKEN ALS SELECTEREN
+- DDL-instructies met betrekking tot weer gaven en beveiliging
 
-SQL on-demand heeft geen lokale opslag, alleen metadata-objecten worden opgeslagen in databases. Daarom wordt T-SQL met betrekking tot de volgende concepten niet ondersteund:
+SQL on-demand heeft geen lokale opslag, alleen meta gegevens objecten worden opgeslagen in data bases. Daarom wordt T-SQL met betrekking tot de volgende concepten niet ondersteund:
 
 - Tabellen
 - Triggers
-- Gematerialiseerde weergaven
-- Andere DDL-verklaringen dan die met betrekking tot weergaven en beveiliging
+- Gerealiseerde weer gaven
+- Andere DDL-instructies dan die van weer gaven en beveiliging
 - DML-instructies
 
-### <a name="extensions"></a>Extensies
+### <a name="extensions"></a>Uitbreidingen
 
-Sql on-demand breidt de bestaande [OPENROWSET-functie](/sql/t-sql/functions/openrowset-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) uit door de volgende mogelijkheden toe te voegen om een soepele ervaring op te stellen voor het opvragen van gegevens die zich in bestanden in het datalake bevinden:
+SQL on demand breidt de bestaande [OPENrowset](/sql/t-sql/functions/openrowset-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) -functie uit door de volgende mogelijkheden toe te voegen om een goede ervaring te bieden bij het uitvoeren van query's in bestanden in data Lake:
 
 [Meerdere bestanden of mappen opvragen](develop-storage-files-overview.md#query-multiple-files-or-folders)
 
-[PARQUET-bestandsindeling](develop-storage-files-overview.md#parquet-file-format)
+[PARQUET-bestands indeling](develop-storage-files-overview.md#parquet-file-format)
 
-[Extra opties voor het werken met afgebakende tekst (veldterminator, rijterminator, escape char)](develop-storage-files-overview.md#additional-options-for-working-with-delimited-text)
+[Aanvullende opties voor het werken met gescheiden tekst (veld Terminator, rij-Terminator, escape-teken)](develop-storage-files-overview.md#additional-options-for-working-with-delimited-text)
 
-[Een gekozen subset van kolommen lezen](develop-storage-files-overview.md#read-a-chosen-subset-of-columns)
+[Een gekozen subset kolommen lezen](develop-storage-files-overview.md#read-a-chosen-subset-of-columns)
 
-[Schema-gevolgtrekking](develop-storage-files-overview.md#schema-inference)
+[Schema-deinterferentie](develop-storage-files-overview.md#schema-inference)
 
-[bestandsnaam, functie](develop-storage-files-overview.md#filename-function)
+[de functie filename](develop-storage-files-overview.md#filename-function)
 
-[filepath, functie](develop-storage-files-overview.md#filepath-function)
+[de functie filepath](develop-storage-files-overview.md#filepath-function)
 
-[Werken met complexe typen en geneste of herhaalde gegevensstructuren](develop-storage-files-overview.md#work-with-complex-types-and-nested-or-repeated-data-structures)
+[Werken met complexe typen en geneste of herhaalde gegevens structuren](develop-storage-files-overview.md#work-with-complex-types-and-nested-or-repeated-data-structures)
 
 ## <a name="security"></a>Beveiliging
 
-SQL on-demand biedt mechanismen om de toegang tot uw gegevens te beveiligen.
+SQL on Demand biedt mechanismen om de toegang tot uw gegevens te beveiligen.
 
 ### <a name="azure-active-directory-integration-and-multi-factor-authentication"></a>Azure Active Directory-integratie en meervoudige verificatie
 
-SQL on-demand stelt u in staat om de identiteit van databasegebruikers en andere Microsoft-services centraal te beheren met [Azure Active Directory-integratie.](../../sql-database/sql-database-Azure AD-authentication.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) Deze mogelijkheid vereenvoudigt het beheer van machtigingen en verbetert de beveiliging. Azure Active Directory (Azure AD) ondersteunt [multi-factor authenticatie](../../sql-database/sql-database-ssms-mfa-authentication-configure.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) (MFA) om de gegevens- en toepassingsbeveiliging te verhogen en tegelijkertijd één aanmeldingsproces te ondersteunen.
+Met SQL on-Demand kunt u de identiteiten van database gebruikers en andere micro soft-services centraal beheren met [Azure Active Directory-integratie](../../sql-database/sql-database-Azure AD-authentication.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json). Deze mogelijkheid vereenvoudigt het beheer van machtigingen en verbetert de beveiliging. Azure Active Directory (Azure AD) ondersteunt [multi-factor Authentication](../../sql-database/sql-database-ssms-mfa-authentication-configure.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) (MFA) om gegevens-en toepassings beveiliging te verbeteren tijdens het ondersteunen van een proces voor eenmalige aanmelding.
 
 #### <a name="authentication"></a>Verificatie
 
-SQL on-demand authenticatie verwijst naar hoe gebruikers hun identiteit bewijzen wanneer ze verbinding maken met het eindpunt. Er worden twee soorten verificatie ondersteund:
+SQL on-demand-verificatie verwijst naar hoe gebruikers hun identiteit bewijzen wanneer ze verbinding maken met het eind punt. Twee soorten verificatie worden ondersteund:
 
 - **SQL-verificatie**
 
-  Deze verificatiemethode gebruikt een gebruikersnaam en wachtwoord.
+  Deze verificatie methode maakt gebruik van een gebruikers naam en wacht woord.
 
-- **Azure Active Directory-verificatie:**
+- **Azure Active Directory-verificatie**:
 
-  Deze verificatiemethode maakt gebruik van identiteiten die worden beheerd door Azure Active Directory. Voor Azure AD-gebruikers kan multi-factor authenticatie worden ingeschakeld. Gebruik active directory-verificatie (geïntegreerde beveiliging) [waar mogelijk.](/sql/relational-databases/security/choose-an-authentication-mode?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)
+  Deze verificatie methode maakt gebruik van identiteiten die worden beheerd door Azure Active Directory. Voor Azure AD-gebruikers kan multi-factor Authentication worden ingeschakeld. Gebruik [waar mogelijk](/sql/relational-databases/security/choose-an-authentication-mode?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)Active Directory verificatie (geïntegreerde beveiliging).
 
 #### <a name="authorization"></a>Autorisatie
 
-Autorisatie verwijst naar wat een gebruiker kan doen binnen een SQL on-demand database en wordt beheerd door de databaserollidmaatschappen van uw gebruikersaccount en machtigingen op objectniveau.
+Autorisatie verwijst naar wat een gebruiker kan doen binnen een SQL on-demand-data base en wordt beheerd door de databaserol lidmaatschappen en object machtigingen van uw gebruikers account.
 
-Als SQL-verificatie wordt gebruikt, bestaat de SQL-gebruiker alleen in SQL on-demand en worden machtigingen beperkt tot de objecten in SQL on-demand. Toegang tot securable objecten in andere services (zoals Azure Storage) kan niet rechtstreeks aan SQL-gebruiker worden verleend, omdat deze alleen bestaan in het bereik van SQL on-demand. De SQL-gebruiker moet een van de [ondersteunde autorisatietypen](develop-storage-files-storage-access-control.md#supported-storage-authorization-types) gebruiken om toegang te krijgen tot de bestanden.
+Als SQL-verificatie wordt gebruikt, bestaat de SQL-gebruiker alleen in SQL on-demand en zijn de machtigingen van toepassing op de objecten in SQL op aanvraag. Toegang tot Beveilig bare objecten in andere services (zoals Azure Storage) kan niet rechtstreeks aan SQL-gebruikers worden verleend omdat deze alleen binnen het bereik van SQL on-demand bestaat. De SQL-gebruiker moet een van de [ondersteunde autorisatie typen](develop-storage-files-storage-access-control.md#supported-storage-authorization-types) gebruiken voor toegang tot de bestanden.
 
-Als Azure AD-verificatie wordt gebruikt, kan een gebruiker zich aanmelden bij SQL on-demand en andere services, zoals Azure Storage, en kan hij machtigingen verlenen aan de Azure AD-gebruiker.
+Als Azure AD-verificatie wordt gebruikt, kan een gebruiker zich aanmelden bij SQL on-demand en andere services, zoals Azure Storage, en kan deze machtigingen verlenen aan de gebruiker van Azure AD.
 
-### <a name="access-to-storage-accounts"></a>Toegang tot opslagaccounts
+### <a name="access-to-storage-accounts"></a>Toegang tot opslag accounts
 
-Een gebruiker die is aangemeld bij de SQL on-demand-service moet gemachtigd zijn om toegang te krijgen tot de bestanden in Azure Storage en deze op te vragen. SQL on-demand ondersteunt de volgende autorisatietypen:
+Een gebruiker die is aangemeld bij de SQL-service op aanvraag moet gemachtigd zijn om toegang te krijgen tot de bestanden in Azure Storage en om deze op te vragen. SQL on-demand ondersteunt de volgende autorisatie typen:
 
-- **Shared access signature (SAS)** biedt gedelegeerde toegang tot bronnen in het opslagaccount. Met een SAS u klanten toegang verlenen tot bronnen in het opslagaccount, zonder accountsleutels te delen. Een SAS geeft u gedetailleerde controle over het type toegang dat u verleent aan clients die het SAS hebben: geldigheidsinterval, verleende machtigingen, acceptabel IP-adresbereik, aanvaardbaar protocol (https/http).
+- **Shared Access Signature (SAS)** biedt gedelegeerde toegang tot resources in het opslag account. Met een SAS kunt u clients toegang verlenen tot bronnen in een opslag account, zonder dat u account sleutels hoeft te delen. Een SAS geeft u gedetailleerde controle over het type toegang dat u verleent aan clients met de SAS: geldigheids interval, verleende machtigingen, acceptabel IP-adres bereik, acceptabel Protocol (https/http).
 
-- **Gebruikersidentiteit** (ook wel 'doorgeefinformatie' genoemd) is een autorisatietype waarbij de identiteit van de Azure AD-gebruiker die is aangemeld bij SQL on-demand wordt gebruikt om de toegang tot de gegevens te autoriseren. Voordat u toegang krijgt tot de gegevens, moet azure-opslagbeheerder machtigingen verlenen aan azure AD-gebruiker voor toegang tot de gegevens. Dit autorisatietype maakt gebruik van de Azure AD-gebruiker die is aangemeld bij SQL on-demand, daarom wordt deze niet ondersteund voor SQL-gebruikerstypen.
+- De **gebruikers-id** (ook wel pass-through genoemd) is een autorisatie type waarbij de identiteit van de Azure AD-gebruiker die is aangemeld bij SQL on-demand wordt gebruikt om toegang tot de gegevens te verlenen. Voordat de gegevens worden geopend, moet Azure Storage beheerder machtigingen verlenen aan de Azure AD-gebruiker voor toegang tot de gegevens. Dit autorisatie type maakt gebruik van de Azure AD-gebruiker die op aanvraag is aangemeld bij SQL. dit wordt daarom niet ondersteund voor SQL-gebruikers typen.
 
 ## <a name="next-steps"></a>Volgende stappen
-Aanvullende informatie over endpoint-verbinding en querybestanden vindt u in de volgende artikelen: 
-- [Verbinding maken met uw eindpunt](connect-overview.md)
-- [Uw bestanden opvragen](develop-storage-files-overview.md)
+Meer informatie over eindpunt verbinding en query bestanden vindt u in de volgende artikelen: 
+- [Verbinding maken met uw eind punt](connect-overview.md)
+- [Query's uitvoeren op uw bestanden](develop-storage-files-overview.md)

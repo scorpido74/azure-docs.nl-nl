@@ -5,15 +5,15 @@ ms.topic: include
 ms.date: 02/09/2020
 ms.author: glenga
 ms.openlocfilehash: 749b733039e89421ac33ef76a11f3291b296e718
-ms.sourcegitcommit: b129186667a696134d3b93363f8f92d175d51475
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80673203"
 ---
 ## <a name="run-the-function-locally"></a>De functie lokaal uitvoeren
 
-Voer uw functie uit door de lokale runtime-host van Azure Functions te starten vanuit de map *LocalFunctionProj:*
+Voer uw functie uit door de lokale Azure Functions runtime host te starten vanuit de map *LocalFunctionProj* :
 
 ::: zone pivot="programming-language-csharp,programming-language-powershell,programming-language-javascript,programming-language-python"
 ```
@@ -35,7 +35,7 @@ mvn azure-functions:run
 ```
 ::: zone-end
 
-Tegen het einde van de uitvoer moeten de volgende regels worden weergegeven: 
+Naar het einde van de uitvoer moeten de volgende regels worden weer gegeven: 
 
 <pre>
 ...
@@ -51,12 +51,12 @@ Http Functions:
 </pre>
 
 >[!NOTE]  
-> Als HttpExample niet wordt weergegeven zoals hieronder wordt weergegeven, hebt u de host waarschijnlijk van buiten de hoofdmap van het project gestart. Gebruik in dat geval **Ctrl**+**C** om de host te stoppen, naar de hoofdmap van het project te navigeren en de vorige opdracht opnieuw uit te voeren.
+> Als HttpExample niet wordt weer gegeven zoals hieronder weer gegeven, hebt u waarschijnlijk de host gestart van buiten de hoofdmap van het project. In dat geval gebruikt u **CTRL**+**C** om de host te stoppen, navigeert u naar de hoofdmap van het project en voert u de vorige opdracht opnieuw uit.
 
-Kopieer de URL `HttpExample` van uw functie vanuit deze uitvoer `?name=<your-name>`naar een browser `http://localhost:7071/api/HttpExample?name=Functions`en sluit de querytekenreeks toe, waardoor de volledige URL zo leuk is . De browser moet een `Hello Functions`bericht weergeven als:
+Kopieer de URL van uw `HttpExample` functie van deze uitvoer naar een browser en voeg de query reeks `?name=<your-name>`toe, zodat u de volledige `http://localhost:7071/api/HttpExample?name=Functions`URL kunt gebruiken. In de browser moet een bericht als `Hello Functions`volgt worden weer gegeven:
 
-![Resultaat van de functie lokaal in de browser wordt uitgevoerd](./media/functions-run-function-test-local-cli/function-test-local-browser.png)
+![Resultaat van de functie lokaal uitgevoerd in de browser](./media/functions-run-function-test-local-cli/function-test-local-browser.png)
 
-De terminal waarin u uw project hebt gestart, toont ook de uitvoer van logboeken terwijl u aanvragen doet.
+De Terminal waarin u uw project hebt gestart, toont ook de logboek uitvoer wanneer u aanvragen doet.
 
-Wanneer u klaar bent, gebruikt `y` u **Ctrl**+**C** en kiest u ervoor om de hosthost van de functies te stoppen.
+Wanneer u klaar bent, gebruikt u **CTRL**+**C** en `y` klikt u op de functie host stoppen.

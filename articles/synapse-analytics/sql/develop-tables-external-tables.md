@@ -1,6 +1,6 @@
 ---
 title: Externe tabellen gebruiken met Synapse SQL
-description: Gegevensbestanden lezen of schrijven met Synapse SQL
+description: Gegevens bestanden lezen of schrijven met Synapse SQL
 services: synapse-analytics
 author: julieMSFT
 ms.service: synapse-analytics
@@ -10,43 +10,43 @@ ms.date: 04/15/2020
 ms.author: jrasnick
 ms.reviewer: jrasnick
 ms.openlocfilehash: 4d13d15fe950c89687acfca355d4ed183756536a
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81423976"
 ---
 # <a name="use-external-tables-with-synapse-sql"></a>Externe tabellen gebruiken met Synapse SQL
 
-Een externe tabel verwijst naar gegevens in Hadoop, Azure Storage blob of Azure Data Lake Storage. Externe tabellen worden gebruikt om gegevens uit bestanden te lezen of gegevens naar bestanden in Azure Storage te schrijven. Met Synapse SQL u externe tabellen gebruiken om gegevens te lezen en te schrijven naar SQL-pool of SQL on-demand (preview).
+Een externe tabel verwijst naar gegevens die zich bevinden in Hadoop, Azure Storage BLOB of Azure Data Lake Storage. Externe tabellen worden gebruikt voor het lezen van gegevens uit bestanden of het schrijven van gegevens naar bestanden in Azure Storage. Met Synapse SQL kunt u externe tabellen gebruiken om gegevens te lezen en schrijven naar SQL-groep of SQL-op-aanvraag (preview).
 
 ## <a name="external-tables-in-sql-pool"></a>Externe tabellen in SQL-groep
 
-In SQL-groep u een externe tabel gebruiken om:
+In SQL-groep kunt u een externe tabel gebruiken voor het volgende:
 
-- Query Azure Blob Storage en Azure Data Lake Gen2 met Transact-SQL-instructies.
-- Importeer en sla gegevens uit Azure Blob Storage en Azure Data Lake Storage in SQL-groep.
+- Query's uitvoeren op Azure Blob Storage en Azure Data Lake Gen2 met Transact-SQL-instructies.
+- Importeer en sla gegevens op uit Azure Blob Storage en Azure Data Lake Storage in de SQL-groep.
 
-Wanneer u deze gebruikt in combinatie met de instructie [TABEL MAKEN ALS SELECT,](../sql-data-warehouse/sql-data-warehouse-develop-ctas.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) importeert het selecteren uit een externe tabel gegevens in een tabel in de SQL-groep. Naast de [instructie COPY](/sql/t-sql/statements/copy-into-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)zijn externe tabellen handig voor het laden van gegevens. Zie [PolyBase gebruiken om gegevens uit Azure Blob Storage te laden](../sql-data-warehouse/load-data-from-azure-blob-storage-using-polybase.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)voor een zelfstudie voor het laden.
+Bij gebruik in combi natie met de [Create Table als Select](../sql-data-warehouse/sql-data-warehouse-develop-ctas.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) -instructie selecteert u in een externe tabel gegevens in een tabel in de SQL-groep. In aanvulling op de [instructie Copy](/sql/t-sql/statements/copy-into-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)zijn externe tabellen handig voor het laden van gegevens. Zie [poly Base gebruiken voor het laden van gegevens uit Azure Blob Storage](../sql-data-warehouse/load-data-from-azure-blob-storage-using-polybase.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)voor een zelf studie die u kunt laden.
 
-## <a name="external-tables-in-sql-on-demand-preview"></a>Externe tabellen in SQL on-demand (voorbeeld)
+## <a name="external-tables-in-sql-on-demand-preview"></a>Externe tabellen in SQL on-demand (preview-versie)
 
-Voor SQL on-demand gebruikt u een externe tabel om:
+Voor SQL on-demand gebruikt u een externe tabel voor het volgende:
 
-- Querygegevens in Azure Blob Storage of Azure Data Lake Storage met Transact-SQL-instructies
-- Sla SQL-queryresultaten op aanvraag op bestanden in Azure Blob Storage of Azure Data Lake Storage met [CETAS](develop-tables-cetas.md).
+- Query's uitvoeren op gegevens in Azure Blob Storage of Azure Data Lake Storage met Transact-SQL-instructies
+- Sla SQL op aanvraag-query resultaten op in bestanden in Azure Blob Storage of Azure Data Lake Storage met behulp van [CETAS](develop-tables-cetas.md).
 
-U externe tabellen maken met SQL on-demand via de volgende stappen:
+U kunt via de volgende stappen externe tabellen maken met behulp van SQL op aanvraag:
 
-1. EXTERNE GEGEVENSBRON MAKEN
+1. EXTERNE GEGEVENS BRON MAKEN
 2. CREATE EXTERNAL FILE FORMAT
 3. EXTERNE TABEL MAKEN
 
-## <a name="create-external-data-source"></a>EXTERNE GEGEVENSBRON MAKEN
+## <a name="create-external-data-source"></a>EXTERNE GEGEVENS BRON MAKEN
 
-Externe gegevensbronnen worden gebruikt om verbinding te maken met opslagaccounts. De volledige documentatie wordt [hier](/sql/t-sql/statements/create-external-data-source-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)beschreven.
+Externe gegevens bronnen worden gebruikt om verbinding te maken met opslag accounts. De volledige documentatie wordt [hier](/sql/t-sql/statements/create-external-data-source-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)beschreven.
 
-## <a name="syntax-for-create-external-data-source"></a>Syntaxis voor EXTERNE GEGEVENSBRON MAKEN
+## <a name="syntax-for-create-external-data-source"></a>De syntaxis voor het maken van een externe gegevens bron
 
 ```syntaxsql
 CREATE EXTERNAL DATA SOURCE <data_source_name>
@@ -55,21 +55,21 @@ WITH
 [;]
 ```
 
-## <a name="arguments-for-create-external-data-source"></a>Argumenten voor HET MAKEN van externe gegevensbron
+## <a name="arguments-for-create-external-data-source"></a>Argumenten voor het maken van externe gegevens bron
 
-data_source_name -Hiermee geeft u de door de gebruiker gedefinieerde naam voor de gegevensbron op. De naam moet uniek zijn in de database.
+data_source_name: Hiermee geeft u de door de gebruiker gedefinieerde naam voor de gegevens bron op. De naam moet uniek zijn binnen de data base.
 
-LOCATIE `'<prefix>://<path>'` = - Biedt het connectiviteitsprotocol en het pad naar de externe gegevensbron. Het pad kan een container `'<prefix>://<path>/container'`in de vorm van `'<prefix>://<path>/container/folder'`, en een map in de vorm van .
+LOCATIE = `'<prefix>://<path>'` -levert het verbindings protocol en het pad naar de externe gegevens bron. Het pad kan een container bevatten in de vorm van `'<prefix>://<path>/container'`en een map in de vorm van `'<prefix>://<path>/container/folder'`.
 
-| Externe gegevensbron        | Locatievoorvoegsel | Locatiepad                                         |
+| Externe gegevens bron        | Locatie voorvoegsel | Pad naar locatie                                         |
 | --------------------------- | --------------- | ----------------------------------------------------- |
 | Azure Blob Storage          | `wasb[s]`       | `<container>@<storage_account>.blob.core.windows.net` |
-| Azure Data Lake Store Gen 1 | `adl`           | `<storage_account>.azuredatalake.net`                 |
-| Azure Data Lake Store Gen 2 | `abfs[s]`       | `<container>@<storage_account>.dfs.core.windows.net`  |
+| Azure Data Lake Store gen 1 | `adl`           | `<storage_account>.azuredatalake.net`                 |
+| Azure Data Lake Store gen 2 | `abfs[s]`       | `<container>@<storage_account>.dfs.core.windows.net`  |
 
-## <a name="example-for-create-external-data-source"></a>Voorbeeld voor MAKEN EXTERNE GEGEVENSBRON
+## <a name="example-for-create-external-data-source"></a>Voor beeld voor het maken van een externe gegevens bron
 
-In het volgende voorbeeld wordt een externe gegevensbron gemaakt voor Azure Data Lake Gen2 die naar de gegevensset van New York wijst:
+In het volgende voor beeld wordt een externe gegevens bron gemaakt voor Azure Data Lake Gen2 die verwijst naar de data set New York:
 
 ```sql
 CREATE EXTERNAL DATA SOURCE AzureDataLakeStore
@@ -83,11 +83,11 @@ WITH
 
 ## <a name="create-external-file-format"></a>CREATE EXTERNAL FILE FORMAT
 
-Hiermee maakt u een extern bestandsindelingsobject dat externe gegevens definieert die zijn opgeslagen in Azure Blob Storage of Azure Data Lake Storage. Het maken van een externe bestandsindeling is een vereiste voor het maken van een externe tabel. De volledige documentatie is [hier](/sql/t-sql/statements/create-external-file-format-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest).
+Hiermee maakt u een object voor externe bestands indeling dat externe gegevens definieert die zijn opgeslagen in Azure Blob Storage of Azure Data Lake Storage. Het maken van een externe bestands indeling is een vereiste voor het maken van een externe tabel. De volledige documentatie is [hier](/sql/t-sql/statements/create-external-file-format-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest).
 
-Door een externe bestandsindeling te maken, geeft u de werkelijke indeling op van de gegevens waarnaar wordt verwezen door een externe tabel.
+Door een externe bestands indeling te maken, geeft u de werkelijke indeling op van de gegevens waarnaar wordt verwezen door een externe tabel.
 
-## <a name="syntax-for-create-external-file-format"></a>Syntaxis voor EXTERNE BESTANDSNOTATIE MAKEN
+## <a name="syntax-for-create-external-file-format"></a>De syntaxis voor het maken van een externe BESTANDS indeling
 
 ```syntaxsql
 -- Create an external file format for PARQUET files.  
@@ -116,55 +116,55 @@ WITH (
 }
 ```
 
-## <a name="arguments-for-create-external-file-format"></a>Argumenten voor EXTERNE BESTANDSNOTATIE MAKEN
+## <a name="arguments-for-create-external-file-format"></a>Argumenten voor het maken van een externe BESTANDS indeling
 
-file_format_name- Hiermee geeft u een naam op voor de externe bestandsindeling.
+file_format_name: Hiermee geeft u een naam op voor de externe bestands indeling.
 
-FORMAT_TYPE = [ PARKET | DELIMITEDTEXT]- Hiermee geeft u de opmaak van de externe gegevens op.
+FORMAT_TYPE = [PARQUET | DELIMITEDTEXT]-Hiermee geeft u de indeling van de externe gegevens op.
 
-- PARQUET - Geeft een parketformaat op.
-- DELIMITEDTEXT - Hiermee geeft u een tekstnotatie op met kolomscheidingstekens, ook wel veldterminators genoemd.
+- PARQUET: Hiermee geeft u een Parquet-indeling.
+- DELIMITEDTEXT: Hiermee geeft u een tekst indeling met kolom scheidings tekens, ook wel veld scheidings genoemd.
 
-FIELD_TERMINATOR = *field_terminator* - Geldt alleen voor afgebakende tekstbestanden. De veldbegeindiger geeft een of meer tekens op die het einde van elk veld (kolom) markeren in het met tekst afgebakende bestand. De standaardinstelling is het pijpteken (|?
-
-Voorbeelden:
-
-- FIELD_TERMINATOR = "|"
-- FIELD_TERMINATOR = '
-- FIELD_TERMINATOR =
-
-STRING_DELIMITER = *string_delimiter* - Hiermee geeft u de veldbegeindiger op voor gegevens van teksttekenreeks in het tekst-afgebakende bestand. De tekenreeksscheidingskiezer is een of meer tekens in lengte en is ingesloten met enkele aanhalingstekens. De standaardinstelling is de lege tekenreeks ("").
+FIELD_TERMINATOR = *field_terminator* -is alleen van toepassing op tekst bestanden met scheidings tekens. In het veld Terminator worden een of meer tekens opgegeven die het einde van elk veld (kolom) in het door tekst gescheiden bestand markeren. De standaard waarde is het sluis teken (ꞌ | ꞌ).
 
 Voorbeelden:
 
-- STRING_DELIMITER = '""
-- STRING_DELIMITER = '*'
-- STRING_DELIMITER =
+- FIELD_TERMINATOR = |
+- FIELD_TERMINATOR = ' '
+- FIELD_TERMINATOR = ꞌ \ t ꞌ
 
-FIRST_ROW = *First_row_int* - Hiermee geeft u het rijnummer op dat als eerste wordt gelezen en geldt voor alle bestanden. Als u de waarde instelt op twee, wordt de eerste rij in elk bestand (koptekstrij) overgeslagen wanneer de gegevens worden geladen. Rijen worden overgeslagen op basis van het bestaan van rijterminators (/r/n, /r, /n).
+STRING_DELIMITER = *string_delimiter* : Hiermee geeft u de veld Terminator op voor gegevens van het type teken reeks in het bestand met tekst gescheiden waarden. De teken reeks wordt een of meer tekens met een lengte en is inge sloten met enkele citaten. De standaard waarde is een lege teken reeks ("").
 
-USE_TYPE_DEFAULT = { WAAR | **VALSE** } - Hiermee geeft u op hoe ontbrekende waarden in afgebakende tekstbestanden moeten worden verwerkt bij het ophalen van gegevens uit het tekstbestand.
+Voorbeelden:
 
-WAAR - Als u gegevens uit het tekstbestand ophaalt, slaat u elke ontbrekende waarde op met behulp van het gegevenstype van de standaardwaarde voor de overeenkomstige kolom in de externe tabeldefinitie. Vervang bijvoorbeeld een ontbrekende waarde door:
+- STRING_DELIMITER = ' "'
+- STRING_DELIMITER = ' * '
+- STRING_DELIMITER = ꞌ, ꞌ
 
-- 0 als de kolom wordt gedefinieerd als een numerieke kolom. Decimale kolommen worden niet ondersteund en veroorzaken een fout.
-- Lege tekenreeks ("") als de kolom een tekenreekskolom is.
-- 1900-01-01 als de kolom een datumkolom is.
+FIRST_ROW = *First_row_int* -geeft het rijnummer op dat het eerst wordt gelezen en is van toepassing op alle bestanden. Als u de waarde instelt op twee, wordt de eerste rij in elk bestand (koprij) overgeslagen wanneer de gegevens worden geladen. Rijen worden overgeslagen op basis van het bestaan van rij-afsluitingen (/r/n,/r,/n).
 
-FALSE - Sla alle ontbrekende waarden op als NULL. Null-waarden die worden opgeslagen met het woord NULL in het afgebakende tekstbestand, worden geïmporteerd als de tekenreeks 'NULL'.
+USE_TYPE_DEFAULT = {TRUE | **False** } -Hiermee geeft u op hoe ontbrekende waarden in tekst bestanden met scheidings tekens moeten worden verwerkt bij het ophalen van gegevens uit het tekst bestand.
 
-Codering = {'UTF8' | 'UTF16'} - SQL on-demand kan UTF8 en UTF16 gecodeerde gedelimited text files lezen.
+WAAR: als u gegevens ophaalt uit het tekst bestand, slaat u elke ontbrekende waarde op met behulp van het gegevens type van de standaard waarde voor de overeenkomende kolom in de definitie van de externe tabel. Vervang bijvoorbeeld een ontbrekende waarde door:
 
-DATA_COMPRESSION = *data_compression_method* - In dit argument wordt de gegevenscompressiemethode voor de externe gegevens opgegeven. Bij het lezen van externe tabellen wordt deze genegeerd. Het wordt alleen gebruikt bij het schrijven naar externe tabellen met [CETAS](develop-tables-cetas.md).
+- 0 als de kolom is gedefinieerd als een numerieke kolom. Decimale kolommen worden niet ondersteund en veroorzaken een fout.
+- Lege teken reeks ("") als de kolom een teken reeks kolom is.
+- 1900-01-01 als de kolom een datum kolom is.
 
-Het type PARQUET-bestandsindeling ondersteunt de volgende compressiemethoden:
+Onwaar: Sla alle ontbrekende waarden op als NULL. NULL-waarden die zijn opgeslagen met behulp van het woord NULL in het tekst bestand met scheidings tekens, worden geïmporteerd als de teken reeks ' NULL '.
 
-- DATA_COMPRESSION = 'org.apache.hadoop.io.compress.GzipCodec'
-- DATA_COMPRESSION = 'org.apache.hadoop.io.compress.SnappyCodec'
+Encoding = {' UTF8 ' | ' UTF16 '}-SQL on-demand kan UTF8-en UTF16-gecodeerde tekst bestanden met scheidings tekens lezen.
 
-## <a name="example-for-create-external-file-format"></a>Voorbeeld voor EXTERNE BESTANDSNOTATIE MAKEN
+DATA_COMPRESSION = *data_compression_method* -dit argument geeft de gegevens compressie methode voor de externe gegevens aan. Bij het lezen van externe tabellen wordt deze genegeerd. Deze wordt alleen gebruikt bij het schrijven naar externe tabellen met behulp van [CETAS](develop-tables-cetas.md).
 
-In het volgende voorbeeld wordt een externe bestandsindeling gemaakt voor volkstellingsbestanden:
+Het PARQUET-bestands indelings type ondersteunt de volgende compressie methoden:
+
+- DATA_COMPRESSION = ' org. apache. Hadoop. io. compress. GzipCodec '
+- DATA_COMPRESSION = ' org. apache. Hadoop. io. compress. SnappyCodec '
+
+## <a name="example-for-create-external-file-format"></a>Voor beeld voor het maken van een externe BESTANDS indeling
+
+In het volgende voor beeld wordt een externe bestands indeling voor de telling van bestanden gemaakt:
 
 ```sql
 CREATE EXTERNAL FILE FORMAT census_file_format
@@ -177,9 +177,9 @@ WITH
 
 ## <a name="create-external-table"></a>EXTERNE TABEL MAKEN
 
-Met de opdracht EXTERNE TABEL MAKEN maakt u een externe tabel voor Synapse SQL om toegang te krijgen tot gegevens die zijn opgeslagen in Azure Blob Storage of Azure Data Lake Storage. 
+Met de opdracht externe tabel maken maakt u een externe tabel voor Synapse SQL om toegang te krijgen tot gegevens die zijn opgeslagen in Azure Blob Storage of Azure Data Lake Storage. 
 
-## <a name="syntax-for-create-external-table"></a>Syntaxis voor EXTERNE TABEL MAKEN
+## <a name="syntax-for-create-external-table"></a>Syntaxis voor het maken van een externe tabel
 
 ```syntaxsql
 CREATE EXTERNAL TABLE { database_name.schema_name.table_name | schema_name.table_name | table_name }
@@ -196,45 +196,45 @@ column_name <data_type>
     [ COLLATE collation_name ]
 ```
 
-## <a name="arguments-create-external-table"></a>Argumenten EXTERNE TABEL MAKEN
+## <a name="arguments-create-external-table"></a>Argumenten externe tabel maken
 
-*{ database_name.schema_name.table_name | schema_name,table_name | table_name }*
+*{database_name. schema_name. table_name | schema_name. table_name | table_name}*
 
-De naam van één tot drie delen van de te maken tabel. Voor een externe tabel slaat SQL on-demand alleen de tabelmetagegevens op. Er worden geen werkelijke gegevens verplaatst of opgeslagen in SQL on-demand.
+De naam van een tot drie delen van de tabel die u wilt maken. Voor een externe tabel slaat SQL on demand alleen de meta gegevens van de tabel op. Er worden geen werkelijke gegevens verplaatst of opgeslagen in SQL op aanvraag.
 
-<column_definition>, ... *n* ]
+<column_definition>,... *n* ]
 
-CREATE EXTERNAL TABLE ondersteunt de mogelijkheid om kolomnaam, gegevenstype, nullability en collatie te configureren. U de standaardbeperking niet gebruiken voor externe tabellen.
+Het maken van een externe tabel ondersteunt de mogelijkheid om kolom naam, gegevens type, null-waarde en sortering te configureren. U kunt de standaard beperking niet gebruiken voor externe tabellen.
 
 >[!IMPORTANT]
 >De kolomdefinities, inclusief de gegevenstypen en het aantal kolommen, moeten overeenkomen met de gegevens in de externe bestanden. Als er sprake is van een afwijking worden de bestandsrijen geweigerd wanneer er een query voor de daadwerkelijke gegevens wordt uitgevoerd.
 
-Bij het lezen van parketbestanden u alleen de kolommen opgeven die u wilt lezen en de rest overslaan.
+Bij het lezen van Parquet-bestanden kunt u alleen de kolommen opgeven die u wilt lezen en de rest overs Laan.
 
-LOCATIE = '*folder_or_filepath*'
+LOCATION = '*folder_or_filepath*'
 
-Hiermee geeft u de map of het bestandspad en de bestandsnaam op voor de werkelijke gegevens in Azure Blob Storage. De locatie begint vanuit de hoofdmap. De hoofdmap is de gegevenslocatie die in de externe gegevensbron is opgegeven.
+Hiermee geeft u de map of het bestandspad en de bestands naam op voor de werkelijke gegevens in Azure Blob Storage. De locatie wordt gestart vanaf de hoofdmap. De hoofdmap is de gegevenslocatie die in de externe gegevensbron is opgegeven.
 
-Als u een mapLOCATIE opgeeft, selecteert een SQL on-demand query in de externe tabel en haalt u bestanden op uit de map.
+Als u een maplocatie opgeeft, wordt een SQL op aanvraag-query geselecteerd in de externe tabel en worden de bestanden opgehaald uit de map.
 
 > [!NOTE]
-> In tegenstelling tot Hadoop en PolyBase retourneert SQL on-demand geen submappen. Hiermee worden bestanden geretourneerd waarvoor de bestandsnaam begint met een onderstreping (_) of een punt (.).
+> In tegens telling tot Hadoop en poly base retour neren SQL on-demand geen submappen. Het retourneert bestanden waarvoor de bestands naam begint met een onderstreping (_) of een punt (.).
 
-Als LOCATION='/webdata/', een SQL on-demand query, in dit voorbeeld rijen retourneert van mydata.txt en _hidden.txt. Het zal mydata2.txt en mydata3.txt niet retourneren omdat ze zich in een submap bevinden.
+Als locatie = '/webdata/', een SQL op aanvraag-query, wordt in dit voor beeld rijen geretourneerd van mydata. txt en _hidden. txt. Het retourneert mydata2. txt en mydata3. txt niet omdat ze zich in een submap bevinden.
 
 ![Recursieve gegevens voor externe tabellen](./media/develop-tables-external-tables/folder-traversal.png)
 
-DATA_SOURCE = *external_data_source_name* - Hiermee geeft u de naam op van de externe gegevensbron die de locatie van de externe gegevens bevat. Als u een externe gegevensbron wilt maken, gebruikt u [EXTERNE GEGEVENSBRON MAKEN](#create-external-data-source).
+DATA_SOURCE = *external_data_source_name* : Hiermee geeft u de naam op van de externe gegevens bron die de locatie van de externe gegevens bevat. Gebruik [externe gegevens bron maken](#create-external-data-source)om een externe gegevens bron te maken.
 
-FILE_FORMAT = *external_file_format_name* - Hiermee geeft u de naam op van het object externe bestandsindeling dat het bestandstype en de compressiemethode voor de externe gegevens opslaat. Als u een externe bestandsindeling wilt maken, gebruikt u [EXTERNE BESTANDSINDELING MAKEN](#create-external-file-format).
+FILE_FORMAT = *external_file_format_name* -Hiermee geeft u de naam op van het externe bestands indelings object waarin het bestands type en de compressie methode voor de externe gegevens worden opgeslagen. Als u een externe bestands indeling wilt maken, gebruikt u [externe BESTANDS indeling maken](#create-external-file-format).
 
-## <a name="permissions-create-external-table"></a>Machtigingen MAKEN EXTERNE TABEL
+## <a name="permissions-create-external-table"></a>Machtigingen voor het maken van een externe tabel
 
-Als u wilt kiezen uit een externe tabel, hebt u de juiste referenties met lijst- en leesmachtigingen nodig.
+Als u een externe tabel wilt selecteren, moet u over de juiste referenties beschikken met de machtigingen lijst en lezen.
 
-## <a name="example-create-external-table"></a>Voorbeeld EXTERNE TABEL MAKEN
+## <a name="example-create-external-table"></a>Voor beeld van een externe tabel maken
 
-In het volgende voorbeeld wordt een externe tabel maakt. Het geeft de eerste rij als resultaat:
+In het volgende voor beeld wordt een externe tabel gemaakt. De eerste rij wordt geretourneerd:
 
 ```sql
 CREATE EXTERNAL TABLE census_external_table
@@ -258,39 +258,39 @@ GO
 SELECT TOP 1 * FROM census_external_table
 ```
 
-## <a name="create-and-query-external-tables-from-a-file-in-azure-data-lake"></a>Externe tabellen maken en opvragen vanuit een bestand in Azure Data Lake
+## <a name="create-and-query-external-tables-from-a-file-in-azure-data-lake"></a>Externe tabellen maken en opvragen van een bestand in Azure Data Lake
 
-Met behulp van Data Lake-verkenningsmogelijkheden u nu een externe tabel maken en opvragen met SQL-pool of SQL on-demand met een eenvoudige klik met de rechtermuisknop op het bestand.
+Met behulp van Data Lake-functies kunt u een externe tabel nu maken en een query uitvoeren met behulp van SQL-groep of SQL on-demand met een eenvoudige klik met de rechter muisknop op het bestand.
 
 ## <a name="prerequisites"></a>Vereisten
 
-- U moet toegang hebben tot de werkruimte met ten minste de ARM Access-rol Storage Blob-gegevensbijdrage naar het ADLS Gen2-account
+- U moet toegang hebben tot de werk ruimte met ten minste de Access-rol Storage BLOB data contributor ARM voor het ADLS Gen2-account
 
-- U moet ten minste machtigingen hebben om externe tabellen in de SQL-groep of SQL OD [te maken](/sql/t-sql/statements/create-external-table-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest#permissions-2) en op te vragen
+- U moet ten minste [machtigingen hebben voor het maken](/sql/t-sql/statements/create-external-table-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest#permissions-2) en opvragen van externe tabellen op de SQL-groep of SQL-od
 
-- De gekoppelde service die is gekoppeld aan het ADLS Gen2-account **moet toegang hebben tot het bestand**. Als het verificatiemechanisme voor gekoppelde service bijvoorbeeld Beheerde identiteit is, moet de door de werkruimte beheerde identiteit ten minste opslagbloblezertoestemming hebben voor het opslagaccount
+- De gekoppelde service die is gekoppeld aan het ADLS Gen2 account **moet toegang hebben tot het bestand**. Als het verificatie mechanisme van de gekoppelde service bijvoorbeeld beheerde identiteit is, moet de beheerde identiteit van de werk ruimte ten minste machtigingen voor de opslag-BLOB-lezer hebben voor het opslag account
 
-Selecteer in het deelvenster Gegevens het bestand waaruit u de externe tabel wilt maken:
+Selecteer in het deel venster gegevens het bestand waarin u de externe tabel wilt maken:
 > [!div class="mx-imgBorder"]
->![externe tabel1](./media/develop-tables-external-tables/external-table-1.png)
+>![externaltable1](./media/develop-tables-external-tables/external-table-1.png)
 
-Er wordt een dialoogvenster geopend. Selecteer SQL-groep of SQL on-demand, geef een naam aan de tabel en selecteer open script:
+Er wordt een dialoog venster geopend. Selecteer SQL-groep of SQL on-demand, geef een naam op voor de tabel en selecteer script openen:
 
 > [!div class="mx-imgBorder"]
->![externe tabel2](./media/develop-tables-external-tables/external-table-2.png)
+>![externaltable2](./media/develop-tables-external-tables/external-table-2.png)
 
-Het SQL Script wordt automatisch gegenereerd door het schema uit het bestand te verwijderen:
+Het SQL-script wordt automatisch gegenereerd, waarbij het schema wordt afgeleid van het bestand:
 > [!div class="mx-imgBorder"]
->![externe tabel3](./media/develop-tables-external-tables/external-table-3.png)
+>![externaltable3](./media/develop-tables-external-tables/external-table-3.png)
 
-Voer het script uit. Het script wordt automatisch uitgevoerd een Select Top 100 *.:
+Voer het script uit. Het script voert automatisch een SELECT Top 100 * uit.:
 > [!div class="mx-imgBorder"]
->![externe tabel4](./media/develop-tables-external-tables/external-table-4.png)
+>![externaltable4](./media/develop-tables-external-tables/external-table-4.png)
 
-De externe tabel is nu gemaakt, voor toekomstige verkenning van de inhoud van deze externe tabel kan de gebruiker deze rechtstreeks vanuit het deelvenster Gegevens opvragen:
+De externe tabel wordt nu gemaakt, zodat de gebruiker de inhoud van deze externe tabel direct kan doorzoeken via het deel venster gegevens:
 > [!div class="mx-imgBorder"]
->![externe tabel5](./media/develop-tables-external-tables/external-table-5.png)
+>![externaltable5](./media/develop-tables-external-tables/external-table-5.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Controleer het [CETAS-artikel](develop-tables-cetas.md) voor het opslaan van de queryresultaten in een externe tabel in Azure Storage. U ook [Spark-tabellen](develop-storage-files-spark-tables.md)gaan opvragen.
+Raadpleeg het artikel [CETAS](develop-tables-cetas.md) voor informatie over het opslaan van de query resultaten naar een externe tabel in azure Storage. U kunt ook beginnen met het uitvoeren van query's op [Spark-tabellen](develop-storage-files-spark-tables.md).

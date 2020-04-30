@@ -1,5 +1,5 @@
 ---
-title: 'Snelstart: Azure-cache gebruiken voor Redis met .NET Core-apps'
+title: 'Snelstartgids: Azure cache gebruiken voor redis met .NET Core-Apps'
 description: In deze snelstart leest u hoe u toegang hebt tot Azure Cache voor Redis in uw .NET Core-apps
 author: yegu-ms
 ms.author: yegu
@@ -9,21 +9,21 @@ ms.custom: mvc
 ms.topic: quickstart
 ms.date: 05/18/2018
 ms.openlocfilehash: d723ffc4e94dcdcb63d74d65c55288015931adad
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "75413059"
 ---
-# <a name="quickstart-use-azure-cache-for-redis-with-a-net-core-app"></a>Snelstart: Azure-cache gebruiken voor Redis met een .NET Core-app
+# <a name="quickstart-use-azure-cache-for-redis-with-a-net-core-app"></a>Snelstartgids: Azure cache gebruiken voor redis met een .NET core-app
 
-In deze quickstart neemt u Azure Cache voor Redis op in een .NET Core-app om toegang te hebben tot een beveiligde, speciale cache die toegankelijk is vanuit elke toepassing binnen Azure. U gebruikt specifiek de [StackExchange.Redis-client](https://github.com/StackExchange/StackExchange.Redis) met C#-code in een .NET Core-console-app.
+In deze Snelstartgids neemt u Azure cache voor redis op in een .NET core-app om toegang te hebben tot een beveiligde, toegewezen cache die toegankelijk is vanuit elke toepassing in Azure. U gebruikt de [stack Exchange. redis](https://github.com/StackExchange/StackExchange.Redis) -client specifiek met C#-code in een .net Core-Console-app.
 
 ## <a name="prerequisites"></a>Vereisten
 
-- Azure-abonnement - [maak er gratis een](https://azure.microsoft.com/free/)
+- Azure-abonnement: [Maak er gratis een](https://azure.microsoft.com/free/)
 - [.NET Core-SDK](https://dotnet.microsoft.com/download)
-- [.NET Framework 4 of hoger](https://www.microsoft.com/net/download/dotnet-framework-runtime), wat vereist is door de StackEdchange.Redis client.
+- [.NET Framework 4 of hoger](https://www.microsoft.com/net/download/dotnet-framework-runtime), wat vereist is voor de client StackEdchange. redis.
 
 ## <a name="create-a-cache"></a>Een cache maken
 [!INCLUDE [redis-cache-create](../../includes/redis-cache-create.md)]

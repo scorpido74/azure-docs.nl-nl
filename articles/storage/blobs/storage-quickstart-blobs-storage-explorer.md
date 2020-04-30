@@ -1,7 +1,7 @@
 ---
-title: Snelstart - Een blob maken met Azure Storage Explorer
+title: 'Quick Start: een BLOB maken met Azure Storage Explorer'
 titleSuffix: Azure Storage
-description: In deze snelstart leert u hoe u Azure Storage Explorer gebruiken om een container en een blob te maken, de blob naar uw lokale computer te downloaden en alle blobs in de container weer te geven.
+description: In deze Quick Start leert u hoe u Azure Storage Explorer kunt gebruiken om een container en een BLOB te maken, de BLOB te downloaden naar uw lokale computer en alle blobs in de container weer te geven.
 services: storage
 author: tamram
 ms.service: storage
@@ -10,15 +10,15 @@ ms.topic: quickstart
 ms.date: 12/04/2019
 ms.author: tamram
 ms.openlocfilehash: 04530844316610bb8a97e8a299b5fb41ebf49955
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80061377"
 ---
-# <a name="quickstart-use-azure-storage-explorer-to-create-a-blob"></a>Snelstart: Azure Storage Explorer gebruiken om een blob te maken
+# <a name="quickstart-use-azure-storage-explorer-to-create-a-blob"></a>Snelstartgids: Azure Storage Explorer gebruiken om een BLOB te maken
 
-In deze snelstart leert u hoe u [Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/) gebruiken om een container en een blob te maken. Hierna leert u hoe u de blob naar uw lokale computer downloadt en hoe u alle blobs in een container bekijkt. U leert ook hoe u een momentopname van een blob maakt, hoe u containertoegangsbeleid beheert en hoe u een handtekening voor gedeelde toegang maakt.
+In deze Quick Start leert u hoe u [Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/) kunt gebruiken om een container en een BLOB te maken. Hierna leert u hoe u de blob naar uw lokale computer downloadt en hoe u alle blobs in een container bekijkt. U leert ook hoe u een momentopname van een blob maakt, hoe u containertoegangsbeleid beheert en hoe u een handtekening voor gedeelde toegang maakt.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -32,11 +32,11 @@ Bij de eerste keer opstarten wordt het venster **Microsoft Azure Storage Explore
 
 |Taak|Doel|
 |---|---|
-|Een Azure-account toevoegen | Leidt u door naar de aanmeldingspagina van uw organisatie om u te verifiëren naar Azure. |
+|Een Azure-account toevoegen | Omgeleid naar de aanmeldings pagina van uw organisatie om u te verifiëren bij Azure. |
 |Een verbindingsreeks of een SAS-URI (Shared Access Signature) gebruiken | Kan worden gebruikt voor rechtstreekse toegang tot een container of opslagaccount met behulp van een SAS-token of een gedeelde verbindingsreeks. |
 |De naam en sleutel van een opslagaccount gebruiken| Gebruik de naam en sleutel van uw opslagaccount om verbinding te maken met Azure Storage.|
 
-Selecteer **Een Azure-account toevoegen** en klik op **Aanmelden..**. Volg de aanwijzingen op het scherm om u aan te melden bij uw Azure-account.
+Selecteer **een Azure-account toevoegen** en klik op **aanmelden..**. Volg de aanwijzingen op het scherm om u aan te melden bij uw Azure-account.
 
 ![Het venster Microsoft Azure Storage Explorer - Verbinding maken](media/storage-quickstart-blobs-storage-explorer/connect.png)
 
@@ -48,7 +48,7 @@ Wanneer de verbinding tot stand is gebracht, wordt Azure Storage Explorer gelade
 
 Blobs worden altijd naar een container geüpload. Hierdoor kunt u groepen blobs ordenen net zoals u bestanden in mappen op de computer ordent.
 
-Breid het opslagaccount uit dat u hebt gemaakt in de vorige stap, om een container te maken. Selecteer **Blobcontainers**, klik met de rechtermuisknop en selecteer **Blobcontainer maken**. Voer een naam in voor de blobcontainer. Zie de [sectie Een container](storage-quickstart-blobs-dotnet.md#create-a-container) maken voor een lijst met regels en beperkingen voor het benoemen van blobcontainers. Als u klaar bent, drukt u op **Enter** om de blobcontainer te maken. Als de blobcontainer is gemaakt, wordt deze weergegeven in de map **Blobcontainers** voor het geselecteerde opslagaccount.
+Breid het opslagaccount uit dat u hebt gemaakt in de vorige stap, om een container te maken. Selecteer **Blobcontainers**, klik met de rechtermuisknop en selecteer **Blobcontainer maken**. Voer een naam in voor de blobcontainer. Zie de sectie [een container maken](storage-quickstart-blobs-dotnet.md#create-a-container) voor een lijst met regels en beperkingen voor het benoemen van BLOB-containers. Als u klaar bent, drukt u op **Enter** om de blobcontainer te maken. Als de blobcontainer is gemaakt, wordt deze weergegeven in de map **Blobcontainers** voor het geselecteerde opslagaccount.
 
 ## <a name="upload-blobs-to-the-container"></a>Blobs uploaden naar de container
 
@@ -84,13 +84,13 @@ Azure Storage Explorer biedt de mogelijkheid om [momentopnamen](storage-blob-sna
 
 ## <a name="manage-access-policies"></a>Toegangsbeleid beheren
 
-Storage Explorer biedt de mogelijkheid om toegangsbeleid voor containers te beheren in de bijbehorende gebruikersinterface. Er zijn twee typen beleid voor beveiligde toegang (SAS), op serviceniveau en op accountniveau. Een SAS op accountniveau is gericht op het opslagaccount en kan worden toegepast op meerdere services en resources. Een SAS op serviceniveau is gedefinieerd voor een resource onder een bepaalde service. Als u een SAS op serviceniveau wilt genereren, klikt u met de rechtermuisknop op een container en selecteert **u Toegangsbeleid beheren...**. Als u een SAS op accountniveau wilt genereren, klikt u met de rechtermuisknop op het opslagaccount.
+Storage Explorer biedt de mogelijkheid om toegangsbeleid voor containers te beheren in de bijbehorende gebruikersinterface. Er zijn twee typen beleid voor beveiligde toegang (SAS), op serviceniveau en op accountniveau. Een SAS op accountniveau is gericht op het opslagaccount en kan worden toegepast op meerdere services en resources. Een SAS op serviceniveau is gedefinieerd voor een resource onder een bepaalde service. Als u een service niveau SAS wilt genereren, klikt u met de rechter muisknop op een wille keurige container en selecteert u **toegangs beleid beheren...**. Als u een SAS op account niveau wilt genereren, klikt u met de rechter muisknop op het opslag account.
 
 Selecteer **Toevoegen** om nieuw toegangsbeleid toe te voegen en de machtigingen voor het beleid te definiëren. Wanneer u klaar bent, selecteert u **Opslaan** om het toegangsbeleid op te slaan. Dit beleid is nu beschikbaar voor gebruik bij het configureren van een handtekening voor gedeelde toegang.
 
 ## <a name="work-with-shared-access-signatures"></a>Werken met handtekeningen voor gedeelde toegang
 
-Handtekeningen voor gedeelde toegang (Shared Access Signatures) kunnen worden opgehaald via Storage Explorer. Klik met de rechtermuisknop op een opslagaccount, container of blob en kies **Gedeelde toegangshandtekening verwijderen...**. Kies de begin- en vervaldatum en machtigingen voor de SAS-URL en selecteer **Maken**. De volledige URL met de querytekenreeks, alsook de querytekenreeks zelf, worden geleverd en kunnen worden gekopieerd in het volgende scherm.
+Handtekeningen voor gedeelde toegang (Shared Access Signatures) kunnen worden opgehaald via Storage Explorer. Klik met de rechter muisknop op een opslag account, container of BLOB en kies **Shared Access Signature ophalen...**. Kies de begin-en eind tijd en de machtigingen voor de SAS-URL en selecteer **maken**. De volledige URL met de querytekenreeks, alsook de querytekenreeks zelf, worden geleverd en kunnen worden gekopieerd in het volgende scherm.
 
 ![Microsoft Azure Storage Explorer - lijst met blobs in een container](media/storage-quickstart-blobs-storage-explorer/sharedaccesssignature.png)
 

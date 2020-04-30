@@ -8,15 +8,15 @@ ms.date: 03/04/2019
 ms.author: antchu
 ms.custom: include file
 ms.openlocfilehash: 73d4d4e1a5f148dce6099b2d747ee1c290bcf7c1
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "67176406"
 ---
 ## <a name="run-the-web-application"></a>De webtoepassing uitvoeren
 
-1. Voor uw gemak wordt een voorbeeldwebtoepassing van één pagina in GitHub gehost. Open uw [https://azure-samples.github.io/signalr-service-quickstart-serverless-chat/demo/chat-v2/](https://azure-samples.github.io/signalr-service-quickstart-serverless-chat/demo/chat-v2/)browser voor .
+1. Voor uw gemak wordt een voorbeeldwebtoepassing van één pagina in GitHub gehost. Open uw browser in [https://azure-samples.github.io/signalr-service-quickstart-serverless-chat/demo/chat-v2/](https://azure-samples.github.io/signalr-service-quickstart-serverless-chat/demo/chat-v2/).
 
     > [!NOTE]
     > De bron van het HTML-bestand bevindt zich op [/docs/demo/chat-v2/index.html](https://github.com/Azure-Samples/signalr-service-quickstart-serverless-chat/blob/master/docs/demo/chat-v2/index.html).
@@ -34,4 +34,4 @@ ms.locfileid: "67176406"
 1. Open een ander exemplaar van de webtoepassing in een ander browservenster. U ziet dat alle verzonden berichten in alle exemplaren van de toepassing worden weergegeven.
 
 > [!IMPORTANT]
-> Omdat de HTML-pagina wordt weergegeven met HTTPS, maar de lokale runtime van Azure-functies standaard HTTP gebruikt, kan uw browser (zoals Firefox) een beleid voor gemengde inhoud afdwingen dat de aanvragen van de webpagina naar uw functies blokkeert. Gebruik hiervoor een browser die deze beperking niet heeft of start een lokale [HTTP-server zoals http-server](https://www.npmjs.com/package/http-server) in de map */docs/demo/chat-v2.* Zorg ervoor dat de `CORS` oorsprong wordt toegevoegd aan de instelling in *local.settings.json*.
+> Omdat de HTML-pagina wordt geleverd met HTTPS, maar de lokale Azure Functions runtime gebruikt standaard HTTP, kan uw browser (zoals Firefox) een gemengd beleid afdwingen waarmee de aanvragen van de webpagina worden geblokkeerd voor uw functies. U kunt dit oplossen door een browser te gebruiken die deze beperking niet heeft of een lokale HTTP-server zoals [http-server](https://www.npmjs.com/package/http-server) in de */docs/demo/chat-v2* -map te starten. Zorg ervoor dat de oorsprong is toegevoegd `CORS` aan de instelling in *Local. settings. json*.

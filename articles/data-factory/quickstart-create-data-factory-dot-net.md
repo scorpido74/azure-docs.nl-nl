@@ -1,5 +1,5 @@
 ---
-title: Azure-gegevensfabriek maken met .NET SDK
+title: Azure-data factory maken met behulp van .NET SDK
 description: Maak een Azure data factory om gegevens te kopiëren van de ene locatie in Azure Blob Storage naar de andere.
 services: data-factory
 documentationcenter: ''
@@ -14,21 +14,21 @@ ms.topic: quickstart
 ms.date: 06/24/2019
 ms.author: jingwang
 ms.openlocfilehash: 7f0f18e523368e85d9cea0206e98bb7b1a0e6165
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81419371"
 ---
-# <a name="quickstart-create-a-data-factory-and-pipeline-using-net-sdk"></a>Snelstart: een gegevensfabriek en -pijplijn maken met .NET SDK
+# <a name="quickstart-create-a-data-factory-and-pipeline-using-net-sdk"></a>Snelstartgids: een data factory en pijp lijn maken met behulp van .NET SDK
 
-> [!div class="op_single_selector" title1="Selecteer de versie van de datafabriekservice die u gebruikt:"]
+> [!div class="op_single_selector" title1="Selecteer de versie van Data Factory service die u gebruikt:"]
 > * [Versie 1](v1/data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
 > * [Huidige versie](quickstart-create-data-factory-dot-net.md)
 
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
-In deze snelstartgids wordt beschreven hoe u .NET SDK kunt gebruiken om een Azure data factory te maken. Met de pijplijn die u in deze data factory maakt, worden gegevens **gekopieerd** van één map naar een andere map in een Azure Blob Storage. Zie [Zelfstudie: Gegevens transformeren met Spark](tutorial-transform-data-spark-portal.md)voor een zelfstudie over het transformeren **van** gegevens met Azure Data Factory.
+In deze snelstartgids wordt beschreven hoe u .NET SDK kunt gebruiken om een Azure data factory te maken. Met de pijplijn die u in deze data factory maakt, worden gegevens **gekopieerd** van één map naar een andere map in een Azure Blob Storage. Zie [zelf studie: gegevens transformeren met Spark](tutorial-transform-data-spark-portal.md)voor een zelf studie over het **Transformeren** van gegevens met behulp van Azure Data Factory.
 
 > [!NOTE]
 > Dit artikel is geen gedetailleerde introductie tot de Data Factory-service. Zie [Inleiding tot Azure Data Factory](introduction.md) voor een inleiding tot Azure Data Factory-service.
@@ -37,7 +37,7 @@ In deze snelstartgids wordt beschreven hoe u .NET SDK kunt gebruiken om een Azur
 
 ### <a name="visual-studio"></a>Visual Studio
 
-De walkthrough in dit artikel maakt gebruik van Visual Studio 2019. De procedures voor Visual Studio 2013, 2015 of 2017 verschillen enigszins.
+In de procedure in dit artikel wordt gebruikgemaakt van Visual Studio 2019. De procedures voor Visual Studio 2013, 2015 en 2017 verschillen enigszins.
 
 ### <a name="azure-net-sdk"></a>Azure .NET SDK
 
@@ -45,26 +45,26 @@ Download en installeer [Azure .NET SDK](https://azure.microsoft.com/downloads/) 
 
 ## <a name="create-an-application-in-azure-active-directory"></a>Een toepassing maken in Azure Active Directory
 
-Volg vanuit de secties in *Hoe: Gebruik de portal om een Azure AD-toepassing en serviceprincipal te maken die toegang heeft tot bronnen,* volg de instructies om deze taken uit te voeren:
+In de secties in *How to: gebruik de portal om een Azure AD-toepassing en Service-Principal te maken die toegang hebben tot resources*. Volg de instructies voor het uitvoeren van deze taken:
 
-1. Maak [in Een Azure Active Directory-toepassing maken](../active-directory/develop/howto-create-service-principal-portal.md#create-an-azure-active-directory-application)een toepassing die de .NET-toepassing vertegenwoordigt die u in deze zelfstudie maakt. Voor de aanmeldings-URL kunt u een dummy-URL opgeven, zoals wordt getoond in het artikel (`https://contoso.org/exampleapp`).
-2. In [Waarden voor aanmelden,](../active-directory/develop/howto-create-service-principal-portal.md#get-values-for-signing-in)de **toepassings-id** en **de tenant-id**opvragen en deze waarden noteren die u later in deze zelfstudie gebruikt. 
-3. In [Certificaten en geheimen,](../active-directory/develop/howto-create-service-principal-portal.md#certificates-and-secrets)krijgen de **verificatiesleutel,** en noteer deze waarde die u later in deze zelfstudie gebruikt.
-4. Wijs [de toepassing toewijzen aan een rol](../active-directory/develop/howto-create-service-principal-portal.md#assign-a-role-to-the-application)toe aan de rol **Inzender** op abonnementsniveau, zodat de toepassing gegevensfabrieken in het abonnement kan maken.
+1. Maak in [een Azure Active Directory-toepassing maken](../active-directory/develop/howto-create-service-principal-portal.md#create-an-azure-active-directory-application)een toepassing die de .NET-toepassing vertegenwoordigt die u in deze zelf studie maakt. Voor de aanmeldings-URL kunt u een dummy-URL opgeven, zoals wordt getoond in het artikel (`https://contoso.org/exampleapp`).
+2. Haal de **toepassings-id** en **Tenant-id**op in [waarden ophalen voor aanmelden](../active-directory/develop/howto-create-service-principal-portal.md#get-values-for-signing-in)en noteer deze waarden die u later in deze zelf studie gebruikt. 
+3. Haal in [certificaten en geheimen](../active-directory/develop/howto-create-service-principal-portal.md#certificates-and-secrets)de **verificatie sleutel**op en noteer deze waarde die u later in deze zelf studie gebruikt.
+4. Wijs in [de toepassing toewijzen aan een rol](../active-directory/develop/howto-create-service-principal-portal.md#assign-a-role-to-the-application)de toepassing toe aan de rol **Inzender** op het abonnements niveau zodat de toepassing gegevens fabrieken kan maken in het abonnement.
 
 ## <a name="create-a-visual-studio-project"></a>Een Visual Studio-project maken
 
-Maak vervolgens een C# .NET-consoletoepassing in Visual Studio:
+Maak vervolgens een C# .NET-console toepassing in Visual Studio:
 
 1. Start **Visual Studio**.
-2. Selecteer in het venster Start de optie Een nieuwe > **projectconsole-app maken (.NET Framework).** **Create a new project** .NET versie 4.5.2 of hoger is vereist.
-3. Voer **adfv2QuickStart**in **op projectnaam**.
+2. Selecteer in het Start venster **een nieuwe project** > **console-app maken (.NET Framework)**. .NET versie 4.5.2 of hoger is vereist.
+3. Voer in **project naam** **ADFv2QuickStart**in.
 4. Selecteer **Maken** om het project te maken.
 
 ## <a name="install-nuget-packages"></a>NuGet-pakketten installeren
 
-1. Selecteer **Tools** > **NuGet Package Manager** > **Package Manager Console**.
-2. Voer in het deelvenster **Package Manager Console** de volgende opdrachten uit om pakketten te installeren. Zie het [nuget-pakket Microsoft.Azure.Management.DataFactory voor](https://www.nuget.org/packages/Microsoft.Azure.Management.DataFactory/)meer informatie .
+1. Selecteer **extra** > **NuGet package manager** > **package**Manager-console.
+2. Voer in het deel venster **Package Manager-console** de volgende opdrachten uit om pakketten te installeren. Zie het [micro soft. Azure. Management. DataFactory nuget-pakket](https://www.nuget.org/packages/Microsoft.Azure.Management.DataFactory/)voor meer informatie.
 
     ```powershell
     Install-Package Microsoft.Azure.Management.DataFactory
@@ -87,7 +87,7 @@ Maak vervolgens een C# .NET-consoletoepassing in Visual Studio:
     using Microsoft.IdentityModel.Clients.ActiveDirectory;
     ```
 
-2. Voeg de volgende code toe aan de methode **Main** waarmee de variabelen worden ingesteld. Vervang de tijdelijke aanduidingen door uw eigen waarden. Voor een lijst met Azure-regio’s waarin Data Factory momenteel beschikbaar is, selecteert u op de volgende pagina de regio’s waarin u geïnteresseerd bent, vouwt u vervolgens **Analytics** uit en gaat u naar **Data Factory**: [Beschikbare producten per regio](https://azure.microsoft.com/global-infrastructure/services/). De gegevensopslag (Azure Storage, Azure SQL Database en meer) en computes (HDInsight en andere) die door gegevensfabriek worden gebruikt, kunnen zich in andere regio's bevinden.
+2. Voeg de volgende code toe aan de methode **Main** waarmee de variabelen worden ingesteld. Vervang de tijdelijke aanduidingen door uw eigen waarden. Voor een lijst met Azure-regio’s waarin Data Factory momenteel beschikbaar is, selecteert u op de volgende pagina de regio’s waarin u geïnteresseerd bent, vouwt u vervolgens **Analytics** uit en gaat u naar **Data Factory**: [Beschikbare producten per regio](https://azure.microsoft.com/global-infrastructure/services/). De gegevens archieven (Azure Storage, Azure SQL Database en meer) en berekeningen (HDInsight en anderen) die door data factory worden gebruikt, kunnen zich in andere regio's bevindt.
 
    ```csharp
    // Set variables
@@ -115,7 +115,7 @@ Maak vervolgens een C# .NET-consoletoepassing in Visual Studio:
    string pipelineName = "Adfv2QuickStartPipeline";
    ```
 
-3. Voeg de volgende code toe aan de **hoofdmethode** waarmee een instantie van de klasse **DataFactoryManagementClient** wordt gemaakt. U gebruikt dit object om een data factory, een gekoppelde service, gegevenssets en een pijplijn te maken. U kunt dit object ook gebruiken om de details van de pijplijnuitvoering te controleren.
+3. Voeg de volgende code toe aan de methode **Main** om een instantie van de klasse **datafactorymanagementclient te maken** te maken. U gebruikt dit object om een data factory, een gekoppelde service, gegevenssets en een pijplijn te maken. U kunt dit object ook gebruiken om de details van de pijplijnuitvoering te controleren.
 
    ```csharp
    // Authenticate and create a data factory management client
@@ -155,7 +155,7 @@ while (client.Factories.Get(resourceGroup, dataFactoryName).ProvisioningState ==
 
 Voeg de volgende code toe aan de methode **Main** om een **gekoppelde Azure Storage-service** te maken.
 
-U maakt gekoppelde services in een gegevensfactory om uw gegevensarchieven en compute-services aan de gegevensfactory te koppelen. In deze Quickstart hoeft u slechts één azure storage-gekoppelde service te maken voor zowel de kopieerbron als de sink store. het heet "AzureStorageLinkedService" in het voorbeeld.
+U maakt gekoppelde services in een gegevensfactory om uw gegevensarchieven en compute-services aan de gegevensfactory te koppelen. In deze Snelstartgids hoeft u slechts één Azure Storage gekoppelde service te maken voor zowel de Kopieer bron als de Sink-Store. het heeft de naam ' AzureStorageLinkedService ' in het voor beeld.
 
 ```csharp
 // Create an Azure Storage linked service
@@ -177,9 +177,9 @@ Console.WriteLine(SafeJsonConvert.SerializeObject(
 
 ## <a name="create-a-dataset"></a>Een gegevensset maken
 
-Voeg de volgende code toe aan de **hoofdmethode** waarmee een **Azure blob-gegevensset wordt gemaakt.**
+Voeg de volgende code toe aan de methode **Main** om een **Azure Blob-gegevensset**te maken.
 
-U definieert een gegevensset die de gegevens vertegenwoordigt die van een bron naar een sink moeten worden gekopieerd. In dit voorbeeld verwijst deze Blob-gegevensset naar de gekoppelde Azure Storage-service die u in de vorige stap gemaakt hebt. De gegevensset heeft een parameter nodig waarvan de waarde wordt ingesteld in een activiteit die de gegevensset verbruikt. De parameter wordt gebruikt om de "mapPath" te construeren die aanwijst waar de gegevens zich bevinden/worden opgeslagen.
+U definieert een gegevensset die de gegevens vertegenwoordigt die van een bron naar een sink moeten worden gekopieerd. In dit voorbeeld verwijst deze Blob-gegevensset naar de gekoppelde Azure Storage-service die u in de vorige stap gemaakt hebt. De gegevensset heeft een parameter nodig waarvan de waarde wordt ingesteld in een activiteit die de gegevensset verbruikt. De para meter wordt gebruikt om de ' folderPath ' te maken die verwijst naar de locatie waar de gegevens zich bevinden of worden opgeslagen.
 
 ```csharp
 // Create an Azure Blob dataset
@@ -208,7 +208,7 @@ Console.WriteLine(
 
 Voeg de volgende code toe aan de methode **Main** om **een pijplijn met een kopieeractiviteit te maken**.
 
-In dit voorbeeld bevat deze pijplijn één activiteit en neemt het twee parameters: het invoerblobpad en het uitvoerblobpad. De waarden voor deze parameters worden ingesteld wanneer de pijplijn wordt geactiveerd of uitgevoerd. De kopieeractiviteit verwijst naar dezelfde blobgegevensset die u in de vorige stap heb gemaakt als invoer en uitvoer. Wanneer de dataset wordt gebruikt als invoergegevensset, wordt het invoerpad opgegeven. En wanneer de dataset wordt gebruikt als uitvoergegevensset, wordt het uitvoerpad opgegeven. 
+In dit voor beeld bevat deze pijp lijn één activiteit en worden twee para meters gebruikt: het pad van de invoer-Blob en het pad naar de uitvoer-blob. De waarden voor deze parameters worden ingesteld wanneer de pijplijn wordt geactiveerd of uitgevoerd. De kopieeractiviteit verwijst naar dezelfde blobgegevensset die u in de vorige stap heb gemaakt als invoer en uitvoer. Wanneer de dataset wordt gebruikt als invoergegevensset, wordt het invoerpad opgegeven. En wanneer de dataset wordt gebruikt als uitvoergegevensset, wordt het uitvoerpad opgegeven. 
 
 ```csharp
 // Create a pipeline with a copy activity
@@ -260,7 +260,7 @@ Console.WriteLine(SafeJsonConvert.SerializeObject(pipeline, client.Serialization
 
 Voeg de volgende code toe aan de methode **Main** om een **pijplijnuitvoering te activeren**.
 
-Met deze code worden ook waarden ingesteld van de **parameters inputPath** en **outputPath** die in de pijplijn zijn opgegeven met de werkelijke waarden van de bron- en sinkblobpaden.
+Met deze code worden ook waarden van de para meters **inputPath** en **outputPath** ingesteld die zijn opgegeven in de pijp lijn met de werkelijke waarden van de bron-en Sink-BLOB-paden.
 
 ```csharp
 // Create a pipeline run
@@ -296,7 +296,7 @@ Console.WriteLine("Pipeline run ID: " + runResponse.RunId);
    }
    ```
 
-2. Voeg de volgende code toe aan de **hoofdmethode** waarmee gegevens over het uitvoeren van kopieeractiviteiten worden opgehaald, zoals de grootte van de gegevens die worden gelezen of geschreven.
+2. Voeg de volgende code toe aan de methode **Main** waarmee details van de uitvoer van de Kopieer activiteit worden opgehaald, zoals de grootte van de gegevens die worden gelezen of geschreven.
 
    ```csharp
    // Check the copy activity run details
@@ -318,7 +318,7 @@ Console.WriteLine("Pipeline run ID: " + runResponse.RunId);
 
 Bouw en start de toepassing en controleer vervolgens de uitvoering van de pijplijn.
 
-In de console wordt de voortgang weergegeven van het maken van een data factory, een gekoppelde service, gegevenssets, pijplijn en pijplijnuitvoering. Vervolgens wordt de uitvoeringsstatus van de pijplijn gecontroleerd. Wacht tot u de gegevens van de kopieeractiviteit ziet uitvoeren met de grootte van de lees-/schrijfgegevens. Gebruik vervolgens hulpprogramma's zoals [Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/) om te controleren of de blob(s) wordt gekopieerd naar 'outputBlobPath' van 'inputBlobPath' zoals u in de variabelen hebt opgegeven.
+In de console wordt de voortgang weergegeven van het maken van een data factory, een gekoppelde service, gegevenssets, pijplijn en pijplijnuitvoering. Vervolgens wordt de uitvoeringsstatus van de pijplijn gecontroleerd. Wacht totdat de details van de Kopieer activiteit worden weer gegeven met de grootte van de gegevens voor lezen/schrijven. Gebruik vervolgens hulpprogram ma's als [Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/) om te controleren of de BLOB (s) is gekopieerd naar ' inputblobpath ' in ' outputblobpath ' zoals u hebt opgegeven in de variabelen.
 
 ### <a name="sample-output"></a>Voorbeelduitvoer
 
@@ -430,15 +430,15 @@ Press any key to exit...
 
 ## <a name="verify-the-output"></a>De uitvoer controleren
 
-De pijplijn maakt automatisch de uitvoermap in de **adftutorial** blobcontainer. Vervolgens kopieert het **bestand emp.txt** van de invoermap naar de uitvoermap. 
+Met de pijp lijn wordt automatisch de uitvoermap gemaakt in de BLOB-container **adftutorial** . Vervolgens wordt het bestand **EMP. txt** vanuit de map invoer gekopieerd naar de uitvoermap. 
 
-1. Selecteer in de Azure-portal op de pagina **met adftutorial-containers** die u hebt gestopt in de [sectie Een invoermap en bestand toevoegen voor de blobcontainer](#add-an-input-folder-and-file-for-the-blob-container) hierboven, **vernieuwen** om de uitvoermap weer te geven. 
-2. Selecteer **uitvoer**in de mappenlijst .
+1. Selecteer in de Azure Portal op de pagina **adftutorial** -container die u hebt gestopt in het gedeelte [een map voor invoer en het bestand voor de BLOB-container toevoegen](#add-an-input-folder-and-file-for-the-blob-container) de optie **vernieuwen** om de uitvoermap weer te geven. 
+2. Selecteer in de lijst met mappen **uitvoer**.
 3. Controleer of het bestand **emp.txt** naar de uitvoermap is gekopieerd. 
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
-Als u de gegevensfabriek programmatisch wilt verwijderen, voegt u de volgende regels code toe aan het programma: 
+Als u de data factory programmatisch wilt verwijderen, voegt u de volgende regels code toe aan het programma: 
 
 ```csharp
 Console.WriteLine("Deleting the data factory");

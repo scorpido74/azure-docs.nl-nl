@@ -1,6 +1,6 @@
 ---
-title: Weergaven maken en gebruiken in SQL on-demand (voorbeeld)
-description: In deze sectie leert u hoe u weergaven maken en gebruiken om SQL on-demand (preview)-query's te verpakken. Met weergaven u deze query's opnieuw gebruiken. Weergaven zijn ook nodig als u tools, zoals Power BI, wilt gebruiken in combinatie met SQL on-demand.
+title: Weer gaven maken en gebruiken in SQL op aanvraag (preview)
+description: In deze sectie leert u hoe u weer gaven maakt en gebruikt om query's op aanvraag (preview) in SQL te laten teruglopen. Met weer gaven kunt u deze query's opnieuw gebruiken. Er zijn ook weer gaven nodig als u hulpprogram ma's, zoals Power BI, wilt gebruiken in combi natie met SQL op aanvraag.
 services: synapse-analytics
 author: azaricstefan
 ms.service: synapse-analytics
@@ -10,29 +10,29 @@ ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick, carlrab
 ms.openlocfilehash: 0f5323193706fdd00739be6c71a4fe12cfedf21b
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81424536"
 ---
-# <a name="create-and-use-views-in-sql-on-demand-preview-using-azure-synapse-analytics"></a>Weergaven maken en gebruiken in SQL on-demand (preview) met Azure Synapse Analytics
+# <a name="create-and-use-views-in-sql-on-demand-preview-using-azure-synapse-analytics"></a>Weer gaven maken en gebruiken in SQL op aanvraag (preview) met behulp van Azure Synapse Analytics
 
-In deze sectie leert u hoe u weergaven maken en gebruiken om SQL on-demand (preview)-query's te verpakken. Met weergaven u deze query's opnieuw gebruiken. Weergaven zijn ook nodig als u tools, zoals Power BI, wilt gebruiken in combinatie met SQL on-demand.
+In deze sectie leert u hoe u weer gaven maakt en gebruikt om query's op aanvraag (preview) in SQL te laten teruglopen. Met weer gaven kunt u deze query's opnieuw gebruiken. Er zijn ook weer gaven nodig als u hulpprogram ma's, zoals Power BI, wilt gebruiken in combi natie met SQL op aanvraag.
 
 ## <a name="prerequisites"></a>Vereisten
 
-Uw eerste stap is om de onderstaande artikelen te bekijken en ervoor te zorgen dat u voldoet aan de vereisten voor het maken en gebruiken van SQL on-demand weergaven:
+De eerste stap is om de onderstaande artikelen te controleren en te controleren of u voldoet aan de vereisten voor het maken en gebruiken van SQL on-demand-weer gaven:
 
-- [First-time setup](query-data-storage.md#first-time-setup)
+- [Eerste keer instellen](query-data-storage.md#first-time-setup)
 - [Vereisten](query-data-storage.md#prerequisites)
 
 ## <a name="create-a-view"></a>Een weergave maken
 
-U weergaven maken op dezelfde manier als u normale SQL Server-weergaven maakt. De onderstaande query maakt een weergave met het leesbestand *population.csv.*
+U kunt weer gaven op dezelfde manier maken als normale SQL Server weergaven. De onderstaande query maakt weer gave die het bestand *populatie. CSV* leest.
 
 > [!NOTE]
-> Wijzig de eerste regel in de query, d.w.z. [mydbname], zodat u de database gebruikt die u hebt gemaakt. Als u geen database hebt gemaakt, leest u [First-time setup](query-data-storage.md#first-time-setup).
+> Wijzig de eerste regel in de query, bijvoorbeeld [mydbname], zodat u de data base gebruikt die u hebt gemaakt. Als u nog geen data base hebt gemaakt, lees dan [eerst de installatie](query-data-storage.md#first-time-setup).
 
 ```sql
 USE [mydbname];
@@ -57,14 +57,14 @@ WITH (
 ) AS [r];
 ```
 
-## <a name="use-a-view"></a>Een weergave gebruiken
+## <a name="use-a-view"></a>Een weer gave gebruiken
 
-U weergaven in uw query's op dezelfde manier gebruiken als weergaven in SQL Server-query's.
+U kunt weer gaven in uw query's op dezelfde manier gebruiken als bij het gebruik van weer gaven in SQL Server query's.
 
-De volgende query toont aan met behulp van de *population_csv* weergave die we hebben gemaakt in [Een weergave maken](#create-a-view). Het brengt landnamen met hun bevolking in 2019 in dalende volgorde terug.
+Met de volgende query wordt gedemonstreerd met behulp van de *population_csve* weer gave die u in [een weer gave maken](#create-a-view)hebt gemaakt. Het retourneert land namen met hun populatie in 2019 in aflopende volg orde.
 
 > [!NOTE]
-> Wijzig de eerste regel in de query, d.w.z. [mydbname], zodat u de database gebruikt die u hebt gemaakt. Als u geen database hebt gemaakt, leest u [First-time setup](query-data-storage.md#first-time-setup).
+> Wijzig de eerste regel in de query, bijvoorbeeld [mydbname], zodat u de data base gebruikt die u hebt gemaakt. Als u nog geen data base hebt gemaakt, lees dan [eerst de installatie](query-data-storage.md#first-time-setup).
 
 ```sql
 USE [mydbname];
@@ -81,4 +81,4 @@ ORDER BY
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Raadpleeg het [bestand Query single CSV,](query-single-csv-file.md) [Query Parquet files](query-parquet-files.md)en Query [JSON-bestanden](query-json-files.md) voor informatie over het opvragen van verschillende bestandstypen.
+Raadpleeg voor meer informatie over het uitvoeren van een query op verschillende bestands typen de artikelen [query ENKELVOUDIG CSV-bestand](query-single-csv-file.md), [query uitvoeren op Parquet-bestanden](query-parquet-files.md)en JSON- [bestanden opvragen](query-json-files.md) .

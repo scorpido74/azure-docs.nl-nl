@@ -1,6 +1,6 @@
 ---
-title: Wat is Azure webapplication firewall op Azure CDN?
-description: Lees hoe Azure webtoepassingsfirewall op Azure CDN-service uw webtoepassingen beschermt tegen schadelijke aanvallen.
+title: Wat is Azure Web Application Firewall op Azure CDN?
+description: Meer informatie over hoe Azure Web Application Firewall op Azure CDN-service uw webtoepassingen beschermt tegen kwaad aardige aanvallen.
 services: web-application-firewall
 author: vhorne
 ms.service: web-application-firewall
@@ -8,110 +8,110 @@ ms.topic: overview
 ms.date: 03/18/2020
 ms.author: victorh
 ms.openlocfilehash: 28cf8d9fd60cc6fc158812aa0a1dff3a4b0dced1
-ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80754295"
 ---
-# <a name="azure-web-application-firewall-on-azure-content-delivery-network"></a>Azure Web Application Firewall op Azure Content Delivery Network
+# <a name="azure-web-application-firewall-on-azure-content-delivery-network"></a>Azure Web Application firewall op Azure Content Delivery Network
 
-Azure Web Application Firewall (WAF) op Azure Content Delivery Network (CDN) van Microsoft biedt gecentraliseerde bescherming voor uw webinhoud. WAF verdedigt uw webservices tegen veelvoorkomende exploits en kwetsbaarheden. Het houdt uw service zeer beschikbaar voor uw gebruikers en helpt u te voldoen aan de nalevingsvereisten.
+Azure Web Application firewall (WAF) op Azure Content Delivery Network (CDN) van micro soft biedt gecentraliseerde beveiliging voor uw webinhoud. WAF beschermt uw webservices tegen veelvoorkomende aanvallen en beveiligings problemen. Het houdt uw service Maxi maal beschikbaar voor uw gebruikers en helpt u te voldoen aan de nalevings vereisten.
 
 > [!IMPORTANT]
-> WAF op Azure CDN van Microsoft is momenteel in openbare preview en wordt voorzien van een preview service level overeenkomst. De reden hiervoor is dat bepaalde functies mogelijk niet worden ondersteund of beperkte mogelijkheden hebben.  Raadpleeg voor meer informatie de [aanvullende gebruiksrechtovereenkomst voor Microsoft Azure-previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> WAF op Azure CDN van micro soft is momenteel beschikbaar als open bare preview en wordt meegeleverd met een preview-service level agreement. De reden hiervoor is dat bepaalde functies mogelijk niet worden ondersteund of beperkte mogelijkheden hebben.  Raadpleeg voor meer informatie de [aanvullende gebruiksrechtovereenkomst voor Microsoft Azure-previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-WAF op Azure CDN is een wereldwijde en gecentraliseerde oplossing. Het wordt geïmplementeerd op Azure-netwerkrandlocaties over de hele wereld. WAF stopt kwaadaardige aanvallen in de buurt van de aanvalbronnen, voordat ze uw oorsprong bereiken. U krijgt wereldwijde bescherming op schaal zonder in te leveren op prestaties. 
+WAF op Azure CDN is een wereld wijde en gecentraliseerde oplossing. Het is geïmplementeerd op Azure Network Edge-locaties over de hele wereld. WAF stopt schadelijke aanvallen dicht bij de aanvals bronnen voordat ze uw oorsprong bereiken. U krijgt wereld wijde beveiliging op schaal zonder verlies van prestaties. 
 
-Een WAF-beleid wordt eenvoudig gekoppeld aan een CDN-eindpunt in uw abonnement. Nieuwe regels kunnen binnen enkele minuten worden geïmplementeerd, zodat u snel reageren op veranderende bedreigingspatronen.
+Een WAF-beleid kan eenvoudig worden gekoppeld aan een CDN-eind punt in uw abonnement. Nieuwe regels kunnen binnen enkele minuten worden geïmplementeerd, zodat u snel kunt reageren op het wijzigen van bedreigings patronen.
 
-![Azure-firewall voor webtoepassingen](../media/cdn-overview/waf-cdn-overview.png)
+![Azure Web Application Firewall](../media/cdn-overview/waf-cdn-overview.png)
 
-## <a name="waf-policy-and-rules"></a>WAF-beleid en -regels
+## <a name="waf-policy-and-rules"></a>WAF-beleid en-regels
 
-U een WAF-beleid configureren en dat beleid koppelen aan een of meer CDN-eindpunten voor bescherming. Een WAF-beleid bestaat uit twee soorten beveiligingsregels:
+U kunt een WAF-beleid configureren en dat beleid koppelen aan een of meer CDN-eind punten voor beveiliging. Een WAF-beleid bestaat uit twee typen beveiligings regels:
 
-- aangepaste regels die u maken.
+- aangepaste regels die u kunt maken.
 
-- beheerde regelsets die een verzameling van vooraf geconfigureerde regels met Azure zijn beheerd.
+- beheerde regel sets die een verzameling van door Azure beheerde vooraf geconfigureerde regels zijn.
 
-Wanneer beide aanwezig zijn, worden aangepaste regels verwerkt voordat de regels worden verwerkt in een beheerde regelset. Er wordt een regel gemaakt van een wedstrijdvoorwaarde, een prioriteit en een actie. Ondersteunde actietypen zijn: *TOESTAAN,* *BLOKKEREN,* *LOGBOEK*en *OMLEIDEN*. U een volledig aangepast beleid maken dat voldoet aan uw specifieke vereisten voor toepassingsbescherming door beheerde en aangepaste regels te combineren.
+Wanneer beide aanwezig zijn, worden aangepaste regels verwerkt voordat de regels in een beheerde regelset worden verwerkt. Een regel bestaat uit een match-voor waarde, een prioriteit en een actie. Ondersteunde actie typen zijn: *toestaan*, *blok keren*, *Aanmelden*en *omleiden*. U kunt een volledig aangepast beleid maken dat voldoet aan uw specifieke vereisten voor toepassings beveiliging door beheerde en aangepaste regels te combi neren.
 
-Regels binnen een beleid worden verwerkt in een prioriteitsvolgorde. Prioriteit is een uniek getal dat de volgorde van de regels definieert om te verwerken. Kleinere getallen hebben een hogere prioriteit en deze regels worden geëvalueerd vóór regels met een grotere waarde. Zodra een regel is gekoppeld, wordt de bijbehorende actie die in de regel is gedefinieerd, toegepast op de aanvraag. Zodra een dergelijke overeenkomst is verwerkt, worden regels met lagere prioriteiten niet verder verwerkt.
+Regels in een beleid worden verwerkt in een prioriteits volgorde. Priority is een uniek nummer waarmee de volg orde van de te verwerken regels wordt gedefinieerd. Kleinere getallen hebben een hogere prioriteit en deze regels worden geëvalueerd vóór regels met een grotere waarde. Zodra een regel is gevonden, wordt de bijbehorende actie toegepast die in de regel is gedefinieerd. Zodra een dergelijke overeenkomst is verwerkt, worden regels met lagere prioriteiten niet verder verwerkt.
 
-Aan een webtoepassing die wordt gehost op Azure CDN, is slechts één WAF-beleid tegelijk gekoppeld. U echter een CDN-eindpunt hebben zonder dat er WAF-beleid aan is gekoppeld. Als er een WAF-beleid aanwezig is, wordt het gerepliceerd naar al onze randlocaties om consistent beveiligingsbeleid over de hele wereld te garanderen.
+Aan een webtoepassing die wordt gehost op Azure CDN, kan slechts één WAF-beleid tegelijk zijn gekoppeld. U kunt echter een CDN-eind punt hebben zonder dat er WAF-beleid aan is gekoppeld. Als er een WAF-beleid aanwezig is, wordt dit gerepliceerd naar al onze Edge-locaties om consistent beveiligings beleid over de hele wereld te garanderen.
 
-## <a name="waf-modes"></a>WAF-modi
+## <a name="waf-modes"></a>WAF modi
 
-WAF-beleid kan worden geconfigureerd om uit te voeren in de volgende twee modi:
+Het WAF-beleid kan worden geconfigureerd om te worden uitgevoerd in de volgende twee modi:
 
-- *Detectiemodus*: Wanneer waf wordt uitgevoerd in de detectiemodus, neemt het geen andere acties dan monitoren en registreert het verzoek en de overeenkomende WAF-regel aan WAF-logboeken. U logboekregistratievoor voordeur inschakelen. Wanneer u de portal gebruikt, gaat u naar de sectie **Diagnostische gegevens.**
+- *Detectie modus*: wanneer wordt uitgevoerd in de detectie modus, nemen WAF geen andere andere acties dan monitors en registreert de aanvraag en de overeenkomende WAF-regel naar WAF-Logboeken. U kunt Diagnostische gegevens over logboek registratie inschakelen voor de voor deur. Wanneer u de portal gebruikt, gaat u naar de sectie **Diagnostische gegevens** .
 
-- *Preventiemodus*: In de preventiemodus neemt WAF de opgegeven actie als een aanvraag overeenkomt met een regel. Als er een overeenkomst wordt gevonden, worden geen verdere regels met een lagere prioriteit geëvalueerd. Alle overeenkomende aanvragen worden ook geregistreerd in de WAF-logboeken.
+- *Preventie modus*: in de modus preventie, WAF neemt de opgegeven actie op als een aanvraag overeenkomt met een regel. Als er een overeenkomst wordt gevonden, worden er geen verdere regels met een lagere prioriteit geëvalueerd. Alle overeenkomende aanvragen worden ook in de WAF-logboeken vastgelegd.
 
 ## <a name="waf-actions"></a>WAF-acties
 
-U een van de volgende acties kiezen wanneer een aanvraag overeenkomt met de voorwaarden van een regel:
+U kunt een van de volgende acties kiezen wanneer een aanvraag overeenkomt met de voor waarden van een regel:
 
-- *Toestaan*: De aanvraag gaat door de WAF en wordt doorgestuurd naar back-end. Geen verdere regels met een lagere prioriteit kunnen dit verzoek blokkeren.
-- *Blok*: De aanvraag wordt geblokkeerd en WAF stuurt een antwoord naar de client zonder het verzoek door te sturen naar de back-end.
-- *Logboek*: De aanvraag wordt geregistreerd in de WAF-logboeken en WAF blijft regels met een lagere prioriteit evalueren.
-- *Omleiding*: WAF leidt de aanvraag om naar de opgegeven URI. De opgegeven URI is een instelling voor beleidsniveau. Eenmaal geconfigureerd, worden alle aanvragen die overeenkomen met de *actie Redirect* naar die URI verzonden.
+- *Toestaan*: de aanvraag wordt door gegeven via de WAF en wordt doorgestuurd naar een back-end. Voor regels met een lagere prioriteit kan deze aanvraag niet worden geblokkeerd.
+- *Blok keren*: de aanvraag is geblokkeerd en WAF stuurt een reactie naar de client zonder de aanvraag door te sturen naar de back-end.
+- *Log*: de aanvraag wordt geregistreerd in de WAF-logboeken en WAF gaat verder met het evalueren van regels met een lagere prioriteit.
+- *Omleiden*: WAF leidt de aanvraag om naar de opgegeven URI. De opgegeven URI is een instelling voor het beleids niveau. Eenmaal geconfigureerd, worden alle aanvragen die overeenkomen met de *omleidings* actie, naar die URI verzonden.
 
 ## <a name="waf-rules"></a>WAF-regels
 
-Een WAF-beleid kan bestaan uit twee soorten beveiligingsregels:
+Een WAF-beleid kan bestaan uit twee typen beveiligings regels:
 
 - *aangepaste regels*: regels die u zelf maakt 
-- *beheerde regelsets:* door Azure beheerde vooraf geconfigureerde set regels
+- *beheerde regel sets*: door Azure beheerde vooraf geconfigureerde regels instellen
 
 ### <a name="custom-rules"></a>Aangepaste regels
 
-Aangepaste regels kunnen overeenkomen met regels en regels voor tariefcontrole.
+Aangepaste regels kunnen overeenkomen regels en regels voor frequentie beheer hebben.
 
-U de volgende aangepaste overeenkomstregels configureren:
+U kunt de volgende regels voor aangepaste overeenkomsten configureren:
 
-- *LIJST- en bloklijst voor IP-toepassingen:* u de toegang tot uw webtoepassingen beheren op basis van een lijst met IP-adressen of IP-adresbereiken van klanten. Zowel IPv4- als IPv6-adrestypen worden ondersteund. Deze lijst kan worden geconfigureerd om aanvragen te blokkeren of toe te staan wanneer het bron-IP overeenkomt met een IP in de lijst.
+- Lijst met *toegestane IP-adressen en*lijst met geblokkeerde websites: u kunt de toegang tot uw webtoepassingen beheren op basis van een lijst met IP-adres-of IP-adresbereiken van de client. IPv4-en IPv6-adres typen worden ondersteund. Deze lijst kan worden geconfigureerd om de aanvragen te blok keren of toe te staan waarbij de bron-IP overeenkomt met een IP-adres in de lijst.
 
-- *Geografisch gebaseerd toegangsbeheer:* u de toegang tot uw webtoepassingen beheren op basis van de landcode die is gekoppeld aan het IP-adres van een client.
+- *Geografisch gebaseerd toegangs beheer*: u kunt de toegang tot uw webtoepassingen beheren op basis van de land code die is gekoppeld aan het IP-adres van de client.
 
-- *HTTP-parameters gebaseerd toegangsbeheer*: U regels baseren op tekenreeksovereenkomsten in HTTP/HTTPS-aanvraagparameters.  Querytekenreeksen, POST-args, Request URI, Request Header en Request Body.
+- *Http-para meters op basis van toegangs beheer*: u kunt regels baseren op teken reeks overeenkomsten in HTTP/HTTPS-aanvraag parameters.  Bijvoorbeeld query reeksen, argumenten POST, aanvraag-URI, aanvraag header en hoofd tekst van aanvraag.
 
-- *Op methode gebaseerd toegangsbeheer aanvragen:* u baseert regels op de HTTP-aanvraagmethode van de aanvraag. Bijvoorbeeld, GET, PUT, of HEAD.
+- *Toegangs beheer op basis van aanvraag methode*: u basis regels voor de HTTP-aanvraag methode van de aanvraag. Bijvoorbeeld GET, PUT of HEAD.
 
-- *Beperking van de grootte*: u regels baseren op de lengtes van specifieke delen van een aanvraag, zoals querytekenreeks, Uri of aanvraaginstantie.
+- *Grootte beperking*: u kunt regels baseren op de lengte van specifieke delen van een aanvraag, zoals een query reeks, een URI of een aanvraag tekst.
 
-Een regel voor tariefcontrole beperkt abnormaal veel verkeer vanaf een IP-adres van de client.
+Een regel voor frequentie beheer beperkt een abnormaal hoog verkeer van elk IP-adres van de client.
 
-- *Regels voor beperking van de snelheid*: U een drempelwaarde configureren op het aantal webaanvragen dat is toegestaan vanaf een IP-adres van een client gedurende een duur van één minuut. Deze regel onderscheidt zich van een aangepaste aangepaste regel voor ip-lijsten toestaan/blokkeren waarmee alle aanvragen van een IP-adres van een client worden toegestaan of geblokkeerd. Tarieflimieten kunnen worden gecombineerd met aanvullende wedstrijdvoorwaarden, zoals http(S)-parameterovereenkomsten voor gedetailleerd tariefbeheer.
+- *Regels voor frequentie limieten*: u kunt een drempel waarde configureren voor het aantal webaanvragen dat is toegestaan vanaf een client-IP-adres gedurende een duur van één minuut. Deze regel is verschillend van een op een IP-lijst gebaseerde aangepaste regel toestaan/blok keren, waarmee alle aanvragen van een client-IP-adres kunnen worden toegestaan of geblokkeerd. Frequentie limieten kunnen worden gecombineerd met aanvullende match voorwaarden, zoals HTTP (S)-para meters die overeenkomen met het besturings element nauw keurigheid.
 
-### <a name="azure-managed-rule-sets"></a>Azure-beheerde regelsets
+### <a name="azure-managed-rule-sets"></a>Door Azure beheerde regel sets
 
-Azure-beheerde regelsets bieden een eenvoudige manier om bescherming te implementeren tegen een veelvoorkomende set beveiligingsbedreigingen. Aangezien deze regelsets worden beheerd door Azure, worden de regels zo nodig bijgewerkt om te beschermen tegen nieuwe aanvalshandtekeningen. De azure managed Default Rule Set bevat regels voor de volgende bedreigingscategorieën:
+Door Azure beheerde regel sets bieden een eenvoudige manier om beveiliging te implementeren op basis van een gemeen schappelijke reeks beveiligings Risico's. Omdat deze Rules worden beheerd door Azure, worden de regels zo nodig bijgewerkt om te beschermen tegen nieuwe aanvals handtekeningen. De set met Azure Managed default Rules bevat regels voor de volgende bedreigings Categorieën:
 
 - Scripting op meerdere sites
 - Java-aanvallen
-- Lokale bestandsopname
-- PHP-injectieaanvallen
-- Uitvoering van opdrachten op afstand
+- Lokaal bestand opnemen
+- Inspuit-aanvallen voor PHP
+- Externe opdrachten uitvoeren
 - Externe bestandsopname
-- Sessiefixatie
+- Sessie-vastleg ging
 - Beveiliging tegen SQL-injecties
-- Protocolaanvallers
+- Protocol aanvallen
 
-Het versienummer van de stappen van de standaardregelset wanneer nieuwe aanvalshandtekeningen worden toegevoegd aan de regelset.
-De standaardregelset is standaard ingeschakeld in *de detectiemodus* in uw WAF-beleid. U afzonderlijke regels in de standaardregelset uitschakelen of inschakelen om aan uw toepassingsvereisten te voldoen. U ook specifieke acties (ALLOW/BLOCK/REDIRECT/LOG) per regel instellen. De standaardactie voor de beheerde standaardregelset is *Blokkeren*.
+Het versie nummer van de standaardregelset wordt verhoogd wanneer nieuwe aanvals handtekeningen worden toegevoegd aan de regelset.
+De standaardregelset is standaard ingeschakeld in de *detectie* modus in uw WAF-beleid. U kunt afzonderlijke regels in de standaard regel instellen om te voldoen aan de vereisten van uw toepassing. U kunt ook specifieke acties (toestaan/blok keren/omleiden/logboek registratie) per regel instellen. De standaard actie voor de beheerde set met standaard regels is *blok keren*.
 
-Aangepaste regels worden altijd toegepast voordat regels in de standaardregelset worden geëvalueerd. Als een aanvraag overeenkomt met een aangepaste regel, wordt de bijbehorende regelactie toegepast. Het verzoek wordt geblokkeerd of doorgegeven aan de back-end. Er worden geen andere aangepaste regels of regels in de standaardregelset verwerkt. U de standaardregelset ook verwijderen uit uw WAF-beleid.
+Aangepaste regels worden altijd toegepast voordat regels in de standaard regelset worden geëvalueerd. Als een aanvraag overeenkomt met een aangepaste regel, wordt de bijbehorende regel actie toegepast. De aanvraag wordt geblokkeerd of door gegeven aan de back-end. Er worden geen andere aangepaste regels of regels in de standaardregelset verwerkt. U kunt ook de standaardregelset uit uw WAF-beleid verwijderen.
 
 ## <a name="configuration"></a>Configuratie
 
-U alle WAF-regeltypen configureren en implementeren met behulp van de Azure-portal, REST API's, Azure Resource Manager-sjablonen en Azure PowerShell.
+U kunt alle WAF-regel typen configureren en implementeren met behulp van de Azure Portal, REST-Api's, Azure Resource Manager sjablonen en Azure PowerShell.
 
 ## <a name="monitoring"></a>Bewaking
 
-Monitoring voor WAF met CDN is geïntegreerd met Azure Monitor om waarschuwingen bij te houden en verkeerstrends eenvoudig te volgen.
+Bewaking voor WAF met CDN is geïntegreerd met Azure Monitor om waarschuwingen bij te houden en trends in het verkeer eenvoudig te bewaken.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Zelfstudie: Een WAF-beleid maken met Azure CDN met de Azure-portal](waf-cdn-create-portal.md)
+- [Zelf studie: een WAF-beleid maken met Azure CDN met behulp van de Azure Portal](waf-cdn-create-portal.md)

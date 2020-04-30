@@ -14,10 +14,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: fd7a5b186ebc98babe1baacc9f56f39dc8fbc093
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80049379"
 ---
 # <a name="what-is-federation-with-azure-ad"></a>Wat is federatie met Azure AD?
@@ -36,7 +36,7 @@ U kunt uw on-premises-omgeving met Azure AD federeren en deze federatie gebruike
 ## <a name="next-steps"></a>Volgende stappen
 
 - [Wat is hybride identiteit?](https://docs.microsoft.com/azure/active-directory/hybrid/whatis-hybrid-identity)
-- [Wat is Azure AD Connect en Connect Health?](whatis-azure-ad-connect.md)
+- [Wat zijn Azure AD Connect en Connect Health?](whatis-azure-ad-connect.md)
 - [Wat is synchronisatie van wachtwoord-hashes?](whatis-phs.md)
 - [Wat is federatie?](whatis-fed.md)
 - [Wat is eenmalige aanmelding?](how-to-connect-sso.md)

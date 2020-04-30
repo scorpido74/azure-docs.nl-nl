@@ -1,7 +1,7 @@
 ---
-title: "Snelstart: een zoekindex maken in Node.js met REST API's"
+title: "Snelstartgids: een zoek index maken in node. js met REST-Api's"
 titleSuffix: Azure Cognitive Search
-description: In deze Quickstart van Node.js leert u hoe u een index maakt, gegevens laadt en query's uitvoert op Azure Cognitive Search met JavaScript en de REST API's.
+description: In deze Snelstartgids voor node. js leert u hoe u een index maakt, gegevens laadt en query's uitvoert op Azure Cognitive Search met behulp van Java script en de REST Api's.
 author: HeidiSteen
 manager: nitinme
 ms.author: heidist
@@ -10,80 +10,80 @@ ms.service: cognitive-search
 ms.topic: quickstart
 ms.date: 02/25/2020
 ms.openlocfilehash: cbef6029b93f134f95ee54aa87ce0dd65bcdf50d
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "77623998"
 ---
-# <a name="quickstart-create-an-azure-cognitive-search-index-in-nodejs-using-rest-apis"></a>Snelstart: een Azure Cognitive Search-index maken in Node.js met REST API's
+# <a name="quickstart-create-an-azure-cognitive-search-index-in-nodejs-using-rest-apis"></a>Snelstartgids: een Azure Cognitive Search-index maken in node. js met REST-Api's
 > [!div class="op_single_selector"]
 > * [Javascript](search-get-started-nodejs.md)
-> * [C #](search-get-started-dotnet.md)
+> * [G #](search-get-started-dotnet.md)
 > * [Portal](search-get-started-portal.md)
-> * [Powershell](search-create-index-rest-api.md)
+> * [PowerShell](search-create-index-rest-api.md)
 > * [Python](search-get-started-python.md)
 > * [Postman](search-get-started-postman.md)
 
-Maak een Node.js-toepassing die een Azure Cognitive Search-index maakt, laadt en opvraagt. In dit artikel wordt uitgelegd hoe u de toepassing stap voor stap maken. U ook [de broncode en gegevens downloaden](https://github.com/Azure-Samples/azure-search-javascript-samples/tree/master/quickstart/) en de toepassing uitvoeren vanaf de opdrachtregel.
+Maak een node. js-toepassing die een Azure Cognitive Search-index maakt, laadt en opvraagt. In dit artikel wordt beschreven hoe u de toepassing stap voor stap maakt. U kunt ook [de bron code en gegevens downloaden](https://github.com/Azure-Samples/azure-search-javascript-samples/tree/master/quickstart/) en de toepassing uitvoeren vanaf de opdracht regel.
 
-Als u geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) voordat u begint.
+Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
 
 ## <a name="prerequisites"></a>Vereisten
 
-We hebben de volgende software en services gebruikt om deze quickstart te bouwen en te testen:
+We hebben de volgende software en services gebruikt voor het bouwen en testen van deze Snelstartgids:
 
 + [Node.js](https://nodejs.org)
 
-+ [NPM](https://www.npmjs.com) moet worden geïnstalleerd door Node.js
++ [NPM](https://www.npmjs.com) moet worden geïnstalleerd door node. js
 
-+ Een voorbeeldindexstructuur en overeenkomende documenten zijn opgenomen in dit artikel of in de [ **quickstart-map** van de repo](https://github.com/Azure-Samples/azure-search-javascript-samples/)
++ In dit artikel vindt u een voor beeld van een structuur van de index en de bijbehorende documenten of vanuit de [ **Quick** start-map van de opslag plaats](https://github.com/Azure-Samples/azure-search-javascript-samples/)
 
-+ [Maak een Azure Cognitive Search-service](search-create-service-portal.md) of [zoek een bestaande service](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) onder uw huidige abonnement. U gebruik maken van een gratis service voor deze quickstart.
++ [Een Azure Cognitive Search-service maken](search-create-service-portal.md) of [een bestaande service vinden](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) onder uw huidige abonnement. U kunt een gratis service voor deze Quick Start gebruiken.
 
 Aanbevolen:
 
-* [Visual Studio-code](https://code.visualstudio.com)
+* [Visual Studio Code](https://code.visualstudio.com)
 
-* [Prettier-](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode) en [ESLint-extensies](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint) voor VSCode.
+* [Prettier](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode) -en [ESLint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint) -uitbrei dingen voor VSCode.
 
 <a name="get-service-info"></a>
 
-## <a name="get-keys-and-urls"></a>Sleutels en URL's ophalen
+## <a name="get-keys-and-urls"></a>Sleutels en Url's ophalen
 
-Voor oproepen naar de service is een URL-eindpunt en een toegangssleutel vereist voor elk verzoek. Er wordt een zoekservice gemaakt met beide, dus als u Azure Cognitive Search aan uw abonnement hebt toegevoegd, voert u de volgende stappen uit om de benodigde informatie te krijgen:
+Aanroepen naar de service vereisen een URL-eind punt en een toegangs sleutel voor elke aanvraag. Een zoek service wordt met beide gemaakt, dus als u Azure Cognitive Search aan uw abonnement hebt toegevoegd, voert u de volgende stappen uit om de benodigde gegevens op te halen:
 
-1. [Meld u aan bij de Azure-portal](https://portal.azure.com/)en krijg op de pagina **Overzicht** van uw zoekservice de naam van uw zoekservice. U uw servicenaam bevestigen door de URL van het eindpunt te bekijken. Als uw eindpunt-URL dat wel `https://mydemo.search.windows.net` `mydemo`was, zou uw servicenaam .
+1. [Meld u aan bij de Azure Portal](https://portal.azure.com/)en haal de naam van uw zoek service op in de pagina **overzicht** van de zoek service. U kunt uw service naam bevestigen door de URL van het eind punt te controleren. Als uw eind punt- `https://mydemo.search.windows.net`URL zou zijn, zou uw `mydemo`service naam zouden zijn.
 
-2. Ontvang **in Instellingentoetsen** > **Keys**een beheersleutel voor volledige rechten op de service. Er zijn twee verwisselbare beheerderssleutels, voorzien voor bedrijfscontinuïteit voor het geval u er een moet omdraaien. U de primaire of secundaire sleutel gebruiken voor aanvragen voor het toevoegen, wijzigen en verwijderen van objecten.
+2. Haal in **instellingen** > **sleutels**een beheerders sleutel op voor volledige rechten op de service. Er zijn twee uitwissel bare beheer sleutels die voor bedrijfs continuïteit worden verschaft, voor het geval dat u een voor beeld moet doen. U kunt de primaire of secundaire sleutel gebruiken op aanvragen voor het toevoegen, wijzigen en verwijderen van objecten.
 
-    Haal de querysleutel ook. Het is een aanbevolen manier om queryaanvragen uit te geven met alleen-lezen toegang.
+    Haal ook de query sleutel op. Het is een best practice voor het uitgeven van query aanvragen met alleen-lezen toegang.
 
-![De servicenaam en -beheerder en querysleutels ophalen](media/search-get-started-nodejs/service-name-and-keys.png)
+![De service naam en de beheer-en query sleutels ophalen](media/search-get-started-nodejs/service-name-and-keys.png)
 
-Voor alle aanvragen is een api-toets nodig in de header van elk verzoek dat naar uw service wordt verzonden. Een geldige sleutel stelt vertrouwen, op basis van de aanvraag, tussen de toepassing die de aanvraag verzendt en de service die deze verwerkt.
+Alle aanvragen vereisen een API-sleutel in de header van elke aanvraag die naar uw service wordt verzonden. Een geldige sleutel brengt een vertrouwens relatie tot stand, op basis van aanvraag, tussen de toepassing die de aanvraag verzendt en de service die deze verwerkt.
 
 ## <a name="set-up-your-environment"></a>Uw omgeving instellen
 
-Begin met het openen van een Powershell-console of een andere omgeving waarin u Node.js hebt geïnstalleerd.
+Begin met het openen van een Power shell-console of een andere omgeving waarin u node. js hebt geïnstalleerd.
 
-1. Maak een ontwikkelingsmap, waardoor `quickstart` het de naam:
+1. Maak een ontwikkelingsprogram Directory met de naam `quickstart` :
 
     ```powershell
     mkdir quickstart
     cd quickstart
     ```
 
-2. Initialiseer een leeg project `npm init`met NPM door het uitvoeren van . Accepteer de standaardwaarden, met uitzondering van de licentie, die u moet instellen op 'MIT'. 
+2. Initialiseer een leeg project met NPM door uit te `npm init`voeren. Accepteer de standaard waarden, met uitzonde ring van de licentie, die u moet instellen op ' MIT '. 
 
-1. Voeg pakketten toe waarvan de code en de hulp bij de ontwikkeling afhankelijk zijn:
+1. Voeg pakketten toe die afhankelijk zijn van de code en hulp in ontwikkeling:
 
     ```powershell
     npm install nconf node-fetch
     npm install --save-dev eslint eslint-config-prettier eslint-config-airbnb-base eslint-plugin-import prettier
     ```
 
-4. Controleer of u de projecten en de afhankelijkheden ervan hebt geconfigureerd door te controleren of het **bestand package.json** er hetzelfde uitziet als het volgende:
+4. Controleer of u de projecten en de bijbehorende afhankelijkheden hebt geconfigureerd door te controleren of het bestand **package. json** er ongeveer als volgt uitziet:
 
     ```json
     {
@@ -114,7 +114,7 @@ Begin met het openen van een Powershell-console of een andere omgeving waarin u 
     }
     ```
 
-5. Maak een bestand **azure_search_config.json** om uw zoekservicegegevens vast te houden:
+5. Maak een bestand **azure_search_config. json** om uw zoek service gegevens op te slaan:
 
     ```json
     {
@@ -125,13 +125,13 @@ Begin met het openen van een Powershell-console of een andere omgeving waarin u 
     }
     ```
 
-Vervang `[SERVICE_NAME]` de waarde door de naam van uw zoekservice. Vervang `[ADMIN_KEY]` `[QUERY_KEY]` en met de belangrijke waarden die u eerder hebt geregistreerd. 
+Vervang de `[SERVICE_NAME]` waarde door de naam van uw zoek service. Vervang `[ADMIN_KEY]` en `[QUERY_KEY]` door de sleutel waarden die u eerder hebt vastgelegd. 
 
-## <a name="1---create-index"></a>1 - Index maken 
+## <a name="1---create-index"></a>1-index maken 
 
-Een bestand **hotels_quickstart_index.json maken.**  In dit bestand wordt gedefinieerd hoe Azure Cognitive Search werkt met de documenten die u in de volgende stap laadt. Elk veld wordt geïdentificeerd `name` door een `type`en heeft een opgegeven . Elk veld heeft ook een reeks indexkenmerken die aangeven of Azure Cognitive Search op het veld kan zoeken, filteren, sorteren en faceten. De meeste velden zijn eenvoudige gegevenstypen, `AddressType` maar sommige zijn complexe typen waarmee u rijke gegevensstructuren in uw index maken.  U meer lezen over [ondersteunde gegevenstypen](https://docs.microsoft.com/rest/api/searchservice/supported-data-types) en [indexkenmerken](https://docs.microsoft.com/azure/search/search-what-is-an-index#index-attributes). 
+Maak een bestand **hotels_quickstart_index. json**.  In dit bestand wordt gedefinieerd hoe Azure Cognitive Search werkt met de documenten die u in de volgende stap gaat laden. Elk veld wordt geïdentificeerd door een `name` en heeft een opgegeven. `type` Elk veld bevat ook een reeks index kenmerken die aangeven of Azure Cognitive Search op het veld kan zoeken, filteren, sorteren en facetten. De meeste velden zijn eenvoudige gegevens typen, maar sommige `AddressType` vormen zijn complexe typen waarmee u uitgebreide gegevens structuren in uw index kunt maken.  Meer informatie over [ondersteunde gegevens typen](https://docs.microsoft.com/rest/api/searchservice/supported-data-types) en [index kenmerken](https://docs.microsoft.com/azure/search/search-what-is-an-index#index-attributes)vindt u hier. 
 
-Voeg het volgende toe aan **hotels_quickstart_index.json** of [download het bestand](https://github.com/Azure-Samples/azure-search-javascript-samples/blob/master/quickstart/hotels_quickstart_index.json). 
+Voeg het volgende toe aan **hotels_quickstart_index. json** of [down load het bestand](https://github.com/Azure-Samples/azure-search-javascript-samples/blob/master/quickstart/hotels_quickstart_index.json). 
 
 ```json
 {
@@ -266,9 +266,9 @@ Voeg het volgende toe aan **hotels_quickstart_index.json** of [download het best
 ```
     
 
-Het is een goede gewoonte om de specifieke kenmerken van een bepaald scenario te scheiden van code die breed van toepassing zal zijn. De `AzureSearchClient` klasse die is gedefinieerd in het bestand **AzureSearchClient.js** weet hoe u aanvraag-URL's moet construeren, een aanvraag moet indienen met de API Ophalen en reageert op de statuscode van het antwoord.
+Het is raadzaam om de specifieke gegevens van een bepaald scenario te scheiden van code die breed van toepassing is. De `AzureSearchClient` klasse die in het bestand **AzureSearchClient. js** is gedefinieerd, kent het maken van aanvraag-url's, het indienen van een aanvraag met behulp van de ophaal-API en het reageren op de status code van het antwoord.
 
-Begin te werken aan **AzureSearchClient.js** door het **knooppuntpakket te** importeren en een eenvoudige klasse te maken. Isoleer de verwisselbare delen van de `AzureSearchClient` klasse door de verschillende configuratiewaarden door te geven aan de constructor:
+Aan de slag met **AzureSearchClient. js** door het **ophalen van het knoop punt** en het maken van een eenvoudige klasse. Isoleer de wijzigbaar delen van de `AzureSearchClient` klasse door aan de constructor de verschillende configuratie waarden door te geven:
 
 ```javascript
 const fetch = require('node-fetch');
@@ -289,16 +289,16 @@ class AzureSearchClient {
 module.exports = AzureSearchClient;
 ```
 
-De eerste verantwoordelijkheid van de klasse is om te weten hoe URL's te construeren om de verschillende aanvragen te verzenden. Bouw deze URL's met instantiemethoden die de configuratiegegevens gebruiken die aan de klassenconstructor worden doorgegeven. De URL die ze construeren is specifiek voor een API-versie en moet `2019-05-06`een argument hebben waarin die versie wordt opgegeven (in deze toepassing). 
+De eerste verantwoordelijkheid van de klasse is om te weten hoe u Url's moet maken waarnaar de verschillende aanvragen worden verzonden. Bouw deze Url's met exemplaar methoden die gebruikmaken van de configuratie gegevens die worden door gegeven aan de klasse-constructor. U ziet dat de URL die ze maken specifiek is voor een API-versie en een argument moet hebben dat die versie opgeeft ( `2019-05-06`in deze toepassing). 
 
-De eerste van deze methoden retourneert de URL voor de index zelf. Voeg de volgende methode toe in de klassentekst:
+Met de eerste van deze methoden wordt de URL voor de index zelf geretourneerd. Voeg de volgende methode toe binnen de hoofd tekst van de klasse:
 
 ```javascript
 getIndexUrl() { return `https://${this.searchServiceName}.search.windows.net/indexes/${this.indexName}?api-version=${this.apiVersion}`; }
 
 ```
 
-De volgende `AzureSearchClient` verantwoordelijkheid van het maken van een asynchrone aanvraag met de Fetch API. De asynchrone `request` statische methode heeft een URL, een tekenreeks die de HTTP-methode opgeeft ('GET', 'PUT', 'POST', 'Delete'), de sleutel die in de aanvraag moet worden gebruikt en een optioneel JSON-object. De `headers` variabele `queryKey` brengt de (of de beheersleutel of de alleen-lezen querysleutel) in kaart met de HTTP-aanvraagkop 'api-key'. De aanvraagopties bevatten `method` altijd de `headers`te gebruiken en de . Als `bodyJson` dit `null`niet het is, wordt de hoofdtekst `bodyJson`van de HTTP-aanvraag ingesteld op de tekenreeksweergave van . De `request` methode retourneert de belofte van de Fetch API om de HTTP-aanvraag uit te voeren.
+De volgende verantwoordelijkheid van `AzureSearchClient` is het maken van een asynchrone aanvraag met de API voor ophalen. De asynchrone statische methode `request` maakt gebruik van een URL, een teken reeks waarmee de HTTP-methode (' Get ', ' put ', ' post ', ' delete ') wordt opgegeven, de sleutel die moet worden gebruikt in de aanvraag en een optioneel JSON-object. De `headers` variabele wijst de `queryKey` (of de Administrator-of de alleen-lezen-query sleutel) toe aan de HTTP-aanvraag header API-Key. De aanvraag opties bevatten altijd de `method` te gebruiken en de `headers`. Als `bodyJson` dat `null`niet het geval is, wordt de hoofd tekst van de HTTP-aanvraag `bodyJson`ingesteld op de teken reeks representatie van. De `request` -methode retourneert de Promise van de ophaal-API voor het uitvoeren van de HTTP-aanvraag.
 
 ```javascript
 static async request(url, method, apiKey, bodyJson = null) {
@@ -330,7 +330,7 @@ static async request(url, method, apiKey, bodyJson = null) {
 }
 ```
 
-Voor demodoeleinden, gooi gewoon een uitzondering als de HTTP-aanvraag is geen succes. In een echte toepassing, zou je waarschijnlijk doen wat logging `response` en diagnose van de HTTP-statuscode in de van de zoekservice aanvraag. 
+Voor demo doeleinden moet u gewoon een uitzonde ring genereren als de HTTP-aanvraag niet is voltooid. In een echte toepassing zou u waarschijnlijk enkele logboek registratie en diagnose van de HTTP-status code in de `response` aanvraag van de zoek service. 
     
 ```javascript
 static throwOnHttpError(response) {
@@ -342,13 +342,13 @@ static throwOnHttpError(response) {
 }
 ```
 
-Voeg ten slotte de methoden toe om de Azure Cognitive Search-index te detecteren, verwijderen en maken. Deze methoden hebben allemaal dezelfde structuur:
+Voeg ten slotte de methoden toe om de Azure Cognitive Search-index te detecteren, te verwijderen en te maken. Deze methoden hebben allemaal dezelfde structuur:
 
-* Ontvang het eindpunt waarop de aanvraag zal worden gedaan.
-* Genereer de aanvraag met het juiste eindpunt, HTTP-werkwoord, API-toets en, indien van toepassing, een JSON-body. `indexExistsAsync()`en `deleteIndexAsync()` hebben geen JSON lichaam, maar `createIndexAsync(definition)` wel.
-* `await`het antwoord op het verzoek.  
-* Reageer op de statuscode van het antwoord.
-* Een belofte van een bepaalde juiste `this`waarde retourneren (een Booleaan of de queryresultaten). 
+* Haal het eind punt op waaraan de aanvraag wordt gedaan.
+* Genereer de aanvraag met het juiste eind punt, HTTP-woord, API-sleutel en, indien van toepassing, een JSON-hoofd tekst. `indexExistsAsync()`en `deleteIndexAsync()` heeft geen JSON-hoofd tekst, maar `createIndexAsync(definition)` wel.
+* `await`het antwoord op de aanvraag.  
+* Handel over de status code van het antwoord.
+* Een belofte retour neren van een of meer toepasselijke waarden ( `this`een Booleaanse waarde, of de query resultaten). 
 
 ```javascript
 async indexExistsAsync() { 
@@ -377,7 +377,7 @@ async createIndexAsync(definition) {
 }
 ```
 
-Controleer of uw methoden zich binnen de klasse bevinden en of u de klasse exporteert. De buitenste scope van **AzureSearchClient.js** moet zijn:
+Controleer of de methoden zich in de klasse bevinden en of u de klasse exporteert. Het ultraperifere bereik van **AzureSearchClient. js** moet zijn:
 
 ```javascript
 const fetch = require('node-fetch');
@@ -389,12 +389,12 @@ class AzureSearchClient {
 module.exports = AzureSearchClient;
 ```
 
-Een objectgeoriënteerde klasse was een goede keuze voor de mogelijk herbruikbare **AzureSearchClient.js-module,** maar is niet nodig voor het hoofdprogramma, dat u in een bestand moet plaatsen dat **index.js**wordt genoemd. 
+Een object gerichte klasse is een goede keuze voor de mogelijk herbruikbare **AzureSearchClient. js** -module, maar is niet nodig voor het hoofd programma, dat u moet plaatsen in een bestand met de naam **index. js**. 
 
-Maak **index.js** en begin met het binnenhalen van:
+Maak **index. js** en begin met het volgende:
 
-* Het **nconf-pakket,** dat u flexibiliteit biedt voor het opgeven van de configuratie met JSON, omgevingsvariabelen of opdrachtregelargumenten.
-* De gegevens van het **hotels_quickstart_index.json** bestand.
+* Het **nconf** -pakket, waarmee u de configuratie met JSON, omgevings variabelen of opdracht regel argumenten kunt opgeven.
+* De gegevens uit het bestand **hotels_quickstart_index. json** .
 * De module `AzureSearchClient`.
 
 ```javascript
@@ -404,7 +404,7 @@ const indexDefinition = require('./hotels_quickstart_index.json');
 const AzureSearchClient = require('./AzureSearchClient.js');
 ```
 
-Met [ **het nconf-pakket** ](https://github.com/indexzero/nconf) u configuratiegegevens opgeven in verschillende indelingen, zoals omgevingsvariabelen of de opdrachtregel. In dit voorbeeld wordt **nconf** op een eenvoudige manier gebruikt om het bestand **azure_search_config.json** te lezen en de inhoud van dat bestand als woordenboek terug te sturen. Met behulp van `get(key)` de functie van **NCONF**u snel controleren of de configuratie-informatie correct is aangepast. Ten slotte retourneert de functie de configuratie:
+Met het [ **nconf** -pakket](https://github.com/indexzero/nconf) kunt u configuratie gegevens opgeven in verschillende indelingen, zoals omgevings variabelen of de opdracht regel. In dit voor beeld wordt **nconf** op een eenvoudige manier gebruikt om het bestand **azure_search_config. json** te lezen en de inhoud van het bestand als een woorden boek te retour neren. Met **nconf**de `get(key)` functie nconf kunt u snel controleren of de configuratie gegevens correct zijn aangepast. Ten slotte retourneert de functie de configuratie:
 
 ```javascript
 function getAzureConfiguration() {
@@ -416,7 +416,7 @@ function getAzureConfiguration() {
 }
 ```
 
-De `sleep` functie `Promise` maakt een die na een bepaalde tijd wordt opgelost. Met deze functie kan de app pauzeren terwijl de asynchrone indexbewerkingen zijn voltooid en beschikbaar zijn. Het toevoegen van een dergelijke vertraging is meestal alleen nodig in demo's, tests en voorbeeldtoepassingen.
+De `sleep` functie maakt een `Promise` die wordt omgezet na een opgegeven tijds duur. Met deze functie kan de app worden onderbroken tijdens het wachten tot asynchrone index bewerkingen zijn voltooid en beschikbaar worden. Het toevoegen van een dergelijke vertraging is doorgaans alleen nodig in demo's, testen en voorbeeld toepassingen.
 
 ```javascript
 function sleep(ms) {
@@ -428,12 +428,12 @@ function sleep(ms) {
 }
 ```
 
-Geef ten slotte de hoofdasynchrone `run` functie op en aan. Deze functie roept de andere functies in volgorde, in afwachting van zo nodig op te lossen `Promise`s.
+Geef ten slotte de asynchrone `run` functie op en roep deze aan. Deze functie roept de andere functies op in volg orde, in afwachting `Promise`van het oplossen van s.
 
-* De configuratie ophalen `getAzureConfiguration()` met de eerder geschreven configuratie
-* Een nieuw `AzureSearchClient` exemplaar maken en waarden van uw configuratie doorgeven
-* Controleren of de index bestaat en, als dat zo is, verwijderen
-* Een index maken `indexDefinition` met de geladen **hotels_quickstart_index.json**
+* De configuratie ophalen met de `getAzureConfiguration()` eerder geschreven
+* Een nieuw `AzureSearchClient` exemplaar maken en waarden door geven vanuit uw configuratie
+* Controleer of de index bestaat en verwijder deze
+* Een index maken met behulp van de `indexDefinition` geladen van **hotels_quickstart_index. json**
 
 ```javascript
 const run = async () => {
@@ -454,37 +454,37 @@ const run = async () => {
 run();
 ```
 
-Vergeet niet dat laatste `run()`telefoontje naar! Het is het ingangspunt van `node index.js` uw programma wanneer u in de volgende stap loopt.
+Vergeet niet dat de laatste aanroep `run()`naar! Het is het begin punt voor uw programma wanneer u in `node index.js` de volgende stap uitvoert.
 
-Let `AzureSearchClient.indexExistsAsync()` op `AzureSearchClient.deleteIndexAsync()` dat en neem geen parameters. Deze functies `AzureSearchClient.request()` bellen `bodyJson` zonder argument. Binnen `AzureSearchClient.request()`, `bodyJson === null` `true`sinds `init` is , de structuur is ingesteld op `indexExistsAsync()` alleen de HTTP-werkwoord ("GET" voor en "DELETE" voor `deleteIndexAsync()`) en de headers, die de aanvraagsleutel te specificeren.  
+Houd er `AzureSearchClient.indexExistsAsync()` rekening `AzureSearchClient.deleteIndexAsync()` mee dat en geen para meters zijn. Deze functies bellen `AzureSearchClient.request()` zonder `bodyJson` argument. In `AzureSearchClient.request()`, omdat `bodyJson === null` `true`de `init` structuur is ingesteld op alleen de HTTP-term (' Get ' voor `indexExistsAsync()` en ' delete ' voor `deleteIndexAsync()`) en de headers, die de aanvraag sleutel opgeven.  
 
-De `AzureSearchClient.createIndexAsync(indexDefinition)` methode neemt daarentegen _wel_ een parameter. De `run` functie `index.js`in , geeft de inhoud van `AzureSearchClient.createIndexAsync(indexDefinition)` het bestand **hotels_quickstart_index.json** aan de methode. De `createIndexAsync()` methode geeft `AzureSearchClient.request()`deze definitie door aan . In `AzureSearchClient.request()`, `bodyJson === null` sinds `false`is `init` nu , de structuur omvat niet alleen de HTTP-werkwoord ("PUT") en de headers, maar stelt de `body` op de index definitie gegevens.
+Daarentegen neemt de `AzureSearchClient.createIndexAsync(indexDefinition)` methode _een_ para meter. Met `run` de functie `index.js`in, wordt de inhoud van het bestand **hotels_quickstart_index. json** door `AzureSearchClient.createIndexAsync(indexDefinition)` gegeven aan de-methode. De `createIndexAsync()` -methode geeft deze definitie `AzureSearchClient.request()`door aan. In `AzureSearchClient.request()`, omdat `bodyJson === null` de `false` `init` structuur nu niet alleen de HTTP-term (' put ') en de headers bevat, maar de `body` index definitie gegevens heeft ingesteld.
 
-### <a name="prepare-and-run-the-sample"></a>Het voorbeeld voorbereiden en uitvoeren
+### <a name="prepare-and-run-the-sample"></a>Het voor beeld voorbereiden en uitvoeren
 
-Gebruik een terminalvenster voor de volgende opdrachten.
+Gebruik een Terminal venster voor de volgende opdrachten.
 
-1. Navigeer naar de map met het **bestand package.json** en de rest van uw code.
-1. Installeer de pakketten voor `npm install`het monster met .  Deze opdracht downloadt de pakketten waarvan de code afhankelijk is.
-1. Voer uw `node index.js`programma uit met .
+1. Ga naar de map die het bestand **package. json** bevat en de rest van de code.
+1. Installeer de pakketten voor het voor beeld `npm install`met.  Met deze opdracht worden de pakketten gedownload waarvan de code afhankelijk is.
+1. Voer uw programma uit `node index.js`met.
 
-U ziet een reeks berichten waarin de acties worden beschreven die door het programma worden uitgevoerd. Als u meer details van de aanvragen wilt zien, u `AzureSearchClient.request()` dehttps://github.com/Azure-Samples/azure-search-javascript-samples/blob/master/quickstart/AzureSearchClient.js#L21-L27) opmerkingen [regels aan het begin van de methode] in **AzureSearchClient.js**ongedaan maken. 
+Er wordt een reeks berichten weer gegeven met een beschrijving van de acties die door het programma worden uitgevoerd. Als u meer details van de aanvragen wilt zien, kunt u de [regels aan het begin van de `AzureSearchClient.request()` methode]https://github.com/Azure-Samples/azure-search-javascript-samples/blob/master/quickstart/AzureSearchClient.js#L21-L27) in **AzureSearchClient. js**opheffen. 
 
-Open het **overzicht** van uw zoekservice in de Azure-portal. Selecteer het tabblad **Indexen.** Je zou zoiets als het volgende moeten zien:
+Open het **overzicht** van uw zoek service in de Azure Portal. Selecteer het tabblad **indexen** . Het volgende moet er ongeveer als volgt uitzien:
 
-![Schermafbeelding van Azure-portal, overzicht van de zoekservice, tabblad Indexen](media/search-get-started-nodejs/create-index-no-data.png)
+![Scherm opname van Azure Portal, overzicht van zoek services, tabblad indexen](media/search-get-started-nodejs/create-index-no-data.png)
 
 In de volgende stap voegt u gegevens toe aan de index. 
 
-## <a name="2---load-documents"></a>2 - Documenten laden 
+## <a name="2---load-documents"></a>2-documenten laden 
 
-In Azure Cognitive Search zijn documenten gegevensstructuren die zowel invoer zijn voor indexering als uitvoer van query's. U moet dergelijke gegevens naar de index plaatsen. Hiermee wordt een ander eindpunt gebruikt dan de bewerkingen die in de vorige stap zijn uitgevoerd. Open **AzureSearchClient.js** en voeg `getIndexUrl()`de volgende methode toe na:
+In azure Cognitive Search zijn documenten gegevens structuren die beide invoer zijn voor het indexeren en uitvoeren van query's. U moet dergelijke gegevens naar de index posten. Dit maakt gebruik van een ander eind punt dan de bewerkingen die in de vorige stap zijn uitgevoerd. Open **AzureSearchClient. js** en voeg de volgende methode toe `getIndexUrl()`na:
 
 ```javascript
  getPostDataUrl() { return `https://${this.searchServiceName}.search.windows.net/indexes/${this.indexName}/docs/index?api-version=${this.apiVersion}`;  }
 ```
 
-Net `AzureSearchClient.createIndexAsync(definition)`als , moet `AzureSearchClient.request()` je een functie die gesprekken en passeert in het hotel gegevens om zijn lichaam te zijn. Voeg in **AzureSearchClient.js** toe na `postDataAsync(hotelsData)` : `createIndexAsync(definition)`
+U `AzureSearchClient.createIndexAsync(definition)`hebt bijvoorbeeld een functie nodig die de `AzureSearchClient.request()` gegevens van het Hotel aanroept en doorgeeft aan de hoofd tekst. In **AzureSearchClient. js** toevoegen `postDataAsync(hotelsData)` na `createIndexAsync(definition)`:
 
 ```javascript
 async postDataAsync(hotelsData) {
@@ -496,7 +496,7 @@ async postDataAsync(hotelsData) {
 }
 ```
 
- Documentinvoer kunnen rijen in een database zijn, blobs in Blob-opslag of, zoals in dit voorbeeld, JSON-documenten op schijf. U [hotels.json](https://github.com/Azure-Samples/azure-search-javascript-samples/blob/master/quickstart/hotels.json) downloaden of uw eigen **hotels.json-bestand** maken met de volgende inhoud:
+ Invoer van documenten kan rijen zijn in een Data Base, blobs in Blob-opslag of, zoals in dit voor beeld, JSON-documenten op schijf. U kunt [Hotels. json](https://github.com/Azure-Samples/azure-search-javascript-samples/blob/master/quickstart/hotels.json) downloaden of uw eigen **Hotels. json** -bestand maken met de volgende inhoud:
 
 ```json
 {
@@ -574,7 +574,7 @@ async postDataAsync(hotelsData) {
 
 ```
 
-Als u deze gegevens in uw programma wilt laden, `hotelData` wijzigt u **index.js** door de regel toe te voegen die naar de bovenkant verwijst:
+Als u deze gegevens wilt laden in uw programma, wijzigt u **index. js** door de regel `hotelData` toe te voegen aan de bovenkant:
 
 ```javascript
 const nconf = require('nconf');
@@ -583,7 +583,7 @@ const hotelData = require('./hotels.json');
 const indexDefinition = require('./hotels_quickstart_index.json');
 ```
 
-Wijzig nu `run()` de functie in **index.js**. Het kan een paar seconden duren voordat de index beschikbaar is, `AzureSearchClient.postDataAsync(hotelData)`dus voeg een pauze van 2 seconden toe voordat u aanroept:
+Wijzig nu de `run()` functie in **index. js**. Het kan een paar seconden duren voordat de index beschikbaar is. Voeg daarom een pauze toe van 2 seconden voor het `AzureSearchClient.postDataAsync(hotelData)`aanroepen van:
 
 ```javascript
 const run = async () => {
@@ -605,13 +605,13 @@ const run = async () => {
 }
 ```
 
-Voer het programma `node index.js`opnieuw uit met . U ziet een iets andere set berichten dan berichten die u in stap 1 hebt gezien. Deze keer bestaat de index _wel_ en moet u een bericht zien over het verwijderen ervan voordat de app de nieuwe index maakt en gegevens naar deze index verzendt. 
+Voer het programma opnieuw uit `node index.js`met. Er wordt een iets andere set met berichten weer geven die u in stap 1 hebt gezien. Deze keer bestaat _de index en wordt het_ bericht weer gegeven over het verwijderen voordat de app de nieuwe index maakt en er gegevens naar verzendt. 
 
 ## <a name="3---search-an-index"></a>3 - Een index doorzoeken
 
-Ga terug naar het tabblad **Indexen** in het **overzicht** van uw zoekservice op de Azure-portal. Uw index bevat nu vier documenten en verbruikt een bepaalde hoeveelheid opslagruimte (het kan enkele minuten duren voordat de gebruikersinterface de onderliggende status van de index goed weergeeft). Klik op de indexnaam die naar de **zoekverkenner**moet worden gebracht. Op deze pagina u experimenteren met gegevensquery's. Probeer te zoeken op `*&$count=true` een query string van en je moet al je documenten en het aantal resultaten terug te krijgen. Probeer met de `historic&highlight=Description&$filter=Rating gt 4` query string en je moet terug te krijgen een `<em></em>` enkel document, met het woord "historische" verpakt in tags. Lees meer over [het opstellen van een query in Azure Cognitive Search](https://docs.microsoft.com/azure/search/search-query-overview). 
+Ga terug naar het tabblad **indexen** in het **overzicht** van uw zoek service op de Azure Portal. Uw index bevat nu vier documenten en verbruikt een bepaalde hoeveelheid opslag ruimte (het kan enkele minuten duren voordat de gebruikers interface de onderliggende status van de index weergeeft). Klik op de naam van de index die u wilt **Zoeken in de zoek Verkenner**. Op deze pagina kunt u experimenteren met gegevens query's. Probeer te zoeken in een query reeks `*&$count=true` van en u moet alle documenten en het aantal resultaten weer geven. Probeer met de query teken `historic&highlight=Description&$filter=Rating gt 4` reeks en ga terug naar één document met het woord "historisch" in `<em></em>` Tags. Lees meer over [het opstellen van een query in Azure Cognitive Search](https://docs.microsoft.com/azure/search/search-query-overview). 
 
-Reproduceren deze query's in code door **index.js** te openen en deze code bovenaan toe te voegen:
+Reproduceer deze query's in code door **index. js** te openen en deze code toe te voegen aan de bovenkant:
 
 ```javascript
 const queries = [
@@ -620,7 +620,7 @@ const queries = [
 ];
 ```
 
-Schrijf in hetzelfde **index.js-bestand** de `doQueriesAsync()` onderstaande functie. Deze functie `AzureSearchClient` neemt een `AzureSearchClient.queryAsync` object en past de `queries` methode toe op elk van de waarden in de array. Het maakt `Promise.all()` gebruik van `Promise` de functie om een enkele die alleen wordt opgelost wanneer alle query's zijn opgelost terug te keren. De aanroep om `JSON.stringify(body, null, 4)` het queryresultaat op te maken om beter leesbaar te zijn.
+In hetzelfde bestand **index. js** schrijft u de `doQueriesAsync()` functie die hieronder wordt weer gegeven. Deze functie neemt een `AzureSearchClient` object en past de `AzureSearchClient.queryAsync` -methode toe op elk van de waarden `queries` in de matrix. De `Promise.all()` functie wordt gebruikt om een enkele `Promise` waarde te retour neren die alleen wordt omgezet wanneer alle query's zijn opgelost. De aanroep voor `JSON.stringify(body, null, 4)` het opmaken van het query resultaat zodat deze beter leesbaar is.
 
 ```javascript
 async function doQueriesAsync(client) {
@@ -635,7 +635,7 @@ async function doQueriesAsync(client) {
 }
 ```
 
-Wijzig `run()` de functie om lang genoeg te pauzeren voordat `doQueriesAsync(client)` de indexer kan werken en vervolgens de functie aan te roepen:
+Wijzig de `run()` functie om lang genoeg te pauzeren om de Indexeer functie te laten werken en roep `doQueriesAsync(client)` vervolgens de functies aan:
 
 ```javascript
 const run = async () => {
@@ -660,13 +660,13 @@ const run = async () => {
 }
 ```
 
-Als `AzureSearchClient.queryAsync(query)`u het bestand **AzureSearchClient.js**wilt implementeren, bewerkt u het bestand . Zoeken vereist een ander eindpunt en de zoektermen worden `getSearchUrl(searchTerm)` URL-argumenten, dus voeg de functie toe naast de `getIndexUrl()` en methoden die `getPostDataUrl()` u al hebt geschreven.
+Als u `AzureSearchClient.queryAsync(query)`wilt implementeren, bewerkt u het bestand **AzureSearchClient. js**. Zoeken vereist een ander eind punt en de zoek termen worden URL-argumenten, dus voeg de `getSearchUrl(searchTerm)` functie toe `getIndexUrl()` naast `getPostDataUrl()` de methoden en die u al hebt geschreven.
 
 ```javascript
 getSearchUrl(searchTerm) { return `https://${this.searchServiceName}.search.windows.net/indexes/${this.indexName}/docs?api-version=${this.apiVersion}&search=${searchTerm}&searchMode=all`; }
  ```
 
-De `queryAsync(searchTerm)` functie gaat ook in **AzureSearchClient.js** `postDataAsync(data)` en volgt dezelfde structuur als en de andere queryfuncties: 
+De `queryAsync(searchTerm)` functie gaat ook in **AzureSearchClient. js** en volgt dezelfde structuur als `postDataAsync(data)` de andere query functies: 
 
 ```javascript
 async queryAsync(searchTerm) {
@@ -678,31 +678,31 @@ async queryAsync(searchTerm) {
 }
 ```
 
-Zoeken wordt gedaan met de "GET" werkwoord en geen lichaam, omdat de zoekterm is onderdeel van de URL. Merk `queryAsync(searchTerm)` op `this.queryKey`dat gebruikt, in tegenstelling tot de andere functies die de admin sleutel gebruikt. Querytoetsen, zoals de naam al aangeeft, kunnen alleen worden gebruikt voor het opvragen van de index en kunnen op geen enkele manier worden gebruikt om de index te wijzigen. Querysleutels zijn daarom veiliger te distribueren naar clienttoepassingen.
+De zoek opdracht wordt uitgevoerd met de opdracht ' GET ' en geen hoofd tekst, omdat de zoek term deel uitmaakt van de URL. U ziet `queryAsync(searchTerm)` dat `this.queryKey`gebruikt, in tegens telling tot de andere functies die de beheerders sleutel hebben gebruikt. Query sleutels, zoals de naam al aangeeft, kunnen alleen worden gebruikt voor het uitvoeren van query's op de index en kan niet worden gebruikt om de index op een wille keurige manier te wijzigen. Query sleutels zijn daarom veiliger om te distribueren naar client toepassingen.
 
-Voer het `node index.js`programma uit met . Nu, in aanvulling op de vorige stappen, de query's zullen worden verzonden en de resultaten geschreven naar de console.
+Voer het programma uit `node index.js`met. In aanvulling op de vorige stappen worden de query's verzonden en de resultaten die naar de-console worden geschreven.
 
-### <a name="about-the-sample"></a>Over het voorbeeld
+### <a name="about-the-sample"></a>Over het voor beeld
 
-Het voorbeeld maakt gebruik van een kleine hoeveelheid hotelgegevens, voldoende om de basisprincipes van het maken en opvragen van een Azure Cognitive Search-index aan te tonen.
+In het voor beeld wordt gebruikgemaakt van een kleine hoeveelheid Hotel gegevens, voldoende om de basis beginselen van het maken en doorzoeken van een Azure Cognitive Search-index te demonstreren.
 
-De klasse **AzureSearchClient** bevat de configuratie, URL's en basisHTTP-aanvragen voor de zoekservice. Het **bestand index.js** laadt de configuratiegegevens voor de Azure Cognitive Search-service, de hotelgegevens `run` die worden geüpload voor indexering en, in de functie, orders en voert de verschillende bewerkingen uit.
+De **AzureSearchClient** -klasse kapselt de configuratie, url's en Basic HTTP-aanvragen voor de zoek service in. Het bestand **index. js** laadt de configuratie gegevens voor de Azure Cognitive Search-service, de Hotel gegevens die worden geüpload voor indexering en, in `run` de functie, orders en voert de verschillende bewerkingen uit.
 
-Het algemene gedrag `run` van de functie is om de Azure Cognitive Search-index te verwijderen als deze bestaat, de index te maken, wat gegevens toe te voegen en sommige query's uit te voeren.  
+Het algehele gedrag van de `run` functie is het verwijderen van de Azure Cognitive search-index als deze bestaat, de index te maken, gegevens toe te voegen en enkele query's uit te voeren.  
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
 Wanneer u in uw eigen abonnement werkt, is het een goed idee om aan het einde van een project te bepalen of u de resources die u hebt gemaakt, nog nodig hebt. Resources die actief blijven, kunnen u geld kosten. U kunt resources afzonderlijk verwijderen, maar u kunt ook de resourcegroep verwijderen als u de volledige resourceset wilt verwijderen.
 
-U resources in de portal vinden en beheren met de koppeling **Alle resources** of **Resourcegroepen** in het linkernavigatiedeelvenster.
+U kunt resources vinden en beheren in de portal met behulp van de koppeling **alle resources** of **resource groepen** in het navigatie deel venster aan de linkerkant.
 
-Als u een gratis service gebruikt, moet u er rekening mee houden dat u beperkt bent tot drie indexen, indexeerders en gegevensbronnen. U afzonderlijke items in de portal verwijderen om onder de limiet te blijven. 
+Als u een gratis service gebruikt, moet u er rekening mee houden dat u bent beperkt tot drie indexen, Indexeer functies en gegevens bronnen. U kunt afzonderlijke items in de Portal verwijderen om de limiet te blijven. 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze Quickstart van Node.js hebt u een reeks taken doorlopen om een index te maken, deze te laden met documenten en query's uit te voeren. We hebben bepaalde stappen, zoals het lezen van de configuratie en het definiëren van de query's, op de eenvoudigste manier. In een echte toepassing, zou u die zorgen in afzonderlijke modules willen zetten die flexibiliteit en inkapseling zouden verstrekken. 
+In deze Snelstartgids voor node. js hebt u een reeks taken uitgevoerd voor het maken van een index, het laden van documenten en het uitvoeren van query's. We hebben bepaalde stappen uitgevoerd, zoals het lezen van de configuratie en het definiëren van de query's, op de eenvoudigste manier. In een echte toepassing wilt u deze problemen in afzonderlijke modules plaatsen die flexibiliteit en inkapseling zouden bieden. 
  
-Als u al een achtergrond hebt in Azure Cognitive Search, u dit voorbeeld gebruiken als springplank voor het proberen van suggesties (voortypen of automatisch aanvullen van query's), filters en gefaceteerde navigatie. Als u nieuw bent bij Azure Cognitive Search, raden we u aan andere zelfstudies uit te proberen om inzicht te krijgen in wat u maken. Bezoek de [documentatiepagina](https://azure.microsoft.com/documentation/services/search/) voor meer resources. 
+Als u al enige achtergrond hebt in azure Cognitive Search, kunt u dit voor beeld gebruiken als Spring plank voor het uitproberen van Voorst Ellen (query's voor type vooruit of automatisch aanvullen), filters en facet navigatie. Als u geen ervaring hebt met Azure Cognitive Search, raden we u aan andere zelf studies te proberen om een goed beeld te ontwikkelen van wat u kunt maken. Bezoek de [documentatiepagina](https://azure.microsoft.com/documentation/services/search/) voor meer resources. 
 
 > [!div class="nextstepaction"]
-> [Azure Cognitive Search bellen vanaf een webpagina met Javascript](https://github.com/liamca/azure-search-javascript-samples)
+> [Azure Cognitive Search aanroepen vanaf een webpagina met behulp van Java script](https://github.com/liamca/azure-search-javascript-samples)

@@ -1,16 +1,16 @@
 ---
 title: 'Snelstart: Azure SignalR Service REST-API'
-description: Meer informatie over het gebruik van REST API met volgende voorbeelden van Azure SignalR Service. Meer informatie over rest API-specificatie.
+description: Meer informatie over het gebruik van REST API met de Azure signalerings service volgende voor beelden. Details van REST API specificatie zoeken.
 author: sffamily
 ms.service: signalr
 ms.topic: quickstart
 ms.date: 11/13/2019
 ms.author: zhshang
 ms.openlocfilehash: 70053fbc47a5ba85e7bb18ab762868973d014beb
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/02/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80548133"
 ---
 # <a name="quickstart-broadcast-real-time-messages-from-console-app"></a>Snelstartgids: Realtimeberichten verzenden via de console-app
@@ -135,12 +135,12 @@ Uitzenden naar bepaalde groepen | **&#x2713;** (afgeschaft) | `N / A`
 Verzenden naar bepaalde gebruikers | **&#x2713;** (afgeschaft) | `N / A`
 [Een gebruiker aan een groep toevoegen](#add-user-to-group) | `N / A` | **&#x2713;**
 [Een gebruiker uit een groep verwijderen](#remove-user-from-group) | `N / A` | **&#x2713;**
-[Gebruikersbestaan controleren](#check-user-existence) | `N / A` | **&#x2713;**
-[Een gebruiker uit alle groepen verwijderen](#remove-user-from-all-groups) | `N / A` | **&#x2713;**
-[Naar een verbinding verzenden](#send-connection) | `N / A` | **&#x2713;**
+[Aanwezigheid van gebruikers controleren](#check-user-existence) | `N / A` | **&#x2713;**
+[Een gebruiker verwijderen uit alle groepen](#remove-user-from-all-groups) | `N / A` | **&#x2713;**
+[Verzenden naar een verbinding](#send-connection) | `N / A` | **&#x2713;**
 [Een verbinding toevoegen aan een groep](#add-connection-to-group) | `N / A` | **&#x2713;**
 [Een verbinding uit een groep verwijderen](#remove-connection-from-group) | `N / A` | **&#x2713;**
-[Een clientverbinding sluiten](#close-connection) | `N / A` | **&#x2713;**
+[Een client verbinding sluiten](#close-connection) | `N / A` | **&#x2713;**
 [Service Health](#service-health) | `N / A` | **&#x2713;**
 
 <a name="broadcast"> </a>
@@ -182,7 +182,7 @@ Versie | API HTTP-methode | Aanvraag-URL
 `1.0` | `DELETE` | `https://<instance-name>.service.signalr.net/api/v1/hubs/<hub-name>/groups/<group-name>/users/<user-id>`
 
 <a name="check-user-existence"> </a>
-### <a name="check-user-existence-in-a-group"></a>Het gebruikersbestaan in een groep controleren
+### <a name="check-user-existence-in-a-group"></a>De aanwezigheid van gebruikers in een groep controleren
 
 API-versie | API HTTP-methode | Aanvraag-URL
 ---|---|---
@@ -195,7 +195,7 @@ Statuscode respons | Beschrijving
 `404` | Gebruiker bestaat niet
 
 <a name="remove-user-from-all-groups"> </a>
-### <a name="remove-a-user-from-all-groups"></a>Een gebruiker uit alle groepen verwijderen
+### <a name="remove-a-user-from-all-groups"></a>Een gebruiker verwijderen uit alle groepen
 
 API-versie | API HTTP-methode | Aanvraag-URL
 ---|---|---
@@ -225,7 +225,7 @@ API-versie | API HTTP-methode | Aanvraag-URL
 `1.0` | `DELETE` | `https://<instance-name>.service.signalr.net/api/v1/hubs/<hub-name>/connections/<connection-id>/groups/<group-name>`
 
 <a name="close-connection"> </a>
-### <a name="close-a-client-connection"></a>Een clientverbinding sluiten
+### <a name="close-a-client-connection"></a>Een client verbinding sluiten
 
 API-versie | API HTTP-methode | Aanvraag-URL
 ---|---|---
@@ -241,14 +241,14 @@ API-versie | API HTTP-methode | Aanvraag-URL
 
 Statuscode respons | Beschrijving
 ---|---
-`200` | Service Goed
+`200` | Service goed
 `503` | Service niet beschikbaar
 
 [!INCLUDE [Cleanup](includes/signalr-quickstart-cleanup.md)]
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze quickstart hebt u geleerd hoe u REST API gebruiken om realtime berichten van SignalR Service naar clients uit te zenden. Lees vervolgens meer over het ontwikkelen en implementeren van Azure-functies met SignalR Service-binding, die is gebouwd bovenop DE REST API.
+In deze Quick Start hebt u geleerd hoe u REST API kunt gebruiken om real-time berichten van de signaal service te verzenden naar clients. Vervolgens vindt u meer informatie over het ontwikkelen en implementeren van Azure Functions met de service binding van de signalering, die boven op REST API is gebouwd.
 
 > [!div class="nextstepaction"]
-> [Azure-functies ontwikkelen met Azure SignalR Service-bindingen](signalr-quickstart-azure-functions-csharp.md)
+> [Azure Functions ontwikkelen met behulp van Azure signalerings service bindingen](signalr-quickstart-azure-functions-csharp.md)

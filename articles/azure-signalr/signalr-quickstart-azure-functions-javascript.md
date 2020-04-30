@@ -1,5 +1,5 @@
 ---
-title: JavaScript gebruiken om een chatroom te maken met Azure Functions en SignalR Service
+title: Java script gebruiken om een chat ruimte te maken met Azure Functions en de signaal service
 description: Een snelstart waarin u leert hoe u Azure SignalR Service en Azure Functions gebruikt om een chatruimte te maken.
 author: sffamily
 ms.service: signalr
@@ -8,25 +8,25 @@ ms.topic: quickstart
 ms.date: 12/14/2019
 ms.author: zhshang
 ms.openlocfilehash: 2726d5da2613be4ae2065246543d206cf814f353
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "77083186"
 ---
-# <a name="quickstart-use-javascript-to-create-a-chat-room-with-azure-functions-and-signalr-service"></a>Snelstart: JavaScript gebruiken om een chatroom te maken met Azure-functies en SignalR-service
+# <a name="quickstart-use-javascript-to-create-a-chat-room-with-azure-functions-and-signalr-service"></a>Snelstartgids: Java script gebruiken om een chat ruimte te maken met Azure Functions en de signaal service
 
-Met Azure SignalR Service u eenvoudig realtime functionaliteit toevoegen aan uw toepassing en Azure Functions is een serverloos platform waarmee u uw code uitvoeren zonder infrastructuur te beheren. In deze quickstart gebruikt u JavaScript om een serverloze, realtime chattoepassing te bouwen met behulp van SignalR-service en -functies.
+Met de Azure signalerings service kunt u eenvoudig real-time functionaliteit toevoegen aan uw toepassing en Azure Functions een serverloos platform is waarmee u uw code kunt uitvoeren zonder een infra structuur te beheren. In deze Quick Start gebruikt u Java script om een serverloze, realtime chat toepassing te maken met behulp van de seingevings service en-functies.
 
 ## <a name="prerequisites"></a>Vereisten
 
-- Een codeeditor, zoals [Visual Studio Code](https://code.visualstudio.com/)
-- Een Azure-account met een actief abonnement. [Maak gratis een account aan.](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)
-- [Azure Functions Core Tools](https://github.com/Azure/azure-functions-core-tools#installing), versie 2 of hoger. Wordt gebruikt om Azure Function-apps lokaal uit te voeren.
-- [Node.js](https://nodejs.org/en/download/), versie 10.x
+- Een code-editor, zoals [Visual Studio code](https://code.visualstudio.com/)
+- Een Azure-account met een actief abonnement. [Maak gratis een account](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
+- [Azure functions core tools](https://github.com/Azure/azure-functions-core-tools#installing), versie 2 of hoger. Wordt gebruikt om Azure function-apps lokaal uit te voeren.
+- [Node. js](https://nodejs.org/en/download/), versie 10. x
 
    > [!NOTE]
-   > De voorbeelden moeten werken met andere versies van Node.js, zie [Azure Functions runtime versies documentatie](../azure-functions/functions-versions.md#languages) voor meer informatie.
+   > De voor beelden moeten werken met andere versies van node. js, zie de [documentatie voor Azure functions runtime versies](../azure-functions/functions-versions.md#languages) voor meer informatie.
 
 > [!NOTE]
 > Deze snelstartgids kan worden uitgevoerd op macOS, Windows of Linux.
@@ -51,7 +51,7 @@ Meld u met uw Azure-account aan bij Azure Portal op <https://portal.azure.com/>.
 
     ![SignalR Service maken](media/signalr-quickstart-azure-functions-javascript/signalr-quickstart-keys.png)
 
-1. Open in uw code-editor de map *src/chat/javascript* in de gekloonde opslagplaats.
+1. Open in de code-editor de map *src/chat/java script* in de gekloonde opslag plaats.
 
 1. Wijzig de naam *local.settings.sample.json* in *local.settings.json*.
 
@@ -62,7 +62,7 @@ Meld u met uw Azure-account aan bij Azure Portal op <https://portal.azure.com/>.
     - **negotiate**: gebruikt de invoerbinding *SignalRConnectionInfo* om geldige verbindingsgegevens te genereren en te retourneren.
     - **messages**: ontvangt een chatbericht in de hoofdtekst van de aanvraag en gebruikt de uitvoerbinding *SignalR* om het bericht uit te zenden naar alle verbonden clienttoepassingen.
 
-1. Zorg er in de terminal voor dat u zich in de *src/chat/javascript-map* bevindt. Voer de functie-app uit.
+1. Controleer in de terminal of u zich in de map *src/chat/java script* bevindt. Voer de functie-app uit.
 
     ```bash
     func start
@@ -76,7 +76,7 @@ Meld u met uw Azure-account aan bij Azure Portal op <https://portal.azure.com/>.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze quickstart hebt u een real-time serverloze toepassing in VS-code gebouwd en uitgevoerd. Nu volgt meer informatie over het implementeren van Azure Functions vanuit VS Code.
+In deze Quick Start hebt u een realtime serverloze toepassing gemaakt en uitgevoerd in VS code. Nu volgt meer informatie over het implementeren van Azure Functions vanuit VS Code.
 
 > [!div class="nextstepaction"]
 > [Azure Functions met VS Code implementeren](/azure/javascript/tutorial-vscode-serverless-node-01)

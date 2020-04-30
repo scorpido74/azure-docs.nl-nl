@@ -1,6 +1,6 @@
 ---
-title: Gebruik azure/service-bus onderwerpen en abonnementen met Node.js
-description: 'Snelstart: meer informatie over het gebruik van servicebus-onderwerpen en -abonnementen in Azure vanuit een Node.js-app.'
+title: Azure/service-bus-onderwerpen en-abonnementen gebruiken met node. js
+description: 'Snelstartgids: informatie over het gebruik van Service Bus-onderwerpen en abonnementen in azure vanuit een node. js-app.'
 services: service-bus-messaging
 documentationcenter: nodejs
 author: axisc
@@ -15,35 +15,35 @@ ms.topic: quickstart
 ms.date: 01/16/2020
 ms.author: aschhab
 ms.openlocfilehash: 6088b4c54ed16c5ef46d2c0671e619884cad29d4
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "78330614"
 ---
-# <a name="quickstart-how-to-use-service-bus-topics-and-subscriptions-with-nodejs-and-the-azureservice-bus-package"></a>Snelstart: Service Bus-onderwerpen en abonnementen gebruiken met Node.js en het azure/service-buspakket
-In deze zelfstudie leert u hoe u een Node.js-programma schrijft om berichten naar een servicebusonderwerp te verzenden en berichten te ontvangen van een Service Bus-abonnement met behulp van het nieuwe [@azure/service-bus](https://www.npmjs.com/package/@azure/service-bus) pakket. Dit pakket maakt gebruik van het snellere [AMQP 1.0-protocol,](service-bus-amqp-overview.md) terwijl het oudere [azure-sb-pakket](https://www.npmjs.com/package/azure-sb) gebruik maakte van [Service Bus REST run-time API's](/rest/api/servicebus/service-bus-runtime-rest). De voorbeelden zijn geschreven in JavaScript.
+# <a name="quickstart-how-to-use-service-bus-topics-and-subscriptions-with-nodejs-and-the-azureservice-bus-package"></a>Snelstartgids: Service Bus-onderwerpen en-abonnementen gebruiken met node. js en het Azure/service-bus-pakket
+In deze zelf studie leert u hoe u een node. js-programma kunt schrijven om berichten naar een Service Bus onderwerp te verzenden en berichten van een Service Bus-abonnement [@azure/service-bus](https://www.npmjs.com/package/@azure/service-bus) te ontvangen met behulp van het nieuwe pakket. Dit pakket maakt gebruik van het snellere [AMQP 1,0-protocol](service-bus-amqp-overview.md) , terwijl het oudere [Azure-SB-](https://www.npmjs.com/package/azure-sb) pakket wordt gebruikt [Service Bus rest runtime-api's](/rest/api/servicebus/service-bus-runtime-rest). De voor beelden zijn geschreven in Java script.
 
 ## <a name="prerequisites"></a>Vereisten
-- Een Azure-abonnement. U hebt een Azure-account nodig om deze zelfstudie te voltooien. U uw [MSDN-abonneevoordelen](https://azure.microsoft.com/pricing/member-offers/credit-for-visual-studio-subscribers/?WT.mc_id=A85619ABF) activeren of u aanmelden voor een [gratis account.](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF)
-- Als u geen onderwerp en abonnement hebt om mee te werken, voert u stappen uit in de [Azure-portal gebruiken om een servicebus-onderwerp en -abonnementenartikel](service-bus-quickstart-topics-subscriptions-portal.md) te maken om ze te maken. Noteer de verbindingstekenreeks voor uw servicebus-exemplaar en de namen van het onderwerp en abonnement dat u hebt gemaakt. We gebruiken deze waarden in de monsters.
+- Een Azure-abonnement. U hebt een Azure-account nodig om deze zelfstudie te voltooien. U kunt de [voor delen](https://azure.microsoft.com/pricing/member-offers/credit-for-visual-studio-subscribers/?WT.mc_id=A85619ABF) van uw MSDN-abonnee activeren of zich aanmelden voor een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF).
+- Als u geen onderwerp en abonnement hebt om te werken met, volgt u de stappen in het artikel [Azure Portal gebruiken om een service bus onderwerpen en abonnementen te maken](service-bus-quickstart-topics-subscriptions-portal.md) om ze te maken. Noteer de connection string voor uw Service Bus-exemplaar en de namen van het onderwerp en het abonnement dat u hebt gemaakt. We gebruiken deze waarden in de voor beelden.
 
 > [!NOTE]
-> - Deze zelfstudie werkt met voorbeelden die u kopiëren en uitvoeren met Behulp van [Nodejs](https://nodejs.org/). Zie [Een Node.js-toepassing maken en implementeren voor](../app-service/app-service-web-get-started-nodejs.md)instructies voor het maken van een Node.js-toepassing naar een Azure-website of [Node.js Cloud Service met Windows PowerShell](../cloud-services/cloud-services-nodejs-develop-deploy-app.md).
-> - Het [@azure/service-bus](https://www.npmjs.com/package/@azure/service-bus) nieuwe pakket biedt nog geen ondersteuning voor het maken van topcis en abonnementen. Gebruik het [@azure/arm-servicebus](https://www.npmjs.com/package/@azure/arm-servicebus) pakket als u ze programmatisch wilt maken.
+> - In deze zelf studie wordt gebruikgemaakt van voor beelden die u kunt kopiëren en uitvoeren met behulp van [Nodejs](https://nodejs.org/). Zie [een node. js-toepassing maken en implementeren op een Azure-website](../app-service/app-service-web-get-started-nodejs.md)of [node. js-Cloud service met behulp van Windows Power shell](../cloud-services/cloud-services-nodejs-develop-deploy-app.md)voor instructies over het maken van een node. js-toepassing.
+> - Het nieuwe [@azure/service-bus](https://www.npmjs.com/package/@azure/service-bus) pakket biedt nog geen ondersteuning voor het maken van topcis en abonnementen. Gebruik het [@azure/arm-servicebus](https://www.npmjs.com/package/@azure/arm-servicebus) pakket als u deze programmatisch wilt maken.
 
 ### <a name="use-node-package-manager-npm-to-install-the-package"></a>Node Package Manager (NPM) gebruiken om het pakket te installeren
-Als u het npm-pakket voor Service Bus `npm` wilt installeren, opent u een opdrachtprompt die op zijn pad is, wijzigt u de map in de map waar u uw voorbeelden wilt hebben en voert u deze opdracht uit.
+Als u het NPM-pakket voor Service Bus wilt installeren, opent u een `npm` opdracht prompt met in het pad naar de map waarin u de voor beelden wilt maken en voert u deze opdracht uit.
 
 ```bash
 npm install @azure/service-bus
 ```
 
 ## <a name="send-messages-to-a-topic"></a>Berichten verzenden naar een onderwerp
-Interactie met een servicebusonderwerp begint met het instantiëren van de [servicebusclientklasse](https://docs.microsoft.com/javascript/api/@azure/service-bus/servicebusclient) en het gebruiken om de [klasse TopicClient](https://docs.microsoft.com/javascript/api/%40azure/service-bus/topicclient) te instantiëren. Zodra u de onderwerpclient hebt, u een afzender maken en de methode [Verzenden](https://docs.microsoft.com/javascript/api/%40azure/service-bus/sender#send-sendablemessageinfo-) of [verzenden batch](https://docs.microsoft.com/javascript/api/@azure/service-bus/sender#sendbatch-sendablemessageinfo---) gebruiken om berichten te verzenden.
+Interactie met een Service Bus onderwerp begint met het instantiëren van de klasse [ServiceBusClient](https://docs.microsoft.com/javascript/api/@azure/service-bus/servicebusclient) en het gebruiken om de klasse [TopicClient](https://docs.microsoft.com/javascript/api/%40azure/service-bus/topicclient) te instantiëren. Zodra u de onderwerp-client hebt, kunt u een afzender maken en de methode [Send](https://docs.microsoft.com/javascript/api/%40azure/service-bus/sender#send-sendablemessageinfo-) of [methode sendbatch](https://docs.microsoft.com/javascript/api/@azure/service-bus/sender#sendbatch-sendablemessageinfo---) gebruiken om berichten te verzenden.
 
-1. Open uw favoriete editor, zoals [Visual Studio Code](https://code.visualstudio.com/)
-2. Maak een `send.js` bestand aangeroepen en plak de onderstaande code erin. Deze code stuurt 10 berichten naar uw onderwerp.
+1. Open uw favoriete editor, zoals [Visual Studio code](https://code.visualstudio.com/)
+2. Maak een bestand met `send.js` de naam en plak de onderstaande code hierin. Met deze code worden 10 berichten verzonden naar uw onderwerp.
 
     ```javascript
     const { ServiceBusClient } = require("@azure/service-bus"); 
@@ -80,20 +80,20 @@ Interactie met een servicebusonderwerp begint met het instantiëren van de [serv
       console.log("Error occurred: ", err);
     });
     ```
-3. Voer de verbindingstekenreeks en de naam van het onderwerp in de bovenstaande code in.
-4. Voer vervolgens `node send.js` de opdracht uit in een opdrachtprompt om dit bestand uit te voeren. 
+3. Voer in de bovenstaande code de connection string en de naam van uw onderwerp in.
+4. Voer vervolgens de opdracht `node send.js` uit in een opdracht prompt om dit bestand uit te voeren. 
 
-Gefeliciteerd! Je hebt net berichten naar een servicebuswachtrij gestuurd.
+Gefeliciteerd! U hebt zojuist berichten verzonden naar een Service Bus wachtrij.
 
-Berichten hebben een aantal `label` `messageId` standaardeigenschappen zoals en die u instellen bij het verzenden. Als u aangepaste eigenschappen wilt instellen, gebruikt u het `userProperties`Json-object dat sleutelwaardeparen van uw aangepaste gegevens kan bevatten.
+Berichten bevatten enkele standaard eigenschappen, `label` zoals `messageId` en die u kunt instellen bij het verzenden. Als u aangepaste eigenschappen wilt instellen, gebruikt u de `userProperties`. Dit is een JSON-object dat sleutel-waardeparen van uw aangepaste gegevens kan bevatten.
 
-Service Bus-onderwerpen ondersteunen een maximale grootte van 256 kB in de [Standard-laag](service-bus-premium-messaging.md) en 1 MB in de [Premium-laag](service-bus-premium-messaging.md). Er is geen limiet aan het aantal berichten dat in een onderwerp wordt bewaard, maar er is een limiet voor de totale grootte van de berichten die in een onderwerp worden bewaard. De grootte van het onderwerp wordt gedefinieerd tijdens het maken, met een bovengrens van 5 GB. Zie [ServiceBus-quota voor](service-bus-quotas.md)meer informatie over quota.
+Service Bus-onderwerpen ondersteunen een maximale grootte van 256 kB in de [Standard-laag](service-bus-premium-messaging.md) en 1 MB in de [Premium-laag](service-bus-premium-messaging.md). Er is geen limiet voor het aantal berichten dat in een onderwerp wordt bewaard, maar er is een limiet voor de totale grootte van de berichten in een onderwerp. De grootte van het onderwerp wordt gedefinieerd tijdens het maken, met een bovengrens van 5 GB. Zie [Service Bus quota's](service-bus-quotas.md)voor meer informatie over quota's.
 
 ## <a name="receive-messages-from-a-subscription"></a>Berichten ontvangen van een abonnement
-Interactie met een Service Bus-abonnement begint met het instantiëren van de [ServiceBusClient-klasse](https://docs.microsoft.com/javascript/api/@azure/service-bus/servicebusclient) en het gebruiken om de klasse [SubscriptionClient](https://docs.microsoft.com/javascript/api/%40azure/service-bus/subscriptionclient) te instantiëren. Zodra u de abonnementsclient hebt, u een ontvanger maken en de [methode receiveMessages](https://docs.microsoft.com/javascript/api/%40azure/service-bus/receiver#receivemessages-number--undefined---number-) of [de MessageHandler-methode erop gebruiken](https://docs.microsoft.com/javascript/api/%40azure/service-bus/receiver#registermessagehandler-onmessage--onerror--messagehandleroptions-) om berichten te ontvangen.
+Interactie met een Service Bus-abonnement begint bij het instantiëren van de klasse [ServiceBusClient](https://docs.microsoft.com/javascript/api/@azure/service-bus/servicebusclient) en het gebruiken om de klasse [SubscriptionClient](https://docs.microsoft.com/javascript/api/%40azure/service-bus/subscriptionclient) te instantiëren. Zodra u de abonnements-client hebt, kunt u een ontvanger maken en de methode [receiveMessages](https://docs.microsoft.com/javascript/api/%40azure/service-bus/receiver#receivemessages-number--undefined---number-) of [registerMessageHandler](https://docs.microsoft.com/javascript/api/%40azure/service-bus/receiver#registermessagehandler-onmessage--onerror--messagehandleroptions-) gebruiken om berichten te ontvangen.
 
-1. Open uw favoriete editor, zoals [Visual Studio Code](https://code.visualstudio.com/)
-2. Maak een `recieve.js` bestand aangeroepen en plak de onderstaande code erin. Met deze code worden 10 berichten van uw abonnement verzonden. Het werkelijke aantal dat u ontvangt, is afhankelijk van het aantal berichten in het abonnement en de netwerklatentie.
+1. Open uw favoriete editor, zoals [Visual Studio code](https://code.visualstudio.com/)
+2. Maak een bestand met `recieve.js` de naam en plak de onderstaande code hierin. Met deze code wordt geprobeerd 10 berichten van uw abonnement te ontvangen. Het werkelijke aantal dat u ontvangt, is afhankelijk van het aantal berichten in het abonnement en de netwerk latentie.
 
     ```javascript
     const { ServiceBusClient, ReceiveMode } = require("@azure/service-bus"); 
@@ -123,32 +123,32 @@ Interactie met een Service Bus-abonnement begint met het instantiëren van de [S
       console.log("Error occurred: ", err);
     });
     ```
-3. Voer de verbindingstekenreeks en namen van uw onderwerp en abonnement in de bovenstaande code in.
-4. Voer vervolgens `node receiveMessages.js` de opdracht uit in een opdrachtprompt om dit bestand uit te voeren.
+3. Voer in de bovenstaande code de connection string en namen in van uw onderwerp en abonnement.
+4. Voer vervolgens de opdracht `node receiveMessages.js` uit in een opdracht prompt om dit bestand uit te voeren.
 
 Gefeliciteerd! U hebt zojuist berichten ontvangen van een Service Bus-abonnement.
 
-De [createReceiver](https://docs.microsoft.com/javascript/api/%40azure/service-bus/subscriptionclient#createreceiver-receivemode-) methode `ReceiveMode` neemt in een die is een enum met waarden [ReceiveAndDelete](message-transfers-locks-settlement.md#settling-receive-operations) en [PeekLock](message-transfers-locks-settlement.md#settling-receive-operations). Vergeet niet om uw berichten te [vereffenen](message-transfers-locks-settlement.md#settling-receive-operations) `abandon()`als `defer()`u `deadletter()` de `PeekLock` modus gebruikt met behulp van een van `complete()`, , of methoden in het bericht.
+De [createReceiver](https://docs.microsoft.com/javascript/api/%40azure/service-bus/subscriptionclient#createreceiver-receivemode-) -methode heeft een `ReceiveMode` enum met waarden [ReceiveAndDelete](message-transfers-locks-settlement.md#settling-receive-operations) en [PeekLock](message-transfers-locks-settlement.md#settling-receive-operations). Vergeet niet [om uw berichten](message-transfers-locks-settlement.md#settling-receive-operations) af te rekenen als `PeekLock` u de modus gebruikt met `complete()`behulp van een van `abandon()` `defer()`de-,-of `deadletter()` -methoden in het bericht.
 
-## <a name="subscription-filters-and-actions"></a>Abonnementsfilters en -acties
-Service Bus ondersteunt [filters en acties op abonnementen,](topic-filters.md)waarmee u de binnenkomende berichten filteren op een abonnement en hun eigenschappen bewerken.
+## <a name="subscription-filters-and-actions"></a>Abonnements filters en-acties
+Service Bus biedt ondersteuning voor [filters en acties op abonnementen](topic-filters.md), waarmee u de inkomende berichten kunt filteren op een abonnement en de eigenschappen van deze kunnen bewerken.
 
-Zodra u een exemplaar `SubscriptionClient` van een instantie u gebruik maken van de onderstaande methoden op het te krijgen, toe te voegen en te verwijderen regels op het abonnement om de filters en acties te controleren.
+Zodra u een exemplaar van een `SubscriptionClient` hebt, kunt u de onderstaande methoden hiervoor gebruiken om regels in het abonnement op te halen, toe te voegen en te verwijderen om de filters en acties te beheren.
 
-- getRegels
+- getRules
 - addRule
-- verwijderenRegel
+- removeRule
 
-Elk abonnement heeft een standaardregel die het ware filter gebruikt om alle binnenkomende berichten toe te staan. Wanneer u een nieuwe regel toevoegt, moet u het standaardfilter verwijderen om het filter in uw nieuwe regel te laten werken. Als een abonnement geen regels heeft, ontvangt het geen berichten.
+Elk abonnement heeft een standaard regel die gebruikmaakt van het ware filter om alle inkomende berichten toe te staan. Wanneer u een nieuwe regel toevoegt, moet u het standaard filter verwijderen om het filter in uw nieuwe regel te laten werken. Als een abonnement geen regels heeft, worden er geen berichten weer gegeven.
 
 > [!NOTE]
-> U servicebusbronnen beheren met [Service Bus Explorer.](https://github.com/paolosalvatori/ServiceBusExplorer/) Met de Service Bus Explorer kunnen gebruikers eenvoudig verbinding maken met een naamruimte van een ServiceBus en berichtenentiteiten beheren. De tool biedt geavanceerde functies zoals import/export functionaliteit of de mogelijkheid om onderwerp, wachtrijen, abonnementen, relay services, meldinghubs en evenementenhubs te testen. 
+> U kunt Service Bus-resources beheren met [Service Bus Explorer](https://github.com/paolosalvatori/ServiceBusExplorer/). Met de Service Bus Explorer kunnen gebruikers verbinding maken met een Service Bus naam ruimte en de Messa ging-entiteiten op een eenvoudige manier beheren. Het hulp programma biedt geavanceerde functies zoals de functionaliteit voor importeren/exporteren of de mogelijkheid om onderwerp, wacht rijen, abonnementen, relay-Services, Notification hubs en Events hubs te testen. 
 
 ## <a name="next-steps"></a>Volgende stappen
-Zie de volgende bronnen voor meer informatie.
+Raadpleeg de volgende bronnen voor meer informatie.
 
 - [Wachtrijen, onderwerpen en abonnementen](service-bus-queues-topics-subscriptions.md)
-- Andere [Nodejs-voorbeelden afrekenen voor servicebus op GitHub](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/servicebus/service-bus/samples/javascript)
+- Andere Nodejs-voor beelden afhandelen [voor service bus op github](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/servicebus/service-bus/samples/javascript)
 - [Node.js Developer Center](https://azure.microsoft.com/develop/nodejs/)
 
 

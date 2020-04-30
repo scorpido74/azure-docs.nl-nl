@@ -1,6 +1,6 @@
 ---
 title: Queryresultaten opslaan in opslag
-description: In dit artikel leert u hoe u queryresultaten opslaat in opslag met SQL on-demand (voorbeeld).
+description: In dit artikel leert u hoe u query resultaten opslaat in de opslag met behulp van SQL op aanvraag (preview).
 services: synapse-analytics
 author: vvasic-msft
 ms.service: synapse-analytics
@@ -10,29 +10,29 @@ ms.date: 04/15/2020
 ms.author: vvasic
 ms.reviewer: jrasnick, carlrab
 ms.openlocfilehash: 462185feb2b9cbebd17ce9cba54c2b23deea6c75
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81425145"
 ---
-# <a name="store-query-results-to-storage-using-sql-on-demand-preview-using-azure-synapse-analytics"></a>Queryresultaten opslaan in opslag met SQL on-demand (preview) met Azure Synapse Analytics
+# <a name="store-query-results-to-storage-using-sql-on-demand-preview-using-azure-synapse-analytics"></a>Query resultaten opslaan in opslag met behulp van SQL on-demand (preview) met behulp van Azure Synapse Analytics
 
-In dit artikel leert u hoe u queryresultaten op de opslag opslaan met SQL On-demand (voorbeeld).
+In dit artikel leert u hoe u query resultaten opslaat in de opslag met behulp van SQL op aanvraag (preview).
 
 ## <a name="prerequisites"></a>Vereisten
 
-Uw eerste stap is om de onderstaande artikelen te bekijken en ervoor te zorgen dat u aan de voorwaarden hebt voldaan:
+De eerste stap is om de onderstaande artikelen te controleren en te controleren of u aan de vereisten voldoet:
 
-- [First-time setup](query-data-storage.md#first-time-setup)
+- [Eerste keer instellen](query-data-storage.md#first-time-setup)
 - [Vereisten](query-data-storage.md#prerequisites)
 
 ## <a name="create-external-table-as-select"></a>Externe tabel maken als selecteren
 
-U de instructie EXTERNE TABEL MAKEN ALS SELECT (CETAS) gebruiken om de queryresultaten op te slaan in de opslag.
+U kunt de instructie CREATE EXTERNAL TABLE AS SELECT (CETAS) gebruiken om de query resultaten op te slaan in de opslag.
 
 > [!NOTE]
-> Wijzig de eerste regel in de query, d.w.z. [mydbname], zodat u de database gebruikt die u hebt gemaakt. Als u geen database hebt gemaakt, leest u [First-time setup](query-data-storage.md#first-time-setup).
+> Wijzig de eerste regel in de query, bijvoorbeeld [mydbname], zodat u de data base gebruikt die u hebt gemaakt. Als u nog geen data base hebt gemaakt, lees dan [eerst de installatie](query-data-storage.md#first-time-setup).
 
 ```sql
 USE [mydbname];
@@ -71,10 +71,10 @@ FROM
 
 ## <a name="use-a-external-table-created"></a>Een externe tabel gebruiken die is gemaakt
 
-U externe tabel gebruiken die via CETAS is gemaakt, zoals een gewone externe tabel.
+U kunt externe tabellen die zijn gemaakt via CETAS gebruiken als een gewone externe tabel.
 
 > [!NOTE]
-> Wijzig de eerste regel in de query, d.w.z. [mydbname], zodat u de database gebruikt die u hebt gemaakt. Als u geen database hebt gemaakt, leest u [First-time setup](query-data-storage.md#first-time-setup).
+> Wijzig de eerste regel in de query, bijvoorbeeld [mydbname], zodat u de data base gebruikt die u hebt gemaakt. Als u nog geen data base hebt gemaakt, lees dan [eerst de installatie](query-data-storage.md#first-time-setup).
 
 ```sql
 USE [mydbname];
@@ -91,4 +91,4 @@ ORDER BY
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Raadpleeg het [bestand Query single CSV,](query-single-csv-file.md) [Query Parquet files](query-parquet-files.md)en Query [JSON-bestanden](query-json-files.md) voor informatie over het opvragen van verschillende bestandstypen.
+Raadpleeg voor meer informatie over het uitvoeren van een query op verschillende bestands typen de artikelen [query ENKELVOUDIG CSV-bestand](query-single-csv-file.md), [query uitvoeren op Parquet-bestanden](query-parquet-files.md)en JSON- [bestanden opvragen](query-json-files.md) .

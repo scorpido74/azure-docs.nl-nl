@@ -9,10 +9,10 @@ ms.subservice: cosmosdb-cassandra
 ms.topic: overview
 ms.date: 09/24/2018
 ms.openlocfilehash: 223544f7ceddce6bc2071d561da1cff1c0d4b53b
-ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/31/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80420158"
 ---
 # <a name="apache-cassandra-features-supported-by-azure-cosmos-db-cassandra-api"></a>Door Azure Cosmos DB Cassandra API ondersteunde Apache Cassandra-functies 
@@ -75,7 +75,7 @@ Azure Cosmos DB Cassandra-API ondersteunt de volgende CQL-functies:
 
 * Token  
 * Statistische functies
-  * min, max, avg, tellen
+  * min, Max, Gem, aantal
 * Blob-conversiefuncties 
   * typeAsBlob(value)  
   * blobAsType(value)
@@ -96,21 +96,21 @@ Azure Cosmos DB Cassandra-API ondersteunt de volgende CQL-functies:
 
 ## <a name="cassandra-api-limits"></a>Limieten voor Cassandra-API
 
-Azure Cosmos DB Cassandra-API heeft geen limiet wat betreft de grootte van gegevens die in een tabel worden opgeslagen. Er kunnen honderden terabytes of petabytes aan gegevens worden opgeslagen terwijl de partitiesleutellimieten worden gerespecteerd. Op dezelfde manier heeft elke entiteit of rij-equivalent geen beperkingen op het aantal kolommen. De totale omvang van de entiteit mag echter niet meer bedragen dan 2 MB. De gegevens per partitiesleutel mogen niet hoger zijn dan 20 GB zoals in alle andere API's.
+Azure Cosmos DB Cassandra-API heeft geen limiet wat betreft de grootte van gegevens die in een tabel worden opgeslagen. Er kunnen honderden terabytes of petabytes aan gegevens worden opgeslagen terwijl de partitiesleutellimieten worden gerespecteerd. Op dezelfde manier heeft elke entiteit of een gelijkwaardige rij geen limieten voor het aantal kolommen. De totale grootte van de entiteit mag echter niet meer zijn dan 2 MB. De gegevens per partitie sleutel mogen niet groter zijn dan 20 GB, zoals in alle andere Api's.
 
 ## <a name="tools"></a>Hulpprogramma's 
 
 Azure Cosmos DB Cassandra-API is een beheerd serviceplatform. Het vereist geen beheeroverhead of hulpprogramma's zoals Garbage Collector, Java Virtual Machine (JVM) en nodetool om het cluster te beheren. Het ondersteunt hulpprogramma’s zoals cqlsh, dat binaire CQLv4-compatibiliteit gebruikt. 
 
-* De gegevensverkenner, metrische gegevens, logboekdiagnoses, PowerShell en CLI van Azure Portal zijn andere ondersteunde mechanismen om het account te beheren.
+* Azure Portal Data Explorer, metrische gegevens, logboek diagnostiek, Power shell en CLI zijn andere ondersteunde mechanismen om het account te beheren.
 
 ## <a name="cql-shell"></a>CQL Shell  
 
-CQLSH command-line utility wordt geleverd met Apache Cassandra 3.1.1 en werkt out of box door het instellen van een aantal omgevingsvariabelen.
+Het CQLSH-opdracht regel hulpprogramma wordt geleverd met Apache Cassandra 3.1.1 en is out-of-Box voor een aantal omgevings variabelen.
 
-**Windows:**
+**Windows**
 
-Als u windows gebruikt, raden we u aan het [Windows-bestandssysteem voor Linux](https://docs.microsoft.com/windows/wsl/install-win10#install-the-windows-subsystem-for-linux)in te schakelen. U dan de linux commando's hieronder volgen.
+Als u Windows gebruikt, raden we u aan het [Windows-Bestands systeem](https://docs.microsoft.com/windows/wsl/install-win10#install-the-windows-subsystem-for-linux)in te scha kelen voor Linux. U kunt vervolgens de onderstaande Linux-opdrachten volgen.
 
 **UNIX/Linux/Mac:**
 
@@ -143,10 +143,10 @@ cqlsh <YOUR_ACCOUNT_NAME>.cassandra.cosmosdb.azure.com 10350 -u <YOUR_ACCOUNT_NA
 
 Azure Cosmos DB ondersteunt de volgende databaseopdrachten op Cassandra-API-accounts.
 
-* KEYSPACE MAKEN (De replicatie-instellingen voor deze opdracht worden genegeerd)
+* Een spatie maken (de replicatie-instellingen voor deze opdracht worden genegeerd)
 * CREATE TABLE 
-* MAAK-INDEX (zonder indexnaam op te geven en volledig bevroren indexen die nog niet worden ondersteund)
-* FILTERING TOESTAAN
+* INDEX maken (zonder de index naam op te geven en volledig geblokkeerde indexen nog niet ondersteund)
+* FILTEREN TOESTAAN
 * ALTER TABLE 
 * USE 
 * INSERT 
@@ -155,7 +155,7 @@ Azure Cosmos DB ondersteunt de volgende databaseopdrachten op Cassandra-API-acco
 * BATCH - alleen niet-geregistreerde opdrachten worden ondersteund 
 * DELETE
 
-Alle CRUD-bewerkingen die worden uitgevoerd via een CQL v4-compatibele SDK, geven extra informatie over fout- en aanvraageenheden die worden verbruikt. De taken Delete en UPDATE moeten worden behandeld met resourcegovernance die in aanmerking wordt genomen om een zo efficiënt mogelijk gebruik van de ingerichte doorvoer te garanderen.
+Alle ruwe bewerkingen die worden uitgevoerd via een met CQL v4 compatibele SDK, retour neren extra informatie over de verbruikte fout-en aanvraag eenheden. De opdrachten DELETE en UPDATE moeten worden afgehandeld met resource governance, om ervoor te zorgen dat de ingerichte door Voer optimaal wordt gebruikt.
 
 * Let wel: de waarde gc_grace_seconds moet nul zijn als deze is opgegeven.
 
@@ -173,18 +173,18 @@ foreach (string key in insertResult.Info.IncomingPayload)
 
 ## <a name="consistency-mapping"></a>Consistentietoewijzing 
 
-Azure Cosmos DB Cassandra-API biedt een keuze aan consistentie voor leesbewerkingen.  De consistentie mapping is [hier](consistency-levels-across-apis.md#cassandra-mapping)gedetailleerd .
+Azure Cosmos DB Cassandra-API biedt een keuze aan consistentie voor leesbewerkingen.  De consistentie toewijzing wordt [hier](consistency-levels-across-apis.md#cassandra-mapping)beschreven.
 
 ## <a name="permission-and-role-management"></a>Machtigings- en rolbeheer
 
-Azure Cosmos DB ondersteunt rbac (role-based access control) voor het inrichten, roteren van sleutels, het weergeven van statistieken en alleen-lezen en lezen wachtwoorden/sleutels die via de [Azure-portal](https://portal.azure.com)kunnen worden verkregen. Azure Cosmos DB ondersteunt geen rollen voor CRUD-activiteiten.
+Azure Cosmos DB ondersteunt op rollen gebaseerd toegangs beheer (RBAC) voor het inrichten, draaien van sleutels, het weer geven van metrische gegevens en alleen-lezen wacht woorden/sleutels die kunnen worden verkregen via de [Azure Portal](https://portal.azure.com). Azure Cosmos DB biedt geen ondersteuning voor rollen voor ruwe activiteiten.
 
-## <a name="keyspace-and-table-options"></a>Opties voor sleutelruimte en tabel
+## <a name="keyspace-and-table-options"></a>Opties voor de Keys en tabellen
 
-De opties voor regionaam, klasse, replication_factor en datacenter in de opdracht Sleutelruimte maken worden momenteel genegeerd. Het systeem gebruikt de [onderliggende azure](global-dist-under-the-hood.md) cosmos DB's globale distributiereplicatiemethode om de regio's toe te voegen. Als u de aanwezigheid van gegevens in verschillende regio's nodig hebt, u deze op accountniveau inschakelen met PowerShell, CLI of portal, voor meer informatie, zie het artikel [over het toevoegen van regio's.](how-to-manage-database-account.md#addremove-regions-from-your-database-account) Durable_writes kan niet worden uitgeschakeld omdat Azure Cosmos DB ervoor zorgt dat elke schrijf duurzaam is. In elke regio repliceert Azure Cosmos DB de gegevens over de replicaset die uit vier replica's bestaat en kan deze [configuratie](global-dist-under-the-hood.md) van de replicaset niet worden gewijzigd.
+De opties voor regio naam, klasse, replication_factor en Data Center in de opdracht ' spatie maken ' worden momenteel genegeerd. Het systeem maakt gebruik van de [globale distributie](global-dist-under-the-hood.md) replicatie methode van de onderliggende Azure Cosmos DB om de regio's toe te voegen. Als u de aanwezigheid van gegevens over meerdere regio's nodig hebt, kunt u deze op account niveau inschakelen met Power shell, CLI of portal, zie het artikel [regio's toevoegen](how-to-manage-database-account.md#addremove-regions-from-your-database-account) voor meer informatie. Durable_writes kan niet worden uitgeschakeld omdat Azure Cosmos DB ervoor zorgt dat elke schrijf bewerking duurzaam is. Azure Cosmos DB repliceert in elke regio de gegevens over de replicaset die bestaat uit vier replica's en deze replicaset- [configuratie](global-dist-under-the-hood.md) kan niet worden gewijzigd.
  
-Alle opties worden genegeerd bij het maken van de tabel, behalve gc_grace_seconds, die moet worden ingesteld op nul.
-De Keyspace en de tabel hebben een extra optie met de naam "cosmosdb_provisioned_throughput" met een minimumwaarde van 400 RU/s. Met de Keyspace-doorvoer u doorvoer delen over meerdere tabellen en is het handig voor scenario's waarin niet alle tabellen de ingerichte doorvoer gebruiken. Met de opdracht Tabel wijzigen u de ingerichte doorvoer in de regio's wijzigen. 
+Alle opties worden genegeerd bij het maken van de tabel, met uitzonde ring van gc_grace_seconds, die moeten worden ingesteld op nul.
+De spatie en tabel hebben een extra optie met de naam ' cosmosdb_provisioned_throughput ' met een minimum waarde van 400 RU/s. De door Voer van de schijf ruimte maakt het delen van de door voer over meerdere tabellen mogelijk en is handig voor scenario's waarbij de ingerichte door Voer niet wordt gebruikt voor alle tabellen. Met de opdracht ALTER TABLE kunt u de ingerichte door Voer in de regio's wijzigen. 
 
 ```
 CREATE  KEYSPACE  sampleks WITH REPLICATION = {  'class' : 'SimpleStrategy'}   AND cosmosdb_provisioned_throughput=2000;  
@@ -198,7 +198,7 @@ ALTER TABLE gks1.t1 WITH cosmosdb_provisioned_throughput=10000 ;
 
 ## <a name="usage-of-cassandra-retry-connection-policy"></a>Gebruik van het Cassandra-beleid voor opnieuw proberen
 
-Azure Cosmos DB is een resource beheerd systeem. Dit betekent dat u een bepaald aantal bewerkingen in een bepaalde seconde uitvoeren op basis van de aanvraageenheden die door de bewerkingen worden verbruikt. Als een toepassing die limiet in een bepaalde seconde overschrijdt, zijn aanvragen tariefbeperkt en worden uitzonderingen gegenereerd. De Cassandra API in Azure Cosmos DB vertaalt deze uitzonderingen naar overbelaste fouten op het Cassandra native protocol. Om ervoor te zorgen dat uw toepassing verzoeken kan onderscheppen en opnieuw proberen in geval van beperking van de snelheid, worden de [spark](https://mvnrepository.com/artifact/com.microsoft.azure.cosmosdb/azure-cosmos-cassandra-spark-helper) en de [Java-extensies](https://github.com/Azure/azure-cosmos-cassandra-extensions) verstrekt. Als u andere SDK's gebruikt om toegang te krijgen tot de Cassandra API in Azure Cosmos DB, maakt u een verbindingsbeleid om deze uitzonderingen opnieuw te proberen.
+Azure Cosmos DB is een bron systeem. Dit betekent dat u een bepaald aantal bewerkingen in een bepaalde seconde kunt uitvoeren op basis van de aanvraag eenheden die door de bewerkingen worden gebruikt. Als een toepassing die limiet in een opgegeven seconde overschrijdt, worden aanvragen op basis van een rente beperking en uitzonde ringen gegenereerd. Met de Cassandra-API in Azure Cosmos DB worden deze uitzonde ringen omgezet in overbelaste fouten op het Cassandra systeem eigen protocol. Om ervoor te zorgen dat uw toepassing aanvragen kan onderscheppen en opnieuw proberen in het geval van een limiet, worden de [Spark](https://mvnrepository.com/artifact/com.microsoft.azure.cosmosdb/azure-cosmos-cassandra-spark-helper) -en [Java](https://github.com/Azure/azure-cosmos-cassandra-extensions) -extensies gegeven. Als u andere Sdk's gebruikt om toegang te krijgen tot Cassandra-API in Azure Cosmos DB, maakt u een verbindings beleid om het opnieuw te proberen op deze uitzonde ringen.
 
 ## <a name="next-steps"></a>Volgende stappen
 

@@ -1,5 +1,5 @@
 ---
-title: Een Xamarin-app bouwen met de API van .NET en Azure Cosmos DB voor MongoDB
+title: Bouw een Xamarin-app met .NET en de API van Azure Cosmos DB voor MongoDB
 description: Deze snelstart bevat een voorbeeld van Xamarin-code dat u kunt gebruiken om verbinding te maken met de Azure Cosmos DB-API voor MongoDB en er query's op uit te voeren
 author: codemillmatt
 ms.service: cosmos-db
@@ -9,13 +9,13 @@ ms.topic: quickstart
 ms.date: 03/16/2020
 ms.author: masoucou
 ms.openlocfilehash: 98b0ddf345ebd19e2cd974db3891e88c9f72530d
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "79481684"
 ---
-# <a name="quickstart-build-a-xamarinforms-app-with-net-sdk-and-azure-cosmos-dbs-api-for-mongodb"></a>QuickStart: een Xamarin.Forms-app bouwen met de API van .NET SDK en Azure Cosmos DB voor MongoDB
+# <a name="quickstart-build-a-xamarinforms-app-with-net-sdk-and-azure-cosmos-dbs-api-for-mongodb"></a>Quick Start: een Xamarin. Forms-app maken met .NET SDK en de API van Azure Cosmos DB voor MongoDB
 
 > [!div class="op_single_selector"]
 > * [.NET](create-mongodb-dotnet.md)
@@ -34,7 +34,7 @@ In deze snelstart laten we u zien hoe u een [Cosmos-account maakt dat is geconfi
 
 Als u het voorbeeld wilt uitvoeren, hebt u [Visual Studio](https://www.visualstudio.com/downloads/) of [Visual Studio voor Mac](https://visualstudio.microsoft.com/vs/mac/) en een geldig Azure Cosmos DB-account nodig.
 
-Als je Visual Studio nog niet hebt, download je [Visual Studio 2019 Community Edition](https://www.visualstudio.com/downloads/) met de mobiele **ontwikkelmet .NET-workload** geïnstalleerd met setup.
+Als u Visual Studio nog niet hebt, downloadt u [Visual studio 2019 Community Edition](https://www.visualstudio.com/downloads/) met de **mobiele ontwikkeling met de .net** -werk belasting die is geïnstalleerd met Setup.
 
 Als u liever op een Mac werkt, download dan [Visual Studio voor Mac](https://visualstudio.microsoft.com/vs/mac/) en voer de installatie uit.
 
@@ -56,7 +56,7 @@ Download eerst de voorbeeld-app uit GitHub. Deze implementeert een takenlijst-ap
 
 # <a name="windows"></a>[Windows](#tab/windows)
 
-1. Open in Windows een opdrachtprompt of open op Mac de terminal, maak een nieuwe map met de naam git-samples en sluit vervolgens het venster.
+1. Open in Windows een opdracht prompt of op Mac de terminal openen, maak een nieuwe map met de naam Git-samples en sluit het venster.
 
     ```batch
     md "C:\git-samples"
@@ -78,7 +78,7 @@ Download eerst de voorbeeld-app uit GitHub. Deze implementeert een takenlijst-ap
     git clone https://github.com/Azure-Samples/azure-cosmos-db-mongodb-xamarin-getting-started.git
     ```
 
-Als u git niet wilt gebruiken, u het project ook [downloaden als zip-bestand](https://github.com/Azure-Samples/azure-cosmos-db-mongodb-xamarin-getting-started/archive/master.zip)
+Als u Git niet wilt gebruiken, kunt u [het project ook downloaden als een zip-bestand](https://github.com/Azure-Samples/azure-cosmos-db-mongodb-xamarin-getting-started/archive/master.zip)
 
 ## <a name="review-the-code"></a>De code bekijken
 
@@ -170,10 +170,10 @@ Ga nu terug naar Azure Portal om de verbindingsreeksinformatie op te halen en ko
 
 3. Kopieer de waarde van uw **primaire verbindingsreeks** uit de portal (met behulp van de knop Kopiëren) en maak deze de waarde van het veld **ConnectionString** in uw **APIKeys.cs**-bestand.
 
-4. Verwijder `&replicaSet=globaldb` uit de verbindingstekenreeks. U krijgt een runtime-fout als u die waarde niet uit de querytekenreeks verwijdert.
+4. Verwijder `&replicaSet=globaldb` uit het Connection String. U krijgt een runtime-fout als u die waarde niet uit de query teken reeks verwijdert.
 
 > [!IMPORTANT]
-> U moet `&replicaSet=globaldb` het sleutel/waardepaar uit de querytekenreeks van de verbindingstekenreeks verwijderen om een runtime-fout te voorkomen.
+> U moet het `&replicaSet=globaldb` sleutel/waardepaar verwijderen uit de query reeks van de Connection String om een runtime-fout te voor komen.
 
 U hebt uw app nu bijgewerkt met alle informatie die nodig is voor de communicatie met Azure Cosmos DB.
 

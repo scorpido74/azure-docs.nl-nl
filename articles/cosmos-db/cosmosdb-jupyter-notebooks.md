@@ -1,65 +1,65 @@
 ---
-title: Inleiding tot de ondersteuning voor de ingebouwde Jupyter-notitieblokken in Azure Cosmos DB (Preview)
-description: Lees hoe u de ingebouwde Jupyter-notitieblokken ondersteuning in Azure Cosmos DB gebruiken om query's interactief uit te voeren.
+title: Inleiding tot de ingebouwde Jupyter-notebook ondersteuning in Azure Cosmos DB (preview-versie)
+description: Meer informatie over hoe u de ingebouwde ondersteuning voor Jupyter-notebooks in Azure Cosmos DB kunt gebruiken om query's interactief uit te voeren.
 ms.service: cosmos-db
 ms.topic: overview
 ms.date: 09/22/2019
 author: markjbrown
 ms.author: mjbrown
 ms.openlocfilehash: 5b320485001d6cbc457d39ef193ed8c57f7161df
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "76760280"
 ---
-# <a name="built-in-jupyter-notebooks-support-in-azure-cosmos-db-preview"></a>Ondersteuning voor ingebouwde Jupyter-laptops in Azure Cosmos DB (voorbeeld)
+# <a name="built-in-jupyter-notebooks-support-in-azure-cosmos-db-preview"></a>Ingebouwde Jupyter-notebooks ondersteunen in Azure Cosmos DB (preview-versie)
 
-Jupyter notebook is een open-source webapplicatie waarmee u documenten maken en delen met live code, vergelijkingen, visualisaties en verhalende tekst. Azure Cosmos DB ondersteunt ingebouwde Jupyter-notebooks voor alle API's zoals Cassandra, MongoDB, SQL, Gremlin en Table. Met de ingebouwde notebookondersteuning voor alle Azure Cosmos DB-API's en gegevensmodellen u query's interactief uitvoeren. De Jupyter-notitieblokken worden uitgevoerd binnen de Azure Cosmos-accounts en stellen ontwikkelaars in staat om gegevensverkenning, gegevensreiniging, gegevenstransformaties, numerieke simulaties, statistische modellering, gegevensvisualisatie en machine learning uit te voeren.
+Jupyter notebook is een open-source webtoepassing waarmee u documenten kunt maken en delen met Live code, vergelijkingen, visualisaties en tekst. Azure Cosmos DB ondersteunt ingebouwde Jupyter-notebooks voor alle Api's, zoals Cassandra, MongoDB, SQL, Gremlin en Table. Met de ingebouwde ondersteuning voor notebooks voor alle Azure Cosmos DB Api's en gegevens modellen kunt u interactief query's uitvoeren. De Jupyter-notebooks worden uitgevoerd binnen de Azure Cosmos-accounts en ze stellen ontwikkel aars in staat om gegevens te verkennen, gegevens te reinigen, gegevens trans formaties, numerieke simulaties, statistische model lering, gegevens visualisatie en machine learning.
 
-![Visualisaties van Jupyter-notitieblokken in Azure Cosmos DB](./media/cosmosdb-jupyter-notebooks/cosmos-notebooks-overview.png)
+![Visualisaties van Jupyter-notebooks in Azure Cosmos DB](./media/cosmosdb-jupyter-notebooks/cosmos-notebooks-overview.png)
 
-De Jupyter-notebooks ondersteunen magische functies die de mogelijkheden van de kernel uitbreiden door extra opdrachten te ondersteunen. Cosmos-magie is een opdracht die de mogelijkheden van de Python-kernel in Jupyter-notitieblok uitbreidt, zodat u naast Apache Spark ook Azure Cosmos SQL API-query's uitvoeren. U Python- en SQL API-query's eenvoudig combineren om gegevens op te vragen en te visualiseren met behulp van uitgebreide visualisatiebibliotheken die zijn geïntegreerd met renderopdrachten.
-Azure portal integreert native Jupyter-notebookervaring in Azure Cosmos-accounts, zoals in de volgende afbeelding wordt weergegeven:
+De Jupyter-notebooks ondersteunen Magic-functies die de mogelijkheden van de kernel uitbreiden door extra opdrachten te ondersteunen. Cosmos Magic is een opdracht die de mogelijkheden van de python-kernel in Jupyter notebook uitbreidt, zodat u Azure Cosmos SQL API-query's kunt uitvoeren naast Apache Spark. U kunt python-en SQL-API-query's eenvoudig combi neren om gegevens op te vragen en te visualiseren door gebruik te maken van uitgebreide visualisatie bibliotheken die zijn geïntegreerd met render-opdrachten.
+Azure Portal Jupyter Notebook-ervaring in systeem eigen integreert in azure Cosmos-accounts, zoals wordt weer gegeven in de volgende afbeelding:
 
-![Ondersteuning voor Jupyter-laptops in Azure Cosmos DB](./media/cosmosdb-jupyter-notebooks/jupyter-notebooks-portal.png)
+![Ondersteuning voor Jupyter-notebooks in Azure Cosmos DB](./media/cosmosdb-jupyter-notebooks/jupyter-notebooks-portal.png)
 
-## <a name="benefits-of-jupyter-notebooks"></a>Voordelen van Jupyter-laptops
+## <a name="benefits-of-jupyter-notebooks"></a>Voor delen van Jupyter-notebooks
 
-Jupyter notebooks werden oorspronkelijk ontwikkeld voor data science applicaties geschreven in Python, R. Ze kunnen echter op verschillende manieren worden gebruikt voor verschillende soorten projecten, zoals:
+Jupyter-notebooks werden oorspronkelijk ontwikkeld voor data Science-toepassingen die zijn geschreven in Python, R. Ze kunnen echter op verschillende manieren worden gebruikt voor verschillende soorten projecten, zoals:
 
-* ***Gegevensvisualisaties:** Met Jupyter-notitieblokken u gegevens visualiseren in de vorm van een gedeeld notitieblok dat bepaalde gegevensset als een afbeelding weergeeft. Met Jupyter-notitieblok u visualisaties maken, deze delen en interactieve wijzigingen in de gedeelde code en gegevensset toestaan.
+* ***Gegevens visualisaties:** Met Jupyter-notebooks kunt u gegevens visualiseren in de vorm van een gedeeld notitie blok dat een aantal gegevens sets als een afbeelding weergeeft. Met Jupyter notebook kunt u visualisaties ontwerpen, ze delen en interactieve wijzigingen in de gedeelde code en gegevensset toestaan.
 
-* **Code delen:** Services zoals GitHub bieden manieren om code te delen, maar ze zijn grotendeels niet-interactief. Met een Jupyter-notitieblok u code bekijken, uitvoeren en de resultaten rechtstreeks weergeven in de Azure-portal.
+* **Code delen:** Services zoals GitHub bieden manieren om code te delen, maar ze zijn grotendeels niet-interactief. Met een Jupyter-notebook kunt u code weer geven, deze uitvoeren en de resultaten rechtstreeks in het Azure Portal weer geven.
 
-* **Live interacties met code:** Jupyter notebook code is dynamisch; het kan stapsgewijs worden bewerkt en stapsgewijs worden uitgevoerd in realtime. Notitieblokken kunnen ook gebruikersbesturingselementen (bijvoorbeeld schuifregelaars of tekstinvoervelden) insluiten die kunnen worden gebruikt als invoerbronnen voor code, demo's of Proof of Concepts (POCs).
+* **Live interacties met code:** Jupyter-notebook code is dynamisch; het kan worden bewerkt en stapsgewijs in realtime worden uitgevoerd. Notebooks kunnen ook gebruikers besturings elementen (bijvoorbeeld schuif regelaars of tekst invoer velden) insluiten die kunnen worden gebruikt als invoer bronnen voor code, demo's of concepten (POCs).
 
-* **Documentatie van codemonsters en resultaten van gegevensverkenning:** Als u een stukje code hebt en u wilt regel voor regel uitleggen hoe het werkt in Azure Cosmos DB, met realtime uitvoer onderweg, u het insluiten in een Jupyter-notitieblok. De code blijft volledig functioneel. U tegelijkertijd interactiviteit toevoegen met de documentatie.
+* **Documentatie voor code voorbeelden en resultaten van het verkennen van gegevens:** Als u een stukje code hebt en u regel-voor-line wilt uitleggen hoe het werkt in Azure Cosmos DB, kunt u de informatie in realtime-uitvoer insluiten in een Jupyter Notebook. De code blijft volledig functioneel. U kunt gelijktijdig interactief samen met de documentatie toevoegen.
 
-* **Cosmos magische commando's:** In Jupyter-notitieblokken u aangepaste magische opdrachten voor Azure Cosmos DB gebruiken om interactief computergebruik gemakkelijker te maken. Bijvoorbeeld de %%sql-magie waarmee je een Cosmos-container met SQL API rechtstreeks in een notitieblok opvragen.
+* **Cosmos Magic-opdrachten:** In Jupyter-notebooks kunt u aangepaste Magic-opdrachten voor Azure Cosmos DB gebruiken om interactief computer gemak te maken. Bijvoorbeeld:%% SQL Magic waarmee een Cosmos-container kan worden doorzocht met behulp van SQL API rechtstreeks in een notitie blok.
 
-* **Alles op één plek:** Jupyter-notebooks combineren code, rijke tekst, afbeeldingen, video's, animaties, wiskundige vergelijkingen, plots, kaarten, interactieve figuren, widgets en grafische gebruikersinterfaces tot één document.
+* **Alle in één locatie omgeving:** Jupyter-notebooks combi neren code, RTF-tekst, afbeeldingen, Video's, animaties, wiskundige vergelijkingen, grafieken, kaarten, interactieve cijfers, widgets en grafische gebruikers interfaces tot één document.
 
-## <a name="components-of-a-jupyter-notebook"></a>Onderdelen van een Jupyter-laptop
+## <a name="components-of-a-jupyter-notebook"></a>Onderdelen van een Jupyter-notebook
 
-Jupyter-notebooks kunnen verschillende soorten componenten bevatten, elk ingedeeld in afzonderlijke blokken:
+Jupyter-notebooks kunnen diverse soorten onderdelen bevatten, die zijn ingedeeld in discrete blokken:
 
-* **Tekst en HTML:** Platte tekst, of tekst geannoteerd in de markdown syntaxis om HTML te genereren, kan op elk moment in het document worden ingevoegd. CSS-styling kan ook inline worden opgenomen of worden toegevoegd aan de sjabloon die wordt gebruikt om het notitieblok te genereren.
+* **Tekst en HTML:** Tekst zonder opmaak of tekst die in de syntaxis van de prijs opmaakt om HTML te genereren, kan op elk gewenst moment in het document worden ingevoegd. CSS-opmaak kan ook inline worden opgenomen of worden toegevoegd aan de sjabloon die wordt gebruikt voor het genereren van het notitie blok.
 
-* **Code en uitvoer:** Jupyter-notebooks ondersteunen Python-code. De resultaten van de uitgevoerde code worden onmiddellijk na de codeblokken weergegeven en de codeblokken kunnen meerdere keren worden uitgevoerd in elke gewenste volgorde.
+* **Code en uitvoer:** Jupyter-notebooks ondersteunen python-code. De resultaten van de uitgevoerde code worden direct na de code blokken weer gegeven en de code blokken kunnen in elke gewenste volg orde meerdere keren worden uitgevoerd.
 
-* **Visualisaties:** Afbeeldingen en grafieken kunnen worden gegenereerd uit de code, met behulp van modules zoals Matplotlib, Plotly of Bokeh. Net als bij de uitvoer worden deze visualisaties inline weergegeven naast de code die ze genereert.
+* **Visualisaties:** Afbeeldingen en grafieken kunnen worden gegenereerd op basis van de code, met behulp van modules als matplotlib, plots of bokeh. Net als bij de uitvoer worden deze visualisaties weer gegeven naast de code die ze genereert.
 
-* **Multimedia:** Omdat Jupyter notebook is gebouwd op de webtechnologie, kan het alle soorten multimedia weergeven die op een webpagina worden ondersteund. U ze in een notitieblok opnemen als HTML-elementen, of `IPython.display` u ze programmatisch genereren met behulp van de module.
+* **Multi media:** Omdat Jupyter notebook is gebaseerd op de webtechnologie, kunnen alle typen multi media worden weer gegeven die op een webpagina worden ondersteund. U kunt deze toevoegen aan een notitie blok als HTML-elementen of u kunt deze via een programma genereren met `IPython.display` behulp van de module.
 
-* **Gegevens:** Gegevens uit Azure Cosmos-containers en resultaten van de query's kunnen programmatisch worden geïmporteerd in een Jupyter-notitieblok. Bijvoorbeeld door code op te nemen in het notitieblok om de gegevens op te vragen met behulp van een van de Cosmos DB API's of native ingebouwde Apache Spark.
+* **Gegevens:** Gegevens uit Azure Cosmos-containers en resultaten van de query's kunnen programmatisch in een Jupyter-notebook worden geïmporteerd. Bijvoorbeeld door code in het notitie blok op te nemen om de gegevens op te vragen met behulp van een van de Cosmos DB Api's of de systeem eigen ingebouwde Apache Spark.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie de volgende artikelen om aan de slag te gaan met ingebouwde Jupyter-notitieblokken in Azure Cosmos DB:
+Raadpleeg de volgende artikelen om aan de slag te gaan met ingebouwde Jupyter-notebooks in Azure Cosmos DB:
 
-* [Notitieblokken inschakelen in een Azure Cosmos-account](enable-notebooks.md)
-* [Notitieblokfuncties en -opdrachten gebruiken](use-notebook-features-and-commands.md)
+* [Notitie blokken in een Azure Cosmos-account inschakelen](enable-notebooks.md)
+* [Functies en opdrachten van notitie blok gebruiken](use-notebook-features-and-commands.md)
 
 
 

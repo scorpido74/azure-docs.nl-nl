@@ -8,10 +8,10 @@ ms.date: 10/1/2019
 author: sivethe
 ms.author: sivethe
 ms.openlocfilehash: 670020d276b9d4a868f24eb4a3f522581060adca
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "72754981"
 ---
 # <a name="azure-cosmos-dbs-api-for-mongodb"></a>Azure Cosmos DB-API voor MongoDB
@@ -22,7 +22,7 @@ ms.locfileid: "72754981"
 
 Met Azure Cosmos DB-service worden wire-protocollen geïmplementeerd van veelgebruikte NoSQL-databases, zoals Cassandra, MongoDB, Gremlin en Azure Table Storage. Door direct en effectief binnen Cosmos DB een systeemeigen implementatie van de wire-protocollen uit te voeren, kunnen de bestaande client-SDK's, -stuurprogramma's en -hulpprogramma's van de NoSQL-databases transparant met Cosmos DB werken. Cosmos DB maakt geen gebruik van broncode van de databases om wire-compatibele API's voor een van de NoSQL-databases te leveren.
 
-Nieuwe accounts die zijn gemaakt met de API van Azure Cosmos DB voor MongoDB, zijn standaard compatibel met versie 3.6 van het MongoDB-draadprotocol. Elke MongoDB-clientdriver die deze protocolversie begrijpt, moet native verbinding kunnen maken met Cosmos DB.
+Nieuwe accounts die zijn gemaakt met de API van Azure Cosmos DB voor MongoDB zijn standaard compatibel met versie 3,6 van het MongoDB wire-protocol. Elk MongoDB-client stuur programma dat deze Protocol versie begrijpt, moet in staat zijn om met Cosmos DB systeem eigen verbinding te maken.
 
 ![Azure Cosmos DB-API voor MongoDB](./media/mongodb-introduction/cosmosdb-mongodb.png)
 
@@ -38,7 +38,7 @@ De belangrijkste voordelen van Cosmos DB als volledig beheerde, wereldwijd gedis
 
 ## <a name="cosmos-dbs-api-for-mongodb"></a>API van Cosmos DB voor MongoDB
 
-Volg de quickstarts om een Azure Cosmos-account te maken en migreer uw bestaande MongoDB-toepassing om Azure Cosmos DB te gebruiken of een nieuw account te bouwen:
+Volg de Quick starts om een Azure Cosmos-account te maken en uw bestaande MongoDB-toepassing te migreren om Azure Cosmos DB te gebruiken of een nieuwe te bouwen:
 
 * [Een bestaande MongoDB Node.js-web-app migreren](create-mongodb-nodejs.md).
 * [Met de API van Azure Cosmos DB voor MongoDB en de .NET-SDK een web-app maken](create-mongodb-dotnet.md).
@@ -54,4 +54,4 @@ Hier volgen enkele aanwijzingen om aan de slag te gaan:
 * Verbinding maken met een Cosmos-account met behulp van [Robo 3T](mongodb-robomongo.md).
 * Meer informatie over het [configureren van leesvoorkeuren voor wereldwijd gedistribueerde apps](../cosmos-db/tutorial-global-distribution-mongodb.md).
 
-<sup>Opmerking: In dit artikel wordt een functie van Azure Cosmos DB beschreven die compatibiliteit met het protocol voor draad met MongoDB-databases biedt. Microsoft voert geen MongoDB-databases uit om deze service te bieden. Azure Cosmos DB is niet aangesloten bij MongoDB, Inc.</sup>
+<sup>Opmerking: in dit artikel wordt een functie van Azure Cosmos DB beschreven die compatibiliteit met MongoDB-data bases biedt. Micro soft voert geen MongoDB-data bases uit om deze service te leveren. Azure Cosmos DB is niet gekoppeld aan MongoDB, Inc.</sup>

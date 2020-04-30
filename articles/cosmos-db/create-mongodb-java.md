@@ -1,6 +1,6 @@
 ---
-title: 'Snelstart: een web-app bouwen met de Azure Cosmos DB API voor Mongo DB en Java SDK'
-description: Leer een Java-codevoorbeeld te maken waarmee u verbinding maken en query's maken met behulp van de API van Azure Cosmos DB voor MongoDB.
+title: 'Quick Start: een web-app bouwen met de Azure Cosmos DB-API voor Mongo DB en Java SDK'
+description: Meer informatie over het maken van een Java-code voorbeeld dat u kunt gebruiken om verbinding te maken met en query's uit te zoeken met de API van Azure Cosmos DB voor MongoDB.
 author: markjbrown
 ms.author: mjbrown
 ms.service: cosmos-db
@@ -10,13 +10,13 @@ ms.topic: quickstart
 ms.date: 12/26/2018
 ms.custom: seo-java-august2019, seo-java-september2019
 ms.openlocfilehash: 35c6944ddcfac1553ffb2c1cc28472f2a56d4515
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "77061699"
 ---
-# <a name="quickstart-create-a-console-app-with-java-and-the-mongodb-api-in-azure-cosmos-db"></a>Snelstart: maak een console-app met Java en de MongoDB-API in Azure Cosmos DB
+# <a name="quickstart-create-a-console-app-with-java-and-the-mongodb-api-in-azure-cosmos-db"></a>Quick Start: een console-app maken met Java en de MongoDB-API in Azure Cosmos DB
 
 > [!div class="op_single_selector"]
 > * [.NET](create-mongodb-dotnet.md)
@@ -27,13 +27,13 @@ ms.locfileid: "77061699"
 > * [Golang](create-mongodb-golang.md)
 >  
 
-In deze quickstart maakt en beheert u een Azure Cosmos DB voor MongoDB API-account vanuit de Azure-portal en voegt u gegevens toe met behulp van een Java SDK-app die is gekloond van GitHub. Azure Cosmos DB is een databaseservice met meerdere modellen waarmee u snel document-, tabel-, sleutelwaarde- en grafiekdatabases maken en opvragen met globale distributie- en horizontale schaalmogelijkheden.
+In deze Quick Start maakt en beheert u een Azure Cosmos DB voor het MongoDB-API-account van de Azure Portal en voegt u gegevens toe met behulp van een Java SDK-app die is gekloond van GitHub. Azure Cosmos DB is een database service met meerdere modellen waarmee u snel documenten, tabellen, sleutel waarden en grafische data bases met globale distributie en mogelijkheden voor horizontale schaal kunt maken en er query's op uitvoert.
 
 ## <a name="prerequisites"></a>Vereisten
-- Een Azure-account met een actief abonnement. [Maak er gratis een.](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) Of [probeer Azure Cosmos DB gratis](https://azure.microsoft.com/try/cosmosdb/) zonder Azure-abonnement. U de [Azure Cosmos DB](https://aka.ms/cosmosdb-emulator) Emulator `.mongodb://localhost:C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM+4QDU5DE2nQ9nDuVTqobD4b8mGGyPMbIZnqyMsEcaGQy67XIw/Jw==@localhost:10255/admin?ssl=true`ook gebruiken met de verbindingstekenreeks.
-- [Java Development Kit (JDK) versie 8](https://www.azul.com/downloads/azure-only/zulu/?&version=java-8-lts&architecture=x86-64-bit&package=jdk). 
-- [Maven.](https://maven.apache.org/download.cgi) Of `apt-get install maven` voer uit om Maven te installeren.
-- [Git.](https://git-scm.com/downloads) 
+- Een Azure-account met een actief abonnement. [Maak er gratis een](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio). Of [Probeer gratis Azure Cosmos DB](https://azure.microsoft.com/try/cosmosdb/) zonder een Azure-abonnement. U kunt ook de [Azure Cosmos DB emulator](https://aka.ms/cosmosdb-emulator) gebruiken met de Connection String `.mongodb://localhost:C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM+4QDU5DE2nQ9nDuVTqobD4b8mGGyPMbIZnqyMsEcaGQy67XIw/Jw==@localhost:10255/admin?ssl=true`.
+- [Jdk-versie 8 (Java Development Kit)](https://www.azul.com/downloads/azure-only/zulu/?&version=java-8-lts&architecture=x86-64-bit&package=jdk). 
+- [Maven](https://maven.apache.org/download.cgi). Of Voer `apt-get install maven` uit om Maven te installeren.
+- [Git](https://git-scm.com/downloads). 
 
 ## <a name="create-a-database-account"></a>Een databaseaccount maken
 
@@ -41,7 +41,7 @@ In deze quickstart maakt en beheert u een Azure Cosmos DB voor MongoDB API-accou
 
 ## <a name="add-a-collection"></a>Een verzameling toevoegen
 
-Geef uw nieuwe database **een naam**en uw nieuwe verzameling **coll**.
+Geef uw nieuwe Data Base- **db**een naam en uw nieuwe verzamelings- **collo**.
 
 [!INCLUDE [cosmos-db-create-collection](../../includes/cosmos-db-create-collection.md)] 
 
@@ -73,9 +73,9 @@ We gaan nu een app klonen vanaf GitHub, de verbindingsreeks instellen en de app 
 
 Deze stap is optioneel. Als u wilt weten hoe de databaseresources in de code worden gemaakt, kunt u de volgende codefragmenten bekijken. Als u deze stap wilt overslaan, kunt u verdergaan naar [Uw verbindingsreeks bijwerken](#update-your-connection-string). 
 
-De volgende fragmenten zijn allemaal afkomstig uit het *Program.java-bestand.*
+De volgende code fragmenten zijn allemaal afkomstig uit het bestand *Program. java* .
 
-Deze console app maakt gebruik van de [MongoDB Java driver](https://docs.mongodb.com/ecosystem/drivers/java/). 
+Deze console-app maakt gebruik van het [MongoDb Java-stuur programma](https://docs.mongodb.com/ecosystem/drivers/java/). 
 
 * De DocumentClient wordt geïnitialiseerd.
 
@@ -111,9 +111,9 @@ Deze console app maakt gebruik van de [MongoDB Java driver](https://docs.mongodb
 
 Ga nu terug naar Azure Portal om de verbindingsreeksinformatie op te halen en kopieer deze in de app.
 
-1. Selecteer in uw Azure Cosmos DB-account **Snel starten**, selecteer **Java**en kopieer vervolgens de verbindingstekenreeks naar uw klembord.
+1. Selecteer in uw Azure Cosmos DB-account **Quick Start**, selecteer **Java**en kopieer vervolgens de connection string naar het klem bord.
 
-2. Open het *bestand Program.java* en vervang het argument voor de MongoClientURI-constructor door de verbindingstekenreeks. U hebt uw app nu bijgewerkt met alle informatie die nodig is voor de communicatie met Azure Cosmos DB. 
+2. Open het bestand *Program. java* , vervang het argument door de MongoClientURI-constructor met de Connection String. U hebt uw app nu bijgewerkt met alle informatie die nodig is voor de communicatie met Azure Cosmos DB. 
     
 ## <a name="run-the-console-app"></a>De app console uitvoeren
 
@@ -121,7 +121,7 @@ Ga nu terug naar Azure Portal om de verbindingsreeksinformatie op te halen en ko
 
 2. Voer `mvn exec:java -D exec.mainClass=GetStarted.Program` uit op een terminal om uw Java-toepassing te starten.
 
-U [Robomongo](mongodb-robomongo.md) / [Studio 3T](mongodb-mongochef.md) nu gebruiken om deze nieuwe gegevens op te vragen, aan te passen en ermee te werken.
+U kunt nu [Robomongo](mongodb-robomongo.md) / [Studio 3T gebruiken](mongodb-mongochef.md) gebruiken om deze nieuwe gegevens te zoeken, te wijzigen en ermee te werken.
 
 ## <a name="review-slas-in-the-azure-portal"></a>SLA’s bekijken in Azure Portal
 
@@ -133,7 +133,7 @@ U [Robomongo](mongodb-robomongo.md) / [Studio 3T](mongodb-mongochef.md) nu gebru
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze quickstart hebt u geleerd hoe u een Azure Cosmos DB API voor Mongo DB-account maakt, een database en container toevoegt met Behulp van Data Explorer en gegevens toevoegen met een Java-console-app. Nu kunt u aanvullende gegevens in uw Cosmos-database importeren. 
+In deze Quick Start hebt u geleerd hoe u een Azure Cosmos DB-API maakt voor Mongo DB-account, een Data Base en container toevoegt met behulp van Data Explorer en gegevens toevoegt met behulp van een Java-Console-app. Nu kunt u aanvullende gegevens in uw Cosmos-database importeren. 
 
 > [!div class="nextstepaction"]
 > [MongoDB-gegevens importeren in Azure Cosmos DB](mongodb-migrate.md)

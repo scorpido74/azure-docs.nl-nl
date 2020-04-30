@@ -1,6 +1,6 @@
 ---
 title: Azure Service Bus-onderwerpen gebruiken met PHP
-description: In deze zelfstudie leert u hoe u Azure Service Bus-onderwerpen en -abonnementen gebruikt vanuit een PHP-toepassing.
+description: In deze zelf studie leert u hoe u Azure Service Bus-onderwerpen en-abonnementen kunt gebruiken vanuit een PHP-toepassing.
 services: service-bus-messaging
 documentationcenter: php
 author: axisc
@@ -15,45 +15,45 @@ ms.topic: quickstart
 ms.date: 01/24/2020
 ms.author: aschhab
 ms.openlocfilehash: 92f25f4bdac4942478c93f717c81eadd2c2f5b4a
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "76760671"
 ---
-# <a name="quickstart-how-to-use-service-bus-topics-and-subscriptions-with-php"></a>Quickstart: Service Bus-onderwerpen en abonnementen gebruiken met PHP
+# <a name="quickstart-how-to-use-service-bus-topics-and-subscriptions-with-php"></a>Snelstartgids: Service Bus-onderwerpen en-abonnementen gebruiken met PHP
 
 [!INCLUDE [service-bus-selector-topics](../../includes/service-bus-selector-topics.md)]
 
-In dit artikel ziet u hoe u servicebus-onderwerpen en abonnementen gebruiken. De voorbeelden zijn geschreven in PHP en gebruiken de [Azure SDK voor PHP.](https://github.com/Azure/azure-sdk-for-php) De behandelde scenario's omvatten:
+In dit artikel wordt beschreven hoe u Service Bus-onderwerpen en-abonnementen gebruikt. De voor beelden zijn geschreven in PHP en gebruiken de [Azure SDK voor php](https://github.com/Azure/azure-sdk-for-php). De volgende scenario's zijn van toepassing:
 
 - Onderwerpen en abonnementen maken 
-- Abonnementsfilters maken 
-- Berichten naar een onderwerp verzenden 
+- Abonnements filters maken 
+- Berichten verzenden naar een onderwerp 
 - Berichten ontvangen van een abonnement
 - Onderwerpen en abonnementen verwijderen
 
 ## <a name="prerequisites"></a>Vereisten
-1. Een Azure-abonnement. U hebt een Azure-account nodig om deze zelfstudie te voltooien. U uw [Visual Studio- of MSDN-abonneevoordelen](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A85619ABF) activeren of u aanmelden voor een [gratis account.](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF)
-2. Volg stappen in de [Quickstart: gebruik de Azure-portal om een servicebusonderwerp en abonnementen op het onderwerp te maken](service-bus-quickstart-topics-subscriptions-portal.md) om een **naamruimte** voor servicebus te maken en de **verbindingstekenreeks op te**halen.
+1. Een Azure-abonnement. U hebt een Azure-account nodig om deze zelfstudie te voltooien. U kunt de [voor delen van uw Visual Studio-of MSDN-abonnee](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A85619ABF) activeren of zich aanmelden voor een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF).
+2. Volg de stappen in de [Snelstartgids: gebruik de Azure Portal om een service bus onderwerp en abonnementen aan het onderwerp te maken](service-bus-quickstart-topics-subscriptions-portal.md) om een service bus **naam ruimte** te maken en de **Connection String**op te halen.
 
     > [!NOTE]
-    > Je maakt een **topic** en een **abonnement op** het onderwerp door **PHP** in deze quickstart te gebruiken. 
+    > U maakt een **onderwerp** en een **abonnement** op het onderwerp met behulp van **php** in deze Quick Start. 
 
 ## <a name="create-a-php-application"></a>Een PHP-toepassing maken
-De enige vereiste voor het maken van een PHP-toepassing die toegang heeft tot de Azure Blob-service is om referentieklassen in de [Azure SDK voor PHP](https://github.com/Azure/azure-sdk-for-php) vanuit uw code te gebruiken. U alle ontwikkeltools gebruiken om uw toepassing of Kladblok te maken.
+De enige vereiste voor het maken van een PHP-toepassing die toegang heeft tot de Azure-Blob service, is door te verwijzen naar klassen in de [Azure SDK voor php](https://github.com/Azure/azure-sdk-for-php) vanuit uw code. U kunt alle ontwikkel hulpprogramma's gebruiken om uw toepassing of Klad blok te maken.
 
 > [!NOTE]
-> Uw PHP-installatie moet ook de [OpenSSL-extensie](https://php.net/openssl) hebben geïnstalleerd en ingeschakeld.
+> Voor de PHP-installatie moet ook de [openssl-extensie](https://php.net/openssl) zijn geïnstalleerd en ingeschakeld.
 > 
 > 
 
-In dit artikel wordt beschreven hoe u servicefuncties gebruikt die lokaal binnen een PHP-toepassing kunnen worden aangeroepen of in code die wordt uitgevoerd binnen een Azure-webrol, werknemersrol of website.
+In dit artikel wordt beschreven hoe u Service functies gebruikt die in een PHP-toepassing lokaal kunnen worden aangeroepen, of in code die wordt uitgevoerd binnen een Azure-webrole,-werk functie of-website.
 
-## <a name="get-the-azure-client-libraries"></a>De Azure-clientbibliotheken oppakken
+## <a name="get-the-azure-client-libraries"></a>De Azure-client bibliotheken ophalen
 
-### <a name="install-via-composer"></a>Installeren via componist
-1. Maak een bestand met de naam **composer.json** in de hoofdmap van uw project en voeg er de volgende code aan toe:
+### <a name="install-via-composer"></a>Installeren via Composer
+1. Maak een bestand met de naam **Composer. json** in de hoofdmap van het project en voeg de volgende code toe:
    
     ```json
     {
@@ -62,23 +62,23 @@ In dit artikel wordt beschreven hoe u servicefuncties gebruikt die lokaal binnen
       }
     }
     ```
-2. Download **[composer.phar][composer-phar]** in uw projectwortel.
-3. Een opdrachtprompt openen en de volgende opdracht uitvoeren in de projecthoofdmap
+2. Down load **[Composer. Phar] [Composer-Phar]** in de hoofdmap van het project.
+3. Open een opdracht prompt en voer de volgende opdracht uit in de project root
    
     ```
     php composer.phar install
     ```
 
-## <a name="configure-your-application-to-use-service-bus"></a>Uw toepassing configureren om Service Bus te gebruiken
-Ga als u de API's van de ServiceBus gebruiken:
+## <a name="configure-your-application-to-use-service-bus"></a>Uw toepassing configureren voor het gebruik van Service Bus
+De Service Bus-Api's gebruiken:
 
-1. Verwijs naar het autoloaderbestand met de [require_once-instructie.][require-once]
-2. Verwijs naar alle klassen die u zou kunnen gebruiken.
+1. Verwijs naar het autoloader-bestand met behulp van de [require_once][require-once] -instructie.
+2. Verwijs naar alle klassen die u kunt gebruiken.
 
-In het volgende voorbeeld ziet u hoe u het bestand voor autoloader opneemt en verwijst naar de klasse **ServiceBusService.**
+In het volgende voor beeld ziet u hoe u het autoloader-bestand opneemt en naar de klasse **ServiceBusService** verwijst.
 
 > [!NOTE]
-> In dit voorbeeld (en andere voorbeelden in dit artikel) wordt ervan uitgegaan dat u de PHP-clientbibliotheken voor Azure via Composer hebt geïnstalleerd. Als u de bibliotheken handmatig of als EEN PEAR-pakket hebt geïnstalleerd, moet u verwijzen naar het **windowsAzure.php-autoloaderbestand.**
+> In dit voor beeld (en andere voor beelden in dit artikel) wordt ervan uitgegaan dat u de PHP-client bibliotheken voor Azure hebt geïnstalleerd via Composer. Als u de bibliotheken hand matig of als een peer-pakket hebt geïnstalleerd, moet u verwijzen naar het autoloader-bestand **WindowsAzure. php** .
 > 
 > 
 
@@ -87,22 +87,22 @@ require_once 'vendor/autoload.php';
 use WindowsAzure\Common\ServicesBuilder;
 ```
 
-In de volgende voorbeelden `require_once` wordt de instructie altijd weergegeven, maar alleen naar de klassen die nodig zijn voor het voorbeeld om uit te voeren, wordt verwezen.
+In de volgende voor beelden wordt `require_once` de instructie altijd weer gegeven, maar alleen de klassen waarnaar het voor beeld moet worden uitgevoerd, worden verwezen.
 
-## <a name="set-up-a-service-bus-connection"></a>Een ServiceBus-verbinding instellen
-Als u een Service Bus-client wilt instantiëren, moet u eerst een geldige verbindingstekenreeks in deze indeling hebben:
+## <a name="set-up-a-service-bus-connection"></a>Een Service Bus verbinding instellen
+Als u een Service Bus-client wilt instantiëren, moet u eerst een geldig connection string in deze indeling hebben:
 
 ```
 Endpoint=[yourEndpoint];SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=[Primary Key]
 ```
 
-Waar `Endpoint` is meestal van `https://[yourNamespace].servicebus.windows.net`het formaat .
+Waar `Endpoint` bevindt zich doorgaans `https://[yourNamespace].servicebus.windows.net`in de indeling.
 
-Als u een Azure-serviceclient `ServicesBuilder` wilt maken, moet u de klasse gebruiken. U kunt:
+Als u een Azure-serviceclient wilt maken, moet u `ServicesBuilder` de-klasse gebruiken. U kunt het volgende doen:
 
-* Geef de verbindingstekenreeks er rechtstreeks aan door.
-* Gebruik de **CCM (CloudConfigurationManager)** om meerdere externe bronnen voor de verbindingstekenreeks te controleren:
-  * Standaard wordt het geleverd met ondersteuning voor een externe bron - omgevingsvariabelen.
+* Geef het connection string rechtstreeks door aan het bestand.
+* Gebruik de **CloudConfigurationManager (CCM)** om meerdere externe bronnen voor de Connection String te controleren:
+  * Standaard wordt er ondersteuning geboden voor één externe bron-omgevings variabelen.
   * U kunt nieuwe bronnen toevoegen door de klasse `ConnectionStringSource` uit te breiden.
 
 In de voorbeelden die hier worden beschreven, wordt de verbindingsreeks rechtstreeks doorgegeven.
@@ -118,9 +118,9 @@ $serviceBusRestProxy = ServicesBuilder::getInstance()->createServiceBusService($
 ```
 
 ## <a name="create-a-topic"></a>Een onderwerp maken
-U beheerbewerkingen uitvoeren voor `ServiceBusRestProxy` Service Bus-onderwerpen via de klas. Een `ServiceBusRestProxy` object wordt gebouwd `ServicesBuilder::createServiceBusService` via de fabrieksmethode met een geschikte verbindingstekenreeks die de tokenmachtigingen inkapselt om het te beheren.
+U kunt beheer bewerkingen uitvoeren voor Service Bus onderwerpen via de `ServiceBusRestProxy` -klasse. Een `ServiceBusRestProxy` object wordt samengesteld via de `ServicesBuilder::createServiceBusService` fabrieks methode met een geschikte Connection String die de token machtigingen voor het beheer van de sleutel bevat.
 
-In het volgende voorbeeld ziet u `ServiceBusRestProxy` hoe `ServiceBusRestProxy->createTopic` u een `mytopic` gesprek `MySBNamespace` kunt instantiëren en aanroepen om een onderwerp te maken dat binnen een naamruimte wordt genoemd:
+In het volgende voor beeld ziet u hoe `ServiceBusRestProxy` u een `ServiceBusRestProxy->createTopic` aanroept om een onderwerp `mytopic` te maken `MySBNamespace` met de naam in een naam ruimte:
 
 ```php
 require_once 'vendor/autoload.php';
@@ -148,15 +148,15 @@ catch(ServiceException $e){
 ```
 
 > [!NOTE]
-> U `listTopics` de `ServiceBusRestProxy` methode voor objecten gebruiken om te controleren of er al een onderwerp met een opgegeven naam bestaat binnen een servicenaamruimte.
+> U kunt de `listTopics` methode voor `ServiceBusRestProxy` objecten gebruiken om te controleren of een onderwerp met een opgegeven naam al bestaat in een service naam ruimte.
 > 
 > 
 
 ## <a name="create-a-subscription"></a>Een abonnement maken
-Onderwerpabonnementen worden ook `ServiceBusRestProxy->createSubscription` gemaakt met de methode. Abonnementen hebben een naam en kunnen een optioneel filter hebben waarmee de verzameling berichten wordt beperkt die aan de virtuele wachtrij van het abonnement wordt doorgegeven.
+Er worden ook abonnementen van het onderwerp `ServiceBusRestProxy->createSubscription` gemaakt met de-methode. Abonnementen hebben een naam en kunnen een optioneel filter hebben waarmee de verzameling berichten wordt beperkt die aan de virtuele wachtrij van het abonnement wordt doorgegeven.
 
 ### <a name="create-a-subscription-with-the-default-matchall-filter"></a>Een abonnement maken met het standaardfilter (MatchAll)
-Als er geen filter is opgegeven wanneer een nieuw abonnement wordt gemaakt, wordt het **Filter MatchAll** (standaard) gebruikt. Wanneer het filter **MatchAll** wordt gebruikt, worden alle berichten die naar het onderwerp worden gepubliceerd, in de virtuele wachtrij van het abonnement geplaatst. In het volgende voorbeeld `mysubscription` wordt een abonnement gemaakt met de naam en wordt het standaard **filter MatchAll** gebruikt.
+Als er geen filter is opgegeven bij het maken van een nieuw abonnement, wordt het **MatchAll** -filter (standaard) gebruikt. Wanneer het filter **MatchAll** wordt gebruikt, worden alle berichten die naar het onderwerp worden gepubliceerd, in de virtuele wachtrij van het abonnement geplaatst. In het volgende voor beeld wordt een `mysubscription` abonnement gemaakt met de naam en wordt het standaard **MatchAll** -filter gebruikt.
 
 ```php
 require_once 'vendor/autoload.php';
@@ -184,14 +184,14 @@ catch(ServiceException $e){
 ```
 
 ### <a name="create-subscriptions-with-filters"></a>Abonnementen met filters maken
-U kunt ook filters instellen waarmee u kunt opgeven welke berichten die naar een onderwerp worden verzonden, moeten worden weergegeven in een bepaald onderwerpabonnement. Het meest flexibele type filter dat wordt ondersteund door abonnementen is het [SqlFilter](/dotnet/api/microsoft.servicebus.messaging.sqlfilter), dat een subset van SQL92 implementeert. SQL-filters worden uitgevoerd voor de eigenschappen van de berichten die worden gepubliceerd naar het onderwerp. Zie [SqlFilter.SqlExpression Eigenschap sqlfilter.SqlExpression][sqlfilter]voor meer informatie over SqlFilters.
+U kunt ook filters instellen waarmee u kunt opgeven welke berichten die naar een onderwerp worden verzonden, moeten worden weergegeven in een bepaald onderwerpabonnement. Het meest flexibele type filter dat wordt ondersteund door abonnementen is de [SqlFilter](/dotnet/api/microsoft.servicebus.messaging.sqlfilter), waarmee een SUBSET van SQL92 wordt geïmplementeerd. SQL-filters worden uitgevoerd voor de eigenschappen van de berichten die worden gepubliceerd naar het onderwerp. Zie de [eigenschap SqlFilter. SqlExpression][sqlfilter]voor meer informatie over SqlFilters.
 
 > [!NOTE]
-> Elke regel op een abonnement verwerkt binnenkomende berichten onafhankelijk van elkaar en voegt hun resultaatberichten toe aan het abonnement. Bovendien heeft elk nieuw abonnement een **standaardregelobject** met een filter dat alle berichten van het onderwerp aan het abonnement toevoegt. Als u alleen berichten wilt ontvangen die overeenkomen met uw filter, moet u de standaardregel verwijderen. U de standaardregel `ServiceBusRestProxy->deleteRule` verwijderen met behulp van de methode.
+> Met elke regel op een abonnement worden inkomende berichten onafhankelijk verwerkt en worden de bijbehorende resultaat berichten toegevoegd aan het abonnement. Daarnaast heeft elk nieuw abonnement een standaard **regel** object met een filter waarmee alle berichten van het onderwerp aan het abonnement worden toegevoegd. Als u alleen berichten wilt ontvangen die overeenkomen met uw filter, moet u de standaard regel verwijderen. U kunt de standaard regel verwijderen met behulp `ServiceBusRestProxy->deleteRule` van de-methode.
 > 
 > 
 
-In het volgende voorbeeld `HighMessages` wordt een abonnement gemaakt met de naam `MessageNumber` **SqlFilter** dat alleen berichten selecteert met een aangepaste eigenschap groter dan 3. Zie [Berichten naar een onderwerp verzenden](#send-messages-to-a-topic) voor informatie over het toevoegen van aangepaste eigenschappen aan berichten.
+In het volgende voor beeld wordt een `HighMessages` abonnement gemaakt met de naam met een **SqlFilter** die alleen berichten `MessageNumber` selecteert die een aangepaste eigenschap hebben die groter is dan 3. Zie [berichten verzenden naar een onderwerp](#send-messages-to-a-topic) voor informatie over het toevoegen van aangepaste eigenschappen aan berichten.
 
 ```php
 $subscriptionInfo = new SubscriptionInfo("HighMessages");
@@ -204,9 +204,9 @@ $ruleInfo->withSqlFilter("MessageNumber > 3");
 $ruleResult = $serviceBusRestProxy->createRule("mytopic", "HighMessages", $ruleInfo);
 ```
 
-Deze code vereist het gebruik van `WindowsAzure\ServiceBus\Models\SubscriptionInfo`een extra naamruimte: .
+Voor deze code is het gebruik van een extra naam `WindowsAzure\ServiceBus\Models\SubscriptionInfo`ruimte vereist:.
 
-In het volgende voorbeeld wordt `LowMessages` ook `SqlFilter` een abonnement gemaakt met de `MessageNumber` naam: een abonnement dat alleen berichten selecteert met een eigenschap die kleiner is dan of gelijk is aan 3.
+Op dezelfde manier wordt met het volgende voor beeld `LowMessages` een abonnement `SqlFilter` gemaakt met de naam die alleen berichten `MessageNumber` selecteert die een eigenschap hebben die kleiner is dan of gelijk is aan 3.
 
 ```php
 $subscriptionInfo = new SubscriptionInfo("LowMessages");
@@ -219,10 +219,10 @@ $ruleInfo->withSqlFilter("MessageNumber <= 3");
 $ruleResult = $serviceBusRestProxy->createRule("mytopic", "LowMessages", $ruleInfo);
 ```
 
-Nu, wanneer een bericht `mytopic` wordt verzonden naar het onderwerp, `mysubscription` wordt het altijd geleverd aan `HighMessages` ontvangers `LowMessages` die zijn geabonneerd op het abonnement en selectief worden geleverd aan ontvangers die zijn geabonneerd op de en abonnementen (afhankelijk van de inhoud van het bericht).
+Wanneer een bericht wordt verzonden naar `mytopic` het onderwerp, wordt het altijd bezorgd bij ontvangers die zijn geabonneerd op het `mysubscription` abonnement en worden ze selectief geleverd aan ontvangers die zich hebben geabonneerd op `HighMessages` de `LowMessages` -en-abonnementen (afhankelijk van de inhoud van het bericht).
 
 ## <a name="send-messages-to-a-topic"></a>Berichten verzenden naar een onderwerp
-Als u een bericht wilt verzenden naar `ServiceBusRestProxy->sendTopicMessage` een servicebusonderwerp, roept uw toepassing de methode aan. In de volgende code ziet u `mytopic` hoe u `MySBNamespace` een bericht verzendt naar het onderwerp dat eerder is gemaakt in de servicenaamruimte.
+Uw toepassing roept de `ServiceBusRestProxy->sendTopicMessage` -methode aan om een bericht naar een service bus onderwerp te verzenden. De volgende code laat zien hoe u een bericht verzendt naar `mytopic` het onderwerp dat eerder in `MySBNamespace` de service naam ruimte is gemaakt.
 
 ```php
 require_once 'vendor/autoload.php';
@@ -252,7 +252,7 @@ catch(ServiceException $e){
 }
 ```
 
-De berichten die worden verzonden naar Service Bus-onderwerpen, zijn exemplaren van de klasse [BrokeredMessage][BrokeredMessage]. [BrokeredMessage-objecten][BrokeredMessage] hebben een set standaardeigenschappen en -methoden, evenals eigenschappen die kunnen worden gebruikt om aangepaste toepassingsspecifieke eigenschappen vast te houden. In het volgende voorbeeld ziet u hoe `mytopic` u vijf testberichten verzendt naar het onderwerp dat eerder is gemaakt. De `setProperty` methode wordt gebruikt om`MessageNumber`een aangepaste eigenschap ( ) toe te voegen aan elk bericht. De `MessageNumber` waarde van de eigenschap varieert per bericht (u deze waarde gebruiken om te bepalen welke abonnementen het ontvangen, zoals wordt weergegeven in de sectie [Een abonnement maken):](#create-a-subscription)
+De berichten die worden verzonden naar Service Bus-onderwerpen, zijn exemplaren van de klasse [BrokeredMessage][BrokeredMessage]. [BrokeredMessage][BrokeredMessage] -objecten hebben een set standaard eigenschappen en-methoden en eigenschappen die kunnen worden gebruikt om aangepaste toepassingsspecifieke eigenschappen te bewaren. In het volgende voor beeld ziet u hoe u vijf test berichten `mytopic` verzendt naar het onderwerp dat eerder is gemaakt. De `setProperty` methode wordt gebruikt om een aangepaste eigenschap (`MessageNumber`) aan elk bericht toe te voegen. De `MessageNumber` waarde van de eigenschap varieert per bericht (u kunt deze waarde gebruiken om te bepalen welke abonnementen ze ontvangen, zoals wordt weer gegeven in de sectie [een abonnement maken](#create-a-subscription) ):
 
 ```php
 for($i = 0; $i < 5; $i++){
@@ -268,16 +268,16 @@ for($i = 0; $i < 5; $i++){
 }
 ```
 
-Service Bus-onderwerpen ondersteunen een maximale grootte van 256 kB in de [Standard-laag](service-bus-premium-messaging.md) en 1 MB in de [Premium-laag](service-bus-premium-messaging.md). De koptekst, die de standaard- en aangepaste toepassingseigenschappen bevat, kan maximaal 64 kB groot zijn. Er is geen limiet voor het aantal berichten in een onderwerp, maar er is een limiet voor de totale grootte van de berichten in een onderwerp. Deze bovengrens over de grootte van het onderwerp is 5 GB. Zie [ServiceBus-quota voor][Service Bus quotas]meer informatie over quota.
+Service Bus-onderwerpen ondersteunen een maximale grootte van 256 kB in de [Standard-laag](service-bus-premium-messaging.md) en 1 MB in de [Premium-laag](service-bus-premium-messaging.md). De koptekst, die de standaard- en aangepaste toepassingseigenschappen bevat, kan maximaal 64 kB groot zijn. Er is geen limiet voor het aantal berichten in een onderwerp, maar er is een limiet voor de totale grootte van de berichten in een onderwerp. Deze bovengrens voor de grootte van het onderwerp is 5 GB. Zie [Service Bus quota's][Service Bus quotas]voor meer informatie over quota's.
 
 ## <a name="receive-messages-from-a-subscription"></a>Berichten ontvangen van een abonnement
-De beste manier om berichten van een `ServiceBusRestProxy->receiveSubscriptionMessage` abonnement te ontvangen, is door een methode te gebruiken. Berichten kunnen worden ontvangen in twee verschillende modi: [ *ReceiveAndDelete* en *PeekLock*](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.receivemode). **PeekLock** is de standaardmodus.
+De beste manier om berichten van een abonnement te ontvangen is met behulp van een `ServiceBusRestProxy->receiveSubscriptionMessage` methode. Berichten kunnen in twee verschillende modi worden ontvangen: [ *ReceiveAndDelete* en *PeekLock*](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.receivemode). **PeekLock** is de standaardmodus.
 
-Wanneer u de [ReceiveAndDelete](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.receivemode)-modus gebruikt, wordt het ontvangen in één bewerking uitgevoerd; dat wil zeggen als Service Bus een leesaanvraag voor een bericht in een abonnement ontvangt, wordt voor het bericht aangegeven dat het is verbruikt en wordt het bericht naar de toepassing geretourneerd. [ReceiveAndDelete](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.receivemode) *-modus is het eenvoudigste model en werkt het beste voor scenario's waarin een toepassing kan tolereren dat een bericht niet wordt verwerkt wanneer er een fout optreedt. Neem bijvoorbeeld een scenario waarin de consument de ontvangstaanvraag uitgeeft en het systeem vervolgens vastloopt voordat de aanvraag wordt verwerkt. Omdat Service Bus het bericht heeft gemarkeerd als wordt verbruikt, heeft de toepassing, wanneer de toepassing opnieuw wordt opgestart en opnieuw berichten begint te consumeren, het bericht gemist dat voorafgaand aan de crash is verbruikt.
+Wanneer u de [ReceiveAndDelete](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.receivemode)-modus gebruikt, wordt het ontvangen in één bewerking uitgevoerd; dat wil zeggen als Service Bus een leesaanvraag voor een bericht in een abonnement ontvangt, wordt voor het bericht aangegeven dat het is verbruikt en wordt het bericht naar de toepassing geretourneerd. De [ReceiveAndDelete](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.receivemode) *-modus is het eenvoudigste model en werkt het beste voor scenario's waarin een toepassing niet de verwerking van een bericht kan verdragen wanneer zich een fout voordoet. Neem bijvoorbeeld een scenario waarin de consument de ontvangstaanvraag uitgeeft en het systeem vervolgens vastloopt voordat de aanvraag wordt verwerkt. Omdat Service Bus het bericht heeft gemarkeerd als verbruikt, wordt het bericht dat voor het vastlopen is verbruikt, gemist wanneer de toepassing opnieuw wordt gestart en er opnieuw wordt verbruikt.
 
-In de standaard [PeekLock-modus](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.receivemode) wordt het ontvangen van een bericht een tweetrapsbewerking, waardoor het mogelijk is om toepassingen te ondersteunen die ontbrekende berichten niet kunnen tolereren. Als Service Bus een aanvraag ontvangt, wordt het volgende te verbruiken bericht gevonden, wordt het bericht vergrendeld om te voorkomen dat andere consumenten het ontvangen en wordt het bericht vervolgens naar de toepassing geretourneerd. Nadat de toepassing is voltooid verwerking van het bericht (of slaat het betrouwbaar voor toekomstige verwerking), `ServiceBusRestProxy->deleteMessage`het voltooit de tweede fase van het ontvangstproces door het doorgeven van het ontvangen bericht aan . Wanneer Service Bus `deleteMessage` de oproep ziet, markeert het bericht als verbruikt en verwijdert u het bericht uit de wachtrij.
+In de standaard [PeekLock](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.receivemode) -modus wordt een bericht ontvangen van een bewerking met twee fasen, waardoor het mogelijk is om toepassingen te ondersteunen die geen ontbrekende berichten kunnen verdragen. Als Service Bus een aanvraag ontvangt, wordt het volgende te verbruiken bericht gevonden, wordt het bericht vergrendeld om te voorkomen dat andere consumenten het ontvangen en wordt het bericht vervolgens naar de toepassing geretourneerd. Nadat de toepassing klaar is met de verwerking van het bericht (of het op betrouw bare wijze opslaat voor toekomstige verwerking), wordt de tweede fase van het ontvangst proces voltooid `ServiceBusRestProxy->deleteMessage`door het ontvangen bericht door te geven aan. Als Service Bus de `deleteMessage` oproep ziet, wordt het bericht gemarkeerd als verbruikt en wordt het uit de wachtrij verwijderd.
 
-In het volgende voorbeeld ziet u hoe u een bericht ontvangt en verwerkt met de [PeekLock-modus](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.receivemode) (de standaardmodus). 
+In het volgende voor beeld ziet u hoe u een bericht ontvangt en verwerkt met behulp van de [PeekLock](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.receivemode) -modus (de standaard modus). 
 
 ```php
 require_once 'vendor/autoload.php';
@@ -318,17 +318,17 @@ catch(ServiceException $e){
 }
 ```
 
-## <a name="how-to-handle-application-crashes-and-unreadable-messages"></a>How to: omgaan met toepassingscrashes en onleesbare berichten
-Service Bus biedt functionaliteit om netjes te herstellen bij fouten in uw toepassing of problemen bij het verwerken van een bericht. Als een ontvanger toepassing niet in staat is om het `unlockMessage` bericht te verwerken om `deleteMessage` wat voor reden dan is, dan kan het de methode op het ontvangen bericht (in plaats van de methode) aanroepen. Het zorgt ervoor dat Service Bus het bericht in de wachtrij ontgrendelt en beschikbaar maakt om opnieuw te worden ontvangen, hetzij door dezelfde verbruikende toepassing of door een andere verbruikende toepassing.
+## <a name="how-to-handle-application-crashes-and-unreadable-messages"></a>Procedure: vastlopende toepassingen en onleesbare berichten verwerken
+Service Bus biedt functionaliteit om netjes te herstellen bij fouten in uw toepassing of problemen bij het verwerken van een bericht. Als een ontvanger toepassing het bericht om de een of andere reden niet kan verwerken, kan de `unlockMessage` methode op het ontvangen bericht worden aangeroepen (in plaats `deleteMessage` van de methode). Hiermee wordt Service Bus het bericht in de wachtrij ontgrendeld en wordt het beschikbaar gemaakt om opnieuw te worden ontvangen, ofwel door dezelfde verbruiks toepassing of door een andere consumerende toepassing.
 
-Er is ook een time-out gekoppeld aan een bericht dat is vergrendeld in de wachtrij, en als de toepassing het bericht niet verwerkt voordat de time-out van de vergrendeling verloopt (bijvoorbeeld als de toepassing vastloopt), ontgrendelt Service Bus het bericht automatisch en maakt het beschikbaar om opnieuw te ontvangen.
+Er is ook een time-out gekoppeld aan een bericht dat in de wachtrij is vergrendeld. als de toepassing het bericht niet kan verwerken voordat de time-out van de vergren deling verloopt (bijvoorbeeld als de toepassing vastloopt), wordt Service Bus het bericht automatisch ontgrendeld en kan het opnieuw worden ontvangen.
 
-In het geval dat de toepassing crasht `deleteMessage` na het verwerken van het bericht, maar voordat het verzoek wordt uitgegeven, wordt het bericht opnieuw geleverd aan de toepassing wanneer het opnieuw wordt opgestart. Dit type verwerking wordt vaak *ten minste eenmaal* verwerkt genoemd; dat wil zeggen, elk bericht wordt minstens één keer verwerkt, maar in bepaalde situaties kan hetzelfde bericht opnieuw worden bezorgd. Als het scenario dubbele verwerking niet kan tolereren, moeten toepassingsontwikkelaars extra logica toevoegen aan toepassingen om dubbele berichtbezorging te verwerken. Het wordt vaak `getMessageId` bereikt met behulp van de methode van het bericht, die constant blijft over de levering pogingen.
+In het geval dat de toepassing vastloopt na het verwerken van het bericht `deleteMessage` , maar voordat de aanvraag is verzonden, wordt het bericht opnieuw aan de toepassing bezorgd wanneer het opnieuw wordt gestart. Dit type verwerking wordt vaak *ten minste eenmaal per* verwerking genoemd; dat wil zeggen dat elk bericht ten minste één keer wordt verwerkt, maar in bepaalde situaties kan hetzelfde bericht opnieuw worden bezorgd. Als het scenario dubbele verwerking niet kan verdragen, moeten ontwikkel aars van toepassingen extra logica toevoegen aan toepassingen voor het afhandelen van dubbele bericht bezorging. Dit wordt vaak bereikt met de `getMessageId` methode van het bericht, dat constant blijft tijdens bezorgings pogingen.
 
 ## <a name="delete-topics-and-subscriptions"></a>Onderwerpen en abonnementen verwijderen
-Als u een onderwerp of `ServiceBusRestProxy->deleteTopic` een `ServiceBusRestProxy->deleteSubscripton` abonnement wilt verwijderen, gebruikt u de methoden of de methoden. Als een onderwerp wordt verwijderd, worden ook alle abonnementen verwijderd die zijn geregistreerd bij het onderwerp.
+Als u een onderwerp of een abonnement wilt verwijderen, `ServiceBusRestProxy->deleteTopic` gebruikt u `ServiceBusRestProxy->deleteSubscripton` respectievelijk de methoden of. Als een onderwerp wordt verwijderd, worden ook alle abonnementen verwijderd die zijn geregistreerd bij het onderwerp.
 
-In het volgende voorbeeld ziet `mytopic` u hoe u een onderwerp met de naam en de geregistreerde abonnementen verwijdert.
+In het volgende voor beeld ziet u hoe u een `mytopic` onderwerp met de naam en de geregistreerde abonnementen verwijdert.
 
 ```php
 require_once 'vendor/autoload.php';
@@ -354,17 +354,17 @@ catch(ServiceException $e){
 }
 ```
 
-Door de `deleteSubscription` methode te gebruiken, u een abonnement onafhankelijk verwijderen:
+Met behulp `deleteSubscription` van de-methode kunt u een abonnement onafhankelijk verwijderen:
 
 ```php
 $serviceBusRestProxy->deleteSubscription("mytopic", "mysubscription");
 ```
 
 > [!NOTE]
-> U servicebusbronnen beheren met [Service Bus Explorer.](https://github.com/paolosalvatori/ServiceBusExplorer/) Met de Service Bus Explorer kunnen gebruikers eenvoudig verbinding maken met een naamruimte van een ServiceBus en berichtenentiteiten beheren. De tool biedt geavanceerde functies zoals import/export functionaliteit of de mogelijkheid om onderwerp, wachtrijen, abonnementen, relay services, meldinghubs en evenementenhubs te testen. 
+> U kunt Service Bus-resources beheren met [Service Bus Explorer](https://github.com/paolosalvatori/ServiceBusExplorer/). Met de Service Bus Explorer kunnen gebruikers verbinding maken met een Service Bus naam ruimte en de Messa ging-entiteiten op een eenvoudige manier beheren. Het hulp programma biedt geavanceerde functies zoals de functionaliteit voor importeren/exporteren of de mogelijkheid om onderwerp, wacht rijen, abonnementen, relay-Services, Notification hubs en Events hubs te testen. 
 
 ## <a name="next-steps"></a>Volgende stappen
-Zie [Wachtrijen, onderwerpen en abonnementen][Queues, topics, and subscriptions]voor meer informatie.
+Zie [wacht rijen, onderwerpen en abonnementen][Queues, topics, and subscriptions]voor meer informatie.
 
 [BrokeredMessage]: /dotnet/api/microsoft.servicebus.messaging.brokeredmessage
 [Queues, topics, and subscriptions]: service-bus-queues-topics-subscriptions.md

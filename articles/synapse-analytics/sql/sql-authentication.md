@@ -1,6 +1,6 @@
 ---
 title: SQL-authenticatie
-description: Meer informatie over SQL-verificatie in Azure Synapse Analytics.
+description: Meer informatie over SQL-verificatie in azure Synapse Analytics.
 services: synapse-analytics
 author: vvasic-msft
 ms.service: synapse-analytics
@@ -9,59 +9,59 @@ ms.date: 04/15/2020
 ms.author: vvasic
 ms.reviewer: jrasnick
 ms.openlocfilehash: 2b80efa30ac7e04b9eb21dd6f8a39ab4ee90adf6
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81424851"
 ---
 # <a name="sql-authentication"></a>SQL-authenticatie
 
-Azure Synapse Analytics heeft twee SQL-formulierfactoren waarmee u uw bronverbruik beheren. In dit artikel wordt uitgelegd hoe de twee formulierfactoren de gebruikersverificatie controleren.
+Azure Synapse Analytics heeft twee SQL-formulier factoren waarmee u het gebruik van resources kunt beheren. In dit artikel wordt uitgelegd hoe de twee formulier factoren bepalend zijn voor de gebruikers verificatie.
 
-Als u wilt autoriseren in Synapse SQL, u twee autorisatietypen gebruiken:
+Als u wilt autoriseren op Synapse SQL, kunt u twee autorisatie typen gebruiken:
 
 - AAD-autorisatie
-- SQL-autorisatie
+- SQL-verificatie
 
-Aad-autorisatie is afhankelijk van Azure Active Directory en stelt u in staat om één plaats voor gebruikersbeheer te hebben. SQL-autorisatie stelt oudere toepassingen in staat om Synapse SQL op een bekende manier te gebruiken.
+AAD-autorisatie is afhankelijk van Azure Active Directory en biedt u één plaats voor gebruikers beheer. Met SQL-autorisatie kunnen oudere toepassingen Synapse SQL op een goed vertrouwde manier gebruiken.
 
-## <a name="administrative-accounts"></a>Administratieve rekeningen
+## <a name="administrative-accounts"></a>Beheerders accounts
 
-Er zijn twee beheerdersaccounts (**serverbeheerder** en **Active Directory-beheerder**) die als beheerder fungeren. Als u deze beheerdersaccounts voor uw SQL-server wilt identificeren, opent u de Azure-portal en navigeert u naar het tabblad Eigenschappen van uw Synapse SQL.
+Er zijn twee beheerdersaccounts (**serverbeheerder** en **Active Directory-beheerder**) die als beheerder fungeren. Als u deze beheerders accounts voor uw SQL Server wilt identificeren, opent u de Azure Portal en gaat u naar het tabblad Eigenschappen van uw Synapse SQL.
 
 ![SQL Server-beheerders](./media/sql-authentication/sql-admins.png)
 
 - **Serverbeheerder**
 
-  Wanneer u een Azure Synapse Analytics maakt, moet u een **aanmelding voor serverbeheerder**aanwijzen. De SQL-server maakt het account vervolgens als een aanmelding in de hoofddatabase. Dit account maakt verbinding met behulp van SQL Server-verificatie (gebruikersnaam en wachtwoord). Er kan slechts één van deze accounts bestaan.
+  Wanneer u een Azure Synapse-analyse maakt, moet u een **aanmelding voor de server beheerder**aanwijzen. De SQL-server maakt het account vervolgens als een aanmelding in de hoofddatabase. Dit account maakt verbinding met behulp van SQL Server-verificatie (gebruikersnaam en wachtwoord). Er kan slechts één van deze accounts bestaan.
 
 - **Azure Active Directory-beheerder**
 
-  Ook één Azure Active Directory-account (een afzonderlijk account of het account van een beveiligingsgroep) kan als beheerder worden geconfigureerd. Het is optioneel om een Azure AD-beheerder te configureren, maar een Azure AD-beheerder **moet** zijn geconfigureerd als u Azure AD-accounts wilt gebruiken om verbinding te maken met Synapse SQL.
+  Ook één Azure Active Directory-account (een afzonderlijk account of het account van een beveiligingsgroep) kan als beheerder worden geconfigureerd. Het is optioneel een Azure AD-beheerder te configureren, maar er **moet** een Azure AD-beheerder worden geconfigureerd als u Azure AD-accounts wilt gebruiken om verbinding te maken met Synapse SQL.
 
-De **serverbeheerder** en **Azure AD-beheerdersaccounts** hebben de volgende kenmerken:
+De beheerders accounts van de **Server beheerder** en **Azure AD** hebben de volgende kenmerken:
 
-- Zijn de enige accounts die automatisch verbinding kunnen maken met een SQL-database op de server. (Andere accounts die verbinding willen maken met een gebruikersdatabase, moeten eigenaar van de database zijn of een gebruikersaccount in de database hebben.)
+- Zijn de enige accounts die automatisch verbinding kunnen maken met een wille keurige SQL Database op de server. (Andere accounts die verbinding willen maken met een gebruikersdatabase, moeten eigenaar van de database zijn of een gebruikersaccount in de database hebben.)
 - Deze accounts worden in gebruikersdatabases beschouwd als de `dbo`-gebruiker en beschikken over alle machtigingen. (De eigenaar van een gebruikersdatabase wordt in de database ook als `dbo`-gebruiker beschouwd.)
-- Voer de `master` database niet `dbo` in als gebruiker en heb beperkte machtigingen in master.
-- Zijn **geen** lid van `sysadmin` de standaard SQL Server fixed server role, die niet beschikbaar is in SQL-database.  
-- Kan databases, aanmeldingen, gebruikers in master en IP-firewallregels op serverniveau maken, wijzigen en neerzetten.
-- Kan leden toevoegen en `dbmanager` `loginmanager` verwijderen aan de rollen en rollen.
-- Kan de `sys.sql_logins` systeemtabel bekijken.
+- Voer de `master` data base niet in als `dbo` de gebruiker en heeft beperkte machtigingen in de Master.
+- Zijn **geen** leden van de standaard SQL Server `sysadmin` vaste serverrol, die niet beschikbaar is in SQL database.  
+- Kan data bases, aanmeldingen, gebruikers in Master en IP-firewall regels op server niveau maken, wijzigen en verwijderen.
+- Kan leden toevoegen aan en verwijderen uit `dbmanager` de `loginmanager` en-rollen.
+- Kan de `sys.sql_logins` systeem tabel weer geven.
 
-## <a name="sql-on-demand-preview"></a>SQL on-demand (voorbeeld)
+## <a name="sql-on-demand-preview"></a>SQL op aanvraag (preview-versie)
 
-Om te beheren dat de gebruikers toegang hebben tot SQL on-demand, u de onderstaande instructies gebruiken.
+U kunt de volgende instructies gebruiken om de gebruikers te beheren die toegang hebben tot SQL op aanvraag.
 
-Als u een aanmelding bij SQL on-demand wilt maken, gebruikt u de volgende syntaxis:
+Als u een aanmelding voor SQL op aanvraag wilt maken, gebruikt u de volgende syntaxis:
 
 ```sql
 CREATE LOGIN Mary WITH PASSWORD = '<strong_password>';
 -- or
 CREATE LOGIN Mary@domainname.net FROM EXTERNAL PROVIDER;
 ```
-Zodra de aanmelding bestaat, u gebruikers maken in de afzonderlijke databases binnen het SQL on-demand eindpunt en vereiste machtigingen verlenen aan deze gebruikers. Als u een gebruik wilt maken, u de volgende syntaxis gebruiken:
+Zodra de aanmelding bestaat, kunt u gebruikers maken in de afzonderlijke data bases in het SQL on-demand-eind punt en de vereiste machtigingen verlenen aan deze gebruikers. Als u een gebruik wilt maken, kunt u de volgende syntaxis gebruiken:
 ```sql
 CREATE USER Mary FROM LOGIN Mary;
 -- or
@@ -70,7 +70,7 @@ CREATE USER Mary FROM LOGIN Mary@domainname.net;
 CREATE USER [mike@contoso.com] FROM EXTERNAL PROVIDER;
 ```
 
-Zodra aanmelding en gebruiker zijn gemaakt, u de normale SQL Server-syntaxis gebruiken om rechten toe te kennen.
+Zodra de aanmelding en de gebruiker zijn gemaakt, kunt u de syntaxis voor reguliere SQL Server gebruiken om rechten te verlenen.
 
 ## <a name="sql-pool"></a>SQL-groep
 
@@ -78,9 +78,9 @@ Zodra aanmelding en gebruiker zijn gemaakt, u de normale SQL Server-syntaxis geb
 
 Als de firewall op serverniveau correct is geconfigureerd, kunnen de **SQL-serverbeheerder** en de **Azure Active Directory-beheerder** verbinding maken met clienthulpprogramma's zoals SQL Server Management Studio en SQL Server Data Tools. Alleen de nieuwste hulpprogramma's bieden alle functies en mogelijkheden. 
 
-In het volgende diagram ziet u een typische configuratie voor de twee beheerdersaccounts:
+In het volgende diagram ziet u een typische configuratie voor de twee beheerders accounts:
  
-![configuratie van de twee beheeraccounts](./media/sql-authentication/1sql-db-administrator-access.png)
+![configuratie van de twee beheer accounts](./media/sql-authentication/1sql-db-administrator-access.png)
 
 Wanneer u een open poort in de firewall op serverniveau gebruikt, kunnen beheerders verbinding maken met elke SQL-database.
 
@@ -88,10 +88,10 @@ Wanneer u een open poort in de firewall op serverniveau gebruikt, kunnen beheerd
 
 Een van deze beheerdersrollen is de rol **dbmanager**. Leden van deze rol kunnen nieuwe databases maken. Voor het gebruik van deze rol maakt u een gebruiker in de `master`-database en voegt u deze gebruiker vervolgens toe aan de databaserol **dbmanager**. 
 
-Als u een database wilt maken, moet de gebruiker `master` een gebruiker zijn die is gebaseerd op een SQL Server-aanmelding in de database of een databasegebruiker op basis van een Azure Active Directory-gebruiker.
+Als u een Data Base wilt maken, moet de gebruiker een gebruiker zijn op basis van een `master` SQL Server-aanmelding in de data base of de Inge sloten database gebruiker op basis van een Azure Active Directory gebruiker.
 
-1. Maak verbinding met de `master` database met een beheerdersaccount.
-2. Maak een SQL Server-verificatielogin met de [INSTRUCTIE INLOG MAKEN.](/sql/t-sql/statements/create-login-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) Voorbeeldinstructie:
+1. Verbinding maken met de `master` data base met behulp van een beheerders account.
+2. Maak een SQL Server-verificatie aanmelding met behulp van de instructie [Create login](/sql/t-sql/statements/create-login-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) . Voorbeeldinstructie:
 
    ```sql
    CREATE LOGIN Mary WITH PASSWORD = '<strong_password>';
@@ -102,7 +102,7 @@ Als u een database wilt maken, moet de gebruiker `master` een gebruiker zijn die
 
    Voor betere prestaties worden aanmeldingen (principals op serverniveau) tijdelijk in het cachegeheugen op databaseniveau opgeslagen. Zie [DBCC FLUSHAUTHCACHE](/sql/t-sql/database-console-commands/dbcc-flushauthcache-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) als u de verificatiecache wilt vernieuwen.
 
-3. Maak `master` in de database een gebruiker met de instructie [GEBRUIKERS MAKEN.](/sql/t-sql/statements/create-user-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) De gebruiker kan een Azure Active Directory-verificatie zijn met databasegebruikers (als u uw omgeving hebt geconfigureerd voor Azure AD-verificatie), of een SQL Server-verificatie bevat databasegebruiker of een SQL Server-verificatiegebruiker op basis van een SQL Server-verificatieaanmelding (gemaakt in de vorige stap).) Voorbeeldverklaringen:
+3. Maak een `master` gebruiker in de-data base met behulp van de instructie [Create User](/sql/t-sql/statements/create-user-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) . De gebruiker kan een Azure Active Directory de Inge sloten database gebruiker zijn (als u uw omgeving hebt geconfigureerd voor Azure AD-verificatie) of een SQL Server-verificatie database gebruiker of een SQL Server verificatie gebruiker op basis van een SQL Server authenticatie aanmelding (gemaakt in de vorige stap). Voorbeeld instructies:
 
    ```sql
    CREATE USER [mike@contoso.com] FROM EXTERNAL PROVIDER; -- To create a user with Azure Active Directory
@@ -110,7 +110,7 @@ Als u een database wilt maken, moet de gebruiker `master` een gebruiker zijn die
    CREATE USER Mary FROM LOGIN Mary;  -- To create a SQL Server user based on a SQL Server authentication login
    ```
 
-4. Voeg de nieuwe gebruiker toe aan `master` de rol van de **dbmanager-database** bij het gebruik van de instructie [ALTER ROLE.](/sql/t-sql/statements/alter-role-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) Voorbeeldinstructies:
+4. Voeg de nieuwe gebruiker toe aan de databaserol **DBManager** in met `master` behulp van de instructie [ALTER Role](/sql/t-sql/statements/alter-role-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) . Voorbeeldinstructies:
 
    ```sql
    ALTER ROLE dbmanager ADD MEMBER Mary;
@@ -122,7 +122,7 @@ Als u een database wilt maken, moet de gebruiker `master` een gebruiker zijn die
 
 5. U kunt zo nodig een firewallregel configureren, zodat de nieuwe gebruiker verbinding kan maken. (De nieuwe gebruiker kan worden gedekt door een bestaande firewallregel.)
 
-Nu kan de gebruiker `master` verbinding maken met de database en kan nieuwe databases maken. Het account dat de database maakt, wordt eigenaar van de database.
+De gebruiker kan nu verbinding maken met `master` de data base en kan nieuwe data bases maken. Het account dat de database maakt, wordt eigenaar van de database.
 
 ### <a name="login-managers"></a>Aanmelding managers
 
@@ -147,24 +147,24 @@ In eerste instantie kan slechts een van de beheerders of de eigenaar van de data
 GRANT ALTER ANY USER TO Mary;
 ```
 
-Om extra gebruikers volledige controle over de database te geven, maakt u ze lid van de **db_owner** vaste databaserol.
+Als u meer gebruikers volledige controle over de Data Base wilt geven, maakt u ze lid van de **db_owner** vaste databaserol.
 
-Gebruik de `ALTER ROLE` instructie in Azure SQL Database.
+In Azure SQL Database gebruikt u de `ALTER ROLE` -instructie.
 
 ```sql
 ALTER ROLE db_owner ADD MEMBER Mary;
 ```
 
-In SQL-groep [gebruik EXEC sp_addrolemember](/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest).
+Gebruik [EXEC sp_addrolemember](/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)in de SQL-groep.
 
 ```sql
 EXEC sp_addrolemember 'db_owner', 'Mary';
 ```
 
 > [!NOTE]
-> Een veelvoorkomende reden om een databasegebruiker te maken op basis van een SQL Database-serverlogin is voor gebruikers die toegang nodig hebben tot meerdere databases. Aangezien opgenomen databasegebruikers afzonderlijke entiteiten zijn, behoudt elke database zijn eigen gebruiker en zijn eigen wachtwoord. Dit kan leiden tot overhead als de gebruiker moet vervolgens elk wachtwoord onthouden voor elke database, en het kan onhoudbaar worden wanneer het hebben van meerdere wachtwoorden te wijzigen voor veel databases. Wanneer u sql server-aanmeldingen en hoge beschikbaarheid (actieve georeplicatie- en failovergroepen) gebruikt, moeten de SQL Server-aanmeldingen echter handmatig op elke server worden ingesteld. Anders wordt de databasegebruiker niet meer toegewezen aan de serverlogin nadat er een fail-over optreedt en heeft hij geen toegang tot de failover van de databasepost. 
+> Een veelvoorkomende reden voor het maken van een database gebruiker op basis van een SQL Database Server-aanmelding is voor gebruikers die toegang nodig hebben tot meerdere data bases. Aangezien de Inge sloten database gebruikers afzonderlijke entiteiten zijn, houdt elke Data Base zijn eigen gebruiker en eigen wacht woord. Dit kan overhead veroorzaken, omdat de gebruiker vervolgens elk wacht woord moet onthouden voor elke Data Base en het untenable kan worden wanneer meerdere wacht woorden voor veel data bases moeten worden gewijzigd. Wanneer u echter SQL Server aanmeldingen en hoge Beschik baarheid (actieve geo-replicatie en failover-groepen) gebruikt, moeten de SQL Server-aanmeldingen hand matig worden ingesteld op elke server. Anders wordt de database gebruiker niet meer toegewezen aan de Server aanmelding nadat een failover is uitgevoerd en heeft deze geen toegang tot de data base na failover. 
 
-Zie [Azure SQL Database-beveiliging configureren en beheren voor geo-restore of failover voor](../../sql-database/sql-database-geo-replication-security-config.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)meer informatie over het configureren van aanmeldingen voor georeplicatie.
+Zie [Azure SQL database beveiliging configureren en beheren voor geo-herstel of failover](../../sql-database/sql-database-geo-replication-security-config.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)voor meer informatie over het configureren van aanmeldingen voor geo-replicatie.
 
 ### <a name="configuring-the-database-level-firewall"></a>De firewall op databaseniveau configureren
 
@@ -200,9 +200,9 @@ Start met de lijst van machtigingen in [Machtigingen (Database-engine)](https://
 
 ### <a name="considerations-and-restrictions"></a>Overwegingen en beperkingen
 
-Houd bij het beheren van aanmeldingen en gebruikers in SQL Database rekening met de volgende punten:
+Houd rekening met de volgende punten bij het beheren van aanmeldingen en gebruikers in SQL Database:
 
-- U moet bij het uitvoeren van `CREATE/ALTER/DROP DATABASE` de instructies zijn verbonden met de **hoofddatabase.**
+- U moet zijn verbonden met de **hoofd** database wanneer u de `CREATE/ALTER/DROP DATABASE` instructies uitvoert.
 - De databasegebruiker die overeenkomt met de aanmelding van de **Serverbeheerder**, kan niet worden gewijzigd of verwijderd.
 - Amerikaans Engels is de standaardtaal van de aanmelding van de **serverbeheerder**.
 - Alleen de beheerders (aanmelding van **serverbeheerder** of Azure AD-beheerder) en de leden van de databaserol **dbmanager** in de **hoofddatabase** zijn gemachtigd om de instructies `CREATE DATABASE` en `DROP DATABASE` uit te voeren.

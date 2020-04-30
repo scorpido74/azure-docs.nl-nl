@@ -10,29 +10,29 @@ ms.topic: quickstart
 ms.date: 04/10/2019
 ms.author: spelluru
 ms.openlocfilehash: e34599b12b8b0c487c6813038951b051d1eaf425
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "66400262"
 ---
-# <a name="quickstart-use-the-azure-cli-to-create-a-service-bus-queue"></a>Snelstart: de Azure CLI gebruiken om een servicebuswachtrij te maken
+# <a name="quickstart-use-the-azure-cli-to-create-a-service-bus-queue"></a>Quick Start: Azure CLI gebruiken om een Service Bus wachtrij te maken
 In deze quickstart wordt beschreven hoe u berichten verzendt en ontvangt met Service Bus met behulp van Azure CLI en de Service Bus-Java-bibliotheek. Als u ook bent geïnteresseerd in meer technische informatie, dan kunt u [de uitleg lezen](#understand-the-sample-code) van de belangrijkste elementen van de voorbeeldcode.
 
 [!INCLUDE [howto-service-bus-queues](../../includes/howto-service-bus-queues.md)]
 
 ## <a name="prerequisites"></a>Vereisten
-Als u geen Azure-abonnement hebt, u een [gratis account][free account] maken voordat u begint.
+Als u geen Azure-abonnement hebt, kunt u een [gratis account][free account] maken voordat u begint.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
 ## <a name="sign-in-to-azure"></a>Aanmelden bij Azure
-Als u de knop **Try It** gebruikt om de Cloud Shell te starten, meldt u zich aan bij Azure met uw referenties. 
+Als u de knop **proberen** te gebruiken om de Cloud shell te starten, meldt u zich aan bij Azure met uw referenties. 
 
-Als u de Cloud Shell rechtstreeks of in de Azure-portal in uw webbrowser hebt gestart, schakelt u over naar **Bash** als u **PowerShell** in de linkerbovenhoek van de Cloud Shell ziet. 
+Als u de Cloud Shell in uw webbrowser rechtstreeks of in de Azure Portal hebt gestart, gaat u naar **bash** als **Power shell** wordt weer gegeven in de linkerbovenhoek van de Cloud shell. 
 
 ## <a name="use-the-azure-cli-to-create-resources"></a>De Azure-CLI gebruiken om resources te maken
-Geef in Cloud-Shell bij de Bash-prompt de volgende opdrachten voor het inrichten van Service Bus-resources. Zorg ervoor dat u alle tijdelijke aanduidingen vervangt door de juiste waarden: Het Java-voorbeeldprogramma verwacht dat de wachtrijnaam BasicQueue is, dus wijzig deze niet. U opdrachten één voor één kopiëren/plakken, zodat u de waarden vervangen voordat u ze uitvoert. 
+Geef in Cloud-Shell bij de Bash-prompt de volgende opdrachten voor het inrichten van Service Bus-resources. Zorg ervoor dat u alle tijdelijke aanduidingen vervangt door de juiste waarden: in het Java-voorbeeld programma wordt verwacht dat de wachtrij naam BasicQueue is. Wijzig deze dus niet. U kunt de opdrachten één voor één kopiëren/plakken, zodat u de waarden vervangt voordat u ze uitvoert. 
 
 ```azurecli-interactive
 # Create a resource group
@@ -368,11 +368,11 @@ void registerReceiver(QueueClient queueClient, ExecutorService executorService) 
 ```
 
 > [!NOTE]
-> U servicebusbronnen beheren met [Service Bus Explorer.](https://github.com/paolosalvatori/ServiceBusExplorer/) Met de Service Bus Explorer kunnen gebruikers eenvoudig verbinding maken met een naamruimte van een ServiceBus en berichtenentiteiten beheren. De tool biedt geavanceerde functies zoals import/export functionaliteit of de mogelijkheid om onderwerp, wachtrijen, abonnementen, relay services, meldinghubs en evenementenhubs te testen. 
+> U kunt Service Bus-resources beheren met [Service Bus Explorer](https://github.com/paolosalvatori/ServiceBusExplorer/). Met de Service Bus Explorer kunnen gebruikers verbinding maken met een Service Bus naam ruimte en de Messa ging-entiteiten op een eenvoudige manier beheren. Het hulp programma biedt geavanceerde functies zoals de functionaliteit voor importeren/exporteren of de mogelijkheid om onderwerp, wacht rijen, abonnementen, relay-Services, Notification hubs en Events hubs te testen. 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In dit artikel hebt u een Service Bus-naamruimte en andere resources gemaakt die zijn vereist voor het verzenden en ontvangen van berichten in een wachtrij. Ga door met de zelfstudies in de sectie Berichten **verzenden en ontvangen** voor meer informatie over het schrijven van code voor het verzenden en ontvangen van berichten. 
+In dit artikel hebt u een Service Bus-naamruimte en andere resources gemaakt die zijn vereist voor het verzenden en ontvangen van berichten in een wachtrij. Voor meer informatie over het schrijven van code voor het verzenden en ontvangen van berichten gaat u verder met de zelf studies in het gedeelte **berichten verzenden en ontvangen** . 
 
 > [!div class="nextstepaction"]
 > [Berichten verzenden en ontvangen](service-bus-dotnet-get-started-with-queues.md)

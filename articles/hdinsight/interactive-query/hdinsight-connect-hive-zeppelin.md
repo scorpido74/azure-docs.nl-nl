@@ -1,6 +1,6 @@
 ---
-title: 'Quickstart: Apache Hive in Azure HDInsight met Apache Zeppelin'
-description: In deze quickstart leert u hoe u Apache Zeppelin gebruiken om Apache Hive-query's uit te voeren.
+title: 'Snelstartgids: Apache Hive in azure HDInsight met Apache Zeppelin'
+description: In deze Quick Start leert u hoe u Apache Zeppelin gebruikt om Apache Hive query's uit te voeren.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -9,53 +9,53 @@ ms.topic: quickstart
 ms.custom: hdinsightactive
 ms.date: 12/03/2019
 ms.openlocfilehash: 49b576fd511d17616880e5d981fd3f649de797df
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "79367921"
 ---
-# <a name="quickstart-execute-apache-hive-queries-in-azure-hdinsight-with-apache-zeppelin"></a>Snelstart: Apache Hive-query's uitvoeren in Azure HDInsight met Apache Zeppelin
+# <a name="quickstart-execute-apache-hive-queries-in-azure-hdinsight-with-apache-zeppelin"></a>Snelstartgids: Apache Hive query's uitvoeren in azure HDInsight met Apache Zeppelin
 
-In deze quickstart leert u hoe u Apache Zeppelin gebruiken om Apache Hive-query's uit te voeren in Azure HDInsight. [Apache Hive](https://hive.apache.org/) HDInsight Interactive Query-clusters bevatten [Apache Zeppelin-notitieblokken](https://zeppelin.apache.org/) die u gebruiken om interactieve Hive-query's uit te voeren.
+In deze Quick Start leert u hoe u Apache Zeppelin gebruikt om [Apache Hive](https://hive.apache.org/) query's uit te voeren in azure HDInsight. HDInsight Interactive query-clusters bevatten [Apache Zeppelin](https://zeppelin.apache.org/) -notebooks die u kunt gebruiken om interactieve Hive-query's uit te voeren.
 
-Als u geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) voordat u begint.
+Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
 
 ## <a name="prerequisites"></a>Vereisten
 
-Een HDInsight Interactive Query-cluster. Zie [Cluster maken](../hadoop/apache-hadoop-linux-tutorial-get-started.md) om een HDInsight-cluster te maken.  Kies het clustertype **Interactieve query.**
+An HDInsight interactieve query cluster. Zie [cluster maken](../hadoop/apache-hadoop-linux-tutorial-get-started.md) om een HDInsight-cluster te maken.  Zorg ervoor dat u het **interactieve query** cluster type kiest.
 
-## <a name="create-an-apache-zeppelin-note"></a>Een Apache Zeppelin-notitie maken
+## <a name="create-an-apache-zeppelin-note"></a>Een Apache Zeppelin-opmerking maken
 
-1. Vervang `CLUSTERNAME` de naam van uw cluster `https://CLUSTERNAME.azurehdinsight.net/zeppelin`in de volgende URL . Voer vervolgens de URL in een webbrowser in.
+1. Vervang `CLUSTERNAME` door de naam van uw cluster in de volgende URL `https://CLUSTERNAME.azurehdinsight.net/zeppelin`. Voer vervolgens de URL in een webbrowser in.
 
-2. Voer de gebruikersnaam en het wachtwoord van uw clusterlogin in. Vanaf de Zeppelin-pagina u een nieuwe notitie maken of bestaande notities openen. **HiveSample** bevat enkele voorbeeldzoekopdrachten van Hive.HiveSample contains some sample Hive queries.  
+2. Voer de gebruikers naam en het wacht woord voor uw cluster aanmelding in. Op de pagina Zeppelin kunt u een nieuwe notitie maken of bestaande notities openen. **HiveSample** bevat een aantal voor beelden van Hive-query's.  
 
-    ![HDInsight Interactive Query zeppelin](./media/hdinsight-connect-hive-zeppelin/hdinsight-hive-zeppelin.png)
+    ![Zeppelin voor HDInsight interactieve query](./media/hdinsight-connect-hive-zeppelin/hdinsight-hive-zeppelin.png)
 
-3. Selecteer **Nieuwe notitie maken**.
+3. Selecteer **nieuwe notitie maken**.
 
-4. Typ of selecteer in het dialoogvenster **Nieuwe notitie maken** de volgende waarden:
+4. Typ of Selecteer in het dialoog venster **nieuwe notitie maken** de volgende waarden:
 
-    - Opmerkingsnaam: voer een naam voor de notitie in.
-    - Standaardtolk: Selecteer **jdbc** in de vervolgkeuzelijst.
+    - Notitie naam: Voer een naam in voor de opmerking.
+    - Standaard-interpreter: Selecteer **JDBC** in de vervolg keuzelijst.
 
-5. Selecteer **Notitie maken**.
+5. Selecteer **notitie maken**.
 
-6. Voer de volgende Hive-query in de codesectie in en druk op **Shift + Enter:**
+6. Voer de volgende Hive-query in de code sectie in en druk op **SHIFT + ENTER**:
 
     ```hive
     %jdbc(hive)
     show tables
     ```
 
-    ![HDInsight Interactive Query zeppelin voert query uit](./media/hdinsight-connect-hive-zeppelin/hdinsight-hive-zeppelin-query.png)
+    ![Query voor uitvoering van HDInsight Interactive query Zeppelin](./media/hdinsight-connect-hive-zeppelin/hdinsight-hive-zeppelin-query.png)
 
-    De **instructie %jdbc(hive)** in de eerste regel vertelt het notitieblok om de Hive JDBC-tolk te gebruiken.
+    De instructie **% JDBC (Hive)** in de eerste regel geeft aan dat het notitie blok de Hive JDBC-interpreter moet gebruiken.
 
-    De query retourneert één Hive-tabel met de naam **hivesampletable**.
+    De query retourneert een Hive-tabel met de naam **hivesampletable**.
 
-    Hieronder volgen twee extra Hive-query's die u uitvoeren tegen **de hivesampletabel:**
+    Hieronder vindt u twee extra Hive-query's die u kunt uitvoeren op **hivesampletable**:
 
     ```hive
     %jdbc(hive)
@@ -68,11 +68,11 @@ Een HDInsight Interactive Query-cluster. Zie [Cluster maken](../hadoop/apache-ha
     limit ${total_count=10}
     ```
 
-    In vergelijking met de traditionele Hive moeten de queryresultaten sneller terugkomen.
+    Vergelijking met de traditionele component, worden de query resultaten sneller weer gegeven.
 
 ### <a name="additional-examples"></a>Aanvullende voorbeelden
 
-1. Maak een tabel. Voer de onderstaande code uit in het Zeppelin-notitieblok:
+1. Een tabel maken. Voer de volgende code uit in de Zeppelin-notebook:
 
     ```hql
     %jdbc(hive)
@@ -89,7 +89,7 @@ Een HDInsight Interactive Query-cluster. Zie [Cluster maken](../hadoop/apache-ha
     STORED AS TEXTFILE;
     ```
 
-1. Gegevens in de nieuwe tabel laden. Voer de onderstaande code uit in het Zeppelin-notitieblok:
+1. Gegevens laden in de nieuwe tabel. Voer de volgende code uit in de Zeppelin-notebook:
 
     ```hql
     %jdbc(hive)
@@ -98,7 +98,7 @@ Een HDInsight Interactive Query-cluster. Zie [Cluster maken](../hadoop/apache-ha
     INTO TABLE log4jLogs;
     ```
 
-1. Voeg één record in. Voer de onderstaande code uit in het Zeppelin-notitieblok:
+1. Voeg één record in. Voer de volgende code uit in de Zeppelin-notebook:
 
     ```hql
     %jdbc(hive)
@@ -106,17 +106,17 @@ Een HDInsight Interactive Query-cluster. Zie [Cluster maken](../hadoop/apache-ha
     VALUES ('A', 'B', 'C', 'D', 'E', 'F', 'G');
     ```
 
-Controleer de [taalhandleiding Hive](https://cwiki.apache.org/confluence/display/Hive/LanguageManual) voor aanvullende syntaxis.
+Raadpleeg de [hand leiding](https://cwiki.apache.org/confluence/display/Hive/LanguageManual) voor de Hive-taal voor aanvullende syntaxis.
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
-Nadat u de quickstart hebt voltooid, u het cluster verwijderen. Met HDInsight worden uw gegevens opgeslagen in Azure Storage, zodat u een cluster veilig verwijderen wanneer het niet in gebruik is. Er worden ook kosten in rekening gebracht voor een HDInsight-cluster, zelfs als het niet in gebruik is. Aangezien de kosten voor het cluster vele malen meer zijn dan de kosten voor opslag, is het economisch zinvol om clusters te verwijderen wanneer ze niet in gebruik zijn.
+Nadat u de Snelstartgids hebt voltooid, kunt u het cluster verwijderen. Met HDInsight worden uw gegevens opgeslagen in Azure Storage, zodat u een cluster veilig kunt verwijderen wanneer deze niet in gebruik is. U betaalt ook voor een HDInsight-cluster, zelfs wanneer het niet in gebruik is. Omdat de kosten voor het cluster veel keren meer zijn dan de kosten voor opslag, is het economisch zinvol om clusters te verwijderen wanneer ze niet worden gebruikt.
 
-Zie [Een HDInsight-cluster verwijderen met uw browser, PowerShell of Azure CLI](../hdinsight-delete-cluster.md)als u een cluster wilt verwijderen.
+Als u een cluster wilt verwijderen, raadpleegt u [een HDInsight-cluster verwijderen met behulp van uw browser, Power shell of de Azure cli](../hdinsight-delete-cluster.md).
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze quickstart hebt u geleerd hoe u Apache Zeppelin gebruiken om Apache Hive-query's uit te voeren in Azure HDInsight. In het volgende artikel ziet u hoe u query's uitvoert met Visual Studio voor meer informatie over Hive-query's.
+In deze Quick Start hebt u geleerd hoe u Apache Zeppelin gebruikt om Apache Hive query's uit te voeren in azure HDInsight. Meer informatie over Hive-query's vindt u in het volgende artikel wordt uitgelegd hoe u query's kunt uitvoeren met Visual Studio.
 
 > [!div class="nextstepaction"]
-> [Maak verbinding met Azure HDInsight en voer Apache Hive-query's uit met Data Lake-hulpprogramma's voor Visual Studio](../hadoop/apache-hadoop-visual-studio-tools-get-started.md)
+> [Verbinding maken met Azure HDInsight en Apache Hive query's uitvoeren met behulp van Data Lake-Hulpprogram Ma's voor Visual Studio](../hadoop/apache-hadoop-visual-studio-tools-get-started.md)

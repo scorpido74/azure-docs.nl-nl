@@ -13,13 +13,13 @@ ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 02/14/2019
 ms.openlocfilehash: 3aeeb989d15dc74849c85fa58cbefa891809f3c5
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80347093"
 ---
-# <a name="quickstart-create-an-azure-notification-hub-in-the-azure-portal"></a>Snelstart: een Azure-meldingshub maken in de Azure-portal 
+# <a name="quickstart-create-an-azure-notification-hub-in-the-azure-portal"></a>Quick Start: een Azure notification hub maken in de Azure Portal 
 Azure Notification Hubs biedt een eenvoudig te gebruiken en uitgeschaalde push-engine waarmee u vanuit elke back-end (cloud of on-premises) meldingen kunt verzenden naar ieder platform (iOS, Android, Windows, Kindle, Baidu, enzovoort). Zie voor meer informatie over de service [Wat is Azure Notification Hubs?](notification-hubs-push-notification-overview.md).
 
 In deze quickstart maakt u een notification hub in de Azure-portal. De eerste sectie bevat de stappen voor het maken van een Notification Hubs-naamruimte en een hub in die naamruimte. De tweede sectie bevat de stappen voor het maken van een notification hub in een bestaande Notification Hubs-naamruimte. 
@@ -32,7 +32,7 @@ In deze sectie maakt u een naamruimte en een hub in die naamruimte.
 ## <a name="create-a-notification-hub-in-an-existing-namespace"></a>Een notification hub maken in een bestaande naamruimte
 In deze sectie maakt u een notification hub in een bestaande naamruimte. 
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 2. Selecteer **Alle services** in het menu links, zoek **Notification Hub** en selecteer de **ster** (`*`) naast **Notification Hub-naamruimten** om deze toe te voegen aan de sectie **Favorieten** in het menu links. Selecteer **Notification Hub-naamruimten**. 
 
       ![Azure-portal - Notification Hub-naamruimten selecteren](./media/create-notification-hub-portal/select-notification-hub-namespaces-all-services.png)

@@ -1,6 +1,6 @@
 ---
-title: Spark-tabellen query's met SQL on-demand (voorbeeld)
-description: Overzicht van hoe spark-tabellen kunnen worden opgevraagd met SQL on-demand (voorbeeld)
+title: Query's uitvoeren Spark-tabellen met behulp van SQL op aanvraag (preview)
+description: Overzicht van het opvragen van Spark-tabellen met behulp van SQL op aanvraag (preview)
 services: synapse-analytics
 author: julieMSFT
 ms.service: synapse-analytics
@@ -10,52 +10,52 @@ ms.date: 04/15/2020
 ms.author: jrasnick
 ms.reviewer: jrasnick
 ms.openlocfilehash: 41e31a322a3d771557474fdf5c318960822bcfe1
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81424046"
 ---
-# <a name="query-spark-tables-with-azure-synapse-analytics-using-sql-on-demand-preview"></a>Spark-tabellen met Azure Synapse Analytics opvragen met SQL on-demand (voorbeeld)
+# <a name="query-spark-tables-with-azure-synapse-analytics-using-sql-on-demand-preview"></a>Query Spark-tabellen met Azure Synapse Analytics met behulp van SQL on-demand (preview)
 
-De SQL on-demand (preview) kan metagegevens van Spark-pools automatisch synchroniseren binnen synapsewerkruimte (preview). Er wordt een SQL on-demand database gemaakt voor elke database die bestaat in Spark-pools (preview). Voor elke Spark-tabel op basis van parket of CSV wordt een externe tabel gemaakt in de SQL on-demand database. Als zodanig u uw Spark-pools afsluiten en nog steeds Spark-tabellen van SQL on-demand opvragen.
+De SQL op aanvraag (preview) kan automatisch meta gegevens synchroniseren vanuit Spark-groepen in de Synapse-werk ruimte (preview). Er wordt een SQL-Data Base op aanvraag gemaakt voor elke data base in Spark-Pools (preview-versie). Voor elke Spark-tabel op basis van Parquet of CSV wordt een externe tabel gemaakt in de SQL-Data Base op aanvraag. Zo kunt u uw Spark-Pools afsluiten en toch query's uitvoeren op Spark-tabellen vanuit SQL op aanvraag.
 
-Wanneer een tabel is verdeeld in Spark, worden bestanden in opslag geordend op mappen. SQL on-demand maakt gebruik van partitiemetagegevens en target alleen relevante mappen en bestanden voor uw query.
+Wanneer een tabel is gepartitioneerd in Spark, worden de bestanden in de opslag geordend op mappen. SQL on demand maakt gebruik van meta gegevens van de partitie en alleen relevante mappen en bestanden voor uw query.
 
-Synchronisatie met ametagegevens wordt automatisch geconfigureerd voor elke Spark-groep die is ingericht in de Azure Synapse-werkruimte. U spark-tabellen direct beginnen op te vragen.
+Synchronisatie van meta gegevens wordt automatisch geconfigureerd voor elke Spark-groep die is ingericht in de Azure Synapse-werk ruimte. U kunt direct beginnen met het uitvoeren van query's op Spark-tabellen.
 
-Elke Spark-tabel wordt weergegeven met een externe tabel in een dbo-schema dat overeenkomt met een SQL on-demand database. Voer voor Query's in Spark een query uit die is gericht op een externe [spark_table]. Voordat u het onderstaande voorbeeld uitvoert, moet u de juiste toegang hebben [tot het opslagaccount](develop-storage-files-storage-access-control.md) waar de bestanden zich bevinden.
+Elke Spark-tabel wordt weer gegeven met een externe tabel in een dbo-schema die overeenkomt met een SQL on-demand-data base. Voor Spark-tabel query's voert u een query uit die gericht is op een extern [spark_table]. Voordat u het onderstaande voor beeld uitvoert, moet u ervoor zorgen dat u de juiste [toegang hebt tot het opslag account](develop-storage-files-storage-access-control.md) waarin de bestanden zich bevinden.
 
 ```sql
 SELECT * FROM [db].dbo.[spark_table]
 ```
 
-## <a name="spark-data-types-to-sql-data-types-mapping"></a>Spark-gegevenstypen voor toewijzing van SQL-gegevenstypen
+## <a name="spark-data-types-to-sql-data-types-mapping"></a>Spark-gegevens typen aan toewijzing van SQL-gegevens typen
 
-| Spark-gegevenstype | SQL-gegevenstype               |
+| Spark-gegevens type | SQL-gegevens type               |
 | --------------- | --------------------------- |
-| ByteType ByteType        | smallint                    |
-| ShortType (ShortType)       | smallint                    |
+| ByteType        | smallint                    |
+| ShortType       | smallint                    |
 | IntegerType     | int                         |
-| LongType (LongType)        | bigint                      |
-| FloatType       | real                        |
+| LongType        | bigint                      |
+| FloatType       | werkelijk                        |
 | DoubleType      | float                       |
 | DecimalType     | decimal                     |
-| Tijdstempeltype   | datetime2                   |
+| TimestampType   | datetime2                   |
 | DateType        | date                        |
-| StringType (StringType)      | varchar(max.)*               |
-| BinaryType (BinaryType)      | varbinary varbinary                   |
+| StringType      | varchar (max) *               |
+| BinaryType      | varbinary                   |
 | BooleanType     | bit                         |
-| ArrayType (ArrayType)       | varchar(max)* (in JSON)** |
-| MapType         | varchar(max)* (in JSON)** |
-| StructType      | varchar(max)* (in JSON)** |
+| Array       | varchar (max) * (in JSON) * * |
+| MapType         | varchar (max) * (in JSON) * * |
+| StructType      | varchar (max) * (in JSON) * * |
 
-\*Collatie gebruikt is Latin1_General_100_BIN2_UTF8.
+\*De gebruikte sortering is Latin1_General_100_BIN2_UTF8.
 
-** ArrayType, MapType en StructType worden weergegeven als JSONs.
+* * Array type, MapType en StructType worden weer gegeven als JSONs.
 
 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Ga naar het artikel [Opslagtoegangsbeheer](develop-storage-files-storage-access-control.md) voor meer informatie over toegangsbeheer voor opslag.
+Ga naar de [opslag Access Control](develop-storage-files-storage-access-control.md) artikel voor meer informatie over toegangs beheer voor opslag.

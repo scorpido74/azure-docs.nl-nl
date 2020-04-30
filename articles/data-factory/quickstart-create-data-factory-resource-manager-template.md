@@ -1,5 +1,5 @@
 ---
-title: Een Azure-gegevensfabriek maken met de sjabloon Resourcebeheer
+title: Een Azure-data factory maken met Resource Manager-sjabloon
 description: In deze zelfstudie maakt u een Azure Data Factory-voorbeeldpijplijn op basis van een Azure Resource Manager-sjabloon.
 services: data-factory
 documentationcenter: ''
@@ -11,21 +11,21 @@ author: djpmsft
 ms.author: daperlov
 manager: anandsub
 ms.openlocfilehash: 5ea45346de5ea841867dd13dd4c9a0ed26647448
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81419116"
 ---
 # <a name="tutorial-create-an-azure-data-factory-using-azure-resource-manager-template"></a>Zelfstudie: een Azure Data Factory maken op basis van een Azure Resource Manager-sjabloon
 
-> [!div class="op_single_selector" title1="Selecteer de versie van de datafabriekservice die u gebruikt:"]
+> [!div class="op_single_selector" title1="Selecteer de versie van Data Factory service die u gebruikt:"]
 > * [Versie 1](v1/data-factory-build-your-first-pipeline-using-arm.md)
 > * [Huidige versie](quickstart-create-data-factory-resource-manager-template.md)
 
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
-In deze QuickStart wordt beschreven hoe u een Azure Resource Manager-sjabloon gebruikt om een Azure Data Factory te maken. Met de pijplijn die u in deze data factory maakt, worden gegevens **gekopieerd** van één map naar een andere map in een Azure Blob Storage. Zie [Zelfstudie: Gegevens transformeren met Spark](transform-data-using-spark.md)voor een zelfstudie over het transformeren **van** gegevens met Azure Data Factory.
+In deze QuickStart wordt beschreven hoe u een Azure Resource Manager-sjabloon gebruikt om een Azure Data Factory te maken. Met de pijplijn die u in deze data factory maakt, worden gegevens **gekopieerd** van één map naar een andere map in een Azure Blob Storage. Zie [zelf studie: gegevens transformeren met Spark](transform-data-using-spark.md)voor een zelf studie over het **Transformeren** van gegevens met behulp van Azure Data Factory.
 
 > [!NOTE]
 > Dit artikel is geen gedetailleerde introductie tot de Data Factory-service. Zie [Inleiding tot Azure Data Factory](introduction.md) voor een inleiding tot Azure Data Factory-service.
@@ -48,7 +48,7 @@ Zie [Microsoft.DataFactory resource types](/azure/templates/microsoft.datafactor
 
 ## <a name="data-factory-json"></a>JSON van data factory
 
-Maak een JSON-bestand met de naam **ADFTutorialARM.json** in **c:\ADFTutorial-map** (De map ADFTutorial maken als het nog niet bestaat) met de volgende inhoud:
+Maak een JSON-bestand met de naam **ADFTutorialARM. json** in de map **C:\ADFTutorial** (Maak de map ADFTutorial als deze nog niet bestaat) met de volgende inhoud:
 
 ```json
 {  
@@ -325,7 +325,7 @@ Maak een JSON-bestand met de naam **ADFTutorialARM-Parameters.json** dat paramet
 
 ## <a name="deploy-data-factory-entities"></a>Data Factory-entiteiten implementeren
 
-Voer in PowerShell de volgende opdracht uit om entiteiten van Data Factory in uw resourcegroep te implementeren (neem in dit geval ADFTutorialResourceGroup als voorbeeld) met behulp van de sjabloon Resourcebeheer die u eerder in deze snelstart hebt gemaakt.
+Voer in Power shell de volgende opdracht uit om Data Factory entiteiten in uw resource groep te implementeren (in dit geval moet u ADFTutorialResourceGroup als voor beeld nemen) met behulp van de Resource Manager-sjabloon die u eerder in deze Quick Start hebt gemaakt.
 
 ```powershell
 New-AzResourceGroupDeployment -Name MyARMDeployment -ResourceGroupName ADFTutorialResourceGroup -TemplateFile C:\ADFTutorial\ADFTutorialARM.json -TemplateParameterFile C:\ADFTutorial\ADFTutorialARM-Parameters.json
@@ -359,13 +359,13 @@ DeploymentDebugLogLevel :
 De sjabloon implementeert de volgende Data Factory-entiteiten:
 
 - Een gekoppelde Azure Storage-service
-- Binaire gegevenssets (invoer en uitvoer)
+- Binaire gegevens sets (invoer en uitvoer)
 - Pijplijn met een kopieeractiviteit
 - Trigger om de pijplijn te activeren
 
-De geïmplementeerde trigger is gestopt. Een van de manieren om de trigger te starten is het gebruik van de **Start-AzDataFactoryV2Trigger** PowerShell cmdlet. De volgende procedure bevat gedetailleerde stappen:
+De geïmplementeerde trigger is gestopt. Een van de manieren om de trigger te starten, is met de Power shell **-cmdlet start-AzDataFactoryV2Trigger** . De volgende procedure bevat gedetailleerde stappen:
 
-1. Maak in het PowerShell-venster een variabele voor de naam van de resourcegroep. Kopieer de volgende opdracht naar het PowerShell-venster en druk op ENTER. Als u een andere naam van de resourcegroep hebt opgegeven voor de opdracht Nieuw-AzResourceGroupDeployment, werkt u de waarde hier bij.
+1. Maak in het PowerShell-venster een variabele voor de naam van de resourcegroep. Kopieer de volgende opdracht naar het PowerShell-venster en druk op ENTER. Als u een andere naam voor de resource groep hebt opgegeven voor de opdracht New-AzResourceGroupDeployment, werkt u de waarde hier bij.
 
     ```powershell
     $resourceGroupName = "ADFTutorialResourceGroup"
@@ -434,21 +434,21 @@ De geïmplementeerde trigger is gestopt. Een van de manieren om de trigger te st
 
 2. Klik op de pagina **Data factory's** op de data factory die u hebt gemaakt. Filter de lijst zo nodig op de naam van uw data factory.
 
-3. Klik op de fabriekspagina Gegevens op De tegel **Auteur & monitor.**
+3. Klik op de pagina Data Factory op de tegel **&-monitor** .
 
-4. Selecteer **op** de pagina Laten we aan de slag het tabblad **Monitor**.  ![Pijplijnrun controleren](media/doc-common-process/get-started-page-monitor-button.png)
+4. Op de pagina **aan de slag** selecteert u het **tabblad Monitor**.  ![Pijplijn uitvoering bewaken](media/doc-common-process/get-started-page-monitor-button.png)
 
     > [!IMPORTANT]
     > Zoals u ziet, wordt de pijplijn alleen uitgevoerd op het hele uur (bijvoorbeeld om 4:00 uur, 5:00 uur, 6:00 uur enz.). Klik op **Vernieuwen** op de werkbalk om de lijst te vernieuwen wanneer het volgende uur wordt bereikt.
 
-5. Klik op de koppeling **Activiteitsactiviteiten weergeven** in de kolom **Acties.**
+5. Klik op de koppeling **uitvoeringen van activiteit weer geven** in de kolom **acties** .
 
     ![Koppeling voor pijplijnacties](media/quickstart-create-data-factory-resource-manager-template/pipeline-actions-link.png)
 
 6. U ziet de uitvoering van de activiteiten die zijn gekoppeld aan de pijplijnuitvoering. In deze QuickStart heeft de pijplijn slechts één activiteit en wel van het type Kopiëren. Daarom ziet u een uitvoering voor die activiteit.
 
     ![Uitvoering van activiteiten](media/quickstart-create-data-factory-resource-manager-template/activity-runs.png)
-7. Klik **op** de koppeling Uitvoer onder de kolom Acties. U ziet de uitvoer van de kopieerbewerking in het venster **Uitvoer**. Klik op de knop Maximaliseren om de volledige uitvoer te bekijken. U kunt het gemaximaliseerde uitvoervenster sluiten.
+7. Klik op de koppeling **uitvoer** onder acties kolom. U ziet de uitvoer van de kopieerbewerking in het venster **Uitvoer**. Klik op de knop Maximaliseren om de volledige uitvoer te bekijken. U kunt het gemaximaliseerde uitvoervenster sluiten.
 
 8. Stop de trigger zodra u ziet dat de uitvoering is geslaagd/mislukt. De trigger voert de pijplijn eenmaal per uur uit. Bij elke uitvoering kopieert de pijplijn hetzelfde bestand uit de invoermap naar de uitvoermap. Als u de trigger wilt stoppen, voert u de volgende opdracht uit in het PowerShell-venster.
     
@@ -462,9 +462,9 @@ De geïmplementeerde trigger is gestopt. Een van de manieren om de trigger te st
 
 De volgende Data Factory-entiteiten worden in de JSON-sjabloon gedefinieerd:
 
-- [Gekoppelde Azure Storage-service](#azure-storage-linked-service)
-- [Gegevensset binaire invoer](#binary-input-dataset)
-- [Gegevensset binaire uitvoer](#binary-output-dataset)
+- [Azure Storage gekoppelde service](#azure-storage-linked-service)
+- [Gegevensset voor binaire invoer](#binary-input-dataset)
+- [Gegevensset voor binaire uitvoer](#binary-output-dataset)
 - [De gegevenspijplijn met een kopieerbewerking](#data-pipeline)
 - [Trigger](#trigger)
 
@@ -494,9 +494,9 @@ De AzureStorageLinkedService koppelt uw Azure-opslagaccount aan de gegevensfacto
 
 De tekenreeks connectionString maakt gebruik van de parameters storageAccountName en storageAccountKey. De waarden voor deze parameters worden doorgegeven met behulp van een configuratiebestand. De definitie maakt ook gebruik van de variabelen azureStorageLinkedService en dataFactoryName die zijn gedefinieerd in de sjabloon.
 
-#### <a name="binary-input-dataset"></a>Gegevensset binaire invoer
+#### <a name="binary-input-dataset"></a>Gegevensset voor binaire invoer
 
-De gekoppelde Azure Storage-service geeft de verbindingsreeks op die de Data Factory-service tijdens runtime gebruikt om verbinding te maken met uw Azure-opslagaccount. In de definitie van binaire gegevensset geeft u namen op van blobcontainer, map en bestand dat de invoergegevens bevat. Zie [Binaire gegevensseteigenschappen](format-binary.md#dataset-properties) voor details over JSON-eigenschappen die worden gebruikt om een binaire gegevensset te definiëren.
+De gekoppelde Azure Storage-service geeft de verbindingsreeks op die de Data Factory-service tijdens runtime gebruikt om verbinding te maken met uw Azure-opslagaccount. In definitie van een binaire gegevensset geeft u de namen van de BLOB-container, map en het bestand op dat de invoer gegevens bevat. Zie [Eigenschappen van binaire gegevensset](format-binary.md#dataset-properties) voor meer informatie over de JSON-eigenschappen die worden gebruikt voor het definiëren van een binaire gegevensset.
 
 ```json
 {  
@@ -528,9 +528,9 @@ De gekoppelde Azure Storage-service geeft de verbindingsreeks op die de Data Fac
 }
 ```
 
-#### <a name="binary-output-dataset"></a>Gegevensset binaire uitvoer
+#### <a name="binary-output-dataset"></a>Gegevensset voor binaire uitvoer
 
-U geeft de naam op van de map in de Azure-blobopslag die de gekopieerde gegevens uit de invoermap bevat. Zie [Binaire gegevensseteigenschappen](format-binary.md#dataset-properties) voor details over JSON-eigenschappen die worden gebruikt om een binaire gegevensset te definiëren.
+U geeft de naam op van de map in de Azure-blobopslag die de gekopieerde gegevens uit de invoermap bevat. Zie [Eigenschappen van binaire gegevensset](format-binary.md#dataset-properties) voor meer informatie over de JSON-eigenschappen die worden gebruikt voor het definiëren van een binaire gegevensset.
 
 ```json
 {  
@@ -563,7 +563,7 @@ U geeft de naam op van de map in de Azure-blobopslag die de gekopieerde gegevens
 
 #### <a name="data-pipeline"></a>Gegevenspijplijn
 
-U definieert een pijplijn die gegevens kopieert van de ene binaire gegevensset naar de andere binaire gegevensset. Zie [JSON-bestand voor een pijplijn](concepts-pipelines-activities.md#pipeline-json) voor beschrijvingen van JSON-elementen die worden gebruikt voor het definiëren van een pijplijn in dit voorbeeld.
+U definieert een pijp lijn die gegevens van de ene binaire gegevensset naar een andere binaire gegevensset kopieert. Zie [JSON-bestand voor een pijplijn](concepts-pipelines-activities.md#pipeline-json) voor beschrijvingen van JSON-elementen die worden gebruikt voor het definiëren van een pijplijn in dit voorbeeld.
 
 ```json
 {  
@@ -638,7 +638,7 @@ U definieert een pijplijn die gegevens kopieert van de ene binaire gegevensset n
 
 #### <a name="trigger"></a>Trigger
 
-U definieert een trigger die de pijplijn eenmaal per uur uitvoert. De geïmplementeerde trigger is gestopt. Start de trigger met de **cmdlet Start-AzDataFactoryV2Trigger.** Zie het artikel [Pijplijnen uitvoeren en triggers](concepts-pipeline-execution-triggers.md#trigger-execution) voor meer informatie over triggers.
+U definieert een trigger die de pijplijn eenmaal per uur uitvoert. De geïmplementeerde trigger is gestopt. Start de trigger met behulp van de cmdlet **Start-AzDataFactoryV2Trigger** . Zie het artikel [Pijplijnen uitvoeren en triggers](concepts-pipeline-execution-triggers.md#trigger-execution) voor meer informatie over triggers.
 
 ```json
 {  

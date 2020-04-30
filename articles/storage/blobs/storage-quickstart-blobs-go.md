@@ -8,10 +8,10 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
 ms.openlocfilehash: f4016349e354c84e9e096ac6d5072a4870e9ef29
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "68726460"
 ---
 # <a name="quickstart-upload-download-and-list-blobs-using-go"></a>Quickstart: blobs downloaden, uploaden en vermelden met behulp van Go
@@ -207,7 +207,7 @@ for marker := (azblob.Marker{}); marker.NotDone(); {
 
 ### <a name="download-the-blob"></a>De blob downloaden
 
-Download blobs met de **Download**-functie op laag niveau in een BlobURL. Dit resulteert in een **DownloadResponse**-struct. Voer de functie **Body** uit in de struct om een **RetryReader**-stroom op te halen voor het lezen van gegevens. Als een verbinding mislukt tijdens het lezen, zal het extra verzoeken om een verbinding opnieuw tot stand te brengen en verder te lezen. Wanneer een RetryReaderOption met MaxRetryRequests die is ingesteld op 0 (standaard) wordt opgegeven, wordt de oorspronkelijke hoofdtekst van de reactie geretourneerd en worden geen nieuwe pogingen uitgevoerd. U kunt ook de API's op hoog niveau **DownloadBlobToBuffer** of **DownloadBlobToFile** gebruiken om uw code te vereenvoudigen.
+Download blobs met de **Download**-functie op laag niveau in een BlobURL. Dit resulteert in een **DownloadResponse**-struct. Voer de functie **Body** uit in de struct om een **RetryReader**-stroom op te halen voor het lezen van gegevens. Als een verbinding tijdens het lezen mislukt, worden er aanvullende aanvragen gedaan om opnieuw verbinding te maken en door te gaan met lezen. Wanneer een RetryReaderOption met MaxRetryRequests die is ingesteld op 0 (standaard) wordt opgegeven, wordt de oorspronkelijke hoofdtekst van de reactie geretourneerd en worden geen nieuwe pogingen uitgevoerd. U kunt ook de API's op hoog niveau **DownloadBlobToBuffer** of **DownloadBlobToFile** gebruiken om uw code te vereenvoudigen.
 
 Met de volgende code wordt de blob gedownload met behulp van de functie **Download**. De inhoud van de blob wordt naar een buffer geschreven en weergegeven in de console.
 

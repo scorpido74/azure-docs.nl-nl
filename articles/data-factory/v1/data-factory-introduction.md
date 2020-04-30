@@ -1,5 +1,5 @@
 ---
-title: Inleiding tot Data Factory, een data-integratieservice
+title: Inleiding tot Data Factory, een service voor gegevens integratie
 description: 'Leer wat een Data Factory is: een cloudgebaseerde gegevensintegratieservice waarmee de verplaatsing en transformatie van gegevens wordt beheerd en geautomatiseerd.'
 services: data-factory
 documentationcenter: ''
@@ -13,14 +13,14 @@ ms.workload: data-services
 ms.topic: overview
 ms.date: 01/22/2018
 ms.openlocfilehash: 30578f204ff05443de82015627d67d3d4d357dce
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "73666805"
 ---
 # <a name="introduction-to-azure-data-factory"></a>Inleiding tot Azure Data Factory 
-> [!div class="op_single_selector" title1="Selecteer de versie van de datafabriekservice die u gebruikt:"]
+> [!div class="op_single_selector" title1="Selecteer de versie van Data Factory service die u gebruikt:"]
 > * [Versie 1](data-factory-introduction.md)
 > * [Versie 2 (huidige versie)](../introduction.md)
 
@@ -114,7 +114,7 @@ Gekoppelde services worden voor twee doeleinden gebruikt in Data Factory:
 
 * Als vertegenwoordiging van een *gegevensarchief*, zoals een on-premises SQL Server-database, een Oracle-database, een bestandsshare of een Azure Blob Storage-account. Zie het gedeelte [Activiteiten voor gegevensverplaatsing](#data-movement-activities) voor een lijst met ondersteunde gegevensarchieven.
 
-* Een *rekenbron* weergeven die de uitvoering van een activiteit kan hosten. De activiteit HDInsightHive wordt bijvoorbeeld uitgevoerd in een HDInsight Hadoop-cluster. Zie de sectie [Activiteiten voor gegevenstransformatie](#data-transformation-activities) voor een lijst met ondersteunde rekenomgevingen.
+* Om een *Compute-resource* voor te stellen die de uitvoering van een activiteit kan hosten. De activiteit HDInsightHive wordt bijvoorbeeld uitgevoerd in een HDInsight Hadoop-cluster. Zie de sectie [Activiteiten voor gegevenstransformatie](#data-transformation-activities) voor een lijst met ondersteunde rekenomgevingen.
 
 ### <a name="relationship-between-data-factory-entities"></a>Relatie tussen Data Factory-entiteiten
 
@@ -125,7 +125,7 @@ U kunt op dit moment gegevensfactory’s maken in de regio’s VS - west, VS - o
 
 Azure Data Factory zelf slaat geen gegevens op. Hiermee kunt u gegevensgestuurde werkstromen maken om het verplaatsen van gegevens tussen [ondersteunde gegevensarchieven](#data-movement-activities) in te delen. U kunt er ook gegevens mee verwerken met behulp van [rekenservices](#data-transformation-activities) in andere regio's of in een on-premises omgeving. U kunt er ook [werkstromen mee bewaken en beheren](data-factory-monitor-manage-pipelines.md) met zowel programmatische als gebruikersinterfacemechanismen.
 
-Data Factory is alleen beschikbaar in de regio VS - west, VS - oost en Europa - noord. De service die de gegevensverplaatsing in Data Factory verzorgt, is echter [internationaal](data-factory-data-movement-activities.md#global) beschikbaar in meerdere regio's. Als een gegevensarchief zich achter een firewall bevindt, verplaatst een [Data Management Gateway](data-factory-move-data-between-onprem-and-cloud.md) die is geïnstalleerd in uw on-premises omgeving de gegevens in plaats daarvan.
+Data Factory is alleen beschikbaar in de regio VS - west, VS - oost en Europa - noord. De service die de gegevensverplaatsing in Data Factory verzorgt, is echter [internationaal](data-factory-data-movement-activities.md#global) beschikbaar in meerdere regio's. Als een gegevens archief zich achter een firewall bevindt, worden de gegevens verplaatst met een [Data Management Gateway](data-factory-move-data-between-onprem-and-cloud.md) dat is geïnstalleerd in uw on-premises omgeving.
 
 Stel dat uw rekenomgevingen, bijvoorbeeld een Azure HDInsight-cluster en Azure Machine Learning, worden uitgevoerd in de regio Europa - west. U kunt een exemplaar van Azure Data Factory in Europa -noord maken en gebruiken. Vervolgens kunt u het gebruiken om taken te plannen voor uw rekenomgevingen in Europa - west. Het duurt enkele milliseconden voordat Data Factory de taak in uw rekenomgeving activeert, maar de uitvoertijd van de taak verandert niet in uw rekenomgeving.
 
@@ -135,7 +135,7 @@ U kunt een van deze hulpprogramma's of API's gebruiken om gegevenspijplijnen te 
 - Visual Studio
 - PowerShell
 - .NET API
-- REST API
+- REST-API
 - Azure Resource Manager-sjabloon
 
 Volg de stapsgewijze instructies in de onderstaande zelfstudies voor informatie over het bouwen van gegevensfactory’s met gegevenspijplijnen:

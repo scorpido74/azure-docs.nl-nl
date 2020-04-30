@@ -1,7 +1,7 @@
 ---
-title: Een Azure Resource Manager-sjabloon gebruiken om uw service te implementeren
+title: Een Azure Resource Manager sjabloon gebruiken om uw service te implementeren
 titleSuffix: Azure Cognitive Search
-description: U snel een Azure Cognitive Search-serviceinstantie implementeren met behulp van de sjabloon Azure Resource Manager.
+description: U kunt snel een exemplaar van Azure Cognitive Search service implementeren met behulp van de Azure Resource Manager-sjabloon.
 manager: nitinme
 author: tchristiani
 ms.author: terrychr
@@ -10,60 +10,60 @@ ms.topic: quickstart
 ms.custom: subject-armqs
 ms.date: 03/20/2020
 ms.openlocfilehash: 6da2c324872a86c2c0ce6f55801bc7b0ee8d713e
-ms.sourcegitcommit: 515482c6348d5bef78bb5def9b71c01bb469ed80
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/02/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80607622"
 ---
-# <a name="quickstart-deploy-cognitive-search-using-a-resource-manager-template"></a>Snelstart: Cognitief zoeken implementeren met een sjabloon ResourceManager
+# <a name="quickstart-deploy-cognitive-search-using-a-resource-manager-template"></a>Snelstartgids: Cognitive Search implementeren met behulp van een resource manager-sjabloon
 
-In dit artikel wordt u door het proces voor het gebruik van een resourcemanagersjabloon om een Azure Cognitive Search-bron in de Azure-portal te implementeren.
+In dit artikel wordt stapsgewijs uitgelegd hoe u een resource manager-sjabloon gebruikt om een Azure Cognitive Search-bron te implementeren in de Azure Portal.
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
 ## <a name="prerequisites"></a>Vereisten
 
-Als u geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) voordat u begint.
+Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
 
-## <a name="create-a-cognitive-search-service"></a>Een service voor cognitief zoeken maken
+## <a name="create-a-cognitive-search-service"></a>Een Cognitive Search-service maken
 
-### <a name="review-the-template"></a>De sjabloon bekijken
+### <a name="review-the-template"></a>De sjabloon controleren
 
-De sjabloon die in deze quickstart wordt gebruikt, is afkomstig van [Azure-sjablonen.](https://docs.microsoft.com/azure/templates/Microsoft.Search/2015-08-19/searchservices)
+De sjabloon die in deze Quick Start wordt gebruikt, is afkomstig uit [Azure-sjablonen](https://docs.microsoft.com/azure/templates/Microsoft.Search/2015-08-19/searchservices).
 
 :::code language="json"source="~/quickstart-templates/101-azure-search-create/azuredeploy.json" range="1-86" highlight="4-50":::
 
-De Azure-bron die in deze sjabloon is gedefinieerd:
+De Azure-resource die in deze sjabloon is gedefinieerd:
 
-- [Microsoft.Search/searchServices:](https://docs.microsoft.com/azure/templates/Microsoft.Search/2015-08-19/searchServices)een Azure Cognitive Search-service maken
+- [Micro soft. Search/searchServices](https://docs.microsoft.com/azure/templates/Microsoft.Search/2015-08-19/searchServices): een Azure Cognitive Search-service maken
 
 ### <a name="deploy-the-template"></a>De sjabloon implementeren
 
-Selecteer de volgende afbeelding om u aan te melden bij Azure en een sjabloon te openen. De sjabloon maakt een Azure Cognitive Search-bron.
+Selecteer de volgende afbeelding om u aan te melden bij Azure en een sjabloon te openen. Met de sjabloon maakt u een Azure Cognitive Search-resource.
 
 [![Implementeren in Azure](./media/search-get-started-arm/arm-deploybuttona.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fazure%2Fazure-quickstart-templates%2Fmaster%2F101-azure-search-create%2Fazuredeploy.json)
 
-De portal geeft een formulier weer waarmee u eenvoudig parameterwaarden opgeven. Sommige parameters zijn vooraf gevuld met de standaardwaarden van de sjabloon. U moet uw abonnements-, resourcegroep-, locatie- en servicenaam opgeven. Als u Cognitive Services wilt gebruiken in een [AI-verrijkingspijplijn,](https://docs.microsoft.com/azure/search/cognitive-search-concept-intro) bijvoorbeeld om binaire afbeeldingsbestanden op tekst te analyseren, kiest u een locatie die zowel cognitive search als cognitive services biedt. Beide services moeten zich in dezelfde regio bevinden voor AI-verrijkingsworkloads. Zodra u het formulier hebt ingevuld, moet u akkoord gaan met de algemene voorwaarden en vervolgens de aankoopknop selecteren om uw implementatie te voltooien.
+In de portal wordt een formulier weer gegeven waarmee u eenvoudig parameter waarden kunt opgeven. Sommige para meters worden vooraf ingevuld met de standaard waarden van de sjabloon. U moet uw abonnement, de resource groep, de locatie en de service naam opgeven. Als u Cognitive Services wilt gebruiken in een [AI-verrijkings](https://docs.microsoft.com/azure/search/cognitive-search-concept-intro) pijplijn, bijvoorbeeld om binaire afbeeldings bestanden voor tekst te analyseren, kiest u een locatie die zowel Cognitive Search als Cognitive Services biedt. Beide services moeten zich in dezelfde regio bevinden voor AI-verrijkings workloads. Zodra u het formulier hebt ingevuld, moet u akkoord gaan met de voor waarden en vervolgens de knop aanschaffen selecteren om uw implementatie te volt ooien.
 
 > [!div class="mx-imgBorder"]
-> ![Azure-portalweergave van sjabloon](./media/search-get-started-arm/arm-portalscrnsht.png)
+> ![Azure Portal weer gave van sjabloon](./media/search-get-started-arm/arm-portalscrnsht.png)
 
 ## <a name="review-deployed-resources"></a>Geïmplementeerde resources controleren
 
-Wanneer uw implementatie is voltooid, hebt u toegang tot uw nieuwe brongroep en nieuwe zoekservice in de portal.
+Wanneer de implementatie is voltooid, hebt u toegang tot uw nieuwe resource groep en nieuwe zoek service in de portal.
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
-Andere Cognitieve Zoeken quickstarts en tutorials bouwen voort op deze quickstart. Als u van plan bent om door te gaan met de daaropvolgende quickstarts en tutorials, u deze bron op zijn plaats laten. Wanneer dit niet meer nodig is, u de brongroep verwijderen, die de service Cognitive Search en gerelateerde bronnen verwijdert.
+Andere Cognitive Search Snelstartgids en zelf studies zijn gebaseerd op deze Snelstartgids. Als u van plan bent om verder te gaan met de volgende Quick starts en zelf studies, wilt u deze resource mogelijk blijven gebruiken. Wanneer u deze niet meer nodig hebt, kunt u de resource groep verwijderen, waarmee de Cognitive Search-service en gerelateerde resources worden verwijderd.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze snelstart hebt u een cognitive search-service gemaakt met behulp van een Azure Resource Manager-sjabloon en de implementatie gevalideerd. Ga verder naar de onderstaande artikelen voor meer informatie over Cognitief zoeken en Azure Resource Manager.
+In deze Quick Start hebt u een Cognitive Search-service gemaakt met behulp van een Azure Resource Manager sjabloon en de implementatie gevalideerd. Ga verder met de volgende artikelen voor meer informatie over Cognitive Search en Azure Resource Manager.
 
- - Lees een [overzicht van Azure Cognitive Search](https://docs.microsoft.com/azure/search/search-what-is-azure-search)
- - [Een index](https://docs.microsoft.com/azure/search/search-get-started-portal) voor uw zoekservice maken
+ - Een [overzicht van Azure Cognitive Search](https://docs.microsoft.com/azure/search/search-what-is-azure-search) lezen
+ - [Een index maken](https://docs.microsoft.com/azure/search/search-get-started-portal) voor uw zoek service
  - [Een zoek-app maken](https://docs.microsoft.com/azure/search/search-create-app-portal) met de wizard Portal
- - [Maak een skillset](https://docs.microsoft.com/azure/search/cognitive-search-quickstart-blob) om informatie uit uw gegevens te extraheren
+ - [Een vakkennisset maken](https://docs.microsoft.com/azure/search/cognitive-search-quickstart-blob) om gegevens uit uw gegevens te extra heren
 
 

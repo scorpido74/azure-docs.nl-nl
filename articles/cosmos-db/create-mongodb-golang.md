@@ -1,5 +1,5 @@
 ---
-title: Console-app met API van Azure Cosmos DB voor MongoDB en Golang SDK
+title: Console-app met behulp van de API van Azure Cosmos DB voor MongoDB en Golang SDK
 description: Biedt een voorbeeld van Golang-code dat u kunt gebruiken om verbinding te maken met de Azure Cosmos DB-API's voor MongoDB en er query's op uit te voeren.
 author: markjbrown
 ms.author: mjbrown
@@ -8,13 +8,13 @@ ms.subservice: cosmosdb-mongo
 ms.topic: quickstart
 ms.date: 12/26/2018
 ms.openlocfilehash: 94be0ec16aedc317f1be41998356bc52b66f7e86
-ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/02/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80619199"
 ---
-# <a name="quickstart-build-a-console-app-using-azure-cosmos-dbs-api-for-mongodb-and-golang-sdk"></a>Snelstart: een console-app bouwen met de API van Azure Cosmos DB voor MongoDB en Golang SDK
+# <a name="quickstart-build-a-console-app-using-azure-cosmos-dbs-api-for-mongodb-and-golang-sdk"></a>Snelstartgids: een console-app bouwen met de API van Azure Cosmos DB voor MongoDB en Golang SDK
 
 > [!div class="op_single_selector"]
 > * [.NET](create-mongodb-dotnet.md)
@@ -33,7 +33,7 @@ Met andere woorden, uw Golang-toepassing weet alleen dat deze wordt verbonden me
 
 ## <a name="prerequisites"></a>Vereisten
 
-- Een Azure-abonnement. Als u geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free) voordat u begint. 
+- Een Azure-abonnement. Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free) aan voordat u begint. 
 
   [!INCLUDE [cosmos-db-emulator-mongodb](../../includes/cosmos-db-emulator-mongodb.md)]
 
@@ -93,7 +93,7 @@ De volgende codefragmenten zijn allemaal afkomstig uit het bestand main.go.
 
 ### <a name="connecting-the-go-app-to-cosmos-db"></a>De Go-app verbinden met Cosmos DB
 
-De API van Azure Cosmos DB voor MongoDB ondersteunt de tls-verbinding. Als u verbinding wilt maken, moet u de functie **DialServer** definiëren in [mgo. DialInfo](https://godoc.org/gopkg.in/mgo.v2#DialInfo) en gebruikmaken van de functie [tls.*Dial*](https://golang.org/pkg/crypto/tls#Dial) om de verbinding tot stand te brengen.
+De API van Azure Cosmos DB voor MongoDB ondersteunt de TLS-verbinding. Als u verbinding wilt maken, moet u de functie **DialServer** definiëren in [mgo. DialInfo](https://godoc.org/gopkg.in/mgo.v2#DialInfo) en gebruikmaken van de functie [tls.*Dial*](https://golang.org/pkg/crypto/tls#Dial) om de verbinding tot stand te brengen.
 
 Met het volgende Golang-codefragment verbindt u de Go-app met de API van Azure Cosmos DB voor MongoDB. De klasse *DialInfo* bevat opties voor het starten van een sessie.
 
@@ -129,7 +129,7 @@ defer session.Close()
 session.SetSafe(&mgo.Safe{})
 ```
 
-De **mgo. Dial()** methode wordt gebruikt wanneer er geen TLS-verbinding. Voor een TLS-verbinding, de **mgo. DialWithInfo()** methode is vereist.
+De **MgO. De methode dial ()** wordt gebruikt wanneer er geen TLS-verbinding is. Voor een TLS-verbinding is de **MgO. De methode DialWithInfo ()** is vereist.
 
 Er wordt een exemplaar van het object **DialWIthInfo{}** gebruikt om het sessieobject te maken. Zodra de sessie is gestart, kunt u de verzameling openen met het volgende codefragment:
 

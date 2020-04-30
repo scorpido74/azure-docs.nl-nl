@@ -1,5 +1,5 @@
 ---
-title: Overzicht van azure-virtuele machineschaal
+title: Overzicht van virtuele-machine schaal sets van Azure
 description: Leer alles over schaalsets voor virtuele Azure-machines en hoe u toepassingen automatisch kunt schalen
 author: mimckitt
 tags: azure-resource-manager
@@ -9,10 +9,10 @@ ms.custom: mvc
 ms.date: 09/26/2019
 ms.author: mimckitt
 ms.openlocfilehash: 03e3c7b5c0696069729d3067faad8ceb91fc611f
-ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/14/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81272539"
 ---
 # <a name="what-are-virtual-machine-scale-sets"></a>Wat zijn schaalsets voor virtuele machines?
@@ -27,7 +27,7 @@ Schaalsets voor virtuele Azure-machines bieden beheermogelijkheden voor toepassi
 - **Eenvoudig maken en beheren van meerdere virtuele machines**
     - Wanneer uw toepassing wordt uitgevoerd op veel virtuele machines, is het belangrijk om binnen de hele omgeving een consistente configuratie te onderhouden. Voor betrouwbare prestaties van uw toepassing moeten de VM grootte, de schijfconfiguratie en de installaties van de toepassing op alle VM's overeenkomen.
     - Als u kiest voor schaalsets, wordt voor alle VM-exemplaren dezelfde installatiekopie en configuratie van het besturingssysteem gebruikt. Deze aanpak maakt het mogelijk om zonder aanvullende configuratietaken of netwerkbeheer eenvoudig honderden VM's te beheren.
-    - Schaalsets ondersteunen het gebruik van de [Azure load balancer](../load-balancer/load-balancer-overview.md) voor basisdistributie van layer-4-verkeer en [Azure Application Gateway](../application-gateway/application-gateway-introduction.md) voor meer geavanceerde layer-7-verkeersdistributie en TLS-beëindiging.
+    - Schaal sets bieden ondersteuning voor het gebruik van de [Azure-Load Balancer](../load-balancer/load-balancer-overview.md) voor Basic-verdeling van laag 4-verkeer en [Azure-toepassing gateway](../application-gateway/application-gateway-introduction.md) voor meer geavanceerde distributie van laag 7-verkeer en TLS-beëindiging.
 
 - **Hoge beschikbaarheid en tolerantie voor toepassing**
     - Schaalsets worden gebruikt voor het uitvoeren van meerdere exemplaren van een toepassing. Als op een van deze VM-exemplaren een probleem optreedt, hebben klanten nog steeds toegang tot uw toepassing, omdat er dan met minimale onderbreking wordt overgeschakeld naar een van de andere VM-exemplaren.
@@ -38,7 +38,7 @@ Schaalsets voor virtuele Azure-machines bieden beheermogelijkheden voor toepassi
     - Automatisch schalen betekent enerzijds dat er geen overbodige VM-exemplaren actief zijn om uw toepassing uit te voeren op momenten dat de vraag klein is, en anderzijds dat klanten ook een aanvaardbaar prestatieniveau krijgen wanneer de vraag toeneemt omdat er dan automatisch extra VM-exemplaren worden toegevoegd. Hierdoor is het mogelijk om de kosten te verlagen en op een efficiënte manier Azure-resources te maken zodra deze nodig zijn.
 
 - **Werkt op grote schaal**
-    - Schaalsets ondersteunen maximaal 1000 VM-exemplaren. Als u uw eigen aangepaste VM-afbeeldingen maakt en uploadt, is de limiet 600 VM-exemplaren.
+    - Schaalsets ondersteunen maximaal 1000 VM-exemplaren. Als u uw eigen aangepaste VM-installatie kopieën maakt en uploadt, is de limiet 600 VM-exemplaren.
     - Gebruik [Azure Managed Disks](../virtual-machines/windows/managed-disks-overview.md) voor de beste prestaties met productieworkloads.
 
 
@@ -54,11 +54,11 @@ Schaalsets zijn opgebouwd uit virtuele machines. Met schaalsets beschikt u autom
 
 Er zijn geen extra kosten verbonden aan het gebruik van schaalsets. U betaalt alleen voor de onderliggende rekenresources, zoals de VM-exemplaren, load balancer of opslag van beheerde schijven. Er worden naast het gebruik van de VM's geen extra kosten in rekening gebracht voor de beheer- en automatiseringsfuncties, zoals automatisch schalen en redundantie.
 
-## <a name="how-to-monitor-your-scale-sets"></a>Hoe u uw schaalsets controleren
+## <a name="how-to-monitor-your-scale-sets"></a>Uw schaal sets bewaken
 
-Gebruik [Azure Monitor voor VM's](../azure-monitor/insights/vminsights-overview.md), die een eenvoudig onboardingproces heeft en de verzameling van belangrijke CPU-, geheugen-, schijf- en netwerkprestatiemeteritems van de VM's in uw schaalset automatiseert. Het bevat ook extra bewakingsmogelijkheden en vooraf gedefinieerde visualisaties die u helpen zich te concentreren op de beschikbaarheid en prestaties van uw schaalsets.
+Gebruik [Azure monitor voor VM's](../azure-monitor/insights/vminsights-overview.md), die een eenvoudig voorbereidings proces heeft en de verzameling van belang rijke prestatie meter items voor CPU, geheugen, schijf en netwerk automatiseert van de virtuele machines in uw schaalset. Het bevat ook extra bewakings mogelijkheden en vooraf gedefinieerde visualisaties waarmee u zich kunt concentreren op de beschik baarheid en prestaties van uw schaal sets.
 
-Schakel bewaking in voor uw [toepassing met de virtuele machineschaalset](../azure-monitor/app/azure-vm-vmss-apps.md) met Application Insights om gedetailleerde informatie over uw toepassing te verzamelen, waaronder paginaweergaven, toepassingsaanvragen en uitzonderingen. Controleer de beschikbaarheid van uw toepassing verder door een [beschikbaarheidstest](../azure-monitor/app/monitor-web-app-availability.md) te configureren om gebruikersverkeer te simuleren.
+Schakel bewaking in voor uw toepassing voor de [schaalset van virtuele machines](../azure-monitor/app/azure-vm-vmss-apps.md) met Application Insights om gedetailleerde informatie over uw toepassing te verzamelen, zoals pagina weergaven, toepassings aanvragen en uitzonde ringen. Controleer de beschik baarheid van uw toepassing door een [beschikbaarheids test](../azure-monitor/app/monitor-web-app-availability.md) te configureren om gebruikers verkeer te simuleren.
 
 ## <a name="next-steps"></a>Volgende stappen
 U kunt nu aan de slag door uw eerste schaalset voor virtuele machines te maken in Azure Portal.

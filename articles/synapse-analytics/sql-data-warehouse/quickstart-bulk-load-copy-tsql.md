@@ -1,6 +1,6 @@
 ---
-title: 'Snelstart: bulkbelastingsgegevens met één T-SQL-instructie'
-description: Bulkbelastingsgegevens met behulp van de instructie KOPIËREN
+title: 'Snelstartgids: gegevens bulksgewijs laden met behulp van één T-SQL-instructie'
+description: Gegevens bulksgewijs laden met behulp van de instructie COPY
 services: synapse-analytics
 author: kevinvngo
 manager: craigg
@@ -12,33 +12,33 @@ ms.author: kevin
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
 ms.openlocfilehash: d39b3085a802ca0ff745ab1f63f4a8fba966ea48
-ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/10/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81115002"
 ---
-# <a name="quickstart-bulk-load-data-using-the-copy-statement"></a>Snelstart: bulkbelastingsgegevens met de instructie KOPIËREN
+# <a name="quickstart-bulk-load-data-using-the-copy-statement"></a>Snelstartgids: gegevens bulksgewijs laden met behulp van de instructie COPY
 
-In deze quickstart laadt u gegevens in bulk in uw SQL-groep met behulp van de eenvoudige en flexibele [copy-instructie](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest) voor het innemen van gegevens met een hoge doorvoer. De COPY-instructie is het aanbevolen laadprogramma, omdat u gegevens naadloos en flexibel laden door functionaliteit te bieden aan:
+In deze Quick Start kunt u gegevens bulksgewijs laden in uw SQL-pool met behulp van de eenvoudige en flexibele [kopie-instructie](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest) voor gegevens opname met hoge door voer. De instructie COPY is het aanbevolen laad hulpprogramma, zodat u naadloos en flexibel gegevens kunt laden door de volgende functionaliteit te bieden:
 
-- Gebruikers met een lager bevoorrecht bestand kunnen laden zonder dat er strikte CONTROLE-machtigingen voor het gegevensmagazijn nodig zijn
-- Gebruik slechts één T-SQL-instructie zonder extra databaseobjecten te hoeven maken
-- Gebruik maken van een fijner machtigingsmodel zonder opslagaccountsleutels bloot te leggen met Share Access Signatures (SAS)
-- Een ander opslagaccount opgeven voor de FOUTFILE-locatie (REJECTED_ROW_LOCATION)
-- Standaardwaarden voor elke doelkolom aanpassen en brongegevensvelden opgeven die u in specifieke doelkolommen wilt laden
-- Een aangepaste rijterminator opgeven voor CSV-bestanden
-- Escape string, veld en rij delimiters voor CSV-bestanden
-- Sql Server-datumnotaties gebruiken voor CSV-bestanden
-- Jokertekens en meerdere bestanden opgeven in het opslaglocatiepad
+- Gebruikers met een beperkte bevoegdheid toestaan om te laden zonder dat dit strikt beheer machtigingen voor het Data Warehouse nodig is
+- Gebruik slechts één T-SQL-instructie zonder extra database objecten te hoeven maken
+- Maak gebruik van een nauw keurig machtigings model zonder opslag account sleutels weer te geven met behulp van hand tekeningen voor gedeelde toegang (SAS)
+- Geef een ander opslag account op voor de locatie van de ERRORFILE (REJECTED_ROW_LOCATION)
+- Standaard waarden voor elke doel kolom aanpassen en bron gegevens velden opgeven die moeten worden geladen in specifieke doel kolommen
+- Een aangepaste rij-Terminator opgeven voor CSV-bestanden
+- Escape teken reeks-, veld-en rij scheidings tekens voor CSV-bestanden
+- Gebruik SQL Server datum notaties voor CSV-bestanden
+- Joker tekens en meerdere bestanden opgeven in het pad naar de opslag locatie
 
 ## <a name="prerequisites"></a>Vereisten
 
-Deze quickstart gaat ervan uit dat u al een SQL-pool hebt. Als er geen SQL-pool is gemaakt, gebruikt u de snelstart [van de portal Maken en verbinden.](create-data-warehouse-portal.md)
+In deze Quick Start wordt ervan uitgegaan dat u al een SQL-groep hebt. Als er geen SQL-groep is gemaakt, gebruikt u de Snelstartgids [Create and Connect-Portal](create-data-warehouse-portal.md) .
 
-## <a name="create-the-target-table"></a>De doeltabel maken
+## <a name="create-the-target-table"></a>De doel tabel maken
 
-In dit voorbeeld laden we gegevens uit de new yorktaxidataset. We laden een tafel met de naam Trip die taxiritten vertegenwoordigt die binnen een jaar zijn gemaakt. Voer het volgende uit om de tabel te maken:
+In dit voor beeld worden gegevens uit de nieuwe taxi-gegevensset van Amsterdam geladen. Er wordt een tabel met de naam trip geladen die in één jaar is opgenomen voor de taxi. Voer de volgende handelingen uit om de tabel te maken:
 
 ```sql
 CREATE TABLE [dbo].[Trip]
@@ -74,9 +74,9 @@ WITH
 );
 ```
 
-## <a name="run-the-copy-statement"></a>De instructie KOPIËREN uitvoeren
+## <a name="run-the-copy-statement"></a>De instructie COPY uitvoeren
 
-Voer de volgende copy-instructie uit waarmee gegevens uit het Azure Blob-opslagaccount worden geladen in de tabel Trip.
+Voer de volgende instructie COPY uit om gegevens uit het Azure Blob Storage-account te laden in de tabel reis.
 
 ```sql
 COPY INTO [dbo].[Trip] FROM 'https://nytaxiblob.blob.core.windows.net/2013/Trip2013/'
@@ -86,9 +86,9 @@ WITH (
 ) OPTION (LABEL = 'COPY: dbo.trip');
 ```
 
-## <a name="monitor-the-load"></a>De belasting controleren
+## <a name="monitor-the-load"></a>De belasting bewaken
 
-Controleer of uw belasting vooruitgang boekt door periodiek de volgende query uit te voeren:
+Controleer of het laden van voortgang plaatsvindt door regel matig de volgende query uit te voeren:
 
 ```sql
 SELECT  r.[request_id]                           
@@ -110,5 +110,5 @@ GROUP BY r.[request_id]
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Zie [Aanbevolen procedures voor het laden van gegevens voor](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/guidance-for-loading-data)aanbevolen procedures voor het laden van gegevens .
-- Zie [Workload Isolation](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/quickstart-configure-workload-isolation-tsql)voor informatie over het beheren van de resources voor uw gegevensbelasting. 
+- Zie [Aanbevolen procedures voor het laden van gegevens](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/guidance-for-loading-data)voor aanbevolen procedures voor het laden van gegevens.
+- Zie [workload-isolatie](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/quickstart-configure-workload-isolation-tsql)voor informatie over het beheren van de resources voor het laden van uw gegevens. 

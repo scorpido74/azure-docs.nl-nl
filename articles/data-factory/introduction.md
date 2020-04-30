@@ -10,10 +10,10 @@ ms.workload: data-services
 ms.topic: overview
 ms.date: 09/30/2019
 ms.openlocfilehash: 327aadbc2996e91ef0f7639da86a647ddd42247c
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81410948"
 ---
 # <a name="what-is-azure-data-factory"></a>Wat is Azure Data Factory?
@@ -30,15 +30,15 @@ Voor het analyseren van deze logboeken moet het bedrijf gebruikmaken van de refe
 
 Om inzichten te extraheren, wil het bedrijf de verzamelde gegevens verwerken met behulp van een Spark-cluster in de cloud (HDInsight) en de getransformeerde gegevens publiceren in een datawarehouse in de cloud, zoals Azure SQL Data Warehouse, om er gemakkelijk een rapport over te maken. Het bedrijf wil deze werkstroom automatiseren en volgens een dagelijks schema controleren en beheren. Ook wil het bedrijf de werkstroom uitvoeren wanneer bestanden in een blob store-container terechtkomen.
 
-Azure Data Factory is het platform dat dergelijke gegevensscenario's oplost. Het is de *cloudgebaseerde ETL- en data-integratieservice waarmee u datagestuurde workflows maken voor het orkestreren van gegevensverplaatsing en het transformeren van gegevens op schaal.* Met behulp van Azure Data Factory kunt u gegevensgestuurde werkstromen (pijplijnen genoemd) maken en plannen die gegevens uit verschillende gegevensarchieven kunnen opnemen. U complexe ETL-processen bouwen die gegevens visueel transformeren met gegevensstromen of met behulp van compute-services zoals Azure HDInsight Hadoop, Azure Databricks en Azure SQL Database. 
+Azure Data Factory is het platform dat dergelijke gegevensscenario's oplost. Het is de *cloud-gebaseerde ETL-en gegevens integratie service waarmee u gegevensgestuurde werk stromen kunt maken voor het organiseren van gegevens verplaatsing en het transformeren van gegevens op schaal*. Met behulp van Azure Data Factory kunt u gegevensgestuurde werkstromen (pijplijnen genoemd) maken en plannen die gegevens uit verschillende gegevensarchieven kunnen opnemen. U kunt complexe ETL-processen bouwen waarmee gegevens visueel worden getransformeerd met gegevens stromen of met behulp van reken services zoals Azure HDInsight Hadoop, Azure Databricks en Azure SQL Database. 
 
-Bovendien u uw getransformeerde gegevens publiceren naar gegevensopslag, zoals Azure SQL Data Warehouse voor bi-toepassingen (Business Intelligence) om te gebruiken. Via de Azure Data Factory kunt onbewerkte gegevens uiteindelijk worden ingedeeld in zinvolle gegevensarchieven en gegevensmeren zodat u betere zakelijke beslissingen kunt nemen.
+Daarnaast kunt u uw getransformeerde gegevens publiceren naar gegevensopslag plaatsen zoals Azure SQL Data Warehouse voor de toepassingen van business intelligence (BI) die u wilt gebruiken. Via de Azure Data Factory kunt onbewerkte gegevens uiteindelijk worden ingedeeld in zinvolle gegevensarchieven en gegevensmeren zodat u betere zakelijke beslissingen kunt nemen.
 
 ![Weergave van het hoogste niveau van Data Factory](media/data-flow/overview.png)
 
 ## <a name="how-does-it-work"></a>Hoe werkt het?
 
-Data Factory bevat een reeks onderling verbonden systemen die een compleet end-to-end platform bieden voor data engineers.
+Data Factory bevat een reeks onderling verbonden systemen die een volledig end-to-end platform bieden voor gegevens technici.
 
 ### <a name="connect-and-collect"></a>Verbinding maken en verzamelen
 
@@ -48,15 +48,15 @@ De eerste stap voor het bouwen van een informatieproductiesysteem bestaat uit he
 
 Zonder Data Factory moeten ondernemingen aangepaste onderdelen voor gegevensverplaatsing ontwikkelen of aangepaste services schrijven om deze gegevensbronnen en verwerking te integreren. Het is duur en moeilijk om dergelijke systemen te integreren en te onderhouden. Bovendien beschikken ze vaak niet over de functionaliteit voor bewaking, waarschuwing en besturingselementen op bedrijfsniveau die een volledig beheerde service kan bieden.
 
-Met Data Factory kunt u de [kopieeractiviteit](copy-activity-overview.md) in een pijplijn gebruiken om gegevens van on-premises gegevensarchieven en gegevensarchieven uit de cloud te verplaatsen naar een gecentraliseerd gegevensarchief in de cloud voor verdere analyse. U bijvoorbeeld gegevens verzamelen in Azure Data Lake Storage en de gegevens later transformeren met behulp van een Compute Service van Azure Data Lake Analytics. U kunt ook gegevens verzamelen in Azure Blob Storage en later transformeren met behulp van een Hadoop-cluster van Azure HDInsight.
+Met Data Factory kunt u de [kopieeractiviteit](copy-activity-overview.md) in een pijplijn gebruiken om gegevens van on-premises gegevensarchieven en gegevensarchieven uit de cloud te verplaatsen naar een gecentraliseerd gegevensarchief in de cloud voor verdere analyse. U kunt bijvoorbeeld gegevens verzamelen in Azure Data Lake Storage en de gegevens later transformeren met behulp van een Azure Data Lake Analytics compute-service. U kunt ook gegevens verzamelen in Azure Blob Storage en later transformeren met behulp van een Hadoop-cluster van Azure HDInsight.
 
 ### <a name="transform-and-enrich"></a>Transformeren en verrijken
-Nadat gegevens aanwezig zijn in een gecentraliseerd gegevensarchief in de cloud, de verzamelde gegevens verwerken of transformeren met behulp van ADF-kaartgegevensstromen. Gegevensstromen stellen gegevenstechnici in staat om grafieken voor gegevenstransformatie te bouwen en bij te houden die op Spark worden uitgevoerd zonder dat u spark-clusters of Spark-programmering hoeft te begrijpen.
+Nadat de gegevens in een gecentraliseerd gegevens archief in de Cloud zijn opgenomen, verwerkt of transformeert u de verzamelde gegevens met behulp van gegevens stromen voor ADF-toewijzing. Gegevens stromen maken het mogelijk om gegevens transformatie grafieken te bouwen en onderhouden die worden uitgevoerd op Spark zonder dat ze moeten begrijpen Spark-clusters of Spark-programmering.
 
-Als u transformaties liever met de hand codeert, ondersteunt ADF externe activiteiten voor het uitvoeren van uw transformaties op compute services zoals HDInsight Hadoop, Spark, Data Lake Analytics en Machine Learning.
+Als u liever trans formaties met handen codeert, ondersteunt ADF externe activiteiten voor het uitvoeren van uw trans formaties op Compute-services zoals HDInsight Hadoop, Spark, Data Lake Analytics en Machine Learning.
 
 ### <a name="cicd-and-publish"></a>CI/CD en publiceren
-Data Factory biedt volledige ondersteuning voor CI/CD van uw gegevenspijplijnen met Azure DevOps en GitHub. Hierdoor u uw ETL-processen stapsgewijs ontwikkelen en leveren voordat u het eindproduct publiceert. Nadat de onbewerkte gegevens zijn omgezet in gebruiksklare bedrijfsgegevens, laadt u de gegevens in Azure Data Warehouse, Azure SQL Database, Azure CosmosDB of een andere analyse-engine waar gebruikers in uw bedrijf naar kunnen verwijzen met hun hulpprogramma's voor business intelligence.
+Data Factory biedt volledige ondersteuning voor CI/CD van uw gegevens pijplijnen met behulp van Azure DevOps en GitHub. Zo kunt u uw ETL-processen stapsgewijs ontwikkelen en leveren voordat u het voltooide product publiceert. Nadat de onbewerkte gegevens zijn omgezet in gebruiksklare bedrijfsgegevens, laadt u de gegevens in Azure Data Warehouse, Azure SQL Database, Azure CosmosDB of een andere analyse-engine waar gebruikers in uw bedrijf naar kunnen verwijzen met hun hulpprogramma's voor business intelligence.
 
 ### <a name="monitor"></a>Controleren
 Nadat u uw pijplijn voor gegevensintegratie hebt gemaakt en geïmplementeerd, en op die manier toegevoegde waarde biedt met getransformeerde gegevens, controleert u hoe vaak de geplande activiteiten en pijplijnen slagen en mislukken. Azure Data Factory heeft ingebouwde ondersteuning voor pijplijnbewaking via Azure Monitor, API, PowerShell, Azure Monitor-logboeken en statusvensters in de Azure-portal.
@@ -70,7 +70,7 @@ Een data factory kan één of meer pijplijnen hebben. Een pijplijn is een logisc
 Het voordeel van een pijplijn is dat u de activiteiten kunt beheren als een groep in plaats van afzonderlijke activiteiten te beheren. De activiteiten in een pijplijn kunnen in een keten worden samengevoegd om na elkaar of onafhankelijk en parallel te worden uitgevoerd.
 
 ### <a name="mapping-data-flows"></a>Toewijzing gegevensstromen
-Grafieken van logica voor gegevenstransformatie maken en beheren die u gebruiken om gegevens van elke grootte te transformeren. U een herbruikbare bibliotheek met gegevenstransformatieroutines opbouwen en deze processen op een geschaalde manier uitvoeren vanuit uw ADF-pijplijnen. Data Factory voert uw logica uit op een Spark-cluster dat wordt opgesteld en wordt uitgevoerd wanneer u het nodig hebt. U hoeft nooit clusters te beheren of te onderhouden.
+Grafieken van gegevens transformatie logica maken en beheren die u kunt gebruiken om gegevens van elke grootte te transformeren. U kunt een herbruikbare bibliotheek met gegevens transformatie routines bouwen en deze processen uitvoeren op een uitgeschaalde manier vanuit uw ADF-pijp lijnen. Data Factory voert uw logica uit op een Spark-cluster dat omhoog en omlaag draait wanneer dat nodig is. U hoeft nooit clusters te beheren of te onderhouden.
 
 ### <a name="activity"></a>Activiteit
 Activiteiten vertegenwoordigen een verwerkingsstap in een pijplijn. U kunt bijvoorbeeld een kopieeractiviteit gebruiken om gegevens van één gegevensarchief naar een ander te kopiëren. U kunt ook een Hive-activiteit gebruiken, waarmee een Hive-query wordt uitgevoerd voor een Azure HDInsight-cluster om uw gegevens te transformeren of analyseren. Data Factory ondersteunt drie soorten activiteiten: activiteiten voor gegevensverplaatsing, activiteiten voor gegevenstransformatie en controleactiviteiten.
@@ -85,7 +85,7 @@ Gekoppelde services worden voor twee doeleinden gebruikt in een Data Factory:
 
 - Als vertegenwoordiging van een **gegevensarchief**, zoals een on-premises SQL Server-database, een Oracle-database, een bestandsshare of een Azure Blob Storage-account. Zie het artikel [kopieeractiviteit](copy-activity-overview.md) voor een lijst met ondersteunde gegevensarchieven.
 
-- Een **rekenbron** weergeven die de uitvoering van een activiteit kan hosten. De activiteit HDInsightHive wordt bijvoorbeeld uitgevoerd in een HDInsight Hadoop-cluster. Zie het artikel [Gegevens transformeren](transform-data.md) voor een lijst met transformatieactiviteiten en ondersteunde rekenomgevingen.
+- Om een **Compute-resource** voor te stellen die de uitvoering van een activiteit kan hosten. De activiteit HDInsightHive wordt bijvoorbeeld uitgevoerd in een HDInsight Hadoop-cluster. Zie het artikel [Gegevens transformeren](transform-data.md) voor een lijst met transformatieactiviteiten en ondersteunde rekenomgevingen.
 
 ### <a name="triggers"></a>Triggers
 Triggers zijn verwerkingseenheden die bepalen wanneer een pijplijnuitvoering moet worden gestart. Er zijn verschillende soorten triggers voor verschillende soorten gebeurtenissen.
@@ -104,10 +104,10 @@ Een gekoppelde service is ook een algemeen type parameter met de verbindingsgege
 De controlestroom is een indeling van activiteiten van de pijplijn, waaronder het koppelen van activiteiten in een reeks, maken van vertakkingen en definiëren van parameters op het niveau van de pijplijn. Argumenten worden doorgegeven tijdens het aanroepen van de pijplijn op aanvraag of vanuit een trigger. Deze omvat ook het doorgeven van een aangepaste status en luscontainers, ofwel For-each-iterators.
 
 ### <a name="variables"></a>Variabelen
-Variabelen kunnen worden gebruikt in pijplijnen om tijdelijke waarden op te slaan en kunnen ook worden gebruikt in combinatie met parameters om het doorgeven van waarden tussen pijplijnen, gegevensstromen en andere activiteiten mogelijk te maken.
+Variabelen kunnen worden gebruikt in pijp lijnen voor het opslaan van tijdelijke waarden en kunnen ook worden gebruikt in combi natie met para meters om het door geven van waarden tussen pijp lijnen, gegevens stromen en andere activiteiten mogelijk te maken.
 
 ## <a name="next-steps"></a>Volgende stappen
-Hier zijn belangrijke volgende stap documenten om te verkennen:
+Hier volgen belang rijke documenten voor de volgende stap om te verkennen:
 
 - [Gegevenssets en gekoppelde services](concepts-datasets-linked-services.md)
 - [Pijplijnen en activiteiten](concepts-pipelines-activities.md)
@@ -119,5 +119,5 @@ Hier zijn belangrijke volgende stap documenten om te verkennen:
 - [.NET](quickstart-create-data-factory-dot-net.md)
 - [Python](quickstart-create-data-factory-python.md)
 - [REST](quickstart-create-data-factory-rest-api.md)
-- [Azure Resource Manager-sjabloon](quickstart-create-data-factory-resource-manager-template.md)
+- [Azure Resource Manager sjabloon](quickstart-create-data-factory-resource-manager-template.md)
  

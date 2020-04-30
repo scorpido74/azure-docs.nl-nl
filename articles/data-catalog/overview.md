@@ -1,5 +1,5 @@
 ---
-title: Inleiding tot Azure-gegevenscatalogus
+title: Inleiding tot Azure Data Catalog
 description: Dit artikel bevat een overzicht van Microsoft Azure Data Catalog, met inbegrip van de functies ervan en de problemen die Data Catalog oplost. Met Data Catalog kan elke gebruiker gegevensbronnen registreren, detecteren, begrijpen en gebruiken.
 author: JasonWHowell
 ms.author: jasonh
@@ -7,15 +7,15 @@ ms.service: data-catalog
 ms.topic: overview
 ms.date: 08/01/2019
 ms.openlocfilehash: 9b7a5d5ca6cbad897839c8e28c9e3efd1eeabaf0
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "68736981"
 ---
 # <a name="what-is-azure-data-catalog"></a>Wat is Azure Data Catalog?
 
-Azure Data Catalog is een volledig beheerde cloudservice. Hiermee kunnen gebruikers de gegevensbronnen ontdekken die ze nodig hebben en de gegevensbronnen begrijpen die ze vinden. Tegelijkertijd helpt Data Catalog organisaties meer waarde te halen uit hun bestaande investeringen.
+Azure Data Catalog is een volledig beheerde Cloud service. Hiermee kunnen gebruikers de gegevens bronnen ontdekken die ze nodig hebben en inzicht krijgen in de gegevens bronnen die ze hebben gevonden. Tegelijkertijd helpt Data Catalog organisaties meer waarde te halen uit hun bestaande investeringen.
 
 Met Data Catalog kan elke gebruiker (analist, gegevenswetenschapper of ontwikkelaar) gegevensbronnen opzoeken, begrijpen en gebruiken. Data Catalog bevat een crowdsourcingmodel met metagegevens en aantekeningen. Het is een centrale locatie waar alle gebruikers van een organisatie hun kennis kunnen bijdragen en kunnen bouwen aan een community en cultuur van gegevens.
 
@@ -23,10 +23,10 @@ Met Data Catalog kan elke gebruiker (analist, gegevenswetenschapper of ontwikkel
 
 Detectie van zakelijke gegevensbronnen is traditioneel een organisch proces op basis van specifieke kennis. Voor bedrijven die het meeste uit hun gegevensassets willen halen, leidt deze benadering tot talloze uitdagingen:
 
-* Gebruikers weten mogelijk niet dat er een gegevensbron bestaat, tenzij ze ermee in contact komen als onderdeel van een ander proces. Er is geen centrale locatie waar gegevensbronnen zijn geregistreerd.
+* Gebruikers weten mogelijk niet dat een gegevens bron bestaat, tenzij ze in contact komen met het bestand als onderdeel van een ander proces. Er is geen centrale locatie waar gegevensbronnen zijn geregistreerd.
 * Als gebruikers de locatie van een gegevensbron weten, kunnen ze de gegevens niet benaderen met behulp van een clienttoepassing. Vanwege dataverbruik moeten gebruikers de verbindingsreeks of het pad kennen.
 * Tenzij gebruikers de locatie van de documentatie voor een gegevensbron weten, weten ze niet wat het beoogde gebruik van de gegevens is. Gegevensbronnen en documentatie bevinden zich mogelijk op allerlei plaatsen en worden op verschillende manieren gebruikt.
-* Als gebruikers vragen over een gegevensasset hebben, moeten ze de expert die of het team dat verantwoordelijk is voor de gegevens zien te vinden en ze offline benaderen. Er is geen expliciet verband tussen gegevens en de experts die perspectieven hebben op het gebruik ervan.
+* Als gebruikers vragen over een gegevensasset hebben, moeten ze de expert die of het team dat verantwoordelijk is voor de gegevens zien te vinden en ze offline benaderen. Er is geen expliciete verbinding tussen gegevens en de experts die perspectieven hebben voor het gebruik ervan.
 * Tenzij een gebruiker het proces voor het aanvragen van toegang tot de gegevensbron begrijpt, kan hij met detectie van de gegevensbron en de bijbehorende documentatie nog steeds geen toegang krijgen tot de gegevens.
 
 ## <a name="discovery-challenges-for-data-producers"></a>Problemen met detectie voor gegevensproducenten
@@ -34,7 +34,7 @@ Detectie van zakelijke gegevensbronnen is traditioneel een organisch proces op b
 Terwijl gegevensgebruikers voor deze eerder vermelde uitdagingen staan, hebben gebruikers die verantwoordelijk zijn voor het maken en onderhouden van gegevensassets hun eigen uitdagingen:
 
 * Het annoteren van gegevensbronnen met beschrijvende metagegevens is vaak verspilde moeite. Clienttoepassingen negeren doorgaans beschrijvingen die zijn opgeslagen in de gegevensbron.
-* Het maken van documentatie voor gegevensbronnen is vaak verspilde moeite. Het is een voortdurende verantwoordelijkheid om documentatie synchroon te houden met gegevensbronnen. Gebruikers hebben mogelijk geen vertrouwen in documentatie die als verouderd wordt ervaren.
+* Het maken van documentatie voor gegevensbronnen is vaak verspilde moeite. Het is een voortdurende verantwoordelijkheid om de documentatie synchroon te houden met gegevens bronnen. Gebruikers hebben mogelijk geen vertrouwen in de documentatie die wordt waargenomen als verouderd.
 * Het maken en onderhouden van documentatie voor gegevensbronnen is complex en tijdrovend. Dit geldt des te meer voor het beschikbaar maken van die documentatie voor iedereen die gebruikmaakt van de gegevensbron.
 * Het is van groot belang om toegang tot gegevensbronnen te beperken en ervoor te zorgen dat gegevensgebruikers weten hoe ze om toegang kunnen vragen.
 
@@ -46,7 +46,7 @@ Data Catalog is ontworpen om deze problemen te verhelpen en ervoor te zorgen dat
 
 Data Catalog levert een cloudservice waarin een gegevensbron kan worden geregistreerd. De gegevens blijven op de bestaande locatie, maar een kopie van de metagegevens wordt toegevoegd aan Data Catalog, samen met een verwijzing naar de locatie van de gegevensbron. Deze metagegevens worden ook geïndexeerd zodat elke gegevensbron gemakkelijk kan worden gedetecteerd via zoekopdrachten, en begrijpelijk is voor gebruikers die de gegevensbron detecteren.
 
-Nadat een gegevensbron is geregistreerd, kunnen de metagegevens worden verrijkt. De metagegevens kunnen worden toegevoegd door de gebruiker die het heeft geregistreerd of door andere gebruikers in de onderneming. Elke gebruiker kan aantekeningen toevoegen aan een gegevensbron door beschrijvingen, tags of andere metagegevens in te voeren, zoals documentatie en processen voor het aanvragen van toegang tot gegevensbronnen. Deze beschrijvende metagegevens vormen een aanvulling op de structurele metagegevens (zoals kolomnamen en gegevenstypen) die zijn geregistreerd vanuit de gegevensbron.
+Nadat een gegevens bron is geregistreerd, kunnen de meta gegevens worden uitgebreid. De meta gegevens kunnen worden toegevoegd door de gebruiker die het heeft geregistreerd of door andere gebruikers in de onderneming. Elke gebruiker kan aantekeningen toevoegen aan een gegevensbron door beschrijvingen, tags of andere metagegevens in te voeren, zoals documentatie en processen voor het aanvragen van toegang tot gegevensbronnen. Deze beschrijvende metagegevens vormen een aanvulling op de structurele metagegevens (zoals kolomnamen en gegevenstypen) die zijn geregistreerd vanuit de gegevensbron.
 
 Het primaire doel van het registreren van de bronnen is het detecteren en begrijpen van gegevensbronnen en het gebruik ervan. Zakelijke gebruikers hebben mogelijk gegevens nodig voor bedrijfsinformatie, ontwikkeling van toepassingen, data science of een andere taak waarbij de juiste gegevens vereist zijn. Ze kunnen de detectiefunctie van Data Catalog gebruiken om te snel zoeken naar gegevens die ze nodig hebben, de gegevens te beoordelen op geschiktheid en de gegevens gebruiken door het openen van de gegevensbron in een hulpprogramma naar keuze. 
 
@@ -70,7 +70,7 @@ Zie voor meer informatie over de mogelijkheden van Data Catalog:
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Ga aan de slag met Gegevenscatalogus:
+Om aan de slag te gaan met Data Catalog:
 
-* [Snelstart: een Azure-gegevenscatalogus maken](data-catalog-get-started.md)
-* [Uw Azure-gegevenscatalogus openen](https://www.azuredatacatalog.com)
+* [Snelstartgids: een Azure Data Catalog maken](data-catalog-get-started.md)
+* [Open uw Azure Data Catalog](https://www.azuredatacatalog.com)

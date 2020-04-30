@@ -1,6 +1,6 @@
 ---
-title: 'Snelstart: Azure Blob-opslagclientbibliotheek v2.1 voor Python'
-description: In deze snelstart maakt u een opslagaccount en een container in object(blob)-opslag. Vervolgens gebruikt u de opslagclientbibliotheek v2.1 voor Python om een blob te uploaden naar Azure Storage, een blob te downloaden en de blobs in een container weer te geven.
+title: 'Snelstartgids: Azure Blob Storage-client bibliotheek v 2.1 voor python'
+description: In deze snelstart maakt u een opslagaccount en een container in object(blob)-opslag. Vervolgens gebruikt u de Storage-client bibliotheek v 2.1 voor python om een BLOB te uploaden naar Azure Storage, een BLOB te downloaden en de blobs in een container weer te geven.
 author: mhopkins-msft
 ms.author: mhopkins
 ms.date: 01/24/2020
@@ -9,22 +9,22 @@ ms.subservice: blobs
 ms.topic: quickstart
 ms.custom: seo-python-october2019
 ms.openlocfilehash: 4b0248604b6e9189d5275177a4960e4c352e8215
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "76906433"
 ---
-# <a name="quickstart-manage-blobs-with-python-v21-sdk"></a>Snelstart: blobs beheren met Python v2.1 SDK
+# <a name="quickstart-manage-blobs-with-python-v21-sdk"></a>Quick Start: blobs beheren met python v 2.1 SDK
 
-In deze quickstart leer je blobs te beheren met Python. Blobs zijn objecten die grote hoeveelheden tekst of binaire gegevens kunnen bevatten, waaronder afbeeldingen, documenten, streamingmedia en archiefgegevens. Je uploadt, downloadt en lijstblobs en je maakt en verwijdert containers.
+In deze Quick Start leert u hoe u blobs beheert met behulp van python. Blobs zijn objecten die grote hoeveel heden tekst of binaire gegevens kunnen bevatten, zoals afbeeldingen, documenten, streaming media en gegevens archivering. U kunt blobs uploaden, downloaden en vermelden en u kunt containers maken en verwijderen.
 
 ## <a name="prerequisites"></a>Vereisten
 
-- Een Azure-account met een actief abonnement. [Maak gratis een account aan.](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)
-- Een Azure Storage-account. [Een opslagaccount maken](../common/storage-account-create.md).
-- [Python.](https://www.python.org/downloads/)
-- [Azure Storage SDK voor Python](https://github.com/Azure/azure-sdk-for-python).
+- Een Azure-account met een actief abonnement. [Maak gratis een account](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
+- Een Azure Storage-account. [Maak een opslag account](../common/storage-account-create.md).
+- [Python](https://www.python.org/downloads/).
+- [Azure Storage SDK voor python](https://github.com/Azure/azure-sdk-for-python).
 
 [!INCLUDE [storage-multi-protocol-access-preview](../../../includes/storage-multi-protocol-access-preview.md)]
 
@@ -32,13 +32,13 @@ In deze quickstart leer je blobs te beheren met Python. Blobs zijn objecten die 
 
 De [voorbeeldtoepassing](https://github.com/Azure-Samples/storage-blobs-python-quickstart.git) in deze snelstart is een Python-basistoepassing.  
 
-Gebruik de volgende [git-opdracht](https://git-scm.com/) om de toepassing naar uw ontwikkelomgeving te downloaden. 
+Gebruik de volgende [Git](https://git-scm.com/) -opdracht om de toepassing te downloaden naar uw ontwikkel omgeving. 
 
 ```bash
 git clone https://github.com/Azure-Samples/storage-blobs-python-quickstart.git 
 ```
 
-Als u het Python-programma wilt bekijken, opent u het *example.py* bestand aan de basis van de opslagplaats.  
+Als u het python-programma wilt bekijken, opent u het *example.py* -bestand in de hoofdmap van de opslag plaats.  
 
 [!INCLUDE [storage-copy-account-key-portal](../../../includes/storage-copy-account-key-portal.md)]
 
@@ -48,7 +48,7 @@ Geef in de toepassing de naam en accountsleutel van uw opslagaccount op om een `
 
 1. Open het bestand *example.py* vanuit de Solution Explorer in uw IDE.
 
-1. Vervang `accountname` de `accountkey` waarden en waarden door de naam en sleutel van uw opslagaccount:
+1. Vervang de `accountname` waarden `accountkey` en door de naam en sleutel van uw opslag account:
 
     ```python
     block_blob_service = BlockBlobService(
@@ -59,15 +59,15 @@ Geef in de toepassing de naam en accountsleutel van uw opslagaccount op om een `
 
 ## <a name="run-the-sample"></a>De voorbeeldtoepassing uitvoeren
 
-Het voorbeeldprogramma maakt een testbestand in de map *Documenten,* uploadt het bestand naar Blob-opslag, geeft een lijst van de blobs in het bestand en downloadt het bestand met een nieuwe naam.
+In het voorbeeld programma wordt een test bestand gemaakt in de map *documenten* , wordt het bestand geüpload naar Blob-opslag, worden de blobs in het bestand weer gegeven en wordt het bestand met een nieuwe naam gedownload.
 
-1. Installeer de afhankelijkheden:
+1. De afhankelijkheden installeren:
 
     ```console
     pip install azure-storage-blob==2.1.0
     ```
 
-1. Ga naar de voorbeeldtoepassing:
+1. Ga naar de voorbeeld toepassing:
 
     ```console
     cd storage-blobs-python-quickstart
@@ -92,24 +92,24 @@ Het voorbeeldprogramma maakt een testbestand in de map *Documenten,* uploadt het
     Downloading blob to     C:\Users\azureuser\Documents\QuickStart_9f4ed0f9-22d3-43e1-98d0-8b2c05c01078_DOWNLOADED.txt
     ```
 
-1. Voordat u verdergaat, gaat u naar de map *Documenten* en controleert u op de twee bestanden.
+1. Voordat u doorgaat, gaat u naar de map *documenten* en controleert u op de twee bestanden.
 
-    * *QuickStart_\<universeel-unieke-id\>*
-    * *QuickStart_\<universeel unieke-id-_DOWNLOADED\>*
+    * *QuickStart_\<Universele unieke id\>*
+    * *QuickStart_\<Universele unieke id\>_DOWNLOADED*
 
 1. Als u ze opent, ziet u dat ze hetzelfde zijn.
 
-    U ook een hulpprogramma zoals de [Azure Storage Explorer](https://storageexplorer.com)gebruiken. Het is goed voor het bekijken van de bestanden in Blob-opslag. Azure Storage Explorer is een gratis cross-platform tool waarmee u toegang krijgt tot uw opslagaccountgegevens. 
+    U kunt ook een hulp programma gebruiken zoals de [Azure Storage Explorer](https://storageexplorer.com). Het is handig voor het weer geven van de bestanden in Blob Storage. Azure Storage Explorer is een gratis hulp programma voor meerdere platforms waarmee u toegang krijgt tot de gegevens van uw opslag account. 
 
-1. Nadat u de bestanden hebt bekeken, drukt u op een toets om het voorbeeld te voltooien en de testbestanden te verwijderen.
+1. Nadat u de bestanden hebt bekeken, drukt u op een wille keurige toets om het voor beeld te volt ooien en de test bestanden te verwijderen.
 
-## <a name="learn-about-the-sample-code"></a>Meer informatie over de voorbeeldcode
+## <a name="learn-about-the-sample-code"></a>Meer informatie over de voorbeeld code
 
 Nu u weet wat het voorbeeldprogramma doet, opent u het bestand *example.py* om de code te bekijken.
 
 ### <a name="get-references-to-the-storage-objects"></a>Verwijzingen naar de opslagobjecten ophalen
 
-In deze sectie gaat u exemplaren maken van de objecten, een nieuwe container maken en vervolgens machtigingen instellen voor de container, zodat de blobs openbaar zijn. Je belt de `quickstartblobs`container. 
+In deze sectie gaat u exemplaren maken van de objecten, een nieuwe container maken en vervolgens machtigingen instellen voor de container, zodat de blobs openbaar zijn. U belt de container `quickstartblobs`. 
 
 ```python
 # Create the BlockBlockService that the system uses to call the Blob service for the storage account.
@@ -129,20 +129,20 @@ Eerst maakt u verwijzingen naar objecten die worden gebruikt om toegang te krijg
 
 * Maak een exemplaar van het object **BlockBlobService** dat naar de Blob-service in uw opslagaccount verwijst. 
 
-* Maak een exemplaar van het **CloudBlobContainer**-object dat de container vertegenwoordigt die u wilt openen. Het systeem gebruikt containers om uw blobs te ordenen, zoals u mappen op uw computer gebruikt om uw bestanden te ordenen.
+* Maak een exemplaar van het **CloudBlobContainer**-object dat de container vertegenwoordigt die u wilt openen. Het systeem gebruikt containers om uw blobs te organiseren, net zoals u mappen op uw computer gebruikt om uw bestanden te organiseren.
 
 Wanneer u de Cloud Blob-container hebt, instantieert u het **CloudBlockBlob**-object dat wijst naar de specifieke blob waarin u bent geïnteresseerd. Daarna kunt u de blob uploaden, downloaden en kopiëren wanneer dat nodig is.
 
 > [!IMPORTANT]
-> Containernamen moeten uit kleine letters bestaan. Zie [Containers, blobs en metagegevens benoemen en verwijzen](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata)voor meer informatie over container- en blobnamen.
+> Containernamen moeten uit kleine letters bestaan. Zie [containers, blobs en meta gegevens benoemen en hiernaar verwijzen](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata)voor meer informatie over container-en BLOB-namen.
 
 ### <a name="upload-blobs-to-the-container"></a>Blobs uploaden naar de container
 
-Blob-opslag ondersteunt blok-blobs, toevoeg-blobs en pagina-blobs. Blok-blobs kunnen tot 4,7 TB groot zijn en kunnen van alles zijn: van Excel-spreadsheets tot grote videobestanden. U toevoegende blobs gebruiken voor logboekregistratie wanneer u naar een bestand wilt schrijven en vervolgens meer informatie wilt toevoegen. Paginablobs worden voornamelijk gebruikt voor de Virtual Hard Disk (VHD)-bestanden die de infrastructuur als service virtuele machines (IaaS VM's) terugsturen. Blok-blobs worden het meest gebruikt. Deze quickstart maakt gebruik van blokblobs.
+Blob-opslag ondersteunt blok-blobs, toevoeg-blobs en pagina-blobs. Blok-blobs kunnen tot 4,7 TB groot zijn en kunnen van alles zijn: van Excel-spreadsheets tot grote videobestanden. U kunt toevoeg-blobs gebruiken voor logboek registratie wanneer u naar een bestand wilt schrijven en vervolgens meer gegevens wilt blijven toevoegen. Pagina-blobs worden voornamelijk gebruikt voor de VHD-bestanden (virtuele harde schijf) die een back-infra structuur als een service-virtuele machine (IaaS Vm's) hebben. Blok-blobs worden het meest gebruikt. Deze Snelstartgids maakt gebruik van blok-blobs.
 
 Als u een bestand naar een blob wilt uploaden, hebt u het volledige bestandspad nodig. U verkrijgt dit door de naam van de map en de bestandsnaam op uw lokale schijf samen te voegen. Daarna kunt u het bestand met de methode `create_blob_from_path` uploaden naar het opgegeven pad. 
 
-De voorbeeldcode maakt een lokaal bestand dat het systeem gebruikt voor het uploaden en downloaden, waarbij het bestand wordt opgeslagen dat het systeem uploadt als *full_path_to_file* en de naam van de blob als *local_file_name.* In dit voorbeeld wordt het `quickstartblobs`bestand geüpload naar uw container met de naam:
+Met de voorbeeld code wordt een lokaal bestand gemaakt dat door het systeem wordt gebruikt voor het uploaden en downloaden. het bestand wordt opgeslagen als *full_path_to_file* en de naam van de blob als *local_file_name*. In dit voor beeld wordt het bestand geüpload naar de container `quickstartblobs`met de naam:
 
 ```python
 # Create a file in Documents to test the upload and download.
@@ -167,7 +167,7 @@ Er zijn meerdere uploadmethoden die u kunt gebruiken met Blob-opslag. Als u bijv
 
 ### <a name="list-the-blobs-in-a-container"></a>De blobs in een container in een lijst weergeven
 
-Met de volgende `generator` code `list_blobs` wordt een voor de methode gemaakt. De code loopt door de lijst met blobs in de container en drukt hun namen af op de console.
+Met de volgende code maakt `generator` u een `list_blobs` voor de-methode. De code loopt door in de lijst met blobs in de container en drukt hun namen af op de-console.
 
 ```python
 # List the blobs in the container.
@@ -180,8 +180,8 @@ for blob in generator:
 ### <a name="download-the-blobs"></a>De blobs downloaden
 
 
-Download blobs naar uw `get_blob_to_path` lokale schijf met behulp van de methode.
-Met de volgende code wordt de blob gedownload die u eerder hebt geüpload. Het systeem voegt *_DOWNLOADED* toe aan de blobnaam, zodat u beide bestanden op uw lokale schijf zien.
+Down load blobs naar uw lokale schijf met `get_blob_to_path` behulp van de methode.
+Met de volgende code wordt de BLOB gedownload die u eerder hebt geüpload. Het systeem voegt *_DOWNLOADED* toe aan de naam van de blob, zodat u beide bestanden op de lokale schijf kunt zien.
 
 ```python
 # Download the blob(s).
@@ -205,7 +205,7 @@ os.remove(full_path_to_file2)
 
 ## <a name="resources-for-developing-python-applications-with-blobs"></a>Resources voor het ontwikkelen van Python-toepassingen met blobs
 
-Zie de volgende extra bronnen voor meer informatie over python-ontwikkeling met Blob-opslag:
+Zie de volgende aanvullende bronnen voor meer informatie over python-ontwikkeling met Blob-opslag:
 
 ### <a name="binaries-and-source-code"></a>Binaire bestanden en broncode
 
@@ -213,11 +213,11 @@ Zie de volgende extra bronnen voor meer informatie over python-ontwikkeling met 
 
 ### <a name="client-library-reference-and-samples"></a>Naslaginformatie en voorbeelden voor de .NET-clientbibliotheek
 
-- Zie de [Azure Storage-bibliotheken voor Python voor](https://docs.microsoft.com/python/api/overview/azure/storage)meer informatie over de Python-clientbibliotheek.
+- Zie de [Azure Storage libraries voor python](https://docs.microsoft.com/python/api/overview/azure/storage)voor meer informatie over de python-client bibliotheek.
 - Verken met behulp van de Python-clientbibliotheek geschreven [Blob-opslagvoorbeelden](https://azure.microsoft.com/resources/samples/?sort=0&service=storage&platform=python&term=blob).
 
 ## <a name="next-steps"></a>Volgende stappen
  
 In deze snelstart hebt u geleerd hoe u bestanden overbrengt tussen een lokale schijf en Azure Blob-opslag met behulp van Python. 
 
-Zie [Azure Blob-opslagbronnen beheren met Storage Explorer](../../vs-azure-tools-storage-explorer-blobs.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)voor meer informatie over de Storage Explorer en Blobs.
+Zie [Azure Blob Storage-resources beheren met Storage Explorer](../../vs-azure-tools-storage-explorer-blobs.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)voor meer informatie over de Storage Explorer en blobs.

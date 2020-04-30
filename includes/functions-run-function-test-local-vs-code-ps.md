@@ -5,15 +5,15 @@ ms.topic: include
 ms.date: 02/19/2020
 ms.author: glenga
 ms.openlocfilehash: edf5fc33ec14d41630462cca1a4ace0663473196
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "78191014"
 ---
 ## <a name="run-the-function-locally"></a>De functie lokaal uitvoeren
 
-Azure Functions Core Tools integreert met Visual Studio Code om u een Azure Functions-project lokaal uit te laten voeren en te debuggen. Zie [PowerShell Azure-functies van Debuging PowerShell Lokaal voor](../articles/azure-functions/functions-debug-powershell-local.md)meer informatie over het opsporen van foutopsporing in Visual Studio-code. 
+Azure Functions Core Tools integreert met Visual Studio code zodat u een Azure Functions-project lokaal kunt uitvoeren en debuggen. Zie [debug Power shell Azure functions Local](../articles/azure-functions/functions-debug-powershell-local.md)(Engelstalig) voor meer informatie over fout opsporing in Visual Studio code. 
 
 1. Druk op F5 om het functie-app-project te starten. De uitvoer van Core Tools wordt weergegeven in het deelvenster **Terminal**.
 
@@ -21,23 +21,23 @@ Azure Functions Core Tools integreert met Visual Studio Code om u een Azure Func
 
     ![Lokale Azure-uitvoer](./media/functions-run-function-test-local-vs-code-ps/functions-vscode-f5.png)
 
-1. Voeg de querytekenreeks `?name=<yourname>` toe aan deze `Invoke-RestMethod` URL en gebruik vervolgens in een tweede PowerShell-opdrachtprompt om het verzoek als volgt uit te voeren:
+1. Voeg de query reeks `?name=<yourname>` toe aan deze URL en gebruik `Invoke-RestMethod` vervolgens in een tweede Power shell-opdracht prompt om de aanvraag uit te voeren, als volgt:
 
     ```powershell
     PS > Invoke-RestMethod -Method Get -Uri http://localhost:7071/api/HttpTrigger?name=PowerShell
     Hello PowerShell
     ```
 
-    U het GET-verzoek ook vanuit een browser uitvoeren vanuit de volgende URL:
+    U kunt ook de GET-aanvraag vanuit een browser uitvoeren via de volgende URL:
 
     <http://localhost:7071/api/HttpExample?name=PowerShell>
 
-    Wanneer u het HttpTrigger-eindpunt `name` aanroept zonder een parameter als queryparameter of `BadRequest` in de hoofdtekst door te geven, geeft de functie een fout als resultaat. Wanneer u de code in run.ps1 bekijkt, ziet u dat deze fout optreedt door het ontwerp.
+    Wanneer u het http trigger-eind punt aanroept `name` zonder een para meter door te geven als query parameter of in de hoofd tekst `BadRequest` , retourneert de functie een fout. Wanneer u de code in run. ps1 bekijkt, ziet u dat deze fout wordt veroorzaakt door het ontwerp.
 
-1. Informatie over de aanvraag wordt weergegeven in het deelvenster **Terminal.**
+1. Informatie over de aanvraag wordt weer gegeven in het deel venster **Terminal** .
 
-    ![Functie-uitvoering in deelvenster Terminal](./media/functions-run-function-test-local-vs-code-ps/function-execution-terminal.png)
+    ![Uitvoering van functies in het Terminal paneel](./media/functions-run-function-test-local-vs-code-ps/function-execution-terminal.png)
 
-1. Druk op **Ctrl + C** om Kerngereedschappen te stoppen als u klaar bent.
+1. Wanneer u klaar bent, drukt u op **CTRL + C** om de kern hulpprogramma's te stoppen.
 
 Nadat u hebt gecontroleerd of de functie correct wordt uitgevoerd op uw lokale computer, is het tijd om het project te publiceren in Azure.

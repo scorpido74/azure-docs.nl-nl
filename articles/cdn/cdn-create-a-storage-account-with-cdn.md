@@ -1,5 +1,5 @@
 ---
-title: Snelstart - Een Azure-opslagaccount integreren met Azure CDN
+title: 'Quick Start: een Azure-opslag account integreren met Azure CDN'
 description: Leer hoe u Azure Content Delivery Network (CDN) kunt gebruiken en hoe u inhoud met een hoge bandbreedte via CDN kunt leveren door blobs van Azure Storage in de cache op te slaan.
 services: cdn
 documentationcenter: ''
@@ -16,10 +16,10 @@ ms.date: 05/24/2018
 ms.author: allensu
 ms.custom: mvc
 ms.openlocfilehash: 35de327b4a6602bb5191157e3b3c4e56c9c091b5
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/13/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81254084"
 ---
 # <a name="quickstart-integrate-an-azure-storage-account-with-azure-cdn"></a>Quickstart: Een Azure Storage-account integreren met Azure CDN
@@ -55,9 +55,9 @@ U kunt verschillende methoden, waaronder Azure Portal en PowerShell gebruiken om
    
     Deze waarde wordt de hostnaam binnen de URI die wordt gebruikt om blob-, wachtrij- of tabelresources te adresseren. Gebruik een URI in de volgende indeling om een containerresource in Blob Storage te adresseren:
    
-    http://*&lt;StorageAcountLabel&gt;*.blob.core.windows.net/*&lt;mycontainer&gt; *
+    http://*&lt;StorageAcountLabel&gt;*. blob.core.Windows.net/*&lt;mycontainer&gt; *
 
-    waar * &lt;StorageAccountLabel&gt; * verwijst naar de waarde die u hebt ingevoerd in het vak **Naam.**
+    waarbij * &lt;StorageAccountLabel&gt; * verwijst naar de waarde die u hebt ingevoerd in het vak **naam** .
    
     > [!IMPORTANT]    
     > Het URL-label vormt het subdomein van de URI van het opslagaccount en moet uniek zijn in alle gehoste services in Azure.
@@ -68,8 +68,8 @@ U kunt verschillende methoden, waaronder Azure Portal en PowerShell gebruiken om
 
     | Instelling  | Waarde |
     | -------- | ----- |
-    | **Implementatiemodel** | Gebruik de standaardwaarde. |
-    | **Accountsoort** | Gebruik de standaardwaarde. |
+    | **Implementatie model** | Gebruik de standaardwaarde. |
+    | **Soort account** | Gebruik de standaardwaarde. |
     | **Locatie**    | Selecteer **VS - centraal** in de vervolgkeuzelijst. |
     | **Replicatie** | Gebruik de standaardwaarde. |
     | **Prestaties** | Gebruik de standaardwaarde. |
@@ -96,9 +96,9 @@ U kunt Azure CDN voor uw opslagaccount rechtstreeks vanuit uw opslagaccount insc
 
     | Instelling  | Waarde |
     | -------- | ----- |
-    | **CDN-profiel** | Selecteer **Nieuw maken** en voer uw profielnaam in, bijvoorbeeld *mijn-cdn-profiel-123*. Deze naam moet wereldwijd uniek zijn.  |
-    | **Prijslaag** | Selecteer **Standard - Verizon** in de vervolgkeuzelijst. |
-    | **Naam van CDN-eindpunt** | Voer de hostnaam van het eindpunt in, d.w.z. *mijn eindpunt-123*. Deze naam moet wereldwijd uniek zijn. Deze naam wordt gebruikt om toegang te krijgen tot uw bronnen in de cache op de _ &lt;domeineindpuntnaam&gt;_.azureedge.net. |
+    | **CDN-profiel** | Selecteer **nieuwe maken** en voer uw profiel naam in, bijvoorbeeld *mijn-CDN-profiel-123*. Deze naam moet wereldwijd uniek zijn.  |
+    | **Prijs categorie** | Selecteer **Standard - Verizon** in de vervolgkeuzelijst. |
+    | **Naam van CDN-eindpunt** | Voer de hostnaam van het eind punt in, d.w.z. *mijn-eind punt-123*. Deze naam moet wereldwijd uniek zijn. Deze naam wordt gebruikt om toegang te krijgen tot uw resources in de cache op de _ &lt;naam&gt;_ van het domein eindpunt. azureedge.net. |
     | **Hostnaam van oorsprong** | Een nieuw CDN-eindpunt gebruikt standaard de hostnaam van uw opslagaccount als de bronserver. |
 
 3. Selecteer **Maken**. Zodra het eindpunt is gemaakt, wordt dit weergegeven in de lijst met eindpunten.
@@ -117,7 +117,7 @@ Als u beperkte toegang tot persoonlijke opslagcontainers wilt verlenen, kunt u d
 ## <a name="access-cdn-content"></a>Toegang tot CDN-inhoud
 Gebruik de CDN-URL op de portal om toegang te krijgen tot inhoud van de cache op het CDN. Het adres van een blob in de cache heeft de volgende indeling:
 
-http://<*EndpointName*\>.azureedge.net/<*myPublicContainer*\>/<*BlobName*\>
+http://<*endpointnaam*\>. azureedge.net/<*myPublicContainer*\>/<*blobnaam*\>
 
 > [!NOTE]
 > Nadat u ervoor hebt gezorgd dat Azure CDN toegang tot een opslagaccount heeft, komen alle openbaar beschikbare objecten in aanmerking om in de cache van CDN POP te worden geplaatst. Als u een object wijzigt dat zich momenteel in de cache op het CDN bevindt, is de nieuwe inhoud niet beschikbaar via Azure CDN totdat de inhoud van Azure CDN wordt vernieuwd na het verstrijken van de Time-to-Live-periode voor inhoud in de cache.
@@ -125,7 +125,7 @@ http://<*EndpointName*\>.azureedge.net/<*myPublicContainer*\>/<*BlobName*\>
 ## <a name="remove-content-from-azure-cdn"></a>Inhoud verwijderen uit Azure CDN
 Als u niet langer een object in de cache in Azure CDN nodig hebt, kunt u een van de volgende stappen uitvoeren:
 
-* Maak de container persoonlijk in plaats van openbaar. Zie [Anonieme leestoegang tot containers en blobs beheren](../storage/blobs/storage-manage-access-to-resources.md)voor meer informatie.
+* Maak de container persoonlijk in plaats van openbaar. Zie [anonieme lees toegang tot containers en blobs beheren](../storage/blobs/storage-manage-access-to-resources.md)voor meer informatie.
 * Schakel het CDN-eindpunt uit of verwijder het met behulp van Azure Portal.
 * Wijzig de gehoste service zodat deze niet meer reageert op aanvragen voor het object.
 

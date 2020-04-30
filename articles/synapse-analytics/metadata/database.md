@@ -1,6 +1,6 @@
 ---
-title: Gedeelde azure Synapse Analytics-database
-description: Azure Synapse Analytics biedt een gedeeld metadatamodel waarbij het maken van een database in Apache Spark het toegankelijk maakt vanuit de SQL on-demand (preview) en SQL-poolengines.
+title: Gedeelde Azure Synapse Analytics-Data Base
+description: Azure Synapse Analytics biedt een gemeen schappelijk meta gegevens model waarmee u een data base in Apache Spark maakt, toegankelijk is vanuit de SQL-service on-demand (preview) en de SQL-groeps engines.
 services: synapse-analytics
 author: MikeRys
 ms.service: synapse-analytics
@@ -10,91 +10,91 @@ ms.date: 04/15/2020
 ms.author: mrys
 ms.reviewer: jrasnick
 ms.openlocfilehash: e3651467de86d3b026ab348675249f93ebf3a86a
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81424144"
 ---
-# <a name="azure-synapse-analytics-shared-database"></a>Gedeelde azure Synapse Analytics-database
+# <a name="azure-synapse-analytics-shared-database"></a>Gedeelde Azure Synapse Analytics-Data Base
 
-Azure Synapse Analytics stelt de verschillende enginen voor computationele werkruimtes in staat om databases en tabellen te delen tussen de Spark-pools (preview), SQL on-demand (preview)-engine en SQL-pools.
+Met Azure Synapse Analytics kunt u de verschillende reken kundige werk ruimte-engines gebruiken om data bases en tabellen te delen tussen hun Spark-Pools (preview), de SQL on-demand-Engine (preview) en SQL-groepen.
 
 [!INCLUDE [synapse-analytics-preview-terms](../../../includes/synapse-analytics-preview-terms.md)]
 
-Een database die is gemaakt met een Spark-taak wordt zichtbaar met dezelfde naam voor alle huidige en toekomstige Spark-pools (preview) in de werkruimte en de SQL on-demand-engine.
+Een Data Base die is gemaakt met een Spark-taak wordt weer gegeven met dezelfde naam voor alle huidige en toekomstige Spark-Pools (preview) in de werk ruimte en de SQL on-demand-engine.
 
-Als er SQL-groepen in de werkruimte zijn die synchronisatie met metagegevens hebben ingeschakeld of als u een nieuwe SQL-groep maakt met de synchronisatie van metagegevens ingeschakeld, worden deze spark-databases automatisch toegewezen aan speciale schema's in de SQL-groepdatabase. 
+Als er SQL-groepen in de werk ruimte waarvoor synchronisatie van meta gegevens is ingeschakeld, of als u een nieuwe SQL-groep maakt terwijl de synchronisatie van meta gegevens is ingeschakeld, worden deze Spark-data bases automatisch toegewezen in speciale schema's in de SQL-groeps database. 
 
-Elk schema is vernoemd naar de `$` naam spark-database met een extra voorvoegsel. Zowel de externe als de beheerde tabellen in de spark-gegenereerde database worden weergegeven als externe tabellen in het bijbehorende speciale schema.
+Elk schema krijgt de naam van de Spark-data base met `$` een extra voor voegsel. De externe en beheerde tabellen in de door Spark gegenereerde data base worden weer gegeven als externe tabellen in het bijbehorende speciale schema.
 
-De Spark-standaarddatabase, die wordt aangeroepen, `default`is ook zichtbaar `default`in de SQL on-demand context als een database genaamd `$default`, en in een van de SQL-pooldatabases met synchronisatie van metagegevens ingeschakeld als het schema .
+De Spark-standaard database, `default`die wordt aangeroepen, wordt ook weer gegeven in de SQL on-demand-context `default`als een Data Base met de naam en in de data BASEs van de SQL- `$default`groep met synchronisatie van meta gegevens ingeschakeld als het schema.
 
-Aangezien de databases worden gesynchroniseerd met SQL on-demand en de SQL-pools asynchroon, zal er een vertraging totdat ze worden weergegeven.
+Omdat de data bases asynchroon worden gesynchroniseerd met SQL on-demand en de SQL-groepen, wordt er een vertraging weer gegeven totdat deze zich voordoen.
 
-## <a name="manage-a-spark-created-database"></a>Een spark-database beheren
+## <a name="manage-a-spark-created-database"></a>Een door Spark gemaakte data base beheren
 
-Gebruik Spark om spark-databases te beheren. Verwijder deze bijvoorbeeld via een Spark-pooltaak en maak er tabellen in vanuit Spark.
+Gebruik Spark voor het beheren van Spark gemaakte data bases. U kunt dit bijvoorbeeld verwijderen via een Spark-pool taak en er tabellen in maken vanuit Spark.
 
-Als u objecten maakt in een Spark-database met SQL on-demand of probeert de database te laten vallen, wordt de bewerking uitgevoerd. Maar de oorspronkelijke Spark-database wordt niet gewijzigd.
+Als u objecten in een met Spark gemaakte data base maakt met behulp van SQL op aanvraag, of als u probeert de data base te verwijderen, wordt de bewerking uitgevoerd. Maar de oorspronkelijke Spark-data base wordt niet gewijzigd.
 
-Als u het gesynchroniseerde schema in een SQL-groep probeert te laten vallen of een tabel probeert te maken, geeft Azure een fout als resultaat.
+Als u probeert het gesynchroniseerde schema in een SQL-groep te verwijderen of een tabel erin te maken, wordt een fout geretourneerd door Azure.
 
-## <a name="handling-of-name-conflicts"></a>Afhandeling van naamconflicten
+## <a name="handling-of-name-conflicts"></a>Verwerking van naam conflicten
 
-Als de naam van een Spark-database in strijd is met de naam van een bestaande SQL on-demand database, wordt een achtervoegsel toegevoegd in SQL on-demand aan de Spark-database. Het achtervoegsel in SQL `_<workspace name>-ondemand-DefaultSparkConnector`on-demand is .
+Als de naam van een Spark-Data Base een conflict veroorzaakt met de naam van een bestaande SQL on-demand-data base, wordt een achtervoegsel toegevoegd aan SQL op aanvraag in de Spark-data base. Het achtervoegsel in SQL op aanvraag is `_<workspace name>-ondemand-DefaultSparkConnector`.
 
-Als er bijvoorbeeld een `mydb` Spark-database wordt aangeroepen die `myws` wordt gemaakt in de Azure Synapse-werkruimte en er al een SQL on-demand `mydb_myws-ondemand-DefaultSparkConnector`database met die naam bestaat, moet de Spark-database in SQL on-demand worden verwezen met de naam .
+Als bijvoorbeeld een Spark-data base met `mydb` de naam wordt gemaakt in de Azure `myws` Synapse-werk ruimte en een SQL on-demand-data base met die naam al bestaat, moet er naar de Spark-data base in SQL op aanvraag `mydb_myws-ondemand-DefaultSparkConnector`worden verwezen met behulp van de naam.
 
 > [!CAUTION]
-> Let op: U moet niet afhankelijk zijn van dit gedrag.
+> Let op: u mag geen afhankelijkheid nemen van dit gedrag.
 
 ## <a name="security-model"></a>Beveiligingsmodel
 
-De Spark-databases en -tabellen, samen met hun gesynchroniseerde representaties in de SQL-engines, worden beveiligd op het onderliggende opslagniveau.
+De Spark-data bases en tabellen, samen met hun gesynchroniseerde representaties in de SQL-engines, worden beveiligd op het onderliggende opslag niveau.
 
-De beveiligingsprincipal die een database maakt, wordt beschouwd als de eigenaar van die database en heeft alle rechten op de database en zijn objecten.
+De beveiligingsprincipal die een Data Base maakt, wordt beschouwd als de eigenaar van de data base en heeft alle rechten voor de data base en de bijbehorende objecten.
 
-Als u een beveiligingsprincipal, zoals een gebruiker of een beveiligingsgroep, toegang wilt geven tot een database, moet `warehouse` u de juiste POSIX-map en bestandsmachtigingen geven aan de onderliggende mappen en bestanden in de map. 
+Als u een beveiligingsprincipal, zoals een gebruiker of een beveiligings groep, toegang tot een Data Base wilt geven, geeft u de juiste POSIX-map en bestands machtigingen op voor de onderliggende mappen `warehouse` en bestanden in de map. 
 
-Als een beveiligingsprincipal bijvoorbeeld een tabel in een database kan lezen, moeten alle `warehouse` mappen die `X` beginnen `R` met de databasemap in de map, en machtigingen die aan die beveiligingsprincipal zijn toegewezen, worden toegewezen. Bovendien hebben bestanden (zoals de onderliggende gegevensbestanden `R` van de tabel) machtigingen nodig. 
+Als er bijvoorbeeld een beveiligingsprincipal is om een tabel in een Data Base te lezen, moeten alle mappen die beginnen bij de databasemap in de `warehouse` Directory, beschikken over `X` de `R` machtigingen die zijn toegewezen aan die beveiligingsprincipal. Daarnaast zijn er machtigingen vereist `R` voor bestanden (zoals de onderliggende gegevens bestanden van de tabel). 
 
-Als een beveiligingsprincipal de mogelijkheid vereist om objecten te `W` maken of objecten in een database `warehouse` neer te zetten, zijn aanvullende machtigingen vereist voor de mappen en bestanden in de map.
+Als een beveiligings-principal de mogelijkheid heeft om objecten te maken of objecten in een Data Base `W` te verwijderen, zijn er aanvullende machtigingen vereist voor de `warehouse` mappen en bestanden in de map.
 
 ## <a name="examples"></a>Voorbeelden
 
-### <a name="create--connect-to-spark-database---sql-on-demand"></a>Maak & verbinding maken met Spark-database - SQL on-demand
+### <a name="create--connect-to-spark-database---sql-on-demand"></a>& verbinding maken met Spark-data base-SQL op aanvraag
 
-Maak eerst een nieuwe `mytestdb` Spark-database met de naam met een Spark-cluster dat u al in uw werkruimte hebt gemaakt. U dat bijvoorbeeld bereiken met behulp van een Spark C#-notitieblok met de volgende .NET voor Spark-instructie:
+Maak eerst een nieuwe Spark-data `mytestdb` Base met de naam met behulp van een Spark-cluster dat u al hebt gemaakt in uw werk ruimte. U kunt bijvoorbeeld een Spark C#-notebook met de volgende .NET for Spark-instructie gebruiken:
 
 ```csharp
 spark.Sql("CREATE DATABASE mytestdb")
 ```
 
-Na een korte vertraging u de database zien vanuit SQL on-demand. Voer bijvoorbeeld de volgende instructie uit SQL on-demand uit.
+Na een korte vertraging kunt u de data base van SQL op aanvraag bekijken. Voer bijvoorbeeld de volgende instructie uit op SQL op aanvraag.
 
 ```sql
 SELECT * FROM sys.databases;
 ```
 
-Controleer `mytestdb` of dit in de resultaten is opgenomen.
+Controleer of `mytestdb` het is opgenomen in de resultaten.
 
-### <a name="exposing-a-spark-database-in-a-sql-pool"></a>Een Spark-database blootstellen in een SQL-groep
+### <a name="exposing-a-spark-database-in-a-sql-pool"></a>Een Spark-data base in een SQL-groep weer geven
 
-Met de database die in het vorige voorbeeld is `mysqlpool` gemaakt, maakt u nu een SQL-groep in uw werkruimte met de naam met de naam metagegevenssynchronisatie.
+Met de data base die in het vorige voor beeld is gemaakt, maakt u nu een SQL `mysqlpool` -groep in uw werk ruimte met de naam waarmee synchronisatie van meta gegevens mogelijk is.
 
-Voer de volgende `mysqlpool` instructie uit tegen de SQL-groep:
+Voer de volgende instructie uit op `mysqlpool` de SQL-groep:
 
 ```sql
 SELECT * FROM sys.schema;
 ```
 
-Controleer het schema voor de nieuw gemaakte database in de resultaten.
+Controleer het schema voor de zojuist gemaakte data base in de resultaten.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Meer informatie over de gedeelde metadata van Azure Synapse Analytics](overview.md)
-- [Meer informatie over de gedeelde metadatatabellen van Azure Synapse Analytics](table.md)
+- [Meer informatie over gedeelde meta gegevens van Azure Synapse Analytics](overview.md)
+- [Meer informatie over gedeelde meta gegevens tabellen van Azure Synapse Analytics](table.md)
 
 <!-- - [Learn more about the Synchronization with SQL Analytics on-demand](overview.md)
 - [Learn more about the Synchronization with SQL Analytics pools](overview.md)-->

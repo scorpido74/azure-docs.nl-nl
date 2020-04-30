@@ -1,6 +1,6 @@
 ---
-title: Azure IoT Hub Device Provisioning instellen met azure resource manager-sjabloon
-description: Azure quickstart - De DPS (Azure IoT Hub Device Provisioning Service) instellen met behulp van een sjabloon
+title: Azure IoT Hub Device Provisioning instellen met behulp van Azure Resource Manager-sjabloon
+description: Azure-Quick Start-Azure IoT Hub Device Provisioning Service (DPS) instellen met behulp van een sjabloon
 author: wesmc7777
 ms.author: wesmc
 ms.date: 11/08/2019
@@ -9,21 +9,21 @@ ms.service: iot-dps
 services: iot-dps
 ms.custom: mvc
 ms.openlocfilehash: 482401b75cadf44e2cef03cced8dd216d0980524
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "74969578"
 ---
-# <a name="quickstart-set-up-the-iot-hub-device-provisioning-service-with-an-azure-resource-manager-template"></a>Snelstart: de IoT Hub Device Provisioning Service instellen met een Azure Resource Manager-sjabloon
+# <a name="quickstart-set-up-the-iot-hub-device-provisioning-service-with-an-azure-resource-manager-template"></a>Snelstartgids: de IoT Hub Device Provisioning Service instellen met een Azure Resource Manager sjabloon
 
-U kunt [Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) gebruiken voor het programmatisch instellen van de benodigde Azure-cloudresources voor het inrichten van uw apparaten. In deze stappen wordt uitgelegd hoe u een IoT-hub en een nieuwe IoT Hub Device Provisioning Service maakt en de twee services met behulp van een Azure Resource Manager-sjabloon aan elkaar koppelt. Deze quickstart maakt gebruik [van Azure CLI](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-deploy-cli) om de programmatische stappen uit te voeren die nodig zijn om een resourcegroep te maken en de sjabloon te implementeren, maar u de [Azure-portal](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-deploy-portal), [PowerShell,](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-deploy).NET, Ruby of andere programmeertalen eenvoudig gebruiken om deze stappen uit te voeren en uw sjabloon te implementeren. 
+U kunt [Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) gebruiken voor het programmatisch instellen van de benodigde Azure-cloudresources voor het inrichten van uw apparaten. In deze stappen ziet u hoe u een IoT-hub en een nieuwe IoT Hub Device Provisioning Service maakt en hoe u de twee services samen koppelt met behulp van een Azure Resource Manager sjabloon. In deze Snelstartgids wordt gebruikgemaakt van [Azure cli](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-deploy-cli) om de Programmeer bare stappen uit te voeren die nodig zijn om een resource groep te maken en de sjabloon te implementeren, maar u kunt eenvoudig de [Azure Portal](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-deploy-portal), [Power shell](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-deploy), .net, Ruby of andere programmeer talen gebruiken om deze stappen uit te voeren en uw sjabloon te implementeren. 
 
 
 ## <a name="prerequisites"></a>Vereisten
 
-- Als u geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) voordat u begint.
-- Voor deze snelle start moet u de Azure CLI lokaal uitvoeren. Azure CLI versie 2.0 of hoger moet geïnstalleerd zijn. Voer `az --version` uit om de versie te bekijken. Als u de CLI wilt installeren of upgraden, raadpleegt u [Azure CLI installeren](https://docs.microsoft.com/cli/azure/install-azure-cli).
+- Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
+- Voor deze Quick start moet u de Azure CLI lokaal uitvoeren. Azure CLI versie 2.0 of hoger moet geïnstalleerd zijn. Voer `az --version` uit om de versie te bekijken. Als u de CLI wilt installeren of upgraden, raadpleegt u [Azure CLI installeren](https://docs.microsoft.com/cli/azure/install-azure-cli).
 
 
 ## <a name="sign-in-to-azure-and-create-a-resource-group"></a>Aanmelden bij Azure en een resourcegroep maken
@@ -77,7 +77,7 @@ Gebruik een JSON-sjabloon voor het maken van een inrichtingsservice en een gekop
    }
    ```
 
-2. Vervang de sectie **parameters** door de volgende inhoud. In de sectie Parameters worden parameters gedefinieerd waarvan de waarden vanuit een ander bestand kunnen worden doorgegeven. In deze sectie wordt de naam van de IoT-hub en de inrichtingsservice gedefinieerd om te maken. Het definieert ook de locatie voor zowel de IoT-hub als de inrichtingsservice. De waarden zijn beperkt tot Azure-regio's die IoT-hubs en provisioningservices ondersteunen. Voer de opdracht `az provider show --namespace Microsoft.Devices --query "resourceTypes[?resourceType=='ProvisioningServices'].locations | [0]" --out table` uit voor een lijst van ondersteunde locaties voor Device Provisioning Service, of ga naar de pagina [Azure Status](https://azure.microsoft.com/status/) en zoek naar 'Device Provisioning Service'.
+2. Vervang de sectie **parameters** door de volgende inhoud. De sectie para meters definieert para meters waarvan de waarden kunnen worden door gegeven vanuit een ander bestand. Deze sectie definieert de naam van de IoT hub en de inrichtings service die u wilt maken. Het definieert ook de locatie voor de IoT hub en de inrichtings service. De waarden worden beperkt tot Azure-regio's die ondersteuning bieden voor IoT-hubs en-inrichtings Services. Voer de opdracht `az provider show --namespace Microsoft.Devices --query "resourceTypes[?resourceType=='ProvisioningServices'].locations | [0]" --out table` uit voor een lijst van ondersteunde locaties voor Device Provisioning Service, of ga naar de pagina [Azure Status](https://azure.microsoft.com/status/) en zoek naar 'Device Provisioning Service'.
 
    ```json
     "parameters": {
@@ -113,7 +113,7 @@ Gebruik een JSON-sjabloon voor het maken van een inrichtingsservice en een gekop
 
    ```
 
-4. Als u een IoT-hub wilt maken, voegt u de volgende regels toe aan de verzameling **resources**. De JSON geeft de minimale eigenschappen op die nodig zijn om een IoT-hub te maken. De **naam-** en **locatiewaarden** worden doorgegeven als parameters uit een ander bestand. Zie [Microsoft.Devices/IotHubs-sjabloonverwijzing](https://docs.microsoft.com/azure/templates/microsoft.devices/iothubs)voor meer informatie over de eigenschappen die u opgeven voor een IoT-hub in een sjabloon.
+4. Als u een IoT-hub wilt maken, voegt u de volgende regels toe aan de verzameling **resources**. De JSON specificeert de minimale eigenschappen die nodig zijn om een IoT-hub te maken. De **naam** en **locatie** waarden worden door gegeven als para meters uit een ander bestand. Zie voor meer informatie over de eigenschappen die u kunt opgeven voor een IoT-hub in een sjabloon, [micro soft. devices/IotHubs-sjabloon verwijzing](https://docs.microsoft.com/azure/templates/microsoft.devices/iothubs).
 
    ```json
         {
@@ -133,9 +133,9 @@ Gebruik een JSON-sjabloon voor het maken van een inrichtingsservice en een gekop
 
    ``` 
 
-5. Voor het maken van de inrichtingsservice voegt u de volgende regels toe na de specificatie van de IoT-hub in de verzameling **resources**. De **naam** en **locatie** van de inprovisioningservice worden als parameters doorgegeven. De **iotHubs-verzameling** geeft de IoT-hubs op die moeten worden gekoppeld aan de inrichtingsservice. U moet ten minste de eigenschappen **connectionString** en **location** opgeven voor elke gekoppelde IoT-hub. U kunt ook eigenschappen zoals **allocationWeight** en **applyAllocationPolicy** instellen voor elke IoT-hub, evenals de eigenschappen **allocationPolicy** en ** authorizationPolicies** voor de inrichtingsservice zelf. Zie [Microsoft.Devices/provisioningServices template reference](https://docs.microsoft.com/azure/templates/microsoft.devices/provisioningservices) voor meer informatie.
+5. Voor het maken van de inrichtingsservice voegt u de volgende regels toe na de specificatie van de IoT-hub in de verzameling **resources**. De **naam** en **locatie** van de inrichtings service worden door gegeven als para meters. De verzameling **iotHubs** geeft aan welke IOT-hubs moeten worden gekoppeld aan de inrichtings service. U moet ten minste de eigenschappen **connectionString** en **location** opgeven voor elke gekoppelde IoT-hub. U kunt ook eigenschappen zoals **allocationWeight** en **applyAllocationPolicy** instellen voor elke IoT-hub, evenals de eigenschappen **allocationPolicy** en ** authorizationPolicies** voor de inrichtingsservice zelf. Zie [Microsoft.Devices/provisioningServices template reference](https://docs.microsoft.com/azure/templates/microsoft.devices/provisioningservices) voor meer informatie.
 
-   De eigenschap **dependsOn** wordt gebruikt om ervoor te zorgen dat Resource Manager de IoT-hub vóór de inrichtingsservice maakt. Voor de sjabloon is de verbindingsreeks van de IoT-hub vereist voordat de koppeling met de inrichtingsservice kan worden opgegeven, zodat de hub en de sleutels eerst moeten worden gemaakt. De sjabloon gebruikt functies zoals **concat** en **listKeys** om de verbindingstekenreeks te maken op van geparameteriseerde variabelen. Zie [Functies van Azure Resource Manager-sjablonen](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-functions) voor meer informatie.
+   De eigenschap **dependsOn** wordt gebruikt om ervoor te zorgen dat Resource Manager de IoT-hub vóór de inrichtingsservice maakt. Voor de sjabloon is de verbindingsreeks van de IoT-hub vereist voordat de koppeling met de inrichtingsservice kan worden opgegeven, zodat de hub en de sleutels eerst moeten worden gemaakt. De sjabloon maakt gebruik van functies als **concat** en **listkeys ophalen** voor het maken van de Connection String van variabelen met para meters. Zie [Functies van Azure Resource Manager-sjablonen](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-functions) voor meer informatie.
 
    ```json
         {
@@ -234,7 +234,7 @@ Gebruik een JSON-sjabloon voor het maken van een inrichtingsservice en een gekop
 
 ## <a name="create-a-resource-manager-parameter-file"></a>Een Resource Manager-parameterbestand maken
 
-De sjabloon die u in de laatste stap hebt gedefinieerd, gebruikt parameters om de naam van de IoT-hub, de naam van de inrichtingsservice en de locatie (Azure-regio) op te geven om ze te maken. U geeft deze parameters door aan de sjabloon vanuit een afzonderlijk bestand. Zo kunt u dezelfde sjabloon voor meerdere implementaties gebruiken. Volg deze stappen voor het maken van het parameterbestand:
+De sjabloon die u in de laatste stap hebt gedefinieerd, maakt gebruik van para meters voor het opgeven van de naam van de IoT-hub, de naam van de inrichtings service en de locatie (Azure-regio) om ze te maken. U kunt deze para meters door geven aan de sjabloon vanuit een afzonderlijk bestand. Zo kunt u dezelfde sjabloon voor meerdere implementaties gebruiken. Volg deze stappen voor het maken van het parameterbestand:
 
 1. Gebruik een teksteditor voor het maken van een Azure Resource Manager-parameterbestand met de naam **parameters.json** met de volgende minimale inhoud: 
 
@@ -247,7 +247,7 @@ De sjabloon die u in de laatste stap hebt gedefinieerd, gebruikt parameters om d
    }
    ```
 
-2. Voeg de waarde voor **iotHubName** toe aan de sectie parameters.  Een IoT-hubnaam moet wereldwijd uniek zijn in Azure, dus u een uniek voorvoegsel of achtervoegsel aan de voorbeeldnaam toevoegen of een nieuwe naam helemaal kiezen. Zorg ervoor dat uw naam de juiste naamgevingsconventies voor een IoT-hub volgt: het moet 3-50 tekens lang zijn en alleen alfanumerieke tekens of koppeltekens ('-') in hoofdletters of kleine letters bevatten. 
+2. Voeg de waarde voor **iotHubName** toe aan de sectie parameters.  De naam van een IoT-hub moet globaal uniek zijn in azure, dus u wilt mogelijk een uniek voor voegsel of achtervoegsel toevoegen aan de voorbeeld naam of een nieuwe naam kiezen. Zorg ervoor dat uw naam voldoet aan de juiste naam conventies voor een IoT-hub: deze moet 3-50 tekens lang zijn en mag alleen alfanumerieke tekens of afbreek streepjes ('-') bevatten. 
 
    ```json
     "parameters": {
@@ -258,7 +258,7 @@ De sjabloon die u in de laatste stap hebt gedefinieerd, gebruikt parameters om d
    
    ```
 
-3. Voeg de waarde voor **provisioningServiceName** toe aan de sectie parameters. U moet ook een wereldwijd unieke naam voor uw inprovisioningservice kiezen. Zorg ervoor dat het de juiste naamgevingsconventies voor een IoT Hub Device Provisioning Service volgt: het moet 3-64 tekens lang zijn en alleen alfanumerieke tekens of koppeltekens ('-') in hoofdletters of kleine letters bevatten.
+3. Voeg de waarde voor **provisioningServiceName** toe aan de sectie parameters. U moet ook een globaal unieke naam voor uw inrichtings service kiezen. Zorg ervoor dat het juiste naam conventies voor een IoT Hub Device Provisioning Service heeft: het moet 3-64 tekens lang zijn en mag alleen alfanumerieke tekens of afbreek streepjes ('-') bevatten.
 
    ```json
     "parameters": {
@@ -272,7 +272,7 @@ De sjabloon die u in de laatste stap hebt gedefinieerd, gebruikt parameters om d
 
    ```
 
-4. Voeg de waarde voor **hubLocation** toe aan de sectie parameters. Hiermee wordt zowel de locatie voor de IoT-hub als de locatie voor de inrichtingsservice opgegeven. De waarde moet overeenkomen met een van de opgegeven locaties in de verzameling **allowedValues** in de parameterdefinitie in het sjabloonbestand. Deze verzameling beperkt de waarden tot Azure-locaties die ondersteuning bieden voor zowel IoT-hubs als inrichtingsservices. Voor een lijst met ondersteunde locaties voor Apparaatinrichtingsservice `az provider show --namespace Microsoft.Devices --query "resourceTypes[?resourceType=='ProvisioningServices'].locations | [0]" --out table`kunt u de opdracht uitvoeren of naar de [azure-statuspagina](https://azure.microsoft.com/status/) gaan en zoeken op 'Service voor apparaatinrichting'.
+4. Voeg de waarde voor **hubLocation** toe aan de sectie parameters. Hiermee wordt zowel de locatie voor de IoT-hub als de locatie voor de inrichtingsservice opgegeven. De waarde moet overeenkomen met een van de opgegeven locaties in de verzameling **allowedValues** in de parameterdefinitie in het sjabloonbestand. Deze verzameling beperkt de waarden tot Azure-locaties die ondersteuning bieden voor zowel IoT-hubs als inrichtingsservices. Voor een lijst met ondersteunde locaties voor Device Provisioning Service kunt u de opdracht `az provider show --namespace Microsoft.Devices --query "resourceTypes[?resourceType=='ProvisioningServices'].locations | [0]" --out table`uitvoeren, of naar de Azure- [status](https://azure.microsoft.com/status/) pagina gaan en zoeken op ' Device Provisioning Service '.
 
    ```json
     "parameters": {
@@ -300,13 +300,13 @@ De sjabloon die u in de laatste stap hebt gedefinieerd, gebruikt parameters om d
 
 Met de volgende Azure CLI-opdrachten kunt u de sjablonen implementeren en de implementatie controleren.
 
-1. Als u uw sjabloon wilt implementeren, navigeert u naar de map met de sjabloon- en parameterbestanden en voert u de volgende opdracht uit [om een implementatie te starten:](https://docs.microsoft.com/cli/azure/group/deployment?view=azure-cli-latest#az-group-deployment-create)
+1. Als u uw sjabloon wilt implementeren, gaat u naar de map met de sjabloon en de parameter bestanden en voert u de volgende [opdracht uit om een implementatie te starten](https://docs.microsoft.com/cli/azure/group/deployment?view=azure-cli-latest#az-group-deployment-create):
     
     ```azurecli
      az group deployment create -g {your resource group name} --template-file template.json --parameters @parameters.json
     ```
 
-   Deze bewerking kan enkele minuten duren. Zodra het klaar is, kijk voor de **provisioningState** eigenschap met "Geslaagd" in de output. 
+   Het volt ooien van deze bewerking kan enkele minuten duren. Zodra de bewerking is uitgevoerd, zoekt u naar de eigenschap **provisioningState** met de waarde ' geslaagd ' in de uitvoer. 
 
    ![Uitvoer van inrichting](./media/quick-setup-auto-provision-rm/output.png) 
 
@@ -320,7 +320,7 @@ Met de volgende Azure CLI-opdrachten kunt u de sjablonen implementeren en de imp
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
-Andere Quick Starts in deze verzameling zijn op deze Quick Start gebaseerd. Als u van plan bent om door te gaan met andere Quick Starts of met de zelfstudies, verwijdert u de resources die u in deze Quick Start hebt gemaakt niet. Als u niet van plan bent door te gaan, u de Azure CLI gebruiken om een afzonderlijke bron te [verwijderen,][lnk-az-resource-command]zoals een IoT-hub of een inrichtingsservice, of om een brongroep en al zijn bronnen te verwijderen.
+Andere Quick Starts in deze verzameling zijn op deze Quick Start gebaseerd. Als u van plan bent om door te gaan met andere Quick Starts of met de zelfstudies, verwijdert u de resources die u in deze Quick Start hebt gemaakt niet. Als u niet wilt door gaan, kunt u de Azure CLI gebruiken om [een afzonderlijke resource te verwijderen][lnk-az-resource-command], zoals een IOT-hub of een inrichtings service, of om een resource groep en alle bijbehorende resources te verwijderen.
 
 Voer de volgende opdracht uit voor het verwijderen van een inrichtingsservice:
 
@@ -339,14 +339,14 @@ Voer de volgende opdracht uit voor het verwijderen van een resourcegroep en alle
 az group delete --name {your resource group name}
 ```
 
-U resourcegroepen en afzonderlijke resources ook verwijderen met behulp van de Azure-portal, PowerShell of REST-API's, evenals met ondersteunde platform-SDK's die zijn gepubliceerd voor Azure Resource Manager of IoT Hub Device Provisioning Service.
+U kunt ook resource groepen en afzonderlijke resources verwijderen met behulp van de Azure Portal-, Power shell-of REST-Api's, evenals de ondersteunde platform-Sdk's die zijn gepubliceerd voor Azure Resource Manager of IoT Hub Device Provisioning Service.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze quickstart hebt u een IoT-hub en een instantie voor apparaatinrichtingsservice geïmplementeerd en de twee resources gekoppeld. Ga door met de snelle start voor het maken van een gesimuleerd apparaat om deze instelling te gebruiken voor het inrichten van een gesimuleerd apparaat.
+In deze Quick Start hebt u een IoT-hub en een Device Provisioning service-exemplaar geïmplementeerd en zijn de twee resources gekoppeld. Als u wilt weten hoe u deze installatie kunt gebruiken om een gesimuleerd apparaat in te richten, gaat u verder met de Quick start voor het maken van een gesimuleerd apparaat.
 
 > [!div class="nextstepaction"]
-> [Snel start om een gesimuleerd apparaat te maken](./quick-create-simulated-device.md)
+> [Quick start voor het maken van een gesimuleerd apparaat](./quick-create-simulated-device.md)
 
 
 <!-- Links -->

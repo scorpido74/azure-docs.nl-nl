@@ -8,16 +8,16 @@ ms.date: 10/26/2018
 ms.author: rogarana
 ms.subservice: files
 ms.openlocfilehash: c419c2127b1c5fe3aaa60c6e828ff0c5a6676c07
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "77598541"
 ---
 # <a name="quickstart-create-and-manage-an-azure-file-share-with-azure-powershell"></a>Snelstart: Een Azure-bestandsshare maken en beheren met Azure PowerShell 
 In deze handleiding worden de basisbeginselen besproken van het werken met [Azure-bestandsshares](storage-files-introduction.md) met PowerShell. Azure-bestandsshares zijn net als andere bestandsshares, maar worden in de cloud opgeslagen en ondersteund op het Azure-platform. Azure-bestandsshares ondersteunen het SMB-protocol volgens de industriestandaard en bieden de mogelijkheid bestanden te delen tussen meerdere machines, toepassingen en exemplaren. 
 
-Als u geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) voordat u begint.
+Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
@@ -26,7 +26,7 @@ Als u PowerShell lokaal wilt installeren en gebruiken, is voor deze gids versie 
 ## <a name="create-a-resource-group"></a>Een resourcegroep maken
 Een resourcegroep is een logische container waarin Azure-resources worden geïmplementeerd en beheerd. Als u nog geen Azure-resourcegroep hebt, kunt u een nieuwe groep maken met de cmdlet [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup). 
 
-In het volgende voorbeeld wordt een resourcegroep met de naam *myResourceGroup* in de regio West US 2 ge:
+In het volgende voor beeld wordt een resource groep met de naam *myResourceGroup* gemaakt in de regio vs-West 2:
 
 ```azurepowershell-interactive
 $resourceGroupName = "myResourceGroup"
@@ -37,10 +37,10 @@ New-AzResourceGroup `
     -Location $region | Out-Null
 ```
 
-## <a name="create-a-storage-account"></a>Een opslagaccount maken
-Een opslagaccount is een gedeelde opslaggroep die u gebruiken om Azure-bestandsshares te implementeren. Een opslagaccount kan een onbeperkt aantal shares bevatten en een share kan een onbeperkt aantal bestanden bevatten, totdat de capaciteit van het opslagaccount is bereikt. In dit voorbeeld wordt een algemeen gebruiksversie 2 (GPv2-opslagaccount) gemaakt, waarmee standaard Azure-bestandsshares of andere opslagbronnen zoals blobs of wachtrijen kunnen worden opgeslagen op rotatiemedia (HDD) voor harde schijven. Azure Files ondersteunt ook premium solid-state disk drives (SSD's); premium Azure-bestandsshares kunnen worden gemaakt in opslagaccounts van FileStorage.
+## <a name="create-a-storage-account"></a>Create a storage account
+Een opslag account is een gedeelde opslag groep die u kunt gebruiken voor het implementeren van Azure-bestands shares. Een opslagaccount kan een onbeperkt aantal shares bevatten en een share kan een onbeperkt aantal bestanden bevatten, totdat de capaciteit van het opslagaccount is bereikt. In dit voor beeld wordt een GPv2-opslag account (een algemene doel versie 2) gemaakt, waarmee standaard Azure-bestands shares of andere opslag resources, zoals blobs of wacht rijen, worden opgeslagen op de harde schijf (HDD) rotatie media. Azure Files biedt ook ondersteuning voor Premium Solid-State Disk-schijven (Ssd's); Premium Azure-bestands shares kunnen worden gemaakt in FileStorage-opslag accounts.
 
-In dit voorbeeld wordt een opslagaccount gemaakt met behulp van de cmdlet [New-AzStorageAccount](/powershell/module/az.storage/new-azstorageaccount). Het opslagaccount wordt *mystorageaccount\<random number>* genoemd en een verwijzing naar dat opslagaccount wordt opgeslagen in de variabele **$storageAcct**. Namen van opslagaccounts moeten uniek zijn. Gebruik `Get-Random` om een nummer toe te voegen aan de naam en deze zo uniek te maken. 
+In dit voorbeeld wordt een opslagaccount gemaakt met behulp van de cmdlet [New-AzStorageAccount](/powershell/module/az.storage/new-azstorageaccount). Het opslag account heeft de *naam\<mystorageaccount wille keurig getal>* en een verwijzing naar dat opslag account wordt opgeslagen in de variabele **$storageAcct**. Namen van opslagaccounts moeten uniek zijn. Gebruik `Get-Random` om een nummer toe te voegen aan de naam en deze zo uniek te maken. 
 
 ```azurepowershell-interactive 
 $storageAccountName = "mystorageacct$(Get-Random)"
@@ -55,10 +55,10 @@ $storageAcct = New-AzStorageAccount `
 ```
 
 > [!Note]  
-> Aandelen groter dan 5 TiB (maximaal 100 TiB per aandeel) zijn alleen beschikbaar in lokaal redundante (LRS) en zone redundante (ZRS) opslagaccounts. Als u een georedundant (GRS) of geo-zone-redundante (GZRS)-opslagaccount wilt maken, verwijdert u de `-EnableLargeFileShare` parameter.
+> Shares groter dan 5 TiB (Maxi maal 100 TiB per share) zijn alleen beschikbaar in lokaal redundante (LRS) en zone redundante (ZRS) opslag accounts. Verwijder de `-EnableLargeFileShare` para meter als u een geo-REDUNDANT (GRS) of geo-zone-REDUNDANT (GZRS)-opslag account wilt maken.
 
 ## <a name="create-an-azure-file-share"></a>Een Azure-bestandsshare maken
-U kunt nu uw eerste Azure-bestandsshare maken. U een bestandsshare maken met de cmdlet [Nieuw-AzRmStorageShare.](/powershell/module/az.storage/New-AzRmStorageShare) In dit voorbeeld wordt een share gemaakt met de naam `myshare`.
+U kunt nu uw eerste Azure-bestandsshare maken. U kunt een bestands share maken met de cmdlet [New-AzRmStorageShare](/powershell/module/az.storage/New-AzRmStorageShare) . In dit voorbeeld wordt een share gemaakt met de naam `myshare`.
 
 ```azurepowershell-interactive
 $shareName = "myshare"
@@ -77,18 +77,18 @@ Azure Files biedt twee methoden voor het werken met bestanden en mappen in uw Az
 Zie het volgende document op basis van uw besturingssysteem om een bestandsshare met SMB te koppelen:
 - [Windows](storage-how-to-use-files-windows.md)
 - [Linux](storage-how-to-use-files-linux.md)
-- [Macos](storage-how-to-use-files-mac.md)
+- [macOS](storage-how-to-use-files-mac.md)
 
 ### <a name="using-an-azure-file-share-with-the-file-rest-protocol"></a>Een Azure-bestandsshare gebruiken met het File REST-protocol 
-Het is mogelijk om direct met het File REST-protocol te werken (d.w.z. het handcrafting REST HTTP roept zelf), maar de meest voorkomende manier om het File REST-protocol te gebruiken, is door de Azure PowerShell-module, de [Azure CLI](storage-how-to-use-files-cli.md)of een Azure Storage SDK te gebruiken, die allemaal een mooie wrapper bieden rond het File REST-protocol in de scripting/programmeertaal van uw keuze.  
+Het is mogelijk om rechtstreeks met het bestand REST protocol te werken (dat wil zeggen handcrafting REST HTTP-aanroepen), maar de meest voorkomende manier om het bestand REST protocol te gebruiken, is het gebruik van de module Azure PowerShell, de [Azure cli](storage-how-to-use-files-cli.md)of een Azure Storage SDK, die allemaal een fraaie wrapper rond het bestand rest protocol in de script-en programmeer taal van uw keuze biedt.  
 
 In de meeste gevallen gebruikt u uw Azure-bestandsshare via het SMB-protocol, omdat dit u de mogelijkheid biedt om de bestaande toepassingen en hulpprogramma's te gebruiken die u verwacht te kunnen gebruiken, maar er zijn diverse redenen waarom het gebruik van de File REST API in plaats van SMB voordelen oplevert, zoals:
 
 - U bladert door uw bestandsshare via de PowerShell Cloud Shell (die geen ondersteuning biedt voor het koppelen van bestandsshares via SMB).
 - U profiteert van serverloze resources, zoals [Azure Functions](../../azure-functions/functions-overview.md). 
-- U maakt een service voor toegevoegde waarde die met veel Azure-bestandsshares wordt gebruikt, zoals het uitvoeren van back-up- of antivirusscans.
+- U maakt een waarde-add-service die werkt met veel Azure-bestands shares, zoals het uitvoeren van back-ups of antivirus scans.
 
-In de volgende voorbeelden ziet u hoe u de Azure PowerShell-module gebruikt voor het bewerken van uw Azure-bestandsshare met het File REST-protocol. De `-Context` parameter wordt gebruikt om de opslagaccountsleutel op te halen om de aangegeven acties tegen de bestandsshare uit te voeren. Als u de opslagaccountsleutel wilt ophalen, `Owner` moet u de RBAC-rol van het opslagaccount hebben.
+In de volgende voorbeelden ziet u hoe u de Azure PowerShell-module gebruikt voor het bewerken van uw Azure-bestandsshare met het File REST-protocol. De `-Context` para meter wordt gebruikt voor het ophalen van de sleutel van het opslag account om de aangegeven acties op de bestands share uit te voeren. Als u de sleutel voor het opslag account wilt ophalen, moet u de `Owner` RBAC-rol van hebben op het opslag account.
 
 #### <a name="create-directory"></a>Map maken
 Als u in de hoofdmap van uw Azure-bestandsshare een nieuwe map wilt maken met de naam *myDirectory*, gebruikt u de cmdlet [New-AzStorageDirectory](/powershell/module/az.storage/New-AzStorageDirectory).
@@ -153,7 +153,7 @@ Get-ChildItem | Where-Object { $_.Name -eq "SampleDownload.txt" }
 ``` 
 
 #### <a name="copy-files"></a>Bestanden kopiëren
-Een veelvoorkomende taak is het kopiëren van bestanden van het ene bestand delen naar een ander bestand delen. U kunt deze functionaliteit proberen door een nieuwe share te maken en het bestand dat u net hebt geüpload met de cmdlet [Start-AzStorageFileCopy](/powershell/module/az.storage/Start-AzStorageFileCopy) naar deze nieuwe share te kopiëren. 
+Een veelvoorkomende taak is het kopiëren van bestanden van een bestands share naar een andere bestands share. U kunt deze functionaliteit proberen door een nieuwe share te maken en het bestand dat u net hebt geüpload met de cmdlet [Start-AzStorageFileCopy](/powershell/module/az.storage/Start-AzStorageFileCopy) naar deze nieuwe share te kopiëren. 
 
 ```azurepowershell-interactive
 $otherShareName = "myshare2"
@@ -186,14 +186,14 @@ Get-AzStorageFile `
     -Path "myDirectory2" 
 ```
 
-Hoewel `Start-AzStorageFileCopy` de cmdlet handig is voor ad-hocbestandsverplaatsingen tussen Azure-bestandsshares, `robocopy` voor `rsync` migraties en grotere gegevensbewegingen, raden we aan op Windows en op macOS en Linux. `robocopy`en `rsync` gebruik SMB om de gegevensbewegingen uit te voeren in plaats van de FileREST API.
+Hoewel de `Start-AzStorageFileCopy` cmdlet handig is voor het ad hoc-bestand tussen Azure-bestands shares, voor migraties en grotere gegevens verplaatsingen `robocopy` , `rsync` raden we u aan Windows en op macOS en Linux te gebruiken. `robocopy`en `rsync` gebruik SMB om de gegevens verplaatsing uit te voeren in plaats van de FILEREST-API.
 
 ## <a name="create-and-manage-share-snapshots"></a>Momentopnamen van shares maken en beheren
 Nog een andere handige taak die u kunt doen met een Azure-bestandsshare is het maken van een momentopname van de share. Een momentopname bevat voor een specifiek moment de actuele inhoud van een Azure-bestandsshare. Momentopnamen van een share zijn vergelijkbaar met technologieën van besturingssystemen die u mogelijk al kent, zoals:
 
 - [Volume Shadow Copy Service (VSS)](https://docs.microsoft.com/windows/desktop/VSS/volume-shadow-copy-service-portal) voor Windows-bestandssystemen zoals NTFS en ReFS.
-- [Logische Volume Manager (LVM)](https://en.wikipedia.org/wiki/Logical_Volume_Manager_(Linux)#Basic_functionality) snapshots voor Linux-systemen.
-- [APFS-snapshots (Apple File System)](https://developer.apple.com/library/content/documentation/FileManagement/Conceptual/APFS_Guide/Features/Features.html) voor macOS. 
+- Moment opnamen van [Logical Volume Manager (LVM)](https://en.wikipedia.org/wiki/Logical_Volume_Manager_(Linux)#Basic_functionality) voor Linux-systemen.
+- Moment opnamen van [Apple File System (APFS)](https://developer.apple.com/library/content/documentation/FileManagement/Conceptual/APFS_Guide/Features/Features.html) voor macOS. 
 
 U kunt een momentopname van een share maken door de methode `Snapshot` uit te voeren op een PowerShell-object voor een bestandsshare, dat u kunt opvragen met de cmdlet [Get-AzStorageShare](/powershell/module/az.storage/Get-AzStorageShare). 
 
@@ -263,7 +263,7 @@ U kunt er ook voor kiezen om resources één voor één te verwijderen:
     ```
 
     > [!Note]  
-    > U moet alle momentopnamen voor delen verwijderen voor de Azure-bestandsshares die u hebt gemaakt voordat u de Azure-bestandsshare verwijdert.
+    > U moet alle moment opnamen van shares voor de Azure-bestands shares verwijderen die u hebt gemaakt voordat u de Azure-bestands share verwijdert.
 
 - Het opslagaccount zelf verwijderen (hierdoor worden impliciet de Azure-bestandsshares verwijderd die we hebben gemaakt, evenals andere opslagresources die u hebt gemaakt zoals een Azure Blob-opslagcontainer):
 

@@ -10,32 +10,32 @@ ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
 ms.openlocfilehash: 9748b0354ce09752296fb7d736e09af716f19351
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81424606"
 ---
 # <a name="connect-to-synapse-sql"></a>Verbinding maken met Synapse SQL
-Maak verbinding met de Synapse SQL-mogelijkheid in Azure Synapse Analytics.
+Maak verbinding met de Synapse-SQL-mogelijkheid in azure Synapse Analytics.
 
-## <a name="supported-tools-for-sql-on-demand-preview"></a>Ondersteunde hulpprogramma's voor SQL on-demand (voorbeeld)
+## <a name="supported-tools-for-sql-on-demand-preview"></a>Ondersteunde hulpprogram ma's voor SQL on-demand (preview)
 
-De volledig ondersteunde tool is Azure Data Studio (preview).
+Het volledig ondersteunde hulp programma is Azure Data Studio (preview).
 
-SQL Server Management Studio wordt gedeeltelijk ondersteund vanaf versie 18.4. Er zijn beperkte functies, zoals verbinding maken en query's.
+SQL Server Management Studio wordt gedeeltelijk ondersteund vanuit versie 18,4. Er zijn beperkte functies, zoals verbinding maken en query's uitvoeren.
 
 ## <a name="find-your-server-name"></a>Uw servernaam vinden
 
-De servernaam voor SQL Pool in het volgende voorbeeld is: showdemoweu.sql.azuresynapse.net.
-De servernaam voor SQL on-demand in het volgende voorbeeld is: showdemoweu-ondemand.sql.azuresynapse.net.
+De server naam voor SQL-groep in het volgende voor beeld is: showdemoweu.sql.azuresynapse.net.
+De server naam voor SQL on-demand in het volgende voor beeld is: showdemoweu-ondemand.sql.azuresynapse.net.
 
 Ga als volgt te werk om de volledig gekwalificeerde servernaam te vinden:
 
-1. Ga naar de [Azure-portal.](https://portal.azure.com)
-2. Klik op **Synapse-werkruimten**.
-3. Klik op de werkruimte waarmee u verbinding wilt maken.
-4. Ga naar het overzicht.
+1. Ga naar de [Azure Portal](https://portal.azure.com).
+2. Klik op **Synapse-werk ruimten**.
+3. Klik op de werk ruimte waarmee u verbinding wilt maken.
+4. Ga naar overzicht.
 5. Zoek de volledige servernaam.
 
 ## <a name="sql-pool"></a>**SQL-pool**
@@ -44,10 +44,10 @@ Ga als volgt te werk om de volledig gekwalificeerde servernaam te vinden:
 
 ## <a name="sql-on-demand"></a>**SQL on-demand**
 
-![Volledige servernaam SQL on-demand](./media/connect-overview/server-connect-example-sqlod.png)
+![Volledige server naam SQL on-demand](./media/connect-overview/server-connect-example-sqlod.png)
 
 ## <a name="supported-drivers-and-connection-strings"></a>Ondersteunde stuurprogramma's en verbindingsreeksen
-Synapse SQL ondersteunt [ADO.NET,](https://msdn.microsoft.com/library/e80y5yhx(v=vs.110).aspx) [ODBC](https://msdn.microsoft.com/library/jj730314.aspx), [PHP](https://msdn.microsoft.com/library/cc296172.aspx?f=255&MSPPError=-2147217396)en [JDBC](https://msdn.microsoft.com/library/mt484311(v=sql.110).aspx). Als u de nieuwste versie en documentatie wilt vinden, klikt u op een van de voorgaande stuurprogramma's. Als u de verbindingstekenreeks automatisch wilt genereren voor het stuurprogramma dat u gebruikt vanuit de Azure-portal, klikt u op de **tekenreeksen van de databaseverbinding weergeven** van het voorgaande voorbeeld. Hier volgen ook enkele voorbeelden van hoe een verbindingsreeks er voor elk stuurprogramma uitziet.
+Synapse SQL ondersteunt [ADO.net](https://msdn.microsoft.com/library/e80y5yhx(v=vs.110).aspx), [ODBC](https://msdn.microsoft.com/library/jj730314.aspx), [php](https://msdn.microsoft.com/library/cc296172.aspx?f=255&MSPPError=-2147217396)en [JDBC](https://msdn.microsoft.com/library/mt484311(v=sql.110).aspx). Klik op een van de voor gaande Stuur Programma's om de meest recente versie en documentatie te vinden. Als u automatisch de connection string wilt genereren voor het stuur programma dat u gebruikt vanuit de Azure Portal, klikt u op de **verbindings reeksen Data Base weer geven** in het vorige voor beeld. Hier volgen ook enkele voorbeelden van hoe een verbindingsreeks er voor elk stuurprogramma uitziet.
 
 > [!NOTE]
 > Overweeg de verbindingstime-out in te stellen op 300 seconden. De verbinding blijft dan in stand tijdens korte perioden van niet-beschikbaarheid.
@@ -77,7 +77,7 @@ jdbc:sqlserver://yourserver.sql.azuresynapse.net:1433;database=yourdatabase;user
 ```
 
 ## <a name="connection-settings"></a>Verbindingsinstellingen
-Synapse SQL standaardiseert sommige instellingen tijdens het maken van verbinding en objecten. Deze instellingen kunnen niet worden overschreven, en omvatten:
+Synapse SQL standaardisert enkele instellingen tijdens het maken van de verbinding en het aanmaken van het object. Deze instellingen kunnen niet worden overschreven, en omvatten:
 
 | Database-instelling | Waarde |
 |:--- |:--- |
@@ -88,7 +88,7 @@ Synapse SQL standaardiseert sommige instellingen tijdens het maken van verbindin
 
 ## <a name="recommendations"></a>Aanbevelingen
 
-Voor het uitvoeren van **SQL on-demand** query's zijn de aanbevolen hulpprogramma's [Azure Data Studio](get-started-azure-data-studio.md) en Azure Synapse Studio.
+Voor het uitvoeren van **SQL op aanvraag** -query's zijn de aanbevolen hulpprogram ma's [Azure Data Studio](get-started-azure-data-studio.md) en Azure Synapse Studio.
 
 ## <a name="next-steps"></a>Volgende stappen
-Zie [Query’s uitvoeren met Visual Studio](../sql-data-warehouse/sql-data-warehouse-query-visual-studio.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) als u verbinding wilt maken en een query wilt uitvoeren met Visual Studio. Zie [Verificatie naar Synapse SQL voor](../sql-data-warehouse/sql-data-warehouse-authentication.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)meer informatie over verificatieopties.
+Zie [Query’s uitvoeren met Visual Studio](../sql-data-warehouse/sql-data-warehouse-query-visual-studio.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) als u verbinding wilt maken en een query wilt uitvoeren met Visual Studio. Zie [verificatie voor Synapse SQL](../sql-data-warehouse/sql-data-warehouse-authentication.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)voor meer informatie over verificatie opties.

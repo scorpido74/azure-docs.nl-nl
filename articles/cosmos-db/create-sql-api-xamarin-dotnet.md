@@ -9,13 +9,13 @@ ms.topic: quickstart
 ms.date: 05/30/2018
 ms.author: masoucou
 ms.openlocfilehash: 125cc2516fbd694bbe62545e85d4e14225fb2a6a
-ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80756431"
 ---
-# <a name="quickstart-build-a-todo-app-with-xamarin-using-azure-cosmos-db-sql-api-account"></a>Snelstart: een todo-app bouwen met Xamarin met Azure Cosmos DB SQL API-account
+# <a name="quickstart-build-a-todo-app-with-xamarin-using-azure-cosmos-db-sql-api-account"></a>Snelstartgids: een TODO-app bouwen met Xamarin met behulp van Azure Cosmos DB SQL-API-account
 
 > [!div class="op_single_selector"]
 > * [.NET V3](create-sql-api-dotnet.md)
@@ -30,13 +30,13 @@ Azure Cosmos DB is de wereldwijd gedistribueerde multimodel-databaseservice van 
 > [!NOTE]
 > Voorbeeldcode voor een hele canonieke voorbeeldapp in Xamarin, met meerdere Azure-producten, waaronder CosmosDB, zijn te vinden [hier](https://github.com/xamarinhq/app-geocontacts) op GitHub. Deze app demonstreert de weergave van geografisch verspreide contactpersonen en de mogelijkheid om toe te staan dat deze contactpersonen hun locatie wijzigen.
 
-Deze snelstart laat zien hoe u een SQL API-account van Azure Cosmos DB, een documentdatabase en een container kunt maken met behulp van de Azure-portal. Vervolgens bouwt en implementeert u een mobiele app voor de todolijst die is gebouwd op de [SQL .NET API](sql-api-sdk-dotnet.md) en [Xamarin](https://docs.microsoft.com/xamarin/) met behulp van [Xamarin.Forms](https://docs.microsoft.com/xamarin/) en het [MVVM-architectuurpatroon.](https://docs.microsoft.com/xamarin/xamarin-forms/xaml/xaml-basics/data-bindings-to-mvvm)
+Deze snelstart laat zien hoe u een SQL API-account van Azure Cosmos DB, een documentdatabase en een container kunt maken met behulp van de Azure-portal. Vervolgens bouwt en implementeert u een mobiele app voor taken lijsten die is gebouwd op de [SQL .net API](sql-api-sdk-dotnet.md) en [Xamarin](https://docs.microsoft.com/xamarin/) het gebruik van [Xamarin. Forms](https://docs.microsoft.com/xamarin/) en het [MVVM-architectuur patroon](https://docs.microsoft.com/xamarin/xamarin-forms/xaml/xaml-basics/data-bindings-to-mvvm).
 
 ![Taken-app in Xamarin uitgevoerd op iOS](./media/create-sql-api-xamarin-dotnet/ios-todo-screen.png)
 
 ## <a name="prerequisites"></a>Vereisten
 
-Als u zich ontwikkelt op Windows en visual studio 2019 nog niet hebt geïnstalleerd, u de **gratis** [Visual Studio 2019 Community Edition](https://www.visualstudio.com/downloads/)downloaden en gebruiken. Zorg ervoor dat u **Azure-ontwikkeling** en **Mobile Development met .NET**-workloads inschakelt tijdens de installatie van Visual Studio.
+Als u in Windows ontwikkelt en Visual Studio 2019 nog niet hebt geïnstalleerd, kunt u de **gratis** [Visual Studio 2019 Community Edition](https://www.visualstudio.com/downloads/)downloaden en gebruiken. Zorg ervoor dat u **Azure-ontwikkeling** en **Mobile Development met .NET**-workloads inschakelt tijdens de installatie van Visual Studio.
 
 Als u een Mac gebruikt, kunt u **gratis** [Visual Studio voor Mac](https://www.visualstudio.com/vs/mac/) downloaden.
 
@@ -91,7 +91,7 @@ Ga terug naar Azure Portal om de API-sleutelgegevens op te halen en deze in de a
 
     ![Een toegangssleutel bekijken en kopiëren in Azure Portal, blade Sleutels](./media/create-sql-api-xamarin-dotnet/keys.png)
 
-2. Open in Visual Studio 2019 of Visual Studio voor Mac het APIKeys.cs bestand in de map azure-cosmos-db-sql-xamarin-getting-started/src/ToDoItems.Core/Helpers.
+2. Open in Visual Studio 2019 of Visual Studio voor Mac het bestand APIKeys.cs in de map Azure-Cosmos-DB-SQL-xamarin-Getting-Started/src/ToDoItems. Core/Helpers.
 
 3. Kopieer uw URI-waarde vanuit de portal (met de kopieerknop) en geef deze op als waarde voor de variabele `CosmosEndpointUrl` in APIKeys.cs.
 
@@ -118,42 +118,42 @@ De code in de takenoplossing bevat:
 Laten we nog eens kort bekijken hoe de app met Azure Cosmos DB communiceert.
 
 * Het NuGet-pakket [Microsoft.Azure.DocumentDb.Core](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB.Core/) moet aan alle projecten worden toegevoegd.
-* De `ToDoItem` klasse in de map azure-documentdb-dotnet/samples/xamarin/ToDoItems/ToDoItems.Core/Models modelleert de documenten in de bovenstaande **itemscontainer.** Houd er rekening mee dat de namen van eigenschappen hoofdlettergevoelig zijn.
+* De `ToDoItem` -klasse in de map map Azure-documentdb-DotNet/samples/Xamarin/ToDoItems/ToDoItems. core/model modeleert de documenten in de container **items** die hierboven zijn gemaakt. Houd er rekening mee dat de namen van eigenschappen hoofdlettergevoelig zijn.
 * De klasse `CosmosDBService` in de map azure-documentdb-dotnet/samples/xamarin/ToDoItems/ToDoItems.Core/Services bevat de communicatie met Azure Cosmos DB.
-* Binnen de klasse `CosmosDBService` bevindt zich een variabele van het type `DocumentClient`. Het `DocumentClient` wordt gebruikt voor het configureren en uitvoeren van aanvragen op het Azure Cosmos DB-account en wordt geinstantieerd:
+* Binnen de klasse `CosmosDBService` bevindt zich een variabele van het type `DocumentClient`. De `DocumentClient` wordt gebruikt voor het configureren en uitvoeren van aanvragen voor het Azure Cosmos DB-account en wordt geïnstantieerd:
 
     ```csharp
     docClient = new DocumentClient(new Uri(APIKeys.CosmosEndpointUrl), APIKeys.CosmosAuthKey);
     ```
 
-* Bij het opvragen van `DocumentClient.CreateDocumentQuery<T>` een container naar documenten wordt `CosmosDBService.GetToDoItems` de methode gebruikt, zoals hier in de functie wordt gezien:
+* Bij het uitvoeren van een query op een container `DocumentClient.CreateDocumentQuery<T>` voor documenten wordt de methode gebruikt, zoals hier `CosmosDBService.GetToDoItems` wordt weer gegeven in de functie:
 
    [!code-csharp[](~/samples-cosmosdb-xamarin/src/ToDoItems.Core/Services/CosmosDBService.cs?name=GetToDoItems)] 
 
-    De `CreateDocumentQuery<T>` takes a URI die verwijst naar de container die in de vorige sectie is gemaakt. U kunt ook LINQ-operators opgeven, zoals een `Where`-component. In dit geval worden alleen taken die niet zijn voltooid, geretourneerd.
+    De `CreateDocumentQuery<T>` neemt een URI die verwijst naar de container die in de vorige sectie is gemaakt. U kunt ook LINQ-operators opgeven, zoals een `Where`-component. In dit geval worden alleen taken die niet zijn voltooid, geretourneerd.
 
     De functie `CreateDocumentQuery<T>` wordt synchroon uitgevoerd en retourneert een `IQueryable<T>`. De methode `AsDocumentQuery` zet de `IQueryable<T>` echter om naar een `IDocumentQuery<T>`-object dat asynchroon kan worden uitgevoerd. Zo wordt de gebruikersinterface-thread voor mobiele toepassingen niet geblokkeerd.
 
     De functie `IDocumentQuery<T>.ExecuteNextAsync<T>` haalt de pagina met resultaten op van Azure Cosmos DB en `HasMoreResults` controleert of er nog extra resultaten moeten worden geretourneerd.
 
 > [!TIP]
-> Verschillende functies die werken op Azure Cosmos-containers en -documenten nemen een URI als parameter die het adres van de container of het document opgeeft. Deze URI is opgesteld met de klasse `URIFactory`. URI's voor databases, containers en documenten kunnen allemaal met deze klasse worden gemaakt.
+> Verschillende functies die worden uitgevoerd op Azure Cosmos-containers en-documenten, maken gebruik van een URI als para meter waarmee het adres van de container of het document wordt opgegeven. Deze URI is opgesteld met de klasse `URIFactory`. Uri's voor data bases, containers en documenten kunnen allemaal met deze klasse worden gemaakt.
 
-* De `ComsmosDBService.InsertToDoItem` functie laat zien hoe u een nieuw document invoegt:
+* De `ComsmosDBService.InsertToDoItem` functie laat zien hoe u een nieuw document kunt invoegen:
 
    [!code-csharp[](~/samples-cosmosdb-xamarin/src/ToDoItems.Core/Services/CosmosDBService.cs?name=InsertToDoItem)] 
 
-    Het item URI is opgegeven, evenals het item dat moet worden ingevoegd.
+    De URI van het item is opgegeven, evenals het item dat moet worden ingevoegd.
 
-* De `CosmosDBService.UpdateToDoItem` functie laat zien hoe u een bestaand document vervangen door een nieuw document:
+* De `CosmosDBService.UpdateToDoItem` functie laat zien hoe u een bestaand document vervangt door een nieuw bestand:
 
    [!code-csharp[](~/samples-cosmosdb-xamarin/src/ToDoItems.Core/Services/CosmosDBService.cs?name=UpdateToDoItem)] 
 
-    Hier is een nieuwe URI nodig om het te vervangen `UriFactory.CreateDocumentUri` document op unieke wijze te identificeren en wordt verkregen door het te gebruiken en door te geven de database- en containernamen en de ID van het document.
+    Hier is een nieuwe URI vereist om het te vervangen document uniek te identificeren en dit te verkrijgen door `UriFactory.CreateDocumentUri` de data base en de namen van de containers en de id van het document door te geven.
 
     De `DocumentClient.ReplaceDocumentAsync` vervangt het document dat door de URI is geïdentificeerd door het document dat als parameter is opgegeven.
 
-* Het verwijderen van een item `CosmosDBService.DeleteToDoItem` wordt gedemonstreerd met de functie:
+* Het verwijderen van een item wordt getoond `CosmosDBService.DeleteToDoItem` met de functie:
 
    [!code-csharp[](~/samples-cosmosdb-xamarin/src/ToDoItems.Core/Services/CosmosDBService.cs?name=DeleteToDoItem)] 
 
@@ -202,7 +202,7 @@ Met de volgende stappen wordt gedemonstreerd hoe u de app uitvoert met behulp va
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze quickstart hebt u geleerd hoe u een Azure Cosmos-account maakt, een container maakt met behulp van de Data Explorer en een Xamarin-app bouwen en implementeren. U nu extra gegevens importeren naar uw Azure Cosmos-account.
+In deze Quick Start hebt u geleerd hoe u een Azure Cosmos-account maakt, een container maakt met behulp van de Data Explorer en een Xamarin-app bouwt en implementeert. U kunt nu aanvullende gegevens importeren in uw Azure Cosmos-account.
 
 > [!div class="nextstepaction"]
 > [Gegevens importeren in Azure Cosmos DB](import-data.md)

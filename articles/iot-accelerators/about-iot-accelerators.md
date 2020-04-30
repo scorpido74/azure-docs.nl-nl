@@ -10,10 +10,10 @@ ms.service: iot-accelerators
 services: iot-accelerators
 manager: timlt
 ms.openlocfilehash: 1a27d748e16f892a748cf18569c13ca3f9ead1dd
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "71309521"
 ---
 # <a name="what-are-azure-iot-solution-accelerators"></a>Wat zijn Azure IoT-oplossingsversnellers?
@@ -38,7 +38,7 @@ Gebruik de [verbetering voor de externe bewakingsoplossing](iot-accelerators-rem
 
 U kunt het dashboard voor externe controle gebruiken om de telemetrie van verbonden apparaten te bekijken, nieuwe apparaten in te richten of de firmware op verbonden apparaten bij te werken:
 
-[![Dashboard voor externe bewakingsoplossingen](./media/about-iot-accelerators/rm-dashboard-inline.png)](./media/about-iot-accelerators/rm-dashboard-expanded.png#lightbox)
+[![Dash board van de oplossing voor externe controle](./media/about-iot-accelerators/rm-dashboard-inline.png)](./media/about-iot-accelerators/rm-dashboard-expanded.png#lightbox)
 
 ### <a name="connected-factory"></a>Verbonden factory
 
@@ -46,7 +46,7 @@ Gebruik de [Connected Factory-oplossingsversneller](iot-accelerators-connected-f
 
 U kunt de verbonden factory gebruiken om industriële apparaten te controleren en te beheren:
 
-[![Dashboard voor verbonden fabrieksoplossingen](./media/about-iot-accelerators/cf-dashboard-inline.png)](./media/about-iot-accelerators/cf-dashboard-expanded.png#lightbox)
+[![Dash board Connected Factory-oplossing](./media/about-iot-accelerators/cf-dashboard-inline.png)](./media/about-iot-accelerators/cf-dashboard-expanded.png#lightbox)
 
 ### <a name="predictive-maintenance"></a>Predictief onderhoud
 
@@ -54,7 +54,7 @@ Gebruik de [Predictive Maintenance-oplossingsversneller](iot-accelerators-predic
 
 U kunt het dashboard voor predictief onderhoud gebruiken om de analyse voor predictief onderhoud te bekijken:
 
-[![Dashboard voor verbonden fabrieksoplossingen](./media/about-iot-accelerators/pm-dashboard-inline.png)](./media/about-iot-accelerators/pm-dashboard-expanded.png#lightbox)
+[![Dash board Connected Factory-oplossing](./media/about-iot-accelerators/pm-dashboard-inline.png)](./media/about-iot-accelerators/pm-dashboard-expanded.png#lightbox)
 
 ### <a name="device-simulation"></a>Apparaatsimulatie
 
@@ -62,7 +62,7 @@ Gebruik de [Device Simulation-oplossingsversneller](iot-accelerators-device-simu
 
 U kunt de web-app voor apparaatsimulatie gebruiken om simulaties te configureren en uit te voeren:
 
-[![Dashboard voor verbonden fabrieksoplossingen](./media/about-iot-accelerators/ds-dashboard-inline.png)](./media/about-iot-accelerators/ds-dashboard-expanded.png#lightbox)
+[![Dash board Connected Factory-oplossing](./media/about-iot-accelerators/ds-dashboard-inline.png)](./media/about-iot-accelerators/ds-dashboard-expanded.png#lightbox)
 
 ## <a name="design-principles"></a>Ontwerpprincipes
 
@@ -80,7 +80,7 @@ De oorspronkelijke oplossingsversnellers werden geschreven met behulp van .NET e
 
 | Oplossingsverbetering   | Architectuur  | Talen     |
 | ---------------------- | ------------- | ------------- |
-| Externe bewaking      | Microservices | [Java](https://github.com/Azure/azure-iot-pcs-remote-monitoring-java) en [.NET](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet) |
+| Externe bewaking      | Microservices | [Java](https://github.com/Azure/azure-iot-pcs-remote-monitoring-java) en [.net](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet) |
 | Predictief onderhoud | MVC           | [.NET](https://github.com/Azure/azure-iot-predictive-maintenance)          |
 | Verbonden factory      | MVC           | [.NET](https://github.com/Azure/azure-iot-connected-factory)          |
 | Apparaatsimulatie      | Microservices | [.NET](https://github.com/Azure/device-simulation-dotnet)          |
@@ -104,6 +104,6 @@ De kosten voor het uitvoeren van een oplossingsversneller zijn de gecombineerde 
 Raadpleeg de quickstarts om een van de oplossingsverbeteringen uit te proberen:
 
 * [Een externe bewakingsoplossing uitproberen](quickstart-remote-monitoring-deploy.md)
-* [Een oplossing voor verbonden factory uitproberen](quickstart-connected-factory-deploy.md)
+* [Een oplossing voor een verbonden fabriek uitproberen](quickstart-connected-factory-deploy.md)
 * [Een oplossing voor predictief onderhoud uitproberen](quickstart-predictive-maintenance-deploy.md)
 * [Een oplossing voor apparaatsimulatie uitproberen](quickstart-device-simulation-deploy.md)

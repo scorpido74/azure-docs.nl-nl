@@ -1,6 +1,6 @@
 ---
-title: Wat is OPC Twin - Azure | Microsoft Documenten
-description: Dit artikel geeft een overzicht van OPC Twin. OPC Twin biedt detectie, registratie en afstandsbediening van industriële apparaten via REST API's.
+title: 'Wat is OPC: twee Azure | Microsoft Docs'
+description: In dit artikel vindt u een overzicht van OPC, twee. OPC twee biedt detectie, registratie en extern beheer van industriële apparaten via REST-Api's.
 author: dominicbetts
 ms.author: dobett
 ms.date: 11/26/2018
@@ -9,37 +9,37 @@ ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
 ms.openlocfilehash: 91448f55f0ebb88ba6c685b960ece9d91cb98e25
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "73826226"
 ---
-# <a name="what-is-opc-twin"></a>Wat is OPC Twin?
+# <a name="what-is-opc-twin"></a>Wat is OPC twee?
 
-OPC Twin bestaat uit microservices die Azure IoT Edge en IoT Hub gebruiken om de cloud en het fabrieksnetwerk met elkaar te verbinden. OPC Twin biedt detectie, registratie en afstandsbediening van industriële apparaten via REST API's. OPC Twin vereist geen OPC Unified Architecture (OPC UA) SDK, programmeert taalagnostisch en kan worden opgenomen in een serverloze workflow. Dit artikel beschrijft verschillende OPC Twin use cases.
+OPC twee bestaat uit micro services die gebruikmaken van Azure IoT Edge en IoT Hub om verbinding te maken met de Cloud en het Factory-netwerk. OPC twee biedt detectie, registratie en extern beheer van industriële apparaten via REST-Api's. OPC dubbele vereist geen OPC-UA-SDK (Unified Architecture), is programmeer taal neutraal en kan worden opgenomen in een serverloze werk stroom. In dit artikel worden verschillende OPC-twee-use cases beschreven.
 
-## <a name="discovery-and-control"></a>Ontdekking en controle
-U OPC Twin gebruiken voor eenvoudige voor ontdekking en registratie.
+## <a name="discovery-and-control"></a>Detectie en beheer
+U kunt OPC-twee gebruiken voor eenvoudig detectie en registratie.
 
-### <a name="simple-discovery-and-registration"></a>Eenvoudige ontdekking en registratie
-MET OPC Twin kunnen fabrieksoperators het fabrieksnetwerk scannen, zodat OPC UA-servers kunnen worden ontdekt en geregistreerd. Als alternatief kunnen fabrieksoperators ook handmatig OPC UA-apparaten registreren met behulp van een bekende detectie-URL. Als u bijvoorbeeld verbinding wilt maken met alle OPC UA-apparaten nadat de IoT Edge-gateway met een OPC Twin-module op de fabrieksvloer is geïnstalleerd, kan de fabrieksoperator op afstand een scan van het netwerk activeren en alle OPC UA-servers visueel bekijken. 
+### <a name="simple-discovery-and-registration"></a>Eenvoudige detectie en registratie
+OPC twee biedt fabrieks operators de mogelijkheid om het fabrieks netwerk te scannen, zodat OPC UA-servers kunnen worden gedetecteerd en geregistreerd. Als alternatief kunnen Factory-Opera tors ook niet hand matig OPC UA-apparaten registreren met behulp van een bekende detectie-URL. Als u bijvoorbeeld verbinding wilt maken met alle OPC UA-apparaten nadat de IoT Edge gateway met een OPC-dubbele module op de fabriek is geïnstalleerd, kan de fabrieks operator een scan van het netwerk op afstand activeren en de OPC UA-servers visueel weer geven. 
 
-### <a name="simple-control"></a>Eenvoudige bediening
-MET OPC Twin kunnen fabrieksoperators automatisch of handmatig reageren op gebeurtenissen en hun fabrieksvloermachines automatisch of handmatig opnieuw configureren. OPC Twin biedt REST API's om services op de OPC UA-server aan te roepen, door de adresruimte te bladeren en variabelen te lezen/schrijven en methoden uit te voeren. Een ketel gebruikt bijvoorbeeld temperatuur-KPI om de productielijn te regelen. De temperatuursensor publiceert de wijziging in gegevens met OPC Publisher. De fabrieksexploitant ontvangt de waarschuwing dat de temperatuur de drempel heeft bereikt. De productielijn koelt automatisch af via OPC Twin. De fabrieksexploitant wordt op de hoogte gebracht van de afkoeling.
+### <a name="simple-control"></a>Eenvoudig beheer
+Met OPC dubbele kunnen Factory-Opera tors reageren op gebeurtenissen en hun fabrieks machines automatisch of hand matig opnieuw configureren vanuit de Cloud. OPC twee biedt REST Api's voor het aanroepen van services op de OPC UA-server, blader door de adres ruimte en lees/schrijf variabelen en voer methoden uit. Een ketel maakt bijvoorbeeld gebruik van een temperatuur KPI om de productie lijn te beheren. De temperatuur sensor publiceert de wijziging in gegevens met behulp van de OPC-Uitgever. De fabrieks operator ontvangt de waarschuwing dat de Tempe ratuur de drempel waarde heeft bereikt. De productie lijn wordt automatisch uitgelicht via OPC dubbele. De fabrieks operator wordt op de hoogte gesteld van de afkoelen.
 
-## <a name="authentication"></a>Authentication
-U OPC Twin gebruiken voor eenvoudige verificatie en voor een eenvoudige ontwikkelaarservaring.
+## <a name="authentication"></a>Verificatie
+U kunt OPC-twee gebruiken om eenvoudig te authenticeren voor verificatie en voor een eenvoudige ervaring voor ontwikkel aars.
 
 ### <a name="simple-authentication"></a>Eenvoudige verificatie 
-OPC Twin maakt gebruik van azure active directory (AAD)-gebaseerde verificatie en controle van eind tot eind. Opc Twin maakt het bijvoorbeeld mogelijk om de toepassing bovenop OPC Twin te bouwen om te bepalen wat een operator op een machine heeft uitgevoerd. Aan de machinekant is het via OPC UA auditing. Aan de cloudkant is dit het door een onveranderlijke clientauditlog en AAD-verificatie op te slaan op de REST API.
+OPC twee maakt gebruik van Azure Active Directory (AAD)-verificatie en controles van end-to-end. Zo kan OPC twee bijvoorbeeld de toepassing boven op OPC twee maken om te bepalen wat een operator op een computer heeft uitgevoerd. Aan de kant van de computer wordt gepaard met OPC UA auditing. Aan de Cloud zijde wordt een onveranderlijk client audit logboek en AAD-verificatie opgeslagen op de REST API.
 
-### <a name="simple-developer-experience"></a>Eenvoudige ontwikkelaarservaring 
-OPC Twin kan worden gebruikt met toepassingen geschreven in elke programmeertaal via REST API's. Aangezien ontwikkelaars een OPC UA-client integreren in een oplossing, is kennis van de OPC UA SDK niet nodig. OPC Twin kan naadloos integreren in stateloze, serverloze architecturen. Een webontwikkelaar met volledige stack die bijvoorbeeld een toepassing voor een alarm- en gebeurtenisdashboard ontwikkelt, kan de logica schrijven om te reageren op gebeurtenissen in JavaScript of TypeScript met OPC Twin zonder medeweten van C, C#, of de volledige OPC UA-stackimplementatie. 
+### <a name="simple-developer-experience"></a>Eenvoudige ervaring voor ontwikkel aars 
+OPC dubbele kan worden gebruikt met toepassingen die zijn geschreven in een programmeer taal via REST-Api's. Omdat ontwikkel aars een OPC UA-client integreren in een oplossing, is kennis van de OPC UA SDK niet nodig. OPC twee kan naadloos worden geïntegreerd in stateless, serverloze architecturen. Zo kan een volledige stack webontwikkelaar die een toepassing ontwikkelt voor een alarm en gebeurtenis dashboard de logica schrijven om te reageren op gebeurtenissen in Java script of type script met behulp van OPC, zonder de kennis van C, C# of de volledige OPC UA-stack implementatie. 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Nu dat je hebt geleerd over OPC Twin en het gebruik ervan, hier is de voorgestelde volgende stap:
+Nu u over OPC en het gebruik ervan hebt geleerd, is dit de voorgestelde volgende stap:
 
 > [!div class="nextstepaction"]
 > [Wat is OPC Vault?](overview-opc-vault.md)

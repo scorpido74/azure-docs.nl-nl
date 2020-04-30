@@ -9,13 +9,13 @@ ms.devlang: nodejs
 ms.topic: quickstart
 ms.date: 09/24/2018
 ms.openlocfilehash: ffc2681e487a51ce630d9433d6ded86961b5276c
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "77210344"
 ---
-# <a name="quickstart-build-a-cassandra-app-with-nodejs-sdk-and-azure-cosmos-db"></a>Snelstart: een Cassandra-app bouwen met Node.js SDK en Azure Cosmos DB
+# <a name="quickstart-build-a-cassandra-app-with-nodejs-sdk-and-azure-cosmos-db"></a>Quick Start: een Cassandra-app bouwen met de node. js-SDK en Azure Cosmos DB
 
 > [!div class="op_single_selector"]
 > * [.NET](create-cassandra-dotnet.md)
@@ -24,11 +24,11 @@ ms.locfileid: "77210344"
 > * [Python](create-cassandra-python.md)
 >  
 
-In deze quickstart maakt u een Azure Cosmos DB Cassandra API-account en gebruikt u een Cassandra Node.js-app die is gekloond van GitHub om een Cassandra-database en -container te maken. Azure Cosmos DB is een databaseservice met meerdere modellen waarmee u snel document-, tabel-, sleutelwaarde- en grafiekdatabases maken en opvragen met globale distributie- en horizontale schaalmogelijkheden.
+In deze Quick Start maakt u een Azure Cosmos DB Cassandra-API-account en gebruikt u een Cassandra node. js-app die is gekloond van GitHub om een Cassandra-data base en-container te maken. Azure Cosmos DB is een database service met meerdere modellen waarmee u snel documenten, tabellen, sleutel waarden en grafische data bases met globale distributie en mogelijkheden voor horizontale schaal kunt maken en er query's op uitvoert.
 
 ## <a name="prerequisites"></a>Vereisten
 
-[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]U [Azure Cosmos DB ook gratis uitproberen](https://azure.microsoft.com/try/cosmosdb/) zonder een Azure-abonnement, gratis en verplichtingen.
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]U kunt ook [gratis proberen Azure Cosmos DB](https://azure.microsoft.com/try/cosmosdb/) zonder een Azure-abonnement, gratis en toezeg gingen.
 
 U hebt verder nodig:
 * [Node.js](https://nodejs.org/dist/v0.10.29/x64/node-v0.10.29-x64.msi) versie v0.10.29 of hoger
@@ -166,7 +166,7 @@ Deze stap is optioneel. Als u wilt weten hoe de databaseresources met de code wo
 
 Ga nu terug naar Azure Portal om de verbindingsreeksinformatie op te halen en kopieer deze in de app. De verbindingsreeks stelt uw app in staat om te communiceren met de gehoste database.
 
-1. Selecteer **Verbindingstekenreeks**in uw Azure Cosmos DB-account in de [Azure-portal](https://portal.azure.com/). 
+1. Selecteer in uw Azure Cosmos DB-account [Azure portal](https://portal.azure.com/)in de Azure Portal **verbindings reeks**. 
 
     Gebruik de ![knop Kopiëren](./media/create-cassandra-nodejs/copy.png) aan de rechterkant van het scherm om de bovenste waarde (het CONTACT POINT) te kopiëren.
 
@@ -196,7 +196,7 @@ Ga nu terug naar Azure Portal om de verbindingsreeksinformatie op te halen en ko
     
 ## <a name="use-the-x509-certificate"></a>Het X509-certificaat gebruiken
 
-1. Download het Baltimore CyberTrust Root [https://cacert.omniroot.com/bc2025.crt](https://cacert.omniroot.com/bc2025.crt)certificaat lokaal van . Wijzig de naam van het bestand met de bestandsextensie `.cer`.
+1. Down load het Baltimore Cyber Trust-basis certificaat [https://cacert.omniroot.com/bc2025.crt](https://cacert.omniroot.com/bc2025.crt)lokaal van. Wijzig de naam van het bestand met de bestandsextensie `.cer`.
 
    Het certificaat heeft serienummer `02:00:00:b9` en SHA1-vingerafdruk `d4🇩🇪20:d0:5e:66:fc:53:fe:1a:50:88:2c:78:db:28:52:ca:e4:74`.
 
@@ -205,30 +205,30 @@ Ga nu terug naar Azure Portal om de verbindingsreeksinformatie op te halen en ko
 3. Sla `uprofile.js` op.
 
 > [!NOTE]
-> Als u in de latere stappen een certificaatgerelateerde fout ondervindt en op een Windows-machine wordt uitgevoerd, moet u ervoor zorgen dat u het proces hebt gevolgd voor het correct converteren van een .crt-bestand naar de onderstaande Microsoft .cer-indeling.
+> Als er een probleem is met het certificaat in de latere stappen en wordt uitgevoerd op een Windows-computer, moet u ervoor zorgen dat u het proces voor het correct omzetten van een CRT-bestand in de onderstaande micro soft. CER-indeling hebt gevolgd.
 > 
-> Dubbelklik op het .crt-bestand om het te openen in het certificaatdisplay. 
+> Dubbel klik op het. crt-bestand om het te openen in de certificaat weergave. 
 >
 > ![De uitvoer bekijken en controleren](./media/create-cassandra-nodejs/crtcer1.gif)
 >
-> Druk op Volgende op de wizard Certificaat. Selecteer Basis-64 gecodeerde X.509 (. CER), dan Volgende.
+> Klik op volgende in de wizard Certificaat. Selecteer base-64 Encoded X. 509 (. CER) en vervolgens op volgende.
 >
 > ![De uitvoer bekijken en controleren](./media/create-cassandra-nodejs/crtcer2.gif)
 >
-> Selecteer Bladeren (om een bestemming te zoeken) en typ een bestandsnaam in.
-> Selecteer Volgende en vervolgens Voltooid.
+> Selecteer Bladeren (om een doel locatie te vinden) en typ een bestands naam.
+> Selecteer volgende.
 >
-> U moet nu een goed geformatteerd .cer-bestand hebben. Zorg ervoor dat `uprofile.js` het pad naar dit bestand wijst.
+> U hebt nu een juist opgemaakt CER-bestand. Zorg ervoor dat het pad `uprofile.js` in verwijst naar dit bestand.
 
 ## <a name="run-the-nodejs-app"></a>De Node.Js-app uitvoeren
 
-1. Zorg er in het git-terminalvenster voor dat u zich in de voorbeeldmap bevindt die u eerder hebt gekloond:
+1. Controleer in het git-Terminal venster of u zich in de voor beeld-Directory bevindt die u eerder hebt gekloond:
 
     ```bash
     cd azure-cosmos-db-cassandra-nodejs-getting-started
     ```
 
-2. Voer `npm install` uit om de vereiste npm-modules te installeren.
+2. Voer `npm install` uit om de vereiste NPM-modules te installeren.
 
 3. Voer `node uprofile.js` uit om de knooppunttoepassing te starten.
 
@@ -236,7 +236,7 @@ Ga nu terug naar Azure Portal om de verbindingsreeksinformatie op te halen en ko
 
     ![De uitvoer bekijken en controleren](./media/create-cassandra-nodejs/output.png)
 
-    Druk op Ctrl+C om de uitvoering van het programma te stoppen en het consolevenster te sluiten. 
+    Druk op CTRL + C om de uitvoering van het programma te stoppen en het console venster te sluiten. 
 
 5. Open **Data Explorer** in de Azure-portal om deze nieuwe gegevens te bekijken, te wijzigen, een query erop uit te voeren of er iets anders mee te doen. 
 
@@ -252,7 +252,7 @@ Ga nu terug naar Azure Portal om de verbindingsreeksinformatie op te halen en ko
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze quickstart hebt u geleerd hoe u een Azure Cosmos DB-account met Cassandra API maken en een Cassandra Node.js-app uitvoeren waarmee een Cassandra-database en -container worden gemaakt. U nu extra gegevens importeren in uw Azure Cosmos DB-account. 
+In deze Quick Start hebt u geleerd hoe u een Azure Cosmos DB-account maakt met Cassandra-API en een Cassandra node. js-app uitvoert waarmee een Cassandra-data base en-container wordt gemaakt. U kunt nu aanvullende gegevens in uw Azure Cosmos DB-account importeren. 
 
 > [!div class="nextstepaction"]
 > [Cassandra-gegevens importeren in Azure Cosmos DB](cassandra-import-data.md)

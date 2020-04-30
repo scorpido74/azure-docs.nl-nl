@@ -1,93 +1,93 @@
 ---
 title: Een Azure-functie maken met Kotlin en IntelliJ
-description: Meer informatie over het maken en publiceren van een eenvoudige HTTP-geactiveerde, serverloze app op Azure met Kotlin en IntelliJ.
+description: Meer informatie over het maken en publiceren van een eenvoudige, door HTTP geactiveerde, serverloze app op Azure met Kotlin en IntelliJ.
 author: dglover
 ms.service: azure-functions
 ms.topic: quickstart
 ms.date: 03/25/2020
 ms.author: dglover
 ms.openlocfilehash: 2eb1a016e04a4150a76112c68683926810f5c66d
-ms.sourcegitcommit: b129186667a696134d3b93363f8f92d175d51475
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80674095"
 ---
-# <a name="quickstart-create-your-first-http-triggered-function-with-kotlin-and-intellij"></a>Snelstart: maak uw eerste HTTP-geactiveerde functie met Kotlin en IntelliJ
+# <a name="quickstart-create-your-first-http-triggered-function-with-kotlin-and-intellij"></a>Snelstartgids: uw eerste door HTTP geactiveerde functie maken met Kotlin en IntelliJ
 
-In dit artikel ziet u hoe u een [serverloos](https://azure.microsoft.com/overview/serverless-computing/) functieproject maakt met IntelliJ IDEA en Apache Maven. Het laat ook zien hoe u uw functiecode lokaal debuggen in de geïntegreerde ontwikkelomgeving (IDE) en vervolgens het functieproject implementeren in Azure.
+In dit artikel wordt beschreven hoe u een functie project zonder [Server](https://azure.microsoft.com/overview/serverless-computing/) maakt met INTELLIJ-idee en Apache Maven. Ook wordt uitgelegd hoe u lokaal fouten opspoort in de functie code in de Integrated Development Environment (IDE) en vervolgens het functie project implementeert in Azure.
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="set-up-your-development-environment"></a>De ontwikkelomgeving instellen
 
-Installeer de volgende software om een functie te ontwikkelen met Kotlin en IntelliJ:
+Als u een functie wilt ontwikkelen met Kotlin en IntelliJ, installeert u de volgende software:
 
 - [Java Developer Kit](https://aka.ms/azure-jdks) (JDK), versie 8
-- [Apache Maven](https://maven.apache.org), versie 3.0 of hoger
-- [IntelliJ IDEA](https://www.jetbrains.com/idea/download), Community of Ultimate versies met Maven
+- [Apache Maven](https://maven.apache.org), versie 3,0 of hoger
+- [IntelliJ-ideeën](https://www.jetbrains.com/idea/download),-community's of-Ultimate-versies met maven
 - [Azure-CLI](https://docs.microsoft.com/cli/azure)
-- [Versie 2.x](functions-run-local.md#v2) van de Core-hulpprogramma's voor Azure-functies. Het biedt een lokale ontwikkelomgeving voor het schrijven, uitvoeren en debuggen van Azure-functies.
+- [Versie 2. x](functions-run-local.md#v2) van de Azure functions core tools. Het biedt een lokale ontwikkel omgeving voor het schrijven, uitvoeren en fout opsporing van Azure Functions.
 
 > [!IMPORTANT]
-> De JAVA_HOME omgevingsvariabele moet worden ingesteld op de installatielocatie van de JDK om de stappen in dit artikel uit te voeren.
+> De omgevings variabele JAVA_HOME moet worden ingesteld op de installatie locatie van de JDK om de stappen in dit artikel te volt ooien.
 
-## <a name="create-a-functions-project"></a>Een project Functies maken
+## <a name="create-a-functions-project"></a>Een functions-project maken
 
-1. Selecteer IntelliJ IDEA de optie **Nieuw project maken**.  
-1. Selecteer **Maven** in het linkerdeelvenster in het venster **Nieuw project.**
-1. Schakel het selectievakje **Maken van archetype** in en selecteer **Archetype toevoegen** voor het [azure-functions-kotlin-archetype.](https://mvnrepository.com/artifact/com.microsoft.azure/azure-functions-kotlin-archetype)
-1. Vul in het venster **Archetype toevoegen** de velden als volgt in:
-    - _GroupId_: com.microsoft.azure
-    - _ArtefactId_: azure-functions-kotlin-archetype
-    - _Versie_: Gebruik de nieuwste versie uit [de centrale repository](https://mvnrepository.com/artifact/com.microsoft.azure/azure-functions-kotlin-archetype)
-    ![Maak een Maven project van archetype in IntelliJ IDEA](media/functions-create-first-kotlin-intellij/functions-create-intellij.png)  
-1. Selecteer **OK**en selecteer **Volgende**.
-1. Voer uw gegevens in voor het huidige project en selecteer **Voltooien**.
+1. In IntelliJ-idee selecteert u **Nieuw project maken**.  
+1. Selecteer in het venster **New Project** **maven** in het linkerdeel venster.
+1. Schakel het selectie vakje **maken op basis van archetype** in en selecteer vervolgens **archetype toevoegen** voor de [Azure-functions-Kotlin-archetype](https://mvnrepository.com/artifact/com.microsoft.azure/azure-functions-kotlin-archetype).
+1. In het venster **archetype toevoegen** vult u de velden als volgt in:
+    - _GroupId_: com. micro soft. Azure
+    - _ArtifactId_: Azure-functions-Kotlin-archetype
+    - _Versie_: gebruik de meest recente versie van [de centrale opslag plaats](https://mvnrepository.com/artifact/com.microsoft.azure/azure-functions-kotlin-archetype)
+    ![een Maven-project maken op basis van archetype in IntelliJ-idee](media/functions-create-first-kotlin-intellij/functions-create-intellij.png)  
+1. Selecteer **OK**en selecteer vervolgens **volgende**.
+1. Voer uw gegevens in voor het huidige project en selecteer **volt ooien**.
 
-Maven maakt de projectbestanden in een nieuwe map met dezelfde naam als de _ArtefactId-waarde._ De gegenereerde code van het project is een eenvoudige [HTTP-geactiveerde](/azure/azure-functions/functions-bindings-http-webhook) functie die de hoofdtekst van het activerende HTTP-verzoek weerspiegelt.
+Maven maakt de project bestanden in een nieuwe map met dezelfde naam als de _ArtifactId_ -waarde. De gegenereerde code van het project is een eenvoudige [, door http getriggerde](/azure/azure-functions/functions-bindings-http-webhook) functie die de hoofd tekst van de TRIGGERende HTTP-aanvraag echot.
 
 ## <a name="run-functions-locally-in-the-ide"></a>Functies lokaal uitvoeren in de IDE
 
 > [!NOTE]
-> Als u functies lokaal wilt uitvoeren en debuggen, controleert u of u [Azure Functions Core Tools, versie 2,](functions-run-local.md#v2)hebt geïnstalleerd.
+> Als u de functies lokaal wilt uitvoeren en fouten wilt opsporen, controleert u of u [Azure functions core tools, versie 2](functions-run-local.md#v2)hebt geïnstalleerd.
 
-1. Wijzigingen handmatig importeren of [automatisch importeren](https://www.jetbrains.com/help/idea/creating-and-optimizing-imports.html)inschakelen .
-1. Open de werkbalk **Maven-projecten.**
-1. Breid **de levenscyclus**uit en open het **pakket**. De oplossing is gebouwd en verpakt in een nieuw gemaakte doelmap.
-1. Vouw**Azure-functies voor** **Plug-ins** > uit en open **azure-functies:voer uit** om de lokale runtime van Azure Functions te starten.  
-  ![Werkbalk Maven voor Azure-functies](media/functions-create-first-kotlin-intellij/functions-intellij-kotlin-maven-toolbar.png)  
+1. Wijzigingen hand matig importeren of [automatisch importeren](https://www.jetbrains.com/help/idea/creating-and-optimizing-imports.html)inschakelen.
+1. Open de werk balk **Maven projecten** .
+1. Vouw **levens cyclus**uit en open vervolgens **package**. De oplossing is gebouwd en verpakt in een nieuw gemaakte doelmap.
+1. Vouw **invoeg toepassingen** > uit**Azure-functions** en open **Azure-functions: Voer uit** om de Azure functions lokale runtime te starten.  
+  ![Maven-werk balk voor Azure Functions](media/functions-create-first-kotlin-intellij/functions-intellij-kotlin-maven-toolbar.png)  
 
-1. Sluit het dialoogvenster Uitvoeren wanneer u klaar bent met het testen van uw functie. Er kan slechts één functiehost actief zijn en lokaal worden uitgevoerd.
+1. Sluit het dialoog venster uitvoeren wanneer u klaar bent met het testen van de functie. Er kan slechts één functie-host actief zijn en lokaal worden uitgevoerd.
 
-## <a name="debug-the-function-in-intellij"></a>De functie debuggen in IntelliJ
+## <a name="debug-the-function-in-intellij"></a>Fouten opsporen in de functie in IntelliJ
 
-1. Als u de functiehost wilt starten in de foutopsporingsmodus, voegt u **-DenableDebug** toe als argument wanneer u uw functie uitvoert. U de configuratie wijzigen in [mavendoelen](https://www.jetbrains.com/help/idea/maven-support.html#run_goal) of de volgende opdracht uitvoeren in een terminalvenster:  
+1. Als u de functie-host in de foutopsporingsmodus wilt starten, voegt u **-DenableDebug** als het argument toe wanneer u de functie uitvoert. U kunt de configuratie in maven- [doel stellingen](https://www.jetbrains.com/help/idea/maven-support.html#run_goal) wijzigen of de volgende opdracht uitvoeren in een Terminal venster:  
 
    ```
    mvn azure-functions:run -DenableDebug
    ```
 
-   Met deze opdracht opent de functiehost een foutopsporingspoort op 5005.
+   Deze opdracht zorgt ervoor dat de functie-host een poort voor fout opsporing opent op 5005.
 
-1. Selecteer **Configuraties bewerken**in het menu **Uitvoeren** .
-1. Selecteer **(+)** om een **afstandsbediening**toe te voegen .
-1. Vul de velden _Naam_ en _instellingen in_ en selecteer **OK** om de configuratie op te slaan.
-1. Selecteer na de installatie **Foutopsporing < naam van externe configuratie >** of druk op Shift+F9 op het toetsenbord om te beginnen met foutopsporing.
+1. Selecteer in het menu **uitvoeren** de optie **configuraties bewerken**.
+1. Selecteer **(+)** om een **extern**onderdeel toe te voegen.
+1. Vul de velden _naam_ en _instellingen_ in en selecteer **OK** om de configuratie op te slaan.
+1. Selecteer na de installatie **fout opsporing < naam van de externe configuratie >** of druk op SHIFT + F9 op het toetsen bord om de fout opsporing te starten.
 
-   ![Foutopsporingsfuncties in IntelliJ](media/functions-create-first-kotlin-intellij/debug-configuration-intellij.PNG)
+   ![Functies voor fout opsporing in IntelliJ](media/functions-create-first-kotlin-intellij/debug-configuration-intellij.PNG)
 
-1. Wanneer u klaar bent, stopt u de foutopsporing en het loopproces. Er kan slechts één functiehost actief zijn en lokaal worden uitgevoerd.
+1. Wanneer u klaar bent, stopt u de fout opsporing en het actieve proces. Er kan slechts één functie-host actief zijn en lokaal worden uitgevoerd.
 
 ## <a name="deploy-the-function-to-azure"></a>De functie implementeren in Azure
 
-1. Voordat u uw functie implementeren in Azure, moet u [zich aanmelden met de Azure CLI.](/cli/azure/authenticate-azure-cli?view=azure-cli-latest)
+1. Voordat u uw functie kunt implementeren in azure, moet u [zich aanmelden met behulp van de Azure cli](/cli/azure/authenticate-azure-cli?view=azure-cli-latest).
 
    ``` azurecli
    az login
    ```
 
-1. Implementeer uw code in een `azure-functions:deploy` nieuwe functie met behulp van het Maven-doel. U ook de **azure-functies selecteren:deploy-optie** in het venster Maven-projecten.
+1. Implementeer uw code in een nieuwe functie met behulp `azure-functions:deploy` van het maven-doel. U kunt ook de optie **Azure-functions: Deploy** selecteren in het venster maven projects.
 
    ```
    mvn azure-functions:deploy
@@ -105,5 +105,5 @@ Maven maakt de projectbestanden in een nieuwe map met dezelfde naam als de _Arte
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Nu u uw eerste Kotlin-functie in Azure hebt geïmplementeerd, bekijkt u de [ontwikkelaarshandleiding javafuncties](functions-reference-java.md) voor meer informatie over het ontwikkelen van Java- en Kotlin-functies.
-- Voeg extra functies met verschillende triggers `azure-functions:add` toe aan uw project met behulp van het Maven-doel.
+Nu u uw eerste Kotlin-functie hebt geïmplementeerd in azure, raadpleegt u de [hand leiding voor ontwikkel aars voor Java-functies](functions-reference-java.md) voor meer informatie over het ontwikkelen van Java-en Kotlin-functies.
+- Voeg extra functies met verschillende triggers aan uw project toe met behulp van het `azure-functions:add` maven-doel.

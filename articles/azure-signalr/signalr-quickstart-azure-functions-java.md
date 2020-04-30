@@ -1,5 +1,5 @@
 ---
-title: Java gebruiken om een chatroom te maken met Azure-functies en SignalR-service
+title: Java gebruiken om een chat ruimte te maken met Azure Functions en de signaal service
 description: Een snelstart waarin u leert hoe u Azure SignalR Service en Azure Functions gebruikt om een chatruimte te maken.
 author: sffamily
 ms.service: signalr
@@ -8,27 +8,27 @@ ms.topic: quickstart
 ms.date: 03/04/2019
 ms.author: zhshang
 ms.openlocfilehash: 890fc381afe0146e721e084e2dcd7eae9215d004
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "77083201"
 ---
-# <a name="quickstart-use-java-to-create-a-chat-room-with-azure-functions-and-signalr-service"></a>Snelstart: Java gebruiken om een chatroom te maken met Azure-functies en SignalR-service
+# <a name="quickstart-use-java-to-create-a-chat-room-with-azure-functions-and-signalr-service"></a>Snelstartgids: Java gebruiken om een chat ruimte te maken met Azure Functions en de signaal service
 
-Met Azure SignalR Service u eenvoudig realtime functionaliteit toevoegen aan uw toepassing en Azure Functions is een serverloos platform waarmee u uw code uitvoeren zonder infrastructuur te beheren. In deze quickstart gebruik je Java om een serverloze, real-time chatapplicatie te bouwen met behulp van SignalR Service en Functions.
+Met de Azure signalerings service kunt u eenvoudig real-time functionaliteit toevoegen aan uw toepassing en Azure Functions een serverloos platform is waarmee u uw code kunt uitvoeren zonder een infra structuur te beheren. In deze Quick Start gebruikt u Java voor het bouwen van een serverloze, realtime chat toepassing met behulp van de seingevings service en-functies.
 
 ## <a name="prerequisites"></a>Vereisten
 
-- Een codeeditor, zoals [Visual Studio Code](https://code.visualstudio.com/)
-- Een Azure-account met een actief abonnement. [Maak gratis een account aan.](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)
-- [Core-hulpprogramma's voor Azure-functies](https://github.com/Azure/azure-functions-core-tools#installing). Wordt gebruikt om Azure Function-apps lokaal uit te voeren.
+- Een code-editor, zoals [Visual Studio code](https://code.visualstudio.com/)
+- Een Azure-account met een actief abonnement. [Maak gratis een account](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
+- [Azure functions core tools](https://github.com/Azure/azure-functions-core-tools#installing). Wordt gebruikt om Azure function-apps lokaal uit te voeren.
 
    > [!NOTE]
-   > De vereiste SignalR Service-bindingen in Java worden alleen ondersteund in Azure Function Core Tools versie 2.4.419 (hostversie 2.0.12332) of hoger.
+   > De vereiste bindingen van de service signalering in Java worden alleen ondersteund in azure function core tools versie 2.4.419 (host versie 2.0.12332) of hoger.
 
    > [!NOTE]
-   > Voor het installeren van extensies vereist Azure Functions Core Tools de [.NET Core SDK](https://www.microsoft.com/net/download) geïnstalleerd. Er is echter geen kennis van .NET vereist om JavaScript Azure-functie-apps te bouwen.
+   > Als u uitbrei dingen wilt installeren, moet Azure Functions Core Tools de [.net core SDK](https://www.microsoft.com/net/download) zijn geïnstalleerd. Er is echter geen kennis van .NET vereist om JavaScript Azure-functie-apps te bouwen.
 
 - [Java Developer Kit](https://www.azul.com/downloads/zulu/), versie 8
 - [Apache Maven](https://maven.apache.org), versie 3.0 of hoger
@@ -56,18 +56,18 @@ Meld u met uw Azure-account aan bij Azure Portal op <https://portal.azure.com/>.
 
     ![SignalR Service maken](media/signalr-quickstart-azure-functions-javascript/signalr-quickstart-keys.png)
 
-1. Open in uw code-editor de map *src/chat/java* in de gekloonde opslagplaats.
+1. Open in de code-editor de map *src/chat/Java* in de gekloonde opslag plaats.
 
 1. Wijzig de naam *local.settings.sample.json* in *local.settings.json*.
 
 1. In **local.settings.json** plakt u de verbindingsreeks in de waarde van de instelling **AzureSignalRConnectionString**. Sla het bestand op.
 
-1. Het hoofdbestand dat de functies bevat zijn in *src/chat/java/src/main/java/com/function/Functions.java:*
+1. Het hoofd bestand met de functies bevindt zich in *src/chat/Java/src/main/Java/function. java*:
 
     - **negotiate**: gebruikt de invoerbinding *SignalRConnectionInfo* om geldige verbindingsgegevens te genereren en te retourneren.
-    - **sendMessage** - Ontvangt een chatbericht in de aanvraaginstantie en gebruikt de *SignalR-uitvoerbinding* om het bericht uit te zenden naar alle verbonden clienttoepassingen.
+    - **SendMessage** : er wordt een chat bericht in de aanvraag tekst ontvangen en de *signaal* uitvoer binding wordt gebruikt om het bericht uit te zenden naar alle verbonden client toepassingen.
 
-1. Zorg er in de terminal voor dat u zich in de *src/chat/java-map* bevindt. Bouw de functie-app.
+1. Controleer in de terminal of u zich in de map *src/chat/Java* bevindt. De functie-app bouwen.
 
     ```bash
     mvn clean package
@@ -85,7 +85,7 @@ Meld u met uw Azure-account aan bij Azure Portal op <https://portal.azure.com/>.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze quickstart bouwde en runde je een real-time serverless applicatie met Maven. Lees vervolgens hoe u Java Azure-functies helemaal opnieuw maken.
+In deze Quick Start hebt u een realtime serverloze toepassing gemaakt en uitgevoerd met behulp van Maven. Meer informatie over het maken van een volledig nieuwe Java-Azure Functions.
 
 > [!div class="nextstepaction"]
 > [Uw eerste functie maken met Java en Maven](../azure-functions/functions-create-first-java-maven.md)

@@ -1,5 +1,5 @@
 ---
-title: De Azure-portal gebruiken om een servicebuswachtrij te maken
+title: De Azure Portal gebruiken om een Service Bus wachtrij te maken
 description: In deze quickstart leert u hoe u een Service Bus-wachtrij kunt maken met behulp van de Azure-portal. Vervolgens gebruikt u een voorbeeldclienttoepassing om berichten te verzenden naar en te ontvangen van de wachtrij.
 services: service-bus-messaging
 author: spelluru
@@ -9,13 +9,13 @@ ms.custom: mvc
 ms.date: 01/16/2020
 ms.author: spelluru
 ms.openlocfilehash: 0c88db652efe54a497af094160fb426be7c43d16
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "79240644"
 ---
-# <a name="quickstart-use-azure-portal-to-create-a-service-bus-queue"></a>Snelstart: Azure-portal gebruiken om een servicebuswachtrij te maken
+# <a name="quickstart-use-azure-portal-to-create-a-service-bus-queue"></a>Snelstartgids: Azure Portal gebruiken om een Service Bus wachtrij te maken
 In deze snelstart wordt beschreven hoe u berichten naar een Service Bus-wachtrij kunt verzenden en ervan kunt ontvangen. U gebruikt daarbij [Azure Portal][Azure portal] om een berichtennaamruimte te maken en binnen deze naamruimte een wachtrij te maken. Ook wordt beschreven hoe u de autorisatiereferenties binnen die naamruimte kunt verkrijgen. De procedure laat vervolgens zien hoe u berichten naar deze wachtrij kunt verzenden en hoe u ze ervan kunt ontvangen met behulp van de [.NET Standard-bibliotheek](https://www.nuget.org/packages/Microsoft.Azure.ServiceBus).
 
 [!INCLUDE [howto-service-bus-queues](../../includes/howto-service-bus-queues.md)]
@@ -24,8 +24,8 @@ In deze snelstart wordt beschreven hoe u berichten naar een Service Bus-wachtrij
 
 Het volgende moet zijn geïnstalleerd om deze zelfstudie te voltooien:
 
-- Een Azure-abonnement. Als u geen Azure-abonnement hebt, u een [gratis account][] maken voordat u begint.
-- [Visual Studio 2017 update 3 (versie 15.3, 26730.01)](https://www.visualstudio.com/vs) of later. U gebruikt Visual Studio om een voorbeeld te maken dat berichten verzendt naar en berichten ontvangt vanuit een wachtrij. Het voorbeeld is om de wachtrij te testen die u hebt gemaakt met PowerShell. 
+- Een Azure-abonnement. Als u geen Azure-abonnement hebt, kunt u een [gratis account][] maken voordat u begint.
+- [Visual Studio 2017 update 3 (versie 15.3, 26730.01)](https://www.visualstudio.com/vs) of later. U gebruikt Visual Studio om een voor beeld te maken waarmee berichten worden verzonden naar en ontvangen van een wachtrij. Het voor beeld is het testen van de wachtrij die u hebt gemaakt met behulp van Power shell. 
 - [NET Core SDK](https://www.microsoft.com/net/download/windows), versie 2.0 of later.
 
 [!INCLUDE [service-bus-create-namespace-portal](../../includes/service-bus-create-namespace-portal.md)]
@@ -35,14 +35,14 @@ Het volgende moet zijn geïnstalleerd om deze zelfstudie te voltooien:
 ## <a name="send-and-receive-messages"></a>Berichten verzenden en ontvangen
 
 > [!NOTE]
-> Het voorbeeld dat in deze sectie wordt gebruikt om berichten te verzenden en te ontvangen, is een .NET-voorbeeld. Zie Voorbeelden van [servicebusvoorbeelden](service-bus-samples.md)voor voorbeelden die berichten verzenden/ontvangen met andere programmeertalen. 
+> Het voor beeld dat in deze sectie wordt gebruikt voor het verzenden en ontvangen van berichten is een .NET-voor beeld. Zie [Service Bus](service-bus-samples.md)-voor beelden voor voor beelden van het verzenden/ontvangen van berichten met andere programmeer talen. 
 > 
-> Zie de volgende snelle starts voor stapsgewijze instructies voor het verzenden/ontvangen van berichten met verschillende programmeertalen:
+> Zie de volgende Snelstartgids voor stapsgewijze instructies voor het verzenden en ontvangen van berichten met behulp van verschillende programmeer talen:
 > - [.NET](service-bus-dotnet-get-started-with-queues.md)
 > - [Java](service-bus-java-how-to-use-queues.md)
-> - [Node.js met azure/service-buspakket](service-bus-nodejs-how-to-use-queues-new-package.md)
-> - [Node.js met azure-sb-pakket](service-bus-nodejs-how-to-use-queues.md)
-> - [Php](service-bus-php-how-to-use-queues.md)
+> - [Node. js met Azure/service-bus-pakket](service-bus-nodejs-how-to-use-queues-new-package.md)
+> - [Node. js met Azure-SB-pakket](service-bus-nodejs-how-to-use-queues.md)
+> - [PHP](service-bus-php-how-to-use-queues.md)
 > - [Python](service-bus-python-how-to-use-queues.md)
 > - [Ruby](service-bus-ruby-how-to-use-queues.md)
 
@@ -82,7 +82,7 @@ Deze sectie bevat meer informatie over de werking van de voorbeeldcode.
 
 ### <a name="get-connection-string-and-queue"></a>Verbindingsreeks en wachtrij ophalen
 
-De verbindingstekenreeks en de naam `Main()` van de wachtrij worden als opdrachtregelargumenten aan de methode doorgegeven. `Main()` declareert twee tekenreeksvariabelen die deze waarden kunnen omvatten:
+De connection string-en wachtrij naam worden door gegeven `Main()` aan de methode als opdracht regel argumenten. `Main()` declareert twee tekenreeksvariabelen die deze waarden kunnen omvatten:
 
 ```csharp
 static void Main(string[] args)
@@ -119,7 +119,7 @@ De methode `Main()` start vervolgens de asynchrone berichtenlus `MainAsync()`.
 
 ### <a name="message-loop"></a>Berichtenlus
 
-Met de methode MainAsync() wordt een wachtrijclient gemaakt met de `RegisterOnMessageHandlerAndReceiveMessages()`argumenten voor de opdrachtregel, wordt een ontvangende berichthandler met de naam aangeroepen en wordt de set berichten verzonden:
+Met de methode MainAsync () wordt een wachtrij-client gemaakt met de opdracht regel argumenten, wordt een ondersteunings bericht-handler aangeroepen met de naam `RegisterOnMessageHandlerAndReceiveMessages()`en wordt de set berichten verzonden:
 
 ```csharp
 static async Task MainAsync(string ServiceBusConnectionString, string QueueName)
@@ -209,11 +209,11 @@ static async Task ProcessMessagesAsync(Message message, CancellationToken token)
 }
 ```
 > [!NOTE]
-> U servicebusbronnen beheren met [Service Bus Explorer.](https://github.com/paolosalvatori/ServiceBusExplorer/) Met de Service Bus Explorer kunnen gebruikers eenvoudig verbinding maken met een naamruimte van een ServiceBus en berichtenentiteiten beheren. De tool biedt geavanceerde functies zoals import/export functionaliteit of de mogelijkheid om onderwerp, wachtrijen, abonnementen, relay services, meldinghubs en evenementenhubs te testen. 
+> U kunt Service Bus-resources beheren met [Service Bus Explorer](https://github.com/paolosalvatori/ServiceBusExplorer/). Met de Service Bus Explorer kunnen gebruikers verbinding maken met een Service Bus naam ruimte en de Messa ging-entiteiten op een eenvoudige manier beheren. Het hulp programma biedt geavanceerde functies zoals de functionaliteit voor importeren/exporteren of de mogelijkheid om onderwerp, wacht rijen, abonnementen, relay-Services, Notification hubs en Events hubs te testen. 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In dit artikel hebt u een Service Bus-naamruimte en andere resources gemaakt die zijn vereist voor het verzenden en ontvangen van berichten in een wachtrij. Ga door met de zelfstudies in de sectie Berichten **verzenden en ontvangen** voor meer informatie over het schrijven van code voor het verzenden en ontvangen van berichten. 
+In dit artikel hebt u een Service Bus-naamruimte en andere resources gemaakt die zijn vereist voor het verzenden en ontvangen van berichten in een wachtrij. Voor meer informatie over het schrijven van code voor het verzenden en ontvangen van berichten gaat u verder met de zelf studies in het gedeelte **berichten verzenden en ontvangen** . 
 
 > [!div class="nextstepaction"]
 > [Berichten verzenden en ontvangen](service-bus-dotnet-get-started-with-queues.md)

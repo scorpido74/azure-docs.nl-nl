@@ -1,5 +1,5 @@
 ---
-title: 'Query met Azure Cosmos DB Gremlin API met TinkerPop Gremlin Console: Zelfstudie'
+title: "Query's uitvoeren met Azure Cosmos DB Gremlin-API met behulp van TinkerPop Gremlin-console: zelf studie"
 description: Een Azure Cosmos DB-snelstartgids voor het maken van hoekpunten, randen en query's met behulp van de Azure Cosmos DB Gremlin-API.
 author: luisbosquez
 ms.service: cosmos-db
@@ -8,13 +8,13 @@ ms.topic: quickstart
 ms.date: 07/23/2019
 ms.author: lbosq
 ms.openlocfilehash: c3e6524f8e43036c4b4c28c679c281c143731471
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81450204"
 ---
-# <a name="quickstart-create-query-and-traverse-an-azure-cosmos-db-graph-database-using-the-gremlin-console"></a>Snelstart: een Azure Cosmos DB-grafiekdatabase maken, opvragen en doorkruisen met de Gremlin-console
+# <a name="quickstart-create-query-and-traverse-an-azure-cosmos-db-graph-database-using-the-gremlin-console"></a>Quick Start: een Azure Cosmos DB Graph-data base maken, opvragen en door bladeren via de Gremlin-console
 
 > [!div class="op_single_selector"]
 > * [Gremlin-console](create-graph-gremlin-console.md)
@@ -27,7 +27,7 @@ ms.locfileid: "81450204"
 
 Azure Cosmos DB is de wereldwijd gedistribueerde multimodel-databaseservice van Microsoft. U kunt snel databases maken van documenten, sleutel/waarde-paren en grafen en hier query’s op uitvoeren. Deze databases genieten allemaal het voordeel van de wereldwijde distributie en horizontale schaalmogelijkheden die ten grondslag liggen aan Azure Cosmos DB. 
 
-Deze quickstart laat zien hoe u een Azure Cosmos DB [Gremlin API-account,](graph-introduction.md) database en grafiek (container) maakt met behulp van de Azure-portal en gebruikt vervolgens de [Gremlin-console](https://tinkerpop.apache.org/docs/current/reference/#gremlin-console) van [Apache TinkerPop](https://tinkerpop.apache.org) om te werken met Gremlin API-gegevens. In deze zelfstudie gaat u hoekpunten en randen maken, er query’s op uitvoeren, een eigenschap van een hoekpunt bijwerken, query’s uitvoeren op hoekpunten, door de graaf gaan en een hoekpunt verwijderen.
+In deze Quick start ziet u hoe u een Azure Cosmos DB [GREMLIN API](graph-introduction.md) -account,-data base en-grafiek (container) maakt met behulp van de Azure Portal en vervolgens de [Gremlin-console](https://tinkerpop.apache.org/docs/current/reference/#gremlin-console) van [Apache TinkerPop](https://tinkerpop.apache.org) kunt gebruiken om te werken met Gremlin API-gegevens. In deze zelfstudie gaat u hoekpunten en randen maken, er query’s op uitvoeren, een eigenschap van een hoekpunt bijwerken, query’s uitvoeren op hoekpunten, door de graaf gaan en een hoekpunt verwijderen.
 
 ![Azure Cosmo DB vanuit de Apache Gremlin-console](./media/create-graph-gremlin-console/gremlin-console.png)
 
@@ -39,7 +39,7 @@ U moet een Azure-abonnement hebben om een Azure Cosmos DB-account volgens deze Q
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-U moet ook de [Gremlin-console](https://tinkerpop.apache.org/downloads.html) installeren. De **aanbevolen versie is v3.4.3** of eerder. (Als u Gremlin-console op Windows wilt gebruiken, moet u [Java Runtime](https://www.oracle.com/technetwork/java/javase/overview/index.html)installeren).
+U moet ook de [Gremlin-console](https://tinkerpop.apache.org/downloads.html) installeren. De **Aanbevolen versie is v 3.4.3** of eerder. (Als u de Gremlin-console wilt gebruiken in Windows, moet u [Java runtime](https://www.oracle.com/technetwork/java/javase/overview/index.html)installeren).
 
 ## <a name="create-a-database-account"></a>Een databaseaccount maken
 
@@ -49,19 +49,19 @@ U moet ook de [Gremlin-console](https://tinkerpop.apache.org/downloads.html) ins
 
 [!INCLUDE [cosmos-db-create-graph](../../includes/cosmos-db-create-graph.md)]
 
-## <a name="connect-to-your-app-servicegraph"></a><a id="ConnectAppService"></a>Verbinding maken met uw app-service/grafiek
+## <a name="connect-to-your-app-servicegraph"></a><a id="ConnectAppService"></a>Verbinding maken met uw app service/grafiek
 
 1. Voordat u de Gremlin-console start, moet u het configuratiebestand remote-secure.yaml in de map `apache-tinkerpop-gremlin-console-3.2.5/conf` maken of wijzigen.
 2. Vul uw *host-*, *poort-*, *gebruikersnaam-*, *wachtwoord-*, *connectionPool-* en *serializer-* configuraties in zoals in de volgende tabel is gedefinieerd:
 
     Instelling|Voorgestelde waarde|Beschrijving
     ---|---|---
-    hosts|[*accountnaam*. **gremlin**.cosmos.azure.com]|Zie de volgende schermafbeelding. Dit is de **Gremlin URI-waarde** op de overzichtspagina van de Azure-portal, in vierkante haakjes, waarbij de trailing :443/ is verwijderd. Opmerking: Zorg ervoor dat u de Gremlin-waarde gebruikt en **niet** de URI die eindigt met [*accountnaam*.documents.azure.com] wat waarschijnlijk zou resulteren in een uitzondering dat de host niet tijdig heeft gereageerd wanneer u gremlin-query's later probeert uit te voeren. 
+    hosts|[*account naam*. **Gremlin**. Cosmos.Azure.com]|Zie de volgende schermafbeelding. Dit is de **GREMLIN URI** -waarde op de pagina overzicht van de Azure Portal, tussen vier Kante haken, met het afsluitende: 443/verwijderd. Opmerking: Zorg ervoor dat u de waarde Gremlin gebruikt en **niet** de URI die eindigt op [*account naam*. Documents.Azure.com], wat waarschijnlijk zou resulteren in een uitzonde ring ' de host heeft niet op tijd gereageerd ' tijdens het uitvoeren van Gremlin query's later. 
     poort|443|Ingesteld op 443.
     gebruikersnaam|*Uw gebruikersnaam*|De bron van het formulier `/dbs/<db>/colls/<coll>` waar `<db>` de naam van uw database is en `<coll>` de naam van uw verzameling is.
     wachtwoord|*Uw primaire sleutel*| Zie de tweede onderstaande schermafbeelding. Dit is uw primaire sleutel, die u kunt ophalen van de pagina Sleutels in Azure Portal, in het vak Primaire sleutel. Gebruik de kopieerknop aan de linkerkant van het vak om de waarde te kopiëren.
-    connectionPool|{enableSsl: true}|Uw instelling voor verbindingspool voor TLS.
-    serializer|{ className: org.apache.tinkerpop.gremlin.<br>driver.ser.GraphSONMessageSerializerV2d0,<br> config: { serializeResultToString: true }}|Instellen op deze waarden en eventuele `\n`-regeleinden verwijderen bij het plakken in de waarde.
+    connectionPool|{enableSsl: true}|De instelling van de verbindings groep voor TLS.
+    serializer|{ className: org.apache.tinkerpop.gremlin.<br>driver. ser. GraphSONMessageSerializerV2d0,<br> config: { serializeResultToString: true }}|Instellen op deze waarden en eventuele `\n`-regeleinden verwijderen bij het plakken in de waarde.
 
     Kopieer voor de waarde voor hosts de **Gremlin URI**-waarde van de pagina **Overzicht**: ![De Gremlin-URI-waarde bekijken en kopiëren op de pagina Overzicht van Azure Portal](./media/create-graph-gremlin-console/gremlin-uri.png)
 
@@ -86,7 +86,7 @@ zorg dat u de waarde van parameter hosts tussen vierkante haken [] plaatst.
 1. Voer in de terminal `:remote connect tinkerpop.server conf/remote-secure.yaml` uit om verbinding te maken met uw appservice.
 
     > [!TIP]
-    > Als u de foutmelding `No appenders could be found for logger` ontvangt, moet u controleren of u de serialisatiefunctiewaarde in het bestand afstand secure.yaml hebt bijgewerkt, zoals beschreven in stap 2. Als uw configuratie juist is, kan deze waarschuwing veilig worden genegeerd omdat deze geen invloed mag hebben op het gebruik van de console. 
+    > Als u de foutmelding `No appenders could be found for logger` ontvangt, moet u controleren of u de serialisatiefunctiewaarde in het bestand afstand secure.yaml hebt bijgewerkt, zoals beschreven in stap 2. Als uw configuratie correct is, kan deze waarschuwing veilig worden genegeerd, omdat deze geen invloed zou hebben op het gebruik van de-console. 
 
 1. Voer vervolgens `:remote console` uit om alle consoleopdrachten om te leiden naar de externe server.
 

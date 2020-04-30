@@ -1,6 +1,6 @@
 ---
-title: 'Snelstart: de service inschakelen'
-description: Meer informatie over het gebruik en inschakelen van de Azure Security Center for IoT-beveiligingsservice in uw Azure IoT Hub.
+title: 'Snelstartgids: de service inschakelen'
+description: Meer informatie over het voorbereiden en inschakelen van de Azure Security Center voor IoT-beveiligings service in uw Azure IoT Hub.
 services: asc-for-iot
 ms.service: asc-for-iot
 documentationcenter: na
@@ -16,66 +16,66 @@ ms.workload: na
 ms.date: 11/08/2019
 ms.author: mlottner
 ms.openlocfilehash: 0d3e4ad63baf6883aa8fadaca5b1f2d28fa14881
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/14/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81310759"
 ---
-# <a name="quickstart-onboard-azure-security-center-for-iot-service-in-iot-hub"></a>Snelstart: Onboard Azure Security Center voor IoT-service in IoT Hub
+# <a name="quickstart-onboard-azure-security-center-for-iot-service-in-iot-hub"></a>Snelstartgids: onboard Azure Security Center voor IoT-service in IoT Hub
 
-In dit artikel wordt uitgelegd hoe u de Azure Security Center for IoT-service inschakelt op uw bestaande IoT Hub. Zie [Een IoT-hub maken met de Azure-portal](https://docs.microsoft.com/azure/iot-hub/iot-hub-create-through-portal) om aan de slag te gaan als u momenteel geen IoT-hub hebt.
+Dit artikel bevat een uitleg over het inschakelen van de Azure Security Center voor IoT-service op uw bestaande IoT Hub. Als u momenteel geen IoT Hub hebt, raadpleegt u [een IOT hub maken met behulp van de Azure Portal](https://docs.microsoft.com/azure/iot-hub/iot-hub-create-through-portal) om aan de slag te gaan.
 
 > [!NOTE]
-> Azure Security Center for IoT ondersteunt momenteel alleen IoT-hubs met standaardlagen.
+> Azure Security Center voor IoT biedt momenteel alleen ondersteuning voor IoT-hubs met Standard-laag.
 
-## <a name="prerequisites-for-enabling-the-service"></a>Voorwaarden voor het inschakelen van de service
+## <a name="prerequisites-for-enabling-the-service"></a>Vereisten voor het inschakelen van de service
 
 - Log Analytics-werkruimte
-  - Er worden standaard twee soorten gegevens opgeslagen in uw Log Analytics-werkruimte door Azure Security Center for IoT. **beveiligingswaarschuwingen** en **-aanbevelingen**.
-  - U ervoor kiezen om opslag toe te voegen van een extra informatietype, **onbewerkte gebeurtenissen.** Houd er rekening mee dat het opslaan van **onbewerkte gebeurtenissen** in Log Analytics extra opslagkosten met zich meebrengt.
-- IoT-hub (standaardlaag)
-- Voldoen aan alle [servicevereisten](service-prerequisites.md)
+  - Twee soorten informatie worden standaard opgeslagen in uw Log Analytics-werk ruimte door Azure Security Center voor IoT. **beveiligings waarschuwingen** en **aanbevelingen**.
+  - U kunt ervoor kiezen om opslag ruimte toe te voegen voor een extra gegevens type, **onbewerkte gebeurtenissen**. Houd er rekening mee dat bij het opslaan van **onbewerkte gebeurtenissen** in log Analytics extra opslag kosten worden uitgevoerd.
+- IoT Hub (Standard-laag)
+- Aan alle [service vereisten](service-prerequisites.md) voldoen
 
-## <a name="enable-azure-security-center-for-iot-on-your-iot-hub"></a>Azure Security Center voor IoT inschakelen op uw IoT-hub
+## <a name="enable-azure-security-center-for-iot-on-your-iot-hub"></a>Azure Security Center voor IoT op uw IoT Hub inschakelen
 
-Beveiliging inschakelen op uw IoT-hub:
+Beveiliging op uw IoT Hub inschakelen:
 
-1. Open uw **IoT-hub** in Azure-portal.
-1. Klik **onder het** menu Beveiliging op **Uw IoT-oplossing beveiligen.**
+1. Open uw **IOT hub** in azure Portal.
+1. Klik in het menu **beveiliging** op **Beveilig uw IOT-oplossing**.
 
-Gefeliciteerd! U hebt Azure Security Center voor IoT ingeschakeld op uw IoT-hub.
+Gefeliciteerd! Het inschakelen van Azure Security Center voor IoT op uw IoT Hub is voltooid.
 
-### <a name="geolocation-and-ip-address-handling"></a>Geolocatie en behandeling van IP-adres
+### <a name="geolocation-and-ip-address-handling"></a>Verwerking van geolocatie en IP-adres
 
-Om uw IoT-oplossing te beveiligen, worden IP-adressen van inkomende en uitgaande verbindingen van en naar uw IoT-apparaten, IoT Edge en IoT Hub(s) standaard verzameld en opgeslagen. Deze informatie is essentieel om abnormale connectiviteit van verdachte IP-bronnen te detecteren. Bijvoorbeeld wanneer pogingen worden gedaan om verbindingen te leggen van een IP-bron van een bekend botnet of van een IP-bron buiten uw geolocatie. Azure Security Center for IoT-service biedt de flexibiliteit om het verzamelen van IP-adresgegevens op elk gewenst moment in en uit te schakelen.
+Als u uw IoT-oplossing wilt beveiligen, worden de IP-adressen van binnenkomende en uitgaande verbindingen van en naar uw IoT-apparaten, IoT Edge en IoT Hub (s) standaard verzameld en opgeslagen. Deze informatie is essentieel voor het detecteren van abnormale verbindingen van verdachte IP-bronnen. Bijvoorbeeld wanneer er wordt geprobeerd verbindingen tot stand te brengen met een IP-bron van een bekend botnet of van een IP-bron buiten uw geolocatie. Azure Security Center voor IoT-service biedt de flexibiliteit om het verzamelen van IP-adres gegevens op elk gewenst moment in en uit te scha kelen.
 
-Ga als het gaat om het verzamelen van IP-adresgegevens in of uit te schakelen:
+Het verzamelen van IP-adres gegevens in-of uitschakelen:
 
-1. Open uw IoT-hub en selecteer **Overzicht** in het menu **Beveiliging.**
-1. Kies het scherm **Instellingen** en wijzig de geolocatie- en/of IP-verwerkingsinstellingen naar wens.
+1. Open uw IoT Hub en selecteer vervolgens **overzicht** in het menu **beveiliging** .
+1. Kies het scherm **instellingen** en wijzig de instellingen voor geolocatie en/of IP-verwerking naar wens.
 
-### <a name="log-analytics-creation"></a>Logboekanalyse maken
+### <a name="log-analytics-creation"></a>Log Analytics maken
 
-Wanneer Azure Security Center for IoT is ingeschakeld, wordt een standaard Azure Log Analytics-werkruimte gemaakt om onbewerkte beveiligingsgebeurtenissen, waarschuwingen en aanbevelingen op te slaan voor uw IoT-apparaten, IoT Edge en IoT Hub. Elke maand is de eerste vijf (5) GB aan gegevens die per klant worden ingenomen voor de Azure Log Analytics-service gratis. Elke GB aan gegevens die in uw Azure Log Analytics-werkruimte worden opgenomen, wordt de eerste 31 dagen kosteloos bewaard. Meer informatie over de prijzen [van Log Analytics.](https://azure.microsoft.com/pricing/details/monitor/)
+Als Azure Security Center voor IoT is ingeschakeld, wordt er een standaard Azure Log Analytics-werk ruimte gemaakt om onbewerkte beveiligings gebeurtenissen, waarschuwingen en aanbevelingen voor uw IoT-apparaten, IoT Edge en IoT Hub op te slaan. Elke maand is de eerste vijf (5) GB aan gegevens die per klant zijn opgenomen in de Azure Log Analytics-service gratis. Elke GB aan gegevens die zijn opgenomen in uw Azure Log Analytics-werk ruimte, wordt gedurende de eerste 31 dagen gratis bewaard. Meer informatie over [log Analytics](https://azure.microsoft.com/pricing/details/monitor/) prijzen.
 
-Ga als een andere versie van de werkruimteconfiguratie van Log Analytics:
+De werkruimte configuratie van Log Analytics wijzigen:
 
-1. Open uw IoT-hub en selecteer **Overzicht** in het menu **Beveiliging.**
-1. Kies het scherm **Instellingen** en wijzig de werkruimteconfiguratie van loganalytics-instellingen naar wens.
+1. Open uw IoT Hub en selecteer vervolgens **overzicht** in het menu **beveiliging** .
+1. Kies het scherm **instellingen** en wijzig de werkruimte configuratie van log Analytics instellingen naar wens.
 
-### <a name="customize-your-iot-security-solution"></a>Uw IoT-beveiligingsoplossing aanpassen
+### <a name="customize-your-iot-security-solution"></a>Uw IoT-beveiligings oplossing aanpassen
 
-Standaard schakelt u de Azure Security Center for IoT-oplossing in, waarbij alle IoT-hubs onder uw Azure-abonnement worden beveiligd.
+Als u de Azure Security Center voor IoT-oplossing inschakelt, worden standaard alle IoT-hubs in uw Azure-abonnement automatisch beveiligd.
 
-Ga als lid van het Azure Security Center voor IoT-service in op een specifieke IoT-hub:
+Azure Security Center voor IoT-service inschakelen op een specifieke IoT Hub in-of uitschakelen:
 
-1. Open uw IoT-hub en selecteer **Overzicht** in het menu **Beveiliging.**
-1. Kies het scherm **Instellingen** en wijzig de beveiligingsinstellingen van een IoT-hub in uw Azure-abonnement zoals u dat wilt.
+1. Open uw IoT Hub en selecteer vervolgens **overzicht** in het menu **beveiliging** .
+1. Kies het scherm **instellingen** en wijzig de beveiligings instellingen van een IOT-hub in uw Azure-abonnement naar wens.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Ga door naar het volgende artikel om uw oplossing te configureren...
+Ga naar het volgende artikel om uw oplossing te configureren...
 
 > [!div class="nextstepaction"]
 > [De oplossing configureren](quickstart-configure-your-solution.md)

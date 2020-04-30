@@ -1,7 +1,7 @@
 ---
-title: Een zoek-app maken in Azure-portal
+title: Een zoek-app maken in Azure Portal
 titleSuffix: Azure Cognitive Search
-description: Voer de wizard App maken (voorbeeld) uit om HTML-pagina's en -scripten voor een operationele web-app te genereren. De pagina bevat een zoekbalk, resultaatgebied, zijbalk en ondersteuning voor het voortypen.
+description: Voer de wizard app maken (preview) uit om HTML-pagina's en-scripts te genereren voor een operationele web-app. De pagina bevat een zoek balk, resultaten gebied, Sidebar en typeahead-ondersteuning.
 manager: nitinme
 author: HeidiSteen
 ms.author: heidist
@@ -9,87 +9,87 @@ ms.service: cognitive-search
 ms.topic: quickstart
 ms.date: 03/25/2020
 ms.openlocfilehash: 248ef093601eda7a180a6465ccb97e6fc1c9fe41
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80369713"
 ---
-# <a name="quickstart-create-a-search-app-in-the-portal-azure-cognitive-search"></a>Snelstart: een zoek-app maken in de portal (Azure Cognitive Search)
+# <a name="quickstart-create-a-search-app-in-the-portal-azure-cognitive-search"></a>Snelstartgids: een zoek-app maken in de portal (Azure Cognitive Search)
 
-Gebruik de wizard **Zoekapp maken** van de portal om een downloadbare web-app in 'localhost'-stijl te genereren die in een browser wordt uitgevoerd. Afhankelijk van de configuratie is de gegenereerde app bij het eerste gebruik operationeel, met een live verbinding met een externe index. Een standaard-app kan een zoekbalk, resultaatgebied, sidebar-filters en ondersteuning voor het typen bevatten.
+Gebruik de wizard **Zoek opdracht app maken** om een download bare, ' localhost '-web-app te genereren die in een browser wordt uitgevoerd. Afhankelijk van de configuratie is de gegenereerde app operationeel bij het eerste gebruik, met een live-verbinding met een externe index. Een standaard-app kan een zoek balk, resultaat gebied, Sidebar-filters en typeahead-ondersteuning bevatten.
 
-Als u geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) voordat u begint. 
+Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint. 
 
 ## <a name="prerequisites"></a>Vereisten
 
-Upgrade naar de [nieuwste versie van Microsoft Edge](https://www.microsoft.com/edge) of gebruik de Chrome-browser van Google voor deze quickstart.
+Voer een upgrade uit naar de [nieuwste versie van micro soft Edge](https://www.microsoft.com/edge) of gebruik de Chrome-browser van Google voor deze Quick Start.
 
-[Maak een Azure Cognitive Search-service](search-create-service-portal.md) of [zoek een bestaande service](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) onder uw huidige abonnement. U gebruik maken van een gratis service voor deze quickstart. 
+[Een Azure Cognitive Search-service maken](search-create-service-portal.md) of [een bestaande service vinden](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) onder uw huidige abonnement. U kunt een gratis service voor deze Quick Start gebruiken. 
 
-[Maak een index](search-create-index-portal.md) om te gebruiken als basis van uw toepassing. 
+[Maak een index](search-create-index-portal.md) die moet worden gebruikt als basis voor uw toepassing. 
 
-Deze quickstart maakt gebruik van de ingebouwde voorbeeldgegevens en indexen voor onroerend goed omdat er miniatuurafbeeldingen zijn (de wizard ondersteunt het toevoegen van afbeeldingen aan de resultatenpagina). Als u de index wilt maken die in deze oefening wordt gebruikt, voert u de wizard **Gegevens importeren** uit en kiest u de gegevensbron voor *onroerend goed-ons-voorbeeld.*
+In deze Quick Start wordt gebruikgemaakt van de ingebouwde voorbeeld gegevens en-index van onroerend goed, omdat deze miniatuur afbeeldingen bevat (de wizard ondersteunt het toevoegen van afbeeldingen aan de resultaten pagina). Als u de index wilt maken die in deze oefening wordt gebruikt, voert u de wizard **gegevens importeren** uit en kiest u de gegevens bron *realestate-US-sample* .
 
-![gegevensbronpagina voor voorbeeldgegevens](media/search-create-app-portal/import-data-realestate.png)
+![gegevens bron pagina voor voorbeeld gegevens](media/search-create-app-portal/import-data-realestate.png)
 
-Wanneer de index klaar is voor gebruik, gaat u verder met de volgende stap.
+Wanneer de index gereed is voor gebruik, gaat u verder met de volgende stap.
 
 ## <a name="start-the-wizard"></a>De wizard starten
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com) en [zoek uw zoekservice](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices).
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com) en [Zoek uw zoek service](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices).
 
-1. Selecteer op de pagina Overzicht in de koppelingen in het midden van de pagina De optie **Indexen**. 
+1. Selecteer op de pagina overzicht de optie **indexen**in de koppelingen aan het midden van de pagina. 
 
-1. Kies *realestate-us-sample-index* uit de lijst met bestaande indexen.
+1. Kies *realestate-US-sample-index* in de lijst met bestaande indexen.
 
-1. Selecteer op de indexpagina bovenaan de optie **Zoek-app maken (voorbeeld)** om de wizard te starten.
+1. Selecteer op de pagina index bovenaan de optie **Zoek-app maken (preview)** om de wizard te starten.
 
-1. Selecteer op de eerste wizardpagina **Cross Origin Resource Sharing (CORS) inschakelen** om CORS-ondersteuning toe te voegen aan uw indexdefinitie. Deze stap is optioneel, maar uw lokale web-app maakt geen verbinding met de externe index zonder deze.
+1. Selecteer op de eerste wizard pagina **Cross Origin Resource Sharing (CORS) inschakelen** om cors-ondersteuning toe te voegen aan de index definitie. Deze stap is optioneel, maar uw lokale web-app kan geen verbinding maken met de externe index zonder deze.
 
-## <a name="configure-search-results"></a>Zoekresultaten configureren
+## <a name="configure-search-results"></a>Zoek resultaten configureren
 
-De wizard biedt een basisindeling voor gerenderde zoekresultaten met ruimte voor een miniatuurafbeelding, een titel en beschrijving. Het ondersteunen van elk van deze elementen is een veld in uw index dat de gegevens biedt. 
+De wizard biedt een eenvoudige indeling voor gerenderde Zoek resultaten die ruimte bevat voor een miniatuur afbeelding, een titel en een beschrijving. Het maken van een back-up van elk van deze elementen is een veld in uw index dat de gegevens levert. 
 
-1. Kies in Thumbnail het *miniatuurveld* in de *index voor onroerend goed-ons-voorbeeld.* Dit voorbeeld bevat afbeeldingsminiaturen in de vorm van aan de URL geadresseerde afbeeldingen die zijn opgeslagen in een veld met de naam *miniatuur.* Als uw index geen afbeeldingen heeft, laat u dit veld leeg.
+1. Kies in miniatuur het veld *miniatuur* in de index *realestate-US-* -voor beeld. Dit voor beeld gaat over afbeeldings miniaturen in de vorm van URL-geadresseerde afbeeldingen die zijn opgeslagen in een veld met de naam *miniatuur*. Als uw index geen afbeeldingen bevat, laat u dit veld leeg.
 
-1. Kies in Titel een veld dat de uniciteit van elk document overbrengt. In dit voorbeeld is de vermeldings-id een redelijke selectie.
+1. Kies in titel een veld dat de uniekheid van elk document overbrengt. In dit voor beeld is de vermelding ID een redelijke selectie.
 
-1. Kies in Beschrijving een veld met details waarmee iemand kan beslissen of hij doorklikt naar dat specifieke document.
+1. Kies in Beschrijving een veld met details waarmee iemand kan bepalen of er moet worden geklikt op het desbetreffende document.
 
-![gegevensbronpagina voor voorbeeldgegevens](media/search-create-app-portal/configure-results.png)
+![gegevens bron pagina voor voorbeeld gegevens](media/search-create-app-portal/configure-results.png)
 
 ## <a name="add-a-sidebar"></a>Een zijbalk toevoegen
 
-De zoekservice ondersteunt gefacetteerde navigatie, die vaak wordt weergegeven als een zijbalk. Facetten zijn gebaseerd op filterbare en facetable velden, zoals uitgedrukt in het indexschema.
+De zoek service ondersteunt facet navigatie, wat vaak als een zijbalk wordt weer gegeven. Facetten zijn gebaseerd op filter bare en facet bare velden, zoals uitgedrukt in het index schema.
 
-In Azure Cognitive Search is gefacetteerde navigatie een cumulatieve filterervaring. In een categorie worden de resultaten uitgebreid door meerdere filters te selecteren (bijvoorbeeld Seattle en Bellevue selecteren in City). In verschillende categorieën verkleint het selecteren van meerdere filters de resultaten.
+In azure Cognitive Search is facet navigatie een cumulatieve filter ervaring. Binnen een categorie selecteert u meerdere filters om de resultaten uit te breiden (bijvoorbeeld Seattle en Bellevue in plaats te selecteren). Bij categorieën selecteert u meerdere filters om de resultaten te beperken.
 
 > [!TIP]
-> U het volledige indexschema in de portal bekijken. Zoek naar de koppeling **Indexdefinitie (JSON)** op de overzichtspagina van elke index. Velden die in aanmerking komen voor gefacetteerde navigatie hebben 'filterbaar: true' en 'facetable: true'-kenmerken.
+> U kunt het volledige index schema weer geven in de portal. Zoek naar de koppeling **index definitie (JSON)** op de overzichts pagina van elke index. Velden die in aanmerking komen voor facet navigatie, hebben de kenmerken ' filterable: True ' en ' facetable: True '.
 
-Accepteer de huidige selectie van facetten en ga verder naar de volgende pagina.
+Accepteer de huidige selectie van facetten en ga door naar de volgende pagina.
 
 
 ## <a name="add-typeahead"></a>Typeahead toevoegen
 
-Typeahead-functionaliteit is beschikbaar in de vorm van automatisch aanvullen en querysuggesties. De wizard ondersteunt querysuggesties. Op basis van toetsaanslagingangen die door de gebruiker worden geleverd, retourneert de zoekservice een lijst met 'voltooide' querytekenreeksen die als invoer kunnen worden geselecteerd.
+De functionaliteit van typeahead is beschikbaar in de vorm van AutoAanvullen en suggesties voor query's. De wizard ondersteunt query suggesties. Op basis van toetsaanslag invoer die door de gebruiker wordt opgegeven, retourneert de zoek service een lijst met ' voltooide ' query teken reeksen die als invoer kunnen worden geselecteerd.
 
-Suggesties zijn ingeschakeld voor specifieke velddefinities. De wizard geeft u opties voor het configureren van hoeveel informatie is opgenomen in een suggestie. 
+Suggesties zijn ingeschakeld voor specifieke veld definities. De wizard biedt opties voor het configureren van de hoeveelheid informatie die is opgenomen in een suggestie. 
 
-De volgende schermafbeelding toont opties in de wizard, naast een gerenderde pagina in de app. U zien hoe veldselecties worden gebruikt en hoe 'Veldnaam weergeven' wordt gebruikt om etikettering in de suggestie op te nemen of uit te sluiten.
+Op de volgende scherm afbeelding ziet u de opties in de wizard juxtaposed met een gerenderde pagina in de app. U kunt zien hoe veld selecties worden gebruikt, en hoe veld naam weer geven wordt gebruikt voor het opnemen of uitsluiten van labels in de suggestie.
 
-![Configuratie van querysuggesties](media/search-create-app-portal/suggestions.png)
+![Configuratie van de query suggestie](media/search-create-app-portal/suggestions.png)
 
 ## <a name="create-download-and-execute"></a>Maken, downloaden en uitvoeren
 
 1. Selecteer **Zoek-app maken** om het HTML-bestand te genereren.
 
-1. Selecteer de optie **Uw app downloaden** om het bestand te downloaden wanneer u daarom wordt gevraagd.
+1. Wanneer u hierom wordt gevraagd, selecteert u **uw app downloaden** om het bestand te downloaden.
 
-1. Open het bestand. U ziet een pagina die lijkt op de volgende schermafbeelding. Voer een term in en gebruik filters om de resultaten te verkleinen. 
+1. Open het bestand. Er wordt een pagina weer gegeven die vergelijkbaar is met de volgende scherm afbeelding. Voer een term in en gebruik filters om de resultaten te beperken. 
 
-De onderliggende index bestaat uit fictieve, gegenereerde gegevens die zijn gedupliceerd tussen documenten en beschrijvingen komen soms niet overeen met de afbeelding. U een meer samenhangende ervaring verwachten wanneer u een app maakt op basis van uw eigen indexen.
+De onderliggende index bestaat uit fictieve, gegenereerde gegevens die zijn gedupliceerd in documenten, en beschrijvingen die soms niet overeenkomen met de installatie kopie. U kunt een meer samenhangende ervaring verwachten wanneer u een app maakt op basis van uw eigen indexen.
 
 ![De app uitvoeren](media/search-create-app-portal/run-app.png)
 
@@ -98,13 +98,13 @@ De onderliggende index bestaat uit fictieve, gegenereerde gegevens die zijn gedu
 
 Wanneer u in uw eigen abonnement werkt, is het een goed idee om aan het einde van een project te bepalen of u de resources die u hebt gemaakt, nog nodig hebt. Resources die actief blijven, kunnen u geld kosten. U kunt resources afzonderlijk verwijderen, maar u kunt ook de resourcegroep verwijderen als u de volledige resourceset wilt verwijderen.
 
-U resources in de portal vinden en beheren met de koppeling **Alle resources** of **Resourcegroepen** in het linkernavigatiedeelvenster.
+U kunt resources vinden en beheren in de portal met behulp van de koppeling **alle resources** of **resource groepen** in het navigatie deel venster aan de linkerkant.
 
-Als u een gratis service gebruikt, moet u er rekening mee houden dat u beperkt bent tot drie indexen, indexeerders en gegevensbronnen. U afzonderlijke items in de portal verwijderen om onder de limiet te blijven. 
+Als u een gratis service gebruikt, moet u er rekening mee houden dat u bent beperkt tot drie indexen, Indexeer functies en gegevens bronnen. U kunt afzonderlijke items in de Portal verwijderen om de limiet te blijven. 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Hoewel de standaard-app handig is voor de eerste verkenning en kleine taken, helpt het vroegtijdig bekijken van de API's u om de concepten en werkstroom op een dieper niveau te begrijpen:
+Hoewel de standaard-app nuttig is voor de eerste keer verkennen en kleine taken, kunt u op een uitgebreidere manier inzicht krijgen in de concepten en de werk stroom op een lager niveau:
 
 > [!div class="nextstepaction"]
 > [Een index maken met behulp van de .NET-SDK](https://docs.microsoft.com/azure/search/search-create-index-dotnet)

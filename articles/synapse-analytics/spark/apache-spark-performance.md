@@ -1,6 +1,6 @@
 ---
-title: Spark-taken optimaliseren voor prestaties in Azure Synapse Analytics
-description: In dit artikel vindt u een inleiding tot Apache Spark in Azure Synapse Analytics en de verschillende concepten.
+title: Spark-taken optimaliseren voor prestaties in azure Synapse Analytics
+description: Dit artikel bevat een inleiding tot Apache Spark in azure Synapse Analytics en de verschillende concepten.
 services: synapse-analytics
 author: euangMS
 ms.service: synapse-analytics
@@ -10,106 +10,106 @@ ms.date: 04/15/2020
 ms.author: euang
 ms.reviewer: euang
 ms.openlocfilehash: 6ffe7f3d9faf82c892975e9ffa03b383d3610c36
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81424620"
 ---
-# <a name="optimize-apache-spark-jobs-preview-in-azure-synapse-analytics"></a>Apache Spark-taken optimaliseren (preview) in Azure Synapse Analytics
+# <a name="optimize-apache-spark-jobs-preview-in-azure-synapse-analytics"></a>Apache Spark-taken (preview) optimaliseren in azure Synapse Analytics
 
-Meer informatie over het optimaliseren van [de clusterconfiguratie](https://spark.apache.org/) van Apache Spark voor uw specifieke workload.  De meest voorkomende uitdaging is geheugendruk, vanwege onjuiste configuraties (met name fout-sized uitvoerders), langlopende bewerkingen en taken die resulteren in Cartesiaanse bewerkingen. U taken versnellen met de juiste caching en door [gegevensscheefte .](#optimize-joins-and-shuffles) Controleer en bekijk langlopende en resource-verbruikende Spark-taakuitvoeringen voor de beste prestaties.
+Meer informatie over het optimaliseren van [Apache Spark](https://spark.apache.org/) cluster configuratie voor uw specifieke werk belasting.  De meest voorkomende uitdaging is geheugen druk, vanwege onjuiste configuraties (met name verkeerde uitvoeringen), langlopende bewerkingen en taken die resulteren in Cartesische bewerkingen. U kunt taken versnellen met de juiste caching en door [gegevens scheefheid](#optimize-joins-and-shuffles)toe te staan. Voor de beste prestaties controleert en bekijkt u langlopende en resource-Consumer-uitvoeringen met Spark-taken.
 
-In de volgende secties worden veelvoorkomende spark-taakoptimalisaties en -aanbevelingen beschreven.
+In de volgende secties worden veelvoorkomende Spark-taak optimalisaties en-aanbevelingen beschreven.
 
-## <a name="choose-the-data-abstraction"></a>Kies de gegevensabstractie
+## <a name="choose-the-data-abstraction"></a>De gegevens abstractie kiezen
 
-Eerdere Spark-versies gebruiken RDD's om gegevens te abstraheren, Spark 1.3 en 1.6 introduceerden respectievelijk DataFrames en DataSets. Houd rekening met de volgende relatieve verdiensten:
+Eerdere Spark-versies gebruiken Rdd's tot abstracte gegevens, Spark 1,3 en 1,6, respectievelijk DataFrames en gegevens sets. Houd rekening met de volgende relatieve voor delen:
 
 * **DataFrames**
   * Beste keuze in de meeste situaties.
-  * Biedt queryoptimalisatie via Catalyst.
-  * Hele fase code generatie.
-  * Directe toegang tot het geheugen.
-  * Lage garbage collection (GC) overhead.
-  * Niet zo projectvriendelijk als DataSets, omdat er geen compile-time checks of domeinobjectprogrammering zijn.
-* **Datasets**
-  * Goed in complexe ETL-pijplijnen waar de impact op de prestaties acceptabel is.
-  * Niet goed in aggregaties waar de impact op de prestaties aanzienlijk kan zijn.
-  * Biedt queryoptimalisatie via Catalyst.
-  * Ontwikkelaarvriendelijk door het aanbieden van domeinobjectprogrammering en compile-time checks.
-  * Hiermee voegt u serialisatie/deserialisatieoverhead toe.
-  * Hoge GC overhead.
-  * Breekt hele fase code generatie.
-* **DTO's**
-  * U hoeft geen RDD's te gebruiken, tenzij u een nieuwe aangepaste RDD moet bouwen.
+  * Biedt query optimalisatie via Catalyst.
+  * Genereren van code in hele fase.
+  * Directe geheugen toegang.
+  * Overhead van lage Garbage Collection (GC).
+  * Niet als gegevens sets voor ontwikkel aars, omdat er geen compilatie controles of het Program meren van domein objecten zijn.
+* **Sets**
+  * Goed in complexe ETL-pijp lijnen waarbij de prestaties worden beïnvloed.
+  * Niet goed in aggregaties waarbij de prestatie-impact aanzienlijk kan zijn.
+  * Biedt query optimalisatie via Catalyst.
+  * Ontwikkel aars-vriendelijk door het opgeven van controle en compilatie van domein objecten.
+  * Overhead voor serialisatie/deserialisatie toevoegen.
+  * Hoge GC-overhead.
+  * Het genereren van code met hele fase verbreken.
+* **Rdd's**
+  * U hoeft geen Rdd's te gebruiken, tenzij u een nieuwe aangepaste RDD wilt maken.
   * Geen query optimalisatie via Catalyst.
-  * Geen hele fase code generatie.
-  * Hoge GC overhead.
-  * Moet Spark 1.x legacy API's gebruiken.
+  * Geen code voor het genereren van de hele fase.
+  * Hoge GC-overhead.
+  * Moeten Spark 1. x verouderde Api's gebruiken.
 
-## <a name="use-optimal-data-format"></a>Optimale gegevensindeling gebruiken
+## <a name="use-optimal-data-format"></a>Optimale gegevens indeling gebruiken
 
-Spark ondersteunt vele formaten, zoals csv, json, xml, parket, orc en avro. Spark kan worden uitgebreid om veel meer formaten te ondersteunen met externe gegevensbronnen - voor meer informatie, zie [Apache Spark-pakketten](https://spark-packages.org).
+Spark ondersteunt veel indelingen, zoals CSV, JSON, XML, Parquet, Orc en AVRO. Spark kan worden uitgebreid ter ondersteuning van veel meer indelingen met externe gegevens bronnen. Zie [Apache Spark pakketten](https://spark-packages.org)voor meer informatie.
 
-Het beste formaat voor prestaties is parket met *pittige compressie,* dat is de standaard in Spark 2.x. Parket slaat gegevens op in columnar-formaat en is sterk geoptimaliseerd in Spark. Bovendien, terwijl *pittige compressie* kan resulteren in grotere bestanden dan zeggen gzip compressie. Vanwege de splittable aard van die bestanden zullen ze sneller decomprimeren]
+De beste prestatie-indeling is Parquet met *Snappy-compressie*. Dit is de standaard waarde in Spark 2. x. Parquet slaat gegevens op in de kolom indeling en is zeer geoptimaliseerd in Spark. Daarnaast kan *Snappy compressie* ertoe leiden dat bestanden groter worden dan de gzip-compressie. Door de splitsbaar van de bestanden, worden ze sneller gedecomprimeerd]
 
 ## <a name="use-the-cache"></a>De cache gebruiken
 
-Spark biedt zijn eigen native caching mechanismen, die kunnen `.persist()`worden `.cache()`gebruikt `CACHE TABLE`door middel van verschillende methoden, zoals , , en . Deze native caching is effectief met kleine gegevenssets en in ETL-pijplijnen waar u tussentijdse resultaten moet cachen. Spark native caching werkt momenteel echter niet goed met partitioneren, omdat een tabel in de cache de partitioneringsgegevens niet bewaart.
+Spark biedt eigen systeem eigen caching-mechanismen die kunnen worden gebruikt via verschillende methoden, zoals `.persist()`, `.cache()`en `CACHE TABLE`. Deze systeem eigen cache is effectief met kleine gegevens sets en in ETL-pijp lijnen waar u tussenliggende resultaten moet opslaan in de cache. Spark native caching werkt echter niet goed met partitioneren, omdat het partitioneren van gegevens niet wordt bewaard in een tabel in de cache.
 
-## <a name="use-memory-efficiently"></a>Geheugen efficiënt gebruiken
+## <a name="use-memory-efficiently"></a>Efficiënt geheugen gebruiken
 
-Spark werkt door het plaatsen van gegevens in het geheugen, dus het beheren van geheugenbronnen is een belangrijk aspect van het optimaliseren van de uitvoering van Spark-taken.  Er zijn verschillende technieken die u toepassen om het geheugen van uw cluster efficiënt te gebruiken.
+Spark werkt door gegevens in het geheugen te plaatsen, zodat het beheren van geheugen resources een belang rijk aspect is van het optimaliseren van de uitvoering van Spark-taken.  Er zijn verschillende technieken die u kunt Toep assen om het geheugen van uw cluster efficiënt te gebruiken.
 
-* Geef de voorkeur aan kleinere gegevenspartities en houd rekening met de grootte, typen en distributie van gegevens in uw partitioneringsstrategie.
-* Overweeg de nieuwere, efficiëntere [Kryo-gegevensserialisatie](https://github.com/EsotericSoftware/kryo), in plaats van de standaard Java-serialisatie.
-* Spark-configuratie-instellingen controleren en afstemmen.
+* Geniet de voor keur van kleinere gegevens partities en een account voor gegevens grootte, typen en distributie in uw strategie voor partitioneren.
+* Bekijk de nieuwere, efficiëntere [Kryo-gegevens serialisatie](https://github.com/EsotericSoftware/kryo), in plaats van de standaard Java-serialisatie.
+* Spark-configuratie-instellingen bewaken en afstemmen.
 
-Ter referentie worden de Spark-geheugenstructuur en enkele belangrijke uitvoergeheugenparameters weergegeven in de volgende afbeelding.
+Ter referentie worden de Spark-geheugen structuur en enkele para meters voor de door Voer van de sleutel in de volgende afbeelding weer gegeven.
 
-### <a name="spark-memory-considerations"></a>Overwegingen voor het geheugen
+### <a name="spark-memory-considerations"></a>Overwegingen voor Spark-geheugen
 
-Apache Spark in Azure Synapse maakt gebruik van YARN [Apache Hadoop YARN](https://hadoop.apache.org/docs/current/hadoop-yarn/hadoop-yarn-site/YARN.html), YARN regelt de maximale som van het geheugen die wordt gebruikt door alle containers op elk Spark-knooppunt.  In het volgende diagram worden de belangrijkste objecten en hun relaties weergegeven.
+Apache Spark in azure Synapse maakt gebruik van GARENs [Apache HADOOP garens](https://hadoop.apache.org/docs/current/hadoop-yarn/hadoop-yarn-site/YARN.html)beheert de maximale hoeveelheid geheugen die wordt gebruikt door alle containers op elk Spark-knoop punt.  In het volgende diagram ziet u de belangrijkste objecten en hun relaties.
 
-![YARN Spark-geheugenbeheer](./media/apache-spark-perf/apache-yarn-spark-memory.png)
+![Vonk geheugen beheer van garen](./media/apache-spark-perf/apache-yarn-spark-memory.png)
 
-Als u 'out of memory'-berichten wilt aanpakken, probeert u:
+Probeer het volgende om berichten over onvoldoende geheugen te adresseren:
 
-* Review DAG Management Shuffles. Verminder door brongegevens aan de kaartzijde te verminderen, brongegevens vooraf te partitioneren (of te bucketen), enkele shuffles te maximaliseren en de hoeveelheid verzonden gegevens te verminderen.
-* Geef `ReduceByKey` de voorkeur aan `GroupByKey`de vaste geheugenlimiet voor , die aggregaties, windowing en andere functies biedt, maar het heeft ann onbegrensde geheugenlimiet.
-* Liever `TreeReduce`, die meer werk doet op de `Reduce`uitvoerders of partities, om , die alle werk doet op de bestuurder.
-* Gebruik DataFrames in plaats van de RDD-objecten op een lager niveau.
-* Complexetypen maken die acties inkapselen, zoals 'Top N', verschillende aggregaties of vensterbewerkingen.
+* DAG beheer in wille keurige volg orde controleren. Verlaag met de bron gegevens voor verminderen van de kaart, vooraf Partition (of buckets), Maxi maal één wille keurige volg orde en verminder de hoeveelheid verzonden gegevens.
+* De `ReduceByKey` voor keur met de vaste geheugen `GroupByKey`limiet tot, die aggregaties, windowing en andere functies biedt, maar wel een niet-gebonden geheugen limiet heeft.
+* Voor `TreeReduce`keur, waarmee u meer werk kunt doen aan de uitvoerders `Reduce`of partities, aan, dat alles op het stuur programma werkt.
+* Gebruik DataFrames in plaats van RDD-objecten op lagere niveaus.
+* Maak toe die acties inkapselen, zoals ' top N ', verschillende aggregaties of venster bewerkingen.
 
-## <a name="optimize-data-serialization"></a>Gegevensserialisatie optimaliseren
+## <a name="optimize-data-serialization"></a>Gegevens serialisatie optimaliseren
 
-Spark-taken worden gedistribueerd, dus passende gegevensserialisatie is belangrijk voor de beste prestaties.  Er zijn twee serialisatieopties voor Spark:
+Spark-taken worden gedistribueerd, zodat de juiste gegevens serialisatie belang rijk is voor de beste prestaties.  Er zijn twee opties voor serialisatie voor Spark:
 
-* Java serialisatie is de standaardinstelling.
-* Kryo serialisatie is een nieuwer formaat en kan resulteren in snellere en compactere serialisatie dan Java.  Kryo vereist dat u de lessen in uw programma registreert en het ondersteunt nog niet alle Serializable-typen.
+* Java-serialisatie is de standaard instelling.
+* Kryo serialisatie is een nieuwere indeling en kan leiden tot snellere en meer compacte serialisatie dan Java.  Kryo vereist dat u de klassen registreert in uw programma en nog geen ondersteuning biedt voor alle typen die kunnen worden geserialiseerd.
 
-## <a name="use-bucketing"></a>Bucketing gebruiken
+## <a name="use-bucketing"></a>Bucket gebruiken
 
-Bucketing is vergelijkbaar met gegevenspartitionering, maar elke bucket kan een set kolomwaarden bevatten in plaats van slechts één. Bucketing werkt goed voor het partitioneren op grote (in de miljoenen of meer) aantallen waarden, zoals product-id's. Een emmer wordt bepaald door hashing de emmersleutel van de rij. Bucketed tables bieden unieke optimalisaties omdat ze metadata opslaan over hoe ze zijn geemmerd en gesorteerd.
+Bucket is vergelijkbaar met het partitioneren van gegevens, maar elke Bucket kan een set kolom waarden bevatten in plaats van slechts één. Bucket werkt goed voor het partitioneren van grote aantallen (in miljoenen of meer waarden), zoals product-id's. Een Bucket wordt bepaald door de Bucket sleutel van de rij te hashen. Gebucketse tabellen bieden unieke optimalisaties, omdat ze meta gegevens opslaan over hoe ze zijn Bucket en gesorteerd.
 
-Enkele geavanceerde bucketing functies zijn:
+Enkele geavanceerde functies voor Bucket zijn:
 
-* Queryoptimalisatie op basis van bucketing meta-informatie.
+* Query optimalisatie op basis van het Bucket van meta gegevens.
 * Geoptimaliseerde aggregaties.
-* Geoptimaliseerde joins.
+* Geoptimaliseerde samen voegingen.
 
-U partitionering en bucketing tegelijkertijd gebruiken.
+U kunt partitioneren en gelijktijdig buckets gebruiken.
 
-## <a name="optimize-joins-and-shuffles"></a>Joins en shuffles optimaliseren
+## <a name="optimize-joins-and-shuffles"></a>Samen voegingen en wille keurige volg orde optimaliseren
 
-Als u langzame taken hebt op een Join of Shuffle, is de oorzaak waarschijnlijk *gegevensscheeftrekking*, wat asymmetrie is in uw taakgegevens. Een kaarttaak kan bijvoorbeeld 20 seconden duren, maar het uitvoeren van een taak waarbij de gegevens worden samengevoegd of geschud, duurt uren. Als u gegevensscheefheid wilt oplossen, moet u de hele sleutel zoutmaken of een *geïsoleerd zout* gebruiken voor slechts enkele subset sleutels. Als u een geïsoleerd zout gebruikt, moet u verder filteren om uw subset van gezouten sleutels in kaartjoins te isoleren. Een andere optie is om eerst een emmerkolom en pre-aggregaat in buckets in te voeren.
+Als u langzame taken hebt voor een samen voeging of een wille keurige volg orde, is de oorzaak waarschijnlijk *gegevens scheefer*, wat asymmetrie is in uw taak gegevens. Een toewijzings taak kan bijvoorbeeld 20 seconden duren, maar u kunt ook een taak uitvoeren waarbij de gegevens worden toegevoegd of een wille keurige volg orde. Als u gegevens scheefheid wilt verhelpen, moet u de volledige sleutel zouten of een *geïsoleerde Salt* gebruiken voor slechts een deel van de sleutels. Als u een geïsoleerd zout gebruikt, moet u verder filteren om uw subset van gezoute sleutels in kaart verbindingen te isoleren. Een andere optie is om eerst een Bucket kolom en vooraf aggregatie in buckets in te voeren.
 
-Een andere factor die langzame joins veroorzaakt, kan het jointype zijn. Spark gebruikt standaard `SortMerge` het jointype. Dit type join is het meest geschikt voor grote gegevenssets, maar is verder rekenkundig duur omdat het eerst de linker- en rechterkant van gegevens moet sorteren voordat ze worden samengevoegd.
+Een andere factor veroorzaakt langzame samen voegingen zou het jointype kunnen zijn. Spark maakt standaard gebruik van het `SortMerge` jointype. Dit type samen voeging is het meest geschikt voor grote gegevens sets, maar is een andere reken kracht, omdat het eerst de linker-en rechter zijde van gegevens moet sorteren voordat u deze samenvoegt.
 
-Een `Broadcast` join is het meest geschikt voor kleinere gegevenssets, of waar de ene kant van de join veel kleiner is dan de andere kant. Dit type van join zendt één kant aan alle uitvoerders uit, en vereist zo meer geheugen voor uitzendingen in het algemeen.
+Een `Broadcast` samen voeging is het meest geschikt voor kleinere gegevens sets, of waarbij een zijde van de samen voeging veel kleiner is dan de andere kant. Dit type deelname zendt één zijde naar alle uitvoerende organisaties, en vereist daarom meer geheugen voor broadcasts in het algemeen.
 
-U het jointype in `spark.sql.autoBroadcastJoinThreshold`uw configuratie wijzigen door in te stellen of`dataframe.join(broadcast(df2))`u een joinhint instellen met behulp van de DataFrame API's ( ).
+U kunt het jointype in uw configuratie wijzigen door in te `spark.sql.autoBroadcastJoinThreshold`stellen, of u kunt een samenvoegings Hint instellen met behulp van de data frame-api's (`dataframe.join(broadcast(df2))`).
 
 ```scala
 // Option 1
@@ -124,53 +124,53 @@ df1.join(broadcast(df2), Seq("PK")).
 sql("SELECT col1, col2 FROM V_JOIN")
 ```
 
-Als u bucketed tabellen gebruikt, hebt u een `Merge` derde jointype, de join. Een correct vooraf gepartitioneerde en vooraf gesorteerde gegevensset slaat `SortMerge` de dure sorteerfase van een join over.
+Als u gekoppelde tabellen gebruikt, hebt u een derde jointype, de `Merge` koppeling. Een juiste vooraf gepartitioneerde en vooraf gesorteerde gegevensset slaat de dure Sorteer fase over van een `SortMerge` koppeling.
 
-De volgorde van joins zaken, met name in meer complexe query's. Begin met de meest selectieve joins. Verplaats ook joins die het aantal rijen na aggregaties verhogen wanneer mogelijk.
+De volg orde van de kwesties, met name in complexere query's. Begin met de meeste selectieve samen voegingen. U kunt ook koppelingen verplaatsen die het aantal rijen na aggregaties verg Roten wanneer dat mogelijk is.
 
-Als u parallellisme voor Cartesiaanse joins wilt beheren, u geneste structuren toevoegen, venster plaatsen en misschien een of meer stappen overslaan in uw Spark-taak.
+Als u de parallelle uitvoering voor Cartesische join's wilt beheren, kunt u geneste structuren en Vensters toevoegen en wellicht een of meer stappen in uw Spark-taak overs Laan.
 
-### <a name="select-the-correct-executor-size"></a>De juiste executorgrootte selecteren
+### <a name="select-the-correct-executor-size"></a>Selecteer de juiste grootte voor de uitvoerder
 
-Houd bij het bepalen van uw configuratie van de uitvoerder rekening met de overhead van java-garbage collection (GC).
+Houd bij het bepalen van de configuratie van de uitvoerder rekening met de overhead van de Java garbage collection (GC).
 
-* Factoren om de grootte van de executeur te verkleinen:
-  * Verminder de heapgrootte onder de 32 GB om gc-overhead < 10% te houden.
-  * Verminder het aantal cores om GC-overhead < 10% te houden.
+* Factoren om de uitvoerings grootte te verkleinen:
+  * Verminder de grootte van de heap onder 32 GB om de GC-overhead < 10% te houden.
+  * Verminder het aantal kernen om de GC-overhead < 10% te houden.
 
-* Factoren om de uitvoerdergrootte te vergroten:
-  * Verminder de communicatieoverhead tussen uitvoerders.
-  * Verminder het aantal open verbindingen tussen uitvoerders (N2) op grotere clusters (>100 uitvoerders).
-  * Vergroot de heapgrootte om aan te passen aan geheugenintensieve taken.
-  * Optioneel: verminder de overhead overhead per executeur geheugen.
-  * Optioneel: Verhoog het gebruik en de gelijktijdigheid door cpu's te overschrijven.
+* Factoren voor het verg Roten van de uitvoerder grootte:
+  * Verminder de communicatie overhead tussen uitvoerender.
+  * Verminder het aantal openstaande verbindingen tussen uitvoerende (N2) op grotere clusters (>100-uitvoerders).
+  * Verg root de Heap-grootte zodat deze geschikt is voor geheugenintensieve taken.
+  * Optioneel: de overhead per uitvoerder geheugen verlagen.
+  * Optioneel: gebruik verhogen en gelijktijdigheid door de CPU te verlengen.
 
-Als algemene vuistregel bij het selecteren van de grootte van de executeur:
+Als algemene vuist regel bij het selecteren van de grootte van de uitvoerder:
 
-* Begin met 30 GB per uitvoerder en distribueer beschikbare machinecores.
-* Verhoog het aantal executorkernen voor grotere clusters (> 100 uitvoerders).
-* Wijzig de grootte op basis van zowel proefuitvoeringen als op de voorgaande factoren zoals GC-overhead.
+* Begin met 30 GB per uitvoerder en distribueer beschik bare machine kernen.
+* Verhoog het aantal uitvoer kernen voor grotere clusters (> 100-uitvoerendeers).
+* Wijzig grootte op basis van de test uitvoeringen en op de voor gaande factoren zoals GC-overhead.
 
-Houd bij het uitvoeren van gelijktijdige query's rekening met het volgende:
+Bij het uitvoeren van gelijktijdige query's moet u rekening houden met het volgende:
 
-* Begin met 30 GB per uitvoerder en alle machinecores.
-* Maak meerdere parallelle Spark-toepassingen door cpu te overschrijven (ongeveer 30% latentieverbetering).
-* Query's distribueren over parallelle toepassingen.
-* Wijzig de grootte op basis van zowel proefuitvoeringen als op de voorgaande factoren zoals GC-overhead.
+* Begin met 30 GB per uitvoerder en alle machine kernen.
+* Maak meerdere parallelle Spark-toepassingen door de CPU (circa 30% latentie verbetering) te vervolledigen.
+* Verdeel query's over parallelle toepassingen.
+* Wijzig grootte op basis van de test uitvoeringen en op de voor gaande factoren zoals GC-overhead.
 
-Controleer uw queryprestaties op uitschieters of andere prestatieproblemen door te kijken naar de tijdlijnweergave, SQL-grafiek, taakstatistieken, enzovoort. Soms zijn een of enkele van de uitvoerders langzamer dan de andere, en taken duren veel langer uit te voeren. Dit gebeurt vaak op grotere clusters (> 30 knooppunten). In dit geval verdeelt u het werk in een groter aantal taken, zodat de planner trage taken kan compenseren. 
+Bewaak de query prestaties voor uitbijters of andere prestatie problemen door te kijken naar de tijdlijn weergave, SQL-grafiek, taak statistieken, enzovoort. Soms zijn een of enkele van de uitvoerende partijen trager dan de andere, en duren taken veel langer om uit te voeren. Dit gebeurt vaak op grotere clusters (> 30 knoop punten). In dit geval moet u het werk delen in een groter aantal taken zodat de planner de taak kan compenseren voor trage taken. 
 
-Hebben bijvoorbeeld minstens twee keer zoveel taken als het aantal executorkernen in de toepassing. U ook speculatieve uitvoering `conf: spark.speculation = true`van taken inschakelen met.
+Stel bijvoorbeeld ten minste twee taken uit als het aantal uitvoer kernen in de toepassing. U kunt ook speculatieve uitvoering van taken inschakelen met `conf: spark.speculation = true`.
 
-## <a name="optimize-job-execution"></a>Taakuitvoering optimaliseren
+## <a name="optimize-job-execution"></a>Taak uitvoering optimaliseren
 
-* Cache indien nodig, bijvoorbeeld als u de gegevens twee keer gebruikt, en deze vervolgens in de cache.
-* Variabelen uitzenden naar alle uitvoerders. De variabelen worden slechts eenmaal geserialiseerd, wat resulteert in snellere lookups.
-* Gebruik de thread pool op het stuurprogramma, wat resulteert in een snellere werking voor veel taken.
+* Sla zo nodig een cache op, bijvoorbeeld als u de gegevens twee keer gebruikt en vervolgens opslaat in de cache.
+* Broadcast variabelen naar alle uitvoerende organisaties. De variabelen worden slechts eenmaal geserialiseerd, wat resulteert in snellere zoek acties.
+* Gebruik de thread pool op het stuur programma, wat resulteert in een snellere bewerking voor veel taken.
 
-De sleutel tot de queryprestaties van Spark 2.x is de Tungsten-engine, die afhankelijk is van het genereren van code in hele fase. In sommige gevallen kan het genereren van code in hele fase worden uitgeschakeld. 
+De sleutel tot Spark 2. x query prestaties is de Tungsten-engine, die afhankelijk is van het genereren van code in een hele fase. In sommige gevallen kan het genereren van code in hele fase worden uitgeschakeld. 
 
-Als u bijvoorbeeld een niet-mutable`string`type ( ) `SortAggregate` gebruikt in `HashAggregate`de aggregatieexpressie, wordt deze weergegeven in plaats van . Probeer bijvoorbeeld het volgende en schakel codegeneratie opnieuw in:
+Als u bijvoorbeeld een niet-ververanderd type (`string`) in de expressie aggregatie gebruikt, `SortAggregate` wordt dit weer `HashAggregate`gegeven in plaats van. Als u bijvoorbeeld betere prestaties wilt, kunt u het volgende proberen en vervolgens code generatie opnieuw inschakelen:
 
 ```sql
 MAX(AMOUNT) -> MAX(cast(AMOUNT as DOUBLE))
@@ -179,5 +179,5 @@ MAX(AMOUNT) -> MAX(cast(AMOUNT as DOUBLE))
 ## <a name="next-steps"></a>Volgende stappen
 
 - [Apache Spark afstemmen](https://spark.apache.org/docs/latest/tuning.html)
-- [Hoe je eigenlijk tune uw Apache Spark Jobs, zodat ze werken](https://www.slideshare.net/ilganeli/how-to-actually-tune-your-spark-jobs-so-they-work)
-- [Kryo Serialisatie](https://github.com/EsotericSoftware/kryo)
+- [Uw Apache Spark taken effectief afstemmen zodat ze werken](https://www.slideshare.net/ilganeli/how-to-actually-tune-your-spark-jobs-so-they-work)
+- [Kryo-serialisatie](https://github.com/EsotericSoftware/kryo)

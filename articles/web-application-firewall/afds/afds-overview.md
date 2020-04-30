@@ -1,6 +1,6 @@
 ---
-title: Wat is Azure webapplication firewall op Azure Front Door?
-description: Ontdek hoe Azure webtoepassingsfirewall op Azure Front Door-service uw webtoepassingen beschermt tegen schadelijke aanvallen.
+title: Wat is Azure Web Application Firewall op de front-deur van Azure?
+description: Meer informatie over hoe Azure Web Application Firewall op de Azure front-deur-service uw webtoepassingen beschermt tegen kwaad aardige aanvallen.
 services: web-application-firewall
 author: vhorne
 ms.service: web-application-firewall
@@ -8,123 +8,123 @@ ms.topic: overview
 ms.date: 02/01/2020
 ms.author: victorh
 ms.openlocfilehash: c8ff1849668d5effe15b6c25d00f3965a17b8e3e
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "77915636"
 ---
-# <a name="azure-web-application-firewall-on-azure-front-door"></a>Azure Web Application Firewall op Azure Front Door
+# <a name="azure-web-application-firewall-on-azure-front-door"></a>Azure Web Application firewall op de front-deur van Azure
 
-Azure Web Application Firewall (WAF) op Azure Front Door biedt gecentraliseerde bescherming voor uw webtoepassingen. WAF verdedigt uw webservices tegen veelvoorkomende exploits en kwetsbaarheden. Het houdt uw service zeer beschikbaar voor uw gebruikers en helpt u te voldoen aan de nalevingsvereisten.
+Azure Web Application firewall (WAF) in azure front deur biedt gecentraliseerde beveiliging voor uw webtoepassingen. WAF beschermt uw webservices tegen veelvoorkomende aanvallen en beveiligings problemen. Het houdt uw service Maxi maal beschikbaar voor uw gebruikers en helpt u te voldoen aan de nalevings vereisten.
 
-WAF on Front Door is een wereldwijde en gecentraliseerde oplossing. Het wordt geïmplementeerd op Azure-netwerkrandlocaties over de hele wereld. WAF-toepassingen inspecteren elke binnenkomende aanvraag die door Front Door aan de netwerkrand wordt geleverd. 
+WAF aan de voor deur is een wereld wijde en gecentraliseerde oplossing. Het is geïmplementeerd op Azure Network Edge-locaties over de hele wereld. WAF ingeschakelde webtoepassingen controleren elke inkomende aanvraag die wordt afgeleverd door de voor deur aan de rand van het netwerk. 
 
-WAF voorkomt kwaadaardige aanvallen in de buurt van de aanvalbronnen, voordat ze uw virtuele netwerk binnenkomen. U krijgt wereldwijde bescherming op schaal zonder in te leveren op prestaties. Een WAF-beleid linkt eenvoudig naar elk voordeurprofiel in uw abonnement. Nieuwe regels kunnen binnen enkele minuten worden geïmplementeerd, zodat u snel reageren op veranderende bedreigingspatronen.
+WAF voor komt dat kwaad aardige aanvallen zich dicht bij de aanvals bronnen voordoen voordat ze uw virtuele netwerk binnenkomen. U krijgt wereld wijde beveiliging op schaal zonder verlies van prestaties. Een WAF-beleid kan eenvoudig worden gekoppeld aan een front deur profiel in uw abonnement. Nieuwe regels kunnen binnen enkele minuten worden geïmplementeerd, zodat u snel kunt reageren op het wijzigen van bedreigings patronen.
 
-![Azure-firewall voor webtoepassingen](../media/overview/wafoverview.png)
+![Azure Web Application Firewall](../media/overview/wafoverview.png)
 
-## <a name="waf-policy-and-rules"></a>WAF-beleid en -regels
+## <a name="waf-policy-and-rules"></a>WAF-beleid en-regels
 
-U een WAF-beleid configureren en dat beleid koppelen aan een of meer front-door front-ends voor bescherming. Een WAF-beleid bestaat uit twee soorten beveiligingsregels:
+U kunt een WAF-beleid configureren en dat beleid koppelen aan een of meer front-ends vooraan voor beveiliging. Een WAF-beleid bestaat uit twee typen beveiligings regels:
 
-- aangepaste regels die door de klant zijn geschreven.
+- aangepaste regels die door de klant zijn gemaakt.
 
-- beheerde regelsets die een verzameling vooraf beheerde vooraf geconfigureerde regels zijn.
+- beheerde regel sets die een verzameling van door Azure beheerde vooraf geconfigureerde regels zijn.
 
-Wanneer beide aanwezig zijn, worden aangepaste regels verwerkt voordat de regels worden verwerkt in een beheerde regelset. Er wordt een regel gemaakt van een wedstrijdvoorwaarde, een prioriteit en een actie. Actietypen worden ondersteund: TOESTAAN, BLOKKEREN, LOGBOEKen en OMLEIDING. U een volledig aangepast beleid maken dat voldoet aan uw specifieke vereisten voor toepassingsbescherming door beheerde en aangepaste regels te combineren.
+Wanneer beide aanwezig zijn, worden aangepaste regels verwerkt voordat de regels in een beheerde regelset worden verwerkt. Een regel bestaat uit een match-voor waarde, een prioriteit en een actie. Ondersteunde actie typen zijn: toestaan, blok keren, aanmelden en omleiden. U kunt een volledig aangepast beleid maken dat voldoet aan uw specifieke vereisten voor toepassings beveiliging door beheerde en aangepaste regels te combi neren.
 
-Regels binnen een beleid worden verwerkt in een prioriteitsvolgorde. Prioriteit is een uniek geheel getal dat de volgorde van de regels definieert om te verwerken. Kleinere gehele waarde duidt op een hogere prioriteit en deze regels worden geëvalueerd vóór regels met een hogere gehele waarde. Zodra een regel is gekoppeld, wordt de bijbehorende actie die in de regel is gedefinieerd, toegepast op de aanvraag. Zodra een dergelijke overeenkomst is verwerkt, worden regels met lagere prioriteiten niet verder verwerkt.
+Regels in een beleid worden verwerkt in een prioriteits volgorde. Priority is een uniek geheel getal dat de volg orde van de te verwerken regels definieert. Een kleinere integer-waarde geeft een hogere prioriteit aan en deze regels worden geëvalueerd vóór regels met een hoger geheel getal. Zodra een regel is gevonden, wordt de bijbehorende actie toegepast die in de regel is gedefinieerd. Zodra een dergelijke overeenkomst is verwerkt, worden regels met lagere prioriteiten niet verder verwerkt.
 
-Een webapplicatie die door Front Door wordt geleverd, kan slechts één WAF-beleid tegelijk hebben. U echter een frontdeurconfiguratie hebben zonder dat er WAF-beleid aan is gekoppeld. Als er een WAF-beleid aanwezig is, wordt het gerepliceerd naar al onze randlocaties om consistent beveiligingsbeleid over de hele wereld te garanderen.
+Aan een webtoepassing die wordt geleverd via de voor deur kan slechts één WAF-beleid tegelijk zijn gekoppeld. U kunt echter wel een configuratie voor de voor deur hebben zonder dat er WAF-beleid aan is gekoppeld. Als er een WAF-beleid aanwezig is, wordt dit gerepliceerd naar al onze Edge-locaties om consistent beveiligings beleid over de hele wereld te garanderen.
 
-## <a name="waf-modes"></a>WAF-modi
+## <a name="waf-modes"></a>WAF modi
 
-WAF-beleid kan worden geconfigureerd om uit te voeren in de volgende twee modi:
+Het WAF-beleid kan worden geconfigureerd om te worden uitgevoerd in de volgende twee modi:
 
-- **Detectiemodus:** Wanneer WAF wordt uitgevoerd in de detectiemodus, voert het geen andere acties uit dan monitoren en registreert het verzoek en de overeenkomende WAF-regel aan WAF-logboeken. U logboekregistratievoor voordeur inschakelen. Wanneer u de portal gebruikt, gaat u naar de sectie **Diagnostische gegevens.**
+- **Detectie modus:** Wanneer u de detectie modus uitvoert, nemen WAF geen andere andere acties dan monitors en registreert de aanvraag en de overeenkomende WAF-regel naar WAF-Logboeken. U kunt Diagnostische gegevens over logboek registratie inschakelen voor de voor deur. Wanneer u de portal gebruikt, gaat u naar de sectie **Diagnostische gegevens** .
 
-- **Preventiemodus:** In de preventiemodus neemt WAF de opgegeven actie als een aanvraag overeenkomt met een regel. Als er een overeenkomst wordt gevonden, worden geen verdere regels met een lagere prioriteit geëvalueerd. Alle overeenkomende aanvragen worden ook geregistreerd in de WAF-logboeken.
+- **Preventie modus:** In de preventie modus neemt WAF de opgegeven actie op als een aanvraag overeenkomt met een regel. Als er een overeenkomst wordt gevonden, worden er geen verdere regels met een lagere prioriteit geëvalueerd. Alle overeenkomende aanvragen worden ook in de WAF-logboeken vastgelegd.
 
 ## <a name="waf-actions"></a>WAF-acties
 
-WAF-klanten kunnen ervoor kiezen om uit een van de acties te lopen wanneer een aanvraag overeenkomt met de voorwaarden van een regel:
+WAF-klanten kunnen ervoor kiezen om uit te voeren vanaf een van de acties wanneer een aanvraag overeenkomt met de voor waarden van een regel:
 
-- **Toestaan:**  Aanvraag gaat door de WAF en wordt doorgestuurd naar back-end. Geen verdere regels met een lagere prioriteit kunnen dit verzoek blokkeren.
-- **Blok:** De aanvraag wordt geblokkeerd en WAF stuurt een antwoord naar de client zonder het verzoek door te sturen naar de back-end.
-- **Log:**  Aanvraag wordt geregistreerd in de WAF-logboeken en WAF blijft regels met een lagere prioriteit evalueren.
-- **Omleiding:** WAF verwijst de aanvraag door naar de opgegeven URI. De opgegeven URI is een instelling voor beleidsniveau. Zodra alle aanvragen die overeenkomen met de actie Redirect, worden alle aanvragen die overeenkomen met de actie **Redirect,** naar die URI verzonden.
+- **Toestaan:**  De aanvraag wordt door gegeven via de WAF en wordt doorgestuurd naar de back-end. Voor regels met een lagere prioriteit kan deze aanvraag niet worden geblokkeerd.
+- **Blok keren:** De aanvraag is geblokkeerd en WAF stuurt een reactie naar de client zonder de aanvraag door te sturen naar de back-end.
+- **Logboek:**  De aanvraag wordt geregistreerd in de WAF-logboeken en WAF gaat door met het evalueren van regels met een lagere prioriteit.
+- **Omleiden:** WAF leidt de aanvraag om naar de opgegeven URI. De opgegeven URI is een instelling voor het beleids niveau. Zodra de configuratie is geconfigureerd, worden alle aanvragen die overeenkomen met de **omleidings** actie naar die URI verzonden.
 
 ## <a name="waf-rules"></a>WAF-regels
 
-Een WAF-beleid kan bestaan uit twee soorten beveiligingsregels: aangepaste regels, geschreven door de klant en beheerde regelsets, vooraf beheerde vooraf geconfigureerde set regels met Azure.
+Een WAF-beleid kan bestaan uit twee typen beveiligings regels: aangepaste regels, gemaakt door de klant en beheerde regel sets, door Azure beheerde vooraf geconfigureerde set met regels.
 
-### <a name="custom-authored-rules"></a>Aangepaste geschreven regels
+### <a name="custom-authored-rules"></a>Aangepaste regels voor ontwerpen
 
-U aangepaste regels WAF als volgt configureren:
+U kunt aangepaste regels WAF als volgt configureren:
 
-- **LIJST- en bloklijst voor IP-toestaan:** U de toegang tot uw webtoepassingen beheren op basis van een lijst met IP-adressen van klanten of IP-adresbereiken. Zowel IPv4- als IPv6-adrestypen worden ondersteund. Deze lijst kan worden geconfigureerd om aanvragen te blokkeren of toe te staan wanneer het bron-IP overeenkomt met een IP in de lijst.
+- Lijst met **toegestane IP-adressen en blok keren:** U kunt de toegang tot uw webtoepassingen beheren op basis van een lijst met IP-adressen van clients of IP-adresbereiken. IPv4-en IPv6-adres typen worden ondersteund. Deze lijst kan worden geconfigureerd om de aanvragen te blok keren of toe te staan waarbij de bron-IP overeenkomt met een IP-adres in de lijst.
 
-- **Geografisch gebaseerd toegangsbeheer:** U de toegang tot uw webtoepassingen beheren op basis van de landcode die is gekoppeld aan het IP-adres van een client.
+- **Geografisch gebaseerd toegangs beheer:** U kunt de toegang tot uw webtoepassingen beheren op basis van de land code die is gekoppeld aan het IP-adres van de client.
 
-- **Op HTTP-parameters gebaseerd toegangsbeheer:** U regels baseren op tekenreeksovereenkomsten in HTTP/HTTPS-aanvraagparameters.  Querytekenreeksen, POST-args, Request URI, Request Header en Request Body.
+- **Http-para meters op basis van toegangs beheer:** U kunt regels baseren op teken reeks overeenkomsten in para meters voor HTTP/HTTPS-aanvragen.  Bijvoorbeeld query reeksen, argumenten POST, aanvraag-URI, aanvraag header en hoofd tekst van aanvraag.
 
-- **Toegangsbeheer op basis van methoden aanvragen:** U baseert regels op de HTTP-aanvraagmethode van de aanvraag. Bijvoorbeeld, GET, PUT, of HEAD.
+- **Toegangs beheer op basis van aanvraag methode:** U hebt regels op basis van de HTTP-aanvraag methode van de aanvraag. Bijvoorbeeld GET, PUT of HEAD.
 
-- **Beperking van de grootte:** U regels baseren op de lengtes van specifieke delen van een aanvraag, zoals querytekenreeks, Uri of aanvraaginstantie.
+- **Grootte beperking:** U kunt regels baseren op de lengte van specifieke delen van een aanvraag, zoals een query reeks, URI of aanvraag tekst.
 
-- **Regels voor tariefbeperking:** Een regel voor tariefcontrole is om abnormaal hoog verkeer van een client-IP te beperken. U een drempelwaarde configureren voor het aantal webaanvragen dat is toegestaan vanaf een client-IP gedurende een duur van één minuut. Deze regel onderscheidt zich van een aangepaste aangepaste regel voor ip-lijsten toestaan/blokkeren waarmee alle aanvragen van een client-IP worden toegestaan of geblokkeerd. Tarieflimieten kunnen worden gecombineerd met aanvullende wedstrijdvoorwaarden, zoals http(S)-parameterovereenkomsten voor gedetailleerd tariefbeheer.
+- **Frequentie beperkende regels:** Een regel voor frequentie beheer is het beperken van abnormaal hoog verkeer van elk client-IP-adres. U kunt een drempel waarde configureren voor het aantal webaanvragen dat is toegestaan vanaf een client-IP gedurende een duur van één minuut. Deze regel is verschillend van een op een IP-lijst gebaseerde aangepaste regel toestaan/blok keren, waarmee alle aanvragen van een client-IP worden toegestaan of geblokkeerd. Frequentie limieten kunnen worden gecombineerd met aanvullende match voorwaarden, zoals HTTP (S)-para meters die overeenkomen met het besturings element nauw keurigheid.
 
-### <a name="azure-managed-rule-sets"></a>Azure-beheerde regelsets
+### <a name="azure-managed-rule-sets"></a>Door Azure beheerde regel sets
 
-Azure-beheerde regelsets bieden een eenvoudige manier om bescherming te implementeren tegen een veelvoorkomende set beveiligingsbedreigingen. Aangezien dergelijke regelsets worden beheerd door Azure, worden de regels zo nodig bijgewerkt om te beschermen tegen nieuwe aanvalshandtekeningen. De standaardregelset voor Azure bevat regels voor de volgende bedreigingscategorieën:
+Door Azure beheerde regel sets bieden een eenvoudige manier om beveiliging te implementeren op basis van een gemeen schappelijke reeks beveiligings Risico's. Omdat dergelijke regel definities worden beheerd door Azure, worden de regels zo nodig bijgewerkt om te beschermen tegen nieuwe aanvals handtekeningen. Door Azure beheerde standaard regelset bevat regels voor de volgende bedreigings Categorieën:
 
 - Scripting op meerdere sites
 - Java-aanvallen
-- Lokale bestandsopname
-- PHP-injectieaanvallen
-- Uitvoering van opdrachten op afstand
+- Lokaal bestand opnemen
+- Inspuit-aanvallen voor PHP
+- Externe opdrachten uitvoeren
 - Externe bestandsopname
-- Sessiefixatie
+- Sessie-vastleg ging
 - Beveiliging tegen SQL-injecties
-- Protocolaanvallers
+- Protocol aanvallen
 
-Het versienummer van de stappen van de standaardregelset wanneer nieuwe aanvalshandtekeningen worden toegevoegd aan de regelset.
-Standaardregelset is standaard ingeschakeld in de detectiemodus in uw WAF-beleid. U afzonderlijke regels in de standaardregelset uitschakelen of inschakelen om aan uw toepassingsvereisten te voldoen. U ook specifieke acties (ALLOW/BLOCK/REDIRECT/LOG) per regel instellen.
+Het versie nummer van de standaardregelset wordt verhoogd wanneer nieuwe aanvals handtekeningen worden toegevoegd aan de regelset.
+Standaard regelset is standaard ingeschakeld in de detectie modus in uw WAF-beleid. U kunt afzonderlijke regels in de standaard regel instellen om te voldoen aan de vereisten van uw toepassing. U kunt ook specifieke acties (toestaan/blok keren/omleiden/logboek registratie) per regel instellen.
 
-Soms moet u bepaalde aanvraagkenmerken weglaten uit een WAF-evaluatie. Een veelvoorkomend voorbeeld is Active Directory-ingevoegde tokens die worden gebruikt voor verificatie. U een uitsluitingslijst configureren voor een beheerde regel, regelgroep of voor de hele regelset.  
+Soms moet u bepaalde aanvraag kenmerken uit een WAF-evaluatie weglaten. Een gemeen schappelijk voor beeld is Active Directory-invoeg tokens die worden gebruikt voor verificatie. U kunt een uitsluitings lijst voor een beheerde regel, regel groep of voor de volledige regelset configureren.  
 
-De actie Standaard is blokkeren. Bovendien kunnen aangepaste regels worden geconfigureerd in hetzelfde WAF-beleid als u een van de vooraf geconfigureerde regels in de standaardregelset wilt omzeilen.
+De standaard actie moet worden geblokkeerd. Daarnaast kunnen aangepaste regels worden geconfigureerd in hetzelfde WAF-beleid als u een van de vooraf geconfigureerde regels in de standaardregelset wilt omzeilen.
 
-Aangepaste regels worden altijd toegepast voordat regels in de standaardregelset worden geëvalueerd. Als een aanvraag overeenkomt met een aangepaste regel, wordt de bijbehorende regelactie toegepast. Het verzoek wordt geblokkeerd of doorgegeven aan de back-end. Er worden geen andere aangepaste regels of regels in de standaardregelset verwerkt. U de standaardregelset ook verwijderen uit uw WAF-beleid.
+Aangepaste regels worden altijd toegepast voordat regels in de standaard regelset worden geëvalueerd. Als een aanvraag overeenkomt met een aangepaste regel, wordt de bijbehorende regel actie toegepast. De aanvraag wordt geblokkeerd of door gegeven aan de back-end. Er worden geen andere aangepaste regels of regels in de standaardregelset verwerkt. U kunt ook de standaardregelset uit uw WAF-beleid verwijderen.
 
-### <a name="bot-protection-rule-set-preview"></a>Beveiligingsregelset bot (voorbeeld)
+### <a name="bot-protection-rule-set-preview"></a>Set bot Protection-regel (preview-versie)
 
-U een beheerde botbeveiligingsregel instellen om aangepaste acties uit te voeren op aanvragen van bekende botcategorieën. 
+U kunt een set beheerde bot-beveiliging inschakelen om aangepaste acties uit te voeren op aanvragen van bekende bot-categorieën. 
 
-Er zijn drie bot categorieën ondersteund: Slecht, Goed en Onbekend. Bot-handtekeningen worden beheerd en dynamisch bijgewerkt door het WAF-platform.
+Er worden drie bot-categorieën ondersteund: slecht, goed en onbekend. Bot-hand tekeningen worden beheerd en worden dynamisch bijgewerkt door het WAF-platform.
 
-Slechte bots bevatten bots van kwaadaardige IP-adressen en bots die hun identiteit hebben vervalst. Kwaadaardige IP-adressen zijn afkomstig uit de Microsoft Threat Intelligence-feed en worden elk uur bijgewerkt. [Intelligent Security Graph](https://www.microsoft.com/security/operations/intelligence) is de drijvende kracht achter Microsoft Threat Intelligence en wordt gebruikt door meerdere services, waaronder Azure Security Center.
+Ongeldige bots bevatten botsing van schadelijke IP-adressen en bots die hun identiteit hebben vervalst. Schadelijke IP-adressen worden vanaf de micro soft Threat Intelligence-feed gebrond en elk uur bijgewerkt. [Intelligent Security Graph](https://www.microsoft.com/security/operations/intelligence) voorziet in micro soft Threat Intelligence en wordt gebruikt door meerdere services, waaronder Azure Security Center.
 
-Goede Bots omvatten gevalideerde zoekmachines. Onbekende categorieën omvatten extra botgroepen die zichzelf hebben geïdentificeerd als bots. Bijvoorbeeld market analyzer, feed fetchers en data collection agents. 
+Goede bots bevatten gevalideerde zoek machines. Onbekende categorieën bevatten extra bot-groepen die zichzelf als bots hebben geïdentificeerd. Bijvoorbeeld: Market Analyzer, feed ophaleners en agents voor het verzamelen van gegevens. 
 
-Onbekende bots worden geclassificeerd via gepubliceerde gebruikersagents zonder extra validatie. U aangepaste acties instellen om verschillende typen bots te blokkeren, toestaan, aanmelden of omte leiden.
+Onbekende bots worden geclassificeerd via gepubliceerde gebruikers agenten zonder verdere validatie. U kunt aangepaste acties instellen voor blok keren, toestaan, Logboeken of omleiden voor verschillende typen botsingen.
 
-![Beveiligingsregelset bot](../media/afds-overview/botprotect2.png)
+![Set bot Protection-regel](../media/afds-overview/botprotect2.png)
 
 > [!IMPORTANT]
-> De beveiligingsregelset bot bevindt zich momenteel in een openbare preview en wordt voorzien van een preview-serviceniveauovereenkomst. De reden hiervoor is dat bepaalde functies mogelijk niet worden ondersteund of beperkte mogelijkheden hebben.  Raadpleeg voor meer informatie de [aanvullende gebruiksrechtovereenkomst voor Microsoft Azure-previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> De set bot Protection-regelset bevindt zich momenteel in een open bare preview en wordt weer gegeven met een preview-service level agreement. De reden hiervoor is dat bepaalde functies mogelijk niet worden ondersteund of beperkte mogelijkheden hebben.  Raadpleeg voor meer informatie de [aanvullende gebruiksrechtovereenkomst voor Microsoft Azure-previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-Als botbeveiliging is ingeschakeld, worden binnenkomende aanvragen die overeenkomen met botregels geregistreerd in het frontdoorWebApplicationFirewallLog-logboek. U WAF-logboeken openen via een opslagaccount, gebeurtenishub of logboekanalyse.
+Als bot-beveiliging is ingeschakeld, worden inkomende aanvragen die overeenkomen met bot-regels vastgelegd in het FrontdoorWebApplicationFirewallLog-logboek. U kunt WAF-Logboeken openen vanuit een opslag account, Event Hub of log Analytics.
 
 ## <a name="configuration"></a>Configuratie
 
-U alle WAF-regeltypen configureren en implementeren met behulp van de Azure-portal, REST API's, Azure Resource Manager-sjablonen en Azure PowerShell.
+U kunt alle WAF-regel typen configureren en implementeren met behulp van de Azure Portal, REST-Api's, Azure Resource Manager sjablonen en Azure PowerShell.
 
 ## <a name="monitoring"></a>Bewaking
 
-Monitoring voor WAF bij Front Door is geïntegreerd met Azure Monitor om waarschuwingen te volgen en verkeerstrends eenvoudig te volgen.
+Bewaking voor WAF aan de voor deur is geïntegreerd met Azure Monitor om waarschuwingen bij te houden en trends in het verkeer eenvoudig te bewaken.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Meer informatie over [Web Application Firewall op Azure Application Gateway](../ag/ag-overview.md)
+- Meer informatie over [Web Application firewall op Azure-toepassing gateway](../ag/ag-overview.md)

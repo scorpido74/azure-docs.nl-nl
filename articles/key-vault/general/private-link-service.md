@@ -1,6 +1,6 @@
 ---
 title: Integreren met de Azure Private Link-service
-description: Meer informatie over het integreren van Azure Key Vault met Azure Private Link Service
+description: Meer informatie over het integreren van Azure Key Vault met Azure Private Link service
 author: ShaneBala-keyvault
 ms.author: sudbalas
 ms.date: 03/08/2020
@@ -8,85 +8,85 @@ ms.service: key-vault
 ms.subservice: general
 ms.topic: quickstart
 ms.openlocfilehash: 678e91126c04d5b299d9234a1602580260c5aee6
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81425089"
 ---
-# <a name="integrate-key-vault-with-azure-private-link"></a>Key Vault integreren met Azure Private Link
+# <a name="integrate-key-vault-with-azure-private-link"></a>Key Vault integreren met een persoonlijke Azure-koppeling
 
-Azure Private Link Service stelt u in staat om toegang te krijgen tot Azure Services (bijvoorbeeld Azure Key Vault, Azure Storage en Azure Cosmos DB) en Azure gehoste klant/partnerservices via een privéeindpunt in uw virtuele netwerk.
+Met Azure Private Link service kunt u toegang krijgen tot Azure-Services (bijvoorbeeld Azure Key Vault, Azure Storage en Azure Cosmos DB) en Azure hostende klanten/partner services via een persoonlijk eind punt in uw virtuele netwerk.
 
-Een Azure Private Endpoint is een netwerkinterface die u privé en veilig verbindt met een service die wordt aangedreven door Azure Private Link. Het privéeindpunt maakt gebruik van een privé-IP-adres van uw VNet, waardoor de service effectief in uw VNet wordt opgenomen. Al het verkeer naar de service kan worden doorgestuurd via het privéeindpunt, zodat er geen gateways, NAT-apparaten, ExpressRoute- of VPN-verbindingen of openbare IP-adressen nodig zijn. Verkeer tussen uw virtuele netwerk en de services wordt via het backbonenetwerk van Microsoft geleid, waarmee de risico's van het openbare internet worden vermeden. U verbinding maken met een instantie van een Azure-bron, zodat u het hoogste niveau van granulariteit in toegangscontrole hebt.
+Een persoonlijk Azure-eind punt is een netwerk interface waarmee u privé en veilig een service kunt verbinden met een persoonlijke Azure-koppeling. Het persoonlijke eind punt maakt gebruik van een privé-IP-adres uit uw VNet, waardoor de service effectief in uw VNet wordt gezet. Al het verkeer naar de service kan worden gerouteerd via het persoonlijke eind punt, zodat er geen gateways, NAT-apparaten, ExpressRoute of VPN-verbindingen of open bare IP-adressen nodig zijn. Verkeer tussen uw virtuele netwerk en de services wordt via het backbonenetwerk van Microsoft geleid, waarmee de risico's van het openbare internet worden vermeden. U kunt verbinding maken met een exemplaar van een Azure-resource, zodat u het hoogste granulatie niveau krijgt in toegangs beheer.
 
-Zie Wat is Azure Private Link voor meer [informatie?](../../private-link/private-link-overview.md)
+Zie [Wat is Azure private link?](../../private-link/private-link-overview.md) voor meer informatie.
 
 ## <a name="prerequisites"></a>Vereisten
 
-Als u een sleutelkluis wilt integreren met Azure Private Link, hebt u het volgende nodig:
+Als u een sleutel kluis met een persoonlijke Azure-koppeling wilt integreren, hebt u het volgende nodig:
 
-- Een sleutelkluis.
+- Een sleutel kluis.
 - Een virtueel Azure-netwerk.
 - Een subnet in het virtuele netwerk.
-- Machtigingen voor eigenaren of bijdragen voor zowel de sleutelkluis als het virtuele netwerk.
+- Eigenaar-of Inzender machtigingen voor zowel de sleutel kluis als het virtuele netwerk.
 
-Uw privéeindpunt en virtueel netwerk moeten zich in dezelfde regio bevinden. Wanneer u een regio voor het privéeindpunt selecteert met behulp van de portal, filtert het automatisch alleen virtuele netwerken die zich in die regio bevinden. Uw sleutelkluis kan zich in een andere regio bevinden.
+Uw persoonlijke eind punt en het virtuele netwerk moeten zich in dezelfde regio bevinden. Wanneer u een regio voor het persoonlijke eind punt selecteert met behulp van de portal, worden er automatisch alleen virtuele netwerken gefilterd die zich in die regio bevinden. Uw sleutel kluis kan zich in een andere regio bevinden.
 
-Uw privéeindpunt gebruikt een privé-IP-adres in uw virtuele netwerk.
+Uw persoonlijke eind punt maakt gebruik van een privé-IP-adres in uw virtuele netwerk.
 
-## <a name="establish-a-private-link-connection-to-key-vault-using-the-azure-portal"></a>Een privékoppelingsverbinding met Key Vault tot stand brengen met de Azure-portal 
+## <a name="establish-a-private-link-connection-to-key-vault-using-the-azure-portal"></a>Een koppeling met een particuliere verbinding tot stand brengen met Key Vault met behulp van de Azure Portal 
 
-Maak eerst een virtueel netwerk door de stappen te volgen in [Een virtueel netwerk maken met de Azure-portal](../../virtual-network/quick-create-portal.md)
+Maak eerst een virtueel netwerk door de stappen in [een virtueel netwerk maken te volgen met behulp van de Azure Portal](../../virtual-network/quick-create-portal.md)
 
-U vervolgens een nieuwe sleutelkluis maken of een privékoppelingsverbinding tot stand brengen met een bestaande sleutelkluis.
+U kunt vervolgens een nieuwe sleutel kluis maken of een koppeling met een particuliere verbinding tot stand brengen met een bestaande sleutel kluis.
 
-### <a name="create-a-new-key-vault-and-establish-a-private-link-connection"></a>Een nieuwe sleutelkluis maken en een privékoppelingsverbinding tot stand brengen
+### <a name="create-a-new-key-vault-and-establish-a-private-link-connection"></a>Een nieuwe sleutel kluis maken en een koppeling met een particuliere verbinding tot stand brengen
 
-U een nieuwe sleutelkluis maken door de stappen in Set te volgen [en een geheim op te halen uit Azure Key Vault met behulp van de Azure-portal](../secrets/quick-create-portal.md)
+U kunt een nieuwe sleutel kluis maken door de stappen te volgen in [set en een geheim op te halen uit Azure Key Vault met behulp van de Azure Portal](../secrets/quick-create-portal.md)
 
-Nadat u de basisbeginselen van de toetskluis hebt geconfigureerd, selecteert u het tabblad Netwerken en volgt u de volgende stappen:
+Nadat u de basis beginselen van de sleutel kluis hebt geconfigureerd, selecteert u het tabblad netwerken en voert u de volgende stappen uit:
 
-1. Selecteer de knop Privé-eindpuntopkeuzeop het tabblad Netwerken.
-1. Klik op de knop '+ toevoegen' om een privéeindpunt toe te voegen.
+1. Selecteer het keuze rondje persoonlijk eind punt op het tabblad netwerk.
+1. Klik op de knop + toevoegen om een persoonlijk eind punt toe te voegen.
 
     ![Installatiekopie](../media/private-link-service-1.png)
  
-1. Selecteer in het veld 'Locatie' van het privéeindpuntblad maken de regio waarin uw virtuele netwerk zich bevindt. 
-1. Maak in het veld 'Naam' een beschrijvende naam waarmee u dit privéeindpunt identificeren. 
-1. Selecteer het virtuele netwerk en subnet waarin u dit privéeindpunt wilt maken in het vervolgkeuzemenu. 
-1. Laat de optie "integreren met de private zone DNS" ongewijzigd.  
-1. Selecteer 'Ok'.
+1. Selecteer in het veld Locatie van de Blade persoonlijk eind punt maken de regio waarin het virtuele netwerk zich bevindt. 
+1. Maak in het veld naam een beschrijvende naam waarmee dit persoonlijke eind punt kan worden geïdentificeerd. 
+1. Selecteer het virtuele netwerk en het subnet waarvoor u dit persoonlijke eind punt wilt maken in de vervolg keuzelijst. 
+1. Laat de optie ' integreren met de zone voor de privécloud ' ongewijzigd.  
+1. Selecteer OK.
 
     ![Installatiekopie](../media/private-link-service-8.png)
  
-U nu het geconfigureerde privéeindpunt zien. U hebt nu de optie om dit privéeindpunt te verwijderen en te bewerken. Selecteer de knop 'Controleren + maken' en maak de sleutelkluis. Het duurt 5-10 minuten voordat de implementatie is voltooid. 
+U kunt nu het geconfigureerde persoonlijke eind punt zien. U hebt nu de mogelijkheid om dit privé-eind punt te verwijderen en te bewerken. Selecteer de knop bekijken + maken en maak de sleutel kluis. Het duurt 5-10 minuten voordat de implementatie is voltooid. 
 
-### <a name="establish-a-private-link-connection-to-an-existing-key-vault"></a>Een privékoppelingsverbinding met een bestaande sleutelkluis tot stand brengen
+### <a name="establish-a-private-link-connection-to-an-existing-key-vault"></a>Verbinding maken met een bestaande sleutel kluis met een persoonlijke koppeling
 
-Als u al een sleutelkluis hebt, u een verbinding met een privékoppeling maken door de volgende stappen te volgen:
+Als u al een sleutel kluis hebt, kunt u een koppeling voor een particuliere verbinding maken door de volgende stappen uit te voeren:
 
 1. Meld u aan bij Azure Portal. 
-1. Typ in de zoekbalk 'sleutelkluizen' in
-1. Selecteer de sleutelkluis in de lijst waaraan u een privéeindpunt wilt toevoegen.
-1. Selecteer het tabblad 'Netwerken' onder Instellingen
-1. Het tabblad Privéeindpuntverbindingen boven aan de pagina selecteren
-1. Selecteer de knop '+ Privéeindpunt' boven aan de pagina.
+1. Typ ' sleutel kluizen ' in de zoek balk.
+1. Selecteer de sleutel kluis in de lijst waaraan u een persoonlijk eind punt wilt toevoegen.
+1. Selecteer het tabblad netwerken onder instellingen
+1. Selecteer het tabblad verbindingen met privé-eind punten boven aan de pagina
+1. Selecteer de knop ' + persoonlijk eind punt ' boven aan de pagina.
 
-    ![Afbeelding](../media/private-link-service-3.png) ![](../media/private-link-service-4.png)
+    ![](../media/private-link-service-3.png) ![Afbeelding afbeelding](../media/private-link-service-4.png)
 
-U ervoor kiezen om een privéeindpunt te maken voor elke Azure-bron die dit blad gebruikt. U de vervolgkeuzemenu's gebruiken om een resourcetype te selecteren en een resource in uw map selecteren, of u verbinding maken met een Azure-bron met behulp van een bron-id. Laat de optie "integreren met de private zone DNS" ongewijzigd.  
+U kunt kiezen voor het maken van een persoonlijk eind punt voor elke Azure-resource in het gebruik van deze Blade. U kunt de vervolg keuzemenu's gebruiken om een resource type te selecteren en een resource in uw directory te selecteren, of u kunt verbinding maken met elke Azure-resource met een resource-ID. Laat de optie ' integreren met de zone voor de privécloud ' ongewijzigd.  
 
-![Afbeelding](../media/private-link-service-3.png)
-![](../media/private-link-service-4.png)
+![](../media/private-link-service-3.png)
+![Afbeelding afbeelding](../media/private-link-service-4.png)
 
-## <a name="establish-a-private-link-connection-to-key-vault-using-cli"></a>Een privékoppelingsverbinding met Key Vault tot stand brengen met CLI
+## <a name="establish-a-private-link-connection-to-key-vault-using-cli"></a>Een koppeling met een particuliere verbinding tot stand brengen met Key Vault met behulp van CLI
 
-### <a name="login-to-azure-cli"></a>Inloggen bij Azure CLI
+### <a name="login-to-azure-cli"></a>Aanmelden bij Azure CLI
 ```console
 az login 
 ```
-### <a name="select-your-azure-subscription"></a>Selecteer uw Azure-abonnement 
+### <a name="select-your-azure-subscription"></a>Uw Azure-abonnement selecteren 
 ```console
 az account set --subscription {AZURE SUBSCRIPTION ID}
 ```
@@ -94,7 +94,7 @@ az account set --subscription {AZURE SUBSCRIPTION ID}
 ```console
 az group create -n {RG} -l {AZURE REGION}
 ```
-### <a name="register-microsoftkeyvault-as-a-provider"></a>Microsoft.KeyVault registreren als provider 
+### <a name="register-microsoftkeyvault-as-a-provider"></a>Micro soft.-sleutel kluis registreren als provider 
 ```console
 az provider register -n Microsoft.KeyVault
 ```
@@ -102,7 +102,7 @@ az provider register -n Microsoft.KeyVault
 ```console
 az keyvault create --name {KEY VAULT NAME} --resource-group {RG} --location {AZURE REGION}
 ```
-### <a name="turn-on-key-vault-firewall"></a>Key Vault Firewall inschakelen
+### <a name="turn-on-key-vault-firewall"></a>Key Vault firewall inschakelen
 ```console
 az keyvault update --name {KEY VAULT NAME} --resource-group {RG} --location {AZURE REGION} --default-action deny
 ```
@@ -114,93 +114,93 @@ az network vnet create --resource-group {RG} --name {vNet NAME} --location {AZUR
 ```console
 az network vnet subnet create --resource-group {RG} --vnet-name {vNet NAME} --name {subnet NAME} --address-prefixes {addressPrefix}
 ```
-### <a name="disable-virtual-network-policies"></a>Beleid voor virtuele netwerken uitschakelen 
+### <a name="disable-virtual-network-policies"></a>Virtual Network-beleid uitschakelen 
 ```console
 az network vnet subnet update --name {subnet NAME} --resource-group {RG} --vnet-name {vNet NAME} --disable-private-endpoint-network-policies true
 ```
-### <a name="add-a-private-dns-zone"></a>Een privé-DNS-zone toevoegen 
+### <a name="add-a-private-dns-zone"></a>Een Privé-DNS zone toevoegen 
 ```console
 az network private-dns zone create --resource-group {RG} --name privatelink.vaultcore.azure.net
 ```
-### <a name="link-private-dns-zone-to-virtual-network"></a>Private DNS-zone koppelen aan virtueel netwerk 
+### <a name="link-private-dns-zone-to-virtual-network"></a>Privé-DNS zone koppelen aan Virtual Network 
 ```console
 az network private-dns link vnet create --resoruce-group {RG} --virtual-network {vNet NAME} --zone-name privatelink.vaultcore.azure.net --name {dnsZoneLinkName} --registration-enabled true
 ```
-### <a name="create-a-private-endpoint-automatically-approve"></a>Een privéeindpunt maken (automatisch goedkeuren) 
+### <a name="create-a-private-endpoint-automatically-approve"></a>Een persoonlijk eind punt maken (automatisch goed keuren) 
 ```console
 az network private-endpoint create --resource-group {RG} --vnet-name {vNet NAME} --subnet {subnet NAME} --name {Private Endpoint Name}  --private-connection-resource-id "/subscriptions/{AZURE SUBSCRIPTION ID}/resourceGroups/{RG}/providers/Microsoft.KeyVault/vaults/ {KEY VAULT NAME}" --group-ids vault --connection-name {Private Link Connection Name} --location {AZURE REGION}
 ```
-### <a name="create-a-private-endpoint-manually-request-approval"></a>Een privéeindpunt maken (handmatig goedkeuring aanvragen) 
+### <a name="create-a-private-endpoint-manually-request-approval"></a>Een persoonlijk eind punt maken (hand matig goed keuring aanvragen) 
 ```console
 az network private-endpoint create --resource-group {RG} --vnet-name {vNet NAME} --subnet {subnet NAME} --name {Private Endpoint Name}  --private-connection-resource-id "/subscriptions/{AZURE SUBSCRIPTION ID}/resourceGroups/{RG}/providers/Microsoft.KeyVault/vaults/ {KEY VAULT NAME}" --group-ids vault --connection-name {Private Link Connection Name} --location {AZURE REGION} --manual-request
 ```
-### <a name="show-connection-status"></a>Verbindingsstatus weergeven 
+### <a name="show-connection-status"></a>Verbindings status weer geven 
 ```console
 az network private-endpoint show --resource-group {RG} --name {Private Endpoint Name}
 ```
-## <a name="manage-private-link-connection"></a>Verbinding met privékoppelingen beheren
+## <a name="manage-private-link-connection"></a>Verbinding met persoonlijke koppeling beheren
 
-Wanneer u een privéeindpunt maakt, moet de verbinding worden goedgekeurd. Als de bron waarvoor u een privéeindpunt maakt, zich in uw map bevindt, u de verbindingsaanvraag goedkeuren, mits u over voldoende machtigingen beschikt. Als u verbinding maakt met een Azure-bron in een andere map, moet u wachten tot de eigenaar van die bron uw verbindingsaanvraag goedkeurt.
+Wanneer u een persoonlijk eind punt maakt, moet de verbinding worden goedgekeurd. Als de resource waarvoor u een persoonlijk eind punt maakt zich in uw directory bevindt, kunt u de verbindings aanvraag goed keuren die u voldoende machtigingen hebt. Als u verbinding maakt met een Azure-resource in een andere Directory, moet u wachten tot de eigenaar van die bron uw verbindings aanvraag heeft goedgekeurd.
 
-Er zijn vier provisioning staten:
+Er zijn vier inrichtings provincies:
 
-| Service bieden actie | Particuliere eindpuntstaat voor serviceconsumenten | Beschrijving |
+| Actie voor service leveren | Status privé-eind punt service gebruiker | Beschrijving |
 |--|--|--|
-| Geen | In behandeling | De verbinding wordt handmatig gemaakt en wordt in afwachting van goedkeuring van de eigenaar van de Private Link-bron. |
-| Goedkeuren | Goedgekeurd | De verbinding is automatisch of handmatig goedgekeurd en is klaar om te worden gebruikt. |
-| Afwijzen | Geweigerd | Verbinding is geweigerd door de eigenaar van de private link resource. |
-| Verwijderen | De verbinding verbroken | Verbinding is verwijderd door de eigenaar van de privékoppelingsbron, het privéeindpunt wordt informatief en moet worden verwijderd voor het opschonen. |
+| Geen | In behandeling | De verbinding wordt hand matig gemaakt en in afwachting van goed keuring van de resource-eigenaar van de persoonlijke koppeling. |
+| Goedkeuren | Goedgekeurd | De verbinding is automatisch of hand matig goedgekeurd en is klaar om te worden gebruikt. |
+| Afwijzen | Geweigerd | De verbinding is geweigerd door de resource-eigenaar van de persoonlijke koppeling. |
+| Verwijderen | De verbinding verbroken | De verbinding is verwijderd door de resource-eigenaar van de persoonlijke koppeling, het persoonlijke eind punt wordt informatieve en moet worden verwijderd voor opschoning. |
  
-###  <a name="how-to-manage-a-private-endpoint-connection-to-key-vault-using-the-azure-portal"></a>Een privé-eindpuntverbinding met Key Vault beheren met de Azure-portal 
+###  <a name="how-to-manage-a-private-endpoint-connection-to-key-vault-using-the-azure-portal"></a>Een verbinding met een privé-eind punt beheren met Key Vault met behulp van de Azure Portal 
 
 1. Meld u aan bij Azure Portal.
-1. Typ in de zoekbalk 'sleutelkluizen' in
-1. Selecteer de sleutelkluis die u wilt beheren.
-1. Selecteer het tabblad Netwerken.
-1. Als er verbindingen in behandeling zijn, wordt er een verbinding weergegeven met 'In behandeling' in de inrichtingsstatus. 
-1. Selecteer het privéeindpunt dat u wilt goedkeuren
-1. Selecteer de knop Goedkeuren.
-1. Als er privéeindpuntverbindingen zijn die u wilt weigeren, selecteert u, of het nu gaat om een aanvraag in behandeling of een bestaande verbinding, de verbinding en klikt u op de knop Weigeren.
+1. Typ ' sleutel kluizen ' in de zoek balk.
+1. Selecteer de sleutel kluis die u wilt beheren.
+1. Selecteer het tabblad netwerken.
+1. Als er verbindingen zijn die in behandeling zijn, ziet u een verbinding die wordt weer gegeven met de status in behandeling in de inrichting. 
+1. Selecteer het privé-eind punt dat u wilt goed keuren
+1. Selecteer de knop goed keuren.
+1. Als er particuliere endpoint-verbindingen zijn die u wilt weigeren, ongeacht of het een aanvraag in behandeling of een bestaande verbinding is, selecteert u de verbinding en klikt u op de knop afwijzen.
 
     ![Installatiekopie](../media/private-link-service-7.png)
 
-##  <a name="how-to-manage-a-private-endpoint-connection-to-key-vault-using-azure-cli"></a>Een privé-eindpuntverbinding met Key Vault beheren met Azure CLI
+##  <a name="how-to-manage-a-private-endpoint-connection-to-key-vault-using-azure-cli"></a>Een verbinding met een privé-eind punt beheren met Key Vault met behulp van Azure CLI
 
-### <a name="approve-a-private-link-connection-request"></a>Een verbindingsaanvraag voor privékoppelingen goedkeuren
+### <a name="approve-a-private-link-connection-request"></a>Een verbindings aanvraag voor een particuliere koppeling goed keuren
 ```console
 az keyvault private-endpoint-connection approve --approval-description {"OPTIONAL DESCRIPTION"} --resource-group {RG} --vault-name {KEY VAULT NAME} –name {PRIVATE LINK CONNECTION NAME}
 ```
 
-### <a name="deny-a-private-link-connection-request"></a>Een verbindingsaanvraag voor privékoppelingen weigeren
+### <a name="deny-a-private-link-connection-request"></a>Een verbindings aanvraag voor een particuliere verbinding weigeren
 ```console
 az keyvault private-endpoint-connection reject --rejection-description {"OPTIONAL DESCRIPTION"} --resource-group {RG} --vault-name {KEY VAULT NAME} –name {PRIVATE LINK CONNECTION NAME}
 ```
 
-### <a name="delete-a-private-link-connection-request"></a>Een verbindingsaanvraag voor privékoppelingen verwijderen
+### <a name="delete-a-private-link-connection-request"></a>Een verbindings aanvraag voor een particuliere koppeling verwijderen
 ```console
 az keyvault private-endpoint-connection delete --resource-group {RG} --vault-name {KEY VAULT NAME} --name {PRIVATE LINK CONNECTION NAME}
 ```
 
-## <a name="validate-that-the-private-link-connection-works"></a>Valideren of de privékoppelingsverbinding werkt
+## <a name="validate-that-the-private-link-connection-works"></a>Controleren of de verbinding van de persoonlijke verbinding werkt
 
-U moet valideren dat de bronnen binnen hetzelfde subnet van de privé-eindpuntbron verbinding maken met uw sleutelkluis via een privé-IP-adres en dat ze de juiste integratie van de privé-DNS-zone hebben.
+U moet controleren of de resources binnen hetzelfde subnet van de persoonlijke eindpunt resource verbinding maken met uw sleutel kluis via een privé-IP-adres en dat ze de juiste integratie van de persoonlijke DNS-zone hebben.
 
-Maak eerst een virtuele machine door de stappen te volgen in [Een virtuele Windows-machine maken in de Azure-portal](../../virtual-machines/windows/quick-create-portal.md)
+Maak eerst een virtuele machine aan de hand van de stappen in [een virtuele Windows-machine maken in de Azure Portal](../../virtual-machines/windows/quick-create-portal.md)
 
-Ga als op het tabblad 'Netwerken':
+Op het tabblad netwerk:
 
-1. Geef virtueel netwerk en subnet op. U een nieuw virtueel netwerk maken of een bestaand netwerk selecteren. Als u een bestaande regio selecteert, moet u ervoor zorgen dat de regio overeenkomt.
-1. Geef een openbare IP-bron op.
-1. Selecteer 'Geen' in de groep 'NIC-netwerkbeveiliging'.
-1. Selecteer in de taakverdeling 'Nee' de optie 'Nee'.
+1. Geef het virtuele netwerk en het subnet op. U kunt een nieuw virtueel netwerk maken of een bestaande selecteren. Als u een bestaand item selecteert, moet u ervoor zorgen dat de regio overeenkomt.
+1. Geef een open bare IP-resource op.
+1. Selecteer ' geen ' in de beveiligings groep NIC-netwerk.
+1. Selecteer Nee in de taak verdeling.
 
-Open de opdrachtregel en voer de volgende opdracht uit:
+Open de opdracht regel en voer de volgende opdracht uit:
 
 ```console
 nslookup <your-key-vault-name>.vault.azure.net
 ```
 
-Als u de opdracht ns-opzoeking uitvoert om het IP-adres van een sleutelkluis op een openbaar eindpunt op te lossen, ziet u een resultaat dat er als volgt uitziet:
+Als u de opdracht NS lookup uitvoert om het IP-adres van een sleutel kluis via een openbaar eind punt op te lossen, ziet u een resultaat dat er als volgt uitziet:
 
 ```console
 c:\ >nslookup <your-key-vault-name>.vault.azure.net
@@ -211,7 +211,7 @@ Address:  (public IP address)
 Aliases:  <your-key-vault-name>.vault.azure.net
 ```
 
-Als u de opdracht ns-opzoeking uitvoert om het IP-adres van een sleutelkluis via een privéeindpunt op te lossen, ziet u een resultaat dat er als volgt uitziet:
+Als u de opdracht NS lookup uitvoert om het IP-adres van een sleutel kluis via een persoonlijk eind punt op te lossen, ziet u een resultaat dat er als volgt uitziet:
 
 ```console
 c:\ >nslookup your_vault_name.vault.azure.net
@@ -223,19 +223,19 @@ Aliases:  <your-key-vault-name>.vault.azure.net
           <your-key-vault-name>.privatelink.vaultcore.azure.net
 ```
 
-## <a name="limitations-and-design-considerations"></a>Beperkingen en ontwerpoverwegingen
+## <a name="limitations-and-design-considerations"></a>Beperkingen en ontwerp overwegingen
 
-**Prijzen:** Zie Azure [Private Link-prijzen](https://azure.microsoft.com/pricing/details/private-link/)voor prijsinformatie.
+**Prijzen**: Zie [prijzen voor persoonlijke Azure-koppelingen](https://azure.microsoft.com/pricing/details/private-link/)voor prijs informatie.
 
-**Beperkingen**: Privéeindpunt voor Azure Key Vault is alleen beschikbaar in openbare Azure-regio's.
+**Beperkingen**: privé-eind punt voor Azure Key Vault is alleen beschikbaar in open bare Azure-regio's.
 
-**Maximum aantal privéeindpunten per key vault**: 64.
+**Maximum aantal privé-eind punten per Key Vault**: 64.
 
-**Maximaal aantal key vaults met privéeindpunten per abonnement:** 64.
+**Maximum aantal sleutel kluizen met persoonlijke eind punten per abonnement**: 64.
 
-Zie Azure [Private Link-service: Beperkingen voor](../../private-link/private-link-service-overview.md#limitations) meer informatie
+Zie voor meer informatie [Azure Private Link service: beperkingen](../../private-link/private-link-service-overview.md#limitations)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Meer informatie over [Azure Private Link](../../private-link/private-link-service-overview.md)
+- Meer informatie over [persoonlijke Azure-koppelingen](../../private-link/private-link-service-overview.md)
 - Meer informatie over [Azure Key Vault](overview.md)

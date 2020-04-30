@@ -1,7 +1,7 @@
 ---
-title: 'Snelstart: direct webverkeer met PowerShell'
+title: 'Quick Start: direct webverkeer met Power shell'
 titleSuffix: Azure Application Gateway
-description: Meer informatie over het gebruik van Azure PowerShell om een Azure Application Gateway te maken die webverkeer naar virtuele machines in een backendpool leidt.
+description: Meer informatie over het gebruik van Azure PowerShell voor het maken van een Azure-toepassing gateway waarmee webverkeer wordt doorgestuurd naar virtuele machines in een back-end-groep.
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
@@ -10,19 +10,19 @@ ms.date: 04/15/2020
 ms.author: victorh
 ms.custom: mvc
 ms.openlocfilehash: 3e1ca14d967b0e88ea7eb559fd9962a3824ff9b0
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81406215"
 ---
-# <a name="quickstart-direct-web-traffic-with-azure-application-gateway-using-azure-powershell"></a>Snelstart: direct webverkeer met Azure Application Gateway met Azure PowerShell
+# <a name="quickstart-direct-web-traffic-with-azure-application-gateway-using-azure-powershell"></a>Snelstartgids: webverkeer omleiden met Azure-toepassing gateway met behulp van Azure PowerShell
 
-In deze quickstart gebruikt u Azure PowerShell om een toepassingsgateway te maken. Dan test je het om ervoor te zorgen dat het goed werkt. 
+In deze Quick Start gebruikt u Azure PowerShell om een toepassings gateway te maken. Vervolgens test u de app om te controleren of deze correct werkt. 
 
-De toepassingsgateway leidt het webverkeer van toepassingen naar specifieke bronnen in een backend-groep. U wijst luisteraars toe aan poorten, maakt regels en voegt resources toe aan een backendpool. Omwille van de eenvoud, dit artikel maakt gebruik van een eenvoudige setup met een openbare front-end IP, een fundamentele luisteraar om een enkele site host op de applicatie gateway, een basisaanvraag routing regel, en twee virtuele machines in de backend pool.
+De toepassings gateway stuurt webverkeer van toepassingen naar specifieke bronnen in een back-end-pool. U wijst listeners toe aan poorten, maakt regels en voegt resources toe aan een back-end-groep. Voor het gemak maakt dit artikel gebruik van een eenvoudige configuratie met een openbaar front-end-IP, een basis-listener voor het hosten van één site op de toepassings gateway, een basis regel voor aanvraag Routering en twee virtuele machines in de back-end-pool.
 
-U deze quickstart ook voltooien met [Azure CLI](quick-create-cli.md) of de [Azure-portal.](quick-create-portal.md)
+U kunt deze Snelstartgids ook volt ooien met behulp van [Azure cli](quick-create-cli.md) of de [Azure Portal](quick-create-portal.md).
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -30,29 +30,29 @@ U deze quickstart ook voltooien met [Azure CLI](quick-create-cli.md) of de [Azur
 
 ## <a name="prerequisites"></a>Vereisten
 
-- Een Azure-account met een actief abonnement. [Maak gratis een account aan.](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
-- [Azure PowerShell-versie 1.0.0 of hoger](/powershell/azure/install-az-ps) (als u Azure PowerShell lokaal uitvoert).
+- Een Azure-account met een actief abonnement. [Maak gratis een account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+- [Azure PowerShell versie 1.0.0 of hoger](/powershell/azure/install-az-ps) (als u Azure PowerShell lokaal uitvoert).
 
 ## <a name="connect-to-azure"></a>Verbinding maken met Azure
 
-Voer verbinding met `Connect-AzAccount`Azure uit om verbinding te maken met Azure.
+Voer uit `Connect-AzAccount`om verbinding te maken met Azure.
 
 ## <a name="create-a-resource-group"></a>Een resourcegroep maken
 
-In Azure kunt u verwante resources toewijzen aan een resourcegroep. U een bestaande resourcegroep gebruiken of een nieuwe groep maken.
+In Azure kunt u verwante resources toewijzen aan een resourcegroep. U kunt een bestaande resource groep gebruiken of een nieuwe maken.
 
-Als u een nieuwe resourcegroep wilt maken, gebruikt u de `New-AzResourceGroup` cmdlet: 
+Als u een nieuwe resource groep wilt maken, `New-AzResourceGroup` gebruikt u de cmdlet: 
 
 ```azurepowershell-interactive
 New-AzResourceGroup -Name myResourceGroupAG -Location eastus
 ```
 ## <a name="create-network-resources"></a>Netwerkbronnen maken
 
-Er is een virtueel netwerk nodig voor communicatie tussen de resources die u maakt.  Het subnet van de toepassingsgateway kan alleen bestaan uit toepassingsgateways. Andere resources zijn niet toegestaan.  U een nieuw subnet voor application gateway maken of een bestaand subnet gebruiken. In dit voorbeeld maakt u twee subnetten in dit voorbeeld: een voor de toepassingsgateway en een andere voor de backendservers. U het Frontend IP van de Application Gateway configureren als openbaar of privé volgens uw use case. In dit voorbeeld kiest u een openbaar frontend-ip.
+Er is een virtueel netwerk nodig voor communicatie tussen de resources die u maakt.  Het subnet van de toepassingsgateway kan alleen bestaan uit toepassingsgateways. Andere resources zijn niet toegestaan.  U kunt een nieuw subnet maken voor Application Gateway of een bestaande gebruiken. In dit voor beeld maakt u twee subnetten in dit voor beeld: een voor de toepassings gateway en een voor de back-endservers. U kunt het frontend-IP-adres van de Application Gateway zo configureren dat het openbaar of privé is volgens uw use-case. In dit voor beeld kiest u een openbaar frontend-IP.
 
-1. Maak de subnetconfiguraties `New-AzVirtualNetworkSubnetConfig`met behulp van .
-2. Maak het virtuele netwerk met de `New-AzVirtualNetwork`subnetconfiguraties met behulp van . 
-3. Maak het openbare `New-AzPublicIpAddress`IP-adres met behulp van . 
+1. Maak de subnet-configuraties `New-AzVirtualNetworkSubnetConfig`met behulp van.
+2. Maak het virtuele netwerk met de subnet-configuraties `New-AzVirtualNetwork`met behulp van. 
+3. Maak het open bare IP- `New-AzPublicIpAddress`adres met. 
 
 ```azurepowershell-interactive
 $agSubnetConfig = New-AzVirtualNetworkSubnetConfig `
@@ -78,9 +78,9 @@ New-AzPublicIpAddress `
 
 ### <a name="create-the-ip-configurations-and-frontend-port"></a>IP-configuraties en front-endpoort maken
 
-1. Gebruik `New-AzApplicationGatewayIPConfiguration` de configuratie die het subnet dat u hebt gemaakt, koppelt aan de toepassingsgateway. 
-2. Gebruik `New-AzApplicationGatewayFrontendIPConfig` de configuratie die het openbare IP-adres toewijst dat u eerder aan de toepassingsgateway hebt gemaakt. 
-3. Gebruik `New-AzApplicationGatewayFrontendPort` om poort 80 toe te wijzen om toegang te krijgen tot de toepassingsgateway.
+1. Gebruik `New-AzApplicationGatewayIPConfiguration` om de configuratie te maken die het subnet koppelt dat u hebt gemaakt met de Application Gateway. 
+2. Gebruik `New-AzApplicationGatewayFrontendIPConfig` om de configuratie te maken waarmee het open bare IP-adres dat u eerder hebt gemaakt, wordt toegewezen aan de toepassings gateway. 
+3. Gebruik `New-AzApplicationGatewayFrontendPort` om poort 80 toe te wijzen voor toegang tot de toepassings gateway.
 
 ```azurepowershell-interactive
 $vnet   = Get-AzVirtualNetwork -ResourceGroupName myResourceGroupAG -Name myVNet
@@ -99,8 +99,8 @@ $frontendport = New-AzApplicationGatewayFrontendPort `
 
 ### <a name="create-the-backend-pool"></a>Back-endpool maken
 
-1. Gebruik `New-AzApplicationGatewayBackendAddressPool` de backendpool voor de toepassingsgateway. Het backend-zwembad is voorlopig leeg. Wanneer u de backendserver NIC's in de volgende sectie maakt, voegt u deze toe aan de backendpool.
-2. Configureer de instellingen voor `New-AzApplicationGatewayBackendHttpSetting`de backendpool met .
+1. Gebruiken `New-AzApplicationGatewayBackendAddressPool` om de back-end-pool voor de toepassings gateway te maken. De back-end-groep zal nu leeg zijn. Wanneer u de back-end-server Nic's in de volgende sectie maakt, voegt u deze toe aan de back-end-groep.
+2. Configureer de instellingen voor de back-end `New-AzApplicationGatewayBackendHttpSetting`-groep met.
 
 ```azurepowershell-interactive
 $backendPool = New-AzApplicationGatewayBackendAddressPool `
@@ -117,8 +117,8 @@ $poolSettings = New-AzApplicationGatewayBackendHttpSetting `
 
 Als u de toepassingsgateway wilt inschakelen om het verkeer op de juiste manier naar de back-endpool te routeren, is in Azure een listener vereist. In Azure is ook een regel vereist, zodat de listener weet welke back-endpool moet worden gebruikt voor binnenkomend verkeer. 
 
-1. Maak een `New-AzApplicationGatewayHttpListener` listener met de frontend-configuratie en frontend-poort die u eerder hebt gemaakt. 
-2. Gebruik `New-AzApplicationGatewayRequestRoutingRule` om een regel met de naam regel te *maken1*. 
+1. Maak een listener met behulp `New-AzApplicationGatewayHttpListener` van de front-end-configuratie en de frontend-poort die u eerder hebt gemaakt. 
+2. Gebruiken `New-AzApplicationGatewayRequestRoutingRule` om een regel te maken met de naam *firewallregel1*. 
 
 ```azurepowershell-interactive
 $defaultlistener = New-AzApplicationGatewayHttpListener `
@@ -138,8 +138,8 @@ $frontendRule = New-AzApplicationGatewayRequestRoutingRule `
 
 Nu u de benodigde ondersteunende resources hebt gemaakt, kunt u de toepassingsgateway maken:
 
-1. Met `New-AzApplicationGatewaySku` deze functie worden parameters voor de toepassingsgateway opgegeven.
-2. Gebruiken `New-AzApplicationGateway` om de toepassingsgateway te maken.
+1. Gebruiken `New-AzApplicationGatewaySku` om para meters voor de toepassings gateway op te geven.
+2. Gebruiken `New-AzApplicationGateway` om de toepassings gateway te maken.
 
 ```azurepowershell-interactive
 $sku = New-AzApplicationGatewaySku `
@@ -162,16 +162,16 @@ New-AzApplicationGateway `
 
 ### <a name="backend-servers"></a>Back-endservers
 
-Nu u de Application Gateway hebt gemaakt, maakt u de backend virtuele machines die de websites hosten. Backend kan bestaan uit NIC's, virtuele machineschaalsets, openbare IP's, interne IP's, volledig gekwalificeerde domeinnamen (FQDN) en back-ends met meerdere tenant's zoals Azure App Service. In dit voorbeeld maakt u twee virtuele machines die door Azure worden gebruikt als back-endservers voor de toepassingsgateway. U installeert ook IIS op de virtuele machines om te controleren of de toepassingsgateway in Azure is gemaakt.
+Nu u de Application Gateway hebt gemaakt, maakt u de virtuele machine van de back-end die als host fungeert voor de websites. Back-end kan bestaan uit Nic's, virtuele-machine schaal sets, open bare Ip's, interne Ip's, FQDN-namen (Fully Qualified Domain names) en back-ends met meerdere tenants, zoals Azure App Service. In dit voorbeeld maakt u twee virtuele machines die door Azure worden gebruikt als back-endservers voor de toepassingsgateway. U installeert ook IIS op de virtuele machines om te controleren of de toepassingsgateway in Azure is gemaakt.
 
 #### <a name="create-two-virtual-machines"></a>Twee virtuele machines maken
 
-1. Download de onlangs gemaakte backendpoolconfiguratie van Application Gateway met `Get-AzApplicationGatewayBackendAddressPool`.
-2. Maak een netwerkinterface met `New-AzNetworkInterface`.
-3. Maak een virtuele `New-AzVMConfig`machineconfiguratie met .
-4. Maak de virtuele `New-AzVM`machine met .
+1. De recent gemaakte Application Gateway back-end-groeps configuratie ophalen met `Get-AzApplicationGatewayBackendAddressPool`.
+2. Maak een netwerk interface met `New-AzNetworkInterface`.
+3. Maak een virtuele-machine configuratie `New-AzVMConfig`met.
+4. Maak de virtuele machine met `New-AzVM`.
 
-Wanneer u het volgende codevoorbeeld uitvoert om de virtuele machines te maken, wordt u gevraagd om referenties. Voer *azureuser* in voor de gebruikersnaam en een wachtwoord:
+Wanneer u het volgende codevoorbeeld uitvoert om de virtuele machines te maken, wordt u gevraagd om referenties. Voer *azureuser* in als gebruikers naam en wacht woord:
     
 ```azurepowershell-interactive
 $appgw = Get-AzApplicationGateway -ResourceGroupName myResourceGroupAG -Name myAppGateway
@@ -224,8 +224,8 @@ for ($i=1; $i -le 2; $i++)
 
 Het is niet nodig IIS te installeren om de toepassingsgateway te maken, maar u hebt het in deze quickstart geïnstalleerd om te controleren of het maken van de toepassingsgateway in Azure is geslaagd. Gebruik IIS om de toepassingsgateway te testen:
 
-1. Voer `Get-AzPublicIPAddress` uit om het openbare IP-adres van de toepassingsgateway te krijgen. 
-2. Kopieer het openbare IP-adres en plak het in de adresbalk van de browser. Als u de browser vernieuwt, ziet u de naam van de virtuele machine. Een geldig antwoord controleert of de toepassingsgateway is gemaakt en kan met succes verbinding maken met de backend.
+1. Voer `Get-AzPublicIPAddress` uit om het open bare IP-adres van de toepassings gateway op te halen. 
+2. Kopieer het openbare IP-adres en plak het in de adresbalk van de browser. Als u de browser vernieuwt, ziet u de naam van de virtuele machine. Een geldige reactie verifieert of de toepassings gateway is gemaakt en kan verbinding maken met de back-end.
 
 ```azurepowershell-interactive
 Get-AzPublicIPAddress -ResourceGroupName myResourceGroupAG -Name myAGPublicIPAddress
@@ -236,9 +236,9 @@ Get-AzPublicIPAddress -ResourceGroupName myResourceGroupAG -Name myAGPublicIPAdd
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
-Als u de resources die u met de toepassingsgateway hebt gemaakt, niet meer nodig hebt, verwijdert u de brongroep. Wanneer u de brongroep verwijdert, verwijdert u ook de toepassingsgateway en alle bijbehorende bronnen. 
+Als u de resources die u hebt gemaakt met de Application Gateway niet meer nodig hebt, verwijdert u de resource groep. Wanneer u de resource groep verwijdert, verwijdert u ook de toepassings gateway en alle gerelateerde resources. 
 
-Als u de brongroep `Remove-AzResourceGroup` wilt verwijderen, roept u de cmdlet aan:
+Als u de resource groep wilt verwijderen, `Remove-AzResourceGroup` roept u de cmdlet aan:
 
 ```azurepowershell-interactive
 Remove-AzResourceGroup -Name myResourceGroupAG

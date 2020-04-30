@@ -1,5 +1,5 @@
 ---
-title: Java gebruiken om een database op te vragen
+title: Java gebruiken om een query uit te zoeken op een Data Base
 description: Laat zien hoe u Java gebruikt om een programma te maken dat is verbonden met een Azure SQL-database, en hoe u deze database doorzoekt met behulp van T-SQL-instructies.
 services: sql-database
 ms.service: sql-database
@@ -12,53 +12,53 @@ ms.reviewer: v-masebo
 ms.date: 03/25/2019
 ms.custom: seo-java-july2019. seo-java-august2019
 ms.openlocfilehash: 034f92ca3b7552373ae69148d09d58d3a5dd166a
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "76768649"
 ---
 # <a name="quickstart-use-java-to-query-an-azure-sql-database"></a>Snelstart: Java gebruiken om een query uit te voeren voor een Azure SQL-database
 
-In deze quickstart gebruikt u Java om verbinding te maken met een Azure SQL-database en T-SQL-instructies te gebruiken om gegevens op te vragen.
+In deze Quick Start gebruikt u Java om verbinding te maken met een Azure-SQL database en T-SQL-instructies te gebruiken om gegevens op te vragen.
 
 ## <a name="prerequisites"></a>Vereisten
 
-- Een Azure-account met een actief abonnement. [Maak gratis een account aan.](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)
-- Een [Azure SQL-database](sql-database-single-database-get-started.md)
-- [Java-gerelateerde](/sql/connect/jdbc/microsoft-jdbc-driver-for-sql-server)software
+- Een Azure-account met een actief abonnement. [Maak gratis een account](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
+- Een [Azure-SQL database](sql-database-single-database-get-started.md)
+- [Java](/sql/connect/jdbc/microsoft-jdbc-driver-for-sql-server)-gerelateerde software
 
-  # <a name="macos"></a>[Macos](#tab/macos)
+  # <a name="macos"></a>[macOS](#tab/macos)
 
-  Installeer Homebrew en Java en installeer Maven met stappen **1.2** en **1.3** in [Java-apps maken met SQL Server op macOS.](https://www.microsoft.com/sql-server/developer-get-started/java/mac/)
+  Installeer homebrew en Java en installeer maven met behulp van de stappen **1,2** en **1,3** in [Java-Apps maken met behulp van SQL Server op macOS](https://www.microsoft.com/sql-server/developer-get-started/java/mac/).
 
   # <a name="ubuntu"></a>[Ubuntu](#tab/ubuntu)
 
-  Installeer Java, de Java Development Kit en installeer Maven met stappen **1.2,** **1.3**en **1.4** in [Java-apps maken met SQL Server op Ubuntu](https://www.microsoft.com/sql-server/developer-get-started/java/ubuntu/).
+  Installeer Java, de Java Development Kit en installeer vervolgens maven met behulp van de stappen **1,2**, **1,3**en **1,4** in [Create Java-Apps met behulp van SQL Server op Ubuntu](https://www.microsoft.com/sql-server/developer-get-started/java/ubuntu/).
 
   # <a name="windows"></a>[Windows](#tab/windows)
 
-  Installeer Java en installeer Maven met stappen **1.2** en **1.3** in [Java-apps maken met SQL Server op Windows.](https://www.microsoft.com/sql-server/developer-get-started/java/windows/)
+  Installeer Java en installeer maven met behulp van de stappen **1,2** en **1,3** in [Java-Apps maken met behulp van SQL Server in Windows](https://www.microsoft.com/sql-server/developer-get-started/java/windows/).
 
   ---
 
 > [!IMPORTANT]
-> De scripts in dit artikel zijn geschreven om gebruik te maken van de **Adventure Works** database.
+> De scripts in dit artikel zijn geschreven om de **Adventure Works** -data base te gebruiken.
 
 > [!NOTE]
-> U er optioneel voor kiezen om een Azure SQL-beheerde instantie te gebruiken.
+> U kunt desgewenst kiezen voor het gebruik van een Azure SQL Managed instance.
 >
-> Als u wilt maken en configureren, gebruikt u de [Azure Portal,](sql-database-managed-instance-get-started.md) [PowerShell](scripts/sql-database-create-configure-managed-instance-powershell.md)of [CLI](https://medium.com/azure-sqldb-managed-instance/working-with-sql-managed-instance-using-azure-cli-611795fe0b44)en vervolgens [on-site](sql-database-managed-instance-configure-p2s.md) of [VM-connectiviteit.](sql-database-managed-instance-configure-vm.md)
+> Als u de [Azure Portal](sql-database-managed-instance-get-started.md), [Power shell](scripts/sql-database-create-configure-managed-instance-powershell.md)of [cli](https://medium.com/azure-sqldb-managed-instance/working-with-sql-managed-instance-using-azure-cli-611795fe0b44)wilt maken en configureren, gebruikt u de [on-site-](sql-database-managed-instance-configure-p2s.md) of [VM](sql-database-managed-instance-configure-vm.md) -verbinding instellen.
 >
-> Zie herstellen met het bestand Adventure Works of zie de database met Wide World Importers herstellen als u gegevens wilt laden, zie [herstellen met BACPAC](sql-database-import.md) met het bestand [Adventure Works](https://github.com/Microsoft/sql-server-samples/tree/master/samples/databases/adventure-works) of de database van Wide World [Importers herstellen.](sql-database-managed-instance-get-started-restore.md)
+> Als u gegevens wilt laden, raadpleegt u [Restore with BACPAC](sql-database-import.md) with the [Adventure Works](https://github.com/Microsoft/sql-server-samples/tree/master/samples/databases/adventure-works) file of raadpleegt u [de Data Base voor Wide World Importers herstellen](sql-database-managed-instance-get-started-restore.md).
 
 ## <a name="get-sql-server-connection-information"></a>SQL Server-verbindingsgegevens ophalen
 
 Haal de verbindingsgegevens op die u nodig hebt om verbinding te maken met de Azure SQL-database. U hebt de volledig gekwalificeerde servernaam of hostnaam, databasenaam en aanmeldingsgegevens nodig voor de volgende procedures.
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
 
-2. Selecteer **SQL-databases** of open de pagina **SQL managed instances.**
+2. Selecteer **SQL-data bases** of open de pagina **SQL Managed instances** .
 
 3. Bekijk op de pagina **Overzicht** de volledig gekwalificeerde servernaam naast **Servernaam** voor een individuele database, of de volledig gekwalificeerde servernaam naast **Host** voor een beheerd exemplaar. Als u de servernaam of hostnaam wilt kopiëren, plaatst u de muisaanwijzer erboven en selecteert u het pictogram **Kopiëren**. 
 
@@ -70,7 +70,7 @@ Haal de verbindingsgegevens op die u nodig hebt om verbinding te maken met de Az
     mvn archetype:generate "-DgroupId=com.sqldbsamples" "-DartifactId=sqltest" "-DarchetypeArtifactId=maven-archetype-quickstart" "-Dversion=1.0.0" --batch-mode
     ```
 
-1. Wijzig de map in *sqltest* en open *pom.xml* met uw favoriete teksteditor. Voeg het **Microsoft JDBC-stuurprogramma voor SQL Server** toe aan de afhankelijkheden van uw project met behulp van de volgende code.
+1. Wijzig de map in *sqltest* en open *pom.xml* met uw favoriete teksteditor. Voeg het **micro soft JDBC-stuur programma voor SQL Server** toe aan de afhankelijkheden van uw project met behulp van de volgende code.
 
     ```xml
     <dependency>
@@ -170,8 +170,8 @@ Haal de verbindingsgegevens op die u nodig hebt om verbinding te maken met de Az
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Uw eerste Azure SQL-database ontwerpen](sql-database-design-first-database.md)  
+- [Uw eerste Azure-SQL database ontwerpen](sql-database-design-first-database.md)  
 
-- [Microsoft JDBC-stuurprogramma voor SQL Server](https://github.com/microsoft/mssql-jdbc)  
+- [Micro soft JDBC-stuur programma voor SQL Server](https://github.com/microsoft/mssql-jdbc)  
 
 - [Problemen melden/vragen stellen](https://github.com/microsoft/mssql-jdbc/issues)  

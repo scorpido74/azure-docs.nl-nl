@@ -5,31 +5,31 @@ ms.topic: include
 ms.date: 11/09/2018
 ms.author: spelluru
 ms.openlocfilehash: aec13c6beb8dbfcdd5f38e7f96b86bf03e42fa37
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/09/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80986772"
 ---
-## <a name="create-a-ruby-application"></a>Een Ruby-toepassing maken
-Zie Een [ruby-toepassing maken op Azure](../articles/virtual-machines/linux/classic/ruby-rails-web-app.md)voor instructies.
+## <a name="create-a-ruby-application"></a>Een ruby-toepassing maken
+Zie [een ruby-toepassing maken in azure](../articles/virtual-machines/linux/classic/ruby-rails-web-app.md)voor instructies.
 
-## <a name="configure-your-application-to-use-service-bus"></a>Uw toepassing configureren om servicebus te gebruiken
-Als u Service Bus wilt gebruiken, downloadt en gebruikt u het Azure Ruby-pakket, dat een reeks gemaksbibliotheken bevat die communiceren met de REST-opslagservices.
+## <a name="configure-your-application-to-use-service-bus"></a>Uw toepassing configureren voor het gebruik van Service Bus
+Als u Service Bus wilt gebruiken, downloadt en gebruikt u het Azure ruby-pakket, dat een aantal gebruiks vriendelijke bibliotheken bevat die communiceren met de opslag REST-services.
 
 ### <a name="use-rubygems-to-obtain-the-package"></a>RubyGems gebruiken om het pakket te verkrijgen
 1. Gebruik een opdrachtregelinterface zoals **PowerShell** (Windows), **Terminal** (Mac) of **Bash** (Unix).
-2. Typ "gem install azure" in het opdrachtvenster om de edelsteen en afhankelijkheden te installeren.
+2. Typ ' Gem installatie van Azure ' in het opdracht venster om de Gem en afhankelijkheden te installeren.
 
 ### <a name="import-the-package"></a>Het pakket importeren
-Voeg met behulp van uw favoriete teksteditor het volgende toe aan de bovenkant van het Ruby-bestand waarin u opslag wilt gebruiken:
+Gebruik uw favoriete tekst editor om het volgende toe te voegen aan de bovenkant van het ruby-bestand waarin u opslag wilt gebruiken:
 
 ```ruby
 require "azure"
 ```
 
-## <a name="set-up-a-service-bus-connection"></a>Een ServiceBus-verbinding instellen
-Gebruik de volgende code om de waarden van naamruimte, naam van de sleutel, sleutel, ondertekenaar en host in te stellen:
+## <a name="set-up-a-service-bus-connection"></a>Een Service Bus verbinding instellen
+Gebruik de volgende code om de waarden van de naam ruimte, de naam van de sleutel, de sleutel, de ondertekenaar en de host in te stellen:
 
 ```ruby
 Azure.configure do |config|
@@ -41,9 +41,9 @@ signer = Azure::ServiceBus::Auth::SharedAccessSigner.new
 sb_host = "https://#{Azure.sb_namespace}.servicebus.windows.net"
 ```
 
-Stel de naamruimtewaarde in op de waarde die u hebt gemaakt in plaats van de gehele URL. Gebruik bijvoorbeeld **'yourexamplenamespace'**, niet 'yourexamplenamespace.servicebus.windows.net'.
+Stel de waarde van de naam ruimte in op de waarde die u hebt gemaakt in plaats van de volledige URL. Gebruik bijvoorbeeld **' yourexamplenamespace '**, niet ' yourexamplenamespace.servicebus.Windows.net '.
 
-Wanneer u met meerdere naamruimten werkt, u de sleutel `SharedAccessSigner` en de naam ervan doorgeven aan de constructor terwijl u objecten maakt
+Wanneer u met meerdere naam ruimten werkt, kunt u de sleutel en de naam door geven aan de constructor tijdens `SharedAccessSigner` het maken van objecten
 
 ```ruby
 sb_namespace = '<your azure service bus namespace>'

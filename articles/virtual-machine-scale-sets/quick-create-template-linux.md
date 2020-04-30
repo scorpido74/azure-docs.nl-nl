@@ -1,5 +1,5 @@
 ---
-title: Snelstart - Een computerschaalset voor Linux maken met een Azure Resource Manager-sjabloon
+title: 'Snelstartgids: een schaalset voor een virtuele Linux-machine maken met een Azure Resource Manager sjabloon'
 description: Leer hoe u snel een virtuele-machineschaalset in Linux maakt met behulp van een Azure Resource Manager-sjabloon waarmee een voorbeeld-app wordt geïmplementeerd en regels voor automatisch schalen worden geconfigureerd
 author: ju-shim
 tags: azure-resource-manager
@@ -9,19 +9,19 @@ ms.custom: mvc,subject-armqs
 ms.date: 03/27/2020
 ms.author: jushiman
 ms.openlocfilehash: 4c0bac943be996c02436824334bd79a270f9a2e2
-ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/10/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81010457"
 ---
-# <a name="quickstart-create-a-linux-virtual-machine-scale-set-with-an-azure-resource-manager-template"></a>Snelstart: een Linux-sjabloon voor virtuele machineschaal maken met een Azure Resource Manager-sjabloon
+# <a name="quickstart-create-a-linux-virtual-machine-scale-set-with-an-azure-resource-manager-template"></a>Snelstartgids: een schaalset voor een virtuele Linux-machine maken met een Azure Resource Manager sjabloon
 
 Met een virtuele-machineschaalset kunt u een reeks identieke virtuele machines met automatisch schalen implementeren en beheren. U kunt het aantal VM’s in de schaalset handmatig schalen of regels voor automatisch schalen definiëren op basis van resourcegebruik zoals CPU, vraag naar geheugen, of netwerkverkeer. Een Azure load balancer verdeelt het verkeer vervolgens naar de VM-exemplaren in de schaalset. In deze snelstartgids gebruikt u een Azure Resource Manager-sjabloon om een schaalset voor virtuele machines te maken en een voorbeeldtoepassing te implementeren.
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
-Als u geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) voordat u begint.
+Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -31,23 +31,23 @@ Geen.
 
 Met Azure Resource Manager-sjablonen kunt u groepen gerelateerde resources implementeren. In één sjabloon kunt u de virtuele-machineschaalset maken, toepassingen installeren en regels voor automatisch schalen configureren. Met behulp van variabelen en parameters kan deze sjabloon opnieuw worden gebruikt voor het bijwerken van bestaande schaalsets, of om extra schaalsets te maken. U kunt sjablonen implementeren via de Azure-portal, Azure CLI of Azure PowerShell of via CI/CD-pijplijnen (Continuous Integration/Continuous Delivery).
 
-### <a name="review-the-template"></a>De sjabloon bekijken
+### <a name="review-the-template"></a>De sjabloon controleren
 
-De sjabloon die in deze quickstart wordt gebruikt, is afkomstig van [Azure Quickstart-sjablonen.](https://azure.microsoft.com/resources/templates/201-vmss-bottle-autoscale/)
+De sjabloon die in deze Quick Start wordt gebruikt, is afkomstig uit [Azure Quick](https://azure.microsoft.com/resources/templates/201-vmss-bottle-autoscale/)start-sjablonen.
 
 :::code language="json" source="~/quickstart-templates/201-vmss-bottle-autoscale/azuredeploy.json" range="1-330" highlight="176-264":::
 
-Deze bronnen worden gedefinieerd in de sjabloon:
+Deze resources worden gedefinieerd in de sjabloon:
 
-- [**Microsoft.Network/virtualNetworks**](/azure/templates/microsoft.network/virtualnetworks)
-- [**Microsoft.Network/publicIPAddresses**](/azure/templates/microsoft.network/publicipaddresses)
-- [**Microsoft.Network/loadBalancers**](/azure/templates/microsoft.network/loadbalancers)
+- [**Micro soft. Network/virtualNetworks**](/azure/templates/microsoft.network/virtualnetworks)
+- [**Micro soft. Network/publicIPAddresses**](/azure/templates/microsoft.network/publicipaddresses)
+- [**Micro soft. Network/loadBalancers**](/azure/templates/microsoft.network/loadbalancers)
 - [**Microsoft.Compute/virtualMachineScaleSets**](/azure/templates/microsoft.compute/virtualmachinescalesets)
-- [**Microsoft.Insights/autoscaleInstellingen**](/azure/templates/microsoft.insights/autoscalesettings)
+- [**Micro soft. Insights/autoscaleSettings**](/azure/templates/microsoft.insights/autoscalesettings)
 
 #### <a name="define-a-scale-set"></a>Een schaalset definiëren
 
-Het gemarkeerde gedeelte is de definitie van de schaalsetresource. Als u een schaal wilt maken met behulp van een sjabloon, definieert u de juiste resources. De basisonderdelen van het resourcetype voor de virtuele-machineschaalset zijn:
+De gemarkeerde sectie is de resource definitie van de schaalset. Als u een schaal wilt maken met behulp van een sjabloon, definieert u de juiste resources. De basisonderdelen van het resourcetype voor de virtuele-machineschaalset zijn:
 
 | Eigenschap                     | Beschrijving van eigenschap                                  | Voorbeeldwaarde van sjabloon                    |
 |------------------------------|----------------------------------------------------------|-------------------------------------------|
@@ -62,7 +62,7 @@ Het gemarkeerde gedeelte is de definitie van de schaalsetresource. Als u een sch
 | osProfile.adminUsername      | De gebruikersnaam voor elke VM-instantie                        | azureuser                                 |
 | osProfile.adminPassword      | Het wachtwoord voor elke VM-instantie                        | P@ssw0rd!                                 |
 
-Als u een sjabloon voor een schaalset wilt aanpassen, u de vm-grootte of de initiële capaciteit wijzigen. Een andere optie is het gebruik van een ander platform of een aangepaste afbeelding.
+Als u een sjabloon voor schaal sets wilt aanpassen, kunt u de VM-grootte of de eerste capaciteit wijzigen. Een andere mogelijkheid is om een ander platform of een aangepaste installatie kopie te gebruiken.
 
 #### <a name="add-a-sample-application"></a>Voorbeeldtoepassing toevoegen
 
@@ -74,17 +74,17 @@ Als u de schaalset wilt testen, installeert u een eenvoudige webtoepassing. Wann
 - Locatie van de configuratie of installatiescripts
 - Opdrachten om uit te voeren op de VM-instanties
 
-De sjabloon maakt gebruik van de Custom Script-extensie om [Bottle,](https://bottlepy.org/docs/dev/)een Python-webframework en een eenvoudige HTTP-server te installeren.
+De sjabloon maakt gebruik van de aangepaste script extensie om [fles](https://bottlepy.org/docs/dev/), een python-webframework en een eenvoudige http-server te installeren.
 
-Twee scripts worden gedefinieerd in **fileUris** - *installserver.sh*en *workserver.py*. Deze bestanden worden gedownload van GitHub en `bash installserver.sh` vervolgens *commandToExecute* uitgevoerd om de app te installeren en te configureren.
+Er zijn twee scripts gedefinieerd in **fileUris** - *installserver.sh*en *workserver.py*. Deze bestanden worden gedownload van GitHub en *commandToExecute* wordt uitgevoerd `bash installserver.sh` om de app te installeren en te configureren.
 
 ### <a name="deploy-the-template"></a>De sjabloon implementeren
 
-U de sjabloon implementeren door de volgende knop **Implementeren naar Azure te** selecteren. Met deze knop wordt Azure Portal geopend, de volledige sjabloon geladen, en wordt u gevraagd om een aantal parameters op te geven, zoals een naam voor de schaalset, het aantal instanties en de beheerdersreferenties.
+U kunt de sjabloon implementeren door de volgende knop **implementeren naar Azure** te selecteren. Met deze knop wordt Azure Portal geopend, de volledige sjabloon geladen, en wordt u gevraagd om een aantal parameters op te geven, zoals een naam voor de schaalset, het aantal instanties en de beheerdersreferenties.
 
-[![Sjabloon implementeren in Azure](media/virtual-machine-scale-sets-create-template/deploy-button.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-vmss-bottle-autoscale%2Fazuredeploy.json)
+[![Sjabloon implementeren in azure](media/virtual-machine-scale-sets-create-template/deploy-button.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-vmss-bottle-autoscale%2Fazuredeploy.json)
 
-U ook een resourcemanagersjabloon implementeren met Azure CLI:
+U kunt ook een resource manager-sjabloon implementeren met behulp van Azure CLI:
 
 ```azurecli-interactive
 # Create a resource group
@@ -108,7 +108,7 @@ az network public-ip list \
     --query [*].ipAddress -o tsv
 ```
 
-Voer het openbare IP-adres van de load balancer in op een webbrowser in de indeling *\/http: /publicIpAddress:9000/do_work*. Via de load balancer wordt verkeer naar een van uw VM-instanties gedistribueerd, zoals wordt weergegeven in het volgende voorbeeld:
+Geef het open bare IP-adres van de load balancer op in een webbrowser in de notatie *http\/:/publicIpAddress: 9000/do_work*. Via de load balancer wordt verkeer naar een van uw VM-instanties gedistribueerd, zoals wordt weergegeven in het volgende voorbeeld:
 
 ![Standaardwebpagina in NGINX](media/virtual-machine-scale-sets-create-template/running-python-app.png)
 
