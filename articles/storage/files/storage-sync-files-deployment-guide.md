@@ -8,10 +8,10 @@ ms.date: 07/19/2018
 ms.author: rogarana
 ms.subservice: files
 ms.openlocfilehash: 4d179697707b8190515e8c0e6dee2defa8881c03
-ms.sourcegitcommit: 1ed0230c48656d0e5c72a502bfb4f53b8a774ef1
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/24/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82137719"
 ---
 # <a name="deploy-azure-file-sync"></a>Azure Files SYNC implementeren
@@ -65,7 +65,7 @@ Schakel de **Verbeterde beveiliging van Internet Explorer**uit voor elke server 
 4. Selecteer in het dialoog venster **Verbeterde beveiliging van Internet Explorer** de optie **uitschakelen** voor **beheerders** en **gebruikers**:  
     ![Het pop-upvenster Verbeterde beveiliging van Internet Explorer met de optie Uit geselecteerd](media/storage-sync-files-deployment-guide/prepare-server-disable-IEESC-3.png)
 
-# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[Zo](#tab/azure-powershell)
 Als u de verbeterde beveiliging van Internet Explorer wilt uitschakelen, voert u het volgende uit vanuit een Power shell-sessie met verhoogde bevoegdheid:
 
 ```powershell
@@ -108,7 +108,7 @@ Voer de volgende gegevens in in het deelvenster dat verschijnt:
 
 Wanneer u klaar bent, selecteert u **maken** om de opslag synchronisatie service te implementeren.
 
-# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[Zo](#tab/azure-powershell)
 Vervang `<Az_Region>`, `<RG_Name>`en `<my_storage_sync_service>` met uw eigen waarden en gebruik vervolgens de volgende opdrachten om een opslag synchronisatie service te maken en te implementeren:
 
 ```powershell
@@ -172,7 +172,7 @@ U wordt aangeraden het volgende te doen:
 
 Wanneer de installatie van de Azure File Sync agent is voltooid, wordt de gebruikers interface voor Server registratie automatisch geopend. U moet een opslag synchronisatie service hebben voordat u zich kunt registreren. Zie de volgende sectie voor het maken van een opslag synchronisatie service.
 
-# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[Zo](#tab/azure-powershell)
 Voer de volgende Power shell-code uit om de juiste versie van de Azure File Sync-agent voor uw besturings systeem te downloaden en op uw systeem te installeren.
 
 > [!Important]  
@@ -229,7 +229,7 @@ Nadat u zich hebt aangemeld, wordt u gevraagd de volgende gegevens op te vragen:
 
 Nadat u de benodigde gegevens hebt geselecteerd, selecteert u **registreren** om de server registratie te volt ooien. Als deel van het registratieproces wordt u gevraagd u nogmaals aan te melden.
 
-# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[Zo](#tab/azure-powershell)
 ```powershell
 $registeredServer = Register-AzStorageSyncServer -ParentObject $storageSync
 ```
@@ -256,7 +256,7 @@ Voer in het deelvenster dat verschijnt de volgende gegevens in om een synchronis
 - **Opslag account**: als u **opslag account selecteren**selecteert, wordt er een ander deel venster weer gegeven waarin u het opslag account kunt selecteren dat de Azure-bestands share heeft waarmee u wilt synchroniseren.
 - **Azure-bestands share**: de naam van de Azure-bestands share waarmee u wilt synchroniseren.
 
-# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[Zo](#tab/azure-powershell)
 Als u de synchronisatie groep wilt maken, voert u de volgende Power shell uit. Vergeet niet door `<my-sync-group>` de gewenste naam van de synchronisatie groep te vervangen.
 
 ```powershell
@@ -320,7 +320,7 @@ Voer in het deelvenster **Servereindpunt toevoegen** de volgende gegevens in om 
 
 Selecteer **maken**om het server eindpunt toe te voegen. Uw bestanden worden nu gesynchroniseerd op de Azure-bestands share en Windows-Server. 
 
-# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[Zo](#tab/azure-powershell)
 Voer de volgende Power shell-opdrachten uit om het server eindpunt te maken en vervang `<your-server-endpoint-path>` en `<your-volume-free-space>` door de gewenste waarden.
 
 ```powershell

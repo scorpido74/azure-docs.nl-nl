@@ -12,10 +12,10 @@ ms.workload: infrastructure-services
 ms.date: 01/25/2019
 ms.author: rohink
 ms.openlocfilehash: d0ffcffd7d4a4f2072b640ace03ec819aa416d47
-ms.sourcegitcommit: edccc241bc40b8b08f009baf29a5580bf53e220c
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/24/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82133909"
 ---
 # <a name="enable-resource-logging-in-azure-traffic-manager"></a>Bron logboek registratie inschakelen in azure Traffic Manager
@@ -24,7 +24,7 @@ In dit artikel wordt beschreven hoe u het verzamelen van diagnostische resource 
 
 Azure Traffic Manager-resource logboeken kunnen inzicht geven in het gedrag van de Traffic Manager-profiel bron. U kunt bijvoorbeeld de logboek gegevens van het profiel gebruiken om te bepalen waarom er een time-out optreedt voor individuele tests op een eind punt.
 
-## <a name="enable-resource-logging"></a>Bron logboek registratie inschakelen
+## <a name="enable-resource-logging"></a>Resourcelogboekregistratie inschakelen
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -71,7 +71,7 @@ De volgende tabel bevat logboeken die specifiek zijn voor de Azure Traffic Manag
 
 |||||
 |----|----|---|---|
-|**Veld naam**|**Veld type**|**Definitie**|**Hierbij**|
+|**Veld naam**|**Veld type**|**Definitie**|**Voorbeeld**|
 |EndpointName|Tekenreeks|De naam van het Traffic Manager-eind punt waarvan de integriteits status wordt vastgelegd.|*myPrimaryEndpoint*|
 |Status|Tekenreeks|De integriteits status van het Traffic Manager-eind punt dat is gecontroleerd. De status **kan een of meer** zijn **.**|**Omhoog**|
 |||||

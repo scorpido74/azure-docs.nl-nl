@@ -6,10 +6,10 @@ ms.author: chredd
 ms.date: 03/28/2019
 ms.topic: conceptual
 ms.openlocfilehash: 79c4e74086acc0f74bcc43f6b4543afe12916364
-ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/24/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82117383"
 ---
 # <a name="use-azure-pipelines-to-build-and-deploy-hpc-solutions"></a>Gebruik Azure-pijp lijnen om HPC-oplossingen te bouwen en te implementeren
@@ -24,7 +24,7 @@ In dit voor beeld maken we een pijp lijn voor Build en release om een Azure Batc
 
 ![Diagram van de stroom van de implementatie in onze pijp lijn](media/batch-ci-cd/DeploymentFlow.png)
 
-### <a name="setup"></a>Setup
+### <a name="setup"></a>Instellen
 
 Als u de stappen in dit artikel wilt volgen, hebt u een Azure DevOps-organisatie en een team project nodig.
 

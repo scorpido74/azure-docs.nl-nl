@@ -5,10 +5,10 @@ ms.topic: article
 ms.date: 06/01/2018
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 7abdab248a6f19ec4d57018d65f883fdc838da21
-ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/24/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82116788"
 ---
 # <a name="provision-linux-compute-nodes-in-batch-pools"></a>Linux-reken knooppunten inrichten in batch-Pools
@@ -33,7 +33,7 @@ De batch-service maakt gebruik van [schaal sets voor virtuele machines](../virtu
 
 Wanneer u een verwijzing naar een installatie kopie van een virtuele machine configureert, geeft u de eigenschappen van de installatie kopie van de virtuele machine op. De volgende eigenschappen zijn vereist wanneer u een verwijzing naar een installatie kopie van een virtuele machine maakt:
 
-| **Eigenschappen van afbeeldings verwijzing** | **Hierbij** |
+| **Eigenschappen van afbeeldings verwijzing** | **Voorbeeld** |
 | --- | --- |
 | Uitgever |Canonical |
 | Aanbieding |UbuntuServer |

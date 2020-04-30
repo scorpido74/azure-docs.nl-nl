@@ -8,10 +8,10 @@ ms.date: 04/06/2020
 ms.author: robb
 ms.subservice: metrics
 ms.openlocfilehash: f2e3c03ba599128cc4552f64637ebd63efcb4578
-ms.sourcegitcommit: edccc241bc40b8b08f009baf29a5580bf53e220c
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/24/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82128455"
 ---
 # <a name="supported-metrics-with-azure-monitor"></a>Ondersteunde metrische gegevens met Azure Monitor
@@ -1592,7 +1592,7 @@ De metrische gegevens zijn geordend op naam ruimte. Zie [resource providers voor
 |NewConnectionsPerSecond|Nieuwe verbindingen per seconde|CountPerSecond|Average|Nieuwe verbindingen per seconde die zijn gemaakt met Application Gateway|Geen|
 |CpuUtilization|CPU-gebruik|Percentage|Average|Huidig CPU-gebruik van de Application Gateway|Geen|
 |CapacityUnits|Huidige capaciteits eenheden|Count|Average|Verbruikte capaciteits eenheden|Geen|
-|FixedBillableCapacityUnits|Vaste factureer bare capaciteits eenheden|Count|Average|Minimale capaciteits eenheden waarvoor kosten in rekening worden gebracht|Geen|
+|FixedBillableCapacityUnits|Vaste factureerbare capaciteitseenheden|Count|Average|Minimale capaciteits eenheden waarvoor kosten in rekening worden gebracht|Geen|
 |EstimatedBilledCapacityUnits|Geschatte gefactureerde capaciteits eenheden|Count|Average|Geschatte capaciteits eenheden waarvoor kosten in rekening worden gebracht|Geen|
 |ComputeUnits|Huidige reken eenheden|Count|Average|Verbruikte reken eenheden|Geen|
 |BackendResponseStatus|Reactie status van back-end|Count|Totaal|Het aantal HTTP-antwoord codes dat door de back-end-leden is gegenereerd. Dit omvat geen antwoord codes die zijn gegenereerd door de Application Gateway.|BackendServer, hosts, BackendHttpSetting, HttpStatusGroup|

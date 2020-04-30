@@ -13,10 +13,10 @@ ms.date: 4/10/2020
 ms.author: moala
 ms.custom: devops
 ms.openlocfilehash: b1a57245434bb188ffaab56a8891b4b0ee27f044
-ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "82120490"
 ---
 # <a name="tutorial---configure-blue-green-deployment-strategy-for-azure-linux-virtual-machines"></a>Zelf studie-een strategie voor blauw-groen-implementatie configureren voor Azure Linux Virtual Machines
@@ -75,6 +75,6 @@ Met DevOps Projects kunt u uw toepassing in slechts drie stappen uitvoeren op el
  
 [Meer informatie](https://azure.microsoft.com/features/devops-projects/ ).
  
-## <a name="additional-resources"></a>Extra resources 
+## <a name="additional-resources"></a>Aanvullende bronnen 
 - [Implementeren in azure Virtual Machines met behulp van DevOps-project](https://docs.microsoft.com/azure/devops-project/azure-devops-project-vms)
 - [Continue implementatie van uw app implementeren in een Schaalset voor virtuele Azure-machines](https://docs.microsoft.com/azure/devops/pipelines/apps/cd/azure/deploy-azure-scaleset)

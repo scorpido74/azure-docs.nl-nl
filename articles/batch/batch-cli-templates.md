@@ -5,10 +5,10 @@ ms.topic: article
 ms.date: 12/07/2018
 ms.custom: seodec18
 ms.openlocfilehash: 634a0b66379d8c94988d5f974baffe475af94c2e
-ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/24/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82117349"
 ---
 # <a name="use-azure-batch-cli-templates-and-file-transfer"></a>Azure Batch CLI-sjablonen en-bestands overdracht gebruiken
@@ -38,7 +38,7 @@ Taken gebruiken meestal invoer gegevensbestand en produceren uitvoer gegevens be
 
 -   Een eind gebruiker met een set video bestanden voor trans code maakt eerst een pool met behulp van de groeps sjabloon, waarbij alleen de groeps-ID en het aantal vereiste Vm's worden opgegeven. Ze kunnen vervolgens de bron bestanden uploaden naar transcoderen. Een taak kan vervolgens worden verzonden met behulp van de taak sjabloon, waarbij alleen de groeps-ID en de locatie van de geüploade bron bestanden worden opgegeven. De batch-taak is gemaakt, waarbij één taak per invoer bestand wordt gegenereerd. Ten slotte kan de gedecodeerde uitvoer bestanden worden gedownload.
 
-## <a name="installation"></a>Installeren
+## <a name="installation"></a>Installatie
 
 Als u de Azure Batch CLI-extensie wilt installeren, installeert u eerst [de Azure cli 2,0](/cli/azure/install-azure-cli)of voert u de Azure CLI uit in [Azure Cloud shell](../cloud-shell/overview.md).
 

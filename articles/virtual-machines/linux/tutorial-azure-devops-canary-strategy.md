@@ -13,10 +13,10 @@ ms.date: 4/10/2020
 ms.author: moala
 ms.custom: devops
 ms.openlocfilehash: b51b4aed85f737e436565ce8ba1ab4a295714734
-ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "82120476"
 ---
 # <a name="tutorial---configure-canary-deployment-strategy-for-azure-linux-virtual-machines"></a>Zelf studie-een strategie voor distributie op het Linux Virtual Machines voor Azure configureren
@@ -71,6 +71,6 @@ Met DevOps Projects kunt u uw toepassing in slechts drie stappen uitvoeren op el
  
 [Meer informatie](https://azure.microsoft.com/features/devops-projects/ ).
  
-## <a name="additional-resources"></a>Extra resources 
+## <a name="additional-resources"></a>Aanvullende bronnen 
 - [Implementeren in azure Virtual Machines met behulp van DevOps-project](https://docs.microsoft.com/azure/devops-project/azure-devops-project-vms)
 - [Continue implementatie van uw app implementeren in een Schaalset voor virtuele Azure-machines](https://docs.microsoft.com/azure/devops/pipelines/apps/cd/azure/deploy-azure-scaleset)

@@ -2,7 +2,7 @@
 description: Meer informatie over de versie geschiedenis van de uitbrei ding desired state Configuration (DSC) in Azure.
 ms.date: 06/21/2018
 keywords: DSC, Power shell, azure, uitbrei ding
-title: Versie geschiedenis van Azure DSC-extensie
+title: Versiegeschiedenis van Azure DSC-extensie
 author: mgoedtel
 ms.author: magoedte
 services: automation
@@ -10,10 +10,10 @@ ms.service: automation
 ms.subservice: dsc
 ms.topic: conceptual
 ms.openlocfilehash: 207b8f7467753a8693bbabe6dd3f7a890307cf21
-ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/24/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82120702"
 ---
 # <a name="azure-desired-state-configuration-extension-version-history"></a>Versie geschiedenis van de desired state Configuration-extensie voor Azure

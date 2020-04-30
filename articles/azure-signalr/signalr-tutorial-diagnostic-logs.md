@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 12/17/2019
 ms.author: wanl
 ms.openlocfilehash: 55482457058d01162116494b637661db40010a50
-ms.sourcegitcommit: edccc241bc40b8b08f009baf29a5580bf53e220c
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/24/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82130996"
 ---
 # <a name="resource-logs-for-azure-signalr-service"></a>Resource logboeken voor de Azure signalerings service
@@ -27,7 +27,7 @@ Als u resource logboeken wilt inschakelen, moet u uw logboek gegevens ergens ops
 
 U kunt resource logboeken voor de Azure signalerings service weer geven. Deze logboeken bieden een uitgebreidere weer gave van de connectiviteit met uw exemplaar van de Azure signalerings service. De bron logboeken bevatten gedetailleerde informatie over elke verbinding. Bijvoorbeeld basis informatie (gebruikers-ID, verbindings-ID en transport type enzovoort) en gebeurtenis gegevens (verbinding maken, verbinding verbreken en afbreken) van de verbinding. resource logboeken kunnen worden gebruikt voor het identificeren van problemen, het bijhouden van verbindingen en de analyse.
 
-### <a name="enable-resource-logs"></a>Resource logboeken inschakelen
+### <a name="enable-resource-logs"></a>Resourcelogboeken inschakelen
 
 Bron logboeken zijn standaard uitgeschakeld. Voer de volgende stappen uit om resource Logboeken in te scha kelen:
 
