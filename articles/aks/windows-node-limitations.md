@@ -1,108 +1,102 @@
 ---
-title: Beperkingen voor windows Server-knooppuntgroepen
+title: Beperkingen van Windows Server-knooppunt groepen
 titleSuffix: Azure Kubernetes Service
-description: Meer informatie over de bekende beperkingen wanneer u Windows Server-knooppuntgroepen en toepassingsworkloads uitvoert in Azure Kubernetes Service (AKS)
+description: Meer informatie over de bekende beperkingen bij het uitvoeren van Windows Server-knooppunt groepen en toepassings werkbelastingen in azure Kubernetes service (AKS)
 services: container-service
 ms.topic: article
 ms.date: 12/18/2019
-ms.openlocfilehash: 934acf06a779c1c3b0b13e74b196b174dd944e66
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.openlocfilehash: 935b049ce5e1951952b4af4e7df9574df764b6e8
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80886667"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82208003"
 ---
-# <a name="current-limitations-for-windows-server-node-pools-and-application-workloads-in-azure-kubernetes-service-aks"></a>Huidige beperkingen voor windows server-knooppuntgroepen en toepassingsworkloads in Azure Kubernetes Service (AKS)
+# <a name="current-limitations-for-windows-server-node-pools-and-application-workloads-in-azure-kubernetes-service-aks"></a>Huidige beperkingen voor Windows Server-knooppunt groepen en toepassings werkbelastingen in azure Kubernetes service (AKS)
 
-In Azure Kubernetes Service (AKS) u een knooppuntgroep maken waarop Windows Server wordt uitgevoerd als gastbesturingssysteem op de knooppunten. Deze knooppunten kunnen native Windows-containertoepassingen uitvoeren, zoals die zijn gebouwd op het .NET Framework. Omdat er grote verschillen zijn in de manier waarop het Linux- en Windows-besturingssysteem containerondersteuning biedt, zijn sommige veelvoorkomende Kubernetes- en pod-gerelateerde functies momenteel niet beschikbaar voor Windows-knooppuntgroepen.
+In azure Kubernetes service (AKS) kunt u een knooppunt groep maken waarop Windows Server als het gast besturingssysteem op de knoop punten wordt uitgevoerd. Deze knoop punten kunnen systeem eigen Windows-container toepassingen uitvoeren, zoals die zijn gebaseerd op de .NET Framework. Omdat er belang rijke verschillen zijn in de manier waarop het Linux-en Windows-besturings systeem ondersteuning bieden voor containers, zijn bepaalde algemene Kubernetes-en pod-functies momenteel niet beschikbaar voor Windows-knooppunt groepen.
 
-In dit artikel worden enkele beperkingen en OS-concepten voor Windows Server-knooppunten in AKS beschreven. Knooppuntgroepen voor Windows Server zijn momenteel in preview.
+In dit artikel vindt u een overzicht van enkele beperkingen en besturingssysteem concepten voor Windows Server-knoop punten in AKS.
 
-> [!IMPORTANT]
-> AKS preview-functies zijn self-service opt-in. Previews worden geleverd "as-is" en "as available" en zijn uitgesloten van de service level agreements en beperkte garantie. AKS Previews worden gedeeltelijk gedekt door de klantenservice op basis van de beste inspanning. Als zodanig zijn deze functies niet bedoeld voor productiegebruik. Zie voor meer informatie de volgende ondersteuningsartikelen:
->
-> * [AKS-ondersteuningsbeleid][aks-support-policies]
-> * [Veelgestelde vragen over Azure Support][aks-faq]
+## <a name="which-windows-operating-systems-are-supported"></a>Welke Windows-besturings systemen worden ondersteund?
 
-## <a name="which-windows-operating-systems-are-supported"></a>Welke Windows-besturingssystemen worden ondersteund?
+AKS maakt gebruik van Windows Server 2019 als de versie van het besturings systeem van de host en ondersteunt alleen isolatie van processen. Container installatie kopieën die zijn gemaakt met andere versies van Windows Server, worden niet ondersteund. [Compatibiliteit met Windows-container versie][windows-container-compat]
 
-AKS gebruikt Windows Server 2019 als host-versie en ondersteunt alleen procesisolatie. Containerafbeeldingen die zijn gemaakt met andere Windows Server-versies worden niet ondersteund. [Compatibiliteit met Windows-containerversies][windows-container-compat]
+## <a name="is-kubernetes-different-on-windows-and-linux"></a>Is Kubernetes anders in Windows en Linux?
 
-## <a name="is-kubernetes-different-on-windows-and-linux"></a>Is Kubernetes anders op Windows en Linux?
+Ondersteuning voor de venster Server knooppunt groep bevat enkele beperkingen die deel uitmaken van de upstream-Windows-Server in Kubernetes-project. Deze beperkingen zijn niet specifiek voor AKS. Zie de sectie [ondersteunde functionaliteit en beperkingen][upstream-limitations] van het project [Inleiding tot Windows-ondersteuning in Kubernetes][intro-windows] -document in het Kubernetes-bestand voor meer informatie over deze ondersteuning voor upstreams voor Windows Server in Kubernetes.
 
-Ondersteuning voor window server-knooppuntgroep bevat een aantal beperkingen die deel uitmaken van het upstream Windows Server in Kubernetes-project. Deze beperkingen zijn niet specifiek voor AKS. Zie het gedeelte [Ondersteunde functionaliteit en beperkingen][upstream-limitations] van de sectie Intro naar [Windows-ondersteuning in kubernetes-document,][intro-windows] vanuit het Kubernetes-project, voor meer informatie over deze upstream-ondersteuning voor Windows Server in Kubernetes.
+Kubernetes is historisch gericht op Linux. Veel voor beelden die worden gebruikt in de upstream [Kubernetes.io][kubernetes] -website zijn bedoeld voor gebruik op Linux-knoop punten. Wanneer u implementaties maakt die gebruikmaken van Windows Server-containers, gelden de volgende overwegingen op het niveau van het besturings systeem:
 
-Kubernetes is historisch Linux-gericht. Veel voorbeelden die worden gebruikt in de upstream [Kubernetes.io][kubernetes] website zijn bedoeld voor gebruik op Linux-knooppunten. Wanneer u implementaties maakt die Windows Server-containers gebruiken, zijn de volgende overwegingen op OS-niveau van toepassing:
-
-- **Identiteit** - Linux identificeert een gebruiker met een integer user identifier (UID). Een gebruiker heeft ook een alfanumerieke gebruikersnaam voor het inloggen, die Linux vertaalt naar de Gebruiker UID. Op dezelfde manier identificeert Linux een gebruikersgroep met een integer groep identifier (GID) en vertaalt een groepsnaam naar de bijbehorende GID.
-    - Windows Server maakt gebruik van een grotere binaire beveiligingsid (SID) die is opgeslagen in de SAM-database (Windows Security Access Manager). Deze database wordt niet gedeeld tussen de host en containers, of tussen containers.
-- **Bestandsmachtigingen** - Windows Server gebruikt een lijst met toegangscontrole op basis van ID's, in plaats van een bitmask van machtigingen en UID+GID
-- **Bestandspaden** - conventie op Windows Server is te gebruiken \ in plaats van /.
-    - Geef in podspecificaties die volumes monteren het pad correct op voor Windows Server-containers. Geef bijvoorbeeld in plaats van een bevestigingspunt van */mnt/volume* in een Linux-container een stationsletter en -locatie op, zoals */K/Volume* om te monteren als de *K:* station.
+- **Identiteit** -Linux identificeert een gebruiker op basis van een gebruikers-id (UID) van een geheel getal. Een gebruiker heeft ook een alfanumerieke gebruikers naam voor aanmelding, die Linux vertaalt naar de UID van de gebruiker. Net als Linux wordt een gebruikers groep aangeduid met een groeps-id (GID) en wordt een groeps naam omgezet in de bijbehorende GID.
+    - Windows Server gebruikt een grotere binaire beveiligings-id (SID) die is opgeslagen in de SAM-data base (Windows Security Access Manager). Deze data base wordt niet gedeeld tussen de host en containers of tussen containers.
+- **Bestands machtigingen** : Windows Server gebruikt een toegangs beheer lijst op basis van sid's, in plaats van een bitmasker van machtigingen en UID + GID
+- **Bestands paden** : de Conventie voor Windows Server is door gebruik te gebruiken in plaats van/.
+    - In pod-specificaties die volumes koppelen, geeft u het pad correct voor Windows Server-containers op. Geef bijvoorbeeld in plaats van een koppel punt van */mnt/volume* in een Linux-container een stationsletter en locatie op, zoals */K/volume* , die moeten worden gekoppeld als het station *K:* .
 
 ## <a name="what-kind-of-disks-are-supported-for-windows"></a>Wat voor soort schijven worden ondersteund voor Windows?
 
-Azure Disks en Azure Files zijn de ondersteunde volumetypen, toegankelijk als NTFS-volumes in de Windows Server-container.
+Azure-schijven en-Azure Files zijn de ondersteunde volume typen, toegankelijk als NTFS-volumes in de Windows Server-container.
 
-## <a name="can-i-run-windows-only-clusters-in-aks"></a>Kan ik windows-clusters alleen uitvoeren in AKS?
+## <a name="can-i-run-windows-only-clusters-in-aks"></a>Kan ik alleen Windows-clusters in AKS uitvoeren?
 
-De hoofdknooppunten (het besturingsvlak) in een AKS-cluster worden gehost door AKS de service, u wordt niet blootgesteld aan het besturingssysteem van de knooppunten die de hoofdcomponenten hosten. Alle AKS-cluster wordt gemaakt met een standaard eerste knooppuntgroep, die op Linux is gebaseerd. Deze knooppuntgroep bevat systeemservices, die nodig zijn om het cluster te laten functioneren. Het wordt aanbevolen om ten minste twee knooppunten uit te voeren in de eerste knooppuntgroep om de betrouwbaarheid van uw cluster te garanderen en de mogelijkheid om clusterbewerkingen uit te voeren. De eerste op Linux gebaseerde knooppuntgroep kan niet worden verwijderd, tenzij het AKS-cluster zelf wordt verwijderd.
+De hoofd knooppunten (het besturings vlak) in een AKS-cluster worden gehost door AKS de service. u wordt niet blootgesteld aan het besturings systeem van de knoop punten die de hoofd onderdelen hosten. Alle AKS-clusters worden gemaakt met een standaard eerste knooppunt groep, die is gebaseerd op Linux. Deze knooppunt groep bevat systeem services, die nodig zijn voor het functioneren van het cluster. Het is raadzaam ten minste twee knoop punten in de eerste knooppunt groep uit te voeren om de betrouw baarheid van uw cluster en de mogelijkheid om cluster bewerkingen te kunnen garanderen. De eerste knooppunt groep op basis van Linux kan alleen worden verwijderd als het AKS-cluster zelf is verwijderd.
 
-## <a name="what-network-plug-ins-are-supported"></a>Welke netwerkplug-ins worden ondersteund?
+## <a name="what-network-plug-ins-are-supported"></a>Welke netwerk-invoeg toepassingen worden ondersteund?
 
-AKS-clusters met Windows-knooppuntgroepen moeten het Azure CNI-netwerkmodel (advanced) gebruiken. Kubenet (basic) networking wordt niet ondersteund. Zie [Netwerkconcepten voor toepassingen in AKS voor][azure-network-models]meer informatie over de verschillen in netwerkmodellen. - Het Azure CNI-netwerkmodel vereist extra planning en overwegingen voor IP-adresbeheer. Zie [Azure CNI-netwerken configureren in AKS][configure-azure-cni]voor meer informatie over het plannen en implementeren van Azure CNI.
+AKS-clusters met Windows-knooppunt Pools moeten het netwerk model van Azure CNI (Geavanceerd) gebruiken. Kubenet (Basic)-netwerken worden niet ondersteund. Zie [Network concepten for Applications in AKS][azure-network-models](Engelstalig) voor meer informatie over de verschillen in netwerk modellen. -Het Azure CNI-netwerk model vereist aanvullende planning en overwegingen voor het beheer van IP-adressen. Zie [Azure cni-netwerken configureren in AKS][configure-azure-cni]voor meer informatie over het plannen en implementeren van Azure cni.
 
-## <a name="can-i-change-the-max--of-pods-per-node"></a>Kan ik de max veranderen. # van peulen per knooppunt?
+## <a name="can-i-change-the-max--of-pods-per-node"></a>Kan ik de maximale waarde wijzigen. aantal peulen per knoop punt?
 
-Ja. Zie [Maximum aantal pods voor][maximum-number-of-pods]de beschikbare implicaties en opties .
+Ja. Zie [maximum aantal peulen][maximum-number-of-pods]voor de implicaties en opties die beschikbaar zijn.
 
-## <a name="how-do-patch-my-windows-nodes"></a>Hoe patch je mijn Windows-knooppunten?
+## <a name="how-do-patch-my-windows-nodes"></a>Hoe Patch ik mijn Windows-knoop punten?
 
-Windows Server-knooppunten in AKS moeten worden *geüpgraded* om de nieuwste patchfixes en -updates te ontvangen. Windows-updates zijn niet ingeschakeld op knooppunten in AKS. AKS releases nieuwe node pool beelden zodra patches beschikbaar zijn, is het de verantwoordelijkheid van de klanten om knooppunt pools te upgraden om actueel te blijven op patches en hotfix. Dit geldt ook voor de Kubernetes-versie die wordt gebruikt. AKS release notes geven aan wanneer er nieuwe versies beschikbaar zijn. Zie [Een knooppuntgroep][nodepool-upgrade]in AKS upgraden voor meer informatie over het upgraden van een windows server-knooppuntgroep.
+Windows Server-knoop punten in AKS moeten worden *bijgewerkt* om de meest recente patches en updates te downloaden. Windows-updates zijn niet ingeschakeld op knoop punten in AKS. AKS geeft nieuwe installatie kopieën van de groep knoop punten weer zodra er patches beschikbaar zijn, is het de verantwoordelijkheid van de klanten om de knooppunt groepen bij te werken om op de hoogte te blijven van patches en hotfixes. Dit geldt ook voor het gebruik van de Kubernetes-versie. AKS release opmerkingen geven aan wanneer er nieuwe versies beschikbaar zijn. Zie [een knooppunt groep bijwerken in AKS][nodepool-upgrade]voor meer informatie over het upgraden van een Windows Server-knooppunt groep.
 
 > [!NOTE]
-> De bijgewerkte Windows Server-afbeelding wordt alleen gebruikt als een clusterupgrade (upgrade van het beheervlak) is uitgevoerd voordat de knooppuntgroep wordt geüpgraded
+> De bijgewerkte installatie kopie van Windows Server wordt alleen gebruikt als er een upgrade van een cluster is uitgevoerd voordat de knooppunt groep werd geüpgraded
 >
 
-## <a name="how-do-i-rotate-the-service-principal-for-my-windows-node-pool"></a>Hoe draai ik de serviceprincipal voor mijn Windows-knooppuntgroep?
+## <a name="how-do-i-rotate-the-service-principal-for-my-windows-node-pool"></a>Hoe kan ik de service-principal voor mijn Windows-knooppunt groep draaien?
 
-Tijdens preview ondersteunen Windows-knooppuntgroepen geen hoofdrotatie van de serviceals voorbeeldbeperking. Als u de serviceprincipal wilt bijwerken, maakt u een nieuwe Windows-knooppuntgroep en migreert u uw pods van de oudere groep naar de nieuwe groep. Zodra dit is voltooid, verwijdert u de oudere knooppuntgroep.
+Windows-knooppunt groepen bieden geen ondersteuning voor het draaien van service-principals. Als u de Service-Principal wilt bijwerken, maakt u een nieuwe Windows-knooppunt groep en migreert u uw Peul van de oudere groep naar het nieuwe. Wanneer dit is voltooid, verwijdert u de oude knooppunt groep.
 
-## <a name="how-many-node-pools-can-i-create"></a>Hoeveel knooppuntpools kan ik maken?
+## <a name="how-many-node-pools-can-i-create"></a>Hoeveel knooppunt groepen kan ik maken?
 
-Het AKS-cluster kan maximaal 10 knooppuntpools hebben. U maximaal 1000 knooppunten hebben in die knooppuntgroepen. [Beperkingen van het knooppuntzwembad][nodepool-limitations].
+Het AKS-cluster kan Maxi maal 10 knooppunt groepen bevatten. U kunt Maxi maal 1000 knoop punten in deze knooppunt groepen hebben. [Beperkingen van de knooppunt groep][nodepool-limitations].
 
-## <a name="what-can-i-name-my-windows-node-pools"></a>Wat kan ik mijn Windows-knooppuntpools noemen?
+## <a name="what-can-i-name-my-windows-node-pools"></a>Wat kan ik mijn Windows-knooppunt groepen noemen?
 
-Je moet de naam houden tot maximaal 6 (zes) tekens. Dit is een huidige beperking van AKS.
+U moet de naam Maxi maal 6 (zes) tekens gebruiken. Dit is een huidige beperking van AKS.
 
-## <a name="are-all-features-supported-with-windows-nodes"></a>Worden alle functies ondersteund met Windows-knooppunten?
+## <a name="are-all-features-supported-with-windows-nodes"></a>Worden alle functies ondersteund met Windows-knoop punten?
 
-Netwerkbeleid en kubenet worden momenteel niet ondersteund met Windows-knooppunten. 
+Netwerk beleid en kubenet worden momenteel niet ondersteund met Windows-knoop punten. 
 
-## <a name="can-i-run-ingress-controllers-on-windows-nodes"></a>Kan ik invallencontrollers uitvoeren op Windows-knooppunten?
+## <a name="can-i-run-ingress-controllers-on-windows-nodes"></a>Kan ik ingangs controllers uitvoeren op Windows-knoop punten?
 
-Ja, een in-gress-controller die Windows Server-containers ondersteunt, kan worden uitgevoerd op Windows-knooppunten in AKS.
+Ja, een ingangs-controller die ondersteuning biedt voor Windows Server-containers kan worden uitgevoerd op Windows-knoop punten in AKS.
 
-## <a name="can-i-use-azure-dev-spaces-with-windows-nodes"></a>Kan ik Azure Dev Spaces gebruiken met Windows-knooppunten?
+## <a name="can-i-use-azure-dev-spaces-with-windows-nodes"></a>Kan ik Azure dev Spaces gebruiken met Windows-knoop punten?
 
-Azure Dev Spaces is momenteel alleen beschikbaar voor op Linux gebaseerde knooppuntgroepen.
+Azure dev Spaces is momenteel alleen beschikbaar voor knooppunt groepen op basis van Linux.
 
-## <a name="can-my-windows-server-containers-use-gmsa"></a>Kunnen mijn Windows Server-containers gMSA gebruiken?
+## <a name="can-my-windows-server-containers-use-gmsa"></a>Kan mijn Windows Server-containers gMSA gebruiken?
 
-Ondersteuning voor beheerde serviceaccounts (group managed service accounts) is momenteel niet beschikbaar in AKS.
+GMSA-ondersteuning (Group managed service accounts) is momenteel niet beschikbaar in AKS.
 
-## <a name="can-i-use-azure-monitor-for-containers-with-windows-nodes-and-containers"></a>Kan ik Azure Monitor gebruiken voor containers met Windows-knooppunten en containers?
+## <a name="can-i-use-azure-monitor-for-containers-with-windows-nodes-and-containers"></a>Kan ik Azure Monitor gebruiken voor containers met Windows-knoop punten en containers?
 
-Ja, u wel dat Azure Monitor geen logboeken (stdout) verzamelt uit Windows-containers. U nog steeds koppelen aan de live stream van stdout-logboeken vanuit een Windows-container.
+Ja, u kunt Azure Monitor echter geen logboeken (stdout) uit Windows-containers verzamelen. U kunt nog steeds koppelen aan de live stream van stdout-logboeken vanuit een Windows-container.
 
-## <a name="what-if-i-need-a-feature-which-is-not-supported"></a>Wat moet ik doen als ik een functie nodig heb die niet wordt ondersteund?
+## <a name="what-if-i-need-a-feature-which-is-not-supported"></a>Wat moet ik doen als ik een functie heb nodig die niet wordt ondersteund?
 
-We werken er hard aan om alle functies die u nodig hebt naar Windows in AKS te brengen, maar als u hiaten tegenkomt, biedt het open-source, upstream [aks-engine-project][aks-engine] een eenvoudige en volledig aanpasbare manier om Kubernetes in Azure te draaien, inclusief Windows-ondersteuning. Zorg ervoor dat u onze routekaart van functies komende [AKS roadmap][aks-roadmap].
+We werken hard om alle functies te gebruiken die u nodig hebt voor Windows in AKS, maar als er hiaten optreden, biedt het open source-upstream [-AKS-engine-][aks-engine] project een eenvoudige en volledig aanpas bare manier om Kubernetes in azure uit te voeren, waaronder Windows-ondersteuning. Zorg ervoor dat u het overzicht van de functies van het [AKS-plan][aks-roadmap]bekijkt.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Als u aan de slag wilt gaan met Windows Server-containers in AKS, [maakt u een knooppuntgroep waarop Windows Server in AKS wordt uitgevoerd.][windows-node-cli]
+Om aan de slag te gaan met Windows Server-containers in AKS, [maakt u een knooppunt groep die Windows Server in AKS uitvoert][windows-node-cli].
 
 <!-- LINKS - external -->
 [kubernetes]: https://kubernetes.io
@@ -120,6 +114,5 @@ Als u aan de slag wilt gaan met Windows Server-containers in AKS, [maakt u een k
 [aks-faq]: faq.md
 [azure-outbound-traffic]: ../load-balancer/load-balancer-outbound-connections.md#defaultsnat
 [nodepool-limitations]: use-multiple-node-pools.md#limitations
-[preview-support]: support-policies.md#preview-features-or-feature-flags
 [windows-container-compat]: /virtualization/windowscontainers/deploy-containers/version-compatibility?tabs=windows-server-2019%2Cwindows-10-1909
 [maximum-number-of-pods]: configure-azure-cni.md#maximum-pods-per-node

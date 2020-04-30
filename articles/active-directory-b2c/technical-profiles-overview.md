@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 03/20/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 5d89d123fe757b0502f4c6b3a0d33c185b25224b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 125d89301e9d2cc3fc863bffb9b9e6c41e0c129e
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 04/28/2020
-ms.locfileid: "80057319"
+ms.locfileid: "82229932"
 ---
 # <a name="about-technical-profiles-in-azure-active-directory-b2c-custom-policies"></a>Over technische profielen in Azure Active Directory B2C aangepast beleid
 
@@ -39,7 +39,7 @@ Met een technisch profiel kunnen deze soorten scenario's worden ingeschakeld:
 - [OpenID Connect Connect](openid-connect-technical-profile.md) -Federation met elke OpenID Connect Connect protocol-ID-provider.
 - [Telefoon factor](phone-factor-technical-profile.md) : ondersteuning voor het registreren en verifiëren van telefoon nummers.
 - Betrouw bare [provider](restful-technical-profile.md) : oproep naar rest API services, zoals het valideren van gebruikers invoer, verrijkende gebruikers gegevens of het integreren van line-of-business-toepassingen.
-- [SAML2](saml-technical-profile.md) -Federatie met een id-provider voor SAML-protocollen.
+- [SAML-ID-provider](saml-identity-provider-technical-profile.md) -Federatie met elke id-provider van het SAML-protocol.
 - [SAML-token Uitgever](saml-issuer-technical-profile.md) : er wordt een SAML-token verzonden dat terugkeert naar de Relying Party-toepassing.
 - [Zelfbevestigend](self-asserted-technical-profile.md) : interactie met de gebruiker. Verzamel bijvoorbeeld de referenties van de gebruiker om u aan te melden, de registratie pagina weer te geven of het wacht woord opnieuw in te stellen.
 - [Sessie beheer](custom-policy-reference-sso.md) : verschillende soorten sessies verwerken.

@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro, fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2403faf23294afbba539c7240e842f928fed83dc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 8033122601077945790005e23ec728911c3a4e1f
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.translationtype: HT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 04/28/2020
-ms.locfileid: "82181287"
+ms.locfileid: "82207527"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Machtigingen voor beheerrol in Azure Active Directory
 
@@ -1823,12 +1823,12 @@ CRM Service-beheerder | Dynamics 365-beheerder | 44367163-eba1-44c3-98af-f578787
 Toegangs fiatteur voor klanten-LockBox | Klanten-lockbox Access-fiatteur | 5c4f9dcd-47dc-4cf7-8c9a-9e4207cbfc91
 Beheerder van Desktop Analytics | Beheerder van Desktop Analytics | 38a96431-2bdf-4b4c-8b6e-5d3d8abac1a4
 Apparaatbeheerders | Beheerders van apparaten | 9f06204d-73c1-4d4c-880a-6edb90606fd8
-Apparaat toevoegen | Apparaat toevoegen | 9c094953-4995-41c8-84c8-3ebb9b32c93f
-Apparaatbeheer | Apparaatbeheer | 2b499bcd-da44-4968-8aec-78e1674fa64d
-Gebruikers van het apparaat | Gebruikers van het apparaat | d405c6df-0af8-4e3b-95e4-4d06e542189e
+Apparaat toevoegen | Afgeschaft | 9c094953-4995-41c8-84c8-3ebb9b32c93f
+Apparaatbeheer | Afgeschaft | 2b499bcd-da44-4968-8aec-78e1674fa64d
+Gebruikers van het apparaat | Afgeschaft | d405c6df-0af8-4e3b-95e4-4d06e542189e
 Adreslijst lezers | Adreslijst lezers | 88d8e3e3-8f55-4a1e-953a-9b9898b8876b
-Directory-synchronisatie accounts | Directory-synchronisatie accounts | d29b2b05-8046-44ba-8758-1e26182fcf32
-Schrijvers van mappen | Schrijvers van mappen | 9360feb5-f418-4baa-8175-e2a00bac4301
+Directory-synchronisatie accounts | Niet weer gegeven omdat deze niet mag worden gebruikt | d29b2b05-8046-44ba-8758-1e26182fcf32
+Schrijvers van mappen | Niet weer gegeven omdat deze niet mag worden gebruikt | 9360feb5-f418-4baa-8175-e2a00bac4301
 Exchange service-beheerder | Exchange-beheerder | 29232cdf-9323-42fd-ade2-1d097af3e4de
 Beheerder van externe ID-provider | Beheerder van externe ID-provider | be2f45a1-457d-42af-a067-6ec1fa63bc45
 Algemene lezer | Algemene lezer | f2ef992c-3afb-46b9-b7cf-a126ee74c451
@@ -1844,8 +1844,8 @@ Berichten centrum-privacy-lezer | Berichten centrum-privacy-lezer | ac16e43d-7b2
 Berichten centrum-lezer | Berichten centrum-lezer | 790c1fb9-7f7d-4f88-86a1-ef1f95c05c1b
 Netwerk beheerder | Netwerk beheerder | d37c8bed-0711-4417-ba38-b4abe66ce4c2
 Office-Apps beheerder | Office-Apps beheerder | 2b745bdf-0803-4d80-aa65-822c4493daac
-Ondersteuning voor partner Tier1 | Ondersteuning voor partner Tier1 | 4ba39ca4-527c-499a-b93d-d9b492c50246
-Ondersteuning voor partner Tier2 | Ondersteuning voor partner tier2 | e00e864a-17c5-4a4b-9c06-f5b95a8d5bd8
+Ondersteuning voor partner Tier1 | Niet weer gegeven omdat deze niet mag worden gebruikt | 4ba39ca4-527c-499a-b93d-d9b492c50246
+Ondersteuning voor partner Tier2 | Niet weer gegeven omdat deze niet mag worden gebruikt | e00e864a-17c5-4a4b-9c06-f5b95a8d5bd8
 Wachtwoord beheerder | Wachtwoordbeheerder | 966707d0-3269-4727-9be2-8c3a10f19b9d
 Power BI-servicebeheerder | Power BI beheerder | a9ea8996-122f-4c74-9520-8edcd192826c
 Power platform-beheerder | Power-platform beheerder | 11648597-926c-4cf3-9c36-bcebb0ba8dcc
@@ -1865,9 +1865,9 @@ Teams communicatie beheerder | Teams communicatie beheerder | baf37b3a-610e-45da
 Mede werker communicatie technicus voor teams | Mede werker communicatie technicus voor teams | f70938a0-fc10-4177-9e90-2178f8765737
 Specialist communicatie ondersteuning teams | Specialist communicatie ondersteuning teams | fcf91098-03e3-41a9-b5ba-6f0ec8188a12
 Teams service-beheerder | Teams service-beheerder | 69091246-20e8-4a56-aa4d-066075b2a7a8
-Gebruiker | Gebruiker | a0b1b346-4d3e-4e8b-98f8-753987be4970
+Gebruiker | Niet weer gegeven omdat deze niet kan worden gebruikt | a0b1b346-4d3e-4e8b-98f8-753987be4970
 Beheerder van gebruikers account | Gebruikers beheerder | fe930be7-5e62-47db-91af-98c3a49a38b1
-Werkplek apparaat toevoegen | Werkplek apparaat toevoegen | c34f683f-4d5a-4403-affd-6615e00e3a7f
+Werkplek apparaat toevoegen | Afgeschaft | c34f683f-4d5a-4403-affd-6615e00e3a7f
 
 ## <a name="deprecated-roles"></a>Afgeschafte functies
 

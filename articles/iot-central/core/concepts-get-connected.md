@@ -11,12 +11,12 @@ manager: philmea
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: 1398169c44dadcd11ad037e4e3a1cc0132e21f13
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: HT
+ms.openlocfilehash: b66f5a7d85eb91970d5f551b010dd512b216b9c6
+ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82024690"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82509513"
 ---
 # <a name="get-connected-to-azure-iot-central"></a>Maak verbinding met Azure IoT Central
 
@@ -42,7 +42,7 @@ In dit artikel worden de volgende gebruiks voorbeelden beschreven:
 - [Apparaten op schaal aansluiten met X. 509-certificaten](#connect-devices-using-x509-certificates) : de aanbevolen benadering voor productie omgevingen.
 - [Apparaten verbinden zonder deze eerst te registreren](#connect-without-registering-devices)
 - [Apparaten verbinden die individuele inschrijvingen voor DPS gebruiken](#individual-enrollment-based-device-connectivity)
-- [Apparaten verbinden met IoT Plug en Play-functies (preview)](#connect-devices-with-iot-plug-and-play-preview)
+- [Automatisch een apparaat koppelen met een apparaatprofiel](#automatically-associate-with-a-device-template)
 
 ## <a name="connect-a-single-device"></a>Eén apparaat verbinden
 
@@ -139,7 +139,7 @@ De stroom wijkt enigszins af van de vraag of de apparaten SAS-tokens of X. 509-c
     Op de pagina **beheer > apparaat** wordt met de optie **automatisch goed keuren** bepaald of u het apparaat hand matig moet goed keuren voordat het gegevens kan verzenden.
 
     > [!NOTE]
-    > Zie [apparaten verbinden met IoT Plug en Play (preview)](#connect-devices-with-iot-plug-and-play-preview)voor meer informatie over het automatisch koppelen van een apparaat aan een apparaataccount.
+    > Zie [automatisch een apparaat koppelen aan een sjabloon](#automatically-associate-with-a-device-template)voor meer informatie over het automatisch koppelen van een apparaat met een apparaatprofiel.
 
 ### <a name="connect-devices-that-use-x509-certificates-without-registering"></a>Apparaten verbinden die X. 509-certificaten gebruiken zonder te registreren
 
@@ -156,7 +156,7 @@ De stroom wijkt enigszins af van de vraag of de apparaten SAS-tokens of X. 509-c
     Op de pagina **beheer > apparaat** wordt met de optie **automatisch goed keuren** bepaald of u het apparaat hand matig moet goed keuren voordat het gegevens kan verzenden.
 
     > [!NOTE]
-    > Zie [apparaten verbinden met IoT Plug en Play (preview)](#connect-devices-with-iot-plug-and-play-preview)voor meer informatie over het automatisch koppelen van een apparaat aan een apparaataccount.
+    > Zie [automatisch een apparaat koppelen aan een sjabloon](#automatically-associate-with-a-device-template)voor meer informatie over het automatisch koppelen van een apparaat met een apparaatprofiel.
 
 ## <a name="individual-enrollment-based-device-connectivity"></a>Afzonderlijke op registratie gebaseerde connectiviteit van apparaten
 
@@ -165,7 +165,7 @@ Gebruik individuele inschrijvingen voor klanten die elk hun eigen verificatie re
 > [!NOTE]
 > Wanneer u een afzonderlijke inschrijving voor een apparaat maakt, heeft dit voor rang op de standaard opties voor het inschrijven van groepen in uw IoT Central-toepassing.
 
-### <a name="creating-individual-enrollments"></a>Afzonderlijke inschrijvingen maken
+### <a name="create-individual-enrollments"></a>Afzonderlijke registraties maken
 
 IoT Central ondersteunt de volgende Attestation-mechanismen voor individuele inschrijvingen:
 
@@ -181,14 +181,22 @@ IoT Central ondersteunt de volgende Attestation-mechanismen voor individuele ins
 
 - **Attestation van trusted platform module (TPM):** Een [TPM](https://docs.microsoft.com/azure/iot-dps/concepts-tpm-attestation) is een type hardware Security module. Het gebruik van een TPM is een van de veiligste manieren om verbinding te maken met een apparaat. In dit artikel wordt ervan uitgegaan dat u een afzonderlijke, firmware of geïntegreerde TPM gebruikt. Software geëmuleerde Tpm's zijn goed geschikt voor het maken van prototypen of tests, maar bieden geen hetzelfde beveiligings niveau als discrete, firmware of geïntegreerde Tpm's. Gebruik geen software-Tpm's in productie. Als u een afzonderlijke inschrijving wilt maken die gebruikmaakt van een TPM, opent u de pagina **verbinding met apparaat** , selecteert u **afzonderlijke inschrijving** als de verbindings methode en **TPM** als mechanisme. Voer de TPM-goedkeurings sleutel in en sla de verbindings gegevens van het apparaat op.
 
-## <a name="connect-devices-with-iot-plug-and-play-preview"></a>Apparaten verbinden met IoT-Plug en Play (preview-versie)
+## <a name="automatically-associate-with-a-device-template"></a>Automatisch koppelen aan een sjabloon voor een apparaat
 
-Een van de belangrijkste functies van IoT Plug en Play (preview) met IoT Central is de mogelijkheid om automatisch apparaat sjablonen te koppelen aan de apparaat-verbinding. Samen met de referenties van het apparaat kunnen apparaten de **CapabilityModelId** nu verzenden als onderdeel van de aanroep van het apparaat. Met deze mogelijkheid kunnen IoT Central de sjabloon van het apparaat detecteren en koppelen aan het apparaat. Het detectie proces werkt als volgt:
+Een van de belangrijkste functies van IoT Central is de mogelijkheid om automatisch Apparaatbeheer te koppelen aan de apparaat-verbinding. Samen met de referenties van het apparaat kunnen apparaten een **CapabilityModelId** verzenden als onderdeel van de registratie aanroep van het apparaat. De **CapabilityModelID** is een urn die het functionaliteits model identificeert dat het apparaat implementeert. De IoT Central toepassing kan de **CapabilityModelID** gebruiken om te bepalen welke apparaatprofiel moet worden gebruikt en vervolgens automatisch het apparaat koppelen aan de sjabloon voor het apparaat. Het detectie proces werkt als volgt:
 
-1. Hiermee wordt gekoppeld aan de sjabloon voor het apparaat als deze al in de IoT Central toepassing is gepubliceerd.
-1. Haalt uit de open bare opslag plaats van gepubliceerde en gecertificeerde mogelijkhedens modellen.
+1. Als de sjabloon voor het apparaat al is gepubliceerd in de IoT Central toepassing, wordt het apparaat gekoppeld aan de sjabloon voor het apparaat.
+1. Voor vooraf gecertificeerde IoT Plug en Play-apparaten geldt dat als de sjabloon voor het apparaat nog niet is gepubliceerd in de IoT Central toepassing, de sjabloon voor het apparaat is opgehaald uit de open bare opslag plaats.
 
-Hieronder ziet u de indeling van de extra Payload die het apparaat zou verzenden tijdens de registratie oproep DPS
+De volgende code fragmenten tonen de indeling van de extra Payload die het apparaat moet verzenden tijdens de registratie aanroep DPS voor automatische koppeling.
+
+Dit is de indeling voor apparaten die de algemeen beschik bare apparaat-SDK gebruiken die geen ondersteuning biedt voor IoT Plug en Play:
+
+```javascript
+    iotcModelId: '< this is the URN for the capability model>';
+```
+
+Dit is de indeling voor apparaten met een open bare preview apparaat-SDK die ondersteuning biedt voor IoT Plug en Play:
 
 ```javascript
 '__iot:interfaces': {
@@ -197,7 +205,7 @@ Hieronder ziet u de indeling van de extra Payload die het apparaat zou verzenden
 ```
 
 > [!NOTE]
-> Houd er rekening mee dat de optie **automatisch goed keuren** op **beheer > apparaat verbinding** moet zijn ingeschakeld voor apparaten om automatisch verbinding te maken, de sjabloon voor het apparaat te detecteren en gegevens te verzenden.
+> De optie **automatisch goed keuren** op **beheer > apparaat verbinding** moet zijn ingeschakeld voor apparaten om automatisch verbinding te maken, de sjabloon voor het apparaat te detecteren en gegevens te verzenden.
 
 ## <a name="device-status-values"></a>Waarden van apparaatstatus
 

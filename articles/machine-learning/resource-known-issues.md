@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 03/31/2020
-ms.openlocfilehash: 58fd9225298b4322567f4feb02629e3ad4e0f00d
-ms.sourcegitcommit: edccc241bc40b8b08f009baf29a5580bf53e220c
+ms.openlocfilehash: 2760033cd66e99a7a7f6d331e03c6f98c486d286
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82127572"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82231965"
 ---
 # <a name="known-issues-and-troubleshooting-azure-machine-learning"></a>Bekende problemen en Azure Machine Learning voor probleem oplossing
 
@@ -56,7 +56,23 @@ Meer informatie over de [resource quota](how-to-manage-quotas.md) die u kunt teg
         pip install azure-ml-datadrift
         pip install azureml-train-automl 
      ```
-     
+
+* **Panda-fouten: normaal gezien tijdens het AutoML-experiment:**
+   
+   Wanneer u uw environmnet hand matig instelt met behulp van PIP, ziet u kenmerk fouten (met name van Panda), omdat er niet-ondersteunde pakket versies worden geïnstalleerd. Als u dergelijke fouten wilt voor komen, [installeert u de AUTOML SDK met behulp van de automl_setup. cmd](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/README.md):
+   
+    1. Open een Anaconda-prompt en kloon de GitHub-opslag plaats voor een aantal voorbeeld notitieblokken.
+
+    ```bash
+    git clone https://github.com/Azure/MachineLearningNotebooks.git
+    ```
+    
+    2. cd naar de map How-to-use-azureml/automated machine learning waarin de voorbeeld notitieblokken zijn geëxtraheerd en vervolgens worden uitgevoerd:
+    
+    ```bash
+    automl_setup
+    ```
+  
 * **Fout bericht: kan PyYAML niet verwijderen**
 
     Azure Machine Learning SDK voor python: PyYAML is een `distutils` geïnstalleerd project. Daarom kunnen we niet nauw keurig bepalen welke bestanden er bij gedeeltelijk verwijderen horen. Gebruik het volgende om door te gaan met het installeren van de SDK en het negeren van deze fout:

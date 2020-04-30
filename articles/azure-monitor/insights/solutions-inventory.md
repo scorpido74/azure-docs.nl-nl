@@ -6,17 +6,17 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 06/26/2018
-ms.openlocfilehash: 7b88d957bce45bf518fc77584f1691de8010459a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b87179c79489bf781619b70b19ca8982f2e38dff
+ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77663126"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82509479"
 ---
 # <a name="inventory-and-data-collection-details-for-monitoring-solutions-in-azure"></a>Details van inventarisatie en gegevens verzameling voor het controleren van oplossingen in azure
-[Bewakings oplossingen](solutions.md) maken gebruik van services in azure om meer inzicht te krijgen in de werking van een bepaalde toepassing of service. Bewakings oplossingen verzamelen doorgaans logboek gegevens en bieden query's en weer gaven om verzamelde gegevens te analyseren. U kunt bewakings oplossingen toevoegen aan Azure Monitor voor alle toepassingen en services die u gebruikt. Ze zijn doorgaans gratis beschikbaar, maar verzamelen gegevens die gebruiks kosten kunnen aanroepen.
+[Bewakings oplossingen](solutions.md) gebruiken Services in azure om kennis te krijgen van de werking van een bepaalde toepassing of service. Bewakings oplossingen verzamelen doorgaans logboek gegevens en bieden query's en weer gaven om verzamelde gegevens te analyseren. U kunt bewakings oplossingen toevoegen aan Azure Monitor voor alle toepassingen en services die u gebruikt. Deze zijn doorgaans gratis beschikbaar, maar verzamelen gegevens die gebruiks kosten kunnen aanroepen.
 
-Dit artikel bevat een lijst met [montioring-oplossingen](solutions.md) die beschikbaar zijn gesteld door micro soft met koppelingen naar hun gedetailleerde documentatie.  Het bevat ook informatie over de methode en frequentie van het verzamelen van gegevens in Azure Monitor.  U kunt de informatie in dit artikel gebruiken om de verschillende beschik bare oplossingen te identificeren en inzicht te krijgen in de gegevens stroom en verbindings vereisten voor verschillende bewakings oplossingen.
+Dit artikel bevat een lijst met beschik bare [bewakings oplossingen](solutions.md) van micro soft met koppelingen naar hun gedetailleerde documentatie.  Het bevat ook informatie over de methode en frequentie van het verzamelen van gegevens in Azure Monitor.  U kunt de informatie in dit artikel gebruiken om de verschillende beschik bare oplossingen te identificeren en inzicht te krijgen in de gegevens stroom en verbindings vereisten voor verschillende bewakings oplossingen.
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../../includes/azure-monitor-log-analytics-rebrand.md)]
 
@@ -26,11 +26,11 @@ De volgende tabel bevat de [bewakings oplossingen](solutions.md) in azure die do
 
 Uitleg van de kolommen is als volgt:
 
-- **Micro soft Monitoring Agent** : agent die wordt gebruikt in Windows en Linux om Management Packs uit te voeren vanuit SCOM-en bewakings oplossingen van Azure. In deze configuratie wordt de agent rechtstreeks verbonden met Azure Monitor zonder dat er verbinding wordt gemaakt met een Operations Manager beheer groep. 
+- **Micro soft Monitoring Agent** : agent die wordt gebruikt in Windows en Linux om Management Packs uit te voeren van micro soft System Center-Operations Manager (om) en bewakings oplossingen van Azure. In deze configuratie wordt de agent rechtstreeks verbonden met Azure Monitor zonder dat er verbinding wordt gemaakt met een Operations Manager beheer groep. 
 - **Operations Manager** -identieke agent als micro soft monitoring agent. In deze configuratie is het [verbonden met een Operations Manager-beheer groep](../platform/om-agents.md) die is verbonden met Azure monitor. 
--  **Azure Storage** -oplossing verzamelt gegevens van een Azure-opslag account. 
+-  **Azure Storage** -oplossing verzamelt gegevens van een Azure Storage-account. 
 - **Operations Manager vereist?** -Een verbonden Operations Manager beheer groep is vereist voor het verzamelen van gegevens door de bewakings oplossing. 
-- **Operations Manager agent gegevens die via de beheer groep worden verzonden** : als de agent is [verbonden met een SCOM-beheer groep](../platform/om-agents.md), worden gegevens verzonden naar Azure monitor van de-beheer server. In dit geval hoeft de agent niet rechtstreeks verbinding te maken met Azure Monitor. Als dit selectie vakje niet is ingeschakeld, worden gegevens van de agent rechtstreeks naar Azure Monitor verzonden, zelfs als de agent is verbonden met een SCOM-beheer groep. Het moet kunnen communiceren met Azure Monitor via de [log Analytics gateway](../platform/gateway.md).
+- **Operations Manager agent gegevens die via de beheer groep worden verzonden** : als de agent is [verbonden met een om-beheer groep](../platform/om-agents.md), worden gegevens verzonden naar Azure monitor van de-beheer server. In dit geval hoeft de agent niet rechtstreeks verbinding te maken met Azure Monitor. Als dit selectie vakje niet is ingeschakeld, worden gegevens van de agent rechtstreeks naar Azure Monitor verzonden, zelfs als de agent is verbonden met een OM-beheer groep. Het moet kunnen communiceren met Azure Monitor via de [log Analytics gateway](../platform/gateway.md).
 - **Verzamelings frequentie** : Hiermee geeft u de frequentie op waarmee gegevens worden verzameld door de bewakings oplossing. 
 
 
@@ -53,8 +53,8 @@ Uitleg van de kolommen is als volgt:
 | [Azure SQL-analyse (preview-versie)](azure-sql.md) | Windows | | | | | | 1 minuut |
 | [Backup](https://azure.microsoft.com/resources/templates/101-backup-oms-monitoring/) | Azure |  |  |  |  |  | bij melding |
 | [Capaciteit en prestaties (preview-versie)](capacity-performance.md) |Windows |&#8226; |&#8226; | | |&#8226; |bij aankomst |
-| [Tracering wijzigen](../../automation/change-tracking.md) |Windows |&#8226; |&#8226; | | |&#8226; |[hangt](../../automation/change-tracking.md#change-tracking-data-collection-details) |
-| [Tracering wijzigen](../../automation/change-tracking.md) |Linux |&#8226; | | | | |[hangt](../../automation/change-tracking.md#change-tracking-data-collection-details) |
+| [Tracering wijzigen](../../automation/change-tracking.md) |Windows |&#8226; |&#8226; | | |&#8226; |[hangt](../../automation/change-tracking.md#change-tracking-and-inventory-data-collection) |
+| [Tracering wijzigen](../../automation/change-tracking.md) |Linux |&#8226; | | | | |[hangt](../../automation/change-tracking.md#change-tracking-and-inventory-data-collection) |
 | [Containers](containers.md) | Windows en Linux | &#8226; | &#8226; |  |  |  | 3 minuten |
 | [Key Vault-analyse](azure-key-vault.md) |Windows | | | | | |bij melding |
 | [Malware-evaluatie](../../security-center/security-center-install-endpoint-protection.md) |Windows |&#8226; |&#8226; | | |&#8226; |per uur |

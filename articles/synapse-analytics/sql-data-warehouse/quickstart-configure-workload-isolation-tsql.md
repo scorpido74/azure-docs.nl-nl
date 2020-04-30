@@ -1,43 +1,39 @@
 ---
-title: 'Snelstart: workloadisolatie configureren - T-SQL'
-description: Gebruik T-SQL om workloadisolatie te configureren.
+title: 'Snelstartgids: werk belasting isolatie configureren-T-SQL'
+description: Gebruik T-SQL voor het configureren van isolatie van werk belastingen.
 services: synapse-analytics
 author: ronortloff
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: quickstart
 ms.subservice: ''
-ms.date: 02/04/2020
+ms.date: 04/27/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: d3d1b9af0b26fa775beb78b313937890cb9287b3
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.openlocfilehash: 99c64e703158c40c2cc110a18be7b8c8d3800ff0
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80633763"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82207799"
 ---
-# <a name="quickstart-configure-workload-isolation-using-t-sql"></a>Snelstart: workloadisolatie configureren met T-SQL
+# <a name="quickstart-configure-workload-isolation-using-t-sql"></a>Snelstartgids: werk belasting isolatie configureren met T-SQL
 
-In deze snelle start maakt u snel een werkbelastinggroep en classificatie voor het reserveren van resources voor het laden van gegevens. De werkbelastinggroep wijst 20% van de systeembronnen toe aan een gegevensbelasting.  De workloadclassifier wijst aanvragen toe aan de groep werkbelasting voor gegevensbelasting.  Met 20% isolatie voor gegevensladingen, zijn ze gegarandeerd resources te raken SLA's.
+In deze Quick Start maakt u snel een werkbelasting groep en classificatie voor het reserveren van resources voor het laden van gegevens. Met de werkbelasting groep worden 20% van de systeem resources toegewezen aan een gegevens belasting.  Met de classificatie van de werk belasting worden aanvragen toegewezen aan de werkbelasting groep voor het laden van gegevens.  Met een isolatie van 20% voor het laden van gegevens, zijn er gegarandeerde bronnen om te voldoen aan de Sla's.
 
-Als u geen Azure-abonnement hebt, maakt u een [gratis](https://azure.microsoft.com/free/) account voordat u begint.
+Als u nog geen abonnement op Azure hebt, maak dan een [gratis](https://azure.microsoft.com/free/) account aan voordat u begint.
 
 > [!NOTE]
-> Als u een SQL Analytics-exemplaar maakt in Azure Synapse Analytics, kan dit resulteren in een nieuwe factureerbare service.  Zie [Azure Synapse Analytics-prijzen voor](https://azure.microsoft.com/pricing/details/sql-data-warehouse/)meer informatie.
+> Het maken van een SQL Analytics-exemplaar in azure Synapse Analytics kan resulteren in een nieuwe factureer bare service.  Zie [prijzen voor Azure Synapse Analytics](https://azure.microsoft.com/pricing/details/sql-data-warehouse/)voor meer informatie.
 
 ## <a name="prerequisites"></a>Vereisten
 
-Met deze quickstart wordt ervan uitgegaan dat u al een SQL Analytics-exemplaar in Azure Synapse hebt en dat u controldatabasemachtigingen hebt. Gebruik [Maken en verbinden - portal](create-data-warehouse-portal.md) om een datawarehouse met de naam **mySampleDataWarehouse** te maken.
+In deze Quick Start wordt ervan uitgegaan dat u al een exemplaar van SQL Analytics hebt in azure Synapse en dat u de machtigingen voor de data base beheert. Gebruik [Maken en verbinden - portal](create-data-warehouse-portal.md) om een datawarehouse met de naam **mySampleDataWarehouse** te maken.
 
-## <a name="sign-in-to-the-azure-portal"></a>Aanmelden bij Azure Portal
+## <a name="create-login-for-dataloads"></a>Aanmelding maken voor DataLoads
 
-Meld u aan bij [Azure Portal](https://portal.azure.com/).
-
-## <a name="create-login-for-dataloads"></a>Inloggen voor DataLoads maken
-
-Maak een SQL Server-verificatielogin in de `master` database met CREATE [LOGIN](/sql/t-sql/statements/create-login-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) voor 'ELTLogin'.
+Maak een SQL Server-verificatie aanmelding in `master` de data base met behulp van de [aanmeldings](/sql/t-sql/statements/create-login-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) gegevens voor ' ELTLogin' '.
 
 ```sql
 IF NOT EXISTS (SELECT * FROM sys.sql_logins WHERE name = 'ELTLogin')
@@ -49,7 +45,7 @@ END
 
 ## <a name="create-user"></a>Gebruiker maken
 
-[Gebruiker](/sql/t-sql/statements/create-user-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)"ELTLogin" maken in mySampleDataWarehouse
+[Gebruiker maken](/sql/t-sql/statements/create-user-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest), ' ELTLogin ', in mySampleDataWarehouse
 
 ```sql
 IF NOT EXISTS (SELECT * FROM sys.database_principals WHERE name = 'ELTLogin')
@@ -59,9 +55,9 @@ END
 ;
 ```
 
-## <a name="create-a-workload-group"></a>Een werkbelastinggroep maken
+## <a name="create-a-workload-group"></a>Een werkbelasting groep maken
 
-Maak een [workloadgroep](/sql/t-sql/statements/create-workload-group-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) voor DataLoads met een isolatie van 20%.
+Maak een [werkbelasting groep](/sql/t-sql/statements/create-workload-group-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) voor DataLoads met een isolatie van 20%.
 
 ```sql
 CREATE WORKLOAD GROUP DataLoads
@@ -71,9 +67,9 @@ WITH ( MIN_PERCENTAGE_RESOURCE = 20
 ;
 ```
 
-## <a name="create-a-workload-classifier"></a>Een classificatie voor werkbelasting maken
+## <a name="create-a-workload-classifier"></a>Een classificatie van een werk belasting maken
 
-Maak een [workloadclassificatie](/sql/t-sql/statements/create-workload-classifier-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) om ELTLogin in kaart te brengen in de groep DataLoads-workloads.
+Maak een [classificatie van de werk belasting](/sql/t-sql/statements/create-workload-classifier-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) om ELTLogin toe te wijzen aan de werkbelasting groep DataLoads.
 
 ```sql
 CREATE WORKLOAD CLASSIFIER [wgcELTLogin]
@@ -82,7 +78,7 @@ WITH (WORKLOAD_GROUP = 'DataLoads'
 ;
 ```
 
-## <a name="view-existing-workload-groups-and-classifiers-and-run-time-values"></a>Bestaande werkbelastinggroepen en classificaties en runtimewaarden weergeven
+## <a name="view-existing-workload-groups-and-classifiers-and-run-time-values"></a>Bestaande werkbelasting groepen en-classificaties en runtime waarden weer geven
 
 ```sql
 --Workload groups
@@ -107,26 +103,12 @@ DROP USER [ELTLogin]
 ;
 ```
 
-Er worden kosten in rekening gebracht voor gegevensmagazijnen en gegevens die zijn opgeslagen in uw gegevensmagazijn. Deze compute- en opslagresources worden apart in rekening gebracht.
+Er worden kosten in rekening gebracht voor Data Warehouse-eenheden en gegevens die zijn opgeslagen in uw data warehouse. Deze compute- en opslagresources worden apart in rekening gebracht.
 
-- Als u de gegevens in opslag wilt houden, u de gegevensberekening onderbreken wanneer u de SQL-groep niet gebruikt. Door compute te pauzeren, worden alleen kosten in rekening gebracht voor gegevensopslag. Wanneer u klaar bent om met de gegevens te werken, hervat u de gegevens.
+- Als u de gegevens in de opslag ruimte wilt bewaren, kunt u de reken proces onderbreken wanneer u de SQL-groep niet gebruikt. Door Compute te onderbreken, worden er alleen kosten in rekening gebracht voor gegevens opslag. Wanneer u klaar bent om met de gegevens te werken, hervat u de compute.
 - Als u in de toekomst geen kosten meer wilt hebben, kunt u de datawarehouse verwijderen.
-
-Volg deze stappen om resources op te schonen.
-
-1. Meld u aan bij de [Azure-portal,](https://portal.azure.com)selecteer in uw gegevensmagazijn.
-
-    ![Resources opschonen](./media/quickstart-configure-workload-isolation-tsql/clean-up-resources.png)
-
-2. Als u de berekening wilt onderbreken, selecteert u de knop **Onderbreken.** Als het datawarehouse is onderbroken, ziet u een knop **Start**.  Als u de gegevens wilt hervatten, selecteert u **Start**.
-
-3. Als u het gegevensmagazijn wilt verwijderen zodat er geen kosten in rekening worden gebracht voor rekenkracht of opslag, selecteert u **Verwijderen**.
-
-4. Als u de SQL-server wilt verwijderen die u hebt gemaakt, selecteert u **mynewserver-20180430.database.windows.net** in de vorige afbeelding en selecteert u **Verwijderen**.  Wees voorzichtig met verwijderen. Als u de server verwijdert, worden ook alle databases verwijderd die zijn toegewezen aan de server.
-
-5. Als u de brongroep wilt verwijderen, selecteert u **myResourceGroup**en selecteert u **Resourcegroep verwijderen**.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- U hebt nu een werkbelastinggroep gemaakt. Voer een paar query's uit als ELTLogin om te zien hoe ze presteren. Zie [sys.dm_pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql/?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) om query's en de toegewezen werkbelastinggroep weer te geven.
-- Zie [Workload management](sql-data-warehouse-workload-management.md) en [Workload Isolation](sql-data-warehouse-workload-isolation.md)voor meer informatie over Synapse SQL-workloadmanagement.
+- U hebt nu een werkbelasting groep gemaakt. Voer enkele query's uit als ELTLogin om te zien hoe ze worden uitgevoerd. Zie [sys. dm_pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql/?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) om query's en de toegewezen werkbelasting groep weer te geven.
+- Zie [workload Management](sql-data-warehouse-workload-management.md) en [workload-isolatie](sql-data-warehouse-workload-isolation.md)voor meer informatie over Synapse voor SQL-workloads.

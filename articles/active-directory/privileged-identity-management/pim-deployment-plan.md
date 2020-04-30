@@ -10,16 +10,16 @@ ms.service: active-directory
 ms.topic: conceptual
 ms.workload: identity
 ms.subservice: pim
-ms.date: 02/04/2020
+ms.date: 04/28/2020
 ms.author: curtand
 ms.custom: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b8c77b3454026aa309d979bd938674e7c3ae7b6a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 51a60d307ca7dac139db0097283fc08e9e41624c
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 04/28/2020
-ms.locfileid: "77025993"
+ms.locfileid: "82233530"
 ---
 # <a name="deploy-azure-ad-privileged-identity-management-pim"></a>Azure AD Privileged Identity Management implementeren (PIM)
 
@@ -325,7 +325,7 @@ Gebruik deze fase om te controleren of alle configuratie die u voor de rollen he
 
 ### <a name="communicate-privileged-identity-management-to-affected-stakeholders"></a>Privileged Identity Management met betrokken belanghebbenden communiceren
 
-Wanneer u Privileged Identity Management implementeert, worden er extra stappen geïntroduceerd voor gebruikers van geprivilegieerde rollen. Hoewel Privileged Identity Management beveiligings problemen die zijn gekoppeld aan bevoorrechte identiteiten aanzienlijk reduceert, moet de wijziging effectief worden gecommuniceerd vóór de implementatie van de hele Tenant. Afhankelijk van het aantal betrokken beheerders, selecteren organisaties vaak een intern document, een video of een e-mail bericht over de wijziging. Deze communicatie bevat vaak de volgende informatie:
+Wanneer u Privileged Identity Management implementeert, worden er extra stappen geïntroduceerd voor gebruikers van geprivilegieerde rollen. Hoewel Privileged Identity Management beveiligings problemen die zijn gekoppeld aan bevoorrechte identiteiten aanzienlijk reduceert, moet de wijziging effectief worden gecommuniceerd vóór de implementatie van de hele organisatie. Afhankelijk van het aantal betrokken beheerders, selecteren organisaties vaak een intern document, een video of een e-mail bericht over de wijziging. Deze communicatie bevat vaak de volgende informatie:
 
 - Wat is PIM?
 - Wat is het voor deel voor de organisatie?
@@ -371,7 +371,7 @@ Het implementeren van Privileged Identity Management in productie is een belang 
 
 ### <a name="use-privileged-identity-management-alerts-to-safeguard-your-privileged-access"></a>Privileged Identity Management waarschuwingen gebruiken om uw bevoegde toegang te beveiligen
 
-Gebruik de ingebouwde waarschuwings functionaliteit van Privileged Identity Management om uw Tenant beter te beveiligen. Zie [Security Alerts](pim-how-to-configure-security-alerts.md#security-alerts)(Engelstalig) voor meer informatie. Deze waarschuwingen omvatten: beheerders die geen geprivilegieerde rollen gebruiken, de rollen worden toegewezen buiten Privileged Identity Management, worden de rollen te vaak geactiveerd. Als u uw organisatie volledig wilt beveiligen, moet u de lijst met waarschuwingen regel matig door lopen en de problemen oplossen. U kunt uw waarschuwingen op de volgende manier weer geven en herstellen:
+Gebruik de ingebouwde waarschuwings functionaliteit van Privileged Identity Management om uw organisatie beter te beveiligen. Zie [Security Alerts](pim-how-to-configure-security-alerts.md#security-alerts)(Engelstalig) voor meer informatie. Deze waarschuwingen omvatten: beheerders die geen geprivilegieerde rollen gebruiken, de rollen worden toegewezen buiten Privileged Identity Management, worden de rollen te vaak geactiveerd. Als u uw organisatie volledig wilt beveiligen, moet u de lijst met waarschuwingen regel matig door lopen en de problemen oplossen. U kunt uw waarschuwingen op de volgende manier weer geven en herstellen:
 
 1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
 1. Open **Azure AD privileged Identity Management**.

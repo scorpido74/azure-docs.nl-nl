@@ -2,17 +2,17 @@
 title: Azure IoT Hub-ondersteuning voor virtuele netwerken
 description: Het gebruik van een verbindings patroon voor virtuele netwerken met IoT Hub
 services: iot-hub
-author: rezasherafat
+author: jlian
 ms.service: iot-fundamentals
 ms.topic: conceptual
-ms.date: 03/13/2020
-ms.author: rezas
-ms.openlocfilehash: 34f66c13b0e7eb7092332a48744f9abfd8f0db80
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/28/2020
+ms.author: jlian
+ms.openlocfilehash: c0d01ae6507864373a79282476846d6f96adf83b
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79501435"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82231438"
 ---
 # <a name="iot-hub-support-for-virtual-networks"></a>Ondersteuning voor virtuele netwerken IoT Hub
 
@@ -199,7 +199,7 @@ Een beheerde service-identiteit kan worden toegewezen aan uw hub op het tijdstip
 Nadat u de waarden voor uw `name`resource hebt vervangen `location`, `SKU.name` en `SKU.tier`, kunt u Azure CLI gebruiken om de resource in een bestaande resource groep te implementeren met behulp van:
 
 ```azurecli-interactive
-az group deployment create --name <deployment-name> --resource-group <resource-group-name> --template-file <template-file.json>
+az deployment group create --name <deployment-name> --resource-group <resource-group-name> --template-file <template-file.json>
 ```
 
 Nadat de resource is gemaakt, kunt u de beheerde service-identiteit ophalen die aan uw hub is toegewezen met behulp van Azure CLI:

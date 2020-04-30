@@ -16,12 +16,12 @@ ms.author: mimart
 ms.reviewer: arvinh
 ms.custom: aaddev;it-pro;seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0507989ec25db595a85b89f15d8ff7d056a970f8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a54bc3cfa67330fb0056ccd1898d9ab3de2b0ab2
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 04/28/2020
-ms.locfileid: "80297684"
+ms.locfileid: "82229915"
 ---
 # <a name="build-a-scim-endpoint-and-configure-user-provisioning-with-azure-active-directory-azure-ad"></a>Een SCIM-eind punt bouwen en gebruikers inrichten configureren met Azure Active Directory (Azure AD)
 
@@ -810,7 +810,7 @@ Aanvragen van Azure Active Directory een OAuth 2,0 Bearer-token bevatten. Alle s
 
 In het token wordt de verlener geïdentificeerd aan de hand van een ISS-claim `"iss":"https://sts.windows.net/cbb1a5ac-f33b-45fa-9bf5-f37db0fed422/"`, zoals. In dit voor beeld is het basis adres van de claim waarde `https://sts.windows.net`, dat Azure Active Directory als de verlener identificeert, terwijl het relatieve adres segment _cbb1a5ac-f33b-45fa-9bf5-f37db0fed422_een unieke id is van de Azure Active Directory Tenant waarvoor het token is uitgegeven.
 
-De doel groep van het token is de toepassings sjabloon-ID voor de toepassing in de galerie. elk van de toepassingen die in één Tenant zijn geregistreerd, kan `iss` dezelfde claim ontvangen met scim-aanvragen. De toepassings sjabloon-ID voor elke toepassing in de galerie varieert, neem [ProvisioningFeedback@microsoft.com](mailto:ProvisioningFeedback@microsoft.com) contact op met vragen over de toepassings sjabloon-id voor een galerie toepassing. De toepassings sjabloon-ID voor alle aangepaste apps is _8adf8e6e-67b2-4cf2-A259-e3dc5476c621_.
+De doel groep van het token is de toepassings sjabloon-ID voor de toepassing in de galerie. elk van de toepassingen die in één Tenant zijn geregistreerd, kan `iss` dezelfde claim ontvangen met scim-aanvragen. De toepassings sjabloon-ID voor alle aangepaste apps is _8adf8e6e-67b2-4cf2-A259-e3dc5476c621_. Het token dat is gegenereerd door de Azure AD-inrichtings service mag alleen worden gebruikt voor het testen. Het mag niet worden gebruikt in productie omgevingen.
 
 In de voorbeeld code worden aanvragen geverifieerd met het pakket micro soft. AspNetCore. Authentication. JwtBearer. De volgende code dwingt dat aanvragen voor een van de service-eind punten worden geverifieerd met behulp van het Bearer-token dat is uitgegeven door Azure Active Directory voor een opgegeven Tenant:
 

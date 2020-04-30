@@ -8,32 +8,36 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 03/09/2020
+ms.date: 04/28/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 80cf0d101a29de7fca9d4dd36e188a500d35e290
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f2887ab23dd89f1a3e1e3112ce3713ef1139de8e
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 04/28/2020
-ms.locfileid: "79246030"
+ms.locfileid: "82229677"
 ---
 # <a name="single-sign-on-session-management-in-azure-active-directory-b2c"></a>Sessie beheer voor eenmalige aanmelding in Azure Active Directory B2C
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-Met eenmalige aanmelding (SSO)-sessie beheer in Azure Active Directory B2C (Azure AD B2C) kan een beheerder de interactie met een gebruiker beheren nadat de gebruiker al is geverifieerd. De beheerder kan bijvoorbeeld bepalen of de selectie van id-providers wordt weer gegeven of dat de gegevens van het lokale account opnieuw moeten worden ingevoerd. In dit artikel wordt beschreven hoe u de SSO-instellingen voor Azure AD B2C kunt configureren.
-
-SSO-sessie beheer bestaat uit twee delen. De eerste behandelt de interactie van de gebruiker rechtstreeks met Azure AD B2C en de andere deals met de interactie van de gebruiker met externe partijen, zoals Facebook. Azure AD B2C geen SSO-sessies die mogelijk door externe partijen worden bewaard, overschrijft of overs Laan. In plaats daarvan wordt de route door Azure AD B2C om naar de externe partij te gaan ' onthouden ', zodat de gebruiker niet opnieuw wordt gevraagd om hun sociale of zakelijke ID-provider te selecteren. De ultieme SSO-beslissing blijft bij de externe partij.
+Met [eenmalige aanmelding (SSO)-sessie](session-overview.md) beheer in Azure Active Directory B2C (Azure AD B2C) kan een beheerder de interactie met een gebruiker beheren nadat de gebruiker al is geverifieerd. De beheerder kan bijvoorbeeld bepalen of de selectie van id-providers wordt weer gegeven of dat de account gegevens opnieuw moeten worden ingevoerd. In dit artikel wordt beschreven hoe u de SSO-instellingen voor Azure AD B2C kunt configureren.
 
 SSO-sessie beheer maakt gebruik van dezelfde semantiek als andere technische profielen in aangepast beleid. Wanneer een Orchestration-stap wordt uitgevoerd, wordt het technische profiel dat is gekoppeld aan de stap, opgevraagd `UseTechnicalProfileForSessionManagement` voor een verwijzing. Als dat het geval is, wordt de SSO-sessie provider waarnaar wordt verwezen, gecontroleerd om te zien of de gebruiker een deel nemer voor de sessie is. Als dit het geval is, wordt de SSO-sessie provider gebruikt om de sessie opnieuw in te vullen. Op dezelfde manier wordt de provider gebruikt voor het opslaan van gegevens in de sessie als er een SSO-sessie provider is opgegeven, wanneer de uitvoering van een Orchestration-stap is voltooid.
 
 Azure AD B2C heeft een aantal SSO-sessie providers gedefinieerd die kunnen worden gebruikt:
 
-* NoopSSOSessionProvider
-* DefaultSSOSessionProvider
-* ExternalLoginSSOSessionProvider
-* SamlSSOSessionProvider
+|Sessie provider  |Bereik  |
+|---------|---------|
+|[NoopSSOSessionProvider](#noopssosessionprovider)     |  Geen       |       
+|[DefaultSSOSessionProvider](#defaultssosessionprovider)    | Azure AD B2C interne sessie beheerder.      |       
+|[ExternalLoginSSOSessionProvider](#externalloginssosessionprovider)     | Tussen Azure AD B2C en OAuth1, OAuth2 of OpenID Connect Connect ID-provider.        |         |
+|[OAuthSSOSessionProvider](#oauthssosessionprovider)     | Tussen een OAuth2 of OpenID connect verbinding maken Relying Party toepassing en Azure AD B2C.        |        
+|[SamlSSOSessionProvider](#samlssosessionprovider)     | Tussen Azure AD B2C en SAML-ID-provider. En tussen een SAML-service provider (Relying Party toepassing) en Azure AD B2C.  |        
+
+
+
 
 SSO-beheer klassen worden opgegeven met `<UseTechnicalProfileForSessionManagement ReferenceId="{ID}" />` behulp van het-element van een technisch profiel.
 
@@ -64,11 +68,11 @@ Zoals de naam bepaalt, heeft deze provider niets. Deze provider kan worden gebru
 
 ### <a name="defaultssosessionprovider"></a>DefaultSSOSessionProvider
 
-Deze provider kan worden gebruikt voor het opslaan van claims in een sessie. Er wordt doorgaans verwezen naar deze provider in een technisch profiel dat wordt gebruikt voor het beheren van lokale accounts. Het volgende `SM-AAD` technische profiel is opgenomen in het [aangepaste beleids Starter Pack](custom-policy-get-started.md#custom-policy-starter-pack).
+Deze provider kan worden gebruikt voor het opslaan van claims in een sessie. Er wordt doorgaans verwezen naar deze provider in een technisch profiel dat wordt gebruikt voor het beheren van lokale en federatieve accounts. Het volgende `SM-AAD` technische profiel is opgenomen in het [aangepaste beleids Starter Pack](custom-policy-get-started.md#custom-policy-starter-pack).
 
 ```XML
 <TechnicalProfile Id="SM-AAD">
-  <DisplayName>Session Mananagement Provider</DisplayName>
+  <DisplayName>Session Management Provider</DisplayName>
   <Protocol Name="Proprietary" Handler="Web.TPEngine.SSO.DefaultSSOSessionProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
   <PersistedClaims>
     <PersistedClaim ClaimTypeReferenceId="objectId" />
@@ -83,6 +87,7 @@ Deze provider kan worden gebruikt voor het opslaan van claims in een sessie. Er 
   </OutputClaims>
 </TechnicalProfile>
 ```
+
 
 Het volgende `SM-MFA` technische profiel is opgenomen in het [aangepaste beleids Starter Pack](custom-policy-get-started.md#custom-policy-starter-pack) `SocialAndLocalAccountsWithMfa`. Dit technische profiel beheert de multi-factor Authentication-sessie.
 
@@ -101,11 +106,11 @@ Het volgende `SM-MFA` technische profiel is opgenomen in het [aangepaste beleids
 
 ### <a name="externalloginssosessionprovider"></a>ExternalLoginSSOSessionProvider
 
-Deze provider wordt gebruikt om het scherm ' ID-provider kiezen ' te onderdrukken. Er wordt meestal verwezen naar een technisch profiel dat is geconfigureerd voor een externe ID-provider, zoals Facebook. Het volgende `SM-SocialLogin` technische profiel is opgenomen in het [aangepaste beleids Starter Pack](custom-policy-get-started.md#custom-policy-starter-pack).
+Deze provider wordt gebruikt om het scherm ' ID-provider kiezen ' te onderdrukken en af te melden bij een federatieve id-provider. Er wordt meestal verwezen naar een technisch profiel dat is geconfigureerd voor een federatieve id-provider, zoals Facebook of Azure Active Directory. Het volgende `SM-SocialLogin` technische profiel is opgenomen in het [aangepaste beleids Starter Pack](custom-policy-get-started.md#custom-policy-starter-pack).
 
 ```XML
 <TechnicalProfile Id="SM-SocialLogin">
-  <DisplayName>Session Mananagement Provider</DisplayName>
+  <DisplayName>Session Management Provider</DisplayName>
   <Protocol Name="Proprietary" Handler="Web.TPEngine.SSO.ExternalLoginSSOSessionProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
   <Metadata>
     <Item Key="AlwaysFetchClaimsFromProvider">true</Item>
@@ -122,9 +127,20 @@ Deze provider wordt gebruikt om het scherm ' ID-provider kiezen ' te onderdrukke
 | --- | --- | --- |
 | AlwaysFetchClaimsFromProvider | Nee | Momenteel niet gebruikt, kan worden genegeerd. |
 
+### <a name="oauthssosessionprovider"></a>OAuthSSOSessionProvider
+
+Deze provider wordt gebruikt voor het beheren van de Azure AD B2C sessies tussen een OAuth2-of OpenID connect-verbinding Relying Party en Azure AD B2C.
+
+```xml
+<TechnicalProfile Id="SM-jwt-issuer">
+  <DisplayName>Session Management Provider</DisplayName>
+  <Protocol Name="Proprietary" Handler="Web.TPEngine.SSO.OAuthSSOSessionProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
+</TechnicalProfile>
+```
+
 ### <a name="samlssosessionprovider"></a>SamlSSOSessionProvider
 
-Deze provider wordt gebruikt voor het beheren van de Azure AD B2C SAML-sessies tussen een Relying Party toepassing of een federatieve SAML-ID-provider. Wanneer u de SSO-provider gebruikt voor het opslaan van een SAML id `RegisterServiceProviders` -provider sessie, `false`moet u deze instellen op. Het volgende `SM-Saml-idp` technische profiel wordt gebruikt door het [technische SAML-profiel](saml-technical-profile.md).
+Deze provider wordt gebruikt voor het beheren van de Azure AD B2C SAML-sessies tussen een Relying Party toepassing of een federatieve SAML-ID-provider. Wanneer u de SSO-provider gebruikt voor het opslaan van een SAML id `RegisterServiceProviders` -provider sessie, `false`moet u deze instellen op. Het volgende `SM-Saml-idp` technische profiel wordt gebruikt door het [technische profiel van de SAML-identiteits provider](saml-identity-provider-technical-profile.md).
 
 ```XML
 <TechnicalProfile Id="SM-Saml-idp">
@@ -138,14 +154,15 @@ Deze provider wordt gebruikt voor het beheren van de Azure AD B2C SAML-sessies t
 
 Wanneer u de provider gebruikt voor het opslaan van de B2C SAML `RegisterServiceProviders` -sessie, `true`moet de worden ingesteld op. Voor het afmelden van `SessionIndex` de `NameID` SAML-sessie is de en voltooid.
 
-Het volgende `SM-Saml-idp` technische profiel wordt gebruikt door een [SAML-Uitgever technisch profiel](saml-issuer-technical-profile.md)
+Het volgende `SM-Saml-issuer` technische profiel wordt gebruikt door een [SAML-Uitgever technisch profiel](saml-issuer-technical-profile.md)
 
 ```XML
-<TechnicalProfile Id="SM-Saml-sp">
+<TechnicalProfile Id="SM-Saml-issuer">
   <DisplayName>Session Management Provider</DisplayName>
   <Protocol Name="Proprietary" Handler="Web.TPEngine.SSO.SamlSSOSessionProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null"/>
 </TechnicalProfile>
 ```
+
 #### <a name="metadata"></a>Metagegevens
 
 | Kenmerk | Vereist | Beschrijving|
@@ -154,4 +171,6 @@ Het volgende `SM-Saml-idp` technische profiel wordt gebruikt door een [SAML-Uitg
 | RegisterServiceProviders | Nee | Geeft aan dat de provider alle SAML-service providers moet registreren waarvoor een bevestiging is verleend. Mogelijke waarden: `true` (standaard) of `false`.|
 
 
+## <a name="next-steps"></a>Volgende stappen
 
+- Meer informatie over [Azure AD B2C sessie](session-overview.md).

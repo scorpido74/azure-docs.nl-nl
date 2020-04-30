@@ -1,54 +1,83 @@
 ---
 title: Partitionering in Azure Cosmos DB
-description: Meer informatie over partitioneren in Azure Cosmos DB, aanbevolen procedures bij het kiezen van een partitiesleutel en het beheren van logische partities
-author: markjbrown
-ms.author: mjbrown
+description: Meer informatie over partitioneren in Azure Cosmos DB, aanbevolen procedures bij het kiezen van een partitie sleutel en het beheren van logische partities
+author: deborahc
+ms.author: dech
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 12/02/2019
-ms.openlocfilehash: 551703b5dcca082904197010366ee059998dde4b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/28/2020
+ms.openlocfilehash: 1a760b4cedad5e43a2ef9f186162675aaf6d5ea5
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79251867"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82234176"
 ---
 # <a name="partitioning-in-azure-cosmos-db"></a>Partitionering in Azure Cosmos DB
 
-Azure Cosmos DB gebruikt partitionering om afzonderlijke containers in een database te schalen om te voldoen aan de prestatiebehoeften van uw toepassing. Bij het partitioneren worden de items in een container verdeeld in afzonderlijke subsets die *logische partities*worden genoemd. Logische partities worden gevormd op basis van de waarde van een *partitiesleutel* die is gekoppeld aan elk item in een container. Alle items in een logische partitie hebben dezelfde partitiesleutelwaarde.
+Azure Cosmos DB maakt gebruik van partitionering om afzonderlijke containers in een Data Base te schalen om te voldoen aan de prestatie behoeften van uw toepassing. In partitioneren worden de items in een container onderverdeeld in afzonderlijke subsets met de naam *logische partities*. Logische partities worden gevormd op basis van de waarde van een *partitie sleutel* die is gekoppeld aan elk item in een container. Alle items in een logische partitie hebben dezelfde partitie sleutel waarde.
 
-Een container bevat bijvoorbeeld artikelen. Elk item heeft een `UserID` unieke waarde voor de eigenschap. Als `UserID` het gaat om de partitiesleutel voor de items in `UserID` de container en er zijn 1.000 unieke waarden, worden 1.000 logische partities gemaakt voor de container.
+Een container bevat bijvoorbeeld items. Elk item heeft een unieke waarde voor de `UserID` eigenschap. Als `UserID` fungeert als de partitie sleutel voor de items in de container en er 1.000 unieke `UserID` waarden zijn, worden er voor de container 1.000 logische partities gemaakt.
 
-Naast een partitiesleutel die de logische partitie van het item bepaalt, heeft elk item in een container een *item-id* (uniek binnen een logische partitie). Door de partitiesleutel en de item-id te combineren, wordt de *index*van het item bepaald, waardoor het item uniek wordt geïdentificeerd.
+Naast een partitie sleutel die de logische partitie van het item bepaalt, heeft elk item in een container een *item-id* (uniek binnen een logische partitie). Als de partitie sleutel en de *item-id* worden gecombineerd, wordt de *index*van het item gemaakt, waarmee het item op unieke wijze wordt geïdentificeerd.
 
-[Het kiezen van een partitiesleutel](partitioning-overview.md#choose-partitionkey) is een belangrijke beslissing die de prestaties van uw toepassing zal beïnvloeden.
+Het [kiezen van een partitie sleutel](partitioning-overview.md#choose-partitionkey) is een belang rijke beslissing die invloed heeft op de prestaties van uw toepassing.
 
 ## <a name="managing-logical-partitions"></a>Logische partities beheren
 
-Azure Cosmos DB beheert op transparante en automatisch de plaatsing van logische partities op fysieke partities om efficiënt te voldoen aan de schaalbaarheid en prestatiebehoeften van de container. Naarmate de doorvoer- en opslagvereisten van een toepassing toenemen, verplaatst Azure Cosmos DB logische partities om de belasting automatisch over een groter aantal servers te spreiden. 
+Azure Cosmos DB transparant en beheert automatisch de plaatsing van logische partities op fysieke partities om efficiënt te voldoen aan de schaal baarheid en prestatie behoeften van de container. Naarmate de door Voer en opslag vereisten van een toepassing toenemen, Azure Cosmos DB logische partities verplaatsen om de belasting automatisch over een groter aantal fysieke partities te spreiden. U kunt meer te weten komen over [fysieke partities](partition-data.md#physical-partitions).
 
-Azure Cosmos DB maakt gebruik van hash-gebaseerde partitionering om logische partities over fysieke partities te verspreiden. Azure Cosmos DB hashes de partitiesleutelwaarde van een item. Het gehashte resultaat bepaalt de fysieke partitie. Vervolgens wijst Azure Cosmos DB de sleutelruimte van partitiesleutelhashes gelijkmatig toe over de fysieke partities.
+Azure Cosmos DB gebruikt op hash gebaseerde partitionering om logische partities over fysieke partities te verdelen. Azure Cosmos DB hashes de waarde van de partitie sleutel van een item. Het gehashte resultaat bepaalt de fysieke partitie. Azure Cosmos DB wijst vervolgens de sleutel ruimte van partitie sleutel-hashes gelijkmatig over de fysieke partities toe.
 
-Query's die toegang hebben tot gegevens binnen één logische partitie zijn kosteneffectiever dan query's die toegang hebben tot meerdere partities. Transacties (in opgeslagen procedures of triggers) zijn alleen toegestaan ten opzichte van artikelen in één logische partitie.
+Trans acties (in opgeslagen procedures of triggers) zijn alleen toegestaan voor items in één logische partitie.
 
-Zie [Logische partities](partition-data.md)voor meer informatie over hoe Azure Cosmos DB partities beheert. (Het is niet nodig om de interne details te begrijpen om uw toepassingen te bouwen of uit te voeren, maar hier toegevoegd voor een nieuwsgierige lezer.)
+Meer informatie over [het beheren van partities](partition-data.md)vindt u in azure Cosmos db. (Het is niet nodig om de interne gegevens te begrijpen om uw toepassingen te bouwen of uit te voeren, maar hier toe te voegen voor een nieuws lezer.)
 
 ## <a name="choosing-a-partition-key"></a><a id="choose-partitionkey"></a>Een partitiesleutel kiezen
 
-Het volgende is een goede richtlijnen voor het kiezen van een partitiesleutel:
+Het selecteren van de partitie sleutel is een eenvoudige maar belang rijke ontwerp keuze in Azure Cosmos DB. Wanneer u de partitie sleutel selecteert, is het niet mogelijk om deze in-place te wijzigen. Als u de partitie sleutel moet wijzigen, moet u uw gegevens naar een nieuwe container verplaatsen met de nieuwe gewenste partitie sleutel.
 
-* Een enkele logische partitie heeft een bovengrens van 20 GB opslag.  
+Voor **alle** containers moet uw partitie sleutel:
 
-* Azure Cosmos-containers hebben een minimale doorvoer van 400 aanvraageenheden per seconde (RU/s). Wanneer doorvoer in een database wordt ingericht, zijn de minimum-RU's per container 100 aanvraageenheden per seconde (RU/s). Aanvragen voor dezelfde partitiesleutel kunnen de doorvoer die aan een partitie is toegewezen, niet overschrijden. Als aanvragen de toegewezen doorvoer overschrijden, zijn aanvragen tariefbeperkt. Het is dus belangrijk om een partitiesleutel te kiezen die niet resulteert in "hotspots" in uw toepassing.
+* Een eigenschap zijn die een waarde heeft die niet verandert. Als een eigenschap uw partitie sleutel is, kunt u de waarde van die eigenschap niet bijwerken.
+* Een hoge kardinaliteit hebben. Met andere woorden, de eigenschap moet een breed scala aan mogelijke waarden hebben.
+* Sprei ding-verbruik en gegevens opslag gelijkmatig over alle logische partities. Dit garandeert zelfs RU-verbruik en opslag distributie over uw fysieke partities.
 
-* Kies een partitiesleutel met een breed scala aan waarden en toegangspatronen die gelijkmatig zijn verspreid over logische partities. Dit helpt bij het verspreiden van de gegevens en de activiteit in uw container over de set logische partities, zodat bronnen voor gegevensopslag en -doorvoer kunnen worden verdeeld over de logische partities.
+Als u [Meervoudige zuren-trans acties](database-transactions-optimistic-concurrency.md#multi-item-transactions) in azure Cosmos DB nodig hebt, moet u [opgeslagen procedures of triggers](how-to-write-stored-procedures-triggers-udfs.md#stored-procedures)gebruiken. Alle opgeslagen java script-procedures en triggers bevinden zich in een enkele logische partitie.
 
-* Kies een partitiesleutel die de werkbelasting gelijkmatig over alle partities en gelijkmatig in de loop van de tijd verspreidt. Uw keuze van partitiesleutel moet de behoefte aan efficiënte partitiequery's en transacties in evenwicht brengen met het doel om items over meerdere partities te distribueren om schaalbaarheid te bereiken.
+## <a name="partition-keys-for-read-heavy-containers"></a>Partitie sleutels voor Read-zware containers
 
-* Kandidaten voor partitiesleutels kunnen eigenschappen bevatten die vaak worden weergegeven als een filter in uw query's. Query's kunnen efficiënt worden gerouteerd door de partitiesleutel op te nemen in het filterpredicaat.
+Voor de meeste containers gelden de bovenstaande criteria alleen wanneer u een partitie sleutel moet kiezen. Voor grote alleen-lezen containers is het echter mogelijk dat u een partitie sleutel wilt kiezen die regel matig wordt weer gegeven als een filter in uw query's. Query's kunnen [efficiënt worden gerouteerd naar de relevante fysieke partities](how-to-query-container.md#in-partition-query) door de partitie sleutel op te nemen in het filter predicaat.
+
+Als het meren deel van de aanvragen van uw werk belasting query's is en de meeste query's een gelijkheids filter hebben op dezelfde eigenschap, kan deze eigenschap een goede partitie sleutel zijn. Als u bijvoorbeeld regel matig een query uitvoert waarmee op wordt gefilterd en `UserID` vervolgens de partitie sleutel selecteert, wordt het `UserID`aantal [query's voor meerdere partities](how-to-query-container.md#avoiding-cross-partition-queries)verminderd.
+
+Als uw container echter klein is, hebt u waarschijnlijk niet genoeg fysieke partities om u zorgen te maken over de invloed van de prestaties van kruis partitie query's. Voor de meeste kleine containers in Azure Cosmos DB zijn slechts één of twee fysieke partities vereist.
+
+Als uw container kan worden uitgebreid naar meer dan een paar fysieke partities, moet u ervoor zorgen dat u een partitie sleutel kiest die kruis partitie query's minimaliseert. De container heeft meer dan een paar fysieke partities nodig wanneer aan een van de volgende voor waarden wordt voldaan:
+
+* Uw container heeft meer dan 30.000 RU ingericht
+* Met de container worden gegevens van 100 GB opgeslagen
+
+## <a name="using-item-id-as-the-partition-key"></a>Item-ID als de partitie sleutel gebruiken
+
+Als uw container een eigenschap heeft die een breed scala aan mogelijke waarden heeft, is het waarschijnlijk een goede keuze voor de partitie sleutel. Een mogelijk voor beeld van een dergelijke eigenschap is de *item-id*. Voor kleine alleen-lezen containers of schrijf bare containers van elke grootte is de *item-id* natuurlijk een fantastische keuze voor de partitie sleutel.
+
+De *item-id* van de systeem eigenschap is gegarandeerd in elk item in uw Cosmos-container. Mogelijk hebt u andere eigenschappen die een logische ID van uw item vertegenwoordigen. In veel gevallen zijn dit ook fantastische opties voor partitie sleutels om dezelfde redenen als de *item-id*.
+
+De *item-id* is een fantastische partitie sleutel keuze om de volgende redenen:
+
+* Er zijn een breed scala aan mogelijke waarden (één unieke *item-id* per item).
+* Omdat er een unieke *item-id* per item is, heeft de *item-id* een uitstekende taak op gelijkmatige verdeling van het gebruik van ru en gegevens opslag.
+* U kunt eenvoudig efficiënte punt Lees bewerkingen uitvoeren omdat u altijd de partitie sleutel van een item weet als u de bijbehorende *item-id*kent.
+
+Hieronder vindt u enkele aandachtspunten bij het selecteren van de *item-id* als de partitie sleutel:
+
+* Als de *item-id* de partitie sleutel is, wordt deze in de gehele container een unieke id. U kunt geen items met een dubbele *item-id*hebben.
+* Als u een lees-zware container hebt die een groot aantal [fysieke partities](partition-data.md#physical-partitions)heeft, zijn query's efficiënter als ze een gelijkheids filter met de *item-id*hebben.
+* Opgeslagen procedures of triggers kunnen niet over meerdere logische partities worden uitgevoerd.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Meer informatie over [partitionering en horizontaal schalen in Azure Cosmos DB](partition-data.md).
-* Meer informatie over [ingerichte doorvoer in Azure Cosmos DB](request-units.md).
-* Meer informatie over [wereldwijde distributie in Azure Cosmos DB](distribute-data-globally.md).
+* Meer informatie over [partitioneren en horizon taal schalen in azure Cosmos DB](partition-data.md).
+* Meer informatie over [ingerichte door Voer in azure Cosmos DB](request-units.md).
+* Meer informatie over [globale distributie in azure Cosmos DB](distribute-data-globally.md).
