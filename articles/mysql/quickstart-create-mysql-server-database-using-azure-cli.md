@@ -1,5 +1,5 @@
 ---
-title: 'Snelstart: een server maken - Azure CLI - Azure Database voor MySQL'
+title: 'Snelstartgids: een server maken-Azure CLI-Azure Database for MySQL'
 description: In deze Quick Start wordt beschreven hoe u Azure CLI gebruikt om een Azure-database voor MySQL-server in een Azure-resourcegroep te maken.
 author: ajlam
 ms.author: andrela
@@ -9,20 +9,20 @@ ms.topic: quickstart
 ms.date: 01/09/2019
 ms.custom: mvc
 ms.openlocfilehash: acf5f3cdf761e1773d6e9384a4ceb99a645ed7cc
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "74773501"
 ---
-# <a name="quickstart-create-an-azure-database-for-mysql-server-using-azure-cli"></a>Snelstart: een Azure-database voor MySQL-server maken met Azure CLI
+# <a name="quickstart-create-an-azure-database-for-mysql-server-using-azure-cli"></a>Snelstartgids: een Azure Database for MySQL-server maken met behulp van Azure CLI
 
 > [!TIP]
-> Overweeg de eenvoudigere [opdracht az mysql up](/cli/azure/ext/db-up/mysql#ext-db-up-az-mysql-up) Azure CLI te gebruiken (momenteel in preview). Probeer de [quickstart.](./quickstart-create-server-up-azure-cli.md)
+> Overweeg het gebruik van de eenvoudiger [AZ mysql](/cli/azure/ext/db-up/mysql#ext-db-up-az-mysql-up) -opdracht van Azure cli (momenteel als preview-versie). Probeer de [Snelstartgids](./quickstart-create-server-up-azure-cli.md)uit.
 
 In deze Quick Start wordt beschreven hoe u Azure CLI gebruikt om binnen ongeveer vijf minuten een Azure-database voor MySQL-server in een Azure-resourcegroep te maken. De Azure CLI wordt gebruikt voor het maken en beheren van Azure-resources vanaf de opdrachtregel of in scripts.
 
-Als u geen Azure-abonnement hebt, maakt u een [gratis](https://azure.microsoft.com/free/) account voordat u begint.
+Als u nog geen abonnement op Azure hebt, maak dan een [gratis](https://azure.microsoft.com/free/) account aan voordat u begint.
 
 [!INCLUDE [cloud-shell-try-it](../../includes/cloud-shell-try-it.md)]
 

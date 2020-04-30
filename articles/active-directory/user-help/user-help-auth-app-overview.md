@@ -12,10 +12,10 @@ ms.topic: overview
 ms.date: 01/15/2020
 ms.author: curtand
 ms.openlocfilehash: c95ae2e48a7d5a3b9e9e28b1d4e14b670205c043
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "77062282"
 ---
 # <a name="what-is-the-microsoft-authenticator-app"></a>Wat is de Microsoft Authenticator-app?
@@ -24,16 +24,16 @@ Met de Microsoft Authenticator-app kunt u zich aanmelden bij uw accounts als u g
 
 U kunt de Microsoft Authenticator-app op meerdere manieren gebruiken, bijvoorbeeld:
 
-- Reageer op een melding voor verificatie nadat u zich hebt aangemeld met uw gebruikersnaam en wachtwoord.
+- Reageer op een vraag om verificatie nadat u zich hebt aangemeld met uw gebruikers naam en wacht woord.
 
-- Meld u aan zonder een wachtwoord in te voeren, met uw gebruikersnaam, de authenticator-app en uw mobiele apparaat met uw vingerafdruk, gezicht of pincode.
+- Meld u aan zonder een wacht woord in te voeren, met uw gebruikers naam, de verificator-app en uw mobiele apparaat met de vinger afdruk, het gezicht of de pincode.
 
-- Als codegenerator voor andere accounts die authenticator-apps ondersteunen.
+- Als code generator voor andere accounts die ondersteuning bieden voor verificator-apps.
 
 > [!Important]
-> De Microsoft Authenticator-app werkt met elk account dat tweestapsverificatie gebruikt en de op tijd gebaseerde eenmalige wachtwoord (TOTP)-standaarden ondersteunt.
+> De Microsoft Authenticator-app werkt met een account dat gebruikmaakt van twee ledige verificatie en ondersteunt de op tijd gebaseerde mobiele TOTP-standaarden (one-time password).
 >
->Dit artikel is bedoeld voor gebruikers die de Microsoft Authenticator-app proberen te downloaden en gebruiken als beveiligingsverificatiemethode. Als u een beheerder bent die op zoek is naar informatie over het inschakelen van een wachtwoordloze aanmelding met de Authenticator-app voor uw werknemers en andere toepassingen, raadpleegt u de [aanmelding zonder wachtwoord met de Microsoft Authenticator-app (voorbeeld)](https://docs.microsoft.com/azure/active-directory/authentication/howto-authentication-passwordless-phone).
+>Dit artikel is bedoeld voor gebruikers die proberen de Microsoft Authenticator-app te downloaden en gebruiken als methode voor beveiligings verificatie. Als u een beheerder bent die zoekt naar informatie over het inschakelen van aanmelding zonder wacht woord met behulp van de verificator-app voor uw werk nemers en andere toepassingen, raadpleegt u [aanmelden zonder wacht woord inschakelen met de Microsoft Authenticator-app (preview)](https://docs.microsoft.com/azure/active-directory/authentication/howto-authentication-passwordless-phone).
 
 ## <a name="terminology"></a>Terminologie
 

@@ -1,6 +1,6 @@
 ---
-title: 'Snelstart: aangepaste gebeurtenissen verzenden naar gebeurtenishubs - gebeurtenisraster, Azure CLI'
-description: 'Snelstart: gebruik Azure Event Grid en Azure CLI om een onderwerp te publiceren en u te abonneren op die gebeurtenis. Een event hub wordt gebruikt voor het eindpunt.'
+title: 'Snelstartgids: aangepaste gebeurtenissen verzenden naar Event Hubs-Event Grid, Azure CLI'
+description: 'Snelstartgids: gebruik Azure Event Grid en Azure CLI om een onderwerp te publiceren en u te abonneren op deze gebeurtenis. Een event hub wordt gebruikt voor het eindpunt.'
 services: event-grid
 keywords: ''
 author: spelluru
@@ -10,13 +10,13 @@ ms.topic: quickstart
 ms.service: event-grid
 ms.custom: seodec18
 ms.openlocfilehash: 832c4e453befc9e54051c968e0c364d22afd2bc2
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "73721420"
 ---
-# <a name="quickstart-route-custom-events-to-azure-event-hubs-with-azure-cli-and-event-grid"></a>Snelstart: aangepaste gebeurtenissen routeren naar Azure-gebeurtenishubs met Azure CLI en gebeurtenisraster
+# <a name="quickstart-route-custom-events-to-azure-event-hubs-with-azure-cli-and-event-grid"></a>Snelstartgids: aangepaste gebeurtenissen door sturen naar Azure Event Hubs met Azure CLI en Event Grid
 
 Azure Event Grid is een gebeurtenisservice voor de cloud. Azure Event Hubs is een van de ondersteunde gebeurtenishandlers. In dit artikel gebruikt u de Azure CLI om een aangepast onderwerp te maken, u op het aangepaste onderwerp te abonneren en de gebeurtenis te activeren om het resultaat weer te geven. U verzendt de gebeurtenissen naar een event hub.
 
@@ -59,7 +59,7 @@ az eventhubs eventhub create --name $hubname --namespace-name $namespace --resou
 
 ## <a name="subscribe-to-a-custom-topic"></a>Abonneren op een aangepast onderwerp
 
-U abonneert u op een evenementrasteronderwerp om Event Grid te vertellen welke gebeurtenissen u wilt bijhouden. In het volgende voorbeeld wordt u geabonneerd op het aangepaste onderwerp dat u hebt gemaakt en wordt de resource-id van de gebeurtenishub voor het eindpunt doorgegeven. Het eindpunt heeft deze indeling:
+U abonneert u op een event grid-onderwerp om te zien Event Grid welke gebeurtenissen u wilt bijhouden. In het volgende voor beeld wordt een abonnement genomen op het aangepaste onderwerp dat u hebt gemaakt en wordt de resource-ID van de Event Hub voor het eind punt door gegeven. Het eindpunt heeft deze indeling:
 
 `/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.EventHub/namespaces/<namespace-name>/eventhubs/<hub-name>`
 

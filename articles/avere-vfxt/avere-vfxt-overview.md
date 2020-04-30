@@ -7,10 +7,10 @@ ms.topic: overview
 ms.date: 01/13/2020
 ms.author: rohogue
 ms.openlocfilehash: a9dab2ca844feb1c24dfffc48b4f29cd1a311314
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "76153188"
 ---
 # <a name="what-is-avere-vfxt-for-azure"></a>Wat is Avere vFXT for Azure?
@@ -19,13 +19,13 @@ Avere vFXT for Azure is een oplossing voor bestandssysteemcaching voor gegevensi
 
 Avere vFXT ondersteunt de volgende veelvoorkomende computerscenario's:
 
-* Hybride cloudarchitectuur - Avere vFXT voor Azure kan werken met een hardwareopslagsysteem, dat het voordeel van cloud computing biedt zonder bestanden te hoeven verplaatsen.
+* De hybride Cloud architectuur-avere vFXT voor Azure kan worden gebruikt met een hardware-opslag systeem, die het voor deel van Cloud Computing biedt zonder bestanden te hoeven verplaatsen.
 
-* Cloud bursting - Avere vFXT voor Azure kan u helpen uw gegevens naar de cloud te verplaatsen voor één project, of de hele workflow permanent op te tillen en te verschuiven.
+* Met Cloud bursting-avere vFXT voor Azure kunt u uw gegevens naar de Cloud verplaatsen voor één project, of de volledige werk stroom permanent optillen en verschuiven.
 
 ![diagram met details van het Avere vFXT-systeem in een Azure-abonnement dat is verbonden met Blob-opslag en een on-premises datacenter](media/avere-vfxt-hybrid.png)
 
-Avere vFXT voor Azure is het meest geschikt voor deze situaties:
+AVERE vFXT voor Azure is het meest geschikt voor de volgende situaties:
 
 * Leesintensieve bewerkingen voor HPC-workloads
 * Toepassingen die gebruikmaken van het NFS-protocol
@@ -44,9 +44,9 @@ In media en entertainment kan het Avere vFXT-cluster de gegevenstoegang voor tij
 
 ### <a name="life-sciences"></a>Biowetenschappen
 
-Met Avere vFXT kunnen onderzoekers secundaire analyseworkflows uitvoeren in Azure Compute en toegang krijgen tot genomische gegevens, ongeacht hun locatie.
+Met avere vFXT kunnen onderzoekers secundaire analyse werk stromen uitvoeren in azure Compute en toegang krijgen tot genoom gegevens, ongeacht hun locatie.
 
-In farmaceutisch onderzoek kunnen Avere vFXT-clusters de ontdekking van geneesmiddelen versnellen door onderzoekers te helpen interacties met drugstarget te voorspellen en onderzoeksgegevens te analyseren.
+In farmaceutische onderzoek kunnen avere-vFXT-clusters de geneesmiddelen detectie versnellen door onderzoekers te helpen bij het voors pellen van drugs-doel interacties en onderzoek gegevens te analyseren.
 
 ### <a name="financial-services-analytics"></a>Analyse voor financiële dienstverlening
 
@@ -64,18 +64,18 @@ In het Avere vFXT-cluster worden bestanden in de cache opgeslagen terwijl ze wor
 * Compatibel met Azure Blob
 * Gebruikt het NFSv3- of SMB2-protocol
 
-Avere vFXT voor Azure gebruikt de volgende Azure-resources:
+AVERE vFXT voor Azure maakt gebruik van de volgende Azure-resources:
 
 |Azure-onderdeel|   |
 |----------|-----------|
 |Virtuele machines|3 of meer E32s_v3|
 |Premium SSD-opslag|200 GB ruimte in het besturingssysteem plus 1 tot 4 TB ruimte in de cache per knooppunt |
 |Opslagaccount (optioneel) |v2|
-|Back-endopslag voor gegevens (optioneel) | Eén lege LRS Blob-container |
+|Back-end van gegevens (optioneel) | Eén lege LRS Blob-container |
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Lees deze artikelen om uw eigen Avere vFXT voor Azure-implementatie te plannen en te maken.
+Lees deze artikelen om uw eigen avere vFXT voor Azure-implementatie te plannen en te maken.
 
 * [Uw systeem plannen](avere-vfxt-deploy-plan.md)
 * [Implementatieoverzicht](avere-vfxt-deploy-overview.md)
