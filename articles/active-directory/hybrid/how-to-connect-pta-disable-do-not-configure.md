@@ -1,6 +1,6 @@
 ---
-title: PTA uitschakelen bij gebruik van Azure AD Connect 'Niet configureren' | Microsoft Documenten
-description: In dit artikel wordt beschreven hoe u PTA uitschakelt met de functie 'Niet configureren' van Azure AD Connect.
+title: PTA uitschakelen bij het gebruik van Azure AD Connect "niet configureren" | Microsoft Docs
+description: In dit artikel wordt beschreven hoe u PTA kunt uitschakelen met de Azure AD Connect functie niet configureren.
 services: active-directory
 author: billmath
 manager: daveba
@@ -12,27 +12,27 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: fa1046dc64fed3edb6c9d04f76a96f488769ff42
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81726798"
 ---
-# <a name="disable-pta-when-using-azure-ad-connect-do-not-configure"></a>PTA uitschakelen bij gebruik van Azure AD Connect "Niet configureren"
+# <a name="disable-pta-when-using-azure-ad-connect-do-not-configure"></a>PTA uitschakelen bij het gebruik van Azure AD Connect "niet configureren"
 
-Als u Pass-through Authentication gebruikt met Azure AD Connect en u deze hebt ingesteld op 'Niet configureren', u deze uitschakelen. Het uitschakelen van PTA kan worden gedaan met behulp van de volgende cmdlets. 
+Als u Pass-Through-verificatie gebruikt met Azure AD Connect en u deze hebt ingesteld op niet configureren, kunt u dit uitschakelen. Het uitschakelen van PTA kan worden uitgevoerd met de volgende cmdlets. 
 
 ## <a name="prerequisites"></a>Vereisten
-De volgende voorwaarden zijn vereist:
-- Elke windows machine die de PTA agent geïnstalleerd. 
-- Agent moet bij versie 1.5.1742.0 of hoger zijn. 
-- Een Azure-globale beheerdersaccount om de PowerShell-cmdlets uit te voeren om PTA uit te schakelen.
+De volgende vereisten zijn vereist:
+- Een Windows-computer waarop de PTA-agent is geïnstalleerd. 
+- De agent moet de versie 1.5.1742.0 of hoger hebben. 
+- Een Azure Global Administrator-account om de Power shell-cmdlets uit te voeren om PTA uit te scha kelen.
 
 >[!NOTE]
-> Als uw agent ouder is, heeft het mogelijk niet de cmdlets die nodig zijn om deze bewerking te voltooien. U een nieuwe agent van Azure Portal een installatie op elke Windows-machine en admin referenties. (Het installeren van de agent heeft geen invloed op de PTA-status in de cloud)
+> Als uw agent ouder is, beschikt u mogelijk niet over de cmdlets die nodig zijn om deze bewerking te volt ooien. U kunt een nieuwe agent verkrijgen via Azure Portal. Installeer deze op een Windows-computer en geef de beheerders referenties op. (Het installeren van de agent heeft geen invloed op de status van de PTA in de Cloud)
 
 > [!IMPORTANT]
-> Als u de Azure Government-cloud gebruikt, moet u de parameter ENVIRONMENTNAME met de volgende waarde doorgeven. 
+> Als u de Azure Government Cloud gebruikt, moet u de para meter ENVIRONMENTnaam door geven met de volgende waarde. 
 >
 >| Naam van omgeving | Cloud |
 >| - | - |
@@ -40,17 +40,17 @@ De volgende voorwaarden zijn vereist:
 
 
 ## <a name="to-disable-pta"></a>PTA uitschakelen
-Gebruik vanuit een PowerShell-sessie het volgende om PTA uit te schakelen:
-1. PS C:\Program Files\Microsoft Azure AD Connect Authentication Agent>`Import-Module .\Modules\PassthroughAuthPSModule`
+Gebruik in een Power shell-sessie het volgende om PTA uit te scha kelen:
+1. PS C:\Program Files\Microsoft Azure AD Connect-Verificatie agent>`Import-Module .\Modules\PassthroughAuthPSModule`
 2. `Get-PassthroughAuthenticationEnablementStatus -Feature PassthroughAuth` of `Get-PassthroughAuthenticationEnablementStatus -Feature PassthroughAuth -EnvironmentName <identifier>`
 3. `Disable-PassthroughAuthentication  -Feature PassthroughAuth` of `Disable-PassthroughAuthentication -Feature PassthroughAuth -EnvironmentName <identifier>`
 
 ## <a name="if-you-dont-have-access-to-an-agent"></a>Als u geen toegang hebt tot een agent
 
-Als u geen agentmachine hebt, u de volgende opdracht gebruiken om een agent te installeren.
+Als u geen agent machine hebt, kunt u de volgende opdracht gebruiken om een agent te installeren.
 
-1. Download de nieuwste Auth Agent van portal.azure.com.
-2. Installeer de `.\AADConnectAuthAgentSetup.exe` functie: of`.\AADConnectAuthAgentSetup.exe ENVIRONMENTNAME=<identifier>`
+1. Down load de nieuwste auth-agent van portal.azure.com.
+2. De functie installeren: `.\AADConnectAuthAgentSetup.exe` of`.\AADConnectAuthAgentSetup.exe ENVIRONMENTNAME=<identifier>`
 
 
 ## <a name="next-steps"></a>Volgende stappen

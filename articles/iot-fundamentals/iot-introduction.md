@@ -11,44 +11,44 @@ ms.custom:
 - amqp
 - mqtt
 ms.openlocfilehash: 73eb0b3164a386bb270e42ceba56d5dc7045af1c
-ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81728995"
 ---
 # <a name="what-is-azure-internet-of-things-iot"></a>Wat is Azure Internet of Things (IoT)?
 
-Azure Internet of Things (IoT) is een verzameling van door Microsoft beheerde cloudservices die miljarden IoT-assets met elkaar verbinden, bewaken en controleren. Eenvoudiger is dat een IoT-oplossing bestaat uit een of meer IoT-apparaten die communiceren met een of meer back-endservices die in de cloud worden gehost. 
+Azure Internet of Things (IoT) is een verzameling van door Microsoft beheerde cloudservices die miljarden IoT-assets met elkaar verbinden, bewaken en controleren. In het eenvoudigere voor waarden bestaat een IoT-oplossing uit een of meer IoT-apparaten die communiceren met een of meer back-end-services die in de cloud worden gehost. 
 
 ## <a name="iot-devices"></a>IoT-apparaten
 
-Een IoT-apparaat bestaat meestal uit een printplaat met sensoren die WiFi gebruiken om verbinding te maken met het internet. Bijvoorbeeld:
+Een IoT-apparaat bestaat doorgaans uit een print bord met Sens oren die WiFi gebruiken om verbinding te maken met internet. Bijvoorbeeld:
 
-* Een druksensor op een oliepomp op afstand.
-* Temperatuur- en vochtigheidssensoren in een airconditioningunit.
-* Een versnellingsmeter in een lift.
-* Aanwezigheidssensoren in een kamer.
+* Een druk sensor op een externe olie pomp.
+* Tempe ratuur-en vochtigheids sensoren in een airconditioning eenheid.
+* Een acceleratie meter in een lift.
+* Aanwezigheids sensors in een ruimte.
 
-Er is een breed scala aan apparaten beschikbaar van verschillende fabrikanten om uw oplossing te bouwen. Zie de [azure certified for IoT-apparaatcatalogus voor](https://catalog.azureiotsolutions.com/alldevices)een lijst met apparaten die zijn gecertificeerd om met Azure IoT-hub te werken. Voor prototypen u apparaten gebruiken zoals een [MXChip IoT DevKit](https://microsoft.github.io/azure-iot-developer-kit/) of een [Raspberry Pi.](https://www.raspberrypi.org/) De Devkit heeft ingebouwde sensoren voor temperatuur, druk, vochtigheid en een gyroscoop, versnellingsmeter en magnetometer. Met de Raspberry Pi kun je veel verschillende soorten sensoren bevestigen. 
+Er is een groot aantal apparaten beschikbaar van verschillende fabrikanten om uw oplossing te bouwen. Zie [Azure Certified for IOT Device Catalog](https://catalog.azureiotsolutions.com/alldevices)(Engelstalig) voor een lijst met apparaten die zijn gecertificeerd voor gebruik met Azure IOT hub. Voor het prototypen kunt u apparaten gebruiken zoals een [MXChip IOT-DevKit](https://microsoft.github.io/azure-iot-developer-kit/) of een [Raspberry Pi](https://www.raspberrypi.org/). De Devkit heeft ingebouwde Sens oren voor de Tempe ratuur, druk, vochtigheid en een gyroscope, acceleratie meter en magnetometer. Met de Raspberry Pi kunt u veel verschillende typen sensors aansluiten. 
 
-Microsoft biedt open-source [Device SDKs](../iot-hub/iot-hub-devguide-sdks.md) die u gebruiken om de apps te bouwen die op uw apparaten worden uitgevoerd. Deze [SDK's vereenvoudigen en versnellen](https://azure.microsoft.com/blog/benefits-of-using-the-azure-iot-sdks-in-your-azure-iot-solution/) de ontwikkeling van uw IoT-oplossingen.
+Micro soft biedt een open-source [apparaat-sdk's](../iot-hub/iot-hub-devguide-sdks.md) die u kunt gebruiken om de apps te bouwen die op uw apparaten worden uitgevoerd. Deze [sdk's vereenvoudigen en versnellen](https://azure.microsoft.com/blog/benefits-of-using-the-azure-iot-sdks-in-your-azure-iot-solution/) de ontwikkeling van uw IOT-oplossingen.
 
 ## <a name="communication"></a>Communicatie
 
-Doorgaans verzenden IoT-apparaten telemetrie van de sensoren naar back-endservices in de cloud. Andere vormen van communicatie zijn echter mogelijk, zoals een back-endservice die opdrachten naar uw apparaten verzendt. Hieronder volgen enkele voorbeelden van communicatie tussen apparaat en cloud en cloud tot apparaat:
+IoT-apparaten verzenden doorgaans telemetrie van de Sens oren naar back-end-services in de Cloud. Andere soorten communicatie zijn echter mogelijk, zoals een back-end-service die opdrachten naar uw apparaten verzendt. Hier volgen enkele voor beelden van apparaat-naar-Cloud-en Cloud-naar-apparaat-communicatie:
 
-* Een mobiele koeltruck stuurt elke 5 minuten de temperatuur naar een IoT Hub. 
+* Een mobiele koel wagen stuurt elke 5 minuten een Tempe ratuur naar een IoT Hub. 
 
-* De back-endservice stuurt een opdracht naar een apparaat om de frequentie te wijzigen waarmee het telemetrie verzendt om een probleem te diagnosticeren. 
+* De back-end-service stuurt een opdracht naar een apparaat om de frequentie te wijzigen waarmee telemetrie wordt verzonden om te helpen bij het vaststellen van een probleem. 
 
-* Een apparaat stuurt waarschuwingen op basis van de waarden die worden gelezen op basis van de sensoren. Een apparaat dat een batchreactor in een chemische installatie controleert, stuurt bijvoorbeeld een waarschuwing wanneer de temperatuur een bepaalde waarde overschrijdt.
+* Een apparaat verzendt waarschuwingen op basis van de waarden die zijn gelezen van de Sens oren. Een apparaat dat bijvoorbeeld een batch-reactor in een chemisch bedrijf bewaken, verzendt een waarschuwing wanneer de Tempe ratuur een bepaalde waarde overschrijdt.
 
-* Uw apparaten verzenden informatie om weer te geven op een dashboard om te bekijken door menselijke operators. Een controlekamer in een raffinaderij kan bijvoorbeeld de temperatuur-, druk- en stroomvolumes in elke leiding weergeven, zodat de operatoren de faciliteit kunnen controleren. 
+* Uw apparaten verzenden gegevens om weer te geven in een dash board voor weer gave door personeel. Een controle kamer in een verfijning kan bijvoorbeeld de Tempe ratuur, druk en flow volumes in elke pipe tonen, waardoor Opera tors de faciliteit kunnen bewaken. 
 
-De [IoT Device SDKs](../iot-hub/iot-hub-devguide-sdks.md) en IoT Hub ondersteunen algemene [communicatieprotocollen](../iot-hub/iot-hub-devguide-protocols.md) zoals HTTP, MQTT en AMQP.
+De [sdk's van IOT-apparaten](../iot-hub/iot-hub-devguide-sdks.md) en IOT hub ondersteunen algemene [communicatie protocollen](../iot-hub/iot-hub-devguide-protocols.md) zoals http, MQTT en AMQP.
 
-IoT-apparaten hebben verschillende kenmerken in vergelijking met andere clients, zoals browsers en mobiele apps. De SDK's van het apparaat helpen u de uitdagingen aan te gaan van het veilig en betrouwbaar aansluiten van apparaten op uw back-endservice.  IoT-apparaten:
+IoT-apparaten hebben verschillende kenmerken ten opzichte van andere clients, zoals browsers en mobiele apps. De apparaat-Sdk's helpen u bij het oplossen van de uitdagingen van het veilig en betrouwbaar zijn van apparaten met uw back-end-service.  IoT-apparaten:
 
 * Zijn vaak ingesloten systemen waarbij geen menselijke operator komt kijken (in tegenstelling tot een telefoon).
 * Kunnen worden geïmplementeerd op verafgelegen locaties, waar fysieke toegang kostbaar is.
@@ -59,20 +59,20 @@ IoT-apparaten hebben verschillende kenmerken in vergelijking met andere clients,
 
 ## <a name="back-end-services"></a>Back-endservices 
 
-In een IoT-oplossing biedt de back-endservice functionaliteit zoals:
+In een IoT-oplossing biedt de back-end-service functionaliteit zoals:
 
 * Ontvangen van telemetriegegevens van uw apparaten en bepalen hoe die gegevens moeten worden verwerkt en opgeslagen.
 * Analyseren van de telemetriegegevens om inzichten te krijgen, ongeacht of dat in realtime of achteraf wordt gedaan.
 * Verzenden van opdrachten vanuit de cloud naar een bepaald apparaat. 
-* Apparaten inrichten en bepalen welke apparaten verbinding kunnen maken met uw infrastructuur.
-* De status van uw apparaten controleren en hun activiteiten controleren.
-* De firmware beheren die op uw apparaten is geïnstalleerd.
+* Apparaten inrichten en bepalen welke apparaten verbinding kunnen maken met uw infra structuur.
+* Het beheren van de status van uw apparaten en het controleren van hun activiteiten.
+* De geïnstalleerde firmware op uw apparaten beheren.
 
-Bijvoorbeeld, in een remote monitoring oplossing voor een olie pompstation, de cloud back-end maakt gebruik van telemetrie van de pompen om afwijkend gedrag te identificeren. Wanneer de back-endservice een afwijking identificeert, kan deze automatisch een opdracht terugsturen naar het apparaat om een corrigerende actie te ondernemen. Dit proces genereert een automatische feedbacklus tussen het apparaat en de cloud die de efficiëntie van de oplossing aanzienlijk verhoogt.
+In een oplossing voor controle op afstand voor een olie pomp, gebruikt de back-end van de Cloud bijvoorbeeld telemetrie van de pompen om afwijkend gedrag te identificeren. Wanneer de back-end-service een anomalie identificeert, kan deze automatisch een opdracht naar het apparaat verzenden om een corrigerende actie te ondernemen. Dit proces genereert een automatische feedbacklus tussen het apparaat en de cloud die de efficiëntie van de oplossing aanzienlijk verhoogt.
 
-## <a name="azure-iot-examples"></a>Azure IoT-voorbeelden
+## <a name="azure-iot-examples"></a>Azure IoT-voor beelden
 
-Zie [Microsoft Technical Case Studies voor IoT voor](https://microsoft.github.io/techcasestudies/#technology=IoT&sortBy=featured)voorbeelden uit de praktijk van hoe organisaties Azure IoT gebruiken. 
+Zie technische casestudy's van [micro soft voor IOT](https://microsoft.github.io/techcasestudies/#technology=IoT&sortBy=featured)voor praktijk voorbeelden van de manier waarop organisaties Azure IOT gebruiken. 
 
 ## <a name="next-steps"></a>Volgende stappen
 
@@ -80,6 +80,6 @@ Zie de [technische casestudy's van Microsoft Azure IoT](https://microsoft.github
 
 Zie de [projectcatalogus van de IoT-ontwikkelkit](https://microsoft.github.io/azure-iot-developer-kit/docs/projects/) voor enkele voorbeeldprojecten die u kunt uitproberen met een IoT-ontwikkelkit. 
 
-Zie [Azure IoT-services en -technologieën](iot-services-and-technologies.md)voor een uitgebreidere uitleg over de verschillende services en hoe ze worden gebruikt.
+Zie [Azure IOT-Services en-technologieën](iot-services-and-technologies.md)voor een uitgebreidere uitleg van de verschillende services en hoe ze worden gebruikt.
 
 Zie [Microsoft Azure IoT Reference Architecture](https://aka.ms/iotrefarchitecture) (Referentiearchitectuur voor Microsoft Azure IoT) voor een uitgebreide beschrijving van de IoT-architectuur.

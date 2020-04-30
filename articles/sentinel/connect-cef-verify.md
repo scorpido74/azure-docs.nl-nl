@@ -1,6 +1,6 @@
 ---
-title: Connectiviteit met Azure Sentinel valideren | Microsoft Documenten
-description: Valideer de connectiviteit van uw beveiligingsoplossing om ervoor te zorgen dat CEF-berichten worden doorgestuurd naar Azure Sentinel.
+title: Connectiviteit met Azure Sentinel valideren | Microsoft Docs
+description: Valideer de connectiviteit van uw beveiligings oplossing om ervoor te zorgen dat CEF-berichten worden doorgestuurd naar Azure Sentinel.
 services: sentinel
 documentationcenter: na
 author: yelevin
@@ -15,44 +15,44 @@ ms.workload: na
 ms.date: 04/19/2020
 ms.author: yelevin
 ms.openlocfilehash: 6b91e36ee09aa855c119add2c0eb268cf8b97393
-ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81731818"
 ---
-# <a name="step-3-validate-connectivity"></a>STAP 3: Connectiviteit valideren
+# <a name="step-3-validate-connectivity"></a>STAP 3: connectiviteit valideren
 
-Zodra u uw logboekexpediteier (in stap 1) hebt geïmplementeerd en uw beveiligingsoplossing hebt geconfigureerd om CEF-berichten te verzenden (in stap 2), volgt u deze instructies om de verbinding tussen uw beveiligingsoplossing en Azure Sentinel te verifiëren. 
+Nadat u uw logboek doorstuur server (in stap 1) hebt geïmplementeerd en uw beveiligings oplossing hebt geconfigureerd om IT-CEF berichten te verzenden (in stap 2), volgt u deze instructies om de connectiviteit tussen uw beveiligings oplossing en Azure-Sentinel te controleren. 
 
 ## <a name="prerequisites"></a>Vereisten
 
-- U moet verhoogde machtigingen (sudo) op uw log forwarder machine.
+- U moet een verhoogde machtigingen (sudo) hebben op uw logboek-doorstuur machine.
 
-- U moet Python op uw log forwarder machine hebben geïnstalleerd.<br>
-Gebruik `python –version` de opdracht om het te controleren.
+- Python moet op uw logboek-doorstuur machine zijn geïnstalleerd.<br>
+Gebruik de `python –version` opdracht om te controleren.
 
 ## <a name="how-to-validate-connectivity"></a>Connectiviteit valideren
 
-1. Open **Logboeken**in het navigatiemenu azure sentinel . Voer een query uit met het **CommonSecurityLog-schema** om te zien of u logboeken ontvangt van uw beveiligingsoplossing.<br>
-Houd er rekening mee dat het ongeveer 20 minuten kan duren voordat uw logboeken worden weergegeven in **Log Analytics.** 
+1. Open **Logboeken**vanuit het Sentinel-navigatie menu van Azure. Voer een query uit met behulp van het **CommonSecurityLog** -schema om te controleren of er logboeken van uw beveiligings oplossing worden ontvangen.<br>
+Houd er rekening mee dat het ongeveer 20 minuten kan duren voordat uw logboeken in **log Analytics**worden weer gegeven. 
 
-1. Als u geen resultaten van de query ziet, controleert u of gebeurtenissen worden gegenereerd vanuit uw beveiligingsoplossing of probeert u een aantal te genereren en controleert u of ze worden doorgestuurd naar de door u aangewezen Syslog-expediteermachine. 
+1. Als er geen resultaten van de query worden weer geven, controleert u of er gebeurtenissen worden gegenereerd op basis van uw beveiligings oplossing of probeer het te genereren, en te controleren of ze worden doorgestuurd naar de door u opgegeven syslog-doorstuur machine. 
 
-1. Voer het volgende script uit op de logboekexpediteer om de connectiviteit tussen uw beveiligingsoplossing, de logboekexpediteer en Azure Sentinel te controleren. Dit script controleert of de daemon luistert op de juiste poorten, of het doorsturen correct is geconfigureerd en dat niets de communicatie tussen de daemon en de Log Analytics-agent blokkeert. Het stuurt ook mock berichten 'TestCommonEventFormat' om end-to-end connectiviteit te controleren. <br>
+1. Voer het volgende script uit op de logboek-doorstuur server om de connectiviteit tussen uw beveiligings oplossing, de logboek forwarder en Azure Sentinel te controleren. Met dit script wordt gecontroleerd of de daemon op de juiste poorten luistert, of het door sturen correct is geconfigureerd en dat er geen communicatie tussen de daemon en de Log Analytics agent wordt geblokkeerd. Er worden ook beeldberichten TestCommonEventFormat verzonden om end-to-end-connectiviteit te controleren. <br>
  `sudo wget https://raw.githubusercontent.com/Azure/Azure-Sentinel/master/DataConnectors/CEF/cef_troubleshoot.py&&sudo python cef_troubleshoot.py [WorkspaceID]`
 
-## <a name="validation-script-explained"></a>Validatiescript uitgelegd
+## <a name="validation-script-explained"></a>Validatie script uitgelegd
 
-Het validatiescript voert de volgende controles uit:
+Het validatie script voert de volgende controles uit:
 
-# <a name="rsyslog-daemon"></a>[rsyslog daemon](#tab/rsyslog)
+# <a name="rsyslog-daemon"></a>[rsyslog-daemon](#tab/rsyslog)
 
-1. Controleert of het bestand<br>
+1. Hiermee wordt gecontroleerd of het bestand<br>
     `/etc/opt/microsoft/omsagent/[WorkspaceID]/conf/omsagent.d/security_events.conf`<br>
     bestaat en is geldig.
 
-1. Hiermee controleert u of het bestand de volgende tekst bevat:
+1. Hiermee wordt gecontroleerd of het bestand de volgende tekst bevat:
 
         <source>
             type syslog
@@ -70,31 +70,31 @@ Het validatiescript voert de volgende controles uit:
             type filter_syslog_security
         </filter>
 
-1. Hiermee wordt gecontroleerd of er beveiligingsverbeteringen op de machine zijn die netwerkverkeer kunnen blokkeren (zoals een hostfirewall).
+1. Hiermee wordt gecontroleerd of er beveiligings uitbreidingen worden uitgevoerd op de computer die netwerk verkeer mogelijk blokkeert (zoals een firewall van een host).
 
-1. Controleert of de syslog daemon (rsyslog) correct is geconfigureerd om berichten die het identificeert als CEF (met behulp van een regex) naar de Log Analytics-agent op TCP-poort 25226 te verzenden:
+1. Controleert of de syslog-daemon (rsyslog) correct is geconfigureerd voor het verzenden van berichten die worden geïdentificeerd als CEF (met behulp van een reguliere expressie) naar de Log Analytics agent op TCP-poort 25226:
 
-    - Configuratiebestand:`/etc/rsyslog.d/security-config-omsagent.conf`
+    - Configuratie bestand:`/etc/rsyslog.d/security-config-omsagent.conf`
 
             :rawmsg, regex, "CEF\|ASA" ~
             *.* @@127.0.0.1:25226
 
-1. Controleert of de syslog daemon gegevens ontvangt op poort 514
+1. Controleert of de syslog-daemon gegevens ontvangt op poort 514
 
-1. Controleert of de benodigde verbindingen tot stand komen: tcp 514 voor het ontvangen van gegevens, tcp 25226 voor interne communicatie tussen de syslog daemon en de Log Analytics-agent
+1. Controleert of de benodigde verbindingen tot stand zijn gebracht: TCP 514 voor het ontvangen van gegevens, TCP 25226 voor interne communicatie tussen de syslog-daemon en de Log Analytics-agent
 
-1. Hiermee verzendt u MOCK-gegevens naar poort 514 op localhost. Deze gegevens moeten waarneembaar zijn in de Azure Sentinel-werkruimte door de volgende query uit te voeren:
+1. Verzendt gegevens over het model naar poort 514 op localhost. Deze gegevens moeten worden waarneembaar in de Azure Sentinel-werk ruimte door de volgende query uit te voeren:
 
         CommonSecurityLog
         | where DeviceProduct == "MOCK"
 
-# <a name="syslog-ng-daemon"></a>[syslog-ng daemon](#tab/syslogng)
+# <a name="syslog-ng-daemon"></a>[syslog-ng-daemon](#tab/syslogng)
 
-1. Controleert of het bestand<br>
+1. Hiermee wordt gecontroleerd of het bestand<br>
     `/etc/opt/microsoft/omsagent/[WorkspaceID]/conf/omsagent.d/security_events.conf`<br>
     bestaat en is geldig.
 
-1. Hiermee controleert u of het bestand de volgende tekst bevat:
+1. Hiermee wordt gecontroleerd of het bestand de volgende tekst bevat:
 
         <source>
             type syslog
@@ -112,21 +112,21 @@ Het validatiescript voert de volgende controles uit:
             type filter_syslog_security
         </filter>
 
-1. Hiermee wordt gecontroleerd of er beveiligingsverbeteringen op de machine zijn die netwerkverkeer kunnen blokkeren (zoals een hostfirewall).
+1. Hiermee wordt gecontroleerd of er beveiligings uitbreidingen worden uitgevoerd op de computer die netwerk verkeer mogelijk blokkeert (zoals een firewall van een host).
 
-1. Controleert of de syslog daemon (syslog-ng) correct is geconfigureerd om berichten die het identificeert als CEF (met behulp van een regex) naar de Log Analytics-agent op TCP-poort 25226 te verzenden:
+1. Controleert of de syslog-daemon (syslog-ng) correct is geconfigureerd voor het verzenden van berichten die worden geïdentificeerd als CEF (met behulp van een reguliere expressie) naar de Log Analytics-agent op TCP-poort 25226:
 
-    - Configuratiebestand:`/etc/syslog-ng/conf.d/security-config-omsagent.conf`
+    - Configuratie bestand:`/etc/syslog-ng/conf.d/security-config-omsagent.conf`
 
             filter f_oms_filter {match(\"CEF\|ASA\" ) ;};
             destination oms_destination {tcp(\"127.0.0.1\" port("25226"));};
             log {source(s_src);filter(f_oms_filter);destination(oms_destination);};
 
-1. Controleert of de syslog daemon gegevens ontvangt op poort 514
+1. Controleert of de syslog-daemon gegevens ontvangt op poort 514
 
-1. Controleert of de benodigde verbindingen tot stand komen: tcp 514 voor het ontvangen van gegevens, tcp 25226 voor interne communicatie tussen de syslog daemon en de Log Analytics-agent
+1. Controleert of de benodigde verbindingen tot stand zijn gebracht: TCP 514 voor het ontvangen van gegevens, TCP 25226 voor interne communicatie tussen de syslog-daemon en de Log Analytics-agent
 
-1. Hiermee verzendt u MOCK-gegevens naar poort 514 op localhost. Deze gegevens moeten waarneembaar zijn in de Azure Sentinel-werkruimte door de volgende query uit te voeren:
+1. Verzendt gegevens over het model naar poort 514 op localhost. Deze gegevens moeten worden waarneembaar in de Azure Sentinel-werk ruimte door de volgende query uit te voeren:
 
         CommonSecurityLog
         | where DeviceProduct == "MOCK"
@@ -134,8 +134,8 @@ Het validatiescript voert de volgende controles uit:
 ---
 
 ## <a name="next-steps"></a>Volgende stappen
-In dit document hebt u geleerd hoe u CEF-apparaten verbinden met Azure Sentinel. Zie de volgende artikelen voor meer informatie over Azure Sentinel:
-- Meer informatie over hoe u [inzicht krijgt in uw gegevens en potentiële bedreigingen.](quickstart-get-visibility.md)
-- Aan de slag met [het detecteren van bedreigingen met Azure Sentinel.](tutorial-detect-threats.md)
-- [Gebruik werkmappen](tutorial-monitor-your-data.md) om uw gegevens te controleren.
+In dit document hebt u geleerd hoe u CEF-apparaten verbindt met Azure Sentinel. Raadpleeg de volgende artikelen voor meer informatie over Azure Sentinel:
+- Meer informatie over hoe u [inzicht krijgt in uw gegevens en mogelijke bedreigingen](quickstart-get-visibility.md).
+- Ga aan de slag [met het detecteren van bedreigingen met Azure Sentinel](tutorial-detect-threats.md).
+- [Gebruik werkmappen](tutorial-monitor-your-data.md) om uw gegevens te bewaken.
 

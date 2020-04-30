@@ -1,27 +1,27 @@
 ---
-title: Een functie in Azure maken die reageert op HTTP-aanvragen
-description: Meer informatie over het maken van een functie vanaf de opdrachtregel en vervolgens het lokale project publiceren naar serverloze hosting in Azure-functies.
+title: Een functie in azure maken die reageert op HTTP-aanvragen
+description: Leer hoe u een functie maakt vanaf de opdracht regel en vervolgens het lokale project publiceert op serverloze hosting in Azure Functions.
 ms.date: 03/30/2020
 ms.topic: quickstart
 zone_pivot_groups: programming-languages-set-functions
 ms.openlocfilehash: 547acb42be6a0c89dbc315031c46192b5c9a4a0d
-ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81732815"
 ---
-# <a name="quickstart-create-a-function-in-azure-that-responds-to-http-requests"></a>Snelstart: een functie in Azure maken die reageert op HTTP-aanvragen
+# <a name="quickstart-create-a-function-in-azure-that-responds-to-http-requests"></a>Quick Start: een functie maken in azure die reageert op HTTP-aanvragen
 
-In dit artikel gebruikt u opdrachtregelgereedschappen om een functie te maken die reageert op HTTP-aanvragen. Nadat u de code lokaal hebt getest, implementeert u deze naar de serverloze omgeving van Azure-functies. Het voltooien van deze quickstart brengt een kleine kostenpost van enkele USD cent of minder in uw Azure-account met zich mee.
+In dit artikel gebruikt u opdracht regel Programma's voor het maken van een functie die reageert op HTTP-aanvragen. Nadat u de code lokaal hebt getest, implementeert u deze in de serverloze omgeving van Azure Functions. Het volt ooien van deze Quick Start brengt een kleine prijs van een paar USD cent of minder in uw Azure-account.
 
 ::: zone pivot="programming-language-csharp,programming-language-javascript,programming-language-typescript,programming-language-powershell,programming-language-python"  
-Er is ook een [Visual Studio Code-gebaseerde versie](functions-create-first-function-vs-code.md) van dit artikel.
+Er is ook een [versie op basis van Visual Studio code](functions-create-first-function-vs-code.md) van dit artikel.
 ::: zone-end  
 
 ::: zone pivot="programming-language-java"  
 > [!NOTE]
-> Als Maven is niet uw voorkeur ontwikkeling tool, check out onze soortgelijke tutorials voor Java-ontwikkelaars met behulp van [Gradle,](/azure/azure-functions/functions-create-first-java-gradle) [IntelliJ IDEA](/azure/developer/java/toolkit-for-intellij/quickstart-functions) en [VS Code](/azure/azure-functions/functions-create-first-function-vs-code?pivots=programming-language-java).
+> Als Maven niet uw voor keur is, Bekijk dan onze vergelijk bare zelf studies voor Java-Ontwikkel aars met [Gradle](/azure/azure-functions/functions-create-first-java-gradle), [IntelliJ idee](/azure/developer/java/toolkit-for-intellij/quickstart-functions) en [VS code](/azure/azure-functions/functions-create-first-function-vs-code?pivots=programming-language-java).
 ::: zone-end  
 
 [!INCLUDE [functions-requirements-cli](../../includes/functions-requirements-cli.md)]
@@ -30,12 +30,12 @@ Er is ook een [Visual Studio Code-gebaseerde versie](functions-create-first-func
 
 [!INCLUDE [functions-cli-create-venv](../../includes/functions-cli-create-venv.md)]
 
-## <a name="create-a-local-function-project"></a>Een lokaal functieproject maken
+## <a name="create-a-local-function-project"></a>Een lokale functie project maken
 
-In Azure Functions is een functieproject een container voor een of meer afzonderlijke functies die elk reageert op een specifieke trigger. Alle functies in een project delen dezelfde lokale en hostingconfiguraties. In deze sectie maakt u een functieproject dat één functie bevat.
+In Azure Functions is een functie project een container voor een of meer afzonderlijke functies die elk op een bepaalde trigger reageert. Alle functies in een project delen dezelfde lokale en hosting configuraties. In deze sectie maakt u een functie project dat één functie bevat.
 
 ::: zone pivot="programming-language-csharp,programming-language-javascript,programming-language-typescript,programming-language-powershell,programming-language-python"  
-Voer `func init` de opdracht als volgt uit om een functieproject te maken in een map met de naam *LocalFunctionProj* met de opgegeven runtime:  
+Voer de `func init` opdracht als volgt uit om een functions-project te maken in een map met de naam *LocalFunctionProj* met de opgegeven runtime:  
 ::: zone-end  
 ::: zone pivot="programming-language-python"  
 ```
@@ -65,7 +65,7 @@ func init LocalFunctionProj --powershell
 ::: zone pivot="programming-language-java"  
 Voer in een lege map de volgende opdracht uit om het Functions-project te genereren op basis van een [Maven-archetype](https://maven.apache.org/guides/introduction/introduction-to-archetypes.html).
 
-# <a name="bash"></a>[Bash](#tab/bash)
+# <a name="bash"></a>[bash](#tab/bash)
 ```bash
 mvn archetype:generate -DarchetypeGroupId=com.microsoft.azure -DarchetypeArtifactId=azure-functions-archetype 
 ```
@@ -79,19 +79,19 @@ mvn archetype:generate "-DarchetypeGroupId=com.microsoft.azure" "-DarchetypeArti
 ```
 ---
 
-Maven vraagt u om waarden die nodig zijn om het genereren van het project op implementatie te voltooien.   
-Geef de volgende waarden op wanneer daarom wordt gevraagd:
+Maven vraagt u om de waarden die nodig zijn om het project te kunnen genereren tijdens de implementatie.   
+Geef de volgende waarden op wanneer u hierom wordt gevraagd:
 
 | Vraag | Waarde | Beschrijving |
 | ------ | ----- | ----------- |
-| **groupId** | `com.fabrikam` | Een waarde die uw project op unieke wijze identificeert voor alle projecten, volgens de regels voor [pakketnaamgeving](https://docs.oracle.com/javase/specs/jls/se6/html/packages.html#7.7) voor Java. |
-| **artefactId** | `fabrikam-functions` | Een waarde die de naam van de pot is, zonder versienummer. |
-| **Versie** | `1.0-SNAPSHOT` | Kies de standaardwaarde. |
-| **Pakket** | `com.fabrikam.functions` | Een waarde die het Java-pakket is voor de gegenereerde functiecode. Gebruik de standaard. |
+| **Groep** | `com.fabrikam` | Een waarde die uw project op unieke wijze identificeert voor alle projecten, volgens de [pakket naamgevings regels](https://docs.oracle.com/javase/specs/jls/se6/html/packages.html#7.7) voor Java. |
+| **artifactId** | `fabrikam-functions` | Een waarde die bestaat uit de naam van het jar, zonder een versie nummer. |
+| **Versie** | `1.0-SNAPSHOT` | Kies de standaard waarde. |
+| **pakket** | `com.fabrikam.functions` | Een waarde die het Java-pakket voor de gegenereerde functie code is. Gebruik de standaard. |
 
-Typ `Y` of druk op Enter om dit te bevestigen.
+Typ `Y` of druk op ENTER om te bevestigen.
 
-Maven maakt de projectbestanden in een nieuwe map met een `fabrikam-functions`naam van _artefactId_, die in dit voorbeeld is . 
+Maven maakt de project bestanden in een nieuwe map met de naam _artifactId_, in dit voor beeld `fabrikam-functions`. 
 ::: zone-end  
 Navigeer naar de projectmap:
 
@@ -105,92 +105,92 @@ cd LocalFunctionProj
 cd fabrikam-functions
 ```
 ::: zone-end  
-Deze map bevat verschillende bestanden voor het project, waaronder configuraties bestanden met de naam [local.settings.json](functions-run-local.md#local-settings-file) en [host.json](functions-host-json.md). Omdat *local.settings.json* geheimen kan bevatten die zijn gedownload van Azure, is het bestand standaard uitgesloten van bronbeheer in het *.gitignore-bestand.*
+Deze map bevat verschillende bestanden voor het project, met inbegrip van configuratie bestanden met de naam [Local. settings. json](functions-run-local.md#local-settings-file) en [host. json](functions-host-json.md). Omdat *Local. settings. json* geheimen kan bevatten die zijn gedownload van Azure, wordt het bestand standaard uitgesloten van broncode beheer in het *. gitignore* -bestand.
 
 [!INCLUDE [functions-cli-add-function](../../includes/functions-cli-add-function.md)]
 
-### <a name="optional-examine-the-file-contents"></a>(Optioneel) De inhoud van het bestand onderzoeken
+### <a name="optional-examine-the-file-contents"></a>Beschrijving De inhoud van het bestand controleren
 
-Indien gewenst u [de functie lokaal uitvoeren](#run-the-function-locally) en de inhoud van het bestand later onderzoeken.
+Desgewenst kunt u [de functie lokaal uitvoeren](#run-the-function-locally) en de bestands inhoud later bekijken.
 
 ::: zone pivot="programming-language-csharp"
 #### <a name="httpexamplecs"></a>HttpExample.cs
 
-*HttpExample.cs* bevat `Run` een methode die `req` aanvraaggegevens in de variabele ontvangt, is een [HttpRequest](/dotnet/api/microsoft.aspnetcore.http.httprequest) die is versierd met het **HttpTriggerAttribute**, dat het triggergedrag definieert. 
+*HttpExample.cs* bevat een `Run` methode waarmee aanvraag gegevens in de `req` variabele worden ontvangen, een [HttpRequest](/dotnet/api/microsoft.aspnetcore.http.httprequest) is dat is gedecoreerd met de **HttpTriggerAttribute**, waarmee het gedrag van de trigger wordt gedefinieerd. 
 
 :::code language="csharp" source="~/functions-docs-csharp/http-trigger-template/HttpExample.cs":::
 
-Het retourobject is een [ActionResult](/dotnet/api/microsoft.aspnetcore.mvc.actionresult) dat een antwoordbericht retourneert als een [OkObjectResult](/dotnet/api/microsoft.aspnetcore.mvc.okobjectresult) (200) of een [BadRequestObjectResult](/dotnet/api/microsoft.aspnetcore.mvc.badrequestobjectresult) (400). Zie [HTTP-triggers en bindingen van Azure Functions HTTP](/azure/azure-functions/functions-bindings-http-webhook?tabs=csharp)voor meer informatie.
+Het retour object is een [ActionResult](/dotnet/api/microsoft.aspnetcore.mvc.actionresult) die een antwoord bericht retourneert als een [OkObjectResult](/dotnet/api/microsoft.aspnetcore.mvc.okobjectresult) (200) of een [BadRequestObjectResult](/dotnet/api/microsoft.aspnetcore.mvc.badrequestobjectresult) (400). Zie [Azure functions HTTP-triggers en-bindingen](/azure/azure-functions/functions-bindings-http-webhook?tabs=csharp)voor meer informatie.
 ::: zone-end
 
 ::: zone pivot="programming-language-java"
-#### <a name="functionjava"></a>Function.java
-*Function.java* bevat `run` een methode die `request` aanvraaggegevens in de variabele ontvangt, is een [HttpRequestMessage](/java/api/com.microsoft.azure.functions.httprequestmessage) die is versierd met de HttpTrigger-annotatie, die het triggergedrag definieert. [HttpTrigger](/java/api/com.microsoft.azure.functions.annotation.httptrigger) 
+#### <a name="functionjava"></a>Function. java
+*Function. java* bevat een `run` methode die aanvraag gegevens ontvangt in de `request` variabele is een [HttpRequestMessage](/java/api/com.microsoft.azure.functions.httprequestmessage) die is voorzien van de [http trigger](/java/api/com.microsoft.azure.functions.annotation.httptrigger) -annotatie, waarmee het gedrag van de trigger wordt gedefinieerd. 
 
 :::code language="java" source="~/functions-quickstart-java/functions-add-output-binding-storage-queue/src/main/java/com/function/Function.java":::
 
-Het antwoordbericht wordt gegenereerd door de [HttpResponseMessage.Builder](/java/api/com.microsoft.azure.functions.httpresponsemessage.builder) API.
+Het antwoord bericht wordt gegenereerd door de API [HttpResponseMessage. Builder](/java/api/com.microsoft.azure.functions.httpresponsemessage.builder) .
 
-#### <a name="pomxml"></a>pom.xml
+#### <a name="pomxml"></a>Pom. XML
 
-Instellingen voor de Azure-resources die zijn gemaakt om uw app te hosten, worden gedefinieerd in het **configuratie-element** van de plug-in met een **groupId** van `com.microsoft.azure` in het gegenereerde pom.xml-bestand. Het configuratie-element hieronder instrueert bijvoorbeeld een op Maven gebaseerde implementatie om een functie-app te maken in de `java-functions-group` resourcegroep in de `westus` regio. De functie-app zelf wordt `java-functions-app-service-plan` uitgevoerd op Windows gehost in het plan, dat standaard is een serverless Verbruik plan.    
+Instellingen voor de Azure-resources die zijn gemaakt voor het hosten van uw app, worden gedefinieerd in het **configuratie** - `com.microsoft.azure` element van de invoeg toepassing met een **groupid** van in het gegenereerde pom. XML-bestand. Het configuratie-element hieronder geeft bijvoorbeeld een Maven-implementatie voor het maken van een functie-app in `java-functions-group` de resource groep in `westus` de regio. De functie-app zelf wordt uitgevoerd in Windows die `java-functions-app-service-plan` wordt gehost in het plan, wat standaard een Serverloos verbruiks abonnement is.    
 
 :::code language="java" source="~/functions-quickstart-java/functions-add-output-binding-storage-queue/pom.xml" range="116-155":::
 
-U deze instellingen wijzigen om te bepalen hoe `runtime.os` resources `windows` `linux` in Azure worden gemaakt, bijvoorbeeld door over te schakelen van naar vóór de eerste implementatie. Zie de [configuratiegegevens](https://github.com/microsoft/azure-maven-plugins/wiki/Azure-Functions:-Configuration-Details)voor een volledige lijst met instellingen die worden ondersteund door de Maven-plug-in.
+U kunt deze instellingen wijzigen om te bepalen hoe resources in Azure worden gemaakt, bijvoorbeeld door te `runtime.os` wijzigen `windows` van `linux` naar vóór de eerste implementatie. Zie de [Configuratie Details](https://github.com/microsoft/azure-maven-plugins/wiki/Azure-Functions:-Configuration-Details)voor een volledige lijst met instellingen die worden ondersteund door de Maven-invoeg toepassing.
 
-#### <a name="functiontestjava"></a>FunctionTest.java
+#### <a name="functiontestjava"></a>FunctionTest. java
 
-Het archetype genereert ook een eenheidstest voor uw functie. Wanneer u uw functie wijzigt om bindingen toe te voegen of nieuwe functies aan het project toe te voegen, moet u de tests ook wijzigen in het bestand *FunctionTest.java.*
+De archetype genereert ook een eenheids test voor uw functie. Wanneer u de functie wijzigt om bindingen toe te voegen of nieuwe functies aan het project toe te voegen, moet u ook de tests in het bestand *FunctionTest. java* wijzigen.
 ::: zone-end  
 ::: zone pivot="programming-language-python"
-#### <a name="__init__py"></a>\_\_init\_\_.py
+#### <a name="__init__py"></a>\_\_init\_\_. py
 
-*\_\_init\_\_.py* `main()` bevat een Python-functie die wordt geactiveerd volgens de configuratie in *function.json*.
+*\_\_\_init\_. py* bevat een `main()` python-functie die wordt geactiveerd volgens de configuratie in *Function. json*.
 
 :::code language="python" source="~/functions-quickstart-templates/Functions.Templates/Templates/HttpTrigger-Python/__init__.py":::
 
-Voor een HTTP-trigger ontvangt de functie `req` aanvraaggegevens in de variabele zoals gedefinieerd in *function.json*. `req`is een instantie van de [klasse azure.functions.HttpRequest](/python/api/azure-functions/azure.functions.httprequest). Het retourobject, gedefinieerd `$return` als in *function.json*, is een instantie van [azure.functions.HttpResponse, klasse](/python/api/azure-functions/azure.functions.httpresponse). Zie [HTTP-triggers en bindingen van Azure Functions HTTP](/azure/azure-functions/functions-bindings-http-webhook?tabs=python)voor meer informatie.
+Voor een HTTP-trigger ontvangt de functie aanvraag gegevens in de variabele `req` zoals gedefinieerd in *Function. json*. `req`is een instantie van de [klasse Azure. functions. HttpRequest](/python/api/azure-functions/azure.functions.httprequest). Het retour object, gedefinieerd als `$return` in *Function. json*, is een instantie van de [klasse Azure. functions. HttpResponse](/python/api/azure-functions/azure.functions.httpresponse). Zie [Azure functions HTTP-triggers en-bindingen](/azure/azure-functions/functions-bindings-http-webhook?tabs=python)voor meer informatie.
 ::: zone-end
 
 ::: zone pivot="programming-language-javascript"
-#### <a name="indexjs"></a>index.js
+#### <a name="indexjs"></a>index. js
 
-*index.js* exporteert een functie die wordt geactiveerd volgens de configuratie in *function.json*.
+*index. js* exporteert een functie die wordt geactiveerd volgens de configuratie in *Function. json*.
 
 :::code language="javascript" source="~/functions-quickstart-templates/Functions.Templates/Templates/HttpTrigger-JavaScript/index.js":::
 
-Voor een HTTP-trigger ontvangt de functie `req` aanvraaggegevens in de variabele zoals gedefinieerd in *function.json*. Het retourobject, gedefinieerd `$return` als in *function.json,* is het antwoord. Zie [HTTP-triggers en bindingen van Azure Functions HTTP](/azure/azure-functions/functions-bindings-http-webhook?tabs=javascript)voor meer informatie.
+Voor een HTTP-trigger ontvangt de functie aanvraag gegevens in de variabele `req` zoals gedefinieerd in *Function. json*. Het retour object, gedefinieerd als `$return` in *Function. json*, is de reactie. Zie [Azure functions HTTP-triggers en-bindingen](/azure/azure-functions/functions-bindings-http-webhook?tabs=javascript)voor meer informatie.
 ::: zone-end
 
 ::: zone pivot="programming-language-typescript"
-#### <a name="indexts"></a>index.ts
+#### <a name="indexts"></a>index. TS
 
-*index.ts* exporteert een functie die wordt geactiveerd volgens de configuratie in *function.json*.
+*index. TS* exporteert een functie die wordt geactiveerd volgens de configuratie in *Function. json*.
 
 :::code language="typescript" source="~/functions-quickstart-templates/Functions.Templates/Templates/HttpTrigger-TypeScript/index.ts":::
 
-Voor een HTTP-trigger ontvangt de functie `req` aanvraaggegevens in de variabele van het type **HttpRequest** zoals gedefinieerd in *function.json*. Het retourobject, gedefinieerd `$return` als in *function.json,* is het antwoord. 
+Voor een HTTP-trigger ontvangt de functie aanvraag gegevens in de variabele `req` van het type **HttpRequest** zoals gedefinieerd in *Function. json*. Het retour object, gedefinieerd als `$return` in *Function. json*, is de reactie. 
 ::: zone-end
 
 ::: zone pivot="programming-language-powershell"
-#### <a name="runps1"></a>run.ps1
+#### <a name="runps1"></a>run. ps1
 
-*run.ps1* definieert een functiescript dat wordt geactiveerd volgens de configuratie in *function.json*.
+*Run. ps1* definieert een functie script dat wordt geactiveerd volgens de configuratie in *Function. json*.
 
 :::code language="powershell" source="~/functions-quickstart-templates/Functions.Templates/Templates/HttpTrigger-PowerShell/run.ps1":::
 
-Voor een HTTP-trigger ontvangt de functie `$Request` aanvraaggegevens die worden doorgegeven aan de param die is gedefinieerd in *function.json*. Het retourobject, gedefinieerd `Response` als in *function.json,* wordt als reactie op de cmdlet doorgegeven aan de `Push-OutputBinding` cmdlet. 
+Voor een HTTP-trigger ontvangt de functie gegevens over aanvragen die zijn `$Request` door gegeven aan de para meter die is gedefinieerd in *Function. json*. Het retour object, gedefinieerd als `Response` in *Function. json*, wordt door gegeven aan `Push-OutputBinding` de cmdlet als de reactie. 
 ::: zone-end
 
 ::: zone pivot="programming-language-javascript,programming-language-typescript,programming-language-python,programming-language-powershell"
 #### <a name="functionjson"></a>function.json
 
-*function.json* is een configuratiebestand dat `bindings` de invoer en uitvoer voor de functie definieert, inclusief het triggertype. 
+*Function. json* is een configuratie bestand dat de invoer en uitvoer `bindings` definieert voor de functie, met inbegrip van het trigger type. 
 ::: zone-end
 
 ::: zone pivot="programming-language-python"
-U kunt `scriptFile` wijzigen om een ander Python-bestand aan te roepen indien gewenst.
+U kunt zo `scriptFile` nodig wijzigen om een ander python-bestand aan te roepen.
 
 :::code language="json" source="~/functions-quickstart-templates/Functions.Templates/Templates/HttpTrigger-Python/function.json":::
 ::: zone-end
@@ -204,7 +204,7 @@ U kunt `scriptFile` wijzigen om een ander Python-bestand aan te roepen indien ge
 ::: zone-end
 
 ::: zone pivot="programming-language-javascript,programming-language-typescript,programming-language-python,programming-language-powershell"  
-Elke binding vereist een richting, een type en een unieke naam. De HTTP-trigger heeft een [`httpTrigger`](functions-bindings-http-webhook-trigger.md) invoerbinding van [`http`](functions-bindings-http-webhook-output.md)type- en uitvoerbinding van het type .
+Elke binding vereist een richting, een type en een unieke naam. De HTTP-trigger heeft een invoer binding van [`httpTrigger`](functions-bindings-http-webhook-trigger.md) het type en de uitvoer [`http`](functions-bindings-http-webhook-output.md)binding van het type.
 ::: zone-end  
 
 [!INCLUDE [functions-run-function-test-local-cli](../../includes/functions-run-function-test-local-cli.md)]
@@ -212,45 +212,45 @@ Elke binding vereist een richting, een type en een unieke naam. De HTTP-trigger 
 ::: zone pivot="programming-language-javascript,programming-language-typescript,programming-language-python,programming-language-powershell,programming-language-csharp"    
 ## <a name="create-supporting-azure-resources-for-your-function"></a>Ondersteunende Azure-resources maken voor uw functie
 
-Voordat u uw functiecode implementeren in Azure, moet u drie bronnen maken:
+Voordat u uw functie code kunt implementeren in azure, moet u drie resources maken:
 
-- Een resourcegroep, een logische container voor gerelateerde resources.
-- Een opslagaccount, dat status- en andere informatie over uw projecten bijhoudt.
-- Een functie-app, die de omgeving biedt voor het uitvoeren van uw functiecode. Een functie-app wordt toegewezen aan uw lokale functieproject en stelt u in staat functies te groeperen als een logische eenheid voor eenvoudiger beheer, implementatie en delen van resources.
+- Een resource groep, een logische container voor gerelateerde resources.
+- Een opslag account, waarmee de status en andere informatie over uw projecten worden bijgehouden.
+- Een functie-app, waarmee u de omgeving voor het uitvoeren van uw functie code kunt gebruiken. Een functie-app wordt toegewezen aan uw lokale functie project en biedt u de mogelijkheid om functies te groeperen als logische eenheid, zodat u resources eenvoudiger kunt beheren, implementeren en delen.
 
 Gebruik de volgende Azure CLI-opdrachten om deze items te maken. Elke opdracht biedt JSON-uitvoer na voltooiing.
 
-Als u dit nog niet hebt gedaan, meldt u zich aan bij Azure met de opdracht [AZ-aanmelding:](/cli/azure/reference-index#az-login)
+Als u dit nog niet hebt gedaan, meldt u zich aan bij Azure met de opdracht [AZ login](/cli/azure/reference-index#az-login) :
 
 ```azurecli
 az login
 ```
     
-Een resourcegroep maken met de opdracht [az group create](/cli/azure/group#az-group-create). In het volgende voorbeeld `AzureFunctionsQuickstart-rg` wordt `westeurope` een resourcegroep met de naam in de regio genaamerd. (U maakt over het algemeen uw resourcegroep en resources in `az account list-locations` een regio bij u in de buurt, met behulp van een beschikbare regio van de opdracht.)
+Een resourcegroep maken met de opdracht [az group create](/cli/azure/group#az-group-create). In het volgende voor beeld wordt een resource `AzureFunctionsQuickstart-rg` groep met `westeurope` de naam in de regio gemaakt. (In het algemeen maakt u de resource groep en-resources in een regio bij u in de buurt met `az account list-locations` behulp van een beschik bare regio van de opdracht.)
 
 ```azurecli
 az group create --name AzureFunctionsQuickstart-rg --location westeurope
 ```
 
 > [!NOTE]
-> U geen Linux- en Windows-apps hosten in dezelfde brongroep. Als u een bestaande `AzureFunctionsQuickstart-rg` resourcegroep hebt met de naam Een Windows-functie-app of web-app, moet u een andere brongroep gebruiken.
+> U kunt geen Linux-en Windows-apps hosten in dezelfde resource groep. Als u een bestaande resource groep hebt met `AzureFunctionsQuickstart-rg` de naam met een Windows-functie-app of web-app, moet u een andere resource groep gebruiken.
  
     
-Maak een opslagaccount voor algemene doeleinden in uw resourcegroep en -regio met behulp van de opdracht [AZ-opslagaccount maken.](/cli/azure/storage/account#az-storage-account-create) Vervang in het `<STORAGE_NAME>` volgende voorbeeld een wereldwijd unieke naam die bij u past. Namen moeten alleen drie tot 24 tekens en kleine letters bevatten. `Standard_LRS`hiermee wordt een algemeen doelaccount opgegeven, dat wordt [ondersteund door functies](storage-considerations.md#storage-account-requirements).
+Maak een opslag account voor algemeen gebruik in uw resource groep en regio met behulp van de opdracht [AZ Storage account create](/cli/azure/storage/account#az-storage-account-create) . Vervang `<STORAGE_NAME>` in het volgende voor beeld door een globaal unieke naam die geschikt is voor u. Namen mogen alleen uit drie tot 24 tekens bestaan en mag alleen kleine letters bevatten. `Standard_LRS`Hiermee geeft u een account voor algemeen gebruik op dat wordt [ondersteund door-functies](storage-considerations.md#storage-account-requirements).
 
 ```azurecli
 az storage account create --name <STORAGE_NAME> --location westeurope --resource-group AzureFunctionsQuickstart-rg --sku Standard_LRS
 ```
 
-De opslag rekening duurt slechts een paar cent (USD) voor deze quickstart.
+Het opslag account heeft slechts een paar cent (USD) voor deze Quick Start.
     
-Maak de functie-app met de [opdracht AZ-functieapp create.](/cli/azure/functionapp#az-functionapp-create) Vervang in het `<STORAGE_NAME>` volgende voorbeeld de naam van het account dat `<APP_NAME>` u in de vorige stap hebt gebruikt en vervang een wereldwijd unieke naam die bij u past. De `<APP_NAME>` is ook het standaard DNS-domein voor de functie-app. 
+Maak de functie-app met behulp van de opdracht [AZ functionapp Create](/cli/azure/functionapp#az-functionapp-create) . Vervang `<STORAGE_NAME>` in het volgende voor beeld door de naam van het account dat u in de vorige stap hebt gebruikt en `<APP_NAME>` Vervang door een wereld wijd unieke naam die geschikt is voor u. De `<APP_NAME>` is ook het standaard DNS-domein voor de functie-app. 
 ::: zone-end  
 
 ::: zone pivot="programming-language-python"  
-Als u Python 3.8 `--runtime-version` gebruikt, gaat u over op `3.8` en `--functions_version` naar `3`.
+Als u gebruikmaakt van python 3,8, wijzigt `--runtime-version` u `3.8` in `--functions_version` en `3`naar.
 
-Als u Python 3.6 `--runtime-version` gebruikt, gaat u over op `3.6`.
+Als u gebruikmaakt van python 3,6, wijzigt `--runtime-version` u `3.6`in.
 
 ```azurecli
 az functionapp create --resource-group AzureFunctionsQuickstart-rg --os-type Linux --consumption-plan-location westeurope --runtime python --runtime-version 3.7 --functions-version 2 --name <APP_NAME> --storage-account <STORAGE_NAME>
@@ -258,7 +258,7 @@ az functionapp create --resource-group AzureFunctionsQuickstart-rg --os-type Lin
 ::: zone-end  
 
 ::: zone pivot="programming-language-javascript,programming-language-typescript"  
-Als u Node.js 8 gebruikt, u ook overschakelen `--runtime-version` naar `8`.
+Als u node. js 8 gebruikt, wijzigt `--runtime-version` u ook in `8`.
 
 
 ```azurecli
@@ -279,15 +279,15 @@ az functionapp create --resource-group AzureFunctionsQuickstart-rg --consumption
 ::: zone-end  
 
 ::: zone pivot="programming-language-javascript,programming-language-typescript,programming-language-python,programming-language-powershell,programming-language-csharp"  
-Met deze opdracht wordt een functie-app gemaakt die wordt uitgevoerd in de opgegeven taalruntime onder het [Azure Functions Usage Plan](functions-scale.md#consumption-plan), die gratis is voor de hoeveelheid gebruik die u hier uitvoert. De opdracht voorziet ook in een bijbehorende Instantie Azure Application Insights in dezelfde resourcegroep, waarmee u uw functie-app controleren en logboeken weergeven. Zie [Azure-functies controleren](functions-monitoring.md)voor meer informatie . De instantie brengt geen kosten met zich mee totdat u deze activeert.
+Met deze opdracht maakt u een functie-app die wordt uitgevoerd in uw opgegeven taal runtime onder het [verbruiks abonnement van Azure functions](functions-scale.md#consumption-plan). Dit is gratis voor de hoeveelheid gebruik die u hier maakt. Met deze opdracht wordt ook een gekoppeld Azure-toepassing Insights-exemplaar in dezelfde resource groep ingericht, waarmee u uw functie-app kunt bewaken en logboeken weer geven. Zie [Azure functions bewaken](functions-monitoring.md)voor meer informatie. Er worden geen kosten in rekening gebracht totdat u deze activeert.
     
-## <a name="deploy-the-function-project-to-azure"></a>Het functieproject implementeren in Azure
+## <a name="deploy-the-function-project-to-azure"></a>Het functie project implementeren in azure
 ::: zone-end  
 
 ::: zone pivot="programming-language-typescript"  
-Voordat u Core Tools gebruikt om uw project te implementeren in Azure, maakt u een productieklare build van JavaScript-bestanden uit de TypeScript-bronbestanden.
+Voordat u de basis Hulpprogramma's gebruikt om uw project te implementeren in azure, maakt u een productie-gereed build van Java script-bestanden van de type script-bron bestanden.
 
-Met de volgende opdracht wordt uw TypeScript-project voorbereid op implementatie:
+Met de volgende opdracht wordt uw type script-project voor bereid voor implementatie:
 
 ```
 npm run build:production 
@@ -295,15 +295,15 @@ npm run build:production
 ::: zone-end  
 
 ::: zone pivot="programming-language-javascript,programming-language-typescript,programming-language-python,programming-language-powershell,programming-language-csharp"  
-Met de benodigde resources u nu uw lokale functieproject implementeren in de functie-app in Azure met behulp van de opdracht [publicering van de func azure-functieapp.](functions-run-local.md#project-file-deployment) Vervang in het `<APP_NAME>` volgende voorbeeld de naam van uw app.
+Met de benodigde resources kunt u nu uw lokale functies project implementeren in de functie-app in azure met behulp van de opdracht [func Azure functionapp Publish](functions-run-local.md#project-file-deployment) . Vervang `<APP_NAME>` in het volgende voor beeld door de naam van uw app.
 
 ```
 func azure functionapp publish <APP_NAME>
 ```
 
-Als u de fout ziet, u app met naam niet vinden..., wacht u een paar `az functionapp create` seconden en probeert u het opnieuw, omdat Azure de app mogelijk niet volledig heeft geïnitialiseerd na de vorige opdracht.
+Als u de fout melding ' kan de app niet vinden met de naam... ' ziet, wacht u een paar seconden en probeert u het opnieuw. de app is mogelijk niet volledig geïnitialiseerd `az functionapp create` door Azure na de vorige opdracht.
 
-De opdracht Publiceren toont resultaten die vergelijkbaar zijn met de volgende uitvoer (afgekapt voor eenvoud):
+Met de opdracht publiceren worden de resultaten weer gegeven die vergelijkbaar zijn met de volgende uitvoer (afgekapt voor eenvoud):
 
 <pre>
 ...
@@ -324,14 +324,14 @@ Functions in msdocs-azurefunctions-qs:
 
 ::: zone-end  
 ::: zone pivot="programming-language-java"  
-## <a name="deploy-the-function-project-to-azure"></a>Het functieproject implementeren in Azure
+## <a name="deploy-the-function-project-to-azure"></a>Het functie project implementeren in azure
 
-Een functie-app en gerelateerde resources worden gemaakt in Azure wanneer u uw functieproject voor het eerst implementeert. Instellingen voor de Azure-resources die zijn gemaakt om uw app te hosten, worden gedefinieerd in het [pom.xml-bestand](#pomxml). In dit artikel accepteert u de standaardinstellingen.
+Een functie-app en gerelateerde resources worden in azure gemaakt wanneer u uw functions-project voor het eerst implementeert. De instellingen voor de Azure-resources die zijn gemaakt voor het hosten van uw app, worden gedefinieerd in het [bestand pom. XML](#pomxml). In dit artikel gaat u akkoord met de standaard instellingen.
 
 > [!TIP]
-> Als u een functie-app wilt maken `runtime.os` die wordt uitgevoerd op Linux `windows` `linux`in plaats van Windows, wijzigt u het element in het pom.xml-bestand van . Het uitvoeren van Linux in een consumptieplan wordt ondersteund in [deze regio's.](https://github.com/Azure/azure-functions-host/wiki/Linux-Consumption-Regions) U geen apps hebben die worden uitgevoerd op Linux en apps die op Windows worden uitgevoerd in dezelfde brongroep.
+> Als u een functie-app wilt maken die wordt uitgevoerd op Linux in `runtime.os` plaats van Windows, wijzigt u het element `windows` in `linux`het bestand pom. XML van in. Het uitvoeren van Linux in een verbruiks abonnement wordt in [deze regio's](https://github.com/Azure/azure-functions-host/wiki/Linux-Consumption-Regions)ondersteund. U kunt geen apps gebruiken die worden uitgevoerd op Linux en apps die worden uitgevoerd in Windows in dezelfde resource groep.
 
-Voordat u implementeren, gebruikt u de opdracht Azure CLI voor [AZ-aanmelding](/cli/azure/authenticate-azure-cli) om u aan te melden bij uw Azure-abonnement. 
+Voordat u kunt implementeren, gebruikt u de opdracht [AZ login](/cli/azure/authenticate-azure-cli) Azure CLI om u aan te melden bij uw Azure-abonnement. 
 
 ```azurecli
 az login
@@ -343,43 +343,43 @@ Gebruik de volgende opdracht om uw project te implementeren in een nieuwe functi
 mvn azure-functions:deploy
 ```
 
-Hiermee worden de volgende bronnen in Azure gemaakt:
+Hiermee maakt u de volgende resources in Azure:
 
-+ Resourcegroep. Genoemd als _java-functies-groep_.
-+ Opslagaccount. Vereist door Functies. De naam wordt willekeurig gegenereerd op basis van de vereisten voor de naam van het opslagaccount.
-+ Hosting plan. Serverloze hosting voor uw functie-app in de _westusregio._ De naam is _java-functions-app-service-plan._
-+ Functie-app. Een functie-app is de implementatie- en uitvoeringseenheid voor uw functies. De naam wordt willekeurig gegenereerd op basis van je _artefactId,_ toegevoegd met een willekeurig gegenereerd nummer. 
++ Resource groep. Een naam als _Java-functions-groep_.
++ Opslag account. Vereist door-functies. De naam wordt wille keurig gegenereerd op basis van de vereisten van het opslag account.
++ Hosting plan. Serverloze hosting voor uw functie-app in de regio _westus_ . De naam is _Java-functions-app-service-plan_.
++ Functie-app. Een functie-app is de implementatie-en uitvoerings eenheid voor uw functies. De naam wordt wille keurig gegenereerd op basis van uw _artifactId_, toegevoegd met een wille keurig gegenereerd nummer. 
 
-De implementatie verpakt de projectbestanden en implementeert deze naar de nieuwe functie-app met [zip-implementatie.](functions-deployment-technologies.md#zip-deploy) De code wordt uitgevoerd vanuit het implementatiepakket in Azure.
+De implementatie verpakt de project bestanden en implementeert deze in de nieuwe functie-app met behulp van [zip-implementatie](functions-deployment-technologies.md#zip-deploy). De code wordt uitgevoerd vanuit het implementatie pakket in Azure.
 ::: zone-end
 
-## <a name="invoke-the-function-on-azure"></a>De functie op Azure aanroepen
+## <a name="invoke-the-function-on-azure"></a>De functie aanroepen op Azure
 
-Omdat uw functie een HTTP-trigger gebruikt, roept u deze aan door een HTTP-verzoek in te dienen voor de URL in de browser of met een tool als krul. In beide gevallen `code` is de URL-parameter de unieke [functiesleutel](functions-bindings-http-webhook-trigger.md#authorization-keys) die de aanroep van uw functieeindpunt autoriseert.
+Omdat uw functie gebruikmaakt van een HTTP-trigger, roept u deze aan door een HTTP-aanvraag naar de URL in de browser of met een hulp programma zoals krul te maken. In beide gevallen is de `code` URL-para meter uw unieke [functie sleutel](functions-bindings-http-webhook-trigger.md#authorization-keys) die de aanroep van uw functie-eind punt toestaat.
 
 # <a name="browser"></a>[Browser](#tab/browser)
 
-Kopieer de volledige **URL van aanroepen** die in de uitvoer van de `&name=Functions`opdracht publiceren wordt weergegeven naar een adresbalk van de browser, waarbij de queryparameter wordt toegevoegd. De browser moet dezelfde uitvoer weergeven als wanneer u de functie lokaal hebt uitgevoerd.
+Kopieer de volledige **invoke-URL** die wordt weer gegeven in de uitvoer van de opdracht publiceren naar een adres balk van de browser `&name=Functions`en voeg de query parameter toe. De browser moet vergelijk bare uitvoer weer geven als u de functie lokaal hebt uitgevoerd.
 
-![De uitvoer van de functie wordt uitgevoerd op Azure in een browser](./media/functions-create-first-azure-function-azure-cli/function-test-cloud-browser.png)
+![De uitvoer van de functie die wordt uitgevoerd op Azure in een browser](./media/functions-create-first-azure-function-azure-cli/function-test-cloud-browser.png)
 
 
-# <a name="curl"></a>[Curl](#tab/curl)
+# <a name="curl"></a>[Ezelsoor](#tab/curl)
 
-Voer [`curl`](https://curl.haxx.se/) uit met de URL `&name=Functions` **aanroepen**, waarbij de parameter wordt toegevoegd . De uitvoer van de opdracht moet de tekst zijn, 'Hallo functies'.
+Voer [`curl`](https://curl.haxx.se/) uit met de **aanroepen-URL**en voeg `&name=Functions`de para meter toe. De uitvoer van de opdracht moet de tekst ' Hello functions ' zijn.
 
-![De uitvoer van de functie wordt uitgevoerd op Azure met behulp van krul](./media/functions-create-first-azure-function-azure-cli/function-test-cloud-curl.png)
+![De uitvoer van de functie die wordt uitgevoerd op Azure met behulp van krul](./media/functions-create-first-azure-function-azure-cli/function-test-cloud-curl.png)
 
 ---
 
 > [!TIP]
-> Als u bijna realtime logboeken voor een gepubliceerde functie-app wilt weergeven, gebruikt u de [Live Metrics Stream van Toepassing-statistieken](functions-monitoring.md#streaming-logs).
+> Gebruik de [Application Insights Live Metrics stream](functions-monitoring.md#streaming-logs)om bijna realtime logboeken voor een gepubliceerde functie-app weer te geven.
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
-Als u doorgaat met de volgende stap, [voegt u een azure storage-wachtrijuitvoerbinding toe,](functions-add-output-binding-storage-queue-cli.md)houdt u al uw resources op hun plaats, omdat u voortbouwt op wat u al hebt gedaan.
+Als u verdergaat met de volgende stap, [voegt u een Azure Storage wachtrij-uitvoer binding toe](functions-add-output-binding-storage-queue-cli.md). u kunt al uw resources op dezelfde plaats zetten als u op de hoogte bent van wat u al hebt gedaan.
 
-Gebruik anders de volgende opdracht om de brongroep en al de opgenomen resources te verwijderen om te voorkomen dat er extra kosten worden gemaakt.
+Gebruik anders de volgende opdracht om de resource groep en alle bijbehorende resources te verwijderen om te voor komen dat er verdere kosten in rekening worden gebracht.
 
 ```azurecli
 az group delete --name AzureFunctionsQuickstart-rg
@@ -388,4 +388,4 @@ az group delete --name AzureFunctionsQuickstart-rg
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"]
-> [Verbinding maken met een Azure Storage-wachtrij](functions-add-output-binding-storage-queue-cli.md)
+> [Verbinding maken met een Azure Storage wachtrij](functions-add-output-binding-storage-queue-cli.md)

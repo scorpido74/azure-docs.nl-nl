@@ -1,6 +1,6 @@
 ---
-title: Azure virtual machine certification - Azure Marketplace
-description: Meer informatie over het testen en indienen van een virtuele machine aanbieding in de commerciële markt.
+title: Certificering van Azure virtual machine-Azure Marketplace
+description: Meer informatie over het testen en verzenden van een aanbieding voor de virtuele machine in de commerciële Marketplace.
 author: emuench
 ms.author: mingshen
 ms.service: marketplace
@@ -8,50 +8,50 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/09/2020
 ms.openlocfilehash: 9bd7e40855f30612b90cf28365c0b1410cd3e3d8
-ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81731128"
 ---
-# <a name="azure-virtual-machine-vm-image-certification"></a>Azure virtual machine (VM) afbeeldingscertificering
+# <a name="azure-virtual-machine-vm-image-certification"></a>Certificering van installatie kopie van virtuele Azure-machine (VM)
 
 > [!NOTE]
-> We verplaatsen het beheer van uw Azure VM-aanbiedingen van Cloud Partner Portal naar Partner Center. Totdat uw aanbiedingen zijn gemigreerd, u de instructies in [Certificaten maken voor Azure Key Vault](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/virtual-machine/cpp-create-key-vault-cert) in Cloud Partner Portal blijven volgen om uw aanbiedingen te beheren.
+> We verplaatsen het beheer van uw Azure VM-aanbiedingen van Cloud Partner-portal naar het partner centrum. Totdat uw aanbiedingen zijn gemigreerd, volgt u de instructies in [certificaten voor Azure Key Vault maken](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/virtual-machine/cpp-create-key-vault-cert) in Cloud Partner-Portal om uw aanbiedingen te beheren.
 
-In dit artikel wordt beschreven hoe u een VM-afbeelding (Virtual Machine) testen en verzenden in de commerciële marktplaats om ervoor te zorgen dat deze voldoet aan de nieuwste publicatievereisten voor Azure Marketplace.This article describes how to test and submit a virtual machine (VM) image in the commercial marketplace to ensure it meet the latest Azure Marketplace publishing requirements.
+In dit artikel wordt beschreven hoe u een installatie kopie van een virtuele machine (VM) in de commerciële Marketplace kunt testen en verzenden om te controleren of deze voldoet aan de meest recente publicatie vereisten voor Azure Marketplace.
 
-Voer deze stappen uit voordat u uw VM-aanbieding indient:
+Voer de volgende stappen uit voordat u uw VM-aanbieding verzendt:
 
 1. Certificaten maken en implementeren.
-2. Een Azure VM implementeren met uw algemene afbeelding.
-3. Validaties uitvoeren.
+2. Implementeer een Azure VM met behulp van uw gegeneraliseerde installatie kopie.
+3. Voer validaties uit.
 
 ## <a name="create-and-deploy-certificates-for-azure-key-vault"></a>Certificaten voor Azure Key Vault maken en implementeren
 
-In dit gedeelte wordt beschreven hoe u de zelfondertekende certificaten maken en implementeren die nodig zijn voor het instellen van WinRM-connectiviteit (Windows Remote Management) op een door Azure gehoste virtuele machine.
+In deze sectie wordt beschreven hoe u zelfondertekende certificaten maakt en implementeert die vereist zijn voor het instellen van WinRM-connectiviteit (Windows Remote Management) voor een virtuele machine die door Azure wordt gehost.
 
 ### <a name="create-certificates-for-azure-key-vault"></a>Certificaten maken voor Azure Key Vault
 
 Dit proces bestaat uit drie stappen:
 
-1. Maak het beveiligingscertificaat.
+1. Maak het beveiligings certificaat.
 2. Maak de Azure Key Vault om het certificaat op te slaan.
-3. Bewaar de certificaten in de sleutelkluis.
+3. Sla de certificaten op in de sleutel kluis.
 
-U hiervoor een nieuwe of een bestaande Azure-brongroep gebruiken.
+U kunt een nieuwe of een bestaande Azure-resource groep gebruiken voor dit werk.
 
-#### <a name="create-the-security-certificate"></a>Het beveiligingscertificaat maken
+#### <a name="create-the-security-certificate"></a>Het beveiligings certificaat maken
 
-Bewerk en voer het volgende Azure PowerShell-script uit om het certificaatbestand (.pfx) in een lokale map te maken. Vervang de waarden voor de parameters in de volgende tabel.
+Bewerk en voer het volgende Azure PowerShell script uit om het certificaat bestand (. pfx) in een lokale map te maken. Vervang de waarden voor de para meters die in de volgende tabel worden weer gegeven.
 
-| **Parameter** | **Beschrijving** |
+| **Bepaalde** | **Beschrijving** |
 | --- | --- |
-| $certroopath | Lokale map om het PFX-bestand op te slaan. |
-| $location | Een van de Azure-standaard geografische locaties. |
-| $vmName | Naam van de geplande Azure virtuele machine. |
-| $certname | Naam van het certificaat; moet overeenkomen met de volledig gekwalificeerde domeinnaam van de geplande VM. |
-| $certpassword | Wachtwoord voor de certificaten moet overeenkomen met het wachtwoord dat wordt gebruikt voor de geplande VM. |
+| $certroopath | Lokale map waarin het. pfx-bestand moet worden opgeslagen. |
+| $location | Een van de standaard geografische locaties van Azure. |
+| $vmName | De naam van de geplande virtuele machine van Azure. |
+| $certname | De naam van het certificaat; moet overeenkomen met de Fully Qualified Domain Name van de geplande virtuele machine. |
+| $certpassword | Het wacht woord voor de certificaten moet overeenkomen met het wacht woord dat voor de geplande virtuele machine wordt gebruikt. |
 | | |
 
 ```PowerShell
@@ -82,14 +82,14 @@ Bewerk en voer het volgende Azure PowerShell-script uit om het certificaatbestan
 ```
 
 > [!TIP]
-> Houd dezelfde Azure PowerShell-consolesessie tijdens deze stappen geopend en uitgevoerd om de waarden van de verschillende parameters te behouden.
+> Houd dezelfde Azure PowerShell-console sessie open en voer tijdens deze stappen uit om de waarden van de verschillende para meters te bewaren.
 
 > [!WARNING]
-> Als u dit script opslaat, slaat u het alleen op een veilige locatie op omdat het beveiligingsgegevens (een wachtwoord) bevat.
+> Als u dit script opslaat, slaat u het op een veilige locatie op omdat het beveiligings gegevens bevat (een wacht woord).
 
-#### <a name="create-the-azure-key-vault-to-store-the-certificate"></a>De Azure-sleutelkluis maken om het certificaat op te slaan
+#### <a name="create-the-azure-key-vault-to-store-the-certificate"></a>De Azure-sleutel kluis maken om het certificaat op te slaan
 
-Kopieer de inhoud van de onderstaande sjabloon naar een bestand op uw lokale machine. In het onderstaande voorbeeldscript `C:\certLocation\keyvault.json`is deze bron ).
+Kopieer de inhoud van de onderstaande sjabloon naar een bestand op uw lokale computer. In het onderstaande voorbeeld script is `C:\certLocation\keyvault.json`deze bron.
 
 ```json
 {
@@ -184,15 +184,15 @@ Kopieer de inhoud van de onderstaande sjabloon naar een bestand op uw lokale mac
 
 ```
 
-Bewerk en voer het volgende Azure PowerShell-script uit om een Azure Key Vault en de bijbehorende brongroep te maken. De waarden voor de parameters in de volgende tabel vervangen
+Bewerk en voer het volgende Azure PowerShell script uit om een Azure Key Vault en de gekoppelde resource groep te maken. Vervang de waarden voor de para meters die in de volgende tabel worden weer gegeven
 
-| **Parameter** | **Beschrijving** |
+| **Bepaalde** | **Beschrijving** |
 | --- | --- |
-| $postfix | Willekeurige numerieke tekenreeks die is gekoppeld aan implementatie-id's. |
-| $rgName | De naam van de Azure-brongroep (RG) moet worden gemaakt. |
-| $location | Een van de Azure-standaard geografische locaties. |
-| $kvTemplateJson | Pad van bestand (keyvault.json) met resourcebeheersjabloon voor sleutelkluis. |
-| $kvname | Naam van de nieuwe sleutelkluis.|
+| $postfix | Wille keurige numerieke teken reeks gekoppeld aan implementatie-id's. |
+| $rgName | De naam van de Azure-resource groep (RG) die u wilt maken. |
+| $location | Een van de standaard geografische locaties van Azure. |
+| $kvTemplateJson | Het pad van het bestand (de code van de sleutel kluis. json) dat een resource manager-sjabloon bevat voor Key kluis. |
+| $kvname | De naam van de nieuwe sleutel kluis.|
 |   |   |
 
 ```PowerShell
@@ -291,9 +291,9 @@ Bewerk en voer het volgende Azure PowerShell-script uit om een Azure Key Vault e
 
 ```
 
-#### <a name="store-the-certificates-to-the-key-vault"></a>De certificaten opslaan in de sleutelkluis
+#### <a name="store-the-certificates-to-the-key-vault"></a>De certificaten opslaan in de sleutel kluis
 
-Sla de certificaten in het PFX-bestand op in het nieuwe sleutelkluismetje met dit script:
+Sla de certificaten in het pfx-bestand op in de nieuwe sleutel kluis met behulp van dit script:
 
 ```PowerShell
      $fileName =$certroopath+"\$certname"+".pfx"
@@ -317,13 +317,13 @@ Sla de certificaten in het PFX-bestand op in het nieuwe sleutelkluismetje met di
 
 ```
 
-## <a name="deploy-an-azure-vm-using-your-generalized-image"></a>Een Azure VM implementeren met uw algemene afbeelding
+## <a name="deploy-an-azure-vm-using-your-generalized-image"></a>Een Azure-VM implementeren met behulp van uw gegeneraliseerde installatie kopie
 
-In deze sectie wordt beschreven hoe u een gegeneraliseerde VHD-afbeelding implementeert om een nieuwe Azure VM-bron te maken. Voor dit proces gebruiken we de meegeleverde Azure Resource Manager-sjabloon en Azure PowerShell-script.
+In deze sectie wordt beschreven hoe u een gegeneraliseerde VHD-installatie kopie implementeert voor het maken van een nieuwe Azure VM-resource. Voor dit proces gebruiken we de meegeleverde Azure Resource Manager sjabloon en Azure PowerShell script.
 
-### <a name="prepare-an-azure-resource-manager-template"></a>Een Azure Resource Manager-sjabloon voorbereiden
+### <a name="prepare-an-azure-resource-manager-template"></a>Een Azure Resource Manager sjabloon voorbereiden
 
-Kopieer de volgende Azure Resource Manager-sjabloon voor VHD-implementatie naar een lokaal bestand met de naam VHDtoImage.json. Het volgende script vraagt de locatie op de lokale machine om deze JSON te gebruiken.
+Kopieer de volgende Azure Resource Manager sjabloon voor VHD-implementatie naar een lokaal bestand met de naam VHDtoImage. json. Het volgende script vraagt de locatie op de lokale computer aan om deze JSON te gebruiken.
 
 ```JSON
 {
@@ -558,32 +558,32 @@ Kopieer de volgende Azure Resource Manager-sjabloon voor VHD-implementatie naar 
 
 ```
 
-Bewerk dit bestand om waarden voor deze parameters op te geven:
+Bewerk dit bestand om waarden op te geven voor deze para meters:
 
-| **Parameter** | **Beschrijving** |
+| **Bepaalde** | **Beschrijving** |
 | --- | --- |
-| ResourceGroupName | Bestaande naam van azure-bronnengroep. Gebruik doorgaans dezelfde RG als uw sleutelkluis. |
-| Sjabloonbestand | Volledige pathname van het bestand VHDtoImage.json. |
+| ResourceGroupName | De naam van de bestaande Azure-resource groep. Gebruik normaal gesp roken dezelfde RG als uw sleutel kluis. |
+| TemplateFile | Volledig pad naar het bestand VHDtoImage. json. |
 | userStorageAccountName | Naam van het opslagaccount. |
-| sNameForPublicIP | DNS-naam voor het openbare IP; kleine letters. |
+| sNameForPublicIP | DNS-naam voor het open bare IP-adres. moet een kleine letter zijn. |
 | subscriptionId | Azure-abonnements-id. |
-| Locatie | Standaard Azure geografische locatie van de resourcegroep. |
-| vmName | Naam van de virtuele machine. |
-| vaultName | Naam van de sleutelkluis. |
-| vaultResourceGroup | Resourcegroep van de sleutelkluis. |
-| certificateUrl certificateUrl certificateUrl certificateUrl | Webadres (URL) van het certificaat, inclusief versie die `https://testault.vault.azure.net/secrets/testcert/b621es1db241e56a72d037479xab1r7`is opgeslagen in de sleutelkluis, bijvoorbeeld: . |
-| vhdUrl | Webadres van de virtuele harde schijf. |
-| vmSize | Grootte van de virtuele machine instantie. |
-| publicIPAddressName | Naam van het openbare IP-adres. |
-| virtualNetworkName | Naam van het virtuele netwerk. |
-| nicNaam | Naam van de netwerkinterfacekaart voor het virtuele netwerk. |
-| adminUserName | Gebruikersnaam van het beheerdersaccount. |
-| adminPassword | Beheerderswachtwoord. |
+| Locatie | Standaard geografische locatie van Azure van de resource groep. |
+| vmName | De naam van de virtuele machine. |
+| vaultName | De naam van de sleutel kluis. |
+| vaultResourceGroup | De resource groep van de sleutel kluis. |
+| certificateUrl | Webadres (URL) van het certificaat, inclusief de versie die is opgeslagen in de sleutel kluis, `https://testault.vault.azure.net/secrets/testcert/b621es1db241e56a72d037479xab1r7`bijvoorbeeld:. |
+| vhdUrl | Het webadres van de virtuele harde schijf. |
+| vmSize | Grootte van het exemplaar van de virtuele machine. |
+| publicIPAddressName | De naam van het open bare IP-adres. |
+| virtualNetworkName | De naam van het virtuele netwerk. |
+| nicName | De naam van de netwerk interface kaart voor het virtuele netwerk. |
+| adminUserName | De gebruikers naam van het Administrator-account. |
+| adminPassword | Beheerders wachtwoord. |
 |   |   |
 
-### <a name="deploy-an-azure-vm"></a>Een Azure VM implementeren
+### <a name="deploy-an-azure-vm"></a>Een Azure-VM implementeren
 
-Kopieer en bewerk het volgende script `$storageaccount` `$vhdUrl` om waarden voor de en variabelen te geven. Voer deze uit om een Azure VM-bron te maken op basis van uw bestaande gegeneraliseerde VHD.
+Kopieer en bewerk het volgende script om waarden voor de `$storageaccount` variabelen en `$vhdUrl` op te geven. Voer deze uit om een Azure VM-resource te maken op basis van uw bestaande gegeneraliseerde VHD.
 
 ```PowerShell
 
@@ -605,51 +605,51 @@ New-AzResourceGroupDeployment -Name"dplisvvm$postfix" -ResourceGroupName"$rgName
 
 ## <a name="run-validations"></a>Validaties uitvoeren
 
-Er zijn twee manieren om validaties uit te voeren op de geïmplementeerde afbeelding:
+Er zijn twee manieren om validaties uit te voeren op de geïmplementeerde installatie kopie:
 
-- Certificeringstesttool gebruiken voor Azure Certified
-- De zelftest-API gebruiken
+- Certificerings test hulpprogramma gebruiken voor Azure Certified
+- De zelf test-API gebruiken
 
-### <a name="download-and-run-the-certification-test-tool"></a>Het certificeringstestprogramma downloaden en uitvoeren
+### <a name="download-and-run-the-certification-test-tool"></a>Het hulp programma voor certificerings test downloaden en uitvoeren
 
-De Certification Test Tool voor Azure Certified wordt uitgevoerd op een lokale Windows-machine, maar test een Windows- of Linux-vm op Azure. Het verklaart dat uw VM-afbeelding van uw gebruiker kan worden gebruikt met Microsoft Azure en dat aan de richtlijnen en vereisten voor de voorbereiding van uw VHD is voldaan. De uitvoer van de tool is een compatibiliteitsrapport dat u uploadt naar de Portal van het Partnercenter om VM-certificering aan te vragen.
+Het certificerings test hulpprogramma voor Azure Certified wordt uitgevoerd op een lokale Windows-computer, maar test een op Azure gebaseerde Windows-of Linux-VM. Het verklaart dat uw VM-installatie kopie van uw gebruiker kan worden gebruikt met Microsoft Azure en dat aan de richt lijnen en vereisten rond het voorbereiden van uw VHD is voldaan. De uitvoer van het hulp programma is een compatibiliteits rapport dat u uploadt naar de partner centrum-Portal om een VM-certificering aan te vragen.
 
-1. Download en installeer de meest recente [Certification Test Tool voor Azure Certified.](https://www.microsoft.com/download/details.aspx?id=44299)
-2. Open het certificeringsgereedschap en selecteer **Nieuwe test starten**.
-3. Voer in het scherm **Testinformatie** een **testnaam** in voor de testrun.
-4. Selecteer het **platform** voor uw vm, Windows Server of Linux. Uw platformkeuze is van invloed op de overige opties.
-5. Als uw VM deze databaseservice gebruikt, schakelt u het selectievakje **Testen voor Azure SQL Database** in.
+1. Down load en installeer het meest recente [certificerings test programma voor Azure Certified](https://www.microsoft.com/download/details.aspx?id=44299).
+2. Open het certificerings programma en selecteer vervolgens **nieuwe test starten**.
+3. Voer in het scherm **test informatie** een **test naam** in voor de test uitvoering.
+4. Selecteer het **platform** voor uw virtuele machine, ofwel Windows Server of Linux. De platform keuze is van invloed op de resterende opties.
+5. Als uw virtuele machine gebruikmaakt van deze database service, schakelt u het selectie vakje **testen voor Azure SQL database** in.
 
-### <a name="connect-the-certification-tool-to-a-vm-image"></a>Het certificeringsgereedschap verbinden met een VM-afbeelding
+### <a name="connect-the-certification-tool-to-a-vm-image"></a>Het certificerings hulpprogramma verbinden met een VM-installatie kopie
 
-De tool maakt verbinding met VMs op basis van Windows met [Azure PowerShell](https://docs.microsoft.com/powershell/) en maakt verbinding met Linux VM's via [SSH.Net.](https://www.ssh.com/ssh/protocol/)
+Het hulp programma maakt verbinding met Vm's op basis van Windows met [Azure PowerShell](https://docs.microsoft.com/powershell/) en maakt verbinding met virtuele Linux-machines via [SSH.net](https://www.ssh.com/ssh/protocol/).
 
-### <a name="connect-the-certification-tool-to-a-linux-vm-image"></a>Het certificeringsprogramma verbinden met een Linux VM-afbeelding
+### <a name="connect-the-certification-tool-to-a-linux-vm-image"></a>Verbind het certificerings programma met een Linux VM-installatie kopie
 
-1. Selecteer de **SSH-verificatiemodus:** wachtwoordverificatie of sleutelbestandsverificatie.
-2. Als u verificatie op basis van een wachtwoord gebruikt, voert u waarden in voor de **VM DNS-naam**, **gebruikersnaam**en **wachtwoord**. U ook het standaard **SSH-poortnummer** wijzigen.
+1. Selecteer de **SSH-verificatie** modus: wachtwoord verificatie of sleutel bestands verificatie.
+2. Als u verificatie op basis van wacht woorden gebruikt, voert u waarden in voor de **DNS-naam van de virtuele machine**, de **gebruikers naam**en het **wacht woord**. U kunt ook het standaard **SSH-poort** nummer wijzigen.
 
-    ![Azure Certified Test Tool, wachtwoordverificatie van Linux VM Image](media/avm-cert2.png)
+    ![Azure Certified test tool, wachtwoord verificatie van Linux VM-installatie kopie](media/avm-cert2.png)
 
-3. Als u verificatie op basis van sleutelbestanden gebruikt, voert u waarden in voor de **locatie VM DNS,** **Gebruikersnaam**en **Privésleutel.** U ook een **wachtwoordzin** opnemen of het standaard **SSH-poortnummer** wijzigen.
+3. Als u gebruikmaakt van verificatie op basis van een sleutel bestand, voert u waarden in voor de **DNS-naam van de virtuele machine**, de **gebruikers naam**en de locatie van de **persoonlijke sleutel** . U kunt ook een **wachtwoordzin** toevoegen of het standaard- **SSH-poort** nummer wijzigen.
 
-### <a name="connect-the-certification-tool-to-a-windows-based-vm-image"></a>**Het certificeringshulpprogramma verbinden met een VM-afbeelding op basis van Windows**
+### <a name="connect-the-certification-tool-to-a-windows-based-vm-image"></a>**Het certificerings hulpprogramma verbinden met een VM-installatie kopie op basis van Windows**
 
-1. Voer de volledig gekwalificeerde **VM DNS-naam** in (bijvoorbeeld MyVMName.Cloudapp.net).
-2. Voer waarden in voor de **gebruikersnaam** en **het wachtwoord**.
+1. Voer de volledig gekwalificeerde **VM-DNS-naam** in (bijvoorbeeld MyVMName.Cloudapp.net).
+2. Voer waarden in voor de **gebruikers naam** en het **wacht woord**.
 
-    ![Azure Certified Test Tool, wachtwoordverificatie van Windows-vm-afbeelding](media/avm-cert4.png)
+    ![Azure Certified test tool, wachtwoord verificatie van VM-installatie kopie op basis van Windows](media/avm-cert4.png)
 
-### <a name="run-a-certification-test"></a>Een certificeringstest uitvoeren
+### <a name="run-a-certification-test"></a>Een certificerings test uitvoeren
 
-Nadat u de parameterwaarden voor uw VM-afbeelding in het certificeringshulpprogramma hebt opgegeven, selecteert u **Verbinding testen** om een geldige verbinding met uw VM te maken. Nadat een verbinding is geverifieerd, selecteert u **Volgende** om de test te starten. Wanneer de test is voltooid, worden de testresultaten weergegeven in een tabel. De kolom Status toont (Pas/Mislukt/Waarschuwing) voor elke test. Als een van de tests mislukt, is uw afbeelding _niet_ gecertificeerd. Bekijk in dit geval de vereisten en foutberichten, breng de voorgestelde wijzigingen aan en voer de test opnieuw uit.
+Nadat u de parameter waarden voor uw VM-installatie kopie in het certificerings programma hebt opgegeven, selecteert u **verbinding testen** om een geldige verbinding met uw virtuele machine te maken. Nadat een verbinding is geverifieerd, selecteert u **volgende** om de test te starten. Wanneer de test is voltooid, worden de test resultaten weer gegeven in een tabel. In de kolom Status wordt voor elke test weer gegeven (pass/fail/Warning). Als een van de tests mislukt, is uw installatie kopie _niet_ gecertificeerd. In dit geval raadpleegt u de vereisten en fout berichten, brengt u de voorgestelde wijzigingen aan en voert u de test opnieuw uit.
 
-Nadat de geautomatiseerde test is voltooid, geeft u aanvullende informatie over uw VM-afbeelding op de twee tabbladen van het **scherm Vragenlijst,** **Algemene beoordeling** en **kernelaanpassing**en selecteert u **Volgende**.
+Nadat de geautomatiseerde test is voltooid, geeft u aanvullende informatie over de VM-installatie kopie op de twee tabbladen van het **vragenlijst** scherm, **algemene evaluatie** en aanpassing van de **kernel**en selecteert u **volgende**.
 
-Met het laatste scherm u meer informatie verstrekken, zoals SSH-toegangsinformatie voor een Linux VM-afbeelding en een verklaring voor mislukte beoordelingen als u op zoek bent naar uitzonderingen.
+In het laatste scherm kunt u meer informatie opgeven, zoals SSH-toegangs gegevens voor een Linux VM-installatie kopie, en een uitleg voor eventuele mislukte beoordelingen als u op zoek bent naar uitzonde ringen.
 
-Selecteer ten slotte **Rapport genereren** om de testresultaten te downloaden en bestanden voor de uitgevoerde testcases te registreren, samen met uw antwoorden op de vragenlijst. Sla de resultaten op in dezelfde container als uw VHD's.
+Selecteer ten slotte **rapport genereren** om de test resultaten en logboek bestanden voor de uitgevoerde test cases samen met uw antwoorden op de vragen lijst te downloaden. Sla de resultaten op in dezelfde container als uw Vhd's.
 
 ## <a name="next-step"></a>Volgende stap
 
-- [Een uniforme resource-id 'URI' genereren voor elke VHD](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/virtual-machine/cpp-get-sas-uri)
+- [Een Uniform Resource Identifier (URI) voor elke VHD genereren](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/virtual-machine/cpp-get-sas-uri)

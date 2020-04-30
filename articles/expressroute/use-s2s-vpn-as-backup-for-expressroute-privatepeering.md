@@ -1,6 +1,6 @@
 ---
-title: S2S VPN gebruiken als back-up voor Azure ExpressRoute Private Peering | Microsoft Documenten
-description: Deze pagina bevat architecturale aanbevelingen voor het maken van back-ups van Azure ExpressRoute private peering met S2S VPN.
+title: S2S VPN gebruiken als back-up voor Azure ExpressRoute privé-peering | Microsoft Docs
+description: Deze pagina bevat architectuur aanbevelingen voor het maken van back-ups van Azure ExpressRoute private-peering met S2S VPN.
 services: networking
 author: rambk
 ms.service: expressroute
@@ -8,68 +8,68 @@ ms.topic: article
 ms.date: 02/05/2020
 ms.author: rambala
 ms.openlocfilehash: a6a22b667bc66d6ee69bfbd7ad1db88f72d8df0e
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81687846"
 ---
-# <a name="using-s2s-vpn-as-a-backup-for-expressroute-private-peering"></a>S2S VPN gebruiken als back-up voor Privé-peering via ExpressRoute
+# <a name="using-s2s-vpn-as-a-backup-for-expressroute-private-peering"></a>S2S VPN gebruiken als back-up voor ExpressRoute-persoonlijke peering
 
-In het artikel getiteld [Designing for disaster recovery with ExpressRoute private peering][DR-PP], bespraken we de noodzaak van back-up connectiviteit oplossing voor een ExpressRoute private peering connectiviteit en hoe geo-redundantexpressRoute circuits te gebruiken voor het doel. In dit artikel bekijken we hoe we site-to-site (S2S) VPN kunnen gebruiken en onderhouden als een back voor Privé-peering van ExpressRoute. 
+In het artikel [over het ontwerpen van herstel na nood gevallen met persoonlijke ExpressRoute-peering][DR-PP]is de nood zaak van back-upconnectiviteits oplossing voor een persoonlijke peering-verbinding met ExpressRoute beschreven en wordt uitgelegd hoe u geo-redundante ExpressRoute-circuits kunt gebruiken voor het doel. In dit artikel kunt u overwegen hoe u site-naar-site (S2S) VPN kunt gebruiken en onderhouden als back-up voor ExpressRoute persoonlijke peering. 
 
-In tegenstelling tot georedundante ExpressRoute-circuits u expressroute-VPN-noodherstelcombinatie alleen in actief-passieve modus gebruiken. Een grote uitdaging van het gebruik van een back-up netwerkconnectiviteit in de passieve modus is dat de passieve verbinding vaak zou mislukken naast de primaire verbinding. De gemeenschappelijke reden voor de mislukkingen van de passieve verbinding is gebrek aan actief onderhoud. Daarom, in dit artikel laten we ons richten op hoe te controleren en actief onderhouden S2S VPN-connectiviteit die is een back-up van een ExpressRoute prive-peering.
+In tegens telling tot geo redundante ExpressRoute-circuits kunt u ExpressRoute-VPN-nood herstel alleen gebruiken in de modus actief-passief. Een grote uitdaging van het gebruik van back-upnetwerk verbindingen in de passieve modus is dat de passieve verbinding vaak naast de primaire verbinding zou mislukken. De gemeen schappelijke reden voor het mislukken van de passieve verbinding heeft geen actieve onderhouds werkzaamheden. In dit artikel wordt daarom aandacht besteed aan het controleren en actief onderhouden van S2S VPN-connectiviteit die een back-up maakt van een persoonlijke ExpressRoute-peering.
 
 >[!NOTE] 
->Wanneer een bepaalde route wordt geadverteerd via zowel ExpressRoute als VPN, geeft Azure de voorkeur aan routering boven ExpressRoute.  
+>Wanneer een bepaalde route via ExpressRoute en VPN wordt geadverteerd, wordt door Azure een route ring uitgevoerd via ExpressRoute.  
 >
 
-Laten we in dit artikel bekijken hoe u de connectiviteit verifiëren, zowel vanuit Azure-perspectief als vanuit het perspectief van de netwerkrand aan de klantzijde. De mogelijkheid om te valideren vanaf beide einden zal helpen, ongeacht of u de netwerkapparaten aan de klantzijde beheert die met de Microsoft-netwerkentiteiten samenwerken. 
+In dit artikel ziet u hoe u de connectiviteit kunt controleren op zowel het Azure-perspectief als het perspectief van de netwerk rand van de klant. De mogelijkheid om vanaf een van beide uiteinden te valideren, helpt u ongeacht of u de netwerk apparaten van de klanten die gelijkwaardig zijn met de micro soft-netwerk entiteiten beheert of niet. 
 
-## <a name="example-topology"></a>Voorbeeldtopologie
+## <a name="example-topology"></a>Voorbeeld topologie
 
-In onze installatie hebben we een on-premises netwerk verbonden met een Azure hub VNet via zowel een ExpressRoute-circuit als een S2S VPN-verbinding. De Azure-hub VNet is op zijn beurt ingekeken naar een spaakVNet, zoals in het onderstaande diagram wordt weergegeven:
+In onze installatie hebben we een on-premises netwerk verbonden met een Azure hub VNet via een ExpressRoute-circuit en een S2S-VPN-verbinding. De Azure hub VNet is op zijn beurt gekoppeld aan een spoke-VNet, zoals wordt weer gegeven in het onderstaande diagram:
 
 ![1][1]
 
-In de setup wordt het ExpressRoute-circuit beëindigd op een paar "Customer Edge" (CE) routers op de on-premises. Het on-premises LAN is verbonden met de CE-routers via een paar firewalls die in de leader-followermodus werken. De S2S VPN wordt direct beëindigd op de firewalls.
+In de installatie wordt het ExpressRoute-circuit op de on-premises beëindigd op een paar ' klanten Edge ' (CE)-routers. De on-premises LAN is verbonden met de CE-routers via een paar firewalls die in de modus Leader-volger actief zijn. De S2S-VPN wordt rechtstreeks beëindigd op de firewalls.
 
-In de volgende tabel worden de belangrijkste IP-voorvoegsels van de topologie weergegeven:
+De volgende tabel geeft een lijst van de belangrijkste IP-voor voegsels van de topologie:
 
-| **Entiteit** | **Voorvoegsel** |
+| **Entiteit** | **Beleids** |
 | --- | --- |
 | On-premises LAN | 10.1.11.0/25 |
-| Azure Hub VNet | 10.17.11.0/25 |
-| Azure sprak VNet | 10.17.11.128/26 |
-| On-premises testserver | 10.1.11.10 |
-| Spaak VNet-test VM | 10.17.11.132 |
-| ExpressRoute primaire verbinding p2p subnet | 192.168.11.16/30 |
-| ExpressRoute secundaire verbinding p2p subnet | 192.168.11.20/30 |
-| VPN-gateway primaire BGP-peer IP | 10.17.11.76 |
-| VPN-gateway secundairE BGP-peer IP | 10.17.11.77 |
+| Azure hub VNet | 10.17.11.0/25 |
+| Azure spoke VNet | 10.17.11.128/26 |
+| On-premises test server | 10.1.11.10 |
+| Spoke VNet-test-VM | 10.17.11.132 |
+| ExpressRoute primaire verbinding P2P-subnet | 192.168.11.16/30 |
+| ExpressRoute secundaire verbinding P2P-subnet | 192.168.11.20/30 |
+| Primaire BGP-peer-IP van VPN-gateway | 10.17.11.76 |
+| VPN gateway secundair BGP-peer-IP | 10.17.11.77 |
 | On-premises firewall VPN BGP peer IP | 192.168.11.88 |
-| Primaire CE-router i/f naar firewall-IP | 192.168.11.0/31 |
-| Firewall i/f naar primaire CE-router IP | 192.168.11.1/31 |
-| Secundaire CE router i/f naar firewall IP | 192.168.11.2/31 |
-| Firewall i/f naar secundair CE-router-IP | 192.168.11.3/31 |
+| Primaire CE-router i/f voor Firewall-IP | 192.168.11.0/31 |
+| Firewall-i/f naar het IP-adres van de primaire CE-router | 192.168.11.1/31 |
+| Secundaire CE-router i/f voor Firewall-IP | 192.168.11.2/31 |
+| Firewall-i/f naar secundaire CE router-IP | 192.168.11.3/31 |
 
 
-In de volgende tabel worden de ASN's van de topologie weergegeven:
+De volgende tabel bevat de Asn's van de topologie:
 
-| **Autonoom systeem** | **Asn** |
+| **Autonoom systeem** | **ASN** |
 | --- | --- |
 | On-premises | 65020 |
-| Microsoft Enterprise Edge | 12076 |
-| Virtueel netwerk GW (ExR) | 65515 |
-| Virtueel netwerk GW (VPN) | 65515 |
+| Micro soft Enter prise Edge | 12076 |
+| Virtual Network GW (ExR) | 65515 |
+| Virtual Network GW (VPN) | 65515 |
 
-## <a name="high-availability-without-asymmetricity"></a>Hoge beschikbaarheid zonder asymmetrie
+## <a name="high-availability-without-asymmetricity"></a>Hoge Beschik baarheid zonder asymmetrisch
 
-### <a name="configuring-for-high-availability"></a>Configureren voor hoge beschikbaarheid
+### <a name="configuring-for-high-availability"></a>Configureren voor hoge Beschik baarheid
 
-[ExpressRoute en site-to-site coëxistentieverbindingen configureren,][Conf-CoExist] bespreekt hoe u het naast elkaar bestaande ExpressRoute-circuit en S2S VPN-verbindingen configureert. Zoals we besproken in [Designing voor hoge beschikbaarheid met ExpressRoute][HA], om ExpressRoute hoge beschikbaarheid te verbeteren, onderhoudt onze setup de redundantie van het netwerk (voorkomt single point of failure) tot aan de eindpunten. Ook de primaire en secundaire verbindingen van de ExpressRoute-circuits zijn geconfigureerd om actief te werken door de on-premises voorvoegsels op dezelfde manier via beide verbindingen te adverteren. 
+[ExpressRoute-en site-to-site-verbindingen configureren][Conf-CoExist] in dit artikel wordt beschreven hoe u het naast elkaar bestaande ExpressRoute-circuit en S2S VPN-verbindingen configureert. Net als bij het [ontwerpen voor hoge Beschik baarheid met ExpressRoute][HA], zorgt u ervoor dat de netwerk redundantie wordt beheerd door onze installatie van ExpressRoute hoge Beschik baarheid (voor komt dat single point of failure) tot de eind punten. Ook de primaire en secundaire verbindingen van de ExpressRoute-circuits zijn geconfigureerd om te worden uitgevoerd in de modus actief-actief door de on-premises voor voegsels op dezelfde manier te adverteren via beide verbindingen. 
 
-De on-premises routeadvertentie van de primaire CE-router via de primaire verbinding van het ExpressRoute-circuit wordt hieronder weergegeven (Opdrachten van Junos):
+De on-premises route advertentie van de primaire CE-router via de primaire verbinding van het ExpressRoute-circuit wordt hieronder weer gegeven (Junos-opdrachten):
 
     user@SEA-MX03-01> show route advertising-protocol bgp 192.168.11.18 
 
@@ -77,7 +77,7 @@ De on-premises routeadvertentie van de primaire CE-router via de primaire verbin
       Prefix                  Nexthop              MED     Lclpref    AS path
     * 10.1.11.0/25            Self                                    I
 
-De on-premises routeadvertentie van de secundaire CE-router via de secundaire verbinding van het ExpressRoute-circuit wordt hieronder weergegeven (Junos-opdrachten):
+De on-premises route advertentie van de secundaire CE-router via de secundaire verbinding van het ExpressRoute-circuit wordt hieronder weer gegeven (Junos-opdrachten):
 
     user@SEA-MX03-02> show route advertising-protocol bgp 192.168.11.22 
 
@@ -85,11 +85,11 @@ De on-premises routeadvertentie van de secundaire CE-router via de secundaire ve
       Prefix                  Nexthop              MED     Lclpref    AS path
     * 10.1.11.0/25            Self                                    I
 
-Om de hoge beschikbaarheid van de back-upverbinding te verbeteren, is de S2S VPN ook geconfigureerd in de actief-actieve modus. De Azure VPN-gatewayconfiguratie wordt hieronder weergegeven. Opmerking als onderdeel van de VPN-configuratie VPN de BGP peer IP-adressen van de gateway--10.17.11.76 en 10.17.11.77 - worden ook vermeld.
+Ter verbetering van de maximale Beschik baarheid van de back-upverbinding, wordt de S2S VPN ook geconfigureerd in de modus actief-actief. De configuratie van de Azure VPN-gateway wordt hieronder weer gegeven. Opmerking Als onderdeel van de VPN-configuratie VPN de IP-adressen van de BGP-peer van de gateway--10.17.11.76 en 10.17.11.77--worden ook vermeld.
 
 ![2][2]
 
-De on-premises route wordt geadverteerd door de firewalls aan de primaire en secundaire BGP-peers van de VPN-gateway. De route advertenties worden hieronder weergegeven (Junos):
+De on-premises route wordt door de firewalls geadverteerd naar de primaire en secundaire BGP-peers van de VPN-gateway. De route-advertisements worden hieronder weer gegeven (Junos):
 
     user@SEA-SRX42-01> show route advertising-protocol bgp 10.17.11.76 
 
@@ -105,16 +105,16 @@ De on-premises route wordt geadverteerd door de firewalls aan de primaire en sec
     * 10.1.11.0/25            Self                                    I
 
 >[!NOTE] 
->Het configureren van de S2S VPN in actieve actieve modus biedt niet alleen een hoge beschikbaarheid voor uw disaster recovery back-upnetwerkconnectiviteit, maar biedt ook een hogere doorvoer voor de back-upconnectiviteit. Met andere woorden, het configureren van S2S VPN in actief-actieve modus wordt aanbevolen omdat het meerdere onderliggende tunnels maakt.
+>Het configureren van de S2S VPN in de modus actief-actief biedt niet alleen een hoge Beschik baarheid voor uw back-upnetwerk voor herstel na nood gevallen, maar biedt ook een hogere door voer naar de back-upconnectiviteit. Met andere woorden, het configureren van S2S VPN in de modus actief-actief wordt aanbevolen omdat het geforceerd meerdere onderliggende tunnels maakt.
 >
 
-### <a name="configuring-for-symmetric-traffic-flow"></a>Configureren voor symmetrische verkeersstroom
+### <a name="configuring-for-symmetric-traffic-flow"></a>Configureren voor symmetrische verkeers stroom
 
-We merkten op dat wanneer een bepaalde on-premises route wordt geadverteerd via zowel ExpressRoute als S2S VPN, Azure de voorkeur zou geven aan het ExpressRoute-pad. Om Azure te dwingen de voorkeur te geven aan S2S VPN-pad boven de naast elkaar bestaande ExpressRoute, moet u meer specifieke routes adverteren (langer voorvoegsel met groter subnetmasker) via de VPN-verbinding. Ons doel hier is om de VPN-verbindingen alleen als back te gebruiken. Het standaardpadselectiegedrag van Azure is dus in lijn met ons doel. 
+Wanneer een bepaalde on-premises route wordt geadverteerd via zowel ExpressRoute als S2S VPN, geeft Azure de voor keur aan het pad ExpressRoute. Om Azure de voor keur te geven aan het S2S VPN-pad via de naast elkaar bestaande ExpressRoute, moet u specifieke routes (meer voor voegsel met een groter subnetmasker) adverteren via de VPN-verbinding. Het doel is om de VPN-verbindingen als alleen opnieuw te gebruiken. Daarom is het standaard gedrag voor het selectie patroon van Azure in overeenstemming met ons doel. 
 
-Het is onze verantwoordelijkheid om ervoor te zorgen dat het verkeer dat vanuit on-premises naar Azure is bestemd, ook de voorkeur geeft aan ExpressRoute-pad boven S2S VPN. De standaard lokale voorkeur van de CE-routers en firewalls in onze on-premises installatie is 100. Dus, door het configureren van de lokale voorkeur van de routes ontvangen via de ExpressRoute prive-peerings groter dan 100 (zeg 150), kunnen we het verkeer bestemd voor Azure voorkeur ExpressRoute circuit in de stabiele staat.
+Het is onze verantwoordelijkheid om ervoor te zorgen dat het verkeer dat is bestemd voor Azure van on-premises ook ExpressRoute Path over S2S VPN. De standaard lokale voor keur van de CE-routers en firewalls in onze on-premises installatie is 100. Daarom kunnen we door het configureren van de lokale voor keur van de routes die zijn ontvangen via de persoonlijke ExpressRoutes van meer dan 100 (bijvoorbeeld 150), het verkeer dat bestemd is voor Azure, het ExpressRoute-circuit in de stationaire status laten staan.
 
-De BGP-configuratie van de primaire CE-router die de primaire verbinding van het ExpressRoute-circuit beëindigt, wordt hieronder weergegeven. Let op de waarde van de lokale voorkeur van de routes geadverteerd over de iBGP sessie is geconfigureerd op 150. Ook moeten we ervoor zorgen dat de lokale voorkeur van de secundaire CE-router die de secundaire verbinding van het ExpressRoute-circuit beëindigt, ook is geconfigureerd als 150.
+De BGP-configuratie van de primaire CE-router waarmee de primaire verbinding van het ExpressRoute-circuit wordt verbroken, wordt hieronder weer gegeven. Let op: de waarde van de lokale voor keur van de routes die worden geadverteerd via de iBGP-sessie, is geconfigureerd om 150 te zijn. Op dezelfde manier moeten we ervoor zorgen dat de lokale voor keur van de secundaire CE-router die de secundaire verbinding van het ExpressRoute-circuit beëindigt, ook is geconfigureerd als 150.
 
     user@SEA-MX03-01> show configuration routing-instances Cust11 
     description "Customer 11 VRF";
@@ -139,7 +139,7 @@ De BGP-configuratie van de primaire CE-router die de primaire verbinding van het
       }
     }
 
-De routeringstabel van de on-premises firewalls bevestigt (zie hieronder) dat voor het on-premises verkeer dat is bestemd voor Azure het voorkeurspad boven ExpressRoute in de stabiele toestand is.
+In de routerings tabel van de on-premises firewalls wordt (hieronder weer gegeven) bevestigd dat voor het on-premises verkeer dat is bestemd voor Azure, het voorkeurs pad ExpressRoute in de modus stabiel is.
 
     user@SEA-SRX42-01> show route table Cust11.inet.0 10.17.11.0/24    
 
@@ -177,11 +177,11 @@ De routeringstabel van de on-premises firewalls bevestigt (zie hieronder) dat vo
                           AS path: 65515 I, validation-state: unverified
                         > via st0.119
 
-In de bovenstaande routetabel, voor de hub en spaak VNet routes--10.17.11.0/25 en 10.17.11.128/26--zien we ExpressRoute circuit is de voorkeur boven VPN-verbindingen. De 192.168.11.0 en 192.168.11.2 zijn IP's op firewall-interface richting CE-routers.
+In de bovenstaande route tabel voor de hub-en spoke VNet-routes--10.17.11.0/25 en 10.17.11.128/26--we zien dat ExpressRoute-Circuit de voor keur heeft boven VPN-verbindingen. De 192.168.11.0 en 192.168.11.2 zijn IP-adressen voor de Firewall interface naar de CE-routers.
 
-## <a name="validation-of-route-exchange-over-s2s-vpn"></a>Validatie van route-uitwisseling via S2S VPN
+## <a name="validation-of-route-exchange-over-s2s-vpn"></a>Validatie van route Exchange over S2S VPN
 
-Eerder in dit artikel hebben we on-premises routeadvertenties van de firewalls geverifieerd naar de primaire en secundaire BGP-peers van de VPN-gateway. Bovendien, laten we bevestigen Azure routes ontvangen door de firewalls van de primaire en secundaire BGP peers van de VPN-gateway.
+Eerder in dit artikel hebben we de on-premises route advertentie van de firewalls geverifieerd voor de primaire en secundaire BGP-peers van de VPN-gateway. U kunt ook Azure-routes bevestigen die door de firewalls worden ontvangen van de primaire en secundaire BGP-peers van de VPN-gateway.
 
     user@SEA-SRX42-01> show route receive-protocol bgp 10.17.11.76 table Cust11.inet.0 
 
@@ -198,7 +198,7 @@ Eerder in dit artikel hebben we on-premises routeadvertenties van de firewalls g
       10.17.11.0/25           10.17.11.77                             65515 I
       10.17.11.128/26         10.17.11.77                             65515 I
 
-Laten we ook controleren of on-premises netwerkroutevoorvoegsels die zijn ontvangen door de Azure VPN-gateway. 
+Laten we ook verifiëren voor on-premises netwerk route-prefixen die worden ontvangen door de Azure VPN-gateway. 
 
     PS C:\Users\user> Get-AzVirtualNetworkGatewayLearnedRoute -ResourceGroupName SEA-Cust11 -VirtualNetworkGatewayName SEA-Cust11-VNet01-gw-vpn | where {$_.Network -eq "10.1.11.0/25"} | select Network, NextHop, AsPath, Weight
 
@@ -213,9 +213,9 @@ Laten we ook controleren of on-premises netwerkroutevoorvoegsels die zijn ontvan
     10.1.11.0/25 10.17.11.69   12076-65020  32769
     10.1.11.0/25 10.17.11.69   12076-65020  32769
 
-Zoals hierboven te zien is, heeft de VPN-gateway routes die zowel door de primaire als secundaire BGP-peers van de VPN-gateway zijn ontvangen. Het heeft ook zicht op de routes ontvangen via primaire en secundaire ExpressRoute verbindingen (die met AS-pad prepended met 12076). Om de routes te bevestigen die via VPN-verbindingen worden ontvangen, moeten we de on-premises BGP-peer IP van de verbindingen kennen. In onze setup in kwestie, het is 192.168.11.88 en we zien de routes ontvangen van het.
+Zoals hierboven wordt weer gegeven, heeft de VPN-gateway routes ontvangen die zowel door de primaire als de secundaire BGP-peers van de VPN-gateway. Het bevat ook zicht baarheid van de routes die zijn ontvangen via de primaire en secundaire ExpressRoute-verbindingen (de poorten met de AS-pad voor 12076). Voor het bevestigen van de routes die via VPN-verbindingen worden ontvangen, moeten we de on-premises BGP-peer-IP van de verbindingen weten. In onze installatie wordt het 192.168.11.88 en zien we de ontvangen routes.
 
-Laten we vervolgens de routes verifiëren die worden geadverteerd door de Azure VPN-gateway naar de on-premises firewall BGP-peer (192.168.11.88).
+Vervolgens controleren we de routes die zijn geadverteerd door de Azure VPN-gateway naar de on-premises BGP-peer (192.168.11.88).
 
     PS C:\Users\user> Get-AzVirtualNetworkGatewayAdvertisedRoute -Peer 192.168.11.88 -ResourceGroupName SEA-Cust11 -VirtualNetworkGatewayName SEA-Cust11-VNet01-gw-vpn |  select Network, NextHop, AsPath, Weight
 
@@ -227,17 +227,17 @@ Laten we vervolgens de routes verifiëren die worden geadverteerd door de Azure 
     10.17.11.128/26 10.17.11.77 65515       0
 
 
-Als u route-uitwisselingen niet ziet, wordt de verbinding mislukt. Zie [Probleemoplossing: een AZURE-VPN-verbinding van site tot site kan geen verbinding maken en werkt niet meer][VPN Troubleshoot] voor hulp bij het oplossen van problemen met de VPN-verbinding.
+Fout bij het weer geven van route uitwisselingen duiden op een verbindings fout. Zie [probleem oplossing: een Azure site-naar-site-VPN-verbinding kan geen verbinding maken en stopt met werken][VPN Troubleshoot] voor hulp bij het oplossen van problemen met de VPN-verbinding.
 
 ## <a name="testing-failover"></a>Failover testen
 
-Nu we succesvolle route-uitwisselingen via de VPN-verbinding (besturingsvlak) hebben bevestigd, zijn we ingesteld om verkeer (dataplane) over te schakelen van de ExpressRoute-verbinding naar de VPN-connectiviteit. 
+Nu we geslaagde route-uitwisselingen via de VPN-verbinding (besturings vlak) hebben bevestigd, zijn we ingesteld om verkeer (Data Traffic) over te scha kelen van de ExpressRoute-verbinding met de VPN-verbinding. 
 
 >[!NOTE] 
->In productieomgevingen moet failover-tests worden uitgevoerd tijdens het geplande werkvenster voor netwerkonderhoud, omdat deze serviceverstorend kan zijn.
+>In productie omgevingen moet Failover testen worden uitgevoerd tijdens het werk venster gepland netwerk onderhoud. Dit kan de service onderbreken.
 >
 
-Voordat u de verkeersschakelaar doet, moeten we het huidige pad in onze installatie traceren van de on-premises testserver naar de testVM in het spaakvnet.
+Voordat u de verkeers schakeling gaat volgen, wordt het huidige pad naar de virtuele machine in de installatie van de on-premises test server naar de test-VM in de spoke VNet geleid.
 
     C:\Users\PathLabUser>tracert 10.17.11.132
 
@@ -251,15 +251,15 @@ Voordat u de verkeersschakelaar doet, moeten we het huidige pad in onze installa
 
     Trace complete.
 
-De primaire en secundaire ExpressRoute point-to-point verbindingssubnetten van onze setup zijn respectievelijk 192.168.11.16/30 en 192.168.11.20/30. In de bovenstaande traceroute zien we in stap 3 dat we 192.168.11.18 raken, de interface-IP van de primaire MSEE. De aanwezigheid van de MSEE-interface bevestigt dat zoals verwacht ons huidige pad over de ExpressRoute ligt.
+De primaire en secundaire ExpressRoute Point-to-point-verbinding subnetten van onze installatie zijn respectievelijk, 192.168.11.16/30 en 192.168.11.20/30. In de bovenstaande Traceer route ziet u in stap 3 dat we 192.168.11.18 hebben. Dit is het Interface-IP-adres van de primaire MSEE. Met de aanwezigheid van de MSEE-interface wordt bevestigd dat het huidige pad zich boven de ExpressRoute bevindt.
 
-Zoals gemeld in de [Reset ExpressRoute circuit peerings][RST], laten we gebruik maken van de volgende powershell commando's om zowel de primaire en secundaire peering van de ExpressRoute circuit uit te schakelen.
+Zoals gerapporteerd in de [ExpressRoute-circuit-peers opnieuw instellen][RST], gebruiken we de volgende Power shell-opdrachten om de primaire en secundaire peering van het ExpressRoute-circuit uit te scha kelen.
 
     $ckt = Get-AzExpressRouteCircuit -Name "expressroute name" -ResourceGroupName "SEA-Cust11"
     $ckt.Peerings[0].State = "Disabled"
     Set-AzExpressRouteCircuit -ExpressRouteCircuit $ckt
 
-De failoverschakeltijd is afhankelijk van de BGP-convergentietijd. In onze setup duurt de failoverschakelaar enkele seconden (minder dan 10). Na de switch geeft de herhaling van de traceroute het volgende pad weer:
+De failover-switch tijd is afhankelijk van de BGP-convergentie tijd. In onze installatie duurt de failover-switch enkele seconden (minder dan 10). Na de switch wordt in het traceroute het volgende pad weer gegeven:
 
     C:\Users\PathLabUser>tracert 10.17.11.132
 
@@ -271,25 +271,25 @@ De failoverschakeltijd is afhankelijk van de BGP-convergentietijd. In onze setup
 
     Trace complete.
 
-Het resultaat van de traceroute bevestigt dat de back-upverbinding via S2S VPN actief is en servicecontinuïteit kan bieden als zowel de primaire als secundaire ExpressRoute-verbindingen uitvallen. Om de failovertests te voltooien, schakelen we de ExpressRoute-verbindingen terug in en normaliseren we de verkeersstroom, met behulp van de volgende set opdrachten.
+Het traceroute-resultaat bevestigt dat de back-upverbinding via S2S VPN actief is en dat de service continuïteit kan worden geboden als zowel de primaire als de secundaire ExpressRoute-verbindingen mislukken. Voor het volt ooien van de test voor de testfailover, laten we de ExpressRoute-verbindingen weer inschakelen en de verkeers stroom normaliseren, met behulp van de volgende reeks opdrachten.
 
     $ckt = Get-AzExpressRouteCircuit -Name "expressroute name" -ResourceGroupName "SEA-Cust11"
     $ckt.Peerings[0].State = "Enabled"
     Set-AzExpressRouteCircuit -ExpressRouteCircuit $ckt
 
-Om te bevestigen dat het verkeer wordt teruggezet naar ExpressRoute, herhaalt u de traceroute en zorgt u ervoor dat deze via de ExpressRoute privé-peering gaat.
+Als u wilt controleren of het verkeer is teruggeschakeld naar ExpressRoute, herhaalt u de traceroute en controleert u of deze de ExpressRoute-persoonlijke peering doorloopt.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-ExpressRoute is ontworpen voor hoge beschikbaarheid zonder single point of failure binnen het Microsoft-netwerk. Nog steeds is een ExpressRoute circuit beperkt tot één geografische regio en tot een dienstverlener. S2S VPN kan een goede oplossing zijn voor passieve back-ups voor noodherstel op een ExpressRoute-circuit. Voor een betrouwbare passieve back-upverbindingsoplossing zijn regelmatig onderhoud van de passieve configuratie en periodieke validatie van de verbinding belangrijk. Het is essentieel om de VPN-configuratie niet muf te laten worden en om periodiek (bijvoorbeeld elk kwartaal) de validatie- en failoverteststappen te herhalen die in dit artikel worden beschreven tijdens het onderhoudsvenster.
+ExpressRoute is ontworpen voor hoge Beschik baarheid zonder Single Point of Failure in het micro soft-netwerk. Nog steeds een ExpressRoute-circuit wordt beperkt tot één geografische regio en naar een service provider. S2S VPN kan een goede, passieve back-upoplossing voor herstel na nood geval zijn voor een ExpressRoute-circuit. Voor een betrouw bare oplossing voor een passieve back-up, is regel matig onderhoud van de passieve configuratie en periodieke validatie van de verbinding belang rijk. Het is essentieel dat de VPN-configuratie niet verouderd is en periodiek (elke kwar taal zeggen) de validatie-en testfailover testen tappen die in dit artikel worden beschreven, worden herhaald tijdens het onderhouds venster.
 
-Zie [Waarschuwingen instellen op VPN Gateway metrics][VPN-alerts]om monitoring en waarschuwingen op basis van VPN-gatewaymetrics in te schakelen.
+Als u bewaking en waarschuwingen wilt inschakelen op basis van metrische gegevens voor de VPN-gateway, raadpleegt [u waarschuwingen instellen voor VPN gateway metrische gegevens][VPN-alerts].
 
-Als u de Convergentie van BGP wilt versnellen na een expressroute-fout, [configureert u BFD over ExpressRoute][BFD].
+Als u BGP-convergentie wilt versnellen na een ExpressRoute-fout, [configureert u BFD via ExpressRoute][BFD].
 
 <!--Image References-->
 [1]: ./media/use-s2s-vpn-as-backup-for-expressroute-privatepeering/topology.png "topologie in overweging"
-[2]: ./media/use-s2s-vpn-as-backup-for-expressroute-privatepeering/vpn-gw-config.png "VPN GW-configuratie"
+[2]: ./media/use-s2s-vpn-as-backup-for-expressroute-privatepeering/vpn-gw-config.png "Configuratie van VPN-GW"
 
 <!--Link References-->
 [DR-PP]: https://docs.microsoft.com/azure/expressroute/designing-for-disaster-recovery-with-expressroute-privatepeering

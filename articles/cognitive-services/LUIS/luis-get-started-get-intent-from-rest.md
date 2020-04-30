@@ -1,17 +1,17 @@
 ---
-title: "Snelstart: Maak intentie met REST API's - LUIS"
-description: Gebruik in deze REST API quickstart een beschikbare openbare LUIS-app om de intentie van een gebruiker te bepalen aan de basis van gesprekstekst.
+title: "Quick Start: profiteren van intenties met REST-Api's-LUIS"
+description: Gebruik in deze REST API Snelstartgids een beschik bare open bare LUIS-app om de bedoeling van een gebruiker te bepalen op basis van de conversatie tekst.
 ms.topic: quickstart
 ms.date: 04/20/2020
 zone_pivot_groups: programming-languages-set-one
 ms.openlocfilehash: 03f1c1539233872d9b98fab317c9caf997d5df69
-ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81733279"
 ---
-# <a name="quickstart-get-intent-with-rest-apis"></a>Snelstart: Maak intentie met REST API's
+# <a name="quickstart-get-intent-with-rest-apis"></a>Quick Start: profiteren van de bedoeling van REST-Api's
 
 In deze snelstart gebruikt u een beschikbare openbare LUIS-app om de intentie van een gebruiker te bepalen aan de hand van beschrijvende tekst. Verzend de intentie van de gebruiker als tekst naar het HTTP-voorspellingseindpunt van de openbare app. Bij het eindpunt wordt via LUIS het model van de openbare app toegepast om de betekenis van tekst in natuurlijke taal te analyseren. Hiermee wordt de algehele intentie bepaald en worden gegevens geëxtraheerd die relevant zijn voor het onderwerpdomein van de app.
 

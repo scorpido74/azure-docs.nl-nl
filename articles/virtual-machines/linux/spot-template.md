@@ -1,6 +1,6 @@
 ---
-title: Een sjabloon gebruiken om Azure Spot VM's te implementeren
-description: Meer informatie over het gebruik van een sjabloon om Spot VM's te implementeren om kosten te besparen.
+title: Een sjabloon gebruiken voor het implementeren van Azure spot-Vm's
+description: Meer informatie over het gebruik van een sjabloon voor het implementeren van spot-Vm's om kosten te besparen.
 author: cynthn
 ms.service: virtual-machines
 ms.workload: infrastructure-services
@@ -9,24 +9,24 @@ ms.date: 03/25/2020
 ms.author: cynthn
 ms.reviewer: jagaveer
 ms.openlocfilehash: 2d546e9154352ec90aa1b1a457eb5320979239d2
-ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81758346"
 ---
-# <a name="deploy-spot-vms-using-a-resource-manager-template"></a>SpotVM's implementeren met een sjabloon Resourcebeheer
+# <a name="deploy-spot-vms-using-a-resource-manager-template"></a>Spot-Vm's implementeren met een resource manager-sjabloon
 
-Met behulp van [Spot VM's](spot-vms.md) u profiteren van onze ongebruikte capaciteit tegen een aanzienlijke kostenbesparing. Op elk moment waarop Azure de capaciteit terug nodig heeft, wordt spotvm's van Spot v.s. Daarom zijn Spot VM's ideaal voor workloads die onderbrekingen kunnen verwerken, zoals batchverwerkingstaken, dev/testomgevingen, grote compute workloads en meer.
+Met behulp van [Spot vm's](spot-vms.md) kunt u profiteren van onze ongebruikte capaciteit tegen een aanzienlijke kosten besparing. Op elk moment dat Azure de capaciteit nodig heeft, verwijdert de Azure-infra structuur spot Vm's. Daarom zijn de virtuele machines geschikt voor werk belastingen die onderbrekingen kunnen afhandelen, zoals batch verwerkings taken, ontwikkel-en test omgevingen, grootschalige werk belastingen en meer.
 
-De prijzen voor spotVM's zijn variabel, gebaseerd op regio en SKU. Zie VM-prijzen voor [Linux](https://azure.microsoft.com/pricing/details/virtual-machines/linux/) en [Windows](https://azure.microsoft.com/pricing/details/virtual-machines/windows/)voor meer informatie.
+Prijzen voor spot Vm's zijn variabel, op basis van de regio en de SKU. Zie prijzen voor VM'S voor [Linux](https://azure.microsoft.com/pricing/details/virtual-machines/linux/) en [Windows](https://azure.microsoft.com/pricing/details/virtual-machines/windows/)voor meer informatie.
 
-Je hebt de mogelijkheid om een maximale prijs die u bereid bent te betalen, per uur, voor de VM. De maximale prijs voor een Spot VM kan worden ingesteld in Amerikaanse dollars (USD), met behulp van maximaal 5 decimalen. De waarde `0.98765`is bijvoorbeeld een maximale prijs van $ 0,98765 USD per uur. Als u de maximale `-1`prijs instelt, wordt de VM niet uitgezet op basis van de prijs. De prijs voor de VM is de huidige prijs voor Spot of de prijs voor een standaard VM, die ooit minder is, zolang er capaciteit en quotum beschikbaar is. Zie [Spot VM's - Prijzen](spot-vms.md#pricing)voor meer informatie over het instellen van de max.
+U hebt de mogelijkheid om een maximum prijs voor de virtuele machine in te stellen die u wilt betalen, per uur. De maximale prijs voor een steun-VM kan worden ingesteld in Amerikaanse dollars (USD), met Maxi maal vijf decimalen. De waarde `0.98765`is bijvoorbeeld een maximum prijs van $0,98765 USD per uur. Als u de maximale prijs instelt op `-1`, wordt de VM niet verwijderd op basis van de prijs. De prijs voor de virtuele machine is de huidige prijs voor steun of de prijs voor een standaard-VM, die ooit kleiner is, zolang er capaciteit en quota beschikbaar zijn. Zie [Spot vm's-prijzen](spot-vms.md#pricing)voor meer informatie over het instellen van de maximum prijs.
 
 
 ## <a name="use-a-template"></a>Een sjabloon gebruiken
 
-Voor implementaties van`"apiVersion": "2019-03-01"` spotsjablonen u of hoger worden gebruikt. Voeg `priority`de `evictionPolicy` `billingProfile` eigenschappen en eigenschappen toe aan uw sjabloon:
+Gebruik`"apiVersion": "2019-03-01"` of hoger voor implementaties van steun sjablonen. Voeg de `priority` `evictionPolicy` en `billingProfile` eigenschappen toe aan uw sjabloon:
 
 ```json
 "priority": "Spot",
@@ -36,7 +36,7 @@ Voor implementaties van`"apiVersion": "2019-03-01"` spotsjablonen u of hoger wor
 }
 ```
 
-Hier vindt u een voorbeeldsjabloon met de toegevoegde eigenschappen voor een spot-vm. Vervang de bronnamen door `<password>` uw eigen en met een wachtwoord voor het lokale beheerdersaccount op de VM.
+Hier volgt een voorbeeld sjabloon met de toegevoegde eigenschappen voor een spot-VM. Vervang de resource namen door uw eigen naam `<password>` en met een wacht woord voor het lokale Administrator-account op de virtuele machine.
 
 ```json
 {
@@ -175,6 +175,6 @@ Hier vindt u een voorbeeldsjabloon met de toegevoegde eigenschappen voor een spo
 
 ## <a name="next-steps"></a>Volgende stappen
 
-U ook een Spot-VM maken met [Azure PowerShell](../windows/spot-powershell.md) of de [Azure CLI.](spot-cli.md)
+U kunt ook een spot-VM maken met behulp van [Azure PowerShell](../windows/spot-powershell.md) of de [Azure cli](spot-cli.md).
 
-Zie [Foutcodes](../error-codes-spot.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)als u een fout tegenkomt.
+Als er een fout optreedt, raadpleegt u [fout codes](../error-codes-spot.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).

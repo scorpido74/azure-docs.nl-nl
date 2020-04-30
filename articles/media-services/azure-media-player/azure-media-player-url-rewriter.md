@@ -1,21 +1,21 @@
 ---
-title: URL-rewriter van Azure Media Player
-description: Azure Media Player herschrijft een bepaalde URL van Azure Media Services om streams te bieden voor SMOOTH, DASH, HLS v3 en HLS v4.
+title: Azure Media Player URL ReWriter
+description: Azure Media Player herschrijft een gegeven URL van Azure Media Services om stromen te bieden voor SMOOTH, DASH, HLS v3 en HLS v4.
 author: IngridAtMicrosoft
 ms.author: inhenkel
 ms.service: media-services
 ms.topic: overview
 ms.date: 04/20/2020
 ms.openlocfilehash: f238a2a3c499cf1e36f5e7c40e087375b7db0a70
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81726457"
 ---
-# <a name="url-rewriter"></a>URL-rewriter #
+# <a name="url-rewriter"></a>URL-herschrijver #
 
-Azure Media Player herschrijft standaard een bepaalde URL van Azure Media Services om streams te bieden voor SMOOTH, DASH, HLS v3 en HLS v4. Als de bron bijvoorbeeld als volgt wordt gegeven, zorgt Azure Media Player ervoor dat alle bovenstaande protocollen worden afgespeeld:
+Azure Media Player herschrijft een gegeven URL standaard van Azure Media Services om stromen te bieden voor SMOOTH, DASH, HLS v3 en HLS v4. Als de bron bijvoorbeeld als volgt wordt gegeven, zorgt Azure Media Player ervoor dat deze alle bovenstaande protocollen probeert af te spelen:
 
 ```html
     <video id="vid1" class="azuremediaplayer amp-default-skin">
@@ -23,7 +23,7 @@ Azure Media Player herschrijft standaard een bepaalde URL van Azure Media Servic
     </video>
 ```
 
-Als u de URL-rewriter echter niet wilt gebruiken, `disableUrlRewriter` kunt u dit doen door de eigenschap aan de parameter toe te voegen. Dit betekent dat alle informatie die wordt doorgegeven aan de bronnen direct worden doorgegeven aan de speler zonder wijziging.  Hier is een voorbeeld van het toevoegen van twee bronnen aan de speler, op DASH en een soepele streaming.
+Als u echter geen gebruik wilt maken van de URL ReWriter, kunt u dit doen door de `disableUrlRewriter` eigenschap toe te voegen aan de para meter. Dit betekent dat alle informatie die wordt door gegeven aan de bronnen rechtstreeks zonder aanpassing aan de speler wordt door gegeven.  Hier volgt een voor beeld van het toevoegen van twee bronnen aan de speler, op streepje en één SMOOTH streaming.
 
 ```html
     <video id="vid1" class="azuremediaplayer amp-default-skin">
@@ -41,7 +41,7 @@ of
     ]);
 ```
 
-Als u dat wilt, u ook de specifieke streaming-indelingen opgeven `streamingFormats` die u wilt dat Azure Media Player opnieuw schrijft naar het gebruik van de parameter. Opties `DASH`zijn `SMOOTH` `HLSv3`, `HLSv4` `HLS`, , , . Het verschil tussen HLS en HLSv3 & v4 is dat het HLS-formaat het afspelen van FairPlay-content ondersteunt. v3 en v4 ondersteunen FairPlay niet. Dit is handig als u geen leveringsbeleid hebt voor een bepaald protocol dat beschikbaar is.  Hier is een voorbeeld van wanneer een DASH-protocol niet is ingeschakeld met uw asset.
+U kunt ook de specifieke streaming-indelingen opgeven die u wilt Azure Media Player herschrijven naar met behulp van de `streamingFormats` para meter. Opties zijn `DASH`onder `SMOOTH`andere `HLSv3`, `HLSv4`, `HLS`,,. Het verschil tussen HLS en HLSv3 & v4 is dat de HLS-indeling het afspelen van FairPlay-inhoud ondersteunt. v3 en v4 bieden geen ondersteuning voor FairPlay. Dit is handig als u geen leverings beleid hebt voor een bepaald protocol dat beschikbaar is.  Hier volgt een voor beeld van wanneer een streepje-protocol niet is ingeschakeld met uw asset.
 
 ```html
     <video id="vid1" class="azuremediaplayer amp-default-skin">
@@ -57,11 +57,11 @@ of
     ]);
 ```
 
-De bovenstaande twee kunnen worden gebruikt in combinatie met elkaar voor meerdere omstandigheden op basis van uw specifieke actief.
+De bovenstaande twee kunnen worden gebruikt in combi natie met elkaar voor meerdere omstandigheden op basis van uw specifieke activa.
 
 > [!NOTE]
-> Widevine-beveiligingsinformatie blijft alleen bestaan op het DASH-protocol.
+> Widevine-beschermings informatie blijft alleen behouden in het DASH-protocol.
 
 ## <a name="next-steps"></a>Volgende stappen ##
 
-- [Snel start azure mediaspeler](azure-media-player-quickstart.md)
+- [Snelstartgids Azure Media Player](azure-media-player-quickstart.md)

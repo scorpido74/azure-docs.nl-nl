@@ -1,25 +1,25 @@
 ---
-title: Plug-ins schrijven voor Azure Media Player
-description: Meer informatie over het schrijven van een plug-in met Azure Media Player met JavaScript
+title: Invoeg toepassingen schrijven voor Azure Media Player
+description: Meer informatie over het schrijven van een invoeg toepassing met Azure Media Player met Java script
 author: IngridAtMicrosoft
 ms.author: inhenkel
 ms.service: media-services
 ms.topic: how-to
 ms.date: 04/20/2020
 ms.openlocfilehash: b7aac80b19a7c30d994f3c14e19047583d5334ac
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81727110"
 ---
-# <a name="writing-plugins-for-azure-media-player"></a>Plug-ins schrijven voor Azure Media Player #
+# <a name="writing-plugins-for-azure-media-player"></a>Invoeg toepassingen schrijven voor Azure Media Player #
 
-Een plug-in is JavaScript geschreven om de speler uit te breiden of te verbeteren. U plug-ins schrijven die het uiterlijk, de functionaliteit van Azure Media Player of zelfs de interface met andere services wijzigen. U dit doen in twee eenvoudige stappen:
+Een invoeg toepassing is Java script geschreven om de speler uit te breiden of te verbeteren. U kunt invoeg toepassingen schrijven die de weer gave van Azure Media Player, de functionaliteit ervan wijzigen of zelfs een IT-interface met andere services. U kunt dit doen in twee eenvoudige stappen:
 
 ## <a name="step-1"></a>Stap 1 ##
 
-Schrijf uw JavaScript in een functie als volgt:
+Schrijf uw Java script in een functie zoals:
 
 ```javascript
 
@@ -33,7 +33,7 @@ Schrijf uw JavaScript in een functie als volgt:
     }).call(this);
 ```
 
-U uw code rechtstreeks op `<script>` uw HTML-pagina schrijven in tags of in een extern JavaScript-bestand. Als u dit laatste doet, moet u het `<head>` JavaScript-bestand *na* het AMP-script opnemen in het javascript van uw HTML-pagina.
+U kunt uw code rechtstreeks in uw HTML-pagina binnen `<script>` Tags of in een extern java script-bestand schrijven. Als u dit wel doet, moet u het Java script-bestand toevoegen aan `<head>` de van uw HTML-pagina *na* het amp-script.
 
 Voorbeeld:
 
@@ -47,7 +47,7 @@ Voorbeeld:
 ```
 
 ## <a name="step-2"></a>Stap 2 ##
-Initialiseer de plug-in met JavaScript op twee manieren:
+Initialiseer de invoeg toepassing met Java script op een van de volgende twee manieren:
 
 Methode 1:
 
@@ -74,21 +74,21 @@ Methode 2:
     video.yourPluginName({[your plugins option]: [example option]});
 ```
 
-Plugin-opties zijn niet vereist, met inbegrip van hen alleen kunnen de ontwikkelaars met behulp van uw plugin om het gedrag ervan te configureren zonder de broncode te wijzigen.
+Opties voor de invoeg toepassing zijn niet vereist, met inbegrip van de ontwikkel aars die de invoeg toepassing gebruiken om het gedrag te configureren zonder de bron code te hoeven wijzigen.
 
-Voor inspiratie en meer voorbeelden over het maken van een plugin neem een kijkje in onze [galerij](azure-media-player-plugin-gallery.md)
+Bekijk voor inspiratie en meer voor beelden over het maken van een invoeg toepassing de [Galerie](azure-media-player-plugin-gallery.md)
 
 >[!NOTE]
-> Plugin code dynamisch verandert items in de DOM tijdens de levensduur van de speler van de kijker ervaring, het maakt nooit permanente wijzigingen in de broncode van de speler. Dit is waar een goed begrip van de ontwikkelaarstools van uw browser van pas komt. Als u bijvoorbeeld het uiterlijk van een element in de speler wilt wijzigen, u het HTML-element vinden op basis van de klassenaam en vervolgens van daaruit kenmerken toevoegen of wijzigen. Hier is een geweldige bron voor [het wijzigen van HTML-kenmerken.](http://www.w3schools.com/js/js_htmldom_html.asp)
+> De code van de invoeg toepassing verandert dynamisch items in het DOM tijdens de levens duur van de speler van de viewer, maar maakt geen permanente wijzigingen in de bron code van de speler. Hier vindt u meer informatie over de ontwikkel hulpprogramma's van uw browser. Als u bijvoorbeeld het uiterlijk van een element in de speler wilt wijzigen, kunt u het HTML-element vinden op basis van de naam van de klasse en vervolgens kenmerken toevoegen of wijzigen. Hier vindt u een goede bron voor het [wijzigen van HTML-kenmerken.](http://www.w3schools.com/js/js_htmldom_html.asp)
 
-### <a name="integrated-plugins"></a>Geïntegreerde plug-ins ###
+### <a name="integrated-plugins"></a>Geïntegreerde invoeg toepassingen ###
 
- Er zijn momenteel twee plugins gebakken in AMP: de [time-tip](http://sr-test.azurewebsites.net/Tests/Plugin%20Gallery/plugins/timetip/example.html) en [hotkeys](http://sr-test.azurewebsites.net/Tests/Plugin%20Gallery/plugins/hotkeys/example.html). Deze plugins werden oorspronkelijk ontwikkeld om modulaire plugins voor de speler te zijn maar zijn nu inbegrepen in de spelerbroncode.
+ Er zijn momenteel twee geïntegreerde in AMP: de [tijd tips](http://sr-test.azurewebsites.net/Tests/Plugin%20Gallery/plugins/timetip/example.html) en [sneltoetsen](http://sr-test.azurewebsites.net/Tests/Plugin%20Gallery/plugins/hotkeys/example.html). Deze invoeg toepassingen zijn oorspronkelijk ontwikkeld voor modulaire invoeg toepassingen voor de speler, maar zijn nu opgenomen in de bron code van de speler.
 
-### <a name="plugin-gallery"></a>Galerie voor voor plug-in ###
+### <a name="plugin-gallery"></a>Galerie van invoeg toepassingen ###
 
-De [plugin galerij](http//:aka.ms/ampplugins) heeft verschillende plugins die de gemeenschap al heeft bijgedragen voor functies zoals tijdregelmarkeringen, zoom, analytics en meer. De pagina biedt toegang tot de plug-ins en instructies over hoe het in te stellen, evenals een demo die de plugin in actie toont. Als u een coole plugin die je denkt dat moet worden opgenomen in onze galerij, voel je vrij om het in te dienen, zodat we het kunnen controleren.
+De [Galerie met invoeg](http//:aka.ms/ampplugins) toepassingen bevat verschillende invoeg toepassingen die de Community al heeft bijgedragen aan functies zoals tijd regel markeringen, zoomen, analyses en meer. De pagina biedt toegang tot de invoeg toepassingen en instructies over hoe u deze kunt instellen, evenals een demo waarin de invoeg toepassing in actie wordt weer gegeven. Als u een koele invoeg toepassing maakt die u in de galerie wilt opnemen, kunt u deze verzenden zodat we deze kunnen controleren.
 
 ## <a name="next-steps"></a>Volgende stappen ##
 
-- [Snel start azure mediaspeler](azure-media-player-quickstart.md)
+- [Snelstartgids Azure Media Player](azure-media-player-quickstart.md)

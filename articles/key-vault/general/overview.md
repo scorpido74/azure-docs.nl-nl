@@ -12,10 +12,10 @@ ms.custom: mvc
 ms.date: 01/07/2019
 ms.author: mbaldwin
 ms.openlocfilehash: 9334cd0fa54212eac937742215f9c2e704a8bd9c
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81688019"
 ---
 # <a name="about-azure-key-vault"></a>Over Azure Key Vault
@@ -24,8 +24,8 @@ Met Azure Key Vault kunt u de volgende problemen oplossen:
 
 - **Geheimenbeheer** - Met Azure Key Vault kunt u veilig de toegang tot tokens, wachtwoorden, certificaten, API-sleutels en andere geheimen opslaan en strikt beheren
 - **Sleutelbeheer** - U kunt Azure Key Vault ook gebruiken als een oplossing voor sleutelbeheer. Met Azure Key Vault kunt u eenvoudig de versleutelingssleutels maken en beheren waarmee uw gegevens worden versleuteld. 
-- **Certificaatbeheer** - Azure Key Vault is ook een service waarmee u eenvoudig openbare en private Transport Layer Security/Secure Sockets Layer (TLS/SSL)-certificaten inrichten, beheren en implementeren voor gebruik met Azure en uw interne verbonden bronnen. 
-- **Winkelgeheimen ondersteund door Hardware Security Modules** - De geheimen en sleutels kunnen worden beschermd door software of FIPS 140-2 Level 2 gevalideerde HSMs
+- **Certificaat beheer** -Azure Key Vault is ook een service waarmee u eenvoudig open bare en persoonlijke Transport Layer Security/Secure Sockets Layer (TLS/SSL)-certificaten kunt inrichten, beheren en implementeren voor gebruik met Azure en uw interne verbonden resources. 
+- **Sla geheimen op die worden ondersteund door Hardware Security-modules** : de geheimen en sleutels kunnen worden beveiligd door software of het FIPS 140-2 level 2-gevalideerde hsm's
 
 ## <a name="why-use-azure-key-vault"></a>Waarom zou ik Azure Key Vault gebruiken?
 
@@ -43,7 +43,7 @@ Voor toegang tot een sleutelkluis is de juiste verificatie en autorisatie vereis
 
 Verificatie wordt uitgevoerd via Azure Active Directory. Autorisatie kan worden uitgevoerd via op rollen gebaseerd toegangsbeheer (RBAC) of Key Vault-toegangsbeleid. RBAC wordt gebruikt bij het beheren van de kluizen. Toegangsbeleid tot sleutelkluizen wordt gebruikt bij pogingen om toegang te krijgen tot gegevens in een kluis.
 
-Sleutelkluizen van Azure kunnen software- of hardware-HSM beveiligd zijn. Voor situaties waar extra zekerheid is vereist, kunt u sleutels in HSM's (Hardware Security Modules) importeren of genereren die nooit verdergaan dan de HSM-grens. Microsoft maakt gebruik van nCipher hardware beveiligingsmodules. U nCipher-hulpprogramma's gebruiken om een sleutel van uw HSM naar Azure Key Vault te verplaatsen.
+Sleutelkluizen van Azure kunnen software- of hardware-HSM beveiligd zijn. Voor situaties waar extra zekerheid is vereist, kunt u sleutels in HSM's (Hardware Security Modules) importeren of genereren die nooit verdergaan dan de HSM-grens. Micro soft maakt gebruik van nCipher-Hardware Security modules. U kunt nCipher-hulpprogram ma's gebruiken om een sleutel van de HSM naar Azure Key Vault te verplaatsen.
 
 Tot slot is Azure Key Vault zodanig ontworpen dat Microsoft uw gegevens niet kan zien of extraheren.
 
@@ -53,16 +53,16 @@ Nadat u enkele sleutelkluizen hebt gemaakt, kunt u controleren hoe en wanneer er
 
 - Archiveren naar een opslagaccount.
 - Streamen naar een Event Hub.
-- Verzend de logboeken naar Azure Monitor-logboeken.
+- De logboeken naar Azure Monitor-logboeken verzenden.
 
 U hebt de controle over uw logboeken en kunt ze beveiligen door de toegang te beperken. Bovendien kunt u logboeken verwijderen die u niet meer nodig hebt.
 
 ### <a name="simplified-administration-of-application-secrets"></a>Vereenvoudigd beheer van toepassingsgeheimen
 
-Bij het opslaan van waardevolle gegevens moet u verschillende stappen uitvoeren. Veiligheidsinformatie moet worden beveiligd, zij moet een levenscyclus volgen en moet in hoge mate beschikbaar zijn. Met Azure Key Vault vereenvoudigt u het proces om aan deze vereisten te voldoen door:
+Bij het opslaan van waardevolle gegevens moet u verschillende stappen uitvoeren. Beveiligings gegevens moeten worden beveiligd, ze moeten een levens cyclus volgen en deze moet Maxi maal beschikbaar zijn. Met Azure Key Vault vereenvoudigt u het proces om aan deze vereisten te voldoen door:
 
-- Het verwijderen van de noodzaak voor in-house kennis van Hardware Security Modules.
-- Op korte termijn opschalen om aan de gebruikspieken van uw organisatie te voldoen.
+- Het verwijderen van de nood zaak van interne kennis van hardware security modules.
+- Verg Roten/verkleinen op korte termijn om te voldoen aan de gebruiks pieken van uw organisatie.
 - Het repliceren van de inhoud van uw Key Vault binnen een regio en naar een secundaire regio. Gegevensreplicatie zorgt voor een maximale beschikbaarheid en de beheerder hoeft geen actie te ondernemen om de failover te activeren.
 - Het bieden van standaard Azure-beheeropties via de portal, Azure CLI en PowerShell.
 - Het automatiseren van bepaalde taken voor certificaten die u aanschaft bij openbare CA's, zoals registreren en verlengen.
@@ -74,7 +74,7 @@ Bovendien kunt u met sleutelkluizen van Azure toepassingsgeheimen van elkaar sch
 Key Vault wordt in Azure gebruikt als beveiligd archief om scenario's te vereenvoudigen, zoals:
 -  [Azure Disk Encryption](../../security/fundamentals/encryption-overview.md)
 -  De functionaliteit [altijd versleuteld]( https://docs.microsoft.com/sql/relational-databases/security/encryption/always-encrypted-database-engine) in SQL-server en Azure SQL Database
-- [Azure App-service]( https://docs.microsoft.com/azure/app-service/configure-ssl-certificate). 
+- [Azure app service]( https://docs.microsoft.com/azure/app-service/configure-ssl-certificate). 
 
 Key Vault zelf kan worden geïntegreerd met opslagaccounts, Event Hubs en logboekanalyses.
 

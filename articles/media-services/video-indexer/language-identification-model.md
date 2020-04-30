@@ -1,7 +1,7 @@
 ---
-title: Video-indexeren gebruiken om gesproken talen automatisch te identificeren - Azure
+title: Gebruik Video Indexer om gesp roken talen automatisch te identificeren-Azure
 titleSuffix: Azure Media Services
-description: In dit artikel wordt beschreven hoe het taalidentificatiemodel van video-indexer wordt gebruikt om de gesproken taal in een video automatisch te identificeren.
+description: In dit artikel wordt beschreven hoe het Video Indexer language Identification model wordt gebruikt om automatisch de gesp roken taal in een video te identificeren.
 services: media-services
 author: juliako
 manager: femila
@@ -11,33 +11,33 @@ ms.topic: article
 ms.date: 04/12/2020
 ms.author: ellbe
 ms.openlocfilehash: 3a71a29fdf4af10162e2f7961fb457d0e99b18e8
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81687126"
 ---
-# <a name="automatically-identify-the-spoken-language-with-language-identification-model"></a>Identificeer de gesproken taal automatisch met taalidentificatiemodel
+# <a name="automatically-identify-the-spoken-language-with-language-identification-model"></a>Automatische identificatie van de gesp roken taal met taal identificatie model
 
-Video Indexer ondersteunt automatische taalidentificatie (LID), het proces van het automatisch identificeren van de gesproken taalinhoud van audio en het verzenden van het mediabestand dat moet worden getranscribeerd in de dominante geïdentificeerde taal. 
+Video Indexer ondersteunt automatische taal identificatie (deksel). Dit is het proces van het automatisch identificeren van de gesp roken taal van de audio en het verzenden van het Media bestand dat moet worden getranscribeerd in de taal die als dominant is geïdentificeerd. 
 
-Momenteel ondersteunt LID: Engels, Spaans, Frans, Duits, Italiaans, Mandarijn Chinees, Japans, Russisch en Portugees (Braziliaans). 
+De huidige deksel ondersteunt: Engels, Spaans, Frans, Duits, Italiaans, Mandarijn Chinees, Japans, Russisch en Portugees (Brazilië). 
 
-Bekijk hieronder de [sectie Richtlijnen en beperkingen.](#guidelines-and-limitations)
+Controleer de sectie [richt lijnen en beperkingen](#guidelines-and-limitations) hieronder.
 
-## <a name="choosing-auto-language-identification-on-indexing"></a>Automatische taalidentificatie kiezen bij indexering
+## <a name="choosing-auto-language-identification-on-indexing"></a>Automatische taal identificatie voor indexering kiezen
 
-Wanneer u een video indexeert of [opnieuw indexeert](https://api-portal.videoindexer.ai/docs/services/operations/operations/Re-Index-Video?) met de API, kiest u de `auto detect` optie in de `sourceLanguage` parameter.
+Wanneer u een video met behulp van de API indexeert of [opnieuw indexeert](https://api-portal.videoindexer.ai/docs/services/operations/operations/Re-Index-Video?) , kiest u de `auto detect` optie in de `sourceLanguage` para meter.
 
-Wanneer u portal gebruikt, gaat u naar uw **accountvideo's** op de startpagina [van Video Indexer](https://www.videoindexer.ai/) en plaatst u de plaats boven de naam van de video die u opnieuw wilt indexeren. Klik rechtsonder op de knop opnieuw indexeren. Kies in het dialoogvenster **Video opnieuw indexeren** de optie *Automatisch detecteren in* het vervolgkeuzevak **Videobrontaal.**
+Wanneer u Portal gebruikt, gaat u naar uw **account Video's** op de start pagina van [video indexer](https://www.videoindexer.ai/) en houdt u de muis aanwijzer over de naam van de video die u opnieuw wilt indexeren. Klik in de rechter bovenhoek op de knop opnieuw indexeren. Kies in het dialoog venster **video opnieuw indexeren** de optie *Automatische detectie* in de vervolg keuzelijst **video bron taal** .
 
-![automatisch detecteren](./media/language-identification-model/auto-detect.png)
+![automatische detectie](./media/language-identification-model/auto-detect.png)
 
 ## <a name="model-output"></a>Uitvoer van model
 
-Video Indexer transcribeert de video volgens de meest waarschijnlijke `> 0.6`taal als het vertrouwen voor die taal is . Als de taal niet met vertrouwen kan worden geïdentificeerd, gaat het ervan uit dat de gesproken taal Engels is. 
+Video Indexer transcribeert de video aan de hand van de meest waarschijnlijke taal als het vertrouwen voor `> 0.6`die taal is. Als de taal niet met vertrouwen kan worden geïdentificeerd, wordt ervan uitgegaan dat de gesp roken taal Engels is. 
 
-Model dominante taal is beschikbaar in `sourceLanguage` de inzichten JSON als het attribuut (onder root / video's / inzichten). Een bijbehorende betrouwbaarheidsscore `sourceLanguageConfidence` is ook beschikbaar onder het attribuut.
+De dominante taal van het model is beschikbaar in de `sourceLanguage` JSON Insights als het kenmerk (onder hoofdmap/Video's/inzichten). Er is ook een bijbehorende betrouwbaarheids Score beschikbaar `sourceLanguageConfidence` onder het-kenmerk.
 
 ```json
 "insights": {
@@ -51,20 +51,20 @@ Model dominante taal is beschikbaar in `sourceLanguage` de inzichten JSON als he
       },
 ```
 
-## <a name="guidelines-and-limitations"></a>Richtlijnen en beperkingen
+## <a name="guidelines-and-limitations"></a>Richt lijnen en beperkingen
 
-* Automatische taalidentificatie (LID) ondersteunt de volgende talen: 
+* Automatische taal identificatie (deksel) ondersteunt de volgende talen: 
 
-    Engels, Spaans, Frans, Duits, Italiaans, Mandarijn Chines, Japans, Russisch en Portugees (Braziliaans).
-* Hoewel Video Indexer Arabisch (Modern Standard en Levantine), Hindi en Koreaans ondersteunt, worden deze talen niet ondersteund in LID.
-* Als de audio andere talen bevat dan de bovenstaande ondersteunde lijst, is het resultaat onverwacht.
-* Als Video Indexer de taal niet kan`>0.6`identificeren met een voldoende hoog vertrouwen ( ), is de terugvaltaal Engels.
-* Er is momenteel geen ondersteuning voor bestand met audio in gemengde talen. Als de audio gemengde talen bevat, is het resultaat onverwacht. 
-* Audio van lage kwaliteit kan van invloed zijn op de modelresultaten.
-* Het model vereist ten minste één minuut spraak in de audio.
-* Het model is ontworpen om een spontane gesprekstoespraak te herkennen (geen spraakopdrachten, zang, enz.).
+    Engels, Spaans, Frans, Duits, Italiaans, Mandarijn Chin, Japans, Russisch en Portugees (Brazilië).
+* Hoewel Video Indexer Arabisch (modern Standard en Levantine), Hindi en Koreaans ondersteunt, worden deze talen niet ondersteund in het deksel.
+* Als de audio andere talen dan de hierboven vermelde lijst bevat, is het resultaat onverwacht.
+* Als Video Indexer de taal niet kan identificeren met een hoge mate van`>0.6`betrouw baarheid (), is de terugval taal Engels.
+* Er is geen huidige ondersteuning voor een bestand met audio voor gemengde talen. Als de audio gemengde talen bevat, is het resultaat onverwacht. 
+* Audio van lage kwaliteit kan van invloed zijn op de model resultaten.
+* Het model vereist ten minste één minuut spraak op de audio.
+* Het model is ontworpen om een spontane spreek spraak te herkennen (geen spraak opdrachten, zingen, enzovoort).
 
 ## <a name="next-steps"></a>Volgende stappen
 
 * [Overzicht](video-indexer-overview.md)
-* [Meertalige inhoud automatisch identificeren en transcriberen](multi-language-identification-transcription.md)
+* [Meerdere talen inhoud automatisch identificeren en transcriberen](multi-language-identification-transcription.md)

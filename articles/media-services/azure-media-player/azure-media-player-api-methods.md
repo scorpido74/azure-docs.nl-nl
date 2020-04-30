@@ -1,34 +1,34 @@
 ---
-title: API-methoden voor Azure Media Player
-description: Met de Azure Media Player API u via JavaScript met de video communiceren, of de browser de video nu afspeelt via HTML5-video, Flash, Silverlight of andere ondersteunde afspeeltechnologieën.
+title: Azure Media Player API-methoden
+description: Met de Azure Media Player-API kunt u communiceren met de video via Java script, of de browser de video via HTML5-Video, Flash, Silverlight of andere ondersteunde afspeel technologieën speelt.
 author: IngridAtMicrosoft
 ms.author: inhenkel
 ms.service: media-services
 ms.topic: reference
 ms.date: 04/20/2020
 ms.openlocfilehash: d1ad0cbe30ce20e61a31f0534a47fe031f6f257b
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81727266"
 ---
 # <a name="api"></a>API #
 
-Met de Azure Media Player API u via JavaScript met de video communiceren, of de browser de video nu afspeelt via HTML5-video, Flash, Silverlight of andere ondersteunde afspeeltechnologieën.
+Met de Azure Media Player-API kunt u communiceren met de video via Java script, of de browser de video via HTML5-Video, Flash, Silverlight of andere ondersteunde afspeel technologieën speelt.
 
 ## <a name="referencing-the-player"></a>Verwijzen naar de speler ##
 
-Als u de API-functies wilt gebruiken, hebt u toegang nodig tot het spelersobject. Gelukkig is het gemakkelijk te krijgen. Je hoeft alleen maar om ervoor te zorgen dat uw video tag heeft een ID. De voorbeeldcode bevat een `vid1`id van . Als je meerdere video's op één pagina hebt, zorg er dan voor dat elke videotag een unieke id heeft.
+Als u de API-functies wilt gebruiken, moet u toegang hebben tot het Player-object. Gelukkig is eenvoudig te krijgen. U hoeft alleen maar te controleren of uw video code een ID heeft. De code voor het insluiten van voor beelden `vid1`bevat een id van. Als u meerdere Video's op één pagina hebt, zorg er dan voor dat elke video code een unieke ID heeft.
 
 `var myPlayer = amp('vid1');`
 
 > [!NOTE]
-> Als de speler nog niet is geïnitialiseerd via het kenmerk van de gegevensinstelling of een andere methode, zal dit ook de speler initialiseren.
+> Als de speler nog niet is geïnitialiseerd via het kenmerk voor de gegevens installatie of een andere methode, wordt de speler ook geïnitialiseerd.
 
-## <a name="wait-until-the-player-is-ready"></a>Wacht tot de speler klaar is ##
+## <a name="wait-until-the-player-is-ready"></a>Wacht tot de speler gereed is ##
 
-De tijd die Azure Media Player nodig heeft om de video en API in te stellen, is afhankelijk van de weergavetechnologie die wordt gebruikt. HTML5 zal vaak veel sneller te laden dan Flash of Silverlight. Om die reden moet de 'ready' functie van de speler worden gebruikt om elke code te activeren waarvoor de API van de speler nodig is.
+De tijd die nodig is Azure Media Player voor het instellen van de video en API variëren, afhankelijk van de gebruikte afspeel technologie. HTML5 is vaak veel sneller te laden dan Flash of Silverlight. Daarom moet de functie Ready van de speler worden gebruikt voor het activeren van code waarvoor de API van de speler is vereist.
 
 ```javacript
     amp("vid_1").ready(function(){
@@ -49,7 +49,7 @@ OF
 
 ## <a name="api-methods"></a>API-methoden ##
 
-Nu je toegang hebt tot een kant-en-klare speler, kun je de video beheren, waarden krijgen of reageren op videogebeurtenissen. De namen van de Azure Media Player API-functie proberen de [HTML5-media-API](http://www.whatwg.org/specs/web-apps/current-work/multipage/the-video-element.html)te volgen. Het belangrijkste verschil is dat getter / setter functies worden gebruikt voor video-eigenschappen.
+Nu u toegang hebt tot een kant-en-klare speler, kunt u de video beheren, waarden ophalen of reageren op video gebeurtenissen. De Azure Media Player-API-functie namen proberen de [HTML5-media-API](http://www.whatwg.org/specs/web-apps/current-work/multipage/the-video-element.html)te volgen. Het belangrijkste verschil is dat getter/setter-functies worden gebruikt voor video-eigenschappen.
 
 ```javacript
     // setting a property on a bare HTML5 video element
@@ -59,8 +59,8 @@ Nu je toegang hebt tot een kant-en-klare speler, kun je de video beheren, waarde
     myPlayer.currentTime(120);
 ```
 
-## <a name="registering-for-events"></a>Inschrijven voor evenementen ##
-Gebeurtenissen moeten direct na het initialiseren van de speler voor de eerste keer worden geregistreerd om ervoor te zorgen dat alle gebeurtenissen op de juiste manier aan de toepassing worden gemeld en moeten buiten het klaar-evenement worden gedaan.
+## <a name="registering-for-events"></a>Registreren voor gebeurtenissen ##
+Gebeurtenissen moeten rechtstreeks worden geregistreerd nadat de speler voor het eerst is geïnitialiseerd om ervoor te zorgen dat alle gebeurtenissen op de juiste manier worden gerapporteerd aan de toepassing en moeten worden uitgevoerd buiten de gebeurtenis ready.
 
 ```javacript
     var myPlayer = amp("vid_1", myOptions, function(){
@@ -73,4 +73,4 @@ Gebeurtenissen moeten direct na het initialiseren van de speler voor de eerste k
 ## <a name="next-steps"></a>Volgende stappen ##
 
 <!---Some context for the following links goes here--->
-- [Snel start azure mediaspeler](azure-media-player-quickstart.md)
+- [Snelstartgids Azure Media Player](azure-media-player-quickstart.md)

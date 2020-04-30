@@ -1,48 +1,48 @@
 ---
-title: How-to - Een Java Spring-toepassing voorbereiden voor implementatie in Azure Spring Cloud
-description: In dit onderwerp bereidt u een Java Spring-toepassing voor voor op implementatie naar Azure Spring Cloud.
+title: 'Instructies: een Java-lente toepassing voorbereiden voor implementatie in azure lente Cloud'
+description: In dit onderwerp maakt u een Java-lente toepassing voor implementatie in azure lente-Cloud.
 author: bmitchell287
 ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 02/03/2020
 ms.author: brendm
 ms.openlocfilehash: 16cee333d52765755b732c4de4dd8a6e092a130d
-ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81731183"
 ---
-# <a name="prepare-a-java-spring-application-for-deployment-in-azure-spring-cloud"></a>Een Java Spring-toepassing voorbereiden voor implementatie in Azure Spring Cloud
+# <a name="prepare-a-java-spring-application-for-deployment-in-azure-spring-cloud"></a>Een Java-lente toepassing voorbereiden voor implementatie in azure lente Cloud
 
-In dit onderwerp wordt uitgelegd hoe u een bestaande Java Spring-toepassing voorbereidt voor implementatie naar Azure Spring Cloud. Als azure spring cloud goed is geconfigureerd, biedt het robuuste services om uw Java Spring Cloud-toepassing te bewaken, te schalen en bij te werken.
+In dit onderwerp wordt beschreven hoe u een bestaande Java-toepassing voorbereidt voor implementatie naar Azure lente-Cloud. Als het goed is geconfigureerd, biedt Azure lente Cloud krachtige services voor het bewaken, schalen en bijwerken van uw Java-lente-Cloud toepassing.
 
-In andere voorbeelden wordt uitgelegd hoe u een toepassing implementeert naar Azure Spring Cloud wanneer het POM-bestand is geconfigureerd. 
-* [App starten met de Azure-portal](spring-cloud-quickstart-launch-app-portal.md)
-* [App starten met de Azure CLI](spring-cloud-quickstart-launch-app-cli.md)
+Andere voor beelden wordt uitgelegd hoe u een toepassing implementeert in azure lente-Cloud wanneer het POM-bestand wordt geconfigureerd. 
+* [App starten met behulp van de Azure Portal](spring-cloud-quickstart-launch-app-portal.md)
+* [App starten met Azure CLI](spring-cloud-quickstart-launch-app-cli.md)
 
-In dit artikel worden de vereiste afhankelijkheden uitgelegd en hoe u deze toevoegen aan het POM-bestand.
+In dit artikel worden de vereiste afhankelijkheden beschreven en wordt uitgelegd hoe u deze toevoegt aan het POM-bestand.
 
-## <a name="java-runtime-version"></a>Java Runtime-versie
+## <a name="java-runtime-version"></a>Java runtime-versie
 
-Alleen Lente/Java-toepassingen kunnen worden uitgevoerd in Azure Spring Cloud.
+Alleen veer-en Java-toepassingen kunnen worden uitgevoerd in azure lente-Cloud.
 
-Azure Spring Cloud ondersteunt zowel Java 8 als Java 11. De hostingomgeving bevat de nieuwste versie van Azul Zulu OpenJDK voor Azure. Zie [De JDK installeren](https://docs.microsoft.com/azure/developer/java/fundamentals/java-jdk-install)voor meer informatie over Azul Zulu OpenJDK voor Azure.
+Azure lente-Cloud ondersteunt Java 8 en Java 11. De hosting omgeving bevat de nieuwste versie van Azul Zulu OpenJDK voor Azure. Zie [install the jdk](https://docs.microsoft.com/azure/developer/java/fundamentals/java-jdk-install)(Engelstalig) voor meer informatie over Azul Zulu openjdk voor Azure.
 
-## <a name="spring-boot-and-spring-cloud-versions"></a>Spring Boot en Spring Cloud versies
+## <a name="spring-boot-and-spring-cloud-versions"></a>Lente-boot-en lente-Cloud versies
 
-Als u een bestaande toepassing voor springboot wilt voorbereiden voor implementatie in Azure Spring Cloud, u de afhankelijkheden Spring Boot en Spring Cloud voorbereiden in het POM-bestand van de toepassing, zoals weergegeven in de volgende secties.
+Als u een bestaande Spring boot-toepassing wilt voorbereiden voor implementatie in azure lente-Cloud, neemt u de voor-en achterliggende Cloud afhankelijkheden op in het POM-bestand van de toepassing, zoals wordt weer gegeven in de volgende secties.
 
-Azure Spring Cloud ondersteunt alleen Spring Boot-apps, ofwel Spring Boot versie 2.1 of versie 2.2. In de volgende tabel worden de ondersteunde combinaties Spring Boot en Spring Cloud weergegeven:
+De Azure lente-Cloud ondersteunt alleen veer boot-apps van veer boot versie 2,1 of versie 2,2. De volgende tabel geeft een overzicht van de ondersteunde veer boot-en lente-Cloud combinaties:
 
-Spring Boot-versie | Spring Cloud-versie
+Spring boot-versie | Lente-Cloud versie
 ---|---
-2.1 | Greenwich.RELEASE Greenwich.RELEASE
-2,2 | Hoxton.RELEASE
+2.1 | Greenwich. RELEASE
+2,2 | Hoxton. RELEASE
 
-### <a name="dependencies-for-spring-boot-version-21"></a>Afhankelijkheden voor Spring Boot versie 2.1
+### <a name="dependencies-for-spring-boot-version-21"></a>Afhankelijkheden voor Spring boot versie 2,1
 
-Voeg voor Spring Boot versie 2.1 de volgende afhankelijkheden toe aan het POM-bestand van de toepassing.
+Voor Spring boot versie 2,1 voegt u de volgende afhankelijkheden toe aan het POM-bestand van de toepassing.
 
 ```xml
     <!-- Spring Boot dependencies -->
@@ -66,9 +66,9 @@ Voeg voor Spring Boot versie 2.1 de volgende afhankelijkheden toe aan het POM-be
     </dependencyManagement>
 ```
 
-### <a name="dependencies-for-spring-boot-version-22"></a>Afhankelijkheden voor Spring Boot versie 2.2
+### <a name="dependencies-for-spring-boot-version-22"></a>Afhankelijkheden voor Spring boot versie 2,2
 
-Voeg voor Spring Boot versie 2.2 de volgende afhankelijkheden toe aan het POM-bestand van de toepassing.
+Voor Spring boot versie 2,2 voegt u de volgende afhankelijkheden toe aan het POM-bestand van de toepassing.
 
 ```xml
     <!-- Spring Boot dependencies -->
@@ -92,22 +92,22 @@ Voeg voor Spring Boot versie 2.2 de volgende afhankelijkheden toe aan het POM-be
     </dependencyManagement>
 ```
 
-## <a name="azure-spring-cloud-client-dependency"></a>Afhankelijkheid van Azure Spring Cloud-client
+## <a name="azure-spring-cloud-client-dependency"></a>Azure veer cloud client-afhankelijkheid
 
-Azure Spring Cloud host en beheert Spring Cloud-componenten. De componenten omvatten Spring Cloud Service Registry en Spring Cloud Config Server. Neem de Azure Spring Cloud-clientbibliotheek op in uw afhankelijkheden om communicatie met uw Azure Spring Cloud-service-exemplaar toe te staan.
+Azure lente-Cloud hosts en beheert lente-Cloud onderdelen. De onderdelen omvatten veer-Cloud service register en lente-Cloud configuratie server. Neem de Azure veer cloud-client bibliotheek op in uw afhankelijkheden om communicatie met uw Azure lente-Cloud service-exemplaar toe te staan.
 
-In de volgende tabel worden de juiste Azure Spring Cloud-versies voor uw app weergegeven die Spring Boot en Spring Cloud gebruiken.
+De volgende tabel geeft een lijst van de juiste Azure lente-Cloud versies voor uw app die een lente-boot-en lente-Cloud gebruiken.
 
-Spring Boot-versie | Spring Cloud-versie | Azure Spring Cloud-versie
+Spring boot-versie | Lente-Cloud versie | Azure lente-Cloud versie
 ---|---|---
-2.1 | Greenwich.RELEASE Greenwich.RELEASE | 2.1
-2,2 | Hoxton.RELEASE | 2,2
+2.1 | Greenwich. RELEASE | 2.1
+2,2 | Hoxton. RELEASE | 2,2
 
-Neem een van de volgende afhankelijkheden op in uw pom.xml-bestand. Selecteer de afhankelijkheid waarvan de Azure Spring Cloud-versie overeenkomt met die van uzelf.
+Neem een van de volgende afhankelijkheden op in het bestand pom. XML. Selecteer de afhankelijkheid waarvan de Azure lente-Cloud versie overeenkomt met uw eigen.
 
-### <a name="dependency-for-azure-spring-cloud-version-21"></a>Afhankelijkheid voor Azure Spring Cloud-versie 2.1
+### <a name="dependency-for-azure-spring-cloud-version-21"></a>Afhankelijkheid voor Azure lente Cloud versie 2,1
 
-Voeg voor Spring Boot versie 2.1 de volgende afhankelijkheid toe aan het POM-bestand van de toepassing.
+Voor Spring boot versie 2,1 voegt u de volgende afhankelijkheden toe aan het POM-bestand van de toepassing.
 
 ```xml
 <dependency>
@@ -117,9 +117,9 @@ Voeg voor Spring Boot versie 2.1 de volgende afhankelijkheid toe aan het POM-bes
 </dependency>
 ```
 
-### <a name="dependency-for-azure-spring-cloud-version-22"></a>Afhankelijkheid voor Azure Spring Cloud-versie 2.2
+### <a name="dependency-for-azure-spring-cloud-version-22"></a>Afhankelijkheid voor Azure lente Cloud versie 2,2
 
-Voeg voor Spring Boot versie 2.2 de volgende afhankelijkheid toe aan het POM-bestand van de toepassing.
+Voor Spring boot versie 2,2 voegt u de volgende afhankelijkheden toe aan het POM-bestand van de toepassing.
 
 ```xml
 <dependency>
@@ -131,15 +131,15 @@ Voeg voor Spring Boot versie 2.2 de volgende afhankelijkheid toe aan het POM-bes
 
 ## <a name="other-required-dependencies"></a>Andere vereiste afhankelijkheden
 
-Als u de ingebouwde functies van Azure Spring Cloud wilt inschakelen, moet uw toepassing de volgende afhankelijkheden bevatten. Deze opname zorgt ervoor dat uw toepassing zichzelf correct configureert met elk onderdeel.
+Uw toepassing moet de volgende afhankelijkheden bevatten om de ingebouwde functies van Azure lente Cloud in te scha kelen. Deze insluiting zorgt ervoor dat uw toepassing zichzelf correct configureert voor elk onderdeel.
 
-### <a name="enablediscoveryclient-annotation"></a>DiscoveryClient-annotatie inschakelen
+### <a name="enablediscoveryclient-annotation"></a>EnableDiscoveryClient aantekening
 
-Voeg de volgende annotatie toe aan de broncode van de toepassing.
+Voeg de volgende aantekening toe aan de bron code van de toepassing.
 ```java
 @EnableDiscoveryClient
 ```
-Zie bijvoorbeeld de piggymetrics-toepassing uit eerdere voorbeelden:
+Zie bijvoorbeeld de piggymetrics-toepassing uit eerdere voor beelden:
 ```java
 package com.piggymetrics.gateway;
 
@@ -159,9 +159,9 @@ public class GatewayApplication {
 }
 ```
 
-### <a name="service-registry-dependency"></a>Afhankelijkheid van serviceregister
+### <a name="service-registry-dependency"></a>Afhankelijkheid van service register
 
-Als u de beheerde Azure `spring-cloud-starter-netflix-eureka-client` Service Registry-service wilt gebruiken, neemt u de afhankelijkheid op in het pom.xml-bestand zoals hier wordt weergegeven:
+Als u de beheerde Azure Service Registry-service wilt gebruiken `spring-cloud-starter-netflix-eureka-client` , neemt u de afhankelijkheid op in het bestand pom. XML, zoals hier wordt weer gegeven:
 
 ```xml
     <dependency>
@@ -170,11 +170,11 @@ Als u de beheerde Azure `spring-cloud-starter-netflix-eureka-client` Service Reg
     </dependency>
 ```
 
-Het eindpunt van de serviceregisterserver wordt automatisch geïnjecteerd als omgevingsvariabelen met uw app. Toepassingen kunnen zich registreren bij de Service Registry-server en andere afhankelijke microservices ontdekken.
+Het eind punt van de service register server wordt automatisch geïnjecteerd als omgevings variabelen met uw app. Toepassingen kunnen zich bij de service register server registreren en andere afhankelijke micro services ontdekken.
 
 ### <a name="distributed-configuration-dependency"></a>Afhankelijkheid van gedistribueerde configuratie
 
-Als u Gedistribueerde configuratie `spring-cloud-config-client` wilt inschakelen, neemt u de volgende afhankelijkheid op in het gedeelte afhankelijkheden van uw pom.xml-bestand:
+Als u gedistribueerde configuratie wilt inschakelen `spring-cloud-config-client` , neemt u de volgende afhankelijkheden op in het gedeelte afhankelijkheden van het bestand pom. XML:
 
 ```xml
 <dependency>
@@ -184,11 +184,11 @@ Als u Gedistribueerde configuratie `spring-cloud-config-client` wilt inschakelen
 ```
 
 > [!WARNING]
-> Geef niet `spring.cloud.config.enabled=false` op in uw bootstrapconfiguratie. Anders werkt uw toepassing niet meer met Config Server.
+> Geef `spring.cloud.config.enabled=false` niets op in de configuratie van uw Boots trap. Anders werkt de toepassing niet meer met de configuratie server.
 
 ### <a name="metrics-dependency"></a>Afhankelijkheid van metrische gegevens
 
-Neem `spring-boot-starter-actuator` de afhankelijkheidssectie op in het gedeelte afhankelijkheden van uw pom.xml-bestand zoals hier wordt weergegeven:
+Neem de `spring-boot-starter-actuator` afhankelijkheid op in de sectie afhankelijkheden van het bestand pom. XML, zoals hier wordt weer gegeven:
 
 ```xml
 <dependency>
@@ -197,11 +197,11 @@ Neem `spring-boot-starter-actuator` de afhankelijkheidssectie op in het gedeelte
 </dependency>
 ```
 
- Statistieken worden periodiek uit de JMX-eindpunten gehaald. U de statistieken visualiseren met behulp van de Azure-portal.
+ Metrische gegevens worden periodiek opgehaald uit de JMX-eind punten. U kunt de metrische gegevens visualiseren met behulp van de Azure Portal.
 
 ### <a name="distributed-tracing-dependency"></a>Afhankelijkheid van gedistribueerde tracering
 
-Neem de `spring-cloud-starter-sleuth` `spring-cloud-starter-zipkin` volgende en afhankelijkheden op in de sectie afhankelijkheden van uw pom.xml-bestand:
+Neem de volgende `spring-cloud-starter-sleuth` en `spring-cloud-starter-zipkin` afhankelijkheden op in het gedeelte afhankelijkheden van het bestand pom. XML:
 
 ```xml
 <dependency>
@@ -214,20 +214,20 @@ Neem de `spring-cloud-starter-sleuth` `spring-cloud-starter-zipkin` volgende en 
 </dependency>
 ```
 
- U moet ook een Azure Application Insights-exemplaar inschakelen om te werken met uw Azure Spring Cloud-serviceinstantie. Lees de [zelfstudie over gedistribueerde tracering](spring-cloud-tutorial-distributed-tracing.md) voor meer informatie over het gebruik van Application Insights met Azure Spring Cloud.
+ U moet ook een Azure-toepassing Insights-exemplaar inschakelen om te werken met uw Azure lente-Cloud service-exemplaar. Lees de [zelf studie over gedistribueerde tracering](spring-cloud-tutorial-distributed-tracing.md) voor meer informatie over het gebruik van Application Insights met Azure lente Cloud.
 
 ## <a name="see-also"></a>Zie ook
-* [Toepassingslogboeken en statistieken analyseren](https://docs.microsoft.com/azure/spring-cloud/diagnostic-services)
+* [Toepassings logboeken en metrische gegevens analyseren](https://docs.microsoft.com/azure/spring-cloud/diagnostic-services)
 * [Uw configuratieserver instellen](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-tutorial-config-server)
-* [Gedistribueerde tracering gebruiken met Azure Spring Cloud](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-tutorial-distributed-tracing)
-* [Lente Quickstart Gids](https://spring.io/quickstart)
-* [Documentatie voor springlaars](https://spring.io/projects/spring-boot)
+* [Gedistribueerde tracering gebruiken met Azure veer Cloud](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-tutorial-distributed-tracing)
+* [Hand leiding voor veer Snelstartgids](https://spring.io/quickstart)
+* [Spring boot-documentatie](https://spring.io/projects/spring-boot)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In dit onderwerp hebt u geleerd hoe u uw Java Spring-toepassing configureert voor implementatie naar Azure Spring Cloud. Zie het volgende artikel voor meer informatie over het instellen van een Config Server-exemplaar.
+In dit onderwerp hebt u geleerd hoe u uw Java lente-toepassing kunt configureren voor implementatie in azure lente-Cloud. Zie het volgende artikel voor meer informatie over het instellen van een configuratie Server-exemplaar.
 
 > [!div class="nextstepaction"]
-> [Meer informatie over het instellen van een Config Server-exemplaar](spring-cloud-tutorial-config-server.md)
+> [Meer informatie over het instellen van een configuratie Server-exemplaar](spring-cloud-tutorial-config-server.md)
 
-Meer voorbeelden zijn beschikbaar op GitHub: [Azure Spring Cloud Samples](https://github.com/Azure-Samples/Azure-Spring-Cloud-Samples).
+Meer voor beelden zijn beschikbaar op GitHub: [Azure lente-Cloud voorbeelden](https://github.com/Azure-Samples/Azure-Spring-Cloud-Samples).

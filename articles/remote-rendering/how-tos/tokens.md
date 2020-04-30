@@ -1,32 +1,32 @@
 ---
 title: Tokens voor servicetoegang ophalen
-description: Beschrijft hoe u tokens maakt voor toegang tot de ARR REST API's
+description: Hierin wordt beschreven hoe u tokens maakt voor toegang tot de ARR REST-Api's
 author: florianborn71
 ms.author: flborn
 ms.date: 02/11/2020
 ms.topic: how-to
 ms.openlocfilehash: fd510f90887353d7486908ee076d5308db72c59d
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81687068"
 ---
 # <a name="get-service-access-tokens"></a>Tokens voor servicetoegang ophalen
 
-Toegang tot de ARR REST API's wordt alleen verleend aan geautoriseerde gebruikers. Om uw autorisatie te bewijzen, moet u een *toegangstoken* samen met REST-aanvragen verzenden. Deze tokens worden uitgegeven door de *Secure Token Service* (STS) in ruil voor een accountsleutel. Tokens hebben een **levensduur van 24 uur** en kunnen dus worden uitgegeven aan gebruikers zonder ze volledige toegang tot de service te geven.
+Toegang tot de ARR REST-Api's wordt alleen verleend voor gemachtigde gebruikers. Als u uw autorisatie wilt bewijzen, moet u een *toegangs token* verzenden in combi natie met rest-aanvragen. Deze tokens worden uitgegeven door de *Secure token service* (STS) in Exchange voor een account sleutel. Tokens hebben een **levens duur van 24 uur** en kunnen daarom worden verleend aan gebruikers zonder dat ze volledige toegang tot de service geven.
 
-In dit artikel wordt beschreven hoe u een dergelijk toegangstoken maakt.
+In dit artikel wordt beschreven hoe u een dergelijk toegangs token maakt.
 
 ## <a name="prerequisites"></a>Vereisten
 
-[Maak een ARR-account](create-an-account.md)aan als je er nog geen hebt.
+[Maak een ARR-account](create-an-account.md)als u er nog geen hebt.
 
-## <a name="token-service-rest-api"></a>Tokenservice REST API
+## <a name="token-service-rest-api"></a>Token Service REST API
 
-Om toegangstokens te maken, biedt de *Secure Token Service* één REST-API. De URL voor de ARR STS-service is https:\//sts.mixedreality.azure.com.
+Voor het maken van toegangs tokens biedt de *Secure token service* een enkele rest API. De URL voor de ARR STS-service is https\/:/STS.mixedreality.Azure.com.
 
-### <a name="get-token-request"></a>'Token-aanvraag krijgen'
+### <a name="get-token-request"></a>Aanvraag voor Token ophalen
 
 | URI | Methode |
 |-----------|:-----------|
@@ -34,23 +34,23 @@ Om toegangstokens te maken, biedt de *Secure Token Service* één REST-API. De U
 
 | Header | Waarde |
 |--------|:------|
-| Autorisatie | **"AccountId aan**toonder :**accountKey**" |
+| Autorisatie | "Bearer- **accountId**:**accountKey**" |
 
-Vervang *accountId* en *accountKey* door uw respectievelijke gegevens.
+Vervang *accountId* en *accountKey* door uw respectieve gegevens.
 
-### <a name="get-token-response"></a>'Token-reactie ontvangen'
+### <a name="get-token-response"></a>Het antwoord van het token ophalen
 
-| Statuscode | JSON-payload | Opmerkingen |
+| Statuscode | JSON-nettolading | Opmerkingen |
 |-----------|:-----------|:-----------|
-| 200 | AccessToken: tekenreeks | Geslaagd |
+| 200 | AccessToken: teken reeks | Geslaagd |
 
 | Header | Doel |
 |--------|:------|
-| MS-CV | Deze waarde kan worden gebruikt om het gesprek binnen de service te traceren |
+| MS-CV | Deze waarde kan worden gebruikt om de aanroep binnen de service te traceren |
 
-## <a name="getting-a-token-using-powershell"></a>Een token krijgen met PowerShell
+## <a name="getting-a-token-using-powershell"></a>Een Token ophalen met behulp van Power shell
 
-De PowerShell-code hieronder laat zien hoe u het benodigde REST-verzoek naar de STS verzenden. Vervolgens wordt het token afgedrukt op de PowerShell-prompt.
+De Power shell-code hieronder laat zien hoe u de benodigde REST-aanvraag naar de STS verzendt. Vervolgens wordt het token afgedrukt op de Power shell-prompt.
 
 ```PowerShell
 $accountId = "<account_id_from_portal>"
@@ -63,10 +63,10 @@ $response = ConvertFrom-Json -InputObject $webResponse.Content
 Write-Output "Token: $($response.AccessToken)"
 ```
 
-Het script drukt het token gewoon af op de uitvoer, van waaruit u het kopiëren & plakken. Voor een echt project moet u dit proces automatiseren.
+Met het script wordt alleen het token naar de uitvoer afgedrukt, waaruit u & plakken kunt kopiëren. Voor een echt project moet u dit proces automatiseren.
 
 ## <a name="next-steps"></a>Volgende stappen
 
 * [PowerShell-voorbeeldscripts](../samples/powershell-example-scripts.md)
-* [Azure Frontend-API's](../how-tos/frontend-apis.md)
-* [API voor sessiebeheer REST](../how-tos/session-rest-api.md)
+* [Azure front-end-Api's](../how-tos/frontend-apis.md)
+* [REST API voor sessie beheer](../how-tos/session-rest-api.md)

@@ -1,6 +1,6 @@
 ---
-title: OpenShift in Azure-overzicht
-description: Een overzicht van OpenShift in Azure.
+title: Overzicht van open Shift in azure
+description: Een overzicht van open Shift in Azure.
 author: haroldwongms
 manager: mdotson
 ms.service: virtual-machines-linux
@@ -10,43 +10,43 @@ ms.workload: infrastructure
 ms.date: 05/7/2019
 ms.author: haroldw
 ms.openlocfilehash: c338e9a6a793d1c2d0557d70242996175d5a85ed
-ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81759451"
 ---
-# <a name="openshift-in-azure"></a>OpenShift in Azure
+# <a name="openshift-in-azure"></a>Open Shift in azure
 
-OpenShift is een open en uitbreidbaar containerapplicatieplatform dat Docker en Kubernetes naar de onderneming brengt.  
+Openshift is een open en uitbreidbaar container toepassings platform dat docker en Kubernetes naar de onderneming brengt.  
 
-OpenShift bevat Kubernetes voor containerorchestration en beheer. Het voegt op ontwikkelaars gerichte en operations-centric tools toe die:
+Open Shift bevat Kubernetes voor container indeling en-beheer. Hiermee worden hulpprogram ma's voor ontwikkel aars en bewerkingen toegevoegd waarmee het volgende kan worden uitgevoerd:
 
-- Snelle applicatieontwikkeling.
-- Eenvoudige implementatie en schaling.
-- Onderhoud van de levenscyclus op lange termijn voor teams en toepassingen.
+- Snelle ontwikkeling van toepassingen.
+- Eenvoudig implementeren en schalen.
+- Onderhoud van de levens cyclus op lange termijn voor teams en toepassingen.
 
-Er zijn meerdere versies van OpenShift beschikbaar.  Van deze versies zijn er vandaag de dag slechts twee beschikbaar voor klanten die kunnen worden geïmplementeerd in Azure: OpenShift Container Platform en OKD (voorheen OpenShift Origin).
+Er zijn meerdere versies van open Shift beschikbaar.  Van deze versies zijn er slechts twee beschikbaar voor klanten om te implementeren in Azure: open Shift container platform en OKD (voorheen open Shift-oorsprong).
 
 ## <a name="azure-red-hat-openshift"></a>Azure Red Hat OpenShift
 
-Microsoft Azure Red Hat OpenShift is een volledig beheerd aanbod van OpenShift dat in Azure wordt uitgevoerd. Deze service wordt gezamenlijk beheerd en ondersteund door Microsoft en Red Hat. Zie de Azure [Red Hat OpenShift-servicedocumentatie](https://docs.microsoft.com/azure/openshift/) voor meer informatie.
+Microsoft Azure Red Hat open Shift is een volledig beheerd aanbod van open Shift dat wordt uitgevoerd in Azure. Deze service wordt gezamenlijk beheerd en ondersteund door micro soft en Red Hat. Zie de documentatie van [Azure Red Hat open Shift service](https://docs.microsoft.com/azure/openshift/) voor meer informatie.
 
 ## <a name="openshift-container-platform"></a>OpenShift Container Platform
 
-Container Platform is een bedrijfsklare [commerciële versie](https://www.openshift.com) van en ondersteund door Red Hat. Met deze versie kopen klanten de benodigde rechten voor OpenShift Container Platform en zijn ze verantwoordelijk voor de installatie en het beheer van de gehele infrastructuur.
+Container platform is een [commerciële versie](https://www.openshift.com) van bedrijfs eigendom van en wordt ondersteund door Red Hat. Met deze versie kopen klanten de benodigde rechten voor open Shift container platform en zijn ze verantwoordelijk voor de installatie en het beheer van de volledige infra structuur.
 
-Omdat klanten het hele platform "bezitten", kunnen ze het installeren in hun on-premises datacenter of in een openbare cloud (zoals Azure).
+Omdat klanten ' eigenaar ' van het hele platform zijn, kunnen ze het installeren in hun on-premises Data Center of in een open bare Cloud (zoals Azure).
 
 ## <a name="okd"></a>OKD
 
-OKD is een [open-source](https://www.okd.io/) upstream project van OpenShift dat de gemeenschap ondersteund. OKD kan worden geïnstalleerd op CentOS of Red Hat Enterprise Linux (RHEL).
+OKD is een [open-source](https://www.okd.io/) upstream-project van openshift dat wordt ondersteund door de community. OKD kan worden geïnstalleerd op CentOS of Red Hat Enterprise Linux (RHEL).
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Algemene vereisten configureren voor OpenShift in Azure](./openshift-container-platform-3x-prerequisites.md)
-- [OpenShift-containerplatform implementeren in Azure](./openshift-container-platform-3x.md)
-- [OpenShift Container Platform Self-Managed Marketplace-aanbieding implementeren](./openshift-container-platform-3x-marketplace-self-managed.md)
-- [OpenShift implementeren in Azure Stack](./openshift-azure-stack.md)
-- [Taken na implementatie](./openshift-container-platform-3x-post-deployment.md)
-- [OpenShift-implementatie oplossen](./openshift-container-platform-3x-troubleshooting.md)
+- [Algemene vereisten voor open Shift configureren in azure](./openshift-container-platform-3x-prerequisites.md)
+- [Open Shift container platform implementeren in azure](./openshift-container-platform-3x.md)
+- [Zelf beheerde Marketplace-aanbieding voor open Shift container platform implementeren](./openshift-container-platform-3x-marketplace-self-managed.md)
+- [Open Shift in Azure Stack implementeren](./openshift-azure-stack.md)
+- [Taken na de implementatie](./openshift-container-platform-3x-post-deployment.md)
+- [Problemen met de openshift-implementatie oplossen](./openshift-container-platform-3x-troubleshooting.md)

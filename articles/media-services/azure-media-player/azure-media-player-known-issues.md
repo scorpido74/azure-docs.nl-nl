@@ -1,114 +1,114 @@
 ---
-title: Bekende problemen met Azure Media Player
-description: De huidige release heeft de volgende bekende problemen.
+title: Bekende problemen Azure Media Player
+description: De huidige versie heeft de volgende bekende problemen.
 author: IngridAtMicrosoft
 ms.author: inhenkel
 ms.service: media-services
 ms.topic: reference
 ms.date: 04/20/2020
 ms.openlocfilehash: ff8dc58b9122e5173a9a6065e2efdbc5697be0d7
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81727214"
 ---
 # <a name="known-issues"></a>Bekende problemen #
 
-De huidige release heeft de volgende bekende problemen:
+De huidige versie heeft de volgende bekende problemen:
 
 ## <a name="azure-media-player"></a>Azure Media Player ##
 
-- Onjuist geconfigureerde encoders kunnen problemen veroorzaken met het afspelen
-- Streams met tijdstempels groter dan 2^53 kunnen problemen met afspelen hebben.
-  - Mitigatie: gebruik 90 kHz video en 44,1 kHz audiotijdschalen
-- Geen automatisch afspelen op mobiele apparaten zonder interactie van de gebruiker. Het is geblokkeerd door het platform.
-- Zoeken in de buurt van discontinuïteiten kan leiden tot het afspelen van fouten.
-- Het downloaden van grote presentaties kan ertoe leiden dat de gebruikersinterface wordt vergrendeld.
-- Kan dezelfde bron niet automatisch opnieuw afspelen nadat de presentatie is afgelopen.
-  - Als u een bron opnieuw wilt afspelen nadat deze is beëindigd, moet de bron opnieuw worden ingesteld.
-- Lege manifesten kunnen problemen veroorzaken met de speler.
-  - Dit probleem kan optreden bij het starten van een live stream en er worden niet genoeg brokken gevonden in het manifest.
-- Afspeelpositie misschien buiten de zoekbalk van de gebruikersinterface.
-- Het bestellen van evenementen is niet consistent voor alle technici.
-- Gebufferde eigenschap is niet consistent tussen techs.
-- nativeControlsForTouch moet false (default) zijn om te voorkomen dat 'Object geen eigenschap of methode 'setControls' ondersteunt'
-- Posters moeten nu absolute urls zijn
-- Kleine esthetische problemen kunnen optreden in de gebruikersinterface bij het gebruik van de modus met een hoog contrast van het apparaat
-- URL's die "%" of '+' in de volledig gedecodeerde tekenreeks bevatten, kunnen problemen hebben met het instellen van de bron
+- Onjuist geconfigureerde encoders kunnen problemen veroorzaken met afspelen
+- Stromen met tijds tempels die groter zijn dan 2 ^ 53 kunnen afspeel problemen bevatten.
+  - Risico beperking: gebruik 90-kHz video-en 44,1-kHz-tijd schalen
+- Geen autoplay op mobiele apparaten zonder tussen komst van de gebruiker. Het wordt geblokkeerd door het platform.
+- Het kan voor komen dat er problemen optreden bij het afspelen.
+- Het downloaden van grote presentaties kan ertoe leiden dat de gebruikers interface Lockup.
+- Kan niet automatisch dezelfde bron afspelen nadat de presentatie is beëindigd.
+  - Als u een bron opnieuw wilt afspelen nadat deze is beëindigd, moet u de bron opnieuw instellen.
+- Lege manifesten kunnen problemen met de speler veroorzaken.
+  - Dit probleem kan optreden bij het starten van een live stream en er zijn onvoldoende segmenten gevonden in het manifest.
+- Afspeel positie mogelijk buiten de gebruikers interface-SeekBar.
+- De volg orde van gebeurtenissen is niet consistent op alle technische technici.
+- De gebufferde eigenschap is niet consistent in de technische ondersteuning.
+- nativeControlsForTouch moet zijn ingesteld op False (standaard) om te voor komen dat "object geen ondersteuning biedt voor eigenschap of methode" setControls ""
+- Posters moeten nu absolute url's zijn
+- Er kunnen kleine esthetische problemen optreden in de gebruikers interface wanneer de modus Hoog contrast van het apparaat wordt gebruikt
+- Url's met '% ' of ' + ' in de volledig gedecodeerde teken reeks hebben mogelijk problemen met het instellen van de bron
 
-## <a name="ad-insertion"></a>Advertentie-invoeging ##
+## <a name="ad-insertion"></a>AD-invoeging ##
 
-- Advertenties kunnen problemen hebben met het plaatsen (op aanvraag of live) wanneer een adblocker in de browser wordt geïnstalleerd
-- Mobiele apparaten kunnen problemen hebben met het afspelen van advertenties.
+- Ads kan problemen ondervinden bij het invoegen (op aanvraag of Live) wanneer een ad-blocker in de browser is geïnstalleerd
+- Op mobiele apparaten kunnen problemen optreden bij het afspelen van advertenties.
 
 ## <a name="azurehtml5js"></a>AzureHtml5JS ##
 
-- In het DVR-venster van Live-inhoud blijft de tijdlijn, wanneer de inhoud is voltooid, groeien totdat de tijdlijn naar het gebied wordt gezocht of het einde van de presentatie bereikt.
-- Live presentaties in Firefox met MSE ingeschakeld heeft een aantal problemen
-- Assets die alleen audio of video zijn, worden niet afgespeeld via de AzureHtml5JS-technologie.
-  - Als u elementen wilt afspelen zonder audio of video, u dit doen door lege audio of video in te voegen met het [azure media services explorer-hulpprogramma](https://aka.ms/amse)
-    - Instructies voor het invoegen van stille audio vindt u [hier](https://azure.microsoft.com/documentation/articles/media-services-advanced-encoding-with-mes/#silent_audio)
+- In het DVR-venster van live content, blijft de inhoud van de tijd lijn toenemen totdat het naar het gebied wordt gezocht of het einde van de presentatie wordt bereikt.
+- Live presentaties in Firefox met MSE ingeschakeld hebben enkele problemen
+- Activa die alleen audio of video zijn, worden niet afgespeeld via de AzureHtml5JS-techniek.
+  - Als u activa wilt afspelen zonder audio of video, kunt u dit doen door lege audio of video in te voegen met behulp van de [Azure Media Services Explorer](https://aka.ms/amse)
+    - Instructies voor het invoegen van Silent audio vindt u [hier](https://azure.microsoft.com/documentation/articles/media-services-advanced-encoding-with-mes/#silent_audio)
 
-## <a name="flash"></a>Flash ##
+## <a name="flash"></a>Flits ##
 
-- AES-inhoud wordt niet afgespeeld in Flash-versie 30.0.0.134 vanwege een bug in de cachelogica van Adobe. Adobe heeft het probleem opgelost en uitgebracht in 30.0.0.154
-- Tech en http mislukkingen (zoals 404 netwerk time-outs), zal de speler langer duren om te herstellen dan andere techs.
-- Klik op video gebied met flashSS tech zal niet spelen / pauzeren van de speler.
-- Als de gebruiker Flash heeft geïnstalleerd, maar geen toestemming geeft om het op de site te laden, kan er oneindig worden spinnen. Dit komt omdat de speler denkt dat de plugin is geïnstalleerd en beschikbaar en het denkt dat de plugin draait de inhoud. JavaScript-code is verzonden, maar de browserinstellingen hebben de plug-in geblokkeerd totdat de gebruiker de prompt accepteert om de plug-in toe te staan. Dit kan in alle browsers gebeuren.  
+- AES-inhoud wordt niet weer gegeven in Flash versie 30.0.0.134 vanwege een fout in de cache logica van Adobe. Adobe heeft het probleem opgelost en uitgebracht in 30.0.0.154
+- Tech-en HTTP-fouten (zoals 404 time-outs in het netwerk), neemt de speler langer in beslag dan andere technische instellingen.
+- Klik op video gebied met behulp van de knipperende tech die de speler niet kan afspelen/onderbreken.
+- Als op de gebruiker Flash is geïnstalleerd, maar niet is gemachtigd om deze te laden op de site, kan er oneindig draaiend worden uitgevoerd. Dit komt omdat de speler denkt dat de invoeg toepassing is geïnstalleerd en beschikbaar is en dat de inhoud wordt uitgevoerd door de invoeg toepassing. Java script-code is verzonden, maar de browser instellingen hebben de uitvoering van de invoeg toepassing geblokkeerd totdat de gebruiker de prompt accepteert om de invoeg toepassing toe te staan. Dit kan in alle browsers optreden.  
 
 ## <a name="silverlight"></a>Silverlight ##
 
-- Ontbrekende functies
-- Tech en http mislukkingen (zoals 404 netwerk time-outs), zal de speler langer duren om te herstellen dan andere techs.
-- Safari en Firefox op Mac afspelen met `"http://` Silverlight vereist expliciet definiëren of `https://` voor de bron.
-- Als een API ontbreekt voor deze technologie, zal het over het algemeen null retourneren.
-- Als de gebruiker Flash heeft geïnstalleerd, maar geen toestemming geeft om het op de site te laden, kan er oneindig worden spinnen. Dit komt omdat de speler denkt dat de plugin is geïnstalleerd en beschikbaar en het denkt dat de plugin draait de inhoud. JavaScript-code is verzonden, maar de browserinstellingen hebben de plug-in geblokkeerd totdat de gebruiker de prompt accepteert om de plug-in toe te staan. Dit kan in alle browsers gebeuren.  
+- Ontbrekende onderdelen
+- Tech-en HTTP-fouten (zoals 404 time-outs in het netwerk), neemt de speler langer in beslag dan andere technische instellingen.
+- Voor het afspelen van Safari en Firefox op Mac met Silverlight moet de bron expliciet worden gedefinieerd `"http://` `https://`
+- Als er voor deze tech een API ontbreekt, wordt in het algemeen Null geretourneerd.
+- Als op de gebruiker Flash is geïnstalleerd, maar niet is gemachtigd om deze te laden op de site, kan er oneindig draaiend worden uitgevoerd. Dit komt omdat de speler denkt dat de invoeg toepassing is geïnstalleerd en beschikbaar is en dat de inhoud wordt uitgevoerd door de invoeg toepassing. Java script-code is verzonden, maar de browser instellingen hebben de uitvoering van de invoeg toepassing geblokkeerd totdat de gebruiker de prompt accepteert om de invoeg toepassing toe te staan. Dit kan in alle browsers optreden.  
 
-## <a name="native-html5"></a>Native HTML5 ##
+## <a name="native-html5"></a>Systeem eigen HTML5 ##
 
-- Html5-technologie verzendt alleen canplaythrough-gebeurtenissen voor de eerste setbron.
-- Deze technologie ondersteunt alleen wat de browser heeft geïmplementeerd.  Sommige functies kunnen ontbreken in deze tech.  
-- Als een API ontbreekt voor deze technologie, zal het over het algemeen null retourneren.
-- Er zijn problemen met bijschriften en ondertitels op deze tech. Ze kunnen wel of niet beschikbaar zijn of zichtbaar op deze tech.
-- Het hebben van beperkte bandbreedte in HLS/ Html5 tech scenario resulteert in audio afspelen zonder video.
+- Html5-tech verzendt alleen de canplaythrough-gebeurtenis voor de eerste set-bron.
+- Deze tech ondersteunt alleen de implementatie van de browser.  Sommige functies ontbreken mogelijk in deze technische stand.  
+- Als er voor deze tech een API ontbreekt, wordt in het algemeen Null geretourneerd.
+- Er zijn problemen met bijschriften en ondertiteling op deze technische zaken. Ze kunnen of zijn mogelijk niet beschikbaar of op deze technische weer gave worden weer gegeven.
+- Een beperkte band breedte in HLS/Html5 tech scenario resulteert in audio afspelen zonder video.
 
 ### <a name="microsoft"></a>Microsoft ###
 
-- IE8-weergave werkt momenteel niet vanwege onverenigbaarheid met ECMAScript 5
-- In IE en sommige versies van Edge kan het volledige scherm niet worden ingevoerd door tabben op de knop en deze te selecteren of de F/f hotkey te gebruiken.
+- Afspelen op IE8 werkt momenteel niet vanwege incompatibiliteit met ECMAScript 5
+- In IE en sommige versies van Edge kan volledig scherm worden ingevoerd door met de tab-toets naar de knop te gaan en deze te selecteren of door de F/F-sneltoets te gebruiken.
 
 ## <a name="google"></a>Google ##
 
-- Meerdere coderingsprofielen in hetzelfde manifest hebben problemen met het afspelen in Chrome en worden niet aanbevolen.
-- Chrome kan HE-AAC niet afspelen met AzureHtml5JS. Volg details op de [bug tracker](https://bugs.chromium.org/p/chromium/issues/detail?id=534301).
-- Vanaf Chrome v58 moet widevine-inhoud worden geladen/afgespeeld via het https:// protocol anders wordt het afspelen mislukt.
+- Meerdere coderings profielen in hetzelfde manifest bevatten enkele afspeel problemen in Chrome en worden niet aanbevolen.
+- Chrome kan niet met AzureHtml5JS worden afgespeeld. Volg de details van de [fout tracering](https://bugs.chromium.org/p/chromium/issues/detail?id=534301).
+- Vanaf Chrome v58 moet widevine-inhoud worden geladen/afgespeeld via het https://-protocol, anders mislukt het afspelen.
 
 ## <a name="mozilla"></a>Mozilla ##
 
-- Voor audiostreamswitch zijn audiostreams vereist dat ze dezelfde codec-privégegevens hebben wanneer ze AzureHtml5JS gebruiken. Firefox-platform vereist dit.
+- Voor de audio stream switch zijn audio stromen vereist om dezelfde codec-privé gegevens te hebben wanneer AzureHtml5JS wordt gebruikt. Voor het Firefox-platform is dit vereist.
 
 ## <a name="apple"></a>Apple ##
 
-- Safari op Mac maakt de Power Saver-modus standaard mogelijk met de instelling 'Stop plug-ins to save power", die plug-ins zoals Flash en Silverlight blokkeert wanneer ze geloven dat het niet in het voordeel is van de gebruiker. Dit blok blokkeert niet de bestaande plugin, alleen mogelijkheden. Gezien de standaard techOrder kan dit problemen veroorzaken bij het
-  - Mitigatie 1: Als de videospeler 'front and center' is (binnen een grens van 3000 x 3000 pixels vanaf de linkerbovenhoek van het document), moet deze nog steeds worden afgespeeld.
-  - Mitigatie 2: Wijzig de techOrder voor Safari als ["azureHtml5JS", "html5"]. Deze mitigatie heeft implicatie van het niet krijgen van alle functies die beschikbaar zijn in de FlashSS tech.
-- PlayReady-content via Silverlight kan problemen hebben met het afspelen in Safari.
-- AES- en beperkte token-inhoud wordt niet afgespeeld met iOS- en oudere Android-apparaten.
-  - Om dit scenario te bereiken, moet een proxy worden toegevoegd aan uw service.
-- Standaardskin voor iOS Phone wordt weergegeven.
-- iPhone afspelen gebeurt altijd in de native player fullscreen.
-  - Functies, waaronder bijschriften, blijven mogelijk niet bestaan in deze niet-inline weergave.
-- Wanneer de live presentatie is afgelopen, beëindigen iOS-apparaten de presentatie niet goed.
+- In Safari op Mac wordt de energiebesparings modus vaak standaard ingeschakeld met de instelling ' invoeg toepassingen stoppen om energie te besparen ', waarmee invoeg toepassingen zoals Flash en Silverlight worden geblokkeerd wanneer ze van mening zijn dat deze niet van toepassing zijn op de gebruiker. Dit blok blokkeert de bestaande en alleen mogelijkheden van de invoeg toepassing niet. Dit kan problemen veroorzaken bij het afspelen van de standaard techOrder.
+  - Risico beperking 1: als de video speler vooraan en gecentreerd (binnen een 3000 x 3000 pixel grens in de linkerbovenhoek van het document wordt gestart), moet deze nog steeds worden afgespeeld.
+  - Beperking 2: Wijzig techOrder voor Safari in ["azureHtml5JS", "HTML5"]. Deze beperking heeft gevolgen voor niet alle functies die beschikbaar zijn in de beschik baarheid van de technologie.
+- Voor inhoud van PlayReady via Silverlight kunnen problemen optreden in Safari.
+- AES-en beperkte token inhoud wordt niet afgespeeld met iOS-en oudere Android-apparaten.
+  - Voor dit scenario moet er een proxy aan uw service worden toegevoegd.
+- Standaard weergave voor iOS-telefoon wordt weer gegeven via.
+- het afspelen van iPhone vindt altijd plaats in het volledige scherm van de speler.
+  - Functies, waaronder bijschriften, zijn mogelijk niet behouden in deze niet-inline afspelen.
+- Wanneer Live Presentation eindigt, worden de presentaties niet goed beëindigd door iOS-apparaten.
 - iOS staat geen DVR-mogelijkheden toe.
-- iOS audiostream-switch kan alleen worden gedaan via de gebruikersinterface van iOS native player en vereist dat audiostreams dezelfde codec-privégegevens hebben
-- Oudere versies van Safari kunnen mogelijk problemen hebben met het afspelen van livestreams.
+- de schakel optie voor de iOS-audio stroom kan alleen worden uitgevoerd als de native gebruikers interface van iOS
+- Oudere versies van Safari kunnen mogelijk problemen ondervinden bij het afspelen van live streams.
 
 ## <a name="older-android"></a>Oudere Android ##
 
-- AES- en beperkte token-inhoud wordt niet afgespeeld met iOS- en oudere Android-apparaten.
-  - Om dit scenario te bereiken, moet een proxy worden toegevoegd aan uw service.
+- AES-en beperkte token inhoud wordt niet afgespeeld met iOS-en oudere Android-apparaten.
+  - Voor dit scenario moet er een proxy aan uw service worden toegevoegd.
 
 ## <a name="next-steps"></a>Volgende stappen ##
 
-- [Snel start azure mediaspeler](azure-media-player-quickstart.md)
+- [Snelstartgids Azure Media Player](azure-media-player-quickstart.md)

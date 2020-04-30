@@ -1,33 +1,33 @@
 ---
-title: host.json-referentie voor Azure-functies 2.x
-description: Referentiedocumentatie voor het Azure Functions host.json-bestand met de v2-runtime.
+title: host. json-verwijzing voor Azure Functions 2. x
+description: Referentie documentatie voor het Azure Functions host. JSON-bestand met v2 runtime.
 ms.topic: conceptual
 ms.date: 01/06/2020
 ms.openlocfilehash: 7967cdc7f5f7cbb92c12de15d31471fda8aa6569
-ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81758848"
 ---
-# <a name="hostjson-reference-for-azure-functions-2x-and-later"></a>host.json-verwijzing voor Azure-functies 2.x en hoger 
+# <a name="hostjson-reference-for-azure-functions-2x-and-later"></a>host. json-verwijzing voor Azure Functions 2. x en hoger 
 
-> [!div class="op_single_selector" title1="Selecteer de versie van de runtime van Azure-functies die u gebruikt: "]
+> [!div class="op_single_selector" title1="Selecteer de versie van de Azure Functions runtime die u gebruikt: "]
 > * [Versie 1](functions-host-json-v1.md)
-> * [Versie 2+](functions-host-json.md)
+> * [Versie 2 +](functions-host-json.md)
 
-Het bestand *host.json* metagegevens bevat algemene configuratieopties die van invloed zijn op alle functies voor een functie-app. In dit artikel worden de instellingen weergegeven die beschikbaar zijn vanaf versie 2.x van de runtime van Azure-functies.  
+Het meta gegevensbestand van de *host. json* bevat globale configuratie opties die van invloed zijn op alle functies voor een functie-app. In dit artikel vindt u een lijst met de instellingen die vanaf versie 2. x van de Azure Functions runtime beschikbaar zijn.  
 
 > [!NOTE]
-> Dit artikel is voor Azure Functions 2.x en latere versies.  Zie [host.json-verwijzing naar Azure-functies 1.x voor](functions-host-json-v1.md)een verwijzing naar host.json in Functies 1.x .
+> Dit artikel is voor Azure Functions 2. x en latere versies.  Zie [host. json Reference voor Azure functions 1. x](functions-host-json-v1.md)voor een verwijzing naar de host. json in functions 1. x.
 
-Andere configuratieopties voor functie-apps worden beheerd in uw [app-instellingen](functions-app-settings.md) (voor geïmplementeerde apps) of in het bestand [local.settings.json](functions-run-local.md#local-settings-file) (voor lokale ontwikkeling).
+Andere opties voor de configuratie van de functie-app worden beheerd in de [app-instellingen](functions-app-settings.md) (voor geïmplementeerde apps) of het bestand [Local. settings. json](functions-run-local.md#local-settings-file) (voor lokale ontwikkeling).
 
-Configuraties in host.json met betrekking tot bindingen worden op elke functie in de functie-app ook toegepast. 
+Configuraties in host. json die betrekking hebben op bindingen, worden op dezelfde manier toegepast op elke functie in de functie-app. 
 
-## <a name="sample-hostjson-file"></a>Voorbeeld van host.json-bestand
+## <a name="sample-hostjson-file"></a>Voor beeld van host. JSON-bestand
 
-Het volgende *voorbeeldhost.json-bestand* voor versie 2.x+ heeft alle mogelijke opties opgegeven (met uitzondering van alle opties die alleen voor intern gebruik zijn).
+In het volgende voor beeld van een *host. json* -bestand voor versie 2. x + zijn alle mogelijke opties opgegeven (exclusief voor intern gebruik).
 
 ```json
 {
@@ -128,109 +128,109 @@ Het volgende *voorbeeldhost.json-bestand* voor versie 2.x+ heeft alle mogelijke 
 
 In de volgende secties van dit artikel wordt elke eigenschap op het hoogste niveau uitgelegd. Alle zijn optioneel, tenzij anders aangegeven.
 
-## <a name="aggregator"></a>Aggregator
+## <a name="aggregator"></a>aggregator
 
 [!INCLUDE [aggregator](../../includes/functions-host-json-aggregator.md)]
 
 ## <a name="applicationinsights"></a>applicationInsights
 
-Deze instelling is een kind van [de houtkap](#logging).
+Deze instelling is een onderliggend item van [logboek registratie](#logging).
 
-Besturingselementen voor Toepassingsinzichten, inclusief [bemonsteringsopties.](./functions-monitoring.md#configure-sampling)
+Opties voor de Application Insights, met inbegrip van [bemonsterings opties](./functions-monitoring.md#configure-sampling).
 
-Zie het eerdere [voorbeeldhost.json-bestand](#sample-hostjson-file)voor de volledige JSON-structuur .
+Zie het eerder volgende voor beeld van een [host. JSON-bestand](#sample-hostjson-file)voor de volledige JSON-structuur.
 
 > [!NOTE]
-> Logboekbemonstering kan ertoe leiden dat sommige uitvoeringen niet worden weergegeven in het monitorblad Van Application Insights. Om logboekbemonstering te `excludedTypes: "Request"` voorkomen, voegt u de `samplingSettings` waarde toe.
+> Het vastleggen van logboeken kan ertoe leiden dat sommige uitvoeringen niet worden weer gegeven op de Blade Application Insights monitor. Voeg `excludedTypes: "Request"` toe aan de `samplingSettings` waarde om te voor komen dat u Logboeken kunt bemonsteren.
 
 | Eigenschap | Standaard | Beschrijving |
 | --------- | --------- | --------- | 
-| samplingInstellingen | N.v.t. | Zie [applicationInsights.samplingSettings](#applicationinsightssamplingsettings). |
-| enableLiveMetrics | waar | Maakt het verzamelen van live statistieken mogelijk. |
-| inschakelenDependencyTracking | waar | Hiermee u afhankelijkheidstracking bijhouden. |
-| performancecountersverzameling inschakelen | waar | Hiermee maakt kudu prestatietellers verzamelen. |
+| samplingSettings | N.v.t. | Zie [applicationInsights. samplingSettings](#applicationinsightssamplingsettings). |
+| enableLiveMetrics | waar | Hiermee wordt de verzameling Live Metrics ingeschakeld. |
+| enableDependencyTracking | waar | Hiermee schakelt u het bijhouden van afhankelijkheden in. |
+| enablePerformanceCountersCollection | waar | Hiermee schakelt u de verzameling kudu-prestatie meter items. |
 | liveMetricsInitializationDelay | 00:00:15 | Alleen voor intern gebruik. |
-| httpAutoCollectionOptions | N.v.t. | Zie [applicationInsights.httpAutoCollectionOptions](#applicationinsightshttpautocollectionoptions). |
-| momentopnameConfiguratie | N.v.t. | Zie [applicationInsights.snapshotConfiguration](#applicationinsightssnapshotconfiguration). |
+| httpAutoCollectionOptions | N.v.t. | Zie [applicationInsights. httpAutoCollectionOptions](#applicationinsightshttpautocollectionoptions). |
+| snapshotConfiguration | N.v.t. | Zie [applicationInsights. snapshotConfiguration](#applicationinsightssnapshotconfiguration). |
 
-### <a name="applicationinsightssamplingsettings"></a>applicationInsights.samplingInstellingen
-
-|Eigenschap | Standaard | Beschrijving |
-| --------- | --------- | --------- | 
-| Isenabled | waar | Hiermee schakelt u sampling in of uit. | 
-| maxTelemetryItemsPerSecond | 20 | Het doelaantal telemetrie-items dat per seconde wordt geregistreerd op elke serverhost. Als uw app op veel hosts wordt uitgevoerd, verlaagt u deze waarde om binnen uw totale doelsnelheid van het verkeer te blijven. | 
-| evaluatieInterval | 01:00:00 | Het interval waarmee de huidige telemetriesnelheid opnieuw wordt geëvalueerd. Evaluatie wordt uitgevoerd als een voortschrijdend gemiddelde. U dit interval verkorten als uw telemetrie onderhevig is aan plotselinge uitbarstingen. |
-| eersteSamplingPercentage| 1.0 | Het eerste bemonsteringspercentage dat aan het begin van het bemonsteringsproces wordt toegepast om het percentage dynamisch te variëren. Verminder de waarde niet tijdens het debuggen. |
-| samplingPercentageIncreaseTimeout | 00:00:01 | Wanneer de waarde van het bemonsteringspercentage verandert, bepaalt deze eigenschap hoe snel daarna Application Insights het bemonsteringspercentage opnieuw mag verhogen om meer gegevens vast te leggen. |
-| samplingPercentageDecreaseTimeout | 00:00:01 | Wanneer de waarde van het bemonsteringspercentage verandert, bepaalt deze eigenschap hoe snel daarna Application Insights het bemonsteringspercentage opnieuw mag verlagen om minder gegevens vast te leggen. |
-| minSamplingPercentage | 0.1 | Aangezien het bemonsteringspercentage varieert, bepaalt deze eigenschap het minimaal toegestane bemonsteringspercentage. |
-| maxSamplingPercentage | 0.1 | Aangezien het bemonsteringspercentage varieert, bepaalt deze eigenschap het maximaal toegestane bemonsteringspercentage. |
-| movingAverageRatio | 1.0 | Bij de berekening van het voortschrijdend gemiddelde wordt het gewicht toegewezen aan de meest recente waarde. Gebruik een waarde die gelijk is aan of lager is dan 1. Kleinere waarden maken het algoritme minder reactief voor plotselinge veranderingen. |
-| uitgeslotenTypen | null | Een lijst met typen met een dubbele punt die u niet wilt bemonsteren. Erkende `Dependency`typen zijn: `Event`, `PageView` `Request`, `Exception` `Trace`, , en . Alle exemplaren van de opgegeven typen worden verzonden; de typen die niet zijn opgegeven, worden bemonsterd. |
-| includedTypes | null | Een lijst met typen met een dubbele punt die u wilt bemonsteren. een lege lijst impliceert alle soorten. Type dat `excludedTypes` wordt vermeld in de typen overschrijven die hier worden vermeld. Erkende `Dependency`typen zijn: `Event`, `PageView` `Request`, `Exception` `Trace`, , en . Exemplaren van de opgegeven typen worden bemonsterd; de typen die niet zijn opgegeven of geïmpliceerd, worden zonder bemonstering verzonden. |
-
-### <a name="applicationinsightshttpautocollectionoptions"></a>applicationInsights.httpAutoCollectionOptions
+### <a name="applicationinsightssamplingsettings"></a>applicationInsights. samplingSettings
 
 |Eigenschap | Standaard | Beschrijving |
 | --------- | --------- | --------- | 
-| httpTriggerExtendedInfoCollection inschakelen | waar | Hiermee kunnen of worden uitgebreide HTTP-aanvraaggegevens voor HTTP-triggers in- of uitgeschakeld: inkomende foutteksten, ondersteuning voor meervoudige instrumentatiesleutels, HTTP-methode, pad en respons. |
-| enableW3CDistributedTracing | waar | Hiermee schakelt u ondersteuning van het W3C distributed tracing-protocol in of uit (en schakelt het verouderde correlatieschema in). Standaard ingeschakeld als `enableHttpTriggerExtendedInfoCollection` dit waar is. Als `enableHttpTriggerExtendedInfoCollection` deze vlag niet waar is, is deze vlag alleen van toepassing op uitgaande aanvragen, niet op binnenkomende aanvragen. |
-| inschakelenResponseHeaderInjection | waar | Hiermee of wordt de injectie van correlatiekoppen met meerdere componenten in reacties in- of uitgeschakeld. Met het inschakelen van injectie kan Application Insights een toepassingskaart samenstellen voor wanneer verschillende instrumentatietoetsen worden gebruikt. Standaard ingeschakeld als `enableHttpTriggerExtendedInfoCollection` dit waar is. Deze instelling is niet `enableHttpTriggerExtendedInfoCollection` van toepassing als deze niet is. |
+| isEnabled | waar | Hiermee worden steek proeven in-of uitgeschakeld. | 
+| maxTelemetryItemsPerSecond | 20 | Het doel aantal telemetriegegevens dat per seconde op elke server host is geregistreerd. Als uw app op meerdere hosts wordt uitgevoerd, vermindert u deze waarde zodat deze binnen het totale doel tempo van het verkeer blijft. | 
+| evaluationInterval | 01:00:00 | Het interval waarmee de huidige frequentie van de telemetrie opnieuw wordt geëvalueerd. De evaluatie wordt uitgevoerd als een zwevend gemiddelde. Mogelijk wilt u dit interval verkorten als uw telemetrie op plotselinge bursts is. |
+| initialSamplingPercentage| 1.0 | Het eerste bemonsterings percentage dat aan het begin van het bemonsterings proces wordt toegepast om het percentage dynamisch te variëren. Verminder de waarde niet tijdens het opsporen van fouten. |
+| samplingPercentageIncreaseTimeout | 00:00:01 | Wanneer de waarde voor het sampling percentage wordt gewijzigd, bepaalt deze eigenschap hoe snel later Application Insights het steekproef percentage opnieuw mag worden gegenereerd om meer gegevens vast te leggen. |
+| samplingPercentageDecreaseTimeout | 00:00:01 | Wanneer de waarde voor het sampling percentage wordt gewijzigd, bepaalt deze eigenschap hoe snel Application Insights later het sampling percentage opnieuw wordt toegestaan om minder gegevens vast te leggen. |
+| minSamplingPercentage | 0.1 | Als het steekproef percentage varieert, bepaalt deze eigenschap het minimale toegestane sampling percentage. |
+| maxSamplingPercentage | 0.1 | Als het steekproef percentage varieert, bepaalt deze eigenschap het Maxi maal toegestane steekproef percentage. |
+| movingAverageRatio | 1.0 | Bij het berekenen van het zwevend gemiddelde wordt het gewicht toegewezen aan de meest recente waarde. Gebruik een waarde die gelijk is aan of kleiner is dan 1. Kleinere waarden zorgen ervoor dat het algoritme minder opnieuw wordt geactiveerd tot onverwachte wijzigingen. |
+| excludedTypes | null | Een door punt komma's gescheiden lijst met typen waarvan u geen steek proef wilt maken. De herkende typen `Dependency`zijn `Event`: `Exception`, `PageView`, `Request`,, `Trace`en. Alle exemplaren van de opgegeven typen worden verzonden. voor de typen die niet worden opgegeven, worden steek proeven gegeven. |
+| includedTypes | null | Een door punt komma's gescheiden lijst met typen waarvan u een steek proef wilt maken; een lege lijst impliceert alle typen. Typ in `excludedTypes` het veld overschrijvings typen die hier worden vermeld. De herkende typen `Dependency`zijn `Event`: `Exception`, `PageView`, `Request`,, `Trace`en. Voor exemplaren van de opgegeven typen wordt een steek proef gegeven; de typen die niet worden opgegeven of geïmpliceerd, worden zonder steek proeven verzonden. |
 
-### <a name="applicationinsightssnapshotconfiguration"></a>applicationInsights.snapshotConfiguration
-
-Zie [Momentopnamen voor foutopsporing in .NET-apps](/azure/azure-monitor/app/snapshot-debugger) en [Problemen oplossen waarmee Debugger van Snapshots van Application Insights of het bekijken van momentopnamen](/azure/azure-monitor/app/snapshot-debugger-troubleshoot)worden opgelost voor meer informatie over momentopnamen.
+### <a name="applicationinsightshttpautocollectionoptions"></a>applicationInsights. httpAutoCollectionOptions
 
 |Eigenschap | Standaard | Beschrijving |
 | --------- | --------- | --------- | 
-| agentEndpoint | null | Het eindpunt dat wordt gebruikt om verbinding te maken met de foutopsporingsservice Van Application Insights.The endpoint used to the Application Insights Snapshot Debugger service. Als null, wordt een standaardeindpunt gebruikt. |
-| captureSnapshotMemoryWeight | 0.5 | Het gewicht dat wordt gegeven aan de huidige geheugengrootte bij het controleren of er voldoende geheugen is om een momentopname te maken. De verwachte waarde is een fractie groter dan 0 (0 < CaptureSnapshotMemoryWeight < 1). |
-| failedRequestLimit | 3 | De limiet voor het aantal mislukte aanvragen om momentopnamen op te vragen voordat de telemetrieprocessor is uitgeschakeld.|
-| handleUntrackedExceptions | waar | Hiermee of wordt het bijhouden van uitzonderingen die niet worden bijgehouden door telemetrie van Application Insights in- of uitgeschakeld. |
-| Isenabled | waar | Het in- of uitschakelen van momentopnameverzameling | 
-| isEnabledInDeveloperMode | false | Het in- of uitschakelen van momentopnameverzameling is ingeschakeld in de ontwikkelaarsmodus. |
-| isEnabledWhenProfiling | waar | Hiermee u het maken van momentopnamen in- of uitschakelen, zelfs als de Application Insights Profiler een gedetailleerde profileringssessie verzamelt. |
-| isExceptionSnappointsIngeschakeld | false | Hiermee of wordt het filteren van uitzonderingen uitgeschakeld. |
-| isLowPrioritySnapshotUploader | waar | Hiermee bepaalt u of het snapshotuploaderproces onder de normale prioriteit moet worden uitgevoerd. |
-| maximaalCollectionPlanSize | 50 | Het maximum aantal problemen dat we op elk moment kunnen volgen in een bereik van één tot 9999. |
-| maximumSnapshotsVereist | 3 | Het maximum aantal momentopnamen dat voor één probleem wordt verzameld, in een bereik van één tot 999. Een probleem kan worden gezien als een individuele gooi verklaring in uw aanvraag. Zodra het aantal momentopnamen dat voor een probleem is verzameld deze waarde bereikt, worden er `problemCounterResetInterval`geen `thresholdForSnapshotting` momentopnamen meer verzameld voor dat probleem totdat probleemtellers zijn gereset (zie) en de limiet opnieuw wordt bereikt. |
-| probleemCounterResetInterval | 24:00:00 | Hoe vaak de probleemtellers in een bereik van één minuut tot zeven dagen moeten worden gereset. Wanneer dit interval is bereikt, worden alle probleemtellingen op nul gezet. Bestaande problemen die de drempel waarde voor het maken van momentopnamen al `maximumSnapshotsRequired`hebben bereikt, maar het aantal momentopnamen nog niet hebben gegenereerd, blijven actief. |
-| biedenAnoniemeTelemetry | waar | Hiermee bepaalt u of u anoniem gebruik en fouttelemetrie naar Microsoft wilt verzenden. Deze telemetrie kan worden gebruikt als u contact opneemt met Microsoft om problemen met de momentopnamefoutopsporing op te lossen. Het wordt ook gebruikt om gebruikspatronen te controleren. |
-| reconnectInterval | 00:15:00 | Hoe vaak maken we opnieuw verbinding met het eindpunt van momentopnamefoutopsporing. Toegestane bereik is een minuut tot een dag. |
-| shadowCopyFolder | null | Hiermee geeft u de map op die moet worden gebruikt voor schaduwkopiërende binaire bestanden. Als deze niet zijn ingesteld, worden de mappen die zijn opgegeven door de volgende omgevingsvariabelen in volgorde geprobeerd: Fabric_Folder_App_Temp, LOCALAPPDATA, APPDATA, TEMP. |
-| shareUploaderProcess | waar | Als dit waar is, verzamelt en uploadt slechts één exemplaar van SnapshotUploader momentopnamen voor meerdere apps die de InstrumentationKey delen. Als deze is ingesteld op false, is de SnapshotUploader uniek voor elke tuple (ProcessName, InstrumentationKey). |
-| snapshotInLowPriorityThread | waar | Hiermee bepaalt u of momentopnamen al dan niet moeten worden verwerkt in een thread met lage IO-prioriteit. Het maken van een momentopname is een snelle bewerking, maar om een momentopname te uploaden naar de Snapshot Debugger-service, moet deze eerst als een minidump naar de schijf worden geschreven. Dat gebeurt in het SnapshotUploader-proces. Als u deze waarde instelt op true, wordt io met een lage prioriteit gebruikt om de minidump te schrijven, die niet zal concurreren met uw toepassing voor resources. Het instellen van deze waarde op valse snelheden minidump creatie ten koste van het vertragen van uw toepassing. |
-| momentopnamenPerDayLimit | 30 | Het maximum aantal momentopnamen dat in één dag (24 uur) is toegestaan. Deze limiet wordt ook afgedwongen aan de servicekant van Application Insights. Uploads zijn tarief beperkt tot 50 per dag per toepassing (dat wil zeggen, per instrumentatie sleutel). Deze waarde helpt voorkomen dat er extra momentopnamen worden gemaakt die uiteindelijk tijdens het uploaden worden afgewezen. Met een waarde van nul wordt de limiet volledig verwijderd, wat niet wordt aanbevolen. |
-| momentopnamenPerTenMinutesLimit | 1 | Het maximum aantal momentopnamen dat in 10 minuten is toegestaan. Hoewel er geen bovengrens op deze waarde, wees voorzichtig verhogen op de productie workloads, omdat het van invloed kan zijn op de prestaties van uw toepassing. Het maken van een momentopname is snel, maar het maken van een minidump van de momentopname en het uploaden naar de Snapshot Debugger-service is een veel tragere bewerking die zal concurreren met uw toepassing voor resources (zowel CPU als I/O). |
-| tempFolder | null | Hiermee geeft u de map op om minidumps en uploaderlogbestanden te schrijven. Als dit niet is ingesteld, wordt *%TEMP%\Dumps* gebruikt. |
-| drempelwaardenForSnapshotting | 1 | Hoe vaak Application Insights een uitzondering moet zien voordat het om momentopnamen vraagt. |
-| uploaderProxy | null | Overschrijft de proxyserver die wordt gebruikt in het snapshot-uploaderproces. Mogelijk moet u deze instelling gebruiken als uw toepassing verbinding maakt met internet via een proxyserver. Het momentopnamecollectorwordt uitgevoerd binnen het proces van uw toepassing en gebruikt dezelfde proxy-instellingen. De Momentopnameuploader wordt echter als een afzonderlijk proces uitgevoerd en het kan nodig zijn om de proxyserver handmatig te configureren. Als deze waarde null is, probeert Momentopnameverzamelaar het adres van de proxy automatisch op te sporen door System.Net.WebRequest.DefaultWebProxy te onderzoeken en de waarde door te geven aan de Momentopnameuploader. Als deze waarde niet null is, wordt autodetectie niet gebruikt en wordt de proxyserver die hier is opgegeven, gebruikt in de momentopnameuploader. |
+| enableHttpTriggerExtendedInfoCollection | waar | Hiermee schakelt u uitgebreide informatie over HTTP-aanvragen in of uit voor HTTP-triggers: inkomende aanvraag correlatie headers, ondersteuning voor meerdere instrumentatie sleutels, HTTP-methode, pad en antwoord. |
+| enableW3CDistributedTracing | waar | Hiermee wordt ondersteuning van het W3C-protocol voor gedistribueerde tracering (en het verouderde correlatie schema ingeschakeld) in-of uitgeschakeld. Standaard ingeschakeld als `enableHttpTriggerExtendedInfoCollection` is ingesteld op True. Als `enableHttpTriggerExtendedInfoCollection` is ingesteld op False, is deze vlag alleen van toepassing op uitgaande aanvragen, niet op inkomende aanvragen. |
+| enableResponseHeaderInjection | waar | Hiermee wordt de injectie van correlatie headers met meerdere onderdelen in-of uitgeschakeld. Door injectie in te scha kelen, kunt Application Insights een toepassings toewijzing maken wanneer er meerdere instrumentatie sleutels worden gebruikt. Standaard ingeschakeld als `enableHttpTriggerExtendedInfoCollection` is ingesteld op True. Deze instelling is niet van `enableHttpTriggerExtendedInfoCollection` toepassing als is ingesteld op false. |
+
+### <a name="applicationinsightssnapshotconfiguration"></a>applicationInsights. snapshotConfiguration
+
+Voor meer informatie over moment opnamen raadpleegt u [debug-moment opnamen op uitzonde ringen in .net apps](/azure/azure-monitor/app/snapshot-debugger) en lost u problemen op bij het [inschakelen van Application Insights snapshot debugger of het weer geven van moment opnamen](/azure/azure-monitor/app/snapshot-debugger-troubleshoot).
+
+|Eigenschap | Standaard | Beschrijving |
+| --------- | --------- | --------- | 
+| agentEndpoint | null | Het eind punt dat wordt gebruikt om verbinding te maken met de Application Insights Snapshot Debugger-service. Als de waarde Null is, wordt een standaard eindpunt gebruikt. |
+| captureSnapshotMemoryWeight | 0.5 | Het gewicht dat aan de huidige geheugen grootte van het proces is gegeven om te controleren of er voldoende geheugen beschikbaar is om een moment opname te maken. De verwachte waarde is een groter dan 0 juiste fractie (0 < CaptureSnapshotMemoryWeight < 1). |
+| failedRequestLimit | 3 | De limiet voor het aantal mislukte aanvragen voor het aanvragen van moment opnamen voordat de telemetrie-processor wordt uitgeschakeld.|
+| handleUntrackedExceptions | waar | Hiermee wordt het bijhouden van uitzonde ringen die niet worden bijgehouden door Application Insights telemetrie, in-of uitgeschakeld. |
+| isEnabled | waar | Hiermee wordt de momentopname verzameling in-of uitgeschakeld | 
+| isEnabledInDeveloperMode | false | Hiermee wordt de momentopname verzameling ingeschakeld of uitgeschakeld in de ontwikkelaars modus. |
+| isEnabledWhenProfiling | waar | Hiermee wordt het maken van een moment opname in-of uitgeschakeld, zelfs als er een gedetailleerde profilerings sessie wordt verzameld door de Application Insights Profiler. |
+| isExceptionSnappointsEnabled | false | Hiermee wordt het filteren van uitzonde ringen in-of uitgeschakeld. |
+| isLowPrioritySnapshotUploader | waar | Hiermee wordt bepaald of het SnapshotUploader-proces op de normale prioriteit moet worden uitgevoerd. |
+| maximumCollectionPlanSize | 50 | Het maximum aantal problemen dat kan worden gevolgd op elk gewenst moment in een bereik van 1 tot en met 9999. |
+| maximumSnapshotsRequired | 3 | Het maximum aantal moment opnamen dat voor één probleem wordt verzameld, in een bereik van 1 tot 999. Een probleem kan worden beschouwd als een afzonderlijke instructie throw in uw toepassing. Zodra het aantal moment opnamen dat voor een probleem is verzameld deze waarde bereikt, worden er geen moment opnamen meer verzameld voor dat probleem totdat de probleem tellers opnieuw `problemCounterResetInterval`zijn ingesteld ( `thresholdForSnapshotting` Zie) en de limiet opnieuw wordt bereikt. |
+| problemCounterResetInterval | 24:00:00 | Hoe vaak de probleem tellers in een bereik van één minuut tot zeven dagen opnieuw moeten worden ingesteld. Als dit interval wordt bereikt, worden alle probleem aantallen opnieuw ingesteld op nul. Bestaande problemen die de drempel voor het uitvoeren van moment opnamen al hebben bereikt, maar nog niet het aantal moment opnamen in `maximumSnapshotsRequired`hebben gegenereerd, blijven actief. |
+| provideAnonymousTelemetry | waar | Hiermee wordt bepaald of anoniem gebruik en fout-telemetrie naar micro soft moet worden verzonden. Deze telemetrie kan worden gebruikt als u contact opneemt met micro soft om problemen met de Snapshot Debugger op te lossen. Het wordt ook gebruikt om gebruiks patronen te bewaken. |
+| reconnectInterval | 00:15:00 | Hoe vaak opnieuw verbinding wordt gemaakt met het Snapshot Debugger-eind punt. Het toegestane bereik is één minuut op een dag. |
+| shadowCopyFolder | null | Hiermee geeft u de map op die moet worden gebruikt voor binaire bestanden voor kopiëren van schaduw kopieën. Als dit niet het geval is, worden de mappen die zijn opgegeven door de volgende omgevings variabelen, in volg orde geprobeerd: Fabric_Folder_App_Temp, LOCALAPPDATA, APPDATA, TEMP. |
+| shareUploaderProcess | waar | Als deze eigenschap waar is, worden met slechts één instantie van SnapshotUploader moment opnamen verzameld en geüpload voor meerdere apps die de InstrumentationKey delen. Als deze eigenschap is ingesteld op False, wordt de SnapshotUploader uniek voor elke tuple (verwerkings naam, InstrumentationKey). |
+| snapshotInLowPriorityThread | waar | Hiermee wordt bepaald of moment opnamen moeten worden verwerkt in een thread met een lage IO-prioriteit. Het maken van een moment opname is een snelle bewerking, maar om een moment opname te uploaden naar de Snapshot Debugger-service, moet deze eerst naar de schijf worden geschreven als een mini dump. Dat gebeurt in het SnapshotUploader-proces. Als u deze waarde instelt op True, wordt IO met lage prioriteit gebruikt voor het schrijven van het mini dump, dat niet kan concurreren met uw toepassing voor resources. Als u deze waarde instelt op ONWAAR, versnelt u het maken van een mini maal in de kosten van het vertragen van uw toepassing. |
+| snapshotsPerDayLimit | 30 | Het maximum aantal moment opnamen dat is toegestaan in één dag (24 uur). Deze limiet wordt ook afgedwongen aan de kant van de Application Insights service. Uploads zijn beperkt tot 50 per dag per toepassing (dat wil zeggen, per instrumentatie sleutel). Deze waarde helpt te voor komen dat er extra moment opnamen worden gemaakt die uiteindelijk tijdens het uploaden worden afgewezen. Met de waarde 0 wordt de limiet volledig verwijderd, wat niet wordt aanbevolen. |
+| snapshotsPerTenMinutesLimit | 1 | Het maximum aantal moment opnamen dat is toegestaan in 10 minuten. Hoewel er geen bovengrens is voor deze waarde, is het belang rijk om deze te verhogen op productie werkbelastingen, omdat dit de prestaties van uw toepassing kan beïnvloeden. Het maken van een moment opname is snel, maar het maken van een mini dump van de moment opname en het uploaden naar de Snapshot Debugger-service is een veel langzamere bewerking die zal concurreren met uw toepassing voor resources (zowel CPU als I/O). |
+| tempFolder | null | Hiermee geeft u de map voor het schrijven van minidumps-en Uploader-logboek bestanden. Als deze niet is ingesteld, wordt *%temp%\Dumps* gebruikt. |
+| thresholdForSnapshotting | 1 | Hoe vaak Application Insights een uitzonde ring moet zien voordat er wordt gevraagd om moment opnamen. |
+| uploaderProxy | null | Hiermee wordt de proxy server die wordt gebruikt in het Uploader-proces voor moment opnamen onderdrukt. Mogelijk moet u deze instelling gebruiken als uw toepassing verbinding maakt met Internet via een proxy server. De Snapshot Collector wordt uitgevoerd binnen het proces van uw toepassing en maakt gebruik van dezelfde proxy-instellingen. De moment opname Uploader wordt echter als een afzonderlijk proces uitgevoerd en u moet de proxy server mogelijk hand matig configureren. Als deze waarde Null is, probeert Snapshot Collector automatisch het adres van de proxy te detecteren door .net. WebRequest. DefaultWebProxy te onderzoeken en door te geven aan de waarde van de uploader van de moment opname. Als deze waarde niet null is, wordt er geen automatische detectie gebruikt en wordt de proxy server die hier is opgegeven, gebruikt in de uploader voor moment opnamen. |
 
 ## <a name="cosmosdb"></a>cosmosDb
 
-Configuratie-instelling is te vinden in [Cosmos DB triggers en bindingen.](functions-bindings-cosmosdb-v2-output.md#host-json)
+De configuratie-instelling vindt u in [Cosmos DB triggers en bindingen](functions-bindings-cosmosdb-v2-output.md#host-json).
 
-## <a name="durabletask"></a>duurzaamTask
+## <a name="durabletask"></a>durableTask
 
-Configuratie-instelling is te vinden in [bindingen voor duurzame functies.](durable/durable-functions-bindings.md#host-json)
+De configuratie-instelling kan worden gevonden in [bindingen voor Durable functions](durable/durable-functions-bindings.md#host-json).
 
 ## <a name="eventhub"></a>eventHub
 
-Configuratie-instellingen zijn te vinden in [gebeurtenishubtriggers en -bindingen.](functions-bindings-event-hubs-trigger.md#host-json) 
+U kunt configuratie-instellingen vinden in [Event hub-triggers en-bindingen](functions-bindings-event-hubs-trigger.md#host-json). 
 
-## <a name="extensions"></a>Extensies
+## <a name="extensions"></a>Extensions
 
-Eigenschap die een object retourneert dat alle bindingsspecifieke instellingen bevat, zoals [http](#http) en [eventHub.](#eventhub)
+Eigenschap die een object retourneert dat alle binding-specifieke instellingen bevat, zoals [http](#http) en [eventHub](#eventhub).
 
-## <a name="extensionbundle"></a>extensieBundel 
+## <a name="extensionbundle"></a>extensionBundle 
 
-Met extensiebundels u een compatibele set extensies voor het binden van functies toevoegen aan uw functie-app. Zie [Uitbreidingsbundels voor lokale ontwikkeling voor](functions-bindings-register.md#extension-bundles)meer informatie.
+Met uitbreidings bundels kunt u een compatibele set van functies bindings extensies toevoegen aan uw functie-app. Zie [uitbreidings bundels voor lokale ontwikkeling voor](functions-bindings-register.md#extension-bundles)meer informatie.
 
 [!INCLUDE [functions-extension-bundles-json](../../includes/functions-extension-bundles-json.md)]
 
-## <a name="functions"></a>Functies
+## <a name="functions"></a>vervullen
 
-Een lijst met functies die de taakhost uitvoert. Een lege array betekent dat alle functies worden uitgevoerd. Alleen bedoeld voor gebruik bij [lokaal hardlopen.](functions-run-local.md) In functie-apps in Azure moet u in plaats daarvan de stappen volgen in [Hoe u functies in Azure-functies uitschakelt](disable-function.md) om specifieke functies uit te schakelen in plaats van deze instelling te gebruiken.
+Een lijst met functies die de taak host uitvoert. Een lege matrix houdt in dat alle functies worden uitgevoerd. Alleen bedoeld voor gebruik bij [lokaal uitvoeren](functions-run-local.md). In functie-apps in azure moet u in plaats daarvan de stappen volgen in [het uitschakelen van functies in azure functions](disable-function.md) om specifieke functies uit te scha kelen in plaats van deze instelling te gebruiken.
 
 ```json
 {
@@ -238,13 +238,13 @@ Een lijst met functies die de taakhost uitvoert. Een lege array betekent dat all
 }
 ```
 
-## <a name="functiontimeout"></a>functieTime-out
+## <a name="functiontimeout"></a>functionTimeout
 
-Geeft de time-outduur voor alle functies aan. Het volgt de tijdspanne string formaat. In een serverloos verbruiksplan is het geldige bereik 1 seconde tot 10 minuten en de standaardwaarde 5 minuten.  
+Hiermee wordt de duur van de time-out voor alle functies aangegeven. Het volgt de teken reeks notatie time span. In een serverloze verbruiks abonnement is het geldige bereik van 1 seconde tot 10 minuten en de standaard waarde is 5 minuten.  
 
-In het Premium-abonnement is het geldige bereik 1 seconde tot 60 minuten en de standaardwaarde 30 minuten.
+In het Premium-abonnement ligt het geldige bereik van 1 seconde tot 60 minuten en is de standaard waarde 30 minuten.
 
-In een Dedicated (App Service) plan is er geen algemene limiet en de standaardwaarde is 30 minuten. Een waarde `-1` van geeft onbegrensde uitvoering aan, maar het wordt aanbevolen om een vaste bovengrens te behouden.
+In een speciaal (App Service)-abonnement is er geen algemene limiet, en de standaard waarde is 30 minuten. De waarde `-1` geeft aan dat de uitvoering niet is gebonden, maar een vaste bovengrens wordt aanbevolen.
 
 ```json
 {
@@ -254,7 +254,7 @@ In een Dedicated (App Service) plan is er geen algemene limiet en de standaardwa
 
 ## <a name="healthmonitor"></a>healthMonitor
 
-Configuratie-instellingen voor [hoststatusmonitor](https://github.com/Azure/azure-webjobs-sdk-script/wiki/Host-Health-Monitor).
+Configuratie-instellingen voor de [host Health Monitor](https://github.com/Azure/azure-webjobs-sdk-script/wiki/Host-Health-Monitor).
 
 ```
 {
@@ -270,19 +270,19 @@ Configuratie-instellingen voor [hoststatusmonitor](https://github.com/Azure/azur
 
 |Eigenschap  |Standaard | Beschrijving |
 |---------|---------|---------| 
-|enabled|waar|Hiermee geeft u op of de functie is ingeschakeld. | 
-|healthCheckInterval|10 seconden|Het tijdsinterval tussen de periodieke achtergrondstatuscontroles. | 
-|healthCheckWindow|2 minuten|Een schuiftijdvenster dat wordt `healthCheckThreshold` gebruikt in combinatie met de instelling.| 
-|healthCheckThreshold|6|Maximaal aantal keren dat de statuscontrole kan mislukken voordat een hostwordt gestart.| 
-|tegenDrempel|0,80|De drempel waarop een prestatiemeter als ongezond wordt beschouwd.| 
+|enabled|waar|Hiermee wordt aangegeven of de functie is ingeschakeld. | 
+|healthCheckInterval|10 seconden|Het tijds interval tussen de periodieke status controles voor de achtergrond. | 
+|healthCheckWindow|2 minuten|Een schuif tijd venster dat wordt gebruikt in combi natie `healthCheckThreshold` met de instelling.| 
+|healthCheckThreshold|6|Maximum aantal keer dat de status controle kan mislukken voordat een host recyclen wordt gestart.| 
+|counterThreshold|0,80|De drempel waarde waarbij een prestatie meter item wordt beschouwd als een slechte status.| 
 
 ## <a name="http"></a>http
 
-Configuratie-instellingen zijn te vinden in [http triggers en bindingen.](functions-bindings-http-webhook-output.md#hostjson-settings)
+Configuratie-instellingen vindt u in [http-triggers en-bindingen](functions-bindings-http-webhook-output.md#hostjson-settings).
 
 ## <a name="logging"></a>logboekregistratie
 
-Hiermee bepaalt u het logginggedrag van de functie-app, inclusief Application Insights.
+Hiermee bepaalt u het gedrag van logboek registratie van de functie-app, met inbegrip van Application Insights.
 
 ```json
 "logging": {
@@ -302,14 +302,14 @@ Hiermee bepaalt u het logginggedrag van de functie-app, inclusief Application In
 
 |Eigenschap  |Standaard | Beschrijving |
 |---------|---------|---------|
-|fileLoggingMode|foutopsporingAlleen|Hiermee bepaalt u welk niveau van bestandslogboekregistratie is ingeschakeld.  Opties `never`zijn `always` `debugOnly`, , . |
-|Loglevel|N.v.t.|Object dat de filtering van de logboekcategorie definieert voor functies in de app. Versies 2.x en later volgen de ASP.NET Core-indeling voor het filteren van logboekcategorieën. Met deze instelling u logboekregistratie filteren voor specifieke functies. Zie [Logboekfiltering](https://docs.microsoft.com/aspnet/core/fundamentals/logging/?view=aspnetcore-2.1#log-filtering) in de ASP.NET Core-documentatie voor meer informatie. |
-|console|N.v.t.| De instelling voor het registreren van de [console.](#console) |
-|applicationInsights|N.v.t.| De [instelling applicationInsights.](#applicationinsights) |
+|fileLoggingMode|debugOnly|Hiermee wordt gedefinieerd welk niveau van bestands logboek registratie is ingeschakeld.  Opties zijn `never`, `always`, `debugOnly`. |
+|logLevel|N.v.t.|Object dat de logboek categorie filtering definieert voor functies in de app. Versie 2. x en hoger volgen de ASP.NET Core indeling voor het filteren van de logboek categorie. Met deze instelling kunt u logboek registratie voor specifieke functies filteren. Zie [logboek filtering](https://docs.microsoft.com/aspnet/core/fundamentals/logging/?view=aspnetcore-2.1#log-filtering) in de ASP.net core-documentatie voor meer informatie. |
+|console|N.v.t.| De instelling voor de logboek registratie van de [console](#console) . |
+|applicationInsights|N.v.t.| De instelling [applicationInsights](#applicationinsights) . |
 
 ## <a name="console"></a>console
 
-Deze instelling is een kind van [de houtkap](#logging). Het regelt de console logboekregistratie wanneer u niet in de foutopsporingsmodus staat.
+Deze instelling is een onderliggend item van [logboek registratie](#logging). Het beheert de logboek registratie van de console als dit niet in de foutopsporingsmodus is.
 
 ```json
 {
@@ -325,11 +325,11 @@ Deze instelling is een kind van [de houtkap](#logging). Het regelt de console lo
 
 |Eigenschap  |Standaard | Beschrijving |
 |---------|---------|---------| 
-|Isenabled|false|Hiermee schakelt u consolelogboekregistratie in of uit.| 
+|isEnabled|false|Hiermee wordt de logboek registratie van de console in-of uitgeschakeld.| 
 
 ## <a name="manageddependency"></a>managedDependency
 
-Beheerde afhankelijkheid is een functie die momenteel alleen wordt ondersteund met PowerShell-gebaseerde functies. Hiermee kunnen afhankelijkheden automatisch door de service worden beheerd. Wanneer `enabled` de eigenschap `true`is `requirements.psd1` ingesteld op , wordt het bestand verwerkt. Afhankelijkheden worden bijgewerkt wanneer er secundaire versies worden uitgebracht. Zie [Beheerafhankelijkheid](functions-reference-powershell.md#dependency-management) in het PowerShell-artikel voor meer informatie.
+Managed dependency is een functie die momenteel alleen wordt ondersteund met Power shell-functies. Hierdoor kunnen afhankelijkheden automatisch worden beheerd door de service. Wanneer de `enabled` eigenschap is ingesteld op `true`, wordt `requirements.psd1` het bestand verwerkt. Afhankelijkheden worden bijgewerkt wanneer er secundaire versies worden vrijgegeven. Zie [beheerde afhankelijkheden](functions-reference-powershell.md#dependency-management) in het Power shell-artikel voor meer informatie.
 
 ```json
 {
@@ -339,21 +339,21 @@ Beheerde afhankelijkheid is een functie die momenteel alleen wordt ondersteund m
 }
 ```
 
-## <a name="queues"></a>Wachtrijen
+## <a name="queues"></a>Bestel
 
-Configuratie-instellingen zijn te vinden in [storage queue triggers en bindingen.](functions-bindings-storage-queue-output.md#host-json)  
+Configuratie-instellingen vindt u in de [opslag wachtrij Triggers en bindingen](functions-bindings-storage-queue-output.md#host-json).  
 
 ## <a name="sendgrid"></a>sendGrid
 
-Configuratie-instelling is te vinden in [SendGrid-triggers en bindingen.](functions-bindings-sendgrid.md#host-json)
+Configuratie-instelling vindt u in [SendGrid-triggers en-bindingen](functions-bindings-sendgrid.md#host-json).
 
 ## <a name="servicebus"></a>serviceBus
 
-Configuratie-instelling is te vinden in [servicebustriggers en -bindingen.](functions-bindings-service-bus-output.md#host-json)
+De configuratie-instelling vindt u in [Service Bus triggers en bindingen](functions-bindings-service-bus-output.md#host-json).
 
 ## <a name="singleton"></a>Singleton
 
-Configuratie-instellingen voor singleton-vergrendelingsgedrag. Zie [GitHub-probleem over singleton-ondersteuning](https://github.com/Azure/azure-webjobs-sdk-script/issues/912)voor meer informatie.
+Configuratie-instellingen voor het gedrag van Singleton-vergren deling. Zie [github-probleem over Singleton-ondersteuning](https://github.com/Azure/azure-webjobs-sdk-script/issues/912)voor meer informatie.
 
 ```json
 {
@@ -369,19 +369,19 @@ Configuratie-instellingen voor singleton-vergrendelingsgedrag. Zie [GitHub-probl
 
 |Eigenschap  |Standaard | Beschrijving |
 |---------|---------|---------| 
-|lockPeriode|00:00:15|De periode waarvoor functieniveauvergrendelingen worden genomen. De sloten automatisch vernieuwen.| 
-|listenerLockPeriod|00:01:00|De periode waarvoor luisteraar vergrendelt, wordt genomen.| 
-|listenerLockRecoveryPollingInterval|00:01:00|Het tijdsinterval dat wordt gebruikt voor het herstel van listenervergrendeling als een listenerslot niet kan worden verkregen bij het opstarten.| 
-|lockAcquisitionTimeout|00:01:00|De maximale tijd van de runtime zal proberen om een slot te verwerven.| 
-|lockAcquisitionPollingInterval|N.v.t.|Het interval tussen pogingen voor het verkrijgen van het slot.| 
+|lockPeriod|00:00:15|De periode waarin vergrendelingen op functie niveau worden uitgevoerd. De vergren delingen automatisch verlengen.| 
+|listenerLockPeriod|00:01:00|De periode waarin de luister vergrendelingen worden uitgevoerd.| 
+|listenerLockRecoveryPollingInterval|00:01:00|Het tijds interval dat wordt gebruikt voor het herstel van de listener-vergren deling als tijdens het opstarten geen listener-vergrendeling kan worden verkregen.| 
+|lockAcquisitionTimeout|00:01:00|De maximale hoeveelheid tijd die de runtime probeert een vergren deling te verkrijgen.| 
+|lockAcquisitionPollingInterval|N.v.t.|Het interval tussen overname pogingen voor vergren delen.| 
 
 ## <a name="version"></a>versie
 
-Deze waarde geeft de schemaversie van host.json aan. De versietekenreeks `"version": "2.0"` is vereist voor een functie-app die zich richt op de v2-runtime of een latere versie. Er zijn geen host.json schema wijzigingen tussen v2 en v3.
+Deze waarde geeft de schema versie van host. json aan. De versie teken `"version": "2.0"` reeks is vereist voor een functie-app die is gericht op de v2-runtime of een latere versie. Er zijn geen host. json-schema wijzigingen tussen v2 en v3.
 
-## <a name="watchdirectories"></a>horlogeDirectories
+## <a name="watchdirectories"></a>watchDirectories
 
-Een set [gedeelde codemappen](functions-reference-csharp.md#watched-directories) die moeten worden gecontroleerd op wijzigingen.  Zorgt ervoor dat wanneer de code in deze mappen wordt gewijzigd, de wijzigingen worden opgepikt door uw functies.
+Een set [gedeelde code mappen](functions-reference-csharp.md#watched-directories) die moeten worden gecontroleerd op wijzigingen.  Zorgt ervoor dat wanneer de code in deze directory's wordt gewijzigd, de wijzigingen worden opgehaald door uw functies.
 
 ```json
 {
@@ -392,7 +392,7 @@ Een set [gedeelde codemappen](functions-reference-csharp.md#watched-directories)
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"]
-> [Meer informatie over het bijwerken van het host.json-bestand](functions-reference.md#fileupdate)
+> [Meer informatie over het bijwerken van het bestand host. json](functions-reference.md#fileupdate)
 
 > [!div class="nextstepaction"]
-> [Bekijk globale instellingen in omgevingsvariabelen](functions-app-settings.md)
+> [Algemene instellingen in omgevings variabelen weer geven](functions-app-settings.md)

@@ -1,6 +1,6 @@
 ---
-title: De verbindingen met Azure IoT Hub bewaken en oplossen
-description: Meer informatie over het monitoren en oplossen van veelvoorkomende fouten met apparaatconnectiviteit voor Azure IoT Hub
+title: De verbinding met Azure IoT Hub controleren en problemen oplossen
+description: Meer informatie over het controleren en oplossen van veelvoorkomende fouten met connectiviteit van apparaten voor Azure IoT Hub
 author: jlian
 manager: briz
 ms.service: iot-hub
@@ -10,65 +10,65 @@ ms.date: 01/30/2020
 ms.author: jlian
 ms.custom: mqtt
 ms.openlocfilehash: 82139eef9708ff8d76e1087c71aa5445ba898385
-ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81759605"
 ---
-# <a name="monitor-diagnose-and-troubleshoot-disconnects-with-azure-iot-hub"></a>De verbinding met Azure IoT Hub bewaken, diagnosticeren en oplossen
+# <a name="monitor-diagnose-and-troubleshoot-disconnects-with-azure-iot-hub"></a>De verbinding met Azure IoT Hub controleren, vaststellen en problemen oplossen
 
-Verbindingsproblemen voor IoT-apparaten kunnen moeilijk op te lossen zijn omdat er veel mogelijke uitvalpunten zijn. Toepassingslogica, fysieke netwerken, protocollen, hardware, IoT Hub en andere cloudservices kunnen allemaal problemen veroorzaken. De mogelijkheid om de bron van een probleem te detecteren en lokaliseren is van cruciaal belang. Een IoT-oplossing op schaal kan echter duizenden apparaten hebben, dus het is niet praktisch om afzonderlijke apparaten handmatig te controleren. Gebruik de bewakingsmogelijkheden die IoT Hub biedt via Azure Monitor om u te helpen deze problemen op schaal op te sporen, te diagnosticeren en op te lossen. Deze mogelijkheden zijn beperkt tot wat IoT Hub kan waarnemen, dus we raden u ook aan om best practices voor uw apparaten en andere Azure-services te volgen.
+Connectiviteits problemen voor IoT-apparaten kunnen lastig zijn om problemen op te lossen omdat er veel mogelijke storings punten zijn. Toepassings logica, fysieke netwerken, protocollen, hardware, IoT Hub en andere Cloud Services kunnen problemen veroorzaken. De mogelijkheid om de bron van een probleem te detecteren en te lokaliseren is essentieel. Een IoT-oplossing op schaal kan echter duizenden apparaten hebben, waardoor het niet praktisch is om afzonderlijke apparaten hand matig te controleren. Om u te helpen deze problemen op schaal te detecteren, op te sporen en op te lossen, gebruikt u de bewakings mogelijkheden IoT Hub via Azure Monitor. Deze mogelijkheden zijn beperkt tot wat IoT Hub kan observeren, dus we raden u ook aan de aanbevolen procedures voor uw apparaten en andere Azure-Services te volgen.
 
-## <a name="get-alerts-and-error-logs"></a>Waarschuwingen en foutlogboeken ontvangen
+## <a name="get-alerts-and-error-logs"></a>Waarschuwingen en fouten logboeken ophalen
 
-Gebruik Azure Monitor om waarschuwingen te ontvangen en logboeken te schrijven wanneer apparaten de verbinding verbreken.
+Gebruik Azure Monitor om waarschuwingen op te halen en logboeken te schrijven wanneer apparaten de verbinding verbreken.
 
 ### <a name="turn-on-diagnostic-logs"></a>Diagnostische logboeken inschakelen
 
-Als u gebeurtenissen en fouten voor apparaatverbinding wilt registreren, schakelt u diagnostische gegevens in voor IoT Hub. We raden u aan deze logboeken zo vroeg mogelijk in te schakelen, want als diagnostische logboeken niet zijn ingeschakeld, wanneer de verbinding met het apparaat wordt verbroken, hebt u geen informatie om het probleem op te lossen.
+Schakel diagnostische gegevens in voor IoT Hub om de gebeurtenissen en fouten van het apparaat vast te leggen. We raden u aan deze logboeken zo snel mogelijk in te scha kelen, want als de diagnostische logboeken niet zijn ingeschakeld, hebt u geen informatie om het probleem op te lossen.
 
 1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 
 2. Blader naar uw IoT-hub.
 
-3. Selecteer **Diagnostische instellingen**.
+3. Selecteer **instellingen voor diagnostische gegevens**.
 
 4. Selecteer **Diagnostische gegevens inschakelen**.
 
-5. Schakel **logboeken van verbindingen** in om te worden verzameld.
+5. De logboeken voor het verzamelen van **verbindingen** inschakelen.
 
-6. Schakel Send to **Log Analytics** [(zie prijzen)](https://azure.microsoft.com/pricing/details/log-analytics/)in voor een eenvoudigere analyse. Zie het voorbeeld onder [Verbindingsfouten oplossen](#resolve-connectivity-errors).
+6. Schakel **Send to log Analytics** ([Zie prijzen](https://azure.microsoft.com/pricing/details/log-analytics/)) in om de analyse te vergemakkelijken. Zie het voor beeld onder [connectiviteits fouten oplossen](#resolve-connectivity-errors).
 
    ![Aanbevolen instellingen](./media/iot-hub-troubleshoot-connectivity/diagnostic-settings-recommendation.png)
 
-Zie [De status van Azure IoT Hub controleren en problemen snel diagnosticeren.](iot-hub-monitor-resource-health.md)
+Zie [de status van Azure IOT hub controleren en problemen snel](iot-hub-monitor-resource-health.md)oplossen voor meer informatie.
 
-### <a name="set-up-alerts-for-device-disconnect-at-scale"></a>Waarschuwingen instellen voor verbinding met het apparaat op schaal
+### <a name="set-up-alerts-for-device-disconnect-at-scale"></a>Waarschuwingen instellen voor het verbreken van het apparaat op schaal
 
-Als u waarschuwingen wilt ontvangen wanneer apparaten de verbinding verbreken, configureert u waarschuwingen op de statistiek **Verbonden apparaten (voorbeeld).**
+Als u waarschuwingen wilt ontvangen wanneer apparaten de verbinding verbreken, configureert u waarschuwingen op de metrische gegevens van de **verbonden apparaten (preview-versie)** .
 
 1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 
 2. Blader naar uw IoT-hub.
 
-3. Selecteer **Waarschuwingen**.
+3. Selecteer **waarschuwingen**.
 
 4. Selecteer **Nieuwe waarschuwingsregel**.
 
-5. Selecteer **Voorwaarde toevoegen**en selecteer vervolgens 'Verbonden apparaten (voorbeeld)".
+5. Selecteer **voor waarde toevoegen**en selecteer vervolgens verbonden apparaten (preview).
 
-6. Stel drempelwaarde in en waarschuw er door aanwijzingen te volgen.
+6. Stel drempelwaarde en waarschuwingen in door de volgende vragen te volgen.
 
-Zie [Wat zijn waarschuwingen in Microsoft Azure?](../azure-monitor/platform/alerts-overview.md)
+Zie [Wat zijn waarschuwingen in Microsoft Azure?](../azure-monitor/platform/alerts-overview.md)voor meer informatie.
 
-#### <a name="detecting-individual-device-disconnects"></a>Het detecteren van afzonderlijke apparaatverbindingen
+#### <a name="detecting-individual-device-disconnects"></a>De verbinding van afzonderlijke apparaten opsporen
 
-Als u de verbinding *per apparaat* wilt detecteren, bijvoorbeeld wanneer u wilt weten dat een fabriek net offline is gegaan, [configureert u de verbinding tussen apparaten met gebeurtenisraster.](iot-hub-event-grid.md)
+Als u het verbreken van een *apparaat* wilt detecteren, bijvoorbeeld wanneer u wilt weten dat een fabriek offline is gegaan, configureert u de [verbrekings gebeurtenissen van het apparaat met Event grid](iot-hub-event-grid.md).
 
-## <a name="resolve-connectivity-errors"></a>Verbindingsfouten oplossen
+## <a name="resolve-connectivity-errors"></a>Connectiviteits fouten oplossen
 
-Wanneer u diagnostische logboeken en waarschuwingen voor verbonden apparaten inschakelt, krijgt u meldingen wanneer er fouten optreden. In deze sectie wordt beschreven hoe u op zoek gaan naar veelvoorkomende problemen wanneer u een waarschuwing ontvangt. In de onderstaande stappen wordt ervan uitgegaan dat u Azure Monitor-logboeken hebt ingesteld voor uw diagnostische logboeken.
+Wanneer u Diagnostische logboeken en waarschuwingen voor verbonden apparaten inschakelt, ontvangt u waarschuwingen wanneer er fouten optreden. In deze sectie wordt beschreven hoe u veelvoorkomende problemen kunt controleren wanneer u een waarschuwing ontvangt. In de onderstaande stappen wordt ervan uitgegaan dat u Azure Monitor logboeken voor uw Diagnostische logboeken hebt ingesteld.
 
 1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 
@@ -76,41 +76,41 @@ Wanneer u diagnostische logboeken en waarschuwingen voor verbonden apparaten ins
 
 1. Selecteer **Logboeken**.
 
-1. Als u de logboeken van verbindingsfouten voor IoT Hub wilt isoleren, voert u de volgende query in en selecteert u **Uitvoeren:**
+1. Als u verbindings fouten logboeken wilt isoleren voor IoT Hub, voert u de volgende query in en selecteert u vervolgens **uitvoeren**:
 
     ```kusto
     AzureDiagnostics
     | where ( ResourceType == "IOTHUBS" and Category == "Connections" and Level == "Error")
     ```
 
-1. Als er resultaten zijn, zoekt `OperationName`u naar , `ResultType` (foutcode) en `ResultDescription` (foutbericht) om meer details over de fout te krijgen.
+1. Als er resultaten zijn, zoekt u `OperationName`naar `ResultType` , (fout code) en `ResultDescription` (fout bericht) om meer details te krijgen over de fout.
 
-   ![Voorbeeld van foutlogboek](./media/iot-hub-troubleshoot-connectivity/diag-logs.png)
+   ![Voor beeld van een fouten logboek](./media/iot-hub-troubleshoot-connectivity/diag-logs.png)
 
-1. Volg de handleidingen voor probleemoplossing voor de meest voorkomende fouten:
+1. Volg de richt lijnen voor probleem oplossing voor de meest voorkomende fouten:
 
     - **[404104 DeviceConnectionClosedRemotely](iot-hub-troubleshoot-error-404104-deviceconnectionclosedremotely.md)**
     - **[401003 IoTHubUnauthorized](iot-hub-troubleshoot-error-401003-iothubunauthorized.md)**
     - **[409002 LinkCreationConflict](iot-hub-troubleshoot-error-409002-linkcreationconflict.md)**
     - **[500001 ServerError](iot-hub-troubleshoot-error-500xxx-internal-errors.md)**
-    - **[500008 Generieke Time-out](iot-hub-troubleshoot-error-500xxx-internal-errors.md)**
+    - **[500008 GenericTimeout](iot-hub-troubleshoot-error-500xxx-internal-errors.md)**
 
-## <a name="i-tried-the-steps-but-they-didnt-work"></a>Ik probeerde de stappen, maar ze werkte niet
+## <a name="i-tried-the-steps-but-they-didnt-work"></a>Ik heb de stappen uitgevoerd, maar deze zijn niet uitgevoerd
 
-Als de vorige stappen niet hebben geholpen, probeert u:
+Als de vorige stappen niet zijn uitgevoerd, probeert u het volgende:
 
-* Als u toegang hebt tot de problematische apparaten, fysiek of op afstand (zoals SSH), volgt u de handleiding voor probleemoplossing aan de [apparaatzijde](https://github.com/Azure/azure-iot-sdk-node/wiki/Troubleshooting-Guide-Devices) om probleemoplossing voort te zetten.
+* Als u toegang hebt tot de problematische apparaten, fysiek of extern (zoals SSH), volgt u de [probleem Oplosser](https://github.com/Azure/azure-iot-sdk-node/wiki/Troubleshooting-Guide-Devices) voor het oplossen van problemen door te gaan met het oplossen van het probleem.
 
-* Controleer of uw apparaten zijn **ingeschakeld** in de Azure-portal > uw IoT-hub > IoT-apparaten.
+* Controleer of uw apparaten zijn **ingeschakeld** in de Azure Portal > uw IOT-hub > IOT-apparaten.
 
-* Als uw apparaat het MQTT-protocol gebruikt, controleert u of poort 8883 is geopend. Zie [Verbinding maken met IoT Hub (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub)voor meer informatie.
+* Als uw apparaat gebruikmaakt van het MQTT-protocol, controleert u of poort 8883 is geopend. Zie [verbinding maken met IOT hub (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub)voor meer informatie.
 
-* Hulp van [Azure IoT Hub-forum,](https://social.msdn.microsoft.com/Forums/azure/home?forum=azureiothub) [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-iot-hub)of [Azure-ondersteuning.](https://azure.microsoft.com/support/options/)
+* Krijg hulp van [azure IOT hub forum](https://social.msdn.microsoft.com/Forums/azure/home?forum=azureiothub), [stack overflow](https://stackoverflow.com/questions/tagged/azure-iot-hub)of [ondersteuning voor Azure](https://azure.microsoft.com/support/options/).
 
-Als deze handleiding je niet heeft geholpen om de documentatie voor iedereen te verbeteren, laat je een reactie achter in de onderstaande feedbacksectie.
+Als u de documentatie voor iedereen wilt verbeteren, kunt u in de sectie feedback hieronder een opmerking plaatsen als deze hand leiding u niet heeft geholpen.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Zie [Tijdelijke foutafhandeling](/azure/architecture/best-practices/transient-faults)voor meer informatie over het oplossen van tijdelijke problemen.
+* Zie [tijdelijke fout afhandeling](/azure/architecture/best-practices/transient-faults)voor meer informatie over het oplossen van tijdelijke problemen.
 
-* Zie Hoe u connectiviteit en betrouwbare berichten [beheert met Azure IoT Hub-apparaat SDK's](iot-hub-reliability-features-in-sdks.md#connection-and-retry)voor meer informatie over Azure IoT SDK.
+* Zie [connectiviteit en betrouw bare berichten beheren met azure IOT hub apparaat-sdk's](iot-hub-reliability-features-in-sdks.md#connection-and-retry)voor meer informatie over de Azure IOT SDK en het beheren van nieuwe pogingen.

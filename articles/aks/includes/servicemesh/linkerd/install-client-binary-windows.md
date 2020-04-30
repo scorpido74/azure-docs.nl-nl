@@ -4,15 +4,15 @@ ms.topic: include
 ms.date: 10/09/2019
 ms.author: pabouwer
 ms.openlocfilehash: 1a023475de1ce2891916807632d9ee15e382326c
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81734679"
 ---
-## <a name="download-and-install-the-linkerd-linkerd-client-binary"></a>Download en installeer de Linkerd linkerd client binaire
+## <a name="download-and-install-the-linkerd-linkerd-client-binary"></a>Down load en installeer het binaire bestand voor de Linkerd Linkerd-client
 
-Gebruik in `Invoke-WebRequest` een PowerShell-gebaseerde shell op Windows de Linkerd-release als volgt:
+In een Power shell-shell op Windows kunt u `Invoke-WebRequest` de Linkerd-release als volgt downloaden:
 
 ```powershell
 # Specify the Linkerd version that will be leveraged throughout these instructions
@@ -23,7 +23,7 @@ $LINKERD_VERSION="stable-2.6.0"
 $ProgressPreference = 'SilentlyContinue'; Invoke-WebRequest -URI "https://github.com/linkerd/linkerd2/releases/download/$LINKERD_VERSION/linkerd2-cli-$LINKERD_VERSION-windows.exe" -OutFile "linkerd2-cli-$LINKERD_VERSION-windows.exe"
 ```
 
-De `linkerd` client binaire draait op uw client machine en stelt u in staat om te communiceren met de Linkerd service mesh. Gebruik de volgende opdrachten om `linkerd` de linkerd-clientbinaire te installeren in een PowerShell-gebaseerde shell op Windows. Deze opdrachten kopiëren `linkerd` de client binaire naar een Linkerd map en vervolgens beschikbaar zowel onmiddellijk (in de `PATH`huidige shell) en permanent (over shell herstart) via uw . U hebt geen verhoogde bevoegdheden (admin) nodig om deze opdrachten uit te voeren en u hoeft uw shell niet opnieuw op te starten.
+De `linkerd` binaire client wordt uitgevoerd op uw client computer en maakt het mogelijk om te communiceren met het Linkerd-service-net. Gebruik de volgende opdrachten om de binaire Linkerd `linkerd` -client te installeren in een Power shell-shell op Windows. Met deze opdrachten kopieert `linkerd` u het binaire bestand van de client naar een Linkerd-map en maakt u deze zowel onmiddellijk beschikbaar (in de huidige shell) als permanent (tussen `PATH`de shell opnieuw opstarten) via uw. U hebt geen verhoogde beheerders bevoegdheden nodig om deze opdrachten uit te voeren en u hoeft de shell niet opnieuw op te starten.
 
 ```powershell
 # Copy linkerd.exe to C:\Linkerd

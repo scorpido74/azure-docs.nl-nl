@@ -1,6 +1,6 @@
 ---
-title: Informatie over berichten over Azure IoT Hub-cloud naar apparaat | Microsoft Documenten
-description: In deze handleiding voor ontwikkelaars wordt besproken hoe u berichten over cloud-to-device gebruiken met uw IoT-hub. Het bevat informatie over de levenscyclus van het bericht en configuratie-opties.
+title: Meer informatie over Azure IoT Hub Cloud-naar-apparaat-berichten | Microsoft Docs
+description: In deze ontwikkelaars handleiding wordt beschreven hoe u Cloud-naar-apparaat-berichten kunt gebruiken met uw IoT-hub. Het bevat informatie over de levens cyclus en configuratie opties voor het bericht.
 author: wesmc7777
 manager: philmea
 ms.author: wesmc
@@ -10,101 +10,101 @@ ms.topic: conceptual
 ms.date: 03/15/2018
 ms.custom: mqtt
 ms.openlocfilehash: 307ab47c1f7498f71e61108a616d35ef1d4f61c9
-ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81729999"
 ---
-# <a name="send-cloud-to-device-messages-from-an-iot-hub"></a>Cloud-naar-apparaatberichten verzenden vanaf een IoT-hub
+# <a name="send-cloud-to-device-messages-from-an-iot-hub"></a>Cloud-naar-apparaat-berichten verzenden vanuit een IoT-hub
 
-Als u eenmalige meldingen naar een apparaat-app wilt verzenden vanaf de back-end van uw oplossing, stuurt u berichten van cloud naar apparaat van uw IoT-hub naar uw apparaat. Zie Communicatierichtlijnen voor [cloud-to-device](iot-hub-devguide-c2d-guidance.md)voor een bespreking van andere cloud-to-device-opties die worden ondersteund door Azure IoT Hub.
+Als u eenrichtings meldingen naar een apparaat-app wilt verzenden vanuit de back-end van uw oplossing, verzendt u Cloud-naar-apparaat-berichten van uw IoT-hub naar uw apparaat. Zie [Cloud-naar-apparaat-communicatie richtlijnen](iot-hub-devguide-c2d-guidance.md)voor een bespreking van andere Cloud-naar-apparaat-opties die door Azure IOT hub worden ondersteund.
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-whole.md)]
 
-U verzendt berichten van cloud naar apparaat via een servicegericht eindpunt, */berichten/apparaatgebonden.* Een apparaat ontvangt de berichten vervolgens via een apparaatspecifiek eindpunt, */apparaten/{deviceId}/berichten/devicebound.*
+U verzendt Cloud-naar-apparaat-berichten via een service gericht eind punt, */Messages/devicebound*. Een apparaat ontvangt vervolgens de berichten via een apparaat-specifiek eind punt, */devices/{deviceId}/messages/devicebound*.
 
-Als u elk cloud-to-device-bericht op één apparaat wilt targeten, stelt uw IoT-hub de eigenschap **aan** */apparaten/{deviceId}/berichten/apparaatgebonden*in.
+Om elk Cloud-naar-apparaat-bericht op één apparaat te richten, stelt uw IoT-hub de eigenschap **in** op */devices/{deviceId}/messages/devicebound*.
 
-Elke apparaatwachtrij bevat maximaal 50 cloud-to-device-berichten. Als u wilt proberen meer berichten naar hetzelfde apparaat te verzenden, resulteert dit in een fout.
+Elke wachtrij van een apparaat bevat Maxi maal 50 Cloud-naar-apparaat-berichten. Als u wilt proberen om meer berichten te verzenden naar hetzelfde apparaat, resulteert dit in een fout.
 
-## <a name="the-cloud-to-device-message-life-cycle"></a>De levenscyclus van de cloud-to-device-berichten
+## <a name="the-cloud-to-device-message-life-cycle"></a>De levens cyclus van het Cloud-naar-apparaat-bericht
 
-Om ten minste één keer berichtte bezorging te garanderen, blijft uw IoT-hub cloud-to-device-berichten in wachtrijen per apparaat vasthouden. Als de IoT-hub de berichten uit de wachtrij wil verwijderen, moeten de apparaten de *voltooiing*expliciet erkennen. Deze aanpak garandeert tolerantie tegen connectiviteit en apparaatstoringen.
+Om ten minste één keer per e-mail te zorgen, blijven de Cloud-naar-apparaat-berichten in wacht rijen van het apparaat. Voor de IoT-hub om de berichten uit de wachtrij te verwijderen, moeten de apparaten de *voltooiing*expliciet bevestigen. Deze aanpak garandeert de flexibiliteit tegen connectiviteit en storingen in het apparaat.
 
-De grafiek met de status van de levenscyclus wordt weergegeven in het volgende diagram:
+De grafiek levens cyclus status wordt weer gegeven in het volgende diagram:
 
-![Levenscyclus van berichten van cloud naar apparaat](./media/iot-hub-devguide-messages-c2d/lifecycle.png)
+![Levens cyclus van Cloud-naar-apparaat-berichten](./media/iot-hub-devguide-messages-c2d/lifecycle.png)
 
-Wanneer de IoT-hubservice een bericht naar een apparaat verzendt, stelt de service de berichtstatus in op *Enqueued*. Wanneer een apparaat een bericht wil *ontvangen,* *vergrendelt* de IoT-hub het bericht door de status in te stellen op *Onzichtbaar*. Met deze status kunnen andere threads op het apparaat andere berichten ontvangen. Wanneer een apparaatthread de verwerking van een bericht voltooit, wordt de IoT-hub hiervan op de hoogte gesteld door het bericht *in te vullen.* De IoT-hub stelt de status vervolgens *in op Voltooid*.
+Wanneer de IoT hub-service een bericht naar een apparaat verzendt, stelt de service de bericht status in in *wachtrij*. Wanneer een apparaat een bericht wil *ontvangen* , wordt het bericht door de IOT-hub *vergrendeld* door de status op *onzichtbaar*in te stellen. Met deze status kunnen andere threads op het apparaat andere berichten ontvangen. Wanneer een apparaat-thread de verwerking van een bericht voltooit, wordt de IoT hub geïnformeerd door het bericht te *volt ooien* . De IoT hub stelt vervolgens de status in op *voltooid*.
 
-Een apparaat kan ook:
+Een apparaat kan ook het volgende doen:
 
-* Het bericht *weigeren,* waardoor de IoT-hub het instelt op de *status Met een dode letter.* Apparaten die verbinding maken via het Message Queuing Telemetry Transport (MQTT)-protocol, kunnen berichten van cloud tot apparaat niet weigeren.
+* Het bericht *afwijzen* , wat ervoor zorgt dat de IOT-hub deze instelt op de status voor *onbestelbare berichten* . Apparaten die verbinding maken via het MQTT-Protocol (Message Queuing telemetrie Trans Port), kunnen geen Cloud-naar-apparaat-berichten afwijzen.
 
-* *Verlaat* het bericht, waardoor de IoT-hub het bericht weer in de wachtrij plaatst, waarbij de status is ingesteld op *Enqueued*. Apparaten die verbinding maken via het MQTT-protocol, kunnen berichten van cloud tot apparaat niet opgeven.
+* Het bericht *afbreken* , wat ervoor zorgt dat de IOT-hub het bericht weer in de wachtrij plaatst, waarbij de status is ingesteld op in *wachtrij*. Apparaten die via het MQTT-protocol verbinding maken, kunnen geen Cloud-naar-apparaat-berichten afbreken.
 
-Een thread kan een bericht niet verwerken zonder de IoT-hub hiervan op de hoogte te stellen. In dit geval worden berichten automatisch overgezet van de status *Onzichtbaar* terug naar de status *Enqueued* na een time-out van *het zicht* (of time-out *vergrendelen).* De waarde van deze time-out is één minuut en kan niet worden gewijzigd.
+Een thread kan een bericht niet verwerken zonder de IoT-hub op de hoogte te stellen. In dit geval worden berichten automatisch overgezet van de *onzichtbare* status *na* een time-out van de *zicht baarheid* (of *vergrendelings* time-out). De waarde van deze time-out is één minuut en kan niet worden gewijzigd.
 
-De **eigenschap maximumlevering op** de IoT-hub bepaalt het maximum aantal keren dat een bericht kan worden overgezet tussen de status *Squeued* en *Onzichtbaar.* Na dat aantal overgangen stelt de IoT-hub de status van het bericht in op *Dode letters*. Op dezelfde manier stelt de IoT-hub de status van een bericht in *op Dead lettered* na de vervaldatum. Zie [Tijd om te leven voor](#message-expiration-time-to-live)meer informatie.
+De eigenschap **Max Delivery Count** van de IOT hub bepaalt het maximum aantal keren dat een bericht kan worden overgezet tussen de status in *wachtrij* en *onzichtbaar* . Na dat aantal overgangen stelt de IoT-hub de status van het bericht in op *onbestelbare*berichten. Op dezelfde manier wordt de status van een bericht in de IoT-hub ingesteld op *onbestelbare* berichten na verloop tijd. Zie [time to Live (TTL](#message-expiration-time-to-live)) voor meer informatie.
 
-In het artikel [Hoe u cloud-naar-device-berichten verzendt met het IoT Hub-artikel,](iot-hub-csharp-csharp-c2d.md) ziet u hoe u cloud-to-device-berichten vanuit de cloud verzenden en op een apparaat ontvangen.
+Het [verzenden van Cloud-naar-apparaat-berichten met IOT hub](iot-hub-csharp-csharp-c2d.md) artikel laat zien hoe u Cloud-naar-apparaat-berichten vanuit de Cloud verzendt en op een apparaat ontvangt.
 
-Een apparaat voltooit gewoonlijk een cloud-to-device-bericht wanneer het verlies van het bericht geen invloed heeft op de toepassingslogica. Een voorbeeld hiervan is wanneer het apparaat de inhoud van het bericht lokaal heeft gehandhaafd of een bewerking heeft uitgevoerd. Het bericht kan ook tijdelijke informatie bevatten, waarvan het verlies geen invloed zou hebben op de functionaliteit van de toepassing. Soms u voor langlopende taken:
+Een apparaat voert normaal gesp roken een Cloud-naar-apparaat-bericht uit wanneer het verlies van het bericht niet van invloed is op de toepassings logica. Een voor beeld hiervan is dat wanneer het apparaat de inhoud van het bericht lokaal persistent heeft of een bewerking heeft uitgevoerd. Het bericht kan ook tijdelijke informatie bevatten, waarvan het verlies geen invloed heeft op de functionaliteit van de toepassing. Soms kunt u voor langlopende taken het volgende doen:
 
-* Voer het bericht van cloud-to-device in nadat het apparaat de taakbeschrijving in lokale opslag heeft gehandhaafd.
+* Voltooi het Cloud-naar-apparaat-bericht nadat het apparaat de taak beschrijving in de lokale opslag heeft behouden.
 
-* Stel de oplossing back-end met een of meer device-to-cloud berichten in verschillende stadia van de voortgang van de taak.
+* Waarschuw de back-end van de oplossing met een of meer apparaat-naar-Cloud-berichten in verschillende stadia van de voortgang van de taak.
 
-## <a name="message-expiration-time-to-live"></a>Bericht verlopen (tijd om te leven)
+## <a name="message-expiration-time-to-live"></a>Verlopen van berichten (time to Live)
 
-Elk cloud-to-device bericht heeft een vervaldatum. Deze tijd wordt ingesteld door een van de volgende:
+Elk Cloud-naar-apparaat-bericht heeft een verloop tijd. Deze tijd wordt ingesteld op een van de volgende manieren:
 
 * De eigenschap **ExpiryTimeUtc** in de service
-* De IoT-hub, door de *standaardtijd te* gebruiken om te leven die is opgegeven als een IoT-hubeigenschap
+* De IoT-hub, met behulp van de standaard *time to Live* die is opgegeven als een IOT hub-eigenschap
 
-Zie [configuratieopties voor cloud-naar-apparaat](#cloud-to-device-configuration-options).
+Zie [Opties voor Cloud-naar-apparaat-configuratie](#cloud-to-device-configuration-options).
 
-Een veelvoorkomende manier om te profiteren van het verlopen van een bericht en om te voorkomen dat berichten naar losgekoppelde apparaten worden verzonden, is door korte tijd in te stellen *op levende* waarden. Deze aanpak bereikt hetzelfde resultaat als het onderhouden van de verbinding van het apparaat, maar het is efficiënter. Wanneer u berichtbevestigingen aanvraagt, waarschuwt de IoT-hub u welke apparaten:
+Een veelgebruikte manier om te profiteren van het verlopen van een bericht en om te voor komen dat er berichten worden verzonden naar niet-verbonden apparaten, is door een korte TTL-waarde *in te* stellen. Deze aanpak bereikt hetzelfde resultaat als het onderhouden van de verbindings status van het apparaat, maar het is efficiënter. Wanneer u bericht bevestigingen aanvraagt, wordt de IoT-hub op de hoogte gesteld van de volgende apparaten:
 
-* In staat om berichten te ontvangen.
-* Zijn niet online of hebben gefaald.
+* Kan berichten ontvangen.
+* Zijn niet online of zijn mislukt.
 
-## <a name="message-feedback"></a>Feedback van berichten
+## <a name="message-feedback"></a>Feedback over berichten
 
-Wanneer u een cloud-naar-apparaatbericht verzendt, kan de service de levering van feedback per bericht over de uiteindelijke status van dat bericht aanvragen. U doet dit door de eigenschap **iothub-ack-toepassing** in te stellen in het cloud-to-device-bericht dat naar een van de volgende vier waarden wordt verzonden:
+Wanneer u een Cloud-naar-apparaat-bericht verzendt, kan de service de levering van feedback per bericht over de uiteindelijke status van het bericht aanvragen. U doet dit door de eigenschap **iothub-ACK-** toepassing in te stellen op het Cloud-naar-apparaat-bericht dat wordt verzonden naar een van de volgende vier waarden:
 
-| Waarde van ack-onroerend goed | Gedrag |
+| Waarde van de eigenschap ACK | Gedrag |
 | ------------ | -------- |
-| geen     | De IoT-hub genereert geen feedbackbericht (standaardgedrag). |
-| positief | Als het cloud-to-device-bericht de *status Voltooid* bereikt, genereert de IoT-hub een feedbackbericht. |
-| negatief | Als het cloud-to-device-bericht de status *Met hoofdletters* heeft bereikt, genereert de IoT-hub een feedbackbericht. |
-| Volledige     | De IoT-hub genereert in beide gevallen een feedbackbericht. |
+| geen     | De IoT-hub genereert geen feedback bericht (standaard gedrag). |
+| positief | Als het Cloud-naar-apparaat-bericht de status *voltooid* heeft bereikt, genereert IOT hub een feedback bericht. |
+| negatief | Als het Cloud-naar-apparaat-bericht de status voor *onbestelbare berichten* bereikt, genereert de IOT-hub een feedback bericht. |
+| waard     | In de IoT-hub wordt in beide gevallen een feedback bericht gegenereerd. |
 
-Als de **Ack-waarde** *vol*is en u geen feedbackbericht ontvangt, betekent dit dat het feedbackbericht is verlopen. De service kan niet weten wat er met het oorspronkelijke bericht is gebeurd. In de praktijk moet een service ervoor zorgen dat deze de feedback kan verwerken voordat deze verloopt. De maximale vervaldatum is twee dagen, waardoor de tijd overblijft om de service weer te laten draaien als er een storing optreedt.
+Als de **ACK** -waarde *vol*is en er geen feedback bericht wordt weer gegeven, betekent dit dat het feedback bericht is verlopen. De service kan niet weten wat er met het oorspronkelijke bericht is gebeurd. In de praktijk moet een service ervoor zorgen dat de feedback kan worden verwerkt voordat deze verloopt. De maximale verloop tijd is twee dagen, waardoor de service opnieuw wordt uitgevoerd als er een fout optreedt.
 
-Zoals uitgelegd in [Endpoints,](iot-hub-devguide-endpoints.md)levert de IoT-hub feedback via een servicegericht eindpunt, */berichten/servicebound/feedback,* als berichten. De semantiek voor het ontvangen van feedback is dezelfde als voor berichten van cloud naar apparaat. Waar mogelijk wordt berichtfeedback in één bericht weergegeven, met de volgende indeling:
+Zoals uitgelegd in [eind punten](iot-hub-devguide-endpoints.md), levert de IOT-hub feedback via een service gericht eind punt, */Messages/servicebound/feedback*, als berichten. De semantiek voor het ontvangen van feedback is hetzelfde als voor Cloud-naar-apparaat-berichten. Indien mogelijk wordt feedback over het bericht in één bericht batch gegeven, met de volgende indeling:
 
 | Eigenschap     | Beschrijving |
 | ------------ | ----------- |
-| Indewachtrijtijd | Een tijdstempel die aangeeft wanneer het feedbackbericht door de hub is ontvangen |
+| EnqueuedTime | Een tijds tempel die aangeeft wanneer het feedback bericht is ontvangen door de hub |
 | UserId       | `{iot hub name}` |
-| Contenttype  | `application/vnd.microsoft.iothub.feedback.json` |
+| Invoer  | `application/vnd.microsoft.iothub.feedback.json` |
 
-De body is een JSON-serie records, elk met de volgende eigenschappen:
+De hoofd tekst is een JSON-serialisatie matrix met records, elk met de volgende eigenschappen:
 
 | Eigenschap           | Beschrijving |
 | ------------------ | ----------- |
-| InqueuedTimeUtc    | Een tijdstempel die aangeeft wanneer de uitkomst van het bericht is gebeurd (bijvoorbeeld de hub heeft het feedbackbericht ontvangen of het oorspronkelijke bericht is verlopen) |
-| OriginalMessageId  | De *MessageId* van het cloud-to-device bericht waarop deze feedback-informatie betrekking heeft |
-| Statuscode         | Een vereiste tekenreeks die wordt gebruikt in feedbackberichten die worden gegenereerd door de IoT-hub: <br/> *Geslaagd* <br/> *Verlopen* <br/> *DeliveryCountExceeded* <br/> *Geweigerd* <br/> *Verwijderd* |
-| Beschrijving        | Tekenreekswaarden voor *StatusCode* |
-| DeviceId           | De *DeviceId* van het doelapparaat van het cloud-to-device-bericht waarop dit stukje feedback betrekking heeft |
-| DeviceGenerationId | De *DeviceGenerationId* van het doelapparaat van het cloud-to-device-bericht waarop dit stukje feedback betrekking heeft |
+| EnqueuedTimeUtc    | Een tijds tempel die aangeeft wanneer de uitkomst van het bericht is opgetreden (bijvoorbeeld omdat de hub het feedback bericht heeft ontvangen of het oorspronkelijke bericht is verlopen) |
+| OriginalMessageId  | De *MessageId* van het Cloud-naar-apparaat-bericht waarop deze feedback informatie betrekking heeft |
+| Status code         | Een vereiste teken reeks die wordt gebruikt in feedback berichten die door de IoT hub worden gegenereerd: <br/> *Geslaagd* <br/> *Verlopen* <br/> *DeliveryCountExceeded* <br/> *Geweigerd* <br/> *Opgeschoond* |
+| Beschrijving        | Teken reeks waarden voor *status* code |
+| DeviceId           | De *DeviceID* van het doel apparaat van het Cloud-naar-apparaat-bericht waarop dit feedback-item betrekking heeft |
+| DeviceGenerationId | De *DeviceGenerationId* van het doel apparaat van het Cloud-naar-apparaat-bericht waarop dit feedback-item betrekking heeft |
 
-Als het cloud-to-device-bericht de feedback correleert met het oorspronkelijke bericht, moet de service een *MessageId*opgeven.
+Voor het Cloud-naar-apparaat-bericht om de feedback te correleren met het oorspronkelijke bericht, moet de service een *MessageId*opgeven.
 
-De hoofdtekst van een feedbackbericht wordt weergegeven in de volgende code:
+De hoofd tekst van een feedback bericht wordt weer gegeven in de volgende code:
 
 ```json
 [
@@ -123,31 +123,31 @@ De hoofdtekst van een feedbackbericht wordt weergegeven in de volgende code:
 ]
 ```
 
-**In behandeling zijnde feedback voor verwijderde apparaten**
+**Feedback voor verwijderde apparaten in behandeling**
 
-Wanneer een apparaat wordt verwijderd, wordt ook alle in behandeling zijnde feedback verwijderd. Apparaatfeedback wordt in batches verzonden. Als een apparaat wordt verwijderd in het smalle venster (vaak minder dan 1 seconde) tussen het moment waarop het apparaat de ontvangst van het bericht bevestigt en wanneer de volgende feedbackbatch wordt voorbereid, vindt de feedback niet plaats.
+Wanneer een apparaat wordt verwijderd, worden ook alle openstaande feedback verwijderd. Feedback van het apparaat wordt in batches verzonden. Als een apparaat wordt verwijderd in het smalle venster (vaak minder dan 1 seconde) tussen het moment dat het apparaat de ontvangst van het bericht bevestigt en wanneer de volgende feedback batch wordt voor bereid, wordt de feedback niet weer gegeven.
 
-U dit gedrag aanpakken door te wachten op een periode van in behandeling zijnde feedback voordat u uw apparaat verwijderd. Gerelateerde berichtfeedback moet verloren gaan zodra een apparaat is verwijderd.
+U kunt dit gedrag aanpakken door gedurende een periode te wachten op feedback die in behandeling is voordat u het apparaat verwijdert. Bij het verwijderen van een apparaat moet de feedback van het gerelateerde bericht verloren gaan.
 
-## <a name="cloud-to-device-configuration-options"></a>Configuratieopties voor cloud-naar-apparaat
+## <a name="cloud-to-device-configuration-options"></a>Opties voor Cloud-naar-apparaat-configuratie
 
-Elke IoT-hub legt de volgende configuratieopties bloot voor berichten over cloud-to-device:
+Elke IoT-hub biedt de volgende configuratie opties voor het verzenden van Cloud-naar-apparaat-berichten:
 
 | Eigenschap                  | Beschrijving | Bereik en standaard |
 | ------------------------- | ----------- | ----------------- |
-| defaultTtlAsIso8601       | Standaard TTL voor cloud-to-device-berichten | ISO_8601 interval tot 2 dagen (minimaal 1 minuut); standaard: 1 uur |
-| maxDeliveryCount maxDeliveryCount maxDeliveryCount maxDelivery          | Maximaal aantal levering voor wachtrijen per apparaat per apparaat | 1 tot 100; standaard: 10 |
-| feedback.ttlAsIso8601     | Behoud voor servicegebonden feedbackberichten | ISO_8601 interval tot 2 dagen (minimaal 1 minuut); standaard: 1 uur |
-| feedback.maxDeliveryCount | Maximaal aantal levering voor de feedbackwachtrij | 1 tot 100; standaard: 10 |
-| feedback.lockDurationAsIso8601 | Maximaal aantal levering voor de feedbackwachtrij | ISO_8601 interval van 5 tot 300 seconden (minimaal 5 seconden); standaard: 60 seconden. |
+| defaultTtlAsIso8601       | Standaard-TTL voor Cloud-naar-apparaat-berichten | ISO_8601 interval tot 2 dagen (mini maal 1 minuut); standaard: 1 uur |
+| maxDeliveryCount          | Maximum aantal leveringen voor wacht rijen van Cloud naar apparaat per apparaat | 1 tot 100; standaard: 10 |
+| feedback. ttlAsIso8601     | Retentie voor service-gebonden feedback berichten | ISO_8601 interval tot 2 dagen (mini maal 1 minuut); standaard: 1 uur |
+| feedback. maxDeliveryCount | Maximum aantal bezorgingen voor de feedback wachtrij | 1 tot 100; standaard: 10 |
+| feedback. lockDurationAsIso8601 | Maximum aantal bezorgingen voor de feedback wachtrij | ISO_8601 interval van 5 tot 300 seconden (mini maal 5 seconden); standaard: 60 seconden. |
 
-U de configuratieopties op een van de volgende manieren instellen:
+U kunt de configuratie opties op een van de volgende manieren instellen:
 
-* **Azure-portal:** Selecteer onder **Instellingen** op uw **IoT-hub ingebouwde eindpunten** en vouw Cloud uit **naar apparaatberichten.** (Het instellen van de eigenschappen **feedback.maxDeliveryCount** en **feedback.lockDurationAsIso8601** wordt momenteel niet ondersteund in azure-portal.)
+* **Azure Portal**: Selecteer onder **instellingen** op uw IOT-hub **ingebouwde eind punten** en vouw Cloud uit **voor het verzenden van apparaten**. (Het instellen van de eigenschappen **feedback. maxDeliveryCount** en **feedback. lockDurationAsIso8601** wordt momenteel niet ondersteund in azure Portal.)
 
-    ![Configuratieopties instellen voor cloud-to-device berichten in de portal](./media/iot-hub-devguide-messages-c2d/c2d-configuration-portal.png)
+    ![Configuratie opties voor Cloud-naar-apparaat-berichten in de Portal instellen](./media/iot-hub-devguide-messages-c2d/c2d-configuration-portal.png)
 
-* **Azure CLI**: Gebruik de opdracht [az iot-hub-update:](https://docs.microsoft.com/cli/azure/iot/hub?view=azure-cli-latest#az-iot-hub-update)
+* **Azure cli**: gebruik de opdracht [AZ IOT hub update](https://docs.microsoft.com/cli/azure/iot/hub?view=azure-cli-latest#az-iot-hub-update) :
 
     ```azurecli
     az iot hub update --name {your IoT hub name} \
@@ -168,6 +168,6 @@ U de configuratieopties op een van de volgende manieren instellen:
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie [Azure IoT SDKs](iot-hub-devguide-sdks.md)voor informatie over de SDK's die u gebruiken om berichten van cloud naar apparaat te ontvangen.
+Zie [Azure IOT sdk's](iot-hub-devguide-sdks.md)(Engelstalig) voor meer informatie over de sdk's die u kunt gebruiken om Cloud-naar-apparaat-berichten te ontvangen.
 
-Zie de zelfstudie Van [cloud-naar-apparaat verzenden](iot-hub-csharp-csharp-c2d.md) als u berichten van cloud naar apparaat wilt ontvangen.
+Als u Cloud-naar-apparaat-berichten wilt ontvangen, raadpleegt u de zelf studie over het verzenden van de [Cloud naar het apparaat](iot-hub-csharp-csharp-c2d.md) .

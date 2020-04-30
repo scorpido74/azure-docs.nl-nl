@@ -1,7 +1,7 @@
 ---
-title: Azure Peering Service inschakelen op een Direct-peering met behulp van de Azure-portal
+title: Azure peering service inschakelen op een directe peering met behulp van de Azure Portal
 titleSuffix: Azure
-description: Azure Peering Service inschakelen op een Direct-peering met behulp van de Azure-portal
+description: Azure peering service inschakelen op een directe peering met behulp van de Azure Portal
 services: internet-peering
 author: derekolo
 ms.service: internet-peering
@@ -9,43 +9,43 @@ ms.topic: article
 ms.date: 3/18/2020
 ms.author: derekol
 ms.openlocfilehash: 625a17e5acff00f78c5a19725653eec629936f87
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81687055"
 ---
-# <a name="enable-azure-peering-service-on-a-direct-peering-by-using-the-azure-portal"></a>Azure Peering Service inschakelen op een Direct-peering met behulp van de Azure-portal
+# <a name="enable-azure-peering-service-on-a-direct-peering-by-using-the-azure-portal"></a>Azure peering service inschakelen op een directe peering met behulp van de Azure Portal
 
-In dit artikel wordt beschreven hoe u Azure [Peering Service](overview-peering-service.md) inschakelt op een Direct-peering met behulp van de Azure-portal.
+In dit artikel wordt beschreven hoe u Azure [peering service](overview-peering-service.md) kunt inschakelen op een directe peering met behulp van de Azure Portal.
 
-Als u wilt, u deze handleiding voltooien met [PowerShell.](howto-peering-service-powershell.md)
+Als u wilt, kunt u deze hand leiding volt ooien met behulp van [Power shell](howto-peering-service-powershell.md).
 
 ## <a name="before-you-begin"></a>Voordat u begint
-* Bekijk de [vereisten](prerequisites.md) voordat u met de configuratie begint.
-* Kies een Direct-peering in uw abonnement waarvoor u Peering Service wilt inschakelen. Als u er geen hebt, converteert u een verouderde Direct-peering of maakt u een nieuwe Direct-peering:
-    * Als u een verouderd Direct-peering wilt converteren, volgt u de instructies in [Een verouderde directe peering converteren naar een Azure-bron met behulp van de portal](howto-legacy-direct-portal.md).
-    * Als u een nieuwe Direct-peering wilt maken, volgt u de instructies in [Direct-peering maken of wijzigen met behulp van de portal](howto-direct-portal.md).
+* Controleer de [vereisten](prerequisites.md) voordat u begint met de configuratie.
+* Kies een directe peering in uw abonnement waarvoor u de peering-service wilt inschakelen. Als u er nog geen hebt, moet u een verouderde directe peering converteren of een nieuwe directe peering maken:
+    * Als u een verouderde directe peering wilt converteren, volgt u de instructies in [een verouderde directe peering converteren naar een Azure-resource met behulp van de portal](howto-legacy-direct-portal.md).
+    * Als u een nieuwe directe peering wilt maken, volgt u de instructies in [een directe peering maken of wijzigen met behulp van de portal](howto-direct-portal.md).
 
 ## <a name="enable-peering-service-on-a-direct-peering"></a>Peering Service inschakelen op Direct peering
 
-### <a name="view-direct-peering"></a><a name= get></a>Direct peering bekijken
+### <a name="view-direct-peering"></a><a name= get></a>Directe peering weer geven
 [!INCLUDE [peering-direct-get-portal](./includes/direct-portal-get.md)]
 
-### <a name="enable-the-direct-peering-for-peering-service"></a><a name= get></a>De service Direct peering voor peering inschakelen
+### <a name="enable-the-direct-peering-for-peering-service"></a><a name= get></a>De directe peering inschakelen voor de peering-service
 
-Nadat u een Direct-peering in de vorige stap hebt geopend, schakelt u deze in voor Peering Service.
+Nadat u in de vorige stap een directe peering hebt geopend, schakelt u deze in voor de peering-service.
 [!INCLUDE [peering-direct-modify](./includes/peering-service-direct-portal.md)]
 
-## <a name="modify-a-direct-peering-connection"></a>Een verbinding met direct peering wijzigen
+## <a name="modify-a-direct-peering-connection"></a>Een directe peering-verbinding wijzigen
 
-Zie de sectie Direct peeren wijzigen in [Direct peering wijzigen of wijzigen door de portal te gebruiken](howto-direct-portal.md)als u verbindingsinstellingen wilt wijzigen.
+Als u de verbindings instellingen wilt wijzigen, raadpleegt u de sectie ' een directe peering wijzigen ' in [een directe peering maken of wijzigen met behulp van de portal](howto-direct-portal.md).
 
 ## <a name="next-steps"></a>Volgende stappen
 
 * [Exchange-peering maken of wijzigen met behulp van de portal](howto-exchange-portal.md)
-* [Een verouderde Exchange-peering converteren naar een Azure-bron met behulp van de portal](howto-legacy-exchange-portal.md)
+* [Een verouderde Exchange-peering converteren naar een Azure-resource met behulp van de portal](howto-legacy-exchange-portal.md)
 
 ## <a name="additional-resources"></a>Aanvullende bronnen
 
-Zie de [veelgestelde vragen over peeringservice](service-faqs.md)voor veelgestelde vragen.
+Zie [Veelgestelde vragen over peering-service](service-faqs.md)voor meer informatie.

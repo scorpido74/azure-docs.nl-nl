@@ -1,6 +1,6 @@
 ---
-title: Wat is beveiliging op kolomniveau voor Azure Synapse?
-description: Met beveiliging op kolomniveau kunnen klanten de toegang tot databasetabelkolommen beheren op basis van de uitvoeringscontext of het groepslidmaatschap van de gebruiker, waardoor het ontwerp en de codering van beveiliging in uw toepassing worden vereenvoudigd en u beperkingen op kolomtoegang implementeren.
+title: Wat is beveiliging op kolom niveau voor Azure Synapse?
+description: Met beveiliging op kolom niveau kunnen klanten de toegang tot database tabel kolommen beheren op basis van de uitvoerings context of het groepslid maatschap van de gebruiker, het ontwerp en de code ring van de beveiliging in uw toepassing vereenvoudigen, en kunt u beperkingen voor kolom toegang implementeren.
 services: synapse-analytics
 author: julieMSFT
 manager: craigg
@@ -13,24 +13,24 @@ ms.reviewer: igorstan, carlrab
 ms.custom: seo-lt-2019
 tags: azure-synapse
 ms.openlocfilehash: b0a783ad5db86ca783ff1cebceec8d77ab528047
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81687925"
 ---
-# <a name="column-level-security"></a>Beveiliging op kolomniveau
+# <a name="column-level-security"></a>Beveiliging op kolom niveau
 
-Met beveiliging op kolomniveau kunnen klanten de toegang tot tabelkolommen beheren op basis van de uitvoeringscontext of groepslidmaatschap van de gebruiker.
+Met beveiliging op kolom niveau kunnen klanten de toegang tot tabel kolommen beheren op basis van de uitvoerings context of het groepslid maatschap van de gebruiker.
 
 > [!VIDEO https://www.youtube.com/embed/OU_ESg0g8r8]
-Sinds deze video is [geplaatst,](/sql/relational-databases/security/row-level-security?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) is Row level Security beschikbaar voor Azure Synapse.
+Omdat deze video is gepost, is [beveiliging op rijniveau](/sql/relational-databases/security/row-level-security?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) beschikbaar geworden voor Azure Synapse.
 
-Beveiliging op kolomniveau vereenvoudigt het ontwerp en de codering van beveiliging in uw toepassing, zodat u de toegang tot kolommen beperken om gevoelige gegevens te beschermen. Bijvoorbeeld ervoor zorgen dat specifieke gebruikers alleen toegang hebben tot bepaalde kolommen van een tabel die relevant zijn voor hun afdeling. De logica voor toegangsbeperking bevindt zich in de databaselaag in plaats van in plaats van in de buurt van de gegevens in een andere toepassingslaag. De database past de toegangsbeperkingen toe telkens wanneer gegevenstoegang vanaf elke laag wordt geprobeerd. Deze beperking maakt uw beveiliging betrouwbaarder en robuuster door het verkleinen van de oppervlakte van uw algehele beveiligingssysteem. Bovendien elimineert beveiliging op kolomniveau ook de noodzaak voor het introduceren van weergaven om kolommen uit te filteren voor het opleggen van toegangsbeperkingen aan de gebruikers.
+Beveiliging op kolom niveau vereenvoudigt het ontwerp en de code ring van beveiliging in uw toepassing, zodat u kolom toegang kunt beperken voor het beveiligen van gevoelige gegevens. Bijvoorbeeld, om ervoor te zorgen dat specifieke gebruikers alleen toegang hebben tot bepaalde kolommen van een tabel die relevant is voor hun afdeling. De logica van de toegangs beperking bevindt zich in de database laag, in plaats van dat de gegevens in een andere toepassingslaag worden verwijderd. De-data base past de toegangs beperkingen toe telkens wanneer gegevens toegang vanuit een wille keurige laag wordt uitgevoerd. Deze beperking zorgt ervoor dat uw beveiliging betrouwbaarder en robuuster wordt door de surface area van uw algehele beveiligings systeem te verminderen. Daarnaast elimineert beveiliging op kolom niveau ook de nood zaak van de introductie van weer gaven om kolommen uit te filteren voor het opleggen van toegangs beperkingen voor de gebruikers.
 
-U beveiliging op kolomniveau implementeren met de [GRANT](/sql/t-sql/statements/grant-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) T-SQL-instructie. Met dit mechanisme worden zowel SQL- als Azure Active Directory -verificatie (AAD) ondersteund.
+U kunt beveiliging op kolom niveau implementeren met de instructie [Grant](/sql/t-sql/statements/grant-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) T-SQL. Met dit mechanisme worden de authenticatie van SQL en Azure Active Directory (AAD) ondersteund.
 
-![Cls](./media/column-level-security/cls.png)
+![compatibiliteit](./media/column-level-security/cls.png)
 
 ## <a name="syntax"></a>Syntaxis
 
@@ -52,9 +52,9 @@ GRANT <permission> [ ,...n ] ON
 
 ## <a name="example"></a>Voorbeeld
 
-In het volgende voorbeeld `TestUser` ziet u `SSN` hoe `Membership` u de toegang tot de kolom van de tabel beperken:
+In het volgende voor beeld ziet u `TestUser` hoe u de `SSN` toegang tot de `Membership` kolom van de tabel beperkt:
 
-Tabel `Membership` maken met de Kolom SSN die wordt gebruikt om burgerservicenummers op te slaan:
+Tabel `Membership` maken met SSN-kolom die wordt gebruikt voor het opslaan van sociale-beveiligings nummers:
 
 ```sql
 CREATE TABLE Membership
@@ -66,13 +66,13 @@ CREATE TABLE Membership
    Email varchar(100) NULL);
 ```
 
-Toegang `TestUser` tot alle kolommen, behalve de Kolom SSN, die de gevoelige gegevens bevat:
+Toegang `TestUser` tot alle kolommen toestaan, behalve de kolom SSN, die de gevoelige gegevens bevat:
 
 ```sql
 GRANT SELECT ON Membership(MemberID, FirstName, LastName, Phone, Email) TO TestUser;
 ```
 
-Query's die `TestUser` worden uitgevoerd als ze mislukken als ze de kolom SSN bevatten:
+Query's die worden `TestUser` uitgevoerd als, mislukken als ze de kolom SSN bevatten:
 
 ```sql
 SELECT * FROM Membership;
@@ -81,9 +81,9 @@ SELECT * FROM Membership;
 -- The SELECT permission was denied on the column 'SSN' of the object 'Membership', database 'CLS_TestDW', schema 'dbo'.
 ```
 
-## <a name="use-cases"></a>Use Cases
+## <a name="use-cases"></a>Use cases
 
-Enkele voorbeelden van hoe beveiliging op kolomniveau vandaag wordt gebruikt:
+Hier volgen enkele voor beelden van de manier waarop beveiliging op kolom niveau momenteel wordt gebruikt:
 
-- Een financiële dienstverlener staat alleen accountmanagers toe om toegang te hebben tot burgerservicenummers (SSN), telefoonnummers en andere persoonlijk identificeerbare informatie (PII).
-- Een zorgverlener staat alleen artsen en verpleegkundigen om toegang te hebben tot gevoelige medische dossiers, terwijl het voorkomen van leden van de facturering afdeling van het bekijken van deze gegevens.
+- Met een onderneming met financiële services kunnen alleen account beheerders toegang hebben tot sofi-nummers (Social Security Number) van klanten, telefoon nummers en andere persoons gegevens (PII).
+- Een Health Care-provider staat toe dat alleen artsen en verpleegt toegang hebben tot gevoelige medische records en dat leden van de facturerings afdeling deze gegevens niet kunnen bekijken.

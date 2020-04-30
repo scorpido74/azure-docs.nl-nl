@@ -1,50 +1,50 @@
 ---
-title: Java-toepassingen in elke omgeving bewaken - Azure Monitor Application Insights
-description: Toepassingsprestatiebewaking voor Java-toepassingen die in elke omgeving worden uitgevoerd zonder de app in te dienen. Gedistribueerde traceer- en toepassingskaart.
+title: Java-toepassingen bewaken op elke omgeving-Azure Monitor Application Insights
+description: Bewaking van toepassings prestaties voor Java-toepassingen die worden uitgevoerd in een wille keurige omgeving zonder de app te instrumenteren. Gedistribueerde tracering en toepassings toewijzing.
 ms.topic: conceptual
 ms.date: 03/29/2020
 ms.openlocfilehash: b9c1a52051e63beee9a784714a7bb1a6a79e8759
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
-ms.translationtype: MT
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81687720"
 ---
-# <a name="java-codeless-application-monitoring-azure-monitor-application-insights---public-preview"></a>Java-codeloze toepassingsbewaking Azure Monitor Application Insights - openbare preview
+# <a name="java-codeless-application-monitoring-azure-monitor-application-insights---public-preview"></a>Bewaking van Java-toepassingen Azure Monitor Application Insights-open bare preview-versie
 
-Java codeless applicatie monitoring is alles over eenvoud - er zijn geen code wijzigingen, de Java-agent kan worden ingeschakeld door middel van slechts een paar wijzigingen in de configuratie.
+Bewaking van Java-toepassingen is heel eenvoudig: er zijn geen code wijzigingen, de Java-Agent kan worden ingeschakeld via slechts een paar configuratie wijzigingen.
 
- De Java-agent werkt in elke omgeving en stelt u in staat om al uw Java-toepassingen te controleren. Met andere woorden, of u nu uw Java-apps op VM's, on-premises, in AKS, op Windows, Linux - noem maar op, de Java 3.0-agent zal uw app controleren.
+ De Java-agent werkt in elke omgeving en biedt u de mogelijkheid om al uw Java-toepassingen te bewaken. Met andere woorden, of u nu uw java-apps uitvoert op Vm's, on-premises, in AKS, op Windows, Linux-u de naam geeft, de Java 3,0-agent bewaakt uw app.
 
-Het toevoegen van de Application Insights Java SDK aan uw toepassing is niet langer nodig, omdat de 3.0-agent automatisch verzoeken, afhankelijkheden en logboeken op zichzelf verzamelt.
+Het is niet meer nodig om de Application Insights Java-SDK toe te voegen aan uw toepassing, omdat de 3,0-agent autoverzoekt, afhankelijkheden en logboeken zelf.
 
-U nog steeds aangepaste telemetrie verzenden vanuit uw toepassing. De 3.0 agent zal volgen en correleren samen met alle van de automatisch verzamelde telemetrie.
+U kunt nog steeds aangepaste telemetrie verzenden vanuit uw toepassing. De 3,0-agent volgt deze samen met alle automatisch verzamelde telemetrie en correleert deze.
 
 ## <a name="quickstart"></a>Snelstartgids
 
-**1. Download de agent**
+**1. de agent downloaden**
 
-Download [applicationinsights-agent-3.0.0-PREVIEW.3.jar](https://github.com/microsoft/ApplicationInsights-Java/releases/download/3.0.0-PREVIEW.3/applicationinsights-agent-3.0.0-PREVIEW.3.jar)
+[Applicationinsights-agent-3.0.0-Preview. 3. jar](https://github.com/microsoft/ApplicationInsights-Java/releases/download/3.0.0-PREVIEW.3/applicationinsights-agent-3.0.0-PREVIEW.3.jar) downloaden
 
-**2. Richt de JVM aan de agent**
+**2. Wijs de JVM naar de agent**
 
-Toevoegen `-javaagent:path/to/applicationinsights-agent-3.0.0-PREVIEW.3.jar` aan de JVM-args van uw toepassing
+Toevoegen `-javaagent:path/to/applicationinsights-agent-3.0.0-PREVIEW.3.jar` aan de JVM-argumenten van uw toepassing
 
-Typische JVM args zijn `-Xmx512m` en `-XX:+UseG1GC`. Dus als je weet waar deze toe te voegen, dan weet je al waar dit toe te voegen.
+Typische argumenten voor JVM `-Xmx512m` zijn `-XX:+UseG1GC`onder andere en. Als u weet waar u deze toevoegt, weet u dus al waar u dit kunt toevoegen.
 
-Voor extra hulp bij het configureren van de JVM-args van uw toepassing raadpleegt u [3.0 Preview: Tips voor het bijwerken van uw JVM-args.](https://docs.microsoft.com/azure/azure-monitor/app/java-standalone-arguments)
+Voor meer informatie over het configureren van de JVM-argumenten van uw toepassing raadpleegt [u 3,0 Preview: tips voor het bijwerken van uw JVM-argumenten](https://docs.microsoft.com/azure/azure-monitor/app/java-standalone-arguments).
 
-**3. Wijs de agent naar uw Application Insights-bron**
+**3. Wijs de agent naar uw Application Insights-resource**
 
-Als u nog geen Application Insights-bron hebt, u een nieuwe resource maken door de stappen in de [handleiding voor het maken van resources te](https://docs.microsoft.com/azure/azure-monitor/app/create-new-resource)volgen.
+Als u nog geen Application Insights resource hebt, kunt u een nieuw item maken door de stappen in de [hand leiding](https://docs.microsoft.com/azure/azure-monitor/app/create-new-resource)voor het maken van resources te volgen.
 
-Wijs de agent aan uw Application Insights-bron door een omgevingsvariabele in te stellen:
+Wijs de agent naar uw Application Insights-bron, door een omgevings variabele in te stellen:
 
 ```
 APPLICATIONINSIGHTS_CONNECTION_STRING=InstrumentationKey=00000000-0000-0000-0000-000000000000
 ```
 
-Of door een configuratiebestand met de naam `ApplicationInsights.json`, `applicationinsights-agent-3.0.0-PREVIEW.3.jar`en plaats het in dezelfde directory als , met de volgende inhoud:
+U kunt ook een configuratie bestand maken `ApplicationInsights.json`met de naam en dit in dezelfde map plaatsen `applicationinsights-agent-3.0.0-PREVIEW.3.jar`als met de volgende inhoud:
 
 ```json
 {
@@ -54,85 +54,85 @@ Of door een configuratiebestand met de naam `ApplicationInsights.json`, `applica
 }
 ```
 
-U uw verbindingstekenreeks vinden in uw bron Application Insights:
+U kunt uw connection string vinden in uw Application Insights-resource:
 
-:::image type="content" source="media/java-ipa/connection-string.png" alt-text="Verbindingstekenreeks voor toepassingsinzichten":::
+:::image type="content" source="media/java-ipa/connection-string.png" alt-text="Verbindings reeks Application Insights":::
 
-**4. Dat is het!**
+**4. dat is alles!**
 
-Start nu uw toepassing op en ga naar uw Application Insights-bron in de Azure-portal om uw bewakingsgegevens te bekijken.
+Start nu uw toepassing en ga naar uw Application Insights-resource in de Azure Portal om uw bewakings gegevens weer te geven.
 
 > [!NOTE]
-> Het kan een paar minuten duren voordat uw bewakingsgegevens in het portaal worden weergegeven.
+> Het kan enkele minuten duren voordat uw bewakings gegevens in de portal worden weer gegeven.
 
 
 ## <a name="configuration-options"></a>Configuratie-opties
 
-In `ApplicationInsights.json` het bestand u bovendien configureren:
+In het `ApplicationInsights.json` bestand kunt u verder configureren:
 
-* Naam van cloudrol
-* Cloudrolinstantie
-* Het vastleggen van toepassingslogboeken
-* JMX-statistieken
+* Rolnaam van Cloud
+* Cloud rolinstantie
+* Toepassings logboeken vastleggen
+* Metrische gegevens van JMX
 * Micrometer
 * Hartslag
 * Steekproeven
 * HTTP-proxy
-* Zelfdiagnostiek
+* Zelf diagnostische gegevens
 
-Zie details op [3.0 Public Preview: Configuratieopties](https://docs.microsoft.com/azure/azure-monitor/app/java-standalone-config).
+Bekijk de Details voor de [open bare preview van 3,0: configuratie opties](https://docs.microsoft.com/azure/azure-monitor/app/java-standalone-config).
 
-## <a name="autocollected-requests-dependencies-logs-and-metrics"></a>Automatisch verzamelde aanvragen, afhankelijkheden, logboeken en statistieken
+## <a name="autocollected-requests-dependencies-logs-and-metrics"></a>Autogeïncasseerde aanvragen, afhankelijkheden, logboeken en metrische gegevens
 
 ### <a name="requests"></a>Aanvragen
 
-* JMS Consumenten
-* Kafka Consumenten
-* Netty/WebFlux
+* JMS consumenten
+* Kafka consumenten
+* Netty/webstroom
 * Servlets
-* Voorjaarsplanning
+* Lente planning
 
-### <a name="dependencies-with-distributed-trace-propagation"></a>Afhankelijkheden met gedistribueerde spoorpropagatie
+### <a name="dependencies-with-distributed-trace-propagation"></a>Afhankelijkheden met gedistribueerde traceer doorgifte
 
-* Apache HttpClient en HttpAsyncClient
+* Apache httpclient maakt en HttpAsyncClient
 * gRPC
-* java.net.HttpURLConnection
-* Jms
+* Java. net. HttpURLConnection
+* JMS
 * Kafka
 * Netty-client
-* Okhttp
+* OkHttp
 
 ### <a name="other-dependencies"></a>Andere afhankelijkheden
 
 * Cassandra
 * JDBC
-* MongoDB (async en synchronisatie)
-* Redis (Sla en Jedis)
+* MongoDB (async en sync)
+* Redis (sla en jedis)
 
 ### <a name="logs"></a>Logboeken
 
-* java.util.logging
+* Java. util. Logging
 * Log4j
-* SLF4J/Aanmelding
+* SLF4J/logback
 
 ### <a name="metrics"></a>Metrische gegevens
 
 * Micrometer
-* JMX-statistieken
+* Metrische gegevens van JMX
 
-## <a name="sending-custom-telemetry-from-your-application"></a>Aangepaste telemetrie verzenden vanuit uw toepassing
+## <a name="sending-custom-telemetry-from-your-application"></a>Aangepaste telemetrie van uw toepassing verzenden
 
-Ons doel in 3.0+ is om u in staat te stellen uw aangepaste telemetrie te verzenden met behulp van standaard API's.
+Met ons doel in 3.0 + kunt u uw aangepaste telemetrie verzenden met behulp van standaard-Api's.
 
-Wij ondersteunen Micrometer, OpenTelemetry API en de populaire logging frameworks. Application Insights Java 3.0 zal automatisch vastleggen van de telemetrie, en correleren samen met alle van de automatisch verzamelde telemetrie.
+We ondersteunen micrometer, OpenTelemetry-API en de populaire logboek registratie raamwerken. Application Insights Java 3,0 wordt de telemetrie automatisch vastgelegd en correleert dit samen met alle automatisch verzamelde telemetrie.
 
-Daarom zijn we op dit moment niet van plan om een SDK met Application Insights 3.0 uit te brengen.
+Daarom is het niet mogelijk om op dit moment een SDK uit te geven met Application Insights 3,0.
 
-Application Insights Java 3.0 luistert al naar telemetrie die naar de Application Insights Java SDK 2.x wordt verzonden. Deze functionaliteit is een belangrijk onderdeel van het upgradeverhaal voor bestaande 2.x-gebruikers en vult een belangrijk gat in onze aangepaste telemetrieondersteuning totdat de OpenTelemetry API GA is.
+Application Insights Java 3,0 wordt al geluisterd naar telemetrie die wordt verzonden naar de Application Insights Java SDK 2. x. Deze functionaliteit is een belang rijk onderdeel van het upgrade verhaal voor bestaande 2. x-gebruikers, en het vult een belang rijke tussen ruimte in onze aangepaste telemetrie-ondersteuning totdat de OpenTelemetry-API GA is.
 
-## <a name="sending-custom-telemetry-using-application-insights-java-sdk-2x"></a>Aangepaste telemetrie verzenden met Application Insights Java SDK 2.x
+## <a name="sending-custom-telemetry-using-application-insights-java-sdk-2x"></a>Aangepaste telemetrie verzenden met Application Insights Java SDK 2. x
 
-Toevoegen `applicationinsights-core-2.6.0.jar` aan uw toepassing (alle 2.x-versies worden ondersteund door Application Insights Java 3.0, maar het is de moeite waard om de nieuwste als je een keuze hebt):
+Toevoegen `applicationinsights-core-2.6.0.jar` aan uw toepassing (alle 2. x-versies worden ondersteund door Application Insights Java 3,0, maar het is een goed idee om de nieuwste te gebruiken als u een keuze hebt):
 
 ```xml
   <dependency>
@@ -142,13 +142,13 @@ Toevoegen `applicationinsights-core-2.6.0.jar` aan uw toepassing (alle 2.x-versi
   </dependency>
 ```
 
-Een telemetrieclient maken:
+Een TelemetryClient maken:
 
   ```java
 private static final TelemetryClient telemetryClient = new TelemetryClient();
 ```
 
-en gebruik dat voor het verzenden van aangepaste telemetrie.
+en gebruiken voor het verzenden van aangepaste telemetrie.
 
 ### <a name="events"></a>Gebeurtenissen
 
@@ -157,14 +157,14 @@ telemetryClient.trackEvent("WinGame");
 ```
 ### <a name="metrics"></a>Metrische gegevens
 
-U metrische telemetrie verzenden via [Micrometer:](https://micrometer.io)
+U kunt metrische telemetriegegevens verzenden via [micrometer](https://micrometer.io):
 
 ```java
   Counter counter = Metrics.counter("test_counter");
   counter.increment();
 ```
 
-Of u ook Application Insights Java SDK 2.x gebruiken:
+U kunt ook Application Insights Java SDK 2. x gebruiken:
 
 ```java
   telemetryClient.trackMetric("queueLength", 42.0);
@@ -187,18 +187,18 @@ Of u ook Application Insights Java SDK 2.x gebruiken:
 ```
 
 ### <a name="logs"></a>Logboeken
-U aangepaste log telemetrie via uw favoriete logging framework.
+U kunt aangepaste logboek-telemetrie verzenden via uw favoriete Framework voor logboek registratie.
 
-Of u ook Application Insights Java SDK 2.x gebruiken:
+U kunt ook Application Insights Java SDK 2. x gebruiken:
 
 ```java
   telemetryClient.trackTrace(message, SeverityLevel.Warning, properties);
 ```
 
 ### <a name="exceptions"></a>Uitzonderingen
-U aangepaste uitzondering telemetrie via uw favoriete logging framework.
+U kunt aangepaste telemetrie voor uitzonde ringen verzenden via uw favoriete Framework voor logboek registratie.
 
-Of u ook Application Insights Java SDK 2.x gebruiken:
+U kunt ook Application Insights Java SDK 2. x gebruiken:
 
 ```java
   try {
@@ -208,9 +208,9 @@ Of u ook Application Insights Java SDK 2.x gebruiken:
   }
 ```
 
-## <a name="upgrading-from-application-insights-java-sdk-2x"></a>Upgraden van Application Insights Java SDK 2.x
+## <a name="upgrading-from-application-insights-java-sdk-2x"></a>Upgraden van Application Insights Java SDK 2. x
 
-Als u Application Insights Java SDK 2.x al in uw toepassing gebruikt, hoeft u deze niet te verwijderen. De Java 3.0-agent detecteert het en legt elke aangepaste telemetrie vast die u via de Java SDK 2.x verzendt, terwijl u elke autocollectie onderdrukt die door de Java SDK 2.x wordt uitgevoerd om dubbele opname te voorkomen.
+Als u Application Insights Java SDK 2. x al gebruikt in uw toepassing, hoeft u deze niet te verwijderen. De Java 3,0-agent detecteert deze en legt alle aangepaste telemetrie die u verzendt via de Java SDK 2. x vast en houdt deze bij, terwijl automatisch verzamelen van de Java SDK 2. x wordt onderdrukt om te voor komen dat er dubbele opnamen worden gemaakt.
 
 > [!NOTE]
-> Opmerking: Java SDK 2.x TelemetrieInitializers en Telemetrieprocessors worden niet uitgevoerd wanneer u de 3.0-agent gebruikt.
+> Opmerking: Java SDK 2. x TelemetryInitializers en TelemetryProcessors worden niet uitgevoerd wanneer de 3,0-agent wordt gebruikt.

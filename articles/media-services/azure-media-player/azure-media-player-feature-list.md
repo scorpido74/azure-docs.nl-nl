@@ -1,70 +1,70 @@
 ---
-title: Lijst met Azure Media Player-functies
-description: Een functieverwijzing voor Azure Media Player.
+title: Azure Media Player functie lijst
+description: Een functie verwijzing voor Azure Media Player.
 author: IngridAtMicrosoft
 ms.author: inhenkel
 ms.service: media-services
 ms.topic: reference
 ms.date: 04/20/2020
 ms.openlocfilehash: e5595620a2f888b06ad5b35d2e8a008f23861463
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81727227"
 ---
-# <a name="feature-list"></a>Lijst met functies #
-Hier is de lijst met geteste functies en niet-ondersteunde functies:
+# <a name="feature-list"></a>Functielijst #
+Hier volgt een lijst met geteste functies en niet-ondersteunde functies:
 
-|                                         | Getest | GEDEELTELIJK GETEST | Geteste | Unsupported | OPMERKINGEN                                                                                                                |
+|                                         | ONDERZOEKEN | GEDEELTELIJK GETEST | Niet getest | NIET-ondersteunde | OPMERKINGEN                                                                                                                |
 |:----------------------------------------|--------|------------------|----------|-------------|:---------------------------------------------------------------------------------------------------------------------|
 | Afspelen                                |        |                  |          |             |                                                                                                                      |
-| Basisweergave op aanvraag                | X      |                  |          |             | Ondersteunt alleen streams vanuit Azure Media Services                                                                      |
-| Basisweergave live                     | X      |                  |          |             | Ondersteunt alleen streams vanuit Azure Media Services                                                                      |
-| AES                                     | X      |                  |          |             | Ondersteunt Azure Media Services Key Delivery Service                                                                   |
+| Eenvoudig afspelen op aanvraag                | X      |                  |          |             | Ondersteunt alleen stromen van Azure Media Services                                                                      |
+| Eenvoudig afspelen van Live                     | X      |                  |          |             | Ondersteunt alleen stromen van Azure Media Services                                                                      |
+| AES                                     | X      |                  |          |             | Ondersteunt Azure Media Services key delivery service                                                                   |
 | Multi-DRM                               |        | X                |          |             |                                                                                                                      |
-| PlayReady                               | X      |                  |          |             | Ondersteunt Azure Media Services Key Delivery Service                                                                   |
-| Widevine                                |        | X                |          |             | Ondersteunt Widevine PSSH-boxen die in manifest zijn beschreven                                                                    |
-| FairPlay                                |        | X                |          |             | Ondersteunt Azure Media Services Key Delivery Service                                                                   |
-| Techs                                   |        |                  |          |             |                                                                                                                      |
+| PlayReady                               | X      |                  |          |             | Ondersteunt Azure Media Services key delivery service                                                                   |
+| Widevine                                |        | X                |          |             | Ondersteunt Widevine PSSH-vakken die worden beschreven in het manifest                                                                    |
+| FairPlay                                |        | X                |          |             | Ondersteunt Azure Media Services key delivery service                                                                   |
+| Techers                                   |        |                  |          |             |                                                                                                                      |
 | MSE/EME (AzureHtml5JS)                  | X      |                  |          |             |                                                                                                                      |
-| Flash Fallback (FlashSS)                | X      |                  |          |             | Niet alle functies zijn beschikbaar op deze technologie.                                                                         |
-| Silverlight Fallback SilverlightSS      | X      |                  |          |             | Niet alle functies zijn beschikbaar op deze technologie.                                                                         |
-| Native HLS-doorgeef (Html5)         |        | X                |          |             | Niet alle functies zijn beschikbaar op deze technologie als gevolg van platform beperkingen.                                            |
+| Uitvallende Flash (knipperend)                | X      |                  |          |             | Niet alle functies zijn beschikbaar op deze technische mede werker.                                                                         |
+| Silverlight fallback Silverlight      | X      |                  |          |             | Niet alle functies zijn beschikbaar op deze technische mede werker.                                                                         |
+| Systeem eigen HLS Pass-Through (Html5)         |        | X                |          |             | Niet alle functies zijn beschikbaar voor deze technische technologie vanwege platform beperkingen.                                            |
 | Functies                                |        |                  |          |             |                                                                                                                      |
-| API-ondersteuning                             | X      |                  |          |             | Lijst met bekende problemen bekijken                                                                                                |
-| Basisgebruikersinterface                                | X      |                  |          |                                                                                                                                    |
-| Initialisatie via JavaScript       | X      |                  |          |             |                                                                                                                      |
-| Initialisatie via videotag        |        | X                |          |             |                                                                                                                      |
-| Segmentadressering - Time Based         | X      |                  |          |             |                                                                                                                      |
-| Segmentadressering - Indexgebaseerd        |        |                  |          | X           |                                                                                                                      |
-| Segmentadressering - Byte Based         |        |                  |          | X           |                                                                                                                      |
-| Rewriter van Azure Media Services-URL       |        | X                |          |             |                                                                                                                      |
-| Toegankelijkheid - Bijschriften en ondertiteling  |        | X                |          |             |  WebVTT ondersteund voor on demand, live CEA 708 gedeeltelijk getest                                                       |
-| Toegankelijkheid - Sneltoetsen                 | X      |                  |          |             |                                                                                                                      |
-| Toegankelijkheid - Hoog contrast           |        | X                |          |             |                                                                                                                      |
-| Toegankelijkheid - Tab Focus               |        | X                |          |             |                                                                                                                      |
-| Foutberichten                         |        | X                |          |             | Foutberichten zijn inconsistent tussen technici                                                                         |
-| Gebeurtenistriggering                        | X      |                  |          |             |                                                                                                                      |
-| Diagnostiek                             |        | X                |          |             | Diagnostische informatie is alleen beschikbaar op de AzureHtml5JS-technologie en gedeeltelijk beschikbaar op de SilverlightSS-technologie. |
-| Aanpasbare technische bestelling                 |        | X                |          |             |                                                                                                                      |
-| Heuristiek - Basic                      | X      |                  |          |             |                                                                                                                      |
-| Heuristiek - Maatwerk              |        |                  | X        |             | Maatwerk is alleen beschikbaar met de AzureHtml5JS-technologie.                                                          |
-| Discontinuïteiten                         | X      |                  |          |             |                                                                                                                      |
-| Bitrate selecteren                          | X      |                  |          |             | Deze API is alleen beschikbaar op de AzureHtml5JS- en FlashSS-technici.                                                    |
-| Multi-audiostream                      |        | X                |          |             | Programmatic audioswitch wordt ondersteund op AzureHtml5JS- en FlashSS-technici en is beschikbaar via UI-selectie op AzureHtml5JS, FlashSS en native Html5 (in Safari).  De meeste platforms vereisen dezelfde codec privégegevens om audiostreams te schakelen (dezelfde codec, kanaal, samplingrate, enz.). |
-| UI-lokalisatie                         |        | X                |          |             |                                                                                                                      |
-| Afspelen met meerdere instance's                 |        |                  |          | X           | Dit scenario kan werken voor sommige techs, maar is momenteel niet ondersteund en niet getest. U dit ook aan het werk krijgen met iFrames |
-| Ondersteuning voor advertenties                             |        | x                |          |             | AMP ondersteunt het inbrengen van pre-mid- en post-roll lineaire advertenties van VAST-compatibele advertentieservers voor VOD in de AzureHtml5JS-technologie |
-| Analyse                               |        | X                |          |             | AMP biedt de mogelijkheid om naar analyses en diagnostische gebeurtenissen te luisteren om naar een Analytics-backend naar keuze te verzenden.  Alle evenementen en eigenschappen zijn niet beschikbaar in alle techs vanwege platformbeperkingen.                                                                            |
-| Aangepaste skins                            |        |                  | X        |             | Zet besturingselementen in stelfout in AMP en gebruik uw eigen HTML en CSS.           |
-| Zoek Bar Schrobben                      |        |                  |          | X           |                                                                                                                      |
-| Trick-Play                              |        |                  |          | X           |                                                                                                                      |
-| Alleen audio                              |        |                  |          | X           | Kan werken in sommige techs voor Adaptive Streaming, maar wordt momenteel niet ondersteund en werkt niet in AzureHtml5JS. Progressieve MP3-weergave kan werken met de HTML5-technologie als het platform dit ondersteunt.                                                                                                        |
-| Alleen video                              |        |                  |          | X           | Kan werken in sommige techs voor Adaptive Streaming, maar wordt momenteel niet ondersteund en werkt niet in AzureHtml5JS.      |
-| Presentatie voor meerdere perioden               |        |                  |          | X                                                                                                                                  |
-| Meerdere camerahoeken                  |        |                  |          | X           |                                                                                                                      |
-| Afspeelsnelheid                          |        | X                |          |             | De afspeelsnelheid wordt in de meeste scenario's ondersteund, behalve in de mobiele behuizing vanwege een gedeeltelijke bug in Chrome                 |
+| API-ondersteuning                             | X      |                  |          |             | Zie de lijst met bekende problemen                                                                                                |
+| Basis GEBRUIKERSINTERFACE                                | X      |                  |          |                                                                                                                                    |
+| Initialisatie via Java script       | X      |                  |          |             |                                                                                                                      |
+| Initialisatie via video code        |        | X                |          |             |                                                                                                                      |
+| Segment adresseren-tijd op basis         | X      |                  |          |             |                                                                                                                      |
+| Segment adressering-op index gebaseerd        |        |                  |          | X           |                                                                                                                      |
+| Segment adresseren-op basis van een byte         |        |                  |          | X           |                                                                                                                      |
+| Azure Media Services URL ReWriter       |        | X                |          |             |                                                                                                                      |
+| Toegankelijkheid-bijschriften en ondertitels  |        | X                |          |             |  WebVTT ondersteund voor on-demand, Live CEA 708 gedeeltelijk getest                                                       |
+| Toegankelijkheid-sneltoetsen                 | X      |                  |          |             |                                                                                                                      |
+| Toegankelijkheid-hoog contrast           |        | X                |          |             |                                                                                                                      |
+| Toegankelijkheid: tabblad focus               |        | X                |          |             |                                                                                                                      |
+| Fout berichten                         |        | X                |          |             | Fout berichten zijn inconsistent voor techs                                                                         |
+| Gebeurtenis activering                        | X      |                  |          |             |                                                                                                                      |
+| Diagnostiek                             |        | X                |          |             | Diagnostische gegevens zijn alleen beschikbaar voor de AzureHtml5JS tech en zijn deels beschikbaar op Silverlight. |
+| Aanpas bare technische volg orde                 |        | X                |          |             |                                                                                                                      |
+| Heuristiek-basis                      | X      |                  |          |             |                                                                                                                      |
+| Heuristiek-aanpassing              |        |                  | X        |             | Aanpassing is alleen beschikbaar in de AzureHtml5JS-techniek.                                                          |
+| Beëindigingen                         | X      |                  |          |             |                                                                                                                      |
+| Bitrate selecteren                          | X      |                  |          |             | Deze API is alleen beschikbaar in de AzureHtml5JS-en flits techniek.                                                    |
+| Multi-audio-stream                      |        | X                |          |             | De programmatische audio-switch wordt ondersteund op AzureHtml5JS en in de vorm van technologische hulp, en is beschikbaar via de gebruikers interface selectie op AzureHtml5JS, in de vorm van een beflitsing en systeem eigen Html5 (in Safari).  Voor de meeste platforms zijn dezelfde gegevens van de codec vereist voor het wisselen van audio stromen (dezelfde codec, kanaal, sampling frequentie, enzovoort). |
+| Lokalisatie van gebruikers interface                         |        | X                |          |             |                                                                                                                      |
+| Meerdere instanties afspelen                 |        |                  |          | X           | Dit scenario kan voor sommige technici worden gebruikt, maar wordt momenteel niet ondersteund en is niet getest. U kunt dit ook doen met behulp van iframes |
+| ADS-ondersteuning                             |        | x                |          |             | AMP biedt ondersteuning voor het invoegen van vooraf-mid-en post-roll lineaire advertenties van voor VOD in de AzureHtml5JS Tech |
+| Analyse                               |        | X                |          |             | AMP biedt de mogelijkheid om te Luis teren naar analyses en diagnostische gebeurtenissen om te verzenden naar een analyse back-end van uw keuze.  Alle gebeurtenissen en eigenschappen zijn niet beschikbaar in technici vanwege beperkingen van het platform.                                                                            |
+| Aangepaste skins                            |        |                  | X        |             | Stel besturings elementen in op ONWAAR in AMP en gebruik uw eigen HTML en CSS.           |
+| Zoek balk reinigen                      |        |                  |          | X           |                                                                                                                      |
+| Slagen-Play                              |        |                  |          | X           |                                                                                                                      |
+| Alleen audio                              |        |                  |          | X           | Kan in sommige techs werken voor adaptieve streaming, maar wordt momenteel niet ondersteund en werkt niet in AzureHtml5JS. Progressief MP3-afspelen kan samen werken met de HTML5-tech als dit door het platform wordt ondersteund.                                                                                                        |
+| Alleen video                              |        |                  |          | X           | Kan in sommige techs werken voor adaptieve streaming, maar wordt momenteel niet ondersteund en werkt niet in AzureHtml5JS.      |
+| Presentaties met meerdere Peri Oden               |        |                  |          | X                                                                                                                                  |
+| Meerdere camera hoeken                  |        |                  |          | X           |                                                                                                                      |
+| Afspeel snelheid                          |        | X                |          |             | De afspeel snelheid wordt in de meeste scenario's ondersteund, met uitzonde ring van de mobiele situatie als gevolg van een gedeeltelijke bug in Chrome                 |
 
 ## <a name="next-steps"></a>Volgende stappen ##
-- [Snel start azure mediaspeler](azure-media-player-quickstart.md)
+- [Snelstartgids Azure Media Player](azure-media-player-quickstart.md)

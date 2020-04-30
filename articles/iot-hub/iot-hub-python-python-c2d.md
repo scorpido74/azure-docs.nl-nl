@@ -1,6 +1,6 @@
 ---
-title: Cloud-to-device-berichten met Azure IoT Hub (Python) | Microsoft Documenten
-description: Cloud-naar-device-berichten verzenden naar een apparaat vanaf een Azure IoT-hub met behulp van de Azure IoT-SDK's voor Python. U wijzigt een gesimuleerde apparaat-app om berichten van cloud naar apparaat te ontvangen en wijzigt een back-end-app om de berichten van cloud naar apparaat te verzenden.
+title: Cloud-naar-apparaat-berichten met Azure IoT Hub (python) | Microsoft Docs
+description: Cloud-naar-apparaat-berichten verzenden naar een apparaat vanuit een Azure IoT-hub met behulp van de Azure IoT Sdk's voor python. U wijzigt een gesimuleerde apparaat-app om Cloud-naar-apparaat-berichten te ontvangen en een back-end-app te wijzigen om de Cloud-naar-apparaat-berichten te verzenden.
 author: robinsh
 ms.service: iot-hub
 services: iot-hub
@@ -10,33 +10,33 @@ ms.date: 04/09/2020
 ms.author: robinsh
 ms.custom: mqtt
 ms.openlocfilehash: f0760f6e61904295771ba349f8101e2d6dc6afe3
-ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81759744"
 ---
-# <a name="send-cloud-to-device-messages-with-iot-hub-python"></a>Cloud-naar-device-berichten verzenden met IoT Hub (Python)
+# <a name="send-cloud-to-device-messages-with-iot-hub-python"></a>Cloud-naar-apparaat-berichten verzenden met IoT Hub (python)
 
 [!INCLUDE [iot-hub-selector-c2d](../../includes/iot-hub-selector-c2d.md)]
 
-Azure IoT Hub is een volledig beheerde service die betrouwbare en veilige bidirectionele communicatie tussen miljoenen apparaten en een back-end van een oplossing mogelijk maakt. Met [Quickstart telemetrie verzenden van een apparaat naar een IoT-hub](quickstart-send-telemetry-python.md) ziet u hoe u een IoT-hub maakt, een apparaatidentiteit indient en een gesimuleerde apparaat-app codet die apparaat-naar-cloudberichten verzendt.
+Azure IoT Hub is een volledig beheerde service die zorgt voor betrouw bare en veilige bidirectionele communicatie tussen miljoenen apparaten en een back-end van een oplossing. Het [verzenden van telemetrie van een apparaat naar een IOT hub](quickstart-send-telemetry-python.md) Quick Start laat zien hoe u een IOT-hub kunt maken, een apparaat-id kunt inrichten en een gesimuleerde apparaat-app kunt coderen die apparaat-naar-Cloud-berichten verzendt.
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-whole.md)]
 
-Deze zelfstudie bouwt voort op [Telemetrie verzenden van een apparaat naar een IoT-hub.](quickstart-send-telemetry-python.md) Het laat je zien hoe je:
+Deze zelf studie is gebaseerd op het [verzenden van telemetrie van een apparaat naar een IOT-hub](quickstart-send-telemetry-python.md). U ziet hoe u het volgende kunt doen:
 
-* Stuur vanuit uw back-end van oplossing cloud-naar-device-berichten naar één apparaat via IoT Hub.
+* Via de back-end van uw oplossing kunt u Cloud-naar-apparaat-berichten verzenden naar één apparaat via IoT Hub.
 
-* Ontvang berichten van cloud naar apparaat op een apparaat.
+* Cloud-naar-apparaat-berichten op een apparaat ontvangen.
 
-Meer informatie over berichten van cloud tot apparaat vindt u in de [handleiding voor IoT Hub-ontwikkelaars.](iot-hub-devguide-messaging.md)
+Meer informatie over Cloud-naar-apparaat-berichten vindt u in de [hand leiding voor IOT hub ontwikkel aars](iot-hub-devguide-messaging.md).
 
-Aan het einde van deze zelfstudie voert u twee Python-console-apps uit:
+Aan het einde van deze zelf studie voert u twee python-console-apps uit:
 
-* **SimulatedDevice.py**, een aangepaste versie van de app die is gemaakt in [Telemetrie verzenden van een apparaat naar een IoT-hub,](quickstart-send-telemetry-python.md)die verbinding maakt met uw IoT-hub en berichten van cloud naar apparaat ontvangt.
+* **SimulatedDevice.py**, een gewijzigde versie van de app die is gemaakt in [telemetrie verzenden van een apparaat naar een IOT-hub](quickstart-send-telemetry-python.md), die verbinding maakt met uw IOT-hub en Cloud-naar-apparaat-berichten ontvangt.
 
-* **SendCloudToDeviceMessage.py**, die cloud-to-device-berichten naar de gesimuleerde apparaat-app stuurt via IoT Hub.
+* **SendCloudToDeviceMessage.py**, waarmee Cloud-naar-apparaat-berichten worden verzonden naar de gesimuleerde apparaat-app via IOT hub.
 
 [!INCLUDE [iot-hub-include-python-sdk-note](../../includes/iot-hub-include-python-sdk-note.md)]
 
@@ -44,21 +44,21 @@ Aan het einde van deze zelfstudie voert u twee Python-console-apps uit:
 
 [!INCLUDE [iot-hub-include-python-v2-installation-notes](../../includes/iot-hub-include-python-v2-installation-notes.md)]
 
-* Zorg ervoor dat poort 8883 is geopend in uw firewall. Het apparaatvoorbeeld in dit artikel maakt gebruik van het MQTT-protocol, dat communiceert via poort 8883. Deze poort kan worden geblokkeerd in sommige bedrijfs- en educatieve netwerkomgevingen. Zie [Verbinding maken met IoT Hub (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub)voor meer informatie en manieren om dit probleem te omzeilen.
+* Zorg ervoor dat poort 8883 is geopend in uw firewall. Het voor beeld van het apparaat in dit artikel maakt gebruik van het MQTT-protocol, dat communiceert via poort 8883. Deze poort kan worden geblokkeerd in sommige bedrijfs-en educatieve netwerk omgevingen. Zie [verbinding maken met IOT hub (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub)voor meer informatie en manieren om dit probleem te omzeilen.
 
 ## <a name="receive-messages-in-the-simulated-device-app"></a>Berichten ontvangen in de gesimuleerde apparaat-app
 
-In deze sectie maakt u een Python-console-app om het apparaat te simuleren en berichten van cloud naar apparaat te ontvangen vanaf de IoT-hub.
+In deze sectie maakt u een python-console-app voor het simuleren van het apparaat en het ontvangen van Cloud-naar-apparaat-berichten van de IoT-hub.
 
-1. Installeer de **Azure IoT Hub Device SDK voor Python**via een opdrachtprompt in uw werkmap:
+1. Installeer in de werkmap van een opdracht prompt de **Azure IOT hub Device SDK voor python**:
 
     ```cmd/sh
     pip install azure-iot-device
     ```
 
-1. Maak met een teksteditor een bestand met de naam **SimulatedDevice.py**.
+1. Maak een bestand met de naam **SimulatedDevice.py**met behulp van een tekst editor.
 
-1. Voeg aan `import` het begin van het **SimulatedDevice.py** bestand de volgende instructies en variabelen toe:
+1. Voeg de volgende `import` instructies en variabelen toe aan het begin van het **SimulatedDevice.py** -bestand:
 
     ```python
     import threading
@@ -68,13 +68,13 @@ In deze sectie maakt u een Python-console-app om het apparaat te simuleren en be
     RECEIVED_MESSAGES = 0
     ```
 
-1. Voeg de volgende code toe aan **SimulatedDevice.py** bestand. Vervang `{deviceConnectionString}` de tijdelijke aanduidingswaarde door de tekenreeks van de apparaatverbinding voor het apparaat dat u hebt gemaakt in de [quickstart Telemetrie verzenden van een apparaat naar een IoT-hub:](quickstart-send-telemetry-python.md)
+1. Voeg de volgende code toe aan het **SimulatedDevice.py** -bestand. Vervang de `{deviceConnectionString}` waarde van de tijdelijke aanduiding door het apparaat Connection String voor het apparaat dat u hebt gemaakt in de Quick Start [van een apparaat naar een IOT hub](quickstart-send-telemetry-python.md) -Snelstartgids:
 
     ```python
     CONNECTION_STRING = "{deviceConnectionString}"
     ```
 
-1. Voeg de volgende functie toe om ontvangen berichten af te drukken op de console:
+1. Voeg de volgende functie toe om ontvangen berichten af te drukken naar de-console:
 
     ```python
     def message_listener(client):
@@ -92,7 +92,7 @@ In deze sectie maakt u een Python-console-app om het apparaat te simuleren en be
             print()
     ```
 
-1. Voeg de volgende code toe om de client te initialiseren en wacht tot u het bericht van cloud-naar-apparaat ontvangt:
+1. Voeg de volgende code toe om de client te initialiseren en te wachten op het ontvangen van het Cloud-naar-apparaat-bericht:
 
     ```python
     def iothub_client_sample_run():
@@ -110,7 +110,7 @@ In deze sectie maakt u een Python-console-app om het apparaat te simuleren en be
             print ( "IoT Hub C2D Messaging device sample stopped" )
     ```
 
-1. Voeg de volgende hoofdfunctie toe:
+1. Voeg de volgende hoofd functie toe:
 
     ```python
     if __name__ == '__main__':
@@ -122,25 +122,25 @@ In deze sectie maakt u een Python-console-app om het apparaat te simuleren en be
 
 1. Sla het bestand **SimulatedDevice.py** op en sluit het.
 
-## <a name="get-the-iot-hub-connection-string"></a>De verbindingstekenreeks voor IoT-hub
+## <a name="get-the-iot-hub-connection-string"></a>De IoT hub-connection string ophalen
 
-In dit artikel maakt u een backendservice om cloud-naar-device-berichten te verzenden via de IoT-hub die u hebt gemaakt in [Telemetrie verzenden van een apparaat naar een IoT-hub.](quickstart-send-telemetry-python.md) Als u berichten van cloud naar apparaat wilt verzenden, heeft uw service de service-machtiging nodig om verbinding **te maken.** Standaard wordt elke IoT-hub gemaakt met een service met gedeelde toegangsbeleid met de naam **service** die deze toestemming verleent.
+In dit artikel maakt u een back-end-service om Cloud-naar-apparaat-berichten te verzenden via de IoT-hub die u hebt gemaakt in [telemetrie van een apparaat naar een IOT-hub verzenden](quickstart-send-telemetry-python.md). Als u Cloud-naar-apparaat-berichten wilt verzenden, moet u de service **Connect** -machtiging hebben. Standaard wordt elke IoT Hub gemaakt met een gedeeld toegangs beleid met de naam **service** dat deze machtiging verleent.
 
 [!INCLUDE [iot-hub-include-find-service-connection-string](../../includes/iot-hub-include-find-service-connection-string.md)]
 
-## <a name="send-a-cloud-to-device-message"></a>Een cloud-naar-apparaatbericht verzenden
+## <a name="send-a-cloud-to-device-message"></a>Een Cloud-naar-apparaat-bericht verzenden
 
-In deze sectie maakt u een Python-console-app die cloud-naar-apparaatberichten verzendt naar de gesimuleerde apparaat-app. U hebt de apparaat-id nodig van het apparaat dat u in de [telemetrie verzenden van een apparaat naar een IoT-hub](quickstart-send-telemetry-python.md) snelstart. U hebt ook de IoT-hubverbindingstekenreeks nodig die u eerder hebt gekopieerd in [De verbindingstekenreeks voor IoT-hub .](#get-the-iot-hub-connection-string)
+In deze sectie maakt u een python-console-app die Cloud-naar-apparaat-berichten naar de gesimuleerde apparaat-app verzendt. U hebt de apparaat-ID van het apparaat dat u hebt toegevoegd in de [telemetrie van een apparaat verzenden naar een IOT hub](quickstart-send-telemetry-python.md) Quick Start. U hebt ook de IoT hub-connection string nodig die u eerder hebt gekopieerd in [de IOT hub-Connection String ophalen](#get-the-iot-hub-connection-string).
 
-1. Open in uw werkmap een opdrachtprompt en installeer de **Azure IoT Hub Service SDK voor Python.**
+1. Open in uw werkmap een opdracht prompt en installeer de **Azure IOT hub Service SDK voor python**.
 
    ```cmd/sh
    pip install azure-iot-hub
    ```
 
-1. Maak met een teksteditor een bestand met de naam **SendCloudToDeviceMessage.py**.
+1. Maak een bestand met de naam **SendCloudToDeviceMessage.py**met behulp van een tekst editor.
 
-1. Voeg aan `import` het begin van het **SendCloudToDeviceMessage.py** bestand de volgende instructies en variabelen toe:
+1. Voeg de volgende `import` instructies en variabelen toe aan het begin van het **SendCloudToDeviceMessage.py** -bestand:
 
     ```python
     import random
@@ -152,14 +152,14 @@ In deze sectie maakt u een Python-console-app die cloud-naar-apparaatberichten v
     MSG_TXT = "{\"service client sent a message\": %.2f}"
     ```
 
-1. Voeg de volgende code toe aan **SendCloudToDeviceMessage.py** bestand. Vervang `{iot hub connection string}` de `{device id}` waardevan de tijdelijke aanduiding en de tijdelijke aanduiding door de Reeks voor de Verbinding van de IoT-hub en de apparaat-id die u eerder hebt opgemerkt:
+1. Voeg de volgende code toe aan het **SendCloudToDeviceMessage.py** -bestand. Vervang de `{iot hub connection string}` waarden `{device id}` en de tijdelijke aanduiding door de Connection String van de IOT-hub en de apparaat-id die u eerder hebt genoteerd:
 
     ```python
     CONNECTION_STRING = "{IoTHubConnectionString}"
     DEVICE_ID = "{deviceId}"
     ```
 
-1. Voeg de volgende code toe om berichten naar uw apparaat te verzenden:
+1. Voeg de volgende code toe om berichten te verzenden naar uw apparaat:
 
     ```python
     def iothub_messaging_sample_run():
@@ -198,7 +198,7 @@ In deze sectie maakt u een Python-console-app die cloud-naar-apparaatberichten v
             print ( "IoT Hub C2D Messaging service sample stopped" )
     ```
 
-1. Voeg de volgende hoofdfunctie toe:
+1. Voeg de volgende hoofd functie toe:
 
     ```python
     if __name__ == '__main__':
@@ -207,36 +207,36 @@ In deze sectie maakt u een Python-console-app die cloud-naar-apparaatberichten v
         iothub_messaging_sample_run()
     ```
 
-1. Sla **SendCloudToDeviceMessage.py bestand** op en sluit deze af.
+1. Sla het **SendCloudToDeviceMessage.py** -bestand op en sluit het.
 
 ## <a name="run-the-applications"></a>De toepassingen uitvoeren
 
 U kunt nu de toepassingen gaan uitvoeren.
 
-1. Voer bij de opdrachtprompt in uw werkmap de volgende opdracht uit om naar berichten van cloud naar apparaat te luisteren:
+1. Voer bij de opdracht prompt in uw werkmap de volgende opdracht uit om te Luis teren naar Cloud-naar-apparaat-berichten:
 
     ```shell
     python SimulatedDevice.py
     ```
 
-    ![De gesimuleerde apparaat-app uitvoeren](./media/iot-hub-python-python-c2d/device-1.png)
+    ![De app gesimuleerde apparaten uitvoeren](./media/iot-hub-python-python-c2d/device-1.png)
 
-1. Open een nieuwe opdrachtprompt in uw werkmap en voer de volgende opdracht uit om berichten van cloud naar apparaat te verzenden:
+1. Open een nieuwe opdracht prompt in de werkmap en voer de volgende opdracht uit om Cloud-naar-apparaat-berichten te verzenden:
 
     ```shell
     python SendCloudToDeviceMessage.py
     ```
 
-    ![De app uitvoeren om de opdracht cloud-to-device te verzenden](./media/iot-hub-python-python-c2d/service.png)
+    ![Voer de app uit om de Cloud-naar-apparaat-opdracht te verzenden](./media/iot-hub-python-python-c2d/service.png)
 
-1. Let op de berichten die door het apparaat zijn ontvangen.
+1. Noteer de berichten die door het apparaat worden ontvangen.
 
-    ![Ontvangen bericht](./media/iot-hub-python-python-c2d/device-2.png)
+    ![Bericht ontvangen](./media/iot-hub-python-python-c2d/device-2.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze zelfstudie hebt u geleerd hoe u berichten van cloud naar apparaat verzenden en ontvangen.
+In deze zelf studie hebt u geleerd hoe u Cloud-naar-apparaat-berichten kunt verzenden en ontvangen.
 
-Zie [Azure IoT Remote Monitoring solution accelerator](https://azure.microsoft.com/documentation/suites/iot-suite/)voor voorbeelden van complete end-to-end oplossingen die IoT Hub gebruiken.
+Voor voor beelden van complete end-to-end-oplossingen die gebruikmaken van IoT Hub, raadpleegt u de [Azure IOT-oplossing voor externe controle](https://azure.microsoft.com/documentation/suites/iot-suite/).
 
-Zie de [IoT Hub-ontwikkelaarshandleiding](iot-hub-devguide.md)voor meer informatie over het ontwikkelen van oplossingen met IoT Hub.
+Raadpleeg de [IOT hub ontwikkelaars handleiding](iot-hub-devguide.md)voor meer informatie over het ontwikkelen van oplossingen met IOT hub.

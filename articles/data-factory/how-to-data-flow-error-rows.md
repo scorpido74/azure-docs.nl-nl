@@ -1,6 +1,6 @@
 ---
-title: Foutrijen verwerken met toewijzingsgegevensstromen in Azure Data Factory
-description: Meer informatie over het verwerken van SQL-truncation-fouten in Azure Data Factory met behulp van toewijzingsgegevensstromen.
+title: Fout rijen verwerken met toewijzing van gegevens stromen in Azure Data Factory
+description: Meer informatie over het afbreken van SQL-afbreking in Azure Data Factory met het toewijzen van gegevens stromen.
 services: data-factory
 author: kromerm
 ms.service: data-factory
@@ -9,47 +9,47 @@ ms.topic: conceptual
 ms.date: 04/20/2020
 ms.author: makromer
 ms.openlocfilehash: 8225143bb75118620b45c2520bb62ea30501a617
-ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81732688"
 ---
-# <a name="handle-sql-truncation-error-rows-in-data-factory-mapping-data-flows"></a>SQL-foutrijen verwerken in gegevensstromen voor gegevensfabriekstoewijzing
+# <a name="handle-sql-truncation-error-rows-in-data-factory-mapping-data-flows"></a>Afgebroken SQL-rijen in Data Factory gegevens stromen toewijzen
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-Een veelvoorkomend scenario in Data Factory bij het gebruik van toewijzingsgegevensstromen, is het schrijven van uw getransformeerde gegevens naar een Azure SQL-database. In dit scenario is een veelvoorkomende foutvoorwaarde die u moet voorkomen mogelijk kolomafgekapt. Volg deze stappen om logboekregistratie van kolommen te bieden die niet in een doeltekenreekskolom passen, zodat uw gegevensstroom in die scenario's kan worden voortgezet.
+Een veelvoorkomend scenario in Data Factory bij het gebruik van toewijzings gegevens stromen is het schrijven van uw getransformeerde gegevens naar een Azure SQL database. In dit scenario wordt een veelvoorkomende fout voorwaarde die u moet voor komen tegen mogelijke kolom afkap ping. Volg deze stappen voor het vastleggen van kolommen die niet in een doel reeks kolom passen, zodat uw gegevens stroom in deze scenario's kan worden voortgezet.
 
 ## <a name="scenario"></a>Scenario
 
-1. We hebben een doelazure SQL-databasetabel met een ```nvarchar(5)``` kolom met de naam "naam".
+1. Er is een Azure SQL database-doel tabel met een ```nvarchar(5)``` kolom genaamd "naam".
 
-2. Binnen onze gegevensstroom willen we filmtitels van onze gootsteen in kaart brengen tot die doelkolom "naam".
+2. In onze gegevens stroom willen we film titels van onze Sink toewijzen aan de kolom naam.
 
-    ![Filmgegevensstroom 1](media/data-flow/error4.png)
+    ![Film gegevens stroom 1](media/data-flow/error4.png)
     
-3. Het probleem is dat de filmtitel niet allemaal past in een gootsteenkolom die slechts 5 tekens kan bevatten. Wanneer u deze gegevensstroom uitvoert, ontvangt u een fout als deze:```"Job failed due to reason: DF-SYS-01 at Sink 'WriteToDatabase': java.sql.BatchUpdateException: String or binary data would be truncated. java.sql.BatchUpdateException: String or binary data would be truncated."```
+3. Het probleem is dat de titel van de film niet helemaal past binnen een Sink-kolom die Maxi maal vijf tekens kan bevatten. Wanneer u deze gegevens stroom uitvoert, treedt er een fout op, zoals deze:```"Job failed due to reason: DF-SYS-01 at Sink 'WriteToDatabase': java.sql.BatchUpdateException: String or binary data would be truncated. java.sql.BatchUpdateException: String or binary data would be truncated."```
 
-In deze video wordt een voorbeeld gegeven van het instellen van foutrijverwerkingslogica in uw gegevensstroom:
+In deze video wordt een voor beeld gegeven van het instellen van een logische rij voor het verwerken van rijen in uw gegevens stroom:
 > [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4uOHj]
 
-## <a name="how-to-design-around-this-condition"></a>Hoe te ontwerpen rond deze voorwaarde
+## <a name="how-to-design-around-this-condition"></a>Het ontwerp rond deze voor waarde
 
-1. In dit scenario is de maximale lengte van de kolom 'naam' vijf tekens. Dus, laten we een voorwaardelijke gesplitste transformatie die ons in staat stelt om rijen te loggen met "titels" die langer zijn dan vijf tekens, terwijl ook de rest van de rijen die kunnen passen in die ruimte te schrijven naar de database.
+1. In dit scenario is de maximum lengte van de kolom ' name ' vijf tekens. Daarom voegen we een Conditional Split-trans formatie toe waarmee we rijen kunnen registreren met ' titels ' die langer zijn dan vijf tekens, terwijl ook de rest van de rijen die in die ruimte passen, kunnen worden opgeslagen in de data base.
 
-    ![voorwaardelijke splitsing](media/data-flow/error1.png)
+    ![Conditional Split](media/data-flow/error1.png)
 
-2. Deze voorwaardelijke gesplitste transformatie definieert de maximale lengte van "titel" als vijf. Elke rij die minder dan of gelijk ```GoodRows``` is aan vijf, gaat in de stream. Elke rij die groter is dan ```BadRows``` vijf gaat in de stroom.
+2. Met deze Conditional Split trans formatie wordt de maximum lengte van ' title ' gedefinieerd als vijf. Een rij die kleiner dan of gelijk aan vijf is, gaat in de ```GoodRows``` stroom. Rijen die groter zijn dan vijf, worden in de ```BadRows``` stream verzonden.
 
-3. Nu moeten we de rijen registreren die zijn mislukt. Voeg een sinktransformatie ```BadRows``` toe aan de stroom voor logboekregistratie. Hier zullen we alle velden "automatisch toewijzen", zodat we het volledige transactierecord kunnen registreren. Dit is een csv-bestandsuitvoer met tekstdie is beperkt tot één bestand in Blob Storage. We noemen het logbestand "badrows.csv".
+3. De rijen die zijn mislukt, moeten nu worden geregistreerd. Voeg een Sink-trans formatie ```BadRows``` toe aan de stroom voor logboek registratie. Hier worden alle velden automatisch toegewezen, zodat de registratie van de volledige transactie record wordt geregistreerd. Dit is een tekst scheidings teken van CSV-bestand naar één bestand in Blob Storage. Het logboek bestand "badrows. csv" wordt aangeroepen.
 
-    ![Slechte rijen](media/data-flow/error3.png)
+    ![Ongeldige rijen](media/data-flow/error3.png)
     
-4. De ingevulde gegevensstroom wordt hieronder weergegeven. We zijn nu in staat om foutrijen af te splitsen om de SQL-truncation-fouten te voorkomen en deze vermeldingen in een logboekbestand te plaatsen. Ondertussen kunnen succesvolle rijen blijven schrijven naar onze doeldatabase.
+4. De voltooide gegevens stroom wordt hieronder weer gegeven. We kunnen nu fout rijen opsplitsen om te voor komen dat er fouten in de SQL-afkap ping ontstaan en deze vermeldingen in een logboek bestand plaatsen. Ondertussen kunnen voltooide rijen naar de doel database blijven schrijven.
 
-    ![volledige gegevensstroom](media/data-flow/error2.png)
+    ![gegevens stroom volt ooien](media/data-flow/error2.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Bouw de rest van uw logica voor gegevensstromen met behulp van [transformaties](concepts-data-flow-overview.md)van gegevensstromen .
+* Bouw de rest van uw gegevensstroom logica met behulp van trans [formaties](concepts-data-flow-overview.md)voor gegevens stromen.

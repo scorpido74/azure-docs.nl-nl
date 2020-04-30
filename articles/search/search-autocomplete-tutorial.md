@@ -1,7 +1,7 @@
 ---
-title: Automatisch aanvullen en suggesties toevoegen in een zoekvak
+title: Automatisch aanvullen en suggesties toevoegen aan een zoekvak
 titleSuffix: Azure Cognitive Search
-description: Schakel queryacties in Azure Cognitive Search in door suggesties te maken en aanvragen te formuleren die een zoekvak automatisch aanvullen met voltooide termen of woordgroepen. U ook voorgestelde overeenkomsten retourneren.
+description: Schakel zoek acties op basis van het type query in azure Cognitive Search door Voorst Ellen te maken en aanvragen te formuleren waarmee automatisch een zoekvak met de voor waarden of zinsdelen wordt ingevuld. U kunt ook voorgestelde overeenkomsten retour neren.
 manager: nitinme
 author: HeidiSteen
 ms.author: heidist
@@ -9,29 +9,29 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 04/15/2020
 ms.openlocfilehash: 60e9a435d705ee0fee6509e92cdcb056ac7ab609
-ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81758119"
 ---
-# <a name="add-autocomplete-and-suggestions-to-client-apps"></a>Automatisch aanvullen en suggesties toevoegen aan client-apps
+# <a name="add-autocomplete-and-suggestions-to-client-apps"></a>Automatisch aanvullen en suggesties aan client-apps toevoegen
 
-Search-as-you-type is een veelgebruikte techniek voor het verbeteren van de productiviteit van door gebruikers geïnitieerde query's. In Azure Cognitive Search wordt deze ervaring ondersteund door *middel van automatisch aanvullen*, waarbij een term of woordgroep wordt voltooid op basis van gedeeltelijke invoer (het voltooien van 'micro' met 'microsoft'). Een ander formulier is *suggesties:* een korte lijst van overeenkomende documenten (boektitels retourneren met een ID, zodat u linken naar een detailpagina). Zowel automatisch aanvullen als suggesties zijn gebaseerd op een overeenkomst in de index. De service biedt geen query's die nul resultaten opleveren.
+Search-as-u-type is een algemene techniek voor het verbeteren van de productiviteit van door de gebruiker geïnitieerde query's. In azure Cognitive Search wordt deze ervaring ondersteund via *automatisch aanvullen*, waardoor een term of woord groep is gebaseerd op gedeeltelijke invoer (het volt ooien van ' micro ' met ' micro soft '). Een ander formulier is *suggesties*: een korte lijst met overeenkomende documenten (waarbij Boek titels worden geretourneerd met een id zodat u een koppeling naar een detail pagina kunt maken). Automatisch aanvullen en suggesties worden voorgesteld op basis van een overeenkomst in de index. De service biedt geen query's die nul resultaten retour neren.
 
-Als u deze ervaringen wilt implementeren in Azure Cognitive Search, hebt u het volgende nodig:
+Als u deze ervaringen wilt implementeren in azure Cognitive Search, hebt u het volgende nodig:
 
-+ Een *suggester* op de achterkant.
-+ Een *query* met [automatische aan-/ smeerinformatie](https://docs.microsoft.com/rest/api/searchservice/autocomplete) of de API voor [suggesties](https://docs.microsoft.com/rest/api/searchservice/suggestions) op de aanvraag.
-+ Een *ui-besturingselement* voor het afhandelen van zoek-naar-je-type interacties in uw client-app. We raden u aan hiervoor een bestaande JavaScript-bibliotheek te gebruiken.
++ Een *suggestie* voor de back-end.
++ Een *query* die de API voor [automatisch aanvullen](https://docs.microsoft.com/rest/api/searchservice/autocomplete) of [suggesties](https://docs.microsoft.com/rest/api/searchservice/suggestions) voor de aanvraag specificeert.
++ Een *UI-besturings element* voor het afhandelen van interacties die zoeken naar u typen in uw client-app. U kunt het beste een bestaande Java script-bibliotheek gebruiken voor dit doel.
 
-In Azure Cognitive Search worden automatisch voltooide query's en voorgestelde resultaten opgehaald uit de zoekindex, uit geselecteerde velden die u hebt geregistreerd bij een suggestie. Een suggestiemaakt deel uit van de index en geeft aan welke velden inhoud bieden die een query voltooit, een resultaat suggereert of beide doet. Wanneer de index wordt gemaakt en geladen, wordt intern een suggestiestructuur gemaakt om voorvoegsels op te slaan die worden gebruikt voor het afstemmen op gedeeltelijke query's. Voor suggesties is het kiezen van geschikte velden die uniek zijn, of in ieder geval niet repetitief, essentieel voor de ervaring. Zie [Een suggestie maken voor](index-add-suggesters.md)meer informatie.
+In azure Cognitive Search worden automatisch aangeleverde query's en voorgestelde resultaten opgehaald uit de zoek index, van geselecteerde velden die u hebt geregistreerd met een suggestie. Een suggestie maakt deel uit van de index en geeft aan welke velden inhoud leveren die een query voltooit, een resultaat krijgt of beide. Wanneer de index is gemaakt en geladen, wordt er intern een gegevens structuur voor suggesties gemaakt voor het opslaan van voor voegsels die worden gebruikt voor het vergelijken van gedeeltelijke query's. Voor suggesties, het kiezen van de juiste velden die uniek zijn of die ten minste niet herhalend zijn, is essentieel voor de ervaring. Zie [een suggestie maken](index-add-suggesters.md)voor meer informatie.
 
-De rest van dit artikel is gericht op query's en clientcode. Het maakt gebruik van JavaScript en C # om belangrijke punten te illustreren. REST API-voorbeelden worden gebruikt om elke bewerking beknopt te presenteren. Zie [Volgende stappen](#next-steps)voor koppelingen naar end-to-end codevoorbeelden.
+De rest van dit artikel is gericht op query's en client code. Java script en C# worden gebruikt voor het illustreren van belang rijke punten. REST API-voor beelden worden gebruikt om elke bewerking beknopt weer te geven. Zie [volgende stappen](#next-steps)voor koppelingen naar end-to-end-code voorbeelden.
 
 ## <a name="set-up-a-request"></a>Een aanvraag instellen
 
-Elementen van een aanvraag zijn een van de API's van het zoek-naar-u-type, een gedeeltelijke query en een suggestie. In het volgende script worden onderdelen van een aanvraag geïllustreerd met behulp van de API Voor het automatisch aanvullen van rest als voorbeeld.
+De elementen van een aanvraag bevatten een van de Search-as-u-type-Api's, een gedeeltelijke query en een suggestie. Het volgende script illustreert onderdelen van een aanvraag, waarbij de REST API automatisch aanvullen als voor beeld wordt gebruikt.
 
 ```http
 POST /indexes/myxboxgames/docs/autocomplete?search&api-version=2019-05-06
@@ -41,67 +41,67 @@ POST /indexes/myxboxgames/docs/autocomplete?search&api-version=2019-05-06
 }
 ```
 
-De **suggesterName** geeft u de suggester-bewuste velden die worden gebruikt om termen of suggesties te voltooien. Met name voor suggesties moet de veldlijst bestaan uit suggesties die duidelijke keuzes bieden tussen overeenkomende resultaten. Op een site die computerspellen verkoopt, kan het veld de titel van het spel zijn.
+De **suggesterName** biedt u de velden voor suggesties die worden gebruikt om de voor waarden of suggesties te volt ooien. Voor suggesties met name moet de lijst met velden bestaan uit de lijsten die duidelijke keuzes bieden tussen de overeenkomende resultaten. Op een site die computer spellen verkoopt, is het veld mogelijk de titel van het spel.
 
-De **zoekparameter** biedt de gedeeltelijke query, waarbij tekens worden ingevoerd om de queryaanvraag via het besturingselement jQuery Autocomplete. In het bovenstaande voorbeeld, "minecraf" is een statische illustratie van wat de controle zou kunnen zijn verstreken in.
+De **Zoek** parameter bevat de gedeeltelijke query, waarbij tekens worden ingevoerd in de query aanvraag via het jQuery-besturings element voor automatisch aanvullen. In het bovenstaande voor beeld is ' minecraf ' een statische illustratie van wat het besturings element mogelijk heeft door gegeven.
 
-De API's stellen geen minimumlengtevereisten op aan de gedeeltelijke query; het kan zo weinig zijn als één teken. JQuery Autocomplete biedt echter een minimale lengte. Een minimum van twee of drie tekens is typisch.
+De Api's leggen geen vereisten voor de minimale lengte voor de gedeeltelijke query voor; Dit kan slechts één teken zijn. JQuery automatisch aanvullen biedt echter een minimum lengte. Een minimum van twee of drie tekens is gebruikelijk.
 
-Overeenkomsten staan aan het begin van een term overal in de invoertekenreeks. Gezien "de snelle bruine vos", zowel autocomplete en suggesties zal overeenkomen met gedeeltelijke versies van "de", "snel", "bruin", of "vos", maar niet op gedeeltelijke infix termen als "rown" of "os". Bovendien bepaalt elke match de ruimte voor downstream-uitbreidingen. Een gedeeltelijke query van "quick br" zal overeenkomen op "quick brown" of "quick bread", maar noch "bruin" of "brood" op zichzelf zou overeenkomen, tenzij "snel" aan hen voorafgaat.
+Overeenkomsten bevinden zich aan het begin van een term in een wille keurige plaats in de invoer teken reeks. Op basis van de Quick Brown Fox komen zowel automatisch aanvullen als suggesties overeen op de gedeeltelijke versies van ' de ', ' snel ', ' bruin ' of ' Fox ', maar niet op gedeeltelijke infix-termen zoals ' rij ' of ' Ox '. Daarnaast stelt elke overeenkomst het bereik in voor downstream-uitbrei dingen. Een gedeeltelijke query van ' Quick BR ' komt overeen met ' Quick Brown ' of ' Quick brood ', maar ' bruin ' of ' brood ' is op zichzelf niet hetzelfde, tenzij ' snel ' voor komt.
 
-### <a name="apis-for-search-as-you-type"></a>API's voor zoek-naar-je-type
+### <a name="apis-for-search-as-you-type"></a>Api's voor Search-as-u-type
 
-Volg deze links voor de referentiepagina's REST en .NET SDK:
+Volg deze koppelingen voor de REST-en .NET SDK-referentie pagina's:
 
 + [Suggesties REST API](https://docs.microsoft.com/rest/api/searchservice/suggestions) 
-+ [API VOOR automatisch aanvullen](https://docs.microsoft.com/rest/api/searchservice/autocomplete) 
-+ [SuggestWithHttpMessagesAsync-methode](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.idocumentsoperations.suggestwithhttpmessagesasync?view=azure-dotnet)
-+ [Automatisch aanvullenMethttpMessagesAsync-methode](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.idocumentsoperations.autocompletewithhttpmessagesasync?view=azure-dotnet&viewFallbackFrom=azure-dotnet)
++ [REST API automatisch aanvullen](https://docs.microsoft.com/rest/api/searchservice/autocomplete) 
++ [Methode SuggestWithHttpMessagesAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.idocumentsoperations.suggestwithhttpmessagesasync?view=azure-dotnet)
++ [Methode AutocompleteWithHttpMessagesAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.idocumentsoperations.autocompletewithhttpmessagesasync?view=azure-dotnet&viewFallbackFrom=azure-dotnet)
 
 ## <a name="structure-a-response"></a>Een reactie structureren
 
-Reacties voor automatisch aanvullen en suggesties zijn wat u zou verwachten voor het patroon: [Automatisch aanvullen](https://docs.microsoft.com/rest/api/searchservice/autocomplete#response) retourneert een lijst met termen, [Suggesties](https://docs.microsoft.com/rest/api/searchservice/suggestions#response) retourneert termen plus een document-id, zodat u het document ophalen (gebruik de API voor het opzoeken [van document](https://docs.microsoft.com/rest/api/searchservice/lookup-document) om het specifieke document voor een detailpagina op te halen).
+Antwoorden voor automatisch aanvullen en suggesties zijn wat u mogelijk verwacht voor het patroon: door [AutoAanvullen](https://docs.microsoft.com/rest/api/searchservice/autocomplete#response) een lijst met termen te [retour neren,](https://docs.microsoft.com/rest/api/searchservice/suggestions#response) worden voor waarden en een document-id geretourneerd, zodat u het document kunt ophalen (met behulp van de [opzoek document](https://docs.microsoft.com/rest/api/searchservice/lookup-document) -API om het specifieke document voor een detail pagina op te halen).
 
-De antwoorden worden gevormd door de parameters op de aanvraag. Stel voor Automatisch aanvullen [**de modus automatisch aanvullen**](https://docs.microsoft.com/rest/api/searchservice/autocomplete#autocomplete-modes) in om te bepalen of de voltooiing van tekst plaatsvindt op een of twee voorwaarden. Voor Suggesties bepaalt het veld dat u kiest de inhoud van het antwoord.
+Antwoorden worden gevormd door de para meters in de aanvraag. Stel voor automatisch aanvullen [**autocompleteMode**](https://docs.microsoft.com/rest/api/searchservice/autocomplete#autocomplete-modes) in om te bepalen of de tekst is voltooid op basis van één of twee voor waarden. Voor suggesties bepaalt het veld dat u kiest de inhoud van het antwoord.
 
-Voor suggesties moet u het antwoord verder verfijnen om duplicaten of niet-gerelateerde resultaten te voorkomen. Als u de resultaten wilt beheren, neemt u meer parameters op de aanvraag op. De volgende parameters zijn van toepassing op zowel automatisch aanvullen als suggesties, maar zijn misschien meer nodig voor suggesties, vooral wanneer een suggestie meerdere velden bevat.
+Voor suggesties moet u het antwoord verder verfijnen om duplicaten te voor komen of wat niet-gerelateerde resultaten lijkt te zijn. Als u de resultaten wilt beheren, neemt u meer para meters op voor de aanvraag. De volgende para meters zijn van toepassing op zowel AutoAanvullen als suggesties, maar zijn mogelijk meer nodig voor suggesties, met name wanneer een suggestie meerdere velden bevat.
 
 | Parameter | Gebruik |
 |-----------|-------|
-| **$select** | Als u meerdere **sourceFields** in een **$select** suggestiehebt, gebruikt u`$select=GameTitle`$select om te kiezen welk veld waarden bijdraagt ( ). |
-| **zoekvelden** | De query beperken tot specifieke velden. |
-| **$filter** | Wedstrijdcriteria toepassen op de`$filter=Category eq 'ActionAdventure'`resultaatset ( ). |
-| **$top** | Beperk de resultaten tot`$top=5`een specifiek getal ( ).|
+| **$select** | Als u meerdere **sourceFields** in een suggestie hebt, gebruikt u **$Select** om te kiezen welk veld waarden bijdraagt (`$select=GameTitle`). |
+| **searchFields** | De query beperken tot specifieke velden. |
+| **$filter** | Overeenkomst criteria Toep assen op de resultatenset`$filter=Category eq 'ActionAdventure'`(). |
+| **$top** | De resultaten beperken tot een bepaald aantal (`$top=5`).|
 
-## <a name="add-user-interaction-code"></a>Gebruikersinteractiecode toevoegen
+## <a name="add-user-interaction-code"></a>Gebruikers interactie code toevoegen
 
-Voor het automatisch invullen van een queryterm of het neerzetten van een lijst met overeenkomende koppelingen is gebruikersinteractiecode nodig, meestal JavaScript, die aanvragen van externe bronnen kan verbruiken, zoals automatisch aanvullen of suggesties voor een Azure Search Cognitive-index.
+Voor het automatisch aanvullen van een query voorwaarde of het omlaag plaatsen van een lijst met overeenkomende koppelingen is gebruikers interactie code vereist, meestal java script, waarmee u aanvragen van externe bronnen kunt gebruiken, zoals automatisch aanvullen of suggestie query's voor een Azure Search cognitieve index.
 
-Hoewel u deze code native schrijven, is het veel gemakkelijker om functies uit de bestaande JavaScript-bibliotheek te gebruiken. Dit artikel toont twee, een voor suggesties en een andere voor autocomplete. 
+Hoewel u deze code systeem eigen kunt schrijven, is het veel eenvoudiger om functies uit de bestaande Java script-bibliotheek te gebruiken. In dit artikel ziet u twee, een voor suggesties en een andere voor automatisch aanvullen. 
 
-+ [Het object Automatisch aanvullen (jQuery-gebruikersinterface)](https://jqueryui.com/autocomplete/) wordt gebruikt in het voorbeeld suggestie. U een zoekvak maken en er vervolgens naar verwijzen in een JavaScript-functie die de widget Automatisch aanvullen gebruikt. Eigenschappen op de widget stellen de bron in (een functie automatisch aanvullen of suggesties), minimale lengte van invoertekens voordat actie wordt ondernomen en positionering.
++ De [widget automatisch aanvullen (jQuery gebruikers interface)](https://jqueryui.com/autocomplete/) wordt gebruikt in het voor beeld van de suggestie. U kunt een zoekvak maken en hiernaar verwijzen in een Java script-functie die gebruikmaakt van de widget automatisch aanvullen. Eigenschappen van de widget stellen de bron (een functie voor automatisch aanvullen of suggesties), de minimum lengte van invoer tekens voordat actie wordt uitgevoerd en plaatsing.
 
-+ [XDSoft Autocomplete plug-in](https://xdsoft.net/jqplugins/autocomplete/) wordt gebruikt in het voorbeeld Automatisch aanvullen.
++ [In de XDSoft-invoeg toepassing voor automatisch aanvullen](https://xdsoft.net/jqplugins/autocomplete/) wordt het voor beeld van AutoAanvullen gebruikt.
 
-We gebruiken deze bibliotheken om het zoekvak te bouwen dat zowel suggesties als automatisch aanvullen ondersteunt. De invoer die in het zoekvak wordt verzameld, wordt gekoppeld aan suggesties en acties voor automatisch aanvullen.
+We gebruiken deze bibliotheken om het zoekvak te bouwen dat zowel suggesties als automatisch aanvullen ondersteunt. De invoer die in het zoekvak wordt verzameld, is gekoppeld aan suggesties en acties voor automatisch aanvullen.
 
 ## <a name="suggestions"></a>Suggesties
 
-In deze sectie vindt u een implementatie van voorgestelde resultaten, te beginnen met de definitie van het zoekvak. Het toont ook hoe en script dat de eerste JavaScript autocomplete bibliotheek waarnaar wordt verwezen in dit artikel aanroept.
+In deze sectie wordt uitgelegd hoe u de voorgestelde resultaten implementeert, beginnend met de definitie van het zoekvak. Daarnaast ziet u hoe en script dat de eerste Java script-bibliotheek aanroept waarnaar in dit artikel wordt verwezen.
 
 ### <a name="create-a-search-box"></a>Een zoekvak maken
 
-Ervan uitgaande dat de [bibliotheek voor jQuery-gebruikersinterface automatisch aanvullen](https://jqueryui.com/autocomplete/) en een MVC-project in C#, u het zoekvak definiëren met JavaScript in het bestand **Index.cshtml.** De bibliotheek voegt de interactie tussen zoek en u toe toe aan het zoekvak door asynchrone aanroepen naar de MVC-controller om suggesties op te halen.
+Uitgaande van de [JQUERY UI automatisch aanvullen-bibliotheek](https://jqueryui.com/autocomplete/) en een MVC-project in C#, kunt u het zoekvak definiëren met behulp van Java script in het bestand **index. cshtml** . De-bibliotheek voegt de zoek actie toe aan het zoekvak door asynchrone aanroepen naar de MVC-controller te maken om suggesties op te halen.
 
-In **Index.cshtml** onder de map \Views\Home ziet een regel om een zoekvak te maken als volgt:
+In **index. cshtml** onder de map \Views\Home ziet u een regel voor het maken van een zoekvak er als volgt uit:
 
 ```html
 <input class="searchBox" type="text" id="searchbox1" placeholder="search">
 ```
 
-Dit voorbeeld is een eenvoudig invoertekstvak met een klasse voor styling, een ID waarnaar wordt verwezen door JavaScript en tijdelijke aanduidingstekst.  
+Dit voor beeld is een eenvoudig invoer tekstvak met een klasse voor opmaak, een ID waarnaar wordt verwezen door Java script en tekst van tijdelijke aanduiding.  
 
-Sluit JavaScript in dat verwijst naar het zoekvak in hetzelfde bestand. De volgende functie roept de API Voorstellen aan, die voorgestelde overeenkomende documenten opvraagt op basis van gedeeltelijke term-invoer:
+Sluit in hetzelfde bestand java script in dat verwijst naar het zoekvak. Met de volgende functie wordt de API Voorst Ellen aangeroepen, waarmee suggesties voor voorgestelde overeenkomende documenten worden aangevraagd op basis van invoer van een gedeeltelijke term:
 
 ```javascript
 $(function () {
@@ -116,31 +116,31 @@ $(function () {
 });
 ```
 
-De `source` vertelt de jQuery UI Autocomplete functie waar de lijst met items te krijgen om weer te geven onder het zoekvak. Aangezien dit project een MVC-project is, wordt de functie **Voorstellen** in **HomeController.cs** aanroepen die de logica bevat voor het retourneren van querysuggesties. Deze functie passeert ook een paar parameters om hoogtepunten, fuzzy matching en term te beheren. Door de JavaScript-API voor automatisch aanvullen wordt de parameter 'term' toegevoegd.
+Hiermee `source` wordt de functie automatisch aanvullen van de jQuery-gebruikers interface aangegeven, waar de lijst met items wordt weer gegeven onder het zoekvak. Aangezien dit project een MVC-project is, wordt de functie **suggereren** aangeroepen in **HomeController.cs** die de logica bevat voor het retour neren van query suggesties. Deze functie geeft ook enkele para meters door aan het beheren van hooglichten, fuzzy matching en term. Door de JavaScript-API voor automatisch aanvullen wordt de parameter 'term' toegevoegd.
 
-Het `minLength: 3` zorgt ervoor dat aanbevelingen alleen worden weergegeven als er ten minste drie tekens in het zoekvak staan.
+Hiermee `minLength: 3` wordt gegarandeerd dat aanbevelingen alleen worden weer gegeven wanneer het zoekvak ten minste drie tekens bevat.
 
 ### <a name="enable-fuzzy-matching"></a>Fuzzy matching inschakelen
 
-Zoeken bij benadering zorgt ervoor dat u resultaten krijgt te zien op basis van treffers bij benadering, zelfs als de gebruiker een woord in het zoekvak onjuist heeft gespeld. De bewerkingsafstand is 1, wat betekent dat er een maximale discrepantie van één teken kan zijn tussen de gebruikersinvoer en een overeenkomst. 
+Zoeken bij benadering zorgt ervoor dat u resultaten krijgt te zien op basis van treffers bij benadering, zelfs als de gebruiker een woord in het zoekvak onjuist heeft gespeld. De bewerkings afstand is 1, wat betekent dat er een maximum verschil is tussen een teken tussen de invoer van de gebruiker en een overeenkomst. 
 
 ```javascript
 source: "/home/suggest?highlights=false&fuzzy=true&",
 ```
 
-### <a name="enable-highlighting"></a>Markeringen inschakelen
+### <a name="enable-highlighting"></a>Markeren inschakelen
 
-Met markering wordt de lettertypestijl toepast op de tekens in het resultaat die overeenkomen met de invoer. Als de gedeeltelijke invoer bijvoorbeeld 'micro' is, wordt het resultaat weergegeven als **microzacht,** **microbereik**enzovoort. Markeren is gebaseerd op de parameters HighlightPreTag en HighlightPostTag, gedefinieerd in lijn met de functie Suggestie.
+Met markeren wordt lettertype stijl toegepast op de tekens in het resultaat dat overeenkomt met de invoer. Als de gedeeltelijke invoer bijvoorbeeld ' micro ' is, wordt het resultaat weer gegeven als **micro**Soft, **micro**bereik, enzovoort. Markeren is gebaseerd op de para meters HighlightPreTag en HighlightPostTag, gedefinieerd inline met de functie Voorst Ellen.
 
 ```javascript
 source: "/home/suggest?highlights=true&fuzzy=true&",
 ```
 
-### <a name="suggest-function"></a>Stel voor, functie
+### <a name="suggest-function"></a>Functie Voorst Ellen
 
-Als u C# en een MVC-toepassing gebruikt, is **HomeController.cs** bestand onder de map Controllers de plaats waar u een klasse maken voor voorgestelde resultaten. In .NET is een functie Voorstellen gebaseerd op de [methode DocumentsOperationsExtensions.Suggest](/dotnet/api/microsoft.azure.search.documentsoperationsextensions.suggest?view=azure-dotnet).
+Als u gebruikmaakt van C# en een MVC-toepassing, kunt u in het **HomeController.cs** -bestand onder de map controllers een klasse maken voor de voorgestelde resultaten. In .NET is een functie Voorst Ellen gebaseerd op de [methode DocumentsOperationsExtensions. suggereren](/dotnet/api/microsoft.azure.search.documentsoperationsextensions.suggest?view=azure-dotnet).
 
-De `InitSearch` methode maakt een geverifieerde HTTP-indexclient voor de Azure Cognitive Search-service. Zie Azure Cognitive Search gebruiken [vanuit een .NET-toepassing](https://docs.microsoft.com/azure/search/search-howto-dotnet-sdk)voor meer informatie over de .NET SDK.
+Met `InitSearch` de-methode wordt een geverifieerde http-index client naar de Azure Cognitive Search-service gemaakt. Zie [Azure Cognitive Search gebruiken vanuit een .NET-toepassing](https://docs.microsoft.com/azure/search/search-howto-dotnet-sdk)voor meer informatie over de .NET SDK.
 
 ```csharp
 public ActionResult Suggest(bool highlights, bool fuzzy, string term)
@@ -174,11 +174,11 @@ public ActionResult Suggest(bool highlights, bool fuzzy, string term)
 }
 ```
 
-De functie Voorstellen maakt gebruik van twee parameters die bepalen of er bij het invoeren van de zoekterm markeringen voor treffers worden geretourneerd of zoeken bij benadering wordt gebruikt. De methode maakt een [object SuggestParameters,](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.suggestparameters?view=azure-dotnet)dat vervolgens wordt doorgegeven aan de API Voorstellen. Het resultaat wordt vervolgens geconverteerd naar JSON, zodat deze in de client kan worden weergegeven.
+De functie Voorstellen maakt gebruik van twee parameters die bepalen of er bij het invoeren van de zoekterm markeringen voor treffers worden geretourneerd of zoeken bij benadering wordt gebruikt. De methode maakt een [SuggestParameters-object](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.suggestparameters?view=azure-dotnet), dat vervolgens wordt door gegeven aan de API Voorst Ellen. Het resultaat wordt vervolgens geconverteerd naar JSON, zodat deze in de client kan worden weergegeven.
 
 ## <a name="autocomplete"></a>Automatisch aanvullen
 
-Tot nu toe is de zoek UX-code gecentreerd op suggesties. Het volgende codeblok toont automatisch aanvullen met de functie XDSoft jQuery UI Autocomplete, waarbij een aanvraag voor Azure Cognitive Search automatisch wordt voltooid. Net als bij de suggesties, in een C # applicatie, code die gebruikersinteractie ondersteunt gaat in **index.cshtml**.
+Tot nu toe is de zoek UX-code gecentreerd op suggesties. In het volgende code blok wordt automatisch aanvullen weer gegeven met de functie voor automatisch aanvullen van de gebruikers interface van XDSoft jQuery, waarbij een aanvraag voor Azure Cognitive Search automatisch aanvullen wordt door gegeven. Net als bij de suggesties, in een C#-toepassing, code die gebruikers interactie ondersteunt, gaat u naar **index. cshtml**.
 
 ```javascript
 $(function () {
@@ -215,9 +215,9 @@ $(function () {
 });
 ```
 
-### <a name="autocomplete-function"></a>Automatisch aanvullen, functie
+### <a name="autocomplete-function"></a>Functie automatisch aanvullen
 
-Automatisch aanvullen is gebaseerd op de [methode DocumentsOperationsExtensions.Autocomplete](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.documentsoperationsextensions.autocomplete?view=azure-dotnet). Net als bij suggesties, zou deze code blok gaan in het **HomeController.cs** bestand.
+Automatisch aanvullen is gebaseerd op de [methode DocumentsOperationsExtensions. autocomplete](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.documentsoperationsextensions.autocomplete?view=azure-dotnet). Net als bij suggesties gaat dit code blok in het **HomeController.cs** -bestand.
 
 ```csharp
 public ActionResult AutoComplete(string term)
@@ -242,12 +242,12 @@ public ActionResult AutoComplete(string term)
 }
 ```
 
-De functie Automatisch aanvullen neemt de invoer van de zoekterm. De methode maakt een [object AutoCompleteParameters](https://docs.microsoft.com/rest/api/searchservice/autocomplete). Het resultaat wordt vervolgens geconverteerd naar JSON, zodat deze in de client kan worden weergegeven.
+De functie automatisch aanvullen neemt de invoer van de zoek term. De methode maakt een [AutoCompleteParameters-object](https://docs.microsoft.com/rest/api/searchservice/autocomplete). Het resultaat wordt vervolgens geconverteerd naar JSON, zodat deze in de client kan worden weergegeven.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Volg deze links voor end-to-end instructies of code die beide zoek-als-je-type ervaringen weergeven. Beide codevoorbeelden omvatten hybride implementaties van suggesties en automatisch aanvullen samen.
+Volg deze koppelingen voor end-to-end instructies of code die zowel zoek-als-u-type-ervaringen demonstreert. Beide code voorbeelden zijn hybride implementaties van suggesties en automatisch aanvullen samen.
 
-+ [Zelfstudie: Uw eerste app maken in C# (les 3)](tutorial-csharp-type-ahead-and-suggestions.md)
-+ [C#code voorbeeld: azure-search-dotnet-samples/create-first-app/3-add-typeahead/](https://github.com/Azure-Samples/azure-search-dotnet-samples/tree/master/create-first-app/3-add-typeahead)
-+ [C# en JavaScript met VOORBEELD VAN REST side-by-side code](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetHowToAutocomplete)
++ [Zelf studie: uw eerste app maken in C# (Les 3)](tutorial-csharp-type-ahead-and-suggestions.md)
++ [Voor beeld van C#-code: Azure-Search-DotNet-samples/Create-first-app/3-add-typeahead/](https://github.com/Azure-Samples/azure-search-dotnet-samples/tree/master/create-first-app/3-add-typeahead)
++ [C# en Java script met REST-aan-zij code voorbeeld](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetHowToAutocomplete)

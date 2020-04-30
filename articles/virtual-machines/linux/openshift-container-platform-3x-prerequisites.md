@@ -1,6 +1,6 @@
 ---
-title: OpenShift Container Platform 3.11 in Azure-vereisten
-description: Voorwaarden voor het implementeren van OpenShift Container Platform 3.11 in Azure.
+title: Open Shift container platform 3,11 in azure-vereisten
+description: Vereisten voor het implementeren van open Shift container platform 3,11 in Azure.
 author: haroldwongms
 manager: mdotson
 ms.service: virtual-machines-linux
@@ -10,44 +10,44 @@ ms.workload: infrastructure
 ms.date: 10/23/2019
 ms.author: haroldw
 ms.openlocfilehash: 26b190515819378309c2b0705efdbc349ecccbe2
-ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81759502"
 ---
-# <a name="common-prerequisites-for-deploying-openshift-container-platform-311-in-azure"></a>Algemene voorwaarden voor het implementeren van OpenShift Container Platform 3.11 in Azure
+# <a name="common-prerequisites-for-deploying-openshift-container-platform-311-in-azure"></a>Algemene vereisten voor het implementeren van open Shift container platform 3,11 in azure
 
-In dit artikel worden veelvoorkomende vereisten beschreven voor het implementeren van OpenShift Container Platform of OKD in Azure.
+In dit artikel worden algemene vereisten beschreven voor het implementeren van open Shift container platform of OKD in Azure.
 
-De installatie van OpenShift maakt gebruik van Ansible playbooks. Ansible gebruikt Secure Shell (SSH) om verbinding te maken met alle clusterhosts om installatiestappen uit te voeren.
+De installatie van open SHIFT maakt gebruik van Ansible playbooks. Ansible maakt gebruik van Secure Shell (SSH) om verbinding te maken met alle clusterhosts om de installatie stappen te volt ooien.
 
-Wanneer ansible de SSH-verbinding maakt met de externe hosts, kan het geen wachtwoord invoeren. Om deze reden kan de privésleutel geen wachtwoord (wachtwoordzin) hebben of mislukt de implementatie.
+Wanneer ansible de SSH-verbinding met de externe hosts maakt, kan er geen wacht woord worden ingevoerd. Daarom kan aan de persoonlijke sleutel geen wacht woord (wachtwoordzin) worden gekoppeld of kan de implementatie niet worden uitgevoerd.
 
-Omdat de virtuele machines (VM's) implementeren via Azure Resource Manager-sjablonen, wordt dezelfde openbare sleutel gebruikt voor toegang tot alle VM's. De bijbehorende privésleutel moet op de VM staan die ook alle playbooks uitvoert. Om deze actie veilig uit te voeren, wordt een Azure-sleutelkluis gebruikt om de privésleutel door te geven aan de VM.
+Omdat de virtuele machines (Vm's) worden geïmplementeerd via Azure Resource Manager sjablonen, wordt dezelfde open bare sleutel gebruikt voor toegang tot alle Vm's. De bijbehorende persoonlijke sleutel moet zich op de VM behoren die ook alle playbooks uitvoert. Als u deze actie veilig wilt uitvoeren, wordt een Azure-sleutel kluis gebruikt om de persoonlijke sleutel door te geven aan de virtuele machine.
 
-Als er behoefte is aan permanente opslag voor containers, zijn aanhoudende volumes vereist. OpenShift ondersteunt Azure virtual hard disks (VHD's) voor permanente volumes, maar Azure moet eerst worden geconfigureerd als cloudprovider.
+Als er voor containers een permanente opslag ruimte nodig is, zijn er permanente volumes vereist. Open Shift biedt ondersteuning voor virtuele harde schijven (Vhd's) van Azure voor permanente volumes, maar Azure moet eerst worden geconfigureerd als de Cloud provider.
 
-In dit model, OpenShift:
+In dit model, open Shift:
 
-- Hiermee maakt u een VHD-object in een Azure-opslagaccount of een beheerde schijf.
-- Monteert de VHD op een VM en maakt het volume op.
-- Monteert het volume op de pod.
+- Hiermee maakt u een VHD-object in een Azure-opslag account of een beheerde schijf.
+- Koppelt de VHD aan een VM en formatteert het volume.
+- Koppelt het volume aan de pod.
 
-Om deze configuratie te laten werken, heeft OpenShift machtigingen nodig om deze taken in Azure uit te voeren. Hiervoor wordt een serviceprincipal gebruikt. De serviceprincipal is een beveiligingsaccount in Azure Active Directory waaraan machtigingen zijn verleend voor resources.
+Deze configuratie werkt alleen als open Shift machtigingen heeft om deze taken uit te voeren in Azure. Een service-principal wordt gebruikt voor dit doel einde. De Service-Principal is een beveiligings account in Azure Active Directory dat machtigingen voor bronnen heeft.
 
-De serviceprincipal moet toegang hebben tot de opslagaccounts en VM's die deel uitmaken van het cluster. Als alle OpenShift-clusterresources worden geïmplementeerd in één resourcegroep, kan de serviceprincipal machtigingen voor die resourcegroep krijgen.
+De Service-Principal moet toegang hebben tot de opslag accounts en Vm's die het cluster vormen. Als alle open Shift-cluster bronnen op één resource groep worden geïmplementeerd, kan aan de Service-Principal machtigingen worden verleend voor die resource groep.
 
-In deze handleiding wordt beschreven hoe u de artefacten maakt die zijn gekoppeld aan de vereisten.
+In deze hand leiding wordt beschreven hoe u de artefacten maakt die aan de vereisten zijn gekoppeld.
 
 > [!div class="checklist"]
-> * Maak een sleutelkluis om SSH-sleutels voor het OpenShift-cluster te beheren.
-> * Maak een serviceprincipal voor gebruik door de Azure Cloud Provider.
+> * Een sleutel kluis maken voor het beheren van SSH-sleutels voor het open Shift-cluster.
+> * Een service-principal maken voor gebruik door de Azure-Cloud provider.
 
-Als u geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) voordat u begint.
+Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
 
 ## <a name="sign-in-to-azure"></a>Aanmelden bij Azure 
-Meld u aan bij uw Azure-abonnement met de opdracht [AZ-aanmelding](/cli/azure/reference-index) en volg de aanwijzingen op het scherm of klik op **Proberen** om Cloud Shell te gebruiken.
+Meld u aan bij uw Azure-abonnement met de opdracht [AZ login](/cli/azure/reference-index) en volg de instructies op het scherm, of klik op **proberen het** Cloud shell te gebruiken.
 
 ```azurecli
 az login
@@ -55,18 +55,18 @@ az login
 
 ## <a name="create-a-resource-group"></a>Een resourcegroep maken
 
-Een resourcegroep maken met de opdracht [az group create](/cli/azure/group). Een Azure-resourcegroep is een logische container waarin Azure-resources worden geïmplementeerd en beheerd. U moet een speciale resourcegroep gebruiken om de sleutelkluis te hosten. Deze groep staat los van de resourcegroep waarin de OpenShift-clusterbronnen worden geïmplementeerd.
+Een resourcegroep maken met de opdracht [az group create](/cli/azure/group). Een Azure-resourcegroep is een logische container waarin Azure-resources worden geïmplementeerd en beheerd. U moet een speciale resource groep gebruiken om de sleutel kluis te hosten. Deze groep is gescheiden van de resource groep waarin de open Shift-cluster resources worden geïmplementeerd.
 
-In het volgende voorbeeld wordt een resourcegroep met de naam *keyvaultrg* op de *locatie Eastus geaald:*
+In het volgende voor beeld wordt een resource groep met de naam *keyvaultrg* gemaakt op de locatie *eastus* :
 
 ```azurecli
 az group create --name keyvaultrg --location eastus
 ```
 
 ## <a name="create-a-key-vault"></a>Een sleutelkluis maken
-Maak een sleutelkluis om de SSH-toetsen voor het cluster op te slaan met de opdracht [AZ Keyvault create.](/cli/azure/keyvault) De naam van de sleutelkluis moet wereldwijd uniek zijn en moet zijn ingeschakeld voor het implementeren van sjablonen of de implementatie mislukt met de fout 'KeyVaultParameterReferenceSecretRetrieveFailed'.
+Maak een sleutel kluis om de SSH-sleutels voor het cluster op te slaan met de opdracht [AZ sleutel kluis Create](/cli/azure/keyvault) . De naam van de sleutel kluis moet globaal uniek zijn en moet zijn ingeschakeld voor de implementatie van een sjabloon, anders mislukt de implementatie met de fout ' KeyVaultParameterReferenceSecretRetrieveFailed '.
 
-In het volgende voorbeeld wordt een keyvault met de naam *keyvault* in de *keyvaultrg-brongroep:*
+In het volgende voor beeld wordt een sleutel *kluis gemaakt* met de naam in de resource groep *keyvaultrg* :
 
 ```azurecli 
 az keyvault create --resource-group keyvaultrg --name keyvault \
@@ -75,51 +75,51 @@ az keyvault create --resource-group keyvaultrg --name keyvault \
 ```
 
 ## <a name="create-an-ssh-key"></a>Een SSH-sleutel maken 
-Er is een SSH-sleutel nodig om de toegang tot het OpenShift-cluster te beveiligen. Maak een SSH-sleutelpaar `ssh-keygen` met behulp van de opdracht (op Linux of macOS):
+Er is een SSH-sleutel nodig om de toegang tot het open Shift-cluster te beveiligen. Een SSH-sleutel paar maken met behulp van de `ssh-keygen` opdracht (op Linux of macOS):
  
 ```bash
 ssh-keygen -f ~/.ssh/openshift_rsa -t rsa -N ''
 ```
 
 > [!NOTE]
-> Uw SSH-sleutelpaar kan geen wachtwoord / wachtwoordzin hebben.
+> Uw SSH-sleutel paar kan geen wacht woord/wachtwoordzin hebben.
 
-Zie [SSH-sleutels maken op Windows](/azure/virtual-machines/linux/ssh-from-windows)voor meer informatie over SSH-sleutels in Windows. Zorg ervoor dat u de privésleutel exporteert in OpenSSH-formaat.
+Zie [SSH-sleutels maken in Windows](/azure/virtual-machines/linux/ssh-from-windows)voor meer informatie over SSH-sleutels in Windows. Zorg ervoor dat u de persoonlijke sleutel in de OpenSSH-indeling exporteert.
 
-## <a name="store-the-ssh-private-key-in-azure-key-vault"></a>De SSH-privésleutel opslaan in Azure Key Vault
-De OpenShift-implementatie gebruikt de SSH-sleutel die u hebt gemaakt om de toegang tot de OpenShift-master te beveiligen. Als u de implementatie wilt inschakelen om de SSH-sleutel veilig op te halen, slaat u de sleutel op in Key Vault met behulp van de volgende opdracht:
+## <a name="store-the-ssh-private-key-in-azure-key-vault"></a>Sla de persoonlijke SSH-sleutel op in Azure Key Vault
+De openshift-implementatie maakt gebruik van de SSH-sleutel die u hebt gemaakt om de toegang tot het open Shift-model te beveiligen. Als u de implementatie wilt inschakelen om de SSH-sleutel veilig op te halen, slaat u de sleutel op in Key Vault met behulp van de volgende opdracht:
 
 ```azurecli
 az keyvault secret set --vault-name keyvault --name keysecret --file ~/.ssh/openshift_rsa
 ```
 
 ## <a name="create-a-service-principal"></a>Een service-principal maken 
-OpenShift communiceert met Azure met behulp van een gebruikersnaam en wachtwoord of een serviceprincipal. Een Azure-serviceprincipal is een beveiligingsidentiteit die u gebruiken met apps, services en automatiseringsprogramma's zoals OpenShift. U beheert en definieert de machtigingen voor welke bewerkingen de serviceprincipal in Azure kan uitvoeren. Het is het beste om de machtigingen van de serviceprincipal te scopen voor specifieke resourcegroepen in plaats van het hele abonnement.
+Open Shift communiceert met Azure met behulp van een gebruikers naam en wacht woord of een service-principal. Een Azure-Service-Principal is een beveiligings identiteit die u kunt gebruiken met apps, services en hulpprogram ma's voor automatisering zoals open SHIFT. U beheert en definieert de machtigingen voor de bewerkingen die de Service-Principal in azure kan uitvoeren. Het is het beste om de machtigingen van de service-principal te beperken tot specifieke resource groepen in plaats van met het hele abonnement.
 
-Maak een serviceprincipal met [az ad sp create-for-rbac](/cli/azure/ad/sp) en uitvoer de referenties die OpenShift nodig heeft.
+Maak een service-principal met [AZ AD SP create-for-RBAC](/cli/azure/ad/sp) en uitvoer de referenties die openshift nodig heeft.
 
-In het volgende voorbeeld wordt een serviceprincipal aanmaken en worden machtigingen voor bijdragen aan een resourcegroep met de naam *openshiftrg*toewijst.
+In het volgende voor beeld wordt een service-principal gemaakt en worden de Inzender machtigingen toegewezen aan een resource groep met de naam *openshiftrg*.
 
-Maak eerst de resourcegroep met de naam *openshiftrg:*
+Maak eerst de resource groep met de naam *openshiftrg*:
 
 ```azurecli
 az group create -l eastus -n openshiftrg
 ```
 
-Serviceprincipal maken:
+Service-Principal maken:
 
 ```azurecli
 az group show --name openshiftrg --query id
 ```
 
-Sla de uitvoer van de opdracht en het gebruik op in plaats van $scope in volgende opdracht
+Sla de uitvoer van de opdracht op en gebruik in plaats van $scope in de volgende opdracht
 
 ```azurecli
 az ad sp create-for-rbac --name openshiftsp \
       --role Contributor --scopes $scope \
 ```
 
-Let op de eigenschap appId en het wachtwoord dat is geretourneerd uit de opdracht:
+Noteer de eigenschap appId en het wacht woord die worden geretourneerd door de opdracht:
 
 ```json
 {
@@ -132,32 +132,32 @@ Let op de eigenschap appId en het wachtwoord dat is geretourneerd uit de opdrach
 ```
 
  > [!WARNING] 
- > Zorg ervoor dat u het beveiligde wachtwoord opschrijft, omdat het niet mogelijk zal zijn om dit wachtwoord opnieuw op te halen.
+ > Zorg ervoor dat u het beveiligde wacht woord noteert omdat het niet mogelijk is om dit wacht woord opnieuw op te halen.
 
-Zie [Een Azure-serviceprincipal maken met Azure CLI](https://docs.microsoft.com/cli/azure/create-an-azure-service-principal-azure-cli?view=azure-cli-latest)voor meer informatie over serviceprincipals.
+Zie [een Azure-service-principal maken met Azure cli](https://docs.microsoft.com/cli/azure/create-an-azure-service-principal-azure-cli?view=azure-cli-latest)voor meer informatie over service-principals.
 
-## <a name="prerequisites-applicable-only-to-resource-manager-template"></a>Vereisten die alleen van toepassing zijn op de sjabloon ResourceManager
+## <a name="prerequisites-applicable-only-to-resource-manager-template"></a>Vereisten die alleen van toepassing zijn op de Resource Manager-sjabloon
 
-Geheimen moeten worden gemaakt voor de SSH private key **(sshPrivateKey),** Azure AD client secret **(aadClientSecret),** OpenShift admin password **(openshiftPassword)** en Red Hat Subscription Manager password of activation key **(rhsmPasswordOrActivationKey).**  Bovendien, als aangepaste TLS / SSL-certificaten worden gebruikt, moeten zes extra geheimen worden gemaakt - **routingcafile**, **routingcertfile**, **routingkeyfile,** **mastercafile,** **mastercertfile**en **masterkeyfile**.  Deze parameters zullen nader worden toegelicht.
+Er moeten geheimen worden gemaakt voor de persoonlijke SSH-sleutel (**sshPrivateKey**), Azure AD client Secret (**aadClientSecret**), open Shift admin password (**OpenshiftPassword**) en Red Hat Subscription manager password of Activation Key (**rhsmPasswordOrActivationKey**).  Als er aangepaste TLS/SSL-certificaten worden gebruikt, moeten er bovendien zes extra geheimen worden gemaakt: **routingcafile**, **routingcertfile**, **routingkeyfile**, **mastercafile**, **mastercertfile**en **masterkeyfile**.  Deze para meters worden uitgebreid beschreven.
 
-De sjabloon verwijst naar specifieke geheime namen, dus u **moet** de hierboven vermelde vetgedrukte namen gebruiken (hoofdlettergevoelig).
+De sjabloon verwijst naar specifieke geheime namen, dus u **moet** de vetgedrukte namen gebruiken die hierboven worden vermeld (hoofdletter gevoelig).
 
 ### <a name="custom-certificates"></a>Aangepaste certificaten
 
-Standaard implementeert de sjabloon een OpenShift-cluster met zelfondertekende certificaten voor de OpenShift-webconsole en het routeringsdomein. Als u aangepaste TLS/SSL-certificaten wilt gebruiken, stelt u 'routingCertType' in op 'custom' en 'masterCertType' op 'custom'.  U hebt de bestanden CA, Cert en Key in .pem-formaat nodig voor de certificaten.  Het is mogelijk om aangepaste certificaten te gebruiken voor de ene, maar niet voor de andere.
+De sjabloon implementeert standaard een open Shift-cluster met zelfondertekende certificaten voor de open Shift-webconsole en het routerings domein. Als u aangepaste TLS/SSL-certificaten wilt gebruiken, stelt u ' routingCertType ' in op ' Custom ' en ' masterCertType ' in ' Custom '.  U hebt de CA-, CERT-en sleutel bestanden nodig in. pem-indeling voor de certificaten.  Het is mogelijk om aangepaste certificaten te gebruiken voor één, maar niet voor de andere.
 
-Je moet deze bestanden opslaan in Key Vault-geheimen.  Gebruik dezelfde Key Vault als die welke wordt gebruikt voor de privésleutel.  In plaats van 6 extra ingangen voor de geheime namen te vereisen, is de sjabloon hardgecodeerd om specifieke geheime namen te gebruiken voor elk van de TLS/SSL-certificaatbestanden.  Sla de certificaatgegevens op met behulp van de gegevens uit de volgende tabel.
+U moet deze bestanden opslaan in Key Vault geheimen.  Gebruik hetzelfde Key Vault als het account dat is gebruikt voor de persoonlijke sleutel.  In plaats van dat er 6 extra invoer vereist is voor de geheime namen, wordt de sjabloon vastgelegd om specifieke geheime namen te gebruiken voor elk van de TLS/SSL-certificaat bestanden.  Sla de certificaat gegevens op met behulp van de informatie in de volgende tabel.
 
 | Geheime naam      | Certificaatbestand   |
 |------------------|--------------------|
-| mastercabestand     | ca-bestand onder master     |
-| mastercertbestand   | cert-bestand master   |
-| masterkeyfile    | hoofdsleutelbestand    |
-| routingcabestand    | CA-bestanden routeren    |
-| routingcertfile  | routering CERT-bestand  |
-| routingkeyfile   | Sleutelbestand routeren   |
+| mastercafile     | hoofd-CA-bestand     |
+| mastercertfile   | hoofd certificaat bestand   |
+| masterkeyfile    | hoofd sleutel bestand    |
+| routingcafile    | CA-bestand voor route ring    |
+| routingcertfile  | routerings certificaat bestand  |
+| routingkeyfile   | routerings sleutel bestand   |
 
-Maak de geheimen met de Azure CLI. Hieronder is een voorbeeld.
+Maak de geheimen met behulp van de Azure CLI. Hieronder ziet u een voor beeld.
 
 ```azurecli
 az keyvault secret set --vault-name KeyVaultName -n mastercafile --file ~/certificates/masterca.pem
@@ -165,12 +165,12 @@ az keyvault secret set --vault-name KeyVaultName -n mastercafile --file ~/certif
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Dit artikel ging over de volgende onderwerpen:
+In dit artikel komen de volgende onderwerpen aan bod:
 > [!div class="checklist"]
-> * Maak een sleutelkluis om SSH-sleutels voor het OpenShift-cluster te beheren.
-> * Maak een serviceprincipal voor gebruik door de Azure Cloud Solution Provider.
+> * Een sleutel kluis maken voor het beheren van SSH-sleutels voor het open Shift-cluster.
+> * Een service-principal maken voor gebruik door de Azure Cloud Solution Provider.
 
-Implementeer vervolgens een OpenShift-cluster:
+Implementeer vervolgens een open Shift-cluster:
 
-- [OpenShift-containerplatform implementeren](./openshift-container-platform-3x.md)
-- [OpenShift Container Platform Self-Managed Marketplace-aanbieding implementeren](./openshift-container-platform-3x-marketplace-self-managed.md)
+- [Open Shift container platform implementeren](./openshift-container-platform-3x.md)
+- [Zelf beheerde Marketplace-aanbieding voor open Shift container platform implementeren](./openshift-container-platform-3x-marketplace-self-managed.md)

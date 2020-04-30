@@ -1,6 +1,6 @@
 ---
-title: Problemen met Azure IoT Hub-fout 504101 GatewayTimeout oplossen
-description: Begrijpen hoe u fout 504101 GatewayTimeout oplossen
+title: Problemen met Azure IoT Hub-fout 504101 GatewayTimeout
+description: Meer informatie over het oplossen van fout 504101 GatewayTimeout
 author: jlian
 manager: briz
 ms.service: iot-hub
@@ -10,29 +10,29 @@ ms.date: 01/30/2020
 ms.author: jlian
 ms.custom: amqp
 ms.openlocfilehash: 373acc30ed652a7f540e840dfad5eeeda65ca179
-ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81759550"
 ---
 # <a name="504101-gatewaytimeout"></a>504101 GatewayTimeout
 
-In dit artikel worden de oorzaken en oplossingen voor **504101 GatewayTimeout-fouten** beschreven.
+In dit artikel worden de oorzaken en oplossingen voor **504101 GatewayTimeout** -fouten beschreven.
 
 ## <a name="symptoms"></a>Symptomen
 
-Wanneer u een directe methode van IoT Hub naar een apparaat probeert aan te roepen, mislukt de aanvraag met de fout **504101 GatewayTimeout**.
+Wanneer u probeert een directe methode aan te roepen van IoT Hub naar een apparaat, mislukt de aanvraag met de fout **504101 GatewayTimeout**.
 
 ## <a name="cause"></a>Oorzaak
 
 ### <a name="cause-1"></a>Oorzaak 1
 
-IoT Hub heeft een fout opgetreden en kon niet bevestigen of de directe methode is voltooid voordat de timing uitging.
+Er is een fout opgetreden in IoT Hub en kan niet bevestigen of de directe methode is voltooid voordat er een time-out optreedt.
 
 ### <a name="cause-2"></a>Oorzaak 2
 
-Bij het gebruik van een eerdere versie van de Azure IoT C# SDK (<1.19.0) kan de AMQP-koppeling tussen het apparaat en IoT Hub in stilte worden verwijderd vanwege een bug.
+Wanneer u een eerdere versie van de Azure IoT C# SDK (<1.19.0) gebruikt, kan de AMQP-koppeling tussen het apparaat en IoT Hub op de achtergrond worden verwijderd vanwege een fout.
 
 ## <a name="solution"></a>Oplossing
 
@@ -42,4 +42,4 @@ Geef een nieuwe poging.
 
 ### <a name="solution-2"></a>Oplossing 2
 
-Upgrade naar de nieuwste versie van de Azure IOT C# SDK.
+Voer een upgrade uit naar de nieuwste versie van de Azure IOT C# SDK.

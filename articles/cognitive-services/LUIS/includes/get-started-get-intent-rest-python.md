@@ -1,5 +1,5 @@
 ---
-title: Intent krijgen met REST-oproep in Python
+title: Doel intentie met REST-aanroep in python
 titleSuffix: Azure Cognitive Services
 services: cognitive-services
 author: diberry
@@ -9,40 +9,40 @@ ms.topic: include
 ms.date: 04/20/2020
 ms.author: diberry
 ms.openlocfilehash: 2307ef6ea8940a3b3ddfb8c7539f4f809dc4c52c
-ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81733299"
 ---
 ## <a name="prerequisites"></a>Vereisten
 
-* [Python 3.6](https://www.python.org/downloads/) of hoger.
+* [Python 3,6](https://www.python.org/downloads/) of hoger.
 * [Visual Studio Code](https://code.visualstudio.com/)
-* Een LUIS-app-id - gebruik de `df67dcdb-c37d-46af-88e1-8b97951ca1c2`openbare IoT-app-id van . De gebruikersquery die wordt gebruikt in de quickstartcode is specifiek voor die app.
+* Een LUIS-App-ID: gebruik de open bare IoT `df67dcdb-c37d-46af-88e1-8b97951ca1c2`-app-id van. De gebruikers query die in de Quick Start code wordt gebruikt, is specifiek voor die app.
 
-## <a name="create-luis-runtime-key-for-predictions"></a>Luis-runtime-sleutel maken voor voorspellingen
+## <a name="create-luis-runtime-key-for-predictions"></a>Een LUIS-runtime sleutel maken voor voor spellingen
 
-1. Aanmelden bij de [Azure-portal](https://portal.azure.com)
-1. Klik [op **Taalverstaan maken** ](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesLUISAllInOne)
-1. Voer alle vereiste instellingen voor **Runtime-toets** in:
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com)
+1. Klik [op **Language Understanding** maken](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesLUISAllInOne)
+1. Voer alle vereiste instellingen voor de **runtime** sleutel in:
 
     |Instelling|Waarde|
     |--|--|
     |Naam|Gewenste naam (2-64 tekens)|
-    |Abonnement|Passend abonnement selecteren|
-    |Locatie|Selecteer een nabijgelegen en beschikbare locatie|
-    |Prijscategorie|`F0`- de minimale prijscategorie|
-    |Resourcegroep|Een beschikbare resourcegroep selecteren|
+    |Abonnement|Selecteer het juiste abonnement|
+    |Locatie|Selecteer een locatie in de buurt en beschik bare locaties|
+    |Prijscategorie|`F0`-de minimale prijs categorie|
+    |Resourcegroep|Een beschik bare resource groep selecteren|
 
-1. Klik **op Maken** en wacht tot de resource is gemaakt. Nadat deze is gemaakt, navigeert u naar de resourcepagina.
-1. Verzamel geconfigureerd `endpoint` en `key`een .
+1. Klik op **maken** en wacht tot de resource is gemaakt. Nadat deze is gemaakt, gaat u naar de pagina resource.
+1. Verzameling geconfigureerd `endpoint` en een `key`.
 
-## <a name="get-intent-from-the-prediction-endpoint"></a>Intentie ophalen van het voorspellingseindpunt
+## <a name="get-intent-from-the-prediction-endpoint"></a>Intentie ophalen uit het Voorspellings eindpunt
 
-Gebruik Python om het [voorspellingseindpunt](https://aka.ms/luis-apim-v3-prediction) op te vragen en een voorspellingsresultaat te krijgen.
+Gebruik python om het [Voorspellings eindpunt](https://aka.ms/luis-apim-v3-prediction) te doorzoeken en een Voorspellings resultaat te krijgen.
 
-1. Kopieer dit codefragment naar `predict.py`een bestand met de naam:
+1. Kopieer dit code fragment naar een bestand met `predict.py`de naam:
 
     ```python
     ########### Python 3.6 #############
@@ -75,32 +75,32 @@ Gebruik Python om het [voorspellingseindpunt](https://aka.ms/luis-apim-v3-predic
         print(f'{e}')
     ```
 
-1. Vervang `YOUR-KEY` de `YOUR-ENDPOINT` waarden en waarden door uw eigen voorspelling **Runtime-toets** en eindpunt.
+1. Vervang de `YOUR-KEY` waarden `YOUR-ENDPOINT` en door uw eigen Voorspellings **runtime** sleutel en eind punt.
 
     |Informatie|Doel|
     |--|--|
-    |`YOUR-KEY`|Uw 32-tekenvoorspelling **Runtime-toets.**|
-    |`YOUR-ENDPOINT`| Uw voorspelling URL eindpunt. Bijvoorbeeld `replace-with-your-resource-name.api.cognitive.microsoft.com`.|
+    |`YOUR-KEY`|De **runtime** -sleutel voor de voor spelling van 32-tekens.|
+    |`YOUR-ENDPOINT`| Het eind punt voor de voor Spellings-URL. Bijvoorbeeld `replace-with-your-resource-name.api.cognitive.microsoft.com`.|
 
-1. Installeer `requests` de afhankelijkheid. Dit wordt gebruikt om HTTP-verzoeken te doen:
+1. De `requests` afhankelijkheid installeren. Dit wordt gebruikt om HTTP-aanvragen te maken:
 
     ```console
     pip install requests
     ```
 
-1. Voer uw script uit met deze opdracht console:
+1. Voer het script uit met deze console opdracht:
 
     ```console
     python predict.py
     ```
 
-1. Bekijk de voorspellingsrespons, die wordt geretourneerd als JSON:
+1. Bekijk het Voorspellings antwoord dat wordt geretourneerd als JSON:
 
     ```console
     {'query': 'turn on all lights', 'prediction': {'topIntent': 'HomeAutomation.TurnOn', 'intents': {'HomeAutomation.TurnOn': {'score': 0.5375382}, 'None': {'score': 0.08687421}, 'HomeAutomation.TurnOff': {'score': 0.0207554}}, 'entities': {'HomeAutomation.Operation': ['on'], '$instance': {'HomeAutomation.Operation': [{'type': 'HomeAutomation.Operation', 'text': 'on', 'startIndex': 5, 'length': 2, 'score': 0.724984169, 'modelTypeId': -1, 'modelType': 'Unknown', 'recognitionSources': ['model']}]}}}}
     ```
 
-    Hier is de JSON reactie opgemaakt voor leesbaarheid:
+    Dit is het JSON-antwoord dat is opgemaakt voor de Lees baarheid:
 
     ```JSON
     {
@@ -145,9 +145,9 @@ Gebruik Python om het [voorspellingseindpunt](https://aka.ms/luis-apim-v3-predic
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
-Wanneer u klaar bent met deze quickstart, verwijdert u het bestand uit het bestandssysteem.
+Wanneer u klaar bent met deze Quick Start, verwijdert u het bestand uit het bestands systeem.
 
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"]
-> [Uitingen toevoegen en trainen](../get-started-get-model-rest-apis.md)
+> [Uitingen en Train toevoegen](../get-started-get-model-rest-apis.md)

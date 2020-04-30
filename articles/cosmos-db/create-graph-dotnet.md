@@ -1,5 +1,5 @@
 ---
-title: Een Azure Cosmos DB .NET Framework, Core-toepassing bouwen met de Gremlin-API
+title: Een Azure Cosmos DB .NET Framework, kern toepassing bouwen met behulp van de Gremlin-API
 description: Presenteert een .NET Framework-/Core-codevoorbeeld dat u kunt gebruiken om verbinding te maken met Azure Cosmos DB en een query uit te voeren
 author: luisbosquez
 ms.service: cosmos-db
@@ -9,13 +9,13 @@ ms.topic: quickstart
 ms.date: 02/21/2020
 ms.author: lbosq
 ms.openlocfilehash: bf453587b354b5db3f3ef1a80f974bcb8f8f4e14
-ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81730021"
 ---
-# <a name="quickstart-build-a-net-framework-or-core-application-using-the-azure-cosmos-db-gremlin-api-account"></a>Snelstart: een .NET Framework- of Core-toepassing bouwen met het Azure Cosmos DB Gremlin API-account
+# <a name="quickstart-build-a-net-framework-or-core-application-using-the-azure-cosmos-db-gremlin-api-account"></a>Snelstartgids: een .NET Framework-of kern toepassing bouwen met het Azure Cosmos DB Gremlin-API-account
 
 > [!div class="op_single_selector"]
 > * [Gremlin-console](create-graph-gremlin-console.md)
@@ -28,11 +28,11 @@ ms.locfileid: "81730021"
 
 Azure Cosmos DB is de wereldwijd gedistribueerde multimodel-databaseservice van Microsoft. U kunt snel databases maken van documenten, sleutel/waarde-paren en grafen en hier query’s op uitvoeren. Deze databases genieten allemaal het voordeel van de wereldwijde distributie en horizontale schaalmogelijkheden die ten grondslag liggen aan Azure Cosmos DB. 
 
-Deze quickstart laat zien hoe u een Azure Cosmos DB [Gremlin API-account,](graph-introduction.md) database en grafiek (container) maakt met behulp van de Azure-portal. U gaat vervolgens een console-app ontwikkelen en uitvoeren met behulp van het opensourcestuurprogramma [Gremlin.Net](https://tinkerpop.apache.org/docs/3.2.7/reference/#gremlin-DotNet).  
+In deze Quick start ziet u hoe u een Azure Cosmos DB [GREMLIN API](graph-introduction.md) -account,-data base en-grafiek (container) kunt maken met behulp van de Azure Portal. U gaat vervolgens een console-app ontwikkelen en uitvoeren met behulp van het opensourcestuurprogramma [Gremlin.Net](https://tinkerpop.apache.org/docs/3.2.7/reference/#gremlin-DotNet).  
 
 ## <a name="prerequisites"></a>Vereisten
 
-Als je Visual Studio 2019 nog niet hebt geïnstalleerd, kun je de **gratis** [Visual Studio 2019 Community Edition](https://www.visualstudio.com/downloads/)downloaden en gebruiken. Zorg ervoor dat u **Azure-ontwikkeling** inschakelt tijdens de installatie van Visual Studio.
+Als Visual Studio 2019 nog niet is geïnstalleerd, kunt u de **gratis** [Visual Studio 2019 Community Edition](https://www.visualstudio.com/downloads/)downloaden en gebruiken. Zorg ervoor dat u **Azure-ontwikkeling** inschakelt tijdens de installatie van Visual Studio.
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
@@ -83,19 +83,19 @@ Deze stap is optioneel. Als u wilt weten hoe de databaseresources in de code wor
 
 De volgende codefragmenten zijn allemaal afkomstig uit het bestand Program.cs.
 
-* Stel uw verbindingsparameters in op basis van het account dat hierboven is gemaakt: 
+* Stel de verbindings parameters in op basis van het account dat hierboven is gemaakt: 
 
    :::code language="csharp" source="~/azure-cosmosdb-graph-dotnet/GremlinNetSample/Program.cs" id="configureConnectivity":::
 
-* De uit te voeren Gremlin-opdrachten worden vermeld in een woordenboek:
+* De Gremlin-opdrachten die moeten worden uitgevoerd, worden weer gegeven in een woorden lijst:
 
    :::code language="csharp" source="~/azure-cosmosdb-graph-dotnet/GremlinNetSample/Program.cs" id="defineQueries":::
 
-* Maak een `GremlinServer` `GremlinClient` nieuwe en verbindingsobjecten met de bovenstaande parameters:
+* Maak een nieuwe `GremlinServer` en `GremlinClient` verbindings objecten met behulp van de bovenstaande para meters:
 
    :::code language="csharp" source="~/azure-cosmosdb-graph-dotnet/GremlinNetSample/Program.cs" id="defineClientandServerObjects":::
 
-* Voer elke Gremlin-query uit met behulp van het `GremlinClient` object met een async-taak. U de Gremlin-query's uit het woordenboek lezen dat in de vorige stap is gedefinieerd en deze uitvoeren. Later krijgen het resultaat en lees de waarden, die `JsonSerializer` zijn opgemaakt als een woordenboek, met behulp van de klasse van Newtonsoft.Json pakket:
+* Elke Gremlin-query uitvoeren met `GremlinClient` behulp van het object met een asynchrone taak. U kunt de Gremlin-query's in de in de vorige stap gedefinieerde woorden lijst lezen en uitvoeren. Bekijk later het resultaat en lees de waarden, die zijn opgemaakt als een woorden lijst, met `JsonSerializer` behulp van de klasse van Newton soft. json-pakket:
 
    :::code language="csharp" source="~/azure-cosmosdb-graph-dotnet/GremlinNetSample/Program.cs" id="executeQueries":::
 
@@ -105,24 +105,24 @@ Ga nu terug naar Azure Portal om de verbindingsreeksinformatie op te halen en ko
 
 1. Vanuit [Azure Portal](https://portal.azure.com/) gaat u naar uw grafiekdatabaseaccount. In het tabblad **Overzicht** ziet u twee eindpunten: 
  
-   **.NET SDK URI** - Deze waarde wordt gebruikt wanneer u verbinding maakt met het grafiekaccount met behulp van de bibliotheek Microsoft.Azure.Graphs. 
+   **.NET SDK-URI** : deze waarde wordt gebruikt wanneer u verbinding maakt met het grafiek account met behulp van de bibliotheek micro soft. Azure. graphs. 
 
    **Gremlin-eindpunt**: deze waarde wordt gebruikt wanneer u verbinding met het grafiekaccount maakt met behulp van de Gremlin.Net-bibliotheek.
 
     ![Het eindpunt kopiëren](./media/create-graph-dotnet/endpoint.png)
 
-   Als u dit voorbeeld wilt uitvoeren, kopieert u de waarde **Van Gremlin Endpoint,** verwijdert u het poortnummer aan het einde, dat wil zeggen de URI wordt `https://<your cosmos db account name>.gremlin.cosmosdb.azure.com`. De eindpuntwaarde moet eruit zien`testgraphacct.gremlin.cosmosdb.azure.com`
+   Als u dit voor beeld wilt uitvoeren, kopieert u de **Gremlin-eindpunt** waarde, verwijdert u het poort nummer aan het einde `https://<your cosmos db account name>.gremlin.cosmosdb.azure.com`, dat wil zeggen de URI. De eindpunt waarde moet er als volgt uitzien`testgraphacct.gremlin.cosmosdb.azure.com`
 
-1. Navigeer vervolgens naar het tabblad **Sleutels** en kopieer de primaire **sleutelwaarde** vanuit de Azure-portal. 
+1. Ga vervolgens naar het tabblad **sleutels** en kopieer de waarde van de **primaire sleutel** van de Azure Portal. 
 
-1. Nadat u de URI- en PRIMAIRE SLEUTEL van uw account hebt gekopieerd, slaat u deze op in een nieuwe omgevingsvariabele op de lokale machine waarop de toepassing wordt uitgevoerd. Als u de omgevingsvariabele wilt instellen, opent u een opdrachtpromptvenster en voert u de volgende opdracht uit. Zorg ervoor dat u <Your_Azure_Cosmos_account_URI> en Your_Azure_Cosmos_account_PRIMARY_KEY> waarden <Your_Azure_Cosmos_account_PRIMARY_KEY.
+1. Nadat u de URI en primaire sleutel van uw account hebt gekopieerd, slaat u ze op in een nieuwe omgevings variabele op de lokale computer waarop de toepassing wordt uitgevoerd. Als u de omgevings variabele wilt instellen, opent u een opdracht prompt venster en voert u de volgende opdracht uit. Zorg ervoor dat u <Your_Azure_Cosmos_account_URI> vervangt en <Your_Azure_Cosmos_account_PRIMARY_KEY waarden.
 
    ```console
    setx EndpointUrl "<your Azure Cosmos account name>.gremlin.cosmosdb.azure.com"
    setx PrimaryKey "<Your_Azure_Cosmos_account_PRIMARY_KEY>"
    ```
 
-1. Open het *Program.cs* bestand en werk de "database en "container" variabelen met de database en container (dat is ook de grafiek naam) namen hierboven gemaakt.
+1. Open het *Program.cs* -bestand en werk de variabelen data base en container bij met de data base en container (dit zijn ook de naam van de grafiek) die hierboven is gemaakt.
 
     `private static string database = "your-database-name";` `private static string container = "your-container-or-graph-name";`
 

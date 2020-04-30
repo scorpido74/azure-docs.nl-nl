@@ -1,6 +1,6 @@
 ---
-title: Geografische beschikbaarheid en valutaondersteuning voor de commerciële markt | Azure Marketplace
-description: Geografische beschikbaarheid in de commerciële markt
+title: Geografische Beschik baarheid en valuta ondersteuning voor de commerciële Marketplace | Azure Marketplace
+description: Geografische Beschik baarheid in de commerciële Marketplace
 author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
@@ -8,17 +8,17 @@ ms.topic: conceptual
 ms.date: 01/29/2020
 ms.author: dsindona
 ms.openlocfilehash: 83906e6270ed41c2ea8f489c5a5312d32a565a29
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81687589"
 ---
-# <a name="geographic-availability-and-currency-support-for-commercial-marketplace"></a>Geografische beschikbaarheid en valutaondersteuning voor commerciële marktplaats
+# <a name="geographic-availability-and-currency-support-for-commercial-marketplace"></a>Geografische Beschik baarheid en valuta ondersteuning voor commerciële Marketplace
 
-Commerciële marktplaatsaanbiedingen kunnen worden gekocht in 141 regio's zoals gedefinieerd door het factureringsadres van de klant en transacties kunnen worden voltooid in 17 valuta's. In de onderstaande tabel vindt u elke ondersteunde geografische locatie, de [ISO 3166-alfacode met twee cijfers](https://en.wikipedia.org/wiki/List_of_ISO_3166_country_codes)en de toegewezen valuta.
+Commerciële Marketplace-aanbiedingen kunnen worden aangeschaft in 141-geografi zoals gedefinieerd door het factuur adres van de klant en trans acties kunnen worden uitgevoerd in 17 valuta's. De volgende tabel bevat een lijst met de ondersteunde geografische locatie, de bijbehorende [ISO 3166 2-digits-code](https://en.wikipedia.org/wiki/List_of_ISO_3166_country_codes)en de toegewezen valuta.
 
-|   Naam land/regio               |   ISO-2   |   Valuta   |
+|   Naam van land/regio               |   ISO-2   |   Valuta   |
 |-------------------------------------|-----------|--------------|
 | Afghanistan                         | AF        | USD          |
 | Albanië                             | AL        | USD          |
@@ -36,7 +36,7 @@ Commerciële marktplaatsaanbiedingen kunnen worden gekocht in 141 regio's zoals 
 | Belarus                             | BY        | USD          |
 | België                             | BE        | EUR          |
 | Belize                              | BZ        | USD          |
-| Bermuda                             | Bm        | USD          |
+| Bermuda                             | BM        | USD          |
 | Bolivia                             | BO        | USD          |
 | Bosnië en Herzegovina              | BA        | USD          |
 | Botswana                            | BW        | USD          |
@@ -53,7 +53,7 @@ Commerciële marktplaatsaanbiedingen kunnen worden gekocht in 141 regio's zoals 
 | Costa Rica                          | CR        | USD          |
 | Cote d'Ivoire                       | CI        | USD          |
 | Kroatië                             | HR        | EUR          |
-| Curaçao                             | Cw        | USD          |
+| Curaçao                             | WAARNAAR        | USD          |
 | Cyprus                              | CY        | EUR          |
 | Tsjechië                      | CZ        | EUR          |
 | Denemarken                             | DK        | DKK          |
@@ -63,7 +63,7 @@ Commerciële marktplaatsaanbiedingen kunnen worden gekocht in 141 regio's zoals 
 | El Salvador                         | SV        | USD          |
 | Estland                             | EE        | EUR          |
 | Ethiopië                            | ET        | USD          |
-| Faeröer                       | Fo        | DKK          |
+| Faeröer                       | FO        | DKK          |
 | Fiji                                | FJ        | AUD          |
 | Finland                             | FI        | EUR          |
 | Frankrijk                              | FR        | EUR          |
@@ -100,7 +100,7 @@ Commerciële marktplaatsaanbiedingen kunnen worden gekocht in 141 regio's zoals 
 | Noord-Macedonië                     | MK        | USD          |
 | Maleisië                            | MY        | USD          |
 | Malta                               | MT        | EUR          |
-| Mauritius                           | Mu        | USD          |
+| Mauritius                           | MU        | USD          |
 | Mexico                              | MX        | USD          |
 | Moldavië                             | MD        | USD          |
 | Monaco                              | MC        | EUR          |
@@ -141,15 +141,15 @@ Commerciële marktplaatsaanbiedingen kunnen worden gekocht in 141 regio's zoals 
 | Zweden                              | SE        | SEK          |
 | Zwitserland                         | CH        | CHF          |
 | Taiwan                              | TW        | TWD          |
-| Tadzjikistan                          | Tj        | USD          |
+| Tadzjikistan                          | TJ        | USD          |
 | Tanzania                            | TZ        | USD          |
 | Thailand                            | TH        | USD          |
 | Trinidad en Tobago                 | TT        | USD          |
 | Tunesië                             | TN        | USD          |
 | Turkije                              | TR        | USD          |
 | Turkmenistan                        | TM        | USD          |
-| Vaticaanstad (Heilige Stoel)             | VA        | EUR          |
-| Maagdeneilanden van de Verenigde Staten | VI        | USD          |
+| Vaticaan stad (Heilige stoel)             | VA        | EUR          |
+| Maagden eilanden van de Verenigde Staten | VI        | USD          |
 | Oeganda                              | UG        | USD          |
 | Oekraïne                             | UA        | USD          |
 | Verenigde Arabische Emiraten                | AE        | USD          |
@@ -159,11 +159,11 @@ Commerciële marktplaatsaanbiedingen kunnen worden gekocht in 141 regio's zoals 
 | Oezbekistan                          | UZ        | USD          |
 | Venezuela                           | VE        | USD          |
 | Vietnam                             | VN        | USD          |
-| Jemen                               | Gij        | USD          |
+| Jemen                               | TEZAM        | USD          |
 | Zambia                              | ZM        | USD          |
 | Zimbabwe                            | ZW        | USD          |
 |   |   |   |
 
 \*Voor klanten in Brazilië maakt de Marketplace via Cloud Solution Providers (CSP) gebruik van USD.
 
-\** Gratis en BYOL VM beelden alleen.
+\** Alleen vrije en BYOL VM-installatie kopieën.

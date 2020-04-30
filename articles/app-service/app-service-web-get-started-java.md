@@ -1,7 +1,7 @@
 ---
-title: 'Snelstart: een Java-app maken op Windows'
-description: Implementeer uw eerste Java Hello World in een paar minuten naar Azure App Service op Windows. De Azure Web App Plugin voor Maven maakt het handig om Java-apps te implementeren.
-keywords: azure, app service, web app, windows, java, maven, quickstart
+title: 'Quick Start: een Java-app maken in Windows'
+description: Implementeer in enkele minuten uw eerste Java-Hallo wereld op Azure App Service in Windows. De Azure web app-invoeg toepassing voor maven maakt het handig om Java-apps te implementeren.
+keywords: Azure, app service, Web-app, Windows, Java, Maven, Quick Start
 author: msangapu-msft
 ms.assetid: 582bb3c2-164b-42f5-b081-95bfcb7a502a
 ms.devlang: Java
@@ -10,24 +10,24 @@ ms.date: 05/29/2019
 ms.author: jafreebe
 ms.custom: mvc, seo-java-july2019, seo-java-august2019, seo-java-september2019
 ms.openlocfilehash: 6681b2688c7e8884a197ebe27fb784b1a195f4b5
-ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81732169"
 ---
-# <a name="quickstart-create-a-java-app-on-azure-app-service-on-windows"></a>Snelstart: een Java-app maken op Azure App Service op Windows
+# <a name="quickstart-create-a-java-app-on-azure-app-service-on-windows"></a>Quick Start: een Java-app maken op Azure App Service in Windows
 
 > [!NOTE]
-> In dit artikel gaat u een app implementeren in App Service onder Windows. Als u wilt implementeren op App-service op _Linux,_ raadpleegt u [Java-web-app maken op Linux](./containers/quickstart-java.md).
+> In dit artikel gaat u een app implementeren in App Service onder Windows. Zie [Java Web app maken in Linux](./containers/quickstart-java.md)voor meer informatie over het implementeren van app service in _Linux_.
 >
 
-[Azure App Service](overview.md) biedt een zeer schaalbare, zelfpatchende webhostingservice.  In deze quickstart wordt uitgelegd hoe u de [Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli) gebruiken met de Azure [Web App-plug-in voor Maven](https://github.com/Microsoft/azure-maven-plugins/tree/develop/azure-webapp-maven-plugin) om een War-bestand (Java-webarchief) te implementeren.
+[Azure app service](overview.md) biedt een uiterst schaal bare webhostingservice met self-patch functie.  In deze Quick start ziet u hoe u de [Azure cli](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli) gebruikt met de [Azure web app-invoeg toepassing voor maven](https://github.com/Microsoft/azure-maven-plugins/tree/develop/azure-webapp-maven-plugin) om een WAR-bestand (Java Web Archive) te implementeren.
 
 > [!NOTE]
-> Hetzelfde kan ook worden gedaan met behulp van populaire IdEs zoals IntelliJ en Eclipse. Bekijk onze vergelijkbare documenten op [Azure Toolkit voor IntelliJ Quickstart](/java/azure/intellij/azure-toolkit-for-intellij-create-hello-world-web-app) of [Azure Toolkit voor Eclipse Quickstart.](/java/azure/eclipse/azure-toolkit-for-eclipse-create-hello-world-web-app)
+> Dit kan ook worden gedaan met populaire Ide's zoals IntelliJ en eclips. Bekijk onze vergelijk bare documenten op [Azure-Toolkit voor IntelliJ Quick](/java/azure/intellij/azure-toolkit-for-intellij-create-hello-world-web-app) start of [Azure-Toolkit voor eclipse Quick](/java/azure/eclipse/azure-toolkit-for-eclipse-create-hello-world-web-app)start.
 >
-![Voorbeeld-app die wordt uitgevoerd in Azure App Service](./media/app-service-web-get-started-java/java-hello-world-in-browser-azure-app-service.png)
+![Voor beeld-app die wordt uitgevoerd in Azure App Service](./media/app-service-web-get-started-java/java-hello-world-in-browser-azure-app-service.png)
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
@@ -97,9 +97,9 @@ Werk de volgende tijdelijke aanduidingen bij in de configuratie van de invoegtoe
 
 | Tijdelijke aanduiding | Beschrijving |
 | ----------- | ----------- |
-| `SUBSCRIPTION_ID` | De unieke ID van het abonnement waarop u uw app wilt implementeren. De ID van het standaardabonnement is te vinden `az account show` in de Cloud Shell of CLI met behulp van de opdracht. Gebruik de `az account list` opdracht voor alle beschikbare abonnementen.|
-| `RESOURCEGROUP_NAME` | Naam voor de nieuwe resourcegroep waarin de app moet worden gemaakt. Door alle resources voor een app in een groep te plaatsen, kunt u ze samen beheren. Als u de resourcegroep verwijdert, worden bijvoorbeeld alle resources verwijderd die bij de app behoren. Werk deze waarde bij met een unieke naam van de nieuwe resourcegroep, bijvoorbeeld *myResourceGroup*. U gebruikt deze resourcegroepnaam om alle Azure-resources in een volgende sectie op te schonen. |
-| `WEBAPP_NAME` | De naam van de app maakt deel uit van de hostnaam voor de app wanneer deze wordt geïmplementeerd in Azure (WEBAPP_NAME.azurewebsites.net). Wijzig deze waarde in een unieke naam voor de nieuwe App Service-app, die uw Java-app host, bijvoorbeeld *contoso*. |
+| `SUBSCRIPTION_ID` | De unieke ID van het abonnement waarvoor u uw app wilt implementeren. U kunt de standaard-abonnements-ID vinden via de Cloud Shell of CLI `az account show` met behulp van de opdracht. Gebruik de `az account list` opdracht voor alle beschik bare abonnementen.|
+| `RESOURCEGROUP_NAME` | Naam voor de nieuwe resourcegroep waarin de app moet worden gemaakt. Door alle resources voor een app in een groep te plaatsen, kunt u ze samen beheren. Als u de resourcegroep verwijdert, worden bijvoorbeeld alle resources verwijderd die bij de app behoren. Werk deze waarde bij met een unieke naam voor een nieuwe resource groep, bijvoorbeeld *myResourceGroup*. U gebruikt deze resourcegroepnaam om alle Azure-resources in een volgende sectie op te schonen. |
+| `WEBAPP_NAME` | De naam van de app maakt deel uit van de hostnaam van de app wanneer deze wordt geïmplementeerd in azure (WEBAPP_NAME. azurewebsites. net). Wijzig deze waarde in een unieke naam voor de nieuwe App Service-app, die uw Java-app host, bijvoorbeeld *contoso*. |
 | `REGION` | Een Azure-regio waar de app wordt gehost, bijvoorbeeld *westus2*. U kunt een lijst met regio's van de Cloud Shell of CLI ophalen met behulp van de opdracht `az account list-locations`. |
 
 ## <a name="deploy-the-app"></a>De app implementeren
@@ -112,15 +112,15 @@ mvn package azure-webapp:deploy
 
 Zodra de implementatie is voltooid, bladert u naar de geïmplementeerde toepassing met behulp van de volgende URL in uw webbrowser, bijvoorbeeld `http://<webapp>.azurewebsites.net/`.
 
-![Voorbeeld-app die wordt uitgevoerd in Azure App Service](./media/app-service-web-get-started-java/java-hello-world-in-browser-azure-app-service.png)
+![Voor beeld-app die wordt uitgevoerd in Azure App Service](./media/app-service-web-get-started-java/java-hello-world-in-browser-azure-app-service.png)
 
-**Gefeliciteerd!** U hebt uw eerste Java-app geïmplementeerd in App Service op Windows.
+**Voltooid!** U hebt uw eerste Java-app geïmplementeerd op App Service in Windows.
 
 [!INCLUDE [cli-samples-clean-up](../../includes/cli-samples-clean-up.md)]
 
 ## <a name="next-steps"></a>Volgende stappen
 > [!div class="nextstepaction"]
-> [Verbinding maken met Azure SQL-database met Java](/azure/sql-database/sql-database-connect-query-java?toc=%2Fazure%2Fjava%2Ftoc.json)
+> [Verbinding maken met Azure SQL database met Java](/azure/sql-database/sql-database-connect-query-java?toc=%2Fazure%2Fjava%2Ftoc.json)
 
 > [!div class="nextstepaction"]
 > [Verbinding maken met Azure DB voor MySQL met Java](/azure/mysql/connect-java)
@@ -129,10 +129,10 @@ Zodra de implementatie is voltooid, bladert u naar de geïmplementeerde toepassi
 > [Verbinding maken met Azure DB voor PostgreSQL met Java](/azure/postgresql/connect-java)
 
 > [!div class="nextstepaction"]
-> [Azure voor Java-ontwikkelaarsbronnen](/java/azure/)
+> [Azure voor Java-Ontwikkel aars bronnen](/java/azure/)
 
 > [!div class="nextstepaction"]
 > [Aangepast domein toewijzen](app-service-web-tutorial-custom-domain.md)
 
 > [!div class="nextstepaction"]
-> [Meer informatie over Maven-plug-ins voor Azure](https://github.com/microsoft/azure-maven-plugins)
+> [Meer informatie over maven-invoeg toepassingen voor Azure](https://github.com/microsoft/azure-maven-plugins)

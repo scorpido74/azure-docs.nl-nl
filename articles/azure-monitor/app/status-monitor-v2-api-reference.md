@@ -1,42 +1,42 @@
 ---
-title: Verwijzing naar Azure Application Insights .Net Agent API
-description: Api-referentie van Application Insights Agent. Monitor de prestaties van de website zonder de website opnieuw te implementeren. Werkt met ASP.NET web-apps die on-premises, in VM's of op Azure worden gehost.
+title: Azure-toepassing Insights-API-naslag informatie over .net agent
+description: Application Insights agent API-verwijzing. Bewaak de prestaties van de website zonder de website opnieuw te implementeren. Werkt met ASP.NET-Web-apps die on-premises worden gehost, in Vm's of op Azure.
 ms.topic: conceptual
 author: TimothyMothra
 ms.author: tilee
 ms.date: 04/23/2019
 ms.openlocfilehash: 02762c4b3af735eb0b4c19aaf450b2b3a416a2be
-ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81733672"
 ---
-# <a name="azure-monitor-application-insights-agent-api-reference"></a>Api-verwijzing naar Azure Monitor Application Insights Agent API
+# <a name="azure-monitor-application-insights-agent-api-reference"></a>API-naslag informatie over Azure Monitor Application Insights agent
 
-In dit artikel wordt een cmdlet beschreven die lid is van de [Az.ApplicationMonitor PowerShell-module.](https://www.powershellgallery.com/packages/Az.ApplicationMonitor/)
+In dit artikel wordt een cmdlet beschreven die lid is van de [Power shell-module AZ. ApplicationMonitor](https://www.powershellgallery.com/packages/Az.ApplicationMonitor/).
 
 > [!NOTE] 
-> - Om te beginnen heb je een instrumentatiesleutel nodig. Zie [Een resource maken](create-new-resource.md#copy-the-instrumentation-key)voor meer informatie.
-> - Deze cmdlet vereist dat u onze licentie- en privacyverklaring beoordeelt en accepteert.
+> - U hebt een instrumentatie sleutel nodig om aan de slag te gaan. Zie [een resource maken](create-new-resource.md#copy-the-instrumentation-key)voor meer informatie.
+> - Voor deze cmdlet moet u onze licentie en privacyverklaring bekijken en accepteren.
 
 > [!IMPORTANT] 
-> Deze cmdlet vereist een PowerShell-sessie met beheerdersmachtigingen en een verhoogd uitvoeringsbeleid. Zie [PowerShell uitvoeren als beheerder met een verhoogd uitvoeringsbeleid](status-monitor-v2-detailed-instructions.md#run-powershell-as-admin-with-an-elevated-execution-policy)voor meer informatie.
-> - Deze cmdlet vereist dat u onze licentie- en privacyverklaring beoordeelt en accepteert.
+> Voor deze cmdlet is een Power shell-sessie met beheerders machtigingen en een verhoogd uitvoerings beleid vereist. Zie [Power shell uitvoeren als Administrator met een verhoogd uitvoerings beleid](status-monitor-v2-detailed-instructions.md#run-powershell-as-admin-with-an-elevated-execution-policy)voor meer informatie.
+> - Voor deze cmdlet moet u onze licentie en privacyverklaring bekijken en accepteren.
 > - De instrumentatie-engine voegt extra overhead toe en is standaard uitgeschakeld.
 
 
 ## <a name="enable-instrumentationengine"></a>Enable-InstrumentationEngine
 
-Hiermee schakelt u de instrumentatie-engine in door enkele registersleutels in te stellen.
+Hiermee schakelt u de instrumentatie-engine in door een aantal register sleutels in te stellen.
 Start IIS opnieuw op om de wijzigingen van kracht te laten worden.
 
-De instrumentatie-engine kan gegevens die door de .NET SDK's zijn verzameld, aanvullen.
-Het verzamelt gebeurtenissen en berichten die de uitvoering van een beheerd proces beschrijven. Deze gebeurtenissen en berichten omvatten afhankelijkheidsresultaatcodes, HTTP-werkwoorden en [SQL-opdrachttekst](asp-net-dependencies.md#advanced-sql-tracking-to-get-full-sql-query).
+De instrumentatie-engine kan gegevens aanvullen die worden verzameld door de .NET-Sdk's.
+Er worden gebeurtenissen en berichten verzameld waarmee de uitvoering van een beheerd proces wordt beschreven. Deze gebeurtenissen en berichten bevatten afhankelijkheids resultaat codes, HTTP-woorden en [SQL-opdracht tekst](asp-net-dependencies.md#advanced-sql-tracking-to-get-full-sql-query).
 
-Schakel de instrumentatiemotor in als:
-- U hebt de bewaking al ingeschakeld met de enable cmdlet, maar u hebt de instrumentatiemotor niet ingeschakeld.
-- U hebt uw app handmatig uitgerust met de .NET SDK's en wilt extra telemetrie verzamelen.
+Schakel de instrumentatie-engine in als:
+- U hebt bewaking al ingeschakeld met de cmdlet Enable, maar de instrumentatie-engine is niet ingeschakeld.
+- U hebt uw app hand matig geinstrumenteerd met de .NET-Sdk's en wilt extra telemetrie verzamelen.
 
 ### <a name="examples"></a>Voorbeelden
 
@@ -47,15 +47,15 @@ PS C:\> Enable-InstrumentationEngine
 ### <a name="parameters"></a>Parameters
 
 #### <a name="-acceptlicense"></a>-AcceptLicense
-**Optionele.** Gebruik deze schakelaar om de licentie- en privacyverklaring in headless-installaties te accepteren.
+**Beschrijving.** Gebruik deze schakel optie om de licentie en privacyverklaring in headless installaties te accepteren.
 
 #### <a name="-verbose"></a>-Verbose
-**Algemene parameter.** Gebruik deze schakelaar om gedetailleerde logboeken uit te schakelen.
+**Algemene para meter.** Gebruik deze optie om gedetailleerde logboeken uit te voeren.
 
 ### <a name="output"></a>Uitvoer
 
 
-##### <a name="example-output-from-successfully-enabling-the-instrumentation-engine"></a>Voorbeeldvan het inschakelen van de instrumentatiemotor
+##### <a name="example-output-from-successfully-enabling-the-instrumentation-engine"></a>Voorbeeld uitvoer van het inschakelen van de instrumentatie-engine
 
 ```
 Configuring IIS Environment for instrumentation engine...
@@ -64,32 +64,32 @@ Configuring registry for instrumentation engine...
 
 ## <a name="enable-applicationinsightsmonitoring"></a>Enable-ApplicationInsightsMonitoring
 
-Hiermee u codeloze controle van IIS-apps op een doelcomputer inschakelen.
+Hiermee wordt de bewaking van de IIS-apps op een doel computer gecodeerd.
 
-Deze cmdlet wijzigt de IIS-toepassingHost.config en stelt enkele registersleutels in.
-Het zal ook een applicationinsights.ikey.config-bestand maken, dat de instrumentatiesleutel definieert die door elke app wordt gebruikt.
-IIS zal de RedfieldModule laden bij het opstarten, die de Application Insights SDK zal injecteren in toepassingen als de toepassingen beginnen.
-Start IIS opnieuw op om uw wijzigingen van kracht te laten worden.
+Met deze cmdlet wordt de IIS-functie applicationHost. config gewijzigd en worden enkele register sleutels ingesteld.
+Er wordt ook een bestand applicationinsights. iKey. config gemaakt, waarmee de instrumentatie sleutel wordt gedefinieerd die door elke app wordt gebruikt.
+IIS laadt de RedfieldModule bij het opstarten, waardoor de SDK van Application Insights in toepassingen wordt ingevoegd wanneer de toepassingen worden gestart.
+Start IIS opnieuw op om de wijzigingen van kracht te laten worden.
 
-Nadat u bewaking hebt ingeschakeld, raden we u aan [live statistieken](live-stream.md) te gebruiken om snel te controleren of uw app ons telemetrie stuurt.
+Nadat u bewaking hebt ingeschakeld, raden we u aan [Live metrische gegevens](live-stream.md) te gebruiken om snel te controleren of uw app een telemetrie verzendt.
 
 ### <a name="examples"></a>Voorbeelden
 
-#### <a name="example-with-a-single-instrumentation-key"></a>Voorbeeld met één instrumentatietoets
-In dit voorbeeld krijgen alle apps op de huidige computer één instrumentatiesleutel toegewezen.
+#### <a name="example-with-a-single-instrumentation-key"></a>Voor beeld met één instrumentatie sleutel
+In dit voor beeld worden alle apps op de huidige computer toegewezen aan één instrumentatie sleutel.
 
 ```powershell
 PS C:\> Enable-ApplicationInsightsMonitoring -InstrumentationKey xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
 ```
 
-#### <a name="example-with-an-instrumentation-key-map"></a>Voorbeeld met een instrumentatiesleutelkaart
+#### <a name="example-with-an-instrumentation-key-map"></a>Voor beeld met een instrumentatie sleutel toewijzing
 In dit voorbeeld:
-- `MachineFilter`komt overeen met `'.*'` de huidige computer met behulp van de wildcard.
-- `AppFilter='WebAppExclude'`biedt `null` een instrumentatiesleutel. De opgegeven app wordt niet geinstrumenteerd.
-- `AppFilter='WebAppOne'`wijst de opgegeven app een unieke instrumentatiesleutel toe.
-- `AppFilter='WebAppTwo'`wijst de opgegeven app een unieke instrumentatiesleutel toe.
-- Tot `AppFilter` slot gebruikt `'.*'` u de wildcard ook om alle web-apps aan te passen die niet overeenkomen met de eerdere regels en een standaardinstrumentatiesleutel toe te wijzen.
-- Spaties worden toegevoegd voor leesbaarheid.
+- `MachineFilter`komt overeen met de huidige computer met `'.*'` behulp van het Joker teken.
+- `AppFilter='WebAppExclude'`biedt een `null` instrumentatie sleutel. De opgegeven app wordt niet geinstrumenteerd.
+- `AppFilter='WebAppOne'`Hiermee wijst u de opgegeven app een unieke instrumentatie sleutel toe.
+- `AppFilter='WebAppTwo'`Hiermee wijst u de opgegeven app een unieke instrumentatie sleutel toe.
+- Ten slotte `AppFilter` gebruikt het `'.*'` Joker teken ook om alle web-apps te zoeken die niet overeenkomen met de eerdere regels en een standaard instrumentatie sleutel toe te wijzen.
+- Spaties worden toegevoegd voor de Lees baarheid.
 
 ```powershell
 PS C:\> Enable-ApplicationInsightsMonitoring -InstrumentationKeyMap 
@@ -103,52 +103,52 @@ PS C:\> Enable-ApplicationInsightsMonitoring -InstrumentationKeyMap
 
 ### <a name="parameters"></a>Parameters
 
-#### <a name="-instrumentationkey"></a>-Instrumentatiesleutel
-**Vereist.** Gebruik deze parameter om één instrumentatiesleutel te leveren voor gebruik door alle apps op de doelcomputer.
+#### <a name="-instrumentationkey"></a>-InstrumentationKey
+**Vereist.** Gebruik deze para meter om één instrumentatie sleutel op te geven voor gebruik door alle apps op de doel computer.
 
-#### <a name="-instrumentationkeymap"></a>-InstrumentatieKeyMap
-**Vereist.** Gebruik deze parameter om meerdere instrumentatietoetsen en een toewijzing van de instrumentatietoetsen die door elke app worden gebruikt, te leveren.
-U één installatiescript voor meerdere `MachineFilter`computers maken door.
+#### <a name="-instrumentationkeymap"></a>-InstrumentationKeyMap
+**Vereist.** Gebruik deze para meter om meerdere instrumentatie sleutels en een toewijzing van de instrumentatie sleutels voor elke app op te geven.
+U kunt één installatie script maken voor verschillende computers door in te `MachineFilter`stellen.
 
 > [!IMPORTANT]
-> Apps komen overeen met de regels in de volgorde waarin de regels worden verstrekt. U moet dus eerst de meest specifieke regels opgeven en de meest algemene regels duren.
+> Apps komen overeen met regels in de volg orde waarin de regels worden opgegeven. Daarom moet u eerst de meest specifieke regels opgeven en de meest algemene regels als laatste.
 
 ##### <a name="schema"></a>Schema
 `@(@{MachineFilter='.*';AppFilter='.*';InstrumentationSettings=@{InstrumentationKey='xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx'}})`
 
-- **MachineFilter** is een vereiste C# regex van de computer of VM-naam.
-    - '.*' komt overeen met alle
-    - 'ComputerName' komt alleen overeen met computers met de exacte opgegeven naam.
-- **AppFilter** is een vereiste C# regex van de IIS-sitenaam. U een lijst met sites op uw server krijgen door de [opdrachtget-iissite](https://docs.microsoft.com/powershell/module/iisadministration/get-iissite)uit te voeren.
-    - '.*' komt overeen met alle
-    - 'SiteName' komt alleen overeen met de IIS-site met de opgegeven exacte naam.
-- **InstrumentationKey** is vereist om het controleren van apps die overeenkomen met de voorgaande twee filters mogelijk te maken.
-    - Laat deze waarde nietig als u regels wilt definiëren om controle uit te sluiten.
+- **MachineFilter** is een vereiste C#-regex van de naam van de computer of virtuele machine.
+    - '. * ' komt overeen met alles
+    - ComputerName komt alleen overeen met computers met de exacte naam opgegeven.
+- **AppFilter** is een vereiste C#-regex van de naam van de IIS-site. U kunt een lijst met sites op uw server ophalen door de opdracht [Get-iissite](https://docs.microsoft.com/powershell/module/iisadministration/get-iissite)uit te voeren.
+    - '. * ' komt overeen met alles
+    - ' Site naam ' komt alleen overeen met de IIS-site met de exacte naam die is opgegeven.
+- **InstrumentationKey** is vereist om de bewaking van apps die overeenkomen met de voor gaande twee filters in te scha kelen.
+    - Laat deze waarde leeg als u regels wilt definiëren om bewaking uit te sluiten.
 
 
-#### <a name="-enableinstrumentationengine"></a>-Instrumentatiemotor inschakelen
-**Optionele.** Gebruik deze schakelaar om de instrumentatie-engine in staat te stellen gebeurtenissen en berichten te verzamelen over wat er gebeurt tijdens de uitvoering van een beheerd proces. Deze gebeurtenissen en berichten omvatten afhankelijkheidsresultaatcodes, HTTP-werkwoorden en SQL-opdrachttekst.
+#### <a name="-enableinstrumentationengine"></a>-EnableInstrumentationEngine
+**Beschrijving.** Gebruik deze schakel optie om de instrumentatie-engine in te scha kelen voor het verzamelen van gebeurtenissen en berichten over wat er gebeurt tijdens de uitvoering van een beheerd proces. Deze gebeurtenissen en berichten bevatten afhankelijkheids resultaat codes, HTTP-woorden en SQL-opdracht tekst.
 
 De instrumentatie-engine voegt overhead toe en is standaard uitgeschakeld.
 
 #### <a name="-acceptlicense"></a>-AcceptLicense
-**Optionele.** Gebruik deze schakelaar om de licentie- en privacyverklaring in headless-installaties te accepteren.
+**Beschrijving.** Gebruik deze schakel optie om de licentie en privacyverklaring in headless installaties te accepteren.
 
 #### <a name="-ignoresharedconfig"></a>-IgnoreSharedConfig
-Wanneer u een cluster webservers hebt, gebruikt u mogelijk een [gedeelde configuratie.](https://docs.microsoft.com/iis/web-hosting/configuring-servers-in-the-windows-web-platform/shared-configuration_211)
-De HttpModule kan niet in deze gedeelde configuratie worden geïnjecteerd.
-Dit script mislukt met het bericht dat extra installatiestappen vereist zijn.
-Gebruik deze schakelaar om deze controle te negeren en doorgaan met het installeren van vereisten. Zie voor meer informatie [bekende conflict-met-iis-gedeelde configuratie](status-monitor-v2-troubleshoot.md#conflict-with-iis-shared-configuration)
+Wanneer u een cluster van webservers hebt, kunt u gebruikmaken van een [gedeelde configuratie](https://docs.microsoft.com/iis/web-hosting/configuring-servers-in-the-windows-web-platform/shared-configuration_211).
+De HTTP module kan niet worden ingevoegd in deze gedeelde configuratie.
+Dit script werkt niet met het bericht dat er extra installatie stappen zijn vereist.
+Gebruik deze schakel optie om deze controle te negeren en door te gaan met de installatie van vereisten. Zie [bekende conflict-with-IIS-Shared-Configuration](status-monitor-v2-troubleshoot.md#conflict-with-iis-shared-configuration) (Engelstalig) voor meer informatie
 
 #### <a name="-verbose"></a>-Verbose
-**Algemene parameter.** Gebruik deze schakelaar om gedetailleerde logboeken weer te geven.
+**Algemene para meter.** Gebruik deze schakel optie om gedetailleerde logboeken weer te geven.
 
 #### <a name="-whatif"></a>-WhatIf 
-**Algemene parameter.** Gebruik deze schakelaar om uw invoerparameters te testen en te valideren zonder daadwerkelijk bewaking in te schakelen.
+**Algemene para meter.** Gebruik deze schakel optie om de invoer parameters te testen en te valideren zonder dat de bewaking werkelijk wordt ingeschakeld.
 
 ### <a name="output"></a>Uitvoer
 
-#### <a name="example-output-from-a-successful-enablement"></a>Voorbeelduitvoer van een succesvolle enablement
+#### <a name="example-output-from-a-successful-enablement"></a>Voorbeeld uitvoer van een geslaagde activering
 
 ```powershell
 Initiating Disable Process
@@ -181,9 +181,9 @@ Updating app pool permissions...
 Successfully enabled Application Insights Status Monitor
 ```
 
-## <a name="disable-instrumentationengine"></a>Engine uitschakelen-instrumentatie
+## <a name="disable-instrumentationengine"></a>Disable-InstrumentationEngine
 
-Hiermee schakelt u de instrumentatie-engine uit door enkele registersleutels te verwijderen.
+Hiermee schakelt u de instrumentatie-engine uit door enkele register sleutels te verwijderen.
 Start IIS opnieuw op om de wijzigingen van kracht te laten worden.
 
 ### <a name="examples"></a>Voorbeelden
@@ -195,12 +195,12 @@ PS C:\> Disable-InstrumentationEngine
 ### <a name="parameters"></a>Parameters 
 
 #### <a name="-verbose"></a>-Verbose
-**Algemene parameter.** Gebruik deze schakelaar om gedetailleerde logboeken uit te schakelen.
+**Algemene para meter.** Gebruik deze optie om gedetailleerde logboeken uit te voeren.
 
 ### <a name="output"></a>Uitvoer
 
 
-##### <a name="example-output-from-successfully-disabling-the-instrumentation-engine"></a>Voorbeelduitvoer van het uitschakelen van de instrumentatie-engine
+##### <a name="example-output-from-successfully-disabling-the-instrumentation-engine"></a>Voorbeeld uitvoer van het uitschakelen van de instrumentatie-engine
 
 ```powershell
 Configuring IIS Environment for instrumentation engine...
@@ -210,10 +210,10 @@ Registry: removing 'HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\WAS[Env
 Configuring registry for instrumentation engine...
 ```
 
-## <a name="disable-applicationinsightsmonitoring"></a>Disable-ApplicationInsightsMonitoring disable-ApplicationInsights
+## <a name="disable-applicationinsightsmonitoring"></a>Disable-ApplicationInsightsMonitoring
 
-Schakelt de bewaking op de doelcomputer uit.
-Deze cmdlet verwijdert bewerkingen naar de IIS-toepassingHost.config en verwijdert registersleutels.
+Hiermee schakelt u de bewaking op de doel computer uit.
+Met deze cmdlet worden bewerkingen verwijderd uit IIS applicationHost. config en worden de register sleutels verwijderd.
 
 ### <a name="examples"></a>Voorbeelden
 
@@ -224,12 +224,12 @@ PS C:\> Disable-ApplicationInsightsMonitoring
 ### <a name="parameters"></a>Parameters 
 
 #### <a name="-verbose"></a>-Verbose
-**Algemene parameter.** Gebruik deze schakelaar om gedetailleerde logboeken weer te geven.
+**Algemene para meter.** Gebruik deze schakel optie om gedetailleerde logboeken weer te geven.
 
 ### <a name="output"></a>Uitvoer
 
 
-##### <a name="example-output-from-successfully-disabling-monitoring"></a>Voorbeelduitvoer van het uitschakelen van de bewaking
+##### <a name="example-output-from-successfully-disabling-monitoring"></a>Voorbeeld uitvoer van het uitschakelen van de bewaking
 
 ```powershell
 Initiating Disable Process
@@ -255,7 +255,7 @@ Successfully disabled Application Insights Status Monitor
 
 ## <a name="get-applicationinsightsmonitoringconfig"></a>Get-ApplicationInsightsMonitoringConfig
 
-Hiermee wordt het config-bestand opgevraagd en worden de waarden naar de console afgedrukt.
+Hiermee wordt het configuratie bestand opgehaald en worden de waarden afgedrukt op de-console.
 
 ### <a name="examples"></a>Voorbeelden
 
@@ -265,12 +265,12 @@ PS C:\> Get-ApplicationInsightsMonitoringConfig
 
 ### <a name="parameters"></a>Parameters
 
-Geen parameters vereist.
+Geen para meters vereist.
 
 ### <a name="output"></a>Uitvoer
 
 
-##### <a name="example-output-from-reading-the-config-file"></a>Voorbeelduitvoer van het lezen van het config-bestand
+##### <a name="example-output-from-reading-the-config-file"></a>Voor beeld van uitvoer van het lezen van het configuratie bestand
 
 ```
 RedfieldConfiguration:
@@ -280,17 +280,17 @@ Filters:
 2)InstrumentationKey: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxdefault AppFilter: .* MachineFilter: .*
 ```
 
-## <a name="get-applicationinsightsmonitoringstatus"></a>Status van get-applicationInsightsMonitoringStatus
+## <a name="get-applicationinsightsmonitoringstatus"></a>Get-ApplicationInsightsMonitoringStatus
 
-Deze cmdlet geeft informatie over probleemoplossing over statusmonitor.
-Gebruik deze cmdlet om de bewakingsstatus, versie van de PowerShell Module, te onderzoeken en om het loopproces te inspecteren.
-Deze cmdlet rapporteert versie-informatie en informatie over belangrijke bestanden die nodig zijn voor monitoring.
+Deze cmdlet biedt informatie over het oplossen van problemen met Status Monitor.
+Gebruik deze cmdlet om de bewakings status, versie van de Power shell-module te onderzoeken en het actieve proces te controleren.
+Met deze cmdlet worden versie-informatie en informatie over de vereiste sleutel bestanden voor bewaking gerapporteerd.
 
 ### <a name="examples"></a>Voorbeelden
 
-#### <a name="example-application-status"></a>Voorbeeld: Toepassingsstatus
+#### <a name="example-application-status"></a>Voor beeld: toepassings status
 
-Voer de `Get-ApplicationInsightsMonitoringStatus` opdracht uit om de bewakingsstatus van websites weer te geven.
+Voer de opdracht `Get-ApplicationInsightsMonitoringStatus` uit om de bewakings status van websites weer te geven.
 
 ```powershell
 
@@ -325,17 +325,17 @@ ProcessId              : 5184
 AppAlreadyInstrumented : true
 ```
 
-In dit voorbeeld;
-- **Machine Identifier** is een anonieme id die wordt gebruikt om uw server op unieke wijze te identificeren. Als u een ondersteuningsverzoek maakt, hebben we deze id nodig om logboeken voor uw server te vinden.
-- **Standaardwebsite** wordt gestopt in IIS
-- **DemoWebApp111** is gestart in IIS, maar heeft geen verzoeken ontvangen. Dit rapport laat zien dat er geen lopend proces is (ProcessId: niet gevonden).
-- **DemoWebApp222** is actief en wordt gemonitord (Instrumented: true). Op basis van de gebruikersconfiguratie werd Instrumentation Key xxxxxxxx-xxxx-xxxx-xxxxxxxxxxxx123 gematcht voor deze site.
-- **DemoWebApp333** is handmatig uitgerust met de Application Insights SDK. Status monitor gedetecteerd de SDK en zal niet controleren van deze site.
+In dit voor beeld;
+- **Machine-id** is een anonieme id die wordt gebruikt om uw server uniek te identificeren. Als u een ondersteunings aanvraag maakt, hebt u deze ID nodig om logboeken voor uw server te vinden.
+- De **standaard website** is gestopt in IIS
+- **DemoWebApp111** is gestart in IIS, maar heeft geen aanvragen ontvangen. Dit rapport geeft aan dat er geen proces kan worden uitgevoerd (ProcessId: niet gevonden).
+- **DemoWebApp222** wordt uitgevoerd en wordt bewaakt (instrumented: True). Op basis van de gebruikers configuratie is de instrumentatie sleutel XXXXXXXX-XXXX-XXXX-XXXX-xxxxxxxxx123 overeenkomt met deze site.
+- **DemoWebApp333** is hand matig geinstrumenteerd met behulp van de Application Insights SDK. De SDK is Status Monitor gedetecteerd en de site wordt niet bewaakt.
 
 
-#### <a name="example-powershell-module-information"></a>Voorbeeld: PowerShell-module-informatie
+#### <a name="example-powershell-module-information"></a>Voor beeld: Power shell-module gegevens
 
-Voer de `Get-ApplicationInsightsMonitoringStatus -PowerShellModule` opdracht uit om informatie over de huidige module weer te geven:
+Voer de opdracht `Get-ApplicationInsightsMonitoringStatus -PowerShellModule` uit om informatie weer te geven over de huidige module:
 
 ```powershell
 
@@ -388,11 +388,11 @@ ApplicationInsightsSdkPath (Exists: True)
 C:\Program Files\WindowsPowerShell\Modules\Az.ApplicationMonitor\content\Runtime\Microsoft.ApplicationInsights.dll
 ```
 
-#### <a name="example-runtime-status"></a>Voorbeeld: Runtime-status
+#### <a name="example-runtime-status"></a>Voor beeld: runtime status
 
-U het proces op de geinstrumenteerde computer inspecteren om te zien of alle DLL's zijn geladen. Als de bewaking werkt, moeten ten minste 12 DLL's worden geladen.
+U kunt het proces op de geinstrumenteerde computer controleren om te controleren of alle Dll's zijn geladen. Als de bewaking werkt, moeten ten minste 12 Dll's worden geladen.
 
-Voer de `Get-ApplicationInsightsMonitoringStatus -InspectProcess`opdracht uit:
+Voer de volgende `Get-ApplicationInsightsMonitoringStatus -InspectProcess`opdracht uit:
 
 
 ```
@@ -428,60 +428,60 @@ listdlls64.exe -accepteula w3wp
 
 ### <a name="parameters"></a>Parameters
 
-#### <a name="no-parameters"></a>(Geen parameters)
+#### <a name="no-parameters"></a>(Geen para meters)
 
-Standaard rapporteert deze cmdlet de bewakingsstatus van webapplicaties.
-Gebruik deze optie om te controleren of uw aanvraag is uitgevoerd.
-U ook bekijken welke instrumentatiesleutel is gekoppeld aan uw site.
+Met deze cmdlet wordt standaard de bewakings status van webtoepassingen gerapporteerd.
+Gebruik deze optie om te controleren of uw toepassing is geinstrumenteerd.
+U kunt ook controleren welke instrumentatie sleutel is afgestemd op uw site.
 
 
 #### <a name="-powershellmodule"></a>-PowerShellModule
-**Optioneel**. Gebruik deze schakelaar om de versienummers en paden van DLL's te rapporteren die nodig zijn voor controle.
-Gebruik deze optie als u de versie van een DLL wilt identificeren, inclusief de Application Insights SDK.
+**Optioneel**. Gebruik deze schakel optie om de versie nummers en paden te rapporteren van DLL-bestanden die vereist zijn voor bewaking.
+Gebruik deze optie als u de versie van een DLL-bestand, inclusief de Application Insights SDK, moet identificeren.
 
-#### <a name="-inspectprocess"></a>-Inspecteerproces
+#### <a name="-inspectprocess"></a>-InspectProcess
 
-**Optioneel**. Gebruik deze schakelaar om te melden of IIS wordt uitgevoerd.
-Het zal ook externe tools downloaden om te bepalen of de benodigde DLL's in de IIS-runtime worden geladen.
+**Optioneel**. Gebruik deze schakel optie om te rapporteren of IIS wordt uitgevoerd.
+Ook worden er externe hulpprogram ma's gedownload om te bepalen of de benodigde DLL-bestanden in de IIS-runtime worden geladen.
 
 
-Als dit proces om welke reden dan ook mislukt, u deze opdrachten handmatig uitvoeren:
-- iisreset.exe /status
-- [handle64.exe](https://docs.microsoft.com/sysinternals/downloads/handle) -p w3wp | findstr /I "InstrumentationEngine AI. ApplicationInsights"
-- [listdlls64.exe](https://docs.microsoft.com/sysinternals/downloads/listdlls) w3wp | findstr /I "InstrumentationEngine AI ApplicationInsights"
+Als dit proces om welke reden dan ook mislukt, kunt u deze opdrachten hand matig uitvoeren:
+- IISReset. exe/status
+- [handle64. exe](https://docs.microsoft.com/sysinternals/downloads/handle) -p W3wp | findstr/I "InstrumentationEngine AI. ApplicationInsights
+- [listdlls64. exe](https://docs.microsoft.com/sysinternals/downloads/listdlls) W3wp | findstr/I "InstrumentationEngine AI ApplicationInsights"
 
 
 #### <a name="-force"></a>-Force
 
-**Optioneel**. Alleen gebruikt met InspectProcess. Gebruik deze schakelaar om de gebruikersprompt over te slaan die wordt weergegeven voordat extra hulpprogramma's worden gedownload.
+**Optioneel**. Wordt alleen gebruikt met InspectProcess. Gebruik deze schakel optie om de prompt van de gebruiker over te slaan die wordt weer gegeven voordat extra hulpprogram ma's worden gedownload.
 
 
 ## <a name="set-applicationinsightsmonitoringconfig"></a>Set-ApplicationInsightsMonitoringConfig
 
-Hiermee stelt u het config-bestand in zonder een volledige herinstallatie te doen.
-Start IIS opnieuw op om uw wijzigingen van kracht te laten worden.
+Hiermee stelt u het configuratie bestand in zonder volledige herinstallatie.
+Start IIS opnieuw op om de wijzigingen van kracht te laten worden.
 
 > [!IMPORTANT] 
-> Deze cmdlet vereist een PowerShell-sessie met beheerdersmachtigingen.
+> Voor deze cmdlet is een Power shell-sessie met beheerders machtigingen vereist.
 
 
 ### <a name="examples"></a>Voorbeelden
 
-#### <a name="example-with-a-single-instrumentation-key"></a>Voorbeeld met één instrumentatietoets
-In dit voorbeeld krijgen alle apps op de huidige computer één instrumentatiesleutel toegewezen.
+#### <a name="example-with-a-single-instrumentation-key"></a>Voor beeld met één instrumentatie sleutel
+In dit voor beeld wordt aan alle apps op de huidige computer één instrumentatie sleutel toegewezen.
 
 ```powershell
 PS C:\> Enable-ApplicationInsightsMonitoring -InstrumentationKey xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
 ```
 
-#### <a name="example-with-an-instrumentation-key-map"></a>Voorbeeld met een instrumentatiesleutelkaart
+#### <a name="example-with-an-instrumentation-key-map"></a>Voor beeld met een instrumentatie sleutel toewijzing
 In dit voorbeeld:
-- `MachineFilter`komt overeen met `'.*'` de huidige computer met behulp van de wildcard.
-- `AppFilter='WebAppExclude'`biedt `null` een instrumentatiesleutel. De opgegeven app wordt niet geinstrumenteerd.
-- `AppFilter='WebAppOne'`wijst de opgegeven app een unieke instrumentatiesleutel toe.
-- `AppFilter='WebAppTwo'`wijst de opgegeven app een unieke instrumentatiesleutel toe.
-- Tot `AppFilter` slot gebruikt `'.*'` u de wildcard ook om alle web-apps aan te passen die niet overeenkomen met de eerdere regels en een standaardinstrumentatiesleutel toe te wijzen.
-- Spaties worden toegevoegd voor leesbaarheid.
+- `MachineFilter`komt overeen met de huidige computer met `'.*'` behulp van het Joker teken.
+- `AppFilter='WebAppExclude'`biedt een `null` instrumentatie sleutel. De opgegeven app wordt niet geinstrumenteerd.
+- `AppFilter='WebAppOne'`Hiermee wijst u de opgegeven app een unieke instrumentatie sleutel toe.
+- `AppFilter='WebAppTwo'`Hiermee wijst u de opgegeven app een unieke instrumentatie sleutel toe.
+- Ten slotte `AppFilter` gebruikt het `'.*'` Joker teken ook om alle web-apps te zoeken die niet overeenkomen met de eerdere regels en een standaard instrumentatie sleutel toe te wijzen.
+- Spaties worden toegevoegd voor de Lees baarheid.
 
 ```powershell
 Enable-ApplicationInsightsMonitoring -InstrumentationKeyMap `
@@ -493,38 +493,38 @@ Enable-ApplicationInsightsMonitoring -InstrumentationKeyMap `
 
 ### <a name="parameters"></a>Parameters
 
-#### <a name="-instrumentationkey"></a>-Instrumentatiesleutel
-**Vereist.** Gebruik deze parameter om één instrumentatiesleutel te leveren voor gebruik door alle apps op de doelcomputer.
+#### <a name="-instrumentationkey"></a>-InstrumentationKey
+**Vereist.** Gebruik deze para meter om één instrumentatie sleutel op te geven voor gebruik door alle apps op de doel computer.
 
-#### <a name="-instrumentationkeymap"></a>-InstrumentatieKeyMap
-**Vereist.** Gebruik deze parameter om meerdere instrumentatietoetsen en een toewijzing van de instrumentatietoetsen die door elke app worden gebruikt, te leveren.
-U één installatiescript voor meerdere `MachineFilter`computers maken door.
+#### <a name="-instrumentationkeymap"></a>-InstrumentationKeyMap
+**Vereist.** Gebruik deze para meter om meerdere instrumentatie sleutels en een toewijzing van de instrumentatie sleutels voor elke app op te geven.
+U kunt één installatie script maken voor verschillende computers door in te `MachineFilter`stellen.
 
 > [!IMPORTANT]
-> Apps komen overeen met de regels in de volgorde waarin de regels worden verstrekt. U moet dus eerst de meest specifieke regels opgeven en de meest algemene regels duren.
+> Apps komen overeen met regels in de volg orde waarin de regels worden opgegeven. Daarom moet u eerst de meest specifieke regels opgeven en de meest algemene regels als laatste.
 
 ##### <a name="schema"></a>Schema
 `@(@{MachineFilter='.*';AppFilter='.*';InstrumentationKey='xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx'})`
 
-- **MachineFilter** is een vereiste C# regex van de computer of VM-naam.
-    - '.*' komt overeen met alle
-    - 'ComputerName' komt alleen overeen met computers met de opgegeven naam.
-- **AppFilter** is een vereiste C# regex van de computer of VM-naam.
-    - '.*' komt overeen met alle
-    - 'ApplicationName' komt alleen overeen met IIS-apps met de opgegeven naam.
-- **InstrumentationKey** is vereist om de bewaking van de apps die overeenkomen met de voorgaande twee filters mogelijk te maken.
-    - Laat deze waarde nietig als u regels wilt definiëren om controle uit te sluiten.
+- **MachineFilter** is een vereiste C#-regex van de naam van de computer of virtuele machine.
+    - '. * ' komt overeen met alles
+    - ComputerName komt alleen overeen met computers met de opgegeven naam.
+- **AppFilter** is een vereiste C#-regex van de naam van de computer of virtuele machine.
+    - '. * ' komt overeen met alles
+    - ApplicationName komt alleen overeen met IIS-apps met de opgegeven naam.
+- **InstrumentationKey** is vereist om de bewaking van de apps in te scha kelen die overeenkomen met de voor gaande twee filters.
+    - Laat deze waarde leeg als u regels wilt definiëren om bewaking uit te sluiten.
 
 
 #### <a name="-verbose"></a>-Verbose
-**Algemene parameter.** Gebruik deze schakelaar om gedetailleerde logboeken weer te geven.
+**Algemene para meter.** Gebruik deze schakel optie om gedetailleerde logboeken weer te geven.
 
 
 ### <a name="output"></a>Uitvoer
 
 Standaard geen uitvoer.
 
-##### <a name="example-verbose-output-from-setting-the-config-file-via--instrumentationkey"></a>Voorbeeld van verbose-uitvoer van het instellen van het config-bestand via -InstrumentationKey
+##### <a name="example-verbose-output-from-setting-the-config-file-via--instrumentationkey"></a>Voor beeld van uitgebreide uitvoer van het instellen van het configuratie bestand via-InstrumentationKey
 
 ```
 VERBOSE: Operation: InstallWithIkey
@@ -536,7 +536,7 @@ VERBOSE: Config File Path:
 C:\Program Files\WindowsPowerShell\Modules\Az.ApplicationMonitor\content\applicationInsights.ikey.config
 ```
 
-##### <a name="example-verbose-output-from-setting-the-config-file-via--instrumentationkeymap"></a>Voorbeeld van verbose-uitvoer van het instellen van het config-bestand via -InstrumentationKeyMap
+##### <a name="example-verbose-output-from-setting-the-config-file-via--instrumentationkeymap"></a>Voor beeld van uitgebreide uitvoer van het instellen van het configuratie bestand via-InstrumentationKeyMap
 
 ```
 VERBOSE: Operation: InstallWithIkeyMap
@@ -552,60 +552,60 @@ C:\Program Files\WindowsPowerShell\Modules\Az.ApplicationMonitor\content\applica
 
 ## <a name="start-applicationinsightsmonitoringtrace"></a>Start-ApplicationInsightsMonitoringTrace
 
-Verzamelt [ETW-gebeurtenissen](https://docs.microsoft.com/windows/desktop/etw/event-tracing-portal) van de codeloze runtime voor het toevoegen van codeloos. Deze cmdlet is een alternatief voor het uitvoeren van [PerfView.](https://github.com/microsoft/perfview)
+Verzamelt [etw-gebeurtenissen](https://docs.microsoft.com/windows/desktop/etw/event-tracing-portal) vanuit de runtime van code koppelen. Deze cmdlet is een alternatief voor het uitvoeren van [PerfView](https://github.com/microsoft/perfview).
 
-Verzamelde gebeurtenissen worden in realtime op de console afgedrukt en opgeslagen in een ETL-bestand. Het uitvoer-ETL-bestand kan door [PerfView](https://github.com/microsoft/perfview) worden geopend voor verder onderzoek.
+Verzamelde gebeurtenissen worden in realtime afgedrukt op de console en opgeslagen in een ETL-bestand. Het ETL-bestand van de uitvoer kan worden geopend door [PerfView](https://github.com/microsoft/perfview) voor verder onderzoek.
 
-Deze cmdlet wordt uitgevoerd totdat deze de time-outduur heeft bereikt`Ctrl + C`(standaard 5 minuten) of handmatig wordt gestopt ( ).
+Deze cmdlet wordt uitgevoerd totdat de time-outperiode (standaard 5 minuten) of hand matig (`Ctrl + C`) is bereikt.
 
 ### <a name="examples"></a>Voorbeelden
 
-#### <a name="how-to-collect-events"></a>Evenementen verzamelen
+#### <a name="how-to-collect-events"></a>Gebeurtenissen verzamelen
 
-Normaal gesproken vragen we u gebeurtenissen te verzamelen om te onderzoeken waarom uw aanvraag niet wordt uitgevoerd.
+Normaal gesp roken wordt u gevraagd om gebeurtenissen te verzamelen om te onderzoeken waarom uw toepassing niet wordt geinstrumenteerd.
 
-De codeloze runtime voor het koppelen van codeloos zendt ETW-gebeurtenissen uit wanneer IIS wordt opgestart en wanneer uw toepassing wordt opgestart.
+Tijdens de uitvoering van het programma code koppelen worden ETW-gebeurtenissen meegeteld wanneer IIS wordt gestart en wanneer de toepassing wordt gestart.
 
-Ga als het volgende van deze evenementen:
-1. Voer IIS en alle web-apps uit in een cmd-console met beheerdersrechten. `iisreset /stop`
+Deze gebeurtenissen verzamelen:
+1. Voer `iisreset /stop` in een cmd-console met beheerders bevoegdheden uit om IIS en alle web-apps uit te scha kelen.
 2. Deze cmdlet uitvoeren
-3. Voer IIS uit in `iisreset /start` een cmd-console met beheerdersbevoegdheden.
+3. Voer in een cmd-console met beheerders bevoegdheden `iisreset /start` uitvoeren uit om IIS te starten.
 4. Probeer naar uw app te bladeren.
-5. Nadat uw app klaar is met laden,`Ctrl + C`u deze handmatig stoppen () of wachten op de time-out.
+5. Nadat de app is geladen, kunt u deze hand matig stoppen (`Ctrl + C`) of wachten op de time-out.
 
-#### <a name="what-events-to-collect"></a>Welke evenementen te verzamelen
+#### <a name="what-events-to-collect"></a>Welke gebeurtenissen moeten worden verzameld
 
-Je hebt drie opties bij het verzamelen van evenementen:
-1. Gebruik de `-CollectSdkEvents` switch om gebeurtenissen te verzamelen die worden uitgezonden vanuit de Application Insights SDK.
-2. Gebruik de `-CollectRedfieldEvents` schakelaar om gebeurtenissen te verzamelen die worden uitgezonden door Statusmonitor en de Redfield Runtime. Deze logboeken zijn handig bij het diagnosticeren van IIS en het opstarten van toepassingen.
-3. Gebruik beide switches om beide gebeurtenistypen te verzamelen.
-4. Als er geen switch is opgegeven, worden beide gebeurtenistypen verzameld.
+Er zijn drie opties voor het verzamelen van gebeurtenissen:
+1. Gebruik de Schakel `-CollectSdkEvents` optie voor het verzamelen van gebeurtenissen die afkomstig zijn van de Application Insights SDK.
+2. Gebruik de Schakel `-CollectRedfieldEvents` optie voor het verzamelen van gebeurtenissen die worden gegenereerd door status monitor en de Redfield-runtime. Deze logboeken zijn handig bij het vaststellen van IIS en het opstarten van toepassingen.
+3. Gebruik beide Schakel opties om beide gebeurtenis typen te verzamelen.
+4. Standaard als er geen schakelaar is opgegeven, worden beide gebeurtenis typen verzameld.
 
 
 ### <a name="parameters"></a>Parameters
 
 #### <a name="-maxdurationinminutes"></a>-MaxDurationInMinutes
-**Optionele.** Gebruik deze parameter om in te stellen hoe lang dit script gebeurtenissen moet verzamelen. Standaard is dit 5 minuten.
+**Beschrijving.** Gebruik deze para meter om in te stellen hoe lang dit script gebeurtenissen moet verzamelen. Standaard is dit 5 minuten.
 
 #### <a name="-logdirectory"></a>-LogDirectory
-**Optionele.** Gebruik deze schakelaar om de uitvoermap van het ETL-bestand in te stellen. Standaard wordt dit bestand gemaakt in de map PowerShell-modules. Het volledige pad wordt weergegeven tijdens de uitvoering van het script.
+**Beschrijving.** Gebruik deze schakel optie om de map uitvoermap van het ETL-bestand in te stellen. Dit bestand wordt standaard gemaakt in de map Power shell-modules. Het volledige pad wordt weer gegeven tijdens het uitvoeren van het script.
 
 
-#### <a name="-collectsdkevents"></a>-CollectsdkEvents
-**Optionele.** Gebruik deze schakelaar om APPLICATION Insights SDK-gebeurtenissen te verzamelen.
+#### <a name="-collectsdkevents"></a>-CollectSdkEvents
+**Beschrijving.** Gebruik deze schakel optie om Application Insights SDK-gebeurtenissen te verzamelen.
 
-#### <a name="-collectredfieldevents"></a>-RedfieldEvents verzamelen
-**Optionele.** Gebruik deze schakelaar om gebeurtenissen te verzamelen van Statusmonitor en de Redfield runtime.
+#### <a name="-collectredfieldevents"></a>-CollectRedfieldEvents
+**Beschrijving.** Gebruik deze schakel optie om gebeurtenissen van Status Monitor en de Redfield-runtime te verzamelen.
 
 #### <a name="-verbose"></a>-Verbose
-**Algemene parameter.** Gebruik deze schakelaar om gedetailleerde logboeken uit te schakelen.
+**Algemene para meter.** Gebruik deze optie om gedetailleerde logboeken uit te voeren.
 
 
 
 ### <a name="output"></a>Uitvoer
 
 
-#### <a name="example-of-application-startup-logs"></a>Voorbeeld van logboeken voor het opstarten van toepassingen
+#### <a name="example-of-application-startup-logs"></a>Voor beeld van opstart logboeken van toepassingen
 ```powershell
 PS C:\Windows\system32> Start-ApplicationInsightsMonitoringTrace -ColectRedfieldEvents
 Starting...
@@ -637,18 +637,18 @@ Timeout Reached. Stopping...
 ## <a name="next-steps"></a>Volgende stappen
 
   Uw telemetrie weergeven:
- - [Bekijk statistieken](../../azure-monitor/app/metrics-explorer.md) om de prestaties en het gebruik te controleren.
-- [Zoek gebeurtenissen en logboeken](../../azure-monitor/app/diagnostic-search.md) om problemen te diagnosticeren.
-- Gebruik [analytics](../../azure-monitor/app/analytics.md) voor meer geavanceerde query's.
-- [Dashboards maken](../../azure-monitor/app/overview-dashboard.md).
+ - [Bekijk metrische gegevens](../../azure-monitor/app/metrics-explorer.md) om de prestaties en het gebruik te bewaken.
+- [Zoek gebeurtenissen en logboeken](../../azure-monitor/app/diagnostic-search.md) om problemen op te sporen.
+- Gebruik [analyses](../../azure-monitor/app/analytics.md) voor meer geavanceerde query's.
+- [Dash boards maken](../../azure-monitor/app/overview-dashboard.md).
  
  Meer telemetrie toevoegen:
  - [Maak webtests](monitor-web-app-availability.md) om ervoor te zorgen dat uw site actief blijft.
-- [Voeg telemetrie van webclient toe](../../azure-monitor/app/javascript.md) om uitzonderingen van webpaginacode te bekijken en tracecalls in te schakelen.
-- [Voeg de Application Insights SDK toe aan uw code,](../../azure-monitor/app/asp-net.md) zodat u trace- en logoproepen invoegen.
+- [Voeg de telemetrie van de webclient](../../azure-monitor/app/javascript.md) toe om uitzonde ringen van webpagina code te bekijken en tracerings aanroepen in te scha kelen.
+- [Voeg de Application INSIGHTS SDK toe aan uw code](../../azure-monitor/app/asp-net.md) zodat u tracerings-en logboek aanroepen kunt invoegen.
  
- Doe meer met Application Insights Agent:
- - Gebruik onze gids om application insights agent op te [lossen.](status-monitor-v2-troubleshoot.md)
+ Meer doen met Application Insights agent:
+ - Gebruik onze hand leiding om Application Insights-agent op te [lossen](status-monitor-v2-troubleshoot.md) .
 
 
 

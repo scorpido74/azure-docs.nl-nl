@@ -1,6 +1,6 @@
 ---
 title: Hoge beschikbaarheid in Azure Cosmos DB
-description: In dit artikel wordt beschreven hoe Azure Cosmos DB hoge beschikbaarheid biedt
+description: In dit artikel wordt beschreven hoe Azure Cosmos DB hoge Beschik baarheid biedt
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
@@ -8,81 +8,81 @@ ms.date: 04/20/2020
 ms.author: mjbrown
 ms.reviewer: sngun
 ms.openlocfilehash: 0a67360ab840b7897c85a382dfc3965bd27f6a3e
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81688063"
 ---
 # <a name="high-availability-with-azure-cosmos-db"></a>Hoge beschikbaarheid met Azure Cosmos DB
 
-Azure Cosmos DB repliceert uw gegevens op transparante wijze in alle Azure-regio's die zijn gekoppeld aan uw Cosmos-account. Cosmos DB maakt gebruik van meerdere redundantielagen voor uw gegevens, zoals weergegeven in de volgende afbeelding:
+Azure Cosmos DB uw gegevens transparant repliceert in alle Azure-regio's die zijn gekoppeld aan uw Cosmos-account. Cosmos DB maakt gebruik van meerdere lagen van redundantie voor uw gegevens, zoals wordt weer gegeven in de volgende afbeelding:
 
 ![Fysieke partitionering](./media/high-availability/cosmosdb-data-redundancy.png)
 
-- De gegevens binnen de containers Cosmos [worden horizontaal verdeeld.](partitioning-overview.md)
+- De gegevens in Cosmos-containers worden [horizon taal gepartitioneerd](partitioning-overview.md).
 
-- Binnen elke regio wordt elke partitie beschermd door een replica-set met alle schrijft gerepliceerd en blijvend begaan door een meerderheid van de replica's. Replica's worden verdeeld over maar liefst 10-20 foutdomeinen.
+- Binnen elke regio wordt elke partitie beveiligd door een replicaset waarbij alle schrijf bewerkingen worden gerepliceerd en blijvend vastgelegd door een meerderheid van replica's. Replica's worden verdeeld over Maxi maal 10-20 fout domeinen.
 
-- Elke partitie in alle regio's wordt gerepliceerd. Elke regio bevat alle gegevenspartities van een Cosmos-container en kan schrijft accepteren en leest serveren.  
+- Elke partitie in alle regio's wordt gerepliceerd. Elke regio bevat alle gegevens partities van een Cosmos-container en kan schrijf bewerkingen accepteren en lees bewerkingen uitvoeren.  
 
-Als uw Cosmos-account is verdeeld over *N* Azure-regio's, worden er ten minste *N* x 4-kopieën van al uw gegevens weergegeven. Naast het bieden van lage latentie gegevens toegang en schalen schrijf /lees doorvoer over de regio's die zijn gekoppeld aan uw Cosmos-account, met meer regio's (hogere *N)* verder verbetert de beschikbaarheid.  
+Als uw Cosmos-account wordt gedistribueerd over *n* Azure-regio's, zijn er ten minste *n* x 4 kopieën van al uw gegevens. Naast het bieden van gegevens toegang met lage latentie en het schalen van schrijf-en lees doorvoer voor de regio's die zijn gekoppeld aan uw Cosmos-account, met meer regio's (hogere *N*), verbetert de beschik baarheid.  
 
-## <a name="slas-for-availability"></a>SLA's voor beschikbaarheid
+## <a name="slas-for-availability"></a>Sla's voor Beschik baarheid
 
-Als een wereldwijd gedistribueerde database biedt Cosmos DB uitgebreide SLA's die doorvoer, latentie op het 99e percentiel, consistentie en hoge beschikbaarheid omvatten. De onderstaande tabel toont de garanties voor hoge beschikbaarheid die Cosmos DB biedt voor accounts met één en meerdere regio's. Voor hoge beschikbaarheid configureert u uw Cosmos-accounts altijd om meerdere schrijfregio's te hebben.
+Als een wereld wijd gedistribueerde data base biedt Cosmos DB uitgebreide service overeenkomsten die de door Voer, latentie bij het 99e percentiel, consistentie en hoge Beschik baarheid omvatten. In de volgende tabel ziet u de garanties voor maximale Beschik baarheid van Cosmos DB voor accounts met meerdere regio's. Configureer voor hoge Beschik baarheid altijd uw Cosmos-accounts zodat er meerdere schrijf regio's zijn.
 
-|Bewerkingstype  | Eén regio |Multiregio 's -regio ', schrijft één regio'|Multi-regio (multi-regio schrijft) |
+|Bewerkings type  | Enkele regio |Meerdere regio's (schrijf bewerkingen in één regio)|Meerdere regio's (schrijf bewerkingen met meerdere regio's) |
 |---------|---------|---------|-------|
-|Schrijft    | 99,99    |99,99   |99,999|
-|Leest     | 99,99    |99,999  |99,999|
+|Schrijfopdrachten    | 99,99    |99,99   |99,999|
+|Titel     | 99,99    |99,999  |99,999|
 
 > [!NOTE]
-> In de praktijk is de werkelijke schrijfbeschikbaarheid voor begrensde staleness, sessie, consistent voorvoegsel en uiteindelijke consistentiemodellen aanzienlijk hoger dan de gepubliceerde SLA's. De werkelijke leesbeschikbaarheid voor alle consistentieniveaus is aanzienlijk hoger dan de gepubliceerde SLA's.
+> In de praktijk is de daad werkelijke schrijf Beschik baarheid voor gebonden veroudering, sessie, consistent voor voegsel en uiteindelijke consistentie modellen aanzienlijk hoger dan de gepubliceerde Sla's. De werkelijke Lees Beschik baarheid voor alle consistentie niveaus is aanzienlijk hoger dan de gepubliceerde Sla's.
 
 ## <a name="high-availability-with-cosmos-db-in-the-event-of-regional-outages"></a>Hoge beschikbaarheid met Cosmos DB in het geval van regionale storingen
 
-Regionale storingen zijn niet ongewoon. Met Azure Cosmos DB is uw database altijd maximaal beschikbaar. De volgende details leggen het gedrag van Cosmos DB vast tijdens een storing, afhankelijk van de configuratie van uw Cosmos-account:
+Regionale storingen zijn niet ongewoon. Met Azure Cosmos DB is uw database altijd maximaal beschikbaar. De volgende details vastleggen Cosmos DB gedrag tijdens een storing, afhankelijk van de configuratie van uw Cosmos-account:
 
-- Met Cosmos DB worden de gegevens blijvend vastgelegd door een quorum replica's binnen de regio dat de schrijfbewerkingen accepteert voordat een schrijfbewerking wordt erkend.
+- Met Cosmos DB voordat een schrijf bewerking wordt bevestigd aan de client, worden de gegevens blijvend vastgelegd door een quorum van replica's binnen de regio die de schrijf bewerkingen accepteert.
 
-- Multi-region accounts geconfigureerd met meerdere schrijfregio's zijn zeer beschikbaar voor zowel schrijft als leest. Regionale failovers zijn onmiddellijk en vereisen geen wijzigingen van de toepassing.
+- Multi-regio-accounts die zijn geconfigureerd met meerdere-schrijf regio's, zijn Maxi maal beschikbaar voor schrijf bewerkingen en lees bewerkingen. Regionale failovers zijn onmiddellijk en vereisen geen wijzigingen van de toepassing.
 
-- Accounts met één regio kunnen hun beschikbaarheid verliezen als gevolg van een regionale storing. Het wordt altijd aanbevolen om **ten minste twee regio's** (bij voorkeur ten minste twee schrijfregio's) in te stellen met uw Cosmos-account om te allen tijde een hoge beschikbaarheid te garanderen.
+- Accounts met een enkele regio kunnen Beschik baarheid verliezen na een regionale storing. Het is altijd aanbevolen om ten **minste twee regio's** (bij voor keur, ten minste twee schrijf regio's) in te stellen met uw Cosmos-account om te allen tijde hoge Beschik baarheid te garanderen.
 
-### <a name="multi-region-accounts-with-a-single-write-region-write-region-outage"></a>Accounts met meerdere regio's met één schrijfgebied (uitval van het schrijfgebied)
+### <a name="multi-region-accounts-with-a-single-write-region-write-region-outage"></a>Accounts met meerdere regio's met een regio voor één schrijf bewerking (schrijf regio-uitval)
 
-- Tijdens een uitval van het schrijfgebied wordt een secundaire regio automatisch gepromoot als het nieuwe primaire schrijfgebied wanneer **automatische failover wordt** ingeschakeld op het Azure Cosmos-account. Wanneer deze is ingeschakeld, vindt de failover plaats in een andere regio in de volgorde van de regioprioriteit die u hebt opgegeven.
-- Wanneer het eerder getroffen gebied weer online is, worden alle schrijfgegevens die niet zijn gerepliceerd toen de regio is mislukt, beschikbaar gesteld via de [conflictfeed](how-to-manage-conflicts.md#read-from-conflict-feed). Toepassingen kunnen de conflictfeed lezen, de conflicten oplossen op basis van de toepassingsspecifieke logica en de bijgewerkte gegevens zo nodig terugschrijven naar de Azure Cosmos-container.
-- Zodra het eerder getroffen schrijfgebied herstelt, wordt het automatisch beschikbaar als leesregio. U terugschakelen naar het herstelde gebied als het schrijfgebied. U de regio's schakelen met [PowerShell, Azure CLI of Azure-portal.](how-to-manage-database-account.md#manual-failover) Er is **geen gegevens of beschikbaarheidsverlies** voor, tijdens of na het wisselen van schrijfgebied en uw toepassing blijft zeer beschikbaar.
+- Tijdens een onderbreking van de schrijf regio wordt een secundaire regio automatisch bevorderd als de nieuwe primaire schrijf regio als **automatische failover inschakelen** is geconfigureerd voor het Azure Cosmos-account. Wanneer deze functie is ingeschakeld, wordt de failover uitgevoerd naar een andere regio in de volg orde van de regio prioriteit die u hebt opgegeven.
+- Wanneer de eerder beïnvloede regio weer online is, worden alle Schrijf gegevens die niet zijn gerepliceerd toen de regio is mislukt, beschikbaar gesteld via de [feed conflicten](how-to-manage-conflicts.md#read-from-conflict-feed). Toepassingen kunnen de feed voor conflicten lezen, de conflicten oplossen op basis van de toepassingsspecifieke logica en de bijgewerkte gegevens naar de Azure Cosmos-container schrijven, indien van toepassing.
+- Zodra de eerder beïnvloede schrijf regio herstelt, wordt deze automatisch beschikbaar als een lees regio. U kunt teruggaan naar de herstelde regio als de schrijf regio. U kunt de regio's wijzigen met behulp van [Power shell, Azure CLI of Azure Portal](how-to-manage-database-account.md#manual-failover). Er zijn **geen gegevens of beschik baarheids verlies** vóór, tijdens of nadat u de schrijf regio hebt overgeschakeld en uw toepassing Maxi maal beschikbaar is.
 
 > [!IMPORTANT]
-> Het wordt ten zeerste aanbevolen om de Azure Cosmos-accounts te configureren die worden gebruikt voor productieworkloads om **automatische failover mogelijk**te maken. Handmatige failover vereist connectiviteit tussen secundair en primair schrijfgebied om een consistentiecontrole uit te vullen om ervoor te zorgen dat er geen gegevensverlies is tijdens de failover. Als het primaire gebied niet beschikbaar is, kan deze consistentiecontrole niet worden voltooid en wordt de handmatige failover niet geslaagd, waardoor de schrijfbeschikbaarheid verloren gaat.
+> Het wordt ten zeerste aangeraden om de Azure Cosmos-accounts te configureren die worden gebruikt voor productie werkbelastingen om **automatische failover mogelijk te maken**. Voor een hand matige failover is een verbinding tussen de secundaire en primaire schrijf regio vereist om een consistentie controle te volt ooien om ervoor te zorgen dat er geen gegevens verloren gaan tijdens de failover. Als de primaire regio niet beschikbaar is, kan deze consistentie controle niet worden voltooid en kan de hand matige failover mislukken, wat leidt tot verlies van schrijf Beschik baarheid.
 
-### <a name="multi-region-accounts-with-a-single-write-region-read-region-outage"></a>Accounts met meerdere regio's met één schrijfgebied (regiostoring lezen)
+### <a name="multi-region-accounts-with-a-single-write-region-read-region-outage"></a>Accounts met meerdere regio's met een regio voor één schrijf bewerking (Lees regio lezen)
 
-- Tijdens een leesregio-uitval blijven Cosmos-accounts met behulp van een consistentieniveau of een sterke consistentie met drie of meer gelezen regio's zeer beschikbaar voor lezen en schrijven.
-- Het getroffen gebied wordt automatisch losgekoppeld en wordt offline gemarkeerd. De [Azure Cosmos DB SDKs](sql-api-sdk-dotnet.md) leiden leesoproepen om naar het volgende beschikbare gebied in de lijst met voorkeursregio's.
+- Tijdens een lees regio kan Cosmos-accounts die gebruikmaken van een consistentie niveau of sterke consistentie met drie of meer Lees regio's, Maxi maal beschikbaar blijven voor lees-en schrijf bewerkingen.
+- De verbinding met het betrokken gebied wordt automatisch verbroken en wordt offline gemarkeerd. De [Azure Cosmos DB sdk's](sql-api-sdk-dotnet.md) omleiden Lees aanroepen naar de volgende beschik bare regio in de lijst voorkeurs regio.
 - Als geen van de regio's in de lijst met voorkeursregio's beschikbaar is, vallen aanroepen automatisch terug naar de huidige schrijfregio.
-- Er zijn geen wijzigingen vereist in uw toepassingscode om de uitval van de leesregio af te handelen. Wanneer de in beïnvloede leesregio weer online is, wordt deze automatisch gesynchroniseerd met het huidige schrijfgebied en is het weer beschikbaar om leesverzoeken weer te geven.
-- Latere leesbewerkingen worden omgeleid naar de herstelde regio zonder dat er wijzigingen in uw toepassingscode nodig zijn. Tijdens zowel failover als het opnieuw samenvoegen van een eerder mislukte regio, lees consistentie garanties blijven worden gerespecteerd door Cosmos DB.
+- Er zijn geen wijzigingen vereist in de toepassings code voor het verwerken van de onderbreking van de Lees regio. Wanneer de betrokken Lees regio weer online is, wordt deze automatisch gesynchroniseerd met de huidige schrijf regio en is deze weer beschikbaar om Lees aanvragen te kunnen behandelen.
+- Latere leesbewerkingen worden omgeleid naar de herstelde regio zonder dat er wijzigingen in uw toepassingscode nodig zijn. Tijdens zowel de failover als het opnieuw deel nemen aan een eerder mislukte regio, worden Lees consistentie garanties door Cosmos DB door lopen.
 
 > [!IMPORTANT]
-> Azure Cosmos-accounts met een sterke consistentie met twee of minder leesregio's verliezen de schrijfbeschikbaarheid tijdens een leesregio-storing, maar behouden de leesbeschikbaarheid voor resterende regio's.
+> Azure Cosmos-accounts die gebruikmaken van sterke consistentie met twee of minder Lees regio's, verliezen de schrijf beschikbaarheid tijdens een onderbreking van de Lees regio, maar bewaren de beschik baarheid van de resterende regio's.
 
-- Zelfs in een zeldzame en ongelukkige gebeurtenis wanneer de Azure-regio permanent onherstelbaar is, is er geen gegevensverlies als uw Cosmos-account met meerdere regio's is geconfigureerd met *sterke* consistentie. In het geval van een permanent onherstelbaar schrijfgebied, een cosmos-account met meerdere regio's, geconfigureerd met consistentie van begrensde staleness, is het venster voor potentiële gegevensverlies beperkt tot het venster *(K* of *T)* waarin K=100.000 updates en T=5 minuten zijn. Voor sessie-, consistent-voorvoegsel en uiteindelijke consistentieniveaus is het venster voor potentiële gegevensverlies beperkt tot maximaal 15 minuten. Zie [Consistentieniveaus en gegevensduurzaamheid](consistency-levels-tradeoffs.md#rto) voor meer informatie over RTO- en RPO-doelen voor Azure Cosmos DB
+- Zelfs in een zeldzame en vervelend-gebeurtenis wanneer de Azure-regio permanent is onherstelbare, is er geen gegevens verlies als uw Cosmos-account met meerdere regio's is geconfigureerd met *sterke* consistentie. In het geval van een permanente onherstelbare, een Cosmos-account met meerdere regio's dat is geconfigureerd met consistentie van afhankelijkheid, is het venster voor mogelijk gegevens verlies beperkt tot het verouderde venster (*k* of *T*) waarbij K = 100000 updates en T = 5 minuten. Voor sessie, consistent voor voegsel en uiteindelijke consistentie niveaus geldt een maximum van 15 minuten voor het venster van het potentiële gegevens verlies. Zie voor meer informatie over RTO-en RPO-doelen voor Azure Cosmos DB [consistentie niveaus en gegevens duurzaamheid](consistency-levels-tradeoffs.md#rto)
 
-## <a name="availability-zone-support"></a>Ondersteuning voor beschikbaarheidszone
+## <a name="availability-zone-support"></a>Ondersteuning voor beschikbaarheids zone
 
-Naast de tolerantie voor verschillende regio's u nu **ook zoneredundantie** inschakelen bij het selecteren van een regio die u wilt koppelen aan uw Azure Cosmos-database.
+Naast de tolerantie voor meerdere regio's kunt u nu **zone redundantie** inschakelen wanneer u een regio selecteert om te koppelen aan uw Azure Cosmos-data base.
 
-Met ondersteuning voor beschikbaarheidszone zorgt Azure Cosmos DB ervoor dat replica's in meerdere zones binnen een bepaald gebied worden geplaatst om hoge beschikbaarheid en veerkracht te bieden tijdens zonale fouten. Er zijn geen wijzigingen in latentie en andere SLA's in deze configuratie. In het geval van een fout in één zone biedt zoneredundantie volledige duurzaamheid van gegevens met RPO=0 en beschikbaarheid met RTO=0.
+Met de ondersteuning van de beschikbaarheids zone zorgt Azure Cosmos DB ervoor dat replica's in meerdere zones binnen een bepaalde regio worden geplaatst om hoge Beschik baarheid en tolerantie tijdens zonegebonden storingen te bieden. Er zijn geen wijzigingen in latentie en andere Sla's in deze configuratie. In het geval van een storing in één zone biedt zone redundantie volledige gegevens duurzaamheid met RPO = 0 en beschik baarheid met RTO = 0.
 
-Zoneredundantie is een *aanvullende mogelijkheid voor* de [replicatiefunctie met meerdere masters.](how-to-multi-master.md) Zone redundantie alleen kan niet worden ingeroepen om regionale veerkracht te bereiken. In het geval van regionale uitval of toegang tot lage latentie in de regio's wordt bijvoorbeeld geadviseerd om meerdere schrijfregio's te hebben naast zoneredundantie.
+Zone redundantie is een *aanvullende mogelijkheid* voor de replicatie functie voor [meerdere masters](how-to-multi-master.md) . Alleen zone redundantie kan worden verzorgd om regionale tolerantie te garanderen. In het geval van regionale storingen of toegang met een lage latentie over de regio's, wordt het aanbevolen om naast zone redundantie meerdere schrijf regio's te hebben.
 
-Wanneer u schrijft voor meerdere regio's configureert voor uw Azure Cosmos-account, u zich zonder extra kosten aanmelden voor zoneredundantie. Anders zie je de onderstaande notitie met betrekking tot de prijzen voor zoneredundantieondersteuning. U zoneredundantie inschakelen op een bestaand gebied van uw Azure Cosmos-account door de regio te verwijderen en het toe te voegen met de zoneredundantie ingeschakeld.
+Bij het configureren van schrijf bewerkingen met meerdere regio's voor uw Azure Cosmos-account, kunt u zonder extra kosten voor zone redundantie kiezen. In andere gevallen raadpleegt u de onderstaande opmerking over de prijzen voor ondersteuning voor zone redundantie. U kunt zone redundantie inschakelen voor een bestaande regio van uw Azure Cosmos-account door de regio te verwijderen en opnieuw toe te voegen als u de zone redundantie hebt ingeschakeld.
 
-Deze functie is beschikbaar in volgende Azure-regio's:
+Deze functie is beschikbaar in de volgende Azure-regio's:
 
 - Verenigd Koninkrijk Zuid
 
@@ -101,27 +101,27 @@ Deze functie is beschikbaar in volgende Azure-regio's:
 - Australië - oost
 
 > [!NOTE]
-> Als u beschikbaarheidszones inschakelt voor een Azure Cosmos-account met één regio, worden kosten in rekening gebracht die overeenkomen met het toevoegen van een extra regio aan uw account. Zie de [prijspagina](https://azure.microsoft.com/pricing/details/cosmos-db/) en de [multiregiokosten in Azure Cosmos DB-artikelen](optimize-cost-regions.md) voor meer informatie over de prijzen.
+> Als u Beschikbaarheidszones inschakelt voor een Azure Cosmos-account in één regio, worden er kosten in rekening gebracht die gelijk zijn aan het toevoegen van een extra regio aan uw account. Zie de [pagina met prijzen](https://azure.microsoft.com/pricing/details/cosmos-db/) en de [kosten voor meerdere regio's in azure Cosmos DB](optimize-cost-regions.md) artikelen voor meer informatie over prijzen.
 
-In de volgende tabel wordt een overzicht van de hoge beschikbaarheidsmogelijkheden van verschillende accountconfiguraties:
+De volgende tabel bevat een overzicht van de mogelijkheden voor hoge Beschik baarheid van verschillende account configuraties:
 
-|KPI  |Eén regio zonder beschikbaarheidszones (niet-AZ)  |Eén regio met beschikbaarheidszones (AZ)  |Multi-regio schrijft met Availability Zones (AZ, 2 regio's) – Meest aanbevolen instelling |
+|KPI  |Eén regio zonder Beschikbaarheidszones (niet-AZ)  |Eén regio met Beschikbaarheidszones (AZ)  |Meerdere regio's schrijven met Beschikbaarheidszones (AZ, 2 regio's) – meest aanbevolen instelling |
 |---------|---------|---------|---------|
-|Schrijf beschikbaarheid SLA | 99,99% | 99,99% | 99,999% |
-|Lees beschikbaarheid SLA  | 99,99% | 99,99% | 99,999% |
-|Prijs | Factureringstarief voor één regio | Factureringspercentage beschikbaarheidszone voor één regio | Factureringspercentage voor meerdere regio's |
-|Zonefouten – gegevensverlies | Gegevensverlies | Geen gegevensverlies | Geen gegevensverlies |
-|Zonefouten – beschikbaarheid | Beschikbaarheidsverlies | Geen verlies van beschikbaarheid | Geen verlies van beschikbaarheid |
-|Leeslatentie | Cross regio | Cross regio | Laag |
-|Latentie schrijven | Cross regio | Cross regio | Laag |
-|Regionale storing – dataverlies | Gegevensverlies |  Gegevensverlies | Gegevensverlies <br/><br/> Bij het gebruik van begrensde staleness consistentie met multi master en meer dan één regio, is gegevensverlies beperkt tot de begrensde staleness die op uw account zijn geconfigureerd <br /><br />U gegevensverlies tijdens een regionale storing voorkomen door een sterke consistentie met meerdere regio's te configureren. Deze optie wordt geleverd met trade-offs die de beschikbaarheid en prestaties beïnvloeden. Het kan alleen worden geconfigureerd op accounts die zijn geconfigureerd voor schrijft met één regio. |
-|Regionale storing – beschikbaarheid | Beschikbaarheidsverlies | Beschikbaarheidsverlies | Geen verlies van beschikbaarheid |
-|Doorvoer | X RU/s ingerichte doorvoer | X RU/s ingerichte doorvoer | 2X RU/s ingerichte doorvoer <br/><br/> Deze configuratiemodus vereist twee keer de hoeveelheid doorvoer in vergelijking met één regio met beschikbaarheidszones omdat er twee regio's zijn. |
+|SLA voor Beschik baarheid schrijven | 99,99% | 99,99% | 99,999% |
+|SLA voor Beschik baarheid lezen  | 99,99% | 99,99% | 99,999% |
+|Prijs | Facturerings tarief voor één regio | Facturerings tarief van de beschikbaarheids zone met één regio | Facturerings tarief voor meerdere regio's |
+|Zone fouten – gegevens verlies | Gegevens verlies | Geen gegevens verlies | Geen gegevens verlies |
+|Zone fouten-Beschik baarheid | Beschikbaarheids verlies | Geen beschikbaar verlies | Geen beschikbaar verlies |
+|Lees latentie | Kruis regio | Kruis regio | Laag |
+|Schrijf latentie | Kruis regio | Kruis regio | Laag |
+|Regionale storing – gegevens verlies | Gegevens verlies |  Gegevens verlies | Gegevens verlies <br/><br/> Wanneer de consistentie van de afhankelijke veroudering met meerdere masters en meer dan één regio wordt gebruikt, wordt het gegevens verlies beperkt tot de gebonden veroudering die is geconfigureerd voor uw account <br /><br />U kunt gegevens verlies voor komen tijdens een regionale storing door sterke consistentie met meerdere regio's te configureren. Deze optie is ook van invloed op de beschik baarheid en prestaties. Het kan alleen worden geconfigureerd voor accounts die zijn geconfigureerd voor schrijf bewerkingen met één regio. |
+|Regionale storingen-Beschik baarheid | Beschikbaarheids verlies | Beschikbaarheids verlies | Geen beschikbaar verlies |
+|Doorvoer | Ingerichte door Voer van X RU/s | Ingerichte door Voer van X RU/s | 2X RU/s ingerichte door Voer <br/><br/> Deze configuratie modus vereist twee keer de hoeveelheid door Voer in vergelijking met een enkele regio met Beschikbaarheidszones omdat er twee regio's zijn. |
 
 > [!NOTE]
-> Als u ondersteuning voor beschikbaarheidszone wilt inschakelen voor een Azure Cosmos-account met meerdere regio's, moet het account multi-master schrijfbewerkingen hebben ingeschakeld.
+> Als u ondersteuning voor beschikbaarheids zones wilt inschakelen voor een Azure Cosmos-account met meerdere regio's, moet voor het account multi-master schrijf bewerkingen zijn ingeschakeld.
 
-U zoneredundantie inschakelen wanneer u een regio toevoegt aan nieuwe of bestaande Azure Cosmos-accounts. Als u zoneredundantie op uw Azure `isZoneRedundant` Cosmos-account wilt inschakelen, moet u de vlag instellen op `true` een specifieke locatie. U deze vlag instellen in de eigenschap locaties. Met het volgende PowerShell-fragment wordt bijvoorbeeld zoneredundantie voor de regio 'Zuidoost-Azië' mogelijk gemaakt:
+U kunt zone redundantie inschakelen wanneer u een regio toevoegt aan nieuwe of bestaande Azure Cosmos-accounts. Als u zone redundantie wilt inschakelen voor uw Azure Cosmos-account, moet `isZoneRedundant` u de `true` markering instellen op voor een specifieke locatie. U kunt deze vlag instellen binnen de eigenschap locations. Het volgende Power shell-fragment maakt bijvoorbeeld zone redundantie mogelijk voor de regio ' Zuidoost-Azië ':
 
 ```powershell
 $locations = @(
@@ -130,7 +130,7 @@ $locations = @(
 )
 ```
 
-In de volgende opdracht ziet u hoe u zoneredundantie inschakelt voor de regio's 'EastUS' en 'WestUS2':
+De volgende opdracht laat zien hoe u zone redundantie voor de regio's Oost en WestUS2 kunt inschakelen:
 
 ```azurecli-interactive
 az cosmosdb create \
@@ -142,26 +142,26 @@ az cosmosdb create \
   --locations regionName=WestUS2 failoverPriority=1 isZoneRedundant=True
 ```
 
-U beschikbaarheidszones inschakelen door azure-portal te gebruiken bij het maken van een Azure Cosmos-account. Wanneer u een account maakt, moet u de **georedundantie**, **schrijft met meerdere regio's**inschakelen en een regio kiezen waar beschikbaarheidszones worden ondersteund:
+U kunt Beschikbaarheidszones inschakelen met behulp van Azure Portal bij het maken van een Azure Cosmos-account. Wanneer u een account maakt, moet u ervoor zorgen dat u de functie voor **geo-redundantie**, **meerdere regio's**en een regio kiest waar Beschikbaarheidszones worden ondersteund:
 
-![Beschikbaarheidszones inschakelen met Azure-portal](./media/high-availability/enable-availability-zones-using-portal.png) 
+![Beschikbaarheidszones met behulp van Azure Portal inschakelen](./media/high-availability/enable-availability-zones-using-portal.png) 
 
-## <a name="building-highly-available-applications"></a>Bouwen van zeer beschikbare toepassingen
+## <a name="building-highly-available-applications"></a>Maxi maal beschik bare toepassingen bouwen
 
-- Als u wilt zorgen voor een hoge schrijf- en leesbeschikbaarheid, configureert u uw Cosmos-account op ten minste twee regio's met regio's met meerdere schrijfgebieden. Deze configuratie biedt de hoogste beschikbaarheid, laagste latentie en de beste schaalbaarheid voor zowel lees- als schrijfbewerkingen die worden ondersteund door SLA's. Zie voor meer informatie hoe [u uw Cosmos-account configureert met meerdere schrijfregio's.](tutorial-global-distribution-sql-api.md)
+- Configureer uw Cosmos-account zo dat er ten minste twee regio's zijn met meerdere schrijf regio's om te zorgen voor hoge schrijf-en lees beschikbaarheid. Deze configuratie biedt de hoogste Beschik baarheid, de laagste latentie en de beste schaal baarheid voor zowel lees-als schrijf bewerkingen die worden ondersteund door service overeenkomsten. Zie [uw Cosmos-account met meerdere schrijf regio's configureren](tutorial-global-distribution-sql-api.md)voor meer informatie.
 
-- Voor cosmos-accounts met meerdere regio's die zijn geconfigureerd met één schrijfgebied, [schakelt u automatische failover in met Azure CLI of Azure-portal.](how-to-manage-database-account.md#automatic-failover) Nadat u automatische failover hebt ingeschakeld, wanneer er een regionale ramp is, mislukt Cosmos DB automatisch over uw account.  
+- Voor Cosmos-accounts met meerdere regio's die zijn geconfigureerd met een enkele schrijf regio, [schakelt u automatische failover in met behulp van Azure CLI of Azure Portal](how-to-manage-database-account.md#automatic-failover). Nadat u automatische failover hebt ingeschakeld, Cosmos DB automatisch een failover van uw account uit, wanneer er een regionale nood geval is.  
 
-- Zelfs als uw Azure Cosmos-account zeer beschikbaar is, is uw toepassing mogelijk niet correct ontworpen om zeer beschikbaar te blijven. Als u de end-to-end hoge beschikbaarheid van uw toepassing wilt testen, u als onderdeel van uw drills voor het testen van toepassingen of disaster recovery (DR) de automatische failover voor het account tijdelijk uitschakelen, de handmatige failover aanroepen [door PowerShell, Azure CLI of Azure-portal](how-to-manage-database-account.md#manual-failover)te gebruiken en vervolgens de failover van uw toepassing te controleren. Eenmaal voltooid, u niet terug naar de primaire regio en herstellen automatisch failover voor het account.
+- Zelfs als uw Azure Cosmos-account Maxi maal beschikbaar is, is uw toepassing mogelijk niet juist ontworpen om Maxi maal beschikbaar te blijven. Als u de end-to-end hoge Beschik baarheid van uw toepassing wilt testen, kunt u als onderdeel van uw toepassing tests of herstel na nood gevallen, de automatische failover voor het account tijdelijk uitschakelen, de [hand matige failover aanroepen met behulp van Power shell, Azure CLI of Azure Portal](how-to-manage-database-account.md#manual-failover)en vervolgens de failover van uw toepassing controleren. Zodra het proces is voltooid, kunt u een failover uitvoeren naar de primaire regio en de automatische failover voor het account herstellen.
 
-- Binnen een wereldwijd gedistribueerde databaseomgeving is er een direct verband tussen het consistentieniveau en de duurzaamheid van gegevens in aanwezigheid van een regio-brede uitval. Terwijl u uw bedrijfscontinuïteitsplan ontwikkelt, moet u de maximaal aanvaardbare tijd begrijpen voordat de toepassing volledig herstelt na een storende gebeurtenis. De tijd die nodig is voor een aanvraag om volledig te herstellen staat bekend als recovery time objective (RTO). U moet ook de maximale periode van recente gegevensupdates begrijpen die de toepassing kan tolereren wanneer deze herstelt na een storende gebeurtenis. Deze periode wordt het beoogde herstelpunt (RPO) genoemd. Zie [Consistentieniveaus en gegevensduurzaamheid](consistency-levels-tradeoffs.md#rto) voor de RPO en RTO voor Azure Cosmos DB
+- Binnen een wereld wijd gedistribueerde database omgeving is er een rechtstreekse relatie tussen het consistentie niveau en de duurzaamheid van de gegevens in de aanwezigheid van een regionale storing. Wanneer u uw bedrijfs continuïteits plan ontwikkelt, moet u weten wat de Maxi maal toegestane tijd is voordat de toepassing volledig wordt hersteld na een storende gebeurtenis. De tijd die nodig is om een toepassing volledig te herstellen, wordt de beoogde herstel tijd (RTO) genoemd. U moet ook inzicht krijgen in de maximale periode van recente gegevens updates die de toepassing kan afnemen bij het herstellen na een storende gebeurtenis. Deze periode wordt het beoogde herstelpunt (RPO) genoemd. Zie [consistentie niveaus en gegevens duurzaamheid](consistency-levels-tradeoffs.md#rto) voor een overzicht van de RPO en RTO voor Azure Cosmos db.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Vervolgens u de volgende artikelen lezen:
+Daarna kunt u de volgende artikelen lezen:
 
-- [Beschikbaarheid en prestatieafwegingen voor verschillende consistentieniveaus](consistency-levels-tradeoffs.md)
+- [Beschik baarheid en prestaties voor diverse consistentie niveaus](consistency-levels-tradeoffs.md)
 - [Wereldwijd schalen van ingerichte doorvoer](scaling-throughput.md)
 - [Wereldwijde distributie - achter de schermen](global-dist-under-the-hood.md)
-- [Consistentieniveaus in Azure Cosmos DB](consistency-levels.md)
-- [Uw Cosmos-account configureren met meerdere schrijfregio's](how-to-multi-master.md)
+- [Consistentie niveaus in Azure Cosmos DB](consistency-levels.md)
+- [Uw Cosmos-account configureren met meerdere schrijf regio's](how-to-multi-master.md)

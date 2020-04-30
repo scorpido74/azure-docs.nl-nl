@@ -1,6 +1,6 @@
 ---
-title: Handleiding voor ontwikkelaars voor Azure IoT Hub | Microsoft Documenten
-description: De Azure IoT Hub-ontwikkelaarshandleiding bevat discussies over eindpunten, beveiliging, het identiteitsregister, apparaatbeheer, directe methoden, apparaattweelingen, bestandsuploads, taken, de IoT Hub-querytaal en messaging.
+title: Ontwikkelaars handleiding voor Azure IoT Hub | Microsoft Docs
+description: De ontwikkelaars handleiding voor Azure IoT Hub bevat discussies over eind punten, beveiliging, het identiteits register, Apparaatbeheer, directe methoden, apparaatdubbels, uploads van bestanden, taken, de IoT Hub query taal en berichten.
 author: wesmc7777
 manager: philmea
 ms.author: wesmc
@@ -10,70 +10,70 @@ ms.topic: conceptual
 ms.date: 01/29/2018
 ms.custom: mqtt
 ms.openlocfilehash: 4e380fdcd72ab21f00272536b9f08145dcb09bc1
-ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81728822"
 ---
-# <a name="azure-iot-hub-developer-guide"></a>Azure IoT Hub-ontwikkelaarshandleiding
+# <a name="azure-iot-hub-developer-guide"></a>Ontwikkelaars handleiding voor Azure IoT Hub
 
-Azure IoT Hub is een volledig beheerde service die betrouwbare en veilige bidirectionele communicatie tussen miljoenen apparaten en een back-end van een oplossing mogelijk maakt.
+Azure IoT Hub is een volledig beheerde service die zorgt voor betrouw bare en veilige bidirectionele communicatie tussen miljoenen apparaten en een back-end van een oplossing.
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-partial.md)]
 
-Azure IoT Hub biedt u:
+Azure IoT Hub biedt u het volgende:
 
-* Beveilig communicatie met behulp van beveiligingsreferenties per apparaat en toegangscontrole.
+* Beveiligde communicaties met behulp van beveiligings referenties per apparaat en toegangs beheer.
 
-* Meerdere communicatieopties tussen apparaat en cloud en cloud tot apparaat.
+* Meerdere communicatie opties voor apparaat-naar-Cloud en Cloud-naar-apparaat.
 
-* Opvraagbare opslag van statusgegevens per apparaat en metagegevens.
+* Een query uitvoeren op de status informatie en meta gegevens per apparaat.
 
-* Eenvoudige apparaatconnectiviteit met apparaatbibliotheken voor de populairste talen en platforms.
+* Eenvoudige connectiviteit van apparaten met Apparaatbeheer voor de populairste talen en platformen.
 
-Deze IoT Hub-ontwikkelaarshandleiding bevat de volgende artikelen:
+Deze IoT Hub ontwikkelaars handleiding bevat de volgende artikelen:
 
-* [Met de communicatierichtlijnen voor apparaat tot cloud](iot-hub-devguide-d2c-guidance.md) u kiezen tussen device-to-cloud-berichten, de gerapporteerde eigenschappen van device twin en het uploaden van bestanden.
+* [Met apparaat-naar-Cloud-communicatie richtlijnen](iot-hub-devguide-d2c-guidance.md) kunt u kiezen tussen apparaat-naar-Cloud-berichten, de gerapporteerde eigenschappen van het apparaat en het uploaden van bestanden.
 
-* [Communicatiebegeleiding tussen cloud-to-device](iot-hub-devguide-c2d-guidance.md) helpt u bij het kiezen tussen directe methoden, de gewenste eigenschappen van device twin en cloud-to-device-berichten.
+* Via [Cloud-naar-apparaat communicatie richtlijnen](iot-hub-devguide-c2d-guidance.md) kunt u kiezen tussen directe methoden, de gewenste eigenschappen van het apparaat en de Cloud-naar-apparaat-berichten.
 
-* [Device-to-cloud en cloud-to-device messaging met IoT Hub](iot-hub-devguide-messaging.md) beschrijft de messaging-functies (device-to-cloud en cloud-to-device) die IoT Hub blootlegt.
+* [Met het apparaat-naar-Cloud-en Cloud-naar-apparaat-berichten met IOT hub](iot-hub-devguide-messaging.md) worden de berichten functies (apparaat-naar-Cloud en Cloud-naar-apparaat) beschreven die IOT hub beschikbaar maakt.
 
-  * [Stuur device-to-cloud berichten naar IoT Hub.](iot-hub-devguide-messages-d2c.md)
+  * [Apparaat-naar-Cloud-berichten naar IOT hub verzenden](iot-hub-devguide-messages-d2c.md).
 
-  * [Lees device-to-cloud berichten van het ingebouwde eindpunt.](iot-hub-devguide-messages-read-builtin.md)
+  * [Apparaat-naar-Cloud-berichten lezen van het ingebouwde eind punt](iot-hub-devguide-messages-read-builtin.md).
 
-  * [Gebruik aangepaste eindpunten en routeringsregels voor device-to-cloud-berichten.](iot-hub-devguide-messages-read-custom.md)
+  * [Gebruik aangepaste eind punten en routerings regels voor apparaat-naar-Cloud-berichten](iot-hub-devguide-messages-read-custom.md).
 
-  * [Cloud-to-device-berichten verzenden vanuit IoT Hub.](iot-hub-devguide-messages-c2d.md)
+  * [Cloud-naar-apparaat-berichten verzenden vanuit IOT hub](iot-hub-devguide-messages-c2d.md).
 
-  * [IoT Hub-berichten maken en lezen](iot-hub-devguide-messages-construct.md).
+  * [IOT hub berichten maken en lezen](iot-hub-devguide-messages-construct.md).
 
-* [Als u bestanden uploadt vanaf een apparaat,](iot-hub-devguide-file-upload.md) wordt beschreven hoe u bestanden vanaf een apparaat uploaden. Het artikel bevat ook informatie over onderwerpen zoals de meldingen die het uploadproces kan verzenden.
+* [Bestanden uploaden vanaf een apparaat](iot-hub-devguide-file-upload.md) beschrijft hoe u bestanden van een apparaat kunt uploaden. Het artikel bevat ook informatie over onderwerpen, zoals de meldingen die het upload proces kan verzenden.
 
-* [Apparaatidentiteiten beheren in IoT Hub](iot-hub-devguide-identity-registry.md)beschrijft welke informatie de identiteitsregister van elke IoT-hub opslaat. Het artikel beschrijft ook hoe u het openen en wijzigen.
+* [Apparaat-Id's beheren in IOT hub](iot-hub-devguide-identity-registry.md)wordt beschreven welke gegevens elk id-REGI ster van de IOT-hub bevat. In dit artikel wordt ook beschreven hoe u deze kunt openen en wijzigen.
 
-* [Controletoegang tot IoT Hub](iot-hub-devguide-security.md) beschrijft het beveiligingsmodel dat wordt gebruikt om toegang te verlenen tot IoT Hub-functionaliteit voor zowel apparaten als cloudcomponenten. Het artikel bevat informatie over het gebruik van tokens en X.509-certificaten en details van de machtigingen die u verlenen.
+* [Toegang tot IOT hub beheersen](iot-hub-devguide-security.md) het beveiligings model dat wordt gebruikt om toegang te verlenen tot IOT hub functionaliteit voor zowel apparaten als Cloud onderdelen. Het artikel bevat informatie over het gebruik van tokens en X. 509-certificaten en Details van de machtigingen die u kunt verlenen.
 
-* [Gebruik apparaattweelingen om de status en configuraties te synchroniseren](iot-hub-devguide-device-twins.md) en beschrijft het concept van de *apparaattweeling.* Het artikel beschrijft ook de functionaliteit apparaat tweelingen bloot, zoals het synchroniseren van een apparaat met zijn apparaat twin. Het artikel bevat informatie over de gegevens die zijn opgeslagen in een apparaattweeling.
+* [Apparaatdubbels gebruiken om status en configuraties te synchroniseren,](iot-hub-devguide-device-twins.md) wordt het *apparaat-dubbele* concept beschreven. In dit artikel wordt ook de functionaliteit van het apparaat apparaatdubbels beschikbaar weer gegeven, zoals het synchroniseren van een apparaat met het apparaat twee. Het artikel bevat informatie over de gegevens die zijn opgeslagen op een apparaat, twee.
 
-* [Een directe methode op een apparaat aanroepen,](iot-hub-devguide-direct-methods.md) beschrijft de levenscyclus van een directe methode. In het artikel wordt beschreven hoe u methoden op een apparaat aanroept vanuit uw back-end-app en de directe methode op uw apparaat afhandelen.
+* [Een rechtstreekse methode aanroepen op een apparaat](iot-hub-devguide-direct-methods.md) Hiermee wordt de levens cyclus van een directe methode beschreven. In dit artikel wordt beschreven hoe u methoden kunt aanroepen op een apparaat vanuit uw back-end-app en de directe methode op het apparaat kunt afhandelen.
 
-* [Als u taken op meerdere apparaten plant,](iot-hub-devguide-jobs.md) wordt beschreven hoe u taken op meerdere apparaten plannen. In het artikel wordt beschreven hoe u taken indient die taken uitvoeren als het uitvoeren van een directe methode, waarbij een apparaat wordt bijgewerkt met een apparaattweeling. Het beschrijft ook hoe u de status van een taak opvragen.
+* [Taken op meerdere apparaten plannen](iot-hub-devguide-jobs.md) beschrijft hoe u taken op meerdere apparaten kunt plannen. In het artikel wordt beschreven hoe u taken kunt verzenden waarmee taken worden uitgevoerd als het uitvoeren van een directe methode, het bijwerken van een apparaat met behulp van een apparaat twee. Ook wordt beschreven hoe u de status van een taak doorzoekt.
 
-* [Referentie - kies een communicatieprotocol](iot-hub-devguide-protocols.md) beschrijft de communicatieprotocollen die IoT Hub ondersteunt voor apparaatcommunicatie en geeft een overzicht van de poorten die moeten worden geopend.
+* [Referentie-Kies een communicatie protocol](iot-hub-devguide-protocols.md) beschrijft de communicatie protocollen die IOT hub ondersteunt voor de communicatie van apparaten en geeft een lijst van de poorten die moeten worden geopend.
 
-* [Referentie - IoT Hub-eindpunten](iot-hub-devguide-endpoints.md) beschrijven de verschillende eindpunten die elke IoT-hub blootlegt voor runtime- en beheerbewerkingen. In het artikel wordt ook beschreven hoe u extra eindpunten maken in uw IoT-hub en hoe u een veldgateway gebruiken om connectiviteit met uw IoT Hub-eindpunten in niet-standaardscenario's in te schakelen.
+* [Referentie-IOT hub-eind punten](iot-hub-devguide-endpoints.md) beschrijven de verschillende eind punten die elke IOT-hub beschikbaar maakt voor runtime-en beheer bewerkingen. In dit artikel wordt ook beschreven hoe u extra eind punten kunt maken in uw IoT-hub en hoe u een veld Gateway gebruikt om connectiviteit met uw IoT Hub-eind punten in niet-standaard scenario's in te scha kelen.
 
-* [Referentie - IoT Hub-querytaal voor apparaattweelingen, taken en berichtroutering](iot-hub-devguide-query-language.md) beschrijft die IoT Hub-querytaal waarmee u informatie uit uw hub ophalen over uw apparaattweeling en -taken.
+* Met [referentie-IOT hub-query taal voor apparaatdubbels, Jobs en bericht routering](iot-hub-devguide-query-language.md) wordt aangegeven dat IOT hub query taal waarmee u informatie kunt ophalen van uw hub over de apparaatdubbels en taken van uw apparaat.
 
-* [Referentie - quota en beperking](iot-hub-devguide-quotas-throttling.md) geven een overzicht van de quota die zijn ingesteld in de IoT Hub-service en de beperking die optreedt wanneer u een quotum overschrijdt.
+* [Referentie-quota en beperking](iot-hub-devguide-quotas-throttling.md) zijn een samen vatting van de quota's die zijn ingesteld in de IOT hub-service en de beperking die optreedt wanneer u een quotum overschrijdt.
 
-* [Referentie - prijzen](iot-hub-devguide-pricing.md) bieden algemene informatie over verschillende SKU's en prijzen voor IoT Hub en details over hoe de verschillende IoT Hub-functionaliteiten worden gemeten als berichten door IoT Hub.
+* [Referentie-prijzen](iot-hub-devguide-pricing.md) bieden algemene informatie over de verschillende sku's en prijzen voor IOT hub en Details over de manier waarop de verschillende IOT hub functionaliteiten als berichten worden gemeten door IOT hub.
 
-* [Referentie - Apparaat- en service-SDK's](iot-hub-devguide-sdks.md) bevat de Azure IoT-SDK's voor het ontwikkelen van apparaat- en service-apps die werken met uw IoT-hub. Het artikel bevat links naar online API-documentatie.
+* [Naslag informatie over apparaat-en service-sdk's](iot-hub-devguide-sdks.md) bevat de Azure IOT-sdk's voor het ontwikkelen van apparaat-en service-apps die communiceren met uw IOT-hub. Het artikel bevat koppelingen naar online API-documentatie.
 
-* [Referentie - IoT Hub MQTT-ondersteuning](iot-hub-mqtt-support.md) biedt gedetailleerde informatie over hoe IoT Hub het MQTT-protocol ondersteunt. Het artikel beschrijft de ondersteuning voor het MQTT-protocol dat is ingebouwd in de Azure IoT SDK's en geeft informatie over het rechtstreeks gebruik van het MQTT-protocol.
+* [Referentie-IOT hub MQTT-ondersteuning](iot-hub-mqtt-support.md) bevat gedetailleerde informatie over hoe IOT hub het MQTT-protocol ondersteunt. In dit artikel wordt de ondersteuning voor het MQTT-protocol ingebouwd in de Azure IoT-Sdk's beschreven en vindt u informatie over het rechtstreeks gebruik van het MQTT-protocol.
 
-* [Woordenlijst een](iot-hub-devguide-glossary.md) lijst met algemene IoT Hub-gerelateerde termen.
+* [Verklarende woorden](iot-hub-devguide-glossary.md) lijst met algemene IOT hub voor waarden.

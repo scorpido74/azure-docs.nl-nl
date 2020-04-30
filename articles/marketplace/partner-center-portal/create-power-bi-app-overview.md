@@ -1,6 +1,6 @@
 ---
-title: Overzicht van power BI-apps maken - Azure Marketplace
-description: In dit artikel worden de stappen op hoog niveau beschreven voor het publiceren van een Power BI-app naar Microsoft AppSource. De technische en zakelijke vereisten waaraan uw Power BI-app moet voldoen om te worden gepubliceerd op de commerciële marktplaats zijn ook beschikbaar.
+title: Overzicht van het maken van Power BI-apps-Azure Marketplace
+description: In dit artikel worden de stappen op hoog niveau beschreven voor het publiceren van een Power BI-app naar Microsoft AppSource. De technische en zakelijke vereisten waaraan uw Power BI-app moet voldoen om te worden gepubliceerd op de commerciële Marketplace, worden ook verschaft.
 author: anbene
 ms.author: mingshen
 ms.service: marketplace
@@ -8,77 +8,77 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/02/2020
 ms.openlocfilehash: 8f050a43cbdf4ab29df55cd5526eb231c301b271
-ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81732665"
 ---
 # <a name="power-bi-app-creation-overview"></a>Overzicht van het maken van Power BI-apps
 
 > [!IMPORTANT]
-> We verplaatsen het beheer van uw Power BI-appaanbiedingen van Cloud Partner Portal naar Partner Center. Volg de instructies in de Power [BI-app voor](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/power-bi/cpp-power-bi-offer) Cloud Partner Portal om uw aanbiedingen te beheren totdat uw aanbiedingen zijn gemigreerd totdat uw aanbiedingen zijn gemigreerd.
+> We gaan het beheer van uw Power BI app-aanbiedingen van Cloud Partner-portal naar het partner centrum verplaatsen. Totdat uw aanbiedingen zijn gemigreerd, volgt u de instructies in [Power bi app-aanbieding](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/power-bi/cpp-power-bi-offer) voor Cloud Partner-Portal voor het beheren van uw aanbiedingen.
 
-In dit artikel wordt uitgelegd hoe u een Power BI-app publiceert naar Microsoft [AppSource.](https://appsource.microsoft.com/) Een Power BI-app verpakt aanpasbare inhoud, inclusief gegevenssets, rapporten en dashboards. U de app vervolgens gebruiken met andere Power BI-platforms met Behulp van AppSource, de aanpassingen en aanpassingen die door de ontwikkelaar zijn toegestaan, uitvoeren en deze verbinden met uw eigen gegevens.
+In dit artikel wordt uitgelegd hoe u een Power BI-app publiceert naar micro soft [AppSource](https://appsource.microsoft.com/). Een Power BI app pakketten aanpas bare inhoud, inclusief gegevens sets, rapporten en dash boards. U kunt de app vervolgens gebruiken met andere Power BI-platformen met behulp van AppSource, de aanpassingen en aanpassingen uitvoeren die door de ontwikkelaar zijn toegestaan en deze verbinden met uw eigen gegevens.
 
-## <a name="publishing-benefits"></a>Publicatievoordelen
+## <a name="publishing-benefits"></a>Publicatie voordelen
 
-Voordelen van publiceren op de commerciële marktplaats:
+Voor delen van het publiceren naar de commerciële Marketplace:
 
-- Promoot uw bedrijf met het microsoft-merk.
-- Bereik mogelijk meer dan 100 miljoen Office 365- en Dynamics 365-gebruikers via AppSource en meer dan 200.000 organisaties via Azure Marketplace.
-- Ontvang leads van hoge kwaliteit van deze marktplaatsen.
-- Laat uw services promoten door de microsoft-veld- en televerkoopteams.
+- Promoot uw bedrijf met behulp van het merk micro soft.
+- Mogelijk bereikt u meer dan 100.000.000 Office 365-en Dynamics 365-gebruikers op AppSource en meer dan 200.000 organisaties via Azure Marketplace.
+- Ontvang leads van hoge kwaliteit van deze markt plaatsen.
+- Laat uw services promoten door het micro soft-veld en de Televerkoop teams.
 
 ## <a name="overview"></a>Overzicht
 
-:::image type="content" source="media/power-bi-app-publishing-steps.png" alt-text="overzicht van de stappen om een Power BI-app te publiceren" border="false":::
+:::image type="content" source="media/power-bi-app-publishing-steps.png" alt-text="overzicht van de stappen voor het publiceren van een Power BI-app" border="false":::
 
-Dit zijn de belangrijkste publicatiestappen:
+Dit zijn de stappen voor het publiceren van sleutels:
 
-1. Maak uw toepassing in Power BI. U ontvangt een koppeling voor het installeren van pakketten, wat de belangrijkste technische troef is voor de aanbieding. Stuur het testpakket naar de preproductie voordat u de aanbieding maakt in het Partnercenter. Zie Wat [zijn Power BI-apps voor](https://docs.microsoft.com/power-bi/service-template-apps-overview)meer informatie?
-2. Voeg het marketingmateriaal toe, zoals officiële naam, beschrijving en logo's.
-3. Voeg de juridische en ondersteuningsdocumenten van de aanbieding toe, zoals gebruiksvoorwaarden, privacybeleid, ondersteuningsbeleid en gebruikershulp.
-4. Maak de aanbieding: gebruik partnercentrum om de details te bewerken, inclusief de aanbiedingsbeschrijving, marketingmateriaal, juridische informatie, ondersteuningsinformatie en assetspecificaties.
-5. Dien het in om te publiceren.
-6. Monitor het proces in partnercentrum, waar het AppSource-onboardingteam uw app test, valideert en certificeert.
-7. Nadat deze is gecertificeerd, bekijkt u de app in de testomgeving en geeft u deze vrij. Dit zal het op AppSource (het "gaat live").
-8. In Power BI u het pakket in productie nemen. Zie De [release van de Power BI-app beheren](https://docs.microsoft.com/power-bi/service-template-apps-create#manage-the-template-app-release)voor meer informatie.
+1. Maak uw toepassing in Power BI. U ontvangt een koppeling voor het installeren van pakketten. Dit is de belangrijkste technische Asset voor de aanbieding. Verzend het test pakket naar pre-productie voordat u de aanbieding maakt in het partner centrum. Zie [Wat zijn Power bi-apps?](https://docs.microsoft.com/power-bi/service-template-apps-overview)voor meer informatie.
+2. Voeg het marketing materiaal toe, zoals officiële naam, beschrijving en logo's.
+3. Neem de juridische en ondersteunende documenten van de aanbieding op, zoals gebruiks voorwaarden, privacybeleid, ondersteunings beleid en gebruikers hulp.
+4. De aanbieding maken: gebruik het partner centrum om de details te bewerken, met inbegrip van de beschrijving van het aanbod, het marketing materiaal, de juridische informatie, de ondersteunings informatie en de specificaties van de Asset.
+5. Verzend het voor publicatie.
+6. Bewaak het proces in het partner centrum, waar het AppSource-voorbereidings team uw app test, valideert en certificeert.
+7. Nadat het is gecertificeerd, controleert u de app in de test omgeving en geeft u deze vrij. Hiermee wordt het weer geven op AppSource (het ' live ').
+8. In Power BI verzendt u het pakket naar de productie omgeving. Zie [de release van de Power bi-app beheren](https://docs.microsoft.com/power-bi/service-template-apps-create#manage-the-template-app-release)voor meer informatie.
 
 ## <a name="before-you-begin"></a>Voordat u begint
 
-Bekijk de onderstaande koppelingen, die sjablonen, tips en voorbeelden bieden.
+Raadpleeg de onderstaande koppelingen voor sjablonen, tips en voor beelden.
 
 - [Een Power BI-app maken](https://docs.microsoft.com/power-bi/service-template-apps-create)
-- [Tips voor het maken van een Power BI-app](https://docs.microsoft.com/power-bi/service-template-apps-tips)
+- [Tips voor het ontwerpen van een Power BI-app](https://docs.microsoft.com/power-bi/service-template-apps-tips)
 - [Voorbeelden](https://docs.microsoft.com/power-bi/service-template-apps-samples)
 
 ## <a name="requirements"></a>Vereisten
 
-Om te worden gepubliceerd in de commerciële marktplaats, moet uw Power BI-app-aanbod voldoen aan de volgende technische en zakelijke vereisten.
+Uw Power BI-app-aanbieding moet voldoen aan de volgende technische en zakelijke vereisten om in de commerciële Marketplace te worden gepubliceerd.
 
 ### <a name="technical-requirements"></a>Technische vereisten
 
-De belangrijkste technische asset die u nodig hebt, is een [Power BI-app.](https://go.microsoft.com/fwlink/?linkid=2028636) Dit is een verzameling primaire gegevenssets, rapporten of dashboards. Het bevat ook optionele verbonden services en ingesloten gegevenssets, voorheen bekend als een [contentpack.](https://docs.microsoft.com/power-bi/service-organizational-content-pack-introduction) Zie [Wat zijn Power BI-apps voor](https://go.microsoft.com/fwlink/?linkid=2028636)meer informatie over het ontwikkelen van dit type app?
+Het belangrijkste technische activum dat u nodig hebt, is een [Power bi-app](https://go.microsoft.com/fwlink/?linkid=2028636). Dit is een verzameling primaire gegevens sets, rapporten of Dash boards. Het bevat ook optionele, gekoppelde services en Inge sloten gegevens sets, voorheen bekend als een [inhouds pakket](https://docs.microsoft.com/power-bi/service-organizational-content-pack-introduction). Zie [Wat zijn Power bi-apps?](https://go.microsoft.com/fwlink/?linkid=2028636)voor meer informatie over het ontwikkelen van dit type app.
 
-#### <a name="get-an-installation-web-address"></a>Een installatiewebadres opvragen
+#### <a name="get-an-installation-web-address"></a>Een webadres voor installatie ophalen
 
-U alleen een Power BI-app bouwen binnen de [Power BI-omgeving.](https://powerbi.microsoft.com/)
+U kunt alleen een Power BI-app bouwen binnen de [Power bi](https://powerbi.microsoft.com/) omgeving.
 
-1. Meld u aan met een [Power BI Pro-licentie.](https://docs.microsoft.com/power-bi/service-admin-purchasing-power-bi-pro)
-2. Maak en test uw app in Power BI.
-3. Wanneer u het webadres voor de installatie van de app ontvangt, voegt u deze toe aan de pagina **Technische configuratie** in partnercentrum.
+1. Meld u aan met een [Power bi Pro-licentie](https://docs.microsoft.com/power-bi/service-admin-purchasing-power-bi-pro).
+2. Uw app maken en testen in Power BI.
+3. Wanneer u het webadres voor de installatie van de app ontvangt, voegt u dit toe aan de pagina **technische configuratie** in partner centrum.
 
-Nadat uw app is gemaakt en getest in Power BI, slaat u het webadres voor de installatie van de toepassing op, omdat u deze nodig hebt om [een Power BI-app-aanbieding](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-power-bi-app-offer)te maken.
+Nadat de app is gemaakt en getest in Power BI, slaat u het webadres voor de installatie van de toepassing op, zoals u dat nodig hebt om [een Power bi app-aanbieding te maken](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-power-bi-app-offer).
 
 ### <a name="business-requirements"></a>Zakelijke vereisten
 
-De zakelijke vereisten omvatten procedurele, contractuele en wettelijke verplichtingen. U moet:
+De zakelijke vereisten zijn onder andere procedurele, contractuele en juridische verplichtingen. U moet het volgende doen:
 
-- Wees een geregistreerde commerciële marktplaats uitgever. Als je niet bent geregistreerd, volg je de stappen in [Word een commerciële marktplaatsuitgever.](https://docs.microsoft.com/azure/marketplace/become-publisher)
-- Geef inhoud die voldoet aan de criteria voor uw aanbod dat moet worden vermeld op AppSource. Zie Een app aanbieden op AppSource voor meer [informatie? Dit is hoe.](https://appsource.microsoft.com/blogs/have-an-app-to-list-on-appsource-here-s-how)
-- Ga akkoord met en volg de [Privacyverklaring van Microsoft.](https://privacy.microsoft.com/privacystatement)
+- U bent een geregistreerde commerciële Marketplace-Uitgever. Als u niet bent geregistreerd, volgt u de stappen in [een commerciële Marketplace-uitgever worden](https://docs.microsoft.com/azure/marketplace/become-publisher).
+- Geef inhoud op die voldoet aan de criteria voor uw aanbieding die worden vermeld op AppSource. Zie [een app om weer te geven op AppSource voor meer informatie. Hier volgt een beschrijving van](https://appsource.microsoft.com/blogs/have-an-app-to-list-on-appsource-here-s-how).
+- Ga akkoord met en volg de [privacyverklaring van micro soft](https://privacy.microsoft.com/privacystatement).
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Een Power BI-app-aanbieding maken in partnercentrum](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-power-bi-app-offer)
+- [Een Power BI-app-aanbieding maken in het partner centrum](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-power-bi-app-offer)

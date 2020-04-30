@@ -1,33 +1,33 @@
 ---
-title: host.json-verwijzing voor Azure-functies 1.x
-description: Referentiedocumentatie voor het Azure Functions host.json-bestand met de v1-runtime.
+title: host. json-verwijzing voor Azure Functions 1. x
+description: Referentie documentatie voor het Azure Functions host. JSON-bestand met de V1-runtime.
 ms.topic: conceptual
 ms.date: 10/19/2018
 ms.openlocfilehash: 36d028d09c94ae28e77404297bd576f5e20404c6
-ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81757513"
 ---
-# <a name="hostjson-reference-for-azure-functions-1x"></a>host.json-verwijzing voor Azure-functies 1.x
+# <a name="hostjson-reference-for-azure-functions-1x"></a>host. json-verwijzing voor Azure Functions 1. x
 
-> [!div class="op_single_selector" title1="Selecteer de versie van de runtime van Azure-functies die u gebruikt: "]
+> [!div class="op_single_selector" title1="Selecteer de versie van de Azure Functions runtime die u gebruikt: "]
 > * [Versie 1](functions-host-json-v1.md)
 > * [Versie 2](functions-host-json.md)
 
-Het bestand *host.json* metagegevens bevat algemene configuratieopties die van invloed zijn op alle functies voor een functie-app. In dit artikel worden de instellingen weergegeven die beschikbaar zijn voor de v1-runtime. Het JSON-schema http://json.schemastore.org/hostis op .
+Het meta gegevensbestand van de *host. json* bevat globale configuratie opties die van invloed zijn op alle functies voor een functie-app. In dit artikel vindt u de instellingen die beschikbaar zijn voor de V1-runtime. Het JSON-schema bevindt zich op http://json.schemastore.org/host.
 
 > [!NOTE]
-> Dit artikel is voor Azure Functions 1.x.  Zie [host.json-verwijzing naar Azure Functions 2.x](functions-host-json.md)voor een referentie van host.json in Functies 2.x .
+> Dit artikel is voor Azure Functions 1. x.  Zie [host. json Reference voor Azure functions 2. x](functions-host-json.md)voor een verwijzing naar de host. json in functions 2. x en hoger.
 
-Andere configuratieopties voor functie-apps worden beheerd in uw [app-instellingen.](functions-app-settings.md)
+Andere opties voor de configuratie van de functie-app worden beheerd in de [app-instellingen](functions-app-settings.md).
 
-Sommige instellingen host.json worden alleen gebruikt wanneer ze lokaal worden uitgevoerd in het bestand [local.settings.json.](functions-run-local.md#local-settings-file)
+Sommige host. json-instellingen worden alleen gebruikt wanneer lokaal wordt uitgevoerd in het bestand [Local. settings. json](functions-run-local.md#local-settings-file) .
 
-## <a name="sample-hostjson-file"></a>Voorbeeld van host.json-bestand
+## <a name="sample-hostjson-file"></a>Voor beeld van host. JSON-bestand
 
-De volgende *voorbeeldhost.json-bestanden* hebben alle mogelijke opties opgegeven.
+Voor de volgende voor beeld- *JSON* -bestanden zijn alle mogelijke opties opgegeven.
 
 
 ```json
@@ -112,7 +112,7 @@ De volgende *voorbeeldhost.json-bestanden* hebben alle mogelijke opties opgegeve
 
 In de volgende secties van dit artikel wordt elke eigenschap op het hoogste niveau uitgelegd. Alle zijn optioneel, tenzij anders aangegeven.
 
-## <a name="aggregator"></a>Aggregator
+## <a name="aggregator"></a>aggregator
 
 [!INCLUDE [aggregator](../../includes/functions-host-json-aggregator.md)]
 
@@ -122,7 +122,7 @@ In de volgende secties van dit artikel wordt elke eigenschap op het hoogste nive
 
 ## <a name="documentdb"></a>DocumentDB
 
-Configuratie-instellingen voor de [Azure Cosmos DB-trigger en bindingen](functions-bindings-cosmosdb.md).
+Configuratie-instellingen voor de [Azure Cosmos DB trigger en bindingen](functions-bindings-cosmosdb.md).
 
 ```json
 {
@@ -138,21 +138,21 @@ Configuratie-instellingen voor de [Azure Cosmos DB-trigger en bindingen](functio
 
 |Eigenschap  |Standaard | Beschrijving |
 |---------|---------|---------|
-|GatewayMode|Gateway|De verbindingsmodus die door de functie wordt gebruikt bij het maken van verbinding met de Azure Cosmos DB-service. Opties `Direct` zijn en`Gateway`|
-|Protocol|Https (https)|Het verbindingsprotocol dat door de functie wordt gebruikt bij de verbinding met de Azure Cosmos DB-service.  Lees [hier een uitleg van beide modi](../cosmos-db/performance-tips.md#networking)|
-|leaseVoorvoegsel|N.v.t.|Lease-voorvoegsel voor alle functies in een app.|
+|GatewayMode|Gateway|De verbindings modus die wordt gebruikt door de functie bij het maken van verbinding met de Azure Cosmos DB-service. Opties zijn `Direct` en`Gateway`|
+|Protocol|Https|Het verbindings protocol dat door de functie wordt gebruikt bij het verbinden met de Azure Cosmos DB-service.  Lees [hier voor een uitleg van beide modi](../cosmos-db/performance-tips.md#networking)|
+|leasePrefix|N.v.t.|Het lease voorvoegsel dat moet worden gebruikt voor alle functies in een app.|
 
-## <a name="durabletask"></a>duurzaamTask
+## <a name="durabletask"></a>durableTask
 
 [!INCLUDE [durabletask](../../includes/functions-host-json-durabletask.md)]
 
 ## <a name="eventhub"></a>eventHub
 
-Configuratie-instellingen voor [gebeurtenishubtriggers en -bindingen](functions-bindings-event-hubs-trigger.md#functions-1x).
+Configuratie-instellingen voor [Event hub-triggers en-bindingen](functions-bindings-event-hubs-trigger.md#functions-1x).
 
-## <a name="functions"></a>Functies
+## <a name="functions"></a>vervullen
 
-Een lijst met functies die de taakhost uitvoert. Een lege array betekent dat alle functies worden uitgevoerd. Alleen bedoeld voor gebruik bij [lokaal hardlopen.](functions-run-local.md) In functie-apps in Azure moet u in plaats daarvan de stappen volgen in [Hoe u functies in Azure-functies uitschakelt](disable-function.md) om specifieke functies uit te schakelen in plaats van deze instelling te gebruiken.
+Een lijst met functies die de taak host uitvoert. Een lege matrix houdt in dat alle functies worden uitgevoerd. Alleen bedoeld voor gebruik bij [lokaal uitvoeren](functions-run-local.md). In functie-apps in azure moet u in plaats daarvan de stappen volgen in [het uitschakelen van functies in azure functions](disable-function.md) om specifieke functies uit te scha kelen in plaats van deze instelling te gebruiken.
 
 ```json
 {
@@ -160,9 +160,9 @@ Een lijst met functies die de taakhost uitvoert. Een lege array betekent dat all
 }
 ```
 
-## <a name="functiontimeout"></a>functieTime-out
+## <a name="functiontimeout"></a>functionTimeout
 
-Geeft de time-outduur voor alle functies aan. In een serverloos verbruiksplan is het geldige bereik 1 seconde tot 10 minuten en de standaardwaarde 5 minuten. In een App Service-abonnement is er geen algemene limiet en is de standaardinstelling _null_, wat geen time-out aangeeft.
+Hiermee wordt de duur van de time-out voor alle functies aangegeven. In een serverloze verbruiks abonnement is het geldige bereik van 1 seconde tot 10 minuten en de standaard waarde is 5 minuten. In een App Service plan is er geen algemene limiet en de standaard waarde is _Null_, wat geen time-out aangeeft.
 
 ```json
 {
@@ -172,7 +172,7 @@ Geeft de time-outduur voor alle functies aan. In een serverloos verbruiksplan is
 
 ## <a name="healthmonitor"></a>healthMonitor
 
-Configuratie-instellingen voor [hoststatusmonitor](https://github.com/Azure/azure-webjobs-sdk-script/wiki/Host-Health-Monitor).
+Configuratie-instellingen voor de [host Health Monitor](https://github.com/Azure/azure-webjobs-sdk-script/wiki/Host-Health-Monitor).
 
 ```
 {
@@ -188,15 +188,15 @@ Configuratie-instellingen voor [hoststatusmonitor](https://github.com/Azure/azur
 
 |Eigenschap  |Standaard | Beschrijving |
 |---------|---------|---------| 
-|enabled|waar|Hiermee geeft u op of de functie is ingeschakeld. | 
-|healthCheckInterval|10 seconden|Het tijdsinterval tussen de periodieke achtergrondstatuscontroles. | 
-|healthCheckWindow|2 minuten|Een schuiftijdvenster dat wordt `healthCheckThreshold` gebruikt in combinatie met de instelling.| 
-|healthCheckThreshold|6|Maximaal aantal keren dat de statuscontrole kan mislukken voordat een hostwordt gestart.| 
-|tegenDrempel|0,80|De drempel waarop een prestatiemeter als ongezond wordt beschouwd.| 
+|enabled|waar|Hiermee wordt aangegeven of de functie is ingeschakeld. | 
+|healthCheckInterval|10 seconden|Het tijds interval tussen de periodieke status controles voor de achtergrond. | 
+|healthCheckWindow|2 minuten|Een schuif tijd venster dat wordt gebruikt in combi natie `healthCheckThreshold` met de instelling.| 
+|healthCheckThreshold|6|Maximum aantal keer dat de status controle kan mislukken voordat een host recyclen wordt gestart.| 
+|counterThreshold|0,80|De drempel waarde waarbij een prestatie meter item wordt beschouwd als een slechte status.| 
 
 ## <a name="http"></a>http
 
-Configuratie-instellingen voor [http-triggers en bindingen](functions-bindings-http-webhook.md).
+Configuratie-instellingen voor [http-triggers en-bindingen](functions-bindings-http-webhook.md).
 
 ```json
 {
@@ -211,16 +211,16 @@ Configuratie-instellingen voor [http-triggers en bindingen](functions-bindings-h
 
 |Eigenschap  |Standaard | Beschrijving |
 |---------|---------|---------| 
-|dynamicThrottlesEnabled|false|Wanneer ingeschakeld, zorgt deze instelling ervoor dat de aanvraagverwerkingpijplijn periodiek systeemprestatietellers controleert, zoals verbindingen/threads/processen/geheugen/cpu/etc. en als een van deze tellers boven een ingebouwde hoge drempel (80%) staat, worden aanvragen geweigerd met een 429 "Te bezet" antwoord totdat de teller(en) terugkeren naar normale niveaus.|
-|maxConcurrentRequests|onbegrensd (`-1`)|Het maximum aantal HTTP-functies dat parallel wordt uitgevoerd. Hiermee u gelijktijdigheid beheren, wat kan helpen bij het beheren van het gebruik van resources. U bijvoorbeeld een HTTP-functie hebben die veel systeembronnen (geheugen/cpu/sockets) gebruikt, zodat het problemen veroorzaakt wanneer gelijktijdigheid te hoog is. Of u hebt mogelijk een functie die uitgaande aanvragen maakt voor een service van derden, en die oproepen moeten worden beperkt. In deze gevallen kan het toepassen van een gaspedaal hier helpen.|
-|maxOutstandingRequests|onbegrensd (`-1`)|Het maximum aantal openstaande aanvragen dat op een bepaald moment wordt gehouden. Deze limiet omvat aanvragen die in de wachtrij staan, maar die niet zijn gestart met uitvoeren, evenals uitvoeringen in uitvoering. Alle binnenkomende aanvragen boven deze limiet worden afgewezen met een antwoord van 429 'Te bezet'. Dat stelt bellers in staat om op tijd gebaseerde strategieën voor nieuwe technieken te gebruiken en helpt u ook om maximale aanvraaglatencies te controleren. Dit bepaalt alleen wachtrijen die plaatsvinden binnen het uitvoeringspad van scripthost. Andere wachtrijen, zoals de wachtrij voor ASP.NET aanvraag, zijn nog steeds van kracht en worden niet beïnvloed door deze instelling.|
-|routeVoorvoegsel|api|Het routevoorvoegsel dat van toepassing is op alle routes. Gebruik een lege tekenreeks om het standaardvoorvoegsel te verwijderen. |
+|dynamicThrottlesEnabled|false|Als deze instelling is ingeschakeld, wordt door de aanvraag verwerkings pijplijn regel matig de systeem prestatie meter items gecontroleerd, zoals verbindingen/threads/processen/geheugen/CPU/etc. als een van deze prestatie meter items een ingebouwde hoge drempel waarde (80%) heeft, worden aanvragen geweigerd met een 429 ' te druk ' te allen tijde, totdat de teller (s) op normale niveaus terugkeren.|
+|maxConcurrentRequests|niet-gebonden (`-1`)|Het maximum aantal HTTP-functies dat parallel wordt uitgevoerd. Op die manier kunt u gelijktijdigheid beheren, waardoor het resource gebruik kan worden beheerd. Stel dat u een HTTP-functie hebt die gebruikmaakt van veel systeem bronnen (geheugen/CPU/sockets), zodat er problemen ontstaan wanneer gelijktijdigheid te hoog is. Het is ook mogelijk dat u een functie hebt waarmee uitgaande aanvragen voor een service van derden worden uitgevoerd. deze aanroepen moeten een beperkt aantal zijn. In dergelijke gevallen kan het Toep assen van een beperking hier helpen.|
+|maxOutstandingRequests|niet-gebonden (`-1`)|Het maximum aantal openstaande aanvragen dat op een bepaald moment wordt bewaard. Deze limiet omvat aanvragen die in de wachtrij zijn geplaatst, maar die nog niet zijn gestart, evenals de uitvoeringen die worden uitgevoerd. Alle binnenkomende aanvragen die deze limiet overschrijden, worden geweigerd met een antwoord van 429 ' bezet '. Hiermee kunnen aanroepers op tijd gebaseerde strategieën voor nieuwe pogingen gebruiken en kunt u ook de maximum latentie van aanvragen beheren. Hiermee beheert u alleen de wachtrij die zich in het uitvoerings traject van de Script Host voordoet. Andere wacht rijen, zoals de ASP.NET-aanvraag wachtrij, blijven van kracht en worden niet beïnvloed door deze instelling.|
+|routePrefix|api|Het route voorvoegsel dat van toepassing is op alle routes. Gebruik een lege teken reeks om het standaard voorvoegsel te verwijderen. |
 
 ## <a name="id"></a>id
 
-De unieke ID voor een jobhost. Kan een kleine letters GUID met streepjes verwijderd. Vereist bij lokaal hardlopen. Wanneer u in Azure wordt uitgevoerd, raden we u aan geen id-waarde in te stellen. Een ID wordt automatisch gegenereerd `id` in Azure wanneer deze wordt weggelaten. 
+De unieke ID voor een beveiligingshost. Kan een kleine letter-GUID zijn waarbij streepjes worden verwijderd. Vereist wanneer lokaal wordt uitgevoerd. Bij het uitvoeren in azure wordt u aangeraden geen ID-waarde in te stellen. Een ID wordt automatisch gegenereerd in azure wanneer `id` wordt wegge laten. 
 
-Als u een Opslagaccount deelt in meerdere functie-apps, `id`controleert u of elke functie-app een andere . U de `id` eigenschap weglaten of handmatig `id` instellen dat elke functie-app op een andere waarde wordt ingesteld. De timertrigger maakt gebruik van een opslagvergrendeling om ervoor te zorgen dat er slechts één timerinstantie is wanneer een functie-app wordt geschaald naar meerdere exemplaren. Als twee functie-apps `id` hetzelfde delen en elk een timertrigger gebruikt, wordt er slechts één timer uitgevoerd.
+Als u een opslag account deelt in meerdere functie-apps, moet u ervoor zorgen dat elke functie- `id`app een andere heeft. U kunt de eigenschap `id` weglaten of de functie-app hand `id` matig instellen op een andere waarde. De timer trigger gebruikt een opslag vergrendeling om ervoor te zorgen dat er slechts één timer exemplaar is wanneer een functie-app wordt geschaald naar meerdere exemplaren. Als twee functie-apps hetzelfde `id` hebben en elk een timer trigger gebruikt, wordt er slechts één timer uitgevoerd.
 
 ```json
 {
@@ -228,9 +228,9 @@ Als u een Opslagaccount deelt in meerdere functie-apps, `id`controleert u of elk
 }
 ```
 
-## <a name="logger"></a>Logger
+## <a name="logger"></a>logger
 
-Hiermee besturingselementen voor logboeken die zijn geschreven door een [ILogger-object](functions-monitoring.md#write-logs-in-c-functions) of door [context.log](functions-monitoring.md#write-logs-in-javascript-functions).
+Hiermee wordt gefilterd op Logboeken die zijn geschreven door een [ILogger-object](functions-monitoring.md#write-logs-in-c-functions) of [context. log](functions-monitoring.md#write-logs-in-javascript-functions).
 
 ```json
 {
@@ -249,13 +249,13 @@ Hiermee besturingselementen voor logboeken die zijn geschreven door een [ILogger
 
 |Eigenschap  |Standaard | Beschrijving |
 |---------|---------|---------| 
-|categorieFilter|N.v.t.|Hiermee geeft u filtering op categorie op| 
-|defaultLevel defaultLevel defaultLevel defaultLevel|Informatie|Voor categorieën die niet `categoryLevels` in de array zijn opgegeven, verzendt u logboeken op dit niveau en hoger naar Application Insights.| 
-|categorieNiveaus|N.v.t.|Een array met categorieën die het minimale logboekniveau opgeeft dat voor elke categorie naar Toepassingsstatistieken moet worden verzonden. De hier opgegeven categorie bepaalt alle categorieën die met dezelfde waarde beginnen en langere waarden hebben voorrang. In het vorige *voorbeeldhost.json-bestand* worden alle categorieën die beginnen met `Information` het logboek Host.Aggregator op niveau. Alle andere categorieën die beginnen met 'Host', zoals `Error` Host.Executor, loggen op niveau.| 
+|categoryFilter|N.v.t.|Hiermee wordt gefilterd op categorie opgegeven| 
+|defaultLevel|Informatie|Voor alle categorieën die niet in de `categoryLevels` matrix zijn opgegeven, verzendt u logboeken op dit niveau en hierboven naar Application Insights.| 
+|categoryLevels|N.v.t.|Een matrix met categorieën die het minimale logboek niveau opgeven dat moet worden verzonden naar Application Insights voor elke categorie. De categorie die hier is opgegeven, bepaalt alle categorieën die beginnen met dezelfde waarde, en de langere waarden hebben prioriteit. In het voor gaande voor beeld van een *host. json* -bestand worden alle categorieën die beginnen met ' host. `Information` aggregator ' op niveau vastgelegd. Alle andere categorieën die beginnen met ' host ', zoals ' host. uitvoerder ', logboek `Error` op niveau.| 
 
-## <a name="queues"></a>Wachtrijen
+## <a name="queues"></a>Bestel
 
-Configuratie-instellingen voor [opslagwachtrijtriggers en -bindingen](functions-bindings-storage-queue.md).
+Configuratie-instellingen voor [opslag wachtrij-Triggers en-bindingen](functions-bindings-storage-queue.md).
 
 ```json
 {
@@ -271,15 +271,15 @@ Configuratie-instellingen voor [opslagwachtrijtriggers en -bindingen](functions-
 
 |Eigenschap  |Standaard | Beschrijving |
 |---------|---------|---------| 
-|maxPollingInterval|60000|Het maximale interval in milliseconden tussen wachtrijpeilingen.| 
-|zichtbaarheidTime-out|0|Het tijdsinterval tussen nieuwe pogingen bij verwerking van een bericht mislukt.| 
-|batchSize|16|Het aantal wachtrijberichten dat de runtime van de functies gelijktijdig ophaalt en parallel verwerkt. Wanneer het aantal dat wordt `newBatchThreshold`verwerkt wordt neerop de , de runtime krijgt een andere batch en begint de verwerking van deze berichten. Dus het maximum aantal gelijktijdige berichten dat `batchSize` `newBatchThreshold`per functie wordt verwerkt is plus . Deze limiet is afzonderlijk van toepassing op elke functie die in de wachtrij wordt geactiveerd. <br><br>Als u parallelle uitvoering wilt voorkomen voor berichten die `batchSize` in één wachtrij zijn ontvangen, u instellen op 1. Deze instelling elimineert echter alleen gelijktijdigheid zolang uw functie-app op één virtuele machine (VM) wordt uitgevoerd. Als de functie-app wordt geschaald naar meerdere VM's, kan elke VM één instantie van elke functie die in de wachtrij wordt geactiveerd, uitvoeren.<br><br>Het `batchSize` maximum is 32. | 
-|maxDequeueCount|5|Het aantal keren dat u een bericht wilt verwerken voordat u het naar de gifwachtrij verplaatst.| 
-|newBatchThreshold|batchGrootte/2|Wanneer het aantal berichten dat gelijktijdig wordt verwerkt, aan dit aantal wordt afgenomen, wordt een andere batch opgehaald.| 
+|maxPollingInterval|60000|Het maximum interval in milliseconden tussen de wachtrij polls.| 
+|visibilityTimeout|0|Het tijds interval tussen nieuwe pogingen wanneer het verwerken van een bericht mislukt.| 
+|batchSize|16|Het aantal wachtrij berichten dat door de functions-runtime gelijktijdig wordt opgehaald en processen parallel. Wanneer het nummer dat wordt verwerkt, naar de `newBatchThreshold`wordt Verwerk, wordt er door de runtime een andere batch opgehaald en worden deze berichten verwerkt. Het maximum aantal gelijktijdige berichten dat per functie wordt verwerkt, is `batchSize` plus `newBatchThreshold`. Deze limiet geldt afzonderlijk voor elke door de wachtrij geactiveerde functie. <br><br>Als u een parallelle uitvoering wilt voor komen voor berichten die worden ontvangen op één wachtrij, `batchSize` kunt u instellen op 1. Met deze instelling elimineert u echter alleen gelijktijdigheid, zolang uw functie-app wordt uitgevoerd op één virtuele machine (VM). Als de functie-app wordt geschaald naar meerdere Vm's, kan elke virtuele machine één exemplaar van elke door de wachtrij geactiveerde functie uitvoeren.<br><br>De maximum `batchSize` waarde is 32. | 
+|maxDequeueCount|5|Het aantal keren dat een bericht moet worden verwerkt voordat het naar de verontreinigde wachtrij wordt verplaatst.| 
+|newBatchThreshold|batchSize/2|Telkens wanneer het aantal berichten dat gelijktijdig wordt verwerkt, naar dit nummer wordt opgehaald, haalt de runtime een andere batch op.| 
 
 ## <a name="sendgrid"></a>SendGrid
 
-Configuratie-instelling voor de [sendgrind-uitvoerbinding](functions-bindings-sendgrid.md)
+Configuratie-instelling voor de [SendGrind-uitvoer binding](functions-bindings-sendgrid.md)
 
 ```json
 {
@@ -290,11 +290,11 @@ Configuratie-instelling voor de [sendgrind-uitvoerbinding](functions-bindings-se
 
 |Eigenschap  |Standaard | Beschrijving |
 |---------|---------|---------| 
-|from|N.v.t.|Het e-mailadres van de afzender voor alle functies.| 
+|from|N.v.t.|Het e-mail adres van de afzender over alle functies.| 
 
 ## <a name="servicebus"></a>serviceBus
 
-Configuratie-instelling voor [servicebustriggers en -bindingen](functions-bindings-service-bus.md).
+Configuratie-instelling voor [Service Bus triggers en bindingen](functions-bindings-service-bus.md).
 
 ```json
 {
@@ -308,13 +308,13 @@ Configuratie-instelling voor [servicebustriggers en -bindingen](functions-bindin
 
 |Eigenschap  |Standaard | Beschrijving |
 |---------|---------|---------| 
-|maxConcurrentCalls|16|Het maximum aantal gelijktijdige oproepen naar de callback die de berichtpomp moet initiëren. Standaard verwerkt de runtime Functies meerdere berichten tegelijk. Als u de runtime wilt richten op het verwerken `maxConcurrentCalls` van slechts één wachtrij of onderwerpbericht tegelijk, stelt u deze in op 1. | 
-|prefetchCount prefetchCount prefetchCount prefetch|N.v.t.|De standaard PrefetchCount die wordt gebruikt door de onderliggende MessageReceiver.| 
-|automatische time-out automatisch vernieuwen|00:05:00|De maximale duur waarbinnen het berichtslot automatisch wordt verlengd.| 
+|maxConcurrentCalls|16|Het maximum aantal gelijktijdige aanroepen naar de retour aanroep dat de bericht pomp moet initiëren. De functie runtime verwerkt standaard meerdere berichten tegelijk. Als u wilt dat de runtime slechts één wachtrij of onderwerp bericht per keer verwerkt, stelt `maxConcurrentCalls` u in op 1. | 
+|prefetchCount|N.v.t.|De standaard PrefetchCount die wordt gebruikt door de onderliggende MessageReceiver.| 
+|autoRenewTimeout|00:05:00|De maximale duur waarbinnen de bericht vergrendeling automatisch wordt vernieuwd.| 
 
 ## <a name="singleton"></a>Singleton
 
-Configuratie-instellingen voor singleton-vergrendelingsgedrag. Zie [GitHub-probleem over singleton-ondersteuning](https://github.com/Azure/azure-webjobs-sdk-script/issues/912)voor meer informatie.
+Configuratie-instellingen voor het gedrag van Singleton-vergren deling. Zie [github-probleem over Singleton-ondersteuning](https://github.com/Azure/azure-webjobs-sdk-script/issues/912)voor meer informatie.
 
 ```json
 {
@@ -330,17 +330,17 @@ Configuratie-instellingen voor singleton-vergrendelingsgedrag. Zie [GitHub-probl
 
 |Eigenschap  |Standaard | Beschrijving |
 |---------|---------|---------| 
-|lockPeriode|00:00:15|De periode waarvoor functieniveauvergrendelingen worden genomen. De sloten automatisch vernieuwen.| 
-|listenerLockPeriod|00:01:00|De periode waarvoor luisteraar vergrendelt, wordt genomen.| 
-|listenerLockRecoveryPollingInterval|00:01:00|Het tijdsinterval dat wordt gebruikt voor het herstel van listenervergrendeling als een listenerslot niet kan worden verkregen bij het opstarten.| 
-|lockAcquisitionTimeout|00:01:00|De maximale tijd van de runtime zal proberen om een slot te verwerven.| 
-|lockAcquisitionPollingInterval|N.v.t.|Het interval tussen pogingen voor het verkrijgen van het slot.| 
+|lockPeriod|00:00:15|De periode waarin vergrendelingen op functie niveau worden uitgevoerd. De vergren delingen automatisch verlengen.| 
+|listenerLockPeriod|00:01:00|De periode waarin de luister vergrendelingen worden uitgevoerd.| 
+|listenerLockRecoveryPollingInterval|00:01:00|Het tijds interval dat wordt gebruikt voor het herstel van de listener-vergren deling als tijdens het opstarten geen listener-vergrendeling kan worden verkregen.| 
+|lockAcquisitionTimeout|00:01:00|De maximale hoeveelheid tijd die de runtime probeert een vergren deling te verkrijgen.| 
+|lockAcquisitionPollingInterval|N.v.t.|Het interval tussen overname pogingen voor vergren delen.| 
 
-## <a name="tracing"></a>Tracering
+## <a name="tracing"></a>tracering
 
-*Versie 1.x*
+*Versie 1. x*
 
-Configuratie-instellingen voor logboeken die `TraceWriter` u maakt met behulp van een object. Zie [C# Logging](functions-reference-csharp.md#logging) en [Node.js Logging](functions-reference-node.md#writing-trace-output-to-the-console).
+Configuratie-instellingen voor logboeken die u maakt met `TraceWriter` behulp van een-object. Zie [C#-logboek registratie](functions-reference-csharp.md#logging) en [node. js-logboek registratie](functions-reference-node.md#writing-trace-output-to-the-console).
 
 ```json
 {
@@ -353,12 +353,12 @@ Configuratie-instellingen voor logboeken die `TraceWriter` u maakt met behulp va
 
 |Eigenschap  |Standaard | Beschrijving |
 |---------|---------|---------| 
-|consoleLevel|Info|Het traceringsniveau voor consolelogboekregistratie. `off`Opties zijn: `error` `warning`, `info`, `verbose`, en .|
-|fileLoggingMode|foutopsporingAlleen|Het traceringsniveau voor bestandsregistratie. Opties `never`zijn `always` `debugOnly`, , .| 
+|consoleLevel|Info|Het tracerings niveau voor console logboek registratie. Opties zijn: `off`, `error`, `warning`, `info`en `verbose`.|
+|fileLoggingMode|debugOnly|Het tracerings niveau voor logboek registratie van bestanden. Opties zijn `never`, `always`, `debugOnly`.| 
 
-## <a name="watchdirectories"></a>horlogeDirectories
+## <a name="watchdirectories"></a>watchDirectories
 
-Een set [gedeelde codemappen](functions-reference-csharp.md#watched-directories) die moeten worden gecontroleerd op wijzigingen.  Zorgt ervoor dat wanneer de code in deze mappen wordt gewijzigd, de wijzigingen worden opgepikt door uw functies.
+Een set [gedeelde code mappen](functions-reference-csharp.md#watched-directories) die moeten worden gecontroleerd op wijzigingen.  Zorgt ervoor dat wanneer de code in deze directory's wordt gewijzigd, de wijzigingen worden opgehaald door uw functies.
 
 ```json
 {
@@ -369,7 +369,7 @@ Een set [gedeelde codemappen](functions-reference-csharp.md#watched-directories)
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"]
-> [Meer informatie over het bijwerken van het host.json-bestand](functions-reference.md#fileupdate)
+> [Meer informatie over het bijwerken van het bestand host. json](functions-reference.md#fileupdate)
 
 > [!div class="nextstepaction"]
-> [Bekijk globale instellingen in omgevingsvariabelen](functions-app-settings.md)
+> [Algemene instellingen in omgevings variabelen weer geven](functions-app-settings.md)

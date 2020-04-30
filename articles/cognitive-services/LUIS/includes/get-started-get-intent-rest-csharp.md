@@ -1,5 +1,5 @@
 ---
-title: 'Krijg voorspelling met REST call in C #'
+title: 'Voor spelling met een REST-aanroep in C ophalen #'
 titleSuffix: Azure Cognitive Services
 services: cognitive-services
 author: diberry
@@ -9,53 +9,53 @@ ms.topic: include
 ms.date: 04/20/2020
 ms.author: diberry
 ms.openlocfilehash: 20916ff80ae52ee9fc215d87c0987900d89e590a
-ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81733259"
 ---
 ## <a name="prerequisites"></a>Vereisten
 
-* [.NET Core V2.2+](https://dotnet.microsoft.com/download)
+* [.NET core V 2.2 +](https://dotnet.microsoft.com/download)
 * [Visual Studio Code](https://code.visualstudio.com/)
-* Een LUIS-app-id - gebruik de `df67dcdb-c37d-46af-88e1-8b97951ca1c2`openbare IoT-app-id van . De gebruikersquery die wordt gebruikt in de quickstartcode is specifiek voor die app.
+* Een LUIS-App-ID: gebruik de open bare IoT `df67dcdb-c37d-46af-88e1-8b97951ca1c2`-app-id van. De gebruikers query die in de Quick Start code wordt gebruikt, is specifiek voor die app.
 
-## <a name="create-luis-runtime-key-for-predictions"></a>Luis-runtime-sleutel maken voor voorspellingen
+## <a name="create-luis-runtime-key-for-predictions"></a>Een LUIS-runtime sleutel maken voor voor spellingen
 
-1. Aanmelden bij de [Azure-portal](https://portal.azure.com)
-1. Klik [op **Taalverstaan maken** ](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesLUISAllInOne)
-1. Voer alle vereiste instellingen voor Runtime-toets in:
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com)
+1. Klik [op **Language Understanding** maken](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesLUISAllInOne)
+1. Voer alle vereiste instellingen voor de runtime sleutel in:
 
     |Instelling|Waarde|
     |--|--|
     |Naam|Gewenste naam (2-64 tekens)|
-    |Abonnement|Passend abonnement selecteren|
-    |Locatie|Selecteer een nabijgelegen en beschikbare locatie|
-    |Prijscategorie|`F0`- de minimale prijscategorie|
-    |Resourcegroep|Een beschikbare resourcegroep selecteren|
+    |Abonnement|Selecteer het juiste abonnement|
+    |Locatie|Selecteer een locatie in de buurt en beschik bare locaties|
+    |Prijscategorie|`F0`-de minimale prijs categorie|
+    |Resourcegroep|Een beschik bare resource groep selecteren|
 
-1. Klik **op Maken** en wacht tot de resource is gemaakt. Nadat deze is gemaakt, navigeert u naar de resourcepagina.
-1. Verzamel geconfigureerd `endpoint` en `key`een .
+1. Klik op **maken** en wacht tot de resource is gemaakt. Nadat deze is gemaakt, gaat u naar de pagina resource.
+1. Verzameling geconfigureerd `endpoint` en een `key`.
 
 ## <a name="get-intent-programmatically"></a>De intentie programmatisch ophalen
 
-Gebruik C# (.NET Core) om het [voorspellingseindpunt](https://aka.ms/luis-apim-v3-prediction) op te vragen en een voorspellingsresultaat te krijgen.
+Gebruik C# (.NET core) om het [Voorspellings eindpunt](https://aka.ms/luis-apim-v3-prediction) op te vragen en een Voorspellings resultaat te krijgen.
 
-1. Maak een nieuwe consoletoepassing die is gericht op de `predict-with-rest`C#-taal, met een project- en mapnaam van .
+1. Maak een nieuwe console toepassing met als doel de C#-taal, met de naam van het `predict-with-rest`project en de map van.
 
     ```console
     dotnet new console -lang C# -n predict-with-rest
     ```
 
-1. Wijzig de `predict-with-rest` map die u zojuist hebt gemaakt en installeer vereiste afhankelijkheden met deze opdrachten:
+1. Ga naar de `predict-with-rest` map die u zojuist hebt gemaakt en installeer de vereiste afhankelijkheden met de volgende opdrachten:
 
     ```console
     cd predict-with-rest
     dotnet add package System.Net.Http
     ```
 
-1. Open `Program.cs` in je favoriete IDE of editor. Overschrijven `Program.cs` met de volgende code:
+1. Open `Program.cs` in uw favoriete IDE of editor. Vervang `Program.cs` vervolgens door de volgende code:
 
    ```csharp
     using System;
@@ -115,33 +115,33 @@ Gebruik C# (.NET Core) om het [voorspellingseindpunt](https://aka.ms/luis-apim-v
 
    ```
 
-1. Vervang `YOUR-KEY` de `YOUR-ENDPOINT` waarden door uw eigen voorspellingssleutel en eindpunt.
+1. Vervang de `YOUR-KEY` waarden `YOUR-ENDPOINT` en door uw eigen Voorspellings sleutel en eind punt.
 
     |Informatie|Doel|
     |--|--|
-    |`YOUR-KEY`|Uw 32 karakter voorspelling sleutel.|
-    |`YOUR-ENDPOINT`| Uw voorspelling URL eindpunt. Bijvoorbeeld `replace-with-your-resource-name.api.cognitive.microsoft.com`.|
+    |`YOUR-KEY`|Uw 32-teken Voorspellings sleutel.|
+    |`YOUR-ENDPOINT`| Het eind punt voor de voor Spellings-URL. Bijvoorbeeld `replace-with-your-resource-name.api.cognitive.microsoft.com`.|
 
-1. Bouw de consoletoepassing met deze opdracht:
+1. Bouw de console toepassing met deze opdracht:
 
     ```console
     dotnet build
     ```
 
-1. Voer de consoletoepassing uit. De console-uitvoer geeft dezelfde JSON weer die u eerder in het browservenster hebt gezien.
+1. Voer de consoletoepassing uit. De console-uitvoer bevat dezelfde JSON die u eerder hebt gezien in het browser venster.
 
     ```console
     dotnet run
     ```
 
-1. Bekijk de voorspellingsrespons, die wordt geretourneerd als JSON:
+1. Bekijk het Voorspellings antwoord dat wordt geretourneerd als JSON:
 
     ```console
     Hit ENTER to exit...
     {'query': 'turn on all lights', 'prediction': {'topIntent': 'HomeAutomation.TurnOn', 'intents': {'HomeAutomation.TurnOn': {'score': 0.5375382}, 'None': {'score': 0.08687421}, 'HomeAutomation.TurnOff': {'score': 0.0207554}}, 'entities': {'HomeAutomation.Operation': ['on'], '$instance': {'HomeAutomation.Operation': [{'type': 'HomeAutomation.Operation', 'text': 'on', 'startIndex': 5, 'length': 2, 'score': 0.724984169, 'modelTypeId': -1, 'modelType': 'Unknown', 'recognitionSources': ['model']}]}}}}
     ```
 
-    De JSON-respons die is opgemaakt voor leesbaarheid:
+    Het JSON-antwoord dat is opgemaakt voor de Lees baarheid:
 
     ```JSON
     {
@@ -186,9 +186,9 @@ Gebruik C# (.NET Core) om het [voorspellingseindpunt](https://aka.ms/luis-apim-v
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
-Wanneer u klaar bent met deze quickstart, verwijdert u het bestand uit het bestandssysteem.
+Wanneer u klaar bent met deze Quick Start, verwijdert u het bestand uit het bestands systeem.
 
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"]
-> [Uitingen toevoegen en trainen](../get-started-get-model-rest-apis.md)
+> [Uitingen en Train toevoegen](../get-started-get-model-rest-apis.md)

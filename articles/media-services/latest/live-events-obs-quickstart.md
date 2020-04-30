@@ -1,6 +1,6 @@
 ---
-title: Een livestream van Azure Media Services maken met OBS Studio
-description: Meer informatie over het maken van een livestream van Azure Media Services met behulp van de portal en OBS Studio
+title: Een Azure Media Services live stream maken met IB Studio
+description: Meer informatie over het maken van een Azure Media Services live stream met behulp van de portal en IB Studio
 services: media-services
 ms.service: media-services
 ms.topic: quickstart
@@ -8,216 +8,216 @@ ms.author: inhenkel
 author: IngridAtMicrosoft
 ms.date: 04/16/2020
 ms.openlocfilehash: 74aa17fb17d682449bd817945c3b8bbf3f95363e
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81726611"
 ---
-# <a name="create-an-azure-media-services-live-stream-with-obs"></a>Een livestream van Azure Media Services maken met OBS
+# <a name="create-an-azure-media-services-live-stream-with-obs"></a>Een Azure Media Services live stream maken met IB
 
-Met deze quickstart u een livestream van Azure Media Services maken met behulp van de Azure-portal en Open Broadcasting Studio (OBS). Er wordt van uitgegaan dat u een Azure-abonnement hebt en een Media Services-account hebt gemaakt.
+Deze Quick Start helpt u bij het maken van een Azure Media Services live stream met behulp van de Azure Portal en open Broadcasting Studio (IB). Hierbij wordt ervan uitgegaan dat u een Azure-abonnement hebt en een Media Services-account hebt gemaakt.
 
-In deze snelle start behandelen we:
+In deze Snelstartgids worden de volgende acties behandeld:
 
-- Het opzetten van een on-premises encoder met OBS.
-- Het opzetten van een live stream.
-- Het instellen van live stream-uitgangen.
-- Het uitvoeren van een standaard streaming eindpunt.
-- Azure Media Player gebruiken om de live stream en on-demand-uitvoer te bekijken.
+- Instellen van een on-premises Encoder met IB.
+- Een live stream instellen.
+- De uitvoer van live streams instellen.
+- Een standaard streaming-eind punt wordt uitgevoerd.
+- Gebruik Azure Media Player om de Live Stream en de uitvoer op aanvraag weer te geven.
 
 ## <a name="prerequisites"></a>Vereisten
 
-Als u geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/) voordat u begint.
+Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/) aan voordat u begint.
 
 ## <a name="sign-in-to-the-azure-portal"></a>Aanmelden bij Azure Portal
 
-Open uw webbrowser en ga naar de [Microsoft Azure-portal.](https://portal.azure.com/) Voer uw referenties in om u aan te melden bij de portal. De standaardweergave is uw service-dashboard.
+Open uw webbrowser en ga naar de [Microsoft Azure-Portal](https://portal.azure.com/). Voer uw referenties in om u aan te melden bij de portal. De standaardweergave is uw service-dashboard.
 
-## <a name="set-up-an-on-premises-encoder-by-using-obs"></a>Een on-premises encoder opzetten met obs
+## <a name="set-up-an-on-premises-encoder-by-using-obs"></a>Een on-premises encoder instellen met behulp van IB
 
-1. Download en installeer OBS voor uw besturingssysteem op de [website van Open Broadcaster Software.](https://obsproject.com/)
-1. Start de toepassing en houd deze open.
+1. Down load en installeer IB voor uw besturings systeem op de [website van open Broadcaster software](https://obsproject.com/).
+1. Start de toepassing en blijf deze geopend.
 
-## <a name="run-the-default-streaming-endpoint"></a>Het standaardeindpunt voor streaming uitvoeren
+## <a name="run-the-default-streaming-endpoint"></a>Het standaard streaming-eind punt uitvoeren
 
-1. Selecteer **Streaming-eindpunten** in de lijst Mediaservices.
+1. Selecteer **streaming-eind punten** in de lijst met Media Services.
 
-   ![Menu-item Streaming Eindpunten](media/live-events-obs-quickstart/streaming-endpoints.png)
-1. Als de standaardstatus van streamingeindpunt is gestopt, selecteert u deze. Met deze stap gaat u naar de pagina voor dat eindpunt.
+   ![Menu-item voor streaming-eind punten](media/live-events-obs-quickstart/streaming-endpoints.png)
+1. Als de standaard status van het streaming-eind punt is gestopt, selecteert u deze. Met deze stap gaat u naar de pagina voor dat eind punt.
 1. Selecteer **Starten**.
 
-   ![Knop Start voor het streamingeindpunt](media/live-events-obs-quickstart/start.png)
+   ![De knop Start voor het streaming-eind punt](media/live-events-obs-quickstart/start.png)
 
-## <a name="set-up-an-azure-media-services-live-stream"></a>Een livestream van Azure Media Services instellen
+## <a name="set-up-an-azure-media-services-live-stream"></a>Een Azure Media Services Live Stream instellen
 
-1. Ga naar het Azure Media Services-account binnen de portal en selecteer **Live streaming** in de lijst **Media Services.**
+1. Ga naar het Azure Media Services-account in de portal en selecteer vervolgens **live streamen** in de **Media Services** -lijst.
 
-   ![Live streaming link](media/live-events-obs-quickstart/select-live-streaming.png)
-1. Selecteer **Live-evenement toevoegen** om een nieuw live streaming-evenement te maken.
+   ![Live streaming-koppeling](media/live-events-obs-quickstart/select-live-streaming.png)
+1. Selecteer **Live Event toevoegen** om een nieuwe gebeurtenis voor live streaming te maken.
 
-   ![Pictogram Live-gebeurtenis toevoegen](media/live-events-obs-quickstart/add-live-event.png)
-1. Voer een naam in voor uw nieuwe evenement, zoals *TestLiveEvent,* in het vak **Naam van een Live-evenement.**
+   ![Pictogram live-gebeurtenis toevoegen](media/live-events-obs-quickstart/add-live-event.png)
+1. Voer een naam in voor uw nieuwe gebeurtenis, zoals *TestLiveEvent*, in het vak **naam van live-gebeurtenis** .
 
-   ![Vak Naam van live-evenement](media/live-events-obs-quickstart/live-event-name.png)
-1. Voer een optionele beschrijving van de gebeurtenis in het vak **Beschrijving** in.
-1. Selecteer de **optie Pass-through – geen cloudcodering.**
+   ![Vak live-evenement naam](media/live-events-obs-quickstart/live-event-name.png)
+1. Voer een optionele beschrijving in van de gebeurtenis in het vak **Beschrijving** .
+1. Selecteer de optie **Pass-Through-geen Cloud encoding** .
 
-   ![Optie voor cloudcodering](media/live-events-obs-quickstart/cloud-encoding.png)
-1. Selecteer de optie **RTMP.**
-1. Zorg ervoor dat de optie **Geen** is geselecteerd voor **Start live-evenement,** om te voorkomen dat er kosten in rekening wordt gebracht voor het live-evenement voordat het klaar is. (Facturering begint wanneer het live-evenement wordt gestart.)
+   ![Optie voor Cloud versleuteling](media/live-events-obs-quickstart/cloud-encoding.png)
+1. Selecteer de optie **RTMP** .
+1. Zorg ervoor dat de optie **Nee** is geselecteerd voor **starten van live gebeurtenis**, om te voor komen dat er wordt gefactureerd voor de live-gebeurtenis voordat deze klaar is. (Facturering begint wanneer de live gebeurtenis wordt gestart.)
 
-   ![Optie Live-evenement starten](media/live-events-obs-quickstart/start-live-event-no.png)
-1. Selecteer de knop **Controleren + maken** om de instellingen te controleren.
-1. Selecteer de knop **Maken** om de live-gebeurtenis te maken. Je wordt vervolgens teruggezet naar de lijst met live-evenementen.
-1. Selecteer de link naar het live-evenement dat u zojuist hebt gemaakt. Merk op dat uw evenement is gestopt.
-1. Houd deze pagina open in uw browser. We komen er later op terug.
+   ![Live-gebeurtenis optie starten](media/live-events-obs-quickstart/start-live-event-no.png)
+1. Selecteer de knop **beoordeling + maken** om de instellingen te controleren.
+1. Selecteer de knop **maken** om de live-gebeurtenis te maken. Vervolgens keert u terug naar de aanbieding van Live-gebeurtenissen.
+1. Selecteer de koppeling naar de live-gebeurtenis die u zojuist hebt gemaakt. U ziet dat uw gebeurtenis is gestopt.
+1. Laat deze pagina in uw browser geopend. We worden later teruggebeld.
 
-## <a name="set-up-a-live-stream-by-using-obs-studio"></a>Een live stream opzetten met OBS Studio
+## <a name="set-up-a-live-stream-by-using-obs-studio"></a>Een live stream instellen met behulp van IB Studio
 
-OBS begint met een standaardscène, maar zonder invoer geselecteerd.
+IB begint met een standaard scène, maar er is geen invoer geselecteerd.
 
-   ![OBS-standaardscherm](media/live-events-obs-quickstart/live-event-obs-default-screen.png)
+   ![Standaard scherm van IB](media/live-events-obs-quickstart/live-event-obs-default-screen.png)
 
-### <a name="add-a-video-source"></a>Een videobron toevoegen
+### <a name="add-a-video-source"></a>Een video bron toevoegen
 
-1. Klik in het deelvenster **Bronnen** op het pictogram **Toevoegen** om een nieuw bronapparaat te selecteren. Het menu **Bronnen** wordt geopend.
+1. Klik in het deel venster **bronnen** op het pictogram **toevoegen** om een nieuw bron apparaat te selecteren. Het menu **bronnen** wordt geopend.
 
-1. Selecteer **Apparaat voor het vastleggen van video in** het menu van het bronapparaat. Het menu **Bron maken/selecteren** wordt geopend.
+1. Selecteer **apparaat voor video-opname** in het menu van het bron apparaat. Het menu **bron maken/selecteren** wordt geopend.
 
-   ![Menu OBS-bronnen met videoapparaat geselecteerd](media/live-events-obs-quickstart/live-event-obs-video-device-menu.png)
+   ![Menu bronnen IB met geselecteerd video apparaat](media/live-events-obs-quickstart/live-event-obs-video-device-menu.png)
 
-1. Selecteer de knop Bestaande keuzerondje **toevoegen** en klik op **OK**. Het menu **Eigenschappen voor videoapparaat** wordt geopend.
+1. Selecteer het keuze rondje **bestaande toevoegen** en klik vervolgens op **OK**. Het menu met **Eigenschappen voor video apparaat** wordt geopend.
 
-   ![OBS nieuwe videobronmenu met bestaande geselecteerde toevoegen](media/live-events-obs-quickstart/live-event-obs-new-video-source.png)
+   ![IB nieuw video bron menu met de optie bestaande toevoegen](media/live-events-obs-quickstart/live-event-obs-new-video-source.png)
 
-1. Selecteer **in** de vervolgkeuzelijst Apparaat de video-invoer die u wilt gebruiken voor uw uitzending. Laat de rest van de instellingen voorlopig met rust en klik op **OK.** De invoerbron wordt toegevoegd aan het deelvenster **Bronnen** en de video-invoerweergave wordt weergegeven in het gebied **Voorbeeld.**
+1. Selecteer in de vervolg keuzelijst voor **apparaten** de video-invoer die u voor uw uitzending wilt gebruiken. Laat de overige instellingen voor Taan ongewijzigd en klik op **OK**. De invoer bron wordt toegevoegd aan het deel venster **bronnen** en de weer gave video-invoer wordt weer gegeven in het gedeelte **Preview** .
 
-   ![OBS-camera-instellingen](media/live-events-obs-quickstart/live-event-surface-camera.png)
+   ![Camera-instellingen voor IB](media/live-events-obs-quickstart/live-event-surface-camera.png)
 
-### <a name="add-an-audio-source"></a>Een audiobron toevoegen
+### <a name="add-an-audio-source"></a>Een audio bron toevoegen
 
-1. Klik in het deelvenster **Bronnen** op het pictogram **Toevoegen** om een nieuw bronapparaat te selecteren. Het menu Bronapparaat wordt geopend.
+1. Klik in het deel venster **bronnen** op het pictogram **toevoegen** om een nieuw bron apparaat te selecteren. Het menu van het bron apparaat wordt geopend.
 
-1. Selecteer **Audio-invoer vastleggen** in het menu van het bronapparaat. Het menu **Bron maken/selecteren** wordt geopend.
+1. Selecteer **Audio-invoer vastleggen** in het menu van het bron apparaat. Het menu **bron maken/selecteren** wordt geopend.
 
-   ![Menu OBS-bronnen met audioapparaat geselecteerd](media/live-events-obs-quickstart/live-event-obs-audio-device-menu.png)
+   ![Menu bronnen IB met geselecteerd audio apparaat](media/live-events-obs-quickstart/live-event-obs-audio-device-menu.png)
 
-1. Selecteer de knop Bestaande keuzerondje **toevoegen** en klik op **OK**. Het menu **Eigenschappen voor het vastleggen van audioinvoer** wordt geopend.
+1. Selecteer het keuze rondje **bestaande toevoegen** en klik vervolgens op **OK**. Het menu **Eigenschappen voor audio-invoer vastleggen** wordt geopend.
 
-   ![OBS-audiobron met bestaande geselecteerde toevoegen ](media/live-events-obs-quickstart/live-event-obs-new-audio-source.png)
+   ![IB-audio bron met bestaande toevoegen geselecteerd ](media/live-events-obs-quickstart/live-event-obs-new-audio-source.png)
 
-1. Selecteer **in** de vervolgkeuzelijst Apparaat het audio-opnameapparaat dat u wilt gebruiken voor uw uitzending. Laat de rest van de instellingen voorlopig met rust en klik op OK. Het audio-opnameapparaat wordt toegevoegd aan het audiomixerpaneel.
+1. Selecteer in de vervolg keuzelijst **apparaat** het Audio Capture-apparaat dat u wilt gebruiken voor uw uitzending. Laat de overige instellingen voor Taan ongewijzigd en klik op OK. Het Audio Capture-apparaat wordt toegevoegd aan het audio mixer paneel.
 
-   ![Vervolgkeuzelijst voor selectie van OBS-audioapparaten](media/live-events-obs-quickstart/live-event-select-audio-device.png)
+   ![Vervolg keuzelijst voor selectie van IB-audio apparaten](media/live-events-obs-quickstart/live-event-select-audio-device.png)
 
-### <a name="set-up-streaming-in-obs"></a>Streaming instellen in OBS
+### <a name="set-up-streaming-in-obs"></a>Streaming in IB instellen
 
-In de volgende procedure gaat u terug naar Azure Media Services in uw browser om de invoer-URL te kopiëren om in de uitvoerinstellingen te gaan:
+In de volgende procedure gaat u terug naar Azure Media Services in uw browser om de invoer-URL te kopiëren en in te voeren in de uitvoer instellingen:
 
-1. Selecteer op de pagina Azure Media Services van de portal de optie **Start** om de live streamgebeurtenis te starten. (Facturering begint nu.)
+1. Selecteer op de pagina Azure Media Services van de portal **Start** om de gebeurtenis live stream te starten. (Facturering wordt nu gestart.)
 
-   ![Pictogram Start](media/live-events-obs-quickstart/start.png)
-1. Stel de **RTMP-schakelaar** in op **RTMPS**.
-1. Kopieer de URL in het vak Url van **invoer** naar het klembord.
+   ![Pictogram starten](media/live-events-obs-quickstart/start.png)
+1. Stel de **RTMP** -wissel knop in op **RTMP**.
+1. Kopieer de URL naar het klem bord in het vak **invoer-URL** .
 
    ![Invoer-URL](media/live-events-obs-quickstart/input-url.png)
 
-1. Overschakelen naar de OBS-toepassing.
+1. Schakel over naar de IB-toepassing.
 
-1. Klik op de knop **Instellingen** in het deelvenster **Besturingselementen.** De instellingenopties worden geopend.
+1. Klik op de knop **instellingen** in het deel venster **besturings elementen** . De instellingen opties worden geopend.
 
-   ![Deelvenster OBS-besturingselementen met geselecteerde instellingen](media/live-events-obs-quickstart/live-event-obs-settings.png)
+   ![Deel venster IB-besturings elementen met geselecteerde instellingen](media/live-events-obs-quickstart/live-event-obs-settings.png)
 
-1. Selecteer **Streamen** in het menu **Instellingen.**
+1. Selecteer **Stream** in het menu **instellingen** .
 
-1. Selecteer alles weergeven in de vervolgkeuzelijst **Service** en selecteer **Vervolgens Aangepast...**.
+1. Selecteer in de vervolg keuzelijst **service** de optie alles weer geven en selecteer vervolgens **aangepast...**.
 
-1. Plak **in** het veld Server de RTMPS-URL die u naar het klembord hebt gekopieerd.
+1. Plak in het veld **Server** de RTMP-URL die u hebt gekopieerd naar het klem bord.
 
-1. Voer iets in het veld **Stream-toets** in.  Het maakt niet echt uit wat het is, maar het moet een waarde hebben.
+1. Voer een waarde in het veld **stroom sleutel** in.  Het is niet belang rijk wat het is, maar het moet wel een waarde hebben.
 
-    ![OBS-streaminstellingen](media/live-events-obs-quickstart/live-event-obs-stream-settings.png)
+    ![Instellingen voor IB-stream](media/live-events-obs-quickstart/live-event-obs-stream-settings.png)
 
-1. Selecteer **Uitvoer** in het menu **Instellingen.**
+1. Selecteer **uitvoer** in het menu **instellingen** .
 
-1. Voer *er 2* in het **intervalveld Hoofdframe** in. Dit stelt de lengte van het fragment in op 2 seconden. Voor een lagere latentie live levering, gebruik maken van de waarde van 1 seconde.
+1. Voer *2* in het veld **interval van keyframe** in. Hiermee stelt u de lengte van het fragment in op 2 seconden. Voor Live levering met een lagere latentie gebruikt u de waarde 1 seconde.
 
-1. OPTIONEEL: Stel de **CPU-gebruiksinstelling in** op *zeer snel* als u een computer gebruikt die weinig verwerkingskracht heeft. Optioneel u de kbps instellen op iets lager als er ongewenste netwerkomstandigheden zijn.
+1. Optioneel: Stel de **voor instelling voor CPU-gebruik** in op *veryfast* als u een computer gebruikt die weinig verwerkings kracht heeft. Desgewenst kunt u de kbps instellen op iets lager als er sprake is van ongewenste netwerk omstandigheden.
 
-   ![OBS-uitvoerinstellingen](media/live-events-obs-quickstart/live-event-obs-advanced-output-settings.png)
+   ![IB uitvoer instellingen](media/live-events-obs-quickstart/live-event-obs-advanced-output-settings.png)
 
-1. Laat de rest van de instellingen onbelegd en klik op **OK**.
+1. Laat de overige instellingen ongewijzigd en klik op **OK**.
 
-### <a name="start-streaming"></a>Beginnen met streamen
+### <a name="start-streaming"></a>Streamen starten
 
-1. Klik in het deelvenster **Besturingselementen** op **Streaming starten**.
+1. Klik in het deel venster **beheer** op **streaming starten**.
 
-    ![Knop OBS startstreaming](media/live-events-obs-quickstart/live-event-obs-start-streaming.png)
+    ![Knop streaming IB starten](media/live-events-obs-quickstart/live-event-obs-start-streaming.png)
 
-2. Ga naar het evenementscherm Azure Media Services Live in uw browser en klik op de koppeling **Player opnieuw laden.** Je moet je stream nu zien in de Preview-speler.
+2. Ga in uw browser naar het scherm Azure Media Services Live Event en klik op de koppeling voor het **opnieuw laden** van de speler. U ziet nu de stroom in de preview-versie van de speler.
 
-## <a name="set-up-outputs"></a>Uitgangen instellen
+## <a name="set-up-outputs"></a>Uitvoer instellen
 
-Dit deel stelt uw uitvoer in en stelt u in staat om een opname van uw live stream op te slaan.  
+Met dit onderdeel worden uw uitvoer ingesteld en kunt u een opname van uw Live Stream opslaan.  
 
 > [!NOTE]
-> Om deze uitvoer te kunnen streamen, moet het streaming-eindpunt worden uitgevoerd. Zie de latere [sectie Het standaardstreamingeindpunt uitvoeren.](#run-the-default-streaming-endpoint)
+> Als u deze uitvoer wilt streamen, moet het streaming-eind punt actief zijn. Zie de sectie een [standaard streaming-eind punt uitvoeren](#run-the-default-streaming-endpoint) .
 
-1. Selecteer de koppeling **Uitvoer maken** onder de video-viewer **Uitvoer.**
-1. Als u wilt, bewerk de naam van de uitvoer in het vak **Naam** naar iets gebruiksvriendelijker, zodat het later gemakkelijk te vinden is.
+1. Selecteer de koppeling **uitvoer maken** onder de video-viewer voor **uitvoer** .
+1. Als u wilt, kunt u de naam van de uitvoer in het vak **naam** bewerken naar een gebruiks vriendelijker, zodat u deze later eenvoudig kunt vinden.
 
-   ![Uitvoernaam, vak](media/live-events-wirecast-quickstart/output-name.png)
-1. Laat de rest van de dozen voorlopig met rust.
-1. Selecteer **Volgende** om een streaminglocator toe te voegen.
-1. Verander de naam van de locator in iets gebruiksvriendelijker, als je wilt.
+   ![Vak uitvoer naam](media/live-events-wirecast-quickstart/output-name.png)
+1. Laat de rest van de vakken nu alleen behouden.
+1. Selecteer **volgende** om een streaming-Locator toe te voegen.
+1. Wijzig de naam van de Locator in iets meer gebruikers vriendelijk, indien gewenst.
 
-   ![Naamvak Locator](media/live-events-wirecast-quickstart/live-event-locator.png)
-1. Laat al het andere op dit scherm voor nu.
+   ![Vak voor de naam van de Locator](media/live-events-wirecast-quickstart/live-event-locator.png)
+1. Zorg ervoor dat de rest van dit scherm alleen voor Taan wordt gewijzigd.
 1. Selecteer **Maken**.
 
-## <a name="play-the-output-broadcast-by-using-azure-media-player"></a>De uitvoeruitzending afspelen met Azure Media Player
+## <a name="play-the-output-broadcast-by-using-azure-media-player"></a>De uitvoer uitzending afspelen met behulp van Azure Media Player
 
-1. Kopieer de streaming-URL onder de **videospeler Uitvoer.**
-1. Open in een webbrowser de [demo van Azure Media Player](https://ampdemo.azureedge.net/azuremediaplayer.html).
-1. Plak de streaming-URL in het **VAK URL** van Azure Media Player.
-1. Selecteer de knop **Player bijwerken.**
-1. Selecteer het pictogram **Afspelen** in de video om je live stream te bekijken.
+1. Kopieer de streaming-URL onder de video speler voor **uitvoer** .
+1. Open in een webbrowser de Azure Media Player- [demo](https://ampdemo.azureedge.net/azuremediaplayer.html).
+1. Plak de streaming-URL in het vak **URL** van Azure Media Player.
+1. Selecteer de knop voor het bijwerken van de **speler** .
+1. Selecteer het pictogram **afspelen** op de video om uw live stream te bekijken.
 
 ## <a name="stop-the-broadcast"></a>De uitzending stoppen
 
-Als je denkt dat je genoeg content hebt gestreamd, stop je de uitzending.
+Wanneer u denkt dat u voldoende inhoud hebt gestreamd, stopt u de uitzending.
 
-1. Selecteer **Stoppen**in de portal .
+1. Selecteer in de portal **stoppen**.
 
-1. Selecteer in OBS de knop **Streaming stoppen** in het deelvenster **Besturingselementen.** Deze stap stopt de uitzending van OBS.
+1. Selecteer in IB de knop **streaming stoppen** in het deel venster **besturings elementen** . Met deze stap wordt de uitzending van IB gestopt.
 
-## <a name="play-the-on-demand-output-by-using-azure-media-player"></a>De on-demand uitvoer afspelen met Azure Media Player
+## <a name="play-the-on-demand-output-by-using-azure-media-player"></a>De uitvoer op aanvraag afspelen met behulp van Azure Media Player
 
-De uitvoer die u hebt gemaakt, is nu beschikbaar voor streaming op aanvraag, zolang uw streaming-eindpunt wordt uitgevoerd.
+De uitvoer die u hebt gemaakt, is nu beschikbaar voor streaming op aanvraag zolang het streaming-eind punt wordt uitgevoerd.
 
-1. Ga naar de aanbieding MediaServices en selecteer **Activa**.
-1. Zoek de gebeurtenisuitvoer die u eerder hebt gemaakt en selecteer de koppeling naar het item. De pagina met de uitvoer van activa wordt geopend.
-1. Kopieer de streaming-URL onder de videospeler voor het item.
-1. Ga terug naar Azure Media Player in de browser en plak de streaming-URL in het VAK URL.
-1. Selecteer **Speler bijwerken**.
-1. Selecteer het pictogram **Afspelen** in de video om het on-demand-item weer te geven.
+1. Ga naar de vermelding Media Services en selecteer **activa**.
+1. Zoek de gebeurtenis uitvoer die u eerder hebt gemaakt en selecteer de koppeling naar de Asset. De pagina Asset-uitvoer wordt geopend.
+1. Kopieer de streaming-URL onder de video speler voor de Asset.
+1. Ga terug naar Azure Media Player in de browser en plak de streaming-URL in het vak URL.
+1. Selecteer **Update speler**.
+1. Selecteer het pictogram **afspelen** op de video om de Asset op aanvraag weer te geven.
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
 > [!IMPORTANT]
-> Stop met de diensten! Nadat u de stappen in deze snelle start hebt voltooid, moet u het live-evenement en het streaming-eindpunt stoppen, of wordt er rekening gebracht voor de tijd dat ze blijven draaien. Als u het live-evenement wilt stoppen, [raadpleegt](#stop-the-broadcast) u de procedure voor de uitzending stoppen, stappen 2 en 3.
+> Stop de services. Nadat u de stappen in deze Quick Start hebt voltooid, moet u ervoor zorgen dat u de live gebeurtenis en het streaming-eind punt stopt, of u wordt gefactureerd voor de tijd waarop ze actief blijven. Als u de live-gebeurtenis wilt stoppen, raadpleegt u de procedure voor [het stoppen van de uitzending](#stop-the-broadcast) , stappen 2 en 3.
 
-Ga als u het streaming-eindpunt stoppen:
+Het streaming-eind punt stoppen:
 
-1. Selecteer In de aanbieding MediaServices de optie **Streaming-eindpunten**.
-2. Selecteer het standaard eindpunt voor streaming dat u eerder bent gestart. Met deze stap wordt de pagina van het eindpunt geopend.
-3. Selecteer **Stoppen**.
+1. Selecteer in de lijst Media Services **streaming-eind punten**.
+2. Selecteer het standaard streaming-eind punt dat u eerder hebt gestart. Met deze stap wordt de pagina van het eind punt geopend.
+3. Selecteer **stoppen**.
 
 > [!TIP]
-> Als u de elementen niet van deze gebeurtenis wilt verwijderen, moet u ze verwijderen, zodat er geen kosten in rekening worden gebracht voor opslag.
+> Als u de assets van deze gebeurtenis niet wilt blijven gebruiken, moet u deze verwijderen, zodat u niet in rekening wordt gebracht voor opslag.
 
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"]
-> [Live-evenementen en live-uitgangen in Media Services](./live-events-outputs-concept.md)
+> [Live-evenementen en live-uitvoer in Media Services](./live-events-outputs-concept.md)

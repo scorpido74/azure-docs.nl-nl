@@ -1,55 +1,55 @@
 ---
 title: Lokalisatie van Azure Media Player
-description: Ondersteuning voor meerdere talen voor gebruikers van niet-Engelse landlocaties.
+description: Ondersteuning voor meerdere talen voor gebruikers van niet-Engelse land instellingen.
 author: IngridAtMicrosoft
 ms.author: inhenkel
 ms.service: media-services
 ms.topic: reference
 ms.date: 04/20/2020
 ms.openlocfilehash: 34805c4eaae5d969fc2338c24f9f92404e065d15
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81727175"
 ---
 # <a name="localization"></a>Lokalisatie #
 
-Met ondersteuning voor meerdere talen kunnen gebruikers van niet-Engelse landgenoten native communiceren met de speler. Azure Media Player zal instantiate met een algemeen woordenboek van talen, die de foutmeldingen zal lokaliseren op basis van de paginataal. Een ontwikkelaar kan ook een spelerinstantie maken met een geforceerde settaal. De standaardtaal is Engels (nl).
+Dankzij ondersteuning voor meerdere talen kunnen gebruikers van niet-Engelse land instellingen systeem eigen communiceren met de speler. Azure Media Player wordt geïnstantieerd met een algemene woorden lijst met talen, waarmee de fout berichten worden gelokaliseerd op basis van de pagina taal. Een ontwikkelaar kan ook een Player-exemplaar maken met een geforceerd ingestelde taal. De standaard taal is Engels (en).
 
 > [!NOTE]
-> Deze functie is nog steeds gaan door middel van een aantal testen en als zodanig is onderworpen aan bugs.
+> Deze functie is nog steeds bezig met testen en is afhankelijk van fouten.
 
 ```html
     <video id="vid1" class="azuremediaplayer amp-default-skin" data-setup='{"language":"es"}'>...</video>
 ```
 
-Azure Media Player ondersteunt momenteel de volgende talen met de bijbehorende taalcodes:
+Azure Media Player ondersteunt momenteel de volgende talen met de bijbehorende taal codes:
 
 | Taal            | Code | Taal                | Code   | Taal                | Code         |
 |---------------------|------|-------------------------|--------|-------------------------|--------------|
-| Engels {default}   | nl   | Kroatisch                | uur     | Roemeens                | Ro           |
-| Arabisch              | Ar   | Hongaars               | Hu     | Slowaaks                  | Sk           |
-| Bulgaars           | Bg   | Indonesisch              | id     | Sloveens                 | Sl           |
-| Catalaans             | Ca   | IJslands               | is     | Servisch - Cyrillisch      | sr-cyrl-cs   |
-| Tsjechisch               | Cs   | Italiaans                 | it     | Servisch - Latijn         | sr-latn-rs   |
+| Engels {standaard}   | nl   | Kroatisch                | uur     | Roemeens                | Roll           |
+| Arabisch              | p.a.   | Hongaars               | hu     | Slowaaks                  | SK           |
+| Bulgaars           | bg   | Indonesisch              | id     | Slovene                 | lineaire           |
+| Catalaans             | certificering   | IJslands               | is     | Servisch-cyrillisch      | SR-Cyrl-CS   |
+| Tsjechisch               | Support   | Italiaans                 | it     | Servisch-Latijn         | sr-latn-rs   |
 | Deens              | da   | Japans                | ja     | Russisch                 | ru           |
-| Duits              | de   | Kazachs                  | Kk     | Zweeds                 | sv           |
-| Grieks               | El   | Koreaans                  | Ko     | Thai                    | Th           |
-| Spaans             | Ja   | Litouws              | Lt     | Philipijns                 | Tl           |
-| Ests            | Et   | Lets                 | Lv     | Turks                 | Tr           |
-| Baskisch              | Eu   | Maleisische               | Mevrouw     | Oekraïens               | Uk           |
-| Farsi               | Fa   | Noors - BokmÃ¥l     | nb nb     | Urdu                    | Uw           |
-| Fins             | fi   | Nederlands                   | nl     | Vietnamees              | Vi           |
-| Frans              | fr   | Noors - Nynorsk     | nn     | Chinees - vereenvoudigd    | zh-hans zh-hans      |
-| Galicisch            | Gl   | Pools                  | Pl     | Chinees - traditioneel   | zh-hant zh-hant      |
-| Hebreeuws              | Hge   | Portuguese - Brazil     | pt-br  |                         |              |
-| Hindi               | Hu   | Portugees - Portugal   | pt-pt  |                         |              |
+| Duits              | de   | Kazachs                  | kk     | Zweeds                 | sv           |
+| Grieks               | ei   | Koreaans                  | ko     | Thai                    | e           |
+| Spaans             | Ja   | Litouws              | lt     | Tagalog                 | 't           |
+| Ests            | et   | Lets                 | LV     | Turks                 | formulieren           |
+| Baskisch              | EU   | Maleisische               | Mevrouw     | Oekraïens               | rijk           |
+| Iraans               | volgt   | Noors-BokmÃ ¥ l     | NB     | Urdu                    | zelf           |
+| Fins             | fi   | Nederlands                   | nl     | Vietnamees              | beschreven           |
+| Frans              | fr   | Noors-Nynorsk     | nn     | Chinees-vereenvoudigd    | zh-Hans      |
+| Galicisch            | boekhoud   | Pools                  | pl     | Chinees-traditioneel   | zh-hant      |
+| Hebreeuws              | Hij   | Portuguese - Brazil     | pt-br  |                         |              |
+| Hindi               | hu   | Portugees - Portugal   | pt-pt  |                         |              |
 
 
 > [!NOTE]
-> Als u niet wilt dat er lokalisatie optreedt, moet u de taal naar het Engels dwingen
+> Als u niet wilt dat een lokalisatie plaatsvindt, moet u de taal afdwingen voor Engels
 
 ## <a name="next-steps"></a>Volgende stappen ##
 
-- [Snel start azure mediaspeler](azure-media-player-quickstart.md)
+- [Snelstartgids Azure Media Player](azure-media-player-quickstart.md)

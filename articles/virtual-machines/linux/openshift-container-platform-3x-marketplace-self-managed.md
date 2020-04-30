@@ -1,6 +1,6 @@
 ---
-title: OpenShift Container Platform 3.11 Zelfbeheerde Marketplace-aanbieding implementeren in Azure
-description: Implementeer openshift containerplatform 3.11 Zelfbeheerde Marketplace-aanbieding in Azure.
+title: Gratis Marketplace-aanbieding van open Shift container platform 3,11 implementeren in azure
+description: Implementeer een zelf beheerd Marketplace-aanbod van open Shift container platform 3,11 in Azure.
 author: haroldwongms
 manager: mdotson
 ms.service: virtual-machines-linux
@@ -11,181 +11,181 @@ ms.workload: infrastructure
 ms.date: 10/14/2019
 ms.author: haroldw
 ms.openlocfilehash: 1cf6c7417aa86d47e59e08786e7807e32c175a25
-ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81759575"
 ---
 # <a name="configure-prerequisites"></a>Vereisten configureren
 
-Voordat u de Marketplace-aanbieding gebruikt om een zelfbeheerd OpenShift Container Platform 3.11-cluster in Azure te implementeren, moeten een aantal vereisten worden geconfigureerd.  Lees het artikel [met de vereisten van OpenShift](https://docs.microsoft.com/azure/virtual-machines/linux/openshift-container-platform-3x-prerequisites) voor instructies voor het maken van een ssh-sleutel (zonder wachtwoordzin), Azure-sleutelkluis, sleutelkluisgeheim en een serviceprincipal.
+Voordat u de Marketplace-aanbieding gebruikt voor het implementeren van een zelfbeheerde open Shift container platform 3,11-cluster in azure, moeten enkele vereiste onderdelen worden geconfigureerd.  Raadpleeg het artikel openstaande [vereisten](https://docs.microsoft.com/azure/virtual-machines/linux/openshift-container-platform-3x-prerequisites) voor instructies voor het maken van een SSH-sleutel (zonder een wachtwoordzin), Azure-sleutel kluis, sleutel kluis geheim en een service-principal.
 
  
 ## <a name="deploy-using-the-marketplace-offer"></a>Implementeren met behulp van de Marketplace-aanbieding
 
-De eenvoudigste manier om een zelfbeheerd OpenShift Container Platform 3.11-cluster in Azure te implementeren, is door de [Azure Marketplace-aanbieding](https://azuremarketplace.microsoft.com/marketplace/apps/osatesting.open-shift-azure-proxy)te gebruiken.
+De eenvoudigste manier om een self-managed open Shift container platform 3,11-cluster in azure te implementeren, is de [Azure Marketplace-aanbieding](https://azuremarketplace.microsoft.com/marketplace/apps/osatesting.open-shift-azure-proxy)te gebruiken.
 
-Deze optie is de eenvoudigste, maar het heeft ook beperkte aanpassingsmogelijkheden. De Marketplace-aanbieding implementeert OpenShift Container Platform 3.11.82 en bevat de volgende configuratieopties:
+Deze optie is de eenvoudigste, maar heeft ook beperkte aanpassings mogelijkheden. De Marketplace-aanbieding implementeert Open Shift container platform 3.11.82 en bevat de volgende configuratie opties:
 
-- **Hoofdknooppunten:** Drie (3) masterknooppunten met configureerbaar instantietype.
-- **Infra-knooppunten**: Drie (3) Infra-knooppunten met configureerbaar instantietype.
-- **Knooppunten**: Het aantal knooppunten (tussen 1 en 9) en het instantietype zijn configureerbaar.
-- **Schijftype:** beheerde schijven worden gebruikt.
-- **Netwerken:** Ondersteuning voor nieuw of bestaand netwerk- en aangepaste CIDR-reeks.
+- **Hoofd knooppunten**: drie (3) hoofd knooppunten met een configureerbaar exemplaar type.
+- **Infra structuur knooppunten**: drie (3) infra structuur knooppunten met een configureerbaar exemplaar type.
+- **Knoop punten**: het aantal knoop punten (tussen 1 en 9) en het exemplaar type kunnen worden geconfigureerd.
+- **Schijf type**: Managed disks worden gebruikt.
+- **Netwerken**: ondersteuning voor nieuw of bestaand netwerk en aangepast CIDR-bereik.
 - **CNS**: CNS kan worden ingeschakeld.
-- **Statistieken**: Hawkular Metrics kunnen worden ingeschakeld.
-- **Logging**: EFK Logging kan worden ingeschakeld.
-- **Azure Cloud Provider**: Standaard ingeschakeld, kan worden uitgeschakeld.
+- **Metrische gegevens**: Hawkular metrieken kunnen worden ingeschakeld.
+- **Logboek registratie**: EFK-logboek registratie kan worden ingeschakeld.
+- **Azure-Cloud provider**: standaard ingeschakeld, kan worden uitgeschakeld.
 
-Klik linksboven in de Azure-portal op **Een resource maken,** voer 'openshift containerplatform' in het zoekvak in en druk op Enter.
+Klik in de linkerbovenhoek van de Azure Portal op **een resource maken**, voer ' open Shift container platform ' in het zoekvak in en druk op ENTER.
 
-   ![Nieuwe resourcezoeken](media/openshift-marketplace-self-managed/ocp-search.png)  
+   ![Nieuwe resource zoeken](media/openshift-marketplace-self-managed/ocp-search.png)  
 <br>
 
-De resultatenpagina wordt geopend met **Red Hat OpenShift Container Platform 3.11 Self-Managed** in de lijst. 
+De resultaten pagina wordt geopend met het **Red Hat open Shift container Platform 3,11 zelf beheerd** in de lijst. 
 
-   ![Nieuw zoekresultaat voor resources](media/openshift-marketplace-self-managed/ocp-searchresult.png)  
+   ![Zoek resultaat van nieuwe resource](media/openshift-marketplace-self-managed/ocp-searchresult.png)  
 <br>
 
-Klik op de aanbieding om de details van de aanbieding te bekijken. Als u deze aanbieding wilt implementeren, klikt u op **Maken**. De gebruikersinterface om de benodigde parameters in te voeren, wordt weergegeven. Het eerste scherm **Basics** is het Basics-blad.
+Klik op de aanbieding om de details van de aanbieding te bekijken. Klik op **maken**om deze aanbieding te implementeren. De gebruikers interface voor het invoeren van de vereiste para meters wordt weer gegeven. Het eerste scherm is de Blade **basis beginselen** .
 
-   ![Titelpagina aanbieden](media/openshift-marketplace-self-managed/ocp-titlepage.png)  
+   ![Titel pagina aanbieding](media/openshift-marketplace-self-managed/ocp-titlepage.png)  
 <br>
 
 **Basisbeginselen**
 
-Als u hulp wilt krijgen bij een van de invoerparameters, zweeft u over de ***i*** naast de parameternaam.
+Als u hulp nodig hebt bij een van de invoer parameters, plaatst u de muis aanwijzer op de ***i*** naast de parameter naam.
 
-Voer waarden in voor de invoerparameters en klik op **OK**.
+Voer waarden in voor de invoer parameters en klik op **OK**.
 
-| Invoerparameter | Parameterbeschrijving |
+| Invoer parameter | Parameter beschrijving |
 |-----------------------|-----------------|
-| Gebruikersnaam VM-beheerder | De beheerdergebruiker die op alle VM-exemplaren moet worden gemaakt |
-| SSH-openbare sleutel voor beheerdersgebruiker | SSH-openbare sleutel die wordt gebruikt om in te loggen op VM - mag geen wachtwoordzin hebben |
-| Abonnement | Azure-abonnement om cluster te implementeren |
-| Resourcegroep | Een nieuwe resourcegroep maken of een bestaande lege resourcegroep selecteren voor clusterbronnen |
-| Locatie | Azure-regio om cluster te implementeren in |
+| Gebruikers naam voor de VM-beheerder | De gebruikers beheerder die moet worden gemaakt op alle VM-exemplaren |
+| Open bare SSH-sleutel voor gebruiker met beheerders rechten | Open bare SSH-sleutel die wordt gebruikt voor aanmelding bij de virtuele machine-mag geen wachtwoordzin hebben |
+| Abonnement | Azure-abonnement voor het implementeren van het cluster in |
+| Resourcegroep | Maak een nieuwe resource groep of selecteer een bestaande lege resource groep voor cluster resources |
+| Locatie | Azure-regio voor het implementeren van het cluster in |
 
-   ![Bied basics blade](media/openshift-marketplace-self-managed/ocp-basics.png)  
+   ![Blade basis beginselen aanbieding](media/openshift-marketplace-self-managed/ocp-basics.png)  
 <br>
 
-**Infrastructuurinstellingen**
+**Infrastructuur instellingen**
 
-Voer waarden in voor de invoerparameters en klik op **OK**.
+Voer waarden in voor de invoer parameters en klik op **OK**.
 
-| Invoerparameter | Parameterbeschrijving |
+| Invoer parameter | Parameter beschrijving |
 |-----------------------|-----------------|
-| Voorvoegsel OCP-clusternaam | Clustervoorvoegsel dat wordt gebruikt om hostnamen voor alle knooppunten te configureren. Tussen 1 en 20 tekens |
-| Grootte van hoofdknooppunt | Accepteer de standaardvm-grootte of klik op **Grootte wijzigen** om een ander VM-formaat te selecteren.  De juiste VM-grootte selecteren voor uw werkbelasting |
-| Grootte van het infrastructuurknooppunt | Accepteer de standaardvm-grootte of klik op **Grootte wijzigen** om een ander VM-formaat te selecteren.  De juiste VM-grootte selecteren voor uw werkbelasting |
-| Aantal toepassingsknooppunten | Accepteer de standaardvm-grootte of klik op **Grootte wijzigen** om een ander VM-formaat te selecteren.  De juiste VM-grootte selecteren voor uw werkbelasting |
-| Grootte van toepassingsknooppunt | Accepteer de standaardvm-grootte of klik op **Grootte wijzigen** om een ander VM-formaat te selecteren.  De juiste VM-grootte selecteren voor uw werkbelasting |
-| Bastion Host Grootte | Accepteer de standaardvm-grootte of klik op **Grootte wijzigen** om een ander VM-formaat te selecteren.  De juiste VM-grootte selecteren voor uw werkbelasting |
-| Nieuw of bestaand virtueel netwerk | Een nieuwe vNet (Standaard) maken of een bestaande vNet gebruiken |
-| Kies standaard CIDR-instellingen of pas IP-bereik (CIDR) aan | Accepteer standaard CIDR-bereiken of Selecteer **Aangepast IP-bereik** en voer aangepaste CIDR-gegevens in.  Standaardinstellingen maken vNet met CIDR van 10.0.0.0/14, hoofdsubnet met 10.1.0.0/16, infrasubnet met 10.2.0.0/16 en reken- en cns-subnet met 10.3.0.0/16 |
-| Naam sleutelkluisbronbrongroep | De naam van de resourcegroep die de sleutelkluis bevat |
-| Naam sleutelkluis | De naam van de Key Vault die het geheim met de ssh private key bevat.  Alleen alfanumerieke tekens en streepjes zijn toegestaan en liggen tussen de 3 en 24 tekens |
-| Geheime naam | De naam van het geheim dat de ssh privésleutel bevat.  Alleen alfanumerieke tekens en streepjes zijn toegestaan |
+| Voor voegsel van OCP-cluster naam | Het cluster voorvoegsel dat wordt gebruikt voor het configureren van hostnamen voor alle knoop punten. Tussen 1 en 20 tekens |
+| Grootte van hoofd knooppunt | Accepteer de standaard grootte van de virtuele machine of klik op **grootte wijzigen** om een andere VM-grootte te selecteren.  Selecteer de juiste VM-grootte voor de werk belasting |
+| Grootte van infrastructuur knooppunt | Accepteer de standaard grootte van de virtuele machine of klik op **grootte wijzigen** om een andere VM-grootte te selecteren.  Selecteer de juiste VM-grootte voor de werk belasting |
+| Aantal toepassings knooppunten | Accepteer de standaard grootte van de virtuele machine of klik op **grootte wijzigen** om een andere VM-grootte te selecteren.  Selecteer de juiste VM-grootte voor de werk belasting |
+| Grootte van toepassings knooppunt | Accepteer de standaard grootte van de virtuele machine of klik op **grootte wijzigen** om een andere VM-grootte te selecteren.  Selecteer de juiste VM-grootte voor de werk belasting |
+| Grootte van Bastion-host | Accepteer de standaard grootte van de virtuele machine of klik op **grootte wijzigen** om een andere VM-grootte te selecteren.  Selecteer de juiste VM-grootte voor de werk belasting |
+| Nieuwe of bestaande Virtual Network | Een nieuw vNet maken (standaard) of een bestaand vNet gebruiken |
+| Standaard CIDR-instellingen kiezen of IP-bereik (CIDR) aanpassen | Accepteer standaard CIDR-bereiken of selecteer **aangepast IP-bereik** en voer aangepaste CIDR-gegevens in.  Met de standaard instellingen wordt vNet gemaakt met CIDR van 10.0.0.0/14, hoofd-subnet met 10.1.0.0/16, infra structuur subnet met 10.2.0.0/16 en Compute en CNS-subnet met 10.3.0.0/16 |
+| Naam van de resource groep Key Vault | De naam van de resource groep die de Key Vault bevat |
+| Key Vault naam | De naam van de Key Vault die het geheim bevat met de persoonlijke SSH-sleutel.  Alleen alfanumerieke tekens en streepjes zijn toegestaan en moeten tussen de 3 en 24 tekens lang zijn |
+| Geheime naam | De naam van het geheim dat de persoonlijke SSH-sleutel bevat.  Alleen alfanumerieke tekens en streepjes zijn toegestaan |
 
-   ![Bieden infrastructuur blad](media/openshift-marketplace-self-managed/ocp-inframain.png)  
+   ![Blade aanbod infrastructuur](media/openshift-marketplace-self-managed/ocp-inframain.png)  
 <br>
 
 **Grootte wijzigen**
 
-Als u een ander VM-formaat wilt selecteren, klikt u op ***Grootte wijzigen***.  Het VM-selectievenster wordt geopend.  Selecteer de gewenste VM-grootte en klik op **Selecteren**.
+Als u een andere VM-grootte wilt selecteren, klikt u op ***grootte wijzigen***.  Het venster VM-selectie wordt geopend.  Selecteer de gewenste VM-grootte en klik op **selecteren**.
 
    ![VM-grootte selecteren](media/openshift-marketplace-self-managed/ocp-selectvmsize.png)  
 <br>
 
-**Bestaand virtueel netwerk**
+**Bestaande Virtual Network**
 
-| Invoerparameter | Parameterbeschrijving |
+| Invoer parameter | Parameter beschrijving |
 |-----------------------|-----------------|
-| Bestaande naam van virtueel netwerk | Naam van de bestaande vNet |
-| Subnetnaam voor hoofdknooppunten | Naam van bestaand subnet voor hoofdknooppunten.  Moet ten minste 16 IP-adressen bevatten en RFC 1918 volgen |
-| Subnetnaam voor infraknooppunten | Naam van bestaand subnet voor infraknooppunten.  Moet ten minste 32 IP-adressen bevatten en RFC 1918 volgen |
-| Subnetnaam voor compute- en cns-knooppunten | Naam van bestaand subnet voor compute- en cns-knooppunten.  Moet ten minste 32 IP-adressen bevatten en RFC 1918 volgen |
-| Resourcegroep voor het bestaande virtuele netwerk | Naam van de resourcegroep die de bestaande vNet bevat |
+| Bestaande Virtual Network naam | De naam van het bestaande vNet |
+| Subnetnaam voor hoofd knooppunten | De naam van het bestaande subnet voor hoofd knooppunten.  Moet ten minste 16 IP-adressen bevatten en voldoen aan RFC 1918 |
+| Subnetnaam voor infra structuur knooppunten | De naam van het bestaande subnet voor infra structuur knooppunten.  Moet ten minste 32 IP-adressen bevatten en de volgende RFC-1918 |
+| De subnetnaam voor Compute-en CNS-knoop punten | De naam van het bestaande subnet voor Compute-en CNS-knoop punten.  Moet ten minste 32 IP-adressen bevatten en de volgende RFC-1918 |
+| Resource groep voor de bestaande Virtual Network | De naam van de resource groep die het bestaande vNet bevat |
 
-   ![Bieden infrastructuur bestaande vnet](media/openshift-marketplace-self-managed/ocp-existingvnet.png)  
+   ![Infra structuur bestaande vnet aanbod](media/openshift-marketplace-self-managed/ocp-existingvnet.png)  
 <br>
 
 **Aangepast IP-bereik**
 
-| Invoerparameter | Parameterbeschrijving |
+| Invoer parameter | Parameter beschrijving |
 |-----------------------|-----------------|
-| Adresbereik voor het virtuele netwerk | Aangepaste CIDR voor de vNet |
-| Adresbereik voor het subnet met de hoofdknooppunten | Aangepaste CIDR voor master subnet |
-| Adresbereik voor het subnet met de infrastructuurknooppunten | Aangepaste CIDR voor subnet infrastructuur |
-| Adresbereik voor subnet met de compute- en cns-knooppunten | Aangepaste CIDR voor de compute- en cns-knooppunten |
+| Adres bereik voor de Virtual Network | Aangepaste CIDR voor het vNet |
+| Adres bereik voor het subnet dat de hoofd knooppunten bevat | Aangepaste CIDR voor Master-subnet |
+| Adres bereik voor het subnet dat de infrastructuur knooppunten bevat | Aangepaste CIDR voor infra structuur-subnet |
+| Adres bereik voor subnet dat de compute-en CNS-knoop punten bevat | Aangepaste CIDR voor de compute-en CNS-knoop punten |
 
-   ![Aangepaste IP-reeks infrastructuur aanbieden](media/openshift-marketplace-self-managed/ocp-customiprange.png)  
+   ![Aangepast IP-bereik aanbod infrastructuur](media/openshift-marketplace-self-managed/ocp-customiprange.png)  
 <br>
 
 **OpenShift Container Platform 3.11**
 
-Waarden voor de invoerparameters invoeren en op **OK** klikken
+Voer waarden in voor de invoer parameters en klik op **OK**
 
-| Invoerparameter | Parameterbeschrijving |
+| Invoer parameter | Parameter beschrijving |
 |-----------------------|-----------------|
-| Gebruikerswachtwoord voor OpenShift-beheerders | Wachtwoord voor de eerste OpenShift-gebruiker.  Deze gebruiker zal ook de clusterbeheerder zijn |
-| Het gebruikerswachtwoord van OpenShift-beheerders bevestigen | Het gebruikerswachtwoord van de OpenShift-beheerder opnieuw typen |
-| Gebruikersnaam van Red Hat Subscription Manager | Gebruikersnaam om toegang te krijgen tot uw Red Hat-abonnement of organisatie-id.  Deze referentie wordt gebruikt om de RHEL-instantie te registreren bij uw abonnement en wordt niet opgeslagen door Microsoft of Red Hat |
-| Gebruikerswachtwoord van Red Hat Subscription Manager | Wachtwoord om toegang te krijgen tot uw Red Hat-abonnement of activeringssleutel.  Deze referentie wordt gebruikt om de RHEL-instantie te registreren bij uw abonnement en wordt niet opgeslagen door Microsoft of Red Hat |
-| Red Hat Subscription Manager OpenShift Pool ID | Groep-ID met openshiftcontainerplatformrechten. Zorg ervoor dat u voldoende rechten hebt op OpenShift Container Platform voor de installatie van het cluster |
-| Red Hat Subscription Manager OpenShift Pool ID voor Broker / Master Nodes | Groep-ID met OpenShift Container Platform-rechten voor Broker / Master-knooppunten. Zorg ervoor dat u voldoende rechten hebt op OpenShift Container Platform voor de installatie van het cluster. Als u geen broker/ master pool-id gebruikt, voert u de pool-id voor toepassingsknooppunten in |
-| Azure Cloud Provider configureren | Configureer OpenShift om Azure Cloud Provider te gebruiken. Noodzakelijk als u Azure-schijf moet koppelen voor permanente volumes.  Standaard is Ja |
-| GUID azure AD-serviceprincipalclient-id | Azure AD Service Principal Client ID GUID - ook bekend als AppID. Alleen nodig als Azure Cloud Provider configureren is ingesteld op **Ja** |
-| Azure AD Service Principal Client ID Secret | Azure AD Service Principal Client ID Secret. Alleen nodig als Azure Cloud Provider configureren is ingesteld op **Ja** |
+| Gebruikers wachtwoord voor open Shift-beheerder | Wacht woord voor de eerste open Shift-gebruiker.  Deze gebruiker is ook de Cluster beheerder |
+| Gebruikers wachtwoord voor open Shift-beheerder bevestigen | Typ het wacht woord voor de gebruikers account voor open Shift-beheerder opnieuw |
+| Gebruikers naam voor Red Hat Subscription Manager | De gebruikers naam voor toegang tot uw Red Hat-abonnement of organisatie-ID.  Deze referentie wordt gebruikt om het RHEL-exemplaar te registreren bij uw abonnement en wordt niet opgeslagen door micro soft of Red Hat |
+| Gebruikers wachtwoord voor Red Hat Subscription Manager | Wacht woord voor toegang tot uw Red Hat-abonnement of activerings sleutel.  Deze referentie wordt gebruikt om het RHEL-exemplaar te registreren bij uw abonnement en wordt niet opgeslagen door micro soft of Red Hat |
+| Open Shift-pool-ID van Red Hat Subscription Manager | De groeps-ID die het recht open Shift container platform bevat. Zorg ervoor dat u voldoende rechten hebt van open Shift container platform voor de installatie van het cluster |
+| Groeps-ID van open ploeg voor Red Hat Subscription Manager voor Broker/Master-knoop punten | De groeps-ID die open Shift container platform-rechten bevat voor Broker/Master-knoop punten. Zorg ervoor dat u voldoende rechten hebt van open Shift container platform voor de installatie van het cluster. Als u geen Broker/Master-groeps-ID gebruikt, voert u de groeps-ID in voor toepassings knooppunten |
+| Azure-Cloud provider configureren | Open Shift configureren voor het gebruik van de Azure-Cloud provider. Nodig als u Azure Disk attach gebruikt voor permanente volumes.  De standaard waarde is ja |
+| GUID van Azure AD-Service-Principal-client-ID | ID-GUID van Azure AD-Service-Principal, ook wel ' AppID ' genoemd. Alleen nodig als Azure-Cloud provider configureren op **Ja** is ingesteld |
+| Geheim van Azure AD-Service-Principal client-ID | Azure AD Service Principal client-ID Secret. Alleen nodig als Azure-Cloud provider configureren op **Ja** is ingesteld |
  
-   ![OpenShift-blad aanbieden](media/openshift-marketplace-self-managed/ocp-ocpmain.png)  
+   ![Blade open Shift](media/openshift-marketplace-self-managed/ocp-ocpmain.png)  
 <br>
 
 **Aanvullende instellingen**
 
-Met het blade Extra Settings u CNS configureren voor glusterfs-opslag, logboekregistratie, metrische gegevens en het subdomein Router.  De standaard wordt geen van deze opties geïnstalleerd en gebruikt nip.io als het subdomein van de router voor testdoeleinden. Als u CNS inschakelt, worden drie extra compute nodes geïnstalleerd met drie extra aangesloten schijven die glusterfs-pods hosten.  
+Op de Blade extra instellingen kan CNS worden geconfigureerd voor glusterfs-opslag, logboek registratie, metrische gegevens en een router subdomein.  Deze opties worden niet standaard geïnstalleerd en er wordt gebruikgemaakt van nip.io als het subdomein van de router voor test doeleinden. Door CNS in te scha kelen, worden drie extra reken knooppunten geïnstalleerd met drie bijkomende gekoppelde schijven die glusterfs van de peul zullen hosten.  
 
-Waarden voor de invoerparameters invoeren en op **OK** klikken
+Voer waarden in voor de invoer parameters en klik op **OK**
 
-| Invoerparameter | Parameterbeschrijving |
+| Invoer parameter | Parameter beschrijving |
 |-----------------------|-----------------|
-| Containernative storage configureren (CNS) | Installeert CNS in het OpenShift-cluster en schakelt het in als opslag. Wordt standaard weergegeven als Azure Provider is uitgeschakeld |
-| Clusterlogboekregistratie configureren | Installeert EFK-logboekfunctionaliteit in het cluster.  Infra-knooppunten op de juiste grootte om EFK-pods te hosten |
-| Statistieken voor het cluster configureren | Installeert Hawkular-statistieken in het OpenShift-cluster.  Grootte infraknooppunten op de juiste manier om Hawkular metrics pods te hosten |
-| Standaarddomein routersub | Selecteer nipio voor het testen of op maat om uw eigen subdomein in te voeren voor productie |
+| Native opslag van de container (CNS) configureren | Hiermee installeert u CNS in het open Shift-cluster en schakelt u dit in als opslag. Is standaard als Azure-provider is uitgeschakeld |
+| Cluster logboek registratie configureren | Hiermee wordt de EFK-logboek functionaliteit in het cluster geïnstalleerd.  Infra structuur knooppunten op de juiste wijze te hosten voor EFK. |
+| Metrische gegevens voor het cluster configureren | Hiermee worden metrische Hawkular-gegevens in het open Shift-cluster geïnstalleerd.  Infra structuur knooppunten op de juiste wijze te hosten voor Hawkular metrieken van peulen |
+| Standaard router subdomein | Selecteer nipio voor testen of aangepast om uw eigen subdomein voor productie in te voeren |
  
-   ![Extra blad aanbieden](media/openshift-marketplace-self-managed/ocp-additionalmain.png)  
+   ![Extra Blade bieden](media/openshift-marketplace-self-managed/ocp-additionalmain.png)  
 <br>
 
-**Extra instellingen - Extra parameters**
+**Aanvullende instellingen-extra para meters**
 
-| Invoerparameter | Parameterbeschrijving |
+| Invoer parameter | Parameter beschrijving |
 |-----------------------|-----------------|
-| (CNS) Knooppuntgrootte | De standaardknooppuntgrootte accepteren of **de grootte wijzigen** selecteren om een nieuwe virtuele machinegrootte te selecteren |
-| Voer uw aangepaste subdomein in | Het aangepaste routeringsdomein dat moet worden gebruikt voor het blootstellen van toepassingen via de router op het OpenShift-cluster.  Zorg ervoor dat u de juiste DNS-vermelding met jokertekens maakt] |
+| CNS Knooppunt grootte | Accepteer de standaard grootte van het knoop punt of selecteer **grootte wijzigen** om een nieuwe VM-grootte te selecteren |
+| Voer uw aangepaste subdomein in | Het aangepaste routerings domein dat moet worden gebruikt voor het weer geven van toepassingen via de router in het open Shift-cluster.  Zorg ervoor dat u de juiste DNS-vermelding voor joker tekens maakt] |
  
-   ![Extra cns Installeren aanbieden](media/openshift-marketplace-self-managed/ocp-additionalcnsall.png)  
+   ![Extra CNS-installatie aanbieden](media/openshift-marketplace-self-managed/ocp-additionalcnsall.png)  
 <br>
 
 **Samenvatting**
 
-Validatie vindt in dit stadium plaats om te controleren of het kernquotum voldoende is om het totale aantal vm's dat voor het cluster is geselecteerd, te implementeren.  Bekijk alle parameters die zijn ingevoerd.  Als de ingangen acceptabel zijn, klikt u op **OK** om door te gaan.
+Validatie vindt plaats in deze fase om te controleren of het kern quotum voldoende is voor het implementeren van het totale aantal Vm's dat is geselecteerd voor het cluster.  Alle ingevoerde para meters bekijken.  Als de invoer acceptabel is, klikt u op **OK** om door te gaan.
 
-   ![Overzichtsblad aanbieden](media/openshift-marketplace-self-managed/ocp-summary.png)  
+   ![Blade overzicht aanbieding](media/openshift-marketplace-self-managed/ocp-summary.png)  
 <br>
 
 **Kopen**
 
-Bevestig contactgegevens op de pagina Kopen en klik op **Kopen** om de gebruiksvoorwaarden te accepteren en de implementatie van het cluster OpenShift Container Platform te starten.
+Bevestig de contact gegevens op de pagina kopen en klik op **kopen** om akkoord te gaan met de gebruiks voorwaarden en de implementatie van het open Shift container platform-cluster te starten.
 
-   ![Aankoopblad aanbieden](media/openshift-marketplace-self-managed/ocp-purchase.png)  
+   ![Blade aankoop aanbieding](media/openshift-marketplace-self-managed/ocp-purchase.png)  
 <br>
 
 
-## <a name="connect-to-the-openshift-cluster"></a>Verbinding maken met het OpenShift-cluster
+## <a name="connect-to-the-openshift-cluster"></a>Verbinding maken met het open Shift-cluster
 
-Wanneer de implementatie is voltooid, haalt u de verbinding op uit het uitvoergedeelte van de implementatie. Maak verbinding met de OpenShift-console met uw browser met de URL van de **OpenShift-console**. u ook SSH naar de Bastion host. Hieronder volgt een voorbeeld waarbij de gebruikersnaam van de beheerder clusterbeheerder is en de ip-IP DNS-fqdn van het bastion bastiondns4hawllzaavu6g.eastus.cloudapp.azure.com:
+Wanneer de implementatie is voltooid, haalt u de verbinding op in de sectie uitvoer van de implementatie. Maak verbinding met de open Shift-console met uw browser met behulp van de open **SHIFT console-URL**. u kunt ook SSH-naar de bastion-host. Hieronder volgt een voor beeld waarin de gebruikers naam van de beheerder clusteradmin is en de Bastion open bare IP DNS FQDN is bastiondns4hawllzaavu6g.eastus.cloudapp.azure.com:
 
 ```bash
 $ ssh clusteradmin@bastiondns4hawllzaavu6g.eastus.cloudapp.azure.com
@@ -193,7 +193,7 @@ $ ssh clusteradmin@bastiondns4hawllzaavu6g.eastus.cloudapp.azure.com
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
-Gebruik de opdracht Verwijderen van de [AZ-groep](/cli/azure/group) om de brongroep, het OpenShift-cluster en alle gerelateerde bronnen te verwijderen wanneer deze niet meer nodig zijn.
+Gebruik de opdracht [AZ Group delete](/cli/azure/group) om de resource groep, open Shift-cluster en alle gerelateerde resources te verwijderen wanneer u deze niet meer nodig hebt.
 
 ```azurecli 
 az group delete --name openshiftrg
@@ -201,7 +201,7 @@ az group delete --name openshiftrg
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Taken na implementatie](./openshift-container-platform-3x-post-deployment.md)
-- [OpenShift-implementatie in Azure oplossen](./openshift-container-platform-3x-troubleshooting.md)
-- [Aan de slag met OpenShift Container Platform](https://docs.openshift.com)
+- [Taken na de implementatie](./openshift-container-platform-3x-post-deployment.md)
+- [Problemen met openshift-implementatie in azure oplossen](./openshift-container-platform-3x-troubleshooting.md)
+- [Aan de slag met open Shift container platform](https://docs.openshift.com)
 - 

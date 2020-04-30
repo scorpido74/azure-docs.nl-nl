@@ -1,6 +1,6 @@
 ---
-title: Bestanden uploaden van apparaten naar Azure IoT Hub met Python | Microsoft Documenten
-description: Bestanden uploaden van een apparaat naar de cloud met Azure IoT-apparaat SDK voor Python. Geüploade bestanden worden opgeslagen in een Azure-opslagblobcontainer.
+title: Bestanden van apparaten uploaden naar Azure IoT Hub met python | Microsoft Docs
+description: Het uploaden van bestanden van een apparaat naar de Cloud met behulp van Azure IoT Device SDK voor python. Geüploade bestanden worden opgeslagen in een Azure Storage-BLOB-container.
 author: robinsh
 ms.service: iot-hub
 services: iot-hub
@@ -10,27 +10,27 @@ ms.date: 03/31/2020
 ms.author: robinsh
 ms.custom: mqtt
 ms.openlocfilehash: 47fb7c615389e24322450ed1785aa7da9ec50db6
-ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81759686"
 ---
-# <a name="upload-files-from-your-device-to-the-cloud-with-iot-hub-python"></a>Bestanden uploaden van uw apparaat naar de cloud met IoT Hub (Python)
+# <a name="upload-files-from-your-device-to-the-cloud-with-iot-hub-python"></a>Bestanden van uw apparaat uploaden naar de Cloud met IoT Hub (python)
 
 [!INCLUDE [iot-hub-file-upload-language-selector](../../includes/iot-hub-file-upload-language-selector.md)]
 
-In dit artikel ziet u hoe u de [mogelijkheden voor het uploaden van bestanden van IoT Hub](iot-hub-devguide-file-upload.md) gebruiken om een bestand te uploaden naar Azure [blob-opslag.](../storage/index.yml) In deze zelfstudie leert u het volgende:
+In dit artikel wordt beschreven hoe u de functies voor het [uploaden van bestanden van IOT hub](iot-hub-devguide-file-upload.md) gebruikt om een bestand te uploaden naar [Azure Blob Storage](../storage/index.yml). In deze zelfstudie leert u het volgende:
 
-* Zorg veilig voor een opslagcontainer voor het uploaden van een bestand.
+* Een opslag container veilig bieden voor het uploaden van een bestand.
 
-* Gebruik de Python-client om een bestand te uploaden via uw IoT-hub.
+* Gebruik de python-client om een bestand te uploaden via uw IoT-hub.
 
-De [quickstart van telemetrie verzenden van een apparaat naar een IoT-hub](quickstart-send-telemetry-python.md) toont de basisfunctionaliteit van IoT-hub voor apparaat naar cloud. In sommige scenario's u de gegevens die uw apparaten verzenden echter niet eenvoudig in kaart brengen in de relatief kleine device-to-cloudberichten die IoT Hub accepteert. Wanneer u bestanden vanaf een apparaat moet up-landen, u nog steeds de beveiliging en betrouwbaarheid van IoT Hub gebruiken.
+Het [verzenden van telemetrie van een apparaat naar een IOT hub](quickstart-send-telemetry-python.md) Quick Start toont de basis functionaliteit voor het uitwisselen van apparaten van IOT hub. In sommige gevallen kunt u de gegevens die uw apparaten verzenden echter niet eenvoudig toewijzen aan de relatief kleine apparaat-naar-Cloud-berichten die IoT Hub accepteren. Wanneer u bestanden van een apparaat nodig hebt, kunt u nog steeds gebruikmaken van de beveiliging en betrouw baarheid van IoT Hub.
 
-Aan het einde van deze zelfstudie voert u de Python-console-app uit:
+Aan het einde van deze zelf studie voert u de python-console-app uit:
 
-* **FileUpload.py**, die een bestand uploadt naar opslag met behulp van de Python Device SDK.
+* **FileUpload.py**, dat een bestand uploadt naar Storage met behulp van de python-apparaat-SDK.
 
 [!INCLUDE [iot-hub-include-python-sdk-note](../../includes/iot-hub-include-python-sdk-note.md)]
 
@@ -38,31 +38,31 @@ Aan het einde van deze zelfstudie voert u de Python-console-app uit:
 
 [!INCLUDE [iot-hub-include-python-v2-async-installation-notes](../../includes/iot-hub-include-python-v2-async-installation-notes.md)]
 
-* Zorg ervoor dat poort 8883 is geopend in uw firewall. Het apparaatvoorbeeld in dit artikel maakt gebruik van het MQTT-protocol, dat communiceert via poort 8883. Deze poort kan worden geblokkeerd in sommige bedrijfs- en educatieve netwerkomgevingen. Zie [Verbinding maken met IoT Hub (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub)voor meer informatie en manieren om dit probleem te omzeilen.
+* Zorg ervoor dat poort 8883 is geopend in uw firewall. Het voor beeld van het apparaat in dit artikel maakt gebruik van het MQTT-protocol, dat communiceert via poort 8883. Deze poort kan worden geblokkeerd in sommige bedrijfs-en educatieve netwerk omgevingen. Zie [verbinding maken met IOT hub (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub)voor meer informatie en manieren om dit probleem te omzeilen.
 
 [!INCLUDE [iot-hub-associate-storage](../../includes/iot-hub-associate-storage.md)]
 
 ## <a name="upload-a-file-from-a-device-app"></a>Een bestand uploaden vanuit een apparaat-app
 
-In deze sectie maakt u de apparaat-app om een bestand te uploaden naar de IoT-hub.
+In deze sectie maakt u de app apparaat om een bestand te uploaden naar IoT hub.
 
-1. Voer bij de opdrachtprompt de volgende opdracht uit om het **azure-iot-apparaatpakket** te installeren. U gebruikt dit pakket om het uploaden van bestanden te coördineren met uw IoT-hub.
+1. Voer bij de opdracht prompt de volgende opdracht uit om het **Azure-IOT-Device-** pakket te installeren. U gebruikt dit pakket voor het coördineren van het uploaden van bestanden met uw IoT-hub.
 
     ```cmd/sh
     pip install azure-iot-device
     ```
 
-1. Voer bij de opdrachtprompt de volgende opdracht uit om het [**azure.storage.blob-pakket**](https://pypi.org/project/azure-storage-blob/) te installeren. U gebruikt dit pakket om het uploaden van bestanden uit te voeren.
+1. Voer bij de opdracht prompt de volgende opdracht uit om het pakket [**Azure. storage. blob**](https://pypi.org/project/azure-storage-blob/) te installeren. U gebruikt dit pakket om het bestand te uploaden.
 
     ```cmd/sh
     pip install azure.storage.blob
     ```
 
-1. Maak een testbestand dat u uploadt naar blob-opslag.
+1. Maak een test bestand dat u wilt uploaden naar de Blob-opslag.
 
-1. Maak met een teksteditor een **FileUpload.py** bestand in uw werkmap.
+1. Maak met behulp van een tekst editor een **FileUpload.py** -bestand in de werkmap.
 
-1. Voeg de `import` volgende instructies en variabelen toe aan het begin van het **FileUpload.py** bestand.
+1. Voeg de volgende `import` instructies en variabelen toe aan het begin van het **FileUpload.py** -bestand.
 
     ```python
     import os
@@ -75,9 +75,9 @@ In deze sectie maakt u de apparaat-app om een bestand te uploaden naar de IoT-hu
     PATH_TO_FILE = r"[Full path to local file]"
     ```
 
-1. Vervang `[Device Connection String]` in uw bestand de verbindingstekenreeks van uw IoT-hubapparaat. Vervang `[Full path to local file]` het pad naar het testbestand dat u hebt gemaakt of een bestand op uw apparaat dat u wilt uploaden.
+1. Vervang `[Device Connection String]` in het bestand door de Connection String van uw IOT hub-apparaat. Vervang `[Full path to local file]` door het pad naar het test bestand dat u hebt gemaakt of een bestand op het apparaat dat u wilt uploaden.
 
-1. Maak een functie om het bestand te uploaden naar blob-opslag:
+1. Maak een functie om het bestand naar de Blob-opslag te uploaden:
 
     ```python
     async def store_blob(blob_info, file_name):
@@ -107,9 +107,9 @@ In deze sectie maakt u de apparaat-app om een bestand te uploaden naar de IoT-hu
             return (False, ex)
     ```
 
-    Met deze functie wordt de *blob_info* structuur die erin wordt doorgegeven om een URL te maken die wordt gebruikt om een [azure.storage.storage.blob.BlobClient](https://docs.microsoft.com/python/api/azure-storage-blob/azure.storage.blob.blobclient?view=azure-python)te initialiseren. Vervolgens wordt uw bestand met deze client geüpload naar Azure blob-opslag.
+    Met deze functie wordt de door gegeven *blob_info* -structuur geparseerd voor het maken van een URL die wordt gebruikt voor het initialiseren van een [Azure. storage. blob. BlobClient](https://docs.microsoft.com/python/api/azure-storage-blob/azure.storage.blob.blobclient?view=azure-python). Vervolgens wordt het bestand geüpload naar Azure Blob-opslag met behulp van deze client.
 
-1. Voeg de volgende code toe om de client te verbinden en het bestand te uploaden:
+1. Voeg de volgende code toe om verbinding te maken met de client en het bestand te uploaden:
 
     ```python
     async def main():
@@ -169,37 +169,37 @@ In deze sectie maakt u de apparaat-app om een bestand te uploaden naar de IoT-hu
         #loop.close()
     ```
 
-    Deze code maakt een asynchrone **IoTHubDeviceClient** en gebruikt de volgende API's om het uploaden van bestanden met uw IoT-hub te beheren:
+    Met deze code wordt een asynchroon **IoTHubDeviceClient** gemaakt en worden de volgende api's gebruikt voor het beheren van het bestand uploaden met uw IOT-hub:
 
-    * **get_storage_info_for_blob** informatie krijgt van uw IoT-hub over het gekoppelde opslagaccount dat u eerder hebt gemaakt. Deze informatie bevat de hostnaam, containernaam, blobnaam en een SAS-token. De opslaggegevens worden doorgegeven aan de **functie store_blob** (gemaakt in de vorige stap), zodat de **BlobClient** in die functie kan verifiëren met Azure-opslag. De **get_storage_info_for_blob-methode** retourneert ook een correlation_id, die wordt gebruikt in de **notify_blob_upload_status-methode.** De correlation_id is de manier waarop IoT Hub markeert aan welke blob u werkt.
+    * **get_storage_info_for_blob** haalt informatie op uit uw IOT-hub over het gekoppelde opslag account dat u eerder hebt gemaakt. Deze informatie omvat de hostnaam, container naam, naam van de BLOB en een SAS-token. De opslag gegevens worden door gegeven aan de functie **store_blob** (gemaakt in de vorige stap), zodat de **BlobClient** in die functie kan verifiëren met Azure Storage. De methode **get_storage_info_for_blob** retourneert ook een correlation_id, dat wordt gebruikt in de methode **notify_blob_upload_status** . De correlation_id is IoT Hub manier om te markeren met welke BLOB u werkt.
 
-    * **notify_blob_upload_status** waarschuwt IoT Hub over de status van uw blob-opslagbewerking. U passeert het de correlation_id verkregen door de **get_storage_info_for_blob** methode. Het wordt gebruikt door IoT Hub om elke service die mogelijk luistert naar een melding over de status van de bestandsuploadtaak te melden.
+    * **notify_blob_upload_status** meldt IOT hub van de status van de Blob Storage-bewerking. U geeft deze door aan de correlation_id die is verkregen door de methode **get_storage_info_for_blob** . Het wordt gebruikt door IoT Hub om een service te melden die mogelijk luistert naar een melding over de status van de upload taak voor het bestand.
 
-1. Sla het **UploadFile.py-bestand** op en sluit deze.
+1. Sla het **UploadFile.py** -bestand op en sluit het.
 
 ## <a name="run-the-application"></a>De toepassing uitvoeren
 
-Nu bent u klaar om de toepassing uit te voeren.
+U bent nu klaar om de toepassing uit te voeren.
 
-1. Voer bij een opdrachtprompt in uw werkmap de volgende opdracht uit:
+1. Voer bij een opdracht prompt in de werkmap de volgende opdracht uit:
 
     ```cmd/sh
     python FileUpload.py
     ```
 
-2. In de volgende schermafbeelding wordt de uitvoer van de **FileUpload-app** weergegeven:
+2. Op de volgende scherm afbeelding ziet u de uitvoer van de app **fileupload** :
 
     ![Uitvoer van gesimuleerde apparaat-app](./media/iot-hub-python-python-file-upload/run-device-app.png)
 
-3. U de portal gebruiken om het geüploade bestand weer te geven in de opslagcontainer die u hebt geconfigureerd:
+3. U kunt de portal gebruiken om het geüploade bestand weer te geven in de opslag container die u hebt geconfigureerd:
 
-    ![Geüpload bestand](./media/iot-hub-python-python-file-upload/view-blob.png)
+    ![Bestand geüpload](./media/iot-hub-python-python-file-upload/view-blob.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze zelfstudie hebt u geleerd hoe u de mogelijkheden voor het uploaden van bestanden van IoT Hub gebruiken om het uploaden van bestanden vanaf apparaten te vereenvoudigen. Met de volgende artikelen u de functies en scenario's van de IoT-hub blijven verkennen:
+In deze zelf studie hebt u geleerd hoe u de functies voor het uploaden van bestanden van IoT Hub kunt gebruiken om Bestands uploads van apparaten te vereenvoudigen. U kunt IoT hub-functies en-scenario's blijven verkennen met de volgende artikelen:
 
-* [Een IoT-hub programmatisch maken](iot-hub-rm-template-powershell.md)
+* [Een IoT-hub maken via een programma](iot-hub-rm-template-powershell.md)
 
 * [Inleiding tot C SDK](iot-hub-device-sdk-c-intro.md)
 
@@ -207,6 +207,6 @@ In deze zelfstudie hebt u geleerd hoe u de mogelijkheden voor het uploaden van b
 
 Meer informatie over Azure Blob Storage met de volgende koppelingen:
 
-* [Azure Blob-opslagdocumentatie](https://docs.microsoft.com/azure/storage/blobs/)
+* [Documentatie voor Azure Blob Storage](https://docs.microsoft.com/azure/storage/blobs/)
 
-* [Azure Blob Storage voor Python API-documentatie](https://docs.microsoft.com/python/api/overview/azure/storage-blob-readme?view=azure-python)
+* [Azure Blob Storage voor python API-documentatie](https://docs.microsoft.com/python/api/overview/azure/storage-blob-readme?view=azure-python)

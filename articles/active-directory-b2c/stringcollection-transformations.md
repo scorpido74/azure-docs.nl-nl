@@ -1,7 +1,7 @@
 ---
-title: Voorbeelden van tekenreeksclaims voor aangepaste beleidsregels
+title: Voor beelden van StringCollection-claim transformatie voor aangepaste beleids regels
 titleSuffix: Azure AD B2C
-description: StringCollection claimt transformatievoorbeelden voor het IEF-schema (Identity Experience Framework) van Azure Active Directory B2C.
+description: StringCollection voor beelden van claim transformatie voor het IEF-schema (Identity experience Framework) van Azure Active Directory B2C.
 services: active-directory-b2c
 author: msmimart
 manager: celestedg
@@ -12,31 +12,31 @@ ms.date: 04/21/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: cac7e6feb632456b63b97ead057f9ecaf49322ea
-ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81729723"
 ---
-# <a name="stringcollection-claims-transformations"></a>StringCollection claimt transformaties
+# <a name="stringcollection-claims-transformations"></a>StringCollection-claim transformaties
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-In dit artikel vindt u voorbeelden voor het gebruik van de transformaties van tekenreeksverzamelingclaims van het Identity Experience Framework-schema in Azure Active Directory B2C (Azure AD B2C). Zie [ClaimsTransformations](claimstransformations.md)voor meer informatie .
+In dit artikel vindt u voor beelden voor het gebruik van de teken reeks voor het verzamelen van claim transformaties van het Framework voor identiteits ervaring in Azure Active Directory B2C (Azure AD B2C). Zie [ClaimsTransformations](claimstransformations.md)voor meer informatie.
 
-## <a name="additemtostringcollection"></a>AdditemtostringCollection
+## <a name="additemtostringcollection"></a>AddItemToStringCollection
 
-Hiermee voegt u een tekenreeksclaim toe aan een nieuwe claim voor tekenreeksverzameling met unieke waarden.
+Voegt een teken reeks claim toe aan een nieuwe unieke waarde stringCollection claim.
 
 | Item | TransformationClaimType | Gegevenstype | Opmerkingen |
 | ---- | ----------------------- | --------- | ----- |
-| Invoerclaim | item | tekenreeks | Het ClaimType dat aan de uitvoerclaim moet worden toegevoegd. |
-| Invoerclaim | verzameling | tekenreeksVerzameling | [Optioneel] Indien opgegeven, kopieert de claimtransformatie de items uit deze verzameling en wordt het item toegevoegd aan het einde van de claim voor uitvoerverzameling. |
-| Uitvoerclaim | verzameling | tekenreeksVerzameling | Het ClaimType dat wordt geproduceerd nadat deze claimtransformatie is ingeschakeld, waarbij de waarde is opgegeven in de invoerclaim. |
+| Input claim | item | tekenreeks | Het claim type dat aan de uitvoer claim moet worden toegevoegd. |
+| Input claim | verzameling | stringCollection | Beschrijving Als deze optie is opgegeven, worden de items uit deze verzameling gekopieerd en wordt het item toegevoegd aan het einde van de claim van de verzameling van de uitvoer. |
+| Output claim | verzameling | stringCollection | Het claim type dat is geproduceerd nadat deze claim transformatie is aangeroepen, met de waarde die is opgegeven in de invoer claim. |
 
-Gebruik deze claimtransformatie om een tekenreeks toe te voegen aan een nieuwe of bestaande tekenreeksVerzameling. Het wordt vaak gebruikt in een **AAD-UserWriteUsingAlternativeSecurityId** technisch profiel. Voordat een nieuw sociaal account wordt gemaakt, leest **CreateOtherMailsFromEmail** claimtransformatie het ClaimType en voegt de waarde toe aan het **andereMails** ClaimType.
+Gebruik deze claim transformatie om een teken reeks toe te voegen aan een nieuwe of bestaande stringCollection. Dit wordt vaak gebruikt in een **Aad-UserWriteUsingAlternativeSecurityId-** technisch profiel. Voordat een nieuw sociaal account wordt gemaakt, leest **CreateOtherMailsFromEmail** claims Transform het claim type en voegt de waarde toe aan het **otherMails** claim type.
 
-Met de volgende claimtransformatie wordt de **e-mail** ClaimType toegevoegd aan **andereMails** ClaimType.
+De volgende claim transformatie voegt het **e-mail** claim type toe aan **otherMails** claim type.
 
 ```XML
 <ClaimsTransformation Id="CreateOtherMailsFromEmail" TransformationMethod="AddItemToStringCollection">
@@ -52,23 +52,23 @@ Met de volgende claimtransformatie wordt de **e-mail** ClaimType toegevoegd aan 
 
 ### <a name="example"></a>Voorbeeld
 
-- Invoerclaims:
-  - **collectie**:someone@outlook.com[" "]
-  - **object**:admin@contoso.com"
-- Output claims:
-  - **collectie**:someone@outlook.com["admin@contoso.com", " "]
+- Invoer claims:
+  - **verzameling**: ["someone@outlook.com"]
+  - **item**:admin@contoso.com
+- Uitvoer claims:
+  - **verzameling**: ["someone@outlook.com", "admin@contoso.com"]
 
-## <a name="addparametertostringcollection"></a>AddparametertostringCollection
+## <a name="addparametertostringcollection"></a>AddParameterToStringCollection
 
-Hiermee voegt u een tekenreeksparameter toe aan een nieuwe claim voor tekenreeksverzameling met unieke waarden.
+Voegt een teken reeks parameter toe aan een nieuwe unieke waarde stringCollection claim.
 
 | Item | TransformationClaimType | Gegevenstype | Opmerkingen |
 | ---- | ----------------------- | --------- | ----- |
-| Invoerclaim | verzameling | tekenreeksVerzameling | [Optioneel] Indien opgegeven, kopieert de claimtransformatie de items uit deze verzameling en wordt het item toegevoegd aan het einde van de claim voor uitvoerverzameling. |
-| Inputparameter | item | tekenreeks | De waarde die aan de outputclaim moet worden toegevoegd. |
-| Uitvoerclaim | verzameling | tekenreeksVerzameling | Het ClaimType dat wordt geproduceerd nadat deze claimtransformatie is ingeschakeld, waarbij de waarde is opgegeven in de invoerparameter. |
+| Input claim | verzameling | stringCollection | Beschrijving Als deze optie is opgegeven, worden de items uit deze verzameling gekopieerd en wordt het item toegevoegd aan het einde van de claim van de verzameling van de uitvoer. |
+| Parameter | item | tekenreeks | De waarde die moet worden toegevoegd aan de uitvoer claim. |
+| Output claim | verzameling | stringCollection | Het claim type dat is geproduceerd nadat deze claim transformatie is aangeroepen, met de waarde die is opgegeven in de invoer parameter. |
 
-Gebruik deze claimtransformatie om een tekenreekswaarde toe te voegen aan een nieuwe of bestaande tekenreeksverzameling. In het volgende voorbeeld wordtadmin@contoso.comeen constant e-mailadres ( ) toegevoegd aan de **claim otherMails.**
+Gebruik deze claim transformatie om een teken reeks waarde toe te voegen aan een nieuwe of bestaande stringCollection. In het volgende voor beeld wordt een constant eadmin@contoso.com-mail adres () aan de claim **otherMails** toegevoegd.
 
 ```XML
 <ClaimsTransformation Id="SetCompanyEmail" TransformationMethod="AddParameterToStringCollection">
@@ -86,23 +86,23 @@ Gebruik deze claimtransformatie om een tekenreekswaarde toe te voegen aan een ni
 
 ### <a name="example"></a>Voorbeeld
 
-- Invoerclaims:
-  - **collectie**:someone@outlook.com[" "]
-- Invoerparameters
-  - **object**:admin@contoso.com"
-- Output claims:
-  - **collectie**:someone@outlook.com["admin@contoso.com", " "]
+- Invoer claims:
+  - **verzameling**: ["someone@outlook.com"]
+- Invoer parameters
+  - **item**:admin@contoso.com
+- Uitvoer claims:
+  - **verzameling**: ["someone@outlook.com", "admin@contoso.com"]
 
 ## <a name="getsingleitemfromstringcollection"></a>GetSingleItemFromStringCollection
 
-Haalt het eerste item uit de meegeleverde tekenreeksverzameling.
+Hiermee wordt het eerste item opgehaald uit de gegeven teken reeks verzameling.
 
 | Item | TransformationClaimType | Gegevenstype | Opmerkingen |
 | ---- | ----------------------- | --------- | ----- |
-| Invoerclaim | verzameling | tekenreeksVerzameling | De ClaimTypes die worden gebruikt door de claimtransformatie om het artikel te krijgen. |
-| Uitvoerclaim | geëxtraheerdItem | tekenreeks | De ClaimTypes die na deze ClaimTransformation worden geproduceerd, zijn ingeroepen. Het eerste item in de collectie. |
+| Input claim | verzameling | stringCollection | De ClaimTypes die worden gebruikt door de claim transformatie om het item op te halen. |
+| Output claim | extractedItem | tekenreeks | De ClaimTypes die worden geproduceerd nadat deze ClaimsTransformation is aangeroepen. Het eerste item in de verzameling. |
 
-In het volgende voorbeeld leest u de **claim otherMails** en retourneert u het eerste item in de **e-mailclaim.**
+In het volgende voor beeld wordt de **otherMails** -claim gelezen en wordt het eerste item in de **e-mail** claim geretourneerd.
 
 ```XML
 <ClaimsTransformation Id="CreateEmailFromOtherMails" TransformationMethod="GetSingleItemFromStringCollection">
@@ -117,24 +117,24 @@ In het volgende voorbeeld leest u de **claim otherMails** en retourneert u het e
 
 ### <a name="example"></a>Voorbeeld
 
-- Invoerclaims:
-  - **collectie**:someone@outlook.com["someone@contoso.com", " "]
-- Output claims:
-  - **geëxtraheerdItem**: "someone@outlook.com
+- Invoer claims:
+  - **verzameling**: ["someone@outlook.com", "someone@contoso.com"]
+- Uitvoer claims:
+  - **extractedItem**: "someone@outlook.com"
 
 
 ## <a name="stringcollectioncontains"></a>StringCollectionContains
 
-Controleert of een claimtype StringCollection een element bevat
+Hiermee wordt gecontroleerd of een StringCollection claim type een-element bevat
 
 | Item | TransformationClaimType | Gegevenstype | Opmerkingen |
 | ---- | ----------------------- | --------- | ----- |
-| Invoerclaim | inputClaim | tekenreeksVerzameling | Het claimtype dat moet worden doorzocht. |
-|Inputparameter|item|tekenreeks|De waarde om te zoeken.|
-|Inputparameter|negerenHoofdletter|tekenreeks|Hiermee geeft u op of deze vergelijking het geval moet negeren van de tekenreeksen die worden vergeleken.|
-| Uitvoerclaim | outputClaim | booleaans | Het ClaimType dat wordt geproduceerd nadat deze ClaimTransformation is ingeroepen. Een booleaanse indicator als de collectie zo'n tekenreeks bevat |
+| Input claim | Input claim | stringCollection | Het claim type dat moet worden doorzocht. |
+|Parameter|item|tekenreeks|De waarde waarnaar moet worden gezocht.|
+|Parameter|ignoreCase|tekenreeks|Hiermee geeft u op of deze vergelijking het hoofdletter gebruik moet negeren van de teken reeksen die worden vergeleken.|
+| Output claim | Output claim | booleaans | Het claim type dat is geproduceerd nadat deze ClaimsTransformation is aangeroepen. Een Booleaanse indicator als de verzameling een dergelijke teken reeks bevat |
 
-Na voorbeeld wordt `roles` gecontroleerd of het claimtype stringCollection de waarde van **beheerder**bevat.
+In het volgende voor beeld `roles` wordt gecontroleerd of het stringCollection-claim type de waarde **admin**bevat.
 
 ```XML
 <ClaimsTransformation Id="IsAdmin" TransformationMethod="StringCollectionContains">
@@ -151,26 +151,26 @@ Na voorbeeld wordt `roles` gecontroleerd of het claimtype stringCollection de wa
 </ClaimsTransformation>
 ```
 
-- Invoerclaims:
-    - **inputClaim**: ["reader", "auteur", "admin"]
-- Invoerparameters:
-    - **object**: "Beheerder"
-    - **ignoreCase**: "true"
-- Output claims:
-    - **outputClaim**: "waar"
+- Invoer claims:
+    - **input claim**: [' lezer ', ' Auteur ', ' beheerder ']
+- Invoer parameters:
+    - **item**: "beheerder"
+    - **ignoreCase**: "True"
+- Uitvoer claims:
+    - **output claim**: "True"
 
 ## <a name="stringcollectioncontainsclaim"></a>StringCollectionContainsClaim
 
-Hiermee wordt gecontroleerd of een claimtype StringCollection een claimwaarde bevat.
+Hiermee wordt gecontroleerd of een StringCollection claim type een claim waarde bevat.
 
 | Item | TransformationClaimType | Gegevenstype | Opmerkingen |
 | ---- | ----------------------- | --------- | ----- |
-| Invoerclaim | verzameling | tekenreeksVerzameling | Het claimtype dat moet worden doorzocht. |
-| Invoerclaim | item|tekenreeks| Het claimtype dat de waarde bevat om te zoeken.|
-|Inputparameter|negerenHoofdletter|tekenreeks|Hiermee geeft u op of deze vergelijking het geval moet negeren van de tekenreeksen die worden vergeleken.|
-| Uitvoerclaim | outputClaim | booleaans | Het ClaimType dat wordt geproduceerd nadat deze ClaimTransformation is ingeroepen. Een booleaanse indicator als de collectie zo'n tekenreeks bevat |
+| Input claim | verzameling | stringCollection | Het claim type dat moet worden doorzocht. |
+| Input claim | item|tekenreeks| Het claim type met de waarde die moet worden gezocht.|
+|Parameter|ignoreCase|tekenreeks|Hiermee geeft u op of deze vergelijking het hoofdletter gebruik moet negeren van de teken reeksen die worden vergeleken.|
+| Output claim | Output claim | booleaans | Het claim type dat is geproduceerd nadat deze ClaimsTransformation is aangeroepen. Een Booleaanse indicator als de verzameling een dergelijke teken reeks bevat |
 
-Na voorbeeld wordt `roles` gecontroleerd of het claimtype `role` stringCollection de waarde van het claimtype bevat.
+In het volgende voor beeld `roles` wordt gecontroleerd of het claim type stringCollection de `role` waarde van het claim type bevat.
 
 ```XML
 <ClaimsTransformation Id="HasRequiredRole" TransformationMethod="StringCollectionContainsClaim">
@@ -187,10 +187,10 @@ Na voorbeeld wordt `roles` gecontroleerd of het claimtype `role` stringCollectio
 </ClaimsTransformation> 
 ```
 
-- Invoerclaims:
-    - **collectie**: ["reader", "auteur", "admin"]
-    - **object**: "Beheerder"
-- Invoerparameters:
-    - **ignoreCase**: "true"
-- Output claims:
-    - **outputClaim**: "waar"
+- Invoer claims:
+    - **verzameling**: [' lezer ', ' Auteur ', ' beheerder ']
+    - **item**: "beheerder"
+- Invoer parameters:
+    - **ignoreCase**: "True"
+- Uitvoer claims:
+    - **output claim**: "True"

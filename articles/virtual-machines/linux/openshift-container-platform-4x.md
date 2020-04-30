@@ -1,6 +1,6 @@
 ---
-title: OpenShift Container Platform 4.x implementeren in Azure
-description: Implementeren OpenShift Container Platform 4.x in Azure.
+title: Open Shift container platform 4. x in azure implementeren
+description: Open Shift container platform 4. x in azure implementeren.
 author: haroldwongms
 manager: mdotson
 ms.service: virtual-machines-linux
@@ -10,34 +10,34 @@ ms.workload: infrastructure
 ms.date: 10/14/2019
 ms.author: haroldw
 ms.openlocfilehash: 14af110b5cf50f167d0c4961e26454bc33c6ed7d
-ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81759491"
 ---
-# <a name="deploy-openshift-container-platform-4x-in-azure"></a>OpenShift Container Platform 4.x implementeren in Azure
+# <a name="deploy-openshift-container-platform-4x-in-azure"></a>Open Shift container platform 4. x in azure implementeren
 
-Implementatie van OpenShift Container Platform (OCP) 4.2 wordt nu ondersteund in Azure via het IPI-model (Installer Provisioned Infrastructure).  De bestemmingspagina voor het proberen van OpenShift 4 is [try.openshift.com](https://try.openshift.com/). Als u OCP 4.2 in Azure wilt installeren, gaat u naar de pagina [Red Hat OpenShift Cluster Manager.](https://cloud.redhat.com/openshift/install/azure/installer-provisioned)  Red Hat referenties zijn vereist om toegang te krijgen tot deze site.
+De implementatie van open Shift container platform (OCP) 4,2 wordt nu ondersteund in azure via het IPI-model (installatie-ingerichte infra structuur).  De landings pagina voor het proberen van open Shift 4 is [try.openshift.com](https://try.openshift.com/). Als u wilt installeren OCP 4,2 in azure, gaat u naar de pagina [Red Hat open Shift cluster manager](https://cloud.redhat.com/openshift/install/azure/installer-provisioned) .  Er zijn referentie gegevens voor Red Hat vereist voor toegang tot deze site.
 
 
 ## <a name="notes"></a>Opmerkingen 
 
- - Er is een Azure Active Directory (AAD) Service Principal (SP) vereist om OCP 4.x in Azure te installeren en uit te voeren
-     - De SP moet de API-toestemming van **Application.ReadWrite.OwnedBy** voor Azure Active Directory Graph krijgen
-     - Een AAD Tenant Administrator moet beheerderstoestemming verlenen voor deze API-toestemming om van kracht te worden
-     - De SP moet bijdragen **de rol van inzender** en **gebruikerstoegangsbeheerder** aan het abonnement krijgen
- - Het installatiemodel voor OCP 4.x is anders dan 3.x en er zijn geen Azure Resource Manager-sjablonen beschikbaar voor het implementeren van OCP 4.x in Azure
- - Als er problemen worden opgetreden tijdens het installatieproces, neemt u contact op met het desbetreffende bedrijf (Microsoft of Red Hat)
+ - Een Azure Active Directory (AAD) Service Principal (SP) is vereist om OCP 4. x te installeren en uit te voeren in azure
+     - Aan de SP moet de API-machtiging van **Application. readwrite. OwnedBy** voor Azure Active Directory Graph worden verleend
+     - Een AAD-Tenant Administrator moet toestemming van de beheerder verlenen om deze API-machtiging toe te passen
+     - Aan de SP moeten beheerders rollen voor **mede** werkers en **gebruikers toegang** worden verleend voor het abonnement
+ - Het installatie model voor OCP 4. x wijkt af van 3. x en er zijn geen Azure Resource Manager sjablonen beschikbaar voor het implementeren van OCP 4. x in azure
+ - Als er problemen optreden tijdens het installatie proces, neemt u contact op met het betreffende bedrijf (micro soft of Red Hat)
 
-| Beschrijving van het probleem | Contactpunt |
+| Beschrijving van het probleem | Contact punt |
 |-------------------|---------------|
-| Azure-specifieke problemen (AAD, SP, Azure-abonnement, enz.)                              | Microsoft |
-| OpenShift-specifieke problemen (Installatiefouten / fouten, Red Hat-abonnement, enz.) |  Red Hat  |
+| Specifieke Azure-problemen (AAD, SP, Azure-abonnement, enz.)                              | Microsoft |
+| Open Shift-specifieke problemen (installatie fouten/fouten, Red Hat-abonnement, enz.) |  Red Hat  |
 
 
 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Aan de slag met OpenShift Container Platform](https://docs.openshift.com)
+- [Aan de slag met open Shift container platform](https://docs.openshift.com)

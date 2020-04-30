@@ -1,109 +1,109 @@
 ---
-title: Azure Media Player-opties
-description: De insluitcode van Azure Media Player is gewoon een HTML5-videotag, dus voor veel van de opties u de standaardtagkenmerken gebruiken om de opties in te stellen.
+title: Azure Media Player opties
+description: De Azure Media Player insluit code is gewoon een HTML5-Video code. voor veel van de opties kunt u de standaard label kenmerken gebruiken om de opties in te stellen.
 author: IngridAtMicrosoft
 ms.author: inhenkel
 ms.service: media-services
 ms.topic: reference
 ms.date: 04/20/2020
 ms.openlocfilehash: e26215115b4c4484e5e05a2fd94a4d2c6680a4d0
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81727162"
 ---
 # <a name="options"></a>Opties #
 
 ## <a name="setting-options"></a>Instellingsopties ##
 
-De insluitcode van Azure Media Player is gewoon een HTML5-videotag, dus voor veel van de opties u de standaardtagkenmerken gebruiken om de opties in te stellen.
+De Azure Media Player insluit code is gewoon een HTML5-Video code. voor veel van de opties kunt u de standaard label kenmerken gebruiken om de opties in te stellen.
 
 `<video controls autoplay ...>`
 
-U ook het kenmerk gegevensinstellingen gebruiken om opties in de [JSON-indeling](http://json.org/example.html) te bieden. Dit is ook hoe u opties zou instellen die niet standaard zijn voor de videotag.
+U kunt ook het data-setup-kenmerk gebruiken om opties te bieden in de [JSON](http://json.org/example.html) -indeling. Dit is ook de manier waarop u opties instelt die niet standaard zijn voor de video-tag.
 
 `<video data-setup='{ "controls": true, "autoplay": false }'...>`
 
-Tot slot u, als u het kenmerk voor het instellen van gegevens niet gebruikt om de installatie van de speler te activeren, een object met de spelersopties doorgeven als het tweede argument in de JavaScript-installatiefunctie.
+Ten slotte, als u niet het data-setup-kenmerk gebruikt voor het activeren van de speler Setup, kunt u een object met de opties van de speler door geven als het tweede argument in de Java script-installatie functie.
 
 `amp("vid1", { "controls": true, "autoplay": false });`
 
 > [!NOTE]
-> Opties in de constructor worden alleen ingesteld op de eerste initialisatie voordat de bron is ingesteld.  Als u de opties wilt wijzigen op hetzelfde geïnitialiseerde Azure Media Player-element, moet u de opties bijwerken voordat u de bron wijzigt. U de opties in `myPlayer.options({/*updated options*/});`JavaScript bijwerken met behulp van. Houd er rekening mee dat alleen gewijzigde opties worden beïnvloed, alle andere eerder ingestelde opties blijven bestaan.
+> De opties in de constructor worden alleen ingesteld bij de eerste initialisatie voordat de bron is ingesteld.  Als u de opties voor hetzelfde geinitialiseerde Azure Media Player element wilt wijzigen, moet u de opties bijwerken voordat u de bron wijzigt. U kunt de opties in Java script bijwerken met `myPlayer.options({/*updated options*/});`behulp van. Houd er rekening mee dat alleen gewijzigde opties worden beïnvloed. alle andere eerder ingestelde opties blijven behouden.
 
-## <a name="individual-options"></a>Individuele opties ##
+## <a name="individual-options"></a>Afzonderlijke opties ##
 
 > [!NOTE]
->Videotagkenmerken kunnen alleen waar of onwaar zijn (booleaans), u neemt gewoon het kenmerk (geen gelijkteken) toe om het in te schakelen of uit te sluiten om het uit te schakelen. Bijvoorbeeld, om besturingselementen `<video controls="true" ...>` in `<video controls ...>` te schakelen: VERKEERD RECHTS Het grootste probleem waar mensen tegenaan lopen, is proberen deze waarden op false in te stellen als de waarde (bijvoorbeeld controls="false") die eigenlijk het tegenovergestelde doet en de waarde instelt op true omdat het attribuut nog steeds is opgenomen.
+>Kenmerken van video Tags kunnen alleen waar of ONWAAR (Booleaans) zijn, u hoeft alleen het kenmerk op te nemen (geen gelijkteken) om het in te scha kelen, of het uit te sluiten om het uit te scha kelen. Als u bijvoorbeeld de besturings elementen wilt inschakelen: `<video controls="true" ...>` onjuist `<video controls ...>` recht op het grootste probleem dat gebruikers uitvoeren in, wordt geprobeerd deze waarden in te stellen op False met ONWAAR als de waarde (bijvoorbeeld Controls = "false") die werkelijk het tegenovergestelde doet en de waarde ingesteld op True, omdat het kenmerk nog steeds is opgenomen.
 
 ### <a name="controls"></a>besturingselementen ###
 
-De besturingselementenoptie bepaalt of de speler besturingselementen heeft waarmee de gebruiker kan communiceren. Zonder besturingselementen is de enige manier om het afspelen van de video te starten met het kenmerk autoplay of via de API.
+Met de optie besturings elementen wordt bepaald of de speler besturings elementen heeft waarmee de gebruiker kan werken. Zonder besturings elementen de enige manier om het afspelen van de video te starten, is het kenmerk AutoPlay of via de API.
 
 `<video controls ...>` of `{ "controls": true }`
 
 ### <a name="autoplay"></a>autoplay ###
 
-Als automatisch afspelen waar is, wordt de video afgespeeld zodra de pagina is geladen (zonder enige interactie van de gebruiker).
+Als AutoPlay is ingesteld op True, wordt de video afgespeeld zodra de pagina wordt geladen (zonder tussen komst van de gebruiker).
 
 > [!NOTE]
-> Deze optie wordt niet ondersteund door mobiele apparaten zoals Windows Phone, Apple iOS en Android. Mobiele apparaten blokkeren de autoplay-functionaliteit om te voorkomen dat de maandelijkse dataplannen van de consument worden gebruikt (vaak duur). Een gebruiker touch / klik is vereist om de video te starten in dit geval.
+> Deze optie wordt niet ondersteund door mobiele apparaten zoals Windows Phone, Apple iOS en Android. Mobiele apparaten blok keren de functionaliteit voor automatisch afspelen om te voor komen dat het gebruik van de maandelijkse gegevens plannen van de consument (vaak duur). Een gebruiker/klik is vereist voor het starten van de video in dit geval.
 
-`<video autoplay ...>`Of`{ "autoplay": true }`
+`<video autoplay ...>`of`{ "autoplay": true }`
 
-### <a name="poster"></a>Poster ###
-Het posterkenmerk stelt de afbeelding in die wordt weergegeven voordat de video wordt afgespeeld. Dit is vaak een frame van de video of een aangepast titelscherm. Zodra de gebruiker klikt op spelen van de afbeelding zal verdwijnen.
+### <a name="poster"></a>poster ###
+Het poster kenmerk stelt de afbeelding in die wordt weer gegeven voordat de video wordt afgespeeld. Dit is vaak een frame van de video of een aangepaste titel scherm. Zodra de gebruiker op afspelen klikt, wordt de afbeelding verwijderd.
 
 `<video poster="myPoster.jpg" ...>` of `{ "poster": "myPoster.jpg" }`
 
 ### <a name="width"></a>breedte ###
 
-Met het kenmerk Breedte wordt de weergavebreedte van de video ingesteld.
+Met het kenmerk Width wordt de weergave breedte van de video ingesteld.
 
 `<video width="640" ...>` of `{ "width": 640 }`
 
 ### <a name="height"></a>hoogte ###
 
-Met het kenmerk Hoogte stelt u de weergavehoogte van de video in.
+Met het kenmerk height wordt de weergave hoogte van de video ingesteld.
 
 `<video height="480" ...>` of `{ "height": 480 }`
 
-### <a name="plugins"></a>Plugins ###
+### <a name="plugins"></a>invoeg ###
 
-Met de plug-ins json bepaalt u welke plug-ins worden geladen met dat exemplaar van AMP, zodat u alle opties configureren die plug-in kan hebben.
+De JSON plugins bepaalt welke invoeg toepassingen worden geladen met dit exemplaar van AMP kunt u opties configureren die door de invoeg toepassing kunnen worden geconfigureerd.
 
    `<video... data-setup='{plugins: { "contentTitle": {"name": "Azure Medi Services Overview"}}}'...>`
 
-Zie [het schrijven van plug-ins](azure-media-player-writing-plugins.md) voor meer informatie over de ontwikkeling en het gebruik van plug-ins
+Zie [invoeg toepassingen schrijven](azure-media-player-writing-plugins.md) voor meer informatie over het ontwikkelen en gebruiken van de invoeg toepassing
 
 ### <a name="other-options"></a>andere opties ###
 
-Andere opties kunnen op `<video>` de tag `data-setup` worden ingesteld met behulp van de parameter die een JSON neemt.
+Andere opties kunnen worden ingesteld voor de `<video>` tag met behulp `data-setup` van de para meter die een JSON gebruikt.
 `<video ... data-setup='{"nativeControlsForTouch": false}'>`
 
 #### <a name="nativecontrolsfortouch"></a>nativeControlsForTouch ####
 
-Dit is expliciet ingesteld op vals. Door false in te stellen, kan de Azure Media Player-skin op verschillende platforms hetzelfde worden weergegeven.  Bovendien zal, in tegenstelling tot de naam, touch nog steeds worden ingeschakeld.
+Dit is expliciet ingesteld op ONWAAR. Als de instelling is ingesteld op ONWAAR, kan de Azure Media Player Skin hetzelfde op verschillende platforms worden weer gegeven.  Daarnaast is er nog steeds, in tegens telling tot de naam, aanraken ingeschakeld.
 
-### <a name="fluid"></a>Vloeistof ###
+### <a name="fluid"></a>vloeistoffen ###
 
-Door deze optie in te stellen op het echte video-element, wordt de volledige breedte van de bovenliggende container ingenomen en wordt de hoogte aangepast aan een video met een standaard beeldverhouding van 16:9.
+Als u deze optie instelt op True video-element krijgt de volledige breedte van de bovenliggende container en wordt de hoogte aangepast aan een video met een standaard verhouding van 16:9.
 
 `<video ... data-setup='{"fluid": true}'>`
 
-`fluid`de optie `width` expliciet `height` en instellingen overschrijft. Deze optie is alleen beschikbaar `2.0.0` in de Azure Media Player-versie en hoger.
+`fluid`optie overschrijft expliciete `width` en `height` instellingen. Deze optie is alleen beschikbaar in Azure Media Player- `2.0.0` versie en hoger.
 
-### <a name="playbackspeed"></a>afspeelsnelheid ###
+### <a name="playbackspeed"></a>playbackSpeed ###
 
-`playbackSpeed`optie regelt het afspelenSnelheid controle en set van afspeelsnelheid instellingen beschikbaar voor de gebruiker. `playbackSpeed`neemt een object. Om de besturingselement voor afspeelsnelheid `enabled` op de bedieningsbalk mogelijk te maken, moet de eigenschap van het object op true worden ingesteld. Een voorbeeld van het inschakelen van afspeelsnelheid in de markering:
+`playbackSpeed`Option Controls playbackSpeed Control en set met instellingen voor de afspeel snelheid die beschikbaar zijn voor de gebruiker. `playbackSpeed`neemt een object. Als u het besturings element voor de afspeel snelheid wilt inschakelen op de `enabled` werk balk, moet de eigenschap van het object worden ingesteld op True. Een voor beeld van het inschakelen van afspeel snelheid in Markeringen:
 
 `<video ... data-setup='{"playbackSpeed": {"enabled": true}}'>`
 
 
-Andere eigenschappen `playbackSpeed` van de instelling worden gegeven door het object [PlaybackSpeedOptions.](https://docs.microsoft.com/javascript/api/azuremediaplayer/amp.player.playbackspeedoptions)
+Andere eigenschappen van de `playbackSpeed` instelling worden gegeven door het object [PlaybackSpeedOptions](https://docs.microsoft.com/javascript/api/azuremediaplayer/amp.player.playbackspeedoptions) .
 
-Voorbeeld van het instellen van opties voor afspeelsnelheid in JavaScript:
+Voor beeld van het instellen van opties voor afspeel snelheid in Java script:
 
 ```javascript
     var myPlayer = amp('vid1', {
@@ -126,15 +126,15 @@ Voorbeeld van het instellen van opties voor afspeelsnelheid in JavaScript:
     });
 ```
 
-Deze optie is alleen beschikbaar in Azure Media Player-versie 2.0.0 en hoger.
+Deze optie is alleen beschikbaar in Azure Media Player versie 2.0.0 en hoger.
 
-### <a name="staledatatimelimitinsec"></a>verouderdeDataTimeLimitInSec ###
+### <a name="staledatatimelimitinsec"></a>staleDataTimeLimitInSec ###
 
-De `staleDataTimeLimitInSec` optie is een optimalisatie waarmee u configureren hoeveel seconden aan verouderde gegevens u wilt bewaren in de mediaSource-buffers. Deze optie is standaard uitgeschakeld.
+De `staleDataTimeLimitInSec` optie is een optimalisatie waarmee u kunt configureren hoeveel seconden verouderde gegevens u in de mediaSource-buffers wilt houden. Deze optie is standaard uitgeschakeld.
 
-### <a name="cea708captionssettings"></a>cea708Instellingen voor bijschriften ###
+### <a name="cea708captionssettings"></a>cea708CaptionsSettings ###
 
-Als u de true-instellingen inschakelt, u live CEA-ondertiteling weergeven in uw livestreams en live-archieven. Het labelattribuut is niet vereist, als niet inbegrepen is, valt de speler terug naar een standaardlabel.
+Als u deze optie instelt op True, kunt u de ondertiteling van Live CEA in uw live streams en live-archieven weer geven. Het kenmerk label is niet vereist als de speler niet is opgenomen in een standaard label.
 
 ```javascript
      cea708CaptionsSettings: {
@@ -144,8 +144,8 @@ Als u de true-instellingen inschakelt, u live CEA-ondertiteling weergeven in uw 
             }
 ```
 
-Deze optie is alleen beschikbaar in Azure Media Player-versie 2.1.1 en hoger.
+Deze optie is alleen beschikbaar in Azure Media Player versie 2.1.1 en hoger.
 
 ## <a name="next-steps"></a>Volgende stappen ##
 
-- [Snel start azure mediaspeler](azure-media-player-quickstart.md)
+- [Snelstartgids Azure Media Player](azure-media-player-quickstart.md)

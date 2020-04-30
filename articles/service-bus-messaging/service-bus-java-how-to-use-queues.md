@@ -1,6 +1,6 @@
 ---
-title: Wachtrijen voor Azure Service Bus gebruiken met Java
-description: In deze zelfstudie leert u hoe u Java-toepassingen maakt om berichten naar berichten te verzenden en te ontvangen vanuit een Azure Service Bus-wachtrij.
+title: Azure Service Bus wacht rijen gebruiken met Java
+description: In deze zelf studie leert u hoe u Java-toepassingen kunt maken om berichten te verzenden naar en berichten van een Azure Service Bus wachtrij te ontvangen.
 services: service-bus-messaging
 documentationcenter: java
 author: axisc
@@ -16,39 +16,39 @@ ms.date: 03/24/2020
 ms.author: aschhab
 ms.custom: seo-java-july2019, seo-java-august2019, seo-java-september2019
 ms.openlocfilehash: 184ffd39281ea27d8596bc37a9f89fd22acfb1ba
-ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81732176"
 ---
-# <a name="quickstart-use-azure-service-bus-queues-with-java-to-send-and-receive-messages"></a>Snelstart: Azure Service Bus-wachtrijen met Java gebruiken om berichten te verzenden en te ontvangen
+# <a name="quickstart-use-azure-service-bus-queues-with-java-to-send-and-receive-messages"></a>Snelstartgids: Azure Service Bus-wacht rijen gebruiken met Java om berichten te verzenden en te ontvangen
 
 [!INCLUDE [service-bus-selector-queues](../../includes/service-bus-selector-queues.md)]
-In deze zelfstudie leert u hoe u Java-toepassingen maakt om berichten naar berichten te verzenden en te ontvangen vanuit een Azure Service Bus-wachtrij. 
+In deze zelf studie leert u hoe u Java-toepassingen kunt maken om berichten te verzenden naar en berichten van een Azure Service Bus wachtrij te ontvangen. 
 
 > [!NOTE]
-> U Java-samples vinden op GitHub in de [azure-service-bus repository.](https://github.com/Azure/azure-service-bus/tree/master/samples/Java)
+> U kunt Java-voor beelden vinden op GitHub in de [Azure-service-bus-opslag plaats](https://github.com/Azure/azure-service-bus/tree/master/samples/Java).
 
 ## <a name="prerequisites"></a>Vereisten
-1. Een Azure-abonnement. U hebt een Azure-account nodig om deze zelfstudie te voltooien. U uw [MSDN-abonneevoordelen](https://azure.microsoft.com/pricing/member-offers/credit-for-visual-studio-subscribers/?WT.mc_id=A85619ABF) activeren of u aanmelden voor een [gratis account.](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF)
-2. Als u geen wachtrij hebt om mee te werken, voert u stappen uit in de [Azure-portal gebruiken om een wachtrijartikel voor servicebus te maken](service-bus-quickstart-portal.md) om een wachtrij te maken.
-    1. Lees het snelle **overzicht** van wachtrijen voor **servicebussen.** 
-    2. Een **naamruimte**voor servicebus maken . 
-    3. Haal de **verbindingstekenreeks**.
-    4. Een wachtrij voor servicebussen **maken**.
-3. [Azure SDK voor Java][Azure SDK for Java]installeren . 
+1. Een Azure-abonnement. U hebt een Azure-account nodig om deze zelfstudie te voltooien. U kunt de [voor delen](https://azure.microsoft.com/pricing/member-offers/credit-for-visual-studio-subscribers/?WT.mc_id=A85619ABF) van uw MSDN-abonnee activeren of zich aanmelden voor een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF).
+2. Als u geen wachtrij hebt om mee te werken, voert u de stappen in het [Azure Portal gebruik uit om een service bus wachtrij](service-bus-quickstart-portal.md) artikel te maken om een wachtrij te maken.
+    1. Lees het kort **overzicht** van service bus- **wacht rijen**. 
+    2. Maak een Service Bus **naam ruimte**. 
+    3. Haal de **Connection String**op.
+    4. Maak een Service Bus **wachtrij**.
+3. Installeer de [Azure-SDK voor Java][Azure SDK for Java]. 
 
 
-## <a name="configure-your-application-to-use-service-bus"></a>Uw toepassing configureren om Service Bus te gebruiken
-Zorg ervoor dat u de [Azure SDK voor Java][Azure SDK for Java] hebt geïnstalleerd voordat u dit voorbeeld maakt. 
+## <a name="configure-your-application-to-use-service-bus"></a>Uw toepassing configureren voor het gebruik van Service Bus
+Zorg ervoor dat u de [Azure SDK voor Java][Azure SDK for Java] hebt geïnstalleerd voordat u dit voor beeld bouwt. 
 
-Als u Eclipse gebruikt, u de [Azure Toolkit voor Eclipse][Azure Toolkit for Eclipse] installeren die de Azure SDK voor Java bevat. Vervolgens u de **Microsoft Azure-bibliotheken voor Java** aan uw project toevoegen. Zie De Azure Toolkit voor [IntelliJ installeren](/azure/developer/java/toolkit-for-intellij/installation)als u IntelliJ gebruikt. 
+Als u een eclips gebruikt, kunt u de [Azure-Toolkit voor eclipse][Azure Toolkit for Eclipse] installeren die de Azure SDK voor Java bevat. U kunt vervolgens de **Microsoft Azure bibliotheken voor Java** toevoegen aan uw project. Als u IntelliJ gebruikt, raadpleegt u [de Azure-Toolkit voor IntelliJ installeren](/azure/developer/java/toolkit-for-intellij/installation). 
 
-![Microsoft Azure-bibliotheken voor Java toevoegen aan uw Eclipse-project](./media/service-bus-java-how-to-use-queues/eclipse-azure-libraries-java.png)
+![Microsoft Azure bibliotheken voor Java toevoegen aan uw eclips-project](./media/service-bus-java-how-to-use-queues/eclipse-azure-libraries-java.png)
 
 
-Voeg de `import` volgende instructies toe aan de bovenkant van het Java-bestand:
+Voeg de volgende `import` -instructies toe aan de bovenkant van het Java-bestand:
 
 ```java
 // Include the following imports to use Service Bus APIs
@@ -68,7 +68,7 @@ import org.apache.commons.cli.*;
 ```
 
 ## <a name="send-messages-to-a-queue"></a>Berichten verzenden naar een wachtrij
-Als u berichten naar een wachtrij voor servicebussen wilt verzenden, wordt een **QueueClient-object** geinstantieerd en worden berichten asynchroon verzonden. In de volgende code ziet u hoe u een bericht verzendt voor een wachtrij die via de portal is gemaakt.
+Als u berichten naar een Service Bus wachtrij wilt verzenden, maakt uw toepassing een exemplaar van een **QueueClient** -object en worden berichten asynchroon verzonden. De volgende code laat zien hoe u een bericht verzendt voor een wachtrij die via de portal is gemaakt.
 
 ```java
 public void run() throws Exception {
@@ -116,20 +116,20 @@ public void run() throws Exception {
 
 ```
 
-Berichten die naar wachtrijen voor servicebus worden verzonden en ontvangen, zijn exemplaren van de klasse [Message.](/java/api/com.microsoft.azure.servicebus.message?view=azure-java-stable) Berichtobjecten hebben een set standaardeigenschappen (zoals Label en TimeToLive), een woordenboek dat wordt gebruikt om aangepaste toepassingsspecifieke eigenschappen vast te houden en een hoofd tekst met willekeurige toepassingsgegevens. Een toepassing kan de hoofdtekst van het bericht instellen door elk serializable object door te geven aan de constructor van het bericht, en de juiste serialisator wordt vervolgens gebruikt om het object te serialiseren. U ook een **java bieden. Io. Object InputStream.**
+Berichten die worden verzonden naar en ontvangen van Service Bus-wacht rijen, zijn exemplaren van de [bericht](/java/api/com.microsoft.azure.servicebus.message?view=azure-java-stable) klasse. Bericht objecten hebben een aantal standaard eigenschappen (zoals label en TimeToLive), een woorden lijst die wordt gebruikt voor het opslaan van aangepaste toepassingsspecifieke eigenschappen en een hoofd tekst van wille keurige toepassings gegevens. Een toepassing kan de hoofd tekst van het bericht instellen door elk serialiseerbaar object door te geven aan de constructor van het bericht en de juiste serialisatiefunctie wordt gebruikt om het object te serialiseren. U kunt ook een Java-weboplossing opgeven **. Latentie. InputStream** -object.
 
 
 Service Bus-wachtrijen ondersteunen een maximale berichtgrootte van 256 kB in de [Standard-laag](service-bus-premium-messaging.md) en 1 MB in de [Premium-laag](service-bus-premium-messaging.md). De koptekst, die de standaard- en aangepaste toepassingseigenschappen bevat, kan maximaal 64 kB groot zijn. Er is geen limiet voor het aantal berichten in een wachtrij, maar er is een limiet voor de totale grootte van de berichten in een wachtrij. De grootte van de wachtrij wordt gedefinieerd tijdens het aanmaken, met een bovengrens van 5 GB.
 
-## <a name="receive-messages-from-a-queue"></a>Berichten ontvangen vanuit een wachtrij
-De primaire manier om berichten uit een wachtrij te ontvangen, is door een **ServiceBusContract-object** te gebruiken. Ontvangen berichten kunnen werken in twee verschillende modi: **ReceiveAndDelete** en **PeekLock**.
+## <a name="receive-messages-from-a-queue"></a>Berichten van een wachtrij ontvangen
+De primaire manier om berichten uit een wachtrij te ontvangen, is door een **ServiceBusContract** -object te gebruiken. Ontvangen berichten kunnen in twee verschillende modi werken: **ReceiveAndDelete** en **PeekLock**.
 
-Wanneer u de modus **Ontvangen en verwijderen** gebruikt, is ontvangen een bewerking met één schot - dat wil zeggen wanneer Service Bus een leesverzoek ontvangt voor een bericht in een wachtrij, markeert het bericht als verbruikt en retourneert het naar de toepassing. **ReceiveAndDelete-modus** (de standaardmodus) is het eenvoudigste model en werkt het beste voor scenario's waarin een toepassing kan tolereren dat een bericht niet wordt verwerkt in het geval van een storing. Neem bijvoorbeeld een scenario waarin de consument de ontvangstaanvraag uitgeeft en het systeem vervolgens vastloopt voordat de aanvraag wordt verwerkt.
-Omdat Service Bus het bericht heeft gemarkeerd als wordt verbruikt, heeft de toepassing, wanneer de toepassing opnieuw wordt opgestart en opnieuw berichten begint te consumeren, het bericht gemist dat voorafgaand aan de crash is verbruikt.
+Wanneer u de **ReceiveAndDelete** -modus gebruikt, ontvangt u een eenmalige bewerking. Wanneer service bus een lees aanvraag voor een bericht in een wachtrij ontvangt, wordt het bericht gemarkeerd als verbruikt en wordt het naar de toepassing geretourneerd. De **ReceiveAndDelete** -modus (de standaard modus) is het eenvoudigste model en werkt het beste voor scenario's waarin een toepassing niet de verwerking van een bericht in het geval van een fout kan verdragen. Neem bijvoorbeeld een scenario waarin de consument de ontvangstaanvraag uitgeeft en het systeem vervolgens vastloopt voordat de aanvraag wordt verwerkt.
+Omdat Service Bus het bericht heeft gemarkeerd als verbruikt, wordt het bericht dat voor het vastlopen is verbruikt, gemist wanneer de toepassing opnieuw wordt gestart en er opnieuw wordt verbruikt.
 
-In **de PeekLock-modus** wordt ontvangen een tweetrapsbewerking, waardoor toepassingen kunnen worden ondersteund die ontbrekende berichten niet kunnen tolereren. Als Service Bus een aanvraag ontvangt, wordt het volgende te verbruiken bericht gevonden, wordt het bericht vergrendeld om te voorkomen dat andere consumenten het ontvangen en wordt het bericht vervolgens naar de toepassing geretourneerd. Nadat de toepassing is voltooid met de verwerking van het bericht (of het betrouwbaar opslaat voor toekomstige verwerking), voltooit het de tweede fase van het ontvangstproces door **volledige()** op het ontvangen bericht te bellen. Wanneer Service Bus de **volledige()** aanroep ziet, wordt het bericht als verbruikt weergegeven en wordt het uit de wachtrij verwijderd. 
+In de **PeekLock** -modus wordt ontvangen een bewerking met twee fasen, waardoor het mogelijk is om toepassingen te ondersteunen die geen ontbrekende berichten kunnen verdragen. Als Service Bus een aanvraag ontvangt, wordt het volgende te verbruiken bericht gevonden, wordt het bericht vergrendeld om te voorkomen dat andere consumenten het ontvangen en wordt het bericht vervolgens naar de toepassing geretourneerd. Nadat de toepassing klaar is met de verwerking van het bericht (of op betrouw bare wijze is opgeslagen voor toekomstige verwerking), wordt de tweede fase van het ontvangst proces voltooid door het aanroepen van **complete ()** op het ontvangen bericht. Als Service Bus de aanroep **complete ()** ziet, wordt het bericht gemarkeerd als verbruikt en wordt het uit de wachtrij verwijderd. 
 
-In het volgende voorbeeld wordt uitgelegd hoe berichten kunnen worden ontvangen en verwerkt met de **PeekLock-modus** (niet de standaardmodus). Het onderstaande voorbeeld maakt gebruik van het callback-model met `TestQueue`een geregistreerde berichthandler en verwerkt berichten wanneer ze in onze . Deze modus roept **automatisch voltooid()** aan als de callback normaal terugkeert en oproepen **verlaten()** als de callback een uitzondering plaatst. 
+In het volgende voor beeld ziet u hoe berichten kunnen worden ontvangen en verwerkt met behulp van de **PeekLock** -modus (niet de standaard modus). In het onderstaande voor beeld wordt het call back-model gebruikt met een geregistreerde bericht-handler en worden `TestQueue`berichten verwerkt die binnenkomen in onze. In deze modus wordt de **volledige ()** automatisch aangeroepen, omdat de retour aanroep normaal wordt geretourneerd en het aanroepen van **Abandon ()** als de retour aanroep een uitzonde ring genereert. 
 
 ```java
     public void run() throws Exception {
@@ -182,17 +182,17 @@ In het volgende voorbeeld wordt uitgelegd hoe berichten kunnen worden ontvangen 
 ```
 
 ## <a name="how-to-handle-application-crashes-and-unreadable-messages"></a>Het vastlopen van de toepassing en onleesbare berichten afhandelen
-Service Bus biedt functionaliteit om netjes te herstellen bij fouten in uw toepassing of problemen bij het verwerken van een bericht. Als een ontvangertoepassing om de een of andere reden het bericht niet kan verwerken, kan deze de methode **verlaten()** op clientobject aanroepen met het vergrendelingstoken van het ontvangen bericht dat is verkregen via **getLockToken()**. Dit zorgt ervoor dat Service Bus het bericht in de wachtrij ontgrendelt en het beschikbaar maakt om opnieuw te worden ontvangen, ofwel door dezelfde consumerende toepassing of door een andere consumerende toepassing.
+Service Bus biedt functionaliteit om netjes te herstellen bij fouten in uw toepassing of problemen bij het verwerken van een bericht. Als een ontvangende toepassing het bericht om de een of andere reden niet kan verwerken, kan de methode **Abandon ()** aanroepen op het client object met het vergrendelings token van het ontvangen bericht dat is verkregen via **getLockToken ()**. Dit zorgt ervoor dat Service Bus het bericht in de wachtrij ontgrendelt en het beschikbaar maakt om opnieuw te worden ontvangen, ofwel door dezelfde consumerende toepassing of door een andere consumerende toepassing.
 
-Er is ook een time-out gekoppeld aan een bericht dat is vergrendeld in de wachtrij en als de toepassing het bericht niet verwerkt voordat de vergrendelingstime-out verloopt (bijvoorbeeld als de toepassing vastloopt), ontgrendelt Service Bus het bericht automatisch en maakt het beschikbaar om opnieuw te worden ontvangen.
+Er is ook een time-out gekoppeld aan een bericht dat in de wachtrij is vergrendeld. als de toepassing het bericht niet kan verwerken voordat de time-out van de vergren deling verloopt (bijvoorbeeld als de toepassing vastloopt), wordt Service Bus het bericht automatisch ontgrendeld zodat het weer beschikbaar wordt.
 
-In het geval dat de toepassing crasht na het verwerken van het bericht, maar voordat de **volledige()** aanvraag wordt uitgegeven, wordt het bericht opnieuw geleverd aan de toepassing wanneer het opnieuw wordt opgestart. Dit wordt vaak *Ten minste eenmaal verwerken* genoemd; dat wil zeggen dat elk bericht ten minste één keer wordt verwerkt, maar dat hetzelfde bericht in sommige situaties opnieuw kan worden bezorgd. Als in het scenario dubbele verwerking niet wordt getolereerd, dan moeten toepassingsontwikkelaars extra logica toevoegen aan de toepassing om dubbele berichtbezorging af te handelen. Dit wordt vaak bereikt met behulp van de **getMessageId-methode** van het bericht, die constant blijft tijdens leveringspogingen.
+In het geval dat de toepassing vastloopt na het verwerken van het bericht, maar voordat de aanvraag **volledig ()** is uitgegeven, wordt het bericht opnieuw aan de toepassing verzonden wanneer het opnieuw wordt gestart. Dit wordt vaak *Ten minste eenmaal verwerken* genoemd; dat wil zeggen dat elk bericht ten minste één keer wordt verwerkt, maar dat hetzelfde bericht in sommige situaties opnieuw kan worden bezorgd. Als in het scenario dubbele verwerking niet wordt getolereerd, dan moeten toepassingsontwikkelaars extra logica toevoegen aan de toepassing om dubbele berichtbezorging af te handelen. Dit wordt vaak bereikt met de methode **getMessageId** van het bericht, dat constant blijft tijdens de bezorgings pogingen.
 
 > [!NOTE]
-> U servicebusbronnen beheren met [Service Bus Explorer.](https://github.com/paolosalvatori/ServiceBusExplorer/) Met de Service Bus Explorer kunnen gebruikers eenvoudig verbinding maken met een naamruimte van een ServiceBus en berichtenentiteiten beheren. De tool biedt geavanceerde functies zoals import/export functionaliteit of de mogelijkheid om onderwerp, wachtrijen, abonnementen, relay services, meldinghubs en evenementenhubs te testen. 
+> U kunt Service Bus-resources beheren met [Service Bus Explorer](https://github.com/paolosalvatori/ServiceBusExplorer/). Met de Service Bus Explorer kunnen gebruikers verbinding maken met een Service Bus naam ruimte en de Messa ging-entiteiten op een eenvoudige manier beheren. Het hulp programma biedt geavanceerde functies zoals de functionaliteit voor importeren/exporteren of de mogelijkheid om onderwerp, wacht rijen, abonnementen, relay-Services, Notification hubs en Events hubs te testen. 
 
 ## <a name="next-steps"></a>Volgende stappen
-Nu u de basisbeginselen van wachtrijen voor servicebus hebt geleerd, raadpleegt u [Wachtrijen, onderwerpen en abonnementen][Queues, topics, and subscriptions] voor meer informatie.
+Nu u de basis principes van Service Bus wacht rijen hebt geleerd, raadpleegt u [wacht rijen, onderwerpen en abonnementen][Queues, topics, and subscriptions] voor meer informatie.
 
 Raadpleeg het [Java Developer Center](https://azure.microsoft.com/develop/java/) voor meer informatie.
 

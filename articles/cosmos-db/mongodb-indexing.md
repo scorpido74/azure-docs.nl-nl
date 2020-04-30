@@ -1,6 +1,6 @@
 ---
 title: Indexering beheren in de API van Azure Cosmos DB voor MongoDB
-description: In dit artikel vindt u een overzicht van azure cosmos DB-indexeringsmogelijkheden met behulp van de MongoDB API.
+description: Dit artikel bevat een overzicht van Azure Cosmos DB indexerings mogelijkheden met behulp van de MongoDB-API.
 ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.devlang: nodejs
@@ -9,82 +9,82 @@ ms.date: 04/03/2020
 author: timsander1
 ms.author: tisande
 ms.openlocfilehash: fd602f88acf26e821e57e0a844f543aac08dad0d
-ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81732710"
 ---
 # <a name="manage-indexing-in-azure-cosmos-dbs-api-for-mongodb"></a>Indexering beheren in de API van Azure Cosmos DB voor MongoDB
 
-De API van Azure Cosmos DB voor MongoDB maakt gebruik van de kernmogelijkheden voor indexbeheer van Azure Cosmos DB. Dit artikel richt zich op het toevoegen van indexen met behulp van azure cosmos DB's API voor MongoDB. U ook een overzicht lezen [van indexering in Azure Cosmos DB](index-overview.md) dat relevant is voor alle API's.
+Azure Cosmos DB-API voor MongoDB maakt gebruik van de belangrijkste mogelijkheden voor index beheer van Azure Cosmos DB. In dit artikel wordt uitgelegd hoe u indexen toevoegt met behulp van de API van Azure Cosmos DB voor MongoDB. U kunt ook een [overzicht van het indexeren in azure Cosmos DB](index-overview.md) lezen dat relevant is voor alle api's.
 
-## <a name="indexing-for-mongodb-server-version-36"></a>Indexering voor MongoDB-serverversie 3.6
+## <a name="indexing-for-mongodb-server-version-36"></a>Indexering voor MongoDB-Server versie 3,6
 
-De API van Azure Cosmos DB voor MongoDB-serverversie `_id` 3.6 indexeert automatisch het veld, dat niet kan worden verwijderd. Het dwingt automatisch de uniciteit `_id` van het veld per shardsleutel af.
+De API van Azure Cosmos DB voor MongoDB-Server versie 3,6 indexeert automatisch het `_id` veld dat niet kan worden verwijderd. De unieke waarde van het `_id` veld wordt automatisch afgedwongen per Shard-sleutel.
 
-Als u extra velden wilt indexeren, past u de opdrachten voor mongoDB-indexbeheer toe. Net als in MongoDB indexeert de API van Azure Cosmos `_id` DB voor MongoDB automatisch alleen het veld. Dit standaardindexeringsbeleid verschilt van de Azure Cosmos DB SQL API, die standaard alle velden indexeert.
+Als u extra velden wilt indexeren, past u de MongoDB-index beheer opdrachten toe. Net als in MongoDB indexeert Azure Cosmos DB-API voor MongoDB automatisch `_id` het veld. Dit standaard indexerings beleid wijkt af van de Azure Cosmos DB SQL-API, waarmee standaard alle velden worden geïndexeerd.
 
-Als u een sortering wilt toepassen op een query, moet u een index maken voor de velden die worden gebruikt in de sorteerbewerking.
+Als u een sortering op een query wilt Toep assen, moet u een index maken voor de velden die in de sorteer bewerking worden gebruikt.
 
 ## <a name="index-types"></a>Indextypen
 
 ### <a name="single-field"></a>Eén veld
 
-U indexen maken op elk veld. De sorteervolgorde van de enkelvoudige veldindex doet er niet toe. Met de volgende opdracht wordt `name`een index op het veld geveld:
+U kunt indexen maken voor één veld. De sorteer volgorde van de enkelvoudige veld index is niet van belang. Met de volgende opdracht maakt u een index voor `name`het veld:
 
 `db.coll.createIndex({name:1})`
 
-Eén query maakt gebruik van meerdere indexen met één veld waar beschikbaar. U maximaal 500 indexen per container maken.
+Bij een query worden meerdere enkelvoudige veld indexen gebruikt, waar beschikbaar. U kunt Maxi maal 500 enkelvoudige veld indexen per container maken.
 
-### <a name="compound-indexes-mongodb-server-version-36"></a>Samengestelde indexen (MongoDB-serverversie 3.6)
+### <a name="compound-indexes-mongodb-server-version-36"></a>Samengestelde indexen (MongoDB Server versie 3,6)
 
-Azure Cosmos DB's API voor MongoDB ondersteunt samengestelde indexen voor accounts die het versie 3.6-draadprotocol gebruiken. U maximaal acht velden opnemen in een samengestelde index. In tegenstelling tot mongoDB moet u alleen een samengestelde index maken als uw query efficiënt moet sorteren op meerdere velden tegelijk. Voor query's met meerdere filters die niet hoeven te sorteren, maakt u meerdere enkelvoudige indexen in plaats van één samengestelde index.
+Azure Cosmos DB-API voor MongoDB ondersteunt samengestelde indexen voor accounts die gebruikmaken van versie 3,6 wire protocol. U kunt Maxi maal acht velden in een samengestelde index toevoegen. In tegens telling tot in MongoDB moet u alleen een samengestelde index maken als uw query efficiënt moet worden gesorteerd op meerdere velden tegelijk. Voor query's met meerdere filters die niet hoeven te worden gesorteerd, maakt u meerdere enkelvoudige veld indexen in plaats van één samengestelde index.
 
-Met de volgende opdracht wordt `name` een `age`samengestelde index op de velden gemaakt en:
+Met de volgende opdracht maakt u een samengestelde index voor `name` de `age`velden en:
 
 `db.coll.createIndex({name:1,age:1})`
 
-U samengestelde indexen gebruiken om efficiënt te sorteren op meerdere velden tegelijk, zoals in het volgende voorbeeld wordt weergegeven:
+U kunt samengestelde indexen gebruiken om efficiënt te sorteren op meerdere velden tegelijk, zoals wordt weer gegeven in het volgende voor beeld:
 
 `db.coll.find().sort({name:1,age:1})`
 
-U de voorgaande samengestelde index ook gebruiken om een query efficiënt te sorteren met de tegenovergestelde sorteervolgorde op alle velden. Hier volgt een voorbeeld:
+U kunt ook de voor gaande samengestelde index gebruiken om efficiënt te sorteren op een query met de tegenovergestelde sorteer volgorde voor alle velden. Hier volgt een voorbeeld:
 
 `db.coll.find().sort({name:-1,age:-1})`
 
-De volgorde van de paden in de samengestelde index moet echter precies overeenkomen met de query. Hier is een voorbeeld van een query waarvoor een extra samengestelde index nodig is:
+De volg orde van de paden in de samengestelde index moet echter exact overeenkomen met de query. Hier volgt een voor beeld van een query waarvoor een extra samengestelde index is vereist:
 
 `db.coll.find().sort({age:1,name:1})`
 
-### <a name="multikey-indexes"></a>Multikey-indexen
+### <a name="multikey-indexes"></a>MultiKey-indexen
 
-Azure Cosmos DB maakt multikey-indexen om inhoud te indexeren die is opgeslagen in arrays. Als u een veld indexeert met een matrixwaarde, indexeert Azure Cosmos DB automatisch elk element in de array.
+Azure Cosmos DB maakt MultiKey-indexen om inhoud te indexeren die in matrices is opgeslagen. Als u een veld indexeert met een matrix waarde, Azure Cosmos DB automatisch elk element in de matrix geïndexeerd.
 
 ### <a name="geospatial-indexes"></a>Georuimtelijke indexen
 
-Veel georuimtelijke operatoren zullen profiteren van georuimtelijke indexen. Momenteel ondersteunt `2dsphere` de API van Azure Cosmos DB voor MongoDB indexen. De API ondersteunt `2d` nog geen indexen.
+Veel georuimtelijke Opera tors profiteren van georuimtelijke indexen. Momenteel biedt de API van Azure Cosmos DB voor MongoDB `2dsphere` ondersteuning voor indexen. De API biedt nog geen ondersteuning `2d` voor indexen.
 
-Hier is een voorbeeld van het maken `location` van een georuimtelijke index op het veld:
+Hier volgt een voor beeld van het maken van een georuimtelijke index op het `location` veld:
 
 `db.coll.createIndex({ location : "2dsphere" })`
 
-### <a name="text-indexes"></a>Tekstindexen
+### <a name="text-indexes"></a>Tekst indexen
 
-De API van Azure Cosmos DB voor MongoDB biedt momenteel geen ondersteuning voor tekstindexen. Voor zoekopdrachten naar tekst op tekenreeksen moet u [azure cognitive search-integratie](https://docs.microsoft.com/azure/search/search-howto-index-cosmosdb) met Azure Cosmos DB gebruiken.
+De API van Azure Cosmos DB voor MongoDB biedt momenteel geen ondersteuning voor tekst indexen. Voor tekst zoekopdracht query's op teken reeksen moet u [Azure Cognitive Search](https://docs.microsoft.com/azure/search/search-howto-index-cosmosdb) -integratie met Azure Cosmos DB gebruiken.
 
-## <a name="index-properties"></a>Indexeigenschappen
+## <a name="index-properties"></a>Eigenschappen van index
 
-De volgende bewerkingen zijn gebruikelijk voor accounts met draadprotocol versie 3.6 en accounts die eerdere versies bevatten. U meer informatie krijgen over [ondersteunde indexen en geïndexeerde eigenschappen](mongodb-feature-support-36.md#indexes-and-index-properties).
+De volgende bewerkingen zijn gebruikelijk voor accounts die zijn gereserveerd van wire-protocol versie 3,6 en accounts die eerdere versies bieden. Meer informatie over [ondersteunde indexen en geïndexeerde eigenschappen](mongodb-feature-support-36.md#indexes-and-index-properties)vindt u hier.
 
 ### <a name="unique-indexes"></a>Unieke indexen
 
-[Unieke indexen](unique-keys.md) zijn handig om af te dwingen dat twee of meer documenten niet dezelfde waarde bevatten voor geïndexeerde velden.
+[Unieke indexen](unique-keys.md) zijn handig voor het afdwingen dat twee of meer documenten niet dezelfde waarde voor geïndexeerde velden bevatten.
 
 > [!IMPORTANT]
-> Unieke indexen kunnen alleen worden gemaakt als de verzameling leeg is (bevat geen documenten).
+> Unieke indexen kunnen alleen worden gemaakt wanneer de verzameling leeg is (geen documenten bevat).
 
-Met de volgende opdracht wordt `student_id`een unieke index op het veld geveld:
+Met de volgende opdracht maakt u een unieke index voor `student_id`het veld:
 
 ```shell
 globaldb:PRIMARY> db.coll.createIndex( { "student_id" : 1 }, {unique:true} )
@@ -97,9 +97,9 @@ globaldb:PRIMARY> db.coll.createIndex( { "student_id" : 1 }, {unique:true} )
 }
 ```
 
-Voor geshardverzamelingen moet u de shardtoets (partitie) opgeven om een unieke index te maken. In andere woorden, alle unieke indexen voor een shard-verzameling zijn samengestelde indexen waarbij een van de velden de partitiesleutel is.
+Voor Shard-verzamelingen moet u de Shard-sleutel (Partition) opgeven om een unieke index te maken. In andere woorden, alle unieke indexen voor een shard-verzameling zijn samengestelde indexen waarbij een van de velden de partitiesleutel is.
 
-Met de volgende opdrachten wordt ```coll``` een geshard ```university```verzameling gemaakt (de shardtoets is ) met een unieke index op de velden `student_id` en: `university`
+Met de volgende opdrachten maakt u een ```coll``` Shard-verzameling (de ```university```Shard-sleutel is) met een unieke `student_id` index `university`voor de velden en:
 
 ```shell
 globaldb:PRIMARY> db.runCommand({shardCollection: db.coll._fullName, key: { university: "hashed"}});
@@ -118,13 +118,13 @@ globaldb:PRIMARY> db.coll.createIndex( { "student_id" : 1, "university" : 1 }, {
 }
 ```
 
-In het voorgaande voorbeeld geeft ```"university":1``` het weglaten van de component een fout met het volgende bericht:
+In het voor gaande voor beeld wordt met ```"university":1``` het weglaten van de component een fout geretourneerd met het volgende bericht:
 
 ```"cannot create unique index over {student_id : 1.0} with shard key pattern { university : 1.0 }"```
 
 ### <a name="ttl-indexes"></a>TTL indexen
 
-Als u het verlopen van documenten in een bepaalde verzameling wilt inschakelen, moet u een [time-to-live (TTL)-index](../cosmos-db/time-to-live.md)maken. Een TTL-index is `_ts` een index `expireAfterSeconds` op het veld met een waarde.
+Als u het verlopen van documenten in een bepaalde verzameling wilt inschakelen, moet u een [time-to-Live-index (TTL)](../cosmos-db/time-to-live.md)maken. Een TTL-index is een index van `_ts` het veld met `expireAfterSeconds` een waarde.
 
 Voorbeeld:
 
@@ -132,40 +132,40 @@ Voorbeeld:
 globaldb:PRIMARY> db.coll.createIndex({"_ts":1}, {expireAfterSeconds: 10})
 ```
 
-De vorige opdracht verwijdert alle ```db.coll``` documenten in de verzameling die in de afgelopen 10 seconden niet zijn gewijzigd.
+Met de voor gaande opdracht worden alle documenten ```db.coll``` in de verzameling verwijderd die in de afgelopen 10 seconden niet zijn gewijzigd.
 
 > [!NOTE]
-> Het **_ts** veld is specifiek voor Azure Cosmos DB en is niet toegankelijk vanuit MongoDB-clients. Het is een gereserveerde (systeem)eigenschap die de tijdstempel van de laatste wijziging van het document bevat.
+> Het veld **_ts** is specifiek voor Azure Cosmos DB en is niet toegankelijk vanuit MongoDb-clients. Het is een gereserveerde eigenschap (systeem) die het tijds tempel van de laatste wijziging van het document bevat.
 
-## <a name="track-index-progress"></a>Indexvoortgang bijhouden
+## <a name="track-index-progress"></a>Voortgang van index bijhouden
 
-Versie 3.6 van de API van Azure Cosmos `currentOp()` DB voor MongoDB ondersteunt de opdracht om de indexvoortgang van een database-exemplaar bij te houden. Met deze opdracht retourneert een document dat informatie bevat over lopende bewerkingen in een database-instantie. U gebruikt `currentOp` de opdracht om alle lopende bewerkingen in native MongoDB bij te houden. In de API van Azure Cosmos DB voor MongoDB ondersteunt deze opdracht alleen het bijhouden van de indexbewerking.
+Versie 3,6 van de API van Azure Cosmos DB voor MongoDB ondersteunt `currentOp()` de opdracht voor het bijhouden van de voortgang van de index voor een Data Base-exemplaar. Met deze opdracht wordt een document geretourneerd dat informatie bevat over bewerkingen die worden uitgevoerd op een Data Base-exemplaar. U gebruikt de `currentOp` opdracht om alle bewerkingen in uitvoering bij te houden in systeem eigen MongoDb. In de API van Azure Cosmos DB voor MongoDB ondersteunt deze opdracht alleen het volgen van de index bewerking.
 
-Hier volgen enkele voorbeelden die laten `currentOp` zien hoe u de opdracht gebruiken om de voortgang van de index bij te houden:
+Hier volgen enkele voor beelden van het gebruik van de `currentOp` opdracht voor het volgen van de voortgang van de index:
 
-* De indexvoortgang voor een verzameling ophalen:
+* De voortgang van de index voor een verzameling ophalen:
 
    ```shell
    db.currentOp({"command.createIndexes": <collectionName>, "command.$db": <databaseName>})
    ```
 
-* De indexvoortgang voor alle verzamelingen in een database weergeven:
+* De voortgang van de index ophalen voor alle verzamelingen in een Data Base:
 
   ```shell
   db.currentOp({"command.$db": <databaseName>})
   ```
 
-* De indexvoortgang voor alle databases en verzamelingen in een Azure Cosmos-account weergeven:
+* De index voortgang ophalen voor alle data bases en verzamelingen in een Azure Cosmos-account:
 
   ```shell
   db.currentOp({"command.createIndexes": { $exists : true } })
   ```
 
-### <a name="examples-of-index-progress-output"></a>Voorbeelden van de uitvoer van indexvoortgang
+### <a name="examples-of-index-progress-output"></a>Voor beelden van uitvoer van index voortgang
 
-De details van de indexvoortgang geven het voortgangspercentage voor de huidige indexbewerking weer. Hier is een voorbeeld dat de uitvoerdocumentindeling voor verschillende stadia van indexvoortgang weergeeft:
+In de details van de index voortgang wordt het percentage voortgang van de huidige index bewerking weer gegeven. Hier volgt een voor beeld waarin de indeling van het uitvoer document wordt weer gegeven voor de verschillende stadia van de index voortgang:
 
-- Een indexbewerking op een 'foo'-verzameling en 'balk'-database die 60 procent voltooid is, heeft het volgende uitvoerdocument. Het `Inprog[0].progress.total` veld toont 100 als het doelvoltooiingspercentage.
+- Een index bewerking op een ' foo '-verzameling en ' bar '-data base die 60 procent is voltooid, heeft het volgende uitvoer document. In `Inprog[0].progress.total` het veld wordt 100 weer gegeven als het voltooiings percentage van het doel.
 
    ```json
    {
@@ -189,7 +189,7 @@ De details van de indexvoortgang geven het voortgangspercentage voor de huidige 
    }
    ```
 
-- Als een indexbewerking net is gestart op een 'foo'-verzameling en 'balk'-database, kan het uitvoerdocument 0 procent voortgang weergeven totdat het een meetbaar niveau bereikt.
+- Als een index bewerking zojuist is gestart op een ' foo '-verzameling en een staaf-data base, kan het uitvoer document 0 procent van de voortgang weer geven totdat het een meetbaar niveau bereikt.
 
    ```json
    {
@@ -213,7 +213,7 @@ De details van de indexvoortgang geven het voortgangspercentage voor de huidige 
    }
    ```
 
-- Wanneer de lopende indexbewerking is voltooid, worden `inprog` in het uitvoerdocument lege bewerkingen weergegeven.
+- Wanneer de index bewerking in uitvoering is voltooid, worden in het uitvoer document lege `inprog` bewerkingen weer gegeven.
 
    ```json
    {
@@ -222,36 +222,36 @@ De details van de indexvoortgang geven het voortgangspercentage voor de huidige 
    }
    ```
 
-### <a name="background-index-updates"></a>Updates voor achtergrondindex
+### <a name="background-index-updates"></a>Achtergrond-index updates
 
-Ongeacht de waarde die is opgegeven voor de eigenschap **Achtergrondindex,** worden indexupdates altijd op de achtergrond uitgevoerd. Omdat indexupdates Request Units (RU's) verbruiken met een lagere prioriteit dan andere databasebewerkingen, leiden indexwijzigingen niet tot downtime voor schrijft, updates of verwijderingen.
+Ongeacht de waarde die is opgegeven voor de eigenschap **achtergrond** index, worden index updates altijd op de achtergrond uitgevoerd. Omdat index updates gebruikmaken van aanvraag eenheden (RUs) met een lagere prioriteit dan andere database bewerkingen, hebben index wijzigingen geen invloed op uitval voor schrijf bewerkingen, updates of verwijderingen.
 
-Wanneer u een nieuwe index toevoegt, gebruiken query's onmiddellijk de index. Dit betekent dat query's mogelijk niet alle overeenkomende resultaten retourneren en dit doen zonder fouten terug te sturen. Wanneer de indextransformatie is voltooid, zijn de queryresultaten consistent. U [de voortgang van de index bijhouden.](#track-index-progress)
+Wanneer u een nieuwe index toevoegt, zullen query's onmiddellijk de index gebruiken. Dit betekent dat query's mogelijk niet alle overeenkomende resultaten retour neren en dit doen zonder dat er fouten worden geretourneerd. Wanneer de index transformatie is voltooid, zijn de resultaten van de query consistent. U kunt de voortgang van de [index bijhouden](#track-index-progress).
 
 ## <a name="migrate-collections-with-indexes"></a>Verzamelingen migreren met indexen
 
-Momenteel u alleen unieke indexen maken wanneer de verzameling geen documenten bevat. Populaire MongoDB-migratietools proberen de unieke indexen te maken na het importeren van de gegevens. Om dit probleem te omzeilen, u handmatig de bijbehorende verzamelingen en unieke indexen maken in plaats van het migratieprogramma toe te staan om het te proberen. (U dit ```mongorestore``` gedrag bereiken `--noIndexRestore` door de vlag in de opdrachtregel te gebruiken.)
+Op dit moment kunt u alleen unieke indexen maken als de verzameling geen documenten bevat. Populaire hulpprogram ma's voor migratie van MongoDB proberen de unieke indexen te maken nadat u de gegevens hebt geïmporteerd. U kunt dit probleem omzeilen door hand matig de overeenkomstige verzamelingen en unieke indexen te maken, in plaats van het hulp programma voor migratie uit te voeren. (U kunt dit gedrag ```mongorestore``` betrekken met behulp `--noIndexRestore` van de vlag op de opdracht regel.)
 
-## <a name="indexing-for-mongodb-version-32"></a>Indexering voor MongoDB versie 3.2
+## <a name="indexing-for-mongodb-version-32"></a>Indexeren voor MongoDB-versie 3,2
 
-Beschikbare indexeringsfuncties en standaardinstellingen zijn verschillend voor Azure Cosmos-accounts die compatibel zijn met versie 3.2 van het MongoDB-draadprotocol. U [de versie van uw account controleren.](mongodb-feature-support-36.md#protocol-support) U upgraden naar de 3.6-versie door een ondersteuningsverzoek in te [dienen.](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)
+Beschik bare indexerings functies en standaard waarden zijn anders voor Azure Cosmos-accounts die compatibel zijn met versie 3,2 van het MongoDB wire-protocol. U kunt [de versie van uw account controleren](mongodb-feature-support-36.md#protocol-support). U kunt een upgrade uitvoeren naar de 3,6-versie door een [ondersteunings aanvraag](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)in te dienen.
 
-Als u versie 3.2 gebruikt, worden in deze sectie de belangrijkste verschillen met versie 3.6 beschreven.
+Als u versie 3,2 gebruikt, geeft deze sectie een overzicht van de belangrijkste verschillen met versie 3,6.
 
-### <a name="dropping-default-indexes-version-32"></a>Standaardindexen laten vallen (versie 3.2)
+### <a name="dropping-default-indexes-version-32"></a>Standaard indexen verwijderen (versie 3,2)
 
-In tegenstelling tot de 3.6-versie van de API van Azure Cosmos DB voor MongoDB, indexeert versie 3.2 standaard elke eigenschap. U de volgende opdracht gebruiken om deze```coll```standaardindexen voor een verzameling te laten vallen :
+In tegens telling tot de 3,6-versie van de API van Azure Cosmos DB voor MongoDB, indexeert versie 3,2 standaard elke eigenschap. U kunt de volgende opdracht gebruiken om deze standaard indexen voor een verzameling te verwijderen```coll```():
 
 ```JavaScript
 > db.coll.dropIndexes()
 { "_t" : "DropIndexesResponse", "ok" : 1, "nIndexesWas" : 3 }
 ```
 
-Nadat u de standaardindexen hebt laten vallen, u meer indexen toevoegen zoals in versie 3.6.
+Nadat u de standaard indexen hebt verwijderd, kunt u meer indexen toevoegen zoals u dat zou doen in versie 3,6.
 
-### <a name="compound-indexes-version-32"></a>Samengestelde indexen (versie 3.2)
+### <a name="compound-indexes-version-32"></a>Samengestelde indexen (versie 3,2)
 
-Samengestelde indexen bevatten verwijzingen naar meerdere velden van een document. Als u een samengestelde index wilt maken, u upgraden naar versie 3.6 door een ondersteuningsverzoek in te [dienen.](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)
+Samengestelde indexen bevatten verwijzingen naar meerdere velden van een document. Als u een samengestelde index wilt maken, moet u een upgrade uitvoeren naar versie 3,6 door een [ondersteunings aanvraag](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)in te dienen.
 
 ## <a name="next-steps"></a>Volgende stappen
 

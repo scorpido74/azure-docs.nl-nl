@@ -1,6 +1,6 @@
 ---
-title: Taken plannen met Azure IoT Hub (.NET/.NET) | Microsoft Documenten
-description: Een Azure IoT Hub-taak plannen om een directe methode op meerdere apparaten aan te roepen. U gebruikt de Azure IoT-apparaat SDK voor .NET om de gesimuleerde apparaat-apps en een service-app te implementeren om de taak uit te voeren.
+title: Taken plannen met Azure IoT Hub (.NET/.NET) | Microsoft Docs
+description: Een Azure IoT Hub-taak plannen voor het aanroepen van een directe methode op meerdere apparaten. U gebruikt de Azure IoT Device SDK voor .NET voor het implementeren van de gesimuleerde apparaat-apps en een service-app om de taak uit te voeren.
 author: robinsh
 manager: philmea
 ms.service: iot-hub
@@ -10,17 +10,17 @@ ms.date: 08/20/2019
 ms.author: robinsh
 ms.custom: mqtt
 ms.openlocfilehash: 4c71a108d1967027465d127db50737119af3e2c1
-ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81733373"
 ---
 # <a name="schedule-and-broadcast-jobs-net"></a>Taken plannen en uitzenden (.NET)
 
 [!INCLUDE [iot-hub-selector-schedule-jobs](../../includes/iot-hub-selector-schedule-jobs.md)]
 
-Gebruik Azure IoT Hub om taken te plannen en bij te houden die miljoenen apparaten bijwerken. Taken gebruiken om:
+Gebruik Azure IoT Hub om taken te plannen en bij te houden waarmee miljoenen apparaten worden bijgewerkt. Taken gebruiken voor:
 
 * Gewenste eigenschappen bijwerken
 
@@ -28,35 +28,35 @@ Gebruik Azure IoT Hub om taken te plannen en bij te houden die miljoenen apparat
 
 * Directe methoden aanroepen
 
-Een taak omsluit een van deze acties en volgt de uitvoering op een set apparaten die wordt gedefinieerd door een dubbele query van het apparaat. Een back-end-app kan bijvoorbeeld een taak gebruiken om een directe methode aan te roepen op 10.000 apparaten waarmee de apparaten opnieuw worden opgestart. U geeft de set apparaten met een dubbele apparaatquery op en plant de taak die op een toekomstig tijdstip moet worden uitgevoerd. De taak houdt de voortgang bij wanneer elk van de apparaten de directe herstartmethode ontvangt en uitvoert.
+Een taak verpakt een van deze acties en traceert de uitvoering op basis van een set apparaten die is gedefinieerd door een dubbele query voor een apparaat. Een back-end-app kan bijvoorbeeld een taak gebruiken om een directe methode aan te roepen op 10.000-apparaten die de apparaten opnieuw opstarten. U geeft de set apparaten met een dubbele query voor een apparaat op en plant de taak op een later tijdstip. De taak houdt de voortgang bij wanneer elk apparaat wordt ontvangen en de methode voor opnieuw opstarten direct wordt uitgevoerd.
 
 Zie voor meer informatie over elk van deze mogelijkheden:
 
-* Apparaattweeling en eigenschappen: [Aan de slag met apparaattweelingen](iot-hub-csharp-csharp-twin-getstarted.md) en [zelfstudie: dubbele eigenschappen van het apparaat gebruiken](tutorial-device-twins.md)
+* Apparaat-dubbele en eigenschappen: [aan de slag met apparaatdubbels](iot-hub-csharp-csharp-twin-getstarted.md) en [zelf studie: een dubbele eigenschappen van het apparaat gebruiken](tutorial-device-twins.md)
 
-* Directe methoden: [IoT Hub-ontwikkelaarshandleiding - directe methoden](iot-hub-devguide-direct-methods.md) en [zelfstudie: gebruik directe methoden](quickstart-control-device-dotnet.md)
+* Directe methoden: [IOT hub ontwikkelaars handleiding-directe methoden](iot-hub-devguide-direct-methods.md) en [zelf studie: directe methoden gebruiken](quickstart-control-device-dotnet.md)
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-whole.md)]
 
 In deze handleiding ontdekt u hoe u:
 
-* Maak een apparaat-app die een directe methode genaamd **LockDoor**implementeert, die kan worden aangeroepen door de back-end-app.
+* Maak een apparaat-app die een directe methode met de naam **LockDoor**implementeert, die kan worden aangeroepen door de back-end-app.
 
-* Maak een back-end-app die een taak maakt om de **LockDoor-methode** op meerdere apparaten aan te roepen. Een andere taak verzendt gewenste eigenschapsupdates naar meerdere apparaten.
+* Maak een back-end-app die een taak maakt om de **LockDoor** direct-methode aan te roepen op meerdere apparaten. Een andere taak verzendt gewenste eigenschaps updates naar meerdere apparaten.
 
-Aan het einde van deze zelfstudie heb je twee .NET (C#) console-apps:
+Aan het einde van deze zelf studie hebt u twee .NET (C#)-console-apps:
 
-* **SimulateDeviceMethods**. Deze app maakt verbinding met uw IoT-hub en implementeert de **LockDoor-directe** methode.
+* **SimulateDeviceMethods**. Deze app maakt verbinding met uw IoT-hub en implementeert de **LockDoor** direct-methode.
 
-* **ScheduleJob**. Deze app maakt gebruik van taken om de **LockDoor-directe** methode aan te roepen en de gewenste eigenschappen van het apparaat op meerdere apparaten bij te werken.
+* **ScheduleJob**. Deze app maakt gebruik van taken om de **LockDoor** direct-methode aan te roepen en de dubbele gewenste eigenschappen van het apparaat op meerdere apparaten bij te werken.
 
 ## <a name="prerequisites"></a>Vereisten
 
 * Visual Studio.
 
-* Een actief Azure-account. Als je nog geen account hebt, kun je binnen een paar minuten een [gratis account](https://azure.microsoft.com/pricing/free-trial/) aanmaken.
+* Een actief Azure-account. Als u geen account hebt, kunt u in slechts een paar minuten een [gratis account](https://azure.microsoft.com/pricing/free-trial/) maken.
 
-* Zorg ervoor dat poort 8883 is geopend in uw firewall. Het apparaatvoorbeeld in dit artikel maakt gebruik van het MQTT-protocol, dat communiceert via poort 8883. Deze poort kan worden geblokkeerd in sommige bedrijfs- en educatieve netwerkomgevingen. Zie [Verbinding maken met IoT Hub (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub)voor meer informatie en manieren om dit probleem te omzeilen.
+* Zorg ervoor dat poort 8883 is geopend in uw firewall. Het voor beeld van het apparaat in dit artikel maakt gebruik van het MQTT-protocol, dat communiceert via poort 8883. Deze poort kan worden geblokkeerd in sommige bedrijfs-en educatieve netwerk omgevingen. Zie [verbinding maken met IOT hub (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub)voor meer informatie en manieren om dit probleem te omzeilen.
 
 ## <a name="create-an-iot-hub"></a>Een IoT Hub maken
 
@@ -68,21 +68,21 @@ Aan het einde van deze zelfstudie heb je twee .NET (C#) console-apps:
 
 ## <a name="create-a-simulated-device-app"></a>Een gesimuleerde apparaattoepassing maken
 
-In deze sectie maakt u een .NET-console-app die reageert op een directe methode die door de back-end van de oplossing wordt aangeroepen.
+In deze sectie maakt u een .NET-console-app die reageert op een directe methode die wordt aangeroepen door de back-end van de oplossing.
 
-1. Selecteer in Visual Studio **Een nieuw project maken**en kies vervolgens de projectsjabloon **console-app (.NET Framework).** Selecteer **Volgende** om door te gaan.
+1. Selecteer in Visual Studio **een nieuw project maken**en kies vervolgens de project sjabloon **console-app (.NET Framework)** . Selecteer **Volgende** om door te gaan.
 
-1. Geef in **Uw nieuwe project configureren**de naam van het project *SimulateDeviceMethods*en selecteer **Vervolgens Maken**.
+1. Geef in **uw nieuwe project**de naam project *SimulateDeviceMethods*en selecteer vervolgens **maken**.
 
-    ![Uw project SimulateDeviceMethods configureren](./media/iot-hub-csharp-csharp-schedule-jobs/configure-device-app.png)
+    ![Uw SimulateDeviceMethods-project configureren](./media/iot-hub-csharp-csharp-schedule-jobs/configure-device-app.png)
 
-1. Klik in Solution Explorer met de rechtermuisknop op het project **SimulateDeviceMethods** en selecteer **NuGet-pakketten beheren**.
+1. Klik in Solution Explorer met de rechter muisknop op het project **SimulateDeviceMethods** en selecteer vervolgens **NuGet-pakketten beheren**.
 
-1. Selecteer **in NuGet Package Manager** **Bladeren** en zoeken naar en kies **Microsoft.Azure.Devices.Client**. Selecteer **Installeren**.
+1. Selecteer in **NuGet package manager** **Bladeren** en zoek naar en kies **micro soft. Azure. devices. client**. Selecteer **Installeren**.
 
-    ![NuGet Package Manager-vensterclient-app](./media/iot-hub-csharp-csharp-schedule-jobs/device-app-nuget.png)
+    ![NuGet Package Manager-venster Client-App](./media/iot-hub-csharp-csharp-schedule-jobs/device-app-nuget.png)
 
-    Met deze stap wordt een verwijzing naar het SDK NuGet-pakket voor [Azure IoT-apparaten](https://www.nuget.org/packages/Microsoft.Azure.Devices.Client/) en de afhankelijkheden ervan gedownload, geïnstalleerd en toegevoegd.
+    Met deze stap wordt een verwijzing naar het [Azure IOT Device SDK](https://www.nuget.org/packages/Microsoft.Azure.Devices.Client/) NuGet-pakket en de bijbehorende afhankelijkheden gedownload, geïnstalleerd en toegevoegd.
 
 1. Voeg aan het begin van het bestand **Program.cs** de volgende `using` instructies toe:
 
@@ -92,7 +92,7 @@ In deze sectie maakt u een .NET-console-app die reageert op een directe methode 
     using Newtonsoft.Json;
     ```
 
-1. Voeg de volgende velden toe aan de klasse **Program**: Vervang de tijdelijke aanduidingswaarde door de tekenreeks apparaatverbinding die u in de vorige sectie hebt opgemerkt:
+1. Voeg de volgende velden toe aan de klasse **Program**: Vervang de waarde van de tijdelijke aanduiding door het apparaat connection string dat u in de vorige sectie hebt genoteerd:
 
     ```csharp
     static string DeviceConnectionString = "<yourDeviceConnectionString>";
@@ -113,7 +113,7 @@ In deze sectie maakt u een .NET-console-app die reageert op een directe methode 
     }
     ```
 
-1. Voeg de volgende methode toe om de apparaattweelinglistener op het apparaat te implementeren:
+1. Voeg de volgende methode toe om de apparaatdubbels-listener op het apparaat te implementeren:
 
     ```csharp
     private static async Task OnDesiredPropertyChanged(TwinCollection desiredProperties, 
@@ -124,7 +124,7 @@ In deze sectie maakt u een .NET-console-app die reageert op een directe methode 
     }
     ```
 
-1. Voeg ten slotte de volgende code toe aan de **hoofdmethode** om de verbinding met uw IoT-hub te openen en de methodelistener te initialiseren:
+1. Voeg tot slot de volgende code toe aan de methode **Main** om de verbinding met uw IOT-hub te openen en de methode-listener te initialiseren:
 
     ```csharp
     try
@@ -154,30 +154,30 @@ In deze sectie maakt u een .NET-console-app die reageert op een directe methode 
 1. Sla uw werk op en bouw uw oplossing.
 
 > [!NOTE]
-> Om het simpel te houden, voert deze zelfstudie geen beleid voor nieuwe maatregelen uit. In productiecode moet u opnieuw proberenbeleid implementeren (zoals verbinding opnieuw proberen), zoals voorgesteld in [Tijdelijke foutafhandeling](/azure/architecture/best-practices/transient-faults).
+> Deze zelf studie implementeert geen beleids regels voor opnieuw proberen om dingen eenvoudig te slaan. In productie code moet u beleid voor opnieuw proberen implementeren (zoals opnieuw proberen van verbinding), zoals wordt voorgesteld in [tijdelijke fout afhandeling](/azure/architecture/best-practices/transient-faults).
 >
 
-## <a name="get-the-iot-hub-connection-string"></a>De verbindingstekenreeks voor IoT-hub
+## <a name="get-the-iot-hub-connection-string"></a>De IoT hub-connection string ophalen
 
 [!INCLUDE [iot-hub-howto-schedule-jobs-shared-access-policy-text](../../includes/iot-hub-howto-schedule-jobs-shared-access-policy-text.md)]
 
 [!INCLUDE [iot-hub-include-find-registryrw-connection-string](../../includes/iot-hub-include-find-registryrw-connection-string.md)]
 
-## <a name="schedule-jobs-for-calling-a-direct-method-and-sending-device-twin-updates"></a>Taken plannen voor het aanroepen van een directe methode en het verzenden van dubbele updates van het apparaat
+## <a name="schedule-jobs-for-calling-a-direct-method-and-sending-device-twin-updates"></a>Taken plannen voor het aanroepen van een directe methode en het verzenden van dubbele updates voor een apparaat
 
-In deze sectie maakt u een .NET-console-app (met C#) die taken gebruikt om de **direct-methode LockDoor** aan te roepen en gewenste eigenschapsupdates naar meerdere apparaten te verzenden.
+In deze sectie maakt u een .NET-console-app (met C#) die gebruikmaakt van taken om de **LockDoor** direct-methode aan te roepen en gewenste eigenschaps updates naar meerdere apparaten te verzenden.
 
-1. Selecteer **in** > Visual Studio Bestand**Nieuw** > **project**. Kies in **Een nieuw project maken**de optie **Console-app (.NET Framework)** en selecteer **Volgende**.
+1. Selecteer in Visual Studio **bestand** > **Nieuw** > **project**. Kies in **een nieuw project maken de**optie **console-app (.NET Framework)** en selecteer vervolgens **volgende**.
 
-1. Geef in **Uw nieuwe project configureren**de naam van het project *ScheduleJob*. Kies Bij **Oplossing** **toevoegen aan oplossing**en selecteer Vervolgens **Maken**.
+1. Geef het project de naam *ScheduleJob*in **uw nieuwe project configureren**. Kies voor **oplossing**de optie **toevoegen aan oplossing**en selecteer vervolgens **maken**.
 
-    ![Naam en configureren van u ScheduleJob-project](./media/iot-hub-csharp-csharp-schedule-jobs/config-schedule-job-app.png)
+    ![Een naam en ScheduleJob-project opgeven](./media/iot-hub-csharp-csharp-schedule-jobs/config-schedule-job-app.png)
 
-1. Klik in Solution Explorer met de rechtermuisknop op het project **ScheduleJob** en selecteer **NuGet-pakketten beheren**.
+1. Klik in Solution Explorer met de rechter muisknop op het project **ScheduleJob** en selecteer vervolgens **NuGet-pakketten beheren**.
 
-1. Selecteer **in NuGet Package Manager** **Bladeren,** zoeken naar en kies **Microsoft.Azure.Devices**en selecteer **Vervolgens Installeren**.
+1. Selecteer in de **NuGet-pakket manager**de optie **Bladeren**, zoek naar en kies **micro soft. Azure. devices**, en selecteer vervolgens **installeren**.
 
-   Met deze stap wordt een verwijzing naar het SDK NuGet-pakket voor [Azure IoT-services](https://www.nuget.org/packages/Microsoft.Azure.Devices/) en de afhankelijkheden ervan gedownload, geïnstalleerd en toegevoegd.
+   Met deze stap wordt een verwijzing naar het [Azure IOT Service SDK](https://www.nuget.org/packages/Microsoft.Azure.Devices/) NuGet-pakket en de bijbehorende afhankelijkheden gedownload, geïnstalleerd en toegevoegd.
 
 1. Voeg aan het begin van het bestand **Program.cs** de volgende `using` instructies toe:
 
@@ -186,14 +186,14 @@ In deze sectie maakt u een .NET-console-app (met C#) die taken gebruikt om de **
     using Microsoft.Azure.Devices.Shared;
     ```
 
-1. Voeg de `using` volgende instructie toe als deze nog niet aanwezig is in de standaardinstructies.
+1. Voeg de volgende `using` instructie toe als deze niet al aanwezig is in de standaard-instructies.
 
     ```csharp
     using System.Threading;
     using System.Threading.Tasks;
     ```
 
-1. Voeg de volgende velden toe aan de klasse **Program**: Vervang de tijdelijke aanduidingen door de IDo-hubverbindingstekenreeks die u eerder hebt gekopieerd in [De verbindingstekenreeks Van IoT-hub](#get-the-iot-hub-connection-string) en de naam van uw apparaat.
+1. Voeg de volgende velden toe aan de klasse **Program**: Vervang de tijdelijke aanduidingen door de IoT Hub connection string die u eerder hebt gekopieerd in [de IOT hub-Connection String](#get-the-iot-hub-connection-string) en de naam van uw apparaat ophalen.
 
     ```csharp
     static JobClient jobClient;
@@ -236,7 +236,7 @@ In deze sectie maakt u een .NET-console-app (met C#) die taken gebruikt om de **
     }
     ```
 
-1. Een andere methode toevoegen aan de klasse **Programma:**
+1. Voeg een andere methode toe aan de klasse **Program** :
 
     ```csharp
     public static async Task StartTwinUpdateJob(string jobId)
@@ -261,7 +261,7 @@ In deze sectie maakt u een .NET-console-app (met C#) die taken gebruikt om de **
     ```
 
     > [!NOTE]
-    > Zie [IoT Hub-querytaal](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-query-language)voor meer informatie over de syntaxis van query's .
+    > Zie [IOT hub query language (Engelstalig](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-query-language)) voor meer informatie over de syntaxis van query's.
     >
 
 1. Voeg tot slot de volgende regels toe aan de methode **Main**:
@@ -293,22 +293,22 @@ In deze sectie maakt u een .NET-console-app (met C#) die taken gebruikt om de **
 
 U kunt nu de apps uitvoeren.
 
-1. Klik in de Visual Studio Solution Explorer met de rechtermuisknop op uw oplossing en selecteer **Vervolgens StartUp-projecten instellen.**
+1. Klik in Visual Studio Solution Explorer met de rechter muisknop op uw oplossing en selecteer vervolgens **opstart projecten instellen**.
 
-1. Selecteer **Common Properties** > **Opstartproject**en selecteer vervolgens Meerdere **opstartprojecten**.
+1. Selecteer **algemene eigenschappen** > **Start project**en selecteer vervolgens **meerdere opstart projecten**.
 
-1. Zorg `SimulateDeviceMethods` ervoor dat is aan de `ScheduleJob`bovenkant van de lijst, gevolgd door . Stel beide acties in **op Start** en selecteer **OK**.
+1. Zorg ervoor `SimulateDeviceMethods` dat boven aan de lijst wordt gevolgd door `ScheduleJob`. Stel beide acties in op **Start** en selecteer **OK**.
 
-1. Voer de projecten uit door op **Start** te klikken of ga naar het menu **Foutopsporing** en klik op **Foutopsporing starten**.
+1. Voer de projecten uit door te klikken op **Start** of ga naar het menu **fout opsporing** en klik op **fout opsporing starten**.
 
-   U ziet de uitvoer van zowel apparaat- als back-end-apps.
+   U ziet de uitvoer van zowel apparaat-als back-end-apps.
 
     ![De apps uitvoeren om taken te plannen](./media/iot-hub-csharp-csharp-schedule-jobs/schedule-jobs-console-results.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze zelfstudie hebt u een taak gebruikt om een directe methode te plannen voor een apparaat en de update van de eigenschappen van de apparaattweeling.
+In deze zelf studie hebt u een taak gebruikt voor het plannen van een directe methode op een apparaat en het bijwerken van de eigenschappen van het apparaat.
 
-* Als u verder wilt gaan met IoT Hub- en apparaatbeheerpatronen, zoals firmware-update op afstand via de ether, leest u [Zelfstudie: Hoe een firmware-update te doen.](tutorial-firmware-update.md)
+* Lees [zelf studie: instructies voor het uitvoeren van een firmware-update](tutorial-firmware-update.md)om door te gaan met IOT hub en patronen voor Apparaatbeheer, zoals extern via de Air firmware-update.
 
-* Zie Aan de slag met IoT Edge voor meer informatie over het implementeren van AI naar edge-apparaten met Azure [IoT Edge.](../iot-edge/tutorial-simulate-device-linux.md)
+* Zie aan de slag [met IOT Edge](../iot-edge/tutorial-simulate-device-linux.md)voor meer informatie over het implementeren van AI naar edge-apparaten met Azure IOT Edge.

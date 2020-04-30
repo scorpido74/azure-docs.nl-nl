@@ -1,6 +1,6 @@
 ---
-title: Prestaties optimaliseren op virtuele machines uit azure Lsv2-serie - Opslag
-description: Ontdek hoe u de prestaties voor uw oplossing optimaliseren op de virtuele machines uit de Lsv2-serie.
+title: Prestaties optimaliseren op virtuele machines uit de Azure Lsv2-serie-opslag
+description: Meer informatie over het optimaliseren van de prestaties van uw oplossing op de virtuele machines uit de Lsv2-serie.
 services: virtual-machines-linux
 author: laurenhughes
 ms.service: virtual-machines-linux
@@ -11,103 +11,103 @@ ms.workload: infrastructure-services
 ms.date: 08/05/2019
 ms.author: joelpell
 ms.openlocfilehash: 7a0d5e29097bc9a672e142fcffb0ebe879fe2475
-ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81757683"
 ---
-# <a name="optimize-performance-on-the-lsv2-series-virtual-machines"></a>Optimaliseer de prestaties op de virtuele machines uit de Lsv2-serie
+# <a name="optimize-performance-on-the-lsv2-series-virtual-machines"></a>Optimaliseer de prestaties van de virtuele machines uit de Lsv2-serie
 
-Virtuele machines uit de Lsv2-serie ondersteunen een verscheidenheid aan workloads die een hoge I/O-en -doorvoer op lokale opslag in een breed scala aan toepassingen en industrieën nodig hebben.  De Lsv2-serie is ideaal voor Big Data, SQL, NoSQL-databases, datawarehousing en grote transactionele databases, waaronder Cassandra, MongoDB, Cloudera en Redis.
+Virtuele machines uit de Lsv2-serie ondersteunen diverse werk belastingen die hoge I/O en door Voer op lokale opslag voor een breed scala aan toepassingen en branches nodig hebben.  De Lsv2-serie is ideaal voor Big Data-, SQL-, NoSQL-data bases, gegevens-en opslag databases, waaronder Cassandra, MongoDB, Cloudera en redis.
 
-Het ontwerp van de Lsv2-serie Virtual Machines (VM's) maximaliseert de AMD EPYC™ 7551-processor om de beste prestaties te leveren tussen de processor, het geheugen, de NVMe-apparaten en de VM's. In samenwerking met partners in Linux zijn verschillende builds beschikbaar voor Azure Marketplace die zijn geoptimaliseerd voor prestaties uit de Lsv2-serie en momenteel:
+Het ontwerp van de Lsv2-serie Virtual Machines (Vm's) maximaliseert de AMD EPYC™ 7551-processor om de beste prestaties te bieden tussen de processor, het geheugen, de NVMe-apparaten en de Vm's. Bij het werken met partners in Linux zijn verschillende builds beschikbaar in azure Marketplace die zijn geoptimaliseerd voor prestaties van de Lsv2-serie en die momenteel de volgende omvatten:
 
 - Ubuntu 18.04
 - Ubuntu 16.04
-- RHEL 8.0
+- RHEL 8,0
 - Debian 9
 - Debian 10
 
-Dit artikel bevat tips en suggesties om ervoor te zorgen dat uw workloads en toepassingen de maximale prestaties bereiken die zijn ontworpen in de VM's. De informatie op deze pagina wordt voortdurend bijgewerkt naarmate er meer Lsv2-geoptimaliseerde afbeeldingen worden toegevoegd aan de Azure Marketplace.
+In dit artikel vindt u tips en suggesties om ervoor te zorgen dat uw werk belastingen en toepassingen de maximale prestaties voor de virtuele machines kunnen bewerkstelligen. De informatie op deze pagina wordt voortdurend bijgewerkt naarmate er meer Lsv2 geoptimaliseerde installatie kopieën worden toegevoegd aan de Azure Marketplace.
 
-## <a name="amd-eypc-chipset-architecture"></a>AMD EYPC™ chipsetarchitectuur
+## <a name="amd-eypc-chipset-architecture"></a>AMD EYPC™ chipset-architectuur
 
-Vm's uit de Lsv2-serie maken gebruik van AMD EYPC™ serverprocessors op basis van de Zen-microarchitectuur. AMD ontwikkelde Infinity Fabric (IF) voor EYPC™ als schaalbare interconnect voor zijn NUMA-model dat kan worden gebruikt voor on-die, on-package en multi-package communicatie. Vergeleken met QPI (Quick-Path Interconnect) en UPI (Ultra-Path Interconnect) die worden gebruikt op Intel moderne monolithische-die-processors, kan AMD's veel-NUMA small-die architectuur zowel prestatievoordelen als uitdagingen met zich meebrengen. De werkelijke impact van geheugenbandbreedte en latentiebeperkingen kan variëren afhankelijk van het type workloads dat wordt uitgevoerd.
+Vm's uit de Lsv2-serie gebruiken AMD EYPC™ server-processors op basis van de micro architectuur van Zen. AMD ontwikkelde oneindig infrastructuur (indien) voor EYPC™ als schaal bare Interconnect voor het NUMA-model dat kan worden gebruikt voor on-to-dobbel, on-package en multi-package-communicatie. Vergeleken met QPI-verbindingen (snelle paden) en UPI (Ultra-Path Interconnect) die worden gebruikt voor Intel moderne monolithische-dobbel krachtige processors, kunnen de kleine en grote NUMA-architectuur voor zowel prestaties als uitdagingen optreden. De daad werkelijke impact van de geheugen bandbreedte en latentie beperkingen kunnen variëren, afhankelijk van het type werk belastingen dat wordt uitgevoerd.
 
-## <a name="tips-to-maximize-performance"></a>Tips om de prestaties te maximaliseren
+## <a name="tips-to-maximize-performance"></a>Tips voor optimale prestaties
 
-* Als u een aangepaste Linux GuestOS uploadt voor uw workload, houdt u er rekening mee dat Accelerated Networking standaard **uitgeschakeld** is. Als u versnelde netwerken wilt inschakelen, schakelt u dit in op het moment van het maken van vm's voor de beste prestaties.
+* Als u een aangepaste Linux-GuestOS voor uw workload uploadt, moet u er rekening mee houden dat versneld netwerken standaard **uitgeschakeld** is. Als u van plan bent om versneld netwerken in te scha kelen, schakelt u deze in op het moment dat de VM wordt gemaakt voor de beste prestaties.
 
-* De hardware die de Lsv2-serie VM's aandrijft, maakt gebruik van NVMe-apparaten met acht I/O-wachtrijparen (QP)s. Elke NVMe-apparaat I/O-wachtrij is eigenlijk een paar: een indieningswachtrij en een voltooiingswachtrij. De NVMe driver is ingesteld om het gebruik van deze acht I/O QPs te optimaliseren door I/O's te distribueren in een round robin schema. Voer acht taken per apparaat uit om maximaal te presteren.
+* De hardware die de virtuele machines uit de Lsv2-serie doorstuurt, maakt gebruik van NVMe-apparaten met acht I/O-wachtrij paren (QP) s. Elke rij in de I/O-wachtrij van NVMe is in feite een paar: een verzend wachtrij en een voltooiings wachtrij. Het NVMe-stuur programma is zo ingesteld dat het gebruik van deze acht I/O-QPs wordt geoptimaliseerd door I/O te distribueren in een round robin schema. Als u maximale prestaties wilt krijgen, voert u acht taken per apparaat uit.
 
-* Vermijd het mengen van NVMe-beheeropdrachten (bijvoorbeeld NVMe SMART info query, enz.) met NVMe I/O-opdrachten tijdens actieve workloads. Lsv2 NVMe-apparaten worden ondersteund door Hyper-V NVMe Direct-technologie, die overschakelt naar "slow mode" wanneer er NVMe-beheeropdrachten in behandeling zijn. Lsv2-gebruikers kunnen een dramatische prestatiedaling in nvme-i/o-prestaties zien als dat gebeurt.
+* Vermijd het mixen van NVMe-beheer opdrachten (bijvoorbeeld NVMe SMART info query, enzovoort) met NVMe I/O-opdrachten tijdens actieve werk belastingen. Lsv2 NVMe-apparaten worden ondersteund door een Hyper-V NVMe direct-technologie, waarmee wordt overgeschakeld naar ' langzame modus ' wanneer een NVMe-beheer opdracht in behandeling is. Lsv2-gebruikers kunnen een aanzienlijke prestaties van NVMe-I/O-prestaties zien als dat wel het geval is.
 
-* Lsv2-gebruikers moeten niet vertrouwen op de NUMA-informatie (alle 0) die vanuit de VM wordt gerapporteerd voor gegevensstations om de NUMA-affiniteit voor hun apps te bepalen. De aanbevolen manier voor betere prestaties is om workloads zo mogelijk over CPU's te spreiden.
+* Lsv2-gebruikers moeten niet vertrouwen op de NUMA-gegevens van het apparaat (alle 0) die in de virtuele machine zijn gerapporteerd voor gegevens stations om de NUMA-affiniteit voor hun apps te bepalen. De aanbevolen manier om de prestaties te verbeteren is als dat mogelijk is om werk belastingen over Cpu's te spreiden.
 
-* De maximale ondersteunde wachtrijdiepte per I/O-wachtrijpaar voor Lsv2 VM NVMe-apparaat is 1024 (vs. Amazon i3 QD 32-limiet). Lsv2-gebruikers moeten hun (synthetische) benchmarkingworkloads beperken tot wachtrijdiepte 1024 of lager om te voorkomen dat de volledige wachtrijwordt geactiveerd, wat de prestaties kan verminderen.
+* De Maxi maal ondersteunde wachtrij diepte per I/O-wachtrij paar voor Lsv2 VM NVMe-apparaat is 1024 (VS. Amazon i3 wachtrij diepte 32-limiet). Lsv2 gebruikers moeten de werk belasting van hun (synthetische) benchmarking beperken tot de wachtrij diepte 1024 of lager om te voor komen dat de wachtrij vol is voor waarden, waardoor de prestaties kunnen worden verminderd.
 
-## <a name="utilizing-local-nvme-storage"></a>Gebruik maken van lokale NVMe-opslag
+## <a name="utilizing-local-nvme-storage"></a>Lokale NVMe-opslag gebruiken
 
-Lokale opslag op de 1,92 TB NVMe-schijf op alle Lsv2 VM's is vluchtig. Tijdens een succesvolle standaard reboot van de VM blijven de gegevens op de lokale NVMe-schijf bestaan. De gegevens blijven niet bestaan op de NVMe als de VM opnieuw wordt geïmplementeerd, uitgetrokken of verwijderd. Gegevens blijven niet bestaan als een ander probleem ervoor zorgt dat de VM of de hardware waarop deze wordt uitgevoerd, ongezond wordt. Wanneer dit gebeurt, worden alle gegevens over de oude host veilig gewist.
+Lokale opslag op de NVMe-schijf van 1,92 TB op alle Lsv2-Vm's is tijdelijk. Tijdens een geslaagde standaard herstart van de VM blijven de gegevens op de lokale NVMe-schijf behouden. De gegevens blijven niet behouden op het NVMe als de virtuele machine opnieuw wordt geïmplementeerd, de toewijzing ervan wordt verwijderd of is gewist. De gegevens blijven niet behouden als een ander probleem ertoe leidt dat de virtuele machine of de hardware waarop de VM wordt uitgevoerd, een slechte status krijgt. Als dit gebeurt, worden alle gegevens op de oude host veilig gewist.
 
-Er zullen ook gevallen zijn waarin de VM moet worden verplaatst naar een andere hostmachine, bijvoorbeeld tijdens een geplande onderhoudsbewerking. Geplande onderhoudsbewerkingen en sommige hardwarefouten kunnen worden verwacht met [geplande gebeurtenissen.](scheduled-events.md) Geplande gebeurtenissen moeten worden gebruikt om op de hoogte te blijven van alle voorspelde onderhouds- en herstelbewerkingen.
+Er zijn ook gevallen waarin de virtuele machine moet worden verplaatst naar een andere hostcomputer, bijvoorbeeld tijdens een geplande onderhouds bewerking. Geplande onderhouds bewerkingen en bepaalde hardwarestoringen kunnen worden verwacht met [Scheduled Events](scheduled-events.md). Scheduled Events moet worden gebruikt om te blijven werken met voorspelde onderhouds-en herstel bewerkingen.
 
-In het geval dat een geplande onderhoudsgebeurtenis vereist dat de VM opnieuw wordt gemaakt op een nieuwe host met lege lokale schijven, moeten de gegevens opnieuw worden gesynchroniseerd (nogmaals, waarbij alle gegevens over de oude host veilig worden gewist). Dit gebeurt omdat Vm's uit de LSV2-serie momenteel geen live migratie op de lokale NVMe-schijf ondersteunen.
+In het geval dat een geplande onderhouds gebeurtenis vereist dat de VM opnieuw wordt gemaakt op een nieuwe host met lege lokale schijven, moeten de gegevens opnieuw worden gesynchroniseerd (opnieuw, waarbij alle gegevens op de oude host veilig worden gewist). Dit gebeurt omdat virtuele machines uit de Lsv2-serie momenteel geen Live migratie ondersteunen op de lokale NVMe-schijf.
 
 Er zijn twee modi voor gepland onderhoud.
 
-### <a name="standard-vm-customer-controlled-maintenance"></a>Standaard VM klantgestuurd onderhoud
+### <a name="standard-vm-customer-controlled-maintenance"></a>Standaard virtuele machine onderhoud door de klant beheerd
 
-- De VM wordt tijdens een periode van 30 dagen verplaatst naar een bijgewerkte host.
-- Lsv2 lokale opslaggegevens kunnen verloren gaan, dus back-upgegevens voorafgaand aan de gebeurtenis worden aanbevolen.
+- Tijdens een periode van 30 dagen wordt de virtuele machine verplaatst naar een bijgewerkte host.
+- Lsv2 lokale opslag gegevens kunnen verloren gaan. Daarom wordt het maken van een back-up van gegevens voorafgaand aan de gebeurtenis aanbevolen.
 
 ### <a name="automatic-maintenance"></a>Automatisch onderhoud
 
-- Treedt op als de klant geen klantgestuurd onderhoud uitvoert, of in het geval van noodprocedures zoals een zero-day gebeurtenis voor beveiliging.
-- Bedoeld om klantgegevens te bewaren, maar er is een klein risico van een VM-blokkering of reboot.
-- Lsv2 lokale opslaggegevens kunnen verloren gaan, dus back-upgegevens voorafgaand aan de gebeurtenis worden aanbevolen.
+- Deze gebeurtenis treedt op als de klant geen onderhouds werkzaamheden van de klant uitvoert, of in het geval van nood procedures, zoals een gebeurtenis met een nul-dag-beveiliging.
+- Bedoeld om klant gegevens te bewaren, maar er is een klein risico van het blok keren of opnieuw opstarten van een virtuele machine.
+- Lsv2 lokale opslag gegevens kunnen verloren gaan. Daarom wordt het maken van een back-up van gegevens voorafgaand aan de gebeurtenis aanbevolen.
 
-Voor alle komende servicegebeurtenissen gebruikt u het gecontroleerde onderhoudsproces om een tijdstip te selecteren dat u het meest geschikt maakt voor de update. Voorafgaand aan het evenement u een back-up maken van uw gegevens in premium opslag. Nadat het onderhoudsevenement is voltooid, u uw gegevens retourneren naar de vernieuwde Lsv2 Vm's lokale NVMe-opslag.
+Voor toekomstige service gebeurtenissen gebruikt u het beheerde onderhouds proces om een tijd te selecteren die het handigst is voor de update. Vóór de gebeurtenis kunt u een back-up maken van uw gegevens in Premium Storage. Nadat de onderhouds gebeurtenis is voltooid, kunt u uw gegevens herstellen naar de vernieuwde Lsv2 Vm's lokale NVMe-opslag.
 
-Scenario's die gegevens over lokale NVMe-schijven bijhouden, zijn onder andere:
+Scenario's voor het onderhouden van gegevens op lokale NVMe-schijven zijn onder andere:
 
-- De VM is actief en gezond.
-- De VM wordt opnieuw opgestart (door u of Azure).
-- De VM wordt onderbroken (gestopt zonder detoewijzing).
-- Het merendeel van de geplande onderhoudswerkzaamheden.
+- De virtuele machine wordt uitgevoerd en is in orde.
+- De virtuele machine wordt opnieuw opgestart (door u of Azure).
+- De virtuele machine is onderbroken (gestopt zonder de toewijzing).
+- Het meren deel van de geplande onderhouds bewerkingen.
 
-Scenario's die gegevens veilig wissen om de klant te beschermen, zijn onder andere:
+Scenario's voor het veilig wissen van gegevens om de klant te beschermen, zijn:
 
-- De VM wordt opnieuw geïmplementeerd, gestopt (verwijderd) of verwijderd (door u).
-- De VM wordt ongezond en moet service genezen naar een ander knooppunt als gevolg van een hardware probleem.
-- Een klein aantal van de geplande onderhoudswerkzaamheden waarvoor de VM moet worden toegewezen aan een andere host voor onderhoud.
+- De VM wordt opnieuw geïmplementeerd, gestopt (de toewijzing) of verwijderd (door u).
+- De virtuele machine wordt niet meer in orde en moet op een ander knoop punt herstellen vanwege een hardwareprobleem.
+- Een klein aantal geplande onderhouds bewerkingen voor onderhoud waarvoor de VM opnieuw moet worden toegewezen aan een andere host voor onderhoud.
 
-Zie [Back-up en noodherstel voor Azure IaaS-schijven voor](backup-and-disaster-recovery-for-azure-iaas-disks.md)meer informatie over opties voor het maken van back-ups in lokale opslag.
+Zie [back-up en herstel na nood gevallen voor Azure IaaS-schijven](backup-and-disaster-recovery-for-azure-iaas-disks.md)voor meer informatie over de opties voor het maken van back-ups van gegevens in lokale opslag.
 
 ## <a name="frequently-asked-questions"></a>Veelgestelde vragen
 
-* **Hoe begin ik met het implementeren van Lsv2-serie VM's?**  
-   Net als elke andere VM, gebruik maken van de [Portal](quick-create-portal.md), [Azure CLI,](quick-create-cli.md)of [PowerShell](quick-create-powershell.md) om een VM te maken.
+* **Hoe kan ik de implementatie van Vm's uit de Lsv2-serie starten?**  
+   Net als bij elke andere virtuele machine kunt u de [Portal](quick-create-portal.md), [Azure cli](quick-create-cli.md)of [Power shell](quick-create-powershell.md) gebruiken om een virtuele machine te maken.
 
-* **Zal een enkele NVMe-schijffout ervoor zorgen dat alle VM's op de host mislukken?**  
-   Als er een schijffout wordt gedetecteerd op het hardwareknooppunt, is de hardware in een niet-dane status. Wanneer dit gebeurt, worden alle VM's op het knooppunt automatisch verwijderd en verplaatst naar een gezond knooppunt. Voor VMs uit de Lsv2-serie betekent dit dat de gegevens van de klant op het falende knooppunt ook veilig worden gewist en door de klant op het nieuwe knooppunt opnieuw moeten worden gemaakt. Zoals opgemerkt, voordat live migratie beschikbaar komt op Lsv2, zullen de gegevens op het falende knooppunt proactief worden verplaatst met de VM's terwijl ze worden overgebracht naar een ander knooppunt.
+* **Leidt een enkele NVMe-schijf fout tot gevolg dat alle Vm's op de host mislukken?**  
+   Als er een schijf fout op het hardware-knoop punt wordt gedetecteerd, heeft de hardware de status mislukt. Als dit gebeurt, worden alle Vm's op het knoop punt automatisch ongedaan gemaakt en verplaatst naar een gezond knoop punt. Voor virtuele machines uit de Lsv2-serie betekent dit dat de gegevens van de klant op het knoop punt waarvoor een storing optreedt, ook veilig worden gewist en opnieuw moeten worden gemaakt door de klant op het nieuwe knoop punt. Zoals genoteerd, worden de gegevens op het knoop punt waarvoor een storing optreedt proactief met de virtuele machines verplaatst wanneer ze worden overgebracht naar een ander knoop punt voordat Livemigratie op Lsv2 beschikbaar wordt.
 
-* **Moet ik rq_affinity aanpassen voor de prestaties?**  
-   De rq_affinity instelling is een kleine aanpassing bij het gebruik van de absolute maximale input/output bewerkingen per seconde (IOPS). Zodra alles goed werkt, probeer dan om rq_affinity op 0 om te zien of het een verschil maakt.
+* **Moet ik aanpassingen aanbrengen voor de prestaties van rq_affinity?**  
+   De instelling rq_affinity is een kleine aanpassing bij het gebruik van de absolute maximum invoer/uitvoer-bewerkingen per seconde (IOPS). Als alles goed werkt, probeert u rq_affinity in te stellen op 0 om te zien of het een verschil is.
 
 * **Moet ik de blk_mq instellingen wijzigen?**  
-   RHEL/CentOS 7.x maakt automatisch gebruik van blk-mq voor de NVMe-apparaten. Er zijn geen configuratiewijzigingen of -instellingen nodig. De instelling scsi_mod.use_blk_mq is alleen voor SCSI en werd gebruikt tijdens Lsv2 Preview omdat de NVMe-apparaten zichtbaar waren in de vm's van de gast als SCSI-apparaten. Momenteel zijn de NVMe-apparaten zichtbaar als NVMe-apparaten, dus de SCSI blk-mq-instelling is niet relevant.
+   RHEL/CentOS 7. x maakt automatisch gebruik van BLK-MQ voor de NVMe-apparaten. Er zijn geen configuratie wijzigingen of-instellingen nodig. De instelling scsi_mod. use_blk_mq is alleen voor SCSI en is gebruikt tijdens de preview-versie van Lsv2, omdat de NVMe-apparaten op de gast-Vm's werden weer gegeven als SCSI-apparaten. Op dit moment zijn de NVMe-apparaten zichtbaar als NVMe-apparaten, zodat de BLK-MQ-instelling voor SCSI niet van belang is.
 
-* **Moet ik "fio" veranderen?**  
-   Om maximale IOPS te krijgen met een prestatiemeetinstrument zoals 'fio' in de L64v2- en L80v2 VM-formaten, stelt u "rq_affinity" in op 0 op elk NVMe-apparaat.  Deze opdrachtregel stelt bijvoorbeeld 'rq_affinity' in op nul voor alle 10 NVMe-apparaten in een L80v2-vm:
+* **Moet ik "fio" wijzigen?**  
+   Als u maximum aantal IOPS wilt bereiken met een hulp programma voor prestatie meting zoals ' fio ' in de VM-grootten L64v2 en L80v2, stelt u ' rq_affinity ' in op 0 op elk NVMe-apparaat.  Met deze opdracht regel wordt bijvoorbeeld ' rq_affinity ' ingesteld op nul voor alle 10 NVMe-apparaten in een L80v2-VM:
 
    ```console
    for i in `seq 0 9`; do echo 0 >/sys/block/nvme${i}n1/queue/rq_affinity; done
    ```
 
-   Merk ook op dat de beste prestaties wordt verkregen wanneer I / O wordt rechtstreeks gedaan om elk van de ruwe NVMe-apparaten zonder partitionering, geen bestandssystemen, geen RAID 0 config, enz. Voordat u een testsessie start, moet u ervoor zorgen `blkdiscard` dat de configuratie in een bekende frisse/schone toestand is door op elk van de NVMe-apparaten te worden uitgevoerd.
+   Houd er ook rekening mee dat de beste prestaties worden verkregen wanneer I/O rechtstreeks wordt uitgevoerd op alle onbewerkte NVMe-apparaten zonder partitioneren, geen bestands systemen, geen RAID 0-configuratie, enzovoort. Voordat u een test sessie start, moet u ervoor zorgen dat de configuratie de status bekend/schoon `blkdiscard` maakt door op elk NVMe-apparaat uit te voeren.
    
 ## <a name="next-steps"></a>Volgende stappen
 
-* Bekijk specificaties voor alle [VM's die zijn geoptimaliseerd voor opslagprestaties](sizes-storage.md) op Azure
+* Zie de specificaties voor alle [virtuele machines die zijn geoptimaliseerd voor opslag prestaties](sizes-storage.md) op Azure

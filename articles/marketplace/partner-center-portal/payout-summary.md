@@ -1,178 +1,178 @@
 ---
-title: Overzicht van de uitbetaling van commerciële marktplaatsen | Azure Marketplace
-description: In het overzicht van de uitbetaling ziet u details over het geld dat u met uw aanbieding hebt verdiend. Het laat je ook weten wanneer je betalingen ontvangt en hoeveel je betaald krijgt.
+title: Samen vatting van uitbetaling commerciële Marketplace | Azure Marketplace
+description: In de samen vatting van de betaling ziet u details over het geld dat u hebt behaald met uw aanbieding. U kunt ook zien wanneer u betalingen ontvangt en hoeveel u wordt betaald.
 author: dsindona
 ms.author: dsindona
 ms.service: marketplace
 ms.topic: guide
 ms.date: 12/10/2019
 ms.openlocfilehash: 5a930dfb38007349155581424d03ee7b3e7a6b46
-ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81730211"
 ---
 # <a name="payout-reporting"></a>Betalingsrapportage
 
-In [**het overzicht van de uitbetaling**](https://docs.microsoft.com/windows/uwp/publish/payout-summary) ziet u details over het geld dat u met Microsoft hebt verdiend. Het laat je ook weten wanneer je betalingen ontvangt en hoeveel je betaald krijgt.
+In de [**samen vatting van de uitbetaling**](https://docs.microsoft.com/windows/uwp/publish/payout-summary) ziet u details over het geld dat u hebt behaald met micro soft. U kunt ook zien wanneer u betalingen ontvangt en hoeveel u wordt betaald.
 
-Als u aanbiedingen verkoopt in de Azure Marketplace, ziet u ook informatie over succesvolle uitbetalingen in het **uitbetalingsoverzicht**. Zie het [Microsoft Azure Marketplace-deelnamebeleid](https://go.microsoft.com/fwlink/p/?LinkId=722436) en de [Microsoft Azure Marketplace Publisher Agreement](https://go.microsoft.com/fwlink/p/?LinkID=699560)voor meer informatie over Azure Marketplace-betalingen.
+Als u aanbiedingen in azure Marketplace verkoopt, ziet u ook informatie over geslaagde uitbetalingen in de **samen vatting**van de betaling. Voor meer informatie over Azure Marketplace-betaling raadpleegt u het [Microsoft Azure Marketplace deelname beleid](https://go.microsoft.com/fwlink/p/?LinkId=722436) en de [Microsoft Azure Marketplace Publisher-overeenkomst](https://go.microsoft.com/fwlink/p/?LinkID=699560).
 
 > [!NOTE]
-> Om in aanmerking te komen voor uitbetaling, moet je opbrengst de [betalingsdrempel](payment-thresholds-methods-timeframes.md) van $ 50 bereiken. Zie deze pagina voor meer informatie over de betalingsdrempel en bekijk de [Microsoft Azure Marketplace Publisher Agreement](https://go.microsoft.com/fwlink/p/?LinkID=699560).
+> Om in aanmerking te komen voor toekenning, moet uw opbrengst de [betalings drempelwaarde](payment-thresholds-methods-timeframes.md) van $50 bereiken. Zie deze pagina voor meer informatie over de betalings drempelwaarde en Bekijk de [Microsoft Azure Marketplace Publisher-overeenkomst](https://go.microsoft.com/fwlink/p/?LinkID=699560).
 
-- [Rollen en toestemming om toegang te krijgen tot het uitbetalingsrapport](#roles-and-permission-to-access-the-payout-report)
-- [Uitbetalingsrapport: verschil tussen Cloud Partner Portal en Partner Center](#payout-report-difference-between-cloud-partner-portal-and-partner-center)
-- [Klanttypen](#customer-types)
-- [Corelatie tussen uitbetaling en gebruik](#corelation-between-payout-and-usage)
-- [Transactiegeschiedenis downloaden](#transaction-history-download-export)
+- [Rollen en machtigingen voor toegang tot het uitbetalings rapport](#roles-and-permission-to-access-the-payout-report)
+- [Uitbetalings rapport: verschil tussen Cloud Partner-portal en partner centrum](#payout-report-difference-between-cloud-partner-portal-and-partner-center)
+- [Klant typen](#customer-types)
+- [Relatie tussen uitbetaling en gebruik](#corelation-between-payout-and-usage)
+- [Transactie geschiedenis downloaden](#transaction-history-download-export)
 - [Vragen en ondersteuning voor facturering](#billing-questions-and-support)
 
-## <a name="roles-and-permission-to-access-the-payout-report"></a>Rollen en toestemming om toegang te krijgen tot het uitbetalingsrapport
+## <a name="roles-and-permission-to-access-the-payout-report"></a>Rollen en machtigingen voor toegang tot het uitbetalings rapport
 
-| Rapporten/pagina's    | Accounteigenaar    | Manager  | Developer | Zakelijke bijdrager |  Financiële bijdrager | Marketeer |
+| Rapporten/pagina's    | Accounteigenaar    | Manager  | Ontwikkelaar | Zakelijke Inzender |  Bijdrage financier | Verkoper |
 |------------------|------------------|----------|-----------|----|----|-----|
-| Acquisitierapport (inclusief near real-time-gegevens) | Kan bekijken | Kan bekijken | Geen toegang | Geen toegang | Kan bekijken | Geen toegang |
-| Feedbackrapport/reacties | Feedback bekijken en verzenden | Feedback bekijken en verzenden | Feedback bekijken en verzenden | Geen toegang | Geen toegang | Feedback bekijken en verzenden |
-| Gezondheidsrapport (inclusief bijna realtime gegevens) | Kan bekijken | Kan bekijken | Kan bekijken | Kan bekijken | Geen toegang | Geen toegang |
-| Gebruiksrapport | Kan bekijken | Kan bekijken | Kan bekijken | Kan bekijken | Geen toegang | Geen toegang |
-| Uitbetalingsrekening | Kan bijwerken | Geen toegang | Geen toegang | Geen toegang | Kan bijwerken | Geen toegang |
-| Belastingprofiel | Kan bijwerken | Geen toegang | Geen toegang | Geen toegang | Kan bijwerken | Geen toegang |
-| Betalingsoverzicht | Kan bekijken | Geen toegang | Geen toegang | Geen toegang | Kan bekijken | Geen toegang |
+| Verwervings rapport (inclusief bijna realtime gegevens) | Kan weer geven | Kan weer geven | Geen toegang | Geen toegang | Kan weer geven | Geen toegang |
+| Feedback rapport/reacties | Kan feedback weer geven en verzenden | Kan feedback weer geven en verzenden | Kan feedback weer geven en verzenden | Geen toegang | Geen toegang | Kan feedback weer geven en verzenden |
+| Status rapport (inclusief bijna realtime gegevens) | Kan weer geven | Kan weer geven | Kan weer geven | Kan weer geven | Geen toegang | Geen toegang |
+| Gebruiks rapport | Kan weer geven | Kan weer geven | Kan weer geven | Kan weer geven | Geen toegang | Geen toegang |
+| Uitbetalings account | Kan bijwerken | Geen toegang | Geen toegang | Geen toegang | Kan bijwerken | Geen toegang |
+| BTW-profiel | Kan bijwerken | Geen toegang | Geen toegang | Geen toegang | Kan bijwerken | Geen toegang |
+| Betalingsoverzicht | Kan weer geven | Geen toegang | Geen toegang | Geen toegang | Kan weer geven | Geen toegang |
 
-## <a name="payout-report-difference-between-cloud-partner-portal-and-partner-center"></a>Uitbetalingsrapport: verschil tussen Cloud Partner Portal en Partner Center
+## <a name="payout-report-difference-between-cloud-partner-portal-and-partner-center"></a>Uitbetalings rapport: verschil tussen Cloud Partner-portal en partner centrum
 
-| | Cloud Partner-portal | Partnercentrum |
+| | Cloud Partner-portal | Partner centrum |
 |---------|---------|---------|
-| Koppelingen | [https://cloudpartner.azure.com/](https://cloudpartner.azure.com) | [https://partner.microsoft.com/dashboard/payouts/reports/transactionhistory](https://partner.microsoft.com/dashboard/payouts/reports/transactionhistory)En[https://partner.microsoft.com/dashboard/payouts/reports/incentivepayments](https://partner.microsoft.com/dashboard/payouts/reports/incentivepayments) |
-| Navigatie | Uitbetalingsrapportage in Insights-uitbetaling | Uitbetalingsrapportage in Partnercenter – Uitbetalingspictogram |
-| Bereik | <ul> <li>Transactie per regelitem is zichtbaar voor het verzamelen in uitvoering, verzameld en betaald </li> <li>Rapportage : toont alle regelitems zodra de aankooporder is gemaakt, inclusief verzameling in uitvoering en facturering in uitvoering, en verzamelingsstatus en regelitems die nog niet in aanmerking komen om te worden betaald. </li> </ul> | <ul> <li>Hiermee worden de regelitems weergegeven zodra ze als in aanmerking komende inkomsten worden beschouwd.</li> <li>De klanten betalen eerst aan Microsoft en vervolgens kunnen ISV's het uitbetalingsrapport zien starten.</li> <li>In het uitbetalingsrapport wordt geen verzameling in uitvoering en lopende facturering weergegeven.  </li> </ul>  |
-| Transactie nog niet klaar voor uitbetaling | Facturering in uitvoering | Volgende geschatte betaling: De uitbetalingsstatus is in de onverwerkte status.  |
-| Uitbetalingsstatus |  | Onverwerkte: <br> Het verdienen komt in aanmerking voor betaling. Het blijft in deze staat voor een afkoelingsperiode zoals gedefinieerd in de programmagids voor het Incentive-programma. <br> <br> Komende: <br> Betalingsorder gegenereerd in afwachting van interne beoordelingen voordat de betaling wordt verwerkt. <br> <br> Verzonden: <br> De betaling is naar uw bank verzonden. |
+| Koppelingen | [https://cloudpartner.azure.com/](https://cloudpartner.azure.com) | [https://partner.microsoft.com/dashboard/payouts/reports/transactionhistory](https://partner.microsoft.com/dashboard/payouts/reports/transactionhistory)maar[https://partner.microsoft.com/dashboard/payouts/reports/incentivepayments](https://partner.microsoft.com/dashboard/payouts/reports/incentivepayments) |
+| Navigatie | Uitbetalings rapportage die is opgenomen in Insights-uitbetaling | Uitbetalings rapportage die is opgenomen in Partner Center: het pictogram voor uitbetaling |
+| Bereik | <ul> <li>Trans actie per regel item is zichtbaar voor de verzameling die wordt uitgevoerd, verzameld en betaald </li> <li>Rapportage: geeft alle regel items weer zodra de aankoop order is gemaakt, inclusief de verzameling die wordt uitgevoerd en de facturering wordt uitgevoerd, en de verzamelings status en regel items die nog niet kunnen worden betaald. </li> </ul> | <ul> <li>Toont de regel items zodra deze als in aanmerking komende winst worden beschouwd.</li> <li>Klanten betalen eerst aan micro soft en vervolgens kunnen Isv's het rapport voor uitbetaling starten.</li> <li>In het uitbetalings rapport wordt de verzameling niet weer gegeven die wordt uitgevoerd en facturering wordt uitgevoerd.  </li> </ul>  |
+| Trans actie niet gereed voor uitbetaling | Facturering wordt uitgevoerd | Volgende geschatte betaling: de status van de uitbetaling is in de niet-verwerkte staat.  |
+| Status uitbetaling |  | Verwerkte <br> Het verdienen komt in aanmerking voor betaling. Deze status blijft van toepassing op een koel periode zoals gedefinieerd in de programma gids voor het prestatie programma. <br> <br> Verschijnen <br> Door de betaling gegenereerde interne beoordelingen die in behandeling zijn, voordat de betaling wordt verwerkt. <br> <br> Zonden <br> De betaling is naar uw bank verzonden. |
 
-## <a name="customer-types"></a>Klanttypen
+## <a name="customer-types"></a>Klant typen
 
-### <a name="enterprise-agreement"></a>Ondernemingsovereenkomst
+### <a name="enterprise-agreement"></a>Enter prise overeenkomst
 
-Klanten zonder enterprise-overeenkomst worden maandelijks gefactureerd voor marketplace-softwarelicenties. Klanten met een Enterprise Agreement worden maandelijks gefactureerd via een factuur die elk kwartaal wordt gepresenteerd.
+Klanten zonder een Enterprise Agreement op locatie worden maandelijks gefactureerd voor software licenties voor Marketplace. Klanten met een Enterprise Agreement worden maandelijks gefactureerd via een factuur die elk kwar taal wordt gepresenteerd.
 
-### <a name="credit-cards-and-monthly-invoice"></a>Creditcards en maandelijkse factuur
+### <a name="credit-cards-and-monthly-invoice"></a>Credit cards en maandelijkse factuur
 
-Klanten kunnen ook betalen met een creditcard en een maandelijkse factuur. In dit geval worden uw softwarelicentiekosten maandelijks in rekening gebracht.
+Klanten kunnen ook betalen met een credit card en een maandelijkse factuur. In dit geval worden uw software licentie kosten maandelijks in rekening gebracht.
 
-### <a name="csp-and-direct-pay-users"></a>CSP- en Direct Pay-gebruikers
+### <a name="csp-and-direct-pay-users"></a>CSP-en direct betalen-gebruikers
 
-Bijvoorbeeld als de klant koopt met een creditcard.
+Bijvoorbeeld als de klant inkopen met een credit card.
 
-## <a name="corelation-between-payout-and-usage"></a>Corelatie tussen uitbetaling en gebruik
+## <a name="corelation-between-payout-and-usage"></a>Relatie tussen uitbetaling en gebruik
 
-|Beschrijving    |    Date  | Bestellingen/gebruik  | Uitbetaling |
+|Beschrijving    |    Date  | Orders/gebruik  | Betalings |
 |----------|----------|-----------|-------------|
-|Bestelperiode   | 15 augustus 2019 - 30 augustus 2019 | **Correlatiekenmerken Orders** <br> <ul> <li>OrderId</li> <li>CustomerId</li> </ul> <br> **Gebruik** <br> <ul> <li>CustomerId </li> <li>Naam van de klant</li> <li>(UsageReference) AankoopRecordId/LineItemId</li> <li> Geschatte uitgebreide kosten <br> Geschatte uitbetaling (PC) </li> </ul> |  |
-|Term eindigend (maand)   | 30 augustus 2019 | | |
-|Factureringsdatum | 1 september 2019 | | |
-|Betalingsdatum van klant | 1 september 2019 | | |
-|Borgperiode (alleen creditcards, 30 dagen) | 1 september 2019 - 30 september 2019 | | **Correlatiekenmerken Orders:** <br> <ul><li>AssetId (AssetId)</li> <li>Klant-id</li> <li> Naam van de klant</li> </ul> <br> **Gebruik** <br> <ul> <li>AssetId (AssetId)</li> <li>CustomerId</li> <li>Naam van de klant</li> <li>OrderId</li> <li>LineItemId</li> <li>transactieBedrag</li> <li>EarningAmountInLastPaymentCurrency</li> </ul> <br> **Uitbetalingsstatus:** Onverwerkte |
-|Beginperiode | 1 september 2019 | | |
-|Einde van de inzamelperiode (maximaal 30 dagen) | 30 september 2019 | | |
-|Uitbetalingsberekeningsdatum (maandelijks op de 15e) | 1 oktober 2019 | | **Correlatiekenmerken** <br> <ul><li>AssetId (AssetId)</li> <li>Klant-id</li> <li>Naam van de klant</li> </ul> <br> **Gebruik** <br> <ul> <li>AssetId (AssetId)</li> <li>CustomerId</li> <li>Naam van de klant</li> <li>OrderId</li> <li>LineItemId</li> <li>transactieBedrag</li> <li>EarningAmountInLastPaymentCurrency</li> </ul> <br> **Uitbetalingsstatus:** Komende |
-|Uitbetalingsdatum | 15 okt 2019 | | **Correlatiekenmerken** <br> <ul><li>AssetId (AssetId)</li> <li>Klant-id</li> <li> Naam van de klant</li> </ul> <br> **Gebruik** <br> <ul> <li>AssetId (AssetId)</li> <li>CustomerId</li> <li>Naam van de klant</li> <li>OrderId</li> <li>LineItemId</li> <li>transactieBedrag</li> <li>EarningAmountInLastPaymentCurrency</li> </ul> <br> **Uitbetalingsstatus:** Betaling verzonden |
+|Bestel periode   | 15 augustus 2019-aug 30, 2019 | **Correlatie kenmerken orders** <br> <ul> <li>OrderId</li> <li>CustomerId</li> </ul> <br> **Belasting** <br> <ul> <li>CustomerId </li> <li>Klant naam</li> <li>(UsageReference) PurchaseRecordId/LineItemId</li> <li> Geschatte berekende toeslag <br> Geschatte uitbetaling (PC) </li> </ul> |  |
+|Einde van de term (maand)   | 30 augustus 2019 | | |
+|Factuur datum | 1 Sept 2019 | | |
+|Betalings datum van klant | 1 Sept 2019 | | |
+|Borg periode (alleen voor credit cards, 30 dagen) | Sept 1 september 2019-september 30, 2019 | | **Correlatie kenmerken orders:** <br> <ul><li>AssetId</li> <li>Klant-id</li> <li> Klant naam</li> </ul> <br> **Belasting** <br> <ul> <li>AssetId</li> <li>CustomerId</li> <li>Klant naam</li> <li>OrderId</li> <li>LineItemId</li> <li>transactionAmount</li> <li>EarningAmountInLastPaymentCurrency</li> </ul> <br> **Uitbetalings status:** Verwerkte |
+|Begin van verzamelings periode | 1 Sept 2019 | | |
+|Einde van de verzamelings periode (Maxi maal 30 dagen) | Sept 30, 2019 | | |
+|Berekenings datum van betaling (maandelijks op de 15e) | Okt 1, 2019 | | **Correlatie kenmerken** <br> <ul><li>AssetId</li> <li>Klant-id</li> <li>Klant naam</li> </ul> <br> **Belasting** <br> <ul> <li>AssetId</li> <li>CustomerId</li> <li>Klant naam</li> <li>OrderId</li> <li>LineItemId</li> <li>transactionAmount</li> <li>EarningAmountInLastPaymentCurrency</li> </ul> <br> **Uitbetalings status:** Verschijnen |
+|Uitbetalings datum | 15 oktober 2019 | | **Correlatie kenmerken** <br> <ul><li>AssetId</li> <li>Klant-id</li> <li> Klant naam</li> </ul> <br> **Belasting** <br> <ul> <li>AssetId</li> <li>CustomerId</li> <li>Klant naam</li> <li>OrderId</li> <li>LineItemId</li> <li>transactionAmount</li> <li>EarningAmountInLastPaymentCurrency</li> </ul> <br> **Uitbetalings status:** Betaling verzonden |
 
-### <a name="enterprise-agreement-quarterlymonthly-customers"></a>Enterprise-overeenkomst (kwartaal/maandklanten)
+### <a name="enterprise-agreement-quarterlymonthly-customers"></a>Enter prise Agreement (kwartaal klanten/maandelijks)
 
-| Beschrijving |    Date  | Gebruik | Uitbetaling |
+| Beschrijving |    Date  | Gebruik | Betalings |
 |----------|----------|---------|-----------|
-|Bestelperiode | 15 augustus 2019 - 30 augustus 2019 | **Correlatiekenmerken orders** <br> <ul> <li>OrderId</li> <li>CustomerId</li> </ul> <br> **Gebruiksrapport** <br> <ul> <li>CustomerId </li> <li>Naam van de klant</li> <li>(UsageReference) AankoopRecordId/LineItemId</li> <li> Geschatte uitgebreide kosten <br> Geschatte uitbetaling (PC) </li> </ul> | |
-|Term Ending (kwartaal) | 30 september 2019 | | |
-|Factureringsdatum | 15 okt 2019 | | |
-|Borgperiode (alleen creditcards, 30 dagen) | N.v.t. | | |
-|Beginperiode | 15 okt 2019 | | |
-|Alleen creditcards, 30 dagen | 1 november 2019 - 30 november 2019 | | |
-|Einde van de inzamelperiode (maximaal 90 dagen) | 15 jan 2020 | | |
-|Betalingsdatum van klant | 30 december 2019 | | |
-|Uitbetalingsberekening | 15 jan 2020 | | |
-|Uitbetalingsdatum | 15 februari 2020 | | **Voor driemaandelijkse klanten** <br> <br> **Ordersrapport** <br> <ul><li>AssetId (AssetId)</li> <li>Klant-id</li> <li> Naam van de klant</li> </ul> <br> **Gebruik** <br> <ul> <li>AssetId (AssetId)</li> <li>CustomerId</li> <li>Naam van de klant</li> <li>OrderId</li> <li>LineItemId</li> <li>transactieBedrag</li> <li>EarningAmountInLastPaymentCurrency</li> </ul> <br> **Uitbetalingsstatus:** verzonden |
+|Bestel periode | 15 augustus 2019-aug 30, 2019 | **Correlatie kenmerken orders** <br> <ul> <li>OrderId</li> <li>CustomerId</li> </ul> <br> **Gebruiks rapport** <br> <ul> <li>CustomerId </li> <li>Klant naam</li> <li>(UsageReference) PurchaseRecordId/LineItemId</li> <li> Geschatte berekende toeslag <br> Geschatte uitbetaling (PC) </li> </ul> | |
+|Einde van de term (kwar taal) | Sept 30, 2019 | | |
+|Factuur datum | 15 oktober 2019 | | |
+|Borg periode (alleen voor credit cards, 30 dagen) | N.v.t. | | |
+|Begin van verzamelings periode | 15 oktober 2019 | | |
+|Alleen credit cards, 30 dagen | 1 november 2019 tot 30 november 2019 | | |
+|Einde van verzamelings periode (Maxi maal 90 dagen) | 15 januari 2020 | | |
+|Betalings datum van klant | 30 dec, 2019 | | |
+|Berekening van uitbetaling | 15 januari 2020 | | |
+|Uitbetalings datum | 15 februari 2020 | | **Voor elk kwar taal op basis van klanten** <br> <br> **Rapport Orders** <br> <ul><li>AssetId</li> <li>Klant-id</li> <li> Klant naam</li> </ul> <br> **Belasting** <br> <ul> <li>AssetId</li> <li>CustomerId</li> <li>Klant naam</li> <li>OrderId</li> <li>LineItemId</li> <li>transactionAmount</li> <li>EarningAmountInLastPaymentCurrency</li> </ul> <br> **Status van uitbetaling:** verzonden |
 
-## <a name="transaction-history-download-export"></a>Export van transactiegeschiedenis downloaden
+## <a name="transaction-history-download-export"></a>Transactie geschiedenis downloaden exporteren
 
-Deze optie biedt een download van elk verdienregelitem dat u ziet op de pagina Transactiegeschiedenis, verdientype, datum, gekoppeld transactiebedrag, klant, product en andere transactiegegevens die van toepassing zijn op het Incentives-programma.
+Deze optie biedt een down load van elk item op de pagina met de transactie geschiedenis, het type, de datum, het bijbehorende transactie bedrag, de klant, het product en andere transactionele gegevens die van toepassing zijn op het prikkel programma.
 
 | Kolomnaam     | Beschrijving    |
 |-------------|-------------------------------|
 | earningId                      | Unieke id voor elk verdienen                                                                                                       |
-| deelnemerId                  | De primaire identiteit van de partner die in het kader van het programma verdient                                                                            |
-| deelnemerIdType              | Meestal programma-ID voor incentiveprogramma's en verkoper ALS voor winkelprogramma's en Azure Marketplace                                          |
-| deelnemerNaam                | Naam van de verdienpartner                                                                                                              |
-| partnerCountryCode             | Locatie/land van de verdienpartner                                                                                                  |
-| programmaNaam                    | Naam incentive/winkelprogramma                                                                                                             |
-| transactionId                  | Unieke id voor de transactie                                                                                                    |
-| transactieValuta            | Valuta waarin de oorspronkelijke klanttransactie heeft plaatsgevonden (het is niet de valuta van de partnerlocatie)                                     |
-| transactieDatum                | Datum van de transactie. Handig voor programma's waar veel transacties bijdragen aan een verdienen                                           |
-| transactieWisselkoers        | Wisselkoers die wordt gebruikt om het overeenkomstige transactie-USD-bedrag weer te geven                                                                 |
-| transactieBedrag              | Transactiebedrag in de oorspronkelijke transactievaluta op basis waarvan het verdienen wordt gegenereerd                                              |
-| transactieBedragUSD           | Transactiebedrag in USD                                                                                                                |
-| hendel                          | Geeft bedrijfsregel voor het verdienen aan                                                                                                  |
-| verdienenTarief                    | Incentivetarief toegepast op transactiebedrag om een                                                                      |
-| quantity                       | Varieert op basis van het programma. Geeft gefactureerde hoeveelheid voor transactionele programma's aan                                                            |
-| hoeveelheidType                   | Geeft type hoeveelheid aan, bijvoorbeeld: Gefactureerde hoeveelheid, MAU                                                                                     |
-| verdienenType                    | Geeft aan of het vergoeding, korting, coop, verkopen etc.                                                                                          |
-| verdienenBedrag                  | Geld verdienen in de oorspronkelijke transactievaluta                                                                                      |
-| verdienenAmountUSD               | Verdienbedrag in USD                                                                                                                    |
+| participantId                  | De primaire identiteit van de partner die onder het programma is aangegaan                                                                            |
+| participantIdType              | Voornamelijk programma-ID voor prikkel Programma's en verkopers als voor Store-Program ma's en Azure Marketplace                                          |
+| deel nemer                | Naam van de verdienen partner                                                                                                              |
+| partnerCountryCode             | Locatie/land van de verdienen partner                                                                                                  |
+| programName                    | Naam van het prestatie/archief programma                                                                                                             |
+| transactionId                  | De unieke id voor de trans actie                                                                                                    |
+| transactionCurrency            | Valuta waarin de oorspronkelijke klant transactie heeft plaatsgevonden (dit is niet de valuta van de partner locatie)                                     |
+| transactionDate                | De datum van de trans actie. Handig voor Program ma's waarbij veel trans acties bijdragen aan één verdienen                                           |
+| transactionExchangeRate        | De wissel koers die wordt gebruikt voor het weer geven van het bijbehorende bedrag voor de trans actie USD                                                                 |
+| transactionAmount              | Transactie bedrag in de oorspronkelijke transactie valuta op basis waarvan het verdienen is gegenereerd                                              |
+| transactionAmountUSD           | Transactie bedrag in USD                                                                                                                |
+| kern                          | Geeft bedrijfs regel voor het verdienen aan                                                                                                  |
+| earningRate                    | Prestatie percentage toegepast op transactie bedrag om een verdienen te genereren                                                                      |
+| quantity                       | Is afhankelijk van het programma. Hiermee wordt de gefactureerde hoeveelheid voor transactionele Program ma's aangegeven                                                            |
+| quantityType                   | Hiermee wordt het type van de hoeveelheid aangegeven, bijvoorbeeld: Gefactureerd aantal, MAU                                                                                     |
+| earningType                    | Geeft aan of het kosten, kortingen, Coop, verkoop enz. is.                                                                                          |
+| earningAmount                  | Het verdienen van het bedrag in de oorspronkelijke transactie valuta                                                                                      |
+| earningAmountUSD               | Verdienen bedrag in USD                                                                                                                    |
 | earningDate                    | Datum van het verdienen                                                                                                                      |
-| berekeningDatum                | Datum waarop het verdienen in het systeem is berekend                                                                                            |
-| verdienenWisselkoers            | Wisselkoers die wordt gebruikt om het overeenkomstige USD-bedrag weer te geven                                                                                  |
-| exchangeRateDate               | Wisselkoersdatum die wordt gebruikt om het verdienbedrag USD te berekenen                                                                                   |
-| betalingAmountWOTax             | Verdienbedrag (zonder belasting) in Pay To valuta voor alleen verzonden betalingen                                                                 |
-| betalingValuta                | Betaal naar valuta die is gekozen door de partner in het betalingsprofiel. Alleen weergegeven voor verzonden betalingen                                                   |
-| paymentExchangeRate            | Wisselkoers die wordt gebruikt om betalingAmountWOTax in betalingsvaluta te berekenen met ExchangeRateDate                                            |
-| betalingId            | Unieke id voor de betaling. Dit nummer is zichtbaar in uw bankafschrift                                            |
-| betalingsStatus            | Betalingsstatus                                            |
-| paymentStatusBeschrijving            | Vriendelijke beschrijving van de betalingsstatus                                            |
-| customerId                     | Zal altijd leeg zijn                                                                                                                     |
-| customerName                   | Zal altijd leeg zijn                                                                                                                     |
-| partNumber                     | Zal altijd leeg zijn                                                                                                                     |
-| Productnaam                    | Productnaam gekoppeld aan transactie                                                                                                       |
+| calculationDate                | De datum waarop het verdienen is berekend in het systeem                                                                                            |
+| earningExchangeRate            | De wissel koers die wordt gebruikt om het overeenkomstige USD-bedrag weer te geven                                                                                  |
+| exchangeRateDate               | Wisselkoers datum die wordt gebruikt voor het berekenen van EarningAmount USD                                                                                   |
+| paymentAmountWOTax             | Betaalde hoeveelheid (zonder BTW) voor de factuur voor ' verzonden ' betalingen                                                                 |
+| paymentCurrency                | Betalen voor de valuta die wordt gekozen door de partner in het betalings profiel. Alleen weer gegeven voor verzonden betalingen                                                   |
+| paymentExchangeRate            | De wissel koers die wordt gebruikt om paymentAmountWOTax in de betalings valuta te berekenen met behulp van ExchangeRateDate                                            |
+| paymentId            | De unieke id voor de betaling. Dit nummer is zichtbaar in uw bank afschrift                                            |
+| paymentStatus            | Betalings status                                            |
+| paymentStatusDescription            | Beschrijvende beschrijving van de betalings status                                            |
+| customerId                     | Is altijd leeg                                                                                                                     |
+| customerName                   | Is altijd leeg                                                                                                                     |
+| partNumber                     | Is altijd leeg                                                                                                                     |
+| Product                    | Product naam gekoppeld aan trans actie                                                                                                       |
 | productId                      | Unieke product-id                                                                                                                |
-| bovenliggendeProductId                | Unieke bovenliggende product-id. Opmerking: als er geen bovenliggend product voor de transactie is, dan bovenliggende product-id = product-id. |
-| bovenliggendeProductName              | Naam van het bovenliggende product. Opmerking: als er geen bovenliggend product voor de transactie is, dan bovenliggende productnaam = productnaam.   |
-| productType                    | Type product (zoals App, Add-on, Game, enz.)                                                                                        |
-| factuurAantal                  | Factuurnummer (alleen van toepassing op EA)                                                                                                  |
-| resellerId                     | Reseller-id                                                                                                                      |
-| resellerName                   | Reseller name                                                                                                                            |
-| transactieType                | Type transactie (zoals aankoop, terugbetaling, omkering, terugboeking, enz.)                                                               |
+| parentProductId                | Unieke id van het bovenliggende product. Opmerking: als er geen bovenliggend product voor de trans actie is, dan is de product-id van het bovenliggende product ID. |
+| parentProductName              | De naam van het bovenliggende product. Opmerking: als er geen bovenliggend product voor de trans actie is, dan is de naam van het bovenliggende product = product naam.   |
+| productType                    | Type product (zoals app, invoeg toepassing, spelletje, enz.)                                                                                        |
+| invoiceNumber                  | Factuur nummer (alleen van toepassing op EA)                                                                                                  |
+| resellerId                     | Wederverkoper-id                                                                                                                      |
+| Verkoperstatus                   | Reseller name                                                                                                                            |
+| transactionType                | Type trans actie (zoals aankoop, restitutie, omkering, terugstorting, enz.)                                                               |
 | localProviderSeller            | Lokale provider/verkoper van record                                                                                                          |
-| taxRemitted                    | Bedrag van de kwijtgescholden belasting (verkoop, gebruik of BTW/GST-belastingen).                                                                                   |
-| taxRemitModel                  | Partij die verantwoordelijk is voor het afdragen van belastingen (verkoop, gebruik of BTW/GST-belastingen).                                                                    |
-| storeFee                       | Het bedrag dat Microsoft inhoudt als vergoeding voor het beschikbaar maken van de app of add-on in de Store.                                            |
-| transactiePaymentMethod       | Klant betalingsinstrument gebruikt voor de transactie (zoals Card, Mobile Carrier Billing, PayPal, enz.)                                |
-| tpan tpan                           | Geeft het advertentienetwerk van derden aan                                                                                                     |
-| klantLand                | Klantland                                                                                                                         |
-| customerCity                   | Klantstad                                                                                                                            |
-| klantStaat                  | Klantstatus                                                                                                                           |
-| customerZip                    | Postcode van de klant                                                                                                                 |
+| taxRemitted                    | Het bedrag aan overgeschreven BTW (verkoop, gebruik of btw/GST-belastingen).                                                                                   |
+| taxRemitModel                  | Partij verantwoordelijk voor het remitteren van belastingen (verkoop, gebruik of btw/GST-belastingen).                                                                    |
+| storeFee                       | Het bedrag dat door micro soft wordt bewaard als een vergoeding voor het maken van de app of invoeg toepassing die beschikbaar is in de Store.                                            |
+| transactionPaymentMethod       | Het betalings instrument van de klant dat wordt gebruikt voor de trans actie (zoals kaart, Mobile Carrier billing, PayPal, enzovoort)                                |
+| tpan                           | Hiermee wordt het AD-netwerk van derden aangegeven                                                                                                     |
+| customerCountry                | Klant land                                                                                                                         |
+| customerCity                   | Klant plaats                                                                                                                            |
+| customerState                  | Klant status                                                                                                                           |
+| customerZip                    | Post code van de klant                                                                                                                 |
 | TenantID                       |                                                                                                                                          |
-| externReferentie-id            | Unieke id voor het programma                                                                                                        |
-| externReferenceIdLabel       | Uniek id-label                                                                                                                  |
-| transactionCountryCode       | Landcode waarin de transactie is gebeurd                                                                                                                  |
-| taxCountry       | Verkocht aan klantland                                                                                                                  |
-| taxState       | Verkocht aan de staat van de klant                                                                                                                  |
-| taxCity       | Verkocht aan Customer City                                                                                                                  |
-| taxZipCode       | Verkocht aan customer zip                                                                                                                  |
-| Licentieprogrammanaam       |                                                                                                                   |
-| Programmacode       | Tekenreeks om in kaart te brengen met de programmanaam                                                                                                                   |
-| verdienenAmountInLastPaymentCurrency       | Verdienbedrag in de laatste betalingsvaluta (veld is leeg, als er geen betalingen zijn betaald)                                                                                                                   |
-| laatstePaymentCurrency       | Laatste betalingsvaluta (veld is leeg, als er geen voorafgaande betaling is betaald)                                                                                                                   |
-| AssetId (AssetId)       | De unieke id voor de klantorders voor uw marketplace-service.  Het vertegenwoordigt de afgehandelde aankoopregelitems. Er kunnen meerdere activa zijn.                                                                                                                   |
-| OrderId       | betrekking heeft op de factuur van een klant                                                                                                                   |
-| LineItemId       | individuele regel in de factuur van een klant                                                                                                                   |
-| Land van klant       | De landnaam die door de klant wordt opgegeven.  Dit kan anders zijn dan het land in het Azure-abonnement van een klant.                                                                                                                   |
-| E-mailadres van de klant       | Het e-mailadres van de eindklant.  Dit kan afwijken van het e-mailadres in het Azure-abonnement van een klant.                                                                                                                   |
-| SkuId SkuId       | SKU-id zoals gedefinieerd tijdens het publiceren. Een aanbieding kan veel SKU's hebben, maar een SKU kan slechts aan één aanbieding worden gekoppeld.                                                                                                                   |
+| externalReferenceId            | De unieke id voor het programma                                                                                                        |
+| externalReferenceIdLabel       | Label voor unieke id                                                                                                                  |
+| transactionCountryCode       | Land code waarin trans actie plaatsvond                                                                                                                  |
+| taxCountry       | Verkocht aan klant land                                                                                                                  |
+| taxState       | Verkocht aan klant status                                                                                                                  |
+| taxCity       | Verkocht aan klant plaats                                                                                                                  |
+| taxZipCode       | Verkocht aan klant post                                                                                                                  |
+| LicensingProgramName       |                                                                                                                   |
+| Programma code       | Teken reeks die moet worden toegewezen aan de programma naam                                                                                                                   |
+| earningAmountInLastPaymentCurrency       | Het verdienen van het bedrag in de laatste betalings valuta (veld is leeg als er geen eerdere betaling is betaald)                                                                                                                   |
+| lastPaymentCurrency       | Valuta van laatste betaling (veld is leeg als er geen eerdere betaling is betaald)                                                                                                                   |
+| AssetId       | De unieke id voor de klant orders voor uw Marketplace-service.  Het vertegenwoordigt de transactionele inkoop regel items. Er kunnen meerdere assets zijn.                                                                                                                   |
+| OrderId       | is gekoppeld aan de factuur van een klant                                                                                                                   |
+| LineItemId       | afzonderlijke regel in de factuur van een klant                                                                                                                   |
+| Klant land       | De land naam van de klant.  Dit kan afwijken van het land van het Azure-abonnement van de klant.                                                                                                                   |
+| EmailAddress klant       | Het e-mail adres van de eind gebruiker.  Dit kan afwijken van het e-mail adres in het Azure-abonnement van een klant.                                                                                                                   |
+| SkuId       | SKU-ID zoals gedefinieerd tijdens het publiceren. Een aanbieding kan veel Sku's hebben, maar een SKU kan slechts worden gekoppeld aan één aanbieding.                                                                                                                   |
 
 >[!Note]
->Alle rapportages en inzichten voor de transact publishing-optie zijn beschikbaar via de sectie Insights van de sectie Cloud Partner Portal of Analytics van partnercentrum.
+>Alle rapportage en inzichten voor de optie voor het publiceren van Transact zijn beschikbaar via de sectie inzichten van het gedeelte Cloud Partner-portal of Analytics van het partner centrum.
 
 ## <a name="billing-questions-and-support"></a>Vragen en ondersteuning voor facturering
 
-Neem contact op met de ondersteuning van [commerciële marktplaatsuitgevers](https://partner.microsoft.com/support/v2/?stage=1)om hulp te krijgen bij factureringsvragen.
+Neem contact op met de [ondersteuning voor commerciële Marketplace-Uitgever](https://partner.microsoft.com/support/v2/?stage=1)om hulp te krijgen bij vragen over facturering.

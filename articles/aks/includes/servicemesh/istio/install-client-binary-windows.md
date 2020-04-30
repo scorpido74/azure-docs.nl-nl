@@ -4,15 +4,15 @@ ms.topic: include
 ms.date: 11/15/2019
 ms.author: pabouwer
 ms.openlocfilehash: e26a2c214a03243d6507296c1e981706be8c56db
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81735485"
 ---
-## <a name="download-and-install-the-istio-istioctl-client-binary"></a>De Istio istioctl client binary downloaden en installeren
+## <a name="download-and-install-the-istio-istioctl-client-binary"></a>Down load en installeer het binaire bestand voor de Istio istioctl-client
 
-Gebruik in `Invoke-WebRequest` een PowerShell-gebaseerde shell op Windows de Istio-versie te downloaden en vervolgens als volgt uit `Expand-Archive` te pakken:
+Gebruik `Invoke-WebRequest` in een Power shell-shell in Windows om de Istio-release te downloaden en vervolgens `Expand-Archive` als volgt op te halen:
 
 ```powershell
 # Specify the Istio version that will be leveraged throughout these instructions
@@ -24,7 +24,7 @@ $ProgressPreference = 'SilentlyContinue'; Invoke-WebRequest -URI "https://github
 Expand-Archive -Path "istio-$ISTIO_VERSION.zip" -DestinationPath .
 ```
 
-De `istioctl` client binaire draait op uw client machine en stelt u in staat om te communiceren met de Istio service mesh. Gebruik de volgende opdrachten om `istioctl` de Istio-client-binaire te installeren in een PowerShell-gebaseerde shell op Windows. Deze opdrachten kopiëren `istioctl` de client binaire naar een Istio map en vervolgens beschikbaar zowel onmiddellijk (in de `PATH`huidige shell) en permanent (over shell herstart) via uw . U hebt geen verhoogde bevoegdheden (admin) nodig om deze opdrachten uit te voeren en u hoeft uw shell niet opnieuw op te starten.
+De `istioctl` binaire client wordt uitgevoerd op uw client computer en maakt het mogelijk om te communiceren met het Istio-service-net. Gebruik de volgende opdrachten om de binaire Istio `istioctl` -client te installeren in een Power shell-shell op Windows. Met deze opdrachten kopieert `istioctl` u het binaire bestand van de client naar een Istio-map en maakt u deze zowel onmiddellijk beschikbaar (in de huidige shell) als permanent (tussen `PATH`het opnieuw opstarten van de shell) via uw. U hebt geen verhoogde beheerders bevoegdheden nodig om deze opdrachten uit te voeren en u hoeft de shell niet opnieuw op te starten.
 
 ```powershell
 # Copy istioctl.exe to C:\Istio

@@ -1,6 +1,6 @@
 ---
-title: Een DevKit-apparaat aansluiten op uw Azure IoT Central-toepassing | Microsoft Documenten
-description: Als apparaatontwikkelaar leert u hoe u een MXChip IoT DevKit-apparaat aansluit op uw Azure IoT Central-toepassing met behulp van IoT Plug and Play (preview).
+title: Een DevKit-apparaat verbinden met uw Azure IoT Central-toepassing | Microsoft Docs
+description: Als ontwikkelaar van een apparaat leert u hoe u een MXChip IoT DevKit-apparaat verbindt met uw Azure IoT Central-toepassing met IoT Plug en Play (preview).
 author: liydu
 ms.author: liydu
 ms.date: 12/03/2019
@@ -9,21 +9,21 @@ ms.service: iot-central
 services: iot-central
 manager: jeffya
 ms.openlocfilehash: bcf1dd2f89cf049d7da5b56170b2c13874c83ba4
-ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81756803"
 ---
 # <a name="connect-an-mxchip-iot-devkit-device-to-your-azure-iot-central-application"></a>Een MXChip IoT DevKit-apparaat verbinden met uw Azure IoT Central-toepassing
 
-*Dit artikel is van toepassing op apparaatontwikkelaars.*
+*Dit artikel is van toepassing op ontwikkel aars van apparaten.*
 
-In dit artikel ziet u hoe u een MXChip IoT DevKit-apparaat (DevKit) verbinden met een Azure IoT Central-toepassing. Het apparaat maakt gebruik van het gecertificeerde IoT Plug and Play -model (preview) voor het DevKit-apparaat om de verbinding met IoT Central te configureren.
+In dit artikel wordt beschreven hoe u een MXChip IoT DevKit (DevKit)-apparaat verbindt met een Azure IoT Central-toepassing. Het apparaat gebruikt het Certified IoT Plug en Play (preview) model voor het DevKit-apparaat om de verbinding met IoT Central te configureren.
 
-In dit how-to artikel, u:
+In dit procedure-artikel:
 
-- Haal de verbindingsgegevens op van uw IoT Central-toepassing.
+- Haal de verbindings gegevens op uit uw IoT Central-toepassing.
 - Bereid het apparaat voor en sluit het aan op uw IoT Central-toepassing.
 - Bekijk de telemetrie en eigenschappen van het apparaat in IoT Central.
 
@@ -32,81 +32,81 @@ In dit how-to artikel, u:
 U hebt de volgende resources nodig om de stappen in dit artikel uit te voeren:
 
 - Een [DevKit-apparaat](https://aka.ms/iot-devkit-purchase).
-- Een IoT Central-toepassing. U de stappen volgen in [Een IoT Central-toepassing maken.](./quick-deploy-iot-central.md)
+- Een IoT Central-toepassing. U kunt de stappen in [een IOT Central-toepassing maken](./quick-deploy-iot-central.md)volgen.
 
-## <a name="get-device-connection-details"></a>Gegevens over apparaatverbinding opvragen
+## <a name="get-device-connection-details"></a>Verbindings Details van apparaat ophalen
 
-1. Selecteer in uw Azure IoT Central-toepassing het tabblad **Apparaatsjablonen** en selecteer **+ Nieuw**. Selecteer **MXChip IoT DevKit**in de sectie **Gebruik een vooraf geconfigureerde apparaatsjabloon**.
+1. Selecteer in uw Azure IoT Central-toepassing het tabblad **Apparaatinstellingen** en selecteer **+ Nieuw**. Selecteer in de sectie **een vooraf geconfigureerde apparaatprofiel gebruiken de**optie **MXChip IOT DevKit**.
 
-    ![Apparaatsjabloon voor MXChip IoT DevKit](media/howto-connect-devkit/device-template.png)
+    ![Device-sjabloon voor MXChip IoT DevKit](media/howto-connect-devkit/device-template.png)
 
-1. Selecteer **Volgende: Aanpassen** en vervolgens **Maken**.
+1. Selecteer **volgende: aanpassen** en vervolgens **maken**.
 
-1. Selecteer het tabblad **Apparaten.** Selecteer **mxchip IoT DevKit** in de lijst met apparaten en selecteer **+ Nieuw** om een nieuw apparaat te maken op de sjabloon.
+1. Selecteer tabblad **apparaten** . Selecteer in de lijst apparaten de optie **MXChip IOT DevKit** en selecteer **+ New** om een nieuw apparaat te maken op basis van de sjabloon.
 
     ![Nieuw apparaat](media/howto-connect-devkit/new-device.png)
 
-1. Voer in het pop-upvenster de `SampleDevKit` **apparaat-id** als en **apparaatnaam** in als `MXChip IoT DevKit - Sample`. Controleer of de **optie Gesimuleerd** is uitgeschakeld. Selecteer vervolgens **Maken**.
+1. Voer in het pop-upvenster de **apparaat-id** in `SampleDevKit` en de **apparaatnaam** als `MXChip IoT DevKit - Sample`. Zorg ervoor dat de **gesimuleerde** optie is uitgeschakeld. Selecteer vervolgens **maken**.
 
-    ![Apparaat-ID en -naam](media/howto-connect-devkit/device-id-name.png)
+    ![Apparaat-ID en naam](media/howto-connect-devkit/device-id-name.png)
 
-1. Selecteer het apparaat dat u hebt gemaakt en selecteer **Verbinding maken**. Noteer de **id-scope,** **apparaat-id**en **primaire sleutel**. U moet deze waarden later in dit how-to artikel.
+1. Selecteer het apparaat dat u hebt gemaakt en selecteer vervolgens **verbinding maken**. Noteer het **id-bereik**, de **apparaat-id**en de **primaire sleutel**. U hebt deze waarden later nodig in dit artikel.
 
-    ![Gegevens over apparaatverbinding](media/howto-connect-devkit/device-connection-info.png)
+    ![Verbindings gegevens apparaat](media/howto-connect-devkit/device-connection-info.png)
 
 ## <a name="prepare-the-device"></a>Het apparaat voorbereiden
 
-1. Download de nieuwste [vooraf gebouwde Azure IoT Central Plug and Play (preview) firmware](https://github.com/Azure-Samples/mxchip-iot-devkit-pnp/raw/master/bin/iotc_devkit.bin) voor het DevKit-apparaat van GitHub.
+1. Down load de nieuwste [vooraf ontwikkelde Azure IoT Central Plug en Play (preview)-firmware](https://github.com/Azure-Samples/mxchip-iot-devkit-pnp/raw/master/bin/iotc_devkit.bin) voor het DevKit-apparaat van github.
 
-1. Sluit het DevKit-apparaat aan op uw ontwikkelingsmachine via een USB-kabel. In Windows wordt een venster met verkennergeopend op een station dat is toegewezen aan de opslag op het DevKit-apparaat. De schijf kan bijvoorbeeld **AZ3166 (D:)** worden genoemd.
+1. Verbind het DevKit-apparaat met de ontwikkel computer via een USB-kabel. In Windows wordt een bestand Verkenner-venster geopend op een station dat is toegewezen aan de opslag op het DevKit-apparaat. Het station kan bijvoorbeeld **AZ3166 (D:)** worden genoemd.
 
-1. Sleep het **bestand iotc_devkit.bin** naar het stationsvenster. Wanneer het kopiëren is voltooid, wordt het apparaat opnieuw opgestart met de nieuwe firmware.
+1. Sleep het **iotc_devkit. bin** -bestand naar het station-venster. Wanneer het kopiëren is voltooid, wordt het apparaat opnieuw opgestart met de nieuwe firmware.
 
     > [!NOTE]
-    > Als u fouten op het scherm ziet, zoals **Geen Wi-Fi,** is dit omdat de DevKit nog niet is verbonden met WiFi.
+    > Als er fouten op het scherm worden weer gegeven, zoals **geen Wi-Fi**, is dit omdat de DevKit nog niet is verbonden met WiFi.
 
-1. Houd op de DevKit **knop B**ingedrukt, druk op de **knop Opnieuw instellen** en laat vervolgens knop **B**los. Het apparaat bevindt zich nu in de toegangspuntmodus. Om dit te bevestigen, wordt op het scherm "IoT DevKit - AP" en het IP-adres van de configuratieportal weergegeven.
+1. Houd op de DevKit **knop b**, druk op de knop **Reset** en laat deze los en laat vervolgens de **knop b**los. Het apparaat bevindt zich nu in de modus toegangs punt. Als u wilt bevestigen, worden in het scherm ' IoT DevKit-AP ' en het IP-adres van de configuratie portal weer gegeven.
 
-1. Maak op uw computer of tablet verbinding met de wifi-netwerknaam die wordt weergegeven op het scherm van het apparaat. Het WiFi-netwerk begint met **AZ,** gevolgd door het MAC-adres. Wanneer u verbinding maakt met dit netwerk, hebt u geen toegang tot internet. Deze status wordt verwacht en u maakt slechts korte tijd verbinding met dit netwerk terwijl u het apparaat configureert.
+1. Op uw computer of Tablet maakt u verbinding met de Wi-Fi-netwerk naam die op het scherm van het apparaat wordt weer gegeven. Het WiFi-netwerk wordt gestart met **AZ,** gevolgd door het MAC-adres. Wanneer u verbinding met dit netwerk maakt, hebt u geen toegang tot internet. Deze status wordt verwacht en u kunt gedurende korte tijd alleen verbinding maken met dit netwerk tijdens het configureren van het apparaat.
 
-1. Open uw webbrowser en [http://192.168.0.1/](http://192.168.0.1/)navigeer naar . Op de volgende webpagina wordt het volgende weergegeven:
+1. Open uw webbrowser en ga naar [http://192.168.0.1/](http://192.168.0.1/). De volgende webpagina wordt weer gegeven:
 
-    ![Config UI](media/howto-connect-devkit/config-ui.png)
+    ![Gebruikers interface configureren](media/howto-connect-devkit/config-ui.png)
 
-    Voer op de webpagina het als:
+    Voer op de webpagina het volgende in:
 
     - De naam van uw WiFi-netwerk (SSID).
-    - Uw WiFi-netwerkwachtwoord.
-    - De verbindingsgegevens: voer de **apparaat-id,** **id-scope**en **SAS Primary Key** in waar u eerder een notitie van hebt gemaakt.
+    - Uw WiFi-netwerk wachtwoord.
+    - De verbindings Details: Voer de **apparaat-id**, het **id-bereik**en de **primaire SAS-sleutel** in die u eerder hebt genoteerd.
 
     > [!NOTE]
-    > Momenteel kan de IoT DevKit alleen verbinding maken met 2,4 GHz Wi-Fi, 5 GHz wordt niet ondersteund vanwege hardwarebeperkingen.
+    > Momenteel kan IoT DevKit alleen verbinding maken met 2,4 GHz Wi-Fi. 5 GHz wordt niet ondersteund als gevolg van hardwarebeperkingen.
 
-1. Kies **Apparaat configureren,** het DevKit-apparaat wordt opnieuw opgestart en voert de toepassing uit:
+1. Kies **apparaat configureren**, het DevKit-apparaat wordt opnieuw opgestart en de toepassing wordt uitgevoerd:
 
-    ![Gebruikersinterface opnieuw opstarten](media/howto-connect-devkit/reboot-ui.png)
+    ![Gebruikers interface opnieuw opstarten](media/howto-connect-devkit/reboot-ui.png)
 
-    Het DevKit-scherm geeft een bevestiging weer dat de toepassing wordt uitgevoerd:
+    In het scherm DevKit wordt een bevestiging weer gegeven dat de toepassing wordt uitgevoerd:
 
-    ![DevKit draait](media/howto-connect-devkit/devkit-running.png)
+    ![DevKit wordt uitgevoerd](media/howto-connect-devkit/devkit-running.png)
 
-De DevKit registreert eerst een nieuw apparaat in de IoT Central-toepassing en begint vervolgens met het verzenden van gegevens.
+De DevKit registreert eerst een nieuw apparaat in IoT Central toepassing en begint vervolgens met het verzenden van gegevens.
 
-## <a name="view-the-telemetry"></a>Bekijk de telemetrie
+## <a name="view-the-telemetry"></a>De telemetrie weer geven
 
 In deze stap bekijkt u de telemetrie in uw Azure IoT Central-toepassing.
 
-Selecteer in uw IoT Central-toepassing het tabblad **Apparaten** en selecteer het apparaat dat u hebt toegevoegd. Op het tabblad **Overzicht** ziet u de telemetrie van het DevKit-apparaat:
+Selecteer op het tabblad **apparaten** In uw IOT Central-toepassing het apparaat dat u hebt toegevoegd. Op het tabblad **overzicht** kunt u de telemetrie van het DevKit-apparaat zien:
 
-![Overzicht van IoT Central-apparaten](media/howto-connect-devkit/mxchip-overview-page.png)
+![Overzicht van IoT Central apparaat](media/howto-connect-devkit/mxchip-overview-page.png)
 
 ## <a name="review-the-code"></a>De code bekijken
 
-Als u de code wilt controleren of wijzigen en compileren, gaat u naar de [codevoorbeelden](https://docs.microsoft.com/samples/azure-samples/mxchip-iot-devkit-pnp/sample/).
+Ga naar de [code voorbeelden](https://docs.microsoft.com/samples/azure-samples/mxchip-iot-devkit-pnp/sample/)om de code te bekijken of te wijzigen en te compileren.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Als u een apparaatontwikkelaar bent, moeten enkele voorgestelde volgende stappen:
+Als u een ontwikkelaar van een apparaat bent, kunt u het volgende doen:
 
-- Lees meer over [apparaatconnectiviteit in Azure IoT Central](./concepts-get-connected.md)
-- Meer informatie over [het bewaken van apparaatconnectiviteit met Azure CLI](./howto-monitor-devices-azure-cli.md)
+- Meer informatie over [connectiviteit van apparaten in Azure IOT Central](./concepts-get-connected.md)
+- Meer informatie over het [controleren van de connectiviteit van apparaten met behulp van Azure cli](./howto-monitor-devices-azure-cli.md)

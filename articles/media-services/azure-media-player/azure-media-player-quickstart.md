@@ -1,20 +1,20 @@
 ---
-title: Snel start azure mediaspeler
-description: Meer informatie over de basisstappen voor het instellen van de Azure Media Player.
+title: Snelstartgids Azure Media Player
+description: Meer informatie over de basis stappen voor het instellen van de Azure Media Player.
 author: IngridAtMicrosoft
 ms.author: inhenkel
 ms.service: media-services
 ms.topic: quickstart
 ms.date: 04/20/2020
 ms.openlocfilehash: ac81832765f674e58ad6b3213238e9c68e04d2dc
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81726464"
 ---
-# <a name="azure-media-player-quickstart"></a>Snel start van Azure Media Player
-Azure Media Player is eenvoudig in te stellen. Het duurt slechts een paar minuten om basisweergave van media-inhoud van uw Azure Media Services-account te krijgen. In deze sectie worden de basisstappen beschreven zonder op de details in te gaan. De volgende secties geven u details over het instellen en configureren van Azure Media Player.  Voeg de volgende bijlagen toe aan de `<head>` van uw document:
+# <a name="azure-media-player-quickstart"></a>Quickstart voor Azure Media Player
+Azure Media Player eenvoudig in te stellen. Het duurt slechts enkele minuten om het eenvoudig afspelen van media-inhoud van uw Azure Media Services-account te verkrijgen. In deze sectie worden de basisstappen beschreven zonder op de details in te gaan. De volgende secties geven u specifieke informatie over het instellen en configureren van Azure Media Player.  Voeg de volgende bijlagen toe aan de `<head>` van uw document:
 
 ```html
     <link href="//amp.azure.net/libs/amp/latest/skins/amp-default/azuremediaplayer.min.css" rel="stylesheet">
@@ -22,11 +22,11 @@ Azure Media Player is eenvoudig in te stellen. Het duurt slechts een paar minute
 ```
 
 > [!IMPORTANT]
-> U **NOT** moet de `latest` versie NIET in productie gebruiken, omdat dit op aanvraag kan worden gewijzigd. Vervangen `latest` door een versie van Azure Media Player; bijvoorbeeld vervangen `latest` `1.0.0`door . Azure Media Player-versies kunnen vanaf [hier](azure-media-player-changelog.md)worden opgevraagd.
+> U moet **NOT** de `latest` versie niet gebruiken in productie, omdat dit kan worden gewijzigd op aanvraag. Vervangen `latest` door een versie van Azure Media Player; Vervang bijvoorbeeld door `latest` `1.0.0`. Van Azure Media Player-versies kan [hier](azure-media-player-changelog.md)een query worden uitgevoerd.
 
 ## <a name="use-the-video-element"></a>Het video-element gebruiken
 
-Vervolgens gewoon gebruik `<video>` maken van het element zoals `data-setup` je normaal zou doen, maar met een extra attribuut met alle opties. Deze opties kunnen een Azure Media Services-optie in een geldig JSON-object bevatten.
+Gebruik vervolgens gewoon het `<video>` element zoals u dat normaal zou doen, maar met een `data-setup` extra kenmerk met opties. Deze opties kunnen een wille keurige Azure Media Services-optie bevatten in een geldig JSON-object.
 
 ```html
     <video id="vid1" class="azuremediaplayer amp-default-skin" autoplay controls width="640" height="400" poster="poster.jpg" data-setup='{"nativeControlsForTouch": false}'>
@@ -37,7 +37,7 @@ Vervolgens gewoon gebruik `<video>` maken van het element zoals `data-setup` je 
     </video>
 ```
 
-Als u geen automatische installatie wilt gebruiken, `data-setup` u het kenmerk weglaten en een video-element handmatig initialiseren.
+Als u geen automatische installatie wilt gebruiken, kunt u het `data-setup` kenmerk weglaten en een video-element hand matig initialiseren.
 
 ```html
     var myPlayer = amp('vid1', { /* Options */
@@ -63,4 +63,4 @@ Als u geen automatische installatie wilt gebruiken, `data-setup` u het kenmerk w
 
 ## <a name="next-steps"></a>Volgende stappen ##
 
-- [Snel start azure mediaspeler](azure-media-player-quickstart.md)
+- [Snelstartgids Azure Media Player](azure-media-player-quickstart.md)

@@ -1,6 +1,6 @@
 ---
-title: Uw technische activa van uw IoT Edge-module voorbereiden - Azure Marketplace
-description: Lees meer over de technische en configuratievereisten waaraan de technische en configuratievereisten van uw IoT-module Edge-module moeten voldoen voordat u ze publiceren naar Azure Marketplace.
+title: De technische activa van de IoT Edge module voorbereiden-Azure Marketplace
+description: Meer informatie over de technische en configuratie vereisten uw Internet of Things (IoT)-rand module technische activa moeten voldoen voordat u deze naar Azure Marketplace kunt publiceren.
 author: anbene
 ms.author: mingshen
 ms.service: marketplace
@@ -8,60 +8,60 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/03/2020
 ms.openlocfilehash: 2c0cd47acbd4639ff5eff2af78dcebdfc26270a7
-ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81730703"
 ---
-# <a name="prepare-your-iot-edge-module-technical-assets"></a>Uw technische activa van uw IoT Edge-module voorbereiden
+# <a name="prepare-your-iot-edge-module-technical-assets"></a>De technische activa van uw IoT Edge module voorbereiden
 
 > [!IMPORTANT]
-> We verplaatsen het beheer van uw IoT Edge-moduleaanbiedingen van Cloud Partner Portal naar Partner Center. Volg de instructies in De technische [activa van uw IoT Edge-module](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/iot-edge-module/cpp-create-technical-assets) voor Cloud Partner Portal om uw aanbiedingen te beheren totdat uw aanbiedingen zijn gemigreerd.
+> We gaan het beheer van uw IoT Edge module aanbiedingen van Cloud Partner-portal naar het partner centrum verplaatsen. Totdat uw aanbiedingen zijn gemigreerd, volgt u de instructies in [de technische activa van uw IOT Edge-module voorbereiden](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/iot-edge-module/cpp-create-technical-assets) voor Cloud Partner-Portal voor het beheren van uw aanbiedingen.
 
-In dit artikel worden de vereisten beschreven waaraan de technische elementen van uw Internet of Things (IoT)Edge-module moeten voldoen voordat ze in Azure Marketplace worden gepubliceerd.
+In dit artikel worden de vereisten beschreven waaraan de technische activa van uw Internet of Things (IoT) Edge-module moeten voldoen voordat ze worden gepubliceerd in azure Marketplace.
 
 ## <a name="get-started"></a>Aan de slag
 
-Een IoT Edge-module is een Docker-compatibele container die wordt uitgevoerd op een IoT Edge-apparaat.
+Een IoT Edge module is een docker-compatibele container die wordt uitgevoerd op een IoT Edge apparaat.
 
-- Zie [Azure IoT Edge-modules begrijpen](https://docs.microsoft.com/azure/iot-edge/iot-edge-modules)voor meer informatie over IoT Edge-modules.
-- Zie [Uw eigen IoT Edge-modules ontwikkelen](https://docs.microsoft.com/azure/iot-edge/module-development)om aan de slag te gaan met de ontwikkeling van uw IoT Edge-module.
+- Zie [Azure IOT Edge modules begrijpen](https://docs.microsoft.com/azure/iot-edge/iot-edge-modules)voor meer informatie over IOT Edge-modules.
+- Zie [uw eigen IOT Edge modules ontwikkelen](https://docs.microsoft.com/azure/iot-edge/module-development)om aan de slag te gaan met de ontwikkeling van uw IOT Edge-module.
 
 ## <a name="technical-requirements"></a>Technische vereisten
 
-Uw IoT Edge-module moet voldoen aan de volgende technische vereisten om te worden gecertificeerd en gepubliceerd in Azure Marketplace.
+Uw IoT Edge-module moet voldoen aan de volgende technische vereisten om te worden gecertificeerd en gepubliceerd in azure Marketplace.
 
 ### <a name="platform-support"></a>Platformondersteuning
 
-Uw IoT Edge-module moet een van de volgende platformopties ondersteunen:
+De module IoT Edge moet een van de volgende platform opties ondersteunen:
 
-#### <a name="tier-1-platforms-supported-by-iot-edge"></a>Tier 1-platforms ondersteund door IoT Edge
+#### <a name="tier-1-platforms-supported-by-iot-edge"></a>Platforms van laag 1 die door IoT Edge worden ondersteund
 
-Uw module moet alle Tier 1-platforms ondersteunen die worden ondersteund door IoT Edge (zoals opgenomen in [Azure IoT Edge-ondersteuning).](https://docs.microsoft.com/azure/iot-edge/support) We raden deze optie aan omdat het een betere klantervaring biedt. Modules die aan deze criteria voldoen, worden tentoongesteld. Een module die deze platformoptie gebruikt, moet:
+Uw module moet ondersteuning bieden voor alle platforms van laag 1 die door IoT Edge worden ondersteund (zoals vastgelegd in [Azure IOT EDGE-ondersteuning](https://docs.microsoft.com/azure/iot-edge/support)). We raden u aan deze optie te kiezen omdat deze een betere klant ervaring biedt. De modules die aan deze criteria voldoen, worden weer gepresenteerd. Een module die gebruikmaakt van deze platform optie moet:
 
-- Geef een nieuwste tag en een versietag (bijvoorbeeld 1.0.1) die manifesttags zijn die zijn gebouwd met de [GitHub Manifest-tool.](https://github.com/estesp/manifest-tool)
+- Geef een van de nieuwste Tags en een versie label (bijvoorbeeld 1.0.1) op die zijn gemaakt met het [manifest hulp programma github](https://github.com/estesp/manifest-tool).
 
-- Gebruik het tabblad Aanbiedingsvermelding in [Partnercentrum](https://partner.microsoft.com/dashboard/commercial-marketplace) om een koppeling toe te voegen onder de sectie **Nuttige koppelingen** naar de [Azure IoT Edge Certified-apparaatcatalogus](https://catalog.azureiotsolutions.com/alldevices?filters={%2218%22:[%221%22]}/).
+- Gebruik het tabblad aanbiedings vermelding in het [partner centrum](https://partner.microsoft.com/dashboard/commercial-marketplace) om een koppeling toe te voegen aan de sectie **handige koppelingen** naar de [Azure IOT Edge gecertificeerde-stuurprogrammacatalogus](https://catalog.azureiotsolutions.com/alldevices?filters={%2218%22:[%221%22]}/).
 
-#### <a name="a-subset-of-tier-1-platforms-supported-by-iot-edge"></a>Een subset van Tier 1-platforms die worden ondersteund door IoT Edge
+#### <a name="a-subset-of-tier-1-platforms-supported-by-iot-edge"></a>Een subset van laag 1-platforms die door IoT Edge worden ondersteund
 
-Uw module moet een subset (ten minste één) tier 1-platforms ondersteunen die worden ondersteund door IoT Edge (zoals opgenomen in [Azure IoT Edge-ondersteuning).](https://docs.microsoft.com/azure/iot-edge/support) Een module die deze platformoptie gebruikt, moet:
+Uw module moet ondersteuning bieden voor een subset (ten minste één) van laag 1-platformen die door IoT Edge worden ondersteund (zoals vastgelegd in [Azure IOT EDGE-ondersteuning](https://docs.microsoft.com/azure/iot-edge/support)). Een module die gebruikmaakt van deze platform optie moet:
 
-- Geef een nieuwste tag en een versietag (bijvoorbeeld 1.0.1) die manifesttags zijn die zijn gebouwd met de [GitHub-manifesttool](https://github.com/estesp/manifest-tool) als er meer dan één platform wordt ondersteund. Manifesttags zijn alleen optioneel wanneer één platform wordt ondersteund.
-- Gebruik het tabblad Aanbiedingsvermelding in [Partnercentrum](https://partner.microsoft.com/dashboard/commercial-marketplace) om een koppeling onder de sectie **Nuttige koppelingen** toe te voegen aan ten minste één IoT Edge-apparaat uit de [Azure IoT Edge Certified-apparaatcatalogus.](https://catalog.azureiotsolutions.com/)
+- Geef een laatste tag en een versie label (bijvoorbeeld 1.0.1) op die zijn gemaakt met het GitHub [-manifest hulp programma](https://github.com/estesp/manifest-tool) als meer dan één platform wordt ondersteund. Manifest Tags zijn alleen optioneel wanneer één platform wordt ondersteund.
+- Gebruik het tabblad aanbiedings vermelding in het [partner centrum](https://partner.microsoft.com/dashboard/commercial-marketplace) om een koppeling toe te voegen onder de sectie **handige koppelingen** naar ten minste één IOT edge apparaat uit de [catalogus met Azure IOT Edge-gecertificeerde apparaten](https://catalog.azureiotsolutions.com/).
 
-:::image type="content" source="media/iot-edge-module-technical-assets-offer-listing.png" alt-text="Dit is een afbeelding van de sectie Aanbiedingsaanbieding binnen partnercentrum":::
+:::image type="content" source="media/iot-edge-module-technical-assets-offer-listing.png" alt-text="Dit is een afbeelding van de aanbiedings vermelding in het partner centrum":::
 
-### <a name="device-dimensions"></a>Apparaatafmetingen
+### <a name="device-dimensions"></a>Afmetingen van apparaat
 
-De afmetingen van de IoT Edge-module (zoals CPU, RAM, opslag en GPU) op gerichte IoT Edge-apparaten moeten aan de volgende vereisten voldoen:
+IoT Edge module dimensies (zoals CPU, RAM, opslag en GPU) op doel IoT Edge apparaten moeten voldoen aan de volgende vereisten:
 
-- De module moet werken met ten minste één IoT Edge-apparaat uit de [Azure IoT Edge Certified-apparaatcatalogus.](https://catalog.azureiotsolutions.com/)
+- De module moet samen werken met ten minste één IoT Edge apparaat uit de [catalogus met Azure IOT Edge-gecertificeerde apparaten](https://catalog.azureiotsolutions.com/).
 
-- De minimale hardwarevereisten moeten worden gedocumenteerd als de laatste alinea in de beschrijving van de aanbieding (onder het tabblad Aanbiedingsvermelding in [Partnercentrum](https://partner.microsoft.com/dashboard/commercial-marketplace)). Optioneel u ook de aanbevolen hardwarevereisten weergeven als deze aanzienlijk verschillen. Voeg bijvoorbeeld de volgende sectie toe aan het einde van de aanbiedingsbeschrijving:
+- De minimale hardwarevereisten moeten worden gedocumenteerd als de laatste alinea in de beschrijving van de aanbieding (op het tabblad aanbiedings vermelding in het [partner centrum](https://partner.microsoft.com/dashboard/commercial-marketplace)). U kunt eventueel ook de aanbevolen hardwarevereisten weer geven als ze aanzienlijk verschillen. Voeg bijvoorbeeld de volgende sectie toe aan het einde van de beschrijving van uw aanbieding:
 
-Kopieer deze HTML-tekst of gebruik de bijbehorende rich text-functies in het bewerkingsvenster.
+Kopieer deze HTML-tekst of gebruik de bijbehorende RTF-functies in het bewerkings venster.
 
 ```html
 <p><u>Minimum hardware requirements:</u> Linux x64 and arm32 OS, 1GB of RAM, 500 Mb of storage</p>
@@ -69,80 +69,80 @@ Kopieer deze HTML-tekst of gebruik de bijbehorende rich text-functies in het bew
 
 ### <a name="configuration"></a>Configuratie
 
-Uw module moet standaardconfiguratie-instellingen bevatten om de implementatie naar een IoT Edge-apparaat zo eenvoudig mogelijk te maken. Deze informatie kan worden verstrekt op de pagina **Technische configuratie** voor het plan in [partnercentrum.](https://partner.microsoft.com/dashboard/commercial-marketplace) De container kan ook de IoT Edge Module SDK bevatten om communicatie met de edge Hub en IoT Hub mogelijk te maken.
+De module moet standaard configuratie-instellingen bevatten om de implementatie zo eenvoudig mogelijk op een IoT Edge apparaat te kunnen uitvoeren. Deze informatie kan worden verstrekt op de pagina **technische configuratie** voor het plan in [Partner Center](https://partner.microsoft.com/dashboard/commercial-marketplace). De container kan ook de SDK van IoT Edge module bevatten om communicatie met de Edge hub en IoT Hub in te scha kelen.
 
 #### <a name="default-configuration"></a>Standaardconfiguratie
 
-IoT Edge-modules moeten kunnen beginnen met de standaardinstellingen op de pagina **Technische configuratie** voor het plan in [partnercentrum.](https://partner.microsoft.com/dashboard/commercial-marketplace) De volgende standaardinstellingen zijn beschikbaar:
+IoT Edge modules moeten kunnen beginnen met de standaard instellingen op de pagina **technische configuratie** voor het plan in [Partner Center](https://partner.microsoft.com/dashboard/commercial-marketplace). De volgende standaard instellingen zijn beschikbaar:
 
-- **Standaardroutes**
-- Standaardmodule **dubbele gewenste eigenschappen**
-- **Standaardomgevingsvariabelen**
-- Opties **voor het maken van standaardcontainers**
+- Standaard **routes**
+- Standaard **module dubbele gewenste eigenschappen**
+- Standaard **omgevings variabelen**
+- Standaard **Opties** voor het maken van een container
 
-In een scenario waarin een parameter die vereist is voor een standaardwaarde geen zin heeft (bijvoorbeeld het IP-adres van de server van een klant), voegt u een parameter toe als standaardwaarde. Deze waarde is hoofdletters en tussen haakjes. In dit voorbeeld stelt u de volgende standaardomgevingsvariabele in:
+In een scenario waarbij een para meter die is vereist voor een standaard waarde niet logisch is (bijvoorbeeld het IP-adres van de server van een klant), voegt u een para meter toe als de standaard waarde. Deze waarde is hoofd letters en tussen haakjes. Voor dit voor beeld stelt u de volgende standaard omgevings variabele in:
 
 ```
 ServerIPAddress = <MY_SERVER_IP_ADDRESS>
 ```
 
-#### <a name="configuration-documentation"></a>Configuratiedocumentatie
+#### <a name="configuration-documentation"></a>Configuratie documentatie
 
-Alle configuratie-instellingen van een IoT Edge-module moeten duidelijk worden gedocumenteerd. U moet bijvoorbeeld documenteren hoe u de routes, de gewenste eigenschappen, omgevingsvariabelen, createOptions enzovoort gebruikt. U moet een link naar uw documentatie opgeven of deze onderdeel maken van uw aanbieding of een beschrijving van uw abonnement. U deze informatie verstrekken op de pagina **Aanbiedingsaanbieding** en **Aanbieding plannen** in [partnercentrum.](https://partner.microsoft.com/dashboard/commercial-marketplace)
+Alle configuratie-instellingen van een IoT Edge module moeten duidelijk zijn gedocumenteerd. U moet bijvoorbeeld documenteren hoe de routes, dubbele gewenste eigenschappen, omgevings variabelen, createOptions, enzovoort, worden gebruikt. U moet een koppeling naar uw documentatie opgeven of een deel van uw aanbieding of plan beschrijving maken. U kunt deze informatie opgeven **op de pagina aanbieding** en **aanbieding plannen** in [Partner Center](https://partner.microsoft.com/dashboard/commercial-marketplace).
 
-#### <a name="tags-and-versioning"></a>Tags en versiebeheer
+#### <a name="tags-and-versioning"></a>Tags en versie beheer
 
-Klanten moeten eenvoudig een module kunnen implementeren en automatisch updates van de marketplace kunnen ontvangen (in een ontwikkelaarsscenario). Ze moeten ook in staat zijn om een exacte versie die ze hebben getest (in een productiescenario) te gebruiken en te bevriezen.
+Klanten moeten eenvoudig een module kunnen implementeren en automatisch updates ophalen van de Marketplace (in een scenario voor ontwikkel aars). Ze moeten ook een exacte versie kunnen gebruiken en blok keren die ze hebben getest (in een productie scenario).
 
-Om aan deze verwachtingen van klanten te voldoen en op de markt te worden gepubliceerd, moeten IoT Edge-modules voldoen aan de volgende vereisten
+IoT Edge modules moeten voldoen aan de volgende vereisten om aan deze klant verwachtingen te voldoen en op Marketplace te worden gepubliceerd
 
-- Voeg een duidelijke nieuwste tag toe die verwijst naar de nieuwste versie op alle ondersteunde platforms.
-- Maak versietags in het formulier X.Y.Z, waarbij X, Y en Z gehele getallen zijn.
-- Voeg een tag met "versie" toe, zoals 1.0.1, die verwijst naar een specifieke versie op alle ondersteunde platforms.
-- Werk geen 'versie'-tags bij, zoals 1.0.1, omdat ze niet mogen worden gewijzigd.
+- Neem een manifest van de meest recente code op die naar de meest recente versie verwijst op alle ondersteunde platforms.
+- Maak versie Tags in de vorm X. Y. Z, waarbij X, Y en Z gehele getallen zijn.
+- Neem een version-tag op, zoals 1.0.1, die verwijst naar een specifieke versie op alle ondersteunde platforms.
+- U kunt geen versie Tags bijwerken, zoals 1.0.1, omdat ze niet mogen worden gewijzigd.
 
 > [!NOTE]
-> Optioneel kan versiebeheer tags voor 'rollende versies' bevatten, zoals 2.0 en 1.0. Dit ondersteunt het tegelijkertijd onderhouden van meerdere grote versies.
+> Versie beheer kan optioneel de Tags "roulerende versie" bevatten, zoals 2,0 en 1,0. Dit biedt ondersteuning voor het tegelijkertijd onderhouden van meerdere primaire versies.
 
 ### <a name="telemetry"></a>Telemetrie
 
-Modules die de IoT Module SDK gebruiken, moeten de unieke module-id instellen op PublisherId.OfferId.SkuId voor telemetriedoeleinden. Met een unieke id kan Azure Marketplace het aantal module-exemplaren identificeren dat wordt uitgevoerd.
+Modules die gebruikmaken van de IoT-module-SDK, moeten de unieke module-id instellen op PublisherId. OfferId. SkuId voor telemetrie-doel einden. Een unieke id helpt Azure Marketplace bij het bepalen van het aantal module-exemplaren dat wordt uitgevoerd.
 
-Gebruik een van de volgende methoden uit de SDK's van de IoT-module om de ProductInfo op deze id in te stellen:
+Gebruik een van de volgende methoden van de IoT-module Sdk's om de product info in te stellen op deze id:
 
 - [C#](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.client.deviceclient.productinfo?view=azure-dotnet#Microsoft_Azure_Devices_Client_DeviceClient_ProductInfo)
-- [C](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/Iothub_sdk_options.md)
+- [G](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/Iothub_sdk_options.md)
 - [Python](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/Iothub_sdk_options.md)
 - [Java](https://docs.microsoft.com/java/api/com.microsoft.azure.sdk.iot.device.productinfo?view=azure-java-stable)
 
-Voor modules die geen gebruik maken van de IoT Module SDK, zijn minder nauwkeurige inzichten beschikbaar via Partner Center, zoals het aantal downloads.
+Voor modules die niet gebruikmaken van de IoT-module-SDK, is minder nauw keurige inzichten beschikbaar via partner centrum, zoals het aantal down loads.
 
 ### <a name="security"></a>Beveiliging
 
-IoT Edge-modules moeten [bevoorrechte modules](https://docs.docker.com/engine/reference/run/#runtime-privilege-and-linux-capabilities)vermijden. In plaats daarvan vragen om de minst bevoorrechte toegang tot de host mogelijk.
+IoT Edge modules moeten [geprivilegieerde modules](https://docs.docker.com/engine/reference/run/#runtime-privilege-and-linux-capabilities)vermijden. Vraag in plaats daarvan de minst bevoegde toegang tot de host mogelijk te stellen.
 
 ### <a name="module-iot-sdk"></a>Module IoT SDK
 
-Het opnemen van de IoT Module SDK is geen voorwaarde voor certificering. Het opnemen van de IoT Module SDK kan echter een betere gebruikerservaring bieden. Bijvoorbeeld om routering te ondersteunen of berichten naar de cloud te verzenden.
+Met inbegrip van de IoT-module SDK is er geen vereiste voor certificering. Met inbegrip van de IoT-module-SDK kunt u echter betere gebruikers ervaring bieden. Bijvoorbeeld voor het ondersteunen van route ring of het verzenden van berichten naar de Cloud.
 
-De IoT Module SDK is vereist om telemetriegegevens te krijgen over het aantal module-exemplaren dat wordt uitgevoerd.
+De IoT-module SDK is vereist voor het ophalen van telemetriegegevens over het aantal module-exemplaren dat wordt uitgevoerd.
 
-## <a name="recertification-process"></a>Hercertificeringsproces
+## <a name="recertification-process"></a>Opnieuw certificerings proces
 
-Partners worden op de hoogte gesteld wanneer er een wijziging is die van invloed is op hun modules, zoals:
+Partners worden op de hoogte gesteld wanneer er een belang rijke wijziging is die van invloed is op de modules, zoals:
 
-- Tier 1 OS/arch-ondersteuningsmatrix ondersteund door IoT Edge
-- SDK voor IoT-modules
+- Ondersteunings matrix voor het besturings systeem/de boog op laag 1 wordt ondersteund door IoT Edge
+- IoT-module-SDK
 - IoT Edge-runtime
-- Richtlijnen voor certificering van IoT Edge-modules
+- Richt lijnen voor de certificering van IoT Edge-modules
 
-Partners moeten hun aanbiedingen bijwerken en opnieuw certificeren door ze opnieuw te publiceren in [het Partnercenter.](https://partner.microsoft.com/dashboard/commercial-marketplace)
+Partners moeten hun aanbiedingen bijwerken en opnieuw certificeren door ze opnieuw te publiceren in het [partner centrum](https://partner.microsoft.com/dashboard/commercial-marketplace).
 
-Uw aanbieding wordt ook opnieuw gecertificeerd als u deze bijwerkt, zoals het toevoegen van nieuwe afbeeldingstags.
+Uw aanbieding wordt ook opnieuw gecertificeerd als u deze bijwerkt, bijvoorbeeld door nieuwe afbeeldings tags toe te voegen.
 
-## <a name="host-module-in-azure-container-registry"></a>Hostmodule in Azure Container Registry
+## <a name="host-module-in-azure-container-registry"></a>Host-module in Azure Container Registry
 
-Als u uw IoT Edge-module wilt uploaden naar Azure Marketplace, moet u deze eerst hosten in een [Azure Container Registry](https://azure.microsoft.com/services/container-registry/) (ACR). De module moet alle tags bevatten die u wilt publiceren, inclusief de afbeeldingstags waarnaar wordt verwezen door een manifesttag. Zie de zelfstudie [Een Azure-containerregister maken en een containerafbeelding indrukken](https://docs.microsoft.com/azure/container-instances/container-instances-tutorial-prepare-acr)voor meer informatie.
+Als u uw IoT Edge-module naar Azure Marketplace wilt uploaden, moet u deze eerst hosten in een [Azure container Registry](https://azure.microsoft.com/services/container-registry/) (ACR). De module moet alle labels bevatten die u wilt publiceren, met inbegrip van de afbeeldings Tags waarnaar wordt verwezen door een manifest-tag. Zie voor meer informatie de zelf studie [een Azure container Registry maken en een container installatie kopie pushen](https://docs.microsoft.com/azure/container-instances/container-instances-tutorial-prepare-acr).
 
 ## <a name="next-steps"></a>Volgende stappen
 

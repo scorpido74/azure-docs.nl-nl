@@ -1,29 +1,29 @@
 ---
-title: Java-toepassingen op locatie uitvoeren - Azure Monitor Application Insights
-description: Toepassingsprestatiebewaking voor Java-toepassingen die op locatie worden uitgevoerd zonder de app in te voeren. Gedistribueerde traceer- en toepassingskaart.
+title: Controleren van Java-toepassingen die on-premises worden uitgevoerd-Azure Monitor Application Insights
+description: Bewaking van toepassings prestaties voor Java-toepassingen die on-premises worden uitgevoerd zonder de app te instrumenteren. Gedistribueerde tracering en toepassings toewijzing.
 ms.topic: conceptual
 author: MS-jgol
 ms.author: jgol
 ms.date: 04/16/2020
 ms.openlocfilehash: ea604a4e0f11db7146e6e3c11b47d5687abf571e
-ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81733646"
 ---
-# <a name="java-codeless-application-monitoring-on-premises---azure-monitor-application-insights---public-preview"></a>On-premises bewaking van Java-codeloze toepassingen - Azure Monitor Application Insights - openbare preview
+# <a name="java-codeless-application-monitoring-on-premises---azure-monitor-application-insights---public-preview"></a>Bewaking van Java-toepassingen op locatie on-premises-Azure Monitor Application Insights-open bare preview
 
-Java codeless applicatie monitoring is alles over eenvoud - er zijn geen code wijzigingen, de Java-agent kan worden ingeschakeld door middel van slechts een paar wijzigingen in de configuratie.
+Bewaking van Java-toepassingen is heel eenvoudig: er zijn geen code wijzigingen, de Java-Agent kan worden ingeschakeld via slechts een paar configuratie wijzigingen.
 
 ## <a name="overview"></a>Overzicht
 
-Zodra de Java-agent is ingeschakeld, verzamelt het automatisch een veelheid aan aanvragen, afhankelijkheden, logboeken en statistieken van de meest gebruikte bibliotheken en frameworks.
+Zodra de Java-Agent is ingeschakeld, worden er automatisch een groot aantal aanvragen, afhankelijkheden, logboeken en metrische gegevens van de meest gebruikte bibliotheken en frameworks verzameld.
 
-Volg [de gedetailleerde instructies](https://docs.microsoft.com/azure/azure-monitor/app/java-in-process-agent) voor alle omgevingen, ook on-premises.
+Volg [de gedetailleerde instructies](https://docs.microsoft.com/azure/azure-monitor/app/java-in-process-agent) voor alle omgevingen, waaronder on-premises.
 
  ## <a name="next-steps"></a>Volgende stappen
 
-* [Download de instructies om de Java-agent te downloaden](https://docs.microsoft.com/azure/azure-monitor/app/java-in-process-agent)
-* [Uw JVM-args configureren](https://github.com/microsoft/ApplicationInsights-Java/wiki/3.0-Preview:-Tips-for-updating-your-JVM-args)
+* [De instructies voor het downloaden van de Java-Agent ophalen](https://docs.microsoft.com/azure/azure-monitor/app/java-in-process-agent)
+* [Uw JVM-argumenten configureren](https://github.com/microsoft/ApplicationInsights-Java/wiki/3.0-Preview:-Tips-for-updating-your-JVM-args)
 * [De configuratie aanpassen](https://github.com/microsoft/ApplicationInsights-Java/wiki/3.0-Preview:-Configuration-Options)
