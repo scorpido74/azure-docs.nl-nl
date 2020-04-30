@@ -7,14 +7,14 @@ ms.service: sql-database
 ms.subservice: service
 ms.devlang: ''
 ms.topic: conceptual
-ms.date: 04/14/2020
+ms.date: 04/28/2020
 ms.author: sstein
-ms.openlocfilehash: 27a62223970b0f697465ce9aa050f3fccbcae464
-ms.sourcegitcommit: 354a302d67a499c36c11cca99cce79a257fe44b0
+ms.openlocfilehash: c3dc5b26435f6d876e5eaea943e359055018913b
+ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/23/2020
-ms.locfileid: "82106420"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82201309"
 ---
 # <a name="sql-database-release-notes"></a>Opmerkingen bij de release SQL Database
 
@@ -49,7 +49,7 @@ Dit artikel bevat een overzicht van SQL Database functies die momenteel beschikb
 | <a href="https://aka.ms/managed-instance-aadlogins">Azure AD server-principals op exemplaar niveau (aanmeldingen)</a> | Aanmeldingen op server niveau maken met behulp van de instructie voor het <a href="https://docs.microsoft.com/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current">maken van een aanmelding vanuit een externe provider</a> . |
 | [Transactionele replicatie](sql-database-managed-instance-transactional-replication.md) | Repliceer de wijzigingen van uw tabellen in andere data bases die zijn geplaatst in beheerde exemplaren, afzonderlijke data bases of SQL Server exemplaren, of werk uw tabellen bij wanneer sommige rijen worden gewijzigd in andere beheerde exemplaren of SQL Server exemplaar. Zie [Configure Replication in a Azure SQL database Managed instance data base](replication-with-sql-database-managed-instance.md)(Engelstalig) voor meer informatie. |
 | Detectie van bedreigingen |Zie [detectie van dreigingen configureren in Azure SQL database Managed instance](sql-database-managed-instance-threat-detection.md)voor meer informatie.|
-| Langetermijnretentie van back-ups | Zie voor meer informatie [lange termijn back-up van Bewaar periode configureren in Azure SQL database Managed instance](sql-database-managed-instance-long-term-backup-retention-configure.md). | 
+| Langetermijnretentie van back-ups | Zie voor meer informatie [lange termijn back-up van Bewaar periode configureren in Azure SQL database Managed instance](sql-database-managed-instance-long-term-backup-retention-configure.md), dat momenteel een beperkte open bare preview is. | 
 
 ---
 
@@ -69,7 +69,7 @@ De volgende functies zijn ingeschakeld in het implementatie model voor beheerde 
   - Ondersteuning voor <a href="https://docs.microsoft.com/sharepoint/administration/deploy-azure-sql-managed-instance-with-sharepoint-servers-2016-2019"> SharePoint 2016 en SharePoint 2019 </a> en <a href="https://docs.microsoft.com/business-applications-release-notes/october18/dynamics365-business-central/support-for-azure-sql-database-managed-instance"> Dynamics 365 Business Central </a>
   - Maak instanties met <a href="https://aka.ms/managed-instance-collation">sorteringen op server niveau</a> en <a href="https://azure.microsoft.com/updates/managed-instance-time-zone-ga/">tijd zone</a> van uw keuze.
   - Beheerde exemplaren zijn nu beveiligd met <a href="sql-database-managed-instance-management-endpoint-verify-built-in-firewall.md">ingebouwde firewall</a>.
-  - Configureer instanties voor het gebruik van [open bare eind punten](sql-database-managed-instance-public-endpoint-configure.md), een [proxy onderdrukkings](sql-database-connectivity-architecture.md#connection-policy) verbinding om betere netwerk prestaties te krijgen, <a href="https://aka.ms/four-cores-sql-mi-update">4 vCores op GEN5 hardware genereren</a> of <a href="https://aka.ms/managed-instance-configurable-backup-retention">het bewaren van back-ups te configureren tot 35 dagen voor herstel naar een</a> bepaald tijdstip. Lange termijn retentie van back-ups (Maxi maal 10 jaar) is nog niet ingeschakeld, zodat u <a href="https://docs.microsoft.com/sql/relational-databases/backup-restore/copy-only-backups-sql-server">alleen back-ups met alleen-kopiëren</a> als alternatief kunt gebruiken.
+  - Configureer instanties voor het gebruik van [open bare eind punten](sql-database-managed-instance-public-endpoint-configure.md), een [proxy onderdrukkings](sql-database-connectivity-architecture.md#connection-policy) verbinding om betere netwerk prestaties te krijgen, <a href="https://aka.ms/four-cores-sql-mi-update">4 vCores op GEN5 hardware genereren</a> of <a href="https://aka.ms/managed-instance-configurable-backup-retention">het bewaren van back-ups te configureren tot 35 dagen voor herstel naar een</a> bepaald tijdstip. [Lange termijn retentie van back-ups](sql-database-long-term-retention.md#managed-instance-support) (Maxi maal 10 jaar) is momenteel een beperkte open bare preview.  
   - Dankzij nieuwe functies kunt u <a href="https://medium.com/@jocapc/geo-restore-your-databases-on-azure-sql-instances-1451480e90fa">uw data base met behulp van Power shell naar een ander Data Center herstellen, de</a> [naam van de data base wijzigen](https://azure.microsoft.com/updates/azure-sql-database-managed-instance-database-rename-is-supported/), het [virtuele cluster verwijderen](sql-database-managed-instance-delete-virtual-cluster.md).
   - Met de nieuwe [rol Inzender](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#sql-managed-instance-contributor) voor ingebouwde instanties kunt u SoD-naleving met beveiligings principes en naleving van de bedrijfs normen.
   - Het beheerde exemplaar is beschikbaar in de volgende Azure Government regio's tot GA (US Gov-Texas, US Gov-Arizona), evenals in China-noord 2 en China-oost 2. Het is ook beschikbaar in de volgende open bare regio's: Australië-centraal, Australië-centraal 2, Brazilië-zuid, Frankrijk-zuid, UAE-centraal, UAE-noord, Zuid-Afrika-noord, Zuid-Afrika-west.
@@ -81,7 +81,7 @@ De volgende functies zijn ingeschakeld in het implementatie model voor beheerde 
 |[Machtigingen voor de resource groep zijn niet toegepast op een beheerd exemplaar](#permissions-on-resource-group-not-applied-to-managed-instance)|Feb 2020|Heeft tijdelijke oplossing||
 |[Beperking van hand matige failover via de portal voor failover-groepen](#limitation-of-manual-failover-via-portal-for-failover-groups)|Jan 2020|Heeft tijdelijke oplossing||
 |[SQL-Agent rollen hebben expliciete uitvoerings machtigingen nodig voor niet-sysadmin-aanmeldingen](#in-memory-oltp-memory-limits-are-not-applied)|Dec 2019|Heeft tijdelijke oplossing||
-|[SQL-Agent taken kunnen worden onderbroken door agent proces opnieuw te starten](#sql-agent-jobs-can-be-interrupted-by-agent-process-restart)|Dec 2019|Geen tijdelijke oplossing|Mrt 2020|
+|[SQL-Agent taken kunnen worden onderbroken door agent proces opnieuw te starten](#sql-agent-jobs-can-be-interrupted-by-agent-process-restart)|Dec 2019|Opgelost|Mrt 2020|
 |[AAD-aanmeldingen en-gebruikers worden niet ondersteund in SSDT](#aad-logins-and-users-are-not-supported-in-ssdt)|Nov 2019|Geen tijdelijke oplossing||
 |[In-Memory OLTP-geheugen limieten worden niet toegepast](#in-memory-oltp-memory-limits-are-not-applied)|Okt 2019|Heeft tijdelijke oplossing||
 |[Verkeerde fout geretourneerd tijdens het verwijderen van een bestand dat niet leeg is](#wrong-error-returned-while-trying-to-remove-a-file-that-is-not-empty)|Okt 2019|Heeft tijdelijke oplossing||
@@ -96,7 +96,7 @@ De volgende functies zijn ingeschakeld in het implementatie model voor beheerde 
 |[Opslag ruimte overschrijden met kleine database bestanden](#exceeding-storage-space-with-small-database-files)||Heeft tijdelijke oplossing||
 |[GUID-waarden die worden weer gegeven in plaats van database namen](#guid-values-shown-instead-of-database-names)||Heeft tijdelijke oplossing||
 |[Fouten logboeken zijn niet persistent gemaakt](#error-logs-arent-persisted)||Geen tijdelijke oplossing||
-|[Het transactie bereik van twee data bases binnen hetzelfde exemplaar wordt niet ondersteund](#transaction-scope-on-two-databases-within-the-same-instance-isnt-supported)||Heeft tijdelijke oplossing|Maart 2020|
+|[Het transactie bereik van twee data bases binnen hetzelfde exemplaar wordt niet ondersteund](#transaction-scope-on-two-databases-within-the-same-instance-isnt-supported)||Heeft tijdelijke oplossing|Mrt 2020|
 |[CLR-modules en gekoppelde servers kunnen soms niet verwijzen naar een lokaal IP-adres](#clr-modules-and-linked-servers-sometimes-cant-reference-a-local-ip-address)||Heeft tijdelijke oplossing||
 |Consistentie van de data base is niet geverifieerd met DBCC CHECKDB na het herstellen van de data base van Azure Blob Storage.||Opgelost|Nov 2019|
 |Het terugzetten van een tijdgebonden data base van Bedrijfskritiek laag naar Algemeen laag mislukt als de bron database in-memory OLTP-objecten bevat.||Opgelost|Okt 2019|
@@ -133,7 +133,7 @@ GRANT EXECUTE ON master.dbo.xp_sqlagent_notify TO [login_name]
 
 ### <a name="sql-agent-jobs-can-be-interrupted-by-agent-process-restart"></a>SQL-Agent taken kunnen worden onderbroken door agent proces opnieuw te starten
 
-Elke keer dat de taak wordt gestart, maakt SQL Agent een nieuwe sessie, waardoor het geheugen verbruik geleidelijk toeneemt. Om te voor komen dat de interne geheugen limiet voor het uitvoeren van geplande taken wordt geblokkeerd, wordt het agent proces opnieuw opgestart zodra het geheugen verbruik de drempel waarde bereikt. Dit kan leiden tot een onderbreking van de uitvoering van taken die worden uitgevoerd op het moment dat de computer opnieuw wordt opgestart.
+**(Opgelost in maart 2020)** Elke keer dat de taak wordt gestart, maakt SQL Agent een nieuwe sessie, waardoor het geheugen verbruik geleidelijk toeneemt. Om te voor komen dat de interne geheugen limiet voor het uitvoeren van geplande taken wordt geblokkeerd, wordt het agent proces opnieuw opgestart zodra het geheugen verbruik de drempel waarde bereikt. Dit kan leiden tot een onderbreking van de uitvoering van taken die worden uitgevoerd op het moment dat de computer opnieuw wordt opgestart.
 
 ### <a name="in-memory-oltp-memory-limits-are-not-applied"></a>In-Memory OLTP-geheugen limieten worden niet toegepast
 

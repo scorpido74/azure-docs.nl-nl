@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 07/08/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 88b19257a6a7d335e6a928a9eaf7526fbfd5b02e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: HT
+ms.openlocfilehash: 1827d44f4d4ac812a33aee4791c2103a10328ba7
+ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
+ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 04/28/2020
-ms.locfileid: "75942767"
+ms.locfileid: "82204606"
 ---
 ## <a name="application-performance-indicators"></a>Prestatie-indica toren voor toepassingen
 
@@ -232,7 +232,7 @@ Houd er rekening mee dat de Premium Storage schijven betere prestaties hebben te
 
 ## <a name="disk-caching"></a>Schijfcaching
 
-High Scale-Vm's die gebruikmaken van Azure Premium Storage, hebben een cache technologie met meerdere lagen met de naam BlobCache. BlobCache maakt gebruik van een combi natie van het RAM-geheugen van de virtuele machine en de lokale SSD voor caching. Deze cache is beschikbaar voor de Premium Storage permanente schijven en de lokale VM-schijven. Deze cache-instelling is standaard ingesteld op lezen/schrijven voor besturingssysteem schijven en alleen-lezen voor gegevens schijven die worden gehost op Premium Storage. Als schijf cache is ingeschakeld op de Premium Storage schijven, kunnen de virtuele machines met een hoge schaal extreem hoge prestatie niveaus hebben die de onderliggende schijf prestaties overschrijden.
+High Scale-Vm's die gebruikmaken van Azure Premium Storage, hebben een cache technologie met meerdere lagen met de naam BlobCache. BlobCache maakt gebruik van een combi natie van de host-RAM en lokale SSD voor caching. Deze cache is beschikbaar voor de Premium Storage permanente schijven en de lokale VM-schijven. Deze cache-instelling is standaard ingesteld op lezen/schrijven voor besturingssysteem schijven en alleen-lezen voor gegevens schijven die worden gehost op Premium Storage. Als schijf cache is ingeschakeld op de Premium Storage schijven, kunnen de virtuele machines met een hoge schaal extreem hoge prestatie niveaus hebben die de onderliggende schijf prestaties overschrijden.
 
 > [!WARNING]
 > Schijf cache gebruik wordt niet ondersteund voor schijven van 4 TiB en groter. Als er meerdere schijven aan uw virtuele machine zijn gekoppeld, ondersteunt elke schijf die kleiner is dan 4 TiB de cache.

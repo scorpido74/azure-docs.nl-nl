@@ -1,6 +1,6 @@
 ---
-title: Uw eerste API importeren en publiceren in Azure API Management
-description: Meer informatie over het importeren van een OpenAPI Specification API in Azure API Management en het testen van uw API in de Azure-portal.
+title: Uw eerste API importeren en publiceren in azure API Management
+description: Meer informatie over het importeren van een OpenAPI-specificatie-API in azure API Management en het testen van uw API in de Azure Portal.
 services: api-management
 documentationcenter: ''
 author: mikebudzynski
@@ -11,88 +11,89 @@ ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.custom: mvc
 ms.topic: tutorial
-ms.date: 02/27/2020
+ms.date: 04/20/2020
 ms.author: apimpm
-ms.openlocfilehash: 886063dcf886d79ac960814f20b3789e8e3b6839
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 0b5fbb49e2f60f101f16988538af86c2caf550eb
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "78163480"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82202844"
 ---
-# <a name="import-and-publish-your-first-api"></a>Uw eerste API importeren en publiceren 
+# <a name="import-and-publish-your-first-api"></a>Uw eerste API importeren en publiceren
 
-In deze zelfstudie ziet u hoe u een OpenAPI Specification backend API importeert in JSON-indeling in Azure API Management. Microsoft biedt de backend-API en [https://conferenceapi.azurewebsites.net?format=json](https://conferenceapi.azurewebsites.net?format=json)host deze op Azure op .
+In deze zelf studie ziet u hoe u een back-end-API van OpenAPI-specificatie in JSON-indeling importeert in azure API Management. Micro soft biedt de back-end-API en host [https://conferenceapi.azurewebsites.net?format=json](https://conferenceapi.azurewebsites.net?format=json)deze in azure op.
 
-Zodra u de backend API in API Management importeert, wordt uw API Management API een gevel voor de backend API. U de gevel aanpassen aan uw behoeften in API Management zonder de backend API aan te raken. Zie [Transform and protect your API](transform-api.md) (Uw API transformeren en beveiligen) voor meer informatie. 
+Nadat u de back-end-API hebt geïmporteerd in API Management, wordt uw API Management-API een gevel voor de back-end-API. U kunt de gevel aanpassen aan uw behoeften in API Management zonder de back-end-API te raken. Zie [Transform and protect your API](transform-api.md) (Uw API transformeren en beveiligen) voor meer informatie.
 
 In deze zelfstudie leert u het volgende:
 
 > [!div class="checklist"]
-> * Een API importeren in API-beheer
+> * Een API importeren in API Management
 > * De API testen in Azure Portal
 
 ![Nieuwe API](./media/api-management-import-and-publish/created-api.png)
 
 ## <a name="prerequisites"></a>Vereisten
 
-- Informatie over [de terminologie van Azure API Management](api-management-terminology.md).
+- Inzicht krijgen in de [terminologie van Azure API Management](api-management-terminology.md).
 - [Een Azure API Management-exemplaar maken](get-started-create-service-instance.md).
 
 [!INCLUDE [api-management-navigate-to-instance.md](../../includes/api-management-navigate-to-instance.md)]
 
 ## <a name="import-and-publish-a-backend-api"></a><a name="create-api"> </a>Een API importeren en publiceren
 
-In deze sectie ziet u hoe u een OpenAPI Specification backend API importeert en publiceert.
- 
-1. Selecteer **API's** in de sectie **API-beheer** in de linkernavigatie van uw API-beheerexemplaar.
-1. Selecteer de **tegel OpenAPI** en selecteer **Volledig** op het pop-upscherm.
-1. Gebruik in het scherm **Maken vanuit OpenAPI-specificatie** de waarden uit de volgende tabel om uw API te maken.
-   
-   Een rode ster naast een veld op het formulier geeft aan dat het veld vereist is. U API-waarden instellen tijdens het maken of later door naar het tabblad **Instellingen** te gaan. 
-   
+In deze sectie wordt beschreven hoe u een back-end-API voor OpenAPI-specificatie importeert en publiceert.
+
+1. Selecteer in de linkernavigatiebalk van uw API Management-exemplaar **api's** in het gedeelte **API Management** .
+1. Selecteer de tegel **OpenAPI** en selecteer vervolgens **volledig** in het pop-upvenster.
+1. Gebruik in het scherm **maken van OpenAPI-specificatie** de waarden uit de volgende tabel om uw API te maken.
+
+   Een rode ster naast een veld op het formulier geeft aan dat het veld vereist is. U kunt de API-waarden tijdens het maken of later instellen door naar het tabblad **instellingen** te gaan.
+
    ![Een API maken](./media/api-management-import-and-publish/create-api.png)
-   
+
    |Instelling|Waarde|Beschrijving|
    |-------|-----|-----------|
-   |**OpenAPI-specificatie**|*https:\//conferenceapi.azurewebsites.net?format=json*|De service die de API implementeert. API Management stuurt aanvragen door naar dit adres.|
-   |**Weergavenaam**|Nadat u de vorige service-URL hebt ingevoerd, vult API Management dit veld in op basis van de JSON.|De naam die wordt weergegeven in de ontwikkelaarsportal.|
-   |**Naam**|Nadat u de vorige service-URL hebt ingevoerd, vult API Management dit veld in op basis van de JSON.|Een unieke naam voor de API.|
-   |**Beschrijving**|Nadat u de vorige service-URL hebt ingevoerd, vult API Management dit veld in op basis van de JSON.|Een optionele beschrijving van de API.|
+   |**OpenAPI-specificatie**|*https:\//conferenceapi.azurewebsites.net? format = json*|De service die de API implementeert. API Management stuurt aanvragen door naar dit adres.|
+   |**Weergavenaam**|Nadat u de voor gaande service-URL hebt opgegeven, API Management dit veld invullen op basis van de JSON.|De naam die wordt weer gegeven in de ontwikkelaars Portal.|
+   |**Naam**|Nadat u de voor gaande service-URL hebt opgegeven, API Management dit veld invullen op basis van de JSON.|Een unieke naam voor de API.|
+   |**Beschrijving**|Nadat u de voor gaande service-URL hebt opgegeven, API Management dit veld invullen op basis van de JSON.|Een optionele beschrijving van de API.|
    |**URL-schema**|**HTTPS**|Welke protocollen kunnen worden gebruikt om toegang te krijgen tot de API.|
-   |**API-URL-achtervoegsel**|*conference*|Het achtervoegsel is toegevoegd aan de basis-URL voor de API-beheerservice. API-beheer onderscheidt API's door hun achtervoegsel, dus het achtervoegsel moet uniek zijn voor elke API voor een bepaalde uitgever.|
-   |**Producten**|**Onbeperkt**|Vereniging van een of meer API's. Elke API Management-instantie wordt geleverd met twee voorbeeldproducten: **Starter** en **Unlimited.** U publiceert een API door de API te koppelen aan een product, **Unlimited** in dit voorbeeld.<br/>U verschillende API's in een product opnemen en deze aanbieden aan ontwikkelaars via de ontwikkelaarsportal. Als u deze API aan een ander product wilt toevoegen, typt u of selecteert u de productnaam. Herhaal deze stap om de API aan meerdere producten toe te voegen. U api's later ook toevoegen aan producten vanaf de pagina **Instellingen.**<br/>Ontwikkelaars moeten zich eerst abonneren op een product om toegang tot de API te krijgen. Wanneer ze zich abonneren, krijgen ze een abonnementssleutel die goed is voor elke API in dat product. <br/>Als u de instantie API-beheer hebt gemaakt, bent u al beheerder, dus u bent geabonneerd op elk product in de instantie.|
-   |**Tags**| |Tags voor het organiseren van API's voor zoeken, groeperen of filteren.|
-   |**Versie van deze API?**|De selectie selecteren of deselecteren|Zie Meerdere versies van [uw API publiceren](api-management-get-started-publish-versions.md)voor meer informatie over versiebeheer.|
-   
+   |**API-URL-achtervoegsel**|*conference*|Het achtervoegsel dat is toegevoegd aan de basis-URL voor de API Management-service. API Management onderscheidt Api's met hun achtervoegsel, dus het achtervoegsel moet uniek zijn voor elke API voor een bepaalde uitgever.|
+   |**Tags**| |Tags voor het organiseren van Api's voor zoeken, groeperen en filteren.|
+   |**Producten**|**Onbeperkt**|Koppeling van een of meer Api's. Elk API Management-exemplaar wordt geleverd met twee voorbeeld producten: **starter** en **onbeperkt**. U publiceert een API door de API te koppelen aan een product, **onbeperkt** in dit voor beeld.<br/>U kunt meerdere Api's in een product toevoegen en deze aanbieden aan ontwikkel aars via de ontwikkelaars Portal. Als u deze API wilt toevoegen aan een ander product, typt of selecteert u de product naam. Herhaal deze stap om de API toe te voegen aan meerdere producten. U kunt later ook Api's aan producten toevoegen op de pagina **instellingen** .<br/>Ontwikkelaars moeten zich eerst abonneren op een product om toegang tot de API te krijgen. Wanneer ze zich abonneren, krijgen ze een abonnements sleutel die geschikt is voor elke API in dat product. <br/>Als u de API Management instantie hebt gemaakt, bent u al een beheerder en bent u geabonneerd op elk product in het exemplaar.|
+   |**Gateways**|**Beheerd**|API-gateway (s) die de API beschikbaar maken. Dit veld is alleen beschikbaar in de **ontwikkel aars** -en **Premium** -laag Services.<br/>**Beheerde** gateway geeft aan dat de gateway is ingebouwd in de API Management-service en wordt gehost door micro soft in Azure. Andere gateways zijn [zelf-hostende gateways](self-hosted-gateway-overview.md) en zijn alleen beschikbaar in de service lagen Premium en Developer. U kunt deze implementeren in on-premises of in andere Clouds.<br/>Als er geen gateways zijn geselecteerd, is de API niet beschikbaar en zijn uw API-aanvragen niet geslaagd.|
+   |**Versie van deze API?**|Selecteren of selectie opheffen|Zie [meerdere versies van uw API publiceren](api-management-get-started-publish-versions.md)voor meer informatie over versie beheer.|
+
    > [!NOTE]
-   > Als u de API wilt publiceren, moet u deze koppelen aan een product. Dat kan op de pagina **Instellingen.**
-   
-1. Selecteer **Maken**.
+   > Als u de API wilt publiceren naar API-gebruikers, moet u deze koppelen aan een product.
 
-Als u problemen ondervindt bij het importeren van een API-definitie, raadpleegt u de [lijst met bekende problemen en beperkingen.](api-management-api-import-restrictions.md)
+2. Selecteer **Maken**.
 
-## <a name="test-the-new-api-in-the-azure-portal"></a>De nieuwe API testen in de Azure-portal
+Zie de [lijst met bekende problemen en beperkingen](api-management-api-import-restrictions.md)als u problemen hebt met het importeren van een API-definitie.
 
-U API-bewerkingen rechtstreeks vanuit de Azure-portal aanroepen, wat een handige manier biedt om de bewerkingen te bekijken en te testen.
+## <a name="test-the-new-api-in-the-azure-portal"></a>De nieuwe API in het Azure Portal testen
 
-1. Selecteer **API's** in de sectie **API-beheer** in de linkernavigatie van uw API-beheerinstantie en selecteer vervolgens **Demo Conference API**.
-1. Selecteer het tabblad **Testen** en selecteer **Ophaalluidsprekers**. De pagina toont **queryparameters** en **eventuele kopteksten.** De **Ocp-Apim-Subscription-Key** wordt automatisch ingevuld voor de abonnementssleutel die aan deze API is gekoppeld.
+U kunt API-bewerkingen rechtstreeks aanroepen vanuit de Azure Portal. Dit biedt een handige manier om de bewerkingen te bekijken en te testen.
+
+1. Selecteer in de linkernavigatiebalk van uw API Management-exemplaar **api's** in het gedeelte **API Management** en selecteer vervolgens **demo conferentie-API**.
+1. Selecteer het tabblad **testen** en selecteer vervolgens **GetSpeakers**. De pagina bevat **query parameters** en **kopteksten**, indien van toepassing. De **OCP-APIM-Subscription-Key** wordt automatisch ingevuld voor de abonnements sleutel die is gekoppeld aan deze API.
 1. Selecteer **Verzenden**.
-   
+
    ![API-kaart testen](./media/api-management-import-and-publish/01-import-first-api-01.png)
-   
+
    Back-end reageert met **200 OK** en enkele gegevens.
 
 ## <a name="next-steps"></a><a name="next-steps"> </a>Volgende stappen
 
-In deze zelfstudie hebt u het volgende geleerd:
+In deze zelfstudie heeft u het volgende geleerd:
 
 > [!div class="checklist"]
 > * Uw eerste API importeren
 > * De API testen in Azure Portal
 
-Ga naar de volgende zelfstudie om te leren hoe u een product maken en publiceren:
+Ga naar de volgende zelf studie voor meer informatie over het maken en publiceren van een product:
 
 > [!div class="nextstepaction"]
 > [Een product maken en publiceren](api-management-howto-add-products.md)

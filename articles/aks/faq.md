@@ -3,12 +3,12 @@ title: Veelgestelde vragen over Azure Kubernetes service (AKS)
 description: Vind antwoorden op enkele veelgestelde vragen over Azure Kubernetes service (AKS).
 ms.topic: conceptual
 ms.date: 10/02/2019
-ms.openlocfilehash: f91fe1c63430a0eac23cf9cbc184babb6dd5f7a4
-ms.sourcegitcommit: 354a302d67a499c36c11cca99cce79a257fe44b0
+ms.openlocfilehash: a58c3510d8937b209bf6c73d33237785ecab161d
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/23/2020
-ms.locfileid: "82106081"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82206602"
 ---
 # <a name="frequently-asked-questions-about-azure-kubernetes-service-aks"></a>Veelgestelde vragen over AKS (Azure Kubernetes Service)
 
@@ -50,7 +50,7 @@ Zie [beveiliging en kernel-updates Toep assen op knoop punten in AKS][node-updat
 
 ### <a name="windows-server-nodes"></a>Windows Server-knoop punten
 
-Voor Windows Server-knoop punten (momenteel in de preview-versie van AKS) wordt Windows Update niet automatisch uitgevoerd en worden de nieuwste updates toegepast. U moet een upgrade uitvoeren op het cluster en de Windows Server-knooppunt groep (en) in uw AKS-cluster, volgens een regel matige planning rond de Windows Update release cyclus en uw eigen validatie proces. Dit upgrade proces maakt knoop punten waarop de nieuwste installatie kopie en patches van Windows Server worden uitgevoerd, waarna de oudere knoop punten worden verwijderd. Zie [een knooppunt groep bijwerken in AKS][nodepool-upgrade]voor meer informatie over dit proces.
+Voor Windows Server-knoop punten wordt Windows Update niet automatisch uitgevoerd en worden de nieuwste updates toegepast. U moet een upgrade uitvoeren op het cluster en de Windows Server-knooppunt groep (en) in uw AKS-cluster, volgens een regel matige planning rond de Windows Update release cyclus en uw eigen validatie proces. Dit upgrade proces maakt knoop punten waarop de nieuwste installatie kopie en patches van Windows Server worden uitgevoerd, waarna de oudere knoop punten worden verwijderd. Zie [een knooppunt groep bijwerken in AKS][nodepool-upgrade]voor meer informatie over dit proces.
 
 ## <a name="why-are-two-resource-groups-created-with-aks"></a>Waarom zijn er twee resource groepen gemaakt met AKS?
 
@@ -122,7 +122,7 @@ AKS is momenteel niet ingebouwd met Azure Key Vault. Met de [Azure Key Vault Fle
 
 ## <a name="can-i-run-windows-server-containers-on-aks"></a>Kan ik Windows Server-containers op AKS uitvoeren?
 
-Ja, Windows Server-containers zijn beschikbaar als preview-versie. Als u Windows Server-containers in AKS wilt uitvoeren, maakt u een knooppunt groep die Windows Server als het gast besturingssysteem uitvoert. Windows Server-containers kunnen alleen Windows Server 2019 gebruiken. Zie [een AKS-cluster maken met een Windows Server-knooppunt groep][aks-windows-cli]om aan de slag te gaan.
+Ja, Windows Server-containers zijn beschikbaar op AKS. Als u Windows Server-containers in AKS wilt uitvoeren, maakt u een knooppunt groep die Windows Server als het gast besturingssysteem uitvoert. Windows Server-containers kunnen alleen Windows Server 2019 gebruiken. Zie [een AKS-cluster maken met een Windows Server-knooppunt groep][aks-windows-cli]om aan de slag te gaan.
 
 Windows Server-ondersteuning voor de knooppunt groep bevat enkele beperkingen die deel uitmaken van de upstream-Windows-Server in Kubernetes-project. Zie [Windows Server-containers in AKS-beperkingen][aks-windows-limitations]voor meer informatie over deze beperkingen.
 

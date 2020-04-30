@@ -1,31 +1,26 @@
 ---
-title: SCIM, het Microsoft Graph en de Azure AD-inrichtings service gebruiken om gebruikers in te richten en uw toepassing te verrijken met de benodigde gegevens | Microsoft Docs
+title: SCIM, Microsoft Graph en Azure AD gebruiken voor het inrichten van gebruikers en verrijkende apps met gegevens
 description: SCIM en de Microsoft Graph samen gebruiken om gebruikers in te richten en uw toepassing te verrijken met de benodigde gegevens.
 services: active-directory
-documentationcenter: ''
 author: msmimart
 manager: CelesteDG
-ms.assetid: ''
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 04/23/2020
+ms.date: 04/26/2020
 ms.author: mimart
 ms.reviewer: arvinh
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 79ffe0474fcfeb28b49f5c2504ede86cd38459d9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: HT
+ms.openlocfilehash: ceba22e9289e0a10211ee26a7758238a8b1f06c7
+ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
+ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 04/28/2020
-ms.locfileid: "82181831"
+ms.locfileid: "82201683"
 ---
 # <a name="using-scim-and-microsoft-graph-together-to-provision-users-and-enrich-your-application-with-the-data-it-needs"></a>SCIM en Microsoft Graph samen gebruiken om gebruikers in te richten en uw toepassing te verrijken met de benodigde gegevens
 
-**Doel publiek:** Dit document is gericht op ontwikkel aars die toepassingen bouwen die moeten worden geïntegreerd met Azure AD. Voor anderen die toepassingen willen gebruiken die al zijn geïntegreerd met Azure AD, zoals zoomen, ServiceNow en DropBox, kunt u dit overs Laan en de toepassingsspecifieke [zelf studies](https://docs.microsoft.com/azure/active-directory/saas-apps/tutorial-list) controleren of nagaan [hoe de inrichtings service werkt](https://docs.microsoft.com/azure/active-directory/app-provisioning/how-provisioning-works).
+**Doel publiek:** Dit artikel is gericht op ontwikkel aars die toepassingen bouwen die moeten worden geïntegreerd met Azure Active Directory (Azure AD). Als u toepassingen wilt gebruiken die al zijn geïntegreerd met Azure AD, zoals zoomen, ServiceNow en DropBox, kunt u dit artikel overs Laan en de toepassingsspecifieke [zelf studies](https://docs.microsoft.com/azure/active-directory/saas-apps/tutorial-list) controleren of nagaan [hoe de inrichtings service werkt](https://docs.microsoft.com/azure/active-directory/app-provisioning/how-provisioning-works).
 
 **Algemene scenario's**
 
@@ -46,7 +41,6 @@ De IT-beheerder kan tegenwoordig gebruikers inrichten door hand matig gebruikers
 **Aanbeveling**: 
 * Als uw klanten verschillende id gebruiken en u geen synchronisatie-engine wilt onderhouden om met beide te integreren, wordt een SCIM-compatibel [/Users](https://aka.ms/scimreferencecode) -eind punt ondersteund. Uw klanten kunnen dit eind punt eenvoudig gebruiken om te integreren met de Azure AD-inrichtings service en automatisch gebruikers accounts maken wanneer ze toegang nodig hebben. U kunt het eind punt eenmaal maken en dit is compatibel met alle id. Bekijk de onderstaande voorbeeld aanvraag voor het maken van een gebruiker met behulp van SCIM.
 * Als u wilt dat gebruikers gegevens in het gebruikers object in azure AD en andere gegevens van micro soft worden gevonden, kunt u een SCIM-eind punt bouwen voor het inrichten van gebruikers en het aanroepen van de Microsoft Graph om de rest van de gegevens op te halen. 
-
 
 ```json
 POST /Users

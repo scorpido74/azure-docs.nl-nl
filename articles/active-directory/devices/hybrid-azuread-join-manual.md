@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7ddead0b5ff094efc4abacb6bfbaf8bc4f47902b
-ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
+ms.openlocfilehash: f23520bd724d2f7ed5a9422a0541e717c800dee2
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/26/2020
-ms.locfileid: "82159281"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82201020"
 ---
 # <a name="tutorial-configure-hybrid-azure-active-directory-joined-devices-manually"></a>Zelfstudie: Hybride Azure Active Directory-gekoppelde apparaten handmatig configureren
 
@@ -185,7 +185,7 @@ Wanneer u AD FS gebruikt, moet u de volgende WS-Trust-eind punten inschakelen
 - `/adfs/services/trust/13/certificatemixed`
 
 > [!WARNING]
-> **ADFS/Services/Trust/2005/windowstransport** of **ADFS/Services/Trust/13/windowstransport** moeten alleen worden ingeschakeld als intranet gerichte eind punten en mogen niet worden weer gegeven als een extranet gerichte eind punten via de Web Application proxy. Zie [Windows-eind punten van WS-Trust uitschakelen op de proxy](/windows-server/identity/ad-fs/deployment/best-practices-securing-ad-fs#disable-ws-trust-windows-endpoints-on-the-proxy-ie-from-extranet)voor meer informatie over het uitschakelen van WS-Trust Windows-eind punten. U kunt zien welke eind punten zijn ingeschakeld via de AD FS-beheer console onder **service** > -**eind punten**.
+> **ADFS/Services/Trust/2005/windowstransport** en **ADFS/Services/Trust/13/windowstransport** moeten alleen worden ingeschakeld als intranet gerichte eind punten en mogen niet worden weer gegeven als aan een extranet gerichte eind punten via de Web Application proxy. Zie [Windows-eind punten van WS-Trust uitschakelen op de proxy](/windows-server/identity/ad-fs/deployment/best-practices-securing-ad-fs#disable-ws-trust-windows-endpoints-on-the-proxy-ie-from-extranet)voor meer informatie over het uitschakelen van WS-Trust Windows-eind punten. U kunt zien welke eind punten zijn ingeschakeld via de AD FS-beheer console onder **service** > -**eind punten**.
 
 > [!NOTE]
 >Als u AD FS niet als uw on-premises federatieve service hebt, volgt u de instructies van uw leverancier om te verzekeren dat ze WS-Trust 1.3- of WS-Trust 2005-eindpunten ondersteunen en dat deze via het MEX-bestand (Metadata Exchange) worden gepubliceerd.

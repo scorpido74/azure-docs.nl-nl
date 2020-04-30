@@ -10,14 +10,14 @@ ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: tutorial
-ms.date: 08/27/2018
+ms.date: 04/20/2020
 ms.author: apimpm
-ms.openlocfilehash: 5440333360549c5df2da57c97b24dcc77436ba4b
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 644e29c3b5e37cd95280cfd2261e644b20bbda98
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "70072703"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82203264"
 ---
 # <a name="add-an-api-manually"></a>Handmatig een API toevoegen
 
@@ -29,30 +29,20 @@ In dit artikel maken we een lege API en geven [httpbin.org](https://httpbin.org)
 
 ## <a name="prerequisites"></a>Vereisten
 
-De volgende quickstart voltooien: [een azure API-beheerexemplaar maken](get-started-create-service-instance.md)
+Voer de volgende Snelstartgids uit: [een Azure API Management-exemplaar maken](get-started-create-service-instance.md)
 
 [!INCLUDE [api-management-navigate-to-instance.md](../../includes/api-management-navigate-to-instance.md)]
 
 ## <a name="create-an-api"></a>Een API maken
 
-1. Selecteer **API's** bij **API MANAGEMENT**.
+1. Navigeer naar uw API Management-service in de Azure Portal en selecteer **api's** in het menu.
 2. Selecteer **+ API toevoegen** in het linkermenu.
-3. Selecteer **Lege API** uit de lijst.
-
-    ![Lege API](media/add-api-manually/blank-api.png)
-4. Voer de instellingen voor de API in.
-
-    |**Naam**|**Waarde**|**Beschrijving**|
-    |---|---|---|
-    |**Weergavenaam**|*Lege API*|Deze naam wordt weergegeven in de ontwikkelaarsportal.|
-    |**Naam**|*lege-api*|Biedt een unieke naam voor de API.|
-    |**Webservice-URL** (optioneel)|*https://httpbin.org*| Als u een API wilt simuleren, kan het zijn dat u niets invoert. <br/>In dit geval [https://httpbin.org](https://httpbin.org)gaan we. Dit is een openbare testdienst. <br/>Als u een API wilt importeren die automatisch is toegewezen aan een back-end, lees dan een van de onderwerpen in de sectie [Verwante onderwerpen](#related-topics).|
-    |**URL-schema**|*HTTP's*|In dit geval geven we een beveiligde HTTPS APIM toegang tot de back-end, ondanks dat de back-end niet-beveiligde HTTP-toegang heeft. <br/>Dit soort scenario (HTTPS naar HTTP) wordt HTTPS-beëindiging genoemd. U kunt dit doen als uw API binnen een virtueel netwerk bestaat (waarvan u weet dat de toegang is beveiligd, zelfs als HTTPS wordt niet gebruikt). <br/>U kunt "HTTPS-beëindiging" op een aantal CPU-cycli gebruiken om op te slaan.|
-    |**URL-achtervoegsel**|*hbin*| Het achtervoegsel is een naam die deze specifieke API in dit APIM-exemplaar identificeert. Hij moet uniek zijn in dit APIM-exemplaar.|
-    |**Producten**|*Onbeperkt*|Publiceer de API door deze aan een product te koppelen. Als u wilt dat de API wordt gepubliceerd en beschikbaar is voor ontwikkelaars, kunt u deze toevoegen aan een product. U kunt dit doen tijdens het maken van de API of het later instellen.<br/><br/>Producten zijn koppelingen van een of meer API's. U kunt een aantal API's opnemen en deze beschikbaar stellen voor ontwikkelaars via de ontwikkelaarsportal. <br/>Ontwikkelaars moeten zich eerst abonneren op een product om toegang tot de API te krijgen. Wanneer ontwikkelaars zich abonneren, ontvangen ze een abonnementssleutel die toegang biedt tot elke API in het betreffende product. Als u de APIM-abonnementssleutel hebt gemaakt, bent u al een beheerder en bent u standaard geabonneerd op elk product.<br/><br/> Standaard wordt elke API Management-instantie geleverd met twee voorbeeldproducten: **Starter** en **Onbeperkt**.| 
+3. Selecteer **Lege API** uit de lijst.  
+    ![Lege API](media/add-api-manually/blank-api.png)  
+4. Voer de instellingen voor de API in. De instellingen worden beschreven in de zelf studie [uw eerste API importeren en publiceren](import-and-publish.md#-import-and-publish-a-backend-api) .
 5. Selecteer **Maken**.
 
-U hebt op dit moment geen bewerkingen in APIM die zijn toegewezen aan de bewerkingen in uw back-end-API. Als u een bewerking aanroept die beschikbaar is gesteld via de back-end maar niet via de APIM, krijgt u een **404**.
+Op dit moment hebt u geen bewerkingen in API Management die worden toegewezen aan de bewerkingen in uw back-end-API. Als u een bewerking aanroept die wordt weer gegeven via de back-end, maar niet via de API Management, krijgt u een **404**.
 
 >[!NOTE] 
 > Standaard zal de APIM geen bewerkingen blootstellen totdat u ze accepteert wanneer u een API toevoegt, zelfs als deze is verbonden met bepaalde back-endservice. Om een bewerking van uw back-end-service goed te keuren, maakt u een APIM-bewerking die is toegewezen aan de back-end-bewerking.

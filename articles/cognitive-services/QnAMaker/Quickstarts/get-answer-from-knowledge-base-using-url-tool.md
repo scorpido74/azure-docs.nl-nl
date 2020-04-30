@@ -1,7 +1,7 @@
 ---
-title: 'Snelstart: Gebruik URL tool om antwoord te krijgen van knowledge base - QnA Maker'
+title: 'Quick Start: gebruik URL-hulp programma voor het verkrijgen van antwoorden in de Knowledge Base-QnA Maker'
 titleSuffix: Azure Cognitive Services
-description: Deze quickstart leidt u door het krijgen van een antwoord van uw kennisbank met behulp van een URL-testtool zoals cURL of Postbode.
+description: Deze Snelstartgids helpt u bij het ophalen van een antwoord uit uw Knowledge Base met behulp van een URL-test programma zoals krul of postman.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -9,16 +9,16 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 zone_pivot_groups: URL-test-interface
 ms.topic: quickstart
-ms.date: 02/08/2020
+ms.date: 04/27/2020
 ms.author: diberry
-ms.openlocfilehash: 09337ce599b0044ab38bb0ad0b0383ee90bfcbd8
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: 1f19337aea8b39bbc8c7dc11fba683bee3c2955a
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77109657"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82203952"
 ---
-# <a name="quickstart-get-an-answer-from-knowledge-base"></a>Quickstart: Krijg een antwoord van knowledge base
+# <a name="quickstart-get-an-answer-from-knowledge-base"></a>Quick Start: een antwoord verkrijgen van de Knowledge Base
 
 
 ::: zone pivot="url-test-tool-curl"
@@ -37,4 +37,4 @@ ms.locfileid: "77109657"
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"]
-> [Knowledge Base testen met batchbestand](batch-testing.md)
+> [Kennis basis testen met batch bestand](batch-testing.md)

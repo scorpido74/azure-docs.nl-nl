@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/05/2019
+ms.date: 04/27/2020
 ms.author: allensu
-ms.openlocfilehash: 64940ee6451ef1a9e153ef4d699bdaed32d4030e
-ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
+ms.openlocfilehash: a698d0cc4653a7a9f938b8f013352d9b51e2e18c
+ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82146343"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82203723"
 ---
 # <a name="ip-address-types-and-allocation-methods-in-azure"></a>IP-adrestypen en toewijzingsmethoden in Azure
 
@@ -59,6 +59,22 @@ Openbare IP-adressen worden gemaakt met een van de volgende SKU's:
 >[!IMPORTANT]
 > Er moeten overeenkomende SKU's worden gebruikt voor resources van de load balancer en openbare IP-adressen. Het is niet mogelijk om een combinatie van resources uit de Basic-SKU en Standard-SKU te gebruiken. Het is evenmin mogelijk om zelfstandige virtuele machines, virtuele machines in een resource van een beschikbaarheidsset of resources uit schaalset met virtuele machines op beide SKU's tegelijk in te stellen.  In nieuwe ontwerpen is het raadzaam om resources uit de Standard-SKU te gebruiken.  Raadpleeg [Overzicht van load balancer uit Standard-SKU](../load-balancer/load-balancer-standard-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) voor meer informatie.
 
+#### <a name="standard"></a>Standard
+
+Openbare IP-adressen van de standaard-SKU:
+
+- Gebruiken altijd de statische toewijzingsmethode.
+- Hebben een aanpasbare time-out voor inactiviteit van de stroom met inkomende gegevens van 4-30 minuten (de standaardwaarde is vier minuten), en een vaste time-out voor inactiviteit van de stroom met uitgaande gegevens van vier minuten.
+- Zijn standaard veilig en gesloten voor binnenkomend verkeer. U moet toegestaan binnenkomend verkeer met behulp van een [netwerkbeveiligingsgroep](security-overview.md#network-security-groups) expliciet opnemen in een whitelist.
+- Toegewezen aan netwerk interfaces, standaard open bare load balancers of toepassings gateways. Meer informatie over Standard load balancers vindt u in [Overzicht van Standard Load Balancer](../load-balancer/load-balancer-standard-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
+- Kan zone-redundant of zonegebonden (kan worden gemaakt zonegebonden en worden gegarandeerd in een specifieke beschikbaarheids zone). Zie [Overzicht van beschikbaarheidszones in Azure](../availability-zones/az-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) en [Standard-load balancer en beschikbaarheidszones](../load-balancer/load-balancer-standard-availability-zones.md?toc=%2fazure%2fvirtual-network%2ftoc.json) voor meer informatie over beschikbaarheidszones.
+ 
+> [!NOTE]
+> Inkomende communicatie met een resource uit de Standard-SKU mislukt totdat u een [netwerkbeveiligingsgroep](security-overview.md#network-security-groups) maakt en koppelt en het gewenste binnenkomende verkeer expliciet toestaat.
+
+> [!NOTE]
+> Alleen open bare IP-adressen met de basis-SKU zijn beschikbaar wanneer IMDS wordt gebruikt voor het gebruiken van [meta gegevens service](../virtual-machines/windows/instance-metadata-service.md). De standaard-SKU wordt niet ondersteund.
+
 #### <a name="basic"></a>Basic
 
 Alle openbare IP-adressen die zijn gemaakt vóór de introductie van SKU's zijn openbare IP-adressen van de basis-SKU. Door de introductie van SKU's kunt u opgeven welke SKU het openbare IP-adres is. Basis-SKU-adressen:
@@ -68,22 +84,6 @@ Alle openbare IP-adressen die zijn gemaakt vóór de introductie van SKU's zijn 
 - Zijn standaard geopend.  Netwerkbeveiligingsgroepen worden aanbevolen, maar zijn optioneel voor het beperken van binnenkomend of uitgaand verkeer.
 - Worden toegewezen aan een Azure-resource waaraan een openbaar IP-adres kan worden toegewezen, zoals netwerkinterfaces, VPN-gateways, toepassingsgateways en internetgerichte load balancers.
 - Bieden geen ondersteuning voor scenario's met beschikbaarheidszones.  U moet openbare IP-adressen van de standaard-SKU gebruiken voor deze scenario's. Zie [Overzicht van beschikbaarheidszones in Azure](../availability-zones/az-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) en [Standard-load balancer en beschikbaarheidszones](../load-balancer/load-balancer-standard-availability-zones.md?toc=%2fazure%2fvirtual-network%2ftoc.json) voor meer informatie over beschikbaarheidszones.
-
-#### <a name="standard"></a>Standard
-
-Openbare IP-adressen van de standaard-SKU:
-
-- Gebruiken altijd de statische toewijzingsmethode.
-- Hebben een aanpasbare time-out voor inactiviteit van de stroom met inkomende gegevens van 4-30 minuten (de standaardwaarde is vier minuten), en een vaste time-out voor inactiviteit van de stroom met uitgaande gegevens van vier minuten.
-- Zijn standaard veilig en gesloten voor binnenkomend verkeer. U moet toegestaan binnenkomend verkeer met behulp van een [netwerkbeveiligingsgroep](security-overview.md#network-security-groups) expliciet opnemen in een whitelist.
-- Toegewezen aan netwerk interfaces, standaard open bare load balancers of toepassings gateways. Meer informatie over Standard load balancers vindt u in [Overzicht van Standard Load Balancer](../load-balancer/load-balancer-standard-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
-- Zijn standaard zoneredundant en optioneel zonegebonden (kunnen zonegebonden en gegarandeerd worden gemaakt in een specifieke beschikbaarheidszone). Zie [Overzicht van beschikbaarheidszones in Azure](../availability-zones/az-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) en [Standard-load balancer en beschikbaarheidszones](../load-balancer/load-balancer-standard-availability-zones.md?toc=%2fazure%2fvirtual-network%2ftoc.json) voor meer informatie over beschikbaarheidszones.
- 
-> [!NOTE]
-> Inkomende communicatie met een resource uit de Standard-SKU mislukt totdat u een [netwerkbeveiligingsgroep](security-overview.md#network-security-groups) maakt en koppelt en het gewenste binnenkomende verkeer expliciet toestaat.
-
-> [!NOTE]
-> Alleen open bare IP-adressen met de basis-SKU zijn beschikbaar wanneer IMDS wordt gebruikt voor het gebruiken van [meta gegevens service](../virtual-machines/windows/instance-metadata-service.md). De standaard-SKU wordt niet ondersteund.
 
 ### <a name="allocation-method"></a>Toewijzingsmethode
 

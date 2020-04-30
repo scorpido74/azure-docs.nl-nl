@@ -1,0 +1,7 @@
+- name: Documentatie voor Sitebetrouwbaarheidsengineering
+  href: ../index.yml
+- name: Veelgestelde vragen
+  expanded: true
+  items:
+    - name: SRE en DevOps
+      href: devops.md

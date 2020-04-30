@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 02/20/2020
 ms.author: wieastbu
 ms.custom: fasttrack-new
-ms.openlocfilehash: 55acea360de11c5fcc699d65daf92cf24dfd691d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 3c5c13b3aae33b098de79a3429a299cc33f1c4f6
+ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79475473"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82202873"
 ---
 # <a name="protect-spa-backend-with-oauth-20-azure-active-directory-b2c-and-azure-api-management"></a>Beveiligd-wachtwoord verificatie beveiligen met OAuth 2,0, Azure Active Directory B2C en Azure API Management
 
@@ -148,7 +148,7 @@ Open de Blade Azure AD B2C in de portal en voer de volgende stappen uit.
 5. Ga terug naar het tabblad HttpTrigger1, klik op functie-URL ophalen en kopieer de URL die wordt weer gegeven.
 
    > [!NOTE]
-   > Met de bindingen die u zojuist hebt gemaakt, wordt gereageerd op anonieme HTTP GET-aanvragen naar de URL die u zojuist hebt gekopieerd. (https://yourfunctionappname.azurewebsites.net/api/hello?code=secretkey) Nu hebben we een schaal bare serverloze https API, waarmee een zeer eenvoudige nettolading kan worden geretourneerd.
+   > Met de bindingen die u zojuist hebt gemaakt, wordt gereageerd op anonieme HTTP GET-aanvragen naar de URL die u zojuist hebt gekopieerd. (`https://yourfunctionappname.azurewebsites.net/api/hello?code=secretkey`) We hebben nu een schaal bare serverloze https API, waarmee een zeer eenvoudige nettolading kan worden geretourneerd.
    > U kunt nu de aanroep van deze API vanuit een webbrowser met behulp van de bovenstaande URL testen. u kunt ook het geheime deel van de URL verwijderen en bewijzen dat Azure Functions een 401-fout retourneert.
 
 ## <a name="configure-and-secure-the-function-api"></a>De functie-API configureren en beveiligen

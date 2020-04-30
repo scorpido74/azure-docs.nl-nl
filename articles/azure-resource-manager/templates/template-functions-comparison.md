@@ -3,22 +3,98 @@ title: Sjabloon functies-vergelijking
 description: Hierin worden de functies beschreven die in een Azure Resource Manager sjabloon kunnen worden gebruikt om waarden te vergelijken.
 ms.topic: conceptual
 ms.date: 04/27/2020
-ms.openlocfilehash: a9b7b32475695e5222b87c8fe75e8982f34ebb21
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: HT
+ms.openlocfilehash: 15afc4d721c6577de9fe3e78483fdbfae5b493c6
+ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
+ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 04/28/2020
-ms.locfileid: "82192328"
+ms.locfileid: "82203774"
 ---
 # <a name="comparison-functions-for-arm-templates"></a>Vergelijkings functies voor ARM-sjablonen
 
 Resource Manager biedt verschillende functies voor het maken van vergelijkingen in uw Azure Resource Manager-sjablonen (ARM).
 
+* [Voeg](#coalesce)
 * [equals](#equals)
 * [greater](#greater)
 * [greaterOrEquals](#greaterorequals)
 * [less](#less)
 * [lessOrEquals](#lessorequals)
+
+## <a name="coalesce"></a>Voeg
+
+`coalesce(arg1, arg2, arg3, ...)`
+
+Retourneert de eerste waarde die niet null is van de para meters. Lege teken reeksen, lege matrices en lege objecten zijn niet null.
+
+### <a name="parameters"></a>Parameters
+
+| Parameter | Vereist | Type | Beschrijving |
+|:--- |:--- |:--- |:--- |
+| Arg1 |Ja |int, String, array of object |De eerste waarde die moet worden getest op null. |
+| aanvullende argumenten |Nee |int, String, array of object |Aanvullende waarden om te testen op null. |
+
+### <a name="return-value"></a>Retourwaarde
+
+De waarde van de eerste niet-null-para meters, die een teken reeks, int, matrix of object kan zijn. Null als alle para meters null zijn.
+
+### <a name="example"></a>Voorbeeld
+
+In de volgende [voorbeeld sjabloon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/coalesce.json) ziet u de uitvoer van verschillende manieren van Coalesce.
+
+```json
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "objectToTest": {
+            "type": "object",
+            "defaultValue": {
+                "null1": null,
+                "null2": null,
+                "string": "default",
+                "int": 1,
+                "object": {"first": "default"},
+                "array": [1]
+            }
+        }
+    },
+    "resources": [
+    ],
+    "outputs": {
+        "stringOutput": {
+            "type": "string",
+            "value": "[coalesce(parameters('objectToTest').null1, parameters('objectToTest').null2, parameters('objectToTest').string)]"
+        },
+        "intOutput": {
+            "type": "int",
+            "value": "[coalesce(parameters('objectToTest').null1, parameters('objectToTest').null2, parameters('objectToTest').int)]"
+        },
+        "objectOutput": {
+            "type": "object",
+            "value": "[coalesce(parameters('objectToTest').null1, parameters('objectToTest').null2, parameters('objectToTest').object)]"
+        },
+        "arrayOutput": {
+            "type": "array",
+            "value": "[coalesce(parameters('objectToTest').null1, parameters('objectToTest').null2, parameters('objectToTest').array)]"
+        },
+        "emptyOutput": {
+            "type": "bool",
+            "value": "[empty(coalesce(parameters('objectToTest').null1, parameters('objectToTest').null2))]"
+        }
+    }
+}
+```
+
+De uitvoer van het vorige voor beeld met de standaard waarden is:
+
+| Naam | Type | Waarde |
+| ---- | ---- | ----- |
+| stringOutput | Tekenreeks | standaardinstelling |
+| intOutput | Int | 1 |
+| objectOutput | Object | {"eerste": "standaard"} |
+| arrayOutput | Matrix | [1] |
+| emptyOutput | Booleaanse waarde | True |
 
 ## <a name="equals"></a>equals
 

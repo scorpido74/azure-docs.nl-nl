@@ -10,21 +10,18 @@ ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 10/31/2019
+ms.date: 03/31/2020
 ms.author: apimpm
-ms.openlocfilehash: d33c5f75234ad7165a9062ecc3bb2a00d502f8c3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2870a654faad4e760a9d022488cb2c4c406cbeab
+ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 04/28/2020
-ms.locfileid: "74075294"
+ms.locfileid: "82203128"
 ---
 # <a name="provision-a-self-hosted-gateway-in-azure-api-management"></a>Een zelf-hostende gateway inrichten in azure API Management
 
 Het inrichten van een gateway bron in uw Azure API Management-exemplaar is een vereiste voor het implementeren van een zelf-hostende gateway. In dit artikel worden de stappen beschreven voor het inrichten van een gateway bron in API Management.
-
-> [!NOTE]
-> De zelf-hostende gateway functie is beschikbaar als preview-versie. Tijdens de preview-periode is de zelf-hostende gateway alleen beschikbaar in de lagen ontwikkelaar en Premium zonder extra kosten. De Developer-laag is beperkt tot één zelf-hostende gateway-implementatie.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -42,9 +39,6 @@ Voer de volgende Snelstartgids uit: [een Azure API Management-exemplaar maken](g
 
 4. Voer desgewenst een **Beschrijving** in van de gateway resource.
 5. Selecteer **+** desgewenst onder **api's** om een of meer api's aan deze gateway bron te koppelen.
-> [!TIP]
-> U kunt een API koppelen aan en verwijderen uit een gateway op het tabblad **instellingen** van de API.
-
 > [!IMPORTANT]
 > Standaard wordt geen van de bestaande Api's gekoppeld aan de nieuwe gateway resource. Daarom zullen pogingen om deze via de nieuwe gateway aan te roepen, `404 Resource Not Found` leiden tot antwoorden.
 
@@ -55,5 +49,5 @@ De gateway bron is nu ingericht in uw API Management-exemplaar. U kunt door gaan
 ## <a name="next-steps"></a>Volgende stappen
 
 * Meer informatie over de zelf-hostende Gateway vindt u in [Azure API Management zelf-hostende gateway-overzicht](self-hosted-gateway-overview.md)
-* Meer informatie over het [implementeren van een zelf-hostende gateway naar Kubernetes](api-management-howto-deploy-self-hosted-gateway-to-k8s.md)
-* Meer informatie over het [implementeren van een zelf-hostende gateway naar docker](api-management-howto-deploy-self-hosted-gateway-to-docker.md)
+* Meer informatie over het [implementeren van een zelf-hostende gateway naar Kubernetes](how-to-deploy-self-hosted-gateway-kubernetes.md)
+* Meer informatie over het [implementeren van een zelf-hostende gateway naar docker](how-to-deploy-self-hosted-gateway-docker.md)

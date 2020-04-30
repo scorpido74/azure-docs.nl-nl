@@ -1,90 +1,90 @@
 ---
-title: Concepten - Beveiliging in Azure Kubernetes Services (AKS)
-description: Meer informatie over beveiliging in Azure Kubernetes Service (AKS), inclusief hoofd- en knooppuntcommunicatie, netwerkbeleid en Kubernetes-geheimen.
+title: Concepten-beveiliging in azure Kubernetes Services (AKS)
+description: Meer informatie over beveiliging in azure Kubernetes service (AKS), met inbegrip van Master-en knooppunt communicatie, netwerk beleid en Kubernetes geheimen.
 services: container-service
 ms.topic: conceptual
 ms.date: 03/01/2019
-ms.openlocfilehash: 7238e6cd7ab3625e2953a4408c82802d43372256
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1960d18396f47b3dbdd51a50ec4241be5ebe4ff1
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77595940"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82206626"
 ---
-# <a name="security-concepts-for-applications-and-clusters-in-azure-kubernetes-service-aks"></a>Beveiligingsconcepten voor toepassingen en clusters in Azure Kubernetes Service (AKS)
+# <a name="security-concepts-for-applications-and-clusters-in-azure-kubernetes-service-aks"></a>Beveiligings concepten voor toepassingen en clusters in azure Kubernetes service (AKS)
 
-Om uw klantgegevens te beschermen terwijl u toepassingsworkloads uitvoert in Azure Kubernetes Service (AKS), is de beveiliging van uw cluster een belangrijke overweging. Kubernetes bevat beveiligingscomponenten zoals *netwerkbeleid* en *Geheimen.* Azure voegt vervolgens onderdelen toe, zoals netwerkbeveiligingsgroepen en georkestreerde clusterupgrades. Deze beveiligingscomponenten worden gecombineerd om ervoor te zorgen dat uw AKS-cluster de nieuwste beveiligingsupdates en Kubernetes-releases uitvoert, en met veilig podverkeer en toegang tot gevoelige referenties.
+Ter bescherming van uw klant gegevens bij het uitvoeren van werk belastingen van toepassingen in azure Kubernetes service (AKS), is de beveiliging van uw cluster een belang rijke overweging. Kubernetes bevat beveiligings onderdelen, zoals *netwerk beleid* en *geheimen*. Azure wordt vervolgens toegevoegd aan onderdelen, zoals netwerk beveiligings groepen en gegroepeerde cluster upgrades. Deze beveiligings onderdelen worden gecombineerd om uw AKS-cluster uit te voeren met de meest recente beveiligings updates van het besturings systeem en Kubernetes-releases, en met beveiligd pod-verkeer en toegang tot gevoelige referenties.
 
-Dit artikel introduceert de kernconcepten die uw toepassingen beveiligen in AKS:
+In dit artikel worden de belangrijkste concepten geïntroduceerd voor het beveiligen van uw toepassingen in AKS:
 
-- [Beveiliging van hoofdcomponenten](#master-security)
-- [Knooppuntbeveiliging](#node-security)
-- [Clusterupgrades](#cluster-upgrades)
+- [Beveiliging van hoofd onderdelen](#master-security)
+- [Knooppunt beveiliging](#node-security)
+- [Cluster upgrades](#cluster-upgrades)
 - [Netwerkbeveiliging](#network-security)
 - [Kubernetes Secrets](#kubernetes-secrets)
 
-## <a name="master-security"></a>Hoofdbeveiliging
+## <a name="master-security"></a>Master beveiliging
 
-In AKS maken de Hoofdcomponenten van Kubernetes deel uit van de beheerde service van Microsoft. Elk AKS-cluster heeft zijn eigen single-tenant, dedicated Kubernetes master om de API Server, Scheduler, enz. Deze master wordt beheerd en onderhouden door Microsoft.
+In AKS maken de Kubernetes-hoofd onderdelen deel uit van de beheerde service van micro soft. Elk AKS-cluster heeft een eigen Kubernetes-Master met één Tenant om de API-server, scheduler, enzovoort te bieden. Dit model wordt beheerd en onderhouden door micro soft.
 
-Standaard gebruikt de Kubernetes API-server een openbaar IP-adres en een volledig gekwalificeerde domeinnaam (FQDN). U de toegang tot de API-server beheren met kubernetes-toegangsbesturingselementen voor rollen en Azure Active Directory. Zie [Azure AD-integratie met AKS][aks-aad]voor meer informatie.
+De Kubernetes API-server gebruikt standaard een openbaar IP-adres en een Fully Qualified Domain Name (FQDN). U kunt de toegang tot de API-server beheren met behulp van Kubernetes met toegangs beheer op basis van rollen en Azure Active Directory. Zie [Azure AD-integratie met AKS][aks-aad]voor meer informatie.
 
-## <a name="node-security"></a>Knooppuntbeveiliging
+## <a name="node-security"></a>Knooppunt beveiliging
 
-AKS-knooppunten zijn Azure virtuele machines die u beheert en onderhoudt. Linux-knooppunten draaien een geoptimaliseerde Ubuntu-distributie met behulp van de Moby-containerruntime. Windows Server-knooppunten (momenteel in preview in AKS) voeren een geoptimaliseerde Windows Server 2019-release uit en gebruiken ook de runtime van de Moby-container. Wanneer een AKS-cluster wordt gemaakt of opgeschaald, worden de knooppunten automatisch geïmplementeerd met de nieuwste beveiligingsupdates en -configuraties van het besturingssysteem.
+AKS-knoop punten zijn virtuele Azure-machines die u beheert en onderhoudt. Linux-knoop punten voeren een geoptimaliseerde Ubuntu-distributie uit met behulp van de Moby container runtime. Windows Server-knoop punten voeren een geoptimaliseerde versie van Windows Server 2019 uit en gebruiken ook de Moby-container runtime. Wanneer een AKS-cluster wordt gemaakt of geschaald, worden de knoop punten automatisch geïmplementeerd met de meest recente beveiligings updates en-configuraties van het besturings systeem.
 
-Het Azure-platform past automatisch beveiligingspatches voor het besturingssysteem toe op Linux-knooppunten op een nachtelijke basis. Als een Besturingssysteem-beveiligingsupdate van Linux een opnieuw opstarten vereist, wordt die reboot niet automatisch uitgevoerd. U handmatig opnieuw opstarten van de Linux-knooppunten, of een gemeenschappelijke aanpak is het gebruik [van Kured][kured], een open-source reboot daemon voor Kubernetes. Kured wordt uitgevoerd als een [DaemonSet][aks-daemonsets] en controleert elk knooppunt op de aanwezigheid van een bestand dat aangeeft dat een reboot vereist is. Reboots worden beheerd in het cluster met behulp van hetzelfde [cordon- en afvoerproces](#cordon-and-drain) als een clusterupgrade.
+Het Azure-platform past automatisch de beveiligings patches van het besturings systeem op een nacht in op Linux-knoop punten. Als voor een Linux-beveiligings update een host opnieuw moet worden opgestart, wordt dat opnieuw opstarten niet automatisch uitgevoerd. U kunt de Linux-knoop punten hand matig opnieuw opstarten of een gemeen schappelijke aanpak gebruiken [Kured][kured], een open source-daemon voor opnieuw opstarten voor Kubernetes. Kured wordt uitgevoerd als een [daemonset][aks-daemonsets] en bewaakt elk knoop punt voor de aanwezigheid van een bestand dat aangeeft dat de computer opnieuw moet worden opgestart. Opnieuw opstarten wordt via het cluster beheerd met hetzelfde Cordon- [en afvoer proces](#cordon-and-drain) als een cluster upgrade.
 
-Voor Windows Server-knooppunten (momenteel in preview in AKS) wordt de laatste updates niet automatisch uitgevoerd en toegepast voor Windows Server-knooppunten (momenteel in preview in AKS). Op een regelmatig schema rond de Windows Update-releasecyclus en uw eigen validatieproces moet u een upgrade uitvoeren op de Windows Server-knooppuntgroep(s) in uw AKS-cluster. Met dit upgradeproces worden knooppunten gemaakt waarmee de nieuwste Windows Server-afbeelding en -patches worden uitgevoerd en worden de oudere knooppunten verwijderd. Zie [Een knooppuntgroep in AKS upgraden][nodepool-upgrade]voor meer informatie over dit proces.
+Voor Windows Server-knoop punten wordt Windows Update niet automatisch uitgevoerd en worden de nieuwste updates toegepast. U moet een upgrade uitvoeren op de Windows Server-knooppunt groep (en) in uw AKS-cluster, volgens een regel matige planning rond de Windows Update release cyclus en uw eigen validatie proces. Dit upgrade proces maakt knoop punten waarop de nieuwste installatie kopie en patches van Windows Server worden uitgevoerd, waarna de oudere knoop punten worden verwijderd. Zie [een knooppunt groep bijwerken in AKS][nodepool-upgrade]voor meer informatie over dit proces.
 
-Knooppunten worden geïmplementeerd in een subnet van een privévirtueel netwerk, zonder dat openbare IP-adressen zijn toegewezen. Voor probleemoplossings- en beheerdoeleinden is SSH standaard ingeschakeld. Deze SSH-toegang is alleen beschikbaar via het interne IP-adres.
+Knoop punten worden geïmplementeerd in een particulier subnet van een virtueel netwerk, waaraan geen open bare IP-adressen zijn toegewezen. Voor het oplossen van problemen en beheer doeleinden is SSH standaard ingeschakeld. Deze SSH-toegang is alleen beschikbaar via het interne IP-adres.
 
-Om opslag te bieden, gebruiken de knooppunten Azure Managed Disks. Voor de meeste VM-nodeformaten zijn dit Premium-schijven die worden ondersteund door krachtige SSD's. De gegevens die op beheerde schijven zijn opgeslagen, worden automatisch versleuteld in rust binnen het Azure-platform. Om de redundantie te verbeteren, worden deze schijven ook veilig gerepliceerd in het Azure-datacenter.
+Om opslag te bieden, gebruiken de knoop punten Azure Managed Disks. Voor de meeste VM-knooppunt grootten zijn dit Premium-schijven die worden ondersteund door Ssd's met hoge prestaties. De gegevens die op Managed disks zijn opgeslagen, worden automatisch versleuteld in het Azure-platform. Om redundantie te verbeteren, worden deze schijven ook veilig gerepliceerd in het Azure-Data Center.
 
-Kubernetes-omgevingen, in AKS of elders, zijn momenteel niet helemaal veilig voor vijandig multi-tenant gebruik. Extra beveiligingsfuncties zoals *Pod Security Policies* of meer fijnmazige role-based access controls (RBAC) voor knooppunten maken exploits moeilijker. Echter, voor echte beveiliging bij het uitvoeren van vijandige multi-tenant workloads, een hypervisor is het enige niveau van beveiliging die u moet vertrouwen. Het beveiligingsdomein voor Kubernetes wordt het hele cluster, geen individueel knooppunt. Voor dit soort vijandige multi-tenant workloads moet u fysiek geïsoleerde clusters gebruiken. Zie [Aanbevolen procedures voor clusterisolatie in AKS][cluster-isolation]voor meer informatie over manieren om workloads te isoleren,
+Kubernetes-omgevingen, in AKS of elders, zijn momenteel niet volledig veilig voor het gebruik van meerdere tenants. Aanvullende beveiligings functies, zoals *pod-beveiligings beleid* of meer verfijnde, op rollen gebaseerde toegangs beheer (RBAC) voor knoop punten maken aanvallen moeilijker. Voor echte beveiliging bij het uitvoeren van vijandelijke multi tenant-workloads is een Hyper Visor echter het enige beveiligings niveau dat u moet vertrouwen. Het beveiligings domein voor Kubernetes wordt het hele cluster, niet een afzonderlijk knoop punt. Voor dit soort vijandelijke multi tenant-workloads moet u fysiek geïsoleerde clusters gebruiken. Zie [Aanbevolen procedures voor cluster isolatie in AKS][cluster-isolation]voor meer informatie over manieren om workloads te isoleren.
 
-## <a name="cluster-upgrades"></a>Clusterupgrades
+## <a name="cluster-upgrades"></a>Cluster upgrades
 
-Voor beveiliging en naleving of voor het gebruik van de nieuwste functies biedt Azure hulpprogramma's om de upgrade van een AKS-cluster en -componenten te orkestreren. Deze upgrade orchestration omvat zowel de Kubernetes master en agent componenten. U een [lijst met beschikbare Kubernetes-versies](supported-kubernetes-versions.md) voor uw AKS-cluster bekijken. Als u het upgradeproces wilt starten, geeft u een van deze beschikbare versies op. Azure sluit vervolgens veilig elk AKS-knooppunt af en voert de upgrade uit.
+Voor beveiliging en naleving, of voor het gebruik van de nieuwste functies, biedt Azure hulpprogram ma's voor het organiseren van de upgrade van een AKS-cluster en-onderdelen. Deze upgrade-indeling omvat zowel de Kubernetes-Master als de agent onderdelen. U kunt een [lijst met beschik bare Kubernetes-versies](supported-kubernetes-versions.md) voor uw AKS-cluster weer geven. Als u het upgrade proces wilt starten, geeft u een van deze beschik bare versies op. In azure wordt elk AKS-knoop punt veilig cordons en vertraagd en wordt de upgrade uitgevoerd.
 
 ### <a name="cordon-and-drain"></a>Cordon en afvoer
 
-Tijdens het upgradeproces worden AKS-knooppunten individueel uit het cluster gesnoerd, zodat er geen nieuwe pods op zijn gepland. De knooppunten worden vervolgens als volgt afgevoerd en geüpgraded:
+Tijdens het upgrade proces worden AKS-knoop punten afzonderlijk afgebakend van het cluster, zodat er geen nieuwe bestanden meer kunnen worden gepland. De knoop punten worden vervolgens als volgt geleegd en geüpgraded:
 
-- Er wordt een nieuw knooppunt in het knooppuntzwembad geïmplementeerd. Dit knooppunt draait de nieuwste OS-afbeelding en patches.
-- Een van de bestaande knooppunten is geïdentificeerd voor een upgrade. Pods op dit knooppunt worden op een elegante manier beëindigd en gepland op de andere knooppunten in de knooppuntgroep.
-- Dit bestaande knooppunt wordt verwijderd uit het AKS-cluster.
-- Het volgende knooppunt in het cluster wordt met hetzelfde proces afgezet en afgevoerd totdat alle knooppunten met succes zijn vervangen als onderdeel van het upgradeproces.
+- Er wordt een nieuw knoop punt in de knooppunt groep geïmplementeerd. Dit knoop punt voert de meest recente installatie kopie van het besturings systeem en patches uit.
+- Een van de bestaande knoop punten wordt geïdentificeerd voor de upgrade. Het Peul op dit knoop punt wordt op de juiste wijze beëindigd en gepland op de andere knoop punten in de knooppunt groep.
+- Dit bestaande knoop punt wordt uit het AKS-cluster verwijderd.
+- Het volgende knoop punt in het cluster is afgebakend en verwerkt met hetzelfde proces totdat alle knoop punten zijn vervangen als onderdeel van het upgrade proces.
 
-Zie [Een AKS-cluster upgraden][aks-upgrade-cluster]voor meer informatie.
+Zie [een AKS-cluster upgraden][aks-upgrade-cluster]voor meer informatie.
 
 ## <a name="network-security"></a>Netwerkbeveiliging
 
-Voor connectiviteit en beveiliging met on-premises netwerken u uw AKS-cluster implementeren in bestaande virtuele Azure-netwerksubnetten. Deze virtuele netwerken hebben mogelijk een Azure Site-to-Site VPN- of Express Route-verbinding terug naar uw on-premises netwerk. Kubernetes-ingress-controllers kunnen worden gedefinieerd met privé, interne IP-adressen, zodat services alleen toegankelijk zijn via deze interne netwerkverbinding.
+Voor connectiviteit en beveiliging met on-premises netwerken kunt u uw AKS-cluster implementeren in bestaande subnetten van het virtuele Azure-netwerk. Deze virtuele netwerken kunnen een Azure site-naar-site VPN-of Express route-verbinding weer naar uw on-premises netwerk hebben. Kubernetes ingress-controllers kunnen worden gedefinieerd met persoonlijke, interne IP-adressen, zodat services alleen toegankelijk zijn via deze interne netwerk verbinding.
 
 ### <a name="azure-network-security-groups"></a>Netwerkbeveiligingsgroepen in Azure
 
-Als u de verkeersstroom in virtuele netwerken wilt filteren, gebruikt Azure groepsregels voor netwerkbeveiliging. Deze regels definiëren de bron- en bestemmings-IP-bereiken, poorten en protocollen die toegang tot bronnen zijn toegestaan of geweigerd. Er worden standaardregels gemaakt om TLS-verkeer toe te staan op de Kubernetes API-server. Terwijl u services maakt met load balancers, poorttoewijzingen of invallende routes, wijzigt AKS automatisch de netwerkbeveiligingsgroep om verkeer op de juiste manier te laten stromen.
+Azure gebruikt regels voor netwerk beveiligings groepen om de stroom van verkeer in virtuele netwerken te filteren. Met deze regels worden de bron-en doel-IP-adresbereiken, poorten en protocollen gedefinieerd die toegang tot bronnen toestaan of weigeren. Standaard regels worden gemaakt om TLS-verkeer toe te staan voor de Kubernetes-API-server. Bij het maken van services met load balancers, poort toewijzingen of ingangs routes, wijzigt AKS automatisch de netwerk beveiligings groep voor verkeer dat op de juiste wijze stroomt.
 
 ## <a name="kubernetes-secrets"></a>Kubernetes Secrets
 
-Een Kubernetes *Secret* wordt gebruikt om gevoelige gegevens in pods te injecteren, zoals toegangsreferenties of sleutels. U maakt eerst een geheim met behulp van de Kubernetes API. Wanneer u uw pod of implementatie definieert, kan een specifiek geheim worden aangevraagd. Geheimen worden alleen verstrekt aan knooppunten die een geplande pod die het vereist hebben, en het geheim wordt opgeslagen in *tmpfs,* niet geschreven naar schijf. Wanneer de laatste pod op een knooppunt waarvoor een geheim vereist is, wordt verwijderd uit de tmpfs van het knooppunt. Geheimen worden opgeslagen in een bepaalde naamruimte en zijn alleen toegankelijk via pods binnen dezelfde naamruimte.
+Een Kubernetes- *geheim* wordt gebruikt voor het injecteren van gevoelige gegevens in een Peul, zoals toegangs referenties of sleutels. U maakt eerst een geheim met behulp van de Kubernetes-API. Wanneer u uw Pod of implementatie definieert, kan een specifiek geheim worden aangevraagd. Geheimen worden alleen door gegeven aan knoop punten met een geplande pod waarvoor deze zijn vereist en het geheim wordt opgeslagen in *tmpfs*, niet naar de schijf geschreven. Wanneer de laatste pod op een knoop punt dat een geheim vereist, wordt verwijderd, wordt het geheim verwijderd uit de tmpfs van het knoop punt. Geheimen worden opgeslagen in een opgegeven naam ruimte en kunnen alleen worden gebruikt door een Peul binnen dezelfde naam ruimte.
 
-Het gebruik van Geheimen vermindert de gevoelige informatie die wordt gedefinieerd in het pod- of serviceYAML-manifest. In plaats daarvan vraagt u het geheim dat is opgeslagen in Kubernetes API Server als onderdeel van uw YAML-manifest. Deze aanpak biedt alleen de specifieke pod toegang tot het geheim. Let op: de raw secret manifest bestanden bevat de geheime gegevens in base64 formaat (zie de [officiële documentatie][secret-risks] voor meer details). Daarom moet dit bestand worden behandeld als gevoelige informatie en nooit worden toegewezen aan bronbeheer.
+Het gebruik van geheimen vermindert de gevoelige informatie die is gedefinieerd in het Pod-of service YAML-manifest. In plaats daarvan vraagt u het geheim op dat is opgeslagen in de Kubernetes API-server als onderdeel van uw YAML-manifest. Deze aanpak biedt alleen de specifieke pod toegang tot het geheim. Opmerking: de onbewerkte geheime manifest bestanden bevatten de geheime gegevens in Base64-indeling (Zie de [officiële documentatie][secret-risks] voor meer informatie). Dit bestand moet daarom worden behandeld als gevoelige informatie en nooit worden doorgevoerd in broncode beheer.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie [Een AKS-cluster upgraden][aks-upgrade-cluster]om aan de slag te gaan met het beveiligen van uw AKS-clusters.
+Zie [een AKS-cluster upgraden][aks-upgrade-cluster]om aan de slag te gaan met het beveiligen van uw AKS-clusters.
 
-Zie [Aanbevolen procedures voor clusterbeveiliging en -upgrades in AKS][operator-best-practices-cluster-security] en Aanbevolen procedures voor [podbeveiliging in AKS][developer-best-practices-pod-security]voor bijbehorende aanbevolen procedures.
+Zie [Aanbevolen procedures voor het beveiligen van clusters en upgrades in AKS][operator-best-practices-cluster-security] en [Aanbevolen procedures voor pod Security in AKS][developer-best-practices-pod-security]voor de bijbehorende aanbevolen procedures.
 
-Zie de volgende artikelen voor meer informatie over de belangrijkste Kubernetes- en AKS-concepten:
+Raadpleeg de volgende artikelen voor meer informatie over de belangrijkste Kubernetes-en AKS-concepten:
 
-- [Kubernetes / AKS-clusters en workloads][aks-concepts-clusters-workloads]
-- [Kubernetes / AKS-identiteit][aks-concepts-identity]
-- [Kubernetes / AKS virtuele netwerken][aks-concepts-network]
-- [Kubernetes / AKS-opslag][aks-concepts-storage]
-- [Kubernetes / AKS-schaal][aks-concepts-scale]
+- [Kubernetes/AKS-clusters en-workloads][aks-concepts-clusters-workloads]
+- [Kubernetes/AKS-identiteit][aks-concepts-identity]
+- [Kubernetes/AKS virtuele netwerken][aks-concepts-network]
+- [Kubernetes/AKS-opslag][aks-concepts-storage]
+- [Kubernetes/AKS-schaal][aks-concepts-scale]
 
 <!-- LINKS - External -->
 [kured]: https://github.com/weaveworks/kured

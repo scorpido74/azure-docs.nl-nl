@@ -3,12 +3,12 @@ title: Azure Red Hat open Shift v3. x configureren met Azure Monitor voor contai
 description: In dit artikel wordt beschreven hoe u de bewaking van een Kubernetes-cluster configureert met Azure Monitor die worden gehost op Azure Red Hat open Shift versie 3 en hoger.
 ms.topic: conceptual
 ms.date: 04/02/2020
-ms.openlocfilehash: 98ac5752e047c4f5f6db63d228bec7c47271aa00
-ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
-ms.translationtype: HT
+ms.openlocfilehash: c39eda03fc5fb7521bcf08c52eaabc28d4cb1256
+ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "82166290"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82204131"
 ---
 # <a name="configure-azure-red-hat-openshift-v3-with-azure-monitor-for-containers"></a>Azure Red Hat open Shift v3 configureren met Azure Monitor voor containers
 
@@ -38,7 +38,7 @@ Azure Monitor voor containers biedt ondersteuning voor het bewaken van Azure Red
 
 ## <a name="enable-for-a-new-cluster-using-an-azure-resource-manager-template"></a>Inschakelen voor een nieuw cluster met behulp van een Azure Resource Manager sjabloon
 
-Voer de volgende stappen uit om een Azure Red Hat open Shift-cluster te implementeren waarvoor bewaking is ingeschakeld. Voordat u verdergaat, leest u de zelf studie [een Azure Red Hat open Shift-cluster maken](../../openshift/tutorial-create-cluster.md#prerequisites) om inzicht te krijgen in de afhankelijkheden die u moet configureren zodat uw omgeving correct is ingesteld.
+Voer de volgende stappen uit om een Azure Red Hat open Shift-cluster te implementeren waarvoor bewaking is ingeschakeld. Voordat u verdergaat, leest u de zelf studie [een Azure Red Hat open Shift-cluster maken](../../openshift/tutorial-create-cluster.md) om inzicht te krijgen in de afhankelijkheden die u moet configureren zodat uw omgeving correct is ingesteld.
 
 Deze methode bevat twee JSON-sjablonen. Met één sjabloon wordt de configuratie opgegeven voor het implementeren van het cluster waarvoor bewaking is ingeschakeld. de andere bevat parameter waarden die u configureert om het volgende op te geven:
 

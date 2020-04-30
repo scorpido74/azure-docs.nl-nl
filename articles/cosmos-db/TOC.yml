@@ -136,10 +136,10 @@
         - name: Doorvoer voor containers en databases inrichten
           displayName: 'request units, RUs, RU, limits, database throughput, shared throughput, container throughput'
           href: set-throughput.md
-        - name: Doorvoer inrichten - autopilot-modus
-          href: provision-throughput-autopilot.md
-        - name: Veelgestelde vragen over AutoPilot
-          href: autopilot-faq.md
+        - name: Doorvoer inrichten - modus voor automatische schaalaanpassing
+          href: provision-throughput-autoscale.md
+        - name: Veelgestelde vragen over automatische schaalaanpassing
+          href: autoscale-faq.md
     - name: SQL-query
       items:
         - name: Aan de slag
@@ -518,6 +518,7 @@
         - name: Totale eigendomskosten (TCO)
           href: total-cost-ownership.md
         - name: Meer informatie over uw factuur
+          displayName: free tier
           href: understand-your-bill.md
         - name: Kosten voor ingerichte doorvoer optimaliseren
           displayName: 'request units, RUs, RU'
@@ -531,6 +532,7 @@
         - name: Kosten voor meerdere regio's optimaliseren
           href: optimize-cost-regions.md
         - name: Kosten voor ontwikkeling/testen optimaliseren
+          displayName: free tier
           href: optimize-dev-test.md
         - name: Kosten optimaliseren met gereserveerde capaciteit
           href: cosmos-db-reserved-capacity.md

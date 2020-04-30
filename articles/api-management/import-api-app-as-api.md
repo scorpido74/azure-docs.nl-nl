@@ -10,14 +10,14 @@ ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: tutorial
-ms.date: 11/22/2017
+ms.date: 04/22/2020
 ms.author: apimpm
-ms.openlocfilehash: bf4039b661ac7e0ee9630b86b9e15d1388991431
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: e6195409a08498527ec40a2ddd2f909a092c9d19
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "74108499"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82202822"
 ---
 # <a name="import-an-api-app-as-an-api"></a>Een API-app importeren als API
 
@@ -32,14 +32,14 @@ In dit artikel leert u het volgende:
 
 ## <a name="prerequisites"></a>Vereisten
 
-+ De volgende quickstart voltooien: [een azure API-beheerexemplaar maken](get-started-create-service-instance.md)
++ Voer de volgende Snelstartgids uit: [een Azure API Management-exemplaar maken](get-started-create-service-instance.md)
 + Zorg ervoor dat er een API-app in uw abonnement aanwezig is. Zie [App Service-documentatie](https://docs.microsoft.com/azure/app-service/) voor meer informatie
 
 [!INCLUDE [api-management-navigate-to-instance.md](../../includes/api-management-navigate-to-instance.md)]
 
 ## <a name="import-and-publish-a-back-end-api"></a><a name="create-api"> </a>Een back-end-API importeren en publiceren
 
-1. Selecteer **API's** bij **API MANAGEMENT**.
+1. Navigeer naar uw API Management-service in de Azure Portal en selecteer **api's** in het menu.
 2. Selecteer **API-app** uit de lijst **Nieuwe API toevoegen**.
 
     ![API-app](./media/import-api-app-as-api/api-app.png)
@@ -56,9 +56,10 @@ In dit artikel leert u het volgende:
 
     * **Starter**
     * **Onbeperkt**   
-7. Selecteer **Maken**.
+7. Voer andere API-instellingen in. U kunt de waarden instellen tijdens het maken of deze later configureren door naar het tabblad **instellingen** te gaan. De instellingen worden beschreven in de zelf studie [uw eerste API importeren en publiceren](import-and-publish.md#-import-and-publish-a-backend-api) .
+8. Selecteer **Maken**.
 
-## <a name="test-the-new-api-in-the-azure-portal"></a>De nieuwe API testen in de Azure-portal
+## <a name="test-the-new-api-in-the-azure-portal"></a>De nieuwe API in het Azure Portal testen
 
 Bewerkingen kunnen rechtstreeks vanuit Azure Portal worden aangeroepen. Dit is een handige manier om de bewerkingen van een API te bekijken en te testen.  
 

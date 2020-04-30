@@ -4,19 +4,19 @@ description: Meer informatie over hoe u uw Azure IoT Edge oplossing van ontwikke
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 4/24/2020
+ms.date: 4/25/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: 6ec196408c047682be527ee21735ce809f5916e9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: HT
+ms.openlocfilehash: 173e663b66eeca676e8120dd46e8eca8b0126a17
+ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
+ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 04/28/2020
-ms.locfileid: "82191835"
+ms.locfileid: "82204199"
 ---
 # <a name="prepare-to-deploy-your-iot-edge-solution-in-production"></a>De implementatie van uw IoT Edge oplossing in productie voorbereiden
 
@@ -174,12 +174,22 @@ Voor een voor beeld van een label Conventie raadpleegt u [de IOT Edge runtime bi
 
 U weet hoe u uw container installatie kopieën opslaat voor aangepaste code modules in uw persoonlijke Azure-REGI ster, maar u kunt deze ook gebruiken om open bare container installatie kopieën op te slaan, zoals voor de edgeAgent-en edgHub-runtime modules. Dit kan nodig zijn als u zeer nauw firewall beperkingen hebt, omdat deze runtime-containers worden opgeslagen in de micro soft-Container Registry (MCR).
 
-Haal de installatie kopieën op met de docker-pull-opdracht die u in het REGI ster wilt plaatsen. Houd er rekening mee dat u de installatie kopieën moet bijwerken met elke nieuwe versie van IoT Edge runtime.
+Haal de installatie kopieën op met de docker-pull-opdracht die u in uw privé register wilt plaatsen. Houd er rekening mee dat u de installatie kopieën moet bijwerken met elke nieuwe versie van IoT Edge runtime.
 
 | IoT Edge runtime-container | Docker-pull-opdracht |
 | --- | --- |
 | [Azure IoT Edge-agent](https://hub.docker.com/_/microsoft-azureiotedge-agent) | `docker pull mcr.microsoft.com/azureiotedge-agent` |
 | [Azure IoT Edge HUb](https://hub.docker.com/_/microsoft-azureiotedge-hub) | `docker pull mcr.microsoft.com/azureiotedge-hub` |
+
+Zorg er vervolgens voor dat u de afbeeldings verwijzingen in het bestand Deployment. Temp late. json voor de edgeAgent-en edgeHub-systeem modules bijwerkt. Vervang `mcr.microsoft.com` door de naam en server van uw REGI ster voor beide modules.
+
+* edgeAgent:
+
+    `"image": "<registry name and server>/azureiotedge-agent:1.0",`
+
+* edgeHub:
+
+    `"image": "<registry name and server>/azureiotedge-hub:1.0",`
 
 ## <a name="networking"></a>Netwerken
 

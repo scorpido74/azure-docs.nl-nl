@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: seoapr2020
-ms.date: 04/23/2020
-ms.openlocfilehash: 93eddcd8ed0dae6ac6f010dce2e138fc018a06fa
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: HT
+ms.date: 04/27/2020
+ms.openlocfilehash: 48b322f32bd6e8f2a2da0c5be8eb7b7987881f83
+ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
+ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 04/28/2020
-ms.locfileid: "82190653"
+ms.locfileid: "82204114"
 ---
 # <a name="use-apache-oozie-with-apache-hadoop-to-define-and-run-a-workflow-on-linux-based-azure-hdinsight"></a>Apache Oozie gebruiken met Apache Hadoop voor het definiëren en uitvoeren van een werkstroom in Azure HDInsight op basis van Linux
 
@@ -644,67 +644,6 @@ U kunt de coördinator gebruiken om een start, een eind en de frequentie van het
 
     ![OOzie web console-taak informatie tabblad](./media/hdinsight-use-oozie-linux-mac/coordinator-action-job.png)
 
-## <a name="troubleshooting"></a>Problemen oplossen
-
-Met de Oozie-gebruikers interface kunt u Oozie-logboeken weer geven. De Oozie-gebruikers interface bevat ook koppelingen naar de JobTracker-logboeken voor de MapReduce taken die door de werk stroom zijn gestart. Het patroon voor het oplossen van problemen moet zijn:
-
-   1. Bekijk de taak in de Oozie-webgebruikersinterface.
-
-   2. Als er een fout of fout optreedt voor een specifieke actie, selecteert u de actie om te zien of het **fout bericht** veld meer informatie over de fout bevat.
-
-   3. Gebruik, indien beschikbaar, de URL van de actie om meer details weer te geven, zoals de JobTracker-logboeken, voor de actie.
-
-Hieronder vindt u specifieke fouten die u kunt tegen komen en hoe u deze kunt oplossen.
-
-### <a name="ja009-cant-initialize-cluster"></a>JA009: kan cluster niet initialiseren
-
-**Symptomen**: de taak status wordt gewijzigd in **opgeschort**. Details voor de taak geven de `RunHiveScript` status weer als **START_MANUAL**. Als u de actie selecteert, wordt het volgende fout bericht weer gegeven:
-
-    JA009: Cannot initialize Cluster. Please check your configuration for map
-
-**Oorzaak**: de Azure Blob-opslag adressen die worden gebruikt in het bestand **Job. XML** bevatten niet de opslag container of de naam van het opslag account. De indeling van het Blob-opslag `wasbs://containername@storageaccountname.blob.core.windows.net`adres moet zijn.
-
-**Oplossing**: Wijzig de Blob Storage-adressen die de taak gebruikt.
-
-### <a name="ja002-oozie-isnt-allowed-to-impersonate-ltusergt"></a>JA002: Oozie is niet toegestaan om de &lt;gebruiker te imiteren&gt;
-
-**Symptomen**: de taak status wordt gewijzigd in **opgeschort**. Details voor de taak geven de `RunHiveScript` status weer als **START_MANUAL**. Als u de actie selecteert, wordt het volgende fout bericht weer gegeven:
-
-    JA002: User: oozie is not allowed to impersonate <USER>
-
-**Oorzaak**: de huidige machtigings instellingen staan niet toe dat Oozie het opgegeven gebruikers account imiteert.
-
-**Oplossing**: Oozie kunnen gebruikers in de **`users`** groep imiteren. Gebruik de `groups USERNAME` om de groepen weer te geven waarvan het gebruikers account lid is. Als de gebruiker geen lid is van de **`users`** groep, gebruikt u de volgende opdracht om de gebruiker toe te voegen aan de groep:
-
-    sudo adduser USERNAME users
-
-> [!NOTE]  
-> Het kan enkele minuten duren voordat HDInsight detecteert dat de gebruiker is toegevoegd aan de groep.
-
-### <a name="launcher-error-sqoop"></a>FOUT bij starten (Sqoop)
-
-**Symptomen**: de taak status wordt gewijzigd in **beëindigd**. Details voor de taak tonen de `RunSqoopExport` status als **fout**. Als u de actie selecteert, wordt het volgende fout bericht weer gegeven:
-
-    Launcher ERROR, reason: Main class [org.apache.oozie.action.hadoop.SqoopMain], exit code [1]
-
-**Oorzaak**: Sqoop kan het database stuur programma dat is vereist voor toegang tot de data base niet laden.
-
-**Oplossing**: wanneer u Sqoop van een Oozie-taak gebruikt, moet u het database stuur programma toevoegen aan de andere resources, zoals de werk stroom. XML, die door de taak wordt gebruikt. U kunt ook verwijzen naar het archief dat het database stuur programma `<sqoop>...</sqoop>` bevat vanuit de sectie van de werk stroom. XML.
-
-Voor de taak in dit document gebruikt u bijvoorbeeld de volgende stappen:
-
-1. Kopieer het `mssql-jdbc-7.0.0.jre8.jar` bestand naar de **/tutorials/useoozie** -map:
-
-    ```bash
-    hdfs dfs -put /usr/share/java/sqljdbc_7.0/enu/mssql-jdbc-7.0.0.jre8.jar /tutorials/useoozie/mssql-jdbc-7.0.0.jre8.jar
-    ```
-
-2. Wijzig de `workflow.xml` om de volgende XML toe te voegen op een `</sqoop>`nieuwe regel:
-
-    ```xml
-    <archive>mssql-jdbc-7.0.0.jre8.jar</archive>
-    ```
-
 ## <a name="next-steps"></a>Volgende stappen
 
 In dit artikel hebt u geleerd hoe u een Oozie-werk stroom definieert en hoe u een Oozie-taak uitvoert. Raadpleeg de volgende artikelen voor meer informatie over het werken met HDInsight:
@@ -712,3 +651,4 @@ In dit artikel hebt u geleerd hoe u een Oozie-werk stroom definieert en hoe u ee
 * [Gegevens uploaden voor Apache Hadoop-taken in HDInsight](hdinsight-upload-data.md)
 * [Apache Sqoop gebruiken met Apache Hadoop in HDInsight](hadoop/apache-hadoop-use-sqoop-mac-linux.md)
 * [Apache Hive gebruiken met Apache Hadoop op HDInsight](hadoop/hdinsight-use-hive.md)
+* [Problemen met Apache Oozie oplossen](./troubleshoot-oozie.md)

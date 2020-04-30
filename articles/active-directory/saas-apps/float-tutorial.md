@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 04/23/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 05526a82ed5fc53a5c25e4c87cab1fa56a814645
-ms.sourcegitcommit: b1e25a8a442656e98343463aca706f4fde629867
+ms.openlocfilehash: b057f817fb0c30e45c08f8d708441bd52122af7b
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "82172593"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82206745"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-float"></a>Zelf studie: Azure Active Directory-integratie met eenmalige aanmelding (SSO) met float
 
@@ -83,28 +83,13 @@ Volg deze stappen om Azure AD SSO in te scha kelen in de Azure Portal.
 
 1. Als u de toepassing in de gestarte modus **IDP** wilt configureren, voert u in de sectie **basis configuratie van SAML** de waarden voor de volgende velden in:
 
-    a. Typ in het tekstvak **id** een van de volgende url's:
+    a. Typ in het tekstvak **id** de volgende URL: `https://app.float.com/sso/metadata`.
 
-    | |
-    |--|
-    | `https://app.float.com/sso/metadata`|
-    | `https://app.develop.float.com/sso/metadata`|
-
-    b. Typ in het tekstvak **antwoord-URL** een URL met behulp van een van de volgende patronen:
-
-    | |
-    |--|
-    | `https://<hostname>.float.com/sso/azuread`|
-    | `https://<hostname>.develop.float.com/sso/azuread`|
+    b. Typ in het tekstvak **antwoord-URL** een URL met behulp van `https://<hostname>.float.com/sso/azuread`het patroon.
 
 1. Klik op **Extra URL's instellen** en voer de volgende stap uit als u de toepassing in de door **SP** geïnitieerde modus wilt configureren:
 
-    Typ in het tekstvak **URL voor aanmelding** een URL met een van de volgende patronen:
-
-    | |
-    |--|
-    | `https://<hostname>.float.com/login`|
-    | `https://<hostname>.develop.float.com/login`|
+    Typ in het tekstvak **URL voor aanmelding** een URL in het patroon `https://<hostname>.float.com/login`.
 
     > [!NOTE]
     > Dit zijn geen echte waarden. Werk deze waarden bij met de werkelijke-id, de antwoord-URL en de aanmeldings-URL. Neem contact op met het [ondersteunings team voor client](mailto:support@float.com) gebruik om deze waarden op te halen. U kunt ook verwijzen naar het patroon dat wordt weergegeven in de sectie **Standaard SAML-configuratie** in de Azure-portal.

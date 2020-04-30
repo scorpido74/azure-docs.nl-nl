@@ -1,131 +1,134 @@
 ---
-title: Afbeeldingen taggen in een labelproject
+title: Afbeeldingen labelen in een label project
 title.suffix: Azure Machine Learning
-description: Meer informatie over het gebruik van de hulpprogramma's voor het taggen van gegevens in een Azure Machine Learning-labelingproject.
+description: Meer informatie over het gebruik van de hulpprogram ma's voor gegevens labelen in een Azure Machine Learning label project.
 author: lobrien
 ms.author: laobri
 ms.service: machine-learning
 ms.topic: tutorial
-ms.date: 11/04/2019
-ms.openlocfilehash: 371b99c794feb4a64eb3e9af389020e25d14eedb
-ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
+ms.date: 04/09/2020
+ms.openlocfilehash: 2c21a8770209871be4d871a08e6355e4ca7ed169
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80879425"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82204318"
 ---
-# <a name="tag-images-in-a-labeling-project"></a>Afbeeldingen taggen in een labelproject
+# <a name="tag-images-in-a-labeling-project"></a>Afbeeldingen labelen in een label project
 
-Nadat uw projectbeheerder [een labelproject heeft gemaakt](https://docs.microsoft.com/azure/machine-learning/how-to-create-labeling-projects#create-a-labeling-project) in Azure Machine Learning, u het labelen (openbare voorbeeld) gebruiken om snel gegevens voor te bereiden op een Machine Learning-project. In dit artikel wordt beschreven:
+Nadat de Project beheerder [een label project heeft gemaakt](https://docs.microsoft.com/azure/machine-learning/how-to-create-labeling-projects#create-a-labeling-project) in azure machine learning, kunt u het hulp programma labelen (open bare preview) gebruiken om snel gegevens voor een machine learning project voor te bereiden. In dit artikel wordt beschreven:
 
 > [!div class="checklist"]
-> * Toegang krijgen tot uw labelingprojecten
-> * De etiketteringsgereedschappen
-> * De hulpprogramma's gebruiken voor specifieke etiketteringstaken
+> * Toegang krijgen tot uw etiket projecten
+> * De hulp middelen voor labels
+> * De hulpprogram ma's voor specifieke label taken gebruiken
 
 ## <a name="prerequisites"></a>Vereisten
 
-* De URL van de labelportal voor een lopend project voor het labelen van gegevens
-* Een [Microsoft-account](https://account.microsoft.com/account) of een Azure Active Directory-account voor de organisatie en het project
+* Een [Microsoft-account](https://account.microsoft.com/account) -of Azure Active Directory-account voor de organisatie en het project
+* Inzender niveau toegang tot de werk ruimte die het label project bevat.
 
-> [!NOTE]
-> De projectbeheerder kan de URL van de labelportal vinden op het tabblad **Details** van de pagina **Projectdetails.**
+## <a name="sign-in-to-the-workspace"></a>Aanmelden bij de werk ruimte
 
-## <a name="sign-in-to-the-projects-labeling-portal"></a>Aanmelden bij de etiketteringsportal van het project
+1. Meld u aan bij [Azure machine learning Studio](https://ml.azure.com).
 
-Ga naar de URL van de labelportal die is verstrekt door de projectbeheerder. Meld u aan met het e-mailaccount dat de beheerder heeft gebruikt om u aan het team toe te voegen. Voor de meeste gebruikers is dit uw Microsoft-account. Als het labelproject Azure Active Directory gebruikt, meldt u zich zo aan.
+1. Selecteer het abonnement en de werk ruimte die het label project bevat.  Vraag deze informatie aan bij de Project beheerder.
 
-## <a name="understand-the-labeling-task"></a>De etiketteringstaak begrijpen
+1. Selecteer **gegevens labelen** aan de linkerkant om het project te zoeken.  
 
-Nadat u zich hebt aangemeld, ziet u de overzichtspagina van het project.
+1. Selecteer de project naam in de lijst.
 
-Ga naar **Gedetailleerde instructies weergeven**. Deze instructies zijn specifiek voor uw project. Ze leggen uit voor welke gegevens u te maken krijgt, hoe u uw beslissingen moet nemen en andere relevante informatie. Nadat u deze informatie hebt gelezen, gaat u terug naar de projectpagina en selecteert **u Labeling starten**.
+## <a name="understand-the-labeling-task"></a>De taak labelen begrijpen
 
-## <a name="common-features-of-the-labeling-task"></a>Gemeenschappelijke kenmerken van de etiketteringstaak
+Wanneer u het project hebt geselecteerd, selecteert u boven aan de pagina **Label gegevens**.
 
-In alle taken voor het labelen van afbeeldingen kiest u een geschikte tag of tags uit een set die is opgegeven door de projectbeheerder. U de eerste negen tags selecteren met behulp van de nummertoetsen op uw toetsenbord.  
+U ziet de instructies die specifiek zijn voor uw project. Hierin wordt uitgelegd welk type gegevens u gebruikt, hoe u uw beslissingen moet nemen en andere relevante informatie. Nadat u deze informatie hebt gelezen, klikt u boven aan de pagina **taken**.  Of Klik onder aan de pagina op **Start labelen**.
 
-Bij taken voor beeldclassificatie u ervoor kiezen om meerdere afbeeldingen tegelijk weer te geven. Gebruik de pictogrammen boven het afbeeldingsgebied om de indeling te selecteren. 
+## <a name="common-features-of-the-labeling-task"></a>Algemene functies van de label taak
 
-Als u alle weergegeven afbeeldingen tegelijkertijd wilt selecteren, gebruikt u **Alle selecteren**. Als u afzonderlijke afbeeldingen wilt selecteren, gebruikt u de knop Cirkelselectie in de rechterbovenhoek van de afbeelding. U moet ten minste één afbeelding selecteren om een tag toe te passen. Als u meerdere afbeeldingen selecteert, wordt elke tag die u selecteert toegepast op alle geselecteerde afbeeldingen.
+In alle taken voor het labelen van afbeeldingen kiest u een geschikte tag of labels uit een set die is opgegeven door de Project beheerder. U kunt de eerste negen tags selecteren met behulp van de cijfer toetsen op het toetsen bord.  
 
-Hier hebben we gekozen voor een twee-bij-twee lay-out en staan op het punt om de tag "Mammal" toe te passen op de beelden van de beer en orka. Het beeld van de haai was al gelabeld als "Kraakbeenvissen," en de leguaan is nog niet getagd.
+In installatie kopie classificatie taken kunt u ervoor kiezen om meerdere installatie kopieën tegelijk weer te geven. Gebruik de pictogrammen boven het gebied afbeelding om de indeling te selecteren. 
 
-![Meerdere afbeeldingsindelingen en selectie](./media/how-to-label-images/layouts.png)
+Als u alle weer gegeven afbeeldingen tegelijk wilt selecteren, gebruikt u **alle selecteren**. Als u afzonderlijke installatie kopieën wilt selecteren, gebruikt u de ronde selectie knop in de rechter bovenhoek van de afbeelding. U moet ten minste één afbeelding selecteren om een tag toe te passen. Als u meerdere installatie kopieën selecteert, worden alle tags die u selecteert, toegepast op alle geselecteerde installatie kopieën.
+
+Hier hebben we een twee-op-twee-indeling gekozen en het label "zoog" toegepast op de installatie kopieën van de beer en Orca. De afbeelding van de haai is al gelabeld als "Cartilaginous vissen" en het Iguana is nog niet gelabeld.
+
+![Indelingen en selecties van meerdere afbeeldingen](./media/how-to-label-images/layouts.png)
 
 > [!Important] 
-> Wissel alleen van lay-out wanneer u een nieuwe pagina met niet-gelabelde gegevens hebt. Als u van indeling wisselt, wordt het werk voor het taggen van de pagina gewist.
+> Schakel alleen indelingen in als u een nieuwe pagina hebt met niet-gelabelde gegevens. Als u inschakelt, wordt de code ring van de pagina in uitvoering gewist.
 
-Azure schakelt de knop **Verzenden** in wanneer u alle afbeeldingen op de pagina hebt getagd. Selecteer **Verzenden** om uw werk op te slaan.
+In azure wordt de **Verzend** knop ingeschakeld wanneer u alle afbeeldingen op de pagina hebt gelabeld. Selecteer **verzenden** om uw werk op te slaan.
 
-Nadat u tags voor de gegevens bij de hand hebt ingediend, vernieuwt Azure de pagina met een nieuwe set afbeeldingen uit de werkwachtrij.
+Nadat u labels voor de gegevens hebt verzonden, vernieuwt Azure de pagina met een nieuwe set installatie kopieën uit de werk wachtrij.
 
 ### <a name="assisted-machine-learning"></a>Ondersteunde machine learning 
 
-Machine learning-algoritmen kunnen worden geactiveerd tijdens een classificatietaak met meerdere klassen of meerdere labelen. Als deze algoritmen zijn ingeschakeld in uw project, ziet u mogelijk het volgende:
+Machine learning-algoritmen kunnen worden geactiveerd tijdens een classificatie taak met meerdere klassen of meerdere labels. Als deze algoritmen in uw project zijn ingeschakeld, ziet u mogelijk het volgende:
 
-* Nadat een bepaalde hoeveelheid afbeeldingen is gelabeld, ziet u mogelijk Taken die boven aan het scherm **zijn geclusterd** naast de projectnaam.  Dit betekent dat afbeeldingen worden gegroepeerd om vergelijkbare afbeeldingen op dezelfde pagina weer te geven.  Schakel dan over naar een van de meerdere afbeeldingsweergaven om te profiteren van de groepering.  
+* Nadat een aantal installatie kopieën zijn gelabeld, ziet u mogelijk taken die boven aan het scherm worden **geclusterd** naast de project naam.  Dit betekent dat installatie kopieën samen worden gegroepeerd om Vergelijk bare afbeeldingen op dezelfde pagina te presen teren.  Als dit het geval is, gaat u naar een van de weer gaven met meerdere afbeeldingen om de groepering te benutten.  
 
-* Op een later moment ziet u **taken die vooraf zijn gelabeld** naast de projectnaam.  Afbeeldingen worden dan weergegeven met een voorgesteld label dat afkomstig is van een machine learning-classificatiemodel. Geen enkel machine learning-model heeft 100% nauwkeurigheid. Hoewel we alleen afbeeldingen gebruiken waarvan het model zeker is, kunnen deze afbeeldingen nog steeds onjuist vooraf zijn gelabeld.  Wanneer u deze labels ziet, corrigeert u eventuele verkeerde labels voordat u de pagina indient.  
+* Op een later tijdstip ziet u mogelijk taken met een **Label** naast de project naam.  Afbeeldingen worden weer gegeven met een aanbevolen label dat afkomstig is van een machine learning classificatie model. Geen van de machine learning model heeft een nauw keurigheid van 100%. We gebruiken alleen installatie kopieën waarvoor het model betrouwbaar is, maar deze installatie kopieën zijn mogelijk nog niet goed gelabeld.  Wanneer u deze labels ziet, corrigeert u de verkeerde labels voordat u de pagina verzendt.  
 
-Vooral in het begin van een labelingproject kan het machine learning-model alleen nauwkeurig genoeg zijn om een kleine subset van afbeeldingen vooraf te labelen. Zodra deze afbeeldingen zijn gelabeld, zal het labelingproject terugkeren naar handmatige etikettering om meer gegevens te verzamelen voor de volgende ronde modeltraining. Na verloop van tijd zal het model meer vertrouwen krijgen in een hoger percentage afbeeldingen, wat later in het project resulteert in meer prelabeltaken.
+Met name in een label project is het machine learning model mogelijk alleen nauw keurig genoeg om een kleine subset van afbeeldingen te labelen. Zodra deze afbeeldingen zijn gelabeld, keert het labelen project terug naar hand matige labeling om meer gegevens te verzamelen voor de volgende ronde van model training. In de loop van de tijd zal het model meer vertrouwen hebben over een hoger gedeelte van de installatie kopieën, wat resulteert in meer prelabel-taken verderop in het project.
 
-## <a name="tag-images-for-multi-class-classification"></a>Afbeeldingen taggen voor classificatie van meerdere klassen
+## <a name="tag-images-for-multi-class-classification"></a>Tag-installatie kopieën voor classificatie met meerdere klassen
 
-Als uw project het type 'Afbeeldingsclassificatie multiklasse' is, wijst u één tag toe aan de hele afbeelding. Als u de routebeschrijving op elk gewenst moment wilt bekijken, gaat u naar de pagina **Instructies** en selecteert **u Gedetailleerde instructies weergeven**.
+Als uw project van het type ' afbeeldings classificatie met meerdere klassen ' is, wijst u één tag toe aan de volledige afbeelding. Als u de instructies op elk gewenst moment wilt bekijken, gaat u naar de pagina **instructies** en selecteert u **gedetailleerde instructies weer geven**.
 
-Als u zich realiseert dat u een fout hebt gemaakt nadat u een tag aan een afbeelding hebt toegewezen, u deze herstellen. Selecteer de "**X**" op het label dat onder de afbeelding wordt weergegeven om de tag te wissen. Of selecteer de afbeelding en kies een andere klasse. De nieuw geselecteerde waarde vervangt de eerder toegepaste tag.
+Als u zich realiseert dat u een fout hebt gemaakt nadat u een label aan een afbeelding hebt toegewezen, kunt u dit probleem oplossen. Selecteer de '**X**' op het label dat wordt weer gegeven onder de afbeelding om het label te wissen. Of selecteer de installatie kopie en kies een andere klasse. Met de zojuist geselecteerde waarde wordt het eerder toegepaste label vervangen.
 
-## <a name="tag-images-for-multi-label-classification"></a>Afbeeldingen taggen voor classificatie met meerdere labelen
+## <a name="tag-images-for-multi-label-classification"></a>Tag-installatie kopieën voor classificatie met meerdere labels
 
-Als u werkt aan een project van het type 'Image Classification Multi-Label', past u een *of meer* tags toe op een afbeelding. Als u de projectspecifieke aanwijzingen wilt bekijken, selecteert u **Instructies** en gaat u naar **Gedetailleerde instructies weergeven**.
+Als u werkt met een project van het type ' afbeeldings classificatie met meerdere labels ', past u een *of meer* tags toe op een afbeelding. Als u de project-specifieke instructies wilt bekijken, selecteert u **instructies** en gaat u naar **gedetailleerde instructies weer geven**.
 
-Selecteer de afbeelding die u wilt labelen en selecteer vervolgens de tag. De tag wordt toegepast op alle geselecteerde afbeeldingen en vervolgens worden de afbeeldingen uitgeschakeld. Als u meer tags wilt toepassen, moet u de afbeeldingen opnieuw selecteren. In de volgende animatie wordt een labellabel met meerdere labels weergegeven:
+Selecteer de afbeelding die u wilt labelen en selecteer vervolgens de tag. Het label wordt toegepast op alle geselecteerde installatie kopieën, waarna de selectie van de installatie kopieën ongedaan wordt gemaakt. Als u meer tags wilt Toep assen, moet u de installatie kopieën opnieuw selecteren. De volgende animatie bevat labels met meerdere labels:
 
-1. **Selecteer alles** wordt gebruikt om de tag "Ocean" toe te passen.
-1. Eén afbeelding is geselecteerd en gelabeld met 'Close-up'.
-1. Drie afbeeldingen zijn geselecteerd en gelabeld "Groothoek."
+1. **Alles selecteren** wordt gebruikt om de tag "Oceaan" toe te passen.
+1. Er is één afbeelding geselecteerd en gelabeld ' Close '.
+1. Er zijn drie afbeeldingen geselecteerd en voorzien van het label breed.
 
-![Animatie toont de stroom van meerdere labelen](./media/how-to-label-images/multilabel.gif)
+![Animatie toont de multilabel stroom](./media/how-to-label-images/multilabel.gif)
 
-Als u een fout wilt corrigeren, klikt u op de "**X**" om een afzonderlijke tag te wissen of de afbeeldingen te selecteren en vervolgens de tag te selecteren, die de tag uit alle geselecteerde afbeeldingen wist. Dit scenario wordt hier getoond. Als u op "Land" klikt, wordt die tag gewist uit de twee geselecteerde afbeeldingen.
+Als u een fout wilt corrigeren, klikt u op de "**X**" om een afzonderlijke tag te wissen of selecteert u de afbeeldingen en selecteert u vervolgens het label, waardoor de tag uit de geselecteerde installatie kopieën wordt gewist. Dit scenario wordt hier weer gegeven. Als u op ' land ' klikt, wordt dat label uit de twee geselecteerde installatie kopieën gewist.
 
-![Een schermafbeelding toont meerdere selecties](./media/how-to-label-images/multiple-deselection.png)
+![Een scherm opname waarin meerdere selectie vakjes worden weer gegeven](./media/how-to-label-images/multiple-deselection.png)
 
-Azure schakelt de knop **Verzenden** alleen in nadat u ten minste één tag op elke afbeelding hebt toegepast. Selecteer **Verzenden** om uw werk op te slaan.
+De **Verzend** knop wordt alleen door Azure ingeschakeld nadat u ten minste één tag hebt toegepast op elke afbeelding. Selecteer **verzenden** om uw werk op te slaan.
 
 
-## <a name="tag-images-and-specify-bounding-boxes-for-object-detection"></a>Afbeeldingen taggen en selectievakken opgeven voor objectdetectie
+## <a name="tag-images-and-specify-bounding-boxes-for-object-detection"></a>Afbeeldingen labelen en selectie kaders voor object detectie opgeven
 
-Als uw project het type 'Objectidentificatie (selectiekaders) is, geeft u een of meer selectiekaders in de afbeelding op en past u een tag toe op elk vak. Afbeeldingen kunnen meerdere selectievakken hebben, elk met één tag. Gebruik **Gedetailleerde instructies weergeven** om te bepalen of er meerdere selectiekaders in uw project worden gebruikt.
+Als uw project van het type ' object Identification (selectie vakjes) ' is, geeft u een of meer selectie vakjes in de afbeelding op en past u een label toe aan elk vak. Afbeeldingen kunnen meerdere selectie kaders hebben, elk met één tag. Gebruik **gedetailleerde instructies weer geven** om te bepalen of er in uw project meerdere selectie kaders worden gebruikt.
 
-1. Selecteer een tag voor het selectiekader dat u wilt maken.
-1. Selecteer het gereedschap ![](./media/how-to-label-images/rectangular-box-tool.png) **Rechthoekig vakje** Rechthoekig gereedschap of selecteer 'R'.
-3. Klik en sleep diagonaal over uw doel om een ruw selectiekader te maken. Als u het selectiekader wilt aanpassen, sleept u de randen of hoeken.
+1. Selecteer een label voor het selectie kader dat u wilt maken.
+1. Selecteer ![het **gereedschap rechthoekend vak rechthoekig** vak](./media/how-to-label-images/rectangular-box-tool.png) of selecteer R.
+3. Klik en sleep diagonaal in het doel om een ruw begrenzingsvak te maken. Als u het selectie kader wilt aanpassen, sleept u de randen of hoeken.
 
-![Een screenshot toont het maken van basisselectiekaders.](./media/how-to-label-images/bounding-box-sequence.png)
+![Een scherm afbeelding toont het maken van eenvoudige selectie vakjes.](./media/how-to-label-images/bounding-box-sequence.png)
 
-Als u een selectiekader wilt verwijderen, klikt u op het X-vormige doel dat na het maken naast het selectiekader wordt weergegeven.
+Als u een selectie kader wilt verwijderen, klikt u op het X-vormig doel dat naast het selectie kader wordt weer gegeven na het maken.
 
-U de tag van een bestaand selectiekader niet wijzigen. Als u een tagtoewijzingsfout maakt, moet u het selectiekader verwijderen en een nieuw kader maken met de juiste tag.
+U kunt de tag van een bestaand selectie kader niet wijzigen. Als u een fout code toewijzing maakt, moet u het selectie kader verwijderen en een nieuwe maken met de juiste tag.
 
-Standaard u bestaande selectievakken bewerken. Met het gereedschap ![](./media/how-to-label-images/lock-bounding-boxes-tool.png) **Vergrendel-/ontgrendelen-regio's** schakelt het gereedschap Gebieden vergrendelen/ontgrendelen of 'L' dat gedrag in. Als regio's zijn vergrendeld, u alleen de vorm of locatie van een nieuw selectiekader wijzigen.
+Standaard kunt u bestaande selectie kaders bewerken. Met het hulp programma voor het vergren delen **/ontgrendelen** van de regio's vergren ![delen/ontgrendelen](./media/how-to-label-images/lock-bounding-boxes-tool.png) of "L" wordt dat gedrag gewisseld. Als er regio's zijn vergrendeld, kunt u alleen de vorm of locatie van een nieuw selectie kader wijzigen.
 
-Gebruik het ![](./media/how-to-label-images/regions-tool.png) **manipulatiegereedschap Regio's** Met het manipulatiegereedschap Regio's of 'M' om een bestaand selectiekader aan te passen. Sleep de randen of hoeken om de vorm aan te passen. Klik in het interieur om het hele selectiekader te kunnen slepen. Als u een regio niet bewerken, hebt u waarschijnlijk het gereedschap **Regio's vergrendelen/ontgrendelen** ingeschakeld.
+Gebruik het hulp programma](./media/how-to-label-images/regions-tool.png) voor ![het bewerken van regio's **in regio's of** ' M ' om een bestaand begrenzingsvak aan te passen. Sleep de randen of hoeken om de vorm aan te passen. Klik in de binnenkant om het hele begrenzingsvak te kunnen slepen. Als u een regio niet kunt bewerken, hebt u waarschijnlijk het hulp programma voor **vergren delen/ontgrendelen in-** of uitgeschakeld.
 
-Gebruik het gereedschap Sjabloon ![op basis](./media/how-to-label-images/template-box-tool.png) **van gereedschap** Sjabloon-vak of 'T' om meerdere selectiekaders van dezelfde grootte te maken. Als de afbeelding geen selectiekaders heeft en u op sjablonen gebaseerde vakken activeert, produceert het hulpprogramma dozen van 50 bij 50 pixels. Als u een selectiekader maakt en vervolgens op sjablonen gebaseerde vakken activeert, zijn alle nieuwe selectiekaders de grootte van het laatste vak dat u hebt gemaakt. Op sjablonen gebaseerde vakken kunnen na plaatsing worden aangepast. Het formaat van een op een sjabloon gebaseerd vak wijzigen, wijzigt alleen het formaat van dat specifieke vak.
+Gebruik het hulp programma](./media/how-to-label-images/template-box-tool.png) voor het maken ![van een **sjabloon op basis** van een selectie vakje of T om meerdere selectie kaders met dezelfde grootte. Als de afbeelding geen selectie kaders bevat en u op sjablonen gebaseerde vakken activeert, produceert het hulp programma 50-bij-50-pixels vakken. Als u een selectie kader maakt en vervolgens op sjablonen gebaseerde vakken activeert, worden nieuwe selectie vakjes de grootte van het laatste vak dat u hebt gemaakt. Het formaat van op een sjabloon gebaseerde vakken kunnen worden gewijzigd na plaatsing. Het wijzigen van het formaat van een op een sjabloon gebaseerd vak wijzigt alleen het formaat van het desbetreffende vak.
 
-Als u *alle* selectiekaders in de huidige afbeelding ![wilt](./media/how-to-label-images/delete-regions-tool.png)verwijderen, selecteert u het gereedschap Regio's verwijderen in **alle regio's** .
+Als u *alle* selectie vakjes in de huidige afbeelding wilt verwijderen, selecteert u het hulp ![programma](./media/how-to-label-images/delete-regions-tool.png) **alle regio's verwijderen** regio's verwijderen.
 
-Nadat u de selectiekaders voor een afbeelding hebt gemaakt, selecteert u **Verzenden** om uw werk op te slaan of wordt uw werk in uitvoering niet opgeslagen.
+Nadat u de selectie kaders voor een afbeelding hebt gemaakt, selecteert u **verzenden** om uw werk op te slaan of wordt de voortgang van uw werk niet opgeslagen.
 
 ## <a name="finish-up"></a>Voltooien
 
-Wanneer u een pagina met gelabelde gegevens verzendt, wijst Azure u nieuwe niet-gelabelde gegevens toe vanuit een werkwachtrij. Als er geen niet-gelabelde gegevens meer beschikbaar zijn, krijgt u een bericht waarin dit wordt vermeld, samen met een koppeling naar de startpagina van de portal.
+Wanneer u een pagina met gelabelde gegevens verzendt, wijst Azure nieuwe niet-gelabelde gegevens toe vanuit een werk wachtrij. Als er geen niet meer gelabelde gegevens beschikbaar zijn, wordt er een bericht weer gegeven met een koppeling naar de start pagina van de portal.
 
-Wanneer u klaar bent met labelen, selecteert u uw naam in de rechterbovenhoek van de labelportal en selecteert u **afmelden**. Als u zich niet afmeldt, wordt u uiteindelijk "time-out" en wordt uw gegevens toegewezen aan een andere labeler.
+Wanneer u klaar bent met labelen, selecteert u uw naam in de rechter bovenhoek van de portal voor labels en selecteert u vervolgens **Afmelden**. Als u zich niet afmeldt, wordt er uiteindelijk door Azure gevraagd en worden uw gegevens toegewezen aan een andere Labeler.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Informatie over het trainen van [classificatiemodellen in Azure](https://docs.microsoft.com/azure/machine-learning/tutorial-train-models-with-aml)
+* Meer informatie over het [trainen van afbeeldings classificatie modellen in azure](https://docs.microsoft.com/azure/machine-learning/tutorial-train-models-with-aml)
 

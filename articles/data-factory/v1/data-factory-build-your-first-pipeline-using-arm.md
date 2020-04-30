@@ -1,5 +1,5 @@
 ---
-title: Uw eerste gegevensfabriek bouwen (resourcemanagersjabloon)
+title: Uw eerste data factory bouwen (Resource Manager-sjabloon)
 description: In deze zelfstudie maakt u een Azure Data Factory-voorbeeldpijplijn op basis van een Azure Resource Manager-sjabloon.
 services: data-factory
 documentationcenter: ''
@@ -11,18 +11,18 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: tutorial
 ms.date: 01/22/2018
-ms.openlocfilehash: db767a8d2f0452a9bedeaf8495152ef337255111
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: e6a14cbb758426203a46ac508fe8e4bfdf3090cf
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "75439029"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82203893"
 ---
 # <a name="tutorial-build-your-first-azure-data-factory-using-azure-resource-manager-template"></a>Zelfstudie: bouw uw eerste Azure-gegevensfactory op basis van een Azure Resource Manager-sjabloon
 > [!div class="op_single_selector"]
 > * [Overzicht en vereisten](data-factory-build-your-first-pipeline.md)
 > * [Visual Studio](data-factory-build-your-first-pipeline-using-vs.md)
-> * [Powershell](data-factory-build-your-first-pipeline-using-powershell.md)
+> * [PowerShell](data-factory-build-your-first-pipeline-using-powershell.md)
 > * [Resource Manager-sjabloon](data-factory-build-your-first-pipeline-using-arm.md)
 > * [REST-API](data-factory-build-your-first-pipeline-using-rest-api.md)
 > 
@@ -76,7 +76,7 @@ De Resource Manager-sjabloon op het hoogste niveau voor het definiëren van een 
         {
             "name": "[parameters('dataFactoryName')]",
             "apiVersion": "[variables('apiVersion')]",
-            "type": "Microsoft.DataFactory/datafactories",
+            "type": "Microsoft.DataFactory/factories",
             "location": "westus",
             "resources": [
                 { ... },
@@ -116,7 +116,7 @@ Maak een JSON-bestand met de naam **ADFTutorialARM.json** in de map **C:\ADFGetS
       {
         "name": "[variables('dataFactoryName')]",
         "apiVersion": "2015-10-01",
-        "type": "Microsoft.DataFactory/datafactories",
+        "type": "Microsoft.DataFactory/factories",
         "location": "West US",
         "resources": [
           {
@@ -338,13 +338,13 @@ Maak een JSON-bestand met de naam **ADFTutorialARM-Parameters.json** dat paramet
 3. Klik op de blade **Gegevensfactory** van uw gegevensfactory op **Diagram**.
 
      ![Tegel Diagram](./media/data-factory-build-your-first-pipeline-using-arm/DiagramTile.png)
-4. In de **diagramweergave**ziet u een overzicht van de pijplijnen en gegevenssets die in deze zelfstudie worden gebruikt.
+4. In de **diagram weergave**ziet u een overzicht van de pijp lijnen en gegevens sets die in deze zelf studie worden gebruikt.
    
    ![Diagramweergave](./media/data-factory-build-your-first-pipeline-using-arm/DiagramView.png) 
 5. Dubbelklik in de diagramweergave op de gegevensset **AzureBlobOutput**. U ziet het segment dat momenteel wordt verwerkt.
    
     ![Gegevensset](./media/data-factory-build-your-first-pipeline-using-arm/AzureBlobOutput.png)
-6. Als het verwerken is voltooid, ziet u dat het segment de status **Gereed** heeft. Het maken van een on-demand HDInsight-cluster duurt normaal gesproken enige tijd (ongeveer 20 minuten). Verwacht daarom dat de pijplijn **ongeveer 30 minuten** nodig heeft om het segment te verwerken.
+6. Als het verwerken is voltooid, ziet u dat het segment de status **Gereed** heeft. Het maken van een on-demand HDInsight-cluster duurt normaal gesproken enige tijd (ongeveer 20 minuten). Daarom moet de pijp lijn **ongeveer 30 minuten** duren om het segment te verwerken.
    
     ![Gegevensset](./media/data-factory-build-your-first-pipeline-using-arm/SliceReady.png)    
 7. Wanneer het segment de status **Gereed** heeft, controleert u de map **partitioneddata** in de container **adfgetstarted** in uw blobopslag voor de uitvoergegevens.  
@@ -367,7 +367,7 @@ U definieert een gegevensfactory in de Resource Manager-sjabloon zoals in het vo
 {
     "name": "[variables('dataFactoryName')]",
     "apiVersion": "2015-10-01",
-    "type": "Microsoft.DataFactory/datafactories",
+    "type": "Microsoft.DataFactory/factories",
     "location": "West US"
 }
 ```
@@ -381,10 +381,10 @@ Het is een unieke tekenreeks op basis van de resourcegroep-id.
 ### <a name="defining-data-factory-entities"></a>Data Factory-entiteiten definiëren
 De volgende Data Factory-entiteiten worden in de JSON-sjabloon gedefinieerd: 
 
-* [Gekoppelde Azure Storage-service](#azure-storage-linked-service)
+* [Azure Storage gekoppelde service](#azure-storage-linked-service)
 * [Een gekoppelde HDInsight-service op aanvraag](#hdinsight-on-demand-linked-service)
 * [Azure Blob-invoergegevensset](#azure-blob-input-dataset)
-* [Gegevensset Azure blob-uitvoer](#azure-blob-output-dataset)
+* [Azure Blob-uitvoer gegevensset](#azure-blob-output-dataset)
 * [De gegevenspijplijn met een kopieerbewerking](#data-pipeline)
 
 #### <a name="azure-storage-linked-service"></a>Een gekoppelde Azure Storage-service
@@ -435,10 +435,10 @@ Zie het artikel [Compute linked services (Gekoppelde services verwerken)](data-f
 Houd rekening met de volgende punten: 
 
 * Met de bovenstaande JSON maakt Data Factory voor u een HDInsight-cluster **op basis van Linux**. Zie [Gekoppelde on-demand HDInsight-service](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service) voor meer informatie. 
-* U **uw eigen HDInsight-cluster** gebruiken in plaats van een on-demand HDInsight-cluster te gebruiken. Zie [Gekoppelde HDInsight-service](data-factory-compute-linked-services.md#azure-hdinsight-linked-service) voor meer informatie.
+* U kunt **uw eigen hdinsight-cluster** gebruiken in plaats van een on-demand hdinsight-cluster te gebruiken. Zie [Gekoppelde HDInsight-service](data-factory-compute-linked-services.md#azure-hdinsight-linked-service) voor meer informatie.
 * Het HDInsight-cluster maakt een **standaardcontainer** in de blobopslag die u hebt opgegeven in de JSON (**linkedServiceName**). HDInsight verwijdert deze container niet wanneer het cluster wordt verwijderd. Dit gedrag is standaard. Met een gekoppelde on-demand HDInsight-service wordt er steeds een HDInsight-cluster gemaakt wanneer er een segment moet worden verwerkt, tenzij er een bestaand livecluster is (**timeToLive**). Het cluster wordt verwijderd wanneer het verwerken is voltooid.
   
-    Naarmate er meer segmenten worden verwerkt, verschijnen er meer containers in uw Azure-blobopslag. Als u deze niet nodig hebt voor het oplossen van problemen met taken, kunt u ze verwijderen om de opslagkosten te verlagen. De namen van deze containers volgen een patroon: "adf**yourdatafactoryname**-**linkedservicename**-datetimestamp". Gebruik hulpprogramma's zoals [Microsoft Opslagverkenner](https://storageexplorer.com/) om containers in uw Azure-blobopslag te verwijderen.
+    Naarmate er meer segmenten worden verwerkt, verschijnen er meer containers in uw Azure-blobopslag. Als u deze niet nodig hebt voor het oplossen van problemen met taken, kunt u ze verwijderen om de opslagkosten te verlagen. De namen van deze containers volgen een patroon: ADF**naamvanuwgegevensfactory**-**linkedservicename**-/tijdstempel.. Gebruik hulpprogramma's zoals [Microsoft Opslagverkenner](https://storageexplorer.com/) om containers in uw Azure-blobopslag te verwijderen.
 
 Zie [Gekoppelde on-demand HDInsight-service](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service) voor meer informatie.
 
@@ -598,11 +598,11 @@ Hier volgt een Resource Manager-voorbeeldsjabloon voor het op de achtergrond mak
         {
             "name": "[variables('dataFactoryName')]",
             "apiVersion": "[variables('apiVersion')]",
-            "type": "Microsoft.DataFactory/datafactories",
+            "type": "Microsoft.DataFactory/factories",
             "location": "eastus",
             "resources": [
                 {
-                    "dependsOn": [ "[concat('Microsoft.DataFactory/dataFactories/', variables('dataFactoryName'))]" ],
+                    "dependsOn": [ "[concat('Microsoft.DataFactory/factories/', variables('dataFactoryName'))]" ],
                     "type": "gateways",
                     "apiVersion": "[variables('apiVersion')]",
                     "name": "GatewayUsingARM",

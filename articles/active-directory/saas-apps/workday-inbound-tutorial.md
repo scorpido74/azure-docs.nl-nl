@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 04/23/2020
 ms.author: chmutali
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6a816f2235fa5356f2300255ec9d2fb2b315acf7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: HT
+ms.openlocfilehash: 0fa43eae906c918cad940b8f5efafeea07020098
+ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
+ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 04/28/2020
-ms.locfileid: "82190313"
+ms.locfileid: "82201632"
 ---
 # <a name="tutorial-configure-workday-for-automatic-user-provisioning"></a>Zelf studie: workday configureren voor het automatisch inrichten van gebruikers
 
@@ -458,11 +458,11 @@ In deze stap maken we verbinding met werkdag en Active Directory in de Azure Por
 
    * **Wacht woord voor werk dagen –** Voer het wacht woord in voor het workday-integratie systeem account
 
-   * **Workday Web Services API-URL:** Voer de URL naar het workday Web Services-eind punt voor uw Tenant in. Deze waarde moet er als volgt https://wd3-impl-services1.workday.com/ccx/service/contoso4uitzien:, waarbij *contoso4* wordt vervangen door de juiste Tenant naam en *WD3-impl* vervangen door de juiste omgevings teken reeks.
+   * **Workday Web Services API-URL:** Voer de URL naar het workday Web Services-eind punt voor uw Tenant in. Deze waarde moet er als volgt `https://wd3-impl-services1.workday.com/ccx/service/contoso4`uitzien:, waarbij *contoso4* wordt vervangen door de juiste Tenant naam en *WD3-impl* vervangen door de juiste omgevings teken reeks.
 
      > [!NOTE]
      > De app maakt standaard gebruik van workday Web Services (WWS) v 21.1 als er geen versie gegevens zijn opgegeven in de URL. Als u een specifieke API-versie van WWS wilt gebruiken, moet u de URL-indeling gebruiken:https://####.workday.com/ccx/service/tenantName/Human_Resources/v##.# <br>
-     > Voorbeeld: https://wd3-impl-services1.workday.com/ccx/service/contoso4/Human_Resources/v31.0 <br>
+     > Voorbeeld: `https://wd3-impl-services1.workday.com/ccx/service/contoso4/Human_Resources/v31.0` <br>
      
      > [!NOTE]
      > Als u een WWS-API v 30.0 en hoger gebruikt voordat u de inrichtings taak inschakelt, moet u de **XPath API-expressies** bijwerken onder **kenmerk toewijzing-> geavanceerde opties-> kenmerk lijst bewerken voor workday** verwijzen naar de sectie [uw configuratie](#managing-your-configuration) en [workday-kenmerk verwijzing](../app-provisioning/workday-attribute-reference.md#xpath-values-for-workday-web-services-wws-api-v30)beheren.  
@@ -621,11 +621,11 @@ In de volgende secties worden de stappen beschreven voor het configureren van ge
 
    * **Wacht woord voor werk dagen –** Voer het wacht woord in voor het workday-integratie systeem account
 
-   * **Workday Web Services API-URL:** Voer de URL naar het workday Web Services-eind punt voor uw Tenant in. Deze waarde moet er als volgt https://wd3-impl-services1.workday.com/ccx/service/contoso4uitzien:, waarbij *contoso4* wordt vervangen door de juiste Tenant naam en *WD3-impl* vervangen door de juiste omgevings teken reeks. Als deze URL niet bekend is, moet u samen werken met uw werkdag integratie partner of ondersteunings medewerker om te bepalen welke URL moet worden gebruikt.
+   * **Workday Web Services API-URL:** Voer de URL naar het workday Web Services-eind punt voor uw Tenant in. Deze waarde moet er als volgt `https://wd3-impl-services1.workday.com/ccx/service/contoso4`uitzien:, waarbij *contoso4* wordt vervangen door de juiste Tenant naam en *WD3-impl* vervangen door de juiste omgevings teken reeks. Als deze URL niet bekend is, moet u samen werken met uw werkdag integratie partner of ondersteunings medewerker om te bepalen welke URL moet worden gebruikt.
 
      > [!NOTE]
      > Standaard gebruikt de app workday Web Services v 21.1 als er geen versie gegevens zijn opgegeven in de URL. Als u een specifieke workday Web Services API-versie wilt gebruiken, moet u de URL-indeling gebruiken:https://####.workday.com/ccx/service/tenantName/Human_Resources/v##.# <br>
-     > Voorbeeld: https://wd3-impl-services1.workday.com/ccx/service/contoso4/Human_Resources/v31.0
+     > Voorbeeld: `https://wd3-impl-services1.workday.com/ccx/service/contoso4/Human_Resources/v31.0`
 
 
    * **E-mail melding-** Voer uw e-mail adres in en schakel het selectie vakje e-mail verzenden als er een fout is opgetreden in.
@@ -723,7 +723,7 @@ Volg deze instructies voor het configureren van write-back van gebruikers-e-mail
 
    * **Beheerders wachtwoord –** Voer het wacht woord in voor het workday-integratie systeem account
 
-   * **Tenant-URL:** Voer de URL naar het workday Web Services-eind punt voor uw Tenant in. Deze waarde moet er als volgt https://wd3-impl-services1.workday.com/ccx/service/contoso4/Human_Resourcesuitzien:, waarbij *contoso4* wordt vervangen door de juiste Tenant naam en *WD3-impl* vervangen door de juiste omgevings teken reeks (indien nodig).
+   * **Tenant-URL:** Voer de URL naar het workday Web Services-eind punt voor uw Tenant in. Deze waarde moet er als volgt `https://wd3-impl-services1.workday.com/ccx/service/contoso4/Human_Resources`uitzien:, waarbij *contoso4* wordt vervangen door de juiste Tenant naam en *WD3-impl* vervangen door de juiste omgevings teken reeks (indien nodig).
 
    * **E-mail melding-** Voer uw e-mail adres in en schakel het selectie vakje e-mail verzenden als er een fout is opgetreden in.
 

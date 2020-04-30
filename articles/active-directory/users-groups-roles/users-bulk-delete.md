@@ -1,11 +1,11 @@
 ---
-title: Bulkgebruikers verwijderen in de Azure Active Directory-portal | Microsoft Documenten
-description: Gebruikers in bulk verwijderen in het Azure-beheercentrum in Azure Active Directory
+title: Gebruikers bulksgewijs verwijderen in de Azure Active Directory Portal | Microsoft Docs
+description: Gebruikers bulksgewijs verwijderen in het Azure-beheer centrum in Azure Active Directory
 services: active-directory
 author: curtand
 ms.author: curtand
 manager: mtillman
-ms.date: 04/16/2020
+ms.date: 04/27/2020
 ms.topic: conceptual
 ms.service: active-directory
 ms.subservice: users-groups-roles
@@ -13,52 +13,73 @@ ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: jeffsta
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: beb8b4f35dc5f02e59cced05a6bcfc235d42f996
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.openlocfilehash: ca30d5b050a34000fa7c6465356aba206aeaa8e4
+ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81532804"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82203340"
 ---
-# <a name="bulk-delete-users-in-azure-active-directory"></a>Bulkgebruikers verwijderen in Azure Active Directory
+# <a name="bulk-delete-users-in-azure-active-directory"></a>Gebruikers bulksgewijs verwijderen in Azure Active Directory
 
-Met Azure Active Directory(Azure AD)-portal u een groot aantal leden in een groep verwijderen met behulp van een CSV-bestand (comma-separated values) om gebruikers in bulk te verwijderen.
+Met Azure Active Directory-Portal (Azure AD) kunt u een groot aantal leden verwijderen uit een groep met behulp van een bestand met door komma's gescheiden waarden (CSV) om gebruikers bulksgewijs te verwijderen.
 
-## <a name="to-bulk-delete-users"></a>Gebruikers in bulk verwijderen
+## <a name="understand-the-csv-template"></a>De CSV-sjabloon begrijpen
 
-1. [Meld u aan bij uw Azure AD-organisatie](https://aad.portal.azure.com) met een account dat een gebruikersbeheerder in de organisatie is.
-1. Selecteer in Azure AD De optie **Gebruikersbulk** > **verwijderen**.
-1. Selecteer op de **gebruikerspagina Bulk verwijderen** de optie **Downloaden** om een geldig CSV-bestand met gebruikerseigenschappen te ontvangen.
+Down load en vul de CSV-sjabloon in om Azure AD-gebruikers bulksgewijs te kunnen verwijderen. De CSV-sjabloon die u downloadt, kan eruitzien als in dit voor beeld:
 
-   ![Selecteer een lokaal CSV-bestand waarin u de gebruikers aanvermeldt die u wilt verwijderen](./media/users-bulk-delete/bulk-delete.png)
+![Werk blad voor upload-en aanroep-outs waarin het doel en de waarden voor elke rij en kolom worden uitgelegd](./media/users-bulk-delete/understand-template.png)
 
-1. Open het CSV-bestand en voeg een regel toe voor elke gebruiker die u wilt verwijderen. De enige vereiste waarde is **De hoofdnaam van de gebruiker**. Sla het bestand op.
+### <a name="csv-template-structure"></a>Structuur van CSV-sjabloon
 
-   ![Het CSV-bestand bevat namen en namen van de gebruikers om te verwijderen](./media/users-bulk-delete/delete-csv-file.png)
+De rijen in een gedownloade CSV-sjabloon zijn als volgt:
 
-1. Blader op de **gebruikerspagina Bulk verwijderen** onder **Uw csv-bestand uploaden**naar het bestand. Wanneer u het bestand selecteert en op Verzenden klikt, wordt de validatie van het CSV-bestand gestart.
-1. Wanneer de inhoud van het bestand is gevalideerd, wordt **bestand geüpload**. Als er fouten zijn, moet u deze oplossen voordat u de taak indienen.
-1. Wanneer uw bestand de validatie doorstaat, selecteert u **Verzenden** om de Azure-bulkbewerking te starten die de gebruikers verwijdert.
-1. Wanneer de verwijderingsbewerking is voltooid, ziet u een melding dat de bulkbewerking is geslaagd.
+- **Versie nummer**: de eerste rij met het versie nummer moet worden opgenomen in de upload CSV.
+- **Kolom koppen**: de indeling van de kolom koppen is &lt;de *item naam* &gt; [propertyname] &lt; *vereist of leeg*&gt;. Bijvoorbeeld `User name [userPrincipalName] Required`. Sommige oudere versies van de sjabloon hebben mogelijk een kleine variatie.
+- **Voor beelden van rij**: we hebben in de sjabloon een rij met voor beelden van geldige waarden voor elke kolom opgenomen. U moet de voor beelden van de rij verwijderen en vervangen door uw eigen vermeldingen.
 
-Als er fouten zijn, u het resultatenbestand downloaden en bekijken op de pagina **Bulk-bewerkingsresultaten.** Het bestand bevat de reden voor elke fout.
+### <a name="additional-guidance"></a>Aanvullende richtlijnen
+
+- De eerste twee rijen van de upload sjabloon mogen niet worden verwijderd of gewijzigd, of de upload kan niet worden verwerkt.
+- De vereiste kolommen worden eerst weer gegeven.
+- Het is niet raadzaam om nieuwe kolommen toe te voegen aan de sjabloon. Alle extra kolommen die u toevoegt, worden genegeerd en worden niet verwerkt.
+- U wordt aangeraden de meest recente versie van de CSV-sjabloon zo vaak mogelijk te downloaden.
+
+## <a name="to-bulk-delete-users"></a>Gebruikers bulksgewijs verwijderen
+
+1. [Meld u aan bij uw Azure AD-organisatie](https://aad.portal.azure.com) met een account dat een gebruikers beheerder in de organisatie is.
+1. Selecteer in azure AD de optie **gebruikers** > **bulksgewijs verwijderen**.
+1. Selecteer op de pagina **bulksgewijs verwijderen gebruiker** **downloaden** om een geldig CSV-bestand met gebruikers eigenschappen te ontvangen.
+
+   ![Selecteer een lokaal CSV-bestand waarin de gebruikers die u wilt verwijderen, worden vermeld](./media/users-bulk-delete/bulk-delete.png)
+
+1. Open het CSV-bestand en voeg een regel toe voor elke gebruiker die u wilt verwijderen. De enige vereiste waarde is **User Principal name**. Sla het bestand op.
+
+   ![Het CSV-bestand bevat de namen en Id's van de gebruikers die u wilt verwijderen](./media/users-bulk-delete/delete-csv-file.png)
+
+1. Blader op de pagina **bulksgewijs verwijderen** , onder **uw CSV-bestand uploaden**, naar het bestand. Wanneer u het bestand selecteert en op verzenden klikt, wordt de validatie van het CSV-bestand gestart.
+1. Wanneer de bestands inhoud is gevalideerd, ziet u dat het **bestand is geüpload**. Als er fouten zijn, moet u deze oplossen voordat u de taak kunt indienen.
+1. Wanneer de validatie van uw bestand wordt door gegeven, selecteert u **verzenden** om de Azure bulk bewerking te starten waarmee de gebruikers worden verwijderd.
+1. Wanneer de verwijderings bewerking is voltooid, ziet u een melding dat de bulk bewerking is geslaagd.
+
+Als er fouten zijn, kunt u het bestand met resultaten downloaden en weer geven op de pagina **resultaten van bulk bewerking** . Het bestand bevat de reden voor elke fout.
 
 ## <a name="check-status"></a>Status controleren
 
-U de status van al uw in behandeling zijnde bulkaanvragen bekijken op de pagina **Bulk-bewerkingsresultaten.**
+U kunt de status van al uw bulk aanvragen in behandeling bekijken op de pagina **resultaten van bulk bewerking** .
 
    [![](media/users-bulk-delete/bulk-center.png "Check delete status in the Bulk Operations Results page")](media/users-bulk-delete/bulk-center.png#lightbox)
 
-Vervolgens u controleren of de gebruikers die u hebt verwijderd, in de Azure AD-organisatie bestaan in de Azure-portal of met PowerShell.
+Vervolgens kunt u controleren of de gebruikers die u hebt verwijderd, bestaan in de Azure AD-organisatie in de Azure Portal of met behulp van Power shell.
 
-## <a name="verify-deleted-users-in-the-azure-portal"></a>Verwijderde gebruikers in de Azure-portal verifiëren
+## <a name="verify-deleted-users-in-the-azure-portal"></a>Verwijderde gebruikers verifiëren in de Azure Portal
 
-1. Meld u aan bij de Azure-portal met een account dat een gebruikersbeheerder in de organisatie is.
-1. Selecteer Azure Active **Directory**in het navigatiedeelvenster .
+1. Meld u aan bij de Azure Portal met een account dat een gebruikers beheerder in de organisatie is.
+1. Selecteer **Azure Active Directory**in het navigatie deel venster.
 1. Onder **Beheren**, selecteer **Gebruikers**.
-1. Selecteer **onder Weergeven**alleen **alle gebruikers** en controleer of de gebruikers die u hebt verwijderd niet langer worden vermeld.
+1. Onder **weer geven**selecteert u alleen **alle gebruikers** en controleert u of de gebruikers die u hebt verwijderd, niet meer worden weer gegeven.
 
-### <a name="verify-deleted-users-with-powershell"></a>Verwijderde gebruikers verifiëren met PowerShell
+### <a name="verify-deleted-users-with-powershell"></a>Verwijderde gebruikers controleren met Power shell
 
 Voer de volgende opdracht uit:
 
@@ -66,10 +87,10 @@ Voer de volgende opdracht uit:
 Get-AzureADUser -Filter "UserType eq 'Member'"
 ```
 
-Controleer of de gebruikers die u hebt verwijderd, niet langer worden vermeld.
+Controleer of de gebruikers die u hebt verwijderd, niet meer worden weer gegeven.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Bulkgebruikers toevoegen](users-bulk-add.md)
+- [Gebruikers bulksgewijs toevoegen](users-bulk-add.md)
 - [Lijst met gebruikers downloaden](users-bulk-download.md)
-- [Bulkherstelgebruikers](users-bulk-restore.md)
+- [Gebruikers bulksgewijs herstellen](users-bulk-restore.md)

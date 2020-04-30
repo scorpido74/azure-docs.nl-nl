@@ -9,12 +9,12 @@ ms.topic: include
 ms.date: 10/18/2018
 ms.author: dacurwin
 ms.custom: include file
-ms.openlocfilehash: 6167774171affda7e5469d5852a79657a6da700d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2c74783ea8246232cb5c4270691daf3f83fe9a30
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78262751"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82204435"
 ---
 ## <a name="create-a-recovery-services-vault"></a>Een Recovery Services-kluis maken
 
@@ -45,10 +45,10 @@ Voer de volgende stappen uit om een Recovery Services kluis te maken.
    - **Naam**: Voer een beschrijvende naam in om de kluis aan te duiden. De naam moet uniek zijn voor het Azure-abonnement. Geef een naam op van ten minste 2, maar niet meer dan 50 tekens. De naam moet beginnen met een letter en mag alleen bestaan uit letters, cijfers en afbreek streepjes.
    - **Abonnement**: Kies het abonnement dat u wilt gebruiken. Als u lid bent van slechts één abonnement, ziet u die naam. Als u niet zeker weet welk abonnement u moet gebruiken, gebruikt u het standaard abonnement (aanbevolen). Er zijn alleen meerdere opties als uw werk-of school account is gekoppeld aan meer dan één Azure-abonnement.
    - **Resource groep**: gebruik een bestaande resource groep of maak een nieuwe. Als u de lijst met beschik bare resource groepen in uw abonnement wilt weer geven, selecteert u **bestaande gebruiken**en selecteert u een resource in de vervolg keuzelijst. Als u een nieuwe resource groep wilt maken, selecteert u **nieuwe maken** en voert u de naam in. Zie [Azure Resource Manager Overview](../articles/azure-resource-manager/management/overview.md)voor meer informatie over resource groepen.
-   - **Locatie**: Selecteer de geografische regio voor de kluis. De kluis *moet* zich in dezelfde regio bevinden als de virtuele machines om een kluis te maken om virtuele machines te beveiligen.
+   - **Locatie**: Selecteer de geografische regio voor de kluis. De kluis *moet* zich in dezelfde regio bevinden als de gegevens bron om een kluis te maken om gegevens bronnen te beveiligen.
 
       > [!IMPORTANT]
-      > Als u niet zeker bent van de locatie van de virtuele machine, sluit u het dialoog venster. Ga naar de lijst met virtuele machines in de portal. Als u virtuele machines in meerdere regio's hebt, moet u in elke regio een Recovery Services kluis maken. Maak de kluis op de eerste locatie voordat u de kluis voor een andere locatie maakt. U hoeft geen opslag accounts op te geven om de back-upgegevens op te slaan. De Recovery Services kluis en Azure Backup die automatisch worden verwerkt.
+      > Als u niet zeker bent van de locatie van de gegevens bron, sluit u het dialoog venster. Ga naar de lijst met resources in de portal. Als u gegevens bronnen in meerdere regio's hebt, maakt u een Recovery Services kluis voor elke regio. Maak de kluis op de eerste locatie voordat u de kluis maakt voor een andere locatie. U hoeft geen opslag accounts op te geven om de back-upgegevens op te slaan. De Recovery Services kluis en Azure Backup die automatisch worden verwerkt.
       >
       >
 

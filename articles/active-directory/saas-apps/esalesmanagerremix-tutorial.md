@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 06/12/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 895fb0d83e383618818325263ac80c5919a0ee7b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 167d682bb5ce1266ba6b677f6223c38dd34af9bb
+ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 04/28/2020
-ms.locfileid: "65406959"
+ms.locfileid: "82202393"
 ---
 # <a name="integrate-azure-active-directory-with-e-sales-manager-remix"></a>Azure Active Directory integreren met E Sales Manager Remix
 
@@ -158,7 +158,7 @@ Schakel eenmalige aanmelding voor Azure AD in het Azure Portal en configureer ee
     
     b. Selecteer in de vervolg keuzelijst van het onderdeel **samen werking** de optie **e-mail**.
 
-    c. Plak in het vak **samenwerkings item** de claim waarde die u eerder hebt gekopieerd uit de Azure Portal (dat wil zeggen **http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress**).
+    c. Plak in het vak **samenwerkings item** de claim waarde die u eerder hebt gekopieerd uit de Azure Portal (dat wil zeggen **`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`**).
 
     d. Plak in het vak **verlener (Entiteits-ID)** de id-waarde die u eerder hebt gekopieerd uit de sectie **E-Remix domein en Url's** van de e-mail van de Azure Portal.
 
@@ -270,7 +270,7 @@ Wanneer u de tegel E Sales Manager Remix selecteert in het toegangs venster, moe
 
 Zie [Introduction to the Access Panel](../user-help/active-directory-saas-access-panel-introduction.md) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster. 
 
-## <a name="additional-resources"></a>Extra resources
+## <a name="additional-resources"></a>Aanvullende bronnen
 
 * [Lijst met zelf studies over het integreren van SaaS-apps met Azure Active Directory](tutorial-list.md)
 * [Wat is toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)

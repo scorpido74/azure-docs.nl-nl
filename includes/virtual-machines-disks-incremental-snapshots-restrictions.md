@@ -8,15 +8,16 @@ ms.topic: include
 ms.date: 03/05/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 8e4c1c05b133f85b7473c3ce97c9f509ac8f7d37
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 39a013f5f4b587137366147ade77f0be1b353c4c
+ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79299155"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82204485"
 ---
-- Incrementele momentopnamen kunnen momenteel niet tussen abonnementen worden verplaatst.
-- U momenteel alleen SAS-URI's van maximaal vijf momentopnamen van een bepaalde momentopnamefamilie op een bepaald moment genereren.
-- U geen incrementele momentopname maken voor een bepaalde schijf buiten het abonnement van die schijf.
-- Elke vijf minuten kunnen maximaal zeven incrementele momentopnamen per schijf worden gemaakt.
-- Er kunnen in totaal 200 incrementele momentopnamen worden gemaakt voor één schijf.
+- Incrementele moment opnamen kunnen momenteel niet worden verplaatst tussen abonnementen.
+- U kunt momenteel alleen SAS-Uri's van Maxi maal vijf moment opnamen van een bepaalde momentopname familie genereren op een bepaald moment.
+- U kunt geen incrementele moment opname maken voor een bepaalde schijf buiten het abonnement van de schijf.
+- Er kunnen Maxi maal zeven incrementele moment opnamen per schijf worden gemaakt om de vijf minuten.
+- Er kunnen voor één schijf een totaal van 200 incrementele moment opnamen worden gemaakt.
+- U kunt de wijzigingen niet ophalen tussen moment opnamen die zijn gemaakt vóór en na de wijziging in de grootte van de bovenliggende schijf over 4 TB grens. U moet de volledige kopie van de moment opname die is gemaakt na het formaat ervan, downloaden. Daarna kunt u de wijzigingen ophalen tussen de moment opnamen die zijn gemaakt na het formaat van 4 TB. 

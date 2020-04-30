@@ -7,12 +7,12 @@ ms.date: 03/04/2020
 ms.custom: mvc, devcenter, seodec18
 experimental: false
 experiment_id: a231f2b4-2625-4d
-ms.openlocfilehash: ad1be88fa7152680551909d91ea4d9f7e79dc00f
-ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
+ms.openlocfilehash: f423880d1789b3486c89538a0af0c4c1fca4b13b
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/26/2020
-ms.locfileid: "82159776"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82201156"
 ---
 # <a name="create-a-nodejs-web-app-in-azure"></a>Een Node.js-web-app maken in Azure 
 
@@ -45,7 +45,7 @@ Ga aan de slag met Azure App Service door een node. js/Express-app lokaal te mak
     npm start
     ```
     
-1. Open uw browser en ga naar [http://localhost:1337](http://localhost:1337). In de browser moet Hallo wereld! worden weer gegeven.
+1. Open uw browser en ga naar `http://localhost:1337`. In de browser moet Hallo wereld! worden weer gegeven.
 
 1. Druk op **CTRL**+**C** in de terminal om de server te stoppen.
 

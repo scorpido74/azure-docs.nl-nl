@@ -11,14 +11,14 @@ ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 08/12/2019
+ms.date: 04/20/2020
 ms.author: apimpm
-ms.openlocfilehash: 5c71f37741de06b8633e7eafaae2f29823214f74
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0f8d9d7d90e88b4e43721dac274833a3b0df275e
+ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 04/28/2020
-ms.locfileid: "75442672"
+ms.locfileid: "82203145"
 ---
 # <a name="how-to-deploy-an-azure-api-management-service-instance-to-multiple-azure-regions"></a>Exemplaar van Azure API Management-service implementeren in meerdere Azure-regio's
 
@@ -31,36 +31,23 @@ Een nieuwe Azure API Management-service bevat in eerste instantie slechts één 
 
 [!INCLUDE [premium.md](../../includes/api-management-availability-premium.md)]
 
-## <a name="deploy-an-api-management-service-instance-to-a-new-region"></a><a name="add-region"> </a>Een API Management service-exemplaar implementeren in een nieuwe regio
+## <a name="deploy-api-management-service-to-a-new-region"></a><a name="add-region"> </a>API Management-service implementeren in een nieuwe regio
 
 > [!NOTE]
 > Als u nog geen API Management service-exemplaar hebt gemaakt, raadpleegt u [een API Management service-exemplaar maken][create an api management service instance].
 
-Navigeer in het Azure Portal naar de pagina **schaal en prijzen** voor uw service-exemplaar van API management.
+1. Ga in het Azure Portal naar de API Management-service en klik op de vermelding **locaties** in het menu.
+2. Klik op de bovenste balk op **+ toevoegen** .
+3. Selecteer de locatie in de vervolg keuzelijst en stel het aantal eenheden in met de schuif regelaar.
+4. Klik op de knop **toevoegen** om te bevestigen.
+5. Herhaal dit proces totdat u alle locaties hebt geconfigureerd.
+6. Klik op **Opslaan** in de bovenste balk om het implementatie proces te starten.
 
-![Tabblad schaal][api-management-scale-service]
+## <a name="delete-an-api-management-service-location"></a><a name="remove-region"> </a>Een API Management service locatie verwijderen
 
-Als u wilt implementeren in een nieuwe regio, klikt u op **+ regio toevoegen** op de werk balk.
-
-![Regio toevoegen][api-management-add-region]
-
-Selecteer de locatie in de vervolg keuzelijst en stel het aantal eenheden in met de schuif regelaar.
-
-![Eenheden opgeven][api-management-select-location-units]
-
-Klik op **toevoegen** om de selectie in de tabel locaties te plaatsen.
-
-Herhaal dit proces totdat u alle locaties hebt geconfigureerd en klik op **Opslaan** op de werk balk om het implementatie proces te starten.
-
-## <a name="delete-an-api-management-service-instance-from-a-location"></a><a name="remove-region"> </a>Een API Management service-exemplaar verwijderen van een locatie
-
-Navigeer in het Azure Portal naar de pagina **schaal en prijzen** voor uw service-exemplaar van API management.
-
-![Tabblad schaal][api-management-scale-service]
-
-Voor de locatie die u wilt verwijderen, opent u het context menu met behulp van de knop **...** aan de rechter kant van de tabel. Selecteer de optie **verwijderen** .
-
-Bevestig de verwijdering en klik op **Opslaan** om de wijzigingen toe te passen.
+1. Ga in het Azure Portal naar de API Management-service en klik op de vermelding **locaties** in het menu.
+2. Voor de locatie die u wilt verwijderen, opent u het context menu met behulp van de knop **...** aan de rechter kant van de tabel. Selecteer de optie **verwijderen** .
+3. Bevestig de verwijdering en klik op **Opslaan** om de wijzigingen toe te passen.
 
 ## <a name="route-api-calls-to-regional-backend-services"></a><a name="route-backend"> </a>Route-API-aanroepen naar regionale back-end-services
 
@@ -119,11 +106,6 @@ API Management stuurt de aanvragen naar een regionale _Gateway_ op basis van [de
 1. [Configureer de API Management regionale status eindpunten in Traffic Manager](../traffic-manager/traffic-manager-monitoring.md). De regionale status-eind punten volgen het URL- `https://<service-name>-<region>-01.regional.azure-api.net/status-0123456789abcdef`patroon van, `https://contoso-westus2-01.regional.azure-api.net/status-0123456789abcdef`bijvoorbeeld.
 1. Geef [de routerings methode](../traffic-manager/traffic-manager-routing-methods.md) van de Traffic Manager op.
 
-[api-management-management-console]: ./media/api-management-howto-deploy-multi-region/api-management-management-console.png
-[api-management-scale-service]: ./media/api-management-howto-deploy-multi-region/api-management-scale-service.png
-[api-management-add-region]: ./media/api-management-howto-deploy-multi-region/api-management-add-region.png
-[api-management-select-location-units]: ./media/api-management-howto-deploy-multi-region/api-management-select-location-units.png
-[api-management-remove-region]: ./media/api-management-howto-deploy-multi-region/api-management-remove-region.png
 [create an api management service instance]: get-started-create-service-instance.md
 [get started with azure api management]: get-started-create-service-instance.md
 [deploy an api management service instance to a new region]: #add-region

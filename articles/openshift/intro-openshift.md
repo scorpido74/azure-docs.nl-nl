@@ -1,52 +1,50 @@
 ---
-title: Inleiding tot Azure Red Hat OpenShift
-description: Ontdek de functies en voordelen van Microsoft Azure Red Hat OpenShift voor het implementeren en beheren van containergebaseerde toepassingen.
+title: Inleiding tot Azure Red Hat open Shift
+description: Meer informatie over de functies en voor delen van Microsoft Azure Red Hat open Shift voor het implementeren en beheren van op containers gebaseerde toepassingen.
 author: jimzim
 ms.author: jzim
 ms.service: container-service
 ms.topic: overview
-ms.date: 05/08/2019
+ms.date: 04/24/2020
 ms.custom: mvc
-ms.openlocfilehash: 4be388eec3851154fd0f6af37d03a468fc52197b
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 87126d1beca97a905f0f3b09b565c12c37a4774d
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "76276061"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82203910"
 ---
 # <a name="azure-red-hat-openshift"></a>Azure Red Hat OpenShift
 
-Met de Microsoft *Azure Red Hat OpenShift-service* u volledig beheerde [OpenShift-clusters](https://www.openshift.com/) implementeren.
+Met de micro soft *Azure Red Hat open Shift* -service kunt u volledig beheerde open [SHIFT](https://www.openshift.com/) -clusters implementeren.
 
-Azure Red Hat OpenShift breidt [Kubernetes](https://kubernetes.io/)uit. Het uitvoeren van containers in productie met Kubernetes vereist extra tools en resources, zoals een imageregistry, storage management, netwerkoplossingen en logging- en monitoringtools, die allemaal samen moeten worden geversioned en getest. Het bouwen van containergebaseerde toepassingen vereist nog meer integratiewerk met middleware, frameworks, databases en CI/CD-tools. Azure Red Hat OpenShift combineert dit alles in één platform, waardoor IT-teams eenvoudig kunnen worden uitgevoerd en toepassingsteams worden wat ze moeten uitvoeren.
+Azure Red Hat open Shift breidt [Kubernetes](https://kubernetes.io/)uit. Voor het uitvoeren van containers in productie met Kubernetes hebt u extra hulp middelen en bronnen nodig. Dit omvat vaak het maken van verwerking-installatie kopieën, opslag beheer, netwerk oplossingen en hulpprogram ma's voor logboek registratie en controle, die allemaal moeten worden geversiond en getest. Voor het bouwen van op containers gebaseerde toepassingen is nog meer integratie mogelijk met middleware, frameworks, data bases en CI/CD-hulpprogram ma's. Azure Red Hat open Shift combineert alles samen met een enkel platform, waardoor de IT-teams op eenvoudige manier bewerkingen kunnen uitvoeren, terwijl ze toepassings teams kunnen voorzien van wat ze nodig hebben om uit te voeren.
 
-Azure Red Hat OpenShift wordt gezamenlijk ontworpen, beheerd en ondersteund door Red Hat en Microsoft om een geïntegreerde ondersteuningservaring te bieden. Er zijn geen virtuele machines te bedienen, en geen patchen is vereist. Hoofd-, infrastructuur- en toepassingsknooppunten worden namens u gepatcht, bijgewerkt en gecontroleerd door Red Hat en Microsoft. Uw Azure Red Hat OpenShift-clusters worden geïmplementeerd in uw Azure-abonnement en zijn opgenomen op uw Azure-factuur.
+Azure Red Hat open Shift is gezamenlijk ontworpen, geëxploiteerd en ondersteund door Red Hat en micro soft om een geïntegreerde ondersteunings ervaring te bieden. Er zijn geen virtuele machines die kunnen worden uitgevoerd en er is geen patches vereist. Hoofd-, infra structuur-en toepassings knooppunten worden in uw naam patches, bijgewerkt en gecontroleerd door Red Hat en micro soft. Uw Azure Red Hat open Shift-clusters worden geïmplementeerd in uw Azure-abonnement en zijn opgenomen in uw Azure-factuur.
 
-U uw eigen register-, netwerk-, opslag- en CI/CD-oplossingen kiezen of de ingebouwde oplossingen gebruiken voor geautomatiseerd broncodebeheer, container- en toepassingsbuilds, implementaties, schalen, gezondheidsbeheer en meer. Azure Red Hat OpenShift biedt een geïntegreerde aanmeldingservaring via Azure Active Directory.
+U kunt uw eigen REGI ster-, netwerk-, opslag-en CI/CD-oplossingen kiezen of de ingebouwde oplossingen gebruiken voor geautomatiseerd broncode beheer, container-en toepassings builds, implementaties, schalen, status beheer en meer. Azure Red Hat open Shift biedt een geïntegreerde aanmeldings ervaring via Azure Active Directory.
 
-Voer de [zelfstudie van een Azure Red Hat OpenShift-cluster](tutorial-create-cluster.md) aan om aan de slag te gaan.
+Voltooi de zelf studie [een Azure Red Hat open Shift-cluster maken](tutorial-create-cluster.md) om aan de slag te gaan.
 
 ## <a name="access-security-and-monitoring"></a>Toegang, beveiliging en bewaking
 
-Voor een betere beveiliging en een beter beheer u met Azure Red Hat OpenShift integreren met Azure Active Directory (Azure AD) en gebruik maken van Kubernetes-functiegebaseerde toegangscontrole (RBAC). U kunt ook de status van uw cluster en resources bewaken.
+Voor een betere beveiliging en meer beheer kunt u met Azure Red Hat open Shift integreren met Azure Active Directory (Azure AD) en gebruikmaken van Kubernetes op rollen gebaseerd toegangs beheer (RBAC). U kunt ook de status van uw cluster en resources bewaken.
 
 ## <a name="cluster-and-node"></a>Cluster en knooppunt
 
-Azure Red Hat OpenShift-knooppunten worden uitgevoerd op virtuele Azure-machines. U kunt opslag met knooppunten en pods verbinden, clusteronderdelen bijwerken en GPU's gebruiken.
+Azure Red Hat open Shift-knoop punten worden uitgevoerd op virtuele machines van Azure. U kunt opslag met knooppunten en pods verbinden, clusteronderdelen bijwerken en GPU's gebruiken.
 
 ## <a name="virtual-networks-and-ingress"></a>Virtual Networks en inkomend verkeer
 
-U [een Azure Red Hat OpenShift-cluster via](https://docs.microsoft.com/azure/openshift/tutorial-create-cluster#optional-connect-the-clusters-virtual-network-to-an-existing-virtual-network) peering verbinden met een bestaand virtueel netwerk. In deze configuratie kunnen pods verbinding maken met andere services in een gepeerd virtueel netwerk.
-
-Zie [Het virtuele netwerk van een cluster verbinden met een bestaand virtueel netwerk](tutorial-create-cluster.md#optional-connect-the-clusters-virtual-network-to-an-existing-virtual-network) voor meer informatie.
+U kunt [een virtueel netwerk van een cluster verbinden met een bestaand virtueel netwerk of een virtueel netwerk maken wanneer u een cluster maakt](tutorial-create-cluster.md#create-a-virtual-network-containing-two-empty-subnets).
 
 ## <a name="kubernetes-certification"></a>Kubernetes-certificering
 
-Azure Red Hat OpenShift-service is CNCF-gecertificeerd als Kubernetes-conformant.
+De Azure Red Hat open Shift-service is CNCF gecertificeerd als Kubernetes, conform de conformiteit.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Meer informatie over de vereisten voor Azure Red Hat OpenShift:
+Meer informatie over de vereisten voor Azure Red Hat open Shift:
 
 > [!div class="nextstepaction"]
 > [Uw ontwikkelaarsomgeving instellen](howto-setup-environment.md)

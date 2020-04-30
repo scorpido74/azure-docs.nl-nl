@@ -1,11 +1,11 @@
 ---
-title: Groepleden in bulk verwijderen door een CSV-bestand te uploaden - Azure Active Directory | Microsoft Documenten
-description: Groepsleden in bulkbewerkingen verwijderen in het Azure-beheercentrum.
+title: Groeps leden bulksgewijs verwijderen door een CSV-bestand te uploaden-Azure Active Directory | Microsoft Docs
+description: Groeps leden verwijderen uit bulk bewerkingen in het Azure-beheer centrum.
 services: active-directory
 author: curtand
 ms.author: curtand
 manager: mtillman
-ms.date: 04/16/2020
+ms.date: 04/27/2020
 ms.topic: conceptual
 ms.service: active-directory
 ms.subservice: users-groups-roles
@@ -13,50 +13,71 @@ ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: jeffsta
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1e6d0752245e3864a8ad25efd5181d5cc1eec7ae
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.openlocfilehash: 2b3c6e471a8e44236baf9bfc2c8eb6c9d5526d72
+ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81533246"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82203443"
 ---
-# <a name="bulk-remove-group-members-in-azure-active-directory"></a>Groepleden in Bulk verwijderen in Azure Active Directory
+# <a name="bulk-remove-group-members-in-azure-active-directory"></a>Groeps leden bulksgewijs verwijderen in Azure Active Directory
 
-Met Azure Active Directory(Azure AD)-portal u een groot aantal leden uit een groep verwijderen met behulp van een CSV-bestand (comma-separated values) om groepsleden in bulk te verwijderen.
+Met Azure Active Directory-Portal (Azure AD) kunt u een groot aantal leden uit een groep verwijderen door een bestand met door komma's gescheiden waarden (CSV) te gebruiken om groeps leden bulksgewijs te verwijderen.
 
-## <a name="to-bulk-remove-group-members"></a>Groepsleden in bulk verwijderen
+## <a name="understand-the-csv-template"></a>De CSV-sjabloon begrijpen
 
-1. Meld u aan bij [de Azure-portal](https://portal.azure.com) met een gebruikersbeheerdersaccount in de organisatie. Groepseigenaren kunnen ook leden van groepen die ze bezitten bulk verwijderen.
-1. Selecteer in Azure AD **Alle** > **groepen groepen**.
-1. Open de groep waaruit u leden verwijdert en selecteer **vervolgens Leden**.
-1. Selecteer **op** de pagina Leden de optie **Leden verwijderen**.
-1. Selecteer op de pagina **Groepleden bulk verwijderen** de optie **Downloaden** om de CSV-bestandssjabloon met vereiste groepslideigenschappen op te halen.
+Down load en vul de CSV-sjabloon bulksgewijs uploaden in om Azure AD-groeps leden bulksgewijs toe te voegen. Uw CSV-sjabloon kan er als volgt uitzien:
 
-   ![De opdracht Leden verwijderen staat op de profielpagina voor de groep](./media/groups-bulk-remove-members/remove-panel.png)
+![Werk blad voor upload-en aanroep-outs waarin het doel en de waarden voor elke rij en kolom worden uitgelegd](./media/groups-bulk-remove-members/template-example.png)
 
-1. Open het CSV-bestand en voeg een regel toe voor elk groepslid dat u uit de groep wilt verwijderen (vereiste waarden zijn lidobject-id of gebruikersnaam). Sla het bestand op.
+### <a name="csv-template-structure"></a>Structuur van CSV-sjabloon
 
-   ![Het CSV-bestand bevat namen en namen die de leden kunnen verwijderen](./media/groups-bulk-remove-members/csv-file.png)
+De rijen in een gedownloade CSV-sjabloon zijn als volgt:
 
-1. Blader op de pagina **Groepleden bulk verwijderen** onder **Uw csv-bestand uploaden**naar het bestand. Wanneer u het bestand selecteert, wordt de validatie van het CSV-bestand gestart.
-1. Wanneer de inhoud van het bestand is gevalideerd, wordt op de pagina voor bulkimport **bestand geüpload.** Als er fouten zijn, moet u deze oplossen voordat u de taak indienen.
-1. Wanneer uw bestand de validatie doorstaat, selecteert u **Verzenden** om de Azure-bulkbewerking te starten waarmee de groepsleden uit de groep worden verwijderd.
-1. Wanneer de verwijderingsbewerking is voltooid, ziet u een melding dat de bulkbewerking is geslaagd.
+- **Versie nummer**: de eerste rij met het versie nummer moet worden opgenomen in de upload CSV.
+- **Kolom koppen**: de indeling van de kolom koppen is &lt;de *item naam* &gt; [propertyname] &lt; *vereist of leeg*&gt;. Bijvoorbeeld `Member object ID or user principal name [memberObjectIdOrUpn] Required`. Sommige oudere versies van de sjabloon hebben mogelijk een kleine variatie. Voor wijzigingen in groepslid maatschappen hebt u de mogelijkheid om te gebruiken id: lid object-ID of user principal name.
+- **Voor beelden van rij**: we hebben in de sjabloon een rij met voor beelden van geldige waarden voor elke kolom opgenomen. U moet de voor beelden van de rij verwijderen en vervangen door uw eigen vermeldingen.
 
-## <a name="check-removal-status"></a>Verwijderstatus controleren
+### <a name="additional-guidance"></a>Aanvullende richtlijnen
 
-U de status van al uw in behandeling zijnde bulkaanvragen bekijken op de pagina **Bulk-bewerkingsresultaten.**
+- De eerste twee rijen van de upload sjabloon mogen niet worden verwijderd of gewijzigd, of de upload kan niet worden verwerkt.
+- De vereiste kolommen worden eerst weer gegeven.
+- Het is niet raadzaam om nieuwe kolommen toe te voegen aan de sjabloon. Alle extra kolommen die u toevoegt, worden genegeerd en worden niet verwerkt.
+- U wordt aangeraden de meest recente versie van de CSV-sjabloon zo vaak mogelijk te downloaden.
+
+## <a name="to-bulk-remove-group-members"></a>Groeps leden bulksgewijs verwijderen
+
+1. Meld u aan bij [de Azure Portal](https://portal.azure.com) met een Administrator-account van de gebruiker in de organisatie. Groeps eigenaren kunnen ook leden verwijderen van de groepen waarvan ze eigenaar zijn.
+1. Selecteer **groepen** > **alle groepen**in azure AD.
+1. Open de groep waaruit u leden wilt verwijderen en selecteer vervolgens **leden**.
+1. Selecteer **leden verwijderen**op de pagina **leden** .
+1. Selecteer op de pagina **groeps leden bulksgewijs verwijderen** de optie **downloaden** om de CSV-bestands sjabloon met de vereiste eigenschappen voor de groeps leden op te halen.
+
+   ![De opdracht leden verwijderen bevindt zich op de profiel pagina voor de groep](./media/groups-bulk-remove-members/remove-panel.png)
+
+1. Open het CSV-bestand en voeg een regel toe voor elk groepslid dat u wilt verwijderen uit de groep (de vereiste waarden zijn lid van de object-ID of User Principal Name). Sla het bestand op.
+
+   ![Het CSV-bestand bevat de namen en Id's van de leden die u wilt verwijderen](./media/groups-bulk-remove-members/csv-file.png)
+
+1. Blader op de pagina **groeps leden bulksgewijs verwijderen** onder **uw CSV-bestand uploaden**naar het bestand. Wanneer u het bestand selecteert, wordt de validatie van het CSV-bestand gestart.
+1. Wanneer de bestands inhoud is gevalideerd, wordt het **bestand dat is geüpload**weer gegeven op de pagina Bulk Import. Als er fouten zijn, moet u deze oplossen voordat u de taak kunt indienen.
+1. Wanneer de validatie van uw bestand wordt door gegeven, selecteert u **verzenden** om de Azure-bulk bewerking te starten waarmee de groeps leden uit de groep worden verwijderd.
+1. Wanneer het verwijderen is voltooid, ziet u een melding dat de bulk bewerking is geslaagd.
+
+## <a name="check-removal-status"></a>Verwijderings status controleren
+
+U kunt de status van al uw bulk aanvragen in behandeling bekijken op de pagina **resultaten van bulk bewerking** .
 
 [![](media/groups-bulk-remove-members/bulk-center.png "Check status in the Bulk Operations Results page")](media/groups-bulk-remove-members/bulk-center.png#lightbox)
 
-Selecteer de waarden onder de kolommen **# Succes**, **# Mislukt**of **Totaalaantal aanvragen** voor meer informatie over elk regelitem binnen de bulkbewerking. Als er fouten zijn opgetreden, worden de redenen voor de fout weergegeven.
+Selecteer de waarden onder de kolommen **# geslaagd**, **# fout**of **Totaal aantal aanvragen** voor meer informatie over elk regel item in de bulk bewerking. Als er fouten zijn opgetreden, worden de redenen voor de fout weer gegeven.
 
-## <a name="bulk-removal-service-limits"></a>Limieten voor het verwijderen van bulk
+## <a name="bulk-removal-service-limits"></a>Limieten voor bulksgewijs verwijderen van service
 
-Elke bulkactiviteit om een lijst met groepsleden te verwijderen, kan maximaal een uur duren. Hierdoor kan een lijst van ten minste 40.000 leden worden verwijderd.
+Elke bulk activiteit voor het verwijderen van een lijst met groeps leden van kan Maxi maal één uur worden uitgevoerd. Hierdoor kan een lijst van ten minste 40.000 leden worden verwijderd.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Leden van bulkimportgroepen](groups-bulk-import-members.md)
+- [Groeps leden bulksgewijs importeren](groups-bulk-import-members.md)
 - [Leden van een groep downloaden](groups-bulk-download-members.md)
 - [Een lijst met alle groepen downloaden](groups-bulk-download.md)

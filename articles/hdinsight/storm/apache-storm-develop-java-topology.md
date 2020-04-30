@@ -6,18 +6,18 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 03/14/2019
-ms.custom: H1Hack27Feb2017,hdinsightactive,hdiseo17may2017
-ms.openlocfilehash: 75100b47ddf8f36ed9a22ff3073c439f8ad9040b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: H1Hack27Feb2017,hdinsightactive,hdiseo17may2017,seoapr2020
+ms.date: 04/27/2020
+ms.openlocfilehash: 471d07f4aa5abe7552ff33e767e8783239dd1989
+ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 04/28/2020
-ms.locfileid: "74083299"
+ms.locfileid: "82203876"
 ---
 # <a name="create-an-apache-storm-topology-in-java"></a>Een Apache Storm topologie maken in Java
 
-Meer informatie over het maken van een Java-topologie voor [Apache Storm](https://storm.apache.org/). Hier maakt u een storm-topologie waarmee een toepassing met woorden tellen wordt geïmplementeerd. U gebruikt [Apache Maven](https://maven.apache.org/) om het project te bouwen en op te pakken. Vervolgens leert u hoe u de topologie kunt definiëren met behulp van het [Apache Storme stroom](https://storm.apache.org/releases/2.0.0/flux.html) raamwerk.
+Meer informatie over het maken van een Java-topologie voor Apache Storm. U maakt een storm-topologie die een toepassing voor het tellen van woorden implementeert. U gebruikt Apache Maven om het project te bouwen en op te pakken. Vervolgens leert u hoe u de topologie kunt definiëren met behulp van het Apache Storme stroom raamwerk.
 
 Nadat u de stappen in dit document hebt voltooid, kunt u de topologie implementeren voor Apache Storm op HDInsight.
 
@@ -197,7 +197,7 @@ Deze sectie wordt gebruikt om invoeg toepassingen, resources en andere configura
 
 * **Apache Maven compiler-invoeg toepassing**
 
-    Een andere handige invoeg toepassing is de [Apache Maven compiler-invoeg toepassing](https://maven.apache.org/plugins/maven-compiler-plugin/), die wordt gebruikt om de compilatie opties te wijzigen. Wijzig de Java-versie die maven gebruikt voor de bron en het doel voor uw toepassing.
+    Een andere handige invoeg toepassing is de [`Apache Maven Compiler Plugin`](https://maven.apache.org/plugins/maven-compiler-plugin/), die wordt gebruikt om de compilatie opties te wijzigen. Wijzig de Java-versie die maven gebruikt voor de bron en het doel voor uw toepassing.
 
   * Voor HDInsight __3,4 of eerder__stelt u de bron-en doel-Java-versie in op __1,7__.
 
@@ -239,13 +239,13 @@ Een op Java gebaseerde Apache Storm topologie bestaat uit drie onderdelen die u 
 
 * **Spouts**: gegevens uit externe bronnen worden gelezen en gegevens stromen in de topologie worden verzonden.
 
-* **Bouten**: voert de verwerking uit van stromen die worden verzonden door spouts of andere schichten en levert een of meer streams.
+* **Bouten**: verwerkt stromen op basis van spouts of andere schichten en levert een of meer streams.
 
 * **Topologie**: definieert hoe de spouts en schichten worden gerangschikt en biedt het toegangs punt voor de topologie.
 
 ### <a name="create-the-spout"></a>De Spout maken
 
-Om de vereisten voor het instellen van externe gegevens bronnen te reduceren, worden in de volgende Spout alleen wille keurige zinnen gegeven. Het is een gewijzigde versie van een Spout die wordt meegeleverd met de [Storm-starter-voor beelden](https://github.com/apache/storm/blob/0.10.x-branch/examples/storm-starter/src/jvm/storm/starter).  Hoewel in deze topologie slechts één Spout wordt gebruikt, kunnen andere gegevens van andere bronnen in de topologie worden gefeedd.
+Om de vereisten voor het instellen van externe gegevens bronnen te reduceren, worden in de volgende Spout alleen wille keurige zinnen gegeven. Het is een gewijzigde versie van een Spout die wordt meegeleverd met de [Storm-starter-voor beelden](https://github.com/apache/storm/blob/0.10.x-branch/examples/storm-starter/src/jvm/storm/starter).  Hoewel voor deze topologie één Spout wordt gebruikt, kunnen andere gegevens van verschillende bronnen in de topologie worden gefeedd.`.`
 
 Voer de onderstaande opdracht in om een nieuw bestand `RandomSentenceSpout.java`te maken en te openen:
 
@@ -481,7 +481,7 @@ public class WordCount extends BaseBasicBolt {
 
 ### <a name="define-the-topology"></a>De topologie definiëren
 
-De topologie verbindt de spouts en schichten samen in een grafiek, die definieert hoe gegevens stromen tussen de onderdelen. Het biedt ook parallellisme-hints die storm gebruiken bij het maken van exemplaren van de onderdelen in het cluster.
+De topologie verbindt de spouts en schichten samen in een grafiek. De grafiek definieert hoe gegevens stromen tussen de onderdelen. Het biedt ook parallellisme-hints die storm gebruiken bij het maken van exemplaren van de onderdelen in het cluster.
 
 De volgende afbeelding is een basis diagram van de grafiek van onderdelen voor deze topologie.
 
@@ -613,15 +613,15 @@ Terwijl deze wordt uitgevoerd, wordt in de topologie opstart gegevens weer gegev
     17:33:27 [Thread-30-count] INFO  com.microsoft.example.WordCount - Emitting a count of 57 for word dwarfs
     17:33:27 [Thread-12-count] INFO  com.microsoft.example.WordCount - Emitting a count of 57 for word snow
 
-In dit voorbeeld logboek wordt aangegeven dat het woord ' en ' 113 keer is verzonden. De telling blijft bestaan, zolang de topologie wordt uitgevoerd, omdat de Spout continu dezelfde zinnen verzendt.
+In dit voorbeeld logboek wordt aangegeven dat het woord ' en ' 113 keer is verzonden. Het aantal blijft toenemen, zolang de topologie wordt uitgevoerd. Deze toename is omdat de Spout continu dezelfde zinnen verzendt.
 
 Er is een interval van vijf seconden tussen de emissie van woorden en tellingen. Het **WordCount** -onderdeel is zo geconfigureerd dat alleen gegevens worden verzonden wanneer een Tick tuple arriveert. Er wordt gevraagd dat Tick-Tuples elke vijf seconden worden geleverd.
 
 ## <a name="convert-the-topology-to-flux"></a>De topologie omzetten naar stroom
 
-[Stroom](https://storm.apache.org/releases/2.0.0/flux.html) is een nieuw Framework dat beschikbaar is met Storm 0.10.0 en hoger, waarmee u de configuratie kunt scheiden van implementatie. Uw onderdelen zijn nog in Java gedefinieerd, maar de topologie wordt gedefinieerd met behulp van een YAML-bestand. U kunt een standaard topologie definitie met uw project inpakken of een zelfstandig bestand gebruiken bij het verzenden van de topologie. Bij het indienen van de topologie voor Storm kunt u omgevings variabelen of configuratie bestanden gebruiken om waarden in de YAML-topologie definitie in te vullen.
+[Stroom](https://storm.apache.org/releases/2.0.0/flux.html) is een nieuw Framework dat beschikbaar is met Storm 0.10.0 en hoger. Met stroom kunt u de configuratie van de implementatie scheiden. Uw onderdelen zijn nog in Java gedefinieerd, maar de topologie wordt gedefinieerd met behulp van een YAML-bestand. U kunt een standaard topologie definitie met uw project inpakken of een zelfstandig bestand gebruiken bij het verzenden van de topologie. Wanneer de topologie wordt verzonden naar Storm, gebruikt u omgevings variabelen of configuratie bestanden om de YAML-topologie definitie waarden in te vullen.
 
-Het YAML-bestand definieert de onderdelen die moeten worden gebruikt voor de topologie en de gegevens stroom ertussen. U kunt een YAML-bestand opnemen als onderdeel van het jar-bestand of u kunt een extern YAML-bestand gebruiken.
+Het YAML-bestand definieert de onderdelen die moeten worden gebruikt voor de topologie en de gegevens stroom ertussen. U kunt een YAML-bestand opnemen als onderdeel van het jar-bestand. U kunt ook een extern YAML-bestand gebruiken.
 
 Zie voor meer informatie over stroom [stroom Framework (https://storm.apache.org/releases/current/flux.html)](https://storm.apache.org/releases/current/flux.html).
 
@@ -818,7 +818,7 @@ Zie voor meer informatie over deze en andere functies van het stroom raamwerk [s
 
 ## <a name="trident"></a>Trident
 
-[Trident](https://storm.apache.org/releases/current/Trident-API-Overview.html) is een abstracte abstractie op hoog niveau die wordt verschaft door storm. Het ondersteunt stateful verwerking. Het belangrijkste voor deel van Trident is dat het ervoor kan zorgen dat elk bericht dat de topologie invult, slechts één keer wordt verwerkt. Zonder gebruik van Trident kan uw topologie alleen garanderen dat berichten ten minste één keer worden verwerkt. Er zijn ook andere verschillen, zoals ingebouwde onderdelen die kunnen worden gebruikt in plaats van bouten te maken. In feite worden grendels vervangen door minder algemene onderdelen, zoals filters, prognoses en functies.
+[Trident](https://storm.apache.org/releases/current/Trident-API-Overview.html) is een abstracte abstractie op hoog niveau die wordt verschaft door storm. Het ondersteunt stateful verwerking. Het belangrijkste voor deel van Trident is dat het ervoor zorgt dat elk bericht dat de topologie binnengaat, slechts één keer wordt verwerkt. Zonder gebruik van Trident kan uw topologie alleen garanderen dat berichten ten minste één keer worden verwerkt. Er zijn ook andere verschillen, zoals ingebouwde onderdelen die kunnen worden gebruikt in plaats van bouten te maken. Schichten worden vervangen door minder algemene onderdelen, zoals filters, prognoses en functies.
 
 Trident-toepassingen kunnen worden gemaakt met behulp van Maven-projecten. U gebruikt dezelfde basis stappen zoals eerder in dit artikel wordt weer gegeven. alleen de code wijkt af. Trident kan ook niet (momenteel) worden gebruikt met het stroom kader.
 
@@ -830,6 +830,6 @@ U hebt geleerd hoe u een Apache Storm topologie maakt met behulp van Java. Lees 
 
 * [Apache Storm topologieën implementeren en beheren in HDInsight](apache-storm-deploy-monitor-topology-linux.md)
 
-* [C#-topologieën ontwikkelen voor Apache Storm op HDInsight met behulp van Visual Studio](apache-storm-develop-csharp-visual-studio-topology.md)
+* [Topologieën ontwikkelen met Python](apache-storm-develop-python-topology.md)
 
 U vindt meer voorbeeld Apache Storm topologieën door te bezoeken [voorbeeld topologieën voor Apache Storm op HDInsight](apache-storm-example-topology.md).

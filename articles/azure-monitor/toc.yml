@@ -243,11 +243,13 @@
             - name: 'Zelfstandig: elke omgeving'
               items:
                 - name: Java (preview)
-                  href: app/java-in-process-agent.md
-                - name: JVM-configuratie in Java
-                  href: app/java-standalone-arguments.md
-                - name: Configuratie-opties voor Java
-                  href: app/java-standalone-config.md
+                  items:
+                    - name: Overzicht
+                      href: app/java-in-process-agent.md
+                    - name: Configuratie-opties
+                      href: app/java-standalone-config.md
+                    - name: Configuratie van JVM-argumenten
+                      href: app/java-standalone-arguments.md
             - name: On-premises servers
               items:
                 - name: ASP.NET
@@ -690,8 +692,10 @@
                   href: insights/container-insights-enable-existing-clusters.md
                 - name: Inschakelen voor een hybride cluster
                   href: insights/container-insights-hybrid-setup.md
-                - name: Inschakelen voor Azure Red Hat OpenShift
+                - name: Inschakelen voor Azure Red Hat OpenShift v3
                   href: insights/container-insights-azure-redhat-setup.md
+                - name: Inschakelen voor Azure Red Hat OpenShift v4
+                  href: insights/container-insights-azure-redhat4-setup.md
                 - name: Regiotoewijzingen
                   href: insights/container-insights-region-mapping.md
             - name: Prestaties bewaken
@@ -724,10 +728,16 @@
               href: insights/container-insights-update-metrics.md
             - name: Configuratie van statuscontrole
               href: insights/container-insights-health-monitors-config.md
-            - name: Bewaking van AKS uitschakelen
-              href: insights/container-insights-optout.md
-            - name: Bewaking van Red Hat OpenShift uitschakelen
-              href: insights/container-insights-optout-openshift.md
+            - name: Bewaking uitschakelen
+              items:
+                - name: Bewaking van AKS uitschakelen
+                  href: insights/container-insights-optout.md
+                - name: Bewaking van Red Hat OpenShift v3 uitschakelen
+                  href: insights/container-insights-optout-openshift-v3.md
+                - name: Bewaking van Red Hat OpenShift v4 uitschakelen
+                  href: insights/container-insights-optout-openshift-v4.md
+                - name: Bewaking van hybride cluster uitschakelen
+                  href: insights/container-insights-optout-hybrid.md
             - name: Problemen oplossen
               href: insights/container-insights-troubleshoot.md
         - name: Docker- en Windows-containers bewaken

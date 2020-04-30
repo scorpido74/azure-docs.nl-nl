@@ -10,18 +10,18 @@ ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: tutorial
-ms.date: 11/22/2017
+ms.date: 04/22/2020
 ms.author: apimpm
-ms.openlocfilehash: 359b90cc434dad04fc0296c54fcc762f3a75062d
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 7b1fd34824bec9641edc94ce278fa21a1b57b2c0
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "74107657"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82202737"
 ---
 # <a name="import-soap-api"></a>SOAP API importeren
 
-Dit artikel laat zien hoe u een standaard XML-representatie van een SOAP API moet importeren. In het artikel wordt ook uitgelegd hoe u de APIM-API kunt testen.
+Dit artikel laat zien hoe u een standaard XML-representatie van een SOAP API moet importeren. In dit artikel wordt ook uitgelegd hoe u de API Management-API kunt testen.
 
 In dit artikel leert u het volgende:
 
@@ -32,13 +32,13 @@ In dit artikel leert u het volgende:
 
 ## <a name="prerequisites"></a>Vereisten
 
-De volgende quickstart voltooien: [een azure API-beheerexemplaar maken](get-started-create-service-instance.md)
+Voer de volgende Snelstartgids uit: [een Azure API Management-exemplaar maken](get-started-create-service-instance.md)
 
 [!INCLUDE [api-management-navigate-to-instance.md](../../includes/api-management-navigate-to-instance.md)]
 
 ## <a name="import-and-publish-a-back-end-api"></a><a name="create-api"> </a>Een back-end-API importeren en publiceren
 
-1. Selecteer **API's** bij **API MANAGEMENT**.
+1. Navigeer naar uw API Management-service in de Azure Portal en selecteer **api's** in het menu.
 2. Selecteer **WSDL** uit de lijst **Nieuwe API toevoegen**.
 
     ![SOAP API](./media/import-soap-api/wsdl-api.png)
@@ -49,18 +49,19 @@ De volgende quickstart voltooien: [een azure API-beheerexemplaar maken](get-star
 5. Druk op tab.
 
     De volgende velden worden gevuld met de gegevens van de SOAP API: Weergavenaam, Naam, Beschrijving.
-6. Voeg een achtervoegsel toe van de URL voor de API. Het achtervoegsel is een naam die deze specifieke API in dit APIM-exemplaar identificeert. Hij moet uniek zijn in dit APIM-exemplaar.
-9. Publiceer de API door deze aan een product te koppelen. In dit geval wordt het product *onbeperkt* gebruikt.  Als u wilt dat de API wordt gepubliceerd en beschikbaar is voor ontwikkelaars, kunt u deze toevoegen aan een product. U kunt dit doen tijdens het maken van de API of het later instellen.
+6. Voeg een achtervoegsel toe van de URL voor de API. Het achtervoegsel is een naam die deze specifieke API in dit API Management-exemplaar identificeert. Deze moet uniek zijn in dit API Management-exemplaar.
+7. Publiceer de API door deze aan een product te koppelen. In dit geval wordt het product *onbeperkt* gebruikt.  Als u wilt dat de API wordt gepubliceerd en beschikbaar is voor ontwikkelaars, kunt u deze toevoegen aan een product. U kunt dit doen tijdens het maken van de API of het later instellen.
 
-    Producten zijn koppelingen van een of meer API's. U kunt een aantal API's opnemen en deze beschikbaar stellen voor ontwikkelaars via de ontwikkelaarsportal. Ontwikkelaars moeten zich eerst abonneren op een product om toegang tot de API te krijgen. Wanneer ontwikkelaars zich abonneren, ontvangen ze een abonnementssleutel die toegang biedt tot elke API in het betreffende product. Als u de APIM-abonnementssleutel hebt gemaakt, bent u al een beheerder en bent u standaard geabonneerd op elk product.
+    Producten zijn koppelingen van een of meer API's. U kunt een aantal API's opnemen en deze beschikbaar stellen voor ontwikkelaars via de ontwikkelaarsportal. Ontwikkelaars moeten zich eerst abonneren op een product om toegang tot de API te krijgen. Wanneer ontwikkelaars zich abonneren, ontvangen ze een abonnementssleutel die toegang biedt tot elke API in het betreffende product. Als u de API Management instantie hebt gemaakt, bent u al een beheerder en bent u standaard geabonneerd op elk product.
 
     Standaard wordt elk API Management-exemplaar geleverd met twee voorbeeldproducten:
 
     * **Starter**
     * **Onbeperkt**   
-10. Selecteer **Maken**.
+8. Voer andere API-instellingen in. U kunt de waarden instellen tijdens het maken of deze later configureren door naar het tabblad **instellingen** te gaan. De instellingen worden beschreven in de zelf studie [uw eerste API importeren en publiceren](import-and-publish.md#-import-and-publish-a-backend-api) .
+9. Selecteer **Maken**.
 
-### <a name="test-the-new-api-in-the-administrative-portal"></a>De nieuwe API testen in de beheerportal
+### <a name="test-the-new-api-in-the-administrative-portal"></a>De nieuwe API testen in de beheer Portal
 
 Bewerkingen kunnen rechtstreeks vanuit de administratieve portal worden aangeroepen. Dit is een handige manier om de bewerkingen van een API te bekijken en te testen.  
 
@@ -68,7 +69,7 @@ Bewerkingen kunnen rechtstreeks vanuit de administratieve portal worden aangeroe
 2. Druk op het tabblad **Testen**.
 3. Selecteer een willekeurige bewerking.
 
-    De pagina geeft velden weer voor queryparameters en velden voor de headers. Een van de headers is Ocp-Apim-Subscription-Key voor de abonnementssleutel van het product dat is gekoppeld aan deze API. Als u de APIM-instantie hebt gemaakt, bent u al een beheerder en wordt de sleutel automatisch ingevoerd. 
+    De pagina geeft velden weer voor queryparameters en velden voor de headers. Een van de headers is Ocp-Apim-Subscription-Key voor de abonnementssleutel van het product dat is gekoppeld aan deze API. Als u het API Management-exemplaar hebt gemaakt, bent u al een beheerder en wordt de sleutel dus automatisch ingevuld. 
 1. Druk op **Verzenden**.
 
     Back-end reageert met **200 OK** en enkele gegevens.

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/24/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 2b30c176cf3c9dd31ae3efa85d308b3f89bd4dbe
-ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
+ms.openlocfilehash: 5d2d33dc2ef135fde0955336a40f851d6ed4e0e7
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81736281"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82204484"
 ---
 ### <a name="does-the-user-need-to-have-hub-and-spoke-with-sd-wanvpn-devices-to-use-azure-virtual-wan"></a>Moet de gebruiker hub en spoke met SD-WAN/VPN-apparaten hebben om virtueel WAN van Azure te gebruiken?
 
@@ -49,7 +49,7 @@ Er zijn twee opties voor het toevoegen van DNS-servers voor de P2S-clients.
 
 ### <a name="for-user-vpn-point-to-site--how-many-clients-are-supported"></a>Voor gebruikers VPN (punt-naar-site): hoeveel clients worden ondersteund?
 
-Elke P2S-gateway van een gebruiker heeft twee instanties en elk exemplaar biedt ondersteuning voor bepaalde gebruikers als de schaal eenheid verandert. Schaal eenheid 1-3 ondersteunt 500 verbindingen, schaal eenheid 4-6 ondersteunt 1000 verbindingen, schaal eenheid 7-10 ondersteunt 5000 verbindingen en schaal eenheid 11 + ondersteunt Maxi maal 10.000 verbindingen. Als voor beeld kan de gebruiker bijvoorbeeld 1 schaal eenheid kiezen. Elke schaal eenheid impliceert een actief-actief gateway die is geïmplementeerd en elk van de instanties (in dit geval 2) zou Maxi maal 500 verbindingen ondersteunen. Omdat u 500-verbindingen * 2 per gateway kunt verkrijgen, betekent dit niet dat u in plaats van de 500 voor deze schaal eenheid op 1000 hoeft te plannen, omdat er mogelijk exemplaren moeten worden verwerkt waarin connectiviteit voor de extra 500 mogelijk wordt verbroken als u het aantal aanbevolen verbindingen overschrijdt.
+Elke P2S-gateway van een gebruiker heeft twee instanties en elk exemplaar biedt ondersteuning voor bepaalde gebruikers als de schaal eenheid verandert. Schaal eenheid 1-3 ondersteunt 500 verbindingen, schaal eenheid 4-6 ondersteunt 1000 verbindingen, schaal eenheid 7-12 ondersteunt 5000 verbindingen en schaal eenheid 13-20 ondersteunt Maxi maal 10.000 verbindingen. Als voor beeld kan de gebruiker bijvoorbeeld 1 schaal eenheid kiezen. Elke schaal eenheid impliceert een actief-actief gateway die is geïmplementeerd en elk van de instanties (in dit geval 2) zou Maxi maal 500 verbindingen ondersteunen. Omdat u 500-verbindingen * 2 per gateway kunt verkrijgen, betekent dit niet dat u in plaats van de 500 voor deze schaal eenheid op 1000 hoeft te plannen, omdat er mogelijk exemplaren moeten worden verwerkt waarin connectiviteit voor de extra 500 mogelijk wordt verbroken als u het aantal aanbevolen verbindingen overschrijdt.
 
 ### <a name="what-is-the-difference-between-an-azure-virtual-network-gateway-vpn-gateway-and-an-azure-virtual-wan-vpn-gateway"></a>Wat is het verschil tussen een virtuele Azure-netwerk gateway (VPN Gateway) en een virtueel WAN VPN-gateway van Azure?
 
@@ -215,6 +215,10 @@ Als een virtuele hub dezelfde route van meerdere externe hubs bewaart, is de vol
 1) Route oorsprong a) netwerk routes: VNET-voor voegsels worden rechtstreeks door de Virtual hub gateway b-hub geRouteTableeerd (statisch geconfigureerde routes) c) BGP d) InterHub-routes
 2)  Route-metric: Virtual WAN geeft de voor keur aan ExpressRoute via VPN. ExpressRoute-peer heeft een hogere gewichts verhouding vergeleken met de VPN-peer
 3)  Als padlengte
+
+### <a name="is-there-support-for-ipv6-in-virtual-wan"></a>Is er ondersteuning voor IPv6 in virtuele WAN?
+
+IPv6 wordt niet ondersteund in virtuele WAN-hub en gateways. Dit scenario wordt ook niet ondersteund als u een VNET hebt met IPv6-ondersteuning en u het VNET wilt verbinden met een virtueel WAN. 
 
 ### <a name="what-are-the-differences-between-the-virtual-wan-types-basic-and-standard"></a>Wat zijn de verschillen tussen de virtuele WAN-typen (Basic en Standard)?
 

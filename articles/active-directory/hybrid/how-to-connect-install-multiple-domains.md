@@ -1,6 +1,6 @@
 ---
-title: Azure AD Meerdere domeinen verbinden
-description: In dit document wordt beschreven in het instellen en configureren van meerdere topleveldomeinen met O365 en Azure AD.
+title: Meerdere domeinen Azure AD Connect
+description: Dit document bevat informatie over het instellen en configureren van meerdere domeinen op het hoogste niveau met O365 en Azure AD.
 services: active-directory
 documentationcenter: ''
 author: billmath
@@ -16,145 +16,145 @@ ms.date: 05/31/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 18b5f19e3e994aa05fa99caf360d0c1be69ec7a5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0775e717c0610e122bb31f752beecd2c97599053
+ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80049773"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82201037"
 ---
 # <a name="multiple-domain-support-for-federating-with-azure-ad"></a>Ondersteuning voor meerdere domeinen voor federatie met Azure AD
-In de volgende documentatie vindt u richtlijnen voor het gebruik van meerdere domeinen en subdomeinen op het hoogste niveau wanneer u zich bevindt met Office 365- of Azure AD-domeinen.
+De volgende documentatie bevat richt lijnen voor het gebruik van meerdere domeinen op het hoogste niveau en subdomeinen wanneer u federeren met Office 365 of Azure AD-domeinen.
 
 ## <a name="multiple-top-level-domain-support"></a>Ondersteuning voor meerdere domeinen op het hoogste niveau
-Voor het federatieen van meerdere domeinen op het hoogste niveau met Azure AD is een extra configuratie vereist die niet vereist is bij het federatieen met één domein op het hoogste niveau.
+Federeren meerdere domeinen op het hoogste niveau met Azure AD vereisen enige aanvullende configuratie die niet vereist is wanneer federeren met één domein op het hoogste niveau.
 
-Wanneer een domein wordt gefedereerd met Azure AD, worden verschillende eigenschappen op het domein in Azure ingesteld.  Een belangrijke is IssuerUri.  Deze eigenschap is een URI die door Azure AD wordt gebruikt om het domein te identificeren waaraan het token is gekoppeld.  De URI hoeft niet op te lossen om iets, maar het moet een geldige URI.  Azure AD stelt de URI standaard in op de waarde van de federatieservice-id in uw on-premises AD FS-configuratie.
+Wanneer een domein Federated is met Azure AD, worden verschillende eigenschappen ingesteld voor het domein in Azure.  Een belang rijk item is IssuerUri.  Deze eigenschap is een URI die door Azure AD wordt gebruikt om het domein te identificeren waaraan het token is gekoppeld.  De URI hoeft niet naar iets te worden omgezet, maar moet een geldige URI zijn.  Standaard stelt Azure AD de URI in op de waarde van de Federation service-id in uw on-premises AD FS configuratie.
 
 > [!NOTE]
-> De federatieservice-id is een URI die op unieke wijze een federatieservice identificeert.  De federationservice is een instantie van AD FS die fungeert als de beveiligingstokenservice.
+> De Federation service-id is een URI waarmee een Federatie service op unieke wijze wordt geïdentificeerd.  De Federation-service is een instantie van AD FS die fungeert als de beveiligings token service.
 >
 >
 
-U de IssuerUri bekijken met `Get-MsolDomainFederationSettings -DomainName <your domain>`de opdracht PowerShell.
+U kunt de IssuerUri weer geven met behulp van `Get-MsolDomainFederationSettings -DomainName <your domain>`de Power shell-opdracht.
 
 ![Get-MsolDomainFederationSettings](./media/how-to-connect-install-multiple-domains/MsolDomainFederationSettings.png)
 
-Er doet zich een probleem voor wanneer u meer dan één domein op het hoogste niveau toevoegt.  Stel dat u een federatie hebt ingesteld tussen Azure AD en uw on-premises omgeving.  Voor dit document wordt het domein, bmcontoso.com gebruikt.  Nu is een tweede, top-level domein, bmfabrikam.com is toegevoegd.
+Er treedt een probleem op wanneer u meer dan één domein op het hoogste niveau toevoegt.  Stel bijvoorbeeld dat u Federatie hebt ingesteld tussen Azure AD en uw on-premises omgeving.  Voor dit document wordt het domein bmcontoso.com gebruikt.  Er is nu een tweede domein op het hoogste niveau bmfabrikam.com toegevoegd.
 
 ![Domeinen](./media/how-to-connect-install-multiple-domains/domains.png)
 
-Wanneer u probeert het bmfabrikam.com domein te converteren om te worden gefedereerd, treedt er een fout op.  De reden hiervoor is dat Azure AD een beperking heeft waardoor de eigenschap IssuerUri niet dezelfde waarde heeft voor meer dan één domein.  
+Wanneer u probeert het domein bmfabrikam.com te converteren naar Federated, treedt er een fout op.  De reden hiervoor is dat Azure AD een beperking heeft die de eigenschap IssuerUri niet toestaat dezelfde waarde voor meer dan één domein te hebben.  
 
-![Federatiefout](./media/how-to-connect-install-multiple-domains/error.png)
+![Federatie fout](./media/how-to-connect-install-multiple-domains/error.png)
 
-### <a name="supportmultipledomain-parameter"></a>SupportMultipleDomain Parameter
-Om deze beperking te omzeilen, moet u een andere IssuerUri `-SupportMultipleDomain` toevoegen, wat kan worden gedaan met behulp van de parameter.  Deze parameter wordt gebruikt met de volgende cmdlets:
+### <a name="supportmultipledomain-parameter"></a>SupportMultipleDomain-para meter
+Als u deze beperking wilt omzeilen, moet u een andere IssuerUri toevoegen. Dit kan worden gedaan met behulp van de `-SupportMultipleDomain` para meter.  Deze para meter wordt gebruikt met de volgende cmdlets:
 
 * `New-MsolFederatedDomain`
 * `Convert-MsolDomaintoFederated`
 * `Update-MsolFederatedDomain`
 
-Met deze parameter configureert Azure AD de IssuerUri zodat deze is gebaseerd op de naam van het domein.  De IssuerUri zal uniek zijn in verschillende mappen in Azure AD.  Als u de parameter gebruikt, kan de powershell-opdracht met succes worden voltooid.
+Met deze para meter wordt de IssuerUri door Azure AD geconfigureerd zodat deze is gebaseerd op de naam van het domein.  De IssuerUri is uniek voor alle directory's in azure AD.  Als u de para meter gebruikt, kan de Power shell-opdracht zijn voltooid.
 
-![Federatiefout](./media/how-to-connect-install-multiple-domains/convert.png)
+![Federatie fout](./media/how-to-connect-install-multiple-domains/convert.png)
 
 Als u de instellingen voor het bmfabrikam.com-domein bekijkt, ziet u het volgende:
 
-![Federatiefout](./media/how-to-connect-install-multiple-domains/settings.png)
+![Federatie fout](./media/how-to-connect-install-multiple-domains/settings.png)
 
-`-SupportMultipleDomain`wijzigt de andere eindpunten niet, die nog steeds zijn geconfigureerd om te wijzen op de federatieservice op adfs.bmcontoso.com.
+`-SupportMultipleDomain`wijzigt niet de andere eind punten die nog steeds zijn geconfigureerd om te verwijzen naar de Federation-service op adfs.bmcontoso.com.
 
-Een ander `-SupportMultipleDomain` ding dat dat doet is dat het ervoor zorgt dat het AD FS-systeem de juiste uitgeverwaarde bevat in tokens die zijn uitgegeven voor Azure AD. Deze waarde wordt ingesteld door het domeingedeelte van de gebruikers UPN in te nemen en in te stellen als domein in de IssuerUri, d.w.z. https://{upn suffix}/adfs/services/trust.
+`-SupportMultipleDomain` Een ander zou dat ervoor zorgt dat het AD FS systeem de juiste waarde voor de verlener bevat in de tokens die zijn uitgegeven voor Azure AD. Deze waarde wordt ingesteld door het domein gedeelte van de UPN van de gebruiker te nemen en in te stellen als het domein in de IssuerUri, d.w.z. https://{UPN-achtervoegsel}/ADFS/Services/Trust.
 
-Tijdens de verificatie naar Azure AD of Office 365 wordt het element IssuerUri in het token van de gebruiker dus gebruikt om het domein in Azure AD te vinden.  Als er geen overeenkomst kan worden gevonden, mislukt de verificatie.
+Tijdens de verificatie bij Azure AD of Office 365 wordt het IssuerUri-element in het token van de gebruiker gebruikt om het domein te vinden in azure AD.  Als er geen overeenkomst wordt gevonden, mislukt de verificatie.
 
-Als het UPN van een bsimon@bmcontoso.comgebruiker bijvoorbeeld het element IssuerUri in het token, `http://bmcontoso.com/adfs/services/trust`AD FS-emissies, is ingesteld op . Dit element komt overeen met de Azure AD-configuratie en verificatie wordt geslaagd.
+Als de UPN van een gebruiker bijvoorbeeld is bsimon@bmcontoso.com, wordt het IssuerUri-element in het token, AD FS-problemen, ingesteld op `http://bmcontoso.com/adfs/services/trust`. Dit element komt overeen met de Azure AD-configuratie en de verificatie slaagt.
 
-Het volgende is de aangepaste claimregel die deze logica implementeert:
+Hier volgt de aangepaste claim regel die deze logica implementeert:
 
     c:[Type == "http://schemas.xmlsoap.org/claims/UPN"] => issue(Type = "http://schemas.microsoft.com/ws/2008/06/identity/claims/issuerid", Value = regexreplace(c.Value, ".+@(?<domain>.+)", "http://${domain}/adfs/services/trust/"));
 
 
 > [!IMPORTANT]
-> Als u de schakelaar -SupportMultipleDomain wilt gebruiken wanneer u nieuwe of reeds bestaande domeinen probeert toe te voegen of converteert, moet uw federatieve vertrouwensrelatie al zijn ingesteld om deze te ondersteunen.
+> Als u de schakel optie-SupportMultipleDomain wilt gebruiken bij het toevoegen van nieuwe of geconverteerde al bestaande domeinen, moet uw federatieve vertrouwens relatie al zijn ingesteld om ze te ondersteunen.
 >
 >
 
-## <a name="how-to-update-the-trust-between-ad-fs-and-azure-ad"></a>De vertrouwensrelatie tussen AD FS en Azure AD bijwerken
-Als u de federatieve vertrouwensrelatie tussen AD FS en uw exemplaar van Azure AD niet hebt ingesteld, moet u deze vertrouwensrelatie mogelijk opnieuw maken.  De reden hiervoor is, wanneer het `-SupportMultipleDomain` oorspronkelijk is ingesteld zonder de parameter, de IssuerUri is ingesteld met de standaardwaarde.  In de screenshot hieronder zie je dat `https://adfs.bmcontoso.com/adfs/services/trust`de IssuerUri is ingesteld op .
+## <a name="how-to-update-the-trust-between-ad-fs-and-azure-ad"></a>De vertrouwens relatie tussen AD FS en Azure AD bijwerken
+Als u de federatieve vertrouwens relatie tussen AD FS en uw exemplaar van Azure AD niet hebt ingesteld, moet u deze vertrouwens relatie mogelijk opnieuw maken.  De reden hiervoor is, wanneer deze oorspronkelijk is ingesteld zonder de `-SupportMultipleDomain` para meter, wordt de IssuerUri ingesteld met de standaard waarde.  In de onderstaande scherm afbeelding ziet u dat de IssuerUri is ingesteld op `https://adfs.bmcontoso.com/adfs/services/trust`.
 
-Als u een nieuw domein hebt toegevoegd aan de Azure `Convert-MsolDomaintoFederated -DomainName <your domain>`AD-portal en vervolgens probeert het te converteren met behulp van, krijgt u de volgende fout.
+Als u een nieuw domein hebt toegevoegd in de Azure AD-Portal en vervolgens probeert te converteren met `Convert-MsolDomaintoFederated -DomainName <your domain>`, wordt de volgende fout weer geven.
 
-![Federatiefout](./media/how-to-connect-install-multiple-domains/trust1.png)
+![Federatie fout](./media/how-to-connect-install-multiple-domains/trust1.png)
 
-Als u de `-SupportMultipleDomain` schakelaar probeert toe te voegen, ontvangt u de volgende fout:
+Als u de `-SupportMultipleDomain` switch probeert toe te voegen, wordt de volgende fout weer gegeven:
 
-![Federatiefout](./media/how-to-connect-install-multiple-domains/trust2.png)
+![Federatie fout](./media/how-to-connect-install-multiple-domains/trust2.png)
 
-Gewoon proberen `Update-MsolFederatedDomain -DomainName <your domain> -SupportMultipleDomain` te draaien op het oorspronkelijke domein zal ook resulteren in een fout.
+Als u gewoon probeert `Update-MsolFederatedDomain -DomainName <your domain> -SupportMultipleDomain` uit te voeren op het oorspronkelijke domein, resulteert dit in een fout.
 
-![Federatiefout](./media/how-to-connect-install-multiple-domains/trust3.png)
+![Federatie fout](./media/how-to-connect-install-multiple-domains/trust3.png)
 
-Gebruik de onderstaande stappen om een extra domein op het hoogste niveau toe te voegen.  Als u al een domein hebt toegevoegd `-SupportMultipleDomain` en de parameter niet hebt gebruikt, begint u met de stappen voor het verwijderen en bijwerken van uw oorspronkelijke domein.  Als u nog geen domein op het hoogste niveau hebt toegevoegd, u beginnen met de stappen voor het toevoegen van een domein met PowerShell van Azure AD Connect.
+Gebruik de volgende stappen om een extra domein op het hoogste niveau toe te voegen.  Als u al een domein hebt toegevoegd en de `-SupportMultipleDomain` para meter niet hebt gebruikt, begint u met de stappen voor het verwijderen en bijwerken van het oorspronkelijke domein.  Als u nog geen domein op het hoogste niveau hebt toegevoegd, kunt u beginnen met de stappen voor het toevoegen van een domein met Power shell van Azure AD Connect.
 
-Gebruik de volgende stappen om de microsoft online-vertrouwensrelatie te verwijderen en uw oorspronkelijke domein bij te werken.
+Gebruik de volgende stappen om de micro soft online-vertrouwens relatie te verwijderen en uw oorspronkelijke domein bij te werken.
 
-1. Open **AD FS-beheer** op uw AD FS-federatieserver.
-2. Aan de linkerkant **vertrouwensrelaties** en **vertrouwensrelaties van relying party** uitbreiden
-3. Verwijder aan de rechterkant de vermelding van het **Microsoft Office 365 Identity Platform.**
-   ![Microsoft Online verwijderen](./media/how-to-connect-install-multiple-domains/trust4.png)
-4. Op een machine waarop [Azure Active Directory Module voor Windows PowerShell](https://msdn.microsoft.com/library/azure/jj151815.aspx) is geïnstalleerd, wordt het volgende uitgevoerd: `$cred=Get-Credential`.  
-5. Voer de gebruikersnaam en het wachtwoord in van een globale beheerder voor het Azure AD-domein waarmee u zich bevindt.
-6. Voer in PowerShell`Connect-MsolService -Credential $cred`
-7. Voer in PowerShell . `Update-MSOLFederatedDomain -DomainName <Federated Domain Name> -SupportMultipleDomain`  Deze update is voor het oorspronkelijke domein.  Dus met behulp van de bovenstaande domeinen zou het zijn:`Update-MsolFederatedDomain -DomainName bmcontoso.com -SupportMultipleDomain`
+1. Open **AD FS beheer** op uw AD FS federatieve server.
+2. Vouw aan de linkerkant **vertrouwens relaties** en **vertrouwens relaties met relying party's** uit
+3. Verwijder aan de rechter kant de vermelding van het **Microsoft Office 365-identiteits platform** .
+   ![Micro soft online verwijderen](./media/how-to-connect-install-multiple-domains/trust4.png)
+4. Voer de volgende handelingen uit op een computer waarop [Azure Active Directory-module voor Windows Power shell](https://msdn.microsoft.com/library/azure/jj151815.aspx) is `$cred=Get-Credential`geïnstalleerd:.  
+5. Voer de gebruikers naam en het wacht woord in van een globale beheerder voor het Azure AD-domein waarmee u federeren.
+6. Voer in Power shell`Connect-MsolService -Credential $cred`
+7. Voer `Update-MSOLFederatedDomain -DomainName <Federated Domain Name> -SupportMultipleDomain`in Power shell in.  Deze update is voor het oorspronkelijke domein.  Als u de bovenstaande domeinen gebruikt, zou dit het volgende zijn:`Update-MsolFederatedDomain -DomainName bmcontoso.com -SupportMultipleDomain`
 
-De volgende stappen gebruiken om het nieuwe domein op het hoogste niveau toe te voegen met PowerShell
+Gebruik de volgende stappen om het nieuwe domein op het hoogste niveau toe te voegen met behulp van Power shell
 
-1. Op een machine waarop [Azure Active Directory Module voor Windows PowerShell](https://msdn.microsoft.com/library/azure/jj151815.aspx) is geïnstalleerd, wordt het volgende uitgevoerd: `$cred=Get-Credential`.  
-2. Voer de gebruikersnaam en het wachtwoord in van een globale beheerder voor het Azure AD-domein waarmee u zich bevindt
-3. Voer in PowerShell`Connect-MsolService -Credential $cred`
-4. Voer in PowerShell`New-MsolFederatedDomain –SupportMultipleDomain –DomainName`
+1. Voer de volgende handelingen uit op een computer waarop [Azure Active Directory-module voor Windows Power shell](https://msdn.microsoft.com/library/azure/jj151815.aspx) is `$cred=Get-Credential`geïnstalleerd:.  
+2. Voer de gebruikers naam en het wacht woord in van een globale beheerder voor het Azure AD-domein waarmee u federeren hebt
+3. Voer in Power shell`Connect-MsolService -Credential $cred`
+4. Voer in Power shell`New-MsolFederatedDomain –SupportMultipleDomain –DomainName`
 
-Gebruik de volgende stappen om het nieuwe domein op het hoogste niveau toe te voegen met Azure AD Connect.
+Gebruik de volgende stappen om het nieuwe domein op het hoogste niveau toe te voegen met behulp van Azure AD Connect.
 
-1. Azure AD Connect starten vanaf het bureaublad of het startmenu
-2. Kies 'Een extra Azure ![AD-domein toevoegen' Een extra Azure AD-domein toevoegen](./media/how-to-connect-install-multiple-domains/add1.png)
-3. Voer uw Azure AD- en Active Directory-referenties in
-4. Selecteer het tweede domein dat u wilt configureren voor federatie.
+1. Azure AD Connect starten vanaf het bureau blad of in het menu Start
+2. Kies ' een extra Azure AD-domein toevoegen ![' een extra Azure AD-domein toevoegen](./media/how-to-connect-install-multiple-domains/add1.png)
+3. Voer uw Azure AD-en Active Directory-referenties in
+4. Selecteer het tweede domein dat u wilt configureren voor Federatie.
    ![Een extra Azure AD-domein toevoegen](./media/how-to-connect-install-multiple-domains/add2.png)
 5. Klik op Installeren
 
-### <a name="verify-the-new-top-level-domain"></a>Het nieuwe domein op het hoogste niveau verifiëren
-Met de opdracht `Get-MsolDomainFederationSettings -DomainName <your domain>`PowerShell u de bijgewerkte IssuerUri bekijken.  De screenshot hieronder toont de federatie-instellingen zijn bijgewerkt op het oorspronkelijke domein`http://bmcontoso.com/adfs/services/trust`
+### <a name="verify-the-new-top-level-domain"></a>Het nieuwe domein op het hoogste niveau controleren
+Met behulp van de `Get-MsolDomainFederationSettings -DomainName <your domain>`Power shell-opdracht kunt u de bijgewerkte IssuerUri bekijken.  In de onderstaande scherm afbeelding ziet u dat de Federatie-instellingen zijn bijgewerkt op het oorspronkelijke domein`http://bmcontoso.com/adfs/services/trust`
 
 ![Get-MsolDomainFederationSettings](./media/how-to-connect-install-multiple-domains/MsolDomainFederationSettings.png)
 
-En de IssuerUri op het nieuwe domein is ingesteld op`https://bmfabrikam.com/adfs/services/trust`
+En de IssuerUri voor het nieuwe domein is ingesteld op`https://bmfabrikam.com/adfs/services/trust`
 
 ![Get-MsolDomainFederationSettings](./media/how-to-connect-install-multiple-domains/settings2.png)
 
 ## <a name="support-for-subdomains"></a>Ondersteuning voor subdomeinen
-Wanneer u een subdomein toevoegt, vanwege de manier waarop Azure AD domeinen heeft verwerkt, worden de instellingen van de bovenliggende overnemende tekst overgenomen.  Dus, de IssuerUri, moet overeenkomen met de ouders.
+Wanneer u een subdomein toevoegt vanwege de manier waarop Azure AD domeinen heeft verwerkt, neemt het de instellingen van het bovenliggende knoop punt over.  De IssuerUri moet dus overeenkomen met de bovenliggende items.
 
-Laten we bijvoorbeeld zeggen dat ik bmcontoso.com en dan corp.bmcontoso.com toevoegen.  De IssuerUri voor een gebruiker uit corp.bmcontoso.com moet ** http://bmcontoso.com/adfs/services/trust.**  De bovenstaande standaardregel voor Azure AD genereert echter een token met een uitgever als ** http://corp.bmcontoso.com/adfs/services/trust.** die niet overeenkomt met de vereiste waarde van het domein en verificatie zal mislukken.
+Zo kunt u bijvoorbeeld een bmcontoso.com hebben en vervolgens corp.bmcontoso.com toevoegen.  De IssuerUri voor een gebruiker uit corp.bmcontoso.com moet zijn **`http://bmcontoso.com/adfs/services/trust`**.  De standaard regel die hierboven is geïmplementeerd voor Azure AD, genereert echter een token met een certificaat verlener **`http://corp.bmcontoso.com/adfs/services/trust`** als. Dit komt niet overeen met de vereiste waarde van het domein en de verificatie mislukt.
 
 ### <a name="how-to-enable-support-for-subdomains"></a>Ondersteuning voor subdomeinen inschakelen
-Om dit gedrag te omzeilen, moet het vertrouwen van de AD FS-partij voor Microsoft Online worden bijgewerkt.  Hiervoor moet u een aangepaste claimregel configureren, zodat alle subdomeinen worden verwijderd van het UPN-achtervoegsel van de gebruiker bij het samenstellen van de aangepaste uitgeverwaarde.
+Om dit gedrag te omzeilen, moet de AD FS Relying Party Trust voor micro soft online worden bijgewerkt.  Hiervoor moet u een aangepaste claim regel configureren zodat deze alle subdomeinen uit het UPN-achtervoegsel van de gebruiker verwijdert bij het samen stellen van de waarde van de aangepaste verlener.
 
-De volgende claim zal dit doen:
+Deze claim gaat als volgt:
 
     c:[Type == "http://schemas.xmlsoap.org/claims/UPN"] => issue(Type = "http://schemas.microsoft.com/ws/2008/06/identity/claims/issuerid", Value = regexreplace(c.Value, "^.*@([^.]+\.)*?(?<domain>([^.]+\.?){2})$", "http://${domain}/adfs/services/trust/"));
 
 [!NOTE]
-Het laatste getal in de reguliere expressieset is het aantal bovenliggende domeinen dat er in uw hoofddomein zijn. Hier wordt bmcontoso.com gebruikt, dus twee bovenliggende domeinen zijn noodzakelijk. Als drie bovenliggende domeinen zouden worden bewaard (d.w.z. corp.bmcontoso.com), dan zou het aantal drie geweest zijn. Uiteindelijk kan een bereik worden aangegeven, de match zal altijd worden gemaakt om het maximum van domeinen te evenaren. "{2,3}" komt overeen met twee tot drie domeinen (d.w.z. bmfabrikam.com en corp.bmcontoso.com).
+Het laatste nummer in de reguliere expressie set is het aantal bovenliggende domeinen in het hoofd domein. Hier wordt bmcontoso.com gebruikt, zodat er twee bovenliggende domeinen nodig zijn. Als er drie bovenliggende domeinen moeten worden bewaard (bijvoorbeeld: corp.bmcontoso.com), is het aantal drie. Uiteindelijk kan een bereik worden aangegeven, de overeenkomst wordt altijd gemaakt met het maximum aantal domeinen. "{2,3}" komt overeen met twee tot drie domeinen (dat wil zeggen: bmfabrikam.com en Corp.bmcontoso.com).
 
-Gebruik de volgende stappen om een aangepaste claim toe te voegen om subdomeinen te ondersteunen.
+Gebruik de volgende stappen om een aangepaste claim toe te voegen ter ondersteuning van subdomeinen.
 
-1. AD FS-beheer openen
-2. Klik met de rechtermuisknop op de vertrouwensrelatie van Microsoft Online RP en kies Claimregels bewerken
-3. Selecteer de derde claimregel ![en vervang claim bewerken](./media/how-to-connect-install-multiple-domains/sub1.png)
-4. Vervang de huidige claim:
+1. AD FS beheer openen
+2. Klik met de rechter muisknop op de micro soft online RP-vertrouwens relatie en kies claim regels bewerken
+3. Selecteer de derde claim regel en vervang ![claim bewerken](./media/how-to-connect-install-multiple-domains/sub1.png)
+4. De huidige claim vervangen:
 
         c:[Type == "http://schemas.xmlsoap.org/claims/UPN"] => issue(Type = "http://schemas.microsoft.com/ws/2008/06/identity/claims/issuerid", Value = regexreplace(c.Value, ".+@(?<domain>.+)","http://${domain}/adfs/services/trust/"));
 
@@ -164,7 +164,7 @@ Gebruik de volgende stappen om een aangepaste claim toe te voegen om subdomeinen
 
     ![Claim vervangen](./media/how-to-connect-install-multiple-domains/sub2.png)
 
-5. Klik op Ok.  Klik op Toepassen.  Klik op Ok.  Sluit AD FS-beheer.
+5. Klik op OK.  Klik op Toep assen.  Klik op OK.  Sluit AD FS-beheer.
 
 ## <a name="next-steps"></a>Volgende stappen
 Nu u Azure AD Connect geïnstalleerd hebt, kunt u [de installatie verifiëren en licenties toewijzen](how-to-connect-post-installation.md).
