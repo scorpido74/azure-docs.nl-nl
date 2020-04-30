@@ -1,6 +1,6 @@
 ---
-title: Media Encoder Premium Workflow-indelingen en codecs | Microsoft Documenten
-description: Dit onderwerp geeft een overzicht van Media Encoder Premium Workflow Formats formats en codecs
+title: Media Encoder Premium Workflow indelingen en codecs | Microsoft Docs
+description: Dit onderwerp bevat een overzicht van Media Encoder Premium Workflow indelingen en codecs
 services: media-services
 documentationcenter: ''
 author: juliako
@@ -15,48 +15,48 @@ ms.date: 03/19/2019
 ms.author: juliako
 ms.reviewer: anilmur
 ms.openlocfilehash: 87cd7c63939331190530a46071a6b4c40480562f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79269755"
 ---
-# <a name="media-encoder-premium-workflow-formats-and-codecs"></a>Indelingen en codecs voor Media Encoder Premium Workflow
+# <a name="media-encoder-premium-workflow-formats-and-codecs"></a>Media Encoder Premium Workflow indelingen en codecs
 
 > [!NOTE]
-> Media Encoder Premium Workflow media processor besproken in dit onderwerp is niet beschikbaar in China. 
+> Media Encoder Premium Workflow media processor die in dit onderwerp wordt besproken, is niet beschikbaar in China. 
 
-Dit document bevat een lijst met invoer- en uitvoerbestandsindelingen en codecs die worden ondersteund door de openbare preview-versie van de **media-encoder** premiumworkflow-encoder.
+Dit document bevat een lijst met invoer-en uitvoer bestands indelingen en-codecs die worden ondersteund door de open bare preview-versie van het coderings programma **Media Encoder Premium workflow** .
 
-[Media Encoder Premium Workflow-invoerindelingen en -codecs](#input_formats)
+[Invoer indelingen en codecs Media Encoder Premium Workflow](#input_formats)
 
-Media Encoder Premium Workflow Output Formats en Codecs
+Uitvoer indelingen en codecs Media Encoder Premium Workflow
 
-**Media Encoder Premium Workflow** ondersteunt ondertiteling die in [deze](#closed_captioning) sectie wordt beschreven. 
+**Media Encoder Premium workflow** ondersteunt closed captioning die in [deze](#closed_captioning) sectie wordt beschreven. 
 
-## <a name="media-encoder-premium-workflow-input-formats-and-codecs"></a><a id="input_formats"></a>Media Encoder Premium Workflow-invoerindelingen en -codecs
+## <a name="media-encoder-premium-workflow-input-formats-and-codecs"></a><a id="input_formats"></a>Invoer indelingen en codecs Media Encoder Premium Workflow
 
-In de volgende sectie worden de codecs en bestandsindelingen weergegeven die deze mediaprocessor als invoer ondersteunt.
+In de volgende sectie worden de codecs en bestands indelingen vermeld die door deze media processor als invoer worden ondersteund.
 
 ### <a name="input-containerfile-formats"></a>Invoercontainer/bestandsindelingen
 
-* Adobe® Flash® F4V
+* F4V van Adobe® Flash®
 * MXF/SMPTE 377M
-* GXF GXF
-* MPEG-2 transportstromen
-* MPEG-2-programmastreams
+* GXF
+* MPEG-2-transport stromen
+* MPEG-2-programma-streams
 * MPEG-4/MP4
 * Windows Media/ASF
-* AVI (Niet gecomprimeerde 8bit/10bit)
+* AVI (niet-gecomprimeerd 8bit/10bit)
 
 ### <a name="input-video-codecs"></a>Codecs invoervideo
 
 * AVC 8-bits/10-bits, maximaal 4:2:2, inclusief AVCIntra
 * Avid DNxHD (in MXF)
 * DVCPro/DVCProHD (in MXF)
-* HEVC/H.265, Hoofd- en Hoofdprofiel 10
+* HEVC/H. 265, hoofd-en hoofd-10-profiel
 * JPEG2000
-* MPEG-2 (tot 422 profiel en hoog niveau; inclusief varianten zoals XDCAM, XDCAM HD, XDCAM IMX, CableLabs® en D10)
+* MPEG-2 (Maxi maal 422 profiel en hoog niveau; inclusief varianten zoals XDCAM, XDCAM HD, XDCAM IMX, CableLabs® en D10)
 * MPEG-1
 * Windows Media Video/VC-1
 
@@ -71,35 +71,35 @@ In de volgende sectie worden de codecs en bestandsindelingen weergegeven die dez
 * Windows Media Audio
 * WAV/PCM
 
-## <a name="media-encoder-premium-workflow-output-formats-and-codecs"></a><a id="output_format"></a>Media Encoder Premium Workflow Output Formats en Codecs
+## <a name="media-encoder-premium-workflow-output-formats-and-codecs"></a><a id="output_format"></a>Uitvoer indelingen en codecs Media Encoder Premium Workflow
 
-In de volgende sectie worden de codecs en bestandsindelingen weergegeven die worden ondersteund als uitvoer vanuit deze mediaprocessor.
+In de volgende sectie worden de codecs en bestands indelingen vermeld die worden ondersteund als uitvoer van deze media processor.
 
-### <a name="output-containerfile-formats"></a>Uitvoercontainer/bestandsindelingen
+### <a name="output-containerfile-formats"></a>Uitvoer container/bestands indelingen
 
-* Adobe® Flash® F4V
+* F4V van Adobe® Flash®
 * MXF (OP1a, XDCAM en AS02)
 * DPP (inclusief AS11)
-* GXF GXF
+* GXF
 * MPEG-4/MP4
 * Windows Media/ASF
-* AVI (Niet gecomprimeerde 8bit/10bit)
-* Vloeiende streamingbestandsindeling (PIFF 1.3)
+* AVI (niet-gecomprimeerd 8bit/10bit)
+* Smooth Streaming bestands indeling (PIFF 1,3)
 * MPEG-TS 
 
-### <a name="output-video-codecs"></a>Videocodecs uitvoeren
+### <a name="output-video-codecs"></a>Video-codecs voor uitvoer
 
-* AVC (H.264; 8-bit; tot High Profile, Level 5.2; 4K Ultra HD; AVC Intra)
+* AVC (H. 264; 8-bits; tot hoog profiel, niveau 5,2; 4 KB Ultra HD; AVC-Intra)
 * Avid DNxHD (in MXF)
 * DVCPro/DVCProHD (in MXF)
-* MPEG-2 (tot 422 profiel en hoog niveau; inclusief varianten zoals XDCAM, XDCAM HD, XDCAM IMX, CableLabs® en D10)
+* MPEG-2 (Maxi maal 422 profiel en hoog niveau; inclusief varianten zoals XDCAM, XDCAM HD, XDCAM IMX, CableLabs® en D10)
 * MPEG-1
 * Windows Media Video/VC-1
-* JPEG-miniatuurmaken
-* HEVC (H.265; 8 bit en 10 bit, Main en Main 10 Profiel)
+* JPEG-miniatuur maken
+* HEVC (H. 265; 8-bits en 10-bits, hoofd-en hoofd-10-profiel)
 
 
-### <a name="output-audio-codecs"></a>Audiocodecs uitvoeren
+### <a name="output-audio-codecs"></a>Audio-codecs voor uitvoer
 
 * AES (SMPTE 331M en 302M, AES3-2003)
 * Dolby® Digital (AC3)
@@ -110,36 +110,36 @@ In de volgende sectie worden de codecs en bestandsindelingen weergegeven die wor
 * Windows Media Audio
 
 >[!NOTE]
->Als u codeert naar Dolby® Digital (AC3), kan de uitvoer alleen in een ISO MP4-bestand worden geschreven.
+>Als u codeert naar Dolby® Digital (AC3), kan de uitvoer alleen naar een ISO MP4-bestand worden geschreven.
 
 ## <a name="support-for-closed-captioning"></a><a id="closed_captioning"></a>Ondersteuning voor ondertiteling
 
-Media **Encoder Premium Workflow** ondersteunt bij inname:
+**Media Encoder Premium workflow** ondersteunt in opname:
 
 1. SCC-bestanden
 2. SMPTE-TT-bestanden
-3. CEA-608/CEA-708 – als gebruikersgegevens (SEI-berichten van H.264 elementaire streams, ATSC/53, SCTE20) of als bijkomende gegevens in MXF/GXF-bestanden
-4. STL ondertitelbestanden
+3. CEA-608/CEA-708: wordt als gebruikers gegevens (SEI berichten van H. 264-elementaire stromen, ATSC/53, SCTE20) of vervoerd als bijkomende gegevens in MXF/GXF-bestanden
+4. STL-ondertitelings bestanden
 
 Bij uitvoer zijn de volgende opties beschikbaar:
 
-1. CEA-608 naar CEA-708 vertaling
-2. CEA-608/CEA-708 passeren (ingebed in SEI-berichten van H.264 elementaire streams, of vervoerd als bijkomende gegevens in MXF-bestanden)
-3. Scc
-4. Getimede SMPTE-tekst (van bron CEA-608 per SMPTE RP2052; inclusief DFXP-bestandscreatie)
-5. SRT-ondertitelbestand
-6. DVB ondertitel streams
+1. CEA-608 naar CEA-708-vertaling
+2. CEA-608/CEA-708 Pass Through (Inge sloten in SEI berichten van H. 264 elementaire stromen of vervoerd als bijkomende gegevens in MXF-bestanden)
+3. SCC
+4. Getimede tekst van SMPTE (van bron CEA-608 per SMPTE RP2052, inclusief het maken van DFXP-bestanden)
+5. Ondertitelings bestand SRT
+6. DVB-ondertitel stromen
 
 > [!NOTE]
-> Niet alle bovenstaande uitvoerindelingen worden ondersteund voor levering via streaming in Azure Media Services.
+> Niet alle hierboven genoemde uitvoer indelingen worden ondersteund voor levering via streaming in Azure Media Services.
 
 ## <a name="known-issues"></a>Bekende problemen
 
-Als uw invoervideo geen ondertiteling bevat, bevat het uitvoerelement nog steeds een leeg TTML-bestand. 
+Als uw invoer video geen ondertiteling bevat, bevat het uitvoer activum nog een leeg TTML-bestand. 
 
 ## <a name="need-help"></a>Hebt u hulp nodig?
 
-U een ondersteuningsticket openen door te navigeren naar [nieuw ondersteuningsverzoek](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)
+U kunt een ondersteunings ticket openen door te navigeren naar de [nieuwe ondersteunings aanvraag](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)
 ## <a name="media-services-learning-paths"></a>Media Services-leertrajecten
 
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]

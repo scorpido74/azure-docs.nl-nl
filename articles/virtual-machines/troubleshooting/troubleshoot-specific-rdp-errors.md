@@ -1,7 +1,7 @@
 ---
-title: Specifieke RDP-foutberichten voor Azure VM's | Microsoft Documenten
-description: Specifieke foutberichten begrijpen die u mogelijk ontvangt wanneer u de verbinding met Extern bureaublad met een virtuele Windows-machine in Azure probeert te gebruiken
-keywords: Extern bureaublad-fout, fout in externe bureaubladverbinding, kan geen verbinding maken met VM, probleemoplossing voor extern bureaublad
+title: Specifieke RDP-fout berichten voor virtuele Azure-machines | Microsoft Docs
+description: Meer informatie over specifieke fout berichten die kunnen worden weer gegeven wanneer u probeert Extern bureaublad verbinding te gebruiken met een virtuele Windows-machine in azure
+keywords: Fout met extern bureau blad, fout met verbinding met extern bureau blad, kan geen verbinding maken met VM, problemen oplossen met extern bureau blad
 services: virtual-machines-windows
 documentationcenter: ''
 author: genlin
@@ -16,97 +16,97 @@ ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: genli
 ms.openlocfilehash: 851c5eb4ebfee4e4a4836a07b51578dd2b0c68cd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79266869"
 ---
 # <a name="troubleshooting-specific-rdp-error-messages-to-a-windows-vm-in-azure"></a>Specifieke RDP-foutberichten oplossen naar een virtuele Windows-machine in Azure
-Mogelijk ontvangt u een specifiek foutbericht wanneer u verbinding met Extern bureaublad gebruikt met een virtuele Windows-machine (VM) in Azure. In dit artikel worden enkele van de meest voorkomende foutberichten beschreven, samen met stappen voor het oplossen van problemen om deze op te lossen. Zie de [handleiding voor probleemoplossing voor Extern bureaublad](troubleshoot-rdp-connection.md)als u problemen ondervindt bij het maken van verbinding met uw vm, maar er geen specifiek foutbericht tegenkomt.
+Er wordt mogelijk een specifiek fout bericht weer gegeven wanneer Extern bureaublad verbinding met een virtuele machine van Windows (VM) in azure wordt gebruikt. In dit artikel worden enkele veelvoorkomende fout berichten beschreven, samen met de stappen voor probleem oplossing om deze op te lossen. Als u problemen ondervindt met het maken van verbinding met uw virtuele machine via RDP, maar geen specifiek fout bericht tegen komt, raadpleegt u de [hand leiding voor het oplossen van problemen voor extern bureaublad](troubleshoot-rdp-connection.md).
 
-Zie het volgende voor informatie over specifieke foutberichten:
+Voor informatie over specifieke fout berichten raadpleegt u het volgende:
 
-* [De externe sessie is verbroken omdat er geen Extern bureaublad-licentieservers beschikbaar zijn om een licentie te verstrekken.](#rdplicense)
-* [Extern bureaublad kan de naam van de computer niet vinden.](#rdpname)
-* [Er is een verificatiefout opgetreden. Er kan geen contact worden opgenomen met de lokale veiligheidsautoriteit.](#rdpauth)
-* [Windows-beveiligingsfout: uw referenties hebben niet gewerkt.](#wincred)
-* [Deze computer kan geen verbinding maken met de externe computer.](#rdpconnect)
+* [De externe sessie is beëindigd omdat er geen extern bureaublad licentie servers beschikbaar zijn om een licentie te bieden](#rdplicense).
+* [Extern bureaublad kan de computer naam niet vinden](#rdpname).
+* [Er is een verificatie fout opgetreden. Kan geen verbinding maken met de lokale beveiligings autoriteit](#rdpauth).
+* [Windows-beveiligings fout: uw referenties werken niet](#wincred).
+* [Deze computer kan geen verbinding maken met de externe computer](#rdpconnect).
 
 <a id="rdplicense"></a>
 
-## <a name="the-remote-session-was-disconnected-because-there-are-no-remote-desktop-license-servers-available-to-provide-a-license"></a>De externe sessie is verbroken omdat er geen Extern bureaublad-licentieservers beschikbaar zijn om een licentie te verstrekken.
-Oorzaak: de 120-dagen licentierespijtperiode voor de functie Extern bureaublad-server is verlopen en u moet licenties installeren.
+## <a name="the-remote-session-was-disconnected-because-there-are-no-remote-desktop-license-servers-available-to-provide-a-license"></a>De externe sessie is beëindigd omdat er geen Extern bureaublad licentie servers beschikbaar zijn om een licentie te bieden.
+Oorzaak: de licentie respijt periode van 120 dagen voor de Extern bureaublad serverrol is verlopen en u moet licenties installeren.
 
-Sla als tijdelijke oplossing een lokale kopie van het RDP-bestand op van de portal en voer deze opdracht uit op een PowerShell-opdrachtprompt om verbinding te maken. Met deze stap schakelt u licenties voor alleen die verbinding uit:
+U kunt dit probleem verhelpen door een lokale kopie van het RDP-bestand op te slaan vanuit de portal en deze opdracht uit te voeren vanaf een Power shell-opdracht prompt om verbinding te maken. Met deze stap wordt de licentie verlening voor alleen die verbinding uitgeschakeld:
 
         mstsc <File name>.RDP /admin
 
-Als u niet echt meer dan twee gelijktijdige Extern bureaublad-verbindingen met de vm nodig hebt, u Serverbeheer gebruiken om de rol Extern bureaublad-server te verwijderen.
+Als u niet echt meer dan twee gelijktijdige Extern bureaublad verbindingen met de virtuele machine nodig hebt, kunt u Serverbeheer gebruiken om de Extern bureaublad server functie te verwijderen.
 
-Zie voor meer informatie het blogbericht [dat Azure VM mislukt met 'Geen Extern bureaublad-licentieservers beschikbaar'.](https://blogs.msdn.microsoft.com/mast/2014/01/21/rdp-to-azure-vm-fails-with-no-remote-desktop-license-servers-available/)
+Zie het blog bericht [Azure VM mislukt met ' geen extern bureaublad licentie servers beschikbaar '](https://blogs.msdn.microsoft.com/mast/2014/01/21/rdp-to-azure-vm-fails-with-no-remote-desktop-license-servers-available/)voor meer informatie.
 
 <a id="rdpname"></a>
 
-## <a name="remote-desktop-cant-find-the-computer-name"></a>Extern bureaublad kan de naam van de computer niet vinden.
-Oorzaak: de Extern bureaublad-client op uw computer kan de naam van de computer niet oplossen in de instellingen van het RDP-bestand.
+## <a name="remote-desktop-cant-find-the-computer-name"></a>Extern bureaublad kan de computer naam niet vinden.
+Oorzaak: de Extern bureaublad-client op uw computer kan de naam van de computer in de instellingen van het RDP-bestand niet omzetten.
 
 Mogelijke oplossingen:
 
-* Als u zich op het intranet van een organisatie bevindt, moet u ervoor zorgen dat uw computer toegang heeft tot de proxyserver en https-verkeer naar deze organisatie kan verzenden.
-* Als u een lokaal opgeslagen RDP-bestand gebruikt, probeert u het bestand dat door de portal wordt gegenereerd. Deze stap zorgt ervoor dat u de juiste DNS-naam hebt voor de virtuele machine, of de cloudservice en de eindpuntpoort van de VM. Hier is een voorbeeld RDP-bestand gegenereerd door de portal:
+* Als u zich op het intranet van een organisatie bevindt, moet u ervoor zorgen dat de computer toegang heeft tot de proxy server en daar HTTPS-verkeer naar kunnen verzenden.
+* Als u een lokaal opgeslagen RDP-bestand gebruikt, probeert u het te gebruiken dat is gegenereerd door de portal. Met deze stap zorgt u ervoor dat u de juiste DNS-naam voor de virtuele machine of de Cloud service en de eindpunt poort van de VM hebt. Hier volgt een voor beeld van een RDP-bestand dat door de portal wordt gegenereerd:
   
         full address:s:tailspin-azdatatier.cloudapp.net:55919
         prompt for credentials:i:1
 
-Het adresgedeelte van dit RDP-bestand heeft:
+Het adres gedeelte van dit RDP-bestand heeft:
 
-* De volledig gekwalificeerde domeinnaam van de cloudservice die de VM bevat ('tailspin-azdatatier.cloudapp.net' in dit voorbeeld).
-* De externe TCP-poort van het eindpunt voor Extern bureaublad-verkeer (55919).
+* De Fully Qualified Domain Name van de Cloud service die de virtuele machine bevat (' tailspin-azdatatier.cloudapp.net ' in dit voor beeld).
+* De externe TCP-poort van het eind punt voor Extern bureaublad verkeer (55919).
 
 <a id="rdpauth"></a>
 
-## <a name="an-authentication-error-has-occurred-the-local-security-authority-cannot-be-contacted"></a>Er is een verificatiefout opgetreden. Er kan geen contact worden opgenomen met de lokale veiligheidsautoriteit.
-Oorzaak: de doel-VM kan de beveiligingsinstantie niet vinden in het gedeelte van de gebruikersnaam van uw referenties.
+## <a name="an-authentication-error-has-occurred-the-local-security-authority-cannot-be-contacted"></a>Er is een verificatie fout opgetreden. Kan geen verbinding maken met de lokale beveiligings autoriteit.
+Oorzaak: de doel-VM kan de beveiligings instantie niet vinden in het gedeelte met de gebruikers naam van uw referenties.
 
-Wanneer uw gebruikersnaam zich in het formulier *UserName*\\van de Beveiligingsautoriteit*bevindt* (bijvoorbeeld: CORP\User1), is het gedeelte *SecurityAuthority* de computernaam van de VM (voor de lokale beveiligingsinstantie) of een Active Directory-domeinnaam.
+Als uw gebruikers naam in de vorm *SecurityAuthority*\\*username* (voor beeld: corp\gebruiker1.) is, is het gedeelte *SecurityAuthority* de computer naam van de virtuele machine (voor de lokale beveiligings instantie) of een Active Directory domein naam.
 
 Mogelijke oplossingen:
 
-* Als het account lokaal is voor de VM, controleert u of de VM-naam correct is gespeld.
-* Als het account zich in een Active Directory-domein bevindt, controleert u de spelling van de domeinnaam.
-* Als het een Active Directory-domeinaccount is en de domeinnaam correct is gespeld, controleert u of er een domeincontroller beschikbaar is in dat domein. Het is een veelvoorkomend probleem in virtuele Azure-netwerken die domeincontrollers bevatten dat een domeincontroller niet beschikbaar is omdat deze niet is gestart. Als tijdelijke oplossing u een lokaal beheerdersaccount gebruiken in plaats van een domeinaccount.
+* Als het account lokaal is voor de virtuele machine, moet u ervoor zorgen dat de naam van de virtuele machine correct is gespeld.
+* Als het account zich op een Active Directory domein bevindt, controleert u de spelling van de domein naam.
+* Als het een Active Directory domein account is en de domein naam correct is gespeld, controleert u of er een domein controller beschikbaar is in dat domein. Het is een veelvoorkomend probleem in virtuele Azure-netwerken dat domein controllers bevat die geen domein controller is, omdat deze niet is gestart. Als tijdelijke oplossing kunt u een lokaal Administrator-account gebruiken in plaats van een domein account.
 
 <a id="wincred"></a>
 
-## <a name="windows-security-error-your-credentials-did-not-work"></a>Windows-beveiligingsfout: uw referenties hebben niet gewerkt.
-Oorzaak: de doel-vm kan uw accountnaam en wachtwoord niet valideren.
+## <a name="windows-security-error-your-credentials-did-not-work"></a>Windows-beveiligings fout: uw referenties werken niet.
+Oorzaak: de doel-VM kan de account naam en het wacht woord niet valideren.
 
-Een windows-computer kan de referenties van een lokaal account of een domeinaccount valideren.
+Een op Windows gebaseerde computer kan de referenties van een lokaal account of een domein account valideren.
 
-* Voor lokale accounts gebruikt u de syntaxis *van de gebruikersnaam van computernaam*\\*UserName* (bijvoorbeeld SQL1\Admin4798).
-* Voor domeinaccounts gebruikt u de syntaxis *van DomainName*\\*UserName* (voorbeeld: CONTOSO\peterodman).
+* Voor lokale accounts gebruikt u de syntaxis *computer*\\*naam username* (bijvoorbeeld: SQL1\Admin4798).
+* Gebruik voor domein accounts de syntaxis van de *domein*\\*naam username* (bijvoorbeeld: CONTOSO\peterodman).
 
-Als u uw VM hebt gepromoot naar een domeincontroller in een nieuw Active Directory-forest, wordt het lokale beheerdersaccount waarmee u bent aangemeld geconverteerd naar een gelijkwaardig account met hetzelfde wachtwoord in het nieuwe forest en domein. Het lokale account wordt vervolgens verwijderd.
+Als u uw VM hebt gepromoveerd naar een domein controller in een nieuw Active Directory-forest, wordt het lokale beheerders account waarmee u zich hebt aangemeld, geconverteerd naar een gelijkwaardig account met hetzelfde wacht woord in het nieuwe forest en domein. Het lokale account wordt verwijderd.
 
-Als u zich bijvoorbeeld hebt aangemeld bij het lokale account DC1\DCAdmin en vervolgens de virtuele machine hebt gepromoot als domeincontroller in een nieuw forest voor het corp.contoso.com-domein, wordt het dc1\DCAdmin-lokale account verwijderd en wordt een nieuw domeinaccount (CORP\DCAdmin) gemaakt met hetzelfde wachtwoord.
+Als u zich bijvoorbeeld hebt aangemeld met het lokale account DC1\DCAdmin en vervolgens de virtuele machine hebt gepromoveerd als een domein controller in een nieuw forest voor het domein corp.contoso.com, wordt het lokale account DC1\DCAdmin verwijderd en wordt er een nieuw domein account (CORP\DCAdmin) gemaakt met hetzelfde wacht woord.
 
-Zorg ervoor dat de accountnaam een naam is die de virtuele machine kan verifiëren als een geldig account en dat het wachtwoord juist is.
+Zorg ervoor dat de account naam een naam is die door de virtuele machine kan worden geverifieerd als een geldig account en dat het wacht woord juist is.
 
-Zie [Een wachtwoord of de extern bureaublad-service voor virtuele windows-apparaten opnieuw instellen](reset-rdp.md)als u het wachtwoord van het lokale beheerdersaccount opnieuw wilt instellen.
+Als u het wacht woord van het lokale beheerders account wilt wijzigen, raadpleegt [u het opnieuw instellen van een wacht woord of de Extern bureaublad-service voor virtuele Windows-machines](reset-rdp.md).
 
 <a id="rdpconnect"></a>
 
 ## <a name="this-computer-cant-connect-to-the-remote-computer"></a>Deze computer kan geen verbinding maken met de externe computer.
-Oorzaak: het account dat wordt gebruikt om verbinding te maken, heeft geen aanmeldingsrechten voor extern bureaublad.
+Oorzaak: het account dat wordt gebruikt om verbinding te maken, beschikt niet over Extern bureaublad aanmeldings rechten.
 
-Elke Windows-computer heeft een lokale groep externe gebruikers van extern bureaublad-gebruikers, die de accounts en groepen bevat die zich op afstand kunnen aanmelden. Leden van de lokale beheerdersgroep hebben ook toegang, ook al worden deze accounts niet vermeld in de lokale groep extern bureaublad-gebruikers. Voor met domeinen verbonden machines bevat de groep lokale beheerders ook de domeinbeheerders voor het domein.
+Elke Windows-computer heeft een lokale groep Extern bureaublad gebruikers, die de accounts en groepen bevat waarmee deze extern kan worden aangemeld. Leden van de lokale groep Administrators hebben ook toegang, zelfs als deze accounts niet worden weer gegeven in de lokale groep Extern bureaublad gebruikers. Voor computers die lid zijn van een domein, bevat de lokale beheerders groep ook de domein beheerders voor het domein.
 
-Zorg ervoor dat het account waarmee u verbinding maakt, aanmeldingsrechten voor Extern bureaublad heeft. Gebruik als tijdelijke oplossing een domein- of lokaal beheerdersaccount om verbinding te maken via Extern bureaublad. Als u het gewenste account wilt toevoegen aan de lokale groep Extern bureaublad-gebruikers, gebruikt u de module Microsoft Management Console **(Systeemhulpprogramma's > lokale gebruikers en groepen > groepen > Extern bureaublad-gebruikers).**
+Zorg ervoor dat het account dat u gebruikt om verbinding te maken, Extern bureaublad aanmeldings rechten heeft. Als tijdelijke oplossing kunt u een domein-of lokale beheerders account gebruiken om verbinding te maken via Extern bureaublad. Als u het gewenste account wilt toevoegen aan de lokale groep Extern bureaublad gebruikers, gebruikt u de micro soft Management Console-module (**systeem hulpprogramma's > lokale gebruikers en groepen > groepen > extern bureaublad gebruikers**).
 
 ## <a name="next-steps"></a>Volgende stappen
-Als er geen van deze fouten is opgetreden en u een onbekend probleem hebt met het verbinden via RDP, raadpleegt u de [handleiding voor probleemoplossing voor Extern bureaublad.](troubleshoot-rdp-connection.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+Als er geen fouten zijn opgetreden en u een onbekend probleem hebt met het maken van verbinding met RDP, raadpleegt u de [hand leiding voor het oplossen van problemen voor extern bureaublad](troubleshoot-rdp-connection.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 
-* Zie [Toegang tot een toepassing die op](../linux/troubleshoot-app-connection.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)een Azure VM wordt uitgevoerd voor het oplossen van stappen voor het openen van toepassingen die op een vm worden uitgevoerd.
-* Zie Problemen met [SSH-verbindingen met een Linux-vm in Azure](../linux/troubleshoot-ssh-connection.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)oplossen als u problemen ondervindt met Secure Shell (SSH) om verbinding te maken met een Linux-vm in Azure.
+* Zie [problemen oplossen met toegang tot een toepassing die wordt uitgevoerd op](../linux/troubleshoot-app-connection.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)een virtuele machine van Azure voor informatie over het oplossen van problemen bij het openen van toepassingen die op een VM worden uitgevoerd.
+* Zie [problemen met ssh-verbindingen met een virtuele Linux-machine in azure oplossen](../linux/troubleshoot-ssh-connection.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)als u problemen ondervindt met het gebruik van Secure Shell (SSH) om verbinding te maken met een virtuele Linux-machine in Azure.
 

@@ -1,6 +1,6 @@
 ---
-title: Verbinding maken met Kafka via virtuele netwerken - Azure HDInsight
-description: Meer informatie over hoe u rechtstreeks verbinding maken met Kafka op HDInsight via een Azure Virtual Network. Leer hoe u verbinding maken met Kafka via ontwikkelingsclients via een VPN-gateway of van clients in uw on-premises netwerk met behulp van een VPN-gateway-apparaat.
+title: Verbinding maken met Kafka met behulp van virtuele netwerken-Azure HDInsight
+description: Meer informatie over hoe u rechtstreeks verbinding maakt met Kafka op HDInsight via een Azure-Virtual Network. Informatie over het maken van verbinding met Kafka van ontwikkel-clients met een VPN-gateway of van clients in uw on-premises netwerk met behulp van een VPN-gateway apparaat.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -9,83 +9,83 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 03/04/2020
 ms.openlocfilehash: 36ff0d5f1fc96b2013555d37a869ebf629a22be7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79272121"
 ---
 # <a name="connect-to-apache-kafka-on-hdinsight-through-an-azure-virtual-network"></a>Verbinding maken met Apache Kafka in HDInsight via een virtueel Azure-netwerk
 
-Meer informatie over hoe u rechtstreeks verbinding maken met Apache Kafka op HDInsight via een Azure Virtual Network. Dit document bevat informatie over het maken van verbinding met Kafka met behulp van de volgende configuraties:
+Meer informatie over hoe u rechtstreeks verbinding maakt met Apache Kafka op HDInsight via een Azure Virtual Network. Dit document bevat informatie over het maken van verbinding met Kafka met behulp van de volgende configuraties:
 
-* Uit bronnen in een on-premises netwerk. Deze verbinding wordt tot stand gebracht door gebruik te maken van een VPN-apparaat (software of hardware) op uw lokale netwerk.
-* Vanuit een ontwikkelomgeving met behulp van een VPN-softwareclient.
+* Van bronnen in een on-premises netwerk. Deze verbinding wordt tot stand gebracht met behulp van een VPN-apparaat (software of hardware) op het lokale netwerk.
+* Vanuit een ontwikkel omgeving met een VPN-software-client.
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 ## <a name="architecture-and-planning"></a>Architectuur en planning
 
-HDInsight staat geen directe verbinding met Kafka via het openbare internet toe. In plaats daarvan moeten klanten van Kafka (producenten en consumenten) een van de volgende verbindingsmethoden gebruiken:
+HDInsight staat geen directe verbinding met Kafka toe via het open bare Internet. In plaats daarvan moeten Kafka-clients (producenten en consumenten) een van de volgende verbindings methoden gebruiken:
 
-* Voer de client uit in hetzelfde virtuele netwerk als Kafka op HDInsight. Deze configuratie wordt gebruikt in [het document Start with Apache Kafka op HDInsight.](apache-kafka-get-started.md) De client draait rechtstreeks op de HDInsight-clusterknooppunten of op een andere virtuele machine in hetzelfde netwerk.
+* Voer de-client uit in hetzelfde virtuele netwerk als Kafka in HDInsight. Deze configuratie wordt gebruikt in het document [beginnen met Apache Kafka in HDInsight](apache-kafka-get-started.md) . De client wordt rechtstreeks uitgevoerd op de HDInsight-cluster knooppunten of op een andere virtuele machine in hetzelfde netwerk.
 
-* Verbind een privénetwerk, zoals uw on-premises netwerk, met het virtuele netwerk. Met deze configuratie kunnen clients in uw on-premises netwerk rechtstreeks met Kafka werken. Voer de volgende taken uit om deze configuratie in te schakelen:
+* Verbind een particulier netwerk, zoals uw on-premises netwerk, met het virtuele netwerk. Met deze configuratie kunnen clients in uw on-premises netwerk rechtstreeks met Kafka werken. Voer de volgende taken uit om deze configuratie in te scha kelen:
 
   1. Maak een virtueel netwerk.
-  2. Maak een VPN-gateway die gebruikmaakt van een site-to-site-configuratie. De configuratie die in dit document wordt gebruikt, maakt verbinding met een VPN-gatewayapparaat in uw on-premises netwerk.
+  2. Maak een VPN-gateway die gebruikmaakt van een site-naar-site-configuratie. De configuratie die in dit document wordt gebruikt, maakt verbinding met een VPN-gateway apparaat in uw on-premises netwerk.
   3. Maak een DNS-server in het virtuele netwerk.
-  4. Doorsturen configureren tussen de DNS-server in elk netwerk.
-  5. Maak een Kafka op HDInsight-cluster in het virtuele netwerk.
+  4. Configureer door sturen tussen de DNS-server in elk netwerk.
+  5. Maak een Kafka in HDInsight-cluster in het virtuele netwerk.
 
-     Zie verbinding maken met Apache Kafka voor meer informatie [vanuit een on-premises netwerksectie.](#on-premises)
+     Zie de sectie [verbinding maken met Apache Kafka van een on-premises netwerk](#on-premises) voor meer informatie.
 
-* Verbind individuele machines met het virtuele netwerk via een VPN-gateway en VPN-client. Voer de volgende taken uit om deze configuratie in te schakelen:
+* Verbind afzonderlijke machines met het virtuele netwerk met behulp van een VPN-gateway en VPN-client. Voer de volgende taken uit om deze configuratie in te scha kelen:
 
   1. Maak een virtueel netwerk.
-  2. Maak een VPN-gateway die een point-to-site-configuratie gebruikt. Deze configuratie kan worden gebruikt met zowel Windows- als MacOS-clients.
-  3. Maak een Kafka op HDInsight-cluster in het virtuele netwerk.
-  4. Configureer Kafka voor IP-advertenties. Met deze configuratie kan de client verbinding maken met IP-adressen van broker in plaats van domeinnamen.
-  5. Download en gebruik de VPN-client op het ontwikkelsysteem.
+  2. Maak een VPN-gateway die gebruikmaakt van een punt-naar-site-configuratie. Deze configuratie kan worden gebruikt met Windows-en MacOS-clients.
+  3. Maak een Kafka in HDInsight-cluster in het virtuele netwerk.
+  4. Kafka configureren voor het adverteren van IP-adressen. Met deze configuratie kan de client verbinding maken met behulp van IP-adressen van de broker in plaats van domein namen.
+  5. Down load en gebruik de VPN-client in het ontwikkel systeem.
 
-     Zie voor meer informatie de [sectie Verbinding met Apache Kafka met een VPN-clientsectie.](#vpnclient)
+     Zie de sectie [verbinding maken met Apache Kafka met een VPN-client](#vpnclient) voor meer informatie.
 
      > [!WARNING]  
-     > Deze configuratie wordt alleen aanbevolen voor ontwikkelingsdoeleinden vanwege de volgende beperkingen:
+     > Deze configuratie wordt alleen aanbevolen voor ontwikkelings doeleinden vanwege de volgende beperkingen:
      >
-     > * Elke client moet verbinding maken via een VPN-softwareclient.
-     > * De VPN-client geeft geen aanvragen voor naamomzetting door aan het virtuele netwerk, dus u moet IP-adressering gebruiken om met Kafka te communiceren. IP-communicatie vereist extra configuratie op het Kafka-cluster.
+     > * Elke client moet verbinding maken met behulp van een VPN-software-client.
+     > * De VPN-client geeft geen aanvragen voor naam omzetting door aan het virtuele netwerk, dus u moet IP-adres Sering gebruiken om met Kafka te communiceren. Voor IP-communicatie is aanvullende configuratie vereist op het Kafka-cluster.
 
-Zie [Een virtueel netwerk plannen voor Azure HDInsight-clusters voor](../hdinsight-plan-virtual-network-deployment.md)meer informatie over het gebruik van HDInsight in een virtueel netwerk.
+Zie [een virtueel netwerk voor Azure HDInsight-clusters plannen](../hdinsight-plan-virtual-network-deployment.md)voor meer informatie over het gebruik van HDInsight in een virtueel netwerk.
 
 ## <a name="connect-to-apache-kafka-from-an-on-premises-network"></a><a id="on-premises"></a>Verbinding maken met Apache Kafka vanuit een on-premises netwerk
 
-Als u een Kafka-cluster wilt maken dat communiceert met uw on-premises netwerk, voert u de stappen in het [Connect HDInsight naar uw on-premises netwerkdocument.](./../connect-on-premises-network.md)
+Als u een Kafka-cluster wilt maken dat communiceert met uw on-premises netwerk, volgt u de stappen in het [Connect HDInsight to your on-premises Network](./../connect-on-premises-network.md) document.
 
 > [!IMPORTANT]  
-> Selecteer bij het maken van het HDInsight-cluster het clustertype __Kafka.__
+> Wanneer u het HDInsight-cluster maakt, selecteert u het cluster type __Kafka__ .
 
-Met deze stappen wordt de volgende configuratie gemaakt:
+Met deze stappen maakt u de volgende configuratie:
 
 * Azure Virtual Network
-* Site-to-site VPN-gateway
+* Site-naar-site VPN-gateway
 * Azure Storage-account (gebruikt door HDInsight)
 * Kafka op HDInsight
 
-Als u wilt controleren of een Kafka-client vanuit on-premises verbinding kan maken met het cluster, gebruikt u de stappen in de sectie [Voorbeeld: Python-client.](#python-client)
+Als u wilt controleren of een Kafka-client vanuit on-premises verbinding kan maken met het cluster, gebruikt u de stappen in het gedeelte [voor beeld: python-client](#python-client) .
 
 ## <a name="connect-to-apache-kafka-with-a-vpn-client"></a><a id="vpnclient"></a>Verbinding maken met Apache Kafka met een VPN-client
 
 Gebruik de stappen in deze sectie om de volgende configuratie te maken:
 
 * Azure Virtual Network
-* Point-to-site VPN-gateway
-* Azure-opslagaccount (gebruikt door HDInsight)
+* Punt-naar-site-VPN-gateway
+* Azure Storage-account (gebruikt door HDInsight)
 * Kafka op HDInsight
 
-1. Volg de stappen in het document [Werken met zelfondertekende certificaten voor point-to-site verbindingen.](../../vpn-gateway/vpn-gateway-certificates-point-to-site.md) Met dit document worden de certificaten gemaakt die nodig zijn voor de gateway.
+1. Volg de stappen in het document [werken met zelfondertekende certificaten voor punt-naar-site-verbindingen](../../vpn-gateway/vpn-gateway-certificates-point-to-site.md) . In dit document worden de certificaten gemaakt die nodig zijn voor de gateway.
 
-2. Open een PowerShell-prompt en gebruik de volgende code om u aan te melden bij uw Azure-abonnement:
+2. Open een Power shell-prompt en gebruik de volgende code om u aan te melden bij uw Azure-abonnement:
 
     ```powershell
     Connect-AzAccount
@@ -130,7 +130,7 @@ Gebruik de stappen in deze sectie om de volgende configuratie te maken:
     $hdiType = "Kafka"
     ```
 
-4. Gebruik de volgende code om de Azure-brongroep en het virtuele netwerk te maken:
+4. Gebruik de volgende code om de Azure-resource groep en het virtuele netwerk te maken:
 
     ```powershell
     # Create the resource group that contains everything
@@ -190,7 +190,7 @@ Gebruik de stappen in deze sectie om de volgende configuratie te maken:
     > [!WARNING]  
     > Het kan enkele minuten duren voordat dit proces is voltooid.
 
-5. Gebruik de volgende code om het Azure Storage-account en de blobcontainer te maken:
+5. Gebruik de volgende code om het Azure Storage-account en de BLOB-container te maken:
 
     ```powershell
     # Create the storage account
@@ -236,29 +236,29 @@ Gebruik de stappen in deze sectie om de volgende configuratie te maken:
     ```
 
    > [!WARNING]  
-   > Dit proces duurt ongeveer 15 minuten.
+   > Dit proces duurt circa 15 minuten.
 
-### <a name="configure-kafka-for-ip-advertising"></a>Kafka configureren voor IP-reclame
+### <a name="configure-kafka-for-ip-advertising"></a>Kafka voor IP-reclame configureren
 
-Apache Zookeeper geeft standaard de domeinnaam van de Kafka-makelaars terug aan klanten. Deze configuratie werkt niet met de VPN-softwareclient, omdat deze geen naamomzetting kan gebruiken voor entiteiten in het virtuele netwerk. Gebruik voor deze configuratie de volgende stappen om Kafka te configureren om IP-adressen te adverteren in plaats van domeinnamen:
+Standaard retourneert Apache Zookeeper de domein naam van de Kafka-Brokers naar clients. Deze configuratie werkt niet met de VPN-client, omdat deze geen naam omzetting kan gebruiken voor entiteiten in het virtuele netwerk. Gebruik voor deze configuratie de volgende stappen om Kafka te configureren voor het adverteren van IP-adressen in plaats van domein namen:
 
-1. Ga in een webbrowser naar `https://CLUSTERNAME.azurehdinsight.net`. Vervang `CLUSTERNAME` de naam van het cluster Kafka op HDInsight.
+1. Ga in een webbrowser naar `https://CLUSTERNAME.azurehdinsight.net`. Vervang `CLUSTERNAME` door de naam van de Kafka in HDInsight-cluster.
 
-    Gebruik de https-gebruikersnaam en -wachtwoord voor het cluster wanneer u daarom wordt gevraagd. De Ambari Web UI voor het cluster wordt weergegeven.
+    Wanneer u hierom wordt gevraagd, gebruikt u de HTTPS-gebruikers naam en het wacht woord voor het cluster. De Ambari-webgebruikersinterface voor het cluster wordt weer gegeven.
 
-2. Als u informatie over Kafka wilt weergeven, selecteert u __Kafka__ in de lijst aan de linkerkant.
+2. Als u informatie over Kafka wilt weer geven, selecteert u __Kafka__ in de lijst aan de linkerkant.
 
-    ![Servicelijst met Kafka gemarkeerd](./media/apache-kafka-connect-vpn-gateway/select-kafka-service.png)
+    ![Service lijst met Kafka gemarkeerd](./media/apache-kafka-connect-vpn-gateway/select-kafka-service.png)
 
-3. Als u de Kafka-configuratie wilt bekijken, selecteert u __Configs__ in het bovenste midden.
+3. Als u de configuratie van Kafka wilt weer geven, selecteert u __configuraties__ in het bovenste midden.
 
-    ![Configuratie apache Ambari-services](./media/apache-kafka-connect-vpn-gateway/select-kafka-config1.png)
+    ![Configuratie van Apache Ambari Services](./media/apache-kafka-connect-vpn-gateway/select-kafka-config1.png)
 
-4. Als u de __kafka-env-configuratie__ wilt vinden, voert u `kafka-env` het veld __Filter__ rechtsboven in.
+4. Als u de __Kafka-env-__ configuratie wilt `kafka-env` vinden, voert u in het veld __filter__ in de rechter bovenhoek in.
 
-    ![Kafka-configuratie, voor kafka-env](./media/apache-kafka-connect-vpn-gateway/search-for-kafka-env.png)
+    ![Kafka-configuratie voor Kafka-env](./media/apache-kafka-connect-vpn-gateway/search-for-kafka-env.png)
 
-5. Als u Kafka wilt configureren om IP-adressen te adverteren, voegt u de volgende tekst toe aan de onderkant van het veld __kafka-env-sjabloon:__
+5. Als u Kafka wilt configureren voor het adverteren van IP-adressen, voegt u de volgende tekst toe onder aan het veld __Kafka-env-Temp late__ :
 
     ```
     # Configure Kafka to advertise IP addresses instead of FQDN
@@ -268,33 +268,33 @@ Apache Zookeeper geeft standaard de domeinnaam van de Kafka-makelaars terug aan 
     echo "advertised.listeners=PLAINTEXT://$IP_ADDRESS:9092" >> /usr/hdp/current/kafka-broker/conf/server.properties
     ```
 
-6. Als u de interface wilt configureren `listeners` waarop Kafka luistert, voert u het veld __Filter__ rechtsboven in.
+6. Als u de interface wilt configureren waarop Kafka luistert, `listeners` voert u in het veld __filter__ in de rechter bovenhoek in.
 
-7. Als u Kafka wilt configureren om te luisteren __listeners__ op `PLAINTEXT://0.0.0.0:9092`alle netwerkinterfaces, wijzigt u de waarde in het veld listeners in .
+7. Als u Kafka wilt configureren om te Luis teren op alle netwerk interfaces, __listeners__ wijzigt u de waarde `PLAINTEXT://0.0.0.0:9092`in het veld listeners in.
 
-8. Als u de configuratiewijzigingen wilt opslaan, gebruikt u de knop __Opslaan.__ Voer een sms-bericht in waarin de wijzigingen worden beschreven. Selecteer __OK__ zodra de wijzigingen zijn opgeslagen.
+8. Gebruik de knop __Opslaan__ om de configuratie wijzigingen op te slaan. Voer een tekst bericht in waarin de wijzigingen worden beschreven. Selecteer __OK__ zodra de wijzigingen zijn opgeslagen.
 
-    ![Apache Ambari opslaan configuratie](./media/apache-kafka-connect-vpn-gateway/save-configuration-button.png)
+    ![Apache Ambari-configuratie opslaan](./media/apache-kafka-connect-vpn-gateway/save-configuration-button.png)
 
-9. Als u fouten wilt voorkomen bij het opnieuw starten van Kafka, gebruikt u de knop __Serviceacties__ en selecteert u __Onderhoudsmodus inschakelen__. Selecteer OK om deze bewerking te voltooien.
+9. Als u fouten wilt voor komen bij het opnieuw starten van Kafka, gebruikt u de knop __service acties__ en selecteert u __onderhouds modus inschakelen__. Selecteer OK om deze bewerking te volt ooien.
 
-    ![Serviceacties, waarbij het onderhoud is gemarkeerd](./media/apache-kafka-connect-vpn-gateway/turn-on-maintenance-mode.png)
+    ![Service acties, met ingeschakeld onderhoud inschakelen](./media/apache-kafka-connect-vpn-gateway/turn-on-maintenance-mode.png)
 
-10. Als u Kafka opnieuw wilt starten, gebruikt u de knop __Opnieuw starten__ en selecteert u Alle getroffen __opnieuw starten__. Bevestig het opnieuw opstarten en gebruik de knop __OK__ nadat de bewerking is voltooid.
+10. Als u Kafka opnieuw wilt starten, gebruikt u de knop __opnieuw opstarten__ en selecteert u __alle betrokkenen opnieuw opstarten__. Bevestig het opnieuw opstarten en gebruik vervolgens de knop __OK__ nadat de bewerking is voltooid.
 
-    ![Knop Opnieuw starten met alle getroffen gemarkeerde gemarkeerde gemarkeerde opnieuw starten](./media/apache-kafka-connect-vpn-gateway/restart-required-button.png)
+    ![Knop opnieuw opstarten met alle betrokken gemarkeerd voor opnieuw opstarten](./media/apache-kafka-connect-vpn-gateway/restart-required-button.png)
 
-11. Als u de onderhoudsmodus wilt uitschakelen, gebruikt u de knop __Serviceacties__ en selecteert u __Onderhoudsmodus uitschakelen__. Selecteer **OK** om deze bewerking te voltooien.
+11. Als u de onderhouds modus wilt uitschakelen, gebruikt u de knop __service acties__ en selecteert u __onderhouds modus uitschakelen__. Selecteer **OK** om deze bewerking te volt ooien.
 
 ### <a name="connect-to-the-vpn-gateway"></a>Verbinding maken met de VPN-gateway
 
-Als u verbinding wilt maken met de VPN-gateway, gebruikt u de sectie __Verbinding maken met Azure__ van het [verbindingsdocument Point-to-Site configureren.](../../vpn-gateway/vpn-gateway-howto-point-to-site-rm-ps.md#connect)
+Als u verbinding wilt maken met de VPN-gateway, gebruikt u de sectie __verbinding maken met Azure__ van het document [een punt-naar-site-verbinding configureren](../../vpn-gateway/vpn-gateway-howto-point-to-site-rm-ps.md#connect) .
 
-## <a name="example-python-client"></a><a id="python-client"></a>Voorbeeld: Python-client
+## <a name="example-python-client"></a><a id="python-client"></a>Voor beeld: python-client
 
-Als u de connectiviteit met Kafka wilt valideren, gebruikt u de volgende stappen om een Python-producent en consument te maken en uit te voeren:
+Gebruik de volgende stappen om een python-producent en-consument te maken en uit te voeren om de connectiviteit met Kafka te valideren:
 
-1. Gebruik een van de volgende methoden om de volledig gekwalificeerde domeinnaam (FQDN) en IP-adressen van de knooppunten in het Kafka-cluster op te halen:
+1. Gebruik een van de volgende methoden om de Fully Qualified Domain Name (FQDN) en IP-adressen van de knoop punten in het Kafka-cluster op te halen:
 
     ```powershell
     $resourceGroupName = "The resource group that contains the virtual network used with HDInsight"
@@ -316,17 +316,17 @@ Als u de connectiviteit met Kafka wilt valideren, gebruikt u de volgende stappen
     az network nic list --resource-group <resourcegroupname> --output table --query "[?contains(name,'node')].{NICname:name,InternalIP:ipConfigurations[0].privateIpAddress,InternalFQDN:dnsSettings.internalFqdn}"
     ```
 
-    In dit script `$resourceGroupName` wordt ervan uitgegaan dat dit de naam is van de Azure-brongroep die het virtuele netwerk bevat.
+    In dit script wordt ervan `$resourceGroupName` uitgegaan dat de naam van de Azure-resource groep met het virtuele netwerk is.
 
     Sla de geretourneerde informatie op voor gebruik in de volgende stappen.
 
-2. Gebruik het volgende om de [kafka-python-client](https://kafka-python.readthedocs.io/) te installeren:
+2. Gebruik het volgende om de [Kafka-python-](https://kafka-python.readthedocs.io/) client te installeren:
 
     ```bash
     pip install kafka-python
     ```
 
-3. Als u gegevens naar Kafka wilt verzenden, gebruikt u de volgende Python-code:
+3. Als u gegevens wilt verzenden naar Kafka, gebruikt u de volgende python-code:
 
    ```python
    from kafka import KafkaProducer
@@ -337,16 +337,16 @@ Als u de connectiviteit met Kafka wilt valideren, gebruikt u de volgende stappen
       producer.send('testtopic', b'test message')
    ```
 
-    Vervang `'kafka_broker'` de vermeldingen door de adressen die in deze sectie zijn geretourneerd uit stap 1:
+    Vervang de `'kafka_broker'` vermeldingen door de adressen uit stap 1 in deze sectie:
 
-   * Als u een __VPN-client voor software__gebruikt, vervangt u de `kafka_broker` vermeldingen door het IP-adres van uw werknemersknooppunten.
+   * Als u een __Software-VPN-client__gebruikt, vervangt `kafka_broker` u de vermeldingen door het IP-adres van uw worker-knoop punten.
 
-   * Als u naamomzetting hebt ingeschakeld via een `kafka_broker` aangepaste __DNS-server,__ vervangt u de vermeldingen door de FQDN van de werknemersknooppunten.
+   * Als u __naam omzetting hebt ingeschakeld via een aangepaste DNS-server__, vervangt `kafka_broker` u de vermeldingen door de FQDN van de worker-knoop punten.
 
      > [!NOTE]
-     > Deze code stuurt `test message` de `testtopic`tekenreeks naar het onderwerp . De standaardconfiguratie van Kafka op HDInsight is om het onderwerp te maken als het niet bestaat.
+     > Met deze code wordt de `test message` teken reeks naar `testtopic`het onderwerp verzonden. De standaard configuratie van Kafka in HDInsight is het onderwerp te maken als deze niet bestaat.
 
-4. Als u de berichten uit Kafka wilt ophalen, gebruikt u de volgende Python-code:
+4. Gebruik de volgende python-code om de berichten op te halen uit Kafka:
 
    ```python
    from kafka import KafkaConsumer
@@ -360,23 +360,23 @@ Als u de connectiviteit met Kafka wilt valideren, gebruikt u de volgende stappen
      print (msg)
    ```
 
-    Vervang `'kafka_broker'` de vermeldingen door de adressen die in deze sectie zijn geretourneerd uit stap 1:
+    Vervang de `'kafka_broker'` vermeldingen door de adressen uit stap 1 in deze sectie:
 
-    * Als u een __VPN-client voor software__gebruikt, vervangt u de `kafka_broker` vermeldingen door het IP-adres van uw werknemersknooppunten.
+    * Als u een __Software-VPN-client__gebruikt, vervangt `kafka_broker` u de vermeldingen door het IP-adres van uw worker-knoop punten.
 
-    * Als u naamomzetting hebt ingeschakeld via een `kafka_broker` aangepaste __DNS-server,__ vervangt u de vermeldingen door de FQDN van de werknemersknooppunten.
+    * Als u __naam omzetting hebt ingeschakeld via een aangepaste DNS-server__, vervangt `kafka_broker` u de vermeldingen door de FQDN van de worker-knoop punten.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie Het document [Plan een virtueel netwerkimplementatie voor Azure HDInsight-clusters voor](../hdinsight-plan-virtual-network-deployment.md) meer informatie over het gebruik van HDInsight met een virtueel netwerk.
+Zie het document [een implementatie van een virtueel netwerk plannen voor Azure hdinsight-clusters](../hdinsight-plan-virtual-network-deployment.md) voor meer informatie over het gebruik van HDInsight met een virtueel netwerk.
 
-Zie de volgende documenten voor meer informatie over het maken van een Azure Virtual Network met Point-to-Site VPN-gateway:
+Zie de volgende documenten voor meer informatie over het maken van een Azure-Virtual Network met een punt-naar-site-VPN-gateway:
 
-* [Een Point-to-Site-verbinding configureren met de Azure-portal](../../vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal.md)
+* [Een punt-naar-site-verbinding configureren met behulp van de Azure Portal](../../vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal.md)
 
-* [Een Point-to-Site-verbinding configureren met Azure PowerShell](../../vpn-gateway/vpn-gateway-howto-point-to-site-rm-ps.md)
+* [Een punt-naar-site-verbinding configureren met behulp van Azure PowerShell](../../vpn-gateway/vpn-gateway-howto-point-to-site-rm-ps.md)
 
-Zie de volgende documenten voor meer informatie over het werken met Apache Kafka op HDInsight:
+Raadpleeg de volgende documenten voor meer informatie over het werken met Apache Kafka op HDInsight:
 
 * [Aan de slag met Apache Kafka op HDInsight](apache-kafka-get-started.md)
-* [Gebruik mirroring met Apache Kafka op HDInsight](apache-kafka-mirroring.md)
+* [Spiegeling gebruiken met Apache Kafka op HDInsight](apache-kafka-mirroring.md)

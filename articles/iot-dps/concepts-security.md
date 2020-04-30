@@ -1,6 +1,6 @@
 ---
-title: Azure IoT Hub Device Provisioning Service - Beveiligingsconcepten
-description: Beschrijft beveiligingsconcepten die specifiek zijn voor apparaten met DPS (Device Provisioning Service) en IoT Hub
+title: Azure-IoT Hub Device Provisioning Service-beveiligings concepten
+description: Beschrijft de concepten voor het inrichten van beveiliging die specifiek zijn voor apparaten met de Device Provisioning Service (DPS) en IoT Hub
 author: nberdy
 ms.author: nberdy
 ms.date: 04/04/2019
@@ -8,99 +8,99 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 ms.openlocfilehash: 3191e9886604af9b2a26b71a89cee699197585c4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79271562"
 ---
-# <a name="iot-hub-device-provisioning-service-security-concepts"></a>Beveiligingsconcepten van iot-hubapparaatinrichtingsservice 
+# <a name="iot-hub-device-provisioning-service-security-concepts"></a>Beveiligings concepten IoT Hub Device Provisioning Service 
 
-IoT Hub Device Provisioning Service is een helperservice voor IoT Hub die u gebruikt om zero-touch apparaatinrichting te configureren op een bepaalde IoT-hub. Met de Service Voor het inrichten van apparaten u miljoenen apparaten [automatisch inrichten](concepts-auto-provisioning.md) op een veilige en schaalbare manier. Dit artikel geeft een overzicht van de *beveiligingsconcepten* die betrokken zijn bij het inrichten van apparaten. Dit artikel is relevant voor alle persona's die betrokken zijn bij het klaarmaken van een apparaat voor implementatie.
+IoT Hub Device Provisioning Service is een Helper-service voor IoT Hub die u gebruikt om het inrichten van Zero-Touch-apparaten te configureren voor een opgegeven IoT-hub. Met de Device Provisioning Service kunt u miljoenen apparaten op een veilige en schaal bare manier [automatisch inrichten](concepts-auto-provisioning.md) . Dit artikel geeft een overzicht van de *beveiligings* concepten die bij het inrichten van apparaten betrokken zijn. Dit artikel is relevant voor alle personen bij het ophalen van een apparaat dat klaar is voor implementatie.
 
-## <a name="attestation-mechanism"></a>Attestmechanisme
+## <a name="attestation-mechanism"></a>Attestation-mechanisme
 
-Het attestmechanisme is de methode die wordt gebruikt om de identiteit van een apparaat te bevestigen. Het attestmechanisme is ook relevant voor de inschrijvingslijst, die de inrichtingsdienst vertelt welke methode van attest moet gebruiken met een bepaald apparaat.
+Het Attestation-mechanisme is de methode die wordt gebruikt om de identiteit van een apparaat te bevestigen. Het Attestation-mechanisme is ook relevant voor de registratie lijst, waarmee wordt aangegeven dat de inrichtings service wordt gebruikt voor het gebruik van een bepaald apparaat.
 
 > [!NOTE]
-> IoT Hub maakt gebruik van "authenticatie schema" voor een soortgelijk concept in die dienst.
+> IoT Hub gebruikt verificatie schema voor een vergelijkbaar concept in die service.
 
-Device Provisioning Service ondersteunt de volgende vormen van attest:
-* **X.509-certificaten** op basis van de standaard x.509-certificaatverificatiestroom.
-* **Trusted Platform Module (TPM)** op basis van een nonce-uitdaging, met behulp van de TPM-standaard voor sleutels om een ondertekend SAS-token (Shared Access Signature) te presenteren. Deze vorm van attest vereist geen fysieke TPM op het apparaat, maar de service verwacht te getuigen met behulp van de goedkeuringssleutel per de [TPM-spec](https://trustedcomputinggroup.org/work-groups/trusted-platform-module/).
-* **Symmetrische sleutel** op basis van SAS-beveiligingstokens (Shared Access Signature), waaronder een gehashte handtekening en een ingesloten vervaldatum. [Security tokens](../iot-hub/iot-hub-devguide-security.md#security-tokens) Zie [Symmetrische sleutelattest](concepts-symmetric-key-attestation.md)voor meer informatie .
+Device Provisioning Service ondersteunt de volgende vormen van Attestation:
+* **X. 509-certificaten** op basis van de standaard x. 509 certificaat verificatie stroom.
+* **Trusted Platform Module (TPM)** op basis van een nonce-Challenge, met behulp van de TPM-standaard voor sleutels om een ondertekend Shared Access Signature-token (SAS) aan te bieden. Voor deze vorm van Attestation is geen fysieke TPM vereist op het apparaat, maar de service verwacht te voldoen aan de hand van de goedkeurings sleutel per [TPM-specificatie](https://trustedcomputinggroup.org/work-groups/trusted-platform-module/).
+* **Symmetrische sleutel** op basis van [beveiligings tokens](../iot-hub/iot-hub-devguide-security.md#security-tokens)voor Shared Access Signature (SAS), die een gehashte hand tekening en een Inge sloten verloop bevatten. Zie [symmetrische sleutel Attestation](concepts-symmetric-key-attestation.md)(Engelstalig) voor meer informatie.
 
 
-## <a name="hardware-security-module"></a>Hardwarebeveiligingsmodule
+## <a name="hardware-security-module"></a>Hardware Security module
 
-De hardware beveiligingsmodule, of HSM, wordt gebruikt voor veilige, hardware-gebaseerde opslag van apparaat geheimen, en is de meest veilige vorm van geheime opslag. Zowel X.509 certificaten als SAS tokens kunnen worden opgeslagen in de HSM. HSM's kunnen worden gebruikt met beide attestmechanismen die de provisioning ondersteunt.
+De Hardware Security module, of HSM, wordt gebruikt voor veilige, op hardware gebaseerde opslag van geheimen van apparaten en is de veiligste vorm van geheime opslag. Zowel X. 509-certificaten als SAS-tokens kunnen worden opgeslagen in de HSM. Hsm's kan worden gebruikt met beide Attestation-mechanismen die door het inrichten worden ondersteund.
 
 > [!TIP]
-> We raden ten zeerste aan om een HSM met apparaten te gebruiken om geheimen veilig op uw apparaten op te slaan.
+> We raden u ten zeerste aan een HSM te gebruiken met apparaten om veilig geheimen op uw apparaten op te slaan.
 
-Apparaatgeheimen kunnen ook worden opgeslagen in software (geheugen), maar het is een minder veilige vorm van opslag dan een HSM.
+Er kunnen ook geheimen voor apparaten worden opgeslagen in software (geheugen), maar dit is een minder veilige opslag ruimte dan een HSM.
 
 ## <a name="trusted-platform-module"></a>Trusted Platform Module
 
-TPM kan verwijzen naar een standaard voor het veilig opslaan van sleutels die worden gebruikt om het platform te verifiëren, of het kan verwijzen naar de I /O-interface die wordt gebruikt om te communiceren met de modules die de standaard implementeren. TPM's kunnen bestaan als discrete hardware, geïntegreerde hardware, firmware-gebaseerde of software-based. Meer informatie over [TPM's en TPM-attest.](/windows-server/identity/ad-ds/manage/component-updates/tpm-key-attestation) Device Provisioning Service ondersteunt alleen TPM 2.0.
+TPM kan verwijzen naar een standaard voor het veilig opslaan van sleutels die worden gebruikt om het platform te verifiëren, of kan verwijzen naar de I/O-interface die wordt gebruikt om te communiceren met de modules die de standaard implementeren. Tpm's kan bestaan als afzonderlijke hardware, geïntegreerde hardware, op firmware gebaseerd of op software gebaseerd. Meer informatie over [tpm's en TPM-Attestation](/windows-server/identity/ad-ds/manage/component-updates/tpm-key-attestation). Device Provisioning Service ondersteunt alleen TPM 2,0.
 
-TPM-attestation is gebaseerd op een nonce-uitdaging, die de goedkeurings- en opslagbasissleutels gebruikt om een ondertekend SAS-token (Shared Access Signature) te presenteren.
+TPM-Attestation is gebaseerd op een nonce-Challenge, die gebruikmaakt van de goedkeurings-en opslag basis sleutels om een ondertekend Shared Access Signature-token (SAS) aan te bieden.
 
-### <a name="endorsement-key"></a>Goedkeuringssleutel
+### <a name="endorsement-key"></a>Goedkeurings sleutel
 
-De goedkeuringssleutel is een asymmetrische sleutel in de TPM, die intern werd gegenereerd of geïnjecteerd tijdens de productie en uniek is voor elke TPM. De goedkeuringssleutel kan niet worden gewijzigd of verwijderd. Het privégedeelte van de goedkeuringssleutel wordt nooit buiten de TPM vrijgegeven, terwijl het openbare gedeelte van de goedkeuringssleutel wordt gebruikt om een echte TPM te erkennen. Meer informatie over de [goedkeuringssleutel](https://technet.microsoft.com/library/cc770443(v=ws.11).aspx).
+De goedkeurings sleutel is een asymmetrische sleutel in de TPM die intern is gegenereerd of geïnjecteerd tijdens de productie tijd en uniek is voor elke TPM. De goedkeurings sleutel kan niet worden gewijzigd of verwijderd. Het persoonlijke gedeelte van de goedkeurings sleutel wordt nooit buiten de TPM vrijgegeven, terwijl het open bare gedeelte van de goedkeurings sleutel wordt gebruikt om een legitieme TPM te herkennen. Meer informatie over de [goedkeurings sleutel](https://technet.microsoft.com/library/cc770443(v=ws.11).aspx).
 
-### <a name="storage-root-key"></a>Hoofdtoets opslag
+### <a name="storage-root-key"></a>Opslag hoofd sleutel
 
-De opslaghoofdsleutel wordt opgeslagen in de TPM en wordt gebruikt om TPM-sleutels die door toepassingen zijn gemaakt te beschermen, zodat deze sleutels niet kunnen worden gebruikt zonder de TPM. De opslaghoofdsleutel wordt gegenereerd wanneer u eigenaar wordt van de TPM; wanneer u de TPM wist zodat een nieuwe gebruiker eigenaar kan worden, wordt een nieuwe opslaghoofdsleutel gegenereerd. Meer informatie over de [hoofdtoets voor opslag](https://technet.microsoft.com/library/cc753560(v=ws.11).aspx).
+De opslag hoofd sleutel wordt opgeslagen in de TPM en wordt gebruikt voor het beveiligen van TPM-sleutels die zijn gemaakt door toepassingen, zodat deze sleutels niet kunnen worden gebruikt zonder de TPM. De opslag hoofd sleutel wordt gegenereerd wanneer u eigenaar van de TPM bent; Wanneer u de TPM wist zodat een nieuwe gebruiker eigenaar kan worden, wordt een nieuwe opslag hoofd sleutel gegenereerd. Meer informatie over de [opslag hoofd sleutel](https://technet.microsoft.com/library/cc753560(v=ws.11).aspx).
 
-## <a name="x509-certificates"></a>X.509-certificaten
+## <a name="x509-certificates"></a>X. 509-certificaten
 
-Het gebruik van X.509-certificaten als attestmechanisme is een uitstekende manier om de productie te schalen en de inrichting van apparaten te vereenvoudigen. X.509-certificaten worden doorgaans gerangschikt in een vertrouwensketen waarin elk certificaat in de keten wordt ondertekend door de privésleutel van het volgende hogere certificaat, enzovoort, eindigend in een zelfondertekend rootcertificaat. Met deze regeling wordt een gedelegeerde vertrouwensketen gemaakt van het basiscertificaat dat is gegenereerd door een vertrouwde basiscertificaatautoriteit (CA) die via elke tussenliggende CA naar het "leaf"-certificaat van de eindentiteit wordt gebracht dat op een apparaat is geïnstalleerd. Zie [Apparaatverificatie met X.509 CA-certificaten](/azure/iot-hub/iot-hub-x509ca-overview)voor meer informatie. 
+Het gebruik van X. 509-certificaten als Attestation-mechanisme is een uitstekende manier om productie te schalen en het inrichten van apparaten te vereenvoudigen. X. 509-certificaten worden meestal gerangschikt in een vertrouwens keten waarbij elk certificaat in de keten wordt ondertekend door de persoonlijke sleutel van het volgende hogere certificaat, enzovoort, wordt beëindigd in een zelfondertekend basis certificaat. Deze regeling brengt een overgedragen vertrouwens keten tot stand van het basis certificaat dat door een vertrouwde basis certificerings instantie (CA) wordt gegenereerd via elke tussenliggende CA naar het eind entiteit blad-certificaat dat op een apparaat is geïnstalleerd. Zie voor meer informatie [apparaat-verificatie met behulp van X. 509 CA-certificaten](/azure/iot-hub/iot-hub-x509ca-overview). 
 
-Vaak vertegenwoordigt de certificaatketen een logische of fysieke hiërarchie die is gekoppeld aan apparaten. Een fabrikant kan bijvoorbeeld:
-- een zelfondertekend root-CA-certificaat uitgeven
-- gebruik het rootcertificaat om voor elke fabriek een uniek tussenliggend CA-certificaat te genereren
-- het certificaat van elke fabriek gebruiken om een uniek tussenliggend CA-certificaat te genereren voor elke productielijn in de fabriek
-- en ten slotte het productielijncertificaat gebruiken om een uniek apparaat (end-entity) certificaat te genereren voor elk apparaat dat op de lijn wordt vervaardigd. 
+Vaak vertegenwoordigt de certificaat keten een logische of fysieke hiërarchie die is gekoppeld aan apparaten. Een fabrikant kan bijvoorbeeld:
+- een zelfondertekend basis-CA-certificaat uitgeven
+- het basis certificaat gebruiken voor het genereren van een uniek tussenliggend CA-certificaat voor elke fabriek
+- elk fabrieks certificaat gebruiken voor het genereren van een uniek tussenliggend CA-certificaat voor elke productie lijn in het bedrijf
+- en ten slotte het certificaat van de productie lijn gebruiken om een uniek apparaat (eind entiteit) te genereren voor elk apparaat dat op de regel wordt geproduceerd. 
 
-Zie [Conceptueel begrip van X.509 CA-certificaten in de IoT-industrie](/azure/iot-hub/iot-hub-x509ca-concept)voor meer informatie. 
+Zie voor meer informatie [conceptuele kennis van X. 509 CA-certificaten in de IOT-industrie](/azure/iot-hub/iot-hub-x509ca-concept). 
 
-### <a name="root-certificate"></a>Basiscertificaat
+### <a name="root-certificate"></a>Basis certificaat
 
-Een rootcertificaat is een zelfondertekend X.509-certificaat dat een certificaatautoriteit (CA) vertegenwoordigt. Het is het eindpunt, of vertrouwen anker, van de certificaatketen. Rootcertificaten kunnen zelf worden uitgegeven door een organisatie of worden gekocht bij een rootcertificaatautoriteit. Zie [X.509 CA-certificaten ophalen](/azure/iot-hub/iot-hub-security-x509-get-started#get-x509-ca-certificates)voor meer informatie. Het basiscertificaat kan ook worden aangeduid als een root CA-certificaat.
+Een basis certificaat is een zelfondertekend X. 509-certificaat dat een certificerings instantie (CA) vertegenwoordigt. Het is het ondersteuningabonnementen of vertrouwens anker van de certificaat keten. Basis certificaten kunnen zelf worden uitgegeven door een organisatie of worden aangeschaft bij een basis certificerings instantie. Zie [Get X. 509 ca certificates](/azure/iot-hub/iot-hub-security-x509-get-started#get-x509-ca-certificates)(Engelstalig) voor meer informatie. Het basis certificaat kan ook worden aangeduid als een basis-CA-certificaat.
 
-### <a name="intermediate-certificate"></a>Tussencertificaat
+### <a name="intermediate-certificate"></a>Tussenliggend certificaat
 
-Een tussencertificaat is een X.509-certificaat, dat is ondertekend door het basiscertificaat (of door een ander tussencertificaat met het basiscertificaat in de keten). Het laatste tussencertificaat in een ketting wordt gebruikt om het bladcertificaat te ondertekenen. Een tussencertificaat kan ook worden aangeduid als een tussentijds CA-certificaat.
+Een tussenliggend certificaat is een X. 509-certificaat dat is ondertekend door het basis certificaat (of door een ander tussenliggend certificaat met het basis certificaat in de keten). Het laatste tussenliggende certificaat in een keten wordt gebruikt voor het ondertekenen van het blad certificaat. Een tussenliggend certificaat kan ook worden aangeduid als een tussenliggend CA-certificaat.
 
-### <a name="end-entity-leaf-certificate"></a>Certificaat "blad" van de eindentiteit
+### <a name="end-entity-leaf-certificate"></a>Leaf-certificaat van eind entiteit
 
-Het bladcertificaat of het certificaat van de eindentiteit identificeert de certificaathouder. Het heeft het rootcertificaat in zijn certificaatketen en nul of meer tussenliggende certificaten. Het bladcertificaat wordt niet gebruikt om andere certificaten te ondertekenen. Het identificeert het apparaat op unieke wijze aan de inrichtingsdienst en wordt soms het apparaatcertificaat genoemd. Tijdens de verificatie gebruikt het apparaat de privésleutel die aan dit certificaat is gekoppeld om te reageren op een bewijs van bezitsuitdaging van de service.
+Het blad certificaat of het certificaat van de eind entiteit identificeert de certificaat houder. Het bevat het basis certificaat in de certificaat keten en nul of meer tussenliggende certificaten. Het blad certificaat wordt niet gebruikt om andere certificaten te ondertekenen. Het apparaat wordt uniek geïdentificeerd voor de inrichtings service en wordt ook wel het certificaat van het apparaat genoemd. Tijdens de verificatie gebruikt het apparaat de persoonlijke sleutel die is gekoppeld aan dit certificaat om te reageren op de vraag naar een bewijs van de eigendom van de service.
 
-Bladcertificaten die worden gebruikt bij een [afzonderlijke inschrijvingsvermelding,](./concepts-service.md#individual-enrollment) hebben de vereiste dat de **onderwerpnaam** moet worden ingesteld op de registratie-id van de individuele inschrijvingsvermelding. Bladcertificaten die worden gebruikt bij een [inschrijvingsgroep](./concepts-service.md#enrollment-group) moeten de **onderwerpnaam** hebben ingesteld op de gewenste apparaat-id die wordt weergegeven in de **registratierecords** voor het geverifieerde apparaat in de inschrijvingsgroep.
+Bij blad certificaten die worden gebruikt met een [afzonderlijke inschrijvings](./concepts-service.md#individual-enrollment) vermelding moet de **onderwerpnaam** worden ingesteld op de registratie-id van de afzonderlijke inschrijvings vermelding. Bij blad certificaten die worden gebruikt voor een [inschrijvings groep](./concepts-service.md#enrollment-group) moet de **onderwerpnaam** worden ingesteld op de gewenste apparaat-id die wordt weer gegeven in de **registratie records** voor het geverifieerde apparaat in de registratie groep.
 
-Zie [Apparaten verifiëren die zijn ondertekend met X.509 CA-certificaten](/azure/iot-hub/iot-hub-x509ca-overview#authenticating-devices-signed-with-x509-ca-certificates)voor meer informatie.
+Zie [apparaten verifiëren die zijn ondertekend met X. 509 CA-certificaten](/azure/iot-hub/iot-hub-x509ca-overview#authenticating-devices-signed-with-x509-ca-certificates)voor meer informatie.
 
-## <a name="controlling-device-access-to-the-provisioning-service-with-x509-certificates"></a>Apparaattoegang tot de inrichtingsservice beheren met X.509-certificaten
+## <a name="controlling-device-access-to-the-provisioning-service-with-x509-certificates"></a>Toegang van apparaten tot de inrichtings service beheren met X. 509-certificaten
 
-De inrichtingsservice onthult twee typen inschrijvingsinvoer die u gebruiken om de toegang te beheren voor apparaten die het x.509-attestmechanisme gebruiken:  
+De inrichtings service laat twee typen inschrijvings vermeldingen zien die u kunt gebruiken voor het beheren van de toegang voor apparaten die gebruikmaken van het verificatie mechanisme X. 509:  
 
-- [Afzonderlijke inschrijvingsitems](./concepts-service.md#individual-enrollment) zijn geconfigureerd met het apparaatcertificaat dat is gekoppeld aan een specifiek apparaat. Deze vermeldingen beheren inschrijvingen voor specifieke apparaten.
-- [Inschrijvingsgroepvermeldingen](./concepts-service.md#enrollment-group) zijn gekoppeld aan een specifiek tussenliggend of basis CA-certificaat. Deze vermeldingen beheren inschrijvingen voor alle apparaten die dat tussenliggende of hoofdcertificaat in hun certificaatketen hebben. 
+- [Afzonderlijke registratie](./concepts-service.md#individual-enrollment) vermeldingen worden geconfigureerd met het certificaat van het apparaat dat is gekoppeld aan een specifiek apparaat. Met deze vermeldingen worden inschrijvingen voor specifieke apparaten beheerd.
+- Vermeldingen in de [registratie groep](./concepts-service.md#enrollment-group) zijn gekoppeld aan een specifiek tussenliggend of basis-CA-certificaat. Deze vermeldingen bepalen registraties voor alle apparaten die dat tussenliggende of basis certificaat in hun certificaat keten hebben. 
 
-Wanneer een apparaat verbinding maakt met de inrichtingsservice, geeft de service prioriteit aan meer specifieke inschrijvingsvermeldingen boven minder specifieke inschrijvingsvermeldingen. Dat wil zeggen, als er een individuele inschrijving voor het apparaat bestaat, past de inrichtingsservice die vermelding toe. Als er geen individuele inschrijving voor het apparaat is en er een inschrijvingsgroep voor het eerste tussentijdse certificaat in de certificaatketen van het apparaat bestaat, past de service die vermelding toe, enzovoort, op de keten naar de root. De dienst past de eerste toepasselijke vermelding toe die zij constateert, zodat:
+Wanneer een apparaat verbinding maakt met de inrichtings service, wordt met de service prioriteit gegeven aan meer specifieke inschrijvings vermeldingen voor minder specifieke inschrijvings vermeldingen. Dat wil zeggen, als er een afzonderlijke inschrijving voor het apparaat bestaat, de inrichtings service die vermelding toepast. Als er geen individuele inschrijving voor het apparaat is en een registratie groep voor het eerste tussenliggende certificaat in de certificaat keten van het apparaat bestaat, wordt die vermelding door de service toegepast, enzovoort, tot aan het hoofd niveau. De service past de eerste toepasselijke vermelding toe die wordt gevonden, bijvoorbeeld:
 
-- Als de eerste gevonden inschrijvingis ingeschakeld, worden de servicevoorzieningen van het apparaat ingeschakeld.
-- Als de eerste gevonden inschrijving is uitgeschakeld, biedt de service geen inrichting van het apparaat.  
-- Als er geen inschrijvingsvermelding wordt gevonden voor een van de certificaten in de certificaatketen van het apparaat, biedt de service het apparaat niet. 
+- Als de eerste inschrijvings vermelding is ingeschakeld, wordt het apparaat door de service ingericht.
+- Als de eerste inschrijvings vermelding is uitgeschakeld, wordt het apparaat niet door de service ingericht.  
+- Als er geen inschrijvings vermelding is gevonden voor de certificaten in de certificaat keten van het apparaat, wordt het apparaat niet door de service ingericht. 
 
-Dit mechanisme en de hiërarchische structuur van certificaatketens bieden krachtige flexibiliteit in hoe u de toegang voor afzonderlijke apparaten en voor groepen apparaten beheren. Stel je bijvoorbeeld vijf apparaten voor met de volgende certificaatketens: 
+Dit mechanisme en de hiërarchische structuur van certificaat ketens biedt krachtige flexibiliteit bij het beheren van de toegang voor afzonderlijke apparaten en voor groepen apparaten. Stel bijvoorbeeld vijf apparaten met de volgende certificaat ketens: 
 
-- *Apparaat 1*: basiscertificaat -> certificaat A -> apparaat 1 certificaat
-- *Apparaat 2*: basiscertificaat -> certificaat A -> apparaat 2 certificaat
-- *Apparaat 3*: basiscertificaat -> certificaat A -> apparaat 3 certificaat
-- *Apparaat 4*: basiscertificaat -> certificaat B -> apparaat 4 certificaat
-- *Apparaat 5*: basiscertificaat -> certificaat B -> apparaat 5 certificaat
+- *Apparaat 1*: basis certificaat-> certificaat A-> apparaat 1 certificaat
+- *Apparaat 2*: basis certificaat-> certificaat A-> apparaat 2 certificaat
+- *Apparaat 3*: basis certificaat-> certificaat A-> apparaat 3
+- *Apparaat 4*: basis certificaat-> certificaat B-> apparaat 4-certificaat
+- *Apparaat 5*: basis certificaat-> certificaat B-> apparaat 5 certificaat
 
-In eerste instantie u één ingeschakelde groepsinschrijvingsvermelding voor het hoofdcertificaat maken om toegang voor alle vijf apparaten in te schakelen. Als certificaat B later wordt gecompromitteerd, u een uitgeschakelde inschrijvingsgroep vermelding voor certificaat B maken om te voorkomen dat *Apparaat 4* en *Apparaat 5* zich inschrijven. Als apparaat *3* nog later wordt gecompromitteerd, u een uitgeschakelde individuele inschrijvingsvermelding voor het certificaat maken. Hierdoor wordt de toegang voor *apparaat 3*ingetrokken, maar kunnen *apparaat 1* en apparaat *2* zich nog steeds inschrijven.
+In eerste instantie kunt u een eenmalige registratie vermelding voor het basis certificaat maken om toegang voor alle vijf apparaten in te scha kelen. Als certificaat B later wordt aangetast, kunt u een uitgeschakelde registratie groep voor certificaat B maken om te voor komen dat *apparaat 4* en *apparaat 5* worden inge schreven. Als er nog steeds een nieuwer *apparaat 3* wordt aangetast, kunt u een uitgeschakelde individuele inschrijvings vermelding voor het certificaat maken. Hiermee wordt de toegang voor *apparaat 3*ingetrokken, maar kan *apparaat 1* en *apparaat 2* worden inge schreven.

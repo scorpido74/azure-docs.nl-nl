@@ -1,6 +1,6 @@
 ---
-title: Een lab of vm in een lab in Azure DevTest Labs verwijderen
-description: In dit artikel ziet u hoe u een lab verwijdert of een vm in een lab verwijdert met behulp van de Azure Portal (Azure DevTest Labs).
+title: Een Lab of virtuele machine in een lab in Azure DevTest Labs verwijderen
+description: In dit artikel leest u hoe u een Lab verwijdert of een virtuele machine in een Lab verwijdert met behulp van de Azure Portal (Azure DevTest Labs).
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
 author: spelluru
@@ -14,65 +14,65 @@ ms.topic: article
 ms.date: 01/24/2020
 ms.author: spelluru
 ms.openlocfilehash: 28fb464714f464a4c0a8f5eaf304dcdd5d603c90
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79270808"
 ---
-# <a name="delete-a-lab-or-vm-in-a-lab-in-azure-devtest-labs"></a>Een lab of vm in een lab in Azure DevTest Labs verwijderen
-In dit artikel ziet u hoe u een lab of vm in een lab verwijdert.
+# <a name="delete-a-lab-or-vm-in-a-lab-in-azure-devtest-labs"></a>Een Lab of virtuele machine in een lab in Azure DevTest Labs verwijderen
+In dit artikel wordt beschreven hoe u een Lab of virtuele machine in een Lab verwijdert.
 
-## <a name="delete-a-lab"></a>Een lab verwijderen
-Wanneer u een instantie DevTest Labs uit een resourcegroep verwijdert, voert de de service DevTest Labs de volgende acties uit: 
+## <a name="delete-a-lab"></a>Een Lab verwijderen
+Wanneer u een DevTest Labs-exemplaar uit een resource groep verwijdert, voert de DevTest Labs-service de volgende acties uit: 
 
-- Alle resources die automatisch zijn gemaakt op het moment van het maken van het lab, worden automatisch verwijderd. De brongroep zelf wordt niet verwijderd. Als u handmatig resources in deze brongroep hebt gemaakt, verwijdert de service deze niet. 
-- Alle VM's in het lab en resourcegroepen die aan deze VM's zijn gekoppeld, worden automatisch verwijderd. Wanneer u een VM in een lab maakt, maakt de service resources (schijf, netwerkinterface, openbaar IP-adres, enz.) voor de VM in een afzonderlijke brongroep. Als u echter handmatig extra resources in deze resourcegroepen maakt, verwijdert de de service DevTest Labs deze resources en de brongroep niet. 
+- Alle resources die automatisch zijn gemaakt op het moment van het maken van het lab, worden automatisch verwijderd. De resource groep zelf wordt niet verwijderd. Als u hand matig resources deze resource groep hebt gemaakt, worden deze niet verwijderd door de service. 
+- Alle virtuele machines in het lab en de resource groepen die zijn gekoppeld aan deze Vm's, worden automatisch verwijderd. Wanneer u een virtuele machine in een Lab maakt, maakt de service bronnen (schijf, netwerk interface, openbaar IP-adres, enz.) voor de virtuele machine in een afzonderlijke resource groep. Als u echter hand matig extra resources in deze resource groepen maakt, worden deze resources en de resource groep niet verwijderd door de service DevTest Labs. 
 
-Ga als volgt te werk om een lab te verwijderen: 
+Voer de volgende acties uit om een lab te verwijderen: 
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com).
-2. Selecteer **Alle resource** in menu aan de linkerkant, selecteer **DevTest Labs** voor het type service en selecteer het lab.
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
+2. Selecteer **alle resources** in het menu aan de linkerkant, selecteer **DevTest Labs** voor het type service en selecteer het lab.
 
-    ![Selecteer uw lab](media/devtest-lab-delete-lab-vm/select-lab.png)
-3. Klik op de pagina **DevTest Lab** op **Verwijderen** op de werkbalk. 
+    ![Uw Lab selecteren](media/devtest-lab-delete-lab-vm/select-lab.png)
+3. Klik op de pagina **DevTest Lab** op **verwijderen** op de werk balk. 
 
     ![De knop Verwijderen](media/devtest-lab-delete-lab-vm/delete-button.png)
-4. Voer **op** de pagina Bevestiging de **naam** van uw lab in en selecteer **Verwijderen**. 
+4. Voer op de pagina **bevestiging** de **naam** van uw Lab in en selecteer **verwijderen**. 
 
     ![Bevestigen](media/devtest-lab-delete-lab-vm/confirm-delete.png)
-5. Als u de status van de bewerking wilt zien, selecteert u het pictogram **Meldingen** (Bel). 
+5. Als u de status van de bewerking wilt weer geven, selecteert u **meldingen** pictogram (Bel). 
 
     ![Meldingen](media/devtest-lab-delete-lab-vm/delete-status.png)
 
  
-## <a name="delete-a-vm-in-a-lab"></a>Een vm in een lab verwijderen
-Als ik een VM in een lab verwijder, worden sommige resources (niet alle) die zijn gemaakt op het moment van het maken van het lab verwijderd. De volgende bronnen worden niet verwijderd: 
+## <a name="delete-a-vm-in-a-lab"></a>Een virtuele machine in een Lab verwijderen
+Als ik een virtuele machine in een Lab Verwijder, worden sommige resources (niet alle) die zijn gemaakt op het moment van het maken van het lab, verwijderd. De volgende resources worden niet verwijderd: 
 
--   Sleutelkluis in de hoofdbrongroep
--   Beschikbaarheidsset, load balancer, openbaar IP-adres in de VM-resourcegroep. Deze bronnen worden gedeeld door meerdere VM's in een resourcegroep. 
+-   Sleutel kluis in de hoofd resource groep
+-   Beschikbaarheidsset, load balancer, openbaar IP-adres in de resource groep van de virtuele machine. Deze resources worden gedeeld door meerdere Vm's in een resource groep. 
 
-Virtuele machine, netwerkinterface en schijf die aan de VM zijn gekoppeld, worden verwijderd. 
+De virtuele machine, de netwerk interface en de schijf die aan de VM zijn gekoppeld, worden verwijderd. 
 
-Ga als volgt te werk om een vm in een lab te verwijderen: 
+Als u een virtuele machine in een Lab wilt verwijderen, voert u de volgende handelingen uit: 
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com).
-2. Selecteer **Alle resource** in menu aan de linkerkant, selecteer **DevTest Labs** voor het type service en selecteer het lab.
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
+2. Selecteer **alle resources** in het menu aan de linkerkant, selecteer **DevTest Labs** voor het type service en selecteer het lab.
 
-    ![Selecteer uw lab](media/devtest-lab-delete-lab-vm/select-lab.png)
-3. Selecteer **... (ellips)** voor de VM in de lijst met VM's en selecteer **Verwijderen**. 
+    ![Uw Lab selecteren](media/devtest-lab-delete-lab-vm/select-lab.png)
+3. Selecteren **... (weglatings tekens)** voor de virtuele machine in de lijst met virtuele machines en selecteer **verwijderen**. 
 
-    ![VM verwijderen in menu](media/devtest-lab-delete-lab-vm/delete-vm-menu-in-list.png)
-4. Selecteer **ok**in **het** bevestigingsdialoogvenster. 
-5. Als u de status van de bewerking wilt zien, selecteert u het pictogram **Meldingen** (Bel). 
+    ![Virtuele machine in menu verwijderen](media/devtest-lab-delete-lab-vm/delete-vm-menu-in-list.png)
+4. Selecteer **OK**in het **bevestigings** venster. 
+5. Als u de status van de bewerking wilt weer geven, selecteert u **meldingen** pictogram (Bel). 
 
-Als u een virtuele machine wilt **verwijderen,** selecteert u **Verwijderen op** de werkbalk zoals in de volgende afbeelding wordt weergegeven:
+Als u een VM wilt verwijderen van de **pagina virtuele machine**, selecteert u **verwijderen** in de werk balk, zoals wordt weer gegeven in de volgende afbeelding:
 
 ![VM verwijderen van VM-pagina](media/devtest-lab-delete-lab-vm/delete-from-vm-page.png) 
 
 
 ## <a name="next-steps"></a>Volgende stappen
-Als u een lab wilt maken, raadpleegt u de volgende artikelen: 
+Als u een Lab wilt maken, raadpleegt u de volgende artikelen: 
 
 - [Een lab maken](devtest-lab-create-lab.md)
 - [Een virtuele machine aan een lab toevoegen](devtest-lab-add-vm.md)

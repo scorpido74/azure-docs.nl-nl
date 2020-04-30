@@ -1,6 +1,6 @@
 ---
 title: Een lab met Azure DevTest Labs maken | Microsoft Docs
-description: In deze zelfstudie maakt u een lab in Azure DevTest Labs met behulp van de Azure-portal. Een labbeheerder stelt een lab op, maakt VM's in het lab en configureert beleid.
+description: In deze zelf studie maakt u een lab in Azure DevTest Labs met behulp van de Azure Portal. Een Lab-beheerder stelt een lab in, maakt Vm's in het lab en configureert beleid.
 services: devtest-lab, lab-services, virtual-machines
 documentationcenter: na
 author: spelluru
@@ -15,10 +15,10 @@ ms.custom: mvc
 ms.date: 01/24/2020
 ms.author: spelluru
 ms.openlocfilehash: 44539c6779afaece6d955a907819ef82d8cd7d5a
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "79239908"
 ---
 # <a name="tutorial-set-up-a-lab-by-using-azure-devtest-labs"></a>Zelfstudie: Een lab maken met Azure DevTest Labs
@@ -31,12 +31,12 @@ In deze zelfstudie voert u de volgende acties uit:
 > * Virtuele machines (VM) toevoegen aan het lab
 > * Een gebruiker toevoegen aan de rol Labgebruiker
 
-Als u geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/) voordat u begint.
+Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/) aan voordat u begint.
 
 ## <a name="create-a-lab"></a>Een lab maken
 In de volgende stappen ziet u hoe u Azure Portal kunt gebruiken om een lab te maken in Azure DevTest Labs. 
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 2. Selecteer in het hoofdmenu aan de linkerkant **Een resource maken** (bovenaan de lijst), wijs **Ontwikkelhulpprogramma's** aan en klik op **DevTest Labs**. 
 
     ![Menu Nieuw DevTest Lab](./media/tutorial-create-custom-lab/new-custom-lab-menu.png)

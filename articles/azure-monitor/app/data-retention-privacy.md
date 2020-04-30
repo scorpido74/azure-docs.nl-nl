@@ -1,141 +1,141 @@
 ---
-title: Gegevensbewaring en -opslag in Azure Application Insights | Microsoft Documenten
-description: Verklaring voor retentie en privacybeleid
+title: Bewaren van gegevens en opslag in Azure-toepassing inzichten | Microsoft Docs
+description: Retentie en privacybeleid
 ms.topic: conceptual
 ms.date: 09/29/2019
 ms.openlocfilehash: 30878eecf795c85713b9f09b8325b326416022b8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79275995"
 ---
-# <a name="data-collection-retention-and-storage-in-application-insights"></a>Gegevensverzameling, -bewaring en -opslag in Application Insights
+# <a name="data-collection-retention-and-storage-in-application-insights"></a>Gegevens verzameling, retentie en opslag in Application Insights
 
-Wanneer u [Azure Application Insights][start] SDK in uw app installeert, wordt telemetrie over uw app naar de cloud verzenden. Uiteraard willen verantwoordelijke ontwikkelaars precies weten welke gegevens worden verzonden, wat er met de gegevens gebeurt en hoe ze de controle erover kunnen houden. In het bijzonder, kunnen gevoelige gegevens worden verzonden, waar wordt opgeslagen, en hoe veilig is het? 
+Wanneer u [Azure-toepassing Insights][start] -SDK in uw app installeert, verzendt deze telemetrie over uw app naar de Cloud. Natuurlijk willen bevoegde ontwikkel aars precies weten welke gegevens worden verzonden, wat er gebeurt met de gegevens en hoe ze de controle kunnen blijven houden. Met name kunnen gevoelige gegevens worden verzonden, waar ze worden opgeslagen en hoe veilig het is? 
 
-Ten eerste, het korte antwoord:
+Eerst het korte antwoord:
 
-* De standaard telemetriemodules die "out of the box" draaien, verzenden waarschijnlijk geen gevoelige gegevens naar de service. De telemetrie houdt zich bezig met belasting-, prestatie- en gebruiksstatistieken, uitzonderingsrapporten en andere diagnostische gegevens. De belangrijkste gebruikersgegevens die zichtbaar zijn in de diagnostische rapporten zijn URL's; maar uw app mag in geen geval gevoelige gegevens in platte tekst in een URL plaatsen.
-* U code schrijven die extra aangepaste telemetrie verzendt om u te helpen bij het diagnosticeren en controleren van het gebruik. (Deze uitbreidbaarheid is een geweldige functie van Application Insights.) Het zou per ongeluk mogelijk zijn om deze code te schrijven, zodat deze persoonlijke en andere gevoelige gegevens bevat. Als uw toepassing met dergelijke gegevens werkt, moet u een grondig beoordelingsproces toepassen op alle code die u schrijft.
-* Tijdens het ontwikkelen en testen van uw app, is het eenvoudig om te inspecteren wat er wordt verzonden door de SDK. De gegevens worden weergegeven in de debuggen uitvoervensters van de IDE en de browser. 
-* De gegevens worden bewaard in [Microsoft Azure-servers](https://azure.com) in de VS of Europa. (Maar uw app kan overal worden uitgevoerd.) Azure heeft [sterke beveiligingsprocessen en voldoet aan een breed scala aan nalevingsnormen.](https://azure.microsoft.com/support/trust-center/) Alleen u en uw aangewezen team hebben toegang tot uw gegevens. Microsoft-medewerkers kunnen er alleen onder specifieke beperkte omstandigheden toegang toe hebben onder specifieke beperkte omstandigheden met uw medeweten. Het is versleuteld tijdens het transport en in rust.
-*   Bekijk de verzamelde gegevens, omdat dit gegevens kan bevatten die in sommige omstandigheden zijn toegestaan, maar andere niet.  Een goed voorbeeld hiervan is apparaatnaam. De naam van het apparaat van een server heeft geen privacy-impact en is nuttig, maar een apparaatnaam van een telefoon of laptop kan een privacy-impact hebben en minder nuttig zijn. Een SDK die voornamelijk is ontwikkeld om servers te targeten, zou standaard de naam van het apparaat verzamelen en dit moet mogelijk worden overschreven in zowel normale gebeurtenissen als uitzonderingen.
+* De standaard-telemetrie-modules die "out-of-Box" worden uitgevoerd, verzenden waarschijnlijk geen gevoelige gegevens naar de service. De telemetrie heeft betrekking op metrische gegevens over belasting, prestaties en gebruik, uitzonderings rapporten en andere diagnostische informatie. De belangrijkste gebruikers gegevens die in de diagnostische rapporten worden weer gegeven, zijn Url's. maar uw app mag in geen geval gevoelige gegevens in een URL plaatsen als tekst zonder opmaak.
+* U kunt code schrijven die aanvullende aangepaste telemetrie verstuurt om u te helpen bij het gebruik van diagnostische gegevens en bewaking. (Deze uitbreid baarheid is een uitstekende functie van Application Insights.) Het kan per ongeluk zijn om deze code te schrijven, zodat deze persoonlijke en andere gevoelige gegevens bevat. Als uw toepassing met dergelijke gegevens werkt, moet u een grondige beoordelings proces Toep assen op alle code die u schrijft.
+* Tijdens het ontwikkelen en testen van uw app is het eenvoudig om te controleren wat wordt verzonden door de SDK. De gegevens worden weer gegeven in de uitvoer van de Windows-oplossing voor fout opsporing van de IDE en browser. 
+* De gegevens worden opgeslagen in [Microsoft Azure](https://azure.com) servers in de Verenigde Staten en Europa. (Maar uw app kan overal worden uitgevoerd.) Azure heeft [sterke beveiligings processen en voldoet aan een breed scala aan nalevings standaarden](https://azure.microsoft.com/support/trust-center/). Alleen u en uw specifieke team hebben toegang tot uw gegevens. Micro soft-mede werkers kunnen beperkte toegang hebben tot alleen onder specifieke beperkte omstandigheden met uw kennis. Het is versleuteld onderweg en in rust.
+*   Bekijk de verzamelde gegevens, omdat dit mogelijk gegevens bevat die in bepaalde omstandigheden wel of niet aan anderen zijn toegestaan.  Een goed voor beeld hiervan is de naam van het apparaat. De apparaatnaam van een server heeft geen gevolgen voor de privacy en is nuttig, maar een apparaatnaam van een telefoon of laptop kan een privacy-impact hebben en is minder nuttig. Een SDK die voornamelijk is ontwikkeld voor doel servers, verzamelt standaard de apparaatnaam en deze moet mogelijk worden overschreven in zowel normale gebeurtenissen als uitzonde ringen.
 
-De rest van dit artikel gaat dieper in op deze antwoorden. Het is ontworpen om op zichzelf te staan, zodat je het laten zien aan collega's die geen deel uitmaken van je directe team.
+De rest van dit artikel bevat meer informatie over deze antwoorden. Het is ontworpen om op zichzelf te staan, zodat u deze kunt weer geven aan collega's die geen deel uitmaken van uw directe team.
 
 ## <a name="what-is-application-insights"></a>Wat is Application Insights?
-[Azure Application Insights][start] is een service van Microsoft die u helpt de prestaties en bruikbaarheid van uw live-toepassing te verbeteren. Het controleert uw toepassing de hele tijd dat deze wordt uitgevoerd, zowel tijdens het testen als nadat u deze hebt gepubliceerd of geïmplementeerd. Application Insights maakt grafieken en tabellen die u bijvoorbeeld laten zien op welke momenten van de dag u de meeste gebruikers krijgt, hoe responsief de app is en hoe goed deze wordt bediend door externe services waarvan deze afhankelijk is. Als er crashes, storingen of prestatieproblemen zijn, u de telemetriegegevens in detail doorzoeken om de oorzaak vast te stellen. En de service stuurt u e-mails als er wijzigingen zijn in de beschikbaarheid en prestaties van uw app.
+[Azure-toepassing Insights][start] is een service van micro soft waarmee u de prestaties en bruikbaarheid van uw Live-toepassing kunt verbeteren. Hiermee wordt uw toepassing gecontroleerd op het moment dat deze wordt uitgevoerd, zowel tijdens het testen als nadat u deze hebt gepubliceerd of geïmplementeerd. Application Insights maakt grafieken en tabellen waarin u bijvoorbeeld kunt zien op welke tijdstippen u de meeste gebruikers krijgt, hoe reageert de app en hoe goed deze wordt bediend door externe services waarvan deze afhankelijk is. Als er zich crashes, fouten of prestatie problemen voordoen, kunt u de gegevens in de telemetrie gedetailleerd doorzoeken om de oorzaak vast te stellen. En de service stuurt u e-mail berichten als er wijzigingen zijn in de beschik baarheid en prestaties van uw app.
 
-Om deze functionaliteit te krijgen, installeert u een Application Insights SDK in uw toepassing, die onderdeel wordt van de code. Wanneer uw app wordt uitgevoerd, controleert de SDK de werking ervan en stuurt telemetrie naar de Application Insights-service. Dit is een cloudservice die wordt gehost door [Microsoft Azure.](https://azure.com) (Maar Application Insights werkt voor alle toepassingen, niet alleen toepassingen die worden gehost in Azure.)
+Als u deze functionaliteit wilt ontvangen, installeert u een Application Insights SDK in uw toepassing, die deel wordt van de code. Wanneer uw app wordt uitgevoerd, wordt de werking van de SDK bewaakt en wordt telemetrie naar de Application Insights-service verzonden. Dit is een Cloud service die wordt gehost door [Microsoft Azure](https://azure.com). (Maar Application Insights werkt voor toepassingen, niet alleen voor toepassingen die worden gehost in Azure.)
 
-De Application Insights-service slaat de telemetrie op en analyseert deze. Als u de analyse wilt bekijken of zoeken via de opgeslagen telemetrie, meldt u zich aan bij uw Azure-account en opent u de application Insights-bron voor uw toepassing. U ook toegang tot de gegevens delen met andere leden van uw team of met opgegeven Azure-abonnees.
+De telemetrie wordt door de Application Insights-service opgeslagen en geanalyseerd. U meldt zich aan bij uw Azure-account en opent de Application Insights resource voor uw toepassing om de analyse te bekijken of te zoeken in de opgeslagen telemetrie. U kunt ook toegang tot de gegevens delen met andere leden van uw team of met de opgegeven Azure-abonnees.
 
-U gegevens laten exporteren vanuit de Application Insights-service, bijvoorbeeld naar een database of naar externe hulpprogramma's. U voorziet elke tool van een speciale sleutel die u van de service krijgt. De sleutel kan indien nodig worden ingetrokken. 
+U kunt gegevens exporteren van de Application Insights-service, bijvoorbeeld naar een Data Base of naar externe hulpprogram ma's. U geeft elk hulp programma een speciale sleutel die u van de service aanschaft. De sleutel kan indien nodig worden ingetrokken. 
 
-Application Insights SDKs zijn beschikbaar voor een reeks toepassingstypen: webservices die worden gehost in uw eigen Java EE- of ASP.NET-servers of in Azure; webclients - dat wil zeggen, de code die wordt uitgevoerd op een webpagina; bureaublad-apps en -services; apparaat-apps zoals Windows Phone, iOS en Android. Ze sturen allemaal telemetrie naar dezelfde dienst.
+Application Insights Sdk's zijn beschikbaar voor verschillende toepassings typen: webservices die worden gehost in uw eigen Java EE-of ASP.NET-servers of in azure; webclients, dat wil zeggen de code die wordt uitgevoerd op een webpagina. bureau blad-apps en-services; apparaat-apps zoals Windows Phone, iOS en Android. Ze verzenden telemetrie naar dezelfde service.
 
-## <a name="what-data-does-it-collect"></a>Welke gegevens verzamelt het?
-Er zijn drie gegevensbronnen:
+## <a name="what-data-does-it-collect"></a>Welke gegevens worden er verzameld?
+Er zijn drie gegevens bronnen:
 
-* De SDK, die u integreert met uw app [in ontwikkeling](../../azure-monitor/app/asp-net.md) of [tijdens de looptijd.](../../azure-monitor/app/monitor-performance-live-website-now.md) Er zijn verschillende SDK's voor verschillende toepassingstypen. Er is ook een [SDK voor webpagina's,](../../azure-monitor/app/javascript.md)die laadt in de browser van de eindgebruiker, samen met de pagina.
+* De SDK, die u integreert met uw app [in ontwikkeling](../../azure-monitor/app/asp-net.md) of [tijdens de uitvoering](../../azure-monitor/app/monitor-performance-live-website-now.md). Er zijn verschillende Sdk's voor verschillende toepassings typen. Er is ook een [SDK voor webpagina's](../../azure-monitor/app/javascript.md)die in de browser van de eind gebruiker wordt geladen samen met de pagina.
   
-  * Elke SDK heeft een aantal [modules,](../../azure-monitor/app/configuration-with-applicationinsights-config.md)die verschillende technieken gebruiken om verschillende soorten telemetrie te verzamelen.
-  * Als u de SDK in ontwikkeling installeert, u de API gebruiken om uw eigen telemetrie te verzenden, naast de standaardmodules. Deze aangepaste telemetrie kan alle gegevens bevatten die u wilt verzenden.
-* In sommige webservers zijn er ook agenten die naast de app draaien en telemetrie over CPU, geheugen en netwerkbezetting verzenden. Azure VM's, Docker-hosts en [Java EE-servers](../../azure-monitor/app/java-agent.md) kunnen bijvoorbeeld dergelijke agents hebben.
-* [Beschikbaarheidstests](../../azure-monitor/app/monitor-web-app-availability.md) zijn processen die door Microsoft worden uitgevoerd en die regelmatig aanvragen naar uw web-app verzenden. De resultaten worden verzonden naar de Application Insights-service.
+  * Elke SDK heeft een aantal [modules](../../azure-monitor/app/configuration-with-applicationinsights-config.md), die gebruikmaken van verschillende technieken voor het verzamelen van verschillende soorten telemetrie.
+  * Als u de SDK in ontwikkeling installeert, kunt u ook de API gebruiken om uw eigen telemetrie en de standaard modules te verzenden. Deze aangepaste telemetrie kan alle gegevens bevatten die u wilt verzenden.
+* Op sommige webservers zijn er ook agents die naast de app worden uitgevoerd en het verzenden van telemetrie over CPU, geheugen en netwerk bezetting. Zo kunnen Azure-Vm's, docker-hosts en [Java EE-servers](../../azure-monitor/app/java-agent.md) dergelijke agenten hebben.
+* [Beschikbaarheids tests](../../azure-monitor/app/monitor-web-app-availability.md) zijn processen die door micro soft worden uitgevoerd en die op gezette tijden aanvragen verzenden naar uw web-app. De resultaten worden naar de Application Insights-service verzonden.
 
-### <a name="what-kinds-of-data-are-collected"></a>Welke soorten gegevens worden verzameld?
+### <a name="what-kinds-of-data-are-collected"></a>Welke soorten gegevens worden er verzameld?
 De belangrijkste categorieën zijn:
 
-* [Telemetrie van de webserver](../../azure-monitor/app/asp-net.md) - HTTP-aanvragen.  Uri, tijd die nodig is om de aanvraag, antwoordcode, client IP-adres te verwerken. `Session id`.
-* [Webpagina's](../../azure-monitor/app/javascript.md) - Aantal pagina's, gebruikers en sessies. Laadtijden van pagina's. Uitzonderingen. Ajax belt.
-* Prestatiemeteritems - Geheugen, CPU, IO, Netwerkbezetting.
-* Client- en servercontext - OS, locale, apparaattype, browser, schermresolutie.
-* [Uitzonderingen](../../azure-monitor/app/asp-net-exceptions.md) en crashes - `build id` **stack dumps**, , CPU-type. 
-* [Afhankelijkheden](../../azure-monitor/app/asp-net-dependencies.md) - oproepen naar externe services zoals REST, SQL, AJAX. URI of verbindingstekenreeks, duur, succes, opdracht.
-* [Beschikbaarheidstests](../../azure-monitor/app/monitor-web-app-availability.md) - duur van de test en stappen, reacties.
-* [Traceer logboeken](../../azure-monitor/app/asp-net-trace-logs.md) en [aangepaste telemetrie](../../azure-monitor/app/api-custom-events-metrics.md) - **alles wat u codeert in uw logboeken of telemetrie.**
+* [Telemetrie van webserver](../../azure-monitor/app/asp-net.md) -HTTP-aanvragen.  URI, de tijd die nodig is om de aanvraag, de antwoord code, het IP-adres van de client te verwerken. `Session id`.
+* [Webpagina's-pagina](../../azure-monitor/app/javascript.md) -, gebruikers-en sessie aantallen. Laad tijden van pagina's. Uitzonderingen. Ajax-aanroepen.
+* Prestatie meter items-geheugen, CPU, IO, netwerk bezetting.
+* Client-en server context: besturings systeem, land instelling, apparaattype, browser, scherm resolutie.
+* [Uitzonde ringen](../../azure-monitor/app/asp-net-exceptions.md) en crash- **stack dumps**, `build id`, CPU-type. 
+* [Afhankelijkheden](../../azure-monitor/app/asp-net-dependencies.md) : aanroepen naar externe services, zoals rest, SQL, Ajax. URI of connection string, duur, geslaagd, opdracht.
+* [Beschikbaarheids tests](../../azure-monitor/app/monitor-web-app-availability.md) : duur van testen en stappen, reacties.
+* [Traceer logboeken](../../azure-monitor/app/asp-net-trace-logs.md) en [aangepaste telemetrie](../../azure-monitor/app/api-custom-events-metrics.md) - **Alles wat u in uw logboeken of telemetrie codeeert**.
 
 [Meer details](#data-sent-by-application-insights).
 
 ## <a name="how-can-i-verify-whats-being-collected"></a>Hoe kan ik controleren wat er wordt verzameld?
-Als u de app ontwikkelt met Visual Studio, voert u de app uit in de foutopsporingsmodus (F5). De telemetrie wordt weergegeven in het venster Uitvoer. Vanaf daar u het kopiëren en opmaken als JSON voor eenvoudige inspectie. 
+Als u de App ontwikkelt met behulp van Visual Studio, voert u de app uit in de foutopsporingsmodus (F5). De telemetrie wordt weer gegeven in het uitvoer venster. Daar kunt u het kopiëren en opmaken als JSON voor eenvoudige inspectie. 
 
 ![](./media/data-retention-privacy/06-vs.png)
 
-Er is ook een meer leesbare weergave in het venster Diagnostische gegevens.
+Er is ook een meer Lees bare weer gave in het venster Diagnostiek.
 
-Open het foutopsporingsvenster van uw browser voor webpagina's.
+Open het venster fout opsporing van uw browser voor webpagina's.
 
-![Druk op F12 en open het tabblad Netwerk.](./media/data-retention-privacy/08-browser.png)
+![Druk op F12 en open het tabblad netwerk.](./media/data-retention-privacy/08-browser.png)
 
 ### <a name="can-i-write-code-to-filter-the-telemetry-before-it-is-sent"></a>Kan ik code schrijven om de telemetrie te filteren voordat deze wordt verzonden?
-Dit zou mogelijk zijn door het schrijven van een [telemetrie processor plugin](../../azure-monitor/app/api-filtering-sampling.md).
+Dit zou mogelijk kunnen zijn door een [telemetrie-processor-invoeg toepassing](../../azure-monitor/app/api-filtering-sampling.md)te schrijven.
 
 ## <a name="how-long-is-the-data-kept"></a>Hoe lang worden de gegevens bewaard?
-Ruwe gegevenspunten (dat wil zeggen items die u opvragen in Analytics en inspecteren in Search) worden maximaal 730 dagen bewaard. U [een bewaarduur van](https://docs.microsoft.com/azure/azure-monitor/app/pricing#change-the-data-retention-period) 30, 60, 90, 120, 180, 270, 365, 550 of 730 dagen selecteren. Als u gegevens langer dan 730 dagen moet bewaren, u [Continuous Export](../../azure-monitor/app/export-telemetry.md) gebruiken om deze tijdens het innemen van gegevens naar een opslagaccount te kopiëren. 
+Onbewerkte gegevens punten (dat wil zeggen, items die u in analyses kunt opvragen en zoeken in zoek acties) worden Maxi maal 730 dagen bewaard. U kunt [een Bewaar periode](https://docs.microsoft.com/azure/azure-monitor/app/pricing#change-the-data-retention-period) van 30, 60, 90, 120, 180, 270, 365, 550 of 730 dagen selecteren. Als u gegevens langer dan 730 dagen wilt bewaren, kunt u [doorlopend exporteren](../../azure-monitor/app/export-telemetry.md) gebruiken om deze naar een opslag account te kopiëren tijdens de gegevens opname. 
 
-Gegevens die langer dan 90 dagen worden bewaard, worden extra kosten in rekening gebracht. Meer informatie over de prijzen van Application Insights vindt u op de [prijspagina van Azure Monitor](https://azure.microsoft.com/pricing/details/monitor/).
+Als er meer dan 90 dagen gegevens worden bewaard, worden er extra kosten in rekening gebracht. Meer informatie over Application Insights prijzen vindt u op de [pagina met Azure monitor prijzen](https://azure.microsoft.com/pricing/details/monitor/).
 
-Geaggregeerde gegevens (dat wil zeggen, tellingen, gemiddelden en andere statistische gegevens die u ziet in Metric Explorer) worden gedurende 90 dagen op een korrel van 1 minuut bewaard.
+Samengevoegde gegevens (dat wil zeggen, aantallen, gemiddelden en andere statistische gegevens die u ziet in metrische Explorer) worden gedurende 90 dagen in een korrel van 1 minuut bewaard.
 
-[Foutopsporingsmomentopnamen](../../azure-monitor/app/snapshot-debugger.md) worden 15 dagen bewaard. Dit bewaarbeleid wordt per toepassing vastgesteld. Als u deze waarde wilt verhogen, u een verhoging aanvragen door een ondersteuningsaanvraag te openen in de Azure-portal.
+[Debug-moment opnamen](../../azure-monitor/app/snapshot-debugger.md) worden 15 dagen bewaard. Dit Bewaar beleid is ingesteld op basis van elke toepassing. Als u deze waarde wilt verhogen, kunt u een verhoging aanvragen door een ondersteunings aanvraag te openen in de Azure Portal.
 
 ## <a name="who-can-access-the-data"></a>Wie heeft er toegang tot de gegevens?
-De gegevens zijn zichtbaar voor u en, als u een organisatieaccount hebt, uw teamleden. 
+De gegevens zijn zichtbaar voor u en, als u een organisatie account hebt, uw team leden. 
 
-Het kan worden geëxporteerd door u en uw teamleden en kan worden gekopieerd naar andere locaties en doorgegeven aan andere mensen.
+Deze kan door u en uw team leden worden geëxporteerd en kunnen worden gekopieerd naar andere locaties en worden door gegeven aan andere personen.
 
-#### <a name="what-does-microsoft-do-with-the-information-my-app-sends-to-application-insights"></a>Wat doet Microsoft met de informatie die mijn app naar Application Insights stuurt?
-Microsoft gebruikt de gegevens alleen om de service aan u te leveren.
+#### <a name="what-does-microsoft-do-with-the-information-my-app-sends-to-application-insights"></a>Wat doet micro soft met de informatie die mijn app naar Application Insights stuurt?
+Micro soft gebruikt de gegevens alleen om de service voor u te leveren.
 
-## <a name="where-is-the-data-held"></a>Waar worden de gegevens bewaard?
-* U de locatie selecteren wanneer u een nieuwe Application Insights-bron maakt. Hier vindt u meer informatie over de beschikbaarheid van Application Insights per [regio.](https://azure.microsoft.com/global-infrastructure/services/?products=all)
+## <a name="where-is-the-data-held"></a>Waar bevinden de gegevens zich?
+* U kunt de locatie selecteren wanneer u een nieuwe Application Insights resource maakt. Meer informatie over de beschik baarheid van Application Insights per regio [vindt u hier](https://azure.microsoft.com/global-infrastructure/services/?products=all).
 
 #### <a name="does-that-mean-my-app-has-to-be-hosted-in-the-usa-europe-or-southeast-asia"></a>Betekent dit dat mijn app moet worden gehost in de VS, Europa of Zuidoost-Azië?
-* Nee. Uw toepassing kan overal worden uitgevoerd, in uw eigen on-premises hosts of in de cloud.
+* Nee. Uw toepassing kan overal worden uitgevoerd, hetzij in uw eigen on-premises hosts of in de Cloud.
 
 ## <a name="how-secure-is-my-data"></a>Hoe veilig zijn mijn gegevens?
-Application Insights is een Azure-service. Beveiligingsbeleid wordt beschreven in de [whitepaper Azure Security, Privacy en Compliance.](https://go.microsoft.com/fwlink/?linkid=392408)
+Application Insights is een Azure-service. Beveiligings beleid wordt beschreven in het [technische document over beveiliging, privacy en naleving van Azure](https://go.microsoft.com/fwlink/?linkid=392408).
 
-De gegevens worden opgeslagen in Microsoft Azure-servers. Voor accounts in de Azure-portal worden accountbeperkingen beschreven in het [document Azure Security, Privacy en Compliance.](https://go.microsoft.com/fwlink/?linkid=392408)
+De gegevens worden opgeslagen in Microsoft Azure-servers. Voor accounts in de Azure Portal worden account beperkingen beschreven in het [document Azure Security, privacy en naleving](https://go.microsoft.com/fwlink/?linkid=392408).
 
-De toegang van Microsoft-personeel tot uw gegevens is beperkt. Wij hebben alleen toegang tot uw gegevens met uw toestemming en als dit nodig is om uw gebruik van Application Insights te ondersteunen. 
+Toegang tot uw gegevens door mede werkers van micro soft is beperkt. We hebben alleen toegang tot uw gegevens met uw toestemming en als dit nodig is voor de ondersteuning van uw gebruik van Application Insights. 
 
-Gegevens in totaal voor alle toepassingen van onze klanten (zoals gegevenssnelheden en gemiddelde grootte van traces) worden gebruikt om Application Insights te verbeteren.
+Gegevens in de samen voeging van alle klanten toepassingen (zoals de gegevens tarieven en de gemiddelde grootte van traceringen) worden gebruikt om Application Insights te verbeteren.
 
-#### <a name="could-someone-elses-telemetry-interfere-with-my-application-insights-data"></a>Kan de telemetrie van iemand anders mijn Application Insights-gegevens verstoren?
-Ze kunnen extra telemetrie naar uw account sturen met behulp van de instrumentatiesleutel, die kan worden gevonden in de code van uw webpagina's. Met voldoende extra gegevens geven uw statistieken de prestaties en het gebruik van uw app niet correct weer.
+#### <a name="could-someone-elses-telemetry-interfere-with-my-application-insights-data"></a>Kan het telemetrie van iemand anders leiden tot mijn Application Insights gegevens?
+Ze kunnen extra telemetrie naar uw account verzenden met behulp van de instrumentatie sleutel, die u kunt vinden in de code van uw webpagina's. Met voldoende extra gegevens worden de prestaties en het gebruik van uw app niet correct weer gegeven.
 
-Als u code deelt met andere projecten, vergeet dan niet om uw instrumentatiesleutel te verwijderen.
+Als u code deelt met andere projecten, vergeet dan niet om uw instrumentatie sleutel te verwijderen.
 
 ## <a name="is-the-data-encrypted"></a>Zijn de gegevens versleuteld?
-Alle gegevens worden in rust versleuteld en verplaatst zich tussen datacenters.
+Alle gegevens worden versleuteld in rust en tijdens het verplaatsen tussen data centers.
 
-#### <a name="is-the-data-encrypted-in-transit-from-my-application-to-application-insights-servers"></a>Worden de gegevens versleuteld tijdens het transport van mijn toepassing naar Application Insights-servers?
-Ja, we gebruiken https om gegevens naar de portal te verzenden vanaf bijna alle SDK's, inclusief webservers, apparaten en HTTPS-webpagina's. 
+#### <a name="is-the-data-encrypted-in-transit-from-my-application-to-application-insights-servers"></a>Worden de gegevens versleuteld tijdens de overdracht van mijn toepassing naar Application Insights servers?
+Ja, we gebruiken https om gegevens te verzenden naar de portal vanaf bijna alle Sdk's, inclusief webservers, apparaten en HTTPS-webpagina's. 
 
 ## <a name="does-the-sdk-create-temporary-local-storage"></a>Maakt de SDK tijdelijke lokale opslag?
 
-Ja, bepaalde telemetriekanalen blijven lokaal gegevens bevatten als een eindpunt niet kan worden bereikt. Bekijk hieronder welke frameworks en telemetriekanalen worden beïnvloed.
+Ja, bepaalde telemetrie-kanalen blijven gegevens lokaal behouden als een eind punt niet kan worden bereikt. Raadpleeg hieronder om te zien welke frameworks en telemetrie-kanalen worden beïnvloed.
 
-Telemetriekanalen die gebruik maken van lokale opslag maken tijdelijke bestanden in de TEMP- of APPDATA-mappen, die beperkt zijn tot het specifieke account waarop uw toepassing wordt uitgevoerd. Dit kan gebeuren wanneer een eindpunt tijdelijk niet beschikbaar was of wanneer u de beperkingslimiet hebt bereikt. Zodra dit probleem is opgelost, wordt het telemetriekanaal hervat met het verzenden van alle nieuwe en aanhoudende gegevens.
+Met telemetrie-kanalen die gebruikmaken van lokale opslag, worden tijdelijke bestanden in de map TEMP of APPDATA gemaakt. deze zijn beperkt tot het specifieke account dat uw toepassing uitvoert. Dit kan gebeuren wanneer een eind punt tijdelijk niet beschikbaar is of als u de beperkings limiet bereikt. Zodra dit probleem is opgelost, wordt het verzenden van alle nieuwe en permanente gegevens hervat met het telemetrie-kanaal.
 
-Deze aanhoudende gegevens worden niet lokaal versleuteld. Als dit een probleem is, bekijkt u de gegevens en beperkt u het verzamelen van privégegevens. (Zie [Privégegevens exporteren en verwijderen](https://docs.microsoft.com/azure/application-insights/app-insights-customer-data#how-to-export-and-delete-private-data)voor meer informatie .)
+Deze persistente gegevens worden niet lokaal versleuteld. Als dit een probleem is, controleert u de gegevens en beperkt u het verzamelen van persoonlijke gegevens. (Zie [persoonlijke gegevens exporteren en verwijderen](https://docs.microsoft.com/azure/application-insights/app-insights-customer-data#how-to-export-and-delete-private-data)voor meer informatie.)
 
-Als een klant deze map moet configureren met specifieke beveiligingsvereisten, kan deze per framework worden geconfigureerd. Zorg ervoor dat het proces waarin uw toepassing wordt uitgevoerd, schrijftoegang heeft tot deze map, maar zorg er ook voor dat deze map is beveiligd om te voorkomen dat telemetrie wordt gelezen door onbedoelde gebruikers.
+Als een klant deze map moet configureren met specifieke beveiligings vereisten, kan deze per Framework worden geconfigureerd. Zorg ervoor dat het proces dat uw toepassing uitvoert, schrijf toegang heeft tot deze map, maar zorg er ook voor dat deze map wordt beveiligd om te voor komen dat telemetrie door onbedoelde gebruikers wordt gelezen.
 
 ### <a name="java"></a>Java
 
-`C:\Users\username\AppData\Local\Temp`wordt gebruikt voor aanhoudende gegevens. Deze locatie is niet configureerbaar vanuit de config-map en de machtigingen voor toegang tot deze map zijn beperkt tot de specifieke gebruiker met vereiste referenties. (Zie [implementatie](https://github.com/Microsoft/ApplicationInsights-Java/blob/40809cb6857231e572309a5901e1227305c27c1a/core/src/main/java/com/microsoft/applicationinsights/internal/util/LocalFileSystemUtils.java#L48-L72)voor meer informatie .)
+`C:\Users\username\AppData\Local\Temp`wordt gebruikt voor het persistent maken van gegevens. Deze locatie kan niet vanuit de map config worden geconfigureerd en de machtigingen voor toegang tot deze map zijn beperkt tot de specifieke gebruiker met de vereiste referenties. (Zie [implementatie](https://github.com/Microsoft/ApplicationInsights-Java/blob/40809cb6857231e572309a5901e1227305c27c1a/core/src/main/java/com/microsoft/applicationinsights/internal/util/LocalFileSystemUtils.java#L48-L72)voor meer informatie.)
 
 ###  <a name="net"></a>.Net
 
-`ServerTelemetryChannel` Standaard gebruikt u de lokale app-gegevensmap `%localAppData%\Microsoft\ApplicationInsights` of tijdelijke tijdelijke map `%TMP%`van de huidige gebruiker. (Zie [implementatie](https://github.com/Microsoft/ApplicationInsights-dotnet/blob/91e9c91fcea979b1eec4e31ba8e0fc683bf86802/src/ServerTelemetryChannel/Implementation/ApplicationFolderProvider.cs#L54-L84) hier.)
+Maakt standaard `ServerTelemetryChannel` gebruik van de map `%localAppData%\Microsoft\ApplicationInsights` lokale app-gegevens van de huidige gebruiker `%TMP%`of de map Temp. (Zie hier [implementatie](https://github.com/Microsoft/ApplicationInsights-dotnet/blob/91e9c91fcea979b1eec4e31ba8e0fc683bf86802/src/ServerTelemetryChannel/Implementation/ApplicationFolderProvider.cs#L54-L84) .)
 
 
-Via configuratiebestand:
+Via het configuratie bestand:
 ```xml
 <TelemetryChannel Type="Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.ServerTelemetryChannel,   Microsoft.AI.ServerTelemetryChannel">
     <StorageFolder>D:\NewTestFolder</StorageFolder>
@@ -144,7 +144,7 @@ Via configuratiebestand:
 
 Via code:
 
-- ServerTelemetryChannel verwijderen uit configuratiebestand
+- ServerTelemetryChannel uit het configuratie bestand verwijderen
 - Voeg dit fragment toe aan uw configuratie:
   ```csharp
   ServerTelemetryChannel channel = new ServerTelemetryChannel();
@@ -153,35 +153,35 @@ Via code:
   TelemetryConfiguration.Active.TelemetryChannel = channel;
   ```
 
-### <a name="netcore"></a>NetCore (NetCore)
+### <a name="netcore"></a>NetCore
 
-`ServerTelemetryChannel` Standaard gebruikt u de lokale app-gegevensmap `%localAppData%\Microsoft\ApplicationInsights` of tijdelijke tijdelijke map `%TMP%`van de huidige gebruiker. (Zie [implementatie](https://github.com/Microsoft/ApplicationInsights-dotnet/blob/91e9c91fcea979b1eec4e31ba8e0fc683bf86802/src/ServerTelemetryChannel/Implementation/ApplicationFolderProvider.cs#L54-L84) hier.) In een Linux-omgeving wordt lokale opslag uitgeschakeld, tenzij een opslagmap is opgegeven.
+Maakt standaard `ServerTelemetryChannel` gebruik van de map `%localAppData%\Microsoft\ApplicationInsights` lokale app-gegevens van de huidige gebruiker `%TMP%`of de map Temp. (Zie hier [implementatie](https://github.com/Microsoft/ApplicationInsights-dotnet/blob/91e9c91fcea979b1eec4e31ba8e0fc683bf86802/src/ServerTelemetryChannel/Implementation/ApplicationFolderProvider.cs#L54-L84) .) In een Linux-omgeving wordt lokale opslag uitgeschakeld, tenzij er een opslagmap is opgegeven.
 
-In het volgende codefragment `ServerTelemetryChannel.StorageFolder` ziet `ConfigureServices()` u `Startup.cs` hoe u deze instelt in de methode van uw klasse:
+Het volgende code fragment laat zien hoe u `ServerTelemetryChannel.StorageFolder` kunt instellen `ConfigureServices()` in de methode `Startup.cs` van uw klasse:
 
 ```csharp
 services.AddSingleton(typeof(ITelemetryChannel), new ServerTelemetryChannel () {StorageFolder = "/tmp/myfolder"});
 ```
 
-(Zie [Aangepaste configuratie van AspNetCore](https://github.com/Microsoft/ApplicationInsights-aspnetcore/wiki/Custom-Configuration)voor meer informatie .)
+(Zie [aangepaste configuratie voor AspNetCore](https://github.com/Microsoft/ApplicationInsights-aspnetcore/wiki/Custom-Configuration)voor meer informatie.)
 
 ### <a name="nodejs"></a>Node.js
 
-Standaard `%TEMP%/appInsights-node{INSTRUMENTATION KEY}` wordt gebruikt voor het aanhouden van gegevens. Machtigingen voor toegang tot deze map zijn beperkt tot de huidige gebruiker en beheerders. (Zie [implementatie](https://github.com/Microsoft/ApplicationInsights-node.js/blob/develop/Library/Sender.ts) hier.)
+Wordt standaard `%TEMP%/appInsights-node{INSTRUMENTATION KEY}` gebruikt voor het persistent maken van gegevens. Machtigingen voor toegang tot deze map zijn beperkt tot de huidige gebruiker en beheerders. (Zie hier [implementatie](https://github.com/Microsoft/ApplicationInsights-node.js/blob/develop/Library/Sender.ts) .)
 
-Het voorvoegsel van de `appInsights-node` map kan worden overschreven `Sender.TEMPDIR_PREFIX` door de runtime-waarde van de statische variabele in [Sender.ts](https://github.com/Microsoft/ApplicationInsights-node.js/blob/7a1ecb91da5ea0febf5ceab13d6a4bf01a63933d/Library/Sender.ts#L384)te wijzigen.
+Het voor voegsel `appInsights-node` van de map kan worden overschreven door de runtime-waarde van `Sender.TEMPDIR_PREFIX` de statische variabele in [Sender. TS](https://github.com/Microsoft/ApplicationInsights-node.js/blob/7a1ecb91da5ea0febf5ceab13d6a4bf01a63933d/Library/Sender.ts#L384)te wijzigen.
 
-### <a name="javascript-browser"></a>JavaScript (browser)
+### <a name="javascript-browser"></a>Java script (browser)
 
-[HTML5-sessieopslag](https://developer.mozilla.org/en-US/docs/Web/API/Window/sessionStorage) wordt gebruikt om gegevens voort te zetten. Er worden twee afzonderlijke `AI_buffer` `AI_sent_buffer`buffers gebruikt: en . Telemetrie die wordt gebatched en `AI_buffer`wacht om te worden verzonden, wordt opgeslagen in . Telemetrie die net is `AI_sent_buffer` verzonden, wordt geplaatst totdat de opnameserver reageert dat deze met succes is ontvangen. Wanneer telemetrie is ontvangen, wordt deze uit alle buffers verwijderd. Bij tijdelijke fouten (bijvoorbeeld verliest een gebruiker netwerkconnectiviteit), `AI_buffer` blijft telemetrie binnen totdat deze is ontvangen of de opnameserver reageert dat de telemetrie ongeldig is (slecht schema of te oud, bijvoorbeeld).
+[HTML5-sessie opslag](https://developer.mozilla.org/en-US/docs/Web/API/Window/sessionStorage) wordt gebruikt om gegevens op te slaan. Er worden twee afzonderlijke buffers gebruikt `AI_buffer` : `AI_sent_buffer`en. Telemetrie die is gebatcheerd en wacht op verzen ding `AI_buffer`, wordt opgeslagen in. De telemetrie die zojuist is verzonden, `AI_sent_buffer` wordt geplaatst totdat de opname server reageert dat deze is ontvangen. Wanneer de telemetrie is ontvangen, wordt deze verwijderd uit alle buffers. Bij tijdelijke fouten (bijvoorbeeld `AI_buffer` wanneer een gebruiker verbinding met het netwerk heeft verbroken), blijft de telemetrie actief totdat deze is ontvangen of reageert de opname server dat de telemetrie ongeldig is (bijvoorbeeld een onjuist schema of te oud).
 
-Telemetriebuffers kunnen worden [`enableSessionStorageBuffer`](https://github.com/microsoft/ApplicationInsights-JS/blob/17ef50442f73fd02a758fbd74134933d92607ecf/legacy/JavaScript/JavaScriptSDK.Interfaces/IConfig.ts#L31) uitgeschakeld `false`door in te stellen op . Wanneer sessieopslag is uitgeschakeld, wordt een lokale array in plaats daarvan gebruikt als permanente opslag. Omdat de JavaScript SDK op een clientapparaat wordt uitgevoerd, heeft de gebruiker toegang tot deze opslaglocatie via de ontwikkelaarstools van zijn browser.
+U kunt telemetrie buffers uitschakelen door [`enableSessionStorageBuffer`](https://github.com/microsoft/ApplicationInsights-JS/blob/17ef50442f73fd02a758fbd74134933d92607ecf/legacy/JavaScript/JavaScriptSDK.Interfaces/IConfig.ts#L31) in `false`te stellen op. Wanneer sessie opslag is uitgeschakeld, wordt in plaats daarvan een lokale matrix gebruikt als permanente opslag. Omdat de Java script-SDK op een client apparaat wordt uitgevoerd, heeft de gebruiker toegang tot deze opslag locatie via de ontwikkel hulpprogramma's van de browser.
 
-### <a name="opencensus-python"></a>OpenCensus Python
+### <a name="opencensus-python"></a>Opentellingen python
 
-OpenCensus Python SDK gebruikt standaard `%username%/.opencensus/.azure/`de huidige gebruikersmap . Machtigingen voor toegang tot deze map zijn beperkt tot de huidige gebruiker en beheerders. (Zie [implementatie](https://github.com/census-instrumentation/opencensus-python/blob/master/contrib/opencensus-ext-azure/opencensus/ext/azure/common/storage.py) hier.) De map met uw uitgebreide gegevens wordt vernoemd naar het Python-bestand dat de telemetrie heeft gegenereerd.
+Standaard gebruikt de python-SDK voor opentellingen de `%username%/.opencensus/.azure/`huidige map gebruiker. Machtigingen voor toegang tot deze map zijn beperkt tot de huidige gebruiker en beheerders. (Zie hier [implementatie](https://github.com/census-instrumentation/opencensus-python/blob/master/contrib/opencensus-ext-azure/opencensus/ext/azure/common/storage.py) .) De map met de persistente gegevens krijgt de naam na het python-bestand dat de telemetrie heeft gegenereerd.
 
-U de locatie van uw opslagbestand wijzigen door de parameter in de `storage_path` constructor van de exporteur die u gebruikt in te voeren.
+U kunt de locatie van uw opslag bestand wijzigen door door te geven `storage_path` in de-para meter in de constructor van de export functie die u gebruikt.
 
 ```python
 AzureLogHandler(
@@ -190,106 +190,106 @@ AzureLogHandler(
 )
 ```
 
-## <a name="how-do-i-send-data-to-application-insights-using-tls-12"></a>Hoe stuur ik gegevens naar Application Insights met TLS 1.2?
+## <a name="how-do-i-send-data-to-application-insights-using-tls-12"></a>Hoe kan ik gegevens naar Application Insights verzenden met behulp van TLS 1,2?
 
-Om de beveiliging van gegevens die onderweg zijn naar de Application Insights-eindpunten te verzekeren, raden we klanten ten zeerste aan om hun toepassing te configureren om ten minste TLS(1.2) te gebruiken. Oudere versies van TLS/Secure Sockets Layer (SSL) zijn kwetsbaar bevonden en hoewel ze momenteel nog werken om achterwaartse compatibiliteit mogelijk te maken, worden ze **niet aanbevolen**en de industrie gaat snel over om de ondersteuning voor deze oudere protocollen op te geven. 
+Om ervoor te zorgen dat de beveiliging van gegevens die onderweg zijn naar de eind punten van de Application Insights, raden we klanten ten zeerste aan om hun toepassing te configureren voor het gebruik van ten minste Transport Layer Security (TLS) 1,2. Oudere versies van TLS/Secure Sockets Layer (SSL) zijn kwetsbaar voor aanvallen en terwijl ze nog steeds werken om achterwaartse compatibiliteit mogelijk te maken, worden ze **niet aanbevolen**en wordt de branche snel verplaatst om ondersteuning voor deze oudere protocollen te annuleren. 
 
-De [PCI Security Standards Council](https://www.pcisecuritystandards.org/) heeft een deadline van [30 juni 2018](https://www.pcisecuritystandards.org/pdfs/PCI_SSC_Migrating_from_SSL_and_Early_TLS_Resource_Guide.pdf) ingesteld om oudere versies van TLS/SSL uit te schakelen en te upgraden naar veiligere protocollen. Als Azure de legacy-ondersteuning heeft laten vallen, u gegevens niet meer verzenden naar Application Insights als uw toepassing/clients niet meer via TLS 1.2 kunnen communiceren. De aanpak die u volgt om de TLS-ondersteuning van uw toepassing te testen en te valideren, is afhankelijk van het besturingssysteem/platform en de taal/framework die uw toepassing gebruikt.
+De [PCI Security Standards Council](https://www.pcisecuritystandards.org/) heeft een [deadline ingesteld van 30 juni 2018](https://www.pcisecuritystandards.org/pdfs/PCI_SSC_Migrating_from_SSL_and_Early_TLS_Resource_Guide.pdf) om oudere versies van TLS/SSL uit te scha kelen en te upgraden naar meer beveiligde protocollen. Als de ondersteuning voor Azure is verbroken, kunt u, als uw toepassing/clients geen communicatie meer over ten minste TLS 1,2, gegevens verzenden naar Application Insights. De aanpak die u moet nemen om de TLS-ondersteuning van uw toepassing te testen en te valideren, varieert afhankelijk van het besturings systeem/platform en de taal/het Framework dat door uw toepassing wordt gebruikt.
 
-We raden u niet aan uw toepassing expliciet in te stellen om TLS 1.2 alleen te gebruiken, tenzij dit noodzakelijk is, omdat dit beveiligingsfuncties op platformniveau kan verbreken waarmee u automatisch nieuwere, veiligere protocollen detecteren en gebruiken wanneer deze beschikbaar zijn, zoals TLS 1.3. We raden u aan een grondige audit van de code van uw toepassing uit te voeren om te controleren op harde codering van specifieke TLS/SSL-versies.
+Het wordt niet aanbevolen om uw toepassing expliciet in te stellen voor gebruik van TLS 1,2, tenzij dit nodig is, omdat dit de beveiligings functies op platform niveau kan verstoren, waarmee u nieuwe, beveiligde protocollen automatisch kunt detecteren en gebruiken wanneer deze beschikbaar zijn, zoals TLS 1,3. We raden u aan om de code van uw toepassing grondig te controleren en te controleren op hardcoding van specifieke TLS/SSL-versies.
 
-### <a name="platformlanguage-specific-guidance"></a>Platform/Taalspecifieke richtlijnen
+### <a name="platformlanguage-specific-guidance"></a>Specifieke richt lijnen voor platforms en talen
 
-|Platform/Taal | Ondersteuning | Meer informatie |
+|Platform/taal | Ondersteuning | Meer informatie |
 | --- | --- | --- |
-| Azure App Services  | Ondersteund, configuratie kan nodig zijn. | Ondersteuning werd aangekondigd in april 2018. Lees de aankondiging voor [configuratiedetails.](https://blogs.msdn.microsoft.com/appserviceteam/2018/04/17/app-service-and-functions-hosted-apps-can-now-update-tls-versions/)  |
-| Azure Function-apps | Ondersteund, configuratie kan nodig zijn. | Ondersteuning werd aangekondigd in april 2018. Lees de aankondiging voor [configuratiedetails.](https://blogs.msdn.microsoft.com/appserviceteam/2018/04/17/app-service-and-functions-hosted-apps-can-now-update-tls-versions/) |
-|.NET | Ondersteund, configuratie varieert per versie. | Raadpleeg [deze instructies](https://docs.microsoft.com/dotnet/framework/network-programming/tls#support-for-tls-12)voor gedetailleerde configuratiegegevens voor .NET 4.7 en eerdere versies.  |
-|Status Monitor | Ondersteund, configuratie vereist | Statusmonitor is afhankelijk van [OS Configuration](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings) + [.NET Configuration](https://docs.microsoft.com/dotnet/framework/network-programming/tls#support-for-tls-12) ter ondersteuning van TLS 1.2.
-|Node.js |  Ondersteund in v10.5.0 kan configuratie vereist zijn. | Gebruik de [officiële Node.js TLS/SSL-documentatie](https://nodejs.org/api/tls.html) voor elke toepassingsspecifieke configuratie. |
-|Java | Ondersteund, JDK-ondersteuning voor TLS 1.2 werd toegevoegd in [JDK 6 update 121](https://www.oracle.com/technetwork/java/javase/overview-156328.html#R160_121) en [JDK 7](https://www.oracle.com/technetwork/java/javase/7u131-relnotes-3338543.html). | JDK 8 maakt standaard gebruik van [TLS 1.2.](https://blogs.oracle.com/java-platform-group/jdk-8-will-use-tls-12-as-default)  |
-|Linux | Linux-distributies zijn meestal afhankelijk van [OpenSSL](https://www.openssl.org) voor TLS 1.2-ondersteuning.  | Controleer de [OpenSSL Changelog](https://www.openssl.org/news/changelog.html) om te bevestigen dat uw versie van OpenSSL wordt ondersteund.|
-| Windows 8.0 - 10 | Standaard ondersteund en ingeschakeld. | Om te bevestigen dat u nog steeds de [standaardinstellingen gebruikt.](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings)  |
-| Windows Server 2012 - 2016 | Standaard ondersteund en ingeschakeld. | Om te bevestigen dat u nog steeds de [standaardinstellingen gebruikt](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings) |
-| Windows 7 SP1 en Windows Server 2008 R2 SP1 | Ondersteund, maar standaard niet ingeschakeld. | Zie de [registerinstellingenpagina (Transport Layer Security)](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings) voor meer informatie over het inschakelen.  |
-| Windows Server 2008 SP2 | Ondersteuning voor TLS 1.2 vereist een update. | Zie [Bijwerken om ondersteuning voor TLS 1.2 toe te voegen](https://support.microsoft.com/help/4019276/update-to-add-support-for-tls-1-1-and-tls-1-2-in-windows-server-2008-s) in Windows Server 2008 SP2. |
+| Azure App Services  | Wordt ondersteund. de configuratie is mogelijk vereist. | Ondersteuning werd aangekondigd in april 2018. Lees de aankondiging voor [meer informatie](https://blogs.msdn.microsoft.com/appserviceteam/2018/04/17/app-service-and-functions-hosted-apps-can-now-update-tls-versions/)over de configuratie.  |
+| Azure Function-apps | Wordt ondersteund. de configuratie is mogelijk vereist. | Ondersteuning werd aangekondigd in april 2018. Lees de aankondiging voor [meer informatie](https://blogs.msdn.microsoft.com/appserviceteam/2018/04/17/app-service-and-functions-hosted-apps-can-now-update-tls-versions/)over de configuratie. |
+|.NET | Ondersteund, de configuratie is afhankelijk van versie. | Raadpleeg [deze instructies](https://docs.microsoft.com/dotnet/framework/network-programming/tls#support-for-tls-12)voor gedetailleerde informatie over de configuratie van .net 4,7 en eerdere versies.  |
+|Status Monitor | Ondersteund, configuratie vereist | Status monitor is afhankelijk van de[configuratie](https://docs.microsoft.com/dotnet/framework/network-programming/tls#support-for-tls-12) van de [besturingssysteem configuratie](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings) + voor de ondersteuning van TLS 1,2.
+|Node.js |  In v 10.5.0 is configuratie mogelijk vereist. | Gebruik de [officiële node. js TLS/SSL-documentatie](https://nodejs.org/api/tls.html) voor elke toepassingsspecifieke configuratie. |
+|Java | Ondersteund, JDK-ondersteuning voor TLS 1,2 is toegevoegd in [JDK 6 update 121](https://www.oracle.com/technetwork/java/javase/overview-156328.html#R160_121) en [JDK 7](https://www.oracle.com/technetwork/java/javase/7u131-relnotes-3338543.html). | JDK 8 maakt [standaard gebruik van TLS 1,2](https://blogs.oracle.com/java-platform-group/jdk-8-will-use-tls-12-as-default).  |
+|Linux | Linux-distributies zijn vaak afhankelijk van [openssl](https://www.openssl.org) voor TLS 1,2-ondersteuning.  | Controleer de [openssl wijzigingen logboek](https://www.openssl.org/news/changelog.html) om te bevestigen dat uw versie van openssl wordt ondersteund.|
+| Windows 8,0-10 | Wordt ondersteund en is standaard ingeschakeld. | Om te bevestigen dat u nog steeds de [standaard instellingen](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings)gebruikt.  |
+| Windows Server 2012-2016 | Wordt ondersteund en is standaard ingeschakeld. | Controleren of u nog steeds de [standaard instellingen](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings) gebruikt |
+| Windows 7 SP1 en Windows Server 2008 R2 SP1 | Ondersteund, maar is niet standaard ingeschakeld. | Zie de pagina met [register instellingen voor Transport Layer Security (TLS)](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings) voor meer informatie over het inschakelen van.  |
+| Windows Server 2008 SP2 | Ondersteuning voor TLS 1,2 vereist een update. | Zie [Update voor het toevoegen van ondersteuning voor TLS 1,2](https://support.microsoft.com/help/4019276/update-to-add-support-for-tls-1-1-and-tls-1-2-in-windows-server-2008-s) in Windows Server 2008 SP2. |
 |Windows Vista | Niet ondersteund. | N.v.t.
 
-### <a name="check-what-version-of-openssl-your-linux-distribution-is-running"></a>Controleer welke versie van OpenSSL uw Linux-distributie wordt uitgevoerd
+### <a name="check-what-version-of-openssl-your-linux-distribution-is-running"></a>Controleren welke versie van OpenSSL uw Linux-distributie wordt uitgevoerd
 
-Als u wilt controleren welke versie van OpenSSL u hebt geïnstalleerd, opent u de terminal en voert u het uitvoeren uit:
+Als u wilt controleren welke versie van OpenSSL u hebt geïnstalleerd, opent u de Terminal en voert u het volgende uit:
 
 ```terminal
 openssl version -a
 ```
 
-### <a name="run-a-test-tls-12-transaction-on-linux"></a>Een test TLS 1.2-transactie uitvoeren op Linux
+### <a name="run-a-test-tls-12-transaction-on-linux"></a>Een test-TLS 1,2-trans actie uitvoeren op Linux
 
-Als u een voorlopige test wilt uitvoeren om te zien of uw Linux-systeem via TLS 1.2 kan communiceren, opent u de terminal en draait u:
+Ga als volgt te werk om een voorbereidende test uit te voeren om te controleren of uw Linux-systeem kan communiceren via TLS 1,2., open de Terminal en voer het volgende uit:
 
 ```terminal
 openssl s_client -connect bing.com:443 -tls1_2
 ```
 
-## <a name="personal-data-stored-in-application-insights"></a>Persoonsgegevens opgeslagen in Application Insights
+## <a name="personal-data-stored-in-application-insights"></a>Persoons gegevens die zijn opgeslagen in Application Insights
 
-Ons [artikel over persoonsgegevens van Application Insights](../../azure-monitor/platform/personal-data-mgmt.md) bespreekt dit onderwerp diepgaand.
+In ons [Application Insights persoonlijke gegevens artikel](../../azure-monitor/platform/personal-data-mgmt.md) wordt dit probleem uitvoerig besproken.
 
 #### <a name="can-my-users-turn-off-application-insights"></a>Kunnen mijn gebruikers Application Insights uitschakelen?
-Niet direct. We bieden geen schakelaar die uw gebruikers kunnen gebruiken om Application Insights uit te schakelen.
+Niet rechtstreeks. We bieden geen switch die uw gebruikers kunnen uitvoeren om Application Insights uit te scha kelen.
 
-U een dergelijke functie echter implementeren in uw toepassing. Alle SDK's bevatten een API-instelling die telemetrieverzameling uitschakelt. 
+U kunt een dergelijke functie echter implementeren in uw toepassing. Alle Sdk's bevatten een API-instelling waarmee telemetrie-verzameling wordt uitgeschakeld. 
 
-## <a name="data-sent-by-application-insights"></a>Gegevens verzonden door Application Insights
-De SDK's variëren tussen platforms en er zijn verschillende onderdelen die u installeren. (Raadpleeg [Application Insights - overzicht][start].) Elk onderdeel verzendt verschillende gegevens.
+## <a name="data-sent-by-application-insights"></a>Gegevens die worden verzonden door Application Insights
+De Sdk's verschillen tussen platforms en er zijn verschillende onderdelen die u kunt installeren. (Zie [Application Insights-overzicht][start].) Elk onderdeel verzendt verschillende gegevens.
 
 #### <a name="classes-of-data-sent-in-different-scenarios"></a>Klassen van gegevens die in verschillende scenario's worden verzonden
 
-| Uw actie | Verzamelde gegevensklassen (zie volgende tabel) |
+| Uw actie | Verzamelde gegevens klassen (zie volgende tabel) |
 | --- | --- |
 | [Application Insights SDK toevoegen aan een .NET-webproject][greenbrown] |ServerContext<br/>Afgeleid<br/>Prestatiemeteritems<br/>Aanvragen<br/>**Uitzonderingen**<br/>Sessie<br/>gebruikers |
-| [Statusmonitor installeren op IIS][redfield] |Afhankelijkheden<br/>ServerContext<br/>Afgeleid<br/>Prestatiemeteritems |
-| [Application Insights SDK toevoegen aan een Java-web-app][java] |ServerContext<br/>Afgeleid<br/>Aanvraag<br/>Sessie<br/>gebruikers |
-| [JavaScript SDK toevoegen aan webpagina][client] |ClientContext <br/>Afgeleid<br/>Pagina<br/>ClientPerf<br/>Ajax |
-| [Standaardeigenschappen definiëren][apiproperties] |**Eigenschappen** op alle standaard- en aangepaste gebeurtenissen |
-| [Trackmetric bellen][api] |Numerieke waarden<br/>**Eigenschappen** |
-| [Oproeptrack*][api] |Gebeurtenisnaam<br/>**Eigenschappen** |
-| [TrackException bellen][api] |**Uitzonderingen**<br/>Stapeldump<br/>**Eigenschappen** |
-| SDK kan geen gegevens verzamelen. Bijvoorbeeld: <br/> - heeft geen toegang tot perf-tellers<br/> - uitzondering in telemetrieinitialisator |SDK diagnostiek |
+| [Status Monitor installeren op IIS][redfield] |Afhankelijkheden<br/>ServerContext<br/>Afgeleid<br/>Prestatiemeteritems |
+| [Application Insights SDK toevoegen aan een Java-Web-app][java] |ServerContext<br/>Afgeleid<br/>Aanvraag<br/>Sessie<br/>gebruikers |
+| [Java script-SDK toevoegen aan de webpagina][client] |ClientContext <br/>Afgeleid<br/>Pagina<br/>ClientPerf<br/>Ajax |
+| [Standaard eigenschappen definiëren][apiproperties] |**Eigenschappen** voor alle standaard-en aangepaste gebeurtenissen |
+| [TrackMetric aanroepen][api] |Numerieke waarden<br/>**Eigenschappen** |
+| [Nummer van oproep *][api] |Gebeurtenis naam<br/>**Eigenschappen** |
+| [TrackException aanroepen][api] |**Uitzonderingen**<br/>Stack dump<br/>**Eigenschappen** |
+| Er kunnen geen gegevens worden verzameld met de SDK. Bijvoorbeeld: <br/> -geen toegang tot prestatie meter items<br/> -uitzonde ring in de initialisatie functie voor telemetrie |SDK-diagnose |
 
-Voor [SDKs voor andere platforms,][platforms]zie hun documenten.
+Voor [sdk's voor andere platforms][platforms]raadpleegt u hun documenten.
 
 #### <a name="the-classes-of-collected-data"></a>De klassen van verzamelde gegevens
 
-| Klasse Verzamelde gegevens | Inclusief (geen volledige lijst) |
+| Klasse verzamelde gegevens | Bevat (geen volledige lijst) |
 | --- | --- |
-| **Eigenschappen** |**Alle gegevens - bepaald door uw code** |
-| DeviceContext |`Id`, IP, Locale, Apparaatmodel, netwerk, netwerktype, OEM-naam, schermresolutie, Rolinstantie, Rolnaam, Apparaattype |
-| ClientContext |OS, landstreek, taal, netwerk, vensterresolutie |
+| **Eigenschappen** |**Alle gegevens, bepaald door uw code** |
+| DeviceContext |`Id`, IP, de land instelling, het model van het netwerk, het netwerk type, de OEM-naam, de scherm resolutie, de Rolinstantie, de rolnaam, het apparaattype |
+| ClientContext |Besturings systeem, land instelling, taal, netwerk, venster resolutie |
 | Sessie |`session id` |
-| ServerContext |Machinenaam, landstreek, besturingssysteem, apparaat, gebruikerssessie, gebruikerscontext, bewerking |
-| Afgeleid |geolocatie vanaf IP-adres, tijdstempel, OS, browser |
-| Metrische gegevens |Metrische naam en waarde |
-| Gebeurtenissen |Naam en waarde van gebeurtenis |
-| Paginaweergaves |URL en paginanaam of schermnaam |
-| Client perf |URL/paginanaam, laadtijd van de browser |
-| Ajax |HTTP-oproepen van webpagina naar server |
-| Aanvragen |URL, duur, antwoordcode |
-| Afhankelijkheden |Type(SQL, HTTP, ...), verbindingstekenreeks of URI, synchronisatie/async, duur, succes, SQL-instructie (met statusmonitor) |
-| **Uitzonderingen** |Tekst, **bericht,** oproepstapels, bronbestand, regelnummer,`thread id` |
-| Crashes |`Process id`, `parent process id`, `crash thread id`; toepassingspatch,, `id`bouwen;  uitzonderingstype, adres, reden; versluierde symbolen en registers, binaire begin- en eindadressen, binaire naam en pad, cpu-type |
-| Tracering |**Bericht** en ernstniveau |
-| Prestatiemeteritems |Processortijd, beschikbaar geheugen, aanvraagsnelheid, uitzonderingspercentage, privébytes verwerken, IO-snelheid, aanvraagduur, wachtrijlengte aanvragen |
-| Beschikbaarheid |Webtestresponscode, duur van elke teststap, testnaam, tijdstempel, succes, responstijd, testlocatie |
-| SDK diagnostiek |Traceerbericht of uitzondering |
+| ServerContext |Computer naam, land instelling, besturings systeem, apparaat, gebruikers sessie, gebruikers context, bewerking |
+| Afgeleid |Geo-locatie van IP-adres, tijds tempel, besturings systeem, browser |
+| Metrische gegevens |Naam en waarde van de metriek |
+| Gebeurtenissen |Gebeurtenis naam en-waarde |
+| Page views |URL en pagina naam of scherm naam |
+| Client prestaties |URL/pagina naam, laad tijd browser |
+| Ajax |HTTP-aanroepen van de webpagina naar de server |
+| Aanvragen |URL, duur, respons code |
+| Afhankelijkheden |Type (SQL, HTTP,...), connection string, of URI, synchronisatie/async, duur, geslaagd, SQL-instructie (met Status Monitor) |
+| **Uitzonderingen** |Type, **bericht**, oproep stacks, bron bestand, regel nummer,`thread id` |
+| Valt |`Process id`, `parent process id`, `crash thread id`; toepassings patch, `id`, build;  type uitzonde ring, adres, reden; verborgen symbolen en registers, binaire begin-en eind adressen, binaire naam en pad, CPU-type |
+| Tracering |**Bericht** -en ernst niveau |
+| Prestatiemeteritems |Processor tijd, beschikbaar geheugen, aanvraag frequentie, uitzonderings frequentie, privé-bytes verwerken, i/o-frequentie, aanvraag duur, lengte van aanvraag wachtrij |
+| Beschikbaarheid |Reactie code van webtest, duur van elke test stap, test naam, tijds tempel, geslaagd, reactie tijd, test locatie |
+| SDK-diagnose |Bericht of uitzonde ring traceren |
 
-U [een deel van de gegevens uitschakelen door ApplicationInsights.config te bewerken][config]
+U kunt [een aantal van de gegevens uitschakelen door ApplicationInsights. config te bewerken][config]
 
 > [!NOTE]
-> Client-IP wordt gebruikt om geografische locatie af te leiden, maar standaard worden IP-gegevens niet meer opgeslagen en worden alle nullen naar het bijbehorende veld geschreven. Om meer te weten te komen over de verwerking van persoonsgegevens raden we dit [artikel](../../azure-monitor/platform/personal-data-mgmt.md#application-data)aan. Als u IP-adresgegevens moet opslaan, zal ons [IP-adresverzamelingsartikel](https://docs.microsoft.com/azure/azure-monitor/app/ip-collection) u door uw opties heen brengen.
+> Client-IP wordt gebruikt om geografische locatie af te leiden, maar standaard worden IP-gegevens niet meer opgeslagen en worden alle nullen naar het gekoppelde veld geschreven. Voor meer informatie over het afhandelen van persoonlijke gegevens kunt u dit [artikel](../../azure-monitor/platform/personal-data-mgmt.md#application-data)aanbevelen. Als u IP-adres gegevens moet opslaan in het artikel over de [IP-adres verzameling](https://docs.microsoft.com/azure/azure-monitor/app/ip-collection) , wordt u door de opties geleid.
 
 ## <a name="credits"></a>Tegoeden
-Dit product bevat GeoLite2-gegevens die [https://www.maxmind.com](https://www.maxmind.com)zijn gemaakt door MaxMind, beschikbaar vanaf .
+Dit product bevat GeoLite2-gegevens die zijn gemaakt door MaxMind [https://www.maxmind.com](https://www.maxmind.com), die beschikbaar zijn via.
 
 
 

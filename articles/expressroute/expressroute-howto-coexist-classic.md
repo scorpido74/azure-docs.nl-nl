@@ -1,5 +1,5 @@
 ---
-title: 'ExpressRoute en S2S VPN-verbindingen configureren: klassiek'
+title: 'ExpressRoute-en S2S-VPN-verbindingen configureren: klassiek'
 description: Dit artikel begeleidt u bij het configureren van ExpressRoute- en site-naar-site-VPN-verbindingen die naast elkaar kunnen worden gebruikt in het klassieke implementatiemodel.
 documentationcenter: na
 services: expressroute
@@ -9,16 +9,16 @@ ms.topic: conceptual
 ms.date: 12/06/2019
 ms.author: charwen
 ms.openlocfilehash: aba07e0a1dd8e7b1db8677907672d919ef034057
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79272927"
 ---
 # <a name="configure-expressroute-and-site-to-site-coexisting-connections-classic"></a>Gelijktijdige ExpressRoute- en site-to-site-verbindingen configureren (klassiek)
 > [!div class="op_single_selector"]
 > * [PowerShell - Resource Manager](expressroute-howto-coexist-resource-manager.md)
-> * [PowerShell - Klassiek](expressroute-howto-coexist-classic.md)
+> * [Power shell-klassiek](expressroute-howto-coexist-classic.md)
 > 
 > 
 

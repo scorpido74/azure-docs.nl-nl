@@ -1,88 +1,88 @@
 ---
-title: Resourceproviders en resourcetypen
-description: Beschrijft de resourceproviders die Resource Manager, hun schema's en beschikbare API-versies ondersteunen en de regio's die de resources kunnen hosten.
+title: Resource providers en resource typen
+description: Hierin worden de resource providers beschreven die ondersteuning bieden voor Resource Manager, hun schema's en beschik bare API-versies en de regio's die de resources kunnen hosten.
 ms.topic: conceptual
 ms.date: 08/29/2019
 ms.openlocfilehash: 82b8251006a1a2d4edd198eca843489d3720f8d6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79273980"
 ---
 # <a name="azure-resource-providers-and-types"></a>Azure-resourceproviders en -typen
 
-Bij het implementeren van resources moet u vaak informatie ophalen over de resourceproviders en -typen. Als u bijvoorbeeld sleutels en geheimen wilt opslaan, werkt u met de resourceprovider Microsoft.KeyVault. Deze resourceprovider biedt een resourcetype kluizen voor het maken van de sleutelkluis.
+Wanneer u resources implementeert, moet u regel matig informatie over de resource providers en typen ophalen. Als u bijvoorbeeld sleutels en geheimen wilt opslaan, werkt u met de resourceprovider Microsoft.KeyVault. Deze resourceprovider biedt een resourcetype kluizen voor het maken van de sleutelkluis.
 
 De naam van een resourcetype heeft deze syntaxis: **{resourceprovider}/{resourcetype}**. Het resourcetype voor een sleutelkluis is **Microsoft.keyvault\vaults**.
 
 In dit artikel leert u het volgende:
 
-* Alle resourceproviders in Azure weergeven
-* De registratiestatus van een resourceprovider controleren
+* Alle resource providers in azure weer geven
+* De registratie status van een resource provider controleren
 * Registreer een resourceprovider
-* Resourcetypen voor een resourceprovider weergeven
-* Geldige locaties voor een resourcetype weergeven
-* Geldige API-versies voor een resourcetype weergeven
+* Resource typen voor een resource provider weer geven
+* Geldige locaties voor een resource type weer geven
+* Geldige API-versies voor een resource type weer geven
 
-U deze stappen uitvoeren via de Azure-portal, Azure PowerShell of Azure CLI.
+U kunt deze stappen uitvoeren via de Azure Portal, Azure PowerShell of Azure CLI.
 
-Zie [Resourceproviders voor Azure-services voor](azure-services-resource-providers.md)een lijst die resourceproviders aan Azure-services toeinziet.
+Zie [resource providers voor Azure-Services](azure-services-resource-providers.md)voor een lijst waarin resource providers worden toegewezen aan Azure-Services.
 
 ## <a name="azure-portal"></a>Azure Portal
 
-Ga als u alle resourceproviders en de registratiestatus voor uw abonnement weergeven:
+Als u alle resource providers en de registratie status voor uw abonnement wilt weer geven:
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 2. Selecteer **Alle services** in het menu van Azure Portal.
 
     ![abonnementen selecteren](./media/resource-providers-and-types/select-all-services.png)
 
-3. Voer in het vak **Alle services** **het abonnement**in en selecteer **Abonnementen**.
-4. Selecteer het abonnement in de abonnementslijst om te bekijken.
-5. Selecteer **Resourceproviders** en bekijk de lijst met beschikbare resourceproviders.
+3. Voer in het vak **alle services** het **abonnement**in en selecteer vervolgens **abonnementen**.
+4. Selecteer het abonnement dat u wilt weer geven in de lijst met abonnementen.
+5. **Resource providers** selecteren en de lijst met beschik bare resource providers weer geven.
 
-    ![resourceproviders weergeven](./media/resource-providers-and-types/show-resource-providers.png)
+    ![resource providers weer geven](./media/resource-providers-and-types/show-resource-providers.png)
 
-6. Als u een resourceprovider registreert, configureert u uw abonnement om met de resourceprovider te werken. De ruimte voor registratie is altijd het abonnement. Standaard worden veel resourceproviders automatisch geregistreerd. Het kan echter nodig zijn om sommige resourceproviders handmatig te registreren. Als u een resourceprovider wilt registreren, `/register/action` moet u toestemming hebben om de bewerking voor de resourceprovider uit te voeren. Deze bewerking is opgenomen in de rollen Inzender en Eigenaar. Als u een resourceprovider wilt registreren, selecteert u **Registreren**. In de vorige schermafbeelding wordt de koppeling **Register** gemarkeerd voor **Microsoft.Blueprint**.
+6. Als u een resource provider registreert, wordt uw abonnement geconfigureerd om te werken met de resource provider. Het bereik voor registratie is altijd het abonnement. Standaard worden veel resource providers automatisch geregistreerd. Het is echter mogelijk dat u bepaalde resource providers hand matig moet registreren. Als u een resource provider wilt registreren, moet u gemachtigd zijn om `/register/action` de bewerking voor de resource provider uit te voeren. Deze bewerking is opgenomen in de rollen Inzender en Eigenaar. Als u een resource provider wilt registreren, selecteert u **registreren**. In de vorige scherm afbeelding is de koppeling **registreren** gemarkeerd voor **micro soft. blauw druk**.
 
-    U een resourceprovider niet uitschrijven wanneer u nog resourcetypen van die resourceprovider in uw abonnement hebt.
+    U kunt de registratie van een resource provider niet ongedaan maken wanneer u nog steeds resource typen van die resource provider in uw abonnement hebt.
 
-Ga als volgende informatie voor een bepaalde resourceprovider naar informatie voor een bepaalde resourceprovider:
+Informatie weer geven voor een bepaalde resource provider:
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 2. Selecteer **Alle services** in het menu van Azure Portal.
-3. Voer **resourceexplorer**in het vak **Alle services** in en selecteer **Resource Explorer**.
+3. In het vak **alle services** voert u **resource Explorer**in en selecteert u vervolgens **resource Explorer**.
 
     ![Alle services selecteren](./media/resource-providers-and-types/select-resource-explorer.png)
 
-4. **Providers** uitvouwen door de pijl-rechts te selecteren.
+4. Vouw **providers** uit door de pijl-rechts te selecteren.
 
-    ![Geselecteerde providers](./media/resource-providers-and-types/select-providers.png)
+    ![Providers selecteren](./media/resource-providers-and-types/select-providers.png)
 
-5. Vouw een resourceprovider en resourcetype uit die u wilt weergeven.
+5. Vouw een resource provider en resource type uit die u wilt weer geven.
 
-    ![Resourcetype selecteren](./media/resource-providers-and-types/select-resource-type.png)
+    ![Resource type selecteren](./media/resource-providers-and-types/select-resource-type.png)
 
-6. Resourcemanager wordt in alle regio's ondersteund, maar de resources die u implementeert, worden mogelijk niet in alle regio's ondersteund. Bovendien kunnen er beperkingen zijn aan uw abonnement waardoor u bepaalde regio's die de bron ondersteunen niet gebruiken. De bronverkenner geeft geldige locaties weer voor het resourcetype.
+6. Resource Manager wordt in alle regio's ondersteund, maar de resources die u implementeert, worden mogelijk niet ondersteund in alle regio's. Daarnaast kunnen er beperkingen gelden voor uw abonnement, waardoor u bepaalde regio's die ondersteuning bieden voor de resource niet kunt gebruiken. In resource Explorer worden geldige locaties voor het bron type weer gegeven.
 
-    ![Locaties weergeven](./media/resource-providers-and-types/show-locations.png)
+    ![Locaties weer geven](./media/resource-providers-and-types/show-locations.png)
 
-7. De API-versie komt overeen met een versie van REST API-bewerkingen die worden vrijgegeven door de resourceprovider. Aangezien een resourceprovider nieuwe functies mogelijk maakt, brengt het een nieuwe versie van de REST API uit. De resourceverkenner geeft geldige API-versies weer voor het resourcetype.
+7. De API-versie komt overeen met een versie van REST API bewerkingen die door de resource provider worden vrijgegeven. Als resource provider nieuwe functies maakt, wordt een nieuwe versie van de REST API vrijgegeven. In resource Explorer worden geldige API-versies voor het bron type weer gegeven.
 
-    ![API-versies weergeven](./media/resource-providers-and-types/show-api-versions.png)
+    ![API-versies weer geven](./media/resource-providers-and-types/show-api-versions.png)
 
 ## <a name="azure-powershell"></a>Azure PowerShell
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-Gebruik het als u alle resourceproviders in Azure en de registratiestatus voor uw abonnement wilt weergeven:
+Als u alle resource providers in Azure en de registratie status voor uw abonnement wilt weer geven, gebruikt u:
 
 ```azurepowershell-interactive
 Get-AzResourceProvider -ListAvailable | Select-Object ProviderNamespace, RegistrationState
 ```
 
-Welke rendementen vergelijkbaar met:
+Hiermee worden resultaten geretourneerd die vergelijkbaar zijn met:
 
 ```output
 ProviderNamespace                RegistrationState
@@ -94,13 +94,13 @@ Microsoft.CognitiveServices      Registered
 ...
 ```
 
-Als u een resourceprovider registreert, configureert u uw abonnement om met de resourceprovider te werken. De ruimte voor registratie is altijd het abonnement. Standaard worden veel resourceproviders automatisch geregistreerd. Het kan echter nodig zijn om sommige resourceproviders handmatig te registreren. Als u een resourceprovider wilt registreren, `/register/action` moet u toestemming hebben om de bewerking voor de resourceprovider uit te voeren. Deze bewerking is opgenomen in de rollen Inzender en Eigenaar.
+Als u een resource provider registreert, wordt uw abonnement geconfigureerd om te werken met de resource provider. Het bereik voor registratie is altijd het abonnement. Standaard worden veel resource providers automatisch geregistreerd. Het is echter mogelijk dat u bepaalde resource providers hand matig moet registreren. Als u een resource provider wilt registreren, moet u gemachtigd zijn om `/register/action` de bewerking voor de resource provider uit te voeren. Deze bewerking is opgenomen in de rollen Inzender en Eigenaar.
 
 ```azurepowershell-interactive
 Register-AzResourceProvider -ProviderNamespace Microsoft.Batch
 ```
 
-Welke rendementen vergelijkbaar met:
+Hiermee worden resultaten geretourneerd die vergelijkbaar zijn met:
 
 ```output
 ProviderNamespace : Microsoft.Batch
@@ -109,15 +109,15 @@ ResourceTypes     : {batchAccounts, operations, locations, locations/quotas}
 Locations         : {West Europe, East US, East US 2, West US...}
 ```
 
-U een resourceprovider niet uitschrijven wanneer u nog resourcetypen van die resourceprovider in uw abonnement hebt.
+U kunt de registratie van een resource provider niet ongedaan maken wanneer u nog steeds resource typen van die resource provider in uw abonnement hebt.
 
-Gebruik het volgende om informatie voor een bepaalde resourceprovider te bekijken:
+Als u informatie wilt weer geven voor een bepaalde resource provider, gebruikt u:
 
 ```azurepowershell-interactive
 Get-AzResourceProvider -ProviderNamespace Microsoft.Batch
 ```
 
-Welke rendementen vergelijkbaar met:
+Hiermee worden resultaten geretourneerd die vergelijkbaar zijn met:
 
 ```output
 {ProviderNamespace : Microsoft.Batch
@@ -128,13 +128,13 @@ Locations         : {West Europe, East US, East US 2, West US...}
 ...
 ```
 
-Gebruik het als u de resourcetypen voor een resourceprovider wilt weergeven:
+Als u de resource typen voor een resource provider wilt zien, gebruikt u:
 
 ```azurepowershell-interactive
 (Get-AzResourceProvider -ProviderNamespace Microsoft.Batch).ResourceTypes.ResourceTypeName
 ```
 
-Welke rendementen:
+Hiermee wordt het volgende geretourneerd:
 
 ```output
 batchAccounts
@@ -143,15 +143,15 @@ locations
 locations/quotas
 ```
 
-De API-versie komt overeen met een versie van REST API-bewerkingen die worden vrijgegeven door de resourceprovider. Aangezien een resourceprovider nieuwe functies mogelijk maakt, brengt het een nieuwe versie van de REST API uit.
+De API-versie komt overeen met een versie van REST API bewerkingen die door de resource provider worden vrijgegeven. Als resource provider nieuwe functies maakt, wordt een nieuwe versie van de REST API vrijgegeven.
 
-Gebruik het als u de beschikbare API-versies voor een brontype wilt gebruiken:
+Als u de beschik bare API-versies voor een resource type wilt ophalen, gebruikt u:
 
 ```azurepowershell-interactive
 ((Get-AzResourceProvider -ProviderNamespace Microsoft.Batch).ResourceTypes | Where-Object ResourceTypeName -eq batchAccounts).ApiVersions
 ```
 
-Welke rendementen:
+Hiermee wordt het volgende geretourneerd:
 
 ```output
 2017-05-01
@@ -161,15 +161,15 @@ Welke rendementen:
 2015-07-01
 ```
 
-Resourcemanager wordt in alle regio's ondersteund, maar de resources die u implementeert, worden mogelijk niet in alle regio's ondersteund. Bovendien kunnen er beperkingen zijn aan uw abonnement waardoor u bepaalde regio's die de bron ondersteunen niet gebruiken.
+Resource Manager wordt in alle regio's ondersteund, maar de resources die u implementeert, worden mogelijk niet ondersteund in alle regio's. Daarnaast kunnen er beperkingen gelden voor uw abonnement, waardoor u bepaalde regio's die ondersteuning bieden voor de resource niet kunt gebruiken.
 
-Gebruik de ondersteunde locaties voor een resourcetype om de ondersteunde locaties voor een resourcetype te krijgen.
+Als u de ondersteunde locaties voor een resource type wilt ophalen, gebruikt u.
 
 ```azurepowershell-interactive
 ((Get-AzResourceProvider -ProviderNamespace Microsoft.Batch).ResourceTypes | Where-Object ResourceTypeName -eq batchAccounts).Locations
 ```
 
-Welke rendementen:
+Hiermee wordt het volgende geretourneerd:
 
 ```output
 West Europe
@@ -179,15 +179,15 @@ West US
 ...
 ```
 
-## <a name="azure-cli"></a>Azure-CLI
+## <a name="azure-cli"></a>Azure CLI
 
-Gebruik het als u alle resourceproviders in Azure en de registratiestatus voor uw abonnement wilt weergeven:
+Als u alle resource providers in Azure en de registratie status voor uw abonnement wilt weer geven, gebruikt u:
 
 ```azurecli
 az provider list --query "[].{Provider:namespace, Status:registrationState}" --out table
 ```
 
-Welke rendementen vergelijkbaar met:
+Hiermee worden resultaten geretourneerd die vergelijkbaar zijn met:
 
 ```output
 Provider                         Status
@@ -199,23 +199,23 @@ Microsoft.CognitiveServices      Registered
 ...
 ```
 
-Als u een resourceprovider registreert, configureert u uw abonnement om met de resourceprovider te werken. De ruimte voor registratie is altijd het abonnement. Standaard worden veel resourceproviders automatisch geregistreerd. Het kan echter nodig zijn om sommige resourceproviders handmatig te registreren. Als u een resourceprovider wilt registreren, `/register/action` moet u toestemming hebben om de bewerking voor de resourceprovider uit te voeren. Deze bewerking is opgenomen in de rollen Inzender en Eigenaar.
+Als u een resource provider registreert, wordt uw abonnement geconfigureerd om te werken met de resource provider. Het bereik voor registratie is altijd het abonnement. Standaard worden veel resource providers automatisch geregistreerd. Het is echter mogelijk dat u bepaalde resource providers hand matig moet registreren. Als u een resource provider wilt registreren, moet u gemachtigd zijn om `/register/action` de bewerking voor de resource provider uit te voeren. Deze bewerking is opgenomen in de rollen Inzender en Eigenaar.
 
 ```azurecli
 az provider register --namespace Microsoft.Batch
 ```
 
-Dat geeft een bericht dat de registratie aan de gang is.
+Retourneert een bericht dat de registratie is doorlopend.
 
-U een resourceprovider niet uitschrijven wanneer u nog resourcetypen van die resourceprovider in uw abonnement hebt.
+U kunt de registratie van een resource provider niet ongedaan maken wanneer u nog steeds resource typen van die resource provider in uw abonnement hebt.
 
-Gebruik het volgende om informatie voor een bepaalde resourceprovider te bekijken:
+Als u informatie wilt weer geven voor een bepaalde resource provider, gebruikt u:
 
 ```azurecli
 az provider show --namespace Microsoft.Batch
 ```
 
-Welke rendementen vergelijkbaar met:
+Hiermee worden resultaten geretourneerd die vergelijkbaar zijn met:
 
 ```output
 {
@@ -228,13 +228,13 @@ Welke rendementen vergelijkbaar met:
 }
 ```
 
-Gebruik het als u de resourcetypen voor een resourceprovider wilt weergeven:
+Als u de resource typen voor een resource provider wilt zien, gebruikt u:
 
 ```azurecli
 az provider show --namespace Microsoft.Batch --query "resourceTypes[*].resourceType" --out table
 ```
 
-Welke rendementen:
+Hiermee wordt het volgende geretourneerd:
 
 ```output
 Result
@@ -245,15 +245,15 @@ locations
 locations/quotas
 ```
 
-De API-versie komt overeen met een versie van REST API-bewerkingen die worden vrijgegeven door de resourceprovider. Aangezien een resourceprovider nieuwe functies mogelijk maakt, brengt het een nieuwe versie van de REST API uit.
+De API-versie komt overeen met een versie van REST API bewerkingen die door de resource provider worden vrijgegeven. Als resource provider nieuwe functies maakt, wordt een nieuwe versie van de REST API vrijgegeven.
 
-Gebruik het als u de beschikbare API-versies voor een brontype wilt gebruiken:
+Als u de beschik bare API-versies voor een resource type wilt ophalen, gebruikt u:
 
 ```azurecli
 az provider show --namespace Microsoft.Batch --query "resourceTypes[?resourceType=='batchAccounts'].apiVersions | [0]" --out table
 ```
 
-Welke rendementen:
+Hiermee wordt het volgende geretourneerd:
 
 ```output
 Result
@@ -265,15 +265,15 @@ Result
 2015-07-01
 ```
 
-Resourcemanager wordt in alle regio's ondersteund, maar de resources die u implementeert, worden mogelijk niet in alle regio's ondersteund. Bovendien kunnen er beperkingen zijn aan uw abonnement waardoor u bepaalde regio's die de bron ondersteunen niet gebruiken.
+Resource Manager wordt in alle regio's ondersteund, maar de resources die u implementeert, worden mogelijk niet ondersteund in alle regio's. Daarnaast kunnen er beperkingen gelden voor uw abonnement, waardoor u bepaalde regio's die ondersteuning bieden voor de resource niet kunt gebruiken.
 
-Gebruik de ondersteunde locaties voor een resourcetype om de ondersteunde locaties voor een resourcetype te krijgen.
+Als u de ondersteunde locaties voor een resource type wilt ophalen, gebruikt u.
 
 ```azurecli
 az provider show --namespace Microsoft.Batch --query "resourceTypes[?resourceType=='batchAccounts'].locations | [0]" --out table
 ```
 
-Welke rendementen:
+Hiermee wordt het volgende geretourneerd:
 
 ```output
 Result
@@ -287,7 +287,7 @@ West US
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Zie [Azure Resource Manager-sjablonen ontwerpen](../templates/template-syntax.md)voor meer informatie over het maken van Resource Manager-sjablonen. 
-* Zie [Sjabloonverwijzing](/azure/templates/)als u de sjabloonschema's van de resourceprovider wilt weergeven.
-* Zie [Resourceproviders voor Azure-services voor](azure-services-resource-providers.md)een lijst die resourceproviders aan Azure-services toeinziet.
-* Zie [Azure REST API](/rest/api/)als u de bewerkingen voor een resourceprovider wilt weergeven.
+* Zie [Azure Resource Manager sjablonen ontwerpen](../templates/template-syntax.md)voor meer informatie over het maken van Resource Manager-sjablonen. 
+* Zie [sjabloon verwijzing voor informatie](/azure/templates/)over het weer geven van de sjabloon schema's van de resource provider.
+* Zie [resource providers voor Azure-Services](azure-services-resource-providers.md)voor een lijst waarin resource providers worden toegewezen aan Azure-Services.
+* Zie [Azure rest API](/rest/api/)om de bewerkingen voor een resource provider weer te geven.

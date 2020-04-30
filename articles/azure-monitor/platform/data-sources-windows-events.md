@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 11/28/2018
 ms.openlocfilehash: aa34196233ce4037ef6fa49b782b9aa958f7632d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79274682"
 ---
 # <a name="windows-event-log-data-sources-in-azure-monitor"></a>Gegevens bronnen in het Windows-gebeurtenis logboek in Azure Monitor
@@ -30,7 +30,7 @@ Wanneer u de naam van een gebeurtenis logboek typt, geeft Azure Monitor suggesti
 > [!NOTE]
 > Kritieke gebeurtenissen van het Windows-gebeurtenis logboek hebben de ernst fout in Azure Monitor Logboeken.
 
-## <a name="data-collection"></a>Gegevensverzameling
+## <a name="data-collection"></a>Gegevens verzamelen
 Azure Monitor verzamelt elke gebeurtenis die overeenkomt met een bepaalde ernst van een bewaakt gebeurtenis logboek wanneer de gebeurtenis wordt gemaakt.  De agent legt de locatie vast in elk gebeurtenis logboek dat wordt verzameld van.  Als de agent gedurende een bepaalde tijd offline gaat, worden er gebeurtenissen verzameld van waar deze voor het laatst is uitgeschakeld, zelfs als deze gebeurtenissen zijn gemaakt terwijl de agent offline was.  Deze gebeurtenissen kunnen niet worden verzameld als het gebeurtenis logboek vastloopt met niet-verzamelde gebeurtenissen die worden overschreven terwijl de agent offline is.
 
 >[!NOTE]

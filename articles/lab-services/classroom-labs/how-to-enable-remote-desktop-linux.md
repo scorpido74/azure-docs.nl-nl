@@ -1,6 +1,6 @@
 ---
-title: Extern bureaublad voor Linux inschakelen in Azure Lab Services | Microsoft Documenten
-description: Meer informatie over het inschakelen van externe desktop voor virtuele Linux-machines in een lab in Azure Lab Services.
+title: Extern bureau blad inschakelen voor Linux in Azure Lab Services | Microsoft Docs
+description: Meer informatie over het inschakelen van extern bureau blad voor virtuele Linux-machines in een lab in Azure Lab Services.
 services: lab-services
 documentationcenter: na
 author: spelluru
@@ -14,54 +14,54 @@ ms.topic: article
 ms.date: 10/31/2019
 ms.author: spelluru
 ms.openlocfilehash: cb9a3e2b9ddcd0f74bfa4978f0bc3f4eb0688257
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79270860"
 ---
-# <a name="enable-remote-desktop-for-linux-virtual-machines-in-a-lab-in-azure-lab-services"></a>Extern bureaublad voor virtuele Linux-machines inschakelen in een lab in Azure Lab Services
-In dit artikel ziet u hoe u de volgende taken uitvoert:
+# <a name="enable-remote-desktop-for-linux-virtual-machines-in-a-lab-in-azure-lab-services"></a>Extern bureau blad voor virtuele Linux-machines in een Lab inschakelen in Azure Lab Services
+In dit artikel leest u hoe u de volgende taken kunt uitvoeren:
 
-- Extern bureaublad inschakelen voor Linux VM
-- Hoe de docent verbinding kan maken met de sjabloon-VM via Extern bureaublad-verbinding (RDP).
+- Extern bureau blad voor Linux VM inschakelen
+- Hoe docenten verbinding kan maken met de sjabloon-VM via Verbinding met extern bureaublad (RDP).
 
-## <a name="enable-remote-desktop-for-linux-vm"></a>Extern bureaublad inschakelen voor Linux VM
-Tijdens het maken van het lab kunnen docenten verbinding met **externe bureaubladen** inschakelen voor **Linux-afbeeldingen.** De optie **Extern bureaublad-verbinding inschakelen** wordt weergegeven wanneer een Linux-afbeelding is geselecteerd voor de sjabloon. Wanneer deze optie is ingeschakeld, kunnen docenten verbinding maken met vm-sjabloon- en leerling-VM's via RDP (Extern bureaublad). 
+## <a name="enable-remote-desktop-for-linux-vm"></a>Extern bureau blad voor Linux VM inschakelen
+Tijdens het maken van een Lab kunnen docenten **verbinding met extern bureau blad** inschakelen voor **Linux** -installatie kopieën. De optie **verbinding met extern bureaublad inschakelen** wordt weer gegeven wanneer een Linux-installatie kopie voor de sjabloon is geselecteerd. Wanneer deze optie is ingeschakeld, kunnen docenten verbinding maken met virtuele machine-en student-Vm's via RDP (Extern bureaublad). 
 
-![Verbinding met extern bureaublad inschakelen voor een Linux-afbeelding](../media/how-to-enable-remote-desktop-linux/enable-rdp-option.png)
+![Verbinding met extern bureau blad inschakelen voor een Linux-installatie kopie](../media/how-to-enable-remote-desktop-linux/enable-rdp-option.png)
 
-Selecteer **Doorgaan met Extern bureaublad**in het bericht item Extern **bureaublad-verbinding** inschakelen . 
+Selecteer in het vak **verbinding met extern bureaublad bericht inschakelen** de optie **door gaan met extern bureaublad**. 
 
-![Verbinding met extern bureaublad inschakelen voor een Linux-afbeelding](../media/how-to-enable-remote-desktop-linux/enabling-remote-desktop-connection-dialog.png)
+![Verbinding met extern bureau blad inschakelen voor een Linux-installatie kopie](../media/how-to-enable-remote-desktop-linux/enabling-remote-desktop-connection-dialog.png)
 
 > [!IMPORTANT] 
-> Als **u een verbinding met extern bureaublad** inschakelt, wordt de **RDP-poort** alleen geopend op Linux-machines. Als RDP al is geïnstalleerd en geconfigureerd op de virtuele machineafbeelding (bijvoorbeeld: Ubuntu Data Science Virtual Machine image), u/studenten verbinding maken met VM's via RDP zonder aanvullende stappen te volgen.
+> Het inschakelen van **verbinding met extern bureau blad** opent alleen de **RDP** -poort op Linux-machines. Als RDP al is geïnstalleerd en geconfigureerd op de installatie kopie van de virtuele machine (bijvoorbeeld: Ubuntu Data Science Virtual Machine-installatie kopie), kunnen u/studenten verbinding maken met Vm's via RDP zonder dat u extra stappen hoeft te volgen.
 > 
-> Als de VM-afbeelding geen RDP heeft geïnstalleerd en geconfigureerd, moet u voor het eerst verbinding maken met de Linux-machine via SSH en RDP- en GUI-pakketten installeren, zodat u/of studenten later verbinding kunnen maken met de Linux-machine via RDP. Zie [Extern bureaublad installeren en configureren om verbinding te maken met een Linux-vm in Azure](../../virtual-machines/linux/use-remote-desktop.md)voor meer informatie. Vervolgens publiceer je de afbeelding zodat studenten RDP kunnen indestudent Linux VM's. 
+> Als RDP niet is geïnstalleerd en geconfigureerd op de installatie kopie van de virtuele machine, moet u voor het eerst verbinding maken met de Linux-computer en vervolgens RDP-en GUI-pakketten installeren, zodat u/studenten later met RDP verbinding kunnen maken met de Linux-machine. Zie [extern bureaublad installeren en configureren om verbinding te maken met een virtuele Linux-machine in azure](../../virtual-machines/linux/use-remote-desktop.md)voor meer informatie. Vervolgens publiceert u de installatie kopie zodat studenten RDP kunnen hebben in de student Linux-Vm's. 
 
 ## <a name="supported-operating-systems"></a>Ondersteunde besturingssystemen
-Momenteel wordt de verbinding met extern bureaublad ondersteund voor de volgende besturingssystemen:
+Op dit moment wordt de verbinding met extern bureau blad ondersteund voor de volgende besturings systemen:
 
-- openSUSE Leap 42.3
+- openSUSE Schrikkel 42,3
 - CentOS-gebaseerde 7,5
-- Debian 9 "Stretch"
-- Ubuntu Server 16.04 LTS
+- Debian 9 "stretch"
+- Ubuntu Server 16,04 LTS
 
 ## <a name="connect-to-the-template-vm"></a>Verbinding maken met de sjabloon-VM 
-Docenten moeten eerst verbinding maken met de sjabloon-VM met SSH en rdp- en GUI-pakketten installeren. Vervolgens kunnen de docenten RDP gebruiken om verbinding te maken met de sjabloon-VM: 
+Docenten moeten eerst via SSH verbinding maken met de VM van de sjabloon en vervolgens RDP-en GUI-pakketten installeren. De docenten kunnen vervolgens RDP gebruiken om verbinding te maken met de VM van de sjabloon: 
 
-1. Als u **sjabloon aanpassen** op de werkbalk ziet, selecteert u deze. Selecteer vervolgens **Doorgaan** in het dialoogvenster **Sjabloon aanpassen.** Met deze actie wordt de sjabloon-VM gestart.  
+1. Als u de **sjabloon aanpassen** op de werk balk ziet, selecteert u deze. Selecteer vervolgens **door gaan** in het dialoog venster **sjabloon aanpassen** . Met deze actie wordt de VM van de sjabloon gestart.  
 
     ![Sjabloon aanpassen](../media/how-to-enable-remote-desktop-linux/customize-template.png)
-2. Nadat de sjabloon-VM is gestart, u **Sjabloon Verbinden** selecteren en vervolgens verbinding maken **via SSH** op de werkbalk. 
+2. Nadat de sjabloon van de virtuele machine is gestart, kunt u **verbinding maken sjabloon** selecteren en vervolgens **via SSH verbinding maken** op de werk balk. 
 
     ![Verbinding maken met sjabloon via RDP nadat het lab is gemaakt](../media/how-to-enable-remote-desktop-linux/rdp-after-lab-creation.png) 
-3. U ziet het volgende dialoogvenster **Verbinding maken met uw virtuele machine.** Selecteer de knop **Kopiëren** naast het tekstvak om het naar het klembord te kopiëren. Sla de SSH-verbindingstekenreeks op. Gebruik deze verbindingstekenreeks van een SSH-terminal (zoals [Putty)](https://www.putty.org/)om verbinding te maken met de virtuele machine.
+3. U ziet het volgende: verbinding maken met het dialoog venster **virtuele machine** . Selecteer de knop **kopiëren** naast het tekstvak om deze naar het klem bord te kopiëren. Sla de SSH-connection string op. Gebruik deze connection string van een SSH-terminal (zoals [putty](https://www.putty.org/)) om verbinding te maken met de virtuele machine.
  
-    ![SSH-verbindingstekenreeks](../media/how-to-enable-remote-desktop-linux/ssh-connection-string.png)
-4. Installeer RDP- en GUI-pakketten zodat u/u/u later verbinding maken met de Linux-machine via RDP. Zie [Extern bureaublad installeren en configureren om verbinding te maken met een Linux-vm in Azure](../../virtual-machines/linux/use-remote-desktop.md)voor meer informatie. Vervolgens publiceer je de afbeelding zodat studenten RDP kunnen indestudent Linux VM's.
-5. Nadat deze pakketten zijn geïnstalleerd, u de **sjabloon Verbinding maken** met de werkbalk gebruiken en vervolgens Verbinding maken via **RDP** selecteren om verbinding te maken met de sjabloon-VM via RDP. Sla het RDP-bestand op en gebruik het om verbinding te maken met de sjabloon-VM via RDP. 
+    ![SSH-connection string](../media/how-to-enable-remote-desktop-linux/ssh-connection-string.png)
+4. Installeer RDP-en GUI-pakketten zodat u/studenten later met RDP verbinding kunnen maken met de Linux-machine. Zie [extern bureaublad installeren en configureren om verbinding te maken met een virtuele Linux-machine in azure](../../virtual-machines/linux/use-remote-desktop.md)voor meer informatie. Vervolgens publiceert u de installatie kopie zodat studenten RDP kunnen hebben in de student Linux-Vm's.
+5. Nadat deze pakketten zijn geïnstalleerd, kunt u de **verbinding met sjabloon** op de werk balk gebruiken en vervolgens **verbinding maken via RDP** selecteren om verbinding te maken met de sjabloon-VM via RDP. Sla het RDP-bestand op en gebruik het om verbinding te maken met de sjabloon-VM via RDP. 
 
 ## <a name="next-steps"></a>Volgende stappen
-Nadat een cursusleider de functie voor verbinding met extern bureaublad heeft ingeschakeld, kunnen studenten verbinding maken met hun VM's via RDP/SSH. Zie [Remote desktop gebruiken voor Linux-vm's in een klaslokaallab voor](how-to-use-remote-desktop-linux-student.md)meer informatie. 
+Nadat een docent de functie extern bureau blad-verbinding heeft ingeschakeld, kunnen studenten via RDP/SSH verbinding maken met hun Vm's. Zie [extern bureau blad voor Linux-Vm's gebruiken in een leslokaal Lab](how-to-use-remote-desktop-linux-student.md)voor meer informatie. 

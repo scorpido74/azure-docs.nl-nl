@@ -1,6 +1,6 @@
 ---
-title: Netwerkarchitectuur v1
-description: Bouwkundig overzicht van netwerktopologie van App Service Environments. Dit document is alleen bedoeld voor klanten die de verouderde v1 ASE gebruiken.
+title: Netwerk architectuur v1
+description: Overzicht van de architectuur van de netwerk topologie van App Service omgevingen. Dit document is alleen bedoeld voor klanten die gebruikmaken van de oudere V1-ASE.
 author: stefsch
 ms.assetid: 13d03a37-1fe2-4e3e-9d57-46dfb330ba52
 ms.topic: article
@@ -8,74 +8,74 @@ ms.date: 10/04/2016
 ms.author: stefsch
 ms.custom: seodec18
 ms.openlocfilehash: b1b866f3be789c59eea38c5c22b5557d557440be
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79243846"
 ---
-# <a name="network-architecture-overview-of-app-service-environments"></a>Overzicht van netwerkarchitectuur van app-serviceomgevingen
-App-serviceomgevingen worden altijd gemaakt binnen een subnet van een [virtueel netwerk][virtualnetwork] - apps die worden uitgevoerd in een App-serviceomgeving kunnen communiceren met privéeindpunten binnen dezelfde virtuele netwerktopologie.  Aangezien klanten delen van hun virtuele netwerkinfrastructuur kunnen vergrendelen, is het belangrijk om inzicht te krijgen in de typen netwerkcommunicatiestromen die optreden met een App Service-omgeving.
+# <a name="network-architecture-overview-of-app-service-environments"></a>Overzicht van de netwerk architectuur van App Service omgevingen
+App Service omgevingen worden altijd gemaakt binnen een subnet van een [virtueel netwerk][virtualnetwork] : apps die worden uitgevoerd in een app service Environment kunnen communiceren met privé-eind punten die zich in dezelfde virtuele netwerk topologie bevinden.  Omdat klanten delen van hun virtuele netwerk infrastructuur kunnen vergren delen, is het belang rijk om inzicht te krijgen in de typen netwerk communicatie stromen die zich voordoen met een App Service Environment.
 
-## <a name="general-network-flow"></a>Algemene netwerkstroom
-Wanneer een App Service Environment (ASE) een openbaar virtueel IP-adres (VIP) gebruikt voor apps, komt al het binnenkomende verkeer op die openbare VIP.  Dit omvat HTTP- en HTTPS-verkeer voor apps, evenals ander verkeer voor FTP, functionaliteit voor foutopsporing op afstand en Azure-beheerbewerkingen.  Voor een volledige lijst van de specifieke poorten (zowel vereist als optioneel) die beschikbaar zijn op de openbare VIP zie het artikel over het regelen van [binnenkomend verkeer][controllinginboundtraffic] naar een App Service Omgeving. 
+## <a name="general-network-flow"></a>Algemene netwerk stroom
+Wanneer een App Service Environment (ASE) een openbaar virtueel IP-adres (VIP) voor apps gebruikt, arriveert al het binnenkomende verkeer op die open bare VIP.  Dit omvat HTTP-en HTTPS-verkeer voor apps, evenals andere verkeer voor FTP, de functionaliteit voor fout opsporing op afstand en Azure-beheer bewerkingen.  Zie het artikel over het [beheren van inkomend verkeer][controllinginboundtraffic] naar een app service Environment voor een volledige lijst met de specifieke poorten (zowel vereist als optioneel) die beschikbaar zijn op de open bare VIP. 
 
-App Service-omgevingen ondersteunen ook het uitvoeren van apps die alleen zijn gekoppeld aan een intern netwerkadres, ook wel ILB-adres (interne load balancer) genoemd.  Op een ILB ingeschakeld ASE, HTTP en HTTPS-verkeer voor apps, evenals externe debugging oproepen, komen op het ILB-adres.  Voor de meest voorkomende ILB-ASE-configuraties komt FTP/FTPS-verkeer ook aan op het ILB-adres.  Azure-beheerbewerkingen worden echter nog steeds naar poorten 454/455 op de openbare VIP van een ASE met ILB ingeschakeld.
+App Service omgevingen bieden ook ondersteuning voor het uitvoeren van apps die alleen zijn gebonden aan een intern adres van een virtueel netwerk, ook wel een ILB-adres (interne load balancer) genoemd.  Op een ILB ingeschakeld ASE, HTTP-en HTTPS-verkeer voor apps en externe fout opsporings aanroepen, arriveren op het ILB-adres.  Voor de meeste veelvoorkomende ILB-ASE-configuraties zal het FTP/FTPS-verkeer ook op het ILB-adres arriveren.  Azure-beheer bewerkingen stromen echter nog wel naar poorten 454/455 op het open bare VIP van een ILB ingeschakelde ASE.
 
-Het onderstaande diagram toont een overzicht van de verschillende inkomende en uitgaande netwerkstromen voor een App Service-omgeving waar de apps zijn gebonden aan een openbaar virtueel IP-adres:
+In het onderstaande diagram ziet u een overzicht van de verschillende binnenkomende en uitgaande netwerk stromen voor een App Service Environment waarbij de apps zijn gebonden aan een openbaar virtueel IP-adres:
 
-![Algemene netwerkstromen][GeneralNetworkFlows]
+![Algemene netwerk stromen][GeneralNetworkFlows]
 
-Een App Service-omgeving kan communiceren met verschillende eindpunten van particuliere klanten.  Apps die in de app-serviceomgeving worden uitgevoerd, kunnen bijvoorbeeld verbinding maken met databaseserver(s) die worden uitgevoerd op virtuele IaaS-machines in dezelfde virtuele netwerktopologie.
+Een App Service Environment kan communiceren met verschillende eind punten van particuliere klanten.  Zo kunnen apps die in de App Service Environment worden uitgevoerd, verbinding maken met een of meer data base-servers die worden uitgevoerd op virtuele IaaS-machines in dezelfde virtuele netwerk topologie.
 
 > [!IMPORTANT]
-> Als u het netwerkdiagram bekijkt, worden de 'Overige rekenbronnen' geïmplementeerd in een ander subnet dan de App-serviceomgeving. Als u resources in hetzelfde subnet met de ASE implementeert, wordt de verbinding van ASE met die resources geblokkeerd (met uitzondering van specifieke intra-ASE-routering). In plaats daarvan implementeren naar een ander subnet (in hetzelfde VNET). De App Service Environment kan dan verbinding maken. Er is geen extra configuratie nodig.
+> Als u het netwerk diagram bekijkt, worden de ' andere reken resources ' geïmplementeerd in een ander subnet dan het App Service Environment. Als u resources in hetzelfde subnet met de ASE implementeert, wordt de connectiviteit van ASE naar die bronnen geblokkeerd (met uitzonde ring van specifieke intra-ASE-route ring). Implementeer in plaats daarvan naar een ander subnet (in hetzelfde VNET). Het App Service Environment kan dan verbinding maken. Er is geen aanvullende configuratie nodig.
 > 
 > 
 
-App-serviceomgevingen communiceren ook met Sql DB- en Azure Storage-resources die nodig zijn voor het beheren en beheren van een App-serviceomgeving.  Sommige sql- en opslagbronnen waarmee een App-serviceomgeving communiceert, bevinden zich in dezelfde regio als de App-serviceomgeving, terwijl andere zich in externe Azure-regio's bevinden.  Als gevolg hiervan is uitgaande connectiviteit met het internet altijd vereist om een App Service-omgeving goed te laten functioneren. 
+App Service omgevingen communiceren ook met SQL DB en Azure Storage bronnen die nodig zijn om een App Service Environment te beheren en te gebruiken.  Sommige van de SQL-en opslag resources waarmee een App Service Environment communiceert, bevinden zich in dezelfde regio als de App Service Environment, terwijl anderen zich in externe Azure-regio's bevinden.  Als gevolg hiervan is de uitgaande verbinding met Internet altijd vereist om een App Service Environment goed te laten functioneren. 
 
-Aangezien een App-serviceomgeving in een subnet wordt geïmplementeerd, kunnen netwerkbeveiligingsgroepen worden gebruikt om binnenkomend verkeer naar het subnet te beheren.  Zie het volgende [artikel][controllinginboundtraffic]voor meer informatie over het beheren van binnenkomend verkeer naar een App-serviceomgeving.
+Omdat een App Service Environment is geïmplementeerd in een subnet, kunnen netwerk beveiligings groepen worden gebruikt voor het beheren van inkomend verkeer naar het subnet.  Zie het volgende [artikel][controllinginboundtraffic]voor meer informatie over het beheren van inkomend verkeer naar een app service environment.
 
-Zie het volgende artikel over het werken met [Express Route][ExpressRoute]voor meer informatie over het toestaan van uitgaande internetverbinding vanuit een App-serviceomgeving.  Dezelfde benadering die in het artikel wordt beschreven, is van toepassing bij het werken met site-to-site-connectiviteit en het gebruik van gedwongen tunneling.
+Raadpleeg het volgende artikel over het werken met [Express route][ExpressRoute]voor meer informatie over het toestaan van uitgaande internet connectiviteit via een app service environment.  Dezelfde benadering die in het artikel wordt beschreven, is van toepassing wanneer u werkt met site-naar-site-connectiviteit en geforceerde tunneling gebruikt.
 
-## <a name="outbound-network-addresses"></a>Uitgaande netwerkadressen
-Wanneer een App Service-omgeving uitgaande gesprekken voert, wordt een IP-adres altijd gekoppeld aan de uitgaande oproepen.  Het specifieke IP-adres dat wordt gebruikt, is afhankelijk van de vraag of het endpoint dat wordt aangeroepen zich bevindt binnen de virtuele netwerktopologie of buiten de virtuele netwerktopologie.
+## <a name="outbound-network-addresses"></a>Uitgaande netwerk adressen
+Wanneer een App Service Environment uitgaande aanroepen maakt, wordt er altijd een IP-adres gekoppeld aan de uitgaande oproepen.  Het specifieke IP-adres dat wordt gebruikt, is afhankelijk van het feit of het eind punt dat wordt aangeroepen zich in de topologie van het virtuele netwerk bevindt, of buiten de topologie van het virtuele netwerk.
 
-Als het endpoint dat wordt aangeroepen **buiten** de virtuele netwerktopologie valt, is het uitgaande adres (ook bekend als het uitgaande NAT-adres) dat wordt gebruikt de openbare VIP van de App-serviceomgeving.  Dit adres is te vinden in de gebruikersinterface van de portal voor de App Service-omgeving in het blad Eigenschappen.
+Als het eind punt dat wordt aangeroepen, zich **buiten** de topologie van het virtuele netwerk bevindt, is het uitgaande adres (ook wel het uitgaande NAT-adres) dat wordt gebruikt, de open bare VIP van de app service environment.  Dit adres bevindt zich in de gebruikers interface van de portal voor de App Service Environment in de Blade eigenschappen.
 
 ![Uitgaand IP-adres][OutboundIPAddress]
 
-Dit adres kan ook worden bepaald voor AS's die alleen een openbare VIP hebben door een app te maken in de App Service-omgeving en vervolgens een *nslookup* uit te voeren op het adres van de app. Het resulterende IP-adres is zowel de openbare VIP als het uitgaande NAT-adres van de App Service Environment.
+Dit adres kan ook worden vastgesteld voor as die alleen een open bare VIP hebben door een app te maken in het App Service Environment en vervolgens een *nslookup* op het adres van de app uit te voeren. Het resulterende IP-adres is zowel het open bare VIP als het uitgaande NAT-adres van de App Service Environment.
 
-Als het eindpunt dat wordt aangeroepen **zich binnen** de virtuele netwerktopologie bevindt, is het uitgaande adres van de aanroepende app het interne IP-adres van de afzonderlijke compute resource waarop de app wordt uitgevoerd.  Er is echter geen permanente toewijzing van interne IP-adressen van virtuele netwerken naar apps.  Apps kunnen zich verplaatsen over verschillende rekenresources en de groep beschikbare rekenbronnen in een App-serviceomgeving kan worden gewijzigd als gevolg van schaalbewerkingen.
+Als het eind punt dat wordt aangeroepen zich **binnen** de topologie van het virtuele netwerk bevindt, wordt het uitgaande adres van de aanroepende app het interne IP-adres van de afzonderlijke Compute-resource die de app uitvoert.  Er is echter geen permanente toewijzing van interne IP-adressen van virtuele netwerken aan apps.  Apps kunnen door verschillende reken bronnen worden verplaatst en de groep beschik bare reken resources in een App Service Environment kan worden gewijzigd als gevolg van schaal bewerkingen.
 
-Aangezien een App Service-omgeving zich echter altijd in een subnet bevindt, bent u er zeker van dat het interne IP-adres van een compute resource waarop een app wordt uitgevoerd, altijd binnen het CIDR-bereik van het subnet zal liggen.  Als gevolg hiervan moet het subnetbereik met de App Service-omgeving toegang krijgen wanneer fijnmazige ACL's of netwerkbeveiligingsgroepen worden gebruikt om toegang te krijgen tot andere eindpunten binnen het virtuele netwerk.
+Omdat een App Service Environment echter altijd binnen een subnet ligt, weet u zeker dat het interne IP-adres van een reken resource die een app uitvoert, altijd binnen het CIDR-bereik van het subnet ligt.  Als gevolg hiervan, wanneer er verfijnde Acl's of netwerk beveiligings groepen worden gebruikt om de toegang tot andere eind punten binnen het virtuele netwerk te beveiligen, moet het subnet-bereik met de App Service Environment toegang krijgen.
 
-In het volgende diagram worden deze concepten nader weergegeven:
+In het volgende diagram ziet u deze concepten meer details:
 
-![Uitgaande netwerkadressen][OutboundNetworkAddresses]
+![Uitgaande netwerk adressen][OutboundNetworkAddresses]
 
 In het bovenstaande diagram:
 
-* Aangezien de openbare VIP van de App Service Environment is 192.23.1.2, dat is de uitgaande IP-adres gebruikt bij het maken van gesprekken naar "Internet" eindpunten.
-* Het CIDR-bereik van het subnet voor de App Service-omgeving is 10.0.1.0/26.  Andere eindpunten binnen dezelfde virtuele netwerkinfrastructuur zien oproepen van apps als afkomstig van ergens binnen dit adresbereik.
+* Omdat de open bare VIP van de App Service Environment 192.23.1.2 is, is dat het uitgaande IP-adres dat wordt gebruikt bij het aanroepen van Internet-eind punten.
+* Het CIDR-bereik van het bovenliggende subnet voor de App Service Environment is 10.0.1.0/26.  Andere eind punten binnen de infra structuur van het virtuele netwerk krijgen vanaf ergens binnen dit adres bereik aanroepen van apps.
 
-## <a name="calls-between-app-service-environments"></a>Gesprekken tussen app-serviceomgevingen
-Er kan een complexer scenario optreden als u meerdere App-serviceomgevingen implementeert in hetzelfde virtuele netwerk en uitgaande gesprekken maakt van de ene App Service-omgeving naar een andere App Service-omgeving.  Dit soort cross App Service Environment calls worden ook behandeld als "Internet" gesprekken.
+## <a name="calls-between-app-service-environments"></a>Aanroepen tussen App Service omgevingen
+Een complexere scenario kan zich voordoen als u meerdere App Service omgevingen in hetzelfde virtuele netwerk implementeert en uitgaande aanroepen van een App Service Environment naar een ander App Service Environment maakt.  Deze typen cross-App Service Environment-aanroepen worden ook behandeld als Internet-aanroepen.
 
-In het volgende diagram ziet u een voorbeeld van een gelaagde architectuur met apps op één App Service-omgeving (bijvoorbeeld webapps 'Voordeur') die apps aanroepen in een tweede App Service-omgeving (bijvoorbeeld interne back-end API-apps die niet bedoeld zijn om toegankelijk te zijn vanaf internet). 
+Het volgende diagram toont een voor beeld van een gelaagde architectuur met apps op één App Service Environment (bijvoorbeeld ' front-deur ' web-apps) die apps aanroepen op een tweede App Service Environment (bijvoorbeeld interne back-end-API-apps die niet zijn bedoeld om te worden benaderd via internet). 
 
-![Gesprekken tussen app-serviceomgevingen][CallsBetweenAppServiceEnvironments] 
+![Aanroepen tussen App Service omgevingen][CallsBetweenAppServiceEnvironments] 
 
-In het bovenstaande voorbeeld heeft de App Service Environment "ASE One" een uitgaand IP-adres van 192.23.1.2.  Als een app die wordt uitgevoerd in deze app-serviceomgeving een uitgaande oproep doet naar een app die wordt uitgevoerd op een tweede App Service-omgeving ('ASE 2') in hetzelfde virtuele netwerk, wordt het uitgaande gesprek behandeld als een 'internetgesprek'.  Als gevolg hiervan zal het netwerkverkeer dat op de tweede App Service Omgeving aankomt, worden weergegeven als afkomstig van 192.23.1.2 (dus niet het subnetadresbereik van de eerste App Service Environment).
+In het bovenstaande voor beeld heeft de App Service Environment "ASE One" een uitgaand IP-adres van 192.23.1.2.  Als een app die op deze App Service Environment wordt uitgevoerd, een uitgaande oproep doet naar een app die wordt uitgevoerd op een tweede App Service Environment ("ASE twee") in hetzelfde virtuele netwerk, wordt de uitgaande oproep behandeld als een Internet aanroep.  Als gevolg hiervan wordt het netwerk verkeer dat binnenkomt op de tweede App Service Environment weer gegeven als afkomstig van 192.23.1.2 (dat wil zeggen, niet het adres bereik van het subnet van de eerste App Service Environment).
 
-Hoewel gesprekken tussen verschillende App-serviceomgevingen worden behandeld als 'internet'-oproepen, blijft het netwerkverkeer op het regionale Azure-netwerk en stroomt het niet fysiek over het regionale Azure-netwerk openbaar internet.  Als gevolg hiervan u een netwerkbeveiligingsgroep op het subnet van de tweede App-serviceomgeving gebruiken om alleen binnenkomende oproepen toe te staan vanuit de eerste App Service-omgeving (waarvan het uitgaande IP-adres 192.23.1.2 is), waardoor een veilige communicatie tussen de App wordt gewaarborgd Serviceomgevingen.
+Hoewel aanroepen tussen verschillende App Service omgevingen worden behandeld als Internet-aanroepen, wanneer beide App Service omgevingen zich in dezelfde Azure-regio bevinden, blijft het netwerk verkeer op het regionale Azure-netwerk en niet fysiek over op het open bare Internet.  Als gevolg hiervan kunt u een netwerk beveiligings groep in het subnet van de tweede App Service Environment gebruiken om alleen inkomende aanroepen van de eerste App Service Environment (waarvan het uitgaande IP-adres 192.23.1.2 is) toe te staan, waardoor de communicatie tussen de App Service omgevingen gewaarborgd blijft.
 
-## <a name="additional-links-and-information"></a>Aanvullende koppelingen en -informatie
-Details over binnenkomende poorten die worden gebruikt door App-serviceomgevingen en het gebruik van netwerkbeveiligingsgroepen om binnenkomend verkeer te beheren, zijn [hier][controllinginboundtraffic]beschikbaar.
+## <a name="additional-links-and-information"></a>Aanvullende koppelingen en informatie
+Meer informatie over binnenkomende poorten die worden gebruikt door App Service omgevingen en het gebruik van netwerk beveiligings groepen om inkomend verkeer te beheren, is [hier][controllinginboundtraffic]beschikbaar.
 
-Details over het gebruik van door de gebruiker gedefinieerde routes om uitgaande internettoegang tot App-serviceomgevingen te verlenen, zijn beschikbaar in dit [artikel.][ExpressRoute] 
+Meer informatie over het gebruik van door de gebruiker gedefinieerde routes voor het verlenen van uitgaande internet toegang aan App Service omgevingen is beschikbaar in dit [artikel][ExpressRoute]. 
 
 <!-- LINKS -->
 [virtualnetwork]: https://azure.microsoft.com/services/virtual-network/

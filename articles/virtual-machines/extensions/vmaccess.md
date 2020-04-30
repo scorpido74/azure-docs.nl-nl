@@ -1,6 +1,6 @@
 ---
-title: Toegang tot een Azure Linux VM opnieuw instellen
-description: Beheergebruikers beheren en de toegang op Linux VM's opnieuw instellen met de VMAccess-extensie en de Azure CLI
+title: Toegang tot een virtuele machine van Azure Linux opnieuw instellen
+description: Gebruikers met beheerders rechten beheren en de toegang tot de virtuele Linux-machines opnieuw instellen met behulp van de VMAccess-extensie en de Azure CLI
 services: virtual-machines-linux
 documentationcenter: ''
 author: axayjo
@@ -16,47 +16,47 @@ ms.topic: article
 ms.date: 05/10/2018
 ms.author: akjosh
 ms.openlocfilehash: bd9dc05a84a4ee54fce40e6c88e87ac90bfee8a5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79250359"
 ---
-# <a name="manage-administrative-users-ssh-and-check-or-repair-disks-on-linux-vms-using-the-vmaccess-extension-with-the-azure-cli"></a>Beheer administratieve gebruikers, SSH en controleer of repareer schijven op Linux VM's met de VMAccess-extensie met de Azure CLI
+# <a name="manage-administrative-users-ssh-and-check-or-repair-disks-on-linux-vms-using-the-vmaccess-extension-with-the-azure-cli"></a>Beheer gebruikers, SSH-en herstel schijven op Linux-Vm's met de VMAccess-extensie met de Azure CLI
 ## <a name="overview"></a>Overzicht
-De schijf op uw Linux VM vertoont fouten. U reset op de een of andere manier het hoofdwachtwoord voor uw Linux-VM of hebt per ongeluk uw SSH-privésleutel verwijderd. Als dat gebeurde terug in de dagen van het datacenter, zou je nodig hebt om daar te rijden en open de KVM te krijgen op de server console. Denk aan de Azure VMAccess-extensie als die KVM-switch waarmee u toegang krijgt tot de console om de toegang tot Linux te resetten of onderhoud op schijfniveau uit te voeren.
+Op de schijf op de virtuele Linux-machine worden fouten weer gegeven. U stelt het Hoofdwacht woord voor uw virtuele Linux-machine opnieuw in of u hebt per ongeluk uw persoonlijke SSH-sleutel verwijderd. Als dat is gebeurd in de dagen van het Data Center, moet u daar een station maken en vervolgens de KVM openen om op de server console te komen. U kunt de Azure VMAccess-extensie beschouwen als de KVM-switch waarmee u toegang hebt tot de console om de toegang tot Linux opnieuw in te stellen of door onderhoud op schijf niveau uit te voeren.
 
-In dit artikel ziet u hoe u de Azure VMAccess-extensie gebruiken om een schijf te controleren of te herstellen, gebruikerstoegang opnieuw in te stellen, beheerdersgebruikersaccounts te beheren of de SSH-configuratie op Linux bij te werken wanneer deze worden uitgevoerd als virtuele azure-machines voor Azure Resource Manager. Als u klassieke virtuele machines moet beheren - u de instructies in de [klassieke VM-documentatie](../linux/classic/reset-access-classic.md)volgen. 
+In dit artikel wordt beschreven hoe u de Azure VMAccess-extensie gebruikt om een schijf te controleren of te herstellen, gebruikers toegang opnieuw in te stellen, accounts voor gebruikers met beheerders rechten te beheren of de SSH-configuratie op Linux bij te werken wanneer deze als Azure Resource Manager virtuele machines worden uitgevoerd. Als u klassieke virtuele machines wilt beheren, kunt u de instructies volgen die in de [klassieke VM-documentatie](../linux/classic/reset-access-classic.md)worden gevonden. 
  
 > [!NOTE]
-> Als u de VMAccess-extensie gebruikt om het wachtwoord van uw vm opnieuw in te stellen na het installeren van de AAD-inlogextensie, moet u de AAD-inlogextensie opnieuw uitvoeren om AAD Login voor uw machine opnieuw in te schakelen.
+> Als u de VMAccess-extensie gebruikt om het wacht woord van uw virtuele machine opnieuw in te stellen na de installatie van de AAD-aanmeldings extensie, moet u de AAD-aanmeldings extensie opnieuw uitvoeren om AAD-aanmelding voor uw computer opnieuw in te scha kelen.
 
 ## <a name="prerequisites"></a>Vereisten
 ### <a name="operating-system"></a>Besturingssysteem
 
-De VM Access-extensie kan worden uitgevoerd tegen deze Linux-distributies:
+De extensie voor VM-toegang kan worden uitgevoerd voor deze Linux-distributies:
 
 | Distributie | Versie |
 |---|---|
 | Ubuntu | 16,04 LTS, 14,04 LTS en 12,04 LTS |
-| Debian | Debian 7.9+, 8.2+ |
-| Red Hat | RHEL 6,7+, 7,1+ |
-| Oracle Linux | 6,4+, 7,0+ |
-| Suse | 11 en 12 |
-| Opensuse | openSUSE Leap 42.2+ |
-| CentOS | CentOS 6.3+, 7.0+ |
-| CoreOS | 494.4.0+ |
+| Debian | Debian 7,9 +, 8.2 + |
+| Red Hat | RHEL 6,7 +, 7.1 + |
+| Oracle Linux | 6.4 +, 7.0 + |
+| SuSE | 11 en 12 |
+| OpenSuse | openSUSE Schrikkel 42.2 + |
+| CentOS | CentOS 6.3 +, 7.0 + |
+| CoreOS | 494.4.0 + |
 
 ## <a name="ways-to-use-the-vmaccess-extension"></a>Manieren om de VMAccess-extensie te gebruiken
-Er zijn twee manieren waarop u de VMAccess-extensie op uw Linux-VM's gebruiken:
+Er zijn twee manieren waarop u de VMAccess-extensie kunt gebruiken op uw virtuele Linux-machines:
 
-* Gebruik de Azure CLI en de vereiste parameters.
-* [Gebruik onbewerkte JSON-bestanden die het VMAccess-extensieproces verwerken](#use-json-files-and-the-vmaccess-extension) en vervolgens reageren.
+* Gebruik de Azure CLI en de vereiste para meters.
+* [Gebruik onbewerkte json-bestanden die de VMAccess-extensie verwerken](#use-json-files-and-the-vmaccess-extension) en klik vervolgens op.
 
-In de volgende voorbeelden worden de [az vm-gebruikersopdrachten](/cli/azure/vm/user) gebruikt. Om deze stappen uit te voeren, moet u de nieuwste [Azure CLI](/cli/azure/install-az-cli2) geïnstalleerd en ingelogd op een Azure-account met behulp van [az login](/cli/azure/reference-index).
+De volgende voor beelden gebruiken [AZ VM User](/cli/azure/vm/user) commands. Als u deze stappen wilt uitvoeren, moet u de nieuwste [Azure cli](/cli/azure/install-az-cli2) installeren en u aanmelden bij een Azure-account met [AZ login](/cli/azure/reference-index).
 
 ## <a name="update-ssh-key"></a>SSH-sleutel bijwerken
-In het volgende voorbeeld wordt de `azureuser` SSH-sleutel voor de gebruiker op de vm bijgewerkt met de naam: `myVM`
+In het volgende voor beeld wordt de SSH-sleutel `azureuser` voor de gebruiker op `myVM`de VM bijgewerkt met de naam:
 
 ```azurecli-interactive
 az vm user update \
@@ -66,10 +66,10 @@ az vm user update \
   --ssh-key-value ~/.ssh/id_rsa.pub
 ```
 
-> **LET OP:** De `az vm user update` opdracht voegt de nieuwe tekst `~/.ssh/authorized_keys` van de openbare sleutel toe aan het bestand voor de beheerdergebruiker op de vm. Dit vervangt of verwijdert geen bestaande SSH-sleutels. Dit verwijdert geen eerdere sleutels die zijn ingesteld bij implementatietijd of latere updates via de VMAccess-extensie.
+> **Opmerking:** De `az vm user update` opdracht voegt de nieuwe open bare-sleutel tekst toe `~/.ssh/authorized_keys` aan het bestand voor de gebruiker met beheerders rechten op de VM. Hiermee worden geen bestaande SSH-sleutels vervangen of verwijderd. Hiermee verwijdert u geen eerdere sleutels die zijn ingesteld tijdens de implementatie tijd of volgende updates via de VMAccess-extensie.
 
 ## <a name="reset-password"></a>Wachtwoord opnieuw instellen
-In het volgende voorbeeld wordt `azureuser` het wachtwoord `myVM`voor de gebruiker op de vm met de naam opnieuw ingesteld:
+In het volgende voor beeld wordt het wacht woord `azureuser` voor de gebruiker opnieuw `myVM`ingesteld op de VM met de naam:
 
 ```azurecli-interactive
 az vm user update \
@@ -80,7 +80,7 @@ az vm user update \
 ```
 
 ## <a name="restart-ssh"></a>SSH opnieuw starten
-In het volgende voorbeeld wordt de SSH-daemon opnieuw gestart en `myVM`wordt de SSH-configuratie gereset naar standaardwaarden op een vm met de naam:
+In het volgende voor beeld wordt de SSH-daemon opnieuw gestart en wordt de SSH-configuratie opnieuw ingesteld op `myVM`de standaard waarden voor een virtuele machine met de naam:
 
 ```azurecli-interactive
 az vm user reset-ssh \
@@ -89,7 +89,7 @@ az vm user reset-ssh \
 ```
 
 ## <a name="create-an-administrativesudo-user"></a>Een gebruiker met beheerdersrechten/sudo-gebruiker maken
-In het volgende voorbeeld `myNewUser` wordt een gebruiker met de naam **Sudo-machtigingen** genaamerd. Het account gebruikt een SSH-sleutel `myVM`voor verificatie op de VM met de naam . Deze methode is ontworpen om u te helpen weer toegang te krijgen tot een VM in het geval dat de huidige referenties verloren gaan of vergeten. Als best practice moeten accounts met **sudo-machtigingen** worden beperkt.
+In het volgende voor beeld wordt een `myNewUser` gebruiker gemaakt met de naam **sudo** -machtigingen. Het account gebruikt een SSH-sleutel voor verificatie op de virtuele `myVM`machine met de naam. Deze methode is ontworpen om u te helpen weer toegang te krijgen tot een virtuele machine in het geval dat de huidige referenties verloren zijn gegaan of worden verg eten. Als best practice worden accounts met **sudo** -machtigingen beperkt.
 
 ```azurecli-interactive
 az vm user update \
@@ -100,7 +100,7 @@ az vm user update \
 ```
 
 ## <a name="delete-a-user"></a>Een gebruiker verwijderen
-In het volgende voorbeeld `myNewUser` wordt een `myVM`gebruiker met de naam VM verwijderd:
+In het volgende voor beeld wordt een `myNewUser` gebruiker met de naam `myVM`op de VM verwijderd met de naam:
 
 ```azurecli-interactive
 az vm user delete \
@@ -110,12 +110,12 @@ az vm user delete \
 ```
 
 ## <a name="use-json-files-and-the-vmaccess-extension"></a>JSON-bestanden en de VMAccess-extensie gebruiken
-In de volgende voorbeelden worden onbewerkte JSON-bestanden gebruikt. Gebruik [de AZ VM-extensieset](/cli/azure/vm/extension) om vervolgens je JSON-bestanden aan te roepen. Deze JSON-bestanden kunnen ook worden aangeroepen vanuit Azure-sjablonen. 
+In de volgende voor beelden worden onbewerkte JSON-bestanden gebruikt. Gebruik [AZ VM extension set](/cli/azure/vm/extension) om de json-bestanden aan te roepen. Deze JSON-bestanden kunnen ook worden aangeroepen vanuit Azure-sjablonen. 
 
-### <a name="reset-user-access"></a>Gebruikerstoegang opnieuw instellen
-Als u geen toegang meer hebt tot root op uw Linux-VM, u een VMAccess-script starten om de SSH-sleutel of het wachtwoord van een gebruiker bij te werken.
+### <a name="reset-user-access"></a>Gebruikers toegang opnieuw instellen
+Als u de toegang tot de hoofdmap op uw Linux-VM verloren hebt, kunt u een VMAccess-script starten om de SSH-sleutel of het wacht woord van een gebruiker bij te werken.
 
-Als u de openbare SSH-sleutel van `update_ssh_key.json` een gebruiker wilt bijwerken, maakt u een bestand met de naam en voegt u instellingen toe in de volgende indeling. Vervang uw eigen `username` waarden `ssh_key` voor de parameters en parameters:
+Als u de open bare SSH-sleutel van een gebruiker wilt bijwerken, `update_ssh_key.json` maakt u een bestand met de naam en voegt u de instellingen in de volgende indeling toe. Vervang uw eigen waarden voor de `username` para `ssh_key` meters en:
 
 ```json
 {
@@ -136,7 +136,7 @@ az vm extension set \
   --protected-settings update_ssh_key.json
 ```
 
-Als u een gebruikerswachtwoord opnieuw `reset_user_password.json` wilt instellen, maakt u een bestand met de naam en voegt u instellingen toe in de volgende indeling. Vervang uw eigen `username` waarden `password` voor de parameters en parameters:
+Als u een gebruikers wachtwoord opnieuw wilt instellen, maakt `reset_user_password.json` u een bestand met de naam en voegt u de instellingen in de volgende indeling toe. Vervang uw eigen waarden voor de `username` para `password` meters en:
 
 ```json
 {
@@ -158,7 +158,7 @@ az vm extension set \
 ```
 
 ### <a name="restart-ssh"></a>SSH opnieuw starten
-Als u de SSH-daemon opnieuw wilt starten en de `reset_sshd.json`SSH-configuratie wilt resetten naar standaardwaarden, maakt u een bestand met de naam . Voeg de volgende inhoud toe:
+Als u de SSH-daemon opnieuw wilt opstarten en de SSH-configuratie opnieuw wilt instellen op `reset_sshd.json`de standaard waarden, maakt u een bestand met de naam. Voeg de volgende inhoud toe:
 
 ```json
 {
@@ -178,9 +178,9 @@ az vm extension set \
   --protected-settings reset_sshd.json
 ```
 
-### <a name="manage-administrative-users"></a>Beheerdersbeherende gebruikers beheren
+### <a name="manage-administrative-users"></a>Gebruikers met beheerders rechten beheren
 
-Als u een gebruiker wilt maken met **sudo-machtigingen** die een `create_new_user.json` SSH-sleutel voor verificatie gebruikt, maakt u een bestand met de naam en voegt u instellingen toe in de volgende indeling. Vervang uw eigen `username` waarden `ssh_key` voor de en parameters. Deze methode is ontworpen om u te helpen weer toegang te krijgen tot een VM in het geval dat de huidige referenties verloren gaan of vergeten. Als best practice moeten accounts met **sudo-machtigingen** worden beperkt.
+Als u een gebruiker wilt maken met **sudo** -machtigingen die een SSH-sleutel voor verificatie gebruiken, `create_new_user.json` maakt u een bestand met de naam en voegt u de instellingen in de volgende indeling toe. Vervang uw eigen waarden door de `username` para `ssh_key` meters en. Deze methode is ontworpen om u te helpen weer toegang te krijgen tot een virtuele machine in het geval dat de huidige referenties verloren zijn gegaan of worden verg eten. Als best practice worden accounts met **sudo** -machtigingen beperkt.
 
 ```json
 {
@@ -202,7 +202,7 @@ az vm extension set \
   --protected-settings create_new_user.json
 ```
 
-Als u een gebruiker wilt `delete_user.json` verwijderen, maakt u een bestand met de naam en voegt u de volgende inhoud toe. Vervang uw eigen `remove_user` waarde voor de parameter:
+Als u een gebruiker wilt verwijderen, maakt u `delete_user.json` een bestand met de naam en voegt u de volgende inhoud toe. Vervang uw eigen waarde door de `remove_user` para meter:
 
 ```json
 {
@@ -222,10 +222,10 @@ az vm extension set \
   --protected-settings delete_user.json
 ```
 
-### <a name="check-or-repair-the-disk"></a>De schijf controleren of repareren
-Met VMAccess u ook een schijf controleren en repareren die u aan de Linux-VM hebt toegevoegd.
+### <a name="check-or-repair-the-disk"></a>De schijf controleren of herstellen
+Met VMAccess kunt u ook een schijf controleren en herstellen die u hebt toegevoegd aan de virtuele Linux-machine.
 
-Als u de schijf wilt controleren `disk_check_repair.json` en vervolgens wilt herstellen, maakt u een bestand met de naam en voegt u instellingen toe in de volgende indeling. Vervang uw eigen waarde `repair_disk`voor de naam van :
+Als u de schijf wilt controleren en vervolgens wilt herstellen, maakt `disk_check_repair.json` u een bestand met de naam en voegt u de instellingen in de volgende indeling toe. Vervang uw eigen waarde door de `repair_disk`volgende naam:
 
 ```json
 {
@@ -249,7 +249,7 @@ az vm extension set \
 
 ### <a name="troubleshoot"></a>Problemen oplossen
 
-Gegevens over de status van extensie-implementaties kunnen worden opgehaald uit de Azure-portal en met behulp van de Azure CLI. Als u de implementatiestatus van extensies voor een bepaalde VM wilt bekijken, voert u de volgende opdracht uit met de Azure CLI.
+Gegevens over de status van uitbreidings implementaties kunnen worden opgehaald uit het Azure Portal en met behulp van de Azure CLI. Als u de implementatie status van uitbrei dingen voor een bepaalde virtuele machine wilt bekijken, voert u de volgende opdracht uit met behulp van de Azure CLI.
 
 ```azurecli
 az vm extension list --resource-group myResourceGroup --vm-name myVM -o table
@@ -257,4 +257,4 @@ az vm extension list --resource-group myResourceGroup --vm-name myVM -o table
 
 ### <a name="support"></a>Ondersteuning
 
-Als u op enig moment in dit artikel meer hulp nodig hebt, u contact opnemen met de Azure-experts op de [FORUMS VOOR MSDN Azure en Stack Overflow.](https://azure.microsoft.com/support/forums/) U ook een Azure-ondersteuningsincident indienen. Ga naar de [Azure-ondersteuningssite](https://azure.microsoft.com/support/options/) en selecteer Ondersteuning krijgen. Lees de veelgestelde vragen over [Microsoft Azure-ondersteuning](https://azure.microsoft.com/support/faq/)voor informatie over het gebruik van Azure Support.
+Als u op elk moment in dit artikel meer hulp nodig hebt, kunt u contact opnemen met de Azure-experts op [MSDN Azure en stack overflow forums](https://azure.microsoft.com/support/forums/). U kunt ook een ondersteunings incident voor Azure opslaan. Ga naar de [ondersteunings site van Azure](https://azure.microsoft.com/support/options/) en selecteer ondersteuning verkrijgen. Lees de [Veelgestelde vragen over ondersteuning voor Microsoft Azure](https://azure.microsoft.com/support/faq/)voor meer informatie over het gebruik van Azure-ondersteuning.

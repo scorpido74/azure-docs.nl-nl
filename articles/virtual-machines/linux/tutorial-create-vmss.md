@@ -1,6 +1,6 @@
 ---
-title: 'Zelfstudie: Een computerschaalset voor Linux maken'
-description: Meer informatie over het gebruik van de Azure CLI voor het maken en implementeren van een zeer beschikbare toepassing op Linux VM's met behulp van een virtuele machineschaalset
+title: 'Zelf studie: een schaalset voor een virtuele Linux-machine maken'
+description: Meer informatie over het gebruik van de Azure CLI voor het maken en implementeren van een Maxi maal beschik bare toepassing op Linux Vm's met behulp van een schaalset voor virtuele machines
 services: virtual-machine-scale-sets
 documentationcenter: ''
 author: cynthn
@@ -17,10 +17,10 @@ ms.date: 06/01/2018
 ms.author: cynthn
 ms.custom: mvc
 ms.openlocfilehash: 7a256fc5268c10dd05a2cf58747107cb26c3ced9
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "79238592"
 ---
 # <a name="tutorial-create-a-virtual-machine-scale-set-and-deploy-a-highly-available-app-on-linux-with-the-azure-cli"></a>Zelfstudie: Een virtuele-machineschaalset maken en een toepassing met hoge beschikbaarheid implementeren in Linux met Azure CLI
@@ -35,7 +35,7 @@ Met een virtuele-machineschaalset kunt u een reeks identieke virtuele machines m
 > * Verbindingsgegevens voor schaalsetinstanties weergeven
 > * Gegevensschijven in een schaalset gebruiken
 
-Deze zelfstudie maakt gebruik van de CLI in de [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview), die voortdurend wordt bijgewerkt naar de nieuwste versie. Als u de Cloud Shell wilt openen, selecteert **u Probeer deze** boven aan een codeblok.
+In deze zelf studie wordt gebruikgemaakt van de CLI binnen de [Azure Cloud shell](https://docs.microsoft.com/azure/cloud-shell/overview), die voortdurend wordt bijgewerkt naar de nieuwste versie. Als u de Cloud Shell wilt openen, selecteert u **deze** in het begin van een wille keurig code blok.
 
 Als u ervoor kiest om de CLI lokaal te installeren en te gebruiken, moet u Azure CLI 2.0.30 of hoger gebruiken voor deze zelfstudie. Voer `az --version` uit om de versie te bekijken. Als u Azure CLI 2.0 wilt installeren of upgraden, raadpleegt u [Azure CLI 2.0 installeren]( /cli/azure/install-azure-cli).
 

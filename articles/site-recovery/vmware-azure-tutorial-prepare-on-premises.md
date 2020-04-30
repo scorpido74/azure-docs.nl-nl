@@ -1,5 +1,5 @@
 ---
-title: Voorbereiden op VMware VM-noodherstel met Azure Site Recovery
+title: Voorbereiden op een nood herstel van de VMware-VM met Azure Site Recovery
 description: Leer hoe u on-premises VMware-servers kunt voorbereiden op herstel naar Azure na een noodgeval met behulp van de Azure Site Recovery-service.
 author: rayne-wiselman
 manager: carmonm
@@ -9,15 +9,15 @@ ms.date: 11/12/2019
 ms.author: raynew
 ms.custom: MVC
 ms.openlocfilehash: 4969a1f14e53aabf79495e179213f9763d4c8803
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "79238858"
 ---
 # <a name="prepare-on-premises-vmware-servers-for-disaster-recovery-to-azure"></a>On-premises VMware-servers voorbereiden op herstel naar Azure na een noodgeval
 
-In dit artikel wordt beschreven hoe u on-premises VMware-servers voorbereiden op herstel na noodgevallen naar Azure met behulp van de [Azure Site Recovery-services.](site-recovery-overview.md) 
+In dit artikel wordt beschreven hoe u on-premises VMware-servers voorbereidt op herstel na nood geval met behulp van de [Azure site Recovery](site-recovery-overview.md) Services. 
 
 Dit is de tweede zelfstudie in een reeks waarin u ziet hoe u herstel na noodgeval kunt instellen voor Azure voor on-premises VMware-VM’s. In de eerste zelfstudie hebben we de [Azure-onderdelen ingesteld](tutorial-prepare-azure.md) die nodig zijn voor VMware-noodherstel.
 
@@ -25,17 +25,17 @@ Dit is de tweede zelfstudie in een reeks waarin u ziet hoe u herstel na noodgeva
 In dit artikel leert u het volgende:
 
 > [!div class="checklist"]
-> * Bereid een account voor op de vCenter-server of vSphere ESXi-host om VM-detectie te automatiseren.
-> * Maak een account voor voor de automatische installatie van de Mobiliteitsservice op VMware VM's.
-> * Bekijk vmware-server- en VM-vereisten en -ondersteuning.
-> * Bereid u voor om verbinding te maken met Azure VM's na een failover.
+> * Bereid een account voor op de vCenter-Server of vSphere ESXi-host om de VM-detectie te automatiseren.
+> * Een account voorbereiden voor automatische installatie van de Mobility-service op VMware-Vm's.
+> * Bekijk de vereisten en ondersteuning voor VMware-servers en-VM'S.
+> * Voorbereiden om verbinding te maken met virtuele Azure-machines na een failover.
 
 > [!NOTE]
-> In zelfstudies ziet u het eenvoudigste implementatiepad voor een scenario. Waar mogelijk wordt gebruikgemaakt van standaardopties en niet alle mogelijke instellingen en paden worden weergegeven. Bekijk het artikel in de sectie Hoe naar de inhoudsopgave van de site herstel voor gedetailleerde instructies.
+> Zelf studies laten u de eenvoudigste implementatie traject voor een scenario zien. Waar mogelijk wordt gebruikgemaakt van standaardopties en niet alle mogelijke instellingen en paden worden weergegeven. Raadpleeg het artikel in het gedeelte How to van de inhouds opgave van Site Recovery voor gedetailleerde instructies.
 
 ## <a name="before-you-start"></a>Voordat u begint
 
-Zorg ervoor dat u Azure hebt voorbereid zoals beschreven in de [eerste zelfstudie in deze serie.](tutorial-prepare-azure.md)
+Zorg ervoor dat u Azure hebt voor bereid zoals beschreven in de [eerste zelf studie in deze serie](tutorial-prepare-azure.md).
 
 ## <a name="prepare-an-account-for-automatic-discovery"></a>Een account voorbereiden voor automatische detectie
 
@@ -52,10 +52,10 @@ Ga als volgt te werk om het account te maken:
 
 ### <a name="vmware-account-permissions"></a>Machtigingen voor VMware-account
 
-**Taak** | **Rol/machtigingen** | **Details**
+**Taak** | **Rol/machtigingen** | **Nadere**
 --- | --- | ---
-**VM-detectie** | Ten minste een alleen-lezen-gebruiker<br/><br/> Datacentrumobject –> doorgeven naar onderliggend object, rol=Alleen-lezen | Gebruiker wordt toegewezen op datacentrumniveau, en heeft toegang tot alle objecten in het datacentrum.<br/><br/> Als u de toegang wilt beperken, wijst u de rol **Geen toegang** met het object Doorgeven toe aan het **onderliggende** object aan de onderliggende objecten (vSphere-hosts, gegevensopslag, VM's en netwerken).
-**Volledige replicatie, failover en failback** |  Maak een rol (Azure_Site_Recovery) met de vereiste machtigingen en wijs de rol toe aan een VMware-gebruiker of -groep<br/><br/> Datacentrumobject –> Doorgeven naar onderliggend object, rol=Azure_Site_Recovery<br/><br/> Gegevensopslag –> Ruimte toewijzen, browsen in de gegevensopslag, bestandsbewerkingen op laag niveau, bestand verwijderen, bestanden van virtuele machines bijwerken<br/><br/> Netwerk –> Netwerk toewijzen<br/><br/> Resource –> VM toewijzen aan resourcegroep, uitgeschakelde VM migreren, ingeschakelde VM migreren<br/><br/> Taken –> Taak maken, taak bijwerken<br/><br/> Virtuele machine –> Configuratie<br/><br/> Virtuele machine –> Interactie –> vraag beantwoorden, apparaatverbinding, CD's configureren, diskettes configureren, uitschakelen, inschakelen, VMware-hulpprogramma's installeren<br/><br/> Virtuele machine -> Inventaris –> Maken, registreren, registratie opheffen<br/><br/> Virtuele machine –> Inrichten –> Downloaden van virtuele machine toestaan, toestaan dat bestanden van virtuele machines worden geüpload<br/><br/> Virtuele machine –> Momentopnamen -> Momentopnamen verwijderen | Gebruiker wordt toegewezen op datacentrumniveau, en heeft toegang tot alle objecten in het datacentrum.<br/><br/> Als u de toegang wilt beperken, wijst u de rol **Geen toegang** met het object Doorgeven toe aan het **onderliggende** object aan de onderliggende objecten (vSphere-hosts, gegevensopslag, VM's en netwerken).
+**VM-detectie** | Ten minste een alleen-lezen-gebruiker<br/><br/> Datacentrumobject –> doorgeven naar onderliggend object, rol=Alleen-lezen | Gebruiker wordt toegewezen op datacentrumniveau, en heeft toegang tot alle objecten in het datacentrum.<br/><br/> Als u de toegang wilt beperken, wijst u de rol **geen toegang** met het object **door geven naar onderliggend** item toe aan de onderliggende objecten (vSphere-hosts, gegevens opslag, vm's en netwerken).
+**Volledige replicatie, failover en failback** |  Maak een rol (Azure_Site_Recovery) met de vereiste machtigingen en wijs de rol toe aan een VMware-gebruiker of -groep<br/><br/> Datacentrumobject –> Doorgeven naar onderliggend object, rol=Azure_Site_Recovery<br/><br/> Gegevensopslag –> Ruimte toewijzen, browsen in de gegevensopslag, bestandsbewerkingen op laag niveau, bestand verwijderen, bestanden van virtuele machines bijwerken<br/><br/> Netwerk –> Netwerk toewijzen<br/><br/> Resource –> VM toewijzen aan resourcegroep, uitgeschakelde VM migreren, ingeschakelde VM migreren<br/><br/> Taken –> Taak maken, taak bijwerken<br/><br/> Virtuele machine –> Configuratie<br/><br/> Virtuele machine –> Interactie –> vraag beantwoorden, apparaatverbinding, CD's configureren, diskettes configureren, uitschakelen, inschakelen, VMware-hulpprogramma's installeren<br/><br/> Virtuele machine -> Inventaris –> Maken, registreren, registratie opheffen<br/><br/> Virtuele machine –> Inrichten –> Downloaden van virtuele machine toestaan, toestaan dat bestanden van virtuele machines worden geüpload<br/><br/> Virtuele machine –> Momentopnamen -> Momentopnamen verwijderen | Gebruiker wordt toegewezen op datacentrumniveau, en heeft toegang tot alle objecten in het datacentrum.<br/><br/> Als u de toegang wilt beperken, wijst u de rol **geen toegang** met het object **door geven naar onderliggend** item toe aan de onderliggende objecten (vSphere-hosts, gegevens opslag, vm's en netwerken).
 
 ## <a name="prepare-an-account-for-mobility-service-installation"></a>Een account voorbereiden voor installatie van de Mobility-service
 
@@ -81,7 +81,7 @@ Controleer of de VMware-servers en VM's aan de vereisten voldoen.
 3. Controleer de ondersteuning voor het on-premises [netwerk](vmware-physical-azure-support-matrix.md#network) en de [opslag](vmware-physical-azure-support-matrix.md#storage). 
 4. Controleer wat er na failover wordt ondersteund voor [Azure-netwerken](vmware-physical-azure-support-matrix.md#azure-vm-network-after-failover), [-opslag](vmware-physical-azure-support-matrix.md#azure-storage) en [-rekenkracht](vmware-physical-azure-support-matrix.md#azure-compute).
 5. De on-premises VM's die u voor Azure repliceert, moeten overeenstemmen met [Azure VM-vereisten](vmware-physical-azure-support-matrix.md#azure-vm-requirements).
-6. Op een virtuele Linux-machine moet de naam van het apparaat of koppelpunt uniek zijn. Zorg ervoor dat twee apparaten/koppelpunten nooit dezelfde naam hebben. Houd er rekening mee dat de naam niet hoofdlettergevoelig is. Zo is het bijvoorbeeld niet toegestaan om twee apparaten voor dezelfde VM _device1_ en _Device1_ te noemen.
+6. Op een virtuele Linux-machine moet de naam van het apparaat of koppelpunt uniek zijn. Zorg ervoor dat twee apparaten/koppelpunten nooit dezelfde naam hebben. Houd er rekening mee dat de naam niet hoofdletter gevoelig is. Zo is het bijvoorbeeld niet toegestaan om twee apparaten voor dezelfde VM _device1_ en _Device1_ te noemen.
 
 
 ## <a name="prepare-to-connect-to-azure-vms-after-failover"></a>Voorbereiden op het verbinden met virtuele Azure-machines na een failover
@@ -90,12 +90,12 @@ Na een failover wilt u misschien vanaf uw on-premises netwerk verbinding maken m
 
 Als u na een failover verbinding wilt maken met Windows-VM’s met behulp van RDP, doet u het volgende:
 
-- **Internettoegang**. Schakel vóór een failover RDP in op de on-premises VM. Zorg dat TCP- en UDP-regels zijn toegevoegd voor het profiel **Openbaar** en dat RDP is toegestaan in **Windows Firewall** > **Toegestane apps** voor alle profielen.
+- **Internet toegang**. Schakel vóór een failover RDP in op de on-premises VM. Zorg dat TCP- en UDP-regels zijn toegevoegd voor het profiel **Openbaar** en dat RDP is toegestaan in **Windows Firewall** > **Toegestane apps** voor alle profielen.
 - **Toegang tot site-site-VPN's**:
     - Schakel vóór een failover RDP in op de on-premises VM.
-    - RDP moet worden toegestaan in de **Windows Firewall** -> **Toegestane apps en functies** voor **domein- en privénetwerken.**
+    - RDP moet worden toegestaan in de **Windows Firewall** -> **toegestane apps en functies** voor **domein-en particuliere** netwerken.
     - Controleer of het SAN-beleid van het besturingssysteem is ingesteld op **OnlineAll**. [Meer informatie](https://support.microsoft.com/kb/3031135).
-- Er mogen geen Windows-updates in behandeling zijn op de VM wanneer u een failover activeert. Als dat zo is, u zich pas aanmelden bij de virtuele machine als de update is voltooid.
+- Er mogen geen Windows-updates in behandeling zijn op de VM wanneer u een failover activeert. Als dat het geval is, kunt u zich niet aanmelden bij de virtuele machine totdat de update is voltooid.
 - Controleer na een failover **Diagnostische gegevens over opstarten** op de Windows Azure VM om een schermopname van de VM weer te geven. Als u geen verbinding kunt maken, controleer dan of de VM actief is en bekijk deze [tips voor het oplossen van problemen](https://social.technet.microsoft.com/wiki/contents/articles/31666.troubleshooting-remote-desktop-connection-after-failover-using-asr.aspx).
 
 Als u na een failover verbinding wilt maken met Linux-VM’s met behulp van SSH, doet u het volgende:
@@ -108,13 +108,13 @@ Als u na een failover verbinding wilt maken met Linux-VM’s met behulp van SSH,
 
 
 ## <a name="failback-requirements"></a>Vereisten voor failback
-Als u van plan bent om terug te keren naar uw on-premises site, zijn er een aantal [voorwaarden voor failback](vmware-azure-reprotect.md#before-you-begin). Je deze nu voorbereiden, maar dat hoeft niet. U zich voorbereiden nadat u niet naar Azure bent overgelaten.
+Als u van plan bent om terug te gaan naar uw on-premises site, zijn er een aantal [vereisten voor failback](vmware-azure-reprotect.md#before-you-begin). U kunt deze nu voorbereiden, maar u hoeft dit niet te doen. U kunt voorbereiden nadat u een failover hebt uitgevoerd naar Azure.
 
 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Stel noodherstel in. Als u meerdere VM's repliceert, plant u capaciteit.
+Herstel na nood gevallen instellen. Als u meerdere virtuele machines repliceert, plan capaciteit.
 > [!div class="nextstepaction"]
-> [Noodherstel instellen voor Azure voor VMware VM's](vmware-azure-tutorial.md)
-> [Voer capaciteitsplanning uit.](site-recovery-deployment-planner.md)
+> [Herstel na nood geval instellen op Azure voor VMware-vm's](vmware-azure-tutorial.md)
+> [capaciteits planning uitvoeren](site-recovery-deployment-planner.md).
