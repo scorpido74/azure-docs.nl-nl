@@ -11,10 +11,10 @@ ms.topic: reference
 ms.date: 10/25/2019
 ms.author: diberry
 ms.openlocfilehash: f764b0d42e08e68b45d49a5aae8542f05707ccde
-ms.sourcegitcommit: 086d7c0cf812de709f6848a645edaf97a7324360
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/23/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "82099356"
 ---
 # <a name="language-understanding-glossary-of-common-vocabulary-and-concepts"></a>Taal informatie over woorden lijst met veelgestelde woorden en concepten
@@ -38,7 +38,7 @@ Batch tests is de mogelijkheid om een huidige model van de LUIS-app te valideren
 
 Zie ook:
 * [Concepten](luis-concept-batch-test.md)
-* [Uitleg](luis-how-to-batch-test.md)
+* [Instructies](luis-how-to-batch-test.md)
 * [Zelfstudie](luis-tutorial-batch-testing.md)
 
 ## <a name="collaborator"></a><a name="collaborator"></a>Samenwerker

@@ -8,10 +8,10 @@ ms.topic: tutorial
 ms.date: 10/23/2019
 ms.author: raynew
 ms.openlocfilehash: 484dfd7834a206dce6805dc38b0eabeae2ee352a
-ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "82114561"
 ---
 # <a name="assess-servers-by-using-imported-data"></a>Servers beoordelen met behulp van geïmporteerde gegevens
@@ -103,14 +103,14 @@ Verzamel Server gegevens en voeg deze toe aan het CSV-bestand.
 
 De volgende tabel bevat een overzicht van de bestands velden die moeten worden ingevuld:
 
-**Veldnaam** | **Verplicht** | **Nadere**
+**Veldnaam** | **Verplicht** | **Details**
 --- | --- | ---
 **Server naam** | Ja | U kunt het beste de Fully Qualified Domain Name (FQDN) opgeven.
 **IP-adres** | Nee | Server adres.
 **Kernen** | Ja | Het aantal processor kernen dat aan de server is toegewezen.
 **Geheugen** | Ja | Het totale RAM-geheugen (in MB) dat aan de server is toegewezen.
 **Naam van besturings systeem** | Ja | Besturings systeem van de server. <br/> Namen van besturings systemen die overeenkomen met de namen in [deze](#supported-operating-system-names) lijst worden herkend door de evaluatie.
-**Versie van het besturingssysteem** | Nee | Versie van het besturings systeem van de server.
+**Versie van besturings systeem** | Nee | Versie van het besturings systeem van de server.
 **Aantal schijven** | Nee | Niet nodig als er details van de afzonderlijke schijf worden gegeven.
 **Grootte van schijf 1**  | Nee | De maximale grootte van de schijf, in GB.<br/>U kunt Details voor meer schijven toevoegen door [kolommen toe te voegen](#add-multiple-disks) aan de sjabloon. U kunt Maxi maal acht schijven toevoegen.
 **Schijf 1 read OPS** | Nee | Lees bewerkingen op de schijf per seconde.
@@ -178,7 +178,7 @@ Controleren of de servers worden weer gegeven in de Azure Portal na detectie:
 
 U kunt twee soorten evaluaties maken met behulp van server evaluatie.
 
-**Beoordelings type** | **Nadere** | **Gegevens**
+**Beoordelings type** | **Details** | **Gegevens**
 --- | --- | ---
 **Op basis van prestaties** | Evaluaties op basis van de opgegeven prestatie gegevens waarden. | **Aanbevolen VM-grootte**: op basis van gegevens van CPU en geheugen gebruik.<br/><br/> **Aanbevolen schijf type (Standard of Premium Managed disk)**: op basis van de invoer/uitvoer per seconde (IOPS) en de door Voer van de on-premises schijven.
 **Als on-premises** | Evaluaties op basis van on-premises grootte. | **Aanbevolen VM-grootte**: op basis van de opgegeven server grootte.<br/><br> **Aanbevolen schijf type**: op basis van de opslag type-instelling die u voor de evaluatie selecteert.
@@ -233,7 +233,7 @@ Een evaluatie beschrijft:
 
 ### <a name="review-cost-details"></a>Details van kosten bekijken
 
-In deze weer gave ziet u de geschatte berekenings-en opslag kosten voor het uitvoeren van Vm's in Azure. U kunt:
+In deze weer gave ziet u de geschatte berekenings-en opslag kosten voor het uitvoeren van Vm's in Azure. U kunt het volgende doen:
 
 - Bekijk de maandelijkse reken-en opslag kosten. De kosten worden geaggregeerd voor alle servers in de geraamde groep.
 

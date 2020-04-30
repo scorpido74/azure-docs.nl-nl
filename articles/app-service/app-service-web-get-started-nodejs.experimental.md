@@ -1,6 +1,6 @@
 ---
-title: 'Snelstart: een web-app Node.js maken'
-description: Implementeer uw eerste Node.js Hello World binnen enkele minuten naar Azure App Service. U implementeert met behulp van een ZIP-pakket, een van de vele manieren om te implementeren in App Service.
+title: 'Snelstartgids: een node. js-web-app maken'
+description: Implementeer in enkele minuten uw eerste node. js-Hallo wereld naar Azure App Service. U implementeert met behulp van een ZIP-pakket, dat een van de vele manieren is om te implementeren in App Service.
 ms.assetid: 582bb3c2-164b-42f5-b081-95bfcb7a502a
 ms.topic: quickstart
 ms.date: 08/23/2019
@@ -8,10 +8,10 @@ ms.custom: mvc, devcenter, seodec18
 experimental: false
 experiment_id: a231f2b4-2625-4d
 ms.openlocfilehash: a185565ec125e327297883c63b1d50a2548c7853
-ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/23/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "82085995"
 ---
 # <a name="create-a-nodejs-web-app-in-azure"></a>Een Node.js-web-app maken in Azure
@@ -20,7 +20,7 @@ ms.locfileid: "82085995"
 > In dit artikel gaat u een app implementeren in App Service onder Windows. Zie [Een Node.js-web-app maken en implementeren in Azure App Service onder Linux ](./containers/quickstart-nodejs.md) om een app te implementeren in App Service onder _Linux_.
 >
 
-[Azure App Service](overview.md) biedt een zeer schaalbare, zelfpatchende webhostingservice.  In deze snelstart ziet u hoe u een Node.js-app naar Azure App Service implementeert. U gaat de web-app in [Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) maken, maar u kunt deze opdrachten ook lokaal uitvoeren met [Azure CLI](/cli/azure/install-azure-cli). U implementeert de Node.js-voorbeeldcode naar de web-app met de opdracht [az webapp deployment source config-zip](/cli/azure/webapp/deployment/source?view=azure-cli-latest#az-webapp-deployment-source-config-zip).  
+[Azure app service](overview.md) biedt een uiterst schaal bare webhostingservice met self-patch functie.  In deze snelstart ziet u hoe u een Node.js-app naar Azure App Service implementeert. U gaat de web-app in [Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) maken, maar u kunt deze opdrachten ook lokaal uitvoeren met [Azure CLI](/cli/azure/install-azure-cli). U implementeert de Node.js-voorbeeldcode naar de web-app met de opdracht [az webapp deployment source config-zip](/cli/azure/webapp/deployment/source?view=azure-cli-latest#az-webapp-deployment-source-config-zip).  
 
 ![Voorbeeld-app die wordt uitgevoerd in Azure](media/app-service-web-get-started-nodejs-poc/hello-world-in-browser.png)
 
@@ -93,7 +93,7 @@ Wanneer de web-app is gemaakt, toont de Azure CLI soortgelijke uitvoer als in he
 
 ### <a name="set-nodejs-runtime"></a>Node.js-runtime instellen
 
-Stel de Node-runtime in op 10.14.1. Voer alle ondersteunde runtimes [`az webapp list-runtimes`](/cli/azure/webapp?view=azure-cli-latest#az-webapp-list-runtimes)uit om alle ondersteunde runtimes te bekijken.
+Stel de Node-runtime in op 10.14.1. Als u alle ondersteunde Runtimes wilt weer [`az webapp list-runtimes`](/cli/azure/webapp?view=azure-cli-latest#az-webapp-list-runtimes)geven, voert u uit.
 
 ```azurecli-interactive
 # Bash and Powershell
@@ -106,7 +106,7 @@ Blader naar uw nieuwe web-app. Vervang `<app_name>` door een unieke app-naam.
 http://<app_name>.azurewebsites.net
 ```
 
-Zo moet je nieuwe web-app ![eruit zien: Lege webpagina](media/app-service-web-get-started-nodejs-poc/app-service-web-service-created.png)
+De nieuwe web-app moet er als volgt uitzien ![: lege web-app-pagina](media/app-service-web-get-started-nodejs-poc/app-service-web-service-created.png)
 
 ## <a name="deploy-zip-file"></a>Het ZIP-bestand implementeren
 
@@ -141,7 +141,7 @@ De Node.js-voorbeeldcode wordt uitgevoerd in een web-app van Azure App Service.
 > [!NOTE]
 > In Azure App Service wordt de app uitgevoerd in IIS met [iisnode](https://github.com/Azure/iisnode). Voor het uitvoeren van de app met iisnode staat er een web.config-bestand in de hoofdmap van de app. Dit bestand kan worden gelezen door IIS en de instellingen voor iisnode zijn beschreven in [de GitHub-opslagplaats voor iisnode](https://github.com/Azure/iisnode/blob/master/src/samples/configuration/web.config).
 
-**Gefeliciteerd!** U hebt uw eerste Node.js-app geïmplementeerd in App Service.
+**Voltooid!** U hebt uw eerste Node.js-app geïmplementeerd in App Service.
 
 ## <a name="update-and-redeploy-the-code"></a>De code bijwerken en opnieuw implementeren
 

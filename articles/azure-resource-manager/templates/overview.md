@@ -1,80 +1,80 @@
 ---
 title: Overzicht van sjablonen
-description: Beschrijft de voordelen met Azure Resource Manager-sjablonen voor de implementatie van resources.
+description: Beschrijft de voor delen van het gebruik van Azure Resource Manager sjablonen voor het implementeren van resources.
 ms.topic: conceptual
 ms.date: 04/06/2020
 ms.openlocfilehash: b3b5fb383ac89d0968a437f35aab656afa1913f0
-ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/23/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82086331"
 ---
 # <a name="what-are-arm-templates"></a>Wat zijn ARM-sjablonen?
 
-Met de overstap naar de cloud hebben veel teams agile ontwikkelmethoden gebruikt. Deze teams herhalen snel. Ze moeten hun oplossingen herhaaldelijk implementeren in de cloud en weten dat hun infrastructuur in een betrouwbare staat verkeert. Nu de infrastructuur onderdeel is geworden van het iteratieve proces, is de scheiding tussen bedrijfsvoering en ontwikkeling verdwenen. Teams moeten infrastructuur en toepassingscode beheren via een uniform proces.
+Dankzij de overstap naar de Cloud hebben veel teams flexibele ontwikkelings methoden aangenomen. Deze teams lopen snel uit. Ze moeten herhaaldelijk hun oplossingen implementeren in de Cloud en weten dat hun infra structuur een betrouw bare status heeft. Omdat de infra structuur is opgenomen in het iteratieve proces, is de verdeling tussen bewerkingen en ontwikkeling verdwenen. Teams moeten de infra structuur en toepassings code beheren via een uniform proces.
 
-Om deze uitdagingen het hoofd te bieden, u implementaties automatiseren en de praktijk van infrastructuur als code gebruiken. In code definieert u de infrastructuur die moet worden geïmplementeerd. De infrastructuurcode wordt onderdeel van uw project. Net als toepassingscode slaat u de infrastructuurcode op in een bronopslagplaats en versie deze. Iedereen in uw team kan de code uitvoeren en vergelijkbare omgevingen implementeren.
+Om aan deze uitdagingen te voldoen, kunt u implementaties automatiseren en de infra structuur als code gebruiken. In code definieert u de infra structuur die moet worden geïmplementeerd. De code van de infra structuur wordt onderdeel van het project. Net als bij de toepassings code slaat u de infrastructuur code op in een bron opslagplaats en maakt u er een versie van. Een van uw team leden kan de code uitvoeren en vergelijk bare omgevingen implementeren.
 
-Als u infrastructuur wilt implementeren als code voor uw Azure-oplossingen, gebruikt u Azure Resource Manager-sjablonen (ARM). De sjabloon is een JSON-bestand (JavaScript Object Notation) dat de infrastructuur en configuratie voor uw project definieert. De sjabloon maakt gebruik van declaratieve syntaxis, waarmee u aangeven wat u wilt implementeren zonder dat u de volgorde van programmeeropdrachten hoeft te schrijven om deze te maken. In de sjabloon geeft u de resources op die moeten worden geïmplementeerd en de eigenschappen voor deze resources.
+Gebruik Azure Resource Manager (ARM)-Sjablonen om de infra structuur te implementeren als code voor uw Azure-oplossingen. De sjabloon is een JavaScript Object Notation-bestand (JSON) waarmee de infra structuur en configuratie voor uw project worden gedefinieerd. De sjabloon maakt gebruik van declaratieve syntaxis, waarmee u kunt aangeven wat u wilt implementeren zonder dat u de volg orde van de programmeer opdrachten hoeft te schrijven om deze te maken. In de sjabloon geeft u de resources op die u wilt implementeren en de eigenschappen voor deze resources.
 
-## <a name="why-choose-arm-templates"></a>Waarom kiezen voor ARM-sjablonen?
+## <a name="why-choose-arm-templates"></a>Waarom kiest u ARM-sjablonen?
 
-Als u probeert te kiezen tussen het gebruik van ARM-sjablonen en een van de andere infrastructuur als codeservices, moet u rekening houden met de volgende voordelen van het gebruik van sjablonen:
+Als u probeert te kiezen tussen het gebruik van ARM-sjablonen en een van de andere infra structuur als code Services, moet u rekening houden met de volgende voor delen van het gebruik van sjablonen:
 
-* **Declaratieve syntaxis:** met ARM-sjablonen u een volledige Azure-infrastructuur declaratief maken en implementeren. U bijvoorbeeld niet alleen virtuele machines implementeren, maar ook de netwerkinfrastructuur, opslagsystemen en alle andere resources die u nodig heeft.
+* **Declaratieve syntaxis**: arm-sjablonen bieden u de mogelijkheid om een volledige Azure-infra structuur declaratief te maken en te implementeren. U kunt bijvoorbeeld niet alleen virtuele machines implementeren, maar ook de netwerk infrastructuur, opslag systemen en andere bronnen die u nodig hebt.
 
-* **Herhaalbare resultaten:** implementeer herhaaldelijk uw infrastructuur gedurende de hele ontwikkelingslevenscyclus en heb er vertrouwen in dat uw resources op een consistente manier worden geïmplementeerd. Sjablonen zijn idempotent, wat betekent dat u dezelfde sjabloon vele malen implementeren en dezelfde resourcetypen in dezelfde status krijgen. U één sjabloon ontwikkelen die de gewenste status vertegenwoordigt, in plaats van veel afzonderlijke sjablonen te ontwikkelen om updates weer te geven.
+* **Herhaal bare resultaten**: implementeer herhaaldelijk uw infra structuur in de ontwikkelings levenscyclus en laat de betrouw baarheid van uw resources op een consistente manier worden geïmplementeerd. Sjablonen zijn idempotent. Dit betekent dat u dezelfde sjabloon meerdere keren kunt implementeren en dezelfde resource typen in dezelfde status krijgt. U kunt één sjabloon ontwikkelen die de gewenste status aangeeft, in plaats van het ontwikkelen van veel afzonderlijke sjablonen om updates te vertegenwoordigen.
 
-* **Orchestration**: U hoeft zich geen zorgen te maken over de complexiteit van het bestellen van bewerkingen. Resourcemanager orkestreert de implementatie van onderling afhankelijke resources, zodat ze in de juiste volgorde worden gemaakt. Indien mogelijk implementeert Resource Manager resources parallel, zodat uw implementaties sneller verlopen dan seriële implementaties. U implementeert de sjabloon via één opdracht, in plaats van via meerdere dwingende opdrachten.
+* Indeling **: u**hoeft zich geen zorgen te maken over de complexiteit van het ordenen van bewerkingen. Resource Manager coördineert de implementatie van onderling afhankelijke resources, zodat deze in de juiste volg orde worden gemaakt. Als dat mogelijk is, implementeert Resource Manager bronnen parallel, zodat uw implementaties sneller worden uitgevoerd dan seriële implementaties. U implementeert de sjabloon via één opdracht, in plaats van via meerdere verplichte opdrachten.
 
-   ![Vergelijking van sjabloonimplementatie](./media/overview/template-processing.png)
+   ![Vergelijking Sjabloonimlementatie](./media/overview/template-processing.png)
 
-* **Modulaire bestanden:** U uw sjablonen opsplitsen in kleinere, herbruikbare componenten en ze koppelen tijdens de implementatie. U ook een sjabloon in een andere sjabloon nesten.
+* **Modulaire bestanden**: u kunt uw sjablonen opdelen in kleinere, herbruikbare onderdelen en deze samen voegen tijdens de implementatie. U kunt ook een sjabloon in andere sjablonen nesten.
 
-* **Maak een Azure-bron:** u meteen nieuwe Azure-services en -functies gebruiken in sjablonen. Zodra een resourceprovider nieuwe bronnen introduceert, u deze bronnen implementeren via sjablonen. U hoeft niet te wachten tot gereedschappen of modules worden bijgewerkt voordat u de nieuwe services gebruikt.
+* **Een Azure-resource maken**: u kunt direct nieuwe Azure-Services en-functies in sjablonen gebruiken. Zodra een resource provider nieuwe resources introduceert, kunt u deze resources implementeren via sjablonen. U hoeft niet te wachten totdat de hulpprogram ma's of modules zijn bijgewerkt voordat u de nieuwe services gebruikt.
 
-* **Uitbreidbaarheid:** met [implementatiescripts](deployment-script-template.md)u PowerShell- of Bash-scripts toevoegen aan uw sjablonen. De implementatiescripts vergroten uw mogelijkheid om resources in te stellen tijdens de implementatie. Een script kan worden opgenomen in de sjabloon, of worden opgeslagen in een externe bron en waarnaar wordt verwezen in de sjabloon. Implementatiescripts bieden u de mogelijkheid om uw end-to-end-omgevingsetup in één ARM-sjabloon te voltooien.
+* **Uitbreid baarheid**: met [implementatie scripts](deployment-script-template.md)kunt u Power shell-of bash-scripts toevoegen aan uw sjablonen. De implementatie scripts verg Roten de mogelijkheid om resources in te stellen tijdens de implementatie. Een script kan worden opgenomen in de sjabloon of worden opgeslagen in een externe bron en waarnaar wordt verwezen in de sjabloon. Implementatie scripts bieden u de mogelijkheid om de installatie van uw end-to-end-omgeving in één ARM-sjabloon te volt ooien.
 
-* **Testen:** U ervoor zorgen dat uw sjabloon de aanbevolen richtlijnen volgt door deze te testen met de ARM-sjabloongereedschapsset (arm-ttk). Deze testkit is een PowerShell-script dat u downloaden van [GitHub.](https://github.com/Azure/arm-ttk) De toolkit maakt het makkelijker voor u om expertise te ontwikkelen met behulp van de sjabloontaal.
+* **Testen**: u kunt ervoor zorgen dat uw sjabloon aanbevolen richt lijnen volgt door deze te testen met de arm-sjabloon Tool Kit (arm-ttk). Deze test kit is een Power shell-script dat u kunt downloaden van [github](https://github.com/Azure/arm-ttk). Met de Tool Kit kunt u gemakkelijker expertise ontwikkelen met de taal van de sjabloon.
 
-* **Voorbeeldwijzigingen**: U de [wat-als-bewerking](template-deploy-what-if.md) gebruiken om een voorbeeld van wijzigingen te krijgen voordat u de sjabloon implementeert. Met wat-als ziet u welke resources worden gemaakt, bijgewerkt of verwijderd, en welke resourceeigenschappen worden gewijzigd. De wat-als-bewerking controleert de huidige status van uw omgeving en elimineert de noodzaak om de status te beheren.
+* **Voor beeld van wijzigingen**: u kunt de [What-if-bewerking](template-deploy-what-if.md) gebruiken om een voor beeld te krijgen van wijzigingen voordat u de sjabloon implementeert. Met What-if kunt u zien welke resources worden gemaakt, bijgewerkt of verwijderd, en welke resource-eigenschappen worden gewijzigd. De bewerking What-if controleert de huidige status van uw omgeving en elimineert de nood zaak om de status te beheren.
 
-* **Ingebouwde validatie:** uw sjabloon wordt pas geïmplementeerd na het passeren van validatie. Resourcemanager controleert de sjabloon voordat de implementatie wordt gestart om te controleren of de implementatie slaagt. Uw implementatie is minder waarschijnlijk te stoppen in een half-afgewerkte staat.
+* **Ingebouwde validatie**: uw sjabloon wordt pas geïmplementeerd nadat de validatie is door gegeven. Resource Manager controleert de sjabloon voordat de implementatie wordt gestart om te controleren of de implementatie slaagt. Uw implementatie is minder waarschijnlijk in een halve status.
 
-* **Bijgehouden implementaties**: In de Azure-portal u de implementatiegeschiedenis bekijken en informatie krijgen over de sjabloonimplementatie. U de sjabloon zien die is geïmplementeerd, de parameterwaarden die zijn doorgegeven en eventuele uitvoerwaarden. Andere infrastructuur als codeservices worden niet bijgehouden via de portal.
+* **Bijgehouden implementaties**: In het Azure Portal kunt u de implementatie geschiedenis bekijken en informatie ophalen over de sjabloon implementatie. U kunt de geïmplementeerde sjabloon zien, de parameter waarden die zijn door gegeven en uitvoer waarden. Andere infra structuur als code services worden niet bijgehouden via de portal.
 
-   ![Implementatiegeschiedenis](./media/overview/deployment-history.png)
+   ![Implementatie geschiedenis](./media/overview/deployment-history.png)
 
-* **Beleid als code**: [Azure Policy](../../governance/policy/overview.md) is een beleid als codeframework om governance te automatiseren. Als u Azure-beleid gebruikt, wordt beleidsherstel uitgevoerd op niet-compatibele resources wanneer deze worden geïmplementeerd via sjablonen.
+* **Beleid als code**: [Azure Policy](../../governance/policy/overview.md) is een beleid als code raamwerk waarmee governance wordt geautomatiseerd. Als u Azure-beleid gebruikt, wordt het door voeren van beleid uitgevoerd op niet-compatibele resources wanneer deze via sjablonen worden geïmplementeerd.
 
-* **Blueprints voor implementatie:** u profiteren van [blauwdrukken](../../governance/blueprints/overview.md) die door Microsoft zijn geleverd om te voldoen aan de wettelijke en nalevingsnormen. Deze blauwdrukken bevatten vooraf gebouwde sjablonen voor verschillende architecturen.
+* **Implementatie blauw drukken**: u kunt gebruikmaken van [blauw drukken](../../governance/blueprints/overview.md) van micro soft om te voldoen aan de normen van regelgeving en naleving. Deze blauw drukken bevatten vooraf gemaakte sjablonen voor verschillende architecturen.
 
-* **CI/CD-integratie**: U sjablonen integreren in uw tools voor continue integratie en continue implementatie (CI/CD), die uw releasepijplijnen kunnen automatiseren voor snelle en betrouwbare applicatie- en infrastructuurupdates. Door azure devOps en resourcebeheersjabloontaak te gebruiken, u Azure Pipelines gebruiken om ARM-sjabloonprojecten continu te bouwen en te implementeren. Zie [VS-project met pijplijnen](add-template-to-azure-pipelines.md) en [zelfstudie: continue integratie van Azure Resource Manager-sjablonen met Azure Pipelines](./deployment-tutorial-pipeline.md)voor meer informatie.
+* **CI/cd-integratie**: u kunt sjablonen integreren in de hulpprogram ma's voor continue integratie en continue implementatie (CI/cd), waarmee u uw release pijplijnen kunt automatiseren voor snelle en betrouw bare updates van toepassingen en infra structuur. Met Azure DevOps en Resource Manager-sjabloon taak kunt u Azure-pijp lijnen gebruiken om voortdurend ARM-sjabloon projecten te bouwen en implementeren. Voor meer informatie, Zie [VS project met pijp lijnen](add-template-to-azure-pipelines.md) en [zelf studie: doorlopende integratie van Azure Resource Manager sjablonen met Azure-pijp lijnen](./deployment-tutorial-pipeline.md).
 
-* **Exporteerbare code:** u een sjabloon voor een bestaande resourcegroep krijgen door de huidige status van de resourcegroep te exporteren of de sjabloon te bekijken die voor een bepaalde implementatie wordt gebruikt. Raadplegen van de [geëxporteerde sjabloon](export-template-portal.md) is een handige manier om de syntaxis van de sjabloon te leren kennen.
+* **Exporteer bare code**: u kunt een sjabloon voor een bestaande resource groep ophalen door de huidige status van de resource groep te exporteren of door de sjabloon die wordt gebruikt voor een bepaalde implementatie weer te geven. Raadplegen van de [geëxporteerde sjabloon](export-template-portal.md) is een handige manier om de syntaxis van de sjabloon te leren kennen.
 
-* **Ontwerptools**: U sjablonen maken met [Visual Studio Code](use-vs-code-to-create-template.md) en de extensie sjabloongereedschap. U krijgt intellisense, syntaxismarkering, in-line help en vele andere taalfuncties. Naast Visual Studio-code u ook [Visual Studio](create-visual-studio-deployment-project.md)gebruiken.
+* **Hulp middelen voor ontwerpen**: u kunt sjablonen ontwerpen met [Visual Studio code](use-vs-code-to-create-template.md) en de extensie van het sjabloon programma. U krijgt IntelliSense, syntaxis markering, in line Help en veel andere taal functies. Naast Visual Studio code kunt u ook [Visual Studio](create-visual-studio-deployment-project.md)gebruiken.
 
-## <a name="template-file"></a>Sjabloonbestand
+## <a name="template-file"></a>Sjabloon bestand
 
-Binnen uw sjabloon u [sjabloonexpressies](template-expressions.md) schrijven die de mogelijkheden van JSON uitbreiden. Deze expressies maken gebruik van de [functies](template-functions.md) van Resource Manager.
+Binnen uw sjabloon kunt u [sjabloon expressies](template-expressions.md) schrijven waarmee de mogelijkheden van JSON worden uitgebreid. Deze expressies maken gebruik van de [functies](template-functions.md) van Resource Manager.
 
 De sjabloon heeft de volgende secties:
 
-* [Parameters](template-parameters.md) : geef waarden op tijdens de implementatie waarmee dezelfde sjabloon met verschillende omgevingen kan worden gebruikt.
+* [Para meters](template-parameters.md) : Geef waarden op tijdens de implementatie waarmee dezelfde sjabloon kan worden gebruikt voor verschillende omgevingen.
 
-* [Variabelen](template-variables.md) : definieer waarden die opnieuw worden gebruikt in uw sjablonen. Ze kunnen worden opgebouwd uit parameterwaarden.
+* [Variabelen](template-variables.md) : Definieer waarden die opnieuw worden gebruikt in uw sjablonen. Ze kunnen worden samengesteld op basis van parameter waarden.
 
-* [Door de gebruiker gedefinieerde functies](template-user-defined-functions.md) - Maak aangepaste functies die uw sjabloon vereenvoudigen.
+* Door de [gebruiker gedefinieerde functies](template-user-defined-functions.md) : Maak aangepaste functies waarmee uw sjabloon wordt vereenvoudigd.
 
-* [Resources](template-syntax.md#resources) - Geef de resources op die moeten worden geïmplementeerd.
+* [Resources](template-syntax.md#resources) : Geef de resources op die u wilt implementeren.
 
-* Uitvoer - Waarden [retourneren](template-outputs.md) van de geïmplementeerde resources.
+* [Outputs](template-outputs.md) : retourneert waarden van de geïmplementeerde resources.
 
-## <a name="template-deployment-process"></a>Implementatieproces voor sjablonen
+## <a name="template-deployment-process"></a>Sjabloonimlementatie proces
 
-Wanneer u een sjabloon implementeert, converteert Resource Manager de sjabloon in REST API-bewerkingen. Bijvoorbeeld wanneer Resource Manager een sjabloon ontvangt met de volgende resourcedefinitie:
+Wanneer u een sjabloon implementeert, zet Resource Manager de sjabloon om in REST API bewerkingen. Bijvoorbeeld wanneer Resource Manager een sjabloon ontvangt met de volgende resourcedefinitie:
 
 ```json
 "resources": [
@@ -108,7 +108,7 @@ REQUEST BODY
 }
 ```
 
-## <a name="template-design"></a>Sjabloonontwerp
+## <a name="template-design"></a>Sjabloon ontwerp
 
 U kunt helemaal zelf bepalen hoe u sjablonen en resourcegroepen definieert en hoe u de oplossing beheert. U kunt de toepassing met drie lagen bijvoorbeeld met een enkele sjabloon implementeren in een enkele resourcegroep.
 
@@ -126,6 +126,6 @@ Zie [Using linked templates with Azure Resource Manager](linked-templates.md) (G
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Zie [Zelfstudie: Uw eerste ARM-sjabloon maken en implementeren](template-tutorial-create-first-template.md)voor een stapsgewijze zelfstudie die u door het proces van het maken van een sjabloon leidt.
-* Zie [De structuur en syntaxis van ARM-sjablonen begrijpen](template-syntax.md)voor informatie over de eigenschappen in sjabloonbestanden.
-* Zie [Snelstart: ARM-sjablonen maken en implementeren met behulp van de Azure-portal](quickstart-create-templates-use-the-portal.md)voor meer informatie over het exporteren van sjablonen.
+* Zie [zelf studie: uw eerste arm-sjabloon maken en implementeren](template-tutorial-create-first-template.md)voor een stapsgewijze zelf studie waarin u door het proces van het maken van een sjabloon wordt geleid.
+* Zie [inzicht krijgen in de structuur en syntaxis van arm-sjablonen](template-syntax.md)voor meer informatie over de eigenschappen in sjabloon bestanden.
+* Voor meer informatie over het exporteren van sjablonen raadpleegt u [Quick Start: arm-sjablonen maken en implementeren met behulp van de Azure Portal](quickstart-create-templates-use-the-portal.md).

@@ -7,10 +7,10 @@ ms.reviewer: jonfan, logicappspm
 ms.topic: conceptual
 ms.date: 04/23/2020
 ms.openlocfilehash: 6ab3db36ac4d743c8c03b57075d3c4d5f6c85d67
-ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/24/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82115020"
 ---
 # <a name="reference-guide-to-using-functions-in-expressions-for-azure-logic-apps-and-power-automate"></a>Naslag Gids voor het gebruik van functies in expressies voor Azure Logic Apps en energie automatisering
@@ -377,7 +377,7 @@ actionBody('<actionName>')
 | <*actie-hoofd tekst-uitvoer*> | Tekenreeks | De `body` uitvoer van de opgegeven actie |
 ||||
 
-*Hierbij*
+*Voorbeeld*
 
 In dit voor beeld `body` wordt de uitvoer van de `Get user`Twitter-actie opgehaald:
 
@@ -422,7 +422,7 @@ actionOutputs('<actionName>')
 | <*uitvoer*> | Tekenreeks | De uitvoer van de opgegeven actie |
 ||||
 
-*Hierbij*
+*Voorbeeld*
 
 In dit voor beeld wordt de uitvoer van de `Get user`Twitter-actie opgehaald:
 
@@ -493,7 +493,7 @@ actions('<actionName>').outputs.body.<property>
 | <*actie-uitvoer*> | Tekenreeks | De uitvoer van de opgegeven actie of eigenschap |
 ||||
 
-*Hierbij*
+*Voorbeeld*
 
 In dit voor beeld `status` wordt de eigenschaps waarde van `Get user` de actie Twitter tijdens runtime opgehaald:
 
@@ -523,7 +523,7 @@ add(<summand_1>, <summand_2>)
 | <*resultaat-Sum*> | Geheel getal of zwevend | Het resultaat van het toevoegen van de opgegeven getallen |
 ||||
 
-*Hierbij*
+*Voorbeeld*
 
 In dit voor beeld worden de opgegeven getallen toegevoegd:
 
@@ -918,7 +918,7 @@ array('<value>')
 | [<*waarde*>] | Matrix | Een matrix die de enkele opgegeven invoer bevat |
 ||||
 
-*Hierbij*
+*Voorbeeld*
 
 In dit voor beeld wordt een matrix gemaakt op basis van de teken reeks ' Hallo ':
 
@@ -951,7 +951,7 @@ base64('<value>')
 | <*Base64-teken reeks*> | Tekenreeks | De met base64 gecodeerde versie voor de invoer teken reeks |
 ||||
 
-*Hierbij*
+*Voorbeeld*
 
 In dit voor beeld wordt de teken reeks "Hallo" geconverteerd naar een base64-gecodeerde teken reeks:
 
@@ -984,7 +984,7 @@ base64ToBinary('<value>')
 | <*binary-for-base64-String*> | Tekenreeks | De binaire versie voor de met base64 gecodeerde teken reeks |
 ||||
 
-*Hierbij*
+*Voorbeeld*
 
 In dit voor beeld wordt de met base64 gecodeerde teken reeks "aGVsbG8 =" geconverteerd naar een binaire teken reeks:
 
@@ -1019,7 +1019,7 @@ base64ToString('<value>')
 | <*gedecodeerd-base64-teken reeks*> | Tekenreeks | De teken reeks versie voor een base64-gecodeerde teken reeks |
 ||||
 
-*Hierbij*
+*Voorbeeld*
 
 In dit voor beeld wordt de met base64 gecodeerde teken reeks "aGVsbG8 =" geconverteerd naar alleen een teken reeks:
 
@@ -1049,7 +1049,7 @@ binary('<value>')
 | <*binary-for-input-waarde*> | Tekenreeks | De binaire versie voor de opgegeven teken reeks |
 ||||
 
-*Hierbij*
+*Voorbeeld*
 
 In dit voor beeld wordt de teken reeks "Hallo" geconverteerd naar een binaire teken reeks:
 
@@ -1083,7 +1083,7 @@ body('<actionName>')
 | <*actie-hoofd tekst-uitvoer*> | Tekenreeks | De `body` uitvoer van de opgegeven actie |
 ||||
 
-*Hierbij*
+*Voorbeeld*
 
 In dit voor beeld `body` wordt de uitvoer `Get user` van de Twitter-actie opgehaald:
 
@@ -1128,7 +1128,7 @@ bool(<value>)
 | waar of onwaar | Booleaans | De Booleaanse versie voor de opgegeven waarde |
 ||||
 
-*Hierbij*
+*Voorbeeld*
 
 In deze voor beelden worden de opgegeven waarden geconverteerd naar Boole-waarden:
 
@@ -1163,7 +1163,7 @@ coalesce(<object_1>, <object_2>, ...)
 | <*eerste niet-null-item*> | Alle | Het eerste item of de waarde die niet null is. Als alle para meters null zijn, retourneert deze functie null. |
 ||||
 
-*Hierbij*
+*Voorbeeld*
 
 In deze voor beelden wordt de eerste niet-null-waarde uit de opgegeven waarden geretourneerd, of NULL wanneer alle waarden null zijn:
 
@@ -1199,7 +1199,7 @@ concat('<text1>', '<text2>', ...)
 | <*text1text2...*> | Tekenreeks | De teken reeks die is gemaakt op basis van de gecombineerde invoer teken reeksen |
 ||||
 
-*Hierbij*
+*Voorbeeld*
 
 In dit voor beeld worden de teken reeksen "Hallo" en "wereld" gecombineerd:
 
@@ -1403,7 +1403,7 @@ createArray('<object1>', '<object2>', ...)
 | [<*object1*>, <*object2*>,...] | Matrix | De matrix die is gemaakt op basis van alle invoer items |
 ||||
 
-*Hierbij*
+*Voorbeeld*
 
 In dit voor beeld wordt een matrix gemaakt op basis van deze invoer:
 
@@ -1433,7 +1433,7 @@ dataUri('<value>')
 | <*gegevens-URI*> | Tekenreeks | De gegevens-URI voor de invoer teken reeks |
 ||||
 
-*Hierbij*
+*Voorbeeld*
 
 In dit voor beeld wordt een gegevens-URI gemaakt voor de teken reeks "Hallo":
 
@@ -1465,7 +1465,7 @@ dataUriToBinary('<value>')
 | <*binary-for-data-URI*> | Tekenreeks | De binaire versie voor de gegevens-URI |
 ||||
 
-*Hierbij*
+*Voorbeeld*
 
 In dit voor beeld wordt een binaire versie gemaakt voor deze gegevens-URI:
 
@@ -1500,7 +1500,7 @@ dataUriToString('<value>')
 | <*string-for-data-URI*> | Tekenreeks | De teken reeks versie voor de gegevens-URI |
 ||||
 
-*Hierbij*
+*Voorbeeld*
 
 In dit voor beeld wordt een teken reeks gemaakt voor deze gegevens-URI:
 
@@ -1530,7 +1530,7 @@ dayOfMonth('<timestamp>')
 | <*dag van de maand*> | Geheel getal | De dag van de maand van de opgegeven tijds tempel |
 ||||
 
-*Hierbij*
+*Voorbeeld*
 
 In dit voor beeld wordt het getal voor de dag van de maand uit deze tijds tempel geretourneerd:
 
@@ -1560,7 +1560,7 @@ dayOfWeek('<timestamp>')
 | <*dag van de week*> | Geheel getal | De dag van de week vanaf de opgegeven tijds tempel waarbij zondag 0 is, maandag 1, enzovoort |
 ||||
 
-*Hierbij*
+*Voorbeeld*
 
 In dit voor beeld wordt het getal voor de dag van de week uit deze tijds tempel geretourneerd:
 
@@ -1590,7 +1590,7 @@ dayOfYear('<timestamp>')
 | <*dag van jaar*> | Geheel getal | De dag van het jaar van de opgegeven tijds tempel |
 ||||
 
-*Hierbij*
+*Voorbeeld*
 
 In dit voor beeld wordt het nummer van de dag van het jaar uit deze tijds tempel geretourneerd:
 
@@ -1629,7 +1629,7 @@ decodeDataUri('<value>')
 | <*binary-for-data-URI*> | Tekenreeks | De binaire versie voor een gegevens-URI-teken reeks |
 ||||
 
-*Hierbij*
+*Voorbeeld*
 
 In dit voor beeld wordt de binaire versie van deze gegevens-URI geretourneerd:
 
@@ -1664,7 +1664,7 @@ decodeUriComponent('<value>')
 | <*gedecodeerde URI*> | Tekenreeks | De bijgewerkte teken reeks met de gecodeerde escape tekens |
 ||||
 
-*Hierbij*
+*Voorbeeld*
 
 In dit voor beeld worden de escape-tekens in deze teken reeks vervangen door gedecodeerde versies:
 
@@ -1696,7 +1696,7 @@ div(<dividend>, <divisor>)
 | <*quotiënt-resultaat*> | Geheel getal | Het gehele getal als resultaat van het delen van het eerste getal met het tweede getal |
 ||||
 
-*Hierbij*
+*Voorbeeld*
 
 Beide voor beelden delen het eerste getal door het tweede getal:
 
@@ -1730,7 +1730,7 @@ encodeUriComponent('<value>')
 | <*gecodeerde URI*> | Tekenreeks | De teken reeks met URI-code ring met escape tekens |
 ||||
 
-*Hierbij*
+*Voorbeeld*
 
 In dit voor beeld wordt een met URI gecodeerde versie gemaakt voor deze teken reeks:
 
@@ -1762,7 +1762,7 @@ empty([<collection>])
 | waar of onwaar | Booleaans | Retourneert waar als de verzameling leeg is. Retourneert onwaar wanneer niet leeg is. |
 ||||
 
-*Hierbij*
+*Voorbeeld*
 
 In deze voor beelden wordt gecontroleerd of de opgegeven verzamelingen leeg zijn:
 
@@ -1840,7 +1840,7 @@ equals('<object1>', '<object2>')
 | waar of onwaar | Booleaans | Retourneert waar als beide gelijkwaardig zijn. Retourneert onwaar als dat niet het equivalent is. |
 ||||
 
-*Hierbij*
+*Voorbeeld*
 
 In deze voor beelden wordt gecontroleerd of de opgegeven invoer gelijkwaardig zijn.
 
@@ -1875,7 +1875,7 @@ first([<collection>])
 | <*eerste verzameling-item*> | Alle | Het eerste item in de verzameling |
 ||||
 
-*Hierbij*
+*Voorbeeld*
 
 In deze voor beelden vindt u het eerste item in deze verzamelingen:
 
@@ -1910,7 +1910,7 @@ float('<value>')
 | <*float-waarde*> | Drijvend | Het drijvende-komma getal voor de opgegeven teken reeks |
 ||||
 
-*Hierbij*
+*Voorbeeld*
 
 In dit voor beeld wordt een teken reeks versie gemaakt voor dit getal met drijvende komma:
 
@@ -1941,7 +1941,7 @@ formatDateTime('<timestamp>', '<format>'?)
 | <*opnieuw geformatteerd-tijds tempel*> | Tekenreeks | De bijgewerkte tijds tempel in de opgegeven indeling |
 ||||
 
-*Hierbij*
+*Voorbeeld*
 
 In dit voor beeld wordt een tijds tempel geconverteerd naar de opgegeven notatie:
 
@@ -1972,7 +1972,7 @@ formDataMultiValues('<actionName>', '<key>')
 | [<*matrix-met-sleutel waarden*>] | Matrix | Een matrix met alle waarden die overeenkomen met de opgegeven sleutel |
 ||||
 
-*Hierbij*
+*Voorbeeld*
 
 In dit voor beeld wordt een matrix gemaakt op basis van de waarde van de sleutel subject in de opgegeven actie formulier gegevens of door formulieren gecodeerde uitvoer:
 
@@ -2004,7 +2004,7 @@ formDataValue('<actionName>', '<key>')
 | <*sleutel waarde*> | Tekenreeks | De waarde in de opgegeven sleutel  |
 ||||
 
-*Hierbij*
+*Voorbeeld*
 
 In dit voor beeld wordt een teken reeks gemaakt op basis van de waarde van de sleutel subject in de opgegeven actie formulier gegevens of door formulieren gecodeerde uitvoer:
 
@@ -2179,7 +2179,7 @@ greater('<value>', '<compareTo>')
 | waar of onwaar | Booleaans | Retourneert waar als de eerste waarde groter is dan de tweede waarde. Retourneert onwaar als de eerste waarde gelijk is aan of kleiner is dan de tweede waarde. |
 ||||
 
-*Hierbij*
+*Voorbeeld*
 
 Deze voor beelden controleren of de eerste waarde groter is dan de tweede waarde:
 
@@ -2216,7 +2216,7 @@ greaterOrEquals('<value>', '<compareTo>')
 | waar of onwaar | Booleaans | Retourneert waar als de eerste waarde groter is dan of gelijk is aan de tweede waarde. Retourneert onwaar als de eerste waarde lager is dan de tweede waarde. |
 ||||
 
-*Hierbij*
+*Voorbeeld*
 
 In deze voor beelden wordt gecontroleerd of de eerste waarde groter is dan of gelijk is aan de tweede waarde:
 
@@ -2256,7 +2256,7 @@ guid('<format>')
 | <*GUID-waarde*> | Tekenreeks | Een wille keurig gegenereerde GUID |
 ||||
 
-*Hierbij*
+*Voorbeeld*
 
 In dit voor beeld wordt dezelfde GUID gegenereerd, maar als 32 cijfers, gescheiden door afbreek streepjes en tussen haakjes:
 
@@ -2289,7 +2289,7 @@ if(<expression>, <valueIfTrue>, <valueIfFalse>)
 | <*opgegeven-retourneert-waarde*> | Alle | De opgegeven waarde die wordt geretourneerd op basis van het feit of de expressie waar of onwaar is |
 ||||
 
-*Hierbij*
+*Voorbeeld*
 
 In dit voor `"yes"` beeld wordt geretourneerd omdat de opgegeven expressie True retourneert.
 Anders wordt het volgende geretourneerd `"no"`:
@@ -2320,7 +2320,7 @@ indexOf('<text>', '<searchText>')
 | <*index-waarde*>| Geheel getal | De start positie of index waarde voor de opgegeven subtekenreeks. <p>Als de teken reeks niet wordt gevonden, retourneert u het getal-1. |
 ||||
 
-*Hierbij*
+*Voorbeeld*
 
 In dit voor beeld wordt gezocht naar de start index-waarde voor de subtekenreeks ' World ' in de teken reeks ' Hallo wereld ':
 
@@ -2350,7 +2350,7 @@ int('<value>')
 | <*geheel getal-resultaat*> | Geheel getal | De versie van het gehele getal voor de opgegeven teken reeks |
 ||||
 
-*Hierbij*
+*Voorbeeld*
 
 In dit voor beeld wordt een versie met gehele getallen gemaakt voor de teken reeks "10":
 
@@ -2376,7 +2376,7 @@ item()
 | <*huidig-matrix-item*> | Alle | Het huidige item in de matrix voor de huidige herhaling van de actie |
 ||||
 
-*Hierbij*
+*Voorbeeld*
 
 In dit voor beeld `body` wordt het element van het huidige bericht opgehaald voor de actie ' Send_an_email ' binnen de huidige herhaling van elke lus:
 
@@ -2405,7 +2405,7 @@ items('<loopName>')
 | <*item*> | Alle | Het item uit de huidige cyclus in de opgegeven for-each-lus |
 ||||
 
-*Hierbij*
+*Voorbeeld*
 
 In dit voor beeld wordt het huidige item opgehaald van de opgegeven for-each-lus:
 
@@ -2433,7 +2433,7 @@ iterationIndexes('<loopName>')
 | <*TabIndex*> | Geheel getal | De index waarde voor de huidige iteratie binnen de opgegeven lus until | 
 |||| 
 
-*Hierbij* 
+*Voorbeeld* 
 
 In dit voor beeld wordt een item variabele gemaakt en deze variabele wordt tijdens elke iteratie in een lus until verhoogd tot de waarde van de teller vijf heeft bereikt. In het voor beeld wordt ook een variabele gemaakt die de huidige index voor elke herhaling bijhoudt. In de lus until, tijdens elke iteratie, wordt het prestatie meter item verhoogd en wordt vervolgens de item waarde toegewezen aan de huidige index waarde en wordt de teller vervolgens verhoogd. In dit voor beeld verwijst in de lus naar de huidige iteratie index met behulp van de `iterationIndexes` functie:
 
@@ -2606,7 +2606,7 @@ intersection('<collection1>', '<collection2>', ...)
 | <*algemeen: items*> | Respectievelijk matrix of object | Een verzameling met alleen de gemeen schappelijke items in de opgegeven verzamelingen |
 ||||
 
-*Hierbij*
+*Voorbeeld*
 
 In dit voor beeld vindt u de algemene items voor deze matrices:
 
@@ -2637,7 +2637,7 @@ join([<collection>], '<delimiter>')
 | <*char1*><*scheidings*><teken*char2*><*scheidings teken*>... | Tekenreeks | De resulterende teken reeks die is gemaakt op basis van alle items in de opgegeven matrix |
 ||||
 
-*Hierbij*
+*Voorbeeld*
 
 In dit voor beeld wordt een teken reeks gemaakt van alle items in deze matrix met het opgegeven teken als scheidings teken:
 
@@ -2668,7 +2668,7 @@ last([<collection>])
 | <*laatste verzameling-item*> | Respectievelijk een teken reeks of matrix | Het laatste item in de verzameling |
 ||||
 
-*Hierbij*
+*Voorbeeld*
 
 In deze voor beelden vindt u het laatste item in deze verzamelingen:
 
@@ -2704,7 +2704,7 @@ lastIndexOf('<text>', '<searchText>')
 | <*eind index-waarde*> | Geheel getal | De start positie of index waarde voor het laatste exemplaar van de opgegeven subtekenreeks. <p>Als de teken reeks niet wordt gevonden, retourneert u het getal-1. |
 ||||
 
-*Hierbij*
+*Voorbeeld*
 
 In dit voor beeld wordt gezocht naar de begin index waarde voor het laatste exemplaar van de subtekenreeks ' World ' in de teken reeks ' Hallo wereld ':
 
@@ -2735,7 +2735,7 @@ length([<collection>])
 | <*lengte-of-aantal*> | Geheel getal | Het aantal items in de verzameling |
 ||||
 
-*Hierbij*
+*Voorbeeld*
 
 In deze voor beelden wordt het aantal items in deze verzamelingen geteld:
 
@@ -2769,7 +2769,7 @@ less('<value>', '<compareTo>')
 | waar of onwaar | Booleaans | Retourneert waar als de eerste waarde lager is dan de tweede waarde. Retourneert onwaar als de eerste waarde gelijk is aan of groter is dan de tweede waarde. |
 ||||
 
-*Hierbij*
+*Voorbeeld*
 
 In deze voor beelden wordt gecontroleerd of de eerste waarde lager is dan de tweede waarde.
 
@@ -2806,7 +2806,7 @@ lessOrEquals('<value>', '<compareTo>')
 | waar of onwaar  | Booleaans | Retourneert waar als de eerste waarde kleiner is dan of gelijk is aan de tweede waarde. Retourneert onwaar als de eerste waarde groter is dan de tweede waarde. |
 ||||
 
-*Hierbij*
+*Voorbeeld*
 
 In deze voor beelden wordt gecontroleerd of de eerste waarde kleiner of gelijk is aan de tweede waarde.
 
@@ -2836,7 +2836,7 @@ listCallbackUrl()
 | <*call back-URL*> | Tekenreeks | De call back-URL voor een trigger of actie |
 ||||
 
-*Hierbij*
+*Voorbeeld*
 
 In dit voor beeld ziet u een voor beeld van een call back-URL die door deze functie kan worden geretourneerd:
 
@@ -2864,7 +2864,7 @@ max([<number1>, <number2>, ...])
 | <*Max-waarde*> | Geheel getal of zwevend | De hoogste waarde in de opgegeven matrix of set getallen |
 ||||
 
-*Hierbij*
+*Voorbeeld*
 
 In deze voor beelden wordt de hoogste waarde uit de set getallen en de matrix opgehaald:
 
@@ -2897,7 +2897,7 @@ min([<number1>, <number2>, ...])
 | <*min-waarde*> | Geheel getal of zwevend | De laagste waarde in de opgegeven reeks getallen of de opgegeven matrix |
 ||||
 
-*Hierbij*
+*Voorbeeld*
 
 In deze voor beelden wordt de laagste waarde in de set met getallen en de matrix opgehaald:
 
@@ -2930,7 +2930,7 @@ mod(<dividend>, <divisor>)
 | <*modulo-resultaat*> | Geheel getal of zwevend | De rest van het delen van het eerste getal met het tweede getal |
 ||||
 
-*Hierbij*
+*Voorbeeld*
 
 In het volgende voor beeld wordt het eerste getal in het tweede getal gedeeld:
 
@@ -2961,7 +2961,7 @@ mul(<multiplicand1>, <multiplicand2>)
 | <*product-resultaat*> | Geheel getal of zwevend | Het product van het eerste getal vermenigvuldigen met het tweede getal |
 ||||
 
-*Hierbij*
+*Voorbeeld*
 
 In deze voor beelden wordt het eerste getal vermenigvuldigd met het tweede getal:
 
@@ -3114,7 +3114,7 @@ outputs('<actionName>')
 | <*uitvoer*> | Tekenreeks | De uitvoer van de opgegeven actie |
 ||||
 
-*Hierbij*
+*Voorbeeld*
 
 In dit voor beeld wordt de uitvoer van de `Get user`Twitter-actie opgehaald:
 
@@ -3177,7 +3177,7 @@ parameters('<parameterName>')
 | <*para meter-waarde*> | Alle | De waarde voor de opgegeven para meter |
 ||||
 
-*Hierbij*
+*Voorbeeld*
 
 Stel dat u deze JSON-waarde hebt:
 
@@ -3216,7 +3216,7 @@ rand(<minValue>, <maxValue>)
 | <*wille keurig resultaat*> | Geheel getal | Het wille keurig geheel getal dat is geretourneerd uit het opgegeven bereik |
 ||||
 
-*Hierbij*
+*Voorbeeld*
 
 In dit voor beeld wordt een wille keurig geheel getal opgehaald uit het opgegeven bereik, met uitzonde ring van de maximum waarde:
 
@@ -3247,7 +3247,7 @@ range(<startIndex>, <count>)
 | [<*bereik-resultaat*>] | Matrix | De matrix met gehele getallen vanaf de opgegeven index |
 ||||
 
-*Hierbij*
+*Voorbeeld*
 
 In dit voor beeld wordt een matrix met gehele getallen gemaakt die begint met de opgegeven index en het opgegeven aantal gehele getallen bevat:
 
@@ -3279,7 +3279,7 @@ replace('<text>', '<oldText>', '<newText>')
 | <*bijgewerkt-tekst*> | Tekenreeks | De bijgewerkte teken reeks na het vervangen van de subtekenreeks <p>Als de subtekenreeks niet wordt gevonden, retourneert u de oorspronkelijke teken reeks. |
 ||||
 
-*Hierbij*
+*Voorbeeld*
 
 In dit voor beeld wordt de subtekenreeks ' old ' in ' Old string ' gezocht en vervangen door ' nieuw ':
 
@@ -3406,7 +3406,7 @@ result('<scopedActionName>')
 | <*Matrix-object*> | Matrix object | Een matrix die matrices van invoer en uitvoer bevat van elke actie die in de opgegeven actie met een bereik wordt weer gegeven |
 ||||
 
-*Hierbij*
+*Voorbeeld*
 
 In dit voor beeld worden de invoer en uitvoer van elke herhaling van een HTTP-actie binnen een `For_each` lus geretourneerd met behulp `result()` van de functie `Compose` in de actie:
 
@@ -3620,7 +3620,7 @@ skip([<collection>], <count>)
 | [<*bijgewerkt-verzameling*>] | Matrix | De bijgewerkte verzameling na het verwijderen van de opgegeven items |
 ||||
 
-*Hierbij*
+*Voorbeeld*
 
 In dit voor beeld wordt één item, het cijfer 0, van de voor kant van de opgegeven matrix verwijderd:
 
@@ -3651,7 +3651,7 @@ split('<text>', '<delimiter>')
 | [<*subtekenreeks1*>, <*substring2*>,...] | Matrix | Een matrix die subtekenreeksen uit de oorspronkelijke teken reeks bevat, gescheiden door komma's |
 ||||
 
-*Hierbij*
+*Voorbeeld*
 
 In dit voor beeld wordt een matrix gemaakt met subtekenreeksen uit de opgegeven teken reeks op basis van het opgegeven teken als scheidings tekens:
 
@@ -3682,7 +3682,7 @@ startOfDay('<timestamp>', '<format>'?)
 | <*bijgewerkt-tijds tempel*> | Tekenreeks | Het opgegeven tijds tempel, maar beginnend bij het lege uur voor de dag |
 ||||
 
-*Hierbij*
+*Voorbeeld*
 
 In dit voor beeld wordt gezocht naar het begin van de dag voor deze tijds tempel:
 
@@ -3713,7 +3713,7 @@ startOfHour('<timestamp>', '<format>'?)
 | <*bijgewerkt-tijds tempel*> | Tekenreeks | Het opgegeven tijds tempel, maar beginnend bij het nul-minuten teken voor het uur |
 ||||
 
-*Hierbij*
+*Voorbeeld*
 
 In dit voor beeld vindt u het begin van het uur voor deze tijds tempel:
 
@@ -3744,7 +3744,7 @@ startOfMonth('<timestamp>', '<format>'?)
 | <*bijgewerkt-tijds tempel*> | Tekenreeks | Het opgegeven tijds tempel dat begint op de eerste dag van de maand met het nul-uur |
 ||||
 
-*Hierbij*
+*Voorbeeld*
 
 In dit voor beeld wordt het begin van de maand voor deze tijds tempel geretourneerd:
 
@@ -3858,7 +3858,7 @@ sub(<minuend>, <subtrahend>)
 | <*Daardoor*> | Geheel getal of zwevend | Het resultaat van het aftrekken van het tweede getal uit het eerste getal |
 ||||
 
-*Hierbij*
+*Voorbeeld*
 
 In dit voor beeld wordt het tweede getal afgetrokken van het eerste getal:
 
@@ -3891,7 +3891,7 @@ substring('<text>', <startIndex>, <length>)
 | <*subtekenreeks-resultaat*> | Tekenreeks | Een subtekenreeks met het opgegeven aantal tekens, beginnend bij de opgegeven index positie in de bron teken reeks |
 ||||
 
-*Hierbij*
+*Voorbeeld*
 
 In dit voor beeld wordt een subtekenreeks van vijf tekens gemaakt op basis van de opgegeven teken reeks, beginnend bij de index waarde 6:
 
@@ -3967,7 +3967,7 @@ take([<collection>], <count>)
 | <*subset*> of [<*subset*>] | Respectievelijk een teken reeks of matrix | Een teken reeks of matrix met het opgegeven aantal items van de voor grond van de oorspronkelijke verzameling |
 ||||
 
-*Hierbij*
+*Voorbeeld*
 
 In deze voor beelden wordt het opgegeven aantal items van de voor grond van deze verzamelingen opgehaald:
 
@@ -4022,7 +4022,7 @@ toLower('<text>')
 | <*kleine letters*> | Tekenreeks | De oorspronkelijke teken reeks in kleine letters |
 ||||
 
-*Hierbij*
+*Voorbeeld*
 
 In dit voor beeld wordt deze teken reeks geconverteerd naar kleine letters:
 
@@ -4052,7 +4052,7 @@ toUpper('<text>')
 | <*hoofd letters: tekst*> | Tekenreeks | De oorspronkelijke teken reeks in hoofd letters |
 ||||
 
-*Hierbij*
+*Voorbeeld*
 
 In dit voor beeld wordt deze teken reeks geconverteerd naar hoofd letters:
 
@@ -4121,7 +4121,7 @@ triggerFormDataMultiValues('<key>')
 | [<*matrix-met-sleutel waarden*>] | Matrix | Een matrix met alle waarden die overeenkomen met de opgegeven sleutel |
 ||||
 
-*Hierbij*
+*Voorbeeld*
 
 In dit voor beeld wordt een matrix gemaakt op basis van de sleutel waarde ' feedUrl ' in een RSS-trigger de formulier gegevens of de formulier-gecodeerde uitvoer:
 
@@ -4152,7 +4152,7 @@ triggerFormDataValue('<key>')
 | <*sleutel waarde*> | Tekenreeks | De waarde in de opgegeven sleutel |
 ||||
 
-*Hierbij*
+*Voorbeeld*
 
 In dit voor beeld wordt een teken reeks gemaakt op basis van de sleutel waarde ' feedUrl ' in een RSS-trigger de formulier gegevens of de formulier-gecodeerde uitvoer:
 
@@ -4219,7 +4219,7 @@ trim('<text>')
 | <*updatedText*> | Tekenreeks | Een bijgewerkte versie van de oorspronkelijke teken reeks zonder voor loop-of volg spaties |
 ||||
 
-*Hierbij*
+*Voorbeeld*
 
 In dit voor beeld worden de voor loop-en volg spaties uit de teken reeks "Hallo wereld" verwijderd:
 
@@ -4251,7 +4251,7 @@ union([<collection1>], [<collection2>], ...)
 | <*updatedCollection*> | Respectievelijk matrix of object | Een verzameling met alle items uit de opgegeven verzamelingen-geen duplicaten |
 ||||
 
-*Hierbij*
+*Voorbeeld*
 
 In dit voor beeld worden *alle* items van deze verzamelingen opgehaald:
 
@@ -4283,7 +4283,7 @@ uriComponent('<value>')
 | <*gecodeerde URI*> | Tekenreeks | De teken reeks met URI-code ring met escape tekens |
 ||||
 
-*Hierbij*
+*Voorbeeld*
 
 In dit voor beeld wordt een met URI gecodeerde versie gemaakt voor deze teken reeks:
 
@@ -4313,7 +4313,7 @@ uriComponentToBinary('<value>')
 | <*binair-voor-gecodeerde-URI*> | Tekenreeks | De binaire versie voor de teken reeks met URI-code ring. De binaire inhoud is base64-gecodeerd en vertegenwoordigd door `$content`. |
 ||||
 
-*Hierbij*
+*Voorbeeld*
 
 In dit voor beeld wordt de binaire versie gemaakt voor deze teken reeks met URI-code ring:
 
@@ -4348,7 +4348,7 @@ uriComponentToString('<value>')
 | <*gedecodeerde URI*> | Tekenreeks | De gedecodeerde versie voor de teken reeks met URI-code ring |
 ||||
 
-*Hierbij*
+*Voorbeeld*
 
 In dit voor beeld wordt de gedecodeerde teken reeks versie gemaakt voor deze teken reeks met URI-code ring:
 
@@ -4378,7 +4378,7 @@ uriHost('<uri>')
 | <*Host-waarde*> | Tekenreeks | De `host` waarde voor de opgegeven URI |
 ||||
 
-*Hierbij*
+*Voorbeeld*
 
 In dit voor beeld `host` wordt de waarde voor deze URI gezocht:
 
@@ -4408,7 +4408,7 @@ uriPath('<uri>')
 | <*pad-waarde*> | Tekenreeks | De `path` waarde voor de opgegeven URI. Als `path` er geen waarde is, retourneert het teken '/'. |
 ||||
 
-*Hierbij*
+*Voorbeeld*
 
 In dit voor beeld `path` wordt de waarde voor deze URI gezocht:
 
@@ -4438,7 +4438,7 @@ uriPathAndQuery('<uri>')
 | <*pad-query-waarde*> | Tekenreeks | De `path` waarden `query` en voor de opgegeven URI. Als `path` er geen waarde wordt opgegeven, retourneert het teken/. |
 ||||
 
-*Hierbij*
+*Voorbeeld*
 
 In dit voor beeld `path` worden `query` de en-waarden voor deze URI gezocht:
 
@@ -4468,7 +4468,7 @@ uriPort('<uri>')
 | <*poort-waarde*> | Geheel getal | De `port` waarde voor de opgegeven URI. Als `port` er geen waarde wordt opgegeven, retourneert u de standaard poort voor het protocol. |
 ||||
 
-*Hierbij*
+*Voorbeeld*
 
 In dit voor beeld `port` wordt de waarde voor deze URI geretourneerd:
 
@@ -4498,7 +4498,7 @@ uriQuery('<uri>')
 | <*query-waarde*> | Tekenreeks | De `query` waarde voor de opgegeven URI |
 ||||
 
-*Hierbij*
+*Voorbeeld*
 
 In dit voor beeld `query` wordt de waarde voor deze URI geretourneerd:
 
@@ -4528,7 +4528,7 @@ uriScheme('<uri>')
 | <*schema-waarde*> | Tekenreeks | De `scheme` waarde voor de opgegeven URI |
 ||||
 
-*Hierbij*
+*Voorbeeld*
 
 In dit voor beeld `scheme` wordt de waarde voor deze URI geretourneerd:
 
@@ -4603,7 +4603,7 @@ variables('<variableName>')
 | <*variabele-waarde*> | Alle | De waarde voor de opgegeven variabele |
 ||||
 
-*Hierbij*
+*Voorbeeld*
 
 Stel dat de huidige waarde voor een variabele numItems is 20.
 In dit voor beeld wordt de gehele waarde voor deze variabele opgehaald:
@@ -4629,7 +4629,7 @@ workflow().<property>
 | <*eigenschap*> | Nee | Tekenreeks | De naam van de werk stroom eigenschap waarvan u de waarde wilt <p>Een werk stroom object heeft de volgende eigenschappen: **naam**, **type**, **id**, **locatie**en **uitvoeren**. De waarde van de **uitvoerings** eigenschap is ook een object met de volgende eigenschappen: **naam**, **type**en **id**. |
 |||||
 
-*Hierbij*
+*Voorbeeld*
 
 In dit voor beeld wordt de naam van de huidige uitvoering van een werk stroom geretourneerd:
 

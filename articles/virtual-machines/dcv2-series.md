@@ -1,6 +1,6 @@
 ---
-title: DC-serie - Azure Virtual Machines
-description: Specificaties voor de VM's uit de DC-serie.
+title: DC-serie-Azure Virtual Machines
+description: Specificaties voor de Vm's van de DC-serie.
 services: virtual-machines
 author: susaxen
 ms.service: virtual-machines
@@ -8,46 +8,46 @@ ms.topic: article
 ms.date: 02/20/2020
 ms.author: lahugh
 ms.openlocfilehash: d35e37e53b84d317446a93a2301fc3b703b426b7
-ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/23/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82085719"
 ---
 # <a name="dcsv2-series"></a>DCsv2-serie
 
 
-De DCsv2-serie kan helpen de vertrouwelijkheid en integriteit van uw gegevens en code te beschermen terwijl deze in de openbare cloud worden verwerkt. Deze machines worden ondersteund door de nieuwste generatie Intel XEON E-2288G Processor met SGX-technologie. Met de Intel Turbo Boost Technology kunnen deze machines tot 5,0 GHz gaan. DCsv2-serie exemplaren stellen klanten in staat om veilige enclave-gebaseerde applicaties te bouwen om hun code en gegevens te beschermen terwijl deze in gebruik zijn.
+De DCsv2-serie kan u helpen de vertrouwelijkheid en integriteit van uw gegevens en code te beschermen tijdens de verwerking in de open bare Cloud. Deze machines worden ondersteund door de nieuwste generatie Intel XEON E-2288G-processor met SGX-technologie. Met de Intel Turbo Boost-technologie kunnen deze machines tot wel 5.0 GHz gaan. Met DCsv2-serie-instanties kunnen klanten veilige, op enclave gebaseerde toepassingen bouwen om hun code en gegevens te beschermen terwijl ze worden gebruikt.
 
-Voorbeelden hiervan zijn: vertrouwelijke meerpartijengegevens, fraudedetectie, anti-witwaspraktijken, blockchain, vertrouwelijke gebruiksanalyses, intelligentieanalyse en vertrouwelijke machine learning.
+Voor beelden van use cases zijn: vertrouwelijk delen van gegevens, fraude detectie, anti-Money witwassen, Block Chain, analyse van vertrouwelijk gebruik, intelligentie analyse en vertrouwelijke machine learning.
 
-Premium opslag: ondersteund*
+Premium Storage: ondersteund *
 
-Premium Storage-cache: ondersteund*
+Premium Storage caching: ondersteund *
 
-Live migratie: niet ondersteund
+Livemigratie: niet ondersteund
 
-Updates voor geheugenbehoud: niet ondersteund
+Updates voor het behouden van geheugen: niet ondersteund
 
-*Behalve Standard_DC8_v2
+* Met uitzonde ring van Standard_DC8_v2
 
 
 
-| Grootte             | vCPU | Geheugen: GiB | Tijdelijke opslag (SSD) GiB | Max. aantal gegevensschijven | Maximale doorvoer voor schijven met caching en tijdelijke opslag: IOPS / MBps (cachegrootte in GiB) | Max. doorvoer voor schijf zonder caching: IOPS/MBps | Max NIC's / Verwachte netwerkbandbreedte (MBps) |
+| Grootte             | vCPU | Geheugen: GiB | Tijdelijke opslag (SSD) GiB | Max. aantal gegevensschijven | Maximale doorvoer voor schijven met caching en tijdelijke opslag: IOPS / MBps (cachegrootte in GiB) | Max. doorvoer voor schijf zonder caching: IOPS/MBps | Maximum aantal Nic's/verwachte netwerk bandbreedte (MBps) |
 |------------------|------|-------------|------------------------|----------------|-------------------------------------------------------------------------|-------------------------------------------|----------------------------------------------|
 | Standard_DC1s_v2 | 1    | 4           | 50                     | 1              | 2000/16 (21)                                                            | 1600/24                                   | 2                                            |
 | Standard_DC2s_v2 | 2    | 8           | 100                    | 2              | 4000/32 (43)                                                            | 3200/48                                   | 2                                            |
 | Standard_DC4s_v2 | 4    | 16          | 200                    | 4              | 8000/64 (86)                                                            | 6400/96                                   | 2                                            |
 | Standard_DC8_v2  | 8   | 32          | 400                    | 8              | 16000/128 (172)                                                         | 12800/192                                 | 2                                            |
 
-- Vm's uit de DCsv2-serie zijn `Gen2` generatie 2 [VM's](./linux/generation-2.md#creating-a-generation-2-vm) en ondersteunen alleen afbeeldingen.
-- Momenteel alleen beschikbaar in het Verenigd Koninkrijk Zuid, Canada Centraal en het Oosten van de VS.
-- Vorige generatie vertrouwelijke Compute VM's: [DC-serie](sizes-previous-gen.md#preview-dc-series)
-- DCsv2 VM's maken met de [Azure-portal](./linux/quick-create-portal.md) of [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-azure-compute.acc-virtual-machine-v2?tab=overview)
+- Vm's uit de DCsv2-serie zijn [twee vm's](./linux/generation-2.md#creating-a-generation-2-vm) van de `Gen2` tweede generatie en ondersteunen alleen installatie kopieën.
+- Momenteel alleen beschikbaar in UK-zuid, Canada-centraal en VS Oost.
+- Vorige generatie van vertrouwelijk Compute-Vm's: [gelijkstroom reeks](sizes-previous-gen.md#preview-dc-series)
+- DCsv2 Vm's maken met behulp van de [Azure Portal](./linux/quick-create-portal.md) of [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-azure-compute.acc-virtual-machine-v2?tab=overview)
 
 
 
-## <a name="other-sizes"></a>Andere maten
+## <a name="other-sizes"></a>Andere grootten
 
 - [Algemeen doel](sizes-general.md)
 - [Geoptimaliseerd geheugen](sizes-memory.md)
@@ -58,4 +58,4 @@ Updates voor geheugenbehoud: niet ondersteund
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Meer informatie over hoe [Azure compute units (ACU)](acu.md) u kunnen helpen bij het vergelijken van rekenprestaties in Azure SKU's.
+Meer informatie over hoe [Azure Compute units (ACU)](acu.md) u kan helpen bij het vergelijken van de reken prestaties in azure-sku's.

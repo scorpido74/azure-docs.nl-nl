@@ -1,6 +1,6 @@
 ---
-title: 'Snelstart: een statische HTML-web-app maken'
-description: Implementeer uw eerste HTML Hello World binnen enkele minuten in Azure App Service. U implementeert met Git, een van de vele manieren om te implementeren in App Service.
+title: 'Snelstartgids: een statische HTML-Web-app maken'
+description: Implementeer binnen enkele minuten uw eerste HTML-Hallo wereld naar Azure App Service. U implementeert met git, een van de vele manieren waarop u kunt implementeren in App Service.
 author: msangapu-msft
 ms.assetid: 60495cc5-6963-4bf0-8174-52786d226c26
 ms.topic: quickstart
@@ -8,15 +8,15 @@ ms.date: 08/23/2019
 ms.author: msangapu
 ms.custom: mvc, cli-validate, seodec18
 ms.openlocfilehash: 04cd28db52630e9de26e30ef4bf35db983f48b50
-ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/23/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "82086059"
 ---
 # <a name="create-a-static-html-web-app-in-azure"></a>Een statische HTML-web-app maken in Azure
 
-[Azure App Service](overview.md) biedt een zeer schaalbare, zelfpatchende webhostingservice. In deze snelstart ziet u hoe u een eenvoudige HTML+CSS-site naar Azure App Service implementeert. U voltooit deze quickstart in [Cloud Shell,](https://docs.microsoft.com/azure/cloud-shell/overview)maar u deze opdrachten ook lokaal uitvoeren met [Azure CLI.](/cli/azure/install-azure-cli)
+[Azure app service](overview.md) biedt een uiterst schaal bare webhostingservice met self-patch functie. In deze snelstart ziet u hoe u een eenvoudige HTML+CSS-site naar Azure App Service implementeert. U voltooit deze Snelstartgids in [Cloud shell](https://docs.microsoft.com/azure/cloud-shell/overview), maar u kunt deze opdrachten ook lokaal uitvoeren met [Azure cli](/cli/azure/install-azure-cli).
 
 ![Startpagina van voorbeeld-app](media/app-service-web-get-started-html/hello-world-in-browser-az.png)
 
@@ -42,7 +42,7 @@ git clone https://github.com/Azure-Samples/html-docs-hello-world.git
 
 ## <a name="create-a-web-app"></a>Een webtoepassing maken
 
-Ga naar de map die de voorbeeldcode bevat en voer de opdracht `az webapp up` uit. Vervang in de volgende opdracht <app-naam> door een unieke app-naam. Statische inhoud wordt `--html` aangegeven door de vlag.
+Ga naar de map die de voorbeeldcode bevat en voer de opdracht `az webapp up` uit. Vervang in de volgende opdracht <app-naam> door een unieke app-naam. Statische inhoud wordt aangegeven door de `--html` vlag.
 
 ```bash
 cd html-docs-hello-world
@@ -86,7 +86,7 @@ De pagina wordt als een web-app uitgevoerd in Azure App Service.
 
 ![Startpagina van voorbeeld-app](media/app-service-web-get-started-html/hello-world-in-browser-az.png)
 
-**Gefeliciteerd!** U hebt uw eerste HTML-app geïmplementeerd in App Service.
+**Voltooid!** U hebt uw eerste HTML-app geïmplementeerd in App Service.
 
 ## <a name="update-and-redeploy-the-app"></a>De app bijwerken en opnieuw implementeren
 
@@ -108,11 +108,11 @@ Wanneer de implementatie is voltooid, gaat u terug naar het browservenster dat i
 
 ## <a name="manage-your-new-azure-app"></a>Uw nieuwe Azure-app beheren
 
-Als u de web-app wilt beheren die u hebt gemaakt, zoekt en selecteert u **App Services**in de [Azure-portal](https://portal.azure.com). 
+Als u de web-app die u hebt gemaakt, wilt beheren, zoekt en selecteert u in het [Azure Portal](https://portal.azure.com) **app Services**. 
 
-![App-services selecteren in de Azure-portal](./media/app-service-web-get-started-html/portal0.png)
+![Selecteer App Services in het Azure Portal](./media/app-service-web-get-started-html/portal0.png)
 
-Selecteer op de pagina **App Services** de naam van uw Azure-app.
+Selecteer op de pagina **app Services** de naam van uw Azure-app.
 
 ![Navigatie naar Azure-app in de portal](./media/app-service-web-get-started-html/portal1.png)
 

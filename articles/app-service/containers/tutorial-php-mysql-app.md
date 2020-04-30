@@ -1,15 +1,15 @@
 ---
-title: 'Zelfstudie: Linux PHP app met MySQL'
-description: Meer informatie over het werken van een Linux Node.js-app in Azure App Service, met verbinding met een MySQL-database in Azure. Laravel wordt gebruikt in deze tutorial.
+title: 'Zelf studie: Linux PHP-app met MySQL'
+description: Meer informatie over het ophalen van een Linux node. js-app die in Azure App Service werkt, met verbinding naar een MySQL-data base in Azure. Laravel wordt in deze zelf studie gebruikt.
 ms.devlang: php
 ms.topic: tutorial
 ms.date: 11/25/2019
 ms.custom: mvc, cli-validate, seodec18
 ms.openlocfilehash: cf4550bae1433f1e751555cd35f8a1ba78747295
-ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/23/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "82085826"
 ---
 # <a name="build-a-php-and-mysql-app-in-azure-app-service-on-linux"></a>Een PHP- en MySQL-app maken in Azure App Service op Linux
@@ -99,7 +99,7 @@ composer install
 
 ### <a name="configure-mysql-connection"></a>MySQL-verbinding configureren
 
-Maak een bestand met de naam *.env* in de hoofdmap van de opslagplaats. Kopieer de volgende variabelen naar het bestand *.env*. Vervang _ &lt;_ de root_password>tijdelijke aanduiding door het wachtwoord van de MySQL-hoofdgebruiker.
+Maak een bestand met de naam *.env* in de hoofdmap van de opslagplaats. Kopieer de volgende variabelen naar het bestand *.env*. Vervang de _ &lt;tijdelijke aanduiding root_password>_ door het wacht woord van de MySQL-hoofd gebruiker.
 
 ```txt
 APP_ENV=local
@@ -153,9 +153,9 @@ In deze stap maakt u een MySQL-database in [Azure Database for MySQL](/azure/mys
 
 ### <a name="create-a-mysql-server"></a>Een MySQL-server maken
 
-Maak een server in Azure Database [`az mysql server create`](/cli/azure/mysql/server?view=azure-cli-latest#az-mysql-server-create) voor MySQL met de opdracht.
+Maak een server in Azure Database for MySQL met de [`az mysql server create`](/cli/azure/mysql/server?view=azure-cli-latest#az-mysql-server-create) opdracht.
 
-Vervang in de volgende opdracht een unieke servernaam voor de * \<mysql-servernaam>* tijdelijke aanduiding, een gebruikersnaam voor de * \<beheerder-gebruiker>* en een wachtwoord voor het * \<beheerders-wachtwoord>* tijdelijke aanduiding. De servernaam wordt gebruikt als onderdeel van het MySQL-eindpunt (`https://<mysql-server-name>.mysql.database.azure.com`). De naam moet dus uniek zijn voor alle servers in Azure. Zie [Een Azure Database for MySQL-server maken](https://docs.microsoft.com/azure/mysql/quickstart-create-mysql-server-database-using-azure-cli#create-an-azure-database-for-mysql-server) voor meer informatie over het selecteren van de MySQL DB-SKU.
+Vervang in de volgende opdracht de tijdelijke aanduiding voor de * \<mysql-server naam>* door een unieke server naam, een gebruikers naam voor de * \<beheerder>* en een wacht woord voor de tijdelijke aanduiding voor de * \<beheerders>wachtwoord* . De servernaam wordt gebruikt als onderdeel van het MySQL-eindpunt (`https://<mysql-server-name>.mysql.database.azure.com`). De naam moet dus uniek zijn voor alle servers in Azure. Zie [Een Azure Database for MySQL-server maken](https://docs.microsoft.com/azure/mysql/quickstart-create-mysql-server-database-using-azure-cli#create-an-azure-database-for-mysql-server) voor meer informatie over het selecteren van de MySQL DB-SKU.
 
 ```azurecli-interactive
 az mysql server create --resource-group myResourceGroup --name <mysql-server-name> --location "West Europe" --admin-user <admin-user> --admin-password <admin-password> --sku-name B_Gen5_1
@@ -178,7 +178,7 @@ Wanneer de MySQL-server is gemaakt, toont de Azure CLI informatie die lijkt op d
 
 ### <a name="configure-server-firewall"></a>Een serverfirewall configureren
 
-Maak een firewallregel voor uw MySQL-server [`az mysql server firewall-rule create`](/cli/azure/mysql/server/firewall-rule?view=azure-cli-latest#az-mysql-server-firewall-rule-create) om clientverbindingen toe te staan met behulp van de opdracht. Als zowel het IP-beginadres als het IP-eindadres zijn ingesteld op 0.0.0.0, wordt de firewall alleen geopend voor andere Azure-resources. 
+Maak een firewall regel voor uw MySQL-server om client verbindingen toe te staan [`az mysql server firewall-rule create`](/cli/azure/mysql/server/firewall-rule?view=azure-cli-latest#az-mysql-server-firewall-rule-create) met behulp van de opdracht. Als zowel het IP-beginadres als het IP-eindadres zijn ingesteld op 0.0.0.0, wordt de firewall alleen geopend voor andere Azure-resources. 
 
 ```azurecli-interactive
 az mysql server firewall-rule create --name allAzureIPs --server <mysql-server-name> --resource-group myResourceGroup --start-ip-address 0.0.0.0 --end-ip-address 0.0.0.0
@@ -188,7 +188,7 @@ az mysql server firewall-rule create --name allAzureIPs --server <mysql-server-n
 > U kunt uw firewallregel nog beperkender maken door [alleen de uitgaande IP-adressen te gebruiken die in uw app worden gebruikt](../overview-inbound-outbound-ips.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#find-outbound-ips).
 >
 
-Voer in de Cloud Shell de opdracht opnieuw uit om toegang vanaf uw lokale computer toe te staan door * \<uw ip-mailadres>* te vervangen door [uw lokale IPv4-IP-adres.](https://www.whatsmyip.org/)
+Voer in de Cloud shell de opdracht opnieuw uit om toegang vanaf uw lokale computer toe te staan door * \<uw IP-adres>* te vervangen door [uw lokale IPv4-IP-adres](https://www.whatsmyip.org/).
 
 ```azurecli-interactive
 az mysql server firewall-rule create --name AllowLocalClient --server <mysql-server-name> --resource-group myResourceGroup --start-ip-address=<your-ip-address> --end-ip-address=<your-ip-address>
@@ -196,7 +196,7 @@ az mysql server firewall-rule create --name AllowLocalClient --server <mysql-ser
 
 ### <a name="connect-to-production-mysql-server-locally"></a>Lokaal verbinding maken met MySQL-server in productie
 
-Maak in het terminalvenster verbinding met de MySQL-server in Azure. Gebruik de waarde die u eerder hebt opgegeven voor _ &lt;>van beheerdersgebruikers_ en _ &lt;>van mysql-server. _ Wanneer u wordt gevraagd om een wachtwoord, gebruikt u het wachtwoord dat u hebt opgegeven bij het maken van de database in Azure.
+Maak in het terminalvenster verbinding met de MySQL-server in Azure. Gebruik de waarde die u eerder hebt opgegeven voor _ &lt;admin-user>_ en _ &lt;mysql-server-name>_. Wanneer u wordt gevraagd om een wachtwoord, gebruikt u het wachtwoord dat u hebt opgegeven bij het maken van de database in Azure.
 
 ```bash
 mysql -u <admin-user>@<mysql-server-name> -h <mysql-server-name>.mysql.database.azure.com -P 3306 -p
@@ -233,7 +233,7 @@ In deze stap verbindt u de PHP-toepassing met de MySQL-database die u in Azure D
 
 ### <a name="configure-the-database-connection"></a>Verbinding met de database configureren
 
-Maak in de hoofdmap van de opslagplaats een _.env.production_-bestand en kopieer de volgende variabelen ernaartoe. Vervang de tijdelijke aanduiding _ &lt;mysql-servernaam>_.
+Maak in de hoofdmap van de opslagplaats een _.env.production_-bestand en kopieer de volgende variabelen ernaartoe. Vervang de tijdelijke aanduiding _ &lt;mysql-server-name>_.
 
 ```txt
 APP_ENV=production
@@ -256,7 +256,7 @@ Sla de wijzigingen op.
 
 ### <a name="configure-tlsssl-certificate"></a>TLS/SSL-certificaat configureren
 
-Azure Database voor MySQL dwingt TLS-verbindingen standaard af van clients. Voor verbinding met uw MySQL-database in Azure moet u het [_.pem_-certificaat gebruiken dat is opgegeven door Azure Database for MySQL](../../mysql/howto-configure-ssl.md).
+Azure Database for MySQL worden standaard TLS-verbindingen van clients afgedwongen. Voor verbinding met uw MySQL-database in Azure moet u het [_.pem_-certificaat gebruiken dat is opgegeven door Azure Database for MySQL](../../mysql/howto-configure-ssl.md).
 
 Open _config/database.php_ en voeg de parameters _sslmode_ en _opties_ toe aan `connections.mysql`, zoals wordt weergegeven in de volgende code.
 
@@ -317,7 +317,7 @@ In deze stap implementeert u de met MySQL verbonden PHP-toepassing naar Azure Ap
 
 De toepassing Laravel wordt gestart in de map _/public_. De standaardinstallatiekopie van PHP Docker voor App Service maakt gebruik van Apache, dit laat u de `DocumentRoot` niet aanpassen voor Laravel. U kunt echter `.htaccess` gebruiken om alle aanvragen te herschrijven, zodat zij verwijzen naar _/openbaar_ in plaats van naar de hoofdmap. In de hoofdmap van de opslagplaats is voor dit doel al een `.htaccess` toegevoegd. Uw Laravel-toepassing is hiermee gereed om te worden geïmplementeerd.
 
-Zie [Siteroot wijzigen voor](configure-language-php.md#change-site-root)meer informatie .
+Zie de hoofdmap van de [site wijzigen](configure-language-php.md#change-site-root)voor meer informatie.
 
 ### <a name="configure-a-deployment-user"></a>Een implementatiegebruiker configureren
 
@@ -335,13 +335,13 @@ Zie [Siteroot wijzigen voor](configure-language-php.md#change-site-root)meer inf
 
 In App Service stelt u omgevingsvariabelen in als _app settings_ met behulp van de opdracht [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set).
 
-De volgende opdracht configureert de app-instellingen `DB_HOST`, `DB_DATABASE`, `DB_USERNAME` en `DB_PASSWORD`. Vervang de tijdelijke _ &lt;aanduidingen appname>_ en _ &lt;mysql-server-name>_.
+De volgende opdracht configureert de app-instellingen `DB_HOST`, `DB_DATABASE`, `DB_USERNAME` en `DB_PASSWORD`. Vervang de tijdelijke aanduidingen _ &lt;appName>_ en _ &lt;mysql-server naam>_.
 
 ```azurecli-interactive
 az webapp config appsettings set --name <app-name> --resource-group myResourceGroup --settings DB_HOST="<mysql-server-name>.mysql.database.azure.com" DB_DATABASE="sampledb" DB_USERNAME="phpappuser@<mysql-server-name>" DB_PASSWORD="MySQLAzure2017" MYSQL_SSL="true"
 ```
 
-U de [PHP-getenv-methode](https://php.net/manual/en/function.getenv.php) gebruiken om toegang te [krijgen tot de app-instellingen.](configure-language-php.md#access-environment-variables) De Laravel code maakt gebruik van `getenv`een [env](https://laravel.com/docs/5.4/helpers#method-env) wrapper over de PHP . Zo is de MySQL-configuratie in _config/database.php_ bijvoorbeeld vergelijkbaar met de volgende code:
+U kunt de PHP [GETENV](https://php.net/manual/en/function.getenv.php) -methode gebruiken om [toegang te krijgen tot de app-instellingen](configure-language-php.md#access-environment-variables). De Laravel-code maakt gebruik van een [env](https://laravel.com/docs/5.4/helpers#method-env) - `getenv`wrapper op de php. Zo is de MySQL-configuratie in _config/database.php_ bijvoorbeeld vergelijkbaar met de volgende code:
 
 ```php
 'mysql' => [
@@ -364,7 +364,7 @@ Gebruik `php artisan` voor het genereren van een nieuwe toepassingssleutel zonde
 php artisan key:generate --show
 ```
 
-Stel de toepassingssleutel in de App [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) Service-app in met de opdracht. Vervang de tijdelijke _ &lt;aanduidingen appname>_ en _ &lt;outputofphpartisankey:genereren>_.
+Stel de toepassings sleutel in de App Service-app in met [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) behulp van de opdracht. Vervang de tijdelijke aanduidingen _ &lt;appName>_ en _ &lt;outputofphpartisankey: Genereer>_.
 
 ```azurecli-interactive
 az webapp config appsettings set --name <app-name> --resource-group myResourceGroup --settings APP_KEY="<output_of_php_artisan_key:generate>" APP_DEBUG="true"
@@ -600,9 +600,9 @@ In deze zelfstudie heeft u het volgende geleerd:
 Ga door naar de volgende zelfstudie om te leren hoe u een aangepaste DNS-naam aan uw app kunt toewijzen.
 
 > [!div class="nextstepaction"]
-> [Zelfstudie: aangepaste DNS-naam toewijzen aan uw app](../app-service-web-tutorial-custom-domain.md)
+> [Zelf studie: aangepaste DNS-naam toewijzen aan uw app](../app-service-web-tutorial-custom-domain.md)
 
-Of bekijk andere bronnen:
+U kunt ook andere resources bekijken:
 
 > [!div class="nextstepaction"]
 > [PHP-app configureren](configure-language-php.md)

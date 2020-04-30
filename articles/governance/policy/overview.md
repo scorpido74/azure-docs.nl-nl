@@ -4,10 +4,10 @@ description: Azure Policy is een service in Azure die u gebruikt om beleidsdefin
 ms.date: 04/21/2020
 ms.topic: overview
 ms.openlocfilehash: 4ec09c8a38e22fc14980422bfe9a80a2bf3edda4
-ms.sourcegitcommit: 086d7c0cf812de709f6848a645edaf97a7324360
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/23/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "82097367"
 ---
 # <a name="what-is-azure-policy"></a>Wat is Azure Policy?

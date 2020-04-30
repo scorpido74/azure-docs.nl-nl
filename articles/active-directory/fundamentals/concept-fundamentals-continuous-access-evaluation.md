@@ -12,13 +12,13 @@ manager: daveba
 ms.reviewer: jlu
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 3713901dd3dd5d17c4e1ddcef529c663b68f5b43
-ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/24/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82112572"
 ---
-# <a name="continuous-access-evaluation"></a>Evaluatie van voortdurende toegang
+# <a name="continuous-access-evaluation"></a>Continue toegangsevaluatie
 
 Micro soft-Services, zoals Azure Active Directory (Azure AD) en Office 365, gebruiken open standaarden en protocollen om interoperabiliteit te maximaliseren. Een van de meest essentiële items is open ID Connect (OIDC). Wanneer een client toepassing, zoals Outlook, verbinding maakt met een service zoals Exchange Online, worden de API-aanvragen geautoriseerd met OAuth 2,0-toegangs tokens. De toegangs tokens zijn standaard één uur geldig. Wanneer de client is verlopen, wordt deze teruggeleid naar Azure AD om ze te vernieuwen. Dit biedt ook de mogelijkheid om beleid voor gebruikers toegang opnieuw te evalueren. we kunnen ervoor kiezen om het token niet te vernieuwen vanwege een beleid voor voorwaardelijke toegang, of omdat de gebruiker is uitgeschakeld in de map. 
 

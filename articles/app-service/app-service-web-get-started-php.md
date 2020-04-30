@@ -1,15 +1,15 @@
 ---
-title: 'QuickStart: een PHP-web-app maken'
-description: Implementeer uw eerste PHP Hello World in een paar minuten naar Azure App Service. U implementeert met Git, een van de vele manieren om te implementeren in App Service.
+title: 'Snelstartgids: een PHP-web-app maken'
+description: Implementeer binnen enkele minuten uw eerste PHP-Hallo wereld naar Azure App Service. U implementeert met git, een van de vele manieren waarop u kunt implementeren in App Service.
 ms.assetid: 6feac128-c728-4491-8b79-962da9a40788
 ms.topic: quickstart
 ms.date: 08/24/2018
 ms.custom: mvc, cli-validate, seodec18
 ms.openlocfilehash: de51df50995c47800a2084108973c3b009ae3462
-ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/23/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "82085942"
 ---
 # <a name="create-a-php-web-app-in-azure"></a>Een PHP-web-app maken in Azure
@@ -18,7 +18,7 @@ ms.locfileid: "82085942"
 > In dit artikel gaat u een app implementeren in App Service onder Windows. Zie [Een PHP-web-app maken en implementeren in App Service onder Linux ](./containers/quickstart-php.md) om een app te implementeren in App Service onder _Linux_.
 >
 
-[Azure App Service](overview.md) biedt een zeer schaalbare, zelfpatchende webhostingservice.  In deze snelstartzelfstudie ziet u hoe u een PHP-app naar Azure App Service implementeert. U maakt de web-app via de [Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli) in Cloud Shell en u gebruikt Git om voorbeeldcode van PHP in de web-app te implementeren.
+[Azure app service](overview.md) biedt een uiterst schaal bare webhostingservice met self-patch functie.  In deze snelstartzelfstudie ziet u hoe u een PHP-app naar Azure App Service implementeert. U maakt de web-app via de [Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli) in Cloud Shell en u gebruikt Git om voorbeeldcode van PHP in de web-app te implementeren.
 
 ![Voorbeeld-app die wordt uitgevoerd in Azure](media/app-service-web-get-started-php/hello-world-in-browser.png)
 
@@ -70,7 +70,7 @@ Druk in uw terminalvenster op **Ctrl + C** om de webserver af te sluiten.
 
 Maak in de Cloud Shell een web-app in het `myAppServicePlan`App Service-plan met de opdracht [`az webapp create`](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create). 
 
-Vervang in het volgende voorbeeld `<app_name>` door een unieke naam (geldige tekens zijn `a-z`, `0-9`, en `-`). De runtime is ingesteld op `PHP|7.0`. Voer alle ondersteunde runtimes [`az webapp list-runtimes`](/cli/azure/webapp?view=azure-cli-latest#az-webapp-list-runtimes)uit om alle ondersteunde runtimes te bekijken. 
+Vervang in het volgende voorbeeld `<app_name>` door een unieke naam (geldige tekens zijn `a-z`, `0-9`, en `-`). De runtime is ingesteld op `PHP|7.0`. Als u alle ondersteunde Runtimes wilt weer [`az webapp list-runtimes`](/cli/azure/webapp?view=azure-cli-latest#az-webapp-list-runtimes)geven, voert u uit. 
 
 
 ```azurecli-interactive
@@ -80,7 +80,7 @@ az webapp create --resource-group myResourceGroup --plan myAppServicePlan --name
 az --% webapp create --resource-group myResourceGroup --plan myAppServicePlan --name <app_name> --runtime "PHP|7.0" --deployment-local-git
 ```
 > [!NOTE]
-> Het stop-parsing `(--%)`symbool , geïntroduceerd in PowerShell 3.0, stuurt PowerShell om zich te onthouden van het interpreteren van input als PowerShell commando's of expressies. 
+> Het symbool `(--%)`voor het stoppen van parseren, geïntroduceerd in power Shell 3,0, stuurt Power shell uit om te voor komen dat invoer als Power shell-opdrachten of-expressies wordt geïnterpreteerd. 
 >
 
 Wanneer de web-app is gemaakt, toont de Azure CLI soortgelijke uitvoer als in het volgende voorbeeld:
@@ -100,13 +100,13 @@ Local git is configured with url of 'https://&lt;username&gt;@&lt;app_name&gt;.s
 }
 </pre>
 
-U hebt een lege nieuwe web-app gemaakt, waarbij git-implementatie is ingeschakeld.
+U hebt een lege nieuwe web-app gemaakt met git-implementatie ingeschakeld.
 
 > [!NOTE]
 > De URL van de externe Git wordt weergegeven in de eigenschap `deploymentLocalGitUrl`, met de indeling `https://<username>@<app_name>.scm.azurewebsites.net/<app_name>.git`. Sla deze URL op, want u hebt deze later nodig.
 >
 
-Blader naar uw nieuwe web-app. Vervang _ &lt;de naam van de app>_ door uw unieke app-naam die in de vorige stap is gemaakt.
+Blader naar uw nieuwe web-app. Vervang _ &lt;de app-naam>_ door de unieke app-naam die u in de vorige stap hebt gemaakt.
 
 ```bash
 http://<app name>.azurewebsites.net
@@ -155,7 +155,7 @@ De PHP-voorbeeldcode wordt uitgevoerd in een web-app van Azure App Service.
 
 ![Voorbeeld-app die wordt uitgevoerd in Azure](media/app-service-web-get-started-php/hello-world-in-browser.png)
 
-**Gefeliciteerd!** U hebt uw eerste PHP-app geïmplementeerd in App Service.
+**Voltooid!** U hebt uw eerste PHP-app geïmplementeerd in App Service.
 
 ## <a name="update-locally-and-redeploy-the-code"></a>De code lokaal bijwerken en opnieuw implementeren
 
@@ -178,15 +178,15 @@ Wanneer de implementatie is voltooid, gaat u terug naar het browservenster dat i
 
 ## <a name="manage-your-new-azure-app"></a>Uw nieuwe Azure-app beheren
 
-1. Ga naar <a href="https://portal.azure.com" target="_blank">Azure Portal</a> om de web-app te beheren die u hebt gemaakt. **App-services**zoeken en selecteren .
+1. Ga naar <a href="https://portal.azure.com" target="_blank">Azure Portal</a> om de web-app te beheren die u hebt gemaakt. Zoek en selecteer **app Services**.
 
-    ![Zoeken naar App Services, Azure-portal, PHP-webapp maken](media/app-service-web-get-started-php/navigate-to-app-services-in-the-azure-portal.png)
+    ![Zoeken naar App Services, Azure Portal, PHP-web-app maken](media/app-service-web-get-started-php/navigate-to-app-services-in-the-azure-portal.png)
 
 2. Selecteer de naam van uw Azure-app.
 
     ![Navigatie naar Azure-app in de portal](./media/app-service-web-get-started-php/php-docs-hello-world-app-service-list.png)
 
-    De **overzichtspagina van** uw web-app wordt weergegeven. Hier u basisbeheertaken uitvoeren zoals **Bladeren,** **Stoppen,** **Opnieuw starten**en **verwijderen.**
+    De **overzichts** pagina van uw web-app wordt weer gegeven. Hier kunt u algemene beheer taken uitvoeren, zoals **Bladeren**, **stoppen**, **opnieuw starten**en **verwijderen**.
 
     ![App Service-pagina in Azure Portal](media/app-service-web-get-started-php/php-docs-hello-world-app-service-detail.png)
 

@@ -9,15 +9,15 @@ ms.date: 07/10/2019
 ms.author: cephalin
 ms.custom: include file
 ms.openlocfilehash: 01c1c7c0bdf8e55b002b73682407a3e03ee30b8f
-ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/23/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "82085774"
 ---
-Maak een [web-app](../articles/app-service/containers/app-service-linux-intro.md) in het `myAppServicePlan` App Service-abonnement. 
+Maak een [Web-app](../articles/app-service/containers/app-service-linux-intro.md) in `myAppServicePlan` het app service plan. 
 
-In de Cloud Shell kunt [`az webapp create`](/cli/azure/webapp?view=azure-cli-latest) u de opdracht gebruiken. Vervang in het volgende voorbeeld `<app-name>` door een unieke naam (geldige tekens zijn `a-z`, `0-9`, en `-`). De runtime is ingesteld op `RUBY|2.3`. Voer alle ondersteunde runtimes [`az webapp list-runtimes --linux`](/cli/azure/webapp?view=azure-cli-latest)uit om alle ondersteunde runtimes te bekijken. 
+In de Cloud Shell kunt u de [`az webapp create`](/cli/azure/webapp?view=azure-cli-latest) opdracht gebruiken. Vervang in het volgende voorbeeld `<app-name>` door een unieke naam (geldige tekens zijn `a-z`, `0-9`, en `-`). De runtime is ingesteld op `RUBY|2.3`. Als u alle ondersteunde Runtimes wilt weer [`az webapp list-runtimes --linux`](/cli/azure/webapp?view=azure-cli-latest)geven, voert u uit. 
 
 ```azurecli-interactive
 # Bash
