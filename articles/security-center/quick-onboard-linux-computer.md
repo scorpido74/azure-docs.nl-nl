@@ -1,5 +1,5 @@
 ---
-title: Linux-computers aan boord naar Azure Security Center | Microsoft Documenten
+title: Linux-computers onboarden naar Azure Security Center | Microsoft Docs
 description: Deze snelstartgids laat zien hoe u uw Linux-computers naar Security Center kunt onboarden.
 services: security-center
 documentationcenter: na
@@ -15,31 +15,31 @@ ms.workload: na
 ms.date: 12/02/2018
 ms.author: memildin
 ms.openlocfilehash: 3b7181550fd76f158ec04e9779f4301bd74484e1
-ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/31/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80435979"
 ---
 # <a name="quickstart-onboard-linux-computers-to-azure-security-center"></a>Snelstartgids: Linux-computers naar Azure Security Center onboarden
-Nadat u aan boord bent van uw Azure-abonnementen, u Beveiligingscentrum inschakelen voor Linux-resources die buiten Azure worden uitgevoerd, bijvoorbeeld on-premises of in andere clouds, door een agent in te richten. De agent wordt de Log Analytics-agent genoemd, maar wordt ook wel de OMS-agent genoemd.
+Nadat u uw Azure-abonnementen hebt opgedaan, kunt u Security Center inschakelen voor Linux-resources die buiten Azure worden uitgevoerd, bijvoorbeeld on-premises of in andere Clouds, door een agent in te richten. De agent wordt de Log Analytics agent genoemd, maar wordt ook wel de OMS-agent genoemd.
 
-Deze quickstart laat zien hoe je de Agent op een Linux-computer installeert.
+In deze Quick start ziet u hoe u de agent op een Linux-computer installeert.
 
 ## <a name="prerequisites"></a>Vereisten
 U moet over een abonnement op Microsoft Azure beschikken om met Security Center aan de slag te gaan. Als u geen abonnement hebt, kunt u zich aanmelden voor een [gratis account](https://azure.microsoft.com/pricing/free-trial/).
 
-U moet zich op de standaardprijslaag van het beveiligingscentrum bevindt voordat u deze quickstart start. Zie [Onboard your Azure subscription to Security Center Standard](security-center-get-started.md) (Uw Azure-abonnement registreren voor Security Center Standard) voor upgrade-instructies. U de Standard van Security Center gratis proberen. Zie de [pagina met prijzen](https://azure.microsoft.com/pricing/details/security-center/) voor meer informatie.
+U moet de prijs categorie Standard van Security Center hebben voordat u deze Snelstartgids start. Zie [Onboard your Azure subscription to Security Center Standard](security-center-get-started.md) (Uw Azure-abonnement registreren voor Security Center Standard) voor upgrade-instructies. U kunt de standaard waarde van Security Center gratis proberen. Zie de [pagina met prijzen](https://azure.microsoft.com/pricing/details/security-center/) voor meer informatie.
 
 ## <a name="add-new-linux-computer"></a>Nieuwe Linux-computer toevoegen
 
-1. Meld u aan bij de [Azure-portal](https://azure.microsoft.com/features/azure-portal/).
-2. Selecteer In het menu **Microsoft Azure** de optie **Beveiligingscentrum**. **Security Center - Overzicht** wordt geopend.
+1. Meld u aan bij de [Azure Portal](https://azure.microsoft.com/features/azure-portal/).
+2. Selecteer **Security Center**in het menu **Microsoft Azure** . **Security Center - Overzicht** wordt geopend.
 
    ![Overzicht van Security Center][2]
 
 3. Selecteer in het hoofdmenu van Security Center de optie **Aan de slag**.
-4. Selecteer het tabblad ![Aan de **slag.** Aan de slag][3]
+4. Selecteer het tabblad **aan** de slag ![. aan de slag][3]
 
 5. Klik op **Configureren** onder **Nieuwe niet-Azure-computers toevoegen**, waarna een lijst met uw Log Analytics-werkruimten wordt weergegeven. De lijst bevat, indien van toepassing, de standaardwerkruimte die is gemaakt door Security Center toen automatisch inrichten werd ingeschakeld. Selecteer deze werkruimte of een andere werkruimte die u wilt gebruiken.
 
@@ -56,7 +56,7 @@ U moet zich op de standaardprijslaag van het beveiligingscentrum bevindt voordat
 
    ![De agent installeren][5]
 
-De logboeken voor de Agent zijn te vinden op: */var/opt/microsoft/omsagent/workspace\<id>/log/*
+De logboeken voor de agent vindt u op: */var/opt/Microsoft/omsagent/\<werk ruimte-id>/log/*
 
   ![Logboeken voor agent][6]
 
@@ -81,7 +81,7 @@ De agent verwijderen:
     `sudo sh ./omsagent-<version>.universal.x64.sh --purge`
 
 ## <a name="next-steps"></a>Volgende stappen
-In deze quickstart heb je de agent op een Linux-computer ingericht. Voor meer informatie over het gebruik van Security Center gaat u verder met de zelfstudie voor het configureren van een beveiligingsbeleid en het beoordelen van de beveiliging van uw resources.
+In deze Quick Start hebt u de agent op een Linux-computer ingericht. Voor meer informatie over het gebruik van Security Center gaat u verder met de zelfstudie voor het configureren van een beveiligingsbeleid en het beoordelen van de beveiliging van uw resources.
 
 > [!div class="nextstepaction"]
 > [Zelfstudie: Beveiligingsbeleidsregels opstellen en beoordelen](tutorial-security-policy.md)

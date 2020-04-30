@@ -1,6 +1,6 @@
 ---
-title: Overzicht - Azure Database voor MariaDB
-description: Meer informatie over de Azure Database for MariaDB-service, een relationele databaseservice in de Microsoft-cloud op basis van de MySQL-community-editie.
+title: Overzicht-Azure Database for MariaDB
+description: Meer informatie over de Azure Database for MariaDB-service, een relationele database service in de micro soft Cloud op basis van de MySQL Community Edition.
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
@@ -8,15 +8,15 @@ ms.topic: overview
 ms.custom: mvc
 ms.date: 3/18/2020
 ms.openlocfilehash: 84fd24890495e7278c69c2f83c7182fd65f86791
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "79535558"
 ---
 # <a name="what-is-azure-database-for-mariadb"></a>Wat is Azure Database for MariaDB?
 
-Azure Database for MariaDB is een relationele databaseservice in de Microsoft-cloud. Azure Database voor MariaDB is gebaseerd op de [MariaDB community edition](https://mariadb.org/download/) (beschikbaar onder de GPLv2-licentie) databaseengine, versie 10.2 en 10.3.
+Azure Database for MariaDB is een relationele databaseservice in de Microsoft-cloud. Azure Database for MariaDB is gebaseerd op de [MariaDB Community-editie](https://mariadb.org/download/) (beschikbaar onder de GPLv2-licentie) data base-engine versie 10,2 en 10,3.
 
 Azure Database for MariaDB levert:
 
@@ -53,7 +53,7 @@ De toonaangevende serviceovereenkomst (SLA) van Azure met 99,99% beschikbaarheid
 
 ## <a name="secure-your-data"></a>Uw gegevens beveiligen
 
-Azure-databaseservices hebben traditiegetrouw een uitstekende gegevensbeveiliging die Azure Database for MariaDB voortzet. Azure Database for MariaDB biedt functies voor toegangsbeperking, beveiliging van data-at-rest en in-motion en activiteitsbewaking. Bezoek het [Vertrouwenscentrum van Azure](https://www.microsoft.com/trustcenter/security) voor informatie over de beveiliging van het Azure-platform. Zie het [beveiligingsoverzicht](concepts-security.md)voor meer informatie over Azure Database voor MariaDB-beveiligingsfuncties.
+Azure-databaseservices hebben traditiegetrouw een uitstekende gegevensbeveiliging die Azure Database for MariaDB voortzet. Azure Database for MariaDB biedt functies voor toegangsbeperking, beveiliging van data-at-rest en in-motion en activiteitsbewaking. Bezoek het [Vertrouwenscentrum van Azure](https://www.microsoft.com/trustcenter/security) voor informatie over de beveiliging van het Azure-platform. Zie het [overzicht van beveiliging](concepts-security.md)voor meer informatie over Azure database for MariaDB beveiligings functies.
 
 ## <a name="contacts"></a>Contactpersonen
 
@@ -67,7 +67,7 @@ U kunt ook contact opnemen met de volgende aanspreekpunten:
 ## <a name="next-steps"></a>Volgende stappen
 
 Nu u een inleiding tot Azure Database for MariaDB hebt gelezen, bent u klaar voor het volgende:
-- Zie de [prijspagina](https://azure.microsoft.com/pricing/details/mariadb/) voor kostenvergelijkingen en rekenmachines. 
-- Ga aan de slag door [uw eerste server te maken.](quickstart-create-mariadb-server-database-using-azure-portal.md)
+- Zie de pagina met [prijzen](https://azure.microsoft.com/pricing/details/mariadb/) voor kostprijs vergelijkingen en reken machines. 
+- Ga aan de slag door [uw eerste server te maken](quickstart-create-mariadb-server-database-using-azure-portal.md).
 
 <!--- - Build your first app using your preferred language: [Python](./connect-python.md) | [Node.JS](./connect-nodejs.md) | [Java](./connect-java.md) | [Ruby](./connect-ruby.md) | [PHP](./connect-php.md) | [.NET (C#)](./connect-csharp.md) | [Go](./connect-go.md) --->

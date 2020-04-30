@@ -1,6 +1,6 @@
 ---
 title: Windows-computers onboarden naar Azure Security Center
-description: Met deze quickstart u zien hoe u de log-analyse-agent op een Windows-computer indient.
+description: In deze Quick start ziet u hoe u de Log Analytics-agent op een Windows-computer inricht.
 services: security-center
 documentationcenter: na
 author: memildin
@@ -15,16 +15,16 @@ ms.workload: na
 ms.date: 12/3/2018
 ms.author: memildin
 ms.openlocfilehash: 2840b6636c2b511ab57a8bae8adf411f4d8a27d2
-ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/31/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80435929"
 ---
 # <a name="quickstart-onboard-windows-computers-to-azure-security-center"></a>Snelstart: Windows-computers onboarden naar Azure Security Center
-Nadat u aan boord bent van uw Azure-abonnementen, u Beveiligingscentrum inschakelen voor resources die buiten Azure worden uitgevoerd, bijvoorbeeld on-premises of in andere clouds, door de log-analyse-agent in te richten.
+Nadat u uw Azure-abonnementen hebt voor bereid, kunt u Security Center inschakelen voor resources die buiten Azure worden uitgevoerd, bijvoorbeeld on-premises of in andere Clouds, door de Log Analytics-agent in te richten.
 
-Met deze quickstart ziet u hoe u de log-analyse-agent op een Windows-computer installeert.
+In deze Quick start ziet u hoe u de Log Analytics-Agent installeert op een Windows-computer.
 
 ## <a name="prerequisites"></a>Vereisten
 U moet over een abonnement op Microsoft Azure beschikken om met Security Center aan de slag te gaan. Als u geen abonnement hebt, kunt u zich aanmelden voor een [gratis account](https://azure.microsoft.com/pricing/free-trial/).
@@ -33,8 +33,8 @@ U moet u zich in de Standard-prijscategorie van Security Center bevinden voordat
 
 ## <a name="add-new-windows-computer"></a>Nieuwe Windows-computer toevoegen
 
-1. Meld u aan bij de [Azure-portal](https://azure.microsoft.com/features/azure-portal/).
-2. Selecteer In het menu **Microsoft Azure** de optie **Beveiligingscentrum**. **Security Center - Overzicht** wordt geopend.
+1. Meld u aan bij de [Azure Portal](https://azure.microsoft.com/features/azure-portal/).
+2. Selecteer **Security Center**in het menu **Microsoft Azure** . **Security Center - Overzicht** wordt geopend.
 
    ![Overzicht van Security Center][2]
 
@@ -72,7 +72,7 @@ U dient nu het gedownloade bestand op de doelcomputer te installeren.
 9. Controleer op de pagina **Gereed om te installeren** uw keuzes en selecteer **Installeren**.
 10. Selecteer op de pagina **Configuratie voltooid** de optie **Voltooien**
 
-Als de **agent Log Analytics** is voltooid, wordt deze weergegeven in **het Configuratiescherm**. U kunt hier de configuratie controleren en verifiëren of de agent is verbonden.
+Als u klaar bent, wordt de **log Analytics-agent** weer gegeven in het **configuratie scherm**. U kunt hier de configuratie controleren en verifiëren of de agent is verbonden.
 
 Zie [Windows-computers verbinden](../azure-monitor/platform/agent-windows.md#install-the-agent-using-setup-wizard) voor meer informatie over het installeren en configureren van de agent.
 
@@ -91,12 +91,12 @@ Wanneer de agent niet langer nodig is, kunt u deze verwijderen van de Windows-co
 
 De agent verwijderen:
 
-1. Configuratiescherm **openen**.
+1. Open **het configuratie scherm**.
 2. Open **Programma's en onderdelen**.
-3. Selecteer **in Programma's en onderdelen**de optie Log **Analytics-agent** en klik op **Verwijderen**.
+3. In **Program ma's en onderdelen**selecteert u **log Analytics agent** en klikt u op **verwijderen**.
 
 ## <a name="next-steps"></a>Volgende stappen
-In deze quickstart hebt u de log-analyse-agent op een Windows-computer ingericht. Voor meer informatie over het gebruik van Security Center gaat u verder met de zelfstudie voor het configureren van een beveiligingsbeleid en het beoordelen van de beveiliging van uw resources.
+In deze Quick Start hebt u de Log Analytics-agent op een Windows-computer ingericht. Voor meer informatie over het gebruik van Security Center gaat u verder met de zelfstudie voor het configureren van een beveiligingsbeleid en het beoordelen van de beveiliging van uw resources.
 
 > [!div class="nextstepaction"]
 > [Zelfstudie: Beveiligingsbeleidsregels opstellen en beoordelen](tutorial-security-policy.md)

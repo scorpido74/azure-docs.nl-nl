@@ -1,5 +1,5 @@
 ---
-title: Snelstart - Azure Analysis Services maken met PowerShell Azure Analysis Services | Microsoft Documenten
+title: 'Quick Start: Azure Analysis Services maken met behulp van Power shell-Azure Analysis Services | Microsoft Docs'
 description: Leer hoe u een Azure Analysis Services-server maakt met behulp van PowerShell
 author: minewiskan
 ms.service: azure-analysis-services
@@ -8,10 +8,10 @@ ms.date: 03/30/2020
 ms.author: owend
 ms.reviewer: minewiskan
 ms.openlocfilehash: e2b772ac060e55d21341626772667d56245542ca
-ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/31/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80409941"
 ---
 # <a name="quickstart-create-a-server---powershell"></a>Snelstart: Een server maken - PowerShell
@@ -72,6 +72,6 @@ Remove-AzAnalysisServicesServer -Name "myserver" -ResourceGroupName "myResourceG
 In deze snelstart hebt u geleerd hoe u een server in uw Azure-abonnement maakt met behulp van PowerShell. Nu u een server hebt gemaakt, kunt u deze beveiligen door een serverfirewall te configureren. (Optioneel) U kunt ook rechtstreeks vanuit de portal een eenvoudig voorbeeldgegevensmodel toevoegen aan de server. Een voorbeeldmodel is handig als u meer wilt weten over het configureren van modeldatabaserollen en het testen van clientverbindingen. Als u meer wilt weten, gaat u verder met de zelfstudie waarin u leert een voorbeeldmodel toe te voegen.
 
 > [!div class="nextstepaction"]
-> [Snelstart: serverfirewall configureren - Portal](analysis-services-qs-firewall.md)      
+> [Snelstartgids: Server firewall configureren-Portal](analysis-services-qs-firewall.md)      
 > [!div class="nextstepaction"]
 > [Zelfstudie: Een voorbeeldmodel toevoegen aan uw server](analysis-services-create-sample-model.md)

@@ -1,6 +1,6 @@
 ---
-title: 'Snelstart: aangepaste gebeurtenissen verzenden met gebeurtenisraster en Azure CLI'
-description: Snelstart Gebruik Azure Event Grid en Azure CLI om een aangepast onderwerp te publiceren en u te abonneren op gebeurtenissen voor dat onderwerp. De gebeurtenissen worden verwerkt door een web-app.
+title: 'Snelstartgids: aangepaste gebeurtenissen verzenden met Event Grid en Azure CLI'
+description: Quick Start gebruik Azure Event Grid en Azure CLI om een aangepast onderwerp te publiceren en u te abonneren op gebeurtenissen voor dat onderwerp. De gebeurtenissen worden verwerkt door een web-app.
 services: event-grid
 keywords: ''
 author: spelluru
@@ -13,13 +13,13 @@ ms.custom:
 - seo-javascript-september2019
 - seo-python-october2019
 ms.openlocfilehash: eee6c453b4e30880034a048a3d2b63388927a753
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "78674532"
 ---
-# <a name="quickstart-route-custom-events-to-web-endpoint-with-azure-cli-and-event-grid"></a>Snelstart: aangepaste gebeurtenissen routeren naar webeindpunt met Azure CLI en Gebeurtenisraster
+# <a name="quickstart-route-custom-events-to-web-endpoint-with-azure-cli-and-event-grid"></a>Snelstartgids: aangepaste gebeurtenissen naar een webeindpunt door sturen met Azure CLI en Event Grid
 
 Azure Event Grid is een gebeurtenisservice voor de cloud. In dit artikel gebruikt u de Azure CLI om een aangepast onderwerp te maken, u op het aangepaste onderwerp te abonneren en de gebeurtenis te activeren om het resultaat weer te geven.
 
@@ -27,13 +27,13 @@ Normaal gesproken verzendt u gebeurtenissen naar een eindpunt dat de gebeurtenis
 
 Wanneer u klaar bent, ziet u dat de gebeurtenisgegevens naar de web-app zijn verzonden.
 
-![Resultaten weergeven in de Azure Event Grid Viewer](./media/custom-event-quickstart/azure-event-grid-viewer-record-inserted-event.png)
+![Resultaten weer geven in de Azure Event Grid viewer](./media/custom-event-quickstart/azure-event-grid-viewer-record-inserted-event.png)
 
 [!INCLUDE [quickstarts-free-trial-note.md](../../includes/quickstarts-free-trial-note.md)]
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Als u ervoor kiest de CLI lokaal te installeren en te gebruiken, moet u in dit artikel de nieuwste versie van Azure CLI (2.0.70 of hoger) uitvoeren. Voer `az --version` uit om de versie te bekijken. Als u Azure CLI 2.0 wilt installeren of upgraden, raadpleegt u [Azure CLI 2.0 installeren](/cli/azure/install-azure-cli).
+Als u ervoor kiest om de CLI lokaal te installeren en te gebruiken, moet u voor dit artikel de nieuwste versie van Azure CLI (2.0.70 of hoger) uitvoeren. Voer `az --version` uit om de versie te bekijken. Als u Azure CLI 2.0 wilt installeren of upgraden, raadpleegt u [Azure CLI 2.0 installeren](/cli/azure/install-azure-cli).
 
 Als u Cloud Shell niet gebruikt, moet u zich eerst aanmelden met `az login`.
 
@@ -98,7 +98,7 @@ az eventgrid event-subscription create \
 
 Bekijk opnieuw uw web-app en u zult zien dat er een validatiegebeurtenis voor een abonnement naartoe is verzonden. Selecteer het oogpictogram om de gebeurtenisgegevens uit te breiden. Via Event Grid wordt de validatiegebeurtenis verzonden zodat het eindpunt kan controleren of de gebeurtenisgegevens in aanmerking komen om ontvangen te worden. De web-app bevat code waarmee het abonnement kan worden gevalideerd.
 
-![De abonnementsgebeurtenis weergeven in Azure Event Grid Viewer](./media/custom-event-quickstart/azure-event-grid-viewer-subscription-validation-event.png)
+![De abonnements gebeurtenis in Azure Event Grid viewer weer geven](./media/custom-event-quickstart/azure-event-grid-viewer-subscription-validation-event.png)
 
 
 ## <a name="send-an-event-to-your-custom-topic"></a>Een gebeurtenis verzenden naar het aangepaste onderwerp

@@ -9,13 +9,13 @@ ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 09/24/2018
 ms.openlocfilehash: 1afdc0319ae26fcd6c8cb3ada0b4aa8c31fe1fbb
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "79240224"
 ---
-# <a name="quickstart-build-a-cassandra-app-with-net-sdk-and-azure-cosmos-db"></a>Snelstart: een Cassandra-app bouwen met .NET SDK en Azure Cosmos DB
+# <a name="quickstart-build-a-cassandra-app-with-net-sdk-and-azure-cosmos-db"></a>Quick Start: een Cassandra-app bouwen met .NET SDK en Azure Cosmos DB
 
 > [!div class="op_single_selector"]
 > * [.NET](create-cassandra-dotnet.md)
@@ -24,16 +24,16 @@ ms.locfileid: "79240224"
 > * [Python](create-cassandra-python.md)
 >  
 
-Deze quickstart laat zien hoe je .NET en de Azure Cosmos DB [Cassandra API](cassandra-introduction.md) gebruiken om een profiel-app te bouwen door een voorbeeld van GitHub te klonen. In deze snelstart ziet u ook hoe u de webportal van Azure gebruikt om een Azure Cosmos DB-account te maken.
+In deze Quick start ziet u hoe u .NET en de Azure Cosmos DB [Cassandra-API](cassandra-introduction.md) kunt gebruiken om een profiel-app te maken door een voor beeld uit github te klonen. In deze snelstart ziet u ook hoe u de webportal van Azure gebruikt om een Azure Cosmos DB-account te maken.
 
 Azure Cosmos DB is de wereldwijd gedistribueerde multimodel-databaseservice van Microsoft. U kunt snel databases maken van documenten, sleutel/waarde-paren en grafieken en hier query's op uitvoeren. Deze databases genieten allemaal het voordeel van de wereldwijde distributie en horizontale schaalmogelijkheden die ten grondslag liggen aan Azure Cosmos DB. 
 
 ## <a name="prerequisites"></a>Vereisten
 
-[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]U [Azure Cosmos DB ook gratis uitproberen](https://azure.microsoft.com/try/cosmosdb/) zonder een Azure-abonnement, gratis en verplichtingen.
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]U kunt ook [gratis proberen Azure Cosmos DB](https://azure.microsoft.com/try/cosmosdb/) zonder een Azure-abonnement, gratis en toezeg gingen.
 
 U hebt verder nodig: 
-* Als je Visual Studio 2019 nog niet hebt geïnstalleerd, kun je de **gratis** [Visual Studio 2019 Community Edition](https://www.visualstudio.com/downloads/)downloaden en gebruiken. Zorg ervoor dat u **Azure-ontwikkeling** inschakelt tijdens de installatie van Visual Studio.
+* Als Visual Studio 2019 nog niet is geïnstalleerd, kunt u de **gratis** [Visual Studio 2019 Community Edition](https://www.visualstudio.com/downloads/)downloaden en gebruiken. Zorg ervoor dat u **Azure-ontwikkeling** inschakelt tijdens de installatie van Visual Studio.
 * Installeer [Git](https://www.git-scm.com/) zodat u het voorbeeld kunt klonen.
 
 <a id="create-account"></a>
@@ -122,7 +122,7 @@ Ga nu terug naar Azure Portal om de verbindingsreeksinformatie op te halen en ko
 
     ![Een toegangssleutel in Azure Portal bekijken en kopiëren op de pagina Verbindingsreeks](./media/create-cassandra-dotnet/keys.png)
 
-2. Open in Visual Studio het Program.cs bestand. 
+2. Open het Program.cs-bestand in Visual Studio. 
 
 3. Plak de USERNAME-waarde uit de portal over `<FILLME>` op regel 13 heen.
 
@@ -146,7 +146,7 @@ Ga nu terug naar Azure Portal om de verbindingsreeksinformatie op te halen en ko
     
 ## <a name="run-the-net-app"></a>De .NET-app uitvoeren
 
-1. Selecteer in Visual Studio **de** > optie Tools**NuGet Package Manager** > **Package Manager Console**.
+1. Selecteer in Visual Studio **tools** > **NuGet package manager** > **Package Manager console**.
 
 2. Ga naar de opdrachtprompt en gebruik de volgende opdracht om het pakket NuGet van het .NET-stuurprogramma te installeren. 
 

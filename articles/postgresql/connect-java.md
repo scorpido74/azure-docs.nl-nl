@@ -1,6 +1,6 @@
 ---
-title: Verbinding maken met Java - Azure Database voor PostgreSQL - Single Server
-description: Deze quickstart biedt een Java-codevoorbeeld dat u gebruiken om gegevens uit Azure Database voor PostgreSQL - Single Server te verbinden en op te vragen.
+title: Verbinding maken met Java-Azure Database for PostgreSQL-één server
+description: Deze Quick Start biedt een Java-code voorbeeld dat u kunt gebruiken om verbinding te maken en gegevens op te vragen van Azure Database for PostgreSQL-één server.
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
@@ -11,33 +11,33 @@ ms.devlang: java
 ms.topic: quickstart
 ms.date: 05/06/2019
 ms.openlocfilehash: cf03cebcd69bd85a4cc94ceb7e99fd0edef99b58
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80063128"
 ---
-# <a name="quickstart-use-java-to-connect-to-and-query-data-in-azure-database-for-postgresql---single-server"></a>Snelstart: Java gebruiken om verbinding te maken met en querygegevens in Azure Database voor PostgreSQL - Single Server
+# <a name="quickstart-use-java-to-connect-to-and-query-data-in-azure-database-for-postgresql---single-server"></a>Snelstartgids: Java gebruiken om verbinding te maken met en gegevens op te vragen in Azure Database for PostgreSQL-één server
 
-In deze quickstart maakt u verbinding met een Azure Database voor PostgreSQL met behulp van een Java-toepassing. U ziet hier hoe u SQL-instructies gebruikt om gegevens in de database op te vragen, in te voegen, bij te werken en te verwijderen. In de stappen van dit artikel wordt ervan uitgegaan dat u bekend bent met het ontwikkelen met behulp van Java en geen ervaring hebt met het werken met Azure Database for PostgreSQL.
+In deze Quick Start maakt u verbinding met een Azure Database for PostgreSQL met behulp van een Java-toepassing. U ziet hier hoe u SQL-instructies gebruikt om gegevens in de database op te vragen, in te voegen, bij te werken en te verwijderen. In de stappen van dit artikel wordt ervan uitgegaan dat u bekend bent met het ontwikkelen met behulp van Java en geen ervaring hebt met het werken met Azure Database for PostgreSQL.
 
 ## <a name="prerequisites"></a>Vereisten
 
-- Een Azure-account met een actief abonnement. [Maak gratis een account aan.](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)
+- Een Azure-account met een actief abonnement. [Maak gratis een account](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 
-- Voltooiing van [Quickstart: maak een Azure-database voor PostgreSQL-server in de Azure-portal](quickstart-create-server-database-portal.md) of [Quickstart: maak een Azure-database voor PostgreSQL met behulp van de Azure CLI](quickstart-create-server-database-azure-cli.md).
+- Volt ooien van [Quick Start: een Azure database for postgresql-server maken in azure Portal](quickstart-create-server-database-portal.md) of [Quick start: een Azure database for PostgreSQL maken met behulp van de Azure cli](quickstart-create-server-database-azure-cli.md).
 
-- [PostgreSQL JDBC Driver](https://jdbc.postgresql.org/download.html) - match uw versie van Java en de Java Development Kit.
-- [Classpath-details](https://jdbc.postgresql.org/documentation/head/classpath.html) - Neem het PostgreSQL JDBC-jarbestand (bijvoorbeeld postgresql-42.1.1.jar) op in uw toepassingsklassepad.
+- [POSTGRESQL JDBC-stuur programma](https://jdbc.postgresql.org/download.html) : komt overeen met uw versie van Java en de Java Development Kit.
+- [Details van klassenpad](https://jdbc.postgresql.org/documentation/head/classpath.html) : Neem het postgresql JDBC jar-bestand (bijvoorbeeld postgresql-42.1.1. jar) op in het klassepad van uw toepassing.
 
 ## <a name="get-connection-information"></a>Verbindingsgegevens ophalen
 Haal de verbindingsgegevens op die nodig zijn om verbinding te maken met de Azure Database voor PostgreSQL. U hebt de volledig gekwalificeerde servernaam en aanmeldingsreferenties nodig.
 
-1. Zoek en selecteer in de [Azure-portal](https://portal.azure.com/)de server die u hebt gemaakt (zoals **mydemoserver).**
+1. Zoek in het [Azure Portal](https://portal.azure.com/)naar de server die u hebt gemaakt (bijvoorbeeld **mydemoserver**) en selecteer deze.
 
-1. Noteer in het deelvenster **Overzicht** van de server **de** gebruikersnaam server en de **gebruikersnaam beheerder**. Als u uw wachtwoord vergeet, kunt u het wachtwoord in dit venster opnieuw instellen.
+1. Noteer de **Server naam** en de **gebruikers naam**van de beheerder in het **overzichts** venster van de server. Als u uw wachtwoord vergeet, kunt u het wachtwoord in dit venster opnieuw instellen.
 
-    ![Azure Database voor PostgreSQL-verbindingstekenreeks](./media/connect-java/server-details-azure-database-postgresql.png)
+    ![Azure Database for PostgreSQL connection string](./media/connect-java/server-details-azure-database-postgresql.png)
 
 ## <a name="connect-create-table-and-insert-data"></a>Verbinden, tabel maken en gegevens invoegen
 Gebruik de volgende code om verbinding te maken en de gegevens in de database te laden met de functie met een SQL-instructie **INSERT**. De methoden [getConnection()](https://www.postgresql.org/docs/7.4/static/jdbc-use.html), [createStatement()](https://jdbc.postgresql.org/documentation/head/query.html) en [executeQuery()](https://jdbc.postgresql.org/documentation/head/query.html) worden gebruikt om verbinding maken met de database, de tabel neer te zetten en te maken. Het object [prepareStatement](https://jdbc.postgresql.org/documentation/head/query.html) wordt gebruikt voor het bouwen van de INSERT-opdrachten, waarbij setString() en setInt() worden gebruikt om de parameterwaarden te koppelen. Met de methode [executeUpdate()](https://jdbc.postgresql.org/documentation/head/update.html) wordt de opdracht voor elke set parameters uitgevoerd. 

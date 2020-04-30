@@ -1,5 +1,5 @@
 ---
-title: Verbinding maken met PHP - Azure Database voor MySQL
+title: Verbinding maken met behulp van PHP-Azure Database for MySQL
 description: Deze snelstartgids bevat enkele voorbeelden van PHP-code die u kunt gebruiken om verbinding te maken met en gegevens op te vragen uit een Azure Database voor MySQL.
 author: ajlam
 ms.author: andrela
@@ -8,10 +8,10 @@ ms.custom: mvc
 ms.topic: quickstart
 ms.date: 3/18/2020
 ms.openlocfilehash: 58683cb6eb74fcc3bc2f90245d6f76ef65bdf2e6
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80067925"
 ---
 # <a name="azure-database-for-mysql-use-php-to-connect-and-query-data"></a>Azure Database voor MySQL: PHP gebruiken om verbinding te maken en gegevens op te vragen
@@ -27,20 +27,20 @@ Installeer PHP op uw eigen server of maak een Azure-[web-app](../app-service/ove
 
 ### <a name="macos"></a>MacOS
 - Download [PHP 7.1.4](https://secure.php.net/downloads.php).
-- Installeer PHP en raadpleeg de [PHP-handleiding](https://secure.php.net/manual/install.macosx.php) voor verdere configuratie.
+- Installeer PHP en Raadpleeg de [php-hand leiding](https://secure.php.net/manual/install.macosx.php) voor verdere configuratie.
 
 ### <a name="linux-ubuntu"></a>Linux (Ubuntu)
-- Download [PHP 7.1.4 non-thread safe (x64) versie](https://secure.php.net/downloads.php).
-- Installeer PHP en raadpleeg de [PHP-handleiding](https://secure.php.net/manual/install.unix.php) voor verdere configuratie.
+- Down load [php 7.1.4 non-thread safe (x64)-versie](https://secure.php.net/downloads.php).
+- Installeer PHP en Raadpleeg de [php-hand leiding](https://secure.php.net/manual/install.unix.php) voor verdere configuratie.
 
 ### <a name="windows"></a>Windows
-- Download [PHP 7.1.4 non-thread safe (x64) versie](https://windows.php.net/download#php-7.1).
-- Installeer PHP en raadpleeg de [PHP-handleiding](https://secure.php.net/manual/install.windows.php) voor verdere configuratie.
+- Down load [php 7.1.4 non-thread safe (x64)-versie](https://windows.php.net/download#php-7.1).
+- Installeer PHP en Raadpleeg de [php-hand leiding](https://secure.php.net/manual/install.windows.php) voor verdere configuratie.
 
 ## <a name="get-connection-information"></a>Verbindingsgegevens ophalen
 Haal de verbindingsgegevens op die nodig zijn om verbinding te maken met de Azure Database voor MySQL. U hebt de volledig gekwalificeerde servernaam en aanmeldingsreferenties nodig.
 
-1. Log in bij de [Azure-portal](https://portal.azure.com/).
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com/).
 2. Klik in het menu aan de linkerkant in Azure Portal op **Alle resources** en zoek naar de server die u hebt gemaakt (bijvoorbeeld **mydemoserver**).
 3. Klik op de servernaam.
 4. Ga naar het venster **Overzicht** van de server en noteer de **Servernaam** en de **Aanmeldingsnaam van de serverbeheerder**. Als u uw wachtwoord vergeet, kunt u het wachtwoord in dit venster opnieuw instellen.

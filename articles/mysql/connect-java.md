@@ -1,6 +1,6 @@
 ---
-title: Verbinding maken met Java - Azure Database voor MySQL
-description: Deze quickstart biedt een Java-codevoorbeeld dat u gebruiken om gegevens uit een Azure Database voor MySQL-database te verbinden en op te vragen.
+title: Verbinding maken met behulp van Java-Azure Database for MySQL
+description: Deze Quick Start biedt een Java-code voorbeeld dat u kunt gebruiken om verbinding te maken en gegevens op te vragen uit een Azure Database for MySQL-data base.
 author: ajlam
 ms.author: andrela
 ms.service: mysql
@@ -9,36 +9,36 @@ ms.topic: quickstart
 ms.devlang: java
 ms.date: 3/18/2020
 ms.openlocfilehash: b5f1cbf2f822f350b1eeba032199676651364d84
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/09/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80983820"
 ---
-# <a name="quickstart-use-java-to-connect-to-and-query-data-in-azure-database-for-mysql"></a>Snelstart: Java gebruiken om verbinding te maken met en querygegevens in Azure Database voor MySQL
+# <a name="quickstart-use-java-to-connect-to-and-query-data-in-azure-database-for-mysql"></a>Snelstartgids: Java gebruiken om verbinding te maken met en gegevens op te vragen in Azure Database for MySQL
 
-In deze quickstart maakt u verbinding met een Azure Database for MySQL met behulp van een Java-toepassing en het JDBC-stuurprogramma MariaDB Connector/J. Vervolgens gebruikt u SQL-instructies om gegevens in de database op te vragen, in te voegen, bij te werken en te verwijderen van Mac-, Ubuntu Linux- en Windows-platforms. 
+In deze Quick Start maakt u verbinding met een Azure Database for MySQL met behulp van een Java-toepassing en het JDBC-stuur programma MariaDB Connector/J. Vervolgens gebruikt u SQL-instructies om gegevens in de-data base te zoeken, in te voegen, bij te werken en te verwijderen vanaf een Mac-, Ubuntu Linux-en Windows-platform. 
 
-In dit onderwerp wordt ervan uitgegaan dat u bekend bent met het ontwikkelen van Java, maar dat u nieuw bent in het werken met Azure Database voor MySQL.
+In dit onderwerp wordt ervan uitgegaan dat u bekend bent met het ontwikkelen met behulp van Java, maar nog geen ervaring hebt met het werken met Azure Database for MySQL.
 
 ## <a name="prerequisites"></a>Vereisten
 
-- Een Azure-account met een actief abonnement. [Maak gratis een account aan.](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)
-- Een Azure-database voor MySQL-server. [Maak een Azure Database voor MySQL-server met Azure Portal](quickstart-create-mysql-server-database-using-azure-portal.md) of [Maak een Azure Database voor MySQL-server met Azure CLI](quickstart-create-mysql-server-database-using-azure-cli.md).
-- Azure Database for MySQL-verbindingsbeveiliging is geconfigureerd met de geopende firewall en SSL-verbindingsinstellingen geconfigureerd voor uw toepassing.
+- Een Azure-account met een actief abonnement. [Maak gratis een account](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
+- Een Azure Database for MySQL-server. [Maak een Azure database for mysql server met behulp van Azure Portal](quickstart-create-mysql-server-database-using-azure-portal.md) of [Maak een Azure database for mysql server met behulp van Azure cli](quickstart-create-mysql-server-database-using-azure-cli.md).
+- Azure Database for MySQL verbindings beveiliging is geconfigureerd met de instellingen voor open firewall en SSL-verbinding die voor uw toepassing zijn geconfigureerd.
 
 ## <a name="obtain-the-mariadb-connector"></a>De MariaDB-connector verkrijgen
 
-Verkrijg de [MariaDB Connector/J-connector](https://mariadb.com/kb/en/library/mariadb-connector-j/) via een van de volgende benaderingen:
-   - Gebruik het Maven-pakket [mariadb-java-client](https://search.maven.org/search?q=a:mariadb-java-client) om de [afhankelijkheid van mariadb-java-client](https://mvnrepository.com/artifact/org.mariadb.jdbc/mariadb-java-client) op te nemen in het POM-bestand voor uw project.
-   - Download de JDBC driver [MariaDB Connector/J](https://downloads.mariadb.org/connector-java/) en neem het JDBC-jarbestand (bijvoorbeeld mariadb-java-client-2.4.3.jar) op in uw sollicitatieklassepad. Raadpleeg de documentatie van uw omgeving voor klasse-details, zoals [Apache Tomcat](https://tomcat.apache.org/tomcat-7.0-doc/class-loader-howto.html) of [Java SE](https://docs.oracle.com/javase/7/docs/technotes/tools/windows/classpath.html)
+Gebruik een van de volgende benaderingen om de [MariaDB Connector/J-](https://mariadb.com/kb/en/library/mariadb-connector-j/) connector te verkrijgen:
+   - Gebruik het maven [-pakket mariadb-Java-client](https://search.maven.org/search?q=a:mariadb-java-client) voor het toevoegen van de [mariadb-Java-client-afhankelijkheid](https://mvnrepository.com/artifact/org.mariadb.jdbc/mariadb-java-client) in het pom-bestand voor uw project.
+   - Down load het JDBC [-stuur programma MariaDB Connector/J](https://downloads.mariadb.org/connector-java/) en neem het JDBC jar-bestand (bijvoorbeeld mariadb-Java-client-2.4.3. jar) op in het pad van de toepassings klasse. Raadpleeg de documentatie van uw omgeving voor specifieke klassepaden, zoals [Apache Tomcat](https://tomcat.apache.org/tomcat-7.0-doc/class-loader-howto.html) of [Java SE](https://docs.oracle.com/javase/7/docs/technotes/tools/windows/classpath.html)
 
 ## <a name="get-connection-information"></a>Verbindingsgegevens ophalen
 
 Haal de verbindingsgegevens op die nodig zijn om verbinding te maken met de Azure Database voor MySQL. U hebt de volledig gekwalificeerde servernaam en aanmeldingsreferenties nodig.
 
-1. Log in bij de [Azure-portal](https://portal.azure.com/).
-2. Selecteer in het linkermenu in de Azure-portal **Alle bronnen**en zoek vervolgens naar de server die u hebt gemaakt (zoals **mydemoserver).**
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com/).
+2. Selecteer in het menu aan de linkerkant in Azure Portal **alle resources**en zoek vervolgens naar de server die u hebt gemaakt (bijvoorbeeld **mydemoserver**).
 3. Selecteer de servernaam.
 4. Ga naar het venster **Overzicht** van de server en noteer de **Servernaam** en de **Aanmeldingsnaam van de serverbeheerder**. Als u uw wachtwoord vergeet, kunt u het wachtwoord in dit venster opnieuw instellen.
  ![Naam van Azure Database voor MySQL-server](./media/connect-java/azure-database-mysql-server-name.png)
@@ -136,7 +136,7 @@ public class CreateTableInsertRows {
 
 ## <a name="read-data"></a>Gegevens lezen
 
-Gebruik de volgende code om de gegevens te lezen met de SQL-instructie **SELECT**. De methode [getConnection()](https://mariadb.com/kb/en/library/about-mariadb-connector-j/#using-drivermanager) wordt gebruikt om verbinding te maken met MySQL. Methoden [createStatement()](https://mariadb.com/kb/en/library/about-mariadb-connector-j/#creating-a-table-on-a-mariadb-or-mysql-server) en executeQuery() worden gebruikt om de select-instructie te verbinden en uit te voeren. De resultaten worden verwerkt met behulp van een ResultSet-object. 
+Gebruik de volgende code om de gegevens te lezen met de SQL-instructie **SELECT**. De methode [getConnection()](https://mariadb.com/kb/en/library/about-mariadb-connector-j/#using-drivermanager) wordt gebruikt om verbinding te maken met MySQL. De methoden [createStatement ()](https://mariadb.com/kb/en/library/about-mariadb-connector-j/#creating-a-table-on-a-mariadb-or-mysql-server) en executeQuery () worden gebruikt om verbinding te maken en de SELECT-instructie uit te voeren. De resultaten worden verwerkt met behulp van een ResultSet-object. 
 
 Vervang de parameters voor host, database, gebruiker en wachtwoord door de waarden die u hebt opgegeven tijdens het maken van uw eigen server en database.
 
@@ -283,7 +283,7 @@ public class UpdateTable {
 
 ## <a name="delete-data"></a>Gegevens verwijderen
 
-Gebruik de volgende code om de gegevens te verwijderen met de SQL-instructie **DELETE**. De methode [getConnection()](https://mariadb.com/kb/en/library/about-mariadb-connector-j/#using-drivermanager) wordt gebruikt om verbinding te maken met MySQL.  De methoden [prepareStatement()](https://docs.oracle.com/javase/tutorial/jdbc/basics/prepared.html) en executeUpdate() worden gebruikt om de verwijderinstructie voor te bereiden en uit te voeren. 
+Gebruik de volgende code om de gegevens te verwijderen met de SQL-instructie **DELETE**. De methode [getConnection()](https://mariadb.com/kb/en/library/about-mariadb-connector-j/#using-drivermanager) wordt gebruikt om verbinding te maken met MySQL.  De methoden [prepareStatement ()](https://docs.oracle.com/javase/tutorial/jdbc/basics/prepared.html) en executeUpdate () worden gebruikt om de DELETE-instructie voor te bereiden en uit te voeren. 
 
 Vervang de parameters voor host, database, gebruiker en wachtwoord door de waarden die u hebt opgegeven tijdens het maken van uw eigen server en database.
 

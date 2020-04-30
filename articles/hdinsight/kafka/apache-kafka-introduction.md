@@ -9,19 +9,19 @@ ms.topic: overview
 ms.custom: hdinsightactive
 ms.date: 02/25/2020
 ms.openlocfilehash: 92f56f3b405470bc8ae0e9ebab2450ddc31b3c6a
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "77672171"
 ---
-# <a name="what-is-apache-kafka-in-azure-hdinsight"></a>Wat is Apache Kafka in Azure HDInsight
+# <a name="what-is-apache-kafka-in-azure-hdinsight"></a>Wat is Apache Kafka in azure HDInsight?
 
 [Apache Kafka](https://kafka.apache.org) is een open-source gedistribueerd streamingplatform dat kan worden gebruikt voor het bouwen van pijplijnen en toepassingen voor realtime streaming van gegevens. Kafka biedt ook berichtenbrokerfunctionaliteit vergelijkbaar met een berichtenwachtrij, waarmee u benoemde gegevensstromen kunt publiceren en zich erop kunt abonneren.
 
 Dit zijn specifieke kenmerken van Kafka in HDInsight:
 
-* Het is een beheerde service die een vereenvoudigd configuratieproces biedt. Het resultaat is een configuratie die is getest en die wordt ondersteund door Microsoft.
+* Het is een beheerde service die een vereenvoudigd configuratie proces biedt. Het resultaat is een configuratie die is getest en die wordt ondersteund door Microsoft.
 
 * Microsoft biedt een SLA (Service Level Agreement) met een uptime van 99,9% voor Kafka. Zie [SLA-informatie voor HDInsight](https://azure.microsoft.com/support/legal/sla/hdinsight/v1_0/) voor meer informatie.
 
@@ -61,13 +61,13 @@ Hier volgen enkele algemene taken en patronen die kunnen worden uitgevoerd met K
 
 |Gebruiken |Beschrijving |
 |---|---|
-|Replicatie van Apache Kafka-gegevens|Kafka biedt het hulpprogramma MirrorMaker, waarmee gegevens worden gerepliceerd tussen Kafka-clusters. Zie [Apache Kafka-onderwerpen repliceren met Apache Kafka in HDInsight](apache-kafka-mirroring.md) voor informatie over het gebruik van MirrorMaker.|
-|Berichtenpatroon publiceren-abonneren|Kafka biedt een producent-API voor het publiceren van records naar een Kafka-onderwerp. De consument-API wordt gebruikt bij het abonneren op een onderwerp. Zie [Starten met Apache Kafka in HDInsight](apache-kafka-get-started.md) voor meer informatie.|
+|Replicatie van Apache Kafka gegevens|Kafka biedt het hulpprogramma MirrorMaker, waarmee gegevens worden gerepliceerd tussen Kafka-clusters. Zie [Apache Kafka-onderwerpen repliceren met Apache Kafka in HDInsight](apache-kafka-mirroring.md) voor informatie over het gebruik van MirrorMaker.|
+|Bericht patroon voor publiceren/abonneren|Kafka biedt een producent-API voor het publiceren van records naar een Kafka-onderwerp. De consument-API wordt gebruikt bij het abonneren op een onderwerp. Zie [Starten met Apache Kafka in HDInsight](apache-kafka-get-started.md) voor meer informatie.|
 |Streamverwerking|Kafka wordt vaak gebruikt met Apache Storm of Spark voor streamverwerking in realtime. In Kafka 0.10.0.0 (HDInsight-versie 3.5 en 3.6) werd een streaming-API geïntroduceerd waarmee u streamingoplossingen kunt maken zonder Storm of Spark. Zie [Starten met Apache Kafka in HDInsight](apache-kafka-get-started.md) voor meer informatie.|
 |Horizontaal schalen|Kafka partitioneert streams op de knooppunten in het HDInsight-cluster. Consumentenprocessen kunnen worden gekoppeld aan afzonderlijke partities voor een evenwichtige taakverdeling bij het gebruiken van records. Zie [Starten met Apache Kafka in HDInsight](apache-kafka-get-started.md) voor meer informatie.|
-|In-order levering|binnen elke partitie worden records in de stream opgeslagen in de volgorde waarin ze zijn ontvangen. Door één consumentenproces aan een partitie te koppelen, kunt u garanderen dat de records in de juiste volgorde worden verwerkt. Zie [Starten met Apache Kafka in HDInsight](apache-kafka-get-started.md) voor meer informatie.|
+|Levering in bestelling|binnen elke partitie worden records in de stream opgeslagen in de volgorde waarin ze zijn ontvangen. Door één consumentenproces aan een partitie te koppelen, kunt u garanderen dat de records in de juiste volgorde worden verwerkt. Zie [Starten met Apache Kafka in HDInsight](apache-kafka-get-started.md) voor meer informatie.|
 |Berichten|omdat het publicatie-/abonnementspatroon voor berichten wordt ondersteund, wordt Kafka vaak gebruikt als berichtenbroker.|
-|Activiteitstracking|omdat Kafka records registreert in de volgorde waarin ze binnenkomen, kan dit worden gebruikt om activiteiten bij te houden en opnieuw te maken. Bijvoorbeeld gebruikersacties op een website of in een toepassing.|
+|Activiteiten bijhouden|omdat Kafka records registreert in de volgorde waarin ze binnenkomen, kan dit worden gebruikt om activiteiten bij te houden en opnieuw te maken. Bijvoorbeeld gebruikersacties op een website of in een toepassing.|
 |Aggregatie|met streamverwerking kunt u de gegevens uit de verschillende streams combineren en samenvoegen in operationele gegevens.|
 |Transformatie|met streamverwerking kunt u de gegevens uit meerdere invoeronderwerpen combineren en vertalen naar één of meer uitvoeronderwerpen.|
 

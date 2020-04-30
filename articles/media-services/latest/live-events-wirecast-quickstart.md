@@ -1,6 +1,6 @@
 ---
-title: Een livestream van Azure Media Services maken
-description: Meer informatie over het maken van een livestream van Azure Media Services met behulp van de portal en Wirecast
+title: Een Azure Media Services live stream maken
+description: Meer informatie over het maken van een Azure Media Services live stream met behulp van de portal en Wirecast
 services: media-services
 ms.service: media-services
 ms.topic: quickstart
@@ -8,187 +8,187 @@ ms.author: inhenkel
 author: IngridAtMicrosoft
 ms.date: 03/25/2020
 ms.openlocfilehash: 459f11844f873a911b3e5702e8c768b1cd22e504
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/09/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80984994"
 ---
-# <a name="create-an-azure-media-services-live-stream"></a>Een livestream van Azure Media Services maken
+# <a name="create-an-azure-media-services-live-stream"></a>Een Azure Media Services live stream maken
 
-Met deze quickstart u een livestream van Azure Media Services maken met behulp van de Azure-portal en Telestream Wirecast. Er wordt van uitgegaan dat u een Azure-abonnement hebt en een Media Services-account hebt gemaakt.
+Deze Quick Start helpt u bij het maken van een Azure Media Services live stream met behulp van de Azure Portal en de Telestream-Wirecast. Hierbij wordt ervan uitgegaan dat u een Azure-abonnement hebt en een Media Services-account hebt gemaakt.
 
-Als u geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/) voordat u begint.
+Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/) aan voordat u begint.
 
 ## <a name="sign-in-to-the-azure-portal"></a>Aanmelden bij Azure Portal
 
-Open uw webbrowser en ga naar de [Microsoft Azure-portal.](https://portal.azure.com/) Voer uw referenties in om u aan te melden bij de portal. De standaardweergave is uw service-dashboard.
+Open uw webbrowser en ga naar de [Microsoft Azure-Portal](https://portal.azure.com/). Voer uw referenties in om u aan te melden bij de portal. De standaardweergave is uw service-dashboard.
 
-In deze snelle start behandelen we:
+In deze Snelstartgids worden de volgende acties behandeld:
 
-- Het opzetten van een on-premises encoder met een gratis proefperiode van Telestream Wirecast.
-- Het opzetten van een live stream.
-- Het instellen van live stream-uitgangen.
-- Het uitvoeren van een standaard streaming eindpunt.
-- Azure Media Player gebruiken om de live stream en on-demand-uitvoer te bekijken.
+- Instellen van een on-premises Encoder met een gratis proef versie van Telestream Wirecast.
+- Een live stream instellen.
+- De uitvoer van live streams instellen.
+- Een standaard streaming-eind punt wordt uitgevoerd.
+- Gebruik Azure Media Player om de Live Stream en de uitvoer op aanvraag weer te geven.
 
-Om het simpel te houden, gebruiken we een coderingsvoorinstelling voor Azure Media Services in Wirecast, pass-through cloudcodering en RTMP.
+Om alles te blijven gebruiken, wordt er een coderings voorinstelling gebruikt voor Azure Media Services in Wirecast, Pass-Through-Cloud codering en RTMP.
 
-## <a name="set-up-an-on-premises-encoder-by-using-wirecast"></a>Een on-premises encoder instellen met Wirecast
+## <a name="set-up-an-on-premises-encoder-by-using-wirecast"></a>Een on-premises encoder instellen met behulp van Wirecast
 
-1. Wirecast downloaden en installeren voor uw besturingssysteem op de [Telestream website.](https://www.telestream.net)
-1. Start de applicatie en gebruik je favoriete e-mailadres om het product te registreren. Houd de toepassing open.
-1. Controleer in de e-mail die u ontvangt uw e-mailadres. Dan start de applicatie met de gratis proefperiode.
-1. Aanbevolen: Bekijk de videotutorial in het scherm van de openingstoepassing.
+1. Down load en installeer Wirecast voor uw besturings systeem op de [Telestream-website](https://www.telestream.net).
+1. Start de toepassing en gebruik uw favoriete e-mail adres om het product te registreren. Laat de toepassing geopend.
+1. Verifieer uw e-mail adres in de e-mail die u ontvangt. Vervolgens wordt de gratis proef versie van de toepassing gestart.
+1. Aanbevolen: Bekijk de video-zelf studie in het scherm toepassing openen.
 
-## <a name="set-up-an-azure-media-services-live-stream"></a>Een livestream van Azure Media Services instellen
+## <a name="set-up-an-azure-media-services-live-stream"></a>Een Azure Media Services Live Stream instellen
 
-1. Ga naar het Azure Media Services-account binnen de portal en selecteer **Live streaming** in de lijst **Media Services.**
+1. Ga naar het Azure Media Services-account in de portal en selecteer vervolgens **live streamen** in de **Media Services** -lijst.
 
-   ![Live streaming link](media/live-events-wirecast-quickstart/select-live-streaming.png)
-1. Selecteer **Live-evenement toevoegen** om een nieuw live streaming-evenement te maken.
+   ![Live streaming-koppeling](media/live-events-wirecast-quickstart/select-live-streaming.png)
+1. Selecteer **Live Event toevoegen** om een nieuwe gebeurtenis voor live streaming te maken.
 
-   ![Pictogram Live-gebeurtenis toevoegen](media/live-events-wirecast-quickstart/add-live-event.png)
-1. Voer een naam in voor uw nieuwe evenement, zoals *TestLiveEvent,* in het vak **Naam van een Live-evenement.**
+   ![Pictogram live-gebeurtenis toevoegen](media/live-events-wirecast-quickstart/add-live-event.png)
+1. Voer een naam in voor uw nieuwe gebeurtenis, zoals *TestLiveEvent*, in het vak **naam van live-gebeurtenis** .
 
-   ![Vak Naam van live-evenement](media/live-events-wirecast-quickstart/live-event-name.png)
-1. Voer een optionele beschrijving van de gebeurtenis in het vak **Beschrijving** in.
-1. Selecteer de **optie Pass-through – geen cloudcodering.**
+   ![Vak live-evenement naam](media/live-events-wirecast-quickstart/live-event-name.png)
+1. Voer een optionele beschrijving in van de gebeurtenis in het vak **Beschrijving** .
+1. Selecteer de optie **Pass-Through-geen Cloud encoding** .
 
-   ![Optie voor cloudcodering](media/live-events-wirecast-quickstart/cloud-encoding.png)
-1. Selecteer de optie **RTMP.**
-1. Zorg ervoor dat de optie **Geen** is geselecteerd voor **Start live-evenement,** om te voorkomen dat er kosten in rekening wordt gebracht voor het live-evenement voordat het klaar is. (Facturering begint wanneer het live-evenement wordt gestart.)
+   ![Optie voor Cloud versleuteling](media/live-events-wirecast-quickstart/cloud-encoding.png)
+1. Selecteer de optie **RTMP** .
+1. Zorg ervoor dat de optie **Nee** is geselecteerd voor **starten van live gebeurtenis**, om te voor komen dat er wordt gefactureerd voor de live-gebeurtenis voordat deze klaar is. (Facturering begint wanneer de live gebeurtenis wordt gestart.)
 
-   ![Optie Live-evenement starten](media/live-events-wirecast-quickstart/start-live-event-no.png)
-1. Selecteer de knop **Controleren + maken** om de instellingen te controleren.
-1. Selecteer de knop **Maken** om de live-gebeurtenis te maken. Je wordt vervolgens teruggezet naar de lijst met live-evenementen.
-1. Selecteer de link naar het live-evenement dat u zojuist hebt gemaakt. Merk op dat uw evenement is gestopt.
-1. Houd deze pagina open in uw browser. We komen er later op terug.
+   ![Live-gebeurtenis optie starten](media/live-events-wirecast-quickstart/start-live-event-no.png)
+1. Selecteer de knop **beoordeling + maken** om de instellingen te controleren.
+1. Selecteer de knop **maken** om de live-gebeurtenis te maken. Vervolgens keert u terug naar de aanbieding van Live-gebeurtenissen.
+1. Selecteer de koppeling naar de live-gebeurtenis die u zojuist hebt gemaakt. U ziet dat uw gebeurtenis is gestopt.
+1. Laat deze pagina in uw browser geopend. We worden later teruggebeld.
 
-## <a name="set-up-a-live-stream-by-using-wirecast-studio"></a>Een live stream opzetten met Wirecast Studio
+## <a name="set-up-a-live-stream-by-using-wirecast-studio"></a>Een live stream instellen met behulp van Wirecast Studio
 
-1. Selecteer in de toepassing Wirecast **Leeg document maken** in het hoofdmenu en selecteer **Doorgaan**.
+1. Selecteer in de Wirecast-toepassing **lege documenten maken** in het hoofd menu en selecteer vervolgens **door gaan**.
 
-   ![Wirecast startscherm](media/live-events-wirecast-quickstart/open-empty-document.png)
-1. Zweef over de eerste laag in het gebied **wirecast-lagen.**  Selecteer het pictogram **Toevoegen** dat wordt weergegeven en selecteer de video-invoer die u wilt streamen.
+   ![Start scherm Wirecast](media/live-events-wirecast-quickstart/open-empty-document.png)
+1. Beweeg de muis aanwijzer over de eerste laag in het gebied **Wirecast lagen** .  Selecteer het pictogram **toevoegen** dat wordt weer gegeven en selecteer de video-invoer die u wilt streamen.
 
-   ![Pictogram Wirecast toevoegen](media/live-events-wirecast-quickstart/add-icon.png)
+   ![Pictogram voor Wirecast toevoegen](media/live-events-wirecast-quickstart/add-icon.png)
 
-   Het dialoogvenster **Laag 1 master** wordt geopend.
-1. Selecteer **Video-opname** in het menu en selecteer vervolgens de camera die u wilt gebruiken.
+   Het dialoog venster **Master laag 1** wordt geopend.
+1. Selecteer **video-opname** in het menu en selecteer vervolgens de camera die u wilt gebruiken.
 
-   ![Voorbeeldgebied voor video-opname](media/live-events-wirecast-quickstart/video-shot-selection.png)
+   ![Preview-gebied voor video-opname](media/live-events-wirecast-quickstart/video-shot-selection.png)
 
-   De weergave van de camera wordt weergegeven in het voorbeeldgebied.
-1. Plaats de bovendetweede laag in het gebied **Wirecast-lagen.** Selecteer het pictogram **Toevoegen** dat wordt weergegeven en selecteer de audio-invoer die u wilt streamen. Het dialoogvenster **Laag 2 master** wordt geopend.
-1. Selecteer **Audio-opname** in het menu en selecteer vervolgens de audio-invoer die u wilt gebruiken.
+   De weer gave van de camera wordt weer gegeven in het gedeelte preview.
+1. Beweeg de muis aanwijzer over de tweede laag in het gebied **Wirecast lagen** . Selecteer het pictogram **toevoegen** dat wordt weer gegeven en selecteer de audio-invoer die u wilt streamen. Het dialoog venster **Master laag 2** wordt geopend.
+1. Selecteer **audio-opname** in het menu en selecteer vervolgens de audio-invoer die u wilt gebruiken.
 
-   ![Ingangen voor audio-opname](media/live-events-wirecast-quickstart/audio-shot-select.png)
-1. Selecteer **Uitvoerinstellingen**in het hoofdmenu . Het dialoogvenster **Een uitvoerdoel selecteren** wordt weergegeven.
-1. Selecteer **Azure Media Services** in de vervolgkeuzelijst **Bestemming.** De uitvoerinstelling voor Azure Media Services vult automatisch de *meeste* uitvoerinstellingen in.
+   ![Invoer voor audio-opname](media/live-events-wirecast-quickstart/audio-shot-select.png)
+1. Selecteer in het hoofd menu de optie **uitvoer instellingen**. Het dialoog venster **een uitvoer doel selecteren** wordt weer gegeven.
+1. Selecteer **Azure Media Services** in de vervolg keuzelijst **doel** . Met de instelling voor uitvoer voor Azure Media Services worden de *meeste* uitvoer instellingen automatisch ingevuld.
 
-   ![Scherm wirecast-uitvoerinstellingen](media/live-events-wirecast-quickstart/azure-media-services.png)
+   ![Wirecast uitvoer instellingen](media/live-events-wirecast-quickstart/azure-media-services.png)
 
 
-In de volgende procedure gaat u terug naar Azure Media Services in uw browser om de invoer-URL te kopiëren om in de uitvoerinstellingen te gaan:
+In de volgende procedure gaat u terug naar Azure Media Services in uw browser om de invoer-URL te kopiëren en in te voeren in de uitvoer instellingen:
 
-1. Selecteer op de pagina Azure Media Services van de portal de optie **Start** om de live streamgebeurtenis te starten. (Facturering begint nu.)
+1. Selecteer op de pagina Azure Media Services van de portal **Start** om de gebeurtenis live stream te starten. (Facturering wordt nu gestart.)
 
-   ![Pictogram Start](media/live-events-wirecast-quickstart/start.png)
-2. Stel de **schakelschakelaar Veilig/Niet in** op **Niet veilig.** Met deze stap wordt het protocol ingesteld op RTMP in plaats van RTMPS.
-3. Kopieer de URL in het vak Url van **invoer** naar het klembord.
+   ![Pictogram starten](media/live-events-wirecast-quickstart/start.png)
+2. Stel de **veilige/niet-beveiligde** wissel knop in op **niet beveiligd**. Met deze stap stelt u het protocol in op RTMP in plaats van RTMP.
+3. Kopieer de URL naar het klem bord in het vak **invoer-URL** .
 
    ![Invoer-URL](media/live-events-wirecast-quickstart/input-url.png)
-4. Schakel over naar de Wirecast-toepassing en plak de **invoer-URL** in het vak **Adres** in de uitvoerinstellingen.
+4. Ga naar de Wirecast-toepassing en plak de **invoer-URL** in het vak **adres** van de uitvoer instellingen.
 
-   ![URL van wirecastinvoer](media/live-events-wirecast-quickstart/input-url-wirecast.png)
+   ![Invoer-URL voor Wirecast](media/live-events-wirecast-quickstart/input-url-wirecast.png)
 5. Selecteer **OK**.
 
-## <a name="set-up-outputs"></a>Uitgangen instellen
+## <a name="set-up-outputs"></a>Uitvoer instellen
 
-Dit deel stelt uw uitvoer in en stelt u in staat om een opname van uw live stream op te slaan.  
+Met dit onderdeel worden uw uitvoer ingesteld en kunt u een opname van uw Live Stream opslaan.  
 
 > [!NOTE]
-> Om deze uitvoer te kunnen streamen, moet het streaming-eindpunt worden uitgevoerd. Zie de latere [sectie Het standaardstreamingeindpunt uitvoeren.](#run-the-default-streaming-endpoint)
+> Als u deze uitvoer wilt streamen, moet het streaming-eind punt actief zijn. Zie de sectie een [standaard streaming-eind punt uitvoeren](#run-the-default-streaming-endpoint) .
 
-1. Selecteer de koppeling **Uitvoer maken** onder de video-viewer **Uitvoer.**
-1. Als u wilt, bewerk de naam van de uitvoer in het vak **Naam** naar iets gebruiksvriendelijker, zodat het later gemakkelijk te vinden is.
+1. Selecteer de koppeling **uitvoer maken** onder de video-viewer voor **uitvoer** .
+1. Als u wilt, kunt u de naam van de uitvoer in het vak **naam** bewerken in een duidelijker gebruiks vriendelijk, zodat u deze later eenvoudig kunt vinden.
    
-   ![Uitvoernaam, vak](media/live-events-wirecast-quickstart/output-name.png)
-1. Laat de rest van de dozen voorlopig met rust.
-1. Selecteer **Volgende** om een streaminglocator toe te voegen.
-1. Verander de naam van de locator in iets gebruiksvriendelijker, als je wilt.
+   ![Vak uitvoer naam](media/live-events-wirecast-quickstart/output-name.png)
+1. Laat de rest van de vakken nu alleen behouden.
+1. Selecteer **volgende** om een streaming-Locator toe te voegen.
+1. Wijzig de naam van de Locator in iets meer gebruikers vriendelijk, indien gewenst.
    
-   ![Naamvak Locator](media/live-events-wirecast-quickstart/live-event-locator.png)
-1. Laat al het andere op dit scherm voor nu.
+   ![Vak voor de naam van de Locator](media/live-events-wirecast-quickstart/live-event-locator.png)
+1. Zorg ervoor dat de rest van dit scherm alleen voor Taan wordt gewijzigd.
 1. Selecteer **Maken**.
 
 ## <a name="start-the-broadcast"></a>De uitzending starten
 
-1. Selecteer in Wirecast De optie Start van **uitvoer** > **/ Stoppen** > met uitzenden**Start Azure Media Services: Azure Media Services** in het hoofdmenu.
+1. Selecteer in Wirecast **uitvoer** > **starten/stoppen met broadcasten** > **starten Azure Media Services: Azure Media Services** in het hoofd menu.
 
-   ![Menu-items voor uitzending starten](media/live-events-wirecast-quickstart/start-broadcast.png)
+   ![Menu-items in de uitzending starten](media/live-events-wirecast-quickstart/start-broadcast.png)
 
-   Wanneer de stream naar het live-evenement is verzonden, wordt het venster **Live** in Wirecast weergegeven in de videospeler op de pagina met live gebeurtenissen in Azure Media Services.
+   Wanneer de stroom is verzonden naar de live-gebeurtenis, wordt het **Live** -venster in Wirecast weer gegeven in de video speler op de pagina live event in azure Media Services.
 
-1. Selecteer de knop **Ga** onder het voorbeeldvenster om te beginnen met het uitzenden van de video en audio die u hebt geselecteerd voor de Wirecast-lagen.
+1. Selecteer de knop **Go** onder het voorbeeld venster om de video en audio die u hebt geselecteerd voor de Wirecast-lagen te verzenden.
 
-   ![Knop Wirecast Go](media/live-events-wirecast-quickstart/go-button.png)
+   ![De knop Wirecast go](media/live-events-wirecast-quickstart/go-button.png)
 
    > [!TIP]
-   > Als er een fout is, probeer dan de speler opnieuw te laden door de koppeling **Herladen speler** boven de speler te selecteren.
+   > Als er een fout optreedt, laadt u de speler opnieuw door de koppeling **opnieuw laden** in de speler te selecteren.
 
-## <a name="run-the-default-streaming-endpoint"></a>Het standaardeindpunt voor streaming uitvoeren
+## <a name="run-the-default-streaming-endpoint"></a>Het standaard streaming-eind punt uitvoeren
 
-1. Selecteer **Streaming-eindpunten** in de lijst Mediaservices.
+1. Selecteer **streaming-eind punten** in de lijst met Media Services.
 
-   ![Menu-item Streaming Eindpunten](media/live-events-wirecast-quickstart/streaming-endpoints.png)
-1. Als de standaardstatus van streamingeindpunt is gestopt, selecteert u deze. Met deze stap gaat u naar de pagina voor dat eindpunt.
+   ![Menu-item voor streaming-eind punten](media/live-events-wirecast-quickstart/streaming-endpoints.png)
+1. Als de standaard status van het streaming-eind punt is gestopt, selecteert u deze. Met deze stap gaat u naar de pagina voor dat eind punt.
 1. Selecteer **Starten**.
    
-   ![Knop Start voor het streamingeindpunt](media/live-events-wirecast-quickstart/start.png)
+   ![De knop Start voor het streaming-eind punt](media/live-events-wirecast-quickstart/start.png)
 
-## <a name="play-the-output-broadcast-by-using-azure-media-player"></a>De uitvoeruitzending afspelen met Azure Media Player
+## <a name="play-the-output-broadcast-by-using-azure-media-player"></a>De uitvoer uitzending afspelen met behulp van Azure Media Player
 
-1. Kopieer de streaming-URL onder de **videospeler Uitvoer.**
-1. Open in een webbrowser de [demo van Azure Media Player](https://ampdemo.azureedge.net/azuremediaplayer.html).
-1. Plak de streaming-URL in het **VAK URL** van Azure Media Player.
-1. Selecteer de knop **Player bijwerken.**
-1. Selecteer het pictogram **Afspelen** in de video om je live stream te bekijken.
+1. Kopieer de streaming-URL onder de video speler voor **uitvoer** .
+1. Open in een webbrowser de Azure Media Player- [demo](https://ampdemo.azureedge.net/azuremediaplayer.html).
+1. Plak de streaming-URL in het vak **URL** van Azure Media Player.
+1. Selecteer de knop voor het bijwerken van de **speler** .
+1. Selecteer het pictogram **afspelen** op de video om uw live stream te bekijken.
 
 ## <a name="stop-the-broadcast"></a>De uitzending stoppen
 
-Als je denkt dat je genoeg content hebt gestreamd, stop je de uitzending.
+Wanneer u denkt dat u voldoende inhoud hebt gestreamd, stopt u de uitzending.
 
-1. Selecteer in Wirecast de knop **Broadcast.** Deze stap stopt de uitzending van Wirecast.
-1. Selecteer **Stoppen**in de portal . U krijgt dan een waarschuwing dat de live stream zal stoppen, maar de uitvoer wordt nu een on-demand asset.
-1. Selecteer **Stoppen** in het waarschuwingsbericht. Azure Media Player vertoont nu een fout, omdat de live stream niet meer beschikbaar is.
+1. Selecteer in Wirecast de knop **broadcast** . Met deze stap wordt de uitzending van Wirecast gestopt.
+1. Selecteer in de portal **stoppen**. Vervolgens wordt er een waarschuwing weer gegeven dat de live stream wordt gestopt, maar de uitvoer wordt nu een Asset op aanvraag.
+1. Selecteer **stoppen** in het waarschuwings bericht. Azure Media Player wordt nu een fout weer gegeven, omdat de live stream niet meer beschikbaar is.
 
-## <a name="play-the-on-demand-output-by-using-azure-media-player"></a>De on-demand uitvoer afspelen met Azure Media Player
+## <a name="play-the-on-demand-output-by-using-azure-media-player"></a>De uitvoer op aanvraag afspelen met behulp van Azure Media Player
 
-De uitvoer die u hebt gemaakt, is nu beschikbaar voor streaming op aanvraag, zolang uw streaming-eindpunt wordt uitgevoerd.
+De uitvoer die u hebt gemaakt, is nu beschikbaar voor streaming op aanvraag zolang het streaming-eind punt wordt uitgevoerd.
 
-1. Ga naar de aanbieding MediaServices en selecteer **Activa**.
-1. Zoek de gebeurtenisuitvoer die u eerder hebt gemaakt en selecteer de koppeling naar het item. De pagina met de uitvoer van activa wordt geopend.
-1. Kopieer de streaming-URL onder de videospeler voor het item.
-1. Ga terug naar Azure Media Player in de browser en plak de streaming-URL in het VAK URL.
-1. Selecteer **Speler bijwerken**.
-1. Selecteer het pictogram **Afspelen** in de video om het on-demand-item weer te geven.
+1. Ga naar de vermelding Media Services en selecteer **activa**.
+1. Zoek de gebeurtenis uitvoer die u eerder hebt gemaakt en selecteer de koppeling naar de Asset. De pagina Asset-uitvoer wordt geopend.
+1. Kopieer de streaming-URL onder de video speler voor de Asset.
+1. Ga terug naar Azure Media Player in de browser en plak de streaming-URL in het vak URL.
+1. Selecteer **Update speler**.
+1. Selecteer het pictogram **afspelen** op de video om de Asset op aanvraag weer te geven.
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
 > [!IMPORTANT]
-> Stop met de diensten! Nadat u de stappen in deze snelle start hebt voltooid, moet u het live-evenement en het streaming-eindpunt stoppen, of wordt er rekening gebracht voor de tijd dat ze blijven draaien. Als u het live-evenement wilt stoppen, [raadpleegt](#stop-the-broadcast) u de procedure voor de uitzending stoppen, stappen 2 en 3.
+> Stop de services. Nadat u de stappen in deze Quick Start hebt voltooid, moet u ervoor zorgen dat u de live gebeurtenis en het streaming-eind punt stopt, of u wordt gefactureerd voor de tijd waarop ze actief blijven. Als u de live-gebeurtenis wilt stoppen, raadpleegt u de procedure voor [het stoppen van de uitzending](#stop-the-broadcast) , stappen 2 en 3.
 
-Ga als u het streaming-eindpunt stoppen:
+Het streaming-eind punt stoppen:
 
-1. Selecteer In de aanbieding MediaServices de optie **Streaming-eindpunten**.
-2. Selecteer het standaard eindpunt voor streaming dat u eerder bent gestart. Met deze stap wordt de pagina van het eindpunt geopend.
-3. Selecteer **Stoppen**.
+1. Selecteer in de lijst Media Services **streaming-eind punten**.
+2. Selecteer het standaard streaming-eind punt dat u eerder hebt gestart. Met deze stap wordt de pagina van het eind punt geopend.
+3. Selecteer **stoppen**.
 
 > [!TIP]
-> Als u de elementen niet van deze gebeurtenis wilt verwijderen, moet u ze verwijderen, zodat er geen kosten in rekening worden gebracht voor opslag.
+> Als u de assets van deze gebeurtenis niet wilt blijven gebruiken, moet u deze verwijderen, zodat u niet in rekening wordt gebracht voor opslag.
 
 ## <a name="next-steps"></a>Volgende stappen
 > [!div class="nextstepaction"]
-> [Live-evenementen en live-uitgangen in Media Services](./live-events-outputs-concept.md)
+> [Live-evenementen en live-uitvoer in Media Services](./live-events-outputs-concept.md)

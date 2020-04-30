@@ -1,6 +1,6 @@
 ---
-title: 'Snelstart: interactief zoeken in kaarten met Azure Maps | Microsoft Azure Maps'
-description: Meer informatie over het maken van een demo-webtoepassing voor interactief zoeken naar kaarten met Microsoft Azure Maps web SDK.
+title: 'Snelstartgids: interactieve kaarten zoeken met Azure Maps | Microsoft Azure kaarten'
+description: Meer informatie over het maken van een demo-webtoepassing voor het zoeken in interactieve mappen met behulp van Microsoft Azure Maps Web SDK.
 author: philmea
 ms.author: philmea
 ms.date: 1/14/2020
@@ -10,23 +10,23 @@ services: azure-maps
 manager: timlt
 ms.custom: mvc
 ms.openlocfilehash: 13dc5f6c7175e1ed568199abcbaa4c5d9a20fa7f
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80334427"
 ---
-# <a name="quickstart-create-an-interactive-search-map-by-using-azure-maps"></a>Snelstart: een interactieve zoekkaart maken met Azure Maps
+# <a name="quickstart-create-an-interactive-search-map-by-using-azure-maps"></a>Snelstartgids: een interactieve Zoek toewijzing maken met behulp van Azure Maps
 
 In dit artikel wordt gedemonstreerd hoe u een kaart maakt met Azure Maps om gebruikers een interactieve zoekervaring te bieden. U wordt door de volgende basisstappen geleid:
 * Uw eigen Azure Maps-account maken.
 * Uw accountsleutel ophalen om te gebruiken in de demo-webtoepassing.
 
-Als u geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) voordat u begint.
+Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
 
 ## <a name="sign-in-to-the-azure-portal"></a>Aanmelden bij Azure Portal
 
-Meld u aan bij [Azure Portal](https://portal.azure.com).
+Meld u aan bij de [Azure-portal](https://portal.azure.com).
 
 <a id="createaccount"></a>
 
@@ -34,14 +34,14 @@ Meld u aan bij [Azure Portal](https://portal.azure.com).
 
 Voer de volgende stappen uit om een nieuw Maps-account te maken:
 
-1. Klik in de linkerbovenhoek van de [Azure-portal](https://portal.azure.com)op **Een resource maken**.
+1. Klik in de linkerbovenhoek van de [Azure Portal](https://portal.azure.com)op **een resource maken**.
 2. Typ **Maps** in het vak *Marketplace doorzoeken*.
 3. Selecteer **Toewijzingen** in de *Resultaten*. Klik op de knop **Maken** die onder de kaart wordt weergegeven.
 4. Voer de volgende waarden in op de pagina **Azure Kaarten-account maken**:
     * Het *Abonnement* dat u wilt gebruiken voor dit account.
     * De naam van de *Resourcegroep* voor dit account. U kunt kiezen om een *Nieuwe* of *Bestaande* resourcegroep te gebruiken.
     * De *Naam* van uw nieuwe account.
-    * De *prijslaag* voor dit account.
+    * De *prijs categorie* voor dit account.
     * Lees de *licentie* en de *privacyverklaring*, en schakel het selectievakje in om de voorwaarden te accepteren.
     * Klik op de knop **Maken**.
 
@@ -51,17 +51,17 @@ Voer de volgende stappen uit om een nieuw Maps-account te maken:
 
 ## <a name="get-the-primary-key-for-your-account"></a>De primaire sleutel voor uw account ophalen
 
-Als het Azure Kaarten-account is gemaakt, haalt u de sleutel op waarmee u query's kunt uitvoeren op de API's van kaarten. We raden u aan de primaire sleutel van uw account te gebruiken als abonnementssleutel wanneer u Azure Maps-services belt.
+Als het Azure Kaarten-account is gemaakt, haalt u de sleutel op waarmee u query's kunt uitvoeren op de API's van kaarten. U kunt het beste de primaire sleutel van uw account gebruiken als abonnements sleutel bij het aanroepen van Azure Maps Services.
 
 1. Open uw Maps-account in de portal.
-2. Selecteer **verificatie**in de sectie Instellingen .
+2. Selecteer in de sectie instellingen de optie **verificatie**.
 3. Kopieer de **Primaire Sleutel** naar het Klembord. Sla de sleutel lokaal op voor gebruik verderop in deze zelfstudie.
 
-![Azure Maps-sleutel primaire sleutel downloaden in Azure-portal](./media/quick-demo-map-app/get-key.png)
+![Azure Maps sleutel voor primaire sleutel in Azure Portal ophalen](./media/quick-demo-map-app/get-key.png)
 
 ## <a name="download-the-application"></a>De toepassing downloaden
 
-1. Ga naar [interactiveSearch.html](https://github.com/Azure-Samples/AzureMapsCodeSamples/blob/master/AzureMapsCodeSamples/Tutorials/interactiveSearch.html) en klik erop om de inhoud in de GitHub-gebruikersinterface weer te geven. Klik met de rechtermuisknop op de **raw-knop** en kopieer de inhoud van het bestand of 'Opslaan als' om het bestand te downloaden.
+1. Ga naar [interactiveSearch. html](https://github.com/Azure-Samples/AzureMapsCodeSamples/blob/master/AzureMapsCodeSamples/Tutorials/interactiveSearch.html) en klik hierop om de inhoud van de GitHub-gebruikers interface weer te geven. Klik met de rechter muisknop op de **onbewerkte** knop en kopieer de inhoud van het bestand of ' opslaan als ' om het bestand te downloaden.
 2. Sla de inhoud van dit bestand lokaal op als **AzureMapDemo.html**. Open het in een teksteditor.
 3. Zoek naar de tekenreeks `<Your Azure Maps Key>`. Vervang deze door de waarde van de **primaire sleutel** uit de voorgaande sectie.
 
@@ -73,7 +73,7 @@ Als het Azure Kaarten-account is gemaakt, haalt u de sleutel op waarmee u query'
 4. Probeer de interactieve zoekervaring uit. Zoek in het zoekvak linksboven in de demo-webtoepassing naar **restaurants**.
 5. Beweeg de muis over de lijst met adressen en locaties die worden weergegeven onder het zoekvak. U ziet hoe bij de bijbehorende speld op de kaart een pop-upvenster met informatie over die locatie wordt weergegeven. Ten behoeve van de privacy van particuliere bedrijven worden er fictieve namen en adressen weergegeven.
 
-    ![Webtoepassing voor zoeken in kaarten](./media/quick-demo-map-app/interactive-search.png)
+    ![Interactieve map zoeken webtoepassing](./media/quick-demo-map-app/interactive-search.png)
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
@@ -84,7 +84,7 @@ In de zelfstudies vindt u gedetailleerde informatie over het gebruik en de confi
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze quickstart hebt u een Azure Maps-account gemaakt en een demo-toepassing gemaakt. Bekijk de volgende zelfstudies voor meer informatie over Azure Maps:
+In deze quickstart hebt u een Azure Maps-account gemaakt en een demo-toepassing gemaakt. Bekijk de volgende zelf studies voor meer informatie over Azure Maps:
 
 > [!div class="nextstepaction"]
 > [Zoeken naar nuttige plaatsen in de buurt met behulp van Azure Maps](tutorial-search-location.md)
