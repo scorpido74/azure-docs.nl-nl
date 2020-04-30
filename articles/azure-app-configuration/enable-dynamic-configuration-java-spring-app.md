@@ -1,7 +1,7 @@
 ---
-title: Dynamische configuratie gebruiken in een app voor Spring Boot
+title: Dynamische configuratie gebruiken in een Spring boot-app
 titleSuffix: Azure App Configuration
-description: Meer informatie over het dynamisch bijwerken van configuratiegegevens voor springboot-apps
+description: Meer informatie over het dynamisch bijwerken van configuratie gegevens voor Spring boot-apps
 services: azure-app-configuration
 author: lisaguthrie
 ms.service: azure-app-configuration
@@ -9,27 +9,27 @@ ms.topic: tutorial
 ms.date: 3/5/2020
 ms.author: lcozzens
 ms.openlocfilehash: 37c832e3b6d1430da0b45558c9632f0486a7233b
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "79216760"
 ---
-# <a name="tutorial-use-dynamic-configuration-in-a-java-spring-app"></a>Zelfstudie: Dynamische configuratie gebruiken in een Java Spring-app
+# <a name="tutorial-use-dynamic-configuration-in-a-java-spring-app"></a>Zelf studie: dynamische configuratie in een Java lente-app gebruiken
 
-De clientbibliotheek App Configuration Spring Boot ondersteunt het updaten van een set configuratie-instellingen op aanvraag, zonder dat een toepassing opnieuw wordt opgestart. De clientbibliotheek caches elke instelling om te voorkomen dat te veel oproepen naar de configuratie op te slaan. De vernieuwingsbewerking werkt de waarde pas bij nadat de in de cache opgeslagen waarde is verlopen, zelfs niet wanneer de waarde is gewijzigd in het configuratiearchief. De standaardvervaldatum voor elke aanvraag is 30 seconden. Het kan worden overschreven indien nodig.
+De configuratie-client bibliotheek voor het configureren van de hardwareconfiguratie ondersteunt het bijwerken van een set configuratie-instellingen op aanvraag, zonder dat een toepassing opnieuw moet worden opgestart. In de client bibliotheek wordt elke instelling in de cache opgeslagen om te veel aanroepen naar de configuratie opslag te voor komen. Met de vernieuwings bewerking wordt de waarde niet bijgewerkt totdat de waarde in de cache is verlopen, zelfs wanneer de waarde is gewijzigd in de configuratie opslag. De standaard verval tijd voor elke aanvraag is 30 seconden. Dit kan zo nodig worden overschreven.
 
-U controleren op bijgewerkte `AppConfigurationRefresh`instellingen `refreshConfigurations()` op aanvraag door te bellen 's methode.
+U kunt op aanvraag bijgewerkte instellingen controleren door de methode `AppConfigurationRefresh`van `refreshConfigurations()` de aanroep aan te roepen.
 
-U ook het `spring-cloud-azure-appconfiguration-config-web` pakket gebruiken, waarbij `spring-web` u afhankelijk is van geautomatiseerde vernieuwing.
+U kunt ook het pakket gebruiken, `spring-cloud-azure-appconfiguration-config-web` dat afhankelijk is van het afhandelen van `spring-web` automatische vernieuwing.
 
-## <a name="use-automated-refresh"></a>Geautomatiseerd vernieuwen gebruiken
+## <a name="use-automated-refresh"></a>Automatisch vernieuwen gebruiken
 
-Als u automatisch vernieuwen wilt gebruiken, begint u met een app voor het opstarten van de lente die gebruikmaakt van app-configuratie, zoals de app die u maakt door de [snelstart voor het voorjaar voor app-configuratie te](quickstart-java-spring-app.md)volgen.
+Als u automatisch vernieuwen wilt gebruiken, start u met een Spring boot-app die gebruikmaakt van app-configuratie, zoals de app die u hebt gemaakt door de [Start Snelstartgids voor de configuratie van de lente](quickstart-java-spring-app.md)te volgen.
 
-Open vervolgens het *bestand pom.xml* in een `<dependency>` teksteditor en voeg een voor `spring-cloud-azure-appconfiguration-config-web`.
+Open vervolgens het bestand *pom. XML* in een tekst editor en voeg een `<dependency>` for. `spring-cloud-azure-appconfiguration-config-web`
 
-**Voorjaarswolk 1.1.x**
+**Lente Cloud 1.1. x**
 
 ```xml
 <dependency>
@@ -39,7 +39,7 @@ Open vervolgens het *bestand pom.xml* in een `<dependency>` teksteditor en voeg 
 </dependency>
 ```
 
-**Voorjaarswolk 1.2.x**
+**Lente Cloud 1.2. x**
 
 ```xml
 <dependency>
@@ -49,11 +49,11 @@ Open vervolgens het *bestand pom.xml* in een `<dependency>` teksteditor en voeg 
 </dependency>
 ```
 
-Sla het bestand op en bouw en voer uw toepassing uit zoals gewoonlijk.
+Sla het bestand op en voer de toepassing daarna op de gebruikelijke manier uit.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze zelfstudie hebt u de app Spring Boot ingeschakeld om de configuratie-instellingen van app-configuratie dynamisch te vernieuwen. Ga door naar de volgende zelfstudie voor meer informatie over het gebruik van een door Azure beheerde identiteit om de toegang tot app-configuratie te stroomlijnen.
+In deze zelf studie hebt u uw Spring boot-app ingeschakeld om configuratie-instellingen dynamisch te vernieuwen vanuit de configuratie van de app. Ga verder met de volgende zelf studie als u wilt weten hoe u een door Azure beheerde identiteit kunt gebruiken om de toegang tot de app-configuratie te stroom lijnen.
 
 > [!div class="nextstepaction"]
-> [Beheerde identiteitsintegratie](./howto-integrate-azure-managed-service-identity.md)
+> [Beheerde identiteits integratie](./howto-integrate-azure-managed-service-identity.md)
