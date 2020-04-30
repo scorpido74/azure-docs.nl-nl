@@ -1,6 +1,6 @@
 ---
-title: 'CLI: TLS/SSL-cert uploaden en binden aan een app'
-description: Meer informatie over het gebruik van de Azure CLI om de implementatie en het beheer van uw App Service-app te automatiseren. In dit voorbeeld ziet u hoe u een aangepast TLS/SSL-certificaat aan een app bindt.
+title: 'CLI: TLS/SSL-certificaat uploaden en binden aan een app'
+description: Meer informatie over het gebruik van de Azure CLI voor het automatiseren van de implementatie en het beheer van uw App Service-app. Dit voor beeld laat zien hoe u een aangepast TLS/SSL-certificaat verbindt met een app.
 tags: azure-service-management
 ms.assetid: eb95d350-81ea-4145-a1e2-6eea3b7469b2
 ms.devlang: azurecli
@@ -8,18 +8,18 @@ ms.topic: sample
 ms.date: 12/11/2017
 ms.custom: mvc, seodec18
 ms.openlocfilehash: d1775f3af390bb71b6895dc6d43c5ae574371aef
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81537658"
 ---
-# <a name="bind-a-custom-tlsssl-certificate-to-an-app-service-app-using-cli"></a>Een aangepast TLS/SSL-certificaat binden aan een App Service-app met CLI
+# <a name="bind-a-custom-tlsssl-certificate-to-an-app-service-app-using-cli"></a>Een aangepast TLS/SSL-certificaat koppelen aan een App Service-app met behulp van CLI
 
-Met dit voorbeeldscript wordt een app in App-service gemaakt met de bijbehorende bronnen en wordt vervolgens het TLS/SSL-certificaat van een aangepaste domeinnaam eraan gekoppeld. Voor dit voorbeeld hebt u het volgende nodig:
+Met dit voorbeeld script wordt een app gemaakt in App Service met de bijbehorende resources en wordt vervolgens het TLS/SSL-certificaat van een aangepaste domein naam aan het systeem gekoppeld. Voor dit voorbeeld hebt u het volgende nodig:
 
 * Toegang tot de pagina voor DNS-configuratie van uw domeinregistrar.
-* Een geldige . PFX-bestand en het wachtwoord voor het TLS/SSL-certificaat dat u wilt uploaden en binden.
+* Een geldig. PFX-bestand en het bijbehorende wacht woord voor het TLS/SSL-certificaat dat u wilt uploaden en koppelen.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
@@ -44,7 +44,7 @@ In dit script worden de volgende opdrachten gebruikt. Elke opdracht in de tabel 
 | [`az webapp create`](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create) | Hiermee maakt u een App Service-app. |
 | [`az webapp config hostname add`](/cli/azure/webapp/config/hostname?view=azure-cli-latest#az-webapp-config-hostname-add) | Hiermee wijst u een aangepast domein toe aan een App Service-app. |
 | [`az webapp config ssl upload`](/cli/azure/webapp/config/ssl?view=azure-cli-latest#az-webapp-config-ssl-upload) | Uploadt een TLS/SSL-certificaat naar een App Service-app. |
-| [`az webapp config ssl bind`](/cli/azure/webapp/config/ssl?view=azure-cli-latest#az-webapp-config-ssl-bind) | Bindingen van een geüpload TLS/SSL-certificaat aan een App Service-app. |
+| [`az webapp config ssl bind`](/cli/azure/webapp/config/ssl?view=azure-cli-latest#az-webapp-config-ssl-bind) | Verbindt een geüpload TLS/SSL-certificaat aan een App Service-app. |
 
 ## <a name="next-steps"></a>Volgende stappen
 

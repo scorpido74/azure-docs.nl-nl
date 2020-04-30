@@ -6,17 +6,17 @@ ms.topic: overview
 ms.date: 01/04/2017
 ms.custom: mvc, seodec18
 ms.openlocfilehash: f8449c516bce3f3ab949e88808f73c7240995f99
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81535635"
 ---
 # <a name="app-service-overview"></a>Overzicht van App Service
 
-*Azure App Service* is een op HTTP gebaseerde service voor het hosten van webtoepassingen, REST API's en mobiele back-ends. U kunt er in uw favoriete taal programmeren, of het nu .NET, .NET Core, Java, Ruby, Node.js, PHP of Python is. Toepassingen kunnen eenvoudig worden uitgevoerd en geschaald in op Windows en Linux gebaseerde omgevingen. Voor op Linux gebaseerde omgevingen bekijkt u [App Service in Linux](containers/app-service-linux-intro.md). 
+*Azure app service* is een HTTP-gebaseerde service voor het hosten van webtoepassingen, rest-api's en mobiele back-ends. U kunt er in uw favoriete taal programmeren, of het nu .NET, .NET Core, Java, Ruby, Node.js, PHP of Python is. Toepassingen kunnen eenvoudig worden uitgevoerd en geschaald in op Windows en Linux gebaseerde omgevingen. Voor op Linux gebaseerde omgevingen bekijkt u [App Service in Linux](containers/app-service-linux-intro.md). 
 
-App Service voegt niet alleen de kracht van Microsoft Azure aan uw toepassing toe, zoals beveiliging, taakverdeling, automatisch schalen en geautomatiseerd beheer. U ook profiteren van de DevOps-mogelijkheden, zoals continue implementatie van Azure DevOps, GitHub, Docker Hub en andere bronnen, pakketbeheer, faseringsomgevingen, aangepast domein en TLS/SSL-certificaten. 
+App Service voegt niet alleen de kracht van Microsoft Azure aan uw toepassing toe, zoals beveiliging, taakverdeling, automatisch schalen en geautomatiseerd beheer. U kunt ook profiteren van de DevOps-mogelijkheden, zoals continue implementatie vanuit Azure DevOps, GitHub, docker hub en andere bronnen, pakket beheer, faserings omgevingen, aangepaste domeinen en TLS/SSL-certificaten. 
 
 Met App Service betaalt u voor de Azure-rekenresources die u gebruikt. De rekenresources die u gebruikt, zijn vastgesteld door het _App Service-plan_ waarmee u uw apps uitvoert. Zie [Overzicht van Azure App Service-plannen](overview-hosting-plans.md) voor meer informatie.
 

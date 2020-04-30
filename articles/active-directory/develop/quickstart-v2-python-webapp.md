@@ -1,6 +1,6 @@
 ---
-title: Aanmelding met Microsoft toevoegen aan een Python-web-app van Microsoft- identiteitsplatform | Azure
-description: Meer informatie over het implementeren van Microsoft Sign-In op een Python-webapp met OAuth2
+title: Aanmelden met micro soft toevoegen aan een micro soft Identity platform python-web-app | Azure
+description: Meer informatie over het implementeren van micro soft-aanmelding op een Python-web-app met OAuth2
 services: active-directory
 author: abhidnya13
 manager: CelesteDG
@@ -12,36 +12,36 @@ ms.date: 09/25/2019
 ms.author: abpati
 ms.custom: aaddev
 ms.openlocfilehash: c0220a226b2095a4ec54bc3469abee08b8b29f4c
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81536026"
 ---
-# <a name="quickstart-add-sign-in-with-microsoft-to-a-python-web-app"></a>Snelstart: aanmelden met Microsoft toevoegen aan een Python-web-app
+# <a name="quickstart-add-sign-in-with-microsoft-to-a-python-web-app"></a>Snelstartgids: aanmelden toevoegen met micro soft aan een Python-web-app
 
-In deze quickstart leert u hoe u een Python-webtoepassing integreren met het Microsoft-identiteitsplatform. Uw app meldt zich aan bij een gebruiker, krijgt een toegangstoken om de Microsoft Graph-API aan te roepen en doet een verzoek voor de Microsoft Graph API.
+In deze Quick Start leert u hoe u een python-webtoepassing integreert met het micro soft Identity-platform. Uw app meldt zich aan bij een gebruiker, haalt een toegangs token op om de Microsoft Graph-API aan te roepen en brengt een aanvraag naar de Microsoft Graph-API.
 
-Wanneer u de handleiding hebt voltooid, accepteert uw toepassing aanmeldingen van persoonlijke Microsoft-accounts (waaronder outlook.com, live.com en anderen) en werk- of schoolaccounts van bedrijven of organisaties die Azure Active Directory gebruiken. (Zie [hoe het voorbeeld werkt](#how-the-sample-works) voor een illustratie.)
+Wanneer u de hand leiding hebt voltooid, accepteert uw toepassing aanmeldingen van persoonlijke micro soft-accounts (waaronder outlook.com, live.com en anderen) en werk-of school accounts van elk bedrijf of organisatie die gebruikmaakt van Azure Active Directory. (Zie [hoe het voor beeld werkt](#how-the-sample-works) voor een illustratie.)
 
 
 ## <a name="prerequisites"></a>Vereisten
 
-Als u dit voorbeeld wilt uitvoeren, moet u het volgende doen:
+Als u dit voor beeld wilt uitvoeren, hebt u het volgende nodig:
 
-- [Python 2.7+](https://www.python.org/downloads/release/python-2713) of [Python 3+](https://www.python.org/downloads/release/python-364/)
-- [Kolf](http://flask.pocoo.org/), [Kolf-Sessie](https://pythonhosted.org/Flask-Session/), [verzoeken](https://requests.kennethreitz.org/en/master/)
-- [MSAL Python](https://github.com/AzureAD/microsoft-authentication-library-for-python)
+- [Python 2.7 +](https://www.python.org/downloads/release/python-2713) of [python 3 +](https://www.python.org/downloads/release/python-364/)
+- [Kolf](http://flask.pocoo.org/), [kolf-sessie](https://pythonhosted.org/Flask-Session/), [aanvragen](https://requests.kennethreitz.org/en/master/)
+- [MSAL python](https://github.com/AzureAD/microsoft-authentication-library-for-python)
 
 > [!div renderon="docs"]
 >
 > ## <a name="register-and-download-your-quickstart-app"></a>De snelstart-app registreren en downloaden
 >
-> Je hebt twee opties om je quickstart-applicatie te starten: express (optie 1) en handleiding (optie 2)
+> U hebt twee opties om uw Quick Start-toepassing te starten: Express (optie 1) en hand matig (optie 2)
 >
 > ### <a name="option-1-register-and-auto-configure-your-app-and-then-download-your-code-sample"></a>Optie 1: de app registreren en automatisch configureren, en vervolgens de voorbeeldcode downloaden
 >
-> 1. Ga naar de [Azure-portal - App-registraties](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/applicationsListBlade/quickStartType/PythonQuickstartPage/sourceType/docs).
+> 1. Ga naar de [Azure Portal-app-registraties](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/applicationsListBlade/quickStartType/PythonQuickstartPage/sourceType/docs).
 > 1. Voer een naam in voor de toepassing en selecteer **Registreren**.
 > 1. Volg de instructies om uw nieuwe toepassing te downloaden en automatisch te configureren.
 >
@@ -51,41 +51,41 @@ Als u dit voorbeeld wilt uitvoeren, moet u het volgende doen:
 >
 > Volg deze stappen om de toepassing te registreren en de registratiegegevens van de app handmatig toe te voegen aan uw oplossing:
 >
-> 1. Meld u aan bij de [Azure-portal](https://portal.azure.com) met een werk- of schoolaccount of een persoonlijk Microsoft-account.
+> 1. Meld u aan bij de [Azure Portal](https://portal.azure.com) met behulp van een werk-of school account of een persoonlijke Microsoft-account.
 > 1. Als u via uw account toegang tot meer dan één tenant hebt, selecteert u uw account in de rechterbovenhoek en stelt u uw portalsessie in op de gewenste Azure Active Directory-tenant.
-> 1. Navigeer naar de pagina Microsoft-identiteitsplatform voor ontwikkelaars [App-registraties.](https://go.microsoft.com/fwlink/?linkid=2083908)
-> 1. Selecteer **Nieuwe registratie**.
+> 1. Navigeer naar de pagina micro soft-identiteits platform voor ontwikkel aars [app-registraties](https://go.microsoft.com/fwlink/?linkid=2083908) .
+> 1. Selecteer **nieuwe registratie**.
 > 1. Wanneer de pagina **Een toepassing registreren** verschijnt, voert u de registratiegegevens van de toepassing in:
 >      - Voer in de sectie **Naam** een beschrijvende toepassingsnaam in die zichtbaar is voor gebruikers van de app. Bijvoorbeeld: `python-webapp`.
 >      - Selecteer onder **Ondersteunde accounttypen** de optie **Accounts in een organisatieadreslijst en persoonlijke Microsoft-account**.
 >      - Selecteer **Registreren**.
->      - Noteer op de pagina **Overzicht** van de app de waarde **van de id-toepassing (client)** voor later gebruik.
+>      - Noteer de waarde van de **toepassing (client)** op de pagina app- **overzicht** voor later gebruik.
 > 1. Selecteer de **verificatie** in het menu en voeg de volgende gegevens toe:
->    - Voeg de configuratie **van het webplatform** toe. Toevoegen `http://localhost:5000/getAToken` als **URI's omleiden**.
+>    - Voeg de **Web** webplatform configuratie toe. Toevoegen `http://localhost:5000/getAToken` als **omleidings-uri's**.
 >    - Selecteer **Opslaan**.
-> 1. Kies in het linkermenu **Certificaten & geheimen** en klik op Nieuw **clientgeheim** in de sectie **Clientgeheimen:**
+> 1. Kies in het menu links de optie **certificaten & geheimen** en klik in de sectie **client geheimen** op **Nieuw client geheim** :
 >
->      - Typ een sleutelbeschrijving (van instantie-app-geheim).
->      - Selecteer een sleutelduur van **in 1 jaar.**
->      - Wanneer u op **Toevoegen**klikt, wordt de waarde van de sleutel weergegeven.
+>      - Typ een beschrijving voor de sleutel (van het app-geheim van de instantie).
+>      - Selecteer een sleutel duur van **in één jaar**.
+>      - Wanneer u op **toevoegen**klikt, wordt de waarde van de sleutel weer gegeven.
 >      - Kopieer de waarde van de sleutel. U hebt dit later nodig.
 > 1. De sectie **API-machtigingen** selecteren
 >
->      - Klik **op** de knop Een machtiging toevoegen en vervolgens op de knop Een machtiging toevoegen en vervolgens
->      - Controleren of het tabblad **Microsoft API's** is geselecteerd
->      - Klik in de sectie *Veelgebruikte Microsoft API's* op **Microsoft Graph**
->      - Controleer in de sectie **Gedelegeerde machtigingen** of de juiste machtigingen zijn ingeschakeld: **User.ReadBasic.All**. Gebruik indien nodig het zoekvak.
->      - De knop **Machtigingen toevoegen selecteren**
+>      - Klik op de knop **een machtiging toevoegen** en vervolgens op
+>      - Zorg ervoor dat het tabblad **micro soft-api's** is geselecteerd
+>      - Klik in de sectie *veelgebruikte micro soft-api's* op **Microsoft Graph**
+>      - Controleer in de sectie **gedelegeerde machtigingen** of de juiste machtigingen zijn ingeschakeld: **User. ReadBasic. all**. Gebruik het zoekvak als dat nodig is.
+>      - Selecteer de knop **machtigingen toevoegen**
 >
 > [!div class="sxs-lookup" renderon="portal"]
 >
 > #### <a name="step-1-configure-your-application-in-azure-portal"></a>Stap 1: Uw toepassing configureren in Azure Portal
 >
-> Voor het codevoorbeeld voor deze snelle start om te werken, moet u:
+> Het code voorbeeld voor deze Quick Start werkt alleen als u:
 >
-> 1. Een antwoord-URL `http://localhost:5000/getAToken`toevoegen als .
-> 1. Maak een clientgeheim.
-> 1. De gebruiker van de Microsoft Graph API toevoegen.ReadBasic.Alle gedelegeerde machtiging.
+> 1. Voeg een antwoord-URL `http://localhost:5000/getAToken`toe als.
+> 1. Maak een client geheim.
+> 1. Voeg de Microsoft Graph-API user. ReadBasic. alle gedelegeerde machtigingen toe.
 >
 > > [!div renderon="portal" id="makechanges" class="nextstepaction"]
 > > [Breng deze wijzigingen voor mij aan]()
@@ -94,23 +94,23 @@ Als u dit voorbeeld wilt uitvoeren, moet u het volgende doen:
 
 #### <a name="step-2-download-your-project"></a>Stap 2: Uw project downloaden
 > [!div renderon="docs"]
-> [Het voorbeeld van de code downloaden](https://github.com/Azure-Samples/ms-identity-python-webapp/archive/master.zip)
+> [Het code voorbeeld downloaden](https://github.com/Azure-Samples/ms-identity-python-webapp/archive/master.zip)
 
 > [!div class="sxs-lookup" renderon="portal"]
-> Download het project en haal het zip-bestand naar een lokale map dichter bij de hoofdmap - bijvoorbeeld **C:\Azure-Samples**
+> Down load het project en pak het zip-bestand uit naar een lokale map dichter bij de hoofdmap, bijvoorbeeld **C:\Azure-samples**
 > [!div renderon="portal" id="autoupdate" class="nextstepaction"]
-> [Het codevoorbeeld downloaden](https://github.com/Azure-Samples/ms-identity-python-webapp/archive/master.zip)
+> [Het code voorbeeld downloaden](https://github.com/Azure-Samples/ms-identity-python-webapp/archive/master.zip)
 
 > [!div class="sxs-lookup" renderon="portal"]
 > > [!NOTE]
 > > `Enter_the_Supported_Account_Info_Here`
 
 > [!div renderon="docs"]
-> #### <a name="step-3-configure-the-application"></a>Stap 3: De toepassing configureren
+> #### <a name="step-3-configure-the-application"></a>Stap 3: de toepassing configureren
 >
 > 1. Pak het zip-bestand uit in een lokale map dichter bij de hoofdmap (bijvoorbeeld **C:\Azure-Samples**)
-> 1. Als u een geïntegreerde ontwikkelomgeving gebruikt, opent u het voorbeeld in uw favoriete IDE (optioneel).
-> 1. Open het **app_config.py-bestand,** dat in de hoofdmap te vinden is en vervang het volgende codefragment:
+> 1. Als u een Integrated Development Environment gebruikt, opent u het voor beeld in uw favoriete IDE (optioneel).
+> 1. Open het bestand **app_config. py** , dat u kunt vinden in de hoofdmap en vervang door het volgende code fragment:
 >
 > ```python
 > CLIENT_ID = "Enter_the_Application_Id_here"
@@ -120,22 +120,22 @@ Als u dit voorbeeld wilt uitvoeren, moet u het volgende doen:
 > Waar:
 >
 > - `Enter_the_Application_Id_here`: de toepassings-id voor de toepassing die u hebt geregistreerd.
-> - `Enter_the_Client_Secret_Here`- is het **clientgeheim dat** u hebt gemaakt in **Certificaten & Geheimen** voor de door u geregistreerde toepassing.
-> - `Enter_the_Tenant_Name_Here`- is de **directory (tenant) ID-waarde** van de toepassing die u hebt geregistreerd.
+> - `Enter_the_Client_Secret_Here`-is het **client geheim** dat u in **certificaten & geheimen** hebt gemaakt voor de toepassing die u hebt geregistreerd.
+> - `Enter_the_Tenant_Name_Here`-is de **ID-waarde van de directory (Tenant)** van de toepassing die u hebt geregistreerd.
 
 > [!div class="sxs-lookup" renderon="portal"]
-> #### <a name="step-3-run-the-code-sample"></a>Stap 3: Het codevoorbeeld uitvoeren
+> #### <a name="step-3-run-the-code-sample"></a>Stap 3: het code voorbeeld uitvoeren
 
 > [!div renderon="docs"]
-> #### <a name="step-4-run-the-code-sample"></a>Stap 4: Het codevoorbeeld uitvoeren
+> #### <a name="step-4-run-the-code-sample"></a>Stap 4: het code voorbeeld uitvoeren
 
-1. U moet MSAL Python library, Flask framework, Flask-Sessions installeren voor server-side sessiebeheer en aanvragen met pip als volgt:
+1. U moet de MSAL python-bibliotheek installeren, kolf Framework, kolf-sessies voor sessie beheer aan de server zijde en aanvragen met behulp van PIP als volgt:
 
     ```Shell
     pip install -r requirements.txt
     ```
 
-2. Voer app.py uit van de shell- of opdrachtregel:
+2. Voer app.py uit vanuit de shell of de opdracht regel:
 
     ```Shell
     python app.py
@@ -145,19 +145,19 @@ Als u dit voorbeeld wilt uitvoeren, moet u het volgende doen:
 
 ## <a name="more-information"></a>Meer informatie
 
-### <a name="how-the-sample-works"></a>Hoe het voorbeeld werkt
-![Laat zien hoe de voorbeeld-app die door deze quickstart wordt gegenereerd, werkt](media/quickstart-v2-python-webapp/python-quickstart.svg)
+### <a name="how-the-sample-works"></a>Hoe het voor beeld werkt
+![Toont hoe de voor beeld-app die door deze Quick start is gegenereerd, werkt](media/quickstart-v2-python-webapp/python-quickstart.svg)
 
-### <a name="getting-msal"></a>MsAL krijgen
-MSAL is de bibliotheek die wordt gebruikt om gebruikers aan te melden en tokens aan te vragen die worden gebruikt om toegang te krijgen tot een API die wordt beschermd door het Microsoft-identiteitsplatform.
-U MSAL Python aan uw toepassing toevoegen met Pip.
+### <a name="getting-msal"></a>MSAL ophalen
+MSAL is de bibliotheek die wordt gebruikt voor het aanmelden van gebruikers en het aanvragen van tokens die worden gebruikt voor toegang tot een API die wordt beveiligd door het micro soft Identity-platform.
+U kunt MSAL python toevoegen aan uw toepassing met behulp van PIP.
 
 ```Shell
 pip install msal
 ```
 
 ### <a name="msal-initialization"></a>MSAL initialiseren
-U de verwijzing naar MSAL Python toevoegen door de volgende code toe te voegen aan de bovenkant van het bestand waar u MSAL gaat gebruiken:
+U kunt de verwijzing toevoegen aan MSAL python door de volgende code toe te voegen aan de bovenkant van het bestand waarin u MSAL gaat gebruiken:
 
 ```Python
 import msal
@@ -165,9 +165,9 @@ import msal
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Meer informatie over web-apps die zich aanmelden bij gebruikers en vervolgens web-API's oproepen:
+Meer informatie over web-apps waarmee gebruikers zich kunnen aanmelden en die web-Api's aanroept:
 
 > [!div class="nextstepaction"]
-> [Scenario: web-apps die gebruikers aanmelden](scenario-web-app-sign-user-overview.md)
+> [Scenario: Web-apps waarmee gebruikers zich aanmelden](scenario-web-app-sign-user-overview.md)
 
 [!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]

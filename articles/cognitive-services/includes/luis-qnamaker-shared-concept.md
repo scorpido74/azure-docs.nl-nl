@@ -10,83 +10,83 @@ ms.custom: include file
 ms.date: 04/16/2020
 ms.author: diberry
 ms.openlocfilehash: 02610e647e2138cbf52f86c22107feec2d61273b
-ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/17/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81604971"
 ---
-Cognitive Services biedt twee natuurlijke taalverwerkingsservices, [Language Understanding](../luis/what-is-luis.md) en [QnA Maker,](../qnamaker/overview/overview.md)elk met een ander doel. Begrijp wanneer u elke service moet gebruiken en hoe ze elkaar complimenteren.
+Cognitive Services biedt twee services voor de verwerking van natuurlijke taal, [Language Understanding](../luis/what-is-luis.md) en [QnA Maker](../qnamaker/overview/overview.md), elk met een ander doel. Begrijpen wanneer u elke service gebruikt en hoe ze elkaar in de compliment hebben.
 
-Met Natural Language Processing (NLP) kan uw clienttoepassing, zoals een chatbot, met uw gebruikers werken met behulp van natuurlijke taal. Een gebruiker voert een zin of zin in. De tekst van de gebruiker kan een slechte grammatica, spelling en interpunctie hebben. De Cognitieve Service kan werken door de gebruiker zin toch, het retourneren van informatie van de chat bot nodig heeft om de gebruiker te helpen.
+Met natuurlijke taal verwerking (NLP) kan uw client toepassing, zoals een chat-bot, samen werken met uw gebruikers, met behulp van natuurlijke taal. Een gebruiker voert een zin of zin in. De tekst van de gebruiker kan een slechte grammatica, spelling en lees tekens bevatten. De cognitieve service kan toch door de gebruikers zin worden gebruikt, waardoor de chat gegevens worden geretourneerd die de gebruiker nodig heeft.
 
-## <a name="cognitive-services-with-nlp"></a>Cognitieve services met NLP
+## <a name="cognitive-services-with-nlp"></a>Cognitive Services met NLP
 
-Language Understanding (LUIS) en QnA Maker bieden NLP. De clientaanvraag dient tekst in natuurlijke taal in. De service neemt de tekst, verwerkt deze en retourneert een resultaat.
+Language Understanding (LUIS) en QnA Maker bieden NLP. De client toepassing verzendt tekst in natuurlijke taal. De service gebruikt de tekst, verwerkt deze en retourneert een resultaat.
 
-## <a name="when-to-use-each-service"></a>Wanneer elke service te gebruiken
+## <a name="when-to-use-each-service"></a>Wanneer moet elke service worden gebruikt
 
-Language Understanding (LUIS) en QnA Maker lossen verschillende problemen op. LUIS bepaalt de bedoeling van de tekst van een gebruiker (bekend als een utterance), terwijl QnA Maker het antwoord bepaalt op de tekst van een gebruiker (een query genoemd).
+Language Understanding (LUIS) en QnA Maker verschillende problemen op te lossen. LUIS bepaalt het doel van de tekst van een gebruiker (ook wel een utterance genoemd), terwijl QnA Maker het antwoord op de tekst van een gebruiker (ook wel een query genoemd) bepaalt.
 
-Om de juiste service te kiezen, moet u de gebruikerstekst van de clienttoepassing begrijpen en welke informatie de clienttoepassing moet krijgen van de Cognitive Service.
+Als u de juiste service wilt kiezen, moet u weten wat de gebruikers tekst van de client toepassing is en welke informatie de client toepassing moet verkrijgen van de cognitieve service.
 
-Als uw chatbot `How do I get to the Human Resources building on the Seattle North campus?`de tekst ontvangt, gebruikt u de onderstaande grafiek om te begrijpen hoe elke service met de tekst werkt.
+Als uw chat-bot de tekst `How do I get to the Human Resources building on the Seattle North campus?`ontvangt, gebruikt u de onderstaande grafiek om te begrijpen hoe elke service met de tekst werkt.
 
-|Service|Clienttoepassing bepaalt|
+|Service|Client toepassing bepaalt|
 |--|--|
-|LUIS|Hiermee bepaalt u de intentie van de gebruiker om tekst te **sms'en** - de service geeft het antwoord op de vraag niet terug. Deze tekst wordt bijvoorbeeld geclassificeerd `FindLocation` als overeenkomend met de intentie.<br>|
-|QnA Maker|**Retourneert het antwoord op de vraag** vanuit een aangepaste kennisbank. Deze tekst wordt bijvoorbeeld bepaald als een vraag `Get on the #9 bus and get off at Franklin street`met het statische tekstantwoord van .|
+|LUIS|**Hiermee wordt de bedoeling** van de tekst van de gebruiker bepaald: de service retourneert niet het antwoord op de vraag. Deze tekst wordt bijvoorbeeld geclassificeerd als overeenkomend `FindLocation` met het doel.<br>|
+|QnA Maker|**Retourneert het antwoord op de vraag** van een aangepaste Knowledge Base. Deze tekst wordt bijvoorbeeld bepaald als een vraag met het statische tekst antwoord van `Get on the #9 bus and get off at Franklin street`.|
 |||
 
 ## <a name="when-do-you-use-luis"></a>Wanneer gebruikt u LUIS?
 
-Gebruik LUIS wanneer u de bedoeling van de uiting moet weten als onderdeel van een proces in de chatbot. `How do I get to the Human Resources building on the Seattle North campus?`Als u eenmaal weet dat de gebruiker een locatie wil vinden, u details over de utterance (uitgetrokken met entiteiten) doorgeven aan een andere service, zoals een transportserver, om het antwoord te krijgen.
+Gebruik LUIS als u de bedoeling van de utterance wilt weten als onderdeel van een proces in de chat-bot. Als u doorgaat met de voorbeeld `How do I get to the Human Resources building on the Seattle North campus?`tekst,, wanneer u weet dat de gebruiker zich kan bezig houden met het vinden van een locatie, kunt u de details van de utterance (die is opgetrokken met entiteiten) door geven aan een andere service, zoals een Transport Server, om het antwoord te krijgen.
 
-U hoeft LUIS en QnA Maker niet te combineren om de intentie te bepalen.
+U hoeft LUIS en QnA Maker niet te combi neren om intentie te bepalen.
 
-U de twee services voor deze utterance combineren als de chatbot de tekst moet verwerken op basis van intenties en entiteiten (met LUIS) en het specifieke statische tekstantwoord moet vinden (met QnA Maker).
+U kunt de twee services voor deze utterance combi neren als de chat-bot de tekst moet verwerken op basis van bedoelingen en entiteiten (met behulp van LUIS), maar ook het specifieke statische tekst antwoord (met behulp van QnA Maker) te vinden.
 
 ## <a name="when-do-you-use-qna-maker"></a>Wanneer gebruikt u QnA Maker?
 
-Gebruik QnA Maker als je een statische kennisbasis van antwoorden hebt. Deze kennisbank is aangepast aan uw behoeften, die u hebt gebouwd met documenten zoals PDF's en URL's.
+Gebruik QnA Maker wanneer u een statische Knowledge Base van antwoorden hebt. Deze kennis database is aangepast aan uw behoeften, die u hebt gemaakt met documenten zoals Pdf's en Url's.
 
-Doorgaan met de `How do I get to the Human Resources building on the Seattle North campus?`voorbeeldutterance, stuur de tekst als query naar uw gepubliceerde QnA Maker-service en ontvang het beste antwoord.
+U kunt door gaan met het `How do I get to the Human Resources building on the Seattle North campus?`voor beeld utterance,, de tekst verzenden als een query naar uw gepubliceerde QnA Maker-service en het beste antwoord ontvangen.
 
-U hoeft LUIS en QnA Maker niet te combineren om het antwoord op de vraag te bepalen.
+U hoeft LUIS en QnA Maker niet te combi neren om het antwoord op de vraag te bepalen.
 
-U de twee services voor deze utterance combineren als de chatbot de tekst moet verwerken op basis van intenties en entiteiten (met LUIS) en het antwoord moet vinden (met QnA Maker).
+U kunt de twee services voor deze utterance combi neren als de chat-bot de tekst moet verwerken op basis van bedoelingen en entiteiten (met behulp van LUIS), maar ook het antwoord kunt vinden (met behulp van QnA Maker).
 
-## <a name="use-both-services-when-your-knowledge-base-is-incomplete"></a>Beide services gebruiken wanneer uw kennisbank onvolledig is
+## <a name="use-both-services-when-your-knowledge-base-is-incomplete"></a>Beide services gebruiken wanneer de Knowledge Base niet is voltooid
 
-Als u uw QnA Maker-kennisbank bouwt, maar weet dat het onderwerpdomein verandert (zoals tijdige informatie), u luis- en QnA Maker-services combineren. Hierdoor u de informatie in uw kennisbank gebruiken, maar ook LUIS gebruiken om de intentie van een gebruiker te bepalen. Zodra de clientapplicatie de intentie heeft, kan deze relevante informatie opvragen bij een andere bron.
+Als u uw QnA Maker Knowledge Base bouwt, maar u weet dat het onderwerp domein wordt gewijzigd (zoals tijdige informatie), kunt u LUIS en QnA Maker Services combi neren. Zo kunt u de gegevens in uw Knowledge Base gebruiken, maar ook LUIS gebruiken om te bepalen wat de bedoeling van een gebruiker is. Zodra de client toepassing het voor nemen heeft, kan deze relevante gegevens van een andere bron aanvragen.
 
-Uw clienttoepassing moet zowel LUIS- als QnA Maker-antwoorden controleren op scores. Als de score van QnA Maker onder een willekeurige drempelwaarde ligt, gebruikt u de intentie- en entiteitsgegevens die van LUIS zijn geretourneerd om de informatie door te geven aan een service van derden.
+Uw client toepassing moet zowel LUIS als QnA Maker reacties op scores bewaken. Als de Score van QnA Maker onder een bepaalde drempel waarde ligt, gebruikt u de intentie en entiteits gegevens die zijn geretourneerd door LUIS om de informatie over te brengen naar een service van derden.
 
-Als u verdergaat `How do I get to the Human Resources building on the Seattle North campus?`met de voorbeeldtekst, u ervoor zorgen dat QnA Maker een lage betrouwbaarheidsscore retourneert. Gebruik de intentie die `FindLocation` is geretourneerd van LUIS `Human Resources building` en `Seattle North campus`alle geëxtraheerde entiteiten, zoals en , om deze informatie naar een toewijzings- of zoekservice te verzenden voor een ander antwoord.
+U kunt door gaan met de `How do I get to the Human Resources building on the Seattle North campus?`voorbeeld tekst, dus dat QnA Maker een lage betrouwbaarheids Score retourneert. Gebruik het intentie resultaat van LUIS `FindLocation` en alle geëxtraheerde entiteiten, zoals `Human Resources building` en `Seattle North campus`, om deze gegevens naar een toewijzings-of zoek service voor een ander antwoord te verzenden.
 
-U dit antwoord van derden aan de gebruiker voor validatie presenteren. Zodra u de goedkeuring van de gebruiker hebt, u teruggaan naar QnA Maker om de informatie toe te voegen om uw kennis te laten groeien.
+U kunt dit antwoord van derden voor validatie weer geven aan de gebruiker. Zodra u de goed keuring van de gebruiker hebt, kunt u terugkeren naar QnA Maker om de informatie toe te voegen om uw kennis te verg Roten.
 
-## <a name="use-both-services-when-your-chat-bot-needs-more-information"></a>Beide services gebruiken wanneer uw chatbot meer informatie nodig heeft
+## <a name="use-both-services-when-your-chat-bot-needs-more-information"></a>Gebruik beide services als uw chat-bot meer informatie nodig heeft
 
-Als uw chatbot meer informatie nodig heeft dan een van beide services biedt, gebruikt u beide services en verwerkt u beide antwoorden in de clienttoepassing om door een beslissingsstructuur te gaan.
+Als uw chat-bot meer informatie nodig heeft dan een van beide services biedt, kunt u een beslissings structuur door lopen door beide services te gebruiken en beide antwoorden in de client toepassing te verwerken.
 
-Gebruik de Tool Bot framework **[Dispatch CLI](https://github.com/Microsoft/botbuilder-tools/tree/master/packages/Dispatch)** om een proces op te bouwen om met beide services te werken. Deze tool bouwt een top LUIS-app met intents die wordt verzonden tussen LUIS en QnA Maker als onderliggende apps.
+Gebruik het bot Framework **[Dispatch cli](https://github.com/Microsoft/botbuilder-tools/tree/master/packages/Dispatch)** -hulp programma om een proces te bouwen waarmee u met beide services kunt werken. Met dit hulp programma bouwt u een top-LUIS-app van intenties die worden verzonden tussen LUIS en QnA Maker als onderliggende apps.
 
-Gebruik het voorbeeld van de Bot-bouwer, **NLP met verzending**, in [C#](https://github.com/microsoft/BotBuilder-Samples/tree/master/samples/csharp_dotnetcore/14.nlp-with-dispatch) of [Node.js](https://github.com/microsoft/BotBuilder-Samples/tree/master/samples/javascript_nodejs/14.nlp-with-dispatch), om dit type chatbot te implementeren.
+Gebruik het voor beeld van bot Builder, **NLP met verzen ding**, in [C#](https://github.com/microsoft/BotBuilder-Samples/tree/master/samples/csharp_dotnetcore/14.nlp-with-dispatch) of [node. js](https://github.com/microsoft/BotBuilder-Samples/tree/master/samples/javascript_nodejs/14.nlp-with-dispatch), om dit type chat-bot te implementeren.
 
 ## <a name="best-practices"></a>Aanbevolen procedures
 
-Implementeer aanbevolen procedures voor elke service:
+Aanbevolen procedures voor elke service implementeren:
 
-* [LUIS](../luis/luis-concept-best-practices.md) best practices
-* Best practices voor [QnA Maker](../qnamaker/concepts/best-practices.md)
+* Best practices voor [Luis](../luis/luis-concept-best-practices.md)
+* Aanbevolen procedures [QnA Maker](../qnamaker/concepts/best-practices.md)
 
 ## <a name="see-also"></a>Zie ook
 
 * [Language Understanding (LUIS)](../luis/what-is-luis.md)
 * [QnA Maker](../qnamaker/overview/overview.md)
 * [Verzending CLI](https://github.com/Microsoft/botbuilder-tools/tree/master/packages/Dispatch)
-* [Bot framework samples](https://github.com/Microsoft/BotBuilder-Samples)
-* [Azure-botservice](https://docs.microsoft.com/azure/bot-service/bot-service-overview-introduction?view=azure-bot-service-4.0)
-* [Azure bot emulator](https://github.com/Microsoft/BotFramework-Emulator)
-* [Bot framework webchat](https://github.com/microsoft/BotFramework-WebChat)
+* [Voor beelden van bot-Framework](https://github.com/Microsoft/BotBuilder-Samples)
+* [Azure bot service](https://docs.microsoft.com/azure/bot-service/bot-service-overview-introduction?view=azure-bot-service-4.0)
+* [Azure bot-emulator](https://github.com/Microsoft/BotFramework-Emulator)
+* [Bot Framework Web Chat](https://github.com/microsoft/BotFramework-WebChat)

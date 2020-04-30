@@ -1,6 +1,6 @@
 ---
-title: Grote bestandsshares inschakelen en maken - Azure-bestanden
-description: In dit artikel leert u hoe u grote bestandsshares in- en inschakelen en maken.
+title: Grote bestands shares inschakelen en maken-Azure Files
+description: In dit artikel leert u hoe u grote bestands shares inschakelt en maakt.
 author: roygara
 ms.service: storage
 ms.topic: conceptual
@@ -8,44 +8,44 @@ ms.date: 11/20/2019
 ms.author: rogarana
 ms.subservice: files
 ms.openlocfilehash: bd7726d2bbf2830d18d78b5f0b0d7202b734124d
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81537675"
 ---
-# <a name="enable-and-create-large-file-shares"></a>Grote bestandsshares inschakelen en maken
+# <a name="enable-and-create-large-file-shares"></a>Grote bestands shares inschakelen en maken
 
-Wanneer u grote bestandsshares inschakelt op uw opslagaccount, kunnen uw bestandsshares worden opgeschaald tot 100 TiB. U deze schaling inschakelen op uw bestaande opslagaccounts voor uw bestaande bestandsshares.
+Wanneer u grote bestands shares inschakelt voor uw opslag account, kunnen uw bestands shares worden geschaald naar 100 TiB. U kunt deze schaal inschakelen voor uw bestaande opslag accounts voor uw bestaande bestands shares.
 
 ## <a name="prerequisites"></a>Vereisten
 
-- Als u geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/) voordat u begint.
-- Als u de Azure CLI wilt gebruiken, [installeert u de nieuwste versie.](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)
-- Als u Azure PowerShell wilt gebruiken, [installeert u de nieuwste versie.](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.0.0)
+- Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/) aan voordat u begint.
+- Als u de Azure CLI wilt gebruiken, [installeert u de nieuwste versie](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
+- Als u Azure PowerShell wilt gebruiken, [installeert u de nieuwste versie](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.0.0).
 
 ## <a name="restrictions"></a>Beperkingen
 
-Op dit moment u alleen lokaal redundante opslag (LRS) of zoneredundante opslag (ZRS) gebruiken op accounts met grote bestandsshare-enabled. U geen gebruik maken van geo-zoneredundante opslag (GZRS), georedundante opslag (GRS) of georedundante opslag voor leestoegang (RA-GRS).
-Het inschakelen van grote bestandsshares op een account is een onomkeerbaar proces. Nadat u het hebt ingeschakeld, u uw account niet converteren naar GZRS, GRS of RA-GRS.
+U kunt nu alleen lokaal redundante opslag (LRS) of zone-redundante opslag (ZRS) gebruiken op accounts met grote bestands shares. U kunt geen geo-zone-redundante opslag (GZRS), geografisch redundante opslag (GRS) of geografisch redundante opslag met lees toegang (RA-GRS) gebruiken.
+Het inschakelen van grote bestands shares voor een account is een onomkeerbaar proces. Nadat u dit hebt ingeschakeld, kunt u uw account niet converteren naar GZRS, GRS of RA-GRS.
 
 ## <a name="create-a-new-storage-account"></a>Een nieuw opslagaccount maken
 
 ### <a name="portal"></a>Portal
 
 1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
-1. Selecteer **alle services**in de Azure-portal . 
-1. Voer in de lijst met bronnen **opslagaccounts**in . Terwijl u typt, worden de lijstfilters op basis van uw invoer weergegeven. Selecteer **Opslagaccounts**.
-1. Selecteer **Toevoegen**in het venster **Opslagaccounts** dat wordt weergegeven .
-1. Selecteer het abonnement dat u gebruikt om het opslagaccount te maken.
-1. Selecteer **Nieuwe maken** onder het veld **Resourcegroep**. Voer een naam in voor uw nieuwe resourcegroep.
+1. Selecteer in het Azure Portal **alle services**. 
+1. Voer **opslag accounts**in de lijst met resources in. Terwijl u typt, worden de lijst filters op basis van uw invoer. Selecteer **Opslagaccounts**.
+1. Selecteer **toevoegen**in het venster **opslag accounts** dat wordt weer gegeven.
+1. Selecteer het abonnement dat u gaat gebruiken om het opslag account te maken.
+1. Selecteer **Nieuwe maken** onder het veld **Resourcegroep**. Voer een naam in voor de nieuwe resource groep.
 
     ![Schermafbeelding van het maken van een resourcegroep in de portal](media/storage-files-how-to-create-large-file-share/create-large-file-share.png)
 
-1. Voer vervolgens een naam in voor het opslagaccount. De naam moet uniek zijn in Azure. De naam moet ook 3 tot 24 tekens in lengte, en het kan alleen nummers en kleine letters.
-1. Selecteer een locatie voor uw opslagaccount.
-1. Stel de replicatie in op **lokaal redundante opslag** of **zoneredundante opslag**.
-1. Laat deze velden achter bij hun standaardwaarden:
+1. Voer vervolgens een naam in voor het opslagaccount. De naam moet uniek zijn binnen Azure. De naam moet ook 3 tot 24 tekens lang zijn en mag alleen cijfers en kleine letters bevatten.
+1. Selecteer een locatie voor uw opslag account.
+1. Stel de replicatie in op **lokaal redundante opslag** of **zone-redundante opslag**.
+1. De standaard waarden van deze velden wijzigen:
 
    |Veld  |Waarde  |
    |---------|---------|
@@ -54,18 +54,18 @@ Het inschakelen van grote bestandsshares op een account is een onomkeerbaar proc
    |Soort account     |StorageV2 (general-purpose v2)         |
    |Toegangslaag     |Warm         |
 
-1. Selecteer **Geavanceerd**en selecteer vervolgens de optie **ingeschakeld** rechts van **grote bestandsshares**.
+1. Selecteer **Geavanceerd**en selecteer vervolgens het **ingeschakelde** keuze rondje rechts van **grote bestands shares**.
 1. Selecteer **Beoordelen en maken** om uw opslagaccountinstellingen te bekijken en het account te maken.
 
-    ![Schermafbeelding met de optieknop 'ingeschakeld' op een nieuw opslagaccount in de Azure-portal](media/storage-files-how-to-create-large-file-share/large-file-shares-advanced-enable.png)
+    ![Scherm opname met het keuze rondje ' ingeschakeld ' in een nieuw opslag account in de Azure Portal](media/storage-files-how-to-create-large-file-share/large-file-shares-advanced-enable.png)
 
 1. Selecteer **Maken**.
 
 ### <a name="cli"></a>CLI
 
-Installeer eerst [de nieuwste versie van de Azure CLI,](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) zodat u grote bestandsshares inschakelen.
+Installeer eerst [de nieuwste versie van de Azure cli](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) zodat u grote bestands shares kunt inschakelen.
 
-Als u een opslagaccount wilt maken waarbij grote bestandsshares zijn ingeschakeld, gebruikt u de volgende opdracht. Vervang `<yourStorageAccountName>` `<yourResourceGroup>`, `<yourDesiredRegion>` en door uw gegevens.
+Als u een opslag account wilt maken waarvoor grote bestands shares zijn ingeschakeld, gebruikt u de volgende opdracht. Vervang `<yourStorageAccountName>`, `<yourResourceGroup>`en `<yourDesiredRegion>` met uw gegevens.
 
 ```azurecli-interactive
 ## This command creates a large file share–enabled account. It will not support GZRS, GRS, or RA-GRS.
@@ -74,35 +74,35 @@ az storage account create --name <yourStorageAccountName> -g <yourResourceGroup>
 
 ### <a name="powershell"></a>PowerShell
 
-Installeer eerst [de nieuwste versie van PowerShell,](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.0.0) zodat u grote bestandsshares inschakelen.
+Installeer eerst [de meest recente versie van Power shell](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.0.0) , zodat u grote bestands shares kunt inschakelen.
 
-Als u een opslagaccount wilt maken waarbij grote bestandsshares zijn ingeschakeld, gebruikt u de volgende opdracht. Vervang `<yourStorageAccountName>` `<yourResourceGroup>`, `<yourDesiredRegion>` en door uw gegevens.
+Als u een opslag account wilt maken waarvoor grote bestands shares zijn ingeschakeld, gebruikt u de volgende opdracht. Vervang `<yourStorageAccountName>`, `<yourResourceGroup>`en `<yourDesiredRegion>` met uw gegevens.
 
 ```powershell
 ## This command creates a large file share–enabled account. It will not support GZRS, GRS, or RA-GRS.
 New-AzStorageAccount -ResourceGroupName <yourResourceGroup> -Name <yourStorageAccountName> -Location <yourDesiredRegion> -SkuName Standard_LRS -EnableLargeFileShare;
 ```
 
-## <a name="enable-large-files-shares-on-an-existing-account"></a>Grote bestanden aandelen inschakelen op een bestaande account
+## <a name="enable-large-files-shares-on-an-existing-account"></a>Grote bestands shares op een bestaand account inschakelen
 
-U ook grote bestandsshares inschakelen op uw bestaande accounts. Als u grote bestandsshares inschakelt, u niet converteren naar GZRS, GRS of RA-GRS. Het inschakelen van grote bestandsshares is onomkeerbaar op deze opslagaccount.
+U kunt ook grote bestands shares inschakelen voor uw bestaande accounts. Als u grote bestands shares inschakelt, kunt u niet converteren naar GZRS, GRS of RA-GRS. Het inschakelen van grote bestands shares is onomkeerbaar voor dit opslag account.
 
 ### <a name="portal"></a>Portal
 
-1. Open de [Azure-portal](https://portal.azure.com)en ga naar het opslagaccount waar u grote bestandsshares wilt inschakelen.
-1. Open het opslagaccount en selecteer **Configuratie**.
-1. Selecteer **Ingeschakeld** op **grote bestandsshares**en selecteer **Opslaan**.
-1. Selecteer **Overzicht** en selecteer **Vernieuwen**.
+1. Open de [Azure Portal](https://portal.azure.com)en ga naar het opslag account waarin u grote bestands shares wilt inschakelen.
+1. Open het opslag account en selecteer **configuratie**.
+1. Selecteer **ingeschakeld** op **grote bestands shares**en selecteer vervolgens **Opslaan**.
+1. Selecteer **overzicht** en selecteer **vernieuwen**.
 
-![De optie ingeschakeld optie knop selecteren op een bestaand opslagaccount in de Azure-portal](media/storage-files-how-to-create-large-file-share/enable-large-file-shares-on-existing.png)
+![Het ingeschakelde keuze rondje voor een bestaand opslag account in de Azure Portal selecteren](media/storage-files-how-to-create-large-file-share/enable-large-file-shares-on-existing.png)
 
-U hebt nu grote bestandsshares ingeschakeld op uw opslagaccount. Vervolgens moet u het quotum van bestaande aandelen bijwerken om te profiteren van de toegenomen capaciteit en schaal.
+U hebt nu grote bestands shares ingeschakeld voor uw opslag account. Vervolgens moet u het quotum van de bestaande share bijwerken om te profiteren van verhoogde capaciteit en schaal.
 
-Als u het foutbericht 'Grote bestandsshares zijn nog niet beschikbaar voor het account' ontvangt, zit uw regio mogelijk midden in het voltooien van de implementatie. Neem contact op met ondersteuning als u dringend grote bestandsshares nodig hebt.
+Als u het fout bericht ' grote bestands shares zijn nog niet beschikbaar voor het account ' ontvangt, kan het zijn dat uw regio in het midden van de implementatie is voltooid. Neem contact op met de ondersteuning als u een urgente behoefte hebt voor grote bestands shares.
 
 ### <a name="cli"></a>CLI
 
-Als u grote bestandsshares op uw bestaande account wilt inschakelen, gebruikt u de volgende opdracht. Vervang `<yourStorageAccountName>` `<yourResourceGroup>` en met uw gegevens.
+Als u grote bestands shares wilt inschakelen voor uw bestaande account, gebruikt u de volgende opdracht. Vervang `<yourStorageAccountName>` en `<yourResourceGroup>` door uw gegevens.
 
 ```azurecli-interactive
 az storage account update --name <yourStorageAccountName> -g <yourResourceGroup> --enable-large-file-share
@@ -110,29 +110,29 @@ az storage account update --name <yourStorageAccountName> -g <yourResourceGroup>
 
 ### <a name="powershell"></a>PowerShell
 
-Als u grote bestandsshares op uw bestaande account wilt inschakelen, gebruikt u de volgende opdracht. Vervang `<yourStorageAccountName>` `<yourResourceGroup>` en met uw gegevens.
+Als u grote bestands shares wilt inschakelen voor uw bestaande account, gebruikt u de volgende opdracht. Vervang `<yourStorageAccountName>` en `<yourResourceGroup>` door uw gegevens.
 
 ```powershell
 Set-AzStorageAccount -ResourceGroupName <yourResourceGroup> -Name <yourStorageAccountName> -EnableLargeFileShare
 ```
 
-## <a name="create-a-large-file-share"></a>Een grote bestandsshare maken
+## <a name="create-a-large-file-share"></a>Een grote bestands share maken
 
-Nadat u grote bestandsshares op uw opslagaccount hebt ingeschakeld, u bestandsshares maken in dat account met hogere quota. 
+Nadat u grote bestands shares hebt ingeschakeld in uw opslag account, kunt u bestands shares maken in dat account met hogere quota's. 
 
 ### <a name="portal"></a>Portal
 
-Het maken van een grote bestandsshare is bijna identiek aan het maken van een standaard bestandsshare. Het belangrijkste verschil is dat u een quotum tot 100 TiB instellen.
+Het maken van een grote bestands share is bijna identiek aan het maken van een standaard bestands share. Het belangrijkste verschil is dat u een quotum kunt instellen van Maxi maal 100 TiB.
 
-1. Selecteer **Bestandsshares**in uw opslagaccount .
+1. Selecteer in uw opslag account **Bestands shares**.
 1. Selecteer ** + bestandsshare**.
-1. Voer een naam in voor uw bestandsshare. U ook de gewenste quotumgrootte instellen, tot 100 TiB. Selecteer vervolgens **Maken**. 
+1. Voer een naam in voor de bestands share. U kunt ook de gewenste quota grootte instellen, tot 100 TiB. Selecteer vervolgens **maken**. 
 
-![De gebruikersinterface van de Azure-portal met de vakken Naam en Quotum](media/storage-files-how-to-create-large-file-share/large-file-shares-create-share.png)
+![De Azure Portal gebruikers interface waarin de naam en quotum vakken worden weer gegeven](media/storage-files-how-to-create-large-file-share/large-file-shares-create-share.png)
 
 ### <a name="cli"></a>CLI
 
-Als u een grote bestandsshare wilt maken, gebruikt u de volgende opdracht. Vervang `<yourStorageAccountName>` `<yourStorageAccountKey>`, `<yourFileShareName>` en door uw gegevens.
+Als u een grote bestands share wilt maken, gebruikt u de volgende opdracht. Vervang `<yourStorageAccountName>`, `<yourStorageAccountKey>`en `<yourFileShareName>` met uw gegevens.
 
 ```azurecli-interactive
 az storage share create --account-name <yourStorageAccountName> --account-key <yourStorageAccountKey> --name <yourFileShareName>
@@ -140,7 +140,7 @@ az storage share create --account-name <yourStorageAccountName> --account-key <y
 
 ### <a name="powershell"></a>PowerShell
 
-Als u een grote bestandsshare wilt maken, gebruikt u de volgende opdracht. Vervang `<YourStorageAccountName>` `<YourStorageAccountKey>`, `<YourStorageAccountFileShareName>` en door uw gegevens.
+Als u een grote bestands share wilt maken, gebruikt u de volgende opdracht. Vervang `<YourStorageAccountName>`, `<YourStorageAccountKey>`en `<YourStorageAccountFileShareName>` met uw gegevens.
 
 ```powershell
 ##Config
@@ -151,21 +151,21 @@ $ctx = New-AzStorageContext -StorageAccountName $storageAccountName -StorageAcco
 New-AzStorageShare -Name $shareName -Context $ctx
 ```
 
-## <a name="expand-existing-file-shares"></a>Bestaande bestandsshares uitbreiden
+## <a name="expand-existing-file-shares"></a>Bestaande bestands shares uitbreiden
 
-Nadat u grote bestandsshares op uw opslagaccount hebt ingeschakeld, u ook bestaande bestandsshares in dat account uitbreiden naar het hogere quotum. 
+Nadat u grote bestands shares in uw opslag account hebt ingeschakeld, kunt u ook bestaande bestands shares in dat account uitbreiden naar het hogere quotum. 
 
 ### <a name="portal"></a>Portal
 
-1. Selecteer **Bestandsshares**in uw opslagaccount .
-1. Klik met de rechtermuisknop op het delen van bestanden en selecteer **Vervolgens Quota**.
-1. Voer de gewenste nieuwe maat in en selecteer **OK**.
+1. Selecteer in uw opslag account **Bestands shares**.
+1. Klik met de rechter muisknop op de bestands share en selecteer **quotum**.
+1. Voer de nieuwe gewenste grootte in en selecteer **OK**.
 
-![De Gebruikersinterface van azureportalmet quotum van bestaande bestandsshares](media/storage-files-how-to-create-large-file-share/update-large-file-share-quota.png)
+![De Azure Portal gebruikers interface met het quotum van de bestaande bestands shares](media/storage-files-how-to-create-large-file-share/update-large-file-share-quota.png)
 
 ### <a name="cli"></a>CLI
 
-Als u het quotum wilt instellen op de maximale grootte, gebruikt u de volgende opdracht. Vervang `<yourStorageAccountName>` `<yourStorageAccountKey>`, `<yourFileShareName>` en door uw gegevens.
+Gebruik de volgende opdracht om het quotum in te stellen op de maximum grootte. Vervang `<yourStorageAccountName>`, `<yourStorageAccountKey>`en `<yourFileShareName>` met uw gegevens.
 
 ```azurecli-interactive
 az storage share update --account-name <yourStorageAccountName> --account-key <yourStorageAccountKey> --name <yourFileShareName> --quota 102400
@@ -173,7 +173,7 @@ az storage share update --account-name <yourStorageAccountName> --account-key <y
 
 ### <a name="powershell"></a>PowerShell
 
-Als u het quotum wilt instellen op de maximale grootte, gebruikt u de volgende opdracht. Vervang `<YourStorageAccountName>` `<YourStorageAccountKey>`, `<YourStorageAccountFileShareName>` en door uw gegevens.
+Gebruik de volgende opdracht om het quotum in te stellen op de maximum grootte. Vervang `<YourStorageAccountName>`, `<YourStorageAccountKey>`en `<YourStorageAccountFileShareName>` met uw gegevens.
 
 ```powershell
 ##Config
@@ -187,6 +187,6 @@ Set-AzStorageShareQuota -ShareName $shareName -Context $ctx -Quota 102400
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Een bestandsshare verbinden en koppelen op Windows](storage-how-to-use-files-windows.md)
-* [Een bestandsshare verbinden en monteren op Linux](storage-how-to-use-files-linux.md)
-* [Een bestandsshare verbinden en monteren op macOS](storage-how-to-use-files-mac.md)
+* [Een bestands share in Windows verbinden en koppelen](storage-how-to-use-files-windows.md)
+* [Een bestands share op Linux koppelen en koppelen](storage-how-to-use-files-linux.md)
+* [Verbinding maken en koppelen van een bestands share op macOS](storage-how-to-use-files-mac.md)

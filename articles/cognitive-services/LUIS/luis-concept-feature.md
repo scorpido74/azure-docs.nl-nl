@@ -1,7 +1,7 @@
 ---
-title: Kenmerken - LUIS
+title: Functies-LUIS
 titleSuffix: Azure Cognitive Services
-description: Voeg functies toe aan een taalmodel om hints te geven over het herkennen van invoer die u wilt labelen of classificeren.
+description: Voeg functies toe aan een taal model om tips te bieden over het herkennen van de invoer die u wilt labelen of classificeren.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -12,84 +12,84 @@ ms.topic: conceptual
 ms.date: 11/03/2019
 ms.author: diberry
 ms.openlocfilehash: 5b8257e24cf52d01be8065d97db17fd685aa316d
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81531895"
 ---
-# <a name="machine-learned-features"></a>Door machines geleerde functies
+# <a name="machine-learned-features"></a>Door de machine geleerde functies
 
-In machine learning is een _functie_ een onderscheidende eigenschap of kenmerk van gegevens die uw systeem waarneemt & leert door. In Language Understanding (LUIS) beschrijft en legt een functie uit wat belangrijk is aan uw intenties en entiteiten.
+In machine learning is een _functie_ een onderscheiding van eigenschappen of kenmerken van gegevens die uw systeem observeert & meer informatie. In Language Understanding (LUIS) wordt een functie beschreven en uitgelegd wat belang rijk is voor uw intentie en entiteiten.
 
-In de [preview LUIS-portal](https://preview.luis.ai)worden functies _beschrijvingen_ gegeven omdat ze worden gebruikt om de intentie of entiteit te _beschrijven._
+In de [Preview-Luis-Portal](https://preview.luis.ai)zijn functies _descriptors_ , omdat ze worden gebruikt om de intentie of entiteit te _beschrijven_ .
 
-## <a name="features-_descriptors_-in-language-understanding"></a>Functies _(beschrijvingen)_ in taalbegrip
+## <a name="features-_descriptors_-in-language-understanding"></a>Functies (_descriptors_) in language Understanding
 
-Functies, ook wel beschrijvingsbepalingen genoemd, beschrijven aanwijzingen om taalinzicht te helpen bij het identificeren van de voorbeelduitingen. Functies zijn onder andere:
+Functies, ook wel descriptors genoemd, beschrijven aanwijzingen om Language Understanding te helpen bij het identificeren van het voor beeld uitingen. Functies zijn onder andere:
 
-* Lijst met woordgroepen als functie voor intents of entiteiten
-* Entiteiten als functies voor intents of entiteiten
+* Woordgroepen lijst als een functie voor intenties of entiteiten
+* Entiteiten als functies voor intenties of entiteiten
 
-Functies moeten worden beschouwd als een noodzakelijk onderdeel van uw schema voor modelontbinding.
+Functies moeten worden beschouwd als een nood zakelijk deel van het schema voor het desamen stellen van modellen.
 
-## <a name="what-is-a-phrase-list"></a>Wat is een woordenlijst
+## <a name="what-is-a-phrase-list"></a>Wat is een woordgroepen lijst
 
-Een woordenlijst is een lijst met woorden, zinnen, getallen of andere tekens die helpen bij het identificeren van het concept dat u probeert te identificeren. De lijst is case-ongevoelig.
+Een woordgroepen lijst is een lijst met woorden, zinsdelen, cijfers of andere tekens die u helpen bij het identificeren van het concept dat u probeert te identificeren. De lijst is hoofdletter gevoelig.
 
-## <a name="when-to-use-a-phrase-list"></a>Wanneer een woordenlijst gebruiken
+## <a name="when-to-use-a-phrase-list"></a>Wanneer u een woordgroepen lijst gebruikt
 
-Met een woordenlijst houdt LUIS rekening met context en generaliseert om items te identificeren die vergelijkbaar zijn met, maar niet een exacte tekstovereenkomst. Als u uw LUIS-app nodig hebt om nieuwe items te kunnen generaliseren en te identificeren, gebruikt u een woordenlijst.
+Met een woordgroepen lijst, beschouwt LUIS context en generaliseert om items te identificeren die vergelijkbaar zijn met, maar niet exact overeenkomen met de tekst. Als u wilt dat uw LUIS-app nieuwe items kan generaliseren en identificeren, gebruikt u een woordgroepen lijst.
 
-Als u nieuwe exemplaren wilt kunnen herkennen, zoals een vergaderingsplanner die de namen van nieuwe contactpersonen moet herkennen of een voorraad-app die nieuwe producten moet herkennen, begint u met een door machines geleerde entiteit. Maak vervolgens een woordenlijst waarmee LUIS woorden met dezelfde betekenis kan vinden. Met deze woordenlijst wordt LUIS handleidingom voorbeelden te herkennen door extra betekenis toe te voegen aan de waarde van die woorden.
+Als u nieuwe instanties wilt kunnen herkennen, zoals een Meeting scheduler die de namen van nieuwe contact personen moet herkennen of een inventarisatie-app die nieuwe producten moet herkennen, start u met een door de machine geleerde entiteit. Maak vervolgens een woordgroepen lijst waarmee LUIS woorden met een vergelijk bare betekenis kunt vinden. In deze woordgroepen lijst staan hand leidingen LUIS om voor beelden te herkennen door extra significantie toe te voegen aan de waarde van deze woorden.
 
-Woordlijsten zijn als domeinspecifieke woordenschat die helpen bij het verbeteren van de kwaliteit van het begrip van zowel intents als entiteiten.
+Woordgroepen lijsten zijn net als een Documentspecifieke woorden lijst waarmee u de kwaliteit van het memorandum van intenties en entiteiten kunt verbeteren.
 
-## <a name="considerations-when-using-a-phrase-list"></a>Overwegingen bij het gebruik van een woordenlijst
+## <a name="considerations-when-using-a-phrase-list"></a>Overwegingen bij het gebruik van een woordgroepen lijst
 
-Een woordenlijst wordt standaard toegepast op alle modellen in de app. Dit werkt voor woordgroeplijsten die alle intenties en entiteiten kunnen kruisen. Voor ontbouwbaarheid moet u een woordgroeplijst toepassen op alleen de modellen waarvoor deze relevant is.
+Standaard wordt een woordgroepen lijst toegepast op alle modellen in de app. Dit werkt voor woordgroepen lijsten die alle intents en entiteiten kunnen kruisen. Voor de ontsamen stel moet u een woordgroepen lijst Toep assen op alleen de modellen die relevant zijn voor.
 
-Als u een woordgroepmaakt (standaard wereldwijd gemaakt) en deze later als beschrijving (functie) toepast op een specifiek model, wordt deze verwijderd uit de andere modellen. Deze verwijdering voegt relevantie toe aan de woordgroeplijst voor het model dat wordt toegepast, waardoor de nauwkeurigheid die het in het model biedt, wordt verbeterd.
+Als u een woordgroepen lijst maakt (deze is standaard globaal gemaakt) en deze vervolgens later als descriptor (functie) Toep assen op een specifiek model, wordt deze verwijderd uit de andere modellen. Deze verwijdering voegt relevantie toe aan de lijst met zinsdelen voor het model waarop deze wordt toegepast, waardoor de nauw keurigheid van het model kan worden verbeterd.
 
-De `enabledForAllModels` vlag bepaalt dit modelbereik in de API.
+De `enabledForAllModels` vlag bepaalt dit model bereik in de API.
 
 <a name="how-to-use-phrase-lists"></a>
 
-### <a name="how-to-use-a-phrase-list"></a>Een woordenlijst gebruiken
+### <a name="how-to-use-a-phrase-list"></a>Een woordgroepen lijst gebruiken
 
-[Maak een woordenlijst](luis-how-to-add-features.md) wanneer uw intentie of entiteit woorden of zinnen heeft die belangrijk zijn, zoals:
+[Maak een woordgroepen lijst](luis-how-to-add-features.md) als uw intentie of entiteit woorden of zinsdelen bevat die belang rijk zijn zoals:
 
-* industrievoorwaarden
-* Slang
-* Afkortingen
+* branche voorwaarden
+* slang
+* afkortingen
 * bedrijfsspecifieke taal
-* taal die uit een andere taal komt, maar vaak wordt gebruikt in uw app
-* trefwoorden en zinnen in uw voorbeelduitingen
+* taal die afkomstig is uit een andere taal, maar vaak wordt gebruikt in uw app
+* tref woorden en zinsdelen in uw voor beeld uitingen
 
-Voeg **niet** elk mogelijk woord of zin. Voeg in plaats daarvan een paar woorden of zinnen tegelijk toe en train en publiceer. Naarmate de lijst in de loop van de tijd groeit, u merken dat sommige termen veel vormen hebben (synoniemen). Breek deze uit in een andere lijst.
+Voeg **niet** alle mogelijke woorden of woord groepen toe. Voeg in plaats daarvan enkele woorden of woord groepen tegelijk toe, vervolgens opnieuw te trainen en te publiceren. Wanneer de lijst over een periode groeit, zijn er mogelijk veel formulieren (synoniemen). Deze in een andere lijst opsplitsen.
 
 <a name="phrase-lists-help-identify-simple-exchangeable-entities"></a>
 
-## <a name="when-to-use-an-entity-as-a-feature"></a>Wanneer een entiteit als functie gebruiken
+## <a name="when-to-use-an-entity-as-a-feature"></a>Wanneer een entiteit moet worden gebruikt als een functie
 
-Een entiteit kan worden toegevoegd als een functie op de intentie of het entiteitsniveau.
+Een entiteit kan worden toegevoegd als een functie op het niveau van intentie of entiteit.
 
-### <a name="entity-as-a-feature-to-an-intent"></a>Entiteit als functie voor een intentie
+### <a name="entity-as-a-feature-to-an-intent"></a>Entiteit als een functie voor een intentie
 
-Voeg een entiteit als beschrijving (functie) toe aan een intentie wanneer de detectie van die entiteit belangrijk is voor de intentie.
+Voeg een entiteit als een descriptor (functie) toe aan een intentie wanneer de detectie van die entiteit significant is voor het doel.
 
-Als het bijvoorbeeld de bedoeling is om een vlucht te boeken en de entiteit ticketinformatie is (zoals het aantal stoelen, de oorsprong en de bestemming), moet het vinden van de entiteit van de ticketinformatie gewicht toevoegen aan de voorspelling van de intentie van de boekvlucht.
+Als de bedoeling bijvoorbeeld is voor het reserveren van een vlucht en de entiteit ticket gegevens bevat (zoals het aantal seats, de oorsprong en de bestemming), moet de entiteit ticket gegevens een weging toevoegen aan de voor spelling van de bedoeling van de boek vlucht.
 
-### <a name="entity-as-a-feature-to-another-entity"></a>Entiteit als functie voor een andere entiteit
+### <a name="entity-as-a-feature-to-another-entity"></a>Entiteit als een functie van een andere entiteit
 
-Een entiteit (A) moet als functie aan een andere entiteit (B) worden toegevoegd wanneer de detectie van die entiteit (A) belangrijk is voor de voorspelling van entiteit (B).
+Een entiteit (A) moet worden toegevoegd als een functie aan een andere entiteit (B) wanneer de detectie van die entiteit (A) belang rijk is voor de voor spelling van een entiteit (B).
 
-Als bijvoorbeeld de entiteit voor het adres (A) wordt gedetecteerd, voegt het vinden van het adres (A) gewicht toe aan de voorspelling voor de entiteit voor het verzendadres (B).
+Als bijvoorbeeld de adres entiteit (A) wordt gedetecteerd, wordt door het adres (A) het gewicht (A) opgeteld bij de voor spelling voor de entiteit van het verzend adres (B).
 
 ## <a name="best-practices"></a>Aanbevolen procedures
-Leer [aanbevolen procedures](luis-concept-best-practices.md).
+Lees de [Aanbevolen procedures](luis-concept-best-practices.md).
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Uw](schema-change-prediction-runtime.md) app-modellen uitbreiden bij voorspellingsruntime
-* Zie [Functies toevoegen](luis-how-to-add-features.md) voor meer informatie over het toevoegen van functies aan uw LUIS-app.
+* Uw app-modellen [uitbreiden](schema-change-prediction-runtime.md) bij de Voorspellings runtime
+* Zie [onderdelen toevoegen](luis-how-to-add-features.md) voor meer informatie over het toevoegen van functies aan uw Luis-app.

@@ -1,6 +1,6 @@
 ---
-title: Azure HDInsight-clusters met schijfversleuteling verliezen key vault-toegang
-description: Problemen oplossen met stappen en mogelijke oplossingen voor problemen bij interactie met Azure HDInsight-clusters.
+title: Azure HDInsight-clusters met schijf versleuteling gaan verloren Key Vault toegang
+description: Probleemoplossings stappen en mogelijke oplossingen voor problemen bij interactie met Azure HDInsight-clusters.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -8,84 +8,84 @@ ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 01/30/2020
 ms.openlocfilehash: b1d941fbf86d453a56a5157ed988a32173c614fc
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81461528"
 ---
-# <a name="scenario-azure-hdinsight-clusters-with-disk-encryption-lose-key-vault-access"></a>Scenario: Azure HDInsight-clusters met schijfversleuteling verliezen key vault-toegang
+# <a name="scenario-azure-hdinsight-clusters-with-disk-encryption-lose-key-vault-access"></a>Scenario: Azure HDInsight-clusters met schijf versleuteling, verlies Key Vault toegang
 
-In dit artikel worden stappen voor het oplossen van problemen en mogelijke oplossingen voor problemen beschreven bij interactie met Azure HDInsight-clusters.
+In dit artikel worden de stappen beschreven voor het oplossen van problemen en mogelijke oplossingen voor problemen bij het werken met Azure HDInsight-clusters.
 
 ## <a name="issue"></a>Probleem
 
-Het Resource Health Center (RHC) alert, `The HDInsight cluster is unable to access the key for BYOK encryption at rest`wordt weergegeven voor Bring Your Own Key (BYOK) clusters waar de clusterknooppunten hebben geen toegang tot klanten Key Vault (KV). Soortgelijke waarschuwingen kunnen ook worden gezien op Apache Ambari UI.
+De RHC-waarschuwing `The HDInsight cluster is unable to access the key for BYOK encryption at rest`(resource Health Center) wordt weer gegeven voor Bring your own Key-clusters (BYOK) waarin de cluster knooppunten de toegang tot klanten Key Vault (kV) hebben verloren. Vergelijk bare waarschuwingen kunnen ook worden weer gegeven op Apache Ambari-gebruikers interface.
 
 ## <a name="cause"></a>Oorzaak
 
-De waarschuwing zorgt ervoor dat KV toegankelijk is vanaf de clusterknooppunten, waardoor de netwerkverbinding, de KV-status en het toegangsbeleid voor de gebruiker die Managed Identity is toegewezen, worden gewaarborgd. Deze waarschuwing is slechts een waarschuwing van dreigende broker shutdown op latere node reboots, het cluster blijft functioneren totdat knooppunten opnieuw opstarten.
+De waarschuwing zorgt ervoor dat KV toegankelijk is vanaf de cluster knooppunten, waardoor de netwerk verbinding, de status van KV en het toegangs beleid voor de door de gebruiker toegewezen beheerde identiteit worden gegarandeerd. Deze waarschuwing is slechts een waarschuwing dat het afsluiten van de Broker op het volgende knoop punt opnieuw wordt opgestart. het cluster blijft functioneren totdat knoop punten opnieuw worden opgestart.
 
-Navigeer naar de Apache Ambari-gebruikersinterface voor meer informatie over de waarschuwing van de **status van de kluisstatus van de sleutelvan schijfversleuteling**. Deze waarschuwing bevat details over de reden voor verificatiefouten.
+Navigeer naar Apache Ambari UI voor meer informatie over de waarschuwing van **schijf versleuteling Key Vault status**. Deze waarschuwing bevat details over de reden voor de verificatie fout.
 
 ## <a name="resolution"></a>Oplossing
 
-### <a name="kvaad-outage"></a>KV/AAD-storing
+### <a name="kvaad-outage"></a>KV/AAD-onderbreking
 
-Bekijk [de beschikbaarheid en redundantie](../../key-vault/general/disaster-recovery-guidance.md) pagina azure key vault en de azure-statuspagina voor meer informatiehttps://status.azure.com/
+Bekijk [Azure Key Vault Beschik baarheid en redundantie](../../key-vault/general/disaster-recovery-guidance.md) en de pagina status van Azure voor meer informatiehttps://status.azure.com/
 
-### <a name="kv-accidental-deletion"></a>KV per ongeluk verwijderen
+### <a name="kv-accidental-deletion"></a>Onbedoeld verwijderen van KV
 
-* Verwijderde sleutel herstellen op KV om automatisch te herstellen. Zie [Verwijderde sleutel herstellen voor](https://docs.microsoft.com/rest/api/keyvault/recoverdeletedkey)meer informatie .
-* Neem contact op met kv-team om te herstellen van onbedoelde verwijderingen.
+* Herstellen van verwijderde sleutel op KV naar automatisch herstellen. Zie [verwijderde sleutel herstellen](https://docs.microsoft.com/rest/api/keyvault/recoverdeletedkey)voor meer informatie.
+* Neem contact op met het team van KV om onbedoelde verwijderingen te herstellen.
 
-### <a name="kv-access-policy-changed"></a>KV-toegangsbeleid gewijzigd
+### <a name="kv-access-policy-changed"></a>Toegangs beleid voor KV is gewijzigd
 
-Het toegangsbeleid voor de gebruiker die managed identity heeft toegewezen en die is toegewezen aan het HDI-cluster herstellen voor toegang tot de KV.
+Herstel het toegangs beleid voor de door de gebruiker toegewezen beheerde identiteit die is toegewezen aan het HDI-cluster voor toegang tot de KV.
 
-### <a name="key-permitted-operations"></a>Belangrijke toegestane bewerkingen
+### <a name="key-permitted-operations"></a>Sleutel toegestane bewerkingen
 
-Voor elke sleutel in KV u de set toegestane bewerkingen kiezen. Zorg ervoor dat u wrap- en uitpakbewerkingen hebt ingeschakeld voor de BYOK-toets
+Voor elke sleutel in KV kunt u de set toegestane bewerkingen kiezen. Zorg ervoor dat u over de functie voor het inpakken en uitpakken hebt ingeschakeld voor de BYOK-sleutel
 
 ### <a name="expired-key"></a>Verlopen sleutel
 
-Als het verlopen is verstreken en de sleutel niet is gedraaid, herstelt u de sleutel van back-up HSM of neemt u contact op met kv-team om de vervaldatum te wissen.
+Als het verloop is verstreken en de sleutel niet is geroteerd, herstelt u de sleutel van de back-uphsm of neemt u contact op met het KV-team om de verval datum te wissen.
 
-### <a name="kv-firewall-blocking-access"></a>KV-firewall blokkeert toegang
+### <a name="kv-firewall-blocking-access"></a>KV firewall blokkeert toegang
 
-Fix de KV firewall instellingen om BYOK cluster knooppunten toegang te geven tot de KV.
+Los de KV Firewall-instellingen op om BYOK-cluster knooppunten toegang te geven tot de KV.
 
-### <a name="nsg-rules-on-virtual-network-blocking-access"></a>NSG-regels voor het blokkeren van het virtuele netwerk
+### <a name="nsg-rules-on-virtual-network-blocking-access"></a>NSG-regels voor het blok keren van toegang tot virtueel netwerk
 
 Controleer de NSG-regels die zijn gekoppeld aan het virtuele netwerk dat aan het cluster is gekoppeld.
 
-## <a name="mitigation-and-prevention-steps"></a>Mitigatie- en preventiemaatregelen
+## <a name="mitigation-and-prevention-steps"></a>Stappen voor het beperken en voor komen van problemen
 
-### <a name="kv-accidental-deletion"></a>KV per ongeluk verwijderen
+### <a name="kv-accidental-deletion"></a>Onbedoeld verwijderen van KV
 
-* Sleutelkluis configureren met [resourcevergrendelingset](../../azure-resource-manager/management/lock-resources.md).
-* Back-ups van sleutels van hun Hardware Security Module.
+* Configureer Key Vault met [resource Lock set](../../azure-resource-manager/management/lock-resources.md).
+* Maak een back-up van sleutels in hun hardware Security-module.
 
-### <a name="key-deletion"></a>Sleutelverwijdering
+### <a name="key-deletion"></a>Sleutel verwijderen
 
 Het cluster moet worden verwijderd voordat de sleutel wordt verwijderd.
 
-### <a name="kv-access-policy-changed"></a>KV-toegangsbeleid gewijzigd
+### <a name="kv-access-policy-changed"></a>Toegangs beleid voor KV is gewijzigd
 
-Regelmatig controle- en testtoegangsbeleid.
+Regel matig toegangs beleid controleren en testen.
 
 ### <a name="expired-key"></a>Verlopen sleutel
 
-* Maak een back-up van de sleutels van uw HSM.
-* Gebruik een sleutel zonder vervaldatum ingesteld.
-* Als het verlopen moet worden ingesteld, draait u de toetsen vóór de vervaldatum.
+* Maak een back-up van sleutels naar uw HSM.
+* Gebruik een sleutel zonder verloopset.
+* Als het verloop moet worden ingesteld, roteert u de sleutels vóór de verval datum.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Als je je probleem niet hebt gezien of niet in staat bent om je probleem op te lossen, ga je naar een van de volgende kanalen voor meer ondersteuning:
+Als u het probleem niet ziet of als u het probleem niet kunt oplossen, gaat u naar een van de volgende kanalen voor meer ondersteuning:
 
-* Krijg antwoorden van Azure-experts via [Azure Community Support.](https://azure.microsoft.com/support/community/)
+* Krijg antwoorden van Azure-experts via de [ondersteuning van Azure Community](https://azure.microsoft.com/support/community/).
 
-* Maak [@AzureSupport](https://twitter.com/azuresupport) verbinding met - het officiële Microsoft Azure-account voor het verbeteren van de klantervaring. De Azure-community verbinden met de juiste bronnen: antwoorden, ondersteuning en experts.
+* Maak verbinding [@AzureSupport](https://twitter.com/azuresupport) met-het officiële Microsoft Azure account voor het verbeteren van de gebruikers ervaring. Verbinding maken met de Azure-community met de juiste resources: antwoorden, ondersteuning en experts.
 
-* Als u meer hulp nodig hebt, u een ondersteuningsaanvraag indienen via de [Azure-portal.](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/) Selecteer **Ondersteuning** op de menubalk of open de **Help + ondersteuningshub.** Voor meer gedetailleerde informatie, bekijk [Hoe maak je een Azure-ondersteuningsaanvraag](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request). Toegang tot abonnementsbeheer en factureringsondersteuning is inbegrepen bij uw Microsoft Azure-abonnement en technische ondersteuning wordt geboden via een van de [Azure Support-abonnementen](https://azure.microsoft.com/support/plans/).
+* Als u meer hulp nodig hebt, kunt u een ondersteunings aanvraag indienen via de [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). Selecteer **ondersteuning** in de menu balk of open de hub **Help en ondersteuning** . Lees [hoe u een ondersteunings aanvraag voor Azure kunt maken](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request)voor meer informatie. De toegang tot abonnementen voor abonnements beheer en facturering is inbegrepen bij uw Microsoft Azure-abonnement en technische ondersteuning wordt geleverd via een van de [ondersteunings abonnementen voor Azure](https://azure.microsoft.com/support/plans/).

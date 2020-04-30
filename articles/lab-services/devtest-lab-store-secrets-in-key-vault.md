@@ -1,6 +1,6 @@
 ---
-title: Geheimen opslaan in een sleutelkluis in Azure DevTest Labs | Microsoft Documenten
-description: Meer informatie over het opslaan van geheimen in een Azure Key Vault en deze gebruiken tijdens het maken van een VM, formule of een omgeving.
+title: Bewaar geheimen in een sleutel kluis in Azure DevTest Labs | Microsoft Docs
+description: Meer informatie over het opslaan van geheimen in een Azure Key Vault en het gebruik ervan tijdens het maken van een VM, formule of omgeving.
 services: devtest-lab
 documentationcenter: na
 author: spelluru
@@ -15,44 +15,44 @@ ms.topic: article
 ms.date: 07/11/2018
 ms.author: spelluru
 ms.openlocfilehash: 0ca36a7081aaf70ee2045ee7586184c89591df16
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81461511"
 ---
-# <a name="store-secrets-in-a-key-vault-in-azure-devtest-labs"></a>Geheimen opslaan in een sleutelkluis in Azure DevTest Labs
-Mogelijk moet u een complex geheim invoeren bij het gebruik van Azure DevTest Labs: wachtwoord voor uw Windows VM, openbare SSH-sleutel voor uw Linux-VM of persoonlijke toegangstoken om uw Git-repo te klonen via een artefact. Geheimen zijn meestal lang en hebben willekeurige tekens. Daarom kan het invoeren van hen lastig en lastig zijn, vooral als u hetzelfde geheim meerdere keren gebruikt.
+# <a name="store-secrets-in-a-key-vault-in-azure-devtest-labs"></a>Bewaar geheimen in een sleutel kluis in Azure DevTest Labs
+Mogelijk moet u een complex geheim invoeren wanneer u Azure DevTest Labs: wacht woord voor uw Windows-VM, een open bare SSH-sleutel voor uw Linux-VM of uw persoonlijke toegangs token gebruikt om uw Git-opslag plaats via een artefact te klonen. Geheimen zijn meestal lang en bevatten wille keurige tekens. Het invoeren van deze kan daarom lastig en onhandig zijn, met name als u hetzelfde geheim meerdere keren gebruikt.
 
-Om dit probleem op te lossen en ook uw geheimen op een veilige plaats te bewaren, ondersteunt DevTest Labs het opslaan van geheimen in een [Azure-sleutelkluis.](../key-vault/general/overview.md) Wanneer een gebruiker voor het eerst een geheim opslaat, maakt de DevTest Labs-service automatisch een sleutelkluis in dezelfde resourcegroep die het lab bevat en het geheim opslaat in de sleutelkluis. DevTest Labs maakt een aparte sleutelkluis voor elke gebruiker. 
+DevTest Labs biedt ondersteuning voor het opslaan van geheimen in een [Azure-sleutel kluis](../key-vault/general/overview.md)om dit probleem op te lossen en uw geheimen ook op een veilige plek te bewaren. Wanneer een gebruiker een geheim opslaat voor de eerste keer, maakt de DevTest Labs-service automatisch een sleutel kluis in dezelfde resource groep die het Lab bevat en slaat het geheim op in de sleutel kluis. DevTest Labs maakt voor elke gebruiker een afzonderlijke sleutel kluis. 
 
-Houd er rekening mee dat de labgebruiker eerst een virtuele labmachine moet maken voordat hij een geheim in de sleutelkluis kan maken. Dit komt omdat DevTest Lab-service de labgebruiker moet koppelen aan een geldig gebruikersdocument voordat ze geheimen mogen maken en opslaan in hun sleutelkluis. 
+De test gebruiker moet eerst een virtuele machine voor het lab maken voordat ze een geheim kunnen maken in de sleutel kluis. Dit is omdat de DevTest-Lab-service de test gebruiker moet koppelen aan een geldig gebruikers document voordat ze geheimen mogen maken en opslaan in de sleutel kluis. 
 
 
 ## <a name="save-a-secret-in-azure-key-vault"></a>Een geheim opslaan in Azure Key Vault
-Ga als volgt te werk om uw geheim op te slaan in Azure Key Vault:
+Voer de volgende stappen uit om uw geheim op te slaan in Azure Key Vault:
 
-1. Selecteer **Mijn geheimen** in het linkermenu.
-2. Voer een **naam** in voor het geheim. U ziet deze naam in de vervolgkeuzelijst bij het maken van een vm, formule of een omgeving. 
-3. Voer het geheim in als de **waarde**.
+1. Selecteer **mijn geheimen** in het menu links.
+2. Voer een **naam** in voor het geheim. U ziet deze naam in de vervolg keuzelijst bij het maken van een VM, formule of omgeving. 
+3. Geef het geheim op als **waarde**.
 
-    ![Winkelgeheim](media/devtest-lab-store-secrets-in-key-vault/store-secret.png)
+    ![Archief geheim](media/devtest-lab-store-secrets-in-key-vault/store-secret.png)
 
-## <a name="use-a-secret-from-azure-key-vault"></a>Een geheim gebruiken uit Azure Key Vault
-Wanneer u een geheim moet invoeren om een VM, formule of een omgeving te maken, u handmatig een geheim invoeren of een opgeslagen geheim uit de sleutelkluis selecteren. Ga als volgt te werk om een geheim te gebruiken dat is opgeslagen in uw sleutelkluis:
+## <a name="use-a-secret-from-azure-key-vault"></a>Een geheim gebruiken van Azure Key Vault
+Wanneer u een geheim moet invoeren om een VM, formule of omgeving te maken, kunt u een geheim hand matig invoeren of een opgeslagen geheim selecteren in de sleutel kluis. Als u een geheim wilt gebruiken dat is opgeslagen in uw sleutel kluis, voert u de volgende acties uit:
 
-1. Selecteer **Een opgeslagen geheim gebruiken**. 
-2. Selecteer je geheim in de vervolgkeuzelijst voor **Kies een geheim**. 
+1. Selecteer **een opgeslagen geheim gebruiken**. 
+2. Selecteer uw geheim in de vervolg keuzelijst voor **een geheim kiezen**. 
 
     ![Geheim gebruiken in VM](media/devtest-lab-store-secrets-in-key-vault/secret-store-pick-a-secret.png)
 
-## <a name="use-a-secret-in-an-azure-resource-manager-template"></a>Een geheim gebruiken in een Azure Resource Manager-sjabloon
-U uw geheime naam opgeven in een Azure Resource Manager-sjabloon die wordt gebruikt om een vm te maken, zoals in het volgende voorbeeld wordt weergegeven:
+## <a name="use-a-secret-in-an-azure-resource-manager-template"></a>Een geheim in een Azure Resource Manager sjabloon gebruiken
+U kunt uw geheime naam opgeven in een Azure Resource Manager sjabloon die wordt gebruikt voor het maken van een virtuele machine, zoals wordt weer gegeven in het volgende voor beeld:
 
-![Gebruik geheim in formule of omgeving](media/devtest-lab-store-secrets-in-key-vault/secret-store-arm-template.png)
+![Geheim gebruiken in formule of omgeving](media/devtest-lab-store-secrets-in-key-vault/secret-store-arm-template.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Een VM maken met het geheim](devtest-lab-add-vm.md) 
-- [Een formule maken met het geheim](devtest-lab-manage-formulas.md)
+- [Een virtuele machine maken met behulp van het geheim](devtest-lab-add-vm.md) 
+- [Een formule maken met behulp van het geheim](devtest-lab-manage-formulas.md)
 - [Een omgeving maken met behulp van het geheim](devtest-lab-create-environment-from-arm.md)

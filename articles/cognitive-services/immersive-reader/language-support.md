@@ -1,7 +1,7 @@
 ---
-title: Taalondersteuning - Meeslepende lezer
+title: Taal ondersteuning-insluitende lezer
 titleSuffix: Azure Cognitive Services
-description: Meer informatie over de menselijke talen die beschikbaar zijn met Immersive Reader.
+description: Meer informatie over de menselijke talen die beschikbaar zijn voor insluitende lezer.
 services: cognitive-services
 author: metanMSFT
 manager: nitinme
@@ -11,73 +11,73 @@ ms.topic: overview
 ms.date: 04/13/2020
 ms.author: metan
 ms.openlocfilehash: c4dae18a5040d475c246d244ea7702ccfdf85cd9
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81538745"
 ---
-# <a name="language-support-for-immersive-reader"></a>Taalondersteuning voor Immersive Reader
+# <a name="language-support-for-immersive-reader"></a>Taal ondersteuning voor insluitende lezer
 
-In dit artikel worden ondersteunde menselijke talen voor immersive reader-functies weergegeven.
+In dit artikel vindt u een lijst met ondersteunde menselijke talen voor functies van insluitende lezers.
 
 
 ## <a name="text-to-speech"></a>Tekst naar spraak
 
 | Taal | Label |
 |----------|-----|
-| Arabisch (Egyptisch) | ar-EG |
-| Arabisch (Saoedi-Arabië) | ar-SA |
-| Bulgaars | Bg |
+| Arabisch (Egyptisch) | AR-bijvoorbeeld |
+| Arabisch (Saudi-Arabië) | ar-SA |
+| Bulgaars | bg |
 | Bulgaars (Bulgarije) | bg-BG |
 | Catalaans | ca-ES |
-| Chinees | Zh |
+| Chinees | zh |
 | Chinees (China) | zh-CN |
-| Chinees (Hong Kong) | zh-HK |
+| Chinees (Hongkong) | zh-HK |
 | Chinees (Macau) | zh-MO |
 | Chinees (Singapore) | zh-SG |
 | Chinees (Taiwan) | zh-TW |
 | Vereenvoudigd Chinees | zh-Hans |
-| Chinees Vereenvoudigd (China) | zh-Hans-CN |
-| Chinees Vereenvoudigd (Singapore) | zh-Hans-SG |
-| Traditioneel Chinees | zh-Hant-CN |
-| Chinees Traditioneel (Hong Kong) | zh-Hant-HK |
-| Chinees Traditioneel (Macao) | zh-Hant-MO |
-| Chinees Traditioneel (Taiwan) | zh-Hant-TW |
+| Vereenvoudigd Chinees (China) | zh-Hans-CN |
+| Vereenvoudigd Chinees (Singapore) | zh-Hans-SG |
+| Traditioneel Chinees | zh-hant-CN |
+| Traditioneel Chinees (Hongkong) | zh-hant-HK |
+| Traditioneel Chinees (Macau) | zh-hant-MO |
+| Traditioneel Chinees (Taiwan) | zh-hant-TW |
 | Kroatisch | uur |
 | Kroatisch (Kroatië) | hr-HR |
-| Tsjechisch | Cs |
+| Tsjechisch | Support |
 | Tsjechisch (Tsjechische Republiek) | cs-CZ |
 | Deens | da |
 | Deens (Denemarken) | da-DK |
 | Nederlands | nl |
 | Nederlands (Nederland) | nl-NL |
 | Engels | nl |
-| Engels (Australië) | nl-AU |
-| Engels (Canada) | nl-CA |
-| Engels (Hong Kong SAR) | en-HK |
+| Engels (Australië) | en-AU |
+| Engels (Canada) | en-CA |
+| Engels (Hongkong SAR) | en-HK |
 | Engels (India) | en-IN |
 | Engels (Ierland) | en-IE |
-| Engels (Nieuw-Zeeland) | nl-NZ |
+| Engels (Nieuw-Zeeland) | en-NZ |
 | Engels (Verenigd Koninkrijk) | en-GB |
 | Engels (Verenigde Staten) | nl-NL |
 | Fins | fi |
 | Fins (Finland) | fi-FI |
 | Frans | fr |
-| Frans (Canada) | fr-CA |
+| Frans (Canada) | FR-CA |
 | Frans (Frankrijk) | fr-FR |
-| Frans (Zwitserland) | fr-CH |
+| Frans (Zwitserland) | FR-CH |
 | Duits | de |
 | Duits (Oostenrijk) | de-AT |
 | Duits (Duitsland) | de-DE |
-| Duits (Zwitserland)| de-CH |
-| Grieks | El |
+| Duits (Zwitserland)| Dech |
+| Grieks | ei |
 | Grieks (Griekenland) | el-GR |
-| Hebreeuws | Hge |
+| Hebreeuws | Hij |
 | Hebreeuws (Israël) | he IL |
 | Hindi | Hallo |
 | Hindi (India) | hi-IN |
-| Hongaars | Hu |
+| Hongaars | hu |
 | Hongaars (Hongarije) | hu-HU |
 | Indonesisch | id |
 | Indonesisch (Indonesië) | id-ID |
@@ -85,106 +85,106 @@ In dit artikel worden ondersteunde menselijke talen voor immersive reader-functi
 | Italiaans (Italië) | it-IT |
 | Japans | ja |
 | Japans (Japan) | ja-JP |
-| Koreaans | Ko |
+| Koreaans | ko |
 | Koreaans (Korea) | ko-KR |
 | Maleisisch | Mevrouw |
 | Maleis (Maleisië) | ms-MY |
-| Noorse Bokmal| nb nb |
-| Noors Bokmal (Noorwegen) | nb-NO |
-| Pools | Pl |
+| Noors Bokmål| NB |
+| Noors Bokmål (Noor wegen) | nb-NO |
+| Pools | pl |
 | Pools (Polen) | pl-PL |
 | Portugees | pt |
 | Portugees (Brazilië) | pt-BR |
 | Portugees (Portugal) | pt-PT |  
-| Roemeens | Ro |
+| Roemeens | Roll |
 | Roemeens (Roemenië) | ro-RO |
 | Russisch | ru |
 | Russisch (Rusland) | ru-RU |
-| Slowaaks | Sk |
+| Slowaaks | SK |
 | Slowaaks (Slowakije) | sk-SK |
-| Sloveens | Sl |
-| Sloveens (Slovenië) | sl-SL |
+| Sloveens | lineaire |
+| Sloveens (Slovenië) | SL-SL |
 | Spaans | Ja |
 | Spaans (Latijns-Amerika) | es-419 |
 | Spaans (Mexico) | es-MX |
 | Spaans (Spanje) | es-ES |
 | Zweeds | sv |
 | Zweeds (Zweden) | sv-SE |
-| Tamil | Ta |
-| Tamil (India) | ta-IN |
-| Telugu | te |
+| Tamil | & |
+| Tamil (India) | ta |
+| Telugu | Ken |
 | Telugu (India) | te-IN |
-| Thai | Th |
+| Thai | e |
 | Thai (Thailand) | th-TH |
-| Turks | Tr |
+| Turks | formulieren |
 | Turks (Turkije) | tr-TR |
-| Vietnamees | Vi |
+| Vietnamees | beschreven |
 | Vietnamees (Vietnam) | vi-VN |
 
 ## <a name="translation"></a>Omzetting
 
 | Taal | Label |
 |----------|-----|
-| Afrikaans | af |
-| Arabisch (Egyptisch) | ar-EG |
-| Arabisch (Saoedi-Arabië) | ar-SA |
-| Bangla | Bn |
-| Bosnisch | Bs |
-| Bulgaars | Bg |
+| Afrikaans | f |
+| Arabisch (Egyptisch) | AR-bijvoorbeeld |
+| Arabisch (Saudi-Arabië) | ar-SA |
+| Bengalese | bn |
+| Bosnisch | balans |
+| Bulgaars | bg |
 | Bulgaars (Bulgarije) | bg-BG |
 | Catalaans | ca-ES |
-| Chinees | Zh |
+| Chinees | zh |
 | Chinees (China) | zh-CN |
-| Chinees (Hong Kong) | zh-HK |
+| Chinees (Hongkong) | zh-HK |
 | Chinees (Macau) | zh-MO |
 | Chinees (Singapore) | zh-SG |
 | Chinees (Taiwan) | zh-TW |
 | Vereenvoudigd Chinees | zh-Hans |
-| Chinees Vereenvoudigd (China) | zh-Hans-CN |
-| Chinees Vereenvoudigd (Singapore) | zh-Hans-SG |
-| Traditioneel Chinees | zh-Hant-CN |
-| Chinees Traditioneel (Hong Kong) | zh-Hant-HK |
-| Chinees Traditioneel (Macao) | zh-Hant-MO |
-| Chinees Traditioneel (Taiwan) | zh-Hant-TW |
+| Vereenvoudigd Chinees (China) | zh-Hans-CN |
+| Vereenvoudigd Chinees (Singapore) | zh-Hans-SG |
+| Traditioneel Chinees | zh-hant-CN |
+| Traditioneel Chinees (Hongkong) | zh-hant-HK |
+| Traditioneel Chinees (Macau) | zh-hant-MO |
+| Traditioneel Chinees (Taiwan) | zh-hant-TW |
 | Kroatisch | uur |
 | Kroatisch (Kroatië) | hr-HR |
-| Tsjechisch | Cs |
+| Tsjechisch | Support |
 | Tsjechisch (Tsjechische Republiek) | cs-CZ |
 | Deens | da |
 | Deens (Denemarken) | da-DK |
 | Nederlands | nl |
 | Nederlands (Nederland) | nl-NL |
 | Engels | nl |
-| Engels (Australië) | nl-AU |
-| Engels (Canada) | nl-CA |
-| Engels (Hong Kong SAR) | en-HK |
+| Engels (Australië) | en-AU |
+| Engels (Canada) | en-CA |
+| Engels (Hongkong SAR) | en-HK |
 | Engels (India) | en-IN |
 | Engels (Ierland) | en-IE |
-| Engels (Nieuw-Zeeland) | nl-NZ |
+| Engels (Nieuw-Zeeland) | en-NZ |
 | Engels (Verenigd Koninkrijk) | en-GB |
 | Engels (Verenigde Staten) | nl-NL |
-| Ests | Et |
-| Fijian | Fj |
-| Filipino | Fil |
+| Ests | et |
+| Fijian | fj |
+| Filipino | fil |
 | Fins | fi |
 | Fins (Finland) | fi-FI |
 | Frans | fr |
-| Frans (Canada) | fr-CA |
+| Frans (Canada) | FR-CA |
 | Frans (Frankrijk) | fr-FR |
-| Frans (Zwitserland) | fr-CH |
+| Frans (Zwitserland) | FR-CH |
 | Duits | de |
 | Duits (Oostenrijk) | de-AT |
 | Duits (Duitsland) | de-DE |
-| Duits (Zwitserland)| de-CH |
-| Grieks | El |
+| Duits (Zwitserland)| Dech |
+| Grieks | ei |
 | Grieks (Griekenland) | el-GR |
-| Haïtiaans (Creools) | Ht |
-| Hebreeuws | Hge |
+| Haitian (Creole) | Hyper |
+| Hebreeuws | Hij |
 | Hebreeuws (Israël) | he IL |
 | Hindi | Hallo |
 | Hindi (India) | hi-IN |
-| Hmong Daw | mww mww |
-| Hongaars | Hu |
+| Hmong Daw | mww |
+| Hongaars | hu |
 | Hongaars (Hongarije) | hu-HU |
 | IJslands | is |
 | Indonesisch | id |
@@ -194,40 +194,40 @@ In dit artikel worden ondersteunde menselijke talen voor immersive reader-functi
 | Italiaans (Italië) | it-IT |
 | Japans | ja |
 | Japans (Japan) | ja-JP |
-| Kannada | Kn |
-| Kiswahili | Sw |
-| Koreaans | Ko |
+| Kannada | kn |
+| Swahili | SW |
+| Koreaans | ko |
 | Koreaans (Korea) | ko-KR |
-| Lets | Lv |
-| Litouws | Lt |
-| Malagasi | Mg |
+| Lets | LV |
+| Litouws | lt |
+| Malagassische | mg |
 | Maleisisch | Mevrouw |
 | Maleis (Maleisië) | ms-MY |
-| Malajalam | Ml |
-| Maltees | Mt |
+| Malajalam | ml |
+| Maltees | mt |
 | Maori | mi |
-| Noorse Bokmal| nb nb |
-| Noors Bokmal (Noorwegen) | nb-NO |
-| Perzisch | Fa |
-| Pools | Pl |
+| Noors Bokmål| NB |
+| Noors Bokmål (Noor wegen) | nb-NO |
+| Perzisch | volgt |
+| Pools | pl |
 | Pools (Polen) | pl-PL |
 | Portugees | pt |
 | Portugees (Brazilië) | pt-BR |
 | Portugees (Portugal) | pt-PT |  
-| Punjabi | Pa |
-| Querétaro Otomi | otq otq |
-| Roemeens | Ro |
+| Punjabi | PA |
+| Querétaro Otomi | otq |
+| Roemeens | Roll |
 | Roemeens (Roemenië) | ro-RO |
 | Russisch | ru |
 | Russisch (Rusland) | ru-RU |
 | Samoan | sm |
-| Servisch | Sr |
-| Servisch(Cyrillisch) | sr-Cyrl |
+| Servisch | SP |
+| Servisch (cyrillisch) | SR-Cyrl |
 | Servisch (Latijns) | sr-Latn |
-| Slowaaks | Sk |
+| Slowaaks | SK |
 | Slowaaks (Slowakije) | sk-SK |
-| Sloveens | Sl |
-| Sloveens (Slovenië) | sl-SL |
+| Sloveens | lineaire |
+| Sloveens (Slovenië) | SL-SL |
 | Spaans | Ja |
 | Spaans (Latijns-Amerika) | es-419 |
 | Spaans (Mexico) | es-MX |
@@ -235,77 +235,77 @@ In dit artikel worden ondersteunde menselijke talen voor immersive reader-functi
 | Zweeds | sv |
 | Zweeds (Zweden) | sv-SE |
 | Tahitian | Ty |
-| Tamil | Ta |
-| Tamil (India) | ta-IN |
-| Telugu | te |
+| Tamil | & |
+| Tamil (India) | ta |
+| Telugu | Ken |
 | Telugu (India) | te-IN |
-| Thai | Th |
+| Thai | e |
 | Thai (Thailand) | th-TH |
-| Tongan (Tongan) | tot |
-| Turks | Tr |
+| Tongaanse | tot |
+| Turks | formulieren |
 | Turks (Turkije) | tr-TR |
-| Oekraïens | Uk |
-| Urdu | Uw |
-| Vietnamees | Vi |
+| Oekraïens | rijk |
+| Urdu | zelf |
+| Vietnamees | beschreven |
 | Vietnamees (Vietnam) | vi-VN |
-| Welsh | Cy |
-| Yucatec Maya | yua yua yua |
-| Yue Chinees | Yue |
+| Welsh | CY |
+| Yucatec Maya | yua |
+| Yue Chinees | yue |
 
 
 ## <a name="language-detection"></a>Taaldetectie
 
 | Taal | Label |
 |----------|-----|
-| Arabisch (Egyptisch) | ar-EG |
-| Arabisch (Saoedi-Arabië) | ar-SA |
-| Baskisch | Eu |
-| Bulgaars | Bg |
+| Arabisch (Egyptisch) | AR-bijvoorbeeld |
+| Arabisch (Saudi-Arabië) | ar-SA |
+| Baskisch | EU |
+| Bulgaars | bg |
 | Bulgaars (Bulgarije) | bg-BG |
 | Catalaans | ca-ES |
 | Vereenvoudigd Chinees | zh-Hans |
-| Chinees Vereenvoudigd (China) | zh-Hans-CN |
-| Chinees Vereenvoudigd (Singapore) | zh-Hans-SG |
-| Traditioneel Chinees | zh-Hant-CN |
-| Chinees Traditioneel (Hong Kong) | zh-Hant-HK |
-| Chinees Traditioneel (Macao) | zh-Hant-MO |
-| Chinees Traditioneel (Taiwan) | zh-Hant-TW |
+| Vereenvoudigd Chinees (China) | zh-Hans-CN |
+| Vereenvoudigd Chinees (Singapore) | zh-Hans-SG |
+| Traditioneel Chinees | zh-hant-CN |
+| Traditioneel Chinees (Hongkong) | zh-hant-HK |
+| Traditioneel Chinees (Macau) | zh-hant-MO |
+| Traditioneel Chinees (Taiwan) | zh-hant-TW |
 | Kroatisch | uur |
 | Kroatisch (Kroatië) | hr-HR |
-| Tsjechisch | Cs |
+| Tsjechisch | Support |
 | Tsjechisch (Tsjechische Republiek) | cs-CZ |
 | Deens | da |
 | Deens (Denemarken) | da-DK |
 | Nederlands | nl |
 | Nederlands (Nederland) | nl-NL |
 | Engels | nl |
-| Engels (Australië) | nl-AU |
-| Engels (Canada) | nl-CA |
-| Engels (Hong Kong SAR) | en-HK |
+| Engels (Australië) | en-AU |
+| Engels (Canada) | en-CA |
+| Engels (Hongkong SAR) | en-HK |
 | Engels (India) | en-IN |
 | Engels (Ierland) | en-IE |
-| Engels (Nieuw-Zeeland) | nl-NZ |
+| Engels (Nieuw-Zeeland) | en-NZ |
 | Engels (Verenigd Koninkrijk) | en-GB |
 | Engels (Verenigde Staten) | nl-NL |
-| Ests | Et |
+| Ests | et |
 | Fins | fi |
 | Fins (Finland) | fi-FI |
 | Frans | fr |
-| Frans (Canada) | fr-CA |
+| Frans (Canada) | FR-CA |
 | Frans (Frankrijk) | fr-FR |
-| Frans (Zwitserland) | fr-CH |
-| Galicisch | Gl |
+| Frans (Zwitserland) | FR-CH |
+| Galicisch | boekhoud |
 | Duits | de |
 | Duits (Oostenrijk) | de-AT |
 | Duits (Duitsland) | de-DE |
-| Duits (Zwitserland)| de-CH |
-| Grieks | El |
+| Duits (Zwitserland)| Dech |
+| Grieks | ei |
 | Grieks (Griekenland) | el-GR |
-| Hebreeuws | Hge |
+| Hebreeuws | Hij |
 | Hebreeuws (Israël) | he IL |
 | Hindi | Hallo |
 | Hindi (India) | hi-IN |
-| Hongaars | Hu |
+| Hongaars | hu |
 | Hongaars (Hongarije) | hu-HU |
 | IJslands | is |
 | Indonesisch | id |
@@ -314,128 +314,128 @@ In dit artikel worden ondersteunde menselijke talen voor immersive reader-functi
 | Italiaans (Italië) | it-IT |
 | Japans | ja |
 | Japans (Japan) | ja-JP |
-| Kazachs | Kk |
-| Koreaans | Ko |
+| Kazachs | kk |
+| Koreaans | ko |
 | Koreaans (Korea) | ko-KR |
-| Lets | Lv |
-| Litouws | Lt |
+| Lets | LV |
+| Litouws | lt |
 | Maleisisch | Mevrouw |
 | Maleis (Maleisië) | ms-MY |
-| Noorse Bokmal| nb nb |
-| Noors Bokmal (Noorwegen) | nb-NO |
+| Noors Bokmål| NB |
+| Noors Bokmål (Noor wegen) | nb-NO |
 | Noors Nynorsk | nn |
-| Pools | Pl |
+| Pools | pl |
 | Pools (Polen) | pl-PL |
 | Portugees | pt |
 | Portugees (Brazilië) | pt-BR |
 | Portugees (Portugal) | pt-PT |  
-| Roemeens | Ro |
+| Roemeens | Roll |
 | Roemeens (Roemenië) | ro-RO |
 | Russisch | ru |
 | Russisch (Rusland) | ru-RU |
-| Servisch(Cyrillisch) | sr-Cyrl |
+| Servisch (cyrillisch) | SR-Cyrl |
 | Servisch (Latijns) | sr-Latn |
-| Slowaaks | Sk |
+| Slowaaks | SK |
 | Slowaaks (Slowakije) | sk-SK |
-| Sloveens | Sl |
-| Sloveens (Slovenië) | sl-SL |
+| Sloveens | lineaire |
+| Sloveens (Slovenië) | SL-SL |
 | Spaans | Ja |
 | Spaans (Latijns-Amerika) | es-419 |
 | Spaans (Mexico) | es-MX |
 | Spaans (Spanje) | es-ES |
 | Zweeds | sv |
 | Zweeds (Zweden) | sv-SE |
-| Tamil | Ta |
-| Tamil (India) | ta-IN |
-| Telugu | te |
+| Tamil | & |
+| Tamil (India) | ta |
+| Telugu | Ken |
 | Telugu (India) | te-IN |
-| Thai | Th |
+| Thai | e |
 | Thai (Thailand) | th-TH |
-| Turks | Tr |
+| Turks | formulieren |
 | Turks (Turkije) | tr-TR |
-| Oekraïens | Uk |
-| Vietnamees | Vi |
+| Oekraïens | rijk |
+| Vietnamees | beschreven |
 | Vietnamees (Vietnam) | vi-VN |
-| Welsh | Cy |
+| Welsh | CY |
 
 ## <a name="syllabification"></a>Syllabification
 
 | Taal | Label |
 |----------|-----|
-| Baskisch | Eu |
-| Bulgaars | Bg |
+| Baskisch | EU |
+| Bulgaars | bg |
 | Bulgaars (Bulgarije) | bg-BG |
 | Catalaans | ca-ES |
 | Kroatisch | uur |
 | Kroatisch (Kroatië) | hr-HR |
-| Tsjechisch | Cs |
+| Tsjechisch | Support |
 | Tsjechisch (Tsjechische Republiek) | cs-CZ |
 | Deens | da |
 | Deens (Denemarken) | da-DK |
 | Nederlands | nl |
 | Nederlands (Nederland) | nl-NL |
 | Engels | nl |
-| Engels (Australië) | nl-AU |
-| Engels (Canada) | nl-CA |
-| Engels (Hong Kong SAR) | en-HK |
+| Engels (Australië) | en-AU |
+| Engels (Canada) | en-CA |
+| Engels (Hongkong SAR) | en-HK |
 | Engels (India) | en-IN |
 | Engels (Ierland) | en-IE |
-| Engels (Nieuw-Zeeland) | nl-NZ |
+| Engels (Nieuw-Zeeland) | en-NZ |
 | Engels (Verenigd Koninkrijk) | en-GB |
 | Engels (Verenigde Staten) | nl-NL |
-| Ests | Et |
+| Ests | et |
 | Fins | fi |
 | Fins (Finland) | fi-FI |
 | Frans | fr |
-| Frans (Canada) | fr-CA |
+| Frans (Canada) | FR-CA |
 | Frans (Frankrijk) | fr-FR |
-| Frans (Zwitserland) | fr-CH |
-| Galicisch | Gl |
+| Frans (Zwitserland) | FR-CH |
+| Galicisch | boekhoud |
 | Duits | de |
 | Duits (Oostenrijk) | de-AT |
 | Duits (Duitsland) | de-DE |
-| Duits (Zwitserland)| de-CH |
-| Grieks | El |
+| Duits (Zwitserland)| Dech |
+| Grieks | ei |
 | Grieks (Griekenland) | el-GR |
-| Hongaars | Hu |
+| Hongaars | hu |
 | Hongaars (Hongarije) | hu-HU |
 | IJslands | is |
 | Italiaans | it |
 | Italiaans (Italië) | it-IT |
-| Kazachs | Kk |
-| Lets | Lv |
-| Litouws | Lt |
-| Noorse Bokmal| nb nb |
-| Noors Bokmal (Noorwegen) | nb-NO |
+| Kazachs | kk |
+| Lets | LV |
+| Litouws | lt |
+| Noors Bokmål| NB |
+| Noors Bokmål (Noor wegen) | nb-NO |
 | Noors Nynorsk | nn |
-| Pools | Pl |
+| Pools | pl |
 | Pools (Polen) | pl-PL |
 | Portugees | pt |
 | Portugees (Brazilië) | pt-BR |
 | Portugees (Portugal) | pt-PT |  
-| Roemeens | Ro |
+| Roemeens | Roll |
 | Roemeens (Roemenië) | ro-RO |
 | Russisch | ru |
 | Russisch (Rusland) | ru-RU |
-| Servisch | Sr |
-| Servisch(Cyrillisch) | sr-Cyrl |
+| Servisch | SP |
+| Servisch (cyrillisch) | SR-Cyrl |
 | Servisch (Latijns) | sr-Latn |
-| Slowaaks | Sk |
+| Slowaaks | SK |
 | Slowaaks (Slowakije) | sk-SK |
-| Sloveens | Sl |
-| Sloveens (Slovenië) | sl-SL |
+| Sloveens | lineaire |
+| Sloveens (Slovenië) | SL-SL |
 | Spaans | Ja |
 | Spaans (Latijns-Amerika) | es-419 |
 | Spaans (Mexico) | es-MX |
 | Spaans (Spanje) | es-ES |
 | Zweeds | sv |
 | Zweeds (Zweden) | sv-SE |
-| Turks | Tr |
+| Turks | formulieren |
 | Turks (Turkije) | tr-TR |
-| Oekraïens | Uk |
-| Welsh | Cy |
+| Oekraïens | rijk |
+| Welsh | CY |
 
-## <a name="picture-dictionary"></a>Afbeeldingswoordenboek
+## <a name="picture-dictionary"></a>Afbeeldings woordenlijst
 
 | Taal | Label |
 |----------|-----|
@@ -444,33 +444,33 @@ In dit artikel worden ondersteunde menselijke talen voor immersive reader-functi
 | Nederlands | nl |
 | Nederlands (Nederland) | nl-NL |
 | Engels | nl |
-| Engels (Australië) | nl-AU |
-| Engels (Canada) | nl-CA |
-| Engels (Hong Kong SAR) | en-HK |
+| Engels (Australië) | en-AU |
+| Engels (Canada) | en-CA |
+| Engels (Hongkong SAR) | en-HK |
 | Engels (India) | en-IN |
 | Engels (Ierland) | en-IE |
-| Engels (Nieuw-Zeeland) | nl-NZ |
+| Engels (Nieuw-Zeeland) | en-NZ |
 | Engels (Verenigd Koninkrijk) | en-GB |
 | Engels (Verenigde Staten) | nl-NL |
 | Fins | fi |
 | Fins (Finland) | fi-FI |
 | Frans | fr |
-| Frans (Canada) | fr-CA |
+| Frans (Canada) | FR-CA |
 | Frans (Frankrijk) | fr-FR |
-| Frans (Zwitserland) | fr-CH |
+| Frans (Zwitserland) | FR-CH |
 | Duits | de |
 | Duits (Oostenrijk) | de-AT |
 | Duits (Duitsland) | de-DE |
-| Duits (Zwitserland)| de-CH |
+| Duits (Zwitserland)| Dech |
 | Italiaans | it |
 | Italiaans (Italië) | it-IT |
 | Japans | ja |
 | Japans (Japan) | ja-JP |
-| Koreaans | Ko |
+| Koreaans | ko |
 | Koreaans (Korea) | ko-KR |
-| Noorse Bokmal| nb nb |
-| Noors Bokmal (Noorwegen) | nb-NO |
-| Pools | Pl |
+| Noors Bokmål| NB |
+| Noors Bokmål (Noor wegen) | nb-NO |
+| Pools | pl |
 | Pools (Polen) | pl-PL |
 | Portugees | pt |
 | Portugees (Brazilië) | pt-BR |
@@ -483,45 +483,45 @@ In dit artikel worden ondersteunde menselijke talen voor immersive reader-functi
 | Zweeds | sv |
 | Zweeds (Zweden) | sv-SE |
 
-## <a name="parts-of-speech"></a>Delen van spraak
+## <a name="parts-of-speech"></a>Spraak onderdelen
 
 | Taal | Label |
 |----------|-----|
-| Arabisch (Egyptisch) | ar-EG |
-| Arabisch (Saoedi-Arabië) | ar-SA |
+| Arabisch (Egyptisch) | AR-bijvoorbeeld |
+| Arabisch (Saudi-Arabië) | ar-SA |
 | Deens | da |
 | Deens (Denemarken) | da-DK |
 | Nederlands | nl |
 | Nederlands (Nederland) | nl-NL |
 | Engels | nl |
-| Engels (Australië) | nl-AU |
-| Engels (Canada) | nl-CA |
-| Engels (Hong Kong SAR) | en-HK |
+| Engels (Australië) | en-AU |
+| Engels (Canada) | en-CA |
+| Engels (Hongkong SAR) | en-HK |
 | Engels (India) | en-IN |
 | Engels (Ierland) | en-IE |
-| Engels (Nieuw-Zeeland) | nl-NZ |
+| Engels (Nieuw-Zeeland) | en-NZ |
 | Engels (Verenigd Koninkrijk) | en-GB |
 | Engels (Verenigde Staten) | nl-NL |
 | Fins | fi |
 | Fins (Finland) | fi-FI |
 | Frans | fr |
-| Frans (Canada) | fr-CA |
+| Frans (Canada) | FR-CA |
 | Frans (Frankrijk) | fr-FR |
-| Frans (Zwitserland) | fr-CH |
+| Frans (Zwitserland) | FR-CH |
 | Duits | de |
 | Duits (Oostenrijk) | de-AT |
 | Duits (Duitsland) | de-DE |
-| Duits (Zwitserland)| de-CH |
+| Duits (Zwitserland)| Dech |
 | Italiaans | it |
 | Italiaans (Italië) | it-IT |
 | Japans | ja |
 | Japans (Japan) | ja-JP |
-| Koreaans | Ko |
+| Koreaans | ko |
 | Koreaans (Korea) | ko-KR |
-| Noorse Bokmal| nb nb |
-| Noors Bokmal (Noorwegen) | nb-NO |
+| Noors Bokmål| NB |
+| Noors Bokmål (Noor wegen) | nb-NO |
 | Noors Nynorsk | nn |
-| Pools | Pl |
+| Pools | pl |
 | Pools (Polen) | pl-PL |
 | Portugees | pt |
 | Portugees (Brazilië) | pt-BR |
@@ -539,22 +539,22 @@ In dit artikel worden ondersteunde menselijke talen voor immersive reader-functi
 | Taal | Label |
 |----------|-----|
 | Engels | nl |
-| Engels (Australië) | nl-AU |
-| Engels (Canada) | nl-CA |
-| Engels (Hong Kong SAR) | en-HK |
+| Engels (Australië) | en-AU |
+| Engels (Canada) | en-CA |
+| Engels (Hongkong SAR) | en-HK |
 | Engels (India) | en-IN |
 | Engels (Ierland) | en-IE |
-| Engels (Nieuw-Zeeland) | nl-NZ |
+| Engels (Nieuw-Zeeland) | en-NZ |
 | Engels (Verenigd Koninkrijk) | en-GB |
 | Engels (Verenigde Staten) | nl-NL |
 | Frans | fr |
-| Frans (Canada) | fr-CA |
+| Frans (Canada) | FR-CA |
 | Frans (Frankrijk) | fr-FR |
-| Frans (Zwitserland) | fr-CH |
+| Frans (Zwitserland) | FR-CH |
 | Duits | de |
 | Duits (Oostenrijk) | de-AT |
 | Duits (Duitsland) | de-DE |
-| Duits (Zwitserland)| de-CH |
+| Duits (Zwitserland)| Dech |
 | Italiaans | it |
 | Italiaans (Italië) | it-IT |
 | Spaans | Ja |

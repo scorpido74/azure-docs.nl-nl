@@ -1,6 +1,6 @@
 ---
 title: Azure Stream Analytics integreren met Azure Machine Learning
-description: In dit artikel wordt beschreven hoe u een Azure Stream Analytics-taak integreren met Azure Machine Learning-modellen.
+description: In dit artikel wordt beschreven hoe u een Azure Stream Analytics-taak integreert met Azure Machine Learning-modellen.
 author: sidram
 ms.author: sidram
 ms.reviewer: mamccrea
@@ -8,60 +8,60 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 03/19/2020
 ms.openlocfilehash: 07fa72f086b676723279ee4b8efd927beb2692f0
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81481976"
 ---
-# <a name="integrate-azure-stream-analytics-with-azure-machine-learning-preview"></a>Azure Stream Analytics integreren met Azure Machine Learning (preview)
+# <a name="integrate-azure-stream-analytics-with-azure-machine-learning-preview"></a>Azure Stream Analytics integreren met Azure Machine Learning (preview-versie)
 
-U machine learning-modellen implementeren als een door de gebruiker gedefinieerde functie (UDF) in uw Azure Stream Analytics-taken om realtime te scoren en voorspellingen te doen op uw streaminginvoergegevens. [Met Azure Machine Learning](../machine-learning/overview-what-is-azure-ml.md) u elke populaire open-sourcetool, zoals Tensorflow, scikit-learn of PyTorch, gebruiken om modellen voor te bereiden, te trainen en te implementeren.
+U kunt machine learning modellen implementeren als een door de gebruiker gedefinieerde functie (UDF) in uw Azure Stream Analytics taken om in realtime scores en voor spellingen te doen op uw invoer gegevens voor streaming. Met [Azure machine learning](../machine-learning/overview-what-is-azure-ml.md) kunt u een veelgebruikt open source-hulp programma gebruiken, zoals tensor flow, scikit-Learn of PyTorch, voor het voorbereiden, trainen en implementeren van modellen.
 
 > [!NOTE]
-> Deze functionaliteit is in openbare preview. U hebt alleen toegang tot deze functie op de Azure-portal via de [koppeling Stream Analytics-portalpreview.](https://aka.ms/asaportalpreview) Deze functionaliteit is ook beschikbaar in de nieuwste versie van [Stream Analytics-tools voor Visual Studio.](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-tools-for-visual-studio-install)
+> Deze functionaliteit bevindt zich in de open bare preview. U kunt deze functie alleen gebruiken op de Azure Portal met de [Stream Analytics Portal-preview-koppeling](https://aka.ms/asaportalpreview). Deze functionaliteit is ook beschikbaar in de nieuwste versie van [Stream Analytics-hulpprogram ma's voor Visual Studio](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-tools-for-visual-studio-install).
 
 ## <a name="prerequisites"></a>Vereisten
 
-Voer de volgende stappen uit voordat u een machine learning-model als functie toevoegt aan uw Stream Analytics-taak:
+Voer de volgende stappen uit voordat u een machine learning model toevoegt als een functie voor uw Stream Analytics taak:
 
-1. Gebruik Azure Machine Learning om [uw model te implementeren als webservice.](https://docs.microsoft.com/azure/machine-learning/how-to-deploy-and-where)
+1. Gebruik Azure Machine Learning om [uw model te implementeren als een webservice](https://docs.microsoft.com/azure/machine-learning/how-to-deploy-and-where).
 
-2. Uw scorescript moet [voorbeeldinvoer en -uitvoer](../machine-learning/how-to-deploy-and-where.md#example-entry-script) bevatten die door Azure Machine Learning worden gebruikt om een schemaspecificatie te genereren. Stream Analytics gebruikt het schema om inzicht te krijgen in de functiehandtekening van uw webservice.
+2. Uw score script moet [voorbeeld invoer en uitvoer](../machine-learning/how-to-deploy-and-where.md#example-entry-script) bevatten die door Azure machine learning worden gebruikt om een schema specificatie te genereren. Stream Analytics gebruikt het schema om inzicht te krijgen in de functie handtekening van uw webservice.
 
-3. Zorg ervoor dat uw webservice geserialiseerde gegevens van JSON accepteert en retourneert.
+3. Zorg ervoor dat uw webservice een JSON-geserialiseerde gegevens accepteert en retourneert.
 
-4. Implementeer uw model op [Azure Kubernetes Service](../machine-learning/how-to-deploy-and-where.md#choose-a-compute-target) voor grootschalige productie-implementaties. Als de webservice het aantal aanvragen van uw taak niet kan verwerken, worden de prestaties van uw Stream Analytics-taak afgebroken, wat gevolgen heeft voor de latentie. Modellen die zijn geïmplementeerd op Azure Container Instances worden vandaag niet ondersteund, maar zullen in de komende maanden beschikbaar komen.
+4. Implementeer uw model op de [Azure Kubernetes-service](../machine-learning/how-to-deploy-and-where.md#choose-a-compute-target) voor grootschalige productie-implementaties. Als de webservice niet in staat is om het aantal aanvragen af te handelen van uw taak, wordt de prestaties van uw Stream Analytics-taak verslechterd. Dit heeft gevolgen voor de latentie. Modellen die op Azure Container Instances worden geïmplementeerd, worden momenteel niet ondersteund, maar worden in de komende maanden beschikbaar.
 
-## <a name="add-a-machine-learning-model-to-your-job"></a>Een machine learning-model toevoegen aan uw taak
+## <a name="add-a-machine-learning-model-to-your-job"></a>Een machine learning model toevoegen aan uw taak
 
-U Azure Machine Learning-functies rechtstreeks vanuit de Azure-portal aan uw Stream Analytics-taak toevoegen.
+U kunt rechtstreeks vanuit de Azure Portal Azure Machine Learning-functies aan uw Stream Analytics-taak toevoegen.
 
-1. Navigeer naar uw streamanalytics-taak in de Azure-portal en selecteer **Functies** onder **Taaktopologie**. Selecteer vervolgens **Azure ML Service** in het vervolgkeuzemenu + **Toevoegen.**
+1. Navigeer naar uw Stream Analytics-taak in de Azure Portal en selecteer **functies** onder **taak topologie**. Selecteer vervolgens **Azure ml-service** in het vervolg keuzemenu **+ toevoegen** .
 
-   ![Azure ML-uDF toevoegen](./media/machine-learning-udf/add-azureml-udf.png)
+   ![Azure ML UDF toevoegen](./media/machine-learning-udf/add-azureml-udf.png)
 
-2. Vul het **functieformulier Azure Machine Learning Service** in met de volgende eigenschapswaarden:
+2. Vul het formulier **Azure machine learning service functie** in met de volgende eigenschaps waarden:
 
    ![Azure ML UDF configureren](./media/machine-learning-udf/configure-azureml-udf.png)
 
-In de volgende tabel wordt elke eigenschap van Azure ML-servicefuncties in Stream Analytics beschreven.
+De volgende tabel beschrijft elke eigenschap van Azure ML-service functies in Stream Analytics.
 
 |Eigenschap|Beschrijving|
 |--------|-----------|
-|Functiealias|Voer een naam in om de functie in uw query aan te roepen.|
+|Functie alias|Voer een naam in om de functie in de query aan te roepen.|
 |Abonnement|Uw Azure-abonnement..|
-|Azure ML-werkruimte|De Azure Machine Learning-werkruimte die u hebt gebruikt om uw model als webservice te implementeren.|
-|Implementaties|De webservice die uw model host.|
-|Functiehandtekening|De handtekening van uw webservice is afgeleid van de schemaspecificatie van de API. Als uw handtekening niet wordt geladen, controleert u of u voorbeeldinvoer en -uitvoer in uw scorescript hebt opgegeven om het schema automatisch te genereren.|
-|Aantal parallelle aanvragen per partitie|Dit is een geavanceerde configuratie om de grootschalige doorvoer te optimaliseren. Dit nummer vertegenwoordigt de gelijktijdige aanvragen die van elke partitie van uw taak naar de webservice worden verzonden. Taken met zes streaming-eenheden (SU) en lager hebben één partitie. Taken met 12 SU's hebben twee partities, 18 SU's hebben drie partities enzovoort.<br><br> Als uw taak bijvoorbeeld twee partities heeft en u deze parameter instelt op vier, worden er acht gelijktijdige aanvragen van uw taak ingediend bij uw webservice. Op dit moment van openbare preview, deze waarde standaard op 20 en kan niet worden bijgewerkt.|
-|Maximum aantal batch's|Dit is een geavanceerde configuratie voor het optimaliseren van grootschalige doorvoer. Dit getal vertegenwoordigt het maximum aantal gebeurtenissen dat samen wordt gebatched in één aanvraag die naar uw webservice wordt verzonden.|
+|Azure ML-werk ruimte|De Azure Machine Learning-werk ruimte die u hebt gebruikt voor het implementeren van uw model als een webservice.|
+|Implementaties|De webservice die als host fungeert voor uw model.|
+|Functie handtekening|De hand tekening van de webservice die is afgeleid van de schema specificatie van de API. Als uw hand tekening niet kan worden geladen, controleert u of u voorbeeld invoer en uitvoer hebt opgegeven in uw score script om het schema automatisch te genereren.|
+|Aantal parallelle aanvragen per partitie|Dit is een geavanceerde configuratie voor het optimaliseren van een hoge schaal doorvoer. Dit nummer vertegenwoordigt de gelijktijdige aanvragen die vanuit elke partitie van uw taak naar de webservice worden verzonden. Taken met zes streaming-eenheden (SU) en lager hebben één partitie. Taken met 12 SUs hebben twee partities, 18 SUs heeft drie partities, enzovoort.<br><br> Als uw taak bijvoorbeeld twee partities heeft en u deze para meter instelt op vier, zijn er acht gelijktijdige aanvragen van uw taak naar uw webservice. Op dit moment van de open bare preview-versie is de standaard waarde 20 en kan niet worden bijgewerkt.|
+|Maximum aantal batches|Dit is een geavanceerde configuratie voor het optimaliseren van een hoge schaal doorvoer. Dit nummer geeft het maximum aantal gebeurtenissen aan dat kan worden opgenomen in een enkele aanvraag die naar uw webservice wordt verzonden.|
 
-## <a name="supported-input-parameters"></a>Ondersteunde invoerparameters
+## <a name="supported-input-parameters"></a>Ondersteunde invoer parameters
 
-Wanneer uw Stream Analytics-query een Azure Machine Learning UDF aanroept, wordt met de taak een JSON-geserialiseerde aanvraag voor de webservice gemaakt. De aanvraag is gebaseerd op een modelspecifiek schema. U moet een voorbeeldinvoer en -uitvoer in uw scorescript leveren om automatisch een schema te [genereren.](../machine-learning/how-to-deploy-and-where.md) Met het schema kan Stream Analytics de geserialiseerde JSON-aanvraag samenstellen voor een van de ondersteunde gegevenstypen zoals numpy, panda's en PySpark. Meerdere invoergebeurtenissen kunnen samen worden gebatched in één aanvraag.
+Wanneer uw Stream Analytics query een Azure Machine Learning UDF aanroept, maakt de taak een JSON-geserialiseerde aanvraag voor de webservice. De aanvraag is gebaseerd op een model-specifiek schema. U moet een voorbeeld invoer en uitvoer in uw score script opgeven om [automatisch een schema te genereren](../machine-learning/how-to-deploy-and-where.md). Met het schema kunnen Stream Analytics de JSON serialized-aanvraag maken voor een van de ondersteunde gegevens typen, zoals numpy, Pandas en PySpark. Meerdere invoer gebeurtenissen kunnen samen in één aanvraag in een batch worden opgenomen.
 
-De volgende Stream Analytics-query is een voorbeeld van het aanroepen van een Azure Machine Learning UDF:
+De volgende Stream Analytics query is een voor beeld van het aanroepen van een Azure Machine Learning UDF:
 
 ```SQL
 SELECT udf.score(<model-specific-data-structure>)
@@ -69,15 +69,15 @@ INTO output
 FROM input
 ```
 
-Stream Analytics ondersteunt slechts één parameter voor Azure Machine Learning-functies. Mogelijk moet u uw gegevens voorbereiden voordat u deze doorgeeft als input voor machine learning UDF.
+Stream Analytics biedt alleen ondersteuning voor het door geven van één para meter voor Azure Machine Learning-functies. Mogelijk moet u uw gegevens voorbereiden voordat deze worden door gegeven als invoer voor machine learning UDF.
 
-## <a name="pass-multiple-input-parameters-to-the-udf"></a>Meerdere invoerparameters doorgeven aan de UDF
+## <a name="pass-multiple-input-parameters-to-the-udf"></a>Meerdere invoer parameters door geven aan de UDF
 
-De meest voorkomende voorbeelden van ingangen voor machine learning-modellen zijn numpy arrays en DataFrames. U een array maken met een JavaScript UDF en een `WITH` JSON-serialized DataFrame maken met behulp van de clausule.
+De meest voorkomende voor beelden van invoer voor machine learning modellen zijn numpy-matrices en DataFrames. U kunt een matrix maken met behulp van een Java script UDF en een JSON-geserialiseerd data frame maken `WITH` met behulp van de-component.
 
-### <a name="create-an-input-array"></a>Een invoerarray maken
+### <a name="create-an-input-array"></a>Een invoer matrix maken
 
-U een JavaScript-udf maken die *N-aantal* ingangen accepteert en een array maakt die kan worden gebruikt als invoer voor uw Azure Machine Learning UDF.
+U kunt een Java script-UDF maken waarmee *N* het aantal invoer wordt geaccepteerd en een matrix wordt gemaakt die kan worden gebruikt als invoer voor uw Azure machine learning UDF.
 
 ```javascript
 function createArray(vendorid, weekday, pickuphour, passenger, distance) {
@@ -87,7 +87,7 @@ function createArray(vendorid, weekday, pickuphour, passenger, distance) {
 }
 ```
 
-Zodra u de JavaScript UDF aan uw taak hebt toegevoegd, u uw Azure Machine Learning UDF aanroepen met de volgende query:
+Wanneer u de Java script UDF aan uw taak hebt toegevoegd, kunt u uw Azure Machine Learning UDF aanroepen met behulp van de volgende query:
 
 ```SQL
 SELECT udf.score(
@@ -97,7 +97,7 @@ INTO output
 FROM input
 ```
 
-De volgende JSON is een voorbeeldaanvraag:
+De volgende JSON is een voorbeeld aanvraag:
 
 ```JSON
 {
@@ -108,11 +108,11 @@ De volgende JSON is een voorbeeldaanvraag:
 }
 ```
 
-### <a name="create-a-pandas-or-pyspark-dataframe"></a>Een Panda's of PySpark DataFrame maken
+### <a name="create-a-pandas-or-pyspark-dataframe"></a>Een Panda-of PySpark-data frame maken
 
-U `WITH` de clausule gebruiken om een JSON serialized DataFrame te maken die kan worden doorgegeven als invoer naar uw Azure Machine Learning UDF, zoals hieronder wordt weergegeven.
+U kunt de `WITH` -component gebruiken om een JSON serialized data frame te maken die als invoer kan worden door gegeven aan uw Azure machine learning UDF, zoals hieronder wordt weer gegeven.
 
-Met de volgende query wordt een DataFrame gemaakt door de benodigde velden te selecteren en het DataFrame te gebruiken als invoer voor de Azure Machine Learning UDF.
+Met de volgende query maakt u een data frame door de gewenste velden te selecteren en de data frame als invoer te gebruiken voor de Azure Machine Learning UDF.
 
 ```SQL
 WITH 
@@ -126,7 +126,7 @@ INTO output
 FROM input
 ```
 
-De volgende JSON is een voorbeeldaanvraag van de vorige query:
+De volgende JSON is een voorbeeld aanvraag van de vorige query:
 
 ```JSON
 {
@@ -147,27 +147,27 @@ De volgende JSON is een voorbeeldaanvraag van de vorige query:
 }
 ```
 
-## <a name="optimize-the-performance-for-azure-machine-learning-udfs"></a>Optimaliseer de prestaties voor Azure Machine Learning-udf's
+## <a name="optimize-the-performance-for-azure-machine-learning-udfs"></a>Optimaliseer de prestaties voor Azure Machine Learning Udf's
 
-Wanneer u uw model implementeert in Azure Kubernetes Service, u [uw model profileren om het gebruik van resources te bepalen.](../machine-learning/how-to-deploy-and-where.md#profilemodel) U [app-inzichten voor uw implementaties](../machine-learning/how-to-enable-app-insights.md) ook inschakelen om inzicht te krijgen in de aanvraagpercentages, reactietijden en uitvalpercentages.
+Wanneer u uw model implementeert in azure Kubernetes service, kunt u [uw model profileren om het resource gebruik te bepalen](../machine-learning/how-to-deploy-and-where.md#profilemodel). U kunt ook [app Insights inschakelen voor uw implementaties om de](../machine-learning/how-to-enable-app-insights.md) aanvraag tarieven, reactie tijden en fout tarieven te begrijpen.
 
-Als u een scenario hebt met een hoge gebeurtenisdoorvoer, moet u mogelijk de volgende parameters in Stream Analytics wijzigen om optimale prestaties te bereiken met lage end-to-end-latencies:
+Als u een scenario met hoge gebeurtenis doorvoer hebt, moet u mogelijk de volgende para meters in Stream Analytics wijzigen om optimale prestaties te krijgen met een lage end-to-end latentie:
 
-1. Max batch tellen.
+1. Maximum aantal batches.
 2. Aantal parallelle aanvragen per partitie.
 
-### <a name="determine-the-right-batch-size"></a>De juiste batchgrootte bepalen
+### <a name="determine-the-right-batch-size"></a>De juiste Batch grootte bepalen
 
-Nadat u uw webservice hebt geïmplementeerd, verzendt u voorbeeldaanvragen met verschillende batchgroottes vanaf 50 en verhoogt u deze in volgorde van honderden. Bijvoorbeeld, 200, 500, 1000, 2000 en ga zo maar door. U zult merken dat na een bepaalde batchgrootte de latentie van de respons toeneemt. Het punt waarna latentie van respons verhogingen moet de maximale batch tellen voor uw taak.
+Nadat u uw webservice hebt geïmplementeerd, verzendt u een voorbeeld aanvraag met verschillende batch grootten vanaf 50 en verhoogt u deze in de volg orde van honderden. Bijvoorbeeld 200, 500, 1000, 2000, enzovoort. Na een bepaalde Batch grootte neemt de latentie van de reactie toe. Het punt waarna de latentie van de reactie toeneemt, moet het maximum aantal batches voor uw taak zijn.
 
 ### <a name="determine-the-number-of-parallel-requests-per-partition"></a>Het aantal parallelle aanvragen per partitie bepalen
 
-Bij optimale schaling moet uw Stream Analytics-taak meerdere parallelle aanvragen naar uw webservice kunnen verzenden en binnen enkele milliseconden een antwoord kunnen krijgen. De latentie van de reactie van de webservice kan rechtstreeks van invloed zijn op de latentie en prestaties van uw Stream Analytics-taak. Als het gesprek van uw taak naar de webservice lang duurt, ziet u waarschijnlijk een toename van de vertraging van het watermerk en kan het aantal backlogged invoergebeurtenissen toenemen.
+Bij een optimale schaal baarheid moet uw Stream Analytics-taak meerdere parallelle aanvragen kunnen verzenden naar uw webservice en binnen enkele milliseconden een reactie krijgen. De latentie van de reactie van de webservice kan rechtstreeks van invloed zijn op de latentie en prestaties van uw Stream Analytics-taak. Als de oproep van uw taak voor de webservice lange tijd duurt, ziet u waarschijnlijk een toename van de vertraging van het water merk en ziet u mogelijk ook een toename van het aantal invoer gebeurtenissen met achterstand.
 
-Als u een dergelijke latentie wilt voorkomen, moet u ervoor zorgen dat uw AKS-cluster (Azure Kubernetes Service) is ingericht met het [juiste aantal knooppunten en replica's.](../machine-learning/how-to-deploy-azure-kubernetes-service.md#using-the-cli) Het is van cruciaal belang dat uw webservice zeer beschikbaar is en succesvolle reacties retourneert. Als uw taak een service-niet-beschikbare reactie (503) van uw webservice ontvangt, wordt deze voortdurend opnieuw geprobeerd met exponentiële back-off. Een andere reactie dan succes (200) en service niet beschikbaar (503) zal ertoe leiden dat uw taak naar een mislukte status gaat.
+Als u een dergelijke latentie wilt voor komen, moet u ervoor zorgen dat uw Azure Kubernetes service-cluster (AKS) is ingericht met het [juiste aantal knoop punten en replica's](../machine-learning/how-to-deploy-azure-kubernetes-service.md#using-the-cli). Het is essentieel dat uw webservice Maxi maal beschikbaar is en dat er geslaagde reacties worden geretourneerd. Als uw taak een reactie van een service die niet beschikbaar is (503) van uw webservice ontvangt, wordt er voortdurend een nieuwe poging met exponentiële back-ups uitgevoerd. Een andere reactie dan geslaagd (200) en service niet beschikbaar (503) zorgt ervoor dat uw taak naar een mislukte status gaat.
 
 ## <a name="next-steps"></a>Volgende stappen
 
 * [Zelfstudie: Door gebruiker gedefinieerde JavaScript-functies in Azure Stream Analytics](stream-analytics-javascript-user-defined-functions.md)
-* [Uw Stream Analytics-taak schalen met de functie Azure Machine Learning Studio (klassieke) functie](stream-analytics-scale-with-machine-learning-functions.md)
+* [Uw Stream Analytics-taak schalen met de functie Azure Machine Learning Studio (klassiek)](stream-analytics-scale-with-machine-learning-functions.md)
 

@@ -1,6 +1,6 @@
 ---
 title: Netwerken voor virtuele-machineschaalsets in Azure
-description: Een aantal van de meer geavanceerde netwerkeigenschappen voor Azure-seten voor virtuele machineschalen configureren.
+description: Configuratie van een aantal van de meer geavanceerde netwerk eigenschappen voor schaal sets van virtuele Azure-machines.
 author: mimckitt
 tags: azure-resource-manager
 ms.assetid: 76ac7fd7-2e05-4762-88ca-3b499e87906e
@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 07/17/2017
 ms.author: mimckitt
 ms.openlocfilehash: efe3a39008361fdf76d80a0c8e7e2e30b061117d
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81461345"
 ---
 # <a name="networking-for-azure-virtual-machine-scale-sets"></a>Netwerken voor virtuele-machineschaalsets in Azure
@@ -41,27 +41,27 @@ Versneld netwerken in Azure verbetert de prestaties van het netwerk door het ins
 }
 ```
 
-## <a name="azure-virtual-machine-scale-sets-with-azure-load-balancer"></a>Azure virtuele machineschaalsets met Azure Load Balancer
+## <a name="azure-virtual-machine-scale-sets-with-azure-load-balancer"></a>Virtuele-machine schaal sets van Azure met Azure Load Balancer
 
-Bij het werken met virtuele machineschaalsets en load balancer moet rekening worden gehouden met:
+Wanneer u werkt met schaal sets voor virtuele machines en load balancer, moet u rekening houden met het volgende:
 
-* **Meerdere virtuele machineschaalsets kunnen niet dezelfde load balancer gebruiken.**
-* **Port Forwarding en inkomende NAT-regels:**
-  * Elke virtuele machineschaalset moet een binnenkomende NAT-regel hebben.
-  * Nadat de schaalset is gemaakt, kan de backendpoort niet worden gewijzigd voor een regel voor het balanceren van de last die wordt gebruikt door een statussonde van de load balancer. Als u de poort wilt wijzigen, u de statussonde verwijderen door de azure-virtuele machineschaalset bij te werken, de poort bij te werken en vervolgens de statussonde opnieuw te configureren.
-  * Bij het gebruik van de virtuele machineschaal die is ingesteld in de backendpool van de load balancer, worden de standaard inkomende NAT-regels automatisch gemaakt.
-* **Regels voor taakverdeling:**
-  * Bij het gebruik van de virtuele machineschaal die is ingesteld in de backendpool van de load balancer, wordt de standaard regel voor taakverdeling automatisch gemaakt.
-* **Uitgaande regels:**
-  *  Als u uitgaande regel wilt maken voor een backendpool waarnaar al wordt verwezen door een regel voor het balanceren van de last, moet u **eerst 'Impliciete uitgaande regels maken'** als **Nee** in de portal markeren wanneer de inkomende regel voor het balanceren van de lastwordt gemaakt.
+* **Meerdere virtuele-machine schaal sets kunnen niet dezelfde Load Balancer gebruiken**.
+* **Poort door sturen en binnenkomende NAT-regels**:
+  * Elke schaalset voor virtuele machines moet een binnenkomende NAT-regel hebben.
+  * Nadat de schaalset is gemaakt, kan de backend-poort niet worden gewijzigd voor een taakverdelings regel die wordt gebruikt door een status test van de load balancer. Als u de poort wilt wijzigen, kunt u de status test verwijderen door de schaalset voor virtuele Azure-machines bij te werken, de poort bij te werken en de status test vervolgens opnieuw te configureren.
+  * Wanneer u de schaalset voor virtuele machines gebruikt in de back-endadresgroep van de load balancer worden de standaard regels voor binnenkomend NAT automatisch gemaakt.
+* Taakverdelings **regels**:
+  * Wanneer u de schaalset voor virtuele machines in de back-endadresgroep van de load balancer gebruikt, wordt de standaard regel voor taak verdeling automatisch gemaakt.
+* **Uitgaande regels**:
+  *  Als u een uitgaande regel wilt maken voor een back-end-groep waarnaar al wordt verwezen door een taakverdelings regel, moet u eerst **"impliciete uitgaande regels maken"** als **Nee** in de portal markeren wanneer de regel voor binnenkomende taak verdeling wordt gemaakt.
 
-  :::image type="content" source="./media/vmsslb.png" alt-text="Het maken van taakverdelingsregels" border="true":::
+  :::image type="content" source="./media/vmsslb.png" alt-text="Taak verdelings regel maken" border="true":::
 
-De volgende methoden kunnen worden gebruikt om een virtuele machineschaalset te implementeren met een bestaande Azure-load balancer.
+De volgende methoden kunnen worden gebruikt voor het implementeren van een schaalset voor virtuele machines met een bestaande Azure-load balancer.
 
-* [Configureer een virtuele machineschaalset met een bestaande Azure Load Balancer met behulp van de Azure-portal.](https://docs.microsoft.com/azure/load-balancer/configure-vm-scale-set-portal)
-* [Configureer een virtuele machineschaalset met een bestaande Azure Load Balancer met Azure PowerShell](https://docs.microsoft.com/azure/load-balancer/configure-vm-scale-set-powershell).
-* [Configureer een virtuele machineschaalset met een bestaande Azure Load Balancer met behulp van azure CLI](https://docs.microsoft.com/azure/load-balancer/configure-vm-scale-set-cli).
+* [Een schaalset voor virtuele machines configureren met een bestaande Azure Load Balancer met behulp van de Azure Portal](https://docs.microsoft.com/azure/load-balancer/configure-vm-scale-set-portal).
+* [Een schaalset voor virtuele machines configureren met een bestaande Azure Load Balancer met behulp van Azure PowerShell](https://docs.microsoft.com/azure/load-balancer/configure-vm-scale-set-powershell).
+* [Een schaalset voor virtuele machines configureren met een bestaande Azure Load Balancer met behulp van de Azure cli](https://docs.microsoft.com/azure/load-balancer/configure-vm-scale-set-cli).
 
 ## <a name="create-a-scale-set-that-references-an-application-gateway"></a>Een schaalset maken die verwijst naar een toepassingsgateway
 Om een schaalset te maken die gebruikmaakt van een toepassingsgateway, verwijst u naar de back-endadresgroep van de toepassingsgateway in de sectie ipConfigurations van uw schaalset zoals in deze ARM-sjabloonconfiguratie:
@@ -104,7 +104,7 @@ Als u aangepaste DNS-servers wilt configureren in een Azure-sjabloon, voegt u de
 ### <a name="creating-a-scale-set-with-configurable-virtual-machine-domain-names"></a>Een schaalset maken met de configureerbare domeinnamen van virtuele machines
 Als u een schaalset wilt maken met een aangepaste DNS-naam voor virtuele machines met de CLI, voegt u het argument **--vm-domain-name** toe aan de opdracht **virtual machine scale set create**, gevolgd door een tekenreeks met de domeinnaam.
 
-Als u de domeinnaam wilt instellen in een Azure-sjabloon, voegt u een eigenschap **dnsSettings** toe aan de sectie **netwerkinterfaceconfiguraties** van de schaalset. Bijvoorbeeld:
+Als u de domein naam in een Azure-sjabloon wilt instellen, voegt u een eigenschap **dnsSettings** toe aan de sectie Scale set **networkinterfaceconfigurations schaalset** . Bijvoorbeeld:
 
 ```json
 "networkProfile": {
@@ -150,7 +150,7 @@ In sommige gevallen hebben virtuele machines van een schaalset echter hun eigen 
 ### <a name="creating-a-scale-set-with-public-ip-per-virtual-machine"></a>Een schaalset met een openbaar IP-adres per virtuele machine maken
 Als u een schaalset wilt maken waarmee een openbaar IP-adres wordt toegewezen aan elke virtuele machine met de CLI, voegt u de parameter **--public-ip-per-vm** toe aan de opdracht **vmss create**. 
 
-Als u een schaalset wilt maken met een Azure-sjabloon, controleert u of de API-versie van de bron Microsoft.Compute/virtualMachineScaleSets ten minste **2017-03-30**is en voegt u een JSON-eigenschap **publicIpIpAddressConfiguration** toe aan de sectie schaalsetipConfigurations. Bijvoorbeeld:
+Als u een schaalset wilt maken met behulp van een Azure-sjabloon, moet u ervoor zorgen dat de API-versie van de micro soft. Compute/virtualMachineScaleSets-resource ten minste **2017-03-30**is en een **publicipaddressconfiguration toe** JSON-eigenschap toevoegen aan de sectie ipConfigurations van schaal sets. Bijvoorbeeld:
 
 ```json
 "publicIpAddressConfiguration": {

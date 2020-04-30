@@ -7,17 +7,17 @@ ms.topic: quickstart
 ms.subservice: process-automation
 ms.custom: mvc
 ms.openlocfilehash: 7704f080b7c1878f2fa2b079a1f242c8c2cc87a9
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81536978"
 ---
 # <a name="create-an-azure-automation-account"></a>Een Azure Automation-account maken
 
-U een Azure Automation-account maken via Azure, met behulp van de Azure-portal, een browsergebaseerde gebruikersinterface die toegang biedt tot een aantal bronnen. Eén Automation-account kan resources beheren in alle regio's en abonnementen voor een bepaalde tenant. 
+U kunt via Azure een Azure Automation-account maken met behulp van de Azure Portal, een op een browser gebaseerde gebruikers interface waarmee u toegang hebt tot een aantal resources. Met één Automation-account kunt u bronnen beheren voor alle regio's en abonnementen voor een bepaalde Tenant. 
 
-Met deze quickstart u een Automatiseringsaccount maken en een runbook in het account uitvoeren. Als u geen Azure-abonnement hebt, maakt u een [gratis Azure-account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) voordat u begint.
+Deze Snelstartgids helpt u bij het maken van een Automation-account en het uitvoeren van een runbook in het account. Als u nog geen abonnement op Azure hebt, maak dan een [gratis Azure-account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
 
 ## <a name="sign-in-to-azure"></a>Aanmelden bij Azure
 
@@ -25,25 +25,25 @@ Met deze quickstart u een Automatiseringsaccount maken en een runbook in het acc
 
 ## <a name="create-automation-account"></a>Automation-account maken
 
-1. Kies een naam voor uw Azure-account. Naam van automatiseringsaccount is uniek per regio en resourcegroep. Namen voor automatiseringsaccounts die zijn verwijderd, zijn mogelijk niet onmiddellijk beschikbaar.
+1. Kies een naam voor uw Azure-account. De namen van Automation-accounts zijn uniek per regio en resource groep. Namen voor Automation-accounts die zijn verwijderd, zijn mogelijk niet onmiddellijk beschikbaar.
 
     > [!NOTE]
-    > U de accountnaam niet meer wijzigen nadat deze in de gebruikersinterface is ingevoerd. 
+    > U kunt de account naam niet wijzigen nadat deze is ingevoerd in de gebruikers interface. 
 
-2. Klik **op de knop Een resource maken** in de linkerbovenhoek van de Azure-portal.
+2. Klik op de knop **een resource maken** in de linkerbovenhoek van Azure Portal.
 
-3. Selecteer **IT-& Management Tools**en selecteer Vervolgens **Automatisering**.
+3. Selecteer **deze &-beheer hulpprogramma's**en selecteer vervolgens **Automation**.
 
-4. Voer de accountgegevens in, inclusief de geselecteerde accountnaam. Kies bij **Een Uitvoeren als-account voor Azure maken**, de optie **Ja** zodat de artefacten die verificatie bij Azure vereenvoudigen, automatisch worden ingeschakeld. Wanneer de informatie is voltooid, klikt u op **Maken** om de implementatie van het automatiseringsaccount te starten.
+4. Voer de account gegevens in, met inbegrip van de geselecteerde account naam. Kies bij **Een Uitvoeren als-account voor Azure maken**, de optie **Ja** zodat de artefacten die verificatie bij Azure vereenvoudigen, automatisch worden ingeschakeld. Wanneer de gegevens zijn voltooid, klikt u op **maken** om de implementatie van het Automation-account te starten.
 
     ![Gegevens over uw Automation-account invoeren op de pagina](./media/automation-quickstart-create-account/create-automation-account-portal-blade.png)  
 
     > [!NOTE]
-    > Zie [Producten beschikbaar per regio](https://azure.microsoft.com/global-infrastructure/services/?products=automation&regions=all)voor een bijgewerkte lijst met locaties waarop u een Automatiseringsaccount implementeren.
+    > Zie [producten beschikbaar per regio](https://azure.microsoft.com/global-infrastructure/services/?products=automation&regions=all)voor een bijgewerkte lijst met locaties waarop u een Automation-account kunt implementeren.
 
-5. Klik op **Alle services**wanneer de implementatie is voltooid.
+5. Wanneer de implementatie is voltooid, klikt u op **alle services**.
 
-6. Selecteer **Automatiseringsaccounts** en kies vervolgens het automatiseringsaccount dat u hebt gemaakt.
+6. Selecteer **Automation-accounts** en kies vervolgens het Automation-account dat u hebt gemaakt.
 
     ![Overzicht van Automation-account](./media/automation-quickstart-create-account/automation-account-overview.png)
 
@@ -51,7 +51,7 @@ Met deze quickstart u een Automatiseringsaccount maken en een runbook in het acc
 
 Voer een van de zelfstudierunbooks uit.
 
-1. Klik **op Runbooks** onder **Procesautomatisering**. De lijst met runbooks wordt weergegeven. Standaard zijn er verschillende zelfstudierunboeken ingeschakeld in het account.
+1. Klik onder **proces automatisering**op **Runbooks** . De lijst met runbooks wordt weergegeven. Er zijn standaard diverse zelf studie-runbooks ingeschakeld in het account.
 
     ![Lijst met runbooks in het Automation-account](./media/automation-quickstart-create-account/automation-runbooks-overview.png)
 
@@ -63,7 +63,7 @@ Voer een van de zelfstudierunbooks uit.
 
     ![Pagina met runbooktaak](./media/automation-quickstart-create-account/automation-tutorial-script-job.png)
 
-1. Nadat de taakstatus is weergegeven, `Running`klikt u op **Uitvoer** of Alle **logboeken** om de uitvoer van de runbook-taak weer te geven. Voor dit zelfstudierunbook bestaat de uitvoer uit een lijst van uw Azure-resources.
+1. Nadat de taak status wordt `Running`weer gegeven, klikt u op **uitvoer** of **alle logboeken** om de uitvoer van de runbook-taak te bekijken. Voor dit zelfstudierunbook bestaat de uitvoer uit een lijst van uw Azure-resources.
 
 ## <a name="next-steps"></a>Volgende stappen
 

@@ -1,145 +1,145 @@
 ---
 title: Azure Migrate-replicatieapparaat
-description: Meer informatie over het Azure Migrate-replicatietoestel voor vmware-migratie op basis van agenten.
+description: Meer informatie over het Azure Migrate replicatie apparaat voor VMWare-migratie op basis van agents.
 ms.topic: conceptual
 ms.date: 01/30/2020
 ms.openlocfilehash: 85641f514fc4367f02901eb1dd394cfa204c3ec4
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81535210"
 ---
-# <a name="replication-appliance"></a>Replicatietoestel
+# <a name="replication-appliance"></a>Replicatie apparaat
 
-In dit artikel wordt het replicatietoestel beschreven dat wordt gebruikt door [Azure Migrate: Servermigration](migrate-services-overview.md#azure-migrate-server-migration-tool) tool bij het migreren van VMware VM's, fysieke machines en private/public cloud VM's naar Azure, met behulp van op agentgebaseerde migratie. 
+In dit artikel wordt het replicatie apparaat beschreven dat wordt gebruikt door Azure Migrate: hulp programma voor [server migratie](migrate-services-overview.md#azure-migrate-server-migration-tool) bij het migreren van virtuele VMware-machines, fysieke machines en persoonlijke/open bare Cloud-Vm's naar Azure, met behulp van migratie op basis van een agent. 
 
 
 ## <a name="overview"></a>Overzicht
 
-Het replicatietoestel wordt geïmplementeerd wanneer u op agentgebaseerde migratie van VMware VM's of fysieke servers instelt. Het wordt geïmplementeerd als één on-premises machine, als vmware-vm of als fysieke server. Het loopt:
+Het replicatie apparaat wordt geïmplementeerd wanneer u migratie van virtuele VMware-machines of fysieke servers op basis van een agent instelt. Het wordt geïmplementeerd als één on-premises machine, hetzij als een VMware-VM of een fysieke server. Deze wordt uitgevoerd:
 
-- **Replicatietoestel:** het replicatietoestel coördineert de communicatie en beheert gegevensreplicatie voor on-premises Vm's vmware en fysieke servers die naar Azure worden gerepliceerd.
-- **Processerver:** de processerver die standaard op het replicatietoestel is geïnstalleerd en gaat als volgt te werk:
-    - **Replicatiegateway:** het fungeert als replicatiegateway. Het ontvangt replicatiegegevens van machines die zijn ingeschakeld voor replicatie. Het optimaliseert replicatiegegevens met caching, compressie en versleuteling en stuurt deze naar Azure.
-    - **Agent installer**: Voert een push-installatie van de Mobility Service uit. Deze service moet worden geïnstalleerd en uitgevoerd op elke on-premises machine die u wilt repliceren voor migratie.
+- **Replicatie apparaat**: het replicatie apparaat coördineert communicatie en beheert gegevens replicatie voor on-premises virtuele VMware-machines en fysieke servers die repliceren naar Azure.
+- **Proces server**: de proces server, die standaard wordt geïnstalleerd op het replicatie apparaat, en doet het volgende:
+    - **Replicatie gateway**: deze fungeert als replicatie gateway. Het ontvangt replicatie gegevens van machines die zijn ingeschakeld voor replicatie. Het optimaliseert replicatie gegevens met caching, compressie en versleuteling, en verzendt deze naar Azure.
+    - **Agent installatie programma**: voert een push-installatie van de Mobility-service uit. Deze service moet zijn geïnstalleerd en worden uitgevoerd op elke on-premises machine die u voor migratie wilt repliceren.
 
-## <a name="appliance-deployment"></a>Toestelimplementatie
+## <a name="appliance-deployment"></a>Implementatie van het apparaat
 
-**Gebruikt voor** | **Details**
+**Gebruikt voor** | **Nadere**
 --- |  ---
-**VMware VM-agentgebaseerde migratie** | U downloadt OVA-sjabloon van de Azure Migrate-hub en importeert naar vCenter Server om de toestel-VM te maken.
-**Migratie op basis van fysieke machineagent** | Als u geen VMware-infrastructuur hebt of als u geen VMware-VM maken met een OVA-sjabloon, downloadt u een software-installatieprogramma van de Azure Migrate-hub en voert u deze uit om de toestelmachine in te stellen.
+**Migratie op basis van VMware VM-agent** | U kunt de eicellen-sjabloon downloaden van de Azure Migrate hub en importeren in vCenter Server om de apparaat-VM te maken.
+**Migratie van op de fysieke machine gebaseerde agent** | Als u geen VMware-infra structuur hebt of als u geen virtuele VMware-machine kunt maken met behulp van een eicellen-sjabloon, downloadt u een software-installatie programma van de Azure Migrate hub en voert u deze uit om de toestel machine in te stellen.
 
 > [!NOTE]
-> Als u implementeert in Azure Government, gebruikt u het installatiebestand om het replicatietoestel te implementeren.
+> Als u in Azure Government implementeert, gebruikt u het installatie bestand om het replicatie apparaat te implementeren.
 
-## <a name="appliance-requirements"></a>Toestelvereisten
+## <a name="appliance-requirements"></a>Vereisten voor apparaten
 
-Wanneer u het replicatietoestel instelt met de OVA-sjabloon in de Azure Migrate-hub, wordt Windows Server 2016 uitgevoerd en voldoet het aan de ondersteuningsvereisten. Als u het replicatietoestel handmatig instelt op een fysieke server, controleert u of het voldoet aan de vereisten.
+Wanneer u het replicatie apparaat instelt met behulp van de eicellen-sjabloon die is opgegeven in de Azure Migrate hub, voert het apparaat Windows Server 2016 uit en voldoet aan de ondersteunings vereisten. Als u het replicatie apparaat hand matig instelt op een fysieke server, moet u ervoor zorgen dat het voldoet aan de vereisten.
 
 **Component** | **Vereiste**
 --- | ---
- | **VMware VM-toestel**
-PowerCLI (PowerCLI) | [PowerCLI-versie 6.0](https://my.vmware.com/web/vmware/details?productId=491&downloadGroup=PCLI600R1) moet worden geïnstalleerd als het replicatietoestel op een Vm van VMware wordt uitgevoerd.
-NIC-type | VMXNET3 (als het toestel een VMware VM is)
+ | **VMware-VM-apparaat**
+PowerCLI | [PowerCLI-versie 6,0](https://my.vmware.com/web/vmware/details?productId=491&downloadGroup=PCLI600R1) moet worden geïnstalleerd als het replicatie apparaat wordt uitgevoerd op een virtuele VMWare-machine.
+NIC-type | VMXNET3 (als het apparaat een VMware-VM is)
  | **Hardware-instellingen**
 CPU-kernen | 8
 RAM | 16 GB
-Aantal schijven | Drie: de os-schijf, de servercacheschijf en het bewaarstation.
-Vrije schijfruimte (cache) | 600 GB
-Vrije schijfruimte (bewaarschijf) | 600 GB
+Aantal schijven | Drie: de besturingssysteem schijf, de cache schijf van de proces server en het Bewaar volume.
+Vrije schijf ruimte (cache) | 600 GB
+Vrije schijf ruimte (Bewaar schijf) | 600 GB
 **Software-instellingen** |
 Besturingssysteem | Windows Server 2016 of Windows Server 2012 R2
-Licentie | Het toestel wordt geleverd met een Windows Server 2016-evaluatielicentie, die 180 dagen geldig is.<br/><br/> Als de evaluatieperiode bijna afloopt, raden we u aan een nieuw toestel te downloaden en te implementeren of de licentie van het besturingssysteem van de toestel-VM te activeren.
+Licentie | Het apparaat wordt geleverd met een evaluatie licentie voor Windows Server 2016, die voor 180 dagen geldig is.<br/><br/> Als de evaluatie periode bijna is verlopen, raden wij aan dat u een nieuw apparaat downloadt en implementeert, of dat u de licentie voor het besturings systeem van de apparaat-VM activeert.
 Landinstelling van het besturingssysteem | Engels (en-us)
-TLS | TLS 1.2 moet worden ingeschakeld.
-.NET Framework | .NET Framework 4.6 of hoger moet op de machine worden geïnstalleerd (met sterke cryptografie ingeschakeld.
-MySQL | MySQL moet op het toestel worden geïnstalleerd.<br/> MySQL moet worden geïnstalleerd. U handmatig installeren of Site Recovery kan het installeren tijdens de implementatie van het toestel.
-Andere apps | Voer geen andere apps uit op het replicatietoestel.
-Windows Server-functies | Schakel deze rollen niet in: <br> - Active Directory Domain Services <br>- Internet Information Services <br> - Hyper-V
-Groepsbeleid | Schakel dit groepsbeleid niet in: <br> - Voorkom toegang tot de opdrachtprompt. <br> - Voorkom toegang tot registerbewerkingstools. <br> - Logica vertrouwen voor bestandsbijlagen. <br> - Scriptuitvoering inschakelen. <br> [Meer informatie](https://technet.microsoft.com/library/gg176671(v=ws.10).aspx)
-IIS | - Geen reeds bestaande standaardwebsite <br> - Geen reeds bestaande website/applicatie luisteren op poort 443 <br>- [Anonieme verificatie](https://technet.microsoft.com/library/cc731244(v=ws.10).aspx) inschakelen <br> - [FastCGI-instelling](https://technet.microsoft.com/library/cc753077(v=ws.10).aspx) inschakelen
-**Netwerkinstellingen** |
+TLS | TLS 1,2 moet zijn ingeschakeld.
+.NET Framework | .NET Framework 4,6 of hoger moet zijn geïnstalleerd op de computer (waarbij sterke crypto grafie is ingeschakeld.
+MySQL | MySQL moet op het apparaat worden geïnstalleerd.<br/> MySQL moet worden geïnstalleerd. U kunt hand matig installeren of Site Recovery kunt dit installeren tijdens de implementatie van het apparaat.
+Andere apps | Voer geen andere apps uit op het replicatie apparaat.
+Windows Server-functies | Deze rollen niet inschakelen: <br> - Active Directory Domain Services <br>- Internet Information Services <br> - Hyper-V
+Groeps beleid | Dit groeps beleid niet inschakelen: <br> -Toegang tot de opdracht prompt voor komen. <br> -Toegang tot register bewerkings Programma's verhinderen. <br> -Logica vertrouwen voor bestands bijlagen. <br> -Schakel uitvoering van script in. <br> [Meer informatie](https://technet.microsoft.com/library/gg176671(v=ws.10).aspx)
+IIS | -Geen vooraf bestaande standaard website <br> -Geen vooraf bestaande website/toepassing die luistert op poort 443 <br>- [Anonieme verificatie](https://technet.microsoft.com/library/cc731244(v=ws.10).aspx) inschakelen <br> - [Fastcgi](https://technet.microsoft.com/library/cc753077(v=ws.10).aspx) -instelling inschakelen
+**Netwerk instellingen** |
 Type IP-adres | Statisch
 Poorten | 443 (Orchestration-besturingselement)<br>9443 (Gegevenstransport)
 NIC-type | VMXNET3
 
-## <a name="mysql-installation"></a>MySQL-installatie 
+## <a name="mysql-installation"></a>Installatie van MySQL 
 
-MySQL moet op de machine van het replicatietoestel worden geïnstalleerd. Het kan worden geïnstalleerd met behulp van een van deze methoden.
+MySQL moet worden geïnstalleerd op de computer met het replicatie apparaat. Deze kan worden geïnstalleerd met een van deze methoden.
 
-**Methode** | **Details**
+**Methode** | **Nadere**
 --- | ---
-Handmatig downloaden en installeren | MySQL-toepassing downloaden & deze in de map C:\Temp\ASRSetup plaatsen en vervolgens handmatig installeren.<br/> Wanneer u het toestel instelt, wordt MySQL weergegeven als reeds geïnstalleerd.
-Zonder online download | Plaats de installatietoepassing MySQL in de map C:\Temp\ASRSetup. Wanneer u het toestel installeert en klikt om MySQL te downloaden en te installeren, gebruikt de installatie het installatieprogramma dat u hebt toegevoegd.
-Downloaden en installeren in Azure Migrate | Wanneer u het toestel installeert en wordt gevraagd om MySQL, selecteert u **Downloaden en installeren**.
+Hand matig downloaden en installeren | Down load MySQL-toepassing & plaats deze in de map C:\Temp\ASRSetup en installeer hand matig.<br/> Bij het instellen van het apparaat MySQL wordt weer gegeven dat het al is geïnstalleerd.
+Zonder online downloaden | Plaats de MySQL-installatie toepassing in de map C:\Temp\ASRSetup. Wanneer u het apparaat installeert en klikt om MySQL te downloaden en te installeren, wordt het installatie programma gebruikt dat u hebt toegevoegd.
+Downloaden en installeren in Azure Migrate | Wanneer u het apparaat installeert en wordt gevraagd naar MySQL, selecteert u **downloaden en installeren**.
 
 ## <a name="url-access"></a>URL-toegang
 
-Het replicatietoestel heeft toegang nodig tot deze URL's in de openbare Azure-cloud.
+Het replicatie apparaat moet toegang hebben tot deze Url's in de open bare Azure-Cloud.
 
-**Url** | **Details**
+**URL** | **Nadere**
 --- | ---
-\*.backup.windowsazure.com | Gebruikt voor gerepliceerde gegevensoverdracht en -coördinatie
-\*.store.core.windows.net | Gebruikt voor gerepliceerde gegevensoverdracht en -coördinatie
-\*.blob.core.windows.net | Wordt gebruikt om toegang te krijgen tot opslagaccount dat gerepliceerde gegevens opslaat
-\*.hypervrecoverymanager.windowsazure.com | Wordt gebruikt voor replicatiebeheerbewerkingen en -coördinatie
-https:\//management.azure.com | Wordt gebruikt voor replicatiebeheerbewerkingen en -coördinatie
-*.services.visualstudio.com | Gebruikt voor telemetriedoeleinden (Dit is optioneel)
+\*.backup.windowsazure.com | Gebruikt voor gerepliceerde gegevens overdracht en coördinatie
+\*.store.core.windows.net | Gebruikt voor gerepliceerde gegevens overdracht en coördinatie
+\*.blob.core.windows.net | Wordt gebruikt voor toegang tot het opslag account waarin gerepliceerde gegevens worden opgeslagen
+\*.hypervrecoverymanager.windowsazure.com | Gebruikt voor replicatie beheer bewerkingen en coördinatie
+https:\//management.azure.com | Gebruikt voor replicatie beheer bewerkingen en coördinatie
+*.services.visualstudio.com | Gebruikt voor telemetrische doel einden (deze is optioneel)
 time.windows.com | Wordt gebruikt om de tijdsynchronisatie tussen de systeemtijd en de algemene tijd te controleren.
-https:\//login.microsoftonline.com <br/> https:\//secure.aadcdn.microsoftonline-p.com <br/> https:\//login.live.com <br/> https:\//graph.windows.net <br/> https:\//login.windows.net <br/> https:\//www.live.com <br/> https:\//www.microsoft.com  | Voor het instellen van apparaten is toegang tot deze URL's nodig. Ze worden gebruikt voor toegangscontrole en identiteitsbeheer door Azure Active Directory
-https:\//dev.mysql.com/get/Downloads/MySQLInstaller/mysql-installer-community-5.7.20.0.msi | Om MySQL-download te voltooien. In een paar regio's kan de download worden doorgestuurd naar de CDN-URL. Zorg ervoor dat de CDN-URL ook is toegestaan indien nodig.
+https:\//login.microsoftonline.com <br/> https:\//secure.aadcdn.microsoftonline-p.com <br/> https:\//login.live.com <br/> https:\//Graph.Windows.net <br/> https:\//login.windows.net <br/> https:\//www.live.com <br/> https:\//www.Microsoft.com  | Het toestel instellen heeft toegang tot deze Url's nodig. Ze worden gebruikt voor toegangs beheer en identiteits beheer door Azure Active Directory
+https:\//dev.mysql.com/Get/downloads/MySQLInstaller/mysql-Installer-Community-5.7.20.0.msi | Om de MySQL-down load te volt ooien. In een paar regio's wordt de down load mogelijk omgeleid naar de CDN-URL. Zorg ervoor dat de CDN-URL ook is toegestaan als dat nodig is.
 
 
-## <a name="azure-government-url-access"></a>URL-toegang voor Azure Government
+## <a name="azure-government-url-access"></a>Azure Government URL-toegang
 
-Het replicatietoestel heeft toegang nodig tot deze URL's in Azure Government.
+Het replicatie apparaat moet toegang hebben tot deze Url's in Azure Government.
 
-**Url** | **Details**
+**URL** | **Nadere**
 --- | ---
-\*.backup.windowsazure.us | Gebruikt voor gerepliceerde gegevensoverdracht en -coördinatie
-\*.store.core.windows.net | Gebruikt voor gerepliceerde gegevensoverdracht en -coördinatie
-\*.blob.core.windows.net | Wordt gebruikt om toegang te krijgen tot opslagaccount dat gerepliceerde gegevens opslaat
-\*hypervrecoverymanager.windowsazure.us | Wordt gebruikt voor replicatiebeheerbewerkingen en -coördinatie
-https:\//management.usgovcloudapi.net | Wordt gebruikt voor replicatiebeheerbewerkingen en -coördinatie
-*.services.visualstudio.com | Gebruikt voor telemetriedoeleinden (Dit is optioneel)
+\*. backup.windowsazure.us | Gebruikt voor gerepliceerde gegevens overdracht en coördinatie
+\*.store.core.windows.net | Gebruikt voor gerepliceerde gegevens overdracht en coördinatie
+\*.blob.core.windows.net | Wordt gebruikt voor toegang tot het opslag account waarin gerepliceerde gegevens worden opgeslagen
+\*. hypervrecoverymanager.windowsazure.us | Gebruikt voor replicatie beheer bewerkingen en coördinatie
+https:\//management.usgovcloudapi.net | Gebruikt voor replicatie beheer bewerkingen en coördinatie
+*.services.visualstudio.com | Gebruikt voor telemetrische doel einden (deze is optioneel)
 time.nist.gov | Wordt gebruikt om de tijdsynchronisatie tussen de systeemtijd en de algemene tijd te controleren.
-https:\//login.microsoftonline.com <br/> https:\//secure.aadcdn.microsoftonline-p.com <br/> https:\//login.live.com <br/> https:\//graph.windows.net <br/> https:\//login.windows.net <br/> https:\//www.live.com <br/> https:\//www.microsoft.com  | Toestelsetup met OVA heeft toegang tot deze URL's nodig. Ze worden gebruikt voor toegangscontrole en identiteitsbeheer door Azure Active Directory.
-https:\//dev.mysql.com/get/Downloads/MySQLInstaller/mysql-installer-community-5.7.20.0.msi | Om MySQL-download te voltooien. In een paar regio's kan de download worden doorgestuurd naar de CDN-URL. Zorg ervoor dat de CDN-URL ook is toegestaan indien nodig.
+https:\//login.microsoftonline.com <br/> https:\//secure.aadcdn.microsoftonline-p.com <br/> https:\//login.live.com <br/> https:\//Graph.Windows.net <br/> https:\//login.windows.net <br/> https:\//www.live.com <br/> https:\//www.Microsoft.com  | Het toestel instellen met eicellen moet toegang hebben tot deze Url's. Ze worden gebruikt voor toegangs beheer en identiteits beheer door Azure Active Directory.
+https:\//dev.mysql.com/Get/downloads/MySQLInstaller/mysql-Installer-Community-5.7.20.0.msi | Om de MySQL-down load te volt ooien. In een paar regio's wordt de down load mogelijk omgeleid naar de CDN-URL. Zorg ervoor dat de CDN-URL ook is toegestaan als dat nodig is.
 
-## <a name="port-access"></a>Poorttoegang
+## <a name="port-access"></a>Poort toegang
 
-**Apparaat** | **Verbinding**
+**Apparaat** | **Combi**
 --- | ---
-VM's | De Mobiliteitsservice die op VM's wordt uitgevoerd, communiceert met het on-premises replicatietoestel (configuratieserver) op poort HTTPS 443 inbound, voor replicatiebeheer.<br/><br/> VM's verzenden replicatiegegevens naar de processerver (uitgevoerd op de configuratieservermachine) op poort HTTPS 9443 binnenkomend. Deze poort kan worden gewijzigd.
-Replicatietoestel | Het replicatietoestel orkestreert replicatie met Azure via poort HTTPS 443 outbound.
-Processerver | De processerver ontvangt replicatiegegevens, optimaliseert en versleutelt deze en stuurt deze naar Azure-opslag via poort 443-uitgaand.<br/> Standaard wordt de processerver uitgevoerd op het replicatietoestel.
+VM's | De Mobility-service die wordt uitgevoerd op Vm's communiceert met het on-premises replicatie apparaat (configuratie server) op poort HTTPS 443 inkomend voor replicatie beheer.<br/><br/> Vm's verzenden replicatie gegevens naar de proces server (die wordt uitgevoerd op de computer van de configuratie server) op poort HTTPS 9443-binnenkomend. Deze poort kan worden gewijzigd.
+Replicatie apparaat | Het replicatie apparaat organiseert de replicatie met Azure via poort HTTPS 443 uitgaand.
+Processerver | De proces server ontvangt replicatie gegevens, optimaliseert en versleutelt deze en verzendt deze naar Azure Storage via poort 443 uitgaand.<br/> Standaard wordt de proces server uitgevoerd op het replicatie apparaat.
 
 
 ## <a name="replication-process"></a>Replicatieproces
 
-1. Wanneer u replicatie inschakelt voor een virtuele machine, begint de eerste replicatie naar Azure-opslag met behulp van het opgegeven replicatiebeleid. 
-2. Verkeer wordt via internet gerepliceerd naar openbare eindpunten voor Azure-opslag. Het repliceren van verkeer via een vpn (site-to-site virtual private network) van een on-premises site naar Azure wordt niet ondersteund.
-3. Nadat de eerste replicatie is voltooid, wordt deltareplicatie gestart. Bijgehouden wijzigingen voor een machine worden geregistreerd.
+1. Wanneer u replicatie voor een virtuele machine inschakelt, begint de initiële replicatie naar Azure Storage met behulp van het opgegeven replicatie beleid. 
+2. Verkeer wordt gerepliceerd naar open bare eind punten van Azure Storage via internet. Het repliceren van verkeer via een site-naar-site virtueel particulier netwerk (VPN) van een on-premises site naar Azure wordt niet ondersteund.
+3. Nadat de initiële replicatie is voltooid, begint de replicatie van verschillen. Bijgehouden wijzigingen voor een machine worden vastgelegd.
 4. Communicatie gebeurt als volgt:
-    - VM's communiceren met het replicatietoestel op poort HTTPS 443 inkomende, voor replicatiebeheer.
-    - Het replicatietoestel orkestreert replicatie met Azure via poort HTTPS 443 outbound.
-    - VM's verzenden replicatiegegevens naar de processerver (uitgevoerd op het replicatietoestel) op poort HTTPS 9443 binnenkomend. Deze poort kan worden gewijzigd.
-    - De processerver ontvangt replicatiegegevens, optimaliseert en versleutelt deze en stuurt deze naar Azure-opslag via poort 443-uitgaand.
-5. De replicatiegegevens worden eerst in een cacheopslagaccount in Azure opgeslagen. Deze logboeken worden verwerkt en de gegevens worden opgeslagen in een door Azure beheerde schijf.
+    - Vm's communiceren met het replicatie apparaat op poort HTTPS 443 inkomend voor replicatie beheer.
+    - Het replicatie apparaat organiseert de replicatie met Azure via poort HTTPS 443 uitgaand.
+    - Vm's verzenden replicatie gegevens naar de proces server (die wordt uitgevoerd op het replicatie apparaat) op poort HTTPS 9443-binnenkomend. Deze poort kan worden gewijzigd.
+    - De proces server ontvangt replicatie gegevens, optimaliseert en versleutelt deze en verzendt deze naar Azure Storage via poort 443 uitgaand.
+5. De replicatie gegevens melden het eerste land in een cache-opslag account in Azure. Deze logboeken worden verwerkt en de gegevens worden opgeslagen op een door Azure beheerde schijf.
 
 ![Architectuur](./media/migrate-replication-appliance/architecture.png)
 
-## <a name="appliance-upgrades"></a>Toestelupgrades
+## <a name="appliance-upgrades"></a>Toestel-upgrades
 
-Het toestel wordt handmatig geüpgraded vanuit de Azure Migrate-hub. We raden u aan altijd de nieuwste versie uit te voeren.
+Het apparaat wordt hand matig geüpgraded vanuit de Azure Migrate hub. U wordt aangeraden altijd de meest recente versie uit te voeren.
 
-1. In Azure migreren > servers > Azure Migreren: Serverbeoordeling, Infrastructuurservers, klik op **Configuratieservers**.
-2. In **Configuratieservers**wordt een koppeling weergegeven in **de agentversie** wanneer een nieuwe versie van het replicatietoestel beschikbaar is. 
-3. Download het installatieprogramma naar de machine van het replicatietoestel en installeer de upgrade. De installateur detecteert de versiestroom die op het toestel wordt uitgevoerd.
+1. In Azure Migrate > servers > Azure Migrate: Server evaluatie, infrastructuur servers, klik op **configuratie servers**.
+2. In **configuratie servers**wordt een koppeling weer gegeven in de **Agent versie** wanneer er een nieuwe versie van het replicatie apparaat beschikbaar is. 
+3. Down load het installatie programma naar de replicatie apparaat computer en installeer de upgrade. Het installatie programma detecteert de versie die momenteel wordt uitgevoerd op het apparaat.
  
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Meer informatie over het](tutorial-migrate-vmware-agent.md#set-up-the-replication-appliance) instellen van het replicatietoestel voor VMware VM-migratie op basis van agent.
-- [Meer informatie over het](tutorial-migrate-physical-virtual-machines.md#set-up-the-replication-appliance) instellen van het replicatietoestel voor fysieke servers.
+- [Meer informatie over](tutorial-migrate-vmware-agent.md#set-up-the-replication-appliance) het instellen van het replicatie apparaat voor de migratie van VMware VM op basis van een agent.
+- [Meer informatie over](tutorial-migrate-physical-virtual-machines.md#set-up-the-replication-appliance) het instellen van het replicatie apparaat voor fysieke servers.

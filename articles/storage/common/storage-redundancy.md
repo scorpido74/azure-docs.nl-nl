@@ -1,7 +1,7 @@
 ---
 title: De gegevensredundantie
 titleSuffix: Azure Storage
-description: Gegevens in uw Microsoft Azure Storage-account worden gerepliceerd voor duurzaamheid en hoge beschikbaarheid. Redundantieconfiguraties omvatten lokaal redundante opslag (LRS), zoneredundante opslag (ZRS), georedundante opslag (GRS), georedundante opslag voor leestoegang (RA-GRS), geozoneredundante opslag (GZRS) (preview) en geread-access geo-zone redundante opslag (RA-GZRS) (preview).
+description: Gegevens in uw Microsoft Azure Storage-account worden gerepliceerd voor duurzaamheid en maximale Beschik baarheid. Redundantie configuraties zijn lokaal redundante opslag (LRS), zone-redundante opslag (ZRS), geografisch redundante opslag (GRS), geografisch redundante opslag met lees toegang (RA-GRS), geo-zone-redundante opslag (GZRS) (preview) en geo-zone-redundante opslag met lees toegang (RA-GZRS) (preview).
 services: storage
 author: tamram
 ms.service: storage
@@ -11,100 +11,100 @@ ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
 ms.openlocfilehash: 78f7c935e64276e7f4862dad966b99bff6bd246d
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81481946"
 ---
-# <a name="azure-storage-redundancy"></a>Redundantie azure-opslag
+# <a name="azure-storage-redundancy"></a>Azure Storage redundantie
 
-Azure Storage slaat altijd meerdere kopieën van uw gegevens op, zodat deze worden beschermd tegen geplande en ongeplande gebeurtenissen, waaronder tijdelijke hardwarestoringen, netwerk- of stroomuitval en enorme natuurrampen. Redundantie zorgt ervoor dat uw opslagaccount voldoet aan de [SLA (Service-Level Agreement) voor Azure Storage,](https://azure.microsoft.com/support/legal/sla/storage/) zelfs in het licht van storingen.
+Azure Storage slaat altijd meerdere kopieën van uw gegevens op, zodat deze beschermd zijn tegen geplande en niet-geplande gebeurtenissen, waaronder tijdelijke hardwarestoringen, netwerk-of energie storingen en enorme natuur rampen. Redundantie zorgt ervoor dat uw opslag account voldoet aan de [Service Level Agreement (Sla) voor Azure Storage,](https://azure.microsoft.com/support/legal/sla/storage/) zelfs in het geval van fouten.
 
-Bij de beslissing welke redundantie optie is het beste voor uw scenario, rekening houden met de afwegingen tussen lagere kosten en een hogere beschikbaarheid en duurzaamheid. De factoren die helpen bepalen welke redundantieoptie u moet kiezen, zijn:  
+Wanneer u bepaalt welke optie voor redundantie het beste is voor uw scenario, kunt u rekening houden met de compromissen met lagere kosten en een hogere Beschik baarheid en duurzaamheid. De factoren waarmee u de gewenste redundantie optie kunt bepalen, zijn onder andere:  
 
 - Hoe uw gegevens worden gerepliceerd in de primaire regio
-- Of uw gegevens worden gerepliceerd naar een tweede locatie die geografisch ver van de primaire regio ligt, om te beschermen tegen regionale rampen
-- Of uw toepassing leestoegang tot de gerepliceerde gegevens in het secundaire gebied vereist als de primaire regio om welke reden dan ook niet meer beschikbaar is
+- Of uw gegevens worden gerepliceerd naar een tweede locatie die geografisch onbereikbaar is naar de primaire regio, ter bescherming tegen regionale rampen
+- Of voor uw toepassing Lees toegang is vereist voor de gerepliceerde gegevens in de secundaire regio als de primaire regio om een of andere reden niet beschikbaar is
 
 ## <a name="redundancy-in-the-primary-region"></a>Redundantie in de primaire regio
 
-Gegevens in een Azure Storage-account worden altijd drie keer gerepliceerd in het primaire gebied. Azure Storage biedt twee opties voor de manier waarop uw gegevens worden gerepliceerd in het primaire gebied:
+Gegevens in een Azure Storage-account worden altijd drie keer gerepliceerd in de primaire regio. Azure Storage biedt twee opties voor het repliceren van uw gegevens in de primaire regio:
 
-- **Lrs (Local redundant storage)** kopieert uw gegevens drie keer synchroon binnen één fysieke locatie in het primaire gebied. LRS is de goedkoopste replicatieoptie, maar wordt niet aanbevolen voor toepassingen die een hoge beschikbaarheid vereisen.
-- **Zrs (Zoneredundant storage)** kopieert uw gegevens synchroon over drie Azure-beschikbaarheidszones in het primaire gebied. Voor toepassingen die een hoge beschikbaarheid vereisen, raadt Microsoft aan ZRS in de primaire regio te gebruiken en ook te repliceren naar een secundaire regio.
+- **Lokaal redundante opslag (LRS)** kopieert uw gegevens synchroon drie keer binnen één fysieke locatie in de primaire regio. LRS is de minst dure replicatie optie, maar wordt niet aanbevolen voor toepassingen die hoge Beschik baarheid vereisen.
+- **Zone-redundante opslag (ZRS)** kopieert uw gegevens synchroon over drie Azure-beschikbaarheids zones in de primaire regio. Voor toepassingen die hoge Beschik baarheid vereisen, raadt micro soft aan ZRS te gebruiken in de primaire regio en ook te repliceren naar een secundaire regio.
 
 ### <a name="locally-redundant-storage"></a>Lokaal redundante opslag
 
-Lokaal redundante opslag (LRS) repliceert uw gegevens drie keer binnen één fysieke locatie in de primaire regio. LRS biedt ten minste 99.999999999% (11 negens) duurzaamheid van objecten over een bepaald jaar.
+Met lokaal redundante opslag (LRS) worden uw gegevens drie keer gerepliceerd binnen één fysieke locatie in de primaire regio. LRS biedt ten minste 99,999999999% (11 Nines) duurzaamheid van objecten in een bepaald jaar.
 
-LRS is de laagste kosten redundantie optie en biedt de minste duurzaamheid in vergelijking met andere opties. LRS beschermt uw gegevens tegen serverrack- en schijfstoringen. Als er echter een ramp zoals brand of overstroming optreedt in het datacenter, kunnen alle replica's van een opslagaccount met LRS verloren gaan of onherstelbaar zijn. Om dit risico te beperken, raadt Microsoft aan [zoneredundante opslag](#zone-redundant-storage) (ZRS), [georedundante opslag](#geo-redundant-storage) (GRS) of [geo-zoneredundante opslag (preview)](#geo-zone-redundant-storage-preview) (GZRS) te gebruiken.
+LRS is de optie voor de laagste kosten redundantie en biedt de minste duurzaamheid ten opzichte van andere opties. LRS beschermt uw gegevens tegen server rack-en schijf storingen. Als er echter sprake is van een ramp, zoals brand of Flooding in het Data Center, zijn alle replica's van een opslag account met LRS mogelijk verloren of onherstelbaar. Om dit risico te beperken, raadt micro soft aan gebruik te maken van [zone-redundante opslag](#zone-redundant-storage) (ZRS), [geografisch redundante](#geo-redundant-storage) opslag (GRS) of [geo-zone-redundante opslag (preview-versie](#geo-zone-redundant-storage-preview) ) (GZRS).
 
-Een schrijfverzoek naar een opslagaccount dat LRS gebruikt, gebeurt synchroon. De schrijfbewerking wordt pas geretourneerd nadat de gegevens naar alle drie de replica's zijn geschreven.
+Een schrijf aanvraag naar een opslag account dat LRS gebruikt, gebeurt synchroon. De schrijf bewerking wordt alleen geretourneerd nadat de gegevens naar alle drie de replica's zijn geschreven.
 
 LRS is een goede keuze voor de volgende scenario's:
 
-- Als uw toepassing gegevens opslaat die gemakkelijk kunnen worden gereconstrueerd als er gegevens verloren gaan, u kiezen voor LRS.
-- Als uw toepassing beperkt is tot het repliceren van gegevens alleen binnen een land of regio vanwege vereisten voor gegevensbeheer, u kiezen voor LRS. In sommige gevallen kunnen de gekoppelde regio's waarde gegevens geo-gerepliceerd zijn, zich in een ander land of een andere regio bevinden. Zie [Azure-regio's](https://azure.microsoft.com/regions/)voor meer informatie over gekoppelde regio's.
+- Als uw toepassing gegevens opslaat die gemakkelijk kunnen worden geconstrueerd als er gegevens verlies optreedt, kunt u kiezen voor LRS.
+- Als uw toepassing is beperkt tot het repliceren van gegevens binnen een land of regio als gevolg van vereisten voor gegevens beheer, kunt u kiezen voor LRS. In sommige gevallen kunnen de gekoppelde regio's waarvan de gegevens geografisch worden gerepliceerd, zich in een ander land of andere regio bevinden. Zie [Azure-regio's](https://azure.microsoft.com/regions/)voor meer informatie over gekoppelde regio's.
 
 ### <a name="zone-redundant-storage"></a>Zone-redundante opslag
 
-Zrs (Zone redundant storage) repliceert uw Azure Storage-gegevens synchroon in drie Azure-beschikbaarheidszones in het primaire gebied. Elke beschikbaarheidszone is een aparte fysieke locatie met onafhankelijke stroom, koeling en netwerken. ZRS biedt duurzaamheid voor Azure Storage-gegevensobjecten van ten minste 99999999999% (12 9's) over een bepaald jaar.
+Zone-redundante opslag (ZRS) repliceert uw Azure Storage gegevens synchroon over drie Azure-beschikbaarheids zones in de primaire regio. Elke beschikbaarheids zone is een afzonderlijke fysieke locatie met onafhankelijke voeding, koeling en netwerken. ZRS biedt duurzaamheid voor Azure Storage gegevens objecten van ten minste 99,9999999999% (12 9) gedurende een bepaald jaar.
 
-Met ZRS zijn uw gegevens nog steeds toegankelijk voor zowel lees- als schrijfbewerkingen, zelfs als een zone niet beschikbaar is. Als een zone niet meer beschikbaar is, voert Azure netwerkupdates uit, zoals DNS-opnieuw aanwijzen. Deze updates kunnen van invloed zijn op uw toepassing als u toegang hebt tot gegevens voordat de updates zijn voltooid. Bij het ontwerpen van toepassingen voor ZRS, volg je procedures voor tijdelijke foutafhandeling, waaronder het implementeren van opnieuw proberenbeleid met exponentiële back-off.
+Met ZRS zijn uw gegevens nog steeds toegankelijk voor zowel lees-als schrijf bewerkingen, zelfs als een zone niet meer beschikbaar is. Als een zone niet meer beschikbaar is, onderneemt Azure netwerk updates, zoals het opnieuw aanwijzen van DNS. Deze updates kunnen van invloed zijn op uw toepassing als u gegevens opent voordat de updates zijn voltooid. Bij het ontwerpen van toepassingen voor ZRS volgt u de procedures voor het afhandelen van tijdelijke fouten, waaronder het implementeren van beleid voor opnieuw proberen met exponentiële back-ups.
 
-Een schrijfverzoek naar een opslagaccount dat ZRS gebruikt, gebeurt synchroon. De schrijfbewerking wordt pas geretourneerd nadat de gegevens naar alle replica's in de drie beschikbaarheidszones zijn geschreven.
+Een schrijf aanvraag naar een opslag account dat ZRS gebruikt, gebeurt synchroon. De schrijf bewerking wordt alleen geretourneerd nadat de gegevens zijn geschreven naar alle replica's in de drie beschikbaarheids zones.
 
-Microsoft raadt aan ZRS in de primaire regio te gebruiken voor scenario's die consistentie, duurzaamheid en hoge beschikbaarheid vereisen. ZRS biedt uitstekende prestaties, lage latentie en tolerantie voor uw gegevens als deze tijdelijk niet beschikbaar zijn. Zrs op zichzelf kan uw gegevens echter niet beschermen tegen een regionale ramp waarbij meerdere zones permanent worden getroffen. Voor bescherming tegen regionale rampen raadt Microsoft aan om [geo-zoneredundante opslag](#geo-zone-redundant-storage-preview) (GZRS) te gebruiken, waarbij ZRS in de primaire regio wordt gebruikt en uw gegevens ook worden gegeo-gerepliceerd naar een secundaire regio.
+Micro soft raadt aan om ZRS te gebruiken in de primaire regio voor scenario's die consistentie, duurzaamheid en hoge Beschik baarheid vereisen. ZRS biedt uitstekende prestaties, lage latentie en tolerantie voor uw gegevens als deze tijdelijk niet beschikbaar is. Het is echter mogelijk dat ZRS uw gegevens niet beveiligt tegen een regionale ramp waarbij meerdere zones permanent worden beïnvloed. Voor beveiliging tegen regionale nood gevallen raadt micro soft aan gebruik te maken van [geo-zone-redundante opslag](#geo-zone-redundant-storage-preview) (GZRS), die gebruikmaakt van ZRS in de primaire regio en dat uw gegevens in geo-replicatie naar een secundaire regio worden gerepliceerd.
 
-In de volgende tabel ziet u welke typen opslagaccounts ZRS ondersteunen in welke regio's:
+In de volgende tabel ziet u welke typen opslag accounts ZRS ondersteunen in welke regio's:
 
 |    Type opslagaccount    |    Ondersteunde regio’s    |    Ondersteunde services    |
 |----------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------|
-|    Algemeen gebruik v2<sup>1</sup>    | Azië - zuidoost<br /> Australië - oost<br /> Europa - noord<br />  Europa - west<br /> Frankrijk - centraal<br /> Japan - oost<br /> Zuid-Afrika Noord<br /> Verenigd Koninkrijk Zuid<br /> US - centraal<br /> US - oost<br /> US - oost 2<br /> US - west 2    |    Blok-blobs<br /> Paginablobs<sup>2</sup><br /> Bestandsshares (standaard)<br /> Tabellen<br /> Wachtrijen<br /> |
-|    BlockBlobStorage<sup>1</sup>    | Europa - west<br /> US - oost    |    Alleen blobs blokkeren    |
-|    Bestandsopslag    | Europa - west<br /> US - oost    |    Alleen Azure-bestanden    |
+|    Algemeen gebruik v2<sup>1</sup>    | Azië - zuidoost<br /> Australië - oost<br /> Europa - noord<br />  Europa - west<br /> Frankrijk - centraal<br /> Japan - oost<br /> Zuid-Afrika - noord<br /> Verenigd Koninkrijk Zuid<br /> US - centraal<br /> US - oost<br /> US - oost 2<br /> US - west 2    |    Blok-blobs<br /> Pagina-blobs<sup>2</sup><br /> Bestands shares (standaard)<br /> Tabellen<br /> Wachtrijen<br /> |
+|    BlockBlobStorage<sup>1</sup>    | Europa - west<br /> US - oost    |    Alleen blok-blobs    |
+|    FileStorage    | Europa - west<br /> US - oost    |    Alleen Azure Files    |
 
-<sup>1</sup> De archieflaag wordt momenteel niet ondersteund voor ZRS-accounts.<br />
-<sup>2</sup> Opslagaccounts die door Azure beheerde schijven voor virtuele machines bevatten, maken altijd gebruik van LRS. Azure-onbeheerde schijven moeten ook LRS gebruiken. Het is mogelijk om een opslagaccount voor Azure-onbeheerde schijven te maken dat GRS gebruikt, maar dit wordt niet aanbevolen vanwege mogelijke problemen met consistentie ten opzichte van asynchrone georeplicatie. Geen beheerde of onbeheerde schijven ondersteunen ZRS of GZRS. Zie Prijzen voor door [Azure beheerde schijven voor](https://azure.microsoft.com/pricing/details/managed-disks/)meer informatie over beheerde schijven .
+<sup>1</sup> de Archive-laag wordt momenteel niet ondersteund voor ZRS-accounts.<br />
+<sup>2</sup> opslag accounts die Azure Managed disks voor virtuele machines bevatten, gebruiken altijd LRS. Onbeheerde schijven van Azure moeten ook LRS gebruiken. Het is mogelijk om een opslag account te maken voor Azure unmanaged disks die gebruikmaken van GRS, maar dit wordt niet aanbevolen vanwege mogelijke problemen met de consistentie van de asynchrone geo-replicatie. Geen van de beheerde schijven of niet-Managed disks ondersteunen ZRS of GZRS. Zie [prijzen voor Azure Managed disks](https://azure.microsoft.com/pricing/details/managed-disks/)(Engelstalig) voor meer informatie over Managed disks.
 
-Zie **Services-ondersteuning per regio** in [Wat zijn Azure Availability Zones voor](../../availability-zones/az-overview.md)informatie over welke regio's ZRS ondersteunen.
+Voor informatie over welke regio's ZRS ondersteunen, Zie **Services ondersteuning per regio** in [Wat zijn Azure-beschikbaarheidszones?](../../availability-zones/az-overview.md).
 
 ## <a name="redundancy-in-a-secondary-region"></a>Redundantie in een secundaire regio
 
-Voor toepassingen die een hoge beschikbaarheid vereisen, u ervoor kiezen om de gegevens in uw opslagaccount bovendien te kopiëren naar een secundaire regio die honderden kilometers verwijderd is van de primaire regio. Als uw opslagaccount wordt gekopieerd naar een secundaire regio, zijn uw gegevens duurzaam, zelfs in het geval van een volledige regionale storing of een ramp waarbij de primaire regio niet kan worden hersteld.
+Voor toepassingen die hoge Beschik baarheid vereisen, kunt u de gegevens in uw opslag account ook kopiëren naar een secundaire regio die honderden kilo meters uit de primaire regio bestaat. Als uw opslag account wordt gekopieerd naar een secundaire regio, zijn uw gegevens duurzaam, zelfs in het geval van een volledige regionale onderbreking of een ramp waarbij de primaire regio niet kan worden hersteld.
 
-Wanneer u een opslagaccount maakt, selecteert u het primaire gebied voor het account. De gekoppelde secundaire regio wordt bepaald op basis van de primaire regio en kan niet worden gewijzigd. Zie [Azure-regio's](https://azure.microsoft.com/global-infrastructure/regions/)voor meer informatie over regio's die worden ondersteund door Azure.
+Wanneer u een opslag account maakt, selecteert u de primaire regio voor het account. De gekoppelde secundaire regio wordt bepaald op basis van de primaire regio en kan niet worden gewijzigd. Zie [Azure-regio's](https://azure.microsoft.com/global-infrastructure/regions/)voor meer informatie over regio's die door Azure worden ondersteund.
 
 Azure Storage biedt twee opties voor het kopiëren van uw gegevens naar een secundaire regio:
 
-- **Georedundante opslag (GRS)** kopieert uw gegevens drie keer synchroon binnen één fysieke locatie in het primaire gebied met LRS. Vervolgens worden uw gegevens asynchroon gekopieerd naar één fysieke locatie in het secundaire gebied.
-- **GzRS (preview) (Geo-zone-redundante opslag)** kopieert uw gegevens synchroon over drie Azure-beschikbaarheidszones in het primaire gebied met ZRS. Vervolgens worden uw gegevens asynchroon gekopieerd naar één fysieke locatie in het secundaire gebied.
+- **Geografisch redundante opslag (GRS)** kopieert uw gegevens synchroon drie keer binnen één fysieke locatie in de primaire regio met behulp van LRS. Vervolgens worden uw gegevens asynchroon gekopieerd naar één fysieke locatie in de secundaire regio.
+- **Geo-zone-redundante opslag (GZRS)** (preview) kopieert uw gegevens synchroon over drie Azure-beschikbaarheids zones in de primaire regio met behulp van ZRS. Vervolgens worden uw gegevens asynchroon gekopieerd naar één fysieke locatie in de secundaire regio.
 
-Het belangrijkste verschil tussen GRS en GZRS is hoe gegevens worden gerepliceerd in de primaire regio. Binnen de secundaire locatie worden gegevens altijd drie keer synchroon gerepliceerd met LRS.
+Het belangrijkste verschil tussen GRS en GZRS is hoe gegevens worden gerepliceerd in de primaire regio. Binnen de secundaire locatie worden gegevens altijd synchroon drie keer gerepliceerd met behulp van LRS.
 
-Bij GRS of GZRS zijn de gegevens op de secundaire locatie niet beschikbaar voor lees- of schrijftoegang, tenzij er een failover is naar de secundaire regio. Voor leestoegang tot de secundaire locatie configureert u uw opslagaccount om gebruik te maken van georedundante opslag (RA-GRS) of geo-zoneredundante opslag (RA-GZRS) met leestoegang. Zie [Toegang tot gegevens in het secundaire gebied lezen voor](#read-access-to-data-in-the-secondary-region)meer informatie .
+Met GRS of GZRS zijn de gegevens op de secundaire locatie niet beschikbaar voor lees-of schrijf toegang, tenzij er een failover naar de secundaire regio wordt gemaakt. Configureer voor lees toegang tot de secundaire locatie uw opslag account voor het gebruik van geografisch redundante opslag met lees toegang (RA-GRS) of geo-zone-redundante opslag met lees toegang (RA-GZRS). Zie [Lees toegang tot gegevens in de secundaire regio](#read-access-to-data-in-the-secondary-region)voor meer informatie.
 
-Als het primaire gebied niet meer beschikbaar is, u ervoor kiezen om niet over te gaan naar het secundaire gebied (voorbeeld). Nadat de failover is voltooid, wordt het secundaire gebied de primaire regio en u opnieuw gegevens lezen en schrijven. Zie [Herstel na noodgevallen (preview)](storage-disaster-recovery-guidance.md)voor meer informatie over herstel na noodgevallen en om te leren hoe u mislukken naar de secundaire regio.
+Als de primaire regio niet beschikbaar is, kunt u een failover uitvoeren naar de secundaire regio (preview). Nadat de failover is voltooid, wordt de secundaire regio de primaire regio en kunt u opnieuw gegevens lezen en schrijven. Zie [nood herstel en failover voor accounts (preview)](storage-disaster-recovery-guidance.md)voor meer informatie over herstel na nood gevallen en voor informatie over het uitvoeren van een failover naar de secundaire regio.
 
 > [!IMPORTANT]
-> Omdat gegevens asynchroon naar het secundaire gebied worden gerepliceerd, kan een fout die van invloed is op het primaire gebied leiden tot gegevensverlies als het primaire gebied niet kan worden hersteld. Het interval tussen de meest recente schrijft naar het primaire gebied en de laatste schrijven naar het secundaire gebied staat bekend als de doelstelling herstelpunt (RPO). De RPO geeft aan op welk tijdstip gegevens kunnen worden hersteld. Azure Storage heeft doorgaans een RPO van minder dan 15 minuten, hoewel er momenteel geen SLA is over hoe lang het duurt om gegevens te repliceren naar de secundaire regio.
+> Omdat gegevens asynchroon naar de secundaire regio worden gerepliceerd, kan een storing die van invloed is op de primaire regio, leiden tot gegevens verlies als de primaire regio niet kan worden hersteld. Het interval tussen de meest recente schrijf bewerkingen naar de primaire regio en de laatste schrijf bewerking naar de secundaire regio wordt de Recovery Point Objective (RPO) genoemd. De RPO geeft het tijdstip aan waarop gegevens kunnen worden hersteld. Azure Storage heeft doorgaans een RPO van minder dan 15 minuten, maar er is momenteel geen SLA over hoe lang het duurt om gegevens naar de secundaire regio te repliceren.
 
 ### <a name="geo-redundant-storage"></a>Geografisch redundante opslag
 
-Georedundante opslag (GRS) kopieert uw gegevens drie keer synchroon binnen één fysieke locatie in het primaire gebied met LRS. Vervolgens worden uw gegevens asynchroon gekopieerd naar één fysieke locatie in een secundaire regio die zich honderden kilometers verwijderd is van het primaire gebied. GRS biedt duurzaamheid voor Azure Storage-gegevensobjecten van ten minste 9999999999999999% (16 9's) over een bepaald jaar.
+Geografisch redundante opslag (GRS) kopieert uw gegevens synchroon drie keer binnen één fysieke locatie in de primaire regio met behulp van LRS. Vervolgens worden uw gegevens asynchroon gekopieerd naar één fysieke locatie in een secundaire regio die honderden kilo meters van de primaire regio is verwijderd. GRS biedt duurzaamheid voor Azure Storage gegevens objecten van ten minste 99.99999999999999% (16 negen) gedurende een bepaald jaar.
 
-Een schrijfbewerking wordt eerst vastgelegd op de primaire locatie en gerepliceerd met LRS. De update wordt vervolgens asynchroon gerepliceerd naar het secundaire gebied. Wanneer gegevens naar de secundaire locatie worden geschreven, wordt deze ook gerepliceerd binnen die locatie met LRS.
+Een schrijf bewerking wordt eerst doorgevoerd op de primaire locatie en gerepliceerd met behulp van LRS. De update wordt vervolgens asynchroon gerepliceerd naar de secundaire regio. Wanneer gegevens naar de secundaire locatie worden geschreven, worden deze ook gerepliceerd binnen die locatie met behulp van LRS.
 
-### <a name="geo-zone-redundant-storage-preview"></a>Opslag die is overbodig in geozone (voorbeeld)
+### <a name="geo-zone-redundant-storage-preview"></a>Geo-zone-redundante opslag (preview-versie)
 
-Geo-zoneredundante opslag (GZRS) (preview) combineert de hoge beschikbaarheid van redundantie in beschikbaarheidszones met bescherming tegen regionale storingen door geo-replicatie. Gegevens in een GZRS-opslagaccount worden gekopieerd over drie [Azure-beschikbaarheidszones](../../availability-zones/az-overview.md) in de primaire regio en worden ook gerepliceerd naar een secundaire geografische regio voor bescherming tegen regionale rampen. Microsoft raadt aan GZRS te gebruiken voor toepassingen die maximale consistentie, duurzaamheid en beschikbaarheid vereisen, uitstekende prestaties en veerkracht voor herstel na noodgevallen.
+Geo-zone-redundante opslag (GZRS) (preview) combineert de hoge Beschik baarheid die wordt verschaft door redundantie in verschillende beschikbaarheids zones met beveiliging tegen regionale uitval van geo-replicatie. Gegevens in een GZRS-opslag account worden gekopieerd over drie [Azure-beschikbaarheids zones](../../availability-zones/az-overview.md) in de primaire regio en worden ook gerepliceerd naar een secundaire geografische regio voor beveiliging tegen regionale rampen. Micro soft raadt aan om GZRS te gebruiken voor toepassingen die maximale consistentie, duurzaamheid en beschik baarheid, uitstekende prestaties en flexibiliteit voor herstel na nood gevallen vereisen.
 
-Met een GZRS-opslagaccount u gegevens blijven lezen en schrijven als een beschikbaarheidszone niet beschikbaar wordt of niet kan worden hersteld. Bovendien zijn uw gegevens ook duurzaam in het geval van een volledige regionale storing of een ramp waarbij de primaire regio niet kan worden hersteld. GZRS is ontworpen om ten minste 99.9999999999999999% (16 9's) duurzaamheid van objecten over een bepaald jaar.
+Met een GZRS-opslag account kunt u door gaan met het lezen en schrijven van gegevens als een beschikbaarheids zone niet meer beschikbaar is of niet kan worden hersteld. Daarnaast zijn uw gegevens ook duurzaam in het geval van een volledige regionale onderbreking of een nood situatie waarin de primaire regio niet kan worden hersteld. GZRS is ontworpen om ten minste 99.99999999999999% (16 9) duurzaamheid van objecten in een bepaald jaar te bieden.
 
-Alleen producten voor v2-opslag voor algemene doeleinden ondersteunen GZRS en RA-GZRS. Zie [Overzicht van Azure-opslagaccounts](storage-account-overview.md) voor meer informatie over de typen opslagaccounts. GZRS en RA-GZRS ondersteunen blokblobs, paginablobs (behalve VHD-schijven), bestanden, tabellen en wachtrijen.
+Alleen voor algemeen gebruik v2-opslag accounts bieden ondersteuning voor GZRS en RA-GZRS. Zie [Overzicht van Azure-opslagaccounts](storage-account-overview.md) voor meer informatie over de typen opslagaccounts. GZRS en RA-GZRS ondersteunen blok-blobs, pagina-blobs (met uitzonde ring van VHD-schijven), bestanden, tabellen en wacht rijen.
 
-GZRS en RA-GZRS zijn momenteel beschikbaar voor preview in de volgende regio's:
+GZRS en RA-GZRS zijn momenteel beschikbaar als preview-versie in de volgende regio's:
 
 - Azië - zuidoost
 - Europa - noord
@@ -116,64 +116,64 @@ GZRS en RA-GZRS zijn momenteel beschikbaar voor preview in de volgende regio's:
 - US - centraal
 - US - west 2
 
-Microsoft blijft GZRS en RA-GZRS inschakelen in andere Azure-regio's. Controleer regelmatig de pagina [Azure Service Updates](https://azure.microsoft.com/updates/) voor informatie over ondersteunde regio's.
+Micro soft blijft GZRS en RA-GZRS inschakelen in extra Azure-regio's. Controleer regel matig de pagina met [updates voor Azure-Services](https://azure.microsoft.com/updates/) voor informatie over ondersteunde regio's.
 
-Zie voor informatie over preview-prijzen de prijzen van GZRS-voorbeeld voor [Blobs](https://azure.microsoft.com/pricing/details/storage/blobs), [Bestanden](https://azure.microsoft.com/pricing/details/storage/files/), [Wachtrijen](https://azure.microsoft.com/pricing/details/storage/queues/)en [Tabellen](https://azure.microsoft.com/pricing/details/storage/tables/).
+Raadpleeg voor meer informatie over de preview-prijzen GZRS preview-prijzen voor [blobs](https://azure.microsoft.com/pricing/details/storage/blobs), [bestanden](https://azure.microsoft.com/pricing/details/storage/files/), [wacht rijen](https://azure.microsoft.com/pricing/details/storage/queues/)en [tabellen](https://azure.microsoft.com/pricing/details/storage/tables/).
 
 > [!IMPORTANT]
-> Microsoft raadt aan om geen preview-functies te gebruiken voor productieworkloads.
+> Micro soft raadt aan om Preview-functies voor productie werkbelastingen te gebruiken.
 
-## <a name="read-access-to-data-in-the-secondary-region"></a>Toegang tot gegevens in het secundaire gebied lezen
+## <a name="read-access-to-data-in-the-secondary-region"></a>Lees toegang tot de gegevens in de secundaire regio
 
-Georedundante opslag (met GRS of GZRS) repliceert uw gegevens naar een andere fysieke locatie in de secundaire regio om te beschermen tegen regionale storingen. Deze gegevens kunnen echter alleen worden gelezen als de klant of Microsoft een failover van de primaire naar de secundaire regio initieert. Wanneer u leestoegang tot het secundaire gebied inschakelt, zijn uw gegevens beschikbaar om te worden gelezen als de primaire regio niet beschikbaar is. Voor leestoegang tot de secundaire regio u georedundante opslag (RA-GRS) of geo-zoneredundante opslag (RA-GZRS) voor leestoegang tot de secundaire regio inschakelen.
+Geografisch redundante opslag (met GRS of GZRS) repliceert uw gegevens naar een andere fysieke locatie in de secundaire regio om te beschermen tegen regionale storingen. Deze gegevens zijn echter alleen beschikbaar als alleen-lezen als de klant of micro soft een failover initieert van de primaire naar de secundaire regio. Wanneer u lees toegang tot de secundaire regio inschakelt, kunnen de gegevens worden gelezen als de primaire regio niet beschikbaar is. Voor lees toegang tot de secundaire regio schakelt u geografisch redundante opslag met lees toegang (RA-GRS) of geo-zone-redundante opslag met lees toegang (RA-GZRS) in.
 
-### <a name="design-your-applications-for-read-access-to-the-secondary"></a>Ontwerp uw toepassingen voor leestoegang tot de secundaire
+### <a name="design-your-applications-for-read-access-to-the-secondary"></a>Uw toepassingen ontwerpen voor lees toegang tot de secundaire
 
-Als uw opslagaccount is geconfigureerd voor leestoegang tot het secundaire gebied, u uw toepassingen ontwerpen om naadloos over te schakelen naar leesgegevens uit het secundaire gebied als het primaire gebied om welke reden dan ook niet meer beschikbaar is. De secundaire regio is altijd beschikbaar voor leestoegang, zodat u uw toepassing testen om ervoor te zorgen dat deze wordt gelezen van de secundaire in het geval van een storing. Zie [Het ontwerpen van zeer beschikbare toepassingen met behulp van georedundante opslag voor leestoegang.](storage-designing-ha-apps-with-ragrs.md)
+Als uw opslag account is geconfigureerd voor lees toegang tot de secundaire regio, kunt u uw toepassingen zo ontwerpen dat de gegevens van de secundaire regio naadloos worden gelezen als de primaire regio om welke reden dan ook niet beschikbaar is. De secundaire regio is altijd beschikbaar voor lees toegang, zodat u uw toepassing kunt testen om er zeker van te zijn dat deze van de secundaire wordt gelezen in het geval van een storing. Zie voor meer informatie over het ontwerpen van uw toepassingen voor hoge Beschik baarheid [ontwerpen van Maxi maal beschik bare toepassingen met geografisch redundante opslag met lees toegang](storage-designing-ha-apps-with-ragrs.md).
 
-Wanneer leestoegang tot het secundaire is ingeschakeld, kunnen uw gegevens worden gelezen vanaf het secundaire eindpunt en vanaf het primaire eindpunt voor uw opslagaccount. Het secundaire eindpunt voegt het achtervoegsel toe *– secundair* aan de accountnaam. Als uw primaire eindpunt voor Blob-opslag bijvoorbeeld is, `myaccount.blob.core.windows.net` `myaccount-secondary.blob.core.windows.net`is het secundaire eindpunt . De accounttoegangssleutels voor uw opslagaccount zijn hetzelfde voor zowel de primaire als de secundaire eindpunten.
+Wanneer lees toegang tot de secundaire is ingeschakeld, kunnen uw gegevens worden gelezen van het secundaire eind punt en van het primaire eind punt voor uw opslag account. Het secundaire eind punt voegt het achtervoegsel *(secundair* ) toe aan de account naam. Als uw primaire eind punt voor Blob Storage bijvoorbeeld is `myaccount.blob.core.windows.net`, is `myaccount-secondary.blob.core.windows.net`het secundaire eind punt. De toegangs sleutels voor het account voor uw opslag account zijn hetzelfde voor de primaire en secundaire eind punten.
 
 ### <a name="check-the-last-sync-time-property"></a>De eigenschap Laatst gesynchroniseerd controleren
 
-Omdat gegevens asynchroon worden gerepliceerd naar het secundaire gebied, loopt het secundaire gebied vaak achter op het primaire gebied. Als er een fout optreedt in het primaire gebied, is het waarschijnlijk dat alle schrijfbewerkingen naar de primaire nog niet zijn gerepliceerd naar de secundaire.
+Omdat gegevens asynchroon naar de secundaire regio worden gerepliceerd, is de secundaire regio vaak achter de primaire regio. Als er een fout optreedt in de primaire regio, is het waarschijnlijk dat alle schrijf bewerkingen naar het primaire bestand nog niet zijn gerepliceerd naar de secundaire.
 
-Als u wilt bepalen welke schrijfbewerkingen zijn gerepliceerd naar de secundaire regio, kan uw toepassing de eigenschap **Laatste synchronisatietijd** controleren voor uw opslagaccount. Alle schrijfbewerkingen die vóór de laatste synchronisatietijd naar het primaire gebied zijn geschreven, zijn met succes gerepliceerd naar het secundaire gebied, wat betekent dat ze beschikbaar zijn om te worden gelezen vanaf de secundaire. Schrijfbewerkingen die na de laatste synchronisatietijd naar het primaire gebied zijn geschreven, kunnen al dan niet zijn gerepliceerd naar het secundaire gebied, wat betekent dat ze mogelijk niet beschikbaar zijn voor leesbewerkingen.
+Om te bepalen welke schrijf bewerkingen zijn gerepliceerd naar de secundaire regio, kan de toepassing de **laatste synchronisatie tijd** -eigenschap voor uw opslag account controleren. Alle schrijf bewerkingen die zijn geschreven naar de primaire regio vóór de laatste synchronisatie tijd zijn gerepliceerd naar de secundaire regio, wat betekent dat ze kunnen worden gelezen van de secundaire. Schrijf bewerkingen die worden geschreven naar de primaire regio na de laatste synchronisatie tijd, kunnen al dan niet zijn gerepliceerd naar de secundaire regio, wat inhoudt dat ze mogelijk niet beschikbaar zijn voor lees bewerkingen.
 
-U de waarde van de eigenschap **Last Sync Time** opvragen met Azure PowerShell, Azure CLI of een van de Azure Storage-clientbibliotheken. De eigenschap **Laatste synchronisatietijd** is een GMT-datum/-tijdwaarde. Zie [De eigenschap Laatste synchronisatietijd controleren voor een opslagaccount](last-sync-time-get.md)voor meer informatie .
+U kunt een query uitvoeren op de waarde van de eigenschap **laatste synchronisatie tijd** met behulp van Azure PowerShell, Azure CLI of een van de Azure Storage-client bibliotheken. De eigenschap **laatste synchronisatie tijd** is een GMT-datum/-tijd waarde. Zie [de eigenschap laatste synchronisatie tijd voor een opslag account controleren](last-sync-time-get.md)voor meer informatie.
 
-## <a name="summary-of-redundancy-options"></a>Overzicht van redundantieopties
+## <a name="summary-of-redundancy-options"></a>Overzicht van redundantie opties
 
-In de volgende tabel ziet u hoe duurzaam en beschikbaar uw gegevens zijn in een bepaald scenario, afhankelijk van welk type redundantie van kracht is voor uw opslagaccount:
+In de volgende tabel ziet u hoe duurzaam en beschikbaar uw gegevens zich in een bepaald scenario bevinden, afhankelijk van welk type redundantie van kracht is voor uw opslag account:
 
-| Scenario                                                                                                 | LRS                             | ZRS                              | GRS/RA-GRS                                  | GZRS/RA-GZRS (preview)                              |
+| Scenario                                                                                                 | LRS                             | ZRS                              | GRS/RA-GRS                                  | GZRS/RA-GZRS (preview-versie)                              |
 | :------------------------------------------------------------------------------------------------------- | :------------------------------ | :------------------------------- | :----------------------------------- | :----------------------------------- |
-| Een knooppunt in een datacenter is niet beschikbaar                                                                 | Ja                             | Ja                              | Ja                                  | Ja                                  |
-| Een volledig datacenter (zonal of niet-zonale) wordt niet beschikbaar                                           | Nee                              | Ja                              | Ja                                  | Ja                                  |
-| Een regio-brede storing optreedt                                                                                     | Nee                              | Nee                               | Ja                                  | Ja                                  |
-| Toegang tot gegevens in het secundaire gebied lezen als de primaire regio niet beschikbaar is | Nee                              | Nee                               | Ja (met RA-GRS)                                   | Ja (met RA-GZRS)                                 |
-| Procent duurzaamheid van objecten over een bepaald jaar<sup>1</sup>                                          | ten minste 99.999999999% (11 9's) | ten minste 99.9999999999% (12 9's) | ten minste 999999999999999999% (16 9's) | ten minste 999999999999999999% (16 9's) |
-| Ondersteunde opslagaccounttypen<sup>2</sup>                                                                   | GPv2, GPv1, BlockBlobStorage, BlobStorage, FileStorage                | GPv2, BlockBlobStorage, Bestandsopslag                             | GPv2, GPv1, BlobStorage                     | GPv2                     |
-| Beschikbaarheid SLA voor leesaanvragen<sup>1</sup>  | Ten minste 99,9% (99% voor koele toegangslaag) | Ten minste 99,9% (99% voor koele toegangslaag) | Ten minste 99,9% (99% voor koele toegangslaag) voor GRS<br /><br />Ten minste 99,99% (99,9% voor koele toegangslaag) voor RA-GRS | Ten minste 99,9% (99% voor koele toegangslaag) voor GZRS<br /><br />Ten minste 99,99% (99,9% voor koele toegangslaag) voor RA-GZRS |
-| Beschikbaarheid SLA voor schrijfaanvragen<sup>1</sup>  | Ten minste 99,9% (99% voor koele toegangslaag) | Ten minste 99,9% (99% voor koele toegangslaag) | Ten minste 99,9% (99% voor koele toegangslaag) | Ten minste 99,9% (99% voor koele toegangslaag) |
+| Een knoop punt in een Data Center wordt niet meer beschikbaar                                                                 | Ja                             | Ja                              | Ja                                  | Ja                                  |
+| Een volledig Data Center (zonegebonden of niet-zonegebonden) is niet meer beschikbaar                                           | Nee                              | Ja                              | Ja                                  | Ja                                  |
+| Er treedt een storing op de hele regio op                                                                                     | Nee                              | Nee                               | Ja                                  | Ja                                  |
+| Lees toegang tot de gegevens in de secundaire regio als de primaire regio niet beschikbaar is | Nee                              | Nee                               | Ja (met RA-GRS)                                   | Ja (met RA-GZRS)                                 |
+| Percentage van de duurzaamheid van objecten in een bepaald jaar<sup>1</sup>                                          | ten minste 99,999999999% (11 9) | ten minste 99,9999999999% (12 9) | ten minste 99.99999999999999% (16 9) | ten minste 99.99999999999999% (16 9) |
+| Ondersteunde typen opslag accounts<sup>2</sup>                                                                   | GPv2, GPv1, BlockBlobStorage, BlobStorage, FileStorage                | GPv2, BlockBlobStorage, FileStorage                             | GPv2, GPv1, BlobStorage                     | GPv2                     |
+| SLA voor Beschik baarheid voor lees aanvragen<sup>1</sup>  | Ten minste 99,9% (99% voor de laag van de cool-toegang) | Ten minste 99,9% (99% voor de laag van de cool-toegang) | Ten minste 99,9% (99% voor de laag met coole toegang) voor GRS<br /><br />Ten minste 99,99% (99,9% voor de laag voor cool-toegang) voor RA-GRS | Ten minste 99,9% (99% voor de laag met coole toegang) voor GZRS<br /><br />Ten minste 99,99% (99,9% voor de laag voor cool-toegang) voor RA-GZRS |
+| SLA voor Beschik baarheid voor schrijf aanvragen<sup>1</sup>  | Ten minste 99,9% (99% voor de laag van de cool-toegang) | Ten minste 99,9% (99% voor de laag van de cool-toegang) | Ten minste 99,9% (99% voor de laag van de cool-toegang) | Ten minste 99,9% (99% voor de laag van de cool-toegang) |
 
-<sup>1</sup> Zie de SLA azure [storage](https://azure.microsoft.com/support/legal/sla/storage/)voor azure storage voor duurzaamheid en beschikbaarheid voor informatie over azure-opslaggaranties voor duurzaamheid en beschikbaarheid.
+<sup>1</sup> zie de [Azure Storage Sla](https://azure.microsoft.com/support/legal/sla/storage/)voor informatie over Azure Storage garanties voor duurzaamheid en beschik baarheid.
 
-<sup>2</sup> Zie [Overzicht van opslagaccount](storage-account-overview.md)voor informatie over opslagaccounttypen.
+<sup>2</sup> Zie [overzicht van opslag accounts](storage-account-overview.md)voor meer informatie over typen opslag accounts.
 
-Alle gegevens voor alle soorten opslagaccounts en [alle lagen (inclusief archief)](../blobs/storage-blob-storage-tiers.md) worden gekopieerd volgens de redundantieoptie voor het opslagaccount. Objecten zoals blokblobs, toevoegenblobs, paginablobs, wachtrijen, tabellen en bestanden worden gekopieerd.
+Alle gegevens voor alle typen opslag accounts en [alle lagen (inclusief archief)](../blobs/storage-blob-storage-tiers.md) worden gekopieerd op basis van de redundantie optie voor het opslag account. Objecten inclusief blok-blobs, toevoeg-blobs, pagina-blobs, wacht rijen, tabellen en bestanden worden gekopieerd.
 
-Zie [Azure Storage-prijzen](https://azure.microsoft.com/pricing/details/storage/)voor prijsinformatie voor elke redundantieoptie.
+Zie [Azure Storage prijzen](https://azure.microsoft.com/pricing/details/storage/)voor prijs informatie voor elke optie voor redundantie.
 
 > [!NOTE]
-> Azure Premium Disk Storage ondersteunt momenteel alleen lokaal redundante opslag (LRS). Blokblobopslagaccounts ondersteunen lokaal redundante opslag (LRS) en zone redundante opslag (ZRS) in bepaalde regio's.
+> Azure Premium Disk Storage ondersteunt momenteel alleen lokaal redundante opslag (LRS). Blok-Blob Storage-accounts ondersteunen lokaal redundante opslag (LRS) en zone redundante opslag (ZRS) in bepaalde regio's.
 
 ## <a name="data-integrity"></a>Gegevensintegriteit
 
-Azure Storage controleert regelmatig de integriteit van gegevens die zijn opgeslagen met behulp van cyclische redundantiecontroles (CRC's). Als gegevensbeschadiging wordt gedetecteerd, wordt deze gerepareerd met behulp van redundante gegevens. Azure Storage berekent ook checksums op al het netwerkverkeer om beschadiging van gegevenspakketten op te sporen bij het opslaan of ophalen van gegevens.
+Azure Storage controleert regel matig de integriteit van gegevens die zijn opgeslagen met behulp van cyclische redundantie controles (CRCs). Als beschadigde gegevens worden gedetecteerd, wordt deze hersteld met behulp van redundante gegevens. Azure Storage berekent ook de controle sommen op al het netwerk verkeer om beschadiging van gegevens pakketten te detecteren bij het opslaan of ophalen van gegevens.
 
 ## <a name="see-also"></a>Zie ook
 
-- [De eigenschap Laatste synchronisatietijd controleren voor een opslagaccount](last-sync-time-get.md)
-- [De redundantieoptie voor een opslagaccount wijzigen](redundancy-migration.md)
-- [Ontwerpen van zeer beschikbare toepassingen met RA-GRS Storage](../storage-designing-ha-apps-with-ragrs.md)
-- [Herstel na noodgevallen en failover van het account (voorbeeld)](storage-disaster-recovery-guidance.md)
+- [De eigenschap van de laatste synchronisatie tijd voor een opslag account controleren](last-sync-time-get.md)
+- [De redundantie optie voor een opslag account wijzigen](redundancy-migration.md)
+- [Maxi maal beschik bare toepassingen ontwerpen met behulp van RA-GRS-opslag](../storage-designing-ha-apps-with-ragrs.md)
+- [Herstel na nood gevallen en failover van account (preview-versie)](storage-disaster-recovery-guidance.md)

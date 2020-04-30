@@ -1,20 +1,20 @@
 ---
-title: App verlengen tijdens looptijd - LUIS
+title: App uitbreiden tijdens runtime-LUIS
 description: ''
 ms.topic: conceptual
 ms.date: 04/14/2020
 ms.openlocfilehash: c0f9d71f5d89d73d9cdce2a2f646859d8eba3adc
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81538576"
 ---
-# <a name="extend-app-at-prediction-runtime"></a>App uitbreiden bij voorspellingsruntime
+# <a name="extend-app-at-prediction-runtime"></a>App uitbreiden bij Voorspellings runtime
 
-Het schema van de app (modellen en functies) wordt getraind en gepubliceerd naar het voorspellingseindpunt. Dit gepubliceerde model wordt gebruikt op de voorspelling runtime. U nieuwe informatie, samen met de uiting van de gebruiker, doorgeven aan de voorspellingsruntime om de voorspelling te vergroten.
+Het schema van de app (modellen en functies) wordt getraind en gepubliceerd naar het Voorspellings eindpunt. Dit gepubliceerde model wordt gebruikt in de Voorspellings runtime. U kunt nieuwe informatie, samen met de utterance van de gebruiker, door geven aan de Voorspellings runtime om de voor spelling te verg Roten.
 
-Twee wijzigingen in het voorspellingsschema zijn:
+Twee wijzigingen in het Voorspellings-runtime schema zijn:
 * [Externe entiteiten](#external-entities)
 * [Dynamische lijsten](#dynamic-lists)
 
@@ -22,27 +22,27 @@ Twee wijzigingen in het voorspellingsschema zijn:
 
 ## <a name="external-entities"></a>Externe entiteiten
 
-Externe entiteiten geven uw LUIS-app de mogelijkheid om entiteiten tijdens runtime te identificeren en te labelen, die kunnen worden gebruikt als functies voor bestaande entiteiten. Hiermee u uw eigen afzonderlijke en aangepaste entiteitsextractors gebruiken voordat u query's naar uw voorspellingseindpunt verzendt. Omdat dit gebeurt op het eindpunt van de queryvoorspelling, hoeft u uw model niet opnieuw te trainen en te publiceren.
+Externe entiteiten bieden uw LUIS-app de mogelijkheid om entiteiten tijdens runtime te identificeren en te labelen, die kunnen worden gebruikt als functies voor bestaande entiteiten. Zo kunt u uw eigen afzonderlijke en aangepaste entiteits-extracten gebruiken voordat u query's naar uw Voorspellings eindpunt verzendt. Omdat dit op het query Voorspellings eindpunt wordt gedaan, hoeft u uw model niet opnieuw te trainen en te publiceren.
 
-De client-applicatie verstrekt een eigen entiteit extractor door het beheren van entiteit matching en het bepalen van de locatie binnen de uiting van die overeenkomende entiteit en vervolgens het verzenden van die informatie met de aanvraag.
+De client toepassing levert een eigen entiteits extractie door het beheren van entiteits overeenkomsten en het bepalen van de locatie binnen de utterance van die overeenkomende entiteit en vervolgens die informatie met de aanvraag te verzenden.
 
-Externe entiteiten zijn het mechanisme voor het uitbreiden van een entiteitstype terwijl ze nog steeds worden gebruikt als signalen naar andere modellen.
+Externe entiteiten zijn het mechanisme voor het uitbreiden van elk type entiteit, terwijl ze nog steeds worden gebruikt als signalen voor andere modellen.
 
-Dit is handig voor een entiteit die alleen gegevens beschikbaar heeft bij queryvoorspellingsruntijd. Voorbeelden van dit soort gegevens zijn voortdurend veranderende gegevens of specifieke per gebruiker. U een LUIS-contactpersoon uitbreiden met externe informatie uit de lijst met contactpersonen van een gebruiker.
+Dit is handig voor een entiteit met gegevens die alleen beschikbaar zijn voor de runtime van de Voorspellings functie voor query's. Voor beelden van dit type gegevens zijn voortdurend veranderende gegevens of specifieke per gebruiker. U kunt een LUIS-contact persoon uitbreiden met externe informatie uit de lijst met contact personen van een gebruiker.
 
-Externe entiteiten maken deel uit van de V3-ontwerp-API. Meer informatie over [migreren](luis-migration-api-v3.md) naar deze versie.
+Externe entiteiten maken deel uit van de V3-ontwerp-API. Meer informatie over het [migreren](luis-migration-api-v3.md) naar deze versie.
 
-### <a name="entity-already-exists-in-app"></a>Entiteit bestaat al in app
+### <a name="entity-already-exists-in-app"></a>De entiteit bestaat al in de app
 
-De waarde `entityName` van voor de externe entiteit, doorgegeven in de post-instantie eindpuntaanvraag, moet al bestaan in de getrainde en gepubliceerde app op het moment dat de aanvraag wordt ingediend. Het type entiteit doet er niet toe, alle typen worden ondersteund.
+De waarde van `entityName` voor de externe entiteit, door gegeven in de hoofd tekst van het eindpunt verzoek, moet al aanwezig zijn in de getrainde en gepubliceerde app op het moment dat de aanvraag wordt ingediend. Het entiteits type is niet van belang, alle typen worden ondersteund.
 
-### <a name="first-turn-in-conversation"></a>Eerste beurt in gesprek
+### <a name="first-turn-in-conversation"></a>Eerst gesprek inschakelen
 
-Overweeg een eerste uiting in een chatbotgesprek waarin een gebruiker de volgende onvolledige informatie invoert:
+Bekijk een eerste utterance in een chat-bot waarbij een gebruiker de volgende onvolledige gegevens invoert:
 
 `Send Hazem a new message`
 
-Het verzoek van de chat bot naar LUIS kan `Hazem` doorgeven in informatie in de POST lichaam over, zodat het direct wordt gekoppeld als een van de contacten van de gebruiker.
+De aanvraag van de chat-bot naar LUIS kan informatie geven in de hoofd tekst `Hazem` , zodat deze direct overeenkomt met de contact personen van de gebruiker.
 
 ```json
     "externalEntities": [
@@ -58,15 +58,15 @@ Het verzoek van de chat bot naar LUIS kan `Hazem` doorgeven in informatie in de 
     ]
 ```
 
-Het voorspellingsantwoord bevat die externe entiteit, met alle andere voorspelde entiteiten, omdat deze is gedefinieerd in de aanvraag.
+Het Voorspellings antwoord bevat die externe entiteit, met alle andere voorspelde entiteiten, omdat deze is gedefinieerd in de aanvraag.
 
-### <a name="second-turn-in-conversation"></a>Tweede beurt in gesprek
+### <a name="second-turn-in-conversation"></a>Tweede gesprek inschakelen
 
-De volgende gebruiker uiting in de chat bot maakt gebruik van een meer vage term:
+De volgende gebruiker utterance in de chat-bot maakt gebruik van een meer vague-term:
 
 `Send him a calendar reminder for the party.`
 
-In deze draai van het `him` gesprek wordt `Hazem`de utterance gebruikt als verwijzing naar . De conversationele chatbot, in de `him` post-body, kan toewijzen aan `Hazem`de entiteitswaarde die uit de eerste utterance is geëxtraheerd, .
+In deze conversatie wordt het utterance gebruikt `him` als een verwijzing naar. `Hazem` De bot van de conversatie in de hoofd tekst kan worden toegewezen `him` aan de entiteit waarde die is geëxtraheerd uit de eerste utterance `Hazem`,.
 
 ```json
     "externalEntities": [
@@ -82,13 +82,13 @@ In deze draai van het `him` gesprek wordt `Hazem`de utterance gebruikt als verwi
     ]
 ```
 
-Het voorspellingsantwoord bevat die externe entiteit, met alle andere voorspelde entiteiten, omdat deze is gedefinieerd in de aanvraag.
+Het Voorspellings antwoord bevat die externe entiteit, met alle andere voorspelde entiteiten, omdat deze is gedefinieerd in de aanvraag.
 
-### <a name="override-existing-model-predictions"></a>Bestaande modelvoorspellingen overschrijven
+### <a name="override-existing-model-predictions"></a>Bestaande model voorspellingen onderdrukken
 
-De `preferExternalEntities` eigenschap Options geeft aan dat als de gebruiker een externe entiteit verzendt die overlapt met een voorspelde entiteit met dezelfde naam, LUIS de entiteit kiest die is doorgegeven of de entiteit die in het model bestaat.
+De `preferExternalEntities` eigenschap Options geeft aan dat als de gebruiker een externe entiteit verzendt die overlapt met een voorspelde entiteit met dezelfde naam, Luis kiest voor de entiteit die is door gegeven of de entiteit die in het model is opgenomen.
 
-Denk bijvoorbeeld aan `today I'm free`de query . LUIS `today` detecteert als een datetimeV2 met het volgende antwoord:
+Denk bijvoorbeeld aan de query `today I'm free`. LUIS detecteert `today` als een datetimeV2 met het volgende antwoord:
 
 ```JSON
 "datetimeV2": [
@@ -117,7 +117,7 @@ Als de gebruiker de externe entiteit verzendt:
 }
 ```
 
-Als `preferExternalEntities` de instelling `false`is ingesteld op , retourneert LUIS een antwoord alsof de externe entiteit niet is verzonden.
+Als `preferExternalEntities` is ingesteld op `false`, retourneert Luis een antwoord alsof de externe entiteit niet is verzonden.
 
 ```JSON
 "datetimeV2": [
@@ -133,7 +133,7 @@ Als `preferExternalEntities` de instelling `false`is ingesteld op , retourneert 
 ]
 ```
 
-Als `preferExternalEntities` de toepassing `true`is ingesteld op , retourneert LUIS een antwoord met de tekst:
+Als is `preferExternalEntities` ingesteld op `true`, Luis retourneert een antwoord met de volgende instellingen:
 
 ```JSON
 "datetimeV2": [
@@ -147,33 +147,33 @@ Als `preferExternalEntities` de toepassing `true`is ingesteld op , retourneert L
 
 #### <a name="resolution"></a>Oplossing
 
-De _optionele_ `resolution` eigenschap keert terug in het voorspellingsantwoord, zodat u de metagegevens die aan de externe entiteit zijn gekoppeld, doorgeven en deze vervolgens weer in het antwoord ontvangen.
+De _optionele_ `resolution` eigenschap retourneert in het Voorspellings antwoord, zodat u de meta gegevens kunt door geven die aan de externe entiteit zijn gekoppeld. Vervolgens ontvangt u deze in het antwoord.
 
-Het primaire doel is om vooraf gebouwde entiteiten uit te breiden, maar het is niet beperkt tot dat entiteitstype.
+Het belangrijkste doel is om vooraf gemaakte entiteiten uit te breiden, maar dit is niet beperkt tot dat entiteits type.
 
-De `resolution` eigenschap kan een getal, een tekenreeks, een object of een array zijn:
+De `resolution` eigenschap kan een getal, een teken reeks, een object of een matrix zijn:
 
-* "Dallas"
+* Filiaal
 * {"tekst": "waarde"}
 * 12345
-* [a", "b", "c"]
+* ["a", "b", "c"]
 
 <a name="dynamic-lists-passed-in-at-prediction-time"></a>
 
 ## <a name="dynamic-lists"></a>Dynamische lijsten
 
-Met dynamische lijsten u een bestaande getrainde en gepubliceerde lijstentiteit uitbreiden, die al in de LUIS-app is opgenomen.
+Met dynamische lijsten kunt u een bestaande getrainde en gepubliceerde lijst entiteit uitbreiden, al in de LUIS-app.
 
-Gebruik deze functie wanneer de waarden van uw lijstentiteit periodiek moeten worden gewijzigd. Met deze functie u een reeds getrainde en gepubliceerde lijstentiteit uitbreiden:
+Gebruik deze functie wanneer de waarden van de lijst entiteit periodiek moeten worden gewijzigd. Met deze functie kunt u een al getrainde en gepubliceerde lijst entiteit uitbreiden:
 
-* Op het moment van de queryvoorspelling eindpunt aanvraag.
-* Voor één verzoek.
+* Op het moment van de aanvraag voor het uitvoeren van een query Voorspellings eindpunt.
+* Voor een enkele aanvraag.
 
-De entiteit van de lijst kan leeg zijn in de LUIS-app, maar moet wel bestaan. De lijstentiteit in de LUIS-app wordt niet gewijzigd, maar de voorspellingsmogelijkheid op het eindpunt wordt uitgebreid tot maximaal 2 lijsten met ongeveer 1.000 items.
+De lijst entiteit kan leeg zijn in de LUIS-app, maar deze moet bestaan. De entiteit lijst in de LUIS-app is niet gewijzigd, maar de Voorspellings mogelijkheid op het eind punt wordt uitgebreid tot twee lijsten met ongeveer 1.000 items.
 
-### <a name="dynamic-list-json-request-body"></a>Dynamische lijst JSON aanvraag body
+### <a name="dynamic-list-json-request-body"></a>Hoofd tekst JSON-aanvraag van dynamische lijst
 
-Stuur de volgende JSON-instantie om een nieuwe sublijst met synoniemen aan de `LUIS`lijst toe `POST` te voegen en voorspel de lijstentiteit voor de tekst, met de queryvoorspellingsaanvraag:
+Verzend in de volgende JSON-hoofd tekst om een nieuwe sublijst met synoniemen toe te voegen aan de lijst, en voor te voors pellen dat de lijst entiteit voor de tekst wordt `LUIS`weer geven, met de `POST` aanvraag voor de voor spelling van query's:
 
 ```JSON
 {
@@ -200,9 +200,9 @@ Stuur de volgende JSON-instantie om een nieuwe sublijst met synoniemen aan de `L
 }
 ```
 
-Het voorspellingsantwoord bevat die lijstentiteit, met alle andere voorspelde entiteiten, omdat deze is gedefinieerd in de aanvraag.
+De Voorspellings reactie omvat die lijst entiteit, met alle andere voorspelde entiteiten, omdat deze is gedefinieerd in de aanvraag.
 
 ## <a name="next-steps"></a>Volgende stappen
 
 * [Voorspellingsscore](luis-concept-prediction-score.md)
-* [Wijzigingen in API V3](luis-migration-api-v3.md)
+* [API v3-wijzigingen ontwerpen](luis-migration-api-v3.md)

@@ -1,6 +1,6 @@
 ---
-title: WAF-beleid migreren voor Azure Application Gateway
-description: Meer informatie over het migreren van Azure Web Application Firewall-beleidsregels met Azure PowerShell.
+title: WAF-beleid voor Azure-toepassing gateway migreren
+description: Meer informatie over het migreren van een Azure Web Application firewall-beleid met behulp van Azure PowerShell.
 services: web-application-firewall
 ms.topic: conceptual
 author: vhorne
@@ -8,31 +8,31 @@ ms.service: web-application-firewall
 ms.date: 04/16/2020
 ms.author: ant
 ms.openlocfilehash: fb3b922b753b9696aa26ea189597589ecc5772db
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81536621"
 ---
-# <a name="migrate-web-application-firewall-policies-using-azure-powershell"></a>Webtoepassingsfirewallbeleid migreren met Azure PowerShell
+# <a name="migrate-web-application-firewall-policies-using-azure-powershell"></a>Web Application firewall-beleid migreren met behulp van Azure PowerShell
 
-Dit script maakt het gemakkelijk om over te schakelen van een WAF config of een aangepaste regels-only WAF-beleid naar een volledig WAF-beleid. Mogelijk ziet u een waarschuwing in de portal met de tekst *migreren naar waf-beleid,* of wilt u mogelijk de nieuwe WAF-functies voor openbare preview,zoals aangepaste geomatch-regels, per site en per URI WAF-beleid of de botmitigatieregelset. Als u een van deze functies wilt gebruiken, hebt u een volledig WAF-beleid nodig dat is gekoppeld aan uw toepassingsgateway. 
+Met dit script kunt u eenvoudig overstappen van een WAF-configuratie of een aangepast WAF-beleid naar een volledig WAF-beleid. Mogelijk wordt er een waarschuwing weer gegeven in de portal die *gemigreerd wordt naar WAF-beleid*, of wilt u de nieuwe open bare preview-WAF-functies, zoals geomatch aangepaste regels, per-site en per URI-WAF-beleid of de Rule-regel voor het beperken van de bot. Als u een van deze functies wilt gebruiken, moet u een volledig WAF-beleid koppelen aan uw toepassings gateway. 
 
-Zie [Webapplicationfirewallbeleid maken voor Application Gateway voor](create-waf-policy-ag.md)meer informatie over het maken van een nieuw WAF-beleid. Zie [Migreren naar WAF-beleid voor](create-waf-policy-ag.md#migrate-to-waf-policy)informatie over migreren .
+Zie voor meer informatie over het maken van een nieuw WAF-beleid [Web Application firewall-beleid voor Application Gateway maken](create-waf-policy-ag.md). Zie voor meer informatie over migreren [naar WAF-beleid](create-waf-policy-ag.md#migrate-to-waf-policy).
 
-## <a name="to-migrate-to-waf-policy-using-the-migration-script"></a>Migreren naar WAF-beleid met behulp van het migratiescript
+## <a name="to-migrate-to-waf-policy-using-the-migration-script"></a>Migreren naar WAF-beleid met behulp van het migratie script
 
-Voer de volgende stappen uit om het migratiescript uit te voeren: 
+Gebruik de volgende stappen om het migratie script uit te voeren: 
 
-1. Open het volgende venster van de wolkenshell of open er een vanuit de portal.
-2. Kopieer het script naar het venster van de cloudshell en voer het uit.
-3. Het script vraagt om subscription ID, Resource Group naam, de naam van de Application Gateway dat de WAF config is gekoppeld aan, en de naam van de nieuwe WAF beleid dat te maken. Zodra u deze invoer invoert, wordt het script uitgevoerd en wordt uw nieuwe WAF-beleid
-4. Koppel het nieuwe WAF-beleid aan uw toepassingsgateway. Ga naar het WAF-beleid in de portal en selecteer het tabblad **Gekoppelde toepassingsgateway.** Selecteer **Een toepassingsgateway koppelen** en selecteer vervolgens de toepassingsgateway om het WAF-beleid aan te koppelen.
+1. Open het volgende Cloud shell-venster of open er een in de portal.
+2. Kopieer het script naar het Cloud shell-venster en voer dit uit.
+3. Het script vraagt om de abonnements-ID, naam van de resource groep, de naam van de Application Gateway waaraan de WAF-configuratie is gekoppeld en de naam van het nieuwe WAF-beleid dat moet worden gemaakt. Wanneer u deze invoer invoert, wordt het script uitgevoerd en wordt het nieuwe WAF-beleid gemaakt
+4. Koppel het nieuwe WAF-beleid aan uw toepassings gateway. Ga naar het WAF-beleid in de portal en selecteer het tabblad **gekoppelde toepassings gateways** . selecteer **een Application Gateway koppelen** en selecteer vervolgens het Application Gateway waaraan u het WAF-beleid wilt koppelen.
 
 > [!NOTE]
-> Het script voltooit een migratie niet als de volgende voorwaarden bestaan:
-> - Een hele regel is uitgeschakeld. Als u een migratie wilt voltooien, controleert u of een hele regelgroep niet is uitgeschakeld.
-> - Een uitsluitingsvermelding(en) met de *operator Is gelijk aan elke* operator. Als u een migratie wilt voltooien, moet u ervoor zorgen dat uitsluitingsvermeldingen met *een operator gelijk is,* deze operator niet aanwezig is.
+> Het script voltooit geen migratie als aan de volgende voor waarden wordt voldaan:
+> - Een volledige regel is uitgeschakeld. Als u een migratie wilt volt ooien, moet u ervoor zorgen dat een volledige rulegroup niet is uitgeschakeld.
+> - Een uitsluitings vermelding (en) met de waarde *elke operator is gelijk aan* . Als u een migratie wilt volt ooien, moet u ervoor zorgen dat uitsluitings vermeldingen met *een wille keurige* operator niet aanwezig zijn.
 >
 > Zie de functie *ValidateInput* in het script voor meer informatie.
 
@@ -219,4 +219,4 @@ Main
 ```
 ## <a name="next-steps"></a>Volgende stappen
 
-Meer informatie over [CRS-regelgroepen en -regels](application-gateway-crs-rulegroups-rules.md)voor webtoepassingen firewall.
+Meer informatie over de [regel groepen en regels voor het CRS-programma van Web Application firewall](application-gateway-crs-rulegroups-rules.md).

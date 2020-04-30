@@ -9,10 +9,10 @@ ms.date: 04/16/2020
 ms.author: spelluru
 ms.custom: include file
 ms.openlocfilehash: 8833bb75f5f50372deda3e71c1df90bed9a20054
-ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/17/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81605652"
 ---
 ## <a name="enable-event-grid-resource-provider"></a>Event Grid-resourceprovicer inschakelen
@@ -21,9 +21,9 @@ Als u Event Grid in uw Azure-abonnement nog niet eerder hebt gebruikt, moet u mo
 
 In Azure Portal:
 
-1. Selecteer **Abonnementen** in het linkermenu.
+1. Selecteer in het menu links de optie **abonnementen** .
 1. Selecteer het abonnement dat u voor Event Grid gebruikt.
-1. Selecteer in het linkermenu onder **Instellingen**de optie **Resourceproviders**.
+1. Selecteer in het menu links onder **instellingen**de optie **resource providers**.
 1. Zoek **Microsoft.EventGrid**.
 1. Als deze niet is geregistreerd, selecteert u **Registreren**. 
 

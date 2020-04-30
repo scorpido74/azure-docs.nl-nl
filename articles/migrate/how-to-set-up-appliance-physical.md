@@ -1,154 +1,154 @@
 ---
-title: Een Azure Migrate-toestel instellen voor fysieke servers
-description: Meer informatie over het instellen van een Azure Migrate appliance voor fysieke serverbeoordeling.
+title: Een Azure Migrate apparaat instellen voor fysieke servers
+description: Meer informatie over het instellen van een Azure Migrate apparaat voor de evaluatie van fysieke servers.
 ms.service: azure-migrate
 ms.topic: article
 ms.date: 04/15/2020
 ms.openlocfilehash: ddc70ee9430d3a767ce01191824c150a4dbd5e6f
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81538270"
 ---
-# <a name="set-up-an-appliance-for-physical-servers"></a>Een toestel instellen voor fysieke servers
+# <a name="set-up-an-appliance-for-physical-servers"></a>Een apparaat instellen voor fysieke servers
 
-In dit artikel wordt beschreven hoe u het Azure Migrate-toestel instelt als u fysieke servers beoordeelt met het hulpprogramma Azure Migrate: Server Assessment.
+In dit artikel wordt beschreven hoe u het Azure Migrate apparaat instelt als u fysieke servers wilt beoordelen met het Azure Migrate: Server Assessment-hulp programma.
 
-Het Azure Migrate-toestel is een lichtgewicht toestel dat door Azure Migrate Server Assessment als volgt wordt gebruikt:
+Het Azure Migrate apparaat is een licht gewicht apparaat dat door de Azure Migrate server-evaluatie wordt gebruikt om het volgende te doen:
 
-- Ontdek on-premises servers.
-- Metagegevens en prestatiegegevens voor gedetecteerde servers verzenden naar Azure Migrate Server Assessment.
+- On-premises servers detecteren.
+- Meta gegevens en prestatie gegevens voor gedetecteerde servers verzenden naar Azure Migrate server-evaluatie.
 
-[Meer informatie](migrate-appliance.md) over het Azure Migrate-toestel.
-
-
-## <a name="appliance-deployment-steps"></a>Implementatiestappen voor toestel
-
-Ga als u het apparaat instelt:
-- Download een zip-bestand met Azure Migrate-installatiescript van de Azure-portal.
-- Haal de inhoud uit het ritsbestand. Start de PowerShell-console met beheerdersbevoegdheden.
-- Voer het PowerShell-script uit om de webtoepassing voor het toestel te starten.
-- Configureer het toestel voor de eerste keer en registreer het met het Azure Migrate-project.
-
-## <a name="download-the-installer-script"></a>Het installatiescript downloaden
-
-Download het zip-bestand voor het apparaat.
-
-1. Klik in **Migration Goals** > **Servers** > **Azure Migrate: Server assessment**op **Ontdekken**.
-2. In **Machines** > ontdekken**Worden uw machines gevirtualiseerd?**, klikt u op **Niet gevirtualiseerd/Ander.**
-3. Klik **op Downloaden** om het zip-bestand te downloaden.
-
-    ![VM downloaden](./media/tutorial-assess-physical/download-appliance.png)
+Meer [informatie](migrate-appliance.md) over het Azure migrate apparaat.
 
 
-### <a name="verify-security"></a>Beveiliging verifiëren
+## <a name="appliance-deployment-steps"></a>Implementatie stappen voor het apparaat
 
-Controleer of het zip-bestand veilig is, voordat u het implementeert.
+Als u het apparaat wilt instellen, doet u het volgende:
+- Down load een zip-bestand met Azure Migrate-installatie script uit de Azure Portal.
+- Pak de inhoud uit het zip-bestand uit. Start de Power shell-console met beheerders bevoegdheden.
+- Voer het Power shell-script uit om de web-app voor het toestel te starten.
+- Configureer het apparaat voor de eerste keer en registreer het bij het Azure Migrate-project.
+
+## <a name="download-the-installer-script"></a>Het installatie script downloaden
+
+Down load het zip-bestand voor het apparaat.
+
+1. In **migratie doelen** > **servers** > **Azure migrate: Server evaluatie**, klikt u op **detecteren**.
+2. Zijn uw machines in **Discover-computers** > **gevirtualiseerde?** Klik op **niet gevirtualiseerd/Overig**.
+3. Klik op **downloaden** om het zip-bestand te downloaden.
+
+    ![Virtuele machine downloaden](./media/tutorial-assess-physical/download-appliance.png)
+
+
+### <a name="verify-security"></a>Beveiliging controleren
+
+Controleer of het gecomprimeerde bestand is beveiligd, voordat u het implementeert.
 
 1. Open op de machine waarop u het bestand hebt gedownload een opdrachtvenster voor beheerders.
 2. Voer de volgende opdracht uit om de hash voor het zip-bestand te genereren:
     - ```C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]```
-    - Voorbeeld gebruik voor public cloud:```C:\>CertUtil -HashFile C:\Users\administrator\Desktop\AzureMigrateInstaller.zip SHA256 ```
-    - Voorbeeldgebruik voor overheidscloud:```  C:\>CertUtil -HashFile C:\Users\administrator\Desktop\AzureMigrateInstaller-Server-USGov.zip MD5 ```
-3.  Hashwaarden verifiëren:
+    - Voor beeld van gebruik voor open bare Cloud:```C:\>CertUtil -HashFile C:\Users\administrator\Desktop\AzureMigrateInstaller.zip SHA256 ```
+    - Voor beeld van gebruik voor Government Cloud:```  C:\>CertUtil -HashFile C:\Users\administrator\Desktop\AzureMigrateInstaller-Server-USGov.zip MD5 ```
+3.  Hash-waarden verifiëren:
  
-    - Voor de public cloud (voor de nieuwste toestelversie):
+    - Voor de open bare Cloud (voor de meest recente versie van het apparaat):
 
         **Algoritme** | **Hash-waarde**
           --- | ---
           MD5 | 1e92ede3e87c03bd148e56a708cdd33f
-          SHA256 | a3fa78edc8ff8aff9ab5ae6be1b64e6de7b9f475b6542beef114b20bfdac3c
+          SHA256 | a3fa78edc8ff8aff9ab5ae66be1b64e66de7b9f475b6542beef114b20bfdac3c
 
-    - Voor Azure-overheid (voor de nieuwste toestelversie):
+    - Voor Azure Government (voor de nieuwste versie van het apparaat):
 
         **Algoritme** | **Hash-waarde**
           --- | ---
           MD5 | f81c155fc4a1409901caea948713913f
 
 
-## <a name="run-the-azure-migrate-installer-script"></a>Het installatiescript Azure Migrate uitvoeren
-Het installatiescript doet het volgende:
+## <a name="run-the-azure-migrate-installer-script"></a>Het Azure Migrate-installatie script uitvoeren
+Het installatie script doet het volgende:
 
-- Installeert agents en een webtoepassing voor het detecteren en beoordelen van fysieke servers.
-- Installeer Windows-rollen, waaronder Windows Activation Service, IIS en PowerShell ISE.
-- Download en installeert een IIS herschrijfbare module. [Meer informatie](https://www.microsoft.com/download/details.aspx?id=7435).
-- Werkt een registersleutel (HKLM) bij met permanente instellingsdetails voor Azure Migrate.
-- Hiermee maakt u de volgende bestanden onder het pad:
-    - **Config-bestanden**: %Programdata%\Microsoft Azure\Config
-    - **Logboekbestanden**: %Programdata%\Microsoft Azure\Logs
+- Installeert agents en een webtoepassing voor detectie en evaluatie van fysieke servers.
+- Installeer Windows-rollen, waaronder Windows Activation service, IIS en Power shell ISE.
+- Een herschrijf bare module van IIS downloaden en installeren. [Meer informatie](https://www.microsoft.com/download/details.aspx?id=7435).
+- Hiermee werkt u een register sleutel (HKLM) bij met permanente instellings gegevens voor Azure Migrate.
+- Maakt de volgende bestanden onder het pad:
+    - **Configuratie bestanden**:%ProgramData%\Microsoft Azure\Config
+    - **Logboek bestanden**:%ProgramData%\Microsoft Azure\Logs
 
 Voer het script als volgt uit:
 
-1. Haal het ritsbestand uit naar een map op de server die het toestel host.  Zorg ervoor dat u het script niet uitvoert op een machine op een bestaand Azure Migrate-toestel.
-2. Start PowerShell op de bovenstaande server met beheerdersbevoegdheden (verhoogde bevoegdheid).
-3. Wijzig de PowerShell-map in de map waar de inhoud is geëxtraheerd uit het gedownloade zip-bestand.
-4. Voer het script met de naam **AzureMigrateInstaller.ps1** uit door de volgende opdracht uit te voeren:
+1. Pak het zip-bestand uit naar een map op de server die als host moet fungeren voor het apparaat.  Zorg ervoor dat u het script niet uitvoert op een machine op een bestaand Azure Migrate apparaat.
+2. Start Power shell op de bovenstaande server met beheerders bevoegdheden (met verhoogde bevoegdheden).
+3. Wijzig de Power shell-map in de map waarin de inhoud is geëxtraheerd uit het gedownloade zip-bestand.
+4. Voer het script met de naam **AzureMigrateInstaller. ps1** uit door de volgende opdracht uit te voeren:
 
-    - Voor de public cloud:``` PS C:\Users\administrator\Desktop\AzureMigrateInstaller> AzureMigrateInstaller.ps1 ```
-    - Voor Azure-overheid:``` PS C:\Users\Administrators\Desktop\AzureMigrateInstaller-Server-USGov>AzureMigrateInstaller.ps1 ```
+    - Voor de open bare Cloud:``` PS C:\Users\administrator\Desktop\AzureMigrateInstaller> AzureMigrateInstaller.ps1 ```
+    - Voor Azure Government:``` PS C:\Users\Administrators\Desktop\AzureMigrateInstaller-Server-USGov>AzureMigrateInstaller.ps1 ```
 
-    Het script start de webtoepassing van het toestel wanneer deze is voltooid.
+    Met het script wordt de web-app voor het toestel gestart wanneer deze is voltooid.
 
-Als u problemen tegenkomt, hebt u toegang tot de scriptlogboeken op C:\ProgramData\Microsoft Azure\Logs\AzureMigrateScenarioInstaller_<em>Timestamp</em>.log voor het oplossen van problemen.
+Als u problemen ondervindt, kunt u de script Logboeken openen op C:\ProgramData\Microsoft Azure\Logs\ AzureMigrateScenarioInstaller_<em>Time Stamp</em>. log voor het oplossen van problemen.
 
 
 
-### <a name="verify-appliance-access-to-azure"></a>De toegang tot het toestel tot Azure verifiëren
+### <a name="verify-appliance-access-to-azure"></a>Toestel toegang tot Azure controleren
 
-Zorg ervoor dat de toestel-VM verbinding kan maken met Azure-URL's voor [openbare](migrate-appliance.md#public-cloud-urls) en [overheidsclouds.](migrate-appliance.md#government-cloud-urls)
+Zorg ervoor dat de virtuele machine van het apparaat verbinding kan maken met Azure-Url's voor [open bare](migrate-appliance.md#public-cloud-urls) en [overheids](migrate-appliance.md#government-cloud-urls) Clouds.
 
-## <a name="configure-the-appliance"></a>Het toestel configureren
+## <a name="configure-the-appliance"></a>Het apparaat configureren
 
-Stel het apparaat voor de eerste keer in.
+Het apparaat voor de eerste keer instellen.
 
-1. Open een browser op elke machine die verbinding kan maken met de VM en open de URL van de toestelweb-app: **https://*toestelnaam of IP-adres*: 44368**.
+1. Open een browser op een computer die verbinding kan maken met de virtuele machine en open de URL van de Web-App van het apparaat: **https://*-apparaatnaam of IP-adres*: 44368**.
 
-   U de app afwisselend vanaf het bureaublad openen door op de snelkoppeling van de app te klikken.
-2. Ga als volgt te werk in de web-app > **Vereiste voorwaarden instellen:**
-    - **Licentie:** Accepteer de licentievoorwaarden en lees de informatie van derden.
-    - **Connectiviteit**: De app controleert of de VM toegang tot internet heeft. Als de VM een proxy gebruikt:
-        - Klik **op Proxy-instellingen**en geef het proxyadres http://ProxyIPAddress http://ProxyFQDNen de luisterpoort op in het formulier of .
+   U kunt de app ook openen vanaf het bureau blad door te klikken op de snelkoppeling naar de app.
+2. Ga als volgt te werk in de web-app > vereisten in te **stellen**:
+    - **Licentie**: accepteer de licentie voorwaarden en lees de informatie van derden.
+    - **Connectiviteit**: de app controleert of de virtuele machine toegang heeft tot internet. Als de virtuele machine gebruikmaakt van een proxy:
+        - Klik op **proxy-instellingen**en geef het proxy adres en de luister poort op in http://ProxyIPAddress het http://ProxyFQDNformulier of.
         - Geef referenties op als de proxy verificatie nodig heeft.
         - Alleen HTTP-proxy wordt ondersteund.
-    - **Tijdsynchronisatie**: De tijd wordt geverifieerd. De tijd op het toestel moet synchroon lopen met de internettijd om vm-detectie goed te laten werken.
-    - **Updates installeren:** Azure Migrate Server Assessment controleert of het toestel de nieuwste updates heeft geïnstalleerd.
+    - **Tijd synchronisatie**: tijd wordt gecontroleerd. De tijd op het apparaat moet zijn gesynchroniseerd met internet tijd zodat de machine detectie goed werkt.
+    - **Updates installeren**: Azure migrate server beoordeling controleert of de meest recente updates zijn geïnstalleerd op het apparaat.
 
-### <a name="register-the-appliance-with-azure-migrate"></a>Het toestel registreren met Azure Migreren
+### <a name="register-the-appliance-with-azure-migrate"></a>Het apparaat registreren bij Azure Migrate
 
-1. Klik **op Aanmelden**. Als deze niet wordt weergegeven, controleert u of u de pop-upblokkering in de browser hebt uitgeschakeld.
-2. Meld u op het nieuwe tabblad aan met uw Azure-referenties.
-    - Meld u aan met uw gebruikersnaam en wachtwoord.
+1. Klik op **Aanmelden**. Als deze niet wordt weer gegeven, controleert u of de pop-upblokkering in de browser is uitgeschakeld.
+2. Meld u aan met uw Azure-referenties op het tabblad Nieuw.
+    - Meld u aan met uw gebruikers naam en wacht woord.
     - Aanmelden met een pincode wordt niet ondersteund.
-3. Ga na het succesvol aanmelden terug naar de web-app.
+3. Nadat u zich hebt aangemeld, gaat u terug naar de web-app.
 4. Selecteer het abonnement waarin het Azure Migrate-project is gemaakt. Selecteer vervolgens het project.
-5. Geef een naam op voor het toestel. De naam moet alfanumeriek zijn met 14 tekens of minder.
-6. Klik **op Registreren**.
+5. Geef een naam op voor het apparaat. De naam moet alfanumeriek zijn met 14 tekens of minder.
+6. Klik op **registreren**.
 
 
 ## <a name="start-continuous-discovery"></a>Continue detectie starten
 
-Maak verbinding van het toestel naar fysieke servers en start de detectie.
+Maak verbinding van het apparaat met fysieke servers en start de detectie.
 
-1. Klik **op Referenties toevoegen** om de accountreferenties op te geven die het toestel zal gebruiken om servers te detecteren.  
-2. Geef het **besturingssysteem**op, een vriendelijke naam voor de referenties en de gebruikersnaam en het wachtwoord. Klik vervolgens op **Toevoegen**.
-U elk één set referenties toevoegen voor Windows- en Linux-servers.
-4. Klik **op Server toevoegen**en geef servergegevens op: FQDN/IP-adres en een vriendelijke naam van referenties (één vermelding per rij) om verbinding te maken met de server.
-3. Klik op **Valideren**. Na validatie wordt de lijst met servers die kunnen worden ontdekt weergegeven.
-    - Als de validatie mislukt voor een server, controleert u de fout door boven het pictogram in de kolom **Status** te zweven. Los problemen op en valideer opnieuw.
-    - Als u een server wilt verwijderen, selecteert u > **Verwijderen**.
-4. Klik na validatie op **Opslaan en start detectie** om het detectieproces te starten.
+1. Klik op **referenties toevoegen** om de account referenties op te geven die door het apparaat worden gebruikt om servers te detecteren.  
+2. Geef het **besturings systeem**, een beschrijvende naam voor de referenties en de gebruikers naam en het wacht woord op. Klik vervolgens op **toevoegen**.
+U kunt elk voor Windows-en Linux-servers één set referenties toevoegen.
+4. Klik op **server toevoegen**en geef Server Details-FQDN/IP-adres en beschrijvende naam van referenties (één vermelding per rij) op om verbinding te maken met de server.
+3. Klik op **Valideren**. Na validatie wordt de lijst met servers weer gegeven die kunnen worden gedetecteerd.
+    - Als de validatie mislukt voor een server, controleert u de fout door de muis aanwijzer boven het pictogram in de kolom **status** te bewegen. Los problemen op en valideer opnieuw.
+    - Als u een server wilt verwijderen, selecteert u > **verwijderen**.
+4. Klik na validatie op **opslaan en start de detectie** om het detectie proces te starten.
 
-Dit begint te ontdekken. Het duurt ongeveer 15 minuten voordat metagegevens van gedetecteerde VM's worden weergegeven in de Azure-portal.
+De detectie wordt gestart. Het duurt ongeveer 15 minuten voor de meta gegevens van gedetecteerde Vm's die in de Azure Portal worden weer gegeven.
 
-## <a name="verify-servers-in-the-portal"></a>Servers in de portal verifiëren
+## <a name="verify-servers-in-the-portal"></a>Servers in de portal controleren
 
-Nadat de detectie is voltooid, u controleren of de servers in de portal worden weergegeven.
+Nadat de detectie is voltooid, kunt u controleren of de servers worden weer gegeven in de portal.
 
-1. Open het Azure Migrate-dashboard.
-2. Klik in **Azure Migrate - Servers** > **Azure Migrate: Server Assessment** pagina op het pictogram dat het aantal voor **gedetecteerde servers**weergeeft.
+1. Open het Azure Migrate dash board.
+2. Klik op de pagina **Azure migrate servers** > **Azure migrate: Server beoordeling** op het pictogram met het aantal voor **gedetecteerde servers**.
 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Probeer [de beoordeling van fysieke servers](tutorial-assess-physical.md) met Azure Migrate Server Assessment uit.
+Probeer [fysieke servers te evalueren](tutorial-assess-physical.md) met Azure migrate server-evaluatie.

@@ -1,20 +1,20 @@
 ---
 title: 'Snelstart: een AKS-cluster (Azure Kubernetes Service) maken'
-description: Meer informatie over het snel maken van een Kubernetes-cluster met behulp van een Azure Resource Manager-sjabloon en het implementeren van een toepassing in Azure Kubernetes Service (AKS)
+description: Meer informatie over hoe u snel een Kubernetes-cluster maakt met behulp van een Azure Resource Manager sjabloon en hoe u een toepassing implementeert in azure Kubernetes service (AKS)
 services: container-service
 ms.topic: quickstart
 ms.date: 04/19/2019
 ms.custom: mvc,subject-armqs
 ms.openlocfilehash: bbe5d9ac21ae9e03d629a1667567a915c8653a8a
-ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/17/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81602653"
 ---
-# <a name="quickstart-deploy-an-azure-kubernetes-service-aks-cluster-using-an-azure-resource-manager-template"></a>Snelstart: een AKS-cluster (Azure Kubernetes Service) implementeren met behulp van een Azure Resource Manager-sjabloon
+# <a name="quickstart-deploy-an-azure-kubernetes-service-aks-cluster-using-an-azure-resource-manager-template"></a>Snelstartgids: een AKS-cluster (Azure Kubernetes service) implementeren met behulp van een Azure Resource Manager sjabloon
 
-Azure Kubernetes Service (AKS) is een beheerde Kubernetes-service waarmee u snel clusters kunt implementeren en beheren. In deze quickstart implementeert u een AKS-cluster met behulp van een Azure Resource Manager-sjabloon. Een toepassing met meerdere containers die bestaat uit een web-front-end en een Redis-exemplaar wordt uitgevoerd in het cluster.
+Azure Kubernetes Service (AKS) is een beheerde Kubernetes-service waarmee u snel clusters kunt implementeren en beheren. In deze Quick Start implementeert u een AKS-cluster met behulp van een Azure Resource Manager sjabloon. Een toepassing met meerdere containers die bestaat uit een web-front-end en een Redis-exemplaar wordt uitgevoerd in het cluster.
 
 ![Afbeelding van browsen naar Azure Vote](media/container-service-kubernetes-walkthrough/azure-voting-application.png)
 
@@ -22,33 +22,33 @@ Azure Kubernetes Service (AKS) is een beheerde Kubernetes-service waarmee u snel
 
 In deze quickstart wordt ervan uitgegaan dat u een basisbegrip hebt van Kubernetes-concepten. Zie [Kubernetes-kernconcepten voor Azure Kubernetes Service-cluster (AKS)][kubernetes-concepts] voor meer informatie.
 
-Als u geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) voordat u begint.
+Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Als u ervoor kiest de CLI lokaal te installeren en te gebruiken, moet u met deze quickstart de Azure CLI-versie 2.0.61 of hoger uitvoeren. Voer `az --version` uit om de versie te bekijken. Als u Azure CLI 2.0 wilt installeren of upgraden, raadpleegt u [Azure CLI 2.0 installeren][azure-cli-install].
+Als u ervoor kiest om de CLI lokaal te installeren en te gebruiken, moet u voor deze Quick Start de Azure CLI-versie 2.0.61 of hoger uitvoeren. Voer `az --version` uit om de versie te bekijken. Als u Azure CLI 2.0 wilt installeren of upgraden, raadpleegt u [Azure CLI 2.0 installeren][azure-cli-install].
 
 ## <a name="prerequisites"></a>Vereisten
 
-Als u een AKS-cluster wilt maken met behulp van een resourcemanagersjabloon, biedt u een SSH-public key en de principal van azure Active Directory-service.  U ook een [beheerde identiteit](use-managed-identity.md) gebruiken in plaats van een serviceprincipal voor machtigingen. Als u een van deze bronnen nodig hebt, raadpleegt u de volgende sectie; ga anders naar de sectie [Een AKS-cluster maken.](#create-an-aks-cluster)
+Als u een AKS-cluster wilt maken met behulp van een resource manager-sjabloon, geeft u een open bare SSH-sleutel en Azure Active Directory Service-Principal op.  U kunt ook een [beheerde identiteit](use-managed-identity.md) gebruiken in plaats van een service-principal voor machtigingen. Als u een van deze resources nodig hebt, raadpleegt u de volgende sectie. Ga anders naar de sectie [een AKS-cluster maken](#create-an-aks-cluster) .
 
 ### <a name="create-an-ssh-key-pair"></a>Een SSH-sleutelpaar maken
 
-Als u toegang wilt krijgen tot AKS-knooppunten, maakt u verbinding met een SSH-sleutelpaar. Gebruik `ssh-keygen` de opdracht om ssh-bestanden voor openbare en privésleutels te genereren. Standaard worden deze bestanden gemaakt in de *map ~/.ssh.* Als er op de opgegeven locatie een SSH-sleutelpaar met dezelfde naam bestaat, worden deze bestanden overschreven.
+Als u toegang wilt krijgen tot AKS-knoop punten, maakt u verbinding met een SSH-sleutel paar. Gebruik de `ssh-keygen` opdracht om open bare en persoonlijke SSH-sleutel bestanden te genereren. Deze bestanden worden standaard gemaakt in de map *~/.ssh* . Als er op de opgegeven locatie een SSH-sleutel paar met dezelfde naam bestaat, worden deze bestanden overschreven.
 
-Ga [https://shell.azure.com](https://shell.azure.com) naar Cloud Shell openen in uw browser.
+Ga naar [https://shell.azure.com](https://shell.azure.com) om Cloud shell in uw browser te openen.
 
-Met de volgende opdracht wordt een SSH-sleutelpaar gemaakt met RSA-versleuteling en een beetje lengte van 2048:
+Met de volgende opdracht wordt een SSH-sleutel paar gemaakt met behulp van RSA-versleuteling en een bitlengte van 2048:
 
 ```console
 ssh-keygen -t rsa -b 2048
 ```
 
-Zie [SSH-sleutels maken en beheren voor verificatie in Azure voor][ssh-keys]meer informatie over het maken van SSH-sleutels.
+Zie [SSH-sleutels voor verificatie in azure maken en beheren][ssh-keys]voor meer informatie over het maken van SSH-sleutels.
 
 ### <a name="create-a-service-principal"></a>Een service-principal maken
 
-Een AKS-cluster heeft een service-principal van Azure Active Directory nodig om met andere Azure-resources te kunnen communiceren. Maak een service-principal met behulp van de opdracht [az ad sp create-for-rbac][az-ad-sp-create-for-rbac]. De parameter `--skip-assignment` zorgt ervoor dat eventuele extra machtigingen beperkt kunnen worden toegewezen. Standaard is de service-principal geldig voor één jaar. Houd er rekening mee dat u een beheerde identiteit gebruiken in plaats van een serviceprincipal. Zie [Beheerde identiteiten gebruiken voor](use-managed-identity.md)meer informatie .
+Een AKS-cluster heeft een service-principal van Azure Active Directory nodig om met andere Azure-resources te kunnen communiceren. Maak een service-principal met behulp van de opdracht [az ad sp create-for-rbac][az-ad-sp-create-for-rbac]. De parameter `--skip-assignment` zorgt ervoor dat eventuele extra machtigingen beperkt kunnen worden toegewezen. Standaard is de service-principal geldig voor één jaar. Houd er rekening mee dat u een beheerde identiteit kunt gebruiken in plaats van een service-principal. Zie [beheerde identiteiten gebruiken](use-managed-identity.md)voor meer informatie.
 
 ```azurecli-interactive
 az ad sp create-for-rbac --skip-assignment
@@ -70,13 +70,13 @@ Noteer de *appId* en *wachtwoord*. Deze waarden worden gebruikt in de volgende s
 
 ## <a name="create-an-aks-cluster"></a>Een AKS-cluster maken
 
-### <a name="review-the-template"></a>De sjabloon bekijken
+### <a name="review-the-template"></a>De sjabloon controleren
 
-De sjabloon die in deze quickstart wordt gebruikt, is afkomstig van [Azure Quickstart-sjablonen.](https://azure.microsoft.com/resources/templates/101-aks/)
+De sjabloon die in deze Quick Start wordt gebruikt, is afkomstig uit [Azure Quick](https://azure.microsoft.com/resources/templates/101-aks/)start-sjablonen.
 
 :::code language="json" source="~/quickstart-templates/101-aks/azuredeploy.json" range="1-126" highlight="86-118":::
 
-Zie de [site aks snelstartsjablonen][aks-quickstart-templates] voor meer AKS-voorbeelden.
+Zie de site [AKS Quick][aks-quickstart-templates] start-sjablonen voor meer AKS-voor beelden.
 
 ### <a name="deploy-the-template"></a>De sjabloon implementeren
 
@@ -86,24 +86,24 @@ Zie de [site aks snelstartsjablonen][aks-quickstart-templates] voor meer AKS-voo
 
 2. Typ of selecteer de volgende waarden.
 
-    Laat hiervoor de standaardwaarden voor de *OS-schijfgrootte GB,* *Agent Count*, *Agent VM-grootte,* *OS-type*en *Kubernetes-versie achter*. Geef uw eigen waarden op voor de volgende sjabloonparameters:
+    Voor deze Quick start moet u de standaard waarden voor de *besturingssysteem schijf grootte GB*, het *aantal agents*, de *VM-grootte*van de agent, het *type besturings systeem*en de *Kubernetes-versie*behouden. Geef uw eigen waarden op voor de volgende sjabloon parameters:
 
     * **Subscription**: selecteer een Azure-abonnement.
-    * **Resourcegroep:** Selecteer **Nieuw maken**. Voer een unieke naam in voor de resourcegroep, zoals *myResourceGroup,* kies **OK**.
-    * **Locatie**: Selecteer een locatie, zoals **Oost-VS**.
-    * **Clusternaam:** voer een unieke naam in voor het AKS-cluster, zoals *myAKSCluster.*
-    * **DNS-voorvoegsel**: Voer een uniek DNS-voorvoegsel in voor uw cluster, zoals *myakscluster.*
-    * **Gebruikersnaam voor Linux-beheerder:** voer een gebruikersnaam in om verbinding te maken met SSH, zoals *azureuser.*
-    * **SSH RSA Public Key**: Kopieer en plak het *openbare* deel van uw SSH-sleutelpaar (standaard de inhoud van *~/.ssh/id_rsa.pub).*
-    * **Service Principal Client Id:** Kopieer en plak de `az ad sp create-for-rbac` *appId* van uw serviceprincipal van de opdracht.
-    * **Service Principal Client Secret:** *password* Kopieer en plak het `az ad sp create-for-rbac` wachtwoord van uw serviceprincipal van de opdracht.
-    * **Ik ga akkoord met de bovenstaande voorwaarden**: Schakel dit vakje in om akkoord te gaan.
+    * **Resource groep**: Selecteer **nieuwe maken**. Voer een unieke naam in voor de resource groep, zoals *myResourceGroup*, en kies vervolgens **OK**.
+    * **Locatie**: Selecteer een locatie, bijvoorbeeld **VS-Oost**.
+    * **Cluster naam**: Voer een unieke naam in voor het AKS-cluster, zoals *myAKSCluster*.
+    * **DNS-voor voegsel**: Voer een uniek DNS-voor voegsel voor uw cluster in, zoals *myakscluster*.
+    * **Gebruikers naam voor Linux-beheerder**: Voer een gebruikers naam in om verbinding te maken via SSH, zoals *azureuser*.
+    * **Open bare SSH RSA-sleutel**: Kopieer en plak het *open bare* deel van uw SSH-sleutel paar (standaard de inhoud van *~/.ssh/id_rsa. pub*).
+    * **Service-Principal-client-id**: Kopieer en plak de *AppID* van uw service `az ad sp create-for-rbac` -principal van de opdracht.
+    * **Service-Principal-client geheim**: Kopieer en plak het *wacht woord* van de service `az ad sp create-for-rbac` -principal van de opdracht.
+    * **Ik ga akkoord met de status van de voor waarden hierboven**: Schakel dit selectie vakje in om akkoord te gaan.
 
-    ![Resourcemanager-sjabloon om een Azure Kubernetes Service-cluster in de portal te maken](./media/kubernetes-walkthrough-rm-template/create-aks-cluster-using-template-portal.png)
+    ![Resource Manager-sjabloon voor het maken van een Azure Kubernetes service-cluster in de portal](./media/kubernetes-walkthrough-rm-template/create-aks-cluster-using-template-portal.png)
 
 3. Selecteer **Aankoop**.
 
-Het maken van het AKS-cluster duurt enkele minuten. Wacht tot het cluster is geïmplementeerd voordat u doorgaat naar de volgende stap.
+Het duurt enkele minuten om het AKS-cluster te maken. Wacht totdat het cluster met succes is geïmplementeerd voordat u verdergaat met de volgende stap.
 
 ## <a name="validate-the-deployment"></a>De implementatie valideren
 
@@ -127,7 +127,7 @@ Als u de verbinding met uw cluster wilt controleren, gebruikt u de opdracht [kub
 kubectl get nodes
 ```
 
-In de volgende voorbeelduitvoer worden de knooppunten weergegeven die in de vorige stappen zijn gemaakt. Zorg ervoor dat de status voor alle knooppunten *gereed*is:
+In de volgende voorbeeld uitvoer ziet u de knoop punten die zijn gemaakt in de vorige stappen. Zorg ervoor dat de status voor alle knoop punten *gereed*is:
 
 ```output
 NAME                       STATUS   ROLES   AGE     VERSION
@@ -255,7 +255,7 @@ Gebruik de opdracht [kubectl get service][kubectl-get] met het argument `--watch
 kubectl get service azure-vote-front --watch
 ```
 
-In eerste instantie wordt het *EXTERNE-IP* voor de *azure-vote-front-service* weergegeven als *in behandeling*.
+In eerste instantie wordt het *externe IP-adres* voor de service *Azure-stemmen* als *in behandeling*weer gegeven.
 
 ```output
 NAME               TYPE           CLUSTER-IP   EXTERNAL-IP   PORT(S)        AGE
@@ -281,7 +281,7 @@ az group delete --name myResourceGroup --yes --no-wait
 ```
 
 > [!NOTE]
-> Wanneer u het cluster verwijdert, wordt de Azure Active Directory-service-principal die door het AKS-cluster wordt gebruikt niet verwijderd. Zie [Overwegingen voor en verwijdering van AKS service-principal][sp-delete] voor stappen voor het verwijderen van de service-principal. Als u een beheerde identiteit hebt gebruikt, wordt de identiteit beheerd door het platform en hoeft deze niet te worden verwijderd.
+> Wanneer u het cluster verwijdert, wordt de Azure Active Directory-service-principal die door het AKS-cluster wordt gebruikt niet verwijderd. Zie [Overwegingen voor en verwijdering van AKS service-principal][sp-delete] voor stappen voor het verwijderen van de service-principal. Als u een beheerde identiteit hebt gebruikt, wordt de identiteit beheerd door het platform en hoeft niet te worden verwijderd.
 
 ## <a name="get-the-code"></a>Code ophalen
 
@@ -291,7 +291,7 @@ In deze snelstartgids zijn vooraf gemaakte containerinstallatiekopieën gebruikt
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze snelstart hebt u een Kubernetes-cluster geïmplementeerd en vervolgens een toepassing met meerdere containers geïmplementeerd. [Toegang tot het Kubernetes-webdashboard][kubernetes-dashboard] voor het cluster dat u hebt gemaakt.
+In deze snelstart hebt u een Kubernetes-cluster geïmplementeerd en vervolgens een toepassing met meerdere containers geïmplementeerd. [Open het Kubernetes-webdashboard][kubernetes-dashboard] voor het cluster dat u hebt gemaakt.
 
 Voor meer informatie over AKS en een volledig stapsgewijs voorbeeld van code tot implementatie gaat u naar de zelfstudie over Kubernetes-clusters.
 

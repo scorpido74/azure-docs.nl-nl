@@ -1,7 +1,7 @@
 ---
 title: MSAL gebruiken met Azure Active Directory B2CLearn | Azure
 titleSuffix: Microsoft identity platform
-description: Met Microsoft Authentication Library for JavaScript (MSAL.js) kunnen toepassingen werken met Azure AD B2C en tokens aanschaffen om beveiligde web-API's aan te roepen. Deze web-API's kunnen Microsoft Graph, andere Microsoft API's, webAPI's van anderen of uw eigen web-API zijn.
+description: Met de micro soft-verificatie bibliotheek voor Java script (MSAL. js) kunnen toepassingen met Azure AD B2C werken en tokens verkrijgen voor het aanroepen van beveiligde web-Api's. Deze web-Api's kunnen worden Microsoft Graph, andere Api's van micro soft, Web-Api's van anderen of uw eigen web-API.
 services: active-directory
 author: negoe
 manager: CelesteDG
@@ -14,53 +14,53 @@ ms.author: negoe
 ms.reviewer: nacanuma
 ms.custom: aaddev
 ms.openlocfilehash: 8e076dfd6670265d458eb35d8e1b3e4500009a12
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81534479"
 ---
-# <a name="use-microsoft-authentication-library-for-javascript-to-work-with-azure-active-directory-b2c"></a>Microsoft-verificatiebibliotheek voor JavaScript gebruiken om te werken met Azure Active Directory B2C
+# <a name="use-microsoft-authentication-library-for-javascript-to-work-with-azure-active-directory-b2c"></a>Micro soft-verificatie bibliotheek voor Java script gebruiken om te werken met Azure Active Directory B2C
 
-[Met microsoft-verificatiebibliotheek voor JavaScript (MSAL.js)](https://github.com/AzureAD/microsoft-authentication-library-for-js) kunnen JavaScript-ontwikkelaars gebruikers met sociale en lokale identiteiten verifiëren met [Azure Active Directory B2C (Azure AD B2C).](https://docs.microsoft.com/azure/active-directory-b2c/) Door Azure AD B2C te gebruiken als een identiteitsbeheerservice, u aanpassen en beheren hoe klanten zich aanmelden, zich aanmelden en hun profielen beheren wanneer ze uw toepassingen gebruiken.
+Met de [micro soft-verificatie bibliotheek voor Java script (MSAL. js)](https://github.com/AzureAD/microsoft-authentication-library-for-js) kunnen java script-ontwikkel aars gebruikers verifiëren met sociale en lokale identiteiten met behulp van [Azure Active Directory B2C (Azure AD B2C)](https://docs.microsoft.com/azure/active-directory-b2c/). Door Azure AD B2C als een service voor identiteits beheer te gebruiken, kunt u aanpassen en bepalen hoe klanten zich registreren, aanmelden en hun profielen beheren wanneer ze uw toepassingen gebruiken.
 
-Azure AD B2C stelt u ook in staat om de gebruikersinterface van uw toepassingen te brandmerken en aan te passen tijdens het verificatieproces om uw klanten een naadloze ervaring te bieden.
+Met Azure AD B2C kunt u ook de gebruikers interface van uw toepassingen tijdens het verificatie proces branden en aanpassen om uw klanten een naadloze ervaring te bieden.
 
-In dit artikel wordt uitgelegd hoe u MSAL.js gebruiken om met Azure AD B2C te werken en worden belangrijke punten samengevat waarvan u zich bewust moet zijn. Raadpleeg [Azure AD B2C-documentatie](https://docs.microsoft.com/azure/active-directory-b2c/overview)voor een volledige discussie en zelfstudie.
+In dit artikel wordt gedemonstreerd hoe u MSAL. js kunt gebruiken om te werken met Azure AD B2C en hoe u belang rijke punten samenvat waarvan u rekening moet houden. Raadpleeg de [documentatie van Azure AD B2C](https://docs.microsoft.com/azure/active-directory-b2c/overview)voor een volledige bespreking en zelf studie.
 
 ## <a name="prerequisites"></a>Vereisten
 
-Als u nog geen eigen [Azure AD B2C-tenant](https://docs.microsoft.com/azure/active-directory-b2c/tutorial-create-tenant)hebt gemaakt, u nu beginnen met het maken van een tenant (u ook een bestaande Azure AD B2C-tenant gebruiken als u er al een hebt).
+Als u nog geen eigen [Azure AD B2C Tenant](https://docs.microsoft.com/azure/active-directory-b2c/tutorial-create-tenant)hebt gemaakt, begint u met het maken van een nu (u kunt ook een bestaande Azure AD B2C Tenant gebruiken als u er al een hebt).
 
-Deze demonstratie bestaat uit twee delen:
+Deze demonstratie bevat twee onderdelen:
 
-- hoe een web-API te beschermen.
-- een toepassing van één pagina registreren om *die* web-API te verifiëren en aan te roepen.
+- een web-API beveiligen.
+- een toepassing met één pagina registreren om *die* Web-API te verifiëren en aan te roepen.
 
 ## <a name="nodejs-web-api"></a>Node.js-web-API
 
 > [!NOTE]
-> Op dit moment is MSAL.js voor Node nog in ontwikkeling (zie de [roadmap).](https://github.com/AzureAD/microsoft-authentication-library-for-js/wiki#roadmap) In de tussentijd raden we u aan om [een verificatiebibliotheek](https://github.com/AzureAD/passport-azure-ad)voor Node.js te gebruiken die door Microsoft is ontwikkeld en ondersteund.
+> Op dit moment is MSAL. js voor het knoop punt nog in ontwikkeling (Zie het [schema](https://github.com/AzureAD/microsoft-authentication-library-for-js/wiki#roadmap)). In de tussen tijd maken we gebruik van [Pass Port-Azure-AD](https://github.com/AzureAD/passport-azure-ad), een verificatie bibliotheek voor node. js ontwikkeld en ondersteund door micro soft.
 
-De volgende stappen laten zien hoe een **web-API** Azure AD B2C kan gebruiken om zichzelf te beschermen en geselecteerde scopes bloot te stellen aan een clienttoepassing.
+De volgende stappen laten zien hoe een **Web-API** Azure AD B2C kan gebruiken om zichzelf te beschermen en geselecteerde bereiken beschikbaar te maken voor een client toepassing.
 
 ### <a name="step-1-register-your-application"></a>Stap 1: Uw toepassing registreren
 
-Als u uw web-API wilt beveiligen met Azure AD B2C, moet u deze eerst registreren. Zie [Uw aanvraag registreren](https://docs.microsoft.com/azure/active-directory-b2c/add-web-application?tabs=applications) voor gedetailleerde stappen.
+Als u uw web-API met Azure AD B2C wilt beveiligen, moet u deze eerst registreren. Zie [uw toepassing registreren](https://docs.microsoft.com/azure/active-directory-b2c/add-web-application?tabs=applications) voor gedetailleerde stappen.
 
-### <a name="step-2-download-the-sample-application"></a>Stap 2: De voorbeeldtoepassing downloaden
+### <a name="step-2-download-the-sample-application"></a>Stap 2: de voorbeeld toepassing downloaden
 
-Download het voorbeeld als zip-bestand of kloon het van GitHub:
+Down load het voor beeld als een zip-bestand of kloon het uit GitHub:
 
 ```console
 git clone https://github.com/Azure-Samples/active-directory-b2c-javascript-nodejs-webapi.git
 ```
 
-### <a name="step-3-configure-authentication"></a>Stap 3: Verificatie configureren
+### <a name="step-3-configure-authentication"></a>Stap 3: verificatie configureren
 
 1. Open het bestand `config.js` in het voorbeeld.
 
-2. Configureer het voorbeeld met de toepassingsreferenties die u eerder hebt verkregen tijdens het registreren van uw toepassing. Wijzig de volgende regels code door de waarden te vervangen door de namen van uw clientID, host, tenantId en beleidsnaam.
+2. Configureer het voor beeld met de referenties van de toepassing die u eerder hebt verkregen tijdens het registreren van uw toepassing. Wijzig de volgende regels code door de waarden te vervangen door de namen van uw clientID, host, tenantId en beleids naam.
 
 ```JavaScript
 const clientID = "<Application ID for your Node.js web API - found on Properties page in Azure portal e.g. 93733604-cc77-4a3c-a604-87084dd55348>";
@@ -69,36 +69,36 @@ const tenantId = "<your-tenant-ID>.onmicrosoft.com"; // Alternatively, you can u
 const policyName = "<Name of your sign in / sign up policy, e.g. B2C_1_signupsignin1>";
 ```
 
-Voor meer informatie, kijk op deze [Node.js B2C Web API sample](https://github.com/Azure-Samples/active-directory-b2c-javascript-nodejs-webapi).
+Bekijk voor meer informatie dit [node. js B2C Web-API](https://github.com/Azure-Samples/active-directory-b2c-javascript-nodejs-webapi)-voor beeld.
 
 ---
 
-## <a name="javascript-spa"></a>JavaScript SPA
+## <a name="javascript-spa"></a>Java script SPA
 
-De volgende stappen laten zien hoe een **toepassing van één pagina** Azure AD B2C kan gebruiken om u aan te melden, u aan te melden en een beveiligde web-API aan te roepen.
+De volgende stappen laten zien hoe een **toepassing met één pagina** kan Azure AD B2C gebruiken om zich aan te melden, zich aan te melden en een beveiligde web-API aan te roepen.
 
 ### <a name="step-1-register-your-application"></a>Stap 1: Uw toepassing registreren
 
-Als u verificatie wilt implementeren, moet u eerst uw toepassing registreren. Zie [Uw aanvraag registreren](https://docs.microsoft.com/azure/active-directory-b2c/tutorial-register-applications) voor gedetailleerde stappen.
+Als u verificatie wilt implementeren, moet u de toepassing eerst registreren. Zie [uw toepassing registreren](https://docs.microsoft.com/azure/active-directory-b2c/tutorial-register-applications) voor gedetailleerde stappen.
 
-### <a name="step-2-download-the-sample-application"></a>Stap 2: De voorbeeldtoepassing downloaden
+### <a name="step-2-download-the-sample-application"></a>Stap 2: de voorbeeld toepassing downloaden
 
-Download het voorbeeld als zip-bestand of kloon het van GitHub:
+Down load het voor beeld als een zip-bestand of kloon het uit GitHub:
 
 ```console
 git clone https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-singlepageapp.git
 ```
 
-### <a name="step-3-configure-authentication"></a>Stap 3: Verificatie configureren
+### <a name="step-3-configure-authentication"></a>Stap 3: verificatie configureren
 
-Er zijn twee aandachtspunten bij het configureren van uw toepassing:
+Er zijn twee belang rijke punten bij het configureren van uw toepassing:
 
-- API-eindpunt en blootgestelde scopes configureren
-- Verificatieparameters en tokenscopes configureren
+- API-eind punt en weer gegeven bereiken configureren
+- Verificatie parameters en Token scopes configureren
 
 1. Open het bestand `apiConfig.js` in het voorbeeld.
 
-2. Configureer het voorbeeld met de parameters die u eerder hebt verkregen tijdens het registreren van uw web-API. Wijzig de volgende regels code door de waarden te vervangen door het adres van uw web-API en blootgestelde scopes.
+2. Configureer het voor beeld met de para meters die u eerder hebt verkregen tijdens het registreren van uw web-API. Wijzig de volgende regels code door de waarden te vervangen door het adres van uw web-API en weer gegeven bereiken.
 
    ```javascript
     // The current application coordinates were pre-registered in a B2C tenant.
@@ -110,7 +110,7 @@ Er zijn twee aandachtspunten bij het configureren van uw toepassing:
 
 3. Open het bestand `authConfig.js` in het voorbeeld.
 
-4. Configureer het voorbeeld met de parameters die u eerder hebt verkregen tijdens het registreren van uw toepassing op één pagina. Wijzig de volgende regels code door de waarden te vervangen door uw ClientId, metagegevens van de autoriteit en tokenaanvraagscopes.
+4. Configureer het voor beeld met de para meters die u eerder hebt verkregen tijdens het registreren van uw toepassing met één pagina. Wijzig de volgende regels code door de waarden te vervangen door uw ClientId-, Authority-meta gegevens en Token aanvraag scopes.
 
    ```javascript
     // Config object to be passed to Msal on creation.
@@ -132,13 +132,13 @@ Er zijn twee aandachtspunten bij het configureren van uw toepassing:
     };
    ```
 
-Bekijk dit voorbeeld van [javascript B2C-toepassingen met één pagina](https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-singlepageapp).
+Lees voor meer informatie dit [Java script B2C-voorbeeld toepassing voor één pagina](https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-singlepageapp).
 
 ---
 
 ## <a name="next-steps"></a>Volgende stappen
 
 Meer informatie over:
-- [Gebruikersstromen](https://docs.microsoft.com/azure/active-directory-b2c/tutorial-create-user-flows)
+- [Gebruikers stromen](https://docs.microsoft.com/azure/active-directory-b2c/tutorial-create-user-flows)
 - [Aangepast beleid](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-get-started)
 - [UX-aanpassing](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-configure-user-input)

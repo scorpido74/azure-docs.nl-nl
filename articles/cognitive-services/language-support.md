@@ -1,7 +1,7 @@
 ---
 title: Taalondersteuning
 titleSuffix: Azure Cognitive Services
-description: Azure Cognitive Services stelt u in staat om toepassingen te bouwen die uw gebruikers zien, horen, spreken en begrijpen. Tussen deze services worden meer dan drie dozijn talen ondersteund, zodat gebruikers op natuurlijke manieren met uw toepassing kunnen communiceren.
+description: Met Azure Cognitive Services kunt u toepassingen ontwikkelen die uw gebruikers zien, horen, spreken en begrijpen. Tussen deze services worden er meer dan drie dozijn talen ondersteund, zodat gebruikers op natuurlijke wijze met uw toepassing kunnen communiceren.
 services: cognitive-services
 author: erhopf
 manager: nitinme
@@ -11,17 +11,17 @@ ms.date: 03/31/2020
 ms.author: erhopf
 ms.custom: seodec18
 ms.openlocfilehash: d103b22338672f031fa4f91349a8376f86b703c8
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81530965"
 ---
 # <a name="natural-language-support-for-azure-cognitive-services"></a>Ondersteuning voor natuurlijke taal voor Azure Cognitive Services
 
-Azure Cognitive Services stelt u in staat om toepassingen te bouwen die uw gebruikers zien, horen, spreken en begrijpen. Tussen deze services worden meer dan drie dozijn talen ondersteund, zodat gebruikers op natuurlijke manieren met uw toepassing kunnen communiceren. Gebruik de onderstaande links om de beschikbaarheid van talen per service te bekijken.
+Met Azure Cognitive Services kunt u toepassingen ontwikkelen die uw gebruikers zien, horen, spreken en begrijpen. Tussen deze services worden er meer dan drie dozijn talen ondersteund, zodat gebruikers op natuurlijke wijze met uw toepassing kunnen communiceren. Gebruik de onderstaande koppelingen om de taal beschik baarheid per service weer te geven.
 
-Deze cognitieve diensten zijn taalagnostisch en hebben geen beperkingen op basis van menselijke taal.
+Deze Cognitive Services zijn taal neutraal en hebben geen beperkingen op basis van de menselijke taal.
 
 * [Anomaly Detector (preview)](./anomaly-detector/index.yml)
 * [Custom Vision](./Custom-Vision-Service/index.yml)
@@ -45,9 +45,9 @@ Deze cognitieve diensten zijn taalagnostisch en hebben geen beperkingen op basis
 
 ## <a name="speech"></a>Speech
 
-* [Spraakservice: spraak-naar-tekst](./speech-service/supported-languages.md#speech-to-text)
-* [Spraakservice:Tekst-naar-spraak](./speech-service/supported-languages.md#text-to-speech)
-* [Spraakservice: Spraakvertaling](./speech-service/supported-languages.md#speech-translation)
+* [Speech-Service: spraak naar tekst](./speech-service/supported-languages.md#speech-to-text)
+* [Speech-Service: tekst-naar-spraak](./speech-service/supported-languages.md#text-to-speech)
+* [Speech-Service: spraak omzetting](./speech-service/supported-languages.md#speech-translation)
 
 ## <a name="search"></a>Search
 

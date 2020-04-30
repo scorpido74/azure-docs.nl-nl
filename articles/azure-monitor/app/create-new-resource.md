@@ -1,63 +1,63 @@
 ---
-title: Een nieuwe Azure Application Insights-bron maken | Microsoft Documenten
-description: Handmatig application Insights-monitoring instellen voor een nieuwe live-applicatie.
+title: Een nieuwe Azure-toepassing Insights-resource maken | Microsoft Docs
+description: Stel Application Insights bewaking hand matig in voor een nieuwe Live-toepassing.
 ms.topic: conceptual
 ms.date: 12/02/2019
 ms.openlocfilehash: 0c8b9ccaa70a2fd1bf46c6f4537f54d702ecc48f
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81537573"
 ---
 # <a name="create-an-application-insights-resource"></a>Een Application Insights-resource maken
 
-Azure Application Insights geeft gegevens over uw toepassing weer in een Microsoft *Azure-bron.* Het maken van een nieuwe resource is daarom onderdeel van het instellen van [Application Insights om een nieuwe toepassing te controleren.][start] Nadat u uw nieuwe resource hebt gemaakt, u de instrumentatiesleutel downloaden en deze gebruiken om de Application Insights SDK te configureren. De instrumentatiesleutel koppelt uw telemetrie aan de resource.
+Met Azure-toepassing Insights worden gegevens over uw toepassing weer gegeven in een Microsoft Azure *resource*. Het maken van een nieuwe resource is daarom een onderdeel van het [instellen van Application Insights om een nieuwe toepassing te bewaken][start]. Nadat u de nieuwe resource hebt gemaakt, kunt u de bijbehorende instrumentatie sleutel ophalen en gebruiken om de Application Insights SDK te configureren. De instrumentatie sleutel koppelt uw telemetrie aan de resource.
 
 ## <a name="sign-in-to-microsoft-azure"></a>Aanmelden bij Microsoft Azure
 
-Als u geen Azure-abonnement hebt, maakt u een [gratis](https://azure.microsoft.com/free/) account voordat u begint.
+Als u nog geen abonnement op Azure hebt, maak dan een [gratis](https://azure.microsoft.com/free/) account aan voordat u begint.
 
 ## <a name="create-an-application-insights-resource"></a>Een Application Insights-resource maken
 
-Meld u aan bij de [Azure-portal](https://portal.azure.com)en maak een Application Insights-bron:
+Meld u aan bij de [Azure Portal](https://portal.azure.com)en maak een Application Insights resource:
 
-![Klik op het bord '+' in de linkerbovenhoek. Selecteer hulpprogramma's voor ontwikkelaars, gevolgd door Application Insights](./media/create-new-resource/new-app-insights.png)
+![Klik op het plus teken (+) in de linkerbovenhoek. Selecteer Ontwikkelhulpprogramma's gevolgd door Application Insights](./media/create-new-resource/new-app-insights.png)
 
    | Instellingen        |  Waarde           | Beschrijving  |
    | ------------- |:-------------|:-----|
-   | **Naam**      | Unieke waarde | Naam die de app identificeert die u controleert. |
-   | **Resourcegroep**     | myResourceGroup      | Naam voor de nieuwe of bestaande brongroep om App Insights-gegevens te hosten. |
-   | **Locatie** | VS - oost | Kies een locatie bij u in de buurt of in de buurt van waar uw app wordt gehost. |
+   | **Naam**      | Unieke waarde | Naam waarmee de app wordt geïdentificeerd die u bewaken. |
+   | **Resource groep**     | myResourceGroup      | Naam voor de nieuwe of bestaande resource groep om app Insights-gegevens te hosten. |
+   | **Locatie** | VS - oost | Kies een locatie bij u in de buurt of in de buurt van waar de app wordt gehost. |
 
 > [!NOTE]
-> Hoewel u dezelfde resourcenaam gebruiken in verschillende resourcegroepen, kan het nuttig zijn om een wereldwijd unieke naam te gebruiken. Dit kan handig zijn als u van plan bent [om query's met verschillende bronnen uit](https://docs.microsoft.com/azure/azure-monitor/log-query/cross-workspace-query#identifying-an-application) te voeren, omdat dit de vereiste syntaxis vereenvoudigt.
+> Hoewel u dezelfde resource naam in verschillende resource groepen kunt gebruiken, kan het nuttig zijn om een wereld wijd unieke naam te gebruiken. Dit kan handig zijn als u van plan bent om [query's voor meerdere resources uit te voeren](https://docs.microsoft.com/azure/azure-monitor/log-query/cross-workspace-query#identifying-an-application) terwijl het de vereiste syntaxis vereenvoudigt.
 
-Voer de juiste waarden in de vereiste velden in en selecteer **Controleren + maken**.
+Voer de juiste waarden in de vereiste velden in en selecteer vervolgens **controleren + maken**.
 
-![Voer waarden in de vereiste velden in en selecteer vervolgens 'controleren + maken'.](./media/create-new-resource/review-create.png)
+![Voer waarden in de vereiste velden in en selecteer vervolgens controleren + maken.](./media/create-new-resource/review-create.png)
 
-Wanneer uw app is gemaakt, wordt een nieuw deelvenster geopend. In dit deelvenster ziet u prestatie- en gebruiksgegevens over uw bewaakte toepassing. 
+Als uw app is gemaakt, wordt er een nieuw deel venster geopend. In dit deel venster ziet u prestatie-en gebruiks gegevens over uw bewaakte toepassing. 
 
-## <a name="copy-the-instrumentation-key"></a>De instrumentatietoets kopiëren
+## <a name="copy-the-instrumentation-key"></a>De instrumentatie sleutel kopiëren
 
-De instrumentatiesleutel identificeert de bron waaraan u uw telemetriegegevens wilt koppelen. U moet de instrumentatiesleutel kopiëren en toevoegen aan de code van uw toepassing.
+De instrumentatie sleutel identificeert de resource waaraan u de telemetriegegevens wilt koppelen. U moet de instrumentatie sleutel kopiëren en toevoegen aan de code van uw toepassing.
 
-![Klik op de instrumentatietoets en kopieer](./media/create-new-resource/instrumentation-key.png)
+![Klik en kopieer de instrumentatie sleutel](./media/create-new-resource/instrumentation-key.png)
 
-## <a name="install-the-sdk-in-your-app"></a>De SDK in uw app installeren
+## <a name="install-the-sdk-in-your-app"></a>De SDK installeren in uw app
 
 Installeer de Application Insights SDK in uw app. Deze stap is sterk afhankelijk van het type van uw toepassing.
 
-Gebruik de instrumentatiesleutel om de SDK te configureren [die u in uw toepassing installeert.][start]
+Gebruik de instrumentatie sleutel voor [het configureren van de SDK die u in uw toepassing installeert][start].
 
-De SDK bevat standaardmodules die telemetrie verzenden zonder dat u extra code hoeft te schrijven. Als u acties van gebruikers wilt bijhouden of problemen in meer detail wilt diagnosticeren, [gebruikt u de API][api] om uw eigen telemetrie te verzenden.
+De SDK bevat standaard modules die telemetrie verzenden zonder dat u extra code hoeft te schrijven. [Gebruik de API][api] om uw eigen telemetrie te verzenden voor het volgen van gebruikers acties of het vaststellen van problemen met meer details.
 
-## <a name="creating-a-resource-automatically"></a>Automatisch een resource maken
+## <a name="creating-a-resource-automatically"></a>Een resource automatisch maken
 
 ### <a name="powershell"></a>PowerShell
 
-Een nieuwe Application Insights-bron maken
+Een nieuwe Application Insights-resource maken
 
 ```powershell
 New-AzApplicationInsights [-ResourceGroupName] <String> [-Name] <String> [-Location] <String> [-Kind <String>]
@@ -92,19 +92,19 @@ SamplingPercentage :
 TenantId           : {subid}
 ```
 
-Raadpleeg de [Azure PowerShell-documentatie](https://docs.microsoft.com/powershell/module/az.applicationinsights/new-azapplicationinsights?view=azps-2.5.0)voor de volledige PowerShell-documentatie voor deze cmdlet en voor meer informatie over het ophalen van de instrumentatiesleutel.
+Raadpleeg de [documentatie van Azure PowerShell](https://docs.microsoft.com/powershell/module/az.applicationinsights/new-azapplicationinsights?view=azps-2.5.0)voor de volledige Power shell-documentatie voor deze cmdlet en voor meer informatie over het ophalen van de instrumentatie sleutel.
 
-### <a name="azure-cli-preview"></a>Azure CLI (voorbeeld)
+### <a name="azure-cli-preview"></a>Azure CLI (preview-versie)
 
-Als u toegang wilt krijgen tot de preview Application Insights Azure CLI-opdrachten die u eerst moet uitvoeren:
+Als u de preview-Application Insights Azure CLI-opdrachten wilt gebruiken, moet u eerst het volgende doen:
 
 ```azurecli
  az extension add -n application-insights
 ```
 
-Als u de `az extension add` opdracht niet uitvoert, ziet u een foutbericht met de tekst:`az : ERROR: az monitor: 'app-insights' is not in the 'az monitor' command group. See 'az monitor --help'.`
+Als u de `az extension add` opdracht niet uitvoert, wordt een fout bericht weer gegeven waarin staat:`az : ERROR: az monitor: 'app-insights' is not in the 'az monitor' command group. See 'az monitor --help'.`
 
-Nu u het volgende uitvoeren om uw Application Insights-bron te maken:
+U kunt nu het volgende uitvoeren om uw Application Insights-resource te maken:
 
 ```azurecli
 az monitor app-insights component create --app
@@ -149,7 +149,7 @@ az monitor app-insights component create --app demoApp --location eastus --kind 
 }
 ```
 
-Raadpleeg de Azure CLI-documentatie voor deze opdracht voor de volledige Azure CLI-documentatie voor deze opdracht en raadpleeg de Azure CLI-documentatie voor de volledige Azure [CLI-documentatie.](https://docs.microsoft.com/cli/azure/ext/application-insights/monitor/app-insights/component?view=azure-cli-latest#ext-application-insights-az-monitor-app-insights-component-create)
+Raadpleeg de [documentatie van Azure cli](https://docs.microsoft.com/cli/azure/ext/application-insights/monitor/app-insights/component?view=azure-cli-latest#ext-application-insights-az-monitor-app-insights-component-create)voor de volledige Azure cli-documentatie voor deze opdracht en voor meer informatie over het ophalen van de instrumentatie sleutel.
 
 ## <a name="next-steps"></a>Volgende stappen
 * [Diagnostische gegevens doorzoeken](../../azure-monitor/app/diagnostic-search.md)

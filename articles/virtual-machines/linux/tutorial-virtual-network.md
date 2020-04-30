@@ -1,5 +1,5 @@
 ---
-title: Zelfstudie - Virtuele Azure-netwerken voor Linux-VM's maken en beheren
+title: "Zelf studie: virtuele Azure-netwerken voor Linux-Vm's maken en beheren"
 description: In deze zelfstudie leert u hoe u Azure CLI gebruikt voor het maken en beheren van virtuele Azure-netwerken voor virtuele Linux-machines
 services: virtual-machines-linux
 documentationcenter: virtual-machines
@@ -15,10 +15,10 @@ ms.date: 05/10/2017
 ms.author: cynthn
 ms.custom: mvc
 ms.openlocfilehash: 5527fbfc05eb5aadf5c5775fb9987a88d5ba81bb
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81460440"
 ---
 # <a name="tutorial-create-and-manage-azure-virtual-networks-for-linux-virtual-machines-with-the-azure-cli"></a>Zelfstudie: Virtuele Azure-netwerken voor virtuele Linux-machines maken en beheren met Azure CLI
@@ -32,7 +32,7 @@ Virtuele Azure-machines maken gebruik van Azure-netwerken voor interne en extern
 > * Netwerkverkeer beveiligen
 > * Een back-end virtuele machine maken
 
-Deze zelfstudie maakt gebruik van de CLI in de [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview), die voortdurend wordt bijgewerkt naar de nieuwste versie. Als u de Cloud Shell wilt openen, selecteert **u Probeer deze** boven aan een codeblok.
+In deze zelf studie wordt gebruikgemaakt van de CLI binnen de [Azure Cloud shell](https://docs.microsoft.com/azure/cloud-shell/overview), die voortdurend wordt bijgewerkt naar de nieuwste versie. Als u de Cloud Shell wilt openen, selecteert u **deze** in het begin van een wille keurig code blok.
 
 Als u ervoor kiest om de CLI lokaal te installeren en te gebruiken, moet u Azure CLI 2.0.30 of hoger gebruiken voor deze zelfstudie. Voer `az --version` uit om de versie te bekijken. Als u Azure CLI 2.0 wilt installeren of upgraden, raadpleegt u [Azure CLI 2.0 installeren]( /cli/azure/install-azure-cli).
 
@@ -58,7 +58,7 @@ Wanneer u de zelfstudie voltooit, worden de volgende virtuele-netwerkbronnen gem
 
 Voor deze zelfstudie wordt één virtueel netwerk met twee subnetten gemaakt. Een front-endsubnet voor het hosten van een webtoepassing en een back-endsubnet voor het hosten van een databaseserver.
 
-Voordat u een virtueel netwerk kunt maken, moet u eerst een resourcegroep maken met [az group create](/cli/azure/group). In het volgende voorbeeld wordt een resourcegroep met de naam *myRGNetwork* op de locatie Eastus ge.
+Voordat u een virtueel netwerk kunt maken, moet u eerst een resourcegroep maken met [az group create](/cli/azure/group). In het volgende voor beeld wordt een resource groep met de naam *myRGNetwork* gemaakt op de locatie eastus.
 
 ```azurecli-interactive 
 az group create --name myRGNetwork --location eastus
@@ -303,4 +303,4 @@ In deze zelfstudie hebt u Azure-netwerken met betrekking tot virtuele machines g
 Ga naar de volgende zelfstudie voor meer informatie over het beveiligen van gegevens op virtuele machines met behulp van Azure Backup. 
 
 > [!div class="nextstepaction"]
-> [Back-ups maken van linux virtuele machines in Azure](./tutorial-backup-vms.md)
+> [Back-ups maken van virtuele Linux-machines in azure](./tutorial-backup-vms.md)

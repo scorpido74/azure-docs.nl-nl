@@ -8,15 +8,15 @@ ms.date: 12/05/2018
 ms.topic: tutorial
 ms.custom: mvc
 ms.openlocfilehash: 89f5e00c75b6b85c9a14de02504136907cde62b5
-ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/17/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81604701"
 ---
 # <a name="troubleshoot-changes-in-your-environment"></a>Problemen met wijzigingen in uw omgeving oplossen
 
-In deze zelfstudie leert u hoe u problemen met wijzigingen in een virtuele machine van Azure oplost. Door Change Tracking in te schakelen, u wijzigingen in software, bestanden, Linux-daemons, Windows Services en Windows Registry-sleutels op uw computers bijhouden.
+In deze zelfstudie leert u hoe u problemen met wijzigingen in een virtuele machine van Azure oplost. Door Wijzigingen bijhouden in te scha kelen, kunt u wijzigingen bijhouden in software, bestanden, Linux-daemons, Windows-Services en Windows-register sleutels op uw computers.
 Door deze configuratiewijzigingen op te sporen, kunt operationele problemen in uw hele omgeving vaststellen.
 
 In deze zelfstudie leert u het volgende:
@@ -34,8 +34,8 @@ In deze zelfstudie leert u het volgende:
 
 Voor deze zelfstudie hebt u het volgende nodig:
 
-* Een Azure-abonnement. Als je er nog geen hebt, kun je [je MSDN-abonneevoordeel activeren](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/) of je aanmelden voor een [gratis account.](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
-* Een [Automatiseringsaccount](automation-offering-get-started.md) om de wacht- en actiebeheerboeken en de Watcher-taak vast te houden.
+* Een Azure-abonnement. Als u nog geen abonnement hebt, kunt u [uw voor delen van uw MSDN-abonnee activeren](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/) of zich aanmelden voor een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+* Een [Automation-account](automation-offering-get-started.md) voor het opslaan van de Watcher-en actie-runbooks en de Watcher-taak.
 * Een [virtuele machine](../virtual-machines/windows/quick-create-portal.md) voor de onboarding.
 
 ## <a name="sign-in-to-azure"></a>Aanmelden bij Azure
@@ -44,10 +44,10 @@ Meld u aan bij Azure Portal op https://portal.azure.com.
 
 ## <a name="enable-change-tracking-and-inventory"></a>Wijzigingen bijhouden en Inventaris inschakelen
 
-Eerst moet u change tracking en voorraad inschakelen voor uw VM voor deze zelfstudie. Als u eerder een andere automatiseringsoplossing voor een VM hebt ingeschakeld, is deze stap niet nodig.
+Eerst moet u Wijzigingen bijhouden en inventaris voor uw virtuele machine inschakelen voor deze zelf studie. Als u eerder een andere automatiseringsoplossing voor een VM hebt ingeschakeld, is deze stap niet nodig.
 
-1. Selecteer **virtuele machines** in het linkermenu en selecteer een vm in de lijst.
-1. Selecteer in het linkermenu **Voorraad** onder **Bewerkingen**. De pagina Inventaris wordt geopend.
+1. Selecteer **virtuele machines** in het menu links en selecteer een virtuele machine in de lijst.
+1. Selecteer in het menu links de optie **inventaris** onder **bewerkingen**. De pagina inventarisatie wordt geopend.
 
 ![Wijziging inschakelen](./media/automation-tutorial-troubleshoot-changes/enableinventory.png)
 
@@ -56,8 +56,8 @@ Configureer de locatie, de Log Analytics-werkruimte en het Automation-account da
 Een [Log Analytics](../log-analytics/log-analytics-overview.md?toc=%2fazure%2fautomation%2ftoc.json)-werkruimte wordt gebruikt om gegevens te verzamelen die worden gegenereerd door functies en services zoals Inventaris.
 De werkruimte biedt één locatie om gegevens uit meerdere bronnen te bekijken en te analyseren.
 
-Tijdens het instappen wordt de VM ingericht met de log-analyse-agent voor Windows en een hybride runbookworker.
-De agent wordt gebruikt om te communiceren met de VM en het verkrijgen van informatie over geïnstalleerde software.
+Tijdens de onboarding wordt de virtuele machine ingericht met de Log Analytics-agent voor Windows en een Hybrid Runbook Worker.
+De agent wordt gebruikt om te communiceren met de virtuele machine en om informatie te verkrijgen over geïnstalleerde software.
 
 Het inschakelen van de oplossing kan maximaal 15 minuten duren. Gedurende deze tijd mag u het browservenster niet sluiten.
 Nadat de oplossing is ingeschakeld, wordt informatie over geïnstalleerde software en wijzigingen aan de VM-stromen naar Azure Monitor-logboeken verzonden.
@@ -65,11 +65,11 @@ Het duurt tussen 30 minuten en 6 uur voordat de gegevens beschikbaar zijn voor a
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
-## <a name="using-change-tracking-in-azure-monitor-logs"></a>Wijzigingstracking gebruiken in Azure Monitor-logboeken
+## <a name="using-change-tracking-in-azure-monitor-logs"></a>Wijzigingen bijhouden gebruiken in Azure Monitor-logboeken
 
 Wijzigingen bijhouden genereert logboekgegevens die naar Azure Monitor-logboeken worden verzonden.
-Als u de logboeken wilt doorzoeken door query's uit te voeren, selecteert u **Loganalytics** boven aan de pagina Bijhouden wijzigen.
-Volggegevens wijzigen worden opgeslagen `ConfigurationChange`onder het type .
+Als u de logboeken wilt doorzoeken door query's uit te voeren, selecteert u **log Analytics** boven aan de pagina wijzigingen bijhouden.
+Gegevens voor het bijhouden van wijzigingen worden opgeslagen `ConfigurationChange`onder het type.
 De volgende voorbeeldquery voor Log Analytics retourneert alle Windows-services die zijn gestopt.
 
 ```loganalytics
@@ -88,13 +88,13 @@ Kies welke bestanden en registersleutels u wilt verzamelen en volgen door **Inst
 > [!NOTE]
 > Inventaris en Wijzigingen bijhouden gebruiken dezelfde verzamelingsinstellingen en instellingen worden geconfigureerd op het niveau van de werkruimte.
 
-Voeg op de pagina Werkruimteconfiguratie de Windows-registersleutels, Windows-bestanden of Linux-bestanden toe die moeten worden bijgehouden, zoals beschreven in de volgende drie secties.
+Voeg op de pagina werkruimte configuratie de Windows-register sleutels, Windows-bestanden of Linux-bestanden toe die moeten worden bijgehouden, zoals beschreven in de volgende drie secties.
 
 ### <a name="add-a-windows-registry-key"></a>Een Windows-registersleutel toevoegen
 
 1. Selecteer **Toevoegen** op het tabblad **Windows-register**. 
 
-1. Voer op de pagina Windows Register toevoegen voor bijhouden van wijzigingen de gegevens in voor de sleutel die u wilt bijhouden en klik op **Opslaan**
+1. Voer op de pagina Windows-REGI ster toevoegen voor Wijzigingen bijhouden de gegevens in voor de sleutel die u wilt bijhouden en klik op **Opslaan** .
 
 |Eigenschap  |Beschrijving  |
 |---------|---------|
@@ -107,7 +107,7 @@ Voeg op de pagina Werkruimteconfiguratie de Windows-registersleutels, Windows-be
 
 1. Selecteer **Toevoegen** op het tabblad **Windows-bestanden**. 
 
-1. Voer op de pagina Windows-bestand toevoegen voor bijhouden van wijzigingen de gegevens in voor het bestand of de map om bij te houden en op **Opslaan te klikken**
+1. Voer op de pagina Windows-bestand voor Wijzigingen bijhouden toevoegen de informatie in voor het bestand of de map die u wilt bijhouden en klik op **Opslaan** .
 
 |Eigenschap  |Beschrijving  |
 |---------|---------|
@@ -122,7 +122,7 @@ Voeg op de pagina Werkruimteconfiguratie de Windows-registersleutels, Windows-be
 
 1. Selecteer **Toevoegen** op het tabblad **Linux-bestanden**. 
 
-1. Voer op de pagina Linux-bestand voor bijhouden van wijzigingen toevoegen de gegevens in voor het bestand of de map om bij te houden en op **Opslaan te klikken**.
+1. Voer op de pagina Linux-bestand voor Wijzigingen bijhouden toevoegen de informatie in voor het bestand of de map die u wilt bijhouden en klik op **Opslaan**.
 
 |Eigenschap  |Beschrijving  |
 |---------|---------|
@@ -137,11 +137,11 @@ Voeg op de pagina Werkruimteconfiguratie de Windows-registersleutels, Windows-be
 |Bestandsinhoud uploaden voor alle instellingen| Schakelt uploaden van bestandsinhoud bij bijgehouden wijzigingen in of uit. Beschikbare opties: Waar of Onwaar.|
 
    > [!NOTE]
-   > De optie **Koppelingen beheren** wordt niet aanbevolen. Het ophalen van bestandsinhoud wordt niet ondersteund.
+   > De optie **koppelingen beheren** wordt niet aanbevolen. Het ophalen van bestandsinhoud wordt niet ondersteund.
 
 ## <a name="enable-activity-log-connection"></a>Verbinding met activiteitenlogboek inschakelen
 
-Selecteer **Verbinding met het activiteitenlogboek beheren** op de pagina Wijzigingen bijhouden op de virtuele machine. Hiermee opent u de pagina Azure-activiteitenlogboek. Klik **op Verbinding maken** om Wijzigingstracking te verbinden met het Azure-activiteitenlogboek voor uw vm.
+Selecteer **Verbinding met het activiteitenlogboek beheren** op de pagina Wijzigingen bijhouden op de virtuele machine. Hiermee opent u de pagina Azure-activiteitenlogboek. Klik op **verbinding maken** om wijzigingen bijhouden verbinding te maken met het Azure-activiteiten logboek voor uw VM.
 
 Terwijl deze instelling is ingeschakeld, gaat u naar de pagina Overzicht voor de virtuele machine en selecteert u **Stoppen** om de virtuele machine te stoppen. Wanneer u daarom wordt gevraagd, selecteert u **Ja** om de virtuele machine te stoppen. Wanneer deze toewijzing ongedaan is gemaakt, selecteert u **Starten** om de virtuele machine opnieuw op te starten.
 
@@ -166,7 +166,7 @@ Op het tabblad **Gebeurtenissen** worden in de tabel de gebeurtenissen in het ve
 
 U kunt in de resultaten zien dat er meerdere wijzigingen in het systeem waren, inclusief wijzigingen in services en software. U kunt de filters bovenaan de pagina gebruiken om de resultaten te filteren op **Type wijziging** of op tijdsbereik.
 
-Selecteer een **WindowsServices-wijziging.** Met deze selectie wordt de pagina Details wijzigen geopend met details over de wijziging en de waarden voor en na de wijziging. In dit geval is de service Software Protection gestopt.
+Selecteer een **WindowsServices** wijziging. Met deze selectie wordt de pagina Details wijzigen geopend met informatie over de wijziging en de waarden voor en na de wijziging. In dit geval is de service Software Protection gestopt.
 
 ![Details van de wijziging weergeven in de portal](./media/automation-tutorial-troubleshoot-changes/change-details.png)
 
@@ -176,7 +176,7 @@ Het kan handig zijn om wijzigingen te bekijken in Azure Portal, maar het is nóg
 
 Als u een waarschuwing voor het stoppen van services wilt toevoegen, gaat u in Azure Portal naar **Bewaken**. Klik dan bij **Gedeelde services** op **Waarschuwingen** en klik dan op **+ Nieuwe waarschuwingsregel**
 
-Klik op **Selecteren** om een resource te kiezen. Selecteer op de pagina Een resource selecteren de optie **Analyse van logboeken** in het vervolgkeuzemenu **Filter op resourcetype.** Selecteer de Log Analytics-werkruimte en selecteer vervolgens **Gereed**.
+Klik op **Selecteren** om een resource te kiezen. Selecteer op de pagina een resource selecteren **log Analytics** in het vervolg menu **filteren op resource type** . Selecteer de Log Analytics-werkruimte en selecteer vervolgens **Gereed**.
 
 ![Een resource selecteren](./media/automation-tutorial-troubleshoot-changes/select-a-resource.png)
 
@@ -192,7 +192,7 @@ Voer onder **Waarschuwingslogica** voor **Drempelwaarde** het volgende in: **0**
 
 ![Signaallogica configureren](./media/automation-tutorial-troubleshoot-changes/configure-signal-logic.png)
 
-Selecteer onder **Actiegroepen** de optie **Nieuwe maken**. Een actiegroep is een groep acties die u op meerdere waarschuwingen kunt toepassen. Deze acties kunnen bestaan uit, maar zijn niet beperkt tot, e-mailmeldingen, runbooks, webhooks en nog veel meer. Zie Actiegroepen maken en beheren voor meer informatie over [actiegroepen.](../azure-monitor/platform/action-groups.md)
+Selecteer onder **Actiegroepen** de optie **Nieuwe maken**. Een actiegroep is een groep acties die u op meerdere waarschuwingen kunt toepassen. Deze acties kunnen bestaan uit, maar zijn niet beperkt tot, e-mailmeldingen, runbooks, webhooks en nog veel meer. Zie [actie groepen maken en beheren](../azure-monitor/platform/action-groups.md)voor meer informatie over actie groepen.
 
 Voer onder **Waarschuwingsdetails definiëren** een naam en beschrijving voor de waarschuwing in. Stel **Ernst** in op **Informatie (Sev 2)**, **Waarschuwing (Sev 1)** of **Kritiek (Sev 0)**.
 
@@ -202,7 +202,7 @@ Voer onder **Acties** een naam in voor de actie, bijvoorbeeld **Beheerders een e
 
 ![Actiegroep toevoegen](./media/automation-tutorial-troubleshoot-changes/add-action-group.png)
 
-Voer in het deelvenster E-mail/sms/push/spraak een naam in. Selecteer het selectievakje **E-mail** en voer vervolgens een geldig e-mailadres in. Klik op **OK** in het deelvenster en klik vervolgens op **OK** op de pagina Actiegroep toevoegen.
+Voer in het deelvenster E-mail/sms/push/spraak een naam in. Selecteer het selectievakje **E-mail** en voer vervolgens een geldig e-mailadres in. Klik op **OK** in het deel venster en klik vervolgens op **OK** op de pagina actie groep toevoegen.
 
 Selecteer onder **Regel maken** bij **Acties aanpassen** de optie **E-mailonderwerp** als u het onderwerp van het waarschuwingsbericht wilt aanpassen. Wanneer u klaar bent, selecteert u **Waarschuwingsregel maken**. De waarschuwing laat u weten wanneer een update-implementatie is voltooid en op welke machines deze update-implementatie is uitgevoerd.
 

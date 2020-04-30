@@ -1,144 +1,144 @@
 ---
 title: Een Azure Service Fabric-cluster beveiligen
-description: Meer informatie over beveiligingsscenario's voor een Azure Service Fabric-cluster en de verschillende technologieën die u gebruiken om ze te implementeren.
+description: Meer informatie over beveiligings scenario's voor een Azure Service Fabric-cluster en de verschillende technologieën die u kunt gebruiken om ze te implementeren.
 ms.topic: conceptual
 ms.date: 08/14/2018
 ms.custom: sfrev
 ms.openlocfilehash: c43cfbd4468a64867d50482d9c8055622602f159
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81461579"
 ---
-# <a name="service-fabric-cluster-security-scenarios"></a>Beveiligingsscenario's voor servicefabric-cluster
+# <a name="service-fabric-cluster-security-scenarios"></a>Beveiligings scenario's voor Service Fabric cluster
 
-Een Azure Service Fabric-cluster is een bron waarvan u eigenaar bent. Het is uw verantwoordelijkheid om uw clusters te beveiligen om te voorkomen dat onbevoegde gebruikers er verbinding mee maken. Een beveiligd cluster is vooral belangrijk wanneer u productieworkloads op het cluster uitvoert. Het is mogelijk om een onbeveiligd cluster te maken, maar als het cluster beheereindpunten blootstelt aan het openbare internet, kunnen anonieme gebruikers er verbinding mee maken. Onbeveiligde clusters worden niet ondersteund voor productieworkloads. 
+Een Azure Service Fabric-cluster is een bron waarvan u eigenaar bent. Het is uw verantwoordelijkheid om uw clusters te beveiligen om te voor komen dat onbevoegde gebruikers verbinding kunnen maken. Een beveiligd cluster is vooral belang rijk wanneer u werk belastingen voor productie op het cluster uitvoert. Het is mogelijk om een niet-beveiligd cluster te maken, maar als het cluster beheer eindpunten voor het open bare internet beschikbaar stelt, kunnen anonieme gebruikers er verbinding mee maken. Niet-beveiligde clusters worden niet ondersteund voor productie werkbelastingen. 
 
-Dit artikel is een overzicht van beveiligingsscenario's voor Azure-clusters en zelfstandige clusters en de verschillende technologieën die u gebruiken om ze te implementeren:
+Dit artikel bevat een overzicht van beveiligings scenario's voor Azure-clusters en zelfstandige clusters en de verschillende technologieën die u kunt gebruiken om ze te implementeren:
 
-* Beveiliging van knooppunt tot knooppunt
-* Client-to-node beveiliging
+* Beveiliging van knoop punt naar knoop punt
+* Beveiliging van client naar knoop punt
 * RBAC (op rollen gebaseerd toegangsbeheer)
 
-## <a name="node-to-node-security"></a>Beveiliging van knooppunt tot knooppunt
+## <a name="node-to-node-security"></a>Beveiliging van knoop punt naar knoop punt
 
-Beveiliging van knooppunten helpt de communicatie tussen de VM's of computers in een cluster te beveiligen. Dit beveiligingsscenario zorgt ervoor dat alleen computers die gemachtigd zijn om deel te nemen aan het cluster, kunnen deelnemen aan hostingtoepassingen en -services in het cluster.
+Met de beveiliging van knoop punt naar knoop punt kunt u de communicatie tussen de Vm's of computers in een cluster beveiligen. Dit beveiligings scenario zorgt ervoor dat alleen computers die gemachtigd zijn om deel te nemen aan het cluster, kunnen deel nemen aan het hosten van toepassingen en services in het cluster.
 
-![Diagram van knooppuntcommunicatie][Node-to-Node]
+![Diagram van de communicatie tussen knoop punten][Node-to-Node]
 
-Clusters die op Azure en zelfstandige clusters op Windows worden uitgevoerd, kunnen certificaatbeveiliging of [Windows-beveiliging](https://msdn.microsoft.com/library/ff649801.aspx) voor Windows Server-computers gebruiken. [Windows security](https://msdn.microsoft.com/library/ff649396.aspx)
+Clusters die worden uitgevoerd op Azure en zelfstandige clusters die op Windows worden uitgevoerd, kunnen gebruikmaken van de [certificaat beveiliging](https://msdn.microsoft.com/library/ff649801.aspx) of [Windows-beveiliging](https://msdn.microsoft.com/library/ff649396.aspx) voor Windows Server-computers.
 
-### <a name="node-to-node-certificate-security"></a>Beveiliging van node-to-nodecertificaat
+### <a name="node-to-node-certificate-security"></a>Certificaat beveiliging van knoop punt naar knoop punt
 
-Service Fabric gebruikt X.509-servercertificaten die u opgeeft als onderdeel van de node-type configuratie wanneer u een cluster maakt. Aan het einde van dit artikel ziet u een kort overzicht van wat deze certificaten zijn en hoe u ze verkrijgen of maken.
+Service Fabric maakt gebruik van X. 509-server certificaten die u opgeeft als onderdeel van de configuratie van het knooppunt type wanneer u een cluster maakt. Aan het einde van dit artikel ziet u een beknopt overzicht van wat deze certificaten zijn en hoe u deze kunt verkrijgen of maken.
 
-Stel certificaatbeveiliging in wanneer u het cluster maakt, in de Azure-portal, met behulp van een Azure Resource Manager-sjabloon of met behulp van een zelfstandige JSON-sjabloon. Het standaardgedrag van Service Fabric SDK is het implementeren en installeren van het certificaat met het verst in het toekomstige verlopende certificaat; het klassieke gedrag stond het definiëren van primaire en secundaire certificaten toe, om handmatig gestarte rollovers toe te staan en wordt niet aanbevolen voor gebruik via de nieuwe functionaliteit. De primaire certificaten die worden gebruikt, hebben het verst in de toekomstige vervaldatum, moeten afwijken van de beheerclient en alleen-lezen clientcertificaten die u instelt voor beveiliging van [client-naar-node.](#client-to-node-security)
+Certificaat beveiliging instellen wanneer u het cluster maakt, hetzij in het Azure Portal, met behulp van een Azure Resource Manager sjabloon of met behulp van een zelfstandige JSON-sjabloon. Het standaard gedrag van de SDK van Service Fabric is het implementeren en installeren van het certificaat met het achterblijvend certificaat in het toekomstig verlopende getuig schrift; het klassieke gedrag heeft betrekking op het definiëren van primaire en secundaire certificaten, om hand matig geïnitieerde Rollo vers toe te staan en wordt niet aanbevolen voor gebruik over de nieuwe functionaliteit. De primaire certificaten die worden gebruikt, hebben de meest recente verval datum, moeten afwijken van de admin-client en alleen-lezen client certificaten die u hebt ingesteld voor beveiliging van [client-naar-knoop punt](#client-to-node-security).
 
-Zie [Een cluster instellen met behulp van een Azure Resource Manager-sjabloon](service-fabric-cluster-creation-via-arm.md)voor meer informatie over het instellen van certificaatbeveiliging in een cluster voor Azure.
+Zie [een cluster instellen met behulp van een Azure Resource Manager sjabloon](service-fabric-cluster-creation-via-arm.md)voor meer informatie over het instellen van certificaat beveiliging in een cluster voor Azure.
 
-Zie Een zelfstandig cluster op Windows beveiligen [met X.509-certificaten](service-fabric-windows-cluster-x509-security.md)voor meer informatie over het instellen van certificaatbeveiliging in een cluster voor een zelfstandig Windows Server-cluster.
+Zie voor meer informatie over het instellen van certificaat beveiliging in een cluster voor een zelfstandig Windows Server-cluster [een zelfstandige cluster in Windows beveiligen met behulp van X. 509-certificaten](service-fabric-windows-cluster-x509-security.md).
 
-### <a name="node-to-node-windows-security"></a>Windows-beveiliging van knooppunt tot knooppunt
+### <a name="node-to-node-windows-security"></a>Windows-beveiliging van knoop punt naar knoop punt
 
-Zie Een zelfstandig cluster op Windows beveiligen met [Windows-beveiliging](service-fabric-windows-cluster-windows-security.md)voor meer informatie over het instellen van Windows-beveiliging voor een zelfstandig Windows Server-cluster.
+Zie [een zelfstandige cluster in Windows beveiligen met behulp van Windows-beveiliging](service-fabric-windows-cluster-windows-security.md)voor meer informatie over het instellen van Windows-beveiliging voor een zelfstandig Windows Server-cluster.
 
-## <a name="client-to-node-security"></a>Client-to-node beveiliging
+## <a name="client-to-node-security"></a>Beveiliging van client naar knoop punt
 
-Client-to-node beveiliging verifieert clients en helpt de communicatie tussen een client en afzonderlijke knooppunten in het cluster te beveiligen. Dit type beveiliging zorgt ervoor dat alleen geautoriseerde gebruikers toegang hebben tot het cluster en de toepassingen die op het cluster worden geïmplementeerd. Clients worden uniek geïdentificeerd via hun Windows-beveiligingsreferenties of hun certificaatbeveiligingsreferenties.
+Bij client-naar-knoop punt-beveiliging worden clients geverifieerd en wordt de communicatie tussen een client en afzonderlijke knoop punten in het cluster beveiligd. Met dit type beveiliging kunt u ervoor zorgen dat alleen geautoriseerde gebruikers toegang hebben tot het cluster en de toepassingen die op het cluster worden geïmplementeerd. Clients worden geïdentificeerd aan de hand van hun beveiligings referenties voor Windows of hun beveiligings referenties voor het certificaat.
 
-![Diagram van communicatie tussen client-naar-node][Client-to-Node]
+![Diagram van client-naar-knoop punt-communicatie][Client-to-Node]
 
-Clusters die draaien op Azure en zelfstandige clusters die op Windows worden uitgevoerd, kunnen [zowel certificaatbeveiliging](https://msdn.microsoft.com/library/ff649801.aspx) als [Windows-beveiliging](https://msdn.microsoft.com/library/ff649396.aspx)gebruiken.
+Clusters die worden uitgevoerd op Azure en zelfstandige clusters waarop Windows wordt uitgevoerd, kunnen gebruikmaken van [certificaat beveiliging](https://msdn.microsoft.com/library/ff649801.aspx) of [Windows-beveiliging](https://msdn.microsoft.com/library/ff649396.aspx).
 
-### <a name="client-to-node-certificate-security"></a>Client-to-node certificaatbeveiliging
+### <a name="client-to-node-certificate-security"></a>Client-naar-knoop punt certificaat beveiliging
 
-Stel certificaatbeveiliging van client-naar-node in wanneer u het cluster maakt, hetzij in de Azure-portal, met behulp van een Resource Manager-sjabloon of met behulp van een zelfstandige JSON-sjabloon. Als u het certificaat wilt maken, geeft u een beheerdersclientcertificaat of een gebruikersclientcertificaat op. Als best practice moeten de beheerdersclient- en gebruikersclientcertificaten die u opgeeft, afwijken van de primaire en secundaire certificaten die u opgeeft voor beveiliging van [knooppunt tot knooppunt.](#node-to-node-security) Clustercertificaten hebben dezelfde rechten als clientbeheerderscertificaten. Ze mogen echter alleen worden gebruikt per cluster en niet door administratieve gebruikers als beste beveiligingspraktijk.
+Stel de client-naar-knoop punt certificaat beveiliging in wanneer u het cluster maakt, in de Azure Portal, met behulp van een resource manager-sjabloon of met behulp van een zelfstandige JSON-sjabloon. Als u het certificaat wilt maken, geeft u een client certificaat voor de beheerder of een gebruikers certificaat op. Als best practice moeten de client certificaten van de client en de gebruiker die u opgeeft, afwijken van de primaire en secundaire certificaten die u opgeeft voor [beveiliging](#node-to-node-security)tussen knoop punten. Cluster certificaten hebben dezelfde rechten als client beheerders certificaten. Ze moeten echter alleen worden gebruikt door het cluster en niet door gebruikers met beheerders rechten als beveiligings best practice.
 
-Clients die verbinding maken met het cluster met behulp van het beheerderscertificaat hebben volledige toegang tot beheermogelijkheden. Clients die verbinding maken met het cluster met behulp van het alleen-lezen gebruikersclientcertificaat, hebben alleen leestoegang tot beheermogelijkheden. Deze certificaten worden gebruikt voor de RBAC die later in dit artikel wordt beschreven.
+Clients die verbinding maken met het cluster met behulp van het beheerders certificaat, hebben volledige toegang tot beheer mogelijkheden. Clients die verbinding maken met het cluster met behulp van het client certificaat alleen-lezen gebruiker hebben alleen lees toegang tot beheer mogelijkheden. Deze certificaten worden gebruikt voor de RBAC die verderop in dit artikel wordt beschreven.
 
-Zie [Een cluster instellen met behulp van een Azure Resource Manager-sjabloon](service-fabric-cluster-creation-via-arm.md)voor meer informatie over het instellen van certificaatbeveiliging in een cluster voor Azure.
+Zie [een cluster instellen met behulp van een Azure Resource Manager sjabloon](service-fabric-cluster-creation-via-arm.md)voor meer informatie over het instellen van certificaat beveiliging in een cluster voor Azure.
 
-Zie Een zelfstandig cluster op Windows beveiligen [met X.509-certificaten](service-fabric-windows-cluster-x509-security.md)voor meer informatie over het instellen van certificaatbeveiliging in een cluster voor een zelfstandig Windows Server-cluster.
+Zie voor meer informatie over het instellen van certificaat beveiliging in een cluster voor een zelfstandig Windows Server-cluster [een zelfstandige cluster in Windows beveiligen met behulp van X. 509-certificaten](service-fabric-windows-cluster-x509-security.md).
 
-### <a name="client-to-node-azure-active-directory-security-on-azure"></a>Azure Active Directory-beveiliging van client tot knooppunt op Azure
+### <a name="client-to-node-azure-active-directory-security-on-azure"></a>Beveiliging van client naar knoop punt Azure Active Directory op Azure
 
-Azure Active Directory maakt het beheren van toegang tot toepassingen door organisaties (bekend als tenants) mogelijk. Toepassingen zijn onderverdeeld in toepassingen met een web-based sign-in UI en die met een native client ervaring. Als u nog geen tenant hebt gemaakt, leest u [nu hoe u een Azure Active Directory-tenant krijgen.][active-directory-howto-tenant]
+Azure Active Directory maakt het beheren van toegang tot toepassingen door organisaties (bekend als tenants) mogelijk. Toepassingen worden onderverdeeld in gebruikers met een webgebaseerde aanmeldings gebruikersinterface en die met een systeem eigen client ervaring. Als u nog geen Tenant hebt gemaakt, moet u eerst lezen [hoe u een Azure Active Directory Tenant krijgt][active-directory-howto-tenant].
 
-Een Service Fabric-cluster biedt verschillende toegangspunten bij de management-functionaliteit, met inbegrip van de webconsoles [Service Fabric Explorer][service-fabric-visualizing-your-cluster] en [Visual Studio][service-fabric-manage-application-in-visual-studio]. Als gevolg hiervan maakt u twee Azure AD-toepassingen om de toegang tot het cluster, één webtoepassing en één native toepassing te beheren.
+Een Service Fabric-cluster biedt verschillende toegangspunten bij de management-functionaliteit, met inbegrip van de webconsoles [Service Fabric Explorer][service-fabric-visualizing-your-cluster] en [Visual Studio][service-fabric-manage-application-in-visual-studio]. Als gevolg hiervan maakt u twee Azure AD-toepassingen waarmee u de toegang tot het cluster, een webtoepassing en één systeem eigen toepassing kunt beheren.
 
-Voor clusters die op Azure worden uitgevoerd, u ook de toegang tot beheereindpunten beveiligen met Azure AD (Azure AD). Zie [Azure AD instellen om](service-fabric-cluster-creation-setup-aad.md)clients te verifiëren voor meer informatie over het maken van de vereiste Azure AD-artefacten en hoe u deze invullen wanneer u het cluster maakt.
+Voor clusters die worden uitgevoerd op Azure, kunt u ook de toegang tot beheer eindpunten beveiligen met behulp van Azure Active Directory (Azure AD). Zie [Azure AD instellen voor het verifiëren van clients](service-fabric-cluster-creation-setup-aad.md)voor meer informatie over het maken van de vereiste Azure AD-artefacten en hoe u deze kunt vullen wanneer u het cluster maakt.
 
 ## <a name="security-recommendations"></a>Aanbevelingen voor beveiliging
 
 Voor Service Fabric-clusters die zijn geïmplementeerd in een openbaar netwerk dat wordt gehost op Azure, is de aanbeveling voor wederzijdse verificatie van client-naar-knooppunt:
 
 * Azure Active Directory gebruiken voor de identiteit van de client
-* Een certificaat voor serveridentiteit en TLS-versleuteling van http-communicatie
+* Een certificaat voor server identiteit-en TLS-versleuteling van http-communicatie
 
-Voor servicefabricclusters die zijn geïmplementeerd in een openbaar netwerk dat wordt gehost op Azure, is de aanbeveling voor node-to-nodebeveiliging het gebruik van een clustercertificaat om knooppunten te verifiëren.
+Voor Service Fabric clusters die zijn geïmplementeerd in een openbaar netwerk dat wordt gehost op Azure, is de aanbeveling voor knoop punt-naar-knooppunt Beveiliging het gebruik van een cluster certificaat voor het verifiëren van knoop punten.
 
-Voor zelfstandige Windows Server-clusters raden we u aan windows-beveiliging te gebruiken met groepsbeheerserviceaccounts als u Windows Server 2012 R2 en Windows Active Directory hebt. Gebruik anders Windows-beveiliging met Windows-accounts.
+Als u Windows Server 2012 R2 en Windows Active Directory, kunt u voor zelfstandige Windows Server-clusters het beste Windows-beveiliging gebruiken met door groepen beheerde service accounts. Gebruik anders Windows-beveiliging met Windows-accounts.
 
 ## <a name="role-based-access-control-rbac"></a>RBAC (op rollen gebaseerd toegangsbeheer)
 
-U toegangsbeheer gebruiken om de toegang tot bepaalde clusterbewerkingen voor verschillende groepen gebruikers te beperken. Dit helpt het cluster veiliger te maken. Er worden twee typen toegangsbeheer ondersteund voor clients die verbinding maken met een cluster: de rol Administrator en de rol Gebruiker.
+U kunt toegangs beheer gebruiken om de toegang tot bepaalde cluster bewerkingen voor verschillende groepen gebruikers te beperken. Dit helpt het cluster beter te beveiligen. Twee typen toegangs beheer worden ondersteund voor clients die verbinding maken met een cluster: beheerdersrol en gebruikersrol.
 
-Gebruikers aan wie de administratorrol is toegewezen, hebben volledige toegang tot beheermogelijkheden, waaronder lees- en schrijfmogelijkheden. Gebruikers die de gebruikersrol toegewezen hebben, hebben standaard alleen leestoegang tot beheermogelijkheden (bijvoorbeeld querymogelijkheden). Ze kunnen ook toepassingen en services oplossen.
+Gebruikers aan wie de beheerdersrol is toegewezen, hebben volledige toegang tot beheer mogelijkheden, waaronder lees-en schrijf mogelijkheden. Gebruikers aan wie de gebruikersrol is toegewezen, hebben standaard alleen lees toegang tot beheer mogelijkheden (bijvoorbeeld query mogelijkheden). Ze kunnen ook toepassingen en services omzetten.
 
-Stel de clientrollen administrator en gebruiker in wanneer u het cluster maakt. Rolrollen toewijzen door afzonderlijke identiteiten op te geven (bijvoorbeeld door certificaten of Azure AD te gebruiken) voor elk roltype. Zie [Role-Based Access Control voor Service Fabric-clients voor](service-fabric-cluster-security-roles.md)meer informatie over standaardinstellingen voor toegangsbeheer en hoe u de standaardinstellingen wijzigen.
+Stel de client rollen beheerder en gebruiker in wanneer u het cluster maakt. Wijs rollen toe door afzonderlijke identiteiten (bijvoorbeeld door het gebruik van certificaten of Azure AD) op te geven voor elk type rol. Zie [op rollen gebaseerde Access Control voor service Fabric-clients](service-fabric-cluster-security-roles.md)voor meer informatie over standaard instellingen voor toegangs beheer en het wijzigen van de standaard instellingen.
 
-## <a name="x509-certificates-and-service-fabric"></a>X.509-certificaten en servicestof
+## <a name="x509-certificates-and-service-fabric"></a>X. 509-certificaten en-Service Fabric
 
-X.509 digitale certificaten worden vaak gebruikt om clients en servers te verifiëren. Ze worden ook gebruikt om berichten te versleutelen en digitaal te ondertekenen. Service Fabric gebruikt X.509-certificaten om een cluster te beveiligen en beveiligingsfuncties voor toepassingen te bieden. Zie [Werken met certificaten](https://msdn.microsoft.com/library/ms731899.aspx)voor meer informatie over digitale X.509-certificaten. U gebruikt [Key Vault](../key-vault/general/overview.md) om certificaten te beheren voor Service Fabric-clusters in Azure.
+X. 509-digitale certificaten worden meestal gebruikt voor het verifiëren van clients en servers. Ze worden ook gebruikt voor het versleutelen en digitaal ondertekenen van berichten. Service Fabric maakt gebruik van X. 509-certificaten voor het beveiligen van een cluster en het bieden van beveiligings functies van toepassingen. Zie [werken met certificaten](https://msdn.microsoft.com/library/ms731899.aspx)voor meer informatie over X. 509 digitale certificaten. U gebruikt [Key Vault](../key-vault/general/overview.md) om certificaten voor service Fabric clusters in azure te beheren.
 
-Enkele belangrijke dingen om te overwegen:
+Enkele belang rijke dingen die u moet overwegen:
 
-* Als u certificaten wilt maken voor clusters waarop productieworkloads worden uitgevoerd, gebruikt u een correct geconfigureerde Windows Server-certificaatservice of een van een goedgekeurde [certificaatinstantie (CA).](https://en.wikipedia.org/wiki/Certificate_authority)
-* Gebruik nooit tijdelijke certificaten die u maakt met behulp van tools zoals MakeCert.exe in een productieomgeving.
-* U een zelfondertekend certificaat gebruiken, maar alleen in een testcluster. Gebruik geen zelfondertekend certificaat in productie.
-* Wanneer u de duimafdruk van het certificaat genereert, moet u een SHA1-duimafdruk genereren. SHA1 is wat wordt gebruikt bij het configureren van de duimafdrukken van het client- en clustercertificaat.
+* Gebruik een correct geconfigureerde Windows Server Certificate Service of een van een goedgekeurde certificerings [instantie (CA)](https://en.wikipedia.org/wiki/Certificate_authority)om certificaten te maken voor clusters met productie werkbelastingen.
+* Gebruik nooit tijdelijke of test certificaten die u maakt met behulp van hulpprogram ma's zoals MakeCert. exe in een productie omgeving.
+* U kunt een zelfondertekend certificaat gebruiken, maar alleen in een test cluster. Gebruik geen zelfondertekend certificaat in de productie omgeving.
+* Zorg ervoor dat u bij het genereren van de vinger afdruk van het certificaat een SHA1-vinger afdruk genereert. SHA1 is wat wordt gebruikt bij het configureren van de client-en cluster certificaat vingerafdrukken.
 
-### <a name="cluster-and-server-certificate-required"></a>Cluster- en servercertificaat (vereist)
+### <a name="cluster-and-server-certificate-required"></a>Cluster-en server certificaat (vereist)
 
-Deze certificaten (een primaire en eventueel een secundaire) zijn vereist om een cluster te beveiligen en onbevoegde toegang tot het te voorkomen. Deze certificaten bieden cluster- en serververificatie.
+Deze certificaten (één primair en optioneel een secundair) zijn vereist voor het beveiligen van een cluster en voor komen dat er onbevoegde toegang tot is. Deze certificaten bieden cluster-en server authenticatie.
 
-Clusterverificatie verifieert knooppuntcommunicatie voor clusterfederatie. Alleen knooppunten die hun identiteit met dit certificaat kunnen bewijzen, kunnen lid worden van het cluster. Serververificatie verifieert de eindpunten voor clusterbeheer naar een beheerclient, zodat de beheerclient weet dat hij met het echte cluster praat en niet met een 'man in the middle'. Dit certificaat biedt ook een TLS voor de HTTPS-beheer-API en voor Service Fabric Explorer via HTTPS. Wanneer een client of knooppunt een knooppunt verifieert, is een van de eerste controles de waarde van de algemene naam in het veld **Onderwerp.** Deze algemene naam of een van de alternatieve namen van het certificaat (SAN's) moeten aanwezig zijn in de lijst met toegestane algemene namen.
+Met cluster verificatie wordt de communicatie tussen knoop punten voor de cluster Federatie geverifieerd. Alleen knoop punten die hun identiteit kunnen bewijzen met dit certificaat kunnen lid worden van het cluster. Server verificatie verifieert de Cluster beheer-eind punten aan een Management-client, zodat de Management-client weet dat deze is praten met het echte cluster en niet een ' man in het midden '. Dit certificaat biedt ook een TLS voor de HTTPS-beheer-API en voor Service Fabric Explorer via HTTPS. Wanneer een client of knoop punt een knoop punt verifieert, is een van de eerste controles de waarde van de algemene naam in het veld **onderwerp** . Deze algemene naam of een van de alternatieve namen voor de certificaat houder (San's) moet aanwezig zijn in de lijst met toegestane algemene namen.
 
-Het certificaat moet aan de volgende eisen voldoen:
+Het certificaat moet voldoen aan de volgende vereisten:
 
-* Het certificaat moet een privésleutel bevatten. Deze certificaten hebben meestal extensies .pfx of .pem  
-* Het certificaat moet worden gemaakt voor sleuteluitwisseling, dat kan worden geëxporteerd naar een bestand voor persoonlijke informatie-uitwisseling (.pfx).
-* De **onderwerpnaam van het certificaat moet overeenkomen met het domein dat u gebruikt om toegang te krijgen tot het cluster Servicefabric.** Deze matching is vereist om een TLS te bieden voor het HTTPS-beheereindpunt en De Fabric Explorer van het cluster. U geen TLS/SSL-certificaat verkrijgen van een certificeringsinstantie (CA) voor het domein *.cloudapp.azure.com. U hebt voor uw cluster een aangepaste domeinnaam nodig. Wanneer u een certificaat van een CA aanvraagt, moet de onderwerpnaam van het certificaat overeenkomen met de aangepaste domeinnaam die u voor uw cluster gebruikt.
+* Het certificaat moet een persoonlijke sleutel bevatten. Deze certificaten hebben doorgaans extensies. pfx of. pem  
+* Het certificaat moet worden gemaakt voor sleutel uitwisseling, dat kan worden geëxporteerd naar een pfx-bestand (Personal Information Exchange).
+* De **onderwerpnaam van het certificaat moet overeenkomen met het domein dat u gebruikt voor toegang tot het service Fabric cluster**. Deze overeenkomst is vereist voor het opgeven van een TLS voor het HTTPS-beheer eindpunt van het cluster en Service Fabric Explorer. U kunt geen TLS/SSL-certificaat verkrijgen van een certificerings instantie (CA) voor het domein *. cloudapp.azure.com. U hebt voor uw cluster een aangepaste domeinnaam nodig. Wanneer u een certificaat van een CA aanvraagt, moet de onderwerpnaam van het certificaat overeenkomen met de aangepaste domeinnaam die u voor uw cluster gebruikt.
 
-Enkele andere dingen om te overwegen:
+Enkele andere zaken die u moet overwegen:
 
-* Het veld **Onderwerp** kan meerdere waarden hebben. Elke waarde wordt vooraf vastgesteld met een initialisatie om het waardetype aan te geven. Meestal is de initialisatie **CN** (voor *gemeenschappelijke naam);* **CN = www\.contoso.com**.
-* Het veld **Onderwerp** kan leeg zijn.
-* Als het optionele veld **Alternatieve naam onderwerp** is ingevuld, moet het zowel de algemene naam van het certificaat als één vermelding per SAN hebben. Deze worden ingevoerd als **DNS-naamwaarden.** Zie [Een alternatieve naam voor onderwerp toevoegen aan een beveiligd LDAP-certificaat](https://support.microsoft.com/kb/931351)voor meer informatie over het genereren van certificaten met SAN's.
-* De waarde van het veld **Beoogde doeleinden** van het certificaat moet een passende waarde bevatten, zoals **serververificatie** of **clientverificatie.**
+* Het veld **onderwerp** kan meerdere waarden hebben. Elke waarde wordt voorafgegaan door een initialisatie om het waardetype aan te geven. Normaal gesp roken is de initialisatie **CN** (voor *algemene naam*); bijvoorbeeld: **CN = www\.-contoso.com**.
+* Het veld **onderwerp** kan leeg zijn.
+* Als het optionele veld **alternatieve naam voor onderwerp** is ingevuld, moet het de algemene naam van het certificaat en één vermelding per San bevatten. Deze worden ingevoerd als **DNS-naam** waarden. Zie [een alternatieve naam voor een onderwerp toevoegen aan een beveiligd LDAP-certificaat](https://support.microsoft.com/kb/931351)voor meer informatie over het genereren van certificaten die san's hebben.
+* De waarde van het veld **beoogde doel einden** van het certificaat moet een geschikte waarde bevatten, zoals **Server verificatie** of **client verificatie**.
 
-### <a name="application-certificates-optional"></a>Toepassingscertificaten (optioneel)
+### <a name="application-certificates-optional"></a>Toepassings certificaten (optioneel)
 
-Een willekeurig aantal extra certificaten kan op een cluster worden geïnstalleerd voor toepassingsbeveiligingsdoeleinden. Voordat u uw cluster maakt, moet u rekening houden met de toepassingsbeveiligingsscenario's waarvoor een certificaat moet worden geïnstalleerd op de knooppunten, zoals:
+Een wille keurig aantal extra certificaten kan worden geïnstalleerd op een cluster voor de beveiliging van toepassingen. Voordat u uw cluster maakt, moet u rekening houden met de beveiligings scenario's voor toepassingen waarvoor een certificaat moet worden geïnstalleerd op de knoop punten, zoals:
 
-* Versleuteling en decryptie van toepassingsconfiguratiewaarden.
-* Versleuteling van gegevens tussen knooppunten tijdens replicatie.
+* Versleuteling en ontsleuteling van toepassings configuratie waarden.
+* Versleuteling van gegevens tussen knoop punten tijdens de replicatie.
 
-Het concept van het creëren van veilige clusters is hetzelfde, of ze nu Linux of Windows clusters.
+Het concept van het maken van beveiligde clusters is hetzelfde, of het nu gaat om Linux-of Windows-clusters.
 
-### <a name="client-authentication-certificates-optional"></a>Clientverificatiecertificaten (optioneel)
+### <a name="client-authentication-certificates-optional"></a>Client verificatie certificaten (optioneel)
 
-Een willekeurig aantal extra certificaten kan worden opgegeven voor beheer- of gebruikersclientbewerkingen. De client kan dit certificaat gebruiken wanneer wederzijdse verificatie vereist is. Clientcertificaten worden doorgaans niet uitgegeven door een CA van derden. In plaats daarvan bevat de persoonlijke opslag van de huidige gebruikerslocatie meestal clientcertificaten die daar door een hoofdautoriteit zijn geplaatst. Het certificaat moet een **beoogde doelwaarde van** **clientverificatie**hebben.  
+U kunt een wille keurig aantal extra certificaten opgeven voor beheer-of gebruikers-client bewerkingen. De client kan dit certificaat gebruiken wanneer wederzijdse verificatie is vereist. Client certificaten worden meestal niet uitgegeven door een certificerings instantie van derden. In plaats daarvan bevat het persoonlijke archief van de huidige gebruikers locatie meestal client certificaten die daar zijn geplaatst door een basis instantie. Het certificaat moet een waarde hebben **die bedoeld** is voor **client verificatie**.  
 
-Standaard heeft het clustercertificaat beheerdersclientrechten. Deze aanvullende clientcertificaten mogen niet in het cluster worden geïnstalleerd, maar zijn opgegeven als zijnde toegestaan in de clusterconfiguratie.  De clientcertificaten moeten echter op de clientmachines worden geïnstalleerd om verbinding te maken met het cluster en eventuele bewerkingen uit te voeren.
+Het cluster certificaat heeft standaard beheerders machtigingen voor de beheerder. Deze aanvullende client certificaten mogen niet worden geïnstalleerd in het cluster, maar zijn wel opgegeven als toegestaan in de cluster configuratie.  De client certificaten moeten echter worden geïnstalleerd op de client computers om verbinding te maken met het cluster en bewerkingen uit te voeren.
 
 > [!NOTE]
-> Voor alle beheerbewerkingen op een Service Fabric-cluster zijn servercertificaten vereist. Clientcertificaten kunnen niet worden gebruikt voor beheer.
+> Voor alle beheer bewerkingen op een Service Fabric-cluster zijn server certificaten vereist. Client certificaten kunnen niet worden gebruikt voor beheer.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Een cluster maken in Azure met behulp van een resourcemanagersjabloon](service-fabric-cluster-creation-via-arm.md)
+* [Een cluster maken in azure met behulp van een resource manager-sjabloon](service-fabric-cluster-creation-via-arm.md)
 * [Een cluster maken met Azure Portal](service-fabric-cluster-creation-via-portal.md)
 
 <!--Image references-->
