@@ -1,5 +1,5 @@
 ---
-title: 'Zelfstudie: Azure Active Directory-integratie met Shuccho Navi | Microsoft Documenten'
+title: 'Zelf studie: integratie Azure Active Directory met Shuccho Navi | Microsoft Docs'
 description: Meer informatie over het configureren van eenmalige aanmelding tussen Azure Active Directory en Shuccho Navi.
 services: active-directory
 documentationCenter: na
@@ -16,42 +16,42 @@ ms.topic: tutorial
 ms.date: 03/07/2019
 ms.author: jeedes
 ms.openlocfilehash: 3c6e1748fa4c86f4820e8373bc45541ecad55c71
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "67090745"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-shuccho-navi"></a>Zelfstudie: Azure Active Directory-integratie met Shuccho Navi
+# <a name="tutorial-azure-active-directory-integration-with-shuccho-navi"></a>Zelf studie: integratie Azure Active Directory met Shuccho Navi
 
-In deze zelfstudie leert u hoe u Shuccho Navi integreert met Azure Active Directory (Azure AD).
-De integratie van Shuccho Navi met Azure AD biedt u de volgende voordelen:
+In deze zelf studie leert u hoe u Shuccho Navi integreert met Azure Active Directory (Azure AD).
+Het integreren van Shuccho Navi met Azure AD biedt de volgende voor delen:
 
-* U in Azure AD bepalen wie toegang heeft tot Shuccho Navi.
-* U uw gebruikers automatisch laten aanmelden bij Shuccho Navi (Single Sign-On) met hun Azure AD-accounts.
+* U kunt beheren in azure AD die toegang heeft tot Shuccho Navi.
+* U kunt ervoor zorgen dat uw gebruikers automatisch worden aangemeld bij Shuccho Navi (eenmalige aanmelding) met hun Azure AD-accounts.
 * U kunt uw accounts vanaf één centrale locatie beheren: de Azure-portal.
 
 Zie [What is application access and single sign-on with Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?) als u wilt graag meer wilt weten over de integratie van SaaS-apps met Azure AD.
-Als u geen Azure-abonnement hebt, [maakt u een gratis account](https://azure.microsoft.com/free/) voordat u begint.
+Als u nog geen abonnement op Azure hebt, [Maak dan een gratis account](https://azure.microsoft.com/free/) aan voordat u begint.
 
 ## <a name="prerequisites"></a>Vereisten
 
-Als u azure AD-integratie met Shuccho Navi wilt configureren, hebt u de volgende items nodig:
+Als u Azure AD-integratie met Shuccho Navi wilt configureren, hebt u de volgende items nodig:
 
 * Een Azure AD-abonnement Als u geen Azure AD-omgeving hebt, kunt u [hier](https://azure.microsoft.com/pricing/free-trial/) de proefversie van één maand krijgen.
-* Shuccho Navi eenmalig aanmeldingsabonnement
+* Abonnement voor Shuccho Navi-eenmalige aanmelding
 
 ## <a name="scenario-description"></a>Scenariobeschrijving
 
 In deze zelfstudie gaat u in een testomgeving eenmalige aanmelding van Azure AD configureren en testen.
 
-* Shuccho Navi ondersteunt **SP** geïnitieerde SSO
+* Shuccho Navi ondersteunt door **SP** GEÏNITIEERDe SSO
 
 ## <a name="adding-shuccho-navi-from-the-gallery"></a>Shuccho Navi toevoegen vanuit de galerie
 
-Als u de integratie van Shuccho Navi in Azure AD wilt configureren, moet u Shuccho Navi uit de galerie toevoegen aan uw lijst met beheerde SaaS-apps.
+Als u de integratie van Shuccho Navi wilt configureren in azure AD, moet u Shuccho Navi van de galerie toevoegen aan uw lijst met beheerde SaaS-apps.
 
-**Voer de volgende stappen uit om Shuccho Navi uit de galerie toe te voegen:**
+**Voer de volgende stappen uit om Shuccho Navi toe te voegen uit de galerie:**
 
 1. Klik in het linkernavigatievenster in de **[Azure-portal](https://portal.azure.com)** op het **Azure Active Directory**-pictogram.
 
@@ -65,31 +65,31 @@ Als u de integratie van Shuccho Navi in Azure AD wilt configureren, moet u Shucc
 
     ![De knop Nieuwe toepassing](common/add-new-app.png)
 
-4. Typ In het zoekvak **Shuccho Navi**, selecteer **Shuccho Navi** uit het resultaatpaneel en klik op **Knop Toevoegen** om de toepassing toe te voegen.
+4. Typ **Shuccho Navi**in het zoekvak, selecteer **Shuccho Navi** in het deel venster resultaten en klik vervolgens op de knop **toevoegen** om de toepassing toe te voegen.
 
-     ![Shuccho Navi in de resultatenlijst](common/search-new-app.png)
+     ![Shuccho Navi in de lijst met resultaten](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD-eenmalige aanmelding configureren en testen
 
-In deze sectie configureert en test u Azure AD single sign-on met Shuccho Navi op basis van een testgebruiker genaamd **Britta Simon**.
-Voor eenmalige aanmelding om te werken, moet een koppeling slinken tussen een Azure AD-gebruiker en de gerelateerde gebruiker in Shuccho Navi worden vastgesteld.
+In deze sectie kunt u eenmalige aanmelding voor Azure AD configureren en testen met Shuccho Navi op basis van een test gebruiker met de naam **Julia Simon**.
+Voor een goede werking van eenmalige aanmelding moet er een koppelings relatie tussen een Azure AD-gebruiker en de bijbehorende gebruiker in Shuccho Navi tot stand worden gebracht.
 
-Als u Azure AD-single sign-on met Shuccho Navi wilt configureren en testen, moet u de volgende bouwstenen voltooien:
+Als u eenmalige aanmelding voor Azure AD wilt configureren en testen met Shuccho Navi, moet u de volgende bouw stenen volt ooien:
 
 1. **[Azure AD-eenmalige aanmelding configureren](#configure-azure-ad-single-sign-on)**: als u wilt dat uw gebruikers deze functie kunnen gebruiken.
-2. **[Configureer Shuccho Navi Single Sign-On](#configure-shuccho-navi-single-sign-on)** - om de instellingen voor één aanmelding aan de toepassingszijde te configureren.
+2. **[Eenmalige aanmelding voor Shuccho Navi configureren](#configure-shuccho-navi-single-sign-on)** : Hiermee configureert u de instellingen voor eenmalige aanmelding aan de kant van de toepassing.
 3. **[Een Azure AD-testgebruiker maken](#create-an-azure-ad-test-user)**: als u Azure AD-eenmalige aanmelding wil testen met Britta Simon.
 4. **[De testgebruiker van Azure AD-toewijzen](#assign-the-azure-ad-test-user)**: als u wilt dat Britta Simon gebruik kan maken van Azure AD-eenmalige aanmelding.
-5. **[Maak Shuccho Navi-testgebruiker](#create-shuccho-navi-test-user)** - om een tegenhanger van Britta Simon in Shuccho Navi te hebben die is gekoppeld aan de Azure AD-weergave van de gebruiker.
+5. **[Maak een Shuccho Navi-test gebruiker](#create-shuccho-navi-test-user)** -om een equivalent van Julia Simon in Shuccho Navi te hebben dat is gekoppeld aan de Azure AD-representatie van de gebruiker.
 6. **[Eenmalige aanmelding testen](#test-single-sign-on)**: als u wilt controleren of de configuratie werkt.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Azure AD configureren voor eenmalige aanmelding
 
 In deze sectie gaat u Azure AD-eenmalige aanmelding in de Azure-portal inschakelen.
 
-Voer de volgende stappen uit om de volgende stappen uit te voeren om azure AD-eenmaligaanmelding met Shuccho Navi te configureren:
+Voer de volgende stappen uit om eenmalige aanmelding voor Azure AD met Shuccho Navi te configureren:
 
-1. Selecteer in de [Azure-portal](https://portal.azure.com/)op de pagina **Shuccho** Navi-toepassingsintegratie de optie **Eén aanmelding**.
+1. Selecteer in de [Azure Portal](https://portal.azure.com/)op de pagina **Shuccho Navi** Application Integration de optie **eenmalige aanmelding**.
 
     ![Koppeling Eenmalige aanmelding configureren](common/select-sso.png)
 
@@ -103,18 +103,18 @@ Voer de volgende stappen uit om de volgende stappen uit te voeren om azure AD-ee
 
 4. In de sectie **Standaard SAML-configuratie** voert u de volgende stappen uit:
 
-    ![Shuccho Navi-domein en URL's met eenmalige aanmelding](common/sp-signonurl.png)
+    ![Informatie over eenmalige aanmelding voor Shuccho Navi domein en Url's](common/sp-signonurl.png)
 
     In het tekstvak **Aanmeldings-URL** typt u een URL met het volgende patroon: `https://naviauth.nta.co.jp/saml/login?ENTP_CD=<Your company code>`
 
     > [!NOTE]
-    > De waarde is niet echt. Werk de waarde bij met de werkelijke aanmeldings-URL. Neem contact op met [shuccho Navi Client support team](mailto:sys_ntabtm@nta.co.jp) om de waarde te krijgen. U kunt ook verwijzen naar het patroon dat wordt weergegeven in de sectie **Standaard SAML-configuratie** in de Azure-portal.
+    > De waarde is niet echt. Werk de waarde bij met de werkelijke aanmeldings-URL. Neem contact op met het [ondersteunings team van Shuccho Navi](mailto:sys_ntabtm@nta.co.jp) om de waarde op te halen. U kunt ook verwijzen naar het patroon dat wordt weergegeven in de sectie **Standaard SAML-configuratie** in de Azure-portal.
 
 5. Op de pagina **Eenmalige aanmelding met SAML instellen** in het gedeelte **SAML-handtekeningcertificaat** klikt u op **Downloaden** om het **XML-bestand met federatieve metagegevens** te downloaden uit de gegeven opties overeenkomstig met wat u nodig hebt, en slaat u dit op uw computer op.
 
     ![De link om het certificaat te downloaden](common/metadataxml.png)
 
-6. Kopieer in de sectie **Shuccho Navi instellen** de juiste URL(s) volgens uw vereiste.
+6. Kopieer de gewenste URL ('s) volgens uw vereiste in het gedeelte **Shuccho Navi instellen** .
 
     ![Configuratie-URL's kopiëren](common/copy-configuration-urls.png)
 
@@ -124,9 +124,9 @@ Voer de volgende stappen uit om de volgende stappen uit te voeren om azure AD-ee
 
     c. Afmeldings-URL
 
-### <a name="configure-shuccho-navi-single-sign-on"></a>Shuccho Navi-aanmelding configureren
+### <a name="configure-shuccho-navi-single-sign-on"></a>Eenmalige aanmelding voor Shuccho Navi configureren
 
-Als u eenmalige aanmelding wilt configureren aan de **Shuccho** Navi-kant, moet u de gedownloade **XML metagegevens** en de juiste gekopieerde URL's van Azure-portal naar [het ondersteuningsteam van Shuccho Navi](mailto:sys_ntabtm@nta.co.jp)verzenden. Het team stelt de instellingen zo in dat de verbinding tussen SAML en eenmalige aanmelding aan beide zijden goed is ingesteld.
+Als u eenmalige aanmelding wilt configureren op **Shuccho Navi** , moet u de gedownloade **META gegevensxml** en de juiste gekopieerde url's verzenden van Azure Portal naar [Shuccho Navi-ondersteunings team](mailto:sys_ntabtm@nta.co.jp). Het team stelt de instellingen zo in dat de verbinding tussen SAML en eenmalige aanmelding aan beide zijden goed is ingesteld.
 
 ### <a name="create-an-azure-ad-test-user"></a>Een Azure AD-testgebruiker maken
 
@@ -136,7 +136,7 @@ Het doel van deze sectie is om in de Azure-portal een testgebruiker met de naam 
 
     ![De koppelingen Gebruikers en groepen en Alle gebruikers](common/users.png)
 
-2. Selecteer **Nieuwe gebruiker** boven aan het scherm.
+2. Selecteer **nieuwe gebruiker** boven aan het scherm.
 
     ![Knop Nieuwe gebruiker](common/new-user.png)
 
@@ -146,24 +146,24 @@ Het doel van deze sectie is om in de Azure-portal een testgebruiker met de naam 
 
     a. Voer in het veld **Naam****Britta Simon**in.
   
-    b. In het **veld Type Gebruikersnaam** **brittasimon\@yourcompanydomain.extension**  
+    b. Typ in het veld **gebruikers naam** **brittasimon\@yourcompanydomain. extension**  
     Bijvoorbeeld: BrittaSimon@contoso.com
 
     c. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak Wachtwoord.
 
-    d. Klik **op Maken**.
+    d. Klik op **maken**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>De Azure AD-testgebruiker toewijzen
 
-In deze sectie stelt u Britta Simon in staat om Azure single sign-on te gebruiken door toegang te verlenen tot Shuccho Navi.
+In deze sectie schakelt u Julia Simon in voor het gebruik van eenmalige aanmelding van Azure door toegang te verlenen tot Shuccho Navi.
 
-1. Selecteer in de Azure-portal **Enterprise-toepassingen**, selecteer **Alle toepassingen**en selecteer **Vervolgens Shuccho Navi**.
+1. Selecteer in het Azure Portal **bedrijfs toepassingen**, selecteer **alle toepassingen**en selecteer vervolgens **Shuccho Navi**.
 
     ![De blade Bedrijfstoepassingen](common/enterprise-applications.png)
 
-2. Selecteer **Shuccho Navi**in de lijst met toepassingen .
+2. Selecteer in de lijst toepassingen de optie **Shuccho Navi**.
 
-    ![De Shuccho Navi-koppeling in de lijst Toepassingen](common/all-applications.png)
+    ![De koppeling Shuccho Navi in de lijst met toepassingen](common/all-applications.png)
 
 3. Selecteer in het menu aan de linkerkant **Gebruikers en groepen**.
 
@@ -173,26 +173,26 @@ In deze sectie stelt u Britta Simon in staat om Azure single sign-on te gebruike
 
     ![Het deelvenster Toewijzing toevoegen](common/add-assign-user.png)
 
-5. Selecteer **In** het dialoogvenster Gebruikers en groepen De optie **Britta Simon** in de lijst Gebruikers en klik vervolgens op de knop **Selecteren** onder aan het scherm.
+5. Selecteer in het dialoog venster **gebruikers en groepen** de optie **Julia Simon** in de lijst gebruikers en klik vervolgens op de knop **selecteren** onder aan het scherm.
 
-6. Als u een rolwaarde verwacht in de SAML-bewering, selecteert u in het dialoogvenster **Rol selecteren** de juiste rol voor de gebruiker in de lijst en klikt u op de knop **Selecteren** onder aan het scherm.
+6. Als u een wille keurige rol verwacht in de SAML-bewering, selecteert u in het dialoog venster **rol selecteren** de juiste rol voor de gebruiker in de lijst en klikt u op de knop **selecteren** onder aan het scherm.
 
-7. Klik **in** het dialoogvenster Toewijzing toevoegen op de knop **Toewijzen.**
+7. Klik in het dialoog venster **toewijzing toevoegen** op de knop **toewijzen** .
 
-### <a name="create-shuccho-navi-test-user"></a>Shuccho Navi-testgebruiker maken
+### <a name="create-shuccho-navi-test-user"></a>Shuccho Navi-test gebruiker maken
 
-In deze sectie maakt u een gebruiker genaamd Britta Simon in Shuccho Navi. Werk samen met [shuccho Navi-ondersteuningsteam](mailto:sys_ntabtm@nta.co.jp) om de gebruikers toe te voegen aan het Shuccho Navi-platform. Er moeten gebruikers worden gemaakt en geactiveerd voordat u eenmalige aanmelding kunt gebruiken.
+In deze sectie maakt u een gebruiker met de naam Julia Simon in Shuccho Navi. Werk samen met het [ondersteunings team van Shuccho Navi](mailto:sys_ntabtm@nta.co.jp) om de gebruikers toe te voegen in het Shuccho Navi-platform. Er moeten gebruikers worden gemaakt en geactiveerd voordat u eenmalige aanmelding kunt gebruiken.
 
 ### <a name="test-single-sign-on"></a>Eenmalige aanmelding testen
 
 In deze sectie gaat u uw configuratie van Azure AD-eenmalige aanmelding testen via het toegangsvenster.
 
-Wanneer u op de Shuccho Navi-tegel in het toegangspaneel klikt, moet u automatisch worden aangemeld bij de Shuccho Navi waarvoor u SSO hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
+Wanneer u op de tegel Shuccho Navi in het toegangs venster klikt, moet u automatisch worden aangemeld bij de Shuccho Navi waarvoor u SSO hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
 
 ## <a name="additional-resources"></a>Aanvullende resources
 
 - [Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Wat is toepassingstoegang en eenmalige aanmelding met Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Wat is toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Wat is voorwaardelijke toegang in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

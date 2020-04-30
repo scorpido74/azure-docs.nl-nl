@@ -1,5 +1,5 @@
 ---
-title: 'Zelfstudie: SSO-integratie (Azure Active Directory single sign-on) met LinkedIn Sales Navigator | Microsoft Documenten'
+title: 'Zelf studie: Azure Active Directory-integratie met eenmalige aanmelding (SSO) met LinkedIn Sales Navigator | Microsoft Docs'
 description: Meer informatie over het configureren van eenmalige aanmelding tussen Azure Active Directory en LinkedIn Sales Navigator.
 services: active-directory
 documentationCenter: na
@@ -17,88 +17,88 @@ ms.date: 12/17/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 0d8293b23559860e70191576db13c3cd14f520e6
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "75430888"
 ---
-# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-linkedin-sales-navigator"></a>Zelfstudie: Azure Active Directory single sign-on (SSO) integratie met LinkedIn Sales Navigator
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-linkedin-sales-navigator"></a>Zelf studie: Azure Active Directory-integratie met eenmalige aanmelding (SSO) met LinkedIn Sales Navigator
 
-In deze zelfstudie leert u hoe u LinkedIn Sales Navigator integreert met Azure Active Directory (Azure AD). Wanneer u LinkedIn Sales Navigator integreert met Azure AD, u het als:
+In deze zelf studie leert u hoe u de LinkedIn Sales Navigator integreert met Azure Active Directory (Azure AD). Wanneer u LinkedIn Sales Navigator integreert met Azure AD, kunt u het volgende doen:
 
-* Beheer in Azure AD die toegang heeft tot LinkedIn Sales Navigator.
-* Stel uw gebruikers in staat om automatisch te worden aangemeld bij LinkedIn Sales Navigator met hun Azure AD-accounts.
-* Beheer uw accounts op één centrale locatie: de Azure-portal.
+* Controle in azure AD die toegang heeft tot de LinkedIn-verkoop Navigator.
+* Uw gebruikers in staat stellen om automatisch te worden aangemeld bij LinkedIn Sales Navigator met hun Azure AD-accounts.
+* Beheer uw accounts op één centrale locatie: de Azure Portal.
 
-Zie [Wat is toepassingstoegang en eenmalige aanmelding met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)voor meer informatie over de integratie van de SaaS-app met Azure AD.
+Zie [Wat is toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)voor meer informatie over SaaS-app-integratie met Azure AD.
 
 ## <a name="prerequisites"></a>Vereisten
 
-Om aan de slag te gaan, heb je de volgende items nodig:
+U hebt de volgende items nodig om aan de slag te gaan:
 
-* Een Azure AD-abonnement Wanneer je nog geen abonnement hebt kun je gratis een [account aanmaken.](https://azure.microsoft.com/free/)
-* LinkedIn Sales Navigator single sign-on (SSO) ingeschakeld abonnement.
+* Een Azure AD-abonnement Als u geen abonnement hebt, kunt u een [gratis account](https://azure.microsoft.com/free/)aanvragen.
+* LinkedIn Sales Navigator-abonnement voor eenmalige aanmelding (SSO) ingeschakeld.
 
 ## <a name="scenario-description"></a>Scenariobeschrijving
 
-In deze zelfstudie configureert en test u Azure AD SSO in een testomgeving.
+In deze zelf studie configureert en test u Azure AD SSO in een test omgeving.
 
-* LinkedIn Sales Navigator ondersteunt **SP en IDP** geïnitieerde SSO
-* LinkedIn Sales Navigator ondersteunt **Just In Time** gebruikersinrichting
-* LinkedIn Sales Navigator ondersteunt [ **geautomatiseerde** gebruikersinrichting](linkedinsalesnavigator-provisioning-tutorial.md)
+* LinkedIn Sales Navigator ondersteunt SSO die is gestart **met SP en IDP**
+* LinkedIn Sales Navigator ondersteunt **just-in-time** -gebruikers inrichting
+* LinkedIn Sales Navigator ondersteunt [ **geautomatiseerde** gebruikers inrichting](linkedinsalesnavigator-provisioning-tutorial.md)
 
-## <a name="adding-linkedin-sales-navigator-from-the-gallery"></a>LinkedIn-verkoopnavigator toevoegen vanuit de galerie
+## <a name="adding-linkedin-sales-navigator-from-the-gallery"></a>LinkedIn-verkoop Navigator toevoegen vanuit de galerie
 
-Als u de integratie van LinkedIn Sales Navigator in Azure AD wilt configureren, moet u LinkedIn Sales Navigator vanuit de galerie toevoegen aan uw lijst met beheerde SaaS-apps.
+Als u de integratie van LinkedIn Sales Navigator wilt configureren in azure AD, moet u de LinkedIn-verkoop Navigator vanuit de galerie toevoegen aan uw lijst met beheerde SaaS-apps.
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com) met een werk- of schoolaccount of een persoonlijk Microsoft-account.
-1. Selecteer in het linkernavigatiedeelvenster de **Azure Active Directory-service.**
-1. Navigeer naar **Ondernemingstoepassingen** en selecteer **Alle toepassingen**.
-1. Als u nieuwe toepassingen wilt toevoegen, selecteert u **Nieuwe toepassing**.
-1. Typ **LinkedIn Sales Navigator** in het zoekvak in de sectie **Toevoegen in de galeriesectie.**
-1. Selecteer **LinkedIn Sales Navigator** in het deelvenster Resultaten en voeg de app toe. Wacht een paar seconden terwijl de app wordt toegevoegd aan uw tenant.
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com) met behulp van een werk-of school account of een persoonlijke Microsoft-account.
+1. Selecteer de **Azure Active Directory** -service in het navigatie deel venster aan de linkerkant.
+1. Ga naar **bedrijfs toepassingen** en selecteer **alle toepassingen**.
+1. Selecteer **nieuwe toepassing**om een nieuwe toepassing toe te voegen.
+1. Typ in het gedeelte in **de galerie toevoegen** de tekst **LinkedIn Sales Navigator** in het zoekvak.
+1. Selecteer **LinkedIn Sales Navigator** in het paneel resultaten en voeg vervolgens de app toe. Wacht een paar seconden wanneer de app aan uw Tenant is toegevoegd.
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-linkedin-sales-navigator"></a>Azure AD-aanmelding configureren en testen voor LinkedIn Sales Navigator
+## <a name="configure-and-test-azure-ad-single-sign-on-for-linkedin-sales-navigator"></a>Eenmalige aanmelding van Azure AD voor LinkedIn Sales Navigator configureren en testen
 
-Azure AD SSO configureren en testen met LinkedIn Sales Navigator met behulp van een testgebruiker genaamd **B.Simon**. Als SSO kan werken, moet u een koppelingsrelatie tot stand brengen tussen een Azure AD-gebruiker en de gerelateerde gebruiker in LinkedIn Sales Navigator.
+Azure AD SSO configureren en testen met LinkedIn Sales Navigator met behulp van een test gebruiker met de naam **B. Simon**. Voor het werken met SSO moet u een koppelings relatie tot stand brengen tussen een Azure AD-gebruiker en de bijbehorende gebruiker in de LinkedIn Sales Navigator.
 
-Als u Azure AD SSO wilt configureren en testen met LinkedIn Sales Navigator, voert u de volgende bouwstenen in:
+Als u Azure AD SSO wilt configureren en testen met LinkedIn Sales Navigator, voltooit u de volgende bouw stenen:
 
-1. **[Configureer Azure AD SSO](#configure-azure-ad-sso)** - zodat uw gebruikers deze functie kunnen gebruiken.
-    * **[Een Azure AD-testgebruiker maken](#create-an-azure-ad-test-user)** - om Azure AD-enkele aanmelding te testen met B.Simon.
-    * **[De Azure AD-testgebruiker toewijzen](#assign-the-azure-ad-test-user)** - om B.Simon in staat te stellen azure AD-aanmelding te gebruiken.
-1. **[LinkedIn Sales Navigator SSO configureren](#configure-linkedin-sales-navigator-sso)** - om de instellingen voor één aanmelding aan de toepassingszijde te configureren.
-    * **[LinkedIn Sales Navigator-testgebruiker maken](#create-linkedin-sales-navigator-test-user)** - om een tegenhanger van B.Simon te hebben in LinkedIn Sales Navigator die is gekoppeld aan de Azure AD-weergave van de gebruiker.
-1. **[Test SSO](#test-sso)** - om te controleren of de configuratie werkt.
+1. **[Configureer Azure AD SSO](#configure-azure-ad-sso)** -om uw gebruikers in staat te stellen deze functie te gebruiken.
+    * **[Een Azure AD-test gebruiker maken](#create-an-azure-ad-test-user)** : u kunt eenmalige aanmelding voor Azure AD testen met B. Simon.
+    * **[Wijs de Azure AD-test gebruiker](#assign-the-azure-ad-test-user)** toe, zodat B. Simon de eenmalige aanmelding van Azure AD kan gebruiken.
+1. **[LinkedIn Sales Navigator SSO configureren](#configure-linkedin-sales-navigator-sso)** : voor het configureren van de instellingen voor eenmalige aanmelding aan de kant van de toepassing.
+    * Maak een andere test gebruiker voor het maken van een **[LinkedIn-verkoop Navigator](#create-linkedin-sales-navigator-test-user)** . in de LinkedIn-verkoop Navigator die is gekoppeld aan de Azure AD-representatie van de gebruiker.
+1. **[SSO testen](#test-sso)** : om te controleren of de configuratie werkt.
 
 ## <a name="configure-azure-ad-sso"></a>Azure AD SSO-configureren
 
-Volg deze stappen om Azure AD SSO in te schakelen in de Azure-portal.
+Volg deze stappen om Azure AD SSO in te scha kelen in de Azure Portal.
 
-1. Zoek in de [Azure-portal](https://portal.azure.com/)op de pagina **LinkedIn Sales** Navigator-toepassingsintegratie de sectie **Beheren** en selecteer **eenmalige aanmelding**.
-1. Selecteer **SAML**op de pagina **Eén aanmeldingsmethode** selecteren .
-1. Klik op de pagina **Eén aanmelding instellen met SAML** op het pictogram bewerken/pen voor **BasisSAML-configuratie** om de instellingen te bewerken.
+1. Zoek in het [Azure Portal](https://portal.azure.com/)op de pagina **LinkedIn Sales Navigator** Application Integration de sectie **Manage** en selecteer **eenmalige aanmelding**.
+1. Selecteer op de pagina **Eén aanmeldings methode selecteren** de optie **SAML**.
+1. Klik op de pagina **eenmalige aanmelding met SAML instellen** op het pictogram bewerken/pen voor **eenvoudige SAML-configuratie** om de instellingen te bewerken.
 
    ![Standaard SAML-configuratie bewerken](common/edit-urls.png)
 
-1. Voer in de sectie **BasisSAML-configuratie** de waarden voor de volgende velden in als u de toepassing in de **idp-modus** wilt configureren:
+1. Als u de toepassing in de gestarte modus **IDP** wilt configureren, voert u in de sectie **basis configuratie van SAML** de waarden voor de volgende velden in:
 
-    a. Voer in het tekstvak **Id** de waarde **entiteits-id** in, u kopieert de waarde van de entiteits-id van de Linkedin-portal die later in deze zelfstudie wordt uitgelegd.
+    a. Voer in het tekstvak **id** de waarde voor de **entiteits-** id in, die u in de LinkedIn-Portal kunt kopiëren. dit wordt verderop in deze zelf studie uitgelegd.
 
-    b. Voer in het tekstvak **Url van antwoord** de **url-waarde assertion consumer access (ACS)** in, u kopieert de URL-waarde (Assertion Consumer Access) van de Linkedin-portal die later in deze zelfstudie wordt uitgelegd.
+    b. In het tekstvak **antwoord-URL** voert u de waarde voor de **Assertion Consumer Access (ACS)** -URL in. u kopieert de URL-waarde voor Assertion Consumer Access (ACS) van de LinkedIn-Portal verderop in deze zelf studie.
 
 1. Klik op **Extra URL's instellen** en voer de volgende stap uit als u de toepassing in de door **SP** geïnitieerde modus wilt configureren:
 
     In het tekstvak **Aanmeldings-URL** typt u een URL met het volgende patroon: `https://www.linkedin.com/checkpoint/enterprise/login/<account id>?application=salesNavigator`
 
-1. De LinkedIn Sales Navigator-toepassing verwacht de SAML-beweringen in een specifieke indeling, waarvoor u aangepaste kenmerktoewijzingen moet toevoegen aan uw SAML-tokenkenmerkenconfiguratie. In de volgende schermafbeelding wordt de lijst met standaardkenmerken weergegeven.
+1. Voor de toepassing LinkedIn Sales Navigator worden de SAML-beweringen in een specifieke indeling verwacht. hiervoor moet u aangepaste kenmerk toewijzingen toevoegen aan de configuratie van uw SAML-token kenmerken. In de volgende schermafbeelding wordt de lijst met standaardkenmerken weergegeven.
 
     ![installatiekopie](common/default-attributes.png)
 
-1. Naast bovenstaande, LinkedIn Sales Navigator applicatie verwacht weinig meer attributen worden teruggegeven in SAML reactie die hieronder worden weergegeven. Deze kenmerken zijn ook vooraf ingevuld, maar u ze bekijken volgens uw vereisten.
+1. Voor de toepassing LinkedIn Sales Navigator worden behalve hierboven echter nog maar weinig kenmerken door gegeven aan het SAML-antwoord dat hieronder wordt weer gegeven. Deze kenmerken worden ook vooraf ingevuld, maar u kunt ze controleren volgens uw vereisten.
 
-    | Name | Bronkenmerk|
+    | Naam | Bronkenmerk|
     | --- | --- |
     | e-mail| user.mail |
     | department| user.department |
@@ -106,61 +106,61 @@ Volg deze stappen om Azure AD SSO in te schakelen in de Azure-portal.
     | lastname| user.surname |
     | Unieke gebruikers-id | user.mail |
 
-1. Zoek op de pagina **Eén aanmelding instellen met SAML** in de sectie **SAML-ondertekeningscertificaat** de optie **Federation Metadata XML** en selecteer **Downloaden** om het certificaat te downloaden en op te slaan op uw computer.
+1. Zoek op de pagina **eenmalige aanmelding met SAML instellen** , in de sectie **SAML-handtekening certificaat** , de **federatieve meta gegevens-XML** en selecteer **downloaden** om het certificaat te downloaden en op uw computer op te slaan.
 
     ![De link om het certificaat te downloaden](common/metadataxml.png)
 
-1. Kopieer in de sectie **LinkedIn Sales Navigator instellen** de juiste URL(s) op basis van uw vereiste.
+1. Kopieer op de sectie **LinkedIn-verkoop Navigator instellen** de gewenste URL ('s) op basis van uw vereiste.
 
     ![Configuratie-URL's kopiëren](common/copy-configuration-urls.png)
 
 ### <a name="create-an-azure-ad-test-user"></a>Een Azure AD-testgebruiker maken
 
-In deze sectie maakt u een testgebruiker in de Azure-portal genaamd B.Simon.
+In deze sectie maakt u een test gebruiker in de Azure Portal met de naam B. Simon.
 
-1. Selecteer in het linkerdeelvenster in de Azure-portal **Azure Active Directory,** selecteer **Gebruikers**en selecteer **Alle gebruikers**.
-1. Selecteer **Nieuwe gebruiker** boven aan het scherm.
-1. Voer **in** de eigenschappen gebruiker de volgende stappen uit:
+1. Selecteer in het linkerdeel venster van de Azure Portal **Azure Active Directory**, selecteer **gebruikers**en selecteer vervolgens **alle gebruikers**.
+1. Selecteer **nieuwe gebruiker** boven aan het scherm.
+1. Voer de volgende stappen uit in de eigenschappen van de **gebruiker** :
    1. Voer in het veld **Naam**`B.Simon` in.  
-   1. Voer **in** het veld username@companydomain.extensionGebruikersnaam de . Bijvoorbeeld `B.Simon@contoso.com`.
-   1. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak **Wachtwoord.**
-   1. Klik **op Maken**.
+   1. Voer in het veld **gebruikers naam** het username@companydomain.extensionin. Bijvoorbeeld `B.Simon@contoso.com`.
+   1. Schakel het selectie vakje **wacht woord weer geven** in en noteer de waarde die wordt weer gegeven in het vak **wacht woord** .
+   1. Klik op **maken**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>De Azure AD-testgebruiker toewijzen
 
-In deze sectie u B.Simon inschakelen om Azure single sign-on te gebruiken door toegang te verlenen tot LinkedIn Sales Navigator.
+In deze sectie schakelt u B. Simon in om eenmalige aanmelding van Azure te gebruiken door toegang te verlenen tot de LinkedIn-verkoop Navigator.
 
-1. Selecteer in de Azure-portal **Enterprise-toepassingen**en selecteer **Alle toepassingen**.
-1. Selecteer **LinkedIn Sales Navigator**in de lijst met toepassingen .
-1. Zoek op de overzichtspagina van de app de sectie **Beheren** en selecteer **Gebruikers en groepen**.
+1. Selecteer in het Azure Portal **bedrijfs toepassingen**en selecteer vervolgens **alle toepassingen**.
+1. Selecteer in de lijst toepassingen de optie **LinkedIn Sales Navigator**.
+1. Ga op de pagina overzicht van de app naar de sectie **beheren** en selecteer **gebruikers en groepen**.
 
    ![De koppeling Gebruikers en groepen](common/users-groups-blade.png)
 
-1. Selecteer **Gebruiker toevoegen**en selecteer vervolgens Gebruikers en **groepen** in het dialoogvenster **Toewijzing toevoegen.**
+1. Selecteer **gebruiker toevoegen**en selecteer vervolgens **gebruikers en groepen** in het dialoog venster **toewijzing toevoegen** .
 
-    ![De koppeling Gebruiker toevoegen](common/add-assign-user.png)
+    ![De koppeling gebruiker toevoegen](common/add-assign-user.png)
 
-1. Selecteer **B.Simon** in het dialoogvenster **Gebruikers en groepen** in de lijst Gebruikers en klik vervolgens op de knop **Selecteren** onder aan het scherm.
-1. Als u een rolwaarde verwacht in de SAML-bewering, selecteert u in het dialoogvenster **Rol selecteren** de juiste rol voor de gebruiker in de lijst en klikt u op de knop **Selecteren** onder aan het scherm.
-1. Klik **in** het dialoogvenster Toewijzing toevoegen op de knop **Toewijzen.**
+1. Selecteer in het dialoog venster **gebruikers en groepen** **B. Simon** van de lijst gebruikers en klik vervolgens op de knop **selecteren** onder aan het scherm.
+1. Als u een wille keurige rol verwacht in de SAML-bewering, selecteert u in het dialoog venster **rol selecteren** de juiste rol voor de gebruiker in de lijst en klikt u op de knop **selecteren** onder aan het scherm.
+1. Klik in het dialoog venster **toewijzing toevoegen** op de knop **toewijzen** .
 
 ## <a name="configure-linkedin-sales-navigator-sso"></a>LinkedIn Sales Navigator SSO configureren
 
-1. Meld je in een ander browservenster aan bij je **LinkedIn Sales Navigator-website** als beheerder.
+1. Meld u in een ander webbrowser venster als beheerder aan bij uw **LinkedIn Sales Navigator** -website.
 
-1. Klik in **Accountcentrum** onder **Instellingen** op **Algemene instellingen**. Selecteer ook **Verkoopnavigator** in de vervolgkeuzelijst.
+1. Klik in **Accountcentrum** onder **Instellingen** op **Algemene instellingen**. Selecteer ook **verkoop Navigator** in de vervolg keuzelijst.
 
     ![Eenmalige aanmelding configureren](./media/linkedinsalesnavigator-tutorial/tutorial_linkedin_admin_01.png)
 
-1. Klik op **OR Klik hier om afzonderlijke velden uit het formulier te laden en te kopiëren** en de volgende stappen uit te voeren:
+1. Klik op **of klik hier om afzonderlijke velden uit het formulier te laden en te kopiëren** en de volgende stappen uit te voeren:
 
     ![Eenmalige aanmelding configureren](./media/linkedinsalesnavigator-tutorial/tutorial_linkedin_admin_031.png)
 
-    a. Kopieer **entiteits-id** en plak deze in het tekstvak **Identifier** in de **basisSAML-configuratie** in de Azure-portal.
+    a. Kopieer de **Entiteits-ID** en plak deze in het tekstvak **id** in de basis- **SAML-configuratie** in de Azure Portal.
 
-    b. **Acs-url (Assertion Consumer Access) kopiëren** en plakken in het tekstvak **Url van antwoord** in de **basisSAML-configuratie** in de Azure-portal.
+    b. Kopieer de URL van de **Assertion Consumer toegang (ACS)** en plak deze in het tekstvak **antwoord-URL** in de **basis-SAML-configuratie** in de Azure Portal.
 
-1. Ga naar het gedeelte **met beheerdersinstellingen voor LinkedIn**. Upload het XML-bestand dat u hebt gedownload van de Azure-portal door te klikken op de optie **XML-bestand uploaden.**
+1. Ga naar het gedeelte **met beheerdersinstellingen voor LinkedIn**. Upload het XML-bestand dat u hebt gedownload van de Azure Portal door te klikken op de optie **XML-bestand uploaden** .
 
     ![Eenmalige aanmelding configureren](./media/linkedinsalesnavigator-tutorial/tutorial_linkedin_metadata_03.png)
 
@@ -168,21 +168,21 @@ In deze sectie u B.Simon inschakelen om Azure single sign-on te gebruiken door t
 
     ![Eenmalige aanmelding configureren](./media/linkedinsalesnavigator-tutorial/tutorial_linkedin_admin_05.png)
 
-### <a name="create-linkedin-sales-navigator-test-user"></a>Testgebruiker LinkedIn Sales Navigator maken
+### <a name="create-linkedin-sales-navigator-test-user"></a>Een test gebruiker voor de LinkedIn-verkoop Navigator maken
 
-Linked Sales Navigator Application ondersteunt Just in Time (JIT) gebruikersinrichting en nadat authenticatie gebruikers worden gemaakt in de applicatie automatisch. Automatisch **licenties activeren om** een licentie aan de gebruiker toe te wijzen.
+De gekoppelde verkoop Navigator-toepassing biedt ondersteuning voor Just-in-time (JIT)-gebruikers inrichten en nadat gebruikers met verificatie automatisch in de toepassing zijn gemaakt. Activeer **Automatisch licenties toewijzen** om een licentie aan de gebruiker toe te wijzen.
 
    ![Een Azure AD-testgebruiker maken](./media/linkedinsalesnavigator-tutorial/LinkedinUserprovswitch.png)
 
-## <a name="test-sso"></a>Test SSO 
+## <a name="test-sso"></a>SSO testen 
 
 In deze sectie gaat u uw configuratie van Azure AD-eenmalige aanmelding testen via het toegangsvenster.
 
-Wanneer u op de tegel LinkedIn-verkoopnavigator in het toegangspaneel klikt, moet u automatisch worden aangemeld bij de LinkedIn Sales Navigator waarvoor u SSO hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
+Wanneer u op de tegel verkoop Navigator LinkedIn in het toegangs venster klikt, moet u automatisch worden aangemeld bij de LinkedIn Sales Navigator waarvoor u SSO hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
 
 ## <a name="additional-resources"></a>Aanvullende bronnen
 
-- [Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Lijst met zelf studies voor het integreren van SaaS-apps met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [What is application access and single sign-on with Azure Active Directory? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat is toegang tot toepassingen en eenmalige aanmelding bij Azure Active Directory?)
 

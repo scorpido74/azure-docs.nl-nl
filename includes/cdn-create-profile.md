@@ -9,10 +9,10 @@ ms.date: 05/24/2018
 ms.author: cfowler
 ms.custom: include file
 ms.openlocfilehash: 8aa6cb3f10b86a6821cd93190ecc2135508739cb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "67593996"
 ---
 ## <a name="create-a-new-cdn-profile"></a>Nieuwe CDN-profielen maken
@@ -27,7 +27,7 @@ Een CDN-profiel is een container voor CDN-eindpunten waarmee een prijscategorie 
    
     ![CDN-resource selecteren](./media/cdn-create-profile/cdn-new-resource.png)
 
-    Het **cdn-profielvenster** wordt weergegeven.
+    Het deel venster **CDN-profiel** wordt weer gegeven.
 
 3. Gebruik voor de CDN-profielinstellingen de waarden die in de volgende tabel zijn opgegeven:
    
@@ -37,7 +37,7 @@ Een CDN-profiel is een container voor CDN-eindpunten waarmee een prijscategorie 
     | **Abonnement** | Kies een Azure-abonnement in de vervolgkeuzelijst. |
     | **Resourcegroep** | Selecteer **Nieuwe maken** en voer *my-resource-group-123* in als naam voor de resourcegroep. Als deze al in gebruik is, kunt u een andere naam invoeren of **Bestaande gebruiken** selecteren en **my-resource-group-123** in de vervolgkeuzelijst selecteren. | 
     | **Resourcegroeplocatie** | Selecteer **VS - centraal** in de vervolgkeuzelijst. |
-    | **Prijslaag** | Selecteer **Standard - Verizon** in de vervolgkeuzelijst. |
+    | **Prijs categorie** | Selecteer **Standard - Verizon** in de vervolgkeuzelijst. |
     | **Nu een nieuw CDN-eindpunt maken** | Laat het selectievakje uitgeschakeld. |  
    
     ![Nieuw CDN-profiel](./media/cdn-create-profile/cdn-new-profile.png)

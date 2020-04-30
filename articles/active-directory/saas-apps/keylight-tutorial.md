@@ -1,6 +1,6 @@
 ---
-title: 'Zelfstudie: Azure Active Directory-integratie met LockPath-sleutellicht | Microsoft Documenten'
-description: Meer informatie over het configureren van eenmalige aanmelding tussen Azure Active Directory en LockPath Keylight.
+title: 'Zelf studie: integratie Azure Active Directory met LockPath-lampje | Microsoft Docs'
+description: Meer informatie over het configureren van eenmalige aanmelding tussen Azure Active Directory en LockPath-lampje.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -17,43 +17,43 @@ ms.date: 04/14/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 148c2c46a911088d01ab83fe2d16e8ca81d272ff
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "67098775"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-lockpath-keylight"></a>Zelfstudie: Azure Active Directory-integratie met LockPath-sleutellicht
+# <a name="tutorial-azure-active-directory-integration-with-lockpath-keylight"></a>Zelf studie: integratie Azure Active Directory met LockPath-lampje
 
-In deze zelfstudie leert u hoe u LockPath Keylight integreert met Azure Active Directory (Azure AD).
-De integratie van LockPath Keylight met Azure AD biedt u de volgende voordelen:
+In deze zelf studie leert u hoe u LockPath-Lighting integreert met Azure Active Directory (Azure AD).
+Het integreren van LockPath-basis met Azure AD biedt de volgende voor delen:
 
-* U in Azure AD bepalen wie toegang heeft tot LockPath Keylight.
-* U uw gebruikers automatisch laten inlogen bij LockPath Keylight (Single Sign-On) met hun Azure AD-accounts.
+* U kunt beheren in azure AD die toegang heeft tot LockPath-superlicht.
+* U kunt ervoor zorgen dat uw gebruikers automatisch worden aangemeld bij LockPath (eenmalige aanmelding) met hun Azure AD-accounts.
 * U kunt uw accounts vanaf één centrale locatie beheren: de Azure-portal.
 
 Zie [What is application access and single sign-on with Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?) als u wilt graag meer wilt weten over de integratie van SaaS-apps met Azure AD.
-Als u geen Azure-abonnement hebt, [maakt u een gratis account](https://azure.microsoft.com/free/) voordat u begint.
+Als u nog geen abonnement op Azure hebt, [Maak dan een gratis account](https://azure.microsoft.com/free/) aan voordat u begint.
 
 ## <a name="prerequisites"></a>Vereisten
 
-Als u Azure AD-integratie wilt configureren met LockPath Keylight, hebt u de volgende items nodig:
+Voor het configureren van Azure AD-integratie met LockPath-lampje, hebt u de volgende items nodig:
 
-* Een Azure AD-abonnement Als u geen Azure AD-omgeving hebt, u een [gratis account](https://azure.microsoft.com/free/) krijgen
-* LockPath Keylight eenmalig abonnement ingeschakeld voor aanmelding
+* Een Azure AD-abonnement Als u geen Azure AD-omgeving hebt, kunt u een [gratis account](https://azure.microsoft.com/free/) aanvragen
+* LockPath-abonnement met eenmalige aanmelding
 
 ## <a name="scenario-description"></a>Scenariobeschrijving
 
 In deze zelfstudie gaat u in een testomgeving eenmalige aanmelding van Azure AD configureren en testen.
 
-* LockPath Keylight ondersteunt **DOOR SP** geïnitieerde SSO
-* LockPath Keylight ondersteunt **Just In Time** gebruikersinrichting
+* LockPath-superlampje ondersteunt door **SP** GEÏNITIEERDe SSO
+* LockPath-superlampje ondersteunt **just-in-time** -gebruikers inrichting
 
-## <a name="adding-lockpath-keylight-from-the-gallery"></a>LockPath-sleutellicht toevoegen vanuit de galerie
+## <a name="adding-lockpath-keylight-from-the-gallery"></a>LockPath-Sublicht toevoegen vanuit de galerie
 
-Als u de integratie van LockPath Keylight in Azure AD wilt configureren, moet u LockPath Keylight vanuit de galerie toevoegen aan uw lijst met beheerde SaaS-apps.
+Als u de integratie van LockPath-LockPath wilt configureren in azure AD, moet u-van de galerie toevoegen aan uw lijst met beheerde SaaS-apps.
 
-**Als u LockPath-sleutellicht vanuit de galerie wilt toevoegen, voert u de volgende stappen uit:**
+**Voer de volgende stappen uit om LockPath-Sublicht toe te voegen vanuit de galerie:**
 
 1. Klik in het linkernavigatievenster in de **[Azure-portal](https://portal.azure.com)** op het **Azure Active Directory**-pictogram.
 
@@ -67,31 +67,31 @@ Als u de integratie van LockPath Keylight in Azure AD wilt configureren, moet u 
 
     ![De knop Nieuwe toepassing](common/add-new-app.png)
 
-4. Typ **LockPath Keylight**in het zoekvak , selecteer **LockPath-sleutellicht** uit het resultaatpaneel en klik op **Knop Toevoegen** om de toepassing toe te voegen.
+4. Typ **LockPath**- **LockPath** in het zoekvak en klik op de knop **toevoegen** om de toepassing toe te voegen.
 
-    ![LockPath Keylight in de resultatenlijst](common/search-new-app.png)
+    ![LockPath-Sublicht in de lijst met resultaten](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD-eenmalige aanmelding configureren en testen
 
-In deze sectie configureert en test u Azure AD single sign-on met LockPath Keylight op basis van een testgebruiker genaamd **Britta Simon**.
-Voor eenmalige aanmelding aan het werk moet een koppelingsrelatie worden ingesteld tussen een Azure AD-gebruiker en de gerelateerde gebruiker in LockPath Keylight.
+In deze sectie kunt u eenmalige aanmelding voor Azure AD configureren en testen met LockPath-toetsen bord op basis van een test gebruiker met de naam **Julia Simon**.
+Voor de werking van eenmalige aanmelding moet er een koppelings relatie tussen een Azure AD-gebruiker en de bijbehorende gebruiker in LockPath-hoofd licht worden gemaakt.
 
-Als u Azure AD-single sign-aan wilt configureren en testen met LockPath Keylight, moet u de volgende bouwstenen voltooien:
+Als u eenmalige aanmelding voor Azure AD wilt configureren en testen met LockPath-toetsen bord, moet u de volgende bouw stenen volt ooien:
 
 1. **[Azure AD-eenmalige aanmelding configureren](#configure-azure-ad-single-sign-on)**: als u wilt dat uw gebruikers deze functie kunnen gebruiken.
-2. **[Configureer LockPath Keylight Single Sign-On](#configure-lockpath-keylight-single-sign-on)** - om de instellingen voor eenmalig aanmelden aan de toepassingszijde te configureren.
+2. **[Eenmalige aanmelding van LockPath configureren](#configure-lockpath-keylight-single-sign-on)** om de instellingen voor eenmalige aanmelding aan de kant van de toepassing te configureren.
 3. **[Een Azure AD-testgebruiker maken](#create-an-azure-ad-test-user)**: als u Azure AD-eenmalige aanmelding wil testen met Britta Simon.
 4. **[De testgebruiker van Azure AD-toewijzen](#assign-the-azure-ad-test-user)**: als u wilt dat Britta Simon gebruik kan maken van Azure AD-eenmalige aanmelding.
-5. **[LockPath Keylight-testgebruiker](#create-lockpath-keylight-test-user)** maken - om een tegenhanger van Britta Simon in LockPath Keylight te hebben die is gekoppeld aan de Azure AD-weergave van de gebruiker.
+5. **[Maak een LockPath-test gebruiker](#create-lockpath-keylight-test-user)** voor het maken van een equivalent van Julia Simon in LockPath-lampje dat is gekoppeld aan de Azure AD-representatie van de gebruiker.
 6. **[Eenmalige aanmelding testen](#test-single-sign-on)**: als u wilt controleren of de configuratie werkt.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Azure AD configureren voor eenmalige aanmelding
 
 In deze sectie gaat u Azure AD-eenmalige aanmelding in de Azure-portal inschakelen.
 
-Voer de volgende stappen uit om de volgende stappen uit te voeren om de enkele aanmelding van Azure AD met LockPath Keylight te configureren:
+Voer de volgende stappen uit om eenmalige aanmelding voor Azure AD te configureren met LockPath-lampje:
 
-1. Selecteer in de [Azure-portal](https://portal.azure.com/)op de pagina **LockPath Keylight-toepassingsintegratie** de optie **Eén aanmelding**.
+1. Selecteer in de [Azure Portal](https://portal.azure.com/)op de pagina **LockPath** -toepassing voor de integratie van het programma voor het inschakelen van **eenmalige aanmelding**.
 
     ![Koppeling Eenmalige aanmelding configureren](common/select-sso.png)
 
@@ -105,7 +105,7 @@ Voer de volgende stappen uit om de volgende stappen uit te voeren om de enkele a
 
 4. In de sectie **Standaard SAML-configuratie** voert u de volgende stappen uit:
 
-    ![LockPath Keylight Domain and URLLs single sign-on information LockPath Keylight Domain and URLLs single sign-on information LockPath Keylight Domain and URLLs single sign-on information LockPath](common/sp-identifier-reply.png)
+    ![Informatie over eenmalige aanmelding voor LockPath-domein en Url's](common/sp-identifier-reply.png)
 
     a. In het tekstvak **Aanmeldings-URL** typt u een URL met de volgende notatie: `https://<company name>.keylightgrc.com/`
 
@@ -114,13 +114,13 @@ Voer de volgende stappen uit om de volgende stappen uit te voeren om de enkele a
     c. In het tekstvak **Antwoord-URL** typt u een URL met behulp van het volgende patroon: `https://<company name>.keylightgrc.com/Login.aspx`
 
     > [!NOTE]
-    > Dit zijn geen echte waarden. Werk deze waarden bij met de werkelijke aanmeldings-URL, id en antwoord-URL. Neem contact op met [het ondersteuningsteam van LockPath Keylight Client](https://www.lockpath.com/contact/) om deze waarden te krijgen. U kunt ook verwijzen naar het patroon dat wordt weergegeven in de sectie **Standaard SAML-configuratie** in de Azure-portal.
+    > Dit zijn geen echte waarden. Werk deze waarden bij met de werkelijke aanmeldings-URL, id en antwoord-URL. Neem contact op met het [ondersteunings team van LockPath-client](https://www.lockpath.com/contact/) om deze waarden op te halen. U kunt ook verwijzen naar het patroon dat wordt weergegeven in de sectie **Standaard SAML-configuratie** in de Azure-portal.
 
 5. Op de pagina **Eenmalige aanmelding met SAML instellen** in de sectie **SAML-handtekeningcertificaat** klikt u op **Downloaden** om het **Certificaat (Raw)** te downloaden uit de gegeven opties overeenkomstig met wat u nodig hebt, en slaat u dit op uw computer op.
 
     ![De link om het certificaat te downloaden](common/certificateraw.png)
 
-6. Kopieer in de sectie **LockPath Keylight** de juiste URL(s) naar uw behoefte.
+6. Kopieer op de sectie LockPath-hoofd **lampje instellen** de gewenste URL ('s) volgens uw vereiste.
 
     ![Configuratie-URL's kopiëren](common/copy-configuration-urls.png)
 
@@ -130,53 +130,53 @@ Voer de volgende stappen uit om de volgende stappen uit te voeren om de enkele a
 
     c. Afmeldings-URL
 
-### <a name="configure-lockpath-keylight-single-sign-on"></a>LockPath Keylight Single Sign-On configureren
+### <a name="configure-lockpath-keylight-single-sign-on"></a>Eenmalige aanmelding van LockPath configureren
 
-1. Voer de volgende stappen uit om SSO in LockPath Keylight in te schakelen:
+1. Voer de volgende stappen uit om SSO in te scha kelen in LockPath-lampje:
 
-    a. Meld u aan bij uw LockPath Keylight-account als beheerder.
+    a. Meld u aan bij uw LockPath-account als Administrator.
 
-    b. Klik in het menu bovenaan op **Persoon**en selecteer **Keylight Setup**.
+    b. Klik in het menu aan de bovenkant op **persoon**en selecteer vervolgens de optie voor het instellen van een **licht lampje**.
 
     ![Eenmalige aanmelding configureren](./media/keylight-tutorial/401.png)
 
-    c. Klik in de treeview aan de linkerkant op **SAML**.
+    c. Klik in de structuur weergave aan de linkerkant op **SAML**.
 
     ![Eenmalige aanmelding configureren](./media/keylight-tutorial/402.png)
 
-    d. Klik in het dialoogvenster **SAML-instellingen** op **Bewerken**.
+    d. Klik in het dialoog venster **SAML-instellingen** op **bewerken**.
 
     ![Eenmalige aanmelding configureren](./media/keylight-tutorial/404.png)
 
-1. Voer op de pagina **SAML-instellingen bewerken** de volgende stappen uit:
+1. Voer de volgende stappen uit op de pagina **SAML-instellingen bewerken** :
 
     ![Eenmalige aanmelding configureren](./media/keylight-tutorial/405.png)
 
-    a. **SAML-verificatie** instellen op **Actief**.
+    a. Stel **SAML-verificatie** in op **actief**.
 
-    b. Plak in het tekstvak **Url van aanmelding van identiteitsprovider** de **URL-waarde aanmelding** die u hebt gekopieerd uit de Azure-portal.
+    b. Plak in het tekstvak aanmeldings-URL van de **ID-provider** de waarde voor de AANMELDINGS- **URL** die u hebt gekopieerd uit de Azure Portal.
 
-    c. Plak in het **tekstvak URL-logboeken** van de identiteitsprovider de **URL-waarde van afmelden** die u hebt gekopieerd uit de Azure-portal.
+    c. Plak in het tekstvak voor de **Afmeldings-URL van de identiteits provider** de waarde voor de **afmeldings-URL** die u hebt gekopieerd uit de Azure Portal.
 
-    d. Klik **op Bestand kiezen** om het gedownloade LockPath-sleutellichtcertificaat te selecteren en klik vervolgens op **Openen** om het certificaat te uploaden.
+    d. Klik op **bestand kiezen** om het gedownloade LockPath-basis certificaat te selecteren en klik vervolgens op **openen** om het certificaat te uploaden.
 
-    e. Stel **de LOCATIE SAML-gebruikersnaam in** op **nameidentifier-element van de onderwerpinstructie**.
+    e. Stel de locatie van de **SAML-gebruikers-id** in op **het NameIdentifier-element van de instructie subject**.
 
-    f. Geef de **Keylight Service Provider** `https://<CompanyName>.keylightgrc.com`aan volgens het volgende patroon: .
+    f. Geef de **service provider voor de licht gewicht** op met behulp van het volgende patroon: `https://<CompanyName>.keylightgrc.com`.
 
-    g. **Gebruikers van automatische voorzieningen** instellen op **Actief**.
+    g. **Gebruikers automatisch inrichten** instellen op **actief**.
 
-    h. Stel **accounttype automatisch inrichten** in op **Volledige gebruiker**.
+    h. Stel het **account type voor automatische inrichting** in op **volledige gebruiker**.
 
-    i. Stel **de beveiligingsrol voor automatische voorzieningen**in, selecteer **Standaardgebruiker met SAML**.
+    i. Stel de **beveiligingsrol automatische inrichting**in, selecteer **standaard gebruiker met SAML**.
 
-    j. Stel **beveiligingsconfig voor automatische voorzieningen in**, selecteer **Standaardgebruikersconfiguratie**.
+    j. Stel de **beveiligings configuratie voor automatische inrichting**in en selecteer **standaard gebruikers configuratie**.
 
-    k. Typ in het tekstvak `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`van het kenmerk **E-mail** de optie .
+    k. Typ `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`in het tekstvak **e-mail kenmerk** .
 
-    l. Typ in het tekstvak `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname` **voornaam kenmerk** .
+    l. Typ `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname`in het tekstvak **voor het voor naam kenmerk** .
 
-    m. Typ in het tekstvak `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname` **Achternaamkenmerk** .
+    m. Typ `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname`in het tekstvak **Achternaam kenmerk** .
 
     n. Klik op **Opslaan**.
 
@@ -188,7 +188,7 @@ Het doel van deze sectie is om in de Azure-portal een testgebruiker met de naam 
 
     ![De koppelingen Gebruikers en groepen en Alle gebruikers](common/users.png)
 
-2. Selecteer **Nieuwe gebruiker** boven aan het scherm.
+2. Selecteer **nieuwe gebruiker** boven aan het scherm.
 
     ![Knop Nieuwe gebruiker](common/new-user.png)
 
@@ -198,23 +198,23 @@ Het doel van deze sectie is om in de Azure-portal een testgebruiker met de naam 
 
     a. Voer in het veld **Naam****Britta Simon**in.
   
-    b. In **User name** het veld `brittasimon@yourcompanydomain.extension`type gebruikersnaam . Bijvoorbeeld: BrittaSimon@contoso.com
+    b. Typ `brittasimon@yourcompanydomain.extension`in het veld **gebruikers naam** . Bijvoorbeeld: BrittaSimon@contoso.com
 
     c. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak Wachtwoord.
 
-    d. Klik **op Maken**.
+    d. Klik op **maken**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>De Azure AD-testgebruiker toewijzen
 
-In deze sectie u Britta Simon inschakelen om Azure single sign-on te gebruiken door toegang te verlenen tot LockPath Keylight.
+In deze sectie schakelt u Julia Simon in om de eenmalige aanmelding van Azure te gebruiken door toegang te verlenen aan LockPath-hoofd lampje.
 
-1. Selecteer in de Azure-portal **Enterprise-toepassingen**, selecteer **Alle toepassingen**en selecteer **Vervolgens LockPath-sleutellicht**.
+1. Selecteer in het Azure Portal **bedrijfs toepassingen**, selecteer **alle toepassingen**en selecteer vervolgens LockPath-basis **licht**.
 
     ![De blade Bedrijfstoepassingen](common/enterprise-applications.png)
 
-2. Selecteer **LockPath Keylight**in de lijst met toepassingen .
+2. Selecteer **LockPath-lampje**in de lijst toepassingen.
 
-    ![De koppeling LockPath Keylight in de lijst Toepassingen](common/all-applications.png)
+    ![De LockPath-superlampje-koppeling in de lijst met toepassingen](common/all-applications.png)
 
 3. Selecteer in het menu aan de linkerkant **Gebruikers en groepen**.
 
@@ -224,26 +224,26 @@ In deze sectie u Britta Simon inschakelen om Azure single sign-on te gebruiken d
 
     ![Het deelvenster Toewijzing toevoegen](common/add-assign-user.png)
 
-5. Selecteer **In** het dialoogvenster Gebruikers en groepen **Britta Simon** in de lijst Gebruikers en klik je op de knop **Selecteren** onder aan het scherm.
+5. Selecteer in het dialoog venster **gebruikers en groepen** **Julia Simon** in de lijst gebruikers en klik vervolgens op de knop **selecteren** onder aan het scherm.
 
-6. Als u een rolwaarde verwacht in de SAML-bewering, selecteert u in het dialoogvenster **Rol selecteren** de juiste rol voor de gebruiker in de lijst en klikt u op de knop **Selecteren** onder aan het scherm.
+6. Als u een wille keurige rol verwacht in de SAML-bewering, selecteert u in het dialoog venster **rol selecteren** de juiste rol voor de gebruiker in de lijst en klikt u op de knop **selecteren** onder aan het scherm.
 
 7. Klik in het dialoogvenster **Toewijzing toevoegen** op de knop **Toewijzen**.
 
-### <a name="create-lockpath-keylight-test-user"></a>Testgebruiker LockPath-sleutellicht maken
+### <a name="create-lockpath-keylight-test-user"></a>LockPath-test gebruiker maken
 
-In deze sectie wordt een gebruiker genaamd Britta Simon gemaakt in LockPath Keylight. LockPath Keylight ondersteunt just-in-time gebruikersinrichting, die standaard is ingeschakeld. Er is geen actie-item voor u in deze sectie. Als een gebruiker nog niet bestaat in LockPath Keylight, wordt er een nieuwe gemaakt na verificatie. Als u handmatig een gebruiker wilt maken, moet u contact opnemen met het ondersteuningsteam van de [LockPath Keylight Client.](https://www.lockpath.com/contact/)
+In deze sectie wordt een gebruiker met de naam Julia Simon gemaakt in LockPath-Light. LockPath-superlampje ondersteunt just-in-time-gebruikers inrichting, die standaard is ingeschakeld. Er is geen actie-item voor u in deze sectie. Als een gebruiker niet al aanwezig is in LockPath-lampje, wordt er na verificatie een nieuwe gemaakt. Als u hand matig een gebruiker moet maken, moet u contact opnemen met het [ondersteunings team voor LockPath-client ondersteuning](https://www.lockpath.com/contact/).
 
 ### <a name="test-single-sign-on"></a>Eenmalige aanmelding testen
 
 In deze sectie gaat u uw configuratie van Azure AD-eenmalige aanmelding testen via het toegangsvenster.
 
-Wanneer u op de tegel LockPath Keylight klikt in het toegangspaneel, moet u automatisch worden aangemeld bij het LockPath-sleutellicht waarvoor u SSO hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
+Wanneer u op de tegel LockPath-lampje in het toegangs venster klikt, moet u automatisch worden aangemeld bij het LockPath-lampje waarvoor u SSO hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
 
 ## <a name="additional-resources"></a>Aanvullende resources
 
 - [Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Wat is toepassingstoegang en eenmalige aanmelding met Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Wat is toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Wat is voorwaardelijke toegang in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
