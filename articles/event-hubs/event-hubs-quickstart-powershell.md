@@ -1,5 +1,5 @@
 ---
-title: 'Snelstart: een gebeurtenishub maken met PowerShell - Azure Event Hubs'
+title: 'Snelstartgids: een Event Hub maken met behulp van Power shell-Azure Event Hubs'
 description: In deze snelstart wordt beschreven hoe u een event hub maakt met behulp van Azure PowerShell en vervolgens gebeurtenissen verzendt en ontvangt met behulp van .NET Standard SDK.
 services: event-hubs
 author: spelluru
@@ -11,10 +11,10 @@ ms.custom: seodec18
 ms.date: 11/05/2019
 ms.author: spelluru
 ms.openlocfilehash: 89ec1957e75fa45eef6c7939a77e5cc1b3cf7806
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "77162120"
 ---
 # <a name="quickstart-create-an-event-hub-using-azure-powershell"></a>Snelstart: Een event hub maken met behulp van Azure PowerShell
@@ -68,7 +68,7 @@ Gefeliciteerd! U hebt Azure PowerShell gebruikt om een ​​Event Hubs-naamruim
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In dit artikel hebt u de Event Hubs-naamruimte gemaakt en voorbeeldtoepassingen gebruikt om gebeurtenissen te verzenden en ontvangen vanuit uw Event Hub. Zie de zelfstudies voor het verzenden en ontvangen van evenementen voor stapsgewijze instructies om gebeurtenissen naar (of) ontvangen van gebeurtenissen van een gebeurtenishub **te verzenden en te ontvangen:** 
+In dit artikel hebt u de Event Hubs-naamruimte gemaakt en voorbeeldtoepassingen gebruikt om gebeurtenissen te verzenden en ontvangen vanuit uw Event Hub. Voor stapsgewijze instructies voor het verzenden van gebeurtenissen naar (of) het ontvangen van gebeurtenissen van een Event Hub, raadpleegt u de zelf studies voor het **verzenden en ontvangen van gebeurtenissen** : 
 
 - [.NET Core](get-started-dotnet-standard-send-v2.md)
 - [Java](get-started-java-send-v2.md)

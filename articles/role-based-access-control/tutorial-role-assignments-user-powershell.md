@@ -1,6 +1,6 @@
 ---
-title: 'Zelfstudie: Gebruikers toegang verlenen tot Azure-bronnen met RBAC en Azure PowerShell'
-description: In deze zelfstudie u een gebruiker toegang verlenen tot Azure-bronnen met behulp van RBAC (Role Based Access Control) en Azure PowerShell.
+title: 'Zelf studie: gebruikers toegang verlenen tot Azure-resources met RBAC en Azure PowerShell'
+description: Meer informatie over hoe u een gebruiker toegang verleent tot Azure-resources met behulp van RBAC (op rollen gebaseerd toegangs beheer) en Azure PowerShell in deze zelf studie.
 services: active-directory
 documentationCenter: ''
 author: rolyon
@@ -14,13 +14,13 @@ ms.workload: identity
 ms.date: 02/02/2019
 ms.author: rolyon
 ms.openlocfilehash: f4ba56bf79d707200bf361ab4c717bb63d081953
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "77138232"
 ---
-# <a name="tutorial-grant-a-user-access-to-azure-resources-using-rbac-and-azure-powershell"></a>Zelfstudie: Een gebruiker toegang verlenen tot Azure-bronnen met RBAC en Azure PowerShell
+# <a name="tutorial-grant-a-user-access-to-azure-resources-using-rbac-and-azure-powershell"></a>Zelf studie: een gebruiker toegang verlenen tot Azure-resources met RBAC en Azure PowerShell
 
 [Op rollen gebaseerd toegangsbeheer (RBAC)](overview.md) is de manier waarop u de toegang tot Azure-resources beheert. In deze zelfstudie geeft u een gebruiker toestemming om alles in een abonnement te bekijken en om alles in een resourcegroep te beheren met Azure PowerShell.
 
@@ -31,7 +31,7 @@ In deze zelfstudie leert u het volgende:
 > * Toegang opvragen
 > * Toegang intrekken
 
-Als u geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) voordat u begint.
+Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
 
 [!INCLUDE [az-powershell-update](../../includes/updated-for-az.md)]
 
@@ -268,7 +268,7 @@ Als u de in deze zelfstudie gemaakte resources wilt opschonen, verwijdert u de r
     [Y] Yes  [N] No  [S] Suspend  [?] Help (default is "Y"):
     ```
     
-1. Wanneer u wordt gevraagd om te bevestigen, typt u **Y**. Het duurt een paar seconden om te verwijderen.
+1. Wanneer u wordt gevraagd te bevestigen, typt u **j**. Het duurt een paar seconden om te verwijderen.
 
 1. De gebruiker kunt u verwijderen met de opdracht [Remove-AzureADUser](/powershell/module/azuread/remove-azureaduser).
 

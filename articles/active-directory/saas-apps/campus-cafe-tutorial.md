@@ -1,6 +1,6 @@
 ---
-title: 'Zelfstudie: Azure Active Directory single sign-on (SSO) integratie met Campus Café | Microsoft Documenten'
-description: Meer informatie over het configureren van eenmalige aanmelding tussen Azure Active Directory en Campus Café.
+title: 'Zelf studie: Azure Active Directory-integratie met eenmalige aanmelding (SSO) met campus café | Microsoft Docs'
+description: Meer informatie over het configureren van eenmalige aanmelding tussen Azure Active Directory en campus café.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -16,68 +16,68 @@ ms.date: 02/19/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 0c813b1cafbf71297c8ac39bc0847b56e450de0c
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "77563169"
 ---
-# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-campus-caf"></a>Zelfstudie: Azure Active Directory single sign-on (SSO) integratie met Campus Café
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-campus-caf"></a>Zelf studie: Azure Active Directory-integratie met eenmalige aanmelding (SSO) met campus café
 
-In deze zelfstudie leert u hoe u Campus Café integreren met Azure Active Directory (Azure AD). Wanneer u Campus Café integreert met Azure AD, u het:
+In deze zelf studie leert u hoe u campus café integreert met Azure Active Directory (Azure AD). Wanneer u campus café integreert met Azure AD, kunt u het volgende doen:
 
-* Beheer in Azure AD die toegang heeft tot Campus Café.
-* Stel uw gebruikers in om automatisch te worden aangemeld bij Campus Café met hun Azure AD-accounts.
-* Beheer uw accounts op één centrale locatie: de Azure-portal.
+* Controle in azure AD die toegang heeft tot campus café.
+* Stel uw gebruikers in staat om automatisch te worden aangemeld bij campus café met hun Azure AD-accounts.
+* Beheer uw accounts op één centrale locatie: de Azure Portal.
 
-Zie [Wat is toepassingstoegang en eenmalige aanmelding met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)voor meer informatie over de integratie van de SaaS-app met Azure AD.
+Zie [Wat is toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)voor meer informatie over SaaS-app-integratie met Azure AD.
 
 ## <a name="prerequisites"></a>Vereisten
 
-Om aan de slag te gaan, heb je de volgende items nodig:
+U hebt de volgende items nodig om aan de slag te gaan:
 
-* Een Azure AD-abonnement Wanneer je nog geen abonnement hebt kun je gratis een [account aanmaken.](https://azure.microsoft.com/free/)
-* Campus Café single sign-on (SSO) ingeschakeld abonnement.
+* Een Azure AD-abonnement Als u geen abonnement hebt, kunt u een [gratis account](https://azure.microsoft.com/free/)aanvragen.
+* Campus café-abonnement voor eenmalige aanmelding (SSO) ingeschakeld.
 
 ## <a name="scenario-description"></a>Scenariobeschrijving
 
-In deze zelfstudie configureert en test u Azure AD SSO in een testomgeving.
+In deze zelf studie configureert en test u Azure AD SSO in een test omgeving.
 
-* Campus Café steunt **SP** geïnitieerde SSO
-* Zodra u Campus Café configureert, u sessiecontrole afdwingen, die exfiltratie en infiltratie van de gevoelige gegevens van uw organisatie in realtime beschermen. Sessiebeheer strekt zich uit van Voorwaardelijke toegang. [Meer informatie over het afdwingen van sessiebeheer met Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
+* Campus café ondersteunt door **SP** GEÏNITIEERDe SSO
+* Zodra u campus café hebt geconfigureerd, kunt u sessie beheer afdwingen, waardoor exfiltration en infiltratie van de gevoelige gegevens van uw organisatie in realtime worden beschermd. Sessie beheer is uitgebreid met voorwaardelijke toegang. [Meer informatie over het afdwingen van sessie beheer met Microsoft Cloud app Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
 
-## <a name="adding-campus-caf-from-the-gallery"></a>Campus Café toevoegen vanuit de galerie
+## <a name="adding-campus-caf-from-the-gallery"></a>Campus café toevoegen vanuit de galerie
 
-Als u de integratie van Campus Café in Azure AD wilt configureren, moet u Campus Café vanuit de galerie toevoegen aan uw lijst met beheerde SaaS-apps.
+Als u de integratie van campus café wilt configureren in azure AD, moet u campus café van de galerie toevoegen aan uw lijst met beheerde SaaS-apps.
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com) met een werk- of schoolaccount of een persoonlijk Microsoft-account.
-1. Selecteer in het linkernavigatiedeelvenster de **Azure Active Directory-service.**
-1. Navigeer naar **Ondernemingstoepassingen** en selecteer **Alle toepassingen**.
-1. Als u nieuwe toepassingen wilt toevoegen, selecteert u **Nieuwe toepassing**.
-1. Typ **Campuscafé** in het zoekvak in de sectie **Toevoegen in de galerijsectie.**
-1. Selecteer **Campus Café** in het resultatenpaneel en voeg de app toe. Wacht een paar seconden terwijl de app wordt toegevoegd aan uw tenant.
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com) met behulp van een werk-of school account of een persoonlijke Microsoft-account.
+1. Selecteer de **Azure Active Directory** -service in het navigatie deel venster aan de linkerkant.
+1. Ga naar **bedrijfs toepassingen** en selecteer **alle toepassingen**.
+1. Selecteer **nieuwe toepassing**om een nieuwe toepassing toe te voegen.
+1. Typ in het gedeelte **toevoegen vanuit de galerie** **campus café** in het zoekvak.
+1. Selecteer **campus café** uit het paneel resultaten en voeg vervolgens de app toe. Wacht een paar seconden wanneer de app aan uw Tenant is toegevoegd.
 
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-campus-caf"></a>Azure AD-aanmelding voor Campus Café configureren en testen
+## <a name="configure-and-test-azure-ad-single-sign-on-for-campus-caf"></a>Eenmalige aanmelding voor de campus-café van Azure AD configureren en testen
 
-Azure AD SSO configureren en testen met Campus Café met behulp van een testgebruiker genaamd **B.Simon**. Als SSO kan werken, moet u een koppelingsrelatie tot stand brengen tussen een Azure AD-gebruiker en de gerelateerde gebruiker in Campus Café.
+Azure AD SSO met campus café configureren en testen met behulp van een test gebruiker met de naam **B. Simon**. Voor het werken met SSO moet u een koppelings relatie tot stand brengen tussen een Azure AD-gebruiker en de bijbehorende gebruiker in campus café.
 
-Als u Azure AD SSO wilt configureren en testen met Campus Café, voert u de volgende bouwstenen in:
+Als u Azure AD SSO wilt configureren en testen met campus café, voltooit u de volgende bouw stenen:
 
-1. **[Configureer Azure AD SSO](#configure-azure-ad-sso)** - zodat uw gebruikers deze functie kunnen gebruiken.
-    * **[Een Azure AD-testgebruiker maken](#create-an-azure-ad-test-user)** - om Azure AD-enkele aanmelding te testen met B.Simon.
-    * **[De Azure AD-testgebruiker toewijzen](#assign-the-azure-ad-test-user)** - om B.Simon in staat te stellen azure AD-aanmelding te gebruiken.
-1. **[Configureer Campus Café SSO](#configure-campus-cafe-sso)** - om de instellingen voor één aanmelding aan de toepassingszijde te configureren.
-    * **[Maak Campus Café-testgebruiker](#create-campus-cafe-test-user)** - om een tegenhanger van B.Simon in Campus Café te hebben die is gekoppeld aan de Azure AD-weergave van de gebruiker.
-1. **[Test SSO](#test-sso)** - om te controleren of de configuratie werkt.
+1. **[Configureer Azure AD SSO](#configure-azure-ad-sso)** -om uw gebruikers in staat te stellen deze functie te gebruiken.
+    * **[Een Azure AD-test gebruiker maken](#create-an-azure-ad-test-user)** : u kunt eenmalige aanmelding voor Azure AD testen met B. Simon.
+    * **[Wijs de Azure AD-test gebruiker](#assign-the-azure-ad-test-user)** toe, zodat B. Simon de eenmalige aanmelding van Azure AD kan gebruiken.
+1. **[Campus café-SSO configureren](#configure-campus-cafe-sso)** : voor het configureren van de instellingen voor eenmalige aanmelding aan de kant van de toepassing.
+    * Het maken van een gebruiker met een **[Universiteit van campus café](#create-campus-cafe-test-user)** : een tegen hanger van B. Simon in campus café dat is gekoppeld aan de Azure AD-representatie van de gebruiker.
+1. **[SSO testen](#test-sso)** : om te controleren of de configuratie werkt.
 
 ## <a name="configure-azure-ad-sso"></a>Azure AD SSO-configureren
 
-Volg deze stappen om Azure AD SSO in te schakelen in de Azure-portal.
+Volg deze stappen om Azure AD SSO in te scha kelen in de Azure Portal.
 
-1. Zoek in de [Azure-portal](https://portal.azure.com/)op de pagina **Campus Café-toepassingsintegratie** de sectie **Beheren** en selecteer **eenmalige aanmelding**.
-1. Selecteer **SAML**op de pagina **Eén aanmeldingsmethode** selecteren .
-1. Klik op de pagina **Eén aanmelding instellen met SAML** op het pictogram bewerken/pen voor **BasisSAML-configuratie** om de instellingen te bewerken.
+1. Ga in het [Azure Portal](https://portal.azure.com/)naar de pagina **campus café** Application Integration, zoek de sectie **beheren** en selecteer **eenmalige aanmelding**.
+1. Selecteer op de pagina **Eén aanmeldings methode selecteren** de optie **SAML**.
+1. Klik op de pagina **eenmalige aanmelding met SAML instellen** op het pictogram bewerken/pen voor **eenvoudige SAML-configuratie** om de instellingen te bewerken.
 
    ![Standaard SAML-configuratie bewerken](common/edit-urls.png)
 
@@ -91,75 +91,75 @@ Volg deze stappen om Azure AD SSO in te schakelen in de Azure-portal.
 
     ![Metagegevensbestand kiezen](common/browse-upload-metadata.png)
 
-    c. Nadat het metagegevensbestand is geüpload, wordt de **id-waarde** automatisch ingevuld in de sectie BasisSAML-configuratie.
+    c. Nadat het meta gegevensbestand is geüpload, wordt de **id** -waarde automatisch ingevuld in de basis configuratie sectie voor SAML.
 
-    ![Campus Café Domain en URL's single sign-on informatie](common/sp-identifier.png)
+    ![Universiteit van het domein en Url's voor eenmalige aanmelding](common/sp-identifier.png)
 
     In het tekstvak **Aanmeldings-URL** typt u een URL met het volgende patroon: `https://{SSO}-web.scansoftware.com/cafeweb/loginsso`
 
     > [!Note]
-    > Als de waard voor **Id** niet automatisch wordt ingevuld, kunt u de waarde zelf invullen afhankelijk van uw behoeften. De waarde voor de aanmeldings-URL is niet echt. Werk deze waarde bij met de werkelijke aanmeldings-URL. Neem contact op met [campus Café Client support team](mailto:support@campuscafesoftware.com) om deze waarde te krijgen. U kunt ook verwijzen naar het patroon dat wordt weergegeven in de sectie **Standaard SAML-configuratie** in de Azure-portal.
+    > Als de waard voor **Id** niet automatisch wordt ingevuld, kunt u de waarde zelf invullen afhankelijk van uw behoeften. De waarde voor de aanmeldings-URL is niet echt. Werk deze waarde bij met de werkelijke aanmeldings-URL. Neem contact op met het [ondersteunings team van campus café](mailto:support@campuscafesoftware.com) om deze waarde op te halen. U kunt ook verwijzen naar het patroon dat wordt weergegeven in de sectie **Standaard SAML-configuratie** in de Azure-portal.
 
-1. Zoek op de pagina **Eén aanmelding instellen met SAML** in de sectie **SAML-ondertekeningscertificaat** de optie **Federation Metadata XML** en selecteer **Downloaden** om het certificaat te downloaden en op te slaan op uw computer.
+1. Zoek op de pagina **eenmalige aanmelding met SAML instellen** , in de sectie **SAML-handtekening certificaat** , de **federatieve meta gegevens-XML** en selecteer **downloaden** om het certificaat te downloaden en op uw computer op te slaan.
 
     ![De link om het certificaat te downloaden](common/metadataxml.png)
 
-1. Kopieer in de sectie **Campus Café instellen** de juiste URL(s) op basis van uw behoefte.
+1. Op de sectie **Universiteit van campus instellen** kopieert u de gewenste URL ('s) op basis van uw vereiste.
 
     ![Configuratie-URL's kopiëren](common/copy-configuration-urls.png)
 
 ### <a name="create-an-azure-ad-test-user"></a>Een Azure AD-testgebruiker maken
 
-In deze sectie maakt u een testgebruiker in de Azure-portal genaamd B.Simon.
+In deze sectie maakt u een test gebruiker in de Azure Portal met de naam B. Simon.
 
-1. Selecteer in het linkerdeelvenster in de Azure-portal **Azure Active Directory,** selecteer **Gebruikers**en selecteer **Alle gebruikers**.
-1. Selecteer **Nieuwe gebruiker** boven aan het scherm.
-1. Voer **in** de eigenschappen gebruiker de volgende stappen uit:
+1. Selecteer in het linkerdeel venster van de Azure Portal **Azure Active Directory**, selecteer **gebruikers**en selecteer vervolgens **alle gebruikers**.
+1. Selecteer **nieuwe gebruiker** boven aan het scherm.
+1. Voer de volgende stappen uit in de eigenschappen van de **gebruiker** :
    1. Voer in het veld **Naam**`B.Simon` in.  
-   1. Voer **in** het veld username@companydomain.extensionGebruikersnaam de . Bijvoorbeeld `B.Simon@contoso.com`.
-   1. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak **Wachtwoord.**
-   1. Klik **op Maken**.
+   1. Voer in het veld **gebruikers naam** het username@companydomain.extensionin. Bijvoorbeeld `B.Simon@contoso.com`.
+   1. Schakel het selectie vakje **wacht woord weer geven** in en noteer de waarde die wordt weer gegeven in het vak **wacht woord** .
+   1. Klik op **maken**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>De Azure AD-testgebruiker toewijzen
 
-In deze sectie u B.Simon inschakelen om Azure single sign-on te gebruiken door toegang te verlenen tot Campus Café.
+In deze sectie schakelt u B. Simon in om de eenmalige aanmelding van Azure te gebruiken door toegang te verlenen aan de campus-café.
 
-1. Selecteer in de Azure-portal **Enterprise-toepassingen**en selecteer **Alle toepassingen**.
-1. Selecteer **Campus Café**in de lijst met toepassingen.
-1. Zoek op de overzichtspagina van de app de sectie **Beheren** en selecteer **Gebruikers en groepen**.
+1. Selecteer in het Azure Portal **bedrijfs toepassingen**en selecteer vervolgens **alle toepassingen**.
+1. Selecteer in de lijst toepassingen de optie **campus café**.
+1. Ga op de pagina overzicht van de app naar de sectie **beheren** en selecteer **gebruikers en groepen**.
 
    ![De koppeling Gebruikers en groepen](common/users-groups-blade.png)
 
-1. Selecteer **Gebruiker toevoegen**en selecteer vervolgens Gebruikers en **groepen** in het dialoogvenster **Toewijzing toevoegen.**
+1. Selecteer **gebruiker toevoegen**en selecteer vervolgens **gebruikers en groepen** in het dialoog venster **toewijzing toevoegen** .
 
-    ![De koppeling Gebruiker toevoegen](common/add-assign-user.png)
+    ![De koppeling gebruiker toevoegen](common/add-assign-user.png)
 
-1. Selecteer **B.Simon** in het dialoogvenster **Gebruikers en groepen** in de lijst Gebruikers en klik vervolgens op de knop **Selecteren** onder aan het scherm.
-1. Als u een rolwaarde verwacht in de SAML-bewering, selecteert u in het dialoogvenster **Rol selecteren** de juiste rol voor de gebruiker in de lijst en klikt u op de knop **Selecteren** onder aan het scherm.
-1. Klik **in** het dialoogvenster Toewijzing toevoegen op de knop **Toewijzen.**
+1. Selecteer in het dialoog venster **gebruikers en groepen** **B. Simon** van de lijst gebruikers en klik vervolgens op de knop **selecteren** onder aan het scherm.
+1. Als u een wille keurige rol verwacht in de SAML-bewering, selecteert u in het dialoog venster **rol selecteren** de juiste rol voor de gebruiker in de lijst en klikt u op de knop **selecteren** onder aan het scherm.
+1. Klik in het dialoog venster **toewijzing toevoegen** op de knop **toewijzen** .
 
-## <a name="configure-campus-cafe-sso"></a>CampusCafé SSO configureren
+## <a name="configure-campus-cafe-sso"></a>Campus Cafe SSO configureren
 
-Als u eenmalige aanmelding wilt configureren aan de kant van **campuscafé,** moet u de gedownloade **XML met aalmetagegevens van federatiemetagegevens** en de juiste gekopieerde URL's van Azure-portal naar [het ondersteuningsteam van Campus Café](mailto:support@campuscafesoftware.com)verzenden. Het team stelt de instellingen zo in dat de verbinding tussen SAML en eenmalige aanmelding aan beide zijden goed is ingesteld.
+Als u eenmalige aanmelding wilt configureren op de **campus-café** , moet u het gedownloade **XML-bestand met federatieve meta gegevens** en de juiste gekopieerde url's verzenden van Azure Portal naar het team van de [campus-assistent](mailto:support@campuscafesoftware.com). Het team stelt de instellingen zo in dat de verbinding tussen SAML en eenmalige aanmelding aan beide zijden goed is ingesteld.
 
-### <a name="create-campus-cafe-test-user"></a>Campus Cafe-testgebruiker maken
+### <a name="create-campus-cafe-test-user"></a>Campus Cafe-test gebruiker maken
 
-In deze sectie maakt u een gebruiker genaamd B.Simon in Campus Café. Werk samen met [het ondersteuningsteam van Campus Café](mailto:support@campuscafesoftware.com) om de gebruikers toe te voegen aan het Campus Café-platform. Er moeten gebruikers worden gemaakt en geactiveerd voordat u eenmalige aanmelding kunt gebruiken.
+In deze sectie maakt u een gebruiker met de naam B. Simon in campus café. Werk samen met het [team van campus café](mailto:support@campuscafesoftware.com) om de gebruikers toe te voegen in het Universiteits café-platform. Er moeten gebruikers worden gemaakt en geactiveerd voordat u eenmalige aanmelding kunt gebruiken.
 
-## <a name="test-sso"></a>Test SSO 
+## <a name="test-sso"></a>SSO testen 
 
 In deze sectie gaat u uw configuratie van Azure AD-eenmalige aanmelding testen via het toegangsvenster.
 
-Wanneer u op de tegel Campus Café in het toegangspaneel klikt, moet u automatisch worden aangemeld bij het Campus Café waarvoor u SSO instelt. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
+Wanneer u op de tegel Universiteit café in het toegangs venster klikt, moet u automatisch worden aangemeld bij de campus-café waarvoor u SSO hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
 
 ## <a name="additional-resources"></a>Aanvullende bronnen
 
-- [Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Lijst met zelf studies voor het integreren van SaaS-apps met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [What is application access and single sign-on with Azure Active Directory? ](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on) (Wat is toegang tot toepassingen en eenmalige aanmelding bij Azure Active Directory?)
 
 - [Wat is voorwaardelijke toegang in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
-- [Campus Café uitproberen met Azure AD](https://aad.portal.azure.com/)
+- [Probeer campus café met Azure AD](https://aad.portal.azure.com/)
 
-- [Wat is sessiebeheer in Microsoft Cloud App Security?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [Wat is sessie beheer in Microsoft Cloud App Security?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)

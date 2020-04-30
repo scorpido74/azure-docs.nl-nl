@@ -11,10 +11,10 @@ ms.custom: seodec18
 ms.date: 02/11/2020
 ms.author: spelluru
 ms.openlocfilehash: 92fd7d15ee5bc54cc41b78f4ba0d078d3f8fac6b
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "77162630"
 ---
 # <a name="quickstart-create-an-event-hub-using-azure-cli"></a>Snelstart: Een event hub maken met behulp van de Azure CLI
@@ -74,7 +74,7 @@ Gefeliciteerd! U hebt Azure CLI gebruikt om een ​​Event Hubs-naamruimte te m
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In dit artikel hebt u een resourcegroep, een Event Hubs-naamruimte en een Event Hub gemaakt. Zie de zelfstudies voor het verzenden en ontvangen van evenementen voor stapsgewijze instructies om gebeurtenissen naar (of) ontvangen van gebeurtenissen van een gebeurtenishub **te verzenden en te ontvangen:** 
+In dit artikel hebt u een resourcegroep, een Event Hubs-naamruimte en een Event Hub gemaakt. Voor stapsgewijze instructies voor het verzenden van gebeurtenissen naar (of) het ontvangen van gebeurtenissen van een Event Hub, raadpleegt u de zelf studies voor het **verzenden en ontvangen van gebeurtenissen** : 
 
 - [.NET Core](get-started-dotnet-standard-send-v2.md)
 - [Java](get-started-java-send-v2.md)

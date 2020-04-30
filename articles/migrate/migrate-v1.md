@@ -8,10 +8,10 @@ ms.date: 11/19/2019
 ms.author: raynew
 ms.custom: mvc
 ms.openlocfilehash: c9cea52e04a991e6e3ac64426f0443939f8aaa3a
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "77914378"
 ---
 # <a name="work-with-the-previous-version-of-azure-migrate"></a>Werken met de vorige versie van Azure Migrate
@@ -76,7 +76,7 @@ Een machine wordt alleen verplaatst naar een latere fase als deze de voor gaande
 
 De weergave van de Azure-gereedheid in de evaluatie toont de gereedheidsstatus van alle VM's.
 
-**Gereedheid** | **Overheids** | **Nadere**
+**Gereedheid** | **Overheids** | **Details**
 --- | --- | ---
 Gereed voor Azure | Geen compatibiliteits problemen. De machine kan worden gemigreerd naar Azure en wordt opgestart in azure met volledige ondersteuning voor Azure. | Voor virtuele machines die gereed zijn, wordt door Azure Migrate een VM-grootte in Azure aanbevolen.
 Voorwaardelijk gereed voor Azure | De computer kan worden opgestart in azure, maar heeft mogelijk geen volledige ondersteuning voor Azure. Bijvoorbeeld een machine met een oudere versie van Windows Server die niet wordt ondersteund in Azure. | In Azure Migrate worden de gereedheids problemen beschreven en worden er herstels tappen geboden.
@@ -88,7 +88,7 @@ Gereedheid onbekend | Azure Migrate kunt de gereedheid van Azure niet identifice
 Gereedheid houdt rekening met een aantal VM-eigenschappen om te bepalen of de virtuele machine kan worden uitgevoerd in Azure.
 
 
-**Eigenschap** | **Nadere** | **Gereedheid**
+**Eigenschap** | **Details** | **Gereedheid**
 --- | --- | ---
 **Opstart type** | BIOS ondersteund. UEFI wordt niet ondersteund. | Voorwaardelijk gereed als het opstart type UEFI is.
 **Kernen** | Kern <van machines = het maximum aantal kern geheugens (128) dat wordt ondersteund voor een virtuele machine van Azure.<br/><br/> Als er een prestatie geschiedenis beschikbaar is, wordt Azure Migrate beschouwd als de gebruikte kernen.<br/>Als er een comfort factor is opgegeven in de evaluatie-instellingen, wordt het aantal gebruikte kern geheugens vermenigvuldigd met de comfort factor.<br/><br/> Als er geen prestatie geschiedenis is, gebruikt Azure Migrate de toegewezen kernen zonder de comfort factor toe te passen. | Gereed als deze kleiner dan of gelijk aan de limieten zijn.
@@ -105,7 +105,7 @@ Naast de VM-eigenschappen controleert Azure Migrate ook op het gast besturingssy
 
 De volgende logica wordt gebruikt.
 
-**Besturingssysteem** | **Nadere** | **Gereedheid**
+**Besturingssysteem** | **Details** | **Gereedheid**
 --- | --- | ---
 Windows Server 2016 en alle SPs | Azure biedt volledige ondersteuning. | Gereed voor Azure
 Windows Server 2012 R2 en alle SPs | Azure biedt volledige ondersteuning. | Gereed voor Azure
