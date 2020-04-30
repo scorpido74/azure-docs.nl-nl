@@ -4,12 +4,12 @@ description: Meer informatie over de API's en hulpprogramma's voor het ontwikkel
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.custom: seodec18
-ms.openlocfilehash: 56c268675a39dfd3c70b3d8d8e457a2a200d7db6
-ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
+ms.openlocfilehash: e345e91b2f7d66f014427770614efe42b5fb7a44
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82114918"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82232680"
 ---
 # <a name="overview-of-batch-apis-and-tools"></a>Overzicht van Batch-API's en -hulpprogramma's
 
@@ -36,7 +36,7 @@ Uw toepassingen en services kunnen direct REST-API-aanroepen verstrekken of een 
 | --- | --- | --- | --- | --- | --- |
 | **Batch REST** |[docs.microsoft.com][batch_rest] |N.v.t. |- |- | [Ondersteunde versies](/rest/api/batchservice/batch-service-rest-api-versioning) |
 | **Batch .NET** |[docs.microsoft.com][api_net] |[NuGet][api_net_nuget] |[Zelfstudie](tutorial-parallel-dotnet.md) |[GitHub][api_sample_net] | [Release opmerkingen](https://aka.ms/batch-net-dataplane-changelog) |
-| **Batch Python** |[docs.microsoft.com][api_python] |[PyPI][api_python_pypi] |[Zelfstudie](tutorial-parallel-python.md)|[GitHub][api_sample_python] | [Leesmij](https://github.com/Azure/azure-sdk-for-python/blob/master/doc/batch.rst) |
+| **Batch Python** |[docs.microsoft.com][api_python] |[PyPI][api_python_pypi] |[Zelfstudie](tutorial-parallel-python.md)|[GitHub][api_sample_python] | [Leesmij](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/batch/azure-batch/README.md) |
 | **Batch Node.js** |[docs.microsoft.com][api_nodejs] |[NPM][api_nodejs_npm] |[Zelfstudie](batch-nodejs-get-started.md) |- | [Leesmij](https://github.com/Azure/azure-sdk-for-node/tree/master/lib/services/batch) |
 | **Batch Java** |[docs.microsoft.com][api_java] |[Maven][api_java_jar] |- |[Leesmij][api_sample_java] | [Leesmij](https://github.com/Azure/azure-batch-sdk-for-java)|
 
@@ -67,7 +67,7 @@ Hier volgen enkele extra hulpprogramma's die mogelijk nuttig zijn voor het bouwe
 * [Azure batch Shipyard](https://github.com/Azure/batch-shipyard): batch Shipyard is een hulp programma voor het inrichten, uitvoeren en bewaken van op containers gebaseerde batch verwerking en HPC-workloads op Azure batch.
 * [Azure Storage Explorer][storage_explorer]: Hoewel er geen Azure batch-hulp programma is, is de Storage Explorer nog een waardevol hulp middel om uw batch-oplossingen te ontwikkelen en fouten op te sporen.
 
-## <a name="additional-resources"></a>Extra resources
+## <a name="additional-resources"></a>Aanvullende bronnen
 
 - Zie [Logboekgebeurtenissen voor diagnostische evaluatie en bewaking van de Batch-oplossingen](batch-diagnostics.md) voor meer informatie over het vastleggen van gebeurtenissen van uw Batch-toepassing. Zie [Batch-analyses](batch-analytics.md) voor informatie over gebeurtenissen die worden gegenereerd door de Batch-service.
 - Zie [Omgevingsvariabelen van Azure Batch-rekenknooppunten](batch-compute-node-environment-variables.md) voor meer informatie over omgevingsvariabelen voor rekenknooppunten.
