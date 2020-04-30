@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 04/06/2020
 ms.author: dsindona
 ms.openlocfilehash: 1a523872bb15981958eeb1678caa1d911a9cbbba
-ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/24/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82142408"
 ---
 # <a name="prepare-your-iot-edge-module-technical-assets"></a>De technische activa van uw IoT Edge module voorbereiden
@@ -61,7 +61,7 @@ IoT Edge module dimensies (CPU/RAM/opslag/GPU/etc.) op doel IoT Edge apparaten m
     <p><u>Minimum hardware requirements:</u> Linux x64 and arm32  OS, 1GB of RAM, 500 Mb of storage</p>
   ```
 
-### <a name="configuration"></a>Configuration
+### <a name="configuration"></a>Configuratie
 
 Het bevat ook standaard configuratie-instellingen om de implementatie zo snel mogelijk op een IoT Edge apparaat in te stellen. De container kan ook de SDK van IoT Edge-module bevatten om communicatie met de edgeHub en IoT Hub mogelijk te maken.
 

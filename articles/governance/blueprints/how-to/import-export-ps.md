@@ -1,47 +1,47 @@
 ---
-title: Blauwdrukken importeren en exporteren met PowerShell
-description: Meer informatie over het werken met uw blauwdrukdefinities als code. Deel, bronbeheer en beheer ze met behulp van de opdrachten exporteren en importeren.
+title: Blauw drukken importeren en exporteren met Power shell
+description: Meer informatie over het werken met uw blauw drukken-definities als code. Delen, broncode beheer en beheren met de opdrachten exporteren en importeren.
 ms.date: 09/03/2019
 ms.topic: how-to
 ms.openlocfilehash: dcdf48f8941198591b39d6cf89ec5e6dac7ba94c
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81686843"
 ---
-# <a name="import-and-export-blueprint-definitions-with-powershell"></a>Blauwdrukdefinities importeren en exporteren met PowerShell
+# <a name="import-and-export-blueprint-definitions-with-powershell"></a>Blauw druk-definities importeren en exporteren met Power shell
 
-Azure Blueprints kunnen volledig worden beheerd via Azure portal. Naarmate organisaties verder gaan in hun gebruik van Azure Blueprints, moeten ze beginnen met het denken van blauwdrukdefinities als beheerde code. Dit concept wordt vaak aangeduid als Infrastructuur als Code (IaC). Het behandelen van uw blauwdrukdefinities als code biedt extra voordelen die verder gaan dan wat Azure-portal biedt. Deze voordelen zijn onder andere:
+Azure-blauw drukken kan volledig worden beheerd via Azure Portal. Als organisaties in hun gebruik van Azure-blauw drukken beginnen, moeten ze denken aan de definities van blauw druk als beheerde code. Dit concept wordt vaak aangeduid als een infra structuur als code (IaC). Uw blauw drukken-definities behandelen als code biedt meer voor delen dan wat Azure Portal biedt. Deze voor delen zijn onder andere:
 
-- Blauwdrukdefinities delen
-- Back-ups maken van uw blauwdrukdefinities
-- Blauwdrukdefinities opnieuw gebruiken in verschillende tenants of abonnementen
-- De blauwdrukdefinities plaatsen in bronbeheer
-  - Geautomatiseerd testen van blauwdrukdefinities in testomgevingen
-  - Ondersteuning van continue integratie en continue implementatie (CI/CD) pijplijnen
+- Blauw druk-definities delen
+- Back-ups maken van uw blauw drukken-definities
+- Blauw drukken-definities opnieuw gebruiken in verschillende tenants of abonnementen
+- De blauw druk-definities in broncode beheer plaatsen
+  - Automatische tests van blauw druk-definities in test omgevingen
+  - Ondersteuning van pijp lijnen voor continue integratie en continue implementatie (CI/CD)
 
-Wat uw redenen ook zijn, het beheren van uw blauwdrukdefinities als code heeft voordelen. In dit artikel ziet `Import-AzBlueprintWithArtifact` `Export-AzBlueprintWithArtifact` u hoe u de opdrachten en opdrachten gebruiken in de [az.blueprint-module.](https://powershellgallery.com/packages/Az.Blueprint/)
+Wat uw redenen zijn, het beheren van uw blauw drukken-definities als code biedt voor delen. In dit artikel wordt beschreven hoe u `Import-AzBlueprintWithArtifact` de `Export-AzBlueprintWithArtifact` opdrachten en gebruikt in de module [AZ. blauw](https://powershellgallery.com/packages/Az.Blueprint/) drukken.
 
 ## <a name="prerequisites"></a>Vereisten
 
-In dit artikel wordt uitgegaan van een matige werkkennis van Azure Blueprints. Als u dit nog niet hebt gedaan, u de volgende artikelen doornemen:
+In dit artikel wordt ervan uitgegaan dat u een gemiddelde werk ervaring hebt van Azure-blauw drukken. Als u dit nog niet hebt gedaan, kunt u de volgende artikelen door lopen:
 
 - [Een blauwdruk maken in de portal](../create-blueprint-portal.md)
-- Lees meer over [implementatiefasen](../concepts/deployment-stages.md) en [de levenscyclus van de blauwdruk](../concepts/lifecycle.md)
-- [Blueprintdefinities](../create-blueprint-powershell.md) en -toewijzingen maken en [beheren](./manage-assignments-ps.md) met PowerShell
+- Meer informatie over [implementatie fasen](../concepts/deployment-stages.md) en [de levens duur van de blauw druk](../concepts/lifecycle.md)
+- Blauw druk-definities en-toewijzingen [maken](../create-blueprint-powershell.md) en [beheren](./manage-assignments-ps.md) met Power shell
 
-Als deze nog niet is geïnstalleerd, volgt u de instructies in [De module Az.Blueprint toevoegen](./manage-assignments-ps.md#add-the-azblueprint-module) om de **Az.Blueprint-module** uit de PowerShell-galerie te installeren en te valideren.
+Als deze nog niet is geïnstalleerd, volgt u de instructies in [add de module AZ. Blue](./manage-assignments-ps.md#add-the-azblueprint-module) voor het installeren en valideren van de module **AZ. blauw druk** van de PowerShell Gallery.
 
-## <a name="folder-structure-of-a-blueprint-definition"></a>Mapstructuur van een blauwdrukdefinitie
+## <a name="folder-structure-of-a-blueprint-definition"></a>Mapstructuur van een definitie van een blauw druk
 
-Voordat we kijken naar het exporteren en importeren van blauwdrukken, laten we eens kijken naar hoe de bestanden die deel uitmaken van de blauwdrukdefinitie zijn gestructureerd. Een blauwdrukdefinitie moet worden opgeslagen in een eigen map.
+Voordat u de blauw drukken gaat bekijken en importeren, bekijken we hoe de bestanden waaruit de definitie van de blauw druk bestaat, zijn gestructureerd. Een definitie van een blauw druk moet worden opgeslagen in een eigen map.
 
 > [!IMPORTANT]
-> Als er geen waarde wordt doorgegeven aan de parameter **Naam** van de `Import-AzBlueprintWithArtifact` cmdlet, wordt de naam van de map waarin de blauwdrukdefinitie is opgeslagen, gebruikt.
+> Als er geen waarde wordt door gegeven **Name** aan de para meter `Import-AzBlueprintWithArtifact` name van de cmdlet, wordt de naam van de map waarvan de definitie van de blauw druk is opgeslagen, gebruikt.
 
-Samen met de blauwdruk definitie, `blueprint.json`die moet worden genoemd , zijn de artefacten die de blauwdruk definitie is samengesteld uit. Elk artefact moet zich in `artifacts`de submap met de naam bevinden.
-Samen moet de structuur van uw blauwdrukdefinitie als JSON-bestanden in mappen er als volgt uitzien:
+Samen met de definitie van de blauw druk, die `blueprint.json`moet worden benoemd, zijn de artefacten waarvan de definitie van de blauw druk is samengesteld. Elk artefact moet zich in de submap met de `artifacts`naam bevindt.
+Samen, de structuur van uw blauw druk-definitie als JSON-bestanden in mappen moet er als volgt uitzien:
 
 ```text
 .
@@ -56,20 +56,20 @@ Samen moet de structuur van uw blauwdrukdefinitie als JSON-bestanden in mappen e
 
 ```
 
-## <a name="export-your-blueprint-definition"></a>Uw blauwdrukdefinitie exporteren
+## <a name="export-your-blueprint-definition"></a>De definitie van de blauw druk exporteren
 
-De stappen voor het exporteren van uw blauwdrukdefinitie zijn eenvoudig. Het exporteren van de blauwdrukdefinitie kan handig zijn voor het delen, back-ups of het plaatsen in bronbeheer.
+De stappen voor het exporteren van de definitie van de blauw druk zijn eenvoudig. Het exporteren van de blauw druk-definitie kan handig zijn voor het delen, het maken van een back-up of het in broncode beheer.
 
-- **Blauwdruk** [vereist]
-  - Hiermee geeft u de blauwdrukdefinitie op
-  - Gebruiken `Get-AzBlueprint` om het referentieobject op te halen
+- **Blauw druk** [vereist]
+  - Hiermee wordt de definitie van de blauw druk opgegeven
+  - Gebruiken `Get-AzBlueprint` om het referentie object op te halen
 - **OutputPath** [vereist]
-  - Hiermee geeft u het pad op waarop de JSON-bestanden met blauwdrukdefinitie moeten worden opgeslagen
-  - De uitvoerbestanden bevinden zich in een submap met de naam van de blauwdrukdefinitie
+  - Hiermee geeft u het pad op voor het opslaan van de JSON-bestanden van de blauw druk op
+  - De uitvoer bestanden bevinden zich in een submap met de naam van de definitie van de blauw druk
 - **Versie** (optioneel)
-  - Hiermee geeft u de versie op die moet worden uitgevoerd als het verwijzingsobject **Blueprint** verwijzingen bevat naar meer dan één versie.
+  - Hiermee geeft u de versie op die moet worden uitgevoerd als het referentie object **blauw** drukken verwijzingen naar meer dan één versie bevat.
 
-1. Hier krijg je een verwijzing naar de blauwdrukdefinitie die moet worden geëxporteerd vanuit het abonnement dat wordt weergegeven als: `{subId}`
+1. Een verwijzing naar de definitie van de blauw druk ophalen om uit het abonnement `{subId}`te exporteren, weer gegeven als:
 
    ```azurepowershell-interactive
    # Login first with Connect-AzAccount if not using Cloud Shell
@@ -78,31 +78,31 @@ De stappen voor het exporteren van uw blauwdrukdefinitie zijn eenvoudig. Het exp
    $bpDefinition = Get-AzBlueprint -SubscriptionId '{subId}' -Name 'MyBlueprint' -Version '1.1'
    ```
 
-1. Gebruik `Export-AzBlueprintWithArtifact` de cmdlet om de opgegeven blauwdrukdefinitie te exporteren:
+1. Gebruik de `Export-AzBlueprintWithArtifact` cmdlet om de opgegeven definitie van blauw drukken te exporteren:
 
    ```azurepowershell-interactive
    Export-AzBlueprintWithArtifact -Blueprint $bpDefinition -OutputPath 'C:\Blueprints'
    ```
 
-## <a name="import-your-blueprint-definition"></a>Uw blauwdrukdefinitie importeren
+## <a name="import-your-blueprint-definition"></a>De definitie van de blauw druk importeren
 
-Zodra u een [geëxporteerde blauwdrukdefinitie](#export-your-blueprint-definition) hebt of een handmatig gemaakte blauwdrukdefinitie hebt in de [vereiste mapstructuur,](#folder-structure-of-a-blueprint-definition)u die blauwdrukdefinitie importeren in een andere beheergroep of abonnement.
+Als u een [geëxporteerde blauw druk](#export-your-blueprint-definition) hebt of een hand matig gemaakte blauw definitie hebt gemaakt in de [vereiste mappen structuur](#folder-structure-of-a-blueprint-definition), kunt u die blauw druk-definitie importeren in een andere beheer groep of een ander abonnement.
 
-Zie de [Azure Blueprint GitHub repo](https://github.com/Azure/azure-blueprints/tree/master/samples/001-builtins)voor voorbeelden van ingebouwde blauwdrukdefinities.
+Zie de [Azure Blueprint github opslag plaats](https://github.com/Azure/azure-blueprints/tree/master/samples/001-builtins)voor voor beelden van ingebouwde blauw drukken-definities.
 
 - **Naam** [vereist]
-  - Hiermee geeft u de naam op voor de nieuwe blauwdrukdefinitie
+  - Hiermee geeft u de naam op voor de nieuwe definitie van de blauw druk
 - **InputPath** [vereist]
-  - Hiermee geeft u het pad op waaruit de blauwdrukdefinitie moet worden gemaakt
-  - Moet overeenkomen met de [vereiste mapstructuur](#folder-structure-of-a-blueprint-definition)
+  - Hiermee geeft u het pad op voor het maken van de definitie van de blauw druk van
+  - Moet overeenkomen met de [vereiste mappen structuur](#folder-structure-of-a-blueprint-definition)
 - **ManagementGroupId** (optioneel)
-  - De beheergroep-id om de blauwdrukdefinitie op te slaan als de huidige contextstandaard niet
-  - **ManagementGroupId** of **SubscriptionId** moeten zijn opgegeven
-- **AbonnementId** (optioneel)
-  - De abonnements-ID om de blauwdrukdefinitie op te slaan als de huidige contextstandaard niet
-  - **ManagementGroupId** of **SubscriptionId** moeten zijn opgegeven
+  - De beheer groep-ID voor het opslaan van de definitie van de blauw druk op indien niet de huidige context standaard
+  - U moet **ManagementGroupId** of **SubscriptionId** opgeven
+- **SubscriptionId** (optioneel)
+  - De abonnements-ID voor het opslaan van de definitie van de blauw druk op indien niet de huidige context standaard
+  - U moet **ManagementGroupId** of **SubscriptionId** opgeven
 
-1. Gebruik `Import-AzBlueprintWithArtifact` de cmdlet om de opgegeven blauwdrukdefinitie te importeren:
+1. Gebruik de `Import-AzBlueprintWithArtifact` cmdlet om de opgegeven definitie van blauw drukken te importeren:
 
    ```azurepowershell-interactive
    # Login first with Connect-AzAccount if not using Cloud Shell
@@ -110,14 +110,14 @@ Zie de [Azure Blueprint GitHub repo](https://github.com/Azure/azure-blueprints/t
    Import-AzBlueprintWithArtifact -Name 'MyBlueprint' -ManagementGroupId 'DevMG' -InputPath 'C:\Blueprints\MyBlueprint'
    ```
 
-Zodra de blauwdrukdefinitie is geïmporteerd, [wijst u deze toe met PowerShell](./manage-assignments-ps.md#create-blueprint-assignments).
+Zodra de definitie van de blauw druk is geïmporteerd, [wijst u deze toe met Power shell](./manage-assignments-ps.md#create-blueprint-assignments).
 
-Zie de volgende artikelen voor informatie over het maken van geavanceerde blauwdrukdefinities:
+Raadpleeg de volgende artikelen voor meer informatie over het maken van geavanceerde blauw drukken-definities:
 
-- Gebruik [statische en dynamische parameters](../concepts/parameters.md).
-- De [volgorde voor blauwdruksequencing](../concepts/sequencing-order.md)aanpassen .
-- Bebescherm implementaties met [het vergrendelen van blauwdrukbronnen.](../concepts/resource-locking.md)
-- [Blauwdrukken beheren als code](https://github.com/Azure/azure-blueprints/blob/master/README.md).
+- [Statische en dynamische para meters](../concepts/parameters.md)gebruiken.
+- Pas de [volg orde van de blauw druk](../concepts/sequencing-order.md)aan.
+- Beveilig implementaties met [behulp van de resource vergrendeling blauw](../concepts/resource-locking.md)drukken.
+- [Blauw drukken als code beheren](https://github.com/Azure/azure-blueprints/blob/master/README.md).
 
 ## <a name="next-steps"></a>Volgende stappen
 
