@@ -1,6 +1,6 @@
 ---
-title: Retentie configureren in uw omgeving - Azure Time Series Insights | Microsoft Documenten
-description: Meer informatie over het configureren van retentie in uw Azure Time Series Insights-omgeving.
+title: Bewaar termijn configureren in uw omgeving-Azure Time Series Insights | Microsoft Docs
+description: Meer informatie over het configureren van Bewaar termijn in uw Azure Time Series Insights omgeving.
 ms.service: time-series-insights
 services: time-series-insights
 author: deepakpalled
@@ -11,51 +11,51 @@ ms.topic: conceptual
 ms.date: 04/16/2020
 ms.custom: seodec18
 ms.openlocfilehash: 524e47e5be142b720687ad48ee9407da23284bd4
-ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/17/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81605052"
 ---
-# <a name="configuring-retention-in-time-series-insights"></a>Retentie configureren in inzichten in time-series
+# <a name="configuring-retention-in-time-series-insights"></a>Bewaar periode in Time Series Insights configureren
 
-In dit artikel wordt beschreven hoe u **de bewaartijd en** **de opslaglimiet voor** gegevens configureren in Azure Time Series Insights.
+In dit artikel wordt beschreven hoe u de **Bewaar tijd voor gegevens** en de **opslag limiet hebt overschreden** in azure time series Insights.
 
 ## <a name="summary"></a>Samenvatting
 
-Elke Azure Time Series Insights-omgeving heeft een instelling om **de bewaartijd voor gegevens**te configureren. De waarde varieert van 1 tot 400 dagen. De gegevens worden verwijderd op basis van de opslagcapaciteit of bewaarduur van het milieu (1-400), afhankelijk van wat het eerst komt.
+Elke Azure Time Series Insights omgeving heeft een instelling voor het configureren van **gegevens retentie tijd**. De waarde ligt tussen 1 en 400 dagen. De gegevens worden verwijderd op basis van de opslag capaciteit van de omgeving of de Bewaar periode (1-400), afhankelijk van wat het eerste komt.
 
-Elke Time Series Insights-omgeving heeft een extra instelling **Opslaglimiet overschreden gedrag**. Met deze instelling bepaalt u het in- en zuiveringsgedrag wanneer de maximale capaciteit van een omgeving is bereikt. Er zijn twee gedragingen om uit te kiezen:
+Voor elke Time Series Insights omgeving is een extra **opslag limiet**ingesteld. Met deze instelling bepaalt u het gedrag van ingang en leegmaken wanneer de maximale capaciteit van een omgeving wordt bereikt. Er zijn twee manieren om te kiezen:
 
-- **Oude gegevens wissen** (standaard)
-- **Binnenlaten onderbreken**
+- **Oude gegevens opschonen** (standaard)
+- **Ingangs onderbrekingen**
 
-Voor gedetailleerde informatie om deze instellingen beter te begrijpen, bekijkt [u Inzicht in time series insights](time-series-insights-concepts-retention.md).  
+Lees de informatie [over retentie in time series Insights](time-series-insights-concepts-retention.md)voor gedetailleerde gegevens om deze instellingen beter te begrijpen.  
 
 ## <a name="configure-data-retention"></a>Gegevensretentie configureren
 
 1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 
-1. Zoek uw bestaande Time Series Insights-omgeving. Selecteer **Alle bronnen** in het menu aan de linkerkant van de Azure-portal. Selecteer uw Time Series Insights-omgeving.
+1. Zoek uw bestaande Time Series Insights-omgeving. Selecteer **alle resources** in het menu aan de linkerkant van het Azure Portal. Selecteer uw Time Series Insights-omgeving.
 
-1. Selecteer onder de kop **Instellingen** de optie **Opslagconfiguratie**.
+1. Selecteer in de kop **instellingen** de optie **opslag configuratie**.
 
-    [![Selecteer onder Instellingen de optie Opslagconfiguratie](media/data-retention/configure-data-retention.png)](media/data-retention/configure-data-retention.png#lightbox)
+    [![Selecteer onder instellingen opslag configuratie](media/data-retention/configure-data-retention.png)](media/data-retention/configure-data-retention.png#lightbox)
 
-1. Selecteer de **bewaartijd voor gegevens (in dagen)** om de bewaartijd te configureren met de schuifregelaarbalk of typ een getal in tekstvak.
+1. Selecteer de **Bewaar tijd voor gegevens (in dagen)** om de retentie te configureren met behulp van de schuif regelaar of typ een getal in het tekstvak.
 
-1. Let op de **instelling Capaciteit,** omdat deze configuratie van invloed is op de maximale hoeveelheid gegevensgebeurtenissen en de totale opslagcapaciteit voor het opslaan van gegevens.
+1. Let op de **capaciteits** instelling, omdat deze configuratie invloed heeft op de maximale hoeveelheid gegevens gebeurtenissen en de totale opslag capaciteit voor het opslaan van gegevens.
 
-1. Het inschakelen van de **opslaglimiet overschreed de gedragsinstelling.** Selecteer **Oude gegevens wissen** of **Ingressgedrag onderbreken.**
+1. De instelling voor het gedrag van de **opslag limiet is overschreden** . Selecteer **oude gegevens leegmaken** of **ingangs gedrag onderbreken** .
 
-    [![Pauze ingress - accepteren en opslaan.](media/data-retention/pause-ingress-accept-and-save.png)](media/data-retention/pause-ingress-accept-and-save.png#lightbox)
+    [![Ingangs onderbrekingen: accepteren en opslaan.](media/data-retention/pause-ingress-accept-and-save.png)](media/data-retention/pause-ingress-accept-and-save.png#lightbox)
 
-1. Bekijk de documentatie om inzicht te krijgen in de mogelijke risico's van gegevensverlies. Selecteer **Opslaan** om de wijzigingen te configureren.
+1. Raadpleeg de documentatie om inzicht te krijgen in de mogelijke Risico's van gegevens verlies. Selecteer **Opslaan** om de wijzigingen te configureren.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Bekijk [inzicht in Time Series Insights](time-series-insights-concepts-retention.md)voor meer informatie.
+- Lees voor meer informatie [uitleg over retentie in time series Insights](time-series-insights-concepts-retention.md).
 
-- Meer informatie over [het schalen van uw Time Series Insights-omgeving.](time-series-insights-how-to-scale-your-environment.md)
+- Meer informatie [over het schalen van uw time series Insights-omgeving](time-series-insights-how-to-scale-your-environment.md).
 
-- Meer informatie over [het plannen van uw omgeving.](time-series-insights-environment-planning.md)
+- Meer informatie over [het plannen van uw omgeving](time-series-insights-environment-planning.md).

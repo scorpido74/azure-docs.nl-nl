@@ -1,6 +1,6 @@
 ---
-title: Geaggregeerde transformatie in kaartgegevensstroom
-description: Meer informatie over het samenvoegen van gegevens op schaal in Azure Data Factory met de totale transformatie van de toewijzingsgegevensstroom.
+title: Statistische trans formatie in toewijzing van gegevens stroom
+description: Meer informatie over het samen stellen van gegevens op schaal in Azure Data Factory met de statistische trans formatie toewijzings gegevens stroom.
 author: kromerm
 ms.author: makromer
 ms.reviewer: daperlov
@@ -9,54 +9,54 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 03/24/2020
 ms.openlocfilehash: 871f2b49e2dce9d762ef8a54923da04b0f24e4be
-ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/17/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81606534"
 ---
-# <a name="aggregate-transformation-in-mapping-data-flow"></a>Geaggregeerde transformatie in kaartgegevensstroom
+# <a name="aggregate-transformation-in-mapping-data-flow"></a>Statistische trans formatie in toewijzing van gegevens stroom
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-De samengevoegde transformatie definieert aggregaties van kolommen in uw gegevensstromen. Met de opbouwfunctie voor expressies u verschillende typen aggregaties definiëren, zoals SOM, MIN, MAX en COUNT gegroepeerd op bestaande of berekende kolommen.
+De cumulatieve trans formatie definieert aggregaties van kolommen in uw gegevens stromen. Met de opbouw functie voor expressies kunt u verschillende typen aggregaties definiëren, zoals som, MIN, maximum en aantal, gegroepeerd op bestaande of berekende kolommen.
 
 ## <a name="group-by"></a>Groeperen op
 
-Selecteer een bestaande kolom of maak een nieuwe berekende kolom die u als groep per component voor uw aggregatie wilt gebruiken. Als u een bestaande kolom wilt gebruiken, selecteert u deze in de vervolgkeuzelijst. Als u een nieuwe berekende kolom wilt maken, houdt u de muisaanwijzer op de component en klikt u op **Berekende kolom**. Hiermee wordt de [opbouw van gegevensstromenexpressie geopend](concepts-data-flow-expression-builder.md). Zodra u de berekende kolom hebt gemaakt, voert u de naam van de uitvoerkolom in onder het veld **Naam als.** Als u een extra groep per clausule wilt toevoegen, houdt u de muisaanwijzer op een bestaande clausule en klikt u op het pluspictogram.
+Selecteer een bestaande kolom of maak een nieuwe berekende kolom die u wilt gebruiken als een component Group by voor uw aggregatie. Als u een bestaande kolom wilt gebruiken, selecteert u deze in de vervolg keuzelijst. Als u een nieuwe berekende kolom wilt maken, houdt u de muis aanwijzer boven de component en klikt u op **berekende kolom**. Hiermee opent u de [opbouw functie voor de data flow-expressie](concepts-data-flow-expression-builder.md). Wanneer u de berekende kolom maakt, voert u de naam van de uitvoer kolom onder het veld **naam als in** . Als u een component Group by wilt toevoegen, houdt u de muis aanwijzer over een bestaande component en klikt u op het pictogram met het plus teken.
 
-![Transformatiegroep samenvoegen op instellingen](media/data-flow/agg.png "Transformatiegroep samenvoegen op instellingen")
+![Statistische transformatie groep op instellingen](media/data-flow/agg.png "Statistische transformatie groep op instellingen")
 
-Een groep op clausule is optioneel in een aggregaattransformatie.
+Een component Group by is optioneel in een geaggregeerde trans formatie.
 
-## <a name="aggregate-column"></a>Kolom Aggregaat 
+## <a name="aggregate-column"></a>Statistische kolom 
 
-Ga naar het tabblad **Aggregaten** om aggregatieexpressies te maken. U een bestaande kolom overschrijven met een aggregatie of een nieuw veld maken met een nieuwe naam. De aggregatie-expressie wordt ingevoerd in het rechtervak naast de kolomnaamkiezer. Als u de expressie wilt bewerken, klikt u op het tekstvak om de opbouw van de expressie te openen. Als u extra aggregaties wilt toevoegen, houdt u de muisaanwijzer boven een bestaande expressie en klikt u op pluspictogram om een nieuwe aggregatiekolom of [kolompatroon](concepts-data-flow-column-pattern.md)te maken .
+Ga naar het tabblad **aggregaties** om aggregatie-expressies samen te stellen. U kunt een bestaande kolom overschrijven met een aggregatie of een nieuw veld maken met een nieuwe naam. De expressie aggregatie wordt ingevoerd in het rechter vak naast de kolom naam kiezer. Als u de expressie wilt bewerken, klikt u op het tekstvak om de opbouw functie voor expressies te openen. Als u extra aggregaties wilt toevoegen, houdt u de muis aanwijzer over een bestaande expressie en klikt u op het pictogram plus om een nieuwe aggregatie kolom of [kolom patroon](concepts-data-flow-column-pattern.md)te maken.
 
-Elke aggregatie-expressie moet ten minste één geaggregeerde functie bevatten.
+Elke aggregatie-expressie moet ten minste één statistische functie bevatten.
 
-![Geaggregeerde transformatie-aggregaatinstellingen](media/data-flow/agg2.png "Geaggregeerde transformatie-aggregaatinstellingen")
+![Statistische instellingen voor trans formatie aggregatie](media/data-flow/agg2.png "Statistische instellingen voor trans formatie aggregatie")
 
 
 > [!NOTE]
-> In de foutopsporingsmodus kan de opbouw van expressies geen gegevensvoorbeelden met geaggregeerde functies produceren. Als u gegevensvoorbeelden voor geaggregeerde transformaties wilt weergeven, sluit u de opbouwvan expressies en bekijkt u de gegevens via het tabblad 'Gegevensvoorbeeld'.
+> In de foutopsporingsmodus kan de opbouw functie voor expressies geen gegevens previews maken met statistische functies. Voor het weer geven van voor beelden van gegevens voor samengevoegde trans formaties, sluit u de opbouw functie voor expressies en bekijkt u de gegevens via het tabblad gegevens voorbeeld.
 
 ## <a name="reconnect-rows-and-columns"></a>Rijen en kolommen opnieuw verbinden
 
-Geaggregeerde transformaties zijn vergelijkbaar met SQL-verzamelselectiequery's. Kolommen die niet per component in uw groep zijn opgenomen of geaggregeerde functies, worden niet doorgestroomd naar de uitvoer van uw totale transformatie. Als u andere kolommen in uw geaggregeerde uitvoer wilt opnemen, doet u een van de volgende methoden:
+Samengestelde trans formaties zijn vergelijkbaar met SQL-query's voor aggregatie selectie. Kolommen die niet zijn opgenomen in de component Group by of statistische functies, stromen niet naar de uitvoer van uw geaggregeerde trans formatie. Als u andere kolommen in de cumulatieve uitvoer wilt opnemen, voert u een van de volgende methoden uit:
 
-* Gebruik een samengevoegde `last()` `first()` functie zoals of om die extra kolom op te nemen.
-* Ga opnieuw naar de kolommen met uw uitvoerstroom met behulp van het [zelfjoinpatroon](https://mssqldude.wordpress.com/2018/12/20/adf-data-flows-self-join/).
+* Gebruik een statistische functie, `last()` zoals of `first()` om deze aanvullende kolom op te nemen.
+* De kolommen opnieuw samen voegen met de uitvoer stroom met het [Self-deelname patroon](https://mssqldude.wordpress.com/2018/12/20/adf-data-flows-self-join/).
 
 ## <a name="removing-duplicate-rows"></a>Dubbele rijen verwijderen
 
-Een veelvoorkomend gebruik van de geaggregeerde transformatie is het verwijderen of identificeren van dubbele vermeldingen in brongegevens. Dit proces staat bekend als ontdubbeling. Op basis van een set van groep door toetsen, gebruik maken van een heuristische van uw keuze om te bepalen welke dubbele rij te houden. Gemeenschappelijke heuristieken `max()`zijn `min()` `first()`, `last()`, en . Gebruik [kolompatronen](concepts-data-flow-column-pattern.md) om de regel toe te passen op elke kolom, behalve op de groep op kolommen.
+Een veelgebruikte toepassing van de cumulatieve trans formatie is het verwijderen of identificeren van dubbele vermeldingen in de bron gegevens. Dit proces staat bekend als ontdubbeling. Gebruik een heuristiek van uw keuze om te bepalen welke dubbele rij moet worden bewaard op basis van een set met Group by-sleutels. `first()`Algemene heuristiek zijn `last()`,, `max()`en. `min()` Gebruik [kolom patronen](concepts-data-flow-column-pattern.md) om de regel toe te passen op elke kolom, met uitzonde ring van de Group by-kolommen.
 
 ![Ontdubbeling](media/data-flow/agg-dedupe.png "Ontdubbeling")
 
-In het bovenstaande `ProductID` voorbeeld `Name` worden kolommen en worden gebruikt voor het groeperen. Als twee rijen dezelfde waarden hebben voor deze twee kolommen, worden ze beschouwd als duplicaten. In deze geaggregeerde transformatie worden de waarden van de eerste rij gelijk gehouden en worden alle andere waarden verwijderd. Met behulp van de syntaxis van `ProductID` `Name` het kolompatroon worden alle kolommen waarvan de namen niet zijn en zijn toegewezen aan hun bestaande kolomnaam en met de waarde van de eerste overeenkomende rijen. Het uitvoerschema is hetzelfde als het invoerschema.
+In het bovenstaande voor beeld worden `ProductID` kolommen `Name` en worden gebruikt voor het groeperen. Als twee rijen dezelfde waarden voor deze twee kolommen hebben, worden ze beschouwd als duplicaten. In deze cumulatieve trans formatie worden de waarden van de eerste rij die overeenkomt, bewaard en alle andere worden verwijderd. Met de syntaxis van het kolom patroon worden alle kolommen `ProductID` waarvan `Name` de namen niet overeenkomen en worden toegewezen aan de bestaande kolom naam en gegeven de waarde van de eerste overeenkomende rijen. Het uitvoer schema is hetzelfde als het invoer schema.
 
-Voor scenario's `count()` voor gegevensvalidatie kan de functie worden gebruikt om te tellen hoeveel duplicaten er zijn.
+Voor scenario's voor gegevens validatie kan `count()` de functie worden gebruikt om te tellen hoeveel duplicaten er er zijn.
 
 ## <a name="data-flow-script"></a>Script voor gegevensstroom
 
@@ -81,15 +81,15 @@ Voor scenario's `count()` voor gegevensvalidatie kan de functie worden gebruikt 
 
 ### <a name="example"></a>Voorbeeld
 
-In het onderstaande voorbeeld `MoviesYear` wordt een `year`binnenkomende stream genomen en wordt rijen per kolom groepeert. Met de transformatie `avgrating` wordt een geaggregeerde kolom `Rating`gemaakt die wordt geëvalueerd op het gemiddelde van de kolom . Deze geaggregeerde `AvgComedyRatingsByYear`transformatie wordt genoemd .
+In het onderstaande voor beeld wordt een `MoviesYear` inkomende stroom gebruikt en worden `year`rijen per kolom gegroepeerd. De trans formatie maakt een statistische `avgrating` kolom die het gemiddelde van de kolom `Rating`evalueert. Deze cumulatieve trans formatie heet `AvgComedyRatingsByYear`.
 
-In de UX van de Data Factory lijkt deze transformatie op de onderstaande afbeelding:
+In de Data Factory UX ziet deze trans formatie er als volgt uit:
 
-![Groep e.a.](media/data-flow/agg-script1.png "Groep e.a.")
+![Groeperen op voor beeld](media/data-flow/agg-script1.png "Groeperen op voor beeld")
 
-![Voorbeeld van aggregaat](media/data-flow/agg-script2.png "Voorbeeld van aggregaat")
+![Voor beeld van geaggregeerde](media/data-flow/agg-script2.png "Voor beeld van geaggregeerde")
 
-Het gegevensstroomscript voor deze transformatie bevindt zich in het onderstaande fragment.
+Het gegevens stroom script voor deze trans formatie bevindt zich in het onderstaande fragment.
 
 ```
 MoviesYear aggregate(
@@ -98,9 +98,9 @@ MoviesYear aggregate(
             ) ~> AvgComedyRatingByYear
 ```
 
-![Script voor gegevensstroom samenvoegen](media/data-flow/aggdfs1.png "Script voor gegevensstroom samenvoegen")
+![Script voor gecombineerde gegevens stroom](media/data-flow/aggdfs1.png "Script voor gecombineerde gegevens stroom")
 
-```MoviesYear```: Afgeleide kolomdefiniërende jaar- en titelkolommen ```AvgComedyRatingByYear```: Geaggregeerde transformatie ```avgrating```voor gemiddelde beoordeling van komedies gegroepeerd per jaar : Naam van nieuwe kolom die wordt gemaakt om de geaggregeerde waarde vast te houden
+```MoviesYear```: Afgeleide kolom waarin jaar- ```AvgComedyRatingByYear```en titel kolommen worden gedefinieerd: statistische trans formatie voor gemiddelde ```avgrating```waardering van comedies gegroepeerd per jaar: de naam van de nieuwe kolom die wordt gemaakt om de geaggregeerde waarde te bevatten
 
 ```
 MoviesYear aggregate(groupBy(year),
@@ -109,4 +109,4 @@ MoviesYear aggregate(groupBy(year),
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Op venster gebaseerde aggregatie definiëren met behulp van de [venstertransformatie](data-flow-window.md)
+* Aggregatie op basis van een venster definiëren met behulp van de [venster transformatie](data-flow-window.md)

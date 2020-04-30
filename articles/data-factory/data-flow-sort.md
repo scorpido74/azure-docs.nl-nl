@@ -1,6 +1,6 @@
 ---
-title: Transformatie sorteren in de toewijzingsgegevensstroom
-description: Sorteertransformatie voor het sorteren van azure-gegevensfabriek
+title: Trans formatie sorteren in toewijzing van gegevens stroom
+description: Trans formatie van gegevens Sorteer Azure Data Factory toewijzing
 author: kromerm
 ms.author: makromer
 ms.reviewer: daperlov
@@ -9,34 +9,34 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 04/14/2020
 ms.openlocfilehash: 26852ec77194714c8236856b7cb496170bf0d777
-ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/17/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81606322"
 ---
-# <a name="sort-transformation-in-mapping-data-flow"></a>Transformatie sorteren in de toewijzingsgegevensstroom
+# <a name="sort-transformation-in-mapping-data-flow"></a>Trans formatie sorteren in toewijzing van gegevens stroom
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-Met de sorteertransformatie u de binnenkomende rijen in de huidige gegevensstroom sorteren. U afzonderlijke kolommen kiezen en sorteren in oplopende of aflopende volgorde.
+Met de sorteer transformatie kunt u de binnenkomende rijen op de huidige gegevens stroom sorteren. U kunt afzonderlijke kolommen kiezen en deze in oplopende of aflopende volg orde sorteren.
 
 > [!NOTE]
-> Gegevensstromen worden uitgevoerd op sparkclusters die gegevens over meerdere knooppunten en partities distribueren. Als u ervoor kiest om uw gegevens opnieuw te verdelen in een volgende transformatie, u uw sortering verliezen als gevolg van het opnieuw herschikken van gegevens.
+> Toewijzing van gegevens stromen worden uitgevoerd op Spark-clusters waarmee gegevens over meerdere knoop punten en partities worden gedistribueerd. Als u ervoor kiest om uw gegevens in een volgende trans formatie opnieuw te partitioneren, kunt u uw Sorteer bewerking verliezen door de volg orde van de gegevens opnieuw in te delen.
 
 ## <a name="configuration"></a>Configuratie
 
-![Sorteerinstellingen](media/data-flow/sort.png "Sorteren")
+![Instellingen sorteren](media/data-flow/sort.png "Sorteren")
 
-**Geval ongevoelig:** Of u de aanvraag wilt negeren bij het sorteren van tekenreeksen of tekstvelden
+**Hoofdletter gevoelig:** Hiermee wordt aangegeven of u al dan niet wilt negeren bij het sorteren van teken reeks-of tekst velden
 
-**Alleen binnen partities sorteren:** Als gegevensstromen worden uitgevoerd op spark, wordt elke gegevensstroom verdeeld in partities. Met deze instelling worden gegevens alleen gesorteerd binnen de binnenkomende partities in plaats van de hele gegevensstroom te sorteren. 
+**Alleen sorteren in partities:** Naarmate gegevens stromen worden uitgevoerd op Spark, wordt elke gegevens stroom onderverdeeld in partities. Met deze instelling worden alleen gegevens in de binnenkomende partities gesorteerd, in plaats van de hele gegevens stroom te sorteren. 
 
-**Sorteervoorwaarden:** Kies op welke kolommen u sorteert en in welke volgorde de sortering plaatsvindt. De volgorde bepaalt de sorteerprioriteit. Kies of nulls aan het begin of einde van de gegevensstroom wordt weergegeven.
+**Sorteer voorwaarden:** Kies op welke kolommen u wilt sorteren en in welke volg orde de sorteer bewerking plaatsvindt. De volg orde bepaalt de sorteer prioriteit. Kies of nullen worden weer gegeven aan het begin of einde van de gegevens stroom.
 
 ### <a name="computed-columns"></a>Berekende kolommen
 
-Als u een kolomwaarde wilt wijzigen of extraheren voordat u de sortering toepast, zweeft u boven de kolom en selecteert u 'berekende kolom'. Hiermee wordt de opbouwfunctie voor expressies geopend om een expressie voor de sorteerbewerking te maken in plaats van een kolomwaarde te gebruiken.
+Als u een kolom waarde wilt wijzigen of ophalen voordat u de sortering toepast, houdt u de muis aanwijzer boven de kolom en selecteert u berekende kolom. Hiermee opent u de opbouw functie voor expressies om een expressie voor de sorteer bewerking te maken, in plaats van een kolom waarde te gebruiken.
 
 ## <a name="data-flow-script"></a>Script voor gegevensstroom
 
@@ -53,9 +53,9 @@ Als u een kolomwaarde wilt wijzigen of extraheren voordat u de sortering toepast
 
 ### <a name="example"></a>Voorbeeld
 
-![Sorteerinstellingen](media/data-flow/sort.png "Sorteren")
+![Instellingen sorteren](media/data-flow/sort.png "Sorteren")
 
-Het gegevensstroomscript voor de bovenstaande sorteerconfiguratie bevindt zich in het onderstaande codefragment.
+Het gegevens stroom script voor de bovenstaande Sorteer configuratie vindt u in het code fragment hieronder.
 
 ```
 BasketballStats sort(desc(PTS, true),
@@ -64,4 +64,4 @@ BasketballStats sort(desc(PTS, true),
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Na het sorteren u de [aggregaattransformatie](data-flow-aggregate.md) gebruiken
+Na het sorteren kunt u de [geaggregeerde trans formatie](data-flow-aggregate.md) gebruiken

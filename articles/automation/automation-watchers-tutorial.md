@@ -1,129 +1,129 @@
 ---
-title: Een wachttaak maken in het Azure Automation-account
-description: Meer informatie over het maken van een wachttaak in het Azure Automation-account om te kijken naar nieuwe bestanden die in een map zijn gemaakt.
+title: Een Watcher-taak maken in het Azure Automation-account
+description: Meer informatie over het maken van een Watcher-taak in het Azure Automation-account om te kijken naar nieuwe bestanden die in een map zijn gemaakt.
 services: automation
 ms.subservice: process-automation
 ms.topic: conceptual
 ms.date: 10/30/2018
 ms.openlocfilehash: 1175350e7f9f4db92d7d59eba0cc66ac4bb49f5f
-ms.sourcegitcommit: eefb0f30426a138366a9d405dacdb61330df65e7
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/17/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81617363"
 ---
-# <a name="create-an-azure-automation-watcher-tasks-to-track-file-changes-on-a-local-machine"></a>Een Azure Automation-watchertaken maken om bestandswijzigingen op een lokale machine bij te houden
+# <a name="create-an-azure-automation-watcher-tasks-to-track-file-changes-on-a-local-machine"></a>Een Azure Automation Watcher-taken maken om bestands wijzigingen op een lokale computer bij te houden
 
-Azure Automation gebruikt een wachttaak om gebeurtenissen te zoeken en acties te activeren met PowerShell-runbooks. De watcher taak bestaat uit twee delen, de watcher en de actie. Een watcher runbook wordt uitgevoerd op een interval gedefinieerd in de watcher taak, en voert gegevens naar een actie runbook. 
+Azure Automation een Watcher-taak gebruikt om te zoeken naar gebeurtenissen en trigger acties met Power shell-runbooks. De Watcher-taak bevat twee delen: de Watcher en de actie. Een Watcher-runbook wordt uitgevoerd met een interval dat is gedefinieerd in de Watcher-taak en voert gegevens uit naar een actie runbook. 
 
-Met deze zelfstudie u een wachttaak maken om te controleren wanneer een nieuw bestand aan een map wordt toegevoegd. Procedures voor:
+In deze zelf studie wordt u begeleid bij het maken van een Watcher-taak om te controleren wanneer een nieuw bestand wordt toegevoegd aan een map. Procedures voor:
 
 > [!div class="checklist"]
-> * Een watcher runbook importeren
-> * Een variabele Automatisering maken
-> * Een actierunbook maken
+> * Een Watcher-runbook importeren
+> * Een Automation-variabele maken
+> * Een actie runbook maken
 > * Een watcher-taak maken
-> * Een watcher activeren
-> * De uitvoer inspecteren
+> * Een Watcher activeren
+> * De uitvoer controleren
 
 ## <a name="prerequisites"></a>Vereisten
 
 Hieronder wordt aangegeven wat de vereisten zijn om deze zelfstudie te voltooien:
 
-* Azure-abonnement. Als je er nog geen hebt, kun je [je MSDN-abonneevoordeel activeren](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/) of je aanmelden voor een [gratis account.](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
-* [Automatiseringsaccount](automation-offering-get-started.md) om de wacht- en actiebeheerboeken en de Watcher-taak te behouden.
-* Een [hybride runbook-werknemer](automation-hybrid-runbook-worker.md) waar de wachttaak wordt uitgevoerd.
-* PowerShell runbooks. PowerShell Workflow-runbooks worden niet ondersteund door watcher-taken.
+* Azure-abonnement. Als u nog geen abonnement hebt, kunt u [uw voor delen van uw MSDN-abonnee activeren](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/) of zich aanmelden voor een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+* [Automation-account](automation-offering-get-started.md) voor het opslaan van de Watcher-en actie-runbooks en de Watcher-taak.
+* Een [hybride runbook worker](automation-hybrid-runbook-worker.md) waarbij de Watcher-taak wordt uitgevoerd.
+* Power shell-runbooks. Power shell workflow-runbooks worden niet ondersteund door Watcher-taken.
 
 > [!NOTE]
-> Watcher-taken worden niet ondersteund in Azure China.
+> Watcher-taken worden niet ondersteund in azure China.
 
-## <a name="import-a-watcher-runbook"></a>Een watcher runbook importeren
+## <a name="import-a-watcher-runbook"></a>Een Watcher-runbook importeren
 
-Deze zelfstudie maakt gebruik van een watcher runbook genaamd **Watch-NewFile** om te zoeken naar nieuwe bestanden in een directory. De watcher runbook haalt de laatst bekende schrijftijd naar de bestanden in een map en kijkt naar bestanden die nieuwer zijn dan dat watermerk.
+In deze zelf studie wordt een Watcher-runbook met de naam **Watch-NewFile** gebruikt om te zoeken naar nieuwe bestanden in een map. Het Watcher-runbook haalt de laatst bekende schrijf tijd op voor de bestanden in een map en bekijkt alle bestanden die nieuwer zijn dan dat water merk.
 
-Dit importproces kan worden uitgevoerd via de [PowerShell Gallery](https://www.powershellgallery.com).
+Dit import proces kan worden uitgevoerd via de [PowerShell Gallery](https://www.powershellgallery.com).
 
-1. Navigeer naar de galeriepagina voor [Watch-NewFile.ps1](https://gallery.technet.microsoft.com/scriptcenter/Watcher-runbook-that-looks-36fc82cd).
-2. Klik onder het tabblad **Azure Automation** op Implementeren voor **Azure Automation**.
+1. Ga naar de galerie pagina voor [Watch-newFile. ps1](https://gallery.technet.microsoft.com/scriptcenter/Watcher-runbook-that-looks-36fc82cd).
+2. Klik op het tabblad **Azure Automation** op **implementeren naar Azure Automation**.
 
-U dit runbook ook importeren in uw automatiseringsaccount vanuit de portal met behulp van de volgende stappen.
+U kunt dit runbook ook vanuit de Portal importeren in uw Automation-account door de volgende stappen uit te voeren.
 
-1. Open uw Automatiseringsaccount en klik op de pagina Runbooks.
-2. Klik **op Galerie bladeren**.
-3. Zoek naar **Watcher runbook,** selecteer **Watcher runbook dat zoekt naar nieuwe bestanden in een map**en klik op **Importeren**.
-  ![Automatiseringsrunbook importeren vanuit de gebruikersinterface](media/automation-watchers-tutorial/importsourcewatcher.png)
-4. Geef het runbook een naam en beschrijving en klik op **OK** om het runbook te importeren in uw Automatiseringsaccount.
-5. Selecteer **Bewerken** en klik op **Publiceren**. Klik op **Ja** om het runbook te publiceren wanneer u daarom wordt gevraagd.
+1. Open uw Automation-account en klik op de pagina Runbooks.
+2. Klik op **Bladeren galerie**.
+3. Zoek naar **Watcher-runbook**, selecteer **Watcher runbook dat zoekt naar nieuwe bestanden in een map**en klik op **importeren**.
+  ![Automation-runbook importeren vanuit de gebruikers interface](media/automation-watchers-tutorial/importsourcewatcher.png)
+4. Geef een naam en beschrijving voor het runbook op en klik op **OK** om het runbook te importeren in uw Automation-account.
+5. Selecteer **bewerken** en klik vervolgens op **publiceren**. Wanneer u hierom wordt gevraagd, klikt u op **Ja** om het runbook te publiceren.
 
-## <a name="create-an-automation-variable"></a>Een variabele Automatisering maken
+## <a name="create-an-automation-variable"></a>Een Automation-variabele maken
 
-Een [automatiseringsvariabele](automation-variables.md) wordt gebruikt om de tijdstempels op te slaan die de voorgaande runbook uit elk bestand leest en opslaat.
+Een [Automation-variabele](automation-variables.md) wordt gebruikt voor het opslaan van de tijds tempels die het voor gaande runbook leest en opslaat uit elk bestand.
 
-1. Selecteer **Variabelen** onder **Gedeelde bronnen** en klik op + Voeg een variabele **toe**.
-1. Voer Watch-NewFileTimestamp in voor de naam.
-1. Selecteer Datumtijd voor het type.
-1. Klik **op Maken** om de variabele Automatisering te maken.
+1. Selecteer **variabelen** onder **gedeelde resources** en klik op **+ een variabele toevoegen**.
+1. Voer Watch-NewFileTimestamp in als naam.
+1. Selecteer DateTime voor het type.
+1. Klik op **maken** om de Automation-variabele te maken.
 
-## <a name="create-an-action-runbook"></a>Een actierunbook maken
+## <a name="create-an-action-runbook"></a>Een actie runbook maken
 
-Een actie runbook wordt gebruikt in een watcher taak om te handelen op de gegevens doorgegeven aan het van een watcher runbook. U moet een vooraf gedefinieerde actierunbook met de naam **Process-NewFile** importeren uit de [PowerShell-galerie](https://www.powershellgallery.com). 
+Een actie runbook wordt in een Watcher-taak gebruikt om te reageren op de gegevens die worden door gegeven vanuit een Watcher-runbook. U moet een vooraf gedefinieerd actie runbook met de naam **process-NewFile** van de [PowerShell Gallery](https://www.powershellgallery.com)importeren. 
 
-Ga als een actie-runbook:
+Een actie runbook maken:
 
-1. Navigeer naar de galeriepagina voor [Process-NewFile.ps1](https://gallery.technet.microsoft.com/scriptcenter/Watcher-action-that-b4ff7cdf).
-2. Klik onder het tabblad **Azure Automation** op Implementeren voor **Azure Automation**.
+1. Ga naar de galerie pagina voor [process-newFile. ps1](https://gallery.technet.microsoft.com/scriptcenter/Watcher-action-that-b4ff7cdf).
+2. Klik op het tabblad **Azure Automation** op **implementeren naar Azure Automation**.
 
-U deze runbook ook importeren in uw Automatiseringsaccount vanuit de Azure-portal:
+U kunt dit runbook ook importeren in uw Automation-account vanuit de Azure Portal:
 
-1. Navigeer naar uw automatiseringsaccount en selecteer **Runbooks** onder **Procesautomatisering**.
-1. Klik **op Galerie bladeren**.
-1. Zoek naar **watcher-actie,** selecteer **de actie Watcher die gebeurtenissen verwerkt die worden geactiveerd door een logboek voor wachtkijkers**en klik op **Importeren**.
-  ![Actierunbook importeren vanuit de gebruikersinterface](media/automation-watchers-tutorial/importsourceaction.png)
-1. Geef het runbook een naam en beschrijving en klik op **OK** om het runbook te importeren in uw Automatiseringsaccount.
-1. Selecteer **Bewerken** en klik op **Publiceren**. Klik op **Ja** om het runbook te publiceren wanneer u daarom wordt gevraagd.
+1. Navigeer naar uw Automation-account en selecteer **Runbooks** onder **proces automatisering**.
+1. Klik op **Bladeren galerie**.
+1. Zoek naar **Watcher actie**, selecteer **Watcher actie waarmee gebeurtenissen worden verwerkt die worden geactiveerd door een Watcher-runbook**en klik op **importeren**.
+  ![Actie runbook importeren uit gebruikers interface](media/automation-watchers-tutorial/importsourceaction.png)
+1. Geef een naam en beschrijving voor het runbook op en klik op **OK** om het runbook te importeren in uw Automation-account.
+1. Selecteer **bewerken** en klik vervolgens op **publiceren**. Wanneer u hierom wordt gevraagd, klikt u op **Ja** om het runbook te publiceren.
 
 ## <a name="create-a-watcher-task"></a>Een watcher-taak maken
 
-In deze stap configureert u de watcher-taak die verwijst naar de wachter- en actierunbooks die in de voorgaande secties zijn gedefinieerd.
+In deze stap configureert u de Watcher-taak die verwijst naar de Watcher en actie-runbooks die in de voor gaande secties zijn gedefinieerd.
 
-1. Navigeer naar uw automatiseringsaccount en selecteer **Watcher-taken** onder **Procesautomatisering**.
-1. Selecteer de pagina Wachttaken en klik op **+ Een wachttaak toevoegen**.
-1. Voer **WatchMyFolder** in als naam.
+1. Navigeer naar uw Automation-account en selecteer **Watcher-taken** onder **proces automatisering**.
+1. Selecteer de pagina Watcher-taken en klik op **+ een Watcher-taak toevoegen**.
+1. Voer **WatchMyFolder** in als de naam.
 
-1. Selecteer **Watcher configureren** en kies de **runbook Watch-NewFile.**
+1. Selecteer **Watcher configureren** en kies het **horloge-NewFile** runbook.
 
-1. Voer de volgende waarden voor de parameters in:
+1. Voer de volgende waarden in voor de para meters:
 
-   * **FOLDERPAD** - Een map op de hybride runbookworker waar nieuwe bestanden worden gemaakt, bijvoorbeeld **d:\examplefiles**.
-   * **UITBREIDING** - Uitbreiding voor de configuratie. Laat leeg om alle bestandsextensies te verwerken.
-   * **RECURSE** - Recursieve werking. Laat deze waarde als standaardwaarde.
-   * **UITVOEREN INSTELLINGEN** - Instellen voor het uitvoeren van het runbook. Kies de hybride werknemer.
+   * **FOLDERPATH** : een map op het Hybrid Runbook worker waar nieuwe bestanden worden gemaakt, bijvoorbeeld **d:\examplefiles**.
+   * **Extensie** -extensie voor de configuratie. Laat het veld leeg om alle bestands extensies te verwerken.
+   * **Recursieve bewerking** . Wijzig deze waarde als standaard.
+   * **Instellingen uitvoeren** : instelling voor het uitvoeren van het runbook. Kies de Hybrid Worker.
 
-1. Klik op **OK**en **selecteer deze** om terug te keren naar de pagina Watcher.
-1. Selecteer **Actie configureren** en kies de **runbook Process-NewFile.**
-1. Voer de volgende waarden voor de parameters in:
+1. Klik op **OK**en **Selecteer** vervolgens om terug te keren naar de Watcher-pagina.
+1. Selecteer **actie configureren** en kies het **proces-NewFile** runbook.
+1. Voer de volgende waarden in voor de para meters:
 
-   * **EVENTDATA** - Gebeurtenisgegevens. Leeg laten. Gegevens worden doorgegeven uit de watcher runbook.
-   * **Instellingen uitvoeren** - Instellen voor het uitvoeren van de runbook. Laat als Azure, want deze runbook wordt uitgevoerd in Azure Automation.
+   * **Event Data** -gebeurtenis gegevens. Leeg laten. Gegevens worden door gegeven vanuit het Watcher-runbook.
+   * **Instellingen uitvoeren** : instelling voor het uitvoeren van het runbook. Verlaat als Azure, omdat dit runbook wordt uitgevoerd in Azure Automation.
 
-1. Klik op **OK**en **selecteer deze** om terug te keren naar de pagina Watcher.
-1. Klik op **OK** om de wachttaak te maken.
+1. Klik op **OK**en **Selecteer** vervolgens om terug te keren naar de Watcher-pagina.
+1. Klik op **OK** om de Watcher-taak te maken.
 
-![Watcher-actie configureren vanuit de gebruikersinterface](media/automation-watchers-tutorial/watchertaskcreation.png)
+![Watcher-actie configureren vanuit de gebruikers interface](media/automation-watchers-tutorial/watchertaskcreation.png)
 
-## <a name="trigger-a-watcher"></a>Een watcher activeren
+## <a name="trigger-a-watcher"></a>Een Watcher activeren
 
-U moet een test uitvoeren zoals hieronder beschreven om ervoor te zorgen dat de watcher-taak werkt zoals verwacht. 
+U moet een test uitvoeren zoals hieronder wordt beschreven om ervoor te zorgen dat de Watcher-taak werkt zoals verwacht. 
 
-1. Afstandsbediening in de hybride runbookworker. 
-2. Open **PowerShell** en maak een testbestand in de map.
+1. Extern in het Hybrid Runbook Worker. 
+2. Open **Power shell** en maak een test bestand in de map.
 
 ```azurepowerShell-interactive
 New-Item -Name ExampleFile1.txt
 ```
 
-In het volgende voorbeeld wordt de verwachte uitvoer weergegeven.
+In het volgende voor beeld wordt de verwachte uitvoer weer gegeven.
 
 ```output
     Directory: D:\examplefiles
@@ -134,16 +134,16 @@ Mode                LastWriteTime         Length Name
 -a----       12/11/2017   9:05 PM              0 ExampleFile1.txt
 ```
 
-## <a name="inspect-the-output"></a>De uitvoer inspecteren
+## <a name="inspect-the-output"></a>De uitvoer controleren
 
-1. Navigeer naar uw automatiseringsaccount en selecteer **Watcher-taken** onder **Procesautomatisering**.
-1. Selecteer de watcher-taak **WatchMyFolder**.
-1. Klik op **View watcher streams** onder **Streams** om te zien dat de watcher het nieuwe bestand heeft gevonden en het actie-runbook is gestart.
-1. Als u de actierunbook-taken wilt bekijken, klikt u op **Actietaken voor kijkers weergeven**. Elke taak kan worden geselecteerd om de details van de taak te bekijken.
+1. Navigeer naar uw Automation-account en selecteer **Watcher-taken** onder **proces automatisering**.
+1. Selecteer de Watcher-taak **WatchMyFolder**.
+1. Klik op **Watcher-stromen weer geven** onder **streams** om te zien dat de Watcher het nieuwe bestand heeft gevonden en het actie runbook heeft gestart.
+1. Als u de actie runbook-taken wilt zien, klikt u op **Watcher-actie taken weer geven**. Elke taak kan worden geselecteerd om de details van de taak weer te geven.
 
-   ![Watcher actie banen van UI](media/automation-watchers-tutorial/WatcherActionJobs.png)
+   ![Watcher-actie taken vanuit de gebruikers interface](media/automation-watchers-tutorial/WatcherActionJobs.png)
 
-De verwachte uitvoer wanneer het nieuwe bestand wordt gevonden, is te zien in het volgende voorbeeld:
+De verwachte uitvoer wanneer het nieuwe bestand wordt gevonden, kan in het volgende voor beeld worden weer gegeven:
 
 ```output
 Message is Process new file...
@@ -156,15 +156,15 @@ Passed in data is @{FileName=D:\examplefiles\ExampleFile1.txt; Length=0}
 In deze zelfstudie heeft u het volgende geleerd:
 
 > [!div class="checklist"]
-> * Een watcher runbook importeren
-> * Een variabele Automatisering maken
-> * Een actierunbook maken
+> * Een Watcher-runbook importeren
+> * Een Automation-variabele maken
+> * Een actie runbook maken
 > * Een watcher-taak maken
-> * Een watcher activeren
-> * De uitvoer inspecteren
+> * Een Watcher activeren
+> * De uitvoer controleren
 
-Volg deze link voor meer informatie over het maken van je eigen runbook.
+Volg deze koppeling voor meer informatie over het ontwerpen van uw eigen runbook.
 
 > [!div class="nextstepaction"]
-> [Mijn eerste PowerShell runbook](automation-first-runbook-textual-powershell.md).
+> [Mijn eerste Power shell-runbook](automation-first-runbook-textual-powershell.md).
 

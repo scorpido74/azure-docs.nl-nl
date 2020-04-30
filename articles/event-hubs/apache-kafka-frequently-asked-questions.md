@@ -1,6 +1,6 @@
 ---
-title: Veelgestelde vragen - Azure Event Hubs voor Apache Kafka
-description: In dit artikel ziet u hoe consumenten en producenten die verschillende protocollen gebruiken (AMQP, Apache Kafka en HTTPS) gebeurtenissen kunnen uitwisselen wanneer ze Azure Event Hubs gebruiken.
+title: 'Veelgestelde vragen: Azure Event Hubs voor Apache Kafka'
+description: In dit artikel wordt uitgelegd hoe consumenten en producenten die gebruikmaken van verschillende protocollen (AMQP, Apache Kafka en HTTPS), gebeurtenissen kunnen uitwisselen bij het gebruik van Azure Event Hubs.
 services: event-hubs
 documentationcenter: ''
 author: ShubhaVijayasarathy
@@ -13,42 +13,42 @@ ms.workload: na
 ms.date: 04/01/2020
 ms.author: shvija
 ms.openlocfilehash: 0186b90e1d75c5dba6e1ca26e4ba079a3456cea4
-ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/17/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81606741"
 ---
-# <a name="frequently-asked-questions---event-hubs-for-apache-kafka"></a>Veelgestelde vragen - Event Hubs voor Apache Kafka 
-In dit artikel vindt u antwoorden op enkele van de veelgestelde vragen over het migreren naar gebeurtenishubs voor Apache Kafka.
+# <a name="frequently-asked-questions---event-hubs-for-apache-kafka"></a>Veelgestelde vragen-Event Hubs voor Apache Kafka 
+In dit artikel vindt u antwoorden op enkele veelgestelde vragen over het migreren naar Event Hubs voor Apache Kafka.
 
-## <a name="do-you-run-apache-kafka"></a>Run je Apache Kafka?
+## <a name="do-you-run-apache-kafka"></a>Voert u Apache Kafka uit?
 
-Nee.  We voeren Kafka API-bewerkingen uit op de infrastructuur van Event Hubs.  Omdat er een nauwe correlatie is tussen Apache Kafka en Event Hubs AMQP-functionaliteit (dat wil zeggen, produceren, ontvangen, beheren, enzovoort).), kunnen we de bekende betrouwbaarheid van Event Hubs naar de Kafka PaaS-ruimte brengen.
+Nee.  Kafka-API-bewerkingen worden uitgevoerd op basis van Event Hubs-infra structuur.  Omdat er sprake is van een strakke correlatie tussen Apache Kafka en Event Hubs AMQP-functionaliteit (dat wil zeggen, produceren, ontvangen, beheren, enzovoort), kunnen we de bekende betrouw baarheid van Event Hubs in de PaaS Space van Kafka brengen.
 
-## <a name="event-hubs-consumer-group-vs-kafka-consumer-group"></a>Event Hubs consumentengroep vs. Kafka consumentengroep
-Wat is het verschil tussen een Event Hub-consumentengroep en een Kafka-consumentengroep op Event Hubs? Kafka-consumentengroepen op Event Hubs onderscheiden zich volledig van standaard Event Hubs-consumentengroepen.
+## <a name="event-hubs-consumer-group-vs-kafka-consumer-group"></a>Event Hubs consumenten groep versus consumenten groep Kafka
+Wat is het verschil tussen een event hub-Consumer groep en een Kafka-Consumer groep op Event Hubs? Kafka consumenten groepen op Event Hubs zijn volledig onderscheiden van standaard Event Hubs consumenten groepen.
 
-**Event Hubs consumentengroepen**
+**Consumenten groepen Event Hubs**
 
-- Ze worden beheerd met het maken, ophalen, bijwerken en verwijderen van (CRUD)-bewerkingen via portal-, SDK- of Azure Resource Manager-sjablonen. Consumentengroepen voor gebeurtenishubs kunnen niet automatisch worden gemaakt.
-- Het zijn kinderen entiteiten van een evenement hub. Dit betekent dat dezelfde naam van de consumentengroep kan worden hergebruikt tussen gebeurtenishubs in dezelfde naamruimte omdat het afzonderlijke entiteiten zijn.
-- Ze worden niet gebruikt voor het opslaan van offsets. Georkestreerd AMQP-verbruik gebeurt met externe offsetopslag, bijvoorbeeld Azure Storage.
+- Ze worden beheerd met bewerkingen voor maken, ophalen, bijwerken en verwijderen via Portal-, SDK-of Azure Resource Manager sjablonen. Event Hubs consumenten groepen kunnen niet worden gemaakt.
+- Ze zijn onderliggende entiteiten van een Event Hub. Dit betekent dat dezelfde naam van de Consumer groep opnieuw kan worden gebruikt tussen Event hubs in dezelfde naam ruimte, omdat het afzonderlijke entiteiten zijn.
+- Ze worden niet gebruikt voor het opslaan van offsets. Het georganisatiede AMQP-verbruik wordt uitgevoerd met behulp van externe offset opslag, bijvoorbeeld Azure Storage.
 
-**Kafka consumentengroepen**
+**Kafka-consumenten groepen**
 
-- Ze zijn automatisch gemaakt.  Kafka-groepen kunnen worden beheerd via de Kafka-consumentengroep API's.
-- Ze kunnen compensaties opslaan in de Event Hubs-service.
-- Ze worden gebruikt als sleutels in wat effectief een offset key-value store. Voor een uniek `group.id` `topic-partition`paar en , slaan we een offset op in Azure Storage (3x replicatie). Gebruikers van gebeurtenishubs maken geen extra opslagkosten door het opslaan van Kafka-compensaties. Compensaties zijn strafbaar via de ApI's van de Kafka-consumentengroep, maar de *offsetopslagaccounts* zijn niet direct zichtbaar of manipuleerbaar voor gebruikers van Event Hub.  
-- Ze overspannen een naamruimte. Het gebruik van dezelfde Kafka-groepsnaam voor meerdere toepassingen op meerdere onderwerpen betekent dat alle toepassingen en hun Kafka-clients opnieuw in evenwicht worden gebracht wanneer slechts één toepassing opnieuw in evenwicht moet worden gebracht.  Kies uw groep namen verstandig.
-- Ze onderscheiden zich volledig van Event Hubs-consumentengroepen. U **hoeft geen** '$Default' te gebruiken en u hoeft zich ook geen zorgen te maken dat Kafka-clients de AMQP-workloads verstoren.
-- Ze zijn niet zichtbaar in de Azure-portal. Informatie over consumentengroepen is toegankelijk via Kafka API's.
+- Deze worden gemaakt.  Kafka groepen kunnen worden beheerd via de Api's van de Kafka-Consumer groep.
+- Ze kunnen offsets in de Event Hubs-service opslaan.
+- Ze worden gebruikt als sleutels in wat een offset-waarde voor sleutel waarden is. Voor een uniek paar `group.id` en `topic-partition`worden er in azure Storage een offset (3x-replicatie) opgeslagen. Event Hubs gebruikers geen extra opslag kosten in rekening brengen bij het opslaan van Kafka-offsets. Offsets worden manipulable via de Kafka-Api's van de gebruikers groep, maar de offset opslag *accounts* zijn niet direct zichtbaar of Manipulable voor Event hub-gebruikers.  
+- Ze omvatten een naam ruimte. Als u dezelfde Kafka-groeps naam gebruikt voor meerdere toepassingen op meerdere onderwerpen, worden alle toepassingen en hun Kafka-clients opnieuw gebalanceerd wanneer slechts één toepassing opnieuw moet worden gebalanceerd.  Kies de namen van uw groepen.
+- Ze zijn volledig onderscheiden van Event Hubs consumenten groepen. U hoeft ' $Default ' **niet** te gebruiken en u hoeft zich geen zorgen te maken over Kafka-clients die de AMQP-workloads belemmeren.
+- Ze zijn niet zichtbaar in de Azure Portal. Informatie over de gebruikers groep is toegankelijk via Kafka-Api's.
 
 ## <a name="next-steps"></a>Volgende stappen
-Zie de volgende artikelen voor meer informatie over gebeurtenishubs en gebeurtenishubs voor Kafka:  
+Raadpleeg de volgende artikelen voor meer informatie over Event Hubs en Event Hubs voor Kafka:  
 
-- [Apache Kafka-ontwikkelaarshandleiding voor Event Hubs](apache-kafka-developer-guide.md)
-- [Apache Kafka migratiegids voor Event Hubs](apache-kafka-migration-guide.md)
-- [Handleiding voor het oplossen van problemen met Apache Kafka voor gebeurtenishubs](apache-kafka-troubleshooting-guide.md)
+- [Apache Kafka ontwikkelaars handleiding voor Event Hubs](apache-kafka-developer-guide.md)
+- [Apache Kafka migratie handleiding voor Event Hubs](apache-kafka-migration-guide.md)
+- [Gids voor het oplossen van problemen met Apache Kafka voor Event Hubs](apache-kafka-troubleshooting-guide.md)
 - [Aanbevolen configuraties](https://github.com/Azure/azure-event-hubs-for-kafka/blob/master/CONFIGURATION.md)
 

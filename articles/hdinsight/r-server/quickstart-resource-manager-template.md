@@ -1,6 +1,6 @@
 ---
-title: 'Snelstart: ML Services-cluster maken met sjabloon - Azure HDInsight'
-description: In deze snelstart wordt weergegeven hoe u resourcebeheersjabloon gebruiken om een ML Services-cluster in Azure HDInsight te maken.
+title: 'Snelstartgids: een cluster voor ML-Services maken met behulp van sjabloon-Azure HDInsight'
+description: In deze Quick start ziet u hoe u een resource manager-sjabloon gebruikt voor het maken van een ML Services-cluster in azure HDInsight.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -9,37 +9,37 @@ ms.topic: quickstart
 ms.custom: subject-armqs
 ms.date: 03/13/2020
 ms.openlocfilehash: cde8d6932400966ae22720b1e86f3c5164f25b30
-ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/17/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81603433"
 ---
-# <a name="quickstart-create-ml-services-cluster-in-azure-hdinsight-using-resource-manager-template"></a>Snelstart: ML Services-cluster maken in Azure HDInsight met behulp van resourcebeheersjabloon
+# <a name="quickstart-create-ml-services-cluster-in-azure-hdinsight-using-resource-manager-template"></a>Snelstartgids: een cluster voor het maken van ML-Services in azure HDInsight met behulp van Resource Manager-sjabloon
 
-In deze snelstart gebruikt u een Azure Resource Manager-sjabloon om een [ML Services-cluster](./r-server-overview.md) in Azure HDInsight te maken. Microsoft Machine Learning Server is beschikbaar als implementatieoptie wanneer u HDInsight-clusters maakt in Azure. Het clustertype dat deze optie biedt, heet ML Services. Deze mogelijkheid biedt data scientists, statistici en R-programmeurs on-demand toegang tot schaalbare, gedistribueerde analysemethoden op HDInsight.
+In deze Quick Start gebruikt u een Azure Resource Manager sjabloon voor het maken van een cluster met [ml-Services](./r-server-overview.md) in azure HDInsight. Microsoft Machine Learning Server is beschikbaar als implementatie optie wanneer u HDInsight-clusters maakt in Azure. Het cluster type dat deze optie biedt, wordt ML Services genoemd. Deze mogelijkheid biedt gegevens wetenschappers, statistici en R-programmeurs met on-demand toegang tot schaal bare, gedistribueerde analyse methoden op HDInsight.
 
 [!INCLUDE [About Azure Resource Manager](../../../includes/resource-manager-quickstart-introduction.md)]
 
-Als u geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) voordat u begint.
+Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
 
 ## <a name="create-an-ml-services-cluster"></a>Een ML Services-cluster maken
 
-### <a name="review-the-template"></a>De sjabloon bekijken
+### <a name="review-the-template"></a>De sjabloon controleren
 
-De sjabloon die in deze quickstart wordt gebruikt, is afkomstig van [Azure Quickstart-sjablonen.](https://github.com/Azure/azure-quickstart-templates/tree/master/101-hdinsight-rserver)
+De sjabloon die in deze Quick Start wordt gebruikt, is afkomstig uit [Azure Quick](https://github.com/Azure/azure-quickstart-templates/tree/master/101-hdinsight-rserver)start-sjablonen.
 
 :::code language="json" source="~/quickstart-templates/101-hdinsight-rserver/azuredeploy.json" range="1-171":::
 
 
-In de sjabloon worden twee Azure-resources gedefinieerd:
+Er worden twee Azure-resources gedefinieerd in de sjabloon:
 
-* [Microsoft.Storage/storageAccounts:](https://docs.microsoft.com/azure/templates/microsoft.storage/storageaccounts)maak een Azure Storage Account.
-* [Microsoft.HDInsight/cluster](https://docs.microsoft.com/azure/templates/microsoft.hdinsight/clusters): maak een HDInsight-cluster.
+* [Micro soft. Storage/Storage accounts](https://docs.microsoft.com/azure/templates/microsoft.storage/storageaccounts): een Azure Storage-account maken.
+* [Micro soft. HDInsight/cluster](https://docs.microsoft.com/azure/templates/microsoft.hdinsight/clusters): een HDInsight-cluster maken.
 
 ### <a name="deploy-the-template"></a>De sjabloon implementeren
 
-1. Selecteer de knop **Implementeren naar Azure** hieronder om u aan te melden bij Azure en open de sjabloon Resourcebeheer.
+1. Selecteer de onderstaande knop **implementeren naar Azure** om u aan te melden bij Azure en de Resource Manager-sjabloon te openen.
 
     [![Implementeren in Azure](../../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-hdinsight-rserver%2Fazuredeploy.json)
 
@@ -47,36 +47,36 @@ In de sjabloon worden twee Azure-resources gedefinieerd:
 
     |Eigenschap |Beschrijving |
     |---|---|
-    |Abonnement|Selecteer in de vervolgkeuzelijst het Azure-abonnement dat voor het cluster wordt gebruikt.|
-    |Resourcegroep|Selecteer in de vervolgkeuzelijst uw bestaande resourcegroep of selecteer **Nieuw maken**.|
-    |Locatie|De waarde wordt automatisch gevuld met de locatie die wordt gebruikt voor de resourcegroep.|
-    |Clusternaam|Voer een wereldwijd unieke naam in. Gebruik voor deze sjabloon alleen kleine letters en cijfers.|
-    |Gebruikersnaam voor clusteraanmelding|Geef de gebruikersnaam op, standaard is **beheerder**.|
-    |Wachtwoord voor clusteraanmelding|Geef een wachtwoord op. Het wachtwoord moet ten minste tien tekens lang zijn en moet ten minste één cijfer, één hoofdletter en één kleine letter bevatten, één niet-alfanumeriek teken (met uitzondering van tekens " ). |
-    |Ssh-gebruikersnaam|Geef de gebruikersnaam op, standaard is sshuser|
-    |Ssh-wachtwoord|Geef het wachtwoord op.|
+    |Abonnement|Selecteer in de vervolg keuzelijst het Azure-abonnement dat wordt gebruikt voor het cluster.|
+    |Resourcegroep|Selecteer in de vervolg keuzelijst de bestaande resource groep of selecteer **nieuwe maken**.|
+    |Locatie|De waarde wordt automatisch ingevuld met de locatie die wordt gebruikt voor de resource groep.|
+    |Clusternaam|Voer een wereldwijd unieke naam in. Voor deze sjabloon gebruikt u alleen kleine letters en cijfers.|
+    |Gebruikersnaam voor clusteraanmelding|Geef de gebruikers naam op. de standaard instelling is **admin**.|
+    |Wachtwoord voor clusteraanmelding|Geef een wacht woord op. Het wacht woord moet uit minstens tien tekens bestaan en moet ten minste één cijfer, één hoofd letter en één kleine letters, één niet-alfanumeriek teken (behalve de tekens ' "') bevatten. |
+    |SSH-gebruikers naam|Geef de gebruikers naam op. de standaard waarde is sshuser|
+    |SSH-wacht woord|Geef het wacht woord op.|
 
     ![Resource Manager-sjabloon HBase](./media/quickstart-resource-manager-template/resource-manager-template-rserver.png)
 
-1. Bekijk de **algemene voorwaarden**. Selecteer dan **ik ga akkoord met de hierboven vermelde algemene voorwaarden,** dan **Koop**. U ontvangt een melding dat uw implementatie aan de gang is. Het duurt ongeveer 20 minuten om een cluster te maken.
+1. Bekijk de **voor waarden**. Selecteer **Ik ga akkoord met de bovenstaande voor waarden en**klik vervolgens op **kopen**. U ontvangt een melding dat uw implementatie wordt uitgevoerd. Het duurt ongeveer 20 minuten om een cluster te maken.
 
 ## <a name="review-deployed-resources"></a>Geïmplementeerde resources controleren
 
-Zodra het cluster is gemaakt, ontvangt u een **door implementatie geslaagde** melding met een **koppeling naar de bron ga.** Op de pagina Resourcegroep worden uw nieuwe HDInsight-cluster en de standaardopslag bij het cluster weergegeven. Elk cluster heeft een [Azure Storage-account](../hdinsight-hadoop-use-blob-storage.md) of een Azure [Data Lake Storage-accountafhankelijkheid.](../hdinsight-hadoop-use-data-lake-store.md) Het wordt het standaardopslagaccount genoemd. Het HDInsight-cluster en het standaardopslagaccount moeten in dezelfde Azure-regio worden ondergebracht. Als u clusters verwijdert, wordt het opslagaccount niet verwijderd.
+Zodra het cluster is gemaakt, ontvangt u een melding over **implementatie geslaagd** met een koppeling **naar de resource** . Op de pagina Resourcegroep worden uw nieuwe HDInsight-cluster en de standaardopslag bij het cluster weergegeven. Elk cluster heeft een [Azure Storage](../hdinsight-hadoop-use-blob-storage.md) account of een afhankelijkheid van [Azure data Lake Storage-account](../hdinsight-hadoop-use-data-lake-store.md) . Dit wordt aangeduid als het standaard opslag account. Het HDInsight-cluster en het standaard opslag account moeten zich in dezelfde Azure-regio bevinden. Als u clusters verwijdert, wordt het opslag account niet verwijderd.
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
-Nadat u de quickstart hebt voltooid, u het cluster verwijderen. Met HDInsight worden uw gegevens opgeslagen in Azure Storage, zodat u een cluster veilig verwijderen wanneer het niet in gebruik is. Er worden ook kosten in rekening gebracht voor een HDInsight-cluster, zelfs als het niet in gebruik is. Aangezien de kosten voor het cluster vele malen meer zijn dan de kosten voor opslag, is het economisch zinvol om clusters te verwijderen wanneer ze niet in gebruik zijn.
+Nadat u de Snelstartgids hebt voltooid, kunt u het cluster verwijderen. Met HDInsight worden uw gegevens opgeslagen in Azure Storage, zodat u een cluster veilig kunt verwijderen wanneer deze niet in gebruik is. U betaalt ook voor een HDInsight-cluster, zelfs wanneer het niet in gebruik is. Omdat de kosten voor het cluster veel keren meer zijn dan de kosten voor opslag, is het economisch zinvol om clusters te verwijderen wanneer ze niet worden gebruikt.
 
-Navigeer in de Azure-portal naar uw cluster en selecteer **Verwijderen**.
+Navigeer vanuit het Azure Portal naar uw cluster en selecteer **verwijderen**.
 
 ![Resource Manager-sjabloon HBase](./media/quickstart-resource-manager-template/azure-portal-delete-rserver.png)
 
-U kunt ook de naam van de resourcegroep selecteren om de pagina van de resourcegroep te openen en vervolgens **Resourcegroep verwijderen** selecteren. Door de brongroep te verwijderen, verwijdert u zowel het HDInsight-cluster als het standaardopslagaccount.
+U kunt ook de naam van de resourcegroep selecteren om de pagina van de resourcegroep te openen en vervolgens **Resourcegroep verwijderen** selecteren. Door de resource groep te verwijderen, verwijdert u zowel het HDInsight-cluster als het standaard opslag account.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze snelstart hebt u geleerd hoe u een ML Services-cluster in HDInsight maakt met behulp van een Resource Manager-sjabloon. In het volgende artikel leert u hoe u een R-script met RStudio Server uitvoert dat aantoont dat Spark wordt gebruikt voor gedistribueerde R-berekeningen..
+In deze Quick Start hebt u geleerd hoe u een ML Services-cluster in HDInsight maakt met behulp van een resource manager-sjabloon. In het volgende artikel leert u hoe u een R-script kunt uitvoeren met RStudio-server met behulp van Spark voor gedistribueerde R-berekeningen.
 
 > [!div class="nextstepaction"]
-> [Een R-script uitvoeren op een ML Services-cluster in Azure HDInsight met RStudio Server](./machine-learning-services-quickstart-job-rstudio.md)
+> [Een R-script uitvoeren op een ML Services-cluster in azure HDInsight met behulp van de RStudio-server](./machine-learning-services-quickstart-job-rstudio.md)

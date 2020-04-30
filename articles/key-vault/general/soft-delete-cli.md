@@ -1,6 +1,6 @@
 ---
-title: Azure Key Vault - Soft-delete gebruiken met CLI
-description: Voorbeelden van hoofdletters gebruiken voor soft-delete met CLI-codeknipsels
+title: Azure Key Vault-het gebruik van zacht verwijderen met CLI
+description: Voor beelden van het gebruik van zacht verwijderen met CLI-code knipsels
 services: key-vault
 author: msmbaldwin
 manager: rkarlin
@@ -10,234 +10,234 @@ ms.topic: tutorial
 ms.date: 08/12/2019
 ms.author: mbaldwin
 ms.openlocfilehash: ae6ddac61ecbcef41704f71ed5188fc547a996a3
-ms.sourcegitcommit: eefb0f30426a138366a9d405dacdb61330df65e7
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/17/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81616590"
 ---
 # <a name="how-to-use-key-vault-soft-delete-with-cli"></a>De Key Vault-functie voor voorlopig verwijderen gebruiken met CLI
 
-De soft-delete-functie van Azure Key Vault maakt het mogelijk om verwijderde kluizen en kluisobjecten te herstellen. Met name soft-delete behandelt de volgende scenario's:
+Met de functie voor zacht verwijderen van Azure Key Vault kunt u verwijderde kluizen en kluis objecten herstellen. Met name de volgende scenario's worden door zacht verwijderen opgelost:
 
-- Ondersteuning voor herstelbare verwijdering van een sleutelkluis
-- Ondersteuning voor herstelbare verwijdering van belangrijke vault-objecten; sleutels, geheimen en certificaten
+- Ondersteuning voor herstel bare verwijdering van een sleutel kluis
+- Ondersteuning voor herstel bare verwijdering van sleutel kluis-objecten; sleutels, geheimen en certificaten
 
 ## <a name="prerequisites"></a>Vereisten
 
-- Azure CLI - Als u deze instelling niet voor uw omgeving hebt, [raadpleegt](manage-with-cli2.md)u Key Vault beheren met Azure CLI ).
+- Azure CLI: Zie [Key Vault beheren met Azure cli](manage-with-cli2.md)voor meer informatie over het instellen van uw omgeving.
 
-Zie [Azure CLI Key Vault-referentie](https://docs.microsoft.com/cli/azure/keyvault)voor key vault-specifieke referentiegegevens voor CLI.
+Zie Naslag informatie voor [Azure cli-Key Vault](https://docs.microsoft.com/cli/azure/keyvault)voor Key Vault specifieke referentie gegevens voor cli.
 
 ## <a name="required-permissions"></a>Vereiste machtigingen
 
-Key Vault-bewerkingen worden afzonderlijk beheerd via RBAC-machtigingen (Role-based access control):
+Key Vault bewerkingen worden als volgt afzonderlijk beheerd via machtigingen op basis van op rollen gebaseerde toegangs beheer (RBAC):
 
-| Bewerking | Beschrijving | Gebruikersmachtigingen |
+| Bewerking | Beschrijving | Gebruikers machtiging |
 |:--|:--|:--|
-|Lijst|Hiermee worden verwijderde sleutelkluizen weergegeven.|Microsoft.KeyVault/deletedVaults/read|
-|Herstellen|Hiermee herstelt u een verwijderd sleutelkluis.|Microsoft.KeyVault/kluizen/schrijven|
-|Opschonen|Hiermee verwijdert u permanent een verwijderde sleutelkluis en alle inhoud ervan.|Microsoft.KeyVault/locaties/verwijderdeVaults/purge/action|
+|Lijst|Een lijst met verwijderde sleutel kluizen.|Micro soft. deletedVaults/lezen|
+|Herstellen|Hiermee herstelt u een verwijderde sleutel kluis.|Micro soft. de sleutel kluis/kluizen/schrijven|
+|Opschonen|Verwijdert permanent een verwijderde sleutel kluis en alle bijbehorende inhoud.|Micro soft. sleutel kluis/locaties/deletedVaults/opschonen/actie|
 
-Zie [Uw sleutelkluis beveiligen](secure-your-key-vault.md)voor meer informatie over machtigingen en toegangscontrole).
+Zie [uw sleutel kluis beveiligen](secure-your-key-vault.md)voor meer informatie over machtigingen en toegangs beheer.
 
-## <a name="enabling-soft-delete"></a>Soft-delete inschakelen
+## <a name="enabling-soft-delete"></a>Voorlopig verwijderen inschakelen
 
-U schakelt 'soft-delete' in om herstel van een verwijderde sleutelkluis of objecten die zijn opgeslagen in een sleutelkluis mogelijk te maken.
+U schakelt ' voorlopig verwijderen ' in om het herstellen van een verwijderde sleutel kluis of objecten die zijn opgeslagen in een sleutel kluis, toe te staan.
 
 > [!IMPORTANT]
-> Het inschakelen van 'soft-delete' op een key vault is een onomkeerbare actie. Zodra de eigenschap soft-delete is ingesteld op 'true', kan deze niet meer worden gewijzigd of verwijderd.  
+> Het inschakelen van ' zacht verwijderen ' op een sleutel kluis is een onomkeerbaare actie. Zodra de eigenschap soft-delete is ingesteld op ' True ', kan deze niet worden gewijzigd of verwijderd.  
 
-### <a name="existing-key-vault"></a>Bestaande sleutelkluis
+### <a name="existing-key-vault"></a>Bestaande sleutel kluis
 
-Schakel soft-delete als volgt in voor een bestaande sleutelkluis met de naam ContosoVault. 
+Voor een bestaande sleutel kluis met de naam ContosoVault, schakelt u voorlopig verwijderen als volgt in. 
 
 ```azurecli
 az keyvault update -n ContosoVault --enable-soft-delete true
 ```
 
-### <a name="new-key-vault"></a>Nieuwe sleutelkluis
+### <a name="new-key-vault"></a>Nieuwe sleutel kluis
 
-Het inschakelen van soft-delete voor een nieuwe sleutelkluis gebeurt tijdens het maken door de soft-delete-vlag toe te voegen aan de opdracht Maken.
+Het inschakelen van het voorlopig verwijderen van een nieuwe sleutel kluis wordt uitgevoerd tijdens de aanmaak tijd door de vlag voor zacht verwijderen toevoegen toe te voegen aan de opdracht Create.
 
 ```azurecli
 az keyvault create --name ContosoVault --resource-group ContosoRG --enable-soft-delete true --location westus
 ```
 
-### <a name="verify-soft-delete-enablement"></a>Soft-delete-enablement verifiëren
+### <a name="verify-soft-delete-enablement"></a>Activering van voorlopig verwijderen controleren
 
-Als u wilt controleren of een sleutelkluis is ingeschakeld voor soft-delete, voert u de opdracht *Show uit* en zoekt u naar de 'Soft Delete Enabled?' Kenmerk:
+Als u wilt controleren of een sleutel kluis voorlopig is ingeschakeld, voert u de opdracht *weer geven* uit en zoekt u naar ' voorlopig verwijderen ingeschakeld? ' geschreven
 
 ```azurecli
 az keyvault show --name ContosoVault
 ```
 
-## <a name="deleting-a-soft-delete-protected-key-vault"></a>Een beveiligde sleutelkluis verwijderen
+## <a name="deleting-a-soft-delete-protected-key-vault"></a>Een met Soft verwijderde beveiligde sleutel kluis verwijderen
 
-De opdracht om een sleutelkluis te verwijderen, verandert in gedrag, afhankelijk van of soft-delete is ingeschakeld.
+De opdracht voor het verwijderen van wijzigingen in de sleutel kluis, afhankelijk van het feit of het voorlopig verwijderen is ingeschakeld.
 
 > [!IMPORTANT]
->Als u de volgende opdracht uitvoert voor een sleutelkluis die geen soft-delete is ingeschakeld, verwijdert u deze sleutelkluis en alle inhoud ervan permanent zonder herstelopties!
+>Als u de volgende opdracht uitvoert voor een sleutel kluis waarvoor geen tijdelijke verwijdering is ingeschakeld, verwijdert u deze sleutel kluis en alle inhoud zonder opties voor herstel.
 
 ```azurecli
 az keyvault delete --name ContosoVault
 ```
 
-### <a name="how-soft-delete-protects-your-key-vaults"></a>Hoe soft-delete uw sleutelkluizen beschermt
+### <a name="how-soft-delete-protects-your-key-vaults"></a>Hoe soft-delete uw sleutel kluizen beschermt
 
-Met soft-delete ingeschakeld:
+Met voorlopig verwijderen ingeschakeld:
 
-- Een verwijderd sleutelkluis wordt uit de brongroep verwijderd en in een gereserveerde naamruimte geplaatst, gekoppeld aan de locatie waar het is gemaakt. 
-- Verwijderde objecten zoals sleutels, geheimen en certificaten zijn ontoegankelijk zolang de sleutelkluis zich in de verwijderde status bevindt. 
-- De DNS-naam voor een verwijderde sleutelkluis is gereserveerd, zodat een nieuwe sleutelkluis met dezelfde naam niet wordt gemaakt.  
+- Een verwijderde sleutel kluis wordt verwijderd uit de resource groep en in een gereserveerde naam ruimte geplaatst, die is gekoppeld aan de locatie waar deze is gemaakt. 
+- Verwijderde objecten, zoals sleutels, geheimen en certificaten, zijn niet toegankelijk als de sleutel kluis de status verwijderd heeft. 
+- De DNS-naam voor een verwijderde sleutel kluis is gereserveerd, waardoor wordt voor komen dat er een nieuwe sleutel kluis met dezelfde naam wordt gemaakt.  
 
-U verwijderde statussleutelkluizen, die aan uw abonnement zijn gekoppeld, bekijken met behulp van de volgende opdracht:
+U kunt de sleutel kluizen voor verwijderde status weer geven die zijn gekoppeld aan uw abonnement met behulp van de volgende opdracht:
 
 ```azurecli
 az keyvault list-deleted
 ```
-- *ID* kan worden gebruikt om de bron te identificeren bij het herstellen of zuiveren. 
-- *Resource-ID* is de oorspronkelijke bron-ID van deze kluis. Aangezien deze sleutelkluis zich nu in een verwijderde status bevindt, bestaat er geen resource met die resource-id. 
-- *Geplande zuiveringsdatum* is wanneer de kluis permanent wordt verwijderd als er geen actie wordt ondernomen. De standaardbewaarperiode, die wordt gebruikt om de *geplande zuiveringsdatum*te berekenen, is 90 dagen.
+- De *id* kan worden gebruikt om de resource te identificeren bij het herstellen of verwijderen. 
+- De *resource-id* is de oorspronkelijke resource-id van deze kluis. Omdat deze sleutel kluis nu een verwijderde status heeft, bestaat er geen resource met die resource-ID. 
+- De *geplande opschoon datum* is wanneer de kluis permanent wordt verwijderd als er geen actie wordt ondernomen. De standaard retentie periode, die wordt gebruikt om de *geplande opschoon datum*te berekenen, is 90 dagen.
 
-## <a name="recovering-a-key-vault"></a>Een sleutelkluis herstellen
+## <a name="recovering-a-key-vault"></a>Een sleutel kluis herstellen
 
-Als u een sleutelkluis wilt herstellen, geeft u de naam, de resourcegroep en de locatie van de sleutelkluis op. Let op de locatie en de brongroep van de verwijderde sleutelkluis, omdat u ze nodig hebt voor het herstelproces.
+Als u een sleutel kluis wilt herstellen, geeft u de naam van de sleutel kluis, de resource groep en de locatie op. Let op de locatie en de resource groep van de verwijderde sleutel kluis, wanneer u deze nodig hebt voor het herstel proces.
 
 ```azurecli
 az keyvault recover --location westus --resource-group ContosoRG --name ContosoVault
 ```
 
-Wanneer een sleutelkluis wordt hersteld, wordt een nieuwe bron gemaakt met de oorspronkelijke resource-id van de sleutelkluis. Als de oorspronkelijke brongroep wordt verwijderd, moet deze met dezelfde naam worden gemaakt voordat u probeert te herstellen.
+Wanneer een sleutel kluis wordt hersteld, wordt een nieuwe resource gemaakt met de oorspronkelijke resource-ID van de sleutel kluis. Als de oorspronkelijke resource groep is verwijderd, moet er een worden gemaakt met dezelfde naam voordat u probeert te herstellen.
 
-## <a name="deleting-and-purging-key-vault-objects"></a>Belangrijke kluisobjecten verwijderen en zuiveren
+## <a name="deleting-and-purging-key-vault-objects"></a>Sleutel kluis objecten verwijderen en verwijderen
 
-Met de volgende opdracht wordt de sleutel 'ContosoFirstKey' verwijderd in een sleutelkluis met de naam 'ContosoVault', die soft-delete heeft ingeschakeld:
+Met de volgende opdracht wordt de sleutel ' ContosoFirstKey ' verwijderd in een sleutel kluis met de naam ' ContosoVault ', waarvoor het voorlopig verwijderen is ingeschakeld:
 
 ```azurecli
 az keyvault key delete --name ContosoFirstKey --vault-name ContosoVault
 ```
 
-Als uw sleutelkluis is ingeschakeld voor soft-delete, wordt er nog steeds een verwijderde sleutel weergegeven alsof deze is verwijderd, behalve wanneer u verwijderde sleutels expliciet ophaalt of ophaalt. De meeste bewerkingen op een sleutel in de verwijderde status mislukken, behalve voor het vermelden van een verwijderde sleutel, het herstellen of verwijderen ervan. 
+Als uw sleutel kluis is ingeschakeld voor zacht verwijderen, wordt er nog steeds een verwijderde sleutel weer gegeven, behalve wanneer u de verwijderde sleutels expliciet vermeldt of ophaalt. De meeste bewerkingen met een sleutel in de verwijderde status mislukken, behalve als een verwijderde sleutel wordt weer gegeven of verwijderd. 
 
-Als u bijvoorbeeld wilt vragen verwijderde sleutels in een sleutelkluis op te nemen, gebruikt u de volgende opdracht:
+Als u bijvoorbeeld wilt aanvragen om verwijderde sleutels in een sleutel kluis weer te geven, gebruikt u de volgende opdracht:
 
 ```azurecli
 az keyvault key list-deleted --vault-name ContosoVault
 ```
 
-### <a name="transition-state"></a>Overgangsstatus 
+### <a name="transition-state"></a>Overgangs status 
 
-Wanneer u een sleutel in een sleutelkluis verwijdert met soft-delete ingeschakeld, kan het enkele seconden duren voordat de overgang is voltooid. Tijdens deze overgang kan het lijken dat de sleutel zich niet in de actieve status of de verwijderde status bevindt. 
+Wanneer u een sleutel in een sleutel kluis verwijdert waarvoor het uitvoeren van zacht verwijderen is ingeschakeld, kan het enkele seconden duren voordat de overgang is voltooid. Tijdens deze overgang kan het lijken alsof de sleutel niet de status actief of verwijderd heeft. 
 
-### <a name="using-soft-delete-with-key-vault-objects"></a>Soft-delete gebruiken met belangrijke vault-objecten
+### <a name="using-soft-delete-with-key-vault-objects"></a>Voorlopig verwijderen gebruiken met Key kluis objecten
 
-Net als sleutelkluizen, een verwijderde sleutel, geheim of certificaat, blijft in verwijderd staat voor maximaal 90 dagen, tenzij u het herstellen of verwijderen.
+Net als bij sleutel kluizen, behoudt een verwijderde sleutel, geheim of certificaat, de status verwijderd tot 90 dagen, tenzij u deze herstelt of opschoont.
 
 #### <a name="keys"></a>Sleutels
 
-Ga als lid van de brexit met een zachte toets:
+Een voorlopig verwijderde sleutel herstellen:
 
 ```azurecli
 az keyvault key recover --name ContosoFirstKey --vault-name ContosoVault
 ```
 
-Een vooraf verwijderde sleutel permanent verwijderen (ook wel zuivering genoemd):
+Een voorlopig verwijderde sleutel permanent verwijderen (ook wel het verwijderen genoemd):
 
 > [!IMPORTANT]
-> Het zuiveren van een sleutel zal het permanent verwijderen, en het zal niet kunnen worden hersteld! 
+> Als u een sleutel verwijdert, wordt deze definitief verwijderd en kan deze niet worden hersteld. 
 
 ```azurecli
 az keyvault key purge --name ContosoFirstKey --vault-name ContosoVault
 ```
 
-De **herstel-** en **zuiveringsacties** hebben hun eigen machtigingen die zijn gekoppeld aan een belangrijk toegangsbeleid voor kluizen. Om een gebruiker of serviceprincipal in staat te stellen een **herstel-** of **zuiveringsactie** uit te voeren, moet hij of zij de desbetreffende toestemming voor die sleutel of geheim hebben. Standaard wordt **zuivering** niet toegevoegd aan het toegangsbeleid van een sleutelkluis, wanneer de snelkoppeling 'alles' wordt gebruikt om alle machtigingen te verlenen. Je moet specifiek **zuiveringstoestemming** verlenen. 
+De **herstel** -en **opschoon** acties hebben hun eigen machtigingen die zijn gekoppeld aan een sleutel kluis toegangs beleid. Als een gebruiker of service-principal een **herstel** -of **opschoon** actie kan uitvoeren, moeten ze beschikken over de juiste machtiging voor die sleutel of dit geheim. Standaard wordt **leegmaken** niet toegevoegd aan het toegangs beleid van een sleutel kluis wanneer de snelkoppeling ' alle ' wordt gebruikt om alle machtigingen te verlenen. U moet de machtiging **verwijderen** specifiek verlenen. 
 
-#### <a name="set-a-key-vault-access-policy"></a>Een toegangsbeleid voor belangrijke kluizen instellen
+#### <a name="set-a-key-vault-access-policy"></a>Een sleutel kluis toegangs beleid instellen
 
-Met de user@contoso.com volgende opdracht wordt toestemming verleend om verschillende bewerkingen te gebruiken op sleutels in *ContosoVault,* waaronder **zuivering:**
+Met de volgende opdracht user@contoso.com wordt een machtiging verleend voor het gebruik van verschillende bewerkingen op sleutels in *ContosoVault* , waaronder **opschonen**:
 
 ```azurecli
 az keyvault set-policy --name ContosoVault --key-permissions get create delete list update import backup restore recover purge
 ```
 
 >[!NOTE] 
-> Als u een bestaande sleutelkluis hebt die zojuist soft-delete heeft ingeschakeld, hebt u mogelijk geen **machtigingen voor herstellen** en **verwijderen.**
+> Als u een bestaande sleutel kluis hebt die zojuist is ingeschakeld, hebt u mogelijk geen machtigingen voor **herstellen** en **verwijderen** .
 
 #### <a name="secrets"></a>Geheimen
 
 Net als sleutels worden geheimen beheerd met hun eigen opdrachten:
 
-- Een geheim met de naam SQLPassword verwijderen: 
+- Verwijder een geheim met de naam SQLPassword: 
   ```azurecli
   az keyvault secret delete --vault-name ContosoVault -name SQLPassword
   ```
 
-- Alle verwijderde geheimen in een sleutelkluis: 
+- Alle verwijderde geheimen in een sleutel kluis weer geven: 
   ```azurecli
   az keyvault secret list-deleted --vault-name ContosoVault
   ```
 
-- Een geheim herstellen in de verwijderde status: 
+- Een geheim herstellen met de status verwijderd: 
   ```azurecli
   az keyvault secret recover --name SQLPassword --vault-name ContosoVault
   ```
 
-- Een geheim in verwijderde toestand verwijderen: 
+- Verwijder een geheim met de status verwijderd: 
 
   > [!IMPORTANT]
-  > Het zuiveren van een geheim zal het permanent verwijderen, en het zal niet worden hersteld! 
+  > Als u een geheim verwijdert, wordt dit permanent verwijderd en kan het niet worden hersteld. 
 
   ```azurecli
   az keyvault secret purge --name SQLPAssword --vault-name ContosoVault
   ```
 
-## <a name="purging-a-soft-delete-protected-key-vault"></a>Een beveiligde sleutelkluis met softdelete verwijderen
+## <a name="purging-a-soft-delete-protected-key-vault"></a>Een tijdelijke beveiligde sleutel kluis verwijderen
 
 > [!IMPORTANT]
-> Het zuiveren van een sleutelkluis of een van de opgenomen objecten, zal het permanent verwijderen, wat betekent dat het niet kan worden hersteld!
+> Als u een sleutel kluis of een van de objecten erin opschoont, wordt deze definitief verwijderd, wat betekent dat het niet kan worden hersteld.
 
-De zuiveringsfunctie wordt gebruikt om een sleutelkluisobject of een volledig sleutelkluisobject, dat eerder werd verwijderd, permanent te verwijderen. Zoals in de vorige sectie is aangetoond, kunnen objecten die zijn opgeslagen in een sleutelkluis met de functie soft-delete zijn ingeschakeld, door meerdere toestanden gaan:
+De functie opschonen wordt gebruikt voor het permanent verwijderen van een sleutel kluis-object of een volledige sleutel kluis die voorheen zacht werd verwijderd. Zoals u in de vorige sectie hebt gedemonstreerd, kunnen objecten die zijn opgeslagen in een sleutel kluis met de functie voor het voorlopig verwijderen ingeschakeld, meerdere statussen door lopen:
 
-- **Actief**: voor verwijdering.
-- **Soft-Deleted**: na verwijdering, in staat om te worden vermeld en terug te herstellen naar actieve staat.
-- **Permanent verwijderd**: na zuivering, niet in staat om te worden hersteld.
+- **Actief**: vóór verwijdering.
+- **Zacht verwijderd**: na verwijdering kan deze worden weer gegeven en teruggezet naar de actieve status.
+- **Permanent verwijderd**: na leegmaken, kan niet worden hersteld.
 
-Hetzelfde geldt voor de sleutelkluis. Om een verwijderdsleutelkluis en de inhoud ervan permanent te verwijderen, moet u de sleutelkluis zelf verwijderen.
+Dit geldt ook voor de sleutel kluis. Als u een voorlopig verwijderde sleutel kluis en de inhoud ervan permanent wilt verwijderen, moet u de sleutel kluis zelf leegmaken.
 
-### <a name="purging-a-key-vault"></a>Een sleutelkluis zuiveren
+### <a name="purging-a-key-vault"></a>Een sleutel kluis verwijderen
 
-Wanneer een sleutelkluis wordt verwijderd, wordt de volledige inhoud definitief verwijderd, inclusief sleutels, geheimen en certificaten. Als u een verwijderdsleutelkluis wilt `az keyvault purge` verwijderen, gebruikt u de opdracht. U de locatie van de verwijderde sleutelkluizen `az keyvault list-deleted`van uw abonnement vinden met behulp van de opdracht.
+Wanneer een sleutel kluis wordt leeg gemaakt, wordt de volledige inhoud definitief verwijderd, inclusief de sleutels, geheimen en certificaten. Als u een tijdelijke, verwijderde sleutel kluis wilt verwijderen, gebruikt `az keyvault purge` u de opdracht. U kunt de locatie van de verwijderde sleutel kluizen van uw abonnement vinden met behulp van de opdracht `az keyvault list-deleted`.
 
 ```azurecli
 az keyvault purge --location westus --name ContosoVault
 ```
 
-### <a name="purge-permissions-required"></a>Vereiste machtigingen wissen
-- Om een verwijderde sleutelkluis te wissen, heeft de gebruiker RBAC-toestemming nodig voor de *bewerking Microsoft.KeyVault/locations/deletedVaults/purge/action.* 
-- Als u een verwijderde sleutelkluis wilt weergeven, heeft de gebruiker RBAC-toestemming nodig voor de *bewerking Microsoft.KeyVault/deletedVaults/read.* 
-- Standaard heeft alleen een abonnementsbeheerder deze machtigingen. 
+### <a name="purge-permissions-required"></a>Machtigingen voor leegmaken vereist
+- Als u een verwijderde sleutel kluis wilt verwijderen, moet de gebruiker RBAC-machtigingen hebben voor de bewerking *micro soft. sleutel kluis/locaties/deletedVaults/verwijderen/actie* . 
+- Om een verwijderde sleutel kluis weer te geven, moet de gebruiker RBAC-machtigingen hebben voor de *micro soft. deletedVaults/Read-* bewerking. 
+- Standaard heeft alleen een abonnements beheerder deze machtigingen. 
 
-### <a name="scheduled-purge"></a>Geplande zuivering
+### <a name="scheduled-purge"></a>Gepland opschonen
 
-Vermelding verwijderde key vault objecten toont ook wanneer ze zijn gepland om te worden verwijderd door Key Vault. *De geplande zuiveringsdatum* geeft aan wanneer een sleutelkluisobject permanent wordt verwijderd als er geen actie wordt ondernomen. Standaard is de bewaartermijn voor een verwijderd sleutelkluisobject 90 dagen.
+Bij het vermelden van verwijderde sleutel kluis objecten wordt ook weer gegeven wanneer deze zijn gepland om te worden verwijderd door Key Vault. *Geplande opschoon datum* geeft aan wanneer een sleutel kluis object definitief wordt verwijderd als er geen actie wordt ondernomen. De Bewaar periode voor een verwijderd sleutel kluis object is standaard 90 dagen.
 
 >[!IMPORTANT]
->Een gewist kluisobject, geactiveerd door het veld *Geplande zuiveringsdatum,* wordt definitief verwijderd. Het is niet terug te winnen!
+>Een verwijderd kluis object, geactiveerd door het veld *geplande opschoon datum* , wordt permanent verwijderd. Deze kan niet worden hersteld.
 
-## <a name="enabling-purge-protection"></a>Zuiveringsbeveiliging inschakelen
+## <a name="enabling-purge-protection"></a>Leegmaken van beveiliging inschakelen
 
-Wanneer de zuiveringsbeveiliging is ingeschakeld, kan een kluis of een object in de verwijderde status pas worden verwijderd als de bewaartermijn van 90 dagen is verstreken. Een dergelijke kluis of object kan nog steeds worden hersteld. Deze functie geeft extra zekerheid dat een kluis of een object nooit permanent kan worden verwijderd totdat de bewaartermijn is verstreken.
+Wanneer het leegmaken van de beveiliging is ingeschakeld, kan een kluis of een object in de status verwijderd pas worden verwijderd als de retentie periode van 90 dagen is verstreken. Een dergelijke kluis of dit object kan nog steeds worden hersteld. Deze functie biedt een extra zekerheid dat een kluis of een object nooit permanent kan worden verwijderd totdat de Bewaar periode is verstreken.
 
-U zuiveringsbeveiliging alleen inschakelen als soft-delete ook is ingeschakeld. 
+U kunt het leegmaken van de beveiliging alleen inschakelen als de functie voor voorlopig verwijderen ook is ingeschakeld. 
 
-Als u zowel soft-delete- als verwijderingsbeveiliging wilt inschakelen bij het maken van een kluis, gebruikt u de opdracht [AZ Keyvault create:](/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-create)
+Als u zowel zacht verwijderen als beveiliging opschonen wilt inschakelen bij het maken van een kluis, gebruikt u de opdracht [AZ sleutel kluis Create](/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-create) :
 
 ```azurecli
 az keyvault create --name ContosoVault --resource-group ContosoRG --location westus --enable-soft-delete true --enable-purge-protection true
 ```
 
-Als u zuiveringsbeveiliging wilt toevoegen aan een bestaande kluis (die al is ingeschakeld voor soft-delete), gebruikt u de opdracht [az keyvault-update:](/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-update)
+Gebruik de opdracht AZ-sleutel [kluis bijwerken](/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-update) om een schone beveiliging toe te voegen aan een bestaande kluis (waarvoor al zacht verwijderen is ingeschakeld):
 
 ```azurecli
 az keyvault update --name ContosoVault --resource-group ContosoRG --enable-purge-protection true
@@ -245,6 +245,6 @@ az keyvault update --name ContosoVault --resource-group ContosoRG --enable-purge
 
 ## <a name="other-resources"></a>Meer informatie
 
-- Zie [het overzicht soft-delete](overview-soft-delete.md)van Azure Key Vault voor een overzicht van de soft-delete-functie van Key Vault).
-- Zie Wat is Azure Key Vault voor een algemeen overzicht van azure key [vault- gebruik?](overview.md)).
+- Zie [Azure Key Vault overzicht van tijdelijke verwijdering](overview-soft-delete.md)voor een overzicht van de functie voor voorlopig verwijderen van Key Vault).
+- Zie [Wat is Azure Key Vault?](overview.md)) voor een algemeen overzicht van Azure Key Vault gebruik.
 
