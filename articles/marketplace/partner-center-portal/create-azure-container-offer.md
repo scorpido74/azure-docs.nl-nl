@@ -1,433 +1,436 @@
 ---
-title: Een Azure-containeraanbieding maken in partnercentrum - Azure Marketplace
-description: In dit artikel wordt beschreven hoe u een containeraanbieding voor Azure Marketplace maakt en publiceert.
+title: Een Azure-container aanbieding maken in het Partner Center-Azure Marketplace
+description: In dit artikel wordt beschreven hoe u een container aanbod voor Azure Marketplace maakt en publiceert.
 author: mingshen
 ms.author: mingshen
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/07/2020
-ms.openlocfilehash: b96fe12ccc0292bb5f689fbecabd53d2af54846e
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: 3170849955485c0d098ed9f39c22332456e46fe4
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81266316"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "81867367"
 ---
 # <a name="create-an-azure-container-offer"></a>Een Azure Container-aanbieding maken
 
 > [!IMPORTANT]
-> We verplaatsen het beheer van uw Azure Container-aanbiedingen van Cloud Partner Portal naar Partner Center. Totdat uw aanbiedingen zijn gemigreerd, volgt u de instructies in [Containers](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/containers/cpp-containers-offer) for Cloud Partner Portal om uw aanbiedingen te beheren.
+> We verplaatsen het beheer van uw Azure-container aanbiedingen van Cloud Partner-portal naar het partner centrum. Totdat uw aanbiedingen zijn gemigreerd, volgt u de instructies in [containers](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/containers/cpp-containers-offer) voor Cloud Partner-Portal voor het beheren van uw aanbiedingen.
 
-In dit artikel wordt beschreven hoe u een containeraanbieding voor Azure Marketplace maakt en publiceert. Maak [voordat u begint een Commercieel Marktplaats-account aan in het Partnercentrum.](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account)
+In dit artikel wordt beschreven hoe u een container aanbod voor Azure Marketplace maakt en publiceert. Voordat u begint, moet u [een commercieel Marketplace-account maken in Partner Center](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account).
 
 ## <a name="create-a-new-offer"></a>Een nieuwe aanbieding maken
 
-1. Log in bij [Partnercenter](https://partner.microsoft.com/dashboard/home)en **selecteer**dashboard in het bovenste menu .
-2. Selecteer in het linkermenu **Commerciële marktplaats**en **vervolgens Overzicht**.
-3. Selecteer **op** de pagina Overzicht de optie **+ Nieuwe aanbieding,** vervolgens **Azure Container**. Het dialoogvenster **Nieuwe aanbieding** wordt weergegeven.
+1. Meld u aan bij [Partner Center](https://partner.microsoft.com/dashboard/home)en selecteer vervolgens **dash board**in het bovenste menu.
+2. Selecteer in het menu links de optie **commerciële Marketplace**en vervolgens **overzicht**.
+3. Selecteer op de pagina **overzicht** **+ nieuwe aanbieding**en vervolgens **Azure-container**. Het dialoog venster **nieuwe aanbieding** wordt weer gegeven.
 
-:::image type="content" source="media/azure-create-container-offer-images/azure-create-new-container.png" alt-text="Illustreerde de overzichtspagina in partnercentrum. De nieuwe aanbiedingsknop en consultingserviceaanbieding worden gemarkeerd.":::
+:::image type="content" source="media/azure-create-container-offer-images/azure-create-new-container.png" alt-text="De overzichts pagina wordt geïllustreerd in Partner Center. De nieuwe aanbiedings knop en het advies service aanbod zijn gemarkeerd.":::
 
 > [!TIP]
-> Nadat een aanbieding is gepubliceerd, worden bewerkingen die zijn aangebracht in het Partnercentrum alleen weergegeven in etalages nadat de aanbieding opnieuw is gepubliceerd. Zorg ervoor dat u altijd opnieuw publiceert nadat u wijzigingen hebt aangebracht.
+> Nadat een aanbieding is gepubliceerd, worden wijzigingen die in het partner centrum zijn aangebracht, alleen weer gegeven in de winkel wanneer u de aanbieding opnieuw publiceert. Zorg ervoor dat u altijd opnieuw publiceert nadat u wijzigingen hebt aangebracht.
 
 ### <a name="offer-id-and-alias"></a>Aanbiedings-ID en alias
 
-Voer een **aanbiedings-id in**. Dit is een unieke id voor elke aanbieding in uw account.
+Voer een **aanbiedings-id**in. Dit is een unieke id voor elke aanbieding in uw account.
 
-- Deze id kan worden gezien door klanten in het webadres voor de marketplace-aanbieding en Azure Resource Manager-sjablonen, indien van toepassing.
-- Gebruik alleen kleine letters en cijfers. Het kan koppeltekens en underscores bevatten, maar geen spaties, en is beperkt tot 50 tekens. Als u bijvoorbeeld **test-aanbieding-1**invoert, wordt `https://azuremarketplace.microsoft.com/marketplace/../test-offer-1`het webadres van de aanbieding .
-- De aanbiedings-id kan niet worden gewijzigd nadat u **Maken**hebt geselecteerd.
+- Deze ID kan worden gezien door klanten in het webadres voor de Marketplace-aanbieding en Azure Resource Manager sjablonen, indien van toepassing.
+- Gebruik alleen kleine letters en cijfers. Dit kan afbreek streepjes en onderstrepings tekens bevatten, maar mag niet langer zijn dan 50. Als u bijvoorbeeld **test-aanbieding-1**invoert, is het webadres van de aanbieding `https://azuremarketplace.microsoft.com/marketplace/../test-offer-1`.
+- De aanbiedings-ID kan niet worden gewijzigd nadat u **maken**hebt geselecteerd.
 
-**Voer een** **aanbiedingsalias**in . Dit is de naam die wordt gebruikt om te verwijzen naar de aanbieding in Partner Center.
+**Voer een** **alias**voor de aanbieding in. Dit is de naam die wordt gebruikt om te verwijzen naar de aanbieding in Partner Center.
 
-- Deze naam wordt niet gebruikt in de markt en verschilt van de aanbiedingsnaam en andere waarden die aan klanten worden weergegeven.
-- Dit kan niet worden gewijzigd nadat u Maken hebt **geselecteerd.**
+- Deze naam wordt niet gebruikt in Marketplace en wijkt af van de naam van de aanbieding en andere waarden die aan klanten worden weer gegeven.
+- Dit kan niet worden gewijzigd nadat u **maken**hebt geselecteerd.
 
-Selecteer **Maken** voordat u verdergaat.
+Selecteer **maken** voordat u doorgaat.
 
-## <a name="offer-overview"></a>Aanbiedingsoverzicht
+## <a name="offer-overview"></a>Overzicht van aanbieding
 
-De **overzichtspagina Aanbieding** toont een visuele weergave van de stappen die nodig zijn om deze aanbieding te publiceren (zowel voltooid als aanstaande) en hoe lang elke stap moet duren om te voltooien.
+De **overzichts** pagina van de aanbieding bevat een visuele weer gave van de stappen die nodig zijn om deze aanbieding (zowel voltooid als gepland) te publiceren en hoe lang elke stap moet worden voltooid.
 
-Deze pagina toont verschillende links op basis van de huidige status van de aanbieding. Bijvoorbeeld:
+Op deze pagina worden verschillende koppelingen weer gegeven op basis van de huidige status van de aanbieding. Bijvoorbeeld:
 
-- Als de aanbieding een concept is - [Conceptvoorstel verwijderen](https://docs.microsoft.com/azure/marketplace/partner-center-portal/update-existing-offer#delete-a-draft-offer)
-- Als het aanbod live is - [Stop met de verkoop van het aanbod](https://docs.microsoft.com/azure/marketplace/partner-center-portal/update-existing-offer#stop-selling-an-offer-or-plan)
-- Als de aanbieding in preview is - [Go-live](https://docs.microsoft.com/azure/marketplace/partner-center-portal/publishing-status#publisher-approval)
-- Als u de afmelding van uitgevers nog niet hebt voltooid, [kunt u publiceren annuleren](https://docs.microsoft.com/azure/marketplace/partner-center-portal/update-existing-offer#cancel-publishing)
+- Als de aanbieding een concept is- [concept verwijderen](https://docs.microsoft.com/azure/marketplace/partner-center-portal/update-existing-offer#delete-a-draft-offer)
+- Als de aanbieding Live is: [de aanbieding wordt niet meer verkocht](https://docs.microsoft.com/azure/marketplace/partner-center-portal/update-existing-offer#stop-selling-an-offer-or-plan)
+- Als de aanbieding in Preview- [Live](https://docs.microsoft.com/azure/marketplace/partner-center-portal/publishing-status#publisher-approval) staat
+- Als u Publisher-afmelding niet hebt voltooid, kunt u het [Publiceren annuleren](https://docs.microsoft.com/azure/marketplace/partner-center-portal/update-existing-offer#cancel-publishing)
 
-## <a name="offer-setup"></a>Instelling voor aanbieding
+## <a name="offer-setup"></a>Installatie van aanbieding
 
 Volg deze stappen om uw aanbieding in te stellen.
 
-### <a name="connect-lead-management--optional"></a>Leadbeheer verbinden – optioneel
+### <a name="connect-lead-management--optional"></a>Lead beheer verbinden – optioneel
 
-Wanneer u uw aanbieding op de markt publiceert met Partner Center, u deze koppelen aan uw CRM-systeem (Customer Relationship Management). Hiermee u klantcontactgegevens ontvangen zodra iemand interesse toont in of uw product gebruikt.
+Wanneer u uw aanbieding naar de Marketplace publiceert met het partner centrum, kunt u deze verbinding laten maken met uw CRM-systeem (Customer Relationship Management). Zo kunt u contact gegevens van klanten ontvangen zodra iemand interesse in of gebruikt voor uw product.
 
-1. **Selecteer een leadbestemming waar u wilt dat we klantleads verzenden.** Partnercenter ondersteunt de volgende CRM-systemen:
+1. **Selecteer de doel locatie van de lead waarnaar we leads van klanten willen verzenden**. Het partner Centrum ondersteunt de volgende CRM-systemen:
 
-- [Dynamics 365](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-dynamics) voor customer engagement
+- [Dynamics 365](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-dynamics) voor klant betrokkenheid
 - [Marketo](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-marketo)
 - [SalesForce](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-salesforce)
 
 > [!NOTE]
-> Als uw CRM-systeem hierboven niet wordt vermeld, gebruikt u [Azure Table](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-azure-table) of [Https Endpoint](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-https) om klantgegevens op te slaan en exporteert u de gegevens naar uw CRM-systeem.
+> Als uw CRM-systeem niet hierboven wordt vermeld, gebruikt u [Azure Table](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-azure-table) of [https-eind punt](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-https) om klant lead gegevens op te slaan en exporteert u de gegevens vervolgens naar uw CRM-systeem.
 
-2. Verbind uw aanbieding met de hoofdbestemming wanneer u publiceert in partnercentrum.
-3. Controleer of de verbinding met de hoofdbestemming correct is geconfigureerd. Nadat u deze hebt gepubliceerd in het Partnercenter, valideren we de verbinding en sturen we u een testlead. Terwijl u een voorbeeld van de aanbieding bekijkt voordat deze live gaat, u ook uw leadverbinding testen door te proberen het aanbod zelf te kopen in de preview-omgeving.
-4. Zorg ervoor dat de verbinding met de hoofdbestemming up-to-date blijft, zodat u geen leads verliest.
+2. Verbind uw aanbieding met de doel locatie van de lead wanneer u publiceert in het partner centrum.
+3. Controleer of de verbinding met de doel locatie juist is geconfigureerd. Nadat u het in het partner centrum hebt gepubliceerd, valideren we de verbinding en sturen we u een test lead. Wanneer u een voor beeld van de aanbieding bekijkt voordat deze live gaat, kunt u ook uw lead verbinding testen door zelf te proberen de aanbieding aan te schaffen in de preview-omgeving.
+4. Zorg ervoor dat de verbinding met de doel locatie van de lead bijgewerkt blijft, zodat u geen leads kwijtraakt.
 
-Hier volgen enkele aanvullende bronnen voor leadbeheer:
+Hier volgen enkele aanvullende bronnen voor het beheer van leads:
 
-- [Overzicht van leadbeheer](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-get-customer-leads)
+- [Overzicht Lead beheer](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-get-customer-leads)
 - [Veelgestelde vragen over leadmanagement](https://docs.microsoft.com/azure/marketplace/lead-management-for-cloud-marketplace#frequently-asked-questions)
 - [Algemene leadconfiguratiefouten](https://docs.microsoft.com/azure/marketplace/lead-management-for-cloud-marketplace#common-lead-configuration-errors-during-publishing-on-cloud-partner-portal)
-- [Overzicht van leadbeheer](https://assetsprod.microsoft.com/mpn/cloud-marketplace-lead-management.pdf) PDF (Zorg ervoor dat uw pop-upblokkering is uitgeschakeld)
+- [Overzicht Lead beheer](https://assetsprod.microsoft.com/mpn/cloud-marketplace-lead-management.pdf) PDF (zorg ervoor dat de pop-upblokkering is uitgeschakeld)
 
-Selecteer **Concept opslaan** voordat u doorgaat naar de volgende sectie, Eigenschappen.
+Selecteer **concept opslaan** voordat u doorgaat naar de volgende sectie, eigenschappen.
 
 ### <a name="properties"></a>Eigenschappen
 
-Op deze pagina u de categorieën definiëren die worden gebruikt om uw aanbieding op de marktplaats te groeperen en de juridische contracten die uw aanbod ondersteunen.
+Op deze pagina kunt u de categorieën definiëren die worden gebruikt voor het groeperen van uw aanbieding op Marketplace en de juridische contracten die uw aanbieding ondersteunen.
 
 #### <a name="category"></a>Categorie
 
-Selecteer minimaal één en maximaal vijf categorieën. Deze categorieën worden gebruikt om uw aanbieding in de juiste zoekgebieden op marktplaats te plaatsen en worden weergegeven op de pagina met aanbiedingsgegevens. Leg in de aanbiedingsbeschrijving uit hoe uw aanbieding deze categorieën ondersteunt. Containers worden weergegeven onder **Containers** en vervolgens de categorie **Containerafbeeldingen.**
+Selecteer mini maal één en Maxi maal vijf categorieën. Deze categorieën worden gebruikt om uw aanbieding in de juiste Marketplace-Zoek gebieden te plaatsen en worden weer gegeven op de pagina met details van de aanbieding. In de beschrijving van de aanbieding wordt uitgelegd hoe uw aanbod deze categorieën ondersteunt. Containers worden weer gegeven onder **containers** en vervolgens de categorie **container installatie kopieën** .
 
 #### <a name="legal"></a>Juridisch
 
-U moet algemene voorwaarden voor de aanbieding opgeven. Er zijn twee opties:
+U moet voor waarden voor de aanbieding opgeven. Er zijn twee opties:
 
-- Gebruik het standaardcontract voor de commerciële marktplaats van Microsoft.
-- Geef uw eigen algemene voorwaarden.
+- Gebruik het standaard contract voor micro soft Commercial Marketplace.
+- Geef uw eigen voor waarden op.
 
-##### <a name="standard-contract-for-the-microsoft-commercial-marketplace"></a>Standaardcontract voor de commerciële marktplaats van Microsoft
+##### <a name="standard-contract-for-the-microsoft-commercial-marketplace"></a>Standard-contract voor micro soft Commercial Marketplace
 
-Wij bieden een standaard contract sjabloon om te helpen vergemakkelijken transacties in de commerciële markt. U ervoor kiezen om uw oplossing aan te bieden in het kader van het standaardcontract, dat klanten slechts één keer hoeven te controleren en accepteren. Dit is een goede optie als u geen aangepaste algemene voorwaarden wilt maken.
+We bieden een standaard contract sjabloon om trans acties in de commerciële Marketplace te vergemakkelijken. U kunt ervoor kiezen om uw oplossing aan te bieden onder het standaard contract, wat klanten alleen eenmaal hoeven te controleren en accepteren. Dit is een goede optie als u geen aangepaste voor waarden wilt maken.
 
-Zie [Standaardcontract voor de commerciële marktplaats van Microsoft voor](https://docs.microsoft.com/azure/marketplace/standard-contract)meer informatie over het standaardcontract. U ook de [standaardcontractPDF](https://go.microsoft.com/fwlink/?linkid=2041178) downloaden (zorg ervoor dat uw pop-upblokkering is uitgeschakeld).
+Zie voor meer informatie over het standaard contract [Standard-contract voor de micro soft Commercial Marketplace](https://docs.microsoft.com/azure/marketplace/standard-contract). U kunt ook het [standaard](https://go.microsoft.com/fwlink/?linkid=2041178) -PDF-bestand downloaden (zorg ervoor dat de pop-upblokkering is uitgeschakeld).
 
-Als u het standaardcontract wilt gebruiken, schakelt u het selectievakje **Het standaardcontract voor de commerciële marktplaats van Microsoft gebruiken** in en klikt u op **Accepteren**.
-
-> [!NOTE]
-> Nadat u een aanbieding hebt gepubliceerd met behulp van het standaardcontract voor microsoft-commerciële marktplaats, u uw eigen aangepaste algemene voorwaarden niet gebruiken. Bied uw oplossing aan onder het standaardcontract of onder uw eigen voorwaarden.
-
-:::image type="content" source="media/azure-create-container-offer-images/azure-create-1-standard-contract.png" alt-text="Illustreert het selectievakje Het standaardcontract voor de commerciële marktplaats van Microsoft gebruiken.":::
-
-##### <a name="your-own-terms-and-conditions"></a>Uw eigen algemene voorwaarden
-
-Als u uw eigen aangepaste algemene voorwaarden wilt bieden, voert u deze in het vak **Algemene voorwaarden** in. U in dit vak een onbeperkt aantal tekens van tekst invoeren. Klanten moeten deze voorwaarden accepteren voordat ze uw aanbieding kunnen proberen.
-
-Selecteer **Concept opslaan** voordat u doorgaat naar de volgende sectie, Aanbieding smaken.
-
-## <a name="offer-listing"></a>Aanbieding aanbieden
-
-Op deze pagina u de aanbiedingsgegevens definiëren die worden weergegeven in de commerciële marktplaats. Dit omvat de naam, beschrijving en afbeeldingen van de aanbieding.
+Als u het standaard contract wilt gebruiken, schakelt u het selectie vakje **het standaard contract voor commerciële Marketplace van micro soft gebruiken** in en klikt u op **accepteren**.
 
 > [!NOTE]
-> Aanbiedingsgegevens hoeven niet in het Engels te zijn als de aanbiedingsbeschrijving begint met de woordgroep,,Deze toepassing is alleen beschikbaar in [niet-Engelse taal]. Het is ook goed om een nuttige koppeling te bieden om inhoud aan te bieden in een taal die verschilt van de taal die wordt gebruikt in de aanbiedingsgegevens van de aanbieding.
+> Nadat u een aanbieding hebt gepubliceerd met het standaard contract voor micro soft Commercial Marketplace, kunt u uw eigen aangepaste voor waarden niet gebruiken. U kunt uw oplossing aanbieden onder het Standard-contract of onder uw eigen voor waarden.
 
-### <a name="name"></a>Name
+:::image type="content" source="media/azure-create-container-offer-images/azure-create-1-standard-contract.png" alt-text="Illustreert het gebruik van het standaard contract voor het selectie vakje commerciële Marketplace van micro soft.":::
 
-De naam die u hier invoert, wordt weergegeven als de titel van uw aanbieding. Dit veld is vooraf gevuld met de tekst die u hebt ingevoerd in het vak **Alias aanbieden** toen u de aanbieding hebt gemaakt. U kunt deze naam later wijzigen.
+##### <a name="your-own-terms-and-conditions"></a>Uw eigen voor waarden
+
+Als u uw eigen aangepaste voor waarden wilt opgeven, voert u deze in het vak voor **waarden** in. U kunt een onbeperkte hoeveelheid tekst tekens in dit vak invoeren. Klanten moeten deze voor waarden accepteren voordat ze uw aanbieding kunnen proberen.
+
+Selecteer **concept opslaan** voordat u doorgaat naar de volgende sectie, aanbieding aanbieden.
+
+## <a name="offer-listing"></a>Aanbieding weer geven
+
+Op deze pagina kunt u de details van het aanbod definiëren dat wordt weer gegeven in de commerciële Marketplace. Dit omvat de naam, beschrijving en installatie kopieën van de aanbieding.
+
+> [!NOTE]
+> De details van de aanbieding hoeven niet in het Engels te staan als de beschrijving van de aanbieding begint met de woord groep ' deze toepassing is alleen beschikbaar in [niet-Engelse taal] '. Het is ook handig om een nuttige koppeling te bieden om inhoud te bieden in een andere taal dan die wordt gebruikt in de details van de aanbieding.
+
+### <a name="name"></a>Naam
+
+De naam die u hier opgeeft, wordt weer gegeven als de titel van uw aanbieding. Dit veld is vooraf ingevuld met de tekst die u hebt ingevoerd in het vak **aanbiedings alias** wanneer u de aanbieding hebt gemaakt. U kunt deze naam later wijzigen.
 
 De naam:
 
-- Kan een handelsmerk zijn (en u handelsmerk- en auteursrechtsymbolen bevatten).
-- Kan niet langer dan 50 tekens zijn.
-- Kan geen emoji's bevatten.
+- Kan worden gemerkt (en u kunt symbolen van het handels merk en copyright gebruiken).
+- Mag niet langer zijn dan 50 tekens.
+- Kan geen emojis bevatten.
 
-### <a name="search-results-summary"></a>Overzicht van zoekresultaten
+### <a name="search-results-summary"></a>Samen vatting van zoek resultaten
 
-Een korte beschrijving van uw aanbod. Dit kan maximaal 100 tekens lang zijn en wordt gebruikt in de zoekresultaten van marktplaatsen.
+Een korte beschrijving van uw aanbieding. Dit kan Maxi maal 100 tekens lang zijn en wordt gebruikt in Zoek resultaten voor Marketplace.
 
-### <a name="long-summary"></a>Lange samenvatting
+### <a name="long-summary"></a>Lange samen vatting
 
-Een meer gedetailleerde beschrijving van uw aanbod. Dit kan maximaal 256 tekens lang zijn en wordt gebruikt in de zoekresultaten van marktplaatsen.
+Een gedetailleerde beschrijving van uw aanbieding. Dit kan Maxi maal 256 tekens lang zijn en wordt gebruikt in Zoek resultaten voor Marketplace.
 
 ### <a name="description"></a>Beschrijving
 
-Geef een langere beschrijving van uw aanbieding, tot 3.000 tekens. Dit wordt weergegeven aan klanten in het overzicht van de marktplaatsvermelding.
+Geef een langere beschrijving van uw aanbieding, Maxi maal 3.000 tekens. Dit wordt weer gegeven aan klanten in het overzicht van Marketplace-aanbiedingen.
 
-Neem een of meer van de volgende gegevens op in uw beschrijving:
+Neem een of meer van de volgende opties op in uw beschrijving:
 
-- De waarde en de belangrijkste voordelen van uw aanbod
-- Categorie- of brancheorganisaties, of beide
-- In-app aankoopmogelijkheden
-- Eventuele vereiste informatie
+- De waarde en belangrijkste voor delen van uw aanbieding bieden
+- Categorie-of branche koppelingen, of beide
+- Aankoop kansen in de app
+- Vereiste informatie
 
-Hier zijn enkele tips voor het schrijven van uw beschrijving:
+Hier volgen enkele tips voor het schrijven van uw beschrijving:
 
-- Beschrijf duidelijk de waarde van uw aanbieding in de eerste paar zinnen van uw beschrijving. Neem de volgende items op:
-  - Beschrijving van het aanbod.
-  - Het type gebruiker dat profiteert van het aanbod
-  - De behoeften van de klant of geeft de aanbiedingsadressen uit.
-- Vergeet niet dat de eerste paar zinnen kunnen worden weergegeven in de zoekresultaten.
+- Geef in de eerste paar zinnen van uw beschrijving een duidelijke beschrijving van de waarde van uw aanbieding. De volgende items bevatten:
+  - De beschrijving van de aanbieding.
+  - Het type gebruiker dat voor deel is van de aanbieding
+  - De klant heeft of de adressen van de aanbieding.
+- Houd er rekening mee dat de eerste paar zinnen kunnen worden weer gegeven in Zoek resultaten.
 - Vertrouw niet op functies en functionaliteit om uw product te verkopen. Richt u in plaats daarvan op de waarde die uw aanbieding biedt.
-- Probeer branchespecifieke woordenschat of op voordelen gebaseerde formuleringen te gebruiken.
+- Probeer branchespecifieke woorden lijsten of op basis van voor delen te gebruiken.
 
-Als u de **beschrijving** van uw aanbieding aantrekkelijker wilt maken, gebruikt u de teksteditor met rijke tekst om uw beschrijving op te maken. met nummering, kogels, vet, cursief en inspringingen om uw beschrijving leesbaarder te maken.
+Als u de **Beschrijving** van uw aanbieding aantrekkelijker wilt maken, gebruikt u de RTF-editor om uw beschrijving op te maken. met nummeren, opsommings tekens, vet, cursief en inspringingen kunt u uw beschrijving beter leesbaar maken.
 
-:::image type="content" source="media/text-editor2.png" alt-text="Illustreert de rijke teksteditor." border="false" :::
+:::image type="content" source="media/text-editor2.png" alt-text="Illustreert de RTF-editor." border="false" :::
 
-- Gebruik deze vervolgkeuzelijst om een alineastijl op tekst toe te passen.
+- Gebruik deze vervolg keuzelijst om een alinea stijl toe te passen op tekst.
 
-    :::image type="content" source="media/text-editor3.png" alt-text="Hiermee wordt het besturingselement tekststijl geïllustreerd in de teksteditor met rijke tekst." border="false":::
+    :::image type="content" source="media/text-editor3.png" alt-text="Illustreert het besturings element tekst stijl in de RTF-editor." border="false":::
 
-- Gebruik deze pictogrammen om nummering of opsommingstekens toe te passen op tekst.
+- Gebruik deze pictogrammen om nummering of opsommings tekens toe te passen op tekst.
 
-     :::image type="content" source="media/text-editor4.png" alt-text="Hiermee worden de besturingselementen met opsommingstekens en nummerlijst weergegeven in de rich text editor." border="false":::
+     :::image type="content" source="media/text-editor4.png" alt-text="Illustreert de besturings elementen met opsommings tekens en getallen in de RTF-editor." border="false":::
 
-- Gebruik deze pictogrammen om inspringing toe te voegen aan of te verwijderen aan of uit tekst.
+- Gebruik deze pictogrammen om inspringing toe te voegen aan of te verwijderen uit tekst.
 
-    :::image type="content" source="media/text-editor5.png" alt-text="Hiermee wordt de inspringingsbesturingselementen in de rich text editor weergegeven." border="false":::
+    :::image type="content" source="media/text-editor5.png" alt-text="Illustreert de inspringing-besturings elementen in de RTF-editor." border="false":::
 
 #### <a name="privacy-policy-link"></a>Koppeling Privacybeleid
 
-Voer het webadres van het privacybeleid van uw organisatie in. U bent verantwoordelijk om ervoor te zorgen dat uw aanbod voldoet aan de privacywet- en regelgeving. Je bent ook verantwoordelijk voor het plaatsen van een geldig privacybeleid op je website.
+Voer het webadres in van het privacybeleid van uw organisatie. U bent verantwoordelijk om ervoor te zorgen dat uw aanbieding voldoet aan de wetten en voor schriften van de privacy. U bent ook verantwoordelijk voor het posten van een geldig privacybeleid op uw website.
 
 #### <a name="useful-links"></a>Handige koppelingen
 
-Geef aanvullende online documenten over uw aanbod. U maximaal 25 links toevoegen. Als u een koppeling wilt toevoegen, selecteert u **+ Een koppeling toevoegen** en voltooit u de volgende velden:
+Bied aanvullende online documenten over uw aanbieding. U kunt Maxi maal 25 koppelingen toevoegen. Selecteer **+ een koppeling toevoegen** en vul vervolgens de volgende velden in om een koppeling toe te voegen:
 
-- **Titel** : klanten zien dit op de pagina met details van uw aanbieding.
-- **Link (URL)** – Voer een koppeling in voor klanten om uw online document te bekijken. De koppeling moet beginnen met http:// of https://.
+- **Titel** : klanten zien dit op de pagina met details van de aanbieding.
+- **Koppeling (URL)** : Voer een koppeling in voor klanten om uw online document weer te geven. De koppeling moet beginnen met http://of https://.
 
 ### <a name="contact-information"></a>Contactgegevens
 
-U moet de naam, e-mail en het telefoonnummer opgeven voor een **contactpersoon voor ondersteuning** en een contactpersoon voor **engineering.** Deze informatie wordt niet aan klanten weergegeven, maar is wel beschikbaar voor Microsoft. Het kan ook worden verstrekt aan CSP-partners (Cloud Solution Provider).
+U moet de naam, het e-mail adres en het telefoon nummer opgeven voor een **ondersteunings contact** en een **technische contact persoon**. Deze informatie wordt niet weer gegeven aan klanten, maar is beschikbaar voor micro soft. Dit kan ook worden gegeven aan partners van de Cloud Solution Provider (CSP).
 
-- Ondersteuningscontact (vereist): voor algemene ondersteuningsvragen.
-- Technische contactpersoon (vereist): Voor technische vragen en certificeringsproblemen.
-- CSP-programmacontact (optioneel): voor resellervragen met betrekking tot het CSP-programma.
+- Ondersteunings contact (vereist): voor algemene ondersteunings vragen.
+- Technische contact persoon (vereist): voor technische vragen en certificerings problemen.
+- CSP-programma: Neem contact op met de leverancier van het CSP-programma.
 
-Geef in de sectie **Contactpersoon voor ondersteuning** de **ondersteuningswebsite** op waar partners ondersteuning voor uw aanbieding kunnen vinden op basis van de vraag of de aanbieding beschikbaar is in wereldwijde Azure, Azure Government of beide.
+Geef in de sectie **ondersteunings contact op met** de **ondersteunings website** waar partners ondersteuning voor uw aanbieding kunnen vinden op basis van het feit of de aanbieding beschikbaar is in wereld wijd Azure, Azure Government of beide.
 
-Geef in de **sectie Contact van het CSP-programma** de link **(CSP Program Marketing Materials)** op waar CSP-partners marketingmateriaal voor uw aanbieding kunnen vinden.
+Geef in de sectie **contact persoon** van het CSP-programma de koppeling op ( **CSP-programma marketing materiaal** ) waarin CSP-partners marketing materiaal voor uw aanbieding kunnen vinden.
 
-#### <a name="additional-marketplace-listing-resources"></a>Aanvullende bronnen voor marktplaatsvermeldingen
+#### <a name="additional-marketplace-listing-resources"></a>Aanvullende bronnen voor Marketplace-lijst
 
-Zie Aanbevolen [aanbiedingsaanbiedingen](https://docs.microsoft.com/azure/marketplace/gtm-offer-listing-best-practices) aanbieden voor meer informatie over het maken van aanbiedingen
+Zie [Best practices](https://docs.microsoft.com/azure/marketplace/gtm-offer-listing-best-practices) voor aanbiedings aanbiedingen voor meer informatie over het maken van aanbiedings vermeldingen
 
-### <a name="marketplace-images"></a>Marketplace-afbeeldingen
+### <a name="marketplace-images"></a>Marketplace-installatie kopieën
 
-Geef logo's en afbeeldingen om te gebruiken met uw aanbod. Alle afbeeldingen moeten in PNG-formaat zijn. Wazige afbeeldingen worden afgewezen.
+Bied logo's en installatie kopieën die u kunt gebruiken met uw aanbieding. Alle installatie kopieën moeten de PNG-indeling hebben. Vage afbeeldingen worden geweigerd.
 
-#### <a name="store-logos"></a>Winkellogo's
+>[!Note]
+>Als u een probleem hebt met het uploaden van bestanden, moet u ervoor zorgen dat uw https://upload.xboxlive.com lokale netwerk de door Partner Center gebruikte service niet blokkeert.
 
- Geef PNG-bestanden op van het logo van uw aanbieding in elk van de volgende vier pixelformaten:
+#### <a name="store-logos"></a>Winkel logo's
+
+ Bied PNG-bestanden van het logo van uw aanbieding in elk van de volgende vier pixel grootten:
 
 - **Klein** (48 x 48)
-- **Medium** (90 X 90)
+- **Gemiddeld** (90 X 90)
 - **Groot** (216 x 216)
-- **Breed** (255 x 115)
+- **Breed** (255 X 115)
 
-Alle vier de logo's zijn vereist en worden gebruikt op verschillende plaatsen in de marktplaats vermelding.
+Alle vier de logo's zijn vereist en worden gebruikt op verschillende plaatsen in de Marketplace-vermelding.
 
-#### <a name="screenshots-optional"></a>Schermafbeeldingen (optioneel)
+#### <a name="screenshots-optional"></a>Scherm afbeeldingen (optioneel)
 
-Voeg maximaal vijf screenshots toe die laten zien hoe uw aanbieding werkt. Elk moet 1280 x 720 pixels groot en in PNG-formaat hebben.
+Voeg Maxi maal vijf scherm opnamen toe die laten zien hoe uw aanbieding werkt. Elk moet 1280 x 720 pixels groot en in PNG-indeling zijn.
 
 #### <a name="videos-optional"></a>Video's (optioneel)
 
-Voeg maximaal vijf video's toe die je aanbod demonstreren. Voer de naam van de video, het webadres en een PNG-miniatuurafbeelding van de video in met een grootte van 1280 x 720 pixels in.
+Voeg Maxi maal vijf Video's toe die uw aanbieding aantonen. Voer de naam van de video, het webadres en een miniatuur van de PNG-afbeelding van de video in op 1280 x 720 pixels.
 
 #### <a name="offer-examples"></a>Voorbeelden van aanbieding
 
-In de volgende voorbeelden ziet u hoe de aanbiedingsvelden op verschillende plaatsen van de aanbieding worden weergegeven.
+In de volgende voor beelden ziet u hoe de velden van het aanbod lijst worden weer gegeven op verschillende plaatsen van de aanbieding.
 
-Dit toont de pagina **Aanbiedingsvermelding** in Azure Marketplace:
+Hiermee wordt de **aanbiedings** pagina weer gegeven in azure Marketplace:
 
-:::image type="content" source="media/azure-create-container-offer-images/azure-create-6-offer-listing-mkt-plc.png" alt-text="Hiermee wordt de aanbiedingspagina in Azure Marketplace weergegeven." :::
+:::image type="content" source="media/azure-create-container-offer-images/azure-create-6-offer-listing-mkt-plc.png" alt-text="Illustreert de aanbiedings pagina in azure Marketplace." :::
 
-Hier worden zoekresultaten weergegeven in Azure Marketplace:
+Hiermee worden Zoek resultaten weer gegeven in azure Marketplace:
 
-:::image type="content" source="media/azure-create-container-offer-images/azure-create-7-search-results-mkt-plc.png" alt-text="Hiermee worden de zoekresultaten in Azure Marketplace geïllustreerd.":::
+:::image type="content" source="media/azure-create-container-offer-images/azure-create-7-search-results-mkt-plc.png" alt-text="Illustreert de zoek resultaten in azure Marketplace.":::
 
-Dit toont de pagina **Aanbiedingsvermelding** in Azure-portal:
+Hiermee **wordt de pagina aanbieding weer** gegeven in azure portal:
 
-:::image type="content" source="media/azure-create-container-offer-images/azure-create-8-offer-listing-portal.png" alt-text="Hiermee wordt de pagina Aanbiedingsvermelding in Azure-portal weergegeven.":::
+:::image type="content" source="media/azure-create-container-offer-images/azure-create-8-offer-listing-portal.png" alt-text="Illustreert de aanbiedings pagina van de aanbieding in Azure Portal.":::
 
-Dit toont zoekresultaten in Azure-portal:
+Hiermee worden Zoek resultaten weer gegeven in Azure Portal:
 
-:::image type="content" source="media/azure-create-container-offer-images/azure-create-9-search-results-portal.png" alt-text="Hiermee worden de zoekresultaten in azure-portal geïllustreerd.":::
+:::image type="content" source="media/azure-create-container-offer-images/azure-create-9-search-results-portal.png" alt-text="Illustreert de zoek resultaten in Azure Portal.":::
 
 ## <a name="preview"></a>Preview
 
-Op het tabblad Voorbeeld kun je een beperkte **preview-doelgroep** kiezen voor het valideren van je aanbieding voordat je het live publiceert.
+Op het tabblad preview kunt u een beperkte preview- **doel groep** kiezen voor het valideren van uw aanbieding voordat u deze live publiceert.
 
 > [!IMPORTANT]
-> Nadat u uw aanbieding in **Voorbeeld hebt**bekeken, moet u **Live gaan** selecteren om uw aanbieding openbaar te maken.
+> Nadat u uw aanbieding in **Preview**hebt bekeken, moet u **Live go** selecteren om uw aanbieding naar het publiek te publiceren.
 
-Geef uw voorbeelddoelgroep op met AZURE-guids voor azure-abonnement- id's, samen met een optionele beschrijving voor elk. Geen van deze velden kan worden gezien door klanten.
-
-> [!NOTE]
-> U uw Azure-abonnements-id vinden op de pagina Abonnementen in azure-portal.
-
-Voeg ten minste één Azure-abonnements-id toe, afzonderlijk (maximaal 10) of door een CSV-bestand te uploaden (maximaal 100). Door deze abonnements-id's toe te voegen, bepaalt u wie een voorbeeld van uw aanbieding kan bekijken voordat deze live wordt gepubliceerd. Als je aanbieding al live is, kun je een preview-doelgroep kiezen om wijzigingen of updates van je aanbieding te testen.
+Geef uw preview-doel groep op met behulp van de Azure-abonnements-ID-GUID'S, samen met een optionele beschrijving voor elk. Geen van deze velden kan worden gezien door klanten.
 
 > [!NOTE]
-> De preview-doelgroep verschilt van een privépubliek. Een **preview-doelgroep** kan alle aanbiedingsplannen zien en bevestigen voordat ze live zijn op de marktplaats, inclusief die welke alleen worden gepubliceerd voor een **privépubliek** (ingesteld op het tabblad Beschikbaarheid).
+> U kunt uw Azure-abonnements-ID vinden op de pagina Abonnementen in Azure Portal.
 
-Selecteer **Concept opslaan** voordat u verdergaat.
+Voeg ten minste één Azure-abonnements-ID afzonderlijk toe (Maxi maal 10) of door een CSV-bestand te uploaden (Maxi maal 100). Door deze abonnement-Id's toe te voegen, bepaalt u wie uw aanbieding kunnen bekijken voordat ze live worden gepubliceerd. Als uw aanbieding al Live is, kunt u een preview doel groep kiezen om wijzigingen of updates van uw aanbieding te testen.
 
-### <a name="plan-overview"></a>Overzicht van plannen
+> [!NOTE]
+> De preview-doel groep wijkt af van een persoonlijke doel groep. Een **Preview** doel groep kan alle aanbiedingen plannen bekijken en bevestigen voordat ze in de Marketplace wonen, met inbegrip van degenen die alleen worden gepubliceerd voor een **persoonlijke** doel groep (ingesteld op het tabblad Beschik baarheid).
 
-Met dit tabblad u verschillende abonnementsopties binnen dezelfde aanbieding aanbieden. Deze plannen werden eerder aangeduid als SKU's, of voorraad houden eenheden. Plannen kunnen verschillen in termen van welke wolken beschikbaar zijn, zoals globale wolken, overheidswolken en het beeld waarnaar het plan verwijst. Als u uw aanbieding op de commerciële marktplaats wilt aanbieden, moet u ten minste één abonnement instellen.
+Selecteer **concept opslaan** voordat u doorgaat.
 
-Nadat u uw plannen hebt gemaakt, wordt op het tabblad **Overzicht van abonnementen** het volgende weergegeven:
+### <a name="plan-overview"></a>Overzicht van plan
 
-- Namen plannen
+Op dit tabblad kunt u binnen dezelfde aanbieding verschillende plan opties opgeven. Deze plannen werden voorheen Sku's of Stock Keeping Units genoemd. Plannen kunnen verschillen in wat voor Clouds beschikbaar zijn, zoals globale Clouds, overheids Clouds en de afbeelding waarnaar wordt verwezen door het plan. Als u uw aanbieding in de commerciële Marketplace wilt aanbieden, moet u ten minste één abonnement instellen.
+
+Nadat u uw plannen hebt gemaakt, wordt op het tabblad Overzicht van het **plan** het volgende weer gegeven:
+
+- Namen van plannen
 - Prijsmodel
-- Beschikbaarheid van de cloud (wereldwijd of overheid)
-- Huidige publicatiestatus
-- Alle beschikbare acties
+- Beschik baarheid in de Cloud (Global of Government)
+- Huidige publicatie status
+- Beschik bare acties
 
-De acties die beschikbaar zijn in het overzicht van het plan, zijn afhankelijk van de huidige status van uw abonnement. Deze omvatten:
+De acties die beschikbaar zijn in het plan overzicht variëren, afhankelijk van de huidige status van uw abonnement. Deze omvatten:
 
-- **Concept verwijderen** : als de planstatus een concept is.
-- **Verkoopplan stoppen** - Als de status van het plan live wordt gepubliceerd.
+- **Concept verwijderen** : als de plan status een concept is.
+- **Verkoop plan stoppen** : als de plan status Live is gepubliceerd.
 
 #### <a name="create-new-plan"></a>Nieuw plan maken
 
-Selecteer **Nieuw plan maken**. Het dialoogvenster **Nieuw plan** wordt weergegeven.
+Selecteer **nieuw plan maken**. Het dialoog venster **nieuw plan** wordt weer gegeven.
 
-Maak in het vak **Plan-ID** een unieke plan-id voor elk plan in deze aanbieding. Deze ID is zichtbaar voor klanten in het webadres van het product. Gebruik alleen kleine letters en cijfers, streepjes of underscores en maximaal 50 tekens.
+Maak in het vak **abonnement-id** een unieke plan-id voor elk abonnement in deze aanbieding. Deze ID is zichtbaar voor klanten in het webadres van het product. Gebruik alleen kleine letters en cijfers, streepjes of onderstrepings tekens en Maxi maal 50.
 
 > [!NOTE]
-> De plan-id kan niet worden gewijzigd nadat u Maken hebt **geselecteerd.**
+> De plan-ID kan niet worden gewijzigd nadat u **maken**hebt geselecteerd.
 
-Voer **in** het vak Naam van het plan een naam voor dit plan in. Klanten zien deze naam wanneer ze beslissen welk plan ze willen selecteren binnen uw aanbieding. Maak een unieke naam voor elk plan in deze aanbieding. U bijvoorbeeld een aanbiedingsnaam van **Windows Server** gebruiken met abonnementen **Windows Server 2016** en Windows Server **2019.**
+Voer in het vak **naam van abonnement** een naam in voor dit abonnement. Klanten zien deze naam wanneer ze bepalen welk abonnement binnen uw aanbieding moet worden geselecteerd. Maak in deze aanbieding een unieke naam voor elk abonnement. U kunt bijvoorbeeld een aanbiedings naam van **Windows Server** gebruiken met plannen **Windows Server 2016** en **Windows Server 2019**.
 
 ### <a name="plan-setup"></a>Installatie plannen
 
-Met dit tabblad u kiezen in welke clouds het abonnement beschikbaar is. Uw antwoorden op dit tabblad zijn van invloed op welke velden op andere tabbladen worden weergegeven.
+Op dit tabblad kunt u kiezen in welke Clouds het plan beschikbaar is. Uw antwoorden op dit tabblad bepalen welke velden op andere tabbladen worden weer gegeven.
 
-#### <a name="cloud-availability"></a>Beschikbaarheid in de cloud
+#### <a name="cloud-availability"></a>Beschik baarheid in de Cloud
 
-Uw abonnement moet beschikbaar zijn in ten minste één cloud.
+Uw abonnement moet beschikbaar zijn in ten minste één Cloud.
 
-Selecteer de optie **Azure Global,** zodat uw abonnement kan worden gebruikt door klanten in alle wereldwijde Azure-regio's die de commerciële marktplaats gebruiken. Zie Geografische [beschikbaarheid en valutaondersteuning](https://docs.microsoft.com/azure/marketplace/marketplace-geo-availability-currencies)voor meer informatie .
+Selecteer de optie **Azure Global** , zodat uw plan door klanten kan worden gebruikt in alle wereld wijde Azure-regio's die gebruikmaken van de commerciële Marketplace. Zie [geografische Beschik baarheid en valuta ondersteuning](https://docs.microsoft.com/azure/marketplace/marketplace-geo-availability-currencies)voor meer informatie.
 
-Selecteer hier de azure [**government cloud-optie**](https://docs.microsoft.com/azure/azure-government/documentation-government-welcome) om uw oplossing te laten verschijnen. Dit is een overheidscommunitycloud met gecontroleerde toegang voor klanten uit Amerikaanse federale, staats- en lokale of tribale overheidsinstanties, evenals partners die in aanmerking komen om hen te bedienen. Als uitgever bent u verantwoordelijk voor nalevingscontroles, beveiligingsmaatregelen en aanbevolen procedures voor deze cloudcommunity. Azure Government maakt gebruik van fysiek geïsoleerde datacenters en netwerken (alleen in de VS).
+Selecteer de optie [**Azure Government Cloud**](https://docs.microsoft.com/azure/azure-government/documentation-government-welcome) om uw oplossing hier weer te geven. Dit is een community-Cloud met gecontroleerde toegang voor klanten van de Amerikaanse federale, staats-en lokale of tribale overheids instanties en partners die in aanmerking komen voor de overheid. Als uitgever bent u verantwoordelijk voor nalevings controles, beveiligings maatregelen en aanbevolen procedures voor deze Cloud community. Azure Government maakt gebruik van fysiek geïsoleerde data centers en netwerken (alleen in de Verenigde Staten).
 
-Voordat [u publiceert](https://docs.microsoft.com/azure/azure-government/documentation-government-manage-marketplace-partners) naar Azure Government, test en bevestigt u uw oplossing binnen dat gebied, omdat de resultaten mogelijk verschillen. Als u uw oplossing wilt maken en testen, vraagt u een proefaccount aan bij de proefversie van [Microsoft Azure Government.](https://azure.microsoft.com/global-infrastructure/government/request/)
+Voordat u naar Azure Government [publiceert](https://docs.microsoft.com/azure/azure-government/documentation-government-manage-marketplace-partners) , moet u de oplossing in dat gebied testen en bevestigen, omdat de resultaten mogelijk verschillend zijn. Vraag een proef account aan [Microsoft Azure Government proef versie](https://azure.microsoft.com/global-infrastructure/government/request/)om uw oplossing te maken en te testen.
 
 > [!NOTE]
-> Nadat uw abonnement is gepubliceerd en beschikbaar is in een specifieke cloud, u die cloud niet verwijderen.
+> Nadat uw plan is gepubliceerd en beschikbaar is in een specifieke Cloud, kunt u die Cloud niet verwijderen.
 
-#### <a name="azure-government-cloud-certifications"></a>Azure Government Cloud-certificeringen
+#### <a name="azure-government-cloud-certifications"></a>Cloud certificeringen Azure Government
 
-Deze optie kan alleen worden gezien als **Azure Government Cloud** is geselecteerd onder Cloud **beschikbaarheid**.
+Deze optie kan alleen worden gezien als **Azure Government Cloud** is geselecteerd onder **Beschik baarheid**in de Cloud.
 
-Azure Government-services verwerken gegevens die onderworpen zijn aan bepaalde overheidsvoorschriften en -vereisten. Bijvoorbeeld FedRAMP, NIST 800.171 (DIB), ITAR, IRS 1075, DoD L4 en CJIS.
+Azure Government services verwerken gegevens die onderworpen zijn aan bepaalde wettelijke voor schriften en vereisten. Bijvoorbeeld FedRAMP, NIST 800,171 (DIB), ITAR, IRS 1075, DoD N4 en CJIS.
 
-Als u uw certificeringen voor deze programma's wilt weergeven, u maximaal 100 koppelingen opgeven die ze beschrijven. Dit kunnen links naar uw aanbiedingen op het programma direct of naar uw eigen website. Deze koppelingen zijn alleen zichtbaar voor azure-klanten.
+Als u uw certificeringen voor deze Program ma's wilt weer geven, kunt u Maxi maal 100 koppelingen opgeven waarin deze worden beschreven. Dit kunnen koppelingen zijn naar uw aanbiedingen op het programma, rechtstreeks of op uw eigen website. Deze koppelingen zijn alleen zichtbaar voor Azure Government klanten.
 
 ## <a name="plan-listing"></a>Aanbieding plannen
 
-Op dit tabblad worden specifieke informatie voor elk ander plan binnen de huidige aanbieding weergegeven.
+Dit tabblad bevat specifieke informatie voor elk abonnement binnen de huidige aanbieding.
 
-### <a name="plan-name"></a>Naam plannen
+### <a name="plan-name"></a>Plan naam
 
-Dit is vooraf gevuld met de naam die u uw plan gaf toen u het maakte. U deze naam zo nodig wijzigen. Het kan tot 50 tekens lang zijn. Deze naam wordt weergegeven als de titel van dit abonnement in Azure Marketplace en Azure-portal. Het wordt gebruikt als de standaardmodulenaam nadat het plan klaar is om te worden gebruikt.
+Dit is vooraf ingevuld met de naam die u hebt opgegeven bij het maken van het abonnement. U kunt deze naam indien nodig wijzigen. Het kan Maxi maal 50 tekens lang zijn. Deze naam wordt weer gegeven als de titel van dit plan in azure Marketplace en Azure Portal. De naam wordt als de standaard modulenaam gebruikt nadat het plan gereed is om te worden gebruikt.
 
-### <a name="plan-summary"></a>Overzicht plannen
+### <a name="plan-summary"></a>Samen vatting plannen
 
-Een korte samenvatting van uw softwareplan (niet de aanbieding). Dit overzicht wordt weergegeven in de zoekresultaten van Azure Marketplace en kan maximaal 100 tekens bevatten.
+Een korte samen vatting van het software abonnement (niet de aanbieding). Deze samen vatting wordt weer gegeven in de zoek resultaten van Azure Marketplace en kan Maxi maal 100 tekens bevatten.
 
-### <a name="plan-description"></a>Beschrijving van het plan
+### <a name="plan-description"></a>Plan beschrijving
 
-Beschrijf wat dit softwareplan uniek maakt, evenals verschillen tussen plannen binnen uw aanbod. Beschrijf het aanbod niet, alleen het plan. Deze beschrijving wordt weergegeven in Azure Marketplace en in de Azure-portal op de pagina **Aanbiedingsvermelding.** Het kan dezelfde inhoud zijn die u in het planoverzicht hebt opgegeven en maximaal 2.000 tekens bevat.
+Beschrijf wat dit software plan uniek is, evenals verschillen tussen de plannen binnen uw aanbieding. Beschrijf de aanbieding niet, alleen het abonnement. Deze beschrijving wordt weer gegeven in azure Marketplace en in de Azure Portal op de **aanbiedings** pagina. Dit kan hetzelfde zijn als de inhoud die u in de samen vatting van het abonnement hebt gegeven en Maxi maal 2.000 tekens bevat.
 
-Selecteer **Opslaan** nadat u deze velden hebt voltooid.
+Selecteer **Opslaan** na het volt ooien van deze velden.
 
-#### <a name="plan-examples"></a>Voorbeelden plannen
+#### <a name="plan-examples"></a>Voor beelden plannen
 
-In de volgende voorbeelden ziet u hoe de velden met de planvermelding in verschillende weergaven worden weergegeven.
+In de volgende voor beelden ziet u hoe de velden van het plan vermelding worden weer gegeven in verschillende weer gaven.
 
-Dit zijn de velden in Azure Marketplace bij het bekijken van plandetails:
+Dit zijn de velden in azure Marketplace wanneer u de details van het abonnement bekijkt:
 
-:::image type="content" source="media/azure-create-container-offer-images/azure-create-10-plan-details-mtplc.png" alt-text="Illustreert de velden die u ziet bij het weergeven van plandetails in Azure Marketplace.":::
+:::image type="content" source="media/azure-create-container-offer-images/azure-create-10-plan-details-mtplc.png" alt-text="Illustreert de velden die u ziet wanneer u de details van het plan bekijkt in azure Marketplace.":::
 
-Dit zijn plandetails op de Azure-portal:
+Dit zijn de details van het abonnement op de Azure Portal:
 
-:::image type="content" source="media/azure-create-container-offer-images/azure-create-11-plan-details-portal.png" alt-text="Hiermee worden plandetails op de Azure-portal geïllustreerd.":::
+:::image type="content" source="media/azure-create-container-offer-images/azure-create-11-plan-details-portal.png" alt-text="Illustreert Details van het abonnement op de Azure Portal.":::
 
-## <a name="plan-availability"></a>Beschikbaarheid plannen
+## <a name="plan-availability"></a>Beschik baarheid plannen
 
-Als u uw gepubliceerde aanbieding wilt verbergen zodat klanten deze niet kunnen zoeken, bladeren of kopen op de marktplaats, schakelt u het selectievakje **Abonnement verbergen** in op het tabblad **Beschikbaarheid** in.
+Als u uw gepubliceerde aanbieding wilt verbergen zodat klanten deze niet kunnen zoeken, zoeken of kopen op Marketplace, schakelt u het selectie vakje **plan verbergen** op het tabblad **Beschik baarheid** in.
 
 Dit veld wordt gebruikt wanneer:
 
-- De aanbieding is bedoeld om indirect te worden gebruikt wanneer verwezen door een andere toepassing.
-- Het aanbod mag niet afzonderlijk worden gekocht.
-- Het plan werd gebruikt voor de eerste tests en is niet langer relevant.
-- Het plan werd gebruikt voor tijdelijke of seizoensgebonden aanbiedingen en mocht niet langer worden aangeboden.
+- De aanbieding is bedoeld om indirect te worden gebruikt wanneer naar een andere toepassing wordt verwezen.
+- De aanbieding mag niet afzonderlijk worden gekocht.
+- Het plan werd gebruikt voor de eerste test en is niet meer relevant.
+- Het abonnement werd gebruikt voor tijdelijke of seizoen aanbiedingen en kan niet meer worden aangeboden.
 
 ## <a name="technical-configuration"></a>Technische configuratie
 
-Containerafbeeldingen moeten worden gehost in een privé [Azure-containerregister](https://azure.microsoft.com/services/container-registry/). Geef op het tabblad **Technische configuratie** referentiegegevens op voor uw containerimageopslagplaats in het Azure Container Registry.
+Container installatie kopieën moeten worden gehost in een persoonlijke [Azure container Registry](https://azure.microsoft.com/services/container-registry/). Geef op het tabblad **technische configuratie** referentie gegevens op voor de opslag plaats van de container installatie kopie in de Azure container Registry.
 
-Nadat de aanbieding is gepubliceerd, wordt uw containerafbeelding gekopieerd naar Azure Marketplace in een specifiek openbaar containerregister. Alle aanvragen om uw containerafbeelding te gebruiken, worden weergegeven vanuit het openbare containerregister van Azure Marketplace, niet in uw privé-containerregister. Zie Technische [assets van Azure Container voorbereiden](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-azure-container-technical-assets)voor meer informatie.
+Nadat de aanbieding is gepubliceerd, wordt uw container installatie kopie gekopieerd naar Azure Marketplace in een specifiek openbaar container register. Alle aanvragen voor het gebruik van uw container installatie kopie worden aangeboden vanuit het open bare container register van Azure Marketplace, niet aan uw persoonlijke voor naam. Zie [technische activa van Azure-container voorbereiden](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-azure-container-technical-assets)voor meer informatie.
 
-### <a name="image-repository-details"></a>Details van de afbeeldingsopslagplaats
+### <a name="image-repository-details"></a>Details van de afbeeldings opslagplaats
 
-Geef de volgende informatie op het tabblad Details van de **afbeeldingsopslagplaats.**
+Geef de volgende informatie op het tabblad Details van de **afbeeldings opslagplaats** .
 
-**Azure-abonnements-ID** : geef de abonnements-id op waar het gebruik wordt gerapporteerd en services worden gefactureerd voor het Azure Container Registry met uw containerafbeelding. U vindt deze id op de [pagina Abonnementen](https://ms.portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) in de Azure-portal.
+**Azure-abonnements-id** : Geef de abonnements-id op waar het gebruik wordt gerapporteerd en de services worden gefactureerd voor de Azure container Registry die uw container installatie kopie bevatten. U kunt deze ID vinden op de [pagina Abonnementen](https://ms.portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) in het Azure Portal.
 
-**Azure-brongroepnaam** : geef de naam van de [brongroep](https://docs.microsoft.com/azure/azure-resource-manager/management/manage-resource-groups-portal) op die het Azure Container Registry bevat met uw containerafbeelding. De resourcegroep moet toegankelijk zijn in de abonnements-ID (hierboven). U de naam vinden op de pagina [Resourcegroepen](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceGroups) in de Azure-portal.
+**Naam van de Azure-resource groep** : Geef de naam van de [resource groep](https://docs.microsoft.com/azure/azure-resource-manager/management/manage-resource-groups-portal) op die de Azure container Registry bevat met de container installatie kopie. De resource groep moet toegankelijk zijn in de abonnements-ID (hierboven). U vindt de naam op de pagina [resource groepen](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceGroups) in de Azure Portal.
 
-**Azure Container Registry name** – Geef de naam op van het [Azure Container Registry](https://docs.microsoft.com/azure/container-registry/container-registry-intro) met uw containerafbeelding. Het containerregister moet zich in de Azure-brongroep bevinden die u eerder hebt opgegeven. Neem alleen de naam van het register op, niet de volledige naam van de inlogserver. Zorg ervoor dat **azurecr.io** van de naam wordt weglaten. U vindt de registernaam op de [pagina Containerregisters](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.ContainerRegistry%2Fregistries) in de Azure-portal.
+**Azure container Registry naam** : Geef de naam op van de [Azure container Registry](https://docs.microsoft.com/azure/container-registry/container-registry-intro) met de container installatie kopie. Het container register moet zich bevinden in de Azure-resource groep die u eerder hebt ingesteld. Neem alleen de register naam op, niet de volledige naam van de aanmeldings server. Zorg ervoor dat u **azurecr.io** weglaat uit de naam. U kunt de register naam vinden op de [pagina container registers](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.ContainerRegistry%2Fregistries) in de Azure Portal.
 
-**Gebruikersnaam beheerder voor het Azure Container Registry** : geef de gebruikersnaam voor [beheerders](https://docs.microsoft.com/azure/container-registry/container-registry-authentication#admin-account) op die is gekoppeld aan het Azure Container Registry met uw containerafbeelding. De gebruikersnaam en het wachtwoord zijn vereist om ervoor te zorgen dat uw bedrijf toegang heeft tot het register. Als u de gebruikersnaam en het wachtwoord van de beheerder wilt achterhalen, stelt u de eigenschap **waar voor beheerders** in met behulp van de Azure Command Line Interface (CLI). **True** U de **beheerdergebruiker** optioneel instellen **op Inschakelen** in Azure-portal.
+**Gebruikers naam van de beheerder voor de Azure container Registry** : Geef de [gebruikers naam](https://docs.microsoft.com/azure/container-registry/container-registry-authentication#admin-account) van de beheerder die is gekoppeld aan de Azure container Registry met de container installatie kopie. De gebruikers naam en het wacht woord zijn vereist om ervoor te zorgen dat uw bedrijf toegang heeft tot het REGI ster. Als u de gebruikers naam en het wacht woord van de beheerder wilt ophalen, stelt u de eigenschap met **beheerders** rechten in op **True** met behulp van de Azure-opdracht regel interface (CLI). U kunt optioneel een **admin-gebruiker** instellen om in azure Portal in te **scha kelen** .
 
- :::image type="content" source="media/azure-create-container-offer-images/azure-create-12-update-container-registry-edit.png" alt-text="Hiermee wordt het dialoogvenster Containerregister bijwerken weergegeven.":::
+ :::image type="content" source="media/azure-create-container-offer-images/azure-create-12-update-container-registry-edit.png" alt-text="Illustreert het dialoog venster update container Registry.":::
 
-**Wachtwoord voor het Azure Container Registry** : geef het wachtwoord op voor de gebruikersnaam van de beheerder die is gekoppeld aan het Azure Container Registry en uw containerafbeelding heeft. De gebruikersnaam en het wachtwoord zijn vereist om ervoor te zorgen dat uw bedrijf toegang heeft tot het register. U het wachtwoord ophalen van de Azure-portal door naar **Container Registry** > **Access Keys** of met Azure CLI te gaan met de opdracht [Show](https://docs.microsoft.com/cli/azure/acr/credential?view=azure-cli-latest#az-acr-credential-show).
+**Wacht woord voor de Azure container Registry** : Geef het wacht woord op voor de beheerder van de gebruikers naam die is gekoppeld aan de Azure container Registry en heeft de container installatie kopie. De gebruikers naam en het wacht woord zijn vereist om ervoor te zorgen dat uw bedrijf toegang heeft tot het REGI ster. U kunt het wacht woord ophalen van de Azure portal door naar **container Registry** > **toegangs sleutels** of met Azure CLI te gaan met behulp van de [weer geven opdracht](https://docs.microsoft.com/cli/azure/acr/credential?view=azure-cli-latest#az-acr-credential-show).
 
-:::image type="content" source="media/azure-create-container-offer-images/azure-create-13-access-keys.png" alt-text="Hiermee wordt het menu Toegangssleutel weergegeven.":::
+:::image type="content" source="media/azure-create-container-offer-images/azure-create-13-access-keys.png" alt-text="Illustreert het menu toegangs sleutel.":::
 
-**Naam van opslagplaatsen in het Azure Container Registry**. Geef de naam op van de Azure Container Registry-opslagplaats met uw afbeelding. Voeg de naam van de opslagplaats toe wanneer u de afbeelding naar het register duwt. U de naam van de opslagplaats vinden door naar de pagina [Container Registry](https://azure.microsoft.com/services/container-registry/) > **Repositories** te gaan. Zie [Containerregisterrepositories weergeven in Azure-portal](https://docs.microsoft.com/azure/container-registry/container-registry-repositories)voor meer informatie.
+**De naam van de opslag plaats in de Azure container Registry**. Geef de naam op van de Azure Container Registry opslag plaats met uw installatie kopie. Neem de naam van de opslag plaats op wanneer u de installatie kopie naar het REGI ster pusht. U kunt de naam van de opslag plaats vinden door naar de pagina [container Registry](https://azure.microsoft.com/services/container-registry/) > **opslagplaatsen** te gaan. Zie [container register opslagplaatsen weer geven in azure Portal](https://docs.microsoft.com/azure/container-registry/container-registry-repositories)voor meer informatie.
 
 > [!NOTE]
 > Nadat de naam is ingesteld, kan deze niet meer worden gewijzigd. Gebruik een unieke naam voor elke aanbieding in uw account.
 
-### <a name="image-tags-for-new-versions-of-your-offer"></a>Afbeeldingstags voor nieuwe versies van uw aanbieding
+### <a name="image-tags-for-new-versions-of-your-offer"></a>Afbeeldings Tags voor nieuwe versies van uw aanbieding
 
-Klanten moeten automatisch updates van de Azure Marketplace kunnen ontvangen wanneer u een update publiceert. Als ze niet willen updaten, moeten ze in staat zijn om op een specifieke versie van uw afbeelding te blijven. U dit doen door elke keer dat u een update van de afbeelding maakt, nieuwe afbeeldingstags toe te voegen.
+Klanten moeten automatisch updates kunnen ophalen van de Azure Marketplace wanneer u een update publiceert. Als ze niet willen bijwerken, moeten ze een specifieke versie van de installatie kopie kunnen blijven. U kunt dit doen door telkens wanneer u een update voor de installatie kopie maakt, nieuwe afbeeldings tags toe te voegen.
 
-### <a name="image-tag"></a>Afbeeldingstag
+### <a name="image-tag"></a>Afbeeldings code
 
-Dit veld moet een **nieuwste** tag bevatten die verwijst naar de nieuwste versie van uw afbeelding op alle ondersteunde platforms. Het moet ook een versietag bevatten (bijvoorbeeld te beginnen met xx.xx.xx, waarbij xx een getal is). Klanten moeten [manifesttags](https://github.com/estesp/manifest-tool) gebruiken om zich op meerdere platforms te richten. Alle tags waarnaar wordt verwezen door een manifesttag moeten ook worden toegevoegd, zodat we ze kunnen uploaden.
+Dit veld moet een **laatste** tag bevatten die verwijst naar de nieuwste versie van uw installatie kopie op alle ondersteunde platforms. Het moet ook een versie label bevatten (bijvoorbeeld vanaf xx. xx. xx, waarbij XX een getal is). Klanten moeten [manifest Tags](https://github.com/estesp/manifest-tool) gebruiken om meerdere platforms te bereiken. Alle labels waarnaar wordt verwezen door een manifest-tag, moeten ook worden toegevoegd, zodat ze kunnen worden geüpload.
 
-Alle manifesttags (behalve de nieuwste tag) moeten **-** beginnen met X.Y of X.Y.Z- waar X, Y en Z gehele getallen zijn. Als een **nieuwste** tag bijvoorbeeld verwijst naar 1.0.1-linux-x64, 1.0.1-linux-arm32 en 1.0.1-windows-arm32, moeten deze zes tags aan dit veld worden toegevoegd. Zie Technische [assets van Azure Container voorbereiden](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-azure-container-technical-assets)voor meer informatie.
+Alle manifest Tags (met uitzonde ring van de laatste tag) moeten beginnen met **-** X. y of x. y. z-waarbij x, Y en z een geheel getal zijn. Als een van de **nieuwste** Tags bijvoorbeeld verwijst naar 1.0.1-Linux-x64, 1.0.1-Linux-arm32 en 1.0.1-Windows-arm32, moeten deze zes Tags worden toegevoegd aan dit veld. Zie [technische activa van Azure-container voorbereiden](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-azure-container-technical-assets)voor meer informatie.
 
 > [!NOTE]
-> Vergeet niet om een testtag aan uw afbeelding toe te voegen, zodat u de afbeelding tijdens het testen identificeren.
+> Vergeet niet om een test code toe te voegen aan uw installatie kopie, zodat u de afbeelding tijdens het testen kunt identificeren.
 
-## <a name="review-and-publish"></a>Bekijken en publiceren
+## <a name="review-and-publish"></a>Controleren en publiceren
 
-Nadat u alle vereiste gedeelten van de aanbieding hebt voltooid, u deze indienen om deze te bekijken en te publiceren.
+Nadat u alle vereiste delen van de aanbieding hebt voltooid, kunt u deze verzenden om te controleren en te publiceren.
 
-Selecteer in de rechterbovenhoek van de portal de optie **Controleren en** **publiceren**.
+Selecteer in de rechter bovenhoek van de portal **controleren en** **publiceren**.
 
-Op de review pagina u:
+Op de pagina controleren kunt u het volgende doen:
 
-- Zie de voltooiingsstatus voor elk gedeelte van de aanbieding. U niet publiceren totdat alle gedeelten van de aanbieding als voltooid zijn gemarkeerd.
-  - **Niet gestart** – is nog niet gestart en moet worden voltooid.
-  - **Onvolledig** – Heeft fouten die moeten worden opgelost of vereist dat u meer informatie. Zie de secties eerder in dit document voor hulp.
-  - **Compleet** : bevat alle vereiste gegevens zonder fouten. Alle onderdelen van de aanbieding moeten volledig zijn voordat u de aanbieding indienen.
-- Geef het certificeringsteam testinstructies om ervoor te zorgen dat uw aanbieding correct wordt getest. Geef ook aanvullende notities die nuttig zijn voor het begrijpen van uw aanbod.
+- Bekijk de voltooiings status voor elke sectie van de aanbieding. U kunt pas publiceren als alle secties van de aanbieding zijn gemarkeerd als voltooid.
+  - **Niet gestart** : niet gestart en moet worden voltooid.
+  - **Onvolledig** : bevat fouten die moeten worden hersteld of waarvoor u meer informatie moet opgeven. Zie de secties eerder in dit document voor meer informatie.
+  - **Volledig** : bevat alle vereiste gegevens zonder fouten. Alle onderdelen van de aanbieding moeten volledig zijn voordat u de aanbieding kunt indienen.
+- Geef test instructies op het certificerings team om te controleren of uw aanbieding correct is getest. Geef ook aanvullende notities op die handig zijn voor het leren van uw aanbieding.
 
-Als u de publicatieaanbieding wilt indienen, selecteert u **Publiceren**.
+Selecteer **publiceren**om de aanbieding voor publicatie in te dienen.
 
-We sturen je een e-mail om je te laten weten wanneer een preview-versie van de aanbieding beschikbaar is om te bekijken en goed te keuren.
+We sturen u een e-mail om u te laten weten wanneer een preview-versie van de aanbieding beschikbaar is om te controleren en goed te keuren.
 
-Als u uw aanbieding wilt publiceren naar het publiek (of als een privé-aanbieding, naar een privépubliek) gaat, gaat u naar partnercentrum en selecteert **u Go-live.**
+Als u uw aanbieding naar het publiek (of als een privé-aanbieding, naar een privé-publiek) wilt publiceren, gaat u naar partner centrum en selecteert u **Go-Live**.
 
 ## <a name="next-step"></a>Volgende stap
 

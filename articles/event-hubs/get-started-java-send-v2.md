@@ -1,6 +1,6 @@
 ---
-title: Gebeurtenissen verzenden of ontvangen vanuit Azure Event Hubs via Java (laatste)
-description: Dit artikel biedt een walkthrough van het maken van een Java-toepassing die gebeurtenissen verzendt/ontvangt van/van Azure Event Hubs met behulp van het nieuwste azure-messaging-eventhubs-pakket.
+title: Gebeurtenissen verzenden of ontvangen van Azure Event Hubs met behulp van Java (nieuwste)
+description: Dit artikel bevat een overzicht van het maken van een Java-toepassing voor het verzenden/ontvangen van gebeurtenissen naar/van Azure Event Hubs met behulp van het meest recente Azure Messa ging-Event hubs-pakket.
 services: event-hubs
 author: spelluru
 ms.service: event-hubs
@@ -9,34 +9,34 @@ ms.topic: quickstart
 ms.date: 04/21/2020
 ms.author: spelluru
 ms.openlocfilehash: ca22f4481750abb3bd4432c8b42fbce93ede8ffd
-ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81770884"
 ---
-# <a name="use-java-to-send-events-to-or-receive-events-from-azure-event-hubs-azure-messaging-eventhubs"></a>Java gebruiken om gebeurtenissen naar Azure Event Hubs te verzenden of te ontvangen (azure-messaging-eventhubs)
-Deze quickstart laat zien hoe u gebeurtenissen verzendt naar en ontvangt vanuit een gebeurtenishub met behulp van het **Java-pakket azure-messaging-eventhubs.**
+# <a name="use-java-to-send-events-to-or-receive-events-from-azure-event-hubs-azure-messaging-eventhubs"></a>Java gebruiken om gebeurtenissen te verzenden naar of ontvangen van Azure Event Hubs (Azure-Messa ging-Event hubs)
+In deze Quick start ziet u hoe u gebeurtenissen kunt verzenden naar en ontvangen van een Event Hub met behulp van het event hubs Java-pakket voor **Azure Messa ging-** .
 
 > [!IMPORTANT]
-> Deze quickstart maakt gebruik van het nieuwe **azure-messaging-eventhubs-pakket.** Zie [Gebeurtenissen verzenden en ontvangen met azure-eventhubs-eph](event-hubs-java-get-started-send.md)voor een snelle start waarbij gebruik wordt gemaakt van de oude **azure-eventhubs** en **azure-eventhubs-eph.** 
+> Deze Snelstartgids maakt gebruik van het nieuwe **Azure-Messa ging-Event hubs-** pakket. Zie [gebeurtenissen verzenden en ontvangen met behulp van Azure-Event hubs en Azure-Event hubs-EPH](event-hubs-java-get-started-send.md)voor een Snelstartgids waarbij gebruik wordt gemaakt van de oude **Azure-Event hubs** en **Azure-Event hubs-EPH** -pakketten. 
 
 
 ## <a name="prerequisites"></a>Vereisten
-Als u nieuw bent in Azure Event Hubs, raadpleegt u [het overzicht van gebeurtenishubs](event-hubs-about.md) voordat u dit snel doet. 
+Als u nog geen ervaring hebt met Azure Event Hubs, raadpleegt u [Event hubs Overview](event-hubs-about.md) voordat u deze Snelstartgids uitvoert. 
 
 Voor het voltooien van deze snelstart moet aan de volgende vereisten worden voldaan:
 
-- **Microsoft Azure-abonnement**. Als u Azure-services wilt gebruiken, waaronder Azure Event Hubs, hebt u een abonnement nodig.  Als u geen bestaand Azure-account hebt, u zich aanmelden voor een [gratis proefversie](https://azure.microsoft.com/free/) of uw voordelen voor MSDN-abonnees gebruiken wanneer u een [account maakt.](https://azure.microsoft.com)
-- Een Java-ontwikkelomgeving. Deze quickstart maakt gebruik van [Eclipse](https://www.eclipse.org/). Java Development Kit (JDK) met versie 8 of hoger is vereist. 
-- **Maak een naamruimte voor gebeurtenishubs en een gebeurtenishub**. De eerste stap is om de [Azure-portal](https://portal.azure.com) te gebruiken om een naamruimte van het type Event Hubs te maken en de beheerreferenties te verkrijgen die uw toepassing nodig heeft om te communiceren met de gebeurtenishub. Volg de procedure in [dit artikel](event-hubs-create.md) om een naamruimte en een Event Hub te maken. Download vervolgens de **verbindingstekenreeks voor de naamruimte van gebeurtenishubs** door instructies uit het artikel te volgen: [Verbindingstekenreeks ophalen](event-hubs-get-connection-string.md#get-connection-string-from-the-portal). U gebruikt de verbindingstekenreeks later in deze snelstart.
+- **Microsoft Azure abonnement**. Als u Azure-Services, met inbegrip van Azure Event Hubs, wilt gebruiken, hebt u een abonnement nodig.  Als u geen bestaand Azure-account hebt, kunt u zich aanmelden voor een [gratis proef versie](https://azure.microsoft.com/free/) of de voor delen van uw MSDN-abonnee gebruiken wanneer u [een account maakt](https://azure.microsoft.com).
+- Een Java-ontwikkel omgeving. Deze Snelstartgids maakt gebruik van [eclips](https://www.eclipse.org/). Java Development Kit (JDK) met versie 8 of hoger is vereist. 
+- **Een event hubs naam ruimte en een event hub maken**. De eerste stap is het gebruik van de [Azure Portal](https://portal.azure.com) om een naam ruimte van het type Event hubs te maken en de beheer referenties te verkrijgen die uw toepassing nodig heeft om met de Event hub te communiceren. Volg de procedure in [dit artikel](event-hubs-create.md) om een naamruimte en een Event Hub te maken. Vervolgens haalt u de **Connection String voor de Event hubs naam ruimte** door de volgende instructies uit het artikel: [Get Connection String](event-hubs-get-connection-string.md#get-connection-string-from-the-portal). U gebruikt de connection string verderop in deze Quick Start.
 
 ## <a name="send-events"></a>Gebeurtenissen verzenden 
-In deze sectie ziet u hoe u een Java-toepassing maakt om gebeurtenissen een gebeurtenishub te sturen. 
+In deze sectie wordt beschreven hoe u een Java-toepassing maakt voor het verzenden van gebeurtenissen een Event Hub. 
 
-### <a name="add-reference-to-azure-event-hubs-library"></a>Verwijzing toevoegen aan de Azure Event Hubs-bibliotheek
+### <a name="add-reference-to-azure-event-hubs-library"></a>Verwijzing naar Azure Event Hubs-bibliotheek toevoegen
 
-De Java-clientbibliotheek voor Event Hubs is beschikbaar in de [Maven Central Repository.](https://search.maven.org/search?q=a:azure-messaging-eventhubs) U naar deze bibliotheek verwijzen met de volgende afhankelijkheidsverklaring in uw Maven-projectbestand:
+De Java-client bibliotheek voor Event Hubs is beschikbaar in de [centrale opslag plaats maven](https://search.maven.org/search?q=a:azure-messaging-eventhubs). U kunt naar deze bibliotheek verwijzen met behulp van de volgende afhankelijkheids declaratie in uw Maven-project bestand:
 
 ```xml
 <dependency>
@@ -48,7 +48,7 @@ De Java-clientbibliotheek voor Event Hubs is beschikbaar in de [Maven Central Re
 
 ### <a name="write-code-to-send-messages-to-the-event-hub"></a>Code schrijven om berichten te verzenden naar de event hub
 
-Maak voor het volgende voorbeeld eerst een nieuw Maven-project voor een console/shell-toepassing in uw favoriete Java-ontwikkelomgeving. Voeg een `Sender`klasse met de naam toe en voeg de volgende code toe aan de klasse:
+Maak voor het volgende voorbeeld eerst een nieuw Maven-project voor een console/shell-toepassing in uw favoriete Java-ontwikkelomgeving. Voeg een klasse toe `Sender`met de naam en voeg de volgende code toe aan de klasse:
 
 ```java
 import com.azure.messaging.eventhubs.*;
@@ -60,16 +60,16 @@ public class Sender {
 }
 ```
 
-### <a name="connection-string-and-event-hub"></a>Verbindingstekenreeks en gebeurtenishub
-Deze code gebruikt de verbindingstekenreeks met de naamruimte van gebeurtenishubs en de naam van de gebeurtenishub om een gebeurtenishubsclient te bouwen. 
+### <a name="connection-string-and-event-hub"></a>Verbindings reeks en Event Hub
+Deze code gebruikt de connection string voor de Event Hubs naam ruimte en de naam van de Event Hub om een Event Hubs-client samen te stellen. 
 
 ```java
 String connectionString = "<CONNECTION STRING to EVENT HUBS NAMESPACE>";
 String eventHubName = "<EVENT HUB NAME>";
 ```
 
-### <a name="create-an-event-hubs-producer-client"></a>Een client Event Hubs-producenten maken 
-Met deze code wordt een clientobject voor producenten gemaakt dat wordt gebruikt voor het produceren/verzenden van gebeurtenissen naar de gebeurtenishub. 
+### <a name="create-an-event-hubs-producer-client"></a>Een Event Hubs producer-client maken 
+Met deze code wordt een producer-client object gemaakt dat wordt gebruikt voor het produceren/verzenden van gebeurtenissen naar de Event Hub. 
 
 ```java
 EventHubProducerClient producer = new EventHubClientBuilder()
@@ -78,7 +78,7 @@ EventHubProducerClient producer = new EventHubClientBuilder()
 ```
 
 ### <a name="prepare-a-batch-of-events"></a>Een batch gebeurtenissen voorbereiden
-Deze code bereidt een reeks gebeurtenissen voor. 
+Met deze code wordt een batch gebeurtenissen voor bereid. 
 
 ```java
 EventDataBatch batch = producer.createBatch();
@@ -89,21 +89,21 @@ batch.tryAdd(new EventData("Fourth event"));
 batch.tryAdd(new EventData("Fifth event"));
 ```
 
-### <a name="send-the-batch-of-events-to-the-event-hub"></a>De batch gebeurtenissen naar de gebeurtenishub verzenden
-Deze code stuurt de batch gebeurtenissen die u in de vorige stap hebt voorbereid naar de gebeurtenishub. De volgende code blokken op de bewerking verzenden. 
+### <a name="send-the-batch-of-events-to-the-event-hub"></a>De batch met gebeurtenissen naar de Event Hub verzenden
+Met deze code wordt de batch gebeurtenissen die u in de vorige stap hebt voor bereid, verzonden naar de Event Hub. De volgende code blokken op de verzend bewerking. 
 
 ```java
 producer.send(batch);
 ```
 
-### <a name="close-and-cleanup"></a>Sluiten en opruimen
-Deze code sluit de producent. 
+### <a name="close-and-cleanup"></a>Sluiten en opschonen
+Met deze code wordt de producent afgesloten. 
 
 ```java
 producer.close();
 ```
-### <a name="complete-code-to-send-events"></a>Volledige code om gebeurtenissen te verzenden
-Hier is de volledige code om gebeurtenissen naar de gebeurtenishub te verzenden. 
+### <a name="complete-code-to-send-events"></a>Volledige code voor het verzenden van gebeurtenissen
+Dit is de volledige code voor het verzenden van gebeurtenissen naar de Event Hub. 
 
 ```java
 import com.azure.messaging.eventhubs.*;
@@ -135,17 +135,17 @@ public class Sender {
 }
 ```
 
-Bouw het programma en zorg ervoor dat er geen fouten zijn. Je voert dit programma uit nadat je het ontvangerprogramma hebt uitgevoerd. 
+Bouw het programma en zorg ervoor dat er geen fouten zijn. U voert dit programma uit nadat u het receiver-programma hebt uitgevoerd. 
 
 ## <a name="receive-events"></a>Gebeurtenissen ontvangen
-De code in deze zelfstudie is gebaseerd op het [Voorbeeld van EventProcessorClient op GitHub](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/eventhubs/azure-messaging-eventhubs/src/samples/java/com/azure/messaging/eventhubs/EventProcessorClientSample.java), dat u onderzoeken om de volledige werkende toepassing te zien.
+De code in deze zelf studie is gebaseerd op het [EventProcessorClient-voor beeld op github](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/eventhubs/azure-messaging-eventhubs/src/samples/java/com/azure/messaging/eventhubs/EventProcessorClientSample.java), dat u kunt bekijken om de volledige werk toepassing weer te geven.
 
 > [!NOTE]
-> Als u op Azure Stack Hub werkt, kan dat platform een andere versie van Storage Blob SDK ondersteunen dan die welke doorgaans beschikbaar zijn op Azure. Als u bijvoorbeeld op [Azure Stack Hub-versie 2002](https://docs.microsoft.com/azure-stack/user/event-hubs-overview)draait, is de hoogst beschikbare versie voor de opslagservice versie 2017-11-09. In dit geval moet u naast de volgende stappen in deze sectie ook code toevoegen om de API-versie 2017-11-09 van de opslagservice te targeten. Zie [dit voorbeeld op GitHub](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/eventhubs/azure-messaging-eventhubs-checkpointstore-blob/src/samples/java/com/azure/messaging/eventhubs/checkpointstore/blob/EventProcessorWithCustomStorageVersion.java)voor een voorbeeld over het targeten van een specifieke Storage API-versie. Voor meer informatie over de Azure Storage-serviceversies die worden ondersteund op Azure Stack Hub, raadpleegt u [Azure Stack Hub-opslag: verschillen en overwegingen](https://docs.microsoft.com/azure-stack/user/azure-stack-acs-differences).
+> Als u gebruikmaakt van Azure Stack hub, ondersteunt dat platform mogelijk een andere versie van de opslag-BLOB-SDK dan die doorgaans beschikbaar is op Azure. Als u bijvoorbeeld werkt met [Azure stack hub versie 2002](https://docs.microsoft.com/azure-stack/user/event-hubs-overview), is de hoogste beschik bare versie van de opslag service versie 2017-11-09. In dit geval moet u, naast de volgende stappen in deze sectie, ook code toevoegen om de API-versie 2017-11-09 van de Storage-service te richten. Zie voor een voor beeld van het richten op een specifieke opslag-API-versie [dit voor beeld op github](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/eventhubs/azure-messaging-eventhubs-checkpointstore-blob/src/samples/java/com/azure/messaging/eventhubs/checkpointstore/blob/EventProcessorWithCustomStorageVersion.java). Raadpleeg [Azure stack hub Storage: verschillen en overwegingen](https://docs.microsoft.com/azure-stack/user/azure-stack-acs-differences)voor meer informatie over de versies van de Azure Storage-service die op Azure stack hub worden ondersteund.
 
 ### <a name="create-a-java-project"></a>Een Java-project maken
 
-De Java-clientbibliotheek voor Event Hubs is beschikbaar voor gebruik in Maven-projecten in de [Maven Central Repository](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22azure-eventhubs-eph%22)en kan worden verwezen met behulp van de volgende afhankelijkheidsverklaring in uw Maven-projectbestand: 
+De Java-client bibliotheek voor Event Hubs is beschikbaar voor gebruik in Maven-projecten van de [centrale opslag plaats voor maven](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22azure-eventhubs-eph%22)en er kan naar worden verwezen met de volgende afhankelijkheids declaratie in uw Maven-project bestand: 
 
 ```xml
 <dependencies>
@@ -157,7 +157,7 @@ De Java-clientbibliotheek voor Event Hubs is beschikbaar voor gebruik in Maven-p
 </dependencies>
 ```
 
-1. Gebruik de volgende code om een nieuwe klasse te maken met de naam `Receiver`. Vervang de tijdelijke aanduidingen door de waarden die worden gebruikt bij het maken van de gebeurtenishub en het opslagaccount:
+1. Gebruik de volgende code om een nieuwe klasse te maken met de naam `Receiver`. Vervang de tijdelijke aanduidingen door de waarden die u hebt gebruikt bij het maken van de Event Hub en het opslag account:
    
    ```java
      import com.azure.messaging.eventhubs.*;
@@ -211,15 +211,15 @@ De Java-clientbibliotheek voor Event Hubs is beschikbaar voor gebruik in Maven-p
      }
     ```
     
-2. Download het **SampleCheckpointStore.java-bestand** van [GitHub](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/eventhubs/azure-messaging-eventhubs/src/samples/java/com/azure/messaging/eventhubs/SampleCheckpointStore.java)en voeg het toe aan uw project. 
+2. Down load het **SampleCheckpointStore. java** -bestand van [github](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/eventhubs/azure-messaging-eventhubs/src/samples/java/com/azure/messaging/eventhubs/SampleCheckpointStore.java)en voeg dit toe aan uw project. 
 3. Bouw het programma en zorg ervoor dat er geen fouten zijn. 
 
 ## <a name="run-the-applications"></a>De toepassingen uitvoeren
-1. Voer eerst de **ontvangertoepassing** uit.
-1. Voer vervolgens de **afzendertoepassing** uit. 
-1. Controleer in het venster **voor de toepassing** van de ontvanger of u de gebeurtenissen ziet die zijn gepubliceerd door de afzendertoepassing.
-1. Druk **op ENTER** in het venster van de ontvangertoepassing om de toepassing te stoppen. 
+1. Voer eerst de **receiver** -toepassing uit.
+1. Voer vervolgens de toepassing **Sender** uit. 
+1. Controleer in het toepassings venster van de **ontvanger** of de gebeurtenissen worden weer geven die zijn gepubliceerd door de toepassing van de afzender.
+1. Druk op **Enter** in het toepassings venster van de ontvanger om de toepassing te stoppen. 
 
 ## <a name="next-steps"></a>Volgende stappen
-Bekijk [Java SDK-voorbeelden op GitHub](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/eventhubs/azure-messaging-eventhubs/src/samples/java/com/azure/messaging/eventhubs)
+Bekijk de [Java SDK-voor beelden op github](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/eventhubs/azure-messaging-eventhubs/src/samples/java/com/azure/messaging/eventhubs)
 

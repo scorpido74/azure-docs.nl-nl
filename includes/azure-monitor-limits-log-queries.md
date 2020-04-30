@@ -9,31 +9,31 @@ ms.date: 07/22/2019
 ms.author: bwren
 ms.custom: include file
 ms.openlocfilehash: 627b020ce618a2a1f2646a95e143947876bd6a15
-ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82072634"
 ---
-### <a name="general-query-limits"></a>Algemene querylimieten
+### <a name="general-query-limits"></a>Algemene query limieten
 
 | Limiet | Beschrijving |
 |:---|:---|
-| Querytaal | Azure Monitor gebruikt dezelfde [Kusto-querytaal](/azure/kusto/query/) als Azure Data Explorer. Zie [taalverschillen in azure monitor-logboekquery's](../articles/azure-monitor/log-query/data-explorer-difference.md) voor KQL-taalelementen die niet worden ondersteund in Azure Monitor. |
-| Azure-regio's | Logquery's kunnen overmatige overhead ervaren wanneer gegevens log analytics-werkruimten in meerdere Azure-regio's omvatten. Zie [Querylimieten](../articles/azure-monitor/log-query/scope.md#query-limits) voor meer informatie. |
-| Bronquery's voor kruisbronnen | Maximaal aantal Resources voor Application Insights en Log Analytics-werkruimten in één query die beperkt is tot 100.<br>Query met kruisresources wordt niet ondersteund in View Designer.<br>Logboekwaarschuwingen voor cross-resourcequery's worden ondersteund in de nieuwe api voor geplandeQueryregels.<br>Zie Querylimieten voor [kruisresources](../articles/azure-monitor/log-query/cross-workspace-query.md#cross-resource-query-limits) voor meer informatie. |
+| Querytaal | Azure Monitor gebruikt dezelfde [Kusto-query taal](/azure/kusto/query/) als Azure Data Explorer. Zie [Azure monitor taal verschillen in de logboek query](../articles/azure-monitor/log-query/data-explorer-difference.md) voor KQL-taal elementen die niet worden ondersteund in azure monitor. |
+| Azure-regio's | Logboek query's kunnen overmatige overhead ondervinden wanneer gegevens Log Analytics werk ruimten in meerdere Azure-regio's. Zie [query limieten](../articles/azure-monitor/log-query/scope.md#query-limits) voor meer informatie. |
+| Query's voor meerdere resources | Het maximum aantal Application Insights resources en Log Analytics werk ruimten in één query beperkt tot 100.<br>Query op meerdere resources wordt niet ondersteund in de ontwerp functie voor weer gaven.<br>Er wordt een query voor meerdere resources in logboek waarschuwingen ondersteund in de nieuwe scheduledQueryRules-API.<br>Zie [query's beperken tot meerdere resources](../articles/azure-monitor/log-query/cross-workspace-query.md#cross-resource-query-limits) voor meer informatie. |
 
-### <a name="user-query-throttling"></a>Beperking van gebruikersquery's
-Azure Monitor heeft verschillende beperkingslimieten om te beschermen tegen gebruikers die een buitensporig aantal query's verzenden. Dergelijk gedrag kan mogelijk overbelasten het systeem backend middelen en in gevaar brengen service responsiviteit. De volgende limieten zijn ontworpen om klanten te beschermen tegen onderbrekingen en om een consistent serviceniveau te garanderen. De beperking en limieten van de gebruiker zijn ontworpen om alleen een extreem gebruiksscenario te beïnvloeden en mogen niet relevant zijn voor normaal gebruik.
+### <a name="user-query-throttling"></a>Beperking van gebruikers query's
+Azure Monitor heeft verschillende beperkings limieten om gebruikers te beschermen tegen het verzenden van een buitensporig aantal query's. Dit gedrag kan leiden tot overbelasting van de systeem back-bronnen en reactie tijd van de service. De volgende limieten zijn bedoeld om klanten te beschermen tegen onderbrekingen en een consistent service niveau te garanderen. De gebruikers beperking en limieten zijn zodanig ontworpen dat ze alleen van invloed zijn op het extreme gebruiks scenario en niet relevant zijn voor gebruikelijk gebruik.
 
 
 | Measure | Limiet per gebruiker | Beschrijving |
 |:---|:---|:---|
-| Gelijktijdige query's | 5 | Als er al 5 query's voor de gebruiker worden uitgevoerd, worden nieuwe query's in een gelijktijdigheidswachtrij per gebruiker geplaatst. Wanneer een van de lopende query's afloopt, wordt de volgende query uit de wachtrij gehaald en gestart. Dit geldt niet voor query's uit waarschuwingsregels.
-| Tijd in gelijktijdigheidswachtrij | 2,5 minuten | Als een query langer dan 2,5 minuten in de wachtrij staat zonder te worden gestart, wordt deze beëindigd met een HTTP-foutantwoord met code 429. |
-| Totaal query's in gelijktijdige wachtrij | 40 | Zodra het aantal query's in de wachtrij 40 bereikt, worden eventuele aanvullende query's geweigerd met een HTTP-foutcode 429. Dit aantal is een aanvulling op de 5 query's die tegelijkertijd kunnen worden uitgevoerd. |
-| Querysnelheid | 200 query's per 30 seconden | Dit is de algemene snelheid waarmee query's door één gebruiker kunnen worden ingediend bij alle werkruimten.  Deze limiet is van toepassing op programmatische query's of query's die zijn gestart met visualisatieonderdelen zoals Azure-dashboards en de overzichtspagina van de log Analytics-werkruimte. |
+| Gelijktijdige query's | 5 | Als er al vijf query's worden uitgevoerd voor de gebruiker, worden nieuwe query's in een wachtrij voor gelijktijdig gebruik per gebruiker geplaatst. Wanneer een van de actieve query's eindigt, wordt de volgende query opgehaald uit de wachtrij en gestart. Dit omvat geen query's van waarschuwings regels.
+| Tijd in gelijktijdigheids wachtrij | 2,5 minuten | Als een query langer dan 2,5 minuten in de wachtrij zit zonder te zijn gestart, wordt deze met een HTTP-fout bericht met code 429 beëindigd. |
+| Totaal aantal query's in gelijktijdigheids wachtrij | 40 | Zodra het aantal query's in de wachtrij 40 heeft bereikt, worden eventuele extra query's geweigerd met een HTTP-fout code 429. Dit aantal is een aanvulling op de vijf query's die tegelijkertijd kunnen worden uitgevoerd. |
+| Query frequentie | 200 query's per 30 seconden | Dit is het totale aantal query's dat door één gebruiker aan alle werk ruimten kan worden verzonden.  Deze limiet is van toepassing op programmatische query's of query's die worden geïnitieerd door visualisatie onderdelen als Azure-Dash boards en de overzichts pagina Log Analytics werk ruimte. |
 
-- Optimaliseer uw query's zoals beschreven in [Logboekquery's optimaliseren in Azure Monitor](../articles/azure-monitor/log-query/query-optimization.md).
-- Dashboards en werkmappen kunnen meerdere query's in één weergave bevatten die een reeks query's genereren elke keer dat ze worden geladen of vernieuwd. Overweeg ze op te splitsen in meerdere weergaven die op aanvraag worden geladen. 
-- Overweeg in Power BI alleen geaggregeerde resultaten te extraheren in plaats van ruwe logboeken.
+- Optimaliseer uw query's zoals beschreven in [logboek Query's optimaliseren in azure monitor](../articles/azure-monitor/log-query/query-optimization.md).
+- Dash boards en werkmappen kunnen meerdere query's bevatten in één weer gave die een burst van query's genereert elke keer dat ze worden geladen of vernieuwd. Houd er rekening mee dat u deze kunt opsplitsen in meerdere weer gaven die op aanvraag worden geladen. 
+- In Power BI kunt u overwegen om alleen samengevoegde resultaten in plaats van onbewerkte logboeken te extra heren.

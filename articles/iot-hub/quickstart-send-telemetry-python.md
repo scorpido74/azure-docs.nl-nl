@@ -13,33 +13,33 @@ ms.custom:
 - mqtt
 ms.date: 10/17/2019
 ms.openlocfilehash: 6346b305889c6cb6d33e15c156423ed9702dbaec
-ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81770014"
 ---
-# <a name="quickstart-send-telemetry-from-a-device-to-an-iot-hub-and-read-it-with-a-back-end-application-python"></a>Snelstart: telemetrie van een apparaat naar een IoT-hub verzenden en lezen met een back-end toepassing (Python)
+# <a name="quickstart-send-telemetry-from-a-device-to-an-iot-hub-and-read-it-with-a-back-end-application-python"></a>Quick Start: verzend telemetrie van een apparaat naar een IoT-hub en lees het met een back-end-toepassing (python)
 
 [!INCLUDE [iot-hub-quickstarts-1-selector](../../includes/iot-hub-quickstarts-1-selector.md)]
 
-In deze quickstart verzendt u telemetrie van een gesimuleerde apparaattoepassing via Azure IoT Hub naar een back-endtoepassing voor verwerking. IoT Hub is een Azure-service waarmee grote hoeveelheden telemetrie van uw IoT-apparaten naar de cloud kunt opnemen voor opslag of verwerking. Deze quickstart maakt gebruik van een vooraf geschreven Python-toepassing om de telemetrie en een CLI-hulpprogramma te verzenden om de telemetrie van de hub te lezen. Voordat u deze twee toepassingen kunt uitvoeren, moet u een IoT-hub maken en een apparaat registreren bij de hub.
+In deze Snelstartgids verzendt u telemetrie vanuit een gesimuleerd apparaat toepassing via Azure IoT Hub naar een back-end-toepassing voor verwerking. IoT Hub is een Azure-service waarmee grote hoeveelheden telemetrie van uw IoT-apparaten naar de cloud kunt opnemen voor opslag of verwerking. Deze Snelstartgids maakt gebruik van een vooraf geschreven python-toepassing voor het verzenden van de telemetrie en een CLI-hulp programma om de telemetrie van de hub te lezen. Voordat u deze twee toepassingen kunt uitvoeren, moet u een IoT-hub maken en een apparaat registreren bij de hub.
 
 ## <a name="prerequisites"></a>Vereisten
 
-* Een Azure-account met een actief abonnement. [Maak er gratis een.](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)
+* Een Azure-account met een actief abonnement. [Maak er gratis een](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 
-* [Python 3.7+](https://www.python.org/downloads/). Zie [Azure IoT-apparaatfuncties](https://github.com/Azure/azure-iot-sdk-python/tree/master/azure-iot-device#azure-iot-device-features)voor andere versies van Python.
+* [Python 3.7 +](https://www.python.org/downloads/). Zie [functies van Azure IOT-apparaten](https://github.com/Azure/azure-iot-sdk-python/tree/master/azure-iot-device#azure-iot-device-features)voor andere versies van python die worden ondersteund.
 
-* [Een voorbeeld python-project](https://github.com/Azure-Samples/azure-iot-samples-python/archive/master.zip).
+* [Een voor beeld van een python-project](https://github.com/Azure-Samples/azure-iot-samples-python/archive/master.zip).
 
-* Poort 8883 wordt geopend in uw firewall. Het apparaatvoorbeeld in deze quickstart maakt gebruik van het MQTT-protocol, dat communiceert via poort 8883. Deze poort kan worden geblokkeerd in sommige bedrijfs- en educatieve netwerkomgevingen. Zie [Verbinding maken met IoT Hub (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub)voor meer informatie en manieren om dit probleem te omzeilen.
+* Poort 8883 is geopend in de firewall. Het voor beeld van het apparaat in deze Snelstartgids maakt gebruik van het MQTT-protocol, dat communiceert via poort 8883. Deze poort kan worden geblokkeerd in sommige bedrijfs-en educatieve netwerk omgevingen. Zie [verbinding maken met IOT hub (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub)voor meer informatie en manieren om dit probleem te omzeilen.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
 ### <a name="add-azure-iot-extension"></a>Azure IoT-extensie toevoegen
 
-Voer de volgende opdracht uit om de Microsoft Azure IoT-extensie voor Azure CLI toe te voegen aan uw Cloud Shell-exemplaar. De IoT-extensie voegt specifieke opdrachten voor IoT Hub, IoT Edge en IoT Device Provisioning Service (DPS) toe aan Azure CLI.
+Voer de volgende opdracht uit om de Microsoft Azure IoT-extensie voor Azure CLI toe te voegen aan uw Cloud Shell-exemplaar. De IoT-extensie voegt IoT Hub, IoT Edge en IoT Device Provisioning Service (DPS)-specifieke opdrachten toe aan Azure CLI.
 
 ```azurecli-interactive
 az extension add --name azure-iot
@@ -55,17 +55,17 @@ az extension add --name azure-iot
 
 Een apparaat moet zijn geregistreerd bij uw IoT-hub voordat het verbinding kan maken. In deze snelstart gebruikt u Azure Cloud Shell om een gesimuleerd apparaat te registreren.
 
-1. Voer de volgende opdracht uit in Azure Cloud Shell om de apparaatidentiteit te maken.
+1. Voer de volgende opdracht uit in Azure Cloud Shell om de apparaat-id te maken.
 
     **YourIoTHubName**: vervang deze tijdelijke aanduiding door een door u gekozen naam voor de IoT-hub.
 
-    **MyPythonDevice**: Dit is de naam van het apparaat dat u registreert. Het wordt aanbevolen om **MyPythonDevice** te gebruiken zoals getoond. Als u een andere naam voor uw apparaat kiest, moet u die naam ook in dit artikel gebruiken en de apparaatnaam bijwerken in de voorbeeldtoepassingen voordat u ze uitvoert.
+    **MyPythonDevice**: dit is de naam van het apparaat dat u wilt registreren. Het is raadzaam om **MyPythonDevice** te gebruiken zoals wordt weer gegeven. Als u een andere naam kiest voor uw apparaat, moet u deze naam ook in dit artikel gebruiken en de apparaatnaam bijwerken in de voorbeeld toepassingen voordat u ze uitvoert.
 
     ```azurecli-interactive
     az iot hub device-identity create --hub-name {YourIoTHubName} --device-id MyPythonDevice
     ```
 
-1. Voer de volgende opdracht uit in Azure Cloud Shell om de _tekenreeks voor apparaatverbinding_ voor het apparaat dat u hebt geregistreerd, op te halen:
+1. Voer de volgende opdracht uit in Azure Cloud Shell om de _apparaat Connection String_ te verkrijgen voor het apparaat dat u hebt geregistreerd:
 
     **YourIoTHubName**: vervang deze tijdelijke aanduiding door een door u gekozen naam voor de IoT-hub.
 
@@ -77,7 +77,7 @@ Een apparaat moet zijn geregistreerd bij uw IoT-hub voordat het verbinding kan m
 
    `HostName={YourIoTHubName}.azure-devices.net;DeviceId=MyPythonDevice;SharedAccessKey={YourSharedAccessKey}`
 
-    U gebruikt deze waarde later in de snelstart.
+    U gebruikt deze waarde later in de Quick Start.
 
 ## <a name="send-simulated-telemetry"></a>Gesimuleerde telemetrie verzenden
 
@@ -87,7 +87,7 @@ De toepassing voor het gesimuleerde apparaat maakt verbinding met een apparaatsp
 
 1. Open het bestand **SimulatedDevice.py** in een teksteditor van uw keuze.
 
-    Vervang de waarde `CONNECTION_STRING` van de variabele door de verbindingstekenreeks van het apparaat waar u eerder een notitie van hebt gemaakt. Sla uw wijzigingen vervolgens op **in SimulatedDevice.py.**
+    Vervang de waarde van de `CONNECTION_STRING` variabele door het apparaat Connection String u eerder een notitie hebt gemaakt. Sla de wijzigingen vervolgens op in **SimulatedDevice.py**.
 
 1. Voer in het lokale terminalvenster de volgende opdrachten uit om de vereiste bibliotheken te installeren voor de toepassing voor het gesimuleerde apparaat:
 
@@ -126,7 +126,7 @@ In de volgende schermafbeelding ziet u de uitvoer op het moment dat de extensie 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze quickstart stelt u een IoT-hub in, registreerde u een apparaat, verzondu gesimuleerde telemetrie naar de hub met behulp van een Python-toepassing en leest u de telemetrie van de hub met behulp van een eenvoudige back-endtoepassing.
+In deze Quick Start kunt u een IoT-hub instellen, een apparaat registreren, gesimuleerde telemetrie naar de hub verzenden met behulp van een python-toepassing en de telemetrie van de hub lezen met behulp van een eenvoudige back-end-toepassing.
 
 Ga verder met de volgende snelstartgids als u wilt weten hoe u een gesimuleerd apparaat beheert vanuit een back-endtoepassing.
 

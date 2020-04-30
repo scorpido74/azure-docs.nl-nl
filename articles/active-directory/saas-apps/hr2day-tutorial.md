@@ -1,6 +1,6 @@
 ---
-title: 'Zelfstudie: Azure Active Directory-integratie met HR2day by Merces | Microsoft Documenten'
-description: Meer informatie over het configureren van eenmalige aanmelding tussen Azure Active Directory en HR2day door Merces.
+title: 'Zelf studie: integratie Azure Active Directory met HR2day door merces | Microsoft Docs'
+description: Meer informatie over het configureren van eenmalige aanmelding tussen Azure Active Directory en HR2day door merces.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -16,42 +16,42 @@ ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: jeedes
 ms.openlocfilehash: 5b9de6c2b8d9f7b11b686e820aab54fdd8e8a02f
-ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81866805"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-hr2day-by-merces"></a>Zelfstudie: Azure Active Directory-integratie met HR2day door Merces
+# <a name="tutorial-azure-active-directory-integration-with-hr2day-by-merces"></a>Zelf studie: integratie Azure Active Directory met HR2day door merces
 
-In deze zelfstudie leert u hoe u HR2day by Merces integreert met Azure Active Directory (Azure AD).
-De integratie van HR2day by Merces met Azure AD biedt u de volgende voordelen:
+In deze zelf studie leert u hoe u HR2day kunt integreren met behulp van merces met Azure Active Directory (Azure AD).
+Het integreren van HR2day door merces met Azure AD biedt de volgende voor delen:
 
-* U in Azure AD bepalen wie toegang heeft tot HR2day door Merces.
-* U uw gebruikers automatisch laten inloggen op HR2day door Merces (Single Sign-On) met hun Azure AD-accounts.
+* U kunt beheren in azure AD die toegang heeft tot HR2day door merces.
+* U kunt ervoor zorgen dat uw gebruikers automatisch worden aangemeld bij HR2day door merces (eenmalige aanmelding) met hun Azure AD-accounts.
 * U kunt uw accounts vanaf één centrale locatie beheren: de Azure-portal.
 
 Zie [What is application access and single sign-on with Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?) als u wilt graag meer wilt weten over de integratie van SaaS-apps met Azure AD.
-Als u geen Azure-abonnement hebt, [maakt u een gratis account](https://azure.microsoft.com/free/) voordat u begint.
+Als u nog geen abonnement op Azure hebt, [Maak dan een gratis account](https://azure.microsoft.com/free/) aan voordat u begint.
 
 ## <a name="prerequisites"></a>Vereisten
 
-Als u Azure AD-integratie met HR2day door Merces wilt configureren, hebt u de volgende items nodig:
+Als u Azure AD-integratie met HR2day door merces wilt configureren, hebt u de volgende items nodig:
 
-* Een Azure AD-abonnement Als u geen Azure AD-omgeving hebt, u een [gratis account](https://azure.microsoft.com/free/) krijgen
-* HR2day by Merces single sign-on enabled subscription HR2day by Merces single sign-on enabled subscription HR2day by Merces single sign-on enabled subscription HR2
+* Een Azure AD-abonnement Als u geen Azure AD-omgeving hebt, kunt u een [gratis account](https://azure.microsoft.com/free/) aanvragen
+* HR2day door merces-abonnement waarvoor eenmalige aanmelding is ingeschakeld
 
 ## <a name="scenario-description"></a>Scenariobeschrijving
 
 In deze zelfstudie gaat u in een testomgeving eenmalige aanmelding van Azure AD configureren en testen.
 
-* HR2day by Merces ondersteunt **SP** geïnitieerde SSO
+* HR2day door merces ondersteunt door **SP** GEÏNITIEERDe SSO
 
-## <a name="adding-hr2day-by-merces-from-the-gallery"></a>HR2day by Merces toevoegen vanuit de galerie
+## <a name="adding-hr2day-by-merces-from-the-gallery"></a>HR2day toevoegen door merces uit de galerie
 
-Als u de integratie van HR2day by Merces in Azure AD wilt configureren, moet u HR2day by Merces vanuit de galerie toevoegen aan uw lijst met beheerde SaaS-apps.
+Als u de integratie van HR2day door merces wilt configureren in azure AD, moet u HR2day toevoegen door merces vanuit de galerie aan uw lijst met beheerde SaaS-apps.
 
-**Voer de volgende stappen uit om HR2day by Merces uit de galerie toe te voegen:**
+**Voer de volgende stappen uit om HR2day toe te voegen door merces uit de galerie:**
 
 1. Klik in het linkernavigatievenster in de **[Azure-portal](https://portal.azure.com)** op het **Azure Active Directory**-pictogram.
 
@@ -65,31 +65,31 @@ Als u de integratie van HR2day by Merces in Azure AD wilt configureren, moet u H
 
     ![De knop Nieuwe toepassing](common/add-new-app.png)
 
-4. Selecteer **HR2day by** **Merces** in het zoekvak en klik op **Knop Toevoegen** om de toepassing toe te voegen.
+4. Typ **HR2day by merces** **in het** zoekvak en klik op de knop **toevoegen** om de toepassing toe te voegen.
 
-     ![HR2day van Merces in de resultatenlijst](common/search-new-app.png)
+     ![HR2day door merces in de lijst met resultaten](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD-eenmalige aanmelding configureren en testen
 
-In deze sectie configureert en test u Azure AD single sign-on met HR2day by Merces op basis van een testgebruiker genaamd **Britta Simon**.
-Voor eenmalige aanmelding op het werk moet een koppelingsrelatie worden ingesteld tussen een Azure AD-gebruiker en de gerelateerde gebruiker in HR2day door Merces.
+In deze sectie kunt u eenmalige aanmelding voor Azure AD configureren en testen met HR2day door merces op basis van een test gebruiker met de naam **Julia Simon**.
+Voor een goede werking van eenmalige aanmelding moet er een koppelings relatie tussen een Azure AD-gebruiker en de bijbehorende gebruiker in HR2day door merces tot stand worden gebracht.
 
-Als u Azure AD single sign-on with HR2day by Merces wilt configureren en testen, moet u de volgende bouwstenen voltooien:
+Als u eenmalige aanmelding voor Azure AD wilt configureren en testen met HR2day door merces, moet u de volgende bouw stenen volt ooien:
 
 1. **[Azure AD-eenmalige aanmelding configureren](#configure-azure-ad-single-sign-on)**: als u wilt dat uw gebruikers deze functie kunnen gebruiken.
-2. **[Configureer HR2day by Merces Single Sign-On](#configure-hr2day-by-merces-single-sign-on)** - om de instellingen voor eenmalig aanmelden aan de toepassingszijde te configureren.
+2. **[HR2day configureren met merces eenmalige aanmelding](#configure-hr2day-by-merces-single-sign-on)** : Hiermee configureert u de instellingen voor eenmalige aanmelding aan de kant van de toepassing.
 3. **[Een Azure AD-testgebruiker maken](#create-an-azure-ad-test-user)**: als u Azure AD-eenmalige aanmelding wil testen met Britta Simon.
 4. **[De testgebruiker van Azure AD-toewijzen](#assign-the-azure-ad-test-user)**: als u wilt dat Britta Simon gebruik kan maken van Azure AD-eenmalige aanmelding.
-5. **[Maak HR2day by Merces test gebruiker](#create-hr2day-by-merces-test-user)** - om een tegenhanger van Britta Simon in HR2day door Merces die is gekoppeld aan de Azure AD vertegenwoordiging van de gebruiker.
+5. **[Maak HR2day door merces-test gebruiker](#create-hr2day-by-merces-test-user)** : als u een equivalent van Julia Simon in HR2day wilt hebben door merces dat is gekoppeld aan de Azure AD-representatie van de gebruiker.
 6. **[Eenmalige aanmelding testen](#test-single-sign-on)**: als u wilt controleren of de configuratie werkt.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Azure AD configureren voor eenmalige aanmelding
 
 In deze sectie gaat u Azure AD-eenmalige aanmelding in de Azure-portal inschakelen.
 
-Voer de volgende stappen uit om Azure AD single sign-on te configureren met HR2day by Merces:
+Voer de volgende stappen uit om eenmalige aanmelding voor Azure AD met HR2day door merces te configureren:
 
-1. Selecteer in de [Azure-portal](https://portal.azure.com/)op de pagina met de integratie **van de toepassing HR2day by Merces** de optie **Eén aanmelding**.
+1. Selecteer in de [Azure Portal](https://portal.azure.com/)op de pagina **HR2day by merces** Application Integration de optie **eenmalige aanmelding**.
 
     ![Koppeling Eenmalige aanmelding configureren](common/select-sso.png)
 
@@ -103,21 +103,21 @@ Voer de volgende stappen uit om Azure AD single sign-on te configureren met HR2d
 
 4. In de sectie **Standaard SAML-configuratie** voert u de volgende stappen uit:
 
-    ![HR2day by Merces Domain and URLLs single sign-on information HR2day by Merces Domain and URLLs single sign-on information HR2day by Merces Domain and URLLs single sign-on information HR2](common/sp-identifier.png)
+    ![HR2day door merces domein en Url's gegevens voor eenmalige aanmelding](common/sp-identifier.png)
 
     a. In het tekstvak **Aanmeldings-URL** typt u een URL met de volgende notatie: `https://<tenantname>.force.com/<instancename>`
 
     b. In het tekstvak **Id (Entiteits-id)** typt u een URL met het volgende patroon: `https://hr2day.force.com/<companyname>`
 
     > [!NOTE]
-    > Dit zijn geen echte waarden. Werk deze waarden bij met de werkelijke aanmeldings-URL en -id. Neem contact op met [HR2day by Merces Client support team](mailto:servicedesk@merces.nl) om deze waarden te krijgen. U kunt ook verwijzen naar het patroon dat wordt weergegeven in de sectie **Standaard SAML-configuratie** in de Azure-portal.
+    > Dit zijn geen echte waarden. Werk deze waarden bij met de werkelijke aanmeldings-URL en -id. Neem contact op met [HR2day door merces-client ondersteunings team](mailto:servicedesk@merces.nl) om deze waarden op te halen. U kunt ook verwijzen naar het patroon dat wordt weergegeven in de sectie **Standaard SAML-configuratie** in de Azure-portal.
 
-5. Uw HR2day by Merces-toepassing verwacht de SAML-beweringen in een specifiek formaat, waardoor u aangepaste attribuuttoewijzingen moet toevoegen aan uw SAML-tokenkenmerkenconfiguratie. In de volgende schermafbeelding wordt de lijst met standaardkenmerken weergegeven. Klik **op Pictogram Bewerken** om het dialoogvenster **Gebruikerskenmerken te** openen.
+5. Uw HR2day door merces-toepassing verwacht de SAML-beweringen in een specifieke indeling. hiervoor moet u aangepaste kenmerk toewijzingen toevoegen aan de configuratie van uw SAML-token kenmerken. In de volgende schermafbeelding wordt de lijst met standaardkenmerken weergegeven. Klik op pictogram **bewerken** om het dialoog venster **gebruikers kenmerken** te openen.
 
     ![installatiekopie](common/edit-attribute.png)
 
     > [!NOTE]
-    > Voordat u de SAML-bewering configureren, moet u contact opnemen met het [HR2day by Merces Client support team](mailto:servicedesk@merces.nl) en de waarde van het unieke id-kenmerk voor uw tenant aanvragen. U hebt deze waarde nodig om de stappen in de volgende sectie uit te voeren.
+    > Voordat u de SAML-bevestiging kunt configureren, moet u contact opnemen met het [HR2day door merces-client ondersteunings team](mailto:servicedesk@merces.nl) en de waarde van het kenmerk unieke id voor uw Tenant aanvragen. U hebt deze waarde nodig om de stappen in de volgende sectie te volt ooien.
 
 6. Bewerk in het gedeelte **Gebruikersclaims** in het dialoogvenster **Gebruikerskenmerken** de claims met het **pictogram Bewerken** of voeg de claims toe door met **Nieuwe claim toevoegen** het kenmerk van het SAML-token te configureren, zoals wordt weergegeven in de bovenstaande afbeelding. Hierna voert u de volgende stappen uit:
 
@@ -148,7 +148,7 @@ Voer de volgende stappen uit om Azure AD single sign-on te configureren met HR2d
 
     ![De link om het certificaat te downloaden](common/certificatebase64.png)
 
-8. Kopieer op de sectie **Hr2day by Merces** de juiste URL(s) volgens uw eis.
+8. Kopieer op de sectie **HR2day by merces instellen** de gewenste URL ('s) volgens uw vereiste.
 
     ![Configuratie-URL's kopiëren](common/copy-configuration-urls.png)
 
@@ -158,12 +158,12 @@ Voer de volgende stappen uit om Azure AD single sign-on te configureren met HR2d
 
     c. Afmeldings-URL
 
-### <a name="configure-hr2day-by-merces-single-sign-on"></a>HR2day configureren door Merces Single Sign-On
+### <a name="configure-hr2day-by-merces-single-sign-on"></a>HR2day configureren met merces-eenmalige aanmelding
 
-Als u eenmalige aanmelding op **HR2day aan de kant van Merces** wilt configureren, moet u het gedownloade **certificaat (Base64)** en de juiste gekopieerde URL's van Azure-portal naar [HR2day door merces-ondersteuningsteam](mailto:servicedesk@merces.nl)verzenden. Het team stelt de instellingen zo in dat de verbinding tussen SAML en eenmalige aanmelding aan beide zijden goed is ingesteld.
+Als u eenmalige aanmelding wilt configureren voor **HR2day door merces** , moet u het gedownloade **certificaat (base64)** en de juiste gekopieerde url's verzenden van Azure Portal naar [HR2day door merces-ondersteunings team](mailto:servicedesk@merces.nl). Het team stelt de instellingen zo in dat de verbinding tussen SAML en eenmalige aanmelding aan beide zijden goed is ingesteld.
 
 > [!NOTE]
-> Vermeld aan het Merces-team dat voor deze integratie de Entiteits-ID moet worden ingesteld met het patroon **\/https: /hr2day.force.com/INSTANCENAME**.
+> Vermeld het merces-team dat voor deze integratie de entiteit-ID moet worden ingesteld met het patroon **https\/:/hr2day.Force.com/INSTANCENAME**.
 
 ### <a name="create-an-azure-ad-test-user"></a>Een Azure AD-testgebruiker maken
 
@@ -173,7 +173,7 @@ Het doel van deze sectie is om in de Azure-portal een testgebruiker met de naam 
 
     ![De koppelingen Gebruikers en groepen en Alle gebruikers](common/users.png)
 
-2. Selecteer **Nieuwe gebruiker** boven aan het scherm.
+2. Selecteer **nieuwe gebruiker** boven aan het scherm.
 
     ![Knop Nieuwe gebruiker](common/new-user.png)
 
@@ -188,19 +188,19 @@ Het doel van deze sectie is om in de Azure-portal een testgebruiker met de naam 
 
     c. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak Wachtwoord.
 
-    d. Klik **op Maken**.
+    d. Klik op **maken**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>De Azure AD-testgebruiker toewijzen
 
-In deze sectie stelt u Britta Simon in staat om Azure single sign-on te gebruiken door toegang te verlenen tot HR2day door Merces.
+In deze sectie schakelt u Julia Simon in om eenmalige aanmelding van Azure te gebruiken door toegang te verlenen aan HR2day door merces.
 
-1. Selecteer in de Azure-portal **Enterprise-toepassingen**, selecteer **Alle toepassingen**en selecteer **vervolgens HR2day by Merces**.
+1. Selecteer in het Azure Portal **bedrijfs toepassingen**, selecteer **alle toepassingen**en selecteer vervolgens **HR2day by merces**.
 
     ![De blade Bedrijfstoepassingen](common/enterprise-applications.png)
 
-2. Selecteer **HR2day by Merces**in de lijst met toepassingen.
+2. Selecteer in de lijst toepassingen de optie **HR2day by merces**.
 
-    ![De HR2day by Merces link in de Applications list](common/all-applications.png)
+    ![De koppeling HR2day by merces in de lijst met toepassingen](common/all-applications.png)
 
 3. Selecteer in het menu aan de linkerkant **Gebruikers en groepen**.
 
@@ -210,29 +210,29 @@ In deze sectie stelt u Britta Simon in staat om Azure single sign-on te gebruike
 
     ![Het deelvenster Toewijzing toevoegen](common/add-assign-user.png)
 
-5. Selecteer **In** het dialoogvenster Gebruikers en groepen **Britta Simon** in de lijst Gebruikers en klik je op de knop **Selecteren** onder aan het scherm.
+5. Selecteer in het dialoog venster **gebruikers en groepen** **Julia Simon** in de lijst gebruikers en klik vervolgens op de knop **selecteren** onder aan het scherm.
 
-6. Als u een rolwaarde verwacht in de SAML-bewering, selecteert u in het dialoogvenster **Rol selecteren** de juiste rol voor de gebruiker in de lijst en klikt u op de knop **Selecteren** onder aan het scherm.
+6. Als u een wille keurige rol verwacht in de SAML-bewering, selecteert u in het dialoog venster **rol selecteren** de juiste rol voor de gebruiker in de lijst en klikt u op de knop **selecteren** onder aan het scherm.
 
 7. Klik in het dialoogvenster **Toewijzing toevoegen** op de knop **Toewijzen**.
 
-### <a name="create-hr2day-by-merces-test-user"></a>Hr2day by Merces testgebruiker maken
+### <a name="create-hr2day-by-merces-test-user"></a>HR2day maken door merces test gebruiker
 
-In deze sectie maak je een gebruiker genaamd Britta Simon in HR2day door Merces. Werk samen met [HR2day by Merces support team](mailto:servicedesk@merces.nl) om de gebruikers toe te voegen aan het HR2day by Merces platform. Er moeten gebruikers worden gemaakt en geactiveerd voordat u eenmalige aanmelding kunt gebruiken.
+In deze sectie maakt u een gebruiker met de naam Julia Simon in HR2day by merces. Werk samen met [HR2day door merces ondersteunings team](mailto:servicedesk@merces.nl) om de gebruikers toe te voegen in het platform HR2day by merces. Er moeten gebruikers worden gemaakt en geactiveerd voordat u eenmalige aanmelding kunt gebruiken.
 
 > [!NOTE]
-> Als u handmatig een gebruiker wilt maken, neemt u contact op met het [HR2day by Merces client support team.](mailto:servicedesk@merces.nl)
+> Als u hand matig een gebruiker moet maken, neemt u contact op met het [HR2day door merces-client ondersteuning](mailto:servicedesk@merces.nl).
 
 ### <a name="test-single-sign-on"></a>Eenmalige aanmelding testen
 
 In deze sectie gaat u uw configuratie van Azure AD-eenmalige aanmelding testen via het toegangsvenster.
 
-Wanneer u op de HR2day by Merces-tegel in het Access Panel klikt, moet u automatisch worden aangemeld bij de HR2day door Merces waarvoor u SSO hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
+Wanneer u op de tegel HR2day by merces in het toegangs venster klikt, moet u automatisch worden aangemeld bij de HR2day door merces waarvoor u SSO hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
 
 ## <a name="additional-resources"></a>Aanvullende resources
 
 - [Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Wat is toepassingstoegang en eenmalige aanmelding met Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Wat is toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Wat is voorwaardelijke toegang in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

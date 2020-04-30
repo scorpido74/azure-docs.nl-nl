@@ -1,6 +1,6 @@
 ---
-title: Werken met beveiligingsbeleid | Microsoft Documenten
-description: In dit artikel wordt beschreven hoe u werken met beveiligingsbeleid in Azure Security Center.
+title: Werken met beveiligings beleid | Microsoft Docs
+description: In dit artikel wordt beschreven hoe u kunt werken met beveiligings beleid in Azure Security Center.
 services: security-center
 documentationcenter: na
 author: memildin
@@ -15,97 +15,97 @@ ms.workload: na
 ms.date: 11/04/2019
 ms.author: memildin
 ms.openlocfilehash: c98ae7c95ac3fc186786612dd3d8d8bd55fa816f
-ms.sourcegitcommit: 75089113827229663afed75b8364ab5212d67323
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82024877"
 ---
 # <a name="working-with-security-policies"></a>Werken met beveiligingsbeleid
 
-In dit artikel wordt uitgelegd hoe beveiligingsbeleid is geconfigureerd en hoe u deze bekijken in Het Beveiligingscentrum. 
+In dit artikel wordt uitgelegd hoe beveiligings beleid wordt geconfigureerd en hoe u deze in Security Center kunt weer geven. 
 
-## <a name="introduction-to-security-policies"></a>Inleiding tot het beveiligingsbeleid
+## <a name="introduction-to-security-policies"></a>Inleiding tot beveiligings beleid
 
-Een beveiligingsbeleid definieert de gewenste configuratie van uw workloads en zorgt ervoor dat u voldoet aan de beveiligingsvereisten van uw bedrijf of regelgevers.
+Een beveiligings beleid definieert de gewenste configuratie van uw workloads en zorgt ervoor dat u voldoet aan de beveiligings vereisten van uw bedrijf of regel.
 
-Azure Security Center voert beveiligingsaanbevelingen uit op basis van het door u gekozen beleid. Het beleid voor beveiligingscentrum is gebaseerd op beleidsinitiatieven die zijn gemaakt in Azure Policy. U [Azure Policy](../governance/policy/overview.md) gebruiken om uw beleid te beheren en om beleidsregels in te stellen voor beheergroepen en voor meerdere abonnementen.
+Azure Security Center worden de beveiligings aanbevelingen gebaseerd op uw gekozen beleid. Security Center beleid is gebaseerd op beleids initiatieven die zijn gemaakt in Azure Policy. U kunt [Azure Policy](../governance/policy/overview.md) gebruiken om uw beleid te beheren en beleid in te stellen tussen beheer groepen en meerdere abonnementen.
 
-Security Center biedt de volgende opties voor het werken met beveiligingsbeleid:
+Security Center biedt de volgende opties voor het werken met beveiligings beleid:
 
-* **Het ingebouwde standaardbeleid weergeven en bewerken** - Wanneer u Beveiligingscentrum inschakelt, wordt een ingebouwd initiatief met de naam 'ASC default' automatisch toegewezen aan alle geregistreerde abonnementen van het Beveiligingscentrum (gratis of standaardlagen). Als u dit initiatief wilt aanpassen, u afzonderlijke beleidsregels binnen het initiatief in- of uitschakelen. Zie de lijst met [ingebouwde beveiligingsbeleidsregels](security-center-policy-definitions.md) om inzicht te krijgen in de beschikbare opties.
+* **Het ingebouwde standaard beleid weer geven en bewerken** : wanneer u Security Center inschakelt, wordt er automatisch een ingebouwd initiatief met de naam ' ASC default ' toegewezen aan alle Security Center geregistreerde abonnementen (lagen gratis of standaard). Als u dit initiatief wilt aanpassen, kunt u afzonderlijk beleids regels in-of uitschakelen. Bekijk de lijst met [ingebouwde beveiligings beleidsregels](security-center-policy-definitions.md) om inzicht te krijgen in de beschik bare opties.
 
-* **Voeg uw eigen aangepaste beleidsregels toe** - Als u de beveiligingsinitiatieven die op uw abonnement zijn toegepast, wilt aanpassen, u dit doen binnen Security Center. U ontvangt dan aanbevelingen als uw machines niet voldoen aan het beleid dat u maakt. Zie [Aangepast beveiligingsbeleid](custom-security-policies.md)gebruiken voor instructies voor het maken en toewijzen van aangepaste beleidsregels .
+* **Uw eigen aangepaste beleids regels toevoegen** : als u de beveiligings initiatieven wilt aanpassen die op uw abonnement zijn toegepast, kunt u dit doen in Security Center. U ontvangt dan aanbevelingen als uw computers niet voldoen aan het beleid dat u maakt. Zie [aangepaste beveiligings beleidsregels gebruiken](custom-security-policies.md)voor instructies voor het maken en toewijzen van aangepaste beleids regels.
 
-* **Nalevingsbeleid voor regelgeving toevoegen** - Het dashboard voor naleving van de regelgeving van het Security Center toont de status van alle beoordelingen binnen uw omgeving in de context van een bepaalde standaard of regelgeving (zoals Azure CIS, NIST SP 800-53 R4, SWIFT CSP CSCF-v2020). Zie [Uw naleving van de regelgeving verbeteren](security-center-compliance-dashboard.md)voor meer informatie.
+* **Nalevings beleid voor regelgeving toevoegen** : het nalevings Dashboard van de Security Center is de status van alle evaluaties in uw omgeving in de context van een bepaalde standaard of regelgeving (zoals Azure CIS, NIST SP 800-53 R4, Swift CSP CSCF-v2020). Zie voor meer informatie [uw reglementaire naleving verbeteren](security-center-compliance-dashboard.md).
 
 
-## <a name="managing-your-security-policies"></a>Uw beveiligingsbeleid beheren
+## <a name="managing-your-security-policies"></a>Uw beveiligings beleid beheren
 
 Ga als volgt te werk als u uw beveiligingsbeleidsregels wilt weergeven in Security Center:
 
-1. Selecteer **beveiligingsbeleid**in het dashboard **Beveiligingscentrum** .
+1. Selecteer in het **Security Center** -dash board **beveiligings beleid**.
 
     ![Het deelvenster Beleidsbeheer](./media/security-center-policies/security-center-policy-mgt.png)
 
-   In het scherm **Beleidsbeheer** ziet u het aantal beheergroepen, abonnementen en werkruimten en uw beheergroepstructuur.
+   In het scherm **beleids beheer** ziet u het aantal beheer groepen, abonnementen en werk ruimten, evenals de structuur van uw beheer groep.
 
-1. Selecteer de abonnements- of beheergroep waarvan u het beleid wilt weergeven.
+1. Selecteer het abonnement of de beheer groep waarvan u het beleid wilt weer geven.
 
-1. De pagina beveiligingsbeleid voor dat abonnement of beheergroep wordt weergegeven. Het toont het beschikbare en toegewezen beleid.
+1. De pagina beveiligings beleid voor het abonnement of de beheer groep wordt weer gegeven. Het beschik bare en toegewezen beleid wordt weer gegeven.
 
-   ![beleidsscherm](./media/tutorial-security-policy/security-policy-page.png)
+   ![scherm beleid](./media/tutorial-security-policy/security-policy-page.png)
 
     > [!NOTE]
-    > Als er naast uw standaardbeleid een label 'MG overgenomen' is, betekent dit dat het beleid is toegewezen aan een beheergroep en is overgenomen door het abonnement dat u bekijkt.
+    > Als er naast het standaard beleid een label "MG inherited" is, betekent dit dat het beleid is toegewezen aan een beheer groep en dat is overgenomen door het abonnement dat u bekijkt.
 
 
-1. Kies uit de beschikbare opties op deze pagina:
+1. Kies uit de beschik bare opties op deze pagina:
 
-    1. Als u wilt werken met industriebeleid, selecteert u **Meer standaarden toevoegen**. Zie [Bijwerken naar dynamische compliancepakketten voor](update-regulatory-compliance-packages.md)meer informatie.
+    1. Als u wilt werken met beleids regels voor de branche, selecteert u **meer standaarden toevoegen**. Zie [bijwerken naar dynamische nalevings pakketten](update-regulatory-compliance-packages.md)voor meer informatie.
 
-    1. Als u aangepaste initiatieven wilt toewijzen en beheren, selecteert u **Aangepaste initiatieven toevoegen**. Zie [Aangepast beveiligingsbeleid gebruiken](custom-security-policies.md)voor meer informatie .
+    1. Als u aangepaste initiatieven wilt toewijzen en beheren, selecteert u **aangepaste initiatieven toevoegen**. Zie [aangepaste beveiligings beleidsregels gebruiken](custom-security-policies.md)voor meer informatie.
 
-    1. Als u het standaardbeleid wilt weergeven en bewerken, selecteert u **Effectief beleid weergeven** en gaat u verder zoals hieronder beschreven. 
+    1. Als u het standaard beleid wilt weer geven en bewerken, selecteert u **effectief beleid weer geven** en gaat u verder, zoals hieronder wordt beschreven. 
 
-       ![beleidsscherm](./media/security-center-policies/policy-screen.png)
+       ![scherm beleid](./media/security-center-policies/policy-screen.png)
        
-       Dit **scherm met beveiligingsbeleid** geeft de actie weer die is ondernomen door het beleid dat is toegewezen aan de abonnements- of beheergroep die u hebt geselecteerd.
+       Dit scherm van het **beveiligings beleid** toont de actie die wordt uitgevoerd door het beleid dat is toegewezen aan het abonnement of de beheer groep die u hebt geselecteerd.
        
-       * Gebruik de links bovenaan om een **beleidstoewijzing** te openen die van toepassing is op de abonnements- of beheergroep. Met deze koppelingen u toegang krijgen tot de toewijzing en het beleid bewerken of uitschakelen. Als u bijvoorbeeld ziet dat een bepaalde beleidstoewijzing de bescherming van eindpunten effectief ontzegt, gebruikt u de koppeling om het beleid te bewerken of uit te schakelen.
+       * Gebruik de koppelingen aan de bovenkant om een beleids **toewijzing** te openen die van toepassing is op het abonnement of de beheer groep. Met deze koppelingen krijgt u toegang tot de toewijzing en kunt u het beleid bewerken of uitschakelen. Als u bijvoorbeeld ziet dat een bepaalde beleids toewijzing de eindpunt beveiliging effectief weigert, gebruikt u de koppeling om het beleid te bewerken of uit te scha kelen.
        
-       * In de lijst met beleidsregels ziet u de effectieve toepassing van het beleid op uw abonnements- of beheergroep. De instellingen van elk beleid die van toepassing zijn op het toepassingsgebied worden in aanmerking genomen en het cumulatieve resultaat van de acties die door het beleid worden ondernomen, wordt weergegeven. Als bijvoorbeeld in de ene toewijzing van het beleid is uitgeschakeld, maar in een andere opdracht is ingesteld op AuditIfNotExist, wordt het cumulatieve effect auditifnotexist van toepassing. Het actievere effect heeft altijd voorrang.
+       * In de lijst met beleids regels kunt u de juiste toepassing van het beleid voor uw abonnement of beheer groep bekijken. De instellingen van elk beleid dat van toepassing is op het bereik, worden in aanmerking genomen en het cumulatieve resultaat van de acties die door het beleid worden uitgevoerd, wordt weer gegeven. Als bijvoorbeeld in één toewijzing van het beleid is uitgeschakeld, maar in een andere methode is ingesteld op AuditIfNotExist, wordt met het cumulatieve effect AuditIfNotExist toegepast. Het meer actieve effect heeft altijd voor rang.
        
-       * Het effect van het beleid kan zijn: Toevoegen, Controleren, AuditIfNotExists, Deny, DeployIfNotExists, Disabled. Zie [Beleidseffecten begrijpen](../governance/policy/concepts/effects.md)voor meer informatie over de manier waarop effecten worden toegepast.
+       * Het effect van het beleid kan zijn: Append, audit, AuditIfNotExists, deny, DeployIfNotExists, disabled. Zie [beleids effecten begrijpen](../governance/policy/concepts/effects.md)voor meer informatie over hoe effecten worden toegepast.
 
        > [!NOTE]
-       > Wanneer u toegewezen beleidsregels bekijkt, u meerdere toewijzingen zien en u zien hoe elke toewijzing op zichzelf is geconfigureerd.
+       > Wanneer u toegewezen beleids regels bekijkt, kunt u meerdere toewijzingen zien en kunt u zien hoe elke toewijzing zelf is geconfigureerd.
 
 
-## <a name="who-can-edit-security-policies"></a>Wie kan het beveiligingsbeleid bewerken?
+## <a name="who-can-edit-security-policies"></a>Wie kan beveiligings beleid bewerken?
 
-U beveiligingsbeleid bewerken via de Azure Policy portal, via REST API of met Windows PowerShell.
+U kunt beveiligings beleid via de Azure Policy Portal bewerken via REST API of met behulp van Windows Power shell.
 
-Security Center gebruikt op rollen gebaseerd toegangsbeheer (RBAC), dat ingebouwde rollen biedt die kunnen worden toegewezen aan gebruikers, groepen en services in Azure. Wanneer gebruikers Beveiligingscentrum openen, zien ze alleen informatie die gerelateerd is aan bronnen waartoe ze toegang hebben. Dat betekent dat gebruikers de rol van *eigenaar,* *bijdrager*of *lezer* toegewezen krijgen aan het abonnement van de resource. Naast deze rollen zijn er twee specifieke functies van het Beveiligingscentrum:
+Security Center gebruikt op rollen gebaseerd toegangsbeheer (RBAC), dat ingebouwde rollen biedt die kunnen worden toegewezen aan gebruikers, groepen en services in Azure. Wanneer gebruikers Security Center openen, zien ze alleen informatie die betrekking heeft op de resources waartoe ze toegang hebben. Dit betekent dat gebruikers de rol van *eigenaar*, *bijdrager*of *lezer* aan het abonnement van de resource hebben toegewezen. Naast deze rollen zijn er twee specifieke Security Center rollen:
 
-- **Beveiligingslezer**: Heb weergaverechten op Security Center, dat aanbevelingen, waarschuwingen, beleid en gezondheid bevat, maar ze kunnen geen wijzigingen aanbrengen.
-- **Beveiligingsbeheerder**: heb dezelfde weergaverechten als *beveiligingslezer*en ze kunnen ook het beveiligingsbeleid bijwerken en aanbevelingen en waarschuwingen afwijzen.
+- **Beveiligings lezer**: hebben weergave rechten voor Security Center, waaronder aanbevelingen, waarschuwingen, beleid en status, maar ze kunnen geen wijzigingen aanbrengen.
+- **Beveiligings beheerder**: hebben dezelfde weergave rechten als de *beveiligings lezer*, en ze kunnen ook het beveiligings beleid bijwerken en aanbevelingen en waarschuwingen negeren.
 
 
-## <a name="disable-security-policies"></a>Beveiligingsbeleid uitschakelen
-Als het standaardbeveiligingsbeleid een aanbeveling genereert die niet relevant is voor uw omgeving, u deze stoppen door de beleidsdefinitie uit te schakelen die de aanbeveling verzendt.
-Zie [Beveiligingsaanbevelingen beheren](security-center-recommendations.md)voor meer informatie over aanbevelingen.
+## <a name="disable-security-policies"></a>Beveiligings beleid uitschakelen
+Als het standaard beveiligings beleid een aanbeveling genereert die niet relevant is voor uw omgeving, kunt u deze stoppen door de beleids definitie die de aanbeveling verzendt, uit te scha kelen.
+Zie [beveiligings aanbevelingen beheren](security-center-recommendations.md)voor meer informatie over aanbevelingen.
 
-1. Selecteer in Security Center in de sectie **Beleid & compliance** de optie **Beveiligingsbeleid**.
+1. Selecteer in Security Center in het gedeelte **beleids & naleving** de optie **beveiligings beleid**.
 
-   ![beleidsbeheer](./media/tutorial-security-policy/policy-management.png)
+   ![beleids beheer](./media/tutorial-security-policy/policy-management.png)
 
-2. Selecteer de abonnements- of beheergroep waarvoor u de aanbeveling wilt uitschakelen.
+2. Selecteer het abonnement of de beheer groep waarvoor u de aanbeveling wilt uitschakelen.
 
    > [!NOTE]
    > Houd er rekening mee dat in een beheergroep het beleid wordt toepast op alle abonnementen. Als u dus het beleid van een abonnement uitschakelt en het abonnement behoort tot een beheergroep waarin hetzelfde beleid wordt gebruikt, blijft u de beleidsaanbevelingen ontvangen. Het beleid wordt nog steeds toegepast op beheerniveau en de aanbevelingen worden nog steeds gegenereerd.
 
-1. Selecteer **Effectief beleid weergeven**.
+1. Selecteer **effectief beleid weer geven**.
 
    ![beleid uitschakelen](./media/tutorial-security-policy/view-effective-policy.png)
 
@@ -113,22 +113,22 @@ Zie [Beveiligingsaanbevelingen beheren](security-center-recommendations.md)voor 
 
    ![beleid uitschakelen](./media/tutorial-security-policy/security-policy.png)
 
-1. Zoek in de sectie **PARAMETERS** naar het beleid dat de aanbeveling aanroept die u wilt uitschakelen en selecteer in de vervolgkeuzelijst **Uitgeschakeld**
+1. Zoek in de sectie **para meters** naar het beleid dat de aanbeveling aanroept die u wilt uitschakelen, en selecteer in de vervolg keuzelijst de optie **uitgeschakeld**
 
    ![beleid uitschakelen](./media/tutorial-security-policy/disable-policy.png)
 
 1. Selecteer **Opslaan**.
 
    > [!NOTE]
-   > Het kan tot 12 uur duren voordat beleidswijzigingen worden uitgeschakeld.
+   > Het kan tot 12 uur duren voordat de wijzigingen van het beleid uitschakelen zijn doorgevoerd.
 
 
 
 ## <a name="next-steps"></a>Volgende stappen
-In dit artikel leert u over beveiligingsbeleid. Zie voor gerelateerde informatie de volgende artikelen:
+In dit artikel hebt u geleerd over het beveiligings beleid. Raadpleeg de volgende artikelen voor verwante informatie:
 
-* Zie [Snelstart: Een beleidstoewijzing maken om niet-compatibele resources te identificeren met behulp van de Azure PowerShell-module voor](../governance/policy/assign-policy-powershell.md) instructies voor het instellen van beleid met PowerShell: Een beleidstoewijzing maken om niet-compatibele resources te identificeren met behulp van de Azure PowerShell-module
+* Zie [Quick Start: een beleids toewijzing maken om niet-compatibele resources te identificeren met behulp van de module Azure PowerShell](../governance/policy/assign-policy-powershell.md) voor instructies over het instellen van beleids regels met behulp van Power shell
 
-* Zie [Beleid maken en beheren om naleving af te dwingen voor](../governance/policy/tutorials/create-and-manage.md)instructies voor het bewerken van een beveiligingsbeleid in Azure-beleid.
+* Zie [beleid maken en beheren om naleving af te dwingen](../governance/policy/tutorials/create-and-manage.md)voor instructies over het bewerken van een beveiligings beleid in azure Policy.
 
-* Zie Wat is Azure Policy voor instructies over het instellen van een beleid voor abonnementen of beheergroepen met Azure [Policy?](../governance/policy/overview.md)
+* Zie [Wat is Azure Policy?](../governance/policy/overview.md) voor instructies over het instellen van een beleid in abonnementen of op beheer groepen met behulp van Azure Policy.

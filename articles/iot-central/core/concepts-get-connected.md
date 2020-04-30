@@ -1,6 +1,6 @@
 ---
-title: Apparaatconnectiviteit in Azure IoT Central | Microsoft Documenten
-description: In dit artikel worden belangrijke concepten geïntroduceerd met betrekking tot apparaatconnectiviteit in Azure IoT Central
+title: Connectiviteit van apparaten in azure IoT Central | Microsoft Docs
+description: In dit artikel vindt u belang rijke concepten met betrekking tot de connectiviteit van apparaten in azure IoT Central
 author: dominicbetts
 ms.author: dobett
 ms.date: 12/09/2019
@@ -12,183 +12,183 @@ ms.custom:
 - amqp
 - mqtt
 ms.openlocfilehash: 1398169c44dadcd11ad037e4e3a1cc0132e21f13
-ms.sourcegitcommit: 75089113827229663afed75b8364ab5212d67323
-ms.translationtype: MT
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82024690"
 ---
-# <a name="get-connected-to-azure-iot-central"></a>Verbinding maken met Azure IoT Central
+# <a name="get-connected-to-azure-iot-central"></a>Maak verbinding met Azure IoT Central
 
-*Dit artikel is van toepassing op operators en apparaatontwikkelaars.*
+*Dit artikel is van toepassing op Opera tors en ontwikkel aars van apparaten.*
 
 In dit artikel worden de opties beschreven voor het verbinden van uw apparaten met een Azure IoT Central-toepassing.
 
-Doorgaans moet u een apparaat in uw toepassing registreren voordat het verbinding kan maken. IoT Central ondersteunt echter scenario's waarin [apparaten verbinding kunnen maken zonder eerst geregistreerd te worden.](#connect-without-registering-devices)
+Normaal gesp roken moet u een apparaat registreren in uw toepassing voordat u verbinding kunt maken. IoT Central ondersteunt echter scenario's waarbij [apparaten verbinding kunnen maken zonder eerst te worden geregistreerd](#connect-without-registering-devices).
 
-IoT Central gebruikt de [DPS (Azure IoT Hub Device Provisioning service)](../../iot-dps/about-iot-dps.md) om het verbindingsproces te beheren. Een apparaat maakt eerst verbinding met een DPS-eindpunt om de informatie op te halen die het nodig heeft om verbinding te maken met uw toepassing. Intern gebruikt uw IoT Central-toepassing een IoT-hub om de apparaatconnectiviteit te verwerken. Het gebruik van DPS maakt:
+IoT Central maakt gebruik van de [Azure IOT hub Device Provisioning-Service (DPS)](../../iot-dps/about-iot-dps.md) om het verbindings proces te beheren. Een apparaat maakt eerst verbinding met een DPS-eind punt om de informatie op te halen die nodig is om verbinding te maken met uw toepassing. Intern gebruikt uw IoT Central-toepassing een IoT-hub voor het afhandelen van connectiviteit met apparaten. Met DPS kunt u het volgende doen:
 
-- IoT Central ondersteunt onboarding en het verbinden van apparaten op schaal.
-- U genereert apparaatreferenties en configureert de apparaten offline zonder de apparaten te registreren via de IoT Central UI.
-- U gebruikt uw eigen apparaat-id's om apparaten in IoT Central te registreren. Het gebruik van uw eigen apparaat-id vereenvoudigt de integratie met bestaande back-officesystemen.
-- Eén consistente manier om apparaten aan te sluiten op IoT Central.
+- IoT Central voor het ondersteunen van onboarding en het verbinden van apparaten op schaal.
+- U kunt de referenties van het apparaat genereren en de apparaten offline configureren zonder de apparaten te registreren via IoT Central-gebruikers interface.
+- U kunt uw eigen apparaat-Id's gebruiken om apparaten te registreren in IoT Central. Het gebruik van uw eigen apparaat-Id's vereenvoudigt de integratie met bestaande back-office-systemen.
+- Een enkele, consistente manier om apparaten te verbinden met IoT Central.
 
-Om de communicatie tussen een apparaat en uw toepassing te beveiligen, ondersteunt IoT Central zowel SAS- als X.509-certificaten voor gedeelde toegangshandtekeningen (SAS). X.509-certificaten worden aanbevolen in productieomgevingen.
+IoT Central ondersteunt zowel Shared Access signatures (SAS) als X. 509-certificaten om de communicatie tussen een apparaat en uw toepassing te beveiligen. X. 509-certificaten worden aanbevolen in productie omgevingen.
 
-In dit artikel worden de volgende use cases beschreven:
+In dit artikel worden de volgende gebruiks voorbeelden beschreven:
 
 - [Eén apparaat verbinden met SAS](#connect-a-single-device)
-- [Apparaten op schaal verbinden met SAS](#connect-devices-at-scale-using-sas)
-- [Verbind apparaten op schaal met X.509-certificaten](#connect-devices-using-x509-certificates) - de aanbevolen aanpak voor productieomgevingen.
-- [Apparaten verbinden zonder ze eerst te registreren](#connect-without-registering-devices)
-- [Apparaten verbinden die afzonderlijke INSCHRIJVINGen van DPS gebruiken](#individual-enrollment-based-device-connectivity)
-- [Apparaten verbinden met functies voor IoT Plug and Play (preview)](#connect-devices-with-iot-plug-and-play-preview)
+- [Apparaten op schaal aansluiten met SAS](#connect-devices-at-scale-using-sas)
+- [Apparaten op schaal aansluiten met X. 509-certificaten](#connect-devices-using-x509-certificates) : de aanbevolen benadering voor productie omgevingen.
+- [Apparaten verbinden zonder deze eerst te registreren](#connect-without-registering-devices)
+- [Apparaten verbinden die individuele inschrijvingen voor DPS gebruiken](#individual-enrollment-based-device-connectivity)
+- [Apparaten verbinden met IoT Plug en Play-functies (preview)](#connect-devices-with-iot-plug-and-play-preview)
 
 ## <a name="connect-a-single-device"></a>Eén apparaat verbinden
 
-Deze aanpak is handig wanneer u experimenteert met IoT Central of testapparaten. U de SAS-sleutels van uw IoT Central-verbinding gebruiken om een apparaat aan te sluiten op uw IoT Central-toepassing. Kopieer de _SAS-sleutel_ van het apparaat uit de verbindingsgegevens van een geregistreerd apparaat:
+Deze aanpak is nuttig wanneer u experimenteert met IoT Central of apparaten testen. U kunt de SAS-sleutels voor de verbinding met uw IoT Central-toepassing gebruiken om een apparaat te verbinden met uw IoT Central-toepassing. Kopieer de _SAS-sleutel_ van het apparaat uit de verbindings gegevens voor een geregistreerd apparaat:
 
-![SAS-sleutels voor een individueel apparaat](./media/concepts-get-connected/single-device-sas.png)
+![SAS-sleutels voor een afzonderlijk apparaat](./media/concepts-get-connected/single-device-sas.png)
 
-Zie de [clienttoepassing Node.js maken en verbinden met uw azure IoT Central-toepassingszelfstudie](./tutorial-connect-device-nodejs.md) voor meer informatie.
+Zie voor meer informatie de zelf studie [een node. js-client toepassing maken en verbinden met uw Azure IOT Central-toepassing](./tutorial-connect-device-nodejs.md) .
 
-## <a name="connect-devices-at-scale-using-sas"></a>Apparaten op schaal verbinden met SAS
+## <a name="connect-devices-at-scale-using-sas"></a>Apparaten op schaal aansluiten met SAS
 
-Als u apparaten op schaal wilt verbinden met IoT Central met SAS-toetsen, moet u de apparaten registreren en vervolgens instellen:
+Als u apparaten wilt verbinden met IoT Central op schaal met SAS-sleutels, moet u de apparaten registreren en vervolgens instellen:
 
-### <a name="register-devices-in-bulk"></a>Apparaten in bulk registreren
+### <a name="register-devices-in-bulk"></a>Apparaten bulksgewijs registreren
 
-Als u een groot aantal apparaten wilt registreren met uw IoT Central-toepassing, gebruikt u een CSV-bestand om [apparaat-id's en apparaatnamen](howto-manage-devices.md#import-devices)te importeren.
+Als u een groot aantal apparaten wilt registreren bij uw IoT Central-toepassing, gebruikt u een CSV-bestand om [apparaat-id's en apparaatnamen te importeren](howto-manage-devices.md#import-devices).
 
-Als u de verbindingsgegevens voor de geïmporteerde apparaten wilt ophalen, [exporteert u een CSV-bestand uit uw IoT Central-toepassing](howto-manage-devices.md#export-devices). Het geëxporteerde CSV-bestand bevat de apparaat-id's en de SAS-sleutels.
+Als u de verbindings gegevens voor de geïmporteerde apparaten wilt ophalen, [exporteert u een CSV-bestand van uw IOT Central-toepassing](howto-manage-devices.md#export-devices). Het geëxporteerde CSV-bestand bevat de apparaat-Id's en de SAS-sleutels.
 
 ### <a name="set-up-your-devices"></a>Uw apparaten instellen
 
-Gebruik de verbindingsgegevens uit het exportbestand in uw apparaatcode om uw apparaten in staat te stellen verbinding te maken en gegevens naar IoT naar uw IoT Central-toepassing te verzenden. U hebt ook de DPS **ID-scope** nodig voor uw toepassing. U deze waarde vinden in **beheer > apparaatverbinding.**
+Gebruik de verbindings gegevens van het export bestand in uw apparaatcode om uw apparaten in staat te stellen verbinding te maken en gegevens naar IoT te verzenden naar uw IoT Central-toepassing. U hebt ook het DPS **-id-bereik** voor uw toepassing nodig. U kunt deze waarde vinden in **beheer > apparaat verbinding**.
 
 > [!NOTE]
-> Zie Verbinding maken zonder apparaten eerst te registreren voor meer informatie over hoe u apparaten verbinden zonder ze eerst te [registreren.](#connect-without-registering-devices)
+> Zie [verbinding maken zonder eerst apparaten te registreren](#connect-without-registering-devices)voor meer informatie over het verbinden van apparaten zonder deze eerst te registreren in IOT Central.
 
-## <a name="connect-devices-using-x509-certificates"></a>Apparaten verbinden met X.509-certificaten
+## <a name="connect-devices-using-x509-certificates"></a>Apparaten verbinden met X. 509-certificaten
 
-In een productieomgeving is het gebruik van X.509-certificaten het aanbevolen apparaatverificatiemechanisme voor IoT Central. Zie [Apparaatverificatie met X.509 CA-certificaten](../../iot-hub/iot-hub-x509ca-overview.md)voor meer informatie.
+In een productie omgeving, met behulp van X. 509-certificaten is het aanbevolen mechanisme voor verificatie van apparaten voor IoT Central. Zie voor meer informatie [apparaat-verificatie met behulp van X. 509 CA-certificaten](../../iot-hub/iot-hub-x509ca-overview.md).
 
-Voordat u een apparaat verbindt met een X.509-certificaat, voegt u een tussen- of hoofdx.509-certificaat toe aan uw toepassing. Apparaten moeten blad X.509-certificaten gebruiken die zijn gegenereerd uit het basis- of tussencertificaat.
+Voordat u een apparaat verbindt met een X. 509-certificaat, moet u een tussenliggend of basis X. 509-certificaat toevoegen en verifiëren in uw toepassing. Apparaten moeten Leaf X. 509-certificaten gebruiken die zijn gegenereerd op basis van het hoofd-of tussenliggende certificaat.
 
-### <a name="add-and-verify-a-root-or-intermediate-certificate"></a>Een basis- of tussencertificaat toevoegen en verifiëren
+### <a name="add-and-verify-a-root-or-intermediate-certificate"></a>Een basis-of tussenliggend certificaat toevoegen en verifiëren
 
-Navigeer naar **Beheer > Apparaatverbinding > Primair certificaat beheren** en voeg het X.509-root- of intermediatecertificaat toe dat u gebruikt om de apparaatcertificaten te genereren.
+Ga naar **beheer > apparaat verbinding > het primaire certificaat te beheren** en voeg het X. 509 basis-of tussen certificaat toe dat u gebruikt voor het genereren van de certificaten van het apparaat.
 
 ![Verbindingsinstellingen](media/concepts-get-connected/manage-x509-certificate.png)
 
-Het verifiëren van het eigendom van het certificaat zorgt ervoor dat de persoon die het certificaat uploadt de privésleutel van het certificaat heeft. Ga als volgt te werk om het certificaat te verifiëren:
+Verifiëren van eigendom van het certificaat zorgt ervoor dat de persoon die het certificaat uploadt, de persoonlijke sleutel van het certificaat heeft. Het certificaat verifiëren:
 
-  1. Selecteer de knop naast **Verificatiecode** om een code te genereren.
-  1. Maak een X.509-verificatiecertificaat met de verificatiecode die u in de vorige stap hebt gegenereerd. Sla het certificaat op als een .cer-bestand.
-  1. Upload het ondertekende verificatiecertificaat en selecteer **Verifiëren**. Het certificaat wordt gemarkeerd als **Geverifieerd** wanneer de verificatie is geslaagd.
+  1. Selecteer de knop naast **verificatie code** om een code te genereren.
+  1. Maak een X. 509-verificatie certificaat met de verificatie code die u in de vorige stap hebt gegenereerd. Sla het certificaat op als een CER-bestand.
+  1. Upload het ondertekende verificatie certificaat en selecteer **verifiëren**. Het certificaat is gemarkeerd als **gecontroleerd** wanneer de verificatie is geslaagd.
 
-Als u een beveiligingslek hebt of als uw primaire certificaat verloopt, gebruikt u het secundaire certificaat om downtime te verminderen. U apparaten blijven inrichten met behulp van het secundaire certificaat terwijl u het primaire certificaat bijwerkt.
+Als u een inbreuk op de beveiliging hebt of als uw primaire certificaat is ingesteld op verlopen, gebruikt u het secundaire certificaat om de downtime te verminderen. U kunt door gaan met het inrichten van apparaten met behulp van het secundaire certificaat wanneer u het primaire certificaat bijwerkt.
 
 ### <a name="register-and-connect-devices"></a>Apparaten registreren en verbinden
 
-Als u apparaten in bulk wilt verbinden met X.509-certificaten, registreert u eerst de apparaten in uw toepassing door een CSV-bestand te gebruiken om [de apparaat-id's en apparaatnamen](howto-manage-devices.md#import-devices)te importeren. De apparaat-id's moeten allemaal in kleine letters.
+Als u apparaten bulksgewijs wilt verbinden met X. 509-certificaten, moet u eerst de apparaten in uw toepassing registreren met behulp van een CSV-bestand om [de apparaat-id's en apparaatnamen te importeren](howto-manage-devices.md#import-devices). De apparaat-Id's moeten in kleine letters worden gereduceerd.
 
-X.509 bladcertificaten genereren voor uw apparaten met behulp van het geüploade root- of intermediatecertificaat. Gebruik de **apparaat-id** als waarde `CNAME` in de bladcertificaten. Uw apparaatcode heeft de waarde van de **id-scope** nodig voor uw toepassing, de **apparaat-id**en het bijbehorende apparaatcertificaat.
+Genereer X. 509-blad certificaten voor uw apparaten met het geüploade basis certificaat Gebruik de **apparaat-id** als `CNAME` de waarde in de blad certificaten. De apparaatcode heeft de waarde voor **id-bereik** nodig voor uw toepassing, de **apparaat-id**en het bijbehorende certificaat van het apparaat.
 
-### <a name="for-testing-purposes-only"></a>Alleen voor testdoeleinden
+### <a name="for-testing-purposes-only"></a>Alleen voor test doeleinden
 
-Voor alleen testen u de volgende hulpprogramma's gebruiken om root-, intermediate- en apparaatcertificaten te genereren:
+Voor alleen testen kunt u de volgende hulpprogram ma's gebruiken om basis-, tussenliggende en apparaat certificaten te genereren:
 
-- [Hulpprogramma's voor de Azure IoT Device Provisioning Device SDK:](https://github.com/Azure/azure-iot-sdk-node/blob/master/provisioning/tools/readme.md)een verzameling node.js-hulpprogramma's die u gebruiken om X.509-certificaten en -sleutels te genereren en te verifiëren.
-- Als u een DevKit-apparaat gebruikt, genereert dit [opdrachtregelgereedschap een CA-certificaat](https://aka.ms/iotcentral-docs-dicetool) dat u aan uw IoT Central-toepassing toevoegen om de certificaten te verifiëren.
-- [Beheer test CA-certificaten voor voorbeelden en zelfstudies:](https://github.com/Azure/azure-iot-sdk-c/blob/master/tools/CACertificates/CACertificateOverview.md)een verzameling PowerShell- en Bash-scripts om:
-  - Maak een certificaatketen.
-  - Sla de certificaten op als .cer-bestanden om te uploaden naar uw IoT Central-toepassing.
-  - Gebruik de verificatiecode van de IoT Central-toepassing om het verificatiecertificaat te genereren.
-  - Maak bladcertificaten voor uw apparaten met uw apparaat-id's als parameter voor het gereedschap.
+- [Hulpprogram ma's voor de apparaat-SDK van Azure IOT Device Provisioning](https://github.com/Azure/azure-iot-sdk-node/blob/master/provisioning/tools/readme.md): een verzameling node. js-hulpprogram ma's die u kunt gebruiken om X. 509-certificaten en-sleutels te genereren en te controleren.
+- Als u een DevKit-apparaat gebruikt, wordt met dit [opdracht regel programma](https://aka.ms/iotcentral-docs-dicetool) een CA-certificaat gegenereerd dat u aan uw IOT Central-toepassing kunt toevoegen om de certificaten te controleren.
+- [Testen van CA-certificaten voor voor beelden en zelf studies beheren](https://github.com/Azure/azure-iot-sdk-c/blob/master/tools/CACertificates/CACertificateOverview.md): een verzameling Power shell-en bash-scripts voor het volgende:
+  - Maak een certificaat keten.
+  - Sla de certificaten op als CER-bestanden die u wilt uploaden naar uw IoT Central-toepassing.
+  - Gebruik de verificatie code uit de IoT Central toepassing om het verificatie certificaat te genereren.
+  - Maak blad certificaten voor uw apparaten met behulp van uw apparaat-Id's als een para meter voor het hulp programma.
 
-### <a name="further-reference"></a>Verdere verwijzing
+### <a name="further-reference"></a>Aanvullende Naslag informatie
 
-- [Voorbeeldimplementatie voor RaspberryPi](https://aka.ms/iotcentral-docs-Raspi-releases)
-- [Voorbeeldapparaatclient in C](https://github.com/Azure/azure-iot-sdk-c/blob/master/provisioning_client/devdoc/using_provisioning_client.md)
+- [Voorbeeld implementatie voor RaspberryPi](https://aka.ms/iotcentral-docs-Raspi-releases)
+- [Voor beeld van apparaatclient in C](https://github.com/Azure/azure-iot-sdk-c/blob/master/provisioning_client/devdoc/using_provisioning_client.md)
 
 ## <a name="connect-without-registering-devices"></a>Verbinding maken zonder apparaten te registreren
 
-De eerder beschreven scenario's vereisen allemaal dat u apparaten in uw toepassing registreert voordat ze verbinding maken. IoT Central stelt OEM's ook in staat om apparaten in massa te produceren die verbinding kunnen maken zonder eerst te worden geregistreerd. Een OEM genereert geschikte apparaatreferenties en configureert de apparaten in de fabriek. Wanneer een klant een apparaat voor de eerste keer inschakelt, maakt het verbinding met DPS, dat het apparaat vervolgens automatisch verbindt met de juiste IoT Central-toepassing. Een IoT Central-operator moet het apparaat goedkeuren voordat het gegevens naar de toepassing gaat verzenden.
+De eerder beschreven scenario's vereisen dat u apparaten in uw toepassing registreert voordat ze verbinding maken. Met IoT Central kunnen Oem's ook apparaten massaal produceren waarmee verbinding kan worden gemaakt zonder eerst te worden geregistreerd. Een OEM genereert de juiste referenties voor het apparaat en configureert de apparaten in de fabriek. Wanneer een klant een apparaat voor de eerste keer inschakelt, wordt er verbinding gemaakt met DPS, waarna het apparaat automatisch wordt verbonden met de juiste IoT Central-toepassing. Een IoT Central-operator moet het apparaat goed keuren voordat het begint met het verzenden van gegevens naar de toepassing.
 
-De stroom is iets anders, afhankelijk van of de apparaten SAS-tokens of X.509-certificaten gebruiken:
+De stroom wijkt enigszins af van de vraag of de apparaten SAS-tokens of X. 509-certificaten gebruiken:
 
-### <a name="connect-devices-that-use-sas-tokens-without-registering"></a>Apparaten verbinden die SAS-tokens gebruiken zonder zich te registreren
+### <a name="connect-devices-that-use-sas-tokens-without-registering"></a>Apparaten koppelen die gebruikmaken van SAS-tokens zonder te registreren
 
-1. Kopieer de primaire sleutel van de IoT Central-toepassing:
+1. Kopieer de primaire sleutel van de IoT Central toepassings groep:
 
-    ![Primaire SAS-sleutel voor toepassingsgroep](media/concepts-get-connected/group-sas-keys.png)
+    ![Primaire SAS-sleutel van toepassings groep](media/concepts-get-connected/group-sas-keys.png)
 
-1. Gebruik het gereedschap [dps-keygen](https://www.npmjs.com/package/dps-keygen) om de SAS-sleutels van het apparaat te genereren. Gebruik de primaire groepssleutel uit de vorige stap. De apparaat-geïdentificeerde gegevens moeten in kleine letters worden uitgevoerd:
+1. Gebruik het hulp programma [DPS-keygen](https://www.npmjs.com/package/dps-keygen) om de SAS-sleutels van het apparaat te genereren. Gebruik de primaire sleutel van de groep uit de vorige stap. De apparaat-Id's moeten kleine letters zijn:
 
     ```cmd
     dps-keygen -mk:<group primary key> -di:<device ID>
     ```
 
-1. De OEM knippert elk apparaat met een apparaat-id, een gegenereerde SAS-sleutel voor het apparaat en de scopewaarde van de **toepassings-id.**
+1. De OEM knippert elk apparaat met een apparaat-ID, een gegenereerde SAS-sleutel voor het apparaat en de waarde voor het bereik van de toepassings **-id** .
 
-1. Wanneer u een apparaat inschakelt, maakt het eerst verbinding met DPS om de IoT Central-registratiegegevens op te halen.
+1. Wanneer u overschakelt op een apparaat, maakt het eerst verbinding met DPS om de IoT Central registratie gegevens op te halen.
 
-    Het apparaat heeft in eerste instantie een apparaatstatus **die niet is gekoppeld op** de pagina **Apparaten** en is niet toegewezen aan een apparaatsjabloon. Migreer het apparaat **op** de pagina **Apparaten** naar de juiste apparaatsjabloon. Apparaatinrichting is nu voltooid, de apparaatstatus is nu **ingericht**en het apparaat kan beginnen met het verzenden van gegevens.
+    Het apparaat heeft in eerste instantie een Apparaatstatus **die niet is gekoppeld** op de pagina **apparaten** en is niet toegewezen aan een sjabloon voor het apparaat. Op de pagina **apparaten** **migreert** u het apparaat naar de juiste Device-sjabloon. Het inrichten van apparaten is nu voltooid, de apparaatstatus is nu **ingericht**en het apparaat kan beginnen met het verzenden van gegevens.
 
-    Op de **verbindingspagina Beheer > apparaat** bepaalt de optie **Automatisch goedkeuren** of u het apparaat handmatig moet goedkeuren voordat het gegevens kan verzenden.
-
-    > [!NOTE]
-    > Zie Apparaten verbinden [met IoT Plug and Play (preview)](#connect-devices-with-iot-plug-and-play-preview)voor meer informatie over het automatisch koppelen van een apparaat aan een apparaatsjabloon.
-
-### <a name="connect-devices-that-use-x509-certificates-without-registering"></a>Apparaten verbinden die X.509-certificaten gebruiken zonder registratie
-
-1. [Voeg een root- of intermediate X.509-certificaat](#connect-devices-using-x509-certificates) toe aan uw IoT Central-toepassing en verifieer deze. (#connect-apparaten-gebruiken-x509-certificaten)
-
-1. Genereer de bladcertificaten voor uw apparaten met behulp van het root- of intermediatecertificaat dat u aan uw IoT Central-toepassing hebt toegevoegd. Gebruik kleine -case apparaat-id's als de `CNAME` in de bladcertificaten.
-
-1. De OEM knippert elk apparaat met een apparaat-id, een gegenereerd x.509-certificaat en de scopewaarde van de **toepassings-id.**
-
-1. Wanneer u een apparaat inschakelt, maakt het eerst verbinding met DPS om de IoT Central-registratiegegevens op te halen.
-
-    Het apparaat heeft in eerste instantie een apparaatstatus **die niet is gekoppeld op** de pagina **Apparaten** en is niet toegewezen aan een apparaatsjabloon. Migreer het apparaat **op** de pagina **Apparaten** naar de juiste apparaatsjabloon. Apparaatinrichting is nu voltooid, de apparaatstatus is nu **ingericht**en het apparaat kan beginnen met het verzenden van gegevens.
-
-    Op de **verbindingspagina Beheer > apparaat** bepaalt de optie **Automatisch goedkeuren** of u het apparaat handmatig moet goedkeuren voordat het gegevens kan verzenden.
+    Op de pagina **beheer > apparaat** wordt met de optie **automatisch goed keuren** bepaald of u het apparaat hand matig moet goed keuren voordat het gegevens kan verzenden.
 
     > [!NOTE]
-    > Zie Apparaten verbinden [met IoT Plug and Play (preview)](#connect-devices-with-iot-plug-and-play-preview)voor meer informatie over het automatisch koppelen van een apparaat aan een apparaatsjabloon.
+    > Zie [apparaten verbinden met IoT Plug en Play (preview)](#connect-devices-with-iot-plug-and-play-preview)voor meer informatie over het automatisch koppelen van een apparaat aan een apparaataccount.
 
-## <a name="individual-enrollment-based-device-connectivity"></a>Apparaatconnectiviteit op basis van individuele inschrijvingen
+### <a name="connect-devices-that-use-x509-certificates-without-registering"></a>Apparaten verbinden die X. 509-certificaten gebruiken zonder te registreren
 
-Voor klanten die apparaten verbinden die elk hun eigen verificatiereferenties hebben, gebruikt u afzonderlijke inschrijvingen. Een individuele inschrijving is een vermelding voor één apparaat dat verbinding mag maken. Individuele inschrijvingen kunnen X.509 leaf-certificaten of SAS-tokens (van een fysieke of virtuele vertrouwde platformmodule) gebruiken als attestmechanismen. De apparaat-ID (ook wel registratie-ID genoemd) in een individuele inschrijving is alfanumeriek, kleine letters en kan koppeltekens bevatten. Zie [DPS individuele inschrijving](https://docs.microsoft.com/azure/iot-dps/concepts-service#individual-enrollment)voor meer informatie .
+1. [Voeg en verifieer een basis-of tussenliggende X. 509-certificaat](#connect-devices-using-x509-certificates) aan uw IOT Central-toepassing. (#connect-apparaten-gebruiken-x509-certificaten)
+
+1. Genereer de blad certificaten voor uw apparaten met behulp van het basis-of tussenliggende certificaat dat u aan uw IoT Central-toepassing hebt toegevoegd. Gebruik kleine-case apparaat-Id's als `CNAME` de in de Blade certificaten.
+
+1. De OEM knippert elk apparaat met een apparaat-ID, een gegenereerd links X. 509-certificaat en de waarde voor het bereik van de toepassings **-id** .
+
+1. Wanneer u overschakelt op een apparaat, maakt het eerst verbinding met DPS om de IoT Central registratie gegevens op te halen.
+
+    Het apparaat heeft in eerste instantie een Apparaatstatus **die niet is gekoppeld** op de pagina **apparaten** en is niet toegewezen aan een sjabloon voor het apparaat. Op de pagina **apparaten** **migreert** u het apparaat naar de juiste Device-sjabloon. Het inrichten van apparaten is nu voltooid, de apparaatstatus is nu **ingericht**en het apparaat kan beginnen met het verzenden van gegevens.
+
+    Op de pagina **beheer > apparaat** wordt met de optie **automatisch goed keuren** bepaald of u het apparaat hand matig moet goed keuren voordat het gegevens kan verzenden.
+
+    > [!NOTE]
+    > Zie [apparaten verbinden met IoT Plug en Play (preview)](#connect-devices-with-iot-plug-and-play-preview)voor meer informatie over het automatisch koppelen van een apparaat aan een apparaataccount.
+
+## <a name="individual-enrollment-based-device-connectivity"></a>Afzonderlijke op registratie gebaseerde connectiviteit van apparaten
+
+Gebruik individuele inschrijvingen voor klanten die elk hun eigen verificatie referenties verbinden. Een afzonderlijke inschrijving is een vermelding voor één apparaat dat verbinding mag maken. Afzonderlijke inschrijvingen kunnen X. 509 Leaf-certificaten of SAS-tokens (van een fysieke of virtuele Trusted Platform Module) gebruiken als Attestation-mechanismen. De apparaat-ID (ook wel registratie-ID genoemd) in een afzonderlijke inschrijving is alfanumerieke tekens en kan afbreek streepjes bevatten. Zie voor meer informatie [DPS individuele inschrijving](https://docs.microsoft.com/azure/iot-dps/concepts-service#individual-enrollment).
 
 > [!NOTE]
-> Wanneer u een afzonderlijke inschrijving voor een apparaat maakt, heeft deze voorrang op de standaardopties voor groepsinschrijving in uw IoT Central-toepassing.
+> Wanneer u een afzonderlijke inschrijving voor een apparaat maakt, heeft dit voor rang op de standaard opties voor het inschrijven van groepen in uw IoT Central-toepassing.
 
 ### <a name="creating-individual-enrollments"></a>Afzonderlijke inschrijvingen maken
 
-IoT Central ondersteunt de volgende attestmechanismen voor individuele inschrijvingen:
+IoT Central ondersteunt de volgende Attestation-mechanismen voor individuele inschrijvingen:
 
-- **Symmetrische sleutelattest:** Symmetrische sleutelattest is een eenvoudige benadering van het verifiëren van een apparaat met de DPS-instantie. Als u een afzonderlijke inschrijving wilt maken die symmetrische toetsen gebruikt, opent u de pagina **Apparaatverbinding,** selecteert u **Individuele inschrijving** als verbindingsmethode en **Gedeelde toegangshandtekening (SAS)** als mechanisme. Voer basis64 gecodeerde primaire en secundaire toetsen in en sla de wijzigingen op. Gebruik de **ID-scope**, **apparaat-id**en de primaire of secundaire sleutel om uw apparaat aan te sluiten.
-
-    > [!TIP]
-    > Voor het testen u **OpenSSL** gebruiken om basis64 gecodeerde sleutels te genereren:`openssl rand -base64 64`
-
-- **X.509-certificaten:** Als u een afzonderlijke inschrijving met X.509-certificaten wilt maken, opent u de pagina **Apparaatverbinding,** selecteert u **Individuele inschrijving** als verbindingsmethode en **Certificaten (X.509)** als mechanisme. Apparaatcertificaten die worden gebruikt bij een afzonderlijke inschrijvingsvermelding, hebben de vereiste dat de uitgever en de cn van het onderwerp zijn ingesteld op de apparaat-id.
+- **Attestation van symmetrische sleutels:** Symmetrische-sleutel attest is een eenvoudige benadering voor het verifiëren van een apparaat met het DPS-exemplaar. Als u een afzonderlijke inschrijving wilt maken die gebruikmaakt van symmetrische sleutels, opent u de pagina **verbinding met apparaat** , selecteert u **afzonderlijke inschrijving** als de verbindings methode en de **Shared Access Signature (SAS)** als mechanisme. Voer Base64 Encoded Primary en secundaire sleutels in en sla uw wijzigingen op. Gebruik de **id-Scope**, de **apparaat-id**en de primaire of secundaire sleutel om verbinding te maken met uw apparaat.
 
     > [!TIP]
-    > Voor het testen u [Hulpprogramma's voor de Azure IoT Device Provisioning Device SDK voor Node.js](https://github.com/Azure/azure-iot-sdk-node/tree/master/provisioning/tools) gebruiken om een zelfondertekend certificaat te genereren:`node create_test_cert.js device "mytestdevice"`
+    > Voor testen kunt u **openssl** gebruiken om base64-gecodeerde sleutels te genereren:`openssl rand -base64 64`
 
-- **Attest van trusted platform module (TPM):** Een [TPM](https://docs.microsoft.com/azure/iot-dps/concepts-tpm-attestation) is een type hardwarebeveiligingsmodule. Het gebruik van een TPM is een van de veiligste manieren om een apparaat aan te sluiten. In dit artikel wordt ervan uitgegaan dat u een discrete firmware of geïntegreerde TPM gebruikt. Software geëmuleerde TPM's zijn zeer geschikt voor prototypen of testen, maar ze bieden niet hetzelfde beveiligingsniveau als discrete, firmware of geïntegreerde TPM's. Gebruik geen software TPM's in productie. Als u een afzonderlijke inschrijving wilt maken die een TPM gebruikt, opent u de pagina **Apparaatverbinding,** selecteert u **Individuele inschrijving** als verbindingsmethode en **TPM** als mechanisme. Voer de tpm-goedkeuringssleutel in en sla de verbindingsgegevens van het apparaat op.
+- **X. 509-certificaten:** Als u een afzonderlijke registratie met X. 509-certificaten wilt maken, opent u de pagina **verbinding met apparaat** , selecteert u **afzonderlijke inschrijving** als de verbindings methode en **certificaten (X. 509)** als mechanisme. Voor apparaats certificaten die worden gebruikt met een afzonderlijke inschrijvings vermelding is vereist dat de certificaat verlener en het onderwerp CN worden ingesteld op de apparaat-ID.
 
-## <a name="connect-devices-with-iot-plug-and-play-preview"></a>Apparaten verbinden met IoT Plug and Play (voorbeeld)
+    > [!TIP]
+    > Voor het testen kunt u [Hulpprogram ma's voor de Azure IOT Device Provisioning Device SDK voor node. js](https://github.com/Azure/azure-iot-sdk-node/tree/master/provisioning/tools) gebruiken om een zelfondertekend certificaat te genereren:`node create_test_cert.js device "mytestdevice"`
 
-Een van de belangrijkste functies van IoT Plug and Play (preview) met IoT Central is de mogelijkheid om apparaatsjablonen automatisch te koppelen aan de apparaatverbinding. Samen met apparaatreferenties kunnen apparaten nu de **CapabilityModelId** verzenden als onderdeel van het apparaatregistratiegesprek. Met deze mogelijkheid kan IoT Central de apparaatsjabloon aan het apparaat ontdekken en koppelen. Het detectieproces werkt als volgt:
+- **Attestation van trusted platform module (TPM):** Een [TPM](https://docs.microsoft.com/azure/iot-dps/concepts-tpm-attestation) is een type hardware Security module. Het gebruik van een TPM is een van de veiligste manieren om verbinding te maken met een apparaat. In dit artikel wordt ervan uitgegaan dat u een afzonderlijke, firmware of geïntegreerde TPM gebruikt. Software geëmuleerde Tpm's zijn goed geschikt voor het maken van prototypen of tests, maar bieden geen hetzelfde beveiligings niveau als discrete, firmware of geïntegreerde Tpm's. Gebruik geen software-Tpm's in productie. Als u een afzonderlijke inschrijving wilt maken die gebruikmaakt van een TPM, opent u de pagina **verbinding met apparaat** , selecteert u **afzonderlijke inschrijving** als de verbindings methode en **TPM** als mechanisme. Voer de TPM-goedkeurings sleutel in en sla de verbindings gegevens van het apparaat op.
 
-1. Hiermee wordt de apparaatsjabloon gekoppeld als deze al is gepubliceerd in de IoT Central-toepassing.
-1. Haalt uit de openbare repository van gepubliceerde en gecertificeerde capaciteitsmodellen.
+## <a name="connect-devices-with-iot-plug-and-play-preview"></a>Apparaten verbinden met IoT-Plug en Play (preview-versie)
 
-Hieronder is het formaat van de extra payload het apparaat zou sturen tijdens de DPS registratie oproep
+Een van de belangrijkste functies van IoT Plug en Play (preview) met IoT Central is de mogelijkheid om automatisch apparaat sjablonen te koppelen aan de apparaat-verbinding. Samen met de referenties van het apparaat kunnen apparaten de **CapabilityModelId** nu verzenden als onderdeel van de aanroep van het apparaat. Met deze mogelijkheid kunnen IoT Central de sjabloon van het apparaat detecteren en koppelen aan het apparaat. Het detectie proces werkt als volgt:
+
+1. Hiermee wordt gekoppeld aan de sjabloon voor het apparaat als deze al in de IoT Central toepassing is gepubliceerd.
+1. Haalt uit de open bare opslag plaats van gepubliceerde en gecertificeerde mogelijkhedens modellen.
+
+Hieronder ziet u de indeling van de extra Payload die het apparaat zou verzenden tijdens de registratie oproep DPS
 
 ```javascript
 '__iot:interfaces': {
@@ -197,36 +197,36 @@ Hieronder is het formaat van de extra payload het apparaat zou sturen tijdens de
 ```
 
 > [!NOTE]
-> Houd er rekening mee dat de optie **Automatisch goedkeuren** op beheer **> apparaatverbinding** moet zijn ingeschakeld voor apparaten om automatisch verbinding te maken, de apparaatsjabloon te ontdekken en gegevens te verzenden.
+> Houd er rekening mee dat de optie **automatisch goed keuren** op **beheer > apparaat verbinding** moet zijn ingeschakeld voor apparaten om automatisch verbinding te maken, de sjabloon voor het apparaat te detecteren en gegevens te verzenden.
 
-## <a name="device-status-values"></a>Statuswaarden van het apparaat
+## <a name="device-status-values"></a>Waarden van apparaatstatus
 
-Wanneer een echt apparaat verbinding maakt met uw IoT Central-toepassing, verandert de status van het apparaat als volgt:
+Wanneer een echt apparaat verbinding maakt met uw IoT Central-toepassing, verandert de apparaatstatus als volgt:
 
-1. De apparaatstatus wordt eerst **geregistreerd**. Deze status betekent dat het apparaat is gemaakt in IoT Central en een apparaat-id heeft. Een apparaat wordt geregistreerd wanneer:
-    - Een nieuw echt apparaat wordt toegevoegd op de pagina **Apparaten.**
-    - Er wordt een set apparaten toegevoegd **met importeren** op de pagina **Apparaten.**
+1. De apparaatstatus wordt eerst **geregistreerd**. Deze status betekent dat het apparaat wordt gemaakt in IoT Central en een apparaat-ID heeft. Een apparaat wordt geregistreerd wanneer:
+    - Er wordt een nieuw echt apparaat toegevoegd op de pagina **apparaten** .
+    - Er wordt een set apparaten toegevoegd met behulp van **importeren** op de pagina **apparaten** .
 
-1. De status van het apparaat wordt gewijzigd **in Ingerichte** wanneer het apparaat dat is verbonden met uw IoT Central-toepassing met geldige referenties, de ininrichtingsstap voltooit. In deze stap gebruikt het apparaat DPS om automatisch een verbindingstekenreeks op te halen uit de IoT-hub die wordt gebruikt door uw IoT Central-toepassing. Het apparaat kan nu verbinding maken met IoT Central en beginnen met het verzenden van gegevens.
+1. De apparaatstatus wordt gewijzigd in **ingericht** wanneer het apparaat dat is verbonden met uw IOT Central-toepassing met geldige referenties de inrichtings stap heeft voltooid. In deze stap gebruikt het apparaat DPS om automatisch een connection string op te halen uit het IoT Hub dat door uw IoT Central-toepassing wordt gebruikt. Het apparaat kan nu verbinding maken met IoT Central en beginnen met het verzenden van gegevens.
 
-1. Een operator kan een apparaat blokkeren. Wanneer een apparaat is geblokkeerd, kan het geen gegevens naar uw IoT Central-toepassing verzenden. Geblokkeerde apparaten hebben de status **Geblokkeerd.** Een operator moet het apparaat opnieuw instellen voordat het de verzendende gegevens kan hervatten. Wanneer een operator de blokkering van een apparaat deinstodert, keert de status terug naar de vorige waarde, **geregistreerd** of **ingerichte .**
+1. Een operator kan een apparaat blok keren. Wanneer een apparaat is geblokkeerd, kunnen er geen gegevens worden verzonden naar uw IoT Central-toepassing. Geblokkeerde apparaten hebben de status **geblokkeerd**. Een operator moet het apparaat opnieuw instellen om het verzenden van gegevens te hervatten. Wanneer een operator de blok kering van een apparaat opheffen, wordt de status teruggezet naar de vorige waarde, **geregistreerd** of **ingericht**.
 
-1. Als de apparaatstatus **wacht op goedkeuring,** betekent dit dat de optie **Automatisch goedkeuren** is uitgeschakeld. Een operator moet een apparaat expliciet goedkeuren voordat het gegevens gaat verzenden. Apparaten die niet handmatig zijn geregistreerd op de pagina **Apparaten,** maar die zijn gekoppeld aan geldige referenties, hebben de apparaatstatus **wachten op goedkeuring.** Operators kunnen deze apparaten goedkeuren op de pagina **Apparaten** met de knop **Goedkeuren.**
+1. Als de apparaatstatus wacht op **goed keuring**, betekent dit dat de optie **automatisch goed keuren** is uitgeschakeld. Een operator moet een apparaat expliciet goed keuren voordat er gegevens worden verzonden. Apparaten die niet hand matig zijn geregistreerd op de pagina **apparaten** , maar die zijn verbonden met geldige referenties, hebben de status van het apparaat **wacht op goed keuring**. Opera tors kunnen deze apparaten goed keuren op de pagina **apparaten** met behulp van de knop **goed keuren** .
 
-1. Als de apparaatstatus **niet is gekoppeld,** betekent dit dat het apparaat dat verbinding maakt met IoT Central geen bijbehorende apparaatsjabloon heeft. Deze situatie gebeurt meestal in de volgende scenario's:
+1. Als de apparaatstatus niet is **gekoppeld**, betekent dit dat er voor het apparaat waarmee verbinding wordt gemaakt met IOT Central geen sjabloon voor het apparaat is gekoppeld. Deze situatie treedt doorgaans op in de volgende scenario's:
 
-    - Er wordt een set apparaten toegevoegd met **importeren** op de pagina **Apparaten** zonder de apparaatsjabloon op te geven.
-    - Een apparaat is handmatig geregistreerd op de pagina **Apparaten** zonder de apparaatsjabloon op te geven. Het apparaat is vervolgens verbonden met geldige referenties.  
+    - Er wordt een set apparaten toegevoegd met behulp van **importeren** op de pagina **apparaten** zonder de sjabloon voor het apparaat op te geven.
+    - Een apparaat is hand matig geregistreerd op de pagina **apparaten** zonder de sjabloon voor het apparaat op te geven. Het apparaat is vervolgens verbonden met geldige referenties.  
 
-    De operator kan een apparaat vanaf de pagina **Apparaten** koppelen aan een apparaatsjabloon met de knop **Migreren.**
+    De operator kan een apparaat koppelen aan een sjabloon op de pagina **apparaten** met behulp van de knop **migreren** .
 
 ## <a name="best-practices"></a>Aanbevolen procedures
 
-Blijf niet bestaan of cache de apparaatverbinding string die DPS retourneert wanneer u het apparaat voor het eerst aansluit. Als u een apparaat opnieuw wilt verbinden, gaat u door de standaardapparaatregistratiestroom om de juiste apparaatverbindingstekenreeks te krijgen. Als het apparaat de verbindingstekenreeks in de cache opslaat, loopt de apparaatsoftware het risico op een verouderde verbindingstekenreeks als IoT Central de onderliggende Azure IoT-hub bijwerkt die wordt gebruikt.
+Zorg dat het apparaat niet persistent is of niet in de cache is opgeslagen connection string dat DPS retourneert wanneer u het apparaat voor het eerst aansluit. Als u opnieuw verbinding wilt maken met een apparaat, gaat u naar de standaard apparaat registratie stroom om de juiste connection string van het apparaat op te halen. Als de connection string door het apparaat wordt opgeslagen in de cache, wordt de software van het apparaat uitgevoerd met een verouderd connection string als IoT Central de onderliggende Azure IoT-hub bijwerkt die wordt gebruikt.
 
 ## <a name="sdk-support"></a>SDK-ondersteuning
 
-De Azure Device SDKs bieden u de eenvoudigste manier om uw apparaatcode te implementeren. De volgende apparaat-SDK's zijn beschikbaar:
+De Sdk's van het Azure-apparaat bieden u de eenvoudigste manier voor het implementeren van uw apparaatcode. De volgende Sdk's voor apparaten zijn beschikbaar:
 
 - [Azure IoT-SDK voor C](https://github.com/azure/azure-iot-sdk-c)
 - [Azure IoT-SDK voor Python](https://github.com/azure/azure-iot-sdk-python)
@@ -234,44 +234,44 @@ De Azure Device SDKs bieden u de eenvoudigste manier om uw apparaatcode te imple
 - [Azure IoT-SDK voor Java](https://github.com/azure/azure-iot-sdk-java)
 - [Azure IoT-SDK voor .NET](https://github.com/azure/azure-iot-sdk-csharp)
 
-### <a name="sdk-features-and-iot-hub-connectivity"></a>SDK-functies en IoT Hub-connectiviteit
+### <a name="sdk-features-and-iot-hub-connectivity"></a>SDK-functies en IoT Hub connectiviteit
 
-Alle apparaatcommunicatie met IoT Hub maakt gebruik van de volgende IoT Hub-connectiviteitsopties:
+Alle communicatie van apparaten met IoT Hub gebruikt de volgende IoT Hub connectiviteits opties:
 
-- [Device-to-cloud berichten](../../iot-hub/iot-hub-devguide-messages-d2c.md)
-- [De tweelingen van het apparaat](../../iot-hub/iot-hub-devguide-device-twins.md)
+- [Apparaat-naar-Cloud-berichten](../../iot-hub/iot-hub-devguide-messages-d2c.md)
+- [Apparaat apparaatdubbels](../../iot-hub/iot-hub-devguide-device-twins.md)
 
-In de volgende tabel wordt samengevat hoe azure IoT Central-apparaatfuncties worden toegewezen aan IoT Hub-functies:
+De volgende tabel bevat een overzicht van de manier waarop functies van Azure IoT Central-apparaten worden toegewezen aan IoT Hub-functies:
 
 | Azure IoT Central | Azure IoT Hub |
 | ----------- | ------- |
-| Telemetrie | Device-to-cloud berichten |
-| Eigenschap | Gemelde eigenschappen van apparaattweeling |
-| Eigenschap (schrijfbaar) | Apparaat tweeling gewenste en gerapporteerde eigenschappen |
+| Telemetrie | Apparaat-naar-Cloud-berichten |
+| Eigenschap | Dubbele gerapporteerde eigenschappen van het apparaat |
+| Eigenschap (schrijfbaar) | Dubbele gewenste en gerapporteerde eigenschappen van het apparaat |
 | Opdracht | Directe methoden |
 
-Zie [Een DevDiv-kitapparaat aansluiten op uw Azure IoT Central-toepassing](howto-connect-devkit.md) voor meer informatie over het gebruik van de Apparaat-SDKs.
+Zie voor meer informatie over het gebruik van de apparaat-Sdk's [een DevDiv Kit-apparaat verbinden met uw Azure IOT Central-toepassing](howto-connect-devkit.md) voor voorbeeld code.
 
 ### <a name="protocols"></a>Protocollen
 
-De Device SDKs ondersteunen de volgende netwerkprotocollen voor verbinding maken met een IoT-hub:
+De Sdk's van het apparaat ondersteunen de volgende netwerk protocollen om verbinding te maken met een IoT-hub:
 
 - MQTT
 - AMQP
 - HTTPS
 
-Zie [Een communicatieprotocol kiezen](../../iot-hub/iot-hub-devguide-protocols.md)voor informatie over deze verschillende protocollen en richtlijnen voor het kiezen van een protocol.
+Zie voor meer informatie over deze protocollen en richt lijnen voor het kiezen van een [communicatie protocol](../../iot-hub/iot-hub-devguide-protocols.md).
 
-Als uw apparaat geen van de ondersteunde protocollen kan gebruiken, u Azure IoT Edge gebruiken om protocolconversie uit te brengen. IoT Edge ondersteunt andere intelligence-on-the-edge scenario's om de verwerking te ontladen tot de rand van de Azure IoT Central-toepassing.
+Als uw apparaat een van de ondersteunde protocollen niet kan gebruiken, kunt u Azure IoT Edge gebruiken om Protocol conversie uit te voeren. IoT Edge ondersteunt andere intelligentie-in-Edge-scenario's voor het verenigen van de verwerking naar de rand vanuit de Azure IoT Central-toepassing.
 
 ## <a name="security"></a>Beveiliging
 
-Alle gegevens die tussen apparaten en uw Azure IoT Central worden uitgewisseld, zijn versleuteld. IoT Hub verifieert elk verzoek van een apparaat dat verbinding maakt met een van de op het apparaat gerichte IoT Hub-eindpunten. Om te voorkomen dat referenties over de draad worden verwisseld, gebruikt een apparaat ondertekende tokens om te verifiëren. Zie Toegang tot [IoT Hub](../../iot-hub/iot-hub-devguide-security.md)beheren voor meer informatie.
+Alle gegevens die worden uitgewisseld tussen apparaten en uw Azure-IoT Central, worden versleuteld. IoT Hub verifieert elke aanvraag van een apparaat dat verbinding maakt met een van de IoT Hub-eind punten van het apparaat. Om te voor komen dat referenties via de kabel worden uitgewisseld, gebruikt een apparaat ondertekende tokens om te verifiëren. Zie [toegang tot IOT hub beheren](../../iot-hub/iot-hub-devguide-security.md)voor meer informatie.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Als u een apparaatontwikkelaar bent, moeten enkele voorgestelde volgende stappen:
+Als u een ontwikkelaar van een apparaat bent, kunt u het volgende doen:
 
-- Meer informatie over [het bewaken van apparaatconnectiviteit met Azure CLI](./howto-monitor-devices-azure-cli.md)
-- Meer informatie over het [definiëren van een nieuw IoT-apparaattype in uw Azure IoT Central-toepassing](./howto-set-up-template.md)
-- Lees meer over [Azure IoT Edge-apparaten en Azure IoT Central](./concepts-iot-edge.md)
+- Meer informatie over het [controleren van de connectiviteit van apparaten met behulp van Azure cli](./howto-monitor-devices-azure-cli.md)
+- Meer informatie over het [definiëren van een nieuw IOT-apparaattype in uw Azure IOT Central-toepassing](./howto-set-up-template.md)
+- Meer informatie over [Azure IOT edge apparaten en Azure IOT Central](./concepts-iot-edge.md)

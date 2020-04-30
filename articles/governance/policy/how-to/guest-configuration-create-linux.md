@@ -1,86 +1,86 @@
 ---
-title: Gastconfiguratiebeleid voor Linux maken
-description: Meer informatie over het maken van een Azure Policy Guest Configuration policy voor Linux.
+title: Gast configuratie beleidsregels maken voor Linux
+description: Meer informatie over het maken van een Azure Policy gast configuratie beleid voor Linux.
 ms.date: 03/20/2020
 ms.topic: how-to
 ms.openlocfilehash: 219b38bd81cae8d16241d1ee16cfdd2f400ae91e
-ms.sourcegitcommit: 75089113827229663afed75b8364ab5212d67323
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82024979"
 ---
-# <a name="how-to-create-guest-configuration-policies-for-linux"></a>Gastconfiguratiebeleid voor Linux maken
+# <a name="how-to-create-guest-configuration-policies-for-linux"></a>Gast configuratie beleidsregels maken voor Linux
 
-Voordat u aangepast beleid maakt, leest u de overzichtsgegevens bij [Azure Policy Guest Configuration](../concepts/guest-configuration.md).
+Lees de overzichts informatie op [Azure Policy-gast configuratie](../concepts/guest-configuration.md)voordat u een aangepast beleid maakt.
  
-Zie de pagina [Hoe u gastconfiguratiebeleid voor Windows](./guest-configuration-create.md) maakt voor meer informatie over het maken van gastconfiguratiebeleid voor Windows
+Ga voor meer informatie over het maken van gast configuratie beleidsregels voor Windows naar de pagina [beleid voor gast configuratie maken voor Windows](./guest-configuration-create.md)
 
-Bij het controleren van Linux maakt Gastconfiguratie gebruik van [Chef InSpec.](https://www.inspec.io/) Het InSpec-profiel definieert de voorwaarde waarin de machine zich moet begeven. Als de evaluatie van de configuratie mislukt, wordt de **beleidseffectauditIfNotExists** geactiveerd en wordt de machine als **niet-compatibel**beschouwd .
+Bij het controleren van Linux maakt gast configuratie gebruik van [chef-specificatie](https://www.inspec.io/). Het INSPEC-profiel definieert de toestand waarin de machine moet zijn. Als de evaluatie van de configuratie mislukt, wordt het beleids effect **auditIfNotExists** geactiveerd en wordt de computer als **niet-compatibel**beschouwd.
 
-[Azure Policy Guest Configuration](../concepts/guest-configuration.md) kan alleen worden gebruikt om instellingen in machines te controleren. Herstel van instellingen in machines is nog niet beschikbaar.
+[Azure Policy-gast configuratie](../concepts/guest-configuration.md) kan alleen worden gebruikt voor het controleren van instellingen binnen machines. Herstel van instellingen binnen computers is nog niet beschikbaar.
 
-Gebruik de volgende acties om uw eigen configuratie te maken voor het valideren van de status van een Azure- of niet-Azure-machine.
+Gebruik de volgende acties om uw eigen configuratie te maken voor het valideren van de status van een Azure-of niet-Azure-machine.
 
 > [!IMPORTANT]
-> Aangepast beleid met gastconfiguratie is een voorbeeldfunctie.
+> Aangepaste beleids regels met gast configuratie is een preview-functie.
 >
-> De extensie Gastconfiguratie is vereist om audits uit te voeren in virtuele Azure-machines.
-> Als u de extensie op schaal wilt implementeren op alle Linux-machines, wijst u de volgende beleidsdefinitie toe:
->   - [Implementeer vereisten om gastconfiguratiebeleid voor Linux-VM's in te schakelen.](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Ffb27e9e0-526e-4ae1-89f2-a2a0bf0f8a50)
+> De gast configuratie-uitbrei ding is vereist voor het uitvoeren van controles op virtuele machines van Azure.
+> Als u de uitbrei ding op schaal wilt implementeren op alle Linux-machines, wijst u de volgende beleids definitie toe:
+>   - [Vereisten implementeren om gast configuratie beleid in te scha kelen op virtuele Linux-machines.](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Ffb27e9e0-526e-4ae1-89f2-a2a0bf0f8a50)
 
-## <a name="install-the-powershell-module"></a>De PowerShell-module installeren
+## <a name="install-the-powershell-module"></a>De Power shell-module installeren
 
-Het maken van een gastconfiguratieartefact, het automatisch testen van het artefact, het maken van een beleidsdefinitie en het publiceren van het beleid, is volledig te automatiseren met behulp van de gastconfiguratiemodule in PowerShell. De module kan worden geïnstalleerd op een machine met Windows, macOS of Linux met PowerShell 6.2 of hoger die lokaal wordt uitgevoerd, of met [Azure Cloud Shell](https://shell.azure.com)of met de Azure [PowerShell Core Docker-afbeelding](https://hub.docker.com/r/azuresdk/azure-powershell-core).
+Het maken van een gast configuratie artefact, het automatisch testen van het artefact, het maken van een beleids definitie en het publiceren van het beleid, is volledig geautomatiseerd met behulp van de gast configuratie module in Power shell. De module kan worden geïnstalleerd op een computer met Windows, macOS of Linux met Power shell 6,2 of later lokaal of met [Azure Cloud shell](https://shell.azure.com), of met de [Azure PowerShell core docker-installatie kopie](https://hub.docker.com/r/azuresdk/azure-powershell-core).
 
 > [!NOTE]
-> Compilatie van configuraties wordt niet ondersteund op Linux.
+> Compilatie van configuraties wordt niet ondersteund in Linux.
 
 ### <a name="base-requirements"></a>Basisvereisten
 
-Besturingssystemen waar de module kan worden geïnstalleerd:
+Besturings systemen waarop de module kan worden geïnstalleerd:
 
 - Linux
 - macOS
 - Windows
 
-De resourcemodule Gastconfiguratie vereist de volgende software:
+Voor de module gast configuratie resource is de volgende software vereist:
 
-- PowerShell 6.2 of hoger. Als deze nog niet is geïnstalleerd, volgt u [deze instructies](/powershell/scripting/install/installing-powershell) op.
+- Power shell 6,2 of hoger. Als deze nog niet is geïnstalleerd, volgt u [deze instructies](/powershell/scripting/install/installing-powershell) op.
 - Azure PowerShell 1.5.0 of hoger. Als deze nog niet is geïnstalleerd, volgt u [deze instructies](/powershell/azure/install-az-ps) op.
-  - Alleen de AZ-modules 'Az.Accounts' en 'Az.Resources' zijn vereist.
+  - Alleen de AZ-modules AZ. accounts en AZ. resources zijn vereist.
 
 ### <a name="install-the-module"></a>Installeer de module
 
-Ga als bedoeld als u de **module GuestConfiguration installeert** in PowerShell:
+De **GuestConfiguration** -module installeren in Power shell:
 
-1. Voer vanuit een PowerShell-prompt de volgende opdracht uit:
+1. Voer de volgende opdracht uit vanuit een Power shell-prompt:
 
    ```azurepowershell-interactive
    # Install the Guest Configuration DSC resource module from PowerShell Gallery
    Install-Module -Name GuestConfiguration
    ```
 
-1. Valideren of de module is geïmporteerd:
+1. Controleer of de module is geïmporteerd:
 
    ```azurepowershell-interactive
    # Get a list of commands for the imported GuestConfiguration module
    Get-Command -Module 'GuestConfiguration'
    ```
 
-## <a name="guest-configuration-artifacts-and-policy-for-linux"></a>Gastconfiguratieartefacten en -beleid voor Linux
+## <a name="guest-configuration-artifacts-and-policy-for-linux"></a>Gast configuratie artefacten en beleid voor Linux
 
-Zelfs in Linux-omgevingen gebruikt Gastconfiguratie gewenste statusconfiguratie als taalabstractie. De implementatie is gebaseerd op native code (C++), dus het vereist geen laden PowerShell. Het vereist echter wel een configuratie MOF die details over de omgeving beschrijft. DSC fungeert als een wrapper voor InSpec om te standaardiseren hoe het wordt uitgevoerd, hoe parameters worden geleverd en hoe de uitvoer wordt geretourneerd naar de service. Er is weinig kennis van DSC vereist bij het werken met aangepaste InSpec-inhoud.
+Zelfs in Linux-omgevingen gebruikt de gast configuratie de gewenste status configuratie als een taal abstractie. De implementatie is gebaseerd op systeem eigen code (C++) zodat Power shell niet hoeft te worden geladen. Er is echter wel een configuratie-MOF vereist waarin de details van de omgeving worden beschreven. DSC fungeert als wrapper voor inspecers om te standaardiseren hoe het wordt uitgevoerd, hoe para meters worden opgegeven en hoe uitvoer wordt geretourneerd naar de service. Er is weinig kennis van DSC vereist bij het werken met aangepaste Inspec-inhoud.
 
-#### <a name="configuration-requirements"></a>Configuratievereisten
+#### <a name="configuration-requirements"></a>Configuratie vereisten
 
-De naam van de aangepaste configuratie moet overal consistent zijn. De naam van het .zip-bestand voor het inhoudspakket, de configuratienaam in het MOF-bestand en de naam van de gasttoewijzing in de sjabloon Resourcebeheer moeten hetzelfde zijn.
+De naam van de aangepaste configuratie moet consistent zijn. De naam van het zip-bestand voor het inhouds pakket, de configuratie naam in het MOF-bestand en de naam van de gast toewijzing in de Resource Manager-sjabloon, moet hetzelfde zijn.
 
-### <a name="custom-guest-configuration-configuration-on-linux"></a>Aangepaste configuratie van gasten op Linux
+### <a name="custom-guest-configuration-configuration-on-linux"></a>Configuratie van aangepaste gast configuratie op Linux
 
-Gastconfiguratie op Linux `ChefInSpecResource` gebruikt de bron om de engine de naam van het [InSpec-profiel](https://www.inspec.io/docs/reference/profiles/)te geven. **Naam** is de enige vereiste resourceeigenschap. Maak een YaML-bestand en een Ruby-scriptbestand, zoals hieronder beschreven.
+Gast configuratie op Linux maakt gebruik `ChefInSpecResource` van de resource om de-engine de naam van het [Inspec-profiel](https://www.inspec.io/docs/reference/profiles/)te geven. **Name** is de enige vereiste bron eigenschap. Maak een YaML-bestand en een ruby-script bestand, zoals hieronder wordt beschreven.
 
-Maak eerst het YaML-bestand dat door InSpec wordt gebruikt. Het bestand bevat basisinformatie over de omgeving. Een voorbeeld wordt hieronder gegeven:
+Maak eerst het YaML-bestand dat wordt gebruikt door de specificatie. Het bestand bevat algemene informatie over de omgeving. Hieronder ziet u een voor beeld:
 
 ```YaML
 name: linux-path
@@ -93,9 +93,9 @@ supports:
     - os-family: unix
 ```
 
-Sla dit bestand `inspec.yml` met naam `linux-path` op in een map met de naam in uw projectmap.
+Sla dit bestand op in `inspec.yml` een map met de `linux-path` naam in de projectmap.
 
-Maak vervolgens het Ruby-bestand met de InSpec-taalabstractie die wordt gebruikt om de machine te controleren.
+Maak vervolgens het ruby-bestand met de specificatie van de Inspec-taal die wordt gebruikt om de machine te controleren.
 
 ```Ruby
 describe file('/tmp') do
@@ -103,9 +103,9 @@ describe file('/tmp') do
 end
 ```
 
-Sla dit bestand `linux-path.rb` met naam `controls` op `linux-path` in een nieuwe map met de naam in de map.
+Sla dit bestand met de `linux-path.rb` naam op in een nieuwe `controls` map met `linux-path` de naam in de map.
 
-Maak ten slotte een configuratie, importeer de **PSDesiredStateConfiguration-bronmodule** en compileer de configuratie.
+Maak ten slotte een configuratie, importeer de resource module **PSDesiredStateConfiguration** en compileer de configuratie.
 
 ```powershell
 # Define the configuration and import GuestConfiguration
@@ -127,13 +127,13 @@ import-module PSDesiredStateConfiguration
 AuditFilePathExists -out ./Config
 ```
 
-Sla dit bestand `config.ps1` met naam op in de projectmap. Voer het uit in `./config.ps1` PowerShell door uit te voeren in de terminal. Er wordt een nieuw mof-bestand gemaakt.
+Sla het bestand op met `config.ps1` de naam in de projectmap. Voer deze uit in Power shell door `./config.ps1` uit te voeren in de Terminal. Er wordt een nieuw MOF-bestand gemaakt.
 
-De `Node AuditFilePathExists` opdracht is technisch niet vereist, maar `AuditFilePathExists.mof` het produceert een `localhost.mof`bestand met de naam in plaats van de standaard, . Als de .mof-bestandsnaam de configuratie volgt, u eenvoudig veel bestanden ordenen wanneer u op schaal werkt.
+De `Node AuditFilePathExists` opdracht is niet technisch vereist, `AuditFilePathExists.mof` `localhost.mof`maar er wordt een bestand gemaakt met de naam in plaats van de standaard waarde. Als u de bestands naam. MOF volgt, is het eenvoudig om veel bestanden te organiseren wanneer deze op schaal worden uitgevoerd.
 
 
 
-U moet nu een projectstructuur hebben zoals hieronder:
+U hebt nu een project structuur als volgt:
 
 ```file
 / AuditFilePathExists
@@ -145,16 +145,16 @@ U moet nu een projectstructuur hebben zoals hieronder:
             linux-path.rb 
 ```
 
-De ondersteunende bestanden moeten samen worden verpakt. Het voltooide pakket wordt gebruikt door Gastconfiguratie om de Azure Policy-definities te maken.
+De ondersteunende bestanden moeten samen worden verpakt. Het voltooide pakket wordt gebruikt door de gast configuratie om de Azure Policy definities te maken.
 
-De `New-GuestConfigurationPackage` cmdlet maakt het pakket. Parameters van `New-GuestConfigurationPackage` de cmdlet bij het maken van Linux-inhoud:
+Met `New-GuestConfigurationPackage` de cmdlet maakt u het pakket. Para meters `New-GuestConfigurationPackage` van de cmdlet bij het maken van Linux-inhoud:
 
-- **Naam**: Naam gastconfiguratiepakket.
-- **Configuratie:** Volledig verloop van het configuratiedocument gecompileerd.
-- **Pad:** mappad uitvoer. Deze parameter is optioneel. Als dit niet is opgegeven, wordt het pakket gemaakt in de huidige map.
-- **ChefProfilePath:** Volledig pad naar InSpec profiel. Deze parameter wordt alleen ondersteund bij het maken van inhoud om Linux te controleren.
+- **Naam**: naam van het gast configuratie pakket.
+- **Configuratie**: gecompileerd configuratie document volledig pad.
+- **Pad**: pad naar map voor uitvoer. Deze parameter is optioneel. Als u niets opgeeft, wordt het pakket gemaakt in de huidige map.
+- **ChefProfilePath**: volledig pad naar het INSPEC-profiel. Deze para meter wordt alleen ondersteund bij het maken van inhoud om Linux te controleren.
 
-Voer de volgende opdracht uit om een pakket te maken met behulp van de configuratie in de vorige stap:
+Voer de volgende opdracht uit om een pakket te maken met behulp van de configuratie die in de vorige stap is gegeven:
 
 ```azurepowershell-interactive
 New-GuestConfigurationPackage `
@@ -163,15 +163,15 @@ New-GuestConfigurationPackage `
   -ChefInSpecProfilePath './'
 ```
 
-Nadat u het configuratiepakket hebt gemaakt, maar het vervolgens hebt gepubliceerd in Azure, u het pakket testen vanuit uw werkstation of CI/CD-omgeving. De guestconfiguration-cmdlet `Test-GuestConfigurationPackage` bevat dezelfde agent in uw ontwikkelomgeving als in Azure-machines. Met deze oplossing u lokaal integratietests uitvoeren voordat u deze vrijgeeft aan gefactureerde cloudomgevingen.
+Nadat u het configuratie pakket hebt gemaakt, maar voordat u het naar Azure publiceert, kunt u het pakket testen vanaf uw werk station of CI/CD-omgeving. De GuestConfiguration- `Test-GuestConfigurationPackage` cmdlet bevat dezelfde agent in uw ontwikkel omgeving als wordt gebruikt binnen Azure-machines. Met deze oplossing kunt u integratie testen lokaal uitvoeren voordat u de gefactureerde Cloud omgevingen uitbrengt.
 
-Aangezien de agent de lokale omgeving daadwerkelijk evalueert, moet u in de meeste gevallen de test-cmdlet uitvoeren op hetzelfde OS-platform als u van plan bent te controleren.
+Omdat de agent de lokale omgeving werkelijk evalueert, moet u in de meeste gevallen de test-cmdlet uitvoeren op hetzelfde OS-platform als u wilt controleren.
 
-Parameters van `Test-GuestConfigurationPackage` de cmdlet:
+Para meters `Test-GuestConfigurationPackage` van de cmdlet:
 
-- **Naam**: Naam gastconfiguratiebeleid.
-- **Parameter**: Beleidsparameters in hashtabelformaat.
-- **Pad:** Volledig pad van het gastconfiguratiepakket.
+- **Naam**: naam van het gast configuratie beleid.
+- **Para meter**: beleids parameters die zijn opgegeven in de hashtabel-indeling.
+- **Pad**: volledig pad van het gast configuratie pakket.
 
 Voer de volgende opdracht uit om het pakket te testen dat door de vorige stap is gemaakt:
 
@@ -180,13 +180,13 @@ Test-GuestConfigurationPackage `
   -Path ./AuditFilePathExists/AuditFilePathExists.zip
 ```
 
-De cmdlet ondersteunt ook input van de PowerShell-pijplijn. Pipet de `New-GuestConfigurationPackage` output van `Test-GuestConfigurationPackage` cmdlet naar de cmdlet.
+De cmdlet ondersteunt ook invoer van de Power shell-pijp lijn. Pipet de uitvoer `New-GuestConfigurationPackage` van de cmdlet `Test-GuestConfigurationPackage` naar de cmdlet.
 
 ```azurepowershell-interactive
 New-GuestConfigurationPackage -Name AuditFilePathExists -Configuration ./Config/AuditFilePathExists.mof -ChefProfilePath './' | Test-GuestConfigurationPackage
 ```
 
-De volgende stap is het publiceren van het bestand naar blob-opslag. Het onderstaande script bevat een functie die u gebruiken om deze taak te automatiseren. De opdrachten die `publish` in de `Az.Storage` functie worden gebruikt, vereisen de module.
+De volgende stap is het publiceren van het bestand naar de Blob-opslag. Het onderstaande script bevat een functie die u kunt gebruiken om deze taak te automatiseren. Voor de opdrachten die in `publish` de functie worden `Az.Storage` gebruikt, is de module vereist.
 
 ```azurepowershell-interactive
 function publish {
@@ -242,19 +242,19 @@ $uri = publish `
   -filePath ./AuditFilePathExists.zip `
   -blobName 'AuditFilePathExists'
 ```
-Zodra een aangepast beleidspakket gastconfiguratie is gemaakt en geüpload, maakt u de beleidsdefinitie gastconfiguratie. De `New-GuestConfigurationPolicy` cmdlet neemt een aangepast beleidspakket en maakt een beleidsdefinitie.
+Nadat een aangepast beleids pakket voor de gast configuratie is gemaakt en geüpload, maakt u de beleids definitie voor het gast configuratie beleid. De `New-GuestConfigurationPolicy` cmdlet gebruikt een aangepast beleids pakket en maakt een beleids definitie.
 
-Parameters van `New-GuestConfigurationPolicy` de cmdlet:
+Para meters `New-GuestConfigurationPolicy` van de cmdlet:
 
-- **ContentUri:** Openbaar http(s) uri van gastconfiguratie inhoudpakket.
-- **DisplayName:** De naam van de beleidsweergave.
-- **Beschrijving**: Beleidsbeschrijving.
-- **Parameter**: Beleidsparameters in hashtabelformaat.
-- **Versie**: Beleidsversie.
-- **Pad:** doelpad waar beleidsdefinities worden gemaakt.
-- **Platform**: Doelplatform (Windows/Linux) voor gastconfiguratiebeleid en inhoudspakket.
+- **ContentUri**: open bare http (s)-URI van het inhouds pakket voor de gast configuratie.
+- **DisplayName**: weergave naam beleid.
+- **Beschrijving**: beschrijving van het beleid.
+- **Para meter**: beleids parameters die zijn opgegeven in de hashtabel-indeling.
+- **Versie**: beleids versie.
+- **Pad**: doelpad voor het maken van beleids definities.
+- **Platform**: doel platform (Windows/Linux) voor gast configuratie beleid en inhouds pakket.
 
-In het volgende voorbeeld worden de beleidsdefinities in een bepaald pad gemaakt vanuit een aangepast beleidspakket:
+In het volgende voor beeld worden de beleids definities in een opgegeven pad van een aangepast beleids pakket gemaakt:
 
 ```azurepowershell-interactive
 New-GuestConfigurationPolicy `
@@ -267,25 +267,25 @@ New-GuestConfigurationPolicy `
     -Verbose
 ```
 
-De volgende bestanden `New-GuestConfigurationPolicy`worden gemaakt door:
+De volgende bestanden worden gemaakt door `New-GuestConfigurationPolicy`:
 
-- **auditIfNotExists.json**
-- **deployIfNotExists.json**
-- **Initiative.json**
+- **auditIfNotExists. json**
+- **deployIfNotExists. json**
+- **Initiative. json**
 
-De cmdlet-uitvoer retourneert een object met de naam en het pad van de beleidsbestanden.
+De cmdlet-uitvoer retourneert een object dat de weergave naam en het pad van de beleids bestanden bevat.
 
-Publiceer ten slotte `Publish-GuestConfigurationPolicy` de beleidsdefinities met behulp van de cmdlet.
-De cmdlet heeft alleen de parameter **Path** die verwijst naar `New-GuestConfigurationPolicy`de locatie van de JSON-bestanden die zijn gemaakt door .
+Ten slotte publiceert u de beleids definities met `Publish-GuestConfigurationPolicy` de cmdlet.
+De cmdlet heeft alleen de para meter **Path** die verwijst naar de locatie van de json-bestanden `New-GuestConfigurationPolicy`die zijn gemaakt door.
 
-Als u de opdracht Publiceren wilt uitvoeren, hebt u toegang nodig om beleid in Azure te maken. De specifieke autorisatievereisten worden gedocumenteerd op de pagina [Azure Policy Overview.](../overview.md) De beste ingebouwde rol is **Resource Policy Contributor**.
+Als u de opdracht publiceren wilt uitvoeren, moet u toegang hebben tot beleids regels maken in Azure. De specifieke autorisatie vereisten worden beschreven op de pagina [overzicht van Azure Policy](../overview.md) . De beste ingebouwde rol is Inzender voor **resource beleid**.
 
 ```azurepowershell-interactive
 Publish-GuestConfigurationPolicy `
   -Path '.\policyDefinitions'
 ```
 
- De `Publish-GuestConfigurationPolicy` cmdlet accepteert het pad van de PowerShell-pijplijn. Deze functie betekent dat u de beleidsbestanden maken en publiceren in één set opdrachten met piped.
+ De `Publish-GuestConfigurationPolicy` cmdlet accepteert het pad van de Power shell-pijp lijn. Deze functie houdt in dat u de beleids bestanden kunt maken en publiceren in één set opdrachten die zijn gesluisd.
 
  ```azurepowershell-interactive
  New-GuestConfigurationPolicy `
@@ -296,12 +296,12 @@ Publish-GuestConfigurationPolicy `
  | Publish-GuestConfigurationPolicy
  ```
 
-Met het beleid dat in Azure is gemaakt, is de laatste stap het toewijzen van het initiatief. Bekijk hoe u het initiatief toewijzen met [Portal,](../assign-policy-portal.md) [Azure CLI](../assign-policy-azurecli.md)en [Azure PowerShell](../assign-policy-powershell.md).
+Met het beleid dat is gemaakt in azure, is de laatste stap het initiatief toe te wijzen. Zie hoe u het initiatief toewijst met [Portal](../assign-policy-portal.md), [Azure cli](../assign-policy-azurecli.md)en [Azure PowerShell](../assign-policy-powershell.md).
 
 > [!IMPORTANT]
-> Gastconfiguratiebeleid moet **altijd** worden toegewezen aan de hand van het initiatief dat het beleid _AuditIfNotExists_ en _DeployIfNotExists_ combineert. Als alleen het _auditif-existsbeleid_ is toegewezen, worden de vereisten niet geïmplementeerd en toont het beleid altijd aan dat '0'-servers compatibel zijn.
+> Gast configuratie beleidsregels moeten **altijd** worden toegewezen met het initiatief waarbij het beleid voor _AuditIfNotExists_ en _DeployIfNotExists_ wordt gecombineerd. Als alleen het _AuditIfNotExists_ -beleid is toegewezen, worden de vereisten niet geïmplementeerd en wordt in het beleid altijd weer gegeven dat ' 0 '-servers compatibel zijn.
 
-Het toewijzen van een beleidsdefinitie met het effect _DeployIfNotExists_ vereist een extra toegangsniveau. Als u de minste bevoegdheden wilt verlenen, u een aangepaste roldefinitie maken die **de bijdrager resourcebeleid uitbreidt.** In het onderstaande voorbeeld wordt een rol gemaakt met de naam **Resource policy Contributor DINE** met de aanvullende machtiging _Microsoft.Authorization/roleAssignments/write_.
+Voor het toewijzen van een beleids definitie met _DeployIfNotExists_ -effect is een extra toegangs niveau vereist. Als u de minimale bevoegdheid wilt verlenen, kunt u een aangepaste roldefinitie maken die de **Inzender voor resource beleid**uitbreidt. In het onderstaande voor beeld maakt u een rol met de naam **resource Policy CONTRIBUTOR Dine** met de extra machtiging _micro soft. Authorization/roleAssignments/write_.
 
 ```azurepowershell-interactive
 $subscriptionid = '00000000-0000-0000-0000-000000000000'
@@ -316,13 +316,13 @@ $role.AssignableScopes.Add("/subscriptions/$subscriptionid")
 New-AzRoleDefinition -Role $role
 ```
 
-### <a name="using-parameters-in-custom-guest-configuration-policies"></a>Parameters gebruiken in aangepast gastconfiguratiebeleid
+### <a name="using-parameters-in-custom-guest-configuration-policies"></a>Para meters gebruiken in aangepaste gast configuratie beleidsregels
 
-Gastconfiguratie ondersteunt overheersende eigenschappen van een configuratie tijdens uitvoering. Deze functie betekent dat de waarden in het MOF-bestand in het pakket niet als statisch hoeven te worden beschouwd. De overschrijfwaarden worden verstrekt via Azure Policy en hebben geen invloed op de manier waarop de configuraties worden geschreven of gecompileerd.
+Gast configuratie ondersteunt het overschrijven van eigenschappen van een configuratie tijdens runtime. Deze functie betekent dat de waarden in het MOF-bestand in het pakket niet als statisch moeten worden beschouwd. De onderdrukkings waarden worden geleverd via Azure Policy en hebben geen invloed op de manier waarop de configuraties worden gemaakt of gecompileerd.
 
-Met InSpec worden parameters meestal verwerkt als invoer, hetzij tijdens runtime, hetzij als code met behulp van kenmerken. Gastconfiguratie versluiert dit proces, zodat invoer kan worden verstrekt wanneer het beleid is toegewezen. Er wordt automatisch een kenmerkbestand gemaakt in de machine. U hoeft geen bestand in uw project te maken en toe te voegen. Er zijn twee stappen om parameters toe te voegen aan uw Linux-auditproject.
+Met Inspec worden para meters doorgaans verwerkt als invoer tijdens runtime of als code met behulp van kenmerken. Gast configuratie maakt dit proces verborgen, zodat er een invoer kan worden opgegeven wanneer het beleid is toegewezen. Er wordt automatisch een kenmerk bestand gemaakt op de machine. U hoeft geen bestand te maken en toe te voegen aan uw project. Er zijn twee stappen om para meters toe te voegen aan uw Linux-controle project.
 
-Definieer de invoer in het Ruby-bestand waar u scriptt wat u moet controleren op de machine. Hieronder vindt u een voorbeeld.
+Definieer de invoer in het ruby-bestand waar u scripteert wat moet worden gecontroleerd op de computer. Hieronder vindt u een voor beeld.
 
 ```Ruby
 attr_path = attribute('path', description: 'The file path to validate.')
@@ -332,9 +332,9 @@ describe file(attr_path) do
 end
 ```
 
-De `New-GuestConfigurationPolicy` cmdlets `Test-GuestConfigurationPolicyPackage` en bevatten een parameter met de naam **Parameters**. Deze parameter neemt een hashtable met alle details over elke parameter en maakt automatisch alle vereiste secties van de bestanden die worden gebruikt om elke Azure Policy-definitie te maken.
+De cmdlets `New-GuestConfigurationPolicy` en `Test-GuestConfigurationPolicyPackage` bevatten een para meter met de naam **para meters**. Met deze para meter wordt een hashtabel met alle details van elke para meter en worden automatisch alle vereiste secties gemaakt van de bestanden die worden gebruikt voor het maken van elke Azure Policy definitie.
 
-In het volgende voorbeeld wordt een beleidsdefinitie gedefinieerd om een bestandspad te controleren, waarbij de gebruiker het pad opgeeft op het moment van beleidstoewijzing.
+In het volgende voor beeld wordt een beleids definitie gemaakt om een bestandspad te controleren. de gebruiker geeft het pad op naar het tijdstip van de beleids toewijzing.
 
 ```azurepowershell-interactive
 $PolicyParameterInfo = @(
@@ -360,7 +360,7 @@ New-GuestConfigurationPolicy
     -Version 1.0.0
 ```
 
-Neem voor Linux-beleid de eigenschap **AttributesYmlContent** op in uw configuratie en overschrijf de waarden indien nodig. De gastconfiguratieagent maakt automatisch het YAML-bestand dat door InSpec wordt gebruikt om kenmerken op te slaan. Zie het voorbeeld hieronder.
+Voor Linux-beleid voegt u de eigenschap **AttributesYmlContent** in uw configuratie toe en overschrijft u de waarden naar behoefte. De gast configuratie agent maakt automatisch het YAML-bestand dat wordt gebruikt door de specificatie voor het opslaan van kenmerken. Zie het voorbeeld hieronder.
 
 ```powershell
 Configuration AuditFilePathExists
@@ -378,44 +378,44 @@ Configuration AuditFilePathExists
 }
 ```
 
-## <a name="policy-lifecycle"></a>Beleidslevenscyclus
+## <a name="policy-lifecycle"></a>Levens duur van beleid
 
-Als u een update van de beleidsdefinitie wilt vrijgeven, zijn er twee velden die aandacht vereisen.
+Voor het vrijgeven van een update voor de beleids definitie zijn er twee velden waarvoor aandacht is vereist.
 
-- **Versie:** Wanneer u `New-GuestConfigurationPolicy` de cmdlet uitvoert, moet u een versienummer opgeven dat groter is dan wat momenteel wordt gepubliceerd. De eigenschap werkt de versie van de toewijzing voor gastconfiguratie bij, zodat de agent het bijgewerkte pakket herkent.
-- **contentHash**: Deze eigenschap wordt `New-GuestConfigurationPolicy` automatisch bijgewerkt door de cmdlet. Het is een hash-waarde van `New-GuestConfigurationPackage`het pakket gemaakt door . De eigenschap moet correct `.zip` zijn voor het bestand dat u publiceert. Als alleen de eigenschap **contentUri** is bijgewerkt, accepteert de extensie het inhoudspakket niet.
+- **Versie**: wanneer u de `New-GuestConfigurationPolicy` cmdlet uitvoert, moet u een versie nummer opgeven dat groter is dan het aantal dat momenteel is gepubliceerd. De eigenschap werkt de versie van de toewijzing van de gast configuratie bij, zodat de agent het bijgewerkte pakket herkent.
+- **contentHash**: deze eigenschap wordt automatisch bijgewerkt door de `New-GuestConfigurationPolicy` cmdlet. Het is een hash-waarde van het pakket dat `New-GuestConfigurationPackage`is gemaakt door. De eigenschap moet correct zijn voor het `.zip` bestand dat u publiceert. Als alleen de eigenschap **contentUri** is bijgewerkt, wordt het inhouds pakket niet geaccepteerd door de extensie.
 
-De eenvoudigste manier om een bijgewerkt pakket vrij te geven, is door het proces dat in dit artikel wordt beschreven te herhalen en een bijgewerkt versienummer te geven. Dat proces garandeert dat alle eigenschappen correct zijn bijgewerkt.
+De eenvoudigste manier om een bijgewerkt pakket vrij te geven, is het proces dat wordt beschreven in dit artikel herhalen en een bijgewerkt versie nummer opgeven. Dit proces garandeert dat alle eigenschappen correct zijn bijgewerkt.
 
-## <a name="optional-signing-guest-configuration-packages"></a>Optioneel: Gastconfiguratiepakketten ondertekenen
+## <a name="optional-signing-guest-configuration-packages"></a>Optioneel: gast configuratie pakketten ondertekenen
 
-Het aangepaste beleid voor gastconfiguratie gebruikt SHA256-hash om het beleidspakket te valideren dat niet is gewijzigd.
-Optioneel kunnen klanten ook een certificaat gebruiken om pakketten te ondertekenen en de extensie Gastconfiguratie te dwingen alleen ondertekende inhoud toe te staan.
+Het aangepaste beleid voor gast configuratie gebruikt SHA256-hash om te valideren dat het beleids pakket niet is gewijzigd.
+Klanten kunnen eventueel ook een certificaat gebruiken om pakketten te ondertekenen en de gast configuratie-extensie dwingen alleen ondertekende inhoud toe te staan.
 
-Om dit scenario in te schakelen, zijn er twee stappen die u moet voltooien. Voer de cmdlet uit om het inhoudspakket te ondertekenen en een tag toe te schrijven aan de machines waarvoor code moet worden ondertekend.
+Om dit scenario in te scha kelen, zijn er twee stappen die u moet volt ooien. Voer de cmdlet uit om het inhouds pakket te ondertekenen en voeg een tag toe aan de machines waarvoor code moet worden ondertekend.
 
-Als u de functie Handtekeningvalidatie wilt gebruiken, voert u de `Protect-GuestConfigurationPackage` cmdlet uit om het pakket te ondertekenen voordat het wordt gepubliceerd. Deze cmdlet vereist een 'Code Signing' certificaat.
+Als u de functie voor handtekening validatie wilt gebruiken `Protect-GuestConfigurationPackage` , voert u de cmdlet uit om het pakket te ondertekenen voordat het wordt gepubliceerd. Voor deze cmdlet is het certificaat voor ondertekening van programma code vereist.
 
-Parameters van `Protect-GuestConfigurationPackage` de cmdlet:
+Para meters `Protect-GuestConfigurationPackage` van de cmdlet:
 
-- **Pad:** Volledig pad van het gastconfiguratiepakket.
-- **PublicGpgKeyPath**: Public GPG-sleutelpad. Deze parameter wordt alleen ondersteund bij het ondertekenen van inhoud voor Linux.
+- **Pad**: volledig pad van het gast configuratie pakket.
+- **PublicGpgKeyPath**: pad naar de open bare GPG-sleutel. Deze para meter wordt alleen ondersteund bij het ondertekenen van inhoud voor Linux.
 
-Een goede referentie voor het maken van GPG-sleutels om te gebruiken met Linux-machines wordt geleverd door een artikel op GitHub, [het genereren van een nieuwe GPG-toets.](https://help.github.com/en/articles/generating-a-new-gpg-key)
+Een goede referentie voor het maken van GPG-sleutels voor gebruik met Linux-machines wordt verschaft door een artikel op GitHub, waardoor [een nieuwe GPG-sleutel wordt gegenereerd](https://help.github.com/en/articles/generating-a-new-gpg-key).
 
-GuestConfiguration agent verwacht dat de certificaat public `/usr/local/share/ca-certificates/extra` key aanwezig zijn in het pad op Linux machines. Installeer de openbare certificaatsleutel op de machine voordat u het aangepaste beleid toepast, voor het knooppunt om ondertekende inhoud te verifiëren. Dit proces kan worden uitgevoerd met behulp van elke techniek in de VM of met Azure Policy. Hier wordt een voorbeeldsjabloon [gegeven.](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-push-certificate-windows)
-Het toegangsbeleid voor Key Vault moet de compute resource provider toegang geven tot certificaten tijdens implementaties. Zie [Sleutelkluis instellen voor virtuele machines in Azure Resource Manager voor](../../../virtual-machines/windows/key-vault-setup.md#use-templates-to-set-up-key-vault)gedetailleerde stappen.
+GuestConfiguration-agent verwacht dat de open bare sleutel van het certificaat aanwezig `/usr/local/share/ca-certificates/extra` is in het pad op Linux-machines. Installeer de open bare sleutel van het certificaat op de computer voordat u het aangepaste beleid toepast, zodat het knoop punt ondertekende inhoud verifieert. Dit proces kan worden uitgevoerd met behulp van een wille keurige techniek binnen de virtuele machine of met behulp van Azure Policy. [Hier](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-push-certificate-windows)vindt u een voorbeeld sjabloon.
+Het Key Vault toegangs beleid moet de compute-resource provider toegang geven tot certificaten tijdens implementaties. Zie [Key Vault instellen voor virtuele machines in azure Resource Manager](../../../virtual-machines/windows/key-vault-setup.md#use-templates-to-set-up-key-vault)voor gedetailleerde stappen.
 
-Nadat uw inhoud is gepubliceerd, moet `GuestConfigPolicyCertificateValidation` u `enabled` een tag met naam en waarde toevoegen aan alle virtuele machines waar codeondertekening vereist moet zijn. Zie de [voorbeelden van tagen](../samples/built-in-policies.md#tags) voor hoe tags op schaal kunnen worden geleverd met Azure Policy. Zodra deze tag is ingevoerd, maakt `New-GuestConfigurationPolicy` de beleidsdefinitie die met de cmdlet wordt gegenereerd, de vereiste mogelijk via de extensie Gastconfiguratie.
+Nadat de inhoud is gepubliceerd, voegt u een tag met `GuestConfigPolicyCertificateValidation` de naam `enabled` en waarde toe aan alle virtuele machines waarvoor ondertekening van programma code vereist is. Zie de voor [beelden](../samples/built-in-policies.md#tags) van tags voor de manier waarop Tags op schaal kunnen worden geleverd met behulp van Azure Policy. Zodra deze tag is geïmplementeerd, maakt de beleids definitie die is gegenereerd `New-GuestConfigurationPolicy` met de cmdlet, de vereiste via de gast configuratie-extensie.
 
-## <a name="troubleshooting-guest-configuration-policy-assignments-preview"></a>Problemen met gastconfiguratiebeleidstoewijzingen oplossen (voorbeeld)
+## <a name="troubleshooting-guest-configuration-policy-assignments-preview"></a>Problemen met toewijzing van gast configuratie beleid oplossen (preview-versie)
 
-Een tool is beschikbaar in preview om problemen op te lossen bij azure policy guest configuration-toewijzingen. De tool is in preview en is gepubliceerd in de PowerShell Gallery als modulenaam [Guest Configuration Troubleshooter](https://www.powershellgallery.com/packages/GuestConfigurationTroubleshooter/).
+Er is een hulp programma beschikbaar in de preview-versie om te helpen bij het oplossen van problemen Azure Policy toewijzing van gast configuraties. Het hulp programma is in Preview en gepubliceerd op de PowerShell Gallery als module naam [gast configuratie probleem Oplosser](https://www.powershellgallery.com/packages/GuestConfigurationTroubleshooter/).
 
-Voor meer informatie over de cmdlets in deze tool gebruikt u de opdracht Get-Help in PowerShell om de ingebouwde richtlijnen weer te geven. Aangezien de tool regelmatig updates krijgt, is dat de beste manier om de meest recente informatie te krijgen.
+Voor meer informatie over de cmdlets in dit hulp programma gebruikt u de opdracht Get-Help in Power shell om de ingebouwde richt lijnen weer te geven. Wanneer het hulp programma veelvuldige updates ontvangt, is dat de beste manier om de meest recente informatie te verkrijgen.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Meer informatie over het controleren van VM's met [gastconfiguratie](../concepts/guest-configuration.md).
-- Begrijpen hoe [u programmatisch beleid maken.](programmatically-create.md)
-- Meer informatie over het [verzamelen van nalevingsgegevens](get-compliance-data.md).
+- Meer informatie over het controleren van Vm's met [gast configuratie](../concepts/guest-configuration.md).
+- Meer informatie over het [programmatisch maken van beleids regels](programmatically-create.md).
+- Meer informatie over het [ophalen van compatibiliteits gegevens](get-compliance-data.md).

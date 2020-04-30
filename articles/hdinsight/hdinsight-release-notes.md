@@ -1,6 +1,6 @@
 ---
 title: Opmerkingen bij de release van Azure HDInsight
-description: Laatste release notes voor Azure HDInsight. Ontvang ontwikkeltips en details voor Hadoop, Spark, R Server, Hive en meer.
+description: Nieuwste opmerkingen bij de release voor Azure HDInsight. Bekijk ontwikkel tips en Details voor Hadoop, Spark, R Server, Hive en meer.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -9,60 +9,60 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 04/22/2020
 ms.openlocfilehash: f8331b64792781a89428f8c5070375c31c0da48d
-ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
-ms.translationtype: MT
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/23/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82084886"
 ---
-# <a name="release-notes"></a>Opmerkingen bij de release
+# <a name="release-notes"></a>Releaseopmerkingen
 
-In dit artikel vindt u informatie over de **meest recente** Azure HDInsight-releaseupdates. Zie [HDInsight Release Notes Archive](hdinsight-release-notes-archive.md)voor informatie over eerdere releases.
+Dit artikel bevat informatie over de **meest recente** updates voor Azure HDInsight-release. Zie voor meer informatie over eerdere versies het [HDInsight Release Notes-archief](hdinsight-release-notes-archive.md).
 
 ## <a name="summary"></a>Samenvatting
 
-Azure HDInsight is een van de meest populaire services onder zakelijke klanten voor open-source analyses op Azure.
+Azure HDInsight is een van de populairste services van zakelijke klanten voor open-source analyses op Azure.
 
-## <a name="release-date-01092020"></a>Releasedatum: 01/09/2020
+## <a name="release-date-01092020"></a>Release datum: 01/09/2020
 
-Deze release geldt zowel voor HDInsight 3.6 als 4.0. HDInsight release is beschikbaar gesteld voor alle regio's gedurende meerdere dagen. De releasedatum geeft hier de eerste releasedatum van de regio aan. Als je onderstaande wijzigingen niet ziet, wacht je tot de release binnen enkele dagen in je regio wordt uitgevoerd.
+Deze release geldt voor HDInsight 3,6 en 4,0. HDInsight-release wordt beschikbaar gesteld voor alle regio's over enkele dagen. De release datum geeft hier de release datum van de eerste regio aan. Als de onderstaande wijzigingen niet worden weer gegeven, wacht u tot de release over enkele dagen in uw regio actief is.
 
 > [!IMPORTANT]  
-> Linux is het enige besturingssysteem dat wordt gebruikt in HDInsight-versie 3.4 of hoger. Zie [HDInsight-versieartikel](hdinsight-component-versioning.md)voor meer informatie.
+> Linux is het enige besturingssysteem dat wordt gebruikt in HDInsight-versie 3.4 of hoger. Zie het [artikel over HDInsight-versie beheer](hdinsight-component-versioning.md)voor meer informatie.
 
 ## <a name="new-features"></a>Nieuwe functies
 ### <a name="tls-12-enforcement"></a>TLS 1.2 afdwingen
-Tls (Transport Layer Security) en Secure Sockets Layer (SSL) zijn cryptografische protocollen die communicatiebeveiliging bieden via een computernetwerk. Meer informatie over [TLS](https://en.wikipedia.org/wiki/Transport_Layer_Security#SSL_1.0.2C_2.0_and_3.0). HDInsight gebruikt TLS 1.2 op openbare HTTPs-eindpunten, maar TLS 1.1 wordt nog steeds ondersteund voor achterwaartse compatibiliteit. 
+Transport Layer Security (TLS) en Secure Sockets Layer (SSL) zijn cryptografische protocollen die communicatie beveiliging bieden via een computer netwerk. Meer informatie over [TLS](https://en.wikipedia.org/wiki/Transport_Layer_Security#SSL_1.0.2C_2.0_and_3.0). HDInsight gebruikt TLS 1,2 voor open bare HTTPs-eind punten, maar TLS 1,1 wordt nog steeds ondersteund voor achterwaartse compatibiliteit. 
 
-Met deze release kunnen klanten alleen kiezen voor TLS 1.2 voor alle verbindingen via het eindpunt van het openbare cluster. Om dit te ondersteunen, wordt de nieuwe eigenschap **minSupportedTlsVersion** geïntroduceerd en kan worden opgegeven tijdens het maken van het cluster. Als de eigenschap niet is ingesteld, ondersteunt het cluster nog steeds TLS 1.0, 1.1 en 1.2, wat hetzelfde is als het gedrag van vandaag. Klanten kunnen de waarde voor deze eigenschap instellen op '1,2', wat betekent dat het cluster alleen TLS 1.2 en hoger ondersteunt. Zie [Transport Layer Security](./transport-layer-security.md)voor meer informatie.
+In deze release kunnen klanten alleen voor alle verbindingen met behulp van het eind punt van het open bare cluster kiezen voor TLS 1,2. Ter ondersteuning hiervan wordt de nieuwe eigenschap **minSupportedTlsVersion** geïntroduceerd en kan deze worden opgegeven tijdens het maken van het cluster. Als de eigenschap niet is ingesteld, ondersteunt het cluster nog steeds TLS 1,0, 1,1 en 1,2, wat gelijk is aan het gedrag van vandaag. Klanten kunnen de waarde voor deze eigenschap instellen op ' 1,2 ', wat betekent dat het cluster alleen TLS 1,2 en hoger ondersteunt. Zie [Transport Layer Security](./transport-layer-security.md)voor meer informatie.
 
-### <a name="bring-your-own-key-for-disk-encryption"></a>Neem uw eigen sleutel mee voor schijfversleuteling
-Alle beheerde schijven in HDInsight zijn beveiligd met Azure Storage Service Encryption (SSE). Gegevens op deze schijven worden standaard versleuteld door door Microsoft beheerde sleutels. Vanaf deze release u byok (Bring Your Own Key) voor schijfversleuteling gebruiken met Azure Key Vault. BYOK-versleuteling is een configuratie in één stap tijdens het maken van het cluster zonder extra kosten. Registreer HDInsight als een beheerde identiteit met Azure Key Vault en voeg de versleutelingssleutel toe wanneer u uw cluster maakt. Zie [Door de klant beheerde sleutelschijfversleuteling](https://docs.microsoft.com/azure/hdinsight/disk-encryption)voor meer informatie.
+### <a name="bring-your-own-key-for-disk-encryption"></a>Uw eigen sleutel voor schijf versleuteling nemen
+Alle beheerde schijven in HDInsight worden beveiligd met Azure Storage-service versleuteling (SSE). Gegevens op deze schijven worden standaard versleuteld door door micro soft beheerde sleutels. Vanaf deze release kunt u Bring Your Own Key (BYOK) voor schijf versleuteling en deze beheren met Azure Key Vault. BYOK-versleuteling is een configuratie met één stap tijdens het maken van het cluster zonder extra kosten. Registreer HDInsight als een beheerde identiteit met Azure Key Vault en voeg de versleutelings sleutel toe wanneer u uw cluster maakt. Zie door de [klant beheerde sleutel schijf versleuteling](https://docs.microsoft.com/azure/hdinsight/disk-encryption)voor meer informatie.
 
 ## <a name="deprecation"></a>Afschaffing
-Geen afschrijvingen voor deze release. Zie [Aankomende wijzigingen](#upcoming-changes)om u klaar te maken voor komende afschrijvingen.
+Geen afschaffing van deze release. Zie [aanstaande wijzigingen](#upcoming-changes)voor meer informatie over het voorbereiden van toekomstige afschaffing.
 
-## <a name="behavior-changes"></a>Gedragswijzigingen
-Geen gedragswijzigingen voor deze release. Zie [Aankomende wijzigingen](#upcoming-changes)om u klaar te maken voor komende wijzigingen.
+## <a name="behavior-changes"></a>Gedrags wijzigingen
+Er zijn geen gedrags wijzigingen voor deze versie. Zie [aanstaande wijzigingen](#upcoming-changes)voor meer informatie over het voorbereiden van aanstaande wijzigingen.
 
-## <a name="upcoming-changes"></a>Aankomende wijzigingen
-De volgende wijzigingen zullen plaatsvinden in de komende releases. 
+## <a name="upcoming-changes"></a>Aanstaande wijzigingen
+De volgende wijzigingen worden uitgevoerd in toekomstige releases. 
 
-### <a name="a-minimum-4-core-vm-is-required-for-head-node"></a>Een minimale 4-core VM is vereist voor Head Node 
-Voor Head Node is minimaal 4-core VM vereist om de hoge beschikbaarheid en betrouwbaarheid van HDInsight-clusters te garanderen. Vanaf 6 april 2020 kunnen klanten alleen 4-core of boven VM kiezen als Head Node voor de nieuwe HDInsight clusters. Bestaande clusters blijven zoals verwacht. 
+### <a name="a-minimum-4-core-vm-is-required-for-head-node"></a>Er is een mini maal 4-core VM vereist voor het hoofd knooppunt 
+Voor het hoofd knooppunt is een mini maal 4-core VM vereist om te zorgen voor hoge Beschik baarheid en betrouw baarheid van HDInsight-clusters. Vanaf 6 april 2020 kunnen klanten alleen een 4-core of een hogere VM kiezen als hoofd knooppunt voor de nieuwe HDInsight-clusters. Bestaande clusters blijven op de verwachte manier worden uitgevoerd. 
 
-### <a name="esp-spark-cluster-node-size-change"></a>Grootte van ESP Spark-clusterknooppunt wijzigen 
-In de komende release wordt de minimaal toegestane knooppuntgrootte voor esp spark-cluster gewijzigd in Standard_D13_V2. Vm's uit de A-serie kunnen ESP-clusterproblemen veroorzaken vanwege de relatief lage CPU- en geheugencapaciteit. Vm's uit de A-serie worden afgeschaft voor het maken van nieuwe ESP-clusters.
+### <a name="esp-spark-cluster-node-size-change"></a>Wijziging van grootte van ESP Spark-cluster knooppunt 
+In de aanstaande release wordt de mini maal toegestane knooppunt grootte voor het ESP Spark-cluster gewijzigd in Standard_D13_V2. Vm's uit de A-serie kunnen problemen met ESP-clusters veroorzaken vanwege een relatief laag CPU-en geheugen capaciteit. Vm's uit de A-serie worden afgeschaft voor het maken van nieuwe ESP-clusters.
 
-### <a name="moving-to-azure-virtual-machine-scale-sets"></a>Overstappen op azure-set's voor virtuele machineschalen
-HDInsight gebruikt nu virtuele Azure-machines om het cluster in te richten. In de komende release gebruikt HDInsight in plaats daarvan Azure-sets voor virtuele machineschalen. Meer informatie over azure-set's voor virtuele machines.
+### <a name="moving-to-azure-virtual-machine-scale-sets"></a>Verplaatsen naar schaal sets voor virtuele Azure-machines
+HDInsight maakt nu gebruik van virtuele machines van Azure om het cluster in te richten. In de aanstaande release maakt HDInsight gebruik van virtuele-machine schaal sets van Azure. Meer informatie over virtuele-machine schaal sets van Azure.
 
-### <a name="hbase-20-to-21"></a>HBase 2.0 tot 2.1
-In de komende HDInsight 4.0-versie wordt de HBase-versie geüpgraded van versie 2.0 naar 2.1.
+### <a name="hbase-20-to-21"></a>HBase 2,0 tot 2,1
+In de aanstaande release van HDInsight 4,0 wordt de versie van HBase bijgewerkt van versie 2,0 naar 2,1.
 
 ## <a name="bug-fixes"></a>Opgeloste fouten
-HDInsight blijft de betrouwbaarheid van het cluster en de prestaties verbeteren. 
+HDInsight blijft de betrouw baarheid en prestaties van het cluster verbeteren. 
 
-## <a name="component-version-change"></a>Wijziging van de componentversie
-Geen componentversie wijziging voor deze release. U de huidige componentversies voor HDInsight 4.0 ad HDInsight 3.6 hier vinden.
+## <a name="component-version-change"></a>Onderdeel versie wijzigen
+Er is geen wijziging van de onderdeel versie voor deze versie. U vindt hier de huidige onderdeel versies voor HDInsight 4,0 AD HDInsight 3,6.
 

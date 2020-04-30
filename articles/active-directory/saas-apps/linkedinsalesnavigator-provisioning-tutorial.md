@@ -1,6 +1,6 @@
 ---
-title: 'Zelfstudie: Gebruikersinrichting - LinkedIn Sales Navigator, Azure AD'
-description: Meer informatie over het configureren van Azure Active Directory om gebruikersaccounts automatisch in te richten en te de-provisionen voor LinkedIn Sales Navigator.
+title: 'Zelf studie: gebruikers inrichten-LinkedIn Sales Navigator, Azure AD'
+description: Meer informatie over het configureren van Azure Active Directory voor het automatisch inrichten en ongedaan maken van de inrichting van gebruikers accounts op de LinkedIn-verkoop Navigator.
 services: active-directory
 documentationcenter: ''
 author: ArvindHarinder1
@@ -16,112 +16,112 @@ ms.date: 03/28/2019
 ms.author: arvinh
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 48b9f2dc64d1d3ddd8253a253dcab8ef972032f9
-ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81869748"
 ---
-# <a name="tutorial-configure-linkedin-sales-navigator-for-automatic-user-provisioning"></a>Zelfstudie: LinkedIn Sales Navigator configureren voor automatische gebruikersinrichting
+# <a name="tutorial-configure-linkedin-sales-navigator-for-automatic-user-provisioning"></a>Zelf studie: LinkedIn Sales Navigator configureren voor automatische gebruikers inrichting
 
-Het doel van deze zelfstudie is om u de stappen te laten zien die u moet uitvoeren in LinkedIn Sales Navigator en Azure AD om gebruikersaccounts automatisch in te richten en te de-provisionen van Azure AD naar LinkedIn Sales Navigator.
+Het doel van deze zelf studie is om u te laten zien welke stappen u moet uitvoeren in LinkedIn Sales Navigator en Azure AD om gebruikers accounts van Azure AD naar LinkedIn Sales Navigator automatisch in te richten en te deactiveren.
 
 ## <a name="prerequisites"></a>Vereisten
 
-Het scenario dat in deze zelfstudie wordt beschreven, gaat ervan uit dat u al de volgende items hebt:
+In het scenario dat in deze zelf studie wordt beschreven, wordt ervan uitgegaan dat u de volgende items al hebt:
 
 * Een Azure Active Directory-tenant
-* Een LinkedIn Sales Navigator-tenant 
-* Een beheerdersaccount in LinkedIn Sales Navigator met toegang tot het LinkedIn-accountcentrum
+* Een LinkedIn-Tenant voor verkoop Navigator 
+* Een beheerders account in LinkedIn Sales Navigator met toegang tot het LinkedIn-account centrum
 
 > [!NOTE]
-> Azure Active Directory integreert met LinkedIn Sales Navigator met behulp van het [SCIM-protocol.](http://www.simplecloud.info/)
+> Azure Active Directory integreert met LinkedIn Sales Navigator met behulp van het [scim](http://www.simplecloud.info/) -protocol.
 
-## <a name="assigning-users-to-linkedin-sales-navigator"></a>Gebruikers toewijzen aan LinkedIn Sales Navigator
+## <a name="assigning-users-to-linkedin-sales-navigator"></a>Gebruikers toewijzen aan de LinkedIn-verkoop Navigator
 
-Azure Active Directory gebruikt een concept genaamd 'toewijzingen' om te bepalen welke gebruikers toegang moeten krijgen tot geselecteerde apps. In het kader van automatische gebruikersaccountinrichting worden alleen de gebruikers en groepen die zijn 'toegewezen' aan een toepassing in Azure AD gesynchroniseerd.
+Azure Active Directory gebruikt een concept met de naam ' toewijzingen ' om te bepalen welke gebruikers toegang moeten krijgen tot geselecteerde apps. In de context van het automatisch inrichten van gebruikers accounts worden alleen de gebruikers en groepen die zijn toegewezen aan een toepassing in azure AD gesynchroniseerd.
 
-Voordat u de inrichtingsservice configureert en inschakelt, moet u bepalen welke gebruikers en/of groepen in Azure AD de gebruikers vertegenwoordigen die toegang nodig hebben tot LinkedIn Sales Navigator. Zodra u hebt besloten, u deze gebruikers toewijzen aan LinkedIn Sales Navigator door de instructies hier te volgen:
+Voordat u de inrichtings service configureert en inschakelt, moet u bepalen welke gebruikers en/of groepen in azure AD de gebruikers vertegenwoordigen die toegang nodig hebben tot de LinkedIn-verkoop Navigator. Eenmaal besloten, kunt u deze gebruikers toewijzen aan de LinkedIn-verkoop Navigator door de volgende instructies te volgen:
 
-[Een gebruiker of groep toewijzen aan een bedrijfsapp](../manage-apps/assign-user-or-group-access-portal.md)
+[Een gebruiker of groep toewijzen aan een bedrijfs-app](../manage-apps/assign-user-or-group-access-portal.md)
 
-### <a name="important-tips-for-assigning-users-to-linkedin-sales-navigator"></a>Belangrijke tips voor het toewijzen van gebruikers aan LinkedIn Sales Navigator
+### <a name="important-tips-for-assigning-users-to-linkedin-sales-navigator"></a>Belang rijke tips voor het toewijzen van gebruikers aan de LinkedIn-verkoop Navigator
 
-* Het wordt aanbevolen om één Azure AD-gebruiker aan LinkedIn Sales Navigator toe te wijzen om de inrichtingsconfiguratie te testen. Mogelijk worden later extra gebruikers en/of groepen toegewezen.
+* Het is raadzaam dat één Azure AD-gebruiker wordt toegewezen aan de LinkedIn Sales Navigator om de inrichtings configuratie te testen. Extra gebruikers en/of groepen kunnen later worden toegewezen.
 
-* Wanneer u een gebruiker toewijst aan LinkedIn Sales Navigator, moet u de rol **Gebruiker** selecteren in het toewijzingsdialoogvenster. De rol 'Standaardtoegang' werkt niet voor inrichten.
+* Wanneer u een gebruiker toewijst aan LinkedIn Sales Navigator, moet **u de gebruikersrol** selecteren in het dialoog venster toewijzing. De rol ' standaard toegang ' werkt niet voor het inrichten.
 
-## <a name="configuring-user-provisioning-to-linkedin-sales-navigator"></a>Gebruikersvoorziening configureren voor LinkedIn Sales Navigator
+## <a name="configuring-user-provisioning-to-linkedin-sales-navigator"></a>Gebruikers inrichten configureren voor de LinkedIn-verkoop Navigator
 
-In deze sectie u uw Azure AD verbinden met de SCIM-gebruikersaccountvoorzieningsAPI van LinkedIn Sales Navigator en de inrichtingsservice configureren om toegewezen gebruikersaccounts te maken, bij te werken en uit te schakelen in LinkedIn Sales Navigator op basis van gebruikers- en groepstoewijzing in Azure AD.
+In deze sectie wordt u begeleid bij het verbinden van de inrichtings-API voor de SCIM-gebruikers account van Azure AD naar LinkedIn en het configureren van de inrichtings service om toegewezen gebruikers accounts te maken, bij te werken en uit te scha kelen in LinkedIn Sales Navigator op basis van de gebruikers-en groeps toewijzing in azure AD.
 
 > [!TIP]
-> U er ook voor kiezen om SAML-gebaseerde single sign-On in te schakelen voor LinkedIn Sales Navigator, volgens de instructies in [Azure portal.](https://portal.azure.com) Eenmalige aanmelding kan onafhankelijk van automatische inrichting worden geconfigureerd, hoewel deze twee functies elkaar aanvullen.
+> U kunt er ook voor kiezen om op SAML gebaseerde eenmalige aanmelding voor LinkedIn Sales navigator in te scha kelen, volgens de instructies in [Azure Portal](https://portal.azure.com). Eenmalige aanmelding kan onafhankelijk van automatische inrichting worden geconfigureerd, hoewel deze twee functies elkaar aanvullen.
 
-### <a name="to-configure-automatic-user-account-provisioning-to-linkedin-sales-navigator-in-azure-ad"></a>Ga als het gaat om het configureren van automatische gebruikersaccountvoorziening voor LinkedIn Sales Navigator in Azure AD:
+### <a name="to-configure-automatic-user-account-provisioning-to-linkedin-sales-navigator-in-azure-ad"></a>Automatische toewijzing van gebruikers accounts configureren voor LinkedIn Sales navigator in azure AD:
 
-De eerste stap is het ophalen van uw LinkedIn-toegangstoken. Als u een Enterprise-beheerder bent, u een toegangstoken zelf inrichten. Ga in uw accountcentrum naar **Algemene instellingen instellingen instellingen &gt; ** en open het deelvenster **SCIM-instellingen.**
+De eerste stap bestaat uit het ophalen van uw LinkedIn-toegangs token. Als u een Enter prise-beheerder bent, kunt u een toegangs token zelf inrichten. Ga in uw account centrum naar **instellingen &gt; globale instellingen** en open het **configuratie venster scim** .
 
 > [!NOTE]
-> Als u rechtstreeks toegang hebt tot het accountcentrum in plaats van via een koppeling, u deze bereiken via de volgende stappen.
+> Als u het account centrum direct opent in plaats van via een koppeling, kunt u het bereiken met behulp van de volgende stappen.
 
-1. Meld u aan bij Account Center.
+1. Meld u aan bij het account centrum.
 
-2. Selecteer ** &gt; Beheerbeheerinstellingen** .
+2. Selecteer **beheerders &gt; instellingen** voor de beheerder.
 
-3. Klik op **Geavanceerde integraties** op de linkerzijbalk. U wordt doorverwezen naar het accountcenter.
+3. Klik op **Geavanceerde integraties** op de zijbalk links. U wordt omgeleid naar het account centrum.
 
-4. Klik **+ Voeg nieuwe SCIM-configuratie toe** en volg de procedure door elk veld in te vullen.
-
-    > [!NOTE]
-    > Wanneer licenties voor automatisch toewijzen niet is ingeschakeld, betekent dit dat alleen gebruikersgegevens worden gesynchroniseerd.
-
-    ![LinkedIn Sales Navigator Provisioning](./media/linkedinsalesnavigator-provisioning-tutorial/linkedin_1.PNG)
+4. Klik op **+ nieuwe scim-configuratie toevoegen** en volg de procedure door elk veld in te vullen.
 
     > [!NOTE]
-    > Wanneer autolicentietoewijzing is ingeschakeld, moet u de toepassingsinstantie en het licentietype noteren. Licenties worden toegewezen op basis van wie het eerst komt, het eerst maalt totdat alle licenties zijn ingenomen.
+    > Wanneer het automatisch toewijzen van licenties niet is ingeschakeld, betekent dit dat alleen gebruikers gegevens worden gesynchroniseerd.
 
-    ![LinkedIn Sales Navigator Provisioning](./media/linkedinsalesnavigator-provisioning-tutorial/linkedin_2.PNG)
+    ![Het inrichten van de LinkedIn-verkoop Navigator](./media/linkedinsalesnavigator-provisioning-tutorial/linkedin_1.PNG)
 
-5. Klik **op Token genereren**. U moet uw access token display onder het access **token** veld zien.
+    > [!NOTE]
+    > Wanneer de toewijzing van de licentie is ingeschakeld, moet u het toepassings exemplaar en het licentie type noteren. Licenties worden toegewezen op basis van de eerste die eerst worden uitgevoerd voordat alle licenties worden genomen.
 
-6. Sla uw toegangstoken op uw klembord of computer op voordat u de pagina verlaat.
+    ![Het inrichten van de LinkedIn-verkoop Navigator](./media/linkedinsalesnavigator-provisioning-tutorial/linkedin_2.PNG)
 
-7. Meld u vervolgens aan bij de [Azure-portal](https://portal.azure.com)en blader naar de sectie **Azure Active Directory > Enterprise Apps > Alle toepassingen.**
+5. Klik op **token genereren**. U ziet de weer gave van het toegangs token onder het veld **toegangs token** .
 
-8. Als u LinkedIn Sales Navigator al hebt geconfigureerd voor eenmalige aanmelding, zoekt u naar uw instantie van LinkedIn Sales Navigator met behulp van het zoekveld. Selecteer anders **Toevoegen** en zoeken naar **LinkedIn Sales Navigator** in de toepassingsgalerie. Selecteer LinkedIn Sales Navigator in de zoekresultaten en voeg deze toe aan uw lijst met toepassingen.
+6. Sla uw toegangs token op uw klem bord of computer op voordat u de pagina verlaat.
 
-9. Selecteer uw exemplaar van LinkedIn Sales Navigator en selecteer vervolgens het tabblad **Inrichten.**
+7. Meld u vervolgens aan bij de [Azure Portal](https://portal.azure.com)en blader naar de sectie **Azure Active Directory > enter prise apps > alle toepassingen** .
 
-10. Stel de **inrichtingsmodus** in op **Automatisch**.
+8. Als u de LinkedIn Sales Navigator al hebt geconfigureerd voor eenmalige aanmelding, zoekt u naar uw exemplaar van LinkedIn Sales Navigator met behulp van het zoek veld. Als dat niet het geval is, selecteert u **toevoegen** en zoeken naar **LinkedIn Sales Navigator** in de toepassings galerie. Selecteer LinkedIn Sales navigator in de zoek resultaten en voeg dit toe aan uw lijst met toepassingen.
 
-    ![LinkedIn Sales Navigator Provisioning](./media/linkedinsalesnavigator-provisioning-tutorial/linkedin_3.PNG)
+9. Selecteer uw exemplaar van LinkedIn Sales Navigator en selecteer vervolgens het tabblad **inrichten** .
 
-11. Vul de volgende velden in onder **Beheerdersreferenties:**
+10. Stel de **inrichtings modus** in op **automatisch**.
 
-    * Voer in het veld https://developer.linkedin.comUrl van **tenant** .
+    ![Het inrichten van de LinkedIn-verkoop Navigator](./media/linkedinsalesnavigator-provisioning-tutorial/linkedin_3.PNG)
 
-    * Voer in het veld **Geheim token** het toegangstoken in dat u in stap 1 hebt gegenereerd en klik op **Verbinding testen** .
+11. Vul de volgende velden in onder **beheerders referenties** :
 
-    * U ziet een melding voor succes aan de rechterbovenhoek van uw portal.
+    * Voer https://developer.linkedin.comin het veld **Tenant-URL** in.
 
-12. Voer het e-mailadres in van een persoon of groep die meldingen van provisioning-fouten moet ontvangen in het veld **E-mail melden** en schakel het selectievakje hieronder in.
+    * In het veld **geheim token** voert u het toegangs token in dat u in stap 1 hebt gegenereerd en klikt u op **verbinding testen** .
+
+    * U ziet een geslaagde melding aan de upperright-zijde van uw portal.
+
+12. Voer het e-mail adres in van een persoon of groep die inrichtings fout meldingen moet ontvangen in het veld **e-mail melding** en schakel het selectie vakje hieronder in.
 
 13. Klik op **Opslaan**.
 
-14. Controleer in de sectie **Kenmerktoewijzingen** de gebruikers- en groepskenmerken die worden gesynchroniseerd van Azure AD naar LinkedIn Sales Navigator. Houd er rekening mee dat de kenmerken die zijn geselecteerd als **eigenschappen matching,** worden gebruikt om de gebruikersaccounts en -groepen in LinkedIn Sales Navigator te matchen voor updatebewerkingen. Selecteer de knop Opslaan om wijzigingen door te voeren.
+14. Controleer in de sectie **kenmerk toewijzingen** de gebruikers-en groeps kenmerken die worden gesynchroniseerd vanuit Azure AD naar LinkedIn Sales Navigator. Houd er rekening mee dat de kenmerken die zijn geselecteerd als **overeenkomende** eigenschappen, worden gebruikt om te voldoen aan de gebruikers accounts en-groepen in de LinkedIn Sales Navigator voor bijwerk bewerkingen. Selecteer de knop Opslaan om eventuele wijzigingen door te voeren.
 
-    ![LinkedIn Sales Navigator Provisioning](./media/linkedinsalesnavigator-provisioning-tutorial/linkedin_4.PNG)
+    ![Het inrichten van de LinkedIn-verkoop Navigator](./media/linkedinsalesnavigator-provisioning-tutorial/linkedin_4.PNG)
 
-15. Als u de Azure AD-inrichtingsservice voor LinkedIn Sales Navigator wilt inschakelen, wijzigt u de **instelstatus** in **Aan** in de sectie **Instellingen**
+15. Als u de Azure AD-inrichtings service voor LinkedIn Sales Navigator wilt inschakelen, wijzigt u de **inrichtings status** **in in het** gedeelte **instellingen**
 
 16. Klik op **Opslaan**.
 
-Hiermee wordt gestart met de eerste synchronisatie van gebruikers en/of groepen die zijn toegewezen aan LinkedIn Sales Navigator in de sectie Gebruikers en groepen. Houd er rekening mee dat de eerste synchronisatie langer duurt dan de volgende synchronisaties, die ongeveer elke 40 minuten plaatsvinden zolang de service wordt uitgevoerd. U de sectie **Synchronisatiedetails** gebruiken om de voortgang te controleren en koppelingen naar het inrichten van activiteitslogboeken te volgen, waarin alle acties worden beschreven die worden uitgevoerd door de inrichtingsservice in uw LinkedIn Sales Navigator-app.
+Hiermee wordt de eerste synchronisatie gestart van alle gebruikers en/of groepen die zijn toegewezen aan de LinkedIn Sales navigator in de sectie gebruikers en groepen. Houd er rekening mee dat de initiële synchronisatie langer duurt dan volgende synchronisaties, die ongeveer elke 40 minuten plaatsvinden, zolang de service wordt uitgevoerd. U kunt de sectie **synchronisatie gegevens** gebruiken voor het bewaken van de voortgang en het volgen van koppelingen naar de inrichtings activiteiten Logboeken. hierin worden alle acties beschreven die worden uitgevoerd door de inrichtings service in uw LinkedIn-verkoop Navigator-app.
 
-Zie [Rapportage over automatische gebruikersaccountinrichting voor](../app-provisioning/check-status-user-account-provisioning.md)meer informatie over het lezen van de azure AD-inrichtingslogboeken.
+Zie [rapportage over het automatisch inrichten van gebruikers accounts](../app-provisioning/check-status-user-account-provisioning.md)voor meer informatie over het lezen van de Azure AD-inrichtings Logboeken.
 
 ## <a name="additional-resources"></a>Aanvullende resources
 
-* [Gebruikersaccountvoorziening voor Enterprise Apps beheren](../app-provisioning/configure-automatic-user-provisioning-portal.md)
-* [Wat is toepassingstoegang en eenmalige aanmelding met Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
+* [Inrichten van gebruikers accounts voor zakelijke apps beheren](../app-provisioning/configure-automatic-user-provisioning-portal.md)
+* [Wat is toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)

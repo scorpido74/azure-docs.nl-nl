@@ -1,75 +1,75 @@
 ---
 title: Aanbevolen best practices voor implementatie
-description: Meer informatie over de belangrijkste mechanismen voor implementatie naar Azure App Service. Vind taalspecifieke aanbevelingen en andere kanttekeningen.
-keywords: azure app-service, web-app, implementeren, implementeren, pijplijnen, build
+description: Meer informatie over de belangrijkste mechanismen voor het implementeren naar Azure App Service. Zoek taalspecifieke aanbevelingen en andere voor behoud.
+keywords: Azure app service, Web-app, implementeren, implementeren, pijp lijnen, bouwen
 author: jasonfreeberg
 ms.assetid: bb51e565-e462-4c60-929a-2ff90121f41d
 ms.topic: article
 ms.date: 07/31/2019
 ms.author: jafreebe
 ms.openlocfilehash: 4dd959d75fd582d787e68db4a415a4a694b9cda8
-ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81770692"
 ---
 # <a name="deployment-best-practices"></a>Aanbevolen procedures voor implementatie
 
-Elk ontwikkelteam heeft unieke vereisten die het implementeren van een efficiënte implementatiepijplijn op elke cloudservice moeilijk kunnen maken. In dit artikel worden de drie belangrijkste onderdelen van implementatie naar App Service geïntroduceerd: implementatiebronnen, buildpipelines en implementatiemechanismen. Dit artikel bevat ook een aantal aanbevolen procedures en tips voor specifieke taalstapels.
+Elk ontwikkel team heeft unieke vereisten waardoor het implementeren van een efficiënte implementatie pijplijn moeilijk is voor elke Cloud service. In dit artikel worden de drie belangrijkste onderdelen beschreven van de implementatie van App Service: implementatie bronnen, bouw pijp lijnen en implementatie mechanismen. Dit artikel heeft ook betrekking op enkele aanbevolen procedures en tips voor specifieke taal stacks.
 
-## <a name="deployment-components"></a>Implementatiecomponenten
+## <a name="deployment-components"></a>Implementatie onderdelen
 
-### <a name="deployment-source"></a>Implementatiebron
+### <a name="deployment-source"></a>Implementatie bron
 
-Een implementatiebron is de locatie van uw toepassingscode. Voor productie-apps is de implementatiebron meestal een opslagplaats die wordt gehost door software voor versiebeheer, zoals [GitHub, BitBucket of Azure Repos.](deploy-continuous-deployment.md) Voor ontwikkel- en testscenario's kan de implementatiebron [een project op uw lokale machine](deploy-local-git.md)zijn. App Service ondersteunt ook [OneDrive- en Dropbox-mappen](deploy-content-sync.md) als implementatiebronnen. Hoewel cloudmappen het gemakkelijk kunnen maken om aan de slag te gaan met App Service, wordt het meestal niet aanbevolen om deze bron te gebruiken voor productietoepassingen op bedrijfsniveau. 
+Een implementatie bron is de locatie van de toepassings code. Voor productie-apps is de implementatie bron meestal een opslag plaats die wordt gehost door versie beheer software [, zoals github, BitBucket of Azure opslag plaatsen](deploy-continuous-deployment.md). Voor ontwikkelings-en test scenario's kan de implementatie bron [een project op uw lokale computer](deploy-local-git.md)zijn. App Service biedt ook ondersteuning voor [OneDrive-en Dropbox-mappen](deploy-content-sync.md) als implementatie bronnen. Met Cloud mappen kunt u gemakkelijk aan de slag met App Service. het wordt doorgaans niet aanbevolen deze bron te gebruiken voor productie toepassingen op ondernemings niveau. 
 
 ### <a name="build-pipeline"></a>Build-pipeline
 
-Zodra u een implementatiebron kiest, kiest u een buildpijplijn. Een buildpijplijn leest uw broncode uit de implementatiebron en voert een reeks stappen uit (zoals het compileren van code, het minifying HTML en JavaScript, het uitvoeren van tests en verpakkingscomponenten) om de toepassing in een runnable status te krijgen. De specifieke opdrachten die door de buildpijplijn worden uitgevoerd, zijn afhankelijk van uw taalstack. Deze bewerkingen kunnen worden uitgevoerd op een buildserver, zoals Azure Pipelines, of lokaal worden uitgevoerd.
+Wanneer u een implementatie bron hebt gekozen, is de volgende stap het kiezen van een build-pijp lijn. Met een build-pijp lijn wordt de bron code van de implementatie bron gelezen en wordt een reeks stappen uitgevoerd (zoals het compileren van code, het minifying van HTML en Java script, het uitvoeren van tests en het inpakken van onderdelen) om de toepassing in een uitvoer bare-status te verkrijgen. De specifieke opdrachten die worden uitgevoerd door de build-pijp lijn, zijn afhankelijk van uw taal stack. Deze bewerkingen kunnen worden uitgevoerd op een bouw server zoals Azure-pijp lijnen of lokaal worden uitgevoerd.
 
-### <a name="deployment-mechanism"></a>Implementatiemechanisme
+### <a name="deployment-mechanism"></a>Implementatie mechanisme
 
-Het implementatiemechanisme is de actie die wordt gebruikt om uw ingebouwde toepassing in de */home/site/wwwroot-map* van uw web-app te plaatsen. De */wwwroot-map* is een gemonteerde opslaglocatie die wordt gedeeld door alle exemplaren van uw web-app. Wanneer het implementatiemechanisme uw toepassing in deze map plaatst, ontvangen uw instanties een melding om de nieuwe bestanden te synchroniseren. App Service ondersteunt de volgende implementatiemechanismen:
+Het implementatie mechanisme is de actie die wordt gebruikt om uw gemaakte toepassing in de */Home/site/wwwroot* -map van uw web-app te zetten. De */wwwroot* Directory is een gekoppelde opslag locatie die wordt gedeeld door alle exemplaren van uw web-app. Wanneer het implementatie mechanisme uw toepassing in deze map plaatst, ontvangen uw instanties een melding voor het synchroniseren van de nieuwe bestanden. App Service ondersteunt de volgende implementatie mechanismen:
 
-- Kudu-eindpunten: [Kudu](https://github.com/projectkudu/kudu/wiki) is de productiviteitstool voor open-sourceontwikkelaars die wordt uitgevoerd als een afzonderlijk proces in Windows App Service en als tweede container in Linux App Service. Kudu verwerkt continue implementaties en biedt HTTP-eindpunten voor implementatie, zoals zipdeploy.
-- FTP en WebDeploy: met behulp van uw [site of gebruikersreferenties](deploy-configure-credentials.md)u bestanden uploaden [via FTP](deploy-ftp.md) of WebDeploy. Deze mechanismen gaan niet via Kudu.  
+- Kudu-eind punten: [kudu](https://github.com/projectkudu/kudu/wiki) is het open-source hulp programma voor ontwikkel aars dat wordt uitgevoerd als een afzonderlijk proces in Windows app service, en als een tweede container in Linux app service. Kudu verwerkt doorlopende implementaties en biedt HTTP-eind punten voor implementatie, zoals zipdeploy.
+- FTP en Web Deploy: door gebruik te maken van uw [site-of gebruikers referenties](deploy-configure-credentials.md)kunt u bestanden uploaden [via FTP](deploy-ftp.md) of Web Deploy. Deze mechanismen lopen niet via kudu.  
 
-Implementatietools zoals Azure Pipelines, Jenkins en editor-plugins maken gebruik van een van deze implementatiemechanismen.
+Implementatie hulpprogramma's, zoals Azure-pijp lijnen, Jenkins en editor-invoeg toepassingen, gebruiken een van deze implementatie mechanismen.
 
-## <a name="use-deployment-slots"></a>Implementatiesleuven gebruiken
+## <a name="use-deployment-slots"></a>Implementatie sleuven gebruiken
 
-Gebruik waar mogelijk [implementatiesleuven](deploy-staging-slots.md) bij het implementeren van een nieuwe productiebuild. Wanneer u een standaardapp-serviceplanlaag of beter gebruikt, u uw app implementeren in een faseringsomgeving, uw wijzigingen valideren en rooktests uitvoeren. Wanneer u klaar bent, u uw faserings- en productieslots ruilen. De swapbewerking warmt de benodigde werkexemplaren op die overeenkomen met uw productieschaal, waardoor downtime wordt geëlimineerd.
+Gebruik waar mogelijk [implementatie sleuven](deploy-staging-slots.md) bij het implementeren van een nieuwe productie-build. Wanneer u een Standard App Service plan-laag of beter gebruikt, kunt u uw app implementeren in een faserings omgeving, uw wijzigingen valideren en een rook testen. Wanneer u klaar bent, kunt u uw staging-en productie-sleuven wisselen. Met de wissel bewerking worden de benodigde Workers geheten zodat deze overeenkomen met uw productie schaal, waardoor uitval tijd wordt geëlimineerd.
 
-### <a name="continuously-deploy-code"></a>Code continu implementeren
+### <a name="continuously-deploy-code"></a>Continu code implementeren
 
-Als uw project branches heeft aangewezen voor testen, QA en staging, moet elk van deze branches continu worden geïmplementeerd in een faseringssleuf. (Dit staat bekend als het [Gitflow ontwerp](https://www.atlassian.com/git/tutorials/comparing-workflows/gitflow-workflow).) Hierdoor kunnen uw stakeholders eenvoudig de ingezette vestiging beoordelen en testen. 
+Als uw project vertakkingen heeft aangewezen voor testen, QA en fase ring, moeten alle vertakkingen continu worden geïmplementeerd in een staging-sleuf. (Dit staat bekend als het [Gitflow-ontwerp](https://www.atlassian.com/git/tutorials/comparing-workflows/gitflow-workflow).) Zo kunnen uw belanghebbenden de geïmplementeerde vertakking eenvoudig beoordelen en testen. 
 
-Continue implementatie mag nooit worden ingeschakeld voor uw productiesleuf. In plaats daarvan moet uw productiebranch (vaak master) worden geïmplementeerd op een niet-productiesleuf. Wanneer u klaar bent om de basistak vrij te geven, verwisselt u deze in de productiesleuf. Het omzetten in productie- in plaats van implementeren in productie - voorkomt downtime en stelt u in staat om de wijzigingen terug te draaien door opnieuw te wisselen. 
+Continue implementatie moet nooit worden ingeschakeld voor uw productie sleuf. In plaats daarvan moet uw productie vertakking (vaak Master) worden geïmplementeerd op een niet-productie sleuf. Wanneer u klaar bent om de basis vertakking uit te geven, wisselt u deze naar de productie site. Wisselen in productie: in plaats van implementatie naar productie: voor komt downtime en kunt u de wijzigingen terugdraaien door opnieuw te wisselen. 
 
-![Visueel slotgebruik](media/app-service-deploy-best-practices/slot_flow_code_diagam.png)
+![Visueel element voor sleuf gebruik](media/app-service-deploy-best-practices/slot_flow_code_diagam.png)
 
-### <a name="continuously-deploy-containers"></a>Continu containers inzetten
+### <a name="continuously-deploy-containers"></a>Containers continu implementeren
 
-Voor aangepaste containers van Docker of andere containerregisters implementeert u de afbeelding in een faseringssleuf en wisselt u in productie om downtime te voorkomen. De automatisering is complexer dan code-implementatie omdat u de afbeelding naar een containerregister moet pushen en de afbeeldingstag op de webapp moet bijwerken.
+Voor aangepaste containers van docker of andere container registers implementeert u de installatie kopie in een faserings sleuf en wisselt u naar productie om uitval tijd te voor komen. De automatisering is complexer dan de code-implementatie omdat u de installatie kopie naar een container register moet pushen en de afbeeldings code op de webapp wilt bijwerken.
 
-Voor elke branch die u wilt implementeren in een sleuf, stelt u automatisering in om het volgende te doen op elke commit naar de branch.
+Voor elke vertakking die u wilt implementeren in een sleuf, stelt u Automation in om het volgende te doen voor elke door voering aan de vertakking.
 
-1. **De afbeelding bouwen en taggen.** Tag als onderdeel van de buildpijplijn de afbeelding met de git commit-id, tijdstempel of andere identificeerbare informatie. Het is het beste om de standaard tag "latest" niet te gebruiken. Anders is het moeilijk om terug te vinden welke code momenteel wordt geïmplementeerd, wat het debuggen veel moeilijker maakt.
-1. **Druk op de gelabelde afbeelding**. Zodra de afbeelding is gebouwd en getagd, duwt de pijplijn de afbeelding naar ons containerregister. In de volgende stap haalt de implementatiesleuf de gelabelde afbeelding uit het containerregister.
-1. **Werk de implementatiesleuf bij met de nieuwe afbeeldingstag**. Wanneer deze eigenschap wordt bijgewerkt, wordt de site automatisch opnieuw opgestart en trekt de nieuwe containerafbeelding.
+1. **De installatie kopie bouwen en labelen**. Als onderdeel van de build-pijp lijn labelt u de installatie kopie met de ID van het git-doorvoer, de tijds tempel of andere herken bare informatie. Het is raadzaam om de standaard code "nieuwste" niet te gebruiken. Als dat niet zo is, is het moeilijk om te achterhalen welke code momenteel is geïmplementeerd, waardoor fout opsporing veel moeilijker wordt.
+1. **De gelabelde afbeelding pushen**. Zodra de installatie kopie is gemaakt en gelabeld, duwt de pijp lijn de installatie kopie naar het container register. In de volgende stap haalt de implementatie site de gelabelde installatie kopie uit het container register.
+1. **Werk de implementatie site bij met de nieuwe afbeeldings code**. Wanneer deze eigenschap wordt bijgewerkt, wordt de site automatisch opnieuw opgestart en wordt de nieuwe container installatie kopie opgehaald.
 
-![Visueel slotgebruik](media/app-service-deploy-best-practices/slot_flow_container_diagram.png)
+![Visueel element voor sleuf gebruik](media/app-service-deploy-best-practices/slot_flow_container_diagram.png)
 
-Er zijn onderstaande voorbeelden voor gemeenschappelijke automatiseringsframeworks.
+Hieronder vindt u enkele voor beelden van algemene Automation-frameworks.
 
-### <a name="use-azure-devops"></a>Azure DevOps gebruiken
+### <a name="use-azure-devops"></a>Azure-DevOps gebruiken
 
-App Service heeft [ingebouwde continue levering](deploy-continuous-deployment.md) voor containers via het Deployment Center. Navigeer naar uw app in de [Azure-portal](https://portal.azure.com/) en selecteer **Implementatiecentrum** onder **Implementatie**. Volg de instructies om uw opslagplaats en branch te selecteren. Hiermee configureert u een DevOps-build- en releasepijplijn om uw container automatisch te bouwen, te taggen en te implementeren wanneer nieuwe commits naar uw geselecteerde branch worden gepusht.
+App Service heeft [ingebouwde continue levering](deploy-continuous-deployment.md) voor containers via het implementatie centrum. Navigeer naar uw app in de [Azure Portal](https://portal.azure.com/) en selecteer **implementatie centrum** onder **implementatie**. Volg de instructies om uw opslag plaats en vertakking te selecteren. Hiermee configureert u een DevOps build-en release-pijp lijn voor het automatisch bouwen, labelen en implementeren van uw container wanneer nieuwe door voeringen naar de geselecteerde Branch worden gepusht.
 
 ### <a name="use-github-actions"></a>GitHub-acties gebruiken
 
-U uw containerimplementatie ook automatiseren [met GitHub Actions.](containers/deploy-container-github-action.md)  Het onderstaande werkstroombestand bouwt en tagt de container met de commit-id, duwt deze naar een containerregister en werkt de opgegeven sitesleuf bij met de nieuwe afbeeldingstag.
+U kunt de implementatie van de container ook automatiseren [met github-acties](containers/deploy-container-github-action.md).  In het onderstaande werk stroom bestand wordt de container met de commit-ID samengesteld, gepusht naar een container register en wordt de opgegeven site sleuf bijgewerkt met de nieuwe afbeeldings code.
 
 ```yaml
 name: Build and deploy a container image to Azure Web Apps
@@ -109,9 +109,9 @@ jobs:
         images: 'contoso/demo:${{ github.sha }}'
 ```
 
-### <a name="use-other-automation-providers"></a>Andere automatiseringsproviders gebruiken
+### <a name="use-other-automation-providers"></a>Andere Automation-providers gebruiken
 
-De eerder vermelde stappen zijn van toepassing op andere automatiseringshulpprogramma's zoals CircleCI of Travis CI. U moet de Azure CLI echter gebruiken om de implementatiesleuven in de laatste stap bij te werken met nieuwe afbeeldingstags. Als u de Azure CLI wilt gebruiken in uw automatiseringsscript, genereert u een Service Principal met de volgende opdracht.
+De stappen die eerder worden beschreven, zijn van toepassing op andere Automation-hulpprogram ma's zoals CircleCI of Travis CI. U moet echter de Azure CLI gebruiken om de implementatie-sleuven bij te werken met nieuwe afbeeldings Tags in de laatste stap. Als u de Azure CLI wilt gebruiken in uw automatiserings script, genereert u een service-principal met behulp van de volgende opdracht.
 
 ```shell
 az ad sp create-for-rbac --name "myServicePrincipal" --role contributor \
@@ -119,41 +119,41 @@ az ad sp create-for-rbac --name "myServicePrincipal" --role contributor \
    --sdk-auth
 ```
 
-Log in uw script `az login --service-principal`in met het verstrekken van informatie van de opdrachtgever. U `az webapp config container set` vervolgens de containernaam, tag, register-URL en registerwachtwoord instellen. Hieronder vindt u enkele handige links voor het bouwen van uw container CI-proces.
+Meld u in uw script aan met `az login --service-principal`en geef de gegevens van de principal op. U kunt vervolgens gebruiken `az webapp config container set` om de container naam, label, register-URL en het register wachtwoord in te stellen. Hieronder vindt u enkele handige koppelingen waarmee u uw container CI-proces kunt bouwen.
 
-- [Inloggen op de Azure CLI op Circle CI](https://circleci.com/orbs/registry/orb/circleci/azure-cli) 
+- [Aanmelden bij de Azure CLI op cirkel CI](https://circleci.com/orbs/registry/orb/circleci/azure-cli) 
 
 ## <a name="language-specific-considerations"></a>Taalspecifieke overwegingen
 
 ### <a name="java"></a>Java
 
-Gebruik de Kudu [zipdeploy/](deploy-zip.md) API voor het implementeren van JAR-toepassingen en [wardeploy/](deploy-zip.md#deploy-war-file) voor WAR-apps. Als u Jenkins gebruikt, u deze API's rechtstreeks in uw implementatiefase gebruiken. Raadpleeg [dit artikel](../jenkins/execute-cli-jenkins-pipeline.md) voor meer informatie.
+Gebruik de kudu [zipdeploy/](deploy-zip.md) API voor het implementeren van jar-toepassingen en [WARDEPLOY/](deploy-zip.md#deploy-war-file) voor War-apps. Als u Jenkins gebruikt, kunt u deze Api's rechtstreeks in uw implementatie fase gebruiken. Raadpleeg [dit artikel](../jenkins/execute-cli-jenkins-pipeline.md) voor meer informatie.
 
 ### <a name="node"></a>Knooppunt
 
-Kudu voert standaard de buildstappen uit voor`npm install`uw Node-toepassing ( ). Als u een buildservice zoals Azure DevOps gebruikt, is de Kudu-build overbodig. Als u de Kudu-build wilt `SCM_DO_BUILD_DURING_DEPLOYMENT`uitschakelen, maakt `false`u een app-instelling met een waarde van .
+Kudu voert standaard de stappen voor het bouwen van de knooppunt toepassing (`npm install`) uit. Als u een build-service gebruikt, zoals Azure DevOps, is de kudu-build niet nodig. Als u de kudu-build wilt uitschakelen, maakt u `SCM_DO_BUILD_DURING_DEPLOYMENT`een app-instelling, `false`met een waarde van.
 
 ### <a name="net"></a>.NET 
 
-Kudu voert standaard de buildstappen uit voor`dotnet build`uw .NET-toepassing ( ). Als u een buildservice zoals Azure DevOps gebruikt, is de Kudu-build overbodig. Als u de Kudu-build wilt `SCM_DO_BUILD_DURING_DEPLOYMENT`uitschakelen, maakt `false`u een app-instelling met een waarde van .
+Kudu voert standaard de stappen voor het bouwen van uw .NET-toepassing (`dotnet build`) uit. Als u een build-service gebruikt, zoals Azure DevOps, is de kudu-build niet nodig. Als u de kudu-build wilt uitschakelen, maakt u `SCM_DO_BUILD_DURING_DEPLOYMENT`een app-instelling, `false`met een waarde van.
 
-## <a name="other-deployment-considerations"></a>Andere implementatieoverwegingen
+## <a name="other-deployment-considerations"></a>Andere overwegingen bij de implementatie
 
 ### <a name="local-cache"></a>Lokale cache
 
-Azure App Service-inhoud wordt opgeslagen in Azure Storage en wordt op een duurzame manier opgedoken als inhoudsshare. Sommige apps hebben echter alleen een krachtige, alleen-lezen inhoudswinkel nodig die ze met hoge beschikbaarheid kunnen uitvoeren. Deze apps kunnen profiteren van het gebruik van [lokale cache.](overview-local-cache.md) Lokale cache wordt niet aanbevolen voor sites voor inhoudsbeheer, zoals WordPress.
+Azure App Service inhoud wordt opgeslagen op Azure Storage en wordt op een duurzame manier als een inhouds share geoppereerd. Sommige apps hebben echter alleen een hoogwaardige, alleen-lezen inhouds opslag nodig die kan worden uitgevoerd met hoge Beschik baarheid. Deze apps kunnen profiteren van het gebruik van [lokale cache](overview-local-cache.md). Lokale cache wordt niet aanbevolen voor content management-sites zoals WordPress.
 
-Gebruik altijd lokale cache in combinatie met [implementatiesleuven](deploy-staging-slots.md) om downtime te voorkomen. Zie [deze sectie](overview-local-cache.md#best-practices-for-using-app-service-local-cache) voor informatie over het samen gebruiken van deze functies.
+Gebruik altijd lokale cache in combi natie met [implementatie sleuven](deploy-staging-slots.md) om uitval tijd te voor komen. Zie [deze sectie](overview-local-cache.md#best-practices-for-using-app-service-local-cache) voor meer informatie over het samen gebruiken van deze functies.
 
 ### <a name="high-cpu-or-memory"></a>Hoge CPU of geheugen
 
-Als uw App Service Plan meer dan 90% van de beschikbare CPU of geheugen gebruikt, kan de onderliggende virtuele machine problemen hebben met het verwerken van uw implementatie. Wanneer dit gebeurt, schaalt u het aantal instance's tijdelijk op om de implementatie uit te voeren. Zodra de implementatie is voltooid, u het aantal instance's terugzetten naar de vorige waarde.
+Als uw App Service-abonnement meer dan 90% beschik bare CPU of geheugen gebruikt, kan het zijn dat de onderliggende virtuele machine problemen heeft met het verwerken van uw implementatie. Als dit gebeurt, kunt u het aantal instanties tijdelijk opschalen om de implementatie uit te voeren. Zodra de implementatie is voltooid, kunt u het aantal exemplaren terugsturen naar de vorige waarde.
 
-Ga voor meer informatie over aanbevolen procedures naar [App Service Diagnostics](https://docs.microsoft.com/azure/app-service/overview-diagnostics) voor meer informatie over bruikbare aanbevolen procedures die specifiek zijn voor uw resource.
+Voor meer informatie over best practices gaat u naar [app service diagnostische gegevens](https://docs.microsoft.com/azure/app-service/overview-diagnostics) om te bepalen welke best practices u kunt gebruiken voor uw resource.
 
-- Navigeer naar uw web-app in de [Azure-portal.](https://portal.azure.com)
-- Klik op **Diagnosticeren en los problemen op** in de linkernavigatie, waarmee App Service Diagnostics wordt geopend.
-- Kies de startpaginategel **Aanbevolen procedures.**
-- Klik **op Aanbevolen procedures voor beschikbaarheid & Prestaties** of Aanbevolen procedures voor optimale **configuratie** om de huidige status van uw app met betrekking tot deze aanbevolen procedures weer te geven.
+- Navigeer naar uw web-app in het [Azure Portal](https://portal.azure.com).
+- Klik op **problemen vaststellen en oplossen** in het navigatie venster aan de linkerkant, waarmee app service diagnostische gegevens worden geopend.
+- Kies de tegel start pagina voor **Best practices** .
+- Klik op **Aanbevolen procedures voor Beschik baarheid & prestaties** of **Aanbevolen procedures voor optimale configuratie** om de huidige status van uw app te bekijken met betrekking tot deze aanbevolen procedures.
 
-U deze koppeling ook gebruiken om App `https://ms.portal.azure.com/?websitesextension_ext=asd.featurePath%3Ddetectors%2FParentAvailabilityAndPerformance#@microsoft.onmicrosoft.com/resource/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{siteName}/troubleshoot`Service Diagnostics direct te openen voor uw resource:.
+U kunt deze koppeling ook gebruiken om direct App Service diagnostische gegevens te openen voor uw `https://ms.portal.azure.com/?websitesextension_ext=asd.featurePath%3Ddetectors%2FParentAvailabilityAndPerformance#@microsoft.onmicrosoft.com/resource/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{siteName}/troubleshoot`resource:.

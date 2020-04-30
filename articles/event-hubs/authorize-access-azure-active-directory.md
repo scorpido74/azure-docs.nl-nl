@@ -1,6 +1,6 @@
 ---
 title: Toegang autoriseren met behulp van Azure Active Directory
-description: In dit artikel vindt u informatie over het toestaan van toegang tot bronnen van gebeurtenishubs met Azure Active Directory.
+description: In dit artikel vindt u informatie over het verlenen van toegang tot Event Hubs-resources met behulp van Azure Active Directory.
 services: event-hubs
 ms.service: event-hubs
 documentationcenter: ''
@@ -9,77 +9,77 @@ ms.topic: conceptual
 ms.date: 02/12/2020
 ms.author: spelluru
 ms.openlocfilehash: 6216b56c8e8f0de4f9cd60306bbf9c5ed49a11ad
-ms.sourcegitcommit: 75089113827229663afed75b8364ab5212d67323
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82025200"
 ---
-# <a name="authorize-access-to-event-hubs-resources-using-azure-active-directory"></a>Toegang tot gebeurtenishubsresources autoriseren met Azure Active Directory
-Azure Event Hubs ondersteunt het gebruik van Azure Active Directory (Azure AD) om aanvragen te autoriseren voor gebeurtenishubsresources. Met Azure AD u RBAC (Role-based access control) gebruiken om machtigingen toe te kennen aan een beveiligingsprincipal, die mogelijk een gebruiker of een principal van de toepassingsservice is. Zie [De verschillende rollen begrijpen](../role-based-access-control/overview.md)voor meer informatie over rollen en roltoewijzingen.
+# <a name="authorize-access-to-event-hubs-resources-using-azure-active-directory"></a>Toegang tot Event Hubs resources autoriseren met behulp van Azure Active Directory
+Azure Event Hubs ondersteunt het gebruik van Azure Active Directory (Azure AD) om aanvragen voor Event Hubs bronnen goed te keuren. Met Azure AD kunt u gebruikmaken van op rollen gebaseerd toegangs beheer (RBAC) om machtigingen toe te kennen aan een beveiligingsprincipal, die een gebruiker of een service-principal van de toepassing is. Zie [informatie over de verschillende rollen](../role-based-access-control/overview.md)voor meer informatie over rollen en roltoewijzingen.
 
 ## <a name="overview"></a>Overzicht
-Wanneer een beveiligingsprincipal (een gebruiker of een toepassing) probeert toegang te krijgen tot een gebeurtenishubsbron, moet de aanvraag worden geautoriseerd. Met Azure AD is toegang tot een bron een proces in twee stappen. 
+Wanneer een beveiligingsprincipal (een gebruiker of een toepassing) probeert toegang te krijgen tot een Event Hubs resource, moet de aanvraag worden geautoriseerd. Met Azure AD is toegang tot een resource een proces dat uit twee stappen bestaat. 
 
- 1. Eerst wordt de identiteit van de beveiligingsprincipal geverifieerd en wordt een OAuth 2.0-token geretourneerd. De resourcenaam om een `https://eventhubs.azure.net/`token aan te vragen is . Voor Kafka-clients is `https://<namespace>.servicebus.windows.net`de bron om een token aan te vragen .
- 1. Vervolgens wordt het token doorgegeven als onderdeel van een verzoek aan de Gebeurtenishubs-service om toegang tot de opgegeven bron te autoriseren.
+ 1. Eerst wordt de identiteit van de beveiligingsprincipal geverifieerd en wordt een OAuth 2,0-token geretourneerd. De resource naam voor het aanvragen van een `https://eventhubs.azure.net/`token is. Voor Kafka-clients is `https://<namespace>.servicebus.windows.net`de bron voor het aanvragen van een token.
+ 1. Vervolgens wordt het token door gegeven als onderdeel van een aanvraag aan de Event Hubs-service om toegang tot de opgegeven bron te autoriseren.
 
-De verificatiestap vereist dat een toepassingsaanvraag een OAuth 2.0-toegangstoken bevat tijdens runtime. Als een toepassing wordt uitgevoerd binnen een Azure-entiteit, zoals een Azure VM, een virtuele machineschaalset of een Azure-functie-app, kan deze een beheerde identiteit gebruiken om toegang te krijgen tot de bronnen. Zie [Toegang tot Azure Event Hubs-bronnen verifiëren met Azure Active Directory en beheerde identiteiten voor Azure Resources](authenticate-managed-identity.md)voor meer informatie over het verifiëren van aanvragen van een beheerde identiteit naar De Hubs-service voor gebeurtenishubs. 
+De verificatie stap vereist dat een toepassings aanvraag een OAuth 2,0-toegangs token bevat tijdens runtime. Als een toepassing wordt uitgevoerd binnen een Azure-entiteit, zoals een Azure-VM, een schaalset voor virtuele machines of een Azure function-app, kan deze een beheerde identiteit gebruiken om toegang te krijgen tot de resources. Zie [toegang tot azure Event hubs-resources verifiëren met Azure Active Directory en beheerde identiteiten voor Azure-resources](authenticate-managed-identity.md)voor meer informatie over het verifiëren van aanvragen die door een beheerde identiteit naar Event hubs service worden verzonden. 
 
-De autorisatiestap vereist dat een of meer RBAC-rollen worden toegewezen aan de beveiligingsprincipal. Azure Event Hubs biedt RBAC-rollen die reeksen machtigingen voor gebeurtenishubs-bronnen omvatten. De rollen die zijn toegewezen aan een beveiligingsprincipal bepalen de machtigingen die de opdrachtgever zal hebben. Zie [Ingebouwde RBAC-rollen voor Azure Event Hubs voor](#built-in-rbac-roles-for-azure-event-hubs)meer informatie over RBAC-rollen. 
+Voor de autorisatie stap moeten een of meer RBAC-rollen worden toegewezen aan de beveiligingsprincipal. Azure Event Hubs biedt RBAC-rollen die sets machtigingen voor Event Hubs bronnen omvatten. De rollen die zijn toegewezen aan een beveiligingsprincipal, bepalen de machtigingen die de principal heeft. Zie voor meer informatie over RBAC-rollen [Ingebouwde RBAC-rollen voor Azure Event hubs](#built-in-rbac-roles-for-azure-event-hubs). 
 
-Native toepassingen en webtoepassingen die aanvragen indienen voor gebeurtenishubs, kunnen ook autoriseren met Azure AD. Zie Toegang tot Azure Event Hubs met Azure AD verifiëren met Azure AD vanuit een toepassing voor meer informatie over het aanvragen van een toegangstoken en het gebruiken om aanvragen voor Gebeurtenishubs-bronnen [te autoriseren.](authenticate-application.md) 
+Systeem eigen toepassingen en webtoepassingen die aanvragen indienen bij Event Hubs kunnen ook worden geautoriseerd met Azure AD. Zie [toegang tot Azure-Event hubs verifiëren met Azure AD vanuit een toepassing](authenticate-application.md)voor meer informatie over het aanvragen van een toegangs token en het gebruik ervan om aanvragen voor Event hubs resources te autoriseren. 
 
-## <a name="assign-rbac-roles-for-access-rights"></a>RBAC-rollen toewijzen voor toegangsrechten
-Azure Active Directory (Azure AD) geeft toegangsrechten voor beveiligde bronnen door middel [van rbac (role-based access control).](../role-based-access-control/overview.md) Azure Event Hubs definieert een set ingebouwde RBAC-rollen die veelvoorkomende sets machtigingen omvatten die worden gebruikt om toegang te krijgen tot gebeurtenishubgegevens en u ook aangepaste rollen definiëren voor toegang tot de gegevens.
+## <a name="assign-rbac-roles-for-access-rights"></a>RBAC-rollen toewijzen voor toegangs rechten
+Met Azure Active Directory (Azure AD) worden de toegangs rechten voor beveiligde bronnen geautoriseerd via [op rollen gebaseerd toegangs beheer (RBAC)](../role-based-access-control/overview.md). Azure Event Hubs definieert een set ingebouwde RBAC-rollen die algemene sets machtigingen bevatten die worden gebruikt voor toegang tot Event Hub gegevens, en u kunt ook aangepaste rollen definiëren voor toegang tot de gegevens.
 
-Wanneer een RBAC-rol is toegewezen aan een Azure AD-beveiligingsprincipal, verleent Azure toegang tot deze bronnen voor die beveiligingsprincipal. Toegang kan worden beperkt tot het abonnementsniveau, de resourcegroep, de naamruimte van gebeurtenishubs of een resource eronder. Een Azure AD-beveiligingsprincipal kan een gebruiker of een hoofdvan de toepassingsservice of een [beheerde identiteit voor Azure-resources](../active-directory/managed-identities-azure-resources/overview.md)zijn.
+Wanneer een RBAC-rol is toegewezen aan een Azure AD-beveiligings-principal, verleent Azure toegang tot de resources voor die beveiligings-principal. De toegang kan worden beperkt tot het niveau van het abonnement, de resource groep, de Event Hubs naam ruimte of een andere resource. Een beveiligings-principal van Azure AD kan een gebruiker of een service-principal van de toepassing of een [beheerde identiteit voor Azure-resources](../active-directory/managed-identities-azure-resources/overview.md)zijn.
 
-## <a name="built-in-rbac-roles-for-azure-event-hubs"></a>Ingebouwde RBAC-rollen voor Azure-gebeurtenishubs
-Azure biedt de volgende ingebouwde RBAC-rollen voor het toestaan van toegang tot gebeurtenishubsgegevens met Azure AD en OAuth:
+## <a name="built-in-rbac-roles-for-azure-event-hubs"></a>Ingebouwde RBAC-rollen voor Azure Event Hubs
+Azure biedt de volgende ingebouwde RBAC-rollen voor het verlenen van toegang tot Event Hubs gegevens met behulp van Azure AD en OAuth:
 
-- [Eigenaar Azure Event Hubs Data](../role-based-access-control/built-in-roles.md#azure-event-hubs-data-owner): gebruik deze rol om volledige toegang te geven tot bronnen van Event Hubs.
-- [Azure Event Hubs Data sender](../role-based-access-control/built-in-roles.md#azure-event-hubs-data-receiver): Gebruik deze rol om het verzenden toegang te geven tot Event Hubs resources.
-- [Azure Event Hubs Data-ontvanger](../role-based-access-control/built-in-roles.md#azure-event-hubs-data-sender): Gebruik deze rol om de verbruikende/ontvangende toegang te geven tot bronnen van Event Hubs.
+- [Azure Event hubs-gegevens eigenaar](../role-based-access-control/built-in-roles.md#azure-event-hubs-data-owner): gebruik deze rol om volledige toegang tot Event hubs resources te geven.
+- [Gegevens verzender van Azure Event hubs](../role-based-access-control/built-in-roles.md#azure-event-hubs-data-receiver): gebruik deze rol om de verzend toegang te geven tot Event hubs-resources.
+- [Gegevens ontvanger van Azure Event hubs](../role-based-access-control/built-in-roles.md#azure-event-hubs-data-sender): gebruik deze rol om de verbruiks-en ontvangst toegang tot Event hubs resources te geven.
 
-## <a name="resource-scope"></a>Resourcebereik 
-Voordat u een RBAC-rol toewijst aan een beveiligingsprincipal, bepaalt u de toegangsruimte die de beveiligingsprincipal moet hebben. Best practices dicteren dat het altijd het beste is om alleen de smalst mogelijke ruimte te verlenen.
+## <a name="resource-scope"></a>Bron bereik 
+Voordat u een RBAC-rol toewijst aan een beveiligingsprincipal, bepaalt u het bereik van toegang dat de beveiligingsprincipal moet hebben. Aanbevolen procedures bepalen dat het altijd het beste is om alleen het smalle mogelijke bereik toe te kennen.
 
-In de volgende lijst worden de niveaus beschreven waarop u toegang tot bronnen voor gebeurtenishubs openen, te beginnen met het kleinste bereik:
+In de volgende lijst worden de niveaus beschreven waarmee u toegang tot Event Hubs resources kunt bereiken, te beginnen met het smalle bereik:
 
-- **Consumentengroep**: Bij deze scope is roltoewijzing alleen van toepassing op deze entiteit. Momenteel biedt de Azure-portal geen ondersteuning voor het toewijzen van een RBAC-rol aan een beveiligingsprincipal op dit niveau. 
-- **Gebeurtenishub**: Roltoewijzing is van toepassing op de entiteit Event Hub en de consumentengroep eronder.
-- **Naamruimte:** Roltoewijzing omvat de volledige topologie van gebeurtenishubs onder de naamruimte en aan de consumentengroep die eraan is gekoppeld.
-- **Resourcegroep**: Roltoewijzing is van toepassing op alle bronnen van gebeurtenishubs onder de resourcegroep.
-- **Abonnement:** Roltoewijzing is van toepassing op alle bronnen van gebeurtenishubs in alle resourcegroepen in het abonnement.
+- **Consumenten groep**: in dit bereik is roltoewijzing alleen van toepassing op deze entiteit. Momenteel biedt de Azure Portal geen ondersteuning voor het toewijzen van een RBAC-rol aan een beveiligingsprincipal op dit niveau. 
+- **Event hub**: roltoewijzing is van toepassing op de Event hub-entiteit en de Consumer groep daaronder.
+- **Naam ruimte**: roltoewijzing omvat de volledige topologie van Event hubs onder de naam ruimte en aan de Consumer groep die eraan is gekoppeld.
+- **Resource groep**: roltoewijzing is van toepassing op alle Event hubs resources onder de resource groep.
+- **Abonnement**: roltoewijzing is van toepassing op alle Event hubs resources in alle resource groepen in het abonnement.
 
 > [!NOTE]
-> - Houd er rekening mee dat het tot vijf minuten kan duren voordat RBAC-roltoewijzingen worden uitgevoerd. 
-> - Deze inhoud is van toepassing op zowel Event Hubs als Event Hubs voor Apache Kafka. Zie [Gebeurtenishubs voor Kafka - beveiliging en verificatie](event-hubs-for-kafka-ecosystem-overview.md#security-and-authentication)voor meer informatie over ondersteuning voor gebeurtenishubs voor Kafka.
+> - Houd er rekening mee dat de toewijzing van RBAC-rollen tot vijf minuten kan duren. 
+> - Deze inhoud is van toepassing op zowel Event Hubs als Event Hubs voor Apache Kafka. Zie [Event hubs voor Kafka-beveiliging en-verificatie](event-hubs-for-kafka-ecosystem-overview.md#security-and-authentication)voor meer informatie over Event hubs voor Kafka-ondersteuning.
 
 
-Zie [Roldefinities begrijpen](../role-based-access-control/role-definitions.md#management-and-data-operations)voor meer informatie over hoe ingebouwde rollen worden gedefinieerd. Zie Aangepaste rollen maken voor [Azure Role-Based Access Control](../role-based-access-control/custom-roles.md)voor informatie over het maken van aangepaste RBAC-rollen.
+Zie voor meer informatie over hoe ingebouwde rollen worden gedefinieerd [begrijpen functie definities](../role-based-access-control/role-definitions.md#management-and-data-operations). Zie voor meer informatie over het maken van aangepaste RBAC-rollen [aangepaste rollen maken voor op rollen gebaseerd Azure-Access Control](../role-based-access-control/custom-roles.md).
 
 
 
 ## <a name="samples"></a>Voorbeelden
-- [Voorbeelden van Microsoft.Azure.EventHubs](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/Rbac). 
+- [Micro soft. Azure. Event hubs](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/Rbac)-voor beelden. 
     
-    Deze voorbeelden maken gebruik van de oude **Microsoft.Azure.EventHubs-bibliotheek,** maar u deze eenvoudig bijwerken naar de nieuwste **Azure.Messaging.EventHubs-bibliotheek.** Zie de [handleiding voor het migreren van Microsoft.Azure.EventHubs naar Azure.Messaging.EventHubs](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/eventhub/Azure.Messaging.EventHubs/MigrationGuide.md)als u het voorbeeld wilt verplaatsen van het gebruik van de oude bibliotheek naar de nieuwe bibliotheek.
-- [Azure.Messaging.EventHubs-voorbeelden](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Azure.Messaging.EventHubs/ManagedIdentityWebApp)
+    In deze voor beelden wordt de oude bibliotheek van **micro soft. Azure. Event hubs** gebruikt, maar u kunt deze eenvoudig bijwerken met de meest recente **Azure. Messa ging. Event hubs** -bibliotheek. Zie de [hand leiding voor het migreren van micro soft. Azure. Event hubs naar Azure. Messa ging. Event hubs](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/eventhub/Azure.Messaging.EventHubs/MigrationGuide.md)om het voor beeld te verplaatsen van het gebruik van de oude bibliotheek naar een nieuwe.
+- [Voor beelden van Azure. Messa ging. Event hubs](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Azure.Messaging.EventHubs/ManagedIdentityWebApp)
 
-    Dit voorbeeld is bijgewerkt om de nieuwste **Azure.Messaging.EventHubs-bibliotheek** te gebruiken.
-- [Event Hubs voor Kafka - OAuth monsters](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/tutorials/oauth). 
+    Dit voor beeld is bijgewerkt om de meest recente **Azure. Messa ging. Event hubs** -bibliotheek te gebruiken.
+- [Event hubs voor Kafka-OAuth-voor beelden](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/tutorials/oauth). 
 
 
 ## <a name="next-steps"></a>Volgende stappen
-- Meer informatie over het toewijzen van een ingebouwde RBAC-rol aan een beveiligingsprincipal, zie [Toegang verifiëren tot bronnen van gebeurtenishubs met Azure Active Directory](authenticate-application.md).
-- Meer informatie over [het maken van aangepaste rollen met RBAC](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/Rbac/CustomRole).
-- Meer informatie over [het gebruik van Azure Active Directory met EH](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/Rbac/AzureEventHubsSDK)
+- Meer informatie over het toewijzen van een ingebouwde RBAC-rol aan een beveiligingsprincipal, vindt u in [toegang tot Event hubs resources verifiëren met behulp van Azure Active Directory](authenticate-application.md).
+- Meer informatie [over het maken van aangepaste rollen met RBAC](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/Rbac/CustomRole).
+- Meer informatie [over het gebruik van Azure Active Directory met eh](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/Rbac/AzureEventHubsSDK)
 
-Zie de volgende gerelateerde artikelen:
+Raadpleeg de volgende verwante artikelen:
 
-- [Aanvragen voor Azure Event Hubs verifiëren vanuit een toepassing met Azure Active Directory](authenticate-application.md)
-- [Een beheerde identiteit verifiëren met Azure Active Directory om toegang te krijgen tot gebeurtenishubsbronnen](authenticate-managed-identity.md)
-- [Aanvragen voor Azure Event Hubs verifiëren met behulp van gedeelde toegangshandtekeningen](authenticate-shared-access-signature.md)
-- [Toegang tot bronnen van gebeurtenishubs autoriseren met behulp van gedeelde toegangshandtekeningen](authorize-access-shared-access-signature.md)
+- [Aanvragen voor Azure Event Hubs verifiëren vanuit een toepassing met behulp van Azure Active Directory](authenticate-application.md)
+- [Een beheerde identiteit verifiëren met Azure Active Directory om toegang te krijgen tot Event Hubs bronnen](authenticate-managed-identity.md)
+- [Aanvragen voor Azure Event Hubs verifiëren met behulp van hand tekeningen voor gedeelde toegang](authenticate-shared-access-signature.md)
+- [Toegang tot Event Hubs resources autoriseren met behulp van hand tekeningen voor gedeelde toegang](authorize-access-shared-access-signature.md)

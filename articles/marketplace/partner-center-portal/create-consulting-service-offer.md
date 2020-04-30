@@ -1,6 +1,6 @@
 ---
-title: Een consultingserviceaanbieding maken in partnercentrum - Azure Marketplace
-description: Meer informatie over het publiceren van een Consulting-serviceaanbieding naar Azure Marketplace of AppSource met behulp van Partner Center.
+title: Een advies service-aanbieding maken in het Partner Center-Azure Marketplace
+description: Meer informatie over het publiceren van een advies service-aanbieding naar Azure Marketplace of AppSource met behulp van partner centrum.
 author: anbene
 ms.author: mingshen
 ms.service: marketplace
@@ -8,221 +8,221 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/06/2020
 ms.openlocfilehash: eff37750f0580a28c9644ee1ffb7fe4e95038709
-ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81869785"
 ---
-# <a name="create-a-consulting-service-offer"></a>Een consultingserviceaanbieding maken
+# <a name="create-a-consulting-service-offer"></a>Een advies service-aanbieding maken
 
 > [!IMPORTANT]
-> We verplaatsen het beheer van uw Consulting-serviceaanbiedingen van Cloud Partner Portal naar Partner Center. Volg de instructies in Azure en [Dynamics 365 consulting service voor](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/consulting-services/cloud-partner-portal-consulting-services-publishing-offer) Cloud Partner Portal om uw aanbiedingen te beheren totdat uw aanbiedingen zijn gemigreerd.
+> We verhuizen het beheer van uw aanbiedingen voor advies services van Cloud Partner-portal naar het partner centrum. Totdat uw aanbiedingen zijn gemigreerd, volgt u de instructies in [Azure en de Dynamics 365 consulting service-aanbieding](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/consulting-services/cloud-partner-portal-consulting-services-publishing-offer) voor Cloud Partner-Portal voor het beheren van uw aanbiedingen.
 
-In dit artikel wordt beschreven hoe u een Consulting-serviceaanbieding publiceert naar [Azure Marketplace](https://azuremarketplace.microsoft.com/) of [AppSource.](https://appsource.microsoft.com/) List Consulting-serviceaanbiedingen op basis van Microsoft [Dynamics 365](https://dynamics.microsoft.com/) en Power Platform op AppSource. Lijst consulting-serviceaanbiedingen op basis van Microsoft Azure op Azure Marketplace.
+In dit artikel wordt beschreven hoe u een advies service publiceert naar [Azure Marketplace](https://azuremarketplace.microsoft.com/) of [AppSource](https://appsource.microsoft.com/). Lijst met advies services die zijn gebaseerd op micro soft [Dynamics 365](https://dynamics.microsoft.com/) en het Power platform op AppSource. Vermeld de aanbiedingen voor advies Services op basis van Microsoft Azure op Azure Marketplace.
 
-Als u een Consulting-serviceaanbieding wilt maken in Azure Marketplace- of AppSource Consulting-services, moet u eerst [een uitgeversaccount hebben in het Partnercentrum](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account)en moet uw account zijn ingeschreven voor het commerciële marktplaatsprogramma. Voordat u uw aanbieding maakt, bekijkt u de vereisten in [consultingservicevereisten.](https://docs.microsoft.com/azure/marketplace/partner-center-portal/consulting-service-prerequisites)
+Als u een advies service-aanbod wilt maken in azure Marketplace of AppSource Consulting Services, moet u eerst [een Publisher-account hebben in Partner Center](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account)en moet uw account zijn Inge schreven in het programma voor commerciële Marketplace. Voordat u uw aanbieding maakt, controleert u de vereisten in de [consulting service-vereisten](https://docs.microsoft.com/azure/marketplace/partner-center-portal/consulting-service-prerequisites).
 
-## <a name="publishing-benefits"></a>Publicatievoordelen
+## <a name="publishing-benefits"></a>Publicatie voordelen
 
-Voordelen van publiceren op de commerciële marktplaats:
+Voor delen van het publiceren naar de commerciële Marketplace:
 
-- Promoot uw bedrijf met het microsoft-merk.
-- Bereik mogelijk meer dan 100 miljoen Office 365- en Dynamics 365-gebruikers via AppSource en meer dan 200.000 organisaties via Azure Marketplace.
-- Ontvang leads van hoge kwaliteit van deze marktplaatsen.
-- Laat uw services promoten door de Microsoft-veld- en telesalesteams
+- Promoot uw bedrijf met behulp van het merk micro soft.
+- Mogelijk bereikt u meer dan 100.000.000 Office 365-en Dynamics 365-gebruikers op AppSource en meer dan 200.000 organisaties via Azure Marketplace.
+- Ontvang leads van hoge kwaliteit van deze markt plaatsen.
+- Laat uw services door het veld en de Televerkoop teams van micro soft worden gepromoveerd
 
 ## <a name="create-a-new-offer"></a>Een nieuwe aanbieding maken
 
-Volg deze stappen om een consultingserviceaanbieding te maken nadat u aan de hierboven beschreven vereisten hebt voldaan.
+Na het voldoen aan de bovenstaande vereisten, volgt u deze stappen voor het maken van een advies service-aanbieding.
 
-1. Meld u aan bij [Partnercentrum](https://partner.microsoft.com)en selecteer **Dashboard** in het bovenste menu.
-2. Selecteer in de linkernavigatiebalk de optie **Commerciële marktplaats**en selecteer **Overzicht**.
+1. Meld u aan bij [Partner Center](https://partner.microsoft.com)en selecteer **dash board** in het bovenste menu.
+2. Selecteer in de linkernavigatiebalk-balk de optie **Commercial Marketplace**en selecteer vervolgens **overzicht**.
 
-    :::image type="content" source="media/cs-menu-overview.png" alt-text="Illustreert het menu voor commerciële marktplaats":::
+    :::image type="content" source="media/cs-menu-overview.png" alt-text="Illustreert het menu voor commerciële Marketplace":::
 
-3. Selecteer **+ Nieuwe aanbieding**en selecteer vervolgens **Consulting-service**.
+3. Selecteer **+ nieuwe aanbieding**en selecteer vervolgens **Consulting Service**.
 
-    :::image type="content" source="media/cs-menu-newoffer.png" alt-text="Hiermee wordt de knop weergegeven om een nieuwe aanbieding te maken.":::
+    :::image type="content" source="media/cs-menu-newoffer.png" alt-text="Illustreert de knop voor het maken van een nieuwe aanbieding.":::
 
-4. Voer een **aanbiedings-id in**. Dit is een unieke id voor elke aanbieding in uw account.
+4. Voer een **aanbiedings-id**in. Dit is een unieke id voor elke aanbieding in uw account.
 
-    - Deze ID is zichtbaar voor klanten in het webadres voor de marktplaatsaanbieding.
-    - Gebruik alleen kleine letters, cijfers, streepjes en underscores, maar geen spaties. De lengte is beperkt tot 50 tekens. Als u bijvoorbeeld **test-aanbieding-1**invoert, is `https://azuremarketplace.microsoft.com/marketplace/../test-offer-1`de URL van de aanbieding .
-    - De aanbiedings-id kan&#39;niet worden gewijzigd nadat u **Maken**hebt geselecteerd.
+    - Deze ID is zichtbaar voor klanten in het webadres voor de Marketplace-aanbieding.
+    - Gebruik alleen kleine letters, cijfers, streepjes en onderstrepings tekens, maar geen spaties. De lengte is beperkt tot 50 tekens. Als u bijvoorbeeld **test-aanbieding-1**invoert, is de URL van de aanbieding `https://azuremarketplace.microsoft.com/marketplace/../test-offer-1`.
+    - De aanbiedings-ID kan&#39;t worden gewijzigd nadat u **maken**hebt geselecteerd.
 
-5. Voer een **aanbiedingsalias**in . Dit is de naam die wordt gebruikt om te verwijzen naar de aanbieding in Partner Center.
+5. Voer een **alias**voor de aanbieding in. Dit is de naam die wordt gebruikt om te verwijzen naar de aanbieding in Partner Center.
 
-    - Deze naam wordt&#39;niet gebruikt in de markt. Het&#39;verschilt van de naam van de aanbieding en andere waarden die aan klanten worden getoond. U dit veld gebruiken om een naam toe te wijzen aan de aanbieding die nuttiger voor u is om de aanbieding intern te identificeren. het wordt niet getoond aan klanten.
-    - De aanbiedingsalias kan&#39;niet worden gewijzigd nadat u **Maken**hebt geselecteerd.
+    - Deze naam hebben&#39;t gebruikt in Marketplace. Het&#39;s verschilt van de naam van de aanbieding en andere waarden die aan klanten worden weer gegeven. U kunt dit veld gebruiken om een naam toe te wijzen aan de aanbieding die nuttiger is voor u om de aanbieding intern te identificeren. het wordt niet weer gegeven voor klanten.
+    - De aanbiedings alias kan&#39;t worden gewijzigd nadat u **maken**hebt geselecteerd.
 
-Nadat u deze twee waarden hebt ingevoerd, selecteert u **Maken** om door te gaan naar de pagina **Aanbiedingsinstelling.**
+Nadat u deze twee waarden hebt ingevoerd, selecteert u **maken** om door te gaan naar de pagina voor het instellen van de **aanbieding** .
 
-## <a name="offer-setup"></a>Instelling voor aanbieding
+## <a name="offer-setup"></a>Installatie van aanbieding
 
-Nadat u een aanbiedings-id en aanbiedingsalias hebt ingevoerd, maakt partnercentrum een conceptaanbieding en geeft u de pagina **Aanbiedingsinstelling weer.** Volg deze stappen om uw aanbieding in te stellen.
+Nadat u een aanbiedings-ID en aanbiedings alias hebt ingevoerd, maakt partner centrum een concept aanbieding en wordt de pagina voor het instellen van de **aanbieding** weer gegeven. Volg deze stappen om uw aanbieding in te stellen.
 
-### <a name="connect-lead-management"></a>Leadbeheer verbinden
+### <a name="connect-lead-management"></a>Lead beheer verbinden
 
-Wanneer u uw aanbieding op de marktplaats publiceert met Partner Center, _moet_ u deze koppelen aan een CRM (Customer Relationship Management) of een marketingautomatiseringssysteem. Zo u klantcontactgegevens ontvangen zodra iemand interesse toont in of uw product gebruikt.
+Wanneer u uw aanbieding naar Marketplace publiceert met het partner centrum, _moet_ u deze verbinden met een CRM-of marketing-automatiserings systeem. Zo kunt u contact gegevens van de klant ontvangen zodra iemand interesse in of gebruikt voor uw product.
 
-1. Selecteer **Verbinding maken** om aan te geven waar u wilt dat we klantleads verzenden. Partner Center ondersteunt de volgende systemen:
+1. Selecteer **verbinden** om op te geven waar u leads van klanten wilt verzenden. Het partner Centrum ondersteunt de volgende systemen:
 
-    - [Dynamics 365](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-dynamics) voor customer engagement
+    - [Dynamics 365](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-dynamics) voor klant betrokkenheid
     - [Marketo](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-marketo)
     - [SalesForce](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-salesforce)
 
     > [!NOTE]
-    > Als uw CRM-systeem niet&#39;hierboven vermeld, gebruikt u [Azure Table](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-azure-table) of [Https Endpoint](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-https) om klantgegevens op te slaan en exporteert u de gegevens naar uw CRM-systeem.
+    > Als uw CRM-systeem hebben&#39;t hierboven vermeld, gebruikt u [Azure Table](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-azure-table) of [https-eind punt](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-https) om klant lead gegevens op te slaan en exporteert u de gegevens vervolgens naar uw CRM-systeem.
 
-2. Verbind uw aanbieding met de hoofdbestemming wanneer u publiceert in partnercentrum.
-3. Controleer of de verbinding met de hoofdbestemming correct is geconfigureerd. Nadat u deze hebt gepubliceerd in het Partnercenter,&#39;we de verbinding valideren en u een testlead sturen. Terwijl u een voorbeeld van de aanbieding bekijkt voordat deze live gaat, u ook uw leadverbinding testen door te proberen het aanbod zelf te kopen in de preview-omgeving.
-4. Zorg ervoor dat de verbinding met de hoofdbestemming up-to-date blijft, zodat u geen leads&#39;verliezen.
+2. Verbind uw aanbieding met de doel locatie van de lead wanneer u publiceert in het partner centrum.
+3. Controleer of de verbinding met de doel locatie juist is geconfigureerd. Nadat u het hebt gepubliceerd in Partner Center,&#39;u de verbinding valideren en kunt u een test lead sturen. Wanneer u een voor beeld van de aanbieding bekijkt voordat deze live gaat, kunt u ook uw lead verbinding testen door zelf te proberen de aanbieding aan te schaffen in de preview-omgeving.
+4. Zorg ervoor dat de verbinding met de doel locatie van de lead bijgewerkt blijft, zodat u geen leads meer&#39;.
 
-Hier volgen enkele aanvullende bronnen voor leadbeheer:
+Hier volgen enkele aanvullende bronnen voor het beheer van leads:
 
-- [Overzicht van leadbeheer](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-get-customer-leads)
+- [Overzicht Lead beheer](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-get-customer-leads)
 - [Veelgestelde vragen over leadmanagement](https://docs.microsoft.com/azure/marketplace/lead-management-for-cloud-marketplace#frequently-asked-questions)
 - [Algemene leadconfiguratiefouten](https://docs.microsoft.com/azure/marketplace/lead-management-for-cloud-marketplace#common-lead-configuration-errors-during-publishing-on-cloud-partner-portal)
-- [Overzicht van leadbeheer](https://assetsprod.microsoft.com/mpn/cloud-marketplace-lead-management.pdf) PDF (Zorg ervoor dat uw pop-upblokkering is uitgeschakeld)
+- [Overzicht Lead beheer](https://assetsprod.microsoft.com/mpn/cloud-marketplace-lead-management.pdf) PDF (zorg ervoor dat de pop-upblokkering is uitgeschakeld)
 
-Selecteer **Concept opslaan** voordat u doorgaat naar de volgende sectie, Eigenschappen.
+Selecteer **concept opslaan** voordat u doorgaat naar de volgende sectie, eigenschappen.
 
 ### <a name="properties"></a>Eigenschappen
 
-Op deze pagina u het primaire product instellen dat de beste dekking biedt voor uw Consulting-service, een Consulting-servicetype instellen en toepasselijke producten kiezen.
+Op deze pagina kunt u het primaire product instellen dat door uw consulting service wordt aanbevolen, een advies service type instellen en van toepassing zijnde producten kiezen.
 
-1. Selecteer een **primair product** in de vervolgkeuzelijst.
-2. Selecteer een **consulting-servicetype** in de vervolgkeuzelijst:
+1. Selecteer een **primair product** in de vervolg keuzelijst.
+2. Selecteer een **advies service type** in de vervolg keuzelijst:
 
-    - **Beoordeling** : Een evaluatie van de omgeving van een klant&#39;om de toepasbaarheid van een oplossing te bepalen en een schatting te geven van kosten en timing.
-    - **Briefing** : Een inleiding tot een oplossing of een Consulting-service om de interesse van de klant te wekken door gebruik te maken van frameworks, demo's en voorbeelden van klanten.
-    - **Implementatie** : Een complete installatie die resulteert in een volledig werkende oplossing. Beperk oplossingen die binnen twee weken of minder kunnen worden geïmplementeerd.
-    - **Proof of concept** : Een implementatie met beperkte scope om te bepalen of een oplossing voldoet aan de eisen van de klant.
-    - **Workshop** : Een interactieve betrokkenheid uitgevoerd op het terrein van een klant&#39;. Het kan gaan om training, briefings, assessments of demo's die zijn gebouwd op de gegevens of omgeving van de klant&#39;.
+    - **Beoordeling** : een evaluatie van een klant&#39;s-omgeving om de toepas baarheid van een oplossing te bepalen en een schatting te krijgen van de kosten en timing.
+    - Meer **informatie** : een inleiding tot een oplossing of een advies service om de interesse van klanten te tekenen met behulp van frameworks, demo's en klant voorbeelden.
+    - **Implementatie** : een volledige installatie die resulteert in een volledig werkende oplossing. Beperken tot oplossingen die in twee weken of minder kunnen worden geïmplementeerd.
+    - **Testen van concept** : een implementatie met een beperkt bereik om te bepalen of een oplossing voldoet aan de vereisten van de klant.
+    - **Workshop** : een interactieve betrokkenheid die wordt uitgevoerd op een klant&#39;s. Dit kan betrekking hebben op trainingen, uitspraken, beoordelingen of demo's die zijn gebouwd op basis van de klant&#39;s-gegevens of-omgeving.
 
-1. Als u een primair product van **Azure**hebt geselecteerd, selecteert u maximaal drie **oplossingsgebieden**. Deze maken het voor klanten in Azure Marketplace gemakkelijker om uw aanbieding te vinden. Als u&#39;niet voor Azure hebt gekozen, slaat u deze stap over.
-2. Als u een _ander_ primair product dan Azure hebt geselecteerd, selecteert u maximaal drie **toepasselijke producten**. Deze maken het makkelijker voor klanten in AppSource om uw aanbod te vinden. Zie Richtlijnen voor [Microsoft AppSource Consulting Service Listing (PDF)](https://go.microsoft.com/fwlink/?LinkId=828734&amp;clcid=0x409) voor meer informatie.
-3. Selecteer maximaal zes **industrieën waarop** uw aanbieding van toepassing is. Dit maakt het makkelijker voor klanten om uw aanbod te vinden.
-4. Voeg maximaal drie **competenties toe** die uw bedrijf heeft verdiend om weer te geven op uw aanbieding voor consultingservices. Ten minste één competentie is vereist, behalve voor Azure Expert MSP&#39;s en Azure Networking MSP&#39;s.
+1. Als u een primair product van **Azure**hebt geselecteerd, selecteert u Maxi maal drie **oplossings gebieden**. Dit maakt het gemakkelijker voor klanten in azure Marketplace om uw aanbieding te vinden. Als u&#39;t werkt, kunt u deze stap overs Laan.
+2. Als u een _ander_ primair product dan Azure hebt geselecteerd, selecteert u Maxi maal drie **toepasselijke producten**. Zo kunnen klanten in AppSource gemakkelijker uw aanbieding vinden. Zie [Microsoft AppSourceing Consulting Service List guideline](https://go.microsoft.com/fwlink/?LinkId=828734&amp;clcid=0x409) (PDF) (Engelstalig) voor meer informatie.
+3. Selecteer Maxi maal zes **branches** waarop uw aanbieding van toepassing is. Dit maakt het voor klanten gemakkelijker om uw aanbieding te vinden.
+4. Voeg Maxi maal drie **competenties** toe die uw bedrijf heeft behaald om weer te geven in uw aanbieding voor advies service. Er is ten minste één competentie vereist, met uitzonde ring van Azure expert MSP&#39;s en Azure Networking MSP&#39;s.
 
-Selecteer **Concept opslaan** voordat u doorgaat naar de volgende sectie, Aanbieding smaken.
+Selecteer **concept opslaan** voordat u doorgaat naar de volgende sectie, aanbieding aanbieden.
 
-## <a name="offer-listing"></a>Aanbieding aanbieden
+## <a name="offer-listing"></a>Aanbieding weer geven
 
-Hier&#39;de aanbiedingsgegevens definiëren die op de markt worden weergegeven. Dit omvat de aanbiedingnaam, beschrijving, afbeeldingen, enzovoort. Volg het beleid op de [beleidspagina van Microsoft&#39;](https://docs.microsoft.com/legal/marketplace/certification-policies#800-consulting-services) tijdens het configureren van deze aanbieding.
+Hier&#39;u de details van de aanbieding definiëren die worden weer gegeven in de Marketplace. Dit omvat de naam van de aanbieding, beschrijving, installatie kopieën, enzovoort. Zorg ervoor dat u op de [pagina beleid van micro soft&#39;s](https://docs.microsoft.com/legal/marketplace/certification-policies#800-consulting-services) de beleids regels volgt die worden beschreven tijdens het configureren van deze aanbieding.
 
 > [!NOTE]
-> Aanbiedingdetails zijn&#39;niet verplicht om in het Engels &quot;te zijn als de aanbiedingsbeschrijving begint met de woordgroep, Deze toepassing is alleen beschikbaar in [niet-Engelse taal]. &quot; Het&#39;is ook goed om een nuttige link te bieden om inhoud aan te bieden in een taal die anders&#39;dan die in de aanbiedingsgegevens van de aanbieding.
+> Details van aanbieding zijn&#39;t moet in het Engels zijn als de beschrijving van het aanbod begint met &quot;de woord groep, is deze toepassing alleen beschikbaar in [niet-Engelse taal]. &quot; Het&#39;s biedt ook een handige koppeling voor het aanbieden van inhoud in een taal die&#39;s afwijkt van de versie die wordt gebruikt in de details van de aanbieding.
 
 ### <a name="name"></a>Naam
 
-De naam die u hier invoert, wordt weergegeven als de titel van uw aanbod. Dit veld is vooraf gevuld met de tekst die u hebt ingevoerd in het vak **Alias aanbieden** toen u de aanbieding hebt gemaakt. U kunt deze naam later wijzigen.
+De naam die u hier opgeeft, wordt weer gegeven als de titel van uw aanbieding. Dit veld is vooraf ingevuld met de tekst die u hebt ingevoerd in het vak **aanbiedings alias** wanneer u de aanbieding hebt gemaakt. U kunt deze naam later wijzigen.
 
 De naam:
 
-- Kan een handelsmerk zijn (en u handelsmerk- of auteursrechtsymbolen opnemen).
-- Kan&#39;niet meer dan 50 tekens lang.
-- Kan&#39;geen emoji's bevatten.
+- Kan worden gemerkt (en u kunt symbolen van het handels merk of copyright bevatten).
+- Mag&#39;t meer dan 50 tekens lang zijn.
+- Kan&#39;e emojis bevatten.
 
-### <a name="search-results-summary"></a>Overzicht van zoekresultaten
+### <a name="search-results-summary"></a>Samen vatting van zoek resultaten
 
-Geef een korte beschrijving van uw aanbod. Dit kan maximaal 100 tekens lang zijn en wordt gebruikt in de zoekresultaten van marktplaatsen.
+Geef een korte beschrijving van uw aanbieding. Dit kan Maxi maal 100 tekens lang zijn en wordt gebruikt in Zoek resultaten voor Marketplace.
 
 ### <a name="description"></a>Beschrijving
 
-Geef een langere beschrijving van uw aanbieding, tot 3.000 tekens. Dit wordt weergegeven aan klanten in het overzicht van de marktplaatsvermelding.
+Geef een langere beschrijving van uw aanbieding, Maxi maal 3.000 tekens. Dit wordt weer gegeven aan klanten in het overzicht van Marketplace-aanbiedingen.
 
-Neem een of meer van de volgende gegevens op in uw beschrijving:
+Neem een of meer van de volgende opties op in uw beschrijving:
 
-- De waarde en de belangrijkste voordelen van uw aanbod
-- Categorie- of brancheorganisaties, of beide
-- In-app aankoopmogelijkheden
-- Eventuele vereiste informatie
+- De waarde en belangrijkste voor delen van uw aanbieding bieden
+- Categorie-of branche koppelingen, of beide
+- Aankoop kansen in de app
+- Vereiste informatie
 
-Hier zijn enkele tips voor het schrijven van uw beschrijving:
+Hier volgen enkele tips voor het schrijven van uw beschrijving:
 
-- Beschrijf duidelijk de waarde van uw aanbieding in de eerste paar zinnen van uw beschrijving. Neem de volgende items op:
-  - Beschrijving van het aanbod.
-  - Het type gebruiker dat profiteert van het aanbod.
-  - De behoeften van de klant of geeft de aanbiedingsadressen uit.
-- Vergeet niet dat de eerste paar zinnen kunnen worden weergegeven in de zoekresultaten.
-- Vertrouw&#39;niet op functies en functionaliteit om uw product te verkopen. Richt u in plaats daarvan op de waarde die uw aanbieding biedt.
-- Probeer branchespecifieke woordenschat of op voordelen gebaseerde formuleringen te gebruiken.
+- Geef in de eerste paar zinnen van uw beschrijving een duidelijke beschrijving van de waarde van uw aanbieding. De volgende items bevatten:
+  - De beschrijving van de aanbieding.
+  - Het type gebruiker dat voor deel is van de aanbieding.
+  - De klant heeft of de adressen van de aanbieding.
+- Houd er rekening mee dat de eerste paar zinnen kunnen worden weer gegeven in Zoek resultaten.
+- Don&#39;u geen gebruik hebt van functies en functionaliteit om uw product te verkopen. Richt u in plaats daarvan op de waarde die uw aanbieding biedt.
+- Probeer branchespecifieke woorden lijsten of op basis van voor delen te gebruiken.
 
-Als u uw beschrijving aantrekkelijker wilt maken, gebruikt u de editor voor rijke tekst om uw beschrijving op te maken. Met de rich text editor u getallen, opsommingstekens, vet, cursief en inspringingen toevoegen om uw beschrijving leesbaarder te maken.
+Als u uw beschrijving aantrekkelijker wilt maken, gebruikt u de RTF-editor om uw beschrijving op te maken. Met de RTF-editor kunt u nummers, opsommings tekens, vet, cursief en inspringingen toevoegen om uw beschrijving beter leesbaar te maken.
 
-:::image type="content" source="media/cs-rich-text-editor.png" alt-text="Illustreert de teksteditor met rijke tekst om de aanbiedingsbeschrijving te schrijven." border="false":::
+:::image type="content" source="media/cs-rich-text-editor.png" alt-text="Illustreert de RTF-editor voor het schrijven van de beschrijving van het aanbod." border="false":::
 
 ### <a name="keywords"></a>Trefwoorden
 
-Voer maximaal drie zoekwoorden in die relevant zijn voor uw primaire product- en consultingservice. Deze zullen het gemakkelijker maken om uw aanbod te vinden.
+Voer Maxi maal drie Zoek trefwoorden in die relevant zijn voor uw primaire product en advies service. Zo kunt u gemakkelijker uw aanbieding vinden.
 
 ### <a name="duration"></a>Duur
 
-Stel de verwachte duur van deze overeenkomst met uw klant in.
+Stel de verwachte duur van deze afspraak in op uw klant.
 
 ### <a name="contact-information"></a>Contactgegevens
 
-U moet de naam, e-mail en het telefoonnummer opgeven voor een **primaire** en **secundaire contactpersoon.** Deze informatie wordt&#39;niet aan klanten getoond. Het is beschikbaar voor Microsoft en kan worden verstrekt aan Cloud Solution Provider (CSP) partners.
+U moet de naam, het e-mail adres en het telefoon nummer opgeven voor een **primaire** en **secundaire contact persoon**. Deze informatie hebben&#39;t weer gegeven aan klanten. Het is beschikbaar voor micro soft en kan worden meegeleverd met de Cloud Solution Provider (CSP)-partners.
 
-### <a name="supporting-documents"></a>Bewijsstukken
+### <a name="supporting-documents"></a>Ondersteunende documenten
 
-Voeg maximaal drie (maar ten minste één) ondersteunende PDF-documenten toe voor uw aanbieding.
+Voeg Maxi maal drie (maar ten minste één) PDF-documenten voor uw aanbieding toe.
 
-### <a name="marketplace-images"></a>Marketplace-afbeeldingen
+### <a name="marketplace-images"></a>Marketplace-installatie kopieën
 
-Geef logo's en afbeeldingen om te gebruiken met uw aanbod. Alle afbeeldingen moeten in .png-indeling zijn. Wazige afbeeldingen worden afgewezen.
+Bied logo's en installatie kopieën die u kunt gebruiken met uw aanbieding. Alle installatie kopieën moeten de PNG-indeling hebben. Vage afbeeldingen worden geweigerd.
 
 >[!Note]
->Als u een probleem hebt met het uploaden van https://upload.xboxlive.com bestanden, controleert u of uw lokale netwerk de service die door het Partnercentrum wordt gebruikt, niet blokkeert.
+>Als u een probleem hebt met het uploaden van bestanden, moet u ervoor zorgen dat uw https://upload.xboxlive.com lokale netwerk de door Partner Center gebruikte service niet blokkeert.
 
-#### <a name="store-logos"></a>Winkellogo's
+#### <a name="store-logos"></a>Winkel logo's
 
-Geef .png-bestanden van uw aanbieding op&#39;logo in elk van de volgende pixelformaten:
+Geef. PNG-bestanden van uw aanbieding&#39;s-logo in elk van de volgende pixel grootten:
 
 - **Klein (48 x 48)**
 - **Groot (216 x 216)**
 
-Alle logo's zijn vereist en worden gebruikt op verschillende plaatsen in de marktplaatsvermelding.
+Alle logo's zijn vereist en worden op verschillende plaatsen in de Marketplace-vermelding gebruikt.
 
-#### <a name="screenshots-optional"></a>Schermafbeeldingen (optioneel)
+#### <a name="screenshots-optional"></a>Scherm afbeeldingen (optioneel)
 
-Voeg maximaal vijf screenshots toe die laten zien hoe uw aanbieding werkt. Elk moet 1280 x 720 pixels groot en in .png-formaat hebben.
+Voeg Maxi maal vijf scherm opnamen toe die laten zien hoe uw aanbieding werkt. Elk moet 1280 x 720 pixels groot zijn en de indeling. png.
 
 #### <a name="videos-optional"></a>Video's (optioneel)
 
-Voeg maximaal vier video's toe die uw aanbod demonstreren. Voer de video&#39;de naam, het webadres (URL) en een miniatuur .png-afbeelding van de video met een grootte van 1280 x 720 pixels.
+Voeg Maxi maal vier Video's toe die uw aanbieding aantonen. Voer de naam van de video&#39;s, het webadres (URL) en een miniatuur. PNG-afbeelding van de video in op 1280 x 720 pixels.
 
-Selecteer **Concept opslaan** voordat u doorgaat naar de volgende sectie, Prijzen en beschikbaarheid.
+Selecteer **concept opslaan** voordat u verdergaat met de volgende sectie, prijzen en beschik baarheid.
 
 ## <a name="pricing-and-availability"></a>Prijzen en beschikbaarheid
 
-Hier definieert u elementen zoals prijzen, markt en een privésleutel.
+Hier definieert u elementen zoals prijzen, de markt en een persoonlijke sleutel.
 
-1. **Markt**: Stel de markt in waarin uw aanbieding beschikbaar zal zijn. U mag slechts één markt per aanbieding selecteren.
-    1. Selecteer voor de markten van de Verenigde Staten of Canada **de optie Statussen** (of **provincies)** bewerken om aan te geven waar uw aanbieding beschikbaar zal zijn.
-2. **Preview doelgroep:** configureer de **verborgen sleutel** die wordt gebruikt om het privépubliek voor uw aanbieding in te stellen.
-3. **Prijzen:** Geef op of uw aanbieding een **gratis** of **betaalde** aanbieding is.
+1. **Market**: Stel de markt in die uw aanbieding beschikbaar is in. U mag slechts één markt per aanbieding selecteren.
+    1. Voor de Verenigde Staten of Canada-markten selecteert u **statussen** (of **provincies**) bewerken om aan te geven waar uw aanbieding beschikbaar is.
+2. **Preview doel groep**: Configureer de **sleutel** die wordt gebruikt om de persoonlijke doel groep voor uw aanbieding in te stellen.
+3. **Prijzen**: Geef op of uw aanbieding een **gratis** of een **betaalde** aanbieding is.
 
     > [!NOTE]
-    > Consulting service aanbiedingen zijn alleen voor de aanbieding. Alle transacties zullen direct plaatsvinden, buiten de commerciële markt.
+    > Aanbiedingen voor advies Services gelden alleen voor de aanbieding. Trans acties worden direct uitgevoerd buiten de commerciële Marketplace.
 
-4. Geef voor een betaalde aanbieding de **prijs en valuta** op en of de prijs **vast** of **geschat**is. Als u schat, moet u in de beschrijving opgeven welke factoren van invloed zijn op de prijs.
-5. Selecteer **Concept opslaan**.
+4. Voor een betaalde aanbieding geeft u de **prijs en valuta** op en bepaalt u of de prijs **vast** of **geraamd**is. Als u een schatting maakt, moet u in de beschrijving opgeven welke factoren van invloed zijn op de prijs.
+5. Selecteer **concept opslaan**.
 
-## <a name="review-and-publish"></a>Bekijken en publiceren
+## <a name="review-and-publish"></a>Controleren en publiceren
 
-Nadat u alle vereiste onderdelen van de aanbieding hebt voltooid, u uw voorstel indienen om te bekijken en te publiceren.
+Nadat u alle vereiste gedeelten van de aanbieding hebt voltooid, kunt u uw aanbieding verzenden om deze te controleren en te publiceren.
 
-1. Wanneer u klaar bent om uw consultingserviceaanbieding te publiceren, klikt u op **Controleren en publiceren.**
-2. Bekijk de details op de laatste inzendingspagina.
-3. Schrijf indien nodig een notitie naar het certificeringsteam als u van mening bent dat een van de details van uw aanbieding uitleg vereist.
-4. Wanneer u klaar bent, selecteert u **Verzenden**.
-5. Op **de overzichtspagina Aanbieding** ziet u in welke publicatiefase uw aanbieding zich bevindt.
+1. Wanneer u klaar bent om uw advies service-aanbieding te publiceren, klikt u op **controleren en publiceren**.
+2. Bekijk de details op de pagina definitieve verzen ding.
+3. Als dat nodig is, schrijft u een opmerking naar het certificerings team als u denkt dat de details van uw aanbieding uitleg vereisen.
+4. Wanneer u klaar bent, selecteert u **verzenden**.
+5. Op de **overzichts** pagina van de aanbieding ziet u in welke publicatie fase uw aanbieding zich bevindt.
 
-Zie [De publicatiestatus van uw commerciële marktplaatsaanbieding controleren voor](https://docs.microsoft.com/azure/marketplace/partner-center-portal/publishing-status)meer informatie over hoe lang u verwachten dat uw aanbieding zich in elke publicatiefase bevindt.
+Zie [de publicatie status van uw aanbieding voor commerciële Marketplace controleren](https://docs.microsoft.com/azure/marketplace/partner-center-portal/publishing-status)voor meer informatie over hoe lang uw aanbieding in elke publicatie fase kan worden verwacht.
 
-## <a name="update-your-existing-consulting-service-offers"></a>Uw bestaande Consulting-serviceaanbiedingen bijwerken
+## <a name="update-your-existing-consulting-service-offers"></a>De aanbiedingen van uw bestaande advies service bijwerken
 
-- [Een bestaand aanbod bijwerken in de commerciële markt](https://docs.microsoft.com/azure/marketplace/partner-center-portal/update-existing-offer)
+- [Een bestaande aanbieding bijwerken in de commerciële Marketplace](https://docs.microsoft.com/azure/marketplace/partner-center-portal/update-existing-offer)

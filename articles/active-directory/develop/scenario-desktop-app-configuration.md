@@ -1,6 +1,6 @@
 ---
-title: Bureaublad-apps configureren die web-API's aanroepen - Microsoft-identiteitsplatform | Azure
-description: Meer informatie over het configureren van de code van een bureaublad-app die web-API's aanroept
+title: Bureau blad-apps configureren die web-Api's aanroepen-micro soft Identity-platform | Azure
+description: Meer informatie over het configureren van de code van een bureau blad-app die web-Api's aanroept
 services: active-directory
 author: jmprieur
 manager: CelesteDG
@@ -12,47 +12,47 @@ ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.openlocfilehash: e0b43f7563c9dfac6374590f6b081197536fe31e
-ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81869015"
 ---
-# <a name="desktop-app-that-calls-web-apis-code-configuration"></a>Bureaublad-app die web-API's aanroept: codeconfiguratie
+# <a name="desktop-app-that-calls-web-apis-code-configuration"></a>Bureau blad-app voor het aanroepen van web-Api's: code configuratie
 
-Nu u uw toepassing hebt gemaakt, leert u hoe u de code configureren met de coördinaten van de toepassing.
+Nu u de toepassing hebt gemaakt, leert u hoe u de code kunt configureren met de coördinaten van de toepassing.
 
-## <a name="microsoft-authentication-libraries"></a>Microsoft-verificatiebibliotheken
+## <a name="microsoft-authentication-libraries"></a>Micro soft-verificatie bibliotheken
 
-De volgende MSALs (Microsoft Authentication Libraries) ondersteunen bureaubladtoepassingen.
+De volgende micro soft-verificatie bibliotheken (MSALs) ondersteunen desktop toepassingen.
 
   Microsoft Authentication Library | Beschrijving
   ------------ | ----------
-  ![MSAL.NET](media/sample-v2-code/logo_NET.png) <br/> MSAL.NET  | Ondersteunt het bouwen van een desktoptoepassing op meerdere platforms, zoals Linux, Windows en macOS.
-  ![Python](media/sample-v2-code/logo_python.png) <br/> MSAL Python | Ondersteunt het bouwen van een desktoptoepassing op meerdere platforms.
-  ![Java](media/sample-v2-code/logo_java.png) <br/> MSAL Java | Ondersteunt het bouwen van een desktoptoepassing op meerdere platforms.
-  ![MSAL iOS](media/sample-v2-code/logo_iOS.png) <br/> MSAL iOS | Ondersteunt alleen desktoptoepassingen die op macOS worden uitgevoerd.
+  ![MSAL.NET](media/sample-v2-code/logo_NET.png) <br/> MSAL.NET  | Biedt ondersteuning voor het bouwen van een bureaublad toepassing op meerdere platformen, zoals Linux, Windows en macOS.
+  ![Python](media/sample-v2-code/logo_python.png) <br/> MSAL python | Biedt ondersteuning voor het bouwen van een bureaublad toepassing op meerdere platforms.
+  ![Java](media/sample-v2-code/logo_java.png) <br/> MSAL Java | Biedt ondersteuning voor het bouwen van een bureaublad toepassing op meerdere platforms.
+  ![MSAL iOS](media/sample-v2-code/logo_iOS.png) <br/> MSAL iOS | Biedt ondersteuning voor desktop toepassingen die alleen op macOS worden uitgevoerd.
 
-## <a name="public-client-application"></a>Openbare clienttoepassing
+## <a name="public-client-application"></a>Open bare client toepassing
 
-Vanuit code-oogpunt zijn desktoptoepassingen openbare clienttoepassingen. De configuratie zal een beetje anders zijn op basis van of u interactieve authenticatie gebruikt of niet.
+Vanuit een code point van de weer gave zijn desktop toepassingen open bare client toepassingen. De configuratie is een andere bit, afhankelijk van of u interactieve verificatie gebruikt of niet.
 
 # <a name="net"></a>[.NET](#tab/dotnet)
 
-Je moet MSAL.NET `IPublicClientApplication`bouwen en manipuleren.
+U moet MSAL.NET `IPublicClientApplication`bouwen en bewerken.
 
 ![IPublicClientApplication](media/scenarios/public-client-application.png)
 
-### <a name="exclusively-by-code"></a>Uitsluitend per code
+### <a name="exclusively-by-code"></a>Uitsluitend op code
 
-Met de volgende code wordt een openbare clienttoepassing geanimeerd en worden gebruikers in de openbare Microsoft Azure-cloud inlogt met een werk- of schoolaccount of een persoonlijk Microsoft-account.
+Met de volgende code wordt een open bare client toepassing geïnstantieerd en worden Microsoft Azure de gebruikers in de open bare Cloud gemeldd met een werk-of school account of een persoonlijke Microsoft-account.
 
 ```csharp
 IPublicClientApplication app = PublicClientApplicationBuilder.Create(clientId)
     .Build();
 ```
 
-Als u van plan bent om interactieve verificatie of apparaatcodestroom te gebruiken, zoals eerder is gebleken, gebruikt u de `.WithRedirectUri` modifier.
+Als u van plan bent interactieve verificatie of de code stroom van het apparaat te gebruiken, zoals `.WithRedirectUri` eerder weer gegeven, gebruikt u de aanpassings functie.
 
 ```csharp
 IPublicClientApplication app;
@@ -63,7 +63,7 @@ app = PublicClientApplicationBuilder.Create(clientId)
 
 ### <a name="use-configuration-files"></a>Configuratiebestanden gebruiken
 
-Met de volgende code wordt een openbare clienttoepassing geinstantt van een configuratieobject, dat programmatisch kan worden ingevuld of uit een configuratiebestand kan worden gelezen.
+Met de volgende code wordt een open bare client toepassing geïnstantieerd vanuit een configuratie object, die programmatisch kan worden ingevuld of vanuit een configuratie bestand kan worden gelezen.
 
 ```csharp
 PublicClientApplicationOptions options = GetOptions(); // your own method
@@ -72,9 +72,9 @@ IPublicClientApplication app = PublicClientApplicationBuilder.CreateWithApplicat
         .Build();
 ```
 
-### <a name="more-elaborated-configuration"></a>Meer uitgewerkte configuratie
+### <a name="more-elaborated-configuration"></a>Meer uitgebreide configuratie
 
-U het toepassingsgebouw uitwerken door een aantal modifiers toe te voegen. Als u bijvoorbeeld wilt dat uw toepassing een multitenant-toepassing is in een nationale cloud, zoals de Amerikaanse overheid die hier wordt weergegeven, u schrijven:
+U kunt het bouwen van toepassingen uitwerken door een aantal para meters toe te voegen. Als u bijvoorbeeld wilt dat uw toepassing een multi tenant-toepassing in een nationale Cloud is, zoals de Amerikaanse overheid die hier wordt weer gegeven, kunt u het volgende schrijven:
 
 ```csharp
 IPublicClientApplication app;
@@ -85,7 +85,7 @@ app = PublicClientApplicationBuilder.Create(clientId)
         .Build();
 ```
 
-MSAL.NET bevat ook een modifier voor Active Directory Federation Services 2019:
+MSAL.NET bevat ook een aanpassings functie voor Active Directory Federation Services 2019:
 
 ```csharp
 IPublicClientApplication app;
@@ -94,7 +94,7 @@ app = PublicClientApplicationBuilder.Create(clientId)
         .Build();
 ```
 
-Als u ten slotte tokens wilt aanschaffen voor een Azure Active Directory (Azure AD) B2C-tenant, geeft u uw tenant op zoals weergegeven in het volgende codefragment:
+Ten slotte, als u tokens wilt verkrijgen voor een Azure Active Directory-Tenant (Azure AD) B2C, geeft u uw Tenant op zoals weer gegeven in het volgende code fragment:
 
 ```csharp
 IPublicClientApplication app;
@@ -105,14 +105,14 @@ app = PublicClientApplicationBuilder.Create(clientId)
 
 ### <a name="learn-more"></a>Meer informatie
 
-Ga als u meer informatie over het configureren van een MSAL.NET bureaubladtoepassing:
+Voor meer informatie over het configureren van een MSAL.NET-bureaublad toepassing:
 
-- Zie de referentiedocumentatie `PublicClientApplicationBuilder` [PublicClientApplicationBuilder](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.publicclientapplicationbuilder#methods)voor een lijst met alle modifiers die beschikbaar zijn op .
-- Zie [PublicClientApplicationOptions](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.publicclientapplicationoptions) in `PublicClientApplicationOptions`de referentiedocumentatie voor een beschrijving van alle opties die in de referentiedocumentatie worden weergegeven.
+- Zie de referentie documentatie [PublicClientApplicationBuilder](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.publicclientapplicationbuilder#methods)voor een lijst met `PublicClientApplicationBuilder`alle wijzigingen die beschikbaar zijn op.
+- Zie PublicClientApplicationOptions in de referentie documentatie voor een beschrijving `PublicClientApplicationOptions`van alle [PublicClientApplicationOptions](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.publicclientapplicationoptions) opties die worden weer gegeven in.
 
-### <a name="complete-example-with-configuration-options"></a>Voorbeeld compleet met configuratieopties
+### <a name="complete-example-with-configuration-options"></a>Volledig voor beeld met configuratie opties
 
-Stel je een .NET Core-consoletoepassing voor die het volgende `appsettings.json` configuratiebestand heeft:
+Stel dat u een .NET core-console toepassing hebt `appsettings.json` die het volgende configuratie bestand bevat:
 
 ```json
 {
@@ -128,7 +128,7 @@ Stel je een .NET Core-consoletoepassing voor die het volgende `appsettings.json`
 }
 ```
 
-Je hebt weinig code te lezen in dit bestand met behulp van de . NET-gebaseerd configuratiekader:
+U hebt weinig code om dit bestand te lezen met behulp van de. NET-werkend configuratie raamwerk:
 
 ```csharp
 public class SampleConfiguration
@@ -171,7 +171,7 @@ public class SampleConfiguration
 }
 ```
 
-Schrijf nu de volgende code om uw toepassing te maken:
+U kunt nu de volgende code schrijven om uw toepassing te maken:
 
 ```csharp
 SampleConfiguration config = SampleConfiguration.ReadFromJsonFile("appsettings.json");
@@ -180,11 +180,11 @@ var app = PublicClientApplicationBuilder.CreateWithApplicationOptions(config.Pub
            .Build();
 ```
 
-Vóór `.Build()` de aanroep naar de methode `.WithXXX` u uw configuratie overschrijven met aanroepen naar methoden, zoals eerder is gebleken.
+Voordat u de `.Build()` -methode aanroept, kunt u uw configuratie overschrijven met aanroepen naar `.WithXXX` methoden, zoals eerder is weer gegeven.
 
 # <a name="java"></a>[Java](#tab/java)
 
-Hier is de klasse die wordt gebruikt in MSAL Java ontwikkeling monsters om de monsters te configureren: [TestData](https://github.com/AzureAD/microsoft-authentication-library-for-java/blob/dev/src/samples/public-client/TestData.java).
+Hier is de klasse die wordt gebruikt in MSAL Java-Ontwikkel voorbeelden voor het configureren van de voor beelden: [TestData](https://github.com/AzureAD/microsoft-authentication-library-for-java/blob/dev/src/samples/public-client/TestData.java).
 
 ```Java
 PublicClientApplication pca = PublicClientApplication.builder(CLIENT_ID)
@@ -205,13 +205,13 @@ app = msal.PublicClientApplication(
     )
 ```
 
-# <a name="macos"></a>[Macos](#tab/macOS)
+# <a name="macos"></a>[MacOS](#tab/macOS)
 
-Met de volgende code wordt een openbare clienttoepassing geanimeerd en worden gebruikers in de openbare Microsoft Azure-cloud inlogt met een werk- of schoolaccount of een persoonlijk Microsoft-account.
+Met de volgende code wordt een open bare client toepassing geïnstantieerd en worden Microsoft Azure de gebruikers in de open bare Cloud gemeldd met een werk-of school account of een persoonlijke Microsoft-account.
 
 ### <a name="quick-configuration"></a>Snelle configuratie
 
-Doelstelling-C:
+Doel-C:
 
 ```objc
 NSError *msalError = nil;
@@ -220,17 +220,17 @@ MSALPublicClientApplicationConfig *config = [[MSALPublicClientApplicationConfig 
 MSALPublicClientApplication *application = [[MSALPublicClientApplication alloc] initWithConfiguration:config error:&msalError];
 ```
 
-Swift:
+Swift
 ```swift
 let config = MSALPublicClientApplicationConfig(clientId: "<your-client-id-here>")
 if let application = try? MSALPublicClientApplication(configuration: config){ /* Use application */}
 ```
 
-### <a name="more-elaborated-configuration"></a>Meer uitgewerkte configuratie
+### <a name="more-elaborated-configuration"></a>Meer uitgebreide configuratie
 
-U het toepassingsgebouw uitwerken door een aantal modifiers toe te voegen. Als u bijvoorbeeld wilt dat uw toepassing een multitenant-toepassing is in een nationale cloud, zoals de Amerikaanse overheid die hier wordt weergegeven, u schrijven:
+U kunt het bouwen van toepassingen uitwerken door een aantal para meters toe te voegen. Als u bijvoorbeeld wilt dat uw toepassing een multi tenant-toepassing in een nationale Cloud is, zoals de Amerikaanse overheid die hier wordt weer gegeven, kunt u het volgende schrijven:
 
-Doelstelling-C:
+Doel-C:
 
 ```objc
 MSALAADAuthority *aadAuthority =
@@ -249,7 +249,7 @@ MSALPublicClientApplication *application =
                 [[MSALPublicClientApplication alloc] initWithConfiguration:config error:&applicationError];
 ```
 
-Swift:
+Swift
 
 ```swift
 let authority = try? MSALAADAuthority(cloudInstance: .usGovernmentCloudInstance, audienceType: .azureADMultipleOrgsAudience, rawTenant: nil)
@@ -262,4 +262,4 @@ if let application = try? MSALPublicClientApplication(configuration: config) { /
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"]
-> [Een token voor een bureaublad-app aanschaffen](scenario-desktop-acquire-token.md)
+> [Een token verkrijgen voor een bureau blad-app](scenario-desktop-acquire-token.md)

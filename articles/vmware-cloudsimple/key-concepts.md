@@ -1,7 +1,7 @@
 ---
-title: Belangrijkste concepten voor het beheer van Azure VMware-oplossing door CloudSimple
+title: Belangrijkste concepten voor het beheer van de Azure VMware-oplossing door CloudSimple
 titleSuffix: Azure VMware Solution by CloudSimple
-description: Beschrijft de belangrijkste concepten voor het beheer van Azure VMware-oplossingen door CloudSimple
+description: Hierin worden de belangrijkste concepten beschreven voor het beheren van Azure VMware-oplossingen op CloudSimple
 author: sharaths-cs
 ms.author: b-shsury
 ms.date: 04/24/2019
@@ -10,55 +10,55 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: 410215550f728d6b11b02b3ef108d429481e42a0
-ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81869033"
 ---
-# <a name="key-concepts-for-administration-of-azure-vmware-solutions-by-cloudsimple"></a>Belangrijkste concepten voor het beheer van Azure VMware-oplossingen door CloudSimple
+# <a name="key-concepts-for-administration-of-azure-vmware-solutions-by-cloudsimple"></a>Belangrijkste concepten voor het beheer van Azure VMware-oplossingen op CloudSimple
 
-Voor het beheer van Azure VMware-oplossingen door CloudSimple is inzicht nodig in de volgende concepten:
+Het beheren van Azure VMware-oplossingen per CloudSimple vereist een goed beeld van de volgende concepten:
 
-* CloudSimple-service, die wordt weergegeven als Azure VMware Solutions by CloudSimple - Service
-* CloudSimple-knooppunt, dat wordt weergegeven als Azure VMware-oplossingen door CloudSimple - Knooppunt
-* CloudSimple private cloud
-* Servicenetwerken
-* CloudSimple virtuele machine, die wordt weergegeven als Azure VMware Solutions door CloudSimple - Virtuele machine
+* CloudSimple-service, die als Azure VMware-oplossingen wordt weer gegeven door CloudSimple-service
+* CloudSimple-knoop punt, dat wordt weer gegeven als Azure VMware-oplossing door CloudSimple-node
+* CloudSimple-privécloud
+* Service netwerken
+* CloudSimple virtuele machine, die als Azure VMware-oplossingen wordt weer gegeven door CloudSimple-virtual machine
 
 ## <a name="cloudsimple-service"></a>CloudSimple-service
 
-Met de CloudSimple-service u alle resources die zijn gekoppeld aan VMware Solutions by CloudSimple maken en beheren vanuit de Azure-portal. Maak een servicebron in elke regio waar u de service wilt gebruiken.
+Met de CloudSimple-service kunt u alle resources die zijn gekoppeld aan VMware-oplossingen maken en beheren via CloudSimple van de Azure Portal. Maak een service resource in elke regio waar u de service wilt gebruiken.
 
 Meer informatie over de [CloudSimple-service](cloudsimple-service.md).
 
-## <a name="cloudsimple-node"></a>CloudSimple-knooppunt
+## <a name="cloudsimple-node"></a>CloudSimple-knoop punt
 
-Een CloudSimple-knooppunt is een speciale, bare-metal, hyperconverged compute- en storagehost waarin de VMware ESXi hypervisor wordt ingezet. Dit knooppunt wordt vervolgens opgenomen in de VMware vSphere-, vCenter-, vSAN- en NSX-platforms. CloudSimple-netwerkservices en edge-netwerkservices zijn ook ingeschakeld. Elk knooppunt dient als een eenheid van reken- en opslagcapaciteit die u inrichten om [CloudSimple-privéclouds te](cloudsimple-private-cloud.md)maken. U indient of reserveert knooppunten in een regio waar de CloudSimple-service beschikbaar is.
+Een CloudSimple-knoop punt is een speciale, Bare-Metal, hypergeconvergeerd Compute-en opslag host waarop de VMware ESXi Hyper Visor is geïmplementeerd. Dit knoop punt wordt vervolgens opgenomen in de VMware vSphere-, vCenter-, vSAN-en NSX-platforms. CloudSimple Network Services en Edge Network Services zijn ook ingeschakeld. Elk knoop punt fungeert als een eenheid voor reken-en opslag capaciteit die u kunt inrichten voor het maken van [CloudSimple-persoonlijke Clouds](cloudsimple-private-cloud.md). U kunt knoop punten inrichten of reserveren in een regio waar de CloudSimple-service beschikbaar is.
 
-Meer informatie over [CloudSimple-knooppunten](cloudsimple-node.md).
+Meer informatie over [CloudSimple-knoop punten](cloudsimple-node.md).
 
-## <a name="cloudsimple-private-cloud"></a>CloudSimple private cloud
+## <a name="cloudsimple-private-cloud"></a>CloudSimple-privécloud
 
-Een CloudSimple private cloud is een geïsoleerde VMware stack omgeving beheerd door een vCenter server in zijn eigen beheerdomein. De VMware-stack bevat ESXi-hosts, vSphere, vCenter, vSAN en NSX. De stack draait op speciale knooppunten (dedicated en geïsoleerde bare-metal hardware) en wordt verbruikt door gebruikers via native VMware-tools die vCenter en NSX Manager bevatten. Speciale knooppunten worden geïmplementeerd in Azure-locaties en worden beheerd door Azure. Elke private cloud kan worden gesegmenteerd en beveiligd met behulp van netwerkservices zoals VLAN's en subnetten en firewalltabellen. Verbindingen met uw on-premises omgeving en het Azure-netwerk worden gemaakt met behulp van beveiligde, privé VPN- en Azure ExpressRoute-verbindingen.
+Een CloudSimple-privécloud is een geïsoleerde VMware-stack omgeving die wordt beheerd door een vCenter-Server in een eigen beheer domein. De VMware-stack bevat ESXi-hosts, vSphere, vCenter, vSAN en NSX. De stack wordt uitgevoerd op toegewezen knoop punten (toegewezen en geïsoleerde bare-metal hardware) en wordt door gebruikers gebruikt via systeem eigen VMware-hulpprogram ma's die vCenter en NSX manager bevatten. Toegewezen knoop punten worden geïmplementeerd op Azure-locaties en worden beheerd door Azure. Elke privécloud kan worden gesegmenteerd en beveiligd met behulp van netwerk services, zoals VLAN'S en subnetten en firewall tabellen. Verbindingen met uw on-premises omgeving en het Azure-netwerk worden gemaakt met behulp van beveiligde, particuliere VPN-en Azure ExpressRoute-verbindingen.
 
-Meer informatie over [CloudSimple private cloud](cloudsimple-private-cloud.md).
+Meer informatie over [CloudSimple Private Cloud](cloudsimple-private-cloud.md).
 
-## <a name="service-networking"></a>Servicenetwerken
+## <a name="service-networking"></a>Service netwerken
 
-De CloudSimple-service biedt een netwerk per regio waar uw CloudSimple-service wordt geïmplementeerd. Het netwerk is één TCP Layer 3-adresruimte met standaard routering ingeschakeld. Alle privéclouds en subnetten die in deze regio zijn gemaakt, communiceren met elkaar zonder extra configuratie. U maakt gedistribueerde poortgroepen op het vCenter met behulp van de VLAN's. U de volgende netwerkfuncties gebruiken om uw workloadbronnen in uw privécloud te configureren en te beveiligen:
+De CloudSimple-service biedt een netwerk per regio waar uw CloudSimple-service wordt geïmplementeerd. Het netwerk is één adres ruimte van de TCP-laag 3 waarvoor route ring standaard is ingeschakeld. Alle persoonlijke Clouds en subnetten die in deze regio worden gemaakt, communiceren zonder aanvullende configuratie. U maakt gedistribueerde poort groepen op de vCenter met behulp van de VLAN'S. U kunt de volgende netwerk functies gebruiken voor het configureren en beveiligen van uw werkbelasting resources in uw privécloud:
 
 * [VLAN's en subnetten](cloudsimple-vlans-subnets.md)
 * [Firewalltabellen](cloudsimple-firewall-tables.md)
 * [VPN-gateways](cloudsimple-vpn-gateways.md)
-* [Openbaar IP](cloudsimple-public-ip-address.md)
+* [Openbaar IP-adres](cloudsimple-public-ip-address.md)
 * [Azure-netwerkverbinding](cloudsimple-azure-network-connection.md)
 
-## <a name="cloudsimple-virtual-machine"></a>CloudSimple virtuele machine
+## <a name="cloudsimple-virtual-machine"></a>Virtuele machine CloudSimple
 
-Met de CloudSimple-service u virtuele VMware-machines beheren vanuit de Azure-portal. Een of meer clusters of resourcepools uit uw vSphere-omgeving kunnen worden toegewezen aan het abonnement waarop de service is gemaakt.
+Met de CloudSimple-service kunt u virtuele VMware-machines beheren vanuit het Azure Portal. Een of meer clusters of resource groepen uit uw vSphere-omgeving kunnen worden toegewezen aan het abonnement waarop de service is gemaakt.
 
 Meer informatie over:
 
-* [CloudSimple virtuele machines](cloudsimple-virtual-machines.md)
-* [Azure-abonnementstoewijzing](https://docs.microsoft.com/azure/vmware-cloudsimple/azure-subscription-mapping/)
+* [Virtuele CloudSimple-machines](cloudsimple-virtual-machines.md)
+* [Toewijzing van Azure-abonnement](https://docs.microsoft.com/azure/vmware-cloudsimple/azure-subscription-mapping/)

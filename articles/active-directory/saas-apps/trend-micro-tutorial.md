@@ -1,5 +1,5 @@
 ---
-title: 'Zelfstudie: Azure Active Directory single sign-on (SSO) integratie met Trend Micro Web Security(TMWS) | Microsoft Documenten'
+title: 'Zelf studie: Azure Active Directory-integratie met eenmalige aanmelding (SSO) met Trend Micro Web Security (TMWS) | Microsoft Docs'
 description: Meer informatie over het configureren van eenmalige aanmelding tussen Azure Active Directory en Trend Micro Web Security (TMWS).
 services: active-directory
 documentationCenter: na
@@ -16,219 +16,219 @@ ms.date: 04/21/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 5f4dc7223d64fd299da70375329260f7b4f8b322
-ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
-ms.translationtype: MT
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/23/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "82083356"
 ---
-# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-trend-micro-web-securitytmws"></a>Zelfstudie: Azure Active Directory single sign-on (SSO) integratie met Trend Micro Web Security (TMWS)
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-trend-micro-web-securitytmws"></a>Zelf studie: Azure Active Directory-integratie met eenmalige aanmelding (SSO) met Trend Micro Web Security (TMWS)
 
-In deze zelfstudie leert u hoe u Trend Micro Web Security (TMWS) integreert met Azure Active Directory (Azure AD). Wanneer u Trend Micro Web Security (TMWS) integreert met Azure AD, u het als volgt op:
+In deze zelf studie leert u hoe u Trend Micro Web Security (TMWS) integreert met Azure Active Directory (Azure AD). Wanneer u Trend Micro Web Security (TMWS) integreert met Azure AD, kunt u het volgende doen:
 
-* Beheer in Azure AD die toegang heeft tot Trend Micro Web Security (TMWS).
+* Controle in azure AD die toegang heeft tot Trend Micro Web Security (TMWS).
 * Stel uw gebruikers in staat om automatisch te worden aangemeld bij Trend Micro Web Security (TMWS) met hun Azure AD-accounts.
-* Beheer uw accounts op één centrale locatie: de Azure-portal.
+* Beheer uw accounts op één centrale locatie: de Azure Portal.
 
-Zie [Wat is toepassingstoegang en eenmalige aanmelding met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)voor meer informatie over de integratie van de SaaS-app met Azure AD.
+Zie [Wat is toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)voor meer informatie over SaaS-app-integratie met Azure AD.
 
 ## <a name="prerequisites"></a>Vereisten
 
-Om aan de slag te gaan, heb je de volgende items nodig:
+U hebt de volgende items nodig om aan de slag te gaan:
 
-* Een Azure AD-abonnement Wanneer je nog geen abonnement hebt kun je gratis een [account aanmaken.](https://azure.microsoft.com/free/)
-* Trend Micro Web Security (TMWS) single sign-on (SSO) ingeschakeld abonnement.
+* Een Azure AD-abonnement Als u geen abonnement hebt, kunt u een [gratis account](https://azure.microsoft.com/free/)aanvragen.
+* TMWS-abonnement (Micro-to-SSO) voor het eenmalige aanmelden op internet.
 
 ## <a name="scenario-description"></a>Scenariobeschrijving
 
-In deze zelfstudie configureert en test u Azure AD SSO in een testomgeving.
+In deze zelf studie configureert en test u Azure AD SSO in een test omgeving.
 
-* Trend Micro Web Security (TMWS) ondersteunt **SP** geïnitieerde SSO
-* Zodra u Trend Micro Web Security (TMWS) hebt geconfigureerd, u sessiecontrole afdwingen, die exfiltratie en infiltratie van de gevoelige gegevens van uw organisatie in realtime beschermen. Sessiebeheer strekt zich uit van Voorwaardelijke toegang. [Meer informatie over het afdwingen van sessiebeheer met Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
+* Trend Micro Web Security (TMWS) ondersteunt door **SP** GEÏNITIEERDe SSO
+* Zodra u Trend Micro Web Security (TMWS) hebt geconfigureerd, kunt u sessie beheer afdwingen, waardoor exfiltration en infiltratie van de gevoelige gegevens van uw organisatie in realtime worden beschermd. Sessie beheer is uitgebreid met voorwaardelijke toegang. [Meer informatie over het afdwingen van sessie beheer met Microsoft Cloud app Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
 
-## <a name="adding-trend-micro-web-securitytmws-from-the-gallery"></a>Het toevoegen van Trend Micro Web Security (TMWS) vanuit de galerij
+## <a name="adding-trend-micro-web-securitytmws-from-the-gallery"></a>Trend Micro Web Security (TMWS) toevoegen vanuit de galerie
 
-Als u de integratie van Trend Micro Web Security (TMWS) in Azure AD wilt configureren, moet u TMWS (Trend Micro Web Security) vanuit de galerie toevoegen aan uw lijst met beheerde SaaS-apps.
+Als u de integratie van Trend Micro Web Security (TMWS) wilt configureren in azure AD, moet u Trend Micro Web Security (TMWS) toevoegen vanuit de galerie aan uw lijst met beheerde SaaS-apps.
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com) met een werk- of schoolaccount of een persoonlijk Microsoft-account.
-1. Selecteer in het linkernavigatiedeelvenster de **Azure Active Directory-service.**
-1. Navigeer naar **Ondernemingstoepassingen** en selecteer **Alle toepassingen**.
-1. Als u nieuwe toepassingen wilt toevoegen, selecteert u **Nieuwe toepassing**.
-1. Typ **Trend Micro Web Security (TMWS)** in de sectie Toevoegen in de **galerijsectie** in het zoekvak.
-1. Selecteer **Trend Micro Web Security (TMWS)** in het deelvenster Resultaten en voeg de app toe. Wacht een paar seconden terwijl de app wordt toegevoegd aan uw tenant.
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com) met behulp van een werk-of school account of een persoonlijke Microsoft-account.
+1. Selecteer de **Azure Active Directory** -service in het navigatie deel venster aan de linkerkant.
+1. Ga naar **bedrijfs toepassingen** en selecteer **alle toepassingen**.
+1. Selecteer **nieuwe toepassing**om een nieuwe toepassing toe te voegen.
+1. Typ in de sectie **toevoegen vanuit de galerie** de tekst **Trend Micro Web Security (TMWS)** in het zoekvak.
+1. Selecteer **Trend Micro Web Security (TMWS)** in het paneel resultaten en voeg vervolgens de app toe. Wacht een paar seconden wanneer de app aan uw Tenant is toegevoegd.
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-trend-micro-web-securitytmws"></a>Azure AD-singlesign-on configureren en testen voor Trend Micro Web Security(TMWS)
+## <a name="configure-and-test-azure-ad-single-sign-on-for-trend-micro-web-securitytmws"></a>Eenmalige aanmelding van Azure AD voor Trend Micro Web Security (TMWS) configureren en testen
 
-Azure AD SSO configureren en testen met Trend Micro Web Security (TMWS) met behulp van een testgebruiker genaamd **B.Simon**. Als SSO kan werken, moet u een koppeling smaken tussen een Azure AD-gebruiker en de gerelateerde gebruiker in Trend Micro Web Security (TMWS).
+Azure AD SSO configureren en testen met Trend Micro Web Security (TMWS) met behulp van een test gebruiker met de naam **B. Simon**. Voor het werken met SSO moet u een koppelings relatie tot stand brengen tussen een Azure AD-gebruiker en de bijbehorende gebruiker in Trend Micro Web Security (TMWS).
 
-Als u Azure AD SSO wilt configureren en testen met Trend Micro Web Security (TMWS), voert u de volgende bouwstenen uit:
+Als u Azure AD SSO wilt configureren en testen met Trend Micro Web Security (TMWS), voltooit u de volgende bouw stenen:
 
-1. **[Configureer Azure AD SSO](#configure-azure-ad-sso)** - zodat uw gebruikers deze functie kunnen gebruiken.
-    1. **[Een Azure AD-testgebruiker maken](#create-an-azure-ad-test-user)** - om Azure AD-enkele aanmelding te testen met B.Simon.
-    1. **[De Azure AD-testgebruiker toewijzen](#assign-the-azure-ad-test-user)** - om B.Simon in staat te stellen azure AD-aanmelding te gebruiken.
-    1. **[Instellingen voor gebruikers- en groepssynchronisatie configureren in Azure AD](#configure-user-and-group-synchronization-settings-in-azure-ad)** - Instellingen voor gebruikers- en groepssynchronisatie configureren in Azure AD
-1. **[Configureer Trend Micro Web Security (TMWS) SSO](#configure-trend-micro-web-security-sso)** - om de instellingen voor één aanmelding aan de toepassingszijde te configureren.
-1. **[Test SSO](#test-sso)** - om te controleren of de configuratie werkt.
+1. **[Configureer Azure AD SSO](#configure-azure-ad-sso)** -om uw gebruikers in staat te stellen deze functie te gebruiken.
+    1. **[Een Azure AD-test gebruiker maken](#create-an-azure-ad-test-user)** : u kunt eenmalige aanmelding voor Azure AD testen met B. Simon.
+    1. **[Wijs de Azure AD-test gebruiker](#assign-the-azure-ad-test-user)** toe, zodat B. Simon de eenmalige aanmelding van Azure AD kan gebruiken.
+    1. **[Gebruikers-en groeps synchronisatie-instellingen configureren in azure AD](#configure-user-and-group-synchronization-settings-in-azure-ad)** -synchronisatie-instellingen voor gebruikers en groepen configureren in azure AD
+1. **[TMWS-SSO (Trend Micro Web Security) configureren](#configure-trend-micro-web-security-sso)** : voor het configureren van de instellingen voor eenmalige aanmelding aan de kant van de toepassing.
+1. **[SSO testen](#test-sso)** : om te controleren of de configuratie werkt.
 
 ## <a name="configure-azure-ad-sso"></a>Azure AD SSO-configureren
 
-Volg deze stappen om Azure AD SSO in te schakelen in de Azure-portal.
+Volg deze stappen om Azure AD SSO in te scha kelen in de Azure Portal.
 
-1. Zoek in de [Azure-portal](https://portal.azure.com/)op de pagina **TMWS-toepassingsintegratie (Trend Micro Web Security)** de sectie **Beheren** en selecteer **eenmalige aanmelding.**
-1. Selecteer **SAML**op de pagina **Eén aanmeldingsmethode** selecteren .
-1. Klik op de pagina **Eén aanmelding instellen met SAML** op het pictogram bewerken/pen voor **BasisSAML-configuratie** om de instellingen te bewerken.
+1. Zoek in de [Azure Portal](https://portal.azure.com/)op de pagina **Trend Micro Web Security (TMWS)** Application Integration de sectie **Manage (beheren** ) en selecteer **eenmalige aanmelding**.
+1. Selecteer op de pagina **Eén aanmeldings methode selecteren** de optie **SAML**.
+1. Klik op de pagina **eenmalige aanmelding met SAML instellen** op het pictogram bewerken/pen voor **eenvoudige SAML-configuratie** om de instellingen te bewerken.
 
    ![Standaard SAML-configuratie bewerken](common/edit-urls.png)
 
-1. Voer in de sectie **BasisSAML-configuratie** de waarden in voor de volgende velden:
+1. Voer in de sectie **basis configuratie van SAML** de waarden in voor de volgende velden:
 
     a. In het tekstvak **Id (Entiteits-id)** typt u een URL met het volgende patroon: `https://auth.iws-hybrid.trendmicro.com/([0-9a-f]{16})`
 
-    b. Typ een URL in het tekstvak **URL beantwoorden:**`https://auth.iws-hybrid.trendmicro.com/simplesaml/module.php/saml/sp/saml2-acs.php/ics-sp`
+    b. Typ een URL in het tekstvak **antwoord-URL** :`https://auth.iws-hybrid.trendmicro.com/simplesaml/module.php/saml/sp/saml2-acs.php/ics-sp`
 
     > [!NOTE]
-    > De id-waarde is niet echt. Werk deze waarde bij met de werkelijke id. U deze waarden ophalen onder de instellingen van de **serviceprovider voor het azure-beheerportalgebied** op het scherm **Verificatiemethode** voor Azure AD van **Beheer > Directory Services**.
+    > De id-waarde is niet echt. Werk deze waarde bij met de werkelijke id. U kunt deze waarden ophalen onder de **instellingen voor de service provider voor het gebied Azure-beheer Portal** in het scherm **verificatie methode** voor azure AD vanuit **beheer > Directory Services**.
 
-1. De TMWS-toepassing (Trend Micro Web Security) verwacht de SAML-beweringen in een specifieke indeling, waarvoor u aangepaste kenmerktoewijzingen moet toevoegen aan uw SAML-tokenkenmerkenconfiguratie. In de volgende schermafbeelding wordt de lijst met standaardkenmerken weergegeven.
+1. Voor de toepassing Trend Micro Web Security (TMWS) wordt de SAML-beweringen in een specifieke indeling verwacht. hiervoor moet u aangepaste kenmerk toewijzingen toevoegen aan de configuratie van uw SAML-token kenmerken. In de volgende schermafbeelding wordt de lijst met standaardkenmerken weergegeven.
 
     ![installatiekopie](common/default-attributes.png)
 
-1. Naast bovenstaande, Trend Micro Web Security (TMWS) applicatie verwacht weinig meer attributen worden teruggegeven in SAML reactie die hieronder worden weergegeven. Deze kenmerken zijn ook vooraf ingevuld, maar u ze bekijken volgens uw vereisten.
+1. In aanvulling op de bovenstaande TMWS-toepassing (Trend Micro Web Security) verwachtte nog enkele kenmerken terug te worden door gegeven in de SAML-respons die hieronder worden weer gegeven. Deze kenmerken worden ook vooraf ingevuld, maar u kunt ze controleren volgens uw vereisten.
     
     | Naam | Bronkenmerk|
     | --------------- | --------- |
-    | sAMAccountName | user.onpremisessamaccountnaam |
-    | Upn | user.userprincipalname |
+    | sAMAccountName | User. onpremisessamaccountname |
+    | uPN | user.userprincipalname |
 
-1. Zoek op de pagina **Eén aanmelding instellen met SAML** in de sectie **SAML-ondertekeningscertificaat** **certificaat** en selecteer **Downloaden** om het certificaat te downloaden en op te slaan op uw computer.
+1. Zoek op de pagina **eenmalige aanmelding met SAML instellen** , in de sectie **SAML-handtekening certificaat** , naar **certificaat (base64)** en selecteer **downloaden** om het certificaat te downloaden en op uw computer op te slaan.
 
     ![De link om het certificaat te downloaden](common/certificatebase64.png)
 
-1. Kopieer in de sectie **TMWS (Set up Trend Micro Web Security)** de juiste URL(s) op basis van uw vereiste.
+1. Op de sectie **Trend Micro Web Security (TMWS) instellen** kopieert u de gewenste URL ('s) op basis van uw vereiste.
 
     ![Configuratie-URL's kopiëren](common/copy-configuration-urls.png)
 
 ### <a name="create-an-azure-ad-test-user"></a>Een Azure AD-testgebruiker maken
 
-In deze sectie maakt u een testgebruiker in de Azure-portal genaamd B.Simon.
+In deze sectie maakt u een test gebruiker in de Azure Portal met de naam B. Simon.
 
-1. Selecteer in het linkerdeelvenster in de Azure-portal **Azure Active Directory,** selecteer **Gebruikers**en selecteer **Alle gebruikers**.
-1. Selecteer **Nieuwe gebruiker** boven aan het scherm.
-1. Voer **in** de eigenschappen gebruiker de volgende stappen uit:
+1. Selecteer in het linkerdeel venster van de Azure Portal **Azure Active Directory**, selecteer **gebruikers**en selecteer vervolgens **alle gebruikers**.
+1. Selecteer **nieuwe gebruiker** boven aan het scherm.
+1. Voer de volgende stappen uit in de eigenschappen van de **gebruiker** :
    1. Voer in het veld **Naam**`B.Simon` in.  
-   1. Voer **in** het veld username@companydomain.extensionGebruikersnaam de . Bijvoorbeeld `B.Simon@contoso.com`.
-   1. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak **Wachtwoord.**
-   1. Klik **op Maken**.
+   1. Voer in het veld **gebruikers naam** het username@companydomain.extensionin. Bijvoorbeeld `B.Simon@contoso.com`.
+   1. Schakel het selectie vakje **wacht woord weer geven** in en noteer de waarde die wordt weer gegeven in het vak **wacht woord** .
+   1. Klik op **maken**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>De Azure AD-testgebruiker toewijzen
 
-In deze sectie u B.Simon inschakelen om Azure single sign-on te gebruiken door toegang te verlenen tot Trend Micro Web Security (TMWS).
+In deze sectie schakelt u B. Simon in om eenmalige aanmelding van Azure te gebruiken door toegang te verlenen tot Trend Micro Web Security (TMWS).
 
-1. Selecteer in de Azure-portal **Enterprise-toepassingen**en selecteer **Alle toepassingen**.
-1. Selecteer Trend Micro **Web Security(TMWS)** in de lijst met toepassingen.
-1. Zoek op de overzichtspagina van de app de sectie **Beheren** en selecteer **Gebruikers en groepen**.
+1. Selecteer in het Azure Portal **bedrijfs toepassingen**en selecteer vervolgens **alle toepassingen**.
+1. Selecteer in de lijst toepassingen de optie **Trend Micro Web Security (TMWS)**.
+1. Ga op de pagina overzicht van de app naar de sectie **beheren** en selecteer **gebruikers en groepen**.
 
    ![De koppeling Gebruikers en groepen](common/users-groups-blade.png)
 
-1. Selecteer **Gebruiker toevoegen**en selecteer vervolgens Gebruikers en **groepen** in het dialoogvenster **Toewijzing toevoegen.**
+1. Selecteer **gebruiker toevoegen**en selecteer vervolgens **gebruikers en groepen** in het dialoog venster **toewijzing toevoegen** .
 
-    ![De koppeling Gebruiker toevoegen](common/add-assign-user.png)
+    ![De koppeling gebruiker toevoegen](common/add-assign-user.png)
 
-1. Selecteer **B.Simon** in het dialoogvenster **Gebruikers en groepen** in de lijst Gebruikers en klik vervolgens op de knop **Selecteren** onder aan het scherm.
-1. Als u een rolwaarde verwacht in de SAML-bewering, selecteert u in het dialoogvenster **Rol selecteren** de juiste rol voor de gebruiker in de lijst en klikt u op de knop **Selecteren** onder aan het scherm.
-1. Klik **in** het dialoogvenster Toewijzing toevoegen op de knop **Toewijzen.**
+1. Selecteer in het dialoog venster **gebruikers en groepen** **B. Simon** van de lijst gebruikers en klik vervolgens op de knop **selecteren** onder aan het scherm.
+1. Als u een wille keurige rol verwacht in de SAML-bewering, selecteert u in het dialoog venster **rol selecteren** de juiste rol voor de gebruiker in de lijst en klikt u op de knop **selecteren** onder aan het scherm.
+1. Klik in het dialoog venster **toewijzing toevoegen** op de knop **toewijzen** .
 
-### <a name="configure-user-and-group-synchronization-settings-in-azure-ad"></a>Synchronisatie-instellingen voor gebruikers en groepen configureren in Azure AD
+### <a name="configure-user-and-group-synchronization-settings-in-azure-ad"></a>Gebruikers-en groeps synchronisatie-instellingen configureren in azure AD
 
-1. Klik links op **Azure Active Directory.**
+1. Klik op **Azure Active Directory**in het navigatie venster aan de linkerkant.
 
-1. Klik **onder Beheren**op **App-registraties** en klik vervolgens op uw nieuwe bedrijfstoepassing onder het gebied **Alle toepassingen.**
+1. Klik onder **beheren**op **app-registraties** en klik vervolgens op uw nieuwe zakelijke toepassing in het gebied **alle toepassingen** .
 
-1. Klik **onder Beheren**op Certificaten & **geheimen**.
+1. Klik onder **beheren**op **certificaten & geheimen**.
 
-1. Klik onder het gebied Clientgeheimen dat wordt weergegeven op **Nieuw clientgeheim**.
+1. Klik onder het gebied client geheimen dat wordt weer gegeven op **Nieuw client geheim**.
 
-1. Voeg in het scherm Een clientgeheim toevoegen dat wordt weergegeven, optioneel een beschrijving toe en selecteer een vervaldatum voor dit clientgeheim en klik vervolgens op **Toevoegen**. Het nieuw toegevoegde clientgeheim wordt weergegeven onder het gebied Clientgeheimen.
+1. Voeg in het scherm een client geheim toevoegen dat wordt weer gegeven, eventueel een beschrijving toe en selecteer een verloop periode voor dit client geheim en klik vervolgens op **toevoegen**. Het zojuist toegevoegde client geheim wordt weer gegeven onder het gebied client geheimen.
 
-1. Leg de waarde vast. Later typt u de informatie in TMWS.
+1. Noteer de waarde. Later typt u de gegevens in TMWS.
 
-1. Klik **onder Beheren**op **API-machtigingen**. 
+1. Klik onder **beheren**op **API-machtigingen**. 
 
-1. Klik in het scherm API-machtigingen dat wordt weergegeven op **Een machtiging toevoegen**.
+1. Klik op het scherm API-machtigingen dat wordt weer gegeven op **een machtiging toevoegen**.
 
-1. Klik op het tabblad Microsoft API's van het scherm Machtigingen van api's aanvragen dat wordt weergegeven op **Microsoft Graph** en vervolgens **toepassingsmachtigingen**.
+1. Klik op het tabblad micro soft Api's van het scherm API-machtigingen voor aanvragen dat wordt weer gegeven op **Microsoft Graph** en vervolgens op **toepassings machtigingen**.
 
 1. Zoek en voeg de volgende machtigingen toe: 
 
     * Group.Read.All
-    * User.Read.All
+    * User. Read. all
 
-1. Klik op **Machtigingen toevoegen**. Er verschijnt een bericht om te bevestigen dat uw instellingen zijn opgeslagen. De nieuw toegevoegde machtigingen worden weergegeven op het scherm API-machtigingen.
+1. Klik op **Machtigingen toevoegen**. Er wordt een bericht weer gegeven om te bevestigen dat de instellingen zijn opgeslagen. De nieuw toegevoegde machtigingen worden weer gegeven op het scherm API-machtigingen.
 
-1. Klik onder het gebied Toestemming verlenen op **Beheerderstoestemming verlenen voor < uw beheerdersaccount > (Standaardmap)** en **vervolgens Ja**. Er verschijnt een bericht om te bevestigen dat de beheerderstoestemming voor de gevraagde machtigingen is verleend.
+1. Klik in het gebied granting toestemming op **toestemming van de beheerder geven < uw Administrator-account > (standaardmap)** en klik vervolgens op **Ja**. Er wordt een bericht weer gegeven om te bevestigen dat de beheerder heeft toestemming verleend voor de aangevraagde machtigingen.
 
 1. Klik op **Overzicht**. 
 
-1. Noteer in het rechterdeelvenster dat wordt weergegeven de id van toepassing (client) en de id van directory (tenant). Later typt u de informatie in TMWS. U ook klikken op **Aangepaste domeinnamen** onder Azure Active Directory **> De** domeinnaam beheren en opnemen in het rechterdeelvenster.
+1. In het rechterdeel venster dat wordt weer gegeven, noteert u de ID van de toepassing (client) en de directory (Tenant). Later typt u de gegevens in TMWS. U kunt ook klikken op **aangepaste domein namen** onder Azure **Active Directory >** de domein naam in het rechterdeel venster te beheren en vast te leggen.
 
-## <a name="configure-trend-micro-web-security-sso"></a>Trend Micro Web Security SSO configureren
+## <a name="configure-trend-micro-web-security-sso"></a>Micro-upeenmalige beveiliging voor trend microconfigureren
 
-1. Meld u aan bij de TMWS-beheerconsole en ga naar **Gebruikers beheren** > **& AUTHENTICATION** > **Directory Services**.
+1. Meld u aan bij de TMWS-beheer console en ga naar **beheer** > **gebruikers & Authentication** > **Directory Services**.
 
-1. Klik hier op het bovenste gedeelte van het scherm.
+1. Klik hier in het bovenste gedeelte van het scherm.
 
-1. Klik in het scherm Verificatiemethode dat wordt weergegeven op **Azure AD**.
+1. Klik in het scherm verificatie methode dat wordt weer gegeven op **Azure AD**.
 
-1. Klik **op Aan** of **Uit** om te beslissen of de AD-gebruikers van uw organisatie websites via TMWS mogen bezoeken als hun gegevens niet zijn gesynchroniseerd met TMWS.
+1. Klik op of **uit** om te **bepalen of de** AD-gebruikers van uw organisatie websites mogen bezoeken via TMWS als hun gegevens niet zijn gesynchroniseerd met TMWS.
 
     > [!NOTE]
-    > Gebruikers die niet zijn gesynchroniseerd vanuit Azure AD, kunnen alleen worden geverifieerd via bekende TMWS-gateways of de speciale poort voor uw organisatie.
+    > Gebruikers die niet zijn gesynchroniseerd vanuit Azure AD kunnen alleen worden geverifieerd via bekende TMWS-gateways of de toegewezen poort voor uw organisatie.
 
-1. Voer in de sectie **Instellingen voor identiteitsprovider** de volgende stappen uit:
+1. Voer de volgende stappen uit in de sectie instellingen van de **identiteits provider** :
 
-    a. Plak in het veld **Service-URL** de **URL-waarde aanmelding,** die u hebt gekopieerd vanuit azure-portal
+    a. Plak in het veld **service-URL** de waarde voor de **aanmeldings-URL** , die u hebt gekopieerd uit Azure Portal
 
-    b. Plak in het **kenmerk aanmeldingsnaam** aan logboeken de naam van de claimgebruiker met het kenmerk **user.onpremisessamaccountname** van de Azure-portal.
+    b. Plak in het veld **naam kenmerk** van de gebruiker de naam van de gebruikers claim met het bron kenmerk **User. onpremisessamaccountname** uit de Azure Portal.
 
-    c. Gebruik in het veld **Openbaar SSL-certificaat** het gedownloade certificaat **(Base64)** van de Azure-portal.
+    c. Gebruik in het veld **openbaar SSL-certificaat** het gedownloade **certificaat (base64)** van de Azure Portal.
 
-1. Voer in de sectie **Synchronisatie-instellingen** de volgende stappen uit:
+1. Voer de volgende stappen uit in de sectie **synchronisatie-instellingen** :
 
-    a. Gebruik in het veld **Tenant** **directory (tenant)** of **aangepaste domeinnaamwaarde** van de Azure-portal.
+    a. Gebruik in het veld **Tenant** de **Directory-id (Tenant)** of de waarde van de **aangepaste domein naam** van de Azure Portal.
 
-    b. In het veld **Toepassings-id** wordt **de id-waarde van toepassing (client)** van de Azure-portal verwijderd.
+    b. In het veld **toepassings-id** wordt de waarde **Application (client) id** van de Azure Portal.
 
-    c. Gebruik **clientgeheim** van de Azure-portal in het veld **Clientgeheim.**
+    c. Gebruik in het veld **client geheim** het **client geheim** van de Azure Portal.
 
-    d. Selecteer in het veld **Synchronisatieplanning** selecteren om handmatig of volgens een planning te synchroniseren met Azure AD. Als u handmatig kiest, wanneer er wijzigingen zijn in de gebruikersgegevens van Active Directory, vergeet dan niet terug te gaan naar het scherm Directory Services en handmatige synchronisatie uit te voeren, zodat de informatie in TMWS actueel blijft.
+    d. In het veld **synchronisatie schema** selecteert u om te synchroniseren met Azure AD hand matig of volgens een planning. Als u hand matig kiest wanneer er wijzigingen zijn in Active Directory gebruikers gegevens, moet u terugkeren naar het scherm adreslijst Services en hand matige synchronisatie uitvoeren zodat de gegevens in TMWS actueel blijven.
 
-    e. Klik **op Verbinding testen** om te controleren of de Azure AD-service kan worden verbonden. 
+    e. Klik op **verbinding testen** om te controleren of de Azure AD-service met succes kan worden verbonden. 
     
     f. Klik op **Opslaan**.
  
  > [!NOTE]
- > Raadpleeg [dit](https://docs.trendmicro.com/en-us/enterprise/trend-micro-web-security-online-help/administration_001/directory-services/azure-active-directo/configuring-azure-ad.aspx) document voor meer informatie over het configureren van Trend Micro Web Security met Azure AD.
+ > Raadpleeg dit document voor meer informatie over het configureren van [de](https://docs.trendmicro.com/en-us/enterprise/trend-micro-web-security-online-help/administration_001/directory-services/azure-active-directo/configuring-azure-ad.aspx) beveiliging van Trend Micro Web met Azure AD.
 
-## <a name="test-sso"></a>Test SSO 
+## <a name="test-sso"></a>SSO testen 
 
-Nadat u de Azure AD-service hebt geconfigureerd en Azure AD hebt opgegeven als gebruikersverificatiemethode, u zich aanmelden bij de TMWS-proxyserver om uw installatie te verifiëren. Nadat de Ad-aanmelding in Azure uw account heeft geverifieerd, u het internet bezoeken.
+Zodra u de Azure AD-service hebt geconfigureerd en Azure AD hebt opgegeven als de verificatie methode voor gebruikers, kunt u zich aanmelden bij de TMWS-proxy server om uw installatie te controleren. Nadat de Azure AD-aanmelding uw account heeft geverifieerd, kunt u het internet bezoeken.
 
 > [!NOTE]
-> TMWS ondersteunt geen ondersteuning voor het testen van één aanmelding vanuit de Azure AD-portal, onder Overzicht > Single sign-on > Stel single sign-on in met SAML > Test van uw nieuwe bedrijfstoepassing.
+> TMWS biedt geen ondersteuning voor het testen van eenmalige aanmelding vanuit de Azure AD-Portal, onder overzicht > eenmalige aanmelding > een eenmalige aanmelding instellen met SAML > test van uw nieuwe bedrijfs toepassing.
 
-1. Schakel de browser van alle cookies uit en start de browser opnieuw op. 
+1. Wis de browser van alle cookies en start de browser opnieuw. 
 
-1. Wijs uw browser naar de TMWS proxy server. Zie Verkeer [doorsturen met PAC-bestanden](https://docs.trendmicro.com/en-us/enterprise/trend-micro-web-security-online-help/administration_001/pac-files/traffic-forwarding-u.aspx#GUID-A4A83827-7A29-4596-B866-01ACCEDCC36B)voor meer informatie.
+1. Ga in uw browser naar de TMWS-proxy server. Zie [verkeer door sturen via PAC-bestanden](https://docs.trendmicro.com/en-us/enterprise/trend-micro-web-security-online-help/administration_001/pac-files/traffic-forwarding-u.aspx#GUID-A4A83827-7A29-4596-B866-01ACCEDCC36B)voor meer informatie.
 
-1. Bezoek een internetwebsite. TMWS leidt u naar het TMWS captive portal.
+1. Ga naar een Internet website. TMWS leidt u naar de TMWS-Portal.
 
-1. Geef een Active Directory-account op (indeling: sAMAccountName@domaindomein\sAMAccountName of ), of e-mailadres of UPN en klik op **Aanmelden**. TMWS stuurt u naar de Azure AD-aanmelding.
+1. Geef een Active Directory account (indeling: domain\sAMAccountName of sAMAccountName@domain) of e-mail adres of UPN op en klik vervolgens op **Aanmelden**. TMWS stuurt u naar de Azure AD-aanmelding.
 
-1. Typ uw AD-accountreferenties in de Azure AD-aanmelding. U moet zich met succes aanmelden bij TMWS.
+1. Typ de referenties van uw AD-account bij de aanmelding bij Azure AD. U moet zich aanmelden bij TMWS.
 
-## <a name="additional-resources"></a>Extra resources
+## <a name="additional-resources"></a>Aanvullende bronnen
 
-- [Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Lijst met zelf studies voor het integreren van SaaS-apps met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [What is application access and single sign-on with Azure Active Directory? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat is toegang tot toepassingen en eenmalige aanmelding bij Azure Active Directory?)
 
@@ -236,7 +236,7 @@ Nadat u de Azure AD-service hebt geconfigureerd en Azure AD hebt opgegeven als g
 
 - [Probeer Trend Micro Web Security (TMWS) met Azure AD](https://aad.portal.azure.com/)
 
-- [Wat is sessiebeheer in Microsoft Cloud App Security?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [Wat is sessie beheer in Microsoft Cloud App Security?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
 
-- [Trend Micro Web Security(TMWS) beschermen met geavanceerde zichtbaarheid en besturingselementen](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [Trend Micro Web Security (TMWS) beveiligen met geavanceerde zicht baarheid en controles](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
 

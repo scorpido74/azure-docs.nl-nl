@@ -1,6 +1,6 @@
 ---
 title: Inleiding
-description: Ontdek hoe Azure App Service-omgevingen u helpen bij het schalen, beveiligen en optimaliseren van uw apps in een volledig geïsoleerde en toegewijde omgeving.
+description: Meer informatie over hoe u met Azure App Service omgevingen uw apps in een volledig geïsoleerde en toegewezen omgeving kunt schalen, beveiligen en optimaliseren.
 author: ccompy
 ms.assetid: 3c7eaefa-1850-4643-8540-428e8982b7cb
 ms.topic: overview
@@ -8,10 +8,10 @@ ms.date: 04/19/2018
 ms.author: ccompy
 ms.custom: mvc, seodec18
 ms.openlocfilehash: 08a97f0f7b1a6a65feb7a2ec041001f2199ffdf7
-ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81770631"
 ---
 # <a name="introduction-to-the-app-service-environments"></a>Inleiding tot Azure App Service Environments #
@@ -34,14 +34,14 @@ AS-omgevingen (App Service-omgevingen) zijn geschikt voor werkbelastingen van to
 
 Klanten kunnen meerdere AS-omgevingen maken, binnen één Azure-regio of in meerdere Azure-regio's. Door deze flexibiliteit zijn AS-omgevingen ideaal voor het horizontaal schalen van staatloze toepassingslagen ter ondersteuning van hoge RPS-werkbelastingen.
 
-ASEs host applicaties van slechts één klant en doen dit in een van hun VNets. Klanten hebben meer controle over binnenkomend en uitgaand netwerkverkeer voor de toepassing. Er kunnen via VPN’s zeer snelle, beveiligde verbindingen tot stand worden gebracht tussen toepassingen en on-premises bedrijfsresources.
+As hosttoepassingen van slechts één klant en doe dit in een van hun VNets. Klanten hebben meer controle over binnenkomend en uitgaand netwerkverkeer voor de toepassing. Er kunnen via VPN’s zeer snelle, beveiligde verbindingen tot stand worden gebracht tussen toepassingen en on-premises bedrijfsresources.
 
 * ASE wordt geleverd met eigen prijscategorieën. Zie hoe de [geïsoleerd aanbieding](https://channel9.msdn.com/Shows/Azure-Friday/Security-and-Horsepower-with-App-Service-The-New-Isolated-Offering?term=app%20service%20environment) hyperschaalbaarheid en beveiliging van stations bevordert.
 * [App Service-omgevingen v2](https://channel9.msdn.com/Blogs/Azure/Azure-Application-Service-Environments-v2-Private-PaaS-Environments-in-the-Cloud?term=app%20service%20environment) bieden een ombouw om uw apps te beschermen in een subnet van uw netwerk en bieden uw eigen persoonlijke implementatie van Azure App Service.
 * Er kunnen meerdere AS-omgevingen worden gebruikt om horizontaal te schalen. Zie [how to set up a geo-distributed app footprint](app-service-app-service-environment-geo-distributed-scale.md) (een footprint voor geografisch verspreide apps instellen) voor meer informatie.
 * AS-omgevingen kunnen worden gebruikt voor het configureren van beveiligingsarchitectuur, zoals u kunt zien in AzureCon Deep Dive. Raadpleeg het artikel over[het implementeren van een gelaagde beveiligingsarchitectuur](app-service-app-service-environment-layered-security.md) met App Service-omgevingen om te zien hoe de beveiligingsarchitectuur in AzureCon Deep Dive is geconfigureerd.
 * De toegang tot apps die worden uitgevoerd in AS-omgevingen, kan worden vergrendeld met upstream-apparaten, zoals WAF’s (Web Application Firewall). Zie [Web Application Firewall (WAF)][AppGW] voor meer informatie.
-* App-serviceomgevingen kunnen worden geïmplementeerd in beschikbaarheidszones (AZ) met behulp van zonevastmaken.  Zie [App Service Environment Support for Availability Zones][ASEAZ] voor meer informatie.
+* App Service omgevingen kunnen in Beschikbaarheidszones (AZ) worden geïmplementeerd met behulp van zone vastmaken.  Zie [app service Environment ondersteuning voor Beschikbaarheidszones][ASEAZ] voor meer informatie.
 
 ## <a name="dedicated-environment"></a>Toegewezen omgeving ##
 
@@ -61,7 +61,7 @@ AS-omgevingen hebben een vast maandtarief waarmee de infrastructuur wordt betaal
 
 ## <a name="virtual-network-support"></a>Ondersteuning voor virtuele netwerken ##
 
-De ASE-functie is een implementatie van de Azure App Service rechtstreeks in het virtuele Azure Resource Manager-netwerk van een klant. Zie de [Veelgestelde vragen over virtuele Azure-netwerken](https://azure.microsoft.com/documentation/articles/virtual-networks-faq/) voor meer informatie over virtuele Azure-netwerken. Een AS-omgeving bevindt zich altijd in een virtueel netwerk en, preciezer nog, binnen een subnet van een virtueel netwerk. U kunt de beveiligingsfuncties van virtuele netwerken gebruiken om binnenkomende en uitgaande netwerkcommunicatie voor apps te beheren.
+De functie ASE is een implementatie van de Azure App Service rechtstreeks in het Azure Resource Manager virtuele netwerk van een klant. Zie de [Veelgestelde vragen over virtuele Azure-netwerken](https://azure.microsoft.com/documentation/articles/virtual-networks-faq/) voor meer informatie over virtuele Azure-netwerken. Een AS-omgeving bevindt zich altijd in een virtueel netwerk en, preciezer nog, binnen een subnet van een virtueel netwerk. U kunt de beveiligingsfuncties van virtuele netwerken gebruiken om binnenkomende en uitgaande netwerkcommunicatie voor apps te beheren.
 
 Een AS-omgeving kan internetgericht zijn met een openbaar IP-adres of intern met alleen een Azure ILB-adres (Internal Load Balancer).
 

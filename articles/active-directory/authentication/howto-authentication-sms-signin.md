@@ -1,6 +1,6 @@
 ---
-title: Aanmelden voor gebruikers op basis van sms voor Azure Active Directory
-description: Meer informatie over het configureren en inschakelen van gebruikers om zich aan te melden bij Azure Active Directory met sms (preview)
+title: Aanmelden op basis van een gebruiker voor Azure Active Directory van SMS
+description: Meer informatie over het configureren en inschakelen van gebruikers om zich aan te melden bij Azure Active Directory met behulp van SMS (preview-versie)
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
@@ -12,143 +12,143 @@ manager: daveba
 ms.reviewer: rateller
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 845948d9aec28ee79a11fb11aaef4cfbf1b263fa
-ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81770557"
 ---
-# <a name="configure-and-enable-users-for-sms-based-authentication-using-azure-active-directory-preview"></a>Gebruikers configureren en inschakelen voor verificatie via sms met Azure Active Directory (voorbeeld)
+# <a name="configure-and-enable-users-for-sms-based-authentication-using-azure-active-directory-preview"></a>Gebruikers configureren en inschakelen voor verificatie op basis van SMS met behulp van Azure Active Directory (preview)
 
-Om de complexiteit en beveiligingsrisico's voor gebruikers om zich aan te melden bij toepassingen en services te verminderen, biedt Azure Active Directory (Azure AD) meerdere verificatieopties. Met verificatie via sms, die momenteel in preview is, kunnen gebruikers zich aanmelden zonder dat ze hun gebruikersnaam en wachtwoord hoeven op te geven of zelfs te weten. Nadat hun account is gemaakt door een identiteitsbeheerder, kunnen ze hun telefoonnummer invoeren bij de aanmeldingsprompt en een verificatiecode opgeven die via sms naar hen wordt verzonden. Deze verificatiemethode vereenvoudigt de toegang tot toepassingen en services, met name voor werknemers in de frontlinie.
+Azure Active Directory (Azure AD) biedt meerdere verificatie opties om de complexiteits-en beveiligings Risico's te beperken waarmee gebruikers zich kunnen aanmelden bij toepassingen en services. Met verificatie op basis van SMS, die momenteel als preview-versie beschikbaar is, kunnen gebruikers zich aanmelden zonder dat ze de gebruikers naam en het wacht woord hoeven op te geven. Nadat het account is gemaakt door een identiteits beheerder, kunnen ze hun telefoon nummer invoeren bij de aanmeldings prompt en een verificatie code opgeven die via een SMS-bericht naar hen wordt verzonden. Deze verificatie methode vereenvoudigt de toegang tot toepassingen en services, met name voor werk nemers van de eerste regel.
 
-In dit artikel ziet u hoe u verificatie via sms inschakelt voor bepaalde gebruikers of groepen in Azure AD.
+Dit artikel laat u zien hoe u verificatie op basis van SMS kunt inschakelen voor geselecteerde gebruikers of groepen in azure AD.
 
 |     |
 | --- |
-| Verificatie via sms voor gebruikers is een openbare preview-functie van Azure Active Directory. Zie [Aanvullende gebruiksvoorwaarden voor Microsoft Azure Previews voor](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) meer informatie over voorvertoningen|
+| Verificatie op basis van SMS voor gebruikers is een open bare preview-functie van Azure Active Directory. Zie [aanvullende gebruiks voorwaarden voor Microsoft Azure-previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) voor meer informatie over Previews|
 |     |
 
 ## <a name="before-you-begin"></a>Voordat u begint
 
-Als u dit artikel wilt voltooien, hebt u de volgende bronnen en bevoegdheden nodig:
+U hebt de volgende resources en bevoegdheden nodig om dit artikel te volt ooien:
 
 * Een actief Azure-abonnement.
-    * Als u geen Azure-abonnement hebt, [maakt u een account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)aan .
-* Een Azure Active Directory-tenant die is gekoppeld aan uw abonnement.
-    * Maak indien nodig [een Azure Active Directory-tenant][create-azure-ad-tenant] of [koppel een Azure-abonnement aan uw account.][associate-azure-ad-tenant]
-* U hebt *algemene beheerdersrechten* nodig in uw Azure AD-tenant om verificatie via sms in te schakelen.
-* Elke gebruiker die is ingeschakeld in het beleid voor verificatiemethode voor sms'en moet een licentie hebben, zelfs als deze deze niet wordt gebruikt. Elke ingeschakelde gebruiker moet een van de volgende Azure AD- of Microsoft 365-licenties hebben:
+    * Als u geen Azure-abonnement hebt, [maakt u een account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+* Een Azure Active Directory-Tenant die aan uw abonnement is gekoppeld.
+    * Als dat nodig is, [maakt u een Azure Active Directory-Tenant][create-azure-ad-tenant] of [koppelt u een Azure-abonnement aan uw account][associate-azure-ad-tenant].
+* U hebt *globale beheerders* bevoegdheden nodig in uw Azure AD-Tenant om verificatie op basis van SMS in te scha kelen.
+* Voor elke gebruiker die is ingeschakeld in het beleid voor tekst bericht authenticatie, moet een licentie worden verleend, zelfs als ze deze niet gebruiken. Elke ingeschakelde gebruiker moet een van de volgende Azure AD-of Microsoft 365-licenties hebben:
     * [Azure AD Premium P1 of P2][azuread-licensing]
     * [Microsoft 365 (M365) F1 of F3][m365-firstline-workers-licensing]
     * [Enterprise Mobility + Security (EMS) E3 of E5][ems-licensing] of [Microsoft 365 (M365) E3 of E5][m365-licensing]
 
 ## <a name="limitations"></a>Beperkingen
 
-Tijdens de openbare preview van sms-verificatie zijn de volgende beperkingen van toepassing:
+Tijdens de open bare preview van verificatie op basis van SMS gelden de volgende beperkingen:
 
-* Verificatie via sms is momenteel niet compatibel met Azure Multi-Factor Authentication.
-* Met uitzondering van Teams is verificatie via sms momenteel niet compatibel met native Office-toepassingen.
-* Verificatie via sms wordt niet aanbevolen voor B2B-accounts.
-* Federatieve gebruikers zullen niet verifiëren in de woninghuurder. Ze verifiëren alleen in de cloud.
+* Verificatie op basis van SMS is momenteel niet compatibel met Azure Multi-Factor Authentication.
+* Met uitzonde ring van teams is verificatie op basis van SMS momenteel niet compatibel met systeem eigen Office-toepassingen.
+* Verificatie op basis van SMS wordt niet aanbevolen voor B2B-accounts.
+* Federatieve gebruikers worden niet geverifieerd in de thuis Tenant. Ze worden alleen geverifieerd in de Cloud.
 
-## <a name="enable-the-sms-based-authentication-method"></a>De verificatiemethode op basis van sms inschakelen
+## <a name="enable-the-sms-based-authentication-method"></a>De op SMS gebaseerde verificatie methode inschakelen
 
-Er zijn drie belangrijke stappen om verificatie via sms in uw organisatie in te schakelen en te gebruiken:
+Er zijn drie belang rijke stappen voor het inschakelen en gebruiken van verificatie op basis van SMS in uw organisatie:
 
-* Schakel het verificatiemethodebeleid in.
-* Selecteer gebruikers of groepen die de verificatiemethode op basis van sms kunnen gebruiken.
-* Wijs een telefoonnummer toe voor elk gebruikersaccount.
-    * Dit telefoonnummer kan worden toegewezen in de Azure-portal (die wordt weergegeven in dit artikel) en in *Mijn personeel* of *Mijn profiel*.
+* Schakel het beleid voor de verificatie methode in.
+* Selecteer gebruikers of groepen die de op SMS gebaseerde verificatie methode kunnen gebruiken.
+* Wijs een telefoon nummer toe aan elk gebruikers account.
+    * Dit telefoon nummer kan worden toegewezen in de Azure Portal (die in dit artikel wordt weer gegeven) en in *mijn personeel* of *Mijn profiel*.
 
-Laten we eerst verificatie via sms inschakelen voor uw Azure AD-tenant.
+Eerst gaan we verificatie op basis van SMS inschakelen voor uw Azure AD-Tenant.
 
-1. Meld u aan bij de [Azure-portal][azure-portal] als *globale beheerder.*
+1. Meld u aan bij de [Azure Portal][azure-portal] als *globale beheerder*.
 1. Zoek naar **Azure Active Directory** en selecteer deze optie.
-1. Selecteer in het navigatiemenu aan de linkerkant van het Azure Active Directory-venster de optie **Beveiliging > verificatiemethoden > verificatiemethodebeleid (voorbeeld)**.
+1. Selecteer in het navigatie menu aan de linkerkant van het Azure Active Directory venster **beveiligings > verificatie methoden > verificatie methode beleid (preview)**.
 
     [![](media/howto-authentication-sms-signin/authentication-method-policy-cropped.png "Browse to and select the Authentication method policy (preview) window in the Azure portal")](media/howto-authentication-sms-signin/authentication-method-policy.png#lightbox)
 
-1. Selecteer **Tekstbericht**in de lijst met beschikbare verificatiemethoden .
-1. **Inschakelen instellen op** *Ja*.
+1. Selecteer **tekst bericht**in de lijst met beschik bare verificatie methoden.
+1. Stel **Enable** in op *Ja*.
 
-    ![Tekstverificatie inschakelen in het beleidsvenster voor verificatiemethoden](./media/howto-authentication-sms-signin/enable-text-authentication-method.png)
+    ![Tekst verificatie inschakelen in het venster verificatie methode beleid](./media/howto-authentication-sms-signin/enable-text-authentication-method.png)
 
-    U ervoor kiezen om verificatie via sms in te schakelen voor *alle gebruikers* of Gebruikers en groepen *selecteren.* In het volgende gedeelte schakelt u verificatie op basis van sms in voor een testgebruiker.
+    U kunt ervoor kiezen om verificatie op basis van SMS in te scha kelen voor *alle gebruikers* of gebruikers en groepen te *selecteren* . In de volgende sectie schakelt u verificatie op basis van SMS in voor een test gebruiker.
 
-## <a name="assign-the-authentication-method-to-users-and-groups"></a>De verificatiemethode toewijzen aan gebruikers en groepen
+## <a name="assign-the-authentication-method-to-users-and-groups"></a>De verificatie methode toewijzen aan gebruikers en groepen
 
-Als verificatie op basis van sms is ingeschakeld in uw Azure AD-tenant, selecteert u nu enkele gebruikers of groepen die deze verificatiemethode mogen gebruiken.
+Als verificatie op basis van SMS is ingeschakeld in uw Azure AD-Tenant, moet u nu sommige gebruikers of groepen selecteren dat deze verificatie methode mag worden gebruikt.
 
-1. Stel in het beleidsvenster voor verificatie van sms'en **doel** in *op Gebruikers selecteren*.
-1. Kies voor **Gebruikers of groepen toevoegen**en selecteer vervolgens een testgebruiker of -groep, zoals *Contoso-gebruiker* of *Contoso-sms-gebruikers.*
+1. Stel in het venster tekst bericht verificatie beleid het selectie vakje **doel** in op *gebruikers selecteren*.
+1. Kies om **gebruikers of groepen toe te voegen**en selecteer vervolgens een test gebruiker of groep, zoals *Contoso-gebruiker* of *Contoso SMS-gebruikers*.
 
     [![](media/howto-authentication-sms-signin/add-users-or-groups-cropped.png "Choose users or groups to enable for SMS-based authentication in the Azure portal")](media/howto-authentication-sms-signin/add-users-or-groups.png#lightbox)
 
-1. Wanneer u uw gebruikers of groepen hebt geselecteerd, kiest u **Selecteren**en vervolgens het beleid voor de bijgewerkte verificatiemethode **opslaan.**
+1. Wanneer u uw gebruikers of groepen hebt geselecteerd, kiest u **selecteren**en **slaat** u het bijgewerkte verificatie methode beleid op.
 
-Elke gebruiker die is ingeschakeld in het beleid voor verificatiemethode voor sms'en moet een licentie hebben, zelfs als deze deze niet wordt gebruikt. Zorg ervoor dat u over de juiste licenties beschikt voor de gebruikers die u inschakelt in het verificatiemethodebeleid, vooral wanneer u de functie inschakelt voor grote groepen gebruikers.
+Voor elke gebruiker die is ingeschakeld in het beleid voor tekst bericht authenticatie, moet een licentie worden verleend, zelfs als ze deze niet gebruiken. Zorg ervoor dat u over de juiste licenties beschikt voor de gebruikers die u inschakelt in het beleid voor verificatie methoden, met name wanneer u de functie voor grote groepen gebruikers inschakelt.
 
-## <a name="set-a-phone-number-for-user-accounts"></a>Een telefoonnummer instellen voor gebruikersaccounts
+## <a name="set-a-phone-number-for-user-accounts"></a>Een telefoon nummer voor gebruikers accounts instellen
 
-Gebruikers zijn nu ingeschakeld voor verificatie via sms, maar hun telefoonnummer moet zijn gekoppeld aan het gebruikersprofiel in Azure AD voordat ze zich kunnen aanmelden. De gebruiker kan [dit telefoonnummer zelf instellen](../user-help/sms-sign-in-explainer.md) in Mijn *profiel*of u het telefoonnummer toewijzen via de Azure-portal. Telefoonnummers kunnen worden ingesteld door *globale beheerders,* *verificatiebeheerders*of *bevoorrechte verificatiebeheerders*.
+Gebruikers zijn nu ingeschakeld voor verificatie op basis van SMS, maar hun telefoon nummer moet worden gekoppeld aan het gebruikers profiel in azure AD voordat ze zich kunnen aanmelden. De gebruiker kan [Dit telefoon nummer zelf instellen](../user-help/sms-sign-in-explainer.md) in *Mijn profiel*of u kunt het telefoon nummer toewijzen met behulp van de Azure Portal. Telefoon nummers kunnen worden ingesteld door *globale beheerders*, *authenticatie beheerders*of *geprivilegieerde verificatie beheerders*.
 
-Wanneer een telefoonnummer is ingesteld voor SMS-sign, is het ook beschikbaar voor gebruik met [Azure Multi-Factor Authentication][tutorial-azure-mfa] en [self-service wachtwoordreset.][tutorial-sspr]
+Wanneer een telefoon nummer is ingesteld voor SMS-Sign, is het ook beschikbaar voor gebruik met [Azure multi-factor Authentication][tutorial-azure-mfa] en [self-service voor het opnieuw instellen van wacht woorden][tutorial-sspr].
 
 1. Zoek naar **Azure Active Directory** en selecteer deze optie.
-1. Selecteer **Gebruikers**in het navigatiemenu aan de linkerkant van het Azure Active Directory-venster .
-1. Selecteer de gebruiker die u hebt ingeschakeld voor verificatie via sms in de vorige sectie, zoals *Contoso-gebruiker,* en selecteer **vervolgens Verificatiemethoden**.
-1. Voer het telefoonnummer van de gebruiker in, inclusief de landcode, zoals *+1 xxxxxxxxx*. De Azure-portal valideert het telefoonnummer in de juiste indeling.
+1. Selecteer in het navigatie menu aan de linkerkant van het Azure Active Directory venster **gebruikers**.
+1. Selecteer de gebruiker die u hebt ingeschakeld voor verificatie op basis van SMS in de vorige sectie, zoals *Contoso-gebruiker*, en selecteer vervolgens **verificatie methoden**.
+1. Voer het telefoon nummer van de gebruiker in, met inbegrip van de land code, zoals *+ 1 xxxxxxxxx*. De Azure Portal valideert het telefoon nummer in de juiste indeling.
 
-    ![Een telefoonnummer instellen voor een gebruiker in de Azure-portal om te gebruiken met verificatie via sms](./media/howto-authentication-sms-signin/set-user-phone-number.png)
+    ![Een telefoon nummer instellen voor een gebruiker in de Azure Portal voor gebruik met verificatie op basis van SMS](./media/howto-authentication-sms-signin/set-user-phone-number.png)
 
-    Het telefoonnummer moet uniek zijn in uw huurder. Als u hetzelfde telefoonnummer voor meerdere gebruikers probeert te gebruiken, wordt een foutbericht weergegeven.
+    Het telefoon nummer moet uniek zijn in uw Tenant. Als u hetzelfde telefoon nummer voor meerdere gebruikers probeert te gebruiken, wordt er een fout bericht weer gegeven.
 
-1. Als u het telefoonnummer wilt toepassen op het account van een gebruiker, selecteert u **Opslaan**.
+1. Selecteer **Opslaan**om het telefoon nummer toe te passen op het account van een gebruiker.
 
-Wanneer met succes is ingericht, wordt een vinkje weergegeven voor *sms-aanmelding ingeschakeld*.
+Wanneer het is ingericht, wordt er een vinkje weer gegeven voor *SMS-aanmelding ingeschakeld*.
 
-## <a name="test-sms-based-sign-in"></a>Aanmelden op sms'en
+## <a name="test-sms-based-sign-in"></a>Op SMS gebaseerde aanmelding testen
 
-Voer de volgende stappen uit om het gebruikersaccount te testen dat nu is ingeschakeld voor aanmelding via sms:
+Voer de volgende stappen uit om het gebruikers account te testen dat nu is ingeschakeld voor aanmelden op basis van SMS:
 
-1. Een nieuw InPrivate- of Incognito-browservenster openen om[https://www.office.com][office]
-1. Selecteer **Aanmelden**in de rechterbovenhoek .
-1. Voer bij de aanmeldingsprompt het telefoonnummer in dat in de vorige sectie aan de gebruiker is gekoppeld en selecteer **Volgende**.
+1. Open een nieuw InPrivate-of incognito-webbrowser venster om[https://www.office.com][office]
+1. Selecteer **Aanmelden**in de rechter bovenhoek.
+1. Voer bij de aanmeldings prompt het telefoon nummer in dat is gekoppeld aan de gebruiker in de vorige sectie en selecteer vervolgens **volgende**.
 
-    ![Voer een telefoonnummer in bij de aanmeldingsprompt voor de testgebruiker](./media/howto-authentication-sms-signin/sign-in-with-phone-number.png)
+    ![Voer een telefoon nummer in bij de aanmeldings prompt voor de test gebruiker](./media/howto-authentication-sms-signin/sign-in-with-phone-number.png)
 
-1. Er wordt een sms-bericht verzonden naar het opgegeven telefoonnummer. Als u het aanmeldingsproces wilt voltooien, voert u de 6-cijferige code in die bij de aanmeldingsprompt in het sms-bericht wordt weergegeven.
+1. Er wordt een SMS-bericht verzonden naar het telefoon nummer dat u hebt ontvangen. Om het aanmeldings proces te volt ooien, voert u de 6-cijferige code in die in het tekst bericht bij de aanmeldings prompt wordt vermeld.
 
-    ![Voer de bevestigingscode in die via sms naar het telefoonnummer van de gebruiker wordt verzonden](./media/howto-authentication-sms-signin/sign-in-with-phone-number-confirmation-code.png)
+    ![Voer de bevestigings code in die via een SMS-bericht is verzonden naar het telefoon nummer van de gebruiker](./media/howto-authentication-sms-signin/sign-in-with-phone-number-confirmation-code.png)
 
-1. De gebruiker is nu aangemeld zonder dat hij een gebruikersnaam of wachtwoord hoeft op te geven.
+1. De gebruiker is nu aangemeld zonder dat u een gebruikers naam of wacht woord hoeft op te geven.
 
-## <a name="troubleshoot-sms-based-sign-in"></a>Problemen met aanmelding op basis van sms'en oplossen
+## <a name="troubleshoot-sms-based-sign-in"></a>Problemen met aanmelden op basis van SMS oplossen
 
-De volgende scenario's en stappen voor het oplossen van problemen kunnen worden gebruikt als u problemen hebt met het inschakelen en gebruiken van aanmelden via sms.
+De volgende scenario's en probleemoplossings stappen kunnen worden gebruikt als u problemen ondervindt met het inschakelen en gebruiken van aanmelden op basis van SMS.
 
-### <a name="phone-number-already-set-for-a-user-account"></a>Telefoonnummer al ingesteld voor een gebruikersaccount
+### <a name="phone-number-already-set-for-a-user-account"></a>Het telefoon nummer is al ingesteld voor een gebruikers account
 
-Als een gebruiker zich al heeft geregistreerd voor Azure Multi-Factor Authentication en/of self-service password reset (SSPR), heeft deze gebruiker al een telefoonnummer gekoppeld aan zijn account. Dit telefoonnummer is niet automatisch beschikbaar voor gebruik met sms-gebaseerde aanmelding.
+Als een gebruiker al is geregistreerd voor Azure Multi-Factor Authentication en/of selfservice voor het opnieuw instellen van wacht woorden (SSPR), heeft deze al een telefoon nummer dat is gekoppeld aan het account. Dit telefoon nummer is niet automatisch beschikbaar voor gebruik met aanmelden op basis van SMS.
 
-Een gebruiker met een telefoonnummer dat al is ingesteld voor zijn account, krijgt een knop om in te *schakelen voor sms-aanmelding* op de pagina **Mijn profiel.** Selecteer deze knop en het account is ingeschakeld voor gebruik met sms-gebaseerde aanmelding en de vorige Azure Multi-Factor Authentication of SSPR-registratie.
+Een gebruiker met een telefoon nummer dat al is ingesteld voor het account wordt weer gegeven met een knop om *SMS-aanmelding in te scha kelen* op hun **Mijn profiel** pagina. Selecteer deze knop en het account is ingeschakeld voor gebruik met aanmelden op basis van SMS en de vorige Azure Multi-Factor Authentication-of SSPR-registratie.
 
-Zie voor meer informatie over de gebruikerservaring de [gebruikerservaring voor sms'en voor telefoonnummer (preview).](../user-help/sms-sign-in-explainer.md)
+Zie voor meer informatie over de gebruikers ervaring van [SMS-aanmelding voor telefoon nummer (preview-versie)](../user-help/sms-sign-in-explainer.md).
 
-### <a name="error-when-trying-to-set-a-phone-number-on-a-users-account"></a>Fout bij het instellen van een telefoonnummer op het account van een gebruiker
+### <a name="error-when-trying-to-set-a-phone-number-on-a-users-account"></a>Fout bij het instellen van een telefoon nummer op het account van een gebruiker
 
-Als u een fout ontvangt wanneer u een telefoonnummer voor een gebruikersaccount in de Azure-portal probeert in te stellen, controleert u de volgende stappen voor het oplossen van problemen:
+Als er een fout bericht wordt weer gegeven wanneer u probeert een telefoon nummer in te stellen voor een gebruikers account in de Azure Portal, raadpleegt u de volgende stappen voor probleem oplossing:
 
-1. Zorg ervoor dat u bent ingeschakeld voor de inlogvoorbeeld via sms.
-1. Controleer of het gebruikersaccount is ingeschakeld in het beleid voor verificatiemethode *voor sms'en.*
-1. Zorg ervoor dat u het telefoonnummer instelt met de juiste opmaak, zoals gevalideerd in de Azure-portal (zoals *+1 4251234567*).
-1. Zorg ervoor dat het telefoonnummer niet elders in uw tenant wordt gebruikt.
-1. Controleer of er geen stemnummer is ingesteld op het account. Als een spraaknummer is ingesteld, verwijdert u en probeert u het telefoonnummer opnieuw te gebruiken.
+1. Zorg ervoor dat u bent ingeschakeld voor het aanmelden op basis van SMS.
+1. Controleer of het gebruikers account is ingeschakeld in het beleid voor *tekst bericht* authenticatie methode.
+1. Zorg ervoor dat u het telefoon nummer instelt met de juiste indeling, zoals gevalideerd in de Azure Portal (zoals *+ 1 4251234567*).
+1. Zorg ervoor dat het telefoon nummer elders in uw Tenant niet wordt gebruikt.
+1. Controleer of er geen spraak nummer is ingesteld voor het account. Als er een spraak nummer is ingesteld, verwijdert u dit en probeert u het opnieuw.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie [Wachtwoordloze verificatieopties voor Azure AD voor][concepts-passwordless]aanvullende manieren om u aan te melden bij Azure AD zonder wachtwoord, zoals de Microsoft Authenticator-app of FIDO2-beveiligingssleutels.
+Zie [Opties voor wacht woordloze verificatie voor Azure AD][concepts-passwordless]voor meer manieren om u aan te melden bij Azure AD zonder een wacht woord, zoals de Microsoft Authenticator app-of FIDO2-beveiligings sleutels.
 
 <!-- INTERNAL LINKS -->
 [create-azure-ad-tenant]: ../fundamentals/sign-up-organization.md

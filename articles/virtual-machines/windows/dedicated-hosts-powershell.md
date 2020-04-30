@@ -1,6 +1,6 @@
 ---
-title: Azure dedicated hosts implementeren met behulp van de Azure PowerShell
-description: Implementeer VM's voor speciale hosts met Azure PowerShell.
+title: Implementeer uw eigen Azure-hosts met behulp van de Azure PowerShell
+description: Implementeer Vm's op toegewezen hosts met behulp van Azure PowerShell.
 author: cynthn
 ms.service: virtual-machines-windows
 ms.topic: article
@@ -9,32 +9,32 @@ ms.date: 08/01/2019
 ms.author: cynthn
 ms.reviewer: zivr
 ms.openlocfilehash: b90189c6ba5e51a24d0c248b5aa08e9a5e4bbd9b
-ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/23/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82082846"
 ---
-# <a name="deploy-vms-to-dedicated-hosts-using-the-azure-powershell"></a>VM's implementeren voor speciale hosts met de Azure PowerShell
+# <a name="deploy-vms-to-dedicated-hosts-using-the-azure-powershell"></a>Vm's implementeren op toegewezen hosts met behulp van de Azure PowerShell
 
-In dit artikel u een [azure-dedicated host](dedicated-hosts.md) maken om uw virtuele machines (VM's) te hosten. 
+Dit artikel begeleidt u bij het maken van een toegewezen Azure- [host](dedicated-hosts.md) voor het hosten van uw virtuele machines (vm's). 
 
-Zorg ervoor dat u Azure PowerShell-versie 2.8.0 of hoger hebt geïnstalleerd `Connect-AzAccount`en dat u bent aangemeld bij een Azure-account bij . 
+Zorg ervoor dat u Azure PowerShell versie 2.8.0 of hoger hebt geïnstalleerd en u bent aangemeld bij een Azure-account in met `Connect-AzAccount`. 
 
 ## <a name="limitations"></a>Beperkingen
 
-- Virtuele machineschaalsets worden momenteel niet ondersteund op speciale hosts.
-- De grootte en hardwaretypen die beschikbaar zijn voor toegewijde hosts verschillen per regio. Raadpleeg de [pagina hostprijzen](https://aka.ms/ADHPricing) voor meer informatie.
+- Virtuele-machine schaal sets worden momenteel niet ondersteund op toegewezen hosts.
+- De grootten en typen hardware die beschikbaar zijn voor toegewezen hosts variëren per regio. Raadpleeg de pagina met [prijzen](https://aka.ms/ADHPricing) voor de host voor meer informatie.
 
 ## <a name="create-a-host-group"></a>Een hostgroep maken
 
-Een **hostgroep** is een bron die een verzameling toegewijde hosts vertegenwoordigt. U maakt een hostgroep in een regio en een beschikbaarheidszone en voegt er hosts aan toe. Bij het plannen voor hoge beschikbaarheid zijn er extra opties. U een of beide van de volgende opties gebruiken met uw speciale hosts: 
-- Overspannen in meerdere beschikbaarheidszones. In dit geval moet u een hostgroep hebben in elk van de zones die u wilt gebruiken.
-- Overspannen meerdere foutdomeinen die zijn toegewezen aan fysieke racks. 
+Een **hostgroep** is een resource die een verzameling toegewezen hosts vertegenwoordigt. U maakt een hostgroep in een regio en een beschikbaarheids zone en voegt hierop hosts toe. Bij het plannen van hoge Beschik baarheid zijn er extra opties. U kunt een of beide van de volgende opties gebruiken met uw toegewezen hosts: 
+- Beschik over meerdere beschikbaarheids zones. In dit geval moet u een hostgroep hebben in elk van de zones die u wilt gebruiken.
+- Over meerdere fout domeinen die zijn toegewezen aan fysieke racks. 
  
-In beide gevallen moet u het aantal foutdomeinen voor uw hostgroep verstrekken. Als u foutdomeinen in uw groep niet wilt overspannen, gebruikt u een aantal foutdomeinen van 1. 
+In beide gevallen moet u het aantal fout domeinen voor uw hostgroep opgeven. Als u geen fout domeinen in uw groep wilt beslaan, gebruikt u het aantal fouten domein 1. 
 
-U ook besluiten om zowel beschikbaarheidszones als foutdomeinen te gebruiken. In dit voorbeeld wordt een hostgroep gemaakt in zone 1, met 2 foutdomeinen. 
+U kunt er ook voor kiezen om zowel beschikbaarheids zones als fout domeinen te gebruiken. In dit voor beeld wordt een hostgroep gemaakt in zone 1, met 2 fout domeinen. 
 
 
 ```azurepowershell-interactive
@@ -52,11 +52,11 @@ $hostGroup = New-AzHostGroup `
 
 ## <a name="create-a-host"></a>Een host maken
 
-Laten we nu een speciale host maken in de hostgroep. Naast een naam voor de host, bent u verplicht om de SKU voor de host te verstrekken. Host SKU legt de ondersteunde VM-serie vast, evenals de hardwaregeneratie voor uw toegewijde host.
+We gaan nu een toegewezen host maken in de hostgroep. Naast een naam voor de host, moet u de SKU voor de host opgeven. Host SKU legt de ondersteunde VM-serie en de generatie van de hardware voor uw specifieke host vast.
 
-Zie [Azure Dedicated Host-prijzen](https://aka.ms/ADHPricing)voor meer informatie over de host-SKU's en -prijzen.
+Zie voor meer informatie over de Sku's en prijzen van de host de [Azure dedicated host prijzen](https://aka.ms/ADHPricing).
 
-Als u een aantal foutdomeinen instelt voor uw hostgroep, wordt u gevraagd het foutdomein voor uw host op te geven. In dit voorbeeld stellen we het foutdomein voor de host in op 1.
+Als u het aantal fout domeinen voor uw hostgroep instelt, wordt u gevraagd om het fout domein voor uw host op te geven. In dit voor beeld stellen we het fout domein voor de host in op 1.
 
 
 ```azurepowershell-interactive
@@ -71,9 +71,9 @@ $dHost = New-AzHost `
 
 ## <a name="create-a-vm"></a>Een virtuele machine maken
 
-Maak een virtuele machine op de dedicated host. 
+Maak een virtuele machine op de toegewezen host. 
 
-Als u een beschikbaarheidszone hebt opgegeven bij het maken van uw hostgroep, moet u dezelfde zone gebruiken bij het maken van de virtuele machine. Omdat onze hostgroep zich in zone 1 bevindt, moeten we bijvoorbeeld de VM in zone 1 maken.  
+Als u een beschikbaarheids zone hebt opgegeven bij het maken van uw hostgroep, moet u dezelfde zone gebruiken bij het maken van de virtuele machine. In dit voor beeld, omdat de hostgroep zich in zone 1 bevindt, moet u de virtuele machine in zone 1 maken.  
 
 
 ```azurepowershell-interactive
@@ -90,11 +90,11 @@ New-AzVM `
 ```
 
 > [!WARNING]
-> Als u een virtuele machine maakt op een host die niet genoeg resources heeft, wordt de virtuele machine in een mislukte status gemaakt. 
+> Als u een virtuele machine maakt op een host die onvoldoende bronnen heeft, wordt de virtuele machine gemaakt met de status mislukt. 
 
 ## <a name="check-the-status-of-the-host"></a>Controleer de status van de host
 
-U de status van de hoststatus controleren en hoeveel virtuele machines `-InstanceView` u nog steeds implementeren voor de host met behulp van [GetAzHost](/powershell/module/az.compute/get-azhost) met de parameter.
+U kunt de status van de host controleren en het aantal virtuele machines dat u nog steeds kunt implementeren op [GetAzHost](/powershell/module/az.compute/get-azhost) de host met `-InstanceView` behulp van GetAzHost met de para meter.
 
 ```azurepowershell-interactive
 Get-AzHost `
@@ -104,7 +104,7 @@ Get-AzHost `
    -InstanceView
 ```
 
-De output zal er hetzelfde uitzien als dit:
+De uitvoer ziet er ongeveer als volgt uit:
 
 ```
 ResourceGroupName      : myDHResourceGroup
@@ -167,13 +167,13 @@ Tags                   : {}
 
 ## <a name="add-an-existing-vm"></a>Een bestaande VM toevoegen 
 
-U een bestaande vm toevoegen aan een speciale host, maar de VM moet eerst Stop\Deallocated zijn. Voordat u een vm naar een speciale host verplaatst, moet u ervoor zorgen dat de VM-configuratie wordt ondersteund:
+U kunt een bestaande virtuele machine toevoegen aan een specifieke host, maar de virtuele machine moet eerst worden Stop\Deallocated. Voordat u een virtuele machine naar een toegewezen host verplaatst, moet u ervoor zorgen dat de VM-configuratie wordt ondersteund:
 
-- De VM-grootte moet in dezelfde grootte-familie zijn als de toegewezen host. Als uw dedicated host bijvoorbeeld DSv3 is, kan de VM-grootte worden Standard_D4s_v3, maar kan het geen Standard_A4_v2 zijn. 
-- De VM moet zich in dezelfde regio bevinden als de speciale host.
-- De VM kan geen deel uitmaken van een groep voor plaatsing in de nabijheid. Verwijder de VM uit de plaatsingsgroep in de nabijheid voordat u deze verplaatst naar een speciale host. Zie [Een virtuele machine uit een plaatsingsgroep voor de nabijheid verplaatsen uit een groep nabijheidsplaatsingen](https://docs.microsoft.com/azure/virtual-machines/windows/proximity-placement-groups#move-an-existing-vm-out-of-a-proximity-placement-group)
-- De VM kan niet in een beschikbaarheidsset staan.
-- Als de VM zich in een beschikbaarheidszone bevindt, moet deze dezelfde beschikbaarheidszone hebben als de hostgroep. De instellingen van de beschikbaarheidszone voor de VM en de hostgroep moeten overeenkomen.
+- De VM-grootte moet zich in dezelfde grootte familie bestaan als de toegewezen host. Als uw toegewezen host bijvoorbeeld DSv3 is, kan de grootte van de virtuele machine worden Standard_D4s_v3, maar kan deze niet Standard_A4_v2. 
+- De virtuele machine moet zich in dezelfde regio bevinden als de toegewezen host.
+- De virtuele machine kan geen deel uitmaken van een proximity-plaatsings groep. Verwijder de virtuele machine uit de plaatsings groep voor nabijheid voordat u deze naar een specifieke host verplaatst. Zie [een virtuele machine uit een proximity-plaatsings groep verplaatsen](https://docs.microsoft.com/azure/virtual-machines/windows/proximity-placement-groups#move-an-existing-vm-out-of-a-proximity-placement-group) voor meer informatie
+- De virtuele machine kan zich niet in een beschikbaarheidsset bevinden.
+- Als de virtuele machine zich in een beschikbaarheids zone bevindt, moet deze dezelfde beschikbaarheids zone zijn als de hostgroep. De instellingen voor de beschikbaarheids zone voor de virtuele machine en de hostgroep moeten overeenkomen.
 
 Vervang de waarden van de variabelen door uw eigen gegevens.
 
@@ -213,27 +213,27 @@ Start-AzVM `
 
 ## <a name="clean-up"></a>Opruimen
 
-Er worden kosten in rekening gebracht voor uw speciale hosts, zelfs als er geen virtuele machines worden geïmplementeerd. U moet alle hosts verwijderen die u momenteel niet gebruikt om kosten te besparen.  
+Er worden kosten in rekening gebracht voor uw specifieke hosts, zelfs wanneer er geen virtuele machines zijn geïmplementeerd. U moet alle hosts die u momenteel gebruikt, verwijderen om kosten te besparen.  
 
-U een host alleen verwijderen als er geen virtuele machines meer worden gebruikt. Verwijder de VM's met [Remove-AzVM](/powershell/module/az.compute/remove-azvm).
+U kunt een host alleen verwijderen als er geen virtuele machines meer worden gebruikt. Verwijder de virtuele machines met behulp van [Remove-AzVM](/powershell/module/az.compute/remove-azvm).
 
 ```azurepowershell-interactive
 Remove-AzVM -ResourceGroupName $rgName -Name myVM
 ```
 
-Nadat u de VM's hebt verwijderd, u de host verwijderen met [Remove-AzHost](/powershell/module/az.compute/remove-azhost).
+Nadat u de Vm's hebt verwijderd, kunt u de host verwijderen met [Remove-AzHost](/powershell/module/az.compute/remove-azhost).
 
 ```azurepowershell-interactive
 Remove-AzHost -ResourceGroupName $rgName -Name myHost
 ```
 
-Zodra u al uw hosts hebt verwijderd, u de hostgroep verwijderen met [Remove-AzHostGroup](/powershell/module/az.compute/remove-azhostgroup). 
+Wanneer u al uw hosts hebt verwijderd, kunt u de hostgroep verwijderen met [Remove-AzHostGroup](/powershell/module/az.compute/remove-azhostgroup). 
 
 ```azurepowershell-interactive
 Remove-AzHost -ResourceGroupName $rgName -Name myHost
 ```
 
-U ook de hele brongroep in één opdracht verwijderen met [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup). Hiermee worden alle bronnen die in de groep zijn gemaakt, inclusief alle VM's, hosts en hostgroepen, verwijderd.
+U kunt ook de hele resource groep in één opdracht verwijderen met behulp van [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup). Hiermee verwijdert u alle resources die zijn gemaakt in de groep, inclusief alle Vm's, hosts en hostgroepen.
  
 ```azurepowershell-interactive
 Remove-AzResourceGroup -Name $rgName
@@ -242,6 +242,6 @@ Remove-AzResourceGroup -Name $rgName
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Er is voorbeeld sjabloon, [hier](https://github.com/Azure/azure-quickstart-templates/blob/master/201-vm-dedicated-hosts/README.md)gevonden, dat zowel zones en fout domeinen gebruikt voor maximale tolerantie in een regio.
+- [Hier](https://github.com/Azure/azure-quickstart-templates/blob/master/201-vm-dedicated-hosts/README.md)vindt u een voor beeld van een sjabloon, die zowel zones als fout domeinen gebruikt voor maximale tolerantie in een regio.
 
-- U ook dedicated hosts implementeren via de [Azure-portal.](dedicated-hosts-portal.md)
+- U kunt ook toegewezen hosts implementeren met behulp van de [Azure Portal](dedicated-hosts-portal.md).

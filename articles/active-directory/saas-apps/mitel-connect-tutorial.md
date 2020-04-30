@@ -1,6 +1,6 @@
 ---
-title: 'Zelfstudie: Azure Active Directory-integratie met Mitel Connect | Microsoft Documenten'
-description: Meer informatie over het configureren van eenmalige aanmelding tussen Azure Active Directory en Mitel Connect.
+title: 'Zelf studie: integratie Azure Active Directory met verstek verbinding | Microsoft Docs'
+description: Meer informatie over het configureren van eenmalige aanmelding tussen Azure Active Directory en verstek verbinding.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -16,216 +16,216 @@ ms.topic: tutorial
 ms.date: 05/03/2019
 ms.author: jeedes
 ms.openlocfilehash: 26a761708f56ff7aba8daf86d2991579e60291cb
-ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81870198"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-mitel-micloud-connect"></a>Zelfstudie: Azure Active Directory-integratie met Mitel MiCloud Connect
+# <a name="tutorial-azure-active-directory-integration-with-mitel-micloud-connect"></a>Zelf studie: integratie Azure Active Directory met verstek MiCloud Connect
 
-In deze zelfstudie leert u hoe u Mitel MiCloud Connect integreren met Azure Active Directory (Azure AD). De integratie van MiCloud Connect met Azure AD biedt u de volgende voordelen:
+In deze zelf studie leert u hoe u Afknot MiCloud kunt integreren met Azure Active Directory (Azure AD). Het integreren van MiCloud-verbinding met Azure AD biedt de volgende voor delen:
 
-* U in Azure AD bepalen wie toegang heeft tot MiCloud Connect-apps met hun bedrijfsreferenties.
-* U ervoor zorgen dat gebruikers in uw account automatisch worden aangemeld bij MiCloud Connect (Single Sign-On) met hun Azure AD-accounts.
+* U kunt beheren in azure AD die toegang heeft tot MiCloud Connect apps met behulp van hun bedrijfs referenties.
+* U kunt instellen dat gebruikers in uw account automatisch worden aangemeld voor MiCloud Connect (eenmalige aanmelding) met hun Azure AD-accounts.
 
 
 Zie [What is application access and single sign-on with Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?) als u wilt graag meer wilt weten over de integratie van SaaS-apps met Azure AD.
-Als u geen Azure-abonnement hebt, [maakt u een gratis account](https://azure.microsoft.com/free/) voordat u begint.
+Als u nog geen abonnement op Azure hebt, [Maak dan een gratis account](https://azure.microsoft.com/free/) aan voordat u begint.
 
 ## <a name="prerequisites"></a>Vereisten
 
-Als u de AD-integratie van Azure wilt configureren met MiCloud Connect, hebt u de volgende items nodig:
+Als u Azure AD-integratie met MiCloud Connect wilt configureren, hebt u de volgende items nodig:
 
 * Een Azure AD-abonnement
 
-  Als u geen Azure AD-omgeving hebt, u een [gratis account](https://azure.microsoft.com/free/) krijgen
-* Een Mitel MiCloud Connect-account
+  Als u geen Azure AD-omgeving hebt, kunt u een [gratis account](https://azure.microsoft.com/free/) aanvragen
+* Een verstek MiCloud Connect-account
 
 ## <a name="scenario-description"></a>Scenariobeschrijving
 
-In deze zelfstudie configureert en test u Azure AD single sign-on (SSO).
+In deze zelf studie configureert en test u eenmalige aanmelding voor Azure AD (SSO).
 
-* Mitel Connect ondersteunt **SP** geïnitieerde SSO
+* Afknot-verbinding ondersteunt door **SP** GEÏNITIEERDe SSO
 
-## <a name="adding-mitel-connect-from-the-gallery"></a>Mitel Connect toevoegen vanuit de galerie
+## <a name="adding-mitel-connect-from-the-gallery"></a>Verstek verbinding toevoegen vanuit de galerie
 
-Als u de integratie van Mitel Connect in Azure AD wilt configureren, moet u Mitel Connect vanuit de galerie toevoegen aan uw lijst met beheerde SaaS-apps in de Azure-portal.
+Als u de integratie van verstek verbinding in azure AD wilt configureren, moet u een verstek verbinding vanuit de galerie toevoegen aan uw lijst met beheerde SaaS-apps in de Azure Portal.
 
-**Ga als volgt te werk om Mitel Connect vanuit de galerie toe te voegen:**
+**Voer de volgende stappen uit om een verstekige verbinding toe te voegen vanuit de galerie:**
 
-1. Klik in de **[Azure-portal](https://portal.azure.com)** in het linkernavigatiedeelvenster op **Azure Active Directory**.
+1. Klik in het **[Azure Portal](https://portal.azure.com)**, in het navigatie venster aan de linkerkant, op **Azure Active Directory**.
 
     ![De knop Azure Active Directory](common/select-azuread.png)
 
-2. Klik **op Bedrijfstoepassingen** en klik vervolgens op **Alle toepassingen**.
+2. Klik op **bedrijfs toepassingen** en klik vervolgens op **alle toepassingen**.
 
     ![De blade Bedrijfstoepassingen](common/enterprise-applications.png)
 
-3. Klik **op Nieuwe toepassing**.
+3. Klik op **nieuwe toepassing**.
 
     ![De knop Nieuwe toepassing](common/add-new-app.png)
 
-4. Typ **Mitel Connect** in het zoekveld, klik op **Mitel Connect** van het deelvenster Resultaten en klik vervolgens op **Toevoegen**.
+4. Typ **verstek verbinding** in het zoek veld, klik op **verstek verbinding maken** in het deel venster resultaten en klik vervolgens op **toevoegen**.
 
-     ![Mitel Connect in de resultatenlijst](common/search-new-app.png)
+     ![Verstek verbinding in de lijst met resultaten](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD-eenmalige aanmelding configureren en testen
 
-In deze sectie configureert en test u Azure AD single sign-on met MiCloud Connect op basis van een testgebruiker met de naam **Britta Simon.** Voor eenmalige aanmelding om te werken, moet een koppelingsrelatie worden ingesteld tussen een Azure AD-gebruiker en de gerelateerde gebruiker in MiCloud Connect.
+In deze sectie kunt u eenmalige aanmelding voor Azure AD configureren en testen met MiCloud Connect op basis van een test gebruiker met de naam **Julia Simon**. Voor een goede werking van eenmalige aanmelding moet er een koppelings relatie tussen een Azure AD-gebruiker en de bijbehorende gebruiker in MiCloud verbinding tot stand worden gebracht.
 
-Als u Azure AD Single Sign-on wilt configureren en testen met MiCloud Connect, moet u de volgende stappen uitvoeren:
+Als u eenmalige aanmelding voor Azure AD wilt configureren en testen met MiCloud Connect, moet u de volgende stappen uitvoeren:
 
-1. **[Configureer MiCloud Connect voor SSO met Azure AD](#configure-micloud-connect-for-sso-with-azure-ad)** - zodat uw gebruikers deze functie kunnen gebruiken en de SSO-instellingen aan de toepassingszijde kunnen configureren.
+1. **[Configureer MiCloud Connect for SSO met Azure AD](#configure-micloud-connect-for-sso-with-azure-ad)** om uw gebruikers in staat te stellen deze functie te gebruiken en de SSO-instellingen aan de kant van de toepassing te configureren.
 2. **[Een Azure AD-testgebruiker maken](#create-an-azure-ad-test-user)**: als u Azure AD-eenmalige aanmelding wil testen met Britta Simon.
 3. **[De testgebruiker van Azure AD-toewijzen](#assign-the-azure-ad-test-user)**: als u wilt dat Britta Simon gebruik kan maken van Azure AD-eenmalige aanmelding.
-4. **[Maak een Mitel MiCloud Connect-testgebruiker](#create-a-mitel-micloud-connect-test-user)** - om een tegenhanger van Britta Simon op uw MiCloud Connect-account te hebben dat is gekoppeld aan de Azure AD-weergave van de gebruiker.
+4. **[Maak een Afknot MiCloud Connect test gebruiker](#create-a-mitel-micloud-connect-test-user)** -zodat deze een equivalent van Julia Simon heeft op uw MiCloud Connect-account dat is gekoppeld aan de Azure AD-weer gave van de gebruiker.
 5. **[Eenmalige aanmelding testen](#test-single-sign-on)**: als u wilt controleren of de configuratie werkt.
 
-### <a name="configure-micloud-connect-for-sso-with-azure-ad"></a>MiCloud Connect voor SSO configureren met Azure AD
+### <a name="configure-micloud-connect-for-sso-with-azure-ad"></a>MiCloud Connect for SSO configureren met Azure AD
 
-In deze sectie schakelt u Azure AD single sign-on voor MiCloud Connect in de Azure-portal in en configureert u uw MiCloud Connect-account zodat SSO gebruik kan maken van Azure AD.
+In deze sectie schakelt u eenmalige aanmelding voor Azure AD in voor MiCloud Connect in de Azure Portal en configureert u uw MiCloud Connect-account om eenmalige aanmelding met Azure AD mogelijk te maken.
 
-Om MiCloud Connect met SSO voor Azure AD te configureren, is het het gemakkelijkst om de Azure-portal en de Mitel-accountportal naast elkaar te openen. U moet bepaalde informatie van de Azure-portal kopiëren naar de Mitel-accountportal en een aantal van de Mitel-accountportal naar de Azure-portal.
+Als u MiCloud Connect with SSO voor Azure AD wilt configureren, is het het gemakkelijkst om de Azure Portal en de verstek account Portal naast elkaar te openen. U moet bepaalde gegevens van de Azure Portal kopiëren naar de verstek-account Portal en enkele van de verstek-account Portal naar de Azure Portal.
 
 
-1. Ga als volgt te werk om de configuratiepagina in de [Azure-portal](https://portal.azure.com/)te openen:
+1. Ga als volgt te werk om de configuratie pagina te openen in de [Azure Portal](https://portal.azure.com/):
 
-    a. Klik op de pagina Met toepassing-integratie van **Mitel Connect** op **Eén aanmelding**.
+    a. Klik op de pagina **Afknot-verbinding met** toepassing op **eenmalige aanmelding**.
 
     ![Koppeling Eenmalige aanmelding configureren](common/select-sso.png)
 
-    b. Klik in het dialoogvenster **Een enkele aanmeldingsmethode** selecteren op **SAML**.
+    b. Klik in het dialoog venster **eenmalige aanmelding selecteren** op **SAML**.
 
     ![De modus Eenmalige aanmelding selecteren](common/select-saml-option.png)
     
-    De op SAML gebaseerde aanmeldingspagina wordt weergegeven.
+    De op SAML gebaseerde aanmeldings pagina wordt weer gegeven.
 
-2. Ga als volgt te werk om het configuratiedialoogvenster in de Mitel-accountportal te openen:
+2. Ga als volgt te werk om het dialoog venster configuratie te openen in de portal van de verwerkings account:
 
-    a. Klik in het menu **Telefoonsysteem** op **Invoegfuncties**.
+    a. Klik in het menu **telefoon systeem** op **invoeg**toepassingen.
 
-    b. Klik rechts van **Eenmalige aanmelding**op **Activeren** of **Instellingen**.
+    b. Klik rechts van **eenmalige aanmelding**op **activeren** of **instellingen**.
     
-    Het dialoogvenster Instellingen voor eenmalig aanmelden verbinden wordt weergegeven.
+    Het dialoog venster instellingen voor eenmalige aanmelding verbinden wordt weer gegeven.
     
-3. Schakel het selectievakje **Eén aanmelding inschakelen** in.
+3. Schakel het selectie vakje **eenmalige aanmelding inschakelen** in.
     ![afbeelding](./media/mitel-connect-tutorial/Mitel_Connect_Enable.png)
 
 
-4. Klik in de Azure-portal op het pictogram **Bewerken** in de sectie **BasisSAML-configuratie.**
+4. Klik in de Azure Portal op het pictogram **bewerken** in de sectie **basis configuratie van SAML** .
     ![afbeelding](common/edit-urls.png)
 
-    Het dialoogvenster BasisSAML-configuratie wordt weergegeven.
+    Het dialoog venster basis configuratie van SAML wordt weer gegeven.
 
-5.  Kopieer de URL vanuit het veld **Mitel Identifier (Entity ID)** in de Mitel-accountportal en plak deze in het veld **Id (Entity ID)** in de Azure-portal.
+5.  Kopieer de URL uit het veld **Afknot-id (Entiteits-ID)** in de verstek-account Portal en plak deze in het veld **id (Entiteits-ID)** in de Azure Portal.
 
-6. Kopieer de URL vanuit het veld URL van de **antwoord-URL (Bevestigingsconsumentenservice)** in de Mitel-accountportal en plak deze in het veld **Antwoord-URL (Bevestigingsconsumentenservice-URL)** in de Azure-portal.  
+6. Kopieer de URL van het veld **antwoord-URL (assertion Consumer Service-URL)** in de verstek-account Portal en plak dit in het veld **antwoord-URL (assertion Consumer Service-URL)** in de Azure Portal.  
    ![afbeelding](./media/mitel-connect-tutorial/Mitel_Azure_BasicConfig.png)
 
-7. Typ in het tekstvak **Aantekenen op URL** een van de volgende URL's:
+7. Typ in het tekstvak **URL voor aanmelden** een van de volgende url's:
 
-    * **https://portal.shoretelsky.com**- om de Mitel Account portal te gebruiken als uw standaard Mitel applicatie
-    * **https://teamwork.shoretel.com**- teamwork gebruiken als uw standaard Mitel applicatie
+    * **https://portal.shoretelsky.com**-de verwerkings account Portal gebruiken als de standaard verstek toepassing
+    * **https://teamwork.shoretel.com**-Teamwork gebruiken als uw standaard verstek toepassing
 
-    **OPMERKING:** De standaard Toepassing Mitel is de toepassing die wordt geopend wanneer een gebruiker op de mitel connect-tegel in het toegangspaneel klikt. Dit is ook de toepassing die wordt geopend bij het maken van een testinstallatie vanuit Azure AD.
+    **Opmerking**: de standaard verstek toepassing is de toepassing die wordt geopend wanneer een gebruiker op de Afknot Connect-tegel in het toegangs venster klikt. Dit is ook de toepassing die wordt geopend bij het uitvoeren van een test installatie vanuit Azure AD.
 
-8. Klik **op Opslaan** in het dialoogvenster **BasisSAML-configuratie** in de Azure-portal.
+8. Klik op **Opslaan** in het dialoog venster **basis-SAML-configuratie** in de Azure Portal.
 
-9. Klik in de sectie **SAML-ondertekeningscertificaat** op de **op SAML gebaseerde aanmeldingspagina** in de Azure-portal op **Downloaden** naast **Certificaat (Base64)** om het **ondertekeningscertificaat** te downloaden en op te slaan op uw computer.
+9. Klik in de sectie **SAML-handtekening certificaat** op de op **SAML gebaseerde aanmeldings** pagina in het Azure Portal op **downloaden** naast **certificaat (base64)** om het **handtekening certificaat** te downloaden en op uw computer op te slaan.
     ![afbeelding](./media/mitel-connect-tutorial/Azure_SigningCert.png)
 
-10. Open het bestand Certificaat ondertekenen in een teksteditor, kopieer alle gegevens in het bestand en plak de gegevens in het veld **Certificaat ondertekenen** in de portal voor Mitel-account. 
+10. Open het handtekening certificaat bestand in een tekst editor, kopieer alle gegevens in het bestand en plak de gegevens in het veld **handtekening certificaat** in de portal van de verlaagde account. 
     ![afbeelding](./media/mitel-connect-tutorial/Mitel_Connect_SigningCert.png)
 
-11. Ga als volgt te werk in de sectie **Setup Mitel Connect** op de **op SAML gebaseerde aanmeldingspagina** van de Azure-portal:
+11. Ga als volgt te werk in de sectie **Afknot verbinding instellen** op de op **SAML gebaseerde aanmeldings** pagina van de Azure portal:
 
-    a. Kopieer de URL vanuit het veld **Aanmeldings-URL** en plak deze in het **veld AanmeldingsURL** in de Portal van Mitel-account.
+    a. Kopieer de URL uit het veld **aanmeldings-URL** en plak deze in het veld **aanmeld-URL** in de verstek-account Portal.
 
-    b. Kopieer de URL vanuit het veld **Azure AD-id** en plak deze in het veld **Entiteit-id** in de Mitel-accountportal.
+    b. Kopieer de URL uit het veld **id van Azure AD** en plak deze in het veld **Entiteits-ID** in de verstek-account Portal.
     ![afbeelding](./media/mitel-connect-tutorial/Mitel_Azure_SetupConnect.png)
 
-12. Klik op **Opslaan** in het dialoogvenster **Interne aanmeldingsinstellingen verbinden** in de mitel-accountportal.
+12. Klik op **Opslaan** in het dialoog venster **instellingen voor eenmalige aanmelding verbinden** in de verstek-account Portal.
 
 ### <a name="create-an-azure-ad-test-user"></a>Een Azure AD-testgebruiker maken 
 
-In deze sectie maakt u een testgebruiker met de naam Britta Simon in de Azure-portal.
+In deze sectie maakt u een test gebruiker met de naam Julia Simon in de Azure Portal.
 
-1. Klik in de Azure-portal in het linkerdeelvenster op **Azure Active Directory**, klik op **Gebruikers**en klik vervolgens op **Alle gebruikers**.
+1. Klik in het linkerdeel venster van de Azure Portal op **Azure Active Directory**, klik op **gebruikers**en klik vervolgens op **alle gebruikers**.
 
     ![De koppelingen Gebruikers en groepen en Alle gebruikers](common/users.png)
 
-2. Klik boven aan het scherm op **Nieuwe gebruiker.**
+2. Klik boven aan het scherm op **nieuwe gebruiker** .
 
     ![Knop Nieuwe gebruiker](common/new-user.png)
 
-3. Ga in het dialoogvenster Gebruikerseigenschappen de volgende stappen uit:
+3. Voer in het dialoog venster gebruikers eigenschappen de volgende stappen uit:
 
     ![Het dialoogvenster Gebruiker](common/user-properties.png)
 
-    a. Typ **BrittaSimon**in het veld **Naam** .
+    a. Typ **BrittaSimon**in het veld **naam** .
   
-    b. Typ **User name** in het veld\<Gebruikersnaam brittasimon@\>uwbedrijfsdomein. \<uitbreiding\>.  
+    b. Typ brittasimon@\<yourcompanydomain\>in het veld **gebruikers naam** . \<extensie\>.  
 Bijvoorbeeld BrittaSimon@contoso.com.
 
-    c. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak **Wachtwoord.**
+    c. Schakel het selectie vakje **wacht woord weer geven** in en noteer de waarde die wordt weer gegeven in het vak **wacht woord** .
 
-    d. Klik **op Maken**.
+    d. Klik op **maken**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>De Azure AD-testgebruiker toewijzen
 
-In deze sectie u Britta Simon inschakelen om Azure single sign-on te gebruiken door toegang te verlenen tot Mitel Connect.
+In deze sectie schakelt u Julia Simon in om de eenmalige aanmelding van Azure te gebruiken door toegang te verlenen aan de verstek verbinding.
 
-1. Klik in de Azure-portal op **Bedrijfstoepassingen**en klik vervolgens op **Alle toepassingen**.
+1. Klik in de Azure Portal op **bedrijfs toepassingen**en klik vervolgens op **alle toepassingen**.
 
     ![De blade Bedrijfstoepassingen](common/enterprise-applications.png)
 
-2. Klik in de lijst met toepassingen op **Mitel Connect**.
+2. Klik in de lijst toepassingen op **verstek verbinding maken**.
 
-    ![De Mitel Connect-koppeling in de lijst Toepassingen](common/all-applications.png)
+    ![De koppeling verstek in de lijst met toepassingen](common/all-applications.png)
 
-3. Klik in het menu aan de linkerkant op **Gebruikers en groepen**.
+3. Klik in het menu aan de linkerkant op **gebruikers en groepen**.
 
     ![De koppeling Gebruikers en groepen](common/users-groups-blade.png)
 
-4. Klik **op Gebruiker toevoegen**en klik vervolgens op Gebruikers en **groepen** in het dialoogvenster **Toewijzing toevoegen.**
+4. Klik op **gebruiker toevoegen**en klik vervolgens op **gebruikers en groepen** in het dialoog venster **toewijzing toevoegen** .
 
     ![Het deelvenster Toewijzing toevoegen](common/add-assign-user.png)
 
-5. Selecteer **In** het dialoogvenster Gebruikers en groepen De optie **Britta Simon** in de lijst **Gebruikers** en klik op **Selecteren** onder aan het scherm.
+5. Selecteer in het dialoog venster **gebruikers en groepen** de optie **Julia Simon** in de lijst **gebruikers** en klik vervolgens op **selecteren** onder aan het scherm.
 
-6. Als u een rolwaarde verwacht in de SAML-bewering, selecteert u de juiste rol voor de gebruiker in de lijst in het dialoogvenster **Rol selecteren** en klikt u onder aan het scherm op **Selecteren.**
+6. Als u een wille keurige rol in de SAML-bevestiging verwacht, selecteert u de juiste rol voor de gebruiker in de lijst in het dialoog venster **rol selecteren** en klikt u onder aan het scherm op **selecteren** .
 
-7. Klik in het dialoogvenster **Toewijzing toevoegen** op **Toewijzing toewijzen**.
+7. Klik in het dialoog venster **toewijzing toevoegen** op **toewijzen**.
 
-### <a name="create-a-mitel-micloud-connect-test-user"></a>Een Mitel MiCloud Connect-testgebruiker maken
+### <a name="create-a-mitel-micloud-connect-test-user"></a>Een Afknot test gebruiker voor MiCloud Connect maken
 
-In deze sectie maakt u een gebruiker met de naam Britta Simon op uw MiCloud Connect-account. Gebruikers moeten worden gemaakt en geactiveerd voordat ze eenmalige aanmelding gebruiken.
+In deze sectie maakt u een gebruiker met de naam Julia Simon op uw MiCloud Connect-account. Gebruikers moeten worden gemaakt en geactiveerd voordat ze eenmalige aanmelding kunnen gebruiken.
 
-Zie het artikel [Toevoegen van een gebruiker](https://oneview.mitel.com/s/article/Adding-a-User-092815) in de Mitel Knowledge Base voor meer informatie over het toevoegen van gebruikers in de Mitel-accountportal.
+Voor meer informatie over het toevoegen van gebruikers in de verlaagde account Portal raadpleegt u het artikel [een gebruiker toevoegen](https://oneview.mitel.com/s/article/Adding-a-User-092815) in de verstek kennis basis.
 
-Maak een gebruiker op uw MiCloud Connect-account met de volgende gegevens:
+Maak een gebruiker op uw MiCloud Connect-account met de volgende details:
 
-  * **Naam:** Britta Simon
+  * **Naam:** Julia Simon
 
-* **Zakelijk e-mailadres:**`brittasimon@<yourcompanydomain>.<extension>`   
-(Voorbeeld: [brittasimon@contoso.com](mailto:brittasimon@contoso.com))
+* **E-mail adres van bedrijf:**`brittasimon@<yourcompanydomain>.<extension>`   
+(Voor beeld [brittasimon@contoso.com](mailto:brittasimon@contoso.com):)
 
-* **Gebruikersnaam:**`brittasimon@<yourcompanydomain>.<extension>`  
-(Voorbeeld: [brittasimon@contoso.com](mailto:brittasimon@contoso.com); de gebruikersnaam van de gebruiker is meestal hetzelfde als het zakelijke e-mailadres van de gebruiker)
+* **Gebruikers naam:**`brittasimon@<yourcompanydomain>.<extension>`  
+(Voor beeld [brittasimon@contoso.com](mailto:brittasimon@contoso.com):; de gebruikers naam van de gebruiker is doorgaans hetzelfde als het zakelijke e-mail adres van de gebruiker)
 
-**LET OP:** De MiCloud Connect-gebruikersnaam van de gebruiker moet identiek zijn aan het e-mailadres van de gebruiker in Azure.
+**Opmerking:** De gebruikers naam van de gebruiker MiCloud Connect moet identiek zijn aan het e-mail adres van de gebruiker in Azure.
 
 ### <a name="test-single-sign-on"></a>Eenmalige aanmelding testen
 
-In deze sectie test u uw Azure AD-configuratie met eenmalige aanmelding met het Toegangspaneel.
+In deze sectie gaat u de configuratie van eenmalige aanmelding voor Azure AD testen met behulp van het toegangs venster.
 
-Wanneer u op de tegel Mitel Connect in het access-paneel klikt, moet u automatisch worden doorgestuurd om u aan te melden bij de MiCloud Connect-toepassing die u als standaard hebt geconfigureerd in het veld **Aanmelden op URL.** Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
+Wanneer u op de tegel verbinding maken in het toegangs venster klikt, moet u automatisch worden omgeleid om u aan te melden bij de MiCloud Connect-toepassing die u als standaard hebt geconfigureerd in het veld **Sign on URL** . Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
 
 ## <a name="additional-resources"></a>Aanvullende resources
 
 - [Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Wat is toepassingstoegang en eenmalige aanmelding met Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Wat is toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Wat is voorwaardelijke toegang in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

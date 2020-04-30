@@ -1,6 +1,6 @@
 ---
-title: Veelgestelde vragen - Azure Synapse Analytics
-description: Veelgestelde vragen voor Azure Synapse Analytics
+title: Veelgestelde vragen-Azure Synapse Analytics
+description: Veelgestelde vragen over Azure Synapse Analytics
 services: synapse-analytics
 author: ArnoMicrosoft
 ms.service: synapse-analytics
@@ -10,97 +10,97 @@ ms.date: 04/15/2020
 ms.author: acomet
 ms.reviewer: jrasnick
 ms.openlocfilehash: 00a98fdeb4b8febbcb9d1183fabffc7298cc9e4c
-ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81770730"
 ---
-# <a name="azure-synapse-analytics-workspace-preview-frequently-asked-questions"></a>Veelgestelde vragen van Azure Synapse Analytics (workspace preview)
+# <a name="azure-synapse-analytics-workspace-preview-frequently-asked-questions"></a>Veelgestelde vragen over Azure Synapse Analytics (werk ruimte preview)
 
-In deze handleiding vindt u de meest gestelde vragen voor Synapse Analytics.
+In deze hand leiding vindt u de veelgestelde vragen over Synapse Analytics.
 
 [!INCLUDE [preview](includes/note-preview.md)]
 
 ## <a name="general"></a>Algemeen
 
-### <a name="q-what-is-azure-synapse-analytics"></a>V: Wat is Azure Synapse Analytics
+### <a name="q-what-is-azure-synapse-analytics"></a>V: wat is Azure Synapse Analytics
 
-A: Azure Synapse is een geïntegreerd dataplatform voor BI, AI en continue intelligentie. Het verbindt verschillende analytics runtimes zoals SQL en Spark via een enkel platform dat een uniforme manier biedt om:
+A: Azure Synapse is een geïntegreerd gegevens platform voor BI, AI en continue Intelligence. Er worden verschillende analyse runtimes, zoals SQL en Spark, verbonden via één platform dat een uniforme manier biedt om:
 
-- Beveilig uw analysebronnen, waaronder netwerk, beheer toegang tot één aanmelding tot pool-, gegevens- en ontwikkelingsartefacten.
-- Eenvoudig gebeurtenissen die plaatsvinden in uw werkruimteactiviteiten op elke laag te controleren en snel te optimaliseren, te reageren en debuggen.
-- Beheer uw metadata in verschillende engines. Maak een Spark-tabel en deze is automatisch beschikbaar in uw Azure Synapse-databases.
-- Communiceer met de gegevens via een uniforme gebruikerservaring. Synapse Studio brengt Big Data Developers, Data Engineers, DBA's, Data Analysts en Data Scientists op hetzelfde platform.
+- Beveilig uw analyse bronnen, met inbegrip van het netwerk, het beheren van de toegang tot eenmalige aanmelding voor de groeps-, gegevens-en ontwikkelings artefacten.
+- U kunt eenvoudig gebeurtenissen in uw werkruimte activiteiten controleren en snel optimaliseren, reageren en fouten opsporen die zich op elke laag voordoen.
+- Uw meta gegevens voor alle engines beheren. Maak een Spark-tabel en deze is automatisch beschikbaar in uw Azure Synapse-data bases.
+- Interactie met de gegevens via een uniforme gebruikers ervaring. Synapse Studio brengt Big Data-ontwikkel aars, gegevens technici, Dba's, gegevens analisten en gegevens wetenschappers op hetzelfde platform.
 
-### <a name="q-how-do-i-get-started-with-azure-synapse-analytics"></a>V: Hoe ga ik aan de slag met Azure Synapse Analytics
+### <a name="q-how-do-i-get-started-with-azure-synapse-analytics"></a>V: Hoe kan ik aan de slag met Azure Synapse Analytics
 
-A: Als u Azure Synapse Analytics wilt gaan gebruiken, maakt u een [Synapse-werkruimte](https://portal.azure.com) (deze is gratis!) en maakt u de resources die u wilt onder die werkruimte. U een van onze quickstart-zelfstudies volgen, zoals [Een Synapse SQL-pool maken](quickstart-create-sql-pool.md) of [Een werkruimte maken,](quickstart-create-workspace.md)die u door eenvoudige use case zal leiden. 
+A: als u Azure Synapse Analytics wilt gaan gebruiken, maakt u een [Synapse-werk ruimte](https://portal.azure.com) (dit is gratis!) en maakt u de resources die u wilt maken onder die werk ruimte. U kunt een van onze zelf studies volgen, zoals [het maken van een Synapse SQL-groep](quickstart-create-sql-pool.md) of [het maken van een werk ruimte](quickstart-create-workspace.md), zodat u een eenvoudige use-case doorloopt. 
 
-U ook voorbeeldnotitieblokken en SQL-scripts vinden in onze [repository.](https://github.com/Azure/azure-synapse-analytics/tree/master/samples) Als u verbinding wilt maken met een openbare gegevensset, maakt u een nieuwe gekoppelde service met de volgende kenmerken:
+U kunt ook voor beelden van notitie blokken en SQL-scripts vinden in onze [opslag plaats](https://github.com/Azure/azure-synapse-analytics/tree/master/samples). Als u verbinding moet maken met een open bare gegevensset, maakt u een nieuwe gekoppelde service met de volgende kenmerken:
 
 - azure_storage_account_name = "azureopendatastorage"
-- azure_storage_sas_token = "" (schrijf **""**)
+- azure_storage_sas_token = "" (schrijven **""**)
 
-### <a name="q-what-are-the-main-components-of-azure-synapse-analytics"></a>V: Wat zijn de belangrijkste onderdelen van Azure Synapse Analytics
+### <a name="q-what-are-the-main-components-of-azure-synapse-analytics"></a>V: wat zijn de belangrijkste onderdelen van Azure Synapse Analytics
 
 A: Azure Synapse heeft de volgende mogelijkheden:
 
-- Analytics-mogelijkheden worden aangeboden via SQL Pool of SQL on-demand (preview) (Serverless).
-- Apache Spark-pool (preview) met volledige ondersteuning voor Scala, Python, SparkSQL en C #
-- Data Flow biedt een codevrije big data transformatie-ervaring
-- Data-integratie & Orchestration om uw gegevens te integreren en al uw codeontwikkeling te operationaliseren
-- Studio om toegang te krijgen tot al deze mogelijkheden via één webgebruikersinterface
+- Analyse mogelijkheden worden aangeboden via SQL-groep of SQL on-demand (preview) (Serverloze).
+- Apache Spark pool (preview) met volledige ondersteuning voor scala, Python, SparkSQL en C #
+- Data Flow biedt een code-Free big data Transformation-ervaring
+- Gegevens integratie & indeling om uw gegevens te integreren en al uw code ontwikkeling operationeel maken
+- Studio om toegang te krijgen tot al deze mogelijkheden via één webinterface
 
-### <a name="q-how-does-azure-synapse-analytics-relate-to-azure-sql-data-warehouse"></a>V: Hoe verhoudt Azure Synapse Analytics zich tot Azure SQL Data Warehouse
+### <a name="q-how-does-azure-synapse-analytics-relate-to-azure-sql-data-warehouse"></a>V: wat is de relatie tussen Azure Synapse Analytics en Azure SQL Data Warehouse
 
-A: Azure Synapse Analytics is een evolutie van Azure SQL Data Warehouse naar een analytics-platform, dat SQL-pool als datawarehouse-oplossing bevat. Dit platform combineert gegevensverkenning, opname, transformatie, voorbereiding en een analyselaag voor het serveren.
+A: Azure Synapse Analytics is een evolutie van Azure SQL Data Warehouse in een analyse platform, waaronder SQL-groep als de Data Warehouse-oplossing. Dit platform combineert gegevens exploratie, opname, trans formatie, voor bereiding en een voor analyse-laag.
 
 ## <a name="use-cases"></a>Gebruiksvoorbeelden
 
-### <a name="q-what-is-a-good-use-case-for-synapse-sql-pool"></a>V: Wat is een goede use case voor Synapse SQL pool
+### <a name="q-what-is-a-good-use-case-for-synapse-sql-pool"></a>V: wat is een goede use-case voor Synapse SQL-pool
 
-A: SQL-pool is het hart van uw behoeften op het gebied van gegevensmagazijnen. Het is de toonaangevende oplossing voor gegevensmagazijnen in [prijs/prestatie.](https://azure.microsoft.com/services/sql-data-warehouse/compare/) SQL-pool is de toonaangevende clouddatawarehouseoplossing, omdat u:
+A: de SQL-groep is de kern van uw data warehouse-behoeften. Het is de toonaangevende data warehouse-oplossing in [prijs-prestatie verhouding](https://azure.microsoft.com/services/sql-data-warehouse/compare/). SQL pool is de toonaangevende oplossing voor Cloud Data Warehouse, omdat u het volgende kunt doen:
 
-- een grote en gemengde verscheidenheid aan workloads zonder impact in prestaties dankzij hoge gelijktijdigheid en werklastisolatie
-- beveilig uw gegevens eenvoudig via geavanceerde functies, variërend van netwerkbeveiliging tot fijnkorrelige toegang
-- profiteren van een breed scala aan ecosystemen
+- een grote en gemengde werk belasting hebben zonder invloed op de prestaties dankzij een hoge gelijktijdigheids-en werkbelasting isolatie
+- Beveilig uw gegevens eenvoudig via geavanceerde functies, variërend van netwerk beveiliging tot nauw keurige toegang
+- Profiteer van een breed scala aan eco-systemen
 
-### <a name="q-what-is-a-good-use-case-for-spark-in-synapse"></a>V: Wat is een goede use case voor Spark in Synapse
+### <a name="q-what-is-a-good-use-case-for-spark-in-synapse"></a>V: wat is een goede use-case voor Spark in Synapse
 
-A: Ons eerste doel is om een geweldige Data Engineering ervaring te bieden voor het transformeren van gegevens over het meer in batch of stream. De strakke en eenvoudige integratie met onze data orchestration maakt de operationalisering van uw ontwikkeling eenvoudig.
+A: onze eerste doel stelling is het bieden van een fantastische data engineering-ervaring voor het transformeren van gegevens over de meer in batch of stream. Dankzij de naadloze en eenvoudige integratie met onze gegevens indeling wordt de uitoefening van uw ontwikkelings werk duidelijk.
 
-Een andere use case voor Spark is voor een Data Scientist om:
+Een ander use-case voor Spark is voor een gegevens wetenschapper:
 
-- een functie extraheren
+- een functie uitpakken
 - gegevens verkennen
 - een model trainen
 
-### <a name="q-what-is-a-good-use-case-for-sql-on-demand-in-synapse"></a>V: Wat is een goede use case voor SQL on-demand in Synapse
+### <a name="q-what-is-a-good-use-case-for-sql-on-demand-in-synapse"></a>V: wat is een goed gebruiks voorbeeld voor SQL op aanvraag in Synapse
 
-A: SQL on-demand is een queryservice over de gegevens in uw gegevensmeer. Hiermee u de toegang tot al uw gegevens democratiseren door een bekende T-SQL-syntaxis te bieden om gegevens op te vragen, zonder dat u gegevens hoeft te kopiëren of laden in een gespecialiseerde winkel.
+A: SQL on-demand is een query service over de gegevens in uw data Lake. Hiermee kunt u toegang tot al uw gegevens democratisch door een bekende T-SQL-syntaxis te bieden voor het opvragen van gegevens, zonder dat u gegevens naar een gespecialiseerde Store hoeft te kopiëren of te laden.
 
-Voorbeelden van gebruiksvoorbeelden zijn de volgende:
+Voor beelden van use-cases zijn:
 
-- basisdetectie en -verkenning - biedt data-analisten, opkomende gegevenswetenschappers en dataengineers een eenvoudig pad naar het eerste inzicht in gegevens die in hun datalake leven met schema op gelezen T-SQL-query's
-- logische datawarehouse - data-analisten kunnen volledige expressiviteit van T-SQL-taal uitvoeren om de gegevens die zich in Azure Storage bevinden rechtstreeks op te vragen en te analyseren en vertrouwde BI-hulpprogramma's (bijvoorbeeld Azure Analyses Services, Power BI Premium, enz.) te gebruiken om dashboards te vernieuwen door Starlight Query-query's opnieuw uit te voeren
-- "single query" ETL - stelt data engineers in staat om op Azure Storage gebaseerde gegevens van het ene formaat naar het andere te transformeren, filter, aggregaat, enz.
+- basis detectie en-ontdekking: biedt gegevens analisten, opkomende gegevens wetenschappers en gegevens technici met een eenvoudig pad naar het eerste inzicht in gegevens in hun data Lake met schema op Lees-T-SQL-query's
+- logische data warehouse: gegevens analisten kunnen een volledige duidelijkheid van de T-SQL-taal uitvoeren om de gegevens die zich in Azure Storage bevinden, rechtstreeks te doorzoeken en te analyseren en vertrouwde BI-hulpprogram ma's (zoals Azure-analyses Services, Power BI Premium enz.) te gebruiken om Dash boards te vernieuwen door Starlight query query's opnieuw uit te voeren
+- "ETL van één query" Hiermee kunnen gegevens technici Azure Storage op basis van gegevens van de ene indeling naar een andere omzetten, filteren, aggregeren, enzovoort, op zeer parallelle verwerkings wijze de query resultaten persistent maken voor Azure Storage en deze onmiddellijk beschikbaar stellen voor verdere verwerking in Starlight-query of andere interessante Services
 
-### <a name="q-what-is-a-good-use-case-for-data-flow-in-synapse"></a>V: Wat is een goede use case voor dataflow in Synapse
+### <a name="q-what-is-a-good-use-case-for-data-flow-in-synapse"></a>V: wat is een goed gebruiks voorbeeld voor de gegevens stroom in Synapse
 
-A: Met gegevensstroom kunnen gegevenstechnici grafische logica voor gegevenstransformatie ontwikkelen zonder code te schrijven. De resulterende gegevensstromen worden uitgevoerd als activiteiten binnen Data Integration & Orchestration. Gegevensstroomactiviteiten kunnen worden geoperationaliseerd via bestaande plannings-, controle-, stroom- en bewakingsmogelijkheden.
+A: met gegevens stroom kunnen data engineers grafische gegevens transformatie logica ontwikkelen zonder code te schrijven. De resulterende gegevens stromen worden uitgevoerd als activiteiten binnen de gegevens integratie & indeling. Activiteiten voor gegevens stromen kunnen worden operationeel via bestaande mogelijkheden voor planning, controle, stroom en controle.
 
 ## <a name="security-and-access"></a>Beveiliging en toegang
 
-A: End-to-end single sign-on experience is een belangrijk authenticatieproces in Synapse Analytics. Het beheren en doorgeven van de identiteit via een volledige AAD-integratie is een must.
+A: end-to-end-ervaring voor eenmalige aanmelding is een belang rijk verificatie proces in Synapse Analytics. Het beheren en door geven van de identiteit door middel van een volledige AAD-integratie is een moet.
 
-### <a name="q-how-do-i-get-access-to-files-and-folders-in-the-adlsg2"></a>V: Hoe krijg ik toegang tot bestanden en mappen in de ADLSg2
+### <a name="q-how-do-i-get-access-to-files-and-folders-in-the-adlsg2"></a>V: Hoe kan ik toegang krijgen tot bestanden en mappen in de ADLSg2
 
-A: Toegang tot bestanden en mappen wordt momenteel beheerd via ADLSg2. Zie [Toegangsbeheer voor opslaggegevens voor Data Lake](../storage/blobs/data-lake-storage-access-control.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)voor meer informatie .
+A: de toegang tot bestanden en mappen wordt momenteel beheerd via ADLSg2. Zie [Data Lake Storage Access Control](../storage/blobs/data-lake-storage-access-control.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)(Engelstalig) voor meer informatie.
 
-### <a name="q-can-i-use-third-party-business-intelligence-tools-to-access-azure-synapse-analytics"></a>V: Kan ik business intelligence-tools van derden gebruiken om toegang te krijgen tot Azure Synapse Analytics
+### <a name="q-can-i-use-third-party-business-intelligence-tools-to-access-azure-synapse-analytics"></a>V: kan ik business intelligence-hulpprogram ma's van derden gebruiken om toegang te krijgen tot Azure Synapse Analytics
 
-A: Ja, u uw zakelijke toepassingen van derden, zoals Tableau en Power BI, gebruiken om verbinding te maken met SQL-pool en SQL on-demand. Spark ondersteunt IntelliJ.
+A: Ja, u kunt uw zakelijke toepassingen van derden, zoals tableau en Power BI, gebruiken om verbinding te maken met de SQL-groep en SQL op aanvraag. Spark ondersteunt IntelliJ.
 
 ## <a name="next-steps"></a>Volgende stappen
 
@@ -108,4 +108,4 @@ A: Ja, u uw zakelijke toepassingen van derden, zoals Tableau en Power BI, gebrui
 - [Synapse Studio gebruiken](quickstart-synapse-studio.md)
 - [Een SQL-groep maken](quickstart-create-sql-pool.md)
 - [SQL on-demand gebruiken](quickstart-sql-on-demand.md)
-- [Een Apache Spark-pool maken](quickstart-create-apache-spark-pool.md) 
+- [Een Apache Spark groep maken](quickstart-create-apache-spark-pool.md) 

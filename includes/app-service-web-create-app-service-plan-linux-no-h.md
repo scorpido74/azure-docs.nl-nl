@@ -9,17 +9,17 @@ ms.date: 12/20/2019
 ms.author: cephalin
 ms.custom: include file
 ms.openlocfilehash: 25003269fb6e00cadcc14d2356308cae54c70bf7
-ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/23/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "82085298"
 ---
-Maak in de Cloud Shell een App Service-abonnement in de resourcegroep met de [`az appservice plan create`](/cli/azure/appservice/plan?view=azure-cli-latest#az-appservice-plan-create) opdracht.
+Maak in de Cloud Shell een App Service plan in de resource groep met de [`az appservice plan create`](/cli/azure/appservice/plan?view=azure-cli-latest#az-appservice-plan-create) opdracht.
 
 <!-- [!INCLUDE [app-service-plan](app-service-plan-linux.md)] -->
 
-In het volgende voorbeeld wordt `myAppServicePlan` een App Service-abonnement gemaakt met`--is-linux`de naam **Gratis** prijs (`--sku F1`) en in een Linux-container ( ).
+In het volgende voor beeld wordt een App Service `myAppServicePlan` plan gemaakt met de naam in`--sku F1`de **gratis** prijs categorie () en`--is-linux`in een Linux-container ().
 
 ```azurecli-interactive
 az appservice plan create --name myAppServicePlan --resource-group myResourceGroup --sku F1 --is-linux

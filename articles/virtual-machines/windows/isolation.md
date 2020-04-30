@@ -1,6 +1,6 @@
 ---
-title: Isolatie voor Windows VM's in Azure
-description: Meer informatie over VM-isolatiewerkt in Azure.
+title: Isolatie voor Windows-Vm's in azure
+description: Meer informatie over VM-isolatie werkt in Azure.
 author: cynthn
 ms.service: virtual-machines
 ms.topic: conceptual
@@ -8,13 +8,13 @@ ms.workload: infrastructure-services
 ms.date: 08/01/2019
 ms.author: cynthn
 ms.openlocfilehash: e03f31d8a78a0d327278768c3f0b66d2119f8dc8
-ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81870059"
 ---
-# <a name="virtual-machine-isolation-in-azure"></a>Isolatie van virtuele machines in Azure
+# <a name="virtual-machine-isolation-in-azure"></a>Isolatie van virtuele machines in azure
 
 [!INCLUDE [virtual-machines-common-isolation](../../../includes/virtual-machines-common-isolation.md)]
 
@@ -22,7 +22,7 @@ ms.locfileid: "81870059"
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- U een dedicated host implementeren met [Azure PowerShell,](dedicated-hosts-powershell.md)de [portal](dedicated-hosts-portal.md)en [Azure CLI.](../linux/dedicated-hosts-cli.md) Zie het overzicht [van speciale hosts](dedicated-hosts.md) voor meer informatie.
+- U kunt een toegewezen host implementeren met behulp van [Azure PowerShell](dedicated-hosts-powershell.md), de [Portal](dedicated-hosts-portal.md)en [Azure cli](../linux/dedicated-hosts-cli.md). Zie voor meer informatie het overzicht [gespecialiseerde hosts](dedicated-hosts.md) .
 
 
 
