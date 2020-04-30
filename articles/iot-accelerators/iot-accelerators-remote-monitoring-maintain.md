@@ -1,5 +1,5 @@
 ---
-title: Waarschuwingen gebruiken in de oplossing voor externe bewaking - Azure | Microsoft Documenten
+title: 'Waarschuwingen gebruiken in de oplossing voor controle op afstand: Azure | Microsoft Docs'
 description: In deze zelfstudie ziet u hoe u waarschuwingen kunt gebruiken om problemen te identificeren en op te lossen met apparaten die zijn verbonden met de verbetering voor de externe bewakingsoplossing.
 author: dominicbetts
 manager: timlt
@@ -10,10 +10,10 @@ ms.date: 11/08/2018
 ms.topic: tutorial
 ms.custom: mvc
 ms.openlocfilehash: 853fa2b80e04dd8d9225d023db8030fed044ed7f
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "73890928"
 ---
 # <a name="tutorial-troubleshoot-and-fix-device-issues"></a>Zelfstudie: Problemen met apparaten opsporen en oplossen
@@ -28,7 +28,7 @@ In deze zelfstudie hebt u:
 > * Een waarschuwing voor een apparaat onderzocht
 > * Het probleem met het apparaat opgelost
 
-Als u geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) voordat u begint.
+Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
 
 [!INCLUDE [iot-accelerators-tutorial-prereqs](../../includes/iot-accelerators-tutorial-prereqs.md)]
 
@@ -36,11 +36,11 @@ Als u geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.mic
 
 Op de **Dashboardpagina** ziet u dat onverwachte temperatuurwaarschuwingen zijn geactiveerd op basis van de regel die is gekoppeld aan de **Prototypeapparaten**:
 
-[![Waarschuwingen op het dashboard](./media/iot-accelerators-remote-monitoring-maintain/dashboardalarm-inline.png)](./media/iot-accelerators-remote-monitoring-maintain/dashboardalarm-expanded.png#lightbox)
+[![Waarschuwingen die worden weer gegeven op het dash board](./media/iot-accelerators-remote-monitoring-maintain/dashboardalarm-inline.png)](./media/iot-accelerators-remote-monitoring-maintain/dashboardalarm-expanded.png#lightbox)
 
 Als u het probleem nader wilt onderzoeken, kiest u de optie **Waarschuwing verkennen** naast de waarschuwing:
 
-[![Waarschuwing van het dashboard verkennen](./media/iot-accelerators-remote-monitoring-maintain/dashboardexplorealarm-inline.png)](./media/iot-accelerators-remote-monitoring-maintain/dashboardexplorealarm-expanded.png#lightbox)
+[![Waarschuwing in het dash board verkennen](./media/iot-accelerators-remote-monitoring-maintain/dashboardexplorealarm-inline.png)](./media/iot-accelerators-remote-monitoring-maintain/dashboardexplorealarm-expanded.png#lightbox)
 
 In de detailweergave van de waarschuwing wordt het volgende weergegeven:
 
@@ -48,17 +48,17 @@ In de detailweergave van de waarschuwing wordt het volgende weergegeven:
 * Statusinformatie over de apparaten waarvoor de waarschuwing is afgegeven
 * Telemetrie van de apparaten waarvoor de waarschuwing is afgegeven
 
-[![Waarschuwingsgegevens](./media/iot-accelerators-remote-monitoring-maintain/maintenancealarmdetail-inline.png)](./media/iot-accelerators-remote-monitoring-maintain/maintenancealarmdetail-expanded.png#lightbox)
+[![Waarschuwings Details](./media/iot-accelerators-remote-monitoring-maintain/maintenancealarmdetail-inline.png)](./media/iot-accelerators-remote-monitoring-maintain/maintenancealarmdetail-expanded.png#lightbox)
 
 Als u de waarschuwing wilt accepteren, selecteert u alle **Voorvallen van de waarschuwing** en kiest u **Accepteren**. Door deze actie weten andere operators dat u de waarschuwing hebt gezien en ermee bezig bent:
 
-[![De waarschuwingen erkennen](./media/iot-accelerators-remote-monitoring-maintain/maintenanceacknowledge-inline.png)](./media/iot-accelerators-remote-monitoring-maintain/maintenanceacknowledge-expanded.png#lightbox)
+[![De waarschuwingen bevestigen](./media/iot-accelerators-remote-monitoring-maintain/maintenanceacknowledge-inline.png)](./media/iot-accelerators-remote-monitoring-maintain/maintenanceacknowledge-expanded.png#lightbox)
 
 Als u de waarschuwing hebt geaccepteerd, wordt de status van het voorval gewijzigd in **Geaccepteerd**.
 
 In de lijst met gewaarschuwde apparaten ziet u welk **Prototypeapparaat** verantwoordelijk is voor het activeren van de temperatuurwaarschuwing:
 
-[![De apparaten weergeven die de waarschuwing veroorzaken](./media/iot-accelerators-remote-monitoring-maintain/maintenanceresponsibledevice-inline.png)](./media/iot-accelerators-remote-monitoring-maintain/maintenanceresponsibledevice-expanded.png#lightbox)
+[![De apparaten weer geven die de waarschuwing veroorzaken](./media/iot-accelerators-remote-monitoring-maintain/maintenanceresponsibledevice-inline.png)](./media/iot-accelerators-remote-monitoring-maintain/maintenanceresponsibledevice-expanded.png#lightbox)
 
 ## <a name="resolve-the-issue"></a>Het probleem oplossen
 
@@ -66,19 +66,19 @@ Als u het probleem met het **Prototypeapparaat** wilt oplossen, moet u de method
 
 Als u actie wilt ondernemen voor een apparaat, selecteert u het apparaat in de lijst met gewaarschuwde apparaten en kiest u vervolgens **Taken**. Het model **Prototypeapparaat** biedt ondersteuning voor zes methoden:
 
-[![De methoden weergeven die het apparaat ondersteunt](./media/iot-accelerators-remote-monitoring-maintain/maintenancemethods-inline.png)](./media/iot-accelerators-remote-monitoring-maintain/maintenancemethods-expanded.png#lightbox)
+[![De methoden weer geven die het apparaat ondersteunt](./media/iot-accelerators-remote-monitoring-maintain/maintenancemethods-inline.png)](./media/iot-accelerators-remote-monitoring-maintain/maintenancemethods-expanded.png#lightbox)
 
-Kies **DecreaseTemperature** en stel de taaknaam in op **DecreaseTemperature**. Klik vervolgens op **Toepassen:**
+Kies **DecreaseTemperature** en stel de taaknaam in op **DecreaseTemperature**. Klik vervolgens op **Toep assen**:
 
-[![De taak maken om de temperatuur te verlagen](./media/iot-accelerators-remote-monitoring-maintain/maintenancecreatejob-inline.png)](./media/iot-accelerators-remote-monitoring-maintain/maintenancecreatejob-expanded.png#lightbox)
+[![De taak maken om de Tempe ratuur te verlagen](./media/iot-accelerators-remote-monitoring-maintain/maintenancecreatejob-inline.png)](./media/iot-accelerators-remote-monitoring-maintain/maintenancecreatejob-expanded.png#lightbox)
 
 Als u de status van de taak wilt bijhouden, klikt u op **Taakstatus bekijken**. Gebruik de weergave **Taken** om alle aanroepen voor taken en methoden in de oplossing bij te houden:
 
-[![Controleer de taak om de temperatuur te verlagen](./media/iot-accelerators-remote-monitoring-maintain/maintenancerunningjob-inline.png)](./media/iot-accelerators-remote-monitoring-maintain/maintenancerunningjob-expanded.png#lightbox)
+[![De taak bewaken om de Tempe ratuur te verlagen](./media/iot-accelerators-remote-monitoring-maintain/maintenancerunningjob-inline.png)](./media/iot-accelerators-remote-monitoring-maintain/maintenancerunningjob-expanded.png#lightbox)
 
 U kunt controleren of de temperatuur van het apparaat is afgenomen door de telemetrie te bekijken op de **Dashboardpagina**:
 
-[![Bekijk de daling van de temperatuur](./media/iot-accelerators-remote-monitoring-maintain/jobresult-inline.png)](./media/iot-accelerators-remote-monitoring-maintain/jobresult-expanded.png#lightbox)
+[![De afname van de Tempe ratuur weer geven](./media/iot-accelerators-remote-monitoring-maintain/jobresult-inline.png)](./media/iot-accelerators-remote-monitoring-maintain/jobresult-expanded.png#lightbox)
 
 [!INCLUDE [iot-accelerators-tutorial-cleanup](../../includes/iot-accelerators-tutorial-cleanup.md)]
 

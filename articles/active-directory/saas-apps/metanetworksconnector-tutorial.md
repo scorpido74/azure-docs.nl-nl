@@ -1,5 +1,5 @@
 ---
-title: 'Zelfstudie: Azure Active Directory-integratie met Meta Networks Connector | Microsoft Documenten'
+title: 'Zelf studie: integratie met de connector voor meta netwerken Azure Active Directory | Microsoft Docs'
 description: Ontdek hoe u eenmalige aanmelding configureert tussen Azure Active Directory en Meta Networks Connector.
 services: active-directory
 documentationCenter: na
@@ -16,13 +16,13 @@ ms.topic: tutorial
 ms.date: 02/21/2019
 ms.author: jeedes
 ms.openlocfilehash: a09eda25e8c7cc087770210cdfbe7e2bc9832acf
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "73160639"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-meta-networks-connector"></a>Zelfstudie: Azure Active Directory-integratie met Meta Networks Connector
+# <a name="tutorial-azure-active-directory-integration-with-meta-networks-connector"></a>Zelf studie: integratie met de connector voor meta netwerken Azure Active Directory
 
 In deze zelfstudie leert u hoe u Meta Networks Connector kunt integreren met Azure Active Directory (Azure AD).
 De integratie van Meta Networks Connector met Azure AD biedt de volgende voordelen:
@@ -32,7 +32,7 @@ De integratie van Meta Networks Connector met Azure AD biedt de volgende voordel
 * U kunt uw accounts vanaf één centrale locatie beheren: de Azure-portal.
 
 Zie [What is application access and single sign-on with Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?) als u wilt graag meer wilt weten over de integratie van SaaS-apps met Azure AD.
-Als u geen Azure-abonnement hebt, [maakt u een gratis account](https://azure.microsoft.com/free/) voordat u begint.
+Als u nog geen abonnement op Azure hebt, [Maak dan een gratis account](https://azure.microsoft.com/free/) aan voordat u begint.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -103,11 +103,11 @@ Voer de volgende stappen uit als u Azure AD-eenmalige aanmelding wilt configurer
 
     ![Standaard SAML-configuratie bewerken](common/edit-urls.png)
 
-4. Voer in de sectie **BasisSAML-configuratie** de volgende stappen uit als u de toepassing in de **idp-modus** wilt configureren:
+4. Als u de toepassing in de gestarte modus van **IDP** wilt configureren, voert u de volgende stappen uit in de sectie **basis configuratie van SAML** :
 
     ![Gegevens van domein en URL's voor eenmalige aanmelding van Meta Networks Connector](common/idp-intiated.png)
 
-    a. Typ **in** het tekstvak Id een URL met het volgende patroon:`https://login.nsof.io/v1/<ORGANIZATION-SHORT-NAME>/saml/metadata`
+    a. Typ in het tekstvak **id** een URL met het volgende patroon:`https://login.nsof.io/v1/<ORGANIZATION-SHORT-NAME>/saml/metadata`
 
     b. In het tekstvak **Antwoord-URL** typt u een URL met de volgende notatie: `https://login.nsof.io/v1/<ORGANIZATION-SHORT-NAME>/sso/saml`
 
@@ -115,20 +115,20 @@ Voer de volgende stappen uit als u Azure AD-eenmalige aanmelding wilt configurer
 
     ![Gegevens van domein en URL's voor eenmalige aanmelding van Meta Networks Connector](common/both-advanced-urls.png)
 
-    a. Typ in het tekstvak **AANmeldings-URL** een URL met het volgende patroon:`https://<ORGANIZATION-SHORT-NAME>.metanetworks.com/login`
+    a. Typ in het tekstvak **URL voor aanmelding** een URL met het volgende patroon:`https://<ORGANIZATION-SHORT-NAME>.metanetworks.com/login`
 
     b. In het tekstvak **Relaystatus** typt u een URL met het volgende patroon: `https://<ORGANIZATION-SHORT-NAME>.metanetworks.com/#/`
 
     > [!NOTE]
     > Dit zijn geen echte waarden. Werk deze waarden bij met de daadwerkelijke id, antwoord-URL en URL voor eenmalige aanmelding. Dit wordt verderop in de zelfstudie nog uitgelegd.
 
-6. De toepassing Meta Networks Connector verwacht de SAML-asserties in een specifieke indeling. Hiervoor moet u aangepaste kenmerktoewijzingen toevoegen aan de configuratie van uw SAML-tokenkenmerken. In de volgende schermafbeelding wordt de lijst met standaardkenmerken weergegeven. Klik **op Pictogram Bewerken** om het dialoogvenster **Gebruikerskenmerken te** openen.
+6. De toepassing Meta Networks Connector verwacht de SAML-asserties in een specifieke indeling. Hiervoor moet u aangepaste kenmerktoewijzingen toevoegen aan de configuratie van uw SAML-tokenkenmerken. In de volgende schermafbeelding wordt de lijst met standaardkenmerken weergegeven. Klik op pictogram **bewerken** om het dialoog venster **gebruikers kenmerken** te openen.
 
     ![installatiekopie](common/edit-attribute.png)
     
 7. Bovendien verwacht de toepassing Meta Networks Connector nog enkele kenmerken die als SAML-antwoord moeten worden doorgestuurd. In de sectie **Gebruikersclaims** in het dialoogvenster **Gebruikerskenmerken** voert u de volgende stappen uit om het kenmerk van het SAML-token toe te voegen zoals wordt weergegeven in de onderstaande tabel:
     
-    | Name | Bronkenmerk | Naamruimte|
+    | Naam | Bronkenmerk | Naamruimte|
     | ---------------| --------------- | -------- |
     | firstname | user.givenname | |
     | lastname | user.surname | |
@@ -173,7 +173,7 @@ Voer de volgende stappen uit als u Azure AD-eenmalige aanmelding wilt configurer
 1. Open een nieuw tabblad in uw browser en meld u aan bij uw Meta Networks Connector-beheerdersaccount.
     
     > [!NOTE]
-    > Meta Networks Connector is een beveiligd systeem. Dus voordat u toegang tot hun portal moet u uw openbare IP-adres toegevoegd aan een lijst toestaan aan hun kant. Volg de [hier](https://whatismyipaddress.com/) opgegeven koppeling om uw openbare IP-adres te verkrijgen. Stuur uw IP-adres naar het [ondersteuningsteam van de Meta Networks Connector Client](mailto:support@metanetworks.com) om uw IP-adres toe te voegen aan een lijst met toegestane gegevens.
+    > Meta Networks Connector is een beveiligd systeem. Voordat u toegang krijgt tot hun portal, moet u uw open bare IP-adres aan de zijkant toevoegen aan een lijst met toegestane adressen. Volg de [hier](https://whatismyipaddress.com/) opgegeven koppeling om uw openbare IP-adres te verkrijgen. Verzend uw IP-adres naar het [client ondersteunings team van de meta-netwerk connector](mailto:support@metanetworks.com) om uw IP-adres toe te voegen aan een acceptatie lijst.
     
 2. Ga naar **Administrator** en selecteer **Settings**.
     
@@ -219,7 +219,7 @@ Het doel van deze sectie is om in de Azure-portal een testgebruiker met de naam 
 
     ![De koppelingen Gebruikers en groepen en Alle gebruikers](common/users.png)
 
-2. Selecteer **Nieuwe gebruiker** boven aan het scherm.
+2. Selecteer **nieuwe gebruiker** boven aan het scherm.
 
     ![Knop Nieuwe gebruiker](common/new-user.png)
 
@@ -227,14 +227,14 @@ Het doel van deze sectie is om in de Azure-portal een testgebruiker met de naam 
 
     ![Het dialoogvenster Gebruiker](common/user-properties.png)
 
-    a. Voer In het veld **Naam** **BrittaSimon**in .
+    a. Voer **BrittaSimon**in het veld **naam** in.
   
-    b. Typ in het veld **Gebruikersnaam** **de tekst brittasimon\@yourcompanydomain.extension**  
+    b. Typ **\@brittasimon yourcompanydomain. extension** in het veld **gebruikers naam** .  
     Bijvoorbeeld: BrittaSimon@contoso.com
 
     c. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak Wachtwoord.
 
-    d. Klik **op Maken**.
+    d. Klik op **maken**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>De Azure AD-testgebruiker toewijzen
 
@@ -256,11 +256,11 @@ In deze sectie zorgt u ervoor dat Britta Simon gebruik kan maken van eenmalige a
 
     ![Het deelvenster Toewijzing toevoegen](common/add-assign-user.png)
 
-5. Selecteer **In** het dialoogvenster Gebruikers en groepen **Britta Simon** in de lijst Gebruikers en klik je op de knop **Selecteren** onder aan het scherm.
+5. Selecteer in het dialoog venster **gebruikers en groepen** **Julia Simon** in de lijst gebruikers en klik vervolgens op de knop **selecteren** onder aan het scherm.
 
-6. Als u een rolwaarde verwacht in de SAML-bewering, selecteert u in het dialoogvenster **Rol selecteren** de juiste rol voor de gebruiker in de lijst en klikt u op de knop **Selecteren** onder aan het scherm.
+6. Als u een wille keurige rol verwacht in de SAML-bewering, selecteert u in het dialoog venster **rol selecteren** de juiste rol voor de gebruiker in de lijst en klikt u op de knop **selecteren** onder aan het scherm.
 
-7. Klik **in** het dialoogvenster Toewijzing toevoegen op de knop **Toewijzen.**
+7. Klik in het dialoog venster **toewijzing toevoegen** op de knop **toewijzen** .
 
 ### <a name="create-meta-networks-connector-test-user"></a>Meta Networks Connector-testgebruiker maken
 
@@ -279,7 +279,7 @@ Wanneer u in het toegangsvenster op de tegel van Meta Networks Connector klikt, 
 
 - [Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Wat is toepassingstoegang en eenmalige aanmelding met Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Wat is toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Wat is voorwaardelijke toegang in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

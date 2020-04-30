@@ -1,5 +1,5 @@
 ---
-title: Apparaten configureren in remote monitoring-oplossing - Azure | Microsoft Documenten
+title: Apparaten in de oplossing voor externe controle configureren-Azure | Microsoft Docs
 description: In deze zelfstudie leert u hoe u apparaten beheert die zijn verbonden met de verbetering voor de externe bewakingsoplossing.
 author: dominicbetts
 manager: timlt
@@ -10,10 +10,10 @@ ms.date: 03/08/2019
 ms.topic: tutorial
 ms.custom: mvc
 ms.openlocfilehash: e4236952bd41c4955e337813ff6d706263b8ef47
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "73890903"
 ---
 # <a name="tutorial-configure-devices-connected-to-your-monitoring-solution"></a>Zelfstudie: Apparaten configureren en beheren die zijn verbonden met uw bewakingsoplossing
@@ -30,7 +30,7 @@ In deze zelfstudie hebt u:
 > * Een apparaat opnieuw configureren.
 > * Uw apparaten organiseren.
 
-Als u geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) voordat u begint.
+Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
 
 [!INCLUDE [iot-accelerators-tutorial-prereqs](../../includes/iot-accelerators-tutorial-prereqs.md)]
 
@@ -42,17 +42,17 @@ Navigeer naar de pagina **Device Explorer** in de oplossing en klik op **+ Nieuw
 
 In het deelvenster **Nieuw apparaat** kiest u **Gesimuleerd**, laat u het aantal in te richten apparaten op **1** staan, kiest u **Faulty Engine** als apparaatmodel en kiest u **Toepassen** om het gesimuleerde apparaat te maken:
 
-[![Een gesimuleerde motorinrichting inrichten](./media/iot-accelerators-remote-monitoring-manage/devicesprovisionengine-inline.png)](./media/iot-accelerators-remote-monitoring-manage/devicesprovisionengine-expanded.png#lightbox)
+[![Een gesimuleerd engine-apparaat inrichten](./media/iot-accelerators-remote-monitoring-manage/devicesprovisionengine-inline.png)](./media/iot-accelerators-remote-monitoring-manage/devicesprovisionengine-expanded.png#lightbox)
 
 ## <a name="test-the-simulated-device"></a>Het gesimuleerde apparaat testen
 
 Om te testen of het gesimuleerde engine-apparaat telemetrie verzendt en eigenschapswaarden meldt, selecteert u het apparaat in de lijst met apparaten op de pagina **Device Explorer**. Live informatie over uw apparaat wordt weergegeven in het deelvenster **Apparaatdetails**:
 
-[![Bekijk het nieuwe gesimuleerde motorapparaat](./media/iot-accelerators-remote-monitoring-manage/devicesviewnew-inline.png)](./media/iot-accelerators-remote-monitoring-manage/devicesviewnew-expanded.png#lightbox)
+[![Het nieuwe gesimuleerde engine apparaat weer geven](./media/iot-accelerators-remote-monitoring-manage/devicesviewnew-inline.png)](./media/iot-accelerators-remote-monitoring-manage/devicesviewnew-expanded.png#lightbox)
 
 Controleer in **Apparaatdetails** of het nieuwe apparaat telemetrie verzendt. Als u de trillingstelemetriestroom van uw apparaat wilt weergeven, klikt u op **Trillingen**:
 
-[![Selecteer een telemetriestroom die u wilt weergeven](./media/iot-accelerators-remote-monitoring-manage/devicesvibration-inline.png)](./media/iot-accelerators-remote-monitoring-manage/devicesvibration-expanded.png#lightbox)
+[![Een telemetrie-stroom selecteren om weer te geven](./media/iot-accelerators-remote-monitoring-manage/devicesvibration-inline.png)](./media/iot-accelerators-remote-monitoring-manage/devicesvibration-expanded.png#lightbox)
 
 In het deelvenster **Apparaatdetails** ziet u andere informatie over het apparaat, zoals tagwaarden, de methoden die worden ondersteund en de eigenschappen die zijn gerapporteerd door het apparaat.
 
@@ -66,15 +66,15 @@ Als u wilt testen of u configuratie-eigenschappen van het apparaat kunt bijwerke
 
 Voor het bijwerken van de locatie van het apparaat stelt u de taaknaam in op **UpdateEngineLocation**, de lengtegraad op **-122,15**, de locatie op **Factory 2**, de breedtegraad op **47,62** en klikt u op **Toepassen**:
 
-[![Een waarde van de eigenschap van een apparaat bijwerken](./media/iot-accelerators-remote-monitoring-manage/devicesreconfigurephysical-inline.png)](./media/iot-accelerators-remote-monitoring-manage/devicesreconfigurephysical-expanded.png#lightbox)
+[![Een eigenschaps waarde voor een apparaat bijwerken](./media/iot-accelerators-remote-monitoring-manage/devicesreconfigurephysical-inline.png)](./media/iot-accelerators-remote-monitoring-manage/devicesreconfigurephysical-expanded.png#lightbox)
 
-Als u de status van de taak wilt bijhouden, klikt u op **Taakstatus weergeven:**
+Klik op **taak status weer geven**om de status van de taak te volgen:
 
-[![Een waarde van de eigenschap van een apparaat bijwerken](./media/iot-accelerators-remote-monitoring-manage/locationjobstatus-inline.png)](./media/iot-accelerators-remote-monitoring-manage/locationjobstatus-expanded.png#lightbox)
+[![Een eigenschaps waarde voor een apparaat bijwerken](./media/iot-accelerators-remote-monitoring-manage/locationjobstatus-inline.png)](./media/iot-accelerators-remote-monitoring-manage/locationjobstatus-expanded.png#lightbox)
 
 Nadat de taak is voltooid, gaat u naar de pagina **Dashboard**. Het apparaat wordt weergegeven op de kaart in de nieuwe locatie:
 
-[![Locatie van de motor weergeven](./media/iot-accelerators-remote-monitoring-manage/enginelocation-inline.png)](./media/iot-accelerators-remote-monitoring-manage/enginelocation-expanded.png#lightbox)
+[![Machine locatie weer geven](./media/iot-accelerators-remote-monitoring-manage/enginelocation-inline.png)](./media/iot-accelerators-remote-monitoring-manage/enginelocation-expanded.png#lightbox)
 
 ## <a name="organize-your-devices"></a>Uw apparaten organiseren
 
@@ -85,21 +85,21 @@ Om het als operator gemakkelijker te maken uw apparaten te organiseren en behere
 
 Als u al uw apparaten wilt weergeven, gaat u naar de pagina **Device Explorer** en kiest u **Alle apparaten** als filter:
 
-[![Alle apparaten weergeven](./media/iot-accelerators-remote-monitoring-manage/devicesalldevices-inline.png)](./media/iot-accelerators-remote-monitoring-manage/devicesalldevices-expanded.png#lightbox)
+[![Alle apparaten weer geven](./media/iot-accelerators-remote-monitoring-manage/devicesalldevices-inline.png)](./media/iot-accelerators-remote-monitoring-manage/devicesalldevices-expanded.png#lightbox)
 
 ### <a name="add-tags"></a>Tags toevoegen
 
-Selecteer alle **Trucks** en **Prototyping**-apparaten. Klik vervolgens op **Vacatures**.
+Selecteer alle **Trucks** en **Prototyping**-apparaten. Klik vervolgens op **taken**.
 
-Selecteer in het scherm **Taken** de optie **Tag**, stel de naam van de taak in op **AddConnectedVehicleTag** en voeg een tekstlabel met de naam **FieldService** in met de waarde **ConnectedVehicle**. Klik vervolgens op **Toepassen:**
+Selecteer in het scherm **Taken** de optie **Tag**, stel de naam van de taak in op **AddConnectedVehicleTag** en voeg een tekstlabel met de naam **FieldService** in met de waarde **ConnectedVehicle**. Klik vervolgens op **Toep assen**:
 
-[![Tag toevoegen aan prototype- en truckapparaten](./media/iot-accelerators-remote-monitoring-manage/devicesaddtag-inline.png)](./media/iot-accelerators-remote-monitoring-manage/devicesaddtag-expanded.png#lightbox)
+[![Tag toevoegen aan prototype-en truck apparaten](./media/iot-accelerators-remote-monitoring-manage/devicesaddtag-inline.png)](./media/iot-accelerators-remote-monitoring-manage/devicesaddtag-expanded.png#lightbox)
 
-Selecteer op de apparaatpagina alle **Chiller**-, **Elevator**- en **Engine**-apparaten. Klik vervolgens op **Vacatures**.
+Selecteer op de apparaatpagina alle **Chiller**-, **Elevator**- en **Engine**-apparaten. Klik vervolgens op **taken**.
 
-Selecteer in het scherm **Taken** de optie **Tag**, stel de naam van de taak in op **AddSmartBuildingTag **en voeg een teksttag met de naam **FieldService** in met de waarde **SmartBuilding**. Klik vervolgens op **Toepassen:**
+Selecteer in het scherm **Taken** de optie **Tag**, stel de naam van de taak in op **AddSmartBuildingTag **en voeg een teksttag met de naam **FieldService** in met de waarde **SmartBuilding**. Klik vervolgens op **Toep assen**:
 
-[![Tag toevoegen aan koelmachine, lift en motorapparaten](./media/iot-accelerators-remote-monitoring-manage/devicesaddtag2-inline.png)](./media/iot-accelerators-remote-monitoring-manage/devicesaddtag2-expanded.png#lightbox)
+[![Tag toevoegen aan chiller-, Lift-en motor apparaten](./media/iot-accelerators-remote-monitoring-manage/devicesaddtag2-inline.png)](./media/iot-accelerators-remote-monitoring-manage/devicesaddtag2-expanded.png#lightbox)
 
 ### <a name="create-filters"></a>Filters maken
 
@@ -109,15 +109,15 @@ U kunt nu de tagwaarden gebruiken om filters te maken. Klik op de pagina **Devic
 
 Maak een tekstfilter die de tagnaam **FieldService** en de waarde **SmartBuilding** in de voorwaarde gebruikt. Sla het filter op als **Smart Building**:
 
-[![Slim bouwfilter maken](./media/iot-accelerators-remote-monitoring-manage/smartbuildingfilter-inline.png)](./media/iot-accelerators-remote-monitoring-manage/smartbuildingfilter-expanded.png#lightbox)
+[![Slim bouw filter maken](./media/iot-accelerators-remote-monitoring-manage/smartbuildingfilter-inline.png)](./media/iot-accelerators-remote-monitoring-manage/smartbuildingfilter-expanded.png#lightbox)
 
 Maak een tekstfilter die de tagnaam **FieldService** en de waarde **ConnectedVehicle** in de voorwaarde gebruikt. Sla het filter op als **Connected Vehicle**.
 
-[![Verbonden voertuigfilter maken](./media/iot-accelerators-remote-monitoring-manage/connectedvehiclefilter-inline.png)](./media/iot-accelerators-remote-monitoring-manage/connectedvehiclefilter-expanded.png#lightbox)
+[![Een verbonden voertuig filter maken](./media/iot-accelerators-remote-monitoring-manage/connectedvehiclefilter-inline.png)](./media/iot-accelerators-remote-monitoring-manage/connectedvehiclefilter-expanded.png#lightbox)
 
 Nu kan de Contoso-operator apparaten opvragen op basis van het operationele team:
 
-[![Verbonden voertuigfilter maken](./media/iot-accelerators-remote-monitoring-manage/filterinaction-inline.png)](./media/iot-accelerators-remote-monitoring-manage/filterinaction-expanded.png#lightbox)
+[![Een verbonden voertuig filter maken](./media/iot-accelerators-remote-monitoring-manage/filterinaction-inline.png)](./media/iot-accelerators-remote-monitoring-manage/filterinaction-expanded.png#lightbox)
 
 [!INCLUDE [iot-accelerators-tutorial-cleanup](../../includes/iot-accelerators-tutorial-cleanup.md)]
 

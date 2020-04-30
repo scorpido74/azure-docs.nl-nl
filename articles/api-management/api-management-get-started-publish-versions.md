@@ -14,10 +14,10 @@ ms.topic: tutorial
 ms.date: 11/04/2019
 ms.author: apimpm
 ms.openlocfilehash: d0c837ac376f9d496baaf1ed67d0ec80c996804a
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "73176830"
 ---
 # <a name="publish-multiple-versions-of-your-api"></a>Meerdere versies van uw API publiceren 
@@ -89,13 +89,13 @@ Als aanroepers de nieuwe versie willen zien, moet deze worden toegevoegd aan een
 3. Selecteer **API's**.
 4. Selecteer **Toevoegen**.
 5. Selecteer **Demo Conference API, versie v1**.
-6. Klik **op Selecteren**.
+6. Klik op **selecteren**.
 
 ## <a name="browse-the-developer-portal-to-see-the-version"></a>Blader door de portal voor ontwikkelaars om de versie te zien
 
 1. Selecteer **ontwikkelaarsportal** in het menu bovenaan.
-2. Selecteer **API's** en klik op de **Demo Conference API**.
-3. U ziet een vervolgkeuzelijst met meerdere versies naast de API-naam.
+2. Selecteer **api's** en klik op de **demo conferentie-API**.
+3. U ziet een vervolg keuzelijst met meerdere versies naast de naam van de API.
 4. Selecteer **v1**.
 5. U ziet de **Verzoek-URL** van de eerste bewerking in de lijst. Het laat zien dat het API URL-pad **v1** bevat.
 

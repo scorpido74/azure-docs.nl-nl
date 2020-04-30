@@ -1,14 +1,14 @@
 ---
-title: Een containertoepassing implementeren met CI/CD
+title: Een container toepassing implementeren met CI/CD
 description: In deze zelfstudie leert u continue integratie en implementatie in te stellen voor een Azure Service Fabric-containertoepassing met behulp van Visual Studio Azure DevOps.
 ms.topic: tutorial
 ms.date: 08/29/2018
 ms.custom: mvc
 ms.openlocfilehash: 9cf619eddd07bbe55cd7aea5f27051a7d0415c24
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "75614125"
 ---
 # <a name="tutorial-deploy-a-container-application-with-cicd-to-a-service-fabric-cluster"></a>Zelfstudie: Een containertoepassing met CI/CD implementeren in een Service Fabric-cluster
@@ -42,7 +42,7 @@ Kies een doelprofiel in het toepassingsproject, dat voor de werkstroom voor cont
 
 Deel de bronbestanden van uw toepassing met een teamproject in Azure DevOps zodat u builds kunt genereren.
 
-Maak een nieuwe lokale Git repo voor uw project door **Toevoegen aan Source Control** -> **Git** te selecteren op de statusbalk in de rechterbenedenhoek van Visual Studio.
+Maak een nieuwe lokale Git-opslag plaats voor uw project -> **door op de status balk in de** rechter bovenhoek van Visual Studio **toevoegen aan broncode beheer te**selecteren.
 
 Ga naar de **Push**-weergave in **Team Explorer** en selecteer onder **Push to Azure DevOps** de knop **Publish Git Repo**.
 
@@ -71,7 +71,7 @@ Selecteer in het linkerdeelvenster de optie **Pipelines** en klik op **New Pipel
 
 ![Nieuwe pijplijn][new-pipeline]
 
-Selecteer **Azure Repos Git** als bron, de naam van uw Team-project, de opslagplaats van het project en de standaardbranch **master** of handmatige en geplande builds.  Klik vervolgens op **Doorgaan**.
+Selecteer **Azure Repos Git** als bron, de naam van uw Team-project, de opslagplaats van het project en de standaardbranch **master** of handmatige en geplande builds.  Klik vervolgens op **door gaan**.
 
 Selecteer in **Select a template** de sjabloon **Azure Service Fabric Application met with Docker support** en klik op **Apply**.
 
@@ -99,7 +99,7 @@ Klik in het dialoogvenster **Save build pipeline and queue** op **Save & queue**
 
 ![Triggers selecteren][save-and-queue]
 
-Hiermee worden ook triggers gebouwd na pushen of inchecken. Als u de voortgang van de build wilt controleren, schakelt u over naar het tabblad **Builds.**  Zodra u controleert of de build succesvol wordt uitgevoerd, definieert u een releasedefinitie die uw toepassing in een cluster implementeert.
+Hiermee worden ook triggers gebouwd na pushen of inchecken. Als u de voortgang van de build wilt controleren, gaat u naar het tabblad **builds** .  Nadat u hebt gecontroleerd of de build is uitgevoerd, definieert u een release definitie waarmee uw toepassing wordt geïmplementeerd in een cluster.
 
 ### <a name="create-a-release-definition"></a>Release-definitie maken
 
@@ -134,7 +134,7 @@ Schakel een trigger voor continue implementatie in, zodat automatisch een releas
 
 ![Trigger inschakelen][enable-trigger]
 
-Selecteer **+ Maak** -> **een release** -> **maken** om handmatig een release te maken. U kunt de voortgang van de release volgen op het tabblad **Releases**.
+Selecteer **+ release** -> **Create a release** -> **Create** om hand matig een release te maken. U kunt de voortgang van de release volgen op het tabblad **Releases**.
 
 Controleer of de implementatie is gelukt en de toepassing in het cluster wordt uitgevoerd.  Open een webbrowser en ga naar `http://mysftestcluster.southcentralus.cloudapp.azure.com:19080/Explorer/`.  Noteer de versie van de toepassing (in dit voorbeeld 1.0.0.20170616.3).
 
@@ -174,7 +174,7 @@ Het kan enkele minuten duren voordat de toepassing is bijgewerkt. Als het bijwer
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze zelfstudie hebt u het volgende geleerd:
+In deze zelfstudie heeft u het volgende geleerd:
 
 > [!div class="checklist"]
 > * Broncodebeheer aan uw project toevoegen

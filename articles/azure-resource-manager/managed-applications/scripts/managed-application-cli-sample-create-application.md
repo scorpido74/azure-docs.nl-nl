@@ -1,16 +1,16 @@
 ---
-title: Voorbeeld van Azure CLI-script - Een beheerde toepassing implementeren
-description: Biedt Azure CLI-voorbeeldscript waarmee een Azure Managed Application-definitie wordt geïmplementeerd in het abonnement.
+title: Voor beeld van Azure CLI-script-een beheerde toepassing implementeren
+description: Biedt een Azure CLI-voorbeeld script dat een door Azure beheerde toepassings definitie implementeert voor het abonnement.
 author: tfitzmac
 ms.devlang: azurecli
 ms.topic: sample
 ms.date: 10/25/2017
 ms.author: tomfitz
 ms.openlocfilehash: 346ea59209bc2f74970e708c947f5caa158a0338
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "75650063"
 ---
 # <a name="deploy-a-managed-application-for-service-catalog-with-azure-cli"></a>Een beheerde toepassing implementeren voor de servicecatalogus met Azure CLI

@@ -1,6 +1,6 @@
 ---
-title: 'Zelfstudie: Apparaatgegevens verzenden via transparante gateway - Machine Learning op Azure IoT Edge'
-description: In deze zelfstudie ziet u hoe u uw ontwikkelmachine gebruiken als een gesimuleerd IoT Edge-apparaat om gegevens naar de IoT-hub te verzenden door een apparaat te doorlopen dat is geconfigureerd als een transparante gateway.
+title: 'Zelf studie: apparaatgegevens verzenden via transparante gateway-Machine Learning op Azure IoT Edge'
+description: Deze zelf studie laat zien hoe u uw ontwikkel computer als een gesimuleerd IoT Edge apparaat kunt gebruiken om gegevens te verzenden naar de IoT Hub door een apparaat te passeren dat is geconfigureerd als een transparante gateway.
 author: kgremban
 manager: philmea
 ms.author: kgremban
@@ -9,65 +9,65 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.openlocfilehash: 50f339b257110f0a5dc0ac08b9f40043ee384afb
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "74706912"
 ---
-# <a name="tutorial-send-data-via-transparent-gateway"></a>Zelfstudie: Gegevens verzenden via transparante gateway
+# <a name="tutorial-send-data-via-transparent-gateway"></a>Zelf studie: gegevens verzenden via een transparante gateway
 
 > [!NOTE]
-> Dit artikel maakt deel uit van een reeks voor een zelfstudie over het gebruik van Azure Machine Learning op IoT Edge. Als u rechtstreeks tot dit artikel bent gekomen, raden we u aan om te beginnen met het [eerste artikel](tutorial-machine-learning-edge-01-intro.md) in de serie voor de beste resultaten.
+> Dit artikel maakt deel uit van een reeks voor een zelf studie over het gebruik van Azure Machine Learning op IoT Edge. Als u rechtstreeks in dit artikel hebt gearriveerd, raden we u aan om te beginnen met het [eerste artikel](tutorial-machine-learning-edge-01-intro.md) in de reeks voor de beste resultaten.
 
-In dit artikel gebruiken we de ontwikkelmachine opnieuw als een gesimuleerd apparaat, maar in plaats van gegevens rechtstreeks naar de IoT Hub te verzenden, stuurt het apparaat gegevens naar het IoT Edge-apparaat dat is geconfigureerd als een transparante gateway.
+In dit artikel gebruiken we de ontwikkel machine opnieuw als een gesimuleerd apparaat, maar in plaats van gegevens rechtstreeks naar de IoT Hub verzenden het apparaat gegevens verzendt naar het IoT Edge apparaat geconfigureerd als een transparante gateway.
 
-We controleren de werking van het IoT Edge-apparaat terwijl het gesimuleerde apparaat gegevens verzendt. Zodra het apparaat klaar is met werken, bekijken we de gegevens in ons opslagaccount om te valideren dat alles werkt zoals verwacht.
+We controleren de werking van het IoT Edge apparaat terwijl het gesimuleerde apparaat gegevens verzendt. Zodra het apparaat is voltooid, bekijken we de gegevens in het opslag account om alles te valideren wat naar verwachting werkt.
 
-Deze stap wordt meestal uitgevoerd door een cloud- of apparaatontwikkelaar.
+Deze stap wordt doorgaans uitgevoerd door een ontwikkelaar van de Cloud of het apparaat.
 
-## <a name="review-device-harness"></a>Apparaatharnas controleren
+## <a name="review-device-harness"></a>Apparaat-harnas controleren
 
-Gebruik het [DeviceHarness-project](tutorial-machine-learning-edge-03-generate-data.md) om het downstreamapparaat (of het blad) te simuleren. Verbinding maken met de transparante gateway vereist twee extra dingen:
+Het [DeviceHarness-project](tutorial-machine-learning-edge-03-generate-data.md) opnieuw gebruiken om het downstream-of Leaf-apparaat te simuleren. Voor het maken van verbinding met de transparante gateway zijn twee extra dingen vereist:
 
-* Registreer het certificaat om het downstream-apparaat (in dit geval onze ontwikkelingsmachine) te laten vertrouwen op de certificaatinstantie die wordt gebruikt door de IoT Edge-runtime.
-* Voeg de volledig gekwalificeerde domeinnaam (FQDN) van de edge gateway toe aan de tekenreeks voor apparaatverbinding.
+* Registreer het certificaat om het downstream-apparaat te maken (in dit geval onze ontwikkel computer) vertrouwt de certificerings instantie die wordt gebruikt door de IoT Edge runtime.
+* Voeg de Edge-gateway Fully Qualified Domain Name (FQDN) toe aan het apparaat connection string.
 
-Kijk naar de code om te zien hoe deze twee items worden geïmplementeerd.
+Bekijk de code om te zien hoe deze twee items worden geïmplementeerd.
 
-1. Open Visual Studio Code op uw ontwikkelmachine.
+1. Open Visual Studio code op uw ontwikkel machine.
 
-2. Gebruik **De** > **map Bestand openen...** om C te openen:\\source\\IoTEdgeAndMlSample\\DeviceHarness.
+2. **Bestand** > **openen map...** om C:\\source\\IoTEdgeAndMlSample\\DeviceHarness te openen.
 
-3. Kijk naar de methode InstallCertificate() in Program.cs.
+3. Bekijk de methode InstallCertificate () in Program.cs.
 
-4. Houd er rekening mee dat als de code het certificaatpad vindt, de methode CertificateManager.InstallCACert wordt aangebeld om het certificaat op de machine te installeren.
+4. Als de code het certificaatpad vindt, wordt de methode CertificateManager. InstallCACert aangeroepen om het certificaat op de computer te installeren.
 
-5. Kijk nu naar de GetIotHubDevice-methode op de TurbofanDevice-klasse.
+5. Bekijk nu de methode GetIotHubDevice in de klasse TurbofanDevice.
 
-6. Wanneer de gebruiker de FQDN van de gateway opgeeft met behulp van de optie "-g", wordt die waarde doorgegeven aan deze methode als gatewayFqdn, die wordt toegevoegd aan de tekenreeks voor apparaatverbinding.
+6. Wanneer de gebruiker de FQDN van de gateway specificeert met behulp van de optie-g, wordt die waarde door gegeven aan deze methode als gatewayFqdn, die wordt toegevoegd aan het apparaat connection string.
 
    ```csharp
    connectionString = $"{connectionString};GatewayHostName={gatewayFqdn.ToLower()}";
    ```
 
-## <a name="build-and-run-leaf-device"></a>Bladapparaat bouwen en uitvoeren
+## <a name="build-and-run-leaf-device"></a>Een Leaf-apparaat bouwen en uitvoeren
 
-1. Als het DeviceHarness-project nog steeds wordt geopend in Visual Studio Code, bouwt u het project (Ctrl + Shift + B of **Terminal** > **Run Build Task...**) en selecteert u **Bouwen** in het dialoogvenster.
+1. Als het DeviceHarness-project nog is geopend in Visual Studio code, bouwt u het project (CTRL + SHIFT + B of **Terminal** > **Run-taak maken...**) en selecteert u **Build** in het dialoog venster.
 
-2. Zoek de volledig gekwalificeerde domeinnaam (FQDN) voor uw edge gateway door te navigeren naar uw IoT Edge-apparaat virtuele machine in de portal en het kopiëren van de waarde voor **DNS-naam** uit het overzicht.
+2. Zoek de Fully Qualified Domain Name (FQDN) voor uw Edge-gateway door te navigeren naar de virtuele machine van uw IoT Edge apparaat in de portal en de waarde voor **DNS-naam** te kopiëren in het overzicht.
 
-3. Open de Visual Studio Code-terminal **(Terminal** > **New terminal)** en voer de volgende opdracht uit, waarbij u de DNS-naam vervangt `<edge_device_fqdn>` die u van de virtuele machine hebt gekopieerd:
+3. Open de Visual Studio code-Terminal (**Terminal** > **New Terminal**) en voer de volgende opdracht uit `<edge_device_fqdn>` , waarbij u vervangt door de DNS-naam die u hebt gekopieerd van de virtuele machine:
 
    ```cmd
    dotnet run -- --gateway-host-name "<edge_device_fqdn>" --certificate C:\edgecertificates\certs\azure-iot-test-only.root.ca.cert.pem --max-devices 1
    ```
 
-4. De applicatie probeert het certificaat op uw ontwikkelmachine te installeren. Als dat gebeurt, accepteer dan de beveiligingswaarschuwing.
+4. De toepassing probeert het certificaat te installeren op uw ontwikkel computer. Als dit het geval is, accepteert u de beveiligings waarschuwing.
 
-5. Klik wanneer u wordt gevraagd om de verbindingstekenreeks Van IoT Hub op de ellips (**...**) in het deelvenster Azure IoT Hub-apparaten en selecteer **IoT Hub Connection String kopiëren**. Plak de waarde in de terminal.
+5. Wanneer u wordt gevraagd om de IoT Hub connection string klikt u op het beletsel teken (**...**) in het deel venster Azure IOT Hub apparaten en selecteert u **IOT hub verbindings reeks kopiëren**. Plak de waarde in de Terminal.
 
-6. U ziet uitvoer als:
+6. De uitvoer ziet er als volgt uit:
 
    ```output
    Found existing device: Client_001
@@ -79,59 +79,59 @@ Kijk naar de code om te zien hoe deze twee items worden geïmplementeerd.
    Device: 1 Message count: 250
    ```
 
-   Let op de toevoeging van de "GatewayHostName" aan de verbindingstekenreeks van het apparaat, waardoor het apparaat via de IoT-hub communiceert via de transparante gateway van IoT Edge.
+   Let op de toevoeging van de "GatewayHostName" aan de apparaat connection string, waardoor het apparaat via de IoT Hub via de transparante gateway via de-IoT Edge kan communiceren.
 
 ## <a name="check-output"></a>Uitvoer controleren
 
-### <a name="iot-edge-device-output"></a>IoT Edge-apparaatuitvoer
+### <a name="iot-edge-device-output"></a>Uitvoer van IoT Edge apparaat
 
-De uitvoer van de avroFileWriter-module kan gemakkelijk worden waargenomen door naar het IoT Edge-apparaat te kijken.
+De uitvoer van de avroFileWriter-module kan gemakkelijk worden waargenomen door te kijken naar het IoT Edge apparaat.
 
 1. SSH in uw IoT Edge virtuele machine.
 
-2. Zoek naar bestanden die naar de schijf zijn geschreven.
+2. Zoek naar bestanden die naar schijf zijn geschreven.
 
    ```bash
    find /data/avrofiles -type f
    ```
 
-3. De uitvoer van de opdracht ziet eruit als het volgende voorbeeld:
+3. De uitvoer van de opdracht ziet eruit als in het volgende voor beeld:
 
    ```output
    /data/avrofiles/2019/4/18/22/10.avro
    ```
 
-   U hebt mogelijk meer dan één bestand, afhankelijk van de timing van de run.
+   Het kan zijn dat er meer dan één bestand is afhankelijk van de timing van de uitvoering.
 
-4. Besteed aandacht aan de tijdstempels. De avroFileWriter module uploadt de bestanden naar de cloud zodra de laatste wijzigingstijd meer dan 10 minuten in het verleden is (zie GEWIJZIGDE\_FILE\_TIMEOUT in uploader.py in de avroFileWriter module).
+4. Let op de tijds tempels. De avroFileWriter-module uploadt de bestanden naar de Cloud zodra het tijdstip van de laatste wijziging in het verleden meer dan 10 minuten is (\_Zie\_gewijzigde bestand time-out in Uploader.py in de avroFileWriter-module).
 
-5. Zodra de 10 minuten zijn verstreken, moet de module de bestanden uploaden. Als de upload succesvol is, worden de bestanden van de schijf verwijderd.
+5. Zodra de 10 minuten zijn verstreken, moeten de bestanden worden geüpload met de module. Als het uploaden is gelukt, worden de bestanden van de schijf verwijderd.
 
 ### <a name="azure-storage"></a>Azure Storage
 
-We kunnen de resultaten van ons leaf-apparaat waarnemen door te kijken naar de opslagaccounts waar we verwachten dat gegevens worden doorgestuurd.
+We kunnen de resultaten van het Leaf-apparaat dat gegevens verzenden, bekijken door te kijken naar de opslag accounts waar we verwachten dat gegevens worden gerouteerd.
 
-1. Open Visual Studio Code op de ontwikkelmachine.
+1. Open Visual Studio code op de ontwikkel machine.
 
-2. Navigeer in het deelvenster Azure STORAGE in het verkennende venster door de structuur om uw opslagaccount te vinden.
+2. In het deel venster AZURE-opslag in het venster verkennen navigeert u naar de structuur om uw opslag account te vinden.
 
-3. Het knooppunt **Blobcontainers** uitvouwen.
+3. Vouw het knoop punt **BLOB containers** uit.
 
-4. Van het werk dat we deden in het vorige deel van de tutorial, verwachten we dat de **ruldata** container berichten met RUL zou moeten bevatten. Vouw het **ruldata-knooppunt** uit.
+4. Vanuit het werk dat we in het vorige gedeelte van de zelf studie hebben gedaan, verwachten we dat de **ruldata** -container berichten moet bevatten met resterende levens duur. Vouw het knoop punt **ruldata** uit.
 
-5. U ziet een of meer blobbestanden met de naam: `<IoT Hub Name>/<partition>/<year>/<month>/<day>/<hour>/<minute>`.
+5. U ziet een of meer BLOB-bestanden met de naam `<IoT Hub Name>/<partition>/<year>/<month>/<day>/<hour>/<minute>`zoals:.
 
-6. Klik met de rechtermuisknop op een van de bestanden en kies **Blob downloaden** om het bestand op te slaan in uw ontwikkelingsmachine.
+6. Klik met de rechter muisknop op een van de bestanden en kies **BLOB downloaden** om het bestand op te slaan op uw ontwikkel computer.
 
-7. Vervolgens uitbreiden van de **uploadturbofanfiles** knooppunt. In het vorige artikel stellen we deze locatie in als doel voor bestanden die zijn geüpload door de avroFileWriter-module.
+7. Vouw vervolgens het knoop punt **uploadturbofanfiles** uit. In het vorige artikel stellen we deze locatie in als het doel voor bestanden die worden geüpload door de avroFileWriter-module.
 
-8. Klik met de rechtermuisknop op de bestanden en kies **Blob downloaden** om deze op te slaan op uw ontwikkelingsmachine.
+8. Klik met de rechter muisknop op de bestanden en kies **BLOB downloaden** om deze op te slaan op uw ontwikkel computer.
 
-### <a name="read-avro-file-contents"></a>Lees de inhoud van het Avro-bestand
+### <a name="read-avro-file-contents"></a>Inhoud van Avro-bestand lezen
 
-We hebben een eenvoudige command-line utility voor het lezen van een Avro-bestand en het retourneren van een JSON string van de berichten in het bestand. In deze sectie zullen we het installeren en uitvoeren.
+We hebben een eenvoudig opdracht regel hulpprogramma opgenomen voor het lezen van een AVRO-bestand en het retour neren van een JSON-teken reeks van de berichten in het bestand. In deze sectie wordt het geïnstalleerd en uitgevoerd.
 
-1. Open een terminal in Visual Studio Code **(Terminal** > **New terminal).**
+1. Open een terminal in Visual Studio code (**Terminal** > **New Terminal**).
 
 2. Hubavroreader installeren:
 
@@ -139,13 +139,13 @@ We hebben een eenvoudige command-line utility voor het lezen van een Avro-bestan
    pip install c:\source\IoTEdgeAndMlSample\HubAvroReader
    ```
 
-3. Gebruik hubavroreader om het Avro-bestand te lezen dat u hebt gedownload van **ruldata.**
+3. Gebruik hubavroreader om het AVRO-bestand te lezen dat u hebt gedownload van **ruldata**.
 
    ```cmd
    hubavroreader <avro file with ath> | more
    ```
 
-4. Houd er rekening mee dat de hoofdtekst van het bericht er zo uitziet als we verwacht hadden met apparaat-ID en voorspelde RUL.
+4. Houd er rekening mee dat de hoofd tekst van het bericht eruitziet zoals verwacht met apparaat-ID en voorspelde resterende levens duur.
 
    ```json
    {
@@ -176,9 +176,9 @@ We hebben een eenvoudige command-line utility voor het lezen van een Avro-bestan
    }
    ```
 
-5. Voer dezelfde opdracht uit die het Avro-bestand passeert dat u hebt gedownload van **uploadturbofanbestanden.**
+5. Voer dezelfde opdracht uit voor het AVRO-bestand dat u hebt gedownload van **uploadturbofanfiles**.
 
-6. Zoals verwacht bevatten deze berichten alle sensorgegevens en operationele instellingen van het oorspronkelijke bericht. Deze gegevens kunnen worden gebruikt om het RUL-model op ons randapparaat te verbeteren.
+6. Zoals verwacht, bevatten deze berichten alle sensor gegevens en operationele instellingen van het oorspronkelijke bericht. Deze gegevens kunnen worden gebruikt om het resterende levens duur-model op ons edge-apparaat te verbeteren.
 
    ```json
    {
@@ -219,21 +219,21 @@ We hebben een eenvoudige command-line utility voor het lezen van een Avro-bestan
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
-Als u van plan bent om de resources te verkennen die door deze end-to-end-zelfstudie worden gebruikt, wacht u tot u klaar bent om de resources die u hebt gemaakt op te schonen. Als u niet van plan bent door te gaan, gebruikt u de volgende stappen om deze te verwijderen:
+Als u van plan bent om de resources die worden gebruikt door deze end-to-end zelf studie te verkennen, wacht u tot u klaar bent met het opschonen van de resources die u hebt gemaakt. Als u niet wilt door gaan, gebruikt u de volgende stappen om ze te verwijderen:
 
-1. Verwijder de resourcegroep(s) die is gemaakt om de DEv VM, IoT Edge VM, IoT Hub, opslagaccount, machine learning workspace-service (en gemaakte resources te behouden: containerregister, toepassingsinzichten, sleutelkluis, opslagaccount).
+1. Verwijder de resource groep (en) die zijn gemaakt voor de ontwikkel-VM, IoT Edge VM, IoT Hub, opslag account, machine learning werkruimte service (en gemaakte resources: container register, Application Insights, sleutel kluis, opslag account).
 
-2. Verwijder het machine learning-project in [Azure-notitieblokken](https://notebooks.azure.com).
+2. Verwijder het machine learning project in [Azure notebooks](https://notebooks.azure.com).
 
-3. Als u de repo lokaal hebt gekloond, sluit u alle PowerShell- of VS-codevensters die verwijzen naar de lokale repo en verwijdert u de repo-map.
+3. Als u de opslag plaats lokaal hebt gekloond, sluit u alle Power shell-of VS-code Vensters die verwijzen naar de lokale opslag plaats en verwijdert u vervolgens de map opslag plaats.
 
-4. Als u certificaten lokaal hebt gemaakt,\\verwijdert u de map c: edgeCertificates.
+4. Als u lokaal certificaten hebt gemaakt, verwijdert u de map\\c: edgeCertificates.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In dit artikel gebruikten we onze ontwikkelingsmachine om een leaf-apparaat te simuleren dat sensor en operationele gegevens naar ons edge-apparaat verzendt. We valideerden dat de modules op het apparaat de gegevens routeerden, geclassificeerd, verwerkten en de gegevens eerst uploadden door de real-time werking van het edge-apparaat te onderzoeken en vervolgens door te kijken naar de bestanden die naar het opslagaccount zijn geüpload.
+In dit artikel hebben we onze ontwikkel machine gebruikt voor het simuleren van een Leaf-apparaat dat sensor-en operationele gegevens naar ons edge-apparaat verzendt. We hebben gevalideerd dat de modules op het apparaat worden gerouteerd, geclassificeerd, bewaard en dat de gegevens eerst worden geüpload door de real-time werking van het edge-apparaat te onderzoeken en vervolgens te kijken naar de bestanden die naar het opslag account worden geüpload.
 
-Meer informatie is te vinden op de volgende pagina's:
+Meer informatie vindt u op de volgende pagina's:
 
 * [Een downstreamapparaat verbinden met een Azure IoT Edge-gateway](how-to-connect-downstream-device.md)
-* [Gegevens aan de rand opslaan met Azure Blob Storage op IoT Edge (voorbeeld)](how-to-store-data-blob.md)
+* [Gegevens opslaan aan de rand met Azure Blob Storage op IoT Edge (preview)](how-to-store-data-blob.md)

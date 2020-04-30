@@ -1,5 +1,5 @@
 ---
-title: VS-code gebruiken om verbinding te maken en te vragen
+title: VS code gebruiken om verbinding te maken en query's uit te zoeken
 description: Ontdek hoe u verbinding maakt met SQL Database in Azure met behulp van Visual Studio Code. Voer daarna Transact-SQL-instructies (T-SQL) uit om query's uit te voeren voor gegevens en om gegevens te bewerken.
 keywords: verbinding maken met sql-database
 services: sql-database
@@ -13,13 +13,13 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/25/2019
 ms.openlocfilehash: 28b35f273783b2e4d0b8f59c5bc5be384b933ba2
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "73826894"
 ---
-# <a name="quickstart-use-visual-studio-code-to-connect-and-query-an-azure-sql-database"></a>Snelstart: Visual Studio-code gebruiken om verbinding te maken en een Azure SQL-database op te vragen
+# <a name="quickstart-use-visual-studio-code-to-connect-and-query-an-azure-sql-database"></a>Snelstartgids: Visual Studio code gebruiken om verbinding te maken en een Azure SQL Database te zoeken
 
 [Visual Studio Code](https://code.visualstudio.com/docs) is een grafische code-editor voor Linux, macOS en Windows. Het biedt ondersteuning voor extensies, zoals de [mssql-extensie](https://aka.ms/mssql-marketplace) voor het uitvoeren van query's in Microsoft SQL Server, Azure SQL Database en SQL Data Warehouse. In deze snelstart gaat u Visual Studio Code gebruiken om verbinding te maken met een Azure SQL-database en vervolgens Transact-SQL-instructies uitvoeren om query's op gegevens in de database uit te voeren, gegevens in te voegen, bij te werken en te verwijderen.
 
@@ -31,11 +31,11 @@ ms.locfileid: "73826894"
   |:--- |:--- |:---|
   | Maken| [Portal](sql-database-single-database-get-started.md) | [Portal](sql-database-managed-instance-get-started.md) |
   || [CLI](scripts/sql-database-create-and-configure-database-cli.md) | [CLI](https://medium.com/azure-sqldb-managed-instance/working-with-sql-managed-instance-using-azure-cli-611795fe0b44) |
-  || [Powershell](scripts/sql-database-create-and-configure-database-powershell.md) | [Powershell](scripts/sql-database-create-configure-managed-instance-powershell.md) |
-  | Configureren | [IP-firewallregel op serverniveau](sql-database-server-level-firewall-rule.md)| [Connectiviteit vanaf een VM](sql-database-managed-instance-configure-vm.md)|
+  || [PowerShell](scripts/sql-database-create-and-configure-database-powershell.md) | [PowerShell](scripts/sql-database-create-configure-managed-instance-powershell.md) |
+  | Configureren | [IP-firewall regel op server niveau](sql-database-server-level-firewall-rule.md)| [Connectiviteit vanaf een VM](sql-database-managed-instance-configure-vm.md)|
   |||[Connectiviteit vanaf locatie](sql-database-managed-instance-configure-p2s.md)
   |Gegevens laden|Adventure Works geladen volgens de quickstart|[Wide World Importers herstellen](sql-database-managed-instance-get-started-restore.md)
-  |||Adventure Works uit [BACPAC-bestand](sql-database-import.md) herstellen of importeren van [GitHub](https://github.com/Microsoft/sql-server-samples/tree/master/samples/databases/adventure-works)|
+  |||Adventure Works herstellen of importeren vanuit [BACPAC](sql-database-import.md) -bestand vanuit [github](https://github.com/Microsoft/sql-server-samples/tree/master/samples/databases/adventure-works)|
   |||
 
   > [!IMPORTANT]
@@ -49,7 +49,7 @@ Zorg ervoor dat u de nieuwste versie van [Visual Studio Code](https://code.visua
 
 ### <a name="mac-os"></a>**Mac OS**
 
-Voor macOS moet u OpenSSL installeren, wat een voorwaarde is voor .NET Core die mssql-extensie gebruikt. Open de terminal en voer de volgende opdrachten in om **brew** en **OpenSSL** te installeren.
+Voor macOS moet u OpenSSL installeren. Dit is een vereiste voor .NET core die wordt gebruikt door de MSSQL-extensie. Open de terminal en voer de volgende opdrachten in om **brew** en **OpenSSL** te installeren.
 
 ```bash
 ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
@@ -72,7 +72,7 @@ Er is geen speciale configuratie vereist.
 
 Haal de verbindingsgegevens op die u nodig hebt om verbinding te maken met de Azure SQL-database. U hebt de volledig gekwalificeerde servernaam of hostnaam, databasenaam en aanmeldingsgegevens nodig voor de volgende procedures.
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
 
 2. Navigeer naar de pagina **SQL-database** of **Met SQL beheerde exemplaren**.
 
@@ -84,7 +84,7 @@ Stel de taalmodus in Visual Studio Code in op **SQL** om mssql-opdrachten en T-S
 
 1. Open een nieuw Visual Studio Code venster.
 
-2. Druk op **Ctrl**+**N**. Hiermee wordt een nieuw bestand met tekst zonder opmaak geopend.
+2. Druk op **CTRL**+**N**. Hiermee wordt een nieuw bestand met tekst zonder opmaak geopend.
 
 3. Selecteer **Tekst zonder opmaak** in de rechterbenedenhoek van de statusbalk.
 
@@ -107,8 +107,8 @@ Gebruik Visual Studio Code om verbinding te maken met uw Azure SQL Database-serv
 
    | Eigenschap       | Voorgestelde waarde | Beschrijving |
    | ------------ | ------------------ | ------------------------------------------------- |
-   | **Servernaam** | De volledig gekwalificeerde servernaam | Dit moet er ongeveer als volgt uitzien: **mijnnieuweserver20170313.database.windows.net**. |
-   | **Databasenaam** | mySampleDatabase | De database waarmee verbinding moet worden gemaakt. |
+   | **Server naam** | De volledig gekwalificeerde servernaam | Dit moet er ongeveer als volgt uitzien: **mijnnieuweserver20170313.database.windows.net**. |
+   | **Database naam** | mySampleDatabase | De database waarmee verbinding moet worden gemaakt. |
    | **Verificatie** | SQL-aanmelding| In deze zelfstudie wordt gebruik gemaakt van SQL-verificatie. |
    | **Gebruikersnaam** | Gebruikersnaam | De gebruikersnaam van het serverbeheerdersaccount dat wordt gebruikt voor het maken van de server. |
    | **Wachtwoord (SQL-aanmelding)** | Wachtwoord | Het wachtwoord van het serverbeheerdersaccount dat wordt gebruikt voor het maken van de server. |
@@ -130,7 +130,7 @@ Voer de volgende Transact-SQL-[SELECT](https://msdn.microsoft.com/library/ms1894
    ON pc.productcategoryid = p.productcategoryid;
    ```
 
-2. Druk op **Ctrl**+**Shift**+**E** om de `Product` `ProductCategory` query uit te voeren en resultaten van de tabellen en tabellen weer te geven.
+2. Druk op **CTRL**+**SHIFT +**+**E** om de query uit te voeren en `Product` de `ProductCategory` resultaten uit de tabellen en weer te geven.
 
     ![Query voor het ophalen van gegevens uit twee tabellen](./media/sql-database-connect-query-vscode/query.png)
 
@@ -160,7 +160,7 @@ Voer de volgende Transact-SQL-[INSERT](https://msdn.microsoft.com/library/ms1743
          ,GETDATE() );
    ```
 
-2. Druk **op Ctrl**+**Shift**+**E** om `Product` een nieuwe rij in de tabel in te voegen.
+2. Druk op **CTRL**+**SHIFT +**+**E** om een nieuwe rij in `Product` de tabel in te voegen.
 
 ## <a name="update-data"></a>Gegevens bijwerken
 
@@ -174,7 +174,7 @@ Voer de volgende Transact-SQL-[UPDATE](https://msdn.microsoft.com/library/ms1775
    WHERE Name = 'myNewProduct';
    ```
 
-2. Druk op **Ctrl**+**Shift**+**E** om `Product` de opgegeven rij in de tabel bij te werken.
+2. Druk op **CTRL**+**SHIFT +**+**E** om de opgegeven rij in `Product` de tabel bij te werken.
 
 ## <a name="delete-data"></a>Gegevens verwijderen
 
@@ -187,10 +187,10 @@ Voer de volgende Transact-SQL-[DELETE](https://docs.microsoft.com/sql/t-sql/stat
    WHERE Name = 'myNewProduct';
    ```
 
-2. Druk op **Ctrl**+**Shift**+**E** om `Product` de opgegeven rij in de tabel te verwijderen.
+2. Druk op **CTRL**+**SHIFT +**+**E** om de opgegeven rij in `Product` de tabel te verwijderen.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Zie [Snelstart: SQL Server Management Studio gebruiken om verbinding te maken met een Azure SQL Database en querygegevens](sql-database-connect-query-ssms.md)als u verbinding wilt maken en query's wilt uitvoeren met SQL Server Management Studio.
-- Zie [Snelstart: De SQL Query-editor in de Azure-portal gebruiken om verbinding te maken en querygegevens op te vragen.](sql-database-connect-query-portal.md)
+- Als u verbinding wilt maken en query's wilt uitvoeren met SQL Server Management Studio, raadpleegt u [Quick Start: gebruik SQL Server Management Studio om verbinding te maken met een Azure SQL database en query gegevens](sql-database-connect-query-ssms.md).
+- Als u verbinding wilt maken en query's wilt uitvoeren met behulp van de Azure Portal, raadpleegt u [Quick Start: gebruik de SQL-query editor in de Azure Portal om verbinding te maken en gegevens te zoeken](sql-database-connect-query-portal.md)
 - Zie het blogbericht [Create a database IDE with MSSQL extension](https://msdn.microsoft.com/magazine/mt809115) voor een MSDN-artikel over het gebruik van Visual Studio Code.

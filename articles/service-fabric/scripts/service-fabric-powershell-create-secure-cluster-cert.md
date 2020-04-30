@@ -1,6 +1,6 @@
 ---
-title: Een cluster van servicefabric maken in Powershell
-description: Azure PowerShell Script-voorbeeld - Maak een Service Fabric-cluster dat is beveiligd met een X.509-certificaat.
+title: Een Service Fabric-cluster maken in Power shell
+description: 'Azure PowerShell-voorbeeld script: een Service Fabric cluster maken dat is beveiligd met een X. 509-certificaat.'
 services: service-fabric
 documentationcenter: ''
 author: athinanthny
@@ -15,10 +15,10 @@ ms.date: 01/19/2018
 ms.author: atsenthi
 ms.custom: mvc
 ms.openlocfilehash: f8e1a0ca86f9346cf07c87a738d48cb56f6d7d57
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "75614771"
 ---
 # <a name="create-a-service-fabric-cluster"></a>Een Service Fabric-cluster maken
@@ -27,7 +27,7 @@ Met dit voorbeeldscript wordt een Service Fabric-cluster met vijf knooppunten ge
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-Installeer indien nodig de Azure PowerShell met de instructie in `Connect-AzAccount` de [Azure PowerShell-handleiding](/powershell/azure/overview) en voer deze uit om een verbinding met Azure te maken. 
+Als dat nodig is, installeert u de Azure PowerShell met behulp van de instructie in de `Connect-AzAccount` [Azure PowerShell Guide](/powershell/azure/overview) en voert u uit om een verbinding te maken met Azure. 
 
 ## <a name="sample-script"></a>Voorbeeldscript
 
@@ -48,7 +48,7 @@ In dit script worden de volgende opdrachten gebruikt. Elke opdracht in de tabel 
 
 | Opdracht | Opmerkingen |
 |---|---|
-| [Nieuw-AzServiceFabricCluster](/powershell/module/az.servicefabric/New-azServiceFabricCluster) | Hiermee wordt een nieuw Service Fabric-cluster gemaakt. |
+| [New-AzServiceFabricCluster](/powershell/module/az.servicefabric/New-azServiceFabricCluster) | Hiermee wordt een nieuw Service Fabric-cluster gemaakt. |
 
 ## <a name="next-steps"></a>Volgende stappen
 

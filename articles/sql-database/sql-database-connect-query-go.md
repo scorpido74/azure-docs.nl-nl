@@ -1,5 +1,5 @@
 ---
-title: Ga naar query gebruiken
+title: Go to query gebruiken
 description: Gebruik Go om een programma te maken dat is verbonden met een Azure SQL-database en gebruik Transact-SQL-instructies om gegevens te doorzoeken en te wijzigen.
 services: sql-database
 ms.service: sql-database
@@ -12,13 +12,13 @@ ms.author: craigg
 ms.reviewer: MightyPen
 ms.date: 02/12/2019
 ms.openlocfilehash: 9b85b1bfb8935b5e311bb7d9503c17261a210127
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "73827084"
 ---
-# <a name="quickstart-use-golang-to-query-an-azure-sql-database"></a>Snelstart: Golang gebruiken om een Azure SQL-database op te vragen
+# <a name="quickstart-use-golang-to-query-an-azure-sql-database"></a>Quick Start: Golang gebruiken om een query uit te zoeken op een Azure-SQL database
 
 In deze quickstart gebruikt u de programmeertaal [Golang](https://godoc.org/github.com/denisenkom/go-mssqldb) om verbinding te maken met een Azure SQL-database. Voer vervolgens Transact-SQL-instructies uit om query's uit te voeren voor gegevens en om gegevens te bewerken. [Golang](https://golang.org/) is een open-sourceprogrammeertaal waarmee u op een simpele manier eenvoudige, betrouwbare en efficiënte software kunt maken.  
 
@@ -32,11 +32,11 @@ Voor deze zelfstudie hebt u het volgende nodig:
   |:--- |:--- |:---|
   | Maken| [Portal](sql-database-single-database-get-started.md) | [Portal](sql-database-managed-instance-get-started.md) |
   || [CLI](scripts/sql-database-create-and-configure-database-cli.md) | [CLI](https://medium.com/azure-sqldb-managed-instance/working-with-sql-managed-instance-using-azure-cli-611795fe0b44) |
-  || [Powershell](scripts/sql-database-create-and-configure-database-powershell.md) | [Powershell](scripts/sql-database-create-configure-managed-instance-powershell.md) |
-  | Configureren | [IP-firewallregel op serverniveau](sql-database-server-level-firewall-rule.md)| [Connectiviteit vanaf een VM](sql-database-managed-instance-configure-vm.md)|
+  || [PowerShell](scripts/sql-database-create-and-configure-database-powershell.md) | [PowerShell](scripts/sql-database-create-configure-managed-instance-powershell.md) |
+  | Configureren | [IP-firewall regel op server niveau](sql-database-server-level-firewall-rule.md)| [Connectiviteit vanaf een VM](sql-database-managed-instance-configure-vm.md)|
   |||[Connectiviteit vanaf locatie](sql-database-managed-instance-configure-p2s.md)
   |Gegevens laden|Adventure Works geladen volgens de quickstart|[Wide World Importers herstellen](sql-database-managed-instance-get-started-restore.md)
-  |||Adventure Works uit [BACPAC-bestand](sql-database-import.md) herstellen of importeren van [GitHub](https://github.com/Microsoft/sql-server-samples/tree/master/samples/databases/adventure-works)|
+  |||Adventure Works herstellen of importeren vanuit [BACPAC](sql-database-import.md) -bestand vanuit [github](https://github.com/Microsoft/sql-server-samples/tree/master/samples/databases/adventure-works)|
   |||
 
   > [!IMPORTANT]
@@ -44,15 +44,15 @@ Voor deze zelfstudie hebt u het volgende nodig:
 
 - Golang en verwante software geïnstalleerd voor uw besturingssysteem:
 
-  - **MacOS**: Installeer Homebrew en Golang. Zie [stap 1.2](https://www.microsoft.com/sql-server/developer-get-started/go/mac/).
-  - **Ubuntu**: Installeer Golang. Zie [stap 1.2](https://www.microsoft.com/sql-server/developer-get-started/go/ubuntu/).
+  - **MacOS**: Installeer homebrew en Golang. Zie [stap 1.2](https://www.microsoft.com/sql-server/developer-get-started/go/mac/).
+  - **Ubuntu**: Golang installeren. Zie [stap 1.2](https://www.microsoft.com/sql-server/developer-get-started/go/ubuntu/).
   - **Windows**: Installeer Golang. Zie [stap 1.2](https://www.microsoft.com/sql-server/developer-get-started/go/windows/).
 
 ## <a name="get-sql-server-connection-information"></a>SQL Server-verbindingsgegevens ophalen
 
 Haal de verbindingsgegevens op die u nodig hebt om verbinding te maken met de Azure SQL-database. U hebt de volledig gekwalificeerde servernaam of hostnaam, databasenaam en aanmeldingsgegevens nodig voor de volgende procedures.
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
 
 2. Navigeer naar de pagina **SQL-database** of **Met SQL beheerde exemplaren**.
 
@@ -327,7 +327,7 @@ Haal de verbindingsgegevens op die u nodig hebt om verbinding te maken met de Az
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Uw eerste Azure SQL-database ontwerpen](sql-database-design-first-database.md)
+- [Uw eerste Azure-SQL database ontwerpen](sql-database-design-first-database.md)
 - [Golang-stuurprogramma voor Microsoft SQL Server](https://github.com/denisenkom/go-mssqldb)
 - [Problemen melden of vragen stellen](https://github.com/denisenkom/go-mssqldb/issues)
 

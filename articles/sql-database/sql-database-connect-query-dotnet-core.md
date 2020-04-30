@@ -1,5 +1,5 @@
 ---
-title: .NET-kern gebruiken om op te vragen
+title: .NET core gebruiken om query's uit te zoeken
 description: In dit onderwerp wordt beschreven hoe u .NET Core gebruikt om een programma te maken waarmee u verbinding maakt met een Azure SQL-database en waarmee u query's voor deze database uitvoert met behulp van Transact-SQL-instructies.
 services: sql-database
 ms.service: sql-database
@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 07/29/2019
 ms.openlocfilehash: 369c708fd3181076c6deb9d7ac9134c57a18f819
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "73827090"
 ---
 # <a name="quickstart-use-net-core-c-to-query-an-azure-sql-database"></a>Snelstart: .NET Core (C#) gebruiken om een query uit te voeren voor een Azure SQL-database
@@ -23,7 +23,7 @@ ms.locfileid: "73827090"
 In deze quickstart gebruikt u [.NET Core](https://www.microsoft.com/net/) en C# code om verbinding te maken met een Azure SQL-database. Vervolgens moet u een Transact-SQL-instructie uitvoeren om een query op gegevens uit te voeren.
 
 > [!TIP]
-> Met de volgende Microsoft Learn-module u gratis leren hoe u [een ASP.NET-toepassing ontwikkelen en configureren die een Azure SQL-database opvraagt](https://docs.microsoft.com/learn/modules/develop-app-that-queries-azure-sql/)
+> De volgende Microsoft Learn module helpt u gratis te leren hoe u [een ASP.NET-toepassing ontwikkelt en configureert die een query uitvoert op een Azure SQL database](https://docs.microsoft.com/learn/modules/develop-app-that-queries-azure-sql/)
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -35,11 +35,11 @@ Voor deze zelfstudie hebt u het volgende nodig:
   |:--- |:--- |:---|
   | Maken| [Portal](sql-database-single-database-get-started.md) | [Portal](sql-database-managed-instance-get-started.md) |
   || [CLI](scripts/sql-database-create-and-configure-database-cli.md) | [CLI](https://medium.com/azure-sqldb-managed-instance/working-with-sql-managed-instance-using-azure-cli-611795fe0b44) |
-  || [Powershell](scripts/sql-database-create-and-configure-database-powershell.md) | [Powershell](scripts/sql-database-create-configure-managed-instance-powershell.md) |
-  | Configureren | [IP-firewallregel op serverniveau](sql-database-server-level-firewall-rule.md)| [Connectiviteit vanaf een VM](sql-database-managed-instance-configure-vm.md)|
+  || [PowerShell](scripts/sql-database-create-and-configure-database-powershell.md) | [PowerShell](scripts/sql-database-create-configure-managed-instance-powershell.md) |
+  | Configureren | [IP-firewall regel op server niveau](sql-database-server-level-firewall-rule.md)| [Connectiviteit vanaf een VM](sql-database-managed-instance-configure-vm.md)|
   |||[Connectiviteit vanaf locatie](sql-database-managed-instance-configure-p2s.md)
   |Gegevens laden|Adventure Works geladen volgens de quickstart|[Wide World Importers herstellen](sql-database-managed-instance-get-started-restore.md)
-  |||Adventure Works uit [BACPAC-bestand](sql-database-import.md) herstellen of importeren van [GitHub](https://github.com/Microsoft/sql-server-samples/tree/master/samples/databases/adventure-works)|
+  |||Adventure Works herstellen of importeren vanuit [BACPAC](sql-database-import.md) -bestand vanuit [github](https://github.com/Microsoft/sql-server-samples/tree/master/samples/databases/adventure-works)|
   |||
 
   > [!IMPORTANT]
@@ -54,7 +54,7 @@ Voor deze zelfstudie hebt u het volgende nodig:
 
 Haal de verbindingsgegevens op die u nodig hebt om verbinding te maken met de Azure SQL-database. U hebt de volledig gekwalificeerde servernaam of hostnaam, databasenaam en aanmeldingsgegevens nodig voor de volgende procedures.
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
 
 2. Navigeer naar de pagina **SQL-database** of **Met SQL beheerde exemplaren**.
 

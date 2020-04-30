@@ -1,20 +1,20 @@
 ---
 title: Azure Deployment Manager gebruiken om sjablonen te implementeren
-description: Meer informatie over het gebruik van Resource Manager-sjablonen met Azure Deployment Manager om Azure-bronnen te implementeren.
+description: Meer informatie over het gebruik van Resource Manager-sjablonen met Azure Deployment Manager voor het implementeren van Azure-resources.
 author: mumian
 ms.date: 12/04/2019
 ms.topic: tutorial
 ms.author: jgao
 ms.openlocfilehash: ad79721b88f886426d658ed6ee89c4969e1f1baa
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "75471986"
 ---
 # <a name="tutorial-use-azure-deployment-manager-with-resource-manager-templates-public-preview"></a>Zelfstudie: Azure Deployment Manager gebruiken met Resource Manager-sjablonen (openbare preview)
 
-Meer informatie over het gebruik van [Azure Deployment Manager](./deployment-manager-overview.md) om uw toepassingen in meerdere regio's te implementeren. Als u de voorkeur geeft aan een snellere aanpak, maakt [Azure Deployment Manager snel](https://github.com/Azure-Samples/adm-quickstart) de vereiste configuraties in uw abonnement en past u de artefacten aan om een toepassing in meerdere regio's te implementeren. De quickstart voert dezelfde taken uit als in deze zelfstudie.
+Meer informatie over het gebruik van [Azure Deployment Manager](./deployment-manager-overview.md) om uw toepassingen in meerdere regio's te implementeren. Als u liever een snellere benadering hebt, worden in [Azure Deployment Manager Quick](https://github.com/Azure-Samples/adm-quickstart) start de vereiste configuraties in uw abonnement gemaakt en worden de artefacten aangepast om een toepassing in meerdere regio's te implementeren. De Snelstartgids voert dezelfde taken uit als in deze zelf studie.
 
 Als u Deployment Manager wilt gebruiken, moet u twee sjablonen maken:
 
@@ -22,7 +22,7 @@ Als u Deployment Manager wilt gebruiken, moet u twee sjablonen maken:
 * **Een implementatiesjabloon**: beschrijft de stappen die moeten worden genomen bij het implementeren van uw toepassingen.
 
 > [!IMPORTANT]
-> Als uw abonnement is gemarkeerd voor Canary om nieuwe Azure-functies uit te testen, u Azure Deployment Manager alleen gebruiken om te implementeren in de Canarische regio's. 
+> Als uw abonnement is gemarkeerd voor de Canarische om nieuwe functies van Azure te testen, kunt u Azure Deployment Manager alleen gebruiken om te implementeren in de Canarische regio's. 
 
 Deze zelfstudie bestaat uit de volgende taken:
 
@@ -40,10 +40,10 @@ Deze zelfstudie bestaat uit de volgende taken:
 
 Aanvullende bronnen:
 
-* De [verwijzing naar de REST API van Azure Deployment Manager](https://docs.microsoft.com/rest/api/deploymentmanager/).
-* [Zelfstudie: Statuscontrole gebruiken in Azure Deployment Manager](./deployment-manager-tutorial-health-check.md).
+* De [Naslag informatie voor Azure Deployment Manager rest API](https://docs.microsoft.com/rest/api/deploymentmanager/).
+* [Zelf studie: status controle gebruiken in Azure Deployment Manager](./deployment-manager-tutorial-health-check.md).
 
-Als u geen Azure-abonnement hebt, [maakt u een gratis account](https://azure.microsoft.com/free/) voordat u begint.
+Als u nog geen abonnement op Azure hebt, [Maak dan een gratis account](https://azure.microsoft.com/free/) aan voordat u begint.
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
@@ -105,7 +105,7 @@ De twee versies (1.0.0.0 en 1.0.0.1) zijn voor de [implementatie van de revisie]
 
     ![Sjabloon voor webtoepassing maken in zelfstudie over Azure Deployment Manager](./media/deployment-manager-tutorial/azure-deployment-manager-tutorial-create-web-application-packageuri.png)
 
-    De sjabloon roept een implementatiepakket aan dat de bestanden van de webtoepassing bevat. In deze zelfstudie bevat het gecomprimeerde pakket alleen een index.html-bestand.
+    De sjabloon roept een implementatiepakket aan dat de bestanden van de webtoepassing bevat. In deze zelf studie bevat het gecomprimeerde pakket alleen een bestand index. html.
 3. Open **\ArtifactStore\templates\1.0.0.0\ServiceWUS\CreateWebApplicationParameters.json**.
 
     ![ContainerRoot sjabloonparameters webtoepassing maken in zelfstudie over Azure Deployment Manager](./media/deployment-manager-tutorial/azure-deployment-manager-tutorial-create-web-application-parameters-deploypackageuri.png)
@@ -130,11 +130,11 @@ De twee versies (1.0.0.0 en 1.0.0.1) zijn voor de [implementatie van de revisie]
 
 Sjabloonartefacten worden gebruikt door de servicetopologiesjabloon, en binaire artefacten worden gebruikt door de implementatiesjabloon. Zowel de topologiesjabloon als de implementatiesjabloon definieert een Azure-resource met een artefactbron, wat een resource is die wordt gebruikt om Resource Manager te wijzen op de sjabloon en binaire artefacten die in de implementatie worden gebruikt. Ter vereenvoudiging van de zelfstudie wordt één opslagaccount gebruikt voor het opslaan van zowel de sjabloonartefacten als de binaire artefacten. Beide artefactbronnen verwijzen naar hetzelfde opslagaccount.
 
-Voer het volgende PowerShell-script uit om een resourcegroep te maken, een opslagcontainer te maken, een blobcontainer te maken, de gedownloade bestanden te uploaden en vervolgens een SAS-token te maken.
+Voer het volgende Power shell-script uit om een resource groep te maken, een opslag container te maken, een BLOB-container te maken, de gedownloade bestanden te uploaden en vervolgens een SAS-token te maken.
 
 > [!IMPORTANT]
-> **projectName** in het PowerShell-script wordt gebruikt om namen te genereren voor de Azure-services die in deze zelfstudie worden geïmplementeerd. Verschillende Azure-services hebben verschillende vereisten voor de namen. Als u ervoor wilt zorgen dat de implementatie succesvol is, kiest u een naam met minder dan 12 tekens met alleen kleine letters en cijfers.
-> Sla een kopie van de projectnaam op. U gebruikt dezelfde projectName via de zelfstudie.
+> **projectName** in het Power shell-script wordt gebruikt voor het genereren van namen voor de Azure-Services die in deze zelf studie worden geïmplementeerd. Verschillende Azure-Services hebben verschillende vereisten voor de namen. Om ervoor te zorgen dat de implementatie is geslaagd, kiest u een naam van minder dan 12 tekens met alleen kleine letters en cijfers.
+> Sla een kopie van de project naam op. U gebruikt hetzelfde projectName-project met de zelf studie.
 
 ```azurepowershell
 $projectName = Read-Host -Prompt "Enter a project name that is used to generate Azure resource names"
@@ -178,7 +178,7 @@ Write-Host $url
 
 Maak een kopie van de URL met het SAS-token. Deze URL is nodig voor om een veld in te vullen in de twee parameterbestanden, het parameterbestand voor de topologie en parameterbestand voor de implementatie.
 
-Open de container vanuit de Azure-portal en controleer of zowel de **binaire bestanden** als de **sjablonenmappen** en de bestanden worden geüpload.
+Open de container vanuit het Azure Portal en controleer of zowel de **binaire bestanden** als de **sjabloon** mappen en de bestanden worden geüpload.
 
 ## <a name="create-the-user-assigned-managed-identity"></a>Door de gebruiker toegewezen beheerde identiteit maken
 
@@ -186,8 +186,8 @@ Later in de zelfstudie voert u een implementatie uit. Een door de gebruiker toeg
 
 U moet een door de gebruiker toegewezen beheerde identiteit maken en toegangsbeheer voor uw abonnement configureren.
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com).
-2. Een [door de gebruiker toegewezen beheerde identiteit maken](../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
+2. Maak een door de [gebruiker toegewezen beheerde identiteit](../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md).
 3. Selecteer in de portal **Abonnementen** in het linkermenu en selecteer vervolgens uw abonnement.
 4. Selecteer **Toegangsbeheer (IAM)** en selecteer vervolgens **Roltoewijzing toevoegen**.
 5. Typ of selecteer de volgende waarden:
@@ -207,7 +207,7 @@ Open **\ADMTemplates\CreateADMServiceTopology.json**.
 
 De sjabloon bevat de volgende parameters:
 
-* **projectNaam:** deze naam wordt gebruikt om de namen voor de resources voor Implementatiebeheer te maken. Bijvoorbeeld, met behulp van "jdoe", de service topologie naam is **jdoe**ServiceTopology.  De resourcenamen worden gedefinieerd in de sectie met variabelen van deze sjabloon.
+* **projectName**: deze naam wordt gebruikt om de namen voor de Deployment Manager resources te maken. Als u bijvoorbeeld ' jdoe ' gebruikt, is de naam van de service topologie **jdoe**ServiceTopology.  De resourcenamen worden gedefinieerd in de sectie met variabelen van deze sjabloon.
 * **azureResourcelocation**: ter vereenvoudiging van de zelfstudie delen alle resources deze locatie, tenzij anders aangegeven.
 * **artifactSourceSASLocation**: de SAS-URI naar de blobcontainer waar service-eenheidsjabloon- en parameterbestanden worden opgeslagen voor implementatie.  Zie [De artefacten voorbereiden](#prepare-the-artifacts).
 * **templateArtifactRoot**: het offsetpad van de blobcontainer waarin de sjablonen en parameters worden opgeslagen. De standaardwaarde is **templates/1.0.0.0**. Wijzig deze waarde niet tenzij u de mapstructuur wilt wijzigen zoals wordt uitgelegd in [De artefacten voorbereiden](#prepare-the-artifacts). In deze zelfstudie worden relatieve paden gebruikt.  Het volledige pad wordt samengesteld door het samenvoegen van **artifactSourceSASLocation**, **templateArtifactRoot** en **templateArtifactSourceRelativePath** (of **parametersArtifactSourceRelativePath**).
@@ -244,13 +244,13 @@ U maakt een parameterbestand dat wordt gebruikt in combinatie met de topologiesj
 1. Open **\ADMTemplates\CreateADMServiceTopology.Parameters** in Visual Studio Code of in een teksteditor.
 2. Vul de parameterwaarden in:
 
-    * **projectNaam:** Voer een tekenreeks in met 4-5 tekens. Deze naam wordt gebruikt om unieke azure resourcenamen te maken.
+    * **projectName**: Voer een teken reeks in met 4-5 tekens. Deze naam wordt gebruikt om unieke Azure-resource namen te maken.
     * **azureResourceLocation**: als u niet bekend bent met Azure-locaties, gebruikt u in deze zelfstudie **centralus**.
     * **artifactSourceSASLocation**: voer de SAS-URI naar de hoofdmap (de blobcontainer) waar service-eenheidsjabloon- en parameterbestanden worden opgeslagen voor implementatie in.  Zie [De artefacten voorbereiden](#prepare-the-artifacts).
     * **templateArtifactRoot**: gebruik in deze zelfstudie **templates/1.0.0.0**, tenzij u de mapstructuur van de artefacten wijzigt.
 
 > [!IMPORTANT]
-> De topologiesjabloon en de implementatiesjabloon delen enkele algemene parameters. Deze parameters moeten dezelfde waarden hebben. Deze parameters zijn: **projectName,** **azureResourceLocation**en **artifactSourceSASLocation** (beide artefactbronnen delen hetzelfde opslagaccount in deze zelfstudie).
+> De topologiesjabloon en de implementatiesjabloon delen enkele algemene parameters. Deze parameters moeten dezelfde waarden hebben. Deze para meters zijn: **projectName**, **azureResourceLocation**en **artifactSourceSASLocation** (beide artefact bronnen delen hetzelfde opslag account in deze zelf studie).
 
 ## <a name="create-the-rollout-template"></a>De implementatiesjabloon maken
 
@@ -262,7 +262,7 @@ De sjabloon bevat de volgende parameters:
 
 ![Implementatiesjabloonparameters in de zelfstudie over Azure Deployment Manager](./media/deployment-manager-tutorial/azure-deployment-manager-tutorial-rollout-template-parameters.png)
 
-* **projectNaam:** deze naam wordt gebruikt om de namen voor de resources voor Implementatiebeheer te maken. Bijvoorbeeld, met behulp van "jdoe", de uitrol naam is **jdoe**Rollout.  De namen worden gedefinieerd in de sectie met variabelen van de sjabloon.
+* **projectName**: deze naam wordt gebruikt om de namen voor de Deployment Manager resources te maken. Als u bijvoorbeeld ' jdoe ' gebruikt, is de naam van de implementatie **jdoe**implementatie.  De namen worden gedefinieerd in de sectie met variabelen van de sjabloon.
 * **azureResourcelocation**: ter vereenvoudiging van de zelfstudie delen alle Deployment Manager-resources deze locatie, tenzij anders aangegeven.
 * **artifactSourceSASLocation**: de SAS-URI naar de hoofdmap (de blobcontainer) waar service-eenheidsjabloon- en parameterbestanden worden opgeslagen voor implementatie.  Zie [De artefacten voorbereiden](#prepare-the-artifacts).
 * **binaryArtifactRoot**: de standaardwaarde is **binaries/1.0.0.0**. Wijzig deze waarde niet tenzij u de mapstructuur wilt wijzigen zoals wordt uitgelegd in [De artefacten voorbereiden](#prepare-the-artifacts). In deze zelfstudie worden relatieve paden gebruikt.  Het volledige pad wordt samengesteld door het samenvoegen van **artifactSourceSASLocation**, **binaryArtifactRoot** en de **deployPackageUri** die is opgegeven in CreateWebApplicationParameters.json.  Zie [De artefacten voorbereiden](#prepare-the-artifacts).
@@ -304,8 +304,8 @@ U maakt een parameterbestand dat wordt gebruikt in combinatie met de implementat
 1. Open **\ADMTemplates\CreateADMRollout.Parameters** in Visual Studio Code of in een teksteditor.
 2. Vul de parameterwaarden in:
 
-    * **projectNaam:** Voer een tekenreeks in met 4-5 tekens. Deze naam wordt gebruikt om unieke azure resourcenamen te maken.
-    * **azureResourceLocatie:** geef een Azure-locatie op.
+    * **projectName**: Voer een teken reeks in met 4-5 tekens. Deze naam wordt gebruikt om unieke Azure-resource namen te maken.
+    * **azureResourceLocation**: Geef een Azure-locatie op.
     * **artifactSourceSASLocation**: voer de SAS-URI naar de hoofdmap (de blobcontainer) waar service-eenheidsjabloon- en parameterbestanden worden opgeslagen voor implementatie in.  Zie [De artefacten voorbereiden](#prepare-the-artifacts).
     * **binaryArtifactRoot**: gebruik in deze zelfstudie **binaries/1.0.0.0**, tenzij u de mapstructuur van de artefacten wijzigt.
     * **managedIdentityID**: voer de door de gebruiker toegewezen beheerde identiteit in. Zie [Door de gebruiker toegewezen beheerde identiteit maken](#create-the-user-assigned-managed-identity). De syntaxis is:
@@ -315,7 +315,7 @@ U maakt een parameterbestand dat wordt gebruikt in combinatie met de implementat
         ```
 
 > [!IMPORTANT]
-> De topologiesjabloon en de implementatiesjabloon delen enkele algemene parameters. Deze parameters moeten dezelfde waarden hebben. Deze parameters zijn: **projectName,** **azureResourceLocation**en **artifactSourceSASLocation** (beide artefactbronnen delen hetzelfde opslagaccount in deze zelfstudie).
+> De topologiesjabloon en de implementatiesjabloon delen enkele algemene parameters. Deze parameters moeten dezelfde waarden hebben. Deze para meters zijn: **projectName**, **azureResourceLocation**en **artifactSourceSASLocation** (beide artefact bronnen delen hetzelfde opslag account in deze zelf studie).
 
 ## <a name="deploy-the-templates"></a>De sjablonen implementeren
 
@@ -331,10 +331,10 @@ Azure PowerShell kan worden gebruikt om de sjablonen te implementeren.
         -TemplateParameterFile "$filePath\ADMTemplates\CreateADMServiceTopology.Parameters.json"
     ```
 
-    Als u dit script uitvoert vanuit een andere PowerShell-sessie dan het script [Voor het uitvoeren van de artefacten,](#prepare-the-artifacts) moet u eerst de variabelen opnieuw invullen, waaronder **$resourceGroupName** en **$filePath**.
+    Als u dit script uitvoert vanuit een andere Power shell-sessie dan dat u het script voor [artefacten](#prepare-the-artifacts) hebt voor bereid, moet u eerst de variabelen opnieuw vullen, met inbegrip van **$resourceGroupName** en **$filepath**.
 
     > [!NOTE]
-    > `New-AzResourceGroupDeployment`is een asynchrone oproep. Het succesbericht betekent alleen dat de implementatie is begonnen. Zie stap 2 en stap 4 van deze procedure om de implementatie te verifiëren.
+    > `New-AzResourceGroupDeployment`is een asynchrone aanroep. Het bericht alleen geslaagd betekent dat de implementatie is gestart. Zie stap 2 en stap 4 van deze procedure om de implementatie te controleren.
 
 2. Controleer of de servicetopologie en de onderstreepte resources zijn gemaakt met behulp van Azure Portal:
 
@@ -363,7 +363,7 @@ Azure PowerShell kan worden gebruikt om de sjablonen te implementeren.
         -Verbose
     ```
 
-    De Deployment Manager PowerShell-cmdlets moeten worden geïnstalleerd voordat u deze cmdlet kunt uitvoeren. Zie Vereisten. De -Verbose schakelaar kan worden gebruikt om de hele output te zien.
+    De Deployment Manager PowerShell-cmdlets moeten worden geïnstalleerd voordat u deze cmdlet kunt uitvoeren. Zie Vereisten. De schakel optie-verbose kan worden gebruikt om de hele uitvoer te bekijken.
 
     Het volgende voorbeeld toont de actieve status:
 
@@ -444,17 +444,17 @@ Wanneer u een nieuwe versie (1.0.0.1) voor de webtoepassing hebt. Kunt u de volg
 
 Schoon de geïmplementeerd Azure-resources, wanneer u deze niet meer nodig hebt, op door de resourcegroep te verwijderen.
 
-1. Selecteer **resourcegroep** in de linkermenu in de Azure-portal.
+1. Selecteer in de Azure Portal **resource groep** in het menu links.
 2. Gebruik het veld **Filteren op naam** om u te beperken tot de resourcegroepen die u in deze zelfstudie hebt gemaakt. Er zijn er 3-4:
 
-    * projectName>rg : bevat de resources Deployment Manager. ** &lt;**
-    * projectName>ServiceWUSrg : bevat de bronnen die door ServiceWUS zijn gedefinieerd. ** &lt;**
-    * projectName>ServiceEUSrg : bevat de door ServiceEUS gedefinieerde bronnen. ** &lt;**
+    * projectName>RG: bevat de Deployment Manager resources. ** &lt;**
+    * projectName>ServiceWUSrg: bevat de resources die zijn gedefinieerd door ServiceWUS. ** &lt;**
+    * projectName>ServiceEUSrg: bevat de resources die zijn gedefinieerd door ServiceEUS. ** &lt;**
     * De resourcegroep voor de door de gebruiker gedefinieerde beheerde identiteit.
 3. Selecteer de naam van de resourcegroep.
-4. Selecteer **Brongroep verwijderen** in het bovenste menu.
+4. Selecteer **resource groep verwijderen** in het bovenste menu.
 5. Herhaal de laatste twee stappen als u andere resourcegroepen wilt verwijderen die zijn gemaakt in deze zelfstudie.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze zelfstudie hebt u geleerd hoe u Azure Deployment Manager gebruikt. Zie [Zelfstudie: Statuscontrole gebruiken in Azure Deployment Manager](./deployment-manager-tutorial-health-check.md)als u statuscontrole wilt integreren in Azure Deployment Manager.
+In deze zelfstudie hebt u geleerd hoe u Azure Deployment Manager gebruikt. Zie [zelf studie: status controle gebruiken in azure Deployment Manager](./deployment-manager-tutorial-health-check.md)voor het integreren van de status controle in azure Deployment Manager.

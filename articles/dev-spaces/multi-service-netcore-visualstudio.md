@@ -1,20 +1,20 @@
 ---
-title: 'Meerdere afhankelijke services uitvoeren: .NET Core & Visual Studio'
+title: 'Meerdere afhankelijke services uitvoeren: .NET core & Visual Studio'
 services: azure-dev-spaces
 ms.custom: vs-azure
 ms.workload: azure-vs
 ms.date: 07/09/2018
 ms.topic: tutorial
-description: In deze zelfstudie ziet u hoe u Azure Dev Spaces en Visual Studio gebruiken om een multiservice .NET Core-toepassing op Azure Kubernetes Service te debuggen
-keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, containers, Helm, service mesh, service mesh routing, kubectl, k8s
+description: In deze zelf studie leert u hoe u Azure dev Spaces en Visual Studio kunt gebruiken om fouten op te sporen in een multi-service .NET core-toepassing in azure Kubernetes service
+keywords: Docker, Kubernetes, azure, AKS, Azure Kubernetes service, containers, helm, service-net, service mesh routing, kubectl, K8S
 ms.openlocfilehash: 7f95c21c2cf5b7adcdb34d7bbe2b1f8314c20333
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "75438392"
 ---
-# <a name="running-multiple-dependent-services-net-core-and-visual-studio-with-azure-dev-spaces"></a>Meerdere afhankelijke services uitvoeren: .NET Core en Visual Studio met Azure Dev Spaces
+# <a name="running-multiple-dependent-services-net-core-and-visual-studio-with-azure-dev-spaces"></a>Meerdere afhankelijke services uitvoeren: .NET core en Visual Studio met Azure dev Spaces
 
 In deze zelfstudie leert u hoe u toepassingen met meerdere services ontwikkelt met Azure Dev Spaces, samen met enkele aanvullende voordelen van Azure Dev Spaces.
 
@@ -28,7 +28,7 @@ Omwille van de tijd downloaden we voorbeeldcode uit een GitHub-opslagplaats. Ga 
 
 ### <a name="run-mywebapi"></a>*mywebapi* uitvoeren
 1. Open het `mywebapi`-project in een *afzonderlijk Visual Studio-venster*.
-1. Selecteer **Azure Dev Spaces** in de vervolgkeuzelijst met opstartinstellingen zoals u eerder hebt gedaan voor het `webfrontend`-project. In plaats van een nieuw AKS-cluster te maken, kunt u nu de ontwikkelomgeving selecteren die u al hebt gemaakt. Laat ook hier de standaard bij Space ingesteld op `default` en klik op **OK**. In het venster Uitvoer ziet u mogelijk dat Visual Studio deze nieuwe service in uw dev-ruimte begint op te warmen om dingen te versnellen wanneer u begint met debuggen.
+1. Selecteer **Azure Dev Spaces** in de vervolgkeuzelijst met opstartinstellingen zoals u eerder hebt gedaan voor het `webfrontend`-project. In plaats van een nieuw AKS-cluster te maken, kunt u nu de ontwikkelomgeving selecteren die u al hebt gemaakt. Laat ook hier de standaard bij Space ingesteld op `default` en klik op **OK**. In het venster uitvoer kunt u zien dat in Visual Studio deze nieuwe service wordt geheten in uw dev-ruimte om sneller te kunnen werken wanneer u de fout opsporing start.
 1. Druk op F5 en wacht tot de service is gebouwd en geïmplementeerd. Dit proces is voltooid, zodra de Visual Studio-statusbalk oranje wordt
 1. Noteer de eindpunt-URL die wordt weergegeven in het deelvenster **Azure Dev Spaces for AKS** in het venster **Uitvoer**. Deze ziet er ongeveer als volgt uit: `http://localhost:<portnumber>`. Het lijkt misschien alsof de container lokaal wordt uitgevoerd, maar dat is niet zo. De container wordt uitgevoerd in de ontwikkelomgeving in Azure.
 2. Wanneer `mywebapi` klaar is, opent u de browser naar het localhost-adres en voegt u `/api/values` toe aan het eind van de URL om de standaard-GET API voor de `ValuesController` aan te roepen. 

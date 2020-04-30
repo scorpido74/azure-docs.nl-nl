@@ -1,5 +1,5 @@
 ---
-title: Infrastructuur maken voor een cluster op AWS
+title: Infra structuur maken voor een cluster op AWS
 description: In deze zelfstudie leert u hoe u de AWS-infrastructuur instelt voor het uitvoeren van een Service Fabric-cluster.
 author: dkkapur
 ms.topic: tutorial
@@ -7,10 +7,10 @@ ms.date: 05/11/2018
 ms.author: dekapur
 ms.custom: mvc
 ms.openlocfilehash: b6348d9fdcd4133a4fa69aac3ccf5494e904094e
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "75613972"
 ---
 # <a name="tutorial-create-aws-infrastructure-to-host-a-service-fabric-cluster"></a>Zelfstudie: AWS-infrastructuur maken voor het hosten van een Service Fabric-cluster
@@ -24,7 +24,7 @@ In deel 1 van de reeks leert u het volgende:
 > [!div class="checklist"]
 > * Een set van EC2-exemplaren maken
 > * De beveiligingsgroep wijzigen
-> * Aanmelden bij een van de instanties
+> * Meld u aan bij een van de exemplaren
 > * Het exemplaar voorbereiden voor Service Fabric
 
 ## <a name="prerequisites"></a>Vereisten
@@ -33,7 +33,7 @@ U hebt een AWS-account nodig om deze zelfstudie te voltooien.  Als u nog geen ac
 
 ## <a name="create-ec2-instances"></a>EC2-exemplaren maken
 
-Meld u aan bij de AWS-console > Enter **EC2** in het zoekvak > **EC2 Virtual Servers in de cloud**
+Meld u aan bij de AWS-console > Voer **EC2** in het zoekvak in > **EC2 virtuele servers in de Cloud** .
 
 ![Zoeken in AWS-console][aws-console]
 
@@ -142,7 +142,7 @@ In deel één van de reeks hebt u geleerd hoe u drie EC2-exemplaren start en dez
 > [!div class="checklist"]
 > * Een set van EC2-exemplaren maken
 > * De beveiligingsgroep wijzigen
-> * Aanmelden bij een van de instanties
+> * Meld u aan bij een van de exemplaren
 > * Het exemplaar voorbereiden voor Service Fabric
 
 Ga naar deel twee van de reeks om Service Fabric te configureren in uw cluster.

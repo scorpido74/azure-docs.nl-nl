@@ -1,6 +1,6 @@
 ---
 title: Tabelgegevens opvragen in Azure Cosmos DB
-description: Meer informatie over het opvragen van gegevens die zijn opgeslagen in het Azure Cosmos DB Table API-account met OData-filters en LINQ-query's
+description: Meer informatie over het opvragen van gegevens die zijn opgeslagen in de Azure Cosmos DB Table-API-account met behulp van OData-filters en LINQ-query's
 author: sakash279
 ms.author: akshanka
 ms.service: cosmos-db
@@ -9,10 +9,10 @@ ms.topic: tutorial
 ms.date: 05/21/2019
 ms.reviewer: sngun
 ms.openlocfilehash: 8f31ace0045dad2f038a1eded52a41ffb1932f99
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "76770490"
 ---
 # <a name="tutorial-query-azure-cosmos-db-by-using-the-table-api"></a>Zelfstudie: Query's uitvoeren in Azure Cosmos DB met behulp van de tabel-API
@@ -26,7 +26,7 @@ Dit artikel behandelt de volgende taken:
 
 In de query's in dit artikel wordt de volgende voorbeeldtabel `People` gebruikt:
 
-| PartitionKey | RowKey | Email | PhoneNumber |
+| PartitionKey | RowKey | E-mail | PhoneNumber |
 | --- | --- | --- | --- |
 | Harp | Walter | Walter@contoso.com| 425-555-0101 |
 | Smith | Ben | Ben@contoso.com| 425-555-0102 |
@@ -43,14 +43,14 @@ Deze query's werken alleen als u een Azure DB Cosmos DB-account hebt en een cont
 ## <a name="query-on-partitionkey-and-rowkey"></a>Query op PartitionKey en RowKey
 Omdat de eigenschappen PartitionKey en RowKey de primaire sleutel van een entiteit vormen, kunt u de volgende specifieke syntaxis gebruiken voor het identificeren van de entiteit: 
 
-**Query**
+**Query’s uitvoeren**
 
 ```
 https://<mytableendpoint>/People(PartitionKey='Harp',RowKey='Walter')  
 ```
 **Resultaten**
 
-| PartitionKey | RowKey | Email | PhoneNumber |
+| PartitionKey | RowKey | E-mail | PhoneNumber |
 | --- | --- | --- | --- |
 | Harp | Walter | Walter@contoso.com| 425-555-0104 |
 
@@ -66,7 +66,7 @@ Houd bij het samenstellen van een filtertekenreeks rekening met deze regels:
 
 Hier volgt een voorbeeldquery die laat zien hoe u de eigenschappen PartitionKey en Email filtert met behulp van een OData-`$filter`.
 
-**Query**
+**Query’s uitvoeren**
 
 ```
 https://<mytableapi-endpoint>/People()?$filter=PartitionKey%20eq%20'Smith'%20and%20Email%20eq%20'Ben@contoso.com'
@@ -76,7 +76,7 @@ Zie [Querying Tables and Entities](https://docs.microsoft.com/rest/api/storagese
 
 **Resultaten**
 
-| PartitionKey | RowKey | Email | PhoneNumber |
+| PartitionKey | RowKey | E-mail | PhoneNumber |
 | --- | --- | --- | --- |
 | Smith |Ben | Ben@contoso.com| 425-555-0102 |
 

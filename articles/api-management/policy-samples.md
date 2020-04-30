@@ -14,10 +14,10 @@ ms.date: 10/31/2017
 ms.author: apimpm
 ms.custom: mvc
 ms.openlocfilehash: 9bdcf9ea247adb8d5941c75f90f7db3915af20bc
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "75940944"
 ---
 # <a name="api-management-policy-samples"></a>Voorbeelden van API Management-beleid
@@ -33,7 +33,7 @@ ms.locfileid: "75940944"
 | [Toegang verlenen op basis van JWT-claims ](./policies/authorize-request-based-on-jwt-claims.md?toc=api-management/toc.json)                                              | Laat zien hoe u toegang verleent aan specifieke HTTP-methoden op een API op basis van JWT-claims.                                                                                                                                       |
 | [Aanvragen via externe authorizer autoriseren](./policies/authorize-request-using-external-authorizer.md)                                                   | Hiermee kunt u zien hoe u een externe authorizer gebruikt voor het beveiligen van API-toegang.                                                                                                                                                               |
 | [Toestaan van toegang met behulp van Google-OAuth-token](./policies/use-google-as-oauth-token-provider.md?toc=api-management/toc.json)                                            | Laat zien hoe u toegang verleent aan uw eindpunten met Google als een provider van OAuth-token.                                                                                                                                    |
-| [IP-adressen filteren wanneer u een toepassingsgateway gebruikt](./policies/filter-ip-addresses-when-using-appgw.md) | Toont in het beleid hoe u IP-filter filteren wanneer de api-beheerinstantie wordt geopend via een toepassingsgateway
+| [IP-adressen filteren bij het gebruik van een Application Gateway](./policies/filter-ip-addresses-when-using-appgw.md) | Toont hoe IP-filter in beleid wordt weer gegeven wanneer het API Management exemplaar wordt geopend via een Application Gateway
 | [Shared Access Signature genereren en aanvraag doorsturen naar Azure-opslag](./policies/generate-shared-access-signature.md?toc=api-management/toc.json)                  | Laat zien hoe u [Shared Access Signature](https://docs.microsoft.com/azure/storage/storage-dotnet-shared-access-signature-part-1) genereert met expressies en de aanvraag doorstuurt naar Azure-opslag met beleid voor herschrijven van URI. |
 | [OAuth2 toegangstoken ophalen uit AAD en dit doorsturen naar de back-end](./policies/use-oauth2-for-authorization.md?toc=api-management/toc.json)                             | Biedt een voorbeeld van het gebruik van OAuth2 voor autorisatie tussen de gateway en een back-end. Er wordt weergegeven hoe u een toegangstoken van AAD kunt verkrijgen en dit door kunt sturen naar de back-end.                                                    |
 | [X-CSRF-token ophalen uit SAP-gateway met behulp van beleid voor verbindingsaanvragen verzenden](./policies/get-x-csrf-token-from-sap-gateway.md?toc=api-management/toc.json)                           | Laat zien hoe u een X-CSRF-patroon implementeert dat wordt gebruikt door veel API's. Dit voorbeeld is specifiek voor SAP-Gateway.                                                                                                                           |

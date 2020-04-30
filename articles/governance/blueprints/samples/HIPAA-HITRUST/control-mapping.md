@@ -1,243 +1,243 @@
 ---
-title: HIPAA HITRUST blueprint sample controls HIPAA HITRUST blueprint sample controls HIPAA HITRUST blueprint sample controls HIPA
-description: Controle mapping van de HIPAA HITRUST blueprint samples. Elk besturingselement wordt toegewezen aan een of meer Azure-beleidsregels die helpen bij de beoordeling.
+title: Voor beelden van HIPAA HITRUST blauw drukken
+description: De toewijzing van de voor beelden van HIPAA HITRUST-blauw drukken. Elk besturings element wordt toegewezen aan een of meer Azure-beleids regels die helpen bij de evaluatie.
 ms.date: 11/26/2019
 ms.topic: sample
 ms.openlocfilehash: c6680055cfe41a2f893d46cba797783913d880ce
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "75472308"
 ---
-# <a name="control-mapping-of-the-hipaa-hitrust-blueprint-sample"></a>Controle mapping van de HIPAA HITRUST blauwdruk monster
+# <a name="control-mapping-of-the-hipaa-hitrust-blueprint-sample"></a>De toewijzing van het HITRUST blauw druk-voor beeld van HIPAA
 
-In het volgende artikel wordt beschreven hoe het blueprintsample van Azure Blueprints HIPAA HITRUST wordt toegewezen aan de HIPAA HITRUST-besturingselementen. Zie [HIPAA HITRUST](https://www.hhs.gov/hipaa/for-professionals/security/laws-regulations/index.html)voor meer informatie over de besturingselementen.
+In het volgende artikel wordt uitgelegd hoe het voor beeld van Azure blauw drukken HIPAA HITRUST wordt toegewezen aan de HIPAA HITRUST-besturings elementen. Zie [HIPAA HITRUST](https://www.hhs.gov/hipaa/for-professionals/security/laws-regulations/index.html)voor meer informatie over de besturings elementen.
 
-De volgende mappings zijn aan de **HIPAA HITRUST** controles. Gebruik de navigatie aan de rechterkant om direct naar een specifieke besturingstoewijzing te springen. Veel van de toegewezen besturingselementen worden geïmplementeerd met een [Azure Policy-initiatief.](../../../policy/overview.md) Als u het volledige initiatief wilt bekijken, opent u **Beleid** in de Azure-portal en selecteert u de pagina **Definities.** Zoek en selecteer vervolgens de ** \[Preview\]: Audit HIPAA HITRUST besturingselementen** ingebouwd beleidsinitiatief.
+De volgende toewijzingen zijn de **HIPAA HITRUST** -besturings elementen. Gebruik de navigatie aan de rechter kant om rechtstreeks naar een specifieke besturings element koppeling te gaan. Veel van de toegewezen besturings elementen worden geïmplementeerd met een [Azure Policy](../../../policy/overview.md) -initiatief. Als u het complete initiatief wilt bekijken, opent u **beleid** in het Azure Portal en selecteert u de pagina **definities** . Zoek en selecteer vervolgens het ** \[voor beeld\]: audit HIPAA HITRUST Controls** built-in Policy Initiative.
 
 > [!IMPORTANT]
-> Elk besturingselement hieronder is gekoppeld aan een of meer [Azure Policy-definities.](../../../policy/overview.md) Met dit beleid u [beoordelen of de](../../../policy/how-to/get-compliance-data.md) controle is nageleefd; Er is echter vaak geen 1:1 of volledige overeenkomst tussen een besturingselement en een of meer beleidsregels. **Compliant** in Azure Policy verwijst daarom alleen naar het beleid zelf. Dit zorgt er niet voor dat u volledig voldoet aan alle vereisten van een controle. Bovendien bevat de nalevingsstandaard besturingselementen die op dit moment niet worden behandeld door azure-beleidsdefinities. Naleving in Azure Policy is daarom slechts een gedeeltelijke weergave van uw algemene nalevingsstatus. De koppelingen tussen besturingselementen en Azure Policy-definities voor dit voorbeeld van nalevingsblauwdrukken kunnen in de loop van de tijd veranderen. Zie de [GitHub Commit History](https://github.com/MicrosoftDocs/azure-docs/commits/master/articles/governance/blueprints/samples/HIPAA-HITRUST/control-mapping.md)om de wijzigingsgeschiedenis te bekijken.
+> Elk besturings element hieronder is gekoppeld aan een of meer [Azure Policy](../../../policy/overview.md) definities. Met deze beleids regels kunt u de naleving van het besturings element [beoordelen](../../../policy/how-to/get-compliance-data.md) . Er is echter vaak geen 1:1-of volledige overeenkomst tussen een besturings element en een of meer beleids regels. Als zodanig is de **naleving** in azure Policy alleen bedoeld voor het beleid zelf. Dit garandeert niet dat u volledig compatibel bent met alle vereisten van een besturings element. Daarnaast bevat de nalevings standaard besturings elementen die niet worden behandeld door Azure Policy definities op dit moment. Daarom is naleving in Azure Policy slechts een gedeeltelijke weer gave van uw algemene nalevings status. De koppelingen tussen de besturings elementen en Azure Policy definities voor dit voor beeld van deze naleving blauw druk kunnen na verloop van tijd veranderen. Als u de wijzigings geschiedenis wilt weer geven, raadpleegt u de [github commit-geschiedenis](https://github.com/MicrosoftDocs/azure-docs/commits/master/articles/governance/blueprints/samples/HIPAA-HITRUST/control-mapping.md).
 
-## <a name="control-against-malicious-code"></a>Controle tegen schadelijke code
+## <a name="control-against-malicious-code"></a>Beheer tegen schadelijke code
 
-Met deze blauwdruk u de beveiliging van eindpunten beheren, inclusief schadelijke codebeveiliging, door [Azure Policy-definities](../../../policy/overview.md) toe te wijzen die controleren op ontbrekende endpointbeveiliging op virtuele machines in Azure Security Center en de Microsoft-antimalwareoplossing op virtuele Windows-machines af te dwingen.
+Deze blauw druk helpt u bij het beheren van Endpoint Protection, met inbegrip van schadelijke code beveiliging, door [Azure Policy](../../../policy/overview.md) definities toe te wijzen die controleren op ontbrekende Endpoint Protection op virtuele machines in azure Security Center en de oplossing micro soft antimalware afdwingen op virtuele Windows-machines.
 
-- Standaard Microsoft IaaS Antimalware-extensie implementeren voor windows-server
-- Diagnostische logboeken in Batch-accounts moeten zijn ingeschakeld
+- Standaard micro soft IaaS antimalware-extensie voor Windows Server implementeren
+- Diagnostische logboeken in batch-accounts moeten worden ingeschakeld
 - Er moeten systeemupdates op uw computers zijn geïnstalleerd
 
 
-## <a name="management-of-removable-media"></a>Beheer van verwisselbare media
+## <a name="management-of-removable-media"></a>Beheer van Verwissel bare media
 
-De organisatie, op basis van het niveau van de gegevensclassificatie, registreert media (inclusief laptops) voorafgaand aan het gebruik, legt redelijke beperkingen op aan de manier waarop dergelijke media worden gebruikt en biedt een passend niveau van fysieke en logische bescherming (inclusief versleuteling) voor media met gedekte informatie totdat deze op de juiste wijze zijn vernietigd of ontsmet.
+De organisatie, op basis van het niveau van de gegevens classificatie, registreert media (met inbegrip van laptops) voordat ze worden gebruikt, plaatst redelijke beperkingen voor de manier waarop dergelijke media worden gebruikt en biedt een passend niveau van fysieke en logische beveiliging (inclusief versleuteling) voor media die gedekte informatie bevatten voordat ze juist worden vernietigd of opgeschoond.
 
-- Versleuteling vereisen voor Data Lake Store-accounts
-- SQL managed instance TDE protector moet worden versleuteld met uw eigen sleutel
-- Schijfversleuteling moet worden toegepast op virtuele machines
-- Transparante gegevensversleuteling in SQL-databases moet worden ingeschakeld
-
-
-## <a name="information-exchange-policies-and-procedures"></a>Beleid en procedures voor informatie-uitwisseling
-
-Cloudserviceproviders maken gebruik van een door de industrie erkend virtualisatieplatform en standaardvirtualisatieformaten (bijvoorbeeld Open Virtualisatie-indeling, OVF) om de interoperabiliteit te waarborgen en heeft aangepaste wijzigingen gedocumenteerd die zijn aangebracht in elke hypervisor die in gebruik is en alle oplossingsspecifieke virtualisatiehaken beschikbaar voor klantbeoordeling.
-
-- Vereisten implementeren om Windows VM's te controleren die niet zijn geïnstalleerd op de opgegeven toepassingen
-
-## <a name="control-of-operational-software"></a>Controle van operationele software 
-
-De organisatie identificeert ongeautoriseerde software op het informatiesysteem, waaronder servers, werkstations en laptops, hanteert een allow-all, deny-by-exception beleid om de uitvoering van bekende ongeautoriseerde software op het informatiesysteem te verbieden, en beoordeelt en actualiseert de lijst van ongeautoriseerde software periodiek, maar niet minder dan jaarlijks.
-
-- \[Voorbeeld\] Van de controleresultaten van Windows VM's weergeven in 'Beveiligingsopties-audit'
-- \[Preview\] Bekijk de controleresultaten van Windows VM's weergeven in 'Systeemcontrolebeleid- Accountbeheer'
-
-## <a name="change-control-procedures"></a>Controleprocedures wijzigen
-
-De integriteit van alle afbeeldingen van virtuele machines wordt te allen tijde gewaarborgd door de resultaten van een wijziging of verplaatsing en de daaropvolgende validatie van de integriteit van de afbeelding (bijvoorbeeld portals of waarschuwingen) via elektronische methoden (bijvoorbeeld portals of waarschuwingen) te registreren en een waarschuwing te geven voor eventuele wijzigingen in afbeeldingen van virtuele machines en ter beschikking te stellen aan de bedrijfseigenaar(s) en/of de klant(en).
-
-- \[Preview\] Bekijk de controleresultaten van de configuratie van Windows VM's weergeven in 'Systeemcontrolebeleid -Gedetailleerde tracking'
-
-## <a name="inventory-of-assets"></a>Inventaris van activa 
-
-Een inventaris van activa en diensten wordt bijgehouden
-
-- Diagnostische logboeken in zoekservices moeten zijn ingeschakeld.
-- \[Voorbeeld\] van implementatievereisten voor het controleren van Windows VM's-configuraties in 'Beveiligingsopties- Microsoft Network Server'
-- \[Voorbeeld\] van implementatievereisten bekijken om Windows VM's-configuraties te controleren in 'Beheersjablonen-netwerk'
-
-## <a name="control-of-technical-vulnerabilities"></a>Controle van technische kwetsbaarheden 
-
-Er bestaat een geharde configuratiestandaard voor alle systeem- en netwerkcomponenten.
-
-- Virtuele machines controleren zonder herstel van noodgevallen geconfigureerd
-- Kwetsbaarheidsbeoordeling moet worden ingeschakeld op uw SQL-beheerde exemplaren
-- Kwetsbaarheid moet worden verholpen door een oplossing voor kwetsbaarheidsbeoordeling
-
-## <a name="segregation-in-networks"></a>Segregatie in netwerken
-
-De beveiligingsgateways van de organisatie (bijvoorbeeld firewalls) handhaven beveiligingsbeleid en zijn geconfigureerd om verkeer tussen domeinen te filteren, ongeautoriseerde toegang te blokkeren en worden gebruikt om de scheiding tussen interne bedrade, interne draadloze en externe netwerksegmenten (bijvoorbeeld het internet) waaronder DMZ's en afdwingbeleid voor toegangscontrole voor elk van de domeinen.
-
-- Automatische inrichting van de agent voor veiligheidsbewaking
-- Netwerkwatcher implementeren wanneer virtuele netwerken worden gemaakt
-
-## <a name="input-data-validation"></a>Validatie van invoergegevens
-
-Voor openbare webtoepassingen worden firewalls op toepassingsniveau geïmplementeerd om het verkeer te beheren. Voor toepassingen die niet op het web zijn gericht, heeft de organisatie een netwerkgebaseerde firewall geïmplementeerd die specifiek is voor het toepassingstype. Als het verkeer naar de openbare toepassing is versleuteld, zit het apparaat achter de versleuteling of is het in staat om het verkeer te decoderen voorafgaand aan de analyse.
-
-- \[Voorbeeld\] Controleresultaten weergeven van de configuratie van Windows VM's in 'Eigenschappen van Windows Firewall'
+- Versleuteling vereisen voor Data Lake Store accounts
+- TDE-beveiliging van SQL Managed instance moet worden versleuteld met uw eigen sleutel
+- Schijf versleuteling moet worden toegepast op virtuele machines
+- Transparent Data Encryption voor SQL-data bases moet zijn ingeschakeld
 
 
-## <a name="network-connection-control"></a>Beheer van netwerkverbindingen
+## <a name="information-exchange-policies-and-procedures"></a>Beleid en procedures voor het uitwisselen van informatie
 
-Netwerkverkeer wordt beheerd in overeenstemming met het toegangscontrolebeleid van de organisatie via firewall- en andere netwerkgerelateerde beperkingen voor de beheerde interface van elk netwerktoegangspunt of externe telecommunicatieservice.
+Cloud serviceproviders maken gebruik van een door de branche herkend virtualisatieplatform en standaard indelingen voor virtualisatie (bijvoorbeeld Open Virtualization Format, OVF) om de interoperabiliteit te helpen garanderen, en heeft gedocumenteerde aangepaste wijzigingen aangebracht in de Hyper Visor die wordt gebruikt en alle oplossingen voor specifieke virtualisatie die beschikbaar zijn voor de klant beoordeling.
 
-- Toegang via internetgerichte eindpunten moet worden beperkt
-- SQL managed instance TDE protector moet worden versleuteld met uw eigen sleutel
-- Externe foutopsporing moet worden uitgeschakeld voor API-apps
+- Vereisten implementeren voor het controleren van Windows-Vm's waarop de opgegeven toepassingen niet zijn geïnstalleerd
 
-## <a name="network-controls"></a>Netwerkbesturingselementen
+## <a name="control-of-operational-software"></a>Beheer van operationele software 
 
-De organisatie maakt gebruik van beveiligde en versleutelde communicatiekanalen bij het migreren van fysieke servers, toepassingen of gegevens naar gevirtualiseerde servers.
+De organisatie identificeert niet-geautoriseerde software op het informatie systeem, met inbegrip van servers, werk stations en laptops, maakt gebruik van een beleid voor toestaan, weigeren per uitzonde ring om de uitvoering van bekende ongeoorloofde software op het informatie systeem te verbieden, en controleert en werkt de lijst van niet-geautoriseerde software regel matig af, maar niet minder dan jaarlijks.
 
-- Schijfversleuteling moet worden toegepast op VM's
-- SQL server TDE protector moet worden versleuteld met uw eigen sleutel
-- \[Preview\] Bekijk de resultaten van audits weergeven van Windows VM's in 'Beveiligingsopties- Netwerktoegang'
-- Onbeperkte netwerktoegang tot opslagaccounts controleren
-- \[Preview\] De resultaten van audits van Windows VM's weergeven in 'Windows Firewall-eigenschappen'
-- Diagnostische instellingen implementeren vanuit netwerkbeveiligingsgroepen
-- Toegang via internetgerichte eindpunten moet worden beperkt
+- \[Preview\] -controle resultaten van Windows-vm's weer geven in beveiligings opties-audit
+- \[Preview\] -controle resultaten weer geven van configuraties van Windows-Vm's in systeem controle beleid-account beheer
 
-## <a name="sensitive-system-isolation"></a>Gevoelige systeemisolatie
+## <a name="change-control-procedures"></a>Beheer procedures wijzigen
 
-Gedeelde systeembronnen (bijvoorbeeld registers, hoofdgeheugen, secundaire opslag) worden weer in het systeem vrijgegeven, beschermd tegen openbaarmaking aan andere systemen/toepassingen/gebruikers, en gebruikers kunnen niet opzettelijk of onbedoeld toegang krijgen tot informatieresten.
+De integriteit van alle installatie kopieën van virtuele machines wordt op elk moment gewaarborgd door een waarschuwing in te scha kelen en op te nemen voor wijzigingen in installatie kopieën van virtuele machines en ter beschikking te stellen aan de bedrijfs eigenaar (en) en/of klant (en) via elektronische methoden (zoals portals of waarschuwingen) de resultaten van een wijziging of verplaatsing en de volgende validatie van de integriteit van de afbeelding
 
-- Virtuele machines moeten worden gemigreerd naar nieuwe Azure Resource Manager-bronnen
+- \[Preview\] -controle resultaten weer geven van de configuratie van een virtuele Windows-machine in systeem controle beleid-gedetailleerde tracking
 
-## <a name="security-of-network-services"></a>Beveiliging van netwerkdiensten
+## <a name="inventory-of-assets"></a>Inventaris van assets 
 
-Overeengekomen diensten van een netwerkserviceprovider/-manager worden formeel beheerd en gecontroleerd om ervoor te zorgen dat ze veilig worden geleverd.
+Er wordt een inventaris van activa en services onderhouden
 
-- Virtuele machines moeten worden gemigreerd naar nieuwe Azure Resource Manager-bronnen
+- Diagnostische logboeken in Search Services moeten worden ingeschakeld.
+- \[Voor\] beeld van implementatie vereisten voor het controleren van Windows-vm's configuraties in beveiligings opties-micro soft-netwerk server
+- \[Voor\] beeld van implementatie vereisten voor het controleren van Windows-vm's in Beheersjablonen-netwerk
 
-## <a name="network-routing-control"></a>Beheer van netwerkroutering
+## <a name="control-of-technical-vulnerabilities"></a>Controle van technische beveiligings problemen 
 
-Routeringsbesturingselementen worden geïmplementeerd via beveiligingsgateways (bijvoorbeeld firewalls) die worden gebruikt tussen interne en externe netwerken (bijvoorbeeld het internet en netwerken van derden).
+Er bestaat een beveiligde configuratie standaard voor alle systeem-en netwerk onderdelen.
 
-- Adaptieve toepassingsbesturingselementen moeten worden ingeschakeld op virtuele machines
+- Controle Virtual Machines zonder nood herstel geconfigureerd
+- De evaluatie van beveiligings problemen moet worden ingeschakeld voor uw door SQL beheerde instanties
+- Beveiligings probleem moet worden opgelost door een oplossing voor de evaluatie van beveiligings problemen
 
-## <a name="information-exchange-policies-and-procedures"></a>Beleid en procedures voor informatie-uitwisseling
+## <a name="segregation-in-networks"></a>Schei ding in netwerken
 
-De organisatie beperkt het gebruik van door de organisatie gecontroleerde draagbare opslagmedia door geautoriseerde personen op externe informatiesystemen.
+De beveiligings gateways van de organisatie (zoals firewalls) dwingen beveiligings beleid af en zijn geconfigureerd voor het filteren van verkeer tussen domeinen, het blok keren van onbevoegde toegang en worden gebruikt voor het onderhouden van schei ding tussen interne bekabelde, interne draadloze en externe netwerk segmenten (bijvoorbeeld het Internet), waaronder Dmz's en het afdwingen van beleid voor toegangs beheer voor elk domein.
 
-- Onbeperkte netwerktoegang tot opslagaccounts controleren
-- Externe foutopsporing moet worden uitgeschakeld voor webtoepassingen
-- APi-app mag alleen toegankelijk zijn via HTTPS
+- Automatische inrichting van de agent voor beveiligings bewaking
+- Network Watcher implementeren bij het maken van virtuele netwerken
 
-## <a name="electronic-messaging"></a>Elektronische berichten
+## <a name="input-data-validation"></a>Validatie van invoer gegevens
 
-Goedkeuringen worden verkregen voordat externe openbare diensten worden gebruikt, waaronder instant messaging of het delen van bestanden.
+Voor alle open bare webtoepassingen worden firewalls op toepassings niveau geïmplementeerd om verkeer te beheren. Voor open bare toepassingen die niet zijn gebaseerd op het web, heeft de organisatie een op het netwerk gebaseerde firewall geïmplementeerd die specifiek is voor het toepassings type. Als het verkeer naar de open bare toepassing is versleuteld, bevindt het apparaat zich achter de versleuteling of kan het verkeer voorafgaand aan de analyse worden ontsleuteld.
 
-- \[Voorbeeld\] Controleresultaten weergeven van Linux VM's die niet zijn ingesteld op 0644
+- \[Preview\] -controle resultaten van de configuratie van virtuele Windows-machines in Windows Firewall eigenschappen weer geven
 
-## <a name="on-line-transactions"></a>On-line transacties
 
-De organisatie vereist het gebruik van encryptie tussen, en het gebruik van elektronische handtekeningen door, elk van de partijen die betrokken zijn bij de transactie. De organisatie zorgt ervoor dat de opslag van de transactiegegevens zich buiten openbaar toegankelijke omgevingen bevindt (bijvoorbeeld op een opslagplatform dat op het intranet van de organisatie bestaat) en niet wordt bewaard en blootgesteld op een opslagmedium dat rechtstreeks toegankelijk is vanaf het internet.Wanneer een vertrouwde autoriteit wordt gebruikt (bijvoorbeeld voor het uitgeven en onderhouden van digitale handtekeningen en/of digitale certificaten), is beveiliging geïntegreerd en ingebed in het gehele end-to-end certificaat/handtekeningbeheer Proces.
+## <a name="network-connection-control"></a>Beheer van netwerk verbindingen
 
-- Schijfversleuteling moet worden toegepast op VM's
-- \[Voorbeeld\] van controleresultaten weergeven van Windows VM's die de opgegeven certificaten niet bevatten in vertrouwde root
+Netwerk verkeer wordt beheerd in overeenstemming met het toegangs beheer beleid van de organisatie via firewall en andere netwerk beperkingen voor elk netwerk toegangs punt of de beheerde interface van de externe telecommunicatie service.
+
+- Toegang via Internet gerichte eind punten moet worden beperkt
+- TDE-beveiliging van SQL Managed instance moet worden versleuteld met uw eigen sleutel
+- Externe fout opsporing moet worden uitgeschakeld voor API apps
+
+## <a name="network-controls"></a>Netwerk besturings elementen
+
+De organisatie gebruikt beveiligde en versleutelde communicatie kanalen bij het migreren van fysieke servers, toepassingen of gegevens naar gevirtualiseerde servers.
+
+- Schijf versleuteling moet worden toegepast op Vm's
+- SQL Server TDE-beveiliging moet worden versleuteld met uw eigen sleutel
+- \[Voor\] beeld weer geven controles resultaten van configuraties van Windows-Vm's in beveiligings opties-netwerk toegang
+- Onbeperkte netwerk toegang tot opslag accounts controleren
+- \[Preview\] -controle resultaten weer geven van de configuratie van Windows-vm's in Windows Firewall eigenschappen
+- Diagnostische instellingen implementeren vanuit netwerk beveiligings groepen
+- Toegang via Internet gerichte eind punten moet worden beperkt
+
+## <a name="sensitive-system-isolation"></a>Gevoelige systeem isolatie
+
+Gedeelde systeem bronnen (bijvoorbeeld registers, hoofd geheugen, secundaire opslag) worden teruggebracht naar het systeem, beveiligd tegen openbaar making aan andere systemen/toepassingen/gebruikers, en gebruikers kunnen opzettelijk of onbedoeld geen toegang krijgen tot informatie-resten.
+
+- Virtual Machines moeten worden gemigreerd naar nieuwe Azure Resource Manager resources
+
+## <a name="security-of-network-services"></a>Beveiliging van Network Services
+
+Overeengekomen services die door een netwerk serviceprovider/Manager worden verschaft, worden formeel beheerd en bewaakt om ervoor te zorgen dat ze veilig worden ingediend.
+
+- Virtual Machines moeten worden gemigreerd naar nieuwe Azure Resource Manager resources
+
+## <a name="network-routing-control"></a>Routerings beheer voor netwerk
+
+Routerings besturings elementen worden geïmplementeerd via beveiligings gateways (zoals firewalls) die worden gebruikt tussen interne en externe netwerken (bijvoorbeeld het internet en netwerken van derden).
+
+- Adaptieve toepassings besturings elementen moeten worden ingeschakeld op virtuele machines
+
+## <a name="information-exchange-policies-and-procedures"></a>Beleid en procedures voor het uitwisselen van informatie
+
+De organisatie beperkt het gebruik van Portable Storage-Media die door de organisatie worden beheerd door geautoriseerde personen op externe informatie systemen.
+
+- Onbeperkte netwerk toegang tot opslag accounts controleren
+- Externe fout opsporing moet worden uitgeschakeld voor webtoepassingen
+- De APi-app mag alleen toegankelijk zijn via HTTPS
+
+## <a name="electronic-messaging"></a>E-mail berichten
+
+Goed keuringen worden verkregen vóór het gebruik van externe open bare Services, waaronder Instant Messa ging of het delen van bestanden.
+
+- \[Preview\] -controle resultaten weer geven van Linux-vm's waarvoor de machtigingen voor het wachtwoord bestand niet zijn ingesteld op 0644
+
+## <a name="on-line-transactions"></a>Online transacties
+
+De organisatie vereist het gebruik van versleuteling tussen en het gebruik van elektronische hand tekeningen door elk van de partijen bij de trans actie. De organisatie garandeert dat de opslag van de transactie gegevens zich buiten een openbaar toegankelijke omgeving bevindt (bijvoorbeeld op een opslag platform dat aanwezig is op het intranet van de organisatie) en niet wordt bewaard en op een opslag medium rechtstreeks toegankelijk is vanaf internet. Wanneer een vertrouwde instantie wordt gebruikt (bijvoorbeeld voor het verlenen en onderhouden van digitale hand tekeningen en/of digitale certificaten), is de beveiliging geïntegreerd en Inge sloten in het volledige end-to-end-proces voor het beheren van certificaten en hand tekeningen.
+
+- Schijf versleuteling moet worden toegepast op Vm's
+- \[Preview\] -controle resultaten weer geven van Windows-vm's die niet de opgegeven certificaten in de vertrouwde basis bevatten
 
 ## <a name="password-management"></a>Wachtwoordbeheer
 
-Wachtwoorden worden versleuteld tijdens verzending en opslag op alle systeemonderdelen.
+Wacht woorden worden versleuteld tijdens de overdracht en opslag op alle systeem onderdelen.
 
-- \[Voorbeeld\] Van een voorbeeld Controleresultaten weergeven van windows VM's die de instelling voor wachtwoordcomplexiteit niet hebben ingeschakeld
+- \[Preview\] -controle resultaten weer geven van Windows-vm's waarvoor de instelling voor wachtwoord complexiteit niet is ingeschakeld
 
-## <a name="user-authentication-for-external-connections"></a>Gebruikersverificatie voor externe verbindingen
+## <a name="user-authentication-for-external-connections"></a>Gebruikers verificatie voor externe verbindingen
 
-Sterke verificatiemethoden zoals multi-factor, Radius of Kerberos (voor bevoorrechte toegang) en CHAP (voor versleuteling van referenties voor inbelmethoden) worden geïmplementeerd voor alle externe verbindingen met het organisatienetwerk.
+Krachtige verificatie methoden zoals multi-factor, RADIUS of Kerberos (voor bevoegde toegang) en CHAP (voor versleuteling van referenties voor inbel methoden) worden geïmplementeerd voor alle externe verbindingen met het netwerk van de organisatie.
 
-- MFA moet accounts zijn ingeschakeld met schrijfmachtigingen voor uw abonnement
-- Just In Time-netwerktoegangscontrole moet worden toegepast op VM's
+- MFA moet zijn ingeschakeld voor accounts met schrijf machtigingen voor uw abonnement
+- Just-in-time-netwerk toegangs beheer moet worden toegepast op Vm's
 
-## <a name="user-identification-and-authentication"></a>Gebruikersidentificatie en -verificatie
+## <a name="user-identification-and-authentication"></a>Gebruikers identificatie en-verificatie
 
-Gebruikers die bevoorrechte functies hebben uitgevoerd (bijvoorbeeld systeembeheer) gebruiken afzonderlijke accounts bij het uitvoeren van deze bevoorrechte functies. Multi-factor authenticatie methoden worden gebruikt in overeenstemming met het organisatiebeleid, (bijvoorbeeld voor externe netwerktoegang).
+Gebruikers die geprivilegieerde functies (zoals systeem beheer) hebben uitgevoerd, gebruiken afzonderlijke accounts bij het uitvoeren van deze geprivilegieerde functies. Multi-factor Authentication-methoden worden gebruikt in overeenstemming met het organisatie beleid (bijvoorbeeld voor externe netwerk toegang).
 
-- MFA moet accounts zijn ingeschakeld met schrijfmachtigingen voor uw abonnement
-- Just In Time-netwerktoegangscontrole moet worden toegepast op VM's
+- MFA moet zijn ingeschakeld voor accounts met schrijf machtigingen voor uw abonnement
+- Just-in-time-netwerk toegangs beheer moet worden toegepast op Vm's
 
-## <a name="privilege-management"></a>Privilege Management
+## <a name="privilege-management"></a>Bevoegdheids beheer
 
-Toegang tot beheerfuncties of administratieve consoles voor systemen die gevirtualiseerde systemen hosten, is beperkt tot personeel dat is gebaseerd op het principe van het minste voorrecht en wordt ondersteund door technische controles.
+Toegang tot beheer functies of beheer consoles voor systemen die als host fungeren voor gevirtualiseerde systemen zijn beperkt tot personeel op basis van het principe van minimale bevoegdheden en worden ondersteund door middel van technische controles.
 
-- Just In Time-netwerktoegangscontrole moet worden toegepast op VM's
-- \[Preview\] Role Based Access Control (RBAC) moet worden gebruikt op Kubernetes-services
+- Just-in-time-netwerk toegangs beheer moet worden toegepast op Vm's
+- \[Preview\] -functie op basis van Access Control (RBAC) moet worden gebruikt voor Kubernetes-Services
 
-## <a name="review-of-user-access-rights"></a>Controle van toegangsrechten voor gebruikers
+## <a name="review-of-user-access-rights"></a>Beoordeling van gebruikers toegangs rechten
 
-De organisatie houdt een gedocumenteerde lijst bij van geautoriseerde gebruikers van informatiemiddelen.
+De organisatie onderhoudt een gedocumenteerde lijst met gemachtigde gebruikers van informatie-assets.
 
-- \[Preview\] Bekijk de resultaten van audits weergeven van Windows VM's in 'Beveiligingsopties- accounts'
+- \[Preview\] -controles weer geven resultaten van Windows-vm's configureren in beveiligings opties-accounts
 
-## <a name="remote-diagnostic-and-configuration-port-protection"></a>Beveiliging van diagnostische en configuratiepoort op afstand
+## <a name="remote-diagnostic-and-configuration-port-protection"></a>Externe diagnose-en configuratie poort beveiliging
 
-Poorten, services en soortgelijke toepassingen die zijn geïnstalleerd op een computer of netwerksystemen, die niet specifiek vereist zijn voor zakelijke functionaliteit, worden uitgeschakeld of verwijderd.
+Poorten, services en soort gelijke toepassingen die zijn geïnstalleerd op een computer of netwerk systemen die niet specifiek vereist zijn voor bedrijfs functionaliteit, worden uitgeschakeld of verwijderd.
 
-- Beheerpoorten moeten worden gesloten op uw virtuele machines
-- Kwetsbaarheden in beveiligingsconfiguratie op uw virtuele machines schaalsets moeten worden verholpen
+- Beheer poorten moeten worden gesloten op uw virtuele machines
+- Beveiligings problemen in de beveiligings configuratie op uw virtuele machines schaal sets moeten worden hersteld
 
-## <a name="audit-logging"></a>Controlelogboekregistratie
+## <a name="audit-logging"></a>Controle logboek registratie
 
-Logboeken van verzonden en ontvangen berichten worden bijgehouden, inclusief de datum, tijd, oorsprong en bestemming van het bericht, maar niet de inhoud ervan. Auditing is altijd beschikbaar terwijl het systeem actief is en belangrijke gebeurtenissen, succes/mislukte gegevenstoegang, wijzigingen in de systeembeveiliging, geprivilegieerd of gebruik van het nutsgebruik, alle alarmen die worden geactiveerd, activering en deactivering van beveiligingssystemen (bijvoorbeeld A/V en IDS), activering en deactivering van identificatie- en verificatiemechanismen en het aanmaken en verwijderen van systeemobjecten bijhoudt.
+Logboeken van verzonden en ontvangen berichten worden bewaard, inclusief de datum, de tijd, de oorsprong en de bestemming van het bericht, maar niet de inhoud ervan. Controle is altijd beschikbaar wanneer het systeem actief is en traceert, geslaagde/mislukte gegevens toegang, wijzigingen in de systeem beveiligings configuratie, privilege of het gebruik van het hulp programma, alle waarschuwingen die zijn opgetreden, activering en de activering van beveiligings systemen (bijvoorbeeld A/V en ID'S), activering en deactivering van identificatie-en verificatie mechanismen en het maken en verwijderen van objecten op systeem niveau
 
-- Diagnostische logboeken in gebeurtenishub moeten zijn ingeschakeld
-- Systeemupdates op virtuele machineschaalsets moeten worden geïnstalleerd
+- Diagnostische logboeken in Event hub moeten worden ingeschakeld
+- Systeem updates op virtuele-machine schaal sets moeten worden geïnstalleerd
 
-## <a name="monitoring-system-use"></a>Gebruik van bewakingssysteem
+## <a name="monitoring-system-use"></a>Systeem gebruik bewaken
 
-Geautomatiseerde systemen die in de hele omgeving van de organisatie worden geïmplementeerd, worden gebruikt om belangrijke gebeurtenissen en afwijkende activiteiten te controleren en systeemlogboeken te analyseren, waarvan de resultaten regelmatig worden beoordeeld. Monitoring omvat geprivilegieerde bewerkingen, geautoriseerde toegang of ongeautoriseerde toegangspogingen, waaronder pogingen om toegang te krijgen tot gedeactiveerde accounts en systeemwaarschuwingen of -fouten.
+Geautomatiseerde systemen die in de hele organisatie omgeving worden geïmplementeerd, worden gebruikt voor het bewaken van belang rijke gebeurtenissen en afwijkende activiteiten, en het analyseren van systeem logboeken waarvan de resultaten regel matig worden gecontroleerd. Bewaking omvat geprivilegieerde bewerkingen, geautoriseerde toegang of pogingen tot onbevoegde toegang, waaronder pogingen om toegang te krijgen tot gedeactiveerde accounts, en systeem waarschuwingen of fouten.
 
-- Diagnostische logboeken in virtuele machineschaalsets moeten zijn ingeschakeld
+- Diagnostische logboeken in virtuele-machine schaal sets moeten zijn ingeschakeld
 
-## <a name="segregation-of-duties"></a>Scheiding van taken
+## <a name="segregation-of-duties"></a>Schei ding van taken
 
-Scheiding van rechten wordt gebruikt om het risico van ongeoorloofde of onbedoelde wijziging van informatie en systemen te beperken. Geen enkele persoon is in staat om toegang te krijgen tot, te wijzigen of informatiesystemen te gebruiken zonder autorisatie of detectie. De toegang voor personen die verantwoordelijk zijn voor het beheer en de toegangscontroles is beperkt tot het minimum dat nodig is op basis van de rol en verantwoordelijkheden van elke gebruiker en deze personen hebben geen toegang tot auditfuncties die verband houden met deze controles.
+Schei ding van taken wordt gebruikt om het risico op ongeoorloofde of onbedoelde wijziging van informatie en systemen te beperken. Geen enkele persoon kan geen gegevens systemen openen, wijzigen of gebruiken zonder autorisatie of detectie. Toegang voor personen die verantwoordelijk zijn voor beheer-en toegangs beheer is beperkt tot het minimum dat nodig is op basis van de rol en verantwoordelijkheden van elke gebruiker en deze personen hebben geen toegang tot controle functies die betrekking hebben op deze besturings elementen.
 
-- MFA moet accounts zijn ingeschakeld met schrijfmachtigingen voor uw abonnement
+- MFA moet zijn ingeschakeld voor accounts met schrijf machtigingen voor uw abonnement
 
-## <a name="administrator-and-operator-logs"></a>Logboeken beheerder en operator
+## <a name="administrator-and-operator-logs"></a>Beheerders-en operator logboeken
 
-De organisatie zorgt ervoor dat een goede logging is ingeschakeld om beheerdersactiviteiten te controleren; en controleert regelmatig systeembeheerders- en operatorlogboeken.
+De organisatie zorgt ervoor dat de juiste logboek registratie is ingeschakeld om de beheerders activiteiten te controleren. en beoordeelt regel matig de systeem beheerder en de operator Logboeken.
 
-- MFA moet accounts zijn ingeschakeld met schrijfmachtigingen voor uw abonnement
+- MFA moet zijn ingeschakeld voor accounts met schrijf machtigingen voor uw abonnement
 
-## <a name="identification-of-risks-related-to-external-parties"></a>Identificatie van risico's voor externe partijen
+## <a name="identification-of-risks-related-to-external-parties"></a>Identificatie van Risico's met betrekking tot externe partijen
 
-Externe toegangsverbindingen tussen de organisatie en externe partijen worden versleuteld
+Externe toegangs verbindingen tussen de organisatie en externe partijen worden versleuteld
 
-- Schijfversleuteling moet worden toegepast op virtuele machines
+- Schijf versleuteling moet worden toegepast op virtuele machines
 
-## <a name="business-continuity-and-risk-assessment"></a>Bedrijfscontinuïteit en risicobeoordeling
+## <a name="business-continuity-and-risk-assessment"></a>Bedrijfs continuïteit en risico analyse
 
-De organisatie identificeert haar kritieke bedrijfsprocessen en integreert de vereisten voor informatiebeveiliging beheer van bedrijfscontinuïteit met andere continuïteitsvereisten met betrekking tot aspecten zoals bedrijfsvoering, personeel, materialen, transport en faciliteiten.
+De organisatie identificeert de essentiële bedrijfs processen en integreert de vereisten voor het beheer van gegevens beveiliging van bedrijfs continuïteit met andere continuïteits vereisten met betrekking tot dergelijke aspecten van activiteiten, personeel, materialen, Trans Port en faciliteiten.
 
-- \[Preview\] Bekijk de controleresultaten van de configuratie van Windows VM's weergeven in 'Beveiligingsopties- herstelconsole'
+- \[Preview\] -controle resultaten weer geven van configuratie van virtuele Windows-machines in beveiligings opties-herstel console
 
 > [!NOTE]
-> De beschikbaarheid van specifieke Azure Policy-definities kan variëren in Azure Government en andere nationale clouds. 
+> De beschik baarheid van specifieke Azure Policy definities kan verschillen in Azure Government en andere nationale Clouds. 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Je hebt de controlemapping van het HIPAA HITRUST-blauwdrukmonster bekeken. Ga vervolgens naar de volgende artikelen voor meer informatie over het overzicht en hoe u dit voorbeeld implementeert:
+U hebt de beheer toewijzing van het voor beeld van HIPAA HITRUST-blauw drukken gecontroleerd. Ga vervolgens naar de volgende artikelen voor meer informatie over het overzicht en hoe u dit voor beeld implementeert:
 
 > [!div class="next step action"]
-> [HIPAA HITRUST blauwdruk - Overzicht](./control-mapping.md)
-> [HIPAA HITRUST blauwdruk - Deploy steps](./deploy.md)
+> [HIPAA HITRUST blauw druk-overzicht](./control-mapping.md)
+> [HIPAA HITRUST Blue-Deploy Steps](./deploy.md)
 
 Aanvullende artikelen over blauwdrukken en het gebruik hiervan:
 
-- Meer informatie over de [levenscyclus van de blauwdruk](../../concepts/lifecycle.md).
-- Begrijpen hoe [statische en dynamische parameters](../../concepts/parameters.md)te gebruiken.
-- Leer de volgorde van de [blauwdrukvolgorde](../../concepts/sequencing-order.md)aan te passen.
-- Ontdek hoe u gebruik maken van het vergrendelen van [blauwdrukbronnen.](../../concepts/resource-locking.md)
+- Meer informatie over de [levenscyclus van een blauwdruk](../../concepts/lifecycle.md).
+- Meer informatie over hoe u [statische en dynamische parameters](../../concepts/parameters.md) gebruikt.
+- Meer informatie over hoe u de [blauwdrukvolgorde](../../concepts/sequencing-order.md) aanpast.
+- Meer informatie over hoe u gebruikmaakt van [resourcevergrendeling in blauwdrukken](../../concepts/resource-locking.md).
 - Meer informatie over hoe u [bestaande toewijzingen bijwerkt](../../how-to/update-existing-assignments.md).

@@ -1,6 +1,6 @@
 ---
-title: 'Zelfstudie: Azure Active Directory-integratie met Reward Gateway | Microsoft Documenten'
-description: Meer informatie over het configureren van eenmalige aanmelding tussen Azure Active Directory en Reward Gateway.
+title: 'Zelf studie: integratie met een belonings gateway Azure Active Directory | Microsoft Docs'
+description: Meer informatie over het configureren van eenmalige aanmelding tussen Azure Active Directory en belonings gateway.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -16,42 +16,42 @@ ms.topic: tutorial
 ms.date: 03/26/2019
 ms.author: jeedes
 ms.openlocfilehash: fcd12b0c47dc587153df51d4d30eb2abe4cc2657
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "74081946"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-reward-gateway"></a>Zelfstudie: Azure Active Directory-integratie met Reward Gateway
+# <a name="tutorial-azure-active-directory-integration-with-reward-gateway"></a>Zelf studie: integratie met een belonings gateway Azure Active Directory
 
-In deze zelfstudie leert u hoe u Reward Gateway integreert met Azure Active Directory (Azure AD).
-Het integreren van Reward Gateway met Azure AD biedt u de volgende voordelen:
+In deze zelf studie leert u hoe u de belonende gateway kunt integreren met Azure Active Directory (Azure AD).
+Het integreren van de belonings gateway met Azure AD biedt de volgende voor delen:
 
-* U in Azure AD bepalen wie toegang heeft tot Reward Gateway.
-* U uw gebruikers automatisch laten inlogen bij Reward Gateway (Single Sign-On) met hun Azure AD-accounts.
+* U kunt beheren in azure AD die toegang heeft tot de belonings gateway.
+* U kunt ervoor zorgen dat uw gebruikers automatisch worden aangemeld voor het belonen van Gateway (eenmalige aanmelding) met hun Azure AD-accounts.
 * U kunt uw accounts vanaf één centrale locatie beheren: de Azure-portal.
 
 Zie [What is application access and single sign-on with Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?) als u wilt graag meer wilt weten over de integratie van SaaS-apps met Azure AD.
-Als u geen Azure-abonnement hebt, [maakt u een gratis account](https://azure.microsoft.com/free/) voordat u begint.
+Als u nog geen abonnement op Azure hebt, [Maak dan een gratis account](https://azure.microsoft.com/free/) aan voordat u begint.
 
 ## <a name="prerequisites"></a>Vereisten
 
-Als u Azure AD-integratie met Reward Gateway wilt configureren, hebt u de volgende items nodig:
+Als u Azure AD-integratie met belonings gateway wilt configureren, hebt u de volgende items nodig:
 
-* Een Azure AD-abonnement Als u geen Azure AD-omgeving hebt, u een [gratis account](https://azure.microsoft.com/free/) krijgen
-* Reward Gateway-abonnement met één aanmelding
+* Een Azure AD-abonnement Als u geen Azure AD-omgeving hebt, kunt u een [gratis account](https://azure.microsoft.com/free/) aanvragen
+* Abonnement op eenmalige aanmelding voor belonings gateway
 
 ## <a name="scenario-description"></a>Scenariobeschrijving
 
 In deze zelfstudie gaat u in een testomgeving eenmalige aanmelding van Azure AD configureren en testen.
 
-* Reward Gateway ondersteunt **IDP** geïnitieerde SSO
+* Belonings gateway biedt ondersteuning voor door **IDP** GEÏNITIEERDe SSO
 
-## <a name="adding-reward-gateway-from-the-gallery"></a>Reward Gateway toevoegen vanuit de galerie
+## <a name="adding-reward-gateway-from-the-gallery"></a>Belonings gateway toevoegen vanuit de galerie
 
-Als u de integratie van Reward Gateway in Azure AD wilt configureren, moet u Reward Gateway uit de galerie toevoegen aan uw lijst met beheerde SaaS-apps.
+Als u de integratie van belonings gateway wilt configureren in azure AD, moet u een belonende gateway uit de galerie toevoegen aan uw lijst met beheerde SaaS-apps.
 
-**Voer de volgende stappen uit om Reward Gateway uit de galerie toe te voegen:**
+**Voer de volgende stappen uit om een belonende gateway toe te voegen aan de galerie:**
 
 1. Klik in het linkernavigatievenster in de **[Azure-portal](https://portal.azure.com)** op het **Azure Active Directory**-pictogram.
 
@@ -65,31 +65,31 @@ Als u de integratie van Reward Gateway in Azure AD wilt configureren, moet u Rew
 
     ![De knop Nieuwe toepassing](common/add-new-app.png)
 
-4. Typ **Reward Gateway**in het zoekvak , selecteer **Reward Gateway** in het resultaatpaneel en klik op Knop **Toevoegen** om de toepassing toe te voegen.
+4. In het zoekvak typt u **belonings gateway**, selecteert u in de resultaten van het deel venster **beloning** en vervolgens klikt u op de knop **toevoegen** om de toepassing toe te voegen.
 
-     ![Reward Gateway in de resultatenlijst](common/search-new-app.png)
+     ![Belonings gateway in de lijst met resultaten](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD-eenmalige aanmelding configureren en testen
 
-In deze sectie configureert en test u Azure AD single sign-on met Reward Gateway op basis van een testgebruiker genaamd **Britta Simon**.
-Voor eenmalige aanmelding om te werken, moet een koppelingsrelatie worden ingesteld tussen een Azure AD-gebruiker en de gerelateerde gebruiker in Reward Gateway.
+In deze sectie kunt u eenmalige aanmelding voor Azure AD configureren en testen met beloning gateway op basis van een test gebruiker met de naam **Julia Simon**.
+Als u eenmalige aanmelding wilt gebruiken, moet er een koppelings relatie tussen een Azure AD-gebruiker en de bijbehorende gebruiker in belonings gateway tot stand worden gebracht.
 
-Als u Azure AD-singlesign-aan wilt configureren en testen met Reward Gateway, moet u de volgende bouwstenen voltooien:
+U moet de volgende bouw stenen volt ooien om de eenmalige aanmelding van Azure AD te configureren en te testen met een belonings gateway:
 
 1. **[Azure AD-eenmalige aanmelding configureren](#configure-azure-ad-single-sign-on)**: als u wilt dat uw gebruikers deze functie kunnen gebruiken.
-2. **[Configureer Reward Gateway Single Sign-On](#configure-reward-gateway-single-sign-on)** - om de instellingen voor één aanmelding aan de toepassingszijde te configureren.
+2. **[Eenmalige aanmelding voor de loon gateway configureren](#configure-reward-gateway-single-sign-on)** : Hiermee configureert u de instellingen voor eenmalige aanmelding aan de kant van de toepassing.
 3. **[Een Azure AD-testgebruiker maken](#create-an-azure-ad-test-user)**: als u Azure AD-eenmalige aanmelding wil testen met Britta Simon.
 4. **[De testgebruiker van Azure AD-toewijzen](#assign-the-azure-ad-test-user)**: als u wilt dat Britta Simon gebruik kan maken van Azure AD-eenmalige aanmelding.
-5. Maak de gebruiker van **[de Reward Gateway-test](#create-reward-gateway-test-user)** - om een tegenhanger van Britta Simon in Reward Gateway te hebben die is gekoppeld aan de Azure AD-weergave van de gebruiker.
+5. **[Maak een test gebruiker voor de belonings gateway](#create-reward-gateway-test-user)** , zodat deze een tegen hanger heeft van Julia Simon in beloning gateway die is gekoppeld aan de Azure AD-representatie van de gebruiker.
 6. **[Eenmalige aanmelding testen](#test-single-sign-on)**: als u wilt controleren of de configuratie werkt.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Azure AD configureren voor eenmalige aanmelding
 
 In deze sectie gaat u Azure AD-eenmalige aanmelding in de Azure-portal inschakelen.
 
-Voer de volgende stappen uit om de volgende stappen uit te voeren om de enkele aanmelding van Azure AD met Reward Gateway te configureren:
+Voer de volgende stappen uit om eenmalige aanmelding voor Azure AD te configureren met een belonings gateway:
 
-1. Selecteer in de [Azure-portal](https://portal.azure.com/)op de pagina **Reward Gateway-toepassingsintegratie** de optie **Eén aanmelding .**
+1. Selecteer in de [Azure Portal](https://portal.azure.com/)op de pagina voor de integratie van de **lonende gateway** **-toepassing eenmalige aanmelding**.
 
     ![Koppeling Eenmalige aanmelding configureren](common/select-sso.png)
 
@@ -103,7 +103,7 @@ Voer de volgende stappen uit om de volgende stappen uit te voeren om de enkele a
 
 4. Op de pagina **Eenmalige aanmelding instellen met SAML** voert u de volgende stappen uit:
 
-    ![Reward Gateway Domain en URL's single sign-on information](common/idp-intiated.png)
+    ![Informatie over het belonende gateway domein en Url's eenmalige aanmelding](common/idp-intiated.png)
 
     a. In het tekstvak **Id** typt u een URL met het volgende patroon: 
     
@@ -124,13 +124,13 @@ Voer de volgende stappen uit om de volgende stappen uit te voeren om de enkele a
     | `https://<companyname>.rewardgateway.com.au/Authentication/EndLogin?idp=<Unique Id>`|
 
     > [!NOTE]
-    > Dit zijn geen echte waarden. Werk deze waarden bij met de werkelijke id en antwoord-URL. Om deze waarden te krijgen, start u met het opzetten van een integratie op de Reward Manager Portal. Details zijn te vinden ophttps://success.rewardgateway.com/hc/en-us/articles/360038650573-Microsoft-Azure-for-Authentication
+    > Dit zijn geen echte waarden. Werk deze waarden bij met de werkelijke id en antwoord-URL. Als u deze waarden wilt ophalen, begint u met het instellen van een integratie op de portal voor belonings managers. Meer informatie vindt u ophttps://success.rewardgateway.com/hc/en-us/articles/360038650573-Microsoft-Azure-for-Authentication
 
 5. Op de pagina **Eenmalige aanmelding met SAML instellen** in het gedeelte **SAML-handtekeningcertificaat** klikt u op **Downloaden** om het **XML-bestand met federatieve metagegevens** te downloaden uit de gegeven opties overeenkomstig met wat u nodig hebt, en slaat u dit op uw computer op.
 
     ![De link om het certificaat te downloaden](common/metadataxml.png)
 
-6. Kopieer in de sectie **Reward Gateway instellen** de juiste URL(s) volgens uw vereiste.
+6. Kopieer de gewenste URL ('s) volgens uw vereiste in het gedeelte **Stel de gateway** in.
 
     ![Configuratie-URL's kopiëren](common/copy-configuration-urls.png)
 
@@ -140,9 +140,9 @@ Voer de volgende stappen uit om de volgende stappen uit te voeren om de enkele a
 
     c. Afmeldings-URL
 
-### <a name="configure-reward-gateway-single-sign-on"></a>Eenmalige aanmelding voor beloninggateway configureren
+### <a name="configure-reward-gateway-single-sign-on"></a>Eenmalige aanmelding voor de loon gateway configureren
 
-Als u eenmalige aanmelding wilt configureren aan de **kant van de Reward Gateway,** start u met het instellen van een integratie op de Reward Manager Portal. Gebruik de gedownloade metagegevens om uw ondertekeningscertificaat te verkrijgen en upload dat tijdens de configuratie. Details zijn te vinden ophttps://success.rewardgateway.com/hc/en-us/articles/360038650573-Microsoft-Azure-for-Authentication
+Begin met het instellen van een integratie op de portal voor belonings managers om eenmalige aanmelding in te stellen aan de hand van een **belonings gateway** . Gebruik de gedownloade meta gegevens om uw handtekening certificaat te verkrijgen en upload dat tijdens de configuratie. Meer informatie vindt u ophttps://success.rewardgateway.com/hc/en-us/articles/360038650573-Microsoft-Azure-for-Authentication
 
 ### <a name="create-an-azure-ad-test-user"></a>Een Azure AD-testgebruiker maken
 
@@ -152,7 +152,7 @@ Het doel van deze sectie is om in de Azure-portal een testgebruiker met de naam 
 
     ![De koppelingen Gebruikers en groepen en Alle gebruikers](common/users.png)
 
-2. Selecteer **Nieuwe gebruiker** boven aan het scherm.
+2. Selecteer **nieuwe gebruiker** boven aan het scherm.
 
     ![Knop Nieuwe gebruiker](common/new-user.png)
 
@@ -167,19 +167,19 @@ Het doel van deze sectie is om in de Azure-portal een testgebruiker met de naam 
 
     c. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak Wachtwoord.
 
-    d. Klik **op Maken**.
+    d. Klik op **maken**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>De Azure AD-testgebruiker toewijzen
 
-In deze sectie stelt u Britta Simon in staat om Azure single sign-on te gebruiken door toegang te verlenen tot Reward Gateway.
+In deze sectie schakelt u Julia Simon in om gebruik te maken van eenmalige aanmelding van Azure door toegang te verlenen tot de belonings gateway.
 
-1. Selecteer in de Azure-portal **Enterprise-toepassingen**, selecteer **Alle toepassingen**en selecteer Vervolgens **Reward Gateway**.
+1. Selecteer in het Azure Portal **bedrijfs toepassingen**, selecteer **alle toepassingen**en selecteer vervolgens de optie **belonings gateway**.
 
     ![De blade Bedrijfstoepassingen](common/enterprise-applications.png)
 
-2. Selecteer **Reward Gateway**in de lijst met toepassingen .
+2. Selecteer in de lijst toepassingen de optie **beloning gateway**.
 
-    ![De koppeling Beloningsgateway in de lijst Toepassingen](common/all-applications.png)
+    ![De koppeling van de belonings gateway in de lijst met toepassingen](common/all-applications.png)
 
 3. Selecteer in het menu aan de linkerkant **Gebruikers en groepen**.
 
@@ -189,26 +189,26 @@ In deze sectie stelt u Britta Simon in staat om Azure single sign-on te gebruike
 
     ![Het deelvenster Toewijzing toevoegen](common/add-assign-user.png)
 
-5. Selecteer **In** het dialoogvenster Gebruikers en groepen **Britta Simon** in de lijst Gebruikers en klik je op de knop **Selecteren** onder aan het scherm.
+5. Selecteer in het dialoog venster **gebruikers en groepen** **Julia Simon** in de lijst gebruikers en klik vervolgens op de knop **selecteren** onder aan het scherm.
 
-6. Als u een rolwaarde verwacht in de SAML-bewering, selecteert u in het dialoogvenster **Rol selecteren** de juiste rol voor de gebruiker in de lijst en klikt u op de knop **Selecteren** onder aan het scherm.
+6. Als u een wille keurige rol verwacht in de SAML-bewering, selecteert u in het dialoog venster **rol selecteren** de juiste rol voor de gebruiker in de lijst en klikt u op de knop **selecteren** onder aan het scherm.
 
 7. Klik in het dialoogvenster **Toewijzing toevoegen** op de knop **Toewijzen**.
 
-### <a name="create-reward-gateway-test-user"></a>Gebruiker van reward gateway-tests maken
+### <a name="create-reward-gateway-test-user"></a>Test gebruiker voor belonings gateway maken
 
-In deze sectie maakt u een gebruiker genaamd Britta Simon in Reward Gateway. Werk samen met [het ondersteuningsteam van Reward Gateway](mailto:clientsupport@rewardgateway.com) om de gebruikers toe te voegen aan het Reward Gateway-platform. Er moeten gebruikers worden gemaakt en geactiveerd voordat u eenmalige aanmelding kunt gebruiken.
+In deze sectie maakt u een gebruiker met de naam Julia Simon in beloning gateway. Werk samen met het [team van belonings gateway](mailto:clientsupport@rewardgateway.com) om de gebruikers toe te voegen in het belonings gateway platform. Er moeten gebruikers worden gemaakt en geactiveerd voordat u eenmalige aanmelding kunt gebruiken.
 
 ### <a name="test-single-sign-on"></a>Eenmalige aanmelding testen
 
 In deze sectie gaat u uw configuratie van Azure AD-eenmalige aanmelding testen via het toegangsvenster.
 
-Wanneer u op de tegel Reward Gateway in het toegangspaneel klikt, moet u automatisch worden aangemeld bij de Reward Gateway waarvoor u SSO hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
+Wanneer u op de tegel-gateway in het toegangs venster klikt, moet u automatisch worden aangemeld bij de belonings gateway waarvoor u SSO hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
 
 ## <a name="additional-resources"></a>Aanvullende resources
 
 - [Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Wat is toepassingstoegang en eenmalige aanmelding met Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Wat is toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Wat is voorwaardelijke toegang in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

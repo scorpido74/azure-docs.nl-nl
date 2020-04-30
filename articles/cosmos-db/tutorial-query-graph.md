@@ -1,6 +1,6 @@
 ---
 title: Grafiekgegevens opvragen in Azure Cosmos DB
-description: Meer informatie over het opvragen van grafiekgegevens van Azure Cosmos DB met Gremlin-query's
+description: Meer informatie over het opvragen van grafiek gegevens vanuit Azure Cosmos DB met behulp van Gremlin-query's
 author: luisbosquez
 ms.author: lbosq
 ms.service: cosmos-db
@@ -9,10 +9,10 @@ ms.topic: tutorial
 ms.date: 12/03/2018
 ms.reviewer: sngun
 ms.openlocfilehash: 1dde7bfc74c6a7b0c03d8f192f4e6eaf72e2de6b
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "74870170"
 ---
 # <a name="tutorial-query-azure-cosmos-db-gremlin-api-by-using-gremlin"></a>Zelfstudie: Azure Cosmos DB Gremlin-API opvragen met Gremlin
