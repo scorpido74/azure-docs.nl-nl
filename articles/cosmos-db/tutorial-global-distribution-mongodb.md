@@ -1,5 +1,5 @@
 ---
-title: Zelfstudie voor het instellen van wereldwijde distributie met Azure Cosmos DB API voor MongoDB
+title: Zelf studie voor het instellen van wereld wijde distributie met Azure Cosmos DB-API voor MongoDB
 description: Lees hoe u wereldwijde distributie kunt instellen met behulp van de API van Azure Cosmos DB voor MongoDB.
 author: markjbrown
 ms.author: mjbrown
@@ -9,10 +9,10 @@ ms.topic: tutorial
 ms.date: 12/26/2018
 ms.reviewer: sngun
 ms.openlocfilehash: b446697977395aa9bbbcf2192aa232fbc85a0b68
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "75444671"
 ---
 # <a name="set-up-global-distributed-database-using-azure-cosmos-dbs-api-for-mongodb"></a>Wereldwijd gedistribueerde database instellen met behulp van de API van Azure Cosmos DB voor MongoDB
