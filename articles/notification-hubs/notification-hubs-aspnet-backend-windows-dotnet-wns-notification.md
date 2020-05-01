@@ -18,10 +18,10 @@ ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 03/22/2019
 ms.openlocfilehash: 914ccc2ac74048abb2a66b61aa65b771f8141d5e
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "71212053"
 ---
 # <a name="tutorial-send-notifications-to-specific-users-by-using-azure-notification-hubs"></a>Zelfstudie: Meldingen verzenden naar specifieke gebruikers met behulp van Azure Notification Hubs
@@ -33,7 +33,7 @@ ms.locfileid: "71212053"
 In deze zelfstudie wordt uitgelegd hoe u met Azure Notification Hubs pushmeldingen kunt verzenden naar een specifieke app-gebruiker op een specifiek apparaat. Er wordt een ASP.NET WebAPI-back-end gebruikt om clients te verifiëren. Wanneer de back-end de gebruiker van een clienttoepassing verifieert, wordt er automatisch een tag aan de registratie van de melding toegevoegd. De back-end gebruikt deze tag om meldingen te verzenden naar de specifieke gebruiker.
 
 > [!NOTE]
-> De voltooide code voor deze zelfstudie is te vinden op [GitHub.](https://github.com/Azure/azure-notificationhubs-dotnet/tree/master/Samples/NotifyUsers)
+> De volledige code voor deze zelf studie is te vinden op [github](https://github.com/Azure/azure-notificationhubs-dotnet/tree/master/Samples/NotifyUsers).
 
 In deze zelfstudie voert u de volgende stappen uit:
 
@@ -60,13 +60,13 @@ Deze zelfstudie bouwt voort op de Notification Hub en het Visual Studio-project 
 In dit gedeelte werkt u de code bij in het project dat u hebt voltooid voor de zelfstudie [Tutorial: Send notifications to Universal Windows Platform apps by using Azure Notification Hubs](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md) (Zelfstudie: Meldingen verzenden naar UWP-apps (Universal Windows Platform) met behulp van Azure Notification Hubs). Het project moet al zijn gekoppeld aan de Windows Store. Bovendien moet het project zijn geconfigureerd voor het gebruik van uw Notification Hub. In dit gedeelte voegt u code toe voor het aanroepen van de nieuwe WebAPI-back-end en gebruikt u deze voor het registreren en verzenden van meldingen.
 
 1. Open in Visual Studio de oplossing die u hebt gemaakt voor de zelfstudie [Tutorial: Send notifications to Universal Windows Platform apps by using Azure Notification Hubs](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md) (Zelfstudie: Meldingen verzenden naar UWP-apps (Universal Windows Platform) met behulp van Azure Notification Hubs).
-2. Klik in Solution Explorer met de rechtermuisknop op het uwp-project (Universal Windows Platform) en klik vervolgens op **NuGet-pakketten beheren.**
-3. Selecteer **Bladeren**aan de linkerkant .
+2. Klik in Solution Explorer met de rechter muisknop op het project Universeel Windows-platform (UWP) en klik vervolgens op **NuGet-pakketten beheren**.
+3. Klik aan de linkerkant op **Bladeren**.
 4. Typ **Http Client** in **het zoekvak**.
 5. Klik in de lijst met resultaten op **System.Net.Http** en vervolgens op **Installeren**. Voltooi de installatie.
 6. Typ nu **Json.net** in **het zoekvak** van NuGet. Installeer het pakket **Newtonsoft.json** en sluit het venster NuGet Package Manager.
 7. Dubbelklik in Solution Explorer in het project **WindowsApp** op het bestand **MainPage.xaml** om dit te openen in de Visual Studio-editor.
-8. Vervang `MainPage.xaml` in de XML-code de `<Grid>` sectie door de volgende code: deze code voegt een tekstvak voor gebruikersnaam en wachtwoord toe waarmee de gebruiker zich verifieert. Ook worden er tekstvakken toegevoegd voor de melding en voor de gebruikersnaam-tag die de melding moet ontvangen:
+8. Vervang in `MainPage.xaml` de XML-code de `<Grid>` sectie door de volgende code: deze code voegt een tekstvak voor gebruikers naam en wacht woord toe waarmee de gebruiker wordt geverifieerd. Ook worden er tekstvakken toegevoegd voor de melding en voor de gebruikersnaam-tag die de melding moet ontvangen:
 
     ```xml
     <Grid>
