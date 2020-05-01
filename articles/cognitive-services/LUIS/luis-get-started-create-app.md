@@ -1,13 +1,13 @@
 ---
-title: 'Snelstart: app maken - LUIS'
-description: Deze quickstart laat zien hoe u een LUIS-app maakt die het vooraf gebouwde domein `HomeAutomation` gebruikt voor het in- en uitschakelen van lichten en apparaten. Dit vooraf gemaakte domein biedt u intenties, entiteiten voorbeelden van utterances. Wanneer u klaar bent, hebt u een LUIS-eindpunt in de cloud.
+title: 'Quick Start: app maken-LUIS'
+description: In deze Quick start ziet u hoe u een LUIS-app maakt die gebruikmaakt `HomeAutomation` van het vooraf ontwikkelde domein om verlichting en apparaten in en uit te scha kelen. Dit vooraf gemaakte domein biedt u intenties, entiteiten voorbeelden van utterances. Wanneer u klaar bent, hebt u een LUIS-eindpunt in de cloud.
 ms.topic: quickstart
 ms.date: 03/24/2020
 ms.openlocfilehash: de6cf5e95ee63fc9500cf1b5edab78597bdb18af
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80287795"
 ---
 # <a name="quickstart-use-prebuilt-home-automation-app"></a>Snelstart: Een vooraf gemaakte app voor huisautomatisering gebruiken
@@ -21,30 +21,30 @@ In deze snelstart maakt u een LUIS-app die gebruikmaakt van het vooraf gemaakte 
 ## <a name="create-a-new-app"></a>Een nieuwe app maken
 U kunt uw toepassingen maken en beheren in **Mijn apps**.
 
-1. Selecteer in de lijst Mijn apps de optie **+ Nieuwe app voor een gesprek**.
+1. Selecteer in de lijst mijn apps **+ nieuwe app voor gesprek**.
 
-1. Geef uw toepassing `Home Automation`een naam in het dialoogvenster . Selecteer **Engels** als de cultuur. De beschrijving is optioneel en wordt niet gebruikt voor het ontwerpen of voorspellen. De voorspellingsbron is ook optioneel bij het maken van een LUIS-app. Selecteer **Done**.
+1. Geef uw toepassing `Home Automation`een naam in het dialoog venster. Selecteer **Engels** als cultuur. De beschrijving is optioneel en wordt niet gebruikt voor ontwerpen of voor spellingen. De Voorspellings bron is ook optioneel bij het maken van een LUIS-app. Selecteer **Done**.
 
-    LUIS maakt de app. Wanneer u uw app publiceert, moet u een voorspellingsbron toewijzen, zodat uw app veel aanvragen kan verwerken.
+    LUIS maakt de app. Wanneer u uw app naar productie publiceert, moet u een Voorspellings resource toewijzen, zodat uw app veel aanvragen kan verwerken.
 
-    ![Geef uw toepassing een naam aan de naam 'Domotica'](./media/create-new-app-details.png)
+    ![Geef in het dialoog venster de naam Start Automation van uw toepassing op](./media/create-new-app-details.png)
 
     >[!NOTE]
     >De cultuur kan niet worden gewijzigd nadat de toepassing is gemaakt.
 
 ## <a name="add-prebuilt-domain"></a>Vooraf gemaakt domein toevoegen
 
-Selecteer **Vooraf gebouwde domeinen** en zoek vervolgens naar **Domotica**. Selecteer **Domein toevoegen** op de HomeAutomation-kaart.
+Selecteer vooraf **gemaakte domeinen** en zoek vervolgens naar **HomeAutomation**. Selecteer **domein toevoegen** op de HomeAutomation-kaart.
 
-![Selecteer 'Vooraf gebouwde domeinen' en zoek vervolgens naar 'Domotica'. Selecteer 'Domein toevoegen' op de HomeAutomation-kaart.](media/luis-quickstart-new-app/home-automation.png)
+![Selecteer vooraf gemaakte domeinen en zoek vervolgens naar ' HomeAutomation '. Selecteer domein toevoegen op de HomeAutomation-kaart.](media/luis-quickstart-new-app/home-automation.png)
 
 Wanneer het vooraf gemaakte domein is toegevoegd, wordt in het vak met vooraf gemaakte domeinen de knop **Remove domain** weergegeven.
 
 ## <a name="intents-and-entities"></a>Intenties en entiteiten
 
-Selecteer Intents om de **intenties** van het Domotica-domein te bekijken. De vooraf gebouwde domeinintents hebben voorbeelduitingen.
+Selecteer **intenties** om de HomeAutomation-domein intentie te controleren. De vooraf ontwikkelde domein intentie heeft voor beeld-uitingen.
 
-![Schermafbeelding van de lijst met intenties voor domotica](media/luis-quickstart-new-app/home-automation-intents.png "Schermafbeelding van de lijst met intenties voor domotica")
+![Scherm opname van de lijst met HomeAutomation intentie](media/luis-quickstart-new-app/home-automation-intents.png "Scherm opname van de lijst met HomeAutomation intentie")
 
 > [!NOTE]
 > **None** is een intentie die door alle LUIS-apps wordt geboden. U kunt deze gebruiken voor het afhandelen van utterances die niet overeenkomen met de functionaliteit die uw app biedt.
@@ -60,7 +60,7 @@ Selecteer de intentie **HomeAutomation.TurnOff**. U kunt zien dat de intentie ee
 ## <a name="test-your-app"></a>Uw app testen
 Nadat u uw app hebt getraind, kunt u deze testen.
 
-1. Selecteer **Testen** via de navigatie rechtsboven. 1. Typ een testuiting zoals `Turn off the lights` in het interactieve testvenster en druk op Enter.
+1. Selecteer **test** in de rechter navigatie. 1. Typ een test utterance `Turn off the lights` in het deel venster interactieve test en druk op ENTER.
 
     ```
     Turn off the lights
@@ -68,15 +68,15 @@ Nadat u uw app hebt getraind, kunt u deze testen.
 
     Controleer of de best scorende intentie overeenkomt met de intentie die u verwachtte voor elke test-utterance.
 
-    In dit `Turn off the lights` voorbeeld wordt correct geïdentificeerd als de hoogste scoringsintentie van **HomeAutomation.TurnOff**.
+    In dit voor beeld `Turn off the lights` is het goed geïdentificeerd als de bovenste Score intentie van **HomeAutomation. TurnOff**.
 
     ![Schermafbeelding van deelvenster Test met utterance gemarkeerd](media/luis-quickstart-new-app/review-test-inspection-pane-in-portal.png)
 
-1. Selecteer **Inspecteren** om meer informatie over de voorspelling te bekijken.
+1. Selecteer **controleren** om meer informatie over de voor spelling te bekijken.
 
-    ![Schermafbeelding van het testpaneel met inspectie-informatie](media/luis-quickstart-new-app/test.png)
+    ![Scherm afbeelding van het test paneel met inspectie-informatie](media/luis-quickstart-new-app/test.png)
 
-1. Sluit het testvenster.
+1. Sluit het test venster.
 
 <a name="publish-your-app"></a>
 
@@ -86,18 +86,18 @@ Nadat u uw app hebt getraind, kunt u deze testen.
 
 <a name="query-the-v2-api-prediction-endpoint"></a>
 
-## <a name="query-the-v3-api-prediction-endpoint"></a>Het eindpunt v3-API-voorspelling opvragen
+## <a name="query-the-v3-api-prediction-endpoint"></a>Een query uitvoeren op het prediction-eind punt van de V3 API
 
 [!INCLUDE [LUIS How to get endpoint first step](./includes/v3-prediction-endpoint.md)]
 
-2. Controleer in de adresbalk van de browser voor de querytekenreeks of de volgende naam- en waardebalken zich in de URL bevinden. Als ze niet in de querytekenreeks staan, voegt u ze toe:
+2. Zorg ervoor dat in de adres balk van de browser voor de query reeks de volgende naam-en waarde balken in de URL staan. Als ze niet voor komen in de query reeks, voegt u deze toe:
 
-    |Naam/waardepaar|
+    |Naam/waarde-paar|
     |--|
     |`verbose=true`|
     |`show-all-intents=true`|
 
-3. Ga in de adresbalk van de browser `turn off the living room light` naar het einde van de URL en voer voor de _querywaarde_ in en druk op Enter.
+3. Ga in de adres balk van de browser naar het einde van de URL en `turn off the living room light` Voer de waarde voor de _query_ in en druk op ENTER.
 
     ```json
     {
@@ -188,7 +188,7 @@ Nadat u uw app hebt getraind, kunt u deze testen.
     }
     ```
 
-    Meer informatie over het [V3-voorspellingseindpunt](luis-migration-api-v3.md).
+    Meer informatie over het [v3-Voorspellings eindpunt](luis-migration-api-v3.md).
 
 
 ## <a name="clean-up-resources"></a>Resources opschonen
