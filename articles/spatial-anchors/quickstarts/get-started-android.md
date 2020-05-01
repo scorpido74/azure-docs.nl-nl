@@ -1,5 +1,5 @@
 ---
-title: 'Snelstart: een Android-app maken'
+title: 'Snelstartgids: een Android-app maken'
 description: In deze quickstart leert u een Android-app bouwen met behulp van Spatial Anchors.
 author: craigktreasure
 manager: vriveras
@@ -9,13 +9,13 @@ ms.date: 02/24/2019
 ms.topic: quickstart
 ms.service: azure-spatial-anchors
 ms.openlocfilehash: 0501c8bb1d71c6cff6033fc937cda019c8890056
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "75376457"
 ---
-# <a name="quickstart-create-an-android-app-with-azure-spatial-anchors"></a>Snelstart: een Android-app maken met Azure Spatial Anchors
+# <a name="quickstart-create-an-android-app-with-azure-spatial-anchors"></a>Snelstartgids: een Android-app maken met behulp van ruimtelijke Azure-ankers
 
 In deze quickstart wordt besproken hoe u een Android-app maakt met behulp van [Azure Spatial Anchors](../overview.md) in Java of C++/NDK. Azure Spatial Anchors is een platformoverstijgende ontwikkelaarsservice waarmee u mixed reality-ervaringen kunt maken met behulp van objecten die hun locatie in de loop van de tijd op meerdere apparaten behouden. Als u klaar bent, hebt u een ARCore Android-app gemaakt waarmee een ruimtelijk anker kan worden opgeslagen en teruggehaald.
 
@@ -32,13 +32,13 @@ U leert het volgende:
 
 Zorg ervoor dat u over het volgende beschikt om deze snelstart te voltooien:
 
-- Een Windows- of macOS-machine met <a href="https://developer.android.com/studio/" target="_blank">Android Studio 3.4+</a>.
-  - Als u op Windows werkt, hebt u ook <a href="https://git-scm.com/download/win" target="_blank">Git voor Windows</a> en <a href="https://git-lfs.github.com/">Git LFS</a>nodig.
-  - Als u op macOS draait, laat Git dan installeren via HomeBrew. Voer de volgende opdracht in op `/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"`één regel van de terminal: . Ren dan `brew install git` `brew install git-lfs`en.
-  - Om het NDK-voorbeeld te bouwen, moet je ook de NDK- en CMake 3.6- of meer SDK-tools in Android Studio installeren.
+- Een Windows-of macOS-computer met <a href="https://developer.android.com/studio/" target="_blank">Android Studio 3.4 +</a>.
+  - Als u werkt met Windows, hebt u ook <a href="https://git-scm.com/download/win" target="_blank">Git nodig voor Windows</a> en <a href="https://git-lfs.github.com/">Git LF</a>.
+  - Als u op macOS werkt, kunt u git installeren via HomeBrew. Voer de volgende opdracht in op één regel van de terminal: `/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"`. Voer vervolgens uit `brew install git` en `brew install git-lfs`uit.
+  - Als u het NDK-voor beeld wilt maken, moet u ook de Hulpprogram Ma's voor NDK en CMake 3,6 of hoger installeren in Android Studio.
 - Een <a href="https://developer.android.com/studio/debug/dev-options" target="_blank">door een ontwikkelaar geactiveerde</a> en <a href="https://developers.google.com/ar/discover/supported-devices" target="_blank">voor ARCore geschikt</a> Android-apparaat.
-  - Mogelijk zijn er extra apparaatstuurprogramma's vereist om uw computer te laten communiceren met uw Android-apparaat. Zie [hier](https://developer.android.com/studio/run/device.html) voor meer informatie en instructies.
-- Uw app moet zich richten op ARCore **1.11.0**.
+  - Er zijn mogelijk extra apparaatstuurprogramma's vereist om uw computer te laten communiceren met uw Android-apparaat. Zie [hier](https://developer.android.com/studio/run/device.html) voor meer informatie en instructies.
+- Uw app moet gericht zijn op ARCore **1.11.0**.
 
 [!INCLUDE [Create Spatial Anchors resource](../../../includes/spatial-anchors-get-started-create-resource.md)]
 
@@ -52,9 +52,9 @@ Zorg ervoor dat u over het volgende beschikt om deze snelstart te voltooien:
 
 [!INCLUDE [Clone Sample Repo](../../../includes/spatial-anchors-clone-sample-repository.md)]
 
-Download `arcore_c_api.h` [vanaf hier](https://raw.githubusercontent.com/google-ar/arcore-android-sdk/v1.11.0/libraries/include/arcore_c_api.h) en `Android\NDK\libraries\include`plaats het in .
+Down `arcore_c_api.h` load [hier](https://raw.githubusercontent.com/google-ar/arcore-android-sdk/v1.11.0/libraries/include/arcore_c_api.h) en plaats het in `Android\NDK\libraries\include`.
 
-Vanuit de nieuw gekloonde opslagplaats initialiseer submodules door de volgende opdracht uit te voeren:
+Initialiseer vanuit de zojuist gekloonde opslag plaats submodules door de volgende opdracht uit te voeren:
 
 ```console
 git submodule update --init --recursive
@@ -76,7 +76,7 @@ Selecteer **Een bestaand Android Studio-project openen** en selecteer het projec
 
 ## <a name="configure-account-identifier-and-key"></a>Account-id en -sleutel configureren
 
-De volgende stap is het configureren van de app om uw account-id en accountsleutel te gebruiken. U hebt ze gekopieerd naar een teksteditor bij [het instellen van de bron Ruimtelijke ankers](#create-a-spatial-anchors-resource).
+De volgende stap is het configureren van de app voor het gebruik van uw account-id en de account sleutel. U hebt deze in een tekst editor gekopieerd bij [het instellen van de bron voor ruimtelijke ankers](#create-a-spatial-anchors-resource).
 
 # <a name="java"></a>[Java](#tab/openproject-java)
 
@@ -117,4 +117,4 @@ Stop de app door **Stop** te selecteren in de werkbalk van Android Studio.
 [!INCLUDE [Next steps](../../../includes/spatial-anchors-quickstarts-nextsteps.md)]
 
 > [!div class="nextstepaction"]
-> [Zelfstudie: Ruimtelijke ankers delen op verschillende apparaten](../tutorials/tutorial-share-anchors-across-devices.md)
+> [Zelf studie: ruimtelijke ankers delen op meerdere apparaten](../tutorials/tutorial-share-anchors-across-devices.md)
