@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 04/01/2020
+ms.date: 04/29/2020
 ms.author: aahi
-ms.openlocfilehash: 2caae4fecdf13a1833f23cf9423cf3ded67f6f72
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: d5283051de50b84ea87c0f02a391652854067168
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80879008"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82610735"
 ---
 # <a name="install-and-run-speech-service-containers-preview"></a>Speech Service-containers installeren en uitvoeren (preview-versie)
 
@@ -28,7 +28,7 @@ Met spraak containers kunnen klanten een spraak toepassings architectuur maken d
 
 | Functie | Functies | Jongste |
 |--|--|--|
-| Spraak naar tekst | Transcribeert doorlopend realtime spraak of batch opnames in tekst met tussenliggende resultaten. | 2.1.1 |
+| Spraak naar tekst | Analyseert sentiment en transcribeert doorlopend realtime spraak of batch audio-opnamen met tussenliggende resultaten.  | 2.2.0 |
 | Custom Speech-naar-tekst | Door gebruik te maken van een aangepast model van de [Custom speech Portal](https://speech.microsoft.com/customspeech), transcribeert doorlopend realtime spraak of batch opnames in tekst met tussenliggende resultaten. | 2.1.1 |
 | Tekst naar spraak | Hiermee wordt tekst geconverteerd naar een spreek spraak met tekst zonder opmaak of een SSML (Speech synthese Markup Language). | 1.3.0 |
 | Aangepaste tekst-naar-spraak | Door gebruik te maken van een aangepast model van de [aangepaste Voice Portal](https://aka.ms/custom-voice-portal), converteert u tekst naar een natuurlijk geluids fragment met de invoer van een tekst zonder opmaak of een SSML (Speech synthese Markup Language). | 1.3.0 |
@@ -164,7 +164,7 @@ Alle tags, met uitzonde ring van voor `latest` , hebben de volgende indeling en 
 De volgende code is een voor beeld van de indeling:
 
 ```
-2.1.1-amd64-en-us-preview
+2.2.0-amd64-en-us-preview
 ```
 
 Zie voor alle ondersteunde land instellingen van de **spraak-naar-tekst** -container Tags voor [spraak-naar-tekst-afbeelding](../containers/container-image-tags.md#speech-to-text).
@@ -258,6 +258,33 @@ Met deze opdracht gebeurt het volgende:
 * Wijst 4 CPU-kernen en 4 GB aan geheugen toe.
 * Beschrijft TCP-poort 5000 en wijst een pseudo-TTY voor de container toe.
 * Verwijdert de container automatisch nadat deze is afgesloten. De container installatie kopie is nog steeds beschikbaar op de hostcomputer.
+
+
+#### <a name="analyze-sentiment-on-the-speech-to-text-output"></a>Sentiment analyseren voor de uitvoer van spraak naar tekst 
+
+Vanaf v 2.2.0 van de spraak-naar-tekst-container, kunt u de [API voor sentiment Analysis v3](../text-analytics/how-tos/text-analytics-how-to-sentiment-analysis.md) op de uitvoer aanroepen. Voor het aanroepen van sentiment-analyse hebt u een Text Analytics-API resource-eind punt nodig. Bijvoorbeeld: 
+* `https://westus2.api.cognitive.microsoft.com/text/analytics/v3.0-preview.1/sentiment`
+* `https://localhost:5000/text/analytics/v3.0-preview.1/sentiment`
+
+Als u toegang hebt tot een tekst analyse-eind punt in de Cloud, hebt u een sleutel nodig. Als u Text Analytics lokaal uitvoert, hoeft u dit mogelijk niet op te geven.
+
+De sleutel en het eind punt worden door gegeven aan de spraak container als argumenten, zoals in het volgende voor beeld.
+
+```bash
+docker run -it --rm -p 5000:5000 \
+containerpreview.azurecr.io/microsoft/cognitive-services-speech-to-text:latest \
+Eula=accept \
+Billing={ENDPOINT_URI} \
+ApiKey={API_KEY} \
+CloudAI:SentimentAnalysisSettings:TextAnalyticsHost={TEXT_ANALYTICS_HOST} \
+CloudAI:SentimentAnalysisSettings:SentimentAnalysisApiKey={SENTIMENT_APIKEY}
+```
+
+Met deze opdracht gebeurt het volgende:
+
+* Voert dezelfde stappen uit als hierboven.
+* Slaat een Text Analytics-API-eind punt en-sleutel op voor het verzenden van sentiment-analyse aanvragen. 
+
 
 # <a name="custom-speech-to-text"></a>[Custom Speech-naar-tekst](#tab/cstt)
 
@@ -380,6 +407,9 @@ Met deze opdracht gebeurt het volgende:
 
 ## <a name="query-the-containers-prediction-endpoint"></a>Query uitvoeren op het prediction-eind punt van de container
 
+> [!NOTE]
+> Gebruik een uniek poort nummer als u meerdere containers uitvoert.
+
 | Containers | SDK-host-URL | Protocol |
 |--|--|--|
 | Spraak naar tekst en Custom Speech-naar-tekst | `ws://localhost:5000` | WS |
@@ -388,6 +418,121 @@ Met deze opdracht gebeurt het volgende:
 Zie [Container Security](../cognitive-services-container-support.md#azure-cognitive-services-container-security)(Engelstalig) voor meer informatie over het gebruik van WSS-en HTTPS-protocollen.
 
 [!INCLUDE [Query Speech-to-text container endpoint](includes/speech-to-text-container-query-endpoint.md)]
+
+#### <a name="analyze-sentiment"></a>Stemming analyseren
+
+Als u uw Text Analytics-API referenties [aan de container](#analyze-sentiment-on-the-speech-to-text-output)hebt gegeven, kunt u de Speech SDK gebruiken voor het verzenden van aanvragen voor spraak herkenning met sentiment analyse. U kunt de API-antwoorden zo configureren dat ze een *eenvoudige* of *gedetailleerde* indeling hebben.
+
+# <a name="simple-format"></a>[Eenvoudige indeling](#tab/simple-format)
+
+Als u de speech-client wilt configureren voor gebruik van een `"Sentiment"` eenvoudige indeling, voegt `Simple.Extensions`u als waarde voor toe. Als u een specifieke versie van Text Analytics model wilt kiezen, vervangt `'latest'` u in `speechcontext-phraseDetection.sentimentAnalysis.modelversion` de configuratie van de eigenschap.
+
+```python
+speech_config.set_service_property(
+    name='speechcontext-PhraseOutput.Simple.Extensions',
+    value='["Sentiment"]',
+    channel=speechsdk.ServicePropertyChannel.UriQueryParameter
+)
+speech_config.set_service_property(
+    name='speechcontext-phraseDetection.sentimentAnalysis.modelversion',
+    value='latest',
+    channel=speechsdk.ServicePropertyChannel.UriQueryParameter
+)
+```
+
+`Simple.Extensions`retourneert het sentiment-resultaat in de hoofdlaag van het antwoord.
+
+```json
+{
+   "DisplayText":"What's the weather like?",
+   "Duration":13000000,
+   "Id":"6098574b79434bd4849fee7e0a50f22e",
+   "Offset":4700000,
+   "RecognitionStatus":"Success",
+   "Sentiment":{
+      "Negative":0.03,
+      "Neutral":0.79,
+      "Positive":0.18
+   }
+}
+```
+
+# <a name="detailed-format"></a>[Gedetailleerde indeling](#tab/detailed-format)
+
+De speech-client configureren voor het gebruik van een gedetailleerde indeling `"Sentiment"` , toevoegen als waarde `Detailed.Extensions`voor `Detailed.Options`, of beide. Als u een specifieke versie van Text Analytics model wilt kiezen, vervangt `'latest'` u in `speechcontext-phraseDetection.sentimentAnalysis.modelversion` de configuratie van de eigenschap.
+
+```python
+speech_config.set_service_property(
+    name='speechcontext-PhraseOutput.Detailed.Options',
+    value='["Sentiment"]',
+    channel=speechsdk.ServicePropertyChannel.UriQueryParameter
+)
+speech_config.set_service_property(
+    name='speechcontext-PhraseOutput.Detailed.Extensions',
+    value='["Sentiment"]',
+    channel=speechsdk.ServicePropertyChannel.UriQueryParameter
+)
+speech_config.set_service_property(
+    name='speechcontext-phraseDetection.sentimentAnalysis.modelversion',
+    value='latest',
+    channel=speechsdk.ServicePropertyChannel.UriQueryParameter
+)
+```
+
+`Detailed.Extensions`biedt sentiment-resultaat in de hoofdlaag van het antwoord. `Detailed.Options`Hiermee geeft u het `NBest` resultaat in de laag van het antwoord. Ze kunnen afzonderlijk of samen worden gebruikt.
+
+```json
+{
+   "DisplayText":"What's the weather like?",
+   "Duration":13000000,
+   "Id":"6a2aac009b9743d8a47794f3e81f7963",
+   "NBest":[
+      {
+         "Confidence":0.973695,
+         "Display":"What's the weather like?",
+         "ITN":"what's the weather like",
+         "Lexical":"what's the weather like",
+         "MaskedITN":"What's the weather like",
+         "Sentiment":{
+            "Negative":0.03,
+            "Neutral":0.79,
+            "Positive":0.18
+         }
+      },
+      {
+         "Confidence":0.9164971,
+         "Display":"What is the weather like?",
+         "ITN":"what is the weather like",
+         "Lexical":"what is the weather like",
+         "MaskedITN":"What is the weather like",
+         "Sentiment":{
+            "Negative":0.02,
+            "Neutral":0.88,
+            "Positive":0.1
+         }
+      }
+   ],
+   "Offset":4700000,
+   "RecognitionStatus":"Success",
+   "Sentiment":{
+      "Negative":0.03,
+      "Neutral":0.79,
+      "Positive":0.18
+   }
+}
+```
+
+---
+
+Als u de sentiment-analyse volledig wilt uitschakelen, voegt `false` u een `sentimentanalysis.enabled`waarde toe aan.
+
+```python
+speech_config.set_service_property(
+    name='speechcontext-phraseDetection.sentimentanalysis.enabled',
+    value='false',
+    channel=speechsdk.ServicePropertyChannel.UriQueryParameter
+)
+```
 
 ### <a name="text-to-speech-or-custom-text-to-speech"></a>Tekst-naar-spraak of aangepaste tekst-naar-spraak
 

@@ -5,15 +5,15 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: overview
-ms.date: 04/10/2020
+ms.date: 04/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 3dd971cec33fa9f840a48e597fb3bed9a7965895
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: fd4268ecad91a023683d1d6f955178fb87d78f87
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82160014"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82612840"
 ---
 # <a name="what-is-windows-virtual-desktop"></a>Wat is Windows Virtual Desktop? 
 
@@ -98,9 +98,12 @@ De virtuele machines van Azure die u voor virtuele Windows-Bureau bladen maakt, 
 |prod.warmpath.msftcloudes.com|443|Agent verkeer|AzureCloud|
 |catalogartifact.azureedge.net|443|Azure Marketplace|AzureCloud|
 |kms.core.windows.net|1688|Windows-activering|Internet|
+|wvdportalstorageblob.blob.core.windows.net|443|Ondersteuning voor Azure Portal|AzureCloud|
 
 >[!IMPORTANT]
 >In de meeste gevallen kunt u het beste de service tags in plaats van Url's gebruiken om problemen met de service te voor komen. Het opheffen van de blok kering van deze Url's is essentieel voor een betrouw bare implementatie van Windows virtueel bureau blad. Het blok keren van de toegang tot deze Url's wordt niet ondersteund en heeft invloed op de service functionaliteit. Deze Url's komen alleen overeen met virtuele bureau blad-sites en-bronnen van Windows en bevatten geen Url's voor andere services, zoals Azure Active Directory.
+>
+>Virtueel bureau blad van Windows ondersteunt nu de FQDN-code.
 
 De volgende tabel bevat de optionele Url's die uw virtuele Azure-machines kunnen gebruiken:
 
@@ -193,7 +196,9 @@ De beschik bare opties voor automatisering en implementatie zijn afhankelijk van
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Als u aan de slag wilt gaan, moet u een Tenant maken. Voor meer informatie over het maken van een Tenant gaat u verder met de zelf studie voor het maken van een Tenant.
+Als u de versie van het Windows-bureau blad van Virtual Desktop 2019 gebruikt, kunt u aan de slag met onze zelf studie op [een Tenant maken in Windows virtueel bureau blad](./virtual-desktop-fall-2019/tenant-setup-azure-active-directory.md).
+
+Als u de Windows-versie van Virtual Desktop lente 2020 gebruikt, moet u in plaats daarvan een hostgroep maken. Kop aan de volgende zelf studie om aan de slag te gaan.
 
 > [!div class="nextstepaction"]
-> [Een tenant maken in Windows Virtual Desktop](tenant-setup-azure-active-directory.md)
+> [Een hostgroep met de Azure Portal maken](create-host-pools-azure-marketplace.md)

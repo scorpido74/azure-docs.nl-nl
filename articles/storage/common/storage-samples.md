@@ -7,12 +7,12 @@ ms.date: 09/06/2019
 ms.service: storage
 ms.subservice: common
 ms.topic: sample
-ms.openlocfilehash: f4d8eabdba32eaa0a2c04e6b330fbd4c8d3a563e
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 900fb5120b1674397c248fd7d090660c7a813705
+ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80061144"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82594182"
 ---
 # <a name="azure-storage-samples"></a>Azure Storage-voor beelden
 
@@ -50,9 +50,9 @@ Down load de [node. js-opslag-client bibliotheek](https://github.com/Azure/azure
 
 Down load de [C++ Storage-client bibliotheek](https://www.nuget.org/packages/wastorage/) van NuGet om de voor beelden van c++ te verkennen.
 
-* [Aan de slag met blobs](https://github.com/Azure/azure-storage-cpp/tree/master/Microsoft.WindowsAzure.Storage/samples/BlobsGettingStarted)
-* [Aan de slag met tabellen](https://github.com/Azure/azure-storage-cpp/tree/master/Microsoft.WindowsAzure.Storage/samples/TablesGettingStarted)
-* [Aan de slag met wachtrijen](https://github.com/Azure/azure-storage-cpp/tree/master/Microsoft.WindowsAzure.Storage/samples/QueuesGettingStarted)
+* [Aan de slag met blobs](https://github.com/Azure/azure-storage-cpp/tree/master/Microsoft.WindowsAzure.Storage/samples/BlobsGettingStarted.cpp)
+* [Aan de slag met tabellen](https://github.com/Azure/azure-storage-cpp/tree/master/Microsoft.WindowsAzure.Storage/samples/TablesGettingStarted.cpp)
+* [Aan de slag met wachtrijen](https://github.com/Azure/azure-storage-cpp/tree/master/Microsoft.WindowsAzure.Storage/samples/QueuesGettingStarted.cpp)
 
 ## <a name="azure-cli"></a>Azure CLI
 
@@ -64,11 +64,11 @@ Als u de voor beelden van Azure CLI wilt verkennen, installeert u eerst [de Azur
 
 ## <a name="api-reference-and-source-code"></a>API-verwijzing en bron code
 
-| Taal | API-verwijzing | Broncode |
+| Taal | API-referentiemateriaal | Broncode |
 |----------|---------------|-------------|
 | .NET | [Naslag informatie voor .NET-client bibliotheken](https://docs.microsoft.com/dotnet/api/overview/azure/storage) | [Bron code voor de .NET Storage-client bibliotheek](https://github.com/Azure/azure-storage-net) |
 | Java | [Naslag informatie voor Java-client bibliotheken](https://docs.microsoft.com/java/api/overview/azure/storage) | [Bron code voor de Java Storage-client bibliotheek](https://github.com/azure/azure-storage-java) |
-| Python | [Naslag informatie voor python-client bibliotheek](https://azure-storage.readthedocs.io/) | [Bron code voor de python Storage-client bibliotheek](https://github.com/Azure/azure-storage-p[ython]) |
+| Python | [Naslag informatie voor python-client bibliotheek](https://azure-storage.readthedocs.io/) | [Bron code voor de python Storage-client bibliotheek](https://github.com/Azure/azure-storage-python) |
 | Node.js | [Naslag informatie over node. js-client bibliotheek](https://azure.github.io/azure-storage-node) | [Bron code voor de node. js-opslag-client bibliotheek](https://github.com/Azure/azure-storage-node) |
 | C++ | [Naslag informatie over C++-client bibliotheek](https://azure.github.io/azure-storage-cpp/) | [Bron code voor de client bibliotheek van de C++-opslag](https://github.com/Azure/azure-storage-cpp)|
 | Azure CLI | [Naslag informatie over Azure CLI-bibliotheek](/cli/azure/storage) | [Bron code voor de Azure CLI Storage-client bibliotheek](https://github.com/Azure-Samples/azure-cli-samples/tree/master/storage)

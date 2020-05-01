@@ -4,14 +4,43 @@ description: Leer hoe u een functie maakt vanaf de opdracht regel en vervolgens 
 ms.date: 03/30/2020
 ms.topic: quickstart
 zone_pivot_groups: programming-languages-set-functions
-ms.openlocfilehash: 547acb42be6a0c89dbc315031c46192b5c9a4a0d
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 5022ff7239a040a163d8d6a82864d0dee8e65f1e
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81732815"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82610901"
 ---
-# <a name="quickstart-create-a-function-in-azure-that-responds-to-http-requests"></a>Quick Start: een functie maken in azure die reageert op HTTP-aanvragen
+::: zone pivot="programming-language-csharp"  
+# <a name="quickstart-create-a-c-function-in-azure-that-responds-to-http-requests"></a>Quick Start: een C#-functie maken in azure die reageert op HTTP-aanvragen
+
+In dit artikel gebruikt u opdracht regel Programma's voor het maken van een op een C#-klassen bibliotheek gebaseerde functie die reageert op HTTP-aanvragen. Nadat u de code lokaal hebt getest, implementeert u deze in de serverloze omgeving van Azure Functions. Het volt ooien van deze Quick Start brengt een kleine prijs van een paar USD cent of minder in uw Azure-account.
+::: zone-end  
+::: zone pivot="programming-language-javascript"
+# <a name="quickstart-create-a-javascript-function-in-azure-that-responds-to-http-requests"></a>Quick Start: een Java script-functie maken in azure die reageert op HTTP-aanvragen
+
+In dit artikel gebruikt u opdracht regel Programma's voor het maken van een Java script-functie die reageert op HTTP-aanvragen. Nadat u de code lokaal hebt getest, implementeert u deze in de serverloze omgeving van Azure Functions. Het volt ooien van deze Quick Start brengt een kleine prijs van een paar USD cent of minder in uw Azure-account.
+::: zone-end
+::: zone pivot="programming-language-typescript"
+# <a name="quickstart-create-a-typescript-function-in-azure-that-responds-to-http-requests"></a>Quick Start: een type script-functie maken in azure die reageert op HTTP-aanvragen
+
+In dit artikel gebruikt u opdracht regel Programma's voor het maken van een type script-functie die reageert op HTTP-aanvragen. Nadat u de code lokaal hebt getest, implementeert u deze in de serverloze omgeving van Azure Functions. Het volt ooien van deze Quick Start brengt een kleine prijs van een paar USD cent of minder in uw Azure-account.
+::: zone-end   
+::: zone pivot="programming-language-powershell"
+# <a name="quickstart-create-a-powershell-function-in-azure-that-responds-to-http-requests"></a>Quick Start: een Power shell-functie maken in azure die reageert op HTTP-aanvragen
+
+In dit artikel gebruikt u opdracht regel Programma's om een Power shell-functie te maken die reageert op HTTP-aanvragen. Nadat u de code lokaal hebt getest, implementeert u deze in de serverloze omgeving van Azure Functions. Het volt ooien van deze Quick Start brengt een kleine prijs van een paar USD cent of minder in uw Azure-account.
+::: zone-end  
+::: zone pivot="programming-language-python" 
+# <a name="quickstart-create-a-python-function-in-azure-that-responds-to-http-requests"></a>Quick Start: een python-functie maken in azure die reageert op HTTP-aanvragen
+
+In dit artikel gebruikt u opdracht regel Programma's voor het maken van een python-functie die reageert op HTTP-aanvragen. Nadat u de code lokaal hebt getest, implementeert u deze in de serverloze omgeving van Azure Functions. Het volt ooien van deze Quick Start brengt een kleine prijs van een paar USD cent of minder in uw Azure-account.
+::: zone-end  
+::: zone pivot="programming-language-java" 
+# <a name="quickstart-create-a-java-function-in-azure-that-responds-to-http-requests"></a>Quick Start: een Java-functie maken in azure die reageert op HTTP-aanvragen
+
+In dit artikel gebruikt u opdracht regel Programma's voor het maken van een Java-functie die reageert op HTTP-aanvragen. Nadat u de code lokaal hebt getest, implementeert u deze in de serverloze omgeving van Azure Functions. Het volt ooien van deze Quick Start brengt een kleine prijs van een paar USD cent of minder in uw Azure-account.
+::: zone-end
 
 In dit artikel gebruikt u opdracht regel Programma's voor het maken van een functie die reageert op HTTP-aanvragen. Nadat u de code lokaal hebt getest, implementeert u deze in de serverloze omgeving van Azure Functions. Het volt ooien van deze Quick Start brengt een kleine prijs van een paar USD cent of minder in uw Azure-account.
 
@@ -381,9 +410,16 @@ Als u verdergaat met de volgende stap, [voegt u een Azure Storage wachtrij-uitvo
 
 Gebruik anders de volgende opdracht om de resource groep en alle bijbehorende resources te verwijderen om te voor komen dat er verdere kosten in rekening worden gebracht.
 
+::: zone pivot="programming-language-javascript,programming-language-typescript,programming-language-python,programming-language-powershell,programming-language-csharp" 
 ```azurecli
 az group delete --name AzureFunctionsQuickstart-rg
 ```
+::: zone-end
+::: zone pivot="programming-language-java"
+```azurecli
+az group delete --name java-functions-group
+```
+::: zone-end
 
 ## <a name="next-steps"></a>Volgende stappen
 

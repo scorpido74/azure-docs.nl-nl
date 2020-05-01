@@ -18,12 +18,12 @@ ms.date: 01/04/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
-ms.openlocfilehash: 9f8697332d34fc044c805db6c6595fdf067ed054
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 0abe443521b928dd087e23b5491635b02cd832e8
+ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80127189"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82592023"
 ---
 # <a name="tutorial-send-location-based-push-notifications-with-notification-hubs-and-bing-spatial-data"></a>Zelf studie: Push meldingen op basis van locaties verzenden met Notification Hubs en ruimtelijke gegevens van Bing
 
@@ -217,7 +217,7 @@ In deze zelfstudie voert u de volgende stappen uit:
 
 ## <a name="set-up-the-backend"></a>De back-end instellen
 
-1. Download het [.NET-back-endvoorbeeld via GitHub](https://github.com/Azure/azure-notificationhubs-samples/tree/master/dotnet/NotifyUsers).
+1. Download het [.NET-back-endvoorbeeld via GitHub](https://github.com/Azure/azure-notificationhubs-dotnet/tree/master/Samples/NotifyUsers).
 2. Wanneer het downloaden is voltooid, opent u de map `NotifyUsers` en opent u vervolgens het bestand `NotifyUsers.sln` in Visual Studio.
 3. Stel het project `AppBackend` in als **StartUp Project** open het.
 

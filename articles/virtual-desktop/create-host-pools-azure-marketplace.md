@@ -1,162 +1,186 @@
 ---
-title: Windows-hostgroep voor virtueel bureau blad Azure Marketplace-Azure
-description: Een Windows-hostgroep voor virtueel bureau blad maken met behulp van Azure Marketplace.
+title: Windows-hostgroep voor virtuele Bureau bladen Azure Portal-Azure
+description: Een Windows-hostgroep voor virtueel bureau blad maken met behulp van de Azure Portal.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: tutorial
-ms.date: 03/09/2020
+ms.date: 04/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: d5165b160ffc196416052a56aaa0d93c05db56bc
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: def3ed840d2886aabfce1d1081c94298083fe6d6
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79238620"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82611608"
 ---
-# <a name="tutorial-create-a-host-pool-by-using-the-azure-marketplace"></a>Zelf studie: een hostgroep maken met behulp van Azure Marketplace
+# <a name="tutorial-create-a-host-pool-with-the-azure-portal"></a>Zelf studie: een hostgroep maken met de Azure Portal
 
-In deze zelf studie leert u hoe u een hostgroep maakt binnen een virtuele Windows-bureau blad-Tenant met behulp van een Microsoft Azure Marketplace aanbieding.
-
-Hostgroepen zijn een verzameling van een of meer identieke virtuele machines in Windows-Tenant omgevingen voor virtueel bureau blad. Elke hostgroep kan een app-groep bevatten waarmee gebruikers kunnen communiceren, op dezelfde manier als op een fysiek bureau blad.
-
-De taken in deze zelf studie zijn onder andere:
-
-> [!div class="checklist"]
+>[!IMPORTANT]
+>Deze inhoud is van toepassing op de lente 2020-update met Azure Resource Manager virtueel-bureaublad objecten van Windows. Raadpleeg [dit artikel](./virtual-desktop-fall-2019/create-host-pools-azure-marketplace-2019.md)als u de versie van het Windows-bureau blad van Virtual Desktop 2019 zonder Azure Resource Manager objecten gebruikt.
 >
-> * Maak een hostgroep in het virtuele bureau blad van Windows.
-> * Maak een resource groep met virtuele machines in een Azure-abonnement.
-> * Voeg de virtuele machines toe aan het Active Directory domein.
-> * Registreer de Vm's met het virtuele bureau blad van Windows.
+> De Windows Virtual Desktop lente 2020-update is momenteel beschikbaar als open bare preview. Deze preview-versie is beschikbaar zonder service level agreement. het wordt niet aangeraden deze te gebruiken voor productie werkbelastingen. Misschien worden bepaalde functies niet ondersteund of zijn de mogelijkheden ervan beperkt. 
+> Zie voor meer informatie [aanvullende gebruiks voorwaarden voor Microsoft Azure-previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+
+Hostgroepen zijn een verzameling van een of meer identieke virtuele machines (Vm's) in Windows virtueel-bureaublad omgevingen. Elke hostgroep kan een app-groep bevatten waarmee gebruikers kunnen communiceren, op dezelfde manier als op een fysiek bureau blad.
+
+Dit artikel begeleidt u stapsgewijs door het installatie proces voor het maken van een hostgroep voor een virtueel-bureaublad omgeving van Windows via de Azure Portal. Deze methode biedt een gebruikers interface op basis van een browser voor het maken van een hostgroep in het virtuele bureau blad van Windows, het maken van een resource groep met Vm's in een Azure-abonnement, het toevoegen van deze Vm's aan het domein van de Azure Active Directory (AD) en het registreren van Vm's met virtuele Windows-Bureau bladen.
 
 ## <a name="prerequisites"></a>Vereisten
 
-* Een Tenant in een virtueel bureau blad. In een vorige [zelf studie](tenant-setup-azure-active-directory.md) maakt u een Tenant.
-* [Windows Power shell-module voor virtueel bureau blad](/powershell/windows-virtual-desktop/overview/).
+U moet de volgende para meters invoeren voor het maken van een hostgroep:
 
-Zodra u deze module hebt, voert u de volgende cmdlet uit om u aan te melden bij uw account:
+- De naam van de VM-installatie kopie
+- VM-configuratie
+- Domein-en netwerk eigenschappen
+- Eigenschappen van Windows-hostgroep voor virtueel bureau blad
 
-```powershell
-Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com"
-```
+U moet ook de volgende zaken kennen:
 
-## <a name="sign-in-to-azure"></a>Aanmelden bij Azure
+- Als de bron van de afbeelding die u wilt gebruiken, is. Is het van Azure Gallery of is het een aangepaste installatie kopie?
+- Referenties voor domein deelname.
 
-Meld u aan bij de [Azure-portal](https://portal.azure.com).
+Wanneer u een virtuele Windows-bureau blad-hostgroep maakt met de Azure Resource Manager sjabloon, kunt u een virtuele machine maken vanuit de Azure-galerie, een beheerde installatie kopie of een niet-beheerde installatie kopie. Voor meer informatie over het maken van VM-installatie kopieën raadpleegt u [een Windows-VHD of VHDX voorbereiden om te uploaden naar Azure](../virtual-machines/windows/prepare-for-upload-vhd-image.md) en [een beheerde installatie kopie te maken van een gegeneraliseerde vm in azure](../virtual-machines/windows/capture-image-resource.md).
 
-## <a name="run-the-azure-marketplace-offering-to-provision-a-new-host-pool"></a>Voer de Azure Marketplace-aanbieding uit om een nieuwe hostgroep in te richten
+Als u nog geen Azure-abonnement hebt, moet u ervoor zorgen dat u [een account maakt](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) voordat u begint met het volgen van deze instructies.
 
-De Azure Marketplace-aanbieding uitvoeren om een nieuwe hostgroep in te richten:
+## <a name="begin-the-host-pool-setup-process"></a>Het installatie proces van de hostgroep starten
 
-1. Selecteer in het menu van Azure Portal of op de **Startpagina** de optie **Een resource maken**.
-1. Voer in het venster zoeken in Marketplace het **virtuele bureau blad van Windows** in.
-1. Selecteer **virtueel bureau blad van Windows-een hostgroep inrichten**en selecteer vervolgens **maken**.
+Beginnen met het maken van de nieuwe hostgroep:
 
-Volg daarna de instructies in de volgende sectie om de gegevens voor de juiste tabbladen in te voeren.
+1. Meld u aan bij de Azure Portal op [https://portal.azure.com](https://portal.azure.com/).
 
-### <a name="basics"></a>Basisbeginselen
+2. Voer **Windows virtueel bureau blad** in de zoek balk in, zoek en selecteer **Windows virtueel bureau blad** onder Services.
 
-Ga als volgt te werk voor het tabblad **basis principes** :
+3. Selecteer op de pagina overzicht van **virtuele Windows-bureau blad** **een hostgroep maken**.
 
-1. Selecteer een **abonnement**.
-1. Selecteer voor **resource groep**de optie **nieuwe maken** en geef een naam op voor de nieuwe resource groep.
-1. Selecteer een **regio**.
-1. Voer een naam in voor de hostgroep die uniek is binnen de Windows Virtual Desktop-Tenant.
-1. Selecteer het **type bureau blad**. Als u **persoonlijk**selecteert, wordt elke gebruiker die verbinding maakt met deze hostgroep permanent toegewezen aan een virtuele machine.
-1. Voer gebruikers in die zich kunnen aanmelden bij de virtuele Windows-desktop clients en toegang hebben tot een bureau blad. Gebruik een lijst met door komma's gescheiden waarden. Als u bijvoorbeeld wilt toewijzen `user1@contoso.com` en `user2@contoso.com` toegang wilt krijgen, voert u*`user1@contoso.com,user2@contoso.com`*
-1. Voor de locatie van de **meta gegevens**van de service selecteert u dezelfde locatie als het virtuele netwerk dat verbinding heeft met de Active Directory-server.
+4. Op het tabblad **basis beginselen** selecteert u het juiste abonnement onder project details.
 
-   >[!IMPORTANT]
-   >Als u een zuivere Azure Active Directory Domain Services (Azure AD DS) en Azure Active Directory-oplossing (Azure AD) gebruikt, moet u ervoor zorgen dat u uw hostgroep in dezelfde regio als uw Azure-AD DS implementeert om domein lidmaatschap en referentie fouten te voor komen.
+5. Selecteer **nieuwe maken** om een nieuwe resource groep te maken of selecteer een bestaande resource groep in de vervolg keuzelijst.
 
-1. Selecteer **volgende: virtuele machines configureren**.
+6. Voer een unieke naam in voor de hostgroep.
 
-### <a name="configure-virtual-machines"></a>Virtuele machines configureren
+7. Selecteer in het veld locatie de regio waar u de hostgroep wilt maken in de vervolg keuzelijst.
+   
+   Het Azure-geografie dat is gekoppeld aan de regio's die u hebt geselecteerd, is de locatie waar de meta gegevens voor deze hostgroep en de gerelateerde objecten worden opgeslagen. Zorg ervoor dat u de regio's in de geografie kiest waarvan u wilt dat de meta gegevens van de service worden opgeslagen in.
 
-Voor het tabblad **virtuele machines configureren** :
+     ![Een scherm opname van de Azure Portal het locatie veld met de locatie VS-Oost geselecteerd weer te geven. Naast het veld ziet u tekst: "meta gegevens worden opgeslagen in VS-Oost."](media/portal-location-field.png)
 
-1. Accepteer de standaard waarden of pas het aantal en de grootte van de virtuele machines aan.
+8. Selecteer onder Type hostgroep of uw hostgroep **persoonlijk** of **gegroepeerd**moet zijn.
+
+    - Als u kiest voor **persoonlijk**, selecteert u vervolgens **automatisch** of **direct** in het veld toewijzings type.
+
+      ![Een scherm afbeelding van de vervolg keuzelijst veld toewijzings type. De gebruiker heeft automatisch geselecteerd.](media/assignment-type-field.png)
+
+9. Als u kiest voor **pooled**, voert u de volgende gegevens in:
+
+     - Voor **maximale sessie limiet**voert u het maximum aantal gebruikers in dat door de taak verdeling voor één sessiehost moet worden gebalanceerd.
+     - Kies voor de taakverdelings **algoritme**breedte-eerst of diepte-eerst op basis van uw gebruiks patroon.
+
+       ![Een scherm afbeelding van het veld toewijzings type waarvoor ' gegroepeerd ' is geselecteerd. De gebruiker bevindt zich boven de breedte van de cursor in de vervolg keuzelijst taak verdeling.](media/pooled-assignment-type.png)
+
+10. Selecteer **volgende: VM-Details**.
+
+11. Als u al virtuele machines hebt gemaakt en deze wilt gebruiken in combi natie met de nieuwe hostgroep, selecteert u **Nee**. Als u nieuwe virtuele machines wilt maken en deze wilt registreren bij de nieuwe hostgroep, selecteert u **Ja**.
+
+Nu u het eerste deel hebt voltooid, gaan we verder met het volgende deel van het installatie proces waar de virtuele machine wordt gemaakt.
+
+## <a name="virtual-machine-details"></a>Details van virtuele machine
+
+Nu het eerste deel wordt gebruikt, moet u uw virtuele machine instellen.
+
+De virtuele machine instellen binnen het installatie proces van de hostgroep:
+
+1. Onder resource groep kiest u de resource groep waarin u de virtuele machines wilt maken. Dit kan een andere resource groep zijn dan het account dat u hebt gebruikt voor de hostgroep.
+
+2. Kies de **virtuele-machine regio** waar u de virtuele machines wilt maken. Ze kunnen hetzelfde zijn of verschillen van de regio die u hebt geselecteerd voor de hostgroep.
+
+3. Kies vervolgens de grootte van de virtuele machine die u wilt maken. U kunt de standaard grootte blijven gebruiken of **de grootte wijzigen om de** grootte te wijzigen. Als u **grootte wijzigen**selecteert in het venster dat wordt weer gegeven, kiest u de grootte van de virtuele machine die geschikt is voor uw werk belasting.
+
+4. Geef bij aantal Vm's het aantal Vm's op dat u voor de hostgroep wilt maken.
 
     >[!NOTE]
-    >Als de specifieke grootte van de virtuele machine die u zoekt niet wordt weer gegeven in de optie voor het selecteren van de grootte, komt dit omdat we deze nog niet hebben opgedaan met het Azure Marketplace-hulp programma. Als u een grootte wilt aanvragen, moet u een aanvraag maken of een bestaande aanvraag bijstemmen in het UserVoice-forum van het [virtuele Windows-bureau blad](https://windowsvirtualdesktop.uservoice.com/forums/921118-general).
+    >Het installatie proces kan Maxi maal 400 Vm's maken tijdens het instellen van uw hostgroep, en tijdens elk installatie proces van de virtuele machine worden vier objecten in de resource groep gemaakt. Omdat het quotum voor het maken van uw abonnement niet wordt gecontroleerd, controleert u of het aantal Vm's dat u invoert binnen de Azure-VM en de API-limieten voor uw resource groep en-abonnement. U kunt meer Vm's toevoegen nadat u klaar bent met het maken van de hostgroep.
 
-1. Voer een voor voegsel voor de namen van de virtuele machines in. Als u bijvoorbeeld een *voor voegsel*opgeeft, worden de virtuele machines het **voor voegsel-0**, het **voor voegsel-1**, enzovoort genoemd.
-1. Selecteer **volgende: instellingen van de virtuele machine**.
+5. Daarna geeft u een **naam voorvoegsel** op om de virtuele machines die het installatie proces maakt een naam te geven. Het achtervoegsel bevat `-` een nummer dat begint bij 0.
 
-### <a name="virtual-machine-settings"></a>Instellingen voor virtuele machines
+6. Kies vervolgens de installatie kopie die moet worden gebruikt om de virtuele machine te maken. U kunt kiezen uit de **Galerie** of de **opslag-BLOB**.
 
-Voor het tabblad instellingen van de **virtuele machine** :
+    - Als u **Galerie**kiest, selecteert u een van de aanbevolen installatie kopieën in de vervolg keuzelijst:
 
-1. Voor **installatie kopie bron**selecteert u de bron en voert u de juiste informatie in voor het vinden ervan en hoe u deze kunt opslaan. Uw opties verschillen van Blob Storage, beheerde installatie kopie en galerie.
+      - Windows 10 Enter prise meerdere sessies, versie 1909 + Office 365 ProPlus – gen 1
+      - Windows 10 Enter prise-meerdere sessies, versie 1909 – gen 1
+      - Windows Server 2019 Data Center-gen1
 
-   Als u ervoor kiest geen Managed disks te gebruiken, selecteert u het opslag account dat het *. VHD* -bestand bevat.
-1. Voer de user principal name en het wacht woord in. Dit account moet het domein account zijn dat wordt toegevoegd aan de virtuele machines in het Active Directory domein. Dezelfde gebruikers naam en hetzelfde wacht woord worden als een lokaal account op de virtuele machines gemaakt. U kunt deze lokale accounts later opnieuw instellen.
+     Als u de gewenste installatie kopie niet ziet, selecteert u **alle afbeeldingen en schijven bladeren**, waarmee u een andere afbeelding in uw galerie of een installatie kopie van micro soft en andere uitgevers kunt selecteren.
 
-   >[!NOTE]
-   > Als u uw virtuele machines lid maakt van een Azure AD DS-omgeving, moet u ervoor zorgen dat uw domein lid is van de [groep Aad DC-Administrators](../active-directory-domain-services/tutorial-create-instance-advanced.md#configure-an-administrative-group).
-   >
-   > Het account moet ook deel uitmaken van de Azure AD DS beheerde domein of Azure AD-Tenant. Accounts van externe mappen die zijn gekoppeld aan uw Azure AD-Tenant, kunnen niet correct worden geverifieerd tijdens het proces voor het samen voegen van het domein.
+     ![Een scherm afbeelding van de Marketplace met een lijst met installatie kopieën van micro soft weer gegeven.](media/marketplace-images.png)
 
-1. Selecteer het **virtuele netwerk** dat verbinding met de Active Directory server heeft en kies vervolgens een subnet om de virtuele machines te hosten.
-1. Selecteer **volgende: informatie over virtueel Windows-bureau blad**.
+     U kunt ook naar **mijn items** gaan en een aangepaste installatie kopie kiezen die u al hebt geüpload.
 
-### <a name="windows-virtual-desktop-tenant-information"></a>Windows-Tenant gegevens voor virtueel bureau blad
+     ![Een scherm afbeelding van het tabblad mijn items.](media/my-items.png)
 
-Voor het tabblad **Windows-Tenant gegevens voor virtuele bureau blad** :
+    - Als u **opslag-BLOB**kiest, kunt u gebruikmaken van uw eigen installatie kopie-build via Hyper-V of op een Azure VM. U hoeft alleen de locatie van de installatie kopie in de BLOB voor opslag in te voeren als een URI.
 
-1. Voer voor de naam van de **Windows-Tenant groep voor virtueel bureau blad**de naam in voor de Tenant groep die uw Tenant bevat. Zorg ervoor dat dit de standaard instelling is, tenzij u een specifieke naam voor de Tenant groep hebt opgegeven.
-1. Voer de naam in van de Tenant waar u deze hostgroep gaat maken voor de **Windows-Tenant naam van het virtuele bureau blad**.
-1. Geef het type referenties op dat u wilt gebruiken voor verificatie als de RDS-eigenaar van het Windows Virtual Desktop Tenant. Voer de UPN-of Service-Principal en een wacht woord in.
+7. Kies welk type besturingssysteem schijven u wilt gebruiken voor uw Vm's: Standard-SSD, Premium-SSD of Standard-HDD.
 
-   Als u de [zelf studie service-principals en roltoewijzingen maken met Power shell](./create-service-principal-role-powershell.md)hebt voltooid, selecteert u **Service-Principal**.
+8. Onder netwerk en beveiliging selecteert u het virtuele netwerk en het subnet waar u de virtuele machines wilt plaatsen die u maakt. Zorg ervoor dat het virtuele netwerk verbinding kan maken met de domein controller omdat u de virtuele machines in het virtuele netwerk moet toevoegen aan het domein. Selecteer vervolgens of u een openbaar IP-adres voor de virtuele machines wilt of niet. We raden u aan om **Nee**te selecteren, omdat een persoonlijk IP-adres veiliger is.
 
-1. Voor de **Service-Principal**voert u voor de **Azure AD-Tenant-id**het Tenant beheerders account in voor de Azure AD-instantie die de service-principal bevat. Alleen service-principals met een wachtwoord referentie worden ondersteund.
-1. Selecteer **volgende: controleren + maken**.
+9. Selecteer wat voor soort beveiligings groep u wilt: **Basic**, **Advanced**of **none**.
 
-## <a name="complete-setup-and-create-the-virtual-machine"></a>De installatie volt ooien en de virtuele machine maken
+    Als u **Basic**selecteert, moet u aangeven of u een binnenkomende poort wilt openen. Als u **Ja**selecteert, kiest u in de lijst met standaard poorten om binnenkomende verbindingen toe te staan.
 
-Controleer de installatie gegevens bij **controleren en maken**. Als u iets wilt wijzigen, gaat u terug en brengt u wijzigingen aan. Wanneer u klaar bent, selecteert u **maken** om uw hostgroep te implementeren.
+    >[!NOTE]
+    >Voor een betere beveiliging wordt u aangeraden geen open bare binnenkomende poorten te openen.
 
-Afhankelijk van het aantal virtuele machines dat u maakt, kan dit proces 30 minuten of langer duren.
+    ![Een scherm opname van de pagina beveiligings groep waarop een lijst met beschik bare poorten in een vervolg keuzelijst wordt weer gegeven.](media/available-ports.png)
+    
+    Als u **Geavanceerd**kiest, selecteert u een bestaande netwerk beveiligings groep die u al hebt geconfigureerd.
 
->[!IMPORTANT]
-> Als u uw virtuele Windows-desktop omgeving in azure wilt beveiligen, raden we u aan om de binnenkomende poort 3389 niet te openen op uw virtuele machines. Voor het virtuele bureau blad van Windows is geen open bare poort 3389 voor gebruikers nodig voor toegang tot de virtuele machines van de hostgroep.
->
-> Als u poort 3389 moet openen voor het oplossen van problemen, raden we u aan Just-in-time-toegang te gebruiken. Zie [uw beheer poorten beveiligen met Just-in-time-toegang](../security-center/security-center-just-in-time.md)voor meer informatie.
+10. Selecteer daarna of u wilt dat de virtuele machines worden gekoppeld aan een specifiek domein en een organisatie-eenheid. Als u **Ja**kiest, geeft u het domein op dat u wilt toevoegen. U kunt ook een specifieke organisatie-eenheid toevoegen waarin u wilt dat de virtuele machines zich bevindt.
 
-## <a name="optional-assign-additional-users-to-the-desktop-application-group"></a>Beschrijving Extra gebruikers toewijzen aan de bureaublad toepassings groep
+11. Voer onder Administrator-account de referenties in voor de Active Directory-domein beheerder van het virtuele netwerk dat u hebt geselecteerd.
 
-Nadat Azure Marketplace klaar is met het maken van de groep, kunt u meer gebruikers toewijzen aan de groep bureau blad-toepassingen. Als u niet meer wilt toevoegen, kunt u deze sectie overs Laan.
+12. Selecteer een **werk ruimte**.
 
-Gebruikers toewijzen aan de bureaublad toepassings groep:
+Met deze optie kunt u de volgende fase voor het instellen van uw hostgroep nu starten: uw app-groep registreren bij een werk ruimte.
 
-1. Open een PowerShell-venster.
+## <a name="workspace-information"></a>Werkruimtegegevens
 
-1. Voer de volgende opdracht uit om u aan te melden bij de virtuele Windows-bureaublad omgeving:
+Met het installatie proces van de hostgroep wordt standaard een bureaublad toepassings groep gemaakt. Als u wilt dat de hostgroep werkt zoals bedoeld, moet u deze app-groep publiceren naar gebruikers of gebruikers groepen en moet u de app-groep registreren bij een werk ruimte. 
 
-   ```powershell
-   Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com"
-   ```
+De bureau blad-app-groep registreren bij een werk ruimte:
 
-1. Gebruikers toevoegen aan de groep bureau blad-toepassing met behulp van deze opdracht:
+1. Selecteer **Ja**.
 
-   ```powershell
-   Add-RdsAppGroupUser <tenantname> <hostpoolname> "Desktop Application Group" -UserPrincipalName <userupn>
-   ```
+   Als u **Nee**selecteert, kunt u de app-groep later registreren, maar we raden u aan de registratie van de werk ruimte in te stellen zodra u dit kunt doen, zodat uw hostgroep goed werkt.
 
-   De UPN van de gebruiker moet overeenkomen met de identiteit van de gebruiker in azure AD *user1@contoso.com*, bijvoorbeeld. Als u meerdere gebruikers wilt toevoegen, voert u de opdracht uit voor elke gebruiker.
+2. Kies vervolgens of u een nieuwe werk ruimte wilt maken of selecteren in bestaande werk ruimten. Alleen werk ruimten die zijn gemaakt op dezelfde locatie als de hostgroep, kunnen de app-groep registreren bij.
 
-Gebruikers die u toevoegt aan de groep bureau blad-toepassing, kunnen zich aanmelden bij een virtueel Windows-bureau blad met ondersteunde Extern bureaublad-clients en een resource voor een sessie bureau blad bekijken.
+3. U kunt ook **labels**selecteren.
 
-Dit zijn de momenteel ondersteunde clients:
+    Hier kunt u Tags toevoegen, zodat u de objecten kunt groeperen met meta gegevens zodat u het voor uw beheerders gemakkelijker maakt.
 
-* [Extern bureaublad-client voor Windows 7 en Windows 10](connect-windows-7-and-10.md)
-* [Windows Virtual Desktop Web client](connect-web.md)
+4. Wanneer u klaar bent, selecteert u **controleren + maken**. 
+
+     >[!NOTE]
+     >Het validatie proces controleren en maken controleert niet of uw wacht woord voldoet aan de beveiligings normen of of uw architectuur juist is. u moet daarom zelf controleren of er problemen zijn met een van deze dingen. 
+
+5. Bekijk de informatie over uw implementatie om te controleren of alles juist is. Als u gereed bent, selecteert u **Maken**. Hiermee wordt het implementatie proces gestart, waardoor de volgende objecten worden gemaakt:
+
+     - Uw nieuwe hostgroep.
+     - Een bureau blad-app-groep.
+     - Een werk ruimte, als u ervoor hebt gekozen om deze te maken.
+     - Als u ervoor kiest om de groep bureau blad-apps te registreren, wordt de registratie voltooid
+     - Virtuele machines, als u deze hebt gemaakt, die zijn gekoppeld aan het domein en die zijn geregistreerd bij de nieuwe hostgroep.
+     - Een download koppeling voor een Azure resource management-sjabloon op basis van uw configuratie.
+
+Daarna bent u klaar.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-U hebt een hostgroep gemaakt en gebruikers toegewezen voor toegang tot het bureau blad. U kunt uw hostgroep vullen met RemoteApp-program ma's. Zie deze zelf studie voor meer informatie over het beheren van apps in Windows Virtual Desktop:
+Nu u uw hostgroep hebt gemaakt, kunt u deze vullen met RemoteApp-program ma's. Voor meer informatie over het beheren van apps in Windows Virtual Desktop, kop naar onze volgende zelf studie:
 
 > [!div class="nextstepaction"]
 > [Zelf studie app-groepen beheren](./manage-app-groups.md)

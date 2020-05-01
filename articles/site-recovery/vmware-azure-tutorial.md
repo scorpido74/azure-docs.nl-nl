@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 11/12/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 37fdd42adf66ebcb11b357ece6ea63384630d9f4
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 878c3aa766559e455ee4456d84b86dc486e43fa5
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79238865"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82610680"
 ---
 # <a name="set-up-disaster-recovery-to-azure-for-on-premises-vmware-vms"></a>Herstel van on-premises VMware-VM’s naar Azure na een noodgeval instellen
 
@@ -65,11 +65,11 @@ In uw bron omgeving hebt u één Maxi maal beschik bare on-premises computer nod
 - **Hoofddoel server**: de hoofddoel server verwerkt de replicatie gegevens tijdens de failback van Azure.
 
 
-Al deze onderdelen worden samen geïnstalleerd op de afzonderlijke on-premises machines die de *Configuratie server*worden genoemd. Voor VMware-nood herstel stellen we standaard de configuratie server in als een Maxi maal beschik bare virtuele VMware-machine. Hiervoor downloadt u een voor bereide open Virtualization Application (eicellen) sjabloon en importeert u de sjabloon in VMware om de VM te maken. 
+Al deze onderdelen worden samen geïnstalleerd op de afzonderlijke on-premises machines die de *Configuratie server*worden genoemd. Voor VMware-nood herstel stellen we standaard de configuratie server in als een Maxi maal beschik bare virtuele VMware-machine. Hiervoor downloadt u een voor bereide open Virtualization Application (eicellen) sjabloon en importeert u de sjabloon in VMware om de VM te maken.
 
 - De meest recente versie van de configuratie server is beschikbaar in de portal. U kunt deze ook rechtstreeks downloaden vanuit het [micro soft Download centrum](https://aka.ms/asrconfigurationserver).
 - Als u om een of andere reden geen eicellen-sjabloon kunt gebruiken om een virtuele machine in te stellen, volgt u [deze instructies](physical-manage-configuration-server.md) om de configuratie server hand matig in te stellen.
-- De licentie die is opgenomen in OVF-sjabloon is een evaluatie licentie die gedurende 180 dagen geldig is. Windows die op de virtuele machine wordt uitgevoerd, moet worden geactiveerd met de vereiste licentie. 
+- De licentie die is opgenomen in OVF-sjabloon is een evaluatie licentie die gedurende 180 dagen geldig is. Windows die op de virtuele machine wordt uitgevoerd, moet worden geactiveerd met de vereiste licentie.
 
 
 ### <a name="download-the-vm-template"></a>De VM-sjabloon downloaden
@@ -77,7 +77,7 @@ Al deze onderdelen worden samen geïnstalleerd op de afzonderlijke on-premises m
 1. Ga in de kluis naar**bron**voor **bereiding van de infra structuur** > .
 2. Selecteer **+Configuratieserver** in **Bron voorbereiden**.
 3. Controleer in **Server toevoegen** of **Configuratieserver voor VMware** wordt weergegeven in **Servertype**.
-4. Download de OVF-sjabloon voor de configuratieserver.
+4. Down load de eicellen-sjabloon voor de configuratie server.
 
 
 
@@ -85,7 +85,7 @@ Al deze onderdelen worden samen geïnstalleerd op de afzonderlijke on-premises m
 
 
 1. Meld u aan bij de VMware vCenter-server of vSphere ESXi-host met behulp van de VMWare vSphere-client.
-2. Selecteer in het menu **bestand** de optie **OVF-sjabloon implementeren** om de **wizard OVF-sjabloon implementeren**te starten. 
+2. Selecteer in het menu **bestand** de optie **OVF-sjabloon implementeren** om de **wizard OVF-sjabloon implementeren**te starten.
 
      ![OVF-sjabloon](./media/vmware-azure-tutorial/vcenter-wizard.png)
 
@@ -105,11 +105,11 @@ Als u een extra NIC aan de configuratie server wilt toevoegen, voegt u deze toe 
 
 1. Klik in de vSphere Client-inventaris met de rechtermuisknop op de VM en selecteer **Instellingen bewerken**.
 2. Selecteer **Toevoegen** > **Ethernet-adapter** bij **Hardware**. Selecteer **volgende**.
-3. Selecteer een adaptertype en een netwerk. 
+3. Selecteer een adaptertype en een netwerk.
 4. Als u verbinding wilt maken met de virtuele NIC verbinding wanneer de VM wordt ingeschakeld, selecteert u **Verbinding maken bij inschakelen**. Selecteer **volgende** > **volt ooien**. Selecteer vervolgens **OK**.
 
 
-## <a name="register-the-configuration-server"></a>De configuratieserver registreren 
+## <a name="register-the-configuration-server"></a>De configuratieserver registreren
 
 Nadat de configuratie server is ingesteld, registreert u deze in de kluis.
 
@@ -179,7 +179,7 @@ Schakel replicatie voor virtuele machines als volgt in:
 3. Selecteer **Virtuele machines** in **Type machine**.
 4. Selecteer bij **vCenter/vSphere-hypervisor** de vSphere-host of de vCenter-server waarmee de host wordt beheerd.
 5. Selecteer de processerver (standaard geïnstalleerd op de VM met de rol van configuratieserver). Selecteer vervolgens **OK**. De integriteits status van elke proces server wordt aangegeven volgens de aanbevolen limieten en andere para meters. Kies een goede proces server. Er kan geen [essentiële](vmware-physical-azure-monitor-process-server.md#process-server-alerts) proces server worden gekozen. U kunt [problemen oplossen en](vmware-physical-azure-troubleshoot-process-server.md) de fouten oplossen **of** een [scale-out proces server](vmware-azure-set-up-process-server-scale.md)instellen.
-6. Selecteer in **Doel** het abonnement en de resourcegroep waarin u de failover-VM's wilt maken. Het implementatiemodel van Resource Manager wordt gebruikt. 
+6. Selecteer in **Doel** het abonnement en de resourcegroep waarin u de failover-VM's wilt maken. Het implementatiemodel van Resource Manager wordt gebruikt.
 7. Selecteer het Azure-netwerk en -subnet waarmee virtuele Azure-machines verbinding maken wanneer ze na een failover worden gemaakt.
 8. Selecteer **Nu configureren voor geselecteerde machines** om de netwerkinstelling toe te passen op alle virtuele machines waarop u replicatie inschakelt. Selecteer **later configureren** om het Azure-netwerk per computer te selecteren.
 9. Selecteer in **virtual machines** > **virtuele machines selecteren**de computer die u wilt repliceren. U kunt alleen machines selecteren waarvoor replicatie kan worden ingeschakeld. Selecteer vervolgens **OK**. Als u een bepaalde virtuele machine niet kunt weer geven/selecteren, [leest u meer](https://aka.ms/doc-plugin-VM-not-showing) over het oplossen van het probleem.

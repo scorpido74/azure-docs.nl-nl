@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 3/19/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: cc487e8def180735606aa010651dde40ef93908e
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 8ee9ddbd8a2d0ecbe8e2f13e6421cec177c7ce69
+ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80082505"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82594199"
 ---
 # <a name="configuring-azure-files-network-endpoints"></a>Azure Files netwerk eindpunten configureren
 Azure Files biedt twee hoofd typen eind punten voor toegang tot Azure-bestands shares: 
@@ -218,7 +218,7 @@ New-AzPrivateDnsRecordSet `
 Als u een virtuele machine in uw virtuele netwerk hebt, of als u DNS-door sturing hebt geconfigureerd zoals [hier](storage-files-networking-dns.md)wordt beschreven, kunt u testen of uw persoonlijke eind punt correct is ingesteld met de volgende opdrachten:
 
 ```PowerShell
-$storageAccountHostName = [System.Uri]::new($storageAccount.PrimaryEndpoints.File) | `
+$storageAccountHostName = [System.Uri]::new($storageAccount.PrimaryEndpoints.file) | `
     Select-Object -ExpandProperty Host
 
 Resolve-DnsName -Name $storageAccountHostName
@@ -393,7 +393,7 @@ Als u een virtuele machine in uw virtuele netwerk hebt, of als u DNS-door sturin
 httpEndpoint=$(az storage account show \
         --resource-group $storageAccountResourceGroupName \
         --name $storageAccountName \
-        --query "primaryEndpoints.File" | \
+        --query "primaryEndpoints.file" | \
     tr -d '"')
 
 hostName=$(echo $httpEndpoint | cut -c7-$(expr length $httpEndpoint) | tr -d "/")

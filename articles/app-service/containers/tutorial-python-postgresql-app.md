@@ -9,12 +9,12 @@ ms.custom:
 - seodec18
 - seo-python-october2019
 - cli-validate
-ms.openlocfilehash: 0c9329b46d096df1afab6f7e457d143f9c6504be
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 504e2f7c07d8d29e4fe4dad52dc008c895517a3d
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82085753"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82609779"
 ---
 # <a name="tutorial-deploy-a-python-django-web-app-with-postgresql-in-azure-app-service"></a>Zelf studie: een Python-web-app (Django) implementeren met PostgreSQL in Azure App Service
 
@@ -133,7 +133,7 @@ Wanneer de opdracht is voltooid, kunt u de uitvoer regels zoeken die `Ran Databa
 
 <!-- not all locations support az postgres up -->
 > [!TIP]
-> Als u de locatie voor uw post gres-server wilt opgeven, `--location <location-name>`neemt u `<location_name>` het argument op, waarbij een van de [Azure-regio's](https://azure.microsoft.com/global-infrastructure/regions/)is. U kunt de regio's die beschikbaar zijn voor uw abonnement ophalen [`az account list-locations`](/cli/azure/account#az-account-list-locations) met de opdracht.
+> `--location <location-name>`kan worden ingesteld op een van de Azure- [regio's](https://azure.microsoft.com/global-infrastructure/regions/). U kunt de regio's die beschikbaar zijn voor uw abonnement ophalen [`az account list-locations`](/cli/azure/account#az-account-list-locations) met de opdracht. Voor productie-apps plaatst u uw data base en uw app op dezelfde locatie.
 
 ## <a name="deploy-the-app-service-app"></a>De App App Service implementeren
 
@@ -149,7 +149,7 @@ Zorg ervoor dat u weer terug bent in de hoofdmap`djangoapp`van de opslag plaats 
 Maak een App Service-app met [`az webapp up`](/cli/azure/webapp#az-webapp-up) de opdracht, zoals wordt weer gegeven in het volgende voor beeld. Vervang * \<app-name>* door een *unieke* naam (het server eindpunt is *https://\<app-name>. azurewebsites.net*). Toegestane tekens voor * \<de app-naam>* zijn `0` - `9` `A` - `Z`, en `-`.
 
 ```azurecli
-az webapp up --plan myAppServicePlan --sku B1 --name <app-name>
+az webapp up --plan myAppServicePlan --location westus2 --sku B1 --name <app-name>
 ```
 <!-- !!! without --sku creates PremiumV2 plan!! -->
 
@@ -183,10 +183,10 @@ Zodra de implementatie is voltooid, ziet u een JSON-uitvoer zoals het volgende:
 Kopieer de waarde van * \<app-Resource-Group>*. U hebt deze later nodig om de app te configureren. 
 
 > [!TIP]
-> U kunt dezelfde opdracht later gebruiken om wijzigingen te implementeren en Diagnostische logboeken direct in te scha kelen met:
+> De relevante instellingen worden opgeslagen in een verborgen *. Azure* -map in uw opslag plaats. U kunt de eenvoudige opdracht later gebruiken om wijzigingen opnieuw te implementeren en Diagnostische logboeken direct in te scha kelen met:
 > 
 > ```azurecli
-> az webapp up --name <app-name>
+> az webapp up
 > ```
 
 De voorbeeld code is nu geïmplementeerd, maar de app maakt nog geen verbinding met de post gres-data base in Azure. U doet dit nu.
@@ -219,8 +219,6 @@ cd site/wwwroot
 
 # Activate default virtual environment in App Service container
 source /antenv/bin/activate
-# Install requirements in environment
-pip install -r requirements.txt
 # Run database migrations
 python manage.py migrate
 # Create the super user (follow prompts)
@@ -358,7 +356,7 @@ python manage.py runserver
 Als u de wijzigingen opnieuw wilt implementeren, voert u de volgende opdracht uit vanuit de hoofdmap van de opslag plaats:
 
 ```azurecli
-az webapp up --name <app-name>
+az webapp up
 ```
 
 App Service detecteert dat de app bestaat en alleen de code implementeert.

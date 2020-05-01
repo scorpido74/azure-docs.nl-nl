@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: include
-ms.date: 08/22/2019
+ms.date: 04/15/2020
 ms.author: trbye
-ms.openlocfilehash: f7ca8fdaddab9757292939c4f7e658179d6e517c
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 267c2fb72b38053429019746a573c740d812c38c
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81421983"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82608371"
 ---
 ### <a name="speech-to-text-sub-chart-chartsspeechtotext"></a>Spraak naar tekst (subdiagram: grafieken/speechToText)
 
@@ -40,3 +40,30 @@ Als u het schema "paraplu" wilt overschrijven, voegt `speechToText.` u het voor 
 | `service.annotations` | De aantekeningen voor **spraak naar tekst** voor de meta gegevens van de service. Annotaties zijn sleutel waardeparen. <br>`annotations:`<br>&nbsp;&nbsp;`some/annotation1: value1`<br>&nbsp;&nbsp;`some/annotation2: value2` | |
 | `service.autoScaler.enabled` | Hiermee wordt aangegeven of de horizontale pod-functie voor [automatisch schalen](https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/) is ingeschakeld. Als `true`, wordt `speech-to-text-autoscaler` de geïmplementeerd in het Kubernetes-cluster. | `true` |
 | `service.podDisruption.enabled` | Of het [pod-Verstorings budget](https://kubernetes.io/docs/concepts/workloads/pods/disruptions/) is ingeschakeld. Als `true`, wordt `speech-to-text-poddisruptionbudget` de geïmplementeerd in het Kubernetes-cluster. | `true` |
+
+#### <a name="sentiment-analysis-sub-chart-chartsspeechtotext"></a>Sentiment analyse (subdiagram: Charts/speechToText)
+
+Vanaf v 2.2.0 van de functie voor spraak naar tekst worden de volgende para meters gebruikt voor sentiment-analyse met behulp van de Text Analytics-API.
+
+|Parameter|Beschrijving|Waarden|Standaard|
+| --- | --- | --- | --- |
+|`textanalytics.enabled`| Of de **tekst-Analytics-** service is ingeschakeld| waar/onwaar| `false`|
+|`textanalytics.image.registry`| Het REGI ster van de **tekst analyse** van docker-installatie kopie| geldig REGI ster van docker-installatie kopie| |
+|`textanalytics.image.repository`| De bibliotheek met installatie kopieën voor de **tekst analyse-** docker| geldige opslag plaats voor docker-installatie kopie| |
+|`textanalytics.image.tag`| De code van de docker-afbeelding voor **tekst analyse**| geldige docker-afbeeldings code| |
+|`textanalytics.image.pullSecrets`| De afbeeldings geheimen voor het ophalen van de docker-afbeelding voor **tekst analyse**| geldige geheimen naam| |
+|`textanalytics.image.pullByHash`| Hiermee geeft u op of u een docker-installatie kopie via hash haalt.  Als `yes` `image.hash` is ook vereist. Als `no`u deze instelt op ' false '. De standaardwaarde is `false`.| waar/onwaar| `false`|
+|`textanalytics.image.hash`| De hash van de docker-afbeelding voor **tekst analyse** . Gebruik deze alleen met `image.pullByHash:true`.| geldige hash voor docker-installatie kopie | |
+|`textanalytics.image.args.eula`| Een van de vereiste argumenten per **tekst-Analytics-** container, waarmee wordt aangegeven dat u de licentie hebt geaccepteerd. De waarde van deze optie moet zijn: `accept`.| `accept`Als u de container wilt gebruiken | |
+|`textanalytics.image.args.billing`| Een van de vereiste argumenten per **tekst-Analytics-** container, waarmee de URI van het facturerings eindpunt wordt opgegeven. De waarde voor de URL van het facturerings eindpunt is beschikbaar op de overzichts pagina van het Azure Portal.|geldige URI voor het facturerings eindpunt||
+|`textanalytics.image.args.apikey`| Een van de vereiste argumenten voor de **tekst-Analytics-** container, die wordt gebruikt voor het bijhouden van facturerings gegevens.| geldige apikey||
+|`textanalytics.cpuRequest`| De aangevraagde CPU voor de **tekst-Analytics** -container| int| `3000m`|
+|`textanalytics.cpuLimit`| De beperkte CPU voor de container voor **tekst analyse**| | `8000m`|
+|`textanalytics.memoryRequest`| Het aangevraagde geheugen voor de container voor **tekst analyse**| | `3Gi`|
+|`textanalytics.memoryLimit`| Het beperkte geheugen voor de container voor **tekst analyse**| | `8Gi`|
+|`textanalytics.service.sentimentURISuffix`| Het sentiment-analyse-URI-achtervoegsel, de volledige URI heeft de`<service>`notatie`<port>`/`<sentimentURISuffix>`' http://: '. | | `text/analytics/v3.0-preview/sentiment`|
+|`textanalytics.service.type`| Het type **tekst analyse** service in Kubernetes. Zie [Kubernetes-service typen](https://kubernetes.io/docs/concepts/services-networking/service/) | geldig Kubernetes-Service type | `LoadBalancer` |
+|`textanalytics.service.port`| De poort van de **tekst analyse** service| int| `50085`|
+|`textanalytics.service.annotations`| De aantekeningen die gebruikers aan de meta gegevens van de **tekst analyse** service kunnen toevoegen. Bijvoorbeeld:<br/> **aantekeningen**<br/>`   `**enkele/annotation1: waarde1**<br/>`  `**sommige/annotation2: waarde2** | aantekeningen, één per regel| |
+|`textanalytics.serivce.autoScaler.enabled`| Hiermee wordt aangegeven of [horizon taal pod automatisch schalen](https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/) is ingeschakeld. Indien ingeschakeld, `text-analytics-autoscaler` wordt geïmplementeerd in het Kubernetes-cluster | waar/onwaar| `true`|
+|`textanalytics.service.podDisruption.enabled`| Of het [pod-Verstorings budget](https://kubernetes.io/docs/concepts/workloads/pods/disruptions/) is ingeschakeld. Indien ingeschakeld, `text-analytics-poddisruptionbudget` wordt geïmplementeerd in het Kubernetes-cluster| waar/onwaar| `true`|

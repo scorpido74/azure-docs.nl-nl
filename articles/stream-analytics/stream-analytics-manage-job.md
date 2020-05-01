@@ -7,12 +7,12 @@ ms.service: stream-analytics
 ms.topic: tutorial
 ms.custom: mvc
 ms.date: 06/03/2019
-ms.openlocfilehash: 488664b028568b3014b9b839122705d35104861e
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 79b8cfd3f50ffd9f1c6b36dd73942ed3ddc5929f
+ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79239306"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82594913"
 ---
 # <a name="tutorial-analyze-phone-call-data-with-stream-analytics-and-visualize-results-in-power-bi-dashboard"></a>Zelf studie: gegevens van telefoon gesprekken analyseren met Stream Analytics en resultaten visualiseren in Power BI dash board
 
@@ -264,7 +264,7 @@ U kunt een query vanuit de query-editor testen met behulp van voorbeeldgegevens.
 
 Voor dit deel van de zelf studie gebruikt u een voor beeld van een [ASP.net](https://asp.net/) -webtoepassing die door het Power bi-team is gemaakt om uw dash board in te sluiten. Zie het artikel [Insluiten met Power BI](https://docs.microsoft.com/power-bi/developer/embedding) voor meer informatie over het insluiten van dashboards.
 
-Als u de toepassing wilt instellen, gaat u naar de GitHub-opslag plaats van [PowerBI-Developer-Samples](https://github.com/Microsoft/PowerBI-Developer-Samples) en volgt u de instructies in de sectie **gebruiker is eigenaar van gegevens** (gebruik de omleidings-en Startpagina-url's in de Subsectie **integratie-web-app** ). Omdat we het voor beeld van het dash board gebruiken, kunt u de voorbeeld code **integreren: Web-app** in de [github-opslag plaats](https://github.com/Microsoft/PowerBI-Developer-Samples/tree/master/User%20Owns%20Data/integrate-web-app).
+Als u de toepassing wilt instellen, gaat u naar de GitHub-opslag plaats van [PowerBI-Developer-Samples](https://github.com/Microsoft/PowerBI-Developer-Samples) en volgt u de instructies in de sectie **gebruiker is eigenaar van gegevens** (gebruik de omleidings-en Startpagina-url's in de Subsectie **integratie-web-app** ). Omdat we het voor beeld van het dash board gebruiken, kunt u de voorbeeld code **integreren: Web-app** in de [github-opslag plaats](https://github.com/microsoft/PowerBI-Developer-Samples/tree/master/.NET%20Framework/User%20Owns%20Data/integrate-web-app).
 Zodra de toepassing in uw browser wordt uitgevoerd, volgt u deze stappen voor het insluiten van het dashboard dat u eerder in de webpagina hebt gemaakt:
 
 1. Selecteer **Aanmelden bij Power bi**, waarmee de toepassing toegang krijgt tot de Dash boards in uw Power bi-account.

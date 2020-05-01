@@ -16,18 +16,19 @@ ms.topic: tutorial
 ms.date: 05/30/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f8a2c962c69ead28c4e79b663010eab77a499f5c
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: has-adal-ref
+ms.openlocfilehash: 13c3a7f8376d4c852a74be75e323c6bb042b5407
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80048420"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82610986"
 ---
 # <a name="configure-an-openidoauth-application-from-the-azure-ad-app-gallery"></a>Een OpenID/OAuth-toepassing uit de Azure AD-app-galerie configureren
 
 ## <a name="process-of-adding-an-openid-application-from-the-gallery"></a>Proces voor het toevoegen van een OpenID-toepassing vanuit de galerie
 
-1. In de [Azure-portal](https://portal.azure.com), selecteert u in het linkerdeelvenster **Azure Active Directory**. 
+1. In de [Azure-portal](https://portal.azure.com), selecteert u in het linkerdeelvenster **Azure Active Directory**.
 
     ![De knop Azure Active Directory](common/select-azuread.png))
 
@@ -61,17 +62,17 @@ De meest eenvoudige aanmeldingsstroom bestaat uit de volgende stappen:
 
 ![Verificatiestroom waarbij OpenID Connect wordt gebruikt](./media/openidoauth-tutorial/authenticationflow.png)
 
-### <a name="multitenant-application"></a>Toepassing met meerdere tenants 
-Toepassingen met meerdere tenants kunnen in vele organisatie worden gebruikt en niet slechts in één organisatie. Dit zijn normaliter Software-as-a-Service-toepassingen (SaaS), geschreven door een onafhankelijke softwareleverancier (ISV). 
+### <a name="multitenant-application"></a>Toepassing met meerdere tenants
+Toepassingen met meerdere tenants kunnen in vele organisatie worden gebruikt en niet slechts in één organisatie. Dit zijn normaliter Software-as-a-Service-toepassingen (SaaS), geschreven door een onafhankelijke softwareleverancier (ISV).
 
-Toepassingen met meerdere tenants moeten in elke map waarin ze zullen worden gebruikt, worden ingericht. Er toestemming van een gebruiker of beheerder nodig om ze te kunnen registreren. Het toestemmingsproces begint wanneer een toepassing in de map is geregistreerd en toegang verkrijgt tot de Graph-API of wellicht zelfs een andere web-API. Wanneer een gebruiker of beheerder van een andere organisatie zich registreert voor gebruik van de toepassing, wordt er een dialoogvenster weergegeven met de machtigingen die de toepassing nodig heeft. 
+Toepassingen met meerdere tenants moeten in elke map waarin ze zullen worden gebruikt, worden ingericht. Er toestemming van een gebruiker of beheerder nodig om ze te kunnen registreren. Het toestemmingsproces begint wanneer een toepassing in de map is geregistreerd en toegang verkrijgt tot de Graph-API of wellicht zelfs een andere web-API. Wanneer een gebruiker of beheerder van een andere organisatie zich registreert voor gebruik van de toepassing, wordt er een dialoogvenster weergegeven met de machtigingen die de toepassing nodig heeft.
 
 De gebruiker of beheerder geeft dan toestemming voor de toepassing. Met deze toestemming krijgt de toepassing toegang tot de opgegeven gegevens én wordt de toepassing in de map geregistreerd.
 
 > [!NOTE]
 > Als u uw toepassing beschikbaar maakt voor gebruikers in meerdere directory's, hebt u een mechanisme nodig om te bepalen in welke Tenant ze zich bevinden. Toepassingen met één tenant hoeven alleen in hun eigen map op zoek te gaan naar een gebruiker. Toepassingen met meerdere tenants moeten specifieke gebruikers identificeren vanuit álle mappen in Azure AD.
-> 
-> Om deze taak uit te voeren, biedt Azure AD een algemeen verificatie-eindpunt waar toepassingen met meerdere tenants aanmeldingsaanvragen naartoe kunnen sturen (in plaats van een tenantspecifiek eindpunt). Dit eindpunt is `https://login.microsoftonline.com/common` voor alle mappen in Azure AD. Een tenantspecifiek eindpunt kan bijvoorbeeld `https://login.microsoftonline.com/contoso.onmicrosoft.com` zijn. 
+>
+> Om deze taak uit te voeren, biedt Azure AD een algemeen verificatie-eindpunt waar toepassingen met meerdere tenants aanmeldingsaanvragen naartoe kunnen sturen (in plaats van een tenantspecifiek eindpunt). Dit eindpunt is `https://login.microsoftonline.com/common` voor alle mappen in Azure AD. Een tenantspecifiek eindpunt kan bijvoorbeeld `https://login.microsoftonline.com/contoso.onmicrosoft.com` zijn.
 >
 > Het algemene eindpunt is belangrijk om in overweging te nemen bij het ontwikkelen van uw toepassing. U hebt de benodigde logica nodig voor het verwerken van meerdere tenants tijdens het aanmelden, afmelden en validatie van tokens.
 
@@ -80,9 +81,9 @@ Azure AD promoot standaard toepassingen met meerdere tenants. Ze zijn eenvoudig 
 ## <a name="consent-framework"></a>Toestemmingsframework
 
 U kunt u het Azure AD-toestemmingsframework gebruiken om clienttoepassingen met meerdere tenants (op internet en systeemeigen) te maken. Bij deze toepassingen kunnen gebruikersaccounts zich aanmelden uit Azure AD-tenants die verschillen van de tenant waarin de toepassing is geregistreerd. Mogelijk hebben ze ook toegang nodig tot web-API's zoals:
-- De Microsoft Graph-API, voor toegang tot Azure AD, Intune en services in Office 365. 
+- De Microsoft Graph-API, voor toegang tot Azure AD, Intune en services in Office 365.
 - De API's van andere Microsoft-services.
-- Uw eigen web-API's. 
+- Uw eigen web-API's.
 
 Het framework is gebaseerd op een gebruiker of beheerder die toestemming geeft aan een toepassing die vraagt in de map te worden geregistreerd. De registratie kan toegang tot mapgegevens omvatten. Wanneer er toestemming is gegeven, kan de clienttoepassing de Microsoft Graph-API namens de gebruiker aanroepen en op basis van behoefte gebruikmaken van gegevens.
 
@@ -146,7 +147,7 @@ Beheerders kunnen toestemming geven voor de gedelegeerde machtigingen van een to
 
 Alleen app-machtigingen vereisen altijd toestemming van de Tenant beheerder. Als uw toepassing een app-specifieke machtiging aanvraagt en een gebruiker zich bij de toepassing probeert aan te melden, wordt er een foutmelding weergegeven. In het bericht wordt aangegeven dat de gebruiker geen toestemming kan geven.
 
-Als voor uw toepassing gebruik wordt gemaakt van machtigingen waarvoor beheerderstoestemming nodig is, moet u een knop of een koppeling toevoegen waarmee de beheerder toestemming kan geven. De aanvraag die uw toepassing met deze actie verzendt, is de gebruikelijke OAuth2/OpenID Connect-verificatieaanvraag. De aanvraag bevat de queryreeksparameter *prompt=admin_consent*. 
+Als voor uw toepassing gebruik wordt gemaakt van machtigingen waarvoor beheerderstoestemming nodig is, moet u een knop of een koppeling toevoegen waarmee de beheerder toestemming kan geven. De aanvraag die uw toepassing met deze actie verzendt, is de gebruikelijke OAuth2/OpenID Connect-verificatieaanvraag. De aanvraag bevat de queryreeksparameter *prompt=admin_consent*.
 
 Nadat de beheerder heeft ingestemd en de Service-Principal is gemaakt in de Tenant van de klant, hebben latere aanmeldings aanvragen niet nodig de *prompt = admin_consent* para meter. Omdat de beheerder heeft besloten dat de aangevraagde machtigingen worden geaccepteerd, wordt andere gebruikers in de tenant niet meer om toestemming gevraagd.
 

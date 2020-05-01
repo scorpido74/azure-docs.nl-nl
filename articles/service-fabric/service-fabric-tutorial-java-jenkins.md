@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 08/27/2018
 ms.author: suhuruli
 ms.custom: mvc
-ms.openlocfilehash: dee1d5a744ddfc2ad38cbe93447377a8af27a2f7
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 74c412ad4c62a5821890aa5602b521f3f63da925
+ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "75376645"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82594760"
 ---
 # <a name="tutorial-configure-a-jenkins-environment-to-enable-cicd-for-a-java-application-on-service-fabric"></a>Zelfstudie: Een Jenkins-omgeving configureren om CI/CD in te schakelen voor een Java-toepassing voor Service Fabric
 
@@ -85,7 +85,7 @@ U kunt Jenkins instellen binnen of buiten een Service Fabric-cluster. De volgend
 
    a. Selecteer in het algemene gedeelte het selectievakje voor **GitHub project** en geef de URL van het GitHub-project. Dit is de URL waarop de Service Fabric Java-toepassing wordt gehost die u wilt integreren met de CI-/CD-stroom van Jenkins (Continue integratie, Continue implementatie), bijvoorbeeld ``https://github.com/testaccount/dev_test``.
 
-   b. Selecteer onder de sectie **Broncodebeheer** de optie **Git**. Geef de URL van de opslag plaats op die als host fungeert voor de Service Fabric Java-toepassing die u wilt integreren met de Jenkins CI *https://github.com/testaccount/dev_test.git*/cd-stroom (bijvoorbeeld). U kunt hier ook opgeven welke vertakking u wilt maken, bijvoorbeeld **/master**.
+   b. Selecteer onder de sectie **Broncodebeheer** de optie **Git**. Geef de URL van de opslag plaats op die als host fungeert voor de Service Fabric Java-toepassing die u wilt integreren met de Jenkins CI *`https://github.com/testaccount/dev_test.git`*/cd-stroom (bijvoorbeeld). U kunt hier ook opgeven welke vertakking u wilt maken, bijvoorbeeld **/master**.
 
 1. Configureer uw *GitHub* (waar de opslagplaats wordt gehost), zodat deze kan communiceren met Jenkins. Voer de volgende stappen uit:
 

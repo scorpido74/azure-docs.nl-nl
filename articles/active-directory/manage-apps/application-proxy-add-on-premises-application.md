@@ -12,12 +12,12 @@ ms.date: 10/24/2019
 ms.author: mimart
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 73aa01ea08c8bab1395516c31bb46dbfd88045db
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 10d0f949fb2a5755512a30dcca011690d86a7e7b
+ms.sourcegitcommit: acc558d79d665c8d6a5f9e1689211da623ded90a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79481412"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82597719"
 ---
 # <a name="tutorial-add-an-on-premises-application-for-remote-access-through-application-proxy-in-azure-active-directory"></a>Zelf studie: een on-premises toepassing toevoegen voor externe toegang via toepassings proxy in Azure Active Directory
 
@@ -47,10 +47,12 @@ Als u Application Proxy wilt gebruiken, hebt u een Windows-server nodig waarop W
 Om een hoge beschikbaarheid in uw productieomgeving te realiseren wordt aangeraden meer dan één Windows-server te gebruiken. Voor deze zelfstudie is één Windows-server toereikend.
 
 > [!IMPORTANT]
-> Als u de connector installeert op Windows Server 2019, is er een HTTP2-beperking. Een tijdelijke oplossing voor het gebruik van de connector op deze versie is het toevoegen van de volgende register sleutel en het opnieuw starten van de server. Opmerking: dit is een brede sleutel van het REGI ster van de machine. 
-    ```
-    HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Internet Settings\WinHttp\EnableDefaultHttp2 (DWORD) Value: 0 
-    ```
+> Als u de connector installeert op Windows Server 2019, moet u HTTP2-protocol ondersteuning uitschakelen in het WinHttp-onderdeel. Dit is standaard uitgeschakeld in eerdere versies van ondersteunde besturings systemen. Door de volgende register sleutel toe te voegen en de server opnieuw op te starten, schakelt u deze uit op Windows Server 2019. Houd er rekening mee dat dit een register sleutel voor alle computers is.
+>
+> ```
+> HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Internet Settings\WinHttp\EnableDefaultHttp2 (DWORD) Value: 0 
+> ```
+>
 
 #### <a name="recommendations-for-the-connector-server"></a>Aanbevelingen voor de connectorserver
 

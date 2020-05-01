@@ -9,12 +9,12 @@ ms.custom: mvc
 ms.date: 04/23/2020
 ms.author: victorh
 Customer intent: As an administrator, I want to evaluate Azure Firewall so I can determine if I want to use it.
-ms.openlocfilehash: 81adf005c2e39d9bb585c005f51ab3f89e4c8ff0
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: a0bd89a2ffdc15e192e51660c58c1d66efa1284a
+ms.sourcegitcommit: acc558d79d665c8d6a5f9e1689211da623ded90a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82209125"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82598450"
 ---
 # <a name="what-is-azure-firewall"></a>Wat is Azure Firewall?
 
@@ -122,6 +122,7 @@ Netwerkfilterregels voor niet-TCP/UDP-protocollen (bijvoorbeeld ICMP) werken nie
 |DNAT wordt niet ondersteund als geforceerde tunneling is ingeschakeld|Firewalls die zijn geïmplementeerd met geforceerde tunneling, bieden geen ondersteuning voor inkomende toegang via internet vanwege asymmetrische route ring.|Dit is door het ontwerp vanwege asymmetrische route ring. Het retour traject voor binnenkomende verbindingen gaat via de on-premises firewall, die geen verbinding heeft gemaakt.
 |Uitgaande passieve FTP werkt niet voor firewalls met meerdere open bare IP-adressen.|Met passieve FTP worden verschillende verbindingen tot stand gebracht voor besturings elementen en gegevens kanalen. Wanneer een firewall met meerdere open bare IP-adressen gegevens uitgaand verzendt, wordt wille keurig een van de open bare IP-adressen geselecteerd voor het bron-IP-adres. FTP mislukt wanneer gegevens-en besturings kanalen gebruikmaken van verschillende bron-IP-adressen.|Er wordt een expliciete SNAT-configuratie gepland. In de tussen tijd kunt u in deze situatie één IP-adres gebruiken.|
 |Er ontbreekt een protocol dimensie in de NetworkRuleHit-waarde|Met de metrische ApplicationRuleHit-gegevens kunt u filteren op basis van een protocol, maar deze mogelijkheid ontbreekt in de bijbehorende NetworkRuleHit-metriek.|Er wordt een oplossing onderzocht.|
+|NAT-regels met poorten tussen 64000 en 65535 worden niet ondersteund|Azure Firewall staat elke poort toe in het 1-65535-bereik in netwerk-en toepassings regels, maar NAT-regels ondersteunen alleen poorten in het bereik van 1-63999.|Dit is een huidige beperking.
 |Configuratie-updates kunnen gemiddeld vijf minuten duren.|Een Azure Firewall configuratie-update kan gemiddeld drie tot vijf minuten duren en parallelle updates worden niet ondersteund.|Er wordt een oplossing onderzocht.
 
 ## <a name="next-steps"></a>Volgende stappen

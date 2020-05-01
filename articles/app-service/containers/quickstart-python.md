@@ -6,12 +6,12 @@ ms.date: 04/03/2020
 ms.custom: seo-python-october2019, cli-validate
 experimental: true
 experiment_id: 01a9132f-eaab-4c
-ms.openlocfilehash: 7f8d21cbccc1a6eec7f62ab5d129f3f0637b8d13
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 606758cf81d069124c67bc06c650b96d91262deb
+ms.sourcegitcommit: acc558d79d665c8d6a5f9e1689211da623ded90a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82085124"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82597872"
 ---
 # <a name="quickstart-create-a-python-app-in-azure-app-service-on-linux"></a>Snelstartgids: een python-app maken in Azure App Service in Linux
 
@@ -104,6 +104,11 @@ Voer de volgende `az webapp up` opdracht uit in de map *python-docs-Hello-World*
 ```azurecli
 az webapp up --sku F1 -n <app-name>
 ```
+> [!CAUTION]
+> Als u **Azure-CLI versie 2.5.0** gebruikt, is er sprake van `az webapp up` een regressie waarin bepaalde scenario's mislukken als de `-l <location-name>` para meter niet is opgenomen. Dit probleem wordt [hier bijgehouden](https://github.com/Azure/azure-cli/issues/13257).  
+> 
+>U kunt controleren welke versie van de Azure-CLI u met de `az --version` opdracht gebruikt.
+>
 
 Met `--sku F1` het argument maakt u de web-app op de prijs categorie gratis. U kunt dit argument weglaten voor het gebruik van een Premium-laag, waardoor kosten per uur in rekening worden gebracht.
 

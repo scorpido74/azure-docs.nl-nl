@@ -7,12 +7,12 @@ services: web-application-firewall
 ms.topic: tutorial
 ms.date: 03/18/2020
 ms.author: victorh
-ms.openlocfilehash: 738be1361bfbd944575abceb08781b241336f6e8
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 7a9e0cc3977892fd899b4a25e17ad72f13481506
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79485592"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82608810"
 ---
 # <a name="tutorial-create-a-waf-policy-on-azure-cdn-using-the-azure-portal"></a>Zelf studie: een WAF-beleid maken op Azure CDN met behulp van de Azure Portal
 
@@ -22,7 +22,7 @@ In deze zelfstudie leert u het volgende:
 
 > [!div class="checklist"]
 > * Een WAF-beleid maken
-> * Deze koppelen aan een CDN-eind punt
+> * Koppel deze aan een CDN-eind punt. U kunt een WAF-beleid alleen koppelen aan eind punten die worden gehost op de **Azure CDN standaard van micro soft** SKU.
 > * WAF-regels configureren
 
 ## <a name="prerequisites"></a>Vereisten

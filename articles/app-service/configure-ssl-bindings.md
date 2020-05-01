@@ -3,15 +3,15 @@ title: Een aangepaste DNS beveiligen met een TLS/SSL-binding
 description: Beveiligde HTTPS-toegang tot uw aangepaste domein door een TLS/SSL-binding met een certificaat te maken. Verbeter de beveiliging van uw website door HTTPS of TLS 1,2 af te dwingen.
 tags: buy-ssl-certificates
 ms.topic: tutorial
-ms.date: 10/25/2019
+ms.date: 04/30/2020
 ms.reviewer: yutlin
 ms.custom: seodec18
-ms.openlocfilehash: 9792181379bfa6f9e0337bf14208fe853c16b745
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: c93938db4632f6509e386d440c9be75596ea254f
+ms.sourcegitcommit: acc558d79d665c8d6a5f9e1689211da623ded90a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80811745"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82597892"
 ---
 # <a name="secure-a-custom-dns-name-with-a-tlsssl-binding-in-azure-app-service"></a>Een aangepaste DNS-naam beveiligen met een TLS/SSL-binding in Azure App Service
 
@@ -83,7 +83,7 @@ Gebruik de volgende tabel om u te helpen de TLS-binding te configureren in het d
 |-|-|
 | Aangepast domein | De domein naam waaraan u de TLS/SSL-binding wilt toevoegen. |
 | Vinger afdruk van persoonlijk certificaat | Het certificaat dat moet worden gebonden. |
-| Type TLS/SSL | <ul><li>**[SNI SSL](https://en.wikipedia.org/wiki/Server_Name_Indication)** : er kunnen meerdere SNI SSL bindingen worden toegevoegd. Met deze optie kunnen meerdere TLS/SSL-certificaten meerdere domeinen op hetzelfde IP-adres beveiligen. De meeste moderne browsers (waaronder Internet Explorer, Chrome, Firefox en Opera) ondersteunen SNI (Zie [Servernaamindicatie](https://wikipedia.org/wiki/Server_Name_Indication)) voor meer informatie.</li><li>**IP SSL** : er kan slechts één IP SSL binding worden toegevoegd. Met deze optie kan slechts één TLS/SSL-certificaat een specifiek openbaar IP-adres beveiligen. Nadat u de binding hebt geconfigureerd, volgt u de stappen in [een record opnieuw toewijzen voor IP SSL](#remap-a-record-for-ip-ssl).<br/>IP SSL wordt alleen ondersteund in productie-of geïsoleerde lagen. </li></ul> |
+| Type TLS/SSL | <ul><li>**[SNI SSL](https://en.wikipedia.org/wiki/Server_Name_Indication)** : er kunnen meerdere SNI SSL bindingen worden toegevoegd. Met deze optie kunnen meerdere TLS/SSL-certificaten meerdere domeinen op hetzelfde IP-adres beveiligen. De meeste moderne browsers (waaronder Internet Explorer, Chrome, Firefox en Opera) ondersteunen SNI (Zie [Servernaamindicatie](https://wikipedia.org/wiki/Server_Name_Indication)) voor meer informatie.</li><li>**IP SSL** : er kan slechts één IP SSL binding worden toegevoegd. Met deze optie kan slechts één TLS/SSL-certificaat een specifiek openbaar IP-adres beveiligen. Nadat u de binding hebt geconfigureerd, volgt u de stappen in [records opnieuw toewijzen voor IP SSL](#remap-records-for-ip-ssl).<br/>IP SSL wordt alleen ondersteund in de **Standard** -laag of hoger. </li></ul> |
 
 Zodra de bewerking is voltooid, wordt de TLS/SSL-status van het aangepaste domein gewijzigd in **beveiligd**.
 
@@ -92,15 +92,17 @@ Zodra de bewerking is voltooid, wordt de TLS/SSL-status van het aangepaste domei
 > [!NOTE]
 > Een **veilige** status in de **aangepaste domeinen** houdt in dat deze is beveiligd met een certificaat, maar app service controleert niet of het certificaat zelf is ondertekend of is verlopen, bijvoorbeeld, waardoor browsers ook een fout of waarschuwing kunnen weer geven.
 
-## <a name="remap-a-record-for-ip-ssl"></a>Een record voor IP SSL opnieuw toewijzen
+## <a name="remap-records-for-ip-ssl"></a>Records opnieuw toewijzen voor IP SSL
 
 Als u IP SSL niet gebruikt in uw app, gaat u door met het [testen van HTTPS voor uw aangepaste domein](#test-https).
 
-Uw app maakt standaard gebruik van een gedeeld openbaar IP-adres. Wanneer u een certificaat verbindt met IP SSL, maakt App Service een nieuw, toegewijd IP-adres voor uw app.
+Er zijn twee wijzigingen die u moet aanbrengen, mogelijk:
 
-Als u een A-record aan uw app hebt toegewezen, werkt u het domein register bij met dit nieuwe, toegewezen IP-adres.
+- Uw app maakt standaard gebruik van een gedeeld openbaar IP-adres. Wanneer u een certificaat verbindt met IP SSL, maakt App Service een nieuw, toegewijd IP-adres voor uw app. Als u een A-record aan uw app hebt toegewezen, werkt u het domein register bij met dit nieuwe, toegewezen IP-adres.
 
-De pagina **Aangepast domein** van uw app wordt bijgewerkt met het nieuwe, specifieke IP-adres. [Kopieer dit IP-adres](app-service-web-tutorial-custom-domain.md#info) en [wijs de A-record opnieuw toe](app-service-web-tutorial-custom-domain.md#map-an-a-record) aan dit nieuwe IP-adres.
+    De pagina **Aangepast domein** van uw app wordt bijgewerkt met het nieuwe, specifieke IP-adres. [Kopieer dit IP-adres](app-service-web-tutorial-custom-domain.md#info) en [wijs de A-record opnieuw toe](app-service-web-tutorial-custom-domain.md#map-an-a-record) aan dit nieuwe IP-adres.
+
+- Als u een SNI SSL binding hebt met `<app-name>.azurewebsites.net`, moet u [een CNAME-toewijzing](app-service-web-tutorial-custom-domain.md#map-a-cname-record) zo `sni.<app-name>.azurewebsites.net` toewijzen dat ze in `sni` plaats daarvan verwijzen (Voeg het voor voegsel toe).
 
 ## <a name="test-https"></a>HTTPS testen
 

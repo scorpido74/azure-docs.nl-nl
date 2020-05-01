@@ -7,12 +7,12 @@ ms.date: 02/13/2020
 ms.service: storage
 ms.subservice: common
 ms.topic: sample
-ms.openlocfilehash: 46f19748ea56777bd1c23b3cf066fa28787d8882
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 26fe0538548e13933e112e83bae6e6131f2a030d
+ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77486097"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82594636"
 ---
 # <a name="azure-storage-samples-using-v12-java-client-libraries"></a>Azure Storage voor beelden met behulp van V12 Java-client bibliotheken
 
@@ -209,19 +209,7 @@ De volgende tabel bevat een overzicht van onze voor beelden van opslag plaatsen 
       [Besturings elementen voor toegang verkrijgen voor een bestand](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-file-datalake/src/samples/java/com/azure/storage/file/datalake/GetSetAccessControlExample.java#L104)
    :::column-end:::
 :::row-end:::
-:::row:::
-   :::column span="":::
-      [Een bestand maken met een Data Lake-bestands-client](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-file-datalake/src/samples/java/com/azure/storage/file/datalake/UploadDownloadExample.java#L67)
-   :::column-end:::
-   :::column span="":::
-      [Gegevens toevoegen aan een bestand](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-file-datalake/src/samples/java/com/azure/storage/file/datalake/UploadDownloadExample.java#L85)
-   :::column-end:::
-:::row-end:::
-:::row:::
-   :::column span="2":::
-      [Bestand downloaden](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-file-datalake/src/samples/java/com/azure/storage/file/datalake/UploadDownloadExample.java#L127)
-   :::column-end:::
-:::row-end:::
+
 
 ## <a name="azure-file-samples"></a>Voor beelden van Azure-bestanden
 
