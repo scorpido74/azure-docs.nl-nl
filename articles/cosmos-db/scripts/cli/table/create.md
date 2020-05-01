@@ -1,6 +1,6 @@
 ---
-title: Een tabel-API-tabel maken voor Azure Cosmos DB
-description: Een tabel-API-tabel maken voor Azure Cosmos DB
+title: Een Table-API tabel maken voor Azure Cosmos DB
+description: Een Table-API tabel maken voor Azure Cosmos DB
 author: markjbrown
 ms.author: mjbrown
 ms.service: cosmos-db
@@ -8,17 +8,17 @@ ms.subservice: cosmosdb-table
 ms.topic: sample
 ms.date: 9/25/2019
 ms.openlocfilehash: aea0697471d62e5119bbeea6a618c6e962983054
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "71275477"
 ---
-# <a name="create-an-azure-cosmos-table-api-account-and-table-using-azure-cli"></a>Een Azure Cosmos Table API-account en -tabel maken met Azure CLI
+# <a name="create-an-azure-cosmos-table-api-account-and-table-using-azure-cli"></a>Een Azure Cosmos Table-API-account en-tabel maken met behulp van Azure CLI
 
 [!INCLUDE [cloud-shell-try-it.md](../../../../../includes/cloud-shell-try-it.md)]
 
-Als u ervoor kiest de CLI lokaal te installeren en te gebruiken, moet u in dit onderwerp de Azure CLI-versie 2.0.73 of hoger uitvoeren. Voer `az --version` uit om de versie te bekijken. Als u Azure CLI 2.0 wilt installeren of upgraden, raadpleegt u [Azure CLI 2.0 installeren](/cli/azure/install-azure-cli).
+Als u ervoor kiest om de CLI lokaal te installeren en te gebruiken, moet u voor dit onderwerp gebruikmaken van Azure CLI versie 2.0.73 of hoger. Voer `az --version` uit om de versie te bekijken. Als u Azure CLI 2.0 wilt installeren of upgraden, raadpleegt u [Azure CLI 2.0 installeren](/cli/azure/install-azure-cli).
 
 ## <a name="sample-script"></a>Voorbeeldscript
 
@@ -40,11 +40,11 @@ In dit script worden de volgende opdrachten gebruikt. Elke opdracht in de tabel 
 |---|---|
 | [az group create](/cli/azure/group#az-group-create) | Hiermee wordt een resourcegroep gemaakt waarin alle resources worden opgeslagen. |
 | [az cosmosdb create](/cli/azure/cosmosdb#az-cosmosdb-create) | Hiermee wordt een Azure Cosmos DB-account gemaakt. |
-| [az cosmosdb tabel te maken](/cli/azure/cosmosdb/table#az-cosmosdb-table-create) | Hiermee maakt u een API-tabel voor Azure Cosmos Table. |
+| [AZ cosmosdb Table Create](/cli/azure/cosmosdb/table#az-cosmosdb-table-create) | Hiermee maakt u een Azure Cosmos Table-API-tabel. |
 | [az group delete](/cli/azure/resource#az-resource-delete) | Hiermee verwijdert u een resourcegroep met inbegrip van alle geneste resources. |
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie [Azure Cosmos DB CLI-documentatie](/cli/azure/cosmosdb)voor meer informatie over de Azure Cosmos DB CLI.
+Zie [Azure Cosmos DB cli-documentatie](/cli/azure/cosmosdb)voor meer informatie over de Azure Cosmos DB cli.
 
-Alle Azure Cosmos DB CLI-scriptvoorbeelden zijn te vinden in de [Azure Cosmos DB CLI GitHub Repository.](https://github.com/Azure-Samples/azure-cli-samples/tree/master/cosmosdb)
+Alle Azure Cosmos DB CLI-voorbeeld scripts vindt u in de [Azure Cosmos DB cli github-opslag plaats](https://github.com/Azure-Samples/azure-cli-samples/tree/master/cosmosdb).
