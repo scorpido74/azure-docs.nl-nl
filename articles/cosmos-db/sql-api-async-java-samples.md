@@ -8,21 +8,21 @@ ms.topic: sample
 ms.date: 12/03/2018
 ms.author: sngun
 ms.openlocfilehash: 0a9b58a78ee9de48b721511646728bd8140ef980
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "72170184"
 ---
 # <a name="azure-cosmos-db-async-java-examples-for-the-sql-api"></a>Azure Cosmos DB: Async Java-voorbeelden voor de SQL API
 
 > [!div class="op_single_selector"]
-> * [Voorbeelden van .NET V2 SDK](sql-api-dotnet-samples.md)
-> * [Voorbeelden van .NET V3 SDK](sql-api-dotnet-v3sdk-samples.md)
+> * [Voor beelden van .NET v2 SDK](sql-api-dotnet-samples.md)
+> * [Voor beelden van .NET v3 SDK](sql-api-dotnet-v3sdk-samples.md)
 > * [Java-voorbeelden](sql-api-java-samples.md)
 > * [Async Java-voorbeelden](sql-api-async-java-samples.md)
 > * [Node.js-voorbeelden](sql-api-nodejs-samples.md)
-> * [Voorbeelden van Python](sql-api-python-samples.md)
+> * [Python-voor beelden](sql-api-python-samples.md)
 > * [Galerie met codevoorbeelden voor Azure](https://azure.microsoft.com/resources/samples/?sort=0&service=cosmos-db)
 > 
 > 
@@ -83,12 +83,12 @@ Uitvoeren vanaf de opdrachtregel:
     ```
 
    > [!NOTE]
-   > Elk voorbeeld staat op zichzelf. Het stelt zichzelf in en aan het einde worden de gegevens automatisch opgeschoond. De voorbeelden geven meerdere aanroepen uit naar [DocumentClient.createCollection](https://docs.microsoft.com/java/api/com.microsoft.azure.cosmosdb.rx.asyncdocumentclient.createcollection). Telkens wanneer dit wordt gedaan, wordt uw abonnement gefactureerd voor 1 uur gebruik voor de prestatielaag van de gemaakte verzameling. 
+   > Elk voorbeeld staat op zichzelf. Het stelt zichzelf in en aan het einde worden de gegevens automatisch opgeschoond. De voor beelden geven meerdere aanroepen naar [DocumentClient. createCollection](https://docs.microsoft.com/java/api/com.microsoft.azure.cosmosdb.rx.asyncdocumentclient.createcollection). Telkens wanneer dit wordt gedaan, wordt uw abonnement gefactureerd voor 1 uur gebruik voor de prestatielaag van de gemaakte verzameling. 
    > 
    > 
 
 ## <a name="database-examples"></a>Voorbeelden voor databases
-Het [bestand DatabaseCrudAsyncAPITest](https://github.com/Azure/azure-cosmosdb-java/blob/master/examples/src/test/java/com/microsoft/azure/cosmosdb/rx/examples/DatabaseCRUDAsyncAPITest.java) laat zien hoe u de volgende taken uitvoert. Zie [Werken met databases, containers en items](databases-containers-items.md) conceptueel artikel voor meer informatie over de Azure Cosmos-databases voordat u de volgende voorbeelden uitvoert. 
+In het [DatabaseCrudAsyncAPITest](https://github.com/Azure/azure-cosmosdb-java/blob/master/examples/src/test/java/com/microsoft/azure/cosmosdb/rx/examples/DatabaseCRUDAsyncAPITest.java) -bestand ziet u hoe u de volgende taken uitvoert. Zie [werken met data bases, containers en](databases-containers-items.md) artikel concepten voor meer informatie over de Azure Cosmos-data bases voordat u de volgende voor beelden uitvoert. 
 
 | Taak | API-verwijzing |
 | --- | --- |
@@ -99,7 +99,7 @@ Het [bestand DatabaseCrudAsyncAPITest](https://github.com/Azure/azure-cosmosdb-j
 | [Een database maken en een query erop uitvoeren](https://github.com/Azure/azure-cosmosdb-java/blob/master/examples/src/test/java/com/microsoft/azure/cosmosdb/rx/examples/DatabaseCRUDAsyncAPITest.java#L282-L312) | [AsyncDocumentClient.queryDatabases](https://docs.microsoft.com/java/api/com.microsoft.azure.cosmosdb.rx.asyncdocumentclient.querydatabases) |
 
 ## <a name="collection-examples"></a>Voorbeelden voor verzamelingen
-Het bestand [CollectionCrudAsyncAPITest](https://github.com/Azure/azure-cosmosdb-java/blob/master/examples/src/test/java/com/microsoft/azure/cosmosdb/rx/examples/CollectionCRUDAsyncAPITest.java) laat zien hoe u de volgende taken uitvoert. Zie [Werken met databases, containers en items](databases-containers-items.md) conceptueel artikel voor meer informatie over de Azure Cosmos-verzamelingen voordat u de volgende voorbeelden uitvoert. 
+In het [CollectionCrudAsyncAPITest](https://github.com/Azure/azure-cosmosdb-java/blob/master/examples/src/test/java/com/microsoft/azure/cosmosdb/rx/examples/CollectionCRUDAsyncAPITest.java) -bestand ziet u hoe u de volgende taken uitvoert. Zie [werken met data bases, containers en](databases-containers-items.md) artikel concepten voor meer informatie over de Azure Cosmos-verzamelingen voordat u de volgende voor beelden uitvoert. 
 
 | Taak | API-verwijzing |
 | --- | --- |
@@ -111,7 +111,7 @@ Het bestand [CollectionCrudAsyncAPITest](https://github.com/Azure/azure-cosmosdb
 | [Een verzameling maken en een query erop uitvoeren](https://github.com/Azure/azure-cosmosdb-java/blob/master/examples/src/test/java/com/microsoft/azure/cosmosdb/rx/examples/CollectionCRUDAsyncAPITest.java#L339-L372) | [AsyncDocumentClient.queryCollection](https://docs.microsoft.com/java/api/com.microsoft.azure.cosmosdb.rx.asyncdocumentclient.querycollections) |
 
 ## <a name="document-examples"></a>Voorbeelden voor documenten
-Het [documentcrudasyncAPITest-bestand](https://github.com/Azure/azure-cosmosdb-java/blob/master/examples/src/test/java/com/microsoft/azure/cosmosdb/rx/examples/DocumentCRUDAsyncAPITest.java) laat zien hoe u de volgende taken uitvoert. Zie [Werken met databases, containers en items](databases-containers-items.md) conceptueel artikel voor meer informatie over de Azure Cosmos-documenten voordat u de volgende voorbeelden uitvoert. 
+In het [DocumentCrudAsyncAPITest](https://github.com/Azure/azure-cosmosdb-java/blob/master/examples/src/test/java/com/microsoft/azure/cosmosdb/rx/examples/DocumentCRUDAsyncAPITest.java) -bestand ziet u hoe u de volgende taken uitvoert. Zie [werken met data bases, containers en](databases-containers-items.md) artikel concepten voor meer informatie over de Azure Cosmos-documenten voordat u de volgende voor beelden uitvoert. 
 
 | Taak | API-verwijzing |
 | --- | --- |
@@ -125,7 +125,7 @@ Het [documentcrudasyncAPITest-bestand](https://github.com/Azure/azure-cosmosdb-j
 | [Een document maken en lezen](https://github.com/Azure/azure-cosmosdb-java/blob/master/examples/src/test/java/com/microsoft/azure/cosmosdb/rx/examples/DocumentCRUDAsyncAPITest.java#L437-L458) | [AsyncDocumentClient.readDocument](https://docs.microsoft.com/java/api/com.microsoft.azure.cosmosdb.rx.asyncdocumentclient.readdocument) |
 
 ## <a name="indexing-examples"></a>Voorbeelden van indexen
-Het bestand [CollectionCrudAsyncAPITest](https://github.com/Azure/azure-cosmosdb-java/blob/master/examples/src/test/java/com/microsoft/azure/cosmosdb/rx/examples/CollectionCRUDAsyncAPITest.java) laat zien hoe u de volgende taken uitvoert.  Zie [indexeringsbeleid,](index-policy.md) [indexeringstypen](index-types.md)en [indexeringspaden](index-paths.md) conceptuele artikelen voor meer informatie over indexeren in Azure Cosmos DB voordat u de volgende voorbeelden uitvoert. 
+In het [CollectionCrudAsyncAPITest](https://github.com/Azure/azure-cosmosdb-java/blob/master/examples/src/test/java/com/microsoft/azure/cosmosdb/rx/examples/CollectionCRUDAsyncAPITest.java) -bestand ziet u hoe u de volgende taken uitvoert.  Zie [Indexing policies](index-policy.md), [Indexing types](index-types.md)en [Indexing Path](index-paths.md) conceptuele articles (Engelstalig) voor meer informatie over het indexeren in azure Cosmos DB voordat u de volgende voor beelden uitvoert. 
 
 | Taak | API-verwijzing |
 | --- | --- |
@@ -134,7 +134,7 @@ Het bestand [CollectionCrudAsyncAPITest](https://github.com/Azure/azure-cosmosdb
 Zie [Azure Cosmos DB-indexeringsbeleid](index-policy.md) voor meer informatie over indexering.
 
 ## <a name="query-examples"></a>Voorbeelden van query's
-In het bestand [DocumentQuerySamples](https://github.com/Azure/azure-cosmosdb-java/blob/master/examples/src/test/java/com/microsoft/azure/cosmosdb/rx/examples/DocumentQueryAsyncAPITest.java) ziet u hoe u de volgende taken uitvoert. Zie [SQL-queryvoorbeelden](how-to-sql-query.md) conceptueel artikel voor meer informatie over de SQL-queryverwijzing in Azure Cosmos DB voordat u de volgende voorbeelden uitvoert. 
+In het [DocumentQuerySamples](https://github.com/Azure/azure-cosmosdb-java/blob/master/examples/src/test/java/com/microsoft/azure/cosmosdb/rx/examples/DocumentQueryAsyncAPITest.java) -bestand ziet u hoe u de volgende taken uitvoert. Zie het conceptuele artikel over [SQL query-voor beelden](how-to-sql-query.md) voor meer informatie over de SQL-query verwijzing in azure Cosmos DB voordat u de volgende voor beelden uitvoert. 
 
 | Taak | API-verwijzing |
 | --- | --- |
@@ -142,7 +142,7 @@ In het bestand [DocumentQuerySamples](https://github.com/Azure/azure-cosmosdb-ja
 | [Een eenvoudige documentquery uitvoeren en de totale RU-kosten vinden](https://github.com/Azure/azure-cosmosdb-java/blob/master/examples/src/test/java/com/microsoft/azure/cosmosdb/rx/examples/DocumentQueryAsyncAPITest.java#L249-L268) | [FeedResponse.getRequestCharge](https://docs.microsoft.com/java/api/com.microsoft.azure.cosmosdb.feedresponse.getrequestcharge) |
 | [Een eenvoudige documentquery uitvoeren, één pagina lezen en afmelden voor de geretourneerde observeerbare parameter](https://github.com/Azure/azure-cosmosdb-java/blob/master/examples/src/test/java/com/microsoft/azure/cosmosdb/rx/examples/DocumentQueryAsyncAPITest.java#L274-L312) | |
 | [Een eenvoudige documentquery uitvoeren en de resultaten filteren](https://github.com/Azure/azure-cosmosdb-java/blob/master/examples/src/test/java/com/microsoft/azure/cosmosdb/rx/examples/DocumentQueryAsyncAPITest.java#L318-L368) | |
-| [Een order-by-documentquery voor partitie](https://github.com/Azure/azure-cosmosdb-java/blob/master/examples/src/test/java/com/microsoft/azure/cosmosdb/rx/examples/DocumentQueryAsyncAPITest.java#L410-L457) | [FeedOptions.setEnableCrossPartitionQuery](https://docs.microsoft.com/java/api/com.microsoft.azure.cosmosdb.feedoptions.setenablecrosspartitionquery) |
+| [Een document query sorteren op basis van een kruis partitie](https://github.com/Azure/azure-cosmosdb-java/blob/master/examples/src/test/java/com/microsoft/azure/cosmosdb/rx/examples/DocumentQueryAsyncAPITest.java#L410-L457) | [FeedOptions.setEnableCrossPartitionQuery](https://docs.microsoft.com/java/api/com.microsoft.azure.cosmosdb.feedoptions.setenablecrosspartitionquery) |
 
 Zie [SQL-query in Azure Cosmos DB](how-to-sql-query.md) voor meer informatie over het schrijven van query's.
 
@@ -156,7 +156,7 @@ Het bestand [OfferCRUDAsyncAPITest](https://github.com/Azure/azure-cosmosdb-java
 | [De doorvoer van een verzameling bijwerken door zijn aanbieding te vervangen](https://github.com/Azure/azure-cosmosdb-java/blob/master/examples/src/test/java/com/microsoft/azure/cosmosdb/rx/examples/OfferCRUDAsyncAPITest.java#L101-L153) | [AsyncDocumentClient.replaceOffer](https://docs.microsoft.com/java/api/com.microsoft.azure.cosmosdb.rx.asyncdocumentclient.replaceoffer) |
 
 ## <a name="stored-procedure-examples"></a>Voorbeelden van opgeslagen procedures
-Het bestand [StoredProcedureAsyncAPITest](https://github.com/Azure/azure-cosmosdb-java/blob/master/examples/src/test/java/com/microsoft/azure/cosmosdb/rx/examples/StoredProcedureAsyncAPITest.java) laat zien hoe u de volgende taken uitvoert. Zie [Opgeslagen procedures, triggers en door de gebruiker gedefinieerde functies](stored-procedures-triggers-udfs.md) conceptueel artikel voor meer informatie over serverprogrammering in Azure Cosmos DB voordat u de volgende voorbeelden uitvoert. 
+In het [StoredProcedureAsyncAPITest](https://github.com/Azure/azure-cosmosdb-java/blob/master/examples/src/test/java/com/microsoft/azure/cosmosdb/rx/examples/StoredProcedureAsyncAPITest.java) -bestand ziet u hoe u de volgende taken uitvoert. Zie voor meer informatie over het Program meren van de server in Azure Cosmos DB voordat u de volgende voor beelden uitvoert, [opgeslagen procedures, triggers en](stored-procedures-triggers-udfs.md) conceptueel artikel over door de gebruiker gedefinieerde functies. 
 
 | Taak | API-verwijzing |
 | --- | --- |
@@ -165,7 +165,7 @@ Het bestand [StoredProcedureAsyncAPITest](https://github.com/Azure/azure-cosmosd
 | [Een opgeslagen procedure met een objectargument maken en uitvoeren](https://github.com/Azure/azure-cosmosdb-java/blob/master/examples/src/test/java/com/microsoft/azure/cosmosdb/rx/examples/StoredProcedureAsyncAPITest.java#L201-L241) | |
 
 ## <a name="unique-key"></a>Unieke sleutel
-Het [bestand UniqueIndexAsyncAPITest](https://github.com/Azure/azure-cosmosdb-java/blob/master/examples/src/test/java/com/microsoft/azure/cosmosdb/rx/examples/UniqueIndexAsyncAPITest.java) laat zien hoe u de volgende taken uitvoert. Zie Conceptueel artikel [Unieke sleutelbeperkingen](unique-keys.md) voor meer informatie over de unieke sleutels in Azure Cosmos DB voordat u de volgende voorbeelden uitvoert. 
+In het [UniqueIndexAsyncAPITest](https://github.com/Azure/azure-cosmosdb-java/blob/master/examples/src/test/java/com/microsoft/azure/cosmosdb/rx/examples/UniqueIndexAsyncAPITest.java) -bestand ziet u hoe u de volgende taken uitvoert. Zie voor meer informatie over de unieke sleutels in Azure Cosmos DB voordat u de volgende voor beelden uitvoert, het conceptuele artikel over [unieke sleutel beperkingen](unique-keys.md) . 
 
 | Taak | API-verwijzing |
 | --- | --- |

@@ -1,5 +1,5 @@
 ---
-title: 'Zelfstudie: op URL-pad gebaseerde omleiding met CLI'
+title: 'Zelf studie: op URL-pad gebaseerde omleiding via CLI'
 titleSuffix: Azure Application Gateway
 description: In deze zelfstudie leert u hoe u een toepassingsgateway kunt maken met verkeer dat is omgeleid op basis van een URL-pad, met behulp van Azure CLI.
 services: application-gateway
@@ -10,15 +10,15 @@ ms.date: 11/14/2019
 ms.author: victorh
 ms.custom: mvc
 ms.openlocfilehash: 87f6febaf89f82c2c81b397c94d744229b3f4b34
-ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/25/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80239493"
 ---
 # <a name="tutorial-create-an-application-gateway-with-url-path-based-redirection-using-the-azure-cli"></a>Zelfstudie: Een toepassingsgateway maken met een omleiding op basis van een URL-pad met behulp van Azure CLI
 
-U kunt Azure CLI gebruiken om [op een URL-pad gebaseerde routeringsregels](tutorial-url-route-cli.md) te configureren als u een [toepassingsgateway maakt](application-gateway-introduction.md). In deze zelfstudie maakt u backendpools met behulp van [virtuele machineschaalsets.](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md) Vervolgens maakt u URL-routeringsregels waardoor webverkeer wordt omgeleid naar de juiste back-endpool.
+U kunt Azure CLI gebruiken om [op een URL-pad gebaseerde routeringsregels](tutorial-url-route-cli.md) te configureren als u een [toepassingsgateway maakt](application-gateway-introduction.md). In deze zelf studie maakt u back-endservers met [virtuele-machine schaal sets](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md). Vervolgens maakt u URL-routeringsregels waardoor webverkeer wordt omgeleid naar de juiste back-endpool.
 
 In deze zelfstudie leert u het volgende:
 
@@ -34,7 +34,7 @@ Het volgende voorbeeld toont siteverkeer afkomstig van de poorten 8080 en 8081 e
 
 U kunt deze zelfstudie desgewenst volgen met behulp van [Azure PowerShell](tutorial-url-redirect-powershell.md).
 
-Als u geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) voordat u begint.
+Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -158,7 +158,7 @@ az network application-gateway http-listener create \
 
 ### <a name="add-the-default-url-path-map"></a>De standaardtoewijzing voor het URL-pad toevoegen
 
-URL-padkaarten zorgen ervoor dat specifieke URL's worden doorgestuurd naar specifieke backendgroepen. U kunt de URL-padtoewijzingen *imagePathRule* en *videoPathRule* maken met [az network application-gateway url-path-map create](/cli/azure/network/application-gateway/url-path-map) en [az network application-gateway url-path-map rule create](/cli/azure/network/application-gateway/url-path-map/rule)
+URL-paden zorgen ervoor dat specifieke Url's worden doorgestuurd naar specifieke back-endservers. U kunt de URL-padtoewijzingen *imagePathRule* en *videoPathRule* maken met [az network application-gateway url-path-map create](/cli/azure/network/application-gateway/url-path-map) en [az network application-gateway url-path-map rule create](/cli/azure/network/application-gateway/url-path-map/rule)
 
 ```azurecli-interactive
 az network application-gateway url-path-map create \
@@ -284,7 +284,7 @@ done
 
 ## <a name="test-the-application-gateway"></a>De toepassingsgateway testen
 
-Gebruik [az network public-ip show](/cli/azure/network/public-ip#az-network-public-ip-show) om het openbare IP-adres van de toepassingsgateway op te halen. Kopieer het openbare IP-adres en plak het in de adresbalk van de browser. Zoals, `http://40.121.222.19`, `http://40.121.222.19:8080/images/test.htm` `http://40.121.222.19:8080/video/test.htm`, `http://40.121.222.19:8081/images/test.htm`of .
+Gebruik [az network public-ip show](/cli/azure/network/public-ip#az-network-public-ip-show) om het openbare IP-adres van de toepassingsgateway op te halen. Kopieer het openbare IP-adres en plak het in de adresbalk van de browser. Zoals, `http://40.121.222.19`, `http://40.121.222.19:8080/images/test.htm`, `http://40.121.222.19:8080/video/test.htm`of. `http://40.121.222.19:8081/images/test.htm`
 
 ```azurecli-interactive
 az network public-ip show \
@@ -296,15 +296,15 @@ az network public-ip show \
 
 ![Basis-URL testen in de toepassingsgateway](./media/tutorial-url-redirect-cli/application-gateway-nginx.png)
 
-Wijzig de URL&lt;in&gt;http:// ip-adres:8080/images/test.html, &lt;ter vervanging&gt;van uw IP-adres voor ip-adres en u ziet iets als het volgende voorbeeld:
+Wijzig de URL in http://&lt;IP-adres&gt;: 8080/images/test.html, waarbij u het IP- &lt;adres voor het&gt;IP-adres vervangt. het volgende voor beeld zou er als volgt moeten uitzien:
 
 ![Afbeeldingen-URL in toepassingsgateway testen](./media/tutorial-url-redirect-cli/application-gateway-nginx-images.png)
 
-Wijzig de URL&lt;in&gt;http:// ip-adres:8080/video/test.html, &lt;ter vervanging&gt;van uw IP-adres voor ip-adres en u ziet iets als het volgende voorbeeld:
+Wijzig de URL in http://&lt;IP-adres&gt;: 8080/video/test.html, waarbij u het IP- &lt;adres voor het&gt;IP-adres vervangt. het volgende voor beeld zou er als volgt moeten uitzien:
 
 ![Video-URL testen in de toepassingsgateway](./media/tutorial-url-redirect-cli/application-gateway-nginx-video.png)
 
-Wijzig nu de URL&lt;naar&gt;http:// ip-adres :8081/images/test.htm, &lt;ter&gt;vervanging van uw IP-adres voor ip-adres ,&lt;en&gt;u zou verkeer moeten zien dat wordt doorgestuurd naar de backendpool van afbeeldingen op http:// ip-adres :8080/images.
+&lt;Wijzig nu de URL in http://IP-adres&gt;: 8081/images/test.htm, waarbij u het IP-adres &lt;voor het IP&gt;-adres vervangt, en u ziet dat het verkeer wordt omgeleid naar de back-&lt;endadresgroep van de&gt;installatie kopieën op http://IP-adres: 8080/afbeeldingen.
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
