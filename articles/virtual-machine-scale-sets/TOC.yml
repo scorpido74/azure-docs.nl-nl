@@ -109,7 +109,7 @@
           href: ../virtual-machines/windows/sizes-gpu.md
           maintainContext: true
           items:
-            - name: GPU-stuurprogramma's instellen
+            - name: NVIDIA GPU-stuurprogramma's instellen
               href: ../virtual-machines/windows/n-series-driver-setup.md
               maintainContext: true
         - name: Krachtig rekenvermogen

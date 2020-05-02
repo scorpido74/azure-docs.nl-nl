@@ -36,8 +36,12 @@
       href: powershell-samples.md
 - name: Concepten
   items:
-    - name: Onderdelen en beperkingen
-      href: concepts-limitations.md
+    - name: Onderdelen
+      href: components.md
+    - name: Concepten
+      href: concepts.md
+    - name: Typen
+      href: types.md
     - name: Statuscontrole
       items:
         - name: Statuscontroles
@@ -133,6 +137,8 @@
       items:
         - name: Problemen met Azure Load Balancer oplossen
           href: load-balancer-troubleshoot.md
+        - name: Veelvoorkomende implementatiefouten oplossen
+          href: load-balancer-common-deployment-errors.md
 - name: Naslaginformatie
   items:
     - name: Codevoorbeelden

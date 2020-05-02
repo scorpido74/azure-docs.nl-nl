@@ -225,7 +225,7 @@
               href: ../nvv3-series.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
             - name: NVv4-serie
               href: ../nvv4-series.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
-            - name: GPU-stuurprogramma's instellen
+            - name: NVIDIA GPU-stuurprogramma's instellen
               href: n-series-driver-setup.md
             - name: AMD GPU-stuurprogramma's instellen
               href: n-series-amd-driver-setup.md
