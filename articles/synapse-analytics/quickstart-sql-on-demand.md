@@ -9,16 +9,16 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
-ms.openlocfilehash: d49918fc67a45419e5c7ca123642c48e689a1496
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 43f361fbaf4ab0462af0a720d7711f219134a165
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82113779"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82692177"
 ---
 # <a name="quickstart-using-sql-on-demand"></a>Snelstartgids: SQL on-demand gebruiken
 
-Synapse SQL on-demand (preview) is een serverloze query service waarmee u de SQL-query's kunt uitvoeren op uw bestanden die in Azure Storage worden geplaatst. In deze Quick Start leert u hoe u verschillende typen bestanden kunt zoeken met behulp van SQL op aanvraag.
+Synapse SQL on-demand (preview) is een serverloze query service waarmee u SQL-query's kunt uitvoeren op bestanden die in Azure Storage worden geplaatst. In deze Quick Start leert u hoe u verschillende typen bestanden kunt zoeken met behulp van SQL op aanvraag.
 
 De volgende bestands typen worden ondersteund: JSON, CSV, Apache Parquet
 
@@ -26,7 +26,7 @@ De volgende bestands typen worden ondersteund: JSON, CSV, Apache Parquet
 
 Kies een SQL-client om query's uit te geven:
 
-- [Azure Synapse Studio](quickstart-synapse-studio.md) is een hulp programma dat u kunt gebruiken om door bestanden in de opslag te bladeren en SQL-query's te maken.
+- [Azure Synapse Studio](quickstart-synapse-studio.md) is een hulp programma dat u kunt gebruiken om te bladeren in bestanden in de opslag en SQL-query's te maken.
 - [Azure Data Studio](sql/get-started-azure-data-studio.md) is een client hulpprogramma waarmee u SQL-query's en-notitie blokken kunt uitvoeren op uw Data Base op aanvraag.
 - [SQL Server Management Studio](sql/get-started-ssms.md) is een client hulpprogramma waarmee u SQL-query's kunt uitvoeren op uw Data Base op aanvraag.
 
@@ -41,19 +41,18 @@ Para meters voor Quick Start:
 
 ## <a name="first-time-setup"></a>Eerste keer instellen
 
-Voorafgaand aan het gebruik van voor beelden:
+Voordat u de voor beelden gebruikt:
 
 - Maak een Data Base voor uw weer gaven (voor het geval u weer gaven wilt gebruiken)
 - Referenties maken voor gebruik door SQL op aanvraag om toegang te krijgen tot bestanden in de opslag
 
 ### <a name="create-database"></a>Database maken
 
-Maak uw eigen Data Base voor demonstratie doeleinden. Dit is de Data Base waarin u uw weer gaven maakt. Gebruik deze data base in de voorbeeld query's in dit artikel.
+Maak uw eigen Data Base voor demonstratie doeleinden. U gebruikt deze data base om uw weer gaven en voor de voorbeeld query's in dit artikel te maken.
 
 > [!NOTE]
 > De data bases worden alleen gebruikt voor het weer geven van meta gegevens, niet voor werkelijke gegevens.
->
-> Noteer de naam van de data base die u voor later in de Quick Start gebruikt.
+>Noteer de naam van de data base die u voor later in de Quick Start gebruikt.
 
 Gebruik de volgende query en wijzig `mydbname` de naam van uw keuze:
 
@@ -72,9 +71,9 @@ Als u query's wilt uitvoeren met behulp van SQL op aanvraag, maakt u referenties
 >
 > SQL on-demand standaard maakt altijd gebruik van AAD Pass-through.
 
-Raadpleeg deze [koppeling](sql/develop-storage-files-storage-access-control.md)voor meer informatie over het beheren van toegangs beheer voor opslag.
+Zie voor meer informatie over het beheren van opslag toegangs beheer de[toegang tot het beheer van opslag accounts voor SQL op aanvraag](sql/develop-storage-files-storage-access-control.md) .
 
-Voer het volgende code fragment uit om referentie te maken die wordt gebruikt in voor beelden in deze sectie:
+Voer het volgende code fragment uit om referenties te maken die worden gebruikt in de voor beelden in deze sectie:
 
 ```sql
 -- create credentials for containers in our demo storage account
@@ -124,7 +123,7 @@ Zie How to [query CSV file](sql/query-single-csv-file.md)(Engelstalig) voor meer
 In het volgende voor beeld ziet u de mogelijkheden voor het automatisch afnemen van schema's voor het uitvoeren van query's op Parquet-bestanden. Het retourneert het aantal rijen in september van 2017 zonder schema op te geven.
 
 > [!NOTE]
-> U hoeft geen columns in-component `OPENROWSET WITH` op te geven bij het lezen van Parquet-bestanden. In dat geval maakt SQL op aanvraag gebruik van meta gegevens in het Parquet-bestand en bindt kolommen op naam.
+> U hoeft geen columns in-component `OPENROWSET WITH` op te geven bij het lezen van Parquet-bestanden. In dat geval maakt SQL op aanvraag gebruik van meta gegevens in het Parquet-bestand en worden kolommen op naam gebonden.
 
 ```sql
 SELECT COUNT_BIG(*)
@@ -135,7 +134,7 @@ FROM OPENROWSET
   ) AS nyc
 ```
 
-Meer informatie over het [uitvoeren van query's op Parquet-bestanden](sql/query-parquet-files.md)].
+Meer informatie over het [uitvoeren van query's op Parquet-bestanden](sql/query-parquet-files.md).
 
 ## <a name="querying-json-files"></a>JSON-bestanden opvragen
 
@@ -183,11 +182,11 @@ WHERE
 ```
 
 > [!IMPORTANT]
-> Het hele JSON-bestand wordt gelezen als één rij/kolom, dus FIELDTERMINATOR, FIELDQUOTE en ROWTERMINATOR zijn ingesteld op 0x0B, omdat we niet verwachten dat deze in het bestand worden gevonden.
+> Het hele JSON-bestand wordt als één rij/kolom gelezen. So, FIELDTERMINATOR, FIELDQUOTE en ROWTERMINATOR zijn ingesteld op 0x0B, omdat we niet verwachten dat deze in het bestand worden gevonden.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-U bent nu klaar om te beginnen met de volgende Quick Start-artikelen:
+U kunt nu door gaan met de volgende artikelen:
 
 - [Query uitvoeren op één CSV-bestand](sql/query-single-csv-file.md)
 - [Query mappen en meerdere CSV-bestanden](sql/query-folders-multiple-csv-files.md)
@@ -198,7 +197,4 @@ U bent nu klaar om te beginnen met de volgende Quick Start-artikelen:
 - [Weer gaven maken en gebruiken](sql/create-use-views.md)
 - [Externe tabellen maken en gebruiken](sql/create-use-external-tables.md)
 - [Query resultaten persistent maken naar Azure Storage](sql/create-external-table-as-select.md)
-
-Ga naar het volgende artikel voor meer informatie over het uitvoeren van een query op één CSV-bestand.
-> [!div class="nextstepaction"]
-> [Query uitvoeren op één CSV-bestand](sql/query-single-csv-file.md)
+- [Query uitvoeren op één CSV-bestand](sql/query-single-csv-file.md)

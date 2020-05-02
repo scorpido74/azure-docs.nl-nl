@@ -9,12 +9,12 @@ ms.service: synapse-analytics
 ms.subservice: ''
 ms.topic: quickstart
 ms.date: 04/15/2020
-ms.openlocfilehash: f8525c883eb6b2c736e5fbf433464aa64ff42068
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: ae866c8be8d162213077e0488a19a556399384b2
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82101784"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82692694"
 ---
 # <a name="quickstart-create-an-apache-spark-pool-preview-in-azure-synapse-analytics-using-web-tools"></a>Snelstartgids: een Apache Spark groep maken (preview) in azure Synapse Analytics met behulp van web-hulpprogram ma's
 
@@ -33,7 +33,7 @@ Als u nog geen abonnement op Azure hebt, [Maak dan een gratis account aan voorda
 
 ## <a name="sign-in-to-the-azure-portal"></a>Aanmelden bij Azure Portal
 
-Meld u aan bij de [Azure Portal](https:/portal.azure.com/)
+Meld u aan bij de [Azure-portal](https:/portal.azure.com/).
 
 Als u nog geen abonnement op Azure hebt, [Maak dan een gratis account](https://azure.microsoft.com/free/) aan voordat u begint.
 
@@ -66,7 +66,7 @@ Een notebook is een interactieve omgeving die verschillende programmeer talen on
 
    ![Gegevens frame object maken](./media/quickstart-apache-spark-notebook/spark-get-started-create-data-frame-object.png "Uitvoer van de Spark-taak")
 
-10. Als de instantie van de Apache Spark-groep niet al wordt uitgevoerd, wordt deze automatisch gestart. U ziet de status van de instantie van de Apache Spark pool onder de cel die u uitvoert en ook in het deel venster status onder aan het notitie blok. Afhankelijk van de grootte van de pool, moet beginnen 2-5 minuten duren. Als de uitvoering van de code is voltooid, wordt in de informatie onder de cel weer gegeven hoe lang het duurde om te worden uitgevoerd en de uitvoering ervan. In de cel uitvoer ziet u de uitvoer.
+10. Als de instantie van de Apache Spark-groep niet al wordt uitgevoerd, wordt deze automatisch gestart. U ziet de status van het exemplaar van de Apache Spark pool onder de cel die u uitvoert en ook in het status paneel onder aan het notitie blok. Afhankelijk van de grootte van de pool, moet beginnen 2-5 minuten duren. Als de uitvoering van de code is voltooid, wordt in de informatie onder de cel weer gegeven hoe lang het duurde om te worden uitgevoerd en de uitvoering ervan. In de cel uitvoer ziet u de uitvoer.
 
     ![Uitvoer van het uitvoeren van een cel](./media/quickstart-apache-spark-notebook/run-cell-with-output.png "Uitvoer van de Spark-taak")
 
@@ -89,7 +89,7 @@ Een notebook is een interactieve omgeving die verschillende programmeer talen on
 
 ## <a name="run-spark-sql-statements"></a>Spark SQL-instructies uitvoeren
 
-SQL (Structured Query Language) is de meest voorkomende en gebruikte taal voor het uitvoeren van query's en het definiëren van gegevens. Spark SQL fungeert als een uitbreiding van Apache Spark voor het verwerken van gestructureerde gegevens, met behulp van de bekende SQL-syntaxis.
+Structured Query Language (SQL) is de meest gebruikte en veelgebruikte taal voor het uitvoeren van query's en het definiëren van gegevens. Spark SQL fungeert als een uitbreiding van Apache Spark voor het verwerken van gestructureerde gegevens, met behulp van de bekende SQL-syntaxis.
 
 1. Plak de volgende code in een lege cel en voer de code uit. De opdracht geeft een lijst van de tabellen in de groep.
 
@@ -109,11 +109,11 @@ SQL (Structured Query Language) is de meest voorkomende en gebruikte taal voor h
 
     De code produceert twee uitvoer cellen, een die gegevens bevat, de andere, waarin de taak weergave wordt weer gegeven.
 
-    De resultaten weergave bevat standaard een raster, maar er is een weergave schakelaar onder het raster waarmee de weer gave kan overschakelen tussen raster-en grafiek weergaven.
+    In de resultaten weergave wordt standaard een raster weer gegeven. Maar er is een weergave schakelaar onder het raster waarmee de weer gave kan overschakelen tussen raster-en grafiek weergaven.
 
     ![Query uitvoer in azure Synapse Spark](./media/quickstart-apache-spark-notebook/spark-get-started-query.png "Query uitvoer in azure Synapse Spark")
 
-3. Selecteer in de **weergave** schakelaar de optie **diagram**
+3. Selecteer in de **weergave** schakelaar de optie **diagram**.
 4. Selecteer het pictogram **weergave opties** aan de rechter kant.
 5. Selecteer in het veld **grafiek type** de optie staaf diagram.
 6. Selecteer status in het kolom veld X-as.
@@ -133,7 +133,7 @@ SQL (Structured Query Language) is de meest voorkomende en gebruikte taal voor h
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
-Met Azure Synapse worden uw gegevens opgeslagen in Azure Data Lake Storage. U kunt een Spark-exemplaar veilig laten afsluiten wanneer het niet wordt gebruikt. Er worden kosten in rekening gebracht voor een Azure Synapse Apache Spark pool zolang deze wordt uitgevoerd, zelfs wanneer deze niet wordt gebruikt. Omdat de kosten voor de groep veel keren meer zijn dan de kosten voor opslag, is het economisch zinnig dat Spark-instanties worden afgesloten wanneer ze niet worden gebruikt.
+Met Azure Synapse worden uw gegevens opgeslagen in Azure Data Lake Storage. U kunt een Spark-exemplaar veilig uitschakelen wanneer het niet in gebruik is. Er worden kosten in rekening gebracht voor een Azure Synapse Apache Spark pool zolang deze wordt uitgevoerd, zelfs als deze niet in gebruik is. De kosten voor de groep zijn vaak meer dan de kosten voor opslag. Als zodanig is het economisch zinnig dat Spark-instanties worden afgesloten wanneer ze niet worden gebruikt.
 
 Om ervoor te zorgen dat de Spark-instantie wordt afgesloten, beëindigt u alle verbonden sessies (notebooks). De pool wordt afgesloten wanneer de **niet-actieve tijd** die is opgegeven in de Apache Spark pool wordt bereikt. U kunt ook **sessie beëindigen** selecteren in de status balk onder aan het notitie blok.
 

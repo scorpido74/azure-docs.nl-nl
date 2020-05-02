@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 02/20/2018
 ms.author: rogarana
 ms.subservice: blobs
-ms.openlocfilehash: dc0f8171e18598e4f805a03a4bc6d17de220fbe1
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: cfc3c445595bec046de4256a57d566067fe3d29e
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "68698976"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82692447"
 ---
 # <a name="verify-throughput-and-latency-metrics-for-a-storage-account"></a>Metrische gegevens over doorvoer en latentie voor een opslagaccount controleren
 
@@ -24,7 +24,7 @@ In deel vier van de serie leert u het volgende:
 > * Grafieken configureren in Azure Portal
 > * Metrische gegevens over doorvoer en latentie controleren
 
-[Metrische gegevens van Azure Storage](../common/storage-metrics-in-azure-monitor.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) gebruikt Azure Monitor om een uniform overzicht weer te geven van de prestaties en beschikbaarheid van uw opslagaccount.
+[Metrische gegevens van Azure Storage](../common/monitor-storage.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) gebruikt Azure Monitor om een uniform overzicht weer te geven van de prestaties en beschikbaarheid van uw opslagaccount.
 
 ## <a name="configure-metrics"></a>Metrische gegevens configureren
 
@@ -34,7 +34,7 @@ Kies Blob uit de vervolgkeuzelijst **SUBSERVICE**.
 
 Onder **Metrische gegevens** selecteert u een van de metrische gegevens die in de volgende tabel zijn gevonden:
 
-De volgende metrische gegevens geven u een idee van de latentie en de doorvoer van de toepassing. De metrische gegevens die u in de portal configureert, duren gemiddeld één minuut. Als een transactie is voltooid halverwege een minuut, wordt die minuut in tweeën gespitst om het gemiddelde te bereiken. In de toepassing is de tijd voor de upload- en downloadbewerkingen vastgelegd, en u kon zien hoeveel tijd er werkelijk was om de bestanden te uploaden en downloaden. Deze informatie kan worden gebruikt in combinatie met de metrische gegevens in de portal voor een volledig begrip van de doorvoer.
+De volgende metrische gegevens geven u een idee van de latentie en de doorvoer van de toepassing. De metrische gegevens die u in de portal configureert, duren gemiddeld één minuut. Als een trans actie is voltooid in het midden van een minuut, worden de gegevens voor de minuut voor het gemiddelde gehalveerd. In de toepassing is de tijd voor de upload- en downloadbewerkingen vastgelegd, en u kon zien hoeveel tijd er werkelijk was om de bestanden te uploaden en downloaden. Deze informatie kan worden gebruikt in combinatie met de metrische gegevens in de portal voor een volledig begrip van de doorvoer.
 
 |Gegevens|Definitie|
 |---|---|
@@ -52,7 +52,7 @@ Aan grafieken kunnen meerdere metrische gegevens worden toegewezen, maar als er 
 
 ## <a name="dimensions"></a>Dimensies
 
-[Dimensies](../common/storage-metrics-in-azure-monitor.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#metrics-dimensions) worden gebruikt om grafieken diepgaander te bekijken en meer gedetailleerde informatie te krijgen. Verschillende metrische gegevens hebben verschillende dimensies. Een dimensie die beschikbaar is, is de dimensie **API-naam**. Deze dimensie deelt de grafiek op op basis van elke afzonderlijke API-aanroep. De eerste afbeelding hieronder toont een voorbeeld van een grafiek met het totaalaantal transacties voor een opslagaccount. De tweede afbeelding toont dezelfde grafiek maar met de dimensie API-naam geselecteerd. Zoals u ziet, wordt elke transactie vermeld en krijgt u meer details te zien over het aantal aanvragen dat is gemaakt door API-naam.
+[Dimensies](../common/monitor-storage-reference.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#metrics-dimensions) worden gebruikt om grafieken diepgaander te bekijken en meer gedetailleerde informatie te krijgen. Verschillende metrische gegevens hebben verschillende dimensies. Een dimensie die beschikbaar is, is de dimensie **API-naam**. Deze dimensie deelt de grafiek op op basis van elke afzonderlijke API-aanroep. De eerste afbeelding hieronder toont een voorbeeld van een grafiek met het totaalaantal transacties voor een opslagaccount. De tweede afbeelding toont dezelfde grafiek maar met de dimensie API-naam geselecteerd. Zoals u ziet, wordt elke transactie vermeld en krijgt u meer details te zien over het aantal aanvragen dat is gemaakt door API-naam.
 
 ![Metrische gegevens over opslagaccount - transacties zonder een dimensie](./media/storage-blob-scalable-app-verify-metrics/transactionsnodimensions.png)
 

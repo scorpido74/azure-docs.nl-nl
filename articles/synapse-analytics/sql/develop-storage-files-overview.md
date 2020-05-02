@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/19/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: 2126996620d6f891dde4e7530c057d2c7f31a996
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 941fa8d2570d22b6c2a54de02a61b4a7ece2e632
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81676677"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82691878"
 ---
 # <a name="query-storage-files-using-sql-on-demand-preview-resources-within-synapse-sql"></a>Query's uitvoeren op opslag bestanden met behulp van SQL on-demand-bronnen (preview) in Synapse SQL
 
@@ -123,11 +123,15 @@ OPENROWSET(
 BULK N'path_to_file(s)', FORMAT='PARQUET');
 ```
 
+Zorg ervoor dat de [juiste, aangestelde gegevens typen](best-practices-sql-on-demand.md#check-inferred-data-types) worden gebruikt voor optimale prestaties. 
+
 ### <a name="filename-function"></a>De functie filename
 
-Deze functie retourneert de naam van het bestand waaruit de rij afkomstig is.
+Deze functie retourneert de naam van het bestand waaruit de rij afkomstig is. 
 
 Lees de sectie filename in het artikel [query-specifieke bestanden](query-specific-files.md#filename) om specifieke bestanden op te vragen.
+
+Het retour gegevens type is nvarchar (1024). Voor optimale prestaties moet u het resultaat van de functie filename altijd casten naar het juiste gegevens type. Als u het gegevens type character gebruikt, moet u ervoor zorgen dat de juiste lengte wordt gebruikt.
 
 ### <a name="filepath-function"></a>De functie filepath
 
@@ -137,6 +141,8 @@ Deze functie retourneert een volledig pad of een deel van het pad:
 - Wanneer wordt aangeroepen met de para meter, wordt een deel van het pad geretourneerd dat overeenkomt met het Joker teken op de positie die is opgegeven in de para meter. Zo retourneert parameter waarde 1 deel van het pad dat overeenkomt met het eerste Joker teken.
 
 Lees voor meer informatie de sectie filepath van het artikel [query-specifieke bestanden](query-specific-files.md#filepath) .
+
+Het retour gegevens type is nvarchar (1024). Voor optimale prestaties moet u het resultaat van de functie filepath altijd casten naar het juiste gegevens type. Als u het gegevens type character gebruikt, moet u ervoor zorgen dat de juiste lengte wordt gebruikt.
 
 ### <a name="work-with-complex-types-and-nested-or-repeated-data-structures"></a>Werken met complexe typen en geneste of herhaalde gegevens structuren
 

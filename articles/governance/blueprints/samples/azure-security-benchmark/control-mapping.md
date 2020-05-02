@@ -3,16 +3,16 @@ title: Voorbeeld besturings elementen voor Azure Security Bench Mark-blauw druk
 description: De toewijzing van het voor beeld van de Azure Security Bench Mark-blauw druk aan Azure Policy.
 ms.date: 04/16/2020
 ms.topic: sample
-ms.openlocfilehash: 0f2d24d7d8c9f7ce2568f11b15e65ed1fcd02afb
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: f80b72f06532adef28bf5e5afd1eb94c2e34ee2d
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81538731"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82691309"
 ---
 # <a name="control-mapping-of-the-azure-security-benchmark-blueprint-sample"></a>De toewijzing van het voor beeld van Azure Security Bench Mark-blauw druk
 
-In het volgende artikel wordt uitgelegd hoe het voor beeld van Azure blauw drukken Azure Security Bench Mark wordt toegewezen aan de besturings elementen voor Azure Security-benchmarks. Zie [Azure Security Bench Mark](https://docs.microsoft.com/azure/security/benchmarks/overview)(Engelstalig) voor meer informatie over de besturings elementen.
+In het volgende artikel wordt uitgelegd hoe het voor beeld van Azure blauw drukken Azure Security Bench Mark wordt toegewezen aan de besturings elementen voor Azure Security-benchmarks. Zie [Azure Security Bench Mark](../../../../security/benchmarks/overview.md)(Engelstalig) voor meer informatie over de besturings elementen.
 
 De volgende toewijzingen zijn de **Azure Security Bench Mark** -besturings elementen. Gebruik de navigatie aan de rechter kant om rechtstreeks naar een specifieke besturings element koppeling te gaan. De toegewezen besturings elementen worden geïmplementeerd met een [Azure Policy](../../../policy/overview.md) -initiatief. Als u het complete initiatief wilt bekijken, opent u **beleid** in het Azure Portal en selecteert u de pagina **definities** . Zoek en selecteer vervolgens de ** \[Preview:\]aanbevelingen voor Azure Security-benchmarks controleren en specifieke ondersteuning** voor het ingebouwde beleid voor VM-extensies implementeren.
 

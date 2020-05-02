@@ -5,14 +5,14 @@ services: firewall-manager
 author: vhorne
 ms.service: firewall-manager
 ms.topic: tutorial
-ms.date: 02/18/2020
+ms.date: 05/01/2020
 ms.author: victorh
-ms.openlocfilehash: 3dc94a8be265682fbe2128f2e5870dfdf5850a2d
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: b13f3b4eeb57c34f51152bb6d1914f6c80f31be1
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77443054"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82691023"
 ---
 # <a name="tutorial-secure-your-virtual-wan-using-azure-firewall-manager-preview"></a>Zelf studie: uw virtuele WAN beveiligen met Azure Firewall Manager-preview 
 
@@ -36,29 +36,34 @@ In deze zelfstudie leert u het volgende:
 
 ## <a name="create-a-hub-and-spoke-architecture"></a>Een hub-en spoke-architectuur maken
 
-Maak eerst een spoke VNet waar u uw servers kunt plaatsen.
+Maak eerst een spoke-virtueel netwerk waar u uw servers kunt plaatsen.
 
-### <a name="create-a-spoke-vnet-and-subnets"></a>Een spoke-VNet en-subnetten maken
+### <a name="create-a-spoke-virtual-network-and-subnets"></a>Een spoke-virtueel netwerk en-subnetten maken
 
 1. Op de start pagina van Azure Portal selecteert u **een resource maken**.
 2. Onder **netwerken**, selecteert u **virtueel netwerk**.
-4. Typ voor **naam** **spoke-01**.
-5. Bij **Adresruimte** typt u **10.0.0.0/16**.
-6. Bij **Abonnement** selecteert u uw abonnement.
-7. Voor **resource groep**selecteert u **nieuwe maken**en typt u **FW-Manager** voor de naam en selecteert u **OK**.
-8. Selecteer voor **locatie** **(VS) vs-Oost**.
-9. Onder **subnet**, **naam** type **werk belasting-SN**.
-10. Bij **Adresbereik** typt u **10.0.1.0/24**.
-11. Accepteer de andere standaard instellingen en selecteer vervolgens **maken**.
+2. Bij **Abonnement** selecteert u uw abonnement.
+1. Voor **resource groep**selecteert u **nieuwe maken**en typt u **FW-Manager** voor de naam en selecteert u **OK**.
+2. Typ voor **naam** **spoke-01**.
+3. Selecteer voor **regio** **(VS) vs-Oost**.
+4. Selecteer **volgende: IP-adressen**.
+1. Accepteer voor **adres ruimte**de standaard **10.0.0.0/16**.
+3. Selecteer bij **subnetnaam**de optie **standaard**.
+4. Wijzig de naam van het subnet in **workload-SN**.
+5. Typ **10.0.1.0/24**voor het **adres bereik**van het subnet.
+6. Selecteer **Opslaan**..
 
 Maak vervolgens een subnet voor een jumper server.
 
-1. Op de start pagina van Azure Portal selecteert u **resource groepen** > **FW-Manager**.
-2. Selecteer het virtuele netwerk van de **spoke-01** .
-3. Selecteer **subnetten** > **+ subnet**.
-4. Typ voor **naam** **Jump-SN**.
-5. Bij **Adresbereik** typt u **10.0.2.0/24**.
-6. Selecteer **OK**.
+1. Selecteer **subnet toevoegen**.
+4. Typ voor **subnet naam** **Jump-SN**.
+5. Typ **10.0.2.0/24**voor het **adres bereik**van het subnet.
+6. Selecteer **Toevoegen**.
+
+Maak nu het virtuele netwerk.
+
+1. Selecteer **controleren + maken**.
+2. Selecteer **Maken**.
 
 ### <a name="create-the-secured-virtual-hub"></a>De beveiligde virtuele hub maken
 
@@ -66,36 +71,38 @@ Maak uw beveiligde virtuele hub met behulp van Firewall-beheer.
 
 1. Selecteer op de start pagina van Azure Portal **alle services**.
 2. Typ in het zoekvak **firewall beheer** en Selecteer Firewall- **Manager**.
-3. Selecteer op de pagina **firewall beheer** de optie **een beveiligde virtuele hub maken**.
-4. Selecteer op de pagina **nieuwe beveiligde virtuele hub maken** uw abonnement en de resource groep **FW-Manager** .
-5. Typ **hub-01**voor de naam van de **beveiligde virtuele hub**.
-6. Selecteer voor **locatie**de optie **VS Oost**.
-7. Voor de **adres ruimte**van de hub typt u **10.1.0.0/16**.
-8. Typ **vWAN-01**voor de nieuwe vWAN-naam.
-9. Laat het selectie vakje **VPN-gateway toevoegen om vertrouwde beveiligings partners in te scha kelen** uitgeschakeld.
-10. Selecteer **volgende: Azure firewall**.
-11. Accepteer de standaard instelling voor **Azure firewall** **ingeschakeld** en selecteer **volgende: vertrouwde beveiligings partner**.
-12. Accepteer de standaard instelling voor **vertrouwde beveiligings partner** **uitgeschakeld** en selecteer **volgende: controleren + maken**.
-13. Selecteer **Maken**. Het duurt ongeveer 30 minuten om te implementeren.
+3. Op de pagina **firewall beheer** selecteert u **beveiligde virtuele hubs weer geven**.
+4. In **firewall beheer | Pagina beveiligde virtuele hubs** , selecteer **nieuwe beveiligde virtuele hub maken**.
+5. Selecteer voor **resource groep** **FW-Manager**.
+7. Selecteer voor **regio** **VS Oost**.
+1. Typ **hub-01**voor de naam van de **beveiligde virtuele hub**.
+2. Voor de **adres ruimte**van de hub typt u **10.1.0.0/16**.
+3. Typ **vWAN-01**voor de nieuwe vWAN-naam.
+4. Laat het selectie vakje **VPN-gateway toevoegen om vertrouwde beveiligings partners in te scha kelen** uitgeschakeld.
+5. Selecteer **volgende: Azure firewall**.
+6. Accepteer de standaard instelling voor **Azure firewall** **ingeschakeld** en selecteer **volgende: vertrouwde beveiligings partner**.
+7. Accepteer de standaard instelling voor **vertrouwde beveiligings partner** **uitgeschakeld** en selecteer **volgende: controleren + maken**.
+8. Selecteer **Maken**. Het duurt ongeveer 30 minuten om te implementeren.
 
 ### <a name="connect-the-hub-and-spoke-vnets"></a>De hub en spoke VNets verbinden
 
 Nu kunt u de hub en spoke VNets peeren.
 
-1. Selecteer de resource groep **FW-Manager** en selecteer vervolgens de **vwan-01** virtuele WAN.
+1. Selecteer de resource groep **FW-Manager** en selecteer vervolgens de **Vwan-01** virtuele WAN.
 2. Onder **connectiviteit**selecteert u **virtuele netwerk verbindingen**.
 3. Selecteer **verbinding toevoegen**.
 4. Typ **hub-spoke**bij **verbindings naam**.
 5. Selecteer voor **hubs** **hub-01**.
-6. Selecteer voor **virtueel netwerk** **spoke-01**.
-7. Selecteer **OK**.
+6. Selecteer voor **resource groep** **FW-Manager**.
+7. Selecteer voor **virtueel netwerk** **spoke-01**.
+8. Selecteer **OK**.
 
 ## <a name="create-a-firewall-policy-and-secure-your-hub"></a>Een firewall beleid maken en uw hub beveiligen
 
 Een firewall beleid definieert verzamelingen regels voor het omleiden van verkeer op een of meer beveiligde virtuele hubs. U maakt uw firewall beleid en beveilig vervolgens uw hub.
 
-1. Selecteer in Firewall beheer **een Azure firewall beleid maken**.
-2. Selecteer uw abonnement en selecteer vervolgens de resource groep **FW-Manager** .
+1. Selecteer in Firewall beheer **Azure firewall-beleid weer geven**.
+2. Selecteer **Azure firewall beleid maken**.
 3. Onder **beleids Details**, voor het **naam** type **beleid-01** en voor **regio** Selecteer **VS-Oost**.
 4. Selecteer **volgende: regels**.
 5. Selecteer op het tabblad **regels** **een regel verzameling toevoegen**.
@@ -109,10 +116,11 @@ Een firewall beleid definieert verzamelingen regels voor het omleiden van verkee
 13. Zorg ervoor dat het bestemmings type * * **FQDN**is.
 14. **Typ \*. Microsoft.com**bij **doel**.
 15. Selecteer **Toevoegen**.
-16. Selecteer **volgende: beveiligde virtuele hubs**.
-17. Selecteer **hub-01**op het tabblad **beveiligde virtuele hubs** .
-19. Selecteer **controleren + maken**.
-20. Selecteer **Maken**.
+16. Selecteer **volgende: hubs**.
+17. Op het tabblad **hubs** selecteert u **virtuele hubs koppelen**.
+18. Selecteer **hub-01** en selecteer vervolgens **toevoegen**.
+1. Selecteer **controleren + maken**.
+2. Selecteer **Maken**.
 
 Dit kan vijf minuten of langer duren.
 
@@ -126,10 +134,9 @@ Nu moet u ervoor zorgen dat het netwerk verkeer via uw firewall wordt gerouteerd
 4. Onder **Internet verkeer**, **verkeer van virtuele netwerken**, selecteert u **verzenden via Azure firewall**.
 5. Onder **Azure private Traffic**, **verkeer naar virtuele netwerken**, selecteert u **verzenden via Azure firewall**.
 6. Selecteer **IP-adres voorvoegsel (sen) bewerken**.
-7. Selecteer **een IP-adres voorvoegsel toevoegen**.
 8. Typ **10.0.1.0/24** als adres van het subnet van de workload en selecteer **Opslaan**.
 9. Onder **instellingen**selecteert u **verbindingen**.
-10. Selecteer de **hub-spoke-** verbinding en selecteer vervolgens **beveiligd Internet verkeer** en selecteer vervolgens **OK**.
+10. Controleer of de **hub-spoke-** verbinding **Internet verkeer** als **beveiligd**weergeeft.
 
 
 ## <a name="test-your-firewall"></a>Uw firewall testen
@@ -147,12 +154,11 @@ Als u uw firewall regels wilt testen, moet u een paar servers implementeren. U i
    |Resourcegroep     |**FW-Manager**|
    |Naam van de virtuele machine     |**Sprong-SRV**|
    |Regio     |**VS VS-Oost)**|
-   |Gebruikers naam van beheerder     |**azureuser**|
-   |Wachtwoord     |Typ uw wacht woord|
+   |Gebruikers naam van beheerder     |Typ een gebruikers naam|
+   |Wachtwoord     |Typ een wacht woord|
 
 4. Onder **Binnenkomende poort regels**, voor **open bare binnenkomende poorten**, selecteert u **geselecteerde poorten toestaan**.
 5. Selecteer **RDP (3389)** voor **Binnenkomende poorten selecteren**.
-
 6. Accepteer de andere standaard waarden en selecteer **volgende: schijven**.
 7. Accepteer de standaard waarden voor de schijf en selecteer **volgende: netwerken**.
 8. Zorg ervoor dat **spoke-01** is geselecteerd voor het virtuele netwerk en dat het subnet **Jump-SN**is.

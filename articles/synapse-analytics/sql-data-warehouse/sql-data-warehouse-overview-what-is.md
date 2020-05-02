@@ -10,14 +10,19 @@ ms.subservice: ''
 ms.date: 11/04/2019
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: a9506d45350a567e3643b6edd6afc7668662f6e5
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 27e6c7beb8c88a29b90b30e0c77e35e493f2480a
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81416027"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82690910"
 ---
 # <a name="what-is-azure-synapse-analytics-formerly-sql-dw"></a>Wat is Azure Synapse Analytics (voorheen SQL DW)?
+
+> [!NOTE] 
+> Probeer de nieuwste functies van Azure Synapse, zoals werk ruimten, Spark, SQL op aanvraag en de geïntegreerde Synapse Studio-ervaring door [toegang aan te vragen voor Azure Synapse (voor beeld van werk ruimten)](https://aka.ms/synapsepreview). 
+>
+>Verken de [documentatie voor Azure Synapse (voor beelden)](../overview-what-is.md).
 
 Azure Synapse is een analyse service waarmee bedrijfs gegevensopslag en Big data-analyses worden gecombineerd. Deze geeft u de vrijheid om op schaal gegevens op te vragen over uw voorwaarden, met behulp van serverloze on-demand of ingerichte resources. Azure Synapse brengt deze twee werelden samen met een uniforme ervaring om gegevens op te nemen, voor te bereiden, te beheren en te verwerken voor direct BI en machine learning behoeften.
 
@@ -30,10 +35,7 @@ Azure Synapse heeft vier onderdelen:
 - Synapse-pijp lijnen: hybride gegevens integratie (preview-versie)
 - Studio: uniforme gebruikers ervaring.  (Preview)
 
-> [!NOTE]
-> Om toegang te krijgen tot de preview-functies van Azure Synapse, kunt u [hier](https://aka.ms/synapsepreview)toegang aanvragen. Micro soft zal alle aanvragen sorteren en zo snel mogelijk reageren.
->
-> Bekijk de [Preview-documentatie van Azure Synapse](../overview-what-is.md).
+
 
 ## <a name="synapse-sql-pool-in-azure-synapse"></a>Synapse SQL-groep in azure Synapse
 

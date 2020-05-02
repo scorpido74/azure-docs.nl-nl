@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 04/23/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b057f817fb0c30e45c08f8d708441bd52122af7b
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 92d3f2381f2fdce123511caa2339d41b0641b077
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82206745"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82690641"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-float"></a>Zelf studie: Azure Active Directory-integratie met eenmalige aanmelding (SSO) met float
 
@@ -37,7 +37,7 @@ Zie [Wat is toegang tot toepassingen en eenmalige aanmelding met Azure Active Di
 U hebt de volgende items nodig om aan de slag te gaan:
 
 * Een Azure AD-abonnement Als u geen abonnement hebt, kunt u een [gratis account](https://azure.microsoft.com/free/)aanvragen.
-* Eenmalige aanmelding (SSO) waarbij het abonnement is ingeschakeld.
+* Een float-abonnement. Als u geen abonnement hebt, kunt u een [gratis account](https://app.float.com/join?)aanvragen.
 
 ## <a name="scenario-description"></a>Scenariobeschrijving
 
@@ -92,7 +92,7 @@ Volg deze stappen om Azure AD SSO in te scha kelen in de Azure Portal.
     Typ in het tekstvak **URL voor aanmelding** een URL in het patroon `https://<hostname>.float.com/login`.
 
     > [!NOTE]
-    > Dit zijn geen echte waarden. Werk deze waarden bij met de werkelijke-id, de antwoord-URL en de aanmeldings-URL. Neem contact op met het [ondersteunings team voor client](mailto:support@float.com) gebruik om deze waarden op te halen. U kunt ook verwijzen naar het patroon dat wordt weergegeven in de sectie **Standaard SAML-configuratie** in de Azure-portal.
+    > Dit zijn geen echte waarden. Werk deze waarden bij met de werkelijke-id, de antwoord-URL en de aanmeldings-URL. Vervang <hostname> door uw float-hostnaam. Neem contact op met het [ondersteunings team van float-clients](mailto:support@float.com) als u niet zeker weet. U kunt ook verwijzen naar het patroon dat wordt weergegeven in de sectie **Standaard SAML-configuratie** in de Azure-portal.
 
 1. De float-toepassing verwacht de SAML-beweringen in een specifieke indeling. hiervoor moet u aangepaste kenmerk toewijzingen toevoegen aan de configuratie van uw SAML-token kenmerken. In de volgende schermafbeelding wordt de lijst met standaardkenmerken weergegeven.
 
@@ -143,11 +143,11 @@ In deze sectie schakelt u B. Simon in om eenmalige aanmelding van Azure te gebru
 
 ## <a name="configure-float-sso"></a>SSO van float configureren
 
-Als u eenmalige aanmelding wilt configureren voor een **zwevende** zijde, moet u het gedownloade **certificaat (base64)** en de juiste gekopieerde url's van Azure Portal verzenden naar [float-ondersteunings team](mailto:support@float.com). Het team stelt de instellingen zo in dat de verbinding tussen SAML en eenmalige aanmelding aan beide zijden goed is ingesteld.
+Als u eenmalige aanmelding wilt configureren, gaat u naar de sectie team **instellingen voor zweven** en selecteert u configureren vanuit de verificatie module. Plak de URL van de Azure AD-aanmelding in het URL-veld van het SAML 2,0-eind punt, plak de Azure AD-id in het veld URL van de uitgever van de identiteits provider, plak de volledige tekst van het gedownloade **certificaat (base64)** in het veld X. 509-certificaat en sla het op.
 
 ### <a name="create-float-test-user"></a>Gebruiker voor float-test maken
 
-In deze sectie maakt u een gebruiker met de naam Julia Simon in float. Werk met het [float-ondersteunings team](mailto:support@float.com) om de gebruikers toe te voegen in het drijvende platform. Er moeten gebruikers worden gemaakt en geactiveerd voordat u eenmalige aanmelding kunt gebruiken.
+In deze sectie maakt u een gebruiker met de naam Julia Simon in float. Voeg de gebruiker toe vanuit de sectie personen of team instellingen gast en verleen hen een toegangs recht. Gebruikers moeten worden gemaakt en de uitnodiging accepteren voordat u eenmalige aanmelding gebruikt.
 
 ## <a name="test-sso"></a>SSO testen 
 

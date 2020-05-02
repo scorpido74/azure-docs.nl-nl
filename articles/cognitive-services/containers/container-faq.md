@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 04/01/2020
 ms.author: aahi
-ms.openlocfilehash: 8aae650065e8de11ccdc55a8a056c379a219fcb4
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: faae149cc6cfe9140f7e6908f5eb92d3031ef6d8
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80876503"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82690828"
 ---
 # <a name="azure-cognitive-services-containers-frequently-asked-questions-faq"></a>Veelgestelde vragen over Azure Cognitive Services-containers (FAQ)
 
@@ -76,7 +76,11 @@ Helaas worden de Cognitive Services containers *niet* systeem eigen ondersteund 
 
 **V: hoe moet ik de Cognitive Services-containers op IoT-apparaten uitvoeren?**
 
-Of u geen betrouw bare Internet verbinding hebt of op kosten per band breedte wilt besparen. Of als er sprake is van vereisten met een lage latentie of als u wilt omgaan met gevoelige gegevens die on-site moeten worden geanalyseerd, kunt [Azure IOT Edge met de Cognitive Services containers](https://azure.microsoft.com/blog/running-cognitive-services-on-iot-edge/) consistentie met de Cloud.
+**A:** Of u geen betrouw bare Internet verbinding hebt of op kosten per band breedte wilt besparen. Of als er sprake is van vereisten met een lage latentie of als u wilt omgaan met gevoelige gegevens die on-site moeten worden geanalyseerd, kunt [Azure IOT Edge met de Cognitive Services containers](https://azure.microsoft.com/blog/running-cognitive-services-on-iot-edge/) consistentie met de Cloud.
+
+**V: zijn deze containers compatibel met openshift?** 
+
+Containers worden niet getest met openshift, maar in het algemeen moeten Cognitive Services containers worden uitgevoerd op elk platform dat ondersteuning biedt voor docker-installatie kopieën. Als u openshift gebruikt, raden we u aan om de containers `root-user`uit te voeren als.
 
 **V: Hoe kan ik de aanbevelingen voor product feedback en functies?**
 

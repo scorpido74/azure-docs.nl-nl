@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: a9db42bcd69d9a24a454c02c9bb0e2d339cb4860
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 4bedcc1f7375cb83131b00be93c785069a7d3e7d
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82185775"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82692398"
 ---
 # <a name="connect-to-synapse-sql-with-power-bi-professional"></a>Verbinding maken met Synapse SQL met Power BI Professional
 
@@ -70,10 +70,10 @@ DROP DATABASE IF EXISTS demo;
 
 ### <a name="create-credentials"></a>Referenties maken
 
-We moeten referenties maken voordat u query's kunt uitvoeren. De referenties worden gebruikt door SQL service op aanvraag om toegang te krijgen tot bestanden in de opslag.
+We moeten referenties maken voordat u query's kunt uitvoeren. Deze referentie wordt gebruikt door SQL service op aanvraag om toegang te krijgen tot bestanden in de opslag.
 
 > [!NOTE]
-> U moet een referentie maken voor toegang tot het opslag account. Hoewel SQL on-demand toegang kan krijgen tot opslag vanuit verschillende regio's, biedt opslag-en Azure Synapse-werk ruimte in dezelfde regio betere prestaties.
+> U moet referenties maken voor toegang tot het opslag account. Hoewel SQL on-demand toegang kan krijgen tot opslag vanuit verschillende regio's, biedt opslag-en Azure Synapse-werk ruimte in dezelfde regio een betere prestatie ervaring.
 
 **Code fragment voor het maken van referenties voor gegevens containers met tellingen**, uitvoeren:
 
@@ -92,7 +92,8 @@ GO
 
 ## <a name="creating-power-bi-desktop-report"></a>Power BI bureau blad-rapport maken
 
-Open Power BI bureaublad toepassing en selecteer optie **gegevens ophalen** .
+Open de Power BI-bureaublad toepassing en selecteer de optie **gegevens ophalen** .
+
 ![Open Power BI bureaublad toepassing en selecteer gegevens ophalen.](./media/get-started-power-bi-professional/step-0-open-powerbi.png)
 
 ### <a name="step-1---select-data-source"></a>Stap 1: gegevens bron selecteren

@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: jovanpop
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: a29fd66cf264b09cc5e0db7ac1a329be3f297bb8
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 64895e5f48168305aea3e83596cdbcae982a6cb9
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82096330"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82692428"
 ---
 # <a name="quickstart-using-synapse-studio-preview"></a>Snelstartgids: Synapse Studio gebruiken (preview-versie)
 
@@ -56,7 +56,7 @@ U kunt nieuwe mappen maken en bestanden uploaden via de koppelingen op de werk b
 
    ![Bestanden op opslag zoeken](./media/quickstart-synapse-studio/query-files-on-storage.png)
 
-3. Voer de gegenereerde query of notitie blok uit om de inhoud van het bestand te bekijken:
+3. Voer de gegenereerde query of notitie blok uit om de inhoud van het bestand weer te geven.
 
    ![De inhoud van het bestand weer geven](./media/quickstart-synapse-studio/query-files-on-storage-result.png)
 
@@ -66,5 +66,5 @@ U kunt nieuwe mappen maken en bestanden uploaden via de koppelingen op de werk b
 
 - Azure AD-gebruikers in staat stellen om bestanden te zoeken aan de hand van de [ **opslag-BLOB gegevens lezer** of de **gegevensinzender voor opslag BLOB** RBAC-machtigingen voor Azure Storage](../storage/common/storage-auth-aad-rbac-portal.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json#assign-a-built-in-rbac-role)
 - [Query's uitvoeren op Azure Storage met behulp van SQL on-demand](sql/on-demand-workspace-overview.md)
-- [Apache Spark pool maken](quickstart-create-apache-spark-pool.md)
+- [Apache Spark groep maken met behulp van de Azure Portal](quickstart-create-apache-spark-pool.md)
 - [Power BI-rapport maken voor bestanden die zijn opgeslagen op Azure Storage](sql/tutorial-connect-power-bi-desktop.md)
