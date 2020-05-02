@@ -1,5 +1,5 @@
 ---
-title: Een Hoekige app maken met azure cosmos DB's API voor MongoDB (Deel1)
+title: Een hoek-app maken met de API van Azure Cosmos DB voor MongoDB (Part1)
 description: Deel 4 van de serie zelfstudies voor het maken van een MongoDB-app met Angular en Node op Azure Cosmos DB, waarbij gebruik wordt gemaakt van dezelfde API's als voor MongoDB
 author: johnpapa
 ms.service: cosmos-db
@@ -11,10 +11,10 @@ ms.author: jopapa
 ms.custom: seodec18
 ms.reviewer: sngun
 ms.openlocfilehash: d5ed706a0577423f0a95b8eb5f7a563da74a0e7f
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "75441174"
 ---
 # <a name="create-an-angular-app-with-azure-cosmos-dbs-api-for-mongodb---create-a-cosmos-account"></a>Een Angular-app maken met de API voor MongoDB van Azure Cosmos DB - Een Cosmos-account maken
@@ -48,7 +48,7 @@ In dit gedeelte van de zelfstudie kunt u ofwel de Azure Cloud Shell gebruiken (i
 
 ## <a name="create-an-azure-cosmos-db-account"></a>Maak een Azure Cosmos DB-account
 
-Maak een Azure Cosmos [`az cosmosdb create`](/cli/azure/cosmosdb#az-cosmosdb-create) DB-account met de opdracht.
+Maak een Azure Cosmos DB-account met [`az cosmosdb create`](/cli/azure/cosmosdb#az-cosmosdb-create) de opdracht.
 
 ```azurecli-interactive
 az cosmosdb create --name <cosmosdb-name> --resource-group myResourceGroup --kind MongoDB
@@ -60,7 +60,7 @@ az cosmosdb create --name <cosmosdb-name> --resource-group myResourceGroup --kin
 Het duurt mogelijk enkele minuten voor de opdracht is voltooid. Wanneer de opdracht is voltooid geeft het terminalvenster informatie over de nieuwe database. 
 
 Zodra het Azure Cosmos DB-account is gemaakt:
-1. Een nieuw browservenster openen en naar[https://portal.azure.com](https://portal.azure.com)
+1. Open een nieuw browser venster en ga naar[https://portal.azure.com](https://portal.azure.com)
 1. Klik op het logo van Azure Cosmos DB ![Azure Cosmos DB-pictogram in Azure Portal](./media/tutorial-develop-mongodb-nodejs-part4/azure-cosmos-db-icon.png) in de linkerbalk en toont alle de Azure Cosmos DB’s die u hebt.
 1. Klik op het Azure Cosmos DB-account dat u zojuist hebt gemaakt, selecteer het tabblad **Overzicht** en scrol omlaag naar de kaart waarop de database zich bevindt. 
 
