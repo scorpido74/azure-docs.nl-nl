@@ -1,26 +1,26 @@
 ---
 title: Azure Event Hubs trigger voor Azure Functions
-description: Meer informatie over het gebruik van Azure Event Hubs trigger in Azure Functions.
+description: Meer informatie over het gebruik van Azure Event Hubs activeren in Azure Functions.
 author: craigshoemaker
 ms.assetid: daf81798-7acc-419a-bc32-b5a41c6db56b
 ms.topic: reference
 ms.date: 02/21/2020
 ms.author: cshoe
 ms.openlocfilehash: b046017a4e6ae2eb08271792ed708e558dc23093
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79277672"
 ---
-# <a name="azure-event-hubs-bindings-for-azure-functions"></a>Azure Event Hubs-bindingen voor Azure-functies
+# <a name="azure-event-hubs-bindings-for-azure-functions"></a>Azure Event Hubs-bindingen voor Azure Functions
 
-In dit artikel wordt uitgelegd hoe u werken met [Azure Event Hubs](../event-hubs/event-hubs-what-is-event-hubs.md) trigger voor Azure Functions. Azure Functions ondersteunt trigger- en [uitvoerbindingen](functions-bindings-event-hubs-output.md) voor gebeurtenishubs.
+In dit artikel wordt uitgelegd hoe u kunt werken met de [Azure Event hubs](../event-hubs/event-hubs-what-is-event-hubs.md) -trigger voor Azure functions. Azure Functions ondersteunt trigger-en [uitvoer bindingen](functions-bindings-event-hubs-output.md) voor Event hubs.
 
-Zie het [overzicht](functions-bindings-event-hubs.md)voor informatie over de installatie en configuratiedetails.
+Zie het [overzicht](functions-bindings-event-hubs.md)voor meer informatie over de installatie-en configuratie details.
 
 [!INCLUDE [functions-bindings-event-hubs-trigger](../../includes/functions-bindings-event-hubs-trigger.md)]
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Gebeurtenissen schrijven naar een gebeurtenisstream (uitvoerbinding)](./functions-bindings-storage-blob-output.md)
+- [Gebeurtenissen schrijven naar een gebeurtenis stroom (uitvoer binding)](./functions-bindings-storage-blob-output.md)

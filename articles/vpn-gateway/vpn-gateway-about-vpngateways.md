@@ -1,5 +1,5 @@
 ---
-title: Over Azure VPN-gateway
+title: Over Azure VPN Gateway
 description: Meer informatie over wat een VPN-gateway is en de manieren waarop u een VPN-gateway kunt gebruiken om verbinding te maken met virtuele netwerken in Azure. Inclusief IPsec/IKE-site-naar-site cross-premises- en VNet-naar-VNet-oplossingen, alsmede punt-naar-site-VPN.
 services: vpn-gateway
 author: cherylmc
@@ -9,10 +9,10 @@ ms.topic: overview
 ms.date: 01/10/2020
 ms.author: cherylmc
 ms.openlocfilehash: c4a406961444845fef783c47942924b01b7aa646
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "79241456"
 ---
 # <a name="what-is-vpn-gateway"></a>Wat is VPN Gateway?
@@ -21,13 +21,13 @@ Een VPN-gateway is een speciaal soort virtueel-netwerkgateway die wordt gebruikt
 
 ## <a name="what-is-a-virtual-network-gateway"></a><a name="whatis"></a>Wat is een virtuele netwerkgateway?
 
-Een virtuele netwerkgateway bestaat uit twee of meer VM's die worden geïmplementeerd op een specifiek subnet dat u maakt, het *gatewaysubnet.* Virtuele netwerkgatewayVM's bevatten routeringstabellen en voeren specifieke gatewayservices uit. Deze VM's worden gemaakt wanneer u de virtuele netwerkgateway maakt. U de VM's die deel uitmaken van de virtuele netwerkgateway niet rechtstreeks configureren.
+Een virtuele netwerk gateway bestaat uit twee of meer virtuele machines die zijn geïmplementeerd op een specifiek subnet dat u maakt, het *Gateway-subnet*. Virtuele netwerk gateway-Vm's bevatten routerings tabellen en voeren specifieke Gateway Services uit. Deze Vm's worden gemaakt wanneer u de virtuele netwerk gateway maakt. U kunt de Vm's die deel uitmaken van de gateway van het virtuele netwerk niet rechtstreeks configureren.
 
-Een instelling die u configureert voor een virtuele netwerkgateway is het gatewaytype. Gatewaytype geeft aan hoe de virtuele netwerkgateway wordt gebruikt en welke acties de gateway onderneemt. Het gatewaytype 'Vpn' geeft aan dat het type virtuele netwerkgateway dat is gemaakt een 'VPN-gateway' is, in plaats van een ExpressRoute-gateway. Een virtueel netwerk kan twee virtuele netwerkgateways hebben; één VPN-gateway en één ExpressRoute-gateway - zoals het geval is met [naast elkaar bestaande](#coexisting) verbindingsconfiguraties. Zie [Soorten gateways](vpn-gateway-about-vpn-gateway-settings.md#gwtype) voor meer informatie.
+Een instelling die u configureert voor een virtuele netwerk gateway is het gateway type. Met het gateway type geeft u op hoe de virtuele netwerk gateway wordt gebruikt en welke acties de gateway gaat uitvoeren. Het gateway type ' VPN ' geeft aan dat het type van de virtuele netwerk gateway dat is gemaakt een VPN-gateway is, in plaats van een ExpressRoute-gateway. Een virtueel netwerk kan twee virtuele netwerk gateways hebben. Eén VPN-gateway en één ExpressRoute-gateway, zoals het geval is met [naast elkaar bestaande](#coexisting) verbindings configuraties. Zie [Soorten gateways](vpn-gateway-about-vpn-gateway-settings.md#gwtype) voor meer informatie.
 
-VPN-gateways kunnen worden geïmplementeerd in Azure Availability Zones. Dit zorgt in een virtuele netwerkgateway voor tolerantie, schaalbaarheid en hoge beschikbaarheid. Gateways fysiek en logisch implementeren in Azure-beschikbaarheidszones scheidt gateways binnen een regio, terwijl uw on-premises netwerkconnectiviteit met Azure wordt beschermd tegen fouten op zoneniveau. [zie Over zoneredundante virtuele netwerkgateways in Azure Availability Zones](about-zone-redundant-vnet-gateways.md)
+VPN-gateways kunnen in Azure-beschikbaarheidszones worden geïmplementeerd. Dit zorgt in een virtuele netwerkgateway voor tolerantie, schaalbaarheid en hoge beschikbaarheid. Gateways fysiek en logisch implementeren in Azure-beschikbaarheidszones scheidt gateways binnen een regio, terwijl uw on-premises netwerkconnectiviteit met Azure wordt beschermd tegen fouten op zoneniveau. Zie [info over zone-redundante virtuele netwerk gateways in azure-beschikbaarheidszones](about-zone-redundant-vnet-gateways.md)
 
-Het maken van een gateway voor een virtueel netwerk kan tot 45 minuten duren. Wanneer u een gateway voor een virtueel netwerk maakt, worden gateway-VM's in het gatewaysubnet geïmplementeerd en geconfigureerd met de instellingen die u opgeeft. Nadat u een VPN-gateway hebt gemaakt, kunt u een IPsec/IKE-VPN-tunnelverbinding maken tussen die VPN-gateway en een andere VPN-gateway (VNet-naar-VNet) of een cross-premises IPsec/IKE-VPN-tunnelverbinding maken tussen de VPN-gateway en een on-premises VPN-apparaat (site-naar-site). U ook een Point-to-Site VPN-verbinding (VPN via OpenVPN, IKEv2 of SSTP) maken, waarmee u verbinding maken met uw virtuele netwerk vanaf een externe locatie, bijvoorbeeld vanuit een conferentie of vanuit huis.
+Het maken van een gateway voor een virtueel netwerk kan tot 45 minuten duren. Wanneer u een gateway voor een virtueel netwerk maakt, worden gateway-VM's in het gatewaysubnet geïmplementeerd en geconfigureerd met de instellingen die u opgeeft. Nadat u een VPN-gateway hebt gemaakt, kunt u een IPsec/IKE-VPN-tunnelverbinding maken tussen die VPN-gateway en een andere VPN-gateway (VNet-naar-VNet) of een cross-premises IPsec/IKE-VPN-tunnelverbinding maken tussen de VPN-gateway en een on-premises VPN-apparaat (site-naar-site). U kunt ook een punt-naar-site-VPN-verbinding (VPN via OpenVPN, IKEv2 of SSTP) maken, waarmee u verbinding kunt maken met uw virtuele netwerk vanaf een externe locatie, zoals vanuit een conferentie of thuis.
 
 ## <a name="configuring-a-vpn-gateway"></a><a name="configuring"></a>Een VPN-gateway configureren
 
@@ -55,8 +55,8 @@ De volgende tabel kan u helpen bij het kiezen van de beste connectiviteitsoptie 
 
 Wanneer u een virtuele netwerkgateway maakt, geeft u de gewenste gateway-SKU op. Selecteer de SKU die aan uw vereisten voldoet op basis van de typen werkbelasting, doorvoer, functies en SLA's.
 
-* Zie het artikel [VPN Gateway Settings - Gateway SKU's](vpn-gateway-about-vpn-gateway-settings.md#gwsku) voor meer informatie over gateway-SKU's, waaronder ondersteunde functies, productie- en dev-test en configuratiestappen.
-* Zie [Werken met verouderde SKU's voor](vpn-gateway-about-skus-legacy.md)Verouderde SKU-informatie.
+* Zie het artikel [VPN gateway-Gateway-sku's](vpn-gateway-about-vpn-gateway-settings.md#gwsku) voor meer informatie over Gateway-sku's, waaronder ondersteunde functies, productie en dev-test en configuratie stappen.
+* Zie [werken met oudere sku's](vpn-gateway-about-skus-legacy.md)voor meer informatie over oudere sku's.
 
 ### <a name="gateway-skus-by-tunnel-connection-and-throughput"></a><a name="benchmark"></a>Gateway-SKU's per tunnel, verbinding en doorvoer
 
@@ -76,11 +76,11 @@ Gebruik de diagrammen en beschrijvingen als hulp bij het selecteren van de juist
 
 ### <a name="site-to-site"></a><a name="S2S"></a>Site-naar-site
 
-Een site-naar-site-VPN-gatewayverbinding (S2S) is een verbinding via een VPN-tunnel met IPsec/IKE (IKEv1 of IKEv2). S2S-verbindingen kunnen worden gebruikt voor cross-premises en hybride configuraties. Voor een S2S-verbinding is een VPN-apparaat vereist dat zich on-premises bevindt en waarvoor een openbaar IP-adres is toegewezen. Zie [Veelgestelde vragen over VPN Gateways - VPN-apparaten](vpn-gateway-vpn-faq.md#s2s) voor meer informatie over het selecteren van een VPN-apparaat.
+Een site-naar-site-VPN-gatewayverbinding (S2S) is een verbinding via een VPN-tunnel met IPsec/IKE (IKEv1 of IKEv2). S2S-verbindingen kunnen worden gebruikt voor cross-premises en hybride configuraties. Voor een S2S-verbinding is een VPN-apparaat op locatie vereist waaraan een openbaar IP-adres is toegewezen. Zie [Veelgestelde vragen over VPN Gateways - VPN-apparaten](vpn-gateway-vpn-faq.md#s2s) voor meer informatie over het selecteren van een VPN-apparaat.
 
 ![Voorbeeld van een site-naar-site-verbinding met Azure VPN Gateway](./media/vpn-gateway-about-vpngateways/vpngateway-site-to-site-connection-diagram.png)
 
-### <a name="multi-site"></a><a name="Multi"></a>Meerdere plaatsen
+### <a name="multi-site"></a><a name="Multi"></a>Meerdere locaties
 
 Dit type verbinding is een variatie op de site-naar-site-verbinding. U maakt meer dan één VPN-verbinding vanaf uw virtuele netwerkgateway, meestal met verschillende on-premises sites. Als u met meerdere verbindingen werkt, moet u een op een route gebaseerd VPN-type (ook bekend als een dynamische gateway voor klassieke VNets) gebruiken. Omdat elk virtueel netwerk maar één VPN-gateway kan hebben, delen alle verbindingen via de gateway de beschikbare bandbreedte. Dit type verbinding wordt vaak een multi-site-verbinding genoemd.
 
