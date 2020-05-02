@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: overview
 ms.date: 04/24/2020
 ms.custom: mvc
-ms.openlocfilehash: 87126d1beca97a905f0f3b09b565c12c37a4774d
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: a3bdc3673474b778aa7c1003e48e215bac6d05bf
+ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82203910"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82628517"
 ---
 # <a name="azure-red-hat-openshift"></a>Azure Red Hat OpenShift
 
@@ -32,19 +32,11 @@ Voor een betere beveiliging en meer beheer kunt u met Azure Red Hat open Shift i
 
 ## <a name="cluster-and-node"></a>Cluster en knooppunt
 
-Azure Red Hat open Shift-knoop punten worden uitgevoerd op virtuele machines van Azure. U kunt opslag met knooppunten en pods verbinden, clusteronderdelen bijwerken en GPU's gebruiken.
-
-## <a name="virtual-networks-and-ingress"></a>Virtual Networks en inkomend verkeer
-
-U kunt [een virtueel netwerk van een cluster verbinden met een bestaand virtueel netwerk of een virtueel netwerk maken wanneer u een cluster maakt](tutorial-create-cluster.md#create-a-virtual-network-containing-two-empty-subnets).
-
-## <a name="kubernetes-certification"></a>Kubernetes-certificering
-
-De Azure Red Hat open Shift-service is CNCF gecertificeerd als Kubernetes, conform de conformiteit.
+Azure Red Hat open Shift-knoop punten worden uitgevoerd op virtuele machines van Azure. U kunt de opslag verbinden met knoop punten en peulen en cluster onderdelen upgraden.
 
 ## <a name="next-steps"></a>Volgende stappen
 
 Meer informatie over de vereisten voor Azure Red Hat open Shift:
 
 > [!div class="nextstepaction"]
-> [Uw ontwikkelaarsomgeving instellen](howto-setup-environment.md)
+> [Uw ontwikkelaarsomgeving instellen](tutorial-create-cluster.md)

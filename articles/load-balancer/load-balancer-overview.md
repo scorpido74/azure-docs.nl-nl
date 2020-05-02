@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 1/14/2020
 ms.author: allensu
-ms.openlocfilehash: dd15b2ec985ddaba6031765368571a582fae1993
-ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.openlocfilehash: 11c63c9dac6186e1c21cc0e76518a95e117574ec
+ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82583715"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82629453"
 ---
 # <a name="what-is-azure-load-balancer"></a>Wat is Azure Load Balancer?
 
@@ -27,9 +27,9 @@ ms.locfileid: "82583715"
 
 Azure Load Balancer werkt op laag 4 van het OSI-model (Open Systems Interconnection). Het is het enige contact punt voor clients. Load Balancer distribueert inkomende stromen die binnenkomen bij de front-end van de load balancer voor back-endservers. Deze stromen zijn gebaseerd op geconfigureerde taakverdelings regels en status controles. De exemplaren van de back-endadresgroep kunnen Azure Virtual Machines of exemplaren in een schaalset voor virtuele machines zijn.
 
-Een **[open bare Load Balancer](./concepts-limitations.md#publicloadbalancer)** kan uitgaande verbindingen bieden voor virtuele machines (vm's) in uw virtuele netwerk. Deze verbindingen worden gerealiseerd door hun privé-IP-adressen te vertalen naar open bare IP-adressen. Open bare load balancers worden gebruikt voor het verdelen van het Internet verkeer naar uw Vm's.
+Een **[open bare Load Balancer](./types.md#publicloadbalancer)** kan uitgaande verbindingen bieden voor virtuele machines (vm's) in uw virtuele netwerk. Deze verbindingen worden gerealiseerd door hun privé-IP-adressen te vertalen naar open bare IP-adressen. Open bare load balancers worden gebruikt voor het verdelen van het Internet verkeer naar uw Vm's.
 
-Een **[intern (of privé) Load Balancer](./concepts-limitations.md#internalloadbalancer)** wordt alleen gebruikt wanneer privé ip's alleen op het front-end zijn vereist. Interne load balancers worden gebruikt voor het verdelen van verkeer binnen een virtueel netwerk. Een load balancer frontend kan worden geopend vanuit een on-premises netwerk in een hybride scenario.
+Een **[intern (of privé) Load Balancer](./types.md#internalloadbalancer)** wordt alleen gebruikt wanneer privé ip's alleen op het front-end zijn vereist. Interne load balancers worden gebruikt voor het verdelen van verkeer binnen een virtueel netwerk. Een load balancer frontend kan worden geopend vanuit een on-premises netwerk in een hybride scenario.
 
 <p align="center">
   <img src="./media/load-balancer-overview/load-balancer.svg" width="512" title="Azure Load Balancer">
@@ -37,7 +37,7 @@ Een **[intern (of privé) Load Balancer](./concepts-limitations.md#internalloadb
 
 *Afbeelding: toepassingen met meerdere lagen verdelen met behulp van zowel open bare als interne Load Balancer*
 
-Zie [Azure Load Balancer onderdelen en beperkingen](./concepts-limitations.md)voor meer informatie over de afzonderlijke Load Balancer onderdelen.
+Zie [Azure Load Balancer-onderdelen](./components.md)voor meer informatie over de afzonderlijke Load Balancer onderdelen.
 
 ## <a name="why-use-azure-load-balancer"></a>Waarom Azure Load Balancer gebruiken?
 Met Standard Load Balancer kunt u uw toepassingen schalen en Maxi maal beschik bare Services maken. De Load Balancer ondersteunt zowel binnenkomende als uitgaande scenario's. De Load Balancer biedt lage latentie en hoge door Voer en schaalt Maxi maal miljoenen stromen voor alle TCP-en UDP-toepassingen.
@@ -80,6 +80,6 @@ Zie [een basis Load Balancer upgraden](upgrade-basic-standard.md) om basis-Load 
 
 Zie [een open bare Standard Load Balancer maken](quickstart-load-balancer-standard-public-portal.md) om aan de slag te gaan met het gebruik van een Load Balancer.
 
-Voor meer informatie over Azure Load Balancer beperkingen en onderdelen raadpleegt u [Azure Load Balancer concepten en beperkingen](./concepts-limitations.md)
+Zie [Azure Load Balancer-onderdelen](./components.md) en [Azure Load Balancer concepten](./concepts.md) voor meer informatie over Azure Load Balancer beperkingen en onderdelen
 
 Zie [overzicht van opties voor taak verdeling in azure](https://docs.microsoft.com/azure/architecture/guide/technology-choices/load-balancing-overview)voor een vergelijking van Azure-opties voor taak verdeling.

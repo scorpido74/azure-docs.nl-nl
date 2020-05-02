@@ -9,20 +9,20 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: user-help
 ms.topic: overview
-ms.date: 01/15/2020
+ms.date: 04/20/2020
 ms.author: curtand
-ms.openlocfilehash: 4c9d421fd9ac8305c27dfa798f2869e59a04f9fb
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: fd22f3b9d365bfee543712f680d504bb134f24d7
+ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77062452"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82625694"
 ---
 # <a name="what-is-the-my-account-portal"></a>Wat is de portal Mijn account?
 
 De portal van **Mijn account** helpt u bij het beheren van uw werk-of school account door het instellen en beheren van uw beveiligings gegevens, het beheren van uw verbonden organisaties en apparaten, het weer geven van de manier waarop uw organisatie uw gegevens gebruikt.
 
-U kunt naar de portal van **Mijn account** gaanhttps://myprofile.microsoft.com)(, van de huidige versie van de volgende browsers:
+U kunt naar de portal van **Mijn account** gaanhttps://myaccount.microsoft.com)(, van de huidige versie van de volgende browsers:
 
 - Chrome
 - Microsoft Edge

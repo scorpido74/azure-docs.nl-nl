@@ -3,24 +3,24 @@ title: Private Link
 description: Overzicht van de functie privé-eind punt
 author: rohitnayakmsft
 ms.author: rohitna
-titleSuffix: Azure SQL Database and SQL Data Warehouse
+titleSuffix: Azure SQL Database and Azure Synapse Analytics
 ms.service: sql-database
 ms.topic: overview
 ms.reviewer: vanto
 ms.date: 03/09/2020
-ms.openlocfilehash: 4338c179fb8c0eebbb64ac5b33dc5dd8878d0794
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: dd717d653e57fbb8c540e4ef023011c64778a3b0
+ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82176716"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82628994"
 ---
-# <a name="private-link-for-azure-sql-database-and-data-warehouse"></a>Persoonlijke koppeling voor Azure SQL Database en het Data Warehouse
+# <a name="private-link-for-azure-sql-database-and-azure-synapse-analytics"></a>Persoonlijke koppeling voor Azure SQL Database en Azure Synapse Analytics
 
 Met persoonlijke koppeling kunt u via een **persoonlijk eind punt**verbinding maken met verschillende PaaS-Services in Azure. Ga naar de documentatie pagina van de [persoonlijke koppeling](../private-link/index.yml) voor een lijst met PaaS-services die functionaliteit voor persoonlijke koppelingen ondersteunen. Een persoonlijk eind punt is een privé-IP-adres binnen een specifiek [VNet](../virtual-network/virtual-networks-overview.md) en subnet. 
 
 > [!IMPORTANT]
-> Dit artikel is van toepassing op Azure SQL Server en op zowel SQL Database-als SQL Data Warehouse-data bases die zijn gemaakt op de Azure SQL-Server. Voor het gemak wordt de term 'SQL Database' gebruikt wanneer er wordt verwezen naar zowel SQL Database als SQL Data Warehouse. Dit artikel is *niet* van toepassing op een implementatie van een **beheerd exemplaar** in Azure SQL database.
+> Dit artikel is van toepassing op Azure SQL Server en op zowel SQL Database-als Azure Synapse Analytics-data bases die zijn gemaakt op de Azure SQL-Server. SQL Database wordt gebruikt om te verwijzen naar zowel SQL Database als Azure Synapse Analytics. Dit artikel is *niet* van toepassing op een implementatie van een **beheerd exemplaar** in Azure SQL database.
 
 ## <a name="data-exfiltration-prevention"></a>Preventie van gegevens exfiltration
 
@@ -28,7 +28,7 @@ Gegevens exfiltration in Azure SQL Database zijn wanneer een geautoriseerde gebr
 
 Overweeg een scenario met een gebruiker die SQL Server Management Studio (SSMS) uitvoert binnen een Azure-VM die verbinding maakt met een SQL Database. Deze SQL Database bevindt zich in het Data Center vs-West. In het onderstaande voor beeld ziet u hoe u de toegang tot de open bare eind punten op SQL Database met behulp van besturings elementen voor netwerk toegang kunt beperken.
 
-1. Schakel alle Azure-service **verkeer uit voor**SQL database via het open bare eind punt door de instelling Azure-Services toestaan in te scha kelen. Zorg ervoor dat er geen IP-adressen zijn toegestaan in de firewall regels op server-en database niveau. Zie [Azure SQL database en het Data Warehouse netwerk toegangs beheer](sql-database-networkaccess-overview.md)voor meer informatie.
+1. Schakel alle Azure-service **verkeer uit voor**SQL database via het open bare eind punt door de instelling Azure-Services toestaan in te scha kelen. Zorg ervoor dat er geen IP-adressen zijn toegestaan in de firewall regels op server-en database niveau. Zie [Azure SQL database en Azure Synapse Analytics-netwerk toegangs beheer](sql-database-networkaccess-overview.md)voor meer informatie.
 1. Alleen verkeer naar het SQL Database toestaan met behulp van het privé-IP-adres van de virtuele machine. Zie de artikelen over [service-eind punten](sql-database-vnet-service-endpoint-rule-overview.md) en VNet- [firewall regels](sql-database-firewall-configure.md)voor meer informatie.
 1. Verfijn op de virtuele Azure-machine het bereik van de uitgaande verbinding door [netwerk beveiligings groepen (nsg's)](../virtual-network/manage-network-security-group.md) en service tags als volgt te gebruiken
     - Geef een NSG-regel op om verkeer voor service label = SQL toe te staan. Westus: alleen verbinding toestaan met SQL Database in VS-West
@@ -142,7 +142,6 @@ Nmap done: 256 IP addresses (1 host up) scanned in 207.00 seconds
 
 In het resultaat ziet u dat één IP-adres actief is. die overeenkomt met het IP-adres voor het persoonlijke eind punt.
 
-
 ### <a name="check-connectivity-using-sql-server-management-studio-ssms"></a>Connectiviteit controleren met behulp van SQL Server Management Studio (SSMS)
 > [!NOTE]
 > Gebruik de **FQDN-naam (Fully Qualified Domain Name)** van de-server in verbindings reeksen voor uw clients. Aanmeldings pogingen rechtstreeks naar het IP-adres worden uitgevoerd. Dit gedrag is inherent aan het ontwerp, omdat het persoonlijke eind punt verkeer naar de SQL-gateway in de regio routeert en de FQDN moet worden opgegeven voor geslaagde aanmeldingen.
@@ -174,11 +173,9 @@ Als u verbinding wilt maken vanuit een on-premises omgeving met de SQL Database,
 - [ExpressRoute-circuit](../expressroute/expressroute-howto-linkvnet-portal-resource-manager.md)
 
 
-## <a name="connecting-from-an-azure-sql-data-warehouse-to-azure-storage-using-polybase"></a>Verbinding maken tussen een Azure SQL Data Warehouse en Azure Storage met poly base
+## <a name="connecting-from-azure-synapse-analytics-to-azure-storage-using-polybase"></a>Verbinding maken tussen Azure Synapse Analytics en Azure Storage met poly base
 
-Poly Base wordt vaak gebruikt voor het laden van gegevens in Azure SQL Data Warehouse van Azure Storage-accounts. Als het Azure Storage account waarvan u gegevens wilt laden, alleen toegang heeft tot een set VNet-subnetten via particuliere eind punten, service-eind punten of op IP gebaseerde firewalls, wordt de connectiviteit van poly Base naar het account verbroken. Voor het inschakelen van zowel poly base import-als export scenario's met Azure SQL Data Warehouse verbinding maken met Azure Storage die zijn beveiligd met een VNet, volgt u de stappen die [hier](sql-database-vnet-service-endpoint-rule-overview.md#impact-of-using-vnet-service-endpoints-with-azure-storage)worden beschreven. 
-
-
+Poly Base wordt vaak gebruikt voor het laden van gegevens in azure Synapse Analytics van Azure Storage-accounts. Als het Azure Storage account waarvan u gegevens wilt laden, alleen toegang heeft tot een set VNet-subnetten via particuliere eind punten, service-eind punten of op IP gebaseerde firewalls, wordt de connectiviteit van poly Base naar het account verbroken. Voor het inschakelen van zowel poly base import-als export scenario's met Azure Synapse Analytics verbinding maken met Azure Storage dat is beveiligd met een VNet, volgt u de stappen die [hier](sql-database-vnet-service-endpoint-rule-overview.md#impact-of-using-vnet-service-endpoints-with-azure-storage)worden beschreven. 
 
 ## <a name="next-steps"></a>Volgende stappen
 

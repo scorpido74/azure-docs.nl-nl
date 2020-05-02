@@ -9,12 +9,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
 ms.date: 03/12/2020
-ms.openlocfilehash: 0488002352d222abb0166737f9a042060b1a1bb1
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 47288c5da5b32a9f9640b1ee65c646885bf5cbab
+ms.sourcegitcommit: d662eda7c8eec2a5e131935d16c80f1cf298cb6b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80389423"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82653229"
 ---
 # <a name="tutorial-predict-automobile-price-with-the-designer-preview"></a>Zelf studie: prijs van auto Mobile voors pellen met de ontwerp functie (preview)
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
@@ -76,7 +76,7 @@ U kunt een **standaard Compute-doel** instellen voor de volledige pijp lijn, zod
     Als u al een beschik bare Compute-doel hebt, kunt u dit selecteren om deze pijp lijn uit te voeren.
 
     > [!NOTE]
-    > De ontwerper kan experimenten alleen uitvoeren op Azure Machine Learning Compute-doelen. Andere reken doelen worden niet weer gegeven.
+    > De ontwerper kan alleen trainings experimenten uitvoeren op Azure Machine Learning Compute-en Azure Machine Learning Compute-instantie doelen. Andere reken doelen worden niet weer gegeven.
 
 1. Voer een naam in voor de reken resource.
 

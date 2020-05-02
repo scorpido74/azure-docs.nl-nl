@@ -10,16 +10,23 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 02/12/2020
 ms.author: wellsi
-ms.openlocfilehash: 29dcb3c0e74482fd6670d1a0983e751043379d6e
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 5dbbbbb18bf81d70ed7955530db7c603594c16d0
+ms.sourcegitcommit: d662eda7c8eec2a5e131935d16c80f1cf298cb6b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80371622"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82652724"
 ---
 # <a name="release-notes-speech-devices-sdk"></a>Release opmerkingen: SDK voor spraak apparaten
 
 De volgende secties bevatten een lijst met wijzigingen in de meest recente releases.
+
+## <a name="speech-devices-sdk-1110"></a>Speech-apparaten SDK 1.11.0:
+
+- Ondersteuning voor [URBETTER DDK](http://www.urbetter.com/products_56/278.html).
+- Uitgebrachte binaire bestanden voor de [GGEC-spreker](https://aka.ms/sdsdk-download-speaker) die wordt gebruikt in het voor beeld van de [Voice-assistent](https://aka.ms/sdsdk-speaker).
+- Uitgebrachte binaire bestanden voor [Linux ARM32](https://aka.ms/sdsdk-download-linux-arm32) en [Linux arm 64](https://aka.ms/sdsdk-download-linux-arm64) voor Raspberry Pi en vergelijk bare apparaten.
+- Het [Speech SDK](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk-reference) -onderdeel is bijgewerkt naar versie 1.11.0. Zie de [release opmerkingen](https://aka.ms/csspeech/whatsnew)voor meer informatie.
 
 ## <a name="speech-devices-sdk-190"></a>Speech-apparaten SDK 1.9.0:
 

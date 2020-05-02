@@ -1,14 +1,14 @@
 ---
 title: Voor beeld-besturings elementen in CIS Microsoft Azure Stichtings basis benchmarks
 description: Aanbevelings toewijzing van het CIS-voor beeld van het DIS Microsoft Azure fundament voor de basis voor Azure Policy.
-ms.date: 11/04/2019
+ms.date: 05/01/2020
 ms.topic: sample
-ms.openlocfilehash: ea61ae4ea05b34c785485cbb5fd39c8a772565e3
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 735ab26e1f9432a87d5a0d927c64d44e680b0694
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80656972"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82688113"
 ---
 # <a name="recommendation-mapping-of-the-cis-microsoft-azure-foundations-benchmark-blueprint-sample"></a>Aanbevelings toewijzing van het CIS-voor beeld van het DIS Microsoft Azure fundament-benchmarks
 
@@ -37,9 +37,9 @@ Deze blauw druk wijst een [Azure Policy](../../../policy/overview.md) definitie 
 
 Deze blauw druk wijst [Azure Policy](../../../policy/overview.md) definities toe die u helpen bij het bewaken van Gast-accounts die mogelijk moeten worden verwijderd.
 
-- Externe accounts met eigenaars machtigingen moeten worden verwijderd uit uw abonnement
 - Externe accounts met lees machtigingen moeten worden verwijderd uit uw abonnement
 - Externe accounts met schrijf machtigingen moeten worden verwijderd uit uw abonnement
+- Externe accounts met eigenaars machtigingen moeten worden verwijderd uit uw abonnement
 
 ## <a name="123-ensure-that-no-custom-subscription-owner-roles-are-created"></a>1,23 zorg ervoor dat er geen rollen voor aangepaste abonnements eigenaren worden gemaakt
 
@@ -51,7 +51,7 @@ Deze blauw druk wijst [Azure Policy](../../../policy/overview.md) definities toe
 
 Deze blauw druk wijst een [Azure Policy](../../../policy/overview.md) definitie toe waarmee u netwerken en virtuele machines kunt bewaken waarop de laag Security Center standaard niet is ingeschakeld.
 
- - Security Center prijs categorie moet worden geselecteerd
+- Security Center prijs categorie moet worden geselecteerd
 
 ## <a name="22-ensure-that-automatic-provisioning-of-monitoring-agent-is-set-to-on"></a>2,2 Controleer of ' automatische inrichting van monitoring agent ' is ingesteld op on
 
@@ -87,20 +87,14 @@ Deze blauw druk wijst een [Azure Policy](../../../policy/overview.md) definitie 
 
 Deze blauw druk wijst een [Azure Policy](../../../policy/overview.md) definitie toe waarmee u Internet gerichte virtuele machines kunt beveiligen.
 
-- De regels voor de netwerk beveiligings groep voor virtuele machines die zijn gericht op internet, moeten worden gehard
-
-## <a name="28-ensure-asc-default-policy-setting-monitor-web-application-firewall-is-not-disabled"></a>2,8 Controleer of de standaard beleids instelling voor het controleren van de Web Application firewall is uitgeschakeld
-
-Deze blauw druk wijst een [Azure Policy](../../../policy/overview.md) definitie toe die u helpt bij het beveiligen van virtuele machines waarop webtoepassingen worden uitgevoerd.
-
-- De Nsg's-regels voor webtoepassingen op IaaS moeten een harde verbinding hebben
+- Aanbevelingen voor adaptieve netwerk beveiliging moeten worden toegepast op Internet gerichte virtuele machines
 
 ## <a name="29-ensure-asc-default-policy-setting-enable-next-generation-firewallngfw-monitoring-is-not-disabled"></a>2,9 Controleer of de standaard beleids instelling voor het inschakelen van de NGFW-bewaking (Next Generation firewall) is uitgeschakeld
 
 Deze blauw druk wijst [Azure Policy](../../../policy/overview.md) definities toe waarmee subnetten en virtuele machines worden beschermd tegen bedreigingen door de toegang te beperken. Het Security Center beleid waarnaar wordt verwezen door deze CIS-Microsoft Azure fundament-benchmark aanbeveling is vervangen door twee nieuwe aanbevelingen. De onderstaande beleids regels verwijzen naar de nieuwe aanbevelingen.
 
 - Subnetten moeten worden gekoppeld aan een netwerk beveiligings groep
-- Virtuele machines moeten worden gekoppeld aan een netwerk beveiligings groep
+- Internet gerichte virtuele machines moeten worden beveiligd met netwerk beveiligings groepen
 
 ## <a name="210-ensure-asc-default-policy-setting-monitor-vulnerability-assessment-is-not-disabled"></a>2,10 zorg ervoor dat de standaard beleids instelling voor het controleren van het beveiligings niveau van de ASC niet is uitgeschakeld
 
@@ -128,7 +122,7 @@ Deze blauw druk wijst een [Azure Policy](../../../policy/overview.md) definitie 
 
 Deze blauw druk wijst een [Azure Policy](../../../policy/overview.md) definitie toe die ervoor zorgt dat SQL Server auditing is ingeschakeld.
 
-- Controle moet worden ingeschakeld voor geavanceerde instellingen voor gegevens beveiliging op SQL Server
+- Controle op SQL Server moet zijn ingeschakeld
 
 ## <a name="215-ensure-asc-default-policy-setting-monitor-sql-encryption-is-not-disabled"></a>2,15 Controleer of de standaard beleids instelling voor de ASC ' SQL-versleuteling controleren ' niet is uitgeschakeld '
 
@@ -182,7 +176,7 @@ Deze blauw druk wijst een [Azure Policy](../../../policy/overview.md) definitie 
 
 Deze blauw druk wijst een [Azure Policy](../../../policy/overview.md) definitie toe die ervoor zorgt dat SQL Server auditing is ingeschakeld. 
 
-- Controle moet worden ingeschakeld voor geavanceerde instellingen voor gegevens beveiliging op SQL Server
+- Controle op SQL Server moet zijn ingeschakeld
 
 ## <a name="42-ensure-that-auditactiongroups-in-auditing-policy-for-a-sql-server-is-set-properly"></a>4,2 Zorg ervoor dat ' AuditActionGroups ' in het beleid voor een SQL Server correct is ingesteld
 
@@ -200,8 +194,8 @@ Deze blauw druk wijst een [Azure Policy](../../../policy/overview.md) definitie 
 
 Deze blauw druk wijst een [Azure Policy](../../../policy/overview.md) definitie toe waarmee u ervoor kunt zorgen dat geavanceerde gegevens beveiliging is ingeschakeld op SQL-servers en SQL Managed instances.
 
-- Geavanceerde gegevens beveiliging moet zijn ingeschakeld voor uw door SQL beheerde instanties
 - Geavanceerde gegevens beveiliging moet zijn ingeschakeld op uw SQL-servers
+- Geavanceerde gegevens beveiliging moet zijn ingeschakeld voor uw door SQL beheerde instanties
 
 ## <a name="45-ensure-that-threat-detection-types-is-set-to-all"></a>4,5 zorg ervoor dat ' bedreigingen detectie typen ' is ingesteld op ' all '
 
@@ -214,15 +208,15 @@ Deze blauw druk wijst [Azure Policy](../../../policy/overview.md) definities toe
 
 Deze blauw druk wijst een [Azure Policy](../../../policy/overview.md) definitie toe waarmee u ervoor kunt zorgen dat geavanceerde gegevens beveiligings meldingen correct zijn ingeschakeld.
 
-- Geavanceerde instellingen voor gegevens beveiliging voor het beheerde exemplaar van SQL moeten een e-mail adres bevatten voor het ontvangen van beveiligings waarschuwingen
 - Geavanceerde instellingen voor gegevens beveiliging voor SQL Server moeten een e-mail adres bevatten voor het ontvangen van beveiligings waarschuwingen
+- Geavanceerde instellingen voor gegevens beveiliging voor het beheerde exemplaar van SQL moeten een e-mail adres bevatten voor het ontvangen van beveiligings waarschuwingen
 
 ## <a name="47-ensure-that-email-service-and-co-administrators-is-enabled"></a>4,7 Controleer of ' e-mail service en mede beheerders ' is ingeschakeld '
 
 Deze blauw druk wijst een [Azure Policy](../../../policy/overview.md) definitie toe waarmee u ervoor kunt zorgen dat geavanceerde gegevens beveiligings meldingen correct zijn ingeschakeld.
 
-- E-mail meldingen voor beheerders en abonnements eigenaren moeten zijn ingeschakeld in de beveiligings instellingen voor geavanceerde gegevens van SQL Managed instance
 - E-mail meldingen voor beheerders en abonnements eigenaren moeten zijn ingeschakeld in de beveiligings instellingen van SQL Server Advanced Data
+- E-mail meldingen voor beheerders en abonnements eigenaren moeten zijn ingeschakeld in de beveiligings instellingen voor geavanceerde gegevens van SQL Managed instance
 
 ## <a name="48-ensure-that-azure-active-directory-admin-is-configured"></a>4,8 Zorg ervoor dat Azure Active Directory beheerder is geconfigureerd
 
@@ -240,8 +234,8 @@ Deze blauw druk wijst een [Azure Policy](../../../policy/overview.md) definitie 
 
 Deze blauw druk wijst [Azure Policy](../../../policy/overview.md) definities toe waarmee u ervoor kunt zorgen dat de transparante, gecodeerde gegevens beveiliging voor SQL-servers en SQL Managed instances met uw eigen sleutel worden versleuteld.
 
-- TDE-beveiliging van SQL Managed instance moet worden versleuteld met uw eigen sleutel
 - SQL Server TDE-beveiliging moet worden versleuteld met uw eigen sleutel
+- TDE-beveiliging van SQL Managed instance moet worden versleuteld met uw eigen sleutel
 
 ## <a name="411-ensure-enforce-ssl-connection-is-set-to-enabled-for-mysql-database-server"></a>4,11 Controleer of ' SSL-verbinding afdwingen ' is ingesteld op ingeschakeld voor MySQL-database server
 
@@ -315,11 +309,83 @@ Deze blauw druk wijst een [Azure Policy](../../../policy/overview.md) definitie 
 
 - Azure Monitor moet activiteiten logboeken van alle regio's verzamelen
 
+## <a name="516-ensure-the-storage-account-containing-the-container-with-activity-logs-is-encrypted-with-byok-use-your-own-key"></a>5.1.6 Controleer of het opslag account met de container met activiteiten Logboeken is versleuteld met BYOK (gebruik uw eigen sleutel)
+
+Deze blauw druk wijst een [Azure Policy](../../../policy/overview.md) definitie toe waarmee u ervoor kunt zorgen dat opslag accounts met activiteiten logboeken worden versleuteld met BYOK.
+
+- Het opslag account met de container met activiteiten logboeken moet worden versleuteld met BYOK
+
 ## <a name="517-ensure-that-logging-for-azure-keyvault-is-enabled"></a>5.1.7 zorgt ervoor dat logboek registratie voor Azure-sleutel kluis is ingeschakeld
 
 Deze blauw druk wijst een [Azure Policy](../../../policy/overview.md) definitie toe waarmee u ervoor kunt zorgen dat Diagnostische logboeken zijn ingeschakeld voor sleutel kluizen.
 
 - Diagnostische logboeken in Key Vault moeten worden ingeschakeld
+
+## <a name="521-ensure-that-activity-log-alert-exists-for-create-policy-assignment"></a>5.2.1 Controleer of er een waarschuwing voor het activiteiten logboek bestaat voor het maken van beleids toewijzing
+
+Deze blauw druk wijst een [Azure Policy](../../../policy/overview.md) definitie toe waarmee u ervoor kunt zorgen dat specifieke waarschuwingen voor activiteiten logboeken bestaan.
+
+- Er moet een waarschuwing voor een activiteiten logboek bestaan voor specifieke beleids bewerkingen
+
+## <a name="522-ensure-that-activity-log-alert-exists-for-create-or-update-network-security-group"></a>5.2.2 Controleer of er een waarschuwing voor activiteiten logboek bestaat voor het maken of bijwerken van de netwerk beveiligings groep
+
+Deze blauw druk wijst een [Azure Policy](../../../policy/overview.md) definitie toe waarmee u ervoor kunt zorgen dat specifieke waarschuwingen voor activiteiten logboeken bestaan.
+
+- Er moet een waarschuwing voor een activiteiten logboek bestaan voor specifieke beheer bewerkingen
+
+## <a name="523-ensure-that-activity-log-alert-exists-for-delete-network-security-group"></a>5.2.3 Zorg ervoor dat er een waarschuwing voor activiteiten logboek bestaat voor het verwijderen van de netwerk beveiligings groep
+
+Deze blauw druk wijst een [Azure Policy](../../../policy/overview.md) definitie toe waarmee u ervoor kunt zorgen dat specifieke waarschuwingen voor activiteiten logboeken bestaan.
+
+- Er moet een waarschuwing voor een activiteiten logboek bestaan voor specifieke beheer bewerkingen
+
+## <a name="524-ensure-that-activity-log-alert-exists-for-create-or-update-network-security-group-rule"></a>5.2.4 zorg ervoor dat er een waarschuwing voor activiteiten logboek bestaat voor het maken of bijwerken van een netwerk beveiligings groep regel
+
+Deze blauw druk wijst een [Azure Policy](../../../policy/overview.md) definitie toe waarmee u ervoor kunt zorgen dat specifieke waarschuwingen voor activiteiten logboeken bestaan.
+
+- Er moet een waarschuwing voor een activiteiten logboek bestaan voor specifieke beheer bewerkingen
+
+## <a name="525-ensure-that-activity-log-alert-exists-for-the-delete-network-security-group-rule"></a>5.2.5 zorg ervoor dat er een waarschuwing voor activiteiten logboek bestaat voor de regel netwerk beveiligings groep verwijderen
+
+Deze blauw druk wijst een [Azure Policy](../../../policy/overview.md) definitie toe waarmee u ervoor kunt zorgen dat specifieke waarschuwingen voor activiteiten logboeken bestaan.
+
+- Er moet een waarschuwing voor een activiteiten logboek bestaan voor specifieke beheer bewerkingen
+
+## <a name="526-ensure-that-activity-log-alert-exists-for-create-or-update-security-solution"></a>5.2.6 Zorg ervoor dat er een waarschuwing voor activiteiten logboek bestaat voor het maken of bijwerken van de beveiligings oplossing
+
+Deze blauw druk wijst een [Azure Policy](../../../policy/overview.md) definitie toe waarmee u ervoor kunt zorgen dat specifieke waarschuwingen voor activiteiten logboeken bestaan.
+
+- Er moet een waarschuwing voor een activiteiten logboek bestaan voor specifieke beveiligings bewerkingen
+
+## <a name="527-ensure-that-activity-log-alert-exists-for-delete-security-solution"></a>5.2.7 zorgt ervoor dat er een waarschuwing voor het activiteiten logboek bestaat voor het verwijderen van de beveiligings oplossing
+
+Deze blauw druk wijst een [Azure Policy](../../../policy/overview.md) definitie toe waarmee u ervoor kunt zorgen dat specifieke waarschuwingen voor activiteiten logboeken bestaan.
+
+- Er moet een waarschuwing voor een activiteiten logboek bestaan voor specifieke beveiligings bewerkingen
+
+## <a name="528-ensure-that-activity-log-alert-exists-for-create-or-update-or-delete-sql-server-firewall-rule"></a>5.2.8 zorgt ervoor dat er een waarschuwing voor activiteiten logboek bestaat voor het maken of bijwerken of verwijderen van SQL Server firewall regel
+
+Deze blauw druk wijst een [Azure Policy](../../../policy/overview.md) definitie toe waarmee u ervoor kunt zorgen dat specifieke waarschuwingen voor activiteiten logboeken bestaan.
+
+- Er moet een waarschuwing voor een activiteiten logboek bestaan voor specifieke beheer bewerkingen
+
+## <a name="529-ensure-that-activity-log-alert-exists-for-update-security-policy"></a>5.2.9 zorg ervoor dat er een waarschuwing voor het activiteiten logboek bestaat voor het bijwerken van het beveiligings beleid
+
+Deze blauw druk wijst een [Azure Policy](../../../policy/overview.md) definitie toe waarmee u ervoor kunt zorgen dat specifieke waarschuwingen voor activiteiten logboeken bestaan.
+
+- Er moet een waarschuwing voor een activiteiten logboek bestaan voor specifieke beveiligings bewerkingen
+
+## <a name="61-ensure-that-rdp-access-is-restricted-from-the-internet"></a>6,1 Controleer of de RDP-toegang is beperkt van Internet
+
+Deze blauw druk wijst een [Azure Policy](../../../policy/overview.md) definitie toe waarmee u ervoor kunt zorgen dat de RDP-toegang is beperkt.
+
+- RDP-toegang via internet moet worden geblokkeerd
+
+## <a name="62-ensure-that-ssh-access-is-restricted-from-the-internet"></a>6,2 Controleer of SSH-toegang is beperkt van Internet
+
+Deze blauw druk wijst een [Azure Policy](../../../policy/overview.md) definitie toe waarmee u ervoor kunt zorgen dat SSH-toegang is beperkt.
+
+- SSH-toegang via internet moet worden geblokkeerd
 
 ## <a name="65-ensure-that-network-watcher-is-enabled"></a>6,5 Controleer of Network Watcher is ingeschakeld
 
@@ -349,7 +415,7 @@ Deze blauw druk wijst een [Azure Policy](../../../policy/overview.md) definitie 
 
 Deze blauw druk wijst een [Azure Policy](../../../policy/overview.md) definitie toe waarmee u ervoor kunt zorgen dat alleen goedgekeurde extensies van de virtuele machine zijn geïnstalleerd. Voor dit beleid is een parameter matrix vereist waarmee alle goedgekeurde virtuele-machine uitbreidingen worden opgegeven. Deze beleids initiatief-definitie bevat voorgestelde standaard waarden die klanten moeten valideren. 
 
- - Alleen goedgekeurde VM-uitbrei dingen moeten worden geïnstalleerd
+- Alleen goedgekeurde VM-uitbrei dingen moeten worden geïnstalleerd
 
 ## <a name="75-ensure-that-the-latest-os-patches-for-all-virtual-machines-are-applied"></a>7,5 zorg ervoor dat de meest recente besturingssysteem patches voor alle Virtual Machines zijn toegepast
 
@@ -373,7 +439,15 @@ Deze blauw druk wijst een [Azure Policy](../../../policy/overview.md) definitie 
 
 Deze blauw druk wijst een [Azure Policy](../../../policy/overview.md) definitie toe waarmee u ervoor kunt zorgen dat op rollen gebaseerd toegangs beheer wordt gebruikt voor beheerde machtigingen in Kubernetes-Service clusters
 
-- \[Voor\]beeld: op rollen gebaseerd Access Control (RBAC) moet worden gebruikt voor Kubernetes-Services
+- Op rollen gebaseerde Access Control (RBAC) moet worden gebruikt voor Kubernetes-Services
+
+## <a name="91-ensure-app-service-authentication-is-set-on-azure-app-service"></a>9,1 Controleer of App Service verificatie is ingesteld op Azure App Service
+
+Deze blauw druk wijst een [Azure Policy](../../../policy/overview.md) definitie toe waarmee u ervoor kunt zorgen dat aanvragen voor app service apps worden geverifieerd.
+
+- Verificatie moet zijn ingeschakeld in uw API-app
+- Verificatie moet zijn ingeschakeld in uw functie-app
+- Verificatie moet zijn ingeschakeld in uw web-app
 
 ## <a name="92-ensure-web-app-redirects-all-http-traffic-to-https-in-azure-app-service"></a>9,2 Zorg ervoor dat web-apps alle HTTP-verkeer omleidt naar HTTPS in Azure App Service
 
@@ -434,7 +508,7 @@ Deze blauw druk wijst [Azure Policy](../../../policy/overview.md) definities toe
 Deze blauw druk wijst [Azure Policy](../../../policy/overview.md) definities toe waarmee u ervoor kunt zorgen dat web-apps de meest recente versie van Java gebruiken.
 
 - Zorg ervoor dat ' Java-versie ' het meest recent is, als deze wordt gebruikt als onderdeel van de API-app
-- Zorg ervoor dat ' Java-versie ' het meest recent is, als deze wordt gebruikt als onderdeel van de funtion-app
+- Zorg ervoor dat ' Java-versie ' het meest recent is, als deze wordt gebruikt als onderdeel van de functie-app
 - Zorg ervoor dat ' Java-versie ' het meest recent is, als deze wordt gebruikt als onderdeel van de web-app
 
 ## <a name="910-ensure-that-http-version-is-the-latest-if-used-to-run-the-web-app"></a>9,10 Controleer of ' HTTP-versie ' het meest recent is, als deze wordt gebruikt om de web-app uit te voeren
@@ -444,7 +518,6 @@ Deze blauw druk wijst [Azure Policy](../../../policy/overview.md) definities toe
 - Zorg ervoor dat ' HTTP-versie ' het meest recent is, indien gebruikt voor het uitvoeren van de API-app
 - Zorg ervoor dat HTTP-versie de meest recente is, als deze wordt gebruikt om de functie-app uit te voeren
 - Zorg ervoor dat HTTP-versie de meest recente is, als deze wordt gebruikt om de web-app uit te voeren
-
 
 ## <a name="next-steps"></a>Volgende stappen
 

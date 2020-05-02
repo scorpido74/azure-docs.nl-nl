@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 04/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: fd4268ecad91a023683d1d6f955178fb87d78f87
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: 15bf167df52e8ef54ab45de7b7b03efdaf83672a
+ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82612840"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82628313"
 ---
 # <a name="what-is-windows-virtual-desktop"></a>Wat is Windows Virtual Desktop? 
 
@@ -103,7 +103,7 @@ De virtuele machines van Azure die u voor virtuele Windows-Bureau bladen maakt, 
 >[!IMPORTANT]
 >In de meeste gevallen kunt u het beste de service tags in plaats van Url's gebruiken om problemen met de service te voor komen. Het opheffen van de blok kering van deze Url's is essentieel voor een betrouw bare implementatie van Windows virtueel bureau blad. Het blok keren van de toegang tot deze Url's wordt niet ondersteund en heeft invloed op de service functionaliteit. Deze Url's komen alleen overeen met virtuele bureau blad-sites en-bronnen van Windows en bevatten geen Url's voor andere services, zoals Azure Active Directory.
 >
->Virtueel bureau blad van Windows ondersteunt nu de FQDN-code.
+>Virtueel bureau blad van Windows ondersteunt nu de FQDN-code. Zie [Azure firewall gebruiken om virtuele bureau blad-implementaties te beveiligen](../firewall/protect-windows-virtual-desktop.md)voor meer informatie.
 
 De volgende tabel bevat de optionele Url's die uw virtuele Azure-machines kunnen gebruiken:
 
