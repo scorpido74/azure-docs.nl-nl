@@ -5,20 +5,21 @@ services: lighthouse
 author: JnHs
 ms.service: lighthouse
 ms.topic: include
-ms.date: 12/19/2019
+ms.date: 04/24/2020
 ms.author: jenhayes
 ms.custom: include file
-ms.openlocfilehash: 4c50ca2449787d681d8b9571083a92077d95dcd8
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.openlocfilehash: 4a6d9ef04a33c84d68dff1429fb39a193a249280
+ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80986641"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82204523"
 ---
 Deze voorbeelden illustreren verschillende taken die kunnen worden uitgevoerd in scenario's voor het beheer van meerdere tenants.
 
 | **Sjabloon** | **Beschrijving** |
 |---------|---------|
+| [create-keyvault-secret](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/templates/create-keyvault-secret) | Maakt een sleutelkluis in de tenant van de klant en maakt toegangsbeleid.
 | [cross-rg-deployment](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/templates/cross-rg-deployment) | Hiermee worden opslagaccounts geïmplementeerd in twee verschillende resourcegroepen.|
 | [deploy-azure-mgmt-services](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/templates/deploy-azure-mgmt-services) | Maakt Azure-beheerservices, koppelt deze en implementeert aanvullende oplossingen. Gebruik de sjabloon **rgWithAzureMgmt.json** voor een end-to-end-implementatie. |
 | [deploy-azure-security-center](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/templates/deploy-azure-security-center) | Configureert en schakelt Azure Security Center in binnen het Azure-doelabonnement. |

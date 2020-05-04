@@ -48,6 +48,8 @@
       href: authentication-requests-and-responses.md
     - name: Richtlijnen voor beperkingen in Azure Key Vault
       href: overview-throttling.md
+    - name: Beschikbaarheid en redundantie in Azure Key Vault
+      href: disaster-recovery-guidance.md
     - name: Service-eindpunten voor virtueel netwerk voor Azure Key Vault - Azure Key Vault
       href: overview-vnet-service-endpoints.md
 - name: Instructiegidsen
@@ -92,6 +94,10 @@
           href: soft-delete-cli.md
         - name: Voorlopig verwijderen gebruiken met PowerShell
           href: soft-delete-powershell.md
+    - name: Azure Key Vault verplaatsen
+      items:
+        - name: Key Vault verplaatsen naar een andere regio
+          href: keyvault-moveregion.md
     - name: Problemen oplossen
       items:
         - name: De tenant-id van de sleutelkluis wijzigen na verplaatsing van een abonnement

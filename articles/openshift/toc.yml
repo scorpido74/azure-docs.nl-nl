@@ -6,71 +6,83 @@
       href: intro-openshift.md
 - name: Zelfstudies
   items:
-    - name: Een Azure Red Hat OpenShift-cluster maken en beheren
-      items:
-        - name: '1: Een Azure Red Hat OpenShift-cluster maken'
-          href: tutorial-create-cluster.md
-        - name: '2: De schaal van een Azure Red Hat OpenShift-cluster wijzigen'
-          href: tutorial-scale-cluster.md
-        - name: '3: Een Azure Red Hat OpenShift-cluster verwijderen'
-          href: tutorial-delete-cluster.md
-- name: Clusterbeheer
-  items:
-    - name: Azure Red Hat OpenShift-clusterbeheer
-      items:
-        - name: 1 - Azure Red Hat OpenShift-clusterbeheerdersrol
-          href: cluster-administration-cluster-admin-role.md
-        - name: 2 - Beperkingen in beveiligingscontext beheren
-          href: cluster-administration-security-context-constraints.md
+    - name: '1: Een Azure Red Hat OpenShift 4-cluster maken'
+      href: tutorial-create-cluster.md
+    - name: '2: Verbinding maken met een Azure Red Hat OpenShift 4-cluster'
+      href: tutorial-connect-cluster.md
+    - name: '3: Een Azure Red Hat OpenShift 4-cluster verwijderen'
+      href: tutorial-delete-cluster.md
 - name: Instructiegidsen
   expanded: true
   items:
-    - name: Een Azure Red Hat OpenShift-ontwikkelaarsomgeving instellen
-      href: howto-setup-environment.md
-      expanded: true
+    - name: Een Azure Red Hat OpenShift 4-privécluster maken
+      href: create-private-cluster.md
+    - name: DNS forwarding configureren voor een Azure Red Hat OpenShift 4-cluster
+      href: dns-forwarding.md
+    - name: Azure Active Directory-verificatie configureren voor een Azure Red Hat OpenShift 4-cluster
       items:
-        - name: Een Azure Active Directory-tenant maken
-          href: howto-create-tenant.md
-        - name: Een object en gebruiker maken voor Azure AD-apps
-          href: howto-aad-app-configuration.md
-    - name: Azure Red Hat OpenShift 4.3 (preview)
+        - name: Azure Active Directory-verificatie (CLI) configureren
+          href: configure-azure-ad-cli.md
+        - name: Azure Active Directory-verificatie (portal) configureren
+          href: configure-azure-ad-ui.md
+    - name: Bewaking en logboekregistratie voor Azure Red Hat OpenShift 4
       items:
-        - name: Een Azure Red Hat OpenShift 4.3-cluster maken
-          href: howto-using-azure-redhat-openshift.md
-        - name: Azure Monitor instellen voor Azure Red Hat OpenShift 4.3
-          href: howto-azure-monitor-v4.md
-    - name: Een zelfstandige Prometheus implementeren in een Azure Red Hat OpenShift-cluster
-      href: howto-deploy-prometheus.md
-    - name: Projecten beheren in een Azure Red Hat OpenShift-cluster
-      href: howto-manage-projects.md
-    - name: Een Azure Red Hat OpenShift-privécluster maken
-      href: howto-create-private-cluster.md
-    - name: Bewaking en registratie
-      items:
-        - name: Azure Monitor voor containers (preview)
+        - name: Azure Monitor voor containers in Azure Red Hat OpenShift 4 (preview-versie)
           items:
-            - name: Azure Monitor voor containers configureren
-              href: ../azure-monitor/insights/container-insights-azure-redhat-setup.md
-              maintainContext: true
-            - name: Azure Monitor voor containers uitschakelen
-              href: ../azure-monitor/insights/container-insights-optout-openshift.md
-              maintainContext: true
-    - name: Bevoorrechte containers uitvoeren in een Azure Red Hat OpenShift-cluster
-      href: howto-run-privileged-containers.md
+            - name: Azure Monitor voor containers configureren voor Azure Red Hat OpenShift 4 (preview-versie)
+              href: ../azure-monitor/insights/container-insights-azure-redhat4-setup.md
+            - name: Azure Monitor uitschakelen voor containers in Azure Red Hat OpenShift 3.11 (preview-versie)
+              href: ../azure-monitor/insights/container-insights-optout-openshift-v4.md
+    - name: Azure Red Hat OpenShift 3.11
+      items:
+        - name: Een Azure Red Hat OpenShift-ontwikkelaarsomgeving instellen voor Azure Red Hat OpenShift 3.11
+          href: howto-setup-environment.md
+          expanded: true
+          items:
+            - name: Een Azure Active Directory-tenant maken
+              href: howto-create-tenant.md
+            - name: Een object en gebruiker maken voor Azure AD-apps
+              href: howto-aad-app-configuration.md
+        - name: Een zelfstandige prometheus implementeren in een Azure Red Hat OpenShift 3.11-cluster
+          href: howto-deploy-prometheus.md
+        - name: Projecten beheren in een Azure Red Hat OpenShift 3.11-cluster
+          href: howto-manage-projects.md
+        - name: Een Azure Red Hat OpenShift 3.11-privécluster maken
+          href: howto-create-private-cluster.md
+        - name: Bewaking en logboekregistratie voor Azure Red Hat OpenShift 3.11
+          items:
+            - name: Azure Monitor voor containers in Azure Red Hat OpenShift 3.11 (preview-versie)
+              items:
+                - name: Azure Monitor configureren voor containers in Azure Red Hat OpenShift 3.11 (preview-versie)
+                  href: ../azure-monitor/insights/container-insights-azure-redhat-setup.md
+                  maintainContext: true
+                - name: Azure Monitor uitschakelen voor containers in Azure Red Hat OpenShift 3.11
+                  href: ../azure-monitor/insights/container-insights-optout-openshift.md
+                  maintainContext: true
+        - name: Bevoorrechte containers uitvoeren in Azure Red Hat OpenShift 3.11
+          href: howto-run-privileged-containers.md
+        - name: Clusterbeheer in Azure Red Hat OpenShift 3.11
+          items:
+            - name: '1: Azure Red Hat OpenShift 3.11-clusterbeheerdersrol'
+              href: cluster-administration-cluster-admin-role.md
+            - name: 2 - Beperkingen in beveiligingscontext in Azure Red Hat OpenShift 3.11
+              href: cluster-administration-security-context-constraints.md
 - name: Naslaginformatie
   items:
     - name: CLI voor Azure Red Hat OpenShift
       href: /cli/azure/openshift
     - name: REST API's voor Azure Red Hat OpenShift
       href: /rest/api/openshift
-- name: Bronnen
+- name: Resources
   items:
     - name: Veelgestelde vragen
       href: openshift-faq.md
     - name: Problemen oplossen
       href: troubleshoot.md
-    - name: Ondersteunde resources
+    - name: Ondersteunde resources voor Azure Red Hat OpenShift 3.11
       href: supported-resources.md
+    - name: Ondersteunde bronnen voor Azure Red Hat OpenShift 4.3
+      href: support-policies-v4.md
     - name: Regionale beschikbaarheid
       href: 'https://azure.microsoft.com/regions/services/'
     - name: Red Hat OpenShift-documentatie

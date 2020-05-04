@@ -42,6 +42,10 @@
       href: spring-cloud-quotas.md
     - name: Informatie over metrische gegevens in Azure Spring Cloud
       href: spring-cloud-concept-metrics.md
+    - name: Beveiligingscontroles voor Azure Spring Cloud Service
+      href: spring-cloud-concept-security-controls.md
+    - name: Informatie over appstatus in Azure Spring Cloud
+      href: spring-cloud-concept-app-status.md
     - name: Herstel na noodgeval plannen
       href: disaster-recovery.md
 - name: Instructiegidsen

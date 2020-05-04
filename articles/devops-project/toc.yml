@@ -1,8 +1,8 @@
-- name: Documentatie voor Azure DevOps Projects
+- name: Azure DevOps Starter-documentatie
   href: index.yml
 - name: Overzicht
   items:
-    - name: Wat is Azure DevOps Projects?
+    - name: Wat is Azure DevOps Starter?
       href: overview.md
 - name: Snelstartgidsen
   expanded: true
@@ -30,7 +30,7 @@
       maintainContext: true
 - name: Zelfstudies
   items:
-    - name: 1 - GitHub en DevOps Projects
+    - name: 1 - GitHub en DevOps Starter
       href: azure-devops-project-github.md
       maintainContext: true
     - name: 2 - Implementeren naar virtuele machines

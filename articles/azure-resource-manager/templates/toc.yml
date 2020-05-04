@@ -291,7 +291,7 @@
       items:
         - name: Alle functies
           href: template-functions.md
-        - name: Matrix- en objectfuncties
+        - name: Matrixfuncties
           href: template-functions-array.md
         - name: Vergelijkingsfuncties
           href: template-functions-comparison.md
@@ -303,6 +303,8 @@
           href: template-functions-logical.md
         - name: Numerieke functies
           href: template-functions-numeric.md
+        - name: Objectfuncties
+          href: template-functions-object.md
         - name: Resourcefuncties
           href: template-functions-resource.md
         - name: Tekenreeksfuncties

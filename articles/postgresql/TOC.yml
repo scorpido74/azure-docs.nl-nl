@@ -167,6 +167,10 @@
               href: concepts-hyperscale-firewall-rules.md
             - name: SSL configureren
               href: concepts-hyperscale-ssl-connection-security.md
+        - name: Bedrijfscontinuïteit
+          items:
+            - name: Back-ups en herstellen
+              href: concepts-hyperscale-backup.md
         - name: Controleren en afstemmen
           items:
             - name: Controleren en afstemmen
@@ -273,6 +277,8 @@
               href: howto-data-encryption-portal.md
             - name: Azure CLI
               href: howto-data-encryption-cli.md
+            - name: Validatie voor gegevensversleuteling
+              href: howto-data-encryption-validation.md
         - name: Server opnieuw opstarten
           items:
             - name: Azure Portal

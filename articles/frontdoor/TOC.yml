@@ -4,6 +4,8 @@
   items:
     - name: Wat is Azure Front Door?
       href: front-door-overview.md
+    - name: Wat is er nieuw in Azure Front Door?
+      href: front-door-whats-new.md
 - name: Snelstartgidsen
   expanded: true
   items:
@@ -17,6 +19,8 @@
       href: front-door-custom-domain-https.md
     - name: Beleid voor geo-filteren instellen voor uw Front Door
       href: front-door-tutorial-geo-filtering.md
+    - name: Een regelengine instellen
+      href: front-door-tutorial-rules-engine.md
 - name: Voorbeelden
   items:
     - name: Resource Manager-sjablonen
@@ -53,6 +57,12 @@
       href: front-door-url-redirect.md
     - name: Wildcard-domein
       href: front-door-wildcard-domain.md
+    - name: Regelengine
+      href: front-door-rules-engine.md
+    - name: Criteria voor overeenkomst in de regelengine
+      href: front-door-rules-engine-match-conditions.md
+    - name: Acties van regelengine
+      href: front-door-rules-engine-actions.md
 - name: Instructiegidsen
   items:
     - name: Verkeer omleiden

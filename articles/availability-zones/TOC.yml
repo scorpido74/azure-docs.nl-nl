@@ -8,10 +8,12 @@
   items:
     - name: Hoge beschikbaarheid voor Azure-toepassingen
       href: 'https://docs.microsoft.com/azure/architecture/resiliency/high-availability-azure-applications'
+    - name: Regio’s en beschikbaarheidszones
+      href: az-overview.md
     - name: Documentatie over beschikbaarheidszones
       items:
-        - name: Wat zijn beschikbaarheidszones?
-          href: az-overview.md
+        - name: Regio’s weergeven die beschikbaarheidszones ondersteunen
+          href: az-region.md
         - name: Virtuele machines
           items:
             - name: Een virtuele Linux-machine maken in een beschikbaarheidszone met CLI

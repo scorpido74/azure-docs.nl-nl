@@ -155,11 +155,11 @@
           href: directory-assign-admin-roles.md
         - name: Rollen weergeven en toewijzen
           href: directory-manage-roles-portal.md
-        - name: Aangepaste rol
+        - name: Aangepaste rollen
           items:
-            - name: Aangepaste rol
+            - name: Aangepaste rollen
               href: roles-custom-overview.md
-            - name: Aangepast rol maken
+            - name: Een aangepaste rol maken
               href: roles-create-custom.md
             - name: Aangepaste roltoewijzingen weergeven
               href: roles-view-assignments.md

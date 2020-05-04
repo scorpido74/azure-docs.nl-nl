@@ -262,9 +262,11 @@
       items:
         - name: Werken met resultaten
           href: search-pagination-page-layout.md
-        - name: Relevantie afstemmen (scoreprofielen)
+        - name: Relevantiescore
+          href: index-similarity-and-scoring.md
+        - name: Scoreprofielen
           href: index-add-scoring-profiles.md
-        - name: Relevantie afstemmen (vergelijkbaarheidsalgoritme)
+        - name: Vergelijkbaarheidsalgoritme
           href: index-ranking-similarity.md
     - name: Plannen
       items:

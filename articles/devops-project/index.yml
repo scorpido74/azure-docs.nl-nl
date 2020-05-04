@@ -1,30 +1,30 @@
 ### YamlMime:Landing
-title: Documentatie voor Azure DevOps Projects
-summary: Azure DevOps Project geeft een vereenvoudigde ervaring waar u uw bestaande code en Git-opslagplaats gebruikt of een van de voorbeeldtoepassingen kiest voor het maken van een CI (Continue integratie) en CD-pijplijn (Continue levering) naar Azure.
+title: Azure DevOps Starter-documentatie
+summary: Azure DevOps Starter biedt een vereenvoudigde ervaring waar u uw bestaande code en Git-opslagplaats gebruikt of een van de voorbeeldtoepassingen kiest voor het maken van een CI (Continue integratie) en CD-pijplijn (Continue levering) naar Azure.
 metadata:
-  title: Documentatie voor Azure DevOps Projects
+  title: Azure DevOps Starter-documentatie
   description: Gebruik uw bestaande code en Git-opslagplaats of kies een voorbeeld-app voor het maken van een CI- (Continue integratie) en CD-pijplijn (Continue levering) naar Azure.
   ms.service: devops-project
   ms.topic: landing-page
   author: 
   ms.author: 
-  ms.date: 03/05/2020
-  ms.openlocfilehash: f03a03b353ffa0d0562169a51a2552c2f2ab143b
-  ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+  ms.date: 03/24/2020
+  ms.openlocfilehash: 461d088f85f6845dfb9204381209b477b384a0be
+  ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
   ms.translationtype: HT
   ms.contentlocale: nl-NL
-  ms.lasthandoff: 03/25/2020
-  ms.locfileid: "78942461"
+  ms.lasthandoff: 04/28/2020
+  ms.locfileid: "82231460"
 landingContent:
-- title: Over Azure DevOps Projects
+- title: Over Azure DevOps Starter
   linkLists:
   - linkListType: overview
     links:
-    - text: Wat is Azure DevOps Projects?
+    - text: Wat is Azure DevOps Starter?
       url: overview.md
   - linkListType: video
     links:
-    - text: Video over CI/CD maken met Azure DevOps Project (8:53)
+    - text: Video over CI/CD maken met Azure DevOps Starter (8:53)
       url: https://channel9.msdn.com/Events/Connect/2017/T174/player/
 - title: Een CI/CD-pijplijn maken
   linkLists:

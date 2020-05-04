@@ -76,6 +76,8 @@
       href: user-overview.md
     - name: Kenmerken van gebruikersprofiel
       href: user-profile-attributes.md
+    - name: SSO-sessies
+      href: session-overview.md
 - name: Instructiegidsen
   items:
     - name: App-integratie
@@ -335,8 +337,8 @@
                       href: phone-factor-technical-profile.md
                     - name: REST
                       href: restful-technical-profile.md
-                    - name: SAML
-                      href: saml-technical-profile.md
+                    - name: SAML-provider opslaan
+                      href: saml-identity-provider-technical-profile.md
                     - name: Uitgever van het SAML-token
                       href: saml-issuer-technical-profile.md
                     - name: Zelf bevestigd

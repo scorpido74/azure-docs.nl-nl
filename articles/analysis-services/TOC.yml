@@ -43,6 +43,8 @@
       href: analysis-services-long-operations.md
     - name: Ondersteunde gegevensbronnen
       href: analysis-services-datasource.md
+    - name: Veelgestelde vragen over netwerkconnectiviteit
+      href: analysis-services-network-faq.md
 - name: Uitleg
   items:
     - name: server
