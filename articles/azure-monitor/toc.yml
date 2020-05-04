@@ -214,6 +214,7 @@
             - name: Webpagina's
               items:
                 - name: JavaScript aan de clientzijde
+                  displayname: 'SPA, Single Page Applications, React, JS, Angular'
                   href: app/javascript.md
                 - name: Bronmap voor JavaScript
                   href: app/source-map-support.md
@@ -441,6 +442,11 @@
               href: app/custom-data-correlation.md
             - name: Verbindingsreeksen
               href: app/sdk-connection-string.md
+            - name: Verbindingsreeksen
+              href: app/sdk-connection-string.md
+            - name: GetMetric
+              displayname: 'get metric, custom metrics, metrics, TrackMetric'
+              href: app/get-metric.md
             - name: Speciale onderwerpen
               items:
                 - name: Diepe diagnostische gegevens voor web-apps en services
