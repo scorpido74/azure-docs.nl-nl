@@ -1,20 +1,17 @@
 ---
-title: Hoe reserveringskorting wordt toegepast op Azure Database for MySQL
-description: Hoe reserveringskorting wordt toegepast op Azure Database for MySQL
+title: 'Meer informatie over reserveringskorting: Azure Database for MySQL Single-servers'
+description: Meer informatie over hoe reserveringskorting wordt toegepast op uw Azure Database for MySQL-servers.
 author: kummanish
 ms.author: manishku
 ms.service: cost-management-billing
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 02/13/2020
-ms.openlocfilehash: ed067e4bbde737cb08afe7c9429854e54e2ef3d9
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: e47153b24234480ee52847f07e723c02fabb3113
+ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77199310"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82509428"
 ---
 # <a name="how-a-reservation-discount-is-applied-to-azure-database-for-mysql"></a>Hoe reserveringskorting wordt toegepast op Azure Database for MySQL
 
@@ -44,5 +41,6 @@ Voor de rest van deze voorbeelden wordt ervan uitgegaan dat u gereserveerde capa
 
 Raadpleeg [Meer informatie over Azure-reserveringsgebruik](https://docs.microsoft.com/azure/billing/billing-understand-reserved-instance-usage-ea) voor meer informatie over en inzicht in hoe uw Azure-reserveringen worden toegepast in uw gebruiksrapporten voor facturering.
 
-## <a name="need-help-contact-us"></a>Hebt u hulp nodig? Contact opnemen
+## <a name="next-steps"></a>Volgende stappen
+
 Als u vragen hebt of hulp nodig hebt, [kunt u een ondersteuningsaanvraag maken](https://go.microsoft.com/fwlink/?linkid=2083458).

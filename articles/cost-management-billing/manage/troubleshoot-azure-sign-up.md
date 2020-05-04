@@ -1,5 +1,5 @@
 ---
-title: Kan niet registreren voor een nieuw Azure-account
+title: Problemen oplossen wanneer u een nieuw account registreert in de Azure-portal of in het Azure-accountcentrum
 description: Een probleem oplossen bij aanmelding voor een nieuw account in het Microsoft Azure Portal-accountcentrum.
 services: cost-management-billing
 author: v-miegge
@@ -9,20 +9,23 @@ ms.service: cost-management-billing
 ms.topic: conceptual
 ms.date: 02/12/2020
 ms.author: v-miegge
-ms.openlocfilehash: e8536555e3763674a2c018182e70f8d50e11556b
-ms.sourcegitcommit: d791f8f3261f7019220dd4c2dbd3e9b5a5f0ceaf
+ms.openlocfilehash: 7bcf3197ae218c469983200814cecf551dc42a6b
+ms.sourcegitcommit: edccc241bc40b8b08f009baf29a5580bf53e220c
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/18/2020
-ms.locfileid: "81641741"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82133170"
 ---
-# <a name="troubleshoot-issues-when-you-sign-up-a-new-account-in-azure-portal-or-azure-account-center"></a>Problemen oplossen wanneer u een nieuw account registreert in de Azure-portal of in het Azure-accountcentrum
+# <a name="troubleshoot-issues-when-you-sign-up-for-a-new-account-in-azure-portal-or-azure-account-center"></a>Problemen oplossen wanneer u een nieuw account registreert in de Azure-portal of in het Azure-accountcentrum
 
 Er kan een probleem optreden wanneer u zich in Microsoft Azure Portal of het Azure-accountcentrum probeert te registreren voor een nieuw account. Controleer het volgende voordat u het probleem gaat oplossen:
 
-- De gegevens die u hebt opgegeven voor uw Azure-accountprofiel (zoals het e-mailadres, adres en telefoonnummer van de contactpersoon), zijn correct.
+- De gegevens die u hebt opgegeven voor uw Azure-accountprofiel (zoals e-mailadres, adres en telefoonnummer van de contactpersoon), zijn correct.
 - De creditcardgegevens zijn correct.
 - U hebt geen ander Microsoft-account met dezelfde gegevens.
+
+> [!NOTE]
+> Als u al een bestaand account hebt en hulp nodig hebt bij het oplossen van aanmeldingsproblemen, raadpleegt u [Aanmeldingsproblemen voor Azure-abonnementen oplossen](https://docs.microsoft.com/azure/cost-management-billing/manage/troubleshoot-sign-in-issue).
 
 ## <a name="resolutions"></a>Oplossingen
 

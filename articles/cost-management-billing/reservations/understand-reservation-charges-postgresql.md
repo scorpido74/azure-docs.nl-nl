@@ -1,20 +1,17 @@
 ---
-title: Hoe reserveringskorting wordt toegepast op Azure Database for PostgreSQL Single-servers
-description: Hoe reserveringskorting wordt toegepast op Azure Database for PostgreSQL Single-servers
+title: Meer informatie over hoe reserveringskorting wordt toegepast op Azure Database for PostgreSQL Single-servers
+description: Meer informatie over hoe reserveringskorting wordt toegepast op Azure Database for PostgreSQL Single-servers.
 author: kummanish
 ms.author: manishku
 ms.service: cost-management-billing
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 02/13/2020
-ms.openlocfilehash: e0dc7780ee570ce2d731bedf9ef56be606088a1f
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: e01b35bc540045bc272484159380f8a11e5a6c48
+ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77199293"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82509394"
 ---
 # <a name="how-a-reservation-discount-is-applied-to-azure-database-for-postgresql-single-server"></a>Hoe reserveringskorting wordt toegepast op Azure Database for PostgreSQL Single-servers
 
@@ -28,7 +25,7 @@ Wanneer u een resource afsluit, wordt de reserveringskorting automatisch toegepa
 
 ## <a name="discount-applied-to-azure-database-for-postgresql-single-server"></a>Korting toepassen op Azure Database for PostgreSQL Single-servers
 
-Korting voor gereserveerde capaciteit van Azure Database for PostgreSQL Single-servers wordt op uurbasis op uw PostgreSQL Single-server toegepast. De reservering die u aanschaft, wordt vergeleken met het rekengebruik dat wordt gegenereerd door de actieve Azure Database for PostgreSQL Single-server. Voor PostgreSQL Single-servers die geen vol uur worden uitgevoerd, wordt de reservering automatisch toegepast op andere Azure Database for PostgreSQL Single-servers die aan de reserveringskenmerken voldoen. De korting kan worden toegepast op Azure Database for PostgreSQL Single-servers die gelijktijdig worden uitgevoerd. Als u geen PostgreSQL Single-servers hebt die aan de reserveringsvoorwaarden voldoen en het hele uur worden uitgevoerd, profiteert u mogelijk niet optimaal van de korting op de reserveringscapaciteit voor dat uur.
+Korting voor gereserveerde capaciteit van Azure Database for PostgreSQL Single-servers wordt op uurbasis op uw PostgreSQL Single-server toegepast. De reservering die u aanschaft, wordt vergeleken met het rekengebruik dat wordt gegenereerd door de actieve Azure Database for PostgreSQL Single-server. Voor PostgreSQL Single-servers die geen vol uur worden uitgevoerd, wordt de reservering automatisch toegepast op andere Azure Database for PostgreSQL Single-servers die aan de reserveringskenmerken voldoen. De korting kan worden toegepast op Azure Database for PostgreSQL Single-servers die gelijktijdig worden uitgevoerd. Als u geen PostgreSQL Single-server hebt die aan de reserveringsvoorwaarden voldoet en het hele uur wordt uitgevoerd, profiteert u mogelijk niet optimaal van de korting op de reserveringscapaciteit voor dat uur.
 
 In de volgende voorbeelden ziet u hoe de korting voor de gereserveerde capaciteit voor de Azure Database for PostgreSQL Single-server wordt toegepast, afhankelijk van hoeveel kernen u hebt aangeschaft en wanneer deze worden uitgevoerd.
 
@@ -44,5 +41,6 @@ Voor de rest van deze voorbeelden wordt ervan uitgegaan dat u gereserveerde capa
 
 Raadpleeg [Meer informatie over Azure-reserveringsgebruik](https://docs.microsoft.com/azure/billing/billing-understand-reserved-instance-usage-ea) voor meer informatie over en inzicht in hoe uw Azure-reserveringen worden toegepast in uw gebruiksrapporten voor facturering.
 
-## <a name="need-help-contact-us"></a>Hebt u hulp nodig? Contact opnemen
+## <a name="next-steps"></a>Volgende stappen
+
 Als u vragen hebt of hulp nodig hebt, [kunt u een ondersteuningsaanvraag maken](https://go.microsoft.com/fwlink/?linkid=2083458).
