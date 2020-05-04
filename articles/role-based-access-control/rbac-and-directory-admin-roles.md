@@ -1,6 +1,6 @@
 ---
-title: Klassieke abonnements beheerders rollen, Azure RBAC-rollen en Azure AD-rollen
-description: In dit artikel worden de verschillende rollen in Azure beschreven, te weten klassieke abonnementsbeheerdersrollen, RBAC-rollen (rollen op basis van toegangsbeheer) van Azure en beheerdersrollen van Azure AD (Azure Active Directory)
+title: Klassieke abonnements beheerders rollen, Azure-rollen en Azure AD-rollen
+description: Hierin worden de verschillende rollen in azure-klassieke abonnements beheerders rollen, Azure-rollen en Azure Active Directory (Azure AD)-rollen beschreven
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -15,32 +15,32 @@ ms.date: 02/27/2020
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: it-pro;
-ms.openlocfilehash: f2229d57b249bab734b1ef91c10d5ec42ab95a17
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 70baddf86207c490d3b85e0f584525592f8a7ad7
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81641435"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82735798"
 ---
-# <a name="classic-subscription-administrator-roles-azure-rbac-roles-and-azure-ad-administrator-roles"></a>Klassieke abonnementsbeheerdersrollen, Azure RBAC-rollen en Azure AD-beheerdersrollen
+# <a name="classic-subscription-administrator-roles-azure-roles-and-azure-ad-roles"></a>Klassieke abonnements beheerders rollen, Azure-rollen en Azure AD-rollen
 
 Als u nieuw bent bij Azure, is het misschien lastig om een goed beeld te krijgen van de verschillende rollen in Azure. In dit artikel vindt u informatie over de volgende rollen en wanneer u elk type rol moet gebruiken:
 - Klassieke abonnementsbeheerdersrollen
-- Azure RBAC-rollen (op rollen gebaseerd toegangsbeheer)
-- Azure AD-beheerdersrollen (Azure Active Directory)
+- Azure-rollen
+- Azure Active Directory-rollen (Azure AD)
 
 ## <a name="how-the-roles-are-related"></a>Relatie tussen de rollen
 
-Een korte beschrijving van de geschiedenis van Azure helpt om een beter beeld te krijgen van de verschillende rollen. Bij de introductie van Azure waren er voor het beheer van resources slechts drie beheerdersrollen: Accountbeheerder, Servicebeheerder en Medebeheerder. Later werd op rollen gebaseerd toegangsbeheer (RBAC) toegevoegd voor Azure-resources. Azure RBAC is een nieuwer autorisatiesysteem dat gedetailleerd toegangsbeheer biedt voor Azure-resources. RBAC bevat allerlei ingebouwde rollen, kan worden toegewezen aan verschillende bereiken en stelt u in staat om uw eigen aangepaste rollen te maken. Voor het beheren van resources in Azure AD, zoals gebruikers, groepen en domeinen, zijn verschillende Azure AD-beheerdersrollen beschikbaar.
+Een korte beschrijving van de geschiedenis van Azure helpt om een beter beeld te krijgen van de verschillende rollen. Bij de introductie van Azure waren er voor het beheer van resources slechts drie beheerdersrollen: Accountbeheerder, Servicebeheerder en Medebeheerder. Later is Azure RBAC (op rollen gebaseerd toegangs beheer) toegevoegd. Azure RBAC is een nieuwer autorisatiesysteem dat gedetailleerd toegangsbeheer biedt voor Azure-resources. Azure RBAC bevat veel ingebouwde rollen die kunnen worden toegewezen aan verschillende bereiken, en u kunt uw eigen aangepaste rollen maken. Voor het beheren van resources in azure AD, zoals gebruikers, groepen en domeinen, zijn er verschillende Azure AD-rollen.
 
-In het volgende schema diagram ziet u een algemeen overzicht van hoe de klassieke abonnementsbeheerdersrollen, Azure RBAC-rollen en Azure AD-beheerdersrollen zich tot elkaar verhouden.
+Het volgende diagram is een hoog overzicht van de manier waarop de rollen van de klassieke abonnements beheerder, Azure-rollen en Azure AD zijn gerelateerd.
 
 ![De verschillende rollen in Azure](./media/rbac-and-directory-admin-roles/rbac-admin-roles.png)
 
 
 ## <a name="classic-subscription-administrator-roles"></a>Klassieke abonnementsbeheerdersrollen
 
-Accountbeheerder, Servicebeheerder en Medebeheerder zijn de drie klassieke abonnementsbeheerdersrollen in Azure. Klassieke abonnementsbeheerders hebben volledige toegang tot het Azure-abonnement. Ze kunnen resources beheren met behulp van Azure Portal, API's van Azure Resource Manager en API's van het klassieke implementatiemodel. Het account dat wordt gebruikt voor registratie bij Azure wordt automatisch ingesteld als de accountbeheerder en de servicebeheerder. Vervolgens kunnen er extra medebeheerders of co-beheerders worden toegevoegd. De servicebeheerder en de medebeheerders hebben dezelfde toegang als gebruikers met de rol van eigenaar (een Azure RBAC-rol) op abonnementsniveau. De volgende tabel beschrijft de verschillen tussen deze drie klassieke abonnementsbeheerdersrollen.
+Accountbeheerder, Servicebeheerder en Medebeheerder zijn de drie klassieke abonnementsbeheerdersrollen in Azure. Klassieke abonnementsbeheerders hebben volledige toegang tot het Azure-abonnement. Ze kunnen resources beheren met behulp van Azure Portal, API's van Azure Resource Manager en API's van het klassieke implementatiemodel. Het account dat wordt gebruikt voor registratie bij Azure wordt automatisch ingesteld als de accountbeheerder en de servicebeheerder. Vervolgens kunnen er extra medebeheerders of co-beheerders worden toegevoegd. De service beheerder en de mede beheerders hebben de gelijkwaardige toegang van gebruikers die de rol van eigenaar (een Azure-rol) aan het abonnements bereik hebben toegewezen. De volgende tabel beschrijft de verschillen tussen deze drie klassieke abonnementsbeheerdersrollen.
 
 | Klassiek abonnement beheerder | Limiet | Machtigingen | Opmerkingen |
 | --- | --- | --- | --- |
@@ -68,22 +68,22 @@ Elk abonnement is gekoppeld aan een Azure AD-adres lijst. Als u wilt zoeken naar
 
 Accounts en abonnementen worden beheerd in het [Azure-accountcentrum](https://account.azure.com/Subscriptions).
 
-## <a name="azure-rbac-roles"></a>Azure RBAC-rollen
+## <a name="azure-roles"></a>Azure-rollen
 
-Azure RBAC staat voor op rollen gebaseerd toegangsbeheer en is een machtigingssysteem dat is gebouwd op [Azure Resource Manager](../azure-resource-manager/management/overview.md). Het voorziet in een geavanceerd toegangsbeheer van resources in Azure, zoals rekenbronnen en opslag. Azure RBAC bevat meer dan 70 ingebouwde rollen. Er zijn vier primaire RBAC-rollen. De eerste drie gelden voor alle resourcetypen:
+Azure RBAC staat voor op rollen gebaseerd toegangsbeheer en is een machtigingssysteem dat is gebouwd op [Azure Resource Manager](../azure-resource-manager/management/overview.md). Het voorziet in een geavanceerd toegangsbeheer van resources in Azure, zoals rekenbronnen en opslag. Azure RBAC bevat meer dan 70 ingebouwde rollen. Er zijn vier belang rijke Azure-rollen. De eerste drie gelden voor alle resourcetypen:
 
-| Azure RBAC-rol | Machtigingen | Opmerkingen |
+| Azure-rol | Machtigingen | Opmerkingen |
 | --- | --- | --- |
 | [Eigenaar](built-in-roles.md#owner) | <ul><li>Volledige toegang tot alle resources</li><li>Toegang aan anderen delegeren</li></ul> | De servicebeheerder en medebeheerders krijgen de rol van eigenaar op abonnementsniveau<br>Geldt voor alle resourcetypen. |
 | [Inzender](built-in-roles.md#contributor) | <ul><li>Alle soorten Azure-resources maken en beheren</li><li>Een nieuwe tenant maken in Azure Active Directory</li><li>Kan geen toegang aan anderen verlenen</li></ul> | Geldt voor alle resourcetypen. |
 | [Lezer](built-in-roles.md#reader) | <ul><li>Azure-resources weergeven</li></ul> | Geldt voor alle resourcetypen. |
 | [Beheerder voor gebruikerstoegang](built-in-roles.md#user-access-administrator) | <ul><li>Toegang van gebruikers tot Azure-resources beheren</li></ul> |  |
 
-Met de overige ingebouwde rollen kunnen specifieke Azure-resources worden beheerd. Met de rol [Inzender voor virtuele machines](built-in-roles.md#virtual-machine-contributor) kan een gebruiker bijvoorbeeld virtuele machines maken en beheren. Zie [Ingebouwde rollen](built-in-roles.md) voor een lijst met alle ingebouwde rollen voor Azure-resources.
+Met de overige ingebouwde rollen kunnen specifieke Azure-resources worden beheerd. Met de rol [Inzender voor virtuele machines](built-in-roles.md#virtual-machine-contributor) kan een gebruiker bijvoorbeeld virtuele machines maken en beheren. Zie [ingebouwde rollen in azure](built-in-roles.md)voor een lijst met alle ingebouwde rollen.
 
-Alleen Azure Portal en de API's van Azure Resource Manager ondersteunen RBAC. Gebruikers, groepen en toepassingen met toegewezen RBAC-rollen kunnen geen gebruikmaken van de [API's van het klassieke implementatiemodel van Azure](../azure-resource-manager/management/deployment-models.md).
+Alleen de Azure Portal en de Azure Resource Manager-Api's ondersteunen Azure RBAC. Gebruikers, groepen en toepassingen waaraan Azure-functies zijn toegewezen, kunnen de [api's van het klassieke Azure-implementatie model](../azure-resource-manager/management/deployment-models.md)niet gebruiken.
 
-In Azure Portal worden roltoewijzingen met RBAC weergegeven op de blade **Toegangsbeheer (IAM)**. Deze Blade kan worden gevonden in de portal, zoals beheer groepen, abonnementen, resource groepen en verschillende bronnen.
+In de Azure Portal worden roltoewijzingen die gebruikmaken van Azure RBAC, weer gegeven op de Blade **toegangs beheer (IAM)** . Deze Blade kan worden gevonden in de portal, zoals beheer groepen, abonnementen, resource groepen en verschillende bronnen.
 
 ![De blade Toegangsbeheer (IAM) in Azure Portal](./media/rbac-and-directory-admin-roles/access-control-role-assignments.png)
 
@@ -91,44 +91,44 @@ Wanneer u op het tabblad **Rollen** klikt, ziet u de lijst met geïntegreerde en
 
 ![Ingebouwde rollen in Azure Portal](./media/rbac-and-directory-admin-roles/roles-list.png)
 
-Zie[Toegang tot Azure-resources beheren met op rollen gebaseerd toegangsbeheer en de Azure-portal](role-assignments-portal.md) voor meer informatie.
+Zie [Azure-roltoewijzingen toevoegen of verwijderen met behulp van de Azure Portal](role-assignments-portal.md)voor meer informatie.
 
-## <a name="azure-ad-administrator-roles"></a>Azure AD-beheerdersrollen
+## <a name="azure-ad-roles"></a>Azure AD-rollen
 
-Azure AD-beheerdersrollen worden gebruikt voor het beheren van Azure AD-resources in een adreslijst of directory, zoals voor het maken of bewerken van gebruikers, het toewijzen van beheerdersrollen aan anderen, het opnieuw instellen van gebruikerswachtwoorden, het beheren van gebruikerslicenties en het beheren van domeinen. In de volgende tabel worden enkele van de belangrijkste beheerdersrollen van Azure AD beschreven.
+Azure AD-functies worden gebruikt voor het beheren van Azure AD-resources in een directory, zoals het maken of bewerken van gebruikers, het toewijzen van beheerders rollen aan anderen, het opnieuw instellen van gebruikers wachtwoorden, het beheren van gebruikers licenties en het beheren van domeinen. In de volgende tabel worden enkele belang rijke Azure AD-rollen beschreven.
 
-| Azure AD-beheerdersrol | Machtigingen | Opmerkingen |
+| Azure AD-rol | Machtigingen | Opmerkingen |
 | --- | --- | --- |
 | [Globale beheerder](../active-directory/users-groups-roles/directory-assign-admin-roles.md#company-administrator-permissions) | <ul><li>Toegang tot alle beheerfuncties in Azure Active Directory beheren, evenals services die federeren naar Azure Active Directory</li><li>Beheerdersrollen aan anderen toewijzen</li><li>Het wachtwoord voor gebruikers en alle andere beheerders opnieuw instellen</li></ul> | De persoon die zich registreert voor de Azure Active Directory-tenant wordt de globale beheerder. |
 | [Gebruikersbeheerder](../active-directory/users-groups-roles/directory-assign-admin-roles.md#user-administrator) | <ul><li>Alle aspecten van gebruikers en groepen maken en beheren</li><li>Ondersteuningstickets beheren</li><li>Servicestatus bewaken</li><li>Wachtwoorden wijzigen voor gebruikers, helpdeskbeheerders en andere gebruikersbeheerders</li></ul> |  |
 | [Factureringsbeheerder](../active-directory/users-groups-roles/directory-assign-admin-roles.md#billing-administrator) | <ul><li>Aankopen doen</li><li>Abonnementen beheren</li><li>Ondersteuningstickets beheren</li><li>Servicestatus beheren</li></ul> |  |
 
-In Azure Portal kunt u de lijst met Azure AD-beheerdersrollen bekijken op de blade **Rollen en beheerders**. Zie [Machtigingen voor beheerdersrol toewijzen in Azure Active Directory](../active-directory/users-groups-roles/directory-assign-admin-roles.md) voor een lijst met alle Azure AD-beheerdersrollen.
+In de Azure Portal ziet u de lijst met Azure AD-rollen op de Blade **rollen en beheerders** . Zie [machtigingen voor beheerdersrol in azure Active Directory](../active-directory/users-groups-roles/directory-assign-admin-roles.md)voor een lijst met alle Azure AD-rollen.
 
-![Azure AD-beheerdersrollen in Azure Portal](./media/rbac-and-directory-admin-roles/directory-admin-roles.png)
+![Azure AD-rollen in de Azure Portal](./media/rbac-and-directory-admin-roles/directory-admin-roles.png)
 
-## <a name="differences-between-azure-rbac-roles-and-azure-ad-administrator-roles"></a>Verschillen tussen Azure RBAC-rollen en Azure AD-beheerdersrollen
+## <a name="differences-between-azure-roles-and-azure-ad-roles"></a>Verschillen tussen Azure-rollen en Azure AD-rollen
 
-In algemene zin worden Azure RBAC-rollen gebruikt voor het beheren van Azure-resources, terwijl Azure AD-beheerdersrollen worden gebruikt voor het beheren van Azure Active Directory-resources. In de volgende tabel worden enkele verschillen vergeleken.
+Op hoog niveau beheren Azure-rollen beheer machtigingen voor het beheer van Azure-resources, terwijl Azure AD-rollen machtigingen voor het beheren van Azure Active Directory resources hebben. In de volgende tabel worden enkele verschillen vergeleken.
 
-| Azure RBAC-rollen | Azure AD-beheerdersrollen |
+| Azure-rollen | Azure AD-rollen |
 | --- | --- |
 | Toegang tot Azure-resources beheren | Toegang tot Azure Active Directory-resources beheren |
 | Ondersteuning voor aangepaste rollen | Ondersteuning voor aangepaste rollen |
 | Bereik kan worden opgegeven op meerdere niveaus (beheergroep, abonnement, resourcegroep, resource) | Bereik is op tenantniveau |
 | Gegevens van rollen zijn beschikbaar vanuit Azure Portal, Azure CLI, Azure PowerShell, Azure Resource Manager-sjablonen en de REST-API | U kunt toegang krijgen tot de functie gegevens in de Azure-beheer Portal, Microsoft 365 beheer centrum, Microsoft Graph, AzureAD Power shell |
 
-### <a name="do-azure-rbac-roles-and--azure-ad-administrator-roles-overlap"></a>Is er overlap tussen Azure RBAC-rollen en Azure AD-beheerdersrollen?
+### <a name="do-azure-roles-and-azure-ad-roles-overlap"></a>Overlappen Azure-rollen en Azure AD-rollen elkaar?
 
-In het standaardscenario is er geen overlap tussen Azure RBAC-rollen en Azure AD-beheerdersrollen. Als een globale beheerder zijn of haar toegang echter verhoogt door de schakeloptie **Globale beheerder kan Azure-abonnementen en beheergroepen beheren** te kiezen in Azure Portal, krijgt de globale beheerder de rol [ Beheerder van gebruikerstoegang](built-in-roles.md#user-access-administrator) (een RBAC-rol) voor alle abonnementen voor een bepaalde tenant. De rol Beheerder van gebruikerstoegang stelt de gebruiker in staat om andere gebruikers toegang te verlenen tot Azure-resources. Deze schakeloptie kan handig zijn om weer toegang te krijgen tot een abonnement. Zie [Toegangsrechten verhogen als een Azure AD-beheerder](elevate-access-global-admin.md) voor meer informatie.
+Azure-rollen en Azure AD-rollen vallen standaard niet onder Azure en Azure AD. Als een globale beheerder de toegang echter heeft verhoogd door de globale beheerder te kiezen voor het **beheren van Azure-abonnementen en beheergroepen** switch in de Azure Portal, krijgt de globale beheerder de rol van [beheerder voor gebruikers toegang](built-in-roles.md#user-access-administrator) (een Azure-rol) voor alle abonnementen voor een bepaalde Tenant. De rol Beheerder van gebruikerstoegang stelt de gebruiker in staat om andere gebruikers toegang te verlenen tot Azure-resources. Deze schakeloptie kan handig zijn om weer toegang te krijgen tot een abonnement. Zie [toegang verhogen voor het beheer van alle Azure-abonnementen en-beheer groepen](elevate-access-global-admin.md)voor meer informatie.
 
-Er zijn verschillende Azure AD-beheerdersrollen die Azure AD en Microsoft Office 365 overlappen, zoals de rollen Globale beheerder en Gebruikersbeheerder. Als u bijvoorbeeld lid bent van de rol Globale beheerder, hebt u de bevoegdheden van globale beheerders in Azure AD en Office 365, zoals het doorvoeren van wijzigingen in Microsoft Exchange en Microsoft SharePoint. De globale beheerder heeft echter standaard geen toegang tot Azure-resources.
+Verschillende Azure AD-rollen beslaan Azure AD en Microsoft Office 365, zoals de rol van globale beheerder en gebruikers beheerder. Als u bijvoorbeeld lid bent van de rol Globale beheerder, hebt u de bevoegdheden van globale beheerders in Azure AD en Office 365, zoals het doorvoeren van wijzigingen in Microsoft Exchange en Microsoft SharePoint. De globale beheerder heeft echter standaard geen toegang tot Azure-resources.
 
-![Azure RBAC-rollen vergeleken met Azure AD-beheerdersrollen](./media/rbac-and-directory-admin-roles/azure-office-roles.png)
+![Azure RBAC versus Azure AD-rollen](./media/rbac-and-directory-admin-roles/azure-office-roles.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Wat is op rollen gebaseerd toegangsbeheer (RBAC) voor Azure-resources?](overview.md)
+- [Wat is Azure op rollen gebaseerd toegangs beheer (Azure RBAC)?](overview.md)
 - [Machtigingen voor beheerrol in Azure Active Directory](../active-directory/users-groups-roles/directory-assign-admin-roles.md)
 - [Klassieke abonnementsbeheerders van Azure](classic-administrators.md)
 - [Cloud acceptatie Framework: resource Access Management in azure](/azure/cloud-adoption-framework/govern/resource-consistency/resource-access-management)

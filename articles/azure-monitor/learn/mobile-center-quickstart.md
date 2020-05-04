@@ -8,12 +8,12 @@ ms.author: mbullwin
 ms.date: 06/26/2019
 ms.reviewer: daviste
 ms.custom: mvc
-ms.openlocfilehash: a59a6841a1db3cecfe52c54135b42f5b6a095ce3
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: c31083c5e0591d5a49f878ba24a7fd2f0ef6c84d
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77660288"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82731948"
 ---
 # <a name="start-analyzing-your-mobile-app-with-app-center-and-application-insights"></a>Mobiele app analyseren met App Center en Application Insights
 
@@ -33,7 +33,7 @@ Als u wilt beginnen, maakt u een account en [meldt u zich aan met app Center](ht
 
 ## <a name="onboard-to-app-center"></a>Onboarden in App Center
 
-Voordat u Application Insights kunt gebruiken met uw mobiele app, moet u onboarding voor de app uitvoeren in [App Center](https://docs.microsoft.com/mobile-center/). Application Insights kan namelijk niet rechtstreeks telemetriegegevens ontvangen van uw mobiele app. Uw app stuurt daarom telemetrie van aangepaste gebeurtenissen naar App Center. App Center exporteertkopieën van deze aangepaste gebeurtenissen vervolgens direct naar Application Insights zodra de gebeurtenissen worden ontvangen. (Dit geldt niet voor de [Application INSIGHTS js-SDK](https://github.com/Microsoft/ApplicationInsights-JS) of de [systeem eigen invoeg toepassing](https://github.com/Microsoft/ApplicationInsights-JS/tree/master/vNext/extensions/applicationinsights-react-native) waarbij telemetriegegevens rechtstreeks naar Application Insights worden verzonden.)
+Voordat u Application Insights kunt gebruiken met uw mobiele app, moet u onboarding voor de app uitvoeren in [App Center](https://docs.microsoft.com/mobile-center/). Application Insights kan namelijk niet rechtstreeks telemetriegegevens ontvangen van uw mobiele app. Uw app stuurt daarom telemetrie van aangepaste gebeurtenissen naar App Center. App Center exporteertkopieën van deze aangepaste gebeurtenissen vervolgens direct naar Application Insights zodra de gebeurtenissen worden ontvangen. (Dit geldt niet voor de [Application INSIGHTS js-SDK](https://github.com/Microsoft/ApplicationInsights-JS) of de [systeem eigen invoeg toepassing](https://github.com/Microsoft/ApplicationInsights-JS/tree/master/extensions/applicationinsights-react-native) waarbij telemetriegegevens rechtstreeks naar Application Insights worden verzonden.)
 
 U kunt voor uw app onboarding uitvoeren door de quickstart voor App Center uit te voeren voor elk platform dat uw app ondersteunt. Maak afzonderlijke App Center-exemplaren voor elk platform:
 

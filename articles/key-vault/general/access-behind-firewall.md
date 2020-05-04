@@ -10,12 +10,12 @@ ms.subservice: general
 ms.topic: tutorial
 ms.date: 08/12/2019
 ms.author: ambapat
-ms.openlocfilehash: 5317111cf023316541f3435ff0d34450061209c6
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 07ae08f87c9a3e788944a48f6d5a24e2b076d16f
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82186370"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82732322"
 ---
 # <a name="access-azure-key-vault-behind-a-firewall"></a>Toegang tot Azure Key Vault achter een firewall
 
@@ -64,7 +64,13 @@ Voor alle beheer- en cryptografiebewerkingen van het key vault-object (sleutels 
 
 ## <a name="ip-address-ranges"></a>IP-adresbereiken
 
-De Key Vault-service maakt gebruik van andere Azure-bronnen zoals de PaaS-infrastructuur. Daarom is het niet mogelijk om een specifiek bereik van IP-adressen op te geven die key vault-eindpunten op een bepaald moment hebben. Raadpleeg het document [Microsoft Azure Datacenter IP-adresbereiken](https://www.microsoft.com/download/details.aspx?id=41653) als met uw firewall alleen IP-adresbereiken worden ondersteund. Authentication and Identity (Azure Active Directory) is een wereldwijde service waarmee failover naar andere regio's kan worden uitgevoerd of verkeer kan worden verplaatst zonder dit te melden. In dit scenario moeten alle IP-adresbereiken bij [IP-adressen voor Authentication and Identity](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2#bkmk_identity_ip) worden toegevoegd aan de firewall.
+De Key Vault-service maakt gebruik van andere Azure-bronnen zoals de PaaS-infrastructuur. Daarom is het niet mogelijk om een specifiek bereik van IP-adressen op te geven die key vault-eindpunten op een bepaald moment hebben. Als uw firewall alleen IP-adresbereiken ondersteunt, raadpleegt u Microsoft Azure Data Center IP-bereiken beschik bare documenten op:
+* [Public](https://www.microsoft.com/en-us/download/details.aspx?id=56519)
+* [US Gov](https://www.microsoft.com/en-us/download/details.aspx?id=57063)
+* [Duitsland](https://www.microsoft.com/en-us/download/details.aspx?id=57064)
+* [China](https://www.microsoft.com/en-us/download/details.aspx?id=57062)
+
+Authentication and Identity (Azure Active Directory) is een wereldwijde service waarmee failover naar andere regio's kan worden uitgevoerd of verkeer kan worden verplaatst zonder dit te melden. In dit scenario moeten alle IP-adresbereiken bij [IP-adressen voor Authentication and Identity](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2#bkmk_identity_ip) worden toegevoegd aan de firewall.
 
 ## <a name="next-steps"></a>Volgende stappen
 

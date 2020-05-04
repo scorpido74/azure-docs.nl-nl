@@ -1,6 +1,6 @@
 ---
-title: 'Zelf studie: gebruikers toegang verlenen tot Azure-resources met RBAC en Resource Manager-sjabloon'
-description: Meer informatie over hoe u een gebruiker toegang verleent tot Azure-resources met behulp van het op rollen gebaseerde toegangs beheer (RBAC) met behulp van Azure Resource Manager sjabloon in deze zelf studie.
+title: 'Zelf studie: een gebruiker toegang verlenen tot Azure-resources met behulp van een Azure Resource Manager sjabloon-Azure RBAC'
+description: Meer informatie over hoe u een gebruiker toegang verleent tot Azure-resources met behulp van een Azure Resource Manager sjabloon en Azure RBAC (op rollen gebaseerd toegangs beheer) in deze zelf studie.
 services: role-based-access-control,azure-resource-manager
 documentationCenter: ''
 author: rolyon
@@ -13,16 +13,16 @@ ms.tgt_pltfrm: ''
 ms.workload: identity
 ms.date: 05/15/2019
 ms.author: rolyon
-ms.openlocfilehash: 96ca4f65d2def5f5004388c533410f09cc2a71fa
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: f98b1e9c57cf9f624c5af3e59c8afd56d073dd28
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77138202"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82735467"
 ---
-# <a name="tutorial-grant-a-user-access-to-azure-resources-using-rbac-and-resource-manager-template"></a>Zelf studie: een gebruiker toegang verlenen tot Azure-resources met behulp van RBAC en Resource Manager-sjabloon
+# <a name="tutorial-grant-a-user-access-to-azure-resources-using-an-azure-resource-manager-template"></a>Zelf studie: een gebruiker toegang verlenen tot Azure-resources met behulp van een Azure Resource Manager sjabloon
 
-[Op rollen gebaseerd toegangsbeheer (RBAC)](overview.md) is de manier waarop u de toegang tot Azure-resources beheert. In deze zelf studie maakt u een resource groep en verleent u een gebruiker toegang tot het maken en beheren van virtuele machines in de resource groep. In deze zelf studie wordt gekeken naar het proces van het implementeren van een resource manager-sjabloon om de toegang te verlenen. Zie de [documentatie van Resource Manager](/azure/azure-resource-manager/) en de [sjabloon verwijzing](/azure/templates/microsoft.authorization/allversions
+[Azure RBAC (op rollen gebaseerd toegangs beheer)](overview.md) is de manier waarop u de toegang tot Azure-resources beheert. In deze zelf studie maakt u een resource groep en verleent u een gebruiker toegang tot het maken en beheren van virtuele machines in de resource groep. In deze zelf studie wordt gekeken naar het proces van het implementeren van een resource manager-sjabloon om de toegang te verlenen. Zie de [documentatie van Resource Manager](/azure/azure-resource-manager/) en de [sjabloon verwijzing](/azure/templates/microsoft.authorization/allversions
 )voor meer informatie over het ontwikkelen van Resource Manager-sjablonen.
 
 In deze zelfstudie leert u het volgende:
@@ -83,4 +83,4 @@ Remove-AzResourceGroup -Name $resourceGroupName
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"]
-> [Zelf studie: een gebruiker toegang verlenen tot Azure-resources met RBAC en Azure PowerShell](tutorial-role-assignments-user-powershell.md)
+> [Zelf studie: een gebruiker toegang verlenen tot Azure-resources met behulp van Azure PowerShell](tutorial-role-assignments-user-powershell.md)

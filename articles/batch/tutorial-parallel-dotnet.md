@@ -5,12 +5,12 @@ ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 12/21/2018
 ms.custom: mvc
-ms.openlocfilehash: 24f68ee1d2650a5f3e77b61fb30b5c0185cd82b1
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: d8a5db6c6c63d680514e21bef0e5a8bc6b3ea550
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82117145"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82733070"
 ---
 # <a name="tutorial-run-a-parallel-workload-with-azure-batch-using-the-net-api"></a>Zelfstudie: Een parallelle workload uitvoeren met Azure Batch met behulp van de .NET API
 
@@ -193,7 +193,7 @@ Daarna wordt in het voorbeeld met behulp van een aanroep naar `CreatePoolIfNotEx
 Het aantal knooppunten en de VM-grootte worden ingesteld met behulp van gedefinieerde constanten. Batch ondersteunt toegewezen knooppunten en [knooppunten met een lage prioriteit](batch-low-pri-vms.md) en u kunt een of beide gebruiken in uw pools. Toegewezen rekenknooppunten zijn gereserveerd voor uw pool. Knooppunten met een lage prioriteit worden aangeboden tegen een lagere prijs en worden gehaald uit het overschot van de VM-capaciteit in Azure. Knooppunten met een lage prioriteit zijn niet beschikbaar als Azure onvoldoende capaciteit heeft. In het voorbeeld wordt standaard een pool met slechts 5 knooppunten met lage prioriteit gemaakt met de grootte *Standard_A1_v2*.
 
 >[!Note]
->Controleer de quota van uw knoop punten. Zie [quota's en limieten](https://nam06.safelinks.protection.outlook.com/?url=https%3A%2F%2Fdocs.microsoft.com%2Fen-us%2Fazure%2Fbatch%2Fbatch-quota-limit%23increase-a-quota&data=02%7C01%7CLaura.Brenner%40microsoft.com%7C9843bf742920414ca3e508d7cb83e288%7C72f988bf86f141af91ab2d7cd011db47%7C1%7C0%7C637201639605899246&sdata=uKY00XhSMjDkFIPGHYmDN4TOtL4UQhFus42ncst95pg%3D&reserved=0) voor de batch-service voor instructies voor het maken van een quotum aanvraag.
+>Controleer de quota van uw knoop punten. Zie [quota's en limieten](batch-quota-limit.md#increase-a-quota) voor de batch-service voor instructies voor het maken van een quotum aanvraag.
 
 De toepassing ffmpeg wordt geïmplementeerd in de rekenknooppunten door een [ApplicationPackageReference](/dotnet/api/microsoft.azure.batch.applicationpackagereference) toe te voegen aan de poolconfiguratie.
 

@@ -1,6 +1,6 @@
 ---
-title: 'Zelf studie: een aangepaste rol maken voor Azure-resources met Azure PowerShell'
-description: Ga aan de slag met het maken van een aangepaste rol voor Azure-resources met behulp van Azure PowerShell in deze zelf studie.
+title: 'Zelf studie: een aangepaste Azure-rol maken met Azure PowerShell-Azure RBAC'
+description: Ga in deze zelf studie aan de slag met het maken van een aangepaste Azure-rol met behulp van Azure PowerShell en Azure op rollen gebaseerd toegangs beheer (Azure RBAC).
 services: active-directory
 documentationCenter: ''
 author: rolyon
@@ -13,16 +13,16 @@ ms.tgt_pltfrm: ''
 ms.workload: identity
 ms.date: 02/20/2019
 ms.author: rolyon
-ms.openlocfilehash: d337e31f554c0aabbb94771aa7bfca4afb19a431
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 8aedc59fc34278bf84983d78bf0e9a31fe38ee93
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77138280"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82735586"
 ---
-# <a name="tutorial-create-a-custom-role-for-azure-resources-using-azure-powershell"></a>Zelf studie: een aangepaste rol maken voor Azure-resources met behulp van Azure PowerShell
+# <a name="tutorial-create-an-azure-custom-role-using-azure-powershell"></a>Zelf studie: een aangepaste Azure-rol maken met behulp van Azure PowerShell
 
-Als de [ingebouwde rollen voor Azure-resources](built-in-roles.md) niet voldoen aan de specifieke behoeften van uw organisatie, kunt u uw eigen aangepaste rollen maken. Voor deze zelfstudie gaat u met behulp van Azure PowerShell een aangepaste rol maken met de naam Reader Support Tickets. De aangepaste rol stelt de gebruiker in staat om alles in het beheervenster van een abonnement te zien en ook om ondersteuningstickets te openen.
+Als de [ingebouwde rollen van Azure](built-in-roles.md) niet voldoen aan de specifieke behoeften van uw organisatie, kunt u uw eigen aangepaste rollen maken. Voor deze zelfstudie gaat u met behulp van Azure PowerShell een aangepaste rol maken met de naam Reader Support Tickets. De aangepaste rol stelt de gebruiker in staat om alles in het beheervenster van een abonnement te zien en ook om ondersteuningstickets te openen.
 
 In deze zelfstudie leert u het volgende:
 
@@ -73,7 +73,7 @@ De eenvoudigste manier om een aangepaste rol te maken, is door een ingebouwde ro
 
 1. Open het bestand **ReaderSupportRole.json** in een teksteditor.
 
-    Hieronder ziet u de JSON-uitvoer. Zie [Aangepaste rollen](custom-roles.md) voor informatie over de verschillende eigenschappen.
+    Hieronder ziet u de JSON-uitvoer. Zie voor meer informatie over de verschillende eigenschappen [Azure aangepaste rollen](custom-roles.md).
 
     ```json
     {
@@ -277,4 +277,4 @@ Als u de aangepaste rol wilt bijwerken, kunt u het JSON-bestand bijwerken of het
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"]
-> [Aangepaste rollen maken voor Azure-resources met Azure PowerShell](custom-roles-powershell.md)
+> [Aangepaste Azure-rollen maken of bijwerken met behulp van Azure PowerShell](custom-roles-powershell.md)

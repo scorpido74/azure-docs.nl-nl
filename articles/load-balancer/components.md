@@ -11,18 +11,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/30/2020
 ms.author: allensu
-ms.openlocfilehash: 532dc313a673d28ffe4fc66060d6dcb491ce866c
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.openlocfilehash: 4a84c43b57ec4f632a2bfabb10d112e4975249bf
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82691276"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82733104"
 ---
 # <a name="azure-load-balancer-components"></a>Azure Load Balancer onderdelen
 
-Azure Load Balancer bevat verschillende belang rijke onderdelen voor de werking ervan.  
-
-Deze onderdelen kunnen worden geconfigureerd in uw abonnement via Azure Portal, Azure CLI, Azure PowerShell of sjablonen.
+Azure Load Balancer bevat verschillende belang rijke onderdelen voor de werking ervan. Deze onderdelen kunnen worden geconfigureerd in uw abonnement via Azure Portal, Azure CLI, Azure PowerShell of sjablonen.
 
 ## <a name="frontend-ip-configurations"></a>Front-end-IP-configuraties
 
@@ -32,6 +30,14 @@ Het IP-adres van de load balancer. Het is het contact punt voor clients. Deze ad
 - **Privé-IP-adres**
 
 De selectie van het IP-adres bepaalt het **type** Load Balancer gemaakt. Met de selectie van privé-IP-adressen maakt u een interne load balancer. Met de selectie van een openbaar IP-adres maakt u een open bare load balancer.
+
+|  | Openbare load balancer  | Interne load balancer |
+| ---------- | ---------- | ---------- |
+| Front-end-IP-configuratie| Openbaar IP-adres | Privé IP-adres|
+| Beschrijving | Een openbaar load balancer wijst het open bare IP-adres en de poort van binnenkomend verkeer toe aan het particuliere IP-adres en de poort van de virtuele machine. Load Balancer wijst verkeer toe op de andere manier rond het antwoord verkeer van de virtuele machine. U kunt specifieke typen verkeer distribueren over meerdere Vm's of services door de regels voor taak verdeling toe te passen. U kunt bijvoorbeeld de werkbelasting door webverkeeraanvragen over meerdere webservers spreiden.| Met een interne load balancer wordt verkeer gedistribueerd naar bronnen die zich binnen een virtueel netwerk bevinden. Azure beperkt de toegang tot de frontend-IP-adressen van een virtueel netwerk waarop taak verdeling van toepassing is. Front-end-IP-adressen en virtuele netwerken worden nooit rechtstreeks blootgesteld aan een Internet-eind punt. Interne Line-Of-Business-toepassingen worden in Azure uitgevoerd en worden vanuit Azure of vanaf on-premises resources benaderd. |
+| Sku's ondersteund | Basis, standaard | Basis, standaard |
+
+![Voor beeld van een gelaagde load balancer](./media/load-balancer-overview/load-balancer.png)
 
 ## <a name="backend-pool"></a>Back-endpool
 

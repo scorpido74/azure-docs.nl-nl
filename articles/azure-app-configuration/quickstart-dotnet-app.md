@@ -8,12 +8,12 @@ ms.service: azure-app-configuration
 ms.topic: quickstart
 ms.date: 12/17/2019
 ms.author: lcozzens
-ms.openlocfilehash: 1c56088a2c51c50c7f9cf1ff1e790d580fdb08d8
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: cfa89a7921751541d1044d697237946cd63cbfd8
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80245392"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82732050"
 ---
 # <a name="quickstart-create-a-net-framework-app-with-azure-app-configuration"></a>Snelstartgids: een .NET Framework-app maken met Azure-app configuratie
 
@@ -43,17 +43,17 @@ In deze Snelstartgids neemt u Azure-app configuratie op in een op .NET Framework
 
 1. Start Visual Studio en selecteer **bestand** > **New** > **project**.
 
-1. In **een nieuw project maken**filtert u op het type **console** project en klikt u op **console-app (.NET Framework)**. Selecteer **Next**.
+1. In **een nieuw project maken**filtert u op het type **console** project en klikt u op **console-app (.NET Framework)**. Selecteer **Volgende**.
 
 1. Voer in **uw nieuwe project configureren**een project naam in. Onder **Framework**selecteert u **.NET Framework 4.7.1** of hoger. Selecteer **Maken**.
 
 ## <a name="connect-to-an-app-configuration-store"></a>Verbinding maken met een app-configuratie archief
 
-1. Klik met de rechter muisknop op het project en selecteer **NuGet-pakketten beheren**. Zoek op het tabblad **Bladeren** de volgende NuGet-pakketten aan uw project en voeg deze toe. Als u deze niet kunt vinden, schakelt u het selectie vakje **include Prerelease** in.
+1. Klik met de rechter muisknop op het project en selecteer **NuGet-pakketten beheren**. Zoek op het tabblad **Bladeren** de volgende NuGet-pakketten aan uw project en voeg deze toe.
 
     ```
-    Microsoft.Configuration.ConfigurationBuilders.AzureAppConfiguration 1.0.0 preview or later
-    Microsoft.Configuration.ConfigurationBuilders.Environment 2.0.0 preview or later
+    Microsoft.Configuration.ConfigurationBuilders.AzureAppConfiguration 1.0.0 or later
+    Microsoft.Configuration.ConfigurationBuilders.Environment 2.0.0 or later
     System.Configuration.ConfigurationManager version 4.6.0 or later
     ```
 

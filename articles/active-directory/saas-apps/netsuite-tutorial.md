@@ -12,15 +12,15 @@ ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.topic: tutorial
-ms.date: 01/22/2020
+ms.date: 04/28/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6a920e58f1ffd4c3e3e9769bf6346100a8677b90
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 2eba47dede77f6d8dd19bde99a94de3ff5900f99
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "76760046"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82732782"
 ---
 # <a name="tutorial-integrate-azure-ad-single-sign-on-sso-with-netsuite"></a>Zelf studie: Azure AD-eenmalige aanmelding (SSO) integreren met NetSuite
 
@@ -91,14 +91,14 @@ Ga als volgt te werk om Azure AD SSO in te scha kelen in de Azure Portal:
 
     ||
     |-|
-    | `https://<Account ID>.NetSuite.com/saml2/acs`|
-    | `https://<Account ID>.na1.NetSuite.com/saml2/acs`|
-    | `https://<Account ID>.na2.NetSuite.com/saml2/acs`|
-    | `https://<Account ID>.sandbox.NetSuite.com/saml2/acs`|
-    | `https://<Account ID>.na1.sandbox.NetSuite.com/saml2/acs`|
-    | `https://<Account ID>.na2.sandbox.NetSuite.com/saml2/acs`|
+    | `https://<Instance ID>.NetSuite.com/saml2/acs`|
+    | `https://<Instance ID>.na1.NetSuite.com/saml2/acs`|
+    | `https://<Instance ID>.na2.NetSuite.com/saml2/acs`|
+    | `https://<Instance ID>.sandbox.NetSuite.com/saml2/acs`|
+    | `https://<Instance ID>.na1.sandbox.NetSuite.com/saml2/acs`|
+    | `https://<Instance ID>.na2.sandbox.NetSuite.com/saml2/acs`|
 
-    * U krijgt de ** < `Account ID` ** waarde in de configuratie sectie van het onderdeel Netsuite, die verderop in de zelf studie wordt beschreven in stap 8 onder configuratie van het Netsuite. U vindt het exacte domein (zoals system.na0.netsuite.com in dit geval).
+    * U krijgt de ** < `Instance ID` ** waarde in de configuratie sectie van het onderdeel Netsuite, die verderop in de zelf studie wordt beschreven in stap 8 onder configuratie van het Netsuite. U vindt het exacte domein (zoals system.na0.netsuite.com in dit geval).
 
         ![Eenmalige aanmelding configureren](./media/NetSuite-tutorial/domain-value.png)
 

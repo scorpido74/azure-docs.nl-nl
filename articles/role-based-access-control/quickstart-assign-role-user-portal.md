@@ -1,6 +1,6 @@
 ---
-title: 'Zelf studie: gebruikers toegang verlenen tot Azure-resources met RBAC en de Azure Portal '
-description: In deze zelf studie leert u hoe u een gebruiker toegang verleent tot Azure-resources met behulp van op rollen gebaseerd toegangs beheer (RBAC) in de Azure Portal.
+title: 'Zelf studie: een gebruiker toegang verlenen tot Azure-resources met behulp van de Azure Portal-Azure RBAC'
+description: In deze zelf studie leert u hoe u een gebruiker toegang verleent tot Azure-resources met behulp van de Azure Portal en Azure op rollen gebaseerd toegangs beheer (Azure RBAC).
 services: role-based-access-control
 documentationCenter: ''
 author: rolyon
@@ -13,16 +13,16 @@ ms.tgt_pltfrm: ''
 ms.workload: identity
 ms.date: 02/22/2019
 ms.author: rolyon
-ms.openlocfilehash: 6281c9a1818a3b46ac4f7a62f8ae76668db56887
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: e70a3a1eedbc56754ad46fd99dddc0c7a3a6cf2f
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77138098"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82735841"
 ---
-# <a name="tutorial-grant-a-user-access-to-azure-resources-using-rbac-and-the-azure-portal"></a>Zelf studie: een gebruiker toegang verlenen tot Azure-resources met RBAC en de Azure Portal
+# <a name="tutorial-grant-a-user-access-to-azure-resources-using-the-azure-portal"></a>Zelf studie: een gebruiker toegang verlenen tot Azure-resources met behulp van de Azure Portal
 
-[Op rollen gebaseerd toegangsbeheer (RBAC)](overview.md) is de manier waarop u de toegang tot Azure-resources beheert. In deze zelfstudie verleent u een gebruiker toegang tot het maken en beheren van virtuele machines in een resourcegroep.
+[Azure RBAC (op rollen gebaseerd toegangs beheer)](overview.md) is de manier waarop u de toegang tot Azure-resources beheert. In deze zelfstudie verleent u een gebruiker toegang tot het maken en beheren van virtuele machines in een resourcegroep.
 
 In deze zelfstudie leert u het volgende:
 
@@ -58,7 +58,7 @@ Meld u aan bij Azure Portal op https://portal.azure.com.
 
 ## <a name="grant-access"></a>Toegang verlenen
 
-In RBAC verleent u toegang door een roltoewijzing te maken.
+In azure RBAC kunt u een roltoewijzing maken om toegang te verlenen.
 
 1. Klik in de lijst **Resourcegroepen** op de nieuwe resourcegroep **rbac-resource-group**.
 
@@ -88,7 +88,7 @@ In RBAC verleent u toegang door een roltoewijzing te maken.
 
 ## <a name="remove-access"></a>Toegang intrekken
 
-Als u in RBAC de toegang wilt intrekken voor een rol, verwijdert u de roltoewijzing.
+In azure RBAC kunt u een roltoewijzing verwijderen om de toegang te verwijderen.
 
 1. Plaats in de lijst met roltoewijzingen een vinkje naast de gebruiker met de rol Inzender voor virtuele machines.
 
@@ -115,4 +115,4 @@ Als u in RBAC de toegang wilt intrekken voor een rol, verwijdert u de roltoewijz
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"]
-> [Zelf studie: een gebruiker toegang verlenen tot Azure-resources met RBAC en Azure PowerShell](tutorial-role-assignments-user-powershell.md)
+> [Zelf studie: een gebruiker toegang verlenen tot Azure-resources met behulp van Azure PowerShell](tutorial-role-assignments-user-powershell.md)

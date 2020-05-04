@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: conceptual
 ms.date: 12/14/2017
 ms.author: swmachan
-ms.openlocfilehash: 6a197095d97e67f7548e60375148cff57e47b797
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 0c099584642de1939df5e1e7d9785006e8d25235
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "68595937"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82732339"
 ---
 # <a name="how-to-use-collaborative-translation-framework-ctf-reporting"></a>CTF-rapportage (Collaborative Translation Framework) gebruiken
 
@@ -115,8 +115,8 @@ De resultatenset bevat de matrix van de **UserTranslationCount**. Elke UserTrans
 > Het quotum wordt aangepast om ervoor te zorgen dat verdeling over alle gebruikers van de service.
 
 **Code voorbeelden weer geven op GitHib**
-* [G #](https://github.com/MicrosoftTranslator/Documentation-Code-TextAPI/blob/master/ctf/ctf-getusertranslationcounts-example-csharp.md)
-* [PHP](https://github.com/MicrosoftTranslator/Documentation-Code-TextAPI/blob/master/ctf/ctf-getusertranslationcounts-example-php.md)
+* [G #](https://github.com/MicrosoftTranslator/CustomTranslator-API-CSharp)
+* [PHP](https://github.com/MicrosoftTranslator/Text-Translation-API-V3-PHP)
 
 ## <a name="getusertranslations-method"></a>Methode GetUserTranslations
 
@@ -188,5 +188,5 @@ De resultatenset bevat de matrix van de **UserTranslation**. Elke UserTranslatio
 > Het quotum wordt aangepast om ervoor te zorgen dat verdeling over alle gebruikers van de service.
 
 **Code voorbeelden weer geven op GitHib**
-* [G #](https://github.com/MicrosoftTranslator/Documentation-Code-TextAPI/blob/master/ctf/ctf-getusertranslations-example-csharp.md)
-* [PHP](https://github.com/MicrosoftTranslator/Documentation-Code-TextAPI/blob/master/ctf/ctf-getusertranslations-example-php.md)
+* [G #](https://github.com/MicrosoftTranslator/CustomTranslator-API-CSharp)
+* [PHP](https://github.com/MicrosoftTranslator/Text-Translation-API-V3-PHP)

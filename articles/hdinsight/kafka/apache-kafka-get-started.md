@@ -7,23 +7,23 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: quickstart
 ms.custom: mvc
-ms.date: 02/24/2020
-ms.openlocfilehash: 90f7010970f70379c8adecc4214c44d896a1beaf
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.date: 04/29/2020
+ms.openlocfilehash: 0f6e1a7b8ac4dce0504fca5f03090588a75ae1ef
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80130270"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82732438"
 ---
 # <a name="quickstart-create-apache-kafka-cluster-in-azure-hdinsight-using-azure-portal"></a>Snelstartgids: Apache Kafka cluster maken in azure HDInsight met behulp van Azure Portal
 
 [Apache Kafka](./apache-kafka-introduction.md) is een open-source, gedistribueerd streamingplatform. Het wordt vaak gebruikt als een berichtenbroker, omdat het een functionaliteit biedt die vergelijkbaar is met een publicatie-/abonnementswachtrij voor berichten.
 
-In deze snelstart leert u hoe u met Azure Portal een Apache Kafka-cluster maakt. U leert ook hoe u de inbegrepen hulpprogramma's gebruikt voor het verzenden en ontvangen van berichten via Apache Kafka. Zie [clusters instellen in HDInsight](../hdinsight-hadoop-provision-linux-clusters.md)voor uitgebreide uitleg van de beschik bare configuraties. Zie [clusters maken in de portal](../hdinsight-hadoop-create-linux-clusters-portal.md)voor meer informatie over het gebruik van de portal om clusters te maken.
+In deze Quick Start leert u hoe u een Apache Kafka cluster maakt met behulp van de Azure Portal. U leert ook hoe u de inbegrepen hulpprogramma's gebruikt voor het verzenden en ontvangen van berichten via Apache Kafka. Zie [clusters instellen in HDInsight](../hdinsight-hadoop-provision-linux-clusters.md)voor uitgebreide uitleg van de beschik bare configuraties. Zie [clusters maken in de portal](../hdinsight-hadoop-create-linux-clusters-portal.md)voor meer informatie over het gebruik van de portal om clusters te maken.
 
 [!INCLUDE [delete-cluster-warning](../../../includes/hdinsight-delete-cluster-warning.md)]
 
-De Apache Kafka-API is alleen toegankelijk voor resources binnen hetzelfde virtuele netwerk. In deze snelstart benadert u het cluster rechtstreeks via SSH. Als u andere services, netwerken of virtuele machines wilt verbinden met Apache Kafka, moet u eerst een virtueel netwerk maken en vervolgens de resources maken in het netwerk. Zie het document [Verbinding maken met Apache Kafka via een virtueel netwerk](apache-kafka-connect-vpn-gateway.md) voor meer informatie.
+De Apache Kafka-API is alleen toegankelijk voor resources binnen hetzelfde virtuele netwerk. In deze Quick Start hebt u rechtstreeks toegang tot het cluster via SSH. Als u andere services, netwerken of virtuele machines wilt verbinden met Apache Kafka, moet u eerst een virtueel netwerk maken en vervolgens de resources maken in het netwerk. Zie het document [Verbinding maken met Apache Kafka via een virtueel netwerk](apache-kafka-connect-vpn-gateway.md) voor meer informatie. Zie [een virtueel netwerk plannen voor Azure hdinsight](../hdinsight-plan-virtual-network-deployment.md)voor meer algemene informatie over het plannen van virtuele netwerken voor hdinsight.
 
 Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
 
@@ -72,13 +72,13 @@ Voer de volgende stappen uit om een Apache Kafka cluster te maken op HDInsight:
     |Type van primaire opslag|Gebruik de standaard waarde **Azure Storage**.|
     |Selectiemethode|Gebruik de standaard waarde **uit de lijst**.|
     |Primair opslagaccount|Gebruik de vervolg keuzelijst om een bestaand opslag account te selecteren of selecteer **nieuwe maken**. Als u een nieuw account maakt, moet de naam tussen de 3 en 24 tekens lang zijn en mag alleen cijfers en kleine letters bevatten|
-    |Container|De automatisch gevulde waarde gebruiken.|
+    |Container|De automatisch ingevulde waarde gebruiken.|
 
     ![HDInsight Linux aan de slag waarden voor cluster opslag opgeven](./media/apache-kafka-get-started/azure-portal-cluster-storage.png "Opslag waarden opgeven voor het maken van een HDInsight-cluster")
 
     Selecteer het tabblad **beveiliging en netwerk** .
 
-1. Laat voor deze snelstart de standaardbeveiligingsinstellingen staan. Ga naar [Een HDInsight-cluster configureren met Enterprise Security Package met behulp van Azure Active Directory Domain Services](../domain-joined/apache-domain-joined-configure-using-azure-adds.md) voor meer informatie over Enterprise Security Package. Ga voor meer informatie over het gebruik van uw eigen sleutel voor Apache Kafka schijf versleuteling naar door de [klant beheerde sleutel schijf versleuteling](../disk-encryption.md)
+1. Voor deze Quick start moet u de standaard beveiligings instellingen behouden. Ga naar [Een HDInsight-cluster configureren met Enterprise Security Package met behulp van Azure Active Directory Domain Services](../domain-joined/apache-domain-joined-configure-using-azure-adds.md) voor meer informatie over Enterprise Security Package. Ga voor meer informatie over het gebruik van uw eigen sleutel voor Apache Kafka schijf versleuteling naar door de [klant beheerde sleutel schijf versleuteling](../disk-encryption.md)
 
    Als u uw cluster verbinding wilt laten maken met een virtueel netwerk, selecteert u een virtueel netwerk in de vervolgkeuzelijst **Virtueel netwerk**.
 
@@ -167,7 +167,7 @@ In deze sectie vraagt u de hostgegevens op uit de Apache Ambari REST API in het 
     ```
 
     > [!Note]  
-    > Voor deze opdracht is toegang tot Ambari vereist. Als uw cluster zich achter een NSG bevindt, voert u deze opdracht uit vanaf een computer die toegang heeft tot Ambari. 
+    > Voor deze opdracht is toegang tot Ambari vereist. Als uw cluster zich achter een NSG bevindt, voert u deze opdracht uit vanaf een computer die toegang heeft tot Ambari.
 
 1. Gebruik de volgende opdracht om te controleren of de omgevingsvariabele juist is ingesteld:
 
@@ -186,7 +186,7 @@ In deze sectie vraagt u de hostgegevens op uit de Apache Ambari REST API in het 
     ```
 
     > [!Note]  
-    > Voor deze opdracht is toegang tot Ambari vereist. Als uw cluster zich achter een NSG bevindt, voert u deze opdracht uit vanaf een computer die toegang heeft tot Ambari. 
+    > Voor deze opdracht is toegang tot Ambari vereist. Als uw cluster zich achter een NSG bevindt, voert u deze opdracht uit vanaf een computer die toegang heeft tot Ambari.
 
 1. Gebruik de volgende opdracht om te controleren of de omgevingsvariabele juist is ingesteld:
 
@@ -214,21 +214,21 @@ Kafka slaat gegevensstromen op in zogenaamde *onderwerpen (topics)*. U kunt het 
 
     * Elke partitie wordt gerepliceerd naar drie werkknooppunten in het cluster.
 
-        Als u het cluster hebt gemaakt in een Azure-regio met drie foutdomeinen, gebruikt u een replicatiefactor van drie. Gebruik anders een replicatiefactor van vier.
+        * Als u het cluster hebt gemaakt in een Azure-regio met drie foutdomeinen, gebruikt u een replicatiefactor van drie. Gebruik anders een replicatiefactor van vier.
         
-        In regio's met drie foutdomeinen zorgt een replicatiefactor van drie ervoor dat replica's worden verdeeld over de foutdomeinen. In regio's met twee foutdomeinen zorgt een replicatiefactor van vier ervoor dat replica's worden verdeeld over de domeinen.
+        * In regio's met drie foutdomeinen zorgt een replicatiefactor van drie ervoor dat replica's worden verdeeld over de foutdomeinen. In regio's met twee foutdomeinen zorgt een replicatiefactor van vier ervoor dat replica's worden verdeeld over de domeinen.
         
-        Raadpleeg het document [Beschikbaarheid van virtuele Linux-machines](../../virtual-machines/windows/manage-availability.md#use-managed-disks-for-vms-in-an-availability-set) voor informatie over het aantal foutdomeinen in een regio.
+        * Raadpleeg het document [Beschikbaarheid van virtuele Linux-machines](../../virtual-machines/windows/manage-availability.md#use-managed-disks-for-vms-in-an-availability-set) voor informatie over het aantal foutdomeinen in een regio.
 
-        Apache Kafka kan niet overweg met Azure-foutdomeinen. Bij het maken van partitiereplica's voor onderwerpen worden replica's mogelijk niet goed gedistribueerd voor hoge beschikbaarheid.
+        * Apache Kafka kan niet overweg met Azure-foutdomeinen. Bij het maken van partitiereplica's voor onderwerpen worden replica's mogelijk niet goed gedistribueerd voor hoge beschikbaarheid.
 
-        Gebruik het [partitieherverdelingsprogramma van Apache Kafka](https://github.com/hdinsight/hdinsight-kafka-tools) voor gegarandeerde hoge beschikbaarheid. Dit hulpprogramma moet vanuit een SSH-verbinding naar het hoofdknooppunt van het Apache Kafka-cluster worden uitgevoerd.
+        * Gebruik het [partitieherverdelingsprogramma van Apache Kafka](https://github.com/hdinsight/hdinsight-kafka-tools) voor gegarandeerde hoge beschikbaarheid. Dit hulpprogramma moet vanuit een SSH-verbinding naar het hoofdknooppunt van het Apache Kafka-cluster worden uitgevoerd.
 
-        Om de hoogst mogelijke beschikbaarheid van uw Apache Kafka-gegevens te waarborgen, moet u de partitiereplica's voor uw onderwerp opnieuw indelen wanneer:
+        * Om de hoogst mogelijke beschikbaarheid van uw Apache Kafka-gegevens te waarborgen, moet u de partitiereplica's voor uw onderwerp opnieuw indelen wanneer:
 
-        * U een nieuw onderwerp of nieuwe partitie maakt
+            * U een nieuw onderwerp of nieuwe partitie maakt
 
-        * U een cluster omhoog schaalt
+            * U een cluster omhoog schaalt
 
 * Gebruik de volgende opdracht om **een lijst met onderwerpen op te vragen**:
 

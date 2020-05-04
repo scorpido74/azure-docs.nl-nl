@@ -1,6 +1,6 @@
 ---
-title: Azure Load Balancer typen
-description: Overzicht van Azure Load Balancer typen
+title: Azure Load Balancer Sku's
+description: Overzicht van Azure Load Balancer Sku's
 services: load-balancer
 documentationcenter: na
 author: asudbring
@@ -9,54 +9,20 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 04/30/2020
+ms.date: 05/01/2020
 ms.author: allensu
-ms.openlocfilehash: 31e2bf19967bb8870ee6ab75687bb3fcc37373f7
-ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
+ms.openlocfilehash: c7ca630b4a6a1bedeab21feacc22cd27a1a3ee7e
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82629971"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82734940"
 ---
-# <a name="azure-load-balancer-types"></a>Azure Load Balancer typen
+# <a name="azure-load-balancer-skus"></a>Azure Load Balancer Sku's
 
-Azure Load Balancer heeft twee typen en twee SKU'S.
+Azure Load Balancer heeft twee soorten of Sku's.
 
-## <a name="public-load-balancer"></a><a name = "publicloadbalancer"></a>Open bare load balancer
-
-Een openbaar load balancer wijst het open bare IP-adres en de poort van binnenkomend verkeer toe aan het particuliere IP-adres en de poort van de virtuele machine. Load Balancer wijst verkeer toe op de andere manier rond het antwoord verkeer van de virtuele machine. U kunt specifieke typen verkeer distribueren over meerdere Vm's of services door regels voor taak verdeling toe te passen. U kunt bijvoorbeeld de werkbelasting door webverkeeraanvragen over meerdere webservers spreiden.
-
->[!NOTE]
->U kunt slechts één openbaar load balancer en één interne load balancer implementeren per beschikbaarheidsset.
-
-In de volgende afbeelding ziet u een eind punt met gelijke taak verdeling voor Internet verkeer dat wordt gedeeld door drie Vm's voor de open bare en TCP-poort 80. Deze drie VM's maken deel uit van een set met taakverdeling.
-
-![Public load balancer-voor beeld](./media/load-balancer-overview/load-balancer.png)
-
-*Afbeelding: webverkeer balanceren met behulp van een open bare load balancer*
-
-Internetclients verzenden webpagina aanvragen naar het open bare IP-adres van een web-app op TCP-poort 80. Azure Load Balancer distribueert de aanvragen over de drie Vm's in de set met gelijke taak verdeling. Zie [concepten van Load Balancer](concepts.md)voor meer informatie over Load Balancer-algoritmen.
-
-Azure Load Balancer netwerk verkeer wordt standaard gelijkmatig verdeeld over meerdere VM-exemplaren. U kunt ook sessieaffiniteit configureren. Zie [de distributie modus configureren voor Azure Load Balancer](load-balancer-distribution-mode.md)voor meer informatie.
-
-## <a name="internal-load-balancer"></a><a name = "internalloadbalancer"></a>Interne load balancer
-
-Met een interne load balancer wordt verkeer gedistribueerd naar bronnen die zich binnen een virtueel netwerk bevinden. Azure beperkt de toegang tot de front-end-IP-adressen van een virtueel netwerk waarop taak verdeling van toepassing is. 
-
-Front-end-IP-adressen en virtuele netwerken worden nooit rechtstreeks blootgesteld aan een Internet-eind punt. Interne Line-Of-Business-toepassingen worden in Azure uitgevoerd en worden vanuit Azure of vanaf on-premises resources benaderd.
-
-Een interne load balancer maakt de volgende typen taak verdeling mogelijk:
-
-* **Binnen een virtueel netwerk**: taak verdeling van virtuele machines in het virtuele netwerk naar een set vm's die zich in hetzelfde virtuele netwerk bevinden.
-* **Voor een cross-premises virtueel netwerk**: taak verdeling van on-premises computers naar een set vm's die zich in hetzelfde virtuele netwerk bevinden.
-* **Voor toepassingen met meerdere lagen**: taak verdeling voor toepassingen met meerdere lagen op internet waarbij de back-endservers niet op internet zijn gericht. Voor de back-end-lagen is taak verdeling van verkeer van de Internet gerichte laag vereist. Zie de volgende afbeelding.
-* **Voor Line-Of-Business-toepassingen**: taakverdeling voor Line-Of-Business-toepassingen die worden gehost in Azure zonder extra load balancer-hardware of -software. Dit scenario bevat on-premises servers die zich in de set computers bevinden waarvan het verkeer wordt verdeeld.
-
-![Voorbeeld van een interne Load Balancer](./media/load-balancer-overview/load-balancer.png)
-
-*Afbeelding: toepassingen met meerdere lagen verdelen met behulp van zowel open bare als interne load balancer*
-
-## <a name="load-balancer-sku-comparison"></a><a name="skus"></a> Vergelijking van Load Balancer-SKU's
+## <a name="sku-comparison"></a><a name="skus"></a>SKU-vergelijking
 
 De Load Balancer ondersteunt zowel de basis-als standaard-Sku's. Deze Sku's wijken af van de schaal, functies en prijzen van het scenario. Elk scenario dat mogelijk is met basis load balancer, kan worden gemaakt met standaard load balancer.
 
@@ -66,7 +32,21 @@ Als u de verschillen met elkaar wilt vergelijken en wilt weten wat ze precies in
 > Micro soft adviseert standaard load balancer.
 Zelfstandige virtuele machines, beschikbaarheidssets en virtuele-machineschaalsets kunnen worden verbonden met slechts één SKU, niet met beide. De Load Balancer en de open bare IP-adres-SKU moeten overeenkomen wanneer u deze gebruikt met open bare IP-adressen. De Load Balancer en de open bare IP-Sku's zijn niet onveranderbaar.
 
-[!INCLUDE [comparison table](../../includes/load-balancer-comparison-table.md)]
+| | Standard Load Balancer | Basis Load Balancer |
+| --- | --- | --- |
+| [Grootte van back-end-pool](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#load-balancer) | Ondersteunt maximaal 1000 instanties. | Ondersteunt Maxi maal 300 exemplaren. |
+| Eindpunten voor de back-end-pool | Virtuele machines of virtuele-machine schaal sets in één virtueel netwerk. | Virtuele machines in een beschikbaarheidsset of virtuele-machineschaalset. |
+| [Statuscontroles](./load-balancer-custom-probe-overview.md#types) | TCP, HTTP, HTTPS | TCP, HTTP |
+| [Gedrag statustest inactief](./load-balancer-custom-probe-overview.md#probedown) | TCP-verbindingen blijven actief op een instantie die omlaag __en__ op alle tests wordt gecontroleerd. | TCP-verbindingen blijven actief op een instantie die wordt getest. Alle TCP-verbindingen worden beëindigd wanneer alle tests uitvallen. |
+| Beschikbaarheidszones | Zone-redundante en zonegebonden-front-end voor binnenkomend en uitgaand verkeer. | Niet beschikbaar |
+| Diagnostiek | [Multidimensionale metrische gegevens Azure Monitor](./load-balancer-standard-diagnostics.md) | [Azure Monitor-logboeken](./load-balancer-monitor-log.md) |
+| HA-poorten | [Beschikbaar voor interne Load Balancer](./load-balancer-ha-ports-overview.md) | Niet beschikbaar |
+| Standaardbeveiliging | Gesloten voor binnenkomende stromen, tenzij toegestaan door een netwerk beveiligings groep. Houd er rekening mee dat intern verkeer van het VNet naar de interne load balancer is toegestaan. | Standaard geopend. De netwerk beveiligings groep is optioneel. |
+| Regels voor uitgaand verkeer | [Declaratieve uitgaande NAT-configuratie](./load-balancer-outbound-rules-overview.md) | Niet beschikbaar |
+| TCP opnieuw instellen bij inactiviteit | [Beschikbaar op elke regel](./load-balancer-tcp-reset.md) | Niet beschikbaar |
+| [Meerdere front-ends](./load-balancer-multivip-overview.md) | Inkomend en [uitgaand](./load-balancer-outbound-connections.md) | Alleen inkomend |
+| Beheerbewerkingen | De meeste bewerkingen < 30 seconden | 60 tot 90 seconden typisch |
+| SLA | [99,99%](https://azure.microsoft.com/support/legal/sla/load-balancer/v1_0/) | Niet beschikbaar | 
 
 Zie [limieten voor load balancers](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#load-balancer)voor meer informatie. Zie [Overzicht](load-balancer-standard-overview.md), [Prijzen](https://aka.ms/lbpricing) en [SLA](https://aka.ms/lbsla) voor meer details over Standard Load Balancer.
 

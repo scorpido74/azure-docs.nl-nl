@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 09/03/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 71e5e13485c4a10664d98363e8e99bfd3b4f4bcf
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 79038152dd40b213b92a379c4b50ddd840eb8e6c
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "72035702"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82732516"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-netdocuments"></a>Zelf studie: Azure Active Directory SSO-integratie (single sign-on) met netdocumenten
 
@@ -137,49 +137,48 @@ In deze sectie schakelt u B. Simon in om de eenmalige aanmelding van Azure te ge
 
 1. Meld u in een ander webbrowser venster als beheerder aan bij de bedrijfs site van uw netdocument.
 
-2. Ga naar de **beheerder**.
+2. Selecteer in de rechter bovenhoek uw naam>**beheerder**.
 
-3. Klik op **gebruikers en groepen toevoegen en verwijderen**.
+3. Selecteer **Security Center**.
    
-    ![Opslagplaats](./media/netdocuments-tutorial/ic795047.png "Opslagplaats")
+    ![Opslagplaats](./media/netdocuments-tutorial/security-center.png "Security Center")
 
-4. Klik op **geavanceerde verificatie opties configureren**.
+4. Selecteer **geavanceerde verificatie**.
     
-    ![Geavanceerde verificatie opties configureren](./media/netdocuments-tutorial/ic795048.png "Geavanceerde verificatie opties configureren")
+    ![Geavanceerde verificatie opties configureren](./media/netdocuments-tutorial/advance-authentication.png "Geavanceerde verificatie opties configureren")
 
-5. Voer de volgende stappen uit in het dialoog venster **federatieve identiteit** :
+5.  Voer de volgende stappen uit op het tabblad **federatieve id** :   
    
-    ![Federatieve identiteit](./media/netdocuments-tutorial/ic795049.png "Federatieve identiteit")
+    ![Federatieve identiteit](./media/netdocuments-tutorial/federated-id.png "Federatieve identiteit")
    
     a. Selecteer **Active Directory Federation Services**als **federatief identiteits server type**.
-   
-    b. Klik op **bestand kiezen**om het gedownloade meta gegevensbestand te uploaden dat u hebt gedownload van Azure Portal.
-   
-    c. Klik op **OK**.
+    
+    b.  Selecteer **bestand kiezen**om het gedownloade meta gegevensbestand te uploaden dat u hebt gedownload van Azure Portal.
+    
+    c.  Selecteer **Opslaan**.
 
 ### <a name="create-netdocuments-test-user"></a>Test gebruiker voor netdocumenten maken
 
-Om ervoor te zorgen dat Azure AD-gebruikers zich kunnen aanmelden bij netdocumenten, moeten ze worden ingericht in netdocumenten.  
-In het geval van netdocumenten is inrichting een hand matige taak.
+Om ervoor te zorgen dat Azure AD-gebruikers zich kunnen aanmelden bij netdocumenten, moeten ze worden ingericht in netdocumenten. In het geval van netdocumenten is inrichting een hand matige taak.
 
 **Voer de volgende stappen uit als u een gebruikersaccount wilt inrichten:**
 
 1. Meld u aan bij de bedrijfs site van uw **netdocument** als beheerder.
 
-2. Klik in het menu bovenaan op **Admin**.
+2. Selecteer in de rechter bovenhoek uw naam>**beheerder**.
    
-    ![Beheerder](./media/netdocuments-tutorial/ic795051.png "Beheerder")
+    ![Beheerder](./media/netdocuments-tutorial/user-admin.png "Beheerder")
 
-3. Klik op **gebruikers en groepen toevoegen en verwijderen**.
+3. Selecteer **gebruikers en groepen**.
    
-    ![Opslagplaats](./media/netdocuments-tutorial/ic795047.png "Opslagplaats")
+    ![Opslagplaats](./media/netdocuments-tutorial/users-groups.png "Opslagplaats")
 
 4. Typ in het tekstvak **e-mail adres** het e-mail adres van een geldig Azure Active Directory account dat u wilt inrichten en klik vervolgens op **gebruiker toevoegen**.
    
-    ![E-mail adres](./media/netdocuments-tutorial/ic795053.png "E-mailadres")
+    ![E-mail adres](./media/netdocuments-tutorial/user-mail.png "E-mailadres")
    
-    >[!NOTE]
-    >De houder van het Azure Active Directory-account krijgt een e-mail bericht met een koppeling om het account te bevestigen voordat het actief wordt. U kunt andere netdocumenten gebruiken hulpprogram ma's voor het maken van gebruikers accounts of Api's die worden geleverd door netdocumenten om Azure Active Directory gebruikers accounts in te richten.
+    > [!NOTE]
+    > De houder van het Azure Active Directory-account krijgt een e-mail bericht met een koppeling om het account te bevestigen voordat het actief wordt. U kunt andere netdocumenten gebruiken hulpprogram ma's voor het maken van gebruikers accounts of Api's die worden geleverd door netdocumenten om Azure Active Directory gebruikers accounts in te richten.
 
 ## <a name="test-sso"></a>SSO testen 
 
@@ -196,4 +195,3 @@ Wanneer u op de tegel netdocumenten in het toegangs venster klikt, moet u automa
 - [Wat is voorwaardelijke toegang in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
 - [Gebruik netdocumenten met Azure AD](https://aad.portal.azure.com/)
-

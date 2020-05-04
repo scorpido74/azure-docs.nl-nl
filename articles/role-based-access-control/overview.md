@@ -1,6 +1,6 @@
 ---
-title: Wat is op rollen gebaseerd toegangsbeheer (RBAC) voor Azure-resources? | Microsoft Docs
-description: Bekijk een overzicht van op rollen gebaseerd toegangsbeheer (RBAC) voor Azure-resources. Gebruik roltoewijzingen om toegang tot Azure-resources te beheren.
+title: Wat is Azure op rollen gebaseerd toegangs beheer (Azure RBAC)?
+description: Bekijk een overzicht van het toegangs beheer op basis van rollen (Azure RBAC) van Azure. Gebruik roltoewijzingen om toegang tot Azure-resources te beheren.
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -14,31 +14,31 @@ ms.workload: identity
 ms.date: 04/17/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 4a1db200b88d0eabde967961d956cdd2854e828d
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: d186fd2182603709921f876d0bc212762cb8586b
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81686475"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82735858"
 ---
-# <a name="what-is-role-based-access-control-rbac-for-azure-resources"></a>Wat is op rollen gebaseerd toegangsbeheer (RBAC) voor Azure-resources?
+# <a name="what-is-azure-role-based-access-control-azure-rbac"></a>Wat is Azure op rollen gebaseerd toegangs beheer (Azure RBAC)?
 
-Toegangsbeheer voor cloudresources is een uiterst belangrijke functie voor elke organisatie die van de cloud gebruikmaakt. Het gebruik van op rollen gebaseerd toegangsbeheer helpt u bij het beheren van wie er toegang heeft tot Azure-resources, wat ze kunnen doen met die resources en tot welke gebieden ze toegang hebben.
+Toegangsbeheer voor cloudresources is een uiterst belangrijke functie voor elke organisatie die van de cloud gebruikmaakt. Met op rollen gebaseerd toegangs beheer (Azure RBAC) van Azure kunt u beheren wie toegang heeft tot Azure-resources, wat ze kunnen doen met deze resources en op welke gebieden ze toegang hebben.
 
-Op rollen gebaseerd toegangsbeheer is een machtigingssysteem dat is gebouwd op [Azure Resource Manager](../azure-resource-manager/management/overview.md) dat een geavanceerd toegangsbeheer van Azure-resources biedt.
+Azure RBAC is een autorisatie systeem dat is gebaseerd op [Azure Resource Manager](../azure-resource-manager/management/overview.md) dat een nauw keurig toegangs beheer van Azure-resources biedt.
 
-## <a name="what-can-i-do-with-rbac"></a>Wat kan ik doen met op rollen gebaseerd toegangsbeheer?
+## <a name="what-can-i-do-with-azure-rbac"></a>Wat kan ik doen met Azure RBAC?
 
-Hier volgen enkele voorbeelden van wat u met op rollen gebaseerd toegangsbeheer kunt doen:
+Hier volgen enkele voor beelden van wat u met Azure RBAC kunt doen:
 
 - Toestaan dat één gebruiker de virtuele machines in een abonnement kan beheren en een andere gebruiker de virtuele netwerken kan beheren.
 - Een DBA-groep toestaan de SQL-databases in een abonnement te beheren.
 - Toestaan dat een gebruiker alle resources in een resourcegroep kan beheren, zoals virtuele machines, websites en subnetten.
 - Toestaan dat een toepassing toegang heeft tot alle resources in een resourcegroep.
 
-## <a name="how-rbac-works"></a>Hoe op rollen gebaseerd toegangsbeheer werkt
+## <a name="how-azure-rbac-works"></a>Hoe Azure RBAC werkt
 
-De manier waarop u de toegang tot resources beheert met behulp van op rollen gebaseerd toegangsbeheer is door roltoewijzingen te maken. Dit is een belang rijk concept dat u begrijpt: de machtigingen worden afgedwongen. Een roltoewijzing bestaat uit drie elementen: beveiligings-principal, roldefinitie en bereik (ook wel scope of niveau genoemd).
+De manier waarop u de toegang tot resources beheert met behulp van Azure RBAC is door roltoewijzingen te maken. Dit is een belang rijk concept dat u begrijpt: de machtigingen worden afgedwongen. Een roltoewijzing bestaat uit drie elementen: beveiligings-principal, roldefinitie en bereik (ook wel scope of niveau genoemd).
 
 ### <a name="security-principal"></a>Beveiligings-principal
 
@@ -64,9 +64,9 @@ Azure bevat diverse [ingebouwde rollen](built-in-roles.md) die u kunt gebruiken.
 - [Lezer](built-in-roles.md#reader): kan bestaande Azure-resources bekijken.
 - [Beheerder gebruikerstoegang](built-in-roles.md#user-access-administrator): kan gebruikerstoegang tot Azure-resources beheren.
 
-Met de overige ingebouwde rollen kunnen specifieke Azure-resources worden beheerd. Met de rol [Inzender voor virtuele machines](built-in-roles.md#virtual-machine-contributor) kan een gebruiker bijvoorbeeld virtuele machines maken en beheren. Als de ingebouwde rollen niet voldoen aan de specifieke behoeften van uw organisatie, kunt u uw eigen [aangepaste rollen maken voor Azure-resources](custom-roles.md).
+Met de overige ingebouwde rollen kunnen specifieke Azure-resources worden beheerd. Met de rol [Inzender voor virtuele machines](built-in-roles.md#virtual-machine-contributor) kan een gebruiker bijvoorbeeld virtuele machines maken en beheren. Als de ingebouwde rollen niet voldoen aan de specifieke behoeften van uw organisatie, kunt u uw eigen [aangepaste Azure-rollen](custom-roles.md)maken.
 
-Azure heeft gegevens bewerkingen waarmee u toegang tot gegevens in een object kunt verlenen. Als een gebruiker bijvoorbeeld toegang heeft tot gegevens in een opslagaccount, kan deze de blobs of berichten in dat opslagaccount lezen. Zie [Roldefinities voor Azure-resources begrijpen](role-definitions.md) voor meer informatie.
+Azure heeft gegevens bewerkingen waarmee u toegang tot gegevens in een object kunt verlenen. Als een gebruiker bijvoorbeeld toegang heeft tot gegevens in een opslagaccount, kan deze de blobs of berichten in dat opslagaccount lezen. Zie definities van Azure- [functies begrijpen](role-definitions.md)voor meer informatie.
 
 ### <a name="scope"></a>Bereik
 
@@ -94,17 +94,17 @@ U kunt roltoewijzingen maken met behulp van Azure Portal, Azure CLI, Azure Power
 
 ## <a name="multiple-role-assignments"></a>Meervoudige roltoewijzingen
 
-Wat gebeurt er wanneer er meerdere overlappende roltoewijzingen zijn? RBAC is een additief model, dus uw efficiënte machtigingen zijn de som van uw roltoewijzingen. Bekijk het volgende voorbeeld, waarbij aan een gebruiker de rol Inzender wordt toegekend in het abonnementsbereik en de rol Lezer in een resourcegroep. De som van de Inzender machtigingen en de lezers machtigingen zijn in feite de rol Inzender voor de resource groep. Daarom heeft in dit geval de toewijzing van de rol Lezer geen impact.
+Wat gebeurt er wanneer er meerdere overlappende roltoewijzingen zijn? Azure RBAC is een additief model, dus uw efficiënte machtigingen zijn de som van uw roltoewijzingen. Bekijk het volgende voorbeeld, waarbij aan een gebruiker de rol Inzender wordt toegekend in het abonnementsbereik en de rol Lezer in een resourcegroep. De som van de Inzender machtigingen en de lezers machtigingen zijn in feite de rol Inzender voor de resource groep. Daarom heeft in dit geval de toewijzing van de rol Lezer geen impact.
 
 ![Meervoudige roltoewijzingen](./media/overview/rbac-multiple-roles.png)
 
 ## <a name="deny-assignments"></a>Weigeringstoewijzingen
 
-Voorheen was RBAC een model op basis van alleen-toestaan zonder de mogelijkheid tot weigeren, maar nu ondersteunt RBAC in beperkte mate weigeringstoewijzingen. Ongeveer op dezelfde manier als een roltoewijzing verbindt een *weigeringstoewijzing* een reeks acties aan een gebruiker, groep, service-principal of beheerde identiteit met een bepaald bereik met het doel toegang te weigeren. Een roltoewijzing definieert een set acties die zijn *toegestaan*, terwijl een weigeringstoewijzing een set acties definieert die *niet zijn toegestaan*. Met andere woorden, weigeringstoewijzingen voorkomen dat gebruikers opgegeven acties uitvoeren, zelfs als een roltoewijzing hen deze toegang verleent. Weigeringstoewijzingen hebben voorrang op roltoewijzingen. Zie voor meer informatie over het [weigeren van toewijzingen voor Azure-resources](deny-assignments.md).
+Voorheen was Azure RBAC een model zonder weigeren, maar nu ondersteunt Azure RBAC het weigeren van toewijzingen op een beperkte manier. Ongeveer op dezelfde manier als een roltoewijzing verbindt een *weigeringstoewijzing* een reeks acties aan een gebruiker, groep, service-principal of beheerde identiteit met een bepaald bereik met het doel toegang te weigeren. Een roltoewijzing definieert een set acties die zijn *toegestaan*, terwijl een weigeringstoewijzing een set acties definieert die *niet zijn toegestaan*. Met andere woorden, weigeringstoewijzingen voorkomen dat gebruikers opgegeven acties uitvoeren, zelfs als een roltoewijzing hen deze toegang verleent. Weigeringstoewijzingen hebben voorrang op roltoewijzingen. Zie voor meer informatie [begrijpen Azure deny Assignments](deny-assignments.md).
 
-## <a name="how-rbac-determines-if-a-user-has-access-to-a-resource"></a>Hoe RBAC bepaalt of een gebruiker toegang tot een resource heeft
+## <a name="how-azure-rbac-determines-if-a-user-has-access-to-a-resource"></a>Hoe Azure RBAC bepaalt of een gebruiker toegang heeft tot een bron
 
-Hier volgen de stappen op hoog niveau die RBAC gebruikt om te bepalen of u toegang tot een resource hebt op het beheervlak. Het is handig om dit te begrijpen als u probeert een toegangsprobleem op te lossen.
+Hieronder vindt u de stappen op hoog niveau die door Azure RBAC worden gebruikt om te bepalen of u toegang hebt tot een resource op het beheer vlak. Het is handig om dit te begrijpen als u probeert een toegangsprobleem op te lossen.
 
 1. Een gebruiker (of service-principal) krijgt een token voor Azure Resource Manager.
 
@@ -128,7 +128,7 @@ Hier volgen de stappen op hoog niveau die RBAC gebruikt om te bepalen of u toega
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Snelstartgids: Bekijk de toegang die een gebruiker heeft met Azure-resources met behulp van de Azure Portal](check-access.md)
-- [Toegang tot Azure-resources beheren met op rollen gebaseerd toegangsbeheer en de Azure-portal](role-assignments-portal.md)
+- [Snelstartgids: de toegang van een gebruiker tot Azure-resources weer geven](check-access.md)
+- [Azure-roltoewijzingen toevoegen of verwijderen met behulp van de Azure Portal](role-assignments-portal.md)
 - [Inzicht in de verschillende rollen](rbac-and-directory-admin-roles.md)
 - [Cloud acceptatie Framework: resource Access Management in azure](/azure/cloud-adoption-framework/govern/resource-consistency/resource-access-management)

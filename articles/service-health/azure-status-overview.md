@@ -3,12 +3,12 @@ title: Overzicht van Azure-status | Microsoft Docs
 description: Een globale weer gave van de status van Azure-Services
 ms.topic: overview
 ms.date: 06/11/2019
-ms.openlocfilehash: 766e9795b01c4a09916a025cba77744dea235faf
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 6e0813ad5fde19069662c13fcba7bd81b055de2a
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78898344"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82732547"
 ---
 # <a name="azure-status-overview"></a>Overzicht van Azure-status
 
@@ -24,9 +24,7 @@ De Azure-status pagina wordt in realtime bijgewerkt als de status van Azure-Serv
 
 ## <a name="azure-status-history"></a>Status geschiedenis van Azure
 
-Terwijl de Azure-status pagina altijd de meest recente status informatie bevat, kunt u oudere gebeurtenissen weer geven met behulp van de [pagina status geschiedenis van Azure](https://status.azure.com/status/history/).
-
-Als u begint met gebeurtenissen die zijn gepubliceerd in november 2019, worden in de status geschiedenis pagina gebeurtenissen weer gegeven tot 365 dagen in het verleden, met inbegrip van een voorlopige hoofd oorzaak, oplossing en volgende stappen voor Azure.
+Terwijl de Azure-status pagina altijd de meest recente status informatie bevat, kunt u oudere gebeurtenissen weer geven met behulp van de [pagina status geschiedenis van Azure](https://status.azure.com/status/history/). De pagina geschiedenis bevat alle RCAs voor incidenten die zich hebben voorgedaan op 20 november 2019 of hoger en vanaf die datum worden doorgestuurd naar een 5 jaar RCA-geschiedenis. RCAs van vóór 20 november 2019 zijn niet beschikbaar.
 
 ## <a name="rss-feed"></a>RSS-feed
 

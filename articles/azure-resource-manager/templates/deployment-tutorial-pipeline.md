@@ -4,12 +4,12 @@ description: Meer informatie over het continu bouwen, testen en implementeren va
 ms.date: 04/22/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: d1c56ce913a1b63bab90f5dd5aaada382abbf493
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: dacbdbcbebbbd696c14745e055ed9f7bd7905b1d
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82084325"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82731931"
 ---
 # <a name="tutorial-continuous-integration-of-azure-resource-manager-templates-with-azure-pipelines"></a>Zelf studie: doorlopende integratie van Azure Resource Manager sjablonen met Azure-pijp lijnen
 
@@ -57,7 +57,7 @@ Als u geen GitHub-account hebt, raadpleegt u [vereisten](#prerequisites).
 
 1. Selecteer **Nieuw**, een groene knop.
 1. Voer in **naam van opslag plaats**een naam in voor de opslag plaats.  Bijvoorbeeld **AzureRmPipeline-opslag plaats**. Vergeet niet om een van de **AzureRmPipeline** te vervangen door de naam van uw project. U kunt **openbaar** of **privé** selecteren als u deze zelf studie wilt door lopen. En selecteer vervolgens **opslag plaats maken**.
-1. Noteer de URL. De URL van de opslag plaats is de volgende indeling: ** https://github.com/[YourAccountName]/[YourRepositoryName]**.
+1. Noteer de URL. De URL van de opslag plaats is de **`https://github.com/[YourAccountName]/[YourRepositoryName]`** volgende indeling:.
 
 Deze opslag plaats wordt een *externe opslag plaats*genoemd. Elk van de ontwikkel aars van hetzelfde project kan zijn/haar eigen *lokale opslag plaats*klonen en de wijzigingen in de externe opslag plaats samen voegen.
 
@@ -104,7 +104,7 @@ De azuredeploy. json is toegevoegd aan de lokale opslag plaats. Vervolgens uploa
     ```
 
     Er kan een waarschuwing over LF worden weer gegeven. U kunt de waarschuwing negeren. **Master** is de Master vertakking.  Doorgaans maakt u een vertakking voor elke update. Voor het vereenvoudigen van de zelf studie gebruikt u de hoofd vertakking rechtstreeks.
-1. Blader vanuit een browser naar uw GitHub-opslag plaats.  De URL is ** https://github.com/[YourAccountName]/[YourGitHubRepository]**. De map **CreateWebApp** en de drie bestanden in de map worden weer geven.
+1. Blader vanuit een browser naar uw GitHub-opslag plaats.  De URL is **`https://github.com/[YourAccountName]/[YourGitHubRepository]`**. De map **CreateWebApp** en de drie bestanden in de map worden weer geven.
 1. Selecteer **linkedStorageAccount. json** om de sjabloon te openen.
 1. Selecteer de knop **RAW** . De URL wordt gestart met **RAW.githubusercontent.com**.
 1. Maak een kopie van de URL.  U moet deze waarde opgeven wanneer u de pijp lijn later in de zelf studie configureert.

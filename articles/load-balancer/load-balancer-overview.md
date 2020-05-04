@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 1/14/2020
 ms.author: allensu
-ms.openlocfilehash: 11c63c9dac6186e1c21cc0e76518a95e117574ec
-ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
+ms.openlocfilehash: 1bc18788019c3ec97e06e3b01e823a0ba53541b8
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82629453"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82734753"
 ---
 # <a name="what-is-azure-load-balancer"></a>Wat is Azure Load Balancer?
 
@@ -27,9 +27,9 @@ ms.locfileid: "82629453"
 
 Azure Load Balancer werkt op laag 4 van het OSI-model (Open Systems Interconnection). Het is het enige contact punt voor clients. Load Balancer distribueert inkomende stromen die binnenkomen bij de front-end van de load balancer voor back-endservers. Deze stromen zijn gebaseerd op geconfigureerde taakverdelings regels en status controles. De exemplaren van de back-endadresgroep kunnen Azure Virtual Machines of exemplaren in een schaalset voor virtuele machines zijn.
 
-Een **[open bare Load Balancer](./types.md#publicloadbalancer)** kan uitgaande verbindingen bieden voor virtuele machines (vm's) in uw virtuele netwerk. Deze verbindingen worden gerealiseerd door hun privé-IP-adressen te vertalen naar open bare IP-adressen. Open bare load balancers worden gebruikt voor het verdelen van het Internet verkeer naar uw Vm's.
+Een **[open bare Load Balancer](./components.md#frontend-ip-configurations)** kan uitgaande verbindingen bieden voor virtuele machines (vm's) in uw virtuele netwerk. Deze verbindingen worden gerealiseerd door hun privé-IP-adressen te vertalen naar open bare IP-adressen. Open bare load balancers worden gebruikt voor het verdelen van het Internet verkeer naar uw Vm's.
 
-Een **[intern (of privé) Load Balancer](./types.md#internalloadbalancer)** wordt alleen gebruikt wanneer privé ip's alleen op het front-end zijn vereist. Interne load balancers worden gebruikt voor het verdelen van verkeer binnen een virtueel netwerk. Een load balancer frontend kan worden geopend vanuit een on-premises netwerk in een hybride scenario.
+Een **[intern (of privé) Load Balancer](./components.md#frontend-ip-configurations)** wordt alleen gebruikt wanneer privé ip's alleen op het front-end zijn vereist. Interne load balancers worden gebruikt voor het verdelen van verkeer binnen een virtueel netwerk. Een load balancer frontend kan worden geopend vanuit een on-premises netwerk in een hybride scenario.
 
 <p align="center">
   <img src="./media/load-balancer-overview/load-balancer.svg" width="512" title="Azure Load Balancer">
