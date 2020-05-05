@@ -1,21 +1,21 @@
 ---
 title: C#-zelf studie over het ordenen van resultaten
 titleSuffix: Azure Cognitive Search
-description: In deze zelf studie wordt gedemonstreerd hoe u zoek resultaten kunt ordenen. Het maakt deel uit van een vorig project van een hotels, wordt geordend op basis van de eigenschap Primary, de secundaire eigenschap en bevat een score profiel voor het toevoegen van Boosting criteria.
+description: In deze zelf studie voor C# ziet u hoe u zoek resultaten kunt best Ellen. Het maakt deel uit van een vorig project van hotels, sorteren op primaire eigenschap, secundaire eigenschap en een score profiel voor het toevoegen van Boosting criteria.
 manager: nitinme
-author: tchristiani
-ms.author: terrychr
+author: HeidiSteen
+ms.author: heidist
 ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 02/10/2020
-ms.openlocfilehash: 812085a5a4b3e8d1233f19c947d2fd5e433f6ab7
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 699b3e5b7e51e12ec0bf39ec0c9045dd3a27a6fd
+ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77121559"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82780603"
 ---
-# <a name="c-tutorial-order-the-results---azure-cognitive-search"></a>C#-zelf studie: de resultaten best Ellen-Azure Cognitive Search
+# <a name="tutorial-order-search-results-using-the-net-sdk"></a>Zelf studie: Zoek resultaten best Ellen met de .NET SDK
 
 Tot dat moment in onze reeks zelf studies worden resultaten geretourneerd en weer gegeven in een standaard volgorde. Dit kan de volg orde zijn waarin de gegevens zich bevinden, of er is mogelijk een standaard _Score profiel_ gedefinieerd, dat wordt gebruikt wanneer er geen para meters voor de volg orde worden opgegeven. In deze zelf studie gaan we naar de volg orde van de resultaten op basis van een primaire eigenschap en vervolgens voor resultaten die dezelfde primaire eigenschap hebben, de volg orde van de selectie op een secundaire eigenschap. Als alternatief voor het rangschikken op basis van numerieke waarden ziet u in het laatste voor beeld hoe u kunt sorteren op basis van een aangepast Score profiel. We gaan ook iets dieper in op de weer gave van _complexe typen_.
 

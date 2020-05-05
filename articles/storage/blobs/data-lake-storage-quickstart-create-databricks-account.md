@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: quickstart
 ms.date: 02/17/2020
 ms.reviewer: jeking
-ms.openlocfilehash: 346795b79a78589d949b035a803a67a9e5a2e8e5
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: b6dd1aab4c0ce6c656600d7cc7c71233d256aa0b
+ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77470731"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82780535"
 ---
 # <a name="quickstart-analyze-data-with-databricks"></a>Snelstartgids: gegevens analyseren met Databricks
 
@@ -78,7 +78,7 @@ In deze sectie gaat u een Azure Databricks-werkruimte maken met behulp van Azure
 
 Zie [Een Spark-cluster maken in Azure Databricks](https://docs.azuredatabricks.net/user-guide/clusters/create.html) voor meer informatie over het maken van clusters.
 
-## <a name="create-storage-account-container"></a>Een opslag account container maken
+## <a name="create-notebook"></a>Notitie blok maken
 
 In deze sectie maakt u een notitieblok in de Azure Databricks-werkruimte en voert u vervolgens codefragmenten uit om het opslagaccount te configureren.
 

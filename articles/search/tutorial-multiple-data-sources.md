@@ -1,5 +1,5 @@
 ---
-title: 'C#-zelf studie: meerdere gegevens bronnen indexeren'
+title: C#-zelf studie meerdere Azure-gegevens bronnen indexeren
 titleSuffix: Azure Cognitive Search
 description: Meer informatie over het importeren van gegevens uit meerdere gegevens bronnen in één Azure Cognitive Search-index met behulp van Indexeer functies. Deze zelf studie en voorbeeld code zijn in C#.
 manager: nitinme
@@ -8,14 +8,14 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 02/28/2020
-ms.openlocfilehash: 8e75d9de45c64813ac75de635371d2435fb9261f
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: eb1824e41fe9fc5185ae4e914b4828cddb2c42db
+ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "78271485"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82780518"
 ---
-# <a name="tutorial-index-data-from-multiple-data-sources-in-c"></a>Zelf studie: index gegevens uit meerdere gegevens bronnen in C #
+# <a name="tutorial-index-from-multiple-data-sources-using-the-net-sdk"></a>Zelf studie: index van meerdere gegevens bronnen met behulp van de .NET SDK
 
 Met Azure Cognitive Search kunt u gegevens uit meerdere gegevens bronnen importeren, analyseren en indexeren in één geconsolideerde zoek index. Dit biedt ondersteuning voor situaties waarbij gestructureerde gegevens worden geaggregeerd met minder gestructureerde of zelfs onbewerkte tekst gegevens uit andere bronnen, zoals tekst-, HTML-of JSON-documenten.
 

@@ -11,12 +11,12 @@ ms.author: sgilley
 ms.reviewer: sgilley
 ms.date: 03/05/2020
 ms.custom: seodec18
-ms.openlocfilehash: 7242b82ee5c43878a33731bd1f02b685020f22b0
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: aeced8c4108760fc3e10dbf891a469792c210707
+ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "78673622"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82780059"
 ---
 # <a name="explore-azure-machine-learning-with-jupyter-notebooks"></a>Azure Machine Learning verkennen met Jupyter-notebooks
 
@@ -55,7 +55,13 @@ De Data Science Virtual Machine (DSVM) is een aangepaste VM-installatie kopie di
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Bekijk de [voorbeeld notitieblokken](https://aka.ms/aml-notebooks) om te ontdekken wat Azure machine learning kan doen of probeer deze zelf studies:
+Bekijk de [voorbeeld notitieblokken](https://aka.ms/aml-notebooks) om te ontdekken wat Azure machine learning kan doen.
+
+Voor meer GitHub-voorbeeld projecten en-voor beelden raadpleegt u deze opslag plaatsen:
++ [Micro soft-MLOps](https://github.com/Microsoft/MLOps)
++ [Micro soft-MLOpsPython](https://github.com/microsoft/MLOpsPython)
+
+Volg deze zelfstudies:
 
 - [Een model voor de classificatie van afbeeldingen trainen en implementeren met MNIST](tutorial-train-models-with-aml.md)
 

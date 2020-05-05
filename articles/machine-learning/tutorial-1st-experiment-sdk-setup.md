@@ -10,12 +10,12 @@ author: trevorbye
 ms.author: trbye
 ms.reviewer: trbye
 ms.date: 02/10/2020
-ms.openlocfilehash: 75ae07de9d5c80245a6e75dcb2c12be9128ff4fe
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 535cf95216cca210b5add5ca22cd6e5b1b997541
+ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82184585"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82778996"
 ---
 # <a name="tutorial-get-started-creating-your-first-ml-experiment-with-the-python-sdk"></a>Zelf studie: aan de slag met het maken van uw eerste ML-experiment met de python-SDK
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -47,11 +47,7 @@ U maakt een werk ruimte via de Azure Portal, een webconsole voor het beheren van
 
 In deze zelf studie wordt de Cloud notebook server in uw werk ruimte gebruikt voor een installatie zonder een vooraf geconfigureerde ervaring. Gebruik [uw eigen omgeving](how-to-configure-environment.md#local) als u de controle wilt over uw omgeving, pakketten en afhankelijkheden.
 
-Volg samen met deze video of gebruik de gedetailleerde stappen hieronder om de zelf studie vanuit uw werk ruimte te klonen en uit te voeren. 
-
-> [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4mTUr]
-
-
+ Gebruik de gedetailleerde stappen hieronder om de zelf studie vanuit uw werk ruimte te klonen en uit te voeren. 
 
 ### <a name="clone-a-notebook-folder"></a>Een notitieblokmap-map klonen
 
@@ -63,7 +59,7 @@ U voltooit de volgende proef installatie en voert stappen uit in Azure Machine L
 
 1. Selecteer **notebooks** aan de linkerkant.
 
-1. Open de map met voor **beelden** .
+1. Selecteer het tabblad voor **beelden** bovenaan.
 
 1. Open de map **python** .
 
@@ -71,20 +67,21 @@ U voltooit de volgende proef installatie en voert stappen uit in Azure Machine L
 
 1. Selecteer **'... '** aan de rechter kant van de map **zelf studies** en selecteer vervolgens **klonen**.
 
-    ![Map klonen](./media/tutorial-1st-experiment-sdk-setup/clone-tutorials.png)
+    :::image type="content" source="media/tutorial-1st-experiment-sdk-setup/clone-tutorials.png" alt-text="Zelf studie-map klonen":::
 
 1. Er wordt een lijst met mappen weer gegeven met alle gebruikers die toegang hebben tot de werk ruimte.  Selecteer de map waarin u de map met **zelf studies** wilt klonen.
 
-### <a name="a-nameopenopen-the-cloned-notebook"></a><a name="open">Open de gekloonde notebook
+### <a name="open-the-cloned-notebook"></a><a name="open"></a>Open de gekloonde notebook
 
-1. Open de map onder **gebruikers bestanden** en open vervolgens de map gekloonde **zelf studies** .
-
-    ![Map met zelf studies openen](./media/tutorial-1st-experiment-sdk-setup/expand-user-folder.png)
+1. Open de map **zelf studies** die zojuist is gesloten in het gedeelte **gebruikers bestanden** .
 
     > [!IMPORTANT]
     > U kunt notitie blokken weer geven in de map **samples** , maar u kunt geen notitie blok van daar uitvoeren.  Als u een notitie blok wilt uitvoeren, moet u ervoor zorgen dat u de gekloonde versie van het notitie blok opent in de sectie **gebruikers bestanden** .
     
 1. Selecteer de **zelf studie-1ste experiment-SDK-Train. ipynb-** bestand in uw **zelf studies/map Create-First-ml-experimenten** .
+
+    :::image type="content" source="media/tutorial-1st-experiment-sdk-setup/expand-user-folder.png" alt-text="Map met zelf studies openen":::
+
 
 1. Selecteer op de bovenste balk een reken instantie die u wilt gebruiken om het notitie blok uit te voeren. Deze Vm's zijn vooraf geconfigureerd met [Alles wat u nodig hebt om Azure machine learning uit te voeren](concept-compute-instance.md#contents). 
 

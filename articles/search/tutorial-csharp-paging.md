@@ -1,21 +1,21 @@
 ---
 title: C#-zelf studie over de paginering van zoek resultaten
 titleSuffix: Azure Cognitive Search
-description: In deze zelf studie wordt gedemonstreerd hoe de zoek resultaten worden gepagineerd. Het wordt gebouwd op basis van een bestaand project in hotels, met de knoppen voor de eerste, de volgende, de vorige, de laatste en de genummerde knop. Een tweede wissel systeem gebruikt oneindig schuiven, geactiveerd door een verticale schuif balk te verplaatsen naar de ondergrens.
+description: U kunt paginerings-en navigatie knoppen toevoegen aan Zoek resultaten, bouwen op basis van een bestaand project in hotels om de knoppen eerste, volgende, vorige, laatste en nummering toe te voegen. Een tweede wissel systeem gebruikt oneindig schuiven, geactiveerd door een verticale schuif balk te verplaatsen naar de ondergrens.
 manager: nitinme
-author: tchristiani
-ms.author: terrychr
+author: HeidiSteen
+ms.author: heidist
 ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 02/10/2020
-ms.openlocfilehash: 9abfeb54be6e22885b8e973034a6d89df8272146
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 0dce3852d2b0489b373162fe754d745b01bd3074
+ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77121517"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82780569"
 ---
-# <a name="c-tutorial-search-results-pagination---azure-cognitive-search"></a>C#-zelf studie: paginering van zoek resultaten-Azure Cognitive Search
+# <a name="tutorial-add-paging-to-search-results-using-the-net-sdk"></a>Zelf studie: paginering toevoegen aan Zoek resultaten met behulp van de .NET SDK
 
 Meer informatie over het implementeren van twee verschillende wissel systemen, het eerst op basis van pagina nummers en de tweede op oneindig schuiven. Beide systemen van paging worden veel gebruikt en het selecteren van de juiste versie is afhankelijk van de gebruikers ervaring die u wilt gebruiken met de resultaten. In deze zelf studie worden de paginerings systemen gebouwd in het project dat in de [C#-zelf studie is gemaakt: uw eerste app-Azure-Cognitive Search](tutorial-csharp-create-first-app.md) zelf studie maken.
 

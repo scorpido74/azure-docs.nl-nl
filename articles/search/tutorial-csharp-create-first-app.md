@@ -3,19 +3,19 @@ title: C#-zelf studie voor het maken van uw eerste app
 titleSuffix: Azure Cognitive Search
 description: Meer informatie over het maken van uw eerste C# Search-app stapsgewijs. De zelf studie biedt een koppeling naar een werkende app op GitHub en het volledige proces voor het helemaal zelf bouwen van de app. Meer informatie over de essentiële onderdelen van Azure Cognitive Search.
 manager: nitinme
-author: tchristiani
-ms.author: terrychr
+author: HeidiSteen
+ms.author: heidist
 ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 02/10/2020
-ms.openlocfilehash: 2b4f67fc448d98239947fd764d4926f1d590c5e2
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: a105766b713ce44d800391e2e943f2ac864fa0df
+ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77121589"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82780620"
 ---
-# <a name="c-tutorial-create-your-first-app---azure-cognitive-search"></a>C#-zelf studie: uw eerste app-Azure-Cognitive Search maken
+# <a name="tutorial-create-your-first-search-app-using-the-net-sdk"></a>Zelf studie: uw eerste Zoek-app maken met behulp van de .NET SDK
 
 Meer informatie over het maken van een webinterface voor het opvragen en presen teren van zoek resultaten van een index met Azure Cognitive Search. Deze zelf studie begint met een bestaande, gehoste index, zodat u zich kunt richten op het bouwen van een zoek pagina. De index bevat fictieve Hotel gegevens. Zodra u een basis pagina hebt, kunt u deze in de volgende lessen uitbreiden met paginering, facetten en een soort ervaring.
 

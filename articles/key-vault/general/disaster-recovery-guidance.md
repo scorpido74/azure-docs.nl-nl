@@ -2,19 +2,19 @@
 title: Wat te doen in het geval van een onderbreking van de Azure-service die van invloed is op de Azure Key Vault-Azure Key Vault | Microsoft Docs
 description: Meer informatie over wat u moet doen in het geval van een onderbreking van de Azure-service die van invloed is op Azure Key Vault.
 services: key-vault
-author: msmbaldwin
-manager: rkarlin
+author: ShaneBala-keyvault
+manager: ravijan
 ms.service: key-vault
 ms.subservice: general
 ms.topic: tutorial
-ms.date: 08/12/2019
-ms.author: mbaldwin
-ms.openlocfilehash: 96929dcbe3d51589b0c3c0df89671dadb20e37cc
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.date: 05/04/2020
+ms.author: sudbalas
+ms.openlocfilehash: 4796e6c555ca67794409fb1476f3c4fd0d760719
+ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81422947"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82780450"
 ---
 # <a name="azure-key-vault-availability-and-redundancy"></a>Beschik baarheid en redundantie Azure Key Vault
 
@@ -34,6 +34,8 @@ Er zijn enkele voor behoud van wat u moet weten:
 * Nadat een failover is voltooid, wordt de sleutel kluis in de modus alleen-lezen. Aanvragen die in deze modus worden ondersteund, zijn:
   * Sleutel kluizen weer geven
   * Eigenschappen van sleutel kluizen ophalen
+   * Certificaten weer geven
+  * Certificaten ophalen
   * Geheimen vermelden
   * Geheimen ophalen
   * Lijst met sleutels

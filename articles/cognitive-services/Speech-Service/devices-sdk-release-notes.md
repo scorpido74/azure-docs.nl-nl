@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 02/12/2020
 ms.author: wellsi
-ms.openlocfilehash: 5dbbbbb18bf81d70ed7955530db7c603594c16d0
-ms.sourcegitcommit: d662eda7c8eec2a5e131935d16c80f1cf298cb6b
+ms.openlocfilehash: 93bedbf4275dacc3ec84e6df9c55e7e9a7b9d632
+ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82652724"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82780909"
 ---
 # <a name="release-notes-speech-devices-sdk"></a>Release opmerkingen: SDK voor spraak apparaten
 
@@ -23,6 +23,7 @@ De volgende secties bevatten een lijst met wijzigingen in de meest recente relea
 
 ## <a name="speech-devices-sdk-1110"></a>Speech-apparaten SDK 1.11.0:
 
+- Ondersteuning voor [wille keurige microfoon matrix geometrie](how-to-devices-microphone-array-configuration.md) en het instellen van de werk hoek via een [configuratie bestand](https://aka.ms/sdsdk-micarray-json).
 - Ondersteuning voor [URBETTER DDK](http://www.urbetter.com/products_56/278.html).
 - Uitgebrachte binaire bestanden voor de [GGEC-spreker](https://aka.ms/sdsdk-download-speaker) die wordt gebruikt in het voor beeld van de [Voice-assistent](https://aka.ms/sdsdk-speaker).
 - Uitgebrachte binaire bestanden voor [Linux ARM32](https://aka.ms/sdsdk-download-linux-arm32) en [Linux arm 64](https://aka.ms/sdsdk-download-linux-arm64) voor Raspberry Pi en vergelijk bare apparaten.

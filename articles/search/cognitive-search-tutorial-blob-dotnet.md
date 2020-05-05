@@ -1,5 +1,5 @@
 ---
-title: 'Zelf studie: C# en AI over Azure-blobs'
+title: C#-zelf studie met AI op Azure-blobs
 titleSuffix: Azure Cognitive Search
 description: Neem een voor beeld van tekst extractie en natuurlijke taal verwerking over inhoud in Blob Storage met behulp van C# en de Azure Cognitive Search .NET SDK.
 manager: nitinme
@@ -8,14 +8,14 @@ ms.author: maheff
 ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 02/27/2020
-ms.openlocfilehash: 169a33d12e98235dcb4e4f317dbb8d91eb7446a4
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 51e1b24f9080d102dee234fa1ca6d460c400ba78
+ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "78851135"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82780671"
 ---
-# <a name="tutorial-use-c-and-ai-to-generate-searchable-content-from-azure-blobs"></a>Zelf studie: C# en AI gebruiken voor het genereren van Doorzoek bare inhoud van Azure-blobs
+# <a name="tutorial-ai-generated-searchable-content-from-azure-blobs-using-the-net-sdk"></a>Zelf studie: door AI gegenereerde Doorzoek bare inhoud van Azure-blobs met behulp van de .NET SDK
 
 Als u ongestructureerde tekst of afbeeldingen in Azure Blob-opslag hebt, kan een [AI-verrijkings pijplijn](cognitive-search-concept-intro.md) informatie ophalen en nieuwe inhoud maken die nuttig is voor Zoek opdrachten in volledige tekst of kennis analyse. In deze zelf studie moet u optische teken herkenning (OCR) Toep assen op afbeeldingen en natuurlijke taal verwerking uitvoeren om nieuwe velden te maken die u kunt gebruiken in query's, facetten en filters.
 

@@ -1,21 +1,21 @@
 ---
 title: C#-zelf studie over het gebruik van facetten om navigatie te helpen
 titleSuffix: Azure Cognitive Search
-description: In deze zelf studie wordt gebruikgemaakt van het project Zoek resultaten pagineren-Azure Cognitive Search om facet navigatie toe te voegen. Meer informatie over hoe facetten kunnen worden gebruikt om eenvoudig een zoek opdracht te verfijnen.
+description: Door gaan van ' paginerings resultaten ' om facet navigatie toe te voegen. Meer informatie over hoe facetten kunnen worden gebruikt om eenvoudig een zoek opdracht te verfijnen.
 manager: nitinme
-author: tchristiani
-ms.author: terrychr
+author: HeidiSteen
+ms.author: heidist
 ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 02/10/2020
-ms.openlocfilehash: d88a9d7efdabd493fd31b961748bb6ad3bd8d738
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: bc25ba6d95fe58a80c90881c6ad60cdb8801cce4
+ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77121569"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82780586"
 ---
-# <a name="c-tutorial-use-facets-to-aid-navigation---azure-cognitive-search"></a>C#-zelf studie: facetten gebruiken om navigatie te helpen-Azure Cognitive Search
+# <a name="tutorial-add-faceted-navigation-using-the-net-sdk"></a>Zelf studie: facet navigatie toevoegen met behulp van de .NET SDK
 
 Facetten worden gebruikt om navigatie te helpen door de gebruiker een set koppelingen te bieden die u kunt gebruiken om de zoek opdracht te richten. Facetten zijn kenmerken van de gegevens (zoals de categorie of een specifieke functie van een hotel in de voorbeeld gegevens).
 

@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: overview
 ms.custom: seoapr2020
 ms.date: 04/20/2020
-ms.openlocfilehash: 492c248b9a68b39b37984b978944b4f7ef34d756
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 91a3c71ecaa8af58e13cb96571fc7afdf618fcdd
+ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82190109"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82780076"
 ---
 # <a name="overview-of-enterprise-security-in-azure-hdinsight"></a>Overzicht van ENTER prise Security in azure HDInsight
 
@@ -87,7 +87,7 @@ De volgende tabel bevat koppelingen naar bronnen voor elk type beveiligings oplo
 | Beveiliging van het besturings systeem | Clusters met de meest recente beveiligde basis installatie kopie maken | Klant |
 |  | [Patching van het besturings systeem](../hdinsight-os-patching.md) controleren op regel matige intervallen | Klant |
 | Netwerkbeveiliging | Een [virtueel netwerk](../hdinsight-plan-virtual-network-deployment.md) configureren |
-|  | [Regels voor binnenkomende netwerk beveiligings groepen (NSG)](../hdinsight-plan-virtual-network-deployment.md#networktraffic) configureren | Klant |
+|  | [Regels voor binnenkomende netwerk beveiligings groepen (NSG)](../control-network-traffic.md) configureren | Klant |
 |  | [Beperking van uitgaand verkeer](../hdinsight-restrict-outbound-traffic.md) configureren met firewall | Klant |
 | Gevirtualiseerde infra structuur | N.v.t. | HDInsight (Cloud provider) |
 | Fysieke infrastructuur beveiliging | N.v.t. | HDInsight (Cloud provider) |

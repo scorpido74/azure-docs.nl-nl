@@ -1,14 +1,14 @@
 ---
 title: Wat is Azure Lighthouse?
 description: Met Azure Lighthouse kunnen service providers beheerde services leveren voor hun klanten, met een grotere automatisering en efficiëntie op schaal.
-ms.date: 04/23/2020
+ms.date: 04/30/2020
 ms.topic: overview
-ms.openlocfilehash: aea1451d995d135506fb93e3fc9e86f67227d5b8
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 17e0535f50240c7ea239ae230dce90e397eadce9
+ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82144266"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82780807"
 ---
 # <a name="what-is-azure-lighthouse"></a>Wat is Azure Lighthouse?
 
@@ -22,7 +22,7 @@ Met Azure Lighthouse kunt u op winstgevende en efficiënte wijze beheerde servic
 
 - **Beheer op schaal**: klant betrokkenheid en levenscyclus bewerkingen om klanten resources te beheren zijn eenvoudiger en schaalbaar.
 - **Meer zicht baarheid en nauw keurigheid voor klanten**: klanten hebben meer inzicht in uw acties en nauw keurige controle over het bereik dat ze delegeren voor beheer, inclusief de mogelijkheid om toegang volledig te verwijderen, terwijl uw IP-adres behouden blijft.
-- **Uitgebreide en Unified platform-hulp middelen**: onze ervaring voor het gebruik van het hulp programma heeft betrekking op belang rijke service provider scenario's, met inbegrip van meerdere licentie modellen, zoals EA, CSP en betalen naar gebruik. De nieuwe mogelijkheden werken met bestaande hulpprogram ma's en Api's, licentie modellen en partner Programma's, zoals het [Cloud Solution Provider-programma (CSP)](https://docs.microsoft.com/partner-center/csp-overview). De Azure Lighthouse-opties die u kiest, kunnen worden geïntegreerd in uw bestaande werk stromen en toepassingen, en u kunt uw impact op klant afspraken bijhouden door [uw partner-id te koppelen](../billing/billing-partner-admin-link-started.md).
+- **Uitgebreide en Unified platform-hulp middelen**: onze ervaring voor het gebruik van het hulp programma heeft betrekking op belang rijke service provider scenario's, met inbegrip van meerdere licentie modellen, zoals EA, CSP en betalen naar gebruik. De nieuwe mogelijkheden werken met bestaande hulpprogram ma's en Api's, licentie modellen en partner Programma's, zoals het [Cloud Solution Provider-programma (CSP)](https://docs.microsoft.com/partner-center/csp-overview). Azure Lighthouse kan worden geïntegreerd in uw bestaande werk stromen en toepassingen, en u kunt uw impact op klant afspraken bijhouden door [uw partner-id te koppelen](../billing/billing-partner-admin-link-started.md).
 
 Er zijn geen extra kosten verbonden aan het gebruik van Azure Lighthouse voor het beheren van de Azure-resources van uw klanten.
 
@@ -34,7 +34,6 @@ Azure Lighthouse bevat meerdere manieren om klant betrokkenheid en-beheer te str
 - **Nieuwe Azure Portal-ervaring**: Bekijk informatie over meerdere tenants op de pagina nieuwe **mijn klanten** in de [Azure Portal](https://portal.azure.com). Met een bijbehorende Blade **service providers** kunnen uw klanten toegang tot de service provider weer geven en beheren. Zie [klanten weer geven en beheren](./how-to/view-manage-customers.md) en [service providers weer geven en beheren](how-to/view-manage-service-providers.md)voor meer informatie.
 - **Azure Resource Manager sjablonen**: beheer taken eenvoudiger uitvoeren, met inbegrip van onboarding van klanten voor het beheer van gedelegeerde resources van Azure. Voor meer informatie raadpleegt u onze voor [beelden opslag plaats](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/templates) en maakt [u een klant onboarding van Azure gedelegeerde resource beheer](how-to/onboard-customer.md).
 - **Aanbiedingen voor beheerde services in azure Marketplace**: bied uw services aan klanten aan via privé-of open bare aanbiedingen en laat deze automatisch onboarding uitvoeren op Azure delegated resource management, als alternatief voor onboarding met Azure Resource Manager sjablonen. Zie [Managed Services aanbiedingen in azure Marketplace](concepts/managed-services-offers.md)voor meer informatie.
-- Door **Azure beheerde toepassingen**: verpakken en verzenden toepassingen die uw klanten gemakkelijk kunnen implementeren en gebruiken in hun eigen abonnementen. De toepassing wordt geïmplementeerd in een resource groep waartoe u toegang hebt via uw Tenant, zodat u de service kunt beheren als onderdeel van de algehele Azure Lighthouse-ervaring. Zie overzicht van door [Azure beheerde toepassingen](../azure-resource-manager/managed-applications/overview.md)voor meer informatie.
 
 ## <a name="next-steps"></a>Volgende stappen
 

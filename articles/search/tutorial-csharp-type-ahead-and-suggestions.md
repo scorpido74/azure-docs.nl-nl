@@ -1,21 +1,21 @@
 ---
-title: Automatisch aanvullen en suggesties
+title: C#-zelf studie over automatisch aanvullen en suggesties
 titleSuffix: Azure Cognitive Search
-description: In deze zelf studie ziet u hoe u automatisch aanvullen en suggesties kunt gebruiken voor het verzamelen van de invoer van zoek termen van gebruikers met een vervolg keuzelijst. Het is gebaseerd op een bestaand Hotels-project.
+description: Voeg automatisch aanvullen en suggesties toe om de invoer van de zoek term te verzamelen van gebruikers met een vervolg keuzelijst. Deze zelf studie is gebaseerd op een bestaand Hotels-project.
 manager: nitinme
 author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 04/15/2020
-ms.openlocfilehash: 6b74c3bbb811c122950fd969a8797e87f8f77f86
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 63c098ccd42a438f8daab787afb54cf13cd053c3
+ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81641078"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82780552"
 ---
-# <a name="c-tutorial-add-autocomplete-and-suggestions---azure-cognitive-search"></a>C#-zelf studie: automatisch aanvullen en suggesties toevoegen-Azure Cognitive Search
+# <a name="tutorial-add-autocomplete-and-suggestions-using-the-net-sdk"></a>Zelf studie: automatisch aanvullen en suggesties toevoegen met behulp van de .NET SDK
 
 Meer informatie over het implementeren van automatisch aanvullen (typeahead-query's en aanbevolen documenten) wanneer een gebruiker in een zoekvak begint te typen. In deze zelf studie worden automatisch aangeleverde query's en suggestie resultaten afzonderlijk weer gegeven, en vervolgens samen. Een gebruiker mag slechts twee of drie tekens typen om alle beschik bare resultaten te vinden.
 

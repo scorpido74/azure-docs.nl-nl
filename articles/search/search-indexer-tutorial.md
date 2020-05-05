@@ -1,5 +1,5 @@
 ---
-title: 'Zelf studie: index gegevens uit Azure SQL-data bases in C # '
+title: C#-zelf studie Azure SQL-gegevens indexeren
 titleSuffix: Azure Cognitive Search
 description: In deze zelf studie kunt u verbinding maken met Azure SQL database, Doorzoek bare gegevens extra heren en laden in een Azure Cognitive Search-index.
 manager: nitinme
@@ -8,14 +8,14 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 02/28/2020
-ms.openlocfilehash: 7660c89032ea3ef8371655b94b75c1f60603ee32
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: cab996eb7c0bfccf31ed49294c6aa4b3e8cefc8f
+ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "78193965"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82780756"
 ---
-# <a name="tutorial-use-c-to-index-data-from-sql-databases-in-azure-cognitive-search"></a>Zelf studie: C# gebruiken om gegevens te indexeren van SQL-data bases in azure Cognitive Search
+# <a name="tutorial-index-azure-sql-data-using-the-net-sdk"></a>Zelf studie: Azure SQL-gegevens indexeren met de .NET SDK
 
 Een [Indexeer functie](search-indexer-overview.md) configureren om Doorzoek bare gegevens uit Azure SQL database te halen en deze te verzenden naar een zoek index in azure Cognitive Search. 
 
