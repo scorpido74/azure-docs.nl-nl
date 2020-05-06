@@ -1,19 +1,19 @@
 ---
-title: bestand opnemen
+title: Include-bestand
 titleSuffix: Azure
-description: bestand opnemen
+description: Include-bestand
 services: internet-peering
 author: prmitiki
 ms.service: internet-peering
 ms.topic: include
 ms.date: 11/27/2019
 ms.author: prmitiki
-ms.openlocfilehash: 2ebf5d574b4d185953ab0f7984648c440d6f107e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: fa8d8ccef7d6ad6e1b5d9f19de61e45ee8c439fa
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81678626"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82587881"
 ---
 De Power shell **-cmdlet Get-AzPeeringLocation** retourneert een lijst met peering locaties met de `Kind`verplichte para meter, die u in latere stappen zult gebruiken.
 
@@ -30,7 +30,7 @@ Exchange-peering locaties bevatten de volgende velden:
 * MicrosoftIPv4Address
 * MicrosoftIPv6Address
 
-Controleer of u aanwezig bent bij de gewenste peering-faciliteit door te verwijzen naar [PeeringDB](https://wwww.peeringdb.com).
+Controleer of u aanwezig bent bij de gewenste peering-faciliteit door te verwijzen naar [PeeringDB](https://www.peeringdb.com).
 
 In dit voor beeld ziet u hoe u Seattle gebruikt als de peering-locatie voor het maken van een peering.
 

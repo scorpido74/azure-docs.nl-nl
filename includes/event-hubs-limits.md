@@ -1,6 +1,6 @@
 ---
-title: bestand opnemen
-description: bestand opnemen
+title: Include-bestand
+description: Include-bestand
 services: event-hubs
 author: sethmanheim
 ms.service: event-hubs
@@ -45,7 +45,7 @@ De volgende limieten zijn gebruikelijk voor de lagen basis, standaard en toegewe
 ### <a name="event-hubs-dedicated---quotas-and-limits"></a>Event Hubs Dedicated quota's en limieten
 De Event Hubs Dedicated aanbieding wordt gefactureerd tegen een vaste maandelijkse prijs, met een minimum van 4 uur gebruik. De toegewezen laag biedt alle functies van het Standard-abonnement, maar met de schaal capaciteit van bedrijven en limieten voor klanten met veeleisende workloads. 
 
-| Functie | Limieten |
+| Onderdeel | Limieten |
 | --- | ---|
 | Bandbreedte |  20 CUs |
 | Naamruimten | 50 per CU |

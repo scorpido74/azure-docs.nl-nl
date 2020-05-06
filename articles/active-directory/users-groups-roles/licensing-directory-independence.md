@@ -1,7 +1,7 @@
 ---
 title: Kenmerken van de interactie tussen meerdere tenants-Azure AD | Microsoft Docs
-description: Meer informatie over uw Azure Active Directory-tenants als volledig onafhankelijke organisaties
-services: active-tenant
+description: Meer informatie over de gegevens onafhankelijkheid van uw Azure Active Directory-organisaties
+services: active-directory
 documentationcenter: ''
 author: curtand
 manager: daveba
@@ -9,21 +9,21 @@ ms.service: active-directory
 ms.topic: article
 ms.workload: identity
 ms.subservice: users-groups-roles
-ms.date: 04/07/2020
+ms.date: 04/29/2020
 ms.author: curtand
 ms.custom: it-pro
 ms.reviewer: sumitp
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 175d9ce7db1657e0e654f46adaf8a8d8ef28c25e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: bbe7b0211775e59504443d30fa253cfa14af13b1
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80878116"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82582738"
 ---
 # <a name="understand-how-multiple-azure-active-directory-organizations-interact"></a>Meer informatie over de interactie tussen meerdere Azure Active Directory organisaties
 
-In Azure Active Directory (Azure AD) is elke Tenant een volledig onafhankelijke organisatie: een peer die logisch onafhankelijk is van de andere Azure AD-organisaties die u beheert. Deze onafhankelijkheid tussen organisaties omvat bron onafhankelijkheid, administratieve onafhankelijkheid en synchronisatie onafhankelijkheid. Er is geen bovenliggende/onderliggende relatie tussen organisaties.
+In Azure Active Directory (Azure AD) is elke Azure AD-organisatie volledig onafhankelijk: een peer die logisch onafhankelijk is van de andere Azure AD-organisaties die u beheert. Deze onafhankelijkheid tussen organisaties omvat bron onafhankelijkheid, administratieve onafhankelijkheid en synchronisatie onafhankelijkheid. Er is geen bovenliggende/onderliggende relatie tussen organisaties.
 
 ## <a name="resource-independence"></a>Resource onafhankelijkheid
 

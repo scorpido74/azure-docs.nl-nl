@@ -7,12 +7,12 @@ ms.service: virtual-machines
 ms.topic: article
 ms.date: 02/03/2020
 ms.author: lahugh
-ms.openlocfilehash: 103e19d6e299956b5ee1ad45b577e25f9f2de1c4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: bdb9e346b8deea71ef2af9f9f271ffa446be624e
+ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78164029"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82594335"
 ---
 # <a name="lsv2-series"></a>Lsv2-serie
 
@@ -27,6 +27,8 @@ De Lsv2-serie biedt een hoge door Voer, lage latentie, rechtstreeks toegewezen l
 
 ACU: 150-175
 
+Bursting: ondersteund
+
 Premium Storage: ondersteund
 
 Premium Storage caching: niet ondersteund
@@ -35,14 +37,14 @@ Livemigratie: niet ondersteund
 
 Updates voor het behouden van geheugen: niet ondersteund
 
-| Grootte | vCPU | Geheugen (GiB) | Tijdelijke schijf<sup>1</sup> (GIB) | NVMe-schijven<sup>2</sup> | NVMe-schijf doorvoer<sup>3</sup> (IOPS lezen/Mbps) | Maximale door Voer van niet in cache opgeslagen gegevens schijven (IOPs/MBps)<sup>4</sup> | Maximum aantal gegevens schijven | Maximum aantal Nic's/verwachte netwerk bandbreedte (Mbps) |
-|---|---|---|---|---|---|---|---|---|
-| Standard_L8s_v2   |  8 |  64 |  80 |  1x 1.92 TB  | 400000/2000  | 8000/160   | 16 | 2 / 3200   |
-| Standard_L16s_v2  | 16 | 128 | 160 |  2x 1.92 TB  | 800000/4000  | 16000/320  | 32 | 4 / 6400   |
-| Standard_L32s_v2  | 32 | 256 | 320 |  4x 1.92 TB  | 1,5 m/8000    | 32000/640  | 32 | 8 / 12800  |
-| Standard_L48s_v2  | 48 | 384 | 480 |  6x 1.92 TB  | 2,2 m/14000   | 48000/960  | 32 | 8/16000 + |
-| Standard_L64s_v2  | 64 | 512 | 640 |  8x 1.92 TB  | 2,9 m/16000   | 64000/1280 | 32 | 8/16000 + |
-| Standard_L80s_v2<sup>5</sup> | 80 | 640 | 800 | 10x 1.92 TB | 3.8 m/20000 | 80000/1400 | 32 | 8/16000 + |
+| Grootte | vCPU | Geheugen (GiB) | Tijdelijke schijf<sup>1</sup> (GIB) | NVMe-schijven<sup>2</sup> | NVMe-schijf doorvoer<sup>3</sup> (IOPS lezen/Mbps) | Door Voer van gegevens schijf in cache (IOPs/MBps)<sup>4</sup> | Max. door Voer van gegevens schijf met burst uncache (IOPs/MBps)<sup>5</sup>| Maximum aantal gegevens schijven | Maximum aantal Nic's/verwachte netwerk bandbreedte (Mbps) |
+|---|---|---|---|---|---|---|---|---|---|
+| Standard_L8s_v2   |  8 |  64 |  80 |  1x 1.92 TB  | 400000/2000  | 8000/160   | 8000/1280 | 16 | 2 / 3200   |
+| Standard_L16s_v2  | 16 | 128 | 160 |  2x 1.92 TB  | 800000/4000  | 16000/320  | 16000/1280 | 32 | 4 / 6400   |
+| Standard_L32s_v2  | 32 | 256 | 320 |  4x 1.92 TB  | 1,5 m/8000    | 32000/640  | 32000/1280 | 32 | 8 / 12800  |
+| Standard_L48s_v2  | 48 | 384 | 480 |  6x 1.92 TB  | 2,2 m/14000   | 48000/960  | 48000/2000 | 32 | 8/16000 + |
+| Standard_L64s_v2  | 64 | 512 | 640 |  8x 1.92 TB  | 2,9 m/16000   | 64000/1280 | 64000/2000 | 32 | 8/16000 + |
+| Standard_L80s_v2<sup>6</sup> | 80 | 640 | 800 | 10x 1.92 TB | 3.8 m/20000 | 80000/1400 | 80000/2000 | 32 | 8/16000 + |
 
 <sup>1</sup> virtuele machines uit de Lsv2-serie hebben een standaard op SCSI gebaseerde tijdelijke bron schijf voor het gebruik van paging/wissel bestand (D: op Windows,/dev/sdb in Linux). Deze schijf biedt 80 GiB aan opslag, 4.000 IOPS en 80 MBps overdrachts snelheid voor elke 8 Vcpu's (bijvoorbeeld Standard_L80s_v2 biedt 800 GiB op 40.000 IOPS en 800 MBPS). Dit zorgt ervoor dat de NVMe-stations volledig kunnen worden gebruikt voor het gebruik van toepassingen. Deze schijf is tijdelijk en alle gegevens gaan verloren bij stoppen/toewijzing ongedaan maken.
 
@@ -52,7 +54,9 @@ Updates voor het behouden van geheugen: niet ondersteund
 
 <sup>4</sup> virtuele machines uit de Lsv2-serie bieden geen host-cache voor gegevens schijven omdat het geen voor deel is van de Lsv2-workloads.  Lsv2 Vm's kunnen echter worden voorzien van de tijdelijke VM-besturingssysteem schijf optie van Azure (Maxi maal 30 GiB).
 
-<sup>5</sup> vm's met meer dan 64 vcpu's vereisen een van deze ondersteunde gast besturingssystemen:
+<sup>vijf</sup> vm's [uit de Lsv2](linux/disk-bursting.md) -serie kunnen de schijf prestaties Maxi maal 30 minuten per keer oplopen. 
+
+voor <sup>6</sup> vm's met meer dan 64 vcpu's is een van de volgende ondersteunde gast besturingssystemen vereist:
 
 - Windows Server 2016 of hoger
 - Ubuntu 16,04 LTS of hoger, met door Azure afgestemde kernel (4,15 kernel of hoger)

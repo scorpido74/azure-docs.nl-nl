@@ -1,6 +1,6 @@
 ---
 title: Selfservice registratie voor door e-mail geverifieerde gebruikers-Azure AD | Microsoft Docs
-description: Aanmelden via self-service gebruiken in een Azure Active Directory-Tenant (Azure AD)
+description: Aanmelden via self-service in een Azure Active Directory-organisatie (Azure AD)
 services: active-directory
 documentationcenter: ''
 author: curtand
@@ -10,17 +10,17 @@ ms.service: active-directory
 ms.subservice: users-groups-roles
 ms.topic: article
 ms.workload: identity
-ms.date: 11/08/2019
+ms.date: 04/29/2020
 ms.author: curtand
 ms.reviewer: elkuzmen
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 953837e22cdd3ba8a54d702eac61461739db82d2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: fedb9375ec7ac7e7c7ac7a3ebf91166f70b6a05b
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74027640"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82582994"
 ---
 # <a name="what-is-self-service-sign-up-for-azure-active-directory"></a>Wat is een self-service registratie voor Azure Active Directory?
 

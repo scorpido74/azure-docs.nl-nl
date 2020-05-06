@@ -6,12 +6,12 @@ ms.author: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 04/07/2020
-ms.openlocfilehash: 45e766c624ee96f7faa06fb07d00349e620a4c0a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d167c603ada885a1a4917c66bab110e4ce38cab4
+ms.sourcegitcommit: acc558d79d665c8d6a5f9e1689211da623ded90a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82133488"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82598365"
 ---
 # <a name="user-defined-functions-in-azure-stream-analytics"></a>Door de gebruiker gedefinieerde functies in Azure Stream Analytics
 
@@ -47,6 +47,9 @@ Azure Stream Analytics houdt geen registratie bij van alle functies en heeft res
 
 Runtime fouten worden als onherstelbaar beschouwd en worden opgehaald via activiteiten-en bron Logboeken. U wordt aangeraden alle uitzonde ringen en fouten te verwerken en een geldig resultaat te retour neren naar uw query. Hiermee wordt voor komen dat uw taak naar een [mislukte status](job-states.md)gaat.  
 
+## <a name="exception-handling"></a>Afhandeling van uitzonderingen
+
+Elke uitzonde ring tijdens het verwerken van gegevens wordt beschouwd als een onherstelbare fout bij het gebruiken van gegevens in Azure Stream Analytics. Door de gebruiker gedefinieerde functies hebben een grotere kans om uitzonde ringen te genereren en zorgen ervoor dat de verwerking stopt. Als u dit probleem wilt voor komen, gebruikt u een *try-catch-* blok in Java script of C# om uitzonde ringen te ondervangen tijdens het uitvoeren van code. Uitzonde ringen die zijn gevangen, kunnen worden geregistreerd en verwerkt zonder dat er een systeem fout optreedt. U wordt geadviseerd om uw aangepaste code altijd in een *try-catch-* blok te laten teruglopen om te voor komen dat er onverwachte uitzonde ringen op de verwerkings engine optreden.
 
 ## <a name="next-steps"></a>Volgende stappen
 
@@ -54,4 +57,3 @@ Runtime fouten worden als onherstelbaar beschouwd en worden opgehaald via activi
 * [Door de gebruiker gedefinieerde Java script-functies Azure Stream Analytics](stream-analytics-javascript-user-defined-aggregates.md)
 * [Door de gebruiker gedefinieerde .NET Standard-functies ontwikkelen voor Azure Stream Analytics-taken](stream-analytics-edge-csharp-udf-methods.md)
 * [Azure Stream Analytics integreren met Azure Machine Learning](machine-learning-udf.md)
-

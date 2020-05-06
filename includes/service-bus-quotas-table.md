@@ -1,6 +1,6 @@
 ---
-title: bestand opnemen
-description: bestand opnemen
+title: Include-bestand
+description: Include-bestand
 services: service-bus-messaging
 author: spelluru
 ms.service: service-bus-messaging

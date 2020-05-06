@@ -8,12 +8,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 03/23/2020
-ms.openlocfilehash: af4e33e2653aebe5d1c979aa314463e4beb7b0d7
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 672fecc7487a73909efa5b4247f4889bb47b7b7e
+ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82233394"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82594318"
 ---
 # <a name="lookup-transformation-in-mapping-data-flow"></a>Trans formatie opzoeken in toewijzings gegevens stroom
 
@@ -33,7 +33,7 @@ Een zoek transformatie is vergelijkbaar met een left outer join. Alle rijen van 
 
 **Overeenkomen met meerdere rijen:** Als deze functie is ingeschakeld, retourneert een rij met meerdere overeenkomsten in de primaire stroom meerdere rijen. Anders wordt slechts één rij geretourneerd op basis van de voor waarde match on.
 
-**Zoeken op:** Alleen zichtbaar als ' overeenkomen met meerdere rijen ' is ingeschakeld. Kies of u wilt zoeken naar een wille keurige rij, de eerste of de laatste overeenkomst. Elke rij wordt aanbevolen omdat deze het snelst uitvoert. Als de eerste rij of laatste rij is geselecteerd, moet u de sorteer voorwaarden opgeven.
+**Zoeken op:** Alleen zichtbaar als ' overeenkomen met meerdere rijen ' niet is geselecteerd. Kies of u wilt zoeken naar een wille keurige rij, de eerste of de laatste overeenkomst. Elke rij wordt aanbevolen omdat deze het snelst uitvoert. Als de eerste rij of laatste rij is geselecteerd, moet u de sorteer voorwaarden opgeven.
 
 **Zoek voorwaarden:** Selecteer de kolommen die u wilt laten overeenkomen. Als aan de gelijkheids voorwaarde wordt voldaan, worden de rijen als een overeenkomst beschouwd. Houd de muis aanwijzer en selecteer berekende kolom om een waarde op te halen met behulp van de taal van de [Data flow-expressie](data-flow-expression-functions.md).
 

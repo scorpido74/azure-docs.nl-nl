@@ -10,23 +10,23 @@ ms.service: active-directory
 ms.topic: article
 ms.workload: identity
 ms.subservice: users-groups-roles
-ms.date: 03/18/2019
+ms.date: 04/29/2020
 ms.author: curtand
 ms.reviewer: sumitp
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 130ce05e332f4705feb4acd54cbeb25d25a82532
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b9c61bbc794438c34a4bda27c8048ac0b21f9fc1
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79253063"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82582706"
 ---
 # <a name="assign-licenses-to-users-by-group-membership-in-azure-active-directory"></a>Licenties toewijzen aan gebruikers per groepslid maatschap in Azure Active Directory
 
 In dit artikel vindt u instructies voor het toewijzen van product licenties aan een groep gebruikers en het controleren of ze correct zijn gelicentieerd in Azure Active Directory (Azure AD).
 
-In dit voor beeld bevat de Tenant een beveiligings groep met de naam **HR-afdeling**. Deze groep bevat alle leden van de afdeling Human Resources (rond 1.000 gebruikers). U wilt Office 365 Enter prise E3-licenties toewijzen aan de hele afdeling. De Yammer Enter prise-service die is opgenomen in het product moet tijdelijk worden uitgeschakeld totdat de afdeling klaar is om deze te gebruiken. U wilt ook Enterprise Mobility + Security-licenties implementeren voor dezelfde groep gebruikers.
+In dit voor beeld bevat de Azure AD-organisatie een beveiligings groep met de naam **HR Department**. Deze groep bevat alle leden van de afdeling Human Resources (rond 1.000 gebruikers). U wilt Office 365 Enter prise E3-licenties toewijzen aan de hele afdeling. De Yammer Enter prise-service die is opgenomen in het product moet tijdelijk worden uitgeschakeld totdat de afdeling klaar is om deze te gebruiken. U wilt ook Enterprise Mobility + Security-licenties implementeren voor dezelfde groep gebruikers.
 
 > [!NOTE]
 > Sommige services van Microsoft zijn niet op alle locaties beschikbaar. Voordat een licentie aan een gebruiker kan worden toegewezen, moet de beheerder de eigenschap gebruiks locatie opgeven voor de gebruiker.
@@ -37,7 +37,7 @@ In dit voor beeld bevat de Tenant een beveiligings groep met de naam **HR-afdeli
 
 1. Meld u aan bij het [**Azure AD-beheer centrum**](https://aad.portal.azure.com) met een licentie beheerders account. Voor het beheren van licenties moet het account een licentie beheerder, gebruikers beheerder of globale beheerder zijn.
 
-1. Selecteer **licenties** om een pagina te openen waar u alle licentie-producten in de Tenant kunt zien en beheren.
+1. Selecteer **licenties** om een pagina te openen waar u alle licentie-producten in de organisatie kunt zien en beheren.
 
 1. Onder **alle producten**selecteert u zowel Office 365 Enter prise E5 als Enterprise Mobility + Security E3 door de product namen te selecteren. Als u de toewijzing wilt starten, selecteert u boven aan de pagina **toewijzen** .
 

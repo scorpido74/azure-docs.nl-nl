@@ -13,12 +13,12 @@ author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: anandsub
-ms.openlocfilehash: 50ff0afe13b5b098fbc8d9fbeefba295a6217192
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 83ccc3160ed62a1ea801dd8c5795328fd2b5109f
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81606077"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82584017"
 ---
 # <a name="how-to-start-and-stop-azure-ssis-integration-runtime-on-a-schedule"></a>Azure-SSIS Integration Runtime gepland starten en stoppen
 
@@ -72,7 +72,7 @@ Als u een derde trigger maakt die gepland is om dagelijks om middernacht te word
 6. Selecteer voor **versie** **v2** .
 7. Selecteer bij **locatie**een van de locaties die worden ondersteund voor het maken van ADF vanuit de vervolg keuzelijst.
 8. Selecteer **Vastmaken aan dashboard**.     
-9. Klik op **maken**.
+9. Klik op **Maken**.
 10. In het Azure-dash board ziet u de volgende tegel met de status: **Data Factory implementeren**. 
 
     ![tegel met de status 'gegevensfactory implementeren'](media/tutorial-create-azure-ssis-runtime-portal/deploying-data-factory.png)
@@ -163,7 +163,7 @@ Nu uw pijp lijnen werken zoals verwacht, kunt u triggers maken om ze uit te voer
     4. Voer voor **terugkeer patroon**een uitgebracht in voor de trigger. In het volgende voor beeld is het **dagelijks** één keer. 
     5. Selecteer bij **einde** **geen einde** of voer een eind datum en-tijd in na selectie **op datum**. 
     6. Selecteer **geactiveerd** om de trigger onmiddellijk te activeren nadat u de volledige ADF-instellingen hebt gepubliceerd. 
-    7. Selecteer **Next**.
+    7. Selecteer **Volgende**.
 
    ![Trigger-> nieuw/bewerken](./media/how-to-schedule-azure-ssis-integration-runtime/new-trigger-window.png)
     
@@ -353,7 +353,7 @@ De volgende sectie bevat stappen voor het maken van een Power shell-runbook. Het
 
 ## <a name="create-schedules-for-your-runbook-to-startstop-azure-ssis-ir"></a>Schema's voor uw runbook maken om Azure-SSIS IR te starten/stoppen
 
-In de vorige sectie hebt u uw Azure Automation runbook gemaakt waarmee u Azure-SSIS IR kunt starten of stoppen. In deze sectie maakt u twee planningen voor uw runbook. Bij het configureren van de eerste planning geeft u **Start** voor **bewerking**op. Op dezelfde manier kunt u bij het configureren van de tweede de **bewerking** **stoppen** opgeven. Zie [een plannings artikel maken](../automation/shared-resources/schedules.md#creating-a-schedule) voor gedetailleerde stappen voor het maken van planningen.
+In de vorige sectie hebt u uw Azure Automation runbook gemaakt waarmee u Azure-SSIS IR kunt starten of stoppen. In deze sectie maakt u twee planningen voor uw runbook. Bij het configureren van de eerste planning geeft u **Start** voor **bewerking**op. Op dezelfde manier kunt u bij het configureren van de tweede de **bewerking** **stoppen** opgeven. Zie [een plannings artikel maken](../automation/shared-resources/schedules.md#create-a-schedule) voor gedetailleerde stappen voor het maken van planningen.
 
 1. In het venster **Runbook** selecteert u **planningen**en selecteert u **+ een schema toevoegen** op de werk balk. 
 

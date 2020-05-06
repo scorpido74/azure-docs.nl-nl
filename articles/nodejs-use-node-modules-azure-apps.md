@@ -14,12 +14,12 @@ ms.devlang: nodejs
 ms.topic: article
 ms.date: 08/17/2016
 ms.author: routlaw
-ms.openlocfilehash: 61be6bcd957a4e81147d5ef472b8f850e5605e41
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8621dde43ff38cee15feb1d30b6ea80ab681c855
+ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "70309280"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82594777"
 ---
 # <a name="using-nodejs-modules-with-azure-applications"></a>Node.js-modules gebruiken met Azure-toepassingen
 Dit document bevat richt lijnen voor het gebruik van node. js-modules met toepassingen die worden gehost op Azure. Het biedt richt lijnen om ervoor te zorgen dat uw toepassing gebruikmaakt van een specifieke versie van een module en gebruikmaakt van systeem eigen modules met Azure.
@@ -85,7 +85,7 @@ Wanneer uw toepassing gereed is voor productie, kunt u de versie vereisten vergr
 > 
 
 ## <a name="next-steps"></a>Volgende stappen
-Nu u begrijpt hoe u node. js-modules gebruikt met Azure, leert u hoe u [de node. js-versie kunt opgeven](https://github.com/squillace/staging/blob/master/articles/nodejs-specify-node-version-azure-apps.md), [een node. js-Web-App kunt maken en implementeren](app-service/app-service-web-get-started-nodejs.md)en [hoe u de Azure-opdracht regel interface voor Mac en Linux gebruikt](https://azure.microsoft.com/blog/using-windows-azure-with-the-command-line-tools-for-mac-and-linux/).
+Nu u begrijpt hoe u node. js-modules gebruikt met Azure, leert u hoe u [de node. js-versie kunt opgeven](https://github.com/squillace/nodejs-microservice), [een node. js-Web-App kunt maken en implementeren](app-service/app-service-web-get-started-nodejs.md)en [hoe u de Azure-opdracht regel interface voor Mac en Linux gebruikt](https://azure.microsoft.com/blog/using-windows-azure-with-the-command-line-tools-for-mac-and-linux/).
 
 Zie het [Node.js-ontwikkelaarscentrum](/azure/javascript/) voor meer informatie.
 

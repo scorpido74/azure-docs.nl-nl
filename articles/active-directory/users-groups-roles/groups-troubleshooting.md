@@ -13,12 +13,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6f685ac63e3b4a8cf466be4eb4561472fb084d49
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 689a528a75613ac6a38bed74d6597d492f498e8b
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74026549"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82582735"
 ---
 # <a name="troubleshoot-and-resolve-groups-issues"></a>Problemen met groepen oplossen en oplossen
 
@@ -43,7 +43,7 @@ Het maken van groepen uitschakelen voor gebruikers die geen beheerder zijn in Po
    ```
 
 <br/>**Ik heb een fout van het maximum aantal toegestane groepen ontvangen bij het maken van een dynamische groep in Power shell**<br/>
-Als u een bericht ontvangt in Power shell dat _dynamisch groeps beleid aangeeft maximum aantal toegestane groepen is bereikt_, betekent dit dat u de maximum limiet hebt bereikt voor dynamische groepen in uw Tenant. Het maximum aantal dynamische groepen per Tenant is 5.000.
+Als u een bericht ontvangt in Power shell dat _dynamisch groeps beleid aangeeft maximum aantal toegestane groepen is bereikt_, betekent dit dat u de maximum limiet hebt bereikt voor dynamische groepen in uw organisatie. Het maximum aantal dynamische groepen per organisatie is 5.000.
 
 Als u nieuwe dynamische groepen wilt maken, moet u eerst enkele bestaande dynamische groepen verwijderen. Er is geen manier om de limiet te verhogen.
 
@@ -53,7 +53,7 @@ Als u nieuwe dynamische groepen wilt maken, moet u eerst enkele bestaande dynami
 1. Controleer de waarden voor gebruikers-of apparaateigenschappen in de regel. Zorg ervoor dat er gebruikers zijn die voldoen aan de regel. Voor apparaten controleert u de apparaateigenschappen om ervoor te zorgen dat gesynchroniseerde kenmerken de verwachte waarden bevatten.<br/>
 2. Controleer de verwerkings status van de lidmaatschap om te controleren of deze is voltooid. U kunt de [verwerkings status](groups-create-rule.md#check-processing-status-for-a-rule) van het lidmaatschap en de datum waarop de update voor het laatst is bijgewerkt, op de pagina **overzicht** voor de groep controleren.
 
-Als alles goed lijkt, wacht u even totdat de groep is gevuld. Afhankelijk van de grootte van uw tenant, kan het de eerste keer of na een regelwijziging tot 24 uur duren voordat de groep is ingevuld.
+Als alles goed lijkt, wacht u even totdat de groep is gevuld. Afhankelijk van de grootte van uw Azure AD-organisatie kan het tot 24 uur duren voordat de groep voor het eerst wordt gevuld of nadat een regel is gewijzigd.
 
 **Ik heb een regel geconfigureerd, maar nu worden de bestaande leden van de regel verwijderd**<br/>Dit is normaal. Bestaande leden van de groep worden verwijderd wanneer een regel wordt ingeschakeld of gewijzigd. De gebruikers die zijn geretourneerd door de evaluatie van de regel, worden toegevoegd als leden aan de groep.
 
@@ -74,7 +74,7 @@ Op dit moment is er geen manier om de groep automatisch te activeren om op aanvr
 
 Deze artikelen bevatten aanvullende informatie over Azure Active Directory.
 
-* [Managing access to resources with Azure Active Directory groups](../fundamentals/active-directory-manage-groups.md) (Toegang tot resources beheren met Azure Active Directory-groepen)
+* [Toegang tot resources beheren met Azure Active Directory groepen](../fundamentals/active-directory-manage-groups.md)
 * [Application Management in Azure Active Directory](../manage-apps/what-is-application-management.md) (Toepassingsbeheer in Azure Active Directory)
 * [What is Azure Active Directory? (Engelstalig)](../fundamentals/active-directory-whatis.md)
 * [Integrating your on-premises identities with Azure Active Directory (Engelstalig)](../hybrid/whatis-hybrid-identity.md)

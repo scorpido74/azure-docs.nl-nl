@@ -5,16 +5,16 @@ services: logic-apps
 ms.suite: integration
 author: lauradolan
 ms.author: ladolan
-ms.reviewer: estfan, logicappspm
+ms.reviewer: estfan, jonfan, logicappspm
 ms.topic: article
 ms.custom: mvc
-ms.date: 04/13/2020
-ms.openlocfilehash: f726ca90c215c4aff3734bd8022bbc1ad4dc5f87
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 04/29/2020
+ms.openlocfilehash: d80972cd200b8f85e14d316c4c06a38f88ac81b5
+ms.sourcegitcommit: acc558d79d665c8d6a5f9e1689211da623ded90a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81415988"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82598161"
 ---
 # <a name="manage-logic-apps-in-the-azure-portal"></a>Logische apps beheren in de Azure Portal
 
@@ -60,7 +60,7 @@ Voer de volgende stappen uit om uw logische app te zoeken en te openen:
    * **Locatie**
    * **Type** 
    * **Abonnements naam**
-   * **Subscription ID**
+   * **Abonnements-id**
    * **Toegangs eindpunt**
    * **Uitgaande IP-adressen voor runtime**
    * **Toegangs punt-IP-adressen**
@@ -145,6 +145,10 @@ Het verwijderen van uw logische app heeft invloed op uw werk stroom exemplaren o
 * Alle lopende uitvoeringen en in behandeling zijnde uitvoeringen gaan door totdat ze zijn voltooid. Afhankelijk van het aantal uitvoeringen kan dit proces enige tijd in beslag nemen.
 
 * De Logic Apps-Engine maakt of voert geen nieuwe exemplaren van werk stromen uit.
+
+> [!NOTE]
+> Als u een onderliggende logische app verwijdert en opnieuw maakt, moet u de bovenliggende logische app opnieuw opslaan. De opnieuw gemaakte onderliggende app heeft andere meta gegevens.
+> Als u de bovenliggende logische app niet opnieuw opslaat nadat u het onderliggende element opnieuw hebt gemaakt, zullen de aanroepen naar de onderliggende logische app mislukken met de fout ' niet toegestaan '. Dit gedrag is van toepassing op bovenliggende en onderliggende logische apps, bijvoorbeeld die artefacten gebruiken in integratie accounts of Azure functions aanroepen.
 
 <a name="delete-single-logic-app"></a>
 

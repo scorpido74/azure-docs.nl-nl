@@ -7,12 +7,12 @@ ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 5/6/2019
-ms.openlocfilehash: 771d7f5b037fde1144b18dc4ed0dee7aecac6744
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: HT
+ms.openlocfilehash: cf051da4e2976ca54c95b54cd6ac89cb6f6cc1b1
+ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82100206"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82562216"
 ---
 # <a name="troubleshoot-connection-issues-to-azure-database-for-postgresql---single-server"></a>Verbindings problemen met Azure Database for PostgreSQL-één server oplossen
 
@@ -49,6 +49,7 @@ Als de toepassing permanent geen verbinding kan maken met Azure Database for Pos
 * Server firewall configuratie: Zorg ervoor dat de firewall van de Azure Database for PostgreSQL-server zo is geconfigureerd dat verbindingen van uw client worden toegestaan, inclusief proxy servers en gateways.
 * Firewall configuratie van de client: de firewall op uw client moet verbindingen met uw database server toestaan. IP-adressen en poorten van de server die u niet wilt toestaan en toepassings namen als PostgreSQL in sommige firewalls.
 * Gebruikers fout: mogelijk hebt u een type verbindings parameter, zoals de server naam in de Connection String of een ontbrekend * \@server* achtervoegsel in de gebruikers naam.
+* Als de fout _server niet is geconfigureerd voor het toestaan van IPv6-verbindingen_, ziet u dat de laag basis geen ondersteuning biedt voor VNet-service-eind punten. U moet het micro soft. SQL-eind punt verwijderen uit het subnet dat probeert verbinding te maken met de basis server.
 
 ### <a name="steps-to-resolve-persistent-connectivity-issues"></a>Stappen voor het oplossen van problemen met de permanente verbinding
 

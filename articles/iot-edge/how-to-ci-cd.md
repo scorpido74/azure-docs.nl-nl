@@ -8,12 +8,12 @@ ms.date: 08/20/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 9a653d13137a3067bfaf51c64c09454a08783e31
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: HT
+ms.openlocfilehash: ac37e9bd10caea5c6e58fc797eac73ce6c714162
+ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82131416"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82561028"
 ---
 # <a name="continuous-integration-and-continuous-deployment-to-azure-iot-edge"></a>Continue integratie en continue implementatie naar Azure IoT Edge
 
@@ -100,6 +100,13 @@ In deze sectie maakt u een nieuwe build-pijp lijn. Configureer de pijp lijn zo d
    * **Standaard platform**: Selecteer het juiste platform voor uw modules op basis van uw doel IOT edge apparaat.
    * **Uitvoer variabelen**: de uitvoer variabelen bevatten een referentie naam die u kunt gebruiken om het bestandspad te configureren waar uw implementatie. JSON-bestand wordt gegenereerd. Stel de naam van de verwijzing in op een onthouden soort, net als een **rand**.
 
+
+   Deze configuraties gebruiken de opslag plaats en label van de installatie kopie die `module.json` in het bestand zijn gedefinieerd om de module installatie kopie te labelen. Het **maken van module-installatie kopieën** helpt ook de variabelen te vervangen door de exacte `module.json` waarde die u in het bestand definieert. In Visual Studio of Visual Studio code geeft u de daad werkelijke waarde op in een `.env` bestand. In azure-pijp lijnen stelt u de waarde in op het tabblad **pijplijn variabelen** . Selecteer het tabblad **variabelen** en configureer de naam en waarde als volgt:
+
+    * **ACR_ADDRESS**: uw Azure container Registry adres. 
+
+    Als u andere variabelen in uw project hebt, kunt u de naam en waarde op dit tabblad opgeven. bij het **bouwen van module-installatie kopieën** worden `${VARIABLE}` alleen variabelen met een notatie herkend. Zorg ervoor dat u deze indeling in uw `**/module.json` bestanden gebruikt.
+    
 7. Selecteer de tweede **Azure IOT Edge** taak om deze te bewerken. Met deze taak worden alle module-installatie kopieën gepusht naar het container register dat u selecteert.
 
    * **Weergave naam**: de weergave naam wordt automatisch bijgewerkt wanneer het actie veld wordt gewijzigd.

@@ -57,7 +57,7 @@ AIB biedt ondersteuning voor Azure Marketplace Base OS-basis installatie kopieë
 
 RHEL Iso's support wordt afgeschaft. Raadpleeg de documentatie van de sjabloon voor meer informatie.
 
-## <a name="how-it-works"></a>Hoe werkt het?
+## <a name="how-it-works"></a>Hoe het werkt
 
 
 ![Conceptuele tekening van Azure Image Builder](./media/virtual-machines-image-builder-overview/image-builder.png)

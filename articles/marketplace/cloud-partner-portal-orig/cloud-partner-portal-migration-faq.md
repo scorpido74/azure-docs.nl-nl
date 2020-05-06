@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 04/10/2020
 ms.author: mingshen
 ms.openlocfilehash: 672153eba4aa2b739b67694f939c4796b39ac4c6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 05/05/2020
 ms.locfileid: "81274378"
 ---
 # <a name="frequently-asked-questions-for-migrating-from-the-cloud-partner-portal-to-partner-center"></a>Veelgestelde vragen over de migratie van de Cloud Partner-portal naar het partner centrum
@@ -22,7 +22,7 @@ Dit artikel heeft betrekking op veelgestelde vragen over de migratie van aanbied
 
 We verplaatsen uw aanbiedings gegevens van de Cloud Partner-portal naar het partner centrum met wijzigingen in de ervaring voor het publiceren en beheren van aanbiedingen.
 
-| Onderwerp  | Gewijzigde  |
+| Gebied  | Gewijzigde  |
 |-------|----------|
 | **Beheer ervaring publiceren en aanbieden** | U hebt een verbeterde gebruikers ervaring met een intuïtieve interface in Partner Center. Zie [Wat zijn de verschillen tussen partner centrum en de Cloud Partner-Portal?](#what-are-the-differences-between-partner-center-and-the-cloud-partner-portal) voor meer informatie. |
 | **Beschik baarheid van uw aanbiedingen in Marketplace** | Er zijn geen wijzigingen. Als uw aanbieding Live is in de Marketplace, blijft deze live tijdens en nadat de migratie is voltooid. |

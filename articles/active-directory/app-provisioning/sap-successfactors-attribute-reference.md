@@ -1,33 +1,37 @@
 ---
-title: Naslag informatie over SAP SuccessFactors-kenmerken | Microsoft Docs
+title: Naslag informatie over SAP SuccessFactors-kenmerken
 description: Meer informatie over de kenmerken van SuccessFactors die worden ondersteund door SuccessFactors-HR ingericht inrichten
 services: active-directory
 author: cmmdesai
-documentationcenter: na
-manager: jodadzie
-ms.assetid: afb77f2d-5ddd-4c2e-a840-09021b0efef1
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-provisioning
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 12/06/2019
 ms.author: chmutali
-ms.openlocfilehash: 00b16f969525e7b802c008ba247ecba015875689
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.reviewer: celested
+ms.openlocfilehash: cdd6abf5d10a529aa4c529d0364b2ba9f1df72e3
+ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77522353"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82593181"
 ---
 # <a name="sap-successfactors-attribute-reference"></a>Naslag informatie over SAP SuccessFactors-kenmerken
 
+In dit artikel vindt u informatie over:
+
+- [Ondersteunde SuccessFactors-entiteiten en-kenmerken](#supported-successfactors-entities-and-attributes)
+- [Toewijzing van standaard kenmerk](#default-attribute-mapping)
+
 ## <a name="supported-successfactors-entities-and-attributes"></a>Ondersteunde SuccessFactors-entiteiten en-kenmerken
 
-In de onderstaande tabel wordt de lijst met SuccessFactors-kenmerken die worden ondersteund door de volgende twee Provisioning-apps vastgelegd: 
-* [SuccessFactors Active Directory gebruikers inrichten](../saas-apps/sap-successfactors-inbound-provisioning-tutorial.md)
-* [SuccessFactors naar Azure AD-gebruikers inrichten](../saas-apps/sap-successfactors-inbound-provisioning-cloud-only-tutorial.md) 
+In de onderstaande tabel wordt de lijst met SuccessFactors-kenmerken die worden ondersteund door de volgende twee Provisioning-apps vastgelegd:
+
+- [SuccessFactors Active Directory gebruikers inrichten](../saas-apps/sap-successfactors-inbound-provisioning-tutorial.md)
+- [SuccessFactors naar Azure AD-gebruikers inrichten](../saas-apps/sap-successfactors-inbound-provisioning-cloud-only-tutorial.md)
+
 
 | \# | SuccessFactors entiteit                  | SuccessFactors-kenmerk     | Type bewerking |
 |----|----------------------------------------|------------------------------|----------------|
@@ -96,7 +100,7 @@ In de onderstaande tabel wordt de lijst met SuccessFactors-kenmerken die worden 
 | 62 | EmpJob\.CostCenter                     | costCenter                   | Lezen           |
 | 63 | EmpJob\.CostCenter                     | costCenterId                 | Lezen           |
 | 64 | EmpJob\.CostCenter                     | costCenterDescription        | Lezen           |
-| 65 | EmpJob\.afdeling                     | department                   | Lezen           |
+| 65 | EmpJob\.afdeling                     | afdeling                   | Lezen           |
 | 66 | EmpJob\.afdeling                     | departmentId                 | Lezen           |
 | 67 | EmpJob\.-deling                       | daarvan                     | Lezen           |
 | 68 | EmpJob\.-deling                       | divisionId                   | Lezen           |
@@ -111,7 +115,6 @@ In de onderstaande tabel wordt de lijst met SuccessFactors-kenmerken die worden 
 | 77 | EmpEmploymentTermination               | activeEmploymentsCount       | Lezen           |
 | 78 | EmpEmploymentTermination               | latestTerminationDate        | Lezen           |
 
-
 ## <a name="default-attribute-mapping"></a>Toewijzing van standaard kenmerk
 
 De volgende tabel bevat de standaard kenmerk toewijzing tussen de hierboven vermelde SuccessFactors-kenmerken en AD/Azure AD-kenmerken. In de Blade ' toewijzing ' van Azure AD-inrichtings toepassing kunt u deze standaard toewijzing wijzigen zodat deze kenmerken bevat uit de bovenstaande lijst. 
@@ -120,22 +123,21 @@ De volgende tabel bevat de standaard kenmerk toewijzing tussen de hierboven verm
 |----|----------------------------------------|--------------------------|-----------------------------------------|----------------------------------------------------------------------------------------------|
 | 1  | PerPerson                              | personIdExternal         | employeeId                              | Gebruikt als overeenkomend kenmerk                                                                   |
 | 2  | PerPerson                              | perPersonUuid            | \[Niet toegewezen \- als bron anker\] | Tijdens de eerste synchronisatie koppelt de inrichtings service de personUuid aan bestaande objectGuid\.  |
-| 3  | PerPersonal                            | displayName              | displayName                             | N.v.t.                                                                                           |
-| 4  | PerPersonal                            | voornaam                | givenName                               | N.v.t.                                                                                           |
-| 5  | PerPersonal                            | achternaam                 | sn                                      | N.v.t.                                                                                           |
-| 6  | Gebruiker                                   | addressLine1             | streetAddress                           | N.v.t.                                                                                           |
-| 7  | Gebruiker                                   | city                     | l                                       | N.v.t.                                                                                           |
-| 8  | Gebruiker                                   | land                  | collega's                                      | N.v.t.                                                                                           |
-| 9  | Gebruiker                                   | state                    | st                                      | N.v.t.                                                                                           |
-| 10 | Gebruiker                                   | gebruikersnaam                 | samAccountName                          | N.v.t.                                                                                           |
-| 11 | Gebruiker                                   | zipCode                  | Code                              | N.v.t.                                                                                           |
-| 12 | PerEmail                               | emailAddress             | mail                                    | N.v.t.                                                                                           |
-| 13 | EmpJob                                 | jobTitle                 | titel                                   | N.v.t.                                                                                           |
-| 14 | EmpJob                                 | managerId                | manager                                 | N.v.t.                                                                                           |
-| 15 | EmpJob\.Company\.CountryOfRegistration | twoCharCountryCode       | c                                       | N.v.t.                                                                                           |
-| 16 | EmpJob\.afdeling                     | department               | department                              | N.v.t.                                                                                           |
-| 17 | EmpJob\.-deling                       | daarvan                 | bedrijf                                 | N.v.t.                                                                                           |
-| 18 | Locatie\.van EmpJob                       | officeLocationAddress    | streetAddress                           | N.v.t.                                                                                           |
-| 19 | Locatie\.van EmpJob                       | officeLocationZipCode    | Code                              | N.v.t.                                                                                           |
+| 3  | PerPersonal                            | displayName              | displayName                             | NA                                                                                           |
+| 4  | PerPersonal                            | voornaam                | givenName                               | NA                                                                                           |
+| 5  | PerPersonal                            | achternaam                 | sn                                      | NA                                                                                           |
+| 6  | Gebruiker                                   | addressLine1             | streetAddress                           | NA                                                                                           |
+| 7  | Gebruiker                                   | city                     | l                                       | NA                                                                                           |
+| 8  | Gebruiker                                   | land                  | collega's                                      | NA                                                                                           |
+| 9  | Gebruiker                                   | state                    | st                                      | NA                                                                                           |
+| 10 | Gebruiker                                   | gebruikersnaam                 | samAccountName                          | NA                                                                                           |
+| 11 | Gebruiker                                   | zipCode                  | Code                              | NA                                                                                           |
+| 12 | PerEmail                               | emailAddress             | mail                                    | NA                                                                                           |
+| 13 | EmpJob                                 | jobTitle                 | title                                   | NA                                                                                           |
+| 14 | EmpJob                                 | managerId                | manager                                 | NA                                                                                           |
+| 15 | EmpJob\.Company\.CountryOfRegistration | twoCharCountryCode       | c                                       | NA                                                                                           |
+| 16 | EmpJob\.afdeling                     | afdeling               | afdeling                              | NA                                                                                           |
+| 17 | EmpJob\.-deling                       | daarvan                 | bedrijf                                 | NA                                                                                           |
+| 18 | Locatie\.van EmpJob                       | officeLocationAddress    | streetAddress                           | NA                                                                                           |
+| 19 | Locatie\.van EmpJob                       | officeLocationZipCode    | Code                              | NA                                                                                           |
 | 20 | EmpEmploymentTermination               | activeEmploymentsCount   | accountEnabled                          | Als activeEmploymentsCount = 0, schakelt u de account\. uit                                           |
-

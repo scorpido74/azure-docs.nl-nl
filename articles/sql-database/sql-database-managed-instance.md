@@ -11,12 +11,12 @@ author: bonova
 ms.author: bonova
 ms.reviewer: sstein, carlrab, vanto
 ms.date: 04/02/2020
-ms.openlocfilehash: 04b07ff60c882501c49ad58607db867e7e99897c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 65bce50665b6dd99662e99ca57569f906f3af208
+ms.sourcegitcommit: acc558d79d665c8d6a5f9e1689211da623ded90a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80879068"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82598535"
 ---
 # <a name="what-is-azure-sql-database-managed-instance"></a>Wat is Azure SQL Database beheerde instantie?
 
@@ -53,7 +53,7 @@ Het beheerde exemplaar is een combi natie van de beste functies die beschikbaar 
 
 De belangrijkste functies van beheerde exemplaren worden weer gegeven in de volgende tabel:
 
-|Functie | Beschrijving|
+|Onderdeel | Beschrijving|
 |---|---|
 | Versie/build van SQL Server | SQL Server data base-engine (laatste stabiel) |
 | Beheerde geautomatiseerde back-ups | Ja |
@@ -167,19 +167,31 @@ De volgende tabel bevat een overzicht van de bewerkingen en typische totale duur
 
 \*\*\*12 uur is de huidige configuratie, maar dit kan in de toekomst veranderen, dus neem geen vaste afhankelijkheid op. Als u eerder een virtueel cluster moet verwijderen (als u het subnet bijvoorbeeld wilt vrijgeven), raadpleegt u [een subnet verwijderen na het verwijderen van een door Azure SQL database beheerd exemplaar](sql-database-managed-instance-delete-virtual-cluster.md).
 
-### <a name="instance-availability-during-management"></a>Beschik baarheid exemplaar tijdens beheer
+### <a name="instance-availability-during-management-operations"></a>Beschik baarheid van exemplaren tijdens beheer bewerkingen
 
-Beheerde exemplaren zijn niet beschikbaar voor client toepassingen tijdens implementatie-en verwijderings bewerkingen.
+Het beheerde exemplaar is niet beschikbaar voor client toepassingen tijdens implementatie-en verwijderings bewerkingen.
 
-Er zijn beheerde exemplaren beschikbaar tijdens update bewerkingen, maar er is een korte downtime die wordt veroorzaakt door de failover die aan het einde van updates die doorgaans Maxi maal tien seconden duren. De uitzonde ring hierop is het bijwerken van de gereserveerde opslag ruimte in Algemeen servicelaag die geen failover voormaakt of die de beschik baarheid van het exemplaar beïnvloedt.
-
-> [!IMPORTANT]
-> De duur van een failover kan aanzienlijk verschillen in het geval van langlopende trans acties die plaatsvinden op de data bases vanwege een [langdurige herstel tijd](sql-database-accelerated-database-recovery.md#the-current-database-recovery-process). Daarom is het niet raadzaam om reken kracht of opslag van Azure SQL Database beheerde instantie te schalen of tegelijkertijd een service tier te wijzigen met de langlopende trans acties (gegevens importeren, gegevens verwerkings taken, index Rebuild, enzovoort). De data base-failover die aan het einde van de bewerking wordt uitgevoerd, annuleert lopende trans acties en resulteert in langdurige herstel tijd.
+Er is een beheerd exemplaar beschikbaar tijdens update bewerkingen, met uitzonde ring van een korte downtime die wordt veroorzaakt door de failover die aan het einde van de update plaatsvindt. Het duurt meestal Maxi maal 10 seconden, zelfs in het geval van langdurige langlopende trans acties, dankzij het [versnelde herstel van de data base](sql-database-accelerated-database-recovery.md).
 
 > [!TIP]
 > Het bijwerken van de gereserveerde opslag ruimte in Algemeen servicelaag maakt geen failover of heeft geen invloed op de beschik baarheid van instanties.
 
-[Versneld database herstel](sql-database-accelerated-database-recovery.md) is momenteel niet beschikbaar voor Azure SQL database Managed instances. Wanneer deze functie is ingeschakeld, wordt de variabiliteit van de failover-tijd aanzienlijk verminderd, zelfs in het geval van langlopende trans acties.
+> [!IMPORTANT]
+> Het is niet raadzaam om Compute of opslag van Azure SQL Database beheerde instantie te schalen of tegelijkertijd een service tier te wijzigen met de langlopende trans acties (gegevens importeren, gegevens verwerkings taken, index Rebuild, enzovoort). Voor de data base-failover die aan het einde van de bewerking wordt uitgevoerd, worden alle lopende trans acties geannuleerd.
+
+
+### <a name="management-operations-cross-impact"></a>Beheer bewerkingen, cross-effect
+
+Beheer bewerkingen voor beheerde exemplaren kunnen invloed hebben op andere beheer bewerkingen van de instanties die binnen hetzelfde virtuele cluster worden geplaatst. Dit omvat het volgende:
+
+- Als er **langdurige herstel bewerkingen** in een virtueel cluster worden uitgevoerd, wordt de bewerking voor het maken of schalen van het exemplaar in hetzelfde subnet bewaard.<br/>**Voor beeld:** als er een langdurige herstel bewerking wordt uitgevoerd en er in hetzelfde subnet een aanvraag voor maken of schalen wordt gemaakt, duurt het langer voordat deze aanvraag is voltooid, omdat er wordt gewacht totdat de herstel bewerking is voltooid.
+    
+- Het maken **of schalen van de volgende instantie** wordt in de wacht geplaatst door eerder het maken van een exemplaar of het schalen van de instantie die het formaat van het virtuele cluster heeft gestart.<br/>**Voor beeld:** als er meerdere aanvragen voor maken en/of schalen worden uitgevoerd in hetzelfde subnet onder hetzelfde virtuele cluster, en een ervan het formaat van het virtuele cluster initieert, worden alle aanvragen die 5 + minuten nadat de grootte van het virtuele cluster was vereist, langer dan verwacht, omdat deze aanvragen moeten wachten tot de grootte is voltooid voordat het probleem kan worden hervat.
+
+- **Create/Scale-bewerkingen die zijn verzonden in een venster van vijf minuten** , worden parallel in batch verwerkt en uitgevoerd.<br/>**Voor beeld:** Er wordt slechts één grootte van het virtuele cluster uitgevoerd voor alle bewerkingen die zijn ingediend in het venster van 5 minuten (gemeten vanaf het moment waarop de eerste bewerkings aanvraag wordt uitgevoerd). Als een aanvraag meer dan vijf minuten na het verzenden van het eerste verzoek wordt verzonden, wordt gewacht tot de grootte van het virtuele cluster is voltooid voordat de uitvoering wordt gestart.
+
+> [!IMPORTANT]
+> Beheer bewerkingen die in de wacht worden gezet omdat een andere bewerking wordt uitgevoerd, worden automatisch hervat wanneer aan de voor waarden wordt voldaan. Er is geen actie van de gebruiker nodig om de tijdelijk onderbroken beheer bewerking te hervatten.
 
 ### <a name="canceling-management-operations"></a>Beheer bewerkingen annuleren
 

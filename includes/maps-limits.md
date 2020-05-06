@@ -1,6 +1,6 @@
 ---
-title: bestand opnemen
-description: bestand opnemen
+title: Include-bestand
+description: Include-bestand
 services: azure maps
 author: jinzh-azureiot
 ms.service: azure-maps

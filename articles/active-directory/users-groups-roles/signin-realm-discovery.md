@@ -13,12 +13,12 @@ ms.author: curtand
 ms.reviewer: kexia
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c8b6a65a964016f702fcf75aa4cbdab33a952e3b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c1f27c7b91a78da8944c23fd353d3b6791b3e015
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74024253"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82582549"
 ---
 # <a name="home-realm-discovery-for-azure-active-directory-sign-in-pages"></a>Home realm-detectie voor Azure Active Directory aanmeldings pagina's
 
@@ -28,7 +28,7 @@ We wijzigen ons aanmeldings gedrag van Azure Active Directory (Azure AD) om ruim
 
 In het verleden is de detectie van de Home-realm onderhevig aan het domein dat wordt meegeleverd bij het aanmelden of door een beleid voor de introductie van realm-detectie voor sommige oudere toepassingen. Zo kan een Azure Active Directory gebruiker in ons detectie gedrag de gebruikers naam van een fout typen, maar wel op het scherm van de referentie verzameling van het bedrijf arriveren. Dit gebeurt wanneer de gebruiker de domein naam ' contoso.com ' van de organisatie correct levert. Dit gedrag staat de granulariteit niet toe om de ervaringen voor een afzonderlijke gebruiker aan te passen.
 
-Als u een breder scala aan referenties wilt ondersteunen en de bruikbaarheid wilt verg Roten, wordt het gedrag van de gebruikers naam voor het zoeken van Azure Active Directory tijdens het aanmeldings proces nu bijgewerkt. Het nieuwe gedrag zorgt voor intelligente beslissingen door de instellingen voor tenants en gebruikers niveau te lezen op basis van de gebruikers naam die op de aanmeldings pagina is opgegeven. Om dit mogelijk te maken, controleert Azure Active Directory of de gebruikers naam die is ingevoerd op de aanmeldings pagina bestaat in het opgegeven domein of de gebruiker wordt omgeleid om zijn of haar referenties op te geven.
+Als u een breder scala aan referenties wilt ondersteunen en de bruikbaarheid wilt verg Roten, wordt het gedrag van de gebruikers naam voor het zoeken van Azure Active Directory tijdens het aanmeldings proces nu bijgewerkt. Het nieuwe gedrag maakt intelligente beslissingen door instellingen op organisatie niveau en gebruikers niveau te lezen op basis van de gebruikers naam die op de aanmeldings pagina is opgegeven. Om dit mogelijk te maken, controleert Azure Active Directory of de gebruikers naam die is ingevoerd op de aanmeldings pagina bestaat in het opgegeven domein of de gebruiker wordt omgeleid om zijn of haar referenties op te geven.
 
 Een extra voor deel van dit werk is het verbeteren van de fout berichten. Hier volgen enkele voor beelden van de verbeterde fout berichten bij het aanmelden bij een toepassing die alleen Azure Active Directory gebruikers ondersteunt.
 

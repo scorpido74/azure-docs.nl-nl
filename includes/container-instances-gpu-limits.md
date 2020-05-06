@@ -13,7 +13,7 @@ ms.locfileid: "77117837"
 ---
 ### <a name="resource-availability"></a>Beschikbaarheid van resources
 
-| OS | GPU-SKU | Aantal GPU | Maximaal CPU-gebruik | Maxi maal geheugen (GB) | Opslag (GB) |
+| Besturingssysteem | GPU-SKU | Aantal GPU | Maximaal CPU-gebruik | Maxi maal geheugen (GB) | Opslag (GB) |
 | --- | --- | --- | --- | --- | --- |
 | Linux | K80 | 1 | 6 | 56 | 50 |
 | Linux | K80 | 2 | 12 | 112 | 50 |

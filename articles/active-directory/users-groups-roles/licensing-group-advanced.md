@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: sumitp
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 139d7e0cf2b57cc466dc97370b90a599257ce755
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0af897ca284b1d51867808c2c74496c73e9bdcc3
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79266284"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82582775"
 ---
 # <a name="scenarios-limitations-and-known-issues-using-groups-to-manage-licensing-in-azure-active-directory"></a>Scenario's, beperkingen en bekende problemen met behulp van groepen voor het beheren van licenties in Azure Active Directory
 
@@ -100,7 +100,7 @@ In eerste instantie neemt de gebruiker de licentie alleen over van de *E3 Basic 
 
 ## <a name="managing-new-services-added-to-products"></a>Nieuwe services die zijn toegevoegd aan producten beheren
 
-Wanneer micro soft een nieuwe service toevoegt aan een licentie plan voor een product, wordt deze standaard ingeschakeld in alle groepen waaraan u de product licentie hebt toegewezen. Gebruikers in uw Tenant die zich abonneren op meldingen over product wijzigingen ontvangen e-mails van tevoren een melding over de aanstaande service toevoegingen.
+Wanneer micro soft een nieuwe service toevoegt aan een licentie plan voor een product, wordt deze standaard ingeschakeld in alle groepen waaraan u de product licentie hebt toegewezen. Gebruikers in uw organisatie die zich hebben geabonneerd op meldingen over product wijzigingen, ontvangen e-mails van tevoren een melding over de aanstaande service toevoegingen.
 
 Als beheerder kunt u alle groepen bekijken die worden beïnvloed door de wijziging en actie ondernemen, zoals het uitschakelen van de nieuwe service in elke groep. Als u bijvoorbeeld groepen hebt gemaakt met als doel alleen specifieke services voor implementatie, kunt u deze groepen opnieuw bezoeken en ervoor zorgen dat toegevoegde services worden uitgeschakeld.
 
@@ -108,7 +108,7 @@ Hier volgt een voor beeld van hoe dit proces eruit kan zien:
 
 1. Oorspronkelijk hebt u het *Office 365 Enter prise E5* -product toegewezen aan verschillende groepen. Een van deze groepen, met de naam *O365 E5-Exchange is alleen* ontworpen om alleen de *Exchange Online-service (abonnement 2)* voor de leden in te scha kelen.
 
-2. U hebt een melding ontvangen van micro soft dat het E5-product wordt uitgebreid met een nieuwe service- *Microsoft stream*. Wanneer de service beschikbaar wordt in uw Tenant, kunt u het volgende doen:
+2. U hebt een melding ontvangen van micro soft dat het E5-product wordt uitgebreid met een nieuwe service- *Microsoft stream*. Wanneer de service beschikbaar wordt in uw organisatie, kunt u het volgende doen:
 
 3. Ga naar de [**Azure Active Directory > licenties > alle producten**](https://portal.azure.com/#blade/Microsoft_AAD_IAM/LicensesMenuBlade/Products) Blade en selecteer *Office 365 Enter prise E5*en selecteer vervolgens **gelicentieerde groepen** om een lijst weer te geven van alle groepen met dat product.
 
@@ -128,9 +128,9 @@ Hier volgt een voor beeld van hoe dit proces eruit kan zien:
 ## <a name="use-powershell-to-see-who-has-inherited-and-direct-licenses"></a>Power shell gebruiken om te zien wie en welke licenties zijn overgenomen
 U kunt een Power shell-script gebruiken om te controleren of gebruikers een licentie rechtstreeks of overgenomen van een groep hebben toegewezen.
 
-1. Voer de `connect-msolservice` cmdlet uit om uw Tenant te verifiëren en er verbinding mee te maken.
+1. Voer de `connect-msolservice` cmdlet uit om uw organisatie te verifiëren en er verbinding mee te maken.
 
-2. `Get-MsolAccountSku`kan worden gebruikt voor het detecteren van alle ingerichte product licenties in de Tenant.
+2. `Get-MsolAccountSku`kan worden gebruikt voor het detecteren van alle ingerichte product licenties in de Azure AD-organisatie.
 
    ![Scherm afbeelding van de cmdlet Get-Msolaccountsku](./media/licensing-group-advanced/get-msolaccountsku-cmdlet.png)
 

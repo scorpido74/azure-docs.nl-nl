@@ -3,12 +3,12 @@ title: Power shell gebruiken om een back-up te maken van Windows Server naar Azu
 description: In dit artikel leert u hoe u Power shell kunt gebruiken voor het instellen van Azure Backup op Windows Server of een Windows-client, en het beheren van back-up en herstel.
 ms.topic: conceptual
 ms.date: 12/2/2019
-ms.openlocfilehash: 3b9bcf8e777244cec11383619d145e3a99ff46d2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: fde81aba5a2b74ce25c8f3cd70dc24df6f566420
+ms.sourcegitcommit: acc558d79d665c8d6a5f9e1689211da623ded90a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82193017"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82597974"
 ---
 # <a name="deploy-and-manage-backup-to-azure-for-windows-serverwindows-client-using-powershell"></a>Met behulp van PowerShell back-ups implementeren en beheren in Azure voor een Windows-server/Windows-client
 
@@ -209,7 +209,12 @@ Server properties updated successfully.
 
 De back-upgegevens die naar Azure Backup worden verzonden, worden versleuteld om de vertrouwelijkheid van de gegevens te beveiligen. De wachtwoordzin voor versleuteling is het wacht woord voor het ontsleutelen van de gegevens op het moment van herstel.
 
-U moet een beveiligings pincode genereren door **genereren**te selecteren onder **instellingen** > **Eigenschappen** > **beveiliging pincode** in het gedeelte **Recovery Services kluis** van de Azure Portal. Gebruik deze optie als de `generatedPIN` in de volgende opdracht:
+U moet een beveiligings pincode genereren door **genereren**te selecteren onder **instellingen** > **Eigenschappen** > **beveiliging pincode** in het gedeelte **Recovery Services kluis** van de Azure Portal. 
+
+>[!NOTE]
+> De beveiligings pincode kan alleen worden gegenereerd via de Azure Portal.
+
+Gebruik deze optie als de `generatedPIN` in de volgende opdracht:
 
 ```powershell
 $PassPhrase = ConvertTo-SecureString -String "Complex!123_STRING" -AsPlainText -Force

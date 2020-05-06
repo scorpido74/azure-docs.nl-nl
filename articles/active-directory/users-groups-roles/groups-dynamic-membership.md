@@ -9,17 +9,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 11/27/2019
+ms.date: 04/29/2020
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d6f8237ac13744e56baa8551f8cced12b2785a48
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a399ee43ef0ce97274f060b7a5b7df46fb523605
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81114727"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82582903"
 ---
 # <a name="dynamic-membership-rules-for-groups-in-azure-active-directory"></a>Dynamische lidmaatschaps regels voor groepen in Azure Active Directory
 
@@ -31,7 +31,7 @@ Wanneer een van de kenmerken van een gebruiker of apparaat wordt gewijzigd, eval
 - U kunt geen apparaatgroep maken op basis van de kenmerken van de apparaat-eigen aren. Regels voor lidmaatschap van apparaten kunnen alleen verwijzen naar kenmerken van het apparaat.
 
 > [!NOTE]
-> Voor deze functie is een Azure AD Premium P1-licentie vereist voor elke unieke gebruiker die lid is van een of meer dynamische groepen. U hoeft geen licenties toe te wijzen aan gebruikers, zodat ze lid zijn van dynamische groepen, maar u moet het minimum aantal licenties in de Tenant hebben om al deze gebruikers te kunnen behandelen. Als u bijvoorbeeld in totaal 1.000 unieke gebruikers in alle dynamische groepen in uw Tenant hebt, moet u ten minste 1.000 licenties voor Azure AD Premium P1 hebben om te voldoen aan de licentie vereisten.
+> Voor deze functie is een Azure AD Premium P1-licentie vereist voor elke unieke gebruiker die lid is van een of meer dynamische groepen. U hoeft geen licenties toe te wijzen aan gebruikers, zodat ze lid zijn van dynamische groepen, maar u moet het minimum aantal licenties in de Azure AD-organisatie hebben om al deze gebruikers te kunnen behandelen. Als u bijvoorbeeld in totaal 1.000 unieke gebruikers in alle dynamische groepen in uw organisatie hebt, moet u ten minste 1.000 licenties voor Azure AD Premium P1 hebben om te voldoen aan de licentie vereisten.
 > Er is geen licentie vereist voor apparaten die lid zijn van een dynamische apparaatgroep.
 
 ## <a name="rule-builder-in-the-azure-portal"></a>De opbouw functie voor regels in de Azure Portal
@@ -78,7 +78,7 @@ De volg orde van de onderdelen binnen een expressie is belang rijk om syntaxis f
 
 Er zijn drie soorten eigenschappen die kunnen worden gebruikt om een lidmaatschaps regel samen te stellen.
 
-- Booleaans
+- Boolean-waarde
 - Tekenreeks
 - Teken reeks verzameling
 
@@ -98,7 +98,7 @@ Hier volgen de gebruikers eigenschappen die u kunt gebruiken om één expressie 
 | city |Een wille keurige teken reeks waarde of *Null* |(User. City-EQ "waarde") |
 | land |Een wille keurige teken reeks waarde of *Null* |(User. country-EQ "waarde") |
 | companyName | Een wille keurige teken reeks waarde of *Null* | (User. companyName-EQ "waarde") |
-| department |Een wille keurige teken reeks waarde of *Null* |(User. Department-EQ "waarde") |
+| afdeling |Een wille keurige teken reeks waarde of *Null* |(User. Department-EQ "waarde") |
 | displayName |Wille keurige teken reeks waarde |(User. displayName-EQ "waarde") |
 | employeeId |Wille keurige teken reeks waarde |(User. employeeId-EQ "waarde")<br>(User. employeeId-ne *Null*) |
 | facsimileTelephoneNumber |Een wille keurige teken reeks waarde of *Null* |(User. facsimileTelephoneNumber-EQ "waarde") |
@@ -310,20 +310,20 @@ Direct Reports for "62e19b97-8b3d-4d4a-a106-4ce66896a863"
 Aan de hand van de volgende tips kunt u de regel op de juiste manier gebruiken.
 
 - De **manager-id** is de object-id van de Manager. Dit kan worden gevonden in het **profiel**van de Manager.
-- Zorg ervoor dat de eigenschap **Manager** correct is ingesteld voor gebruikers in uw Tenant om de regel te laten werken. U kunt de huidige waarde in het **profiel**van de gebruiker controleren.
+- Zorg ervoor dat de eigenschap **Manager** correct is ingesteld voor gebruikers in uw organisatie om de regel te laten werken. U kunt de huidige waarde in het **profiel**van de gebruiker controleren.
 - Deze regel ondersteunt alleen de directe ondergeschikten van de Manager. Met andere woorden, u kunt geen groep maken met de directe rapporten van de Manager *en* de bijbehorende rapporten.
 - Deze regel kan niet worden gecombineerd met andere lidmaatschaps regels.
 
 ### <a name="create-an-all-users-rule"></a>Een regel voor ' alle gebruikers ' maken
 
-U kunt een groep met alle gebruikers binnen een Tenant maken met behulp van een lidmaatschaps regel. Wanneer gebruikers in de toekomst worden toegevoegd of verwijderd uit de Tenant, wordt het lidmaatschap van de groep automatisch aangepast.
+U kunt een groep met alle gebruikers in een organisatie maken met behulp van een lidmaatschaps regel. Wanneer gebruikers in de toekomst worden toegevoegd of verwijderd uit de organisatie, wordt het lidmaatschap van de groep automatisch aangepast.
 
 De regel ' alle gebruikers ' is gemaakt met behulp van een enkele expressie met behulp van de-ne-operator en de null-waarde. Deze regel voegt B2B-gast gebruikers toe, evenals gebruikers van leden aan de groep.
 
 ```
 user.objectId -ne null
 ```
-Als u wilt dat de groep gast gebruikers uitsluit en alleen leden van uw Tenant bevat, kunt u de volgende syntaxis gebruiken:
+Als u wilt dat de groep gast gebruikers uitsluit en alleen leden van uw organisatie bevat, kunt u de volgende syntaxis gebruiken:
 
 ```
 (user.objectId -ne null) -and (user.userType -eq "Member")
@@ -331,7 +331,7 @@ Als u wilt dat de groep gast gebruikers uitsluit en alleen leden van uw Tenant b
 
 ### <a name="create-an-all-devices-rule"></a>Een regel voor alle apparaten maken
 
-U kunt een groep met alle apparaten binnen een Tenant maken met behulp van een lidmaatschaps regel. Wanneer apparaten in de toekomst worden toegevoegd of verwijderd uit de Tenant, wordt het lidmaatschap van de groep automatisch aangepast.
+U kunt een groep met alle apparaten binnen een organisatie maken met behulp van een lidmaatschaps regel. Wanneer apparaten in de toekomst worden toegevoegd of verwijderd uit de organisatie, wordt het lidmaatschap van de groep automatisch aangepast.
 
 De regel ' alle apparaten ' is gemaakt met behulp van een enkele expressie met behulp van de-ne-operator en de null-waarde:
 

@@ -2,26 +2,21 @@
 title: Gebruik Microsoft Graph Api's om inrichting te configureren-Azure Active Directory | Microsoft Docs
 description: Moet u inrichten instellen voor meerdere exemplaren van een toepassing? Meer informatie over hoe u tijd kunt besparen met behulp van de Microsoft Graph-Api's om de configuratie van automatische inrichting te automatiseren.
 services: active-directory
-documentationcenter: ''
 author: msmimart
 manager: CelesteDG
-ms.assetid: ''
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/15/2019
 ms.author: mimart
 ms.reviewer: arvinh
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: c72217a565071f9531281af1862ba3681e353a4d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 585cafc548b3458c6e9cc0ef91c44f163fb7fa2f
+ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79481463"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82593944"
 ---
 # <a name="configure-provisioning-using-microsoft-graph-apis"></a>Inrichting configureren met behulp van Microsoft Graph-Api's
 

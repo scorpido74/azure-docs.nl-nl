@@ -10,17 +10,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 01/31/2019
+ms.date: 04/29/2020
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6fa3c6bf39dbef601fe64e125999f519f725f2e2
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.openlocfilehash: 87f5b1ec02400c5cd9d26cc324ddbafdf8d76537
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "67083777"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82582584"
 ---
 # <a name="delegate-administration-in-azure-active-directory"></a>Beheer delegeren in Azure Active Directory
 
@@ -100,7 +100,7 @@ Als u de toegang tot uw identiteits beheer archief wilt behouden wanneer het pro
 
 ## <a name="secure-your-administrator-roles"></a>Uw beheerders rollen beveiligen
 
-Aanvallers die het beheer van geprivilegieerde accounts verkrijgen, kunnen grote schade ondervinden, dus Beveilig deze accounts eerst met behulp van het [basis beleid voor toegang](https://cloudblogs.microsoft.com/enterprisemobility/2018/06/22/baseline-security-policy-for-azure-ad-admin-accounts-in-public-preview/) dat standaard beschikbaar is voor alle Azure AD-tenants (in open bare preview). Het beleid dwingt multi-factor Authentication af op privileged Azure AD-accounts. De volgende Azure AD-rollen worden gedekt door het Azure AD Baseline-beleid:
+Aanvallers die het beheer van geprivilegieerde accounts verkrijgen, kunnen grote schade ondervinden, dus Beveilig deze accounts eerst met behulp van het [basis beleid voor toegang](https://cloudblogs.microsoft.com/enterprisemobility/2018/06/22/baseline-security-policy-for-azure-ad-admin-accounts-in-public-preview/) dat standaard beschikbaar is voor alle Azure AD-organisaties (in open bare preview). Het beleid dwingt multi-factor Authentication af op privileged Azure AD-accounts. De volgende Azure AD-rollen worden gedekt door het Azure AD Baseline-beleid:
 
 * Globale beheerder
 * SharePoint-beheerder

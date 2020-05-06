@@ -23,7 +23,7 @@ Hier volgt een lijst met infrastructuur instellingen die u kunt aanpassen, geord
 
 ## <a name="applicationgatewayhttp"></a>Toepassings Gateway/http
 
-| **Bepaalde** | **Toegestane waarden** | **Upgrade beleid** | **Uitleg of korte beschrijving** |
+| **Parameter** | **Toegestane waarden** | **Upgrade beleid** | **Uitleg of korte beschrijving** |
 | --- | --- | --- | --- |
 |ApplicationCertificateValidationPolicy|teken reeks, standaard is ' geen '|Statisch| Hiermee wordt het server certificaat niet gevalideerd; de aanvraag is voltooid. Raadpleeg config ServiceCertificateThumbprints voor de door komma's gescheiden lijst met vinger afdrukken van de externe certificaten die de omgekeerde proxy kan vertrouwen. Raadpleeg config ServiceCommonNameAndIssuer voor de naam van de certificaat houder en de vinger afdruk van de verlener van de externe certificaten die de omgekeerde proxy kan vertrouwen. Zie voor meer informatie [reverse proxy beveiligde verbinding](service-fabric-reverseproxy-configure-secure-communication.md#secure-connection-establishment-between-the-reverse-proxy-and-services). |
 |BodyChunkSize |Uint, standaard waarde is 16384 |Dynamisch| Geeft de grootte van voor het segment in bytes dat wordt gebruikt om de hoofd tekst te lezen. |
@@ -46,13 +46,13 @@ Hier volgt een lijst met infrastructuur instellingen die u kunt aanpassen, geord
 
 ## <a name="applicationgatewayhttpservicecommonnameandissuer"></a>Toepassings Gateway/http/ServiceCommonNameAndIssuer
 
-| **Bepaalde** | **Toegestane waarden** | **Upgrade beleid** | **Uitleg of korte beschrijving** |
+| **Parameter** | **Toegestane waarden** | **Upgrade beleid** | **Uitleg of korte beschrijving** |
 | --- | --- | --- | --- |
 |PropertyGroup|X509NameMap, standaard instelling is geen|Dynamisch| De naam van de certificaat houder en de vinger afdruk van de verlener van het externe certificaat dat de reverse proxy kan vertrouwen. Zie voor meer informatie [reverse proxy beveiligde verbinding](service-fabric-reverseproxy-configure-secure-communication.md#secure-connection-establishment-between-the-reverse-proxy-and-services). |
 
 ## <a name="backuprestoreservice"></a>BackupRestoreService
 
-| **Bepaalde** | **Toegestane waarden** | **Upgrade beleid** | **Uitleg of korte beschrijving** |
+| **Parameter** | **Toegestane waarden** | **Upgrade beleid** | **Uitleg of korte beschrijving** |
 | --- | --- | --- | --- |
 |MinReplicaSetSize|int, standaard is 0|Statisch|De MinReplicaSetSize voor BackupRestoreService |
 |PlacementConstraints|teken reeks, standaard instelling is|Statisch|    De PlacementConstraints voor de BackupRestore-service |
@@ -62,7 +62,7 @@ Hier volgt een lijst met infrastructuur instellingen die u kunt aanpassen, geord
 
 ## <a name="clustermanager"></a>ClusterManager
 
-| **Bepaalde** | **Toegestane waarden** | **Upgrade beleid** | **Uitleg of korte beschrijving** |
+| **Parameter** | **Toegestane waarden** | **Upgrade beleid** | **Uitleg of korte beschrijving** |
 | --- | --- | --- | --- |
 |AllowCustomUpgradeSortPolicies | BOOL, default is False |Dynamisch|Hiermee wordt aangegeven of het sorteer beleid voor aangepaste upgrades wel of niet is toegestaan. Deze functie wordt gebruikt om een upgrade uit te voeren met twee fasen. Service Fabric 6,5 voegt ondersteuning toe voor het opgeven van sorteer beleid voor upgrade domeinen tijdens het upgraden van clusters of toepassingen. Ondersteunde beleids regels zijn numeriek, Lexicographical, ReverseNumeric en ReverseLexicographical. De standaard waarde is numeriek. Om deze functie te kunnen gebruiken, moet de ClusterManager/AllowCustomUpgradeSortPolicies van het cluster manifest worden ingesteld op True als een tweede configuratie-upgrade stap nadat de 6,5-code van SF is voltooid. Het is belang rijk dat dit gebeurt in twee fasen, anders kan de code-upgrade tijdens de eerste upgrade worden verward met de upgrade volgorde.|
 |EnableDefaultServicesUpgrade | BOOL, default is False |Dynamisch|Schakel het bijwerken van standaard services tijdens de upgrade van de toepassing in. Standaard beschrijvingen van services worden na de upgrade overschreven. |
@@ -93,28 +93,28 @@ Hier volgt een lijst met infrastructuur instellingen die u kunt aanpassen, geord
 
 ## <a name="common"></a>Algemeen
 
-| **Bepaalde** | **Toegestane waarden** | **Upgrade beleid** | **Uitleg of korte beschrijving** |
+| **Parameter** | **Toegestane waarden** | **Upgrade beleid** | **Uitleg of korte beschrijving** |
 | --- | --- | --- | --- |
 |PerfMonitorInterval |Tijd in seconden, standaard waarde is 1 |Dynamisch|Geef een tijds duur in seconden op. Interval voor prestatie bewaking. Als u instelt op 0 of een negatieve waarde, wordt de bewaking uitgeschakeld. |
 
 ## <a name="defragmentationemptynodedistributionpolicy"></a>DefragmentationEmptyNodeDistributionPolicy
-| **Bepaalde** | **Toegestane waarden** |**Upgrade beleid**| **Uitleg of korte beschrijving** |
+| **Parameter** | **Toegestane waarden** |**Upgrade beleid**| **Uitleg of korte beschrijving** |
 | --- | --- | --- | --- |
 |PropertyGroup|KeyIntegerValueMap, standaard instelling is geen|Dynamisch|Hiermee geeft u op dat de beleids defragmentatie wordt gevolgd bij het leegmaken van knoop punten. Voor een gegeven metrische waarde 0 geeft aan dat SF knoop punten gelijkmatig moet proberen te defragmenteren in de UDs-en Fd's. 1 geeft alleen aan dat de knoop punten moeten worden gedefragmenteerd |
 
 ## <a name="defragmentationmetrics"></a>DefragmentationMetrics
-| **Bepaalde** | **Toegestane waarden** |**Upgrade beleid**| **Uitleg of korte beschrijving** |
+| **Parameter** | **Toegestane waarden** |**Upgrade beleid**| **Uitleg of korte beschrijving** |
 | --- | --- | --- | --- |
 |PropertyGroup|KeyBoolValueMap, standaard instelling is geen|Dynamisch|Bepaalt de set metrische gegevens die voor defragmentatie moet worden gebruikt en niet voor taak verdeling. |
 
 ## <a name="defragmentationmetricspercentornumberofemptynodestriggeringthreshold"></a>DefragmentationMetricsPercentOrNumberOfEmptyNodesTriggeringThreshold
-| **Bepaalde** | **Toegestane waarden** |**Upgrade beleid**| **Uitleg of korte beschrijving** |
+| **Parameter** | **Toegestane waarden** |**Upgrade beleid**| **Uitleg of korte beschrijving** |
 | --- | --- | --- | --- |
 |PropertyGroup|KeyDoubleValueMap, standaard instelling is geen|Dynamisch|Bepaalt het aantal beschik bare knoop punten die nodig zijn om het cluster te defragmenteren door een percentage in het bereik [0,0-1,0] op te geven of het aantal lege knoop punten als getal >= 1,0 |
 
 ## <a name="diagnostics"></a>Diagnostiek
 
-| **Bepaalde** | **Toegestane waarden** | **Upgrade beleid** | **Uitleg of korte beschrijving** |
+| **Parameter** | **Toegestane waarden** | **Upgrade beleid** | **Uitleg of korte beschrijving** |
 | --- | --- | --- | --- |
 |AdminOnlyHttpAudit |BOOL, default is True | Dynamisch | Sluit HTTP-aanvragen uit die niet van invloed zijn op de status van het cluster van controle. Dat alleen aanvragen van het type GET worden uitgesloten; maar dit is onderhevig aan wijzigingen. |
 |AppDiagnosticStoreAccessRequiresImpersonation |BOOL, default is True | Dynamisch |Hiermee wordt aangegeven of imitatie is vereist bij het openen van diagnostische gegevens namens de toepassing. |
@@ -134,7 +134,7 @@ Hier volgt een lijst met infrastructuur instellingen die u kunt aanpassen, geord
 |ProducerInstances |Tekenreeks | Dynamisch |De lijst met DCA producer-exemplaren. |
 
 ## <a name="dnsservice"></a>DNS
-| **Bepaalde** | **Toegestane waarden** |**Upgrade beleid**| **Uitleg of korte beschrijving** |
+| **Parameter** | **Toegestane waarden** |**Upgrade beleid**| **Uitleg of korte beschrijving** |
 | --- | --- | --- | --- |
 |EnablePartitionedQuery|BOOL, default is FALSE|Statisch|De vlag voor het inschakelen van ondersteuning voor DNS-query's voor gepartitioneerde Services. De functie is standaard uitgeschakeld. Zie [service Fabric DNS-service](service-fabric-dnsservice.md) voor meer informatie.|
 |InstanceCount|int, standaard is-1|Statisch|De standaard waarde is-1, wat betekent dat DNS wordt uitgevoerd op elk knoop punt. OneBox moet dit zijn ingesteld op 1 omdat DNS een bekende poort 53 gebruikt, zodat deze niet meerdere exemplaren op dezelfde computer kan hebben.|
@@ -144,7 +144,7 @@ Hier volgt een lijst met infrastructuur instellingen die u kunt aanpassen, geord
 
 ## <a name="eventstoreservice"></a>EventStoreService
 
-| **Bepaalde** | **Toegestane waarden** | **Upgrade beleid** | **Uitleg of korte beschrijving** |
+| **Parameter** | **Toegestane waarden** | **Upgrade beleid** | **Uitleg of korte beschrijving** |
 | --- | --- | --- | --- |
 |MinReplicaSetSize|int, standaard is 0|Statisch|De MinReplicaSetSize voor de Event Store-service |
 |PlacementConstraints|teken reeks, standaard instelling is|Statisch|    De PlacementConstraints voor de Event Store-service |
@@ -152,7 +152,7 @@ Hier volgt een lijst met infrastructuur instellingen die u kunt aanpassen, geord
 
 ## <a name="fabricclient"></a>FabricClient
 
-| **Bepaalde** | **Toegestane waarden** | **Upgrade beleid** | **Uitleg of korte beschrijving** |
+| **Parameter** | **Toegestane waarden** | **Upgrade beleid** | **Uitleg of korte beschrijving** |
 | --- | --- | --- | --- |
 |ConnectionInitializationTimeout |Tijd in seconden, standaard waarde is 2 |Dynamisch|Geef een tijds duur in seconden op. Time-outinterval van de verbinding voor elke keer dat een client verbinding probeert te openen met de gateway.|
 |HealthOperationTimeout |Tijd in seconden, standaard waarde is 120 |Dynamisch|Geef een tijds duur in seconden op. De time-out voor een rapport bericht dat naar Health Manager wordt verzonden. |
@@ -167,7 +167,7 @@ Hier volgt een lijst met infrastructuur instellingen die u kunt aanpassen, geord
 
 ## <a name="fabrichost"></a>FabricHost
 
-| **Bepaalde** | **Toegestane waarden** | **Upgrade beleid** | **Uitleg of korte beschrijving** |
+| **Parameter** | **Toegestane waarden** | **Upgrade beleid** | **Uitleg of korte beschrijving** |
 | --- | --- | --- | --- |
 |ActivationMaxFailureCount |Int, standaard waarde is 10 |Dynamisch|Dit is het maximum aantal waarvoor het systeem opnieuw moet worden geactiveerd voordat het kan worden uitgevoerd. |
 |ActivationMaxRetryInterval |Tijd in seconden, standaard waarde is 300 |Dynamisch|Geef een tijds duur in seconden op. Maximale interval voor opnieuw proberen voor activering. Bij elke doorlopende storing wordt het interval voor nieuwe pogingen berekend als min (ActivationMaxRetryInterval; Aantal doorlopende fouten * ActivationRetryBackoffInterval). |
@@ -183,7 +183,7 @@ Hier volgt een lijst met infrastructuur instellingen die u kunt aanpassen, geord
 
 ## <a name="fabricnode"></a>FabricNode
 
-| **Bepaalde** | **Toegestane waarden** | **Upgrade beleid** | **Uitleg of korte beschrijving** |
+| **Parameter** | **Toegestane waarden** | **Upgrade beleid** | **Uitleg of korte beschrijving** |
 | --- | --- | --- | --- |
 |ClientAuthX509FindType |teken reeks, standaard is ' FindByThumbprint ' |Dynamisch|Hiermee wordt aangegeven hoe moet worden gezocht naar het certificaat in het archief dat is opgegeven door de ClientAuthX509StoreName ondersteunde waarde: FindByThumbprint; FindBySubjectName. |
 |ClientAuthX509FindValue |teken reeks, standaard instelling is | Dynamisch|Zoek filter waarde die wordt gebruikt om het certificaat voor de standaard beheerdersrol FabricClient te vinden. |
@@ -207,7 +207,7 @@ Hier volgt een lijst met infrastructuur instellingen die u kunt aanpassen, geord
 
 ## <a name="failovermanager"></a>FailoverManager
 
-| **Bepaalde** | **Toegestane waarden** | **Upgrade beleid** | **Uitleg of korte beschrijving** |
+| **Parameter** | **Toegestane waarden** | **Upgrade beleid** | **Uitleg of korte beschrijving** |
 | --- | --- | --- | --- |
 |AllowNodeStateRemovedForSeedNode|BOOL, default is FALSE |Dynamisch|Markering om aan te geven of de knooppunt status voor een Seed-knoop punt mag worden verwijderd |
 |BuildReplicaTimeLimit|Time span, standaard waarde is gebruikelijk:: time span:: FromSeconds (3600)|Dynamisch|Geef een tijds duur in seconden op. De tijds limiet voor het bouwen van een stateful replica; waarna een waarschuwings status rapport wordt gestart |
@@ -233,7 +233,7 @@ Hier volgt een lijst met infrastructuur instellingen die u kunt aanpassen, geord
 
 ## <a name="faultanalysisservice"></a>FaultAnalysisService
 
-| **Bepaalde** | **Toegestane waarden** | **Upgrade beleid** | **Uitleg of korte beschrijving** |
+| **Parameter** | **Toegestane waarden** | **Upgrade beleid** | **Uitleg of korte beschrijving** |
 | --- | --- | --- | --- |
 |CompletedActionKeepDurationInSeconds | Int, standaard waarde is 604800 |Statisch| Dit is ongeveer hoe lang acties in een Terminal status moeten worden bewaard. Dit is ook afhankelijk van StoredActionCleanupIntervalInSeconds; omdat het werk dat moet worden opgeschoond, alleen op dat interval kan worden uitgevoerd. 604800 is 7 dagen. |
 |DataLossCheckPollIntervalInSeconds|int, standaard is 5|Statisch|Dit is de tijd tussen de controles die het systeem uitvoert tijdens het wachten op gegevens verlies. Het aantal keren dat het gegevens verlies nummer wordt gecontroleerd per interne iteratie is DataLossCheckWaitDurationInSeconds/this. |
@@ -250,14 +250,14 @@ Hier volgt een lijst met infrastructuur instellingen die u kunt aanpassen, geord
 
 ## <a name="federation"></a>Federatie
 
-| **Bepaalde** | **Toegestane waarden** | **Upgrade beleid** | **Uitleg of korte beschrijving** |
+| **Parameter** | **Toegestane waarden** | **Upgrade beleid** | **Uitleg of korte beschrijving** |
 | --- | --- | --- | --- |
 |LeaseDuration |Tijd in seconden, standaard waarde is 30 |Dynamisch|De duur dat een lease ten opzichte van een knoop punt en de bijbehorende neighbors. |
 |LeaseDurationAcrossFaultDomain |Tijd in seconden, standaard waarde is 30 |Dynamisch|De duur dat een lease ten opzichte van een knoop punt en de bijbehorende neighbors in verschillende fout domeinen. |
 
 ## <a name="filestoreservice"></a>File Store service
 
-| **Bepaalde** | **Toegestane waarden** | **Upgrade beleid** | **Uitleg of korte beschrijving** |
+| **Parameter** | **Toegestane waarden** | **Upgrade beleid** | **Uitleg of korte beschrijving** |
 | --- | --- | --- | --- |
 |AcceptChunkUpload|BOOL, default is TRUE|Dynamisch|Config om te bepalen of de File Store-service een bestands upload op basis van segmenten accepteert of niet tijdens het kopiëren van het toepassings pakket. |
 |AnonymousAccessEnabled | BOOL, default is True |Statisch|Anonieme toegang tot de File Store service-shares in-of uitschakelen. |
@@ -300,14 +300,14 @@ Hier volgt een lijst met infrastructuur instellingen die u kunt aanpassen, geord
 
 ## <a name="healthmanager"></a>HealthManager
 
-| **Bepaalde** | **Toegestane waarden** | **Upgrade beleid** | **Uitleg of korte beschrijving** |
+| **Parameter** | **Toegestane waarden** | **Upgrade beleid** | **Uitleg of korte beschrijving** |
 | --- | --- | --- | --- |
 |EnableApplicationTypeHealthEvaluation |BOOL, default is False |Statisch|Cluster status evaluatie beleid: status evaluatie per toepassings type inschakelen. |
 |MaxSuggestedNumberOfEntityHealthReports|Int, standaard waarde is 100 |Dynamisch|Het maximum aantal status rapporten dat een entiteit kan hebben voordat de problemen met de status rapportage logica van de watchdog worden verhoogd. Elke status entiteit moet een relatief klein aantal status rapporten hebben. Als het aantal rapporten boven dit nummer komt; Er zijn mogelijk problemen met de implementatie van de watchdog. Een entiteit met te veel rapporten wordt via een waarschuwings status rapport gemarkeerd wanneer de entiteit wordt geëvalueerd. |
 
 ## <a name="healthmanagerclusterhealthpolicy"></a>HealthManager/ClusterHealthPolicy
 
-| **Bepaalde** | **Toegestane waarden** | **Upgrade beleid** | **Uitleg of korte beschrijving** |
+| **Parameter** | **Toegestane waarden** | **Upgrade beleid** | **Uitleg of korte beschrijving** |
 | --- | --- | --- | --- |
 |ConsiderWarningAsError |BOOL, default is False |Statisch|Cluster status evaluatie beleid: waarschuwingen worden beschouwd als fouten. |
 |MaxPercentUnhealthyApplications | Int, standaard is 0 |Statisch|Cluster status evaluatie beleid: Maxi maal percentage beschadigde toepassingen dat is toegestaan voor het cluster in orde. |
@@ -315,14 +315,14 @@ Hier volgt een lijst met infrastructuur instellingen die u kunt aanpassen, geord
 
 ## <a name="healthmanagerclusterupgradehealthpolicy"></a>HealthManager/ClusterUpgradeHealthPolicy
 
-| **Bepaalde** | **Toegestane waarden** | **Upgrade beleid** | **Uitleg of korte beschrijving** |
+| **Parameter** | **Toegestane waarden** | **Upgrade beleid** | **Uitleg of korte beschrijving** |
 | --- | --- | --- | --- |
 |MaxPercentDeltaUnhealthyNodes|int, standaard waarde is 10|Statisch|Status van het evaluatie beleid voor cluster upgrades: Maxi maal percentage Delta beschadigde knoop punten dat is toegestaan voor het cluster in orde |
 |MaxPercentUpgradeDomainDeltaUnhealthyNodes|int, standaard waarde is 15|Statisch|Status van het evaluatie beleid voor cluster upgrades: maximum percentage Delta van beschadigde knoop punten in een upgrade domein dat is toegestaan voor het cluster is in orde |
 
 ## <a name="hosting"></a>Hosting
 
-| **Bepaalde** | **Toegestane waarden** | **Upgrade beleid** | **Uitleg of korte beschrijving** |
+| **Parameter** | **Toegestane waarden** | **Upgrade beleid** | **Uitleg of korte beschrijving** |
 | --- | --- | --- | --- |
 |ActivationMaxFailureCount |Geheel getal, standaard waarde is 10 |Dynamisch|Aantal keer dat de activering van systeem pogingen is mislukt voordat |
 |ActivationMaxRetryInterval |Tijd in seconden, standaard waarde is 300 |Dynamisch|Bij elke doorlopende activerings fout probeert het systeem de activering voor Maxi maal ActivationMaxFailureCount. ActivationMaxRetryInterval geeft het wacht tijd interval aan voordat een nieuwe poging wordt gedaan na elke activerings fout |
@@ -377,7 +377,7 @@ Hier volgt een lijst met infrastructuur instellingen die u kunt aanpassen, geord
 
 ## <a name="httpgateway"></a>HttpGateway
 
-| **Bepaalde** | **Toegestane waarden** | **Upgrade beleid** | **Uitleg of korte beschrijving** |
+| **Parameter** | **Toegestane waarden** | **Upgrade beleid** | **Uitleg of korte beschrijving** |
 | --- | --- | --- | --- |
 |ActiveListeners |Uint, standaard waarde is 50 |Statisch| Aantal lees bewerkingen dat naar de http-server wachtrij moet worden gepost. Hiermee bepaalt u het aantal gelijktijdige aanvragen waaraan de HttpGateway kan voldoen. |
 |HttpGatewayHealthReportSendInterval |Tijd in seconden, standaard waarde is 30 |Statisch|Geef een tijds duur in seconden op. Het interval waarmee de http-gateway verzamelde status rapporten naar de Health Manager verzendt. |
@@ -387,7 +387,7 @@ Hier volgt een lijst met infrastructuur instellingen die u kunt aanpassen, geord
 
 ## <a name="imagestoreservice"></a>ImageStoreService
 
-| **Bepaalde** | **Toegestane waarden** | **Upgrade beleid** | **Uitleg of korte beschrijving** |
+| **Parameter** | **Toegestane waarden** | **Upgrade beleid** | **Uitleg of korte beschrijving** |
 | --- | --- | --- | --- |
 |Ingeschakeld |BOOL, default is False |Statisch|De vlag enabled voor ImageStoreService. Standaard: onwaar |
 |MinReplicaSetSize | Int, standaard is 3 |Statisch|De MinReplicaSetSize voor ImageStoreService. |
@@ -399,7 +399,7 @@ Hier volgt een lijst met infrastructuur instellingen die u kunt aanpassen, geord
 
 ## <a name="ktllogger"></a>KtlLogger
 
-| **Bepaalde** | **Toegestane waarden** | **Upgrade beleid** | **Uitleg of korte beschrijving** |
+| **Parameter** | **Toegestane waarden** | **Upgrade beleid** | **Uitleg of korte beschrijving** |
 | --- | --- | --- | --- |
 |AutomaticMemoryConfiguration |Int, standaard waarde is 1 |Dynamisch|Vlag waarmee wordt aangegeven of de geheugen instellingen automatisch en dynamisch moeten worden geconfigureerd. Als dit niet het geval is, worden de configuratie-instellingen van het geheugen rechtstreeks gebruikt en worden ze niet gewijzigd op basis van de systeem voorwaarden. Als dit het geval is, worden de geheugen instellingen automatisch geconfigureerd en kunnen ze worden gewijzigd op basis van de systeem voorwaarden. |
 |MaximumDestagingWriteOutstandingInKB | Int, standaard is 0 |Dynamisch|Het aantal KB waarmee het gedeelde logboek kan worden voorgezet vóór het toegewezen logboek. Gebruik 0 om aan te geven dat er geen limiet is.
@@ -411,13 +411,13 @@ Hier volgt een lijst met infrastructuur instellingen die u kunt aanpassen, geord
 |WriteBufferMemoryPoolMinimumInKB |Int, standaard waarde is 8388608 |Dynamisch|Het aantal KB dat in eerste instantie moet worden toegewezen voor de geheugen groep schrijf buffer. Gebruik 0 om aan te geven dat er geen limiet standaard moet overeenkomen met SharedLogSizeInMB hieronder. |
 
 ## <a name="managedidentitytokenservice"></a>ManagedIdentityTokenService
-| **Bepaalde** | **Toegestane waarden** | **Upgrade beleid** | **Uitleg of korte beschrijving** |
+| **Parameter** | **Toegestane waarden** | **Upgrade beleid** | **Uitleg of korte beschrijving** |
 | --- | --- | --- | --- |
 |IsEnabled|BOOL, default is FALSE|Statisch|Markering voor het beheren van de aanwezigheid en status van de beheerde identiteits token service in het cluster. Dit is een vereiste voor het gebruik van de beheerde identiteits functionaliteit van Service Fabric toepassingen.|
 
 ## <a name="management"></a>Beheer
 
-| **Bepaalde** | **Toegestane waarden** | **Upgrade beleid** | **Uitleg of korte beschrijving** |
+| **Parameter** | **Toegestane waarden** | **Upgrade beleid** | **Uitleg of korte beschrijving** |
 | --- | --- | --- | --- |
 |AutomaticUnprovisionInterval|Time span, standaard waarde is gebruikelijk:: time span:: FromMinutes (5)|Dynamisch|Geef een tijds duur in seconden op. Het opschoon interval voor het ongedaan maken van de registratie van het toepassings type tijdens het automatisch opschonen van het toepassings type.|
 |AzureStorageMaxConnections | Int, standaard waarde is 5000 |Dynamisch|Het maximum aantal gelijktijdige verbindingen met Azure Storage. |
@@ -434,23 +434,23 @@ Hier volgt een lijst met infrastructuur instellingen die u kunt aanpassen, geord
 
 
 ## <a name="metricactivitythresholds"></a>MetricActivityThresholds
-| **Bepaalde** | **Toegestane waarden** |**Upgrade beleid**| **Uitleg of korte beschrijving** |
+| **Parameter** | **Toegestane waarden** |**Upgrade beleid**| **Uitleg of korte beschrijving** |
 | --- | --- | --- | --- |
 |PropertyGroup|KeyIntegerValueMap, standaard instelling is geen|Dynamisch|Bepaalt de set MetricActivityThresholds voor de metrische gegevens in het cluster. De taak verdeling werkt alleen als maxNodeLoad groter is dan MetricActivityThresholds. Voor de metrische gegevens over defragmentatie wordt de hoeveelheid belasting gedefinieerd die gelijk is aan of onder welke Service Fabric het knoop punt is leeg. |
 
 ## <a name="metricbalancingthresholds"></a>MetricBalancingThresholds
-| **Bepaalde** | **Toegestane waarden** |**Upgrade beleid**| **Uitleg of korte beschrijving** |
+| **Parameter** | **Toegestane waarden** |**Upgrade beleid**| **Uitleg of korte beschrijving** |
 | --- | --- | --- | --- |
 |PropertyGroup|KeyDoubleValueMap, standaard instelling is geen|Dynamisch|Bepaalt de set MetricBalancingThresholds voor de metrische gegevens in het cluster. De taak verdeling werkt alleen als maxNodeLoad/minNodeLoad groter is dan MetricBalancingThresholds. Defragmentatie werkt als maxNodeLoad/minNodeLoad in ten minste één FD of UD kleiner is dan MetricBalancingThresholds. |
 
 ## <a name="metricloadstickinessforswap"></a>MetricLoadStickinessForSwap
-| **Bepaalde** | **Toegestane waarden** |**Upgrade beleid**| **Uitleg of korte beschrijving** |
+| **Parameter** | **Toegestane waarden** |**Upgrade beleid**| **Uitleg of korte beschrijving** |
 | --- | --- | --- | --- |
 |PropertyGroup|KeyDoubleValueMap, standaard instelling is geen|Dynamisch|Hiermee bepaalt u het deel van de belasting dat bij de replica hoort wanneer deze wordt omgewisseld, een waarde tussen 0 (laden niet met replica wordt uitgevoerd) en 1 (Load sticks met replica-default) |
 
 ## <a name="namingservice"></a>NamingService
 
-| **Bepaalde** | **Toegestane waarden** | **Upgrade beleid** | **Uitleg of korte beschrijving** |
+| **Parameter** | **Toegestane waarden** | **Upgrade beleid** | **Uitleg of korte beschrijving** |
 | --- | --- | --- | --- |
 |GatewayServiceDescriptionCacheLimit |Int, standaard is 0 |Statisch|Het maximum aantal vermeldingen in de cache van de LRU-service beschrijving op de naamgevings gateway (ingesteld op 0 voor geen limiet). |
 |MaxClientConnections |Int, standaard waarde is 1000 |Dynamisch|Het Maxi maal toegestane aantal client verbindingen per gateway. |
@@ -472,38 +472,38 @@ Hier volgt een lijst met infrastructuur instellingen die u kunt aanpassen, geord
 |TargetReplicaSetSize |Int, standaard is 7 |Niet toegestaan|Het aantal replica sets voor elke partitie van het Naming Service archief. Het verhogen van het aantal replica sets verhoogt het betrouwbaarheids niveau voor de informatie in het Naming Service archief; het verminderen van de wijziging waarvan de informatie verloren gaat als gevolg van knooppunt storingen; bij een verhoogde belasting van Windows Fabric en de hoeveelheid tijd die nodig is voor het uitvoeren van updates voor de naam gegevens.|
 
 ## <a name="nodebufferpercentage"></a>NodeBufferPercentage
-| **Bepaalde** | **Toegestane waarden** |**Upgrade beleid**| **Uitleg of korte beschrijving** |
+| **Parameter** | **Toegestane waarden** |**Upgrade beleid**| **Uitleg of korte beschrijving** |
 | --- | --- | --- | --- |
 |PropertyGroup|KeyDoubleValueMap, standaard instelling is geen|Dynamisch|Percentage van capaciteit van knoop punt per metrische naam; wordt gebruikt als een buffer om een vrije plaats op een knoop punt voor de failover-case te hand haven. |
 
 ## <a name="nodecapacities"></a>NodeCapacities
 
-| **Bepaalde** | **Toegestane waarden** | **Upgrade beleid** | **Uitleg of korte beschrijving** |
+| **Parameter** | **Toegestane waarden** | **Upgrade beleid** | **Uitleg of korte beschrijving** |
 | --- | --- | --- | --- |
 |PropertyGroup |NodeCapacityCollectionMap |Statisch|Een verzameling knooppunt capaciteit voor verschillende metrische gegevens. |
 
 ## <a name="nodedomainids"></a>NodeDomainIds
 
-| **Bepaalde** | **Toegestane waarden** | **Upgrade beleid** | **Uitleg of korte beschrijving** |
+| **Parameter** | **Toegestane waarden** | **Upgrade beleid** | **Uitleg of korte beschrijving** |
 | --- | --- | --- | --- |
 |PropertyGroup |NodeFaultDomainIdCollection |Statisch|Hierin worden de fout domeinen beschreven waarvan een knoop punt deel uitmaakt. Het fout domein wordt gedefinieerd via een URI die de locatie van het knoop punt in het Data Center beschrijft.  Fout domein-Uri's hebben de indeling FD:/FD/gevolgd door een segment van een URI-pad.|
 |UpgradeDomainId |teken reeks, standaard instelling is |Statisch|Beschrijft het upgrade domein waarvan een knoop punt deel uitmaakt. |
 
 ## <a name="nodeproperties"></a>NodeProperties
 
-| **Bepaalde** | **Toegestane waarden** | **Upgrade beleid** | **Uitleg of korte beschrijving** |
+| **Parameter** | **Toegestane waarden** | **Upgrade beleid** | **Uitleg of korte beschrijving** |
 | --- | --- | --- | --- |
 |PropertyGroup |NodePropertyCollectionMap |Statisch|Een verzameling teken reeks sleutel-waardeparen voor eigenschappen van knoop punten. |
 
 ## <a name="paas"></a>PaaS
 
-| **Bepaalde** | **Toegestane waarden** | **Upgrade beleid** | **Uitleg of korte beschrijving** |
+| **Parameter** | **Toegestane waarden** | **Upgrade beleid** | **Uitleg of korte beschrijving** |
 | --- | --- | --- | --- |
 |ClusterId |teken reeks, standaard instelling is |Niet toegestaan|X509-certificaat archief dat wordt gebruikt door de infra structuur voor configuratie beveiliging. |
 
 ## <a name="performancecounterlocalstore"></a>PerformanceCounterLocalStore
 
-| **Bepaalde** | **Toegestane waarden** | **Upgrade beleid** | **Uitleg of korte beschrijving** |
+| **Parameter** | **Toegestane waarden** | **Upgrade beleid** | **Uitleg of korte beschrijving** |
 | --- | --- | --- | --- |
 |Tellers |Tekenreeks | Dynamisch |Een door komma's gescheiden lijst met prestatie meter items die moeten worden verzameld. |
 |IsEnabled |BOOL, default is True | Dynamisch |Vlag geeft aan of de prestatie meter verzameling op het lokale knoop punt is ingeschakeld. |
@@ -513,7 +513,7 @@ Hier volgt een lijst met infrastructuur instellingen die u kunt aanpassen, geord
 
 ## <a name="placementandloadbalancing"></a>PlacementAndLoadBalancing
 
-| **Bepaalde** | **Toegestane waarden** | **Upgrade beleid** | **Uitleg of korte beschrijving** |
+| **Parameter** | **Toegestane waarden** | **Upgrade beleid** | **Uitleg of korte beschrijving** |
 | --- | --- | --- | --- |
 |AffinityConstraintPriority | Int, standaard is 0 | Dynamisch|Bepaalt de prioriteit van de affiniteits beperking: 0: hard; 1: zacht; negatief: negeren. |
 |ApplicationCapacityConstraintPriority | Int, standaard is 0 | Dynamisch|Bepaalt de prioriteit van de capaciteits beperking: 0: hard; 1: zacht; negatief: negeren. |
@@ -578,7 +578,7 @@ Hier volgt een lijst met infrastructuur instellingen die u kunt aanpassen, geord
 
 ## <a name="reconfigurationagent"></a>ReconfigurationAgent
 
-| **Bepaalde** | **Toegestane waarden** | **Upgrade beleid** | **Uitleg of korte beschrijving** |
+| **Parameter** | **Toegestane waarden** | **Upgrade beleid** | **Uitleg of korte beschrijving** |
 | --- | --- | --- | --- |
 |ApplicationUpgradeMaxReplicaCloseDuration | Tijd in seconden, standaard waarde is 900 |Dynamisch|Geef een tijds duur in seconden op. De duur waarvoor het systeem wacht voordat de service-hosts worden beëindigd die replica's hebben die tijdens de upgrade van de toepassing zijn vastgelopen.|
 |FabricUpgradeMaxReplicaCloseDuration | Tijd in seconden, standaard waarde is 900 |Dynamisch| Geef een tijds duur in seconden op. De duur waarvoor het systeem wacht voordat de service-hosts worden beëindigd die replica's hebben die tijdens de upgrade van de infra structuur zijn vastgelopen. |
@@ -591,7 +591,7 @@ Hier volgt een lijst met infrastructuur instellingen die u kunt aanpassen, geord
 |ServiceReconfigurationApiHealthDuration | Tijd in seconden, standaard waarde is 30 |Dynamisch| Geef een tijds duur in seconden op. ServiceReconfigurationApiHealthDuration definieert hoelang er wordt gewacht tot een service-API wordt uitgevoerd voordat er een slechte melding wordt gegenereerd. Dit geldt voor API-aanroepen die van invloed zijn op de beschik baarheid.|
 
 ## <a name="replication"></a>Replicatie
-| **Bepaalde** | **Toegestane waarden** | **Upgrade beleid**| **Uitleg of korte beschrijving** |
+| **Parameter** | **Toegestane waarden** | **Upgrade beleid**| **Uitleg of korte beschrijving** |
 | --- | --- | --- | --- |
 |BatchAcknowledgementInterval|Time span, standaard waarde is gebruikelijk:: time span:: FromMilliseconds (15)|Statisch|Geef een tijds duur in seconden op. Bepaalt de hoeveelheid tijd die de Replicator wacht na het ontvangen van een bewerking voordat een bevestiging wordt verzonden. Andere bewerkingen die tijdens deze periode worden ontvangen, zullen hun bevestigingen terugsturen in één bericht-> het netwerk verkeer te verminderen, maar mogelijk de door Voer van de Replicator te verminderen.|
 |MaxCopyQueueSize|uint, standaard waarde is 1024|Statisch|Dit is de maximum waarde definieert de aanvankelijke grootte voor de wachtrij die replicatie bewerkingen onderhoudt. Houd er rekening mee dat dit een macht van 2 moet zijn. Als tijdens runtime de wachtrij wordt uitgebreid naar deze grootte, wordt de bewerking tussen de primaire en secundaire replicaties vertraagd.|
@@ -608,13 +608,13 @@ Hier volgt een lijst met infrastructuur instellingen die u kunt aanpassen, geord
 |RetryInterval|Time span, standaard waarde is gebruikelijk:: time span:: FromSeconds (5)|Statisch|Geef een tijds duur in seconden op. Wanneer een bewerking is verbroken of afgekeurd, bepaalt deze timer hoe vaak de Replicator de bewerking opnieuw probeert te verzenden.|
 
 ## <a name="resourcemonitorservice"></a>ResourceMonitorService
-| **Bepaalde** | **Toegestane waarden** | **Upgrade beleid**| **Uitleg of korte beschrijving** |
+| **Parameter** | **Toegestane waarden** | **Upgrade beleid**| **Uitleg of korte beschrijving** |
 | --- | --- | --- | --- |
 |IsEnabled|BOOL, default is FALSE |Statisch|Hiermee wordt bepaald of de service is ingeschakeld in het cluster of niet. |
 
 ## <a name="runas"></a>RunAs
 
-| **Bepaalde** | **Toegestane waarden** | **Upgrade beleid** | **Uitleg of korte beschrijving** |
+| **Parameter** | **Toegestane waarden** | **Upgrade beleid** | **Uitleg of korte beschrijving** |
 | --- | --- | --- | --- |
 |RunAsAccountName |teken reeks, standaard instelling is |Dynamisch|Hiermee wordt de RunAs-account naam aangegeven. Dit is alleen nodig voor het account type domein gebruiker of ManagedServiceAccount. Geldige waarden zijn "domein\gebruiker" of "user@domain". |
 |RunAsAccountType|teken reeks, standaard instelling is |Dynamisch|Hiermee wordt het account type runas aangegeven. Dit is nodig voor de sectie runas, geldige waarden zijn ' Domain User/Network Service/ManagedServiceAccount/LocalSystem '.|
@@ -622,7 +622,7 @@ Hier volgt een lijst met infrastructuur instellingen die u kunt aanpassen, geord
 
 ## <a name="runas_dca"></a>RunAs_DCA
 
-| **Bepaalde** | **Toegestane waarden** | **Upgrade beleid** | **Uitleg of korte beschrijving** |
+| **Parameter** | **Toegestane waarden** | **Upgrade beleid** | **Uitleg of korte beschrijving** |
 | --- | --- | --- | --- |
 |RunAsAccountName |teken reeks, standaard instelling is |Dynamisch|Hiermee wordt de RunAs-account naam aangegeven. Dit is alleen nodig voor het account type domein gebruiker of ManagedServiceAccount. Geldige waarden zijn "domein\gebruiker" of "user@domain". |
 |RunAsAccountType|teken reeks, standaard instelling is |Dynamisch|Hiermee wordt het account type runas aangegeven. Dit is nodig voor alle runas-secties geldige waarden zijn "Lokalegebruiker/Domain Service/ManagedServiceAccount/LocalSystem". |
@@ -630,7 +630,7 @@ Hier volgt een lijst met infrastructuur instellingen die u kunt aanpassen, geord
 
 ## <a name="runas_fabric"></a>RunAs_Fabric
 
-| **Bepaalde** | **Toegestane waarden** | **Upgrade beleid** | **Uitleg of korte beschrijving** |
+| **Parameter** | **Toegestane waarden** | **Upgrade beleid** | **Uitleg of korte beschrijving** |
 | --- | --- | --- | --- |
 |RunAsAccountName |teken reeks, standaard instelling is |Dynamisch|Hiermee wordt de RunAs-account naam aangegeven. Dit is alleen nodig voor het account type domein gebruiker of ManagedServiceAccount. Geldige waarden zijn "domein\gebruiker" of "user@domain". |
 |RunAsAccountType|teken reeks, standaard instelling is |Dynamisch|Hiermee wordt het account type runas aangegeven. Dit is nodig voor alle runas-secties geldige waarden zijn "Lokalegebruiker/Domain Service/ManagedServiceAccount/LocalSystem". |
@@ -638,14 +638,14 @@ Hier volgt een lijst met infrastructuur instellingen die u kunt aanpassen, geord
 
 ## <a name="runas_httpgateway"></a>RunAs_HttpGateway
 
-| **Bepaalde** | **Toegestane waarden** | **Upgrade beleid** | **Uitleg of korte beschrijving** |
+| **Parameter** | **Toegestane waarden** | **Upgrade beleid** | **Uitleg of korte beschrijving** |
 | --- | --- | --- | --- |
 |RunAsAccountName |teken reeks, standaard instelling is |Dynamisch|Hiermee wordt de RunAs-account naam aangegeven. Dit is alleen nodig voor het account type domein gebruiker of ManagedServiceAccount. Geldige waarden zijn "domein\gebruiker" of "user@domain". |
 |RunAsAccountType|teken reeks, standaard instelling is |Dynamisch|Hiermee wordt het account type runas aangegeven. Dit is nodig voor alle runas-secties geldige waarden zijn "Lokalegebruiker/Domain Service/ManagedServiceAccount/LocalSystem". |
 |RunAsPassword|teken reeks, standaard instelling is |Dynamisch|Hiermee wordt het wacht woord van het runas-account aangegeven. Dit is alleen nodig voor het account type domein gebruiker. |
 
 ## <a name="security"></a>Beveiliging
-| **Bepaalde** | **Toegestane waarden** |**Upgrade beleid**| **Uitleg of korte beschrijving** |
+| **Parameter** | **Toegestane waarden** |**Upgrade beleid**| **Uitleg of korte beschrijving** |
 | --- | --- | --- | --- |
 |AADCertEndpointFormat|teken reeks, standaard instelling is|Statisch|AAD-certificaat eindpunt indeling, standaard-Azure-Commercial, opgegeven voor niet-standaard-omgeving, zoals\/Azure Government '{0}https:/Login.microsoftonline.us//federationmetadata/2007-06/federationmetadata.XML ' |
 |AADClientApplication|teken reeks, standaard instelling is|Statisch|Systeem eigen client toepassings naam of ID die infrastructuur clients vertegenwoordigt |
@@ -689,13 +689,13 @@ Hier volgt een lijst met infrastructuur instellingen die u kunt aanpassen, geord
 
 ## <a name="securityadminclientx509names"></a>Beveiligings-AdminClientX509Names
 
-| **Bepaalde** | **Toegestane waarden** | **Upgrade beleid** | **Uitleg of korte beschrijving** |
+| **Parameter** | **Toegestane waarden** | **Upgrade beleid** | **Uitleg of korte beschrijving** |
 | --- | --- | --- | --- |
 |PropertyGroup|X509NameMap, standaard instelling is geen|Dynamisch|Dit is een lijst met naam-en waarde-paar. Elk "naam" is de algemene naam van het onderwerp of DnsName van x509-certificaten die zijn gemachtigd voor client bewerkingen van de beheerder. Voor een gegeven ' name ' is een door komma's gescheiden lijst met certificaat vingerafdrukken voor het vastmaken van een uitgever, indien niet leeg is, moet de directe verlener van client certificaten van de beheerder in de lijst staan. |
 
 ## <a name="securityclientaccess"></a>Beveiligings-ClientAccess
 
-| **Bepaalde** | **Toegestane waarden** | **Upgrade beleid** | **Uitleg of korte beschrijving** |
+| **Parameter** | **Toegestane waarden** | **Upgrade beleid** | **Uitleg of korte beschrijving** |
 | --- | --- | --- | --- |
 |ActivateNode |teken reeks, standaard instelling is "beheerder" |Dynamisch| Beveiligings configuratie voor het activeren van een knoop punt. |
 |CancelTestCommand |teken reeks, standaard instelling is "beheerder" |Dynamisch| Hiermee wordt een specifieke TestCommand geannuleerd: als deze zich in de vlucht bevindt. |
@@ -798,43 +798,43 @@ Hier volgt een lijst met infrastructuur instellingen die u kunt aanpassen, geord
 
 ## <a name="securityclientcertificateissuerstores"></a>Beveiligings-ClientCertificateIssuerStores
 
-| **Bepaalde** | **Toegestane waarden** | **Upgrade beleid** | **Uitleg of korte beschrijving** |
+| **Parameter** | **Toegestane waarden** | **Upgrade beleid** | **Uitleg of korte beschrijving** |
 | --- | --- | --- | --- |
 |PropertyGroup|IssuerStoreKeyValueMap, standaard instelling is geen |Dynamisch|X509-verlener certificaat archieven voor client certificaten; Name = clientIssuerCN; Waarde = door komma's gescheiden lijst met winkels |
 
 ## <a name="securityclientx509names"></a>Beveiligings-ClientX509Names
 
-| **Bepaalde** | **Toegestane waarden** | **Upgrade beleid** | **Uitleg of korte beschrijving** |
+| **Parameter** | **Toegestane waarden** | **Upgrade beleid** | **Uitleg of korte beschrijving** |
 | --- | --- | --- | --- |
 |PropertyGroup|X509NameMap, standaard instelling is geen|Dynamisch|Dit is een lijst met naam-en waarde-paar. Elk "naam" is de algemene naam van het onderwerp of DnsName van x509-certificaten die zijn gemachtigd voor client bewerkingen. Voor een gegeven ' name ' is een door komma's gescheiden lijst met certificaat vingerafdrukken voor het vastmaken van een uitgever, indien niet leeg is, moet de directe verlener van client certificaten in de lijst staan.|
 
 ## <a name="securityclustercertificateissuerstores"></a>Beveiligings-ClusterCertificateIssuerStores
 
-| **Bepaalde** | **Toegestane waarden** | **Upgrade beleid** | **Uitleg of korte beschrijving** |
+| **Parameter** | **Toegestane waarden** | **Upgrade beleid** | **Uitleg of korte beschrijving** |
 | --- | --- | --- | --- |
 |PropertyGroup|IssuerStoreKeyValueMap, standaard instelling is geen |Dynamisch|X509-verlener certificaat archieven voor cluster certificaten; Name = clusterIssuerCN; Waarde = door komma's gescheiden lijst met winkels |
 
 ## <a name="securityclusterx509names"></a>Beveiligings-ClusterX509Names
 
-| **Bepaalde** | **Toegestane waarden** | **Upgrade beleid** | **Uitleg of korte beschrijving** |
+| **Parameter** | **Toegestane waarden** | **Upgrade beleid** | **Uitleg of korte beschrijving** |
 | --- | --- | --- | --- |
 |PropertyGroup|X509NameMap, standaard instelling is geen|Dynamisch|Dit is een lijst met naam-en waarde-paar. Elk "naam" is de algemene naam van het onderwerp of DnsName van x509-certificaten die zijn gemachtigd voor cluster bewerkingen. Voor een gegeven ' name ' is een door komma's gescheiden lijst met certificaat vingerafdrukken voor het vastmaken van een uitgever, indien niet leeg is, moet de directe verlener van cluster certificaten in de lijst staan.|
 
 ## <a name="securityservercertificateissuerstores"></a>Beveiligings-ServerCertificateIssuerStores
 
-| **Bepaalde** | **Toegestane waarden** | **Upgrade beleid** | **Uitleg of korte beschrijving** |
+| **Parameter** | **Toegestane waarden** | **Upgrade beleid** | **Uitleg of korte beschrijving** |
 | --- | --- | --- | --- |
 |PropertyGroup|IssuerStoreKeyValueMap, standaard instelling is geen |Dynamisch|X509-verlener certificaat archieven voor server certificaten; Name = serverIssuerCN; Waarde = door komma's gescheiden lijst met winkels |
 
 ## <a name="securityserverx509names"></a>Beveiligings-ServerX509Names
 
-| **Bepaalde** | **Toegestane waarden** | **Upgrade beleid** | **Uitleg of korte beschrijving** |
+| **Parameter** | **Toegestane waarden** | **Upgrade beleid** | **Uitleg of korte beschrijving** |
 | --- | --- | --- | --- |
 |PropertyGroup|X509NameMap, standaard instelling is geen|Dynamisch|Dit is een lijst met naam-en waarde-paar. Elk "naam" is de algemene naam van het onderwerp of DnsName van x509-certificaten die zijn gemachtigd voor Server bewerkingen. Voor een gegeven ' name ' is een door komma's gescheiden lijst met certificaat vingerafdrukken voor het vastmaken van een uitgever, indien niet leeg is, moet de directe verlener van server certificaten in de lijst staan.|
 
 ## <a name="setup"></a>Instellen
 
-| **Bepaalde** | **Toegestane waarden** | **Upgrade beleid** | **Uitleg of korte beschrijving** |
+| **Parameter** | **Toegestane waarden** | **Upgrade beleid** | **Uitleg of korte beschrijving** |
 | --- | --- | --- | --- |
 |ContainerNetworkName|teken reeks, standaard instelling is| Statisch |De netwerk naam die moet worden gebruikt bij het instellen van een container netwerk.|
 |ContainerNetworkSetup|BOOL, default is FALSE (Linux) en de standaard waarde is TRUE (Windows)| Statisch |Hiermee wordt aangegeven of een container netwerk moet worden ingesteld.|
@@ -847,19 +847,19 @@ Hier volgt een lijst met infrastructuur instellingen die u kunt aanpassen, geord
 
 ## <a name="tokenvalidationservice"></a>TokenValidationService
 
-| **Bepaalde** | **Toegestane waarden** | **Upgrade beleid** | **Uitleg of korte beschrijving** |
+| **Parameter** | **Toegestane waarden** | **Upgrade beleid** | **Uitleg of korte beschrijving** |
 | --- | --- | --- | --- |
 |Providers |teken reeks, standaard is ' DSTS ' |Statisch|Door komma's gescheiden lijst met te scha kelen token validatie providers (geldige providers zijn: DSTS; AAD). Op dit moment kan slechts één provider worden ingeschakeld. |
 
 ## <a name="traceetw"></a>Tracering/etw
 
-| **Bepaalde** | **Toegestane waarden** | **Upgrade beleid** | **Uitleg of korte beschrijving** |
+| **Parameter** | **Toegestane waarden** | **Upgrade beleid** | **Uitleg of korte beschrijving** |
 | --- | --- | --- | --- |
 |Niveau |Int, standaard waarde is 4 | Dynamisch |Het traceren van het niveau etw kan waarden hebben van 1, 2, 3, 4. Om te kunnen worden ondersteund, moet u het tracerings niveau op 4 volgen |
 
 ## <a name="transactionalreplicator"></a>TransactionalReplicator
 
-| **Bepaalde** | **Toegestane waarden** | **Upgrade beleid** | **Uitleg of korte beschrijving** |
+| **Parameter** | **Toegestane waarden** | **Upgrade beleid** | **Uitleg of korte beschrijving** |
 | --- | --- | --- | --- |
 |BatchAcknowledgementInterval | Tijd in seconden, standaard waarde is 0,015 | Statisch | Geef een tijds duur in seconden op. Bepaalt de hoeveelheid tijd die de Replicator wacht na het ontvangen van een bewerking voordat een bevestiging wordt verzonden. Andere bewerkingen die tijdens deze periode worden ontvangen, zullen hun bevestigingen terugsturen in één bericht-> het netwerk verkeer te verminderen, maar mogelijk de door Voer van de Replicator te verminderen. |
 |MaxCopyQueueSize |Uint, standaard waarde is 16384 | Statisch |Dit is de maximum waarde definieert de aanvankelijke grootte voor de wachtrij die replicatie bewerkingen onderhoudt. Houd er rekening mee dat dit een macht van 2 moet zijn. Als tijdens runtime de wachtrij wordt uitgebreid naar deze grootte, wordt de bewerking tussen de primaire en secundaire replicaties vertraagd. |
@@ -871,7 +871,7 @@ Hier volgt een lijst met infrastructuur instellingen die u kunt aanpassen, geord
 |ReplicatorAddress |teken reeks, standaard waarde is ' localhost: 0 ' | Statisch | Het eind punt in de vorm van een teken reeks-' IP: poort ' die wordt gebruikt door de Windows Fabric Replicator om verbindingen met andere replica's tot stand te brengen om bewerkingen te kunnen verzenden/ontvangen. |
 
 ## <a name="transport"></a>Transport
-| **Bepaalde** | **Toegestane waarden** |**Upgrade beleid** |**Uitleg of korte beschrijving** |
+| **Parameter** | **Toegestane waarden** |**Upgrade beleid** |**Uitleg of korte beschrijving** |
 | --- | --- | --- | --- |
 |ConnectionOpenTimeout|Time span, standaard waarde is gebruikelijk:: time span:: FromSeconds (60)|Statisch|Geef een tijds duur in seconden op. Er is een time-out opgetreden voor de configuratie van de verbinding voor zowel binnenkomend als geaccepteerde kant (inclusief beveiligings onderhandeling in beveiligde modus) |
 |FrameHeaderErrorCheckingEnabled|BOOL, default is TRUE|Statisch|Standaard instelling voor fout controle op frame header in niet-beveiligde modus; de instelling van het onderdeel overschrijft dit. |
@@ -881,7 +881,7 @@ Hier volgt een lijst met infrastructuur instellingen die u kunt aanpassen, geord
 
 ## <a name="upgradeorchestrationservice"></a>UpgradeOrchestrationService
 
-| **Bepaalde** | **Toegestane waarden** | **Upgrade beleid** | **Uitleg of korte beschrijving** |
+| **Parameter** | **Toegestane waarden** | **Upgrade beleid** | **Uitleg of korte beschrijving** |
 | --- | --- | --- | --- |
 |AutoupgradeEnabled | BOOL, default is True |Statisch| Automatische polling en bijwerk actie op basis van een doel status bestand. |
 |AutoupgradeInstallEnabled|BOOL, default is FALSE|Statisch|Automatische polling, inrichting en installatie van code-upgrade actie op basis van een bestand met een doel status.|
@@ -896,7 +896,7 @@ Hier volgt een lijst met infrastructuur instellingen die u kunt aanpassen, geord
 
 ## <a name="upgradeservice"></a>UpgradeService
 
-| **Bepaalde** | **Toegestane waarden** | **Upgrade beleid** | **Uitleg of korte beschrijving** |
+| **Parameter** | **Toegestane waarden** | **Upgrade beleid** | **Uitleg of korte beschrijving** |
 | --- | --- | --- | --- |
 |BaseUrl | teken reeks, standaard instelling is |Statisch|BaseUrl voor UpgradeService. |
 |ClusterId | teken reeks, standaard instelling is |Statisch|ClusterId voor UpgradeService. |
@@ -914,7 +914,7 @@ Hier volgt een lijst met infrastructuur instellingen die u kunt aanpassen, geord
 |X509StoreName | teken reeks, standaard is ' My '|Dynamisch|X509StoreName voor UpgradeService. |
 
 ## <a name="userservicemetriccapacities"></a>UserServiceMetricCapacities
-| **Bepaalde** | **Toegestane waarden** | **Upgrade beleid** | **Uitleg of korte beschrijving** |
+| **Parameter** | **Toegestane waarden** | **Upgrade beleid** | **Uitleg of korte beschrijving** |
 | --- | --- | --- | --- |
 |PropertyGroup| UserServiceMetricCapacitiesMap, standaard instelling is geen | Statisch | Een verzameling van de beheer limieten voor gebruikers services-resources moet statisch zijn omdat dit van invloed is op de logica van automatische detectie |
 

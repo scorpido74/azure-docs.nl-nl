@@ -1,6 +1,6 @@
 ---
-title: bestand opnemen
-description: bestand opnemen
+title: Include-bestand
+description: Include-bestand
 ms.topic: include
 ms.custom: include file
 services: time-series-insights

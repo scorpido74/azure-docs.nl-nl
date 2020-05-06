@@ -6,14 +6,14 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.custom: hdinsightactive
-ms.date: 04/14/2020
-ms.openlocfilehash: 317d12f6d5dee92d998266d4e9b6d52e6ef9c7a5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: HT
+ms.custom: hdinsightactive,seoapr2020
+ms.date: 04/29/2020
+ms.openlocfilehash: 48602cb65430bcf6720b4d6f4ba05c771a7bd55b
+ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81381383"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82559957"
 ---
 # <a name="manage-hdinsight-clusters-by-using-the-apache-ambari-rest-api"></a>HDInsight-clusters beheren met behulp van de Apache Ambari REST API
 
@@ -23,7 +23,7 @@ Meer informatie over het gebruik van de Apache Ambari REST API voor het beheren 
 
 ## <a name="what-is-apache-ambari"></a>Wat is Apache Ambari
 
-[Apache Ambari](https://ambari.apache.org) vereenvoudigt het beheer en de bewaking van Hadoop-clusters door een gebruiks vriendelijke webinterface te bieden die wordt ondersteund door de [rest api's](https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/index.md).  Ambari wordt standaard meegeleverd met HDInsight-clusters op basis van Linux.
+Apache Ambari vereenvoudigt het beheer en de bewaking van Hadoop-clusters door een gebruiks vriendelijke webinterface te bieden die wordt ondersteund door de [rest api's](https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/index.md).  Ambari wordt standaard meegeleverd met HDInsight-clusters op basis van Linux.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -33,7 +33,7 @@ Meer informatie over het gebruik van de Apache Ambari REST API voor het beheren 
 
 * JQ, een JSON-processor op de opdracht regel.  Zie [https://stedolan.github.io/jq/](https://stedolan.github.io/jq/).
 
-* Windows PowerShell.  U kunt ook [bash](https://www.gnu.org/software/bash/)gebruiken.
+* Windows PowerShell.  U kunt ook bash gebruiken.
 
 ## <a name="base-uniform-resource-identifier-for-ambari-rest-api"></a>Base-uniform resource-id voor Ambari rest API
 

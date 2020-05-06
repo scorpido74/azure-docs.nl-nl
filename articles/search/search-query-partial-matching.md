@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 04/09/2020
-ms.openlocfilehash: 5a05f2973ac17460250fb3e80eb7bc0da9849940
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 05ff56c904fc48a1041ad40f00110a8ff0fd01f1
+ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81262873"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82592040"
 ---
 # <a name="partial-term-search-and-patterns-with-special-characters-wildcard-regex-patterns"></a>Zoeken op gedeeltelijke termen en patronen met speciale tekens (Joker teken, regex, patronen)
 
@@ -24,7 +24,7 @@ Gedeeltelijke Zoek opdrachten en patronen kunnen problematisch zijn als de index
 De oplossing is het aanroepen van een Analyzer waarbij een volledige teken reeks wordt bewaard, inclusief spaties en speciale tekens, zodat u op gedeeltelijke termen en patronen kunt zoeken. Het maken van een aanvullend veld voor een ingrijpende teken reeks, plus het gebruik van een analyse functie voor content behoud, vormt de basis van de oplossing.
 
 > [!TIP]
-> Bekend met de Api's postman en REST? [Down load de verzameling query voorbeelden voor het](https://github.com/Azure-Samples/azure-search-postman-samples/tree/master/full-syntax-examples) opvragen van gedeeltelijke voor waarden en speciale tekens die in dit artikel worden beschreven.
+> Bekend met de Api's postman en REST? [Down load de verzameling query voorbeelden voor het](https://github.com/Azure-Samples/azure-search-postman-samples/) opvragen van gedeeltelijke voor waarden en speciale tekens die in dit artikel worden beschreven.
 
 ## <a name="what-is-partial-search-in-azure-cognitive-search"></a>Wat is een gedeeltelijke zoek opdracht in azure Cognitive Search
 
