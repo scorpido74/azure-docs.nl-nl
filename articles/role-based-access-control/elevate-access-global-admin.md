@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 04/17/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 18490ec7c3cfde33cef186b753e2adc809f854c6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6821e3de3bfec891d98e9291a479cbb7537364ca
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81641355"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82733653"
 ---
 # <a name="elevate-access-to-manage-all-azure-subscriptions-and-management-groups"></a>Toegang verhogen om alle Azure-abonnementen en beheergroepen te beheren
 
@@ -47,7 +47,7 @@ U moet deze verhoogde toegang verwijderen nadat u de wijzigingen hebt aangebrach
 
 ![Toegang verhogen](./media/elevate-access-global-admin/elevate-access.png)
 
-## <a name="azure-portal"></a>Azure Portal
+## <a name="azure-portal"></a>Azure-portal
 
 ### <a name="elevate-access-for-a-global-administrator"></a>Toegang verhogen voor een globale beheerder
 
@@ -84,7 +84,7 @@ Volg deze stappen om de toegang tot een globale beheerder te verhogen met behulp
 
 1. Breng de gewenste wijzigingen aan in de verhoogde toegang.
 
-    Zie [toegang beheren met RBAC en de Azure Portal](role-assignments-portal.md)voor meer informatie over het toewijzen van rollen. Als u Azure AD Privileged Identity Management (PIM) gebruikt, raadpleegt u [Azure-resources detecteren om te beheren in PIM](../active-directory/privileged-identity-management/pim-resource-roles-discover-resources.md) of [Azure-resource rollen toewijzen in PIM](../active-directory/privileged-identity-management/pim-resource-roles-assign-roles.md).
+    Zie [Azure-roltoewijzingen toevoegen of verwijderen met behulp van de Azure Portal](role-assignments-portal.md)voor meer informatie over het toewijzen van rollen. Als u Azure AD Privileged Identity Management (PIM) gebruikt, raadpleegt u [Azure-resources detecteren om te beheren in PIM](../active-directory/privileged-identity-management/pim-resource-roles-discover-resources.md) of [Azure-resource rollen toewijzen in PIM](../active-directory/privileged-identity-management/pim-resource-roles-assign-roles.md).
 
 ### <a name="remove-elevated-access"></a>Verhoogde toegang verwijderen
 
@@ -322,4 +322,4 @@ Wanneer u aanroept `elevateAccess`, maakt u een roltoewijzing voor uzelf, zodat 
 ## <a name="next-steps"></a>Volgende stappen
 
 - [Inzicht in de verschillende rollen](rbac-and-directory-admin-roles.md)
-- [Toegang tot Azure-resources beheren met RBAC en de REST API](role-assignments-rest.md)
+- [Azure-roltoewijzingen toevoegen of verwijderen met behulp van de REST API](role-assignments-rest.md)

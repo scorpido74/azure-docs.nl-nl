@@ -5,12 +5,12 @@ author: sideeksh
 manager: rochakm
 ms.date: 04/29/2019
 ms.topic: conceptual
-ms.openlocfilehash: 7d3bcc32dc8f1412a5adbc175a5f8618628bce83
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b6f665c5b0f2fbd291d20ef21d0a447d20f7c2da
+ms.sourcegitcommit: 291b2972c7f28667dc58f66bbe9d9f7d11434ec1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80547891"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82738045"
 ---
 # <a name="common-questions-azure-to-azure-disaster-recovery"></a>Veelgestelde vragen: nood herstel voor Azure naar Azure
 
@@ -194,10 +194,10 @@ U kunt 16 virtuele machines samen repliceren in een replicatie groep.
 Omdat de consistentie tussen meerdere VM'S CPU-intensief is, kan dit van invloed zijn op de prestaties van de werk belasting. Gebruik alleen de consistentie tussen meerdere VM'S als op computers dezelfde werk belasting wordt uitgevoerd en u consistentie op meerdere computers nodig hebt. Als u bijvoorbeeld twee SQL Server exemplaren en twee webservers in een toepassing hebt, moet u alleen multi-VM-consistentie hebben voor de SQL Server exemplaren.
 
 ### <a name="can-you-add-an-already-replicating-vm-to-a-replication-group"></a>Kunt u een al replicerende virtuele machine aan een replicatie groep toevoegen?
-
 U kunt een virtuele machine toevoegen aan een nieuwe replicatie groep tijdens het inschakelen van replicatie. U kunt ook een virtuele machine toevoegen aan een bestaande replicatie groep tijdens het inschakelen van replicatie. U kunt echter geen reeds replicerende virtuele machine toevoegen aan een nieuwe replicatie groep of bestaande replicatie groep.
-
+ 
 ## <a name="failover"></a>Failover
+
 
 ### <a name="how-is-capacity-ensured-in-the-target-region-for-azure-vms"></a>Hoe is de capaciteit gegarandeerd in de doel regio voor virtuele Azure-machines?
 

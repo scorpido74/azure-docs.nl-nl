@@ -1,6 +1,6 @@
 ---
-title: bestand opnemen
-description: bestand opnemen
+title: Include-bestand
+description: Include-bestand
 services: azure-app-configuration
 author: lisaguthrie
 ms.service: azure-app-configuration

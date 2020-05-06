@@ -1,9 +1,9 @@
 ### YamlMime:Landing
-title: Documentatie voor RBAC voor Azure-resources
-summary: Op rollen gebaseerde toegangsbeheer (RBAC) is een systeem waarmee u geavanceerd toegangsbeheer van Azure-resources kunt toepassen. Met op rollen gebaseerd toegangsbeheer kunt u taken scheiden binnen uw team en alleen de mate van toegang verlenen aan gebruikers die nodig is om de taken uit te voeren.
+title: Documentatie voor Azure RBAC
+summary: Op rollen gebaseerde toegangsbeheer van Azure (Azure RBAC) is een systeem waarmee u geavanceerd toegangsbeheer van Azure-resources kunt toepassen. Met op rollen gebaseerd toegangsbeheer van Azure kunt u taken scheiden binnen uw team en alleen de mate van toegang verlenen aan gebruikers die nodig is om de taken uit te voeren.
 metadata:
-  title: Documentatie voor op rollen gebaseerd toegangsbeheer (RBAC) voor Azure-resources
-  description: Meer informatie over het gebruik van op rollen gebaseerd toegangsbeheer (RBAC) om te beheren wie toegang heeft tot Azure-resources, wat ze kunnen doen met die bronnen en tot welke gebieden ze toegang hebben.
+  title: Documentatie voor Azure RBAC
+  description: Meer informatie over het gebruik van op rollen gebaseerd toegangsbeheer van Azure (Azure RBAC) om te beheren wie toegang heeft tot Azure-resources, wat ze kunnen doen met die bronnen en tot welke gebieden ze toegang hebben.
   services: role-based-access-control
   ms.service: role-based-access-control
   ms.subservice: na
@@ -11,19 +11,19 @@ metadata:
   ms.collection: na
   author: rolyon
   ms.author: rolyon
-  ms.date: 08/26/2019
-  ms.openlocfilehash: e947b1ab685bcc1da5d3895e49c07d1ff56c0937
-  ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+  ms.date: 04/30/2020
+  ms.openlocfilehash: b2661936d82f8d167ec2ef466effcd84d0a972dd
+  ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
   ms.translationtype: HT
   ms.contentlocale: nl-NL
-  ms.lasthandoff: 03/25/2020
-  ms.locfileid: "70968315"
+  ms.lasthandoff: 05/03/2020
+  ms.locfileid: "82733478"
 landingContent:
-- title: Over RBAC voor Azure-resources
+- title: Over Azure RBAC
   linkLists:
   - linkListType: overview
     links:
-    - text: Wat is RBAC?
+    - text: Wat is Azure RBAC?
       url: overview.md
     - text: Inzicht in de verschillende rollen
       url: rbac-and-directory-admin-roles.md
@@ -45,7 +45,7 @@ landingContent:
       url: tutorial-role-assignments-group-powershell.md
   - linkListType: learn
     links:
-    - text: Uw Azure-resources beveiligen met RBAC
+    - text: Uw Azure-resources beveiligen met Azure RBAC
       url: https://docs.microsoft.com/learn/modules/secure-azure-resources-with-rbac/
 - title: Toegang beheren
   linkLists:
@@ -63,12 +63,16 @@ landingContent:
       url: role-assignments-rest.md
     - text: Template
       url: role-assignments-template.md
-- title: Aangepaste rollen maken
+- title: Aangepaste rollen maken of bijwerken
   linkLists:
   - linkListType: overview
     links:
     - text: Aangepaste rollen
       url: custom-roles.md
+  - linkListType: how-to-guide
+    links:
+    - text: Een aangepaste rol maken - Portal
+      url: custom-roles-portal.md
   - linkListType: tutorial
     links:
     - text: Een aangepaste rol maken - PowerShell

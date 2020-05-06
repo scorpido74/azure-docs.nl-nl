@@ -4,12 +4,12 @@ description: Meer informatie over het definiëren van een aangepaste uitgangs ro
 services: container-service
 ms.topic: article
 ms.date: 03/16/2020
-ms.openlocfilehash: 3780680c485aebf1ffc654d31c577821a9b96fff
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e7dbde4095fb635180bb1ba663734f8dbfd602f7
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80676507"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82733495"
 ---
 # <a name="customize-cluster-egress-with-a-user-defined-route-preview"></a>Cluster uitgang aanpassen met een door de gebruiker gedefinieerde route (preview-versie)
 
@@ -73,7 +73,7 @@ Hieronder vindt u een netwerk topologie die standaard wordt geïmplementeerd in 
 
 Als `userDefinedRouting` is ingesteld, worden uitzonderings paden niet automatisch door aks geconfigureerd. Het volgende wordt verwacht door **de gebruiker**.
 
-Het cluster moet worden geïmplementeerd in een bestaand virtueel netwerk met een subnet dat is geconfigureerd. Er moet een geldige door de gebruiker gedefinieerde route (UDR) bestaan in het subnet met uitgaande connectiviteit.
+Het AKS-cluster moet worden geïmplementeerd in een bestaand virtueel netwerk met een subnet dat is geconfigureerd. Wanneer u de standaard load balancer-architectuur (SLB) gebruikt, moet u expliciete uitgaand verkeer tot stand brengen. Hiervoor moeten uitgangs aanvragen worden verzonden naar een apparaat, zoals een firewall, gateway, on-premises, of om de uitvoer van een openbaar IP-adres dat is toegewezen aan de standaard load balancer of een bepaald knoop punt te laten plaatsvinden.
 
 De resource provider AKS implementeert een Standard-load balancer (SLB). De load balancer is niet geconfigureerd met regels en er worden [geen kosten in rekening gebracht tot er een regel wordt geplaatst](https://azure.microsoft.com/pricing/details/load-balancer/). AKS wordt **niet** automatisch een openbaar IP-adres ingericht voor de SLB-front-end. Met AKS wordt de load balancer back-end-groep **niet** automatisch geconfigureerd.
 

@@ -1,6 +1,6 @@
 ---
-title: Roltoewijzingen weer geven met behulp van Azure RBAC en de REST API
-description: Meer informatie over hoe u kunt bepalen welke resources gebruikers, groepen, service-principals of beheerde identiteiten hebben toegang tot het gebruik van op rollen gebaseerd toegangs beheer (RBAC) en de REST API.
+title: Azure-roltoewijzingen weer geven met behulp van de REST API-Azure RBAC
+description: Meer informatie over hoe u kunt bepalen welke resources gebruikers, groepen, service-principals of beheerde identiteiten hebben toegang tot het gebruik van de REST API en Azure op rollen gebaseerd toegangs beheer (Azure RBAC).
 services: active-directory
 documentationcenter: na
 author: rolyon
@@ -15,14 +15,14 @@ ms.topic: conceptual
 ms.date: 03/19/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: a494e7fd4c9fb79faa6a1d8cb2c3c871796ccdc5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 043c91e5c1ecd86951ac3f9423558a3ab369d506
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80062157"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82735671"
 ---
-# <a name="list-role-assignments-using-azure-rbac-and-the-rest-api"></a>Roltoewijzingen weer geven met behulp van Azure RBAC en de REST API
+# <a name="list-azure-role-assignments-using-the-rest-api"></a>Azure-roltoewijzingen weer geven met behulp van de REST API
 
 [!INCLUDE [Azure RBAC definition list access](../../includes/role-based-access-control-definition-list.md)]In dit artikel wordt beschreven hoe u roltoewijzingen kunt weer geven met behulp van de REST API.
 
@@ -31,7 +31,7 @@ ms.locfileid: "80062157"
 
 ## <a name="list-role-assignments"></a>Lijst met roltoewijzingen weergeven
 
-In RBAC kunt u de roltoewijzingen weer geven om toegang weer te geven. Als u roltoewijzingen wilt weer geven, gebruikt u een van de [roltoewijzingen-lijst rest-](/rest/api/authorization/roleassignments/list) api's. Als u uw resultaten wilt verfijnen, geeft u een bereik en een optioneel filter op.
+In azure RBAC kunt u de roltoewijzingen weer geven om toegang te krijgen. Als u roltoewijzingen wilt weer geven, gebruikt u een van de [roltoewijzingen-lijst rest-](/rest/api/authorization/roleassignments/list) api's. Als u uw resultaten wilt verfijnen, geeft u een bereik en een optioneel filter op.
 
 1. Begin met de volgende aanvraag:
 
@@ -63,5 +63,5 @@ In RBAC kunt u de roltoewijzingen weer geven om toegang weer te geven. Als u rol
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Roltoewijzingen toevoegen of verwijderen met behulp van Azure RBAC en de REST API](role-assignments-rest.md)
+- [Azure-roltoewijzingen toevoegen of verwijderen met behulp van de REST API](role-assignments-rest.md)
 - [Naslag informatie over Azure REST API](/rest/api/azure/)

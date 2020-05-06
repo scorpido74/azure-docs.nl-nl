@@ -1,6 +1,6 @@
 ---
-title: Aangepaste rollen maken of bijwerken voor Azure-resources met Azure PowerShell
-description: Meer informatie over het weer geven, maken, bijwerken of verwijderen van aangepaste rollen met op rollen gebaseerd toegangs beheer (RBAC) voor Azure-resources met behulp van Azure PowerShell.
+title: Aangepaste Azure-rollen maken of bijwerken met behulp van Azure PowerShell-Azure RBAC
+description: Meer informatie over het weer geven, maken, bijwerken of verwijderen van aangepaste rollen met behulp van Azure PowerShell en Azure op rollen gebaseerd toegangs beheer (Azure RBAC).
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -14,23 +14,23 @@ ms.workload: identity
 ms.date: 03/18/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 3c72e04ff7a08fecc2ef352a5879898c4c6d41c9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ffb53bff4e70fbeb80e518fe13aaeaa8b396cfac
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80062282"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82734804"
 ---
-# <a name="create-or-update-custom-roles-for-azure-resources-using-azure-powershell"></a>Aangepaste rollen maken of bijwerken voor Azure-resources met behulp van Azure PowerShell
+# <a name="create-or-update-azure-custom-roles-using-azure-powershell"></a>Aangepaste Azure-rollen maken of bijwerken met behulp van Azure PowerShell
 
 > [!IMPORTANT]
 > Een beheer groep toevoegen aan `AssignableScopes` is momenteel beschikbaar als preview-versie.
 > Deze preview-versie wordt aangeboden zonder service level agreement en wordt niet aanbevolen voor productieworkloads. Misschien worden bepaalde functies niet ondersteund of zijn de mogelijkheden ervan beperkt.
 > Zie voor meer informatie [aanvullende gebruiks voorwaarden voor Microsoft Azure-previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-Als de [ingebouwde rollen voor Azure-resources](built-in-roles.md) niet voldoen aan de specifieke behoeften van uw organisatie, kunt u uw eigen aangepaste rollen maken. In dit artikel wordt beschreven hoe u aangepaste rollen oplijstt, maakt, bijwerkt of verwijdert met behulp van Azure PowerShell.
+Als de [ingebouwde rollen van Azure](built-in-roles.md) niet voldoen aan de specifieke behoeften van uw organisatie, kunt u uw eigen aangepaste rollen maken. In dit artikel wordt beschreven hoe u aangepaste rollen oplijstt, maakt, bijwerkt of verwijdert met behulp van Azure PowerShell.
 
-Zie [zelf studie: een aangepaste rol maken voor Azure-resources met Azure PowerShell](tutorial-custom-role-powershell.md)voor een stapsgewijze zelf studie over het maken van een aangepaste rol.
+Zie [zelf studie: een aangepaste Azure-rol maken met Azure PowerShell](tutorial-custom-role-powershell.md)voor een stapsgewijze zelf studie over het maken van een aangepaste rol.
 
 [!INCLUDE [az-powershell-update](../../includes/updated-for-az.md)]
 
@@ -401,6 +401,6 @@ Are you sure you want to remove role definition with name 'Virtual Machine Opera
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Zelf studie: een aangepaste rol maken voor Azure-resources met behulp van Azure PowerShell](tutorial-custom-role-powershell.md)
-- [Aangepaste rollen voor Azure-resources](custom-roles.md)
+- [Zelf studie: een aangepaste Azure-rol maken met behulp van Azure PowerShell](tutorial-custom-role-powershell.md)
+- [Aangepaste Azure-rollen](custom-roles.md)
 - [Bewerkingen voor de resource provider Azure Resource Manager](resource-provider-operations.md)
