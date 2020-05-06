@@ -1,6 +1,6 @@
 ---
-title: bestand opnemen
-description: dossier voor de industrie taxonomie
+title: Include-bestand
+description: bestand voor industrie taxonomie toevoegen
 documentationcenter: partner-center-commercial-marketplace
 author: qianw211
 ms.author: dsindona
@@ -10,31 +10,31 @@ ms.topic: include
 ms.date: 09/20/2019
 ms.custom: include file
 ms.openlocfilehash: 19fac46fae2ae938c4ed00967171067ec9f67435
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80277251"
 ---
-U optioneel maximaal twee bedrijfstakken en twee verticalen onder elke bedrijfstak selecteren. Deze categorieën worden gebruikt voor het weergeven van uw aanbieding, wanneer de industrie en verticalen worden gebruikt in zoekfilters en toegepast in de Storefront.  Als uw aanbieding is gericht op een specifieke branche en/of verticaal, moet u in de beschrijving van de aanbieding beschrijven hoe uw aanbod de geselecteerde bedrijfstakken of verticalen ondersteunt.  Als uw aanbieding anders niet branchespecifiek is, maak dan geen selectie en laat deze sectie leeg.
+U kunt optioneel Maxi maal twee branches selecteren en twee verticale, onder elke branche. Deze categorieën worden gebruikt voor het weer geven van uw aanbieding, wanneer industrie en verticale kracht worden gebruikt in zoek filters en op de winkel worden toegepast.  Als uw aanbieding gericht is op een specifieke branche en/of verticaal, zorg er dan voor dat u beschrijft hoe uw aanbod de geselecteerde branches of verticaal in de beschrijving van de aanbieding ondersteunt.  Als uw aanbieding niet specifiek is voor de branche, mag u geen selectie maken en deze sectie leeg laten.
 
 >[!NOTE]
->Terwijl we werken aan het introduceren van nieuwe industrieën en verticalen om de detectie-ervaring van het aanbod te verbeteren, zijn sommige industrieën of verticalen mogelijk nog niet zichtbaar op de Storefront. Industrieën en verticalen met een (*) zijn beschikbaar op een toekomstige datum. Alle gepubliceerde aanbiedingen zijn vindbaar via trefwoord zoeken.
+>We werken samen met het introduceren van nieuwe branches en verticalen om de ervaring voor de detectie van de aanbieding te verbeteren, maar sommige branches of verticalen zijn mogelijk nog niet zichtbaar op de winkel. Branches en verticale, gemarkeerd met een (*) zijn in de toekomst beschikbaar. Alle gepubliceerde aanbiedingen kunnen worden gedetecteerd via Zoek opdrachten met tref woorden.
 
-| **Branche**    | **Subindustrie**  | 
+| **Branche**    | **Subsector**  | 
 | :------------------- | :-------------------|
-| *Automotive     | *Automotive |
-| Landbouw     | *Overig - Niet gesegmenteerd |
-| Distributie    | *Groothandel <br> *Pakket verzending & pakket |
-| Education     | *Hoger onderwijs <br> *Primair & secundair onderwijs / K-12 <br> *Bibliotheken & Musea |
-| Financiële dienstverlening     | *Banking & kapitaalmarkten <br> *Verzekering |
-| Overheid    | *Defense & Intelligence (vroeger nationale en openbare veiligheid genoemd) <br> *Openbare veiligheid & Justitie <br> *Civiele regering |
-| Gezondheidszorg (vroeger gezondheid genoemd)   | *Health Payor <br> *Zorgverlener <br> *Farmaceutische producten |
-| Manufacturing & Resources (vroeger Manufacturing genoemd)   | *Chemische & Agrochemische <br> *Discrete productie <br> *Energie |
-| Retail & Consumer Goods (vroeger retail)  | *Consumptiegoederen <br> *Detailhandelaren |
-| *Media & Communications (heette vroeger Media en Entertainment)  | *Media & Entertainment <br> *Telecommunicatie |
-| Professionele diensten  | *Legaal <br> *Partner Professional Services |
-| *Architectuur & Bouw (vroeger Architecture Engineering genoemd)  | *Overig - Niet gesegmenteerd |
-| *Gastvrijheid & Reizen  | *Hotels & Leisure <br> *Reis & Transport <br> *Restaurants & Food Services |
-| *Andere bedrijfstakken van de publieke sector  | *Bosbouw & Visserij <br> *Non-profitorganisaties |
-| *Onroerend goed  | *Overig - Niet gesegmenteerd |
+| * Automobiel     | * Automobiel |
+| Landbouw     | * Overig-niet-gesegmenteerd |
+| Distributie    | * Groot handel <br> * Pakket verzen ding van Parcel & |
+| Education     | * Hoger onderwijs <br> * Primaire & secundair onderwijs/K-12 <br> * Bibliotheken & musea |
+| Financiële dienstverlening     | * Bankieren & kapitaal markten <br> * Verzekering |
+| Overheid    | * Verdediging &e intelligentie (gebruikt voor de zogenaamde nationale en open bare veiligheid) <br> * Open bare veiligheid & rechtvaardigheid <br> * Burger overheid |
+| Gezondheids zorg (gebruikt voor de status)   | * Status betaler <br> * Health-provider <br> * Farmaceutische producten |
+| Resources voor productie & (gebruikt voor de zogenaamde productie)   | * Chemisch & Agrochemical <br> * Discrete productie <br> * Energie |
+| Retail & consumenten goederen (gebruikt voor de verkoop van Retail)  | * Consumenten goederen <br> * Detail handelaren |
+| * Media & communicatie (gebruikt voor het noemen van media en entertainment)  | * Media & entertainment <br> * Telecommunicatie |
+| Professionele services  | * Juridisch <br> * Partner Professional-Services |
+| * Architectuur & constructie (wordt gebruikt als architectuur techniek)  | * Overig-niet-gesegmenteerd |
+| * Horeca & reizen  | * Hotels & vrije tijd <br> * Reis & transport <br> * Restaurants & voedsel Services |
+| * Andere branches uit de open bare sector  | * Bosbouw & visserij <br> * Non-profit organisaties |
+| * Onroerend goed  | * Overig-niet-gesegmenteerd |

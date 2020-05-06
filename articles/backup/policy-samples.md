@@ -1,21 +1,21 @@
 ---
-title: Lijst met ingebouwde beleids definities voor Azure Backup
-description: Een lijst met Azure Policy ingebouwde beleids definities voor Azure Backup. Deze ingebouwde oplossingen bieden gang bare benaderingen voor het beheren van uw Azure-resources.
-ms.date: 04/30/2020
+title: Ingebouwde beleids definities voor Azure Backup
+description: Een lijst met Azure Policy ingebouwde beleids definities voor Azure Backup. Deze ingebouwde beleids definities bieden gang bare benaderingen voor het beheren van uw Azure-resources.
+ms.date: 05/05/2020
 ms.topic: sample
 ms.custom: subject-policy-samples
-ms.openlocfilehash: 5fb96ff8b68166586fe89d7d3553a04bb00b766b
-ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
+ms.openlocfilehash: 424cb4f17c657db5a239fb7dd19a71324283f18b
+ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82629845"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82837788"
 ---
 # <a name="azure-policy-built-in-policy-definitions-for-azure-backup"></a>Azure Policy ingebouwde beleids definities voor Azure Backup
 
 Deze pagina bevat een index van [Azure Policy](../governance/policy/overview.md) ingebouwde beleids definities voor Azure backup. Zie [Azure Policy ingebouwde definities](../governance/policy/samples/built-in-policies.md)voor aanvullende Azure Policy-invoeg toepassingen voor andere services.
 
-De naam van elke ingebouwde koppeling naar de beleids definitie in Azure Portal. Gebruik de koppeling in de kolom **bron** om de bron weer te geven op het [Azure Policy github opslag plaats](https://github.com/Azure/azure-policy).
+De naam van elke ingebouwde beleids definitie is gekoppeld aan de beleids definitie in de Azure Portal. Gebruik de koppeling in de kolom **github** om de bron weer te geven op het [Azure Policy github opslag plaats](https://github.com/Azure/azure-policy).
 
 ## <a name="azure-backup"></a>Azure Backup
 

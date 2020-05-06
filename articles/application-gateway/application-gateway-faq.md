@@ -5,14 +5,14 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
-ms.date: 04/01/2020
+ms.date: 05/05/2020
 ms.author: victorh
-ms.openlocfilehash: 8acf04d26d0c69c426eb86f8a26a9f243c6f5ad2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 92011495f5f746b18a7706ed2f9583548cc51286
+ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82136636"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82836662"
 ---
 # <a name="frequently-asked-questions-about-application-gateway"></a>Veelgestelde vragen over Application Gateway
 
@@ -329,42 +329,6 @@ Voor meerdere op een domein gebaseerde (op een host gebaseerde) route ring kunt 
 ### <a name="can-i-use-special-characters-in-my-pfx-file-password"></a>Kan ik speciale tekens in het wacht woord voor het pfx-bestand gebruiken?
 
 Nee, gebruik alleen alfanumerieke tekens in het wacht woord voor het pfx-bestand.
-
-## <a name="configuration---web-application-firewall-waf"></a>Configuratie-Web Application Firewall (WAF)
-
-### <a name="does-the-waf-sku-offer-all-the-features-available-in-the-standard-sku"></a>Biedt de WAF-SKU alle functies die beschikbaar zijn in de standaard-SKU?
-
-Ja. WAF biedt ondersteuning voor alle functies in de standaard-SKU.
-
-### <a name="how-do-i-monitor-waf"></a>WAF Hoe kan ik controleren?
-
-Bewaak WAF via diagnostische logboek registratie. Zie [Diagnostische logboek registratie en metrische gegevens voor Application Gateway](application-gateway-diagnostics.md)voor meer informatie.
-
-### <a name="does-detection-mode-block-traffic"></a>Blokkeert de detectie modus verkeer?
-
-Nee. In de detectie modus wordt alleen verkeer geregistreerd dat een WAF-regel activeert.
-
-### <a name="can-i-customize-waf-rules"></a>Kan ik WAF-regels aanpassen?
-
-Ja. Zie [WAF-regel groepen en-regels aanpassen](application-gateway-customize-waf-rules-portal.md)voor meer informatie.
-
-### <a name="what-rules-are-currently-available-for-waf"></a>Welke regels zijn momenteel beschikbaar voor WAF?
-
-WAF biedt momenteel ondersteuning voor CRS [2.2.9](../web-application-firewall/ag/application-gateway-crs-rulegroups-rules.md#owasp229), [3,0](../web-application-firewall/ag/application-gateway-crs-rulegroups-rules.md#owasp30)en [3,1](../web-application-firewall/ag/application-gateway-crs-rulegroups-rules.md#owasp31). Deze regels bieden basis beveiliging tegen de meeste van de Top-10 beveiligings problemen die OWASP (Web Application Security project) identificeren: 
-
-* Beveiliging tegen SQL-injecties
-* Beveiliging voor cross-site scripting
-* Bescherming tegen veelvoorkomende webaanvalen, zoals het injecteren van opdrachten, HTTP-aanvragen smuggling, het splitsen van HTTP-antwoorden en insluiting van externe bestanden
-* Beveiliging tegen schendingen van het HTTP-protocol
-* Beveiliging tegen afwijkingen van het HTTP-protocol, zoals een gebruikersagent voor de host en Accept-headers die ontbreken
-* Beveiliging tegen bots, crawlers en scanners
-* Detectie van veelvoorkomende onjuiste configuraties van toepassingen (dat wil zeggen Apache, IIS, enzovoort)
-
-Zie [OWASP Top-10-beveiligings problemen](https://www.owasp.org/index.php/Top10#OWASP_Top_10_for_2013)voor meer informatie.
-
-### <a name="does-waf-support-ddos-protection"></a>Biedt WAF ondersteuning voor DDoS-beveiliging?
-
-Ja. U kunt DDoS-beveiliging inschakelen voor het virtuele netwerk waarin de toepassings gateway is geïmplementeerd. Met deze instelling zorgt u ervoor dat de Azure DDoS Protection-Service ook de virtuele IP-adressen van de toepassings gateway (VIP) beveiligt.
 
 ## <a name="configuration---ingress-controller-for-aks"></a>Configuratie-ingangs controller voor AKS
 

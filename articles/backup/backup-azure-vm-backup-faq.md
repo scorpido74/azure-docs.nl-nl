@@ -4,12 +4,12 @@ description: In dit artikel vindt u antwoorden op veelgestelde vragen over het m
 ms.reviewer: sogup
 ms.topic: conceptual
 ms.date: 09/17/2019
-ms.openlocfilehash: a6746944e34b8bd2fbb115baaabece96ee93dd1e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5705b70dd210c336fc2baa4da07f96f2ad249f64
+ms.sourcegitcommit: c8a0fbfa74ef7d1fd4d5b2f88521c5b619eb25f8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82190092"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82800648"
 ---
 # <a name="frequently-asked-questions-back-up-azure-vms"></a>Veelgestelde vragen: back-ups maken van virtuele Azure-machines
 
@@ -176,6 +176,14 @@ Er wordt een back-up van de virtuele machine gemaakt met behulp van de instellin
 4. Hervat de back-up.
 
 U kunt de virtuele machine herstellen vanaf beschik bare herstel punten die zijn gemaakt voor de verplaatsings bewerking.
+
+### <a name="what-happens-after-i-move-a-vm-to-a-different-resource-group"></a>Wat gebeurt er wanneer ik een VM Verplaats naar een andere resource groep?
+
+Zodra een virtuele machine naar een andere resource groep is verplaatst, is het een nieuwe virtuele machine, voorzover Azure Backup betrokken is.
+
+Nadat u de VM naar een nieuwe resource groep hebt verplaatst, kunt u de virtuele machine opnieuw beveiligen in dezelfde kluis of een andere kluis. Aangezien dit een nieuwe VM is voor Azure Backup, wordt deze afzonderlijk in rekening gebracht.
+
+De oude herstel punten van de VM kunnen zo nodig worden teruggezet. Als u deze back-upgegevens niet nodig hebt, kunt u stoppen met het beveiligen van uw oude VM met gegevens verwijderen.
 
 ### <a name="is-there-a-limit-on-number-of-vms-that-can-beassociated-with-the-same-backup-policy"></a>Geldt er een limiet voor het aantal Vm's dat kan worden gekoppeld aan hetzelfde back-upbeleid?
 

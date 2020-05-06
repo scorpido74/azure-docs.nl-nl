@@ -4,12 +4,12 @@ description: In dit artikel vindt u informatie over het oplossen van fouten die 
 ms.reviewer: srinathv
 ms.topic: troubleshooting
 ms.date: 08/30/2019
-ms.openlocfilehash: 019c27b1f7e8560c86252aaf2ed1fb79df2439fa
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: dd199bc0245ab1daa090f88b1e92216c714042ee
+ms.sourcegitcommit: 602e6db62069d568a91981a1117244ffd757f1c2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81677346"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82864442"
 ---
 # <a name="troubleshooting-backup-failures-on-azure-virtual-machines"></a>Back-upfouten op virtuele machines van Azure oplossen
 
@@ -35,7 +35,7 @@ In deze sectie wordt de back-upbewerking voor de virtuele machine van Azure besc
     ![Windows Server Back-up mislukt](media/backup-azure-vms-troubleshoot/windows-server-backup-failing.png)
   * Als Azure Backup is mislukt, zoekt u naar de bijbehorende fout code in de sectie veelvoorkomende fouten in VM-back-ups in dit artikel.
 
-## <a name="common-issues"></a>Algemene problemen
+## <a name="common-issues"></a>Veelvoorkomende problemen
 
 Hier volgen enkele veelvoorkomende problemen met back-upfouten op virtuele machines van Azure.
 
@@ -97,6 +97,14 @@ Herstart de VSS-schrijvers die een slechte status hebben. Voer ```vssadmin list 
 
 * ```net stop serviceName```
 * ```net start serviceName```
+
+Een andere procedure die u kan helpen, is om de volgende opdracht uit te voeren vanaf een opdracht prompt met verhoogde bevoegdheid (als beheerder).
+
+```CMD
+REG ADD "HKLM\SOFTWARE\Microsoft\BcdrAgentPersistentKeys" /v SnapshotWithoutThreads /t REG_SZ /d True /f
+```
+
+Als u deze register sleutel toevoegt, worden de threads niet gemaakt voor BLOB-moment opnamen en wordt de time-out voor komen.
 
 ## <a name="extensionconfigparsingfailure--failure-in-parsing-the-config-for-the-backup-extension"></a>ExtensionConfigParsingFailure-fout bij het parseren van de configuratie voor de back-upextensie
 

@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 04/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 15bf167df52e8ef54ab45de7b7b03efdaf83672a
-ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
+ms.openlocfilehash: 438edd88b3699f3811d8bd32170b62569971c2e9
+ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82628313"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82837393"
 ---
 # <a name="what-is-windows-virtual-desktop"></a>Wat is Windows Virtual Desktop? 
 
@@ -65,7 +65,7 @@ Er zijn enkele dingen die u nodig hebt om virtuele Windows-Bureau bladen in te s
 
 We willen ondersteuning voor de volgende besturings systemen toevoegen, dus zorg ervoor dat u over de [juiste licenties](https://azure.microsoft.com/pricing/details/virtual-desktop/) voor uw gebruikers beschikt op basis van het bureau blad en de apps die u wilt implementeren:
 
-|OS|Vereiste licentie|
+|Besturingssysteem|Vereiste licentie|
 |---|---|
 |Windows 10 Enter prise-meerdere sessies of Windows 10 Enter prise|Microsoft 365 E3, E5, a3, A5, F3, zakelijk<br>Windows E3, E5, a3, A5|
 |Windows 7 Enterprise |Microsoft 365 E3, E5, a3, A5, F3, zakelijk<br>Windows E3, E5, a3, A5|
@@ -183,16 +183,16 @@ Windows Virtual Desktop biedt geen ondersteuning voor x86-installatie kopieën (
 
 De beschik bare opties voor automatisering en implementatie zijn afhankelijk van het besturings systeem en de versie die u kiest, zoals wordt weer gegeven in de volgende tabel: 
 
-|Besturingssysteem|Galerie met installatie kopieën van Azure|Hand matige VM-implementatie|Integratie van Azure Resource Manager-sjabloon|Hostgroep inrichten op Azure Marketplace|Windows Virtual Desktop agent-updates|
-|--------------------------------------|:------:|:------:|:------:|:------:|:------:|
-|Windows 10-meerdere sessies, versie 1903|Ja|Ja|Ja|Ja|Automatisch|
-|Windows 10-meerdere sessies, versie 1809|Ja|Ja|Nee|Nee|Automatisch|
-|Windows 10 Enter prise, versie 1903|Ja|Ja|Ja|Ja|Automatisch|
-|Windows 10 Enter prise, versie 1809|Ja|Ja|Nee|Nee|Automatisch|
-|Windows 7 Enterprise|Ja|Ja|Nee|Nee|Handmatig|
-|Windows Server 2019|Ja|Ja|Nee|Nee|Automatisch|
-|Windows Server 2016|Ja|Ja|Ja|Ja|Automatisch|
-|Windows Server 2012 R2|Ja|Ja|Nee|Nee|Automatisch|
+|Besturingssysteem|Galerie met installatie kopieën van Azure|Hand matige VM-implementatie|Integratie van Azure Resource Manager-sjabloon|Hostgroep inrichten op Azure Marketplace|
+|--------------------------------------|:------:|:------:|:------:|:------:|
+|Windows 10-meerdere sessies, versie 1903|Ja|Ja|Ja|Ja|
+|Windows 10-meerdere sessies, versie 1809|Ja|Ja|Nee|Nee|
+|Windows 10 Enter prise, versie 1903|Ja|Ja|Ja|Ja|
+|Windows 10 Enter prise, versie 1809|Ja|Ja|Nee|Nee|
+|Windows 7 Enterprise|Ja|Ja|Nee|Nee|
+|Windows Server 2019|Ja|Ja|Nee|Nee|
+|Windows Server 2016|Ja|Ja|Ja|Ja|
+|Windows Server 2012 R2|Ja|Ja|Nee|Nee|
 
 ## <a name="next-steps"></a>Volgende stappen
 

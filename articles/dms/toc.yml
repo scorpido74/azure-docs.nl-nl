@@ -78,7 +78,7 @@
         - name: Bekende problemen - Onlinemigratie van Oracle naar Azure DB for PostgreSQL - enkele server
           href: known-issues-oracle-azure-postgresql-online.md
         - name: Bekende problemen - Migratie van MongoDB naar Azure Cosmos DB's API voor MongoDB
-          href: tutorial-mongodb-cosmos-db.md
+          href: known-issues-mongo-cosmos-db.md
         - name: Bekende problemen - de hybride modus gebruiken
           href: known-issues-dms-hybrid-mode.md
     - name: Video's
