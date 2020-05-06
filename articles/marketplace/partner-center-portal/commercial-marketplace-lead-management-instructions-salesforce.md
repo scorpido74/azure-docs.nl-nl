@@ -1,22 +1,22 @@
 ---
-title: Beheer van leads voor Sales Force configureren | Azure Marketplace
-description: Configureer het beheer van leads voor Sales Force voor Azure Marketplace-klanten.
+title: Lead beheer in Sales Force-micro soft Commercial Marketplace
+description: Meer informatie over het gebruik van Sales Force voor het configureren van leads voor Microsoft AppSource en Azure Marketplace
 author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 03/30/2020
 ms.author: dsindona
-ms.openlocfilehash: e0fbb09370e198772b4fc485b3c0fe8a56da4226
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7d64b8914fa0b109dfc662a97a7f84d94e3491ec
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82133639"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82789705"
 ---
 # <a name="configure-lead-management-for-salesforce"></a>Beheer van leads voor Sales Force configureren
 
-In dit artikel wordt beschreven hoe u uw Sales Force-systeem zo instelt dat verkoop leads van uw aanbieding voor commerciële Marketplace kunnen worden verwerkt.
+In dit artikel wordt beschreven hoe u uw Sales Force-systeem zo instelt dat verkoop leads van uw aanbiedingen worden verwerkt in Microsoft AppSource en Azure Marketplace.
 
 > [!NOTE]
 > Azure Marketplace biedt geen ondersteuning voor vooraf gevulde lijsten, zoals een lijst met waarden voor het veld **land** . Zorg ervoor dat er geen lijsten zijn ingesteld voordat u doorgaat. U kunt ook een [https-eind punt](./commercial-marketplace-lead-management-instructions-https.md) of een [Azure-tabel](./commercial-marketplace-lead-management-instructions-azure-table.md) configureren om leads te ontvangen.
@@ -24,7 +24,9 @@ In dit artikel wordt beschreven hoe u uw Sales Force-systeem zo instelt dat verk
 ## <a name="set-up-your-salesforce-system"></a>Uw Sales Force-systeem instellen
 
 1. Meld u aan bij Sales Force.
-1. Als u de Sales Force Lighting-ervaring gebruikt:
+1. Navigeer naar de instellingen van **webnaar-lead** . 
+    
+    Als u de Sales Force Lighting-ervaring gebruikt
     1. Selecteer **Setup** op de start pagina van Sales Force.
 
        ![Setup van Sales Force](./media/commercial-marketplace-lead-management-instructions-salesforce/salesforce-1.png)
@@ -33,7 +35,7 @@ In dit artikel wordt beschreven hoe u uw Sales Force-systeem zo instelt dat verk
 
         ![Sales Force-webto-lead](./media/commercial-marketplace-lead-management-instructions-salesforce/salesforce-2.png)
 
-1. Als u de klassieke Sales Force-ervaring gebruikt:
+    Als u de klassieke Sales Force-ervaring gebruikt:
 
     1. Selecteer **Setup** op de start pagina van Sales Force.
 
@@ -43,7 +45,7 @@ In dit artikel wordt beschreven hoe u uw Sales Force-systeem zo instelt dat verk
 
         ![Sales Force-klassiek: Web-to-lead](./media/commercial-marketplace-lead-management-instructions-salesforce/salesforce-classic-web-to-lead.png)
 
-De overige instructies zijn hetzelfde, ongeacht de Sales Force-ervaring die u gebruikt.
+   De resterende stappen zijn hetzelfde voor beide Sales Force-ervaringen.
 
 1. Selecteer op de pagina voor het instellen van de **Web-naar-lead** de knop voor het maken van een **Web-naar-lead-formulier** .
 1. Selecteer op de **pagina Web-to-lead instellen** **de optie een formulier voor webtoegang maken**.
@@ -64,22 +66,23 @@ De overige instructies zijn hetzelfde, ongeacht de Sales Force-ervaring die u ge
 
 Wanneer u klaar bent om de informatie over het beheer van leads voor uw aanbieding te configureren in de portal voor publiceren, voert u de volgende stappen uit.
 
-1. Ga naar de pagina voor het instellen van de **aanbieding** voor uw aanbieding.
-1. Selecteer **verbinding maken** in het gedeelte **lead beheer** .
+1. Meld u aan bij [Partner Center](https://partner.microsoft.com/dashboard/home).
+
+1. Selecteer uw aanbieding en ga naar het tabblad **installatie** van de aanbieding.
+
+1. Selecteer in het gedeelte **lead beheer** de optie **verbinding maken**. 
 
     ![De knop verbinding maken in de sectie Lead beheer](./media/commercial-marketplace-lead-management-instructions-salesforce/lead-management-connect.png)
 
 1. Selecteer in het pop-upvenster **verbindings Details** de optie **Sales Force** voor de **doel bestemming** en `oid` plak de waarde vanuit het formulier web-naar-lead dat u in het veld **organisatie-id** hebt gemaakt.
 
+    ![Pop-upvenster verbindings Details het vak e-mail adres van contact persoon valideren](./media/commercial-marketplace-lead-management-instructions-salesforce/salesforce-connection-details.png)
+
 1. Voer onder **contact-e-mail**de e-mail adressen in voor personen in uw bedrijf die e-mail meldingen moeten ontvangen wanneer er een nieuwe lead wordt ontvangen. U kunt meerdere e-mail berichten opgeven door deze te scheiden met een punt komma.
 
 1. Selecteer **OK**.
 
-Selecteer de knop **valideren** om ervoor te zorgen dat u verbinding hebt gemaakt met een doel van een lead. Als dat lukt, hebt u een test lead in de doel locatie van de lead.
+Selecteer **valideren**om ervoor te zorgen dat u verbinding hebt gemaakt met een doel van de lead. Als dat lukt, hebt u een test lead in de doel locatie van de lead.
 
 >[!NOTE]
 >U moet de configuratie van de rest van de aanbieding volt ooien en publiceren voordat u leads voor de aanbieding kunt ontvangen.
-
-![Pop-upvenster voor verbindings Details een doel voor leads kiezen](./media/commercial-marketplace-lead-management-instructions-salesforce/choose-lead-destination.png)
-
-![Pop-upvenster verbindings Details het vak e-mail adres van contact persoon valideren](./media/commercial-marketplace-lead-management-instructions-salesforce/salesforce-connection-details.png)

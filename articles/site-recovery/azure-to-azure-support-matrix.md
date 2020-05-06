@@ -4,12 +4,12 @@ description: Hiermee wordt een overzicht gegeven van de ondersteuning voor herst
 ms.topic: article
 ms.date: 01/10/2020
 ms.author: raynew
-ms.openlocfilehash: 73160a6bf416722021d76da21a32a1cd1ee04386
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ea0b6763f4438033a8a5a1a4044479fc00f8456c
+ms.sourcegitcommit: 602e6db62069d568a91981a1117244ffd757f1c2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82111722"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82864569"
 ---
 # <a name="support-matrix-for-azure-vm-disaster-recovery-between-azure-regions"></a>Ondersteunings matrix voor herstel na nood geval voor Azure-VM'S tussen Azure-regio's
 
@@ -28,13 +28,13 @@ In dit artikel vindt u een overzicht van de ondersteuning en vereisten voor hers
 
 ## <a name="resource-support"></a>Resource-ondersteuning
 
-**Resource actie** | **Nadere**
+**Resource actie** | **Details**
 --- | ---
 **Kluizen verplaatsen tussen resource groepen** | Niet ondersteund
-**Berekenings-en opslag/netwerk bronnen verplaatsen over resource groepen** | Wordt niet ondersteund.<br/><br/> Als u een virtuele machine of gekoppelde onderdelen, zoals opslag/netwerk, verplaatst nadat de VM is gerepliceerd, moet u de replicatie voor de virtuele machine uitschakelen en opnieuw inschakelen.
+**Berekenings-en opslag/netwerk bronnen verplaatsen over resource groepen** | Niet ondersteund.<br/><br/> Als u een virtuele machine of gekoppelde onderdelen, zoals opslag/netwerk, verplaatst nadat de VM is gerepliceerd, moet u de replicatie voor de virtuele machine uitschakelen en opnieuw inschakelen.
 **Virtuele Azure-machines van het ene naar het andere abonnement repliceren voor herstel na nood gevallen** | Ondersteund binnen dezelfde Azure Active Directory Tenant.
 **Vm's migreren tussen regio's binnen ondersteunde geografische clusters (binnen en tussen abonnementen)** | Ondersteund binnen dezelfde Azure Active Directory Tenant.
-**Vm's binnen dezelfde regio migreren** | Wordt niet ondersteund.
+**Vm's binnen dezelfde regio migreren** | Niet ondersteund.
 
 ## <a name="region-support"></a>Ondersteuning voor regio
 
@@ -66,7 +66,7 @@ Beperkte regio's die zijn gereserveerd voor in-the-Country nood herstel |Duitsla
 
 Deze tabel geeft een overzicht van de ondersteuning van het cache-opslag account dat wordt gebruikt door Site Recovery tijdens de replicatie.
 
-**Instelling** | **Ondersteuning** | **Nadere**
+**Instelling** | **Ondersteuning** | **Details**
 --- | --- | ---
 V2-opslag accounts voor algemeen gebruik (warme en koele laag) | Ondersteund | Het gebruik van GPv2 wordt niet aanbevolen omdat de transactie kosten voor v2 beduidend hoger zijn dan v1 opslag accounts.
 Premium Storage | Niet ondersteund | Standaard opslag accounts worden gebruikt voor cache opslag, om de kosten te optimaliseren.
@@ -80,7 +80,7 @@ Site Recovery ondersteunt replicatie van virtuele Azure-machines met de besturin
 ### <a name="windows"></a>Windows
 
 
-**Besturingssysteem** | **Nadere**
+**Besturingssysteem** | **Details**
 --- | ---
 Windows Server 2019 | Ondersteund voor Server Core, server met bureaublad ervaring.
 Windows Server 2016  | Ondersteunde Server Core, server met bureaublad ervaring.
@@ -96,7 +96,7 @@ Windows 7 (x64) met SP1 en hoger | Van versie [9,30](https://support.microsoft.c
 
 #### <a name="linux"></a>Linux
 
-**Besturingssysteem** | **Nadere**
+**Besturingssysteem** | **Details**
 --- | ---
 Red Hat Enterprise Linux | 6,7, 6,8, 6,9, 6,10, 7,0, 7,1, 7,2, 7,3, 7,4, 7,5, 7,6,[7,7](https://support.microsoft.com/help/4528026/update-rollup-41-for-azure-site-recovery), [8,0](https://support.microsoft.com/en-us/help/4531426/update-rollup-42-for-azure-site-recovery), 8,1
 CentOS | 6,5, 6,6, 6,7, 6,8, 6,9, 6,10, 7,0, 7,1, 7,2, 7,3, 7,4, 7,5, 7,6, 7,7, 8,0, 8,1
@@ -154,7 +154,8 @@ SUSE Linux Enterprise Server 12 (SP1, SP2, SP3, SP4) | 9,29 | Alle Stock-SUSE 12
 
 **Release** | **Mobility Service-versie** | **Kernelversie** |
 --- | --- | --- |
-SUSE Linux Enterprise Server 15 en 15 SP1 | 9,32 | Alle Stock-SUSE 15-en 15-kernels worden ondersteund.</br></br> 4.12.14-5,5-Azure naar 4.12.14-8.22-Azure |
+SUSE Linux Enterprise Server 15 en 15 SP1 | 9,32 | Standaard worden alle [Stock-SuSE 15-en 15-kernels](https://www.suse.com/support/kb/doc/?id=000019587) ondersteund.</br></br> 4.12.14-5,5-Azure naar 4.12.14-8.22-Azure |
+
 
 ## <a name="replicated-machines---linux-file-systemguest-storage"></a>Gerepliceerde machines-Linux-bestands systeem/gast opslag
 
@@ -165,7 +166,7 @@ SUSE Linux Enterprise Server 15 en 15 SP1 | 9,32 | Alle Stock-SUSE 15-en 15-kern
 
 ## <a name="replicated-machines---compute-settings"></a>Gerepliceerde machines-Compute Settings
 
-**Instelling** | **Ondersteuning** | **Nadere**
+**Instelling** | **Ondersteuning** | **Details**
 --- | --- | ---
 Grootte | Een Azure VM-grootte met ten minste twee CPU-kernen en 1 GB RAM | Controleer de [grootte van virtuele Azure-machines](../virtual-machines/windows/sizes.md).
 Beschikbaarheidssets | Ondersteund | Als u replicatie inschakelt voor een virtuele machine van Azure met de standaard opties, wordt er automatisch een beschikbaarheidsset gemaakt, op basis van de instellingen van de bron regio. U kunt deze instellingen wijzigen.
@@ -178,10 +179,12 @@ Aangepaste installatie kopieën-externe partij gepubliceerd | Ondersteund | Word
 Vm's die zijn gemigreerd met behulp van Site Recovery | Ondersteund | Als een VMware-VM of fysieke machine met Site Recovery is gemigreerd naar Azure, moet u de oudere versie van Mobility service op de computer verwijderen en de computer opnieuw opstarten voordat u deze naar een andere Azure-regio repliceert.
 RBAC-beleid | Niet ondersteund | Beleids regels op basis van op rollen gebaseerd toegangs beheer (RBAC) op Vm's worden niet gerepliceerd naar de failover-VM in de doel regio.
 Uitbreidingen | Niet ondersteund | Uitbrei dingen worden niet gerepliceerd naar de failover-VM in de doel regio. Deze moet hand matig worden geïnstalleerd na een failover.
+Proximity-plaatsings groepen | Niet ondersteund | Virtuele machines die zich in een proximity-plaatsings groep bevinden, kunnen niet worden beveiligd met Site Recovery.
+
 
 ## <a name="replicated-machines---disk-actions"></a>Gerepliceerde machines-schijf acties
 
-**Actie** | **Nadere**
+**Actie** | **Details**
 -- | ---
 Grootte van schijf op een gerepliceerde VM wijzigen | Ondersteund op de bron-VM vóór de failover. U hoeft replicatie niet uit te scha kelen of opnieuw in te scha kelen.<br/><br/> Als u de bron-VM na een failover wijzigt, worden de wijzigingen niet vastgelegd.<br/><br/> Als u na de failover de schijf grootte op de Azure-VM wijzigt, worden de wijzigingen niet door Site Recovery vastgelegd en wordt de oorspronkelijke VM-grootte door failback gewijzigd.
 Een schijf toevoegen aan een gerepliceerde VM | Ondersteund
@@ -194,7 +197,7 @@ Deze tabel bevat een overzicht van de ondersteuning voor de Azure VM-besturingss
 - Als u implementeert met de standaard instellingen, maakt Site Recovery automatisch schijven en opslag accounts op basis van de bron instellingen.
 - Als u aanpassingen aanpast, moet u de richt lijnen volgen.
 
-**Component** | **Ondersteuning** | **Nadere**
+**Component** | **Ondersteuning** | **Details**
 --- | --- | ---
 Maximale grootte van de besturingssysteem schijf | 2048 GB | Meer [informatie](../virtual-machines/windows/managed-disks-overview.md) over VM-schijven.
 Tijdelijke schijf
@@ -251,7 +254,7 @@ Premium P20 of P30 of P40 of P50 schijf | 8 kB    | 5 MB/s | 421 GB per schijf
 Premium P20 of P30 of P40 of P50 schijf | 16 kB of meer |20 MB/s | 1684 GB per schijf
 
 ## <a name="replicated-machines---networking"></a>Gerepliceerde computers-netwerken
-**Instelling** | **Ondersteuning** | **Nadere**
+**Instelling** | **Ondersteuning** | **Details**
 --- | --- | ---
 NIC | Maximum aantal dat wordt ondersteund voor een specifieke Azure VM-grootte | Nic's worden gemaakt wanneer de virtuele machine wordt gemaakt tijdens de failover.<br/><br/> Het aantal Nic's op de failover-VM is afhankelijk van het aantal Nic's op de bron-VM wanneer replicatie is ingeschakeld. Als u een NIC toevoegt of verwijdert nadat de replicatie is ingeschakeld, heeft dit geen invloed op het aantal Nic's op de gerepliceerde VM na een failover. Houd er ook rekening mee dat de volg orde van de Nic's na een failover niet gegarandeerd hetzelfde is als de oorspronkelijke volg orde.
 Internet Load Balancer | Ondersteund | De vooraf geconfigureerde load balancer koppelen met behulp van een Azure Automation script in een herstel plan.

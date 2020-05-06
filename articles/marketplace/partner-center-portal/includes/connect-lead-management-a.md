@@ -1,6 +1,6 @@
 ---
-title: bestand opnemen
-description: bestand opnemen
+title: Include-bestand
+description: Include-bestand
 documentationcenter: partner-center-commercial-marketplace
 author: qianw211
 ms.service: marketplace

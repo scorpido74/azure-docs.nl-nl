@@ -8,16 +8,16 @@ ms.topic: overview
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
-ms.openlocfilehash: 05d73ae09d95879c37e86f5f3e73e35ed4607296
-ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
+ms.openlocfilehash: 409ba6cd192f65c73aba6bd6eb11a26ec1f820fa
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82560970"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82790878"
 ---
 # <a name="what-is-azure-iot-central"></a>Wat is Azure IoT Central?
 
-IoT Central is een IoT-toepassings platform waarmee de belasting en kosten voor het ontwikkelen, beheren en onderhouden van IoT-oplossingen op bedrijfs niveau worden verminderd. Als u ervoor kiest om met IoT Central te bouwen, hebt u de mogelijkheid om tijd, geld en energie te best Eden aan het trans formatie van uw bedrijf met IoT-gegevens, in plaats van alleen maar een complexe en voortdurend veranderende IoT-infra structuur te onderhouden.
+IoT Central is een platform voor IoT-toepassingen dat de inzet en kosten verlaagt die gepaard gaan met het ontwikkelen, beheren en onderhouden van geavanceerde IoT-oplossingen. Als u ervoor kiest om met IoT Central te bouwen, hebt u de mogelijkheid om tijd, geld en energie te best Eden aan het trans formatie van uw bedrijf met IoT-gegevens, in plaats van alleen maar een complexe en voortdurend veranderende IoT-infra structuur te onderhouden.
 
 Met de webgebruikersinterface kunt u de voor waarden van apparaten bewaken, regels maken en miljoenen apparaten en hun gegevens in hun levens cyclus beheren. Daarnaast kunt u hiermee op Device Insights reageren door IoT Intelligence uit te breiden in line-of-business-toepassingen.
 
@@ -29,19 +29,6 @@ In dit artikel vindt u een overzicht van IoT Central:
 - Het beheren van uw toepassing.
 - Azure IoT Edge mogelijkheden in IoT Central.
 - Hoe u uw Azure IoT Edge runtime-apparaten verbindt met uw toepassing.
-
-## <a name="known-issues"></a>Bekende problemen
-
-- Continue gegevens export biedt geen ondersteuning voor de Avro-indeling (incompatibiliteit).
-- Geojson wordt momenteel niet ondersteund.
-- De kaart tegel wordt momenteel niet ondersteund.
-- Taken bieden geen ondersteuning voor complexe typen.
-- Matrix schema typen worden niet ondersteund.
-- Alleen de C apparaat-SDK en het node. js-apparaat en de service-Sdk's worden ondersteund.
-- IoT Central is momenteel beschikbaar in de locaties Verenigde Staten, Europa, Azië en Stille Oceaan, Australië, Verenigd Konink rijk en Japan.
-- U kunt de toepassings sjabloon van de **aangepaste toepassing (verouderd)** niet gebruiken in de locaties voor het Verenigd Konink rijk en Japan.
-- Voor hulp modellen voor apparaten moeten alle interfaces in hetzelfde bestand zijn gedefinieerd.
-- Ondersteuning voor [IoT Plug en Play](../../iot-pnp/overview-iot-plug-and-play.md) is in de preview-versie en wordt alleen ondersteund in geselecteerde regio's.
 
 ## <a name="personas"></a>Persona's
 
@@ -152,7 +139,7 @@ Beheerders beheren de toegang tot uw toepassing met [gebruikers rollen en machti
 
 Met een IoT-oplossing die is ontworpen om op schaal te worden gebruikt, is een gestructureerde benadering van het beheer van apparaten belang rijk. Het is niet voldoende alleen om uw apparaten met de cloud te verbinden. u moet uw apparaten aangesloten blijven en in orde zijn. Een operator kan de volgende IoT Central mogelijkheden gebruiken voor het beheren van uw apparaten gedurende de levens cyclus van de toepassing:
 
-### <a name="dashboards"></a>Dashboards 
+### <a name="dashboards"></a>Dashboards
 
 Ingebouwde [Dash boards](./howto-set-up-template.md#generate-default-views) bieden een aanpas bare gebruikers interface voor het bewaken van apparaatstatus en telemetrie. Begin met een vooraf gebouwd dash board in een [toepassings sjabloon](howto-use-app-templates.md) of maak uw eigen Dash boards die zijn afgestemd op de behoeften van uw Opera tors. U kunt Dash boards delen met alle gebruikers in uw toepassing of ze privé laten.
 
@@ -193,6 +180,18 @@ Bouw IoT-oplossingen zoals:
 ## <a name="quotas"></a>Quota
 
 Elk Azure-abonnement heeft standaard quota's die van invloed kunnen zijn op het bereik van uw IoT-oplossing. Op dit moment beperkt IoT Central het aantal toepassingen dat u in een abonnement kunt implementeren op 10. Neem contact op met [micro soft ondersteuning](https://azure.microsoft.com/support/options/)als u deze limiet wilt verhogen.
+
+## <a name="known-issues"></a>Bekende problemen
+
+- Continue gegevens export biedt geen ondersteuning voor de Avro-indeling (incompatibiliteit).
+- Geojson wordt momenteel niet ondersteund.
+- De kaart tegel wordt momenteel niet ondersteund.
+- Matrix schema typen worden niet ondersteund.
+- Alleen de C apparaat-SDK en het node. js-apparaat en de service-Sdk's worden ondersteund.
+- IoT Central is momenteel beschikbaar in de locaties Verenigde Staten, Europa, Azië en Stille Oceaan, Australië, Verenigd Konink rijk en Japan.
+- U kunt de toepassings sjabloon van de **aangepaste toepassing (verouderd)** niet gebruiken in de locaties voor het Verenigd Konink rijk en Japan.
+- Voor hulp modellen voor apparaten moeten alle interfaces in hetzelfde bestand zijn gedefinieerd.
+- Ondersteuning voor [IoT Plug en Play](../../iot-pnp/overview-iot-plug-and-play.md) is in de preview-versie en wordt alleen ondersteund in geselecteerde regio's.
 
 ## <a name="next-steps"></a>Volgende stappen
 
