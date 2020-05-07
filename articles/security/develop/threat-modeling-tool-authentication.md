@@ -15,14 +15,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
-ms.openlocfilehash: 1bef73e6be4bdbe8828e1d20ea6e684759984627
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: has-adal-ref
+ms.openlocfilehash: 569e8d769d56acbb4c7fb4258952ec19e44b58e4
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "72244637"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82607823"
 ---
-# <a name="security-frame-authentication--mitigations"></a>Beveiligings frame: verificatie | Oplossingen 
+# <a name="security-frame-authentication--mitigations"></a>Beveiligings frame: verificatie | Oplossingen
 
 | Product/service | Artikel |
 | --------------- | ------- |
@@ -44,8 +45,8 @@ ms.locfileid: "72244637"
 
 | Titel                   | Details      |
 | ----------------------- | ------------ |
-| **Component**               | Webtoepassing | 
-| **SDL-fase**               | Ontwikkelen |  
+| **Component**               | Webtoepassing |
+| **SDL-fase**               | Ontwikkelen |
 | **Toepasselijke technologieën** | Algemeen |
 | **Kenmerken**              | N.v.t.  |
 | **Verwijzingen**              | N.v.t.  |
@@ -55,8 +56,8 @@ ms.locfileid: "72244637"
 
 | Titel                   | Details      |
 | ----------------------- | ------------ |
-| **Component**               | Webtoepassing | 
-| **SDL-fase**               | Ontwikkelen |  
+| **Component**               | Webtoepassing |
+| **SDL-fase**               | Ontwikkelen |
 | **Toepasselijke technologieën** | Algemeen |
 | **Kenmerken**              | N.v.t.  |
 | **Verwijzingen**              | N.v.t.  |
@@ -66,8 +67,8 @@ ms.locfileid: "72244637"
 
 | Titel                   | Details      |
 | ----------------------- | ------------ |
-| **Component**               | Webtoepassing | 
-| **SDL-fase**               | Ontwikkelen |  
+| **Component**               | Webtoepassing |
+| **SDL-fase**               | Ontwikkelen |
 | **Toepasselijke technologieën** | Algemeen |
 | **Kenmerken**              | N.v.t.  |
 | **Verwijzingen**              | N.v.t.  |
@@ -77,8 +78,8 @@ ms.locfileid: "72244637"
 
 | Titel                   | Details      |
 | ----------------------- | ------------ |
-| **Component**               | Webtoepassing | 
-| **SDL-fase**               | Ontwikkelen |  
+| **Component**               | Webtoepassing |
+| **SDL-fase**               | Ontwikkelen |
 | **Toepasselijke technologieën** | Algemeen |
 | **Kenmerken**              | N.v.t.  |
 | **Verwijzingen**              | N.v.t.  |
@@ -88,8 +89,8 @@ ms.locfileid: "72244637"
 
 | Titel                   | Details      |
 | ----------------------- | ------------ |
-| **Component**               | Webtoepassing | 
-| **SDL-fase**               | Ontwikkelen |  
+| **Component**               | Webtoepassing |
+| **SDL-fase**               | Ontwikkelen |
 | **Toepasselijke technologieën** | Algemeen |
 | **Kenmerken**              | N.v.t.  |
 | **Verwijzingen**              | N.v.t.  |
@@ -99,8 +100,8 @@ ms.locfileid: "72244637"
 
 | Titel                   | Details      |
 | ----------------------- | ------------ |
-| **Component**               | Webtoepassing | 
-| **SDL-fase**               | Ontwikkelen |  
+| **Component**               | Webtoepassing |
+| **SDL-fase**               | Ontwikkelen |
 | **Toepasselijke technologieën** | Algemeen |
 | **Kenmerken**              | N.v.t.  |
 | **Verwijzingen**              | N.v.t.  |
@@ -110,8 +111,8 @@ ms.locfileid: "72244637"
 
 | Titel                   | Details      |
 | ----------------------- | ------------ |
-| **Component**               | Webtoepassing | 
-| **SDL-fase**               | Ontwikkelen |  
+| **Component**               | Webtoepassing |
+| **SDL-fase**               | Ontwikkelen |
 | **Toepasselijke technologieën** | Algemeen |
 | **Kenmerken**              | N.v.t.  |
 | **Verwijzingen**              | N.v.t.  |
@@ -121,8 +122,8 @@ ms.locfileid: "72244637"
 
 | Titel                   | Details      |
 | ----------------------- | ------------ |
-| **Component**               | Database | 
-| **SDL-fase**               | Ontwikkelen |  
+| **Component**               | Database |
+| **SDL-fase**               | Ontwikkelen |
 | **Toepasselijke technologieën** | Premises |
 | **Kenmerken**              | SQL-versie-alle |
 | **Verwijzingen**              | [SQL Server: een verificatie modus kiezen](https://msdn.microsoft.com/library/ms144284.aspx) |
@@ -132,8 +133,8 @@ ms.locfileid: "72244637"
 
 | Titel                   | Details      |
 | ----------------------- | ------------ |
-| **Component**               | Database | 
-| **SDL-fase**               | Ontwikkelen |  
+| **Component**               | Database |
+| **SDL-fase**               | Ontwikkelen |
 | **Toepasselijke technologieën** | SQL Azure |
 | **Kenmerken**              | SQL-versie-V12 |
 | **Verwijzingen**              | [Verbinding maken met SQL Database met behulp van Azure Active Directory-verificatie](https://azure.microsoft.com/documentation/articles/sql-database-aad-authentication/) |
@@ -143,8 +144,8 @@ ms.locfileid: "72244637"
 
 | Titel                   | Details      |
 | ----------------------- | ------------ |
-| **Component**               | Database | 
-| **SDL-fase**               | Ontwikkelen |  
+| **Component**               | Database |
+| **SDL-fase**               | Ontwikkelen |
 | **Toepasselijke technologieën** | Algemeen |
 | **Kenmerken**              | N.v.t.  |
 | **Verwijzingen**              | [SQL Server wachtwoord beleid](https://technet.microsoft.com/library/ms161959(v=sql.110).aspx) |
@@ -154,8 +155,8 @@ ms.locfileid: "72244637"
 
 | Titel                   | Details      |
 | ----------------------- | ------------ |
-| **Component**               | Database | 
-| **SDL-fase**               | Ontwikkelen |  
+| **Component**               | Database |
+| **SDL-fase**               | Ontwikkelen |
 | **Toepasselijke technologieën** | Premises, SQL Azure |
 | **Kenmerken**              | SQL-versie-MSSQL2012, SQL-versie-V12 |
 | **Verwijzingen**              | [Aanbevolen beveiligings procedures met Inge sloten data bases](https://msdn.microsoft.com/library/ff929055.aspx) |
@@ -165,8 +166,8 @@ ms.locfileid: "72244637"
 
 | Titel                   | Details      |
 | ----------------------- | ------------ |
-| **Component**               | Azure Event Hub | 
-| **SDL-fase**               | Ontwikkelen |  
+| **Component**               | Azure Event Hub |
+| **SDL-fase**               | Ontwikkelen |
 | **Toepasselijke technologieën** | Algemeen |
 | **Kenmerken**              | N.v.t.  |
 | **Verwijzingen**              | [Overzicht van Event Hubs verificatie en beveiligings model](https://azure.microsoft.com/documentation/articles/event-hubs-authentication-and-security-model-overview/) |
@@ -176,8 +177,8 @@ ms.locfileid: "72244637"
 
 | Titel                   | Details      |
 | ----------------------- | ------------ |
-| **Component**               | Azure-vertrouwens grens | 
-| **SDL-fase**               | Implementatie |  
+| **Component**               | Azure-vertrouwens grens |
+| **SDL-fase**               | Implementatie |
 | **Toepasselijke technologieën** | Algemeen |
 | **Kenmerken**              | N.v.t.  |
 | **Verwijzingen**              | [Wat is Azure Multi-Factor Authentication?](https://azure.microsoft.com/documentation/articles/multi-factor-authentication/) |
@@ -187,8 +188,8 @@ ms.locfileid: "72244637"
 
 | Titel                   | Details      |
 | ----------------------- | ------------ |
-| **Component**               | Grens van Service Fabric vertrouwen | 
-| **SDL-fase**               | Implementatie |  
+| **Component**               | Grens van Service Fabric vertrouwen |
+| **SDL-fase**               | Implementatie |
 | **Toepasselijke technologieën** | Algemeen |
 | **Kenmerken**              | Omgeving-Azure  |
 | **Verwijzingen**              | [Beveiligings scenario's voor Service Fabric cluster](https://azure.microsoft.com/documentation/articles/service-fabric-cluster-security) |
@@ -198,8 +199,8 @@ ms.locfileid: "72244637"
 
 | Titel                   | Details      |
 | ----------------------- | ------------ |
-| **Component**               | Grens van Service Fabric vertrouwen | 
-| **SDL-fase**               | Implementatie |  
+| **Component**               | Grens van Service Fabric vertrouwen |
+| **SDL-fase**               | Implementatie |
 | **Toepasselijke technologieën** | Algemeen |
 | **Kenmerken**              | Omgeving-Azure, omgeving-zelfstandig |
 | **Verwijzingen**              | [Client-naar-knoop punt-certificaat beveiliging service Fabric](https://azure.microsoft.com/documentation/articles/service-fabric-cluster-security/#_client-to-node-certificate-security), [verbinding maken met een beveiligd cluster met behulp van client certificaat](https://azure.microsoft.com/documentation/articles/service-fabric-connect-to-secure-cluster/) |
@@ -209,8 +210,8 @@ ms.locfileid: "72244637"
 
 | Titel                   | Details      |
 | ----------------------- | ------------ |
-| **Component**               | Grens van Service Fabric vertrouwen | 
-| **SDL-fase**               | Implementatie |  
+| **Component**               | Grens van Service Fabric vertrouwen |
+| **SDL-fase**               | Implementatie |
 | **Toepasselijke technologieën** | Algemeen |
 | **Kenmerken**              | Omgeving-Azure |
 | **Verwijzingen**              | [Scenario's voor cluster beveiliging-aanbevelingen voor beveiliging](https://azure.microsoft.com/documentation/articles/service-fabric-cluster-security/#security-recommendations) |
@@ -220,8 +221,8 @@ ms.locfileid: "72244637"
 
 | Titel                   | Details      |
 | ----------------------- | ------------ |
-| **Component**               | Grens van Service Fabric vertrouwen | 
-| **SDL-fase**               | Implementatie |  
+| **Component**               | Grens van Service Fabric vertrouwen |
+| **SDL-fase**               | Implementatie |
 | **Toepasselijke technologieën** | Algemeen |
 | **Kenmerken**              | Omgeving-Azure |
 | **Verwijzingen**              | [X. 509-certificaten en-Service Fabric](https://azure.microsoft.com/documentation/articles/service-fabric-cluster-security/#x509-certificates-and-service-fabric) |
@@ -231,8 +232,8 @@ ms.locfileid: "72244637"
 
 | Titel                   | Details      |
 | ----------------------- | ------------ |
-| **Component**               | Identiteits server | 
-| **SDL-fase**               | Ontwikkelen |  
+| **Component**               | Identiteits server |
+| **SDL-fase**               | Ontwikkelen |
 | **Toepasselijke technologieën** | Algemeen |
 | **Kenmerken**              | N.v.t.  |
 | **Verwijzingen**              | [IdentityServer3-de grote afbeelding](https://identityserver.github.io/Documentation/docsv2/overview/bigPicture.html) |
@@ -242,8 +243,8 @@ ms.locfileid: "72244637"
 
 | Titel                   | Details      |
 | ----------------------- | ------------ |
-| **Component**               | Identiteits server | 
-| **SDL-fase**               | Implementatie |  
+| **Component**               | Identiteits server |
+| **SDL-fase**               | Implementatie |
 | **Toepasselijke technologieën** | Algemeen |
 | **Kenmerken**              | N.v.t.  |
 | **Verwijzingen**              | [Identity Server-implementatie-caching](https://identityserver.github.io/Documentation/docsv2/advanced/deployment.html) |
@@ -253,8 +254,8 @@ ms.locfileid: "72244637"
 
 | Titel                   | Details      |
 | ----------------------- | ------------ |
-| **Component**               | Grens van computer vertrouwen | 
-| **SDL-fase**               | Implementatie |  
+| **Component**               | Grens van computer vertrouwen |
+| **SDL-fase**               | Implementatie |
 | **Toepasselijke technologieën** | Algemeen |
 | **Kenmerken**              | N.v.t.  |
 | **Verwijzingen**              | N.v.t.  |
@@ -264,8 +265,8 @@ ms.locfileid: "72244637"
 
 | Titel                   | Details      |
 | ----------------------- | ------------ |
-| **Component**               | WCF | 
-| **SDL-fase**               | Ontwikkelen |  
+| **Component**               | WCF |
+| **SDL-fase**               | Ontwikkelen |
 | **Toepasselijke technologieën** | Algemeen, NET Framework 3 |
 | **Kenmerken**              | N.v.t. |
 | **Verwijzingen**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx) |
@@ -304,8 +305,8 @@ Het `<netMsmqBinding/>` element van het WCF-configuratie bestand hieronder geeft
 
 | Titel                   | Details      |
 | ----------------------- | ------------ |
-| **Component**               | WCF | 
-| **SDL-fase**               | Ontwikkelen |  
+| **Component**               | WCF |
+| **SDL-fase**               | Ontwikkelen |
 | **Toepasselijke technologieën** | .NET Framework 3 |
 | **Kenmerken**              | Type client referentie-geen |
 | **Verwijzingen**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx), [Fortify](https://community.microfocus.com/t5/UFT-Discussions/UFT-API-Test-with-WCF-wsHttpBinding/m-p/600927) |
@@ -320,8 +321,8 @@ Het `<netMsmqBinding/>` element van het WCF-configuratie bestand hieronder geeft
 
 | Titel                   | Details      |
 | ----------------------- | ------------ |
-| **Component**               | WCF | 
-| **SDL-fase**               | Ontwikkelen |  
+| **Component**               | WCF |
+| **SDL-fase**               | Ontwikkelen |
 | **Toepasselijke technologieën** | Algemeen, .NET Framework 3 |
 | **Kenmerken**              | Type client referentie-geen |
 | **Verwijzingen**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx), [Fortify](https://community.microfocus.com/t5/UFT-Discussions/UFT-API-Test-with-WCF-wsHttpBinding/m-p/600927) |
@@ -336,8 +337,8 @@ Het `<netMsmqBinding/>` element van het WCF-configuratie bestand hieronder geeft
 
 | Titel                   | Details      |
 | ----------------------- | ------------ |
-| **Component**               | Web-API | 
-| **SDL-fase**               | Ontwikkelen |  
+| **Component**               | Web-API |
+| **SDL-fase**               | Ontwikkelen |
 | **Toepasselijke technologieën** | Algemeen |
 | **Kenmerken**              | N.v.t.  |
 | **Verwijzingen**              | [Verificatie en autorisatie in ASP.net Web-API](https://www.asp.net/web-api/overview/security/authentication-and-authorization-in-aspnet-web-api), [externe verificatie services met ASP.net Web API (C#)](https://www.asp.net/web-api/overview/security/external-authentication-services) |
@@ -347,8 +348,8 @@ Het `<netMsmqBinding/>` element van het WCF-configuratie bestand hieronder geeft
 
 | Titel                   | Details      |
 | ----------------------- | ------------ |
-| **Component**               | Azure AD | 
-| **SDL-fase**               | Ontwikkelen |  
+| **Component**               | Azure AD |
+| **SDL-fase**               | Ontwikkelen |
 | **Toepasselijke technologieën** | Algemeen |
 | **Kenmerken**              | N.v.t.  |
 | **Verwijzingen**              | [Verificatie scenario's voor Azure AD](https://azure.microsoft.com/documentation/articles/active-directory-authentication-scenarios/), [Azure Active Directory Code voorbeelden](https://azure.microsoft.com/documentation/articles/active-directory-code-samples/), [Azure Active Directory hand leiding voor ontwikkel aars](https://azure.microsoft.com/documentation/articles/active-directory-developers-guide/) |
@@ -358,8 +359,8 @@ Het `<netMsmqBinding/>` element van het WCF-configuratie bestand hieronder geeft
 
 | Titel                   | Details      |
 | ----------------------- | ------------ |
-| **Component**               | Azure AD | 
-| **SDL-fase**               | Ontwikkelen |  
+| **Component**               | Azure AD |
+| **SDL-fase**               | Ontwikkelen |
 | **Toepasselijke technologieën** | Algemeen |
 | **Kenmerken**              | N.v.t.  |
 | **Verwijzingen**              | [Moderne verificatie met Azure Active Directory voor webtoepassingen](https://blogs.msdn.microsoft.com/microsoft_press/2016/01/04/new-book-modern-authentication-with-azure-active-directory-for-web-applications/), [met behulp van redis als ADAL-token cache](https://blogs.msdn.microsoft.com/mrochon/2016/09/19/using-redis-as-adal-token-cache/)  |
@@ -369,8 +370,8 @@ Het `<netMsmqBinding/>` element van het WCF-configuratie bestand hieronder geeft
 
 | Titel                   | Details      |
 | ----------------------- | ------------ |
-| **Component**               | Azure AD | 
-| **SDL-fase**               | Ontwikkelen |  
+| **Component**               | Azure AD |
+| **SDL-fase**               | Ontwikkelen |
 | **Toepasselijke technologieën** | Algemeen |
 | **Kenmerken**              | N.v.t.  |
 | **Verwijzingen**              | [Moderne verificatie met Azure Active Directory voor webtoepassingen](https://blogs.msdn.microsoft.com/microsoft_press/2016/01/04/new-book-modern-authentication-with-azure-active-directory-for-web-applications/) |
@@ -430,8 +431,8 @@ Let op: als u de effectiviteit van deze configuratie wilt testen, meldt u zich a
 
 | Titel                   | Details      |
 | ----------------------- | ------------ |
-| **Component**               | Azure AD | 
-| **SDL-fase**               | Ontwikkelen |  
+| **Component**               | Azure AD |
+| **SDL-fase**               | Ontwikkelen |
 | **Toepasselijke technologieën** | Algemeen |
 | **Kenmerken**              | N.v.t.  |
 | **Verwijzingen**              | [ADAL](https://azure.microsoft.com/documentation/articles/active-directory-authentication-libraries/) |
@@ -441,8 +442,8 @@ Let op: als u de effectiviteit van deze configuratie wilt testen, meldt u zich a
 
 | Titel                   | Details      |
 | ----------------------- | ------------ |
-| **Component**               | IoT-veld Gateway | 
-| **SDL-fase**               | Ontwikkelen |  
+| **Component**               | IoT-veld Gateway |
+| **SDL-fase**               | Ontwikkelen |
 | **Toepasselijke technologieën** | Algemeen |
 | **Kenmerken**              | N.v.t.  |
 | **Verwijzingen**              | N.v.t.  |
@@ -452,11 +453,11 @@ Let op: als u de effectiviteit van deze configuratie wilt testen, meldt u zich a
 
 | Titel                   | Details      |
 | ----------------------- | ------------ |
-| **Component**               | IoT-Cloud gateway | 
-| **SDL-fase**               | Ontwikkelen |  
+| **Component**               | IoT-Cloud gateway |
+| **SDL-fase**               | Ontwikkelen |
 | **Toepasselijke technologieën** | Algemeen, C#, node. JS,  |
 | **Kenmerken**              | N.v.t. gateway keuze-Azure IoT Hub |
-| **Verwijzingen**              | N.v.t., [Azure IOT hub met .net](https://azure.microsoft.com/documentation/articles/iot-hub-csharp-csharp-getstarted/), aan de [slag met IOT hub en node js](https://azure.microsoft.com/documentation/articles/iot-hub-node-node-getstarted), [IOT beveiligen met SAS en certificaten](https://azure.microsoft.com/documentation/articles/iot-hub-sas-tokens/), [Git-opslag plaats](https://github.com/Azure/azure-iot-sdks/tree/master/node) |
+| **Verwijzingen**              | N.v.t., [Azure IOT hub met .net](https://azure.microsoft.com/documentation/articles/iot-hub-csharp-csharp-getstarted/), aan de [slag met IOT hub en node js](https://azure.microsoft.com/documentation/articles/iot-hub-node-node-getstarted), [IOT beveiligen met SAS en certificaten](https://azure.microsoft.com/documentation/articles/iot-hub-sas-tokens/), [Git-opslag plaats](https://github.com/Azure/azure-iot-sdks/) |
 | **Stappen** | <ul><li>**Algemeen:** Verifieer het apparaat met behulp van Transport Layer Security (TLS) of IPSec. Infra structuur moet ondersteuning bieden voor het gebruik van een vooraf gedeelde sleutel (PSK) op de apparaten die geen volledige asymmetrische crypto grafie kunnen verwerken. Gebruik Azure AD, OAuth.</li><li>**C#:** Wanneer u een DeviceClient-exemplaar maakt, maakt de methode Create standaard een DeviceClient-exemplaar dat het AMQP-protocol gebruikt om te communiceren met IoT Hub. Als u het HTTPS-protocol wilt gebruiken, dient u de Create-methode te overschrijven. Zo kunt u zelf het protocol bepalen. Als u het HTTPS-protocol gebruikt, moet u ook het `Microsoft.AspNet.WebApi.Client` NuGet-pakket toevoegen aan uw project om `System.Net.Http.Formatting` de naam ruimte op te kunnen bevatten.</li></ul>|
 
 ### <a name="example"></a>Voorbeeld
@@ -512,9 +513,9 @@ await deviceClient.SendEventAsync(message);
     if (policyName) token += "&skn="+policyName;
     return token;
     ```
-* Verbinding maken met SAS-token: 
+* Verbinding maken met SAS-token:
     ```javascript
-    Client.fromSharedAccessSignature(sas, Http); 
+    Client.fromSharedAccessSignature(sas, Http);
     ```
   #### <a name="certificates"></a>Certificaten
 * Genereer een zelfondertekend x509-certificaat met een hulp programma zoals OpenSSL om een. cert-en. key-bestand te genereren om het certificaat en de sleutel respectievelijk op te slaan
@@ -541,7 +542,7 @@ await deviceClient.SendEventAsync(message);
     var options = {
         key: fs.readFileSync('./key.pem', 'utf8'),
         cert: fs.readFileSync('./server.crt', 'utf8')
-    }; 
+    };
     // Calling setOptions with the x509 certificate and key (and optionally, passphrase) will configure the client //transport to use x509 when connecting to IoT Hub
     client.setOptions(options);
     //call fn to execute after the connection is set up
@@ -552,8 +553,8 @@ await deviceClient.SendEventAsync(message);
 
 | Titel                   | Details      |
 | ----------------------- | ------------ |
-| **Component**               | IoT-Cloud gateway  | 
-| **SDL-fase**               | Ontwikkelen |  
+| **Component**               | IoT-Cloud gateway  |
+| **SDL-fase**               | Ontwikkelen |
 | **Toepasselijke technologieën** | Algemeen |
 | **Kenmerken**              | Gateway keuze-Azure IoT Hub |
 | **Verwijzingen**              | [Beveiligings tokens van Azure IoT Hub](https://azure.microsoft.com/documentation/articles/iot-hub-sas-tokens/) |
@@ -563,8 +564,8 @@ await deviceClient.SendEventAsync(message);
 
 | Titel                   | Details      |
 | ----------------------- | ------------ |
-| **Component**               | Azure Storage | 
-| **SDL-fase**               | Ontwikkelen |  
+| **Component**               | Azure Storage |
+| **SDL-fase**               | Ontwikkelen |
 | **Toepasselijke technologieën** | Algemeen |
 | **Kenmerken**              | Para-BLOB |
 | **Verwijzingen**              | [Anonieme lees toegang tot containers en blobs beheren](https://azure.microsoft.com/documentation/articles/storage-manage-access-to-resources/), [hand tekeningen voor gedeelde toegang, deel 1: informatie over het SAS-model](https://azure.microsoft.com/documentation/articles/storage-dotnet-shared-access-signature-part-1/) |
@@ -574,8 +575,8 @@ await deviceClient.SendEventAsync(message);
 
 | Titel                   | Details      |
 | ----------------------- | ------------ |
-| **Component**               | Azure Storage | 
-| **SDL-fase**               | Ontwikkelen |  
+| **Component**               | Azure Storage |
+| **SDL-fase**               | Ontwikkelen |
 | **Toepasselijke technologieën** | Algemeen |
 | **Kenmerken**              | N.v.t. |
 | **Verwijzingen**              | [Hand tekeningen voor gedeelde toegang, deel 1: uitleg over het SAS-model](https://azure.microsoft.com/documentation/articles/storage-dotnet-shared-access-signature-part-1/), [Shared Access Signatures, deel 2: een SAS maken en gebruiken met Blob Storage](https://azure.microsoft.com/documentation/articles/storage-dotnet-shared-access-signature-part-2/), [toegang tot objecten in uw account delegeren met behulp van hand tekeningen voor gedeelde toegang en opgeslagen toegangs beleid](https://azure.microsoft.com/documentation/articles/storage-security-guide/#_how-to-delegate-access-to-objects-in-your-account-using-shared-access-signatures-and-stored-access-policies) |

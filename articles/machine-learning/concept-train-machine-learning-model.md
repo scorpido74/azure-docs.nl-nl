@@ -1,5 +1,5 @@
 ---
-title: Trainings methoden voor modellen
+title: '& Train-modellen bouwen'
 titleSuffix: Azure Machine Learning
 description: Meer informatie over de verschillende methoden die u kunt gebruiken voor het trainen van model met Azure Machine Learning. Schattingen bieden een eenvoudige manier om te werken met populaire frameworks zoals Scikit-learn, tensor flow, Keras, PyTorch en Chainer. Met Machine Learning pijp lijnen kunt u eenvoudig uitvoeringen zonder toezicht plannen, heterogene reken omgevingen gebruiken en delen van uw werk stroom hergebruiken. En uitvoerings configuraties bieden een gedetailleerde controle over de reken doelen waarop het trainings proces wordt uitgevoerd.
 services: machine-learning
@@ -9,12 +9,12 @@ ms.author: larryfr
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 03/05/2020
-ms.openlocfilehash: 68ad9cc47d68f7bc3ae952f7e458781cdc1c4ab2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c75c41012928b7bffb61a00a73f314e4c372b154
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79129766"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82792340"
 ---
 # <a name="train-models-with-azure-machine-learning"></a>Modellen trainen met Azure Machine Learning
 

@@ -1,18 +1,18 @@
 ---
-title: Lead beheer voor Dynamics 365 Customer engagement | Azure Marketplace
-description: Configureer het beheer van leads voor Dynamics 365 Customer engagement.
+title: Lead beheer voor Dynamics 365 Customer engagement-micro soft Commercial Marketplace
+description: Meer informatie over het instellen van de klant betrokkenheid van Dynamics 365 om leads van Microsoft AppSource en Azure Marketplace te beheren.
 author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 03/30/2020
 ms.author: dsindona
-ms.openlocfilehash: b9158f7b2e3fc73a2fe2a9b20ead2558b7467f6f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 985b3258eb0b957242d529945f32ed9704a91e7d
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82131056"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82790997"
 ---
 # <a name="configure-lead-management-for-dynamics-365-customer-engagement"></a>Lead beheer configureren voor Dynamics 365-klant betrokkenheid
 
@@ -23,12 +23,12 @@ In dit artikel wordt beschreven hoe u Dynamics 365-klant betrokkenheid instelt (
 
 ## <a name="prerequisites"></a>Vereisten
 
-De volgende gebruikers machtigingen zijn nodig om de stappen in dit artikel uit te voeren. U moet het volgende doen:
+De volgende gebruikers machtigingen zijn nodig om de stappen in dit artikel uit te voeren:
 
-* Zorg dat u een beheerder bent van uw Dynamics 365-exemplaar voor klant afspraken om een oplossing te kunnen installeren en volg deze instructies.
-* Een Tenant beheerder zijn voor het maken van een nieuw service account voor de lead service dat wordt gebruikt voor het verzenden van leads van commerciële Marketplace-aanbiedingen.
-* Toegang hebben tot de Office 365-beheer Portal.
-* Toegang hebben tot de Azure Portal.
+* Beheerders rechten voor uw Dynamics 365-exemplaar voor klant afspraken om een oplossing te kunnen installeren.
+* Tenant beheerders rechten voor het maken van een nieuw service account voor de lead service die wordt gebruikt voor het verzenden van leads van commerciële Marketplace-aanbiedingen.
+* Toegang tot de Office 365-beheer Portal.
+* Toegang tot de Azure Portal.
 
 ## <a name="install-the-solution"></a>De oplossing installeren
 
@@ -68,7 +68,7 @@ We raden u aan deze optie te gebruiken omdat u nooit uw gebruikers naam of wacht
 
 Azure Active Directory voor Dynamics 365-klant betrokkenheid configureren:
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com/). Selecteer de knop **Azure Active Directory** in het linkerdeelvenster.
+1. Meld u aan bij [Azure Portal](https://portal.azure.com/). Selecteer de knop **Azure Active Directory** in het linkerdeelvenster.
 
 1. Selecteer **Eigenschappen**en kopieer de waarde van de **Directory-id** op de pagina **Directory-eigenschappen** . Sla deze waarde op omdat u deze moet opgeven in de portal voor publiceren om leads voor uw Marketplace-aanbieding te ontvangen.
 

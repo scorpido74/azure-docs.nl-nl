@@ -3,12 +3,12 @@ title: Container groep bijwerken
 description: Meer informatie over het bijwerken van actieve containers in uw Azure Container Instances-container groepen.
 ms.topic: article
 ms.date: 04/17/2020
-ms.openlocfilehash: d64590c553f4ae4ef462d4468fade68861db31c3
-ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
+ms.openlocfilehash: dc10e38aa6be9473f89df6f7fa10a72f63d9ada8
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/26/2020
-ms.locfileid: "82160099"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82854444"
 ---
 # <a name="update-containers-in-azure-container-instances"></a>Containers in Azure Container Instances bijwerken
 
@@ -28,7 +28,7 @@ Een bestaande container groep bijwerken:
 * Stel andere eigenschappen in met de waarden die u eerder hebt opgegeven. Als u geen waarde voor een eigenschap instelt, keert deze terug naar de standaard waarde.
 
 > [!TIP]
-> Een [yaml-bestand](/container-instances-container-groups.md#deployment) helpt bij het onderhouden van de implementatie configuratie van een container groep en biedt een start punt voor het implementeren van een bijgewerkte groep. Als u een andere methode hebt gebruikt om de groep te maken, kunt u de configuratie exporteren naar YAML met [AZ container export][az-container-export], 
+> Een [yaml-bestand](container-instances-container-groups.md#deployment) helpt bij het onderhouden van de implementatie configuratie van een container groep en biedt een start punt voor het implementeren van een bijgewerkte groep. Als u een andere methode hebt gebruikt om de groep te maken, kunt u de configuratie exporteren naar YAML met [AZ container export][az-container-export], 
 
 ### <a name="example"></a>Voorbeeld
 

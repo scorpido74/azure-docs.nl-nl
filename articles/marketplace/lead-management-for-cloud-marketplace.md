@@ -7,24 +7,20 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/14/2020
 ms.author: dsindona
-ms.openlocfilehash: 6f93e00cb9f840b27578eb9a5b0c6a2cab1ac525
-ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
+ms.openlocfilehash: c41831f528ae425b35a04503180a956f67762b70
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/26/2020
-ms.locfileid: "82160542"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82789841"
 ---
 # <a name="lead-management-for-commercial-marketplace"></a>Lead beheer voor commerciële Marketplace
 
-
 Klanten zijn het midden van een goed bedrijf. Bij de trans formatie van de huidige product verwervingen, moeten de markt verwerkers zich richten op het rechtstreeks verbinden met klanten en het bouwen van een relatie. Daarom is het genereren van leads van hoge kwaliteit een essentieel hulp middel voor uw verkoop cyclus. Nadat u uw aanbieding in het [partner centrum](https://partner.microsoft.com/)hebt opgenomen, zijn er hulpprogram ma's ingeschakeld waarmee u direct nadat een klant rente hebt gegeven, de contact gegevens van de klant kunt ontvangen of uw product in de Marketplace implementeert. 
-
-
 
 ## <a name="what-are-leads-in-the-marketplace"></a>Wat zijn leads in de Marketplace?
 
 De leads zijn afkomstig van klanten die geïnteresseerd zijn of uw producten implementeren via Marketplace. Of uw product wordt vermeld op Azure Marketplace of AppSource, u kunt leads van klanten ontvangen zodra het correct is ingesteld vanuit uw CRM naar uw aanbieding (en) in het partner centrum. 
-
 
 ## <a name="how-to-connect-your-crm-system-with-partner-center"></a>Verbinding maken tussen uw CRM-systeem en het partner centrum
 
@@ -48,7 +44,7 @@ Zodra u uw lead doel correct hebt geconfigureerd en op uw aanbieding hebt geklik
 
 Zodra de technische installatie is uitgevoerd, moet u deze leads opnemen in uw huidige verkoop & marketing strategie en operationele processen. We zijn geïnteresseerd in een beter inzicht in uw algehele verkoop proces en willen nauw keurig samen werken op het leveren van leads van hoge kwaliteit en voldoende gegevens om u te laten slagen. We stellen uw feedback op de manier waarop we u kunnen helpen bij het optimaliseren en verbeteren van de leads die wij u met aanvullende gegevens sturen om deze klanten succesvol te maken. Laat het ons weten als u geïnteresseerd bent in feedback en suggesties zodat uw verkoop team succes voller kan maken met leads in de Marketplace.
 
-## <a name="common-lead-configuration-errors-during-publishing-in-partner-center"></a>Veelvoorkomende fouten bij de configuratie van de potentiële klant tijdens het publiceren in het partner centrum
+## <a name="common-lead-configuration-errors-during-publishing-in-partner-center"></a><a id="publishing-config-errors"></a>Veelvoorkomende fouten bij de configuratie van de potentiële klant tijdens het publiceren in het partner centrum
 
 **Kan de lead niet opslaan in Dynamics CRM. Controleer de instellingen van het Dynamics CRM-account. LastCRMError: kan niet aanmelden bij Dynamics CRM, LastCRMException:** 
 

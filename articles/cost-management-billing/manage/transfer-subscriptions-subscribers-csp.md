@@ -5,14 +5,14 @@ author: bandersmsft
 ms.reviewer: dhgandhi
 ms.service: cost-management-billing
 ms.topic: conceptual
-ms.date: 01/27/2020
+ms.date: 05/04/2020
 ms.author: banders
-ms.openlocfilehash: 4e7e9ea61d74eb38f3c225d66a39906bc18fe6d2
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: b198a781da6e18c363e90d8bd5314dafc563dcca
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77200517"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82791150"
 ---
 # <a name="transfer-azure-subscriptions-between-subscribers-and-csps"></a>Overdracht van Azure-abonnementen tussen abonnees en CSP's
 
@@ -50,6 +50,7 @@ Als u andere Azure-abonnementen wilt overdragen van een CSP-partner naar een and
 
 1. Maak doelabonnementen voor Azure.
 1. Zorg ervoor dat de bron- en doelabonnementen zich in dezelfde Azure Active Directory-tenant (Azure AD) bevinden. Zie [Een Azure-abonnement aan uw Azure Active Directory-tenant toevoegen of koppelen](../../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md) voor meer informatie over het wijzigen van een Azure AD-tenant.
+    Houd er rekening mee dat de directory voor de wijziging niet het CSP-abonnement is. U kunt bijvoorbeeld overgaan van een CSP-abonnement naar een abonnement met betalen per gebruik. U moet de directory van het abonnement met betalen per gebruik wijzigen, zodat deze overeenkomt met de directory.
 
     > [!IMPORTANT]
     >  - Wanneer u een abonnement aan een andere Active Directory koppelt, gaat de toegang verloren van gebruikers aan wie rollen zijn toegewezen met [RBAC](../../role-based-access-control/role-assignments-portal.md). Klassieke abonnementsbeheerders, waaronder de servicebeheerder en co-beheerders, verliezen ook hun toegang.

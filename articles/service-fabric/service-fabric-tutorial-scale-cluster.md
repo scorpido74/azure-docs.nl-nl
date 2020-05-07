@@ -4,12 +4,12 @@ description: In deze zelf studie leert u hoe u een Service Fabric cluster kunt s
 ms.topic: tutorial
 ms.date: 07/22/2019
 ms.custom: mvc
-ms.openlocfilehash: f1b813576a94541cdc2ab0a67fea71b6f49696c5
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 6e8dbb5a56bf313bf35ad97ec6ea7df8ce483be9
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "78251798"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82788818"
 ---
 # <a name="tutorial-scale-a-service-fabric-cluster-in-azure"></a>Zelfstudie: Een Service Fabric-cluster schalen
 
@@ -84,7 +84,7 @@ Als u het aantal knoop punten in het cluster wilt schalen of horizon taal wilt s
 
 Dus door de waarde van de *nt1InstanceCount* te wijzigen, wijzigt u het aantal knoop punten in het tweede knooppunt type.  Houd er rekening mee dat u een knooppunt type niet naar meer dan 100 knoop punten kunt schalen.  Niet-primaire knooppunt typen waarvoor stateful productie workloads worden uitgevoerd, moeten altijd vijf of meer knoop punten hebben. Niet-primaire knooppunt typen waarvoor stateless productie werkbelastingen worden uitgevoerd, moeten altijd twee of meer knoop punten hebben.
 
-Als u schaalt in, knoop punten verwijdert uit, een knooppunt type van Bronze [duurzaamheids niveau][durability] , moet u [de status van deze knoop punten hand matig verwijderen](service-fabric-cluster-scale-up-down.md#manually-remove-vms-from-a-node-typevirtual-machine-scale-set).  Voor Silver-en Gold-duurzaamheids lagen worden deze stappen automatisch uitgevoerd door het platform.
+Als u schaalt in, knoop punten verwijdert uit, een knooppunt type van Bronze [duurzaamheids niveau][durability] , moet u [de status van deze knoop punten hand matig verwijderen](service-fabric-cluster-scale-in-out.md#manually-remove-vms-from-a-node-typevirtual-machine-scale-set).  Voor Silver-en Gold-duurzaamheids lagen worden deze stappen automatisch uitgevoerd door het platform.
 
 ### <a name="deploy-the-updated-template"></a>De bijgewerkte sjabloon implementeren
 Sla de wijzigingen op in de *sjabloon. json* en de *para meters. json* -bestanden.  Voer de volgende opdracht uit om de bijgewerkte sjabloon te implementeren:

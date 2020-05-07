@@ -10,12 +10,12 @@ author: vijetajo
 ms.author: vijetaj
 ms.topic: overview
 ms.date: 05/08/2018
-ms.openlocfilehash: 1f3a24afb2238c2448cb19b3889467a1b1819724
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 03fdbf6979db3249d1322a3025b48de81b953ae1
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81460542"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82856209"
 ---
 # <a name="data-science-virtual-machine-based-team-analytics-and-ai-environment"></a>Team analyse en AI-omgeving op basis van Data Science Virtual Machine 
 De [Data Science virtual machine](overview.md) (DSVM) biedt een uitgebreide omgeving op het Azure-platform, met vooraf ontwikkelde software voor kunst matige intelligentie (AI) en gegevens analyse.
@@ -43,7 +43,7 @@ Deze reeks bevat richt lijnen en verwijzingen voor elk van de voor gaande onderw
 * [Op rollen gebaseerd toegangsbeheer](https://docs.microsoft.com/azure/role-based-access-control/overview)
 * [Beleids instelling en afdwinging](../../governance/policy/overview.md)
 * [Antimalware](https://docs.microsoft.com/azure/security/fundamentals/antimalware)
-* [Versleuteling](https://docs.microsoft.com/azure/virtual-machines/windows/disk-encryption-overview.md)
+* [Versleuteling](https://docs.microsoft.com/azure/virtual-machines/windows/disk-encryption-overview)
 * [Gegevens detectie en-beheer](https://docs.microsoft.com/azure/data-catalog/)
 
 Ten slotte biedt de [Azure Architecture Center](https://docs.microsoft.com/azure/architecture/) een uitgebreide end-to-end architectuur en modellen voor het maken en beheren van uw Cloud infrastructuur.

@@ -3,46 +3,45 @@ title: Lijst met updates die zijn toegepast op het Azure-gast besturingssysteem 
 description: De lijst met updates die zijn toegepast op versies van gast besturingssystemen
 services: cloud-services
 documentationcenter: na
-author: raiye
+author: yohaddad
 editor: ''
 ms.assetid: d0a272a9-ed01-4f4c-a0b3-bd5e841bdd77
 ms.service: cloud-services
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 04/17/2020
-ms.author: raiye
-ms.openlocfilehash: a271eca3c3b6e7cd364f2bc87f2e15006874fa08
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 5/4/2020
+ms.author: yohaddad
+ms.openlocfilehash: e74bccbd7465a8f0e0d2da0a672a88c7d70d666f
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81617702"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82791558"
 ---
 # <a name="azure-guest-os"></a>Azure-gast besturingssysteem
 In de volgende tabellen ziet u de micro soft Security Response Center-updates (MSRC) die zijn toegepast op het Azure-gast besturingssysteem. Zoek in dit artikel om te bepalen of een bepaalde update van toepassing is op het gast besturingssysteem dat u gebruikt. Updates worden altijd uitgevoerd voor de desbetreffende [familie][family-explain] waarin ze zijn geïntroduceerd.
 
 ## <a name="april-2020-guest-os"></a>April 2020-gast besturingssysteem
 
->[!NOTE]
->Het besturings systeem van april gast wordt momenteel geïmplementeerd naar Cloud service-Vm's die zijn geconfigureerd voor automatische updates. Wanneer de implementatie is voltooid, wordt deze versie beschikbaar gesteld voor hand matige updates via de Azure Portal-en configuratie bestanden. De volgende patches zijn opgenomen in het besturings systeem van april gast. Deze lijst is onderhevig aan wijzigingen.
 
 | Productcategorie | Bovenliggend KB-artikel | Beschrijving van het beveiligingslek | Gastbesturingssysteem | Datum eerste geïntroduceerd |
 | --- | --- | --- | --- | --- |
-|  Rel 20-04  |  [4550965]  |  Windows-beveiliging  | 2,97 | Apr 14, 2020 |
-|  Rel 20-04  |  [4550905]  |  Internet Explorer  | 2,97, 3,84, 4,77 | Apr 14, 2020 |
-|  Rel 20-04  |  [4550971]  |  Windows-beveiliging  | 3,84 | Apr 14, 2020 |
-|  Rel 20-04  |  [4550970]  |  Windows-beveiliging  | 4,77 | Apr 14, 2020 |
-|  Rel 20-04  |  [4550929]  |  Meest recente cumulatieve update (LCU)  | 5,42 | Apr 14, 2020 |
-|  Rel 20-04  |  [4549949]  |  Meest recente cumulatieve update (LCU)  | 6,18 | Apr 14, 2020 |
-|  Rel 20-04  |  [4540688]  |  Maandelijks samen vouwen  | 2,97 | 10 maart 2020 |
-|  Rel 20-04  |  [4550735]  |  Onderhouds stack-update  | 2,97 | 10 maart 2020 |
-|  Rel 20-04  |  [4540726]  |  Onderhouds stack-update  | 3,84 | 10 maart 2020 |
-|  Rel 20-04  |  [4541510]  |  Maandelijks samen vouwen  | 3,84 | 10 maart 2020 |
-|  Rel 20-04  |  [4541509]  |  Maandelijks samen vouwen  | 4,77 | 10 maart 2020 |
-|  Rel 20-04  |  [4540725]  |  Onderhouds stack-update  | 4,77 | 10 maart 2020 |
-|  Rel 20-04  |  [4540723]  |  Onderhouds stack-update  | 5,42 | 10 maart 2020 |
-|  Rel 20-04  |  [4539571]  |  Onderhouds stack-update  | 6,18 | 10 maart 2020 |
+|  Rel 20-04   |  [4550965]  |  Windows-beveiliging   |  [2,97]  |  Apr 14, 2020  |
+|  Rel 20-04   |  [4550905]  |  Internet Explorer   |  [2,97], [3,84], [4,77]  |  Apr 14, 2020  |
+|  Rel 20-04   |  [4550971]  |  Windows-beveiliging   |  [3,84]  |  Apr 14, 2020  |
+|  Rel 20-04   |  [4550970]  |  Windows-beveiliging   |  [4,77]  |  Apr 14, 2020  |
+|  Rel 20-04   |  [4550929]  |  Meest recente cumulatieve update (LCU)   |  [5,42]  |  Apr 14, 2020  |
+|  Rel 20-04   |  [4549949]  |  Meest recente cumulatieve update (LCU)   |  [6,18]  |  Apr 14, 2020  |
+|  Rel 20-04   |  [4540688]  |  Maandelijks samen vouwen   |  [2,97]  |  10 maart 2020  |
+|  Rel 20-04   |  [4550735]  |  Onderhouds stack-update   |  [2,97]  |  10 maart 2020  |
+|  Rel 20-04   |  [4540726]  |  Onderhouds stack-update   |  [3,84]  |  10 maart 2020  |
+|  Rel 20-04   |  [4541510]  |  Maandelijks samen vouwen   |  [3,84]  |  10 maart 2020  |
+|  Rel 20-04   |  [4541509]  |  Maandelijks samen vouwen   |  [4,77]  |  10 maart 2020  |
+|  Rel 20-04   |  [4540725]  |  Onderhouds stack-update   |  [4,77]  |  10 maart 2020  |
+|  Rel 20-04   |  [4540723]  |  Onderhouds stack-update   |  [5,42]  |  10 maart 2020  |
+|  Rel 20-04   |  [4539571]  |  Onderhouds stack-update   |  [6,18]  |  10 maart 2020  |
+
 
 [4550965]: https://support.microsoft.com/kb/4550965
 [4550905]: https://support.microsoft.com/kb/4550905
@@ -58,6 +57,11 @@ In de volgende tabellen ziet u de micro soft Security Response Center-updates (M
 [4540725]: https://support.microsoft.com/kb/4540725
 [4540723]: https://support.microsoft.com/kb/4540723
 [4539571]: https://support.microsoft.com/kb/4539571
+[2,97]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-2-releases
+[3,84]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-3-releases
+[4,77]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-4-releases
+[5,42]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-5-releases
+[6,18]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-6-releases
 
 
 ## <a name="march-2020-guest-os"></a>Maart 2020-gast besturingssysteem
@@ -1457,7 +1461,7 @@ In de volgende tabellen ziet u de micro soft Security Response Center-updates (M
 | MS15-075 |[3072633] |Beveiligings problemen in OLE kunnen leiden tot uitbrei ding van bevoegdheden |4,22, 3,29, 2,41 |14 juli 2015 |
 | MS15-076 |[3067505] |Beveiligings probleem in Windows Remote Procedure Call kan leiden tot uitbrei ding van bevoegdheden |4,22, 3,29, 2,41 |14 juli 2015 |
 | MS15-077 |[3077657] |Beveiligings probleem in het ATM-letter type-stuur programma kan leiden tot uitbrei ding van bevoegdheden |4,22, 3,29, 2,41 |14 juli 2015 |
-| N.v.t. |[3057154] |Bijwerken om het gebruik van DES-versleuteling te beperken |4,22, 3,29, 2,41 |14 juli 2015 |
+| NA |[3057154] |Bijwerken om het gebruik van DES-versleuteling te beperken |4,22, 3,29, 2,41 |14 juli 2015 |
 
 ## <a name="june-2015-guest-os"></a>Juni 2015-gast besturingssysteem
 | Bulletin-ID | Bovenliggend KB-artikel | Beschrijving van het beveiligingslek | Gastbesturingssysteem | Datum eerste geïntroduceerd |
@@ -1490,7 +1494,7 @@ In de volgende tabellen ziet u de micro soft Security Response Center-updates (M
 | MS15-040 |[3045711] |Beveiligings probleem in ADFS kan leiden tot vrijgeven van informatie |4,20, 3,27, 2,39 |Apr 17, 2015 |
 | MS15-041 |[3048010] |Beveiligings probleem in .NET Framework kan leiden tot vrijgeven van informatie |4,20, 3,27, 2,39 |Apr 17, 2015 |
 | MS15-042 |[3047234] |Beveiligings probleem in Windows Hyper-V kan denial of service toestaan |4,20, 3,27, 2,39 |Apr 17, 2015 |
-| N.v.t. |[3045755] |Bijwerken om PKU2U-verificatie te verbeteren |4,20, 3,27, 2,39 |Apr 17, 2015 |
+| NA |[3045755] |Bijwerken om PKU2U-verificatie te verbeteren |4,20, 3,27, 2,39 |Apr 17, 2015 |
 
 ## <a name="april-2015-guest-os"></a>April 2015-gast besturingssysteem
 | Bulletin-ID | Bovenliggend KB-artikel | Beschrijving van het beveiligingslek | Gastbesturingssysteem | Datum eerste geïntroduceerd |

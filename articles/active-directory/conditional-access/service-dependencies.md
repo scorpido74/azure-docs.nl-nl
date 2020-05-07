@@ -5,24 +5,24 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: article
-ms.date: 11/21/2019
+ms.date: 05/04/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b39238575c05d35a2d87999e08c49c0c77e99bfb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3b0d7816dc83a7c3536e44ff2461d85ea6178ff1
+ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74380017"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82778478"
 ---
 # <a name="what-are-service-dependencies-in-azure-active-directory-conditional-access"></a>Wat zijn service afhankelijkheden in Azure Active Directory voorwaardelijke toegang? 
 
 Met beleid voor voorwaardelijke toegang kunt u toegangs vereisten voor websites en services opgeven. Uw toegangs vereisten kunnen bijvoorbeeld bestaan uit het vereisen van multi-factor Authentication (MFA) of [beheerde apparaten](require-managed-devices.md). 
 
-Wanneer u rechtstreeks toegang krijgt tot een site of service, is de impact van een gerelateerd beleid doorgaans gemakkelijk te beoordelen. Als u bijvoorbeeld een beleid hebt waarvoor MFA vereist is voor share point online geconfigureerd, wordt MFA afgedwongen voor elke aanmelding bij de share point-webportal. Het is echter niet altijd direct voor het beoordelen van de impact van een beleid, omdat er Cloud-apps zijn met afhankelijkheden van andere Cloud-apps. Micro soft teams kunnen bijvoorbeeld toegang bieden tot resources in share point online. Als u in het huidige scenario toegang hebt tot micro soft-teams, bent u daarom ook gebonden aan het share point MFA-beleid.   
+Wanneer u rechtstreeks toegang krijgt tot een site of service, is de impact van een gerelateerd beleid doorgaans gemakkelijk te beoordelen. Als u bijvoorbeeld een beleid hebt waarvoor multi-factor Authentication (MFA) voor share point online is geconfigureerd, wordt MFA afgedwongen voor elke aanmelding bij de share point-webportal. Het is echter niet altijd direct voor het beoordelen van de impact van een beleid, omdat er Cloud-apps zijn met afhankelijkheden van andere Cloud-apps. Micro soft teams kunnen bijvoorbeeld toegang bieden tot resources in share point online. Als u in het huidige scenario toegang hebt tot micro soft-teams, bent u daarom ook gebonden aan het share point MFA-beleid. 
 
 ## <a name="policy-enforcement"></a>Beleidsafdwinging 
 
@@ -36,6 +36,8 @@ In het onderstaande diagram ziet u de service afhankelijkheden van MS teams. Eff
 ![Service afhankelijkheden van MS teams](./media/service-dependencies/01.png)
 
 Als best practice moet u waar mogelijk algemene beleids regels instellen voor alle gerelateerde apps en services. Een consistente beveiligings postuur biedt u de beste gebruikers ervaring. Als u bijvoorbeeld een gemeen schappelijk beleid instelt voor Exchange Online, share point online, micro soft teams en Skype voor bedrijven, worden onverwachte prompts die kunnen voortvloeien uit verschillende beleids regels die worden toegepast op downstream-Services, aanzienlijk verminderd. 
+
+Een fantastische manier om dit te doen met toepassingen in de Office-stack is het gebruik van [Office 365 (preview)](concept-conditional-access-cloud-apps.md#office-365-preview) in plaats van afzonderlijke toepassingen te richten.
 
 In de onderstaande tabel vindt u aanvullende service afhankelijkheden waaraan de client-apps moeten voldoen  
 
@@ -55,7 +57,7 @@ In de onderstaande tabel vindt u aanvullende service afhankelijkheden waaraan de
 | PowerApps           | Microsoft Azure beheer (Portal en API) | Vroeg gebonden |
 |                     | Windows Azure Active Directory              | Vroeg gebonden |
 | Project             | Dynamics CRM                                | Vroeg gebonden |
-| Skype voor Bedrijven  | Exchange                                    | Vroeg gebonden |
+| Skype voor bedrijven  | Exchange                                    | Vroeg gebonden |
 | Visual Studio       | Microsoft Azure beheer (Portal en API) | Vroeg gebonden |
 | Microsoft Forms     | Exchange                                    | Vroeg gebonden |
 |                     | SharePoint                                  | Vroeg gebonden |

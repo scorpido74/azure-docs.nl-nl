@@ -4,12 +4,12 @@ description: Meer informatie over het bijwerken van de versie of configuratie va
 ms.topic: conceptual
 ms.date: 11/12/2018
 ms.custom: sfrev
-ms.openlocfilehash: 6897854820339fc78dd9083c82147dce95ab68b6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d92ac90e0e41d534231bafbe991a05764dbee07d
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79258653"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82789552"
 ---
 # <a name="upgrading-and-updating-an-azure-service-fabric-cluster"></a>Een Azure Service Fabric-cluster upgraden en bijwerken
 
@@ -105,7 +105,7 @@ De patch Orchestration Application (POA) is een Service Fabric-toepassing waarme
 ## <a name="next-steps"></a>Volgende stappen
 
 * Meer informatie over het aanpassen van een aantal van de [service Fabric-cluster infrastructuur instellingen](service-fabric-cluster-fabric-settings.md)
-* Meer informatie over hoe u [uw cluster in-en uitschaalt](service-fabric-cluster-scale-up-down.md)
+* Meer informatie over hoe u [uw cluster in-en uitschaalt](service-fabric-cluster-scale-in-out.md)
 * Meer informatie over [toepassings upgrades](service-fabric-application-upgrade.md)
 
 <!--Image references-->

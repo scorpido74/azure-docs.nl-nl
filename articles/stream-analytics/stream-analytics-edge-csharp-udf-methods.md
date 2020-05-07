@@ -7,12 +7,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 10/28/2019
 ms.custom: seodec18
-ms.openlocfilehash: f07c02df1b8e0032c9e1b4ef9a24c345fee20a40
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c15f16692e92c4d25d8194aaf93a3da907ae0e67
+ms.sourcegitcommit: acc558d79d665c8d6a5f9e1689211da623ded90a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75426321"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82598144"
 ---
 # <a name="develop-net-standard-user-defined-functions-for-azure-stream-analytics-jobs-preview"></a>Door de gebruiker gedefinieerde .NET Standard-functies ontwikkelen voor Azure Stream Analytics-taken (preview-versie)
 
@@ -42,17 +42,29 @@ Er zijn drie manieren waarop UDF's kunnen worden geïmplementeerd:
 De indeling van een UDF-pakket heeft het `/UserCustomCode/CLR/*`pad. Dynamic Link Libraries (Dll's) en bronnen worden gekopieerd in de `/UserCustomCode/CLR/*` map, waarmee gebruikers-dll's van systeem-en Azure stream Analytics-dll's kunnen worden geïsoleerd. Het pad naar het pakket wordt gebruikt voor alle functies, ongeacht de methode die wordt gebruikt om deze te gebruiken.
 
 ## <a name="supported-types-and-mapping"></a>Ondersteunde typen en toewijzing
+Voor Azure Stream Analytics waarden die in C# moeten worden gebruikt, moeten ze worden gemarshald van de ene omgeving naar de andere. Marshaling gebeurt voor alle invoer parameters van een UDF. Elk type Azure Stream Analytics heeft een overeenkomend type in C# dat wordt weer gegeven in de onderstaande tabel:
 
-|**UDF-type (C#)**  |**Azure Stream Analytics type**  |
+|**Azure Stream Analytics type** |**C#-type** |
+|---------|---------|
+|bigint | long |
+|float | double |
+|nvarchar (max) | tekenreeks |
+|datum/tijd | DateTime |
+|Record | Woordenboek\<teken reeks, object> |
+|Matrix | >\<van Matrix object |
+
+Hetzelfde geldt wanneer gegevens moeten worden gemarshald van C# naar Azure Stream Analytics, wat gebeurt bij de uitvoer waarde van een UDF. In de volgende tabel ziet u welke typen worden ondersteund:
+
+|**C#-type**  |**Azure Stream Analytics type**  |
 |---------|---------|
 |long  |  bigint   |
-|double  |  double   |
+|double  |  float   |
 |tekenreeks  |  nvarchar (max)   |
-|dateTime  |  dateTime   |
-|bouw  |  IRecord   |
-|object  |  IRecord   |
-|>\<van Matrix object  |  IArray   |
-|Dictionary<teken reeks, object>  |  IRecord   |
+|DateTime  |  dateTime   |
+|bouw  |  Record   |
+|object  |  Record   |
+|>\<van Matrix object  |  Matrix   |
+|Woordenboek\<teken reeks, object>  |  Record   |
 
 ## <a name="codebehind"></a>CodeBehind
 U kunt door de gebruiker gedefinieerde functies schrijven in het **script. asql** CodeBehind. Visual Studio Tools compileert het CodeBehind-bestand automatisch in een assembly-bestand. De assembly's worden verpakt als een zip-bestand en geüpload naar uw opslag account wanneer u uw taak naar Azure verzendt. U kunt meer informatie over het schrijven van een C# UDF met behulp van CodeBehind door de zelf studie [C# UDF voor stream Analytics Edge-taken](stream-analytics-edge-csharp-udf.md) te volgen. 

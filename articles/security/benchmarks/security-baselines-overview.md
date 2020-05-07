@@ -7,21 +7,22 @@ ms.service: security
 ms.topic: conceptual
 ms.date: 12/16/2019
 ms.author: mbaldwin
-ms.custom: security-baselines
-ms.openlocfilehash: c16d7247b781fea04cfa2d53b8854cff14e039c7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.custom: security-benchmark
+ms.openlocfilehash: 7c1eb9dceda70cd74237f8a824ef03bb9c2dc7ae
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77616449"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82606837"
 ---
-# <a name="overview-of-azure-security-baselines"></a>Overzicht van Azure-beveiligings basislijnen
+# <a name="security-baselines-for-azure"></a>Beveiligings basislijnen voor Azure
 
-Met de basis lijnen van Azure-beveiliging kunt u de beveiliging van onze producten verbeteren via verbeterde hulp middelen, traceer-en beveiligings functies en kunt u een consistente ervaring bieden bij het beveiligen van uw omgeving.
+Met beveiligings basislijnen voor Azure kunt u de beveiliging verbeteren door verbeterde hulp middelen, tracering en beveiligings functies te gebruiken. Ze bieden ook een consistente ervaring bij het beveiligen van uw omgeving.
 
-De basis lijnen van Azure service-beveiliging zijn gericht op de Cloud gerichte besturings gebieden. Deze besturings elementen zijn consistent met bekende beveiligings benchmarks, zoals die worden beschreven in het Center for Internet Security (CIS). Onze basis lijnen bieden richt lijnen voor de besturings elementen die worden vermeld in de [Azure Security-Bench Mark](overview.md).
+Beveiligings basislijnen voor Azure focus op Cloud gerichte besturings gebieden. Deze besturings elementen zijn consistent met bekende beveiligings benchmarks, zoals die worden beschreven in het Center for Internet Security (CIS). Onze basis lijnen bieden richt lijnen voor de besturings elementen die worden vermeld in de [Azure Security-Bench Mark](overview.md).
 
 Elke aanbeveling bevat de volgende informatie:
+
 - **Azure-id**: de Azure Security Bench Mark-id die overeenkomt met de aanbeveling.
 - **Aanbeveling**: na de Azure-id krijgt de aanbeveling een hoog niveau van het besturings element.
 - **Richt lijnen**: de motivering van de aanbeveling en koppelingen naar richt lijnen voor het implementeren ervan. Als de aanbeveling wordt ondersteund door Azure Security Center, wordt die informatie ook weer gegeven.

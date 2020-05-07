@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: e0b43f7563c9dfac6374590f6b081197536fe31e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d07add7950da531330fe9f64629299cef9fad1ac
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81869015"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82734583"
 ---
 # <a name="desktop-app-that-calls-web-apis-code-configuration"></a>Bureau blad-app voor het aanroepen van web-Api's: code configuratie
 
@@ -184,7 +184,7 @@ Voordat u de `.Build()` -methode aanroept, kunt u uw configuratie overschrijven 
 
 # <a name="java"></a>[Java](#tab/java)
 
-Hier is de klasse die wordt gebruikt in MSAL Java-Ontwikkel voorbeelden voor het configureren van de voor beelden: [TestData](https://github.com/AzureAD/microsoft-authentication-library-for-java/blob/dev/src/samples/public-client/TestData.java).
+Hier is de klasse die wordt gebruikt in MSAL Java-Ontwikkel voorbeelden voor het configureren van de voor beelden: [TestData](https://github.com/AzureAD/microsoft-authentication-library-for-java/blob/dev/src/samples/public-client/).
 
 ```Java
 PublicClientApplication pca = PublicClientApplication.builder(CLIENT_ID)
