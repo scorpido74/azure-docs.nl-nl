@@ -1,14 +1,14 @@
 ---
 title: Toewijzingen beheren met Power shell
 description: Meer informatie over het beheren van blauw druk-toewijzingen met de officiële Azure blauw drukken Power shell-module, AZ. blauw druk.
-ms.date: 09/30/2019
+ms.date: 05/06/2020
 ms.topic: how-to
-ms.openlocfilehash: 0868e5e207202511c1981a930870bfdc68a77a8f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: fa0f89df79c4ae1c5b66998089f04575bd53ea37
+ms.sourcegitcommit: 602e6db62069d568a91981a1117244ffd757f1c2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80677428"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82863974"
 ---
 # <a name="how-to-manage-assignments-with-powershell"></a>Toewijzingen beheren met Power shell
 
@@ -205,8 +205,7 @@ ResourceGroups    : ResourceGroup
 
 ### <a name="example-2-use-a-json-assignment-definition-file"></a>Voor beeld 2: een definitie bestand voor een JSON-toewijzing gebruiken
 
-In het volgende voor beeld wordt bijna dezelfde toewijzing gemaakt als [voor beeld 1](#example-1-provide-parameters).
-In plaats van para meters door te geven aan de cmdlet, wordt in het voor beeld het gebruik van een JSON-toewijzings definitie bestand en de para meter **AssignmentFile** weer gegeven. Daarnaast is de eigenschap **excludedPrincipals** geconfigureerd als onderdeel van de **vergren delingen**. Er is geen Power shell-para meter voor **excludedPrincipals** en de eigenschap kan alleen worden geconfigureerd door deze in te stellen via het definitie bestand van de JSON-toewijzing.
+In het volgende voor beeld wordt bijna dezelfde toewijzing gemaakt als [voor beeld 1](#example-1-provide-parameters). In plaats van para meters door te geven aan de cmdlet, wordt in het voor beeld het gebruik van een JSON-toewijzings definitie bestand en de para meter **AssignmentFile** weer gegeven. Daarnaast is de eigenschap **excludedPrincipals** geconfigureerd als onderdeel van de **vergren delingen**. Er is geen Power shell-para meter voor **excludedPrincipals** en de eigenschap kan alleen worden geconfigureerd door deze in te stellen via het definitie bestand van de JSON-toewijzing.
 
 ```json
 {
@@ -335,7 +334,7 @@ $blueprintAssignment = Get-AzBlueprintAssignment -Name 'Assignment-lock-resource
 Remove-AzBlueprintAssignment -InputObject $blueprintAssignment -SubscriptionId '{subId}'
 ```
 
-## <a name="end-to-end-code-example"></a>Voor beeld van end-to-end-code
+## <a name="code-example"></a>Voorbeeld van code
 
 Alle stappen in het volgende voor beeld worden de definitie van de blauw druk opgehaald, vervolgens wordt een blauw druk-toewijzing gemaakt, bijgewerkt en verwijderd in het `{subId}`specifieke abonnement, aangeduid als:
 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 04/03/2020
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: b270ce3cd15dbd1e8dd53bd60376a87d6e08f75c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: cfc7e12efb0e5e4613bb4cc5f2f9a35383f37546
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80637220"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82857250"
 ---
 # <a name="blob-storage-features-available-in-azure-data-lake-storage-gen2"></a>Blob-opslag functies die beschikbaar zijn in Azure Data Lake Storage Gen2
 
@@ -38,9 +38,9 @@ Deze tabel geeft een lijst van de functies voor Blob-opslag die u kunt gebruiken
 |Api's voor Blob-opslag|Algemeen verkrijgbaar|[Snelstartgids: Azure Blob Storage-client bibliotheek V12 voor .NET](storage-quickstart-blobs-dotnet.md)<br>[Quick Start: blobs beheren met Java V12 SDK](storage-quickstart-blobs-java.md)<br>[Quick Start: blobs beheren met python V12 SDK](storage-quickstart-blobs-python.md)<br>[Quick Start: blobs beheren met Java script V12 SDK in node. js](storage-quickstart-blobs-nodejs.md)|
 |Access-laag archiveren|Preview|[Azure Blob-opslag: dynamische en statische toegangslagen, en archieftoegangslaag](storage-blob-storage-tiers.md)|
 |Levenscyclus beheer beleid|Preview|[De levenscyclus van Azure Blob-opslag beheren](storage-lifecycle-management-concepts.md)|
-|Diagnostische logboeken|Algemeen verkrijgbaar|[Logboekregistratie van Azure Opslaganalyse](../common/storage-analytics-logging.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)|
+|Diagnostische logboeken|Algemeen verkrijgbaar|[Azure Storage-analyselogboeken](../common/storage-analytics-logging.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)|
 |Feed wijzigen|Nog niet ondersteund|[Ondersteuning voor feed wijzigen in Azure Blob-opslag](storage-blob-change-feed.md)|
-|Account-failover|Nog niet ondersteund|[Herstel na nood gevallen en failover van accounts](../common/storage-disaster-recovery-guidance.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)|
+|Account-failover|Nog niet ondersteund|[Herstel na nood geval en failover van het opslag account](../common/storage-disaster-recovery-guidance.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)|
 |BLOB-container-ACL|Nog niet ondersteund|[Container-ACL instellen](https://docs.microsoft.com/rest/api/storageservices/set-container-acl)|
 |Aangepaste domeinen|Nog niet ondersteund|[Een aangepast domein toewijzen aan een Azure Blob Storage-eind punt](storage-custom-domain-name.md)|
 |Onveranderbare opslag|Nog niet ondersteund|[Bedrijfs kritieke blobgegevens opslaan met onveranderlijke opslag](storage-blob-immutable-storage.md)|

@@ -7,15 +7,15 @@ ms.service: load-balancer
 ms.topic: article
 ms.date: 02/23/2020
 ms.author: irenehua
-ms.openlocfilehash: 239dc0f3133a5adf59a23d333131c91d3a655597
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: fe9ae8997e05e4ab99dba66de88976342fbabe56
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81770391"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82858362"
 ---
 # <a name="upgrade-azure-internal-load-balancer--no-outbound-connection-required"></a>Upgrade uitvoeren voor interne Load Balancer van Azure: er is geen uitgaande verbinding vereist
-[Azure Standard Load Balancer](load-balancer-overview.md) biedt een uitgebreide set functionaliteit en hoge Beschik baarheid via zone redundantie. Zie [vergelijkings tabel](https://docs.microsoft.com/azure/load-balancer/concepts-limitations#skus)voor meer informatie over Load Balancer SKU.
+[Azure Standard Load Balancer](load-balancer-overview.md) biedt een uitgebreide set functionaliteit en hoge Beschik baarheid via zone redundantie. Zie [vergelijkings tabel](https://docs.microsoft.com/azure/load-balancer/skus#skus)voor meer informatie over Load Balancer SKU.
 
 In dit artikel wordt een Power shell-script geïntroduceerd waarmee een Standard Load Balancer met dezelfde configuratie als de basis Load Balancer samen met het migreren van verkeer van basis Load Balancer naar Standard Load Balancer.
 
@@ -33,6 +33,17 @@ Er is een Azure PowerShell script beschikbaar dat het volgende doet:
 * Script ondersteunt alleen interne Load Balancer upgrade, waarbij geen uitgaande verbinding vereist is. Raadpleeg deze [pagina](upgrade-InternalBasic-To-PublicStandard.md) voor instructies als u een [uitgaande verbinding](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections) voor sommige vm's hebt vereist. 
 * Als de standaard load balancer in een andere regio wordt gemaakt, kunt u de virtuele machines die in de oude regio bestaan, niet koppelen aan de zojuist gemaakte Standard Load Balancer. Om deze beperking te omzeilen, moet u ervoor zorgen dat u een nieuwe virtuele machine maakt in de nieuwe regio.
 * Als uw Load Balancer geen frontend-IP-configuratie of back-end-pool heeft, zult u waarschijnlijk een fout bij het uitvoeren van het script aangaan. Zorg ervoor dat deze niet leeg zijn.
+
+## <a name="change-ip-allocation-method-to-static-for-frontend-ip-configuration-ignore-this-step-if-its-already-static"></a>IP-toewijzings methode wijzigen in statisch voor frontend-IP-configuratie (Negeer deze stap als deze al statisch is)
+
+1. Selecteer **alle services** in het linkermenu, selecteer **alle resources**en selecteer vervolgens uw basis Load Balancer in de lijst met resources.
+
+2. Selecteer bij **instellingen**de optie **frontend IP-configuratie**en selecteer de eerste frontend-IP-configuratie. 
+
+3. Selecteer voor **toewijzing**de optie **statisch**
+
+4. Herhaal stap 3 voor alle frontend-IP-configuraties van de basis Load Balancer.
+
 
 ## <a name="download-the-script"></a>Het script downloaden
 

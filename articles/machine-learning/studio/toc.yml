@@ -52,8 +52,6 @@
           href: create-workspace.md
         - name: Beheren
           href: manage-workspace.md
-        - name: Problemen oplossen
-          href: troubleshooting-creating-ml-workspace.md
         - name: Implementeren met ARM
           href: deploy-with-resource-manager-template.md
     - name: Trainingsgegevens importeren
@@ -84,8 +82,6 @@
               href: algorithm-parameters-optimize.md
             - name: Resultaten interpreteren
               href: interpret-model-results.md
-            - name: Fouten opsporen
-              href: debug-models.md
         - name: Modellen opnieuw trainen
           items:
             - name: '''Nieuwe'' webservices'
@@ -96,19 +92,12 @@
           items:
             - name: Aan de slag met R
               href: r-get-started.md
-            - name: R-scripts uitvoeren
-              href: extend-your-experiment-with-r.md
             - name: Aangepaste R-modules schrijven
               href: custom-r-modules.md
             - name: Python-scripts uitvoeren
               href: execute-python-scripts.md
     - name: Een algoritme selecteren
-      items:
-        - name: Algoritmen kiezen
-          href: algorithm-choice.md
-        - name: Algoritmevoorbeelden
-          displayName: 'infographic, studio basics'
-          href: basics-infographic-with-algorithm-examples.md
+      href: algorithm-choice.md
     - name: Modellen implementeren
       items:
         - name: Een webservice implementeren
@@ -143,14 +132,6 @@
           href: consuming-from-excel.md
         - name: Excel-invoegtoepassing gebruiken
           href: excel-add-in-for-web-services.md
-    - name: Gebruiksvoorbeelden
-      items:
-        - name: Klantverloop
-          href: azure-ml-customer-churn-scenario.md
-        - name: Sentimentanalyse
-          href: text-analytics-module-tutorial.md
-        - name: Analyses migreren van Excel naar Studio (klassiek)
-          href: use-case-excel-studio.md
     - name: Klantgegevens verwijderen en exporteren
       items:
         - name: Studio-gegevens (klassiek)

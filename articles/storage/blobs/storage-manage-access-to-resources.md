@@ -6,15 +6,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 12/04/2019
+ms.date: 05/05/2020
 ms.author: tamram
 ms.reviewer: cbrooks
-ms.openlocfilehash: 4d9a54c220861b19d67b07998e609ee72897446a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7c524cb30b73c95329650924123b2ebc26a5d8a5
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79255481"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82856005"
 ---
 # <a name="manage-anonymous-read-access-to-containers-and-blobs"></a>Anonieme leestoegang tot containers en blobs beheren
 
@@ -51,7 +51,17 @@ De volgende scherm afbeelding laat zien hoe u het niveau van open bare toegang v
 
 ### <a name="set-container-public-access-level-with-net"></a>Het niveau van open bare toegang tot de container instellen met .NET
 
-Als u machtigingen wilt instellen voor een container met behulp van de Azure Storage-client bibliotheek voor .NET, moet u eerst de bestaande machtigingen van de container ophalen door een van de volgende methoden te bellen:
+# <a name="net-v12-sdk"></a>[\.NET V12 SDK](#tab/dotnet)
+
+Als u de machtigingen voor een container wilt instellen, roept u de methode [BlobContainerClient. SetAccessPolicy](https://docs.microsoft.com/dotnet/api/azure.storage.blobs.blobcontainerclient.setaccesspolicy?view=azure-dotnet) aan. 
+
+In het volgende voor beeld worden de machtigingen van de container ingesteld op volledige open bare Lees toegang. Als u machtigingen wilt instellen op open bare Lees toegang voor blobs, geeft u het veld **PublicAccessType. blob** door aan de methode [BlobContainerClient. SetAccessPolicy](https://docs.microsoft.com/dotnet/api/azure.storage.blobs.blobcontainerclient.setaccesspolicy?view=azure-dotnet) . Als u alle machtigingen voor anonieme gebruikers wilt verwijderen, gebruikt u het veld **BlobContainerPublicAccessType. none** .
+
+:::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/Security.cs" id="Snippet_SetPublicContainerPermissions":::
+
+# <a name="net-v11-sdk"></a>[\.NET V11 SDK](#tab/dotnet11)
+
+Als u de machtigingen voor een container wilt instellen met behulp van de Azure Storage-client bibliotheek voor .NET, moet u eerst de bestaande machtigingen van de container ophalen door een van de volgende methoden aan te roepen:
 
 - [GetPermissions](/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer.getpermissions)
 - [GetPermissionsAsync](/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer.getpermissionsasync)
@@ -76,6 +86,8 @@ private static async Task SetPublicContainerPermissions(CloudBlobContainer conta
 }
 ```
 
+---
+
 ## <a name="access-containers-and-blobs-anonymously"></a>Anoniem toegang krijgen tot containers en blobs
 
 Een client die toegang heeft tot containers en blobs anoniem kan gebruikmaken van constructors waarvoor geen referenties zijn vereist. In de volgende voor beelden ziet u een aantal verschillende manieren om te verwijzen naar containers en blobs anoniem.
@@ -83,6 +95,12 @@ Een client die toegang heeft tot containers en blobs anoniem kan gebruikmaken va
 ### <a name="create-an-anonymous-client-object"></a>Een anoniem client object maken
 
 U kunt een nieuw service-client object voor anonieme toegang maken door het eind punt van de Blob-opslag voor het account op te geven. U moet echter ook de naam weten van een container in dat account die beschikbaar is voor anonieme toegang.
+
+# <a name="net-v12-sdk"></a>[\.NET V12 SDK](#tab/dotnet)
+
+:::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/Security.cs" id="Snippet_CreateAnonymousBlobClient":::
+
+# <a name="net-v11-sdk"></a>[\.NET V11 SDK](#tab/dotnet11)
 
 ```csharp
 public static void CreateAnonymousBlobClient()
@@ -100,11 +118,19 @@ public static void CreateAnonymousBlobClient()
     Console.WriteLine(container.Properties.LastModified);
     Console.WriteLine(container.Properties.ETag);
 }
-```
+``` 
+
+---
 
 ### <a name="reference-a-container-anonymously"></a>Anoniem verwijzen naar een container
 
 Als u de URL naar een container hebt die anoniem beschikbaar is, kunt u deze gebruiken om rechtstreeks naar de container te verwijzen.
+
+# <a name="net-v12-sdk"></a>[\.NET V12 SDK](#tab/dotnet)
+
+:::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/Security.cs" id="Snippet_ListBlobsAnonymously":::
+
+# <a name="net-v11-sdk"></a>[\.NET V11 SDK](#tab/dotnet11)
 
 ```csharp
 public static void ListBlobsAnonymously()
@@ -120,11 +146,19 @@ public static void ListBlobsAnonymously()
         Console.WriteLine(blobItem.Uri);
     }
 }
-```
+``` 
+
+---
 
 ### <a name="reference-a-blob-anonymously"></a>Anoniem verwijzen naar een BLOB
 
 Als u de URL naar een BLOB hebt die beschikbaar is voor anonieme toegang, kunt u rechtstreeks naar de BLOB verwijzen met behulp van die URL:
+
+# <a name="net-v12-sdk"></a>[\.NET V12 SDK](#tab/dotnet)
+
+:::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/Security.cs" id="Snippet_DownloadBlobAnonymously":::
+
+# <a name="net-v11-sdk"></a>[\.NET V11 SDK](#tab/dotnet11)
 
 ```csharp
 public static void DownloadBlobAnonymously()
@@ -133,7 +167,9 @@ public static void DownloadBlobAnonymously()
         new Uri(@"https://storagesamples.blob.core.windows.net/sample-container/logfile.txt"));
     blob.DownloadToFile(@"C:\Temp\logfile.txt", FileMode.Create);
 }
-```
+``` 
+
+---
 
 ## <a name="next-steps"></a>Volgende stappen
 

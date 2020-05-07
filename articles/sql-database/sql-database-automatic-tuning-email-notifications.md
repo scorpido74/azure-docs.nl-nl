@@ -11,12 +11,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
 ms.date: 06/03/2019
-ms.openlocfilehash: b3b235833e794e48ae655d184bf938effc0d7ac0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f117f1518211680c4ea1f5ac51ecf0e44396a133
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81768371"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82856766"
 ---
 # <a name="email-notifications-for-automatic-tuning"></a>E-mail meldingen voor automatisch afstemmen
 
@@ -69,7 +69,7 @@ De volgende stap is het maken van een Runbook in Azure Automation waarin het Pow
 Voer de volgende stappen uit om een nieuw Azure Automation runbook te maken:
 
 1. Open het Azure Automation-account dat u in de vorige stap hebt gemaakt.
-1. Klik in het deel venster Automation-account op de menu opdracht "**Runbooks**" aan de linkerkant om een nieuw Azure Automation runbook te maken met het Power shell-script. Zie [een nieuw Runbook maken](../automation/manage-runbooks.md#creating-a-runbook)voor meer informatie over het maken van Automation-runbooks.
+1. Klik in het deel venster Automation-account op de menu opdracht "**Runbooks**" aan de linkerkant om een nieuw Azure Automation runbook te maken met het Power shell-script. Zie [een nieuw Runbook maken](../automation/manage-runbooks.md#create-a-runbook)voor meer informatie over het maken van Automation-runbooks.
 1. Als u een nieuw runbook wilt toevoegen, klikt u op de menu optie **+ een Runbook toevoegen**en klikt u vervolgens op de**snelle invoer – een nieuw runbook maken**.
 1. Typ in het deel venster Runbook de naam van uw Runbook (voor het doel van dit voor beeld wordt '**AutomaticTuningEmailAutomation**' gebruikt), selecteer het type Runbook als **Power shell** en schrijf een beschrijving van dit runbook om het doel ervan te beschrijven.
 1. Klik op de knop **maken** om het maken van een nieuw runbook te volt ooien.

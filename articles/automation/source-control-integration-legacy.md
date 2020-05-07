@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 12/04/2019
 ms.topic: conceptual
-ms.openlocfilehash: dcadfcb4c2f8e6bc371b0a70b917c8c1e218fba9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b990db39ffe0623b50a2cfc728da61bc51bdd4da
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81679517"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82855355"
 ---
 # <a name="source-control-integration-in-azure-automation---legacy"></a>Integratie van broncode beheer in Azure Automation-verouderd
 
@@ -38,7 +38,7 @@ Als u al een GitHub-account en een opslag plaats hebt die u wilt koppelen aan Az
 
 2. De pagina broncode beheer wordt geopend, waar u uw GitHub-account gegevens kunt configureren. Hieronder volgt de lijst met te configureren parameters:  
 
-   | **Bepaalde** | **Beschrijving** |
+   | **Parameter** | **Beschrijving** |
    |:--- |:--- |
    | Bron kiezen |Selecteer de bron. Momenteel wordt alleen **github** ondersteund. |
    | Autorisatie |Klik op de knop **autoriseren** om Azure Automation toegang te verlenen tot uw github-opslag plaats. Als u al bent aangemeld bij uw GitHub-account in een ander venster, worden de referenties van dat account gebruikt. Zodra de autorisatie is geslaagd, wordt op de pagina uw GitHub-gebruikers naam weer gegeven onder **autorisatie-eigenschap**. |
@@ -60,7 +60,7 @@ Als u al een GitHub-account en een opslag plaats hebt die u wilt koppelen aan Az
 
    * De variabele **micro soft. Azure. Automation. SourceControl. Connection** bevat de waarden van de Connection String, zoals hieronder wordt weer gegeven.  
 
-     | **Bepaalde** | **Waarde** |
+     | **Parameter** | **Waarde** |
      |:--- |:--- |
      | `Name`  |Micro soft. Azure. Automation. SourceControl. Connection |
      | `Type`  |Tekenreeks |
@@ -68,7 +68,7 @@ Als u al een GitHub-account en een opslag plaats hebt die u wilt koppelen aan Az
 
    * De variabele **micro soft. Azure. Automation. SourceControl. OAuthToken**, bevat de beveiligde versleutelde waarde van uw OAuthToken.  
 
-     |**Bepaalde**            |**Waarde** |
+     |**Parameter**            |**Waarde** |
      |:---|:---|
      | `Name`  | `Microsoft.Azure.Automation.SourceControl.OAuthToken` |
      | `Type`  | `Unknown(Encrypted)` |
@@ -102,7 +102,7 @@ Met het inchecken van een runbook kunt u de wijzigingen die u hebt aangebracht i
    > [!NOTE]
    > Bron beheer-runbooks zijn speciale Automation-runbooks die u niet kunt weer geven of bewerken. Hoewel ze niet worden weer gegeven in de lijst met runbook, ziet u synchronisatie taken die worden weer gegeven in uw taken lijst.
 
-5. De naam van het gewijzigde runbook wordt verzonden als een invoer parameter voor het ingecheckte runbook. U kunt [de taak details weer geven](automation-runbook-execution.md#viewing-job-status-from-the-azure-portal) door het runbook uit te breiden op de pagina bibliotheek synchronisatie.  
+5. De naam van het gewijzigde runbook wordt verzonden als een invoer parameter voor het ingecheckte runbook. U kunt [de taak details weer geven](automation-runbook-execution.md#job-statuses) door het runbook uit te breiden op de pagina bibliotheek synchronisatie.  
 
     ![Een venster met de invoer voor een synchronisatie taak](media/source-control-integration-legacy/automation-CheckinInput.png)
 6. Vernieuw uw GitHub-opslag plaats nadat de taak is voltooid om de wijzigingen weer te geven.  Er moet een door voer worden vastgelegd in uw opslag plaats met een commit-bericht: de **naam van een *Runbook* is bijgewerkt in azure Automation.**  

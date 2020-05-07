@@ -1,6 +1,6 @@
 ---
-title: bestand opnemen
-description: bestand opnemen
+title: Include-bestand
+description: Include-bestand
 services: storage
 author: tamram
 ms.service: storage

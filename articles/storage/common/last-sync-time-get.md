@@ -1,27 +1,27 @@
 ---
 title: De eigenschap van de laatste synchronisatie tijd voor een opslag account controleren
 titleSuffix: Azure Storage
-description: Meer informatie over het controleren van de **laatste synchronisatie tijd** van een opslag account met geo-replicatie. De eigenschap **laatste synchronisatie tijd** geeft de laatste tijd aan waarop alle schrijf bewerkingen van de primaire regio zijn geschreven naar de secundaire regio.
+description: Meer informatie over het controleren van de laatste synchronisatie tijd van een opslag account met geo-replicatie. De eigenschap laatste synchronisatie tijd geeft de laatste tijd aan waarop alle schrijf bewerkingen van de primaire regio zijn geschreven naar de secundaire regio.
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 01/16/2019
+ms.date: 04/16/2020
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: 3a406ce6db060b9ff5be7bcadecb6c7ff7e65a1f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: afcadd55e87579b25f03176fa3227024863b90fb
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77165486"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82858504"
 ---
 # <a name="check-the-last-sync-time-property-for-a-storage-account"></a>De eigenschap van de laatste synchronisatie tijd voor een opslag account controleren
 
 Wanneer u een opslag account configureert, kunt u opgeven dat uw gegevens worden gekopieerd naar een secundaire regio die honderden kilo meters van de primaire regio is. Geo-replicatie biedt duurzaamheid voor uw gegevens in het geval van een aanzienlijke storing in de primaire regio, zoals een natuur ramp. Als u lees toegang tot de secundaire regio uitschakelt, blijven de gegevens beschikbaar voor lees bewerkingen als de primaire regio niet beschikbaar is. U kunt uw toepassing zo ontwerpen dat deze naadloos kan worden gelezen vanuit de secundaire regio als de primaire regio niet meer reageert.
 
-Met geografisch redundante opslag (GRS) en geo-zone-redundante opslag (GZRS) (preview) worden uw gegevens asynchroon gerepliceerd naar een secundaire regio. Voor lees toegang tot de secundaire regio schakelt u geografisch redundante opslag met lees toegang (RA-GRS) of geo-zone-redundante opslag met lees toegang (RA-GZRS) in. Zie [Azure Storage redundantie](storage-redundancy.md)voor meer informatie over de verschillende opties voor redundantie die worden geboden door Azure Storage.
+Geografisch redundante opslag (GRS) en geo-zone-redundante opslag (GZRS) repliceren uw gegevens asynchroon naar een secundaire regio. Voor lees toegang tot de secundaire regio schakelt u geografisch redundante opslag met lees toegang (RA-GRS) of geo-zone-redundante opslag met lees toegang (RA-GZRS) in. Zie [Azure Storage redundantie](storage-redundancy.md)voor meer informatie over de verschillende opties voor redundantie die worden geboden door Azure Storage.
 
 In dit artikel wordt beschreven hoe u de **laatste synchronisatie tijd** -eigenschap voor uw opslag account controleert, zodat u eventuele discrepanties tussen de primaire en secundaire regio's kunt evalueren.
 
@@ -37,10 +37,10 @@ U kunt Power shell of Azure CLI gebruiken om de waarde van de eigenschap **laats
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-Als u de laatste synchronisatie tijd voor het opslag account met Power shell wilt ophalen, installeert u een Azure Storage preview-module die ondersteuning biedt voor het ophalen van geo-replicatie statistieken. Bijvoorbeeld:
+Als u de laatste synchronisatie tijd voor het opslag account met Power shell wilt ophalen, installeert u een versie van de module AZ. storage die ondersteuning biedt voor het ophalen van geo-replicatie statistieken. Bijvoorbeeld:
 
 ```powershell
-Install-Module Az.Storage –Repository PSGallery -RequiredVersion 1.1.1-preview –AllowPrerelease –AllowClobber –Force
+Install-Module Az.Storage –Repository PSGallery -RequiredVersion ??? –AllowPrerelease –AllowClobber –Force
 ```
 
 Controleer vervolgens de eigenschap **GeoReplicationStats. LastSyncTime** van het opslag account. Vergeet niet om de waarden van de tijdelijke aanduidingen te vervangen door uw eigen waarden:
@@ -70,4 +70,4 @@ $lastSyncTime=$(az storage account show \
 
 - [Azure Storage redundantie](storage-redundancy.md)
 - [De redundantie optie voor een opslag account wijzigen](redundancy-migration.md)
-- [Maxi maal beschik bare toepassingen ontwerpen met geografisch redundante opslag met lees toegang](storage-designing-ha-apps-with-ragrs.md)
+- [Geo-redundantie gebruiken om Maxi maal beschik bare toepassingen te ontwerpen](geo-redundant-design.md)

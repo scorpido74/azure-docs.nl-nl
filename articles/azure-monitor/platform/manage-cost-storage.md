@@ -11,15 +11,15 @@ ms.service: azure-monitor
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 04/28/2020
+ms.date: 05/04/2020
 ms.author: bwren
 ms.subservice: ''
-ms.openlocfilehash: 8904d584d453cb0945a11b08ad50688aeb1e1fc0
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 601f1c224d6e1d756c27dc2478951682ce6bb4fd
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82207323"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82854757"
 ---
 # <a name="manage-usage-and-costs-with-azure-monitor-logs"></a>Gebruik en kosten beheren met Azure Monitor-logboeken
 
@@ -44,11 +44,13 @@ In alle prijs categorieën wordt het gegevens volume berekend op basis van een t
 
 Houd er ook rekening mee dat sommige oplossingen, zoals [Azure Security Center](https://azure.microsoft.com/pricing/details/security-center/), [Azure Sentinel](https://azure.microsoft.com/pricing/details/azure-sentinel/) en [Configuration Management](https://azure.microsoft.com/pricing/details/automation/) hun eigen prijs modellen hebben. 
 
-### <a name="dedicated-clusters"></a>Toegewezen clusters
+### <a name="log-analytics-clusters"></a>Log Analytics clusters
 
-Azure Monitor logboeken toegewezen clusters zijn verzamelingen van werk ruimten in één beheerd Azure Data Explorer-cluster (ADX) ter ondersteuning van geavanceerde scenario's zoals door de [klant beheerde sleutels](https://docs.microsoft.com/azure/azure-monitor/platform/customer-managed-keys).  Toegewezen clusters bieden alleen ondersteuning voor een prijs model voor capaciteits reservering, te beginnen bij 1000 GB/dag met een korting van 25% ten opzichte van betalen per gebruik-tarieven. Elk gebruik boven het reserverings niveau wordt gefactureerd op basis van het betalen naar gebruik-tarief. De reserve ring van de cluster capaciteit heeft een toezeggings periode van 31 dagen nadat het reserverings niveau is verhoogd. Tijdens de toezeggings periode kan het capaciteits reserverings niveau niet worden verminderd, maar het kan op elk gewenst moment worden verhoogd. Meer informatie over het [maken van een toegewezen clusters](https://docs.microsoft.com/azure/azure-monitor/platform/customer-managed-keys#create-cluster-resource) en [het koppelen van werk ruimten aan het](https://docs.microsoft.com/azure/azure-monitor/platform/customer-managed-keys#workspace-association-to-cluster-resource)cluster.  
+Log Analytics clusters zijn verzamelingen van werk ruimten in één beheerd Azure Data Explorer-cluster ter ondersteuning van geavanceerde scenario's zoals door de [klant beheerde sleutels](https://docs.microsoft.com/azure/azure-monitor/platform/customer-managed-keys).  Log Analytics clusters bieden alleen ondersteuning voor een prijs model voor capaciteits reservering, te beginnen bij 1000 GB/dag met een korting van 25% ten opzichte van de prijzen voor betalen per gebruik. Elk gebruik boven het reserverings niveau wordt gefactureerd op basis van het betalen naar gebruik-tarief. De reserve ring van de cluster capaciteit heeft een toezeggings periode van 31 dagen nadat het reserverings niveau is verhoogd. Tijdens de toezeggings periode kan het capaciteits reserverings niveau niet worden verminderd, maar het kan op elk gewenst moment worden verhoogd. Meer informatie over het [maken van een log Analytics clusters](https://docs.microsoft.com/azure/azure-monitor/platform/customer-managed-keys#create-cluster-resource) en [het koppelen van werk ruimten aan het](https://docs.microsoft.com/azure/azure-monitor/platform/customer-managed-keys#workspace-association-to-cluster-resource)cluster.  
 
-Omdat de facturering van opgenomen gegevens op het cluster niveau wordt uitgevoerd, hebben werk ruimten die zijn gekoppeld aan een cluster niet langer een prijs categorie. De opgenomen gegevens aantallen uit elke werk ruimte die aan een cluster is gekoppeld, worden geaggregeerd voor het berekenen van de dagelijkse factuur voor het cluster. Houd er rekening mee dat toewijzingen per knoop punt van Azure Security Center worden toegepast op het niveau van de werk ruimte vóór deze aggregatie. Het bewaren van gegevens wordt nog steeds gefactureerd op het niveau van de werk ruimte.  
+Het reserverings niveau voor cluster capaciteit wordt geconfigureerd via programmatisch met `Capacity` Azure Resource Manager met `Sku`behulp van de para meter onder. De `Capacity` is opgegeven in eenheden van GB en kan waarden hebben van 1000 GB/dag of meer in stappen van 100 GB/dag. Dit wordt [hier](https://docs.microsoft.com/azure/azure-monitor/platform/customer-managed-keys#create-cluster-resource)beschreven. Als voor uw cluster een reserve ring nodig is die hoger is dan 2000 [LAIngestionRate@microsoft.com](mailto:LAIngestionRate@microsoft.com)GB/dag, neemt u contact met ons op.
+
+Omdat de facturering van opgenomen gegevens op het cluster niveau wordt uitgevoerd, hebben werk ruimten die zijn gekoppeld aan een cluster niet langer een prijs categorie. De opgenomen gegevens aantallen uit elke werk ruimte die aan een cluster is gekoppeld, worden geaggregeerd voor het berekenen van de dagelijkse factuur voor het cluster. Houd er rekening mee dat toewijzingen per knoop punt van [Azure Security Center](https://docs.microsoft.com/azure/security-center/) worden toegepast op het niveau van de werk ruimte vóór deze aggregatie van geaggregeerde gegevens in alle werk ruimten in het cluster. Het bewaren van gegevens wordt nog steeds gefactureerd op het niveau van de werk ruimte. Houd er rekening mee dat het factureren van het cluster begint wanneer het cluster wordt gemaakt, ongeacht of er werk ruimten aan het cluster zijn gekoppeld. 
 
 ## <a name="estimating-the-costs-to-manage-your-environment"></a>Schatting van de kosten voor het beheren van uw omgeving 
 
@@ -310,7 +312,7 @@ Usage
 
 ### <a name="data-volume-by-computer"></a>Gegevens volume per computer
 
-Het `Usage` gegevens type bevat geen informatie op het niveau van de volledige versie. Als u de **grootte** van opgenomen gegevens per computer wilt zien, gebruikt `_BilledSize` u de [eigenschap](log-standard-properties.md#_billedsize), die de grootte in bytes levert:
+Het `Usage` gegevens type bevat geen informatie op computer niveau. Als u de **grootte** van opgenomen gegevens per computer wilt zien, gebruikt `_BilledSize` u de [eigenschap](log-standard-properties.md#_billedsize), die de grootte in bytes levert:
 
 ```kusto
 union withsource = tt * 
@@ -467,7 +469,7 @@ union withsource = tt *
 | where computerName != ""
 | summarize nodesPerHour = dcount(computerName) by bin(TimeGenerated, 1h)  
 | summarize nodesPerDay = sum(nodesPerHour)/24.  by day=bin(TimeGenerated, 1d)  
-| join (
+| join kind=leftouter (
     Heartbeat 
     | where TimeGenerated >= startofday(now(-7d)) and TimeGenerated < startofday(now())
     | where Computer != ""

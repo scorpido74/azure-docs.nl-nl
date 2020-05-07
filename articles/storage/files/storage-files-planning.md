@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 1/3/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 1fffb3eb10b7d3cbb3360a03112c3b4d7db8d109
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 5356ff0ac165deefc5053cf4faa40c1159e98678
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82209482"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82856896"
 ---
 # <a name="planning-for-an-azure-files-deployment"></a>Planning voor de implementatie van Azure Files
 [Azure files](storage-files-introduction.md) kunnen op twee manieren worden geïmplementeerd: door de Serverloze Azure-bestands shares rechtstreeks te koppelen of door Azure-bestands shares on-premises in de cache op te maken met behulp van Azure file sync. Welke implementatie optie u kiest, wijzigt de dingen die u moet overwegen bij het plannen van uw implementatie. 
@@ -84,7 +84,7 @@ Over het algemeen zijn Azure Files functies en interoperabiliteit met andere ser
     - Premium-bestands shares worden gefactureerd met behulp van een ingericht facturerings model. Dit betekent dat u betaalt voor de hoeveelheid opslag ruimte die u in plaats van de hoeveelheid opslag die u daad werkelijk vraagt. 
     - Standaard bestands shares worden gefactureerd op basis van een betalen per gebruik-model, dat een basis kosten voor opslag bevat voor de hoeveelheid opslag die u daad werkelijk verbruikt en vervolgens een extra transactie kosten op basis van hoe u de share gebruikt. Bij standaard bestands shares neemt uw factuur toe als u de Azure-bestands share gebruikt (lezen/schrijven/koppelen).
 - **Redundantie opties**
-    - Premium-bestands shares zijn alleen beschikbaar voor lokaal redundante (LRS) en zone redundante opslag (ZRS). 
+    - Premium-bestands shares zijn alleen beschikbaar voor lokaal redundante (LRS) en zone redundante opslag (ZRS).
     - Standaard bestands shares zijn beschikbaar voor lokaal redundante, zone redundante, geo-redundante (GRS) en geo-zone redundante opslag (GZRS).
 - **Maximale grootte van bestands share**
     - Premium-bestands shares kunnen Maxi maal 100 TiB worden ingericht zonder verdere werkzaamheden.

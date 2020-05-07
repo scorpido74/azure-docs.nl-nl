@@ -8,12 +8,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: fa7e085f723d4f4c411f52e045c9437d5cb293b3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f75e5c856e05cc5ce53598849a7cb11ed059827a
+ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81459777"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82838855"
 ---
 # <a name="azure-disk-encryption-for-linux-vms"></a>Azure Disk Encryption voor Linux-Vm's 
 
@@ -28,7 +28,7 @@ Als u [Azure Security Center](../../security-center/index.yml)gebruikt, wordt u 
 > - Bepaalde aanbevelingen kunnen leiden tot meer gegevens, het netwerk of het gebruik van reken bronnen, wat leidt tot extra licentie-of abonnements kosten. U moet een geldig actief Azure-abonnement hebben om resources te maken in Azure in de ondersteunde regio's.
 > - Virtuele machines van generatie 2 bieden geen ondersteuning voor Azure Disk Encryption. Zie [ondersteuning voor virtuele machines van de tweede generatie op Azure](https://docs.microsoft.com/azure/virtual-machines/windows/generation-2) voor meer informatie.
 
-Meer informatie over de basis principes van Azure Disk Encryption voor Linux in slechts enkele minuten kunt u met behulp van [een virtuele Linux-machine maken en versleutelen met Azure cli Quick](disk-encryption-cli-quickstart.md) start of [een Linux-VM maken en versleutelen met Azure Power shell Quick](disk-encryption-powershell-quickstart.md)start.
+Meer informatie over de basis principes van Azure Disk Encryption voor Linux in slechts enkele minuten kunt u met behulp van [een virtuele Linux-machine maken en versleutelen met Azure cli Quick](disk-encryption-cli-quickstart.md) start of [met behulp van een virtuele Linux-machine maken en versleutelen met Azure PowerShell Snelstartgids](disk-encryption-powershell-quickstart.md).
 
 ## <a name="supported-vms-and-operating-systems"></a>Ondersteunde Vm's en besturings systemen
 
@@ -56,29 +56,36 @@ Azure Disk Encryption wordt ondersteund op een subset van de door [Azure goedgek
 
 Linux-server distributies die niet zijn goedgekeurd door Azure, bieden geen ondersteuning voor Azure Disk Encryption; van degenen die zijn goedgekeurd, worden alleen de volgende distributies en versies ondersteund Azure Disk Encryption:
 
-| Linux-distributie | Versie | Ondersteund volume type voor versleuteling|
-| --- | --- |--- |
-| Ubuntu | 18,04| Besturings systeem en gegevens schijf |
-| Ubuntu | 16,04| Besturings systeem en gegevens schijf |
-| Ubuntu | 14.04.5</br>[met een afgestemde kernel van Azure bijgewerkt tot 4,15 of hoger](disk-encryption-troubleshooting.md) | Besturings systeem en gegevens schijf |
-| RHEL | 7,7 | Besturings systeem en gegevens schijf (zie opmerking hieronder) |
-| RHEL | 7,6 | Besturings systeem en gegevens schijf (zie opmerking hieronder) |
-| RHEL | 7,5 | Besturings systeem en gegevens schijf (zie opmerking hieronder) |
-| RHEL | 7.4 | Besturings systeem en gegevens schijf (zie opmerking hieronder) |
-| RHEL | 7.3 | Besturings systeem en gegevens schijf (zie opmerking hieronder) |
-| RHEL | 7.2 | Besturings systeem en gegevens schijf (zie opmerking hieronder) |
-| RHEL | 6.8 | Gegevens schijf (zie opmerking hieronder) |
-| RHEL | 6.7 | Gegevens schijf (zie opmerking hieronder) |
-| CentOS | 7,7 | Besturings systeem en gegevens schijf |
-| CentOS | 7,6 | Besturings systeem en gegevens schijf |
-| CentOS | 7,5 | Besturings systeem en gegevens schijf |
-| CentOS | 7.4 | Besturings systeem en gegevens schijf |
-| CentOS | 7.3 | Besturings systeem en gegevens schijf |
-| CentOS | 7,2 n | Besturings systeem en gegevens schijf |
-| CentOS | 6.8 | Gegevensschijf |
-| openSUSE | 42,3 | Gegevensschijf |
-| SLES | 12-SP4 | Gegevensschijf |
-| SLES | 12-SP3 | Gegevensschijf |
+| Uitgever | Aanbieding | SKU | URN | Ondersteund volume type voor versleuteling |
+| --- | --- |--- | --- |
+| Canonical | Ubuntu | 18,04-LTS | Canoniek: UbuntuServer: 18.04-LTS: nieuwste | Besturings systeem en gegevens schijf |
+| Canonical | Ubuntu 18.04 | 18,04-DAGELIJKS-LTS | Canoniek: UbuntuServer: 18.04-DAILY-LTS: nieuwste | Besturings systeem en gegevens schijf |
+| Canonical | Ubuntu 16.04 | 16,04-DAGELIJKS-LTS | Canoniek: UbuntuServer: 16.04-DAILY-LTS: nieuwste | Besturings systeem en gegevens schijf |
+| Canonical | Ubuntu 14.04.5</br>[met een afgestemde kernel van Azure bijgewerkt tot 4,15 of hoger](disk-encryption-troubleshooting.md) | 14.04.5-LTS | Canoniek: UbuntuServer: 14.04.5-LTS: nieuwste | Besturings systeem en gegevens schijf |
+| Canonical | Ubuntu 14.04.5</br>[met een afgestemde kernel van Azure bijgewerkt tot 4,15 of hoger](disk-encryption-troubleshooting.md) | 14.04.5-DAILY-LTS | Canoniek: UbuntuServer: 14.04.5-DAILY-LTS: nieuwste | Besturings systeem en gegevens schijf |
+| RedHat | RHEL 7,7 | 7,7 | RedHat: RHEL: 7,7: nieuwste | Besturings systeem en gegevens schijf (zie opmerking hieronder) |
+| RedHat | RHEL 7,7 | 7-RAW | RedHat: RHEL: 7-RAW: nieuwste | Besturings systeem en gegevens schijf (zie opmerking hieronder) |
+| RedHat | RHEL 7,7 | 7-LVM | RedHat: RHEL: 7-LVM: nieuwste | Besturings systeem en gegevens schijf (zie opmerking hieronder) |
+| RedHat | RHEL 7,6 | 7,6 | RedHat: RHEL: 7,6: nieuwste | Besturings systeem en gegevens schijf (zie opmerking hieronder) |
+| RedHat | RHEL 7.5 | 7,5 | RedHat: RHEL: 7.5: nieuwste | Besturings systeem en gegevens schijf (zie opmerking hieronder) |
+| RedHat | RHEL 7,4 | 7.4 | RedHat: RHEL: 7.4: nieuwste | Besturings systeem en gegevens schijf (zie opmerking hieronder) |
+| RedHat | RHEL 7,3 | 7.3 | RedHat: RHEL: 7.3: nieuwste | Besturings systeem en gegevens schijf (zie opmerking hieronder) |
+| RedHat | RHEL 7,2 | 7.2 | RedHat: RHEL: 7.2: nieuwste | Besturings systeem en gegevens schijf (zie opmerking hieronder) |
+| RedHat | RHEL 6,8 | 6.8 | RedHat: RHEL: 6,8: nieuwste | Gegevens schijf (zie opmerking hieronder) |
+| RedHat | RHEL 6,7 | 6.7 | RedHat: RHEL: 6,7: nieuwste | Gegevens schijf (zie opmerking hieronder) |
+| OpenLogic | CentOS 7,7 | 7,7 | Open Logic: CentOS: 7,7: nieuwste | Besturings systeem en gegevens schijf |
+| OpenLogic | CentOS 7,7 | 7-LVM | Open Logic: CentOS: 7-LVM: nieuwste | Besturings systeem en gegevens schijf |
+| OpenLogic | CentOS 7,6 | 7,6 | Open Logic: CentOS: 7,6: nieuwste | Besturings systeem en gegevens schijf |
+| OpenLogic | CentOS 7.5 | 7,5 | Open Logic: CentOS: 7.5: nieuwste | Besturings systeem en gegevens schijf |
+| OpenLogic | CentOS 7.4 | 7.4 | Open Logic: CentOS: 7.4: nieuwste | Besturings systeem en gegevens schijf |
+| OpenLogic | CentOS 7,3 | 7.3 | Open Logic: CentOS: 7.3: nieuwste | Besturings systeem en gegevens schijf |
+| OpenLogic | CentOS 7.2 n | 7,2 n | Open Logic: CentOS: 7,2 n: nieuwste | Besturings systeem en gegevens schijf |
+| OpenLogic | CentOS 7.1 | 7.1 | Open Logic: CentOS: 7.1: nieuwste | Alleen de gegevensschijf |
+| OpenLogic | CentOS 7,0 | 7.0 | Open Logic: CentOS: 7.0: nieuwste | Alleen de gegevensschijf |
+| OpenLogic | CentOS 6,8 | 6.8 | Open Logic: CentOS: 6,8: nieuwste | Alleen de gegevensschijf |
+| SUSE | openSUSE 42,3 | 42,3 | SUSE: openSUSE-Schrikkel: 42.3: nieuwste | Alleen de gegevensschijf |
+| SUSE | SLES 12-SP4 | 12-SP4 | SUSE: SLES: 12-SP4: nieuwste | Alleen de gegevensschijf |
+| SUSE | SLES HPC 12-SP3 | 12-SP3 | SUSE: SLES-HPC: 12-SP3: nieuwste | Alleen de gegevensschijf |
 
 > [!NOTE]
 > De nieuwe Azure Disk Encryption-implementatie wordt ondersteund voor RHEL-besturings systeem en gegevens schijf voor RHEL7 betalen per gebruik-installatie kopieën.  

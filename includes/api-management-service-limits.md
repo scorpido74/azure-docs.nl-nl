@@ -1,6 +1,6 @@
 ---
-title: bestand opnemen
-description: bestand opnemen
+title: Include-bestand
+description: Include-bestand
 services: api-management
 author: vladvino
 ms.assetid: 1b813833-39c8-46be-8666-fd0960cfbf04

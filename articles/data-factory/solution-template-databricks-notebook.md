@@ -10,17 +10,17 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 03/03/2020
-ms.openlocfilehash: 65b89a13637f5a4e1712995a6ac58d88b4421806
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 04/27/2020
+ms.openlocfilehash: 2503c26ac0348739bbf117c3538af797833ce8b8
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81414855"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82857640"
 ---
 # <a name="transformation-with-azure-databricks"></a>Transformatie met Azure Databricks
 
-[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
 In deze zelf studie maakt u een end-to-end-pijp lijn die de activiteiten **validatie**, **kopie gegevens**en **notebook** bevat in azure Data Factory.
 
@@ -153,6 +153,9 @@ In de nieuwe pijp lijn worden de meeste instellingen automatisch geconfigureerd 
 1. Controleer of de **pijplijn parameters** overeenkomen met wat wordt weer gegeven in de volgende ![scherm afbeelding: pijplijn parameters](media/solution-template-Databricks-notebook/pipeline-parameters.png)
 
 1. Verbinding maken met uw gegevens sets.
+
+    >[!NOTE]
+    >In de onderstaande gegevens sets is het bestandspad automatisch in de sjabloon opgegeven. Als er vereiste wijzigingen zijn, moet u ervoor zorgen dat u het pad voor de **container** en de **map** opgeeft als een verbindings fout.
 
    - **SourceAvailabilityDataset** : Controleer of de bron gegevens beschikbaar zijn.
 

@@ -3,12 +3,12 @@ title: Helm-grafieken opslaan
 description: Meer informatie over het opslaan van helm-grafieken voor uw Kubernetes-toepassingen met behulp van opslag plaatsen in Azure Container Registry
 ms.topic: article
 ms.date: 03/20/2020
-ms.openlocfilehash: 3f1a68258b758380a66b63e3c3137f1d460d288c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 04ba3aaf312188ab77c04a97ab960cf9b9af078f
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81399376"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82857606"
 ---
 # <a name="push-and-pull-helm-charts-to-an-azure-container-registry"></a>Helm-grafieken pushen en pullen naar een Azure container Registry
 
@@ -31,8 +31,8 @@ U kunt helm 3 of helm 2 gebruiken om helm-grafieken in Azure Container Registry 
 ### <a name="additional-information"></a>Aanvullende informatie
 
 * Voor de meeste scenario's wordt u aangeraden de helm 3-werk `helm chart` stroom te gebruiken met systeem eigen opdrachten voor het beheren van grafieken als OCI-artefacten.
-* U kunt verouderde [AZ ACR helm][az-acr-helm] Azure cli-opdrachten en-werk stroom gebruiken met de helm 3-client en-grafieken. Bepaalde opdrachten `az acr helm list` zijn echter niet compatibel met helm 3-grafieken.
-* Vanaf helm 3 worden [AZ ACR helm][az-acr-helm] -opdrachten voornamelijk ondersteund voor compatibiliteit met de helm 2-client en grafiek indeling. Toekomstige ontwikkeling van deze opdrachten is momenteel niet gepland.
+* Vanaf helm 3 kunnen [AZ ACR helm][az-acr-helm] -opdrachten worden ondersteund voor compatibiliteit met de helm 2-client en grafiek indeling. Toekomstige ontwikkeling van deze opdrachten is momenteel niet gepland. Raadpleeg de [product routekaart](https://github.com/Azure/acr/blob/master/docs/acr-roadmap.md#acr-helm-ga).
+* Helm 2-grafieken kunnen niet worden weer gegeven of beheerd met behulp van de Azure Portal.
 
 ## <a name="use-the-helm-3-client"></a>De helm 3-client gebruiken
 

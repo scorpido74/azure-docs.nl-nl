@@ -1,23 +1,21 @@
 ---
 title: Beveiligde communicatie van Azure Service Fabric reverse proxy
 description: Configureer omgekeerde proxy zo dat beveiligde end-to-end-communicatie mogelijk is in een Azure Service Fabric-toepassing.
-author: kavyako
 ms.topic: conceptual
 ms.date: 08/10/2017
-ms.author: kavyako
-ms.openlocfilehash: 61a8d1e766ea576f7d2984add239b0da7e2e8183
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e88a81108f38efefe413024fb2b41bbd82f297b2
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80617113"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82858525"
 ---
 # <a name="connect-to-a-secure-service-with-the-reverse-proxy"></a>Verbinding maken met een beveiligde service met de omgekeerde proxy
 
 In dit artikel wordt uitgelegd hoe u een veilige verbinding tot stand brengt tussen de omgekeerde proxy en services, waardoor een end-to-end beveiligd kanaal kan worden ingeschakeld. Zie [reverse proxy in Azure service Fabric](service-fabric-reverseproxy.md) voor meer informatie over reverse proxy
 
-Verbinding maken met beveiligde services wordt alleen ondersteund als omgekeerde proxy is geconfigureerd om te Luis teren op HTTPS. In dit artikel wordt ervan uitgegaan dat dit het geval is.
-Raadpleeg [reverse proxy instellen in Azure service Fabric](service-fabric-reverseproxy-setup.md) voor het configureren van de omgekeerde proxy in service Fabric.
+> [!IMPORTANT]
+> Verbinding maken met beveiligde services wordt alleen ondersteund als omgekeerde proxy is geconfigureerd om te Luis teren op HTTPS. In dit artikel wordt ervan uitgegaan dat dit het geval is. Raadpleeg [reverse proxy instellen in Azure service Fabric](service-fabric-reverseproxy-setup.md) voor het configureren van de omgekeerde proxy in service Fabric.
 
 ## <a name="secure-connection-establishment-between-the-reverse-proxy-and-services"></a>Beveiligde verbinding tot stand brengen tussen de omgekeerde proxy en services 
 
@@ -180,10 +178,10 @@ Dit is de standaardinstelling.
 
 2. Wanneer **ForwardClientCertificate** is ingesteld op **True**, vraagt reverse proxy het client certificaat aan tijdens de TLS-Handshake met de client.
 De client certificaat gegevens worden vervolgens doorgestuurd naar een aangepaste HTTP-header met de naam **X-client-certificaat**. De waarde van de header is de base64-gecodeerde PEM-indelings teken reeks van het certificaat van de client. De service kan de aanvraag slagen of afwijzen met de juiste status code na het controleren van de certificaat gegevens.
-Als de client geen certificaat presenteert, stuurt de omgekeerde proxy een lege header door en laat de service de aanvraag afhandelen.
+Als de client geen certificaat presenteert, stuurt de omgekeerde proxy een lege header door en kan de service de aanvraag afhandelen.
 
 > [!NOTE]
-> Omgekeerde proxy is een louter doorstuur server. Er wordt geen validatie uitgevoerd van het certificaat van de client.
+> Omgekeerde proxy fungeert alleen als een doorstuur service. Er wordt geen validatie uitgevoerd van het certificaat van de client.
 
 
 ## <a name="next-steps"></a>Volgende stappen

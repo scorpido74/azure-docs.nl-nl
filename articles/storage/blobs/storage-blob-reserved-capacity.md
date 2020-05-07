@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 03/26/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: e73686629de8481f6a37e5bfafc9b723206b4853
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4ba54736abe335b53a3b8c6733063efcb34ea29a
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80351034"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82856823"
 ---
 # <a name="optimize-costs-for-blob-storage-with-reserved-capacity"></a>Kosten optimaliseren voor blob-opslag met gereserveerde capaciteit
 
@@ -82,9 +82,9 @@ Volg deze stappen om gereserveerde capaciteit aan te schaffen:
    |---------|---------|
    |**Bereik**   |  Hiermee wordt aangegeven hoeveel abonnementen het facturerings voordeel kunnen gebruiken dat is gekoppeld aan de reserve ring. Het bepaalt ook hoe de reserve ring wordt toegepast op specifieke abonnementen. <br/><br/> Als u **gedeeld**selecteert, wordt de reserverings korting toegepast op Azure storage capaciteit in een abonnement binnen uw facturerings context. De facturerings context is gebaseerd op de manier waarop u zich hebt geregistreerd voor Azure. Voor zakelijke klanten is het gedeelde bereik de inschrijving en omvat alle abonnementen binnen de inschrijving. Voor betalen per gebruik-klanten bevat het gedeelde bereik alle afzonderlijke abonnementen met betalen per gebruik-tarieven die zijn gemaakt door de account beheerder.  <br/><br/>  Als u **één abonnement**selecteert, wordt de reserverings korting toegepast op Azure storage capaciteit in het geselecteerde abonnement. <br/><br/> Als u **één resource groep**selecteert, wordt de reserverings korting toegepast op Azure storage capaciteit in het geselecteerde abonnement en de geselecteerde resource groep in dat abonnement. <br/><br/> U kunt het reserverings bereik wijzigen nadat u de reserve ring hebt aangeschaft.  |
    |**Abonnement**  | Het abonnement dat wordt gebruikt om te betalen voor de Azure Storage reserve ring. De betalings wijze voor het geselecteerde abonnement wordt gebruikt bij het opladen van de kosten. Het abonnement moet een van de volgende typen zijn: <br/><br/>  Enterprise Agreement (nummers van aanbiedingen: MS-AZR-0017P of MS-AZR-0148P): voor een Enter prise-abonnement worden de kosten in rekening gebracht op basis van de monetaire toezeg ging van de inschrijving of worden aangerekend als overschrijding. <br/><br/> Individueel abonnement met betalen per gebruik-tarieven (aanbiedings nummers: MS-AZR-0003P of MS-AZR-0023P): voor een afzonderlijk abonnement met betalen per gebruik-tarieven, worden de kosten in rekening gebracht op de credit card-of factuur betalings methode voor het abonnement.    |
-   | **Regio** | De regio waar de reserve ring van kracht is. |
+   | **Deel** | De regio waar de reserve ring van kracht is. |
    | **Toegangs niveau** | De Access-laag waar de waarvoor de reserve ring geldt. Opties zijn onder andere *Hot*, *cool*en *Archive*. Zie [Azure Blob Storage: warme, cool en archief toegangs lagen](storage-blob-storage-tiers.md)voor meer informatie over toegangs lagen. |
-   | **Redundantie** | De redundantie optie voor de reserve ring. Opties zijn *LRS*, *ZRS*, *GRS*en *Ra-GZRS*. Zie [Azure Storage redundantie](../common/storage-redundancy.md)voor meer informatie over redundantie opties. |
+   | **Redundantie** | De redundantie optie voor de reserve ring. Opties zijn *LRS*, *ZRS*, *GRS*, *GZRS*, *Ra-GRS*en *Ra-GZRS*. Zie [Azure Storage redundantie](../common/storage-redundancy.md)voor meer informatie over redundantie opties. |
    | **Facturerings frequentie** | Hiermee wordt aangegeven hoe vaak het account wordt gefactureerd voor de reserve ring. De opties zijn *maandelijks* of *vooraf*. |
    | **Grootte** | De regio waar de reserve ring van kracht is. |
    |**Mandaat**  | Eén jaar of drie jaar.   |
@@ -129,5 +129,5 @@ Als u vragen hebt of hulp nodig hebt, [kunt u een ondersteuningsaanvraag maken](
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Wat zijn Azure Reservations?](../../cost-management-billing/reservations/save-compute-costs-reservations.md)
+- [Wat zijn Azure-reserveringen?](../../cost-management-billing/reservations/save-compute-costs-reservations.md)
 - [Leer hoe de reserveringskorting wordt toegepast op Azure Storage](../../cost-management-billing/reservations/understand-storage-charges.md)

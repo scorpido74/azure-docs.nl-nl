@@ -1,6 +1,6 @@
 ---
-title: bestand opnemen
-description: bestand opnemen
+title: Include-bestand
+description: Include-bestand
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
