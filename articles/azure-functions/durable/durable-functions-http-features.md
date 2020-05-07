@@ -5,12 +5,12 @@ author: cgillum
 ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: azfuncdf
-ms.openlocfilehash: fece1155d2f707f11dda9f3896bd8a08deff1557
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1ffa116f6877b58d54c22f918b4e83574b85860c
+ms.sourcegitcommit: c8a0fbfa74ef7d1fd4d5b2f88521c5b619eb25f8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80802380"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82800716"
 ---
 # <a name="http-features"></a>HTTP-functies
 
@@ -41,11 +41,11 @@ Zie het [artikel http-api's](durable-functions-http-api.md) voor een volledige b
 
 De [Orchestration-client binding](durable-functions-bindings.md#orchestration-client) stelt api's beschikbaar die handige nettoladingen voor HTTP-antwoorden kunnen genereren. Het kan bijvoorbeeld een antwoord met koppelingen naar beheer-Api's maken voor een specifiek Orchestration-exemplaar. In de volgende voor beelden ziet u een HTTP-trigger-functie die laat zien hoe u deze API gebruikt voor een nieuw exemplaar van Orchestration:
 
-# <a name="c"></a>[C#](#tab/csharp)
+# <a name="c"></a>[G #](#tab/csharp)
 
 [!code-csharp[Main](~/samples-durable-functions/samples/precompiled/HttpStart.cs)]
 
-# <a name="javascript"></a>[Javascript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 **index. js**
 
@@ -114,7 +114,7 @@ Met ingang van Durable Functions 2,0 kunnen Orchestrations HTTP-Api's systeem ei
 
 In de volgende voorbeeld code ziet u een Orchestrator-functie waarmee een uitgaande HTTP-aanvraag wordt gedaan:
 
-# <a name="c"></a>[C#](#tab/csharp)
+# <a name="c"></a>[G #](#tab/csharp)
 
 ```csharp
 [FunctionName("CheckSiteAvailable")]
@@ -134,14 +134,14 @@ public static async Task CheckSiteAvailable(
 }
 ```
 
-# <a name="javascript"></a>[Javascript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
 const df = require("durable-functions");
 
 module.exports = df.orchestrator(function*(context){
     const url = context.df.getInput();
-    const response = context.df.callHttp("GET", url)
+    const response = yield context.df.callHttp("GET", url)
 
     if (response.statusCode >= 400) {
         // handling of error codes goes here
@@ -172,7 +172,7 @@ Durable Functions ondersteunt systeem eigen aanroepen naar Api's die Azure Activ
 
 De volgende code is een voor beeld van een .NET Orchestrator-functie. De functie maakt geverifieerde aanroepen om een virtuele machine opnieuw op te starten met behulp van de Azure Resource Manager [virtuele machines rest API](https://docs.microsoft.com/rest/api/compute/virtualmachines).
 
-# <a name="c"></a>[C#](#tab/csharp)
+# <a name="c"></a>[G #](#tab/csharp)
 
 ```csharp
 [FunctionName("RestartVm")]
@@ -198,7 +198,7 @@ public static async Task RunOrchestrator(
 }
 ```
 
-# <a name="javascript"></a>[Javascript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
 const df = require("durable-functions");

@@ -3,12 +3,12 @@ title: Problemen met back-ups van Azure-bestands share oplossen
 description: Dit artikel gaat over het oplossen van problemen die optreden bij het beveiligen van uw Azure-bestandsshares.
 ms.date: 02/10/2020
 ms.topic: troubleshooting
-ms.openlocfilehash: a6ce613b8c0fe8a7a5df6397ba2f1eb508d61aae
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a9b3514b4c1a00cc2f9bb1e1922975bf0bb70d24
+ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82100053"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82562080"
 ---
 # <a name="troubleshoot-problems-while-backing-up-azure-file-shares"></a>Problemen oplossen bij het maken van back-ups van Azure-bestands shares
 
@@ -25,6 +25,7 @@ In dit artikel vindt u informatie over het oplossen van problemen bij het config
   >Alle bestandsshares in een opslagaccount kunnen in maar één Recovery Services-kluis worden beveiligd. U kunt [Dit script](scripts/backup-powershell-script-find-recovery-services-vault.md) gebruiken om de Recovery Services-kluis te vinden waar uw opslag account is geregistreerd.
 
 - Zorg ervoor dat de bestands share niet aanwezig is in een van de niet-ondersteunde opslag accounts. Raadpleeg de [ondersteunings matrix voor Azure file share backup](azure-file-share-support-matrix.md) om ondersteunde opslag accounts te vinden.
+- Controleer de firewall-instellingen van het opslag account om ervoor te zorgen dat de optie voor het toestaan van vertrouwde micro soft-Services voor toegang tot het opslag account is ingeschakeld.
 
 ### <a name="error-in-portal-states-discovery-of-storage-accounts-failed"></a>Fout in de portal geeft aan dat de detectie van opslagaccounts is mislukt
 
@@ -280,5 +281,5 @@ Wacht totdat de andere bewerking in uitvoering is voltooid en probeer het later 
 
 Zie voor meer informatie over het maken van back-ups van Azure-bestands shares:
 
-- [Back-ups maken van Azure-bestands shares](backup-afs.md)
+- [Een back-up maken van Azure-bestandsshares](backup-afs.md)
 - [Veelgestelde vragen over back-ups van Azure file share](backup-azure-files-faq.md)

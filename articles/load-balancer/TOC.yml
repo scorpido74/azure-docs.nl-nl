@@ -40,6 +40,8 @@
       href: components.md
     - name: Concepten
       href: concepts.md
+    - name: SKU's
+      href: skus.md
     - name: Statuscontrole
       items:
         - name: Statuscontroles

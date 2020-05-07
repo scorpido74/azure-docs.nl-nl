@@ -63,6 +63,9 @@
       href: cli-samples.md
     - name: PowerShell
       href: powershell-samples.md
+    - name: Ingebouwde modules voor Azure Policy
+      displayName: 'samples, policies, definitions'
+      href: ./policy-samples.md
 - name: Concepten
   items:
     - name: Azure Resource Manager
@@ -81,6 +84,8 @@
           href: ../virtual-network/virtual-network-optimize-network-bandwidth.md?toc=%2fazure%2fvirtual-machine-scale-sets%2fwindows%2ftoc.json
         - name: Foutdomeinen beheren in schaalsets
           href: virtual-machine-scale-sets-manage-fault-domains.md
+    - name: Installatiekopieën
+      href: shared-image-galleries.md
     - name: VM-typen en -groottes
       href: ../virtual-machines/windows/sizes.md
       maintainContext: true
@@ -184,6 +189,51 @@
           href: virtual-machine-scale-sets-design-overview.md
         - name: Exemplaar-id's begrijpen
           href: virtual-machine-scale-sets-instance-ids.md
+    - name: Installatiekopieën gebruiken
+      displayName: 'SIG, AMI, image'
+      items:
+        - name: Gedeelde installatiekopiegalerieën
+          items:
+            - name: PowerShell
+              items:
+                - name: Een galerie maken
+                  href: ../virtual-machines/shared-images-powershell.md
+                - name: Een installatiekopie maken
+                  items:
+                    - name: Vanaf een VM
+                      href: ../virtual-machines/image-version-vm-powershell.md
+                    - name: Migreren vanaf een beheerde installatiekopie
+                      href: ../virtual-machines/image-version-managed-image-powershell.md
+                    - name: Kopiëren uit een andere galerie
+                      href: ../virtual-machines/image-version-another-gallery-powershell.md
+                - name: Een schaalset maken
+                  items:
+                    - name: Gespecialiseerd
+                      href: instance-specialized-image-version-powershell.md
+                    - name: Gegeneraliseerd
+                      href: instance-generalized-image-version-powershell.md
+                - name: Afbeeldingsresources bijwerken
+                  href: ../virtual-machines/update-image-resources-powershell.md
+            - name: CLI
+              items:
+                - name: Een galerie maken
+                  href: ../virtual-machines/shared-images-cli.md
+                - name: Een installatiekopie maken
+                  items:
+                    - name: Vanaf een VM
+                      href: ../virtual-machines/image-version-vm-cli.md
+                    - name: Migreren vanaf een beheerde installatiekopie
+                      href: ../virtual-machines/image-version-managed-image-cli.md
+                    - name: Kopiëren uit een andere galerie
+                      href: ../virtual-machines/image-version-another-gallery-cli.md
+                - name: Een schaalset maken
+                  items:
+                    - name: Gespecialiseerd
+                      href: instance-specialized-image-version-cli.md
+                    - name: Gegeneraliseerd
+                      href: instance-generalized-image-version-cli.md
+                - name: Afbeeldingsresources bijwerken
+                  href: ../virtual-machines/update-image-resources-cli.md
     - name: Een sjabloon maken
       items:
         - name: Meer informatie over schaalsetsjablonen

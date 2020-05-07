@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 02/07/2020
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: c2d1e8b4975be0657983192df00cc434da00a6f7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7ff7db383a74ce01f7f1a7bf49a33e41f91decf8
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79255403"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82853498"
 ---
 # <a name="create-an-azure-storage-account"></a>Een Azure Storage-account maken
 
@@ -32,7 +32,7 @@ Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://a
 
 Geen.
 
-# <a name="powershell"></a>[Zo](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 Als u een Azure-opslag account wilt maken met Power shell, moet u Azure PowerShell module AZ versie 0,7 of hoger hebben geïnstalleerd. Zie [Inleiding tot de Azure PowerShell AZ-module](/powershell/azure/new-azureps-module-az)voor meer informatie.
 
@@ -75,9 +75,9 @@ Geen.
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 
-Meld u aan bij de [Azure-portal](https://portal.azure.com).
+Meld u aan bij [Azure Portal](https://portal.azure.com).
 
-# <a name="powershell"></a>[Zo](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 Meld u aan bij uw Azure-abonnement `Connect-AzAccount` met de opdracht en volg de instructies op het scherm om te verifiëren.
 
@@ -113,7 +113,7 @@ Een v2-opslagaccount **voor algemeen gebruik** biedt toegang tot alle services v
 
 [!INCLUDE [storage-create-account-portal-include](../../../includes/storage-create-account-portal-include.md)]
 
-# <a name="powershell"></a>[Zo](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 Maak eerst een nieuwe resourcegroep met PowerShell met behulp van de opdracht [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup):
 
@@ -152,8 +152,8 @@ Als u een v2-opslag account voor algemeen gebruik met een andere replicatie opti
 |Zone-redundante opslag (ZRS)     |Standard_ZRS         |
 |Geografisch redundante opslag (GRS)     |Standard_GRS         |
 |Geografisch redundante opslag met leestoegang (GRS)     |Standard_RAGRS         |
-|Geo-zone-redundante opslag (GZRS) (preview)    |Standard_GZRS         |
-|Geo-zone-redundante opslag met lees toegang (RA-GZRS) (preview)    |Standard_RAGZRS         |
+|Geografisch zone-redundante opslag (GZRS)    |Standard_GZRS         |
+|Geo-zone-redundante opslag met lees toegang (RA-GZRS)    |Standard_RAGZRS         |
 
 # <a name="azure-cli"></a>[Azure-CLI](#tab/azure-cli)
 
@@ -195,12 +195,12 @@ Als u een v2-opslag account voor algemeen gebruik met een andere replicatie opti
 |Zone-redundante opslag (ZRS)     |Standard_ZRS         |
 |Geografisch redundante opslag (GRS)     |Standard_GRS         |
 |Geografisch redundante opslag met leestoegang (GRS)     |Standard_RAGRS         |
-|Geo-zone-redundante opslag (GZRS) (preview)    |Standard_GZRS         |
-|Geo-zone-redundante opslag met lees toegang (RA-GZRS) (preview)    |Standard_RAGZRS         |
+|Geografisch zone-redundante opslag (GZRS)    |Standard_GZRS         |
+|Geo-zone-redundante opslag met lees toegang (RA-GZRS)    |Standard_RAGZRS         |
 
 # <a name="template"></a>[Sjabloon](#tab/template)
 
-U kunt Azure Power shell of Azure CLI gebruiken voor het implementeren van een resource manager-sjabloon voor het maken van een opslag account. De sjabloon die in dit artikel wordt gebruikt, is van [Azure Resource Manager Quick](https://azure.microsoft.com/resources/templates/101-storage-account-create/)start-sjablonen. Als u de scripts wilt uitvoeren, selecteert u **proberen** om de Azure Cloud shell te openen. Als u het script wilt plakken, klikt u met de rechter muisknop op de shell en selecteert u vervolgens **Plakken**.
+U kunt Azure PowerShell of Azure CLI gebruiken voor het implementeren van een resource manager-sjabloon voor het maken van een opslag account. De sjabloon die in dit artikel wordt gebruikt, is van [Azure Resource Manager Quick](https://azure.microsoft.com/resources/templates/101-storage-account-create/)start-sjablonen. Als u de scripts wilt uitvoeren, selecteert u **proberen** het Azure Cloud shell te openen. Als u het script wilt plakken, klikt u met de rechter muisknop op de shell en selecteert u vervolgens **Plakken**.
 
 ```azurepowershell-interactive
 $resourceGroupName = Read-Host -Prompt "Enter the Resource Group name"
@@ -241,7 +241,7 @@ Als u een opslag account verwijdert, wordt het hele account verwijderd, inclusie
 1. Navigeer naar het opslag account in de [Azure Portal](https://portal.azure.com).
 1. Klik op **verwijderen**.
 
-# <a name="powershell"></a>[Zo](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 Als u het opslag account wilt verwijderen, gebruikt u de opdracht [Remove-AzStorageAccount](/powershell/module/az.storage/remove-azstorageaccount) :
 
@@ -293,7 +293,7 @@ In dit procedure-artikel hebt u een standaard v2-opslag account voor algemeen ge
 > [!div class="nextstepaction"]
 > [Werken met blobs met behulp van de Azure-portal](../blobs/storage-quickstart-blobs-portal.md)
 
-# <a name="powershell"></a>[Zo](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 > [!div class="nextstepaction"]
 > [Werken met blobs met behulp van PowerShell](../blobs/storage-quickstart-blobs-powershell.md)

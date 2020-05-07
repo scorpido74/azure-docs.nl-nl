@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 4/17/2020
 ms.author: dukek
 ms.subservice: alerts
-ms.openlocfilehash: 339b11664308962962c59b2e9386ff122681293a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5c8808450f8baa6d395ee9c24dbc59dfa919b66d
+ms.sourcegitcommit: c8a0fbfa74ef7d1fd4d5b2f88521c5b619eb25f8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82116210"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82801005"
 ---
 # <a name="create-and-manage-action-groups-in-the-azure-portal"></a>Actie groepen maken en beheren in de Azure Portal
 Een actie groep is een verzameling voor keuren voor meldingen die zijn gedefinieerd door de eigenaar van een Azure-abonnement. Azure Monitor-en Service Health-waarschuwingen gebruiken actie groepen om gebruikers te laten weten dat een waarschuwing is geactiveerd. Verschillende waarschuwingen kunnen dezelfde actie groep of verschillende actie groepen gebruiken, afhankelijk van de vereisten van de gebruiker. U kunt Maxi maal 2.000 actie groepen in een abonnement configureren.
@@ -200,16 +200,21 @@ Zie de [informatie over het beperken](./../../azure-monitor/platform/alerts-rate
 
 Mogelijk hebt u een beperkt aantal SMS-acties in een actie groep.
 
-Als de gebruikers interface van de Azure Portal actie groep niet toestaat dat u uw land code selecteert, wordt SMS niet ondersteund voor uw land. Prijzen voor ondersteunde landen worden vermeld op de [pagina met Azure monitor prijzen](https://azure.microsoft.com/pricing/details/monitor/). Als uw land code niet beschikbaar is, kunt u stemmen om uw land toe te voegen aan de [gebruikers stem](https://feedback.azure.com/forums/913690-azure-monitor/suggestions/36663181-add-more-country-codes-for-sms-alerting-and-voice).  
+> [!NOTE]
+> Als de gebruikers interface van de Azure Portal actie groep niet toestaat dat u uw land code selecteert, wordt SMS niet ondersteund voor uw land.  Als uw land code niet beschikbaar is, kunt u stemmen om uw land toe te voegen aan de [gebruikers stem](https://feedback.azure.com/forums/913690-azure-monitor/suggestions/36663181-add-more-country-codes-for-sms-alerting-and-voice). In de tussen tijd is het een goed werk om uw actie groep een webhook te laten aanroepen naar een SMS-provider van derden met ondersteuning in uw land.  
 
+Prijzen voor ondersteunde landen worden vermeld op de [pagina met Azure monitor prijzen](https://azure.microsoft.com/pricing/details/monitor/).
   
 
 ### <a name="voice"></a>Spraak
-Zie het artikel [informatie over de frequentie beperking](./../../azure-monitor/platform/alerts-rate-limiting.md) .
+Zie het artikel [informatie over de frequentie beperking](./../../azure-monitor/platform/alerts-rate-limiting.md) voor meer belang rijk gedrag.
 
 Mogelijk hebt u een beperkt aantal spraak acties in een actie groep.
 
-Als de gebruikers interface van de Azure Portal actie groep niet toestaat dat u uw land code selecteert, worden telefoon gesprekken niet ondersteund voor uw land. Prijzen voor ondersteunde landen worden vermeld op de [pagina met Azure monitor prijzen](https://azure.microsoft.com/pricing/details/monitor/). Als uw land code niet beschikbaar is, kunt u stemmen om uw land toe te voegen aan de [gebruikers stem](https://feedback.azure.com/forums/913690-azure-monitor/suggestions/36663181-add-more-country-codes-for-sms-alerting-and-voice).  
+> [!NOTE]
+> Als de gebruikers interface van de Azure Portal actie groep niet toestaat dat u uw land code selecteert, worden telefoon gesprekken niet ondersteund voor uw land. Als uw land code niet beschikbaar is, kunt u stemmen om uw land toe te voegen aan de [gebruikers stem](https://feedback.azure.com/forums/913690-azure-monitor/suggestions/36663181-add-more-country-codes-for-sms-alerting-and-voice).  In de tussen tijd is het een goed hulp om uw actie groep een webhook te laten aanroepen naar een aanbieder van een telefoon gesprek van derden met ondersteuning in uw land.  
+
+Prijzen voor ondersteunde landen worden vermeld op de [pagina met Azure monitor prijzen](https://azure.microsoft.com/pricing/details/monitor/).
 
 ### <a name="webhook"></a>Webhook
 Webhooks worden opnieuw geprobeerd met de volgende regels. De webhook-aanroep wordt Maxi maal twee keer opnieuw geprobeerd wanneer de volgende HTTP-status codes worden geretourneerd: 408, 429, 503, 504 of het HTTP-eind punt reageert niet. De eerste poging vindt plaats na 10 seconden. De tweede nieuwe poging gebeurt na 100 seconden. Na twee storingen wordt het eind punt gedurende 30 minuten niet door een actie groep aangeroepen. 

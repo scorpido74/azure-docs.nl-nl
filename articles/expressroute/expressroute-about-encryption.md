@@ -5,14 +5,14 @@ services: expressroute
 author: cherylmc
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 12/13/2019
+ms.date: 05/05/2020
 ms.author: cherylmc
-ms.openlocfilehash: d48f83df4e83fd1d1fe38eea76432e1b1c711b76
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 77755ab6bdbb3c1e6416475f5066b5dd463eb7f5
+ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81461460"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82838753"
 ---
 # <a name="expressroute-encryption"></a>ExpressRoute-versleuteling
  
@@ -30,8 +30,8 @@ Ja. Voor de configuratie van MACsec ondersteunen we alleen de modus vooraf gedee
 Nee. Als MACsec is geconfigureerd en er een niet-overeenkomende sleutel optreedt, verliest u de verbinding met micro soft. Met andere woorden, we vallen niet terug naar een niet-versleutelde verbinding, waardoor uw gegevens zichtbaar worden. 
 ### <a name="will-enabling-macsec-on-expressroute-direct-degrade-network-performance"></a>Schakelt MACsec in op ExpressRoute directe prestaties van het netwerk verminderen?
 MACsec-versleuteling en-ontsleuteling vindt plaats in hardware op de routers die we gebruiken. Er is geen invloed op de prestaties van onze kant. Neem echter contact op met de leverancier van het netwerk voor de apparaten die u gebruikt en controleer of MACsec prestatie implicatie heeft.
-### <a name="which-cipher-suites-are-supported-for-encryption"></a>welke coderings suites worden ondersteund voor versleuteling?
-AES128 en AES256 worden ondersteund.
+### <a name="which-cipher-suites-are-supported-for-encryption"></a>Welke coderings suites worden ondersteund voor versleuteling?
+We ondersteunen alleen de [Extended pakket Nummerings](https://1.ieee802.org/security/802-1aebw/) versie van AES128 en AES256. Schakel bovendien de [Secure Channel Identifier (SCI)](https://en.wikipedia.org/wiki/IEEE_802.1AE) uit in de MACsec-configuratie op het apparaat. 
 
 ## <a name="end-to-end-encryption-by-ipsec-faq"></a>Veelgestelde vragen over end-to-end-versleuteling per IPsec
 IPsec is een [IETF-standaard](https://tools.ietf.org/html/rfc6071). De gegevens worden versleuteld op het niveau van de Internet Protocol (IP) of netwerklaag 3. U kunt IPsec gebruiken voor het versleutelen van een end-to-end-verbinding tussen uw on-premises netwerk en uw virtuele netwerk (VNET) in Azure. Zie andere veelgestelde vragen hieronder.

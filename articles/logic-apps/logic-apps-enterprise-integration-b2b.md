@@ -8,14 +8,14 @@ ms.author: divswa
 ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 02/10/2020
-ms.openlocfilehash: 01b2bd464db51e255930fe83a3f4321687322275
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b576fc99e2f203bb3d690a8135ee76cee26b3de8
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77151120"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82792357"
 ---
-# <a name="receive-and-send-b2b-messages-by-using-azure-logic-apps-and-enterprise-integration-pack"></a>B2B-berichten ontvangen en verzenden met behulp van Azure Logic Apps en Enterprise Integration Pack
+# <a name="receive-and-confirm--b2b-as2-messages-by-using-azure-logic-apps-and-enterprise-integration-pack"></a>B2B AS2-berichten ontvangen en bevestigen met behulp van Azure Logic Apps en Enterprise Integration Pack
 
 Wanneer u een integratie account hebt dat handels partners en overeenkomsten definieert, kunt u een geautomatiseerde business to Business-werk stroom (B2B) maken waarmee berichten tussen handels partners worden uitgewisseld met behulp van [Azure Logic apps](../logic-apps/logic-apps-overview.md) met de [Enterprise Integration Pack](../logic-apps/logic-apps-enterprise-integration-overview.md). Azure Logic Apps werkt met connectors die ondersteuning bieden voor AS2-, X12-, EDIFACT-en RosettaNet-industrie standaard protocollen. U kunt deze connectors ook combi neren met andere [connectors die beschikbaar zijn in Logic apps](../connectors/apis-list.md), bijvoorbeeld Sales Force en Office 365 Outlook.
 

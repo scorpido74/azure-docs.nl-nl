@@ -1,6 +1,6 @@
 ---
-title: bestand opnemen
-description: bestand opnemen
+title: Include-bestand
+description: Include-bestand
 services: storage
 author: tamram
 ms.service: storage
@@ -8,14 +8,14 @@ ms.topic: include
 ms.date: 04/11/2019
 ms.author: rogara
 ms.custom: include file
-ms.openlocfilehash: 47bd550bbd8d75a06d38babe88b5a95f3790af50
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5fc106bfd97e8decd47ac7d43383907dcbbbda9c
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82106543"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82792973"
 ---
-## <a name="2-assign-access-permissions-to-an-identity"></a>2. toegangs machtigingen toewijzen aan een identiteit
+## <a name="2-assign-access-permissions-to-an-identity"></a>2 toegangs machtigingen toewijzen aan een identiteit
 
 Om toegang te krijgen tot Azure Files bronnen met verificatie op basis van de identiteit, moet een identiteit (een gebruiker, groep of Service-Principal) de benodigde machtigingen op het share niveau hebben. Dit proces is vergelijkbaar met het opgeven van machtigingen voor Windows share, waar u het type toegang opgeeft dat een bepaalde gebruiker heeft voor een bestands share. De richt lijnen in deze sectie laten zien hoe u machtigingen voor lezen, schrijven of verwijderen voor een bestands share toewijst aan een identiteit. 
 
@@ -28,7 +28,7 @@ We hebben drie ingebouwde rollen geïntroduceerd voor het verlenen van machtigin
 > [!IMPORTANT]
 > Volledig beheer van een bestands share, inclusief de mogelijkheid om eigenaar te worden van een bestand, vereist het gebruik van de sleutel van het opslag account. Beheer beheer wordt niet ondersteund met Azure AD-referenties.
 
-U kunt de Azure Portal, Power shell of Azure CLI gebruiken om de ingebouwde rollen toe te wijzen aan de Azure AD-identiteit van een gebruiker voor het verlenen van machtigingen op share niveau.
+U kunt de Azure Portal, Power shell of Azure CLI gebruiken om de ingebouwde rollen toe te wijzen aan de Azure AD-identiteit van een gebruiker voor het verlenen van machtigingen op share niveau. Houd er rekening mee dat de toewijzing van RBAC-rollen op share niveau enige tijd kan duren. 
 
 > [!NOTE]
 > Vergeet niet om [uw AD DS referenties te synchroniseren met Azure AD](../articles/active-directory/hybrid/how-to-connect-install-roadmap.md) als u van plan bent om uw on-premises AD DS voor verificatie te gebruiken. Wachtwoord-hash-synchronisatie van AD DS naar Azure AD is optioneel. Machtigingen op share niveau worden verleend aan de Azure AD-identiteit die is gesynchroniseerd met uw on-premises AD DS.
@@ -70,7 +70,7 @@ Voordat u het volgende voorbeeld script uitvoert, moet u de waarden van de tijde
 az role assignment create --role "<role-name>" --assignee <user-principal-name> --scope "/subscriptions/<subscription-id>/resourceGroups/<resource-group>/providers/Microsoft.Storage/storageAccounts/<storage-account>/fileServices/default/fileshares/<share-name>"
 ```
 
-## <a name="3-configure-ntfs-permissions-over-smb"></a>3. NTFS-machtigingen configureren via SMB 
+## <a name="3-configure-ntfs-permissions-over-smb"></a>3 NTFS-machtigingen via SMB configureren 
 Nadat u machtigingen op share niveau hebt toegewezen met RBAC, moet u de juiste NTFS-machtigingen toewijzen op het niveau root, Directory of file. U kunt machtigingen op share niveau beschouwen als de gate keeper op hoog niveau die bepaalt of een gebruiker toegang heeft tot de share. Terwijl NTFS-machtigingen op een meer gedetailleerd niveau handelen om te bepalen welke bewerkingen de gebruiker kan uitvoeren op het niveau van de map of het bestand.
 
 Azure Files ondersteunt de volledige set met NTFS Basic-en geavanceerde machtigingen. U kunt NTFS-machtigingen voor mappen en bestanden in een Azure-bestands share weer geven en configureren door de share te koppelen en vervolgens Windows Verkenner of de opdracht Windows [icacls](https://docs.microsoft.com/windows-server/administration/windows-commands/icacls) of [set-ACL](https://docs.microsoft.com/powershell/module/microsoft.powershell.security/set-acl) uit te voeren. 
@@ -119,7 +119,7 @@ icacls <mounted-drive-letter>: /grant <user-email>:(f)
 
 Zie voor meer informatie over het gebruik van icacls voor het instellen van NTFS-machtigingen en voor de verschillende typen ondersteunde machtigingen [de opdracht regel verwijzing voor icacls](https://docs.microsoft.com/windows-server/administration/windows-commands/icacls).
 
-## <a name="4-mount-a-file-share-from-a-domain-joined-vm"></a>4. een bestands share koppelen vanaf een virtuele machine die lid is van een domein
+## <a name="4-mount-a-file-share-from-a-domain-joined-vm"></a>4 een bestands share koppelen vanaf een virtuele machine die is gekoppeld aan een domein
 
 Met het volgende proces wordt gecontroleerd of uw bestands share en toegangs machtigingen juist zijn ingesteld en of u toegang hebt tot een Azure-bestands share vanaf een virtuele machine die lid is van een domein. Houd er rekening mee dat de toewijzing van RBAC-rollen op share niveau enige tijd kan duren. 
 

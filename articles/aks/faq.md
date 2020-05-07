@@ -2,13 +2,13 @@
 title: Veelgestelde vragen over Azure Kubernetes service (AKS)
 description: Vind antwoorden op enkele veelgestelde vragen over Azure Kubernetes service (AKS).
 ms.topic: conceptual
-ms.date: 10/02/2019
-ms.openlocfilehash: a58c3510d8937b209bf6c73d33237785ecab161d
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.date: 05/04/2020
+ms.openlocfilehash: 112060e72f36bfe5d11a997fc4161e26c36259ff
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82206602"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82854242"
 ---
 # <a name="frequently-asked-questions-about-azure-kubernetes-service-aks"></a>Veelgestelde vragen over AKS (Azure Kubernetes Service)
 
@@ -18,21 +18,20 @@ Dit artikel behandelt Veelgestelde vragen over Azure Kubernetes service (AKS).
 
 Zie [AKS-regio's en beschik baarheid][aks-regions]voor een volledige lijst met beschik bare regio's.
 
-## <a name="does-aks-support-node-autoscaling"></a>Biedt AKS ondersteuning voor automatisch schalen van knoop punten?
+## <a name="can-i-spread-an-aks-cluster-across-regions"></a>Kan ik een AKS-cluster spreiden over regio's?
 
-Ja, de mogelijkheid om agent knooppunten horizon taal automatisch te schalen in AKS is momenteel beschikbaar als preview-versie. Zie [een cluster automatisch schalen om te voldoen aan de toepassings vereisten in AKS][aks-cluster-autoscaler] voor instructies. AKS automatisch schalen is gebaseerd op de [Kubernetes autoscaler][auto-scaler].
+Nee. AKS-clusters zijn regionale bronnen en kunnen geen regio's omvatten. Zie [Aanbevolen procedures voor bedrijfs continuïteit en herstel na nood gevallen][bcdr-bestpractices] voor meer informatie over het maken van een architectuur met meerdere regio's.
 
-## <a name="can-i-deploy-aks-into-my-existing-virtual-network"></a>Kan ik AKS implementeren in mijn bestaande virtuele netwerk?
+## <a name="can-i-spread-an-aks-cluster-across-availability-zones"></a>Kan ik een AKS-cluster spreiden over beschikbaarheids zones?
 
-Ja, u kunt een AKS-cluster implementeren in een bestaand virtueel netwerk met behulp van de [geavanceerde netwerk functie][aks-advanced-networking].
+Ja. U kunt een AKS-cluster implementeren in een of meer [beschikbaarheids zones][availability-zones] in [regio's die ze ondersteunen][az-regions].
 
 ## <a name="can-i-limit-who-has-access-to-the-kubernetes-api-server"></a>Kan ik de toegang tot de Kubernetes-API-server beperken?
 
-Ja, u kunt de toegang tot de Kubernetes API-server beperken met behulp van door de [API server geautoriseerde IP-adresbereiken][api-server-authorized-ip-ranges].
+Ja. Er zijn twee opties voor het beperken van de toegang tot de API-server:
 
-## <a name="can-i-make-the-kubernetes-api-server-accessible-only-within-my-virtual-network"></a>Kan ik de Kubernetes API-server alleen toegankelijk maken binnen mijn virtuele netwerk?
-
-Op dit moment, maar dit is gepland. U kunt de voortgang volgen op de [AKS github opslag plaats][private-clusters-github-issue].
+- Gebruik [API server Authorized IP Ranges][api-server-authorized-ip-ranges] als u een openbaar eind punt voor de API-server wilt behouden, maar de toegang tot een set vertrouwde IP-bereiken wilt beperken.
+- Gebruik [een persoonlijk cluster][private-clusters] als u wilt beperken dat de API-server *alleen* toegankelijk is vanuit uw virtuele netwerk.
 
 ## <a name="can-i-have-different-vm-sizes-in-a-single-cluster"></a>Kan ik verschillende VM-grootten in één cluster hebben?
 
@@ -118,7 +117,7 @@ Label: ```"admissions.enforcer/disabled": "true"``` of aantekening:```"admission
 
 ## <a name="is-azure-key-vault-integrated-with-aks"></a>Is Azure Key Vault geïntegreerd met AKS?
 
-AKS is momenteel niet ingebouwd met Azure Key Vault. Met de [Azure Key Vault FlexVolume for Kubernetes-project][keyvault-flexvolume] kunt u echter rechtstreeks integratie van Kubernetes van Peul maken op Key Vault geheimen.
+AKS is momenteel niet ingebouwd met Azure Key Vault. De [Azure Key Vault provider voor CSI Secrets Store][csi-driver] maakt echter directe integratie van Kubernetes van peul tot Key Vault geheimen.
 
 ## <a name="can-i-run-windows-server-containers-on-aks"></a>Kan ik Windows Server-containers op AKS uitvoeren?
 
@@ -131,19 +130,6 @@ Windows Server-ondersteuning voor de knooppunt groep bevat enkele beperkingen di
 In een Service Level Agreement (SLA) stemt de provider ermee in om de kosten van de service te vergoeden als niet aan het gepubliceerde service niveau wordt voldaan. Omdat AKS gratis is, zijn er geen kosten beschikbaar voor schadeloosstelling, dus AKS heeft geen formele SLA. AKS zoekt echter de beschik baarheid van ten minste 99,5 procent voor de Kubernetes-API-server.
 
 Het is belang rijk dat u het onderscheid herkent tussen de beschik baarheid van de AKS-service, die verwijst naar de uptime van het Kubernetes-besturings vlak en de beschik baarheid van uw specifieke werk belasting die wordt uitgevoerd op Azure Virtual Machines. Hoewel het besturings vlak mogelijk niet beschikbaar is als het besturings element niet gereed is, kunnen de werk belastingen van uw cluster die worden uitgevoerd op virtuele machines van Azure, nog steeds functioneren. De gegeven Azure-Vm's zijn betaalde bronnen die door een financiële SLA worden ondersteund. Lees [hier meer informatie](https://azure.microsoft.com/support/legal/sla/virtual-machines/v1_8/) over de sla van de Azure-VM en hoe u deze Beschik baarheid kunt verg Roten met functies als [Beschikbaarheidszones][availability-zones].
-
-## <a name="why-cant-i-set-maxpods-below-30"></a>Waarom kan ik maxPods minder dan 30 instellen?
-
-In AKS kunt u de `maxPods` waarde instellen wanneer u het cluster maakt met behulp van de Azure CLI-en Azure Resource Manager-sjablonen. Zowel Kubenet als Azure CNI vereisen echter een *minimum waarde* (gevalideerd tijdens de aanmaak):
-
-| Netwerken | Minimum | Maximum |
-| -- | :--: | :--: |
-| Azure-CNI | 30 | 250 |
-| Kubenet | 30 | 110 |
-
-Omdat AKS een beheerde service is, implementeren en beheren we invoeg toepassingen en peulen als onderdeel van het cluster. In het verleden kunnen gebruikers een `maxPods` waarde opgeven die lager is dan de waarde die het beheerde vereiste is om uit te voeren (bijvoorbeeld 30). AKS berekent nu het minimum aantal van het hoogste getal door gebruik te maken van de volgende formule: ((maxPods of (maxPods * vm_count)) > beheerde invoeg toepassing voor het minimum.
-
-Gebruikers kunnen de minimale `maxPods` validatie niet overschrijven.
 
 ## <a name="can-i-apply-azure-reservation-discounts-to-my-aks-agent-nodes"></a>Kan ik Azure-reserverings kortingen Toep assen op mijn AKS-agent knooppunten?
 
@@ -181,7 +167,7 @@ Dit wordt meestal veroorzaakt door gebruikers die een of meer netwerk beveiligin
 
 Controleer of uw Service-Principal niet is verlopen.  Zie de referenties van de [AKS-Service-Principal](https://docs.microsoft.com/azure/aks/kubernetes-service-principal) en de AKS- [Update](https://docs.microsoft.com/azure/aks/update-credentials).
 
-## <a name="my-cluster-was-working-but-suddenly-can-not-provision-loadbalancers-mount-pvcs-etc"></a>Mijn cluster werkte, maar kan plotseling geen LoadBalancers, Mount-Pvc's, enzovoort inrichten? 
+## <a name="my-cluster-was-working-but-suddenly-cannot-provision-loadbalancers-mount-pvcs-etc"></a>Mijn cluster werkte, maar u kunt plotseling geen LoadBalancers, Mount-Pvc's, enzovoort inrichten. 
 
 Controleer of uw Service-Principal niet is verlopen.  Zie de referenties van de [AKS-Service-Principal](https://docs.microsoft.com/azure/aks/kubernetes-service-principal) en de AKS- [Update](https://docs.microsoft.com/azure/aks/update-credentials).
 
@@ -219,12 +205,15 @@ Geen AKS is een beheerde service en het bewerken van de IaaS-resources wordt nie
 [api-server-authorized-ip-ranges]: ./api-server-authorized-ip-ranges.md
 [multi-node-pools]: ./use-multiple-node-pools.md
 [availability-zones]: ./availability-zones.md
+[private-clusters]: ./private-clusters.md
+[bcdr-bestpractices]: ./operator-best-practices-multi-region.md#plan-for-multiregion-deployment
+[availability-zones]: ./availability-zones.md
+[az-regions]: ../availability-zones/az-region.md
 
 <!-- LINKS - external -->
 [aks-regions]: https://azure.microsoft.com/global-infrastructure/services/?products=kubernetes-service
 [auto-scaler]: https://github.com/kubernetes/autoscaler
 [cordon-drain]: https://kubernetes.io/docs/tasks/administer-cluster/safely-drain-node/
-[hexadite]: https://github.com/Hexadite/acs-keyvault-agent
 [admission-controllers]: https://kubernetes.io/docs/reference/access-authn-authz/admission-controllers/
-[keyvault-flexvolume]: https://github.com/Azure/kubernetes-keyvault-flexvol
 [private-clusters-github-issue]: https://github.com/Azure/AKS/issues/948
+[csi-driver]: https://github.com/Azure/secrets-store-csi-driver-provider-azure

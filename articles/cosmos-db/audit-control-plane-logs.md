@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 04/23/2020
 ms.author: sngun
-ms.openlocfilehash: d380e4c025b35f0000e13c62422d54dc10079524
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a5df7866f7897109dbd7a0ea8a52b857ab671875
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82192864"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82735348"
 ---
 # <a name="how-to-audit-azure-cosmos-db-control-plane-operations"></a>Bewerkingen van Azure Cosmos DB Control-vlak controleren
 
@@ -27,7 +27,9 @@ Hier volgen enkele voor beelden van scenario's waarbij acties voor het beheren v
 
 ## <a name="disable-key-based-metadata-write-access"></a>Schrijf toegang op basis van sleutels uitschakelen
 
-Voordat u de bewerkingen van het besturings vlak controleert in Azure Cosmos DB, schakelt u de schrijf toegang op basis van de meta gegevens uit voor uw account. Wanneer op sleutels gebaseerde meta gegevens schrijf toegang is uitgeschakeld, kunnen clients die verbinding maken met het Azure Cosmos-account via account sleutels geen toegang krijgen tot het account. U kunt schrijf toegang uitschakelen door de `disableKeyBasedMetadataWriteAccess` eigenschap in te stellen op True. Nadat u deze eigenschap hebt ingesteld, kunnen wijzigingen aan resources worden aangebracht van een gebruiker met de juiste RBAC-rol (op rollen gebaseerd toegangs beheer) en referenties. Zie het artikel [wijzigingen van sdk's voor komen](role-based-access-control.md#preventing-changes-from-cosmos-sdk) voor meer informatie over het instellen van deze eigenschap. Nadat u schrijf toegang hebt uitgeschakeld, blijven de op SDK gebaseerde wijzigingen in de door Voer, de index blijft werken.
+Voordat u de bewerkingen van het besturings vlak controleert in Azure Cosmos DB, schakelt u de schrijf toegang op basis van de meta gegevens uit voor uw account. Wanneer op sleutels gebaseerde meta gegevens schrijf toegang is uitgeschakeld, kunnen clients die verbinding maken met het Azure Cosmos-account via account sleutels geen toegang krijgen tot het account. U kunt schrijf toegang uitschakelen door de `disableKeyBasedMetadataWriteAccess` eigenschap in te stellen op True. Nadat u deze eigenschap hebt ingesteld, kunnen wijzigingen aan resources worden aangebracht van een gebruiker met de juiste RBAC-rol (op rollen gebaseerd toegangs beheer) en referenties. Zie het artikel [wijzigingen van sdk's voor komen](role-based-access-control.md#preventing-changes-from-cosmos-sdk) voor meer informatie over het instellen van deze eigenschap. 
+
+Als de `disableKeyBasedMetadataWriteAccess` is ingeschakeld en de op SDK gebaseerde clients Create-of update-bewerkingen uitvoeren, is een fout *' bewerking ' post ' op resource ' ContainerNameorDatabaseName ' niet toegestaan via Azure Cosmos DB-eind punt* wordt geretourneerd. U moet toegang tot dergelijke bewerkingen voor uw account inschakelen of de bewerkingen voor maken/bijwerken uitvoeren via Azure Resource Manager, Azure CLI of Azure Power shell. Als u wilt overschakelen, stelt u de disableKeyBasedMetadataWriteAccess in op **False** door gebruik te maken van Azure CLI, zoals beschreven in het artikel [Wijzigingen verhinderen in Cosmos SDK](role-based-access-control.md#preventing-changes-from-cosmos-sdk) . Zorg ervoor dat u de waarde `disableKeyBasedMetadataWriteAccess` onwaar wijzigt in plaats van waar.
 
 Houd rekening met de volgende punten wanneer u de schrijf toegang voor meta gegevens uitschakelt:
 
@@ -65,7 +67,7 @@ Nadat u logboek registratie hebt ingeschakeld, gebruikt u de volgende stappen om
    | where TimeGenerated >= ago(1h)
    ```
 
-De volgende scherm afbeeldingen vastleggen Logboeken wanneer een VNET wordt toegevoegd aan een Azure Cosmos-account:
+De volgende scherm afbeeldingen vastleggen Logboeken wanneer een consistentie niveau wordt gewijzigd voor een Azure Cosmos-account:
 
 ![Besturings vlak Logboeken wanneer een VNet wordt toegevoegd](./media/audit-control-plane-logs/add-ip-filter-logs.png)
 
@@ -149,8 +151,25 @@ Voor API-specifieke bewerkingen wordt de bewerking benoemd met de volgende indel
 
 * CassandraKeyspacesUpdateStart, CassandraKeyspacesUpdateComplete
 * CassandraKeyspacesThroughputUpdateStart, CassandraKeyspacesThroughputUpdateComplete
+* SqlContainersUpdateStart, SqlContainersUpdateComplete
 
 De eigenschap *Resourcedetails* bevat de gehele resource hoofdtekst als een aanvraag lading en bevat alle eigenschappen die moeten worden bijgewerkt
+
+## <a name="diagnostic-log-queries-for-control-plane-operations"></a>Diagnostische logboek query's voor beheer vlak bewerkingen
+
+Hier volgen enkele voor beelden van het ophalen van Diagnostische logboeken voor bewerkingen in het besturings vlak:
+
+```kusto
+AzureDiagnostics 
+| where Category =="ControlPlaneRequests"
+| where  OperationName startswith "SqlContainersUpdateStart"
+```
+
+```kusto
+AzureDiagnostics 
+| where Category =="ControlPlaneRequests"
+| where  OperationName startswith "SqlContainersThroughputUpdateStart"
+```
 
 ## <a name="next-steps"></a>Volgende stappen
 

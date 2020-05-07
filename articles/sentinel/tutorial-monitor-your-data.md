@@ -1,6 +1,6 @@
 ---
-title: Visualiseer uw gegevens met behulp van Dash boards op basis van Azure Monitor werkmappen in azure Sentinel | Microsoft Docs
-description: Gebruik deze zelf studie om te leren hoe u uw gegevens kunt visualiseren met behulp van Dash boards op basis van werkmappen in azure Sentinel.
+title: Uw gegevens visualiseren met behulp van Azure Monitor werkmappen in azure Sentinel | Microsoft Docs
+description: Gebruik deze zelf studie om te leren hoe u uw gegevens kunt visualiseren met behulp van werkmappen in azure Sentinel.
 services: sentinel
 documentationcenter: na
 author: yelevin
@@ -12,20 +12,20 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/01/2020
+ms.date: 05/04/2020
 ms.author: yelevin
-ms.openlocfilehash: b4461ac43e9356536914b345ef28f5de62fc9f82
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f145b75ba351121bf750f90dbc0a7df382ca04b1
+ms.sourcegitcommit: d9cd51c3a7ac46f256db575c1dfe1303b6460d04
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77585217"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82739157"
 ---
 # <a name="tutorial-visualize-and-monitor-your-data"></a>Zelf studie: uw gegevens visualiseren en bewaken
 
 
 
-Nadat u [uw gegevens bronnen](quickstart-onboard.md) aan Azure Sentinel hebt gekoppeld, kunt u de gegevens visualiseren en bewaken met behulp van de Azure Sentinel-acceptatie van Azure monitor werkmappen, die veelzijdigheid biedt bij het maken van aangepaste Dash boards. Hoewel de werkmappen anders worden weer gegeven in de Azure-Sentinel, kan het nuttig zijn om te zien hoe u [interactieve rapporten met Azure monitor werkmappen maakt](../azure-monitor/app/usage-workbooks.md). Met Azure Sentinel kunt u aangepaste werkmappen maken voor uw gegevens en ook met ingebouwde werkmap sjablonen, zodat u snel inzicht kunt krijgen in uw gegevens zodra u verbinding maakt met een gegevens bron.
+Zodra u [uw gegevens bronnen](quickstart-onboard.md) aan Azure Sentinel hebt gekoppeld, kunt u de gegevens visualiseren en bewaken met behulp van de Azure Sentinel-acceptatie van Azure monitor werkmappen, die veelzijdigheid biedt bij het maken van aangepaste Dash boards. Hoewel de werkmappen anders worden weer gegeven in de Azure-Sentinel, kan het nuttig zijn om te zien hoe u [interactieve rapporten met Azure monitor werkmappen maakt](../azure-monitor/app/usage-workbooks.md). Met Azure Sentinel kunt u aangepaste werkmappen maken voor uw gegevens en ook met ingebouwde werkmap sjablonen, zodat u snel inzicht kunt krijgen in uw gegevens zodra u verbinding maakt met een gegevens bron.
 
 
 Deze zelf studie helpt u bij het visualiseren van uw gegevens in azure Sentinel.
@@ -38,7 +38,7 @@ Deze zelf studie helpt u bij het visualiseren van uw gegevens in azure Sentinel.
 - U moet mini maal over machtigingen voor de werkmap lezer of werkmap beschikken voor de resource groep van de Azure Sentinel-werk ruimte.
 
 > [!NOTE]
-> De werkmappen die u in azure Sentinel kunt zien, worden opgeslagen in de resource groep voor de Azure-Sentinel-werk ruimte en worden gelabeld door de werk ruimte waarin ze zijn gemaakt.
+> De werkmappen die u in azure Sentinel kunt zien, worden opgeslagen in de resource groep van de Azure-Sentinel-werk ruimte en worden gelabeld door de werk ruimte waarin ze zijn gemaakt.
 
 ## <a name="use-built-in-workbooks"></a>Ingebouwde werkmappen gebruiken
 

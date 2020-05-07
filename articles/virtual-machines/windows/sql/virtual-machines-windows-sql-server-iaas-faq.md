@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 08/05/2019
 ms.author: mathoma
-ms.openlocfilehash: 0d6d69b82e80ff9bc33e49302cf59766b9c2e8d4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5e1f61641eed0584ecb5bb33f1a510c7df6e60e3
+ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81270822"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82839076"
 ---
 # <a name="frequently-asked-questions-for-sql-server-running-on-windows-virtual-machines-in-azure"></a>Veelgestelde vragen over SQL Server op virtuele Windows-machines in Azure
 
@@ -52,10 +52,14 @@ In dit artikel vindt u antwoorden op enkele van de meest voorkomende vragen over
 1. **Is het mogelijk om een oudere installatie kopie te implementeren van SQL Server die niet zichtbaar is in de Azure Portal?**
 
    Ja, met behulp van Power shell. Zie [SQL Server virtuele machines inrichten met Azure PowerShell](virtual-machines-windows-ps-sql-create.md)voor meer informatie over het implementeren van SQL Server-vm's met behulp van Power shell.
+   
+1. **Is het mogelijk om een gegeneraliseerde Azure SQL Server Marketplace-installatie kopie van mijn SQL Server VM te maken en deze te gebruiken om Vm's te implementeren?**
 
-1. **Hoe kan ik SQL Server generaliseren op een virtuele Azure-machine en deze gebruiken om nieuwe virtuele machines te implementeren?**
+   Ja, maar u moet [elke SQL Server virtuele machine registreren bij de resource provider SQL Server VM](virtual-machines-windows-sql-register-with-resource-provider.md) om uw SQL Server-VM in de portal te beheren, evenals functies als automatische patches en automatisch maken van back-ups. Wanneer u zich registreert bij de resource provider, moet u ook het licentie type opgeven voor elke SQL Server VM.
 
-   U kunt een Windows Server-VM implementeren (zonder dat er SQL Server geïnstalleerd) en het [SQL Sysprep](/sql/database-engine/install-windows/install-sql-server-using-sysprep?view=sql-server-ver15) -proces gebruiken om SQL Server op Azure VM (Windows) met de SQL Server installatie media te generaliseren. Klanten met [Software Assurance](https://www.microsoft.com/licensing/licensing-programs/software-assurance-default?rtc=1&activetab=software-assurance-default-pivot%3aprimaryr3) kunnen hun installatie media verkrijgen via het [Volume Licensing Center](https://www.microsoft.com/Licensing/servicecenter/default.aspx). Klanten die geen Software Assurance hebben, kunnen het installatie medium van een Marketplace SQL Server VM-installatie kopie met de gewenste versie gebruiken.
+1. **Hoe kan ik generaliseer SQL Server op Azure VM en gebruiken om nieuwe virtuele machines te implementeren?**
+
+   U kunt een Windows Server-VM implementeren (zonder SQL Server geïnstalleerd) en het [SQL Sysprep](/sql/database-engine/install-windows/install-sql-server-using-sysprep?view=sql-server-ver15) -proces gebruiken om SQL Server op Azure VM (Windows) met de SQL Server installatie media te generaliseren. Klanten met [Software Assurance](https://www.microsoft.com/licensing/licensing-programs/software-assurance-default?rtc=1&activetab=software-assurance-default-pivot%3aprimaryr3) kunnen hun installatie media verkrijgen via het [Volume Licensing Center](https://www.microsoft.com/Licensing/servicecenter/default.aspx). Klanten die geen Software Assurance hebben, kunnen het installatie medium van een Marketplace SQL Server VM-installatie kopie met de gewenste versie gebruiken.
 
    U kunt ook een van de SQL Server-installatie kopieën gebruiken Azure Marketplace om te generaliseren SQL Server op Azure VM. Houd er rekening mee dat u de volgende register sleutel in de bron installatie kopie moet verwijderen voordat u uw eigen installatie kopie maakt. Als u dit niet doet, kan dit ertoe leiden dat de SQL Server Setup Boots trap-map en/of de SQL IaaS-extensie in de status mislukt.
 
@@ -63,7 +67,7 @@ In dit artikel vindt u antwoorden op enkele van de meest voorkomende vragen over
    `Computer\HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Setup\SysPrepExternal\Specialize`
 
    > [!NOTE]
-   > We raden aan dat alle SQL Server Azure-Vm's, met inbegrip van deze die zijn geïmplementeerd vanuit aangepaste gegeneraliseerde installatie kopieën, worden [geregistreerd met een SQL VM-provider](/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-register-with-resource-provider?tabs=azure-cli%2Cbash) voor de naleving van de vereisten en om optionele functies te gebruiken, zoals automatische patching en automatische back-ups. U kunt hiermee ook [het licentie type](/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-ahb?tabs=azure-portal) voor elke SQL Server virtuele machine opgeven.
+   > SQL Server op virtuele machines van Azure, met inbegrip van de Vm's die zijn geïmplementeerd vanuit aangepaste gegeneraliseerde installatie kopieën, moeten worden [geregistreerd bij de resource provider van de SQL-VM](/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-register-with-resource-provider?tabs=azure-cli%2Cbash) om te voldoen aan de nalevings vereisten en om optionele functies te gebruiken, zoals automatische patches en automatische back-ups. De resource provider stelt u ook in staat [het licentie type](/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-ahb?tabs=azure-portal) voor elke SQL Server virtuele machine op te geven.
 
 1. **Kan ik mijn eigen VHD gebruiken om een SQL Server virtuele machine te implementeren?**
 
@@ -92,7 +96,7 @@ In dit artikel vindt u antwoorden op enkele van de meest voorkomende vragen over
 
 1. **Kan ik een VM wijzigen zodat mijn eigen SQL Server-licentie wordt gebruikt, wanneer de VM is gemaakt vanuit een van de Betalen per gebruik-installatiekopieën uit de galerie?**
 
-   Ja. U kunt eenvoudig een PAYG-galerie (betalen naar gebruik) overschakelen naar uw eigen licentie (BYOL) door de [Azure Hybrid Benefit](https://azure.microsoft.com/pricing/hybrid-benefit/faq/)in te scha kelen.  Zie [How to Change the License model for a SQL Server VM](virtual-machines-windows-sql-ahb.md)(Engelstalig) voor meer informatie. Deze faciliteit is momenteel alleen beschikbaar voor klanten met een open bare Cloud.
+   Ja. U kunt eenvoudig een PAYG-galerie (betalen naar gebruik) overschakelen naar uw eigen licentie (BYOL) door de [Azure Hybrid Benefit](https://azure.microsoft.com/pricing/hybrid-benefit/faq/)in te scha kelen.  Zie [How to Change the License model for a SQL Server VM](virtual-machines-windows-sql-ahb.md)(Engelstalig) voor meer informatie. Deze faciliteit is momenteel alleen beschikbaar voor open bare en Azure Government Cloud-klanten.
 
 1. **Treedt er downtime op voor SQL Server tijdens het schakelen tussen licentiemodellen?**
 
@@ -154,10 +158,7 @@ In dit artikel vindt u antwoorden op enkele van de meest voorkomende vragen over
 
 1. **Is het mogelijk om zelf-geïmplementeerde SQL Server Vm's te registreren bij de resource provider van SQL Server VM?**
 
-    Ja. Als u SQL Server vanaf uw eigen media hebt geïmplementeerd en de SQL IaaS-extensie hebt geïnstalleerd, kunt u uw SQL Server VM registreren bij de resource provider om de beheer baarheid van de SQL IaaS-uitbrei ding te verkrijgen. U kunt een zelf-geïmplementeerde SQL Server-VM echter niet converteren naar betalen per gebruik.
-
-
-   
+    Ja. Als u SQL Server vanaf uw eigen media hebt geïmplementeerd en de SQL IaaS-extensie hebt geïnstalleerd, kunt u uw SQL Server VM registreren bij de resource provider om de beheer baarheid van de SQL IaaS-uitbrei ding te verkrijgen.    
 
 
 ## <a name="administration"></a>Beheer

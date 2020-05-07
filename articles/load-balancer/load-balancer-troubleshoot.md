@@ -13,15 +13,15 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/28/2020
 ms.author: allensu
-ms.openlocfilehash: ca9b70bd71a618f8e3d5f4fe9504ba66a9f14c6f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: cf9fa48019ab88190175131b27f4a40e29eb5ed0
+ms.sourcegitcommit: c8a0fbfa74ef7d1fd4d5b2f88521c5b619eb25f8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76935483"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82801719"
 ---
 # <a name="troubleshoot-azure-load-balancer"></a>Problemen met Azure Load Balancer oplossen
-
+<p class="alert is-flex is-primary"><span class="has-padding-left-medium has-padding-top-extra-small"><a class="button is-primary" href="https://azurevirtualsupportagent.services.microsoft.com?content=fb23185b-6c56-d9f1-7ce1-758c978e08e1" target='_blank'>Begin</a></span>met<span class="has-padding-small">het snel oplossen van uw probleem door gebruik te maken van onze virtuele agent om <b>geautomatiseerde diagnostische gegevens</b> uit te voeren.</span> <div align="right"> <sub>Privacy Statement</sub> Privacyverklaring <span class="has-padding-small"> <a href="https://privacy.microsoft.com/privacystatement" target='_blank'></div></a></span></p>
 Op deze pagina vindt u informatie over het oplossen van problemen met basis-en standaard Veelgestelde vragen over Azure Load Balancer. Zie [Standard Load Balancer Overview](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-diagnostics)voor meer informatie over Standard Load Balancer.
 
 Wanneer de Load Balancer verbinding niet beschikbaar is, zijn de meest voorkomende symptomen als volgt: 
@@ -124,7 +124,7 @@ Als uw toepassing die wordt gehost in de back-end-VM van een Load Balancer probe
 
 ### <a name="cause-4-accessing-the-internal-load-balancer-frontend-from-the-participating-load-balancer-backend-pool-vm"></a>Oorzaak 4: toegang tot de interne Load Balancer-frontend van de deelnemende Load Balancer back-end-VM-groep
 
-Als er een intern Load Balancer is geconfigureerd in een VNet en een van de back-end-Vm's van de deel nemer probeert toegang te krijgen tot de interne Load Balancer frontend, kunnen er fouten optreden wanneer de stroom wordt toegewezen aan de oorspronkelijke virtuele machine. Een dergelijk scenario wordt niet ondersteund. Lees de [beperkingen](concepts-limitations.md#limitations) voor een gedetailleerde discussie.
+Als er een intern Load Balancer is geconfigureerd in een VNet en een van de back-end-Vm's van de deel nemer probeert toegang te krijgen tot de interne Load Balancer frontend, kunnen er fouten optreden wanneer de stroom wordt toegewezen aan de oorspronkelijke virtuele machine. Een dergelijk scenario wordt niet ondersteund. Lees de [beperkingen](concepts.md#limitations) voor een gedetailleerde discussie.
 
 **Oplossing** Er zijn verschillende manieren om dit scenario op te heffen, met inbegrip van het gebruik van een proxy. Evalueer Application Gateway of andere proxy's van derden (bijvoorbeeld nginx of haproxy). Zie [overzicht van Application Gateway](../application-gateway/application-gateway-introduction.md) voor meer informatie over Application Gateway.
 

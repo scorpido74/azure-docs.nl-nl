@@ -1,27 +1,20 @@
 ---
-title: bestand opnemen
-description: bestand opnemen
+title: Include-bestand
+description: Include-bestand
 services: virtual-machines
 author: cynthn
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 09/20/2018
+ms.date: 01/28/2020
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: 1ec3ecdafb8e475f5f13372789528612ccd7b8b9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0e8972b1b2bfaac12baee1ea823429749ed70461
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "66226015"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82792748"
 ---
-## <a name="using-rbac-to-share-images"></a>RBAC gebruiken om installatie kopieën te delen
-
-U kunt afbeeldingen in abonnementen delen met behulp van op rollen gebaseerde Access Control (RBAC). Elke gebruiker met lees machtigingen voor een installatie kopie versie, zelfs via abonnementen, kan een virtuele machine implementeren met de versie van de installatie kopie.
-
-Zie [toegang beheren met RBAC en Azure cli](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli)voor meer informatie over het delen van resources met RBAC.
-
-
 ## <a name="list-information"></a>Gegevens weer geven
 
 De locatie, status en andere informatie over de beschik bare afbeeldings galerieën ophalen met de [lijst AZ sig](/cli/azure/sig#az-sig-list).

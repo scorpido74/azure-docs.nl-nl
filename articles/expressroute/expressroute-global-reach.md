@@ -5,14 +5,14 @@ services: expressroute
 author: cherylmc
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 04/24/2020
+ms.date: 05/05/2020
 ms.author: cherylmc
-ms.openlocfilehash: 4c326a556530fd778c1178f11b79d2aba613b4c1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7e98f4a401a9fcab12bd7a276c47df67c7936b1d
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82136580"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82853412"
 ---
 # <a name="expressroute-global-reach"></a>ExpressRoute Global Reach
 ExpressRoute is een privé-en robuuste manier om uw on-premises netwerken te verbinden met Microsoft Cloud. U hebt toegang tot veel micro soft-Cloud Services, zoals Azure, en Office 365 vanuit uw privé Data Center of uw bedrijfs netwerk. Zo kunt u bijvoorbeeld een filiaal in San Francisco hebben met een ExpressRoute-circuit in Silicon dal en een ander filiaal in Londen met een ExpressRoute-circuit in dezelfde plaats. Beide filialen kunnen hoge snelheid hebben voor de verbinding met Azure-resources in VS West en UK-zuid. De filialen kunnen gegevens echter niet rechtstreeks met elkaar uitwisselen. Met andere woorden, 10.0.1.0/24 kan gegevens verzenden naar 10.0.3.0/24 en 10.0.4.0/24, maar niet op 10.0.2.0/24.
@@ -41,6 +41,7 @@ ExpressRoute Global Reach op dit moment wordt momenteel ondersteund op de volgen
 * Korea
 * Nederland
 * Nieuw-Zeeland
+* Noorwegen
 * Singapore
 * Zwitserland
 * Verenigd Koninkrijk

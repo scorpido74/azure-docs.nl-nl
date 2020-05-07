@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 03/18/2019
-ms.openlocfilehash: f68f973882af28d80b3a27bc4591c5ee932404a1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9c9ad45ac1cf59f05454cba0babff8c3b7368f72
+ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75443606"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82839110"
 ---
 # <a name="azure-stream-analytics-output-to-azure-sql-database"></a>Azure Stream Analytics uitvoer naar Azure SQL Database
 
@@ -24,7 +24,7 @@ Hier vindt u enkele configuraties binnen elke service die de algehele door Voer 
 
 ## <a name="azure-stream-analytics"></a>Azure Stream Analytics
 
-- **Partities overnemen** : met deze configuratie optie voor SQL-uitvoer kunt u het partitie schema van uw vorige query stap of-invoer overnemen. Als u deze functie inschakelt en schrijft naar een tabel op basis van een schijf en een [volledig parallelle](stream-analytics-parallelization.md#embarrassingly-parallel-jobs) topologie voor uw taak hebt, wordt verwacht dat u betere door voeren ziet. Deze partitionering vindt al veel andere [uitvoer](stream-analytics-parallelization.md#partitions-in-sources-and-sinks)plaats. Tabel vergrendeling (TABLOCK hebt) is ook uitgeschakeld voor bulk toevoegingen die zijn gemaakt met deze optie.
+- **Partities overnemen** : met deze configuratie optie voor SQL-uitvoer kunt u het partitie schema van uw vorige query stap of-invoer overnemen. Als u deze functie inschakelt en schrijft naar een tabel op basis van een schijf en een [volledig parallelle](stream-analytics-parallelization.md#embarrassingly-parallel-jobs) topologie voor uw taak hebt, wordt verwacht dat u betere door voeren ziet. Deze partitionering vindt al veel andere [uitvoer](stream-analytics-parallelization.md#partitions-in-inputs-and-outputs)plaats. Tabel vergrendeling (TABLOCK hebt) is ook uitgeschakeld voor bulk toevoegingen die zijn gemaakt met deze optie.
 
 > [!NOTE] 
 > Wanneer er meer dan 8 invoer partities zijn, is het overnemen van het schema voor de invoer partitie mogelijk niet de juiste keuze. Deze bovengrens is waargenomen in een tabel met één identiteits kolom en een geclusterde index. In dit geval kunt u overwegen om het aantal uitvoer schrijvers expliciet op te geven [in 8 in](https://docs.microsoft.com/stream-analytics-query/into-azure-stream-analytics#into-shard-count) uw query. Uw opmerkingen zijn afhankelijk van het schema en de keuze van de indexen.

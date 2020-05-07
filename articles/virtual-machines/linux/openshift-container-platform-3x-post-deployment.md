@@ -85,7 +85,7 @@ In Azure Portal:
 
    ![App-registratie toegang](media/openshift-post-deployment/app-registration-access.png)
 
-8. Selecteer **Done**.
+8. Selecteer **Voltooid**.
 
 ### <a name="configure-openshift-for-azure-ad-authentication"></a>Open Shift configureren voor Azure AD-verificatie
 

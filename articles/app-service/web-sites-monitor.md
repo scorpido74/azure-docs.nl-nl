@@ -4,15 +4,15 @@ description: Meer informatie over het bewaken van apps in Azure App Service met 
 author: btardif
 ms.assetid: d273da4e-07de-48e0-b99d-4020d84a425e
 ms.topic: article
-ms.date: 01/11/2019
+ms.date: 04/23/2020
 ms.author: byvinyal
 ms.custom: seodec18
-ms.openlocfilehash: 8baefcbfa1eb34bc6cd37e4325d9a9bfc11e2d20
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7205f8a842f2086b1cf3a6bbf76c2df48ed679e9
+ms.sourcegitcommit: 291b2972c7f28667dc58f66bbe9d9f7d11434ec1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82181219"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82738096"
 ---
 # <a name="monitor-apps-in-azure-app-service"></a>Apps in Azure App Service bewaken
 [Azure app service](https://go.microsoft.com/fwlink/?LinkId=529714) biedt ingebouwde functionaliteit voor het controleren van web apps, mobiele apps en api's in de [Azure Portal](https://portal.azure.com).
@@ -49,7 +49,7 @@ Als een app de *CPU (kort)*, *CPU (dag)* of *bandbreedte* quotum overschrijdt, w
 
 ![403-fout bericht][http403]
 
-Als het geheugen quotum van de app wordt overschreden, wordt de app opnieuw gestart.
+Als het geheugen quotum van de app wordt overschreden, wordt de app tijdelijk gestopt.
 
 Als het bestandssysteem quotum wordt overschreden, mislukt elke schrijf bewerking. Fouten bij schrijf bewerkingen zijn onder andere schrijf bewerkingen naar Logboeken.
 
@@ -131,8 +131,7 @@ Er zijn twee metrische gegevens die het CPU-gebruik weer spie gelen:
 **CPU-percentage**: handig voor apps die worden gehost in Basic-, Standard-en Premium-abonnementen, omdat ze kunnen worden uitgeschaald. CPU-percentage is een goede indicatie van het totale gebruik voor alle exemplaren.
 
 ## <a name="metrics-granularity-and-retention-policy"></a>Granulatie van metrische gegevens en bewaar beleid
-
-Metrische gegevens voor een app-en app service-plan worden vastgelegd en geaggregeerd door de service. Metrische gegevens worden 90 dagen bewaard.
+Metrische gegevens voor een app-en app service-plan worden geregistreerd en geaggregeerd door de service en [bewaard volgens deze regels](../azure-monitor/platform/data-platform-metrics.md#retention-of-metrics).
 
 ## <a name="monitoring-quotas-and-metrics-in-the-azure-portal"></a>Quota en metrische gegevens bewaken in de Azure Portal
 Als u de status van de verschillende quota's en metrische gegevens wilt bekijken die van invloed zijn op een app, gaat u naar de [Azure Portal](https://portal.azure.com).

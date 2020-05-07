@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: josels
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: 1ccfb1b008a7e3e48f56b1af62087d303522ed73
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 49bd251b7f76a844a0d3fd1b1a09f7e15c5e7ddb
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81676733"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82792204"
 ---
 # <a name="quickstart-create-an-azure-synapse-analytics-workspace-preview"></a>Snelstartgids: een Azure Synapse Analytics-werk ruimte maken (preview)
 
@@ -41,7 +41,7 @@ Meld u aan bij de [Azure Portal](https://portal.azure.com/)
     | Instelling | Voorgestelde waarde | Beschrijving |
     | :------ | :-------------- | :---------- |
     | **Abonnement** | *Uw abonnement* | Zie [Abonnementen](https://account.windowsazure.com/Subscriptions) voor meer informatie over uw abonnementen. |
-    | **Resourcegroep** | *Een resource groep* | Zie [Naming conventions](/azure/architecture/best-practices/resource-naming.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) (Naamgevingsconventies) voor geldige namen van resourcegroepen. |
+    | **Resourcegroep** | *Een resource groep* | Zie [Naming conventions](/azure/architecture/best-practices/resource-naming?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) (Naamgevingsconventies) voor geldige namen van resourcegroepen. |
     | **Werkruimtenaam** | mysampleworkspace | Hiermee geeft u de naam van de werk ruimte, die ook wordt gebruikt voor verbindings eindpunten.|
     | **Regio** | VS - oost 2 | Hiermee geeft u de locatie van de werk ruimte op.|
     | **Data Lake Storage Gen2** | Account`storage account name` </br> Bestands systeem:`root file system to use` | Hiermee geeft u de naam van het opslag account van ADLS Gen2 moet worden gebruikt als primaire opslag en het bestands systeem dat moet worden gebruikt.|

@@ -1,22 +1,22 @@
 ---
-title: Marketplace Insights-dash board in Commercial Marketplace Analytics op partner centrum
-description: Krijg toegang tot een overzicht van Marketplace Web Analytics, waarmee uitgevers de klant betrokkenheid kunnen meten in AppSource en Azure Marketplace-winkel.
+title: Marketplace Insights-micro soft Commercial Marketplace
+description: Krijg toegang tot een overzicht van Marketplace Web Analytics, waarmee u de betrokkenheid van klanten in Microsoft AppSource en Azure Marketplace kunt meten.
 author: dsindona
 ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 12/16/2019
-ms.openlocfilehash: 05389f0aea7e2637dd28281236e7fd7ec2b412fd
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: cecff7347189c5e5b964e10439297bce405810b7
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81251704"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82857924"
 ---
-# <a name="marketplace-insights-dashboard-in-commercial-marketplace-analytics"></a>Marketplace Insights-dash board in commerciële Marketplace-analyse
+# <a name="marketplace-insights-dashboard-in-partner-center"></a>Marketplace Insights-dash board in partner centrum
 
-Dit artikel bevat informatie over het Marketplace Insights-dash board in het partner centrum. In dit dash board wordt een samen vatting weer gegeven van Marketplace Web Analytics, waarmee uitgevers klant betrokkenheid kunnen meten voor hun respectieve product detail pagina's die worden vermeld op de Marketplace-winkels: AppSource en Azure Marketplace.
+Dit artikel bevat informatie over het Marketplace Insights-dash board in het partner centrum. In dit dash board wordt een samen vatting weer gegeven van Marketplace Web Analytics, waarmee uitgevers klant betrokkenheid kunnen meten voor hun respectieve product detail pagina's die worden vermeld op de Marketplace-winkels: Microsoft AppSource en Azure Marketplace.
 
 ## <a name="marketplace-insights-dashboard"></a>Dashboard voor Marketplace-inzichten
 

@@ -3,12 +3,12 @@ title: Ondersteunings matrix voor back-up van Azure-bestands share
 description: Hierin wordt een overzicht gegeven van de ondersteunings instellingen en beperkingen bij het maken van back-ups van Azure-bestands shares.
 ms.topic: conceptual
 ms.date: 1/26/2020
-ms.openlocfilehash: 3f154f92d8d094654301bc319003adc22299017b
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
-ms.translationtype: HT
+ms.openlocfilehash: b5bfae9454464bc8d11cef3bd346861e13822046
+ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82207986"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82838566"
 ---
 # <a name="support-matrix-for-azure-file-share-backup"></a>Ondersteunings matrix voor back-up van Azure-bestands share
 
@@ -18,9 +18,9 @@ U kunt de [Azure backup-service](https://docs.microsoft.com/azure/backup/backup-
 
 Back-ups voor Azure-bestands shares zijn beschikbaar in de volgende geografische gebieden:
 
-| GA-regio's | Ondersteunde regio's, maar geen GA                                                      |
+| GA-regio's | Ondersteunde regio's (als onderdeel van de preview-versie) maar nog niet                                                      |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| Australië-Zuid-Oost (ASE), Canada-centraal (CNC), VS-West-Centraal (WCUS), VS-West 2 (WUS 2), India Zuid (invoeg toepassingen), Noord-Centraal VS (NCUS), Japan-Oost (JPE), Brazilië-zuid (BRS), Zuid Azië-oost (SEA), Zwitserland-west (SZW), UAE-centraal (UAC), Noor wegen Oost (NAANBEVOLEN), India (ACL)                                                  |Australië-oost (AE), Canada-oost (CE), Azië-oost (EA), VS-Oost (EUS), VS-Oost 2 (EUS2), Japan-West (JPW), India Central (INC), Korea-centraal (KRC), Korea-zuid (KRS), Europa-noord (NE), Zuid-Centraal VS (SCUS), UK-zuid (UKS), UK-west (UKW), Europa-west (WE), VS-West (WUS), US Gov-Arizona (UGA), US gov-Texas (UGT), US Gov-Virginia (UGV), Zuid-Afrika-noord (SAN) , UAE-noord (UAN), Frankrijk-centraal (FRC), Duitsland-noord (GN), Duitsland-west-centraal (GWC), Zuid-Afrika-west (zaag), Noor wegen West (NWW), Zwitserland-noord (SZN), VS-centraal (CUS)           |
+| Australië-Zuid-Oost (ASE), Canada-centraal (CNC), VS-West-Centraal (WCUS), VS-West 2 (WUS 2), India Zuid (INS), Noord-Centraal VS (NCUS), Japan-Oost (JPE), Brazilië-zuid (BRS), Zuid-Azië-oost (SEA), Zwitserland-west (SZW), UAE-centraal (UAC), Noor wegen Oost (NAANBEVOLEN), India-West (INW), Australië-centraal (ACL), Korea-centraal (KRC), Japan (JPW), Zuid-Afrika-Noord (SAN) , Korea-zuid (KRS), Duitsland-noord (GN), Noor wegen West (NWW), Zuid-Afrika-west (zaag), Zwitserland-noord (SZN), Duitsland-west-centraal (GWC), UAE-noord (UAN), Frankrijk-centraal (FRC), India centraal (INC.), Canada-oost (CNE), Azië-oost (EA), Australië-oost (AE), Central VS (), VS-West (WUS)                                                  |  VS-Oost (EUS), VS-Oost 2 (EUS2), Europa-noord (NE), Zuid-Centraal VS (SCUS), UK-zuid (UKS), Europa-west (WE), US Gov-Arizona (UGA), US Gov-Texas (UGT), US Gov-Virginia (UGV)           |
 
 ## <a name="supported-storage-accounts"></a>Ondersteunde opslagaccounts
 

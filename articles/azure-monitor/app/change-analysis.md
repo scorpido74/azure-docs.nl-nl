@@ -4,13 +4,13 @@ description: Toepassings wijzigingen in Azure Monitor gebruiken om problemen met
 ms.topic: conceptual
 author: cawams
 ms.author: cawa
-ms.date: 05/07/2019
-ms.openlocfilehash: 036b8c084bdfdc11c02274758c550c76bdc7b1e7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 05/04/2020
+ms.openlocfilehash: c287a2315f2b2319a6873ce84ee0e4e48bec8444
+ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80348737"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82836747"
 ---
 # <a name="use-application-change-analysis-preview-in-azure-monitor"></a>Toepassings wijzigings analyse (preview) gebruiken in Azure Monitor
 
@@ -29,19 +29,21 @@ In het volgende diagram ziet u de architectuur van de wijzigings analyse:
 
 ![Architectuur diagram van de manier waarop wijzigingen in de analyse wijzigings gegevens worden opgehaald en biedt client hulpprogramma's](./media/change-analysis/overview.png)
 
-De huidige wijzigings analyse is geïntegreerd in de ervaring voor het **opsporen en oplossen van problemen** in de app service Web-app, en ook beschikbaar als een zelfstandig tabblad in azure Portal.
-Zie de sectie *wijzigingen weer geven voor alle resources in azure* voor toegang tot de Blade wijzigings analyse en de *wijzigings analyse voor de functie van web apps voor het* gebruik van de web-app-Portal verderop in dit artikel.
+## <a name="data-sources"></a>Gegevensbronnen
+
+Analyse query's voor het wijzigen van de toepassing voor Azure Resource Manager bijgehouden eigenschappen, proxy configuratie en web-app in gast wijzigingen. Daarnaast traceert de service bron afhankelijkheden om een end-to-end-toepassing te diagnosticeren en te controleren.
 
 ### <a name="azure-resource-manager-tracked-properties-changes"></a>Wijzigingen in bijgehouden eigenschappen Azure Resource Manager
 
 Met behulp van de [resource grafiek van Azure](https://docs.microsoft.com/azure/governance/resource-graph/overview)kunt u een historisch overzicht krijgen van de manier waarop de Azure-resources die als host voor uw toepassing fungeren, na verloop van tijd worden gewijzigd. Bijgehouden instellingen, zoals beheerde identiteiten, upgrade van platform besturingssysteem en hostnamen, kunnen worden gedetecteerd.
 
 ### <a name="azure-resource-manager-proxied-setting-changes"></a>Wijzigingen in de instellingen van de proxy Azure Resource Manager
-Instellingen, zoals de IP-configuratie regel, TLS-instellingen en extensie versies zijn nog niet beschikbaar in ARG, dus Wijzig analyse query's en berekent deze wijzigingen veilig om meer informatie te geven over wat er in de app is gewijzigd. Deze informatie is nog niet beschikbaar in de Azure-resource grafiek, maar is binnenkort beschikbaar.
+
+Instellingen zoals de IP-configuratie regel, TLS-instellingen en extensie versies zijn nog niet beschikbaar in azure resource Graph. Wijzig daarom analyse query's en berekent deze wijzigingen veilig om meer informatie te geven over wat er in de app is gewijzigd.
 
 ### <a name="changes-in-web-app-deployment-and-configuration-in-guest-changes"></a>Wijzigingen in de implementatie en configuratie van de web-app (in-gast wijzigingen)
 
-Met de wijzigings analyse worden de implementatie-en configuratie status van een toepassing elke 4 uur vastgelegd. Het kan bijvoorbeeld wijzigingen in de omgevings variabelen van de toepassing detecteren. Het hulp programma berekent de verschillen en geeft aan wat er is gewijzigd. In tegens telling tot Resource Manager-wijzigingen is de wijzigings informatie voor code-implementatie mogelijk niet onmiddellijk beschikbaar in het hulp programma. Als u de meest recente wijzigingen in de analyse van wijzigingen wilt weer geven, selecteert u **wijzigingen nu scannen**.
+Met de wijzigings analyse worden de implementatie-en configuratie status van een toepassing elke 4 uur vastgelegd. Het kan bijvoorbeeld wijzigingen in de omgevings variabelen van de toepassing detecteren. Het hulp programma berekent de verschillen en geeft aan wat er is gewijzigd. In tegens telling tot Resource Manager-wijzigingen is de wijzigings informatie voor code-implementatie mogelijk niet onmiddellijk beschikbaar in het hulp programma. Selecteer **vernieuwen**om de meest recente wijzigingen in de analyse van wijzigingen weer te geven.
 
 ![Scherm opname van de knop "wijzigingen nu scannen"](./media/change-analysis/scan-changes.png)
 
@@ -53,70 +55,71 @@ Momenteel worden de volgende afhankelijkheden ondersteund:
 - Azure Storage
 - Azure SQL
 
-### <a name="enablement"></a>Activering
-De resource provider micro soft. ChangeAnalysis moet worden geregistreerd met een abonnement voor de Azure Resource Manager bijgehouden eigenschappen en de instellingen voor proxy Change data beschikbaar zijn. Wanneer u het hulp programma voor het vaststellen en oplossen van problemen met de web-app invoert of het zelfstandige tabblad wijzigings analyse weer geven, wordt deze resource provider automatisch geregistreerd. Er zijn geen prestatie-en kosten implementaties voor uw abonnement. Wanneer u de functie voor het wijzigen van de analyse voor web-apps inschakelt (of inschakelt in het hulp programma problemen vaststellen en oplossen), heeft dit een negatieve invloed op de prestaties van de web-app en geen facturerings kosten.
-Voor wijzigingen in de gast van een web-app is afzonderlijke activering vereist voor het scannen van code bestanden in een web-app. Zie voor meer informatie [analyse van wijzigingen inschakelen in de sectie problemen vaststellen en oplossen](https://docs.microsoft.com/azure/azure-monitor/app/change-analysis#enable-change-analysis-in-the-diagnose-and-solve-problems-tool) , verderop in dit artikel voor meer informatie.
+## <a name="application-change-analysis-service"></a>Analyse service voor toepassings wijzigingen
 
+De service voor het wijzigen van de toepassings wijziging berekent en aggregateert gegevens van de hierboven genoemde gegevens bronnen. Het biedt een set analyses voor gebruikers om eenvoudig te navigeren door alle resource wijzigingen en om te bepalen welke wijziging relevant is in de context voor probleem oplossing of bewaking.
+De resource provider micro soft. ChangeAnalysis moet worden geregistreerd met een abonnement voor de Azure Resource Manager bijgehouden eigenschappen en de instellingen voor proxy Change data beschikbaar zijn. Wanneer u het hulp programma voor het vaststellen en oplossen van problemen met de web-app invoert of het zelfstandige tabblad wijzigings analyse weer geven, wordt deze resource provider automatisch geregistreerd. Er zijn geen prestatie-of kosten implementaties voor uw abonnement. Wanneer u de functie voor het wijzigen van de analyse voor web-apps (of het hulp programma problemen vaststellen en oplossen) inschakelt, heeft dit een negatieve invloed op de prestaties van de web-app en geen facturerings kosten.
+Voor wijzigingen in de gast van een web-app is afzonderlijke activering vereist voor het scannen van code bestanden in een web-app. Zie voor meer informatie [analyse wijzigen in de sectie problemen vaststellen en oplossen](https://docs.microsoft.com/azure/azure-monitor/app/change-analysis#application-change-analysis-in-the-diagnose-and-solve-problems-tool) , verderop in dit artikel voor meer informatie.
 
-## <a name="viewing-changes-for-all-resources-in-azure"></a>Wijzigingen voor alle resources in azure weer geven
-In Azure Monitor is er een zelfstandige Blade voor het wijzigen van de analyse om alle wijzigingen met inzichten en toepassings afhankelijkheden weer te geven.
+## <a name="visualizations-for-application-change-analysis"></a>Visualisaties voor het analyseren van toepassings wijzigingen
 
-Zoek naar veranderingen analyse in de zoek balk op Azure Portal om de Blade te starten.
+### <a name="standalone-ui"></a>Zelfstandige gebruikers interface
+
+In Azure Monitor is er een zelfstandig deel venster voor het wijzigen van de analyse om alle wijzigingen met inzichten in toepassings afhankelijkheden en resources weer te geven.
+
+Zoek naar veranderingen analyse in de zoek balk op Azure Portal om de ervaring te starten.
 
 ![Scherm opname van het zoeken van wijzigingen in Azure Portal](./media/change-analysis/search-change-analysis.png)
 
-Selecteer de resource groep en de resources om de wijzigingen weer te geven.
+Alle resources onder een geselecteerd abonnement worden weer gegeven met wijzigingen van de afgelopen 24 uur. Voor het optimaliseren van de prestaties van het laden van pagina's, wordt er voor de service 10 resources tegelijk weer gegeven. Klik op volgende pagina's om meer resources weer te geven. We werken aan het verwijderen van deze beperking.
 
 ![Scherm opname van de Blade voor het wijzigen van de analyse in Azure Portal](./media/change-analysis/change-analysis-standalone-blade.png)
 
-U kunt inzichten en gerelateerde afhankelijkheids resources zien die uw toepassing hosten. Deze weer gave is ontworpen om toepassingen gericht te zijn voor ontwikkel aars om problemen op te lossen.
+Klik in een resource om alle wijzigingen weer te geven. Als dat nodig is, zoomt u in op een wijziging om meer informatie over de JSON-indeling weer te geven en inzichten te bekijken.
 
-De resources die momenteel worden ondersteund zijn:
-- Virtuele machines
-- Schaalset voor virtuele machines
-- Azure-netwerk bronnen
-- Een web-app met wijzigingen in de gast bestands tracering en omgevings variabelen
+![Scherm afbeelding van wijzigings gegevens](./media/change-analysis/change-details.png)
 
 Gebruik de knop feedback verzenden in de Blade of het e-mail changeanalysisteam@microsoft.combericht voor elke feedback.
 
 ![Scherm afbeelding van de knop feedback op de Blade wijzigings analyse](./media/change-analysis/change-analysis-feedback.png)
 
-## <a name="change-analysis-for-the-web-apps-feature"></a>De analyse van de functie Web Apps wijzigen
+### <a name="web-app-diagnose-and-solve-problems"></a>De web-app kan problemen vaststellen en oplossen
 
 In Azure Monitor is wijzigings analyse ook ingebouwd in de ervaring van de self-service om **problemen op te lossen** . Toegang tot deze ervaring via de pagina **overzicht** van uw app service-toepassing.
 
 ![Scherm afbeelding van de knop overzicht en de knop problemen vaststellen en oplossen](./media/change-analysis/change-analysis.png)
 
-### <a name="enable-change-analysis-in-the-diagnose-and-solve-problems-tool"></a>Wijzigingen in de analyse inschakelen in het hulp programma problemen vaststellen en oplossen
+### <a name="application-change-analysis-in-the-diagnose-and-solve-problems-tool"></a>Analyse van toepassings wijzigingen in het hulp programma problemen vaststellen en oplossen
+
+Analyse van toepassings wijzigingen is een zelfstandige detectie in de web-app diagnose en hulpprogram ma's voor probleem oplossing. Het wordt ook geaggregeerd in **toepassings crashes** en **Web app down detectors**. Wanneer u het hulp programma problemen vaststellen en oplossen opgeeft, wordt de resource provider **micro soft. ChangeAnalysis** automatisch geregistreerd. Volg deze instructies voor het inschakelen van het bijhouden van wijzigingen in de gast voor web-apps.
 
 1. Selecteer **Beschik baarheid en prestaties**.
 
     ![Scherm afbeelding van de opties voor het oplossen van problemen met Beschik baarheid en prestaties](./media/change-analysis/availability-and-performance.png)
 
-1. Selecteer **toepassings wijzigingen**. Het is niet mogelijk dat de functie ook beschikbaar is in **toepassings crashes**.
+2. Selecteer **toepassings wijzigingen**. De functie is ook beschikbaar in **toepassings crashes**.
 
    ![Scherm opname van de knop ' toepassings crashes '](./media/change-analysis/application-changes.png)
 
-1. Selecteer **nu inschakelen**om de analyse van wijzigingen in te scha kelen.
+3. Selecteer **nu inschakelen**om de analyse van wijzigingen in te scha kelen.
 
    ![Scherm opname van de opties ' toepassings crashes '](./media/change-analysis/enable-changeanalysis.png)
 
-1. Schakel de **analyse van wijzigingen** in en selecteer **Opslaan**. Het hulp programma geeft alle web-apps weer onder een App Service-abonnement. U kunt de schakel optie plan niveau gebruiken om wijzigings analyse in te scha kelen voor alle web-apps onder een abonnement.
+4. Schakel de **analyse van wijzigingen** in en selecteer **Opslaan**. Het hulp programma geeft alle web-apps weer onder een App Service-abonnement. U kunt de schakel optie plan niveau gebruiken om wijzigings analyse in te scha kelen voor alle web-apps onder een abonnement.
 
     ![Scherm opname van de gebruikers interface voor het inschakelen van een analyse](./media/change-analysis/change-analysis-on.png)
 
-
-1. Als u de wijzigings analyse wilt openen, selecteert u **diagnoses en problemen** > oplossen**Beschik baarheid en** > **crashes van toepassing**. U ziet een grafiek met een overzicht van het type wijzigingen in de loop van de tijd, samen met details over deze wijzigingen. Standaard worden wijzigingen in de afgelopen 24 uur weer gegeven om onmiddellijke problemen op te lossen.
+5. Als u de wijzigings analyse wilt openen, selecteert u **diagnoses en problemen** > oplossen**Beschik baarheid en** > **crashes van toepassing**. U ziet een grafiek met een overzicht van het type wijzigingen in de loop van de tijd, samen met details over deze wijzigingen. Standaard worden wijzigingen in de afgelopen 24 uur weer gegeven om onmiddellijke problemen op te lossen.
 
      ![Scherm opname van de weer gave diff wijzigen](./media/change-analysis/change-view.png)
-
 
 ### <a name="enable-change-analysis-at-scale"></a>Wijzigings analyse op schaal inschakelen
 
 Als uw abonnement een groot aantal web-apps bevat, kan het inschakelen van de service op het niveau van de web-app inefficiënt zijn. Voer het volgende script uit om alle web-apps in uw abonnement in te scha kelen.
 
 Vereisten:
-* Power shell AZ-module. Volg de instructies op [de Azure PowerShell-module installeren](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-2.6.0)
+
+- Power shell AZ-module. Volg de instructies op [de Azure PowerShell-module installeren](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-2.6.0)
 
 Voer het volgende script uit:
 
@@ -133,7 +136,6 @@ Set-AzContext -SubscriptionId $SubscriptionId
 # Register resource provider
 Register-AzResourceProvider -ProviderNamespace "Microsoft.ChangeAnalysis"
 
-
 # Enable each web app
 $webapp_list = Get-AzWebApp | Where-Object {$_.kind -eq 'app'}
 foreach ($webapp in $webapp_list)
@@ -145,7 +147,13 @@ foreach ($webapp in $webapp_list)
 
 ```
 
+### <a name="virtual-machine-diagnose-and-solve-problems"></a>Problemen met virtuele machines vaststellen en oplossen
 
+Ga naar het hulp programma problemen vaststellen en oplossen voor een virtuele machine.  Ga naar **Hulpprogram ma's voor probleem oplossing**, blader naar beneden op de pagina en selecteer **recente wijzigingen analyseren** om wijzigingen op de virtuele machine weer te geven.
+
+![Scherm opname van de VM problemen vaststellen en oplossen](./media/change-analysis/vm-dnsp-troubleshootingtools.png)
+
+![Scherm opname van de VM problemen vaststellen en oplossen](./media/change-analysis/analyze-recent-changes.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 

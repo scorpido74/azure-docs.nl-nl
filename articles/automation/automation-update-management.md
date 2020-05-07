@@ -1,37 +1,37 @@
 ---
-title: Updatebeheer oplossing in azure
-description: In dit artikel wordt beschreven hoe u de Azure Updatebeheer-oplossing gebruikt voor het beheren van updates voor uw Windows-en Linux-computers.
+title: Updatebeheer in Azure Automation
+description: In dit artikel wordt de functie Updatebeheer beschreven voor het beheren van updates voor uw Windows-en Linux-computers.
 services: automation
 ms.subservice: update-management
-ms.date: 02/27/2020
+ms.date: 05/04/2020
 ms.topic: conceptual
-ms.openlocfilehash: 9bdc8cf97513854cf6a92ffd078febca6302d35c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 24befd6e5d90c7c3fffd2049bae3bee392e6e0e0
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81617403"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82855667"
 ---
-# <a name="update-management-solution-in-azure"></a>Updatebeheer oplossing in azure
+# <a name="update-management-in-azure-automation"></a>Updatebeheer in Azure Automation
 
-U kunt de **updatebeheer-oplossing** in azure Automation gebruiken om updates van besturings systemen te beheren voor uw Windows-en Linux-machines in azure, in on-premises omgevingen en in andere Cloud omgevingen. U kunt snel de status van beschik bare updates op alle agent computers beoordelen en het proces voor het installeren van vereiste updates voor servers beheren.
+U kunt Updatebeheer in Azure Automation gebruiken om updates van besturings systemen te beheren voor uw Windows-en Linux-machines in azure, in on-premises omgevingen en in andere Cloud omgevingen. U kunt snel de status van beschik bare updates op alle agent computers beoordelen en het proces voor het installeren van vereiste updates voor servers beheren.
 
 U kunt Updatebeheer voor virtuele machines (Vm's) inschakelen met behulp van de volgende methoden:
 
-- Vanuit uw [Azure Automation-account](automation-onboard-solutions-from-automation-account.md) voor een of meer Azure-machines en hand matig voor niet-Azure-machines.
-
-- Voor één Azure-VM vanaf de pagina virtuele machine in het Azure Portal. Dit scenario is beschikbaar voor [Linux](../virtual-machines/linux/tutorial-config-management.md#enable-update-management) -en [Windows](../virtual-machines/windows/tutorial-config-management.md#enable-update-management) -vm's.
-
-- Voor [meerdere virtuele Azure-machines](manage-update-multi.md) door ze te selecteren op de pagina virtual machines in de Azure Portal. 
+* Van uw [Azure Automation-account](automation-onboard-solutions-from-automation-account.md) voor een of meer Azure-machines.
+* Hand matig voor niet-Azure-machines.
+* Voor één Azure-VM vanaf de pagina virtuele machine in het Azure Portal. Dit scenario is beschikbaar voor [Linux](../virtual-machines/linux/tutorial-config-management.md#enable-update-management) -en [Windows](../virtual-machines/windows/tutorial-config-management.md#enable-update-management) -vm's.
+* Voor [meerdere virtuele Azure-machines](manage-update-multi.md) door ze te selecteren op de pagina virtual machines in de Azure Portal.
 
 > [!NOTE]
-> Voor de **updatebeheer oplossing** moet u een log Analytics-werk ruimte koppelen aan uw Automation-account. Zie [Azure Workspace-toewijzingen](./how-to/region-mappings.md)voor een definitieve lijst met ondersteunde regio's. De regio toewijzingen hebben geen invloed op de mogelijkheid om Vm's te beheren in een andere regio dan uw Automation-account.
+> Updatebeheer moet een Log Analytics-werk ruimte koppelen aan uw Automation-account. Zie [Azure Workspace-toewijzingen](how-to/region-mappings.md)voor een definitieve lijst met ondersteunde regio's. De regio toewijzingen hebben geen invloed op de mogelijkheid om Vm's te beheren in een andere regio dan uw Automation-account.
 
-[!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
+Er is een [Azure Resource Manager sjabloon](automation-update-management-deploy-template.md) beschikbaar om u te helpen bij het implementeren van updatebeheer op een nieuw of bestaand Automation-account en log Analytics werk ruimte in uw abonnement.
 
-Een Azure [Resource Manager-sjabloon](automation-update-management-deploy-template.md) is beschikbaar om u te helpen de **updatebeheer-oplossing** te implementeren in een nieuw of bestaand Automation-account en log Analytics werk ruimte in uw abonnement.
+> [!NOTE]
+> U kunt een computer die is geconfigureerd met Updatebeheer niet gebruiken om aangepaste scripts uit Azure Automation uit te voeren. Op deze computer kan alleen het door micro soft ondertekende update script worden uitgevoerd. 
 
-## <a name="solution-overview"></a>Oplossingenoverzicht
+## <a name="update-management-overview"></a>Overzicht van updatebeheer
 
 Computers die worden beheerd door Updatebeheer gebruiken de volgende configuraties voor het uitvoeren van analyses en het bijwerken van implementaties:
 
@@ -40,9 +40,9 @@ Computers die worden beheerd door Updatebeheer gebruiken de volgende configurati
 * Automation Hybrid Runbook Worker
 * Microsoft Update of Windows Server Update Services (WSUS) voor Windows-computers
 
-In het volgende diagram ziet u hoe de oplossing beveiligings updates evalueert en toepast op alle verbonden Windows Server-en Linux-computers in een werk ruimte:
+In het volgende diagram ziet u hoe Updatebeheer beveiligings updates evalueert en toepast op alle verbonden Windows Server-en Linux-computers in een werk ruimte:
 
-![Proces stroom Updatebeheer](./media/automation-update-management/update-mgmt-updateworkflow.png)
+![Updatebeheer werk stroom](./media/automation-update-management/update-mgmt-updateworkflow.png)
 
 Updatebeheer kan worden gebruikt voor de systeemeigen onboarding van computers in meerdere abonnementen in dezelfde tenant.
 
@@ -52,35 +52,37 @@ Nadat een computer een scan heeft voltooid voor update compatibiliteit, stuurt d
 
 Naast het scan schema wordt de controle op update vereisten binnen 15 minuten gestart nadat de Log Analytics agent opnieuw is opgestart, vóór de installatie van de update en na de installatie van de update.
 
-Voor een Linux-computer wordt standaard elk uur de compatibiliteits scan uitgevoerd. Als de Log Analytics-agent opnieuw is opgestart, wordt een nalevings scan binnen 15 minuten gestart.
+Voor een Linux-computer wordt standaard elk uur de compatibiliteits scan uitgevoerd. Als de Log Analytics-agent opnieuw is opgestart, wordt een nalevings scan binnen vijf tien minuten gestart.
 
-De oplossing rapporteert hoe up-to-date de machine is gebaseerd op de bron die u hebt geconfigureerd om te synchroniseren met. Als de Windows-computer is geconfigureerd om te rapporteren aan WSUS, afhankelijk van de laatste synchronisatie van WSUS met Microsoft Update, kunnen de resultaten afwijken van wat Microsoft Update laat zien. Dit gedrag is hetzelfde voor Linux-machines die zijn geconfigureerd om te rapporteren aan een lokale opslag plaats in plaats van naar een open bare opslag plaats.
+Updatebeheer rapporteert u hoe up-to-date de machine is gebaseerd op de bron die u hebt geconfigureerd om te synchroniseren met. Als de Windows-computer is geconfigureerd om te rapporteren aan WSUS, afhankelijk van de laatste synchronisatie van WSUS met Microsoft Update, kunnen de resultaten afwijken van wat Microsoft Update laat zien. Dit gedrag is hetzelfde voor Linux-machines die zijn geconfigureerd om te rapporteren aan een lokale opslag plaats in plaats van naar een open bare opslag plaats.
 
 > [!NOTE]
-> Updatebeheer moet bepaalde Url's en poorten zijn ingeschakeld om de service goed te kunnen melden. Zie [netwerk planning voor Hybrid Workers voor](automation-hybrid-runbook-worker.md#network-planning)meer informatie over deze vereisten.
+> Updatebeheer moet bepaalde Url's en poorten zijn ingeschakeld om de service goed te kunnen melden. Zie [netwerk configuratie](https://docs.microsoft.com/azure/automation/automation-hybrid-runbook-worker#network-planning)voor meer informatie over deze vereisten.
 
-U kunt software-updates implementeren en installeren op computers die de updates nodig hebben door een geplande implementatie te maken. Updates die zijn geclassificeerd als *optioneel* , worden niet opgenomen in het implementatie bereik voor Windows-machines. Alleen vereiste updates zijn opgenomen in het implementatie bereik.
+U kunt software-updates implementeren en installeren op computers die de updates nodig hebben door een geplande implementatie te maken. Updates die zijn geclassificeerd als optioneel, worden niet opgenomen in het implementatie bereik voor Windows-machines. Alleen vereiste updates zijn opgenomen in het implementatie bereik.
 
-De geplande implementatie definieert welke doel computers de toepasselijke updates ontvangen. Dit doet u door bepaalde computers expliciet op te geven of door een [computer groep](../azure-monitor/platform/computer-groups.md) te selecteren die is gebaseerd op logboek zoekopdrachten van een specifieke set machines (of een [Azure-query](automation-update-management-query-logs.md) waarmee dynamisch virtuele Azure-machines worden geselecteerd op basis van opgegeven criteria). Deze groepen wijken af van de [Scope configuratie](../azure-monitor/insights/solution-targeting.md), die alleen wordt gebruikt om te bepalen op welke machines de Management Packs worden opgehaald die de oplossing inschakelen.
+De geplande implementatie definieert welke doel computers de toepasselijke updates ontvangen. Dit doet u door bepaalde computers expliciet op te geven of door een [computer groep](https://docs.microsoft.com/azure/azure-monitor/platform/computer-groups) te selecteren die is gebaseerd op logboek zoekopdrachten van een specifieke set machines (of een [Azure-query](automation-update-management-query-logs.md) waarmee dynamisch virtuele Azure-machines worden geselecteerd op basis van opgegeven criteria). Deze groepen wijken af van de [Scope configuratie](https://docs.microsoft.com/azure/azure-monitor/insights/solution-targeting), die wordt gebruikt voor het beheren van het doel van machines die de configuratie ontvangen om updatebeheer in te scha kelen. Zo wordt voor komen dat ze update vereisten kunnen uitvoeren en rapporteren en goedgekeurde vereiste updates installeren.
 
-U kunt ook een schema opgeven dat u wilt goed keuren en een tijds periode instellen waarin updates kunnen worden geïnstalleerd. Deze periode wordt het onderhouds venster genoemd. Een periode van 20 minuten van het onderhouds venster is gereserveerd voor opnieuw opstarten, ervan uitgaande dat er een is vereist en u de juiste opstart optie hebt geselecteerd. Als de patch langer duurt dan verwacht en er minder dan 20 minuten in het onderhouds venster wordt weer gegeven, wordt de computer niet opnieuw opgestart.
+Bij het definiëren van een implementatie moet u ook een schema opgeven dat u wilt goed keuren en een periode instellen waarin updates kunnen worden geïnstalleerd. Deze periode wordt het onderhouds venster genoemd. Een periode van 20 minuten van het onderhouds venster is gereserveerd voor opnieuw opstarten, ervan uitgaande dat er een is vereist en u de juiste opstart optie hebt geselecteerd. Als de patch langer duurt dan verwacht en er minder dan 20 minuten in het onderhouds venster wordt weer gegeven, wordt de computer niet opnieuw opgestart.
 
 Updates worden geïnstalleerd door runbooks in Azure Automation. U kunt deze runbooks niet weer geven en er is geen configuratie vereist. Wanneer een update-implementatie wordt gemaakt, wordt er een planning gemaakt waarmee een Master update-runbook wordt gestart op het opgegeven tijdstip voor de inbegrepen computers. Het hoofd-runbook start een onderliggend runbook op elke agent om de vereiste updates te installeren.
 
 Op de datum en tijd die zijn opgegeven in de update-implementatie, wordt de implementatie parallel uitgevoerd op de doel computers. Voorafgaand aan de installatie wordt een scan uitgevoerd om te controleren of de updates nog steeds vereist zijn. Voor WSUS-client computers, als de updates niet zijn goedgekeurd in WSUS, mislukt de update-implementatie.
-
 Het is niet mogelijk om een computer te registreren voor Updatebeheer in meer dan één Log Analytics-werk ruimte (ook wel multihoming genoemd).
 
 ## <a name="clients"></a>Clients
 
 ### <a name="supported-client-types"></a>Ondersteunde client typen
 
-De volgende tabel geeft een lijst van de ondersteunde besturings systemen voor update-evaluaties. Voor patching is een Hybrid Runbook Worker vereist. Zie de installatie handleidingen voor het installeren van een [Windows-Hybrid Runbook worker](automation-windows-hrw-install.md) en een Linux- [Hybrid Runbook worker](automation-linux-hrw-install.md#installing-a-linux-hybrid-runbook-worker)voor meer informatie over Hybrid Runbook worker vereisten.
+De volgende tabel geeft een lijst van de ondersteunde besturings systemen voor update-evaluaties. Voor patching is een Hybrid Runbook Worker vereist. Zie een [Windows-Hybrid Runbook worker implementeren](automation-windows-hrw-install.md) en een [Linux-Hybrid Runbook worker implementeren](automation-linux-hrw-install.md)voor meer informatie over Hybrid Runbook worker vereisten.
+
+> [!NOTE]
+> Update-evaluatie van Linux-machines wordt alleen ondersteund in bepaalde regio's, zoals vermeld in het Automation-account en de tabel Log Analytics werkruimte [toewijzingen](https://docs.microsoft.com/azure/automation/how-to/region-mappings#supported-mappings). 
 
 |Besturingssysteem  |Opmerkingen  |
 |---------|---------|
 |Windows Server 2019 (Data Center/Data Center core/Standard)<br><br>Windows Server 2016 (Data Center/Data Center core/Standard)<br><br>Windows Server 2012 R2 (Data Center/Standard)<br><br>Windows Server 2012 || 
-|Windows Server 2008 R2 (RTM en SP1 Standard)| Updatebeheer biedt alleen ondersteuning voor het uitvoeren van evaluaties voor dit besturings systeem. patching wordt niet ondersteund omdat de [Hybrid Runbook worker](automation-windows-hrw-install.md) niet wordt ondersteund voor Windows Server 2008 R2. |
+|Windows Server 2008 R2 (RTM en SP1 Standard)| Updatebeheer ondersteunt alleen evaluaties voor dit besturings systeem. Patching wordt niet ondersteund omdat de [Hybrid Runbook worker](automation-windows-hrw-install.md) niet wordt ondersteund voor Windows Server 2008 R2. |
 |CentOS 6 (x86/x64) en 7 (x64)      | Linux-agents moeten toegang hebben tot een update opslagplaats. Voor op classificaties gebaseerde patches moeten `yum` beveiligings gegevens worden geretourneerd die CentOS niet hebben in de RTM-releases. Zie [Update classificaties in Linux](automation-view-update-assessments.md#linux-2)voor meer informatie over op CentOS gebaseerde patches op basis van classificatie.          |
 |Red Hat Enterprise 6 (x86/x64) en 7 (x64)     | Linux-agents moeten toegang hebben tot een update opslagplaats.        |
 |SUSE Linux Enterprise Server 11 (x86/x64) en 12 (x64)     | Linux-agents moeten toegang hebben tot een update opslagplaats.        |
@@ -97,53 +99,54 @@ De volgende tabel bevat een lijst met niet-ondersteunde besturings systemen:
 |Besturingssysteem  |Opmerkingen  |
 |---------|---------|
 |Windows-client     | Client besturingssystemen (zoals Windows 7 en Windows 10) worden niet ondersteund.        |
-|Windows Server 2016 Nano Server     | Wordt niet ondersteund.       |
-|Azure Kubernetes-service knooppunten | Wordt niet ondersteund. Gebruik het patch proces dat wordt beschreven in [beveiligings-en kernel-updates Toep assen op Linux-knoop punten in azure Kubernetes service (AKS)](../aks/node-updates-kured.md)|
+|Windows Server 2016 Nano Server     | Niet ondersteund.       |
+|Azure Kubernetes-service knooppunten | Niet ondersteund. Gebruik het patch proces dat wordt beschreven in [beveiligings-en kernel-updates Toep assen op Linux-knoop punten in azure Kubernetes service (AKS)](../aks/node-updates-kured.md)|
 
 ### <a name="client-requirements"></a>Clientvereisten
 
-In de volgende informatie worden OS-specifieke client vereisten beschreven. Zie [netwerk planning](#ports)voor meer informatie.
+De volgende informatie beschrijft specifieke client vereisten voor het besturings systeem. Zie [netwerk planning](#ports)voor meer informatie.
 
 #### <a name="windows"></a>Windows
 
-Windows-agents moeten worden geconfigureerd om te communiceren met een WSUS-server of moeten toegang hebben tot Microsoft Update.
+Windows-agents moeten worden geconfigureerd om te communiceren met een WSUS-server of moeten toegang hebben tot Microsoft Update. Zie [Windows-computers verbinden met Azure monitor](../log-analytics/log-analytics-windows-agent.md)voor meer informatie over het installeren van de log Analytics-agent voor Windows.
 
-U kunt Updatebeheer gebruiken met Configuration Manager. Zie [Configuration Manager integreren met updatebeheer](oms-solution-updatemgmt-sccmintegration.md#configuration)voor meer informatie over integratie scenario's. De [log Analytics Windows-agent](../azure-monitor/platform/agent-windows.md) is vereist. De agent wordt automatisch geïnstalleerd als u een virtuele Azure-machine onboardeert.
+U kunt Updatebeheer gebruiken met micro soft endpoint Configuration Manager. Zie [Configuration Manager integreren met updatebeheer](updatemgmt-mecmintegration.md#configuration)voor meer informatie over integratie scenario's. De [log Analytics-agent voor Windows](../azure-monitor/platform/agent-windows.md) is vereist voor Windows-servers die worden beheerd door sites in uw Configuration Manager omgeving. 
 
-Standaard worden Windows-Vm's die zijn geïmplementeerd vanuit Azure Marketplace ingesteld voor het ontvangen van automatische updates van Windows Update service. Dit gedrag verandert niet wanneer u deze oplossing toevoegt of Windows-Vm's toevoegt aan uw werk ruimte. Als u updates niet actief beheert met behulp van deze oplossing, is het standaard gedrag van toepassing (om updates automatisch toe te passen).
+Standaard worden Windows-Vm's die zijn geïmplementeerd vanuit Azure Marketplace ingesteld voor het ontvangen van automatische updates van Windows Update service. Dit gedrag verandert niet wanneer u Windows-Vm's toevoegt aan uw werk ruimte. Als u updates niet actief beheert door gebruik te maken van Updatebeheer, is het standaard gedrag van toepassing (om updates automatisch toe te passen).
 
 > [!NOTE]
-> Een gebruiker kan groepsbeleid wijzigen zodat het opnieuw opstarten van de machine alleen door de gebruiker kan worden uitgevoerd, niet door het systeem. Beheerde computers kunnen vastraken als Updatebeheer geen rechten heeft om de computer opnieuw op te starten zonder hand matige interactie van de gebruiker.
->
-> Zie [Groepsbeleid instellingen voor automatische updates configureren](https://docs.microsoft.com/windows-server/administration/windows-server-update-services/deploy/4-configure-group-policy-settings-for-automatic-updates)voor meer informatie.
+> U kunt groepsbeleid wijzigen zodat het opnieuw opstarten van de machine alleen door de gebruiker kan worden uitgevoerd, niet door het systeem. Beheerde computers kunnen vastraken als Updatebeheer geen rechten heeft om de computer opnieuw op te starten zonder hand matige interactie van de gebruiker. Zie [Groepsbeleid instellingen voor automatische updates configureren](https://docs.microsoft.com/windows-server/administration/windows-server-update-services/deploy/4-configure-group-policy-settings-for-automatic-updates)voor meer informatie.
 
 #### <a name="linux"></a>Linux
 
-Voor Linux moet de computer toegang hebben tot een update opslagplaats. De update opslagplaats kan privé of openbaar zijn. TLS 1,1 of TLS 1,2 is vereist voor de interactie met Updatebeheer. Een Log Analytics-agent voor Linux die is geconfigureerd om te rapporteren aan meer dan één Log Analytics-werk ruimte, wordt niet ondersteund met deze oplossing. Op de computer moet ook python 2. x zijn geïnstalleerd.
+Voor Linux moet de computer toegang hebben tot een update opslagplaats, ofwel persoonlijk of openbaar. TLS 1,1 of TLS 1,2 is vereist voor de interactie met Updatebeheer. Updatebeheer biedt geen ondersteuning voor een Log Analytics agent voor Linux die is geconfigureerd om te rapporteren aan meer dan één Log Analytics-werk ruimte. Op de computer moet ook python 2. x zijn geïnstalleerd.
 
-Zie [log Analytics agent voor Linux](../azure-monitor/platform/agent-linux.md)voor meer informatie over het installeren van de log Analytics-agent voor Linux en het downloaden van de meest recente versie. Zie [Windows-computers verbinden met Azure monitor](../log-analytics/log-analytics-windows-agent.md)voor meer informatie over het installeren van de log Analytics-agent voor Windows.
+> [!NOTE]
+> Update-evaluatie van Linux-machines wordt alleen ondersteund in bepaalde regio's. Zie het Automation-account en de tabel met Log Analytics werkruimte [toewijzingen](https://docs.microsoft.com/azure/automation/how-to/region-mappings#supported-mappings). 
 
-Vm's die zijn gemaakt op basis van de installatie kopieën op Red Hat Enterprise Linux aanvraag (RHEL) die beschikbaar zijn in azure Marketplace, worden geregistreerd voor toegang tot de [Red Hat Update infrastructure (RHUI)](../virtual-machines/workloads/redhat/redhat-rhui.md) die is geïmplementeerd in Azure. Elke andere Linux-distributie moet worden bijgewerkt vanuit de online bestands opslagplaats van de distributie met behulp van de ondersteunde methoden van de distributie.
+Zie [log Analytics agent voor Linux](../azure-monitor/platform/agent-linux.md)voor meer informatie over het installeren van de log Analytics-agent voor Linux en het downloaden van de meest recente versie. 
+
+Vm's die zijn gemaakt op basis van de installatie kopieën op Red Hat Enterprise Linux aanvraag (RHEL) die beschikbaar zijn in azure Marketplace, worden geregistreerd voor toegang tot de [Red Hat Update infrastructure (RHUI)](../virtual-machines/workloads/redhat/redhat-rhui.md) die is geïmplementeerd in Azure. Elke andere Linux-distributie moet worden bijgewerkt vanuit de online bestands opslagplaats van de distributie met behulp van methoden die worden ondersteund door de distributie.
 
 ## <a name="permissions"></a>Machtigingen
 
 U hebt specifieke machtigingen nodig om update-implementaties te maken en te beheren. Zie op [rollen gebaseerde toegang – updatebeheer](automation-role-based-access-control.md#update-management-permissions)voor meer informatie over deze machtigingen.
 
-## <a name="solution-components"></a>Oplossingsonderdelen
+## <a name="update-management-components"></a>Updatebeheer onderdelen
 
-De oplossing bestaat uit de volgende resources. Deze resources worden automatisch toegevoegd aan uw Automation-account wanneer u de oplossing inschakelt. 
+Updatebeheer maakt gebruik van de resources die in deze sectie worden beschreven. Deze resources worden automatisch toegevoegd aan uw Automation-account wanneer u Updatebeheer inschakelt.
 
-### <a name="hybrid-worker-groups"></a>Hybrid Worker-groepen
+### <a name="hybrid-runbook-worker-groups"></a>Hybrid Runbook Worker groepen
 
-Nadat u deze oplossing hebt ingeschakeld, wordt elke Windows-computer die rechtstreeks is verbonden met uw Log Analytics-werk ruimte automatisch geconfigureerd als een Hybrid Runbook Worker ter ondersteuning van de runbooks die in deze oplossing zijn opgenomen.
+Nadat u Updatebeheer hebt ingeschakeld, wordt elke Windows-computer die rechtstreeks is verbonden met uw Log Analytics-werk ruimte automatisch geconfigureerd als een Hybrid Runbook Worker ter ondersteuning van de runbooks die Updatebeheer ondersteunen.
 
-Elke Windows-computer die door de oplossing wordt beheerd, wordt weer gegeven in het deel venster Hybrid worker Groups als een Hybrid worker-groep voor het Automation-account. De oplossingen gebruiken de `Hostname FQDN_GUID` naamgevings Conventie. U kunt deze groepen niet richten op runbooks in uw account. Als u probeert, mislukt de poging. Deze groepen zijn alleen bedoeld ter ondersteuning van deze beheer oplossing.
+Elke Windows-computer die wordt beheerd door Updatebeheer wordt weer gegeven in het deel venster Hybrid worker Groups als een Hybrid worker-groep voor het Automation-account. De groepen gebruiken de `Hostname FQDN_GUID` naamgevings Conventie. U kunt deze groepen niet richten op runbooks in uw account. Als u probeert, mislukt de poging. Deze groepen zijn bedoeld om alleen Updatebeheer te ondersteunen.
 
-U kunt de Windows-computer toevoegen aan een Hybrid Runbook Worker groep in uw Automation-account ter ondersteuning van Automation-runbooks als u hetzelfde account gebruikt voor zowel de oplossing als het lidmaatschap van de Hybrid Runbook Worker-groep. Deze functionaliteit is toegevoegd aan versie 7.2.12024.0 van de Hybrid Runbook Worker.
+U kunt de Windows-computer toevoegen aan een Hybrid Runbook Worker groep in uw Automation-account ter ondersteuning van Automation-runbooks als u hetzelfde account gebruikt voor Updatebeheer en het lidmaatschap van de Hybrid Runbook Worker-groep. Deze functionaliteit is toegevoegd aan versie 7.2.12024.0 van de Hybrid Runbook Worker.
 
 ### <a name="management-packs"></a>Management packs
 
-Als uw System Center Operations Manager-beheer groep is [verbonden met een log Analytics-werk ruimte](../azure-monitor/platform/om-agents.md), worden de volgende Management Packs in Operations Manager geïnstalleerd. Deze Management Packs worden ook op rechtstreeks verbonden Windows-computers geïnstalleerd nadat u de oplossing hebt toegevoegd. U hoeft deze management packs niet te configureren of te beheren.
+Als uw Operations Manager-beheer groep is [verbonden met een log Analytics-werk ruimte](../azure-monitor/platform/om-agents.md), worden de volgende Management Packs in Operations Manager geïnstalleerd. Deze Management Packs zijn ook geïnstalleerd voor Updatebeheer op rechtstreeks verbonden Windows-computers. U hoeft deze management packs niet te configureren of te beheren.
 
 * Microsoft System Center Advisor Update Assessment Intelligence Pack (Microsoft.IntelligencePacks.UpdateAssessment)
 * Microsoft.IntelligencePack.UpdateAssessment.Configuration (Microsoft.IntelligencePack.UpdateAssessment.Configuration)
@@ -152,32 +155,32 @@ Als uw System Center Operations Manager-beheer groep is [verbonden met een log A
 > [!NOTE]
 > Als u een Operations Manager 1807-of 2019-beheer groep hebt verbonden met een Log Analytics-werk ruimte met agents die zijn geconfigureerd in de beheer groep om logboek gegevens te `IsAutoRegistrationEnabled` verzamelen, moet u de para meter overschrijven en instellen op waar in de regel **Microsoft. intelligence packs. AzureAutomation. HybridAgent. init** .
 
-Zie [Connect Operations Manager to Azure monitor logs](../azure-monitor/platform/om-agents.md)(Engelstalig) voor meer informatie over hoe oplossingen Management Packs worden bijgewerkt.
+Zie [Connect Operations Manager to Azure monitor logs](../azure-monitor/platform/om-agents.md)(Engelstalig) voor meer informatie over updates voor Management Packs.
 
 > [!NOTE]
-> Voor machines met de Operations Manager-agent die volledig worden beheerd door Updatebeheer, moet de agent worden bijgewerkt naar de Log Analytics agent voor Windows of de Log Analytics agent voor Linux. Zie [een Operations Manager-agent bijwerken](https://docs.microsoft.com/system-center/scom/deploy-upgrade-agents)voor meer informatie over het bijwerken van de agent. In omgevingen waarin Operations Manager wordt gebruikt, moet u System Center Operations Manager 2012 R2 UR 14 of hoger uitvoeren.
+> Updatebeheer om computers met de Log Analytics agent volledig te beheren, moet u bijwerken naar de Log Analytics agent voor Windows of de Log Analytics-agent voor Linux. Zie [een Operations Manager-agent bijwerken](https://docs.microsoft.com/system-center/scom/deploy-upgrade-agents)voor meer informatie over het bijwerken van de agent. In omgevingen waarin Operations Manager wordt gebruikt, moet u System Center Operations Manager 2012 R2 UR 14 of hoger uitvoeren.
 
 ## <a name="data-collection"></a>Gegevens verzamelen
 
-### <a name="supported-agents"></a>Ondersteunde agents
+### <a name="supported-sources"></a>Ondersteunde bronnen
 
-De volgende tabel beschrijft de verbonden bronnen die worden ondersteund door deze oplossing:
+De volgende tabel beschrijft de verbonden bronnen die Updatebeheer ondersteunt:
 
 | Verbonden bron | Ondersteund | Beschrijving |
 | --- | --- | --- |
-| Windows-agents |Ja |De oplossing verzamelt informatie over systeem updates van Windows-agents en start vervolgens de installatie van de vereiste updates. |
-| Linux-agents |Ja |De oplossing verzamelt informatie over systeem updates van Linux-agents en start vervolgens de installatie van de vereiste updates op ondersteunde distributies. |
-| Beheergroep Operations Manager |Ja |De oplossing verzamelt informatie over systeemupdates van agents in een verboden beheergroep.<br/><br/>Een directe verbinding van de Operations Manager agent naar Azure Monitor-Logboeken is niet vereist. Gegevens worden doorgestuurd van de beheer groep naar de Log Analytics-werk ruimte. |
+| Windows-agents |Ja |Updatebeheer verzamelt informatie over systeem updates van Windows-agents en start de installatie van de vereiste updates. |
+| Linux-agents |Ja |Updatebeheer verzamelt informatie over systeem updates van Linux-agents en start de installatie van vereiste updates op ondersteunde distributies. |
+| Beheergroep Operations Manager |Ja |Updatebeheer verzamelt informatie over systeem updates van agents in een verbonden beheer groep.<br/><br/>Een directe verbinding van de Operations Manager agent naar Azure Monitor-Logboeken is niet vereist. Gegevens worden doorgestuurd van de beheer groep naar de Log Analytics-werk ruimte. |
 
 ### <a name="collection-frequency"></a>Verzamelingsfrequentie
 
-Voor elke beheerde Windows-computer wordt twee keer per dag een scan uitgevoerd. Elke 15 minuten wordt de Windows-API aangeroepen om een query uit te zoeken naar de laatste update tijd om te bepalen of de status is gewijzigd. Als de status is gewijzigd, wordt een nalevings scan gestart.
+Updatebeheer scant beheerde machines op gegevens aan de hand van de volgende regels. Het kan tussen 30 minuten en 6 uur duren voordat het dash board bijgewerkte gegevens van beheerde computers weergeeft.
 
-Er wordt elk uur een scan uitgevoerd voor elke beheerde Linux-machine.
+* Elke Windows-Updatebeheer voor machines voert een scan twee keer per dag uit voor elke computer. Elke 15 minuten wordt een query uitgevoerd op de Windows-API voor de laatste update tijd om te bepalen of de status is gewijzigd. Als de status is gewijzigd, wordt door Updatebeheer een compatibiliteits scan gestart.
 
-Het kan tussen 30 minuten en 6 uur duren voordat het dash board bijgewerkte gegevens van beheerde computers weergeeft.
+* Elke Linux-machine-Updatebeheer voert een scan elk uur uit.
 
-Het gemiddelde gegevens gebruik door Azure Monitor logboeken voor een machine met Updatebeheer is ongeveer 25 MB per maand. Deze waarde is alleen een benadering en is onderhevig aan wijzigingen, afhankelijk van uw omgeving. U wordt aangeraden uw omgeving te bewaken om uw exacte gebruik bij te houden. Zie [verbruik en kosten beheren](../azure-monitor/platform/manage-cost-storage.md)voor meer informatie over het analyseren van het gegevens gebruik.
+Het gemiddelde gegevens gebruik door Azure Monitor logboeken voor een machine met behulp van Updatebeheer is ongeveer 25 MB per maand. Deze waarde is alleen een benadering en is onderhevig aan wijzigingen, afhankelijk van uw omgeving. U wordt aangeraden uw omgeving te bewaken om uw exacte gebruik bij te houden. Zie [verbruik en kosten beheren](../azure-monitor/platform/manage-cost-storage.md)voor meer informatie over het analyseren van het gegevens gebruik.
 
 ## <a name="network-planning"></a><a name="ports"></a>Netwerkplanning
 
@@ -202,9 +205,7 @@ Volg de instructies in [computers verbinden zonder Internet toegang](../azure-mo
 
 ## <a name="update-classifications"></a>Update classifications
 
-De volgende tabellen geven een lijst van de update classificaties in Updatebeheer, met een definitie voor elke classificatie.
-
-### <a name="windows"></a>Windows
+In de volgende tabel worden de classificaties gedefinieerd die Updatebeheer ondersteunt voor Windows-updates. 
 
 |Classificatie  |Beschrijving  |
 |---------|---------|
@@ -217,7 +218,7 @@ De volgende tabellen geven een lijst van de update classificaties in Updatebehee
 |Hulpprogramma's     | Een hulp programma of functie waarmee u een of meer taken kunt volt ooien.        |
 |Updates     | Een update voor een toepassing of bestand dat momenteel is geïnstalleerd.        |
 
-### <a name="linux"></a><a name="linux-2"></a>Linux
+In de volgende tabel worden de ondersteunde classificaties voor Linux-updates gedefinieerd.
 
 |Classificatie  |Beschrijving  |
 |---------|---------|
@@ -230,30 +231,28 @@ Voor Linux kan Updatebeheer een onderscheid maken tussen essentiële updates en 
 sudo yum -q --security check-update
 ```
 
-Er is momenteel geen ondersteunde methode voor het inschakelen van systeem eigen classificatie-gegevens beschikbaarheid op CentOS. Op dit moment wordt alleen ondersteuning voor de beste werk belasting gegeven aan klanten die deze zelf kunnen hebben ingeschakeld. 
+Er is momenteel geen ondersteunde methode voor het inschakelen van systeem eigen classificatie-gegevens beschikbaarheid op CentOS. Op dit moment wordt alleen ondersteuning voor de beste werk belasting gegeven aan klanten die deze functie mogelijk zelf hebben ingeschakeld. 
 
 Als u updates wilt classificeren voor Red Hat Enter prise versie 6, moet u de yum-beveiligings-invoeg toepassing installeren. Op Red Hat Enterprise Linux 7 maakt de invoeg toepassing al deel uit van yum. u hoeft niets te installeren. Zie het volgende Red Hat [Knowledge-artikel](https://access.redhat.com/solutions/10021)voor meer informatie.
 
-## <a name="integrate-with-configuration-manager"></a>Integreren met Configuration Manager
+## <a name="integrate-update-management-with-configuration-manager"></a>Updatebeheer integreren met Configuration Manager
 
-Klanten die hebben geïnvesteerd in micro soft endpoint Configuration Manager voor het beheren van Pc's, servers en mobiele apparaten, zijn ook afhankelijk van de kracht en de loop tijd van Configuration Manager om hen te helpen bij het beheren van software-updates. Configuration Manager maakt deel uit van de cyclus van software-update beheer (SUM).
+Klanten die hebben geïnvesteerd in micro soft endpoint Configuration Manager voor het beheren van Pc's, servers en mobiele apparaten, zijn ook afhankelijk van de kracht en de loop tijd van Configuration Manager om software-updates te beheren. Zie [Configuration Manager integreren met updatebeheer](updatemgmt-mecmintegration.md)voor meer informatie over het integreren van Updatebeheer met Configuration Manager.
 
-Zie [Configuration Manager met updatebeheer integreren](oms-solution-updatemgmt-sccmintegration.md)voor meer informatie over het integreren van de beheer oplossing met Configuration Manager.
+## <a name="third-party-updates-on-windows"></a>Updates van derden in Windows
 
-### <a name="third-party-updates-on-windows"></a>Updates van derden in Windows
+Updatebeheer is afhankelijk van de lokaal geconfigureerde update opslagplaats om ondersteunde Windows-systemen bij te werken, ofwel WSUS of Windows Update. Met hulpprogram ma's zoals [System Center updates Publisher](https://docs.microsoft.com/configmgr/sum/tools/updates-publisher) kunt u aangepaste updates importeren en publiceren met WSUS. Met dit scenario kunnen Updatebeheer machines bijwerken die gebruikmaken van Configuration Manager als de update opslagplaats met software van derden. Zie [install updates Publisher](https://docs.microsoft.com/configmgr/sum/tools/install-updates-publisher)(Engelstalig) voor meer informatie over het configureren van updates Publisher.
 
-Updatebeheer is afhankelijk van de lokaal geconfigureerde update opslagplaats om ondersteunde Windows-systemen bij te werken. Dit is WSUS of Windows Update. Met hulpprogram ma's als [System Center updates Publisher](https://docs.microsoft.com/configmgr/sum/tools/updates-publisher) (updates Publisher) kunt u aangepaste updates importeren en publiceren met WSUS. Met dit scenario kunnen Updatebeheer machines bijwerken die gebruikmaken van Configuration Manager als de update opslagplaats met software van derden. Zie [install updates Publisher](https://docs.microsoft.com/configmgr/sum/tools/install-updates-publisher)(Engelstalig) voor meer informatie over het configureren van updates Publisher.
+## <a name="enable-update-management"></a>Updatebeheer inschakelen
 
-## <a name="enable-update-management"></a><a name="onboard"></a>Updatebeheer inschakelen
+Een Azure [Resource Manager-sjabloon](automation-update-management-deploy-template.md) is beschikbaar om u te helpen bij het implementeren van updatebeheer op een nieuw of bestaand Automation-account en Azure monitor log Analytics werk ruimte in uw abonnement. Hiermee wordt niet het bereik geconfigureerd van machines die moeten worden beheerd. dit wordt uitgevoerd als een afzonderlijke stap na het gebruik van de sjabloon.
 
-Als u systemen wilt bijwerken, moet u de Updatebeheer-oplossing inschakelen. Hieronder vindt u de aanbevolen en ondersteunde methoden voor het voorbereiden van de oplossing:
+Op de volgende manieren kunt u Updatebeheer inschakelen en computers selecteren die moeten worden beheerd:
 
-- [Van een virtuele machine](automation-onboard-solutions-from-vm.md)
-- [Van surfen op meerdere computers](automation-onboard-solutions-from-browse.md)
-- [Vanuit uw Automation-account](automation-onboard-solutions-from-automation-account.md)
-- [Met een Azure Automation runbook](automation-onboard-solutions.md)
-- [Met een Azure Resource Manager sjabloon](automation-update-management-deploy-template.md)
+* [Van een virtuele machine](automation-onboard-solutions-from-vm.md).
+* [Meerdere machines doorzoeken](automation-onboard-solutions-from-browse.md).
+* [Van een Azure Automation-account](automation-onboard-solutions.md).
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Raadpleeg de [Veelgestelde](automation-faq.md) vragen over Azure Automation om veelgestelde vragen over deze oplossing te bekijken.
+Raadpleeg de [Veelgestelde](automation-faq.md) vragen over Azure Automation om veelgestelde vragen over updatebeheer te bekijken.

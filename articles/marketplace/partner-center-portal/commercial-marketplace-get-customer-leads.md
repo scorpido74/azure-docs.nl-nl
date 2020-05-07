@@ -1,24 +1,24 @@
 ---
-title: Leads van uw micro soft Commercial Marketplace-aanbieding configureren
-description: Klanten leads configureren in micro soft Commercial Marketplace.
+title: Lead beheer van micro soft Commercial Marketplace
+description: Meer informatie over het genereren en ontvangen van leads van klanten van uw Microsoft AppSource en Azure Marketplace-aanbiedingen
 author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 03/30/2020
 ms.author: dsindona
-ms.openlocfilehash: 54c67656d7847b44c8fc83b33a4e03be3838cf76
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5d1bf859968c7b7a889abe635c917d0da11bf6e1
+ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82131102"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82837325"
 ---
-# <a name="customer-leads-from-your-marketplace-offer"></a>Leads van klanten van uw marketplace-aanbieding
+# <a name="customer-leads-from-your-commercial-marketplace-offer"></a>Leads van klanten van uw aanbieding voor commerciële Marketplace
 
-Leads zijn klanten die geïnteresseerd zijn in of implementeren van uw aanbiedingen van micro soft [AppSource](https://appsource.microsoft.com) en [Azure Marketplace](https://azuremarketplace.microsoft.com). U ontvangt leads van klanten nadat uw aanbieding naar de Marketplace is gepubliceerd. In dit artikel wordt uitgelegd:
+Leads zijn klanten die geïnteresseerd zijn in of implementeren van uw aanbiedingen van [Microsoft AppSource](https://appsource.microsoft.com) en [Azure Marketplace](https://azuremarketplace.microsoft.com). U kunt leads van klanten ontvangen nadat uw aanbieding naar de commerciële Marketplace is gepubliceerd. In dit artikel worden de volgende concepten voor lead management beschreven:
 
-* Hoe uw Marketplace-aanbieding klanten leads genereert om ervoor te zorgen dat u geen zakelijke kansen meer mist. 
+* Hoe uw commerciële Marketplace-aanbieding klanten leads genereert om ervoor te zorgen dat u geen zakelijke kansen meer mist. 
 * Hoe koppelt u uw Customer Relationship Management-systeem (CRM) aan uw aanbieding zodat u uw leads kunt beheren op één centrale locatie.
 * De lead gegevens die we u verzenden zodat u klanten kunt opvolgen die aan u zijn terechtgekomen.
 
@@ -56,7 +56,7 @@ Elke lead die u ontvangt tijdens het klant verwervings proces heeft gegevens in 
 
 Mogelijke waarden zijn:
 
-- **' Ins '**: staat voor *installatie*. Deze actie bevindt zich in azure Marketplace of AppSource wanneer een klant uw product koopt.
+- **' Ins '**: staat voor *installatie*. Deze actie bevindt zich in azure Marketplace of AppSource wanneer een klant uw product aanschaft.
 - **"PLT"**: staat voor een door de *partner geleide proef versie*. Deze actie bevindt zich in AppSource wanneer een klant de optie **contact opnemen** selecteert.
 - **"DNC"**: staat voor *geen contact persoon*. Deze actie bevindt zich in AppSource wanneer een partner die op uw app-pagina is genoteerd, wordt gevraagd om contact met u op te nemen. Er wordt een melding weer gegeven dat deze klant door de gebruiker is opgenomen in uw app, maar waarmee geen contact moet worden opgenomen.
 - **' Maken '**: deze actie bevindt zich alleen in de Azure Portal en wordt gegenereerd wanneer een klant uw aanbieding aan hun account koopt.
@@ -92,7 +92,7 @@ De gegevens van de klant worden verzonden via meerdere velden. In het volgende v
 - **Follow-up**: Vergeet niet om te volgen. Verwacht dat de gebruikelijke trans actie 5 tot 12 opvolgings aanroepen vereist.
 - **Nurture**: nurture uw leads om u op weg te helpen met een hogere winst marge.
 
-## <a name="leads-frequently-asked-questions"></a>Veelgestelde vragen over leads
+## <a name="common-questions-about-lead-management"></a>Veelgestelde vragen over Lead beheer
 
 ### <a name="where-can-i-get-help-in-setting-up-my-lead-destination"></a>Waar kan ik hulp krijgen bij het instellen van mijn lead bestemming?
 
@@ -133,7 +133,7 @@ Azure Blob-opslag wordt niet langer ondersteund als een lead bestemming, dus er 
 
 ### <a name="i-received-an-email-from-the-commercial-marketplace-but-why-cant-i-find-the-lead-in-my-crm"></a>Ik heb een e-mail bericht ontvangen van de commerciële Marketplace, maar waarom kan ik de lead niet vinden in mijn CRM?
 
-Het is mogelijk dat het e-mail domein van de eind gebruiker afkomstig is van. edu. Uit het oogpunt van privacy geven we geen persoons gegevens uit het domein. edu door. Verzend een ondersteunings ticket via het [partner centrum hulp en ondersteuning](https://partner.microsoft.com/support/v2/?stage=1).
+Het is mogelijk dat het e-mail domein van de eind gebruiker afkomstig is van. edu. Uit het oogpunt van privacy geven we geen persoonlijke gegevens uit het domein. edu door. Verzend een ondersteunings ticket via het [partner centrum hulp en ondersteuning](https://partner.microsoft.com/support/v2/?stage=1).
 
 ### <a name="i-configured-an-azure-table-as-my-lead-destination-how-can-i-view-the-leads"></a>Ik heb een Azure-tabel geconfigureerd als mijn lead bestemming. Hoe kan ik de leads weer geven?
 
@@ -149,7 +149,7 @@ Controleer of het formulier web-naar-lead een verplicht veld is op basis van een
 
 ### <a name="there-was-an-issue-with-my-lead-destination-and-i-missed-some-leads-can-i-have-them-sent-to-me-in-an-email"></a>Er is een probleem met mijn lead doel en er zijn enkele leads gemist. Kan ik ze in een e-mail bericht naar mij verzenden?
 
-Als gevolg van persoonlijk identificeerbaar informatie beleid, kunnen we geen lead gegevens delen via onbeveiligde e-mail berichten.
+Vanwege het beleid voor persoonlijke gegevens kunnen we geen lead gegevens delen via onbeveiligde e-mail berichten.
 
 ### <a name="i-configured-an-azure-table-as-my-lead-destination-how-much-will-it-cost"></a>Ik heb een Azure-tabel geconfigureerd als mijn lead bestemming. Hoeveel kost het?
 
