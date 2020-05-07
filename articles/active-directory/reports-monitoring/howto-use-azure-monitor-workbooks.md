@@ -14,12 +14,12 @@ ms.subservice: report-monitor
 ms.date: 10/30/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 2e94d9f56a865999f9169650f621a6af892c27ae
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 094939ee62046c72f07ac46f0781e687034f731f
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74014363"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82690619"
 ---
 # <a name="how-to-use-azure-monitor-workbooks-for-azure-active-directory-reports"></a>Azure Monitor werkmappen gebruiken voor Azure Active Directory rapporten
 
@@ -42,7 +42,7 @@ Wilt u:
 
 - Krijg meer inzicht in aanmeldings logboek query's, de werkmap rapporteert aan hoeveel gebruikers toegang is verleend of geweigerd, en hoeveel gebruikers het beleid voor voorwaardelijke toegang hebben overgeslagen bij het openen van bronnen.
 
-- Active Directory biedt werkmappen voor het bewaken van deze vragen. [Azure monitor-werkmappen](https://docs.microsoft.com/azure/azure-monitor/app/usage-workbooks) combi neer tekst, analyse query's, metrische gegevens en para meters in uitgebreide interactieve rapporten.
+- Azure Active Directory biedt werkmappen voor het bewaken van deze vragen. [Azure monitor-werkmappen](https://docs.microsoft.com/azure/azure-monitor/app/usage-workbooks) combi neer tekst, analyse query's, metrische gegevens en para meters in uitgebreide interactieve rapporten.
 
 
 
@@ -58,7 +58,7 @@ Dit artikel:
 
 Als u werkmappen wilt gebruiken, hebt u het volgende nodig:
 
-- Een Active Directory-Tenant met een Premium-licentie (P1 of P2). Meer informatie over het [verkrijgen van een Premium-licentie](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-get-started-premium).
+- Een Azure Active Directory-Tenant met een Premium-licentie (P1 of P2). Meer informatie over het [verkrijgen van een Premium-licentie](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-get-started-premium).
 
 - Een [log Analytics-werk ruimte](https://docs.microsoft.com/azure/azure-monitor/learn/quick-create-workspace).
 
@@ -81,7 +81,7 @@ U moet een van de volgende rollen hebben en toegang hebben tot de [onderliggende
 
 Voor toegang tot werkmappen:
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
+1. Meld u aan bij [Azure Portal](https://portal.azure.com).
 
 1. Navigeer naar **Azure Active Directory** > **bewakings** > **werkmappen**. 
 
@@ -186,7 +186,7 @@ Werkmappen bevatten aanmeld logboek query's waarmee IT-beheerders de impact van 
 ### <a name="instructions"></a>Instructies 
 Als u toegang wilt krijgen tot de werkmap voor inzichten voor voorwaardelijke toegang, selecteert u de Insights-werkmap voor **voorwaardelijke toegang** in de sectie voorwaardelijke toegang. Deze werkmap toont de verwachte impact van elk beleid voor voorwaardelijke toegang in uw Tenant. Selecteer een of meer beleids regels voor voorwaardelijke toegang in de vervolg keuzelijst en Verfijn het bereik van de werkmap door de volgende filters toe te passen: 
 
-- **Tijds bereik**
+- **Tijdsbereik**
 
 - **Gebruiker**
 
@@ -203,7 +203,7 @@ De overzicht van de impact toont het aantal gebruikers of aanmeldingen waarvoor 
 
 In deze werkmap ziet u ook de impact van de geselecteerde beleids regels, onderverdeeld op basis van zes voor waarden: 
 - **Apparaatstatus**
-- **Platform apparaat**
+- **Apparaatplatform**
 - **Client-apps**
 - **Aanmeldings risico**
 - **Locatie**

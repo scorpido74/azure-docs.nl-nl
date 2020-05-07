@@ -7,18 +7,18 @@ manager: carmonm
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 10/23/2019
+ms.date: 04/30/2020
 ms.author: mbullwin
-ms.openlocfilehash: 2c2d70d1c945e700a3fa42609f8aa0e1607ba77c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d62fa84711bd8cba57d07f3464c21344bc5c32c6
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77658401"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82731731"
 ---
 # <a name="programmatically-manage-workbooks"></a>Werkmappen programmatisch beheren
 
-Resource-eigen aren hebben de mogelijkheid om hun werkmappen programmatisch te maken en beheren via Resource Manager-sjablonen. 
+Resource-eigen aren hebben de mogelijkheid om hun werkmappen programmatisch te maken en beheren via Resource Manager-sjablonen.
 
 Dit kan handig zijn in scenario's zoals:
 * Implementatie van organisatie-of domein-specifieke analyse rapporten samen met de implementaties van resources. U kunt bijvoorbeeld voor uw nieuwe apps of virtuele machines organisatie-specifieke prestaties en mislukte werkmappen implementeren.
@@ -26,7 +26,98 @@ Dit kan handig zijn in scenario's zoals:
 
 De werkmap wordt gemaakt in de gewenste sub/resource-groep en met de inhoud die is opgegeven in de Resource Manager-sjablonen.
 
-## <a name="azure-resource-manager-template-for-deploying-workbooks"></a>Azure Resource Manager sjabloon voor het implementeren van werkmappen
+Er zijn twee soorten werkmap bronnen die programmatisch kunnen worden beheerd:
+* [Werkmap sjablonen](#azure-resource-manager-template-for-deploying-a-workbook-template)
+* [Werkmap exemplaren](#azure-resource-manager-template-for-deploying-a-workbook-instance)
+
+## <a name="azure-resource-manager-template-for-deploying-a-workbook-template"></a>Azure Resource Manager sjabloon voor het implementeren van een werkmap sjabloon
+
+1. Open een werkmap die u programmatisch wilt implementeren.
+2. Schakel de werkmap over naar de bewerkings modus door te klikken op het item werkbalk opdracht _bewerken_ .
+3. Open de _Geavanceerde editor_ met behulp van de _</>_ knop op de werk balk.
+4. Zorg ervoor dat u zich op het tabblad _Galerie sjabloon_ bevindt.
+
+    ![Tabblad Galerie sjabloon](./media/workbooks-automate/gallery-template.png)
+1. Kopieer de JSON in de galerie sjabloon naar het klem bord.
+2. Hieronder ziet u een voor beeld Azure Resource Manager sjabloon waarmee een werkmap sjabloon wordt geïmplementeerd voor Azure Monitor werkmap galerie. Plak de JSON die u hebt gekopieerd in `<PASTE-COPIED-WORKBOOK_TEMPLATE_HERE>`plaats van. Een referentie Azure Resource Manager sjabloon waarmee een werkmap sjabloon wordt gemaakt, vindt u [hier](https://github.com/microsoft/Application-Insights-Workbooks/blob/master/Documentation/ARM-template-for-creating-workbook-template).
+
+    ```json
+          {
+        "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+        "contentVersion": "1.0.0.0",
+        "parameters": {
+            "resourceName": {
+                "type": "string",
+                "defaultValue": "my-workbook-template",
+                "metadata": {
+                    "description": "The unique name for this workbook template instance"
+                }
+            }
+        },
+        "resources": [
+            {
+                "name": "[parameters('resourceName')]",
+                "type": "microsoft.insights/workbooktemplates",
+                "location": "[resourceGroup().location]",
+                "apiVersion": "2019-10-17-preview",
+                "dependsOn": [],
+                "properties": {
+                    "galleries": [
+                        {
+                            "name": "A Workbook Template",
+                            "category": "Deployed Templates",
+                            "order": 100,
+                            "type": "workbook",
+                            "resourceType": "Azure Monitor"
+                        }
+                    ],
+                    "templateData": <PASTE-COPIED-WORKBOOK_TEMPLATE_HERE>
+                }
+            }
+        ]
+    }
+    ```
+1. Vul in `galleries` het object de `name` en `category` -sleutels in met uw waarden. Meer informatie over [para meters](#parameters) vindt u in de volgende sectie.
+2. Implementeer deze Azure Resource Manager sjabloon met behulp van de [Azure Portal](https://docs.microsoft.com/azure/azure-resource-manager/templates/deploy-portal#deploy-resources-from-custom-template), de [opdracht regel interface](https://docs.microsoft.com/azure/azure-resource-manager/templates/deploy-cli), [Power shell](https://docs.microsoft.com/azure/azure-resource-manager/templates/deploy-powershell), enzovoort.
+3. Open de Azure Portal en navigeer naar de galerie met werkmappen die u hebt gekozen in de sjabloon Azure Resource Manager. Navigeer in de voorbeeld sjabloon naar de Azure Monitor werkmap galerie:
+    1. Open de Azure Portal en ga naar Azure Monitor
+    2. Openen `Workbooks` vanuit de inhouds opgave
+    3. Zoek uw sjabloon in de galerie onder categorie `Deployed Templates` (wordt een van de paarse items).
+
+### <a name="parameters"></a>Parameters
+
+|Parameters                |Uitleg                                                                                             |
+|:-------------------------|:-------------------------------------------------------------------------------------------------------|
+| `name`                   | De naam van de resource van de werkmap sjabloon in Azure Resource Manager.                                  |
+|`type`                    | Altijd micro soft. Insights/workbooktemplates                                                            |
+| `location`               | De Azure-locatie waarin de werkmap wordt gemaakt.                                               |
+| `apiVersion`             | 2019-10-17 preview                                                                                     |
+| `type`                   | Altijd micro soft. Insights/workbooktemplates                                                            |
+| `galleries`              | De set galerieën waarin deze werkmap sjabloon wordt weer gegeven.                                                |
+| `gallery.name`           | De beschrijvende naam van de werkmap sjabloon in de galerie.                                             |
+| `gallery.category`       | De groep in de galerie waarin de sjabloon moet worden geplaatst.                                                     |
+| `gallery.order`          | Een getal dat de volg orde van de sjabloon in een categorie in de galerie bepaalt. Een lagere volg orde betekent een hogere prioriteit. |
+| `gallery.resourceType`   | Het resource type dat overeenkomt met de galerie. Dit is doorgaans de bron type teken reeks die overeenkomt met de resource (bijvoorbeeld micro soft. operationalinsights/Workspaces). |
+|`gallery.type`            | Dit is een unieke sleutel die wordt onderscheiden van de galerie in een resource type. Application Insights bijvoorbeeld typen `workbook` hebben en `tsg` overeenkomen met verschillende werkmap galerieën. |
+
+### <a name="galleries"></a>Galerieën
+
+| Galerie                                        | Resourcetype                                      | Werkmap type |
+| :--------------------------------------------- |:---------------------------------------------------|:--------------|
+| Werkmappen in Azure Monitor                     | `Azure Monitor`                                    | `workbook`    |
+| VM Insights in Azure Monitor                   | `Azure Monitor`                                    | `vm-insights` |
+| Werkmappen in log Analytics-werk ruimte           | `microsoft.operationalinsights/workspaces`         | `workbook`    |
+| Werkmappen in Application Insights              | `microsoft.insights/component`                     | `workbook`    |
+| Probleemoplossings richtlijnen in Application Insights | `microsoft.insights/component`                     | `tsg`         |
+| Gebruik in Application Insights                  | `microsoft.insights/component`                     | `usage`       |
+| Werkmappen in Kubernetes-service                | `Microsoft.ContainerService/managedClusters`       | `workbook`    |
+| Werkmappen in resource groepen                   | `microsoft.resources/subscriptions/resourcegroups` | `workbook`    |
+| Werkmappen in Azure Active Directory            | `microsoft.aadiam/tenant`                          | `workbook`    |
+| VM Insights in virtuele machines                | `microsoft.compute/virtualmachines`                | `insights`    |
+| VM-inzichten in virtuele-machine schaal sets                   | `microsoft.compute/virtualmachinescalesets`        | `insights`    |
+
+## <a name="azure-resource-manager-template-for-deploying-a-workbook-instance"></a>Azure Resource Manager sjabloon voor het implementeren van een werkmap exemplaar
+
 1. Open een werkmap die u programmatisch wilt implementeren.
 2. Schakel de werkmap over naar de bewerkings modus door te klikken op het item werkbalk opdracht _bewerken_ .
 3. Open de _Geavanceerde editor_ met behulp van de _</>_ knop op de werk balk.
@@ -110,7 +201,7 @@ In deze sjabloon ziet u hoe u een eenvoudige werkmap implementeert waarin een ' 
 | `serializedData` | Bevat de inhoud of Payload die in de werkmap moet worden gebruikt. De Resource Manager-sjabloon uit de werkmappen-gebruikers interface gebruiken om de waarde op te halen |
 
 ### <a name="workbook-types"></a>Werkmap typen
-Met werkmap typen geeft u op in welke werkmap galerie het nieuwe exemplaar van de werkmap wordt weer gegeven onder. Een aantal opties:
+Met werkmap typen geeft u op in welke werkmap galerie het nieuwe exemplaar van de werkmap wordt weer gegeven onder. Opties zijn onder andere:
 
 | Type | Galerie locatie |
 | :------------- |:-------------|
@@ -124,4 +215,3 @@ Dit mechanisme kan om een technische reden niet worden gebruikt voor het maken v
 ## <a name="next-steps"></a>Volgende stappen
 
 Ontdek hoe werkmappen worden gebruikt om de nieuwe [Azure monitor voor de opslag ervaring](../insights/storage-insights-overview.md)uit te scha kelen.
-

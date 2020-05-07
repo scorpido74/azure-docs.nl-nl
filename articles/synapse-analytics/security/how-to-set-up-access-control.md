@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: mahi
 ms.reviewer: jrasnick
-ms.openlocfilehash: ae8be848b5d12e01865fe6bd3b394b460252aa3e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 383a28e90c093c0885c34af03371608261ece110
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81606013"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82692632"
 ---
 # <a name="secure-your-synapse-workspace-preview"></a>Uw Synapse-werk ruimte beveiligen (preview-versie)
 
@@ -165,9 +165,22 @@ Synapse Studio werkt anders op basis van gebruikers rollen. Sommige items kunnen
 | Hub/gekoppelde services beheren | JA | JA | JA |
 | Hub/Access Control beheren (gebruikers toewijzen aan Synapse werkruimte rollen) | JA | NO | NO |
 | Hub/integratie-Runtimes beheren | JA | JA | JA |
+| De hub bewaken gebruiken | JA | JA | JA |
+| Hub/indeling/pijplijn uitvoeringen bewaken  | JA | NO | NO |
+| Hub/indeling/trigger-uitvoeringen bewaken  | JA | NO | NO |
+| Hub/indeling/integratie-Runtimes bewaken  | JA | JA | JA |
+| Hub/activiteiten/Spark-toepassingen bewaken | JA | JA | NO  |
+| Hub/activiteiten/SQL-aanvragen bewaken | JA | NO | JA |
+| Hub/activiteiten/Spark-Pools bewaken | JA | JA | NO  |
+| Hub/triggers bewaken | JA | NO | NO |
+| Hub/gekoppelde services beheren | JA | JA | JA |
+| Hub/Access Control beheren (gebruikers toewijzen aan Synapse werkruimte rollen) | JA | NO | NO |
+| Hub/integratie-Runtimes beheren | JA | JA | JA |
+
 
 > [!NOTE]
-> [1] toegang tot gegevens in containers is afhankelijk van het toegangs beheer in ADLSGen2 [2] SQL OD-tabellen en Spark-tabellen hun gegevens op te slaan in ADLSGen2 en toegang moeten de juiste machtigingen hebben voor ADLSGen2.
+> [1] toegang tot gegevens in containers is afhankelijk van het toegangs beheer in ADLSGen2. </br>
+> [2] SQL OD-tabellen en Spark-tabellen slaan hun gegevens op in ADLSGen2 en toegang vereist de juiste machtigingen voor ADLSGen2.
 
 ## <a name="next-steps"></a>Volgende stappen
 

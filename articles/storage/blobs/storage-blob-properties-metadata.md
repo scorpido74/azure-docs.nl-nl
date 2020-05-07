@@ -8,12 +8,12 @@ ms.date: 08/09/2019
 ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
-ms.openlocfilehash: b4abd7e29dec67ddc1be50a2a6703da2a25551d1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 74c023c06e7b28183a53772be6798419c91dd37a
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79137659"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82692453"
 ---
 # <a name="manage-blob-properties-and-metadata-with-net"></a>BLOB-eigenschappen en meta gegevens beheren met .NET
 
@@ -24,6 +24,11 @@ Naast de gegevens die ze bevatten, ondersteunen blobs systeem eigenschappen en m
 - **Systeem eigenschappen**: systeem eigenschappen bestaan op elke Blob Storage-Resource. Sommige van deze kunnen worden gelezen of ingesteld, terwijl anderen alleen-lezen zijn. Onder de kaften sommige systeem eigenschappen overeenkomen met bepaalde standaard-HTTP-headers. De Azure Storage-client bibliotheek voor .NET houdt deze eigenschappen voor u bij.
 
 - Door de **gebruiker gedefinieerde META**gegevens: door de gebruiker gedefinieerde meta gegevens bestaan uit een of meer naam/waarde-paren die u opgeeft voor een Blob Storage-Resource. U kunt meta gegevens gebruiken om aanvullende waarden met de resource op te slaan. Meta gegevens waarden zijn alleen bedoeld voor eigen doel einden en zijn niet van invloed op de werking van de resource.
+
+> [!NOTE]
+> BLOB index Tags bieden ook de mogelijkheid om wille keurige, door de gebruiker gedefinieerde sleutel/waarde-kenmerken op te slaan naast een Blob Storage-Resource. Net als bij meta gegevens worden alleen BLOB index Tags automatisch geïndexeerd en worden query's uitgevoerd door de systeem eigen BLOB-service. Meta gegevens kunnen niet zelf worden geïndexeerd en er wordt een query uitgevoerd, tenzij u een afzonderlijke service, zoals Azure Search, gebruikt.
+>
+> Zie voor meer informatie over deze functie [gegevens beheren en zoeken op Azure Blob Storage met Blob-index (preview)](storage-manage-find-blobs.md).
 
 Het ophalen van meta gegevens en eigenschaps waarden voor een Blob Storage-Resource is een proces dat uit twee stappen bestaat. Voordat u deze waarden kunt lezen, moet u deze expliciet ophalen door de `FetchAttributes` or `FetchAttributesAsync` -methode aan te roepen. De uitzonde ring op deze regel is `Exists` dat `ExistsAsync` de en-methoden `FetchAttributes` de juiste methode onder de voor vallen aanroepen. Wanneer u een van deze methoden aanroept, hoeft u ook niet te `FetchAttributes`bellen.
 

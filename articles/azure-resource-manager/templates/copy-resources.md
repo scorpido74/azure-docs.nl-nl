@@ -2,13 +2,13 @@
 title: Meerdere exemplaren van bronnen implementeren
 description: Gebruik kopieer bewerkingen en matrices in een Azure Resource Manager sjabloon om het resource type meermaals te implementeren.
 ms.topic: conceptual
-ms.date: 09/27/2019
-ms.openlocfilehash: e65ab93c21daffa0053e53d953fe95fa9f28e2a3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 04/29/2020
+ms.openlocfilehash: d4f40b606ffd56019b44cc8b67e5629b935bf50c
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80153315"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82583397"
 ---
 # <a name="resource-iteration-in-arm-templates"></a>Resource iteratie in ARM-sjablonen
 
@@ -18,7 +18,7 @@ U kunt ook kopiëren met [Eigenschappen](copy-properties.md), [variabelen](copy-
 
 Zie [voor waarde-element](conditional-resource-deployment.md)als u wilt opgeven of een resource helemaal moet worden geïmplementeerd.
 
-## <a name="resource-iteration"></a>Resource herhaling
+## <a name="syntax"></a>Syntaxis
 
 Het element Copy heeft de volgende algemene indeling:
 
@@ -34,6 +34,23 @@ Het element Copy heeft de volgende algemene indeling:
 De eigenschap **name** is een wille keurige waarde die de lus identificeert. De eigenschap **Count** geeft het aantal iteraties op dat u voor het resource type wilt.
 
 Gebruik de eigenschappen **mode** en **BatchSize** om op te geven of de resources parallel of sequentieel worden geïmplementeerd. Deze eigenschappen worden beschreven in [serieel of parallel](#serial-or-parallel).
+
+## <a name="copy-limits"></a>Limieten kopiëren
+
+De telling mag niet groter zijn dan 800.
+
+De telling kan geen negatief getal zijn. Dit kan nul zijn als u de sjabloon implementeert met een recente versie van Azure CLI, Power shell of REST API. U moet het volgende gebruiken:
+
+* Azure PowerShell **2,6** of hoger
+* Azure CLI **2.0.74** of hoger
+* REST API versie **2019-05-10** of hoger
+* [Gekoppelde implementaties](linked-templates.md) moeten API-versie **2019-05-10** of hoger voor het bron type implementatie gebruiken
+
+Eerdere versies van Power shell, CLI en de REST API bieden geen ondersteuning voor aantal nul.
+
+Wees voorzichtig met het gebruik van de implementatie van de [volledige modus](deployment-modes.md) met Copy. Als u de volledige modus opnieuw implementeert naar een resource groep, worden alle resources verwijderd die niet zijn opgegeven in de sjabloon na het omzetten van de Kopieer bewerking.
+
+## <a name="resource-iteration"></a>Resource herhaling
 
 In het volgende voor beeld wordt het aantal opslag accounts gemaakt dat is opgegeven in de para meter **storageCount** .
 
@@ -257,14 +274,6 @@ In het volgende voor beeld ziet u de implementatie:
   ...
 }]
 ```
-
-## <a name="copy-limits"></a>Limieten kopiëren
-
-De telling mag niet groter zijn dan 800.
-
-De telling kan geen negatief getal zijn. Als u een sjabloon implementeert met Azure PowerShell 2,6 of hoger, Azure CLI 2.0.74 of hoger of REST API versie **2019-05-10** of hoger, kunt u Count instellen op nul. Eerdere versies van Power shell, CLI en de REST API bieden geen ondersteuning voor aantal nul.
-
-Wees voorzichtig met het gebruik van de implementatie van de [volledige modus](deployment-modes.md) met Copy. Als u de volledige modus opnieuw implementeert naar een resource groep, worden alle resources verwijderd die niet zijn opgegeven in de sjabloon na het omzetten van de Kopieer bewerking.
 
 ## <a name="example-templates"></a>Voorbeeld sjablonen
 

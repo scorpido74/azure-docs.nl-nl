@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 10/30/2019
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: a4210947d771768943775a3e62c2558fa2883bd5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8a60779fb045aa612a6ba0988c4635752f973f60
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79128193"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82607398"
 ---
 # <a name="determine-user-connection-latency-in-windows-virtual-desktop"></a>De latentie van gebruikers verbindingen bepalen in het virtuele bureau blad van Windows
 
@@ -29,4 +29,4 @@ Het virtuele bureau blad van Windows maakt gebruik van de Azure-Traffic Manager,
 
 - Als u de beste locatie voor optimale latentie wilt controleren, raadpleegt u het [Windows-hulp programma Virtual Desktop Experience Estimator](https://azure.microsoft.com/services/virtual-desktop/assessment/).
 - Zie [prijzen voor Windows virtueel bureau blad](https://azure.microsoft.com/pricing/details/virtual-desktop/)voor prijs plannen.
-- Bekijk [onze zelf studie](tenant-setup-azure-active-directory.md)om aan de slag te gaan met de implementatie van uw virtuele Windows-bureau blad.
+- Bekijk [onze zelf studie](./virtual-desktop-fall-2019/tenant-setup-azure-active-directory.md)om aan de slag te gaan met de implementatie van uw virtuele Windows-bureau blad.

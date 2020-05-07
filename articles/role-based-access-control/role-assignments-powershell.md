@@ -1,6 +1,6 @@
 ---
-title: Roltoewijzingen toevoegen of verwijderen met RBAC en Azure PowerShell
-description: Meer informatie over het verlenen van toegang tot Azure-resources voor gebruikers, groepen, service-principals of beheerde identiteiten met behulp van op rollen gebaseerd toegangs beheer (RBAC) en Azure PowerShell van Azure.
+title: Azure-roltoewijzingen toevoegen of verwijderen met Azure PowerShell-Azure RBAC
+description: Meer informatie over het verlenen van toegang tot Azure-resources voor gebruikers, groepen, service-principals of beheerde identiteiten met behulp van Azure PowerShell en Azure op rollen gebaseerd toegangs beheer (Azure RBAC).
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -14,14 +14,14 @@ ms.workload: identity
 ms.date: 11/25/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 68a73f622dc69b70870ddc1db16edcf406b63800
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: db6b38f142254fa1812f34674e6a870629713d7e
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79283210"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82735654"
 ---
-# <a name="add-or-remove-role-assignments-using-azure-rbac-and-azure-powershell"></a>Roltoewijzingen toevoegen of verwijderen met behulp van Azure RBAC en Azure PowerShell
+# <a name="add-or-remove-azure-role-assignments-using-azure-powershell"></a>Azure-roltoewijzingen toevoegen of verwijderen met Azure PowerShell
 
 [!INCLUDE [Azure RBAC definition grant access](../../includes/role-based-access-control-definition-grant.md)]In dit artikel wordt beschreven hoe u rollen toewijst met behulp van Azure PowerShell.
 
@@ -67,7 +67,7 @@ Get-AzADServicePrincipal -SearchString <service_name_in_quotes>
 
 ## <a name="add-a-role-assignment"></a>Een roltoewijzing toevoegen
 
-Als u in RBAC toegang wilt verlenen, voegt u een roltoewijzing toe.
+In azure RBAC kunt u een roltoewijzing toevoegen om toegang te verlenen.
 
 ### <a name="user-at-a-resource-group-scope"></a>Gebruiker in een bereik van een resource groep
 
@@ -112,7 +112,7 @@ Als u een roltoewijzing wilt toevoegen met behulp van de unieke rol-ID in plaats
 New-AzRoleAssignment -ObjectId <object_id> -RoleDefinitionId <role_id> -ResourceGroupName <resource_group_name>
 ```
 
-In het volgende voor beeld wordt de rol [Inzender voor virtuele machines](built-in-roles.md#virtual-machine-contributor) toegewezen aan *\@Alain example.com* gebruiker op het *Pharma-Sales-* resource groeps bereik. Als u de unieke rol-ID wilt ophalen, kunt u [Get-AzRoleDefinition](/powershell/module/az.resources/get-azroledefinition) gebruiken of [ingebouwde rollen voor Azure-resources](built-in-roles.md)weer geven.
+In het volgende voor beeld wordt de rol [Inzender voor virtuele machines](built-in-roles.md#virtual-machine-contributor) toegewezen aan *\@Alain example.com* gebruiker op het *Pharma-Sales-* resource groeps bereik. Als u de unieke rol-ID wilt ophalen, kunt u [Get-AzRoleDefinition](/powershell/module/az.resources/get-azroledefinition) gebruiken of de [ingebouwde rollen van Azure](built-in-roles.md)bekijken.
 
 ```Example
 PS C:\> New-AzRoleAssignment -ObjectId 44444444-4444-4444-4444-444444444444 -RoleDefinitionId 9980e02c-c2be-4d73-94e8-173b1dc7cf3c -Scope /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/pharma-sales
@@ -205,7 +205,7 @@ CanDelegate        : False
 
 ## <a name="remove-a-role-assignment"></a>Roltoewijzing verwijderen
 
-Als u de toegang wilt verwijderen, verwijdert u in RBAC een roltoewijzing met behulp van [Remove-AzRoleAssignment](/powershell/module/az.resources/remove-azroleassignment).
+In azure RBAC verwijdert u een roltoewijzing met behulp van [Remove-AzRoleAssignment](/powershell/module/az.resources/remove-azroleassignment)om de toegang te verwijderen.
 
 In het volgende voor beeld wordt de toewijzing van de rol *Inzender voor virtuele machines* uit de *Alain\@example.com* -gebruiker voor de resource groep *Pharma-Sales* verwijderd:
 
@@ -225,11 +225,11 @@ In het volgende voor beeld wordt de <role_name> rol verwijderd uit <object_id> i
 Remove-AzRoleAssignment -ObjectId <object_id> -RoleDefinitionName <role_name> -Scope /providers/Microsoft.Management/managementGroups/<group_id>
 ```
 
-Als u het volgende fout bericht wordt weer gegeven: ' de opgegeven informatie is niet toegewezen aan een roltoewijzing ', zorg ervoor dat u ook `-Scope` de `-ResourceGroupName` para meters of opgeeft. Zie [problemen met RBAC voor Azure-resources oplossen](troubleshooting.md#role-assignments-with-unknown-security-principal)voor meer informatie.
+Als u het volgende fout bericht wordt weer gegeven: ' de opgegeven informatie is niet toegewezen aan een roltoewijzing ', zorg ervoor dat u ook `-Scope` de `-ResourceGroupName` para meters of opgeeft. Zie [problemen met Azure RBAC oplossen](troubleshooting.md#role-assignments-with-identity-not-found)voor meer informatie.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Roltoewijzingen weer geven met behulp van Azure RBAC en Azure PowerShell](role-assignments-list-powershell.md)
-- [Zelf studie: een groep toegang verlenen tot Azure-resources met RBAC en Azure PowerShell](tutorial-role-assignments-group-powershell.md)
-- [Zelf studie: een aangepaste rol maken voor Azure-resources met behulp van Azure PowerShell](tutorial-custom-role-powershell.md)
+- [Toewijzingen van Azure-roltoewijzingen weer geven met Azure PowerShell](role-assignments-list-powershell.md)
+- [Zelf studie: een groep toegang verlenen tot Azure-resources met behulp van Azure PowerShell](tutorial-role-assignments-group-powershell.md)
+- [Zelf studie: een aangepaste Azure-rol maken met behulp van Azure PowerShell](tutorial-custom-role-powershell.md)
 - [Resources beheren met Azure PowerShell](../azure-resource-manager/management/manage-resources-powershell.md)

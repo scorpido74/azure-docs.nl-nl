@@ -1,20 +1,20 @@
 ---
-title: 'Account migratie van Cloud Partner-portal naar partner Center: commerciële Marketplace voor Azure'
-description: Uw account migreren van CPP naar partner Center-Commercial Marketplace voor Azure
+title: Accounts migreren van Cloud Partner-portal naar micro soft Commercial Marketplace
+description: Meer informatie over hoe u uw account migreert van Cloud Partner-portal naar het partner centrum in micro soft Commercial Marketplace voor Azure
 author: dsindona
 ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 09/23/2019
-ms.openlocfilehash: 49fb2da05b7284fff10e6271de177551000995ed
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 033b603630fc219fc378556a2ccbaef4eae524e4
+ms.sourcegitcommit: 3beb067d5dc3d8895971b1bc18304e004b8a19b3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82024418"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82743537"
 ---
-# <a name="account-migration-from-cloud-partner-portal-to-partner-center"></a>Accountmigratie van Cloud Partner-portal naar het Partnercentrum
+# <a name="how-to-migrate-your-account-from-cloud-partner-portal-to-partner-center"></a>Uw account migreren van Cloud Partner-portal naar het partner centrum
 
 Als u een bestaand Cloud Partner-portal-account (CPP) hebt, moeten uw account instellingen worden gemigreerd naar het partner centrum.
 

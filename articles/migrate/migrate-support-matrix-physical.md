@@ -3,12 +3,12 @@ title: Ondersteuning voor de beoordeling van fysieke servers in Azure Migrate
 description: Meer informatie over ondersteuning voor fysieke server beoordeling met Azure Migrate server-evaluatie
 ms.topic: conceptual
 ms.date: 04/15/2020
-ms.openlocfilehash: ae76a6b570ec58e71a8a1728a2a601728030f58c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f21ec149aa6f85c0a1f33e91dacf9de48ff72bbb
+ms.sourcegitcommit: 3beb067d5dc3d8895971b1bc18304e004b8a19b3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81538151"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82744519"
 ---
 # <a name="support-matrix-for-physical-server-assessment"></a>Ondersteunings matrix voor fysieke server evaluatie 
 
@@ -20,7 +20,7 @@ Voor het beoordelen van fysieke servers maakt u een Azure Migrate project en voe
 
 ## <a name="limitations"></a>Beperkingen
 
-**Ondersteuning** | **Nadere**
+**Ondersteuning** | **Details**
 --- | ---
 **Beoordelings limieten** | U kunt Maxi maal 35.000 fysieke servers in één [Azure migrate project](migrate-support-matrix.md#azure-migrate-projects)detecteren en beoordelen.
 **Project limieten** | U kunt meerdere projecten maken in een Azure-abonnement. Naast fysieke servers kan een project VMware-Vm's en virtuele Hyper-V-machines bevatten, tot aan de evaluatie limieten voor elke.
@@ -31,19 +31,21 @@ Meer [informatie](concepts-assessment-calculation.md) over evaluaties.
 
 ## <a name="physical-server-requirements"></a>Vereisten voor fysieke servers
 
-| **Ondersteuning**                | **Nadere**               
+| **Ondersteuning**                | **Details**               
 | :-------------------       | :------------------- |
 | **Fysieke server implementatie**       | De fysieke server kan zelfstandig of in een cluster worden geïmplementeerd. |
-| **Machtigingen**           | **Windows:** U hebt een lokaal of domein gebruikers account nodig op alle Windows-servers die u wilt detecteren. Het gebruikers account moet worden toegevoegd aan deze groepen: Extern bureaublad gebruikers, prestatie meter gebruikers en prestatie logboek gebruikers. <br/><br/> **Linux:** U hebt een hoofd account nodig op de Linux-servers die u wilt detecteren. |
-| **Besturingssysteem** | Alle [Windows](https://support.microsoft.com/help/2721672/microsoft-server-software-support-for-microsoft-azure-virtual-machines) -en [Linux](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros) -besturings systemen die worden ondersteund door Azure, met uitzonde ring van Windows Server 2003 en SUSE Linux.|
+| **Machtigingen**           | **Windows:** U moet een domein beheerder of lokale beheerder zijn op alle Windows-servers die u wilt detecteren. Het gebruikers account moet worden toegevoegd aan deze groepen: gebruikers van extern beheer, gebruikers van prestatie meter en prestatie logboek gebruikers. <br/><br/> **Linux:** U hebt een hoofd account nodig op de Linux-servers die u wilt detecteren. |
+| **Besturingssysteem** | Alle [Windows](https://support.microsoft.com/help/2721672/microsoft-server-software-support-for-microsoft-azure-virtual-machines) -en [Linux](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros) server-besturings systemen die worden ondersteund door Azure, met uitzonde ring van Windows Server 2003 en SUSE Linux.<br/><br/> Windows 10-en Windows 8 client-besturings systemen. |
 
 
 ## <a name="azure-migrate-appliance-requirements"></a>Azure Migrate-apparaatvereisten
 
-Azure Migrate gebruikt het [Azure migrate-apparaat](migrate-appliance.md) voor detectie en evaluatie. Het apparaat voor fysieke servers kan worden uitgevoerd op een virtuele machine of op een fysieke computer. U stelt het apparaat in met behulp van een Power shell-script dat u van de Azure Portal downloadt.
+Azure Migrate gebruikt het [Azure migrate-apparaat](migrate-appliance.md) voor detectie en evaluatie. Het apparaat voor fysieke servers kan worden uitgevoerd op een virtuele machine of op een fysieke computer. 
 
 - Meer informatie over de [vereisten voor apparaten](migrate-appliance.md#appliance---physical) voor fysieke servers.
 - Meer informatie over Url's die het apparaat nodig heeft voor toegang tot [open bare](migrate-appliance.md#public-cloud-urls) en [overheids](migrate-appliance.md#government-cloud-urls) Clouds.
+- U stelt het apparaat in met behulp van een [Power shell-script](how-to-set-up-appliance-physical.md) dat u van de Azure Portal downloadt.
+Implementeer het apparaat in Azure Government [met dit script](deploy-appliance-script-government.md).
 
 ## <a name="port-access"></a>Poort toegang
 
@@ -58,7 +60,7 @@ De volgende tabel bevat een overzicht van de poort vereisten voor evaluatie.
 
 [Afhankelijkheids analyse](concepts-dependency-visualization.md) helpt u bij het identificeren van afhankelijkheden tussen on-premises machines die u wilt beoordelen en migreren naar Azure. De tabel bevat een overzicht van de vereisten voor het instellen van afhankelijkheids analyse op basis van een agent. Momenteel wordt alleen op agents gebaseerde afhankelijkheids analyse ondersteund voor fysieke servers.
 
-**Vereiste** | **Nadere** 
+**Vereiste** | **Details** 
 --- | --- 
 **Vóór implementatie** | Er moet een Azure Migrate project aanwezig zijn met het hulp programma voor Server evaluatie dat is toegevoegd aan het project.<br/><br/>  U kunt een afhankelijkheids visualisatie implementeren nadat u een Azure Migrate apparaat hebt ingesteld om uw on-premises computers te detecteren<br/><br/> [Meer informatie over](create-manage-projects.md) het maken van een project voor de eerste keer.<br/> [Meer informatie over het](how-to-assess.md) toevoegen van een evaluatie programma aan een bestaand project.<br/> Meer informatie over het instellen van het Azure Migrate-apparaat voor de evaluatie van [Hyper-V](how-to-set-up-appliance-hyper-v.md)-, [VMware](how-to-set-up-appliance-vmware.md)-en fysieke servers.
 **Azure Government** | Visualisatie van afhankelijkheid is niet beschikbaar in Azure Government.

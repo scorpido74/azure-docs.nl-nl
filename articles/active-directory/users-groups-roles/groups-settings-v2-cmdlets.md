@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a218e956c72f8005e533db7b8800e98ee72ce223
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: cc12e571ca955a0ddc47e1c1dd73c2717161df4b
+ms.sourcegitcommit: d9cd51c3a7ac46f256db575c1dfe1303b6460d04
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74233117"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82739310"
 ---
 # <a name="azure-active-directory-version-2-cmdlets-for-group-management"></a>Azure Active Directory versie 2-cmdlets voor groeps beheer
 
@@ -52,6 +52,10 @@ Als u wilt controleren of de module gereed is voor gebruik, gebruikt u de volgen
 
 U kunt nu beginnen met het gebruik van de cmdlets in de module. Raadpleeg de online-referentie documentatie voor [Azure Active Directory Power shell-versie 2](/powershell/azure/install-adv2?view=azureadps-2.0)voor een volledige beschrijving van de cmdlets in de Azure ad-module.
 
+> [!NOTE]
+> De Azure AD Power shell-cmdlets werken niet met de nieuwe Power shell 7, omdat deze is gebaseerd op .net core. We zijn op de hoogte en dit is in het proces van het downloaden van updates. Vanaf nu stellen we suggesties voor het gebruik van de Windows Power shell 5. x-module die moet worden gebruikt voor Azure AD Power shell-bewerkingen. 
+
+
 ## <a name="connect-to-the-directory"></a>Verbinding maken met de map
 
 Voordat u groepen kunt gaan beheren met Azure AD Power shell-cmdlets, moet u uw Power shell-sessie verbinden met de map die u wilt beheren. Gebruik de volgende opdracht:
@@ -63,8 +67,8 @@ Voordat u groepen kunt gaan beheren met Azure AD Power shell-cmdlets, moet u uw 
 De cmdlet vraagt u om de referenties die u wilt gebruiken voor toegang tot uw Directory. In dit voor beeld gebruiken karen@drumkit.onmicrosoft.com we om toegang te krijgen tot de demo Directory. De cmdlet retourneert een bevestiging om weer te geven dat de sessie is verbonden met uw map:
 
 ```powershell
-    Account                       Environment Tenant
-    -------                       ----------- ------
+    Account                       Environment Tenant ID
+    -------                       ----------- ---------
     Karen@drumkit.onmicrosoft.com AzureCloud  85b5ff1e-0402-400c-9e3c-0f…
 ```
 
@@ -336,5 +340,5 @@ Het terugschrijven van Office 365-groep is een open bare preview-functie van Azu
 
 U kunt meer Azure Active Directory Power shell-documentatie vinden op [Azure Active Directory-cmdlets](/powershell/azure/install-adv2?view=azureadps-2.0).
 
-* [Managing access to resources with Azure Active Directory groups](../fundamentals/active-directory-manage-groups.md?context=azure/active-directory/users-groups-roles/context/ugr-context) (Toegang tot resources beheren met Azure Active Directory-groepen)
+* [Toegang tot resources beheren met Azure Active Directory groepen](../fundamentals/active-directory-manage-groups.md?context=azure/active-directory/users-groups-roles/context/ugr-context)
 * [Integrating your on-premises identities with Azure Active Directory (Engelstalig)](../hybrid/whatis-hybrid-identity.md?context=azure/active-directory/users-groups-roles/context/ugr-context)

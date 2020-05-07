@@ -11,16 +11,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 03/18/2020
+ms.date: 05/01/2020
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: seohack1
-ms.openlocfilehash: 6baa83037d51e850a9f3535be3cc365e7c35e0a4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9eabd6d2a8f3179c5553bc6ca6d59407388c4d42
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82131437"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82735557"
 ---
 # <a name="troubleshoot-azure-rbac"></a>Problemen met Azure RBAC oplossen
 
@@ -28,7 +28,7 @@ In dit artikel worden enkele veelgestelde vragen over toegangs beheer op basis v
 
 ## <a name="azure-role-assignments-limit"></a>Limiet voor Azure-roltoewijzingen
 
-Azure ondersteunt Maxi maal **2000** roltoewijzingen per abonnement. Als u het fout bericht ' er kunnen geen roltoewijzingen meer worden gemaakt (code: RoleAssignmentLimitExceeded) ' wordt weer gegeven wanneer u probeert een rol toe te wijzen, kunt u het aantal roltoewijzingen in het abonnement verminderen.
+Azure ondersteunt maximaal **2000** roltoewijzingen per abonnement. Als u het fout bericht ' er kunnen geen roltoewijzingen meer worden gemaakt (code: RoleAssignmentLimitExceeded) ' wordt weer gegeven wanneer u probeert een rol toe te wijzen, kunt u het aantal roltoewijzingen in het abonnement verminderen.
 
 > [!NOTE]
 > De limieten voor het aantal roltoewijzingen per abonnement van **2000** zijn vast en kunnen niet worden verhoogd.
@@ -57,7 +57,7 @@ $ras.Count
 
 - Als u stappen nodig hebt voor het maken van een aangepaste rol, raadpleegt u de zelf studies voor aangepaste rollen met behulp van de [Azure Portal](custom-roles-portal.md) (momenteel in Preview), [Azure POWERSHELL](tutorial-custom-role-powershell.md)of [Azure cli](tutorial-custom-role-cli.md).
 - Als u een bestaande aangepaste rol niet kunt bijwerken, controleert u of u momenteel bent aangemeld met een gebruiker aan wie een rol is toegewezen die de `Microsoft.Authorization/roleDefinition/write` machtiging heeft, zoals [eigenaar](built-in-roles.md#owner) of [beheerder van gebruikers toegang](built-in-roles.md#user-access-administrator).
-- Als u een aangepaste rol niet kunt verwijderen en het volgende fout bericht wordt weer gegeven: er zijn bestaande roltoewijzingen die verwijzen naar de rol (code: RoleDefinitionHasAssignments) ', dan zijn er roltoewijzingen die nog steeds gebruikmaken van de aangepaste rol. Verwijder deze roltoewijzingen en probeer de aangepaste rol opnieuw te verwijderen.
+- Als het u niet lukt om een aangepaste rol te verwijderen en het foutbericht 'There are existing role assignments referencing role (code: RoleDefinitionHasAssignments)' (Er zijn bestaande roltoewijzingen die aan een rol refereren (code: RoleDefinitionHasAssignments)) verschijnt, dan zijn er roltoewijzingen die nog altijd de aangepaste rol gebruiken. Verwijder deze roltoewijzingen en probeer de aangepaste rol opnieuw te verwijderen.
 - Als tijdens het maken van een nieuwe aangepaste rol het foutbericht 'Role definition limit exceeded. No more role definitions can be created (RoleDefinitionLimitExceeded)' Er kunnen geen roldefinities meer worden gemaakt (code: RoleDefinitionLimitExceeded) "wanneer u probeert een nieuwe aangepaste rol te maken, verwijdert u alle aangepaste rollen die niet worden gebruikt. Azure biedt ondersteuning voor Maxi maal **5000** aangepaste rollen in een directory. (Voor Azure Duitsland en Azure China 21Vianet is de limiet 2000 aangepaste rollen.)
 - Als er een fout bericht wordt weer gegeven dat vergelijkbaar is met de machtiging ' de client is gemachtigd voor het uitvoeren van de actie ' micro soft. Authorization/roleDefinitions/write ' op het bereik '/Subscriptions/{subscriptionid} ', is het gekoppelde abonnement niet gevonden ' wanneer u een aangepaste rol probeert bij te werken, controleert u of een of meer [toewijs bare bereiken](role-definitions.md#assignablescopes) in de map zijn verwijderd. Als het bereik is verwijderd, maakt u een ondersteuningsticket, aangezien hiervoor op dit moment geen selfserviceoplossing beschikbaar is.
 
@@ -76,20 +76,29 @@ $ras.Count
 
 ## <a name="issues-with-service-admins-or-co-admins"></a>Problemen met servicebeheerders of co-beheerders
 
-- Als u problemen ondervindt met Service beheerder of mede beheerders, raadpleegt u Azure-abonnements beheerders en [klassieke abonnements beheerders rollen, Azure-rollen en Azure AD-beheerders rollen](rbac-and-directory-admin-roles.md) [toevoegen of wijzigen](../cost-management-billing/manage/add-change-subscription-administrator.md) .
+- Als u problemen ondervindt met Service beheerder of mede beheerders, raadpleegt u Azure-abonnements beheerders en [klassieke abonnements beheerders rollen, Azure-rollen en Azure AD-rollen](rbac-and-directory-admin-roles.md) [toevoegen of wijzigen](../cost-management-billing/manage/add-change-subscription-administrator.md) .
 
 ## <a name="access-denied-or-permission-errors"></a>Toegang geweigerd of machtigings fouten
 
-- Als u de machtiging fout ' de client met object-id heeft geen toestemming om actie te ondernemen over het bereik (code: AuthorizationFailed) ' wordt weer geven als u een resource probeert te maken, controleert u of u momenteel bent aangemeld met een gebruiker aan wie een rol is toegewezen die de machtiging schrijven heeft voor de resource in het geselecteerde bereik. Als u bijvoorbeeld virtuele machines in een resourcegroep wilt beheren, moet u de rol [Inzender voor virtuele machines](built-in-roles.md#virtual-machine-contributor) toewijzen aan de resourcegroep (of bovenliggend bereik). Voor een lijst met machtigingen voor elke ingebouwde rol, raadpleegt u [Ingebouwde rollen voor Azure-resources](built-in-roles.md).
+- Als de machtigingsfout 'Client met object-id is niet gemachtigd om actie uit te voeren over bereik (code: AuthorizationFailed)' wanneer u een resource wilt maken, controleert u of u momenteel bent aangemeld met een gebruiker die een rol heeft met schrijfrechten voor de resource in het geselecteerde bereik. Als u bijvoorbeeld virtuele machines in een resourcegroep wilt beheren, moet u de rol [Inzender voor virtuele machines](built-in-roles.md#virtual-machine-contributor) toewijzen aan de resourcegroep (of bovenliggend bereik). Zie [ingebouwde rollen van Azure](built-in-roles.md)voor een lijst met machtigingen voor elke ingebouwde rol.
 - Als u de machtiging fout ' u bent niet gemachtigd om een ondersteunings aanvraag te maken ' krijgt wanneer u een ondersteunings ticket probeert te maken of bij te werken, controleert u of u momenteel bent aangemeld met een gebruiker aan `Microsoft.Support/supportTickets/write` wie een rol is toegewezen, zoals [mede werker van de ondersteunings aanvraag](built-in-roles.md#support-request-contributor).
 
-## <a name="role-assignments-with-unknown-security-principal"></a>Roltoewijzingen met onbekende beveiligingsprincipal
+## <a name="role-assignments-with-identity-not-found"></a>Roltoewijzingen met identiteit niet gevonden
 
-Als u een rol toewijst aan een beveiligingsprincipal (gebruiker, groep, Service-Principal of beheerde identiteit) en u de beveiligings-principal later verwijdert zonder de roltoewijzing te verwijderen, wordt het beveiligings-principal-type voor de roltoewijzing vermeld als **onbekend**. In de volgende schermopname ziet u een voorbeeld in Azure Portal. De naam van de beveiligingsprincipal wordt weer gegeven als **identiteit verwijderd** en de **identiteit bestaat niet meer**. 
+In de lijst met roltoewijzingen voor de Azure Portal ziet u misschien dat de beveiligingsprincipal (gebruiker, groep, Service-Principal of beheerde identiteit) wordt weer gegeven als identiteit die **niet is gevonden** met een **onbekend** type.
 
 ![Resource groep voor web-app](./media/troubleshooting/unknown-security-principal.png)
 
-Als u deze roltoewijzing met Azure PowerShell vermeldt, ziet u een lege `DisplayName` en een `ObjectType` ingesteld op onbekend. [Get-AzRoleAssignment](/powershell/module/az.resources/get-azroleassignment) retourneert bijvoorbeeld een roltoewijzing die er ongeveer als volgt uitziet:
+De identiteit kan om twee redenen niet worden gevonden:
+
+- U hebt onlangs een gebruiker uitgenodigd bij het maken van een roltoewijzing
+- U hebt een beveiligingsprincipal met een roltoewijzing verwijderd
+
+Als u onlangs een gebruiker hebt uitgenodigd bij het maken van een roltoewijzing, kan deze beveiligingsprincipal zich nog steeds in het replicatie proces tussen regio's bevinden. Als dit het geval is, wacht u even en vernieuwt u de lijst met roltoewijzingen.
+
+Als deze beveiligingsprincipal echter geen recent uitgenodigde gebruiker is, is het mogelijk een verwijderde beveiligingsprincipal. Als u een rol toewijst aan een beveiligingsprincipal en vervolgens die beveiligingsprincipal verwijdert zonder eerst de roltoewijzing te verwijderen, wordt de beveiligingsprincipal vermeld als **identiteit niet gevonden** en een **onbekend** type.
+
+Als u deze roltoewijzing met Azure PowerShell vermeldt, ziet u mogelijk een lege `DisplayName` en een `ObjectType` ingesteld op **onbekend**. [Get-AzRoleAssignment](/powershell/module/az.resources/get-azroleassignment) retourneert bijvoorbeeld een roltoewijzing die vergelijkbaar is met de volgende uitvoer:
 
 ```
 RoleAssignmentId   : /subscriptions/11111111-1111-1111-1111-111111111111/providers/Microsoft.Authorization/roleAssignments/22222222-2222-2222-2222-222222222222
@@ -103,7 +112,7 @@ ObjectType         : Unknown
 CanDelegate        : False
 ```
 
-Ook als u deze roltoewijzing met behulp van Azure CLI vermeldt, ziet u een `principalName`leeg. Bijvoorbeeld, de [lijst AZ Role Assignment](/cli/azure/role/assignment#az-role-assignment-list) retourneert een roltoewijzing die er ongeveer als volgt uitziet:
+Ook als u deze roltoewijzing met behulp van Azure CLI vermeldt, ziet u mogelijk `principalName`een leeg. Bijvoorbeeld, de [toewijzings lijst AZ Role](/cli/azure/role/assignment#az-role-assignment-list) retourneert een roltoewijzing die vergelijkbaar is met de volgende uitvoer:
 
 ```
 {
@@ -119,9 +128,9 @@ Ook als u deze roltoewijzing met behulp van Azure CLI vermeldt, ziet u een `prin
 }
 ```
 
-Het is geen probleem om deze roltoewijzingen te verlaten, maar u kunt ze wel verwijderen met behulp van stappen die vergelijkbaar zijn met andere roltoewijzingen. Zie [Azure Portal](role-assignments-portal.md#remove-a-role-assignment), [Azure POWERSHELL](role-assignments-powershell.md#remove-a-role-assignment)of [Azure cli](role-assignments-cli.md#remove-a-role-assignment) (Engelstalig) voor meer informatie over het verwijderen van roltoewijzingen
+Het is geen probleem om deze roltoewijzingen te verlaten wanneer de beveiligingsprincipal is verwijderd. Als u wilt, kunt u deze roltoewijzingen verwijderen met behulp van stappen die vergelijkbaar zijn met andere roltoewijzingen. Zie [Azure Portal](role-assignments-portal.md#remove-a-role-assignment), [Azure POWERSHELL](role-assignments-powershell.md#remove-a-role-assignment)of [Azure cli](role-assignments-cli.md#remove-a-role-assignment) (Engelstalig) voor meer informatie over het verwijderen van roltoewijzingen
 
-Als u in Power shell probeert de roltoewijzingen te verwijderen met de naam van de object-ID en roldefinitie en er meer dan één roltoewijzing overeenkomt met de para meters, wordt het volgende fout bericht weer gegeven: ' de opgegeven informatie is niet toegewezen aan een roltoewijzing '. Hieronder ziet u een voor beeld van het fout bericht:
+Als u in Power shell probeert de roltoewijzingen te verwijderen met de naam van de object-ID en roldefinitie en er meer dan één roltoewijzing overeenkomt met de para meters, wordt het volgende fout bericht weer gegeven: ' de opgegeven informatie is niet toegewezen aan een roltoewijzing '. In de volgende uitvoer ziet u een voor beeld van het fout bericht:
 
 ```
 PS C:\> Remove-AzRoleAssignment -ObjectId 33333333-3333-3333-3333-333333333333 -RoleDefinitionName "Storage Blob Data Contributor"
@@ -217,5 +226,5 @@ Een lezer kan op het tabblad **platform functies** klikken en vervolgens op **al
 ## <a name="next-steps"></a>Volgende stappen
 
 - [Problemen met gast gebruikers oplossen](role-assignments-external-users.md#troubleshoot)
-- [Toegang tot Azure-resources beheren met op rollen gebaseerd toegangsbeheer en de Azure-portal](role-assignments-portal.md)
-- [Activiteiten logboeken voor RBAC-wijzigingen in azure-resources weer geven](change-history-report.md)
+- [Azure-roltoewijzingen toevoegen of verwijderen met behulp van de Azure Portal](role-assignments-portal.md)
+- [Activiteiten logboeken voor Azure RBAC-wijzigingen weer geven](change-history-report.md)

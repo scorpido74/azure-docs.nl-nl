@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: conceptual
-ms.date: 04/23/2020
-ms.openlocfilehash: 6ab3db36ac4d743c8c03b57075d3c4d5f6c85d67
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 04/30/2020
+ms.openlocfilehash: e1ebc0257082ecfacc708352ba0a68e38e10717f
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82115020"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82607789"
 ---
 # <a name="reference-guide-to-using-functions-in-expressions-for-azure-logic-apps-and-power-automate"></a>Naslag Gids voor het gebruik van functies in expressies voor Azure Logic Apps en energie automatisering
 
@@ -101,7 +101,7 @@ Als u wilt werken met verzamelingen, meestal matrices, teken reeksen en soms, wo
 | Functie verzameling | Taak |
 | ------------------- | ---- |
 | [daarin](../logic-apps/workflow-definition-language-functions-reference.md#contains) | Controleer of een verzameling een specifiek item heeft. |
-| [gelaten](../logic-apps/workflow-definition-language-functions-reference.md#empty) | Controleer of een verzameling leeg is. |
+| [leeg](../logic-apps/workflow-definition-language-functions-reference.md#empty) | Controleer of een verzameling leeg is. |
 | [instantie](../logic-apps/workflow-definition-language-functions-reference.md#first) | Het eerste item van een verzameling retour neren. |
 | [Snij punt](../logic-apps/workflow-definition-language-functions-reference.md#intersection) | Een verzameling retour neren die *alleen* de gemeen schappelijke items in de opgegeven verzamelingen heeft. |
 | [item](../logic-apps/workflow-definition-language-functions-reference.md#item) | Wanneer een herhalende actie een matrix heeft, wordt het huidige item in de matrix geretourneerd tijdens de huidige iteratie van de actie. |
@@ -148,7 +148,7 @@ Als u het type of de indeling van een waarde wilt wijzigen, kunt u deze conversi
 | [base64ToBinary](../logic-apps/workflow-definition-language-functions-reference.md#base64ToBinary) | Retourneert de binaire versie voor een base64-gecodeerde teken reeks. |
 | [base64ToString](../logic-apps/workflow-definition-language-functions-reference.md#base64ToString) | Retourneert de versie van de teken reeks voor een base64-gecodeerde teken reeks. |
 | [waarde](../logic-apps/workflow-definition-language-functions-reference.md#binary) | Retourneert de binaire versie voor een invoer waarde. |
-| [booleaans](../logic-apps/workflow-definition-language-functions-reference.md#bool) | Retourneert de Booleaanse versie van een invoer waarde. |
+| [Booleaanse waarde](../logic-apps/workflow-definition-language-functions-reference.md#bool) | Retourneert de Booleaanse versie van een invoer waarde. |
 | [createArray](../logic-apps/workflow-definition-language-functions-reference.md#createArray) | Een matrix van meerdere invoer waarden retour neren. |
 | [dataUri](../logic-apps/workflow-definition-language-functions-reference.md#dataUri) | De gegevens-URI voor een invoer waarde Retour neren. |
 | [dataUriToBinary](../logic-apps/workflow-definition-language-functions-reference.md#dataUriToBinary) | Retourneert de binaire versie voor een gegevens-URI. |
@@ -276,7 +276,7 @@ Zie de [Alfabetische lijst](../logic-apps/workflow-definition-language-functions
 | [multipartBody](../logic-apps/workflow-definition-language-functions-reference.md#multipartBody) | De hoofd tekst van een specifiek deel in de uitvoer van een actie met meerdere delen retour neren. |
 | [uitvoer](../logic-apps/workflow-definition-language-functions-reference.md#outputs) | De uitvoer van een actie tijdens runtime retour neren. |
 | [instellen](../logic-apps/workflow-definition-language-functions-reference.md#parameters) | Retourneert de waarde voor een para meter die wordt beschreven in uw werk stroom definitie. |
-| [Daardoor](../logic-apps/workflow-definition-language-functions-reference.md#result) | De invoer en uitvoer retour neren van alle acties binnen de opgegeven actie in het bereik, zoals `For_each`, `Until`en. `Scope` |
+| [result](../logic-apps/workflow-definition-language-functions-reference.md#result) | De invoer en uitvoer retour neren van alle acties binnen de opgegeven actie in het bereik, zoals `For_each`, `Until`en. `Scope` |
 | [trigger](../logic-apps/workflow-definition-language-functions-reference.md#trigger) | De uitvoer van een trigger retour neren tijdens runtime of vanuit andere JSON-naam-en-waardeparen. Zie ook [triggerOutputs](#triggerOutputs) en [triggerBody](../logic-apps/workflow-definition-language-functions-reference.md#triggerBody). |
 | [triggerBody](../logic-apps/workflow-definition-language-functions-reference.md#triggerBody) | Retour neer de uitvoer `body` van een trigger tijdens runtime. Zie [trigger](../logic-apps/workflow-definition-language-functions-reference.md#trigger). |
 | [triggerFormDataValue](../logic-apps/workflow-definition-language-functions-reference.md#triggerFormDataValue) | Een enkele waarde Retour neren die overeenkomt met een sleutel naam in trigger uitvoer van *formulier gegevens* of *formulier codering* . |
@@ -555,7 +555,7 @@ addDays('<timestamp>', <days>, '<format>'?)
 | <*bijgewerkt-tijds tempel*> | Tekenreeks | De tijds tempel plus het opgegeven aantal dagen  |
 ||||
 
-*Voor beeld 1*
+*Voorbeeld 1*
 
 In dit voor beeld worden 10 dagen toegevoegd aan de opgegeven tijds tempel:
 
@@ -565,7 +565,7 @@ addDays('2018-03-15T13:00:00Z', 10)
 
 En retourneert dit resultaat:`"2018-03-25T00:00:0000000Z"`
 
-*Voor beeld 2*
+*Voorbeeld 2*
 
 In dit voor beeld worden vijf dagen afgetrokken van de opgegeven tijds tempel:
 
@@ -597,7 +597,7 @@ addHours('<timestamp>', <hours>, '<format>'?)
 | <*bijgewerkt-tijds tempel*> | Tekenreeks | De tijds tempel plus het opgegeven aantal uren  |
 ||||
 
-*Voor beeld 1*
+*Voorbeeld 1*
 
 In dit voor beeld worden 10 uur toegevoegd aan de opgegeven tijds tempel:
 
@@ -607,7 +607,7 @@ addHours('2018-03-15T00:00:00Z', 10)
 
 En retourneert dit resultaat:`"2018-03-15T10:00:0000000Z"`
 
-*Voor beeld 2*
+*Voorbeeld 2*
 
 In dit voor beeld worden vijf uur afgetrokken van de opgegeven tijds tempel:
 
@@ -639,7 +639,7 @@ addMinutes('<timestamp>', <minutes>, '<format>'?)
 | <*bijgewerkt-tijds tempel*> | Tekenreeks | De tijds tempel plus het opgegeven aantal minuten |
 ||||
 
-*Voor beeld 1*
+*Voorbeeld 1*
 
 In dit voor beeld wordt 10 minuten aan de opgegeven tijds tempel toegevoegd:
 
@@ -649,7 +649,7 @@ addMinutes('2018-03-15T00:10:00Z', 10)
 
 En retourneert dit resultaat:`"2018-03-15T00:20:00.0000000Z"`
 
-*Voor beeld 2*
+*Voorbeeld 2*
 
 In dit voor beeld worden vijf minuten afgetrokken van de opgegeven tijds tempel:
 
@@ -700,7 +700,7 @@ addProperty(<object>['<parent-property>'], '<child-property>', <value>)
 | <*bijgewerkt-object*> | Object | Het bijgewerkte JSON-object waarvan u de eigenschap hebt ingesteld |
 ||||
 
-*Voor beeld 1*
+*Voorbeeld 1*
 
 In dit voor beeld `middleName` wordt de eigenschap toegevoegd aan een JSON-object, dat wordt geconverteerd van een teken reeks naar JSON met behulp van de [JSON ()](#json) -functie. Het object bevat al de `firstName` eigenschappen `surName` en en. De functie wijst de opgegeven waarde toe aan de nieuwe eigenschap en retourneert het bijgewerkte object:
 
@@ -727,7 +727,7 @@ Hier is het bijgewerkte JSON-object:
 }
 ```
 
-*Voor beeld 2*
+*Voorbeeld 2*
 
 In dit voor beeld `middleName` wordt de eigenschap Child toegevoegd `customerName` aan de bestaande eigenschap in een JSON-object, dat wordt geconverteerd van een teken reeks naar JSON met behulp van de [JSON ()](#json) -functie. De functie wijst de opgegeven waarde toe aan de nieuwe eigenschap en retourneert het bijgewerkte object:
 
@@ -780,7 +780,7 @@ addSeconds('<timestamp>', <seconds>, '<format>'?)
 | <*bijgewerkt-tijds tempel*> | Tekenreeks | De tijds tempel plus het opgegeven aantal seconden  |
 ||||
 
-*Voor beeld 1*
+*Voorbeeld 1*
 
 In dit voor beeld wordt 10 seconden toegevoegd aan de opgegeven tijds tempel:
 
@@ -790,7 +790,7 @@ addSeconds('2018-03-15T00:00:00Z', 10)
 
 En retourneert dit resultaat:`"2018-03-15T00:00:10.0000000Z"`
 
-*Voor beeld 2*
+*Voorbeeld 2*
 
 In dit voor beeld worden vijf seconden afgetrokken van de opgegeven tijds tempel:
 
@@ -824,7 +824,7 @@ addToTime('<timestamp>', <interval>, '<timeUnit>', '<format>'?)
 | <*bijgewerkt-tijds tempel*> | Tekenreeks | De tijds tempel plus het opgegeven aantal tijds eenheden  |
 ||||
 
-*Voor beeld 1*
+*Voorbeeld 1*
 
 In dit voor beeld wordt één dag toegevoegd aan de opgegeven tijds tempel:
 
@@ -834,7 +834,7 @@ addToTime('2018-01-01T00:00:00Z', 1, 'Day')
 
 En retourneert dit resultaat:`"2018-01-02T00:00:00.0000000Z"`
 
-*Voor beeld 2*
+*Voorbeeld 2*
 
 In dit voor beeld wordt één dag toegevoegd aan de opgegeven tijds tempel:
 
@@ -857,15 +857,15 @@ and(<expression1>, <expression2>, ...)
 
 | Parameter | Vereist | Type | Beschrijving |
 | --------- | -------- | ---- | ----------- |
-| <*expressie1*>, <*Expressie2*>,... | Ja | Booleaans | De te controleren expressies |
+| <*expressie1*>, <*Expressie2*>,... | Ja | Boolean-waarde | De te controleren expressies |
 |||||
 
 | Retourwaarde | Type | Beschrijving |
 | ------------ | -----| ----------- |
-| waar of onwaar | Booleaans | Retourneert waar als alle expressies waar zijn. Retourneert onwaar wanneer ten minste één expressie onwaar is. |
+| waar of onwaar | Boolean-waarde | Retourneert waar als alle expressies waar zijn. Retourneert onwaar wanneer ten minste één expressie onwaar is. |
 ||||
 
-*Voor beeld 1*
+*Voorbeeld 1*
 
 In deze voor beelden wordt gecontroleerd of de opgegeven Booleaanse waarden allemaal waar zijn:
 
@@ -881,7 +881,7 @@ En retourneert deze resultaten:
 * Tweede voor beeld: een expressie is onwaar, `false`dus retourneert.
 * Derde voor beeld: beide expressies zijn onwaar, `false`dus retourneert.
 
-*Voor beeld 2*
+*Voorbeeld 2*
 
 In deze voor beelden wordt gecontroleerd of de opgegeven expressies allemaal waar zijn:
 
@@ -1110,7 +1110,7 @@ En retourneert dit resultaat:
 
 <a name="bool"></a>
 
-### <a name="bool"></a>booleaans
+### <a name="bool"></a>Booleaanse waarde
 
 Retourneert de Booleaanse versie voor een waarde.
 
@@ -1125,7 +1125,7 @@ bool(<value>)
 
 | Retourwaarde | Type | Beschrijving |
 | ------------ | ---- | ----------- |
-| waar of onwaar | Booleaans | De Booleaanse versie voor de opgegeven waarde |
+| waar of onwaar | Boolean-waarde | De Booleaanse versie voor de opgegeven waarde |
 ||||
 
 *Voorbeeld*
@@ -1236,10 +1236,10 @@ Deze functie werkt met name voor deze typen verzamelingen:
 
 | Retourwaarde | Type | Beschrijving |
 | ------------ | ---- | ----------- |
-| waar of onwaar | Booleaans | Retourneert waar wanneer het item is gevonden. Retourneert onwaar wanneer deze niet is gevonden. |
+| waar of onwaar | Boolean-waarde | Retourneert waar wanneer het item is gevonden. Retourneert onwaar wanneer deze niet is gevonden. |
 ||||
 
-*Voor beeld 1*
+*Voorbeeld 1*
 
 In dit voor beeld wordt de teken reeks "Hallo wereld" voor de subtekenreeks "wereld" gecontroleerd en wordt waar geretourneerd:
 
@@ -1247,7 +1247,7 @@ In dit voor beeld wordt de teken reeks "Hallo wereld" voor de subtekenreeks "wer
 contains('hello world', 'world')
 ```
 
-*Voor beeld 2*
+*Voorbeeld 2*
 
 In dit voor beeld wordt de teken reeks "Hallo wereld" voor de subtekenreeks "universum" gecontroleerd en wordt false geretourneerd:
 
@@ -1277,7 +1277,7 @@ convertFromUtc('<timestamp>', '<destinationTimeZone>', '<format>'?)
 | <*geconverteerd: tijds tempel*> | Tekenreeks | De tijds tempel die is geconverteerd naar de doel tijdzone |
 ||||
 
-*Voor beeld 1*
+*Voorbeeld 1*
 
 In dit voor beeld wordt een tijds tempel geconverteerd naar de opgegeven tijd zone:
 
@@ -1287,7 +1287,7 @@ convertFromUtc('2018-01-01T08:00:00.0000000Z', 'Pacific Standard Time')
 
 En retourneert dit resultaat:`"2018-01-01T00:00:00.0000000"`
 
-*Voor beeld 2*
+*Voorbeeld 2*
 
 In dit voor beeld wordt een tijds tempel geconverteerd naar de opgegeven tijd zone en notatie:
 
@@ -1320,7 +1320,7 @@ convertTimeZone('<timestamp>', '<sourceTimeZone>', '<destinationTimeZone>', '<fo
 | <*geconverteerd: tijds tempel*> | Tekenreeks | De tijds tempel die is geconverteerd naar de doel tijdzone |
 ||||
 
-*Voor beeld 1*
+*Voorbeeld 1*
 
 In dit voor beeld wordt de bron tijdzone geconverteerd naar de doel tijdzone:
 
@@ -1330,7 +1330,7 @@ convertTimeZone('2018-01-01T08:00:00.0000000Z', 'UTC', 'Pacific Standard Time')
 
 En retourneert dit resultaat:`"2018-01-01T00:00:00.0000000"`
 
-*Voor beeld 2*
+*Voorbeeld 2*
 
 In dit voor beeld wordt een tijd zone geconverteerd naar de opgegeven tijd zone en notatie:
 
@@ -1362,7 +1362,7 @@ convertToUtc('<timestamp>', '<sourceTimeZone>', '<format>'?)
 | <*geconverteerd: tijds tempel*> | Tekenreeks | De tijds tempel die is geconverteerd naar UTC |
 ||||
 
-*Voor beeld 1*
+*Voorbeeld 1*
 
 In dit voor beeld wordt een tijds tempel geconverteerd naar UTC:
 
@@ -1372,7 +1372,7 @@ convertToUtc('01/01/2018 00:00:00', 'Pacific Standard Time')
 
 En retourneert dit resultaat:`"2018-01-01T08:00:00.0000000Z"`
 
-*Voor beeld 2*
+*Voorbeeld 2*
 
 In dit voor beeld wordt een tijds tempel geconverteerd naar UTC:
 
@@ -1568,7 +1568,7 @@ In dit voor beeld wordt het getal voor de dag van de week uit deze tijds tempel 
 dayOfWeek('2018-03-15T13:27:36Z')
 ```
 
-En retourneert dit resultaat:`3`
+En retourneert dit resultaat:`4`
 
 <a name="dayOfYear"></a>
 
@@ -1759,7 +1759,7 @@ empty([<collection>])
 
 | Retourwaarde | Type | Beschrijving |
 | ------------ | ---- | ----------- |
-| waar of onwaar | Booleaans | Retourneert waar als de verzameling leeg is. Retourneert onwaar wanneer niet leeg is. |
+| waar of onwaar | Boolean-waarde | Retourneert waar als de verzameling leeg is. Retourneert onwaar wanneer niet leeg is. |
 ||||
 
 *Voorbeeld*
@@ -1796,10 +1796,10 @@ endsWith('<text>', '<searchText>')
 
 | Retourwaarde | Type | Beschrijving |
 | ------------ | ---- | ----------- |
-| waar of onwaar  | Booleaans | Retourneert waar als de laatste subtekenreeks wordt gevonden. Retourneert onwaar wanneer deze niet is gevonden. |
+| waar of onwaar  | Boolean-waarde | Retourneert waar als de laatste subtekenreeks wordt gevonden. Retourneert onwaar wanneer deze niet is gevonden. |
 ||||
 
-*Voor beeld 1*
+*Voorbeeld 1*
 
 In dit voor beeld wordt gecontroleerd of de teken reeks "Hallo wereld" eindigt op de "wereld"-teken reeks:
 
@@ -1809,7 +1809,7 @@ endsWith('hello world', 'world')
 
 En retourneert dit resultaat:`true`
 
-*Voor beeld 2*
+*Voorbeeld 2*
 
 In dit voor beeld wordt gecontroleerd of de teken reeks ' Hallo wereld ' eindigt met de teken reeks ' universum ':
 
@@ -1837,7 +1837,7 @@ equals('<object1>', '<object2>')
 
 | Retourwaarde | Type | Beschrijving |
 | ------------ | ---- | ----------- |
-| waar of onwaar | Booleaans | Retourneert waar als beide gelijkwaardig zijn. Retourneert onwaar als dat niet het equivalent is. |
+| waar of onwaar | Boolean-waarde | Retourneert waar als beide gelijkwaardig zijn. Retourneert onwaar als dat niet het equivalent is. |
 ||||
 
 *Voorbeeld*
@@ -1907,7 +1907,7 @@ float('<value>')
 
 | Retourwaarde | Type | Beschrijving |
 | ------------ | ---- | ----------- |
-| <*float-waarde*> | Drijvend | Het drijvende-komma getal voor de opgegeven teken reeks |
+| <*float-waarde*> | Float | Het drijvende-komma getal voor de opgegeven teken reeks |
 ||||
 
 *Voorbeeld*
@@ -2036,7 +2036,7 @@ formatNumber(<number>, <format>, <locale>?)
 | <*opgemaakt-nummer*> | Tekenreeks | Het opgegeven getal als een teken reeks in de indeling die u hebt opgegeven. U kunt deze retour waarde casten naar `int` een `float`of. |
 ||||
 
-*Voor beeld 1*
+*Voorbeeld 1*
 
 Stel dat u het nummer `1234567890`wilt opmaken. In dit voor beeld wordt dat getal opgemaakt als de teken reeks "1.234.567.890,00".
 
@@ -2090,7 +2090,7 @@ getFutureTime(<interval>, <timeUnit>, <format>?)
 | <*bijgewerkt-tijds tempel*> | Tekenreeks | De huidige tijds tempel plus het opgegeven aantal tijds eenheden |
 ||||
 
-*Voor beeld 1*
+*Voorbeeld 1*
 
 Stel dat het huidige tijds tempel ' 2018-03-01T00:00:00.0000000 Z ' is.
 In dit voor beeld worden vijf dagen toegevoegd aan die tijds tempel:
@@ -2101,7 +2101,7 @@ getFutureTime(5, 'Day')
 
 En retourneert dit resultaat:`"2018-03-06T00:00:00.0000000Z"`
 
-*Voor beeld 2*
+*Voorbeeld 2*
 
 Stel dat het huidige tijds tempel ' 2018-03-01T00:00:00.0000000 Z ' is.
 In dit voor beeld worden vijf dagen toegevoegd en wordt het resultaat geconverteerd naar D-indeling:
@@ -2134,7 +2134,7 @@ getPastTime(<interval>, <timeUnit>, <format>?)
 | <*bijgewerkt-tijds tempel*> | Tekenreeks | De huidige tijds tempel min het opgegeven aantal tijds eenheden |
 ||||
 
-*Voor beeld 1*
+*Voorbeeld 1*
 
 Stel dat het huidige tijds tempel ' 2018-02-01T00:00:00.0000000 Z ' is.
 In dit voor beeld worden vijf dagen afgetrokken van die tijds tempel:
@@ -2145,7 +2145,7 @@ getPastTime(5, 'Day')
 
 En retourneert dit resultaat:`"2018-01-27T00:00:00.0000000Z"`
 
-*Voor beeld 2*
+*Voorbeeld 2*
 
 Stel dat het huidige tijds tempel ' 2018-02-01T00:00:00.0000000 Z ' is.
 In dit voor beeld worden vijf dagen afgetrokken en wordt het resultaat geconverteerd naar D-indeling:
@@ -2176,7 +2176,7 @@ greater('<value>', '<compareTo>')
 
 | Retourwaarde | Type | Beschrijving |
 | ------------ | ---- | ----------- |
-| waar of onwaar | Booleaans | Retourneert waar als de eerste waarde groter is dan de tweede waarde. Retourneert onwaar als de eerste waarde gelijk is aan of kleiner is dan de tweede waarde. |
+| waar of onwaar | Boolean-waarde | Retourneert waar als de eerste waarde groter is dan de tweede waarde. Retourneert onwaar als de eerste waarde gelijk is aan of kleiner is dan de tweede waarde. |
 ||||
 
 *Voorbeeld*
@@ -2213,7 +2213,7 @@ greaterOrEquals('<value>', '<compareTo>')
 
 | Retourwaarde | Type | Beschrijving |
 | ------------ | ---- | ----------- |
-| waar of onwaar | Booleaans | Retourneert waar als de eerste waarde groter is dan of gelijk is aan de tweede waarde. Retourneert onwaar als de eerste waarde lager is dan de tweede waarde. |
+| waar of onwaar | Boolean-waarde | Retourneert waar als de eerste waarde groter is dan of gelijk is aan de tweede waarde. Retourneert onwaar als de eerste waarde lager is dan de tweede waarde. |
 ||||
 
 *Voorbeeld*
@@ -2279,7 +2279,7 @@ if(<expression>, <valueIfTrue>, <valueIfFalse>)
 
 | Parameter | Vereist | Type | Beschrijving |
 | --------- | -------- | ---- | ----------- |
-| <*expressie*> | Ja | Booleaans | De expressie die moet worden gecontroleerd |
+| <*expressie*> | Ja | Boolean-waarde | De expressie die moet worden gecontroleerd |
 | <*valueIfTrue*> | Ja | Alle | De waarde die moet worden geretourneerd wanneer de expressie waar is |
 | <*valueIfFalse*> | Ja | Alle | De waarde die moet worden geretourneerd wanneer de expressie onwaar is |
 |||||
@@ -2534,7 +2534,7 @@ json('<value>')
 | <*JSON-resultaat*> | Systeem eigen JSON-type of-object | De waarde of het object van het type JSON voor de opgegeven teken reeks of XML. Als de teken reeks null is, retourneert de functie een leeg object. |
 ||||
 
-*Voor beeld 1*
+*Voorbeeld 1*
 
 In dit voor beeld wordt deze teken reeks geconverteerd naar de JSON-waarde:
 
@@ -2544,7 +2544,7 @@ json('[1, 2, 3]')
 
 En retourneert dit resultaat:`[1, 2, 3]`
 
-*Voor beeld 2*
+*Voorbeeld 2*
 
 In dit voor beeld wordt deze teken reeks geconverteerd naar JSON:
 
@@ -2766,7 +2766,7 @@ less('<value>', '<compareTo>')
 
 | Retourwaarde | Type | Beschrijving |
 | ------------ | ---- | ----------- |
-| waar of onwaar | Booleaans | Retourneert waar als de eerste waarde lager is dan de tweede waarde. Retourneert onwaar als de eerste waarde gelijk is aan of groter is dan de tweede waarde. |
+| waar of onwaar | Boolean-waarde | Retourneert waar als de eerste waarde lager is dan de tweede waarde. Retourneert onwaar als de eerste waarde gelijk is aan of groter is dan de tweede waarde. |
 ||||
 
 *Voorbeeld*
@@ -2803,7 +2803,7 @@ lessOrEquals('<value>', '<compareTo>')
 
 | Retourwaarde | Type | Beschrijving |
 | ------------ | ---- | ----------- |
-| waar of onwaar  | Booleaans | Retourneert waar als de eerste waarde kleiner is dan of gelijk is aan de tweede waarde. Retourneert onwaar als de eerste waarde groter is dan de tweede waarde. |
+| waar of onwaar  | Boolean-waarde | Retourneert waar als de eerste waarde kleiner is dan of gelijk is aan de tweede waarde. Retourneert onwaar als de eerste waarde groter is dan de tweede waarde. |
 ||||
 
 *Voorbeeld*
@@ -3009,15 +3009,15 @@ not(<expression>)
 
 | Parameter | Vereist | Type | Beschrijving |
 | --------- | -------- | ---- | ----------- |
-| <*expressie*> | Ja | Booleaans | De expressie die moet worden gecontroleerd |
+| <*expressie*> | Ja | Boolean-waarde | De expressie die moet worden gecontroleerd |
 |||||
 
 | Retourwaarde | Type | Beschrijving |
 | ------------ | ---- | ----------- |
-| waar of onwaar | Booleaans | Retourneert waar als de expressie onwaar is. Retourneert onwaar als de expressie waar is. |
+| waar of onwaar | Boolean-waarde | Retourneert waar als de expressie onwaar is. Retourneert onwaar als de expressie waar is. |
 ||||
 
-*Voor beeld 1*
+*Voorbeeld 1*
 
 In deze voor beelden wordt gecontroleerd of de opgegeven expressies onwaar zijn:
 
@@ -3031,7 +3031,7 @@ En retour neren deze resultaten:
 * Eerste voor beeld: de expressie is onwaar, waardoor de `true`functie wordt geretourneerd.
 * Tweede voor beeld: de expressie is waar, dus retourneert `false`de functie.
 
-*Voor beeld 2*
+*Voorbeeld 2*
 
 In deze voor beelden wordt gecontroleerd of de opgegeven expressies onwaar zijn:
 
@@ -3058,15 +3058,15 @@ or(<expression1>, <expression2>, ...)
 
 | Parameter | Vereist | Type | Beschrijving |
 | --------- | -------- | ---- | ----------- |
-| <*expressie1*>, <*Expressie2*>,... | Ja | Booleaans | De te controleren expressies |
+| <*expressie1*>, <*Expressie2*>,... | Ja | Boolean-waarde | De te controleren expressies |
 |||||
 
 | Retourwaarde | Type | Beschrijving |
 | ------------ | ---- | ----------- |
-| waar of onwaar | Booleaans | Retourneert waar als ten minste één expressie waar is. Retourneert onwaar als alle expressies onwaar zijn. |
+| waar of onwaar | Boolean-waarde | Retourneert waar als ten minste één expressie waar is. Retourneert onwaar als alle expressies onwaar zijn. |
 ||||
 
-*Voor beeld 1*
+*Voorbeeld 1*
 
 Deze voor beelden controleren of ten minste één expressie waar is:
 
@@ -3080,7 +3080,7 @@ En retour neren deze resultaten:
 * Eerste voor beeld: ten minste één expressie is waar, dus retourneert `true`de functie.
 * Tweede voor beeld: beide expressies zijn onwaar, waardoor de `false`functie wordt geretourneerd.
 
-*Voor beeld 2*
+*Voorbeeld 2*
 
 Deze voor beelden controleren of ten minste één expressie waar is:
 
@@ -3328,7 +3328,7 @@ removeProperty(<object>['<parent-property>'], '<child-property>')
 | <*bijgewerkt-object*> | Object | Het bijgewerkte JSON-object waarvan u de onderliggende eigenschap hebt verwijderd |
 ||||
 
-*Voor beeld 1*
+*Voorbeeld 1*
 
 In dit voor beeld `middleName` wordt de eigenschap van een JSON-object, dat wordt geconverteerd van een teken reeks naar JSON, verwijderd met behulp van de functie [JSON ()](#json) en wordt het bijgewerkte object geretourneerd:
 
@@ -3355,7 +3355,7 @@ Hier is het bijgewerkte JSON-object:
 }
 ```
 
-*Voor beeld 2*
+*Voorbeeld 2*
 
 In dit voor beeld `middleName` wordt de onderliggende eigenschap `customerName` van een BOVENLIGGENDE eigenschap in een JSON-object verwijderd, die wordt geconverteerd van een teken reeks naar JSON met behulp van de [JSON ()](#json) -functie, en het bijgewerkte object wordt geretourneerd:
 
@@ -3543,7 +3543,7 @@ setProperty(<object>['<parent-property>'], '<parent-property>', setProperty(<obj
 | <*bijgewerkt-object*> | Object | Het bijgewerkte JSON-object waarvan u de eigenschap hebt ingesteld |
 ||||
 
-*Voor beeld 1*
+*Voorbeeld 1*
 
 In dit voor beeld `surName` wordt de eigenschap in een JSON-object ingesteld, dat wordt geconverteerd van een teken reeks naar JSON met behulp van de [JSON ()](#json) -functie. De functie wijst de opgegeven waarde toe aan de eigenschap en retourneert het bijgewerkte object:
 
@@ -3569,7 +3569,7 @@ Hier is het bijgewerkte JSON-object:
 }
 ```
 
-*Voor beeld 2*
+*Voorbeeld 2*
 
 In dit voor beeld `surName` wordt de onderliggende eigenschap `customerName` voor de BOVENLIGGENDE eigenschap in een JSON-object ingesteld, die wordt geconverteerd van een teken reeks naar JSON met behulp van de [JSON ()-](#json) functie. De functie wijst de opgegeven waarde toe aan de eigenschap en retourneert het bijgewerkte object:
 
@@ -3774,10 +3774,10 @@ startsWith('<text>', '<searchText>')
 
 | Retourwaarde | Type | Beschrijving |
 | ------------ | ---- | ----------- |
-| waar of onwaar  | Booleaans | Retourneert waar als de eerste subtekenreeks wordt gevonden. Retourneert onwaar wanneer deze niet is gevonden. |
+| waar of onwaar  | Boolean-waarde | Retourneert waar als de eerste subtekenreeks wordt gevonden. Retourneert onwaar wanneer deze niet is gevonden. |
 ||||
 
-*Voor beeld 1*
+*Voorbeeld 1*
 
 In dit voor beeld wordt gecontroleerd of de teken reeks "Hallo wereld" begint met de subtekenreeks "Hallo":
 
@@ -3787,7 +3787,7 @@ startsWith('hello world', 'hello')
 
 En retourneert dit resultaat:`true`
 
-*Voor beeld 2*
+*Voorbeeld 2*
 
 In dit voor beeld wordt gecontroleerd of de teken reeks "Hallo wereld" begint met de subtekenreeks "Greetings":
 
@@ -3817,7 +3817,7 @@ string(<value>)
 | <*teken reeks-waarde*> | Tekenreeks | De teken reeks versie voor de opgegeven waarde |
 ||||
 
-*Voor beeld 1*
+*Voorbeeld 1*
 
 In dit voor beeld wordt de teken reeks versie gemaakt voor dit nummer:
 
@@ -3827,7 +3827,7 @@ string(10)
 
 En retourneert dit resultaat:`"10"`
 
-*Voor beeld 2*
+*Voorbeeld 2*
 
 In dit voor beeld wordt een teken reeks gemaakt voor het opgegeven JSON-object en\\wordt de back slash () gebruikt als escape teken voor het dubbele aanhalings tekens (").
 
@@ -3925,7 +3925,7 @@ subtractFromTime('<timestamp>', <interval>, '<timeUnit>', '<format>'?)
 | <*bijgewerkt-tijds tempel*> | Tekenreeks | De tijds tempel min het opgegeven aantal tijds eenheden |
 ||||
 
-*Voor beeld 1*
+*Voorbeeld 1*
 
 In dit voor beeld wordt één dag afgetrokken van deze tijds tempel:
 
@@ -3935,7 +3935,7 @@ subtractFromTime('2018-01-02T00:00:00Z', 1, 'Day')
 
 En retourneert dit resultaat:`"2018-01-01T00:00:00:0000000Z"`
 
-*Voor beeld 2*
+*Voorbeeld 2*
 
 In dit voor beeld wordt één dag afgetrokken van deze tijds tempel:
 
@@ -4561,7 +4561,7 @@ U kunt desgewenst een andere indeling opgeven met de <*notatie*> para meter.
 | <*huidige-tijds tempel*> | Tekenreeks | De huidige datum en tijd |
 ||||
 
-*Voor beeld 1*
+*Voorbeeld 1*
 
 Stel dat vandaag 15 april 2018 om 1:00:00 uur.
 In dit voor beeld wordt het huidige tijds tempel opgehaald:
@@ -4572,7 +4572,7 @@ utcNow()
 
 En retourneert dit resultaat:`"2018-04-15T13:00:00.0000000Z"`
 
-*Voor beeld 2*
+*Voorbeeld 2*
 
 Stel dat vandaag 15 april 2018 om 1:00:00 uur.
 In dit voor beeld wordt de huidige tijds tempel opgehaald met de optionele D-indeling:
@@ -4657,7 +4657,7 @@ xml('<value>')
 | <*XML-versie*> | Object | De gecodeerde XML voor de opgegeven teken reeks of het JSON-object |
 ||||
 
-*Voor beeld 1*
+*Voorbeeld 1*
 
 In dit voor beeld wordt de XML-versie gemaakt voor deze teken reeks, die een JSON-object bevat:
 
@@ -4669,7 +4669,7 @@ En retourneert deze XML-resultaten:
 <name>Sophia Owen</name>
 ```
 
-*Voor beeld 2*
+*Voorbeeld 2*
 
 Stel dat u dit JSON-object hebt:
 
@@ -4718,7 +4718,7 @@ xpath('<xml>', '<xpath>')
 | [<*XML-knooppunt1*>, <*xml-Knooppunt2*>,...] </br>-of- </br>[<*waarde1*>, <*Value2*>,...] | Matrix | Een matrix met XML-knoop punten of-waarden die overeenkomen met de opgegeven XPath-expressie |
 ||||
 
-*Voor beeld 1*
+*Voorbeeld 1*
 
 In dit voor beeld worden knoop punten `<name></name>` gevonden die overeenkomen met het knoop punt in de opgegeven argumenten, en wordt een matrix met die knooppunt waarden geretourneerd:
 
@@ -4740,7 +4740,7 @@ Hier volgt de resultaat matrix met de knoop punten die `<name></name`overeenkome
 
 `[ <name>Gala</name>, <name>Honeycrisp</name> ]`
 
-*Voor beeld 2*
+*Voorbeeld 2*
 
 In voor beeld 1: in dit voor beeld worden knoop punten `<count></count>` gevonden die overeenkomen met het knoop punt `sum()` en worden deze knooppunt waarden toegevoegd aan de functie.
 

@@ -10,12 +10,12 @@ ms.date: 12/18/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 7a5967f52a187fe289c6fb1ca72af2d5fd17f010
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 680c1b036b9b41edb1115f478fd5dc8f63ea1d02
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79255234"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82688032"
 ---
 # <a name="grant-limited-access-to-azure-storage-resources-using-shared-access-signatures-sas"></a>Beperkte toegang verlenen tot Azure Storage-resources met behulp van Shared Access signatures (SAS)
 
@@ -115,7 +115,7 @@ De volgende aanbevelingen voor het gebruik van hand tekeningen voor gedeelde toe
 - **U begrijpt dat uw account wordt gefactureerd voor gebruik, inclusief via een SAS.** Als u schrijf toegang voor een BLOB biedt, kan een gebruiker ervoor kiezen om een 200 GB-BLOB te uploaden. Als u de gebruikers ook lees toegang hebt gegeven, kunnen ze het 10 keer downloaden, waardoor er 2 TB worden bespaard op basis van de kosten voor u. U kunt ook beperkte machtigingen opgeven om de mogelijke acties van kwaadwillende gebruikers te helpen voor komen. Gebruik SA'S met een korte levens duur om deze dreiging te verminderen (maar mindful aan de eind tijd te scheefen).
 - **Valideer gegevens die zijn geschreven met behulp van een SAS.** Wanneer een client toepassing gegevens naar uw opslag account schrijft, houd er dan rekening mee dat er problemen met die gegevens kunnen optreden. Als uw toepassing vereist dat gegevens worden gevalideerd of geautoriseerd voordat deze klaar is voor gebruik, moet u deze validatie uitvoeren nadat de gegevens zijn geschreven en voordat deze door uw toepassing worden gebruikt. Deze oefening beschermt ook tegen beschadigde of schadelijke gegevens die naar uw account worden geschreven, hetzij door een gebruiker die de SA'S heeft aangeschaft, hetzij door een gebruiker die misbruik maakt van een gelekte SAS.
 - **Weet wanneer u geen SAS wilt gebruiken.** Soms is het gebruik van een SAS niet alleen voor de Risico's die zijn gekoppeld aan een bepaalde bewerking ten opzichte van uw opslag account. Voor dergelijke bewerkingen maakt u een middelste laag service die naar uw opslag account schrijft na het uitvoeren van de validatie, verificatie en controle van bedrijfs regels. Soms is het eenvoudiger om de toegang op andere manieren te beheren. Als u bijvoorbeeld alle blobs in een container openbaar leesbaar wilt maken, kunt u de container openbaar maken, in plaats van een SAS aan elke client voor toegang te bieden.
-- **Gebruik Azure Monitor en Azure Storage Logboeken om uw toepassing te bewaken.** U kunt de logboek registratie van Azure Monitor en opslag analyse gebruiken om eventuele pieken in autorisatie fouten na een storing in uw SAS-Provider service of het onbedoeld verwijderen van een opgeslagen toegangs beleid te observeren. Zie [Azure Storage metrische gegevens in azure monitor](storage-metrics-in-azure-monitor.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) en [Azure Opslaganalyse logboek registratie](storage-analytics-logging.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)voor meer informatie.
+- **Gebruik Azure Monitor en Azure Storage Logboeken om uw toepassing te bewaken.** U kunt de logboek registratie van Azure Monitor en opslag analyse gebruiken om eventuele pieken in autorisatie fouten na een storing in uw SAS-Provider service of het onbedoeld verwijderen van een opgeslagen toegangs beleid te observeren. Zie [Azure Storage metrische gegevens in azure monitor](monitor-storage.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) en [Azure Opslaganalyse logboek registratie](storage-analytics-logging.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)voor meer informatie.
 
 ## <a name="get-started-with-sas"></a>Aan de slag met SAS
 

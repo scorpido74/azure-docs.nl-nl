@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 05/05/2017
 ms.author: radeltch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 8a49bc979923bf52d099e30615910c5bdb0601b6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f5e0eda72f39a70f02b596a8fd69728336eac333
+ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79279856"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82594811"
 ---
 # <a name="prepare-the-azure-infrastructure-for-sap-ha-by-using-a-windows-failover-cluster-and-shared-disk-for-sap-ascsscs"></a>De Azure-infra structuur voor SAP HA voorbereiden met behulp van een Windows-failovercluster en een gedeelde schijf voor SAP ASCS/SCS
 
@@ -177,9 +177,9 @@ De sjablonen met drie lagen in Azure Resource Manager bieden ook ondersteuning v
 
 Hier kunt u Azure Resource Manager sjablonen ophalen voor het voorbeeld scenario dat in dit artikel wordt beschreven:
 
-* [Azure Marketplace-installatie kopie](https://github.com/Azure/azure-quickstart-templates/tree/master/sap-3-tier-marketplace-image)  
+* [Azure Marketplace-installatie kopie](https://github.com/Azure/azure-quickstart-templates/)  
 * [Azure Marketplace-installatie kopie met behulp van Azure Managed Disks](https://github.com/Azure/azure-quickstart-templates/tree/master/sap-3-tier-marketplace-image-md)  
-* [Aangepaste installatie kopie](https://github.com/Azure/azure-quickstart-templates/tree/master/sap-3-tier-user-image)
+* [Aangepaste installatie kopie](https://github.com/Azure/azure-quickstart-templates/)
 * [Aangepaste installatie kopie met behulp van Managed Disks](https://github.com/Azure/azure-quickstart-templates/tree/master/sap-3-tier-user-image-md)
 
 De infra structuur voorbereiden voor de architectuur sjabloon 1:
@@ -270,9 +270,9 @@ U kunt deze Azure Resource Manager sjabloon voor SAP gebruiken om de implementat
 
 Hier kunt u Azure Resource Manager sjablonen voor dit implementatie scenario ophalen:
 
-* [Azure Marketplace-installatie kopie](https://github.com/Azure/azure-quickstart-templates/tree/master/sap-3-tier-marketplace-image-converged)  
+* [Azure Marketplace-installatie kopie](https://github.com/Azure/azure-quickstart-templates/)  
 * [Azure Marketplace-installatie kopie met behulp van Managed Disks](https://github.com/Azure/azure-quickstart-templates/tree/master/sap-3-tier-marketplace-image-converged-md)  
-* [Aangepaste installatie kopie](https://github.com/Azure/azure-quickstart-templates/tree/master/sap-3-tier-user-image-converged)
+* [Aangepaste installatie kopie](https://github.com/Azure/azure-quickstart-templates/)
 * [Aangepaste installatie kopie met behulp van Managed Disks](https://github.com/Azure/azure-quickstart-templates/tree/master/sap-3-tier-user-image-converged-md)
 
 

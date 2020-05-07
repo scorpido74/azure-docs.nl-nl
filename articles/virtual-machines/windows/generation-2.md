@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 02/11/2020
 ms.author: jushiman
-ms.openlocfilehash: 07bf03096cbe5ec8e0fe9619519fdddb91cde984
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: bf690ad3ad38632834a92c4a743b1cb584beaf65
+ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82231659"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82838821"
 ---
 # <a name="support-for-generation-2-vms-on-azure"></a>Ondersteuning voor virtuele machines van generatie 2 op Azure
 
@@ -38,6 +38,7 @@ Virtuele machines van de eerste generatie worden ondersteund door alle VM-groott
 * [HB-serie](../hb-series.md)
 * [HC-serie](../hc-series.md)
 * [Ls-Series](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-previous-gen#ls-series) en [Lsv2-serie](../lsv2-series.md)
+* [M-serie](../m-series.md)
 * [Mv2-serie](../mv2-series.md)<sup>1</sup>
 * [NCv2-serie](../ncv2-series.md) en [NCv3-serie](../ncv3-series.md)
 * [ND-serie](../nd-series.md)
@@ -77,7 +78,7 @@ Azure biedt momenteel geen ondersteuning voor enkele van de functies die on-prem
 
 ### <a name="generation-1-vs-generation-2-features"></a>Generatie 1 vs. generatie 2-functies
 
-| Functie | Eerste generatie | Tweede generatie |
+| Onderdeel | Eerste generatie | Tweede generatie |
 |---------|--------------|--------------|
 | Modus             | PCAT                      | UEFI                               |
 | Schijf controllers | IDE                       | SCSI                               |
@@ -109,7 +110,7 @@ Hieronder vindt u de stappen voor het maken van een Gen2-VM (Generation 2) in Az
 1. Selecteer **Een resource maken**.
 1. Klik op **alles weer geven** in azure Marketplace aan de linkerkant.
 1. Selecteer een installatie kopie die Gen2 ondersteunt.
-1. Klik op **maken**.
+1. Klik op **Maken**.
 1. Selecteer op het tabblad **Geavanceerd** onder de sectie **VM-generatie** de optie **generatie 2** .
 1. Ga naar het tabblad **basis** informatie en klik onder **Details van exemplaar**op **grootte** en open de Blade **VM-grootte selecteren** .
 1. Selecteer een [ondersteunde virtuele machine van de tweede generatie](#generation-2-vm-sizes).

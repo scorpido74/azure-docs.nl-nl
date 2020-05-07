@@ -1,6 +1,6 @@
 ---
-title: Roltoewijzingen weer geven met behulp van Azure RBAC en de Azure Portal
-description: Meer informatie over hoe u kunt bepalen welke resources gebruikers, groepen, service-principals of beheerde identiteiten hebben toegang tot het gebruik van op rollen gebaseerd toegangs beheer (RBAC) en de Azure Portal.
+title: Azure-roltoewijzingen weer geven met behulp van de Azure Portal-Azure RBAC
+description: Meer informatie over hoe u kunt bepalen welke resources gebruikers, groepen, service-principals of beheerde identiteiten hebben toegang tot het gebruik van de Azure Portal en Azure op rollen gebaseerd toegangs beheer (Azure RBAC).
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -14,14 +14,14 @@ ms.workload: identity
 ms.date: 03/18/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 03a3d3c7d572d7ec5b8d3ac3d527d0d59e649bc2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a4c02369f44255dfa472202215496378d41f8c6c
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80062244"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82735722"
 ---
-# <a name="list-role-assignments-using-azure-rbac-and-the-azure-portal"></a>Roltoewijzingen weer geven met behulp van Azure RBAC en de Azure Portal
+# <a name="list-azure-role-assignments-using-the-azure-portal"></a>Azure-roltoewijzingen weer geven met behulp van de Azure Portal
 
 [!INCLUDE [Azure RBAC definition list access](../../includes/role-based-access-control-definition-list.md)]In dit artikel wordt beschreven hoe u roltoewijzingen kunt weer geven met behulp van de Azure Portal.
 
@@ -138,5 +138,5 @@ Als u het maximum aantal krijgt en u probeert meer roltoewijzingen toe te voegen
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Roltoewijzingen toevoegen of verwijderen met behulp van Azure RBAC en de Azure Portal](role-assignments-portal.md)
-- [Problemen met RBAC voor Azure-resources oplossen](troubleshooting.md)
+- [Azure-roltoewijzingen toevoegen of verwijderen met behulp van de Azure Portal](role-assignments-portal.md)
+- [Problemen met Azure RBAC oplossen](troubleshooting.md)
