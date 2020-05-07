@@ -8,13 +8,12 @@ ms.devlang: nodejs
 ms.topic: tutorial
 ms.date: 04/20/2020
 ms.author: dech
-Customer intent: As a developer, I want to build a Node.js console application to access and manage SQL API account resources in Azure Cosmos DB, so that customers can better use the service.
-ms.openlocfilehash: 212dd243842a8bdacc8a77241f456795ef508d9e
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: ef493b6b21eb0ba0ad6d22a21e4e205a9fecacb6
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81731695"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82858067"
 ---
 # <a name="tutorial-build-a-nodejs-console-app-with-the-javascript-sdk-to-manage-azure-cosmos-db-sql-api-data"></a>Zelf studie: een node. JS-Console-app bouwen met de Java script SDK om Azure Cosmos DB SQL-API-gegevens te beheren
 
@@ -27,7 +26,7 @@ ms.locfileid: "81731695"
 
 Als ontwikkelaar hebt u mogelijk toepassingen die gebruikmaken van NoSQL-documentgegevens. U kunt een SQL-API-account in Azure Cosmos DB gebruiken om deze documentgegevens op te slaan en te openen. In deze zelfstudie ziet u hoe u een Node.js-consoletoepassing bouwt voor het maken van Azure Cosmos DB-resources en om deze resources te doorzoeken.
 
-In deze zelfstudie leert u het volgende:
+In deze zelfstudie doet u het volgende:
 
 > [!div class="checklist"]
 > * Een Azure Cosmos DB-account maken en er verbinding mee maken.

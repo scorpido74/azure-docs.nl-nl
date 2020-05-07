@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 3/19/2019
 ms.author: victorh
-ms.openlocfilehash: ae80b49c3bfb40743665768622d3f4a8a6990c12
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 286c9329be38055808571d8d32c724d27a61cbf3
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81311852"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82855870"
 ---
 # <a name="overview-of-tls-termination-and-end-to-end-tls-with-application-gateway"></a>Overzicht van TLS-beëindiging en end-to-end TLS met Application Gateway
 
@@ -28,6 +28,10 @@ Application Gateway ondersteunt TLS-beëindiging op de gateway, waarna verkeer d
 - **Certificaat beheer** : certificaten hoeven alleen te worden aangeschaft en geïnstalleerd op de toepassings gateway en niet op alle back-endservers. Dit bespaart tijd en geld.
 
 Als u TLS-beëindiging wilt configureren, moet er een TLS/SSL-certificaat aan de listener worden toegevoegd om de toepassings gateway in te scha kelen voor het afleiden van een symmetrische sleutel conform TLS/SSL-protocol specificatie. De symmetrische sleutel wordt vervolgens gebruikt voor het versleutelen en ontsleutelen van het verkeer dat naar de gateway wordt verzonden. Het TLS/SSL-certificaat moet de PFX-indeling (Personal Information Exchange) hebben. Met deze bestands indeling kunt u de persoonlijke sleutel exporteren die is vereist voor de toepassings gateway om de versleuteling en ontsleuteling van verkeer uit te voeren.
+
+> [!IMPORTANT] 
+> Houd er rekening mee dat voor het certificaat op de listener de volledige certificaat keten moet worden geüpload. 
+
 
 > [!NOTE] 
 >
