@@ -6,12 +6,12 @@ ms.author: abpai
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 04/03/2020
-ms.openlocfilehash: 6dcda58652abe51d360748222263f30f337a2251
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e4d578596471153e4fc0e37d3ca093685326ecc7
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82182732"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82791762"
 ---
 # <a name="azure-cosmos-db-service-quotas"></a>Service quota's Azure Cosmos DB
 
@@ -138,9 +138,9 @@ Cosmos DB gebruikt HMAC voor autorisatie. U kunt een hoofd sleutel of een [bron 
 
 Cosmos DB ondersteunt de uitvoering van triggers tijdens het schrijven. De service ondersteunt Maxi maal één pretrigger en één post-trigger per schrijf bewerking. 
 
-## <a name="autoscale-mode-limits"></a>Limieten voor automatisch schalen
+## <a name="limits-for-autoscale-provisioned-throughput"></a>Limieten voor automatisch schalen ingericht door Voer
 
-Zie het artikel [automatisch schalen](provision-throughput-autoscale.md#autoscale-limits) voor de limieten voor door Voer en opslag in de modus automatisch schalen.
+Zie het artikel [automatisch schalen](provision-throughput-autoscale.md#autoscale-limits) voor de door Voer en opslag limieten met automatisch schalen.
 
 ## <a name="sql-query-limits"></a>SQL-query limieten
 

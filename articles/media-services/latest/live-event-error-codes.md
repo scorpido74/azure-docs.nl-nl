@@ -1,7 +1,7 @@
 ---
 title: Fout codes voor Live-gebeurtenissen Azure Media Services | Microsoft Docs
 description: In dit artikel vindt u een overzicht van fout codes voor Live-gebeurtenissen.
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 services: media-services
@@ -11,14 +11,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/25/2020
-ms.author: juliako
-ms.openlocfilehash: f9067562f67190b8bc04392f33078d4d3262f986
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 05/4/2020
+ms.author: inhenkel
+ms.openlocfilehash: e039a240465478e86ce816890219e5dfaa07dfbf
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77654576"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82791048"
 ---
 # <a name="media-services-live-event-error-codes"></a>Fout codes voor Live-gebeurtenissen Media Services
 
@@ -40,6 +40,7 @@ Wanneer u zich abonneert op de [Event grid](https://docs.microsoft.com/azure/eve
 | MPE_RTMP_FLV_TAG_TIMESTAMP_INVALID | De tijds tempel van de video-of audio-FLVTag is ongeldig vanuit het RTMP-coderings programma. |
 | MPE_INGEST_FRAMERATE_EXCEEDED | De binnenkomende code ring opgenomen streams met frame snelheid overschrijdt het Maxi maal toegestane aantal 30fps voor het coderen van Live-gebeurtenissen/kanalen.|
 | MPE_INGEST_VIDEO_RESOLUTION_NOT_SUPPORTED | De binnenkomende gegevensstromen die zijn opgenomen streams overschrijden de volgende toegestane oplossingen: 1920x1088 voor het coderen van Live Events/kanalen en 4096 x 2160 voor Pass-Through Live-gebeurtenissen/kanalen.|
+| MPE_INGEST_RTMP_TOO_LARGE_UNPROCESSED_FLV | De live-gebeurtenis heeft een grote hoeveelheid audio gegevens tegelijk ontvangen, of een grote hoeveelheid video gegevens zonder keyframes. De verbinding met het coderings programma is verbroken, zodat het een nieuwe poging is met de juiste gegevens. |
 
 ## <a name="liveeventencoderdisconnected"></a>LiveEventEncoderDisconnected
 

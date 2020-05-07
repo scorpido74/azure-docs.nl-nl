@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 17a96479b80410cbfcb2a6061904491f95c45f10
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a5820856f7d4c51e41162f01a9687304cb223088
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82116261"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82791915"
 ---
 # <a name="field-mappings-and-transformations-using-azure-cognitive-search-indexers"></a>Veld Toewijzingen en trans formaties met Azure Cognitive Search Indexeer functies
 
@@ -28,7 +28,7 @@ Een aantal situaties waarin veld Toewijzingen handig zijn:
 * U moet uw gegevens met Base64 coderen of decoderen. Veld Toewijzingen ondersteunen verschillende **toewijzings functies**, waaronder functies voor Base64-code ring en-decodering.
 
 > [!NOTE]
-> Veld toewijzingen in Indexeer functies zijn een eenvoudige manier om gegevens velden toe te wijzen aan index velden, met een zekere mogelijkheid voor gegevens conversie met licht gewicht. Complexere gegevens kunnen vooraf worden verwerkt om deze te wijzigen in een formulier dat kan worden geïndexeerd. Een van de opties die u kunt overwegen, is [Azure Data Factory](https://docs.microsoft.com/zure/data-factory/).
+> Veld toewijzingen in Indexeer functies zijn een eenvoudige manier om gegevens velden toe te wijzen aan index velden, met een zekere mogelijkheid voor gegevens conversie met licht gewicht. Complexere gegevens kunnen vooraf worden verwerkt om deze te wijzigen in een formulier dat kan worden geïndexeerd. Een van de opties die u kunt overwegen, is [Azure Data Factory](https://docs.microsoft.com/azure/data-factory/).
 
 ## <a name="set-up-field-mappings"></a>Veld toewijzingen instellen
 

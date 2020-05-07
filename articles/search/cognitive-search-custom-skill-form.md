@@ -8,12 +8,12 @@ ms.author: pafarley
 ms.service: cognitive-search
 ms.topic: article
 ms.date: 01/21/2020
-ms.openlocfilehash: 713b790c432f0e416392243262aed4b0fcda8892
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 050848b0bff65b19e2b17bd170e1d3e9ff0176f1
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81274573"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82792000"
 ---
 # <a name="example-create-a-form-recognizer-custom-skill"></a>Voor beeld: een aangepaste vaardigheid voor het herkennen van een formulier maken
 
@@ -164,8 +164,8 @@ Als u deze vaardigheid wilt gebruiken in een Cognitive Search pijp lijn, moet u 
 
 In deze hand leiding hebt u een aangepaste vaardigheid gemaakt op basis van de Azure Form Recognizer-service. Zie de volgende bronnen voor meer informatie over aangepaste vaardig heden. 
 
-* [Azure Search Power vaardig heden: een opslag plaats met aangepaste vaardig heden](https://github.com/*zure-Samples/azure-search-power-skills)
+* [Azure Search Power vaardig heden: een opslag plaats met aangepaste vaardig heden](https://github.com/Azure-Samples/azure-search-power-skills)
 * [Een aangepaste vaardigheid toevoegen aan een AI-verrijkings pijplijn](cognitive-search-custom-skill-interface.md)
 * [Een set vaardigheden definiëren](cognitive-search-defining-skillset.md)
-* [Een vaardig heden maken (REST)](https://docs.microsoft.com/rest/api/*earchservice/create-skillset)
+* [Een vaardig heden maken (REST)](https://docs.microsoft.com/rest/api/searchservice/create-skillset)
 * [Verrijkte velden toewijzen](cognitive-search-output-field-mapping.md)

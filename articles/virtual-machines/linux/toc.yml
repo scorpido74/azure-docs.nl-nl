@@ -69,6 +69,8 @@
       href: powershell-samples.md
 - name: Concepten
   items:
+    - name: Installatiekopieën
+      href: shared-image-galleries.md
     - name: Azure Resource Manager
       href: ../../azure-resource-manager/management/overview.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
     - name: Regio's
@@ -457,17 +459,64 @@
         - name: Logboekwaarschuwingen maken
           href: ../../azure-monitor/platform/alerts-log.md
     - name: Installatiekopieën gebruiken
+      displayName: 'SIG, AMI, image'
       items:
         - name: Gedeelde installatiekopiegalerieën
           items:
-            - name: Overzicht
-              href: shared-image-galleries.md
             - name: CLI
-              href: shared-images.md
+              items:
+                - name: Een galerie maken
+                  href: ../shared-images-cli.md
+                - name: Een installatiekopie maken
+                  items:
+                    - name: Vanaf een VM
+                      href: ../image-version-vm-cli.md
+                    - name: Migreren vanaf een beheerde installatiekopie
+                      href: ../image-version-managed-image-cli.md
+                    - name: Kopiëren uit een andere galerie
+                      href: ../image-version-another-gallery-cli.md
+                - name: Een virtuele machine maken
+                  items:
+                    - name: Gegeneraliseerd
+                      href: ../vm-generalized-image-version-cli.md
+                - name: Afbeeldingsresources bijwerken
+                  href: ../update-image-resources-cli.md
+                - name: App-registratie voor delen
+                  href: share-images-across-tenants.md
+            - name: PowerShell
+              items:
+                - name: Een galerie maken
+                  href: ../shared-images-powershell.md
+                - name: De versie van een installatiekopie maken
+                  items:
+                    - name: Vanaf een VM
+                      href: ../image-version-vm-powershell.md
+                    - name: Migreren vanaf een beheerde installatiekopie
+                      href: ../image-version-managed-image-powershell.md
+                    - name: Kopiëren uit een andere galerie
+                      href: ../image-version-another-gallery-powershell.md
+                - name: Een virtuele machine maken
+                  items:
+                    - name: Gegeneraliseerd
+                      href: ../vm-generalized-image-version-powershell.md
+                    - name: Gespecialiseerd
+                      href: ../vm-specialized-image-version-powershell.md
+                - name: Afbeeldingsresources bijwerken
+                  href: ../update-image-resources-powershell.md
             - name: Portal
-              href: shared-images-portal.md
-            - name: App-registratie voor delen
-              href: share-images-across-tenants.md
+              items:
+                - name: 'Een galerie, afbeelding en virtuele machine maken'
+                  href: shared-images-portal.md
+            - name: Resource Manager-sjablonen
+              items:
+                - name: Een gedeelde installatiekopiegalerie maken
+                  href: 'https://azure.microsoft.com/resources/templates/101-sig-create/'
+                - name: Een installatiekopiedefinitie maken in een gedeelde installatiekopiegalerie
+                  href: 'https://azure.microsoft.com/resources/templates/101-sig-image-definition-create/'
+                - name: Een installatiekopieversie maken in een gedeelde installatiekopiegalerie
+                  href: 'https://azure.microsoft.com/resources/templates/101-sig-image-version-create/'
+                - name: Een VM maken van een installatiekopieversie
+                  href: 'https://azure.microsoft.com/resources/templates/101-vm-from-sig/'
             - name: Problemen met gedeelde installatiekopieën oplossen
               href: troubleshooting-shared-images.md
         - name: Functie voor het maken van installatiekopieën (preview)
@@ -544,9 +593,9 @@
         - name: Terraform
           items:
             - name: Installeren en configureren
-              href: ../../terraform/terraform-install-configure.md
+              href: /azure/developer/terraform/install-configure
             - name: Een volledige VM maken
-              href: ../../terraform/terraform-create-complete-vm.md
+              href: /azure/developer/terraform/create-linux-virtual-machine-with-infrastructure
         - name: Cloud-init
           items:
             - name: Overzicht van cloud-init
@@ -564,14 +613,14 @@
             - name: Een bestaande virtuele machine voorbereiden voor cloud-init
               href: cloudinit-prepare-custom-image.md
         - name: Jenkins
-          href: /azure/developer/jenkins/overview.md
+          href: /azure/developer/jenkins/overview
           items:
             - name: Een Jenkins-server maken
-              href: /azure/developer/jenkins/configure-on-linux-vm.md
+              href: /azure/developer/jenkins/configure-on-linux-vm
             - name: De schaal aanpassen met VM-agents
-              href: /azure/developer/jenkins/scale-deployments-using-vm-agents.md
+              href: /azure/developer/jenkins/scale-deployments-using-vm-agents
             - name: Artefacten publiceren naar Storage
-              href: /azure/developer/jenkins/azure-storage-blobs-as-build-artifact-repository.md
+              href: /azure/developer/jenkins/azure-storage-blobs-as-build-artifact-repository
             - name: Jenkins beveiligen
               href: 'https://jenkins.io/blog/2017/04/20/secure-jenkins-on-azure/'
     - name: Containers uitvoeren

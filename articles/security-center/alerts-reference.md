@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/25/2020
 ms.author: memildin
-ms.openlocfilehash: ef715ed7df1cc203e66bb33cd1493a7f7a713327
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9b96547b841c26f12aff2db781ce55c49ef9cde4
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82081605"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82790623"
 ---
 # <a name="security-alerts---a-reference-guide"></a>Beveiligings waarschuwingen-een referentie gids
 
@@ -294,7 +294,7 @@ Onder de tabel met waarschuwingen vindt u een beschrijving van de Azure Security
 |**Toegang vanaf een Tor-eind knooppunt naar een opslag account**|Geeft aan dat de toegang tot dit account is verkregen vanaf een IP-adres dat een actief eind knooppunt van Tor (een anoniem-proxy) wordt genoemd. Bij de ernst van deze waarschuwing wordt rekening gehouden met het gebruikte verificatie type (indien van toepassing) en of dit het eerste geval van dergelijke toegang is. Mogelijke oorzaken kunnen een aanvaller zijn die toegang heeft gehad tot uw opslag account via Tor of een rechtmatige gebruiker die toegang heeft gehad tot uw opslag account met behulp van Tor.|Zoeken/misbruik|Hoog|
 |**Toegang vanaf een ongebruikelijke locatie naar een opslag account**|Geeft aan dat er een wijziging is in het toegangs patroon voor een Azure Storage-account. Iemand heeft toegang verkregen tot dit account vanuit een IP-adres dat als niet-vertrouwd wordt beschouwd in vergelijking met recente activiteiten. Een aanvaller heeft toegang verkregen tot het account of een rechtmatige gebruiker heeft verbinding gemaakt vanaf een nieuwe of ongebruikelijke geografische locatie. Een voor beeld van de laatste is extern onderhoud van een nieuwe toepassing of ontwikkelaar.|Beveiliging|Laag|
 |**Anonieme toegang tot een opslag account**|Geeft aan dat er een wijziging is in het toegangs patroon voor een opslag account. Zo is bijvoorbeeld anoniem toegang gekregen tot het account (zonder enige verificatie). Dit is onverwacht vergeleken met het recente toegangs patroon voor dit account. Een mogelijke oorzaak is dat een aanvaller open bare Lees toegang heeft voor een container die Blob-opslag bevat.|Beveiliging|Hoog|
-|**Mogelijke malware die is geüpload naar een opslag account**|Geeft aan dat een blob met mogelijke schadelijke software is geüpload naar een opslag account. Mogelijke oorzaken zijn het uploaden van opzettelijke schadelijke software door een aanvaller of een onbedoelde upload van een mogelijk schadelijke BLOB door een rechtmatige gebruiker.|LateralMovement|Hoog|
+|**Mogelijke malware die is geüpload naar een opslag account**|Geeft aan dat een blob met mogelijke schadelijke software is geüpload naar een opslag account. Deze waarschuwing is gebaseerd op hash-reputatie analyse en maakt gebruik van de kracht van micro soft Threat Intelligence, waaronder hashes voor virussen, Trojaanse paarden, spyware en Ransomware. Mogelijke oorzaken zijn een opzettelijke malware die door een aanvaller kan worden geüpload of een onbedoelde upload van een mogelijk schadelijke BLOB door een rechtmatige gebruiker. Meer informatie over de mogelijkheden van de bedreigings informatie van micro soft vindt u hier:https://go.microsoft.com/fwlink/?linkid=2128684 |LateralMovement|Hoog|
 |**Ongebruikelijke toegangs inspectie in een opslag account**|Geeft aan dat de toegangs machtigingen van een opslag account op een ongebruikelijke manier zijn geïnspecteerd, vergeleken met de recente activiteit voor dit account. Een mogelijke oorzaak is dat een aanvaller Reconnaissance heeft uitgevoerd voor een toekomstige aanval.|Verzameling|Middelgroot|
 |**Ongebruikelijke hoeveelheid gegevens die uit een opslag account is geëxtraheerd**|Geeft aan dat een ongebruikelijk grote hoeveelheid gegevens is geëxtraheerd vergeleken met recente activiteiten op deze opslag container. Een mogelijke oorzaak is dat een aanvaller een grote hoeveelheid gegevens heeft geëxtraheerd uit een container met Blob Storage.|Exfiltration|Middelgroot|
 |**Ongebruikelijke toepassing toegang tot een opslag account**|Geeft aan dat een ongebruikelijke toepassing toegang heeft gekregen tot dit opslag account. Een mogelijke oorzaak is dat een aanvaller met een nieuwe toepassing toegang heeft tot uw opslag account.|Beveiliging|Middelgroot|

@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 04/14/2020
-ms.openlocfilehash: 4955df718dcc8f169232052979ccf4a636c3be80
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c81d70577c5e7b852d315bdb91993d15624a7336
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81390299"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82791490"
 ---
 # <a name="optimize-apache-hive-queries-in-azure-hdinsight"></a>Apache Hive-query's in Azure HDInsight optimaliseren
 
@@ -198,5 +198,6 @@ Er zijn meer optimalisatie methoden die u kunt overwegen, bijvoorbeeld:
 In dit artikel hebt u verschillende algemene optimalisatie methoden voor Hive-query's geleerd. Raadpleeg de volgende artikelen voor meer informatie:
 
 * [Apache Hive in HDInsight gebruiken](hadoop/hdinsight-use-hive.md)
+* [Apache Hive optimaliseren](./optimize-hive-ambari.md)
 * [Vertraagde vlucht gegevens analyseren met behulp van interactieve Query's in HDInsight](./interactive-query/interactive-query-tutorial-analyze-flight-data.md)
 * [Twitter-gegevens analyseren met Apache Hive in HDInsight](hdinsight-analyze-twitter-data-linux.md)

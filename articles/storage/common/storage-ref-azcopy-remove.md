@@ -4,16 +4,16 @@ description: In dit artikel vindt u Naslag informatie voor de opdracht azcopy Re
 author: normesta
 ms.service: storage
 ms.topic: reference
-ms.date: 10/16/2019
+ms.date: 05/04/2020
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: abce1acb88e920c0de7bbb6447ec9d838f10486c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f76489f384f233f65eb8fcca3a8359cd5b67c20a
+ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "74033986"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82780722"
 ---
 # <a name="azcopy-remove"></a>azcopy remove
 
@@ -89,9 +89,13 @@ azcopy rm "https://[account].dfs.core.windows.net/[container]/[path/to/directory
 
 ## <a name="options"></a>Opties
 
-**--exclude-teken reeks**      Deze paden uitsluiten bij het verwijderen. Deze optie biedt geen ondersteuning voor joker tekens (*). Hiermee wordt het relatieve pad-voor voegsel gecontroleerd. Bijvoorbeeld: myFolder; myFolder/subDirName/file. PDF.
+**--Delete-snap shots** string standaard wordt de bewerking delete mislukt als een BLOB moment opnamen bevat. Geef ' include ' op om de hoofd-Blob en alle bijbehorende moment opnamen te verwijderen. Geef ook alleen ' alleen ' op om alleen de moment opnamen te verwijderen, maar de root-BLOB te blijven gebruiken.
+
+**--exclude-** teken reeks van het pad deze paden uitsluiten tijdens het verwijderen. Deze optie biedt geen ondersteuning voor joker tekens (*). Hiermee wordt het relatieve pad-voor voegsel gecontroleerd. Bijvoorbeeld: myFolder; myFolder/subDirName/file. PDF.
 
 **--exclude-patroon** teken reeks bestanden uitsluiten waarbij de naam overeenkomt met de patroon lijst. Bijvoorbeeld: *. jpg;*. PDF; exactenaam
+
+**--Force-alleen-lezen**    Wanneer u een Azure Files bestand of map verwijdert, moet u afdwingen dat de verwijdering werkt, zelfs als het bestaande object het kenmerk alleen-lezen heeft
 
 **-h,--Help** Help voor verwijderen
 
@@ -111,6 +115,7 @@ azcopy rm "https://[account].dfs.core.windows.net/[container]/[path/to/directory
 |---|---|
 |--Cap-Mbps uint32|De overdrachts frequentie in megabits per seconde. Even door Voer kan enigszins afwijken van het kapje. Als deze optie is ingesteld op nul of wordt wegge laten, wordt de door Voer niet afgetopt.|
 |--type teken reeks voor uitvoer|De indeling van de uitvoer van de opdracht. De opties zijn onder andere: Text, JSON. De standaard waarde is "text".|
+|--vertrouwd-micro soft-achtervoegsels teken reeks   | Hiermee geeft u aanvullende domein achtervoegsels op waar Azure Active Directory aanmeldings tokens kunnen worden verzonden.  De standaard waarde is *. core.Windows.net;*. core.chinacloudapi.cn; *. core.cloudapi.de;*. core.usgovcloudapi.net '. Alle hier vermelde waarden worden toegevoegd aan de standaard instelling. Voor beveiliging moet u Microsoft Azure domeinen hier alleen plaatsen. Scheid meerdere vermeldingen met een punt komma.|
 
 ## <a name="see-also"></a>Zie ook
 

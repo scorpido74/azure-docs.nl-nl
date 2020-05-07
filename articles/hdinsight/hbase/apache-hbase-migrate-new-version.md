@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 01/02/2020
-ms.openlocfilehash: 30cda7a83feddaeb41385252a61d1dc68a881a47
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d7fb7b6b409a4e24be97ee61fc7ba1f0c0a93202
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75646503"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82792629"
 ---
 # <a name="migrate-an-apache-hbase-cluster-to-a-new-version"></a>Een Apache HBase-cluster migreren naar een nieuwe versie
 
@@ -220,4 +220,4 @@ Raadpleeg de volgende artikelen voor meer informatie over [Apache HBase](https:/
 * [Een HDInsight-cluster upgraden naar een nieuwere versie](../hdinsight-upgrade-cluster.md)
 * [Azure HDInsight bewaken en beheren met de Web-UI van Apache Ambari](../hdinsight-hadoop-manage-ambari.md)
 * [Apache Hadoop onderdelen en versies](../hdinsight-component-versioning.md)
-* [Configuraties optimaliseren met Apache Ambari](../hdinsight-changing-configs-via-ambari.md#apache-hbase-optimization-with-the-ambari-web-ui)
+* [Apache HBase optimaliseren](../optimize-hbase-ambari.md)

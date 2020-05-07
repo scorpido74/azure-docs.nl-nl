@@ -9,16 +9,16 @@ ms.topic: article
 ms.service: active-directory
 ms.subservice: user-help
 ms.workload: identity
-ms.date: 04/23/2020
+ms.date: 05/01/2020
 ms.author: curtand
 ms.reviewer: sahenry
 ms.custom: oldportal;it-pro;
-ms.openlocfilehash: 282946a023e4e79ee79b05cc2a317efc5a4056e4
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.openlocfilehash: b88f4aad650d77fea12677e61d3f249a77367e6f
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "82165859"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82690694"
 ---
 # <a name="manage-your-users-with-my-staff-preview"></a>Uw gebruikers beheren met mijn personeel (preview)
 
@@ -26,9 +26,28 @@ Met mijn mede werkers kunt u een instantie van de autoriteit overdragen, zoals e
 
 Voordat u mijn personeel voor uw organisatie configureert, wordt u aangeraden deze documentatie en de [gebruikers documentatie](../user-help/my-staff-team-manager.md) door te nemen, zodat u zeker weet dat u de functionaliteit en invloed van deze functie op uw gebruikers begrijpt. U kunt gebruikmaken van de gebruikers documentatie om uw gebruikers te trainen en voor te bereiden voor de nieuwe ervaring en om te zorgen voor een geslaagde implementatie.
 
+Verificatie op basis van SMS voor gebruikers is een open bare preview-functie van Azure Active Directory. Zie [aanvullende gebruiks voorwaarden voor Microsoft Azure-previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) voor meer informatie over Previews
+
 ## <a name="how-my-staff-works"></a>Hoe mijn personeel werkt
 
 Mijn personeel is gebaseerd op administratieve eenheden (AUs), die een container zijn van resources die kunnen worden gebruikt om het bereik van de beheer controle van een roltoewijzing te beperken. In mijn personeel worden AUs gebruikt voor het definiëren van een subset van de gebruikers van een organisatie, zoals een winkel of afdeling. Een team manager kan bijvoorbeeld worden toegewezen aan een rol waarvan het bereik een of meer AUs is. In het onderstaande voor beeld is de gebruiker de administratieve rol verificatie verleend en is de drie AUs het bereik van de rol. Zie beheer [eenheden beheren in azure Active Directory](directory-administrative-units.md)voor meer informatie over administratieve eenheden.
+
+## <a name="before-you-begin"></a>Voordat u begint
+
+U hebt de volgende resources en bevoegdheden nodig om dit artikel te volt ooien:
+
+* Een actief Azure-abonnement.
+
+  * Als u geen Azure-abonnement hebt, [maakt u een account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+* Een Azure Active Directory-Tenant die aan uw abonnement is gekoppeld.
+
+  * Als dat nodig is, [maakt u een Azure Active Directory-Tenant](../fundamentals/sign-up-organization.md) of [koppelt u een Azure-abonnement aan uw account](../fundamentals/active-directory-how-subscriptions-associated-directory.md).
+* U hebt *globale beheerders* bevoegdheden nodig in uw Azure AD-Tenant om verificatie op basis van SMS in te scha kelen.
+* Voor elke gebruiker die is ingeschakeld in het beleid voor tekst bericht authenticatie, moet een licentie worden verleend, zelfs als ze deze niet gebruiken. Elke ingeschakelde gebruiker moet een van de volgende Azure AD-of Microsoft 365-licenties hebben:
+
+  * [Azure AD Premium P1 of P2](https://azure.microsoft.com/pricing/details/active-directory/)
+  * [Microsoft 365 (M365) F1 of F3](https://www.microsoft.com/licensing/news/m365-firstline-workers)
+  * [Enterprise Mobility + Security (EMS) E3 of E5](https://www.microsoft.com/microsoft-365/enterprise-mobility-security/compare-plans-and-pricing) of [Microsoft 365 (M365) E3 of E5](https://www.microsoft.com/microsoft-365/compare-microsoft-365-enterprise-plans)
 
 ## <a name="how-to-enable-my-staff"></a>Mijn personeel inschakelen
 
@@ -47,7 +66,7 @@ U kunt de portal mijn personeel beveiligen met behulp van het beleid voor voorwa
 
 We raden u ten zeerste aan om mijn personeel te beschermen met het [beleid voor voorwaardelijke toegang van Azure AD](https://docs.microsoft.com/azure/active-directory/conditional-access/). Als u een beleid voor voorwaardelijke toegang wilt Toep assen op mijn personeel, moet u de service-principal van mijn personeel hand matig maken met behulp van Power shell.
 
-### <a name="apply-a-----conditional-access-policy-to-my-staff"></a>Een beleid voor voorwaardelijke toegang Toep assen op mijn personeel
+### <a name="apply-a-conditional-access-policy-to-my-staff"></a>Een beleid voor voorwaardelijke toegang Toep assen op mijn personeel
 
 1. Installeer de [Microsoft Graph Beta Power shell-cmdlets](https://github.com/microsoftgraph/msgraph-sdk-powershell/blob/dev/samples/0-InstallModule.ps1).
 1. Voer de volgende opdrachten uit:
@@ -62,13 +81,6 @@ We raden u ten zeerste aan om mijn personeel te beschermen met het [beleid voor 
 ## <a name="using-my-staff"></a>Mijn personeel gebruiken
 
 Wanneer een gebruiker naar mijn personeel gaat, worden de namen weer gegeven van de [beheer eenheden](directory-administrative-units.md) waarvoor ze beheerders machtigingen hebben. In de [gebruikers documentatie van mijn personeel](../user-help/my-staff-team-manager.md)gebruiken we de term ' locatie ' om te verwijzen naar beheer eenheden. Als de machtigingen van een beheerder geen AU-bereik hebben, gelden de machtigingen voor de hele organisatie. Nadat mijn mede werkers zijn ingeschakeld, hebben de gebruikers die zijn ingeschakeld en aan wie een beheerdersrol is toegewezen, toegang [https://mystaff.microsoft.com](https://mystaff.microsoft.com)tot het netwerk via. Ze kunnen een AU selecteren om de gebruikers in die AU weer te geven en een gebruiker selecteren om zijn of haar profiel te openen.
-
-## <a name="licenses"></a>Licenties
-
-Elke gebruiker die is ingeschakeld in mijn personeel moet een licentie hebben, zelfs als ze de portal mijn personeel niet gebruiken. Elke ingeschakelde gebruiker moet een van de volgende Azure AD-of Microsoft 365-licenties hebben:
-
-- Azure AD Premium P1 of P2
-- Microsoft 365 F1 of F3
 
 ## <a name="reset-a-users-password"></a>Het wachtwoord van een gebruiker opnieuw instellen
 
@@ -106,7 +118,7 @@ Als u het telefoon nummer van een gebruiker wilt beheren, moet u een van de volg
 - [Beheerder voor geprivilegieerde authenticatie](directory-assign-admin-roles.md#privileged-authentication-administrator)
 - [Globale beheerder](directory-assign-admin-roles.md#global-administrator--company-administrator)
 
-## <a name="search"></a>Search
+## <a name="search"></a>Zoeken
 
 U kunt zoeken naar AUs en gebruikers in uw organisatie met behulp van de zoek balk in mijn personeel. U kunt zoeken in alle AUs en gebruikers in uw organisatie, maar u kunt alleen wijzigingen aanbrengen aan gebruikers die zich in een AU bevinden waarvoor u beheerders machtigingen hebt gekregen.
 

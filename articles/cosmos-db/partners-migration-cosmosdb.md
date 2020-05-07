@@ -6,52 +6,48 @@ ms.author: sngun
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/28/2019
-ms.openlocfilehash: 3e400f62ed4afcb40d5d68aeb357d47083445802
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ad5ed2b45a182c1f33f33ca1f6d4e3212c61b6a2
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76988172"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82791728"
 ---
 # <a name="azure-cosmos-db-nosql-migration-and-application-development-partners"></a>Azure Cosmos DB NoSQL-migratie en partners voor toepassings ontwikkeling
 
 Van NoSQL-migratie naar toepassings ontwikkeling, kunt u kiezen uit een groot aantal partners en hulpprogram ma's van ervaren systeem integrator ter ondersteuning van uw Azure Cosmos DB-oplossingen. 
 
-## <a name="migration-tools"></a>Hulpprogramma's voor migratie
-
-|**Partner**  |**Mogelijkheden & ervaring**  |**Ondersteunde landen/regio's**  |**Contactpersoon**  |
-|---------|---------|---------|---------|
-|![Realtimeplatform][2]    |  [Real-time gegevens verplaatsen naar Azure Cosmos DB](https://www.striim.com/striim-for-azure-cosmos-db/) van een groot aantal verschillende gegevens bronnen. <br/> Realtimeplatform vereenvoudigt het real-time verzamelen en verplaatsen van gegevens uit een groot aantal on-premises bronnen, waaronder ondernemings documenten en relationele data bases, Sens oren en logboek bestanden in Azure Cosmos DB. |   VS   |  [Website](https://www.striim.com/)       |
-
 ## <a name="systems-integrator-partners"></a>Partners van systeem integrator
 
-|**Partner**  |**Mogelijkheden & ervaring**  |**Ondersteunde landen/regio's**  |**Contactpersoon**  |
-|---------|---------|---------|---------|
-| ![10thMagnitude][13] | NoSQL-migratie; Nieuwe app-ontwikkeling | VS | [Website](https://www.10thmagnitude.com/)|
-|![Altoros Development LLC][3]    |  NoSQL-migratie, <br/> App-innovatie (bestaande apps), <br/> Nieuwe app-ontwikkeling |   VS, Noor wegen, Finland, Belarus, Argentinië |  [Website](https://www.altoros.com/)     |
-|![Attunix Redapt][4]     |   NoSQL-migratie, <br/> App-innovatie (bestaande apps), <br/> Nieuwe app-ontwikkeling      |    VS     |  [Website](https://www.attunix.com/)       |
-| ![Avanade][26] | Nieuwe app-ontwikkeling, <br/> App-innovatie (bestaande apps) | Oosten rijk, Duitsland, Zwitser land, Italië, Noor wegen, Spanje, Verenigd Konink rijk | [Website](https://www.avanade.com/)
-|![Bluemetal-architecten][5]     |  NoSQL-migratie, <br/> App-innovatie (bestaande apps), <br/> Nieuwe app-ontwikkeling       |    Noord-Amerika, Azië en Stille Oceaan     |  [Website](https://www.bluemetal.com/)       |
-|![Capax Global LLC][6]     |  NoSQL-migratie, <br/> App-innovatie (bestaande apps), <br/> Nieuwe app-ontwikkeling       |    VS     |  [Website](https://www.capaxglobal.com/)       |
-| ![Capgemini][14] | NoSQL-migratie; App-innovatie (bestaande apps); Nieuwe app-ontwikkeling | VS, Frank rijk, UK, Nederland, Finland  | [Website](https://www.capgemini.com/) | 
-|![Coeo][7]     |   App-innovatie (bestaande apps), <br/> Nieuwe app-ontwikkeling |    VK     |  [Website](https://www.coeo.com/)       |
-| ![Cognizant][15] | NoSQL-migratie |VS, Canada, UK, Denemarken, Nederland, Zwitser land, Australië, Japan | [Website](https://www.cognizant.com/)|
-|![Infosys][8]     |  NoSQL-migratie       |    Wereldwijd     |  [Website](https://www.infosys.com/)       |
-| ![Lagash][16] | NoSQL-migratie, <br/> Nieuwe app-ontwikkeling | Argentinië, Chili, Colombia, Mexico| [Website](https://www.lagash.com/)|
-| ![Lambda3 informatica][17] | NoSQL-migratie, <br/> Nieuwe app-ontwikkeling | Brazilië| [Website](https://www.lambda3.com.br/)|
-|![Neal-analyse][9]     |     App-ontwikkeling (nieuwe apps)    |    VS     |  [Website](https://www.nealanalytics.com/)       |
-|![Pragmatic Works Software Inc][10]    |   NoSQL-migratie      |   VS      |  [Website](https://www.pragmaticworks.com/)       |
-| ![Ricoh Global][18] | NoSQL-migratie, <br/> App-innovatie (bestaande apps)| VK  | [Website](https://www.ricoh.com/)|
-| ![SNP-technologieën][19] | NoSQL-migratie| VS | [Website](https://www.snp.com/)|
-| ![Solid Soft-antwoord][20] | NoSQL-migratie | Kroatië, Zweden, Denemarken, Ierland, Bulgarije, Slovenië, Cyprus, Malta, Litouwen, Tsjechië, IJsland en Zwitser land en Liechtenstein| [Website](https://www.reply.com/solidsoft-reply/)|
-| ![Spaanse punt technologieën][21] | NoSQL-migratie| Ierland| [Website](https://www.spanishpoint.ie/)|
-| ![Syone][22] | NoSQL-migratie| Portugal| [Website](https://www.syone.com/)|
-|![Tallan][11]    |  NoSQL-migratie, <br/> App-innovatie (bestaande apps), <br/> Nieuwe app-ontwikkeling       |    VS     |  [Website](https://www.tallan.com/)       |
-| ![TELEVISIECAMERA][23] | App-innovatie (bestaande apps), <br/> Nieuwe app-ontwikkeling | VS, UK, Frank rijk, Maleisië, Denemarken, Noor wegen, Zweden| [Website](https://www.tcs.com/)|
-|![VTeamLabs][12]    | NoSQL-migratie       |  VS      | [Website](https://www.vteamlabs.com/)       |
-| ![Witte eenden][24] |NoSQL-migratie, <br/> Nieuwe app-ontwikkeling | Duitsland | [Website](https://whiteducksoftware.com/)|
-| ![Uitvouwen][25] | Nieuwe app-ontwikkeling | Portugal, UK| [Website](https://www.xpand-it.com/)|
-
+|**Partner**  |**Mogelijkheden & ervaring**  |**Ondersteunde landen/regio's**  |
+|---------|---------|---------|
+|[Realtimeplatform](https://www.striim.com/)    |  Voortdurende, realtime gegevens verplaatsing, gegevens migratie|   VS   |
+| [10thMagnitude](https://www.10thmagnitude.com/) | IoT, Retail (inventarisatie), Operational Analytics (Spark), Serverloze architectuur, app-ontwikkeling | VS |
+|[Altoros Development LLC](https://www.altoros.com/)  |  IoT-, personalisatie Retail (inventarisatie), Serverloze architecturen NoSQL migratie, app-ontwikkeling|   VS |
+|[Avanade](https://www.avanade.com/) | IoT, Retail (inventarisatie), Serverloze architectuur, app-ontwikkeling | Oosten rijk, Duitsland, Zwitser land, Italië, Noor wegen, Spanje, UK, Canada |
+|[Accenture](https://www.accenture.com/) | IoT, Retail (inventarisatie), Serverloze architectuur, app-ontwikkeling |Wereldwijd|
+|[Bluemetal](https://www.bluemetal.com/)     |  IoT, personalisatie Retail (inventarisatie), operationele analyse voor Enter prise & SMC, AI-annotatie, Asset Control, NoSQL migratie, app-ontwikkeling     |    Noord-Amerika, Azië en Stille Oceaan     |
+|[Capax Global LLC](https://www.capaxglobal.com/) | IoT, personalisatie, Retail (inventarisatie), Operational Analytics (Spark), Serverloze architectuur, app-ontwikkeling|    VS     |  
+| [Capgemini](https://www.capgemini.com/) | Retail (inventarisatie), IoT, Operational Analytics (Spark), app-ontwikkeling | USA, Frank rijk, UK, Nederland, Finland  |
+| [Cognizant](https://www.cognizant.com/) | IoT, personalisatie, Retail (inventarisatie), Operational Analytics (Spark), app-ontwikkeling |Verenigde Staten, Canada, UK, Denemarken, Nederland, Zwitser land, Australië, Japan |
+|[Infosys](https://www.infosys.com/)     | Ontwikkeling van apps      |    VS    |  
+| [Lagash-systemen](https://www.lagash.com/) | IoT, Serverloze architectuur, app-ontwikkeling | Argentinië, Chili, Colombia, Mexico|
+| [Lambda3 informatica](https://www.lambda3.com.br/) | Real-time personalisatie, voorraad inventarisatie, app-ontwikkeling | Brazilië|
+|[Neal-analyse](https://www.nealanalytics.com/)    |     Personalisatie, Retail (inventarisatie), Operational Analytics (Spark), app-ontwikkeling  |    VS     |  
+|[Pragmatic Works Software Inc](https://www.pragmaticworks.com/)    |   NoSQL-migratie      |   VS      |
+| [Ricoh Digital Services](https://www.ricoh.com/) | IoT, realtime personalisatie, inventarisatie van de detail handel, NoSQL-migratie | VK  |
+|[SNP-technologieën](https://www.snp.com/) | NoSQL-migratie| VS |
+| [Solid Soft-antwoord](https://www.reply.com/solidsoft-reply/) | NoSQL-migratie | Kroatië, Zweden, Denemarken, Ierland, Bulgarije, Slovenië, Cyprus, Malta, Litouwen, Tsjechië, IJsland, Zwitser land en Liechtenstein|
+| [Spaanse punt technologieën](https://www.spanishpoint.ie/) | NoSQL-migratie| Ierland|
+| [Syone](https://www.syone.com/) | NoSQL-migratie| Portugal|
+|[Tallan](https://www.tallan.com/)    |  Ontwikkeling van apps      |    VS     |
+| [TELEVISIECAMERA](https://www.tcs.com/) | Ontwikkeling van apps | Verenigde Staten, UK, Frank rijk, Maleisië, Denemarken, Noor wegen, Zweden|
+|[VTeamLabs](https://www.vteamlabs.com/)    | Personalisatie, Retail (inventarisatie), IoT, gaming, Operational Analytics (Spark), Serverloze architectuur, NoSQL migratie, app-ontwikkeling       |  VS      |  
+| [Witte eenden GmbH](https://whiteducksoftware.com/) |Nieuwe app-ontwikkeling, app-back-end, opslag voor gegevens op basis van een document| Duitsland |
+| [Uitvouwen](https://www.xpand-it.com/) | Nieuwe app-ontwikkeling | Portugal, UK|
+| [HANU](https://hanu.com/) | IoT, app-ontwikkeling | VS|
+| [Incyclus software](https://www.incyclesoftware.com/) | Migratie van NoSQL, Serverloze architectuur, app-ontwikkeling| VS|
+| [Orion](https://www.orioninc.com/) | Personalisatie, Retail (inventarisatie), Operational Analytics (Spark), IoT, app-ontwikkeling| Verenigde Staten, Canada|
 
 ## <a name="next-steps"></a>Volgende stappen
 

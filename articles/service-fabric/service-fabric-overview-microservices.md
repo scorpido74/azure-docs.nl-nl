@@ -4,12 +4,12 @@ description: Een overzicht van het bouwen van Cloud toepassingen met een micro S
 ms.topic: conceptual
 ms.date: 01/07/2020
 ms.custom: sfrev
-ms.openlocfilehash: af18a6cb45808c0af5ec2782a3fd2100e3b7bf99
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9e0c93423b3639fb2bc3739f0d6569c4c4cec8da
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75750629"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82792865"
 ---
 # <a name="why-use-a-microservices-approach-to-building-applications"></a>Waarom een micro Services-benadering gebruiken voor het ontwikkelen van toepassingen
 
@@ -35,7 +35,7 @@ Tijdens de client-en server vormgeving zullen we zich richten op het bouwen van 
 
 Er zijn voor delen voor een monolithische-ontwerp benadering. Monolithische-toepassingen zijn vaak eenvoudiger te ontwerpen en aanroepen tussen onderdelen zijn sneller omdat deze aanroepen vaak via de communicatie tussen interprocess (IPC) zijn. Daarnaast test iedereen één product, dat een efficiëntere manier is om human resources te gebruiken. Het nadeel is dat er sprake is van een nauwe koppeling tussen gelaagde lagen en u geen afzonderlijke onderdelen kunt schalen. Als u oplossingen of upgrades wilt uitvoeren, moet u wachten tot anderen hun tests hebben voltooid. Het is moeilijker om flexibel te zijn.
 
-Micro Services is gericht op deze nauw keurigheid en is beter in overeenstemming met de voor gaande zakelijke vereisten. Maar ze hebben ook beide voor delen en passiva. De voor delen van micro Services zijn dat elk van beide doorgaans eenvoudiger bedrijfs functionaliteit inkapselt, die u kunt omhoog of omlaag schalen, testen, implementeren en beheren. Een belang rijk voor deel van een micro Services-benadering is dat teams meer worden aangedreven door bedrijfs scenario's dan met technologie. Kleinere teams ontwikkelen een micro service op basis van een klant scenario en gebruiken alle technologieën die ze willen gebruiken.
+Micro Services is gericht op deze nauw keurigheid en is beter in overeenstemming met de voor gaande zakelijke vereisten. Maar ze hebben ook beide voor delen en passiva. De voor delen van micro Services zijn dat elk van beide doorgaans eenvoudiger bedrijfs functionaliteit inkapselt, die u kunt uitbreiden of in, testen, implementeren en beheren. Een belang rijk voor deel van een micro Services-benadering is dat teams meer worden aangedreven door bedrijfs scenario's dan met technologie. Kleinere teams ontwikkelen een micro service op basis van een klant scenario en gebruiken alle technologieën die ze willen gebruiken.
 
 Met andere woorden, de organisatie hoeft geen technische voor het onderhoud van micro service-toepassingen te standaardiseren. Individuele teams die eigen services kunnen doen, zijn afhankelijk van de team expertise of wat het meest geschikt is om het probleem op te lossen. In de praktijk verdient een aantal aanbevolen technologieën, zoals een bepaald NoSQL-archief of Web Application Framework, de voor keur.
 

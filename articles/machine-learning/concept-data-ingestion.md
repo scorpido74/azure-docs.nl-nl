@@ -1,5 +1,5 @@
 ---
-title: Opties voor gegevens opname
+title: Gegevens opname & automatisering
 titleSuffix: Azure Machine Learning
 description: Meer informatie over opties voor gegevens opname voor het trainen van uw machine learning-modellen.
 services: machine-learning
@@ -10,25 +10,27 @@ ms.reviewer: nibaccam
 author: nibaccam
 ms.author: nibaccam
 ms.date: 02/26/2020
-ms.openlocfilehash: 6b1c671d2079c7d8ab59e9afe981ccef3f58ef27
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 475c4fd6b34996c83035c4f7ef93b9fa02ded11f
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79086889"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82789858"
 ---
-# <a name="data-ingestion-in-azure-machine-learning"></a>Gegevens opname in Azure Machine Learning
+# <a name="data-ingestion-options-for-azure-machine-learning-workflows"></a>Opties voor gegevens opname van Azure Machine Learning werk stromen
 
-In dit artikel vindt u informatie over de voor-en nadelen van de volgende opties voor gegevens opname die beschikbaar zijn met Azure Machine Learning. 
+In dit artikel vindt u informatie over de voor-en nadelen van opties voor gegevens opname die beschikbaar zijn met Azure Machine Learning. 
 
-1. [Azure Data Factory](#use-azure-data-factory) pijp lijnen
-2. [Azure Machine Learning python-SDK](#use-the-python-sdk)
+U kunt kiezen uit:
++ [Azure Data Factory](#azure-data-factory) pijp lijnen, speciaal gebouwd voor het extra heren, laden en transformeren van gegevens
+
++ [Azure machine learning PYTHON SDK](#azure-machine-learning-python-sdk), die een aangepaste code oplossing biedt voor elementaire gegevens opname taken.
+
++ een combi natie van beide
 
 Gegevens opname is het proces waarin ongestructureerde gegevens worden geëxtraheerd uit een of meer bronnen en vervolgens worden voor bereid voor de trainings machine learning modellen. Het is ook tijdrovend, vooral als hand matig wordt gedaan, en als u grote hoeveel heden gegevens uit meerdere bronnen hebt. Als u deze inspanning automatiseert, worden bronnen vrijgemaakt en kunnen uw modellen de meest recente en toepasselijke gegevens gebruiken.
 
-Azure Data Factory (ADF) is speciaal ontworpen voor het uitpakken, laden en transformeren van gegevens, maar met de python-SDK kunt u een aangepaste code oplossing ontwikkelen voor basis taken voor gegevens opname. Als dat niet het geval is, kunt u ook ADF en de python-SDK gebruiken om een algemene werk stroom voor gegevens opname te maken die aan uw behoeften voldoet. 
-
-## <a name="use-azure-data-factory"></a>Azure Data Factory gebruiken
+## <a name="azure-data-factory"></a>Azure Data Factory
 
 [Azure Data Factory](https://docs.microsoft.com/azure/data-factory/introduction) biedt systeem eigen ondersteuning voor de bewaking van gegevens bronnen en triggers voor gegevens opname pijplijnen.  
 
@@ -55,7 +57,7 @@ Deze stappen en het volgende diagram illustreren de werk stroom voor gegevens op
     
 Meer informatie over het bouwen van een pijp lijn voor gegevens opname voor Machine Learning met [Azure Data Factory](how-to-data-ingest-adf.md).
 
-## <a name="use-the-python-sdk"></a>De Python-SDK gebruiken 
+## <a name="azure-machine-learning-python-sdk"></a>Azure Machine Learning python-SDK 
 
 Met de [python-SDK](https://docs.microsoft.com/python/api/overview/azure/ml)kunt u gegevens opname taken opnemen in een [Azure machine learning pijplijn](how-to-create-your-first-pipeline.md) stap.
 
@@ -73,5 +75,7 @@ In het volgende diagram bestaat de Azure Machine Learning-pijp lijn uit twee sta
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Meer informatie over het bouwen van een pijp lijn voor gegevens opname voor Machine Learning met [Azure Data Factory](how-to-data-ingest-adf.md)
-* Leer hoe u de ontwikkelings levenscyclus van uw gegevens opname pijplijnen kunt automatiseren en beheren met [Azure-pijp lijnen](how-to-cicd-data-ingestion.md).
+Volg deze procedures:
+* [Een pijp lijn voor gegevens opname bouwen met Azure Data Factory](how-to-data-ingest-adf.md)
+
+* [Gegevens opname pijplijnen automatiseren en beheren met Azure-pijp lijnen](how-to-cicd-data-ingestion.md).

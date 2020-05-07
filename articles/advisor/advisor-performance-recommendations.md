@@ -3,12 +3,12 @@ title: Verbeter de prestaties van Azure-toepassingen met Azure Advisor
 description: Gebruik Advisor om de prestaties van uw Azure-implementaties te optimaliseren.
 ms.topic: article
 ms.date: 01/29/2019
-ms.openlocfilehash: 405ec395feeb33b8511b9b915151b2ed9503c371
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ff9b8fb9494c887397947f009b22cdc89d8f70b5
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75443056"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82787937"
 ---
 # <a name="improve-performance-of-azure-applications-with-azure-advisor"></a>Verbeter de prestaties van Azure-toepassingen met Azure Advisor
 
@@ -28,6 +28,10 @@ Advisor biedt een consistente, geconsolideerde weer gave van aanbevelingen voor 
 > Voor het verkrijgen van aanbevelingen moet een Data Base over een week gebruik beschikken en binnen die week een consistente activiteit moeten zijn. SQL Database Advisor kan gemakkelijker worden geoptimaliseerd voor consistente query patronen dan voor wille keurige bursts van de activiteit.
 
 Zie [SQL database Advisor](https://azure.microsoft.com/documentation/articles/sql-database-advisor/)voor meer informatie over SQL database Advisor.
+
+## <a name="upgrade-your-storage-client-library-to-the-latest-version-for-better-reliability-and-performance"></a>Upgrade uw Storage-clientbibliotheek naar de nieuwste versie voor betere betrouwbaarheid en prestaties
+
+De nieuwste versie van Storage-clientbibliotheek/SDK bevat oplossingen voor fouten die door klanten zijn gemeld en proactief zijn geïdentificeerd via onze QA-procedure. De nieuwste versie is ook geoptimaliseerd voor betrouwbaarheid en prestaties en bevat nieuwe functies die uw algemene ervaring met Azure Storage verbeteren. Advisor biedt u aanbevelingen en stappen om een upgrade uit te voeren naar de meest recente versie van SDK als u een verouderde versie hebt. De aanbevelingen zijn voor ondersteunde talen: C++ en .net.
 
 ## <a name="improve-app-service-performance-and-reliability"></a>De prestaties en betrouw baarheid van App Service verbeteren
 
@@ -73,6 +77,26 @@ Migreer het implementatie model van uw opslag account naar Azure Resource Manage
 ## <a name="design-your-storage-accounts-to-prevent-hitting-the-maximum-subscription-limit"></a>Uw opslag accounts ontwerpen om te voor komen dat de maximale abonnements limiet wordt bereikt
 
 Een Azure-regio kan Maxi maal 250 opslag accounts per abonnement ondersteunen. Zodra de limiet is bereikt, kunt u geen opslag accounts meer maken in deze combi natie van regio en abonnement. Advisor controleert uw abonnementen en aanbevelingen voor het Opper vlak zodat u kunt ontwerpen voor minder opslag accounts voor elk wat bijna de maximale limiet bereikt.
+
+## <a name="consider-increasing-the-size-of-your-vnet-gateway-sku-to-adress-high-p2s-use"></a>Overweeg de omvang van uw VNet-gateway-SKU te verg Roten naar het gebruik van een hoog P2S
+
+Elke gateway-SKU kan alleen een opgegeven aantal gelijktijdige P2S-verbindingen ondersteunen. Als uw verbinding tot stand is gebracht, wordt de limiet voor het aantal verbindingen mogelijk verbroken. Door de grootte van uw gateway te verg Roten, kunt u meer gelijktijdige P2S-gebruikers ondersteunen. Advisor biedt aanbevelingen en stappen om dit te doen.
+
+## <a name="consider-increasing-the-size-of-your-vnet-gateway-sku-to-address-high-cpu"></a>Overweeg de omvang van uw VNet-gateway-SKU te verg Roten voor een hoge CPU
+
+Bij een hoge belasting van het verkeer kan de VPN-gateway pakketten verwijderen vanwege een hoge CPU. U kunt overwegen om uw VPN Gateway-SKU bij te werken, omdat uw VPN op consistente wijze actief is geweest. Door de grootte van uw VPN-gateway te verg Roten, zorgt u ervoor dat de verbindingen niet worden verbroken vanwege een hoge CPU. Advisor provdes-aanbeveling om dit probleem proactief op te lossen. 
+
+## <a name="increase-batch-size-when-loading-to-maximize-load-throughput-data-compression-and-query-performance"></a>De Batch grootte verg Roten tijdens het laden om de laad doorvoer, gegevens compressie en query prestaties te maximaliseren
+
+Met Advisor kan worden gedetecteerd dat u de belasting prestaties en door Voer kunt verhogen door de Batch grootte te verhogen bij het laden in uw data base. U kunt overwegen de instructie COPY te gebruiken. Als u de instructie COPY niet kunt gebruiken, kunt u overwegen de Batch grootte te verg Roten met het laden van hulpprogram ma's zoals de SQLBulkCopy-API of BCP-een goede vuist regel is een batch grootte tussen 100.000 en 1M rijen. Dit neemt de belasting door Voer, gegevens compressie en query prestaties.
+
+## <a name="co-locate-the-storage-account-within-the-same-region-to-minimize-latency-when-loading"></a>Het opslag account in dezelfde regio samen zoeken om de latentie tijdens het laden te minimaliseren
+
+Met Advisor kan worden gedetecteerd dat u vanuit een andere regio dan uw SQL-groep wordt geladen. Overweeg het laden van een opslag account dat zich in dezelfde regio bevindt als uw SQL-groep om de latentie te minimaliseren bij het laden van gegevens. Dit helpt latentie te minimaliseren en de belasting prestaties te verg Roten.
+
+## <a name="unsupported-kubernetes-version-is-detected"></a>Er is een niet-ondersteunde Kubernetes-versie gedetecteerd
+
+Advisor kan detecteren of er een niet-ondersteunde Kubernetes-versie is gedetecteerd. De aanbeveling helpt ervoor te zorgen dat Kubernetes-cluster wordt uitgevoerd met een ondersteunde versie.
 
 ## <a name="optimize-the-performance-of-your-azure-mysql-azure-postgresql-and-azure-mariadb-servers"></a>Optimaliseer de prestaties van uw Azure MySQL-, Azure PostgreSQL-en Azure MariaDB-servers 
 

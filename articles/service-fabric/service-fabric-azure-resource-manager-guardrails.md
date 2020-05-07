@@ -7,12 +7,12 @@ author: peterpogorski
 ms.topic: conceptual
 ms.date: 02/13/2020
 ms.author: pepogors
-ms.openlocfilehash: a61b0cf30ca46eb77837eb09d6a9a0b6f30e89a9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 04c6444723180c34f6605810260f5f865dff2d12
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77368579"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82790912"
 ---
 # <a name="service-fabric-guardrails"></a>Service Fabric Guardrails 
 Bij het implementeren van een Service Fabric cluster worden Guardrails geplaatst, waardoor een Azure Resource Manager implementatie in het geval van een ongeldige cluster configuratie mislukt. In de volgende secties vindt u een overzicht van algemene problemen met de cluster configuratie en de stappen die nodig zijn om deze problemen te verhelpen. 
@@ -79,7 +79,7 @@ Er is een bewerking voor het verwijderen van een Seed-knoop punt gedetecteerd en
 Zorg ervoor dat het type van het primaire knoop punt voldoende Virtual Machines heeft voor de betrouw baarheid die is opgegeven op uw cluster. U kunt een virtuele machine niet verwijderen als hiermee de Schaalset voor virtuele machines onder het minimum aantal knoop punten voor de opgegeven betrouwbaarheids categorie wordt ingesteld.
 * Als de betrouwbaarheids laag correct is opgegeven, moet u ervoor zorgen dat u over voldoende knoop punten in het primaire knooppunt type beschikt als dat nodig is voor de betrouwbaarheids categorie. 
 * Als de betrouwbaarheids laag onjuist is, initieert u een wijziging op de Service Fabric resource om eerst het betrouwbaarheids niveau te verlagen voordat u bewerkingen voor de Schaalset van virtuele machines initieert, en wacht u totdat het is voltooid.
-* Als de betrouwbaarheids categorie brons is, volgt u deze [stappen](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-scale-up-down#manually-remove-vms-from-a-node-typevirtual-machine-scale-set) om uw cluster op de juiste wijze te schalen.
+* Als de betrouwbaarheids categorie brons is, volgt u deze [stappen](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-scale-in-out#manually-remove-vms-from-a-node-typevirtual-machine-scale-set) om uw cluster op de juiste wijze te schalen.
 
 ## <a name="next-steps"></a>Volgende stappen
 * Een cluster maken op Vm's of computers met Windows Server: [service Fabric cluster maken voor Windows Server](service-fabric-cluster-creation-for-windows-server.md)

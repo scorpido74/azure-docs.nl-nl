@@ -1,17 +1,17 @@
 ---
+title: Belasting gegevens voor micro soft Commercial Marketplace
 Description: Zie uw land/regio's van distributie in de onderstaande tabellen voor meer informatie over uw belasting overwegingen voor prijs selectie, uitbetalings implicaties en de belasting verantwoordelijkheid.
-title: Details belasting | Azure Marketplace
-ms.date: 2/13/2020
 ms.topic: conceptual
 author: dsindona
 ms.author: dsindona
 ms.service: marketplace
-ms.openlocfilehash: 2546de2b63c70d7456712ba39086cd7fb540cf82
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 05/04/2020
+ms.openlocfilehash: 0276a859fb82f7775aca498d73d1cbf780aaf5fc
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80285160"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82793020"
 ---
 # <a name="tax-details-for-commercial-marketplace-publishers"></a>Belasting gegevens voor uitgevers van commerciële markt plaatsen
 
@@ -23,10 +23,6 @@ Zie uw land/regio's van distributie in de onderstaande tabellen voor meer inform
 > [!IMPORTANT]
 > De BTW-verantwoordelijkheid voor wederverkoper landen/regio's en omstandigheden (zoals [hieronder](#reseller-countriesregions)wordt beschreven) valt onder een van de [Microsoft Azure Marketplace uitgevers overeenkomst](https://go.microsoft.com/fwlink/p/?LinkID=699560), ongeacht de informatie in de onderstaande tabel.
 > Houd er rekening mee dat de kolom **toekennings implicaties** alleen van toepassing is op uitgevers. De BTW-tarieven die in deze kolom worden vermeld, kunnen op elk gewenst moment worden gewijzigd, en micro soft kan niet garanderen dat de tarieven in de onderstaande tabellen altijd nauw keurig zijn.
-
-
-
- 
 
 | Land/regio                   | Belasting vergoeding voor prijs selectie                                                                                                             | Implicatie van uitbetaling                    | Belasting verantwoordelijkheid |
 |----------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------|--------------------|
@@ -262,19 +258,18 @@ Zie uw land/regio's van distributie in de onderstaande tabellen voor meer inform
 | Zambia                           | De geselecteerde prijs is de uiteindelijke verkoop prijs en bevat alle toepasselijke belastingen.                                                                   | Prijs minus winkel kosten                 | Uitgever          |
 | Zimbabwe                         | De geselecteerde prijs is de uiteindelijke verkoop prijs en bevat alle toepasselijke belastingen.                                                                   | Prijs minus winkel kosten                 | Uitgever          |
 
-Het volgende geldt alleen voor uitgevers van Azure Marketplace, ongeacht wat het tegen deel heeft: 
+Het volgende geldt alleen voor uitgevers van Azure Marketplace, ongeacht wat het tegen deel heeft:
 
-| Land/regio                   | Belasting vergoeding voor prijs selectie                                                                                                             | Belasting beheer                    | 
+| Land/regio                   | Belasting vergoeding voor prijs selectie                                                                                                             | Belasting beheer                    |
 |----------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------|
 | Australië (voor aankopen die zijn gedaan via alle scenario's voor klant aankopen, met uitzonde ring van Enterprise Agreement) | De geselecteerde prijs is de uiteindelijke verkoop prijs en bevat alle toepasselijke belastingen. | Microsoft |
 | Australië (alleen voor aankopen die zijn gedaan via het Enterprise Agreement klant-aankoop scenario) | De geselecteerde prijs is de uiteindelijke verkoop prijs en bevat alle toepasselijke belastingen. | Uitgever |
-| Brazilië | De geselecteerde prijs is de uiteindelijke verkoop prijs en bevat alle toepasselijke belastingen. | Uitgever **(Zie resellers landen/regio's)** |
-| Mexico | De geselecteerde prijs is de uiteindelijke verkoop prijs en bevat alle toepasselijke belastingen. | Uitgever **(Zie resellers landen/regio's)** |
+| Brazilië | De geselecteerde prijs is de uiteindelijke verkoop prijs en bevat alle toepasselijke belastingen. | Uitgever (**Zie resellers landen/regio's**) |
+| Mexico | De geselecteerde prijs is de uiteindelijke verkoop prijs en bevat alle toepasselijke belastingen. | Uitgever (**Zie resellers landen/regio's**) |
 
 ## <a name="mixed-remittance-countriesregions-for-publishers"></a>Gemengde remise landen/regio's voor uitgevers
 
-
-Bepaalde micro soft-facturerings partners kunnen verkoop, gebruik, goederen en diensten, toegevoegde waarde of soort gelijke belastingen, indien van toepassing, voor de aanschaf van uw app (s) of in-app product (en) van de winkel in de onderstaande landen/regio's verzamelen en verkopen. De [rapporten](payout-summary.md#transaction-history-download-export) die micro soft voor u beschikbaar maakt, identificeren de trans acties waarvoor een facturerings partner de verkoop, het gebruik, de goederen en diensten, toegevoegde waarde of vergelijk bare belastingen die van toepassing zijn op de aanschaf van uw app (s) of in-app product (en) via de Store. Met uitzonde ring van de trans acties die in deze rapportage worden beschreven, zullen zowel micro soft noch haar aanbieders van facturerings Services alle omzet, gebruik, goederen en diensten, toegevoegde waarde of andere vergelijk bare BTW in verband met de aanschaf van uw app (s) of in-app product (en) in deze landen remitteren. U bent verantwoordelijk voor het beoordelen van de rapportage die aan u is gegeven en het bepalen en naleven van uw verplichtingen, indien van toepassing, om belastingen te registreren, te innen en te betalen in verband met trans acties met betrekking tot uw app (s) of in-app product (en).
+Bepaalde micro soft-facturerings partners kunnen verkoop, gebruik, goederen en diensten, toegevoegde waarde of soort gelijke belastingen, indien van toepassing, voor de aanschaf van uw app (s) of in-app product (en) van de winkel in de onderstaande landen/regio's verzamelen en verkopen. De [rapporten](payout-summary-overview.md#transaction-history-download-export) die micro soft voor u beschikbaar maakt, identificeren de trans acties waarvoor een facturerings partner de verkoop, het gebruik, de goederen en diensten, toegevoegde waarde of vergelijk bare belastingen die van toepassing zijn op de aanschaf van uw app (s) of in-app product (en) via de Store. Met uitzonde ring van de trans acties die in deze rapportage worden beschreven, zullen zowel micro soft noch haar aanbieders van facturerings Services alle omzet, gebruik, goederen en diensten, toegevoegde waarde of andere vergelijk bare BTW in verband met de aanschaf van uw app (s) of in-app product (en) in deze landen remitteren. U bent verantwoordelijk voor het beoordelen van de rapportage die aan u is gegeven en het bepalen en naleven van uw verplichtingen, indien van toepassing, om belastingen te registreren, te innen en te betalen in verband met trans acties met betrekking tot uw app (s) of in-app product (en).
 
 | Gemengde remise landen/regio's |
 |------------------------------------|
@@ -285,16 +280,13 @@ Bepaalde micro soft-facturerings partners kunnen verkoop, gebruik, goederen en d
 
 In bepaalde landen/regio's fungeert micro soft als wederverkoper, in plaats van uw agent, om uw app (s) en in-app product (en) beschikbaar te stellen in de Store. Zie de [Microsoft Azure Marketplace Publisher-overeenkomst](https://go.microsoft.com/fwlink/p/?LinkID=699560)voor meer informatie over de voor waarden voor wederverkoper landen/regio's.
 
-Het volgende geldt alleen voor Azure Marketplace-uitgevers: 
+Het volgende geldt alleen voor Azure Marketplace-uitgevers:
 
 |                    Wederverkoper landen/regio's                                                                          |
 |------------------------------------------------------------------------------------------------------------------------|
 | Brazilië (voor aankopen die zijn gedaan via alle scenario's voor klant aankoop behalve CSP) |
 | Mexico (alleen voor aankopen die zijn gedaan via het Enterprise Agreement klant-aankoop scenario) |
 
+## <a name="next-steps"></a>Volgende stappen
 
- 
-
-
-
-
+[Stel uw betalingsaccount en belastingformulieren](set-up-your-payout-account-tax-forms.md)

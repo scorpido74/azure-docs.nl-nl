@@ -5,12 +5,12 @@ author: srrengar
 ms.topic: conceptual
 ms.date: 11/21/2018
 ms.author: srrengar
-ms.openlocfilehash: 720cc157111293146b796f8567f94a4f1f4830c6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ce0cd0866cc6daa36d598767a486faeabac8076d
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75376933"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82791813"
 ---
 # <a name="monitoring-the-cluster"></a>Het cluster bewaken
 
@@ -74,7 +74,7 @@ Als u contact moet opnemen met micro soft ondersteuning voor hulp bij uw Azure S
 
 ## <a name="measuring-performance"></a>Prestaties meten
 
-Door de prestaties van uw cluster te meten, krijgt u inzicht in de manier waarop het laden en schalen rond uw cluster kan verwerken (Zie meer informatie over het schalen [van een cluster op Azure](service-fabric-cluster-scale-up-down.md)of [on-premises](service-fabric-cluster-windows-server-add-remove-nodes.md)). Prestatie gegevens zijn ook nuttig in vergelijking met de acties die u of uw toepassingen en services mogelijk hebben ondernomen bij het analyseren van Logboeken in de toekomst. 
+Door de prestaties van uw cluster te meten, krijgt u inzicht in de manier waarop het laden en schalen rond uw cluster kan verwerken (Zie meer informatie over het schalen [van een cluster op Azure](service-fabric-cluster-scale-in-out.md)of [on-premises](service-fabric-cluster-windows-server-add-remove-nodes.md)). Prestatie gegevens zijn ook nuttig in vergelijking met de acties die u of uw toepassingen en services mogelijk hebben ondernomen bij het analyseren van Logboeken in de toekomst. 
 
 Zie [prestatie meter items in service Fabric](service-fabric-diagnostics-event-generation-perf.md) voor een lijst met prestatie meter items die moeten worden verzameld bij het gebruik van service Fabric.
 

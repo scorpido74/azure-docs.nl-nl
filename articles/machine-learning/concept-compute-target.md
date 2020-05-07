@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 03/30/2020
-ms.openlocfilehash: f9ca75943eaec2ae018b54145d872fc09294035e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ed65d69c18f2dbcd53324fe3cc18af8c51c546b2
+ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80398182"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82780110"
 ---
 #  <a name="what-are-compute-targets-in-azure-machine-learning"></a>Wat zijn Compute-doelen in Azure Machine Learning? 
 
@@ -57,18 +57,44 @@ U kunt Azure Machine Learning Compute instances (preview) of reken clusters make
 
 U kunt ook reken clusters maken met behulp [van de extensie machine learning voor de Azure cli](tutorial-train-deploy-model-cli.md#create-the-compute-target-for-training).
 
-Wanneer u deze reken resources maakt, worden deze automatisch onderdeel van uw werk ruimte, in tegens telling tot andere soorten Compute-doelen.
+Wanneer u deze reken resources maakt, maakt u automatisch deel uit van uw werk ruimte, in tegens telling tot andere soorten Compute-doelen.
 
 ### <a name="compute-clusters"></a>Reken clusters
 
 U kunt Azure Machine Learning compute-clusters gebruiken voor training en voor het afleiden van batches (preview-versie).  Met deze reken resource hebt u het volgende:
 
 * Cluster met één of meerdere knoop punten
-* Automatisch schalen elke keer dat u een uitvoering verzendt 
+* Automatisch schalen telkens wanneer u een uitvoering verzendt 
 * Automatische Cluster beheer en taak planning 
 * Ondersteuning voor zowel CPU-als GPU-resources
 
+### <a name="supported-vm-series-and-sizes"></a>Ondersteunde VM-reeksen en-groottes
 
+Wanneer u de grootte van een knoop punt selecteert voor een beheerde Compute-resource in Azure Machine Learning, kunt u kiezen uit beschik bare VM-grootten in Azure. Azure biedt tal van grootten voor Linux en Windows voor verschillende werk belastingen. Hier vindt u meer informatie over de verschillende [VM-typen en-grootten](https://docs.microsoft.com/azure/virtual-machines/linux/sizes).
+
+Er zijn enkele uitzonde ringen en beperkingen voor het kiezen van een VM-grootte:
+* Sommige VM-reeksen worden niet ondersteund in Azure Machine Learning.
+* Sommige VM-reeksen zijn beperkt. Als u een beperkte serie wilt gebruiken, neemt u contact op met de ondersteuning en vraagt u een quotum toename aan te vragen voor de serie. Zie [ondersteunings opties voor Azure](https://azure.microsoft.com/support/options/) voor meer informatie over contact opnemen met de ondersteuning.
+
+Raadpleeg de volgende tabel voor meer informatie over ondersteunde reeksen en beperkingen. 
+
+| **Ondersteunde VM-serie**  | **Beperkingen** |
+|------------|------------|
+| D | Geen |
+| Dv2 | Geen |  
+| DSv2 | Geen |  
+| FSv2 | Geen |  
+| M | Goedkeuring vereist |
+| NC | Geen |    
+| NCsv2 | Goedkeuring vereist |
+| NCsv3 | Goedkeuring vereist |  
+| NDs | Goedkeuring vereist |
+| NDv2 | Goedkeuring vereist |
+| NV | Geen |
+| NVv3 | Goedkeuring vereist | 
+
+
+Hoewel Azure Machine Learning deze VM-serie ondersteunt, zijn ze mogelijk niet beschikbaar in alle Azure-regio's. U kunt controleren of er VM-serie beschikbaar is: [producten beschikbaar per regio](https://azure.microsoft.com/global-infrastructure/services/?products=virtual-machines).
 
 ## <a name="unmanaged-compute"></a>Onbeheerde compute
 

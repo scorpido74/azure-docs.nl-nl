@@ -1,23 +1,17 @@
 ---
-title: Azure-sjablonen gebruiken om HDInsight te maken met Azure Data Lake Storage Gen1 | Microsoft Docs
-description: Gebruik Azure Resource Manager sjablonen voor het maken en gebruiken van HDInsight-clusters met Azure Data Lake Storage Gen1
-services: data-lake-store,hdinsight
-documentationcenter: ''
+title: Sjabloon-HDInsight-cluster met Data Lake Storage Gen1
+description: Gebruik Azure Resource Manager sjablonen voor het maken en gebruiken van Azure HDInsight-clusters met Azure Data Lake Storage Gen1.
 author: twooley
-manager: mtillman
-editor: cgronlun
-ms.assetid: 8ef8152f-2121-461e-956c-51c55144919d
 ms.service: data-lake-store
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: b09ca2cc358107c5f95fe3426351d380380db3c2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 486809201db45e0f5bbeed870e24b1f63770e319
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "66161375"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82692034"
 ---
 # <a name="create-an-hdinsight-cluster-with-azure-data-lake-storage-gen1-using-azure-resource-manager-template"></a>Een HDInsight-cluster met Azure Data Lake Storage Gen1 maken met behulp van Azure Resource Manager sjabloon
 > [!div class="op_single_selector"]
@@ -30,7 +24,7 @@ ms.locfileid: "66161375"
 
 Meer informatie over het gebruik van Azure PowerShell voor het configureren van een HDInsight-cluster met Azure Data Lake Storage Gen1, **als extra opslag**.
 
-Voor ondersteunde cluster typen kan Data Lake Storage Gen1 worden gebruikt als een standaard opslag of extra opslag account. Als Data Lake Storage Gen1 als extra opslag wordt gebruikt, is het standaard opslag account voor de clusters nog steeds Azure Storage blobs (WASB) en de aan het cluster gerelateerde bestanden (zoals Logboeken, enzovoort). de gegevens die u wilt verwerken, kunnen worden opgeslagen in een Data Lake Storage Gen1-account. Het gebruik van Data Lake Storage Gen1 als een extra opslag account heeft geen invloed op de prestaties of de mogelijkheid om te lezen/schrijven naar de opslag van het cluster.
+Data Lake Storage Gen1 kan worden gebruikt als standaard opslag of als een extra opslag account voor ondersteunde cluster typen. Als Data Lake Storage Gen1 als extra opslag wordt gebruikt, is het standaard opslag account voor de clusters nog steeds Azure Storage blobs (WASB) en de aan het cluster gerelateerde bestanden (zoals Logboeken, enzovoort). de gegevens die u wilt verwerken, kunnen worden opgeslagen in een Data Lake Storage Gen1-account. Het gebruik van Data Lake Storage Gen1 als een extra opslag account heeft geen invloed op de prestaties of de mogelijkheid om te lezen/schrijven naar de opslag van het cluster.
 
 ## <a name="using-data-lake-storage-gen1-for-hdinsight-cluster-storage"></a>Data Lake Storage Gen1 voor HDInsight-cluster opslag gebruiken
 
@@ -40,7 +34,7 @@ Hier volgen enkele belang rijke aandachtspunten voor het gebruik van HDInsight m
 
 * Optie voor het maken van HDInsight-clusters met toegang tot Data Lake Storage Gen1 als extra opslag ruimte beschikbaar is voor HDInsight-versies 3,2, 3,4, 3,5 en 3,6.
 
-In dit artikel wordt een Hadoop-cluster met Data Lake Storage Gen1 als extra opslag ingericht. Zie [een HDInsight-cluster maken met data Lake Storage gen1 met behulp van Azure Portal](data-lake-store-hdinsight-hadoop-use-portal.md)voor instructies over het maken van een Hadoop-cluster met data Lake Storage gen1 als standaard opslag.
+In dit artikel wordt een Hadoop-cluster met Data Lake Storage Gen1 als extra opslag ingericht. Zie [een HDInsight-data Lake Storage gen1 cluster met behulp van Azure portal maken](data-lake-store-hdinsight-hadoop-use-portal.md)voor instructies over het maken van een Hadoop-cluster met data Lake Storage gen1 als standaard opslag.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -105,7 +99,7 @@ Zie [SSH gebruiken met Hadoop op basis van Linux in HDInsight via Windows](../hd
    SELECT * FROM vehicles LIMIT 10;
    ```
 
-   Als het goed is, wordt ongeveer de volgende uitvoer weergegeven:
+   De uitvoer ziet er als volgt uit:
 
    ```
    1,1,2014-09-14 00:00:03,46.81006,-92.08174,51,S,1

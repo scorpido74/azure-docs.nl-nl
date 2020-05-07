@@ -8,12 +8,12 @@ ms.date: 03/17/2020
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: 91ecff311b8820d3b97e1de0e4b4e87c150e749b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f936b62349a534e6193a3c628c66c49d1a58b681
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81678926"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82790827"
 ---
 # <a name="troubleshoot-issues-with-the-update-management-solution"></a>Problemen met de Updatebeheer oplossing oplossen
 
@@ -49,13 +49,13 @@ Deze fout kan de volgende oorzaken hebben:
 
 * Voer de probleem oplosser voor [Windows](update-agent-issues.md#troubleshoot-offline) of [Linux](update-agent-issues-linux.md#troubleshoot-offline)uit, afhankelijk van het besturings systeem.
 
-* Ga naar [netwerk planning](../automation-hybrid-runbook-worker.md#network-planning) voor meer informatie over welke adressen en poorten moeten worden toegestaan om updatebeheer te kunnen werken.  
+* Ga naar [netwerk configuratie](../automation-hybrid-runbook-worker.md#network-planning) voor meer informatie over welke adressen en poorten moeten worden toegestaan om updatebeheer te kunnen werken.  
 
-* Ga naar [netwerk planning](../../azure-monitor/platform/log-analytics-agent.md#network-requirements) voor meer informatie over welke adressen en poorten moeten worden toegestaan om de log Analytics-agent te laten werken.
+* Ga naar [netwerk configuratie](../../azure-monitor/platform/log-analytics-agent.md#network-requirements) voor meer informatie over welke adressen en poorten moeten worden toegestaan om de log Analytics-agent te laten werken.
 
 * Controleren op problemen met de scope configuratie. De [Scope configuratie](../automation-onboard-solutions-from-automation-account.md#scope-configuration) bepaalt welke computers voor de oplossing worden geconfigureerd. Als uw machine wordt weer gegeven in uw werk ruimte, maar niet in de * * Updatebeheer Portal, moet u de scope configuratie instellen op de doel computers. Zie [onboarding computers in de werk ruimte](../automation-onboard-solutions-from-automation-account.md#onboard-machines-in-the-workspace)voor meer informatie over de scope configuratie.
 
-* Verwijder de configuratie van de werk nemer door de stappen te volgen in [het hybride Runbook worker verwijderen](../automation-hybrid-runbook-worker.md#remove-a-hybrid-runbook-worker). 
+* Verwijder de configuratie van de werk nemer door de stappen in [een Windows-Hybrid Runbook worker verwijderen](../automation-windows-hrw-install.md#remove-windows-hybrid-runbook-worker) of [een Linux-Hybrid Runbook worker verwijderen](../automation-linux-hrw-install.md#remove-linux-hybrid-runbook-worker)te volgen. 
 
 ## <a name="scenario-superseded-update-indicated-as-missing-in-update-management"></a>Scenario: vervangen update aangegeven als ontbreekt in Updatebeheer
 
@@ -448,7 +448,7 @@ De machine is al onboarded naar een andere werk ruimte voor Updatebeheer.
 ### <a name="resolution"></a>Oplossing
 
 1. Volg de stappen onder [machines die niet worden weer gegeven in de portal onder updatebeheer](#nologs) om ervoor te zorgen dat de computer aan de juiste werk ruimte rapporteert.
-2. Reinig de artefacten op de machine door [de Hybrid runbook Group te verwijderen](../automation-hybrid-runbook-worker.md#remove-a-hybrid-worker-group)en probeer het opnieuw.
+2. Reinig de artefacten op de machine door [de Hybrid runbook Group te verwijderen](../automation-windows-hrw-install.md#remove-a-hybrid-worker-group)en probeer het opnieuw.
 
 ## <a name="scenario-machine-cant-communicate-with-the-service"></a><a name="machine-unable-to-communicate"></a>Scenario: de computer kan niet communiceren met de service
 

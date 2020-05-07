@@ -4,232 +4,57 @@ description: Gebruik Azure Resource Manager sjablonen om Azure Cosmos DB Table-A
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 04/27/2020
+ms.date: 04/30/2020
 ms.author: mjbrown
-ms.openlocfilehash: 86c7ba53c60a27e3d2557859189148785ae6d0f3
-ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
+ms.openlocfilehash: d1675e6827f3684785d11ef6b081f166267a8283
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82200803"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82791184"
 ---
 # <a name="manage-azure-cosmos-db-table-api-resources-using-azure-resource-manager-templates"></a>Azure Cosmos DB Table-API resources beheren met behulp van Azure Resource Manager sjablonen
 
-In dit artikel wordt beschreven hoe u verschillende bewerkingen uitvoert om het beheer van uw Azure Cosmos DB-accounts, data bases en containers te automatiseren met behulp van Azure Resource Manager sjablonen. In dit artikel vindt u voor beelden voor Table-API accounts, om voor beelden te vinden voor andere typen API-accounts raadpleegt u: Azure Resource Manager sjablonen gebruiken met de API van Azure Cosmos DB voor [Cassandra](manage-cassandra-with-resource-manager.md), [Gremlin](manage-gremlin-with-resource-manager.md), [MongoDb](manage-mongodb-with-resource-manager.md)en [SQL](manage-sql-with-resource-manager.md) -artikelen.
+In dit artikel leert u hoe u Azure Resource Manager sjablonen kunt gebruiken om uw Azure Cosmos DB accounts, data bases en containers te implementeren en beheren.
 
-## <a name="create-azure-cosmos-account-and-table"></a>Een Azure Cosmos-account en-tabel maken<a id="create-resource"></a>
+In dit artikel vindt u voor beelden voor Table-API accounts, om voor beelden te vinden voor andere typen API-accounts raadpleegt u: Azure Resource Manager sjablonen gebruiken met de API van Azure Cosmos DB voor [Cassandra](manage-cassandra-with-resource-manager.md), [Gremlin](manage-gremlin-with-resource-manager.md), [MongoDb](manage-mongodb-with-resource-manager.md)en [SQL](manage-sql-with-resource-manager.md) -artikelen.
 
-Azure Cosmos DB resources maken met behulp van een Azure Resource Manager sjabloon. Met deze sjabloon wordt een Azure Cosmos-account gemaakt voor Table-API met één tabel op basis van 400 RU/s. Kopieer de sjabloon en implementeer deze zoals hieronder wordt weer gegeven of ga naar de [Galerie van Azure Quick](https://azure.microsoft.com/resources/templates/101-cosmosdb-table/) start en implementeer deze vanuit de Azure Portal. U kunt de sjabloon ook downloaden naar uw lokale computer of een nieuwe sjabloon maken en het lokale pad met de `--template-file` para meter opgeven.
+> [!IMPORTANT]
+>
+> * Account namen zijn beperkt tot 44 tekens, alle kleine letters.
+> * Als u de doorvoer waarden wilt wijzigen, implementeert u de sjabloon opnieuw met de bijgewerkte RU/s.
+> * Wanneer u locaties toevoegt aan of verwijdert uit een Azure Cosmos-account, kunt u niet tegelijkertijd andere eigenschappen wijzigen. Deze bewerkingen moeten afzonderlijk worden uitgevoerd.
 
-> [!NOTE]
-> Account namen moeten kleine letters en 44 of minder tekens bevatten.
-> Als u RU/s wilt bijwerken, implementeert u de sjabloon opnieuw met bijgewerkte waarden voor doorvoer eigenschappen.
+Als u een van de onderstaande Azure Cosmos DB resources wilt maken, kopieert u de volgende voorbeeld sjabloon naar een nieuw JSON-bestand. U kunt optioneel een JSON-bestand voor para meters maken dat moet worden gebruikt bij het implementeren van meerdere exemplaren van dezelfde resource met verschillende namen en waarden. Er zijn veel manieren om Azure Resource Manager sjablonen te implementeren, waaronder, [Azure Portal](../azure-resource-manager/templates/deploy-portal.md), [Azure cli](../azure-resource-manager/templates/deploy-cli.md), [Azure PowerShell](../azure-resource-manager/templates/deploy-powershell.md) en [github](../azure-resource-manager/templates/deploy-to-azure-button.md).
 
-```json
-{
-"$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-"contentVersion": "1.0.0.0",
-"parameters": {
-   "accountName": {
-      "type": "string",
-      "defaultValue": "",
-      "metadata": {
-         "description": "Cosmos DB account name"
-      }
-   },
-   "location": {
-      "type": "string",
-      "defaultValue": "[resourceGroup().location]",
-      "metadata": {
-         "description": "Location for the Cosmos DB account."
-      }
-   },
-   "primaryRegion":{
-      "type":"string",
-      "metadata": {
-         "description": "The primary replica region for the Cosmos DB account."
-      }
-   },
-   "secondaryRegion":{
-      "type":"string",
-      "metadata": {
-        "description": "The secondary replica region for the Cosmos DB account."
-     }
-   },
-   "defaultConsistencyLevel": {
-      "type": "string",
-      "defaultValue": "Session",
-      "allowedValues": [ "Eventual", "ConsistentPrefix", "Session", "BoundedStaleness", "Strong" ],
-      "metadata": {
-         "description": "The default consistency level of the Cosmos DB account."
-      }
-   },
-   "maxStalenessPrefix": {
-      "type": "int",
-      "defaultValue": 100000,
-      "minValue": 10,
-      "maxValue": 1000000,
-      "metadata": {
-         "description": "Max stale requests. Required for BoundedStaleness. Valid ranges, Single Region: 10 to 1000000. Multi Region: 100000 to 1000000."
-      }
-   },
-   "maxIntervalInSeconds": {
-      "type": "int",
-      "defaultValue": 300,
-      "minValue": 5,
-      "maxValue": 86400,
-      "metadata": {
-         "description": "Max lag time (seconds). Required for BoundedStaleness. Valid ranges, Single Region: 5 to 84600. Multi Region: 300 to 86400."
-      }
-   },
-   "automaticFailover": {
-      "type": "bool",
-      "defaultValue": true,
-      "allowedValues": [ true, false ],
-      "metadata": {
-         "description": "Enable automatic failover for regions. Ignored when Multi-Master is enabled"
-      }
-   },
-   "tableName": {
-      "type": "string",
-      "metadata": {
-         "description": "The name for the table"
-      }
-   },
-   "throughput": {
-      "type": "int",
-      "defaultValue": 400,
-      "minValue": 400,
-      "maxValue": 1000000,
-      "metadata": {
-         "description": "The throughput for the table"
-      }
-   }
-},
-"variables": {
-   "accountName": "[toLower(parameters('accountName'))]",
-   "consistencyPolicy": {
-      "Eventual": {
-         "defaultConsistencyLevel": "Eventual"
-      },
-      "ConsistentPrefix": {
-         "defaultConsistencyLevel": "ConsistentPrefix"
-      },
-      "Session": {
-         "defaultConsistencyLevel": "Session"
-      },
-      "BoundedStaleness": {
-         "defaultConsistencyLevel": "BoundedStaleness",
-         "maxStalenessPrefix": "[parameters('maxStalenessPrefix')]",
-         "maxIntervalInSeconds": "[parameters('maxIntervalInSeconds')]"
-      },
-      "Strong": {
-         "defaultConsistencyLevel": "Strong"
-      }
-   },
-   "locations":
-   [
-      {
-         "locationName": "[parameters('primaryRegion')]",
-         "failoverPriority": 0,
-         "isZoneRedundant": false
-      },
-      {
-         "locationName": "[parameters('secondaryRegion')]",
-         "failoverPriority": 1,
-         "isZoneRedundant": false
-      }
-   ]
-},
-"resources": 
-[
-   {
-      "type": "Microsoft.DocumentDB/databaseAccounts",
-      "name": "[variables('accountName')]",
-      "apiVersion": "2020-03-01",
-      "location": "[parameters('location')]",
-      "kind": "GlobalDocumentDB",
-      "properties": {
-         "capabilities": [{ "name": "EnableTable" }],
-         "consistencyPolicy": "[variables('consistencyPolicy')[parameters('defaultConsistencyLevel')]]",
-         "locations": "[variables('locations')]",
-         "databaseAccountOfferType": "Standard",
-         "enableAutomaticFailover": "[parameters('automaticFailover')]"
-      }
-   },
-   {
-      "type": "Microsoft.DocumentDB/databaseAccounts/tables",
-      "name": "[concat(variables('accountName'), '/', parameters('tableName'))]",
-      "apiVersion": "2020-03-01",
-      "dependsOn": [ "[resourceId('Microsoft.DocumentDB/databaseAccounts/', variables('accountName'))]" ],
-      "properties":{
-         "resource":{
-            "id": "[parameters('tableName')]"
-         },
-         "options": { "throughput": "[parameters('throughput')]" }
-      }
-   }
-]
-}
-```
+> [!TIP]
+> Als u gedeelde door voer wilt inschakelen wanneer u Table-API gebruikt, schakelt u door Voer op account niveau in het Azure Portal.
 
-### <a name="deploy-via-powershell"></a>Implementeren via Power shell
+<a id="create-autoscale"></a>
 
-Als u de Resource Manager-sjabloon wilt implementeren met behulp van Power shell, **kopieert** u het script en selecteert u **proberen het** te openen Azure Cloud shell. Als u het script wilt plakken, klikt u met de rechter muisknop op de shell en selecteert u vervolgens **Plakken**:
+## <a name="azure-cosmos-account-for-table-with-autoscale-throughput"></a>Azure Cosmos-account voor tabel met door Voer automatisch schalen
 
-```azurepowershell-interactive
+Met deze sjabloon wordt een Azure Cosmos-account gemaakt voor Table-API met één tabel met de door Voer van automatisch schalen. Deze sjabloon is ook beschikbaar voor één klik op implementeren vanuit de Azure Quick Start-sjablonen galerie.
 
-$resourceGroupName = Read-Host -Prompt "Enter the Resource Group name"
-$accountName = Read-Host -Prompt "Enter the account name"
-$location = Read-Host -Prompt "Enter the location (i.e. westus2)"
-$primaryRegion = Read-Host -Prompt "Enter the primary region (i.e. westus2)"
-$secondaryRegion = Read-Host -Prompt "Enter the secondary region (i.e. eastus2)"
-$tableName = Read-Host -Prompt "Enter the table name"
-$throughput = Read-Host -Prompt "Enter the throughput"
+[![Implementeren in Azure](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-cosmosdb-table-autoscale%2Fazuredeploy.json)
 
-New-AzResourceGroup -Name $resourceGroupName -Location $location
-New-AzResourceGroupDeployment `
-    -ResourceGroupName $resourceGroupName `
-    -TemplateUri "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-cosmosdb-table/azuredeploy.json" `
-    -primaryRegion $primaryRegion `
-    -secondaryRegion $secondaryRegion `
-    -tableName $tableName `
-    -throughput $throughput
+:::code language="json" source="~/quickstart-templates/101-cosmosdb-table-autoscale/azuredeploy.json":::
 
- (Get-AzResource --ResourceType "Microsoft.DocumentDb/databaseAccounts" --ApiVersion "2020-03-01" --ResourceGroupName $resourceGroupName).name
-```
+<a id="create-manual"></a>
 
-Als u ervoor kiest om een lokaal geïnstalleerde versie van Power shell te gebruiken in plaats van vanaf de Azure Cloud Shell, moet u de Azure PowerShell-module [installeren](/powershell/azure/install-az-ps) . Voer `Get-Module -ListAvailable Az` uit om de versie te bekijken.
+## <a name="azure-cosmos-account-for-table-with-standard-manual-throughput"></a>Azure Cosmos-account voor tabel met standaard (hand matig) door Voer
 
-### <a name="deploy-via-the-azure-cli"></a>Implementeren via de Azure CLI
+Met deze sjabloon wordt een Azure Cosmos-account gemaakt voor Table-API met een tabel met een standaard doorvoer snelheid. Deze sjabloon is ook beschikbaar voor één klik op implementeren vanuit de Azure Quick Start-sjablonen galerie.
 
-Als u de Azure Resource Manager sjabloon wilt implementeren met behulp van de Azure CLI, **kopieert** u het script en selecteert u **proberen het** te openen Azure Cloud shell. Als u het script wilt plakken, klikt u met de rechter muisknop op de shell en selecteert u vervolgens **Plakken**:
+[![Implementeren in Azure](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-cosmosdb-table%2Fazuredeploy.json)
 
-```azurecli-interactive
-read -p 'Enter the Resource Group name: ' resourceGroupName
-read -p 'Enter the location (i.e. westus2): ' location
-read -p 'Enter the account name: ' accountName
-read -p 'Enter the primary region (i.e. westus2): ' primaryRegion
-read -p 'Enter the secondary region (i.e. eastus2): ' secondaryRegion
-read -p 'Enter the table name: ' tableName
-read -p 'Enter the throughput: ' throughput
-
-az group create --name $resourceGroupName --location $location
-az group deployment create --resource-group $resourceGroupName \
-   --template-uri https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/101-cosmosdb-table/azuredeploy.json \
-   --parameters accountName=$accountName primaryRegion=$primaryRegion secondaryRegion=$secondaryRegion \
-     tableName=$tableName throughput=$throughput
-
-az cosmosdb show --resource-group $resourceGroupName --name accountName --output tsv
-```
-
-De `az cosmosdb show` opdracht toont het zojuist gemaakte Azure Cosmos-account nadat het is ingericht. Als u ervoor kiest een lokaal geïnstalleerde versie van de Azure CLI te gebruiken in plaats van Cloud Shell, raadpleegt u het artikel over [Azure cli](/cli/azure/) .
+:::code language="json" source="~/quickstart-templates/101-cosmosdb-table/azuredeploy.json":::
 
 ## <a name="next-steps"></a>Volgende stappen
 
 Hier volgen enkele aanvullende bronnen:
 
-- [Documentatie over Azure Resource Manager](/azure/azure-resource-manager/)
-- [Resource provider-schema Azure Cosmos DB](/azure/templates/microsoft.documentdb/allversions)
-- [Quick Start-sjablonen Azure Cosmos DB](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.DocumentDB&pageNumber=1&sort=Popular)
-- [Veelvoorkomende fouten bij Azure Resource Manager implementatie oplossen](../azure-resource-manager/templates/common-deployment-errors.md)
+* [Documentatie over Azure Resource Manager](/azure/azure-resource-manager/)
+* [Resource provider-schema Azure Cosmos DB](/azure/templates/microsoft.documentdb/allversions)
+* [Quick Start-sjablonen Azure Cosmos DB](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.DocumentDB&pageNumber=1&sort=Popular)
+* [Veelvoorkomende fouten bij Azure Resource Manager implementatie oplossen](../azure-resource-manager/templates/common-deployment-errors.md)

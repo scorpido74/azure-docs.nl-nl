@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 12/06/2019
-ms.openlocfilehash: d7ee8ae121e3cbb9760a87c95d12109a9b05e0c5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 61d7d2a52f58162d288b1155f9724c7912e451f3
+ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74951510"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82780093"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---infrastructure-best-practices"></a>On-premises Apache Hadoop clusters migreren naar de aanbevolen procedures voor Azure HDInsight-infra structuur
 
@@ -23,7 +23,7 @@ Dit artikel bevat aanbevelingen voor het beheren van de infra structuur van Azur
 
 De belangrijkste keuzes voor het maken van de capaciteits planning voor HDInsight-clusters zijn als volgt:
 
-**Regio**  
+**Deel**  
 De Azure-regio bepaalt waar het cluster fysiek wordt ingericht. Het cluster moet zich in dezelfde regio bevinden als de gegevens om de latentie van lees-en schrijf bewerkingen te minimaliseren.
 
 **Opslag locatie en-grootte**  
@@ -167,7 +167,7 @@ Met Azure Virtual Network met HDInsight kunnen de volgende scenario's worden geb
 - Verbinding maken tussen HDInsight en gegevens archieven in een virtueel Azure-netwerk.
 - U hebt rechtstreeks toegang tot Hadoop-services die niet openbaar beschikbaar zijn via internet. Bijvoorbeeld Kafka-Api's of de HBase Java-API.
 
-HDInsight kan worden toegevoegd aan een nieuwe of bestaande Azure-Virtual Network. Als HDInsight wordt toegevoegd aan een bestaand Virtual Network, moeten de bestaande netwerk beveiligings groepen en door de gebruiker gedefinieerde routes worden bijgewerkt om onbeperkte toegang tot [meerdere IP-adressen](../hdinsight-management-ip-addresses.md) in het Azure-Data Center mogelijk te maken. Zorg er ook voor dat het verkeer naar de [poorten](../hdinsight-plan-virtual-network-deployment.md#hdinsight-ports)die worden gebruikt door HDInsight-Services niet wordt geblokkeerd.
+HDInsight kan worden toegevoegd aan een nieuwe of bestaande Azure-Virtual Network. Als HDInsight wordt toegevoegd aan een bestaand Virtual Network, moeten de bestaande netwerk beveiligings groepen en door de gebruiker gedefinieerde routes worden bijgewerkt om onbeperkte toegang tot [meerdere IP-adressen](../hdinsight-management-ip-addresses.md) in het Azure-Data Center mogelijk te maken. Zorg er ook voor dat het verkeer naar de [poorten](../control-network-traffic.md#required-ports)die worden gebruikt door HDInsight-Services niet wordt geblokkeerd.
 
 > [!Note]  
 > HDInsight ondersteunt momenteel geen geforceerde tunneling. Geforceerde tunneling is een instelling van het subnet dat uitgaand Internet verkeer naar een apparaat afdwingt voor inspectie en logboek registratie. Verwijder geforceerde tunneling voordat u HDInsight in een subnet installeert of maak een nieuw subnet voor HDInsight. HDInsight biedt ook geen ondersteuning voor het beperken van uitgaande netwerk verbindingen.

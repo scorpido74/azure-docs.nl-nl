@@ -1,23 +1,17 @@
 ---
-title: Gegevens streamen van Stream Analytics naar Azure Data Lake Storage Gen1 | Microsoft Docs
-description: Azure Stream Analytics gebruiken om gegevens naar Azure Data Lake Storage Gen1 te streamen
-services: data-lake-store,stream-analytics
-documentationcenter: ''
+title: Gegevens streamen van Stream Analytics naar Data Lake Storage Gen1-Azure
+description: Gebruik Azure Stream Analytics om gegevens in Azure Data Lake Storage Gen1 te streamen.
 author: twooley
-manager: mtillman
-editor: cgronlun
-ms.assetid: edb58e0b-311f-44b0-a499-04d7e6c07a90
 ms.service: data-lake-store
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/30/2018
 ms.author: twooley
-ms.openlocfilehash: d3dbacd58b3bda3fbf8ee8ad5f175eccc2cb2a24
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.openlocfilehash: f1740d167bedd20f51ad5bf24a56b7e7e787f754
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "60194852"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82690986"
 ---
 # <a name="stream-data-from-azure-storage-blob-into-azure-data-lake-storage-gen1-using-azure-stream-analytics"></a>Gegevens streamen van Azure Storage Blob naar Azure Data Lake Storage Gen1 met behulp van Azure Stream Analytics
 In dit artikel leert u hoe u Azure Data Lake Storage Gen1 kunt gebruiken als uitvoer voor een Azure Stream Analytics taak. In dit artikel wordt een eenvoudig scenario gedemonstreerd waarmee gegevens uit een Azure Storage BLOB (invoer) worden gelezen en de gegevens naar Data Lake Storage Gen1 worden geschreven (uitvoer).
@@ -29,7 +23,7 @@ Voordat u met deze zelfstudie begint, moet u het volgende hebben of hebben gedaa
 
 * **Azure Storage-account**. U gebruikt een BLOB-container van dit account om gegevens in te voeren voor een Stream Analytics taak. Voor deze zelf studie wordt ervan uitgegaan dat u een opslag account hebt met de naam **storageforasa** en een container in het account met de naam **storageforasacontainer**. Wanneer u de container hebt gemaakt, uploadt u een voorbeeld gegevensbestand. 
   
-* **Een Data Lake Storage gen1-account**. Volg de instructies in aan [de slag met Azure data Lake Storage gen1 met behulp van Azure Portal](data-lake-store-get-started-portal.md). We gaan ervan uit dat u een Data Lake Storage Gen1 account hebt met de naam **myadlsg1**. 
+* **Een Data Lake Storage gen1-account**. Volg de instructies in aan [de slag met Azure data Lake Storage gen1 met behulp van de Azure Portal](data-lake-store-get-started-portal.md). We gaan ervan uit dat u een Data Lake Storage Gen1 account hebt met de naam **myadlsg1**. 
 
 ## <a name="create-a-stream-analytics-job"></a>Een Stream Analytics-taak maken
 U begint met het maken van een Stream Analytics-taak die een invoer bron en een uitvoer bestemming bevat. Voor deze zelf studie is de bron een Azure Blob-container en is de bestemming Data Lake Storage Gen1.
@@ -64,7 +58,7 @@ U begint met het maken van een Stream Analytics-taak die een invoer bron en een 
    * Selecteer **Tab**voor **scheidings teken**.
    * Voor **code ring**selecteert u **UTF-8**.
 
-     Klik op **maken**. De Portal voegt nu de invoer toe en test de verbinding.
+     Klik op **Maken**. De Portal voegt nu de invoer toe en test de verbinding.
 
 
 ## <a name="create-a-data-lake-storage-gen1-output-for-the-job"></a>Een Data Lake Storage Gen1 uitvoer voor de taak maken
@@ -92,7 +86,7 @@ U begint met het maken van een Stream Analytics-taak die een invoer bron en een 
    * Selecteer **Tab**voor **scheidings teken**.
    * Voor **code ring**selecteert u **UTF-8**.
     
-     Klik op **maken**. De Portal voegt nu de uitvoer toe en test de verbinding.
+     Klik op **Maken**. De Portal voegt nu de uitvoer toe en test de verbinding.
     
 ## <a name="run-the-stream-analytics-job"></a>Voer de Stream Analytics-taak uit
 
@@ -118,5 +112,5 @@ U begint met het maken van een Stream Analytics-taak die een invoer bron en een 
 
     In het deel venster Data Explorer ziet u dat de uitvoer wordt geschreven naar een mappad zoals opgegeven in de Data Lake Storage Gen1 Output Settings (`streamanalytics/job/output/{date}/{time}`).  
 
-## <a name="see-also"></a>Zie ook
+## <a name="see-also"></a>Zie tevens
 * [Een HDInsight-cluster maken voor het gebruik van Data Lake Storage Gen1](data-lake-store-hdinsight-hadoop-use-portal.md)

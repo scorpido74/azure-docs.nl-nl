@@ -1,17 +1,17 @@
 ---
-Description: Als u geld wilt ontvangen van de verkoop van aanbiedingen in de commerciële Marketplace, moet u uw account voor betaling instellen en de benodigde belasting formulieren invullen.
-title: Uw account voor betaling en de BTW-formulieren instellen | Azure Marketplace
+title: '& BTW-formulieren instellen voor uitbetalings account-micro soft Commercial Marketplace'
+Description: Als u geld wilt ontvangen van de verkoop van aanbiedingen in de commerciële Marketplace, leert u hoe u uw account voor betaling kunt instellen en de benodigde belasting formulieren kunt invullen.
 ms.date: 12/10/2019
 ms.topic: conceptual
 author: dsindona
 ms.author: dsindona
 ms.service: marketplace
-ms.openlocfilehash: fb0caa64feb7cb024b684a2e94937aec8893bb5e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 627f6f01a17fc8cabb4f1883306baeb0e2d77e70
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80281303"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82792884"
 ---
 # <a name="set-up-your-payout-account-and-tax-forms"></a>Stel uw betalingsaccount en belastingformulieren
 
@@ -32,7 +32,7 @@ Nadat u uw account hebt ingesteld, zijn er twee dingen die u moet doen voordat u
 
 ## <a name="tax-forms"></a>BTW-formulieren
 
-### <a name="filling-out-your-tax-forms"></a>Uw BTW-formulieren invullen
+### <a name="fill-out-your-tax-forms"></a>Vul uw belasting formulieren in
 
 Eerst moet u een BTW-profiel maken en toewijzen aan de Program ma's waarmee u deel uitmaakt. U kunt uw *BTW-profiel* voor de commerciële Marketplace maken door de volgende stappen uit te voeren:
 
@@ -45,18 +45,21 @@ U kunt uw belasting formulieren elektronisch volt ooien en verzenden in het part
 > Verschillende landen en regio's hebben verschillende belasting vereisten. De exacte hoeveelheid die u in BTW moet betalen, is afhankelijk van de landen en regio's waar u uw aanbieding verkoopt. Raadpleeg de [Microsoft Azure Marketplace Publisher-overeenkomst](https://go.microsoft.com/fwlink/p/?LinkID=699560) voor meer informatie over welke landen micro soft verkoop en het gebruik van belasting namens u verkrijgt. In andere landen, afhankelijk van waar u bent Inge schreven, moet u mogelijk verkoop-en gebruiks belasting voor uw aanbiedings verkoop rechtstreeks aan de lokale belasting dienst remitteren. Daarnaast kan de omzet van de app die u ontvangt, als bate worden belast. We raden u aan om contact op te nemen met de relevante instantie voor uw land of regio, die u het beste kan helpen bij het bepalen van de juiste belasting gegevens voor uw commerciële Marketplace-activiteiten.
 
 1. Selecteer in [partner centrum](https://partner.microsoft.com/dashboard)het pictogram **account instellingen** in de rechter bovenhoek en selecteer vervolgens **instellingen voor ontwikkel aars**.
+
 2. Selecteer in het navigatie menu aan de linkerkant de optie **uitbetaling en belasting**en selecteer vervolgens **betaling en BTW-toewijzingen**.
 
 3. Selecteer de combi natie van het programma en de verkoper waarvoor u BTW-gegevens wilt configureren.
 
 4. Als u een bestaand BTW-profiel wilt gebruiken, selecteert u dit in de vervolg keuzelijst. Anders selecteert u **Nieuw profiel maken** en drukt u op **verzenden**. U gaat naar de pagina BTW-profielen.
+
 5. Klik op de knop **bewerken** om uw belasting gegevens te bewerken.
+
 6. Selecteer het juiste keuze rondje en selecteer uw land als u daarom wordt gevraagd. Met deze stap bepaalt u de zakelijke entiteit van micro soft die wordt gebruikt voor het maken van uitbetalingen voor uw account.
 
 7. Afhankelijk van uw selecties in stap 6, wordt u gevraagd om de belasting gegevens op te geven die vereist zijn voor uw land.
 
-> [!NOTE]
-> Ongeacht uw land van verblijf of burgerschap moet u Verenigde Staten BTW-formulieren invullen om een aanbieding of invoeg toepassingen via de commerciële Marketplace te verkopen. Uitgevers die voldoen aan bepaalde Verenigde Staten locatie-vereisten, moeten een IRS W-9-formulier invullen. Andere uitgevers buiten de Verenigde Staten moeten een IRS W-8-formulier invullen. U kunt deze formulieren online invullen tijdens het volt ooien van uw BTW-profiel.
+   > [!NOTE]
+   > Ongeacht uw land van verblijf of burgerschap moet u Verenigde Staten BTW-formulieren invullen om een aanbieding of invoeg toepassingen via de commerciële Marketplace te verkopen. Uitgevers die voldoen aan bepaalde Verenigde Staten locatie-vereisten, moeten een IRS W-9-formulier invullen. Andere uitgevers buiten de Verenigde Staten moeten een IRS W-8-formulier invullen. U kunt deze formulieren online invullen tijdens het volt ooien van uw BTW-profiel.
 
 ### <a name="withholding-rates"></a>Inhoudings tarieven
 
@@ -108,8 +111,8 @@ Als u ervoor hebt gekozen om een bank account te gebruiken om uitbetalingen te o
 
 6. Klik op verzenden om uw wijzigingen op te slaan.
 
-> [!NOTE]
-> Micro soft kan tot 48 uur duren om de gegevens in uw profiel te valideren. Wanneer dit proces is voltooid, wordt de *verificatie status* weer gegeven als **voltooid**
+   > [!NOTE]
+   > Micro soft kan tot 48 uur duren om de gegevens in uw profiel te valideren. Wanneer dit proces is voltooid, wordt de *verificatie status* weer gegeven als **voltooid**
 
 Controleer het volgende om ervoor te zorgen dat uw uitbetaling slaagt:
 
@@ -122,7 +125,9 @@ Controleer het volgende om ervoor te zorgen dat uw uitbetaling slaagt:
 U kunt bestaande betalings profielen bewerken als u wijzigingen wilt aanbrengen of onjuiste gegevens wilt corrigeren.
 
 1. Selecteer in [partner centrum](https://partner.microsoft.com/dashboard)het tandwiel pictogram **instellingen** in de rechter bovenhoek en selecteer vervolgens **instellingen voor ontwikkel aars**.
+
 2. Selecteer onder de kop *uitbetaling en belasting* de optie **uitbetalings-en BTW-profielen**.
+
 3. Uw betalings profielen worden samen met hun status weer gegeven. Zoek het profiel dat u wilt bewerken en klik helemaal rechts op **bewerken**
 
 > [!IMPORTANT]
@@ -138,9 +143,13 @@ In landen en regio's selecteren kunt u een betalings account maken door uw PayPa
 Veelgestelde vragen over het gebruik van PayPal als betalings methode:
 
 - **Welke PayPal-instellingen heb ik nodig om betalingen te kunnen ontvangen?** Zorg ervoor dat uw PayPal-account geen eCheck-betalingen blokkeert. Deze instelling wordt beheerd op de pagina voor keuren voor betalings ontvangsten van PayPal. Zie [de pagina voor het instellen van PayPal-accounts](https://go.microsoft.com/fwlink/p/?linkid=513139) voor meer informatie.
+
 - **Wordt mijn land/regio ondersteund?** Bekijk de [betalings drempels, methoden en tijds perioden](payment-thresholds-methods-timeframes.md) om erachter te komen waar PayPal een ondersteunde betalings methode is.
+
 - **Moeten mijn PayPal-account worden geregistreerd in hetzelfde land/dezelfde regio als mijn partner centrum-account?** Nee. Wanneer u een PayPal-account instelt, kunt u de standaard configuratie accepteren. U hebt geen problemen met andere landen/regio's en valuta's, tenzij u de betaling in sommige valuta's hebt geblokkeerd. Deze instelling wordt beheerd op de pagina voor keuren voor betalings ontvangsten van PayPal.
+
 - **Moet ik PayPal-betalingen hand matig accepteren?** Nee. PayPal-accounts worden standaard ingesteld om gebruikers te verplichten om betalingen hand matig te accepteren. Dit betekent dat als u de betaling niet binnen 30 dagen accepteert, deze wordt geretourneerd. U kunt deze instelling wijzigen door ' vraag mij ' op de pagina meer instellingen van PayPal uit te scha kelen.
+
 - **Welke valuta's ondersteunt PayPal?** Zie de [ondersteunings pagina van PayPal](https://developer.paypal.com/docs/classic/api/currency-codes/#paypal) voor de huidige lijst
 
 ### <a name="specific-requirements-for-certain-countriesregions"></a>Specifieke vereisten voor bepaalde landen/regio's
@@ -193,3 +202,7 @@ Als u ervoor hebt gekozen om een bank account te gebruiken om uitbetalingen te o
 4. Selecteer op de pagina *profiel toewijzing* de valuta die we willen gebruiken wanneer we uw uitbetalingen doen.
 5. U moet een betalings profiel selecteren voor elk programma waarmee u deel uitmaakt, maar u kunt hetzelfde profiel gebruiken voor meerdere Program ma's.
 6. Klik op verzenden om uw wijzigingen op te slaan.
+
+## <a name="next-steps"></a>Volgende stappen
+
+[Facturering in de commerciële marketplace](billing-details.md)

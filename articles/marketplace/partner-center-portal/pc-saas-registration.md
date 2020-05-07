@@ -1,23 +1,22 @@
 ---
-title: Een SaaS-toepassing registreren | Azure Marketplace
-description: Hierin wordt uitgelegd hoe u een SaaS-toepassing registreert met behulp van de Azure Portal.
+title: Een SaaS-toepassing registreren-Azure Marketplace
+description: Meer informatie over het gebruik van de Azure Portal voor het registreren van een SaaS-toepassing en het ontvangen van een Azure Active Directory beveiligings token.
 author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 05/23/2019
 ms.author: dsindona
-ms.openlocfilehash: 9c20fe34e108de95a34aabea56390e8a6f0d858f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b3c20d25917d66cba8ae3d811eddaa6455b87722
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80275710"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82792952"
 ---
 # <a name="register-a-saas-application"></a>Een SaaS-toepassing registreren
 
 In dit artikel wordt uitgelegd hoe u een SaaS-toepassing registreert met behulp van de micro soft- [Azure Portal](https://portal.azure.com/).  Nadat de registratie is voltooid, ontvangt u een beveiligings token van Azure Active Directory (Azure AD) dat u kunt gebruiken voor toegang tot de SaaS-fulfillment-Api's.  Zie [Wat is verificatie?](https://docs.microsoft.com/azure/active-directory/develop/authentication-scenarios) voor meer informatie over Azure AD.
-
 
 ## <a name="service-to-service-authentication-flow"></a>Service-naar-service-verificatie stroom
 
@@ -27,12 +26,11 @@ In het volgende diagram ziet u de abonnements stroom van een nieuwe klant en wan
 
 Azure biedt geen beperkingen voor de verificatie die de SaaS-service voor de eind gebruikers weergeeft. Verificatie met de SaaS-fulfillment-Api's wordt echter uitgevoerd met een Azure AD-beveiligings token, dat meestal wordt verkregen door de SaaS-app te registreren via de Azure Portal. 
 
-
 ## <a name="register-an-azure-ad-secured-app"></a>Een Azure AD-beveiligde app registreren
 
 Elke toepassing die de mogelijkheden van Azure Active Directory wil gebruiken, moet eerst in een Azure Active Directory-tenant worden geregistreerd. Bij dit registratie proces moet u Azure AD-gegevens over uw toepassing geven, zoals de URL waar deze zich bevindt, de URL voor het verzenden van antwoorden nadat een gebruiker is geverifieerd, de URI waarmee de app wordt geïdentificeerd, enzovoort.  Voer de volgende stappen uit om een nieuwe toepassing te registreren met behulp van de Azure Portal:
 
-1.  Meld u aan bij de [Azure-portal](https://portal.azure.com/).
+1.  Meld u aan bij [Azure Portal](https://portal.azure.com/).
 2.  Als uw account u toegang geeft tot meer dan één, klikt u in de rechter bovenhoek op uw account en stelt u uw portal sessie in op de gewenste Azure AD-Tenant.
 3.  Klik in het navigatie deel venster aan de linkerkant op de **Azure Active Directory** -service, klik op **app-registraties**en klik vervolgens op **nieuwe toepassing registreren**.
 
@@ -55,7 +53,6 @@ Elke toepassing die de mogelijkheden van Azure Active Directory wil gebruiken, m
 
 >[!Note]
 >De zojuist geregistreerde toepassing is standaard zo geconfigureerd dat alleen gebruikers van dezelfde Tenant zich kunnen aanmelden bij uw toepassing.
-
 
 ## <a name="using-the-azure-ad-security-token"></a>Het Azure AD-beveiligings token gebruiken
 
@@ -123,7 +120,6 @@ Voorbeeld token voor antwoorden:
       "access_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6ImlCakwxUmNxemhpeTRmcHhJeGRacW9oTTJZayIsImtpZCI6ImlCakwxUmNxemhpeTRmcHhJeGRacW9oTTJZayJ9…"
   }               
 ```
-
 
 ## <a name="next-steps"></a>Volgende stappen
 

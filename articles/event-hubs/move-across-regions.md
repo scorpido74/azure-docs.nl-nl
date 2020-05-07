@@ -9,12 +9,12 @@ ms.custom: subject-moving-resources
 ms.date: 04/14/2020
 ms.author: spelluru
 ms.reviewer: shvija
-ms.openlocfilehash: 2dfc9c517605bbb48bee0b306fb275464cfebe39
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5b96bf1c538b3c5589a1993a0353292fadd0936d
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81606806"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82690494"
 ---
 # <a name="move-an-azure-event-hubs-namespace-to-another-region"></a>Een Azure Event Hubs-naam ruimte verplaatsen naar een andere regio
 Er zijn verschillende scenario's waarin u uw bestaande Event Hubs naam ruimte wilt verplaatsen van de ene regio naar een andere. Het is bijvoorbeeld mogelijk dat u een naam ruimte met dezelfde configuratie voor testen wilt maken. U kunt ook een secundaire naam ruimte in een andere regio maken als onderdeel van de [planning voor nood herstel](event-hubs-geo-dr.md#setup-and-failover-flow).
@@ -27,12 +27,12 @@ Er zijn verschillende scenario's waarin u uw bestaande Event Hubs naam ruimte wi
 - Zorg ervoor dat de services en functies die uw account gebruikt worden ondersteund in de doel regio.
 - Zorg ervoor dat uw abonnement white list is voor de doel regio voor preview-functies.
 - Als u de **functie vastleggen** hebt ingeschakeld voor Event hubs in de naam ruimte, verplaatst u [Azure Storage of Azure data Lake Store gen 2](../storage/common/storage-account-move.md) -of [Azure data Lake Store gen 1](../data-lake-store/data-lake-store-migration-cross-region.md) -accounts voordat u de Event hubs naam ruimte verplaatst. U kunt ook de resource groep met zowel opslag-als Event Hubs-naam ruimten verplaatsen naar de andere regio door de stappen te volgen die vergelijkbaar zijn met die in dit artikel worden beschreven. 
-- Als de naam ruimte van de Event Hubs zich in een **Event hubs cluster**bevindt, [maakt u een toegewezen cluster](event-hubs-dedicated-cluster-create-portal.md) in de **doel regio** voordat u de stappen in dit artikel uitvoert. 
+- Als de naam ruimte van de Event Hubs zich in een **Event hubs cluster**bevindt, [maakt u een toegewezen cluster](event-hubs-dedicated-cluster-create-portal.md) in de **doel regio** voordat u de stappen in dit artikel uitvoert. U kunt ook de Quick Start- [sjabloon op github](https://github.com/Azure/azure-quickstart-templates/tree/master/201-eventhubs-create-cluster-namespace-eventhub/) gebruiken om een event hubs cluster te maken. Verwijder in de sjabloon het naam ruimte gedeelte van de JSON om alleen het cluster te maken. 
 
 ## <a name="prepare"></a>Voorbereiden
 Exporteer een resource manager-sjabloon om aan de slag te gaan. Deze sjabloon bevat instellingen die uw Event Hubs naam ruimte beschrijven.
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
+1. Meld u aan bij [Azure Portal](https://portal.azure.com).
 
 2. Selecteer **alle resources** en selecteer vervolgens uw event hubs naam ruimte.
 

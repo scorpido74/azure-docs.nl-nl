@@ -2,23 +2,23 @@
 title: VMware-evaluatie ondersteuning in Azure Migrate
 description: Meer informatie over ondersteuning voor VMware VM-evaluatie met Azure Migrate server-evaluatie.
 ms.topic: conceptual
-ms.date: 04/15/2020
-ms.openlocfilehash: 8a09562f14b95256ee9c2b5ba7d9c308cde66397
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 05/04/2020
+ms.openlocfilehash: d378ece1eda906a30ec33e2cf27ad59df473b5c7
+ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81532201"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82779906"
 ---
 # <a name="support-matrix-for-vmware-assessment"></a>Ondersteunings matrix voor VMware-evaluatie 
 
-In dit artikel vindt u een overzicht van de vereisten voor en ondersteuning wanneer u virtuele VMware-machines beoordeelt voor migratie naar Azure, met behulp van de Azure Migrate: Server Assessment] (migrate-Services-Overview. MD # Azure-migrate-server-Assessment-hulp programma). Als u virtuele VMware-machines wilt migreren naar Azure, raadpleegt u de [ondersteunings matrix voor migratie](migrate-support-matrix-vmware-migration.md).
+In dit artikel vindt u een overzicht van de vereisten voor en ondersteuning wanneer u virtuele VMware-machines beoordeelt voor migratie naar Azure, met behulp van het [Azure migrate: Server Assessment](migrate-services-overview.md#azure-migrate-server-assessment-tool) tool. Als u virtuele VMware-machines wilt migreren naar Azure, raadpleegt u de [ondersteunings matrix voor migratie](migrate-support-matrix-vmware-migration.md).
 
 Als u virtuele VMware-machines wilt beoordelen, maakt u een Azure Migrate project en voegt u vervolgens het hulp programma voor Server evaluatie toe aan het project. Wanneer het hulp programma is toegevoegd, implementeert u het [Azure migrate apparaat](migrate-appliance.md). Het apparaat detecteert voortdurend on-premises machines en verzendt meta gegevens en prestatie gegevens van de machine naar Azure. Nadat de detectie is voltooid, verzamelt u gedetecteerde computers in groepen en voert u een evaluatie uit voor een groep.
 
 ## <a name="limitations"></a>Beperkingen
 
-**Ondersteuning** | **Nadere**
+**Ondersteuning** | **Details**
 --- | ---
 **Project limieten** | U kunt meerdere projecten maken in een Azure-abonnement.<br/><br/> U kunt Maxi maal 35.000 VMware-Vm's in één [project](migrate-support-matrix.md#azure-migrate-projects)detecteren en beoordelen. Een project kan ook fysieke servers en virtuele Hyper-V-machines bevatten, tot aan de evaluatie limieten voor elke.
 **Detectie** | Het Azure Migrate-apparaat kan Maxi maal 10.000 VMware-Vm's detecteren op een vCenter Server.
@@ -31,7 +31,7 @@ Meer [informatie](concepts-assessment-calculation.md) over evaluaties.
 
 Naast het detecteren van computers kunnen server analyses apps, rollen en functies vinden die op machines worden uitgevoerd. Als u uw app-inventaris detecteert, kunt u een migratie traject identificeren en plannen dat is afgestemd op uw on-premises workloads. 
 
-**Ondersteuning** | **Nadere**
+**Ondersteuning** | **Details**
 --- | ---
 **Ondersteunde computers** | App-detectie wordt momenteel alleen ondersteund voor virtuele VMware-machines.
 **Detectie** | App-detectie is zonder agent. Hierbij worden de gast referenties van de machine gebruikt en kunnen computers op afstand worden benaderd met WMI-en SSH-aanroepen.
@@ -39,7 +39,7 @@ Naast het detecteren van computers kunnen server analyses apps, rollen en functi
 **vCenter-referenties** | App-detectie heeft een vCenter Server account met alleen-lezen toegang en bevoegdheden ingeschakeld voor Virtual Machines >-gast bewerkingen.
 **VM-referenties** | App-detectie biedt momenteel ondersteuning voor het gebruik van één referentie voor alle Windows-servers en één referentie voor alle Linux-servers.<br/><br/> U maakt een gast gebruikers account voor Windows-Vm's en een standaard/normaal gebruikers account (niet-sudo toegang) voor alle virtuele Linux-machines.
 **VMware-hulpprogram ma's** | VMware-hulpprogram ma's moeten zijn geïnstalleerd en worden uitgevoerd op de virtuele machines die u wilt detecteren. <br/> De versie van de VMware-hulpprogram ma's moet later zijn dan 10.2.0.
-**Zo** | Op Vm's moet Power shell-versie 2,0 of hoger zijn geïnstalleerd.
+**PowerShell** | Op Vm's moet Power shell-versie 2,0 of hoger zijn geïnstalleerd.
 **Poort toegang** | Op ESXi-hosts waarop Vm's worden uitgevoerd die u wilt detecteren, moet het Azure Migrate apparaat verbinding kunnen maken met TCP-poort 443.
 **Limieten** | Voor app-Discovery kunt u tot 10000 Vm's op elk Azure Migrate apparaat detecteren.
 
@@ -47,7 +47,7 @@ Naast het detecteren van computers kunnen server analyses apps, rollen en functi
 
 ## <a name="vmware-requirements"></a>VMware-vereisten
 
-**VMware** | **Nadere**
+**VMware** | **Details**
 --- | ---
 **Virtuele VMware-machines** | De evaluatie wordt ondersteund voor alle Windows-en Linux-besturings systemen.
 **vCenter Server** | Machines die u wilt detecteren en beoordelen, moeten worden beheerd door vCenter Server versie 5,5, 6,0, 6,5 of 6,7.
@@ -62,7 +62,7 @@ Azure Migrate gebruikt het [Azure migrate-apparaat](migrate-appliance.md) voor d
 
 - Meer informatie over de [vereisten voor apparaten](migrate-appliance.md#appliance---vmware) voor VMware.
 - Meer informatie over Url's die het apparaat nodig heeft voor toegang tot [open bare](migrate-appliance.md#public-cloud-urls) en [overheids](migrate-appliance.md#government-cloud-urls) Clouds.
-- In Azure Government moet u het apparaat implementeren met behulp van het script.
+- In Azure Government moet u het apparaat implementeren [met behulp van het script](deploy-appliance-script-government.md).
 
 
 ## <a name="port-access"></a>Poort toegang
@@ -73,22 +73,39 @@ Apparaat | Binnenkomende verbindingen op TCP-poort 3389 om extern bureau blad-ve
 vCenter-server | Binnenkomende verbindingen op TCP-poort 443 zodat het apparaat configuratie-en prestatie-meta gegevens voor evaluaties kan verzamelen. <br/><br/> Het apparaat maakt standaard verbinding met vCenter op poort 443. Als de vCenter-Server op een andere poort luistert, kunt u de poort wijzigen bij het instellen van detectie.
 ESXi-hosts (app-detectie/agentloze afhankelijkheids analyse) | Als u [app-detectie](how-to-discover-applications.md) of een [afhankelijkheids analyse zonder agent](concepts-dependency-visualization.md#agentless-analysis)wilt uitvoeren, maakt het apparaat verbinding met ESXI-hosts op TCP-poort 443, om toepassingen te detecteren, en voor het uitvoeren van zonder agents afhankelijke afhankelijkheids visualisatie op vm's.
 
+## <a name="application-discovery"></a>Toepassingsdetectie
+
+Naast het detecteren van computers kunnen server analyses apps, rollen en functies vinden die op machines worden uitgevoerd. Als u uw app-inventaris detecteert, kunt u een migratie traject identificeren en plannen dat is afgestemd op uw on-premises workloads. 
+
+**Ondersteuning** | **Details**
+--- | ---
+**Ondersteunde computers** | App-detectie wordt momenteel alleen ondersteund voor virtuele VMware-machines.
+**Detectie** | App-detectie is zonder agent. Hierbij worden de gast referenties van de machine gebruikt en kunnen computers op afstand worden benaderd met WMI-en SSH-aanroepen.
+**VM-ondersteuning** | App-Discovery wordt ondersteund voor alle versies van Windows en Linux.
+**vCenter-referenties** | App-detectie heeft een vCenter Server account met alleen-lezen toegang en bevoegdheden ingeschakeld voor Virtual Machines >-gast bewerkingen.
+**VM-referenties** | App-detectie biedt momenteel ondersteuning voor het gebruik van één referentie voor alle Windows-servers en één referentie voor alle Linux-servers.<br/><br/> U maakt een gast gebruikers account voor Windows-Vm's en een standaard/normaal gebruikers account (niet-sudo toegang) voor alle virtuele Linux-machines.
+**VMware-hulpprogram ma's** | VMware-hulpprogram ma's moeten zijn geïnstalleerd en worden uitgevoerd op de virtuele machines die u wilt detecteren. <br/> De versie van de VMware-hulpprogram ma's moet later zijn dan 10.2.0.
+**PowerShell** | Op Vm's moet Power shell-versie 2,0 of hoger zijn geïnstalleerd.
+**Poort toegang** | Op ESXi-hosts waarop Vm's worden uitgevoerd die u wilt detecteren, moet het Azure Migrate apparaat verbinding kunnen maken met TCP-poort 443.
+**Limieten** | Voor app-Discovery kunt u tot 10000 Vm's op elk Azure Migrate apparaat detecteren.
+
+
 ## <a name="agentless-dependency-analysis-requirements"></a>Vereisten voor afhankelijkheids analyse zonder agent
 
 [Afhankelijkheids analyse](concepts-dependency-visualization.md) helpt u bij het identificeren van afhankelijkheden tussen on-premises machines die u wilt beoordelen en migreren naar Azure. De tabel bevat een overzicht van de vereisten voor het instellen van een afhankelijkheids analyse zonder agent. 
 
-**Vereiste** | **Nadere**
+**Vereiste** | **Details**
 --- | --- 
 **Vóór implementatie** | Er moet een Azure Migrate project aanwezig zijn met het hulp programma voor Server evaluatie dat is toegevoegd aan het project.<br/><br/>  U kunt afhankelijkheids visualisatie implementeren nadat u een Azure Migrate apparaat hebt ingesteld om uw on-premises VMWare-machines te detecteren.<br/><br/> [Meer informatie over](create-manage-projects.md) het maken van een project voor de eerste keer.<br/> [Meer informatie over het](how-to-assess.md) toevoegen van een evaluatie programma aan een bestaand project.<br/> [Meer informatie over](how-to-set-up-appliance-vmware.md) het instellen van het Azure migrate-apparaat voor de evaluatie van virtuele VMware-machines.
 **VM-ondersteuning** | Momenteel alleen ondersteund voor virtuele VMware-machines.
 **Virtuele Windows-machines** | Windows Server 2016<br/> Windows Server 2012 R2<br/> Windows Server 2012<br/> Windows Server 2008 R2 (64-bits).
-**Windows-account** |  Voor de afhankelijkheids analyse heeft het Azure Migrate-apparaat een lokaal of een domein beheerders account nodig om toegang te krijgen tot Windows-Vm's.
+**Windows-account** |  Voor de afhankelijkheids analyse heeft het Azure Migrate-apparaat een domein beheerders account of een lokaal beheerders account nodig om toegang te krijgen tot Windows-Vm's.
 **Virtuele Linux-machines** | Red Hat Enterprise Linux 7, 6, 5<br/> Ubuntu Linux 14,04, 16,04<br/> Debian 7, 8<br/> Oracle Linux 6, 7<br/> CentOS 5, 6, 7.
 **Linux-account** | Voor afhankelijkheids analyse, op Linux-machines, heeft het Azure Migrate apparaat een gebruikers account nodig met de bevoegdheid root.<br/><br/> Het gebruikers account heeft ook de volgende machtigingen nodig voor/bin/netstat-en/bin/ls-bestanden: CAP_DAC_READ_SEARCH en CAP_SYS_PTRACE.
 **Vereiste agents** | Er is geen agent vereist voor computers die u wilt analyseren.
 **VMware-Hulpprogram Ma's** | VMware-Hulpprogram Ma's (hoger dan 10,2) moeten zijn geïnstalleerd en worden uitgevoerd op elke virtuele machine die u wilt analyseren.
 **vCenter Server referenties** | Voor afhankelijkheids visualisatie moet een vCenter Server account met alleen-lezen toegang en bevoegdheden zijn ingeschakeld voor Virtual Machines >-gast bewerkingen. 
-**Zo** | Op Vm's moet Power shell-versie 2,0 of hoger zijn geïnstalleerd.
+**PowerShell** | Op Vm's moet Power shell-versie 2,0 of hoger zijn geïnstalleerd.
 **Poort toegang** | Op ESXi-hosts waarop Vm's worden uitgevoerd die u wilt analyseren, moet het Azure Migrate apparaat verbinding kunnen maken met TCP-poort 443.
 
 
@@ -96,7 +113,7 @@ ESXi-hosts (app-detectie/agentloze afhankelijkheids analyse) | Als u [app-detect
 
 [Afhankelijkheids analyse](concepts-dependency-visualization.md) helpt u bij het identificeren van afhankelijkheden tussen on-premises machines die u wilt beoordelen en migreren naar Azure. De tabel bevat een overzicht van de vereisten voor het instellen van afhankelijkheids analyse op basis van een agent. 
 
-**Vereiste** | **Nadere** 
+**Vereiste** | **Details** 
 --- | --- 
 **Vóór implementatie** | Er moet een Azure Migrate project aanwezig zijn, met het Azure Migrate: Server assessment tool is toegevoegd aan het project.<br/><br/>  U kunt een afhankelijkheids visualisatie implementeren nadat u een Azure Migrate apparaat hebt ingesteld om uw on-premises computers te detecteren<br/><br/> [Meer informatie over](create-manage-projects.md) het maken van een project voor de eerste keer.<br/> [Meer informatie over het](how-to-assess.md) toevoegen van een evaluatie programma aan een bestaand project.<br/> Meer informatie over het instellen van het Azure Migrate-apparaat voor de evaluatie van [Hyper-V](how-to-set-up-appliance-hyper-v.md)-, [VMware](how-to-set-up-appliance-vmware.md)-en fysieke servers.
 **Azure Government** | Visualisatie van afhankelijkheid is niet beschikbaar in Azure Government.

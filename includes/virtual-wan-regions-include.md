@@ -1,6 +1,6 @@
 ---
-title: bestand opnemen
-description: bestand opnemen
+title: Include-bestand
+description: Include-bestand
 services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
@@ -8,16 +8,16 @@ ms.topic: include
 ms.date: 03/19/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: c822e8af076f74e1bccc46b7a71717d9631de0a1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e978a5e7e76c8ddc9b7e6b80ec7170c45baa2cae
+ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81461910"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82784109"
 ---
 ### <a name="azure-regions-within-a-geopolitical-region"></a>Azure-regio's binnen een geopolitieke regio
 
-VPN-verbinding tussen sites en virtuele WAN-architectuur is beschikbaar voor de volgende regio's:
+Virtual WAN is beschikbaar voor de volgende regio's:
 
 |Geopolitieke regio | Azure-regio's|
 |---|---|
@@ -37,7 +37,7 @@ VPN-verbinding tussen sites en virtuele WAN-architectuur is beschikbaar voor de 
 
 ### <a name="azure-regions-and-geopolitical-boundaries-for-national-clouds"></a>Azure-regio's en geopolitieke grenzen voor nationale Clouds
 
-VPN-verbinding tussen sites en virtuele WAN-architectuur is beschikbaar voor de volgende regio's:
+Virtual WAN is beschikbaar voor de volgende regio's:
 
 |Geopolitieke regio | Azure-regio's|
 |---|---|

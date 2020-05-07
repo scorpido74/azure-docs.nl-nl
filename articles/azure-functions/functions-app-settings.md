@@ -3,12 +3,12 @@ title: Naslaginformatie over app-instellingen voor Azure Functions
 description: Referentie documentatie voor de Azure Functions app-instellingen of omgevings variabelen.
 ms.topic: conceptual
 ms.date: 09/22/2018
-ms.openlocfilehash: e2d168d8828d17e13f875e3b2555c7db0d4ba32d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6f42c411263575040d4392b85542920e8f2463d4
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80656788"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82690762"
 ---
 # <a name="app-settings-reference-for-azure-functions"></a>Naslaginformatie over app-instellingen voor Azure Functions
 
@@ -37,6 +37,10 @@ De connection string voor Application Insights. Gebruik `APPLICATIONINSIGHTS_CON
 ## <a name="azure_functions_environment"></a>AZURE_FUNCTIONS_ENVIRONMENT
 
 In versie 2. x en latere versies van de functions runtime configureert het app-gedrag op basis van de runtime-omgeving. Deze waarde wordt [tijdens de initialisatie gelezen](https://github.com/Azure/azure-functions-host/blob/dev/src/WebJobs.Script.WebHost/Program.cs#L43). U kunt elke `AZURE_FUNCTIONS_ENVIRONMENT` waarde instellen, maar [drie waarden](/dotnet/api/microsoft.aspnetcore.hosting.environmentname) worden ondersteund: [ontwikkeling](/dotnet/api/microsoft.aspnetcore.hosting.environmentname.development), [fase ring](/dotnet/api/microsoft.aspnetcore.hosting.environmentname.staging)en [productie](/dotnet/api/microsoft.aspnetcore.hosting.environmentname.production). Als `AZURE_FUNCTIONS_ENVIRONMENT` niet is ingesteld, wordt standaard `Development` de waarde in een lokale `Production` omgeving en op Azure gebruikt. Deze instelling moet worden gebruikt in plaats `ASPNETCORE_ENVIRONMENT` van om de runtime-omgeving in te stellen. 
+
+## <a name="azurefunctionsjobhost__"></a>AzureFunctionsJobHost__\*
+
+In versie 2. x en latere versies van de functions runtime kunnen de instellingen van de [host. json](functions-host-json.md) in de huidige omgeving worden overschreven. Deze onderdrukkingen worden weer gegeven als toepassings instellingen met `AzureFunctionsJobHost__path__to__setting`de naam. Zie [host. json-waarden onderdrukken](functions-host-json.md#override-hostjson-values)voor meer informatie.
 
 ## <a name="azurewebjobsdashboard"></a>AzureWebJobsDashboard
 
@@ -200,7 +204,7 @@ Standaard functions maken gebruik van een snelkoppeling voor het verzenden van A
 |Sleutel|Waarde|Beschrijving|
 |-|-|-|
 |AZURE_FUNCTION_PROXY_DISABLE_LOCAL_CALL|waar|Aanroepen met een back-end-URL die verwijst naar een functie in de lokale functie-app worden niet meer rechtstreeks naar de functie verzonden en worden in plaats daarvan teruggestuurd naar de HTTP-front-end voor de functie-app|
-|AZURE_FUNCTION_PROXY_DISABLE_LOCAL_CALL|false|Dit is de standaardwaarde. Aanroepen met een back-end-URL die verwijst naar een functie in de lokale functie-app worden rechtstreeks naar die functie doorgestuurd|
+|AZURE_FUNCTION_PROXY_DISABLE_LOCAL_CALL|onjuist|Dit is de standaardwaarde. Aanroepen met een back-end-URL die verwijst naar een functie in de lokale functie-app worden rechtstreeks naar die functie doorgestuurd|
 
 
 ## <a name="azure_function_proxy_backend_url_decode_slashes"></a>AZURE_FUNCTION_PROXY_BACKEND_URL_DECODE_SLASHES
@@ -210,7 +214,7 @@ Met deze instelling bepaalt u of% 2F wordt gedecodeerd als slash-tekens in route
 |Sleutel|Waarde|Beschrijving|
 |-|-|-|
 |AZURE_FUNCTION_PROXY_BACKEND_URL_DECODE_SLASHES|waar|Voor route parameters met gecodeerde slashes worden ze gedecodeerd. `example.com/api%2ftest`wordt`example.com/api/test`|
-|AZURE_FUNCTION_PROXY_BACKEND_URL_DECODE_SLASHES|false|Dit is de standaardinstelling. Alle route parameters worden ongewijzigd door gegeven|
+|AZURE_FUNCTION_PROXY_BACKEND_URL_DECODE_SLASHES|onjuist|Dit is de standaardinstelling. Alle route parameters worden ongewijzigd door gegeven|
 
 ### <a name="example"></a>Voorbeeld
 
@@ -232,7 +236,7 @@ Hier volgt een voor beeld van proxy's. json in een functie-app op de URL myfunct
 |URL-decodering|Invoer|Uitvoer|
 |-|-|-|
 |waar|myfunction.com/test%2fapi|example.com/test/api
-|false|myfunction.com/test%2fapi|example.com/test%2fapi|
+|onjuist|myfunction.com/test%2fapi|example.com/test%2fapi|
 
 
 ## <a name="next-steps"></a>Volgende stappen

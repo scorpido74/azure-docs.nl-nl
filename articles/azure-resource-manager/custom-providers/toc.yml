@@ -21,6 +21,11 @@
       href: tutorial-custom-providers-create.md
     - name: Resources uitbreiden
       href: tutorial-resource-onboarding.md
+- name: Voorbeelden
+  items:
+    - name: Ingebouwde modules voor Azure Policy
+      displayName: 'samples, policies, definitions'
+      href: ./policy-samples.md
 - name: Concepten
   items:
     - name: Azure Policy voor koppelingen

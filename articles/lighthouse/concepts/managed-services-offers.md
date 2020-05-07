@@ -1,24 +1,24 @@
 ---
-title: Aanbiedingen voor beheerde services in azure Marketplace
+title: Aanbiedingen voor beheerde service in Azure Marketplace
 description: Met beheerde services kunnen service providers resource beheer aanbiedingen verkopen aan klanten in azure Marketplace.
-ms.date: 03/30/2020
+ms.date: 05/04/2020
 ms.topic: conceptual
-ms.openlocfilehash: 13e1825ae6eb50b1b376e3bd3de908a545fbe023
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 975c9ab98229626a513404b2092b266a9e284279
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82144896"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82792289"
 ---
-# <a name="managed-service-offers-in-azure-marketplace"></a>Aanbiedingen voor beheerde services in azure Marketplace
+# <a name="managed-service-offers-in-azure-marketplace"></a>Aanbiedingen voor beheerde service in Azure Marketplace
 
-In dit artikel wordt het type **beheerde service** aanbieding in [Azure Marketplace](https://azuremarketplace.microsoft.com)beschreven. Met beheerde service aanbiedingen kunt u resource beheer services aan klanten aanbieden met behulp van [Azure delegated resource management](azure-delegated-resource-management.md). U kunt deze aanbiedingen beschikbaar stellen aan alle potentiële klanten of alleen aan een of meer specifieke klanten. Omdat u klanten rechtstreeks factureert voor kosten met betrekking tot deze beheerde services, zijn er geen kosten in rekening gebracht door micro soft.
+In dit artikel wordt het type **beheerde service** aanbieding in [Azure Marketplace](https://azuremarketplace.microsoft.com)beschreven. Met beheerde service aanbiedingen kunt u resource beheer services aan klanten aanbieden via het [beheer van gedelegeerde resources van Azure](azure-delegated-resource-management.md). U kunt deze aanbiedingen beschikbaar stellen aan alle potentiële klanten of alleen aan een of meer specifieke klanten. Omdat u klanten rechtstreeks factureert voor kosten met betrekking tot deze beheerde services, zijn er geen kosten in rekening gebracht door micro soft.
 
 ## <a name="understand-managed-service-offers"></a>Meer informatie over beheerde service aanbiedingen
 
 Met managed service kunt u het proces van onboarding van klanten voor Azure delegated resource management stroom lijnen. Wanneer een klant een aanbieding in azure Marketplace koopt, kunnen ze opgeven welke abonnementen en/of resource groepen onboarding moeten worden uitgevoerd.
 
-Daarna kunnen gebruikers in uw organisatie aan deze resources werken vanuit de Tenant van uw organisatie, op basis van de toegang die u hebt gedefinieerd bij het maken van de aanbieding. Dit wordt gedaan via een manifest waarmee de Azure AD-gebruikers,-groepen en-service-principals worden opgegeven die toegang hebben tot klant bronnen met behulp van Azure delegated resource management, samen met rollen die hun toegangs niveau bepalen. Door machtigingen toe te wijzen aan een Azure AD-groep in plaats van een reeks afzonderlijke gebruikers-of toepassings accounts, kunt u afzonderlijke gebruikers toevoegen of verwijderen wanneer uw toegangs vereisten veranderen.
+Daarna kunnen gebruikers in uw organisatie aan deze resources werken vanuit de Tenant van uw organisatie, op basis van de toegang die u hebt gedefinieerd bij het maken van de aanbieding. Dit wordt gedaan via een manifest waarmee de gebruikers, groepen en service-principals van Azure Active Directory (Azure AD) worden opgegeven die toegang hebben tot de resources van de klant, samen met rollen die hun toegangs niveau bepalen. Door machtigingen toe te wijzen aan een Azure AD-groep in plaats van een reeks afzonderlijke gebruikers-of toepassings accounts, kunt u afzonderlijke gebruikers toevoegen of verwijderen wanneer uw toegangs vereisten veranderen.
 
 ## <a name="public-and-private-offers"></a>Open bare en persoonlijke aanbiedingen
 

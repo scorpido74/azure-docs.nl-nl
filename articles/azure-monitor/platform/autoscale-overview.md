@@ -1,24 +1,23 @@
 ---
-title: Automatisch schalen in Vm's, Cloud Services en Web Apps
-description: Automatisch schalen in Microsoft Azure. Is van toepassing op Virtual Machines, virtuele-machine schaal sets, Cloud Services en Web Apps.
+title: Automatisch schalen in Microsoft Azure
+description: Automatisch schalen in Microsoft Azure
 ms.subservice: autoscale
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: eeb8b301bf087efa164a7864cdce3a04952f45ed
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: faf393c01c494538ab647f39e2c4eb1d823d1abd
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81114142"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82791439"
 ---
-# <a name="overview-of-autoscale-in-microsoft-azure-virtual-machines-cloud-services-and-web-apps"></a>Overzicht van automatische schaalaanpassing in Microsoft Azure Virtual Machines, Cloud Services en Web Apps
+# <a name="overview-of-autoscale-in-microsoft-azure"></a>Overzicht van automatisch schalen in Microsoft Azure
 In dit artikel wordt beschreven wat Microsoft Azure automatisch schalen is, wat de voor delen zijn en hoe u het kunt gaan gebruiken.  
 
-Azure Monitor automatisch schalen is alleen van toepassing op [Virtual Machine Scale sets](https://azure.microsoft.com/services/virtual-machine-scale-sets/), [Cloud Services](https://azure.microsoft.com/services/cloud-services/), [app service-Web apps](https://azure.microsoft.com/services/app-service/web/)en [API Management Services](https://docs.microsoft.com/azure/api-management/api-management-key-concepts).
+Azure Monitor automatisch schalen is alleen van toepassing op [Virtual Machine Scale sets](https://azure.microsoft.com/services/virtual-machine-scale-sets/), [Cloud Services](https://azure.microsoft.com/services/cloud-services/), [app service-Web apps](https://azure.microsoft.com/services/app-service/web/), [API Management Services](https://docs.microsoft.com/azure/api-management/api-management-key-concepts)en [Azure Data Explorer clusters](https://docs.microsoft.com/azure/data-explorer/).
 
 > [!NOTE]
 > Azure heeft twee methoden voor automatisch schalen. Een oudere versie van automatisch schalen is van toepassing op Virtual Machines (beschikbaarheids sets). Deze functie biedt beperkte ondersteuning en wij raden u aan om te migreren naar schaal sets voor virtuele machines voor snellere en betrouwbaardere ondersteuning voor automatisch schalen. In dit artikel vindt u een koppeling naar het gebruik van de oudere technologie.  
->
 >
 
 ## <a name="what-is-autoscale"></a>Wat is automatisch schalen?
@@ -87,12 +86,11 @@ Automatisch schalen schaalt alleen horizon taal, wat een toename (' out ') of af
 
 Verticaal schalen daarentegen wijkt af van elkaar af. Het houdt hetzelfde aantal Vm's in, maar maakt de Vm's meer (' up ') of minder (' down ') krachtig. De kracht wordt gemeten in het geheugen, de CPU-snelheid, de schijf ruimte, enzovoort.  Verticaal schalen heeft meer beperkingen. Het is afhankelijk van de beschik baarheid van grotere hardware, waarmee snel een bovenlimiet kan worden bereikt en per regio kan variëren. Verticaal schalen vereist ook dat een virtuele machine wordt gestopt en opnieuw wordt opgestart.
 
-
 ## <a name="methods-of-access"></a>Toegangs methoden
 U kunt automatisch schalen instellen via
 
 * [Azure Portal](../../azure-monitor/platform/autoscale-get-started.md)
-* [Zo](../../azure-monitor/platform/powershell-quickstart-samples.md#create-and-manage-autoscale-settings)
+* [PowerShell](../../azure-monitor/platform/powershell-quickstart-samples.md#create-and-manage-autoscale-settings)
 * [Platformonafhankelijke opdrachtregelinterface (CLI)](../../azure-monitor/platform/cli-samples.md#autoscale)
 * [Azure Monitor REST API](https://msdn.microsoft.com/library/azure/dn931953.aspx)
 
@@ -106,6 +104,7 @@ U kunt automatisch schalen instellen via
 | Virtual Machines: Linux-schaal sets |[Schaal sets voor virtuele machines in Linux schalen](../../virtual-machine-scale-sets/tutorial-autoscale-cli.md) |
 | Virtual Machines: Windows-voor beeld |[Geavanceerde configuratie voor automatisch schalen met Resource Manager-sjablonen voor VM Scale Sets](../../azure-monitor/platform/autoscale-virtual-machine-scale-sets.md) |
 | API Management-service|[Exemplaar van Azure API Management automatisch schalen](https://docs.microsoft.com/azure/api-management/api-management-howto-autoscale)
+| Azure Data Explorer-clusters|[Het schalen van Azure Data Explorer-clusters beheren voor het wijzigen van de vraag](https://docs.microsoft.com/azure/data-explorer/manage-cluster-horizontal-scaling)|
 
 ## <a name="next-steps"></a>Volgende stappen
 Voor meer informatie over automatisch schalen gebruikt u de instructies voor automatisch schalen die eerder zijn vermeld of raadpleegt u de volgende bronnen:

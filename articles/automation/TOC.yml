@@ -162,7 +162,7 @@
               href: troubleshoot/desired-state-configuration.md
             - name: Versiegeschiedenis van Azure DSC-extensie
               href: automation-dsc-extension-history.md
-        - name: Wijzigingen bijhouden en Inventaris
+        - name: Wijzigingen bijhouden en inventaris
           items:
             - name: Overzicht
               href: change-tracking.md
@@ -178,7 +178,7 @@
                   href: automation-onboard-solutions-from-automation-account.md
                 - name: Vanuit een Automation-runbook
                   href: automation-onboard-solutions.md
-            - name: Inhoud van bijgehouden bestanden bekijken
+            - name: Wijzigingen bijhouden en inventaris beheren
               href: change-tracking-file-contents.md
             - name: Een inventarisverzameling beheren vanuit VM's
               href: automation-vm-inventory.md

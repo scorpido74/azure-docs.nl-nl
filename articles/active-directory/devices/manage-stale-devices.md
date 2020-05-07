@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: spunukol
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 46be728216ed4b9c9e84c1c7f68c5ddf2051f42b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: fdc011a39c5526e6a2577ab1b21567bbe64ffcc6
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78672306"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82788872"
 ---
 # <a name="how-to-manage-stale-devices-in-azure-ad"></a>Procedure: verouderde apparaten beheren in azure AD
 
@@ -176,7 +176,7 @@ Zie [Overzicht van apparaatbeheer](overview.md) voor meer informatie over de ver
 
 Verificatie waarbij een apparaat wordt gebruikt om te verifiëren bij Azure AD wordt geweigerd. Enkele typische voorbeelden:
 
-- **Apparaat dat is gekoppeld aan hybride Azure AD**: gebruikers kunnen zich mogelijk met het apparaat aanmelden bij hun on-premises domein. Ze hebben echter geen toegang tot Azure AD-resources, zoals Office 365.
+- **Hybride Azure AD-aangesloten apparaat** : gebruikers kunnen het apparaat mogelijk gebruiken om zich aan te melden bij hun on-premises domein. Ze hebben echter geen toegang tot Azure AD-resources, zoals Office 365.
 - **Apparaat dat is gekoppeld aan Azure AD**: gebruikers kunnen het apparaat niet gebruiken om zich aan te melden. 
 - **Mobiele apparaten**: gebruikers hebben geen toegang tot Azure AD-resources, zoals Office 365. 
 

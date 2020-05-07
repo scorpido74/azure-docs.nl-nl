@@ -10,12 +10,12 @@ ms.subservice: ''
 ms.date: 11/04/2019
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: 260086d186f7e2b2d6f76c437057f5fbc8af39b5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ef8196cebfbdda72f98fee0e9c75bcb80172a55e
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81416075"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82791456"
 ---
 # <a name="azure-synapse-analytics-formerly-sql-dw-frequently-asked-questions"></a>Veelgestelde vragen over Azure Synapse Analytics (voorheen SQL DW)
 
@@ -23,11 +23,11 @@ ms.locfileid: "81416075"
 
 V. Wat is Azure Synapse?
 
-A. Azure Synapse is een oneindig analyse service waarmee gegevens-en Big data-analyses worden gecombineerd. Het biedt u de vrijheid om gegevens op uw voor waarden op te vragen met behulp van serverloze on-demand of ingerichte resources op schaal. Azure Synapse brengt deze twee werelden samen met een uniforme ervaring om gegevens op te nemen, voor te bereiden, te beheren en te verwerken voor direct BI en machine learning behoeften. Zie voor meer informatie, [Wat is Azure Synapse Analytics](sql-data-warehouse-overview-what-is.md).
+A. Azure Synapse is een analyse service waarmee gegevens opslag en Big data-analyses worden gecombineerd. Azure Synapse brengt deze twee werelden samen met een uniforme ervaring om gegevens op te nemen, voor te bereiden, te beheren en te verwerken voor BI-en machine learning behoeften. Zie voor meer informatie, [Wat is Azure Synapse Analytics](sql-data-warehouse-overview-what-is.md).
 
 V. Wat is er gebeurd met Azure SQL Data Warehouse?
 
-A. Azure Synapse is Azure SQL Data Warehouse (SQL DW) ontwikkeld. We hebben hetzelfde toonaangevende data warehouse gebruikt voor een geheel nieuw niveau van prestaties en mogelijkheden. U kunt door gaan met het uitvoeren van uw bestaande Data Warehouse-workloads in productie met Azure Synapse en automatisch profiteren van de nieuwe mogelijkheden, die in Preview zijn. Zie [Wat is Azure Synapse Analytics](sql-data-warehouse-overview-what-is.md)? voor meer informatie.
+A. Azure Synapse is Azure SQL Data Warehouse (SQL DW) ontwikkeld. We hebben hetzelfde toonaangevende data warehouse gebruikt voor een geheel nieuw niveau van prestaties en mogelijkheden. U kunt door gaan met het uitvoeren van uw bestaande Data Warehouse-workloads in productie met Azure Synapse. Zie [Wat is Azure Synapse Analytics](sql-data-warehouse-overview-what-is.md)? voor meer informatie.
 
 V. Wat is Synapse SQL-groep?
 
@@ -43,8 +43,7 @@ A. Azure Synapse biedt verschillende oplossingen voor het beveiligen van gegeven
 
 V. Waar kan ik zien welke juridische of zakelijke standaarden Azure Synapse compatibel is met?
 
-A. Ga naar de [micro soft-nalevings](https://www.microsoft.com/trustcenter/compliance/complianceofferings) pagina voor diverse nalevings aanbiedingen per product zoals Soc en ISO.
-Kies eerst op nalevings titel. Vouw vervolgens Azure uit in de sectie Cloud Services van micro soft in het bereik aan de rechter kant van de pagina om te zien welke Services compatibel zijn met Azure Synapse.
+A. Ga naar de [micro soft-nalevings](https://www.microsoft.com/trustcenter/compliance/complianceofferings) pagina voor diverse nalevings aanbiedingen per product zoals Soc en ISO. Kies eerst op nalevings titel. Vouw vervolgens Azure uit in de sectie Cloud Services van micro soft in het bereik aan de rechter kant van de pagina om te zien welke Services compatibel zijn met Azure Synapse.
 
 V. Kan ik Power BI verbinding maken?
 

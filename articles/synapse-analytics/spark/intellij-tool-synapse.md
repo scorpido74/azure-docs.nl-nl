@@ -8,12 +8,12 @@ ms.reviewer: jrasnick, carlrab
 ms.service: synapse-analytics
 ms.topic: tutorial
 ms.date: 04/15/2020
-ms.openlocfilehash: 310dfec2bbd1bf6cb69f6293becead30487d6cbd
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: fc7551c081d14a871c8ee96610ca7190f629901d
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81422653"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82790963"
 ---
 # <a name="tutorial-use-azure-toolkit-for-intellij-to-create-apache-spark-applications-for-spark-pools-preview"></a>Zelf studie: Azure-toolkit voor IntelliJ gebruiken om Apache Spark-toepassingen voor Spark-Pools te maken (preview)
 
@@ -35,7 +35,7 @@ In deze zelfstudie leert u het volgende:
 - [IntelliJ-idee Community-versie](https://www.jetbrains.com/idea/download/download-thanks.html?platform=windows&code=IIC).
 - Azure Toolkit-invoeg toepassing 3.27.0-2019.2-installeren vanuit [IntelliJ-invoeg toepassing opslag plaats](/java/azure/intellij/azure-toolkit-for-intellij-installation?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)
 - [Jdk (versie 1,8)](https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html).
-- Scala-invoeg toepassing: installeren vanuit [IntelliJ-invoeg toepassing](/hdinsight/spark/apache-spark-intellij-tool-plugin#install-scala-plugin-for-intellij-idea.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json).
+- Scala-invoeg toepassing: installeren vanuit [IntelliJ-invoeg toepassing](/azure/hdinsight/spark/apache-spark-intellij-tool-plugin#install-scala-plugin-for-intellij-idea).
 - Deze vereiste is alleen voor Windows-gebruikers.
 
   Terwijl u de lokale Spark scala-toepassing uitvoert op een Windows-computer, kunt u een uitzonde ring krijgen, zoals wordt uitgelegd in [Spark-2356](https://issues.apache.org/jira/browse/SPARK-2356). De uitzonde ring treedt op omdat WinUtils. exe ontbreekt in Windows.
@@ -53,7 +53,7 @@ In deze zelfstudie leert u het volgende:
 
     ![Het dialoog venster IntelliJ-idee nieuw project](./media/intellij-tool-synapse/create-synapse-application01.png)
 
-5. Selecteer **Next**.
+5. Selecteer **Volgende**.
 6. Geef in het venster **New project** de volgende gegevens op:
 
     | Eigenschap | Beschrijving |

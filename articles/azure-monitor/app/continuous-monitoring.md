@@ -2,13 +2,13 @@
 title: Continue bewaking van uw DevOps release-pijp lijn met Azure-pijp lijnen en Azure-toepassing inzichten | Microsoft Docs
 description: Biedt instructies voor het snel instellen van doorlopende bewaking met Application Insights
 ms.topic: conceptual
-ms.date: 07/16/2019
-ms.openlocfilehash: e565101218b975ef2bd29b8a32a4aa1bf4300b6d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 05/01/2020
+ms.openlocfilehash: 0d47fb1eccdfcfc7b2719825575f06dc85e62452
+ms.sourcegitcommit: d662eda7c8eec2a5e131935d16c80f1cf298cb6b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77655392"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82652752"
 ---
 # <a name="add-continuous-monitoring-to-your-release-pipeline"></a>Doorlopende bewaking aan uw release pijplijn toevoegen
 
@@ -51,17 +51,19 @@ Out of box heeft de **Azure app service-implementatie met continue monitoring** 
 
 Instellingen voor waarschuwings regels wijzigen:
 
-1. Selecteer in het linkerdeel venster van de pagina release-pijp lijn de optie **Application Insights waarschuwingen configureren**.
+Selecteer in het linkerdeel venster van de pagina release-pijp lijn de optie **Application Insights waarschuwingen configureren**.
 
-1. Selecteer in het deel venster **waarschuwingen Azure monitor** het beletsel teken **...** naast **waarschuwings regels**.
-   
-1. Selecteer in het dialoog venster **waarschuwings regels** de vervolg keuzelijst naast een waarschuwings regel, zoals **Beschik baarheid**. 
-   
-1. Wijzig de **drempel waarden** en andere instellingen om te voldoen aan uw vereisten.
-   
-   ![Waarschuwing wijzigen](media/continuous-monitoring/003.png)
-   
-1. Selecteer **OK**en selecteer vervolgens **Opslaan** in de rechter bovenhoek in het Azure DevOps-venster. Voer een beschrijvende opmerking in en selecteer **OK**.
+De vier standaard waarschuwings regels worden gemaakt met behulp van een inline-script:
+
+```bash
+$subscription = az account show --query "id";$subscription.Trim("`"");$resource="/subscriptions/$subscription/resourcegroups/"+"$(Parameters.AppInsightsResourceGroupName)"+"/providers/microsoft.insights/components/" + "$(Parameters.ApplicationInsightsResourceName)";
+az monitor metrics alert create -n 'Availability_$(Release.DefinitionName)' -g $(Parameters.AppInsightsResourceGroupName) --scopes $resource --condition 'avg availabilityResults/availabilityPercentage < 99' --description "created from Azure DevOps";
+az monitor metrics alert create -n 'FailedRequests_$(Release.DefinitionName)' -g $(Parameters.AppInsightsResourceGroupName) --scopes $resource --condition 'count requests/failed > 5' --description "created from Azure DevOps";
+az monitor metrics alert create -n 'ServerResponseTime_$(Release.DefinitionName)' -g $(Parameters.AppInsightsResourceGroupName) --scopes $resource --condition 'avg requests/duration > 5' --description "created from Azure DevOps";
+az monitor metrics alert create -n 'ServerExceptions_$(Release.DefinitionName)' -g $(Parameters.AppInsightsResourceGroupName) --scopes $resource --condition 'count exceptions/server > 5' --description "created from Azure DevOps";
+```
+
+U kunt het script wijzigen en aanvullende waarschuwings regels toevoegen, de waarschuwings voorwaarden wijzigen of waarschuwings regels verwijderen die niet zinvol zijn voor uw implementatie doeleinden.
 
 ## <a name="add-deployment-conditions"></a>Implementatie voorwaarden toevoegen
 
