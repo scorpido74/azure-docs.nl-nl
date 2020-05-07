@@ -4,6 +4,8 @@
   items:
     - name: Wat is Azure Load Balancer?
       href: load-balancer-overview.md
+    - name: Veelgestelde vragen
+      href: load-balancer-faqs.md
 - name: Snelstartgids
   items:
     - name: Load balancer maken - Portal

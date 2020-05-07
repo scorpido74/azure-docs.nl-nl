@@ -1,6 +1,6 @@
 ---
-title: bestand opnemen
-description: bestand opnemen
+title: Include-bestand
+description: Include-bestand
 services: virtual-machines
 author: cynthn
 ms.service: virtual-machines
@@ -8,37 +8,31 @@ ms.topic: include
 ms.date: 11/06/2019
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: 729e757c69887bbdce324e2d8383c970995dc94a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0d5947f669b600b544cd7e5265e2cce8de118374
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "73903674"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82788983"
 ---
-## <a name="sign-in-to-azure"></a>Aanmelden bij Azure 
-
-Meld u aan bij Azure Portal op https://portal.azure.com.
-
-> [!NOTE]
-> Als u tijdens de preview hebt geregistreerd voor het gebruik van gedeelde afbeeldings galerieën, moet u de `Microsoft.Compute` provider mogelijk opnieuw registreren. Open [Cloud shell](https://shell.azure.com/bash) en typ:`az provider register -n Microsoft.Compute`
-
 ## <a name="create-an-image-gallery"></a>Een galerie met installatie kopieën maken
 
 Een galerie met installatie kopieën is de primaire resource die wordt gebruikt voor het inschakelen van het delen van afbeeldingen. Toegestane tekens voor de naam van de galerie bestaan uit hoofd letters of kleine letters, cijfers, punten en punten. De naam van de galerie mag geen streepjes bevatten.  Galerie namen moeten uniek zijn binnen uw abonnement. 
 
 In het volgende voor beeld wordt een galerie gemaakt met de naam *myGallery* in de resource groep *myGalleryRG* .
 
-1. Selecteer in de linkerbovenhoek van Azure Portal **Een resource maken**.
+1. Meld u aan bij Azure Portal op https://portal.azure.com.
 1. Gebruik de **Galerie met gedeelde installatie kopieën** in het zoekvak en selecteer **gedeelde installatie kopie galerie** in de resultaten.
-1. Klik op de pagina **Galerie met gedeelde afbeeldingen** op **maken**.
-1. Selecteer het juiste abonnement.
+1. Klik op de pagina **Galerie met gedeelde afbeeldingen** op **toevoegen**.
+1. Selecteer op de pagina **Galerie met gedeelde afbeeldingen maken** het juiste abonnement.
 1. Selecteer in **resource groep**de optie **nieuwe maken** en typ *myGalleryRG* voor de naam.
 1. Typ in **naam** *myGallery* voor de naam van de galerie.
 1. De standaard waarde voor de **regio**behouden.
 1. U kunt een korte beschrijving van de galerie typen, zoals de galerie met afbeeldingen die u wilt *testen.* en klik vervolgens op **beoordeling + maken**.
 1. Nadat de validatie is geslaagd, selecteert u **maken**.
 1. Wanneer de implementatie is voltooid, selecteert **u naar resource gaan**.
-   
+
+
 ## <a name="create-an-image-definition"></a>Een definitie van een installatie kopie maken 
 
 Afbeeldings definities maken een logische groepering voor installatie kopieën. Ze worden gebruikt voor het beheren van informatie over de installatie kopieën die in deze versies worden gemaakt. Definitie namen van afbeeldingen kunnen bestaan uit hoofd letters, kleine letters, cijfers, punten, streepjes en punten. Zie [afbeeldings definities](https://docs.microsoft.com/azure/virtual-machines/windows/shared-image-galleries#image-definitions)voor meer informatie over de waarden die u kunt opgeven voor de definitie van een installatie kopie.
@@ -46,8 +40,9 @@ Afbeeldings definities maken een logische groepering voor installatie kopieën. 
 Maak de definitie van de galerie-afbeelding in uw galerie. In dit voor beeld heeft de galerie-afbeelding de naam *myImageDefinition*.
 
 1. Selecteer op de pagina voor de nieuwe galerie met installatie kopieën **een nieuwe definitie van de installatie kopie toevoegen** aan de bovenkant van de pagina. 
+1. Selecteer in de **Galerie nieuwe definitie van installatie kopie toevoegen aan gedeelde installatie kopie**voor **regio**de optie *VS Oost*.
 1. Typ *myImageDefinition*bij **naam van definitie van installatie kopie**.
-1. Voor **besturings systeem**selecteert u de juiste optie op basis van de bron-VM.
+1. Voor **besturings systeem**selecteert u de juiste optie op basis van de bron-VM.  
 1. Voor het **genereren van vm's**selecteert u de optie op basis van de bron-VM. In de meeste gevallen is dit *gen 1*. Zie [ondersteuning voor virtuele machines van de tweede generatie](https://docs.microsoft.com/azure/virtual-machines/windows/generation-2)voor meer informatie.
 1. Selecteer de optie voor de status van het **besturings systeem**op basis van de bron-VM. Zie voor meer informatie [gegeneraliseerde en gespecialiseerde](../articles/virtual-machines/linux/shared-image-galleries.md#generalized-and-specialized-images).
 1. Typ *myPublisher*voor **Publisher**. 
@@ -58,7 +53,7 @@ Maak de definitie van de galerie-afbeelding in uw galerie. In dit voor beeld hee
 1. Wanneer de implementatie is voltooid, selecteert **u naar resource gaan**.
 
 
-## <a name="create-an-image-version"></a>Een versie van een installatie kopie maken
+## <a name="create-an-image-version"></a>De versie van een installatiekopie maken
 
 Een installatie kopie versie maken op basis van een beheerde installatie kopie. In dit voor beeld is de versie van de installatie kopie *1.0.0* en wordt deze gerepliceerd naar zowel *West-Centraal VS* -en *Zuid-Centraal VS* -data centers. Houd er rekening mee dat u bij het kiezen van doel regio's voor replicatie ook de *bron* regio moet toevoegen als doel voor replicatie.
 
@@ -98,7 +93,7 @@ Het kan even duren om de installatie kopie te repliceren naar alle doel regio's.
 
 U wordt aangeraden toegang te delen op het niveau van de galerie met installatie kopieën. Hieronder vindt u instructies voor het delen van de galerie die u zojuist hebt gemaakt.
 
-1. Open de [Azure Portal](https://portal.azure.com).
+1. Open [Azure Portal](https://portal.azure.com).
 1. Selecteer **resource groepen**in het menu aan de linkerkant. 
 1. Selecteer **myGalleryRG**in de lijst met resource groepen. De Blade voor de resource groep wordt geopend.
 1. Selecteer **toegangs beheer (IAM)** in het menu aan de linkerkant van de pagina **myGalleryRG** . 

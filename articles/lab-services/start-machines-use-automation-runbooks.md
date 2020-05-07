@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/16/2020
 ms.author: spelluru
-ms.openlocfilehash: 9bb97a73b7ca570ca122323e8e9c5a70c9348b15
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: df6d7943a5344b4288dfe369dcce9087b894984f
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76166316"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82580584"
 ---
 # <a name="start-virtual-machines-in-a-lab-in-order-by-using-azure-automation-runbooks"></a>Virtuele machines in een lab op volg orde starten met Azure Automation runbooks
 Met de functie [automatisch starten](devtest-lab-set-lab-policy.md#set-autostart) van DevTest Labs kunt u vm's zodanig configureren dat deze automatisch worden gestart op een opgegeven tijdstip. Deze functie biedt echter geen ondersteuning voor machines om in een specifieke volg orde te starten. Er zijn verschillende scenario's waarbij dit type automatisering nuttig zou zijn.  In één scenario moet een JumpBox-VM binnen een Lab eerst worden gestart, vóór de andere virtuele machines, omdat de JumpBox wordt gebruikt als het toegangs punt voor de andere Vm's.  In dit artikel wordt beschreven hoe u een Azure Automation account instelt met een Power shell-runbook dat een script uitvoert. Het script maakt gebruik van labels op Vm's in het Lab zodat u de opstart volgorde kunt beheren zonder het script te hoeven wijzigen.
@@ -133,7 +133,7 @@ While ($current -le 10) {
 ```
 
 ## <a name="create-a-schedule"></a>Een planning maken
-Als u dit script dagelijks wilt uitvoeren, [maakt u een planning](../automation/shared-resources/schedules.md#creating-a-schedule) in het Automation-account. Zodra de planning is gemaakt, [koppelt u deze aan het runbook](../automation/shared-resources/schedules.md#linking-a-schedule-to-a-runbook). 
+Als u dit script dagelijks wilt uitvoeren, [maakt u een planning](../automation/shared-resources/schedules.md#create-a-schedule) in het Automation-account. Zodra de planning is gemaakt, [koppelt u deze aan het runbook](../automation/shared-resources/schedules.md#link-a-schedule-to-a-runbook). 
 
 In een grote situatie waarbij meerdere abonnementen met meerdere Labs zijn, slaat u de parameter gegevens op in een bestand voor verschillende Labs en geeft u het bestand door aan het script in plaats van de afzonderlijke para meters. Het script moet worden gewijzigd, maar de kern uitvoering zou hetzelfde zijn. Hoewel in dit voor beeld de Azure Automation wordt gebruikt om het Power shell-script uit te voeren, zijn er nog andere opties, zoals het gebruik van een taak in een pijp lijn voor Build/release.
 

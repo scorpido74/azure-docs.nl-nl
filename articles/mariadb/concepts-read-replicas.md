@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 04/21/2020
-ms.openlocfilehash: 9129cb308a364a3ed0654055f8afe9dd8c89010a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 5/4/2020
+ms.openlocfilehash: 6b738fc96a51893d8c0a0e75c5551007da60bdd2
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82024622"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82793190"
 ---
 # <a name="read-replicas-in-azure-database-for-mariadb"></a>Leesreplica's in Azure Database for MariaDB
 
@@ -146,6 +146,8 @@ De volgende server parameters zijn vergrendeld op de Master-en replica servers:
 - [`log_bin_trust_function_creators`](https://mariadb.com/kb/en/library/replication-and-binary-log-system-variables/#log_bin_trust_function_creators)
 
 De [`event_scheduler`](https://mariadb.com/kb/en/library/server-system-variables/#event_scheduler) para meter is vergrendeld op de replica servers.
+
+Als u een van de bovenstaande para meters op de hoofd server wilt bijwerken, verwijdert u de replica servers, werkt u de parameter waarde op de Master bij en maakt u de replica's opnieuw.
 
 ### <a name="other"></a>Overige
 

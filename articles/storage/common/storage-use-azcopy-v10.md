@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/23/2019
 ms.author: normesta
 ms.subservice: common
-ms.openlocfilehash: 8701fe6857e95334a5e1d24bfe70feb130d5512c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6e6bd55fbb73113dfbcd01e94753c4fb21219c14
+ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80756023"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82780875"
 ---
 # <a name="get-started-with-azcopy"></a>Aan de slag met AzCopy
 
@@ -65,7 +65,7 @@ Gebruik deze tabel als richt lijn:
 
 | Opslagtype | Momenteel ondersteunde autorisatie methode |
 |--|--|
-|**Blob Storage** | Azure AD & SAS |
+|**Blob-opslag** | Azure AD & SAS |
 |**Blob-opslag (hiërarchische naam ruimte)** | Azure AD & SAS |
 |**Bestands opslag** | Alleen SAS |
 
@@ -84,7 +84,7 @@ Als u alleen bestanden wilt downloaden, controleert u of de [gegevens lezer](htt
 
 Als u bestanden wilt uploaden, controleert u of een van deze rollen is toegewezen aan uw beveiligingsprincipal:
 
-- [Inzender voor Storage BLOB-gegevens](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-queue-data-contributor)
+- [Inzender voor Storage BLOB-gegevens](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-contributor)
 - [Eigenaar van gegevens van opslag-BLOB](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-owner)
 
 Deze rollen kunnen worden toegewezen aan uw beveiligingsprincipal in een van deze bereiken:
@@ -273,8 +273,8 @@ Voer de volgende opdracht uit om de koppeling te verkrijgen:
 
 | Besturingssysteem  | Opdracht |
 |--------|-----------|
-| **Linux** | `curl -v https://aka.ms/downloadazcopy-v10-linux` |
-| **Windows** | `(curl https://aka.ms/downloadazcopy-v10-windows -MaximumRedirection 0 -ErrorAction silentlycontinue).RawContent` |
+| **Linux** | `curl -s -D- https://aka.ms/downloadazcopy-v10-linux | grep ^Location` |
+| **Windows** | `(curl https://aka.ms/downloadazcopy-v10-windows -MaximumRedirection 0 -ErrorAction silentlycontinue).headers.location` |
 
 > [!NOTE]
 > Voor Linux wordt `--strip-components=1` op de `tar` opdracht de map op het hoogste niveau met de versie naam verwijderd en in plaats daarvan wordt het binaire bestand rechtstreeks naar de huidige map geëxtraheerd. Hierdoor kan het script worden bijgewerkt met een nieuwe versie van `azcopy` door alleen de `wget` URL bij te werken.

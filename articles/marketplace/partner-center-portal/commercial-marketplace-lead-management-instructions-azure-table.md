@@ -1,24 +1,24 @@
 ---
-title: Micro soft Commercial Marketplace-Lead beheer configureren met een Azure-tabel
-description: Meer informatie over het gebruik van een Azure-tabel voor het beheren van leads van Microsoft AppSource en Azure Marketplace.
+title: Lead beheer met Azure-tabel opslag-micro soft Commercial Marketplace
+description: Meer informatie over het gebruik van Azure-tabel opslag voor het configureren van leads voor Microsoft AppSource en Azure Marketplace
 author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 03/30/2020
 ms.author: dsindona
-ms.openlocfilehash: 9814b03e348fc807c04364afbf027369f917670a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2ecca18e9de02bfe5f3bcb972d0b4034ab8012ac
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82131132"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82791014"
 ---
-# <a name="configure-lead-management-by-using-an-azure-table"></a>Beheer van leads configureren met behulp van een Azure-tabel
+# <a name="use-azure-table-storage-to-manage-commercial-marketplace-leads"></a>Azure-tabel opslag gebruiken om leads voor commerciële Marketplace te beheren
 
-Als uw Customer Relationship Management-systeem (CRM) niet expliciet wordt ondersteund in het partner centrum om Microsoft AppSource en Azure Marketplace-leads te ontvangen, kunt u een Azure-tabel gebruiken om deze leads af te handelen. U kunt de gegevens vervolgens exporteren en importeren in uw CRM-systeem. De instructies in dit artikel begeleiden u bij het proces van het maken van een Azure Storage-account en een Azure-tabel onder dat account. Daarnaast kunt u een nieuwe stroom maken met behulp van automatische stroom voor het verzenden van een e-mail melding wanneer uw aanbieding een lead ontvangt.
+Als uw Customer Relationship Management-systeem (CRM) niet expliciet wordt ondersteund in het partner centrum om Microsoft AppSource en Azure Marketplace-leads te ontvangen, kunt u Azure Table Storage gebruiken om deze leads af te handelen. U kunt de gegevens vervolgens exporteren en importeren in uw CRM-systeem. In dit artikel wordt uitgelegd hoe u een Azure-opslag account en een tabel maakt onder dat account. Daarnaast kunt u een nieuwe stroom maken met behulp van automatische stroom voor het verzenden van een e-mail melding wanneer uw aanbieding een lead ontvangt.
 
-## <a name="configure-an-azure-table"></a>Een Azure-tabel configureren
+## <a name="configure-an-azure-storage-account"></a>Een Azure-opslag account configureren
 
 1. Als u geen Azure-account hebt, kunt u [een gratis proef account maken](https://azure.microsoft.com/pricing/free-trial/).
 1. Nadat uw Azure-account actief is, meldt u zich aan bij de [Azure Portal](https://portal.azure.com).
@@ -32,7 +32,11 @@ Als uw Customer Relationship Management-systeem (CRM) niet expliciet wordt onder
 
         Zie Quick Start- [zelf studie](https://docs.microsoft.com/azure/storage/)voor meer informatie over opslag accounts. Zie [prijzen voor opslag](https://azure.microsoft.com/pricing/details/storage/)voor meer informatie over prijzen voor opslag.
 
-1. Wacht tot uw opslag account is ingericht. Dit proces duurt doorgaans enkele minuten. Open vervolgens uw opslag account vanaf de **Start** pagina van de Azure portal door **alle resources weer geven**te selecteren. U kunt ook **alle resources** selecteren in de linkermenu van de Azure Portal.
+1. Wacht tot uw opslag account is ingericht. Dit proces duurt doorgaans enkele minuten. 
+
+## <a name="create-a-table-in-your-storage-account"></a>Een tabel in uw opslag account maken
+
+1. Selecteer op de **Start** pagina van de Azure Portal **alle resources weer geven** om toegang te krijgen tot uw opslag account. U kunt ook **alle resources** selecteren in de linkermenu van de Azure Portal.
 
     ![Toegang tot uw Azure Storage-account](./media/commercial-marketplace-lead-management-instructions-azure-table/azure-storage-access.png)
 
@@ -52,13 +56,13 @@ Als uw Customer Relationship Management-systeem (CRM) niet expliciet wordt onder
 
     U kunt [Azure Storage Explorer](https://archive.codeplex.com/?p=azurestorageexplorer) of een ander hulp programma gebruiken om de gegevens in uw opslag tabel te bekijken. U kunt ook de gegevens in de Azure-tabel exporteren. 
 
-## <a name="optional-use-power-automate-with-an-azure-table"></a>Beschrijving Energie automatisering gebruiken met een Azure-tabel 
+## <a name="optional-use-power-automate-to-get-lead-notifications"></a>Beschrijving Energie automatisering gebruiken om lead meldingen op te halen
 
-U kunt [automatische energie automatisering](https://docs.microsoft.com/flow/) gebruiken om meldingen te automatiseren telkens wanneer een lead wordt toegevoegd aan een Azure-tabel. Als u geen account hebt, kunt u [zich aanmelden voor een gratis account](https://flow.microsoft.com/).
+U kunt [automatische energie automatisering](https://docs.microsoft.com/flow/) gebruiken om meldingen te automatiseren telkens wanneer een lead wordt toegevoegd aan de Azure Storage tabel. Als u geen account hebt, kunt u [zich aanmelden voor een gratis account](https://flow.microsoft.com/).
 
 ### <a name="lead-notification-example"></a>Voor beeld van lead meldingen
 
-Gebruik dit voor beeld als richt lijn voor het maken van een eenvoudige stroom waarmee automatisch een e-mail melding wordt verzonden wanneer een nieuwe lead wordt toegevoegd aan een Azure-tabel. In dit voor beeld wordt een terugkeer patroon ingesteld om elk uur lead gegevens te verzenden als de tabel opslag wordt bijgewerkt.
+In het voor beeld wordt een stroom gemaakt waarmee automatisch een e-mail melding wordt verzonden wanneer een nieuwe lead wordt toegevoegd aan Azure-tabel opslag. In dit voor beeld wordt een terugkeer patroon ingesteld om elk uur lead gegevens te verzenden als de tabel opslag wordt bijgewerkt.
 
 1. Meld u aan bij uw energiebeheer account.
 1. Selecteer in de linker balk **mijn stromen**.
@@ -89,21 +93,21 @@ Gebruik dit voor beeld als richt lijn voor het maken van een eenvoudige stroom w
    >[!TIP] 
    >U kunt de stroom op elk gewenst moment controleren om te controleren of elke stap correct is geconfigureerd. Als u de stroom wilt controleren, selecteert u **stroom controle** in de menu balk van de **stroom** .
 
-   In de volgende reeks stappen maakt u verbinding met uw Azure-tabel en stelt u de verwerkings logica in voor het verwerken van nieuwe leads.
+   In de volgende reeks stappen maakt u verbinding met uw tabel en stelt u de verwerkings logica in voor het verwerken van nieuwe leads.
 
-1. Selecteer na stap 8 **+ nieuwe stap**. Zoek vervolgens naar **Get entities** in het venster **een actie kiezen** .
+1. Selecteer **+ Nieuwe stap**. Zoek vervolgens naar **Get entities** in het venster **een actie kiezen** .
 1. Onder **acties**, selecteert u **entiteiten ophalen (Azure Table Storage)**.
 1. Geef in het venster **Azure Table Storage** informatie op voor de volgende vakken en selecteer **maken**:
 
-    * **Verbindings naam**: Geef een beschrijvende naam op voor de verbinding die u tussen deze stroom en de Azure-tabel tot stand brengt.
-    * **Naam van opslag account**: Geef de naam op van het opslag account voor uw Azure-tabel. U kunt deze naam vinden op de pagina **toegangs sleutels** van het opslag account.
-    * **Gedeelde opslag sleutel**: Geef de sleutel waarde voor uw opslag account voor uw Azure-tabel op. U kunt deze waarde vinden op de pagina **toegangs sleutels** van het opslag account.
+    * **Verbindings naam**: Geef een beschrijvende naam op voor de verbinding die u tot stand brengt tussen deze stroom en de tabel.
+    * **Naam van opslag account**: Geef de naam op van het opslag account voor de tabel. U kunt deze naam vinden op de pagina **toegangs sleutels** van het opslag account.
+    * **Gedeelde opslag sleutel**: Geef de sleutel waarde voor uw opslag account voor de tabel op. U kunt deze waarde vinden op de pagina **toegangs sleutels** van het opslag account.
 
       ![Azure Table Storage-venster](./media/commercial-marketplace-lead-management-instructions-azure-table/azure-table-storage.png)
 
    Nadat u **maken**hebt geselecteerd, wordt het venster **entiteiten ophalen** weer gegeven. Selecteer hier **Geavanceerde opties weer geven**en geef informatie op over de volgende vakken:
 
-   * **Tabel**: Selecteer de naam van uw Azure-tabel opslag (in stap 6 van de instructies in de sectie ' een Azure-tabel configureren '). In de volgende afbeelding ziet u de prompt wanneer de tabel ' marketplaceleads ' is geselecteerd voor dit voor beeld.
+   * **Tabel**: Selecteer de naam van de tabel (uit [een tabel maken](#create-a-table-in-your-storage-account)). In de volgende afbeelding ziet u de prompt wanneer de tabel ' marketplaceleads ' is geselecteerd voor dit voor beeld.
 
      ![Het venster entiteiten ophalen](./media/commercial-marketplace-lead-management-instructions-azure-table/azure-table-get-entities.png)
 
@@ -177,9 +181,18 @@ Als u geen e-mail meldingen over leads krijgt, betekent dit dat er nieuwe leads 
 Wanneer u klaar bent om de informatie over het beheer van leads voor uw aanbieding te configureren in de portal voor publiceren, voert u de volgende stappen uit.
 
 1. Ga naar de pagina voor het instellen van de **aanbieding** voor uw aanbieding.
+
 1. Selecteer **verbinding maken** in het gedeelte **lead beheer** .
-1. Selecteer in het pop-upvenster **verbindings Details** de optie **Azure-tabel** voor de **doel locatie**van de lead. Plak de connection string uit het Azure Storage-account dat u hebt gemaakt door de eerdere stappen in het vak **opslag account Connection String** te volgen.
+     ![Leadbeheer](./media/commercial-marketplace-lead-management-instructions-azure-table/lead-management.png)
+
+1. Selecteer in het pop-upvenster **verbindings Details** de optie **Azure-tabel** voor de **doel locatie**van de lead. 
+     ![Lead beheer, verbindings Details](./media/commercial-marketplace-lead-management-instructions-azure-table/connection-details.png)
+
+1. Plak de connection string uit het Azure Storage-account dat u hebt gemaakt door de eerdere stappen in het vak **opslag account Connection String** te volgen.
+     ![Lead beheer, opslag account voor verbindings Details](./media/commercial-marketplace-lead-management-instructions-azure-table/azure-table-connection-details.png)
+
 1. **E-mail adres van contact persoon**: Geef e-mails op voor personen in uw bedrijf die e-mail meldingen moeten ontvangen wanneer er een nieuwe lead wordt ontvangen. U kunt meerdere e-mail berichten opgeven door deze te scheiden met een punt komma.
+
 1. Selecteer **OK**.
 
 Selecteer de knop **valideren** om te controleren of u verbinding hebt gemaakt met een doel van een lead. Als dat lukt, hebt u een test lead in de doel locatie van de lead.
@@ -188,10 +201,3 @@ Selecteer de knop **valideren** om te controleren of u verbinding hebt gemaakt m
 >U moet de configuratie van de rest van de aanbieding volt ooien en publiceren voordat u leads voor de aanbieding kunt ontvangen.
 
 Wanneer leads worden gegenereerd, stuurt micro soft leads naar de Azure-tabel. Als u een stroom hebt geconfigureerd, wordt er ook een e-mail bericht verzonden naar het e-mail adres dat u hebt geconfigureerd.
-
-![Leadbeheer](./media/commercial-marketplace-lead-management-instructions-azure-table/lead-management.png)
-
-![Lead beheer, verbindings Details](./media/commercial-marketplace-lead-management-instructions-azure-table/connection-details.png)
-
-![Lead beheer, opslag account voor verbindings Details](./media/commercial-marketplace-lead-management-instructions-azure-table/azure-table-connection-details.png)
-

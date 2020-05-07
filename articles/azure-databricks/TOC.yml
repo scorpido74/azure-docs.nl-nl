@@ -1010,6 +1010,8 @@
         - name: Beveiligingsoverzicht
           href: /azure/databricks/security/index
           maintainContext: true
+        - name: Beveiligingsbasislijn
+          href: security-baseline.md
         - name: Toegangsbeheer
           items:
             - name: Overzicht van toegangsbeheer

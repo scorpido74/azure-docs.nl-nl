@@ -4,278 +4,54 @@ description: Gebruik Azure Resource Manager sjablonen om Azure Cosmos DB-API voo
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 04/27/2020
+ms.date: 04/30/2020
 ms.author: mjbrown
-ms.openlocfilehash: e312b5d8b6052dafa4855afa035429ef06608f1b
-ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
+ms.openlocfilehash: d6f916002f949f78e4854903940f342261a109ff
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82200782"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82791218"
 ---
 # <a name="manage-azure-cosmos-db-mongodb-api-resources-using-azure-resource-manager-templates"></a>Azure Cosmos DB MongoDB-API-resources beheren met Azure Resource Manager sjablonen
 
-In dit artikel wordt beschreven hoe u verschillende bewerkingen uitvoert om het beheer van uw Azure Cosmos DB-accounts, data bases en containers te automatiseren met behulp van Azure Resource Manager sjablonen. In dit artikel vindt u voor beelden van de Azure Cosmos DB-API voor MongoDB, om voor beelden te vinden voor andere typen API-accounts: gebruik Azure Resource Manager sjablonen met de API van Azure Cosmos DB voor [Cassandra](manage-cassandra-with-resource-manager.md), [Gremlin](manage-gremlin-with-resource-manager.md), [SQL](manage-sql-with-resource-manager.md), [tabel](manage-table-with-resource-manager.md) artikelen.
+In dit artikel leert u hoe u Azure Resource Manager sjablonen kunt gebruiken om uw Azure Cosmos DB-accounts te implementeren en beheren voor MongoDB-API,-data bases en-verzamelingen.
 
-## <a name="create-azure-cosmos-db-api-for-mongodb-account-database-and-collection"></a>Azure Cosmos DB-API maken voor het MongoDB-account, de data base en de verzameling<a id="create-resource"></a>
+In dit artikel vindt u voor beelden van de Azure Cosmos DB-API voor MongoDB, om voor beelden te vinden voor andere typen API-accounts: gebruik Azure Resource Manager sjablonen met de API van Azure Cosmos DB voor [Cassandra](manage-cassandra-with-resource-manager.md), [Gremlin](manage-gremlin-with-resource-manager.md), [SQL](manage-sql-with-resource-manager.md), [tabel](manage-table-with-resource-manager.md) artikelen.
 
-Azure Cosmos DB resources maken met behulp van een Azure Resource Manager sjabloon. Met deze sjabloon wordt een Azure Cosmos-account gemaakt voor MongoDB-API met twee verzamelingen die een door Voer van 400 RU/s op database niveau delen. Kopieer de sjabloon en implementeer deze zoals hieronder wordt weer gegeven of ga naar de [Galerie van Azure Quick](https://azure.microsoft.com/resources/templates/101-cosmosdb-mongodb/) start en implementeer deze vanuit de Azure Portal. U kunt de sjabloon ook downloaden naar uw lokale computer of een nieuwe sjabloon maken en het lokale pad met de `--template-file` para meter opgeven.
+> [!IMPORTANT]
+>
+> * Account namen zijn beperkt tot 44 tekens, alle kleine letters.
+> * Als u de doorvoer waarden wilt wijzigen, implementeert u de sjabloon opnieuw met de bijgewerkte RU/s.
+> * Wanneer u locaties toevoegt aan of verwijdert uit een Azure Cosmos-account, kunt u niet tegelijkertijd andere eigenschappen wijzigen. Deze bewerkingen moeten afzonderlijk worden uitgevoerd.
 
-> [!NOTE]
-> Account namen moeten kleine letters en 44 of minder tekens bevatten.
-> Als u RU/s wilt bijwerken, implementeert u de sjabloon opnieuw met bijgewerkte waarden voor doorvoer eigenschappen.
+Als u een van de onderstaande Azure Cosmos DB resources wilt maken, kopieert u de volgende voorbeeld sjabloon naar een nieuw JSON-bestand. U kunt optioneel een JSON-bestand voor para meters maken dat moet worden gebruikt bij het implementeren van meerdere exemplaren van dezelfde resource met verschillende namen en waarden. Er zijn veel manieren om Azure Resource Manager sjablonen te implementeren, waaronder, [Azure Portal](../azure-resource-manager/templates/deploy-portal.md), [Azure cli](../azure-resource-manager/templates/deploy-cli.md), [Azure PowerShell](../azure-resource-manager/templates/deploy-powershell.md) en [github](../azure-resource-manager/templates/deploy-to-azure-button.md).
 
-```json
-{
-"$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-"contentVersion": "1.0.0.0",
-"parameters": {
-   "accountName": {
-      "type": "string",
-      "defaultValue": "",
-      "metadata": {
-         "description": "Cosmos DB account name"
-      }
-   },
-   "location": {
-      "type": "string",
-      "defaultValue": "[resourceGroup().location]",
-      "metadata": {
-         "description": "Location for the Cosmos DB account."
-      }
-   },
-   "primaryRegion":{
-      "type":"string",
-      "metadata": {
-         "description": "The primary replica region for the Cosmos DB account."
-      }
-   },
-   "secondaryRegion":{
-      "type":"string",
-      "metadata": {
-        "description": "The secondary replica region for the Cosmos DB account."
-     }
-   },
-   "defaultConsistencyLevel": {
-      "type": "string",
-      "defaultValue": "Session",
-      "allowedValues": [ "Eventual", "ConsistentPrefix", "Session", "BoundedStaleness", "Strong" ],
-      "metadata": {
-         "description": "The default consistency level of the Cosmos DB account."
-      }
-   },
-   "serverVersion": {
-      "defaultValue": "3.6",
-      "allowedValues": [
-         "3.2",
-         "3.6"
-      ],
-      "type": "String",
-      "metadata": {
-         "description": "Specifies the MongoDB server version to use."
-      }
-   },
-   "maxStalenessPrefix": {
-      "type": "int",
-      "defaultValue": 100000,
-      "minValue": 10,
-      "maxValue": 1000000,
-      "metadata": {
-         "description": "Max stale requests. Required for BoundedStaleness. Valid ranges, Single Region: 10 to 1000000. Multi Region: 100000 to 1000000."
-      }
-   },
-   "maxIntervalInSeconds": {
-      "type": "int",
-      "defaultValue": 300,
-      "minValue": 5,
-      "maxValue": 86400,
-      "metadata": {
-         "description": "Max lag time (seconds). Required for BoundedStaleness. Valid ranges, Single Region: 5 to 84600. Multi Region: 300 to 86400."
-      }
-   },
-   "databaseName": {
-      "type": "string",
-      "defaultValue": "Database1",
-      "metadata": {
-         "description": "The name for the Mongo DB database"
-      }
-   },
-   "throughput": {
-      "type": "int",
-      "defaultValue": 400,
-      "minValue": 400,
-      "maxValue": 1000000,
-      "metadata": {
-         "description": "The shared throughput for the Mongo DB database"
-      }
-   },
-   "collection1Name": {
-      "type": "string",
-      "defaultValue": "Collection1",
-      "metadata": {
-         "description": "The name for the first Mongo DB collection"
-      }
-   },
-   "collection2Name": {
-      "type": "string",
-      "defaultValue": "Collection2",
-      "metadata": {
-         "description": "The name for the second Mongo DB collection"
-      }
-   }
-},
-"variables": {
-   "accountName": "[toLower(parameters('accountName'))]",
-   "consistencyPolicy": {
-      "Eventual": {
-         "defaultConsistencyLevel": "Eventual"
-      },
-      "ConsistentPrefix": {
-         "defaultConsistencyLevel": "ConsistentPrefix"
-      },
-      "Session": {
-         "defaultConsistencyLevel": "Session"
-      },
-      "BoundedStaleness": {
-         "defaultConsistencyLevel": "BoundedStaleness",
-         "maxStalenessPrefix": "[parameters('maxStalenessPrefix')]",
-         "maxIntervalInSeconds": "[parameters('maxIntervalInSeconds')]"
-      },
-      "Strong": {
-         "defaultConsistencyLevel": "Strong"
-      }
-   },
-   "locations":
-   [
-      {
-         "locationName": "[parameters('primaryRegion')]",
-         "failoverPriority": 0,
-         "isZoneRedundant": false
-      },
-      {
-         "locationName": "[parameters('secondaryRegion')]",
-         "failoverPriority": 1,
-         "isZoneRedundant": false
-      }
-   ]
-},
-"resources":
-[
-   {
-      "type": "Microsoft.DocumentDB/databaseAccounts",
-      "name": "[variables('accountName')]",
-      "apiVersion": "2020-03-01",
-      "location": "[parameters('location')]",
-      "kind": "MongoDB",
-      "properties": {
-         "consistencyPolicy": "[variables('consistencyPolicy')[parameters('defaultConsistencyLevel')]]",
-         "locations": "[variables('locations')]",
-         "databaseAccountOfferType": "Standard",
-         "apiProperties": {
-            "serverVersion": "[parameters('serverVersion')]"
-         }
-      }
-   },
-   {
-      "type": "Microsoft.DocumentDB/databaseAccounts/mongodbDatabases",
-      "name": "[concat(variables('accountName'), '/', parameters('databaseName'))]",
-      "apiVersion": "2020-03-01",
-      "dependsOn": [ "[resourceId('Microsoft.DocumentDB/databaseAccounts/', variables('accountName'))]" ],
-      "properties":{
-         "resource":{
-            "id": "[parameters('databaseName')]"
-         },
-         "options": { "throughput": "[parameters('throughput')]" }
-      }
-   },
-   {
-      "type": "Microsoft.DocumentDb/databaseAccounts/mongodbDatabases/collections",
-      "name": "[concat(variables('accountName'), '/', parameters('databaseName'), '/', parameters('collection1Name'))]",
-      "apiVersion": "2020-03-01",
-      "dependsOn": [ "[resourceId('Microsoft.DocumentDB/databaseAccounts/mongodbDatabases', variables('accountName'), parameters('databaseName'))]" ],
-      "properties":
-      {
-         "resource":{
-            "id":  "[parameters('collection1Name')]",
-            "shardKey": { "user_id": "Hash" },
-            "indexes": [
-               {
-                  "key": { "keys":["user_id", "user_address"] },
-                  "options": { "unique": "true" }
-               },
-               {
-                  "key": { "keys":["_ts"] },
-                  "options": { "expireAfterSeconds": "2629746" }
-               }
-            ],
-            "options": {
-               "If-Match": "<ETag>"
-            }
-         }
-      }
-   },
-   {
-      "type": "Microsoft.DocumentDb/databaseAccounts/mongodbDatabases/collections",
-      "name": "[concat(variables('accountName'), '/', parameters('databaseName'), '/', parameters('collection2Name'))]",
-      "apiVersion": "2020-03-01",
-      "dependsOn": [ "[resourceId('Microsoft.DocumentDB/databaseAccounts/mongodbDatabases', variables('accountName'),  parameters('databaseName'))]" ],
-      "properties":
-      {
-         "resource":{
-            "id":  "[parameters('collection2Name')]",
-            "shardKey": { "company_id": "Hash" },
-            "indexes": [
-               {
-                  "key": { "keys":["company_id", "company_address"] },
-                  "options": { "unique": "true" }
-               },
-               {
-                  "key": { "keys":["_ts"] },
-                  "options": { "expireAfterSeconds": "2629746" }
-               }
-            ],
-            "options": {
-               "If-Match": "<ETag>"
-            }
-         }
-      }
-   }
-]
-}
-```
+<a id="create-autoscale"></a>
 
-### <a name="deploy-via-the-azure-cli"></a>Implementeren via de Azure CLI
+## <a name="azure-cosmos-account-for-mongodb-with-autoscale-provisioned-throughput"></a>Azure Cosmos-account voor MongoDB met automatisch schalen ingerichte door Voer
 
-Als u de Azure Resource Manager sjabloon wilt implementeren met behulp van de Azure CLI, **kopieert** u het script en selecteert u **proberen het** te openen Azure Cloud shell. Als u het script wilt plakken, klikt u met de rechter muisknop op de shell en selecteert u vervolgens **Plakken**:
+Met deze sjabloon wordt een Azure Cosmos-account gemaakt voor MongoDB API (3,2 of 3,6) met twee verzamelingen die de door Voer van automatisch schalen op database niveau delen. Deze sjabloon is ook beschikbaar voor één klik op implementeren vanuit de Azure Quick Start-sjablonen galerie.
 
-```azurecli-interactive
+[![Implementeren in Azure](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-cosmosdb-mongodb-autoscale%2Fazuredeploy.json)
 
-read -p 'Enter the Resource Group name: ' resourceGroupName
-read -p 'Enter the location (i.e. westus2): ' location
-read -p 'Enter the account name: ' accountName
-read -p 'Enter the primary region (i.e. westus2): ' primaryRegion
-read -p 'Enter the secondary region (i.e. eastus2): ' secondaryRegion
-read -p 'Enter the database name: ' databaseName
-read -p 'Enter the database throughput: ' throughput
-read -p 'Enter the first collection name: ' collection1Name
-read -p 'Enter the second collection name: ' collection2Name
+:::code language="json" source="~/quickstart-templates/101-cosmosdb-mongodb-autoscale/azuredeploy.json":::
 
-az group create --name $resourceGroupName --location $location
-az group deployment create --resource-group $resourceGroupName \
-  --template-uri https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/101-cosmosdb-mongodb/azuredeploy.json \
-  --parameters accountName=$accountName primaryRegion=$primaryRegion secondaryRegion=$secondaryRegion \
-  databaseName=$databaseName throughput=$throughput collection1Name=$collection1Name collection2Name=$collection2Name
+<a id="create-manual"></a>
 
-az cosmosdb show --resource-group $resourceGroupName --name accountName --output tsv
-```
+## <a name="azure-cosmos-account-for-mongodb-with-standard-provisioned-throughput"></a>Azure Cosmos-account voor MongoDB met een standaard ingerichte door Voer
 
-De `az cosmosdb show` opdracht toont het zojuist gemaakte Azure Cosmos-account nadat het is ingericht. Als u ervoor kiest een lokaal geïnstalleerde versie van de Azure CLI te gebruiken in plaats van Cloud Shell, raadpleegt u het artikel over [Azure cli](/cli/azure/) .
+Met deze sjabloon wordt een Azure Cosmos-account gemaakt voor MongoDB-API (3,2 of 3,6) met twee verzamelingen die de standaard doorvoer van 400 RU/s (hand matig) op database niveau delen. Deze sjabloon is ook beschikbaar voor één klik op implementeren vanuit de Azure Quick Start-sjablonen galerie.
+
+[![Implementeren in Azure](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-cosmosdb-mongodb%2Fazuredeploy.json)
+
+:::code language="json" source="~/quickstart-templates/101-cosmosdb-mongodb/azuredeploy.json":::
 
 ## <a name="next-steps"></a>Volgende stappen
 
 Hier volgen enkele aanvullende bronnen:
 
-- [Documentatie over Azure Resource Manager](/azure/azure-resource-manager/)
-- [Resource provider-schema Azure Cosmos DB](/azure/templates/microsoft.documentdb/allversions)
-- [Quick Start-sjablonen Azure Cosmos DB](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.DocumentDB&pageNumber=1&sort=Popular)
-- [Veelvoorkomende fouten bij Azure Resource Manager implementatie oplossen](../azure-resource-manager/templates/common-deployment-errors.md)
+* [Documentatie over Azure Resource Manager](/azure/azure-resource-manager/)
+* [Resource provider-schema Azure Cosmos DB](/azure/templates/microsoft.documentdb/allversions)
+* [Quick Start-sjablonen Azure Cosmos DB](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.DocumentDB&pageNumber=1&sort=Popular)
+* [Veelvoorkomende fouten bij Azure Resource Manager implementatie oplossen](../azure-resource-manager/templates/common-deployment-errors.md)

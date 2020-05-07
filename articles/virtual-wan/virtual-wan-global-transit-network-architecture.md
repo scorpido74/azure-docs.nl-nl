@@ -8,12 +8,12 @@ ms.service: virtual-wan
 ms.topic: article
 ms.date: 02/06/2020
 ms.author: cherylmc
-ms.openlocfilehash: 9515058bc78a2d56dc1734c046dac5d5b04f68d9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c32d42de5290bff63a897e7b9d5c8a2b1bf04ce4
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81113164"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82786968"
 ---
 # <a name="global-transit-network-architecture-and-virtual-wan"></a>Wereld wijde doorvoer netwerk architectuur en virtueel WAN
 
@@ -98,6 +98,9 @@ In dit model kan elke vertakking die is verbonden met de virtuele WAN-hub met be
 Vertakkingen kunnen worden verbonden met een virtuele WAN-hub van Azure met behulp van ExpressRoute-circuits en/of site-naar-site-VPN-verbindingen. U kunt de vertakkingen verbinden met de virtuele WAN-hub in de regio die het dichtst bij de vertakking ligt.
 
 Met deze optie kunnen bedrijven gebruikmaken van de Azure-backbone om vertakkingen te verbinden. Hoewel deze mogelijkheid echter beschikbaar is, moet u de voor delen van het verbinden van branches via Azure Virtual WAN, vergeleken met een particulier WAN, afwegen.  
+
+> [!NOTE]
+> Het uitschakelen van vertakking-naar-vertakking-connectiviteit in virtuele WAN-Virtual WAN kan worden geconfigureerd om vertakking-naar-Branch-verbindingen uit te scha kelen. Deze configuratie blokkeert de route doorgifte tussen VPN (S2S en P2S) en Express route verbonden sites. Deze configuratie is niet van invloed op verspreiding en connectiviteit van het filiaal naar vnet en Vnet-naar-Vnet. Deze instelling configureren met behulp van Azure portal: Kies onder configuratie menu voor virtuele WAN de optie instellen: vertakking-naar-vertakking uitgeschakeld. 
 
 ### <a name="remote-user-to-vnet-c"></a>Externe gebruiker-naar-VNet (c)
 

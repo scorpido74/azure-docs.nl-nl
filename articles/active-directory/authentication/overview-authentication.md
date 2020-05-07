@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: sahenry, michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9f4c2fa8488490561e8f11746e8e737718ee9f37
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: c2a6b5c22e2988ed33e6dc15a4729e7bfe938c5f
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "76261259"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82786914"
 ---
 # <a name="what-is-azure-active-directory-authentication"></a>Wat is Azure Active Directory verificatie?
 
@@ -86,14 +86,14 @@ Azure AD biedt manieren om op eigen wijze te verifiëren met behulp van methoden
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Raadpleeg voor meer informatie de [Quick start voor selfservice voor wachtwoord herstel][quickstart-sspr] en [Azure multi-factor Authentication zelf studie][tutorial-mfa-applications].
+Als u aan de slag wilt gaan, raadpleegt u de [zelf studie voor selfservice voor wachtwoord herstel (SSPR)][tutorial-sspr] en [Azure multi-factor Authentication][tutorial-azure-mfa].
 
 Zie [hoe Azure AD self-service password reset werkt][concept-sspr]voor meer informatie over de concepten van self-service voor het opnieuw instellen van wacht woorden.
 
 Zie [hoe Azure multi-factor Authentication werkt][concept-mfa]voor meer informatie over multi-factor Authentication-concepten.
 
 <!-- INTERNAL LINKS -->
-[quickstart-sspr]: quickstart-sspr.md
-[tutorial-mfa-applications]: tutorial-mfa-applications.md
+[tutorial-sspr]: tutorial-enable-sspr.md
+[tutorial-azure-mfa]: tutorial-enable-azure-mfa.md
 [concept-sspr]: concept-sspr-howitworks.md
 [concept-mfa]: concept-mfa-howitworks.md
