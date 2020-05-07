@@ -10,18 +10,18 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 03/26/2020
 ms.author: juliako
-ms.openlocfilehash: 5134a262397676aa9b59de9b0c6de61c26d21523
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 545dbcfb1db5595ff5b2047ec44afa8a065d816d
+ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81262907"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82594845"
 ---
 # <a name="embed-video-indexer-widgets-in-your-apps"></a>Video Indexer widgets insluiten in uw apps
 
 In dit artikel wordt uitgelegd hoe u Video Indexer widgets kunt insluiten in uw apps. Video Indexer ondersteunt het insluiten van drie typen objecten in uw apps: *cognitieve inzichten*, *speler*en *Redacteur*.
 
-Vanaf versie 2 bevat de basis-URL van de widget de regio van het opgegeven account. Een account in de regio vs-West genereert bijvoorbeeld het volgende `https://wus2.videoindexer.ai/embed/insights/...`:.
+Vanaf versie 2 bevat de basis-URL van de widget de regio van het opgegeven account. Een account in de regio vs-West genereert bijvoorbeeld het volgende `https://www.videoindexer.ai/embed/insights/.../?location=westus2`:.
 
 ## <a name="widget-types"></a>Typen widget
 
@@ -36,6 +36,7 @@ De widget Inzichten bevat alle visuele inzichten die tijdens het indexeringsproc
 |`language`|Een korte taal code (taal naam)|Programmeer taal voor besturings elementen.<br/>Voorbeeld: `https://www.videoindexer.ai/embed/insights/<accountId>/<videoId>/?language=es-es` <br/>of`https://www.videoindexer.ai/embed/insights/<accountId>/<videoId>/?language=spanish`|
 |`locale` | Een korte taal code | Hiermee bepaalt u de taal van de gebruikers interface. De standaardwaarde is `en`. <br/>Bijvoorbeeld: `locale=de`.|
 |`tab` | Het standaard geselecteerde tabblad | Hiermee bepaalt u het tabblad **inzichten** dat standaard wordt weer gegeven. <br/>Voor beeld `tab=timeline` : Hiermee wordt de inzichten weer gegeven op het tabblad **tijd lijn** geselecteerd.|
+|`location` ||De `location` para meter moet worden opgenomen in de Inge sloten koppelingen. Zie [hoe u de naam van uw regio ophaalt](regions.md). Als uw account in preview is, moet `trial` het worden gebruikt voor de locatie waarde. `trial`is de standaard waarde voor de `location` para meter.| 
 
 ### <a name="player-widget"></a>Widget Speler
 
@@ -49,6 +50,7 @@ U kunt de Player-widget gebruiken om video te streamen met behulp van adaptieve 
 |`type`| | Hiermee wordt een audio speler-weer gave geactiveerd (het video onderdeel wordt verwijderd).<br/> Bijvoorbeeld: `type=audio`. |
 |`autoplay` | Een Booleaanse waarde | Hiermee wordt aangegeven of de speler de video moet starten wanneer deze wordt geladen. De standaardwaarde is `true`.<br/> Bijvoorbeeld: `autoplay=false`. |
 |`language`/`locale` | Een taal code | Hiermee bepaalt u de taal van de speler. De standaardwaarde is `en-US`.<br/>Bijvoorbeeld: `language=de-DE`.|
+|`location` ||De `location` para meter moet worden opgenomen in de Inge sloten koppelingen. Zie [hoe u de naam van uw regio ophaalt](regions.md). Als uw account in preview is, moet `trial` het worden gebruikt voor de locatie waarde. `trial`is de standaard waarde voor de `location` para meter.| 
 
 ### <a name="editor-widget"></a>Editor-widget
 
@@ -59,24 +61,29 @@ U kunt de editor-widget gebruiken om nieuwe projecten te maken en de inzichten v
 |`accessToken`<sup>*</sup> | Tekenreeks | Biedt toegang tot Video's die alleen voor komen in het account dat wordt gebruikt om de widget in te sluiten.<br> De editor-widget vereist `accessToken` de para meter. |
 |`language` | Een taal code | Hiermee bepaalt u de taal van de speler. De standaardwaarde is `en-US`.<br/>Bijvoorbeeld: `language=de-DE`. |
 |`locale` | Een korte taal code | Hiermee bepaalt u de inzichten taal. De standaardwaarde is `en`.<br/>Bijvoorbeeld: `language=de`. |
+|`location` ||De `location` para meter moet worden opgenomen in de Inge sloten koppelingen. Zie [hoe u de naam van uw regio ophaalt](regions.md). Als uw account in preview is, moet `trial` het worden gebruikt voor de locatie waarde. `trial`is de standaard waarde voor de `location` paramete.| 
 
 <sup>*</sup>De eigenaar moet `accessToken` voorzichtig zijn.
 
-## <a name="embedding-public-content"></a>Openbare inhoud insluiten
+## <a name="embedding-videos"></a>Video's insluiten
+
+In deze sectie wordt beschreven hoe u de open bare en persoonlijke inhoud insluit in apps.
+
+De `location` para meter moet worden opgenomen in de Inge sloten koppelingen. Zie [hoe u de naam van uw regio ophaalt](regions.md). Als uw account in preview is, moet `trial` het worden gebruikt voor de locatie waarde. `trial`is de standaard waarde voor de `location` paramete. Bijvoorbeeld: `https://www.videoindexer.ai/accounts/00000000-0000-0000-0000-000000000000/videos/b2b2c74b8e/?location=trial`.
+
+> [!IMPORTANT]
+> Het delen van een koppeling voor de **Media Player** of **Insights** -widget bevat het toegangs token en verleen de alleen-lezen machtigingen voor uw account.
+
+### <a name="public-content"></a>Open bare inhoud
 
 1. Meld u aan bij de [video indexer](https://www.videoindexer.ai/) -website.
-2. Selecteer de video waarmee u wilt werken.
-3. Selecteer de knop insluiten (**</>**) die wordt weer gegeven onder de video.
-
-    Nadat u de knop **insluiten** hebt geselecteerd, kunt u de widget selecteren die u wilt insluiten in uw app.
-4. Selecteer het gewenste type widget (**cognitieve inzichten**, **speler**of **Redacteur**).
+1. Selecteer de video waarmee u wilt werken en druk op **Play**.
+1. Selecteer het gewenste type widget (**cognitieve inzichten**, **speler**of **Redacteur**).
+1. Klik ** &lt; / op &gt; insluiten**.
 5. Kopieer de insluit code (wordt weer gegeven in **de Inge sloten code kopiëren** in het dialoog venster **share & insluiten** ).
 6. Voeg de code toe aan uw app.
 
-> [!NOTE]
-> Als u problemen hebt met het delen van uw video- `location` url's, voegt u de para meter toe aan de koppeling. De para meter moet worden ingesteld op de [Azure-regio's waarin video indexer bestaat](regions.md). Bijvoorbeeld: `https://www.videoindexer.ai/accounts/00000000-0000-0000-0000-000000000000/videos/b2b2c74b8e/?location=trial`.
-
-## <a name="embedding-private-content"></a>Persoonlijke inhoud insluiten
+### <a name="private-content"></a>Persoonlijke inhoud
 
 Als u een privé video wilt insluiten, moet u een toegangs token in `src` het kenmerk van het iframe door geven:
 

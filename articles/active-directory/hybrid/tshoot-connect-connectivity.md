@@ -16,12 +16,13 @@ ms.date: 04/25/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 72dbb404d1b4d3618909e0233f332d2f98b51516
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: has-adal-ref
+ms.openlocfilehash: f55f291575aea40cba8551a5fec535f63a90150c
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80049723"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82610442"
 ---
 # <a name="troubleshoot-azure-ad-connectivity"></a>Problemen met Azure AD-connectiviteit oplossen
 In dit artikel wordt uitgelegd hoe connectiviteit tussen Azure AD Connect en Azure AD werkt en hoe u verbindings problemen kunt oplossen. Deze problemen worden hoogstwaarschijnlijk gezien in een omgeving met een proxy server.
@@ -31,7 +32,7 @@ Azure AD Connect maakt gebruik van moderne verificatie (met behulp van de ADAL-b
 
 In dit artikel laten we zien hoe fabrikam verbinding maakt met Azure AD via de proxy. De proxy server heeft de naam fabrikamproxy en maakt gebruik van poort 8080.
 
-Eerst moeten we controleren of [**machine. config**](how-to-connect-install-prerequisites.md#connectivity) correct is geconfigureerd.  
+Eerst moeten we controleren of [**machine. config**](how-to-connect-install-prerequisites.md#connectivity) correct is geconfigureerd.
 ![machineconfig](./media/tshoot-connect-connectivity/machineconfig.png)
 
 > [!NOTE]
@@ -58,25 +59,24 @@ De installatie wizard gebruikt twee verschillende beveiligings contexten. Op de 
 De volgende problemen zijn de meest voorkomende fouten die optreden in de installatie wizard.
 
 ### <a name="the-installation-wizard-has-not-been-correctly-configured"></a>De installatie wizard is niet juist geconfigureerd
-Deze fout wordt weer gegeven wanneer de wizard zelf de proxy niet kan bereiken.  
+Deze fout wordt weer gegeven wanneer de wizard zelf de proxy niet kan bereiken.
 ![nomachineconfig](./media/tshoot-connect-connectivity/nomachineconfig.png)
 
 * Als u deze fout ziet, controleert u of de [machine. config](how-to-connect-install-prerequisites.md#connectivity) juist is geconfigureerd.
 * Als dat het goed is, volgt u de stappen in [Controleer de connectiviteit](#verify-proxy-connectivity) van de proxy om te zien of het probleem zich buiten de wizard bevindt.
 
 ### <a name="a-microsoft-account-is-used"></a>Een Microsoft-account wordt gebruikt
-Als u een **Microsoft-account** gebruikt in plaats van een **school-of organisatie** account, ziet u een algemene fout.  
+Als u een **Microsoft-account** gebruikt in plaats van een **school-of organisatie** account, ziet u een algemene fout.
 ![Er wordt een micro soft-account gebruikt](./media/tshoot-connect-connectivity/unknownerror.png)
 
 ### <a name="the-mfa-endpoint-cannot-be-reached"></a>Het MFA-eind punt kan niet worden bereikt
-Deze fout wordt weer gegeven als **https://secure.aadcdn.microsoftonline-p.com** het eind punt niet kan worden bereikt en voor uw globale beheerder MFA is ingeschakeld.  
+Deze fout wordt weer gegeven als **https://secure.aadcdn.microsoftonline-p.com** het eind punt niet kan worden bereikt en voor uw globale beheerder MFA is ingeschakeld.
 ![nomachineconfig](./media/tshoot-connect-connectivity/nomicrosoftonlinep.png)
 
 * Als u deze fout ziet, controleert u of het eind punt **Secure.aadcdn.microsoftonline-p.com** is toegevoegd aan de proxy.
 
 ### <a name="the-password-cannot-be-verified"></a>Het wacht woord kan niet worden geverifieerd
-Als de installatie wizard is geslaagd om verbinding te maken met Azure AD, maar het wacht woord zelf niet kan worden geverifieerd, ziet u deze fout:  
-![Onjuist wacht woord.](./media/tshoot-connect-connectivity/badpassword.png)
+Als de installatie wizard is geslaagd om verbinding te maken met Azure AD, maar het wacht woord zelf niet kan worden geverifieerd, ![ziet u deze fout: ongeldig wacht woord.](./media/tshoot-connect-connectivity/badpassword.png)
 
 * Is het wacht woord een tijdelijk wacht woord en moet het worden gewijzigd? Is het eigenlijk het juiste wacht woord? Probeer u aan te melden `https://login.microsoftonline.com` bij (op een andere computer dan de Azure AD Connect-server) en controleer of het account bruikbaar is.
 
@@ -186,7 +186,7 @@ De verificatie is voltooid, maar er is een verificatie probleem opgetreden in az
 </div>
 
 ### <a name="azure-ad-global-admin-role-needed"></a>Globale beheerdersrol van Azure AD vereist
-De verificatie van de gebruiker is voltooid. Aan de gebruiker is echter geen globale beheerdersrol toegewezen. Zo [kunt u de rol van globale beheerder toewijzen](../users-groups-roles/directory-assign-admin-roles.md) aan de gebruiker. 
+De verificatie van de gebruiker is voltooid. Aan de gebruiker is echter geen globale beheerdersrol toegewezen. Zo [kunt u de rol van globale beheerder toewijzen](../users-groups-roles/directory-assign-admin-roles.md) aan de gebruiker.
 
 <div id="privileged-identity-management">
 <!--
@@ -224,7 +224,7 @@ Wordt weer gegeven als onverwachte fout in de installatie wizard. Kan zich voord
 ## <a name="troubleshooting-steps-for-previous-releases"></a>Stappen voor probleem oplossing voor eerdere versies.
 Met releases die beginnen met Build Number 1.1.105.0 (uitgebracht op 2016 februari), is de aanmeld hulp buiten gebruik gesteld. Deze sectie en de configuratie moeten niet meer nodig zijn, maar blijven als referentie.
 
-Voor de tijdelijke assistent voor eenmalige aanmelding moet WinHTTP worden geconfigureerd. Deze configuratie kan worden uitgevoerd met [**netsh**](how-to-connect-install-prerequisites.md#connectivity).  
+Voor de tijdelijke assistent voor eenmalige aanmelding moet WinHTTP worden geconfigureerd. Deze configuratie kan worden uitgevoerd met [**netsh**](how-to-connect-install-prerequisites.md#connectivity).
 ![Helper](./media/tshoot-connect-connectivity/netsh.png)
 
 ### <a name="the-sign-in-assistant-has-not-been-correctly-configured"></a>De aanmeld hulp is niet juist geconfigureerd

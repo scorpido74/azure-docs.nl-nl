@@ -8,12 +8,12 @@ ms.date: 05/21/2019
 author: sakash279
 ms.author: akshanka
 ms.custom: seodec18
-ms.openlocfilehash: 166076d366cbbf7bef24648772beaba9b3a88253
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: fcae1ed9064d38457ede73c675afb75ce4872fe6
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79246472"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82611774"
 ---
 # <a name="azure-table-storage-table-design-guide-scalable-and-performant-tables"></a>Ontwerp handleiding voor de Azure Table Storage-tabel: schaal bare en uitvoerende tabellen
 
@@ -208,7 +208,7 @@ Hier volgen enkele algemene richt lijnen voor het ontwerpen van Table-opslag que
 * Tweede beste is een *bereik query*. Het gebruikt de `PartitionKey`en filtert op een reeks `RowKey` waarden om meer dan één entiteit te retour neren. De `PartitionKey` waarde identificeert een specifieke partitie en de `RowKey` waarden identificeren een subset van de entiteiten in die partitie. Bijvoorbeeld: `$filter=PartitionKey eq 'Sales' and RowKey ge 'S' and RowKey lt 'T'`.  
 * Derde beste is een *partitie scan*. Het gebruikt de `PartitionKey`-en-filters op een andere niet-sleutel eigenschap en kan meer dan één entiteit retour neren. De `PartitionKey` waarde identificeert een specifieke partitie en de eigenschapwaarden worden geselecteerd voor een subset van de entiteiten in die partitie. Bijvoorbeeld: `$filter=PartitionKey eq 'Sales' and LastName eq 'Smith'`.  
 * Een *tabel scan* bevat niet de `PartitionKey`, en is inefficiënt omdat alle partities die de tabel vormen, worden doorzocht op overeenkomende entiteiten. Er wordt een tabel scan uitgevoerd, ongeacht of het filter gebruikmaakt van de `RowKey`. Bijvoorbeeld: `$filter=LastName eq 'Jones'`.  
-* Azure Table Storage-query's waarmee meerdere entiteiten worden geretourneerd, `PartitionKey` worden `RowKey` in en volg orde gesorteerd. Als u wilt voor komen dat de entiteiten in de client worden `RowKey` gebruikt, kiest u een die de meest voorkomende sorteer volgorde definieert. Query resultaten die door de Azure-Table-API in Azure Cosmos DB zijn geretourneerd, worden niet gesorteerd op partitie sleutel of rij-sleutel. Zie [verschillen tussen Table-API in azure Cosmos DB en Azure-tabel opslag](faq.md#where-is-table-api-not-identical-with-azure-table-storage-behavior)voor een gedetailleerde lijst met functie verschillen.
+* Azure Table Storage-query's waarmee meerdere entiteiten worden geretourneerd, `PartitionKey` worden `RowKey` in en volg orde gesorteerd. Als u wilt voor komen dat de entiteiten in de client worden `RowKey` gebruikt, kiest u een die de meest voorkomende sorteer volgorde definieert. Query resultaten die door de Azure-Table-API in Azure Cosmos DB zijn geretourneerd, worden niet gesorteerd op partitie sleutel of rij-sleutel. Zie [verschillen tussen Table-API in azure Cosmos DB en Azure-tabel opslag](table-api-faq.md#table-api-vs-table-storage)voor een gedetailleerde lijst met functie verschillen.
 
 Het gebruik van een '**or**' om een filter op `RowKey` te geven op basis van waarden resulteert in een partitie scan en wordt niet behandeld als een bereik query. Vermijd daarom query's die gebruikmaken van filters, zoals: `$filter=PartitionKey eq 'Sales' and (RowKey eq '121' or RowKey eq '322')`.  
 
@@ -250,7 +250,7 @@ Veel modellen moeten voldoen aan de vereisten om het opzoeken van entiteiten op 
 Tabel opslag retourneert query resultaten die in oplopende volg orde zijn `PartitionKey` gesorteerd, op `RowKey`basis van en vervolgens op.
 
 > [!NOTE]
-> Query resultaten die door de Azure-Table-API in Azure Cosmos DB zijn geretourneerd, worden niet gesorteerd op partitie sleutel of rij-sleutel. Zie [verschillen tussen Table-API in azure Cosmos DB en Azure-tabel opslag](faq.md#where-is-table-api-not-identical-with-azure-table-storage-behavior)voor een gedetailleerde lijst met functie verschillen.
+> Query resultaten die door de Azure-Table-API in Azure Cosmos DB zijn geretourneerd, worden niet gesorteerd op partitie sleutel of rij-sleutel. Zie [verschillen tussen Table-API in azure Cosmos DB en Azure-tabel opslag](table-api-faq.md#table-api-vs-table-storage)voor een gedetailleerde lijst met functie verschillen.
 
 Sleutels in tabel opslag zijn teken reeks waarden. Om ervoor te zorgen dat numerieke waarden correct worden gesorteerd, moet u ze converteren naar een vaste lengte en ze met nullen aanvullen. Als de waarde van de werk nemer-ID die u gebruikt `RowKey` als het een geheel getal is, moet u bijvoorbeeld werk nemer-id **123** omzetten naar **00000123**. 
 
@@ -733,7 +733,7 @@ De volgende patronen en richtlijnen zijn mogelijk ook relevant bij de implementa
 Haal de *n* -entiteiten die het laatst zijn toegevoegd aan een partitie `RowKey` op met behulp van een waarde die in omgekeerde datum en tijd wordt gesorteerd.  
 
 > [!NOTE]
-> Query resultaten die door de Azure-Table-API in Azure Cosmos DB zijn geretourneerd, worden niet gesorteerd op partitie sleutel of rij-sleutel. Dit patroon is dus geschikt voor tabel opslag en is daarom niet geschikt voor Azure Cosmos DB. Zie [verschillen tussen Table-API in azure Cosmos DB en Azure Table Storage](faq.md#where-is-table-api-not-identical-with-azure-table-storage-behavior)voor een gedetailleerde lijst met functie verschillen.
+> Query resultaten die door de Azure-Table-API in Azure Cosmos DB zijn geretourneerd, worden niet gesorteerd op partitie sleutel of rij-sleutel. Dit patroon is dus geschikt voor tabel opslag en is daarom niet geschikt voor Azure Cosmos DB. Zie [verschillen tussen Table-API in azure Cosmos DB en Azure Table Storage](table-api-faq.md#table-api-vs-table-storage)voor een gedetailleerde lijst met functie verschillen.
 
 #### <a name="context-and-problem"></a>Context en probleem
 Een algemene vereiste is om de meest recent gemaakte entiteiten op te halen, bijvoorbeeld de tien meest recente onkosten claims die zijn ingediend door een werk nemer. Tabel query's ondersteunen een `$top` query bewerking voor het retour neren van de eerste *n* entiteiten van een set. Er is geen equivalente query bewerking voor het retour neren van de laatste *n* entiteiten in een set.  

@@ -1,21 +1,21 @@
 ---
-title: De processor bibliotheek voor feeds wijzigen in Azure Cosmos DB
-description: Meer informatie over het gebruik van de Azure Cosmos DB Change feed processor-bibliotheek voor het lezen van de wijzigings feed, de onderdelen van de processor voor wijzigings invoer
-author: markjbrown
-ms.author: mjbrown
+title: Processor voor wijzigingenfeed in Azure Cosmos DB
+description: Meer informatie over het gebruik van de Azure Cosmos DB Change feed-processor om de wijzigings feed, de onderdelen van de wijzigings feed-processor te lezen
+author: timsander1
+ms.author: tisande
 ms.service: cosmos-db
 ms.devlang: dotnet
 ms.topic: conceptual
-ms.date: 12/03/2019
+ms.date: 4/29/2020
 ms.reviewer: sngun
-ms.openlocfilehash: e71b2807595aebeb1f0c8682fde119f4e267e55d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d069df0a095cc0356cd61155dde875a5d92ed18d
+ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78273307"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82594148"
 ---
-# <a name="change-feed-processor-in-azure-cosmos-db"></a>Processor voor wijzigingenfeed in Azure Cosmos DB 
+# <a name="change-feed-processor-in-azure-cosmos-db"></a>Processor voor wijzigingenfeed in Azure Cosmos DB
 
 De Change feed-processor maakt deel uit van de [Azure Cosmos DB SDK v3](https://github.com/Azure/azure-cosmos-dotnet-v3). Het vereenvoudigt het proces van het lezen van de wijzigings feed en het distribueren van de gebeurtenis verwerking over meerdere gebruikers effectief.
 
@@ -23,13 +23,13 @@ Het belangrijkste voor deel van de processor bibliotheek voor wijzigings invoer 
 
 ## <a name="components-of-the-change-feed-processor"></a>Onderdelen van de processor voor wijzigings invoer
 
-Er zijn vier belang rijke onderdelen van de implementatie van de feed voor wijzigings invoer: 
+Er zijn vier belang rijke onderdelen van de implementatie van de feed voor wijzigings invoer:
 
 1. **De bewaakte container:** De bewaakte container bevat de gegevens waaruit de wijzigings feed wordt gegenereerd. Eventuele toevoegingen en updates van de bewaakte container worden weer gegeven in de wijzigings feed van de container.
 
-1. **De lease-container:** De lease container fungeert als een status opslag en coördineert de wijzigings feed voor meerdere werk rollen. De lease container kan worden opgeslagen in hetzelfde account als de bewaakte container of in een afzonderlijk account. 
+1. **De lease-container:** De lease container fungeert als een status opslag en coördineert de wijzigings feed voor meerdere werk rollen. De lease container kan worden opgeslagen in hetzelfde account als de bewaakte container of in een afzonderlijk account.
 
-1. **De host:** Een host is een toepassings exemplaar dat de feed-processor van de wijziging gebruikt om te Luis teren naar wijzigingen. Meerdere instanties met dezelfde lease configuratie kunnen parallel worden uitgevoerd, maar elk exemplaar moet een andere **exemplaar naam**hebben. 
+1. **De host:** Een host is een toepassings exemplaar dat de feed-processor van de wijziging gebruikt om te Luis teren naar wijzigingen. Meerdere instanties met dezelfde lease configuratie kunnen parallel worden uitgevoerd, maar elk exemplaar moet een andere **exemplaar naam**hebben.
 
 1. **De gemachtigde:** De gemachtigde is de code die definieert wat u, de ontwikkelaar, wilt doen met elke batch met wijzigingen die de wijzigings status van de feed verwerkt. 
 
@@ -65,7 +65,11 @@ De normale levens cyclus van een exemplaar van een host is:
 
 ## <a name="error-handling"></a>Foutafhandeling
 
-De Change feed-processor is robuust voor gebruikers code fouten. Dit betekent dat als de implementatie van de gemachtigde een niet-verwerkte uitzonde ring heeft (stap #4), de thread verwerking die door de desbetreffende batch wijzigingen wordt uitgevoerd, wordt gestopt en er een nieuwe thread wordt gemaakt. In de nieuwe thread wordt gecontroleerd welk punt in de tijd dat de lease-opslag het meest recent is voor dat bereik van partitie sleutel waarden en opnieuw wordt opgestart, waardoor dezelfde batch met wijzigingen in de gemachtigde effectief wordt verzonden. Dit gedrag wordt voortgezet totdat de gemachtigde de wijzigingen correct verwerkt en de reden is dat de wijzigings processor ten minste eenmaal is gegarandeerd, omdat als de code van de gemachtigde het genereert, de batch opnieuw wordt uitgevoerd.
+De Change feed-processor is robuust voor gebruikers code fouten. Dit betekent dat als de implementatie van de gemachtigde een niet-verwerkte uitzonde ring heeft (stap #4), de thread verwerking die door de desbetreffende batch wijzigingen wordt uitgevoerd, wordt gestopt en er een nieuwe thread wordt gemaakt. In de nieuwe thread wordt gecontroleerd welk punt in de tijd dat de lease-opslag het meest recent is voor dat bereik van partitie sleutel waarden en opnieuw wordt opgestart, waardoor dezelfde batch met wijzigingen in de gemachtigde effectief wordt verzonden. Dit gedrag wordt voortgezet totdat de gemachtigde de wijzigingen correct verwerkt en de reden is dat de wijzigings processor ten minste eenmaal is gegarandeerd, omdat als de code van de gemachtigde een uitzonde ring genereert, wordt de batch opnieuw geprobeerd.
+
+Als u wilt voor komen dat de processor voor wijzigings invoer voortdurend opnieuw probeert dezelfde batch met wijzigingen aan te brengen, moet u logica toevoegen aan de code van de gemachtigde om documenten te schrijven, na uitzonde ring, naar een wachtrij met onbestelbare berichten. Met dit ontwerp zorgt u ervoor dat u niet-verwerkte wijzigingen kunt bijhouden, terwijl u toekomstige wijzigingen nog steeds kunt blijven verwerken. De wachtrij met onbestelbare berichten kan slechts een andere Cosmos-container zijn. Het exacte gegevens archief is niet van belang, alleen dat de niet-verwerkte wijzigingen behouden blijven.
+
+Daarnaast kunt u de [wijzigings feed-Estimator](how-to-use-change-feed-estimator.md) gebruiken om de voortgang van de wijzigingen in de feeder-processor te controleren wanneer ze de wijzigings feed lezen. Naast het volgen van de controle als de wijzigings processor ' vastgelopen ' voortdurend opnieuw wordt uitgevoerd, kunt u ook zien of de verwerkings processor van de wijziging zich voordoet als gevolg van de beschik bare bronnen zoals CPU, geheugen en netwerk bandbreedte.
 
 ## <a name="dynamic-scaling"></a>Dynamische schaalbaarheid
 
@@ -85,7 +89,7 @@ Daarnaast kan de wijzigings processor van de feed dynamisch worden aangepast aan
 
 Er worden kosten in rekening gebracht voor het verbruikte RUs, omdat gegevens verplaatsing in en buiten Cosmos containers altijd RUs gebruikt. Er worden kosten in rekening gebracht voor RUs dat wordt gebruikt door de lease-container.
 
-## <a name="additional-resources"></a>Extra resources
+## <a name="additional-resources"></a>Aanvullende bronnen
 
 * [Azure Cosmos DB SDK](sql-api-sdk-dotnet.md)
 * [Voor beelden van gebruik op GitHub](https://github.com/Azure/azure-cosmos-dotnet-v3/tree/master/Microsoft.Azure.Cosmos.Samples/Usage/ChangeFeed)

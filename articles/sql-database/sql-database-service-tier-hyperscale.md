@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 10/01/2019
-ms.openlocfilehash: 074a28af8c80c109dbe97306900e8f00618e435a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a5512aa1a2538d3336bbcc4f65cad671d52b711a
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81411686"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82610663"
 ---
 # <a name="hyperscale-service-tier"></a>Hyperscale-servicelaag
 
@@ -209,7 +209,7 @@ Dit zijn de huidige beperkingen voor het grootschalige van de service tier.  We 
 | Als een Data Base een of meer gegevens bestanden heeft die groter zijn dan 1 TB, mislukt de migratie | In sommige gevallen is het mogelijk om dit probleem te omzeilen door de grote bestanden kleiner te maken dan 1 TB. Als u een Data Base migreert die tijdens het migratie proces wordt gebruikt, moet u ervoor zorgen dat er geen bestanden groter zijn dan 1 TB. Gebruik de volgende query om de grootte van database bestanden te bepalen. `SELECT *, name AS file_name, size * 8. / 1024 / 1024 AS file_size_GB FROM sys.database_files WHERE type_desc = 'ROWS'`;|
 | Beheerd exemplaar | Azure SQL Database beheerde instantie wordt momenteel niet ondersteund met grootschalige-data bases. |
 | Elastische pools |  Elastische Pools worden momenteel niet ondersteund met SQL Database grootschalige.|
-| Migratie naar grootschalige is momenteel een eenrichtings bewerking | Wanneer een Data Base wordt gemigreerd naar grootschalige, kan deze niet rechtstreeks naar een andere servicelaag worden gemigreerd. Op dit moment is de enige manier om een Data Base te migreren van grootschalige naar een niet-grootschalige, het exporteren/importeren met behulp van een BACPAC-bestand of andere technologieën voor gegevens verplaatsing (Bulk Copy, Azure Data Factory, Azure Databricks, SSIS, enzovoort).|
+| Migratie naar grootschalige is momenteel een eenrichtings bewerking | Wanneer een Data Base wordt gemigreerd naar grootschalige, kan deze niet rechtstreeks naar een andere servicelaag worden gemigreerd. Op dit moment is de enige manier om een Data Base te migreren van grootschalige naar een niet-grootschalige, het exporteren/importeren met behulp van een Bacpac-bestand of andere technologieën voor gegevens verplaatsing (Bulk Copy, Azure Data Factory, Azure Databricks, SSIS, enzovoort). Bacpac exporteren/importeren uit Azure Portal, vanuit Power shell met [New-AzSqlDatabaseExport](https://docs.microsoft.com/powershell/module/az.sql/new-azsqldatabaseexport) of [New-AzSqlDatabaseImport](https://docs.microsoft.com/powershell/module/az.sql/new-azsqldatabaseimport), vanuit Azure CLI met [AZ SQL DB export](https://docs.microsoft.com/cli/azure/sql/db?view=azure-cli-latest#az-sql-db-export) en [az SQL DB import](https://docs.microsoft.com/cli/azure/sql/db?view=azure-cli-latest#az-sql-db-import), en van [rest API](https://docs.microsoft.com/rest/api/sql/databases%20-%20import%20export) wordt niet ondersteund. Bacpac import/export voor kleinere grootschalige-data bases (tot 200 GB) wordt ondersteund met behulp van SSMS en [SqlPackage](https://docs.microsoft.com/sql/tools/sqlpackage) versie 18,4 of hoger. Voor grotere data bases kan het maken van een Bacpac-export/-import enige tijd duren en kan om verschillende redenen mislukken.|
 | Migratie van data bases met persistente in-Memory objecten | Grootschalige ondersteunt alleen niet-permanente objecten in het geheugen (tabel typen, systeem eigen SPs en functies).  Permanente in-Memory tabellen en andere objecten moeten worden verwijderd en opnieuw worden gemaakt als objecten die geen deel uitmaken van het geheugen voordat een Data Base naar de service tier grootschalige wordt gemigreerd.|
 | Geo-replicatie  | U kunt geo-replicatie voor Azure SQL Database grootschalige nog niet configureren. |
 | Data base kopiëren | U kunt geen database kopie gebruiken om een nieuwe data base in Azure SQL grootschalige te maken. |

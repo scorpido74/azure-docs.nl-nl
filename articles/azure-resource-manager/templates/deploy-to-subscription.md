@@ -2,13 +2,13 @@
 title: Resources implementeren voor het abonnement
 description: Hierin wordt beschreven hoe u een resource groep maakt in een Azure Resource Manager sjabloon. Ook wordt uitgelegd hoe u resources kunt implementeren in het bereik van Azure-abonnementen.
 ms.topic: conceptual
-ms.date: 03/23/2020
-ms.openlocfilehash: 6bec29a07653ff5ad7d1e2f8317246049e127c8c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 04/30/2020
+ms.openlocfilehash: 80fe451f696480ec24b3d8eced64941de9492fef
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81605006"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82610816"
 ---
 # <a name="create-resource-groups-and-resources-at-the-subscription-level"></a>Resource groepen en-resources op abonnements niveau maken
 
@@ -20,6 +20,7 @@ Als u sjablonen wilt implementeren op abonnements niveau, gebruikt u Azure CLI, 
 
 U kunt de volgende bron typen implementeren op abonnements niveau:
 
+* [blauw drukken](/azure/templates/microsoft.blueprint/blueprints)
 * [budgetten](/azure/templates/microsoft.consumption/budgets)
 * [implementaties](/azure/templates/microsoft.resources/deployments) : voor geneste sjablonen die worden geïmplementeerd op resource groepen.
 * [eventSubscriptions](/azure/templates/microsoft.eventgrid/eventsubscriptions)
@@ -244,11 +245,11 @@ In het volgende voor beeld wordt een resource groep gemaakt en wordt een opslag 
 }
 ```
 
-## <a name="create-policies"></a>Beleidsregels maken
+## <a name="azure-policy"></a>Azure Policy
 
-### <a name="assign-policy"></a>Beleid toewijzen
+### <a name="assign-policy-definition"></a>Beleids definitie toewijzen
 
-In het volgende voor beeld wordt een bestaande beleids definitie toegewezen aan het abonnement. Als het beleid para meters accepteert, geeft u ze als een object. Als het beleid geen para meters heeft, gebruikt u het standaard lege object.
+In het volgende voor beeld wordt een bestaande beleids definitie toegewezen aan het abonnement. Als de beleids definitie para meters heeft, geeft u ze als een object op. Als de beleids definitie geen para meters heeft, gebruikt u het standaard lege object.
 
 ```json
 {
@@ -285,7 +286,7 @@ In het volgende voor beeld wordt een bestaande beleids definitie toegewezen aan 
 Als u deze sjabloon wilt implementeren met Azure CLI, gebruikt u:
 
 ```azurecli-interactive
-# Built-in policy that accepts parameters
+# Built-in policy definition that accepts parameters
 definition=$(az policy definition list --query "[?displayName=='Allowed locations'].id" --output tsv)
 
 az deployment sub create \
@@ -312,9 +313,9 @@ New-AzSubscriptionDeployment `
   -policyParameters $policyParams
 ```
 
-### <a name="define-and-assign-policy"></a>Beleid definiëren en toewijzen
+### <a name="create-and-assign-policy-definitions"></a>Beleids definities maken en toewijzen
 
-U kunt een beleid [definiëren](../../governance/policy/concepts/definition-structure.md) en toewijzen in dezelfde sjabloon.
+U kunt een beleids definitie [definiëren](../../governance/policy/concepts/definition-structure.md) en toewijzen in dezelfde sjabloon.
 
 ```json
 {
@@ -357,7 +358,7 @@ U kunt een beleid [definiëren](../../governance/policy/concepts/definition-stru
 }
 ```
 
-Gebruik de volgende CLI-opdracht om de beleids definitie in uw abonnement te maken en deze toe te passen op het abonnement:
+Gebruik de volgende CLI-opdracht om de beleids definitie in uw abonnement te maken en toe te wijzen aan het abonnement:
 
 ```azurecli
 az deployment sub create \
@@ -373,6 +374,32 @@ New-AzSubscriptionDeployment `
   -Name definePolicy `
   -Location centralus `
   -TemplateUri "https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/policydefineandassign.json"
+```
+
+## <a name="azure-blueprints"></a>Azure Blueprints
+
+### <a name="create-blueprint-definition"></a>Definitie van blauw druk maken
+
+U kunt een blauw druk-definitie [maken](../../governance/blueprints/tutorials/create-from-sample.md) op basis van een sjabloon.
+
+:::code language="json" source="~/quickstart-templates/subscription-level-deployments/blueprints-new-blueprint/azuredeploy.json":::
+
+Als u de definitie van de blauw druk in uw abonnement wilt maken, gebruikt u de volgende CLI-opdracht:
+
+```azurecli
+az deployment sub create \
+  --name demoDeployment \
+  --location centralus \
+  --template-uri "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/subscription-level-deployments/blueprints-new-blueprint/azuredeploy.json"
+```
+
+Als u deze sjabloon wilt implementeren met Power shell, gebruikt u:
+
+```azurepowershell
+New-AzSubscriptionDeployment `
+  -Name demoDeployment `
+  -Location centralus `
+  -TemplateUri "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/subscription-level-deployments/blueprints-new-blueprint/azuredeploy.json"
 ```
 
 ## <a name="template-samples"></a>Voorbeelden van sjablonen

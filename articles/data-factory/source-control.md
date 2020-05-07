@@ -10,35 +10,40 @@ manager: anandsub
 ms.reviewer: ''
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 01/09/2019
-ms.openlocfilehash: 3007865c15ceb03b104282c29179ec59a8196b38
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 04/30/2020
+ms.openlocfilehash: f327844be57d7f8e177f3bf72b1e3b56c5147e00
+ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81604591"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82629317"
 ---
 # <a name="source-control-in-azure-data-factory"></a>Broncode beheer in Azure Data Factory
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
-De Azure Data Factory gebruikers interface-ervaring (UX) heeft twee ervaringen die beschikbaar zijn voor visuele ontwerpen:
+Standaard Azure Data Factory gebruikers interface-schrijvers (UX) direct voor de data factory-service. Deze ervaring heeft de volgende beperkingen:
 
-- Rechtstreeks ontwerpen met de Data Factory-Service
-- Auteur met Azure opslag plaatsen git of GitHub-integratie
+- De Data Factory-service bevat geen opslag plaats voor het opslaan van de JSON-entiteiten voor uw wijzigingen. De enige manier om wijzigingen op te slaan is via de knop **Alles publiceren** en alle wijzigingen worden rechtstreeks naar de Data Factory-service gepubliceerd.
+- De Data Factory-service is niet geoptimaliseerd voor samen werking en versie beheer.
+
+Azure Data Factory kunt u een Git-opslag plaats met behulp van Azure opslag plaatsen of GitHub configureren om een betere ontwerp ervaring te bieden. Git is een versie beheersysteem waarmee u eenvoudiger wijzigingen kunt bijhouden en samen werken. In deze zelf studie wordt uitgelegd hoe u een Git-opslag plaats kunt configureren en gebruiken, samen met het markeren van aanbevolen procedures en een probleemoplossings handleiding.
 
 > [!NOTE]
-> Het is alleen mogelijk rechtstreeks te ontwerpen met de Data Factory-service in de Azure Government Cloud.
+> Azure data factory Git-integratie is niet beschikbaar in de Azure Government Cloud.
 
-## <a name="author-directly-with-the-data-factory-service"></a>Rechtstreeks ontwerpen met de Data Factory-Service
+## <a name="advantages-of-git-integration"></a>Voordelen van Git-integratie
 
-Bij het rechtstreeks ontwerpen met de Data Factory-Service, is de enige manier om wijzigingen op te slaan via de knop **Alles publiceren** . Wanneer u eenmaal hebt geklikt, worden alle wijzigingen die u hebt aangebracht, rechtstreeks naar de Data Factory-service gepubliceerd. 
+Hieronder vindt u een lijst met een aantal voor delen Git-integratie voor de ontwerp ervaring:
 
-![Publicatie modus](media/author-visually/data-factory-publish.png)
-
-Bij het ontwerpen van de Data Factory-Service gelden de volgende beperkingen:
-
-- De Data Factory-service bevat geen opslag plaats voor het opslaan van de JSON-entiteiten voor uw wijzigingen.
-- De Data Factory-service is niet geoptimaliseerd voor samen werking of versie beheer.
+-   **Broncode beheer:** Als uw data factory-workloads cruciaal worden, wilt u uw fabriek met git integreren om diverse voor delen van broncode beheer te benutten, zoals in het volgende:
+    -   De mogelijkheid om wijzigingen bij te houden/te controleren.
+    -   De mogelijkheid om wijzigingen die fouten hebben geïntroduceerd te herstellen.
+-   **Gedeeltelijk opgeslagen:** Wanneer u een ontwerp uitvoert voor de data factory-service, kunt u geen wijzigingen opslaan als concept en moeten alle publicaties data factory validatie door geven. Of uw pijp lijnen niet zijn voltooid of dat u de wijzigingen niet wilt kwijt raken wanneer een computer vastloopt, wordt met git-integratie incrementele wijzigingen van data factory resources toegestaan, ongeacht de toestand waarin ze zich bevinden. Als u een Git-opslag plaats configureert, kunt u de wijzigingen opslaan, zodat u alleen publiceert wanneer u uw wijzigingen in uw tevredenheid hebt getest.
+-   **Samen werking en beheer:** Als u meerdere team leden hebt die bijdragen aan dezelfde Factory, kunt u uw team genoten met elkaar laten samen werken via een code controle proces. U kunt ook uw fabriek zodanig instellen dat niet elke Inzender dezelfde machtigingen heeft. Sommige team leden mogen alleen wijzigingen aanbrengen via git en alleen bepaalde personen in het team mogen de wijzigingen in de fabriek publiceren.
+-   **Betere CI/CD:**  Als u implementeert in meerdere omgevingen met een [doorlopend leverings proces](continuous-integration-deployment.md), worden bepaalde acties eenvoudiger gemaakt door git-integratie. Enkele van deze acties zijn:
+    -   Configureer de release pijplijn zo dat deze automatisch wordt geactiveerd zodra er wijzigingen zijn aangebracht in de Factory van de ontwikkelaar.
+    -   Pas de eigenschappen in uw fabriek aan die beschikbaar zijn als para meters in de Resource Manager-sjabloon. Het kan handig zijn om alleen de vereiste set eigenschappen als para meters te gebruiken en alle andere gegevens vast te maken.
+-   **Betere prestaties:** Een gemiddelde fabriek met git-integratie laadt tien keer sneller dan een ontwerp voor de data factory service. Deze verbetering van prestaties is omdat resources worden gedownload via git.
 
 > [!NOTE]
 > Als u een Git-opslag plaats configureert, wordt de Data Factory-service direct in de Azure Data Factory UX gemaakt. Wijzigingen kunnen rechtstreeks aan de service worden aangebracht via Power shell of een SDK.
@@ -78,7 +83,7 @@ In het deel venster configuratie worden de volgende instellingen voor Azure opsl
 | **Azure opslag plaatsen-organisatie** | De naam van uw Azure opslag plaatsen-organisatie. U kunt de naam van uw Azure opslag plaatsen- `https://{organization name}.visualstudio.com`organisatie vinden op. U kunt [zich aanmelden bij uw Azure opslag plaatsen-organisatie](https://www.visualstudio.com/team-services/git/) om toegang te krijgen tot uw Visual Studio-profiel en uw opslag plaatsen en projecten te bekijken. | `<your organization name>` |
 | **ProjectName** | De naam van uw Azure opslag plaatsen-project. U kunt de naam van uw Azure opslag plaatsen- `https://{organization name}.visualstudio.com/{project name}`project vinden op. | `<your Azure Repos project name>` |
 | **Opslagplaats** | De naam van de opslag plaats van uw Azure opslag plaatsen-code. Azure opslag plaatsen-projecten bevatten Git-opslag plaatsen om uw bron code te beheren naarmate uw project groeit. U kunt een nieuwe opslag plaats maken of een bestaande opslag plaats gebruiken die al in uw project voor komt. | `<your Azure Repos code repository name>` |
-| **Collaboration Branch** | Uw Azure opslag plaatsen Collaboration-vertakking die wordt gebruikt voor het publiceren. Standaard is dit `master`. Wijzig deze instelling als u resources wilt publiceren vanuit een andere vertakking. | `<your collaboration branch name>` |
+| **Collaboration Branch** | Uw Azure opslag plaatsen Collaboration-vertakking die wordt gebruikt voor het publiceren. Standaard zijn `master`dit. Wijzig deze instelling als u resources wilt publiceren vanuit een andere vertakking. | `<your collaboration branch name>` |
 | **Hoofdmap** | Uw hoofdmap in uw Azure opslag plaatsen Collaboration-vertakking. | `<your root folder name>` |
 | **Bestaande Data Factory-resources importeren in opslag plaats** | Hiermee geeft u op of bestaande data factory resources van het UX- **ontwerp canvas** in een Azure opslag plaatsen Git-opslag plaats moeten worden geïmporteerd. Schakel het selectie vakje in om uw data factory-resources te importeren in de bijbehorende Git-opslag plaats in JSON-indeling. Deze actie exporteert elke resource afzonderlijk (dat wil zeggen, de gekoppelde services en gegevens sets worden geëxporteerd naar afzonderlijke JSONs). Als dit selectie vakje niet is ingeschakeld, worden de bestaande resources niet geïmporteerd. | Geselecteerd (standaard) |
 | **Vertakking waarvoor de resource moet worden geïmporteerd** | Hiermee wordt aangegeven in welke vertakking de data factory resources (pijp lijnen, gegevens sets, gekoppelde services, enzovoort) worden geïmporteerd. U kunt resources importeren in een van de volgende vertakkingen: a. Samen werking b. Nieuwe c maken. Bestaande gebruiken |  |
@@ -88,7 +93,7 @@ In het deel venster configuratie worden de volgende instellingen voor Azure opsl
 
 ### <a name="use-a-different-azure-active-directory-tenant"></a>Een andere Azure Active Directory Tenant gebruiken
 
-U kunt een Git-opslagplaats maken in een andere Azure Active Directory-tenant. Als u een andere Azure AD-tenant wilt opgeven, moet u beheerdersmachtigingen hebben voor het Azure-abonnement dat u gebruikt.
+De Azure opslag plaatsen Git opslag plaats kan zich in een andere Azure Active Directory Tenant bevindt. Als u een andere Azure AD-tenant wilt opgeven, moet u beheerdersmachtigingen hebben voor het Azure-abonnement dat u gebruikt.
 
 ### <a name="use-your-personal-microsoft-account"></a>Uw persoonlijke Microsoft-account gebruiken
 
@@ -142,7 +147,7 @@ In het deel venster configuratie worden de volgende instellingen voor de GitHub-
 |:--- |:--- |:--- |
 | **Type opslag plaats** | Het type van de Azure opslag plaatsen code-opslag plaats. | GitHub |
 | **GitHub Enter prise gebruiken** | Selectie vakje om GitHub Enter prise te selecteren | selectie opheffen (standaard) |
-| **GitHub Enter prise-URL** | De GitHub van de Enter prise-basis-URL (moet HTTPS zijn voor lokale GitHub Enter prise-server). Bijvoorbeeld: https://github.mydomain.com. Alleen vereist als **use github Enter prise** is geselecteerd | `<your GitHub enterprise url>` |                                                           
+| **GitHub Enter prise-URL** | De GitHub van de Enter prise-basis-URL (moet HTTPS zijn voor lokale GitHub Enter prise-server). Bijvoorbeeld: `https://github.mydomain.com`. Alleen vereist als **use github Enter prise** is geselecteerd | `<your GitHub enterprise url>` |                                                           
 | **GitHub-account** | De naam van uw GitHub-account. Deze naam kan worden gevonden vanuit https:\//github.com/{account name}/{repository name}. Als u naar deze pagina navigeert, wordt u gevraagd om GitHub OAuth-referenties in te voeren voor uw GitHub-account. | `<your GitHub account name>` |
 | **Naam van opslag plaats**  | De naam van de opslag plaats van uw GitHub-code. GitHub-accounts bevatten Git-opslag plaatsen voor het beheren van de bron code. U kunt een nieuwe opslag plaats maken of een bestaande opslag plaats gebruiken die al in uw account is. | `<your repository name>` |
 | **Collaboration Branch** | Uw GitHub-samenwerkings vertakking die wordt gebruikt voor het publiceren. Standaard is dit het hoofd. Wijzig deze instelling als u resources wilt publiceren vanuit een andere vertakking. | `<your collaboration branch>` |
@@ -160,18 +165,6 @@ In het deel venster configuratie worden de volgende instellingen voor de GitHub-
 
 - Er kunnen Maxi maal 1.000 entiteiten per resource type (zoals pijp lijnen en gegevens sets) worden opgehaald uit één GitHub-vertakking. Als deze limiet is bereikt, wordt u geadviseerd om uw resources te splitsen in afzonderlijke fabrieken. Deze beperking is niet van Azure DevOps git.
 
-## <a name="switch-to-a-different-git-repo"></a>Overschakelen naar een andere Git-opslag plaats
-
-Als u wilt overschakelen naar een andere Git-opslag plaats, klikt u op het pictogram **Git opslag plaats-instellingen** in de rechter bovenhoek van de pagina overzicht van Data Factory. Als u het pictogram niet kunt zien, wist u de cache van de lokale browser. Selecteer het pictogram om de koppeling met de huidige opslag plaats te verwijderen.
-
-![Git-pictogram](media/author-visually/remove-repo.png)
-
-Zodra het deel venster instellingen van de opslag plaats wordt weer gegeven, selecteert u **Git verwijderen**. Voer uw data factory naam in en klik op **bevestigen** om de Git-opslag plaats te verwijderen die is gekoppeld aan uw Data Factory.
-
-![De koppeling met de huidige Git-opslag plaats verwijderen](media/author-visually/remove-repo2.png)
-
-Nadat u de koppeling met de huidige opslag plaats hebt verwijderd, kunt u uw Git-instellingen configureren voor het gebruik van een andere opslag plaats en vervolgens bestaande Data Factory resources importeren in de nieuwe opslag plaats. 
-
 ## <a name="version-control"></a>Versiebeheer
 
 Met versie besturings systemen (ook wel bekend als _broncode beheer_) kunnen ontwikkel aars samen werken aan code en wijzigingen bijhouden die zijn aangebracht in de code basis. Broncode beheer is een essentieel hulp programma voor projecten met meerdere ontwikkel aars.
@@ -188,7 +181,7 @@ Wanneer u klaar bent om de wijzigingen van uw functie vertakking samen te voegen
 
 ### <a name="configure-publishing-settings"></a>Publicatie-instellingen configureren
 
-Voor het configureren van de publicatie vertakking-dat wil zeggen, de vertakking waar Resource Manager-sjablonen worden `publish_config.json` opgeslagen: Voeg een bestand toe aan de hoofdmap in de vertakking voor samen werking. Data Factory dit bestand leest, zoekt naar het veld `publishBranch`en maakt een nieuwe vertakking (als deze nog niet bestaat) met de waarde die u opgeeft. Vervolgens worden alle Resource Manager-sjablonen op de opgegeven locatie opgeslagen. Bijvoorbeeld:
+Data factory genereert standaard de Resource Manager-sjablonen van de gepubliceerde Factory en slaat ze op in een vertakking met `adf_public`de naam. Als u een aangepaste publicatie vertakking wilt configureren, `publish_config.json` voegt u een bestand toe aan de hoofdmap in de vertakking voor samen werking. Bij het publiceren wordt dit bestand door ADF gelezen, wordt gezocht `publishBranch`naar het veld en worden alle Resource Manager-sjablonen op de opgegeven locatie opgeslagen. Als de vertakking niet bestaat, wordt deze automatisch door data factory gemaakt. Hieronder ziet u een voor beeld van hoe dit bestand eruitziet:
 
 ```json
 {
@@ -196,7 +189,7 @@ Voor het configureren van de publicatie vertakking-dat wil zeggen, de vertakking
 }
 ```
 
-Wanneer u een nieuwe publicatie vertakking opgeeft, wordt Data Factory de vorige Publish-vertakking niet verwijderd. Als u de vorige Publish-vertakking wilt verwijderen, moet u deze hand matig verwijderen.
+Azure Data Factory kan slechts één Publiceer vertakking tegelijk hebben. Wanneer u een nieuwe publicatie vertakking opgeeft, wordt Data Factory de vorige Publish-vertakking niet verwijderd. Als u de vorige Publish-vertakking wilt verwijderen, moet u deze hand matig verwijderen.
 
 > [!NOTE]
 > Data Factory leest alleen het `publish_config.json` bestand wanneer de fabriek wordt geladen. Als u de fabriek al hebt geladen in de portal, vernieuwt u de browser om uw wijzigingen van kracht te laten worden.
@@ -214,17 +207,6 @@ Er wordt een deel venster geopend waarin u bevestigt dat de publicatie vertakkin
 > [!IMPORTANT]
 > De hoofd vertakking is niet representatief voor wat er in de Data Factory-service is geïmplementeerd. De master branch *moet* hand matig worden gepubliceerd naar de Data Factory-service.
 
-## <a name="advantages-of-git-integration"></a>Voordelen van Git-integratie
-
--   **Broncode beheer**. Als uw data factory-workloads cruciaal worden, wilt u uw fabriek met git integreren om diverse voor delen van broncode beheer te benutten, zoals in het volgende:
-    -   De mogelijkheid om wijzigingen bij te houden/te controleren.
-    -   De mogelijkheid om wijzigingen die fouten hebben geïntroduceerd te herstellen.
--   **Gedeeltelijk opgeslagen**. Wanneer u een groot aantal wijzigingen in uw fabriek doorvoert, zult u realiseren dat u de wijzigingen niet kunt opslaan als concept, omdat u niet gereed bent, of als u uw wijzigingen niet wilt kwijt raken wanneer uw computer vastloopt. Met git-integratie kunt u de wijzigingen incrementeel blijven opslaan en alleen publiceren naar de fabriek wanneer u klaar bent. Git fungeert als staging-plaats voor uw werk, totdat u uw wijzigingen in uw tevredenheid hebt getest.
--   **Samen werking en beheer**. Als u meerdere team leden hebt die deel nemen aan dezelfde Factory, kunt u uw team genoten met elkaar laten samen werken via een code controle proces. U kunt ook uw fabriek instellen, zodat niet elke bijdrager aan de Factory toestemming heeft om te implementeren in de fabriek. Team leden mogen alleen wijzigingen aanbrengen via git, maar alleen bepaalde personen in het team mogen de wijzigingen in de fabriek publiceren.
--   Het **verschil wordt weer gegeven**. In de Git-modus ziet u een goed vergelijkend verschil van de nettolading die u op het punt staat te publiceren naar de fabriek. Dit verschil toont u alle resources/entiteiten die zijn gewijzigd/toegevoegd/verwijderd sinds de laatste keer dat u uw fabriek hebt gepubliceerd. Op basis van dit verschil kunt u door gaan met publiceren, of teruggaan en de wijzigingen controleren en later terugkomen.
--   **Betere CI/cd**. Als u de Git-modus gebruikt, kunt u uw release pijplijn zo configureren dat deze automatisch wordt geactiveerd zodra er wijzigingen zijn aangebracht in de dev Factory. U kunt ook de eigenschappen in uw fabriek aanpassen die beschikbaar zijn als para meters in de Resource Manager-sjabloon. Het kan handig zijn om alleen de vereiste set eigenschappen als para meters te gebruiken en alle andere gegevens vast te maken.
--   **Betere prestaties**. Een gemiddelde fabriek wordt tien keer sneller in de Git-modus geladen dan in de normale modus LIVE, omdat de resources worden gedownload via git.
-
 ## <a name="best-practices-for-git-integration"></a>Aanbevolen procedures voor git-integratie
 
 ### <a name="permissions"></a>Machtigingen
@@ -238,9 +220,9 @@ Het is raadzaam om directe incheckers niet toe te staan voor de vertakking voor 
 
 ### <a name="using-passwords-from-azure-key-vault"></a>Wacht woorden van Azure Key Vault gebruiken
 
-Het is raadzaam om Azure Key Vault te gebruiken voor het opslaan van verbindings reeksen of wacht woorden voor Data Factory gekoppelde services. Uit veiligheids overwegingen worden deze geheime gegevens niet opgeslagen in Git, zodat eventuele wijzigingen in gekoppelde services onmiddellijk worden gepubliceerd in de Azure Data Factory-service.
+Het is raadzaam om Azure Key Vault te gebruiken voor het opslaan van verbindings reeksen of wacht woorden of beheerde identiteits verificatie voor Data Factory gekoppelde services. Uit veiligheids overwegingen slaat data factory geen geheimen op in Git. Eventuele wijzigingen in gekoppelde services met geheimen, zoals wacht woorden, worden direct gepubliceerd in de Azure Data Factory-service.
 
-Het gebruik van Key Vault zorgt ook voor continue integratie en implementatie, omdat u deze geheimen niet hoeft op te geven tijdens de implementatie van Resource Manager-sjablonen.
+Het gebruik van Key Vault-of MSI-verificatie zorgt ook voor continue integratie en implementatie, omdat u deze geheimen niet hoeft op te geven tijdens de implementatie van Resource Manager-sjablonen.
 
 ## <a name="troubleshooting-git-integration"></a>Problemen met git-integratie oplossen
 
@@ -253,15 +235,25 @@ Als de publicatie vertakking niet is gesynchroniseerd met de Master vertakking e
 1. Een pull-aanvraag maken om de wijzigingen aan de collaboration Branch samen te voegen 
 
 Hieronder ziet u enkele voor beelden van situaties die een verouderde publicatie vertakking kunnen veroorzaken:
-- Een gebruiker heeft meerdere vertakkingen. In één functie vertakking hebben ze een gekoppelde service verwijderd waaraan geen Azure is gekoppeld (niet Azure gekoppelde services worden onmiddellijk gepubliceerd, ongeacht of ze al dan niet in Git of niet zijn) en voegen de functie vertakking nooit toe aan de brnach voor samen werking.
+- Een gebruiker heeft meerdere vertakkingen. In één functie vertakking hebben ze een gekoppelde service verwijderd die niet Azure gekoppeld is (niet Azure gekoppelde services onmiddellijk worden gepubliceerd, ongeacht of ze in Git of niet zijn) en nooit de functie vertakking in de vertakking samen te voegen.
 - Een gebruiker heeft de data factory gewijzigd met de SDK of Power shell
 - Een gebruiker heeft alle resources naar een nieuwe vertakking verplaatst en heeft geprobeerd om de eerste keer te publiceren. Gekoppelde services moeten hand matig worden gemaakt bij het importeren van resources.
 - Een gebruiker uploadt een niet-Azure gekoppelde service of een Integration Runtime JSON hand matig. Ze verwijzen naar die resource vanuit een andere resource, zoals een gegevensset, een gekoppelde service of een pijp lijn. Een niet-Azure gekoppelde service die via de UX is gemaakt, wordt onmiddellijk gepubliceerd, omdat de referenties moeten worden versleuteld. Als u een gegevensset uploadt die verwijst naar die gekoppelde service en probeert te publiceren, wordt deze door de UX toegestaan omdat deze zich in de Git-omgeving bevindt. Deze wordt op het moment van publicatie geweigerd omdat deze niet bestaat in de data factory service.
 
-## <a name="provide-feedback"></a>Feedback geven
-Selecteer **feedback** om commentaar te geven over functies of om micro soft op de hoogte te stellen over problemen met het hulp programma:
+## <a name="switch-to-a-different-git-repository"></a>Overschakelen naar een andere Git-opslag plaats
 
-![Feedback](media/author-visually/provide-feedback.png)
+Als u wilt overschakelen naar een andere Git-opslag plaats, klikt u op het pictogram **Git opslag plaats-instellingen** in de rechter bovenhoek van de pagina overzicht van Data Factory. Als u het pictogram niet kunt zien, wist u de cache van de lokale browser. Selecteer het pictogram om de koppeling met de huidige opslag plaats te verwijderen.
+
+![Git-pictogram](media/author-visually/remove-repo.png)
+
+Zodra het deel venster instellingen van de opslag plaats wordt weer gegeven, selecteert u **Git verwijderen**. Voer uw data factory naam in en klik op **bevestigen** om de Git-opslag plaats te verwijderen die is gekoppeld aan uw Data Factory.
+
+![De koppeling met de huidige Git-opslag plaats verwijderen](media/author-visually/remove-repo2.png)
+
+Nadat u de koppeling met de huidige opslag plaats hebt verwijderd, kunt u uw Git-instellingen configureren voor het gebruik van een andere opslag plaats en vervolgens bestaande Data Factory resources importeren in de nieuwe opslag plaats.
+
+> [!IMPORTANT]
+> Wanneer u de Git-configuratie van een data factory verwijdert, worden niets uit de opslag plaats verwijderd. In de fabriek worden alle gepubliceerde resources opgenomen. U kunt door gaan met het rechtstreeks bewerken van de fabriek op de service.
 
 ## <a name="next-steps"></a>Volgende stappen
 

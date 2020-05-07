@@ -8,12 +8,13 @@ ms.author: pmorgan
 ms.date: 05/28/2019
 ms.topic: conceptual
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: df27a77c202951a6c789703f12712e75bd8b5906
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: has-adal-ref
+ms.openlocfilehash: c2800dc361eb274eeef706556e09731da079ccab
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77656968"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82611752"
 ---
 # <a name="authentication-and-authorization-to-azure-spatial-anchors"></a>Verificatie en autorisatie voor Azure spatiale ankers
 
@@ -45,7 +46,7 @@ Er worden twee sleutels beschikbaar gemaakt, die beide gelijktijdig geldig zijn 
 
 De SDK heeft ingebouwde ondersteuning voor verificatie met account sleutels; u hoeft alleen de eigenschap AccountKey in te stellen voor uw cloudSession-object.
 
-# <a name="c"></a>[C#](#tab/csharp)
+# <a name="c"></a>[G #](#tab/csharp)
 
 ```csharp
 this.cloudSession.Configuration.AccountKey = @"MyAccountKey";
@@ -120,7 +121,7 @@ Voor toepassingen die zijn gericht Azure Active Directory gebruikers, is de aanb
 
 Met dat moet uw toepassing MSAL een Azure AD-token kunnen verkrijgen. u kunt dat Azure AD-token instellen als de **authenticationToken** in uw Cloud sessie configuratie object.
 
-# <a name="c"></a>[C#](#tab/csharp)
+# <a name="c"></a>[G #](#tab/csharp)
 
 ```csharp
 this.cloudSession.Configuration.AuthenticationToken = @"MyAuthenticationToken";
@@ -211,7 +212,7 @@ En het antwoord bevat het MR-token in tekst zonder opmaak.
 
 Dat MR-token vervolgens wordt geretourneerd naar de client. Uw client-app kan deze vervolgens instellen als toegangs token in de Cloud sessie configuratie.
 
-# <a name="c"></a>[C#](#tab/csharp)
+# <a name="c"></a>[G #](#tab/csharp)
 
 ```csharp
 this.cloudSession.Configuration.AccessToken = @"MyAccessToken";

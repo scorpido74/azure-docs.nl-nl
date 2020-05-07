@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 01/06/2020
-ms.openlocfilehash: b0ba47ff28208bce1a6fa6ec300a261d788167de
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e3fae34d0bb1aaaa2471f1cc9fd55ef9b4b73dfd
+ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81415601"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82594284"
 ---
 # <a name="azure-integration-runtime-ip-addresses"></a>IP-adressen van Azure Integration Runtime
 
@@ -25,7 +25,7 @@ ms.locfileid: "81415601"
 De IP-adressen die Azure Integration Runtime gebruikt, zijn afhankelijk van de regio waar uw Azure Integration runtime zich bevindt. *Alle* Azure Integration runtimes die zich in dezelfde regio bevinden, gebruiken dezelfde IP-adresbereiken.
 
 > [!IMPORTANT]  
-> Deze IP-adressen worden momenteel niet gebruikt voor gegevens stromen. 
+> Gegevens stromen bieden geen ondersteuning voor het gebruik van vaste IP-bereiken.
 >
 > U kunt deze IP-bereiken gebruiken voor het verplaatsen van gegevens, pijp lijnen en externe activiteiten. Deze IP-bereiken kunnen worden gebruikt voor White List in gegevens archieven/netwerk beveiligings groep (NSG)/firewalls voor inkomende toegang vanuit Azure Integration runtime. 
 

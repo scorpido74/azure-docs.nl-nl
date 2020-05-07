@@ -6,13 +6,13 @@ ms.author: tyfox
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 08/22/2019
-ms.openlocfilehash: bb78d84aa0f9a2832b6599edeac9d50e0e226437
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 04/20/2020
+ms.openlocfilehash: 058300dca3e7eae41b7d8010e1ca5ee7d4cdcf3a
+ms.sourcegitcommit: acc558d79d665c8d6a5f9e1689211da623ded90a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80546341"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82598467"
 ---
 # <a name="migrate-to-granular-role-based-access-for-cluster-configurations"></a>Migreren naar gedetailleerde, op rollen gebaseerde toegang voor clusterconfiguraties
 
@@ -24,14 +24,14 @@ Voorheen kunnen geheimen worden verkregen via de HDInsight API door cluster gebr
 
 Vanaf 3 september 2019 heeft toegang tot deze geheimen de `Microsoft.HDInsight/clusters/configurations/action` machtiging nodig, wat betekent dat gebruikers niet langer toegang hebben tot de rol van lezer. De functies die deze machtiging hebben, zijn Inzender, eigenaar en de nieuwe rol HDInsight-cluster operator (meer hierover).
 
-We introduceren ook een nieuwe rol van een [HDInsight-cluster operator](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#hdinsight-cluster-operator) die geheimen kan ophalen zonder dat de beheerders machtigingen van Inzender of eigenaar worden toegewezen. Samenvattend:
+We introduceren ook een nieuwe rol van een [HDInsight-cluster operator](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#hdinsight-cluster-operator) die geheimen kan ophalen zonder dat de beheerders machtigingen van Inzender of eigenaar worden toegewezen. Samenvatting:
 
 | Rol                                  | Verwijderd                                                                                       | Gaat verder       |
 |---------------------------------------|--------------------------------------------------------------------------------------------------|-----------|
-| Lezer                                | -Lees toegang, inclusief geheimen                                                                   | -Lees toegang, met **uitzonde ring van** geheimen |           |   |   |
+| Lezer                                | -Lees toegang, inclusief geheimen.                                                                   | -Lees toegang, met **uitzonde ring van** geheimen |           |   |   |
 | HDInsight-cluster operator<br>(Nieuwe rol) | N.v.t.                                                                                              | -Lees-en schrijf toegang, inclusief geheimen         |   |   |
-| Inzender                           | -Lees-en schrijf toegang, inclusief geheimen<br>-Alle typen Azure-resources maken en beheren.     | Geen wijziging |
-| Eigenaar                                 | -Lees-en schrijf toegang inclusief geheimen<br>-Volledige toegang tot alle resources<br>-Toegang tot anderen delegeren | Geen wijziging |
+| Inzender                           | -Lees-en schrijf toegang, inclusief geheimen.<br>-Alle typen Azure-resources maken en beheren.<br>-Script acties uitvoeren.     | Geen wijziging |
+| Eigenaar                                 | -Lees-en schrijf toegang, inclusief geheimen.<br>-Volledige toegang tot alle resources<br>-Toegang tot anderen delegeren.<br>-Script acties uitvoeren. | Geen wijziging |
 
 Voor informatie over het toevoegen van de toewijzing van de HDInsight-cluster operator aan een gebruiker om hen lees-/schrijftoegang te verlenen aan cluster geheimen, raadpleegt u de onderstaande sectie, [voegt u de roltoewijzing van de hdinsight-cluster operator toe aan een gebruiker](#add-the-hdinsight-cluster-operator-role-assignment-to-a-user).
 

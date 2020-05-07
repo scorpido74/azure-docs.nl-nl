@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/28/2020
 ms.author: memildin
-ms.openlocfilehash: f4379a5149fff020eb532f0e17cc1c37fbdcd694
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 2eb302462e402e701cc5ae664239c457c90ab1b9
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82232424"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82612789"
 ---
 # <a name="upgrade-to-standard-tier-for-enhanced-security"></a>Upgrade naar Standard-laag voor verbeterde beveiliging
 
@@ -49,9 +49,12 @@ De laag standaard ophalen:
 [![Security Center prijzen](media/security-center-pricing/pricing-tier-page.png)](media/security-center-pricing/pricing-tier-page.png#lightbox)
 
 > [!NOTE]
-> Als u alle Security Center functies wilt inschakelen, inclusief de mogelijkheden van geavanceerde beveiliging tegen bedreigingen, moet u de prijs categorie Standard Toep assen op het abonnement dat de toepasselijke werk belastingen bevat. Als u de prijzen voor een werk ruimte configureert, kunt u niet just-in-time-VM-toegang, adaptieve toepassings besturings elementen en netwerk detecties voor Azure-resources. 
+> Als u alle Security Center functies wilt inschakelen, inclusief mogelijkheden voor bedreigings beveiliging, moet u de prijs categorie Standard Toep assen op het abonnement dat de toepasselijke werk belastingen bevat. Als u de prijzen voor een werk ruimte configureert, kunt u niet just-in-time-VM-toegang, adaptieve toepassings besturings elementen en netwerk detecties voor Azure-resources. 
 >
-> De bedreigings beveiliging van Security Center voor opslag accounts en PaaS SQL/MySQL-PAGINA'S zijn momenteel de enige workloads die op resource niveau kunnen worden ingeschakeld voor de beveiliging van afzonderlijke opslag-en SQL-workloads.
+> U kunt bedreigings beveiliging inschakelen voor **Azure Storage accounts** op het niveau van het abonnement of het resourceniveau.
+> U kunt bedreigingen beveiliging inschakelen voor **Azure SQL database SQL-servers** op abonnements niveau of op resource niveau.
+> U kunt bedreigingen beveiliging inschakelen voor **Azure database for MariaDB/MySQL/PostgreSQL** op het niveau van de resource.
+
 
 ## <a name="why-upgrade-to-standard"></a>Waarom upgraden naar Standard?
 Security Center biedt verbeterde beveiliging en bedreigings beveiliging voor uw hybride Cloud werkbelastingen, waaronder:

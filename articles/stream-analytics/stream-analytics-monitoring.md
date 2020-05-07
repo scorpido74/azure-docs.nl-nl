@@ -8,12 +8,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 06/21/2018
 ms.custom: seodec18
-ms.openlocfilehash: 4e9f90035816269d2d41781be34d0d8080628b12
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 54bff88e9650240a3703e18d583f603cafeb3022
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75431657"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82611888"
 ---
 # <a name="understand-stream-analytics-job-monitoring-and-how-to-monitor-queries"></a>Meer informatie over Stream Analytics taak bewaking en het bewaken van query's
 
@@ -37,7 +37,7 @@ Het venster wordt weer gegeven zoals hieronder weer gegeven:
 | Functie aanvragen      | Het aantal aanroepen naar de Azure Machine Learning functie (indien aanwezig). |
 | Fouten bij het deserialiseren van de invoer       | Aantal invoer gebeurtenissen dat niet kan worden gedeserialiseerd.  |
 | Invoer gebeurtenis bytes      | De hoeveelheid gegevens die wordt ontvangen door de Stream Analytics taak, in bytes. Dit kan worden gebruikt om te valideren dat gebeurtenissen worden verzonden naar de invoer bron. |
-| Invoer gebeurtenissen           | Het aantal records dat uit de invoer gebeurtenissen is gedeserialiseerd. Dit aantal bevat geen binnenkomende gebeurtenissen die leiden tot fouten bij deserialisatie. |
+| Invoer gebeurtenissen           | Het aantal records dat uit de invoer gebeurtenissen is gedeserialiseerd. Dit aantal bevat geen binnenkomende gebeurtenissen die leiden tot fouten bij deserialisatie. Dezelfde gebeurtenissen kunnen door Stream Analytics meerdere keren worden opgenomen in scenario's zoals interne herstel bewerkingen en Self-join's. Daarom wordt aanbevolen geen invoer gebeurtenissen en metrische gegevens over uitvoer gebeurtenissen te verwachten als uw taak een eenvoudige ' Pass Through-query heeft. |
 | Invoer bronnen ontvangen       | Het aantal berichten dat is ontvangen door de taak. Voor Event hub is een bericht één Event Data. Voor blob is een bericht één blob. Houd er rekening mee dat invoer bronnen worden geteld vóór deserialisatie. Als er fouten zijn opgetreden bij de serialisatie, kunnen invoer bronnen groter zijn dan invoer gebeurtenissen. Anders kan het kleiner zijn dan of gelijk zijn aan invoer gebeurtenissen, omdat elk bericht meerdere gebeurtenissen kan bevatten. |
 | Late invoer gebeurtenissen      | Gebeurtenissen die later zijn aangekomen dan het geconfigureerde tolerantie venster voor late aankomst. Meer informatie over het [Azure stream Analytics van overwegingen voor gebeurtenis orders](stream-analytics-out-of-order-and-late-events.md) . |
 | Out-of-order gebeurtenissen    | Het aantal gebeurtenissen dat in de juiste volg orde is ontvangen en dat is verwijderd of een aangepast tijds tempel heeft gegeven, op basis van het beleid voor het best Ellen van gebeurtenissen. Dit kan worden beïnvloed door de configuratie van de instelling voor het verouderde tolerantie venster. |

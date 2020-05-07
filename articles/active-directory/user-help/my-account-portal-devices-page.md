@@ -11,12 +11,12 @@ ms.subservice: user-help
 ms.topic: conceptual
 ms.date: 10/28/2019
 ms.author: curtand
-ms.openlocfilehash: e273a44c1cbc5a6a6161f059038c7e87973a33d5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d43b2bd5912375c3bb2010f0f2ae75a119512f03
+ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77062486"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82625830"
 ---
 # <a name="manage-your-connected-devices-from-the-devices-page"></a>Uw verbonden apparaten beheren via de pagina apparaten
 
@@ -31,7 +31,7 @@ De pagina **apparaten** van de portal van **Mijn account** helpt u bij het beher
 
 ## <a name="view-your-connected-devices"></a>Uw verbonden apparaten weer geven
 
-1. Meld u aan bij uw werk-of school account en ga vervolgens naar **Mijn account** (https://myprofile.microsoft.com/) pagina.
+1. Meld u aan bij uw werk-of school account en ga vervolgens naar **Mijn account** (https://myaccount.microsoft.com/) pagina.
 
 2. Selecteer **apparaten** in het navigatie deel venster links of selecteer de koppeling **apparaten beheren** in het blok **apparaten** .
 

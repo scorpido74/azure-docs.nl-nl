@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 08/14/2019
 ms.author: chrimo
-ms.openlocfilehash: 2543dd12e8a75a038a1fc04371b8c562ef696e25
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 994edf26e43c7ad67d4f8822d4ed0d18d53b510b
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79254233"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82612449"
 ---
 # <a name="apply-windows-license-to-session-host-virtual-machines"></a>Windows-licentie Toep assen op virtuele machines van de sessiehost
 
@@ -23,7 +23,7 @@ Met Windows Virtual Desktop Licensing kunt u een licentie Toep assen op elke vir
 
 Er zijn een aantal manieren om de Windows-licentie voor virtueel bureau blad te gebruiken:
 - U kunt een hostgroep en de virtuele machines van de sessiemap maken met behulp van de [Azure Marketplace-aanbieding](./create-host-pools-azure-marketplace.md). Voor virtuele machines die op deze manier zijn gemaakt, wordt automatisch de licentie toegepast.
-- U kunt een hostgroep en de virtuele machines van de sessiemap maken met behulp van de [GitHub Azure Resource Manager sjabloon](./create-host-pools-arm-template.md). Voor virtuele machines die op deze manier zijn gemaakt, wordt automatisch de licentie toegepast.
+- U kunt een hostgroep en de virtuele machines van de sessiemap maken met behulp van de [GitHub Azure Resource Manager sjabloon](./virtual-desktop-fall-2019/create-host-pools-arm-template.md). Voor virtuele machines die op deze manier zijn gemaakt, wordt automatisch de licentie toegepast.
 - U kunt een licentie Toep assen op een bestaande virtuele machine van een host. Volg hiervoor de instructies in [een hostgroep maken met Power shell](./create-host-pools-powershell.md) om een hostgroep en gekoppelde vm's te maken en ga vervolgens terug naar dit artikel voor meer informatie over het Toep assen van de licentie.
 
 ## <a name="apply-a-windows-license-to-a-session-host-vm"></a>Een Windows-licentie Toep assen op een Session Host-VM

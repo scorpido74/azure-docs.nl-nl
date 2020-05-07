@@ -83,6 +83,8 @@
       href: durable-functions-http-api.md
     - name: .NET API
       href: /dotnet/api/microsoft.azure.webjobs.extensions.durabletask?view=azure-dotnet
+    - name: Node.js-API
+      href: /javascript/api/durable-functions/?view=azure-node-latest
 - name: Instructiegidsen
   items:
     - name: Ontwikkelen
@@ -107,7 +109,7 @@
           href: ../run-functions-from-deployment-package.md?toc=%2fazure%2fazure-functions%2fdurable%2ftoc.json
         - name: Implementeren met nul uitvaltijd
           href: durable-functions-zero-downtime-deployment.md
-    - name: Bewaken
+    - name: Controleren
       items:
         - name: Diagnostiek
           href: durable-functions-diagnostics.md
@@ -115,9 +117,9 @@
           href: ../functions-monitoring.md?toc=%2fazure%2fazure-functions%2fdurable%2ftoc.json
         - name: Prijzen
           href: durable-functions-billing.md
-- name: Bronnen
+- name: Resources
   items:
-    - name: Ontwikkel uw vaardigheden met Microsoft Learn
+    - name: Uw vaardigheden ontwikkelen met Microsoft Learn
       href: /learn/browse/?products=azure-functions
     - name: Azure-roadmap
       href: 'https://azure.microsoft.com/roadmap/?category=compute'

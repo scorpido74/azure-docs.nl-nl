@@ -10,12 +10,12 @@ ms.author: larryfr
 author: Blackmist
 ms.date: 03/17/2020
 ms.custom: seoapril2019, seodec18
-ms.openlocfilehash: 9f1d23f11cf73680a8861c9f1ac6cbd40ad497a4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 95a1734a3e7fd65fc87f4825ae71ee3006616bc3
+ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81257331"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82629368"
 ---
 # <a name="how-azure-machine-learning-works-architecture-and-concepts"></a>Hoe Azure Machine Learning werkt: architectuur en concepten
 
@@ -224,7 +224,7 @@ Met **Azure machine learning gegevens sets** (preview) kunt u eenvoudig toegang 
 
 Gegevens sets bieden methoden voor het werken met in populaire indelingen, zoals het `from_delimited_files()` gebruik `to_pandas_dataframe()`van of.
 
-Zie [Azure machine learning gegevens sets maken en registreren](how-to-create-register-datasets.md)voor meer informatie.  Raadpleeg de [voorbeeld notitieblokken](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/work-with-data/datasets)voor meer voor beelden met behulp van gegevens sets.
+Zie [Azure machine learning gegevens sets maken en registreren](how-to-create-register-datasets.md)voor meer informatie.  Raadpleeg de [voorbeeld notitieblokken](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/work-with-data/datasets-tutorial)voor meer voor beelden met behulp van gegevens sets.
 
 Een **gegevens archief** is een opslag abstractie van een Azure-opslag account. De gegevens opslag kan ofwel een Azure Blob-container ofwel een Azure-bestands share als de back-end-opslag gebruiken. Elke werk ruimte heeft een standaard gegevens opslag en u kunt aanvullende gegevens opslag registreren. Gebruik de python SDK API of de Azure Machine Learning CLI om bestanden op te slaan en op te halen uit de gegevens opslag.
 

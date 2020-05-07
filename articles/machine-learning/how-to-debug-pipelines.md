@@ -9,12 +9,12 @@ ms.topic: conceptual
 author: likebupt
 ms.author: keli19
 ms.date: 03/18/2020
-ms.openlocfilehash: 9c2e00ed14a45c6df7cf72845db2ecd069381ca5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4f0eb6aa92dd8999baed6868a159c86d5e7bd0c8
+ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81257206"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82594615"
 ---
 # <a name="debug-and-troubleshoot-machine-learning-pipelines"></a>Fouten in Machine Learning-pijplijnen opsporen en oplossen
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -128,28 +128,32 @@ logger.error("I am an OpenCensus error statement with custom dimensions", {'step
 
 ## <a name="debug-and-troubleshoot-in-azure-machine-learning-designer-preview"></a>Fouten opsporen en oplossen in Azure Machine Learning Designer (preview-versie)
 
-In deze sectie vindt u een overzicht van het oplossen van problemen met pijp lijnen in de ontwerp functie.
-Voor pijp lijnen die in de ontwerp functie zijn gemaakt, kunt u de **logboek bestanden** vinden op de pagina ontwerpen of op de detail pagina van de pijplijn uitvoering.
+In deze sectie vindt u een overzicht van het oplossen van problemen met pijp lijnen in de ontwerp functie. Voor pijp lijnen die in de ontwerp functie zijn gemaakt, kunt u het **70_driver_log** bestand vinden op de pagina ontwerpen of op de detail pagina van de pijplijn uitvoering.
 
-### <a name="access-logs-from-the-authoring-page"></a>Logboeken openen via de pagina ontwerpen
+### <a name="get-logs-from-the-authoring-page"></a>Logboeken ophalen via de pagina ontwerpen
 
-Wanneer u een pijplijn uitvoering verzendt en op de pagina voor ontwerpen blijft, vindt u de logboek bestanden die voor elke module worden gegenereerd.
+Wanneer u een pijplijn uitvoering verzendt en op de bewerkings pagina blijft, kunt u de logboek bestanden vinden die voor elke module worden gegenereerd, wanneer elke module is voltooid.
 
-1. Selecteer een module in het ontwerp doek.
+1. Selecteer een module die op het ontwerp canvas is uitgevoerd.
 1. Ga in het rechterdeel venster van de module naar het tabblad **uitvoer en logboeken** .
-1. Selecteer het logboek bestand `70_driver_log.txt`.
+1. Vouw het rechterdeel venster uit en selecteer de **70_driver_log. txt** om het bestand in de browser weer te geven. U kunt Logboeken ook lokaal downloaden.
 
-    ![Logboeken voor pagina module ontwerpen](./media/how-to-debug-pipelines/pipelinerun-05.png)
+    ![Uitgevouwen uitvoer deel venster in de ontwerp functie](./media/how-to-debug-pipelines/designer-logs.png)
 
-### <a name="access-logs-from-pipeline-runs"></a>Toegang tot logboeken vanuit pijplijn uitvoeringen
+### <a name="get-logs-from-pipeline-runs"></a>Logboeken ophalen van pijplijn uitvoeringen
 
-U kunt ook de logboek bestanden van specifieke uitvoeringen vinden in de detail pagina pijp lijn uitvoeren in de secties **pijp lijnen** of **experimenten** .
+U kunt ook de logboek bestanden voor specifieke uitvoeringen vinden op de detail pagina pijp lijn uitvoeren, die u kunt vinden in de sectie **pijp lijnen** of **experimenten** van de Studio.
 
 1. Selecteer een pijplijn uitvoering die in de ontwerp functie is gemaakt.
-    ![Pagina pijplijn uitvoering](./media/how-to-debug-pipelines/pipelinerun-04.png)
-1. Selecteer een wille keurige module in het voorbeeld venster.
+
+    ![Pagina pijplijn uitvoering](./media/how-to-debug-pipelines/designer-pipelines.png)
+
+1. Selecteer een module in het voorbeeld venster.
 1. Ga in het rechterdeel venster van de module naar het tabblad **uitvoer en logboeken** .
-1. Selecteer het logboek bestand `70_driver_log.txt`.
+1. Vouw het rechterdeel venster uit om het **70_driver_log. txt** -bestand in de browser weer te geven of selecteer het bestand om de logboeken lokaal te downloaden.
+
+> [!IMPORTANT]
+> Als u een pijp lijn wilt bijwerken op de pagina Details van de pijplijn uitvoering, moet u de pijplijn uitvoering **klonen** naar een nieuwe pijp lijn concept. Een pijplijn uitvoering is een moment opname van de pijp lijn. Het is vergelijkbaar met een logboek bestand en kan niet worden gewijzigd. 
 
 ## <a name="debug-and-troubleshoot-in-application-insights"></a>Fouten opsporen en oplossen in Application Insights
 Voor meer informatie over het gebruik van de bibliotheek opentellingen python op deze manier raadpleegt u deze hand leiding: [fouten opsporen en problemen oplossen met machine learning pijp lijnen in Application Insights](how-to-debug-pipelines-application-insights.md)
@@ -171,7 +175,7 @@ In sommige gevallen moet u mogelijk interactief fouten opsporen in de python-cod
 
 Zie voor meer informatie over het gebruik van een Azure Virtual Network met Azure Machine Learning [Secure Azure ml experimenten en de functies voor het](how-to-enable-virtual-network.md)afmaken van een azure-Virtual Network.
 
-### <a name="how-it-works"></a>Hoe werkt het?
+### <a name="how-it-works"></a>Hoe het werkt
 
 Met uw ML pijplijn stappen voert u python-scripts uit. Deze scripts zijn gewijzigd om de volgende acties uit te voeren:
     

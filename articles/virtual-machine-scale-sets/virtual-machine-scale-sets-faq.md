@@ -8,12 +8,12 @@ ms.service: virtual-machine-scale-sets
 ms.topic: conceptual
 ms.date: 05/24/2019
 ms.author: mimckitt
-ms.openlocfilehash: c2db0cca120d08b85229618547a2aaabbba437ad
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0a5fcb3bb1ebf48eaa9cdce70800a4239c5fae03
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81870222"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82611395"
 ---
 # <a name="azure-virtual-machine-scale-sets-faqs"></a>Veelgestelde vragen over schaalsets voor virtuele Azure-machines
 
@@ -45,11 +45,13 @@ Maak een VM-installatie kopie en leg deze vast en gebruik deze als de bron voor 
 
 ### <a name="if-i-reduce-my-scale-set-capacity-from-20-to-15-which-vms-are-removed"></a>Als ik de capaciteit van mijn schaalset verlaag van 20 naar 15, welke virtuele machines worden er dan verwijderd?
 
-Virtuele machines worden gelijkmatig verwijderd uit updatedomeinen en foutdomeinen van de schaalset om de beschikbaarheid te maximaliseren. VM's met de hoogste id's worden het eerst verwijderd.
+Standaard worden virtuele machines van de schaalset gelijkmatig over de beschikbaarheids zones verwijderd (als de schaalset is geïmplementeerd in de zonegebonden-configuratie) en fout domeinen om de beschik baarheid te maximaliseren. VM's met de hoogste id's worden het eerst verwijderd.
+
+U kunt de volg orde van het verwijderen van de virtuele machine wijzigen door een beleid voor de [schaal in](virtual-machine-scale-sets-scale-in-policy.md) te stellen voor de schaalset.
 
 ### <a name="what-if-i-then-increase-the-capacity-from-15-to-18"></a>Wat gebeurt er als ik de capaciteit verhoog van 15 naar 18?
 
-Als u de capaciteit verhoogt naar 18, worden er 3 nieuwe virtuele machines gemaakt. De id van elk VM-exemplaar wordt oplopend gegenereerd vanaf de vorige hoogste waarde (bijvoorbeeld 20, 21, 22). VM's worden verdeeld over foutdomeinen en updatedomeinen.
+Als u de capaciteit verhoogt naar 18, worden er 3 nieuwe virtuele machines gemaakt. De id van elk VM-exemplaar wordt oplopend gegenereerd vanaf de vorige hoogste waarde (bijvoorbeeld 20, 21, 22). Vm's worden verdeeld over fout domeinen.
 
 ### <a name="when-im-using-multiple-extensions-in-a-scale-set-can-i-enforce-an-execution-sequence"></a>Kan ik een uitvoeringsvolgorde toepassen wanneer ik meerdere extensies in een schaalset gebruik?
 
@@ -335,13 +337,13 @@ Zie [Microsoft Trust Center](https://www.microsoft.com/TrustCenter/Compliance/PC
 
 Ja. U ziet enkele voor beelden van MSI-sjablonen in azure Quick Start-sjablonen voor [Linux](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-msi) en [Windows](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-msi).
 
-## <a name="deleting"></a>Verwijder 
+## <a name="deleting"></a>Verwijder
 
 ### <a name="will-the-locks-i-set-in-place-on-virtual-machine-scale-set-instances-be-respected-when-deleting-instances"></a>Worden de vergren delingen die ik heb ingesteld voor instanties van virtuele-machine schaal sets gerespecteerd bij het verwijderen van instanties?
 
-In azure Portal kunt u een afzonderlijk exemplaar of bulksgewijs verwijderen verwijderen door meerdere exemplaren te selecteren. Als u probeert een enkele instantie te verwijderen die een vergren deling heeft, wordt de vergren deling gerespecteerd en kunt u het exemplaar niet verwijderen. Als u echter meerdere instanties tegelijk selecteert en een van deze instanties een vergren deling heeft, worden de vergren delingen niet geëerbiedigd en worden alle geselecteerde exemplaren verwijderd. 
- 
-In azure CLI hebt u alleen de mogelijkheid om een afzonderlijk exemplaar te verwijderen. Als u probeert om één exemplaar te verwijderen dat een vergren deling heeft, wordt de vergren deling gerespecteerd en kunt u dat exemplaar niet verwijderen. 
+In azure Portal kunt u een afzonderlijk exemplaar of bulksgewijs verwijderen verwijderen door meerdere exemplaren te selecteren. Als u probeert een enkele instantie te verwijderen die een vergren deling heeft, wordt de vergren deling gerespecteerd en kunt u het exemplaar niet verwijderen. Als u echter meerdere instanties tegelijk selecteert en een van deze instanties een vergren deling heeft, worden de vergren delingen niet geëerbiedigd en worden alle geselecteerde exemplaren verwijderd.
+
+In azure CLI hebt u alleen de mogelijkheid om een afzonderlijk exemplaar te verwijderen. Als u probeert om één exemplaar te verwijderen dat een vergren deling heeft, wordt de vergren deling gerespecteerd en kunt u dat exemplaar niet verwijderen.
 
 ## <a name="extensions"></a>Uitbreidingen
 

@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/13/2020
 ms.author: sohamnc
-ms.openlocfilehash: e2785baab27f5bfc996b57607816062195a19b2b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ee4bd24264be9e7730d4dc99af4e61b05a7692bc
+ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81313754"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82594131"
 ---
 # <a name="frequently-asked-questions-for-azure-front-door"></a>Veelgestelde vragen over de voor deur van Azure
 
@@ -91,7 +91,7 @@ Als u uw toepassing wilt vergren delen om alleen verkeer van uw specifieke voor 
 
 - Configureer IP-Acl's voor voor uw back-ends om verkeer te accepteren van de back-end-IP-adres ruimte van de Azure front deur en alleen de infrastructuur services van Azure. Raadpleeg de onderstaande IP-gegevens voor Acl's voor van uw back-end:
  
-    - Raadpleeg de sectie *AzureFrontDoor. back-end* in [Azure IP-bereiken en-Tags](https://www.microsoft.com/download/details.aspx?id=56519) voor het IPv4-back-end-IP-adres bereik van de front deur of u kunt ook de service label *AzureFrontDoor. back-end* gebruiken in uw [netwerk beveiligings groepen](https://docs.microsoft.com/azure/virtual-network/security-overview#security-rules) of met [Azure firewall](https://docs.microsoft.com/azure/firewall/service-tags).
+    - Raadpleeg de sectie *AzureFrontDoor. back-end* in [Azure IP-bereiken en-Tags](https://www.microsoft.com/download/details.aspx?id=56519) voor het IPv4-back-end-IP-adres bereik van de front deur of u kunt ook de service label *AzureFrontDoor. back-end* gebruiken in uw [netwerk beveiligings groepen](https://docs.microsoft.com/azure/virtual-network/security-overview#security-rules).
     - De **IPv6** -back-end van de front-ends tijdens de dekking van de servicetag wordt niet weer gegeven in het JSON-bestand van het Azure IP-bereik. Als u op zoek bent naar een expliciet IPv6-adres bereik, is dit momenteel beperkt tot`2a01:111:2050::/44`
     - De [basis infrastructuur services](https://docs.microsoft.com/azure/virtual-network/security-overview#azure-platform-considerations) van Azure via gevirtualiseerde host-IP `168.63.129.16` -adressen: en`169.254.169.254`
 

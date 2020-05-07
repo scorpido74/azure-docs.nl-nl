@@ -14,16 +14,16 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 02/03/2020
 ms.author: jonbeck
-ms.openlocfilehash: 73a878d791997169b0823bb949e78bdced77cae6
-ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
+ms.openlocfilehash: 5d36ba05d2138a06ebb2ef4e49aadb6032b62b92
+ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82509683"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82627038"
 ---
 # <a name="gpu-optimized-virtual-machine-sizes"></a>Grootte van door GPU geoptimaliseerde virtuele machines
 
-Geoptimaliseerde VM-grootten zijn gespecialiseerde virtuele machines die beschikbaar zijn met één of meer NVIDIA-Gpu's. Deze grootten zijn ontworpen voor computerintensieve, grafisch intensieve en visualisatie werk belastingen. Dit artikel bevat informatie over het aantal en het type Gpu's, Vcpu's, gegevens schijven en Nic's. Opslag doorvoer en netwerk bandbreedte worden ook voor elke grootte in deze groepering opgenomen.
+Geoptimaliseerde VM-grootten zijn gespecialiseerde virtuele machines die beschikbaar zijn met één, meerdere of gedeeltelijke Gpu's. Deze grootten zijn ontworpen voor computerintensieve, grafisch intensieve en visualisatie werk belastingen. Dit artikel bevat informatie over het aantal en het type Gpu's, Vcpu's, gegevens schijven en Nic's. Opslag doorvoer en netwerk bandbreedte worden ook voor elke grootte in deze groepering opgenomen.
 
 - De grootte van de [NC-serie](nc-series.md), [NCv2-](ncv2-series.md)serie, [NCv3-serie](ncv3-series.md) is geoptimaliseerd voor computerintensieve en netwerkintensieve toepassingen en algoritmen. Enkele voor beelden zijn CUDA en OpenCL toepassingen en simulaties, AI en diep gaande lessen. De NCv3-serie is gericht op werk belastingen met hoge prestaties, met de Tesla V100 GPU van NVIDIA. De NC-serie maakt gebruik van de Intel Xeon E5-2690 v3 2,60 GHz v3-processor (Haswell) en de virtuele machines uit de NCv2-en NCv3-serie gebruiken de Intel Xeon E5-2690 v4-processor (Broadwell).
 
@@ -37,11 +37,11 @@ Geoptimaliseerde VM-grootten zijn gespecialiseerde virtuele machines die beschik
 
 Als u gebruik wilt maken van de GPU-mogelijkheden van Vm's in de Azure N-serie, moeten de NVIDIA-of AMD GPU-Stuur Programma's zijn geïnstalleerd.
 
-Met de [uitbrei ding NVIDIA GPU-stuur programma](/azure/virtual-machines/extensions/hpccompute-gpu-windows) worden de juiste NVIDIA-CUDA of raster Stuur Programma's geïnstalleerd op een virtuele machine uit de N-serie. De uitbrei ding installeren of beheren met de Azure Portal of hulpprogram ma's, zoals Azure PowerShell of Azure Resource Manager sjablonen. Zie de [documentatie over NVIDIA GPU-Stuur Programma's](/azure/virtual-machines/extensions/hpccompute-gpu-windows) voor ondersteunde besturings systemen en implementaties tappen. Zie [extensies en functies van virtuele Azure-machines](/azure/virtual-machines/extensions/overview)voor algemene informatie over VM-extensies.
+- Voor virtuele machines die worden ondersteund door NVIDIA-Gpu's, [worden de juiste](/azure/virtual-machines/extensions/hpccompute-gpu-windows) NVIDIA-CUDA of raster Stuur Programma's geïnstalleerd. De uitbrei ding installeren of beheren met de Azure Portal of hulpprogram ma's, zoals Azure PowerShell of Azure Resource Manager sjablonen. Zie de [documentatie over NVIDIA GPU-Stuur Programma's](/azure/virtual-machines/extensions/hpccompute-gpu-windows) voor ondersteunde besturings systemen en implementaties tappen. Zie [extensies en functies van virtuele Azure-machines](/azure/virtual-machines/extensions/overview)voor algemene informatie over VM-extensies.
 
-Als u ervoor kiest om de NVIDIA GPU-Stuur Programma's hand matig te installeren, raadpleegt u [het stuur programma voor](/azure/virtual-machines/windows/n-series-driver-setup) de installatie van de Windows-of [n-Series GPU-](/azure/virtual-machines/linux/n-series-driver-setup) stuur programma voor Linux voor ondersteunde besturings systemen, stuur Programma's, installatie en verificaties tappen.
+   U kunt ook de NVIDIA GPU-Stuur Programma's hand matig installeren. Zie [NVIDIA GPU-Stuur Programma's installeren op vm's uit de n-serie waarop Windows wordt uitgevoerd](/azure/virtual-machines/windows/n-series-driver-setup) of [Installeer NVIDIA GPU-Stuur Programma's op vm's met n-serie waarop Linux wordt uitgevoerd](/azure/virtual-machines/linux/n-series-driver-setup) voor ondersteunde besturings systemen, stuur Programma's, installatie en verificaties tappen.
 
-Als u de AMD GPU-Stuur Programma's hand matig wilt installeren, raadpleegt u de [installatie van de N-serie AMD GPU-stuur programma voor Windows](/azure/virtual-machines/windows/n-series-amd-driver-setup) voor ondersteunde besturings systemen, stuur Programma's, installatie en verificaties tappen.
+- Zie [AMD GPU-Stuur Programma's installeren op vm's met N-serie met Windows](/azure/virtual-machines/windows/n-series-amd-driver-setup) voor ondersteunde besturings systemen, stuur Programma's, installatie en verificaties tappen voor virtuele machines die worden ondersteund door AMD-gpu's.
 
 ## <a name="deployment-considerations"></a>Overwegingen bij de implementatie
 

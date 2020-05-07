@@ -1,22 +1,17 @@
 ---
-title: 'Verificatie van de eind gebruiker: Java met Azure Data Lake Storage Gen1 met behulp van Azure Active Directory | Microsoft Docs'
+title: Verificatie van de eind gebruiker-Java met Data Lake Storage Gen1-Azure
 description: Meer informatie over het bezorgen van de verificatie van eind gebruikers met Azure Data Lake Storage Gen1 met behulp van Azure Active Directory met Java
-services: data-lake-store
-documentationcenter: ''
 author: twooley
-manager: mtillman
-editor: cgronlun
 ms.service: data-lake-store
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: 8b558fca964f33d47d331e007329d1bae2626877
-ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
+ms.openlocfilehash: 1e03ad657fd40dce22a17f2fff5b67a65eb3eb52
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "60878098"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82691763"
 ---
 # <a name="end-user-authentication-with-azure-data-lake-storage-gen1-using-java"></a>Verificatie door eind gebruikers met Azure Data Lake Storage Gen1 met behulp van Java
 > [!div class="op_single_selector"]
@@ -56,7 +51,7 @@ In dit artikel leert u hoe u de Java SDK kunt gebruiken om verificatie door eind
           </dependency>
         </dependencies>
    
-    De eerste afhankelijkheid is het gebruik van de Data Lake Storage Gen1`azure-data-lake-store-sdk`SDK () in de Maven-opslag plaats. De tweede afhankelijkheid dient om op te geven welk framework voor logboekregistratie (`slf4j-nop`) voor deze toepassing moet worden gebruikt. De Data Lake Storage Gen1 SDK gebruikt [slf4j](https://www.slf4j.org/) logging gevel, waarmee u kunt kiezen uit een aantal populaire logging-frameworks, zoals Log4j, Java-logboek registratie, logback, enzovoort, of geen logboek registratie. In dit voorbeeld wordt logboekregistratie uitgeschakeld. Daarom wordt de binding **slf4j-nop** gebruikt. [Hier](https://www.slf4j.org/manual.html#projectDep) vindt u andere opties voor logboekregistratie voor uw toepassing.
+    De eerste afhankelijkheid is het gebruik van de Data Lake Storage Gen1`azure-data-lake-store-sdk`SDK () in de Maven-opslag plaats. De tweede afhankelijkheid dient om op te geven welk framework voor logboekregistratie (`slf4j-nop`) voor deze toepassing moet worden gebruikt. De Data Lake Storage Gen1 SDK gebruikt [SLF4J](https://www.slf4j.org/) logging gevel, waarmee u kunt kiezen uit een aantal populaire logging-frameworks, zoals Log4j, Java-logboek registratie, logback, enzovoort, of geen logboek registratie. In dit voorbeeld wordt logboekregistratie uitgeschakeld. Daarom wordt de binding **slf4j-nop** gebruikt. [Hier](https://www.slf4j.org/manual.html#projectDep) vindt u andere opties voor logboekregistratie voor uw toepassing.
 
 3. Voeg de volgende importinstructies toe aan uw toepassing.
 

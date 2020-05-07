@@ -4,12 +4,12 @@ description: Overwegingen bij het plannen van de cluster capaciteit Service Fabr
 ms.topic: conceptual
 ms.date: 07/09/2019
 ms.author: pepogors
-ms.openlocfilehash: 6e60fc10dd7e0eec24de4a089d09d914624dcfbc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f011dee94e135ba40f8d3c87240e905e4a2739ec
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79258913"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82793054"
 ---
 # <a name="service-fabric-cluster-capacity-planning-considerations"></a>Overwegingen bij het plannen van Service Fabric cluster capaciteit
 Bij elke implementatie voor productie is capaciteitsplanning van groot belang. Hier volgen enkele van de items die u moet overwegen als onderdeel van dat proces.
@@ -104,7 +104,7 @@ Gebruik Silver of Gold-duurzaamheid voor alle knooppunt typen die stateful servi
 
 - Behoud een minimum aantal van vijf knoop punten voor een schaalset voor virtuele machines met duurzaamheids niveau goud of zilver ingeschakeld.
 - Elke schaalset voor virtuele machines met duurzaamheids niveau zilver of goud moet worden toegewezen aan het eigen knooppunt type in het Service Fabric cluster. Als u meerdere virtuele-machine schaal sets aan één knooppunt type toewijst, kan de coördinatie tussen het Service Fabric cluster en de Azure-infra structuur niet goed werken.
-- Verwijder geen wille keurige VM-exemplaren, gebruik altijd de functie schaalset voor schaalset van virtuele machines. Als u wille keurige VM-exemplaren verwijdert, is het mogelijk dat er onbalansen in de VM-instantie worden gemaakt over UD en FD. Dit onevenwichtige kan een nadelige invloed hebben op de systeem capaciteit van de service-exemplaren/service-replica's.
+- Verwijder geen wille keurige VM-exemplaren, gebruik altijd schaal sets voor virtuele machines in functie. Als u wille keurige VM-exemplaren verwijdert, is het mogelijk dat er onbalansen in de VM-instantie worden gemaakt over UD en FD. Dit onevenwichtige kan een nadelige invloed hebben op de systeem capaciteit van de service-exemplaren/service-replica's.
 - Als u automatisch schalen gebruikt, stelt u de regels zodanig in (verwijderen van VM-exemplaren) slechts één knoop punt tegelijk. Het omlaag schalen van meer dan één exemplaar op een keer is niet veilig.
 - Als u Vm's verwijdert of ongedaan maakt voor het primaire knooppunt type, moet u nooit het aantal toegewezen Vm's verlagen wat de betrouwbaarheids categorie nodig heeft. Deze bewerkingen worden voor onbepaalde tijd geblokkeerd in een schaalset met een duurzaamheids niveau van zilver of goud.
 
