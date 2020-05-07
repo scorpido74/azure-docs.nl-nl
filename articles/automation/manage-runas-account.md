@@ -5,12 +5,12 @@ services: automation
 ms.subservice: shared-capabilities
 ms.date: 04/23/2020
 ms.topic: conceptual
-ms.openlocfilehash: 5cb3752e5a74f26936efcbb9dba5cdcda76e01f4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d77fc756530115ff828c79a3b444c1152ffe5c5a
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82113303"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82608674"
 ---
 # <a name="manage-azure-automation-run-as-accounts"></a>Azure Automation uitvoeren als-accounts beheren
 
@@ -475,7 +475,7 @@ Bepaalde configuratie-items die nodig zijn voor een uitvoeren als-of klassiek ui
 * Het run as-account is verwijderd uit de rol Inzender
 * Service-principal of toepassing in Azure AD
 
-Voor dergelijke configuratie-instanties detecteert het Automation-account de wijzigingen en geeft de `Incomplete` status weer in het deel venster met eigenschappen van het run as-account voor het account.
+Voor dergelijke onjuiste configuratie-instanties detecteert het Automation-account de wijzigingen en geeft de status *onvolledig* weer in het deel venster Eigenschappen van run as-accounts voor het account.
 
 ![Onvolledige Uitvoeren als-configuratiestatus](media/manage-runas-account/automation-account-runas-incomplete-config.png)
 

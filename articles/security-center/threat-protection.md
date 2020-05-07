@@ -10,12 +10,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 03/15/2020
 ms.author: memildin
-ms.openlocfilehash: 79638f584f1c65b33f23a68f01dbe82878460cc2
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: b28901918f2606100d92f47800c6e0fb6778e3d0
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82234074"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82606888"
 ---
 # <a name="threat-protection-in-azure-security-center"></a>Bescherming tegen bedreiging in Azure Security Center
 
@@ -34,7 +34,9 @@ Of een waarschuwing wordt gegenereerd door Security Center, of door Security Cen
 > [!TIP]
 > Als u de mogelijkheden voor bedreigings beveiliging van Security Center wilt inschakelen, moet u de prijs categorie Standard Toep assen op het abonnement dat de toepasselijke werk belastingen bevat.
 >
-> De bedreigings beveiliging van Security Center voor opslag accounts en PaaS SQL/MySQL-PAGINA'S zijn momenteel de enige workloads die op resource niveau kunnen worden ingeschakeld voor de beveiliging van afzonderlijke opslag-en SQL-workloads.
+> U kunt bedreigings beveiliging inschakelen voor **Azure Storage accounts** op het niveau van het abonnement of het resourceniveau.
+> U kunt bedreigingen beveiliging inschakelen voor **Azure SQL database SQL-servers** op abonnements niveau of op resource niveau.
+> U kunt bedreigingen beveiliging inschakelen voor **Azure database for MariaDB/MySQL/PostgreSQL** op het niveau van de resource.
 
 
 

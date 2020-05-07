@@ -10,12 +10,13 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 12/17/2019
-ms.openlocfilehash: fcaa7a0c44851d6b48b40b01af4c8ec992c330b8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: has-adal-ref
+ms.openlocfilehash: 6b2cfa85ea412a5ef8bda47a7ff6e99970ba6b0e
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79283535"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82611837"
 ---
 # <a name="set-up-authentication-for-azure-machine-learning-resources-and-workflows"></a>Verificatie instellen voor Azure Machine Learning resources en werk stromen
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -125,7 +126,7 @@ Hier volgt een vereenvoudigd voor beeld van de JSON-uitvoer van de opdracht. Not
 }
 ```
 
-Gebruik vervolgens de volgende opdracht om uw Service-Principal toegang toe te wijzen aan uw machine learning-werk ruimte. U hebt de naam van uw werk ruimte en de naam van de resource `-w` groep `-g` nodig voor respectievelijk de para meters en. Voor de `--user` para meter gebruikt u `objectId` de waarde uit de vorige stap. Met `--role` de para meter kunt u de Access-rol voor de service-principal instellen en in het algemeen gebruikt u **eigenaar** of **Inzender**. Beide hebben schrijf toegang tot bestaande resources, zoals reken clusters en gegevens bronnen, maar alleen de **eigenaar** kan deze resources inrichten. 
+Gebruik vervolgens de volgende opdracht om uw Service-Principal toegang toe te wijzen aan uw machine learning-werk ruimte. U hebt de naam van uw werk ruimte en de naam van de resource `-w` groep `-g` nodig voor respectievelijk de para meters en. Voor de `--user` para meter gebruikt u `objectId` de waarde uit de vorige stap. Met `--role` de para meter kunt u de Access-rol voor de service-principal instellen en in het algemeen gebruikt u **eigenaar** of **Inzender**. Beide hebben schrijf toegang tot bestaande resources, zoals reken clusters en gegevens bronnen, maar alleen de **eigenaar** kan deze resources inrichten.
 
 ```azurecli-interactive
 az ml workspace share -w your-workspace-name -g your-resource-group-name --user your-sp-object-id --role owner
@@ -148,7 +149,7 @@ sp = ServicePrincipalAuthentication(tenant_id="your-tenant-id", # tenantID
 De `sp` variabele bevat nu een verificatie object dat u rechtstreeks in de SDK gebruikt. Over het algemeen is het een goed idee om de id's/geheimen die hierboven worden gebruikt, op te slaan in omgevings variabelen, zoals in de volgende code wordt weer gegeven.
 
 ```python
-import os 
+import os
 
 sp = ServicePrincipalAuthentication(tenant_id=os.environ['AML_TENANT_ID'],
                                     service_principal_id=os.environ['AML_PRINCIPAL_ID'],
@@ -160,7 +161,7 @@ Voor automatische werk stromen die worden uitgevoerd in Python en de SDK voornam
 ```python
 from azureml.core import Workspace
 
-ws = Workspace.get(name="ml-example", 
+ws = Workspace.get(name="ml-example",
                    auth=sp,
                    subscription_id="your-sub-id")
 ws.get_details()
@@ -168,7 +169,7 @@ ws.get_details()
 
 ## <a name="azure-machine-learning-rest-api-auth"></a>Azure Machine Learning REST API auth
 
-De service-principal die u in de bovenstaande stappen hebt gemaakt, kan ook worden gebruikt voor de verificatie van de Azure Machine Learning [rest API](https://docs.microsoft.com/rest/api/azureml/). U gebruikt de Azure Active Directory [toekennings stroom voor client referenties](https://docs.microsoft.com/azure/active-directory/develop/v1-oauth2-client-creds-grant-flow), waarmee service-to-service-aanroepen kunnen worden uitgevoerd voor headless authenticatie in automatische werk stromen. De voor beelden worden geïmplementeerd met de [ADAL-bibliotheek](https://docs.microsoft.com/azure/active-directory/develop/active-directory-authentication-libraries) in Python en node. js, maar u kunt ook een open-source bibliotheek gebruiken die openid connect Connect 1,0 ondersteunt. 
+De service-principal die u in de bovenstaande stappen hebt gemaakt, kan ook worden gebruikt voor de verificatie van de Azure Machine Learning [rest API](https://docs.microsoft.com/rest/api/azureml/). U gebruikt de Azure Active Directory [toekennings stroom voor client referenties](https://docs.microsoft.com/azure/active-directory/develop/v1-oauth2-client-creds-grant-flow), waarmee service-to-service-aanroepen kunnen worden uitgevoerd voor headless authenticatie in automatische werk stromen. De voor beelden worden geïmplementeerd met de [ADAL-bibliotheek](https://docs.microsoft.com/azure/active-directory/develop/active-directory-authentication-libraries) in Python en node. js, maar u kunt ook een open-source bibliotheek gebruiken die openid connect Connect 1,0 ondersteunt.
 
 > [!NOTE]
 > MSAL. js is een nieuwe bibliotheek dan ADAL, maar u kunt geen service-to-service-verificatie uitvoeren met behulp van client referenties met MSAL. js, omdat het hoofd zakelijk een bibliotheek aan de client zijde is die is bedoeld voor interactieve/UI-verificatie die is gekoppeld aan een specifieke gebruiker. We raden u aan ADAL te gebruiken zoals hieronder wordt weer gegeven om automatische werk stromen te bouwen met de REST API.
@@ -206,7 +207,7 @@ context.acquireTokenWithClientCredentials(
 De variabele `tokenResponse` is een object dat het token en de gekoppelde meta gegevens bevat, zoals de verloop tijd. Tokens zijn geldig gedurende 1 uur en kunnen worden vernieuwd door dezelfde aanroep opnieuw uit te voeren om een nieuw token op te halen. Hier volgt een voor beeld van een antwoord.
 
 ```javascript
-{ 
+{
     tokenType: 'Bearer',
     expiresIn: 3599,
     expiresOn: 2019-12-17T19:15:56.326Z,
@@ -214,13 +215,13 @@ De variabele `tokenResponse` is een object dat het token en de gekoppelde meta g
     accessToken: "random-oauth-token",
     isMRRT: true,
     _clientId: 'your-client-id',
-    _authority: 'https://login.microsoftonline.com/your-tenant-id' 
+    _authority: 'https://login.microsoftonline.com/your-tenant-id'
 }
 ```
 
 Gebruik de `accessToken` eigenschap om het verificatie token op te halen. Raadpleeg de [rest API-documentatie](https://github.com/microsoft/MLOps/tree/master/examples/AzureML-REST-API) voor voor beelden over het gebruik van het token voor het maken van API-aanroepen.
 
-### <a name="python"></a>Python 
+### <a name="python"></a>Python
 
 Gebruik de volgende stappen om een verificatie token te genereren met behulp van python. Voer `pip install adal`uit in uw omgeving. Gebruik vervolgens uw `tenantId`,, `clientId`en `clientSecret` van de service-principal die u in de bovenstaande stappen hebt gemaakt als waarden voor de juiste variabelen in het volgende script.
 
@@ -242,13 +243,13 @@ De variabele `token_response` is een woorden lijst die het token en de gekoppeld
 
 ```python
 {
-    'tokenType': 'Bearer', 
-    'expiresIn': 3599, 
-    'expiresOn': '2019-12-17 19:47:15.150205', 
-    'resource': 'https://management.azure.com/', 
-    'accessToken': 'random-oauth-token', 
-    'isMRRT': True, 
-    '_clientId': 'your-client-id', 
+    'tokenType': 'Bearer',
+    'expiresIn': 3599,
+    'expiresOn': '2019-12-17 19:47:15.150205',
+    'resource': 'https://management.azure.com/',
+    'accessToken': 'random-oauth-token',
+    'isMRRT': True,
+    '_clientId': 'your-client-id',
     '_authority': 'https://login.microsoftonline.com/your-tenant-id'
 }
 ```
@@ -314,9 +315,9 @@ print(token)
 > [!IMPORTANT]
 > U moet een nieuw token aanvragen na de tijd van `refresh_by` de token. Als u tokens wilt vernieuwen buiten de python-SDK, kunt u het beste de REST API met Service-Principal-verificatie gebruiken om de `service.get_token()` oproep periodiek uit te voeren, zoals eerder is besproken.
 >
-> We raden u ten zeerste aan om uw Azure Machine Learning-werk ruimte te maken in dezelfde regio als uw Azure Kubernetes service-cluster. 
+> We raden u ten zeerste aan om uw Azure Machine Learning-werk ruimte te maken in dezelfde regio als uw Azure Kubernetes service-cluster.
 >
-> Als u wilt verifiëren met een token, wordt er door de webservice een aanroep naar de regio waarin uw Azure Machine Learning-werk ruimte is gemaakt. Als de regio van uw werk ruimte niet beschikbaar is, kunt u geen token voor uw webservice ophalen, zelfs als uw cluster zich in een andere regio bevindt dan uw werk ruimte. Het resultaat is dat Azure AD-verificatie pas beschikbaar is als de regio van de werk ruimte weer beschikbaar is. 
+> Als u wilt verifiëren met een token, wordt er door de webservice een aanroep naar de regio waarin uw Azure Machine Learning-werk ruimte is gemaakt. Als de regio van uw werk ruimte niet beschikbaar is, kunt u geen token voor uw webservice ophalen, zelfs als uw cluster zich in een andere regio bevindt dan uw werk ruimte. Het resultaat is dat Azure AD-verificatie pas beschikbaar is als de regio van de werk ruimte weer beschikbaar is.
 >
 > Hoe groter de afstand tussen de regio van uw cluster en de regio van uw werk ruimte, hoe langer het duurt om een token op te halen.
 

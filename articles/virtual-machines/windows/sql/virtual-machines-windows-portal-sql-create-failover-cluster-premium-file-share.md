@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 10/09/2019
 ms.author: mathoma
-ms.openlocfilehash: 9595ee87801fa4ce187a50197fc58d6c448eac24
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 09dd4ea3cd039bcb91acc877e51fee7e40168ac3
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78303219"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82612755"
 ---
 # <a name="configure-a-sql-server-failover-cluster-instance-with-premium-file-share-on-azure-virtual-machines"></a>Een SQL Server-failovercluster configureren met Premium-bestands share op Azure virtual machines
 
@@ -47,7 +47,7 @@ U moet ook algemene informatie over deze technologieën hebben:
 > [!IMPORTANT]
 > Op dit moment worden SQL Server failover-cluster exemplaren op virtuele machines van Azure alleen ondersteund in de [Lightweight-beheer modus](virtual-machines-windows-sql-register-with-resource-provider.md#management-modes) van de [SQL Server IaaS agent-extensie](virtual-machines-windows-sql-server-agent-extension.md). Als u wilt overschakelen van de volledige extensie modus naar Lightweight, verwijdert u de resource van de **virtuele SQL-machine** voor de bijbehorende vm's en registreert u deze vervolgens bij de resource provider van de SQL-vm in de Lightweight-modus. Als u de bron van de **virtuele SQL-machine** verwijdert met behulp van de Azure Portal, **schakelt u het selectie vakje naast de juiste virtuele machine uit**. De volledige extensie ondersteunt functies zoals automatische back-ups, patches en Geavanceerd Portal beheer. Deze functies werken niet voor SQL-Vm's nadat de agent opnieuw is geïnstalleerd in de modus voor licht gewicht beheer.
 
-Premium-bestands shares bieden IOPS en zijn in capaciteit die voldoen aan de behoeften van veel werk belastingen. Voor i/o-intensieve workloads kunt u [SQL Server failover-cluster instanties met opslagruimten direct](virtual-machines-windows-portal-sql-create-failover-cluster.md), op basis van beheerde Premium-schijven of Ultra disks.  
+Premium-bestands shares bieden IOPS en doorvoer capaciteit die voldoet aan de behoeften van veel werk belastingen. Voor i/o-intensieve workloads kunt u [SQL Server failover-cluster instanties met opslagruimten direct](virtual-machines-windows-portal-sql-create-failover-cluster.md), op basis van beheerde Premium-schijven of Ultra disks.  
 
 Controleer de IOPS-activiteit van uw omgeving en controleer of Premium-bestands shares de IOPS bevatten die u nodig hebt voordat u een implementatie of migratie start. Gebruik schijf tellers van de Windows-prestatie meter om het totale aantal IOPS (schijf overdrachten/seconde) en de door Voer (schijf bytes/seconde) te bewaken die vereist zijn voor SQL Server gegevens, logboeken en tijdelijke DB-bestanden.
 
@@ -222,14 +222,14 @@ Als u het cluster wilt valideren met behulp van de gebruikers interface, voert u
 
 1. Klik onder **Serverbeheer**op **extra**en selecteer vervolgens **Failoverclusterbeheer**.
 1. Selecteer onder **Failoverclusterbeheer** **actie**en selecteer vervolgens **configuratie valideren**.
-1. Selecteer **Next**.
+1. Selecteer **Volgende**.
 1. Voer onder **servers of een cluster selecteren**de namen van beide virtuele machines in.
-1. Onder **test opties**selecteert u **alleen geselecteerde tests uitvoeren**. Selecteer **Next**.
+1. Onder **test opties**selecteert u **alleen geselecteerde tests uitvoeren**. Selecteer **Volgende**.
 1. Selecteer onder **selectie testen**alle tests, met uitzonde ring van **opslag** en **opslagruimten direct**, zoals hier wordt weer gegeven:
 
    :::image type="content" source="media/virtual-machines-windows-portal-sql-create-failover-cluster-premium-file-share/cluster-validation.png" alt-text="Cluster validatie tests selecteren":::
 
-1. Selecteer **Next**.
+1. Selecteer **Volgende**.
 1. Klik onder **bevestiging**op **volgende**.
 
 Met de **wizard een configuratie valideren** worden de validatie tests uitgevoerd.

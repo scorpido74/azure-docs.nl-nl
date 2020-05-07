@@ -2,21 +2,20 @@
 author: dlepow
 ms.service: container-instances
 ms.topic: include
-ms.date: 01/31/2020
+ms.date: 04/27/2020
 ms.author: danlep
-ms.openlocfilehash: edf7b7c7c7c94fd269f69bd8c5e13e53a6de1c03
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: de070f14dbcda0808d52250e5b83caae14dd652b
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77117812"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82583898"
 ---
 ### <a name="regions-and-resource-availability"></a>Beschik baarheid van regio's en resources
 
-| Regio's | OS | Maximaal CPU-gebruik | Maxi maal geheugen (GB) | Opslag (GB) |
+| Regio's | Besturingssysteem | Maximaal CPU-gebruik | Maxi maal geheugen (GB) | Opslag (GB) |
 | -------- | :---: | :---: | :-----------: | :---: |
-| Australië-oost, Canada-centraal, centraal VS, VS-Oost<sup>1</sup>, VS-Oost 2, Europa-Noord, Zuid-Centraal VS<sup>1</sup>, zuidoost-Azië, Europa-West, VS-West 2<sup>1</sup> | Linux | 4 | 16 | 50 |
+| Australië-oost, Canada-centraal, VS-midden, VS-Oost, VS-Oost 2, Europa-noord, Zuid-Centraal VS, Zuidoost-Azië, Europa-west, VS-West 2 | Linux | 4 | 16 | 50 |
 | Japan - oost | Linux | 2 | 8 | 50 |
 | VS Noord-Centraal, India-zuid, VS-West | Linux | 2 | 3,5 | 50 |
 
-<sup>1</sup> De regio waarin container groeps implementaties naar een virtueel netwerk beschikbaar zijn voor productie werkbelastingen. In andere regio's zijn implementaties van virtuele netwerken in de preview-versie.

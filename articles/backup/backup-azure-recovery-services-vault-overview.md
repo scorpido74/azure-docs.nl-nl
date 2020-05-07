@@ -3,12 +3,12 @@ title: Overzicht van Recovery Services-kluizen
 description: Een overzicht en vergelijking tussen Recovery Services kluizen en Azure Backup kluizen.
 ms.topic: conceptual
 ms.date: 08/10/2018
-ms.openlocfilehash: e6a359287533c9ffdd688b5285b24b9c70fa7b7f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a0dacd82b7cf4258c0147bbaf9dc39ee6fc0fa25
+ms.sourcegitcommit: acc558d79d665c8d6a5f9e1689211da623ded90a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80436967"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82597944"
 ---
 # <a name="recovery-services-vaults-overview"></a>Overzicht van Recovery Services-kluizen
 
@@ -79,6 +79,14 @@ De volgende secties bevatten koppelingen naar artikelen met uitleg over het gebr
 ### <a name="secure-the-vault"></a>De kluis beveiligen
 
 - [Back-upgegevens voor de cloud in Recovery Services kluizen beveiligen](backup-azure-security-feature.md)
+
+## <a name="azure-advisor"></a>Azure Advisor
+
+[Azure Advisor](https://docs.microsoft.com/azure/advisor/) is een gepersonaliseerde Cloud consultant waarmee u het gebruik van Azure kunt optimaliseren. Het analyseert uw Azure-gebruik en biedt tijdig aanbevelingen om uw implementaties te optimaliseren en te beveiligen. Het biedt aanbevelingen in vier categorieën: hoge Beschik baarheid, beveiliging, prestaties en kosten.
+
+Azure Advisor voorziet in elk uur [aanbevelingen](https://docs.microsoft.com/azure/advisor/advisor-high-availability-recommendations#protect-your-virtual-machine-data-from-accidental-deletion) voor vm's waarvan geen back-up is gemaakt, zodat u nooit een back-up maakt van belang rijke vm's. U kunt de aanbevelingen ook beheren door ze uit te stellen.  U kunt op de aanbeveling klikken en back-up inschakelen op Vm's in de regel door de kluis op te geven (waarbij back-ups worden opgeslagen) en het back-upbeleid (schema van back-ups en bewaren van back-ups).
+
+![Azure Advisor](./media/backup-azure-recovery-services-vault-overview/azure-advisor.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 

@@ -13,12 +13,12 @@ ms.workload: infrastructure
 ms.date: 10/16/2019
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 4384d29811d29f06422802abba5d3eb1ea5737e9
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.openlocfilehash: 091c0a8cb4c0db517ab2dbabaf16633227dba42c
+ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "72430088"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82594692"
 ---
 # <a name="backup-and-restore"></a>Back-ups en herstellen
 
@@ -162,7 +162,7 @@ In deze stap machtigt u het SAP HANA gebruikers account dat u hebt gemaakt, zoda
 
 ### <a name="step-6-get-the-snapshot-scripts-configure-the-snapshots-and-test-the-configuration-and-connectivity"></a>Stap 6: de momentopname scripts ophalen, de moment opnamen configureren en de configuratie en connectiviteit testen
 
-Down load de meest recente versie van de scripts van [github](https://github.com/Azure/hana-large-instances-self-service-scripts/tree/master/snapshot_tools_v4.1). De manier waarop de scripts worden geïnstalleerd, wordt gewijzigd met versie 4,1 van de scripts. Zie ' communicatie met SAP HANA inschakelen ' in [micro soft snap shot tools for SAP Hana op Azure](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/latest/Microsoft%20Snapshot%20Tools%20for%20SAP%20HANA%20on%20Azure%20Guide.md)voor meer informatie.
+Down load de meest recente versie van de scripts van [github](https://github.com/Azure/hana-large-instances-self-service-scripts/tree/master/snapshot_tools_v4.2). De manier waarop de scripts worden geïnstalleerd, wordt gewijzigd met versie 4,1 van de scripts. Zie ' communicatie met SAP HANA inschakelen ' in [micro soft snap shot tools for SAP Hana op Azure](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/latest/Microsoft%20Snapshot%20Tools%20for%20SAP%20HANA%20on%20Azure%20Guide.md)voor meer informatie.
 
 Zie ' eenvoudige installatie van moment opname-hulpprogram ma's (standaard) ' in [micro soft snap shot tools for SAP Hana op Azure](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/latest/Microsoft%20Snapshot%20Tools%20for%20SAP%20HANA%20on%20Azure%20Guide.md)voor de exacte volg orde van de opdrachten. We raden u aan de standaard installatie te gebruiken. 
 

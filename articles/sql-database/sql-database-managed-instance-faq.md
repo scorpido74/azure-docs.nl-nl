@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein, carlrab
 ms.date: 03/17/2020
-ms.openlocfilehash: 393d67b200a4f8d44cb001b3a7e2e491209e9d58
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 99fbda6f6d5e8fc88f9f4f34c6e194412a120057
+ms.sourcegitcommit: acc558d79d665c8d6a5f9e1689211da623ded90a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80364163"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82598484"
 ---
 # <a name="sql-database-managed-instance-frequently-asked-questions-faq"></a>Veelgestelde vragen over SQL Database beheerde exemplaren
 
@@ -94,7 +94,13 @@ Geautomatiseerde online switches tussen de hardware is mogelijk als beide genera
 
 Dit is een langlopende bewerking als een nieuw beheerd exemplaar wordt ingericht op de achtergrond en data bases worden automatisch overgebracht tussen het oude en het nieuwe exemplaar met een snelle failover aan het einde van het proces. 
 
+**Wat gebeurt er als beide hardware gegenereerd worden in dezelfde regio?**
+
 Als beide generaties niet in dezelfde regio worden ondersteund, is het wijzigen van de hardware mogelijk, maar moet u deze hand matig uitvoeren. Hiervoor moet u een nieuw exemplaar inrichten in de regio waar de gewenste hardware-generatie beschikbaar is, en hand matig back-ups maken en gegevens herstellen tussen het oude en het nieuwe exemplaar.
+
+**Wat gebeurt er als er geen IP-adressen zijn voor het uitvoeren van een update bewerking?**
+
+Als er geen IP-adressen zijn in het subnet waar uw beheerde exemplaar is ingericht, moet u een nieuw subnet en een nieuw beheerd exemplaar maken. We raden ook aan dat er een nieuw subnet wordt gemaakt met meer IP-adressen alocated zodat toekomstige update bewerkingen een vergelijk bare situatie kunnen voor komen (voor propper-subnet grootte, de [grootte van het vnet-subnet bepalen](sql-database-managed-instance-determine-size-vnet-subnet.md). Nadat het nieuwe exemplaar is ingericht, kunt u hand matig back-ups maken van gegevens en deze herstellen tussen het oude en het nieuwe exemplaar of een [herstel punt voor meerdere tijdstippen](sql-database-managed-instance-point-in-time-restore.md?tabs=azure-powershell)uitvoeren. 
 
 
 ## <a name="tune-performance"></a>Prestaties afstemmen
@@ -184,7 +190,7 @@ De DNS-configuratie wordt uiteindelijk vernieuwd:
 Als tijdelijke oplossing kunt u het beheerde exemplaar downgradeen naar 4 vCore en het later opnieuw bijwerken. Dit heeft een neven effect van het vernieuwen van de DNS-configuratie.
 
 
-## <a name="ip-address"></a>IP-adres
+## <a name="ip-address"></a>Het IP-adres
 
 **Kan ik verbinding maken met een beheerd exemplaar met behulp van een IP-adres?**
 

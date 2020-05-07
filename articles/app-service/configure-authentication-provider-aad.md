@@ -4,13 +4,13 @@ description: Meer informatie over het configureren van Azure Active Directory-ve
 ms.assetid: 6ec6a46c-bce4-47aa-b8a3-e133baef22eb
 ms.topic: article
 ms.date: 04/14/2020
-ms.custom: seodec18, fasttrack-edit
-ms.openlocfilehash: 913aac7755e6c4f9a4b42d45933728fcc8840bfb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: seodec18, fasttrack-edit, has-adal-ref
+ms.openlocfilehash: 60a5d50b511fc9db02daa9b7e74eedfe40eeb7a5
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82190007"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82609898"
 ---
 # <a name="configure-your-app-service-or-azure-functions-app-to-use-azure-ad-login"></a>Uw App Service of Azure Functions app configureren voor het gebruik van Azure AD-aanmelding
 
@@ -33,7 +33,7 @@ Volg deze aanbevolen procedures bij het instellen van uw app en verificatie:
 ## <a name="configure-with-express-settings"></a><a name="express"> </a>Configureren met Express-instellingen
 
 > [!NOTE]
-> De **Express** -optie is niet beschikbaar voor overheids Clouds. 
+> De **Express** -optie is niet beschikbaar voor overheids Clouds.
 
 1. In de [Azure Portal]zoekt en selecteert u **app Services**en selecteert u vervolgens uw app.
 2. Selecteer in de linkernavigatiebalk **verificatie/autorisatie** > **in**.
@@ -45,9 +45,9 @@ Volg deze aanbevolen procedures bij het instellen van uw app en verificatie:
    2. Kies een bestaande app-registratie en klik op **OK**.
 
 3. Selecteer **OK** om de app app service te registreren in azure Active Directory. Er wordt een nieuwe app-registratie gemaakt.
-   
+
     ![Snelle instellingen in Azure Active Directory](./media/configure-authentication-provider-aad/express-settings.png)
-   
+
 4. Beschrijving App Service biedt standaard verificatie, maar beperkt geen geautoriseerde toegang tot uw site-inhoud en Api's. U moet gebruikers in uw app-code autoriseren. Als u app-toegang alleen wilt beperken voor gebruikers die zijn geverifieerd door Azure Active Directory, stelt **u een actie in die moet worden uitgevoerd wanneer de aanvraag niet is geverifieerd** om u aan te **melden met Azure Active Directory**. Wanneer u deze functionaliteit instelt, vereist uw app dat alle aanvragen worden geverifieerd. Ook worden alle niet-geverifieerde omgeleid naar Azure Active Directory voor authenticatie.
 
     > [!CAUTION]
@@ -75,7 +75,7 @@ Voer de volgende stappen uit:
 1. Meld u aan bij de [Azure Portal], zoek en selecteer **app Services**en selecteer vervolgens uw app. Noteer de **URL**van uw app. U gebruikt deze om de registratie van uw Azure Active Directory-app te configureren.
 1. Selecteer **Azure Active Directory** > **app-registraties** > **nieuwe registratie**.
 1. Voer op de pagina **een toepassing registreren** een **naam** in voor de registratie van uw app.
-1. In **omleidings-URI**selecteert u `<app-url>/.auth/login/aad/callback` **Web** en type. Bijvoorbeeld `https://contoso.azurewebsites.net/.auth/login/aad/callback`. 
+1. In **omleidings-URI**selecteert u `<app-url>/.auth/login/aad/callback` **Web** en type. Bijvoorbeeld `https://contoso.azurewebsites.net/.auth/login/aad/callback`.
 1. Selecteer **Maken**.
 1. Nadat de app-registratie is gemaakt, kopieert u de **toepassings-id** en de **Directory (Tenant)-ID** voor later.
 1. Selecteer **Verificatie**. Schakel onder **impliciete toekenning** **id-tokens** in om OpenID Connect te verbinden met gebruikers aanmeldingen van app service.
@@ -87,14 +87,14 @@ Voer de volgende stappen uit:
 
 1. Selecteer **Een bereik toevoegen**.
    1. Voer *user_impersonation*in **Scope naam**in.
-   1. Voer in de tekst vakken de naam en beschrijving van het toestemming bereik in die gebruikers op de pagina toestemming moeten zien. Voer bijvoorbeeld *toegang tot mijn app*in. 
+   1. Voer in de tekst vakken de naam en beschrijving van het toestemming bereik in die gebruikers op de pagina toestemming moeten zien. Voer bijvoorbeeld *toegang tot mijn app*in.
    1. Selecteer **bereik toevoegen**.
 1. Beschrijving Als u een client geheim wilt maken, selecteert u **certificaten & geheimen** > **Nieuw client geheim** > **toevoegen**. Kopieer de waarde van het client geheim dat op de pagina wordt weer gegeven. Het wordt niet meer weer gegeven.
 1. Beschrijving Selecteer **verificatie**om meerdere **antwoord-url's**toe te voegen.
 
 ### <a name="enable-azure-active-directory-in-your-app-service-app"></a><a name="secrets"> </a>Azure Active Directory in uw app service-app inschakelen
 
-1. In de [Azure Portal]zoekt en selecteert u **app Services**en selecteert u vervolgens uw app. 
+1. In de [Azure Portal]zoekt en selecteert u **app Services**en selecteert u vervolgens uw app.
 1. Selecteer in het linkerdeel venster onder **instellingen**de optie **verificatie/autorisatie** > **.**
 1. Beschrijving Standaard staat App Service verificatie niet-geverifieerde toegang tot uw app toe. Als u gebruikers verificatie wilt afdwingen, stelt **u de actie in die moet worden uitgevoerd wanneer de aanvraag niet is geverifieerd** om u aan te **melden met Azure Active Directory**.
 1. Selecteer **Azure Active Directory**onder **verificatie providers**.

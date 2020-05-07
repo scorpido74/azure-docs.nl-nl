@@ -1,5 +1,5 @@
 ---
-title: Aangepaste metrische gegevens in Azure Monitor
+title: Aangepaste metrische gegevens in Azure Monitor (preview-versie)
 description: Meer informatie over aangepaste metrische gegevens in Azure Monitor en hoe deze worden gemodelleerd.
 author: ancav
 ms.author: ancav
@@ -7,17 +7,20 @@ services: azure-monitor
 ms.topic: conceptual
 ms.date: 04/23/2020
 ms.subservice: metrics
-ms.openlocfilehash: 4286910c926cd6bd3b21acfd145e4e69548319ce
-ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
+ms.openlocfilehash: 4891d7272516caf4944219907d81ee4fb89e0189
+ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82204301"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82837308"
 ---
-# <a name="custom-metrics-in-azure-monitor"></a>Aangepaste metrische gegevens in Azure Monitor
+# <a name="custom-metrics-in-azure-monitor-preview"></a>Aangepaste metrische gegevens in Azure Monitor (preview-versie)
 
-Wanneer u resources en toepassingen in azure implementeert, kunt u beginnen met het verzamelen van telemetrie om inzicht te krijgen in de prestaties en de status. In azure zijn enkele metrische gegevens voor u beschikbaar. Deze metrische gegevens worden [Standard of platform](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-supported)genoemd. Ze zijn echter beperkt. Mogelijk wilt u een aantal aangepaste prestatie-indica toren of bedrijfsspecifieke metrische gegevens verzamelen om meer inzicht te krijgen.
-Deze **aangepaste** metrische gegevens kunnen worden verzameld via de telemetrie van uw toepassing, een agent die wordt uitgevoerd op uw Azure-resources of zelfs een systeem voor het bewaken van een externe locatie en rechtstreeks aan Azure monitor is verzonden. Nadat u deze hebt gepubliceerd op Azure Monitor, kunt u bladeren, query's en waarschuwingen uitvoeren op aangepaste metrische gegevens voor uw Azure-resources en-toepassingen naast de standaard gegevens die door Azure worden verzonden.
+Wanneer u resources en toepassingen in azure implementeert, kunt u beginnen met het verzamelen van telemetrie om inzicht te krijgen in de prestaties en de status. In azure zijn enkele metrische gegevens voor u beschikbaar. Deze metrische gegevens worden [Standard of platform](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-supported)genoemd. Ze zijn echter beperkt. 
+
+Mogelijk wilt u een aantal aangepaste prestatie-indica toren of bedrijfsspecifieke metrische gegevens verzamelen om meer inzicht te krijgen. Deze **aangepaste** metrische gegevens kunnen worden verzameld via de telemetrie van uw toepassing, een agent die wordt uitgevoerd op uw Azure-resources of zelfs een systeem voor het bewaken van een externe locatie en rechtstreeks aan Azure monitor is verzonden. Nadat u deze hebt gepubliceerd op Azure Monitor, kunt u bladeren, query's en waarschuwingen uitvoeren op aangepaste metrische gegevens voor uw Azure-resources en-toepassingen naast de standaard gegevens die door Azure worden verzonden.
+
+Azure Monitor aangepaste metrische gegevens zijn actueel in open bare preview. 
 
 ## <a name="methods-to-send-custom-metrics"></a>Methoden voor het verzenden van aangepaste metrische gegevens
 
@@ -27,19 +30,15 @@ Aangepaste metrische gegevens kunnen via verschillende methoden naar Azure Monit
 - Installeer de [InfluxData-telegrafa-agent](collect-custom-metrics-linux-telegraf.md) op uw virtuele Azure Linux-machine en verzend metrische gegevens met behulp van de invoeg toepassing Azure monitor-uitvoer.
 - Aangepaste metrische gegevens [rechtstreeks naar de Azure Monitor rest API](../../azure-monitor/platform/metrics-store-custom-rest-api.md)verzenden `https://<azureregion>.monitoring.azure.com/<AzureResourceID>/metrics`.
 
-## <a name="pricing-model"></a>Prijsmodel
+## <a name="pricing-model-and-rentention"></a>Prijs model en retentiegerelateerde
 
-Er zijn geen kosten verbonden aan het opnemen van standaard metrische gegevens (platform metrieken) in Azure Monitor metrische opslag. Aangepaste metrische gegevens die worden opgenomen in de opslag van de Azure Monitor metrische gegevens worden per MB gefactureerd, waarbij elke aangepaste metrische data Point wordt beschouwd als 8 bytes groot. Alle opgenomen metrische gegevens worden gedurende 90 dagen bewaard.
+Controleer de [Azure monitor prijs pagina](https://azure.microsoft.com/pricing/details/monitor/) voor meer informatie over wanneer facturering wordt ingeschakeld voor aangepaste metrische gegevens en metrische query's. Specifieke prijs informatie voor alle metrische gegevens, zoals aangepaste metrische gegevens en metrische query's, zijn beschikbaar op deze pagina. In samen vatting zijn er geen kosten verbonden aan het opnemen van standaard metrische gegevens (platform metrieken) in Azure Monitor metrische opslag, maar aangepaste metrische gegevens worden kosten in rekening gebracht wanneer ze algemene Beschik baarheid invoeren. Metrische API-query's worden kosten in rekening gebracht.
 
-Metrische query's worden in rekening gebracht op basis van het aantal standaard-API-aanroepen. Een standaard-API-aanroep is een aanroep die 1.440 gegevens punten analyseert (1.440 is ook het totale aantal gegevens punten dat per metriek per dag kan worden opgeslagen). Als een API-aanroep meer dan 1.440 gegevens punten analyseert, telt deze als meerdere standaard-API-aanroepen. Als een API-aanroep minder dan 1.440 gegevens punten analyseert, telt deze als minder dan één API-aanroep. Het aantal standaard-API-aanroepen wordt elke dag berekend als het totale aantal gegevens punten dat per dag wordt geanalyseerd, gedeeld door 1.440.
-
-Specifieke prijs informatie voor aangepaste metrische gegevens en metrische query's zijn beschikbaar op de [pagina met Azure monitor prijzen](https://azure.microsoft.com/pricing/details/monitor/).
+Aangepaste metrische gegevens worden bewaard voor [dezelfde hoeveelheid tijd als de metrische gegevens](data-platform-metrics.md#retention-of-metrics)van het platform. 
 
 > [!NOTE]  
-> Gegevens die worden verzonden naar Azure Monitor via de Application Insights SDK worden gefactureerd als opgenomen logboek gegevens en er worden alleen kosten in rekening gebracht als de Application Insights functie [waarschuwing inschakelen op aangepaste metrische dimensies](https://docs.microsoft.com/azure/azure-monitor/app/pre-aggregated-metrics-log-metrics#custom-metrics-dimensions-and-pre-aggregation) is geselecteerd. Meer informatie over het [Application Insights prijs model](https://docs.microsoft.com/azure/azure-monitor/app/pricing#pricing-model) en de [prijzen in uw regio](https://azure.microsoft.com/pricing/details/monitor/).
+> Gegevens die worden verzonden naar Azure Monitor via de Application Insights SDK worden gefactureerd als opgenomen logboek gegevens. Alleen extra metrische kosten worden alleen in rekening gebracht als de functie voor het Application Insights onderdeel [waarschuwing inschakelen op aangepaste metrische dimensies](https://docs.microsoft.com/azure/azure-monitor/app/pre-aggregated-metrics-log-metrics#custom-metrics-dimensions-and-pre-aggregation) is geselecteerd. Met dit selectie vakje worden gegevens naar de data base van de Azure Monitor metriek verzonden met behulp van de aangepaste Metrics-API om de complexere waarschuwingen toe te staan.  Meer informatie over het [Application Insights prijs model](https://docs.microsoft.com/azure/azure-monitor/app/pricing#pricing-model) en de [prijzen in uw regio](https://azure.microsoft.com/pricing/details/monitor/).
 
-> [!NOTE]  
-> Controleer de [Azure monitor prijs pagina](https://azure.microsoft.com/pricing/details/monitor/) voor meer informatie over wanneer facturering wordt ingeschakeld voor aangepaste metrische gegevens en metrische query's. 
 
 ## <a name="how-to-send-custom-metrics"></a>Aangepaste metrische gegevens verzenden
 
@@ -231,7 +230,7 @@ Een actieve tijd reeks wordt gedefinieerd als een unieke combi natie van metrisc
 
 ## <a name="next-steps"></a>Volgende stappen
 Aangepaste metrische gegevens van verschillende services gebruiken: 
- - [Virtuele machines](collect-custom-metrics-guestos-resource-manager-vm.md)
+ - [Virtual Machines](collect-custom-metrics-guestos-resource-manager-vm.md)
  - [Schaalset voor virtuele machines](collect-custom-metrics-guestos-resource-manager-vmss.md)
  - [Azure Virtual Machines (klassiek)](collect-custom-metrics-guestos-vm-classic.md)
  - [Virtuele Linux-machine met behulp van de Telegraf-agent](collect-custom-metrics-linux-telegraf.md)

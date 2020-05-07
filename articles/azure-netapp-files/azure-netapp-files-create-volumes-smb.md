@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 04/03/2020
+ms.date: 04/30/2020
 ms.author: b-juche
-ms.openlocfilehash: c4e7566eeb28bc5709acd60ced9fcdffb7e8a725
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7dfc17825fab6c9a5f0d832318cb1d57271c56da
+ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80668008"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82625521"
 ---
 # <a name="create-an-smb-volume-for-azure-netapp-files"></a>Een SMB-volume maken voor Azure NetApp Files
 
@@ -222,6 +222,23 @@ Deze instelling wordt geconfigureerd in de **Active Directory verbindingen** ond
     Het volume dat u hebt gemaakt, wordt weer gegeven op de pagina volumes. 
  
     Een volume neemt het abonnement, de resourcegroep en de locatiekenmerken over van de bijbehorende capaciteitspool. U kunt de implementatiestatus van het volume controleren vanuit het tabblad Meldingen.
+
+## <a name="control-access-to-an-smb-volume"></a>Toegang tot een SMB-volume beheren  
+
+Toegang tot een SMB-volume wordt beheerd via machtigingen.  
+
+### <a name="share-permissions"></a>Share machtigingen  
+
+Een nieuw volume heeft standaard de machtigingen delen **iedereen/volledig beheer** . Leden van de groep domein Administrators kunnen de share machtigingen wijzigen door gebruik te maken van computer beheer op het computer account dat wordt gebruikt voor het Azure NetApp Files volume.
+
+![SMB-koppel](../media/azure-netapp-files/smb-mount-path.png) 
+![pad machtigingen voor delen instellen](../media/azure-netapp-files/set-share-permissions.png) 
+
+### <a name="ntfs-file-and-folder-permissions"></a>NTFS-bestands-en mapmachtigingen  
+
+U kunt machtigingen voor een bestand of map instellen met behulp van het tabblad **beveiliging** van de eigenschappen van het object in de Windows SMB-client.
+ 
+![Machtigingen voor bestanden en mappen instellen](../media/azure-netapp-files/set-file-folder-permissions.png) 
 
 ## <a name="next-steps"></a>Volgende stappen  
 
