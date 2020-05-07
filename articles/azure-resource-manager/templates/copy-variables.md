@@ -3,12 +3,12 @@ title: Meerdere exemplaren van een variabele definiëren
 description: Kopieer bewerking in een Azure Resource Manager sjabloon gebruiken om meerdere keren te herhalen bij het maken van een variabele.
 ms.topic: conceptual
 ms.date: 02/13/2020
-ms.openlocfilehash: ed0c2d87c48a18b0a065f6c76e1e69142a9df048
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4fbe392e8a0fb477b6986fc9c7584291590eb4e7
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80153298"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82583365"
 ---
 # <a name="variable-iteration-in-arm-templates"></a>Variabele herhaling in ARM-sjablonen
 
@@ -16,7 +16,7 @@ In dit artikel wordt beschreven hoe u meer dan één waarde voor een variabele i
 
 U kunt ook kopiëren met [resources](copy-resources.md), [Eigenschappen in een resource](copy-properties.md)en [uitvoer](copy-outputs.md)gebruiken.
 
-## <a name="variable-iteration"></a>Variabele herhaling
+## <a name="syntax"></a>Syntaxis
 
 Het element Copy heeft de volgende algemene indeling:
 
@@ -33,6 +33,21 @@ Het element Copy heeft de volgende algemene indeling:
 De eigenschap **name** is een wille keurige waarde die de lus identificeert. De eigenschap **Count** geeft het aantal iteraties op dat u voor de variabele wilt.
 
 De eigenschap **input** geeft de eigenschappen aan die u wilt herhalen. U maakt een matrix van elementen die zijn gemaakt op basis van de waarde in de eigenschap **input** . Dit kan één eigenschap zijn (zoals een teken reeks) of een object met verschillende eigenschappen.
+
+## <a name="copy-limits"></a>Limieten kopiëren
+
+De telling mag niet groter zijn dan 800.
+
+De telling kan geen negatief getal zijn. Dit kan nul zijn als u de sjabloon implementeert met een recente versie van Azure CLI, Power shell of REST API. U moet het volgende gebruiken:
+
+* Azure PowerShell **2,6** of hoger
+* Azure CLI **2.0.74** of hoger
+* REST API versie **2019-05-10** of hoger
+* [Gekoppelde implementaties](linked-templates.md) moeten API-versie **2019-05-10** of hoger voor het bron type implementatie gebruiken
+
+Eerdere versies van Power shell, CLI en de REST API bieden geen ondersteuning voor aantal nul.
+
+## <a name="variable-iteration"></a>Variabele herhaling
 
 In het volgende voor beeld ziet u hoe u een matrix van teken reeks waarden maakt:
 
@@ -294,12 +309,6 @@ In het volgende voor beeld ziet u de verschillende manieren waarop u kopiëren m
   }
 }
 ```
-
-## <a name="copy-limits"></a>Limieten kopiëren
-
-De telling mag niet groter zijn dan 800.
-
-De telling kan geen negatief getal zijn. Als u een sjabloon implementeert met Azure PowerShell 2,6 of hoger, Azure CLI 2.0.74 of hoger of REST API versie **2019-05-10** of hoger, kunt u Count instellen op nul. Eerdere versies van Power shell, CLI en de REST API bieden geen ondersteuning voor aantal nul.
 
 ## <a name="example-templates"></a>Voorbeeld sjablonen
 

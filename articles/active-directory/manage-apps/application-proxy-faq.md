@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 10/03/2019
 ms.author: mimart
 ms.reviewer: japere
-ms.openlocfilehash: d1929f937d86001a0f2a399b1ebd92e47bbd2c86
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a6efe74008b2271b960f877f5f0f6b2b6b549a8d
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80990902"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82583078"
 ---
 # <a name="active-directory-azure-ad-application-proxy-frequently-asked-questions"></a>Veelgestelde vragen over de toepassings proxy van Active Directory (Azure AD)
 
@@ -95,6 +95,10 @@ Als de connector servers en het Web Application Service-account zich in hetzelfd
 
 Als de connector servers en het Web Application Service-account zich in verschillende domeinen bevinden, wordt delegering op basis van resources gebruikt. De machtigingen voor delegering zijn geconfigureerd op de doel webserver en Web Application Service-account. Deze methode van beperkte delegering is relatief nieuw. De methode is geïntroduceerd in Windows Server 2012, die ondersteuning biedt voor Cross-Domain delegering door de eigenaar van de resource (webservice) te laten bepalen welke computer-en service accounts er kunnen worden gedelegeerd. Er is geen gebruikers interface die u kan helpen bij deze configuratie. hiervoor moet u Power shell gebruiken.
 Zie voor meer informatie het technisch document [over Kerberos-beperkte overdracht met toepassings proxy](https://aka.ms/kcdpaper).
+
+### <a name="does-ntlm-authentication-work-with-azure-ad-application-proxy"></a>Werkt NTLM-verificatie met Azure AD-toepassingsproxy?
+
+NTLM-verificatie kan niet worden gebruikt als een methode voor verificatie vooraf of eenmalige aanmelding. NTLM-verificatie kan alleen worden gebruikt wanneer er direct kan worden onderhandeld tussen de client en de gepubliceerde webtoepassing. Het gebruik van NTLM-verificatie zorgt er meestal voor dat een aanmeldings prompt wordt weer gegeven in de browser.
 
 ## <a name="pass-through-authentication"></a>Pass-through-verificatie
 

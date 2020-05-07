@@ -6,13 +6,14 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 03/16/2020
-ms.openlocfilehash: 659af8b85cb3736d663e79676b04af8041aeabfb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: seoapr2020
+ms.date: 04/29/2020
+ms.openlocfilehash: 13ea1043d05c9f349e25623086c2908e176772a8
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80129598"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82583945"
 ---
 # <a name="safely-manage-python-environment-on-azure-hdinsight-using-script-action"></a>Een Python-omgeving veilig beheren in Azure HDInsight met scriptactie
 
@@ -20,7 +21,7 @@ ms.locfileid: "80129598"
 > * [Cell Magic gebruiken](apache-spark-jupyter-notebook-use-external-packages.md)
 > * [Script actie gebruiken](apache-spark-python-package-installation.md)
 
-HDInsight heeft twee ingebouwde python-installaties in het Spark-cluster, Anaconda python 2,7 en python 3,5. In sommige gevallen moeten klanten de python-omgeving aanpassen, zoals het installeren van externe Python-pakketten of een andere python-versie. In dit artikel laten we de best practice zien van het veilig beheren van python-omgevingen voor een [Apache Spark](./apache-spark-overview.md) cluster op HDInsight.
+HDInsight heeft twee ingebouwde python-installaties in het Spark-cluster, Anaconda python 2,7 en python 3,5. Klanten moeten mogelijk de python-omgeving aanpassen. Zoals het installeren van externe Python-pakketten of een andere python-versie. Hier zien we de best practice van het veilig beheren van python-omgevingen voor Apache Spark clusters op HDInsight.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -28,7 +29,7 @@ Een Apache Spark-cluster in HDInsight. Zie [Apache Spark-clusters maken in Azure
 
 ## <a name="support-for-open-source-software-used-on-hdinsight-clusters"></a>Ondersteuning voor open-source software die wordt gebruikt in HDInsight-clusters
 
-De Microsoft Azure HDInsight-service gebruikt een ecosysteem van open-source technologieën die zijn gevormd rond Apache Hadoop. Microsoft Azure biedt een algemeen ondersteunings niveau voor open-source technologieën. Zie de [website met veelgestelde vragen over Azure-ondersteuning](https://azure.microsoft.com/support/faq/)voor meer informatie. De HDInsight-service biedt een extra ondersteunings niveau voor ingebouwde componenten.
+De Microsoft Azure HDInsight-service gebruikt een omgeving van open-source technologieën die zijn gevormd rond Apache Hadoop. Microsoft Azure biedt een algemeen ondersteunings niveau voor open-source technologieën. Zie de [website met veelgestelde vragen over Azure-ondersteuning](https://azure.microsoft.com/support/faq/)voor meer informatie. De HDInsight-service biedt een extra ondersteunings niveau voor ingebouwde componenten.
 
 Er zijn twee soorten open source-onderdelen die beschikbaar zijn in de HDInsight-service:
 
@@ -40,7 +41,7 @@ Er zijn twee soorten open source-onderdelen die beschikbaar zijn in de HDInsight
 > [!IMPORTANT]
 > Onderdelen die worden meegeleverd met het HDInsight-cluster, worden volledig ondersteund. Microsoft Ondersteuning helpt bij het isoleren en oplossen van problemen met betrekking tot deze onderdelen.
 >
-> Aangepaste onderdelen ontvangen commercieel redelijke ondersteuning om u te helpen het probleem verder op te lossen. Micro soft ondersteuning kan het probleem mogelijk oplossen of u wordt gevraagd beschik bare kanalen te betrekken voor de open source-technologieën waar diep gaande expertise voor die technologie wordt gevonden. Er zijn bijvoorbeeld veel community-sites die kunnen worden gebruikt, zoals: MSDN- [https://stackoverflow.com](https://stackoverflow.com) [forum voor HDInsight](https://social.msdn.microsoft.com/Forums/azure/home?forum=hdinsight). Ook Apache-projecten hebben project sites [https://apache.org](https://apache.org)op, bijvoorbeeld: [Hadoop](https://hadoop.apache.org/).
+> Aangepaste onderdelen ontvangen commercieel redelijke ondersteuning om u te helpen het probleem verder op te lossen. Micro soft ondersteuning kan het probleem mogelijk oplossen of u wordt gevraagd beschik bare kanalen te betrekken voor de open source-technologieën waar diep gaande expertise voor die technologie wordt gevonden. Er zijn bijvoorbeeld veel community-sites die kunnen worden gebruikt, zoals: MSDN- `https://stackoverflow.com` [forum voor HDInsight](https://social.msdn.microsoft.com/Forums/azure/home?forum=hdinsight). Ook Apache-projecten hebben project sites `https://apache.org`op.
 
 ## <a name="understand-default-python-installation"></a>Informatie over de standaard installatie van python
 
@@ -55,9 +56,9 @@ HDInsight Spark-cluster wordt gemaakt met Anaconda-installatie. Er zijn twee pyt
 
 ## <a name="safely-install-external-python-packages"></a>Externe Python-pakketten veilig installeren
 
-HDInsight-cluster is afhankelijk van de ingebouwde python-omgeving, zowel python 2,7 als python 3,5. Rechtstreeks installeren van aangepaste pakketten in deze ingebouwde omgevingen kan leiden tot onverwachte wijzigingen in de bibliotheek versie en het cluster verder verstoren. Volg de onderstaande stappen om veilig aangepaste externe Python-pakketten voor uw Spark-toepassingen te installeren.
+HDInsight-cluster is afhankelijk van de ingebouwde python-omgeving, zowel python 2,7 als python 3,5. Het rechtstreeks installeren van aangepaste pakketten in deze ingebouwde omgevingen kan leiden tot onverwachte wijzigingen in de bibliotheek versie. En breek het cluster verder. Volg de onderstaande stappen om de aangepaste externe Python-pakketten voor uw Spark-toepassingen veilig te installeren.
 
-1. Maak een virtuele python-omgeving met behulp van Conda. Een virtuele omgeving biedt een geïsoleerde ruimte voor uw projecten zonder dat anderen dat doen. Bij het maken van de virtuele python-omgeving kunt u een python-versie opgeven die u wilt gebruiken. U moet nog steeds een virtuele omgeving maken, zelfs als u python 2,7 en 3,5 wilt gebruiken. Zo zorgt u ervoor dat de standaard omgeving van het cluster niet wordt verbroken. Voer script acties uit op uw cluster voor alle knoop punten met het onderstaande script om een virtuele python-omgeving te maken.
+1. Maak een virtuele python-omgeving met behulp van Conda. Een virtuele omgeving biedt een geïsoleerde ruimte voor uw projecten zonder dat anderen dat doen. Bij het maken van de virtuele python-omgeving kunt u een python-versie opgeven die u wilt gebruiken. U moet nog steeds een virtuele omgeving maken, zelfs als u python 2,7 en 3,5 wilt gebruiken. Dit is vereist om ervoor te zorgen dat de standaard omgeving van het cluster niet wordt verzorgd. Voer script acties uit op uw cluster voor alle knoop punten met het onderstaande script om een virtuele python-omgeving te maken.
 
     -   `--prefix`Hiermee geeft u een pad op waar de virtuele Conda-omgeving zich bevindt. Er zijn verschillende configuraties die verder moeten worden gewijzigd op basis van het pad dat hier wordt opgegeven. In dit voor beeld gebruiken we de py35new, omdat het cluster al een bestaande virtuele omgeving met de naam py35 bevat.
     -   `python=`Hiermee geeft u de python-versie op voor de virtuele omgeving. In dit voor beeld gebruiken we versie 3,5, dezelfde versie als het cluster dat in één is ingebouwd. U kunt ook andere python-versies gebruiken om de virtuele omgeving te maken.
@@ -67,9 +68,9 @@ HDInsight-cluster is afhankelijk van de ingebouwde python-omgeving, zowel python
     sudo /usr/bin/anaconda/bin/conda create --prefix /usr/bin/anaconda/envs/py35new python=3.5 anaconda --yes
     ```
 
-2. Installeer indien nodig externe Python-pakketten in de gemaakte virtuele omgeving. Voer script acties uit op uw cluster voor alle knoop punten met het onderstaande script om externe Python-pakketten te installeren. U moet hier sudo-bevoegdheden hebben om bestanden te kunnen schrijven naar de map virtuele omgeving.
+2. Installeer indien nodig externe Python-pakketten in de gemaakte virtuele omgeving. Voer script acties uit op uw cluster voor alle knoop punten met het onderstaande script om externe Python-pakketten te installeren. U moet sudo-bevoegdheid hier hebben om bestanden te schrijven naar de map virtuele omgeving.
 
-    U kunt de [pakket index](https://pypi.python.org/pypi) doorzoeken voor de volledige lijst met pakketten die beschikbaar zijn. U kunt ook een lijst met beschik bare pakketten uit andere bronnen ophalen. U kunt bijvoorbeeld pakketten installeren die beschikbaar worden gesteld via [Conda-vervalsing](https://conda-forge.org/feedstocks/).
+    Zoek in de [pakket index](https://pypi.python.org/pypi) naar de volledige lijst met pakketten die beschikbaar zijn. U kunt ook een lijst met beschik bare pakketten uit andere bronnen ophalen. U kunt bijvoorbeeld pakketten installeren die beschikbaar worden gesteld via [Conda-vervalsing](https://conda-forge.org/feedstocks/).
 
     Gebruik de onderstaande opdracht als u een bibliotheek met de meest recente versie wilt installeren:
 
@@ -114,7 +115,7 @@ HDInsight-cluster is afhankelijk van de ingebouwde python-omgeving, zowel python
 
     2. Vouw Geavanceerd livy2-env uit en voeg onderaan de instructies toe. Als u de virtuele omgeving met een ander voor voegsel hebt geïnstalleerd, wijzigt u het pad dienovereenkomstig.
 
-        ```
+        ```bash
         export PYSPARK_PYTHON=/usr/bin/anaconda/envs/py35new/bin/python
         export PYSPARK_DRIVER_PYTHON=/usr/bin/anaconda/envs/py35new/bin/python
         ```
@@ -123,7 +124,7 @@ HDInsight-cluster is afhankelijk van de ingebouwde python-omgeving, zowel python
 
     3. Vouw Advanced spark2-env uit en vervang de bestaande instructie export PYSPARK_PYTHON onderaan. Als u de virtuele omgeving met een ander voor voegsel hebt geïnstalleerd, wijzigt u het pad dienovereenkomstig.
 
-        ```
+        ```bash
         export PYSPARK_PYTHON=${PYSPARK_PYTHON:-/usr/bin/anaconda/envs/py35new/bin/python}
         ```
 
@@ -133,7 +134,7 @@ HDInsight-cluster is afhankelijk van de ingebouwde python-omgeving, zowel python
 
         ![Spark-configuratie wijzigen via Ambari](./media/apache-spark-python-package-installation/ambari-restart-services.png)
 
-4. Als u de nieuwe virtuele omgeving die u hebt gemaakt, wilt gebruiken op Jupyter. U moet Jupyter-configuraties wijzigen en Jupyter opnieuw starten. Voer script acties uit op alle hoofd knooppunten met de instructie hieronder om Jupyter naar de nieuwe virtuele omgeving te wijzen. Zorg ervoor dat u het pad naar het voor voegsel dat u hebt opgegeven voor uw virtuele omgeving wijzigt. Nadat u deze script actie hebt uitgevoerd, start u de Jupyter-service opnieuw via de Ambari-gebruikers interface om deze wijziging beschikbaar te maken.
+4. Als u de nieuwe virtuele omgeving die u hebt gemaakt, wilt gebruiken op Jupyter. Wijzig Jupyter-configuraties en start Jupyter opnieuw. Voer script acties uit op alle hoofd knooppunten met de instructie hieronder om Jupyter naar de nieuwe virtuele omgeving te wijzen. Zorg ervoor dat u het pad naar het voor voegsel dat u hebt opgegeven voor uw virtuele omgeving wijzigt. Nadat u deze script actie hebt uitgevoerd, start u de Jupyter-service opnieuw via de Ambari-gebruikers interface om deze wijziging beschikbaar te maken.
 
     ```bash
     sudo sed -i '/python3_executable_path/c\ \"python3_executable_path\" : \"/usr/bin/anaconda/envs/py35new/bin/python3\"' /home/spark/.sparkmagic/config.json
@@ -145,13 +146,12 @@ HDInsight-cluster is afhankelijk van de ingebouwde python-omgeving, zowel python
 
 ## <a name="known-issue"></a>Bekend probleem
 
-Er is een bekende fout voor Anaconda-versie 4.7.11, 4.7.12 en 4.8.0. Als uw script acties zijn vastgelopen in `"Collecting package metadata (repodata.json): ...working..."` en mislukken met. `"Python script has been killed due to timeout after waiting 3600 secs"` U kunt [Dit script](https://gregorysfixes.blob.core.windows.net/public/fix-conda.sh) downloaden en uitvoeren als script acties op alle knoop punten om het probleem op te lossen.
+Er is een bekende fout voor Anaconda- `4.7.11`versie `4.7.12`, en `4.8.0`. Als uw script acties zijn vastgelopen in `"Collecting package metadata (repodata.json): ...working..."` en mislukken met. `"Python script has been killed due to timeout after waiting 3600 secs"` U kunt [Dit script](https://gregorysfixes.blob.core.windows.net/public/fix-conda.sh) downloaden en uitvoeren als script acties op alle knoop punten om het probleem op te lossen.
 
 Als u uw Anaconda-versie wilt controleren, kunt u SSHen naar het knoop `/usr/bin/anaconda/bin/conda --v`punt cluster header en uitvoeren.
 
 ## <a name="next-steps"></a>Volgende stappen
 
 * [Overzicht: Apache Spark in Azure HDInsight](apache-spark-overview.md)
-* [Apache Spark met BI: interactieve gegevens analyses uitvoeren met behulp van Spark in HDInsight met BI-hulpprogram ma's](apache-spark-use-bi-tools.md)
-* [Resources beheren voor het Apache Spark-cluster in Azure HDInsight](apache-spark-resource-manager.md)
+* [Externe pakketten met Jupyter-notebooks in Apache Spark](apache-spark-jupyter-notebook-use-external-packages.md)
 * [Taken die worden uitgevoerd in een Apache Spark-cluster in HDInsight, traceren en er fouten in oplossen](apache-spark-job-debugging.md)

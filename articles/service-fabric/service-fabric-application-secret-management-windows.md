@@ -1,16 +1,14 @@
 ---
 title: Een versleutelings certificaat instellen op Windows-clusters
 description: Meer informatie over het instellen van een versleutelings certificaat en het versleutelen van geheimen op Windows-clusters.
-author: vturecek
 ms.topic: conceptual
 ms.date: 01/04/2019
-ms.author: vturecek
-ms.openlocfilehash: d563b338169ab26649b42c73f5fb7ed2fe8c0312
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: eb4909d62a2627c368f24dab572b25c6f1df30ec
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81460185"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82583290"
 ---
 # <a name="set-up-an-encryption-certificate-and-encrypt-secrets-on-windows-clusters"></a>Een versleutelings certificaat instellen en geheimen op Windows-clusters versleutelen
 In dit artikel wordt beschreven hoe u een versleutelings certificaat instelt en hoe u deze gebruikt om geheimen te versleutelen op Windows-clusters. Voor Linux-clusters raadpleegt [u een versleutelings certificaat instellen en geheimen op Linux-clusters versleutelen.][secret-management-linux-specific-link]

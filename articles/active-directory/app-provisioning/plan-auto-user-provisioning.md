@@ -10,14 +10,13 @@ ms.topic: conceptual
 ms.workload: identity
 ms.date: 10/17/2019
 ms.author: martinco
-ms.reviewer: arvindha
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0d2f284fddfc49632e467adbf5877856b40a81dd
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.reviewer: arvindha, celested
+ms.openlocfilehash: 4f391a2fce669c2684ac5001e3659247adfeb4f6
+ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77522407"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82593536"
 ---
 # <a name="plan-an-automatic-user-provisioning-deployment"></a>Implementatie van een automatische gebruikersinrichting plannen
 
@@ -27,7 +26,7 @@ Azure Active Directory (Azure AD) automatische gebruikers inrichting vereenvoudi
 
 Zie [Gebruikers inrichten en de inrichting ongedaan maken voor SaaS-toepassingen met Azure Active Directory](../app-provisioning/user-provisioning.md) om meer inzicht te krijgen in de functionaliteit.
 
-## <a name="learn"></a>Leren
+## <a name="learn"></a>Learn
 
 Gebruikers inrichten maakt een basis voor de voortdurende identiteits bestuur en verbetert de kwaliteit van bedrijfs processen die afhankelijk zijn van gezaghebbende identiteits gegevens.
 
@@ -51,7 +50,7 @@ Azure AD biedt Self-Service-integratie van elke toepassing met behulp van sjablo
 
 U hebt de juiste licenties nodig voor de toepassing (en) die u automatisch wilt inrichten. Bespreek met de eigen aren van de toepassing of de gebruikers die zijn toegewezen aan de toepassing, over de juiste licenties beschikken voor hun toepassings rollen. Als Azure AD automatische inrichting beheert op basis van rollen, moeten de rollen die zijn toegewezen in azure AD worden uitgelijnd op toepassings licenties. Onjuiste licenties die eigendom zijn van de toepassing, kunnen leiden tot fouten tijdens het inrichten/bijwerken van een gebruiker.
 
-### <a name="terms"></a>Voorwaarden
+### <a name="terms"></a>Termen
 
 In dit artikel worden de volgende termen gebruikt:
 

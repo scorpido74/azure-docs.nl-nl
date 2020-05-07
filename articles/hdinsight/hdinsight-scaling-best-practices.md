@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: seoapr2020
-ms.date: 04/23/2020
-ms.openlocfilehash: 64fe56ff506cf256dd7e317984551949f9ffad06
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 04/29/2020
+ms.openlocfilehash: 2dae0f662eefa7f7b1f56d057cd47f1cb92244ce
+ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82189361"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82592057"
 ---
 # <a name="scale-azure-hdinsight-clusters"></a>Azure HDInsight-clusters schalen
 
@@ -74,27 +74,38 @@ De impact van het wijzigen van het aantal gegevens knooppunten varieert voor elk
 
 * Apache Storm
 
-    U kunt eenvoudig gegevens knooppunten toevoegen of verwijderen terwijl Storm wordt uitgevoerd. Nadat de schaal bewerking is voltooid, moet u de topologie echter opnieuw verdelen.
-
-    Herverdeling kan op twee manieren worden uitgevoerd:
+    U kunt eenvoudig gegevens knooppunten toevoegen of verwijderen terwijl Storm wordt uitgevoerd. Nadat de schaal bewerking is voltooid, moet u de topologie echter opnieuw verdelen. Met herverdeling kunt u de instellingen van het [parallellisme](https://storm.apache.org/documentation/Understanding-the-parallelism-of-a-Storm-topology.html) aanpassen op basis van het nieuwe aantal knoop punten in het cluster. Gebruik een van de volgende opties om de uitvoering van topologieën te herverdelen:
 
   * Storm-webinterface
+
+    Gebruik de volgende stappen om een topologie te herverdelen met behulp van de Storm-gebruikers interface.
+
+    1. Open `https://CLUSTERNAME.azurehdinsight.net/stormui` in uw webbrowser, waarbij `CLUSTERNAME` de naam van uw Storm-cluster is. Als u hierom wordt gevraagd, voert u de naam en het wacht woord voor HDInsight Cluster Administrator (admin) in die u hebt opgegeven bij het maken van het cluster.
+
+    1. Selecteer de topologie die u wilt herverdelen en selecteer vervolgens de knop opnieuw **verdelen** . Voer de vertraging in voordat de herbalans bewerking wordt uitgevoerd.
+
+        ![Herverdeling van HDInsight Storm-schaal](./media/hdinsight-scaling-best-practices/hdinsight-portal-scale-cluster-storm-rebalance.png)
+
   * Opdracht regel interface (CLI)-hulp programma
 
-    Zie [Apache Storm-documentatie](https://storm.apache.org/documentation/Understanding-the-parallelism-of-a-Storm-topology.html)voor meer informatie.
+    Maak verbinding met de server en gebruik de volgende opdracht om een topologie opnieuw te verdelen:
 
-    De gebruikers interface van Storm is beschikbaar op het HDInsight-cluster:
+    ```bash
+     storm rebalance TOPOLOGYNAME
+    ```
 
-    ![Herverdeling van HDInsight Storm-schaal](./media/hdinsight-scaling-best-practices/hdinsight-portal-scale-cluster-storm-rebalance.png)
+    U kunt ook para meters opgeven voor het overschrijven van de parallellisme-hints die oorspronkelijk door de topologie worden opgegeven. Met de onderstaande code wordt de `mytopology` topologie bijvoorbeeld opnieuw geconfigureerd op 5 werk processen, 3 voor de uitvoering van het onderdeel Blue-Spout en 10 uitvoerendeers voor het onderdeel Yellow-schicht.
 
-    Hier volgt een voor beeld van een CLI-opdracht voor het herverdelen van de Storm-topologie:
-
-    ```console
+    ```bash
     ## Reconfigure the topology "mytopology" to use 5 worker processes,
     ## the spout "blue-spout" to use 3 executors, and
     ## the bolt "yellow-bolt" to use 10 executors
     $ storm rebalance mytopology -n 5 -e blue-spout=3 -e yellow-bolt=10
     ```
+
+* Kafka
+
+    U moet partitie replica's na schaal bewerkingen opnieuw verdelen. Zie voor meer informatie de [hoge Beschik baarheid van gegevens met Apache Kafka in HDInsight](./kafka/apache-kafka-high-availability.md) -document.
 
 ## <a name="how-to-safely-scale-down-a-cluster"></a>Een cluster veilig omlaag schalen
 
@@ -252,3 +263,8 @@ Regio servers worden automatisch binnen enkele minuten na het volt ooien van een
 ## <a name="next-steps"></a>Volgende stappen
 
 * [Automatisch schalen van Azure HDInsight-clusters](hdinsight-autoscale-clusters.md)
+
+Zie voor specifieke informatie over het schalen van uw HDInsight-cluster:
+
+* [Apache Hadoop clusters in HDInsight beheren door gebruik te maken van de Azure Portal](hdinsight-administer-use-portal-linux.md#scale-clusters)
+* [Apache Hadoop clusters in HDInsight beheren met behulp van Azure CLI](hdinsight-administer-use-command-line.md#scale-clusters)

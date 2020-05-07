@@ -13,7 +13,7 @@ ms.locfileid: "67176477"
 ---
 Dit zijn de ondersteunde protocollen voor clients die toegang hebben tot uw apparaat.
 
-|**Protocolsubstatus** |**Lager**   |**Opmerkingen**  |
+|**Protocol** |**Lager**   |**Opmerkingen**  |
 |---------|---------|---------|
 |SMB    | 2. X, 3. X      | SMB 1 wordt niet ondersteund.|
 |NFS (momenteel als preview-versie)     |3,0, 4,1        | Mac OS wordt niet ondersteund met NFS v 4.1.         |

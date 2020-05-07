@@ -8,14 +8,14 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 02/07/2020
+ms.date: 04/29/2020
 ms.custom: seodec18
-ms.openlocfilehash: 50ac2a728750c6b01dfc57fa7e20df25c856395a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 93813dfaecf40fcb5cab0856d013fb890118886c
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77087387"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82580675"
 ---
 # <a name="azure-time-series-insights-preview-use-cases"></a>Use cases voor Azure Time Series Insights (preview)
 
@@ -42,13 +42,13 @@ Verken en analyseer miljarden gebeurtenissen om afwijkingen op te sporen en de v
 
 De meeste klanten komen overeen dat de minimale hoeveelheid tijd die nodig is om inzicht te krijgen, een van de belangrijkste-functies van Time Series Insights:
 
-* Voor Time Series Insights is geen vooraf gegevens voorbereiding vereist. 
-* Het werkt snel om u te verbinden met miljarden gebeurtenissen in uw Azure IoT Hub-of Azure Event Hubs-instanties in enkele minuten. 
+* Voor Time Series Insights is geen vooraf gegevens voorbereiding vereist.
+* Het werkt snel om u te verbinden met miljarden gebeurtenissen in uw Azure IoT Hub-of Azure Event Hubs-instanties in enkele minuten.
 * Zodra u verbinding hebt gemaakt, kunt u miljarden gebeurtenissen visualiseren en analyseren om afwijkingen op te sporen en verborgen trends in uw gegevens te ontdekken.
 
 Time Series Insights is intuïtief en eenvoudig te gebruiken. U kunt met uw gegevens werken zonder ook maar één regel code te schrijven. Er is ook geen nieuwe taal die u nodig hebt om te leren, hoewel Time Series Insights een gedetailleerde Zoek taal op basis van tekst biedt voor ervaren gebruikers die bekend zijn met SQL. U kunt er ook voor kiezen om te verkennen.
 
-Klanten kunnen profiteren van de snelheid voor het snel diagnosticeren van problemen met activa. Ze kunnen DevOps-analyses uitvoeren om de hoofd oorzaak van een bug in een IoT-oplossing te verkrijgen. Ze kunnen ook gebieden identificeren die moeten worden gemarkeerd voor nader onderzoek als onderdeel van hun data Science-initiatieven. 
+Klanten kunnen profiteren van de snelheid voor het snel diagnosticeren van problemen met activa. Ze kunnen DevOps-analyses uitvoeren om de hoofd oorzaak van een bug in een IoT-oplossing te verkrijgen. Ze kunnen ook gebieden identificeren die moeten worden gemarkeerd voor nader onderzoek als onderdeel van hun data Science-initiatieven.
 
 Er zijn drie manieren om te communiceren met gegevens die zijn opgeslagen in Time Series Insights:
 

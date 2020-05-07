@@ -5,24 +5,26 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: conceptual
-ms.date: 03/25/2020
+ms.date: 05/04/2020
 ms.author: victorh
-ms.openlocfilehash: 5abe9344b0512433c48df50335cce5cf1e3e3547
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: da5100fafc98ae38809c93e9b3db5ef41c58766a
+ms.sourcegitcommit: 602e6db62069d568a91981a1117244ffd757f1c2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80289639"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82863413"
 ---
 # <a name="azure-firewall-remote-work-support"></a>Azure Firewall ondersteuning voor externe werk
 
-Azure Firewall is een beheerde, Cloud service voor netwerk beveiliging die de resources van uw Azure-netwerk beveiligt. Het is een volledig stateful firewall als een service met ingebouwde hoge beschikbaarheid en onbeperkte cloudschaalbaarheid. 
+Azure Firewall is een beheerde, Cloud service voor netwerk beveiliging die de resources van uw Azure-netwerk beveiligt. Het is een volledig stateful firewall als een service met ingebouwde hoge beschikbaarheid en onbeperkte cloudschaalbaarheid.
 
-## <a name="firewall-rules"></a>Firewall-regels
+## <a name="virtual-desktop-infrastructure-vdi-deployment-support"></a>Ondersteuning voor VDI (Virtual Desktop Infrastructure)-implementatie
 
-U kunt Azure Firewall gebruiken om de inkomende RDP-toegang van uw virtuele desktop infrastructuur (VDI) met uw virtuele Azure-netwerk te beveiligen met behulp van Azure Firewall [DNAT-regels](rule-processing.md). Voor het virtuele bureau blad van Windows (WVD) hoeft u geen inkomende toegang te openen voor uw virtuele netwerk. U moet echter een reeks uitgaande netwerk verbindingen toestaan voor de virtuele WVD-machines die worden uitgevoerd in uw virtuele netwerk. Zie [Wat is Windows virtueel bureau blad?](../virtual-desktop/overview.md#requirements) voor meer informatie.
+Voor werk van het beleid voor thuis gebruik moeten veel IT-organisaties essentiële wijzigingen in capaciteit, netwerk, beveiliging en governance aanpakken. Werk nemers worden niet beveiligd door het gelaagde beveiligings beleid dat is gekoppeld aan on-premises Services terwijl u vanuit huis werkt. Met VDI-implementaties (Virtual Desktop Infrastructure) op Azure kunnen organisaties snel reageren op deze veranderende omgeving. U hebt echter een manier nodig om inkomende/uitgaande internet toegang tot en van deze VDI-implementaties te beveiligen. U kunt Azure Firewall [DNAT regels](rule-processing.md) samen met de op [bedreigingen](threat-intel.md) gebaseerde filter functies gebruiken om uw VDI-implementaties te beveiligen.
 
-U kunt deze uitgaande toegang configureren met behulp van Azure Firewall toepassings regels. Zie voor meer informatie [zelf studie: Azure firewall implementeren en configureren met behulp van de Azure Portal](tutorial-firewall-deploy-portal.md).
+## <a name="azure-windows-virtual-desktop-support"></a>Ondersteuning voor virtueel bureau blad van Azure
+
+Virtueel bureau blad van Windows is een allesomvattende Desktop-en app Virtualization-service die wordt uitgevoerd in Azure. Het is de enige virtuele desktop infrastructuur (VDI) die vereenvoudigd beheer, multi-sessie Windows 10, optimalisaties voor Office 365 ProPlus en ondersteuning voor Extern bureaublad-services-omgevingen (RDS) biedt. U kunt binnen enkele minuten uw Windows-Bureau bladen en-apps in azure implementeren en schalen en ingebouwde beveiligings-en nalevings functies aanschaffen. Voor het virtuele bureau blad van Windows hoeft u geen inkomende toegang te openen voor uw virtuele netwerk. U moet echter een reeks uitgaande netwerk verbindingen toestaan voor de virtuele Windows-bureau blad-machines die worden uitgevoerd in uw virtuele netwerk. Zie [Azure firewall gebruiken om virtuele bureau blad-implementaties te beveiligen](protect-windows-virtual-desktop.md)voor meer informatie.
 
 ## <a name="next-steps"></a>Volgende stappen
 

@@ -14,16 +14,16 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 141e83e21db18f21468113fd9927c2bdd2ed176d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9018228ec685d69fb03dfbc23de530e1bb8abb4f
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79497872"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82582859"
 ---
 # <a name="enforce-a-naming-policy-on-office-365-groups-in-azure-active-directory"></a>Een naamgevings beleid afdwingen voor Office 365-groepen in Azure Active Directory
 
-Voor het afdwingen van consistente naam conventies voor Office 365-groepen die door uw gebruikers zijn gemaakt of bewerkt, stelt u een groeps naamgevings beleid in voor uw tenants in Azure Active Directory (Azure AD). U kunt bijvoorbeeld het naamgevings beleid gebruiken voor het communiceren van de functie van een groep, lidmaatschap, geografische regio of het maken van de groep. U kunt ook het naamgevings beleid gebruiken om groepen in het adres boek te categoriseren. U kunt het beleid gebruiken om te voor komen dat specifieke woorden worden gebruikt in groeps namen en aliassen.
+Voor het afdwingen van consistente naam conventies voor Office 365-groepen die door uw gebruikers zijn gemaakt of bewerkt, stelt u een groeps naamgevings beleid in voor uw organisatie in Azure Active Directory (Azure AD). U kunt bijvoorbeeld het naamgevings beleid gebruiken voor het communiceren van de functie van een groep, lidmaatschap, geografische regio of het maken van de groep. U kunt ook het naamgevings beleid gebruiken om groepen in het adres boek te categoriseren. U kunt het beleid gebruiken om te voor komen dat specifieke woorden worden gebruikt in groeps namen en aliassen.
 
 > [!IMPORTANT]
 > Voor het gebruik van Azure AD-naamgevings beleid voor Office 365-groepen moet u een Azure Active Directory Premium P1-licentie of Azure AD Basic EDU-licentie toewijzen voor elke unieke gebruiker die lid is van een of meer Office 365-groepen.
@@ -42,7 +42,7 @@ U kunt het naamgevings beleid voor groepen op twee verschillende manieren afdwin
 
 ### <a name="prefix-suffix-naming-policy"></a>Naamgevings beleid voor voegsel-achtervoegsel
 
-De algemene structuur van de naamgevings regels is ' voor voegsel [GroupName] achtervoegsel '. Hoewel u meerdere voor voegsels en achtervoegsels kunt definiëren, kunt u slechts één exemplaar van [GroupName] in de instelling hebben. De voor voegsels of achtervoegsels kunnen bestaan uit vaste teken reeksen of gebruikers kenmerken, \[zoals\] afdeling, die worden vervangen op basis van de gebruiker die de groep maakt. Het totaal aantal toegestane tekens voor uw voor voegsel en achtervoegsel teken reeksen is 53 tekens. 
+De algemene structuur van de naamgevings regels is ' voor voegsel [GroupName] achtervoegsel '. Hoewel u meerdere voor voegsels en achtervoegsels kunt definiëren, kunt u slechts één exemplaar van [GroupName] in de instelling hebben. De voor voegsels of achtervoegsels kunnen bestaan uit vaste teken reeksen of gebruikers kenmerken, \[zoals\] afdeling, die worden vervangen op basis van de gebruiker die de groep maakt. Het totale toegestane aantal tekens voor de teken reeksen voor voor voegsel en achtervoegsel, inclusief groeps naam, is 53 tekens. 
 
 Voor voegsels en achtervoegsels kunnen speciale tekens bevatten die worden ondersteund in groeps naam en groeps alias. Alle tekens in het voor voegsel of achtervoegsel dat niet wordt ondersteund in de groeps alias, worden nog steeds toegepast in de groeps naam, maar verwijderd uit de groeps alias. Vanwege deze beperking kunnen de voor voegsels en achtervoegsels die worden toegepast op de groeps naam afwijken van de voor waarden die zijn toegepast op de groeps alias. 
 
@@ -69,7 +69,7 @@ Geblokkeerde woorden lijst regels:
 
 ### <a name="roles-and-permissions"></a>Rollen en machtigingen
 
-Als u een naamgevings beleid wilt configureren, is een van de volgende-rollen vereist:
+Als u een naamgevings beleid wilt configureren, is een van de volgende rollen vereist:
 - Globale beheerder
 - Groeps beheerder
 - Gebruikers beheerder
@@ -138,7 +138,7 @@ Verwijder een oudere versie van Azure Active Directory PowerShell voor Graph Mod
 
    In het scherm **Sign in to your Account** dat verschijnt, voert u uw beheerdersaccount en wachtwoord in om verbinding te maken met uw service. Selecteer vervolgens **Aanmelden**.
 
-1. Volg de stappen in [Azure Active Directory-cmdlets voor het configureren van groepsinstellingen](groups-settings-cmdlets.md) om groepsinstellingen voor deze tenant te maken.
+1. Volg de stappen in [Azure Active Directory-cmdlets voor het configureren van groeps instellingen](groups-settings-cmdlets.md) voor het maken van groeps instellingen voor deze organisatie.
 
 ### <a name="view-the-current-settings"></a>Huidige instellingen weergeven
 

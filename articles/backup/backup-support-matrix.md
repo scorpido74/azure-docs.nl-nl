@@ -3,12 +3,12 @@ title: Ondersteuningsmatrix voor Azure Backup
 description: Bevat een samenvatting van ondersteuningsinstellingen en -beperkingen voor de Azure Backup-service.
 ms.topic: conceptual
 ms.date: 02/17/2019
-ms.openlocfilehash: b87430c9ff7d806fd1fc74d5d2a8270f9db43b53
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: cc817c1833c4c9aedcbc5fa111de694fab715c43
+ms.sourcegitcommit: c8a0fbfa74ef7d1fd4d5b2f88521c5b619eb25f8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81537318"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82801260"
 ---
 # <a name="support-matrix-for-azure-backup"></a>Ondersteunings matrix voor Azure Backup
 
@@ -28,7 +28,7 @@ Azure Backup gebruikt Recovery Services kluizen om back-ups te organiseren en te
 
 In de volgende tabel worden de functies van Recovery Services kluizen beschreven:
 
-**Functie** | **Nadere**
+**Onderdeel** | **Details**
 --- | ---
 **Kluizen in het abonnement** | Maximaal 500 Recovery Services-kluizen in één abonnement.
 **Machines in een kluis** | Maxi maal 1.000 Azure-Vm's in één kluis.<br/><br/> Maxi maal 50 MABS-servers kunnen worden geregistreerd in één kluis.
@@ -54,9 +54,9 @@ Dit wordt what's ondersteund als u een back-up wilt maken van on-premises machin
 
 ### <a name="azure-vm-limits"></a>Limieten voor Azure VM's
 
-**Limiet** | **Nadere**
+**Limiet** | **Details**
 --- | ---
-**Azure VM-gegevensschijven** | Limiet van 16 <br> Als u zich wilt aanmelden voor de persoonlijke preview-versie van VM's met meer dan 16 schijven (maximaal 32 schijven), stuurt u een bericht naar AskAzureBackupTeam@microsoft.com
+**Azure VM-gegevensschijven** | Limiet van 16 <br> Als u zich wilt aanmelden voor een beperkte preview van Vm's met 16 + schijven (Maxi maal 32 schijven), schrijft u naar ons opAskAzureBackupTeam@microsoft.com
 **Grootte Azure VM-gegevensschijven** | De afzonderlijke schijf grootte kan Maxi maal 32 TB en Maxi maal 256 TB gecombineerd voor alle schijven in een VM zijn.
 
 ### <a name="azure-vm-backup-options"></a>Azure VM-back-upopties
@@ -76,11 +76,11 @@ Dit wordt what's ondersteund als u een back-up wilt maken van Linux-machines:
 
 **Back-uptype** | **Linux (goedgekeurd door Azure)**
 --- | ---
-**Directe back-up van on-premises machine waarop Linux wordt uitgevoerd** | Wordt niet ondersteund. De MARS-agent kan alleen worden geïnstalleerd op Windows-computers.
+**Directe back-up van on-premises machine waarop Linux wordt uitgevoerd** | Niet ondersteund. De MARS-agent kan alleen worden geïnstalleerd op Windows-computers.
 **Agent-extensie gebruiken om een back-up te maken van Azure VM waarop Linux wordt uitgevoerd** | App-consistente back-up met [aangepaste scripts](backup-azure-linux-app-consistent.md).<br/><br/> Herstel op bestandsniveau.<br/><br/> Herstellen door het maken van een VM vanaf een herstelpunt of schijf.
 **DPM gebruiken om back-ups te maken van on-premises machines waarop Linux wordt uitgevoerd** | Bestands consistente back-up van Linux-gast-Vm's op Hyper-V en VMWare.<br/><br/> VM-herstel van Hyper-V-en VMWare Linux-gast-Vm's.
 **MABS gebruiken om back-ups te maken van on-premises machines waarop Linux wordt uitgevoerd** | Bestands consistente back-up van Linux-gast-Vm's op Hyper-V en VMWare.<br/><br/> VM-herstel van Hyper-V-en VMWare Linux-gast-Vm's.
-**MABS of DPM gebruiken om een back-up te maken van virtuele Linux Azure-machines** | Wordt niet ondersteund.
+**MABS of DPM gebruiken om een back-up te maken van virtuele Linux Azure-machines** | Niet ondersteund.
 
 ## <a name="daylight-saving-time-support"></a>Ondersteuning voor zomer tijd
 
@@ -107,7 +107,7 @@ Azure Backup ondersteunt versleuteling voor in-transit en op rest-gegevens.
     > [!WARNING]
     > Nadat u de kluis hebt ingesteld, hebt alleen u toegang tot de versleutelingssleutel. Microsoft bewaart nooit een kopie en heeft geen toegang tot de sleutel. Als de sleutel verkeerd wordt geplaatst, kan Microsoft de back-upgegevens niet herstellen.
 
-### <a name="data-security"></a>Gegevensbeveiliging
+### <a name="data-security"></a>Gegevens beveiligen
 
 - Wanneer u een back-up maakt van virtuele Azure-machines, moet u de versleuteling instellen *in* de Virtual Machine.
 - Azure Backup biedt ondersteuning voor Azure Disk Encryption, dat gebruikmaakt van BitLocker op virtuele Windows-machines en **dm-crypt** op virtuele Linux-machines.
@@ -129,8 +129,8 @@ Backup ondersteunt de compressie van het back-upverkeer, zoals wordt beschreven 
 
 **Machine** | **Comprimeren naar MABS/DPM (TCP)** | **Comprimeren naar kluis (HTTPS)**
 --- | --- | ---
-**Directe back-ups van on-premises Windows-computers** | N.v.t. | ![Ja][green]
-**Back-ups van virtuele Azure-machines maken met behulp van VM-extensie** | N.v.t. | N.v.t.
+**Directe back-ups van on-premises Windows-computers** | NA | ![Ja][green]
+**Back-ups van virtuele Azure-machines maken met behulp van VM-extensie** | NA | NA
 **Back-ups op on-premises/Azure-computers met behulp van MABS/DPM** | ![Ja][green] | ![Ja][green]
 
 ## <a name="retention-limits"></a>Bewaarlimieten

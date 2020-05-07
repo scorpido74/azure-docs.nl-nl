@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
-ms.date: 04/23/2020
-ms.openlocfilehash: 8170a0190e2d322c07f8f4978a77a8171579cbfb
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.date: 04/24/2020
+ms.openlocfilehash: 05d057be76a1b468f892b3123080e32a948153ae
+ms.sourcegitcommit: acc558d79d665c8d6a5f9e1689211da623ded90a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82232884"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82598495"
 ---
 # <a name="manage-apache-hadoop-clusters-in-hdinsight-by-using-the-azure-portal"></a>Apache Hadoop clusters in HDInsight beheren door gebruik te maken van de Azure Portal
 
@@ -219,13 +219,19 @@ Het wacht woord wordt gewijzigd op alle knoop punten in het cluster.
 4. Selecteer op de pagina **script acties** de optie **Nieuw verzenden**.
 5. Voer op de pagina **script actie verzenden** de volgende gegevens in:
 
+> [!NOTE]
+> SSH-wacht woorden mogen niet de volgende tekens bevatten:
+> ```
+> " ' ` / \ < % ~ | $ & ! 
+> ```
+
    | Veld | Waarde |
    | --- | --- |
    | Script type | Selecteer **-aangepast** in de vervolg keuzelijst.|
    | Naam |"SSH-referenties wijzigen" |
    | Bash-script-URI |De URI naar het changecredentials.sh-bestand |
    | Knooppunt type (n): (Head, worker, Nimbus, supervisor of Zookeeper.) |✓ voor alle weer gegeven knooppunt typen |
-   | Parameters |Voer de SSH-gebruikers naam en vervolgens het nieuwe wacht woord in. Er moet één spatie tussen de gebruikers naam en het wacht woord zijn. De volgende tekens worden niet ondersteund in SSH-wacht woorden: "'/\ <% ~ | $ &
+   | Parameters |Voer de SSH-gebruikers naam en vervolgens het nieuwe wacht woord in. Er moet één spatie tussen de gebruikers naam en het wacht woord zijn. |
    | Deze script actie persistent maken... |Vul dit veld uit. |
 
 6. Selecteer **maken** om het script toe te passen. Zodra het script is voltooid, kunt u met SSH verbinding maken met het cluster met de nieuwe referenties.

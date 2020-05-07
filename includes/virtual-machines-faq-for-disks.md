@@ -1,6 +1,6 @@
 ---
-title: bestand opnemen
-description: bestand opnemen
+title: Include-bestand
+description: Include-bestand
 services: virtual-machines
 author: roygara
 ms.service: virtual-machines
@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/31/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: ad36547b0cf9457d7ff4fdd919a0bb1362539eb5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e1cf3905a34fdced878526cfcc55e6dd0a1a369f
+ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80522720"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82595295"
 ---
 In dit artikel vindt u antwoorden op enkele veelgestelde vragen over Azure Managed Disks en Azure Premium-SSD-schijven.
 
@@ -120,7 +120,7 @@ Nee. Dit wordt momenteel niet ondersteund omdat er geen lease aanwezig is om onb
 Nee. U kunt de eigenschap computer naam niet bijwerken. De nieuwe virtuele machine neemt deze over van de bovenliggende VM, die werd gebruikt voor het maken van de besturingssysteem schijf. 
 
 **Waar vind ik voor beelden van Azure Resource Manager sjablonen voor het maken van Vm's met Managed disks?**
-* [Lijst met sjablonen met behulp van Managed Disks](https://github.com/Azure/azure-quickstart-templates/blob/master/managed-disk-support-list.md)
+* [Lijst met sjablonen met behulp van Managed Disks](https://github.com/Azure/azure-quickstart-templates/)
 * https://github.com/chagarw/MDPP
 
 **Is er bij het maken van een schijf van een BLOB een voortdurend bestaande relatie met die bron-BLOB?**

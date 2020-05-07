@@ -11,12 +11,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 07/29/2019
-ms.openlocfilehash: 39ea8dda0fd823d3061b2cb29e1c548f99281c82
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: bbcbb19530aebe777a91cbe4c5487e1b50ace2e5
+ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81418793"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82559770"
 ---
 # <a name="create-a-tumbling-window-trigger-dependency"></a>Een afhankelijkheid voor een tumblingvenstertrigger maken
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -24,6 +24,10 @@ ms.locfileid: "81418793"
 In dit artikel worden de stappen beschreven voor het maken van een afhankelijkheid van een tumblingvenstertriggers-venster trigger. Zie [How to Create tumblingvenstertriggers Window trigger](how-to-create-tumbling-window-trigger.md)(Engelstalig) voor algemene informatie over Tumblingvenstertriggers-venster triggers.
 
 Als u een afhankelijkheids keten wilt maken en ervoor wilt zorgen dat een trigger pas wordt uitgevoerd nadat een andere trigger in de data factory is uitgevoerd, gebruikt u deze geavanceerde functie om een tumblingvenstertriggers-venster afhankelijkheid te maken.
+
+Bekijk de volgende video voor een demonstratie van het maken van afhankelijke pijp lijnen in uw Azure Data Factory met behulp van de venster trigger voor tumblingvenstertriggers:
+
+> [!VIDEO https://channel9.msdn.com/Shows/Azure-Friday/Create-dependent-pipelines-in-your-Azure-Data-Factory/player]
 
 ## <a name="create-a-dependency-in-the-data-factory-ui"></a>Een afhankelijkheid maken in de Data Factory-gebruikers interface
 
@@ -82,7 +86,7 @@ De volgende tabel bevat de lijst met kenmerken die nodig zijn voor het definiër
 | grootte | Grootte van het tumblingvenstertriggers-venster van de afhankelijkheid. Geef een positieve time span-waarde op. Deze eigenschap is optioneel. | Periode<br/>(UU: mm: SS) | Nee  |
 
 > [!NOTE]
-> Een trigger voor een tumblingvenstertriggers-venster kan afhankelijk zijn van een maximum van twee andere triggers.
+> Een trigger voor een tumblingvenstertriggers-venster kan afhankelijk zijn van een maximum van vijf andere triggers.
 
 ## <a name="tumbling-window-self-dependency-properties"></a>Eigenschappen van tumblingvenstertriggers-venster met eigen afhankelijkheid
 
@@ -147,10 +151,6 @@ Een dagelijkse telemetrie-verwerkings taak, afhankelijk van een andere dagelijks
 Een dagelijkse taak zonder hiaten in de uitvoer stromen van de taak:
 
 ![Voor beeld van Self-afhankelijkheid](media/tumbling-window-trigger-dependency/tumbling-window-dependency06.png "Voor beeld van Self-afhankelijkheid")
-
-Bekijk de volgende video voor een demonstratie van het maken van afhankelijke pijp lijnen in uw Azure Data Factory met behulp van de venster trigger voor tumblingvenstertriggers:
-
-> [!VIDEO https://channel9.msdn.com/Shows/Azure-Friday/Create-dependent-pipelines-in-your-Azure-Data-Factory/player]
 
 ## <a name="monitor-dependencies"></a>Afhankelijkheden controleren
 

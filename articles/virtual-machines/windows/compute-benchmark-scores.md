@@ -6,21 +6,22 @@ ms.service: virtual-machines-windows
 ms.subservice: sizes
 ms.topic: article
 ms.workload: infrastructure-services
-ms.date: 04/09/2018
+ms.date: 04/29/2020
 ms.author: cynthn
 ms.reviewer: davberg
-ms.openlocfilehash: ea6bca1367d4b34aa54b65e92e7cbfdd02642f4c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c3e0fdc398d3b0b851c6f548119858e6c41a5a19
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82086229"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82583914"
 ---
 # <a name="compute-benchmark-scores-for-windows-vms"></a>Benchmark scores berekenen voor Windows-Vm's
 De volgende SPECInt-benchmark scores tonen de reken prestaties voor geselecteerde Azure-Vm's waarop Windows Server wordt uitgevoerd. Er zijn ook Compute-benchmark scores beschikbaar voor [virtuele Linux-machines](../linux/compute-benchmark-scores.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 
 
 ## <a name="av2---general-compute"></a>Av2-algemene compute
+
 | Grootte | vCPUs | NUMA-knoop punten | CPU | Wordt uitgevoerd | Gem. basis tempo | Stddev verwerken | 
 | ---- | ----: | ---------: | --- | ---: | ------------: | -----: | 
 | Standard_A1_v2 | 1 | 1 | Intel (R) Xeon (R) CPU E5-2660 0 @ 2.20 GHz | 12 | 14,2 | 0.3 | 
@@ -45,9 +46,14 @@ De volgende SPECInt-benchmark scores tonen de reken prestaties voor geselecteerd
 | Standard_A8m_v2 | 8 | 1 | Intel (R) Xeon (R) CPU E5-2673 v4 @ 2.30 GHz | 10 | 104,5 | 5.1 | 
 | Standard_A8m_v2 | 8 | 2 | Intel (R) Xeon (R) CPU E5-2660 0 @ 2.20 GHz | 13 | 111,6 | 2.3 | 
 
-Opmerking: Vm's uit de Av2-serie kunnen worden geïmplementeerd op diverse typen hardware en processors (zoals hierboven weer gegeven). Vm's uit de Av2-serie hebben CPU-prestaties en geheugen configuraties die het meest geschikt zijn voor workloads op instap niveau, zoals ontwikkelen en testen. De grootte wordt beperkt om relatief consistente processor prestaties te bieden voor het actieve exemplaar, ongeacht de hardware waarop het wordt geïmplementeerd. software die gebruikmaakt van specifieke nieuwere processor optimalisaties, kan echter meer belang rijke verschillen in de processor typen zien.
+
+> [!NOTE]
+> Vm's uit de Av2-serie kunnen worden geïmplementeerd op diverse typen hardware en processors (zoals hierboven weer gegeven). Vm's uit de Av2-serie hebben CPU-prestaties en geheugen configuraties die het meest geschikt zijn voor workloads op instap niveau, zoals ontwikkelen en testen. De grootte wordt beperkt om relatief consistente processor prestaties te bieden voor het actieve exemplaar, ongeacht de hardware waarop het wordt geïmplementeerd. software die gebruikmaakt van specifieke nieuwere processor optimalisaties, kan echter meer belang rijke verschillen in de processor typen zien.
 
 ## <a name="b---burstable"></a>B-afbreekbaar
+
+(Bijgewerkt 2019-10-23 tot 2019-11-03 aan pbi: 5604451)
+
 | Grootte | vCPUs | NUMA-knoop punten | CPU | Wordt uitgevoerd | Gem. basis tempo | Stddev verwerken | 
 | ---- | ----: | ---------: | --- | ---: | ------------: | -----: | 
 | Standard_B1ms | 1 | 1 | Intel (R) Xeon (R) CPU E5-2673 v3 @ 2.40 GHz | 9 | 6.3 | 0,2 | 
@@ -59,12 +65,20 @@ Opmerking: Vm's uit de Av2-serie kunnen worden geïmplementeerd op diverse typen
 | Standard_B4ms | 4 | 1 | Intel (R) Xeon (R) CPU E5-2673 v4 @ 2.30 GHz | 43 | 28,3 | 0.7 | 
 | Standard_B8ms | 8 | 1 | Intel (R) Xeon (R) CPU E5-2673 v3 @ 2.40 GHz | 3 | 42,0 | 0,0 | 
 | Standard_B8ms | 8 | 1 | Intel (R) Xeon (R) CPU E5-2673 v4 @ 2.30 GHz | 25 | 41,4 | 0.9 | 
+| Standard_B12ms | 12 | 1 | Intel (R) Xeon (R) CPU E5-2673 v3 of v4 | 19 | 58,9 | 2.3 |
+| Standard_B16ms | 16 | 1 | Intel (R) Xeon (R) CPU E5-2673 v3 of v4 | 18 | 75,4 | 2.1 |
+| Standard_B20ms | 20 | 1 | Intel (R) Xeon (R) CPU E5-2673 v3 of v4| 2 | 90,6 | 1.3 |
 
-Opmerking: virtuele machines uit de B-serie zijn voor workloads met een burstieve prestatie vereisten. Bij het gebruik van minder dan de basis lijn worden de tegoeden door VM-exemplaren geaccumuleerd. Wanneer de virtuele machine tegoed heeft gecumuleerd, kan de virtuele machine met Maxi maal 100% aan de basis lijn worden gebonden met een korte CPU-burst-vereisten. De burst-tijd is afhankelijk van de beschik bare tegoeden die een functie zijn van de grootte en tijd van de virtuele machine.  
 
-SPEC int is een tamelijk langdurige test die normaal gesp roken de beschik bare burst-tegoeden uitgeput.  De bovenstaande getallen liggen daarom dichter bij de basislijn prestaties van de virtuele machine (hoewel ze mogelijk enkele burst-tijd weer spie gelen tussen uitvoeringen).  Voor korte, burstieve werk belastingen (normaal op B-serie) ligt de prestaties meestal dichter bij de DS v3-serie.
+>[!NOTE]
+> Virtuele machines uit de B-serie zijn voor workloads met een burstieve prestatie vereisten. Bij het gebruik van minder dan de basis lijn worden de tegoeden door VM-exemplaren geaccumuleerd. Wanneer de virtuele machine tegoed heeft gecumuleerd, kan de virtuele machine met Maxi maal 100% aan de basis lijn worden gebonden met een korte CPU-burst-vereisten. De burst-tijd is afhankelijk van de beschik bare tegoeden die een functie zijn van de grootte en tijd van de virtuele machine.  
+>
+> SPEC int is een tamelijk langdurige test die normaal gesp roken de beschik bare burst-tegoeden uitgeput.  De bovenstaande getallen liggen daarom dichter bij de basislijn prestaties van de virtuele machine (hoewel ze mogelijk enkele burst-tijd weer spie gelen tussen uitvoeringen).  Voor korte, burstieve werk belastingen (normaal op B-serie) ligt de prestaties meestal dichter bij de DS v3-serie.
 
 ## <a name="dsv3---general-compute--premium-storage"></a>DSv3-General Compute + Premium Storage
+
+(bijgewerkt 2019-10-23 tot 2019-11-03 aan pbi: 5604451)
+
 | Grootte | vCPUs | NUMA-knoop punten | CPU | Wordt uitgevoerd | Gem. basis tempo | Stddev verwerken | 
 | ---- | ----: | ---------: | --- | ---: | ------------: | -----: | 
 | Standard_D2s_v3 | 2 | 1 | Intel (R) Xeon (R) CPU E5-2673 v3 @ 2.40 GHz | 10 | 40,8 | 2.3 | 
@@ -77,9 +91,17 @@ SPEC int is een tamelijk langdurige test die normaal gesp roken de beschik bare 
 | Standard_D16s_v3 | 16 | 1 | Intel (R) Xeon (R) CPU E5-2673 v4 @ 2.30 GHz | 38 | 298,2 | 4.4 | 
 | Standard_D32s_v3 | 32 | 1 | Intel (R) Xeon (R) CPU E5-2673 v4 @ 2.30 GHz | 24 | 545,8 | 10.5 | 
 | Standard_D32s_v3 | 32 | 2 | Intel (R) Xeon (R) CPU E5-2673 v3 @ 2.40 GHz | 9 | 535,6 | 12,6 | 
+| Standard_D32-8s_v3 | 8 |  | Intel (R) Xeon (R) CPU E5-2673 v3 of v4 | 6 | 166,0 | 8,8 |
+| Standard_D32-16s_v3 | 16 |  | Intel (R) Xeon (R) CPU E5-2673 v3 of v4 | 4 | 300,8 | 6.4 |
+| Standard_D48s_v3 | 48 | 2 | Intel (R) Xeon (R) CPU E5-2673 v3 of v4 | 1 | 838,0 | 0,0 |
 | Standard_D64s_v3 | 64 | 2 | Intel (R) Xeon (R) CPU E5-2673 v4 @ 2.30 GHz | 35 | 1070,6 | 2.4 | 
+| Standard_D64-16s_v3 | 16 |  | Intel (R) Xeon (R) CPU E5-2673 v3 of v4 | 4 | 340,0 | 21,4 |
+| Standard_D64-32s_v3 | 32 |  | Intel (R) Xeon (R) CPU E5-2673 v3 of v4 | 3 | 592,3 | 1.5 |
 
 ## <a name="dv3---general-compute"></a>Dv3-algemene compute
+
+(bijgewerkt 2019-10-23 tot 2019-11-03 aan pbi: 5604451)
+
 | Grootte | vCPUs | NUMA-knoop punten | CPU | Wordt uitgevoerd | Gem. basis tempo | Stddev verwerken | 
 | ---- | ----: | ---------: | --- | ---: | ------------: | -----: | 
 | Standard_D2_v3 | 2 | 1 | Intel (R) Xeon (R) CPU E5-2673 v3 @ 2.40 GHz | 10 | 38,6 | 1.8 | 
@@ -92,16 +114,18 @@ SPEC int is een tamelijk langdurige test die normaal gesp roken de beschik bare 
 | Standard_D16_v3 | 16 | 1 | Intel (R) Xeon (R) CPU E5-2673 v4 @ 2.30 GHz | 32 | 300,7 | 8,8 | 
 | Standard_D32_v3 | 32 | 1 | Intel (R) Xeon (R) CPU E5-2673 v4 @ 2.30 GHz | 24 | 549,3 | 11,1 | 
 | Standard_D32_v3 | 32 | 2 | Intel (R) Xeon (R) CPU E5-2673 v3 @ 2.40 GHz | 7 | 538,6 | 9.4 | 
+| Standard_D48_v3 | 48 |  |  Intel (R) Xeon (R) CPU E5-2673 v3 of v4 | 3 | 839,7 | 14,4 |
 | Standard_D64_v3 | 64 | 2 | Intel (R) Xeon (R) CPU E5-2673 v4 @ 2.30 GHz | 32 | 1070,6 | 12,4 | 
 
 ## <a name="dsv2---storage-optimized"></a>DSv2-opslag geoptimaliseerd
+
 | Grootte | vCPUs | NUMA-knoop punten | CPU | Wordt uitgevoerd | Gem. basis tempo | Stddev verwerken | 
 | ---- | ----: | ---------: | --- | ---: | ------------: | -----: | 
 | Standard_DS1_v2 | 1 | 1 | Intel (R) Xeon (R) CPU E5-2673 v3 @ 2.40 GHz | 12 | 33,0 | 1.1 | 
 | Standard_DS1_v2 | 1 | 1 | Intel (R) Xeon (R) CPU E5-2673 v4 @ 2.30 GHz | 37 | 33,8 | 2,5 | 
 | Standard_DS2_v2 | 2 | 1 | Intel (R) Xeon (R) CPU E5-2673 v3 @ 2.40 GHz | 33 | 63,9 | 1.7 | 
 | Standard_DS2_v2 | 2 | 1 | Intel (R) Xeon (R) CPU E5-2673 v4 @ 2.30 GHz | 32 | 66,6 | 4,8 | 
-| Standard_DS3_v2 | 4 | 1 | Intel (R) Xeon (R) CPU E5-2673 v3 @ 2.40 GHz | 15 | 125,5 | 3,2 | 
+| Standard_DS3_v2 | 4 | 1 | Intel (R) Xeon (R) CPU E5-2673 v3 @ 2.40 GHz | 15 | 125,5 | 3.2 | 
 | Standard_DS3_v2 | 4 | 1 | Intel (R) Xeon (R) CPU E5-2673 v4 @ 2.30 GHz | 47 | 130,1 | 4.3 | 
 | Standard_DS4_v2 | 8 | 1 | Intel (R) Xeon (R) CPU E5-2673 v3 @ 2.40 GHz | 23 | 235,7 | 6.6 | 
 | Standard_DS4_v2 | 8 | 1 | Intel (R) Xeon (R) CPU E5-2673 v4 @ 2.30 GHz | 34 | 249,4 | 2,8 | 
@@ -118,7 +142,7 @@ SPEC int is een tamelijk langdurige test die normaal gesp roken de beschik bare 
 | Standard_DS12-2_v2 | 2 | 1 | Intel (R) Xeon (R) CPU E5-2673 v3 @ 2.40 GHz | 17 | 65,5 | 2.3 | 
 | Standard_DS12-2_v2 | 2 | 1 | Intel (R) Xeon (R) CPU E5-2673 v4 @ 2.30 GHz | 33 | 67,7 | 5.1 | 
 | Standard_DS13_v2 | 8 | 1 | Intel (R) Xeon (R) CPU E5-2673 v3 @ 2.40 GHz | 20 | 234,1 | 7.1 | 
-| Standard_DS13_v2 | 8 | 1 | Intel (R) Xeon (R) CPU E5-2673 v4 @ 2.30 GHz | 23 | 248,0 | 2,2 | 
+| Standard_DS13_v2 | 8 | 1 | Intel (R) Xeon (R) CPU E5-2673 v4 @ 2.30 GHz | 23 | 248,0 | 2.2 | 
 | Standard_DS13-2_v2 | 2 | 1 | Intel (R) Xeon (R) CPU E5-2673 v3 @ 2.40 GHz | 17 | 65,2 | 3.1 | 
 | Standard_DS13-2_v2 | 2 | 1 | Intel (R) Xeon (R) CPU E5-2673 v4 @ 2.30 GHz | 15 | 72,8 | 3,8 | 
 | Standard_DS13-4_v2 | 4 | 1 | Intel (R) Xeon (R) CPU E5-2673 v3 @ 2.40 GHz | 24 | 126,1 | 4.3 | 
@@ -132,6 +156,7 @@ SPEC int is een tamelijk langdurige test die normaal gesp roken de beschik bare 
 | Standard_DS15_v2 | 20 | 2 | Intel (R) Xeon (R) CPU E5-2673 v3 @ 2.40 GHz | 45 | 546,1 | 10.5 | 
 
 ## <a name="dv2---general-compute"></a>Dv2-algemene compute
+
 | Grootte | vCPUs | NUMA-knoop punten | CPU | Wordt uitgevoerd | Gem. basis tempo | Stddev verwerken | 
 | ---- | ----: | ---------: | --- | ---: | ------------: | -----: | 
 | Standard_D1_v2 | 1 | 1 | Intel (R) Xeon (R) CPU E5-2673 v3 @ 2.40 GHz | 30 | 33,5 | 1.7 | 
@@ -156,9 +181,10 @@ SPEC int is een tamelijk langdurige test die normaal gesp roken de beschik bare 
 | Standard_D15_v2 | 20 | 2 | Intel (R) Xeon (R) CPU E5-2673 v3 @ 2.40 GHz | 37 | 558,8 | 8,4 | 
 
 ## <a name="esv3---memory-optimized--premium-storage"></a>Esv3: geoptimaliseerd voor geheugen + Premium Storage
+
 | Grootte | vCPUs | NUMA-knoop punten | CPU | Wordt uitgevoerd | Gem. basis tempo | Stddev verwerken | 
 | ---- | ----: | ---------: | --- | ---: | ------------: | -----: | 
-| Standard_E2s_v3 | 2 | 1 | Intel (R) Xeon (R) CPU E5-2673 v4 @ 2.30 GHz | 39 | 42,5 | 2,2 | 
+| Standard_E2s_v3 | 2 | 1 | Intel (R) Xeon (R) CPU E5-2673 v4 @ 2.30 GHz | 39 | 42,5 | 2.2 | 
 | Standard_E4s_v3 | 4 | 1 | Intel (R) Xeon (R) CPU E5-2673 v4 @ 2.30 GHz | 28 | 81,4 | 3,3 | 
 | Standard_E8s_v3 | 8 | 1 | Intel (R) Xeon (R) CPU E5-2673 v4 @ 2.30 GHz | 29 | 156,3 | 5.1 | 
 | Standard_E8-2s_v3 | 2 | 1 | Intel (R) Xeon (R) CPU E5-2673 v4 @ 2.30 GHz | 57 | 41,8 | 2,6 | 
@@ -166,7 +192,7 @@ SPEC int is een tamelijk langdurige test die normaal gesp roken de beschik bare 
 | Standard_E16s_v3 | 16 | 1 | Intel (R) Xeon (R) CPU E5-2673 v4 @ 2.30 GHz | 31 | 295,7 | 4,5 | 
 | Standard_E16-4s_v3 | 4 | 1 | Intel (R) Xeon (R) CPU E5-2673 v4 @ 2.30 GHz | 45 | 82,7 | 3,8 | 
 | Standard_E16-8s_v3 | 8 | 1 | Intel (R) Xeon (R) CPU E5-2673 v4 @ 2.30 GHz | 39 | 158,3 | 4,5 | 
-| Standard_E20s_v3 | 20 | 1 | Intel (R) Xeon (R) CPU E5-2673 v4 @ 2.30 GHz | 27 | 369,7 | 3,2 | 
+| Standard_E20s_v3 | 20 | 1 | Intel (R) Xeon (R) CPU E5-2673 v4 @ 2.30 GHz | 27 | 369,7 | 3.2 | 
 | Standard_E32s_v3 | 32 | 2 | Intel (R) Xeon (R) CPU E5-2673 v4 @ 2.30 GHz | 31 | 577,9 | 9.4 | 
 | Standard_E32-8s_v3 | 8 | 2 | Intel (R) Xeon (R) CPU E5-2673 v4 @ 2.30 GHz | 31 | 163,4 | 6.8 | 
 | Standard_E32-16s_v3 | 16 | 2 | Intel (R) Xeon (R) CPU E5-2673 v4 @ 2.30 GHz | 41 | 307,1 | 8.7 | 
@@ -176,11 +202,13 @@ SPEC int is een tamelijk langdurige test die normaal gesp roken de beschik bare 
 | Standard_E64-32s_v3 | 32 | 2 | Intel (R) Xeon (R) CPU E5-2673 v4 @ 2.30 GHz | 4 | 592,5 | 4.4 | 
 
 ## <a name="eisv3---memory-opt--premium-storage-isolated"></a>Eisv3-Memory opt + Premium Storage (geïsoleerd)
+
 | Grootte | vCPUs | NUMA-knoop punten | CPU | Wordt uitgevoerd | Gem. basis tempo | Stddev verwerken | 
 | ---- | ----: | ---------: | --- | ---: | ------------: | -----: | 
 | Standard_E64is_v3 | 64 | 2 | Intel (R) Xeon (R) CPU E5-2673 v4 @ 2.30 GHz | 28 | 1073,9 | 5.7 | 
 
 ## <a name="ev3---memory-optimized"></a>Ev3-geoptimaliseerd voor geheugen
+
 | Grootte | vCPUs | NUMA-knoop punten | CPU | Wordt uitgevoerd | Gem. basis tempo | Stddev verwerken | 
 | ---- | ----: | ---------: | --- | ---: | ------------: | -----: | 
 | Standard_E2_v3 | 2 | 1 | Intel (R) Xeon (R) CPU E5-2673 v4 @ 2.30 GHz | 41 | 41,2 | 2.4 | 
@@ -192,11 +220,13 @@ SPEC int is een tamelijk langdurige test die normaal gesp roken de beschik bare 
 | Standard_E64_v3 | 64 | 2 | Intel (R) Xeon (R) CPU E5-2673 v4 @ 2.30 GHz | 31 | 1080,0 | 11,3 | 
 
 ## <a name="eiv3---memory-optimized-isolated"></a>Eiv3-geoptimaliseerd voor geheugen (geïsoleerd)
+
 | Grootte | vCPUs | NUMA-knoop punten | CPU | Wordt uitgevoerd | Gem. basis tempo | Stddev verwerken | 
 | ---- | ----: | ---------: | --- | ---: | ------------: | -----: | 
 | Standard_E64i_v3 | 64 | 2 | Intel (R) Xeon (R) CPU E5-2673 v4 @ 2.30 GHz | 28 | 1081,4 | 11,1 | 
 
 ## <a name="fsv2---compute--storage-optimized"></a>Fsv2-Compute +-opslag geoptimaliseerd
+
 | Grootte | vCPUs | NUMA-knoop punten | CPU | Wordt uitgevoerd | Gem. basis tempo | Stddev verwerken | 
 | ---- | ----: | ---------: | --- | ---: | ------------: | -----: | 
 | Standard_F2s_v2 | 2 | 1 | Intel (R) Xeon (R) Platinum 8168 CPU @ 2.70 GHz | 46 | 56,5 | 2.4 | 
@@ -208,6 +238,7 @@ SPEC int is een tamelijk langdurige test die normaal gesp roken de beschik bare 
 | Standard_F72s_v2 | 72 | 2 | Intel (R) Xeon (R) Platinum 8168 CPU @ 2.70 GHz | 29 | 1372,1 | 8,2 | 
 
 ## <a name="fs---compute-and-storage-optimized"></a>FS-Compute en opslag geoptimaliseerd
+
 | Grootte | vCPUs | NUMA-knoop punten | CPU | Wordt uitgevoerd | Gem. basis tempo | Stddev verwerken | 
 | ---- | ----: | ---------: | --- | ---: | ------------: | -----: | 
 | Standard_F1s | 1 | 1 | Intel (R) Xeon (R) CPU E5-2673 v3 @ 2.40 GHz | 31 | 33,2 | 1.0 | 
@@ -222,6 +253,7 @@ SPEC int is een tamelijk langdurige test die normaal gesp roken de beschik bare 
 | Standard_F16s | 16 | 1 | Intel (R) Xeon (R) CPU E5-2673 v4 @ 2.30 GHz | 36 | 471,8 | 7,5 | 
 
 ## <a name="f---compute-optimized"></a>V-computed Optimized
+
 | Grootte | vCPUs | NUMA-knoop punten | CPU | Wordt uitgevoerd | Gem. basis tempo | Stddev verwerken | 
 | ---- | ----: | ---------: | --- | ---: | ------------: | -----: | 
 | Standard_F1 | 1 | 1 | Intel (R) Xeon (R) CPU E5-2673 v3 @ 2.40 GHz | 15 | 32,8 | 1.8 | 
@@ -237,6 +269,7 @@ SPEC int is een tamelijk langdurige test die normaal gesp roken de beschik bare 
 | Standard_F16 | 16 | 2 | Intel (R) Xeon (R) CPU E5-2673 v3 @ 2.40 GHz | 6 | 472,3 | 13.2 | 
 
 ## <a name="gs---storage-optimized"></a>GS-opslag geoptimaliseerd
+
 | Grootte | vCPUs | NUMA-knoop punten | CPU | Wordt uitgevoerd | Gem. basis tempo | Stddev verwerken | 
 | ---- | ----: | ---------: | --- | ---: | ------------: | -----: | 
 | Standard_GS1 | 2 | 1 | Intel (R) Xeon (R) CPU E5-2698B v3 @ 2,00 GHz | 29 | 63,6 | 4,7 | 
@@ -259,6 +292,7 @@ SPEC int is een tamelijk langdurige test die normaal gesp roken de beschik bare 
 | Standard_G5 | 32 | 2 | Intel (R) Xeon (R) CPU E5-2698B v3 @ 2,00 GHz | 31 | 774,1 | 4.1 | 
 
 ## <a name="h---high-performance-compute-hpc"></a>H-High Performance Compute (HPC)
+
 | Grootte | vCPUs | NUMA-knoop punten | CPU | Wordt uitgevoerd | Gem. basis tempo | Stddev verwerken | 
 | ---- | ----: | ---------: | --- | ---: | ------------: | -----: | 
 | Standard_H8 | 8 | 1 | Intel (R) Xeon (R) CPU E5-2667 v3 @ 3.20 GHz | 31 | 296,1 | 1.4 | 
@@ -269,6 +303,7 @@ SPEC int is een tamelijk langdurige test die normaal gesp roken de beschik bare 
 | Standard_H16r | 16 | 2 | Intel (R) Xeon (R) CPU E5-2667 v3 @ 3.20 GHz | 17 | 562,2 | 4.2 | 
 
 ## <a name="ls---storage-optimized"></a>Ls-opslag geoptimaliseerd
+
 | Grootte | vCPUs | NUMA-knoop punten | CPU | Wordt uitgevoerd | Gem. basis tempo | Stddev verwerken | 
 | ---- | ----: | ---------: | --- | ---: | ------------: | -----: | 
 | Standard_L4s | 4 | 1 | Intel (R) Xeon (R) CPU E5-2698B v3 @ 2,00 GHz | 29 | 122,7 | 6.6 | 
@@ -277,6 +312,7 @@ SPEC int is een tamelijk langdurige test die normaal gesp roken de beschik bare 
 | Standard_L32s | 32 | 2 | Intel (R) Xeon (R) CPU E5-2698B v3 @ 2,00 GHz | 31 | 766,1 | 3,5 | 
 
 ## <a name="m---memory-optimized"></a>Geoptimaliseerd voor M-geheugen
+
 | Grootte | vCPUs | NUMA-knoop punten | CPU | Wordt uitgevoerd | Gem. basis tempo | Stddev verwerken | 
 | ---- | ----: | ---------: | --- | ---: | ------------: | -----: | 
 | Standard_M8-2ms | 2 | 1 | Intel (R) Xeon (R) CPU-E7-8890 v3 @ 2,50 GHz | 15 | 42,1 | 2.1 | 
@@ -301,11 +337,12 @@ SPEC int is een tamelijk langdurige test die normaal gesp roken de beschik bare 
 | Standard_M32ls | 32 | 1 | Intel (R) Xeon (R) CPU-E7-8890 v3 @ 2,50 GHz | 13 | 535,2 | 4,8 | 
 | Standard_M32ms | 32 | 1 | Intel (R) Xeon (R) CPU-E7-8890 v3 @ 2,50 GHz | 11 | 534,1 | 4.6 | 
 | Standard_M32ms | 32 | 2 | Intel (R) Xeon (R) CPU-E7-8890 v3 @ 2,50 GHz | 1 | 589,0 | 0,0 | 
-| Standard_M32ts | 32 | 1 | Intel (R) Xeon (R) CPU-E7-8890 v3 @ 2,50 GHz | 12 | 538,6 | 3,2 | 
+| Standard_M32ts | 32 | 1 | Intel (R) Xeon (R) CPU-E7-8890 v3 @ 2,50 GHz | 12 | 538,6 | 3.2 | 
 | Standard_M64ls | 64 | 2 | Intel (R) Xeon (R) CPU-E7-8890 v3 @ 2,50 GHz | 13 | 1015,2 | 10,0 | 
 | Standard_M8ms | 8 | 1 | Intel (R) Xeon (R) CPU-E7-8890 v3 @ 2,50 GHz | 13 | 158,2 | 5,5 | 
 
 ## <a name="ncsv3---gpu-enabled"></a>NCSv3-GPU ingeschakeld
+
 | Grootte | vCPUs | NUMA-knoop punten | CPU | Wordt uitgevoerd | Gem. basis tempo | Stddev verwerken | 
 | ---- | ----: | ---------: | --- | ---: | ------------: | -----: | 
 | Standard_NC6s_v3 | 6 | 1 | Intel (R) Xeon (R) CPU E5-2690 v4 @ 2,60 GHz | 6 | 230,2 | 1.6 | 
@@ -314,6 +351,7 @@ SPEC int is een tamelijk langdurige test die normaal gesp roken de beschik bare 
 | Standard_NC24s_v3 | 24 | 2 | Intel (R) Xeon (R) CPU E5-2690 v4 @ 2,60 GHz | 3 | 809,3 | 2.3 | 
 
 ## <a name="ncsv2---gpu-enabled"></a>NCSv2-GPU ingeschakeld
+
 | Grootte | vCPUs | NUMA-knoop punten | CPU | Wordt uitgevoerd | Gem. basis tempo | Stddev verwerken | 
 | ---- | ----: | ---------: | --- | ---: | ------------: | -----: | 
 | Standard_NC6s_v2 | 6 | 1 | Intel (R) Xeon (R) CPU E5-2690 v4 @ 2,60 GHz | 11 | 227,0 | 6.2 | 
@@ -322,6 +360,7 @@ SPEC int is een tamelijk langdurige test die normaal gesp roken de beschik bare 
 | Standard_NC24s_v2 | 24 | 2 | Intel (R) Xeon (R) CPU E5-2690 v4 @ 2,60 GHz | 11 | 811,5 | 4.4 | 
 
 ## <a name="nc---gpu-enabled"></a>NC-GPU ingeschakeld
+
 | Grootte | vCPUs | NUMA-knoop punten | CPU | Wordt uitgevoerd | Gem. basis tempo | Stddev verwerken | 
 | ---- | ----: | ---------: | --- | ---: | ------------: | -----: | 
 | Standard_NC6 | 6 | 1 | Intel (R) Xeon (R) CPU E5-2690 v3 @ 2,60 GHz | 27 | 209,6 | 4.4 | 
@@ -330,6 +369,7 @@ SPEC int is een tamelijk langdurige test die normaal gesp roken de beschik bare 
 | Standard_NC24r | 24 | 2 | Intel (R) Xeon (R) CPU E5-2690 v3 @ 2,60 GHz | 27 | 752,9 | 3.4 | 
 
 ## <a name="nds--gpu-enabled"></a>NDs-GPU ingeschakeld
+
 | Grootte | vCPUs | NUMA-knoop punten | CPU | Wordt uitgevoerd | Gem. basis tempo | Stddev verwerken | 
 | ---- | ----: | ---------: | --- | ---: | ------------: | -----: | 
 | Standard_ND6s | 6 | 1 | Intel (R) Xeon (R) CPU E5-2690 v4 @ 2,60 GHz | 8 | 230,1 | 1.2 | 
@@ -338,6 +378,7 @@ SPEC int is een tamelijk langdurige test die normaal gesp roken de beschik bare 
 | Standard_ND24s | 24 | 2 | Intel (R) Xeon (R) CPU E5-2690 v4 @ 2,60 GHz | 11 | 812,6 | 4.4 | 
 
 ## <a name="nv---gpu-enabled"></a>NV-GPU ingeschakeld
+
 | Grootte | vCPUs | NUMA-knoop punten | CPU | Wordt uitgevoerd | Gem. basis tempo | Stddev verwerken | 
 | ---- | ----: | ---------: | --- | ---: | ------------: | -----: | 
 | Standard_NV6 | 6 | 1 | Intel (R) Xeon (R) CPU E5-2690 v3 @ 2,60 GHz | 28 | 210,5 | 6.1 | 
