@@ -1,6 +1,6 @@
 ---
-title: Een lijst met de REST API voor het weigeren van toewijzingen voor Azure-resources
-description: Meer informatie over het weigeren van toewijzingen voor gebruikers, groepen en toepassingen die gebruikmaken van op rollen gebaseerd toegangs beheer (RBAC) voor Azure-resources en de REST API.
+title: Een lijst met Azure deny-toewijzingen maken met behulp van de REST API-Azure RBAC
+description: Meer informatie over het weer geven van Azure deny-toewijzingen voor gebruikers, groepen en toepassingen met behulp van de REST API en Azure op rollen gebaseerd toegangs beheer (Azure RBAC).
 services: active-directory
 documentationcenter: na
 author: rolyon
@@ -15,25 +15,25 @@ ms.topic: conceptual
 ms.date: 03/19/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 0f648405a3d71bf27c64dacbb3fd78f3e9801137
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: dae0352566e6cb4f8ed1384ca12213e2aaa07f9d
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80063018"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82733867"
 ---
-# <a name="list-deny-assignments-for-azure-resources-using-the-rest-api"></a>Toewijzing van toewijzingen voor Azure-resources met behulp van de REST API weer geven
+# <a name="list-azure-deny-assignments-using-the-rest-api"></a>Azure deny-toewijzingen weer geven met behulp van de REST API
 
-[Toewijzingen weigeren](deny-assignments.md) blok keren dat gebruikers specifieke Azure-resource acties kunnen uitvoeren, zelfs als een roltoewijzing deze toegang verleent. In dit artikel wordt beschreven hoe u toewijzingen voor weigeren kunt weer geven met behulp van de REST API.
+Met [Azure deny-toewijzingen](deny-assignments.md) kunnen gebruikers specifieke Azure-resource acties uitvoeren, zelfs als een roltoewijzing deze toegang verleent. In dit artikel wordt beschreven hoe u toewijzingen voor weigeren kunt weer geven met behulp van de REST API.
 
 > [!NOTE]
-> U kunt niet rechtstreeks uw eigen weigerings toewijzingen maken. Zie [toewijzingen weigeren](deny-assignments.md)voor meer informatie over hoe weigerings toewijzingen worden gemaakt.
+> U kunt niet rechtstreeks uw eigen weigerings toewijzingen maken. Zie [Azure deny-toewijzingen](deny-assignments.md)voor meer informatie over hoe weigerings toewijzingen worden gemaakt.
 
 ## <a name="prerequisites"></a>Vereisten
 
 Als u informatie wilt ophalen over een weiger toewijzing, hebt u het volgende nodig:
 
-- `Microsoft.Authorization/denyAssignments/read`toestemming, die deel uitmaakt van de meeste [ingebouwde rollen voor Azure-resources](built-in-roles.md).
+- `Microsoft.Authorization/denyAssignments/read`toestemming, die deel uitmaakt van de meeste [ingebouwde rollen van Azure](built-in-roles.md).
 
 ## <a name="list-a-single-deny-assignment"></a>Een enkele weigerings toewijzing weer geven
 
@@ -91,7 +91,7 @@ Als u informatie wilt ophalen over een weiger toewijzing, hebt u het volgende no
 
 ## <a name="list-deny-assignments-at-the-root-scope-"></a>Lijst met geweigerde toewijzingen in het hoofd bereik (/)
 
-1. Breid uw toegang uit, zoals wordt beschreven in [toegang verhogen voor een globale beheerder in azure Active Directory](elevate-access-global-admin.md).
+1. Breid uw toegang uit, zoals wordt beschreven in [toegang verhogen om alle Azure-abonnementen en-beheer groepen te beheren](elevate-access-global-admin.md).
 
 1. Gebruik de volgende aanvraag:
 
@@ -111,6 +111,6 @@ Als u informatie wilt ophalen over een weiger toewijzing, hebt u het volgende no
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Meer informatie over het weigeren van toewijzingen voor Azure-resources](deny-assignments.md)
-- [Toegangsbevoegdheid voor een globale beheerder verhogen in Azure Active Directory](elevate-access-global-admin.md)
+- [Meer informatie over Azure deny-toewijzingen](deny-assignments.md)
+- [Toegang verhogen om alle Azure-abonnementen en beheergroepen te beheren](elevate-access-global-admin.md)
 - [Naslag informatie over Azure REST API](/rest/api/azure/)

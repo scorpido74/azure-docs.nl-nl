@@ -1,6 +1,6 @@
 ---
-title: Roltoewijzingen toevoegen of verwijderen met RBAC en de Azure Portal
-description: Meer informatie over het verlenen van toegang tot Azure-resources voor gebruikers, groepen, service-principals of beheerde identiteiten met behulp van op rollen gebaseerd toegangs beheer (RBAC) en de Azure Portal van Azure.
+title: Azure-roltoewijzingen toevoegen of verwijderen met behulp van de Azure Portal-Azure RBAC
+description: Meer informatie over het verlenen van toegang tot Azure-resources voor gebruikers, groepen, service-principals of beheerde identiteiten met behulp van de Azure Portal en Azure op rollen gebaseerd toegangs beheer (Azure RBAC).
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -14,14 +14,14 @@ ms.workload: identity
 ms.date: 01/25/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: e2458b07602bca3b6f12b2f486b509c11d705461
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 88cb1e9893e0ca058e57ce12f00747a59248fb19
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79246355"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82735688"
 ---
-# <a name="add-or-remove-role-assignments-using-azure-rbac-and-the-azure-portal"></a>Roltoewijzingen toevoegen of verwijderen met behulp van Azure RBAC en de Azure Portal
+# <a name="add-or-remove-azure-role-assignments-using-the-azure-portal"></a>Azure-roltoewijzingen toevoegen of verwijderen met behulp van de Azure Portal
 
 [!INCLUDE [Azure RBAC definition grant access](../../includes/role-based-access-control-definition-grant.md)]In dit artikel wordt beschreven hoe u rollen toewijst met behulp van de Azure Portal.
 
@@ -143,7 +143,7 @@ In azure RBAC kunt u de toegang van een Azure-resource verwijderen door een rolt
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Roltoewijzingen weer geven met behulp van Azure RBAC en de Azure Portal](role-assignments-list-portal.md)
-- [Zelf studie: een gebruiker toegang verlenen tot Azure-resources met RBAC en de Azure Portal](quickstart-assign-role-user-portal.md)
-- [Problemen met RBAC voor Azure-resources oplossen](troubleshooting.md)
+- [Azure-roltoewijzingen weer geven met behulp van de Azure Portal](role-assignments-list-portal.md)
+- [Zelf studie: een gebruiker toegang verlenen tot Azure-resources met behulp van de Azure Portal](quickstart-assign-role-user-portal.md)
+- [Problemen met Azure RBAC oplossen](troubleshooting.md)
 - [Uw resources organiseren met Azure-beheer groepen](../governance/management-groups/overview.md)

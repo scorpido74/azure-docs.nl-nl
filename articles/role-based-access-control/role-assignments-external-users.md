@@ -1,6 +1,6 @@
 ---
-title: Roltoewijzingen toevoegen aan of verwijderen uit externe gebruikers met RBAC en de Azure Portal
-description: Meer informatie over het verlenen van toegang tot Azure-resources voor gebruikers buiten een organisatie met behulp van Azure op rollen gebaseerd toegangs beheer (RBAC).
+title: Azure-roltoewijzingen toevoegen of verwijderen voor externe gebruikers met behulp van de Azure Portal-Azure RBAC
+description: Meer informatie over het verlenen van toegang tot Azure-resources voor gebruikers buiten een organisatie met behulp van de Azure Portal en Azure op rollen gebaseerd toegangs beheer (Azure RBAC).
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -16,16 +16,16 @@ ms.date: 11/25/2019
 ms.author: rolyon
 ms.reviewer: skwan
 ms.custom: it-pro
-ms.openlocfilehash: 1c440b85f792ac5bb1336f4d20f930aafc38ad7d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 568cb7602d9cb454685ef69e820288bcc68563c4
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79245640"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82735756"
 ---
-# <a name="add-or-remove-role-assignments-for-external-guest-users-using-azure-rbac-and-the-azure-portal"></a>Roltoewijzingen toevoegen aan of verwijderen uit externe gast gebruikers met behulp van Azure RBAC en de Azure Portal
+# <a name="add-or-remove-azure-role-assignments-for-external-guest-users-using-the-azure-portal"></a>Azure-roltoewijzingen toevoegen of verwijderen voor externe gast gebruikers met behulp van de Azure Portal
 
-[Op rollen gebaseerd toegangs beheer (RBAC) van Azure](overview.md) is een betere beveiliging mogelijk voor grote organisaties en voor kleine en middel grote bedrijven met externe deel nemers, leveranciers of freelancers die toegang nodig hebben tot specifieke bronnen in uw omgeving, maar niet noodzakelijkerwijs voor de hele infra structuur of een facturerings bereik. U kunt de mogelijkheden van [Azure Active Directory B2B](../active-directory/b2b/what-is-b2b.md) gebruiken om samen te werken met externe gast gebruikers en u kunt RBAC gebruiken om alleen de machtigingen te verlenen die gast gebruikers in uw omgeving nodig hebben.
+[Azure RBAC (op rollen gebaseerd toegangs beheer)](overview.md) biedt betere beveiliging voor grote organisaties en voor kleine en middel grote bedrijven die werken met externe deel nemers, leveranciers of freelancers die toegang nodig hebben tot specifieke bronnen in uw omgeving, maar niet noodzakelijkerwijs op de volledige infra structuur of een facturerings bereik. U kunt de mogelijkheden van [Azure Active Directory B2B](../active-directory/b2b/what-is-b2b.md) gebruiken om samen te werken met externe gast gebruikers en u kunt Azure RBAC gebruiken om alleen de machtigingen te verlenen die gast gebruikers in uw omgeving nodig hebben.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -69,7 +69,7 @@ Zie [Azure Active Directory uitnodiging voor B2B-samen werking](../active-direct
 
 ## <a name="add-a-role-assignment-for-a-guest-user"></a>Een roltoewijzing voor een gast gebruiker toevoegen
 
-In RBAC kunt u een rol toewijzen om toegang te verlenen. Als u een roltoewijzing wilt toevoegen voor een gast gebruiker, voert u [dezelfde stappen uit](role-assignments-portal.md#add-a-role-assignment) als voor een gebruiker, groep, Service-Principal of beheerde identiteit. Volg deze stappen om een roltoewijzing voor een gast gebruiker in verschillende bereiken toe te voegen.
+In azure RBAC wijst u een rol toe om toegang te verlenen. Als u een roltoewijzing wilt toevoegen voor een gast gebruiker, voert u [dezelfde stappen uit](role-assignments-portal.md#add-a-role-assignment) als voor een gebruiker, groep, Service-Principal of beheerde identiteit. Volg deze stappen om een roltoewijzing voor een gast gebruiker in verschillende bereiken toe te voegen.
 
 1. Klik in de Azure Portal op **alle services**.
 

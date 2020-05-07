@@ -1,9 +1,9 @@
-- name: Documentatie voor RBAC voor Azure-resources
+- name: Documentatie voor Azure RBAC
   href: index.yml
   items: null
 - name: Overzicht
   items:
-    - name: Wat is RBAC?
+    - name: Wat is Azure RBAC?
       href: overview.md
     - name: Inzicht in de verschillende rollen
       href: rbac-and-directory-admin-roles.md
@@ -74,7 +74,7 @@
           href: deny-assignments-powershell.md
         - name: REST-API
           href: deny-assignments-rest.md
-    - name: Aangepaste rollen maken
+    - name: Aangepaste rollen maken of bijwerken
       items:
         - name: Overzicht
           href: custom-roles.md
@@ -100,7 +100,7 @@
       href: built-in-roles.md
     - name: Resourceproviderbewerkingen
       href: resource-provider-operations.md
-    - name: RBAC-beperkingen
+    - name: Azure RBAC-beperkingen
       href: '../azure-resource-manager/management/azure-subscription-service-limits.md#role-based-access-control-limits'
     - name: Azure PowerShell
       href: /powershell/module/az.resources

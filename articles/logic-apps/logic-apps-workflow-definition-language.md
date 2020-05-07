@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 05/13/2019
-ms.openlocfilehash: ff2267c2d03076d3abc44d0bd1dddc64577cc7f1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f9eefc40f7bca3f0bc21510a2d8a3d3fe76711b0
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79283860"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82611412"
 ---
 # <a name="schema-reference-guide-for-the-workflow-definition-language-in-azure-logic-apps"></a>Naslag Gids voor schema's voor de taal van de werk stroom definitie in Azure Logic Apps
 
@@ -178,7 +178,7 @@ Met JSON kunt u letterlijke waarden hebben die tijdens de ontwerp fase bestaan, 
 "rainbowColorsCount": 7
 ```
 
-U kunt ook waarden hebben die niet bestaan tot de uitvoerings tijd. Om deze waarden weer te geven, kunt u *expressies*gebruiken die tijdens runtime worden geëvalueerd. Een expressie is een reeks die een of meer [functies](#functions), [Opera tors](#operators), variabelen, expliciete waarden of constanten kan bevatten. In de definitie van uw werk stroom kunt u een expressie overal in een JSON-teken reeks waarde gebruiken door de expressie te voorzien van het\@plus teken (). Bij het evalueren van een expressie die een JSON-waarde vertegenwoordigt, wordt de hoofd tekst van de \@ expressie geëxtraheerd door het teken te verwijderen en wordt altijd een andere JSON-waarde geretourneerd.
+U kunt ook waarden hebben die niet bestaan tot de uitvoerings tijd. Om deze waarden weer te geven, kunt u *expressies*gebruiken die tijdens runtime worden geëvalueerd. Een expressie is een reeks die een of meer [functies](#functions), [Opera tors](#operators), [variabelen](https://docs.microsoft.com/azure/logic-apps/logic-apps-create-variables-store-values), expliciete waarden of constanten kan bevatten. In de definitie van uw werk stroom kunt u een expressie overal in een JSON-teken reeks waarde gebruiken door de expressie te voorzien van het\@plus teken (). Bij het evalueren van een expressie die een JSON-waarde vertegenwoordigt, wordt de hoofd tekst van de \@ expressie geëxtraheerd door het teken te verwijderen en wordt altijd een andere JSON-waarde geretourneerd.
 
 Voor de eerder gedefinieerde `customerName` eigenschap kunt u bijvoorbeeld de waarde van de eigenschap ophalen met behulp van de functie [para meters ()](../logic-apps/workflow-definition-language-functions-reference.md#parameters) in een expressie en die waarde `accountName` toewijzen aan de eigenschap:
 

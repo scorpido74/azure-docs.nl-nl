@@ -10,13 +10,13 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 04/26/2020
 ms.author: mimart
-ms.reviewer: arvinh
-ms.openlocfilehash: ceba22e9289e0a10211ee26a7758238a8b1f06c7
-ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
+ms.reviewer: arvinh, celested
+ms.openlocfilehash: 0b2c8e6bb71e00ccb6eda33ecb1b087d09ce5de7
+ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82201683"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82626187"
 ---
 # <a name="using-scim-and-microsoft-graph-together-to-provision-users-and-enrich-your-application-with-the-data-it-needs"></a>SCIM en Microsoft Graph samen gebruiken om gebruikers in te richten en uw toepassing te verrijken met de benodigde gegevens
 
@@ -103,8 +103,8 @@ Mijn toepassing is in micro soft teams ingebouwd en is afhankelijk van bericht g
 Ik moet wijzigingen in teams en Outlook-berichten kunnen bijhouden en in real-time kunnen reageren. Hoe kan ik deze wijzigingen naar mijn toepassing laten pushen?
 
 **Aanbeveling:** De Microsoft Graph biedt [wijzigings meldingen](https://docs.microsoft.com/graph/webhooks) en het [bijhouden van wijzigingen](https://docs.microsoft.com/graph/delta-query-overview) voor verschillende resources. Houd rekening met de volgende beperkingen van wijzigings meldingen:
-- Als een gebeurtenis ontvanger een gebeurtenis erkent, maar om een bepaalde reden niet kan handelen, kan de gebeurtenis verloren gaan
-- Als een gebeurtenis ontvanger een gebeurtenis erkent, maar om een bepaalde reden niet kan handelen, kan de gebeurtenis verloren gaan
+- Als een gebeurtenis ontvanger een gebeurtenis erkent, maar om een bepaalde reden niet kan reageren, kan de gebeurtenis verloren gaan.
+- De volg orde waarin wijzigingen worden ontvangen, is niet gegarandeerd chronologisch.
 - Wijzigings meldingen bevatten niet altijd de [resource gegevens](https://docs.microsoft.com/graph/webhooks-with-resource-data) voor de bovenstaande redenen, ontwikkel aars gebruiken vaak wijzigings meldingen en wijzigingen bijhouden voor synchronisatie scenario's. 
 
 ## <a name="scenario-6-provision-users-and-groups-in-azure-ad"></a>Scenario 6: gebruikers en groepen in azure AD inrichten

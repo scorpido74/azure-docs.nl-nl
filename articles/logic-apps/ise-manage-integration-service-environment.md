@@ -3,15 +3,15 @@ title: Integratie service omgevingen in Azure Logic Apps beheren
 description: Controleer de netwerk status en beheer logische apps, verbindingen, aangepaste connectors en integratie accounts in uw integratie service omgeving (ISE) voor Azure Logic Apps
 services: logic-apps
 ms.suite: integration
-ms.reviewer: klam, logicappspm
+ms.reviewer: estfan, jonfan, logicappspm
 ms.topic: conceptual
-ms.date: 03/11/2020
-ms.openlocfilehash: f48106be67763c093a183be01098cab74391752e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 04/29/2020
+ms.openlocfilehash: 41e511bce3599dd341ccf8192612e3f08111245a
+ms.sourcegitcommit: acc558d79d665c8d6a5f9e1689211da623ded90a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79284198"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82598416"
 ---
 # <a name="manage-your-integration-service-environment-ise-in-azure-logic-apps"></a>Uw ISE (Integration service Environment) beheren in Azure Logic Apps
 
@@ -23,7 +23,7 @@ In dit artikel wordt beschreven hoe u beheer taken kunt uitvoeren voor uw [Integ
 
 ## <a name="view-your-ise"></a>Uw ISE weer geven
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
+1. Meld u aan bij [Azure Portal](https://portal.azure.com).
 
 1. Voer in het zoekvak van de portal "integratie service omgevingen" in en selecteer vervolgens **integratie service omgevingen**.
 
@@ -54,6 +54,10 @@ U kunt de Logic apps in uw ISE weer geven en beheren.
    ![Logic apps weer geven](./media/ise-manage-integration-service-environment/ise-find-logic-apps.png)
 
 1. Als u logische Apps wilt verwijderen die u niet meer nodig hebt in uw ISE, selecteert u deze Logic apps en selecteert u vervolgens **verwijderen**. Selecteer **Ja**om te bevestigen dat u wilt verwijderen.
+
+> [!NOTE]
+> Als u een onderliggende logische app verwijdert en opnieuw maakt, moet u de bovenliggende logische app opnieuw opslaan. De opnieuw gemaakte onderliggende app heeft andere meta gegevens.
+> Als u de bovenliggende logische app niet opnieuw opslaat nadat u het onderliggende element opnieuw hebt gemaakt, zullen de aanroepen naar de onderliggende logische app mislukken met de fout ' niet toegestaan '. Dit gedrag is van toepassing op bovenliggende en onderliggende logische apps, bijvoorbeeld die artefacten gebruiken in integratie accounts of Azure functions aanroepen.
 
 <a name="find-api-connections"></a>
 

@@ -8,16 +8,16 @@ ms.subservice: gateway
 ms.topic: article
 ms.date: 06/03/2019
 ms.author: alkohli
-ms.openlocfilehash: e4d85bd460c39964c9f42ac946e3522f5f129c1c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c4043702bd27bb9a37fca70475ef254bbd1f7372
+ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79474438"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82561334"
 ---
 # <a name="manage-access-power-and-connectivity-mode-for-your-azure-data-box-gateway"></a>De toegang, de kracht en de connectiviteits modus voor uw Azure Data Box Gateway beheren
 
-In dit artikel wordt beschreven hoe u de modus toegang, kracht en connectiviteit beheert voor uw Azure Data Box Gateway. Deze bewerkingen worden uitgevoerd via de lokale webgebruikersinterface of de Azure Portal.
+In dit artikel wordt beschreven hoe u de modus toegang, kracht en connectiviteit beheert voor uw Azure Data Box Gateway. Deze bewerkingen worden uitgevoerd via de lokale webgebruikersinterface of de Azure Portal. 
 
 In dit artikel leert u het volgende:
 
@@ -56,16 +56,16 @@ Voor de werk stroom opnieuw instellen is niet vereist dat de gebruiker het oude 
 
 ## <a name="manage-resource-access"></a>Toegang tot de bedrijfsresources
 
-Als u uw Data Box Edge/Data Box Gateway-, IoT Hub-en Azure Storage-resource wilt maken, moet u machtigingen hebben als Inzender of hoger op het niveau van een resource groep. U moet ook de bijbehorende resource providers registreren. Voor bewerkingen waarbij de activerings sleutel en referenties betrokken zijn, zijn er ook machtigingen voor het Azure Active Directory Graph API vereist. Deze worden beschreven in de volgende secties.
+Als u uw Azure Stack EDGE/Data Box Gateway, IoT Hub en Azure Storage resource wilt maken, hebt u machtigingen nodig als bijdrager of hoger op het niveau van een resource groep. U moet ook de bijbehorende resource providers registreren. Voor bewerkingen waarbij de activerings sleutel en referenties betrokken zijn, zijn er ook machtigingen voor het Azure Active Directory Graph API vereist. Deze worden beschreven in de volgende secties.
 
 ### <a name="manage-microsoft-graph-api-permissions"></a>Microsoft Graph API-machtigingen beheren
 
-Bij het genereren van de activerings sleutel voor het Data Box Edge apparaat of het uitvoeren van bewerkingen waarvoor referenties zijn vereist, hebt u machtigingen nodig voor de Microsoft Graph-API. De bewerkingen die referenties nodig hebben, kunnen zijn:
+Bij het genereren van de activerings sleutel voor het Azure Stack edge-apparaat of het uitvoeren van bewerkingen waarvoor referenties zijn vereist, hebt u machtigingen nodig voor de Microsoft Graph-API. De bewerkingen die referenties nodig hebben, kunnen zijn:
 
 -  Een share maken met een gekoppeld opslag account.
 -  Het maken van een gebruiker die toegang heeft tot de shares op het apparaat.
 
-U moet `User` toegang hebben tot Active Directory Tenant als u dit moet kunnen doen `Read all directory objects`. U kunt geen gast gebruiker zijn omdat ze geen machtigingen hebben voor `Read all directory objects`. Als u een gast bent, kunnen bewerkingen als het genereren van een activeringssleutel, het maken van een share op uw Data Box Edge-apparaat of het maken van een gebruiker, niet worden uitgevoerd.
+U moet `User` toegang hebben tot Active Directory Tenant als u dit moet kunnen doen `Read all directory objects`. U kunt geen gast gebruiker zijn omdat ze geen machtigingen hebben voor `Read all directory objects`. Als u een gast bent, worden de bewerkingen, zoals het genereren van een activerings sleutel, het maken van een share op uw Azure Stack edge-apparaat en het maken van een gebruiker, niet meer uitgevoerd.
 
 Zie [Microsoft Graph permissions Reference](https://docs.microsoft.com/graph/permissions-reference)(Engelstalig) voor meer informatie over het verlenen van toegang aan gebruikers om de API te Microsoft Graph.
 
@@ -88,7 +88,7 @@ Voer de volgende opdracht uit om een lijst met geregistreerde resource providers
 Get-AzResourceProvider -ListAvailable |where {$_.Registrationstate -eq "Registered"}
 ```
 
-Voor Data Box Edge apparaat `Microsoft.DataBoxEdge` moet worden geregistreerd. Als u `Microsoft.DataBoxEdge`de registratie wilt registreren, moet u de volgende opdracht uitvoeren:
+Voor Azure Stack Edge- `Microsoft.DataBoxEdge` apparaat moet worden geregistreerd. Als u `Microsoft.DataBoxEdge`de registratie wilt registreren, moet u de volgende opdracht uitvoeren:
 
 ```PowerShell
 Register-AzResourceProvider -ProviderNamespace Microsoft.DataBoxEdge

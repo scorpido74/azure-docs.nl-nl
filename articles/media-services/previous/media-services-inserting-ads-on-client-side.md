@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: 274ee09ae98dd229b255e58261f462e322be9f89
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7e5f6b7fa505890dc6bc818d1bd2578e5d974ff0
+ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77565737"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82594862"
 ---
 # <a name="inserting-ads-on-the-client-side"></a>Advertenties invoegen aan de client zijde
 Dit artikel bevat informatie over het invoegen van verschillende soorten advertenties aan de client zijde.
@@ -586,7 +586,7 @@ In dit voor beeld wordt VmapSchedulerPlugin gebruikt om advertenties te plannen 
 ```
 
 ## <a name="implementing-an-ios-video-player-with-ad-support"></a>Een iOS-video speler implementeren met AD-ondersteuning
-Het micro soft media platform: Player Framework voor iOS bevat een verzameling voorbeeld toepassingen waarin wordt uitgelegd hoe u een video speler-toepassing implementeert met behulp van het Framework. U kunt het Framework van de speler en de voor beelden van [Azure Media Player Framework](https://github.com/Azure/azure-media-player-framework)downloaden. De pagina GitHub bevat een koppeling naar een wiki met aanvullende informatie over het Framework van de speler en een inleiding tot het voor beeld van de speler: [Azure Media Player wiki](https://github.com/Azure/azure-media-player-framework/wiki/How-to-use-Azure-media-player-framework).
+Het micro soft media platform: Player Framework voor iOS bevat een verzameling voorbeeld toepassingen waarin wordt uitgelegd hoe u een video speler-toepassing implementeert met behulp van het Framework. U kunt het Framework van de speler en de voor beelden van [Azure Media Player Framework](https://github.com/CloudMetal/azure-media-player-framework)downloaden. De pagina GitHub bevat een koppeling naar een wiki met aanvullende informatie over het Framework van de speler en een inleiding tot het voor beeld van de speler: [Azure Media Player wiki](https://github.com/CloudMetal/azure-media-player-framework/wiki/How-to-use-Azure-media-player-framework).
 
 ### <a name="scheduling-ads-with-vmap"></a>Advertenties plannen met VMAP
 In het volgende voor beeld ziet u hoe u advertenties plant met behulp van een VMAP-bestand.

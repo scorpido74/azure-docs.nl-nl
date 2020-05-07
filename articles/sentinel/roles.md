@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 12/09/2019
 ms.author: yelevin
-ms.openlocfilehash: e7629a53190433c6c331ce372476b0ed768fc5eb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2e1b1a4786670974a40b22d44fc219c6be5d97a3
+ms.sourcegitcommit: 3beb067d5dc3d8895971b1bc18304e004b8a19b3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77587172"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82744752"
 ---
 # <a name="permissions-in-azure-sentinel"></a>Machtigingen in azure Sentinel
 
@@ -44,7 +44,7 @@ Naast Azure Sentinel dedicated RBAC-rollen zijn er Azure-en Log Analytics RBAC-r
 > Log Analytics rollen verlenen ook lees toegang voor alle Azure-resources, maar ze kunnen alleen schrijf machtigingen toewijzen aan Log Analytics-resources.
 
 
-Bijvoorbeeld, een gebruiker die is toegewezen met rollen van **Azure Sentinel Reader** en **Azure contributor** (geen **Azure Sentinel contributor**), kan gegevens in azure Sentinel bewerken, hoewel ze alleen machtigingen voor **Sentinel Reader** hebben. Als u dus alleen machtigingen voor een Azure-Sentinel wilt verlenen, moet u de vorige machtigingen van deze gebruiker echter zorgvuldig verwijderen, zodat u zeker weet dat u de benodigde machtiging voor een andere resource niet hebt verbroken.
+Bijvoorbeeld, een gebruiker die is toegewezen met rollen van **Azure Sentinel Reader** en **Azure contributor** (geen **Azure Sentinel contributor**), kan gegevens in azure Sentinel bewerken, hoewel ze alleen machtigingen voor **Sentinel Reader** hebben. Als u daarom machtigingen voor een gebruiker alleen in azure Sentinel wilt verlenen, moet u de vorige machtigingen van deze gebruiker echter zorgvuldig verwijderen, zodat u zeker weet dat u de benodigde machtiging voor een andere resource niet hebt verbroken.
 
 > [!NOTE]
 >- Azure Sentinel maakt gebruik van playbooks voor automatische reactie op bedreigingen. Playbooks maakt gebruik van Azure Logic Apps en zijn een afzonderlijke Azure-resource. U kunt bepaalde leden van uw beveiligings team toewijzen met de optie om Logic Apps te gebruiken voor via-bewerkingen (Security Orchestration, Automation en Response). U kunt de rol [Inzender voor logische apps](../role-based-access-control/built-in-roles.md#logic-app-contributor) of de rol van [operator voor logische apps](../role-based-access-control/built-in-roles.md#logic-app-operator) gebruiken om expliciete machtigingen toe te wijzen voor het gebruik van playbooks.

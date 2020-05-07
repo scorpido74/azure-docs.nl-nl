@@ -11,12 +11,12 @@ ms.subservice: user-help
 ms.topic: conceptual
 ms.date: 10/28/2019
 ms.author: curtand
-ms.openlocfilehash: 06e5abe04ed1ec75dcbf1b216bfaab1a7458ce72
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 75564ea463198967c6ed170851058202b5ba3478
+ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77064050"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82625949"
 ---
 # <a name="change-your-work-or-school-account-password-from-the-change-password-page"></a>Het wacht woord voor uw werk-of school account wijzigen op de pagina wacht woord wijzigen
 
@@ -27,7 +27,7 @@ De pagina **wacht woord wijzigen** van de portal **Mijn account** helpt u bij he
 
 ## <a name="update-a-password-from-the-change-password-page"></a>Een wacht woord bijwerken op de pagina wacht woord wijzigen
 
-1. Meld u aan bij uw werk-of school account, met uw bestaande wacht woord en ga vervolgens naar dehttps://myprofile.microsoft.com/) pagina **Mijn account** .
+1. Meld u aan bij uw werk-of school account, met uw bestaande wacht woord en ga vervolgens naar dehttps://myaccount.microsoft.com/) pagina **Mijn account** .
 
 2. Selecteer **wacht woord** in het navigatie deel venster links of selecteer de koppeling **wacht woord wijzigen** in het blok met **wacht woord** .
 

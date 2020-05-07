@@ -3,12 +3,12 @@ title: Ontdek apps, functies en onderdelen op on-premises servers met Azure Migr
 description: Meer informatie over het detecteren van apps, functies en onderdelen op on-premises servers met Azure Migrate server-evaluatie.
 ms.topic: article
 ms.date: 03/12/2020
-ms.openlocfilehash: e8ce279afc845ebf37ad4ab8b2ce7236cb18137a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ff9f5489b513cd1405e6b093d7537e4cbcead041
+ms.sourcegitcommit: 3beb067d5dc3d8895971b1bc18304e004b8a19b3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79453579"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82744619"
 ---
 # <a name="discover-machine-apps-roles-and-features"></a>Machine-apps,-functies en-functies detecteren
 
@@ -30,17 +30,47 @@ App-detectie met Azure Migrate: Server evaluatie is zonder agent. Er is niets ge
 5. Controleer de [vereisten](migrate-appliance.md) voor het implementeren van het Azure migrate apparaat.
 6. [Controleer de ondersteuning en vereisten](migrate-support-matrix-vmware.md#application-discovery) voor toepassings detectie.
 
-## <a name="prepare-for-app-discovery"></a>App-detectie voorbereiden
 
-1. [Bereid u voor op de implementatie van het apparaat](tutorial-prepare-vmware.md). Voor bereiding omvat het controleren van de instellingen van het apparaat en het instellen van een account dat door het apparaat wordt gebruikt voor toegang tot vCenter Server.
-2. Zorg ervoor dat u een gebruikers account (één voor Windows-en Linux-servers) hebt met beheerders machtigingen voor computers waarop u apps, functies en onderdelen wilt detecteren.
-3. [Implementeer het Azure migrate apparaat om de](how-to-set-up-appliance-vmware.md) detectie te starten. Als u het apparaat wilt implementeren, downloadt en importeert u een eicellen-sjabloon in VMware om het apparaat als een virtuele VMware-machine te maken. U configureert het apparaat en registreert het vervolgens met Azure Migrate.
-2. Wanneer u het apparaat implementeert, moet u het volgende opgeven om de continue detectie te starten:
+
+## <a name="deploy-the-azure-migrate-appliance"></a>Het Azure Migrate apparaat implementeren
+
+1. [Bekijk](migrate-appliance.md#appliance---vmware) de vereisten voor het implementeren van het Azure migrate apparaat.
+2. Bekijk de Azure-Url's die het apparaat nodig heeft voor toegang tot de [open bare](migrate-appliance.md#public-cloud-urls) en [overheids Clouds](migrate-appliance.md#government-cloud-urls).
+3. [Bekijk gegevens](migrate-appliance.md#collected-data---vmware) die door het apparaat worden verzameld tijdens de detectie en evaluatie.
+4. [Noteer](migrate-support-matrix-vmware.md#port-access) de toegangs vereisten voor poorten voor het apparaat.
+5. [Implementeer het Azure migrate apparaat om de](how-to-set-up-appliance-vmware.md) detectie te starten. Als u het apparaat wilt implementeren, downloadt en importeert u een eicellen-sjabloon in VMware om het apparaat als een virtuele VMware-machine te maken. U configureert het apparaat en registreert het vervolgens met Azure Migrate.
+6. Wanneer u het apparaat implementeert, moet u het volgende opgeven om de continue detectie te starten:
     - De naam van de vCenter Server waarmee u verbinding wilt maken.
     - Referenties die u hebt gemaakt voor het apparaat om verbinding te maken met vCenter Server.
     - De account referenties die u hebt gemaakt voor het apparaat om verbinding te maken met Vm's van Windows/Linux.
 
 Nadat het apparaat is geïmplementeerd en u referenties hebt gegeven, start het apparaat doorlopende detectie van VM-meta gegevens en prestatie gegevens, samen met en detectie van apps, functies en rollen.  De duur van het detecteren van apps hangt af van het aantal Vm's dat u hebt. Het duurt doorgaans een uur voor app-detectie van 500 Vm's.
+
+## <a name="prepare-a-user-account"></a>Een gebruikers account voorbereiden
+
+Maak een account om te gebruiken voor detectie en voeg het toe aan het apparaat.
+
+### <a name="create-a-user-account-for-discovery"></a>Een gebruikers account maken voor detectie
+
+Stel een gebruikers account in zodat de server evaluatie toegang kan krijgen tot de virtuele machine voor detectie. [Meer informatie](migrate-support-matrix-vmware.md#application-discovery) over account vereisten.
+
+
+### <a name="add-the-user-account-to-the-appliance"></a>Het gebruikers account toevoegen aan het apparaat
+
+Voeg het gebruikers account toe aan het apparaat.
+
+1. Open de app voor het beheren van apparaten. 
+2. Navigeer naar het deel venster **vCenter-gegevens opgeven** .
+3. Klik in **toepassing en afhankelijkheden van Vm's detecteren**op **referenties toevoegen**
+3. Kies het **besturings systeem**, geef een beschrijvende naam op voor het account en het**wacht woord** voor de **gebruikers naam**/
+6. Klik op **Opslaan**.
+7. Klik op **opslaan en detectie starten**.
+
+    ![VM-gebruikers account toevoegen](./media/how-to-create-group-machine-dependencies-agentless/add-vm-credential.png)
+
+
+
+
 
 ## <a name="review-and-export-the-inventory"></a>De inventaris controleren en exporteren
 

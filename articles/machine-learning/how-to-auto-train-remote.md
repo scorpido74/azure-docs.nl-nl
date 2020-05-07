@@ -11,12 +11,12 @@ ms.subservice: core
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 03/09/2020
-ms.openlocfilehash: 9e499d609a3f78dc5f422b9ed90df09be30f2e7c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e55e6d4eb4f52b8a4b64db89691cf087a30ecb73
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79080408"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82612313"
 ---
 # <a name="train-models-with-automated-machine-learning-in-the-cloud"></a>Modellen trainen met geautomatiseerde machine learning in de cloud
 
@@ -30,7 +30,9 @@ In dit artikel leert u hoe u een model bouwt met behulp van geautomatiseerde MIL
 
 ## <a name="how-does-remote-differ-from-local"></a>Hoe verschilt extern van lokaal?
 
-In de zelf studie "[een classificatie model trainen met geautomatiseerde machine learning](tutorial-auto-train-models.md)" leert u hoe u een lokale computer kunt gebruiken om een model met automatische ml te trainen. De werk stroom wanneer training lokaal ook van toepassing is op externe doelen. Met externe Compute worden automatisch experimenten van het experiment asynchroon uitgevoerd. Met deze functie kunt u een bepaalde herhaling annuleren, de status van de uitvoering bekijken of door gaan met het werken aan andere cellen in het Jupyter-notitie blok. Als u op afstand wilt trainen, maakt u eerst een extern Compute-doel zoals AmlCompute. Vervolgens configureert u de externe resource en verzendt u de code daar.
+Er zijn meer functies beschikbaar wanneer u een extern Compute-doel gebruikt.  Zie [lokale en externe Compute-doelen](concept-automated-ml.md#local-remote)voor meer informatie.
+
+In de zelf studie "[een classificatie model trainen met geautomatiseerde machine learning](tutorial-auto-train-models.md)" leert u hoe u een lokale computer kunt gebruiken om een model met automatische ml te trainen. De werk stroom wanneer training lokaal ook van toepassing is op externe doelen. Als u op afstand wilt trainen, maakt u eerst een extern Compute-doel zoals AmlCompute. Vervolgens configureert u de externe resource en verzendt u de code daar.
 
 In dit artikel worden de extra stappen beschreven die nodig zijn voor het uitvoeren van een geautomatiseerd experiment op een extern AmlCompute-doel. Het werkruimte object, `ws`, in de zelf studie, wordt in de hele code gebruikt.
 

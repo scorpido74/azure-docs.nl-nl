@@ -3,12 +3,12 @@ title: Overzicht van beveiligings functies
 description: Meer informatie over de beveiligings mogelijkheden in Azure Backup waarmee u uw back-upgegevens kunt beschermen en voldoen aan de beveiligings behoeften van uw bedrijf.
 ms.topic: conceptual
 ms.date: 03/12/2020
-ms.openlocfilehash: 2eec3ee50f1de695b5432ee50b0900e35b81a6eb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 688573b571c6ce4473f06d4c194795a38a33244b
+ms.sourcegitcommit: 3beb067d5dc3d8895971b1bc18304e004b8a19b3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80585822"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82743642"
 ---
 # <a name="overview-of-security-features-in-azure-backup"></a>Overzicht van beveiligings functies in Azure Backup
 
@@ -16,9 +16,9 @@ Een van de belangrijkste stappen die u kunt nemen om uw gegevens te beschermen, 
 
 ## <a name="management-and-control-of-identity-and-user-access"></a>Beheer en controle van identiteits-en gebruikers toegang
 
-Met Azure Backup kunt u nauw keurige toegang beheren met behulp [van op rollen gebaseerd Access Control van Azure (RBAC)](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles). Met RBAC kunt u taken in uw team gescheiden houden en alleen de hoeveelheid toegang verlenen die nodig is voor het uitvoeren van hun taken.
+Opslag accounts die worden gebruikt door Recovery Services-kluizen, zijn geïsoleerd en kunnen niet worden geopend door gebruikers voor schadelijke doel einden. De toegang is alleen toegestaan via Azure Backup beheer bewerkingen, zoals herstellen. Met Azure Backup kunt u de beheerde bewerkingen beheren via verfijnde toegang met behulp [van op Azure Role gebaseerde Access Control (RBAC)](https://docs.microsoft.com/azure/backup/backup-rbac-rs-vault). Met RBAC kunt u taken in uw team gescheiden houden en alleen de hoeveelheid toegang verlenen die nodig is voor het uitvoeren van hun taken.
 
-Azure Backup biedt drie ingebouwde rollen voor het beheren van bewerkingen voor het beheer van back-ups:
+Azure Backup biedt drie [ingebouwde rollen](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles) voor het beheren van bewerkingen voor het beheer van back-ups:
 
 * Back-upinzender: voor het maken en beheren van back-ups, behalve het verwijderen van Recovery Services kluis en het verlenen van toegang tot anderen
 * Back-upoperator: alles wat een bijdrager is behalve back-ups verwijderen en back-upbeleid beheren
@@ -47,13 +47,13 @@ U kunt nu [persoonlijke eind punten](https://docs.microsoft.com/azure/private-li
 
 Versleuteling beschermt uw gegevens en helpt u om te voldoen aan de beveiligings-en nalevings verplichtingen van uw organisatie. Binnen Azure worden gegevens in transit tussen Azure Storage en de kluis beveiligd door HTTPS. Deze gegevens blijven op het Azure-backbone-netwerk.
 
-* Back-upgegevens worden automatisch versleuteld met door micro soft beheerde sleutels. U kunt ook uw back-ups van beheerde schijf-Vm's in de Recovery Services kluis versleutelen met door de [klant beheerde sleutels](https://docs.microsoft.com/azure/backup/backup-azure-security-feature-cloud#encryption-of-backup-data-using-customer-managed-keys) die zijn opgeslagen in de Azure Key Vault. U hoeft geen expliciete actie te ondernemen om deze versleuteling in te scha kelen. Dit is van toepassing op alle werk belastingen waarvan een back-up wordt gemaakt naar uw Recovery Services kluis.
+* Back-upgegevens worden automatisch versleuteld met door micro soft beheerde sleutels. U kunt ook uw back-ups van beheerde schijf-Vm's in de Recovery Services kluis versleutelen met door de [klant beheerde sleutels](backup-encryption.md#encryption-of-backup-data-using-customer-managed-keys) die zijn opgeslagen in de Azure Key Vault. U hoeft geen expliciete actie te ondernemen om deze versleuteling in te scha kelen. Dit is van toepassing op alle werk belastingen waarvan een back-up wordt gemaakt naar uw Recovery Services kluis.
 
 * Azure Backup ondersteunt back-ups en herstel bewerkingen van Azure-Vm's waarvan het besturings systeem/de gegevens schijven zijn versleuteld met Azure Disk Encryption (ADE). Meer [informatie over versleutelde Azure-vm's en-Azure backup](https://docs.microsoft.com/azure/backup/backup-azure-vms-encryption).
 
 ## <a name="protection-of-backup-data-from-unintentional-deletes"></a>Beveiliging van back-upgegevens tegen onbedoelde verwijderingen
 
-Azure Backup biedt beveiligings functies voor het beveiligen van back-upgegevens, zelfs na verwijdering. Als de gebruiker de back-up van een virtuele machine verwijdert, wordt de back-up met de optie voorlopig verwijderd gedurende 14 extra dagen bewaard, zodat het back-upitem zonder gegevens verlies kan worden hersteld. De extra 14 dagen retentie van back-upgegevens in de status ' voorlopig verwijderen ' heeft geen kosten voor de klant. Meer [informatie over zacht verwijderen](https://docs.microsoft.com/azure/backup/backup-azure-security-feature-cloud#soft-delete).
+Azure Backup biedt beveiligings functies voor het beveiligen van back-upgegevens, zelfs na verwijdering. Als de gebruiker de back-up van een virtuele machine verwijdert, wordt de back-up met de optie voorlopig verwijderd gedurende 14 extra dagen bewaard, zodat het back-upitem zonder gegevens verlies kan worden hersteld. De extra 14 dagen retentie van back-upgegevens in de status ' voorlopig verwijderen ' heeft geen kosten voor de klant. Meer [informatie over zacht verwijderen](backup-azure-security-feature-cloud.md).
 
 ## <a name="monitoring-and-alerts-of-suspicious-activity"></a>Bewaking en waarschuwingen van verdachte activiteiten
 

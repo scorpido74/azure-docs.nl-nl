@@ -3,12 +3,12 @@ title: De galerie met gedeelde afbeeldingen gebruiken om een aangepaste groep te
 description: Maak een batch-pool met de galerie gedeelde afbeeldingen om aangepaste installatie kopieën in te richten op reken knooppunten die de software en gegevens bevatten die u nodig hebt voor uw toepassing. Aangepaste installatie kopieën zijn een efficiënte manier om reken knooppunten te configureren om uw batch-workloads uit te voeren.
 ms.topic: article
 ms.date: 08/28/2019
-ms.openlocfilehash: 45f721dbdf11e0a6f58da71c644acf687dfadd49
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1a26aaecc5da0ef348b720919b04d86f8fcfbc70
+ms.sourcegitcommit: 3beb067d5dc3d8895971b1bc18304e004b8a19b3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82116516"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82743580"
 ---
 # <a name="use-the-shared-image-gallery-to-create-a-custom-pool"></a>De galerie met gedeelde afbeeldingen gebruiken om een aangepaste groep te maken
 
@@ -77,7 +77,7 @@ Een moment opname is een volledige, alleen-lezen kopie van een VHD. Als u een mo
 
 Als u een beheerde installatie kopie wilt maken op basis van een moment opname, gebruikt u de opdracht regel Programma's van Azure, zoals de opdracht [AZ image Create](/cli/azure/image) . Een installatie kopie maken door een moment opname van de besturingssysteem schijf en eventueel een of meer moment opnamen van de gegevens schijf op te geven.
 
-### <a name="create-a-shared-image-gallery"></a>Een galerie met gedeelde afbeeldingen maken
+### <a name="create-a-shared-image-gallery"></a>Een gedeelde installatiekopiegalerie maken
 
 Wanneer u de beheerde installatie kopie hebt gemaakt, moet u een galerie met gedeelde afbeeldingen maken om uw aangepaste installatie kopie beschikbaar te maken. Zie [een galerie met gedeelde afbeeldingen maken met Azure cli](../virtual-machines/linux/shared-images.md) of [een galerie met gedeelde afbeeldingen maken met behulp van de Azure Portal](../virtual-machines/linux/shared-images-portal.md)voor meer informatie over het maken van een galerie met gedeelde installatie kopieën voor uw installatie kopieën.
 
@@ -130,11 +130,76 @@ private static void CreateBatchPool(BatchClient batchClient, VirtualMachineConfi
 }
 ```
 
+## <a name="create-a-pool-from-a-shared-image-using-python"></a>Een groep maken op basis van een gedeelde installatie kopie met behulp van python
+
+U kunt ook een groep maken op basis van een gedeelde installatie kopie met behulp van de python-SDK: 
+
+```python
+# Import the required modules from the
+# Azure Batch Client Library for Python
+import azure.batch as batch
+import azure.batch.models as batchmodels
+from azure.common.credentials import ServicePrincipalCredentials
+
+# Specify Batch account and service principal account credentials
+account = "{batch-account-name}"
+batch_url = "{batch-account-url}"
+ad_client_id = "{sp-client-id}"
+ad_tenant = "{tenant-id}"
+ad_secret = "{sp-secret}"
+
+# Pool settings
+pool_id = "LinuxNodesSamplePoolPython"
+vm_size = "STANDARD_D2_V3"
+node_count = 1
+
+# Initialize the Batch client with Azure AD authentication
+creds = ServicePrincipalCredentials(
+    client_id=ad_client_id,
+    secret=ad_secret,
+    tenant=ad_tenant,
+    resource="https://batch.core.windows.net/"
+)
+client = batch.BatchServiceClient(creds, batch_url)
+
+# Configure the start task for the pool
+start_task = batchmodels.StartTask(
+    command_line="printenv AZ_BATCH_NODE_STARTUP_DIR"
+)
+start_task.run_elevated = True
+
+# Create an ImageReference which specifies the image from
+# Shared Image Gallery to install on the nodes.
+ir = batchmodels.ImageReference(
+    virtual_machine_image_id="/subscriptions/{sub id}/resourceGroups/{resource group name}/providers/Microsoft.Compute/galleries/{gallery name}/images/{image definition name}/versions/{version id}"
+)
+
+# Create the VirtualMachineConfiguration, specifying
+# the VM image reference and the Batch node agent to
+# be installed on the node.
+vmc = batchmodels.VirtualMachineConfiguration(
+    image_reference=ir,
+    node_agent_sku_id="batch.node.ubuntu 18.04"
+)
+
+# Create the unbound pool
+new_pool = batchmodels.PoolAddParameter(
+    id=pool_id,
+    vm_size=vm_size,
+    target_dedicated_nodes=node_count,
+    virtual_machine_configuration=vmc,
+    start_task=start_task
+)
+
+# Create pool in the Batch service
+client.pool.add(new_pool)
+```
+
 ## <a name="create-a-pool-from-a-shared-image-using-the-azure-portal"></a>Een groep maken op basis van een gedeelde installatie kopie met behulp van de Azure Portal
 
 Gebruik de volgende stappen om een groep te maken op basis van een gedeelde installatie kopie in de Azure Portal.
 
-1. Open de [Azure Portal](https://portal.azure.com).
+1. Open [Azure Portal](https://portal.azure.com).
 1. Ga naar **batch-accounts** en selecteer uw account.
 1. Selecteer **Pools** en voeg vervolgens **toe** om een nieuwe groep te maken.
 1. Selecteer in de sectie **type installatie** kopie de **Galerie gedeelde installatie kopieën**.

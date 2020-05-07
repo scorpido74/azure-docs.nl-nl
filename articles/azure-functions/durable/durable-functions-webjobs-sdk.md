@@ -4,12 +4,12 @@ description: Meer informatie over het coderen en configureren van Durable Functi
 ms.topic: conceptual
 ms.date: 04/25/2018
 ms.author: azfuncdf
-ms.openlocfilehash: d8dd0c86fbc520d0bd3ef6034891bd9871774b4a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ad498bdbc4e6dc9745c6ef45b3dc601ad36c0a62
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74232746"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82733410"
 ---
 # <a name="how-to-run-durable-functions-as-webjobs"></a>Durable Functions uitvoeren als webjobs
 
@@ -19,7 +19,7 @@ Durable Functions maakt standaard gebruik van de Azure Functions runtime voor he
 
 In versie 3. x van de webjobs SDK is de host een implementatie van `IHost`en in versie 2. x gebruikt u het `JobHost` -object.
 
-Het voor beeld van koppelen Durable Functions is beschikbaar in een webjobs SDK 2. x-versie: down load of kloon de [Durable functions-opslag plaats](https://github.com/azure/azure-functions-durable-extension/)en ga naar de map met voor *beelden\\van webjobssdk\\* -koppeling.
+Het voor beeld van koppelen Durable Functions is beschikbaar in een webjobs SDK 2. x-versie: down load of kloon de [Durable functions opslagplaats](https://github.com/azure/azure-functions-durable-extension/)en check *v1* -vertakking uit en ga naar de map met voor *beelden\\van webjobssdk\\* -koppeling.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -184,7 +184,7 @@ while (true)
 
 U hebt Durable Functions ingesteld om te worden uitgevoerd als Webtaak en u hebt nu een uitleg over hoe dit verschilt van het uitvoeren van Durable Functions als zelfstandige Azure Functions. Op dit moment kan het nuttig zijn om de IT-afdeling te bekijken in een voor beeld.
 
-Deze sectie bevat een overzicht van hoe u het [voorbeeld project](https://github.com/Azure/azure-functions-durable-extension/tree/master/samples/webjobssdk/chaining)uitvoert. Zie [aan de slag met de SDK voor Webjobs](../../app-service/webjobs-sdk-get-started.md#deploy-as-a-webjob)voor gedetailleerde instructies voor het lokaal uitvoeren van een webjobs SDK-project en het implementeren ervan in een Azure-Webtaak.
+Deze sectie bevat een overzicht van hoe u het [voorbeeld project](https://github.com/Azure/azure-functions-durable-extension/tree/v1/samples/webjobssdk/chaining)uitvoert. Zie [aan de slag met de SDK voor Webjobs](../../app-service/webjobs-sdk-get-started.md#deploy-as-a-webjob)voor gedetailleerde instructies voor het lokaal uitvoeren van een webjobs SDK-project en het implementeren ervan in een Azure-Webtaak.
 
 ### <a name="run-locally"></a>Lokaal uitvoeren
 

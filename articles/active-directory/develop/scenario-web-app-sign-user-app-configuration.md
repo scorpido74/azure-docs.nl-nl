@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 621aff0a6571714ad8dad587c2385e6081c2d0f2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b1eef510e6389b551e128877ffde723955a1084d
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82181661"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82734634"
 ---
 # <a name="web-app-that-signs-in-users-code-configuration"></a>Web-app die gebruikers aanmeldt: code configuratie
 
@@ -298,7 +298,7 @@ Het filter verwerkt de OAuth 2,0-autorisatie code stroom en controleert of de ge
 
 Wanneer het antwoord arriveert, met daarin de autorisatie code, wordt het token verkregen met behulp van MSAL java. Wanneer het het token uiteindelijk van het token eindpunt ontvangt (op de omleidings-URI), is de gebruiker aangemeld.
 
-Zie de `doFilter()` methode in [AuthFilter. java](https://github.com/Azure-Samples/ms-identity-java-webapp/blob/master/src/main/java/com/microsoft/azure/msalwebsample/AuthFilter.java)voor meer informatie.
+Zie de `doFilter()` methode in [AuthFilter. java](https://github.com/Azure-Samples/ms-identity-java-webapp/blob/master/msal-java-webapp-sample/src/main/java/com/microsoft/azure/msalwebsample/AuthFilter.java)voor meer informatie.
 
 > [!NOTE]
 > De code van de `doFilter()` is in een iets andere volg orde geschreven, maar de stroom is die wordt beschreven.

@@ -5,13 +5,13 @@ ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 01/14/2020
-ms.openlocfilehash: 1dceb3db4572ecdaf504745dba1099a5eccead43
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 04/30/2020
+ms.openlocfilehash: 7ed01a57a4c2a55d777907a6cc14b111fb2086e3
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80395790"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82731897"
 ---
 # <a name="delete-and-recover-azure-log-analytics-workspace"></a>Azure Log Analytics-werk ruimte verwijderen en herstellen
 
@@ -59,14 +59,13 @@ PS C:\>Remove-AzOperationalInsightsWorkspace -ResourceGroupName "resource-group-
 
 ### <a name="troubleshooting"></a>Problemen oplossen
 
-U moet de machtigingen Log Analytics Inzender hebben om Log Analytics werk ruimte te verwijderen.<br>
-Als er een fout bericht wordt weer gegeven '*deze werkruimte naam is al in gebruik*' bij het maken van een werk ruimte, kan dit sinds:
+U moet ten minste *log Analytics Inzender* machtigingen hebben om een werk ruimte te verwijderen.<br>
+Als er een fout bericht wordt weer gegeven, *is de naam van de werk ruimte al in gebruik* of *conflict* bij het maken van een werk ruimte, kan dit sinds:
 * De naam van de werk ruimte is niet beschikbaar en wordt gebruikt door iemand in uw organisatie of door een andere klant.
-* De werk ruimte is in de afgelopen 14 dagen verwijderd en de naam is gereserveerd voor de tijdelijke periode voor het verwijderen. Volg deze stappen om de werk ruimte eerst te herstellen en permanent verwijderen uit te voeren om de tijdelijke verwijdering te negeren en de werk ruimte onmiddellijk te verwijderen en een nieuwe werk ruimte met dezelfde naam te maken:<br>
+* De werk ruimte is in de afgelopen 14 dagen verwijderd en de naam is gereserveerd voor de tijdelijke periode voor het verwijderen. Volg deze stappen om de werk ruimte eerst te herstellen en permanent verwijderen uit te voeren om de tijdelijke verwijdering te onderdrukken en uw werk ruimte permanent te verwijderen om een nieuwe werk ruimte met dezelfde naam te maken.<br>
    1. [Herstel](https://docs.microsoft.com/azure/azure-monitor/platform/delete-workspace#recover-workspace) uw werk ruimte.
    2. Uw werk ruimte [permanent verwijderen](https://docs.microsoft.com/azure/azure-monitor/platform/delete-workspace#permanent-workspace-delete) .
    3. Maak een nieuwe werk ruimte met dezelfde naam voor de werk ruimte.
-
 
 ## <a name="permanent-workspace-delete"></a>Permanente werk ruimte verwijderen
 De methode voor het zacht verwijderen past mogelijk niet in sommige scenario's zoals ontwikkelen en testen, waarbij u een implementatie met dezelfde instellingen en werkruimte naam moet herhalen. In dergelijke gevallen kunt u uw werk ruimte permanent verwijderen en de periode voor voorlopig verwijderen negeren. Met de bewerking permanent verwijderen van werk ruimte wordt de naam van de werk ruimte vrijgegeven en kunt u een nieuwe werk ruimte maken met dezelfde naam.
@@ -96,12 +95,7 @@ Waarbij ' eyJ0eXAiOiJKV1Qi... ' vertegenwoordigt het volledige verificatie token
 
 Als u Inzender machtigingen hebt voor het abonnement en de resource groep waaraan de werk ruimte is gekoppeld vóór de tijdelijke bewerking, kunt u deze herstellen tijdens de tijdelijke verwijderings periode, inclusief gegevens, configuratie en verbonden agents. Na de periode voor het voorlopig verwijderen is de werk ruimte niet-herstelbaar en toegewezen voor permanente verwijdering. Namen van verwijderde werk ruimten blijven behouden tijdens de tijdelijke periode en kunnen niet worden gebruikt bij het maken van een nieuwe werk ruimte.  
 
-U kunt een werk ruimte herstellen door deze opnieuw te maken met behulp van de volgende werk ruimte Create-methoden: [Power shell](https://docs.microsoft.com/powershell/module/az.operationalinsights/New-AzOperationalInsightsWorkspace) of [rest API]( https://docs.microsoft.com/rest/api/loganalytics/workspaces/createorupdate) , zolang de volgende eigenschappen zijn gevuld met de verwijderde werkruimte Details:
-
-* Abonnements-id
-* Naam van resource groep
-* Naam van de werkruimte
-* Regio
+U kunt uw werk ruimte herstellen door een werk ruimte te maken met de details van de verwijderde werk ruimte. Dit zijn onder andere *abonnements-id*, *naam van resource groep*, naam en *regio*van de *werk* ruimte. Als uw resource groep ook is verwijderd en niet bestaat, maakt u een resource groep met dezelfde naam die werd gebruikt vóór het verwijderen en maakt u vervolgens een werk ruimte met een van deze methoden: [Azure Portal](https://docs.microsoft.com/azure/azure-monitor/learn/quick-create-workspace), [power shell](https://docs.microsoft.com/powershell/module/az.operationalinsights/New-AzOperationalInsightsWorkspace) of [rest API](https://docs.microsoft.com/rest/api/loganalytics/workspaces/createorupdate).
 
 ### <a name="powershell"></a>PowerShell
 ```PowerShell

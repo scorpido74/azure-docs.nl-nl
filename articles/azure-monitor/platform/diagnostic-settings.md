@@ -5,14 +5,14 @@ author: bwren
 ms.author: bwren
 services: azure-monitor
 ms.topic: conceptual
-ms.date: 04/15/2020
+ms.date: 04/27/2020
 ms.subservice: logs
-ms.openlocfilehash: edb34b1456efae4d06465cfa2e64e546f621c6da
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: cbef0244f30a7cf14f8fea4c6a445cf0de662dc4
+ms.sourcegitcommit: 291b2972c7f28667dc58f66bbe9d9f7d11434ec1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81681161"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82737892"
 ---
 # <a name="create-diagnostic-setting-to-collect-resource-logs-and-metrics-in-azure"></a>Diagnostische instelling maken voor het verzamelen van bron logboeken en metrische gegevens in azure
 
@@ -31,7 +31,13 @@ Elke Azure-resource vereist een eigen diagnostische instelling, waarmee de volge
 Een enkele diagnostische instelling kan niet meer dan een van de doelen definiëren. Als u gegevens wilt verzenden naar meer dan één bepaald type doel (bijvoorbeeld twee verschillende Log Analytics-werkruimten), maakt u meerdere instellingen. Elke resource kan maximaal vijf diagnostische instellingen hebben.
 
 > [!NOTE]
-> De [metrische gegevens](metrics-supported.md) van het platform worden automatisch verzameld om [Azure monitor metrische gegevens](data-platform-metrics.md). Diagnostische instellingen kunnen worden gebruikt voor het verzamelen van metrische gegevens voor bepaalde Azure-Services in Azure Monitor logboeken voor analyse met andere bewakings informatie met behulp van [logboek query's](../log-query/log-query-overview.md).
+> De [metrische gegevens](metrics-supported.md) van het platform worden automatisch verzameld om [Azure monitor metrische gegevens](data-platform-metrics.md). Diagnostische instellingen kunnen worden gebruikt voor het verzamelen van metrische gegevens voor bepaalde Azure-Services in Azure Monitor-logboeken voor analyse met andere bewakings informatie met behulp van [logboek query's](../log-query/log-query-overview.md) met bepaalde beperkingen. 
+>  
+>  
+> Het verzenden van multidimensionale metrische gegevens via diagnostische instellingen wordt momenteel niet ondersteund. Metrische gegevens met dimensies worden geëxporteerd als platte eendimensionale metrische gegevens, als totaal van alle dimensiewaarden. *Bijvoorbeeld*: de metrische waarde ' IOReadBytes ' op een Block Chain kan worden verkend en gediagrameerd op basis van een niveau per knoop punt. Wanneer de metrische gegevens echter worden geëxporteerd via Diagnostische instellingen, worden alle bytes gelezen voor alle knoop punten. Als gevolg van interne beperkingen zijn niet alle metrische gegevens exporteerbaar voor Azure Monitor logboeken/Log Analytics. Zie de [lijst met Exporteer bare metrische](metrics-supported-export-diagnostic-settings.md)gegevens voor meer informatie. 
+>  
+>  
+> Om deze beperkingen voor specifieke metrische gegevens te omzeilen, wordt u aangeraden deze hand matig te extra heren met behulp van de [metrische gegevens rest API](https://docs.microsoft.com/rest/api/monitor/metrics/list) en deze te importeren in azure monitor logboeken met behulp van de [Azure Monitor Data Collector-API](data-collector-api.md).  
 
 ## <a name="destinations"></a>Bestemmingen
 
@@ -78,9 +84,8 @@ U kunt Diagnostische instellingen configureren in de Azure Portal in het menu Az
      - **AllMetrics** routeert de platform metrieken van een resource in de Azure logs Store, maar in de logboek vorm. Deze metrische gegevens worden doorgaans alleen verzonden naar de data base van de time-series van Azure Monitor metrische gegevens. Deze te verzenden naar de Azure Monitor logboeken Store (die kan worden doorzocht via Log Analytics) waarmee u ze kunt integreren in query's die in andere logboeken zoeken. Deze optie is mogelijk niet beschikbaar voor alle resource typen. Als dit wordt ondersteund, wordt door [Azure monitor ondersteunde metrische gegevens](metrics-supported.md) weer gegeven welke metrische gegevens worden verzameld voor welke resource typen.
 
        > [!NOTE]
-       > Het verzenden van multidimensionale metrische gegevens via diagnostische instellingen wordt momenteel niet ondersteund. Metrische gegevens met dimensies worden geëxporteerd als platte eendimensionale metrische gegevens, als totaal van alle dimensiewaarden.
-       >
-       > *Bijvoorbeeld*: de metrische waarde ' IOReadBytes ' op een Block Chain kan worden verkend en gediagrameerd op basis van een niveau per knoop punt. Wanneer de metrische gegevens echter worden geëxporteerd via Diagnostische instellingen, worden alle bytes gelezen voor alle knoop punten.
+       > Zie limitatation voor routerings metrieken voor Azure Monitor logboeken eerder in dit artikel.  
+
 
      - In **Logboeken** worden de verschillende beschik bare categorieën weer gegeven, afhankelijk van het resource type. Controleer alle categorieën die u wilt omleiden naar een bestemming.
 

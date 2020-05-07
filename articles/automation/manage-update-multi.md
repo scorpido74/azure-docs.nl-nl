@@ -5,12 +5,12 @@ services: automation
 ms.subservice: update-management
 ms.date: 03/26/2020
 ms.topic: conceptual
-ms.openlocfilehash: 5376562d9df35539a33f6746b387a1ff7083b8f1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6a878ecf4519a852a9798b320bda26cd490487a4
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81676450"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82731965"
 ---
 # <a name="manage-updates-for-multiple-azure-virtual-machines"></a>Updates voor meerdere virtuele machines in Azure beheren
 
@@ -21,7 +21,7 @@ U kunt Azure Automation Updatebeheer gebruiken voor het beheren van updates en p
 - De installatie van vereiste updates plannen.
 - Bekijk de implementatie resultaten om te controleren of de updates zijn toegepast op alle virtuele machines waarvoor Updatebeheer is ingeschakeld.
 
-Zie [updatebeheer-client vereisten](automation-update-management.md#clients)voor meer informatie over de systeem vereisten voor updatebeheer.
+Zie [updatebeheer-client vereisten](automation-update-management.md#client-requirements)voor meer informatie over de systeem vereisten voor updatebeheer.
 
 ## <a name="prerequisites"></a>Vereisten
 

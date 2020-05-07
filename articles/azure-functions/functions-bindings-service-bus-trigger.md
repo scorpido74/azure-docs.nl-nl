@@ -6,16 +6,16 @@ ms.assetid: daedacf0-6546-4355-a65c-50873e74f66b
 ms.topic: reference
 ms.date: 02/19/2020
 ms.author: cshoe
-ms.openlocfilehash: 1ead7fcd9d474369e3a62e372a971d88d26f4e9c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b5e7f1b70aca50b4e42d056beb0b17795430091c
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78273570"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82690711"
 ---
 # <a name="azure-service-bus-trigger-for-azure-functions"></a>Azure Service Bus trigger voor Azure Functions
 
-Gebruik de Service Bus-trigger om te reageren op berichten van een Service Bus wachtrij of onderwerp.
+Gebruik de Service Bus-trigger om te reageren op berichten van een Service Bus wachtrij of onderwerp. Te beginnen met de extensie versie 3.1.0 kunt u activeren op een wachtrij of onderwerp waarvoor een sessie is ingeschakeld.
 
 Zie het [overzicht](functions-bindings-service-bus-output.md)voor meer informatie over de installatie-en configuratie details.
 
@@ -222,7 +222,7 @@ Gebruik in [C# class libraries](functions-dotnet-class-library.md)de volgende ke
   }
   ```
 
-  U kunt de `Connection` eigenschap instellen om de naam op te geven van een app-instelling die het service bus connection string bevat dat moet worden gebruikt, zoals wordt weer gegeven in het volgende voor beeld:
+  Omdat de `Connection` eigenschap niet is gedefinieerd, zoekt functies naar een app- `AzureWebJobsServiceBus`instelling met de naam. Dit is de standaard naam voor de service bus connection string. U kunt ook de `Connection` eigenschap instellen om de naam op te geven van een toepassings instelling die het service bus connection string bevat dat moet worden gebruikt, zoals wordt weer gegeven in het volgende voor beeld:
 
   ```csharp
   [FunctionName("ServiceBusQueueTriggerCSharp")]                    
@@ -290,9 +290,9 @@ De volgende tabel bevat informatie over de binding configuratie-eigenschappen di
 
 |function. json-eigenschap | Kenmerk eigenschap |Beschrijving|
 |---------|---------|----------------------|
-|**voert** | N.v.t. | Moet worden ingesteld op ' serviceBusTrigger '. Deze eigenschap wordt automatisch ingesteld wanneer u de trigger maakt in de Azure Portal.|
-|**direction** | N.v.t. | Moet worden ingesteld op in. Deze eigenschap wordt automatisch ingesteld wanneer u de trigger maakt in de Azure Portal. |
-|**naam** | N.v.t. | De naam van de variabele die de wachtrij of het onderwerp van het bericht in de functie code vertegenwoordigt. |
+|**voert** | n.v.t. | Moet worden ingesteld op ' serviceBusTrigger '. Deze eigenschap wordt automatisch ingesteld wanneer u de trigger maakt in de Azure Portal.|
+|**draaien** | n.v.t. | Moet worden ingesteld op in. Deze eigenschap wordt automatisch ingesteld wanneer u de trigger maakt in de Azure Portal. |
+|**naam** | n.v.t. | De naam van de variabele die de wachtrij of het onderwerp van het bericht in de functie code vertegenwoordigt. |
 |**queueName**|**QueueName**|De naam van de wachtrij die moet worden bewaakt.  Stel deze waarde alleen in als u een wachtrij bewaken, niet voor een onderwerp.
 |**onderwerpnaam**|**Onderwerpnaam**|De naam van het te bewaken onderwerp. Stel deze waarde alleen in als u een onderwerp bewaken, niet voor een wachtrij.|
 |**subscriptionName**|**SubscriptionName**|De naam van het abonnement dat moet worden bewaakt. Stel deze waarde alleen in als u een onderwerp bewaken, niet voor een wachtrij.|
@@ -354,21 +354,24 @@ De `maxAutoRenewDuration` kan worden geconfigureerd in *host. json*, dat wordt t
 
 ## <a name="message-metadata"></a>Meta gegevens van bericht
 
-De trigger Service Bus biedt verschillende [Eigenschappen van meta gegevens](./functions-bindings-expressions-patterns.md#trigger-metadata). Deze eigenschappen kunnen worden gebruikt als onderdeel van binding expressies in andere bindingen of als para meters in uw code. Deze eigenschappen zijn leden van de klasse [BrokeredMessage](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) .
+De trigger Service Bus biedt verschillende [Eigenschappen van meta gegevens](./functions-bindings-expressions-patterns.md#trigger-metadata). Deze eigenschappen kunnen worden gebruikt als onderdeel van binding expressies in andere bindingen of als para meters in uw code. Deze eigenschappen zijn leden van de [bericht](/dotnet/api/microsoft.azure.servicebus.message?view=azure-dotnet) klasse.
 
 |Eigenschap|Type|Beschrijving|
 |--------|----|-----------|
-|`DeliveryCount`|`Int32`|Het aantal leveringen.|
-|`DeadLetterSource`|`string`|De bron voor de onbestelbare letter.|
-|`ExpiresAtUtc`|`DateTime`|De verloop tijd in UTC.|
-|`EnqueuedTimeUtc`|`DateTime`|De in wachtrij geplaatste tijd in UTC.|
-|`MessageId`|`string`|Een door de gebruiker gedefinieerde waarde die Service Bus kan gebruiken om dubbele berichten te identificeren, indien ingeschakeld.|
 |`ContentType`|`string`|Een inhouds type-id die wordt gebruikt door de afzender en ontvanger voor toepassingsspecifieke logica.|
-|`ReplyTo`|`string`|Het adres van de wachtrij voor beantwoorden.|
-|`SequenceNumber`|`Int64`|Het unieke nummer dat is toegewezen aan een bericht door de Service Bus.|
-|`To`|`string`|Het adres voor verzenden naar.|
-|`Label`|`string`|Het toepassingsspecifiek label.|
 |`CorrelationId`|`string`|De correlatie-ID.|
+|`DeadLetterSource`|`string`|De bron voor de onbestelbare letter.|
+|`DeliveryCount`|`Int32`|Het aantal leveringen.|
+|`EnqueuedTimeUtc`|`DateTime`|De in wachtrij geplaatste tijd in UTC.|
+|`ExpiresAtUtc`|`DateTime`|De verloop tijd in UTC.|
+|`Label`|`string`|Het toepassingsspecifiek label.|
+|`MessageId`|`string`|Een door de gebruiker gedefinieerde waarde die Service Bus kan gebruiken om dubbele berichten te identificeren, indien ingeschakeld.|
+|`MessageReceiver`|`MessageReceiver`|Ontvanger van Service Bus bericht. Kan worden gebruikt om het bericht af te breken, te volt ooien of deadletter.|
+|`MessageSession`|`MessageSession`|Een ontvanger van een bericht specifiek voor wacht rijen en onderwerpen met sessie ingeschakeld.|
+|`ReplyTo`|`string`|Het adres van de wachtrij voor beantwoorden.|
+|`SequenceNumber`|`long`|Het unieke nummer dat is toegewezen aan een bericht door de Service Bus.|
+|`To`|`string`|Het adres voor verzenden naar.|
+|`UserProperties`|`IDictionary<string, object>`|Eigenschappen die zijn ingesteld door de afzender.|
 
 Zie [code voorbeelden](#example) die gebruikmaken van deze eigenschappen eerder in dit artikel.
 

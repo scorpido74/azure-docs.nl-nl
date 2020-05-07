@@ -1,6 +1,6 @@
 ---
-title: Aangepaste Azure-rollen maken of bijwerken met behulp van de Azure Portal (preview)-Azure RBAC
-description: Meer informatie over het maken van aangepaste Azure-rollen voor op rollen gebaseerd toegangs beheer (Azure RBAC) in azure met behulp van de Azure Portal. Hieronder vindt u informatie over het weer geven, maken, bijwerken en verwijderen van aangepaste rollen.
+title: Aangepaste Azure-rollen maken of bijwerken met behulp van de Azure Portal-Azure RBAC
+description: Meer informatie over het maken van aangepaste rollen in azure met behulp van de Azure Portal en Azure op rollen gebaseerd toegangs beheer (Azure RBAC). Hieronder vindt u informatie over het weer geven, maken, bijwerken en verwijderen van aangepaste rollen.
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -10,23 +10,18 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 02/26/2020
+ms.date: 04/30/2020
 ms.author: rolyon
-ms.openlocfilehash: 3204cdf51f3f37588f684f801a811f569b337d13
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f9ba8fa64a9699917fe73365cb5d9aa0c858cde7
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77674868"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82734176"
 ---
-# <a name="create-or-update-azure-custom-roles-using-the-azure-portal-preview"></a>Aangepaste Azure-rollen maken of bijwerken met behulp van de Azure Portal (preview)
+# <a name="create-or-update-azure-custom-roles-using-the-azure-portal"></a>Aangepaste Azure-rollen maken of bijwerken met behulp van de Azure Portal
 
-> [!IMPORTANT]
-> Aangepaste Azure-rollen die gebruikmaken van de Azure Portal, zijn momenteel beschikbaar als open bare preview.
-> Deze preview-versie wordt aangeboden zonder service level agreement en wordt niet aanbevolen voor productieworkloads. Misschien worden bepaalde functies niet ondersteund of zijn de mogelijkheden ervan beperkt.
-> Zie voor meer informatie [aanvullende gebruiks voorwaarden voor Microsoft Azure-previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
-
-Als de [ingebouwde rollen van Azure](built-in-roles.md) niet voldoen aan de specifieke behoeften van uw organisatie, kunt u uw eigen aangepaste Azure-rollen maken. Net als bij ingebouwde rollen kunt u aangepaste rollen toewijzen aan gebruikers, groepen en service-principals bij een abonnement en een resource groep. Aangepaste rollen worden opgeslagen in een Azure Active Directory-Directory (Azure AD) en kunnen worden gedeeld via abonnementen. Elke directory kan Maxi maal 5000 aangepaste rollen hebben. Aangepaste rollen kunnen worden gemaakt met behulp van de Azure Portal, Azure PowerShell, Azure CLI of de REST API. In dit artikel wordt beschreven hoe u aangepaste rollen maakt met behulp van de Azure Portal (momenteel als preview-versie).
+Als de [ingebouwde rollen van Azure](built-in-roles.md) niet voldoen aan de specifieke behoeften van uw organisatie, kunt u uw eigen aangepaste Azure-rollen maken. Net als bij ingebouwde rollen kunt u aangepaste rollen toewijzen aan gebruikers, groepen en service-principals bij een abonnement en een resource groep. Aangepaste rollen worden opgeslagen in een Azure Active Directory-Directory (Azure AD) en kunnen worden gedeeld via abonnementen. Elke directory kan Maxi maal 5000 aangepaste rollen hebben. Aangepaste rollen kunnen worden gemaakt met behulp van de Azure Portal, Azure PowerShell, Azure CLI of de REST API. In dit artikel wordt beschreven hoe u aangepaste rollen maakt met behulp van de Azure Portal.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -77,7 +72,7 @@ Als u wilt, kunt u deze stappen volgen om een nieuwe aangepaste rol te starten.
 
 1. Open in de Azure Portal een abonnement of resource groep waaraan u de aangepaste rol wilt toewijzen en open vervolgens **toegangs beheer (IAM)**.
 
-1. Klik op **toevoegen** en klik vervolgens op **aangepaste rol toevoegen (preview)**.
+1. Klik op **toevoegen** en klik vervolgens op **aangepaste rol toevoegen**.
 
     ![Menu aangepaste rol toevoegen](./media/custom-roles-portal/add-custom-role-menu.png)
 
@@ -109,7 +104,7 @@ Als u wilt, kunt u het meren deel van uw aangepaste Rolinstellingen opgeven in e
     }
     ```
 
-1. Geef in het JSON-bestand waarden op voor de verschillende eigenschappen. Hier volgt een voor beeld met een aantal toegevoegde waarden. Zie voor meer informatie over de verschillende eigenschappen [begrijpen functie definities](role-definitions.md).
+1. Geef in het JSON-bestand waarden op voor de verschillende eigenschappen. Hier volgt een voor beeld met een aantal toegevoegde waarden. Zie [definities van Azure-functies begrijpen](role-definitions.md)voor meer informatie over de verschillende eigenschappen.
 
     ```json
     {
@@ -141,7 +136,7 @@ Als u wilt, kunt u het meren deel van uw aangepaste Rolinstellingen opgeven in e
     
 1. Open de pagina **toegangs beheer (IAM)** In het Azure Portal.
 
-1. Klik op **toevoegen** en klik vervolgens op **aangepaste rol toevoegen (preview)**.
+1. Klik op **toevoegen** en klik vervolgens op **aangepaste rol toevoegen**.
 
     ![Menu aangepaste rol toevoegen](./media/custom-roles-portal/add-custom-role-menu.png)
 
@@ -260,7 +255,7 @@ Wanneer u een machtiging uitsluit, wordt deze toegevoegd als `NotActions` een `N
 
 ## <a name="step-5-assignable-scopes"></a>Stap 5: toewijs bare bereiken
 
-Op het tabblad **toewijs bare bereiken** geeft u op waar uw aangepaste rol beschikbaar is voor toewijzing, zoals abonnement of resource groep. Afhankelijk van hoe u ervoor hebt gekozen om te starten, kan op dit tabblad het bereik worden weer gegeven waar u de IAM-pagina (Access Control) hebt geopend. Het instellen van een toegewezen bereik aan het hoofd bereik (/) wordt niet ondersteund. Voor deze preview kunt u geen beheer groep toevoegen als een toewijsbaar bereik.
+Op het tabblad **toewijs bare bereiken** geeft u op waar uw aangepaste rol beschikbaar is voor toewijzing, zoals abonnement of resource groep. Afhankelijk van hoe u ervoor hebt gekozen om te starten, kan op dit tabblad het bereik worden weer gegeven waar u de IAM-pagina (Access Control) hebt geopend. Het instellen van een toegewezen bereik aan het hoofd bereik (/) wordt niet ondersteund. Op dit moment kunt u geen beheer groep toevoegen als een toewijsbaar bereik.
 
 1. Klik op **toewijs bare bereiken toevoegen** om het deel venster toewijs bare scopes toevoegen te openen.
 
@@ -352,6 +347,6 @@ Volg deze stappen om uw aangepaste rollen weer te geven.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Zelfstudie: Een aangepaste rol maken met Azure PowerShell](tutorial-custom-role-powershell.md)
-- [Aangepaste rollen in Azure](custom-roles.md)
+- [Zelf studie: een aangepaste Azure-rol maken met behulp van Azure PowerShell](tutorial-custom-role-powershell.md)
+- [Aangepaste Azure-rollen](custom-roles.md)
 - [Bewerkingen voor de resource provider Azure Resource Manager](resource-provider-operations.md)

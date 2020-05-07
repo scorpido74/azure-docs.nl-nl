@@ -14,24 +14,24 @@ ms.topic: conceptual
 ms.date: 07/25/2019
 ms.author: mimart
 ms.reviewer: japere
-ms.custom: it-pro
+ms.custom: it-pro, has-adal-ref
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bc96c94152b39cc70cfc4553690faaa5b9cb8d20
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0a6fab618280f1383e3840c67d85136edc095b9a
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77111584"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82610085"
 ---
 # <a name="enable-remote-access-to-power-bi-mobile-with-azure-ad-application-proxy"></a>Externe toegang tot Power BI - Mobiel met Azure AD-toepassingsproxy inschakelen
 
-In dit artikel wordt beschreven hoe u Azure AD-toepassingsproxy kunt gebruiken om de Power BI mobiele app in te scha kelen om verbinding te maken met Power BI Report Server (PBIRS) en SQL Server Reporting Services (SSRS) 2016 en hoger. Via deze integratie hebben gebruikers die zich buiten het bedrijfs netwerk bevinden, toegang tot hun Power BI-rapporten vanuit de mobiele app van Power BI en worden ze beschermd door Azure AD-verificatie. Deze beveiliging omvat [beveiligings voordelen](application-proxy-security.md#security-benefits) , zoals voorwaardelijke toegang en multi-factor Authentication.  
+In dit artikel wordt beschreven hoe u Azure AD-toepassingsproxy kunt gebruiken om de Power BI mobiele app in te scha kelen om verbinding te maken met Power BI Report Server (PBIRS) en SQL Server Reporting Services (SSRS) 2016 en hoger. Via deze integratie hebben gebruikers die zich buiten het bedrijfs netwerk bevinden, toegang tot hun Power BI-rapporten vanuit de mobiele app van Power BI en worden ze beschermd door Azure AD-verificatie. Deze beveiliging omvat [beveiligings voordelen](application-proxy-security.md#security-benefits) , zoals voorwaardelijke toegang en multi-factor Authentication.
 
 ## <a name="prerequisites"></a>Vereisten
 
 In dit artikel wordt ervan uitgegaan dat u rapport Services en [ingeschakelde toepassings proxy](application-proxy-add-on-premises-application.md)al hebt geïmplementeerd.
 
-- Voor het inschakelen van de toepassings proxy moet u een connector installeren op een Windows-Server en de [vereisten](application-proxy-add-on-premises-application.md#prepare-your-on-premises-environment) volt ooien zodat de connector kan communiceren met Azure AD-Services.  
+- Voor het inschakelen van de toepassings proxy moet u een connector installeren op een Windows-Server en de [vereisten](application-proxy-add-on-premises-application.md#prepare-your-on-premises-environment) volt ooien zodat de connector kan communiceren met Azure AD-Services.
 - Bij het publiceren van Power BI wordt u aangeraden hetzelfde interne en externe domeinen te gebruiken. Zie [werken met aangepaste domeinen in toepassings proxy](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-configure-custom-domain)voor meer informatie over aangepaste domeinen.
 - Deze integratie is beschikbaar voor de **Power bi-mobiel IOS-en Android** -toepassing.
 
@@ -68,7 +68,7 @@ Configureer KCD zodat de Azure AD-toepassingsproxy-Service gebruikers identiteit
 Als u KCD wilt configureren, herhaalt u de volgende stappen voor elke connector computer:
 
 1. Meld u aan bij een domein controller als een domein beheerder en open **Active Directory gebruikers en computers**.
-2. Zoek de computer waarop de connector wordt uitgevoerd.  
+2. Zoek de computer waarop de connector wordt uitgevoerd.
 3. Dubbel klik op de computer en selecteer vervolgens het tabblad **delegering** .
 4. Stel de instellingen voor delegering zo in dat **deze computer alleen kan worden overgedragen aan de opgegeven services**. Selecteer vervolgens **elk verificatie protocol gebruiken**.
 5. Selecteer **toevoegen**en selecteer vervolgens **gebruikers of computers**.
@@ -95,7 +95,7 @@ U bent nu klaar om Azure AD-toepassingsproxy te configureren.
 
    b. Voor de **modus voor eenmalige aanmelding**selecteert u **geïntegreerde Windows-verificatie**.
 
-   c. Stel **interne Application SPN** in op de waarde die u eerder hebt ingesteld.  
+   c. Stel **interne Application SPN** in op de waarde die u eerder hebt ingesteld.
 
    d. Kies de **gedelegeerde aanmeldings-id** voor de connector om namens uw gebruikers te gebruiken. Zie [werken met verschillende on-premises en Cloud-identiteiten](application-proxy-configure-single-sign-on-with-kcd.md#working-with-different-on-premises-and-cloud-identities)voor meer informatie.
 
@@ -105,7 +105,7 @@ Ga naar **de sectie gebruikers en groepen** en wijs gebruikers toe om toegang te
 
 ## <a name="step-3-modify-the-reply-uris-for-the-application"></a>Stap 3: de antwoord-URI voor de toepassing wijzigen
 
-Voordat de Power BI mobiele app verbinding kan maken en toegang kan krijgen tot Report Services, moet u de registratie van de toepassing configureren die automatisch voor u is gemaakt in stap 2. 
+Voordat de Power BI mobiele app verbinding kan maken en toegang kan krijgen tot Report Services, moet u de registratie van de toepassing configureren die automatisch voor u is gemaakt in stap 2.
 
 1. Selecteer op de pagina **overzicht** van Azure Active Directory **app-registraties**.
 2. Zoek op het tabblad **alle toepassingen** naar de toepassing die u in stap 2 hebt gemaakt.
@@ -117,11 +117,11 @@ Voordat de Power BI mobiele app verbinding kan maken en toegang kan krijgen tot 
    - `msauth://code/mspbi-adalms%3a%2f%2fcom.microsoft.powerbimobilems`
    - `mspbi-adal://com.microsoft.powerbimobile`
    - `mspbi-adalms://com.microsoft.powerbimobilems`
-   
+
    Bij het configureren van de app voor Power BI-Mobiel **Android**, voegt u de volgende omleidings-uri's van het type public client (mobiel & bureau blad) toe:
    - `urn:ietf:wg:oauth:2.0:oob`
    - `mspbi-adal://com.microsoft.powerbimobile`
-   - `msauth://com.microsoft.powerbim/g79ekQEgXBL5foHfTlO2TPawrbI%3D` 
+   - `msauth://com.microsoft.powerbim/g79ekQEgXBL5foHfTlO2TPawrbI%3D`
    - `msauth://com.microsoft.powerbim/izba1HXNWrSmQ7ZvMXgqeZPtNEU%3D`
 
    > [!IMPORTANT]
@@ -144,7 +144,7 @@ U kunt Microsoft Intune gebruiken om de client-apps te beheren die het personeel
 1. Ga naar **Azure Active Directory** en vervolgens op **app-registraties**.
 2. Selecteer de toepassing die u in stap 3 hebt geconfigureerd bij het registreren van uw systeem eigen client toepassing.
 3. Selecteer op de pagina van de toepassing **API-machtigingen**.
-4. Klik op **een machtiging toevoegen**. 
+4. Klik op **een machtiging toevoegen**.
 5. Onder **api's die mijn organisatie gebruikt**, zoekt u naar ' micro soft Mobile Application Management ' en selecteert u deze.
 6. De machtiging **DeviceManagementManagedApps. readwrite** toevoegen aan de toepassing
 7. Klik op toestemming van de **beheerder verlenen** om de toegang tot de toepassing te verlenen.

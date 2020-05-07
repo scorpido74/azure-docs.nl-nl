@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/26/2020
-ms.openlocfilehash: db63ce2d56eb78bf6b361d530511b6902c1cb6d5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 728c8605dca183d8eb733b5e674868592d920d03
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80637773"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82732033"
 ---
 # <a name="azure-monitor-frequently-asked-questions"></a>Veelgestelde vragen over Azure Monitor
 
@@ -255,6 +255,10 @@ Zie de [release opmerkingen](app/release-notes.md) voor de SDK die geschikt is v
 ### <a name="how-can-i-change-which-azure-resource-my-project-sends-data-to"></a><a name="update"></a>Hoe kan ik wijzigen met welke Azure-resource mijn project gegevens verzendt?
 Klik `ApplicationInsights.config` in Solution Explorer met de rechter muisknop en kies **Application Insights bijwerken**. U kunt de gegevens verzenden naar een bestaande of nieuwe resource in Azure. De update wizard wijzigt de instrumentatie sleutel in ApplicationInsights. config, waarmee wordt bepaald waar de server-SDK uw gegevens verzendt. Tenzij u ' Alles bijwerken ' uitschakelt, wordt ook de sleutel gewijzigd waar deze wordt weer gegeven op uw webpagina's.
 
+### <a name="can-i-use-providersmicrosoftinsights-componentsapiversions0-in-my-azure-resource-manager-deployments"></a>Kan ik gebruiken `providers('Microsoft.Insights', 'components').apiVersions[0]` in mijn Azure Resource Manager-implementaties?
+
+Het is niet raadzaam om deze methode te gebruiken voor het invullen van de API-versie. De nieuwste versie kan Preview-releases vertegenwoordigen, die wijzigingen van de breuk kunnen bevatten. Zelfs met nieuwere niet-Preview versies zijn de API-versies niet altijd achterwaarts compatibel met bestaande sjablonen, of in sommige gevallen is de API-versie mogelijk niet voor alle abonnementen beschikbaar.
+
 ### <a name="what-is-status-monitor"></a>Wat is Status Monitor?
 
 Een bureau blad-app die u kunt gebruiken op uw IIS-webserver om Application Insights te configureren in web-apps. Er wordt geen telemetrie verzameld: u kunt deze stoppen wanneer u geen app configureert. 
@@ -412,7 +416,7 @@ Dit is niet afhankelijk van waar uw Application Insights-bron wordt gehost. Het 
 
 ### <a name="can-i-send-telemetry-to-the-application-insights-portal"></a>Kan ik telemetrie verzenden naar de Application Insights Portal?
 
-We raden u aan om onze Sdk's te gebruiken en de [SDK API](app/api-custom-events-metrics.md)te gebruiken. Er zijn varianten van de SDK voor verschillende [platforms](app/platforms.md). Deze Sdk's behandelen buffering, compressie, beperking, nieuwe pogingen, enzovoort. Het [opname schema](https://github.com/Microsoft/ApplicationInsights-dotnet/tree/develop/Schema/PublicSchema) en het [eindpunt protocol](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/EndpointSpecs/ENDPOINT-PROTOCOL.md) zijn echter openbaar.
+We raden u aan om onze Sdk's te gebruiken en de [SDK API](app/api-custom-events-metrics.md)te gebruiken. Er zijn varianten van de SDK voor verschillende [platforms](app/platforms.md). Deze Sdk's behandelen buffering, compressie, beperking, nieuwe pogingen, enzovoort. Het [opname schema](https://github.com/microsoft/ApplicationInsights-dotnet/tree/master/BASE/Schema/PublicSchema) en het [eindpunt protocol](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/EndpointSpecs/ENDPOINT-PROTOCOL.md) zijn echter openbaar.
 
 ### <a name="can-i-monitor-an-intranet-web-server"></a>Kan ik een intranet webserver bewaken?
 

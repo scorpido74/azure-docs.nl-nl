@@ -6,13 +6,13 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 10/23/2019
 ms.author: dech
-ms.custom: seodec18
-ms.openlocfilehash: 914551bab47ad9db4e0bca4d53226fbae74b92f3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: seodec18, has-adal-ref
+ms.openlocfilehash: d2fe231dce26311268e578a495fb2ba7076651e0
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80411674"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82608027"
 ---
 # <a name="work-with-data-using-azure-storage-explorer"></a>Werken met gegevens in Azure Storage Explorer
 
@@ -30,16 +30,16 @@ Installeer hier de nieuwste Azure Storage Explorer-bits: [Azure Storage Explorer
 ## <a name="connect-to-an-azure-subscription"></a>Verbinding maken met een Azure-abonnement
 
 1. Klik nadat u **Azure Storage Explorer** heb geïnstalleerd op het **invoegtoepassing**pictogram aan de linkerkant, zoals in de volgende afbeelding:
-       
+
    ![Pictogram invoegtoepassing](./media/storage-explorer/plug-in-icon.png)
- 
+
 2. Selecteer **Een Azure-account toevoegen** en klik op **Aanmelden**.
 
    ![Verbinding maken met Azure-abonnement](./media/storage-explorer/connect-to-azure-subscription.png)
 
 2. Selecteer **Aanmelden** in het **aanmeldingsvenster van Azure** en voer uw Azure-referenties in.
 
-    ![Aanmelden](./media/storage-explorer/sign-in.png)
+    ![Hier](./media/storage-explorer/sign-in.png)
 
 3. Selecteer uw abonnement in de lijst en klik op **Toepassen**.
 
@@ -100,27 +100,27 @@ Door met de rechtermuisknop op een abonnement in het deelvenster Verkenner te kl
 * U kunt ook Azure Cosmos DB-account, database, verzameling toevoegen aan **Snelle toegang**.
 * Met **Zoeken vanaf hier** kunt u naar sleutelwoorden zoeken onder het geselecteerde pad.
 
-    ![zoeken vanaf hier](./media/storage-explorer/search-from-here.png) 
+    ![zoeken vanaf hier](./media/storage-explorer/search-from-here.png)
 
 ### <a name="database-and-collection-management"></a>Database- en verzamelingbeheer
-#### <a name="create-a-database"></a>Een database maken 
+#### <a name="create-a-database"></a>Een database maken
 -   Klik met de rechtermuisknop op het Azure Cosmos DB-account, kies **Database maken**, voer de naam van de database in en druk op **Enter**.
-       
-    ![Database maken](./media/storage-explorer/create-database.png) 
+
+    ![Database maken](./media/storage-explorer/create-database.png)
 
 #### <a name="delete-a-database"></a>Een database verwijderen
 - Klik met de rechtermuisknop op de database, klik op **Database verwijderen **en klik in het pop-upvenster op **Ja**. Het databaseknooppunt wordt verwijderd en het Azure Cosmos DB die Cosmos-account wordt automatisch vernieuwd.
 
-    ![Database1 verwijderen](./media/storage-explorer/delete-database1.png)  
+    ![Database1 verwijderen](./media/storage-explorer/delete-database1.png)
 
-    ![Database2 verwijderen](./media/storage-explorer/delete-database2.png) 
+    ![Database2 verwijderen](./media/storage-explorer/delete-database2.png)
 
 #### <a name="create-a-collection"></a>Een verzameling maken
-1. Klik met de rechter muisknop op uw data base, kies **verzameling maken**en geef de volgende informatie op, zoals **verzamelings-id**, **opslag capaciteit**, enzovoort. Klik op **OK** om te volt ooien. 
+1. Klik met de rechter muisknop op uw data base, kies **verzameling maken**en geef de volgende informatie op, zoals **verzamelings-id**, **opslag capaciteit**, enzovoort. Klik op **OK** om te volt ooien.
 
     ![Verzameling1 maken](./media/storage-explorer/create-collection.png)
 
-    ![Verzameling2 maken](./media/storage-explorer/create-collection2.png) 
+    ![Verzameling2 maken](./media/storage-explorer/create-collection2.png)
 
 2. Selecteer **Onbeperkt** om de partitiesleutel te kunnen opgeven. Klik vervolgens op **OK** om te voltooien.
 
@@ -129,11 +129,11 @@ Door met de rechtermuisknop op een abonnement in het deelvenster Verkenner te kl
     ![Partitiesleutel](./media/storage-explorer/partitionkey.png)
 
 #### <a name="delete-a-collection"></a>Een verzameling verwijderen
-- Klik met de rechtermuisknop op de verzameling, klik op **Verzameling verwijderen**en klik vervolgens op **Ja** in het pop-upvenster. 
+- Klik met de rechtermuisknop op de verzameling, klik op **Verzameling verwijderen**en klik vervolgens op **Ja** in het pop-upvenster.
 
     Het verzamelingsknooppunt wordt verwijderd en de database wordt automatisch vernieuwd.
 
-    ![Verzameling verwijderen](./media/storage-explorer/delete-collection.png) 
+    ![Verzameling verwijderen](./media/storage-explorer/delete-collection.png)
 
 ### <a name="document-management"></a>Documentbeheer
 
@@ -155,8 +155,8 @@ Door met de rechtermuisknop op een abonnement in het deelvenster Verkenner te kl
 ### <a name="graph-management"></a>Grafiekbeheer
 
 #### <a name="create-and-modify-vertex"></a>Hoekpunt maken en wijzigen
-1. Als u een nieuw hoekpunt wilt maken, opent u **Grafiek** vanuit het linkervenster, klikt u op **Nieuw hoekpunt**, bewerkt u de inhoud en klikt u vervolgens op **OK**.    
-2. Als u een bestaand hoekpunt wilt wijzigen, klikt u op het penpictogram in het rechterdeelvenster.   
+1. Als u een nieuw hoekpunt wilt maken, opent u **Grafiek** vanuit het linkervenster, klikt u op **Nieuw hoekpunt**, bewerkt u de inhoud en klikt u vervolgens op **OK**.
+2. Als u een bestaand hoekpunt wilt wijzigen, klikt u op het penpictogram in het rechterdeelvenster.
 
     ![Graph](./media/storage-explorer/vertex.png)
 
@@ -193,7 +193,7 @@ Door met de rechtermuisknop op een abonnement in het deelvenster Verkenner te kl
     ![Query uitvoeren op tabel](./media/storage-explorer/table-query.png)
 
 ### <a name="manage-stored-procedures-triggers-and-udfs"></a>Opgeslagen procedures, triggers en UDF's beheren
-* Als u een opgeslagen procedure wilt maken, klikt u met de rechtermuisknop in de linkerboomstructuur op **Opgeslagen procedure**, kiest u **Opgeslagen procedure maken**, voert u links een naam in, typt u de opgeslagen-procedurescripts in het rechter venster en klikt u vervolgens op **Maken**. 
+* Als u een opgeslagen procedure wilt maken, klikt u met de rechtermuisknop in de linkerboomstructuur op **Opgeslagen procedure**, kiest u **Opgeslagen procedure maken**, voert u links een naam in, typt u de opgeslagen-procedurescripts in het rechter venster en klikt u vervolgens op **Maken**.
 * U kunt ook bestaande opgeslagen procedures bewerken door erop te dubbelklikken, de procedure te bewerken en op **Bijwerken** te klikken om de wijzigingen op te slaan of op **Negeren** om de wijziging te annuleren.
 
     ![Opgeslagen procedure](./media/storage-explorer/stored-procedure.png)
@@ -248,7 +248,7 @@ Als u uw abonnementen niet kunt ophalen nadat u zich hebt aangemeld:
 
 ![console](./media/storage-explorer/console.png)
 
-#### <a name="unable-to-see-the-authentication-page"></a>Kan de verificatiepagina niet zien 
+#### <a name="unable-to-see-the-authentication-page"></a>Kan de verificatiepagina niet zien
 
 Als u de verificatiepagina niet kunt zien:
 
@@ -273,7 +273,7 @@ Als het niet lukt om een account te verwijderen of als de koppeling om opnieuw t
 
 ### <a name="httphttps-proxy-issue"></a>Probleem met http/https-proxy
 
-U kunt Microsoft Azure Cosmos DB-knooppunten in het linkerdeelvenster niet weergeven bij het configureren van een http/https-proxy in ASE. Dit is een bekend probleem en wordt opgelost in de volgende release. Op dit moment kunt u als tijdelijke oplossing Azure Cosmos DB Data Explorer in Azure Portal gebruiken. 
+U kunt Microsoft Azure Cosmos DB-knooppunten in het linkerdeelvenster niet weergeven bij het configureren van een http/https-proxy in ASE. Dit is een bekend probleem en wordt opgelost in de volgende release. Op dit moment kunt u als tijdelijke oplossing Azure Cosmos DB Data Explorer in Azure Portal gebruiken.
 
 ### <a name="development-node-under-local-and-attached-node-issue"></a>Probleem met het knooppunt 'Ontwikkeling' onder het knooppunt 'Lokaal en gekoppeld'
 
@@ -289,7 +289,7 @@ Als u onderstaande fout ziet na het toevoegen van een Microsoft Azure Cosmos DB-
 
 ### <a name="expand-azure-cosmos-db-node-error"></a>Fout met uitvouwen van Azure-Cosmos DB-knooppunt
 
-Mogelijk ziet u onderstaande fout tijdens een poging de structuurknooppunten links uit te vouwen. 
+Mogelijk ziet u onderstaande fout tijdens een poging de structuurknooppunten links uit te vouwen.
 
 ![Uitvouwfout](./media/storage-explorer/expand-error.png)
 
@@ -306,4 +306,3 @@ Als geen van de oplossingen voor u werkt, stuurt u een e-mail naar Azure Cosmos 
 
 * Bekijk de volgende video om te zien hoe u Azure Cosmos DB in Azure Storage Explorer kunt gebruiken: [Azure Cosmos DB gebruiken in Azure Storage Explorer](https://www.youtube.com/watch?v=iNIbg1DLgWo&feature=youtu.be).
 * Meer informatie over Storage Explorer en verbinding maken met meer services vindt u in [Aan de slag met Storage Explorer](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer).
-

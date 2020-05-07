@@ -3,12 +3,12 @@ title: Label ondersteuning voor bronnen
 description: Hier wordt weer gegeven welke Azure-resource typen tags ondersteunen. Geeft Details voor alle Azure-Services.
 ms.topic: conceptual
 ms.date: 04/06/2020
-ms.openlocfilehash: c971d3af102faf99f97aac261882797460d71f37
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6c035f4f9ce6b7c842caeab3b705394417d15ba0
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81255023"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82609286"
 ---
 # <a name="tag-support-for-azure-resources"></a>Ondersteuning voor labels voor Azure-resources
 In dit artikel wordt beschreven of een resource type [labels](tag-resources.md)ondersteunt. De kolom met de naam **ondersteunt labels** geeft aan of het resource type een eigenschap voor de tag heeft. De kolom label **in het kosten rapport** geeft aan of dit resource type de tag doorgeeft aan het kosten rapport. U kunt kosten op labels weer geven in de [Cost Management kosten analyse](../../cost-management-billing/costs/quick-acm-cost-analysis.md#understanding-grouping-and-filtering-options) en de gegevens voor de [factuur en dagelijks gebruik van Azure](../../cost-management-billing/manage/download-azure-invoice-daily-usage-date.md).
@@ -701,7 +701,7 @@ Ga naar de naam ruimte van een resource provider:
 > | ReservationTransactions | Nee | Nee |
 > | Tags | Nee | Nee |
 > | tenants | Nee | Nee |
-> | Voorwaarden | Nee | Nee |
+> | Termen | Nee | Nee |
 > | UsageDetails | Nee | Nee |
 
 ## <a name="microsoftcontainerinstance"></a>Micro soft. ContainerInstance
@@ -1551,6 +1551,7 @@ Ga naar de naam ruimte van een resource provider:
 > | virtualHubs | Ja | Ja |
 > | virtualNetworkGateways | Ja | Ja |
 > | virtualNetworks | Ja | Ja |
+> | virtualNetworks/subnetten | Nee | Nee |
 > | virtualNetworkTaps | Ja | Ja |
 > | virtualWans | Ja | Nee |
 > | vpnGateways | Ja | Ja |

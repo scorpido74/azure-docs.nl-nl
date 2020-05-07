@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 08/07/2019
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 1dc5d54fa24217c91e14a8f37e092888b2bb6474
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7728ff96ccc3da5a36d919e61518a3ce3d13581c
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79127875"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82611973"
 ---
 # <a name="fslogix-profile-containers-and-azure-files"></a>FSLogix-profielcontainers en Azure Files
 
@@ -98,7 +98,7 @@ Om ervoor te zorgen dat uw virtuele Windows-bureau blad-omgeving de best practic
 
 Gebruik de volgende hand leidingen om een virtuele Windows-desktop omgeving in te stellen.
 
-- Zie [een Tenant maken in Windows virtueel bureau blad](tenant-setup-azure-active-directory.md)om te beginnen met het bouwen van de oplossing voor desktop virtualisatie.
+- Zie [een Tenant maken in Windows virtueel bureau blad](./virtual-desktop-fall-2019/tenant-setup-azure-active-directory.md)om te beginnen met het bouwen van de oplossing voor desktop virtualisatie.
 - Zie [een hostgroep maken met Azure Marketplace](create-host-pools-azure-marketplace.md)voor meer informatie over het maken van een hostgroep in uw virtuele Windows-bureau blad-Tenant.
 - Zie [Azure Files share instellen](/azure/storage/files/storage-files-active-directory-enable/)voor meer informatie over het instellen van volledig beheerde bestands shares in de Cloud.
 - Zie [een profiel container maken voor een hostgroep met een bestands share voor](create-host-pools-user-profile.md)meer informatie over het configureren van FSLogix-profiel containers.

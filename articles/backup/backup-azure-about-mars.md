@@ -4,12 +4,12 @@ description: Meer informatie over hoe de MARS-agent de back-upscenario's onderst
 ms.reviewer: srinathv
 ms.topic: conceptual
 ms.date: 12/02/2019
-ms.openlocfilehash: d2cc8e32152f6930c9c250e2811668cc2c924616
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5656c113a6823a1708854a547b199bd16c521b04
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78673282"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82611480"
 ---
 # <a name="about-the-microsoft-azure-recovery-services-mars-agent"></a>Informatie over de Microsoft Azure Recovery Services-agent (MARS)
 
@@ -39,19 +39,21 @@ De MARS-agent ondersteunt de volgende herstel scenario's:
 
 ## <a name="backup-process"></a>Back-upproces
 
-1. Maak vanuit het Azure Portal een [Recovery Services kluis](install-mars-agent.md#create-a-recovery-services-vault)en kies bestanden, mappen en de systeem status van de Back-updoelen.
+1. Maak vanuit het Azure Portal een [Recovery Services kluis](install-mars-agent.md#create-a-recovery-services-vault)en kies bestanden, mappen en de systeem status van de **Back-updoelen**.
 2. [Down load de Recovery Services kluis referenties en het installatie programma van de agent](https://docs.microsoft.com/azure/backup/install-mars-agent#download-the-mars-agent) naar een on-premises machine.
 
-    Als u de on-premises machine wilt beveiligen door de back-upoptie te selecteren, kiest u bestanden, mappen en de systeem status en downloadt u de MARS-agent.
-
-3. De infra structuur voorbereiden:
-
-    a. Voer het installatie programma uit om [de agent te installeren](https://docs.microsoft.com/azure/backup/install-mars-agent#install-and-register-the-agent).
-
-    b. Gebruik de gedownloade kluis referenties om de machine te registreren bij de Recovery Services kluis.
-4. [Configureer de back-up](https://docs.microsoft.com/azure/backup/backup-windows-with-mars-agent#create-a-backup-policy)vanuit de agent console op de client. Geef het Bewaar beleid van uw back-upgegevens op om het te beveiligen.
+3. [Installeer de agent](https://docs.microsoft.com/azure/backup/install-mars-agent#install-and-register-the-agent) en gebruik de gedownloade kluis referenties om de machine te registreren bij de Recovery Services kluis.
+4. Configureer vanuit de agent console op de client [de back-up](https://docs.microsoft.com/azure/backup/backup-windows-with-mars-agent#create-a-backup-policy) om op te geven waarvan u een back-up wilt maken, wanneer u back-ups maakt (het schema), hoe lang de back-ups in azure moeten worden bewaard (het Bewaar beleid) en te beginnen met het beveiligen.
 
 ![Diagram van Azure Backup Agent](./media/backup-try-azure-backup-in-10-mins/backup-process.png)
+
+### <a name="additional-information"></a>Aanvullende informatie
+
+- De eerste **back-** up (eerste back-up) wordt uitgevoerd op basis van uw back-upinstellingen.  De MARS-agent gebruikt VSS om een tijdgebonden moment opname te maken van de volumes die zijn geselecteerd voor back-up. De agent maakt alleen gebruik van de Windows System Writer-bewerking voor het vastleggen van de moment opname. Er worden geen VSS-schrijvers van toepassingen gebruikt en er worden geen app-consistente moment opnamen vastgelegd. Na het maken van de moment opname met VSS, maakt de MARS-agent een virtuele harde schijf (VHD) in de cachemap die u hebt opgegeven tijdens het configureren van de back-up. De agent slaat ook de controle sommen voor elk gegevens blok op.
+
+- **Incrementele back-ups** (volgende back-ups) worden uitgevoerd volgens het schema dat u opgeeft. Tijdens incrementele back-ups worden gewijzigde bestanden geïdentificeerd en wordt een nieuwe VHD gemaakt. De VHD wordt gecomprimeerd en versleuteld en vervolgens naar de kluis verzonden. Nadat de incrementele back-up is voltooid, wordt de nieuwe VHD samengevoegd met de VHD die is gemaakt na de initiële replicatie. Deze samengevoegde VHD bevat de meest recente status om te vergelijken voor continue back-ups.
+
+- De MARS-agent kan de back-uptaak uitvoeren in de **geoptimaliseerde modus** met het USN (Update Sequence Number)-wijzigings logboek of in niet- **geoptimaliseerde modus** door te controleren op wijzigingen in mappen of bestanden via het scannen van het hele volume. De niet-geoptimaliseerde modus is langzamer omdat de agent elk bestand op het volume moet scannen en vergelijken met de meta gegevens om de gewijzigde bestanden te bepalen.  De **eerste back-up** wordt altijd uitgevoerd in niet-geoptimaliseerde modus. Als de vorige back-up is mislukt, wordt de volgende geplande back-uptaak uitgevoerd in niet-geoptimaliseerde modus.
 
 ### <a name="additional-scenarios"></a>Overige scenario's
 

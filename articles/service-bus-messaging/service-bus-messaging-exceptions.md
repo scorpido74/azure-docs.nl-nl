@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/23/2020
 ms.author: aschhab
-ms.openlocfilehash: d04902a8d53397b7e7d9712a1c75ce44cc7aa7ad
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f1a4caf6ffd5740b4227aff2f38d9cb709c77b48
+ms.sourcegitcommit: d9cd51c3a7ac46f256db575c1dfe1303b6460d04
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80880785"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82739344"
 ---
 # <a name="service-bus-messaging-exceptions"></a>Uitzonde ringen Service Bus berichten
 Dit artikel bevat de .NET-uitzonde ringen die door .NET Framework Api's worden gegenereerd. 
@@ -46,8 +46,6 @@ De volgende tabel bevat een lijst met uitzonderings typen van berichten, en de o
 | [MessageNotFoundException](/dotnet/api/microsoft.servicebus.messaging.messagenotfoundexception) |Poging tot het ontvangen van een bericht met een bepaald Volg nummer. Dit bericht is niet gevonden. |Zorg ervoor dat het bericht nog niet is ontvangen. Controleer de deadletter-wachtrij om te zien of het bericht is deadlettered. |Nieuwe poging is niet meer nodig. |
 | [MessagingCommunicationException](/dotnet/api/microsoft.servicebus.messaging.messagingcommunicationexception) |De client kan geen verbinding tot stand brengen met Service Bus. |Controleer of de opgegeven hostnaam juist is en of de host bereikbaar is. |Opnieuw proberen kan helpen als er onregelmatige verbindings problemen zijn. |
 | [ServerBusyException](/dotnet/api/microsoft.azure.servicebus.serverbusyexception) |De aanvraag kan op dit moment niet door de service worden verwerkt. |De client kan gedurende een bepaalde tijd wachten en vervolgens de bewerking opnieuw uitvoeren. |Client kan na een bepaald interval opnieuw proberen. Als een nieuwe poging resulteert in een andere uitzonde ring, controleert u het gedrag voor opnieuw proberen van deze uitzonde ring. |
-| [MessageLockLostException](/dotnet/api/microsoft.azure.servicebus.messagelocklostexception) |Het vergrendelings token dat aan het bericht is gekoppeld, is verlopen of het lock-token is niet gevonden. |Het bericht verwijderen. |Nieuwe poging is niet meer nodig. |
-| [SessionLockLostException](/dotnet/api/microsoft.azure.servicebus.sessionlocklostexception) |De vergren deling die aan deze sessie is gekoppeld, gaat verloren. |Het [MessageSession](/dotnet/api/microsoft.servicebus.messaging.messagesession) -object afbreken. |Nieuwe poging is niet meer nodig. |
 | [MessagingException](/dotnet/api/microsoft.servicebus.messaging.messagingexception) |Generieke Messa ging-uitzonde ring die in de volgende gevallen kan worden gegenereerd:<p>Er wordt geprobeerd een [QueueClient](/dotnet/api/microsoft.azure.servicebus.queueclient) te maken met behulp van een naam of pad dat tot een ander type entiteit behoort (bijvoorbeeld een onderwerp).</p><p>Er is een poging gedaan om een bericht te verzenden dat groter is dan 256 KB. </p>Er is een fout opgetreden op de server of service tijdens het verwerken van de aanvraag. Zie het uitzonderings bericht voor meer informatie. Doorgaans is dit een tijdelijke uitzonde ring.</p><p>De aanvraag is beëindigd omdat de entiteit wordt beperkt. Fout code: 50001, 50002, 50008. </p> | Controleer de code en zorg ervoor dat alleen serialiseerbare objecten worden gebruikt voor de hoofd tekst van het bericht (of een aangepaste serialisatiefunctie te gebruiken). <p>Raadpleeg de documentatie voor de ondersteunde typen waarden van de eigenschappen en gebruik alleen ondersteunde typen.</p><p> Controleer de eigenschap [IsTransient](/dotnet/api/microsoft.servicebus.messaging.messagingexception) . Als de **waarde True**is, kunt u de bewerking opnieuw proberen. </p>| Als de uitzonde ring wordt veroorzaakt door beperkingen, wacht u een paar seconden en voert u de bewerking opnieuw uit. Het gedrag voor opnieuw proberen is niet gedefinieerd en kan mogelijk niet worden geholpen in andere scenario's.|
 | [MessagingEntityAlreadyExistsException](/dotnet/api/microsoft.servicebus.messaging.messagingentityalreadyexistsexception) |Poging een entiteit te maken met een naam die al wordt gebruikt door een andere entiteit in die service naam ruimte. |Verwijder de bestaande entiteit of kies een andere naam voor de entiteit die u wilt maken. |Nieuwe poging is niet meer nodig. |
 | [QuotaExceededException](/dotnet/api/microsoft.azure.servicebus.quotaexceededexception) |De bericht entiteit heeft de Maxi maal toegestane grootte bereikt of het maximum aantal verbindingen met een naam ruimte is overschreden. |Maak ruimte in de entiteit door berichten van de entiteit of de bijbehorende subwachtrijen te ontvangen. Zie [QuotaExceededException](#quotaexceededexception). |Opnieuw proberen kan helpen als er in de tussen tijd berichten zijn verwijderd. |
@@ -102,6 +100,96 @@ U moet de waarde van de eigenschap [ServicePointManager. DefaultConnectionLimit]
 
 ### <a name="queues-and-topics"></a>Wacht rijen en onderwerpen
 Voor wacht rijen en onderwerpen wordt de time-out opgegeven in de eigenschap [MessagingFactorySettings. OperationTimeout](/dotnet/api/microsoft.servicebus.messaging.messagingfactorysettings) , als onderdeel van de Connection String, of via [ServiceBusConnectionStringBuilder](/dotnet/api/microsoft.azure.servicebus.servicebusconnectionstringbuilder). Het fout bericht zelf kan variëren, maar het bevat altijd de time-outwaarde die voor de huidige bewerking is opgegeven. 
+
+## <a name="messagelocklostexception"></a>MessageLockLostException
+
+### <a name="cause"></a>Oorzaak
+
+De **MessageLockLostException** wordt gegenereerd wanneer een bericht wordt ontvangen met behulp van de [PeekLock](message-transfers-locks-settlement.md#peeklock) receive-modus en de vergren deling van de client aan de kant van de service verloopt.
+
+Het vergren delen van een bericht kan om verschillende redenen verlopen. 
+
+  * De vergrendelings timer is verlopen voordat deze is vernieuwd door de client toepassing.
+  * De client toepassing heeft de vergren deling verkregen, opgeslagen in een permanente opslag en opnieuw gestart. Zodra de client toepassing opnieuw is opgestart, wordt de Inflight-berichten bekeken en is geprobeerd deze te volt ooien.
+
+### <a name="resolution"></a>Oplossing
+
+In het geval van een **MessageLockLostException**kan de client toepassing het bericht niet meer verwerken. De client toepassing kan eventueel de uitzonde ring registreren voor analyse, maar de client *moet* het bericht verwijderen.
+
+Omdat de vergren deling van het bericht is verlopen, gaat het terug naar de wachtrij (of het abonnement) en kan het worden verwerkt door de volgende client toepassing die wordt ontvangen.
+
+Als de **MaxDeliveryCount** is overschreden, kan het bericht worden verplaatst naar de **DeadLetterQueue**.
+
+## <a name="sessionlocklostexception"></a>SessionLockLostException
+
+### <a name="cause"></a>Oorzaak
+
+De **SessionLockLostException** wordt gegenereerd wanneer een sessie wordt geaccepteerd en de vergren deling van de client aan de kant van de service verloopt.
+
+De vergren deling van een sessie kan om verschillende redenen verlopen. 
+
+  * De vergrendelings timer is verlopen voordat deze is vernieuwd door de client toepassing.
+  * De client toepassing heeft de vergren deling verkregen, opgeslagen in een permanente opslag en opnieuw gestart. Zodra de client toepassing opnieuw is opgestart, werd de invlucht-sessie uitgevoerd en probeerde de berichten in die sessies te verwerken.
+
+### <a name="resolution"></a>Oplossing
+
+In het geval van een **SessionLockLostException**kan de client toepassing de berichten in de sessie niet langer verwerken. De client toepassing kan de uitzonde ring voor analyse registreren, maar de client *moet* het bericht verwijderen.
+
+Omdat de vergren deling van de sessie is verlopen, wordt deze teruggestuurd naar de wachtrij (of het abonnement) en kan deze worden vergrendeld door de volgende client toepassing die de sessie accepteert. Omdat de sessie vergrendeling op een bepaald moment door één client toepassing wordt vastgehouden, wordt de volg orde van de verwerking gegarandeerd.
+
+## <a name="socketexception"></a>SocketException
+
+### <a name="cause"></a>Oorzaak
+
+In de onderstaande gevallen wordt een **SocketException** gegenereerd:
+   * Wanneer een verbindings poging mislukt, omdat de host niet correct heeft gereageerd na een opgegeven tijd (TCP-fout code 10060).
+   * Een tot stand gebrachte verbinding is mislukt omdat de verbonden host niet heeft gereageerd.
+   * Er is een fout opgetreden bij het verwerken van het bericht of de time-out is overschreden door de externe host.
+   * Onderliggend netwerk bron probleem.
+
+### <a name="resolution"></a>Oplossing
+
+De **SocketException** -fouten geven aan dat de VM die als host fungeert voor de toepassingen `<mynamespace>.servicebus.windows.net` de naam niet kan omzetten naar het bijbehorende IP-adres. 
+
+Controleer of de volgende opdracht is geslaagd in toewijzing aan een IP-adres.
+
+```Powershell
+PS C:\> nslookup <mynamespace>.servicebus.windows.net
+```
+
+Dit moet een uitvoer zoals hieronder opgeven
+
+```bash
+Name:    <cloudappinstance>.cloudapp.net
+Address:  XX.XX.XXX.240
+Aliases:  <mynamespace>.servicebus.windows.net
+```
+
+Als de bovenstaande naam **niet** kan worden omgezet in een IP-adres en de naam ruimte alias, controleert u welke netwerk beheerder u verder wilt onderzoeken. Naam omzetting geschiedt via een DNS-server meestal een resource in het netwerk van de klant. Als de DNS-omzetting wordt uitgevoerd door Azure DNS, neemt u contact op met de ondersteuning van Azure.
+
+Als de naam omzetting **werkt zoals verwacht**, controleert u of de verbindingen met Azure service bus [hier](service-bus-troubleshooting-guide.md#connectivity-certificate-or-timeout-issues) zijn toegestaan
+
+
+## <a name="messagingexception"></a>MessagingException
+
+### <a name="cause"></a>Oorzaak
+
+**MessagingException** is een algemene uitzonde ring die om verschillende redenen kan worden gegenereerd. Hieronder vindt u een aantal redenen.
+
+   * Er wordt een poging gedaan om een **QueueClient** te maken in een **onderwerp** of een **abonnement**.
+   * De grootte van het verzonden bericht is groter dan de limiet voor de opgegeven laag. Meer informatie over de Service Bus [quota's en limieten](service-bus-quotas.md).
+   * Specifieke aanvraag voor gegevens vlak (verzenden, ontvangen, volt ooien, afbreken) is beëindigd als gevolg van beperking.
+   * Tijdelijke problemen die zijn veroorzaakt door service-upgrades en opnieuw opstarten.
+
+> [!NOTE]
+> De bovenstaande lijst met uitzonde ringen is niet limitatief.
+
+### <a name="resolution"></a>Oplossing
+
+De stappen voor de oplossing zijn afhankelijk van wat de oorzaak van de **MessagingException** heeft veroorzaakt.
+
+   * Voor **tijdelijke problemen** (waarbij ***isTransient*** is ingesteld op ***True***) of voor het **beperken van problemen**, kunt u het opnieuw proberen door de bewerking uit te voeren. Het standaard beleid voor opnieuw proberen van de SDK kan hiervoor worden benut.
+   * Voor andere problemen duiden de details in de uitzonde ring aan dat de stappen voor problemen en oplossingen kunnen worden afgeleid van hetzelfde.
 
 ## <a name="next-steps"></a>Volgende stappen
 Zie de [Azure .net API-naslag](/dotnet/api/overview/azure/service-bus)informatie voor de volledige service bus .net API-referentie.
