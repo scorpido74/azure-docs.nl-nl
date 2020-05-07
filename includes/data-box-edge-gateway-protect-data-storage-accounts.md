@@ -4,16 +4,16 @@ ms.service: databox
 ms.topic: include
 ms.date: 04/16/2019
 ms.author: alkohli
-ms.openlocfilehash: 8840e6649058837207c75dbdf7baa5c0b11ef387
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9ac9865afe37916f1777d92eab8637884eba0c08
+ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75466731"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82562118"
 ---
 Uw apparaat is gekoppeld aan een opslag account dat wordt gebruikt als een bestemming voor uw gegevens in Azure. De toegang tot het opslag account wordt bepaald door het abonnement en de 2 512-bits opslag toegangs sleutels die aan dat opslag account zijn gekoppeld.
 
-Een van de sleutels wordt gebruikt voor verificatie wanneer het Data Box Edge-apparaat toegang heeft tot het opslag account. De andere sleutel wordt in de reserve ring bewaard, zodat u de sleutels periodiek kunt draaien.
+Een van de sleutels wordt gebruikt voor verificatie wanneer het Azure Stack edge-apparaat toegang heeft tot het opslag account. De andere sleutel wordt in de reserve ring bewaard, zodat u de sleutels periodiek kunt draaien.
 
 Uit veiligheids overwegingen vereist veel data centers voor het draaien van sleutels. U wordt aangeraden deze aanbevolen procedures te volgen voor het draaien van sleutels:
 

@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 09/11/2019
-ms.openlocfilehash: 97c8f8a5bb2111264e9459a7d2128c1ab7c2503d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ed7b01fb83ebd0c494f3f0f06a28dbf4e98c0b2d
+ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81414433"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82592074"
 ---
 # <a name="create-a-trigger-that-runs-a-pipeline-on-a-tumbling-window"></a>Een trigger maken die een pijplijn uitvoert op een tumblingvenster
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -109,6 +109,9 @@ De volgende tabel bevat een overzicht op hoog niveau van de belangrijkste JSON-e
 | **dependsOn: type** | Het type TumblingWindowTriggerReference. Vereist als er een afhankelijkheid is ingesteld. | Tekenreeks |  "TumblingWindowTriggerDependencyReference", "SelfDependencyTumblingWindowTriggerReference" | Nee |
 | **dependsOn: grootte** | De grootte van het tumblingvenstertriggers-venster van de afhankelijkheid. | Periode<br/>(UU: mm: SS)  | Een positieve time span-waarde waarbij de standaard instelling is de venster grootte van de onderliggende trigger  | Nee |
 | **dependsOn: offset** | De verschuiving van de afhankelijkheids trigger. | Periode<br/>(UU: mm: SS) |  Een time span-waarde die negatief moet zijn in een self-afhankelijkheid. Als er geen waarde is opgegeven, is het venster hetzelfde als de trigger. | Zelf afhankelijkheid: Ja<br/>Overige: Nee  |
+
+> [!NOTE]
+> Nadat de trigger voor een tumblingvenstertriggers-venster is gepubliceerd, kunnen het **interval** en de **frequentie** niet worden bewerkt.
 
 ### <a name="windowstart-and-windowend-system-variables"></a>Systeem variabelen WindowStart en WindowEnd
 

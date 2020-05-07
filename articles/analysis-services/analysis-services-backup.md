@@ -4,15 +4,15 @@ description: In dit artikel wordt beschreven hoe u een back-up maakt van model m
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 04/24/2020
+ms.date: 04/29/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 2866ec860cbc9037aa6b57389b35f17ec71a7c9d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: HT
+ms.openlocfilehash: 02ca7f268f2998d3b7d73ab9fc00bbd688b5f50c
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82145470"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82582523"
 ---
 # <a name="backup-and-restore"></a>Back-ups en herstellen
 
@@ -107,5 +107,5 @@ Gebruik de cmdlet [Restore-ASDatabase](https://docs.microsoft.com/powershell/mod
 ## <a name="related-information"></a>Gerelateerde informatie
 
 [Azure-opslagaccounts](../storage/common/storage-create-storage-account.md)  
-[Hoge Beschik baarheid](analysis-services-bcdr.md)     
-[Azure Analysis Services beheren](analysis-services-manage.md)
+[Hoge Beschik baarheid](analysis-services-bcdr.md)      
+[Veelgestelde vragen over de netwerk verbinding Analysis Services](analysis-services-network-faq.md)

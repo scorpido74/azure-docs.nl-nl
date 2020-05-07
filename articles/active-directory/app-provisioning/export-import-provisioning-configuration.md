@@ -1,50 +1,54 @@
 ---
-title: Exporteer uw inrichtings configuratie en keer terug naar een bekende goede status voor herstel na nood gevallen. | Microsoft Docs
+title: De inrichtings configuratie exporteren en terugkeren naar een bekende goede status voor herstel na nood gevallen
 description: Meer informatie over het exporteren van uw inrichtings configuratie en het terugdraaien van een bekende goede status voor herstel na nood gevallen.
 services: active-directory
 author: cmmdesai
-documentationcenter: na
-manager: daveba
-ms.assetid: 1a2c375a-1bb1-4a61-8115-5a69972c6ad6
+manager: CelesteDG
 ms.service: active-directory
-ms.subservice: saas-app-tutorial
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
+ms.subservice: app-provisioning
+ms.topic: conceptual
 ms.workload: identity
 ms.date: 03/19/2020
 ms.author: chmutali
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: a92a40a5fe3067cf96d3c742102c9ca66078cd5d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: acc14cf9fc544a15dfb9ac4ffd74e5ed0ac56108
+ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80051318"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82593757"
 ---
-# <a name="export-your-provisioning-configuration-and-roll-back-to-a-known-good-state"></a>Uw inrichtings configuratie exporteren en terugdraaien naar een bekende goede staat
+# <a name="how-to-export-provisioning-configuration-and-roll-back-to-a-known-good-state"></a>Instructies: inrichtings configuratie exporteren en terugdraaien naar een bekende goede staat
+
+In dit artikel leert u het volgende:
+
+- Uw inrichtings configuratie exporteren en importeren vanuit de Azure Portal
+- Uw inrichtings configuratie exporteren en importeren met behulp van de Microsoft Graph-API
 
 ## <a name="export-and-import-your-provisioning-configuration-from-the-azure-portal"></a>Uw inrichtings configuratie exporteren en importeren vanuit de Azure Portal
 
-### <a name="how-can-i-export-my-provisioning-configuration"></a>Hoe kan ik mijn inrichtings configuratie exporteren?
+### <a name="export-your-provisioning-configuration"></a>Uw inrichtings configuratie exporteren
+
 De configuratie exporteren:
+
 1. In de [Azure Portal](https://portal.azure.com/), in het navigatie venster aan de linkerkant, selecteert u **Azure Active Directory**.
-2. Selecteer in het deel venster **Azure Active Directory** de optie **bedrijfs toepassingen** en kies uw toepassing.
-3. Selecteer **inrichten**in het navigatie deel venster links. Klik op de pagina inrichtings configuratie op **kenmerk toewijzingen**, **Geef geavanceerde opties weer**en **Controleer vervolgens het schema**. Hiermee gaat u naar de schema-editor. 
-5. Klik op downloaden in de opdracht balk boven aan de pagina om uw schema te downloaden.
+1. Selecteer in het deel venster **Azure Active Directory** de optie **bedrijfs toepassingen** en kies uw toepassing.
+1. Selecteer **inrichten**in het navigatie deel venster links. Klik op de pagina inrichtings configuratie op **kenmerk toewijzingen**, **Geef geavanceerde opties weer**en **Controleer vervolgens het schema**. Hiermee gaat u naar de schema-editor.
+1. Klik op downloaden in de opdracht balk boven aan de pagina om uw schema te downloaden.
 
 ### <a name="disaster-recovery---roll-back-to-a-known-good-state"></a>Herstel na nood geval: terugdraaien naar een bekende goede staat
-Door de configuratie te exporteren en op te slaan, kunt u teruggaan naar een eerdere versie van uw configuratie. We raden u aan uw inrichtings configuratie te exporteren en deze op te slaan voor later gebruik wanneer u een wijziging aanbrengt in de kenmerk toewijzingen of filters bereikt. U hoeft alleen maar het JSON-bestand te openen dat u in de bovenstaande stappen hebt gedownload, de volledige inhoud van het JSON-bestand te kopiëren, de volledige inhoud van de JSON-nettolading in de schema-editor te vervangen en vervolgens op te slaan. Als er een actieve inrichtings cyclus is, wordt deze voltooid en zal de volgende cyclus het bijgewerkte schema gebruiken. De volgende cyclus is ook een eerste cyclus, die elke gebruiker en groep opnieuw evalueert op basis van de nieuwe configuratie. Houd rekening met het volgende wanneer u terugkeert naar een eerdere configuratie:
-* Gebruikers worden opnieuw geëvalueerd om te bepalen of ze binnen het bereik moeten zijn. Als de bereik filters zijn gewijzigd, is een gebruiker niet meer in het bereik. deze worden uitgeschakeld. Hoewel dit in de meeste gevallen het gewenste gedrag is, is het mogelijk dat u dit wilt voor komen en dat u de functionaliteit voor het [verwijderen van verwijderde bereiken](https://docs.microsoft.com/azure/active-directory/app-provisioning/skip-out-of-scope-deletions) kunt gebruiken. 
-* Als u de inrichtings configuratie wijzigt, wordt de service opnieuw gestart en wordt een [eerste cyclus](https://docs.microsoft.com/azure/active-directory/app-provisioning/how-provisioning-works#provisioning-cycles-initial-and-incremental)geactiveerd.
 
+Door de configuratie te exporteren en op te slaan, kunt u teruggaan naar een eerdere versie van uw configuratie. We raden u aan uw inrichtings configuratie te exporteren en deze op te slaan voor later gebruik wanneer u een wijziging aanbrengt in de kenmerk toewijzingen of filters bereikt. U hoeft alleen maar het JSON-bestand te openen dat u in de bovenstaande stappen hebt gedownload, de volledige inhoud van het JSON-bestand te kopiëren, de volledige inhoud van de JSON-nettolading in de schema-editor te vervangen en vervolgens op te slaan. Als er een actieve inrichtings cyclus is, wordt deze voltooid en zal de volgende cyclus het bijgewerkte schema gebruiken. De volgende cyclus is ook een eerste cyclus, die elke gebruiker en groep opnieuw evalueert op basis van de nieuwe configuratie. Houd rekening met het volgende wanneer u terugkeert naar een eerdere configuratie:
+
+- Gebruikers worden opnieuw geëvalueerd om te bepalen of ze binnen het bereik moeten zijn. Als de bereik filters zijn gewijzigd, is een gebruiker niet meer in het bereik. deze worden uitgeschakeld. Hoewel dit in de meeste gevallen het gewenste gedrag is, is het mogelijk dat u dit wilt voor komen en dat u de functionaliteit voor het [verwijderen van verwijderde bereiken](https://docs.microsoft.com/azure/active-directory/app-provisioning/skip-out-of-scope-deletions) kunt gebruiken. 
+- Als u de inrichtings configuratie wijzigt, wordt de service opnieuw gestart en wordt een [eerste cyclus](https://docs.microsoft.com/azure/active-directory/app-provisioning/how-provisioning-works#provisioning-cycles-initial-and-incremental)geactiveerd.
 
 ## <a name="export-and-import-your-provisioning-configuration-by-using-the-microsoft-graph-api"></a>Uw inrichtings configuratie exporteren en importeren met behulp van de Microsoft Graph-API
-U kunt de Microsoft Graph-API en de Microsoft Graph Explorer gebruiken om de kenmerk toewijzingen en het schema voor het inrichten van gebruikers te exporteren naar een JSON-bestand en dit weer te importeren in azure AD. U kunt ook de stappen die hier zijn vastgelegd, gebruiken om een back-up van uw inrichtings configuratie te maken. 
+
+U kunt de Microsoft Graph-API en de Microsoft Graph Explorer gebruiken om de kenmerk toewijzingen en het schema voor het inrichten van gebruikers te exporteren naar een JSON-bestand en dit weer te importeren in azure AD. U kunt ook de stappen die hier zijn vastgelegd, gebruiken om een back-up van uw inrichtings configuratie te maken.
 
 ### <a name="step-1-retrieve-your-provisioning-app-service-principal-id-object-id"></a>Stap 1: de principal-ID van uw inrichtings App Service ophalen (object-ID)
 
-1. Start de [Azure Portal](https://portal.azure.com)en navigeer naar de sectie eigenschappen van uw inrichtings toepassing. Als u bijvoorbeeld uw werkdag wilt exporteren *naar AD User Provisioning toepassings* toewijzing navigeert u naar de sectie eigenschappen van de app. 
+1. Start de [Azure Portal](https://portal.azure.com)en navigeer naar de sectie eigenschappen van uw inrichtings toepassing. Als u bijvoorbeeld uw werkdag wilt exporteren *naar AD User Provisioning toepassings* toewijzing navigeert u naar de sectie eigenschappen van de app.
 1. In de sectie eigenschappen van uw inrichtings app kopieert u de GUID-waarde die is gekoppeld aan het veld *object-id* . Deze waarde wordt ook wel de **ServicePrincipalId** van uw app genoemd en wordt gebruikt in Microsoft Graph Explorer-bewerkingen.
 
    ![App Service Principal-ID van workday](./media/export-import-provisioning-configuration/wd_export_01.png)
@@ -99,4 +103,4 @@ Voeg op het tabblad aanvraag headers het kenmerk content-type header toe met de 
 
    [![Aanvraag headers](./media/export-import-provisioning-configuration/wd_export_05.png)](./media/export-import-provisioning-configuration/wd_export_05.png#lightbox)
 
-Klik op de knop Query uitvoeren om het nieuwe schema te importeren.
+Selecteer **query uitvoeren** om het nieuwe schema te importeren.

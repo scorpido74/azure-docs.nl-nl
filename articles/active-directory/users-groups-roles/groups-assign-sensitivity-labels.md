@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 667fb39aabfec14cff01221b82a45ba8ad1d68d4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0e4dabad5057fda39fe3753c810a85e6aeb55b3a
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78329729"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82582947"
 ---
 # <a name="assign-sensitivity-labels-to-office-365-groups-in-azure-active-directory-preview"></a>Gevoeligheids labels toewijzen aan Office 365-groepen in Azure Active Directory (preview)
 
@@ -112,10 +112,10 @@ Nadat u deze functie hebt ingeschakeld, worden de ' klassieke ' classificaties v
 
 De optie gevoeligheids label wordt alleen weer gegeven voor groepen wanneer aan de volgende voor waarden wordt voldaan:
 
-1. Labels worden gepubliceerd in het Microsoft 365 compliance Center voor deze Tenant.
+1. Labels worden gepubliceerd in het Microsoft 365 compliance Center voor deze Azure AD-organisatie.
 1. De functie is ingeschakeld, EnableMIPLabels is ingesteld op True in Power shell.
 1. De groep is een Office 365-groep.
-1. De Tenant heeft een actieve Azure Active Directory Premium P1-licentie.
+1. De organisatie heeft een actieve Azure Active Directory Premium P1-licentie.
 1. De huidige aangemelde gebruiker heeft voldoende bevoegdheden om labels toe te wijzen. De gebruiker moet een globale beheerder, groeps beheerder of de groeps eigenaar zijn.
 
 Controleer of aan alle voor waarden wordt voldaan om labels toe te wijzen aan een groep.

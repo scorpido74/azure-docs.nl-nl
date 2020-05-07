@@ -8,12 +8,12 @@ ms.subservice: gateway
 ms.topic: article
 ms.date: 03/25/2019
 ms.author: alkohli
-ms.openlocfilehash: 63f3572dcb5affb9fcf89d86a665bef9414cb011
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: feae75b1fbb832f833a01fa20ce07962ab5c484f
+ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "60755302"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82561415"
 ---
 # <a name="use-the-azure-portal-to-manage-bandwidth-schedules-on-your-azure-data-box-gateway"></a>De Azure Portal gebruiken om bandbreedteschema's te beheren in uw Azure Data Box Gateway  
 
@@ -44,7 +44,7 @@ Voer in Azure Portal de volgende stappen uit om een gebruiker toe te voegen.
    2. Als dit schema de hele dag wordt uitgevoerd, kunt u de optie **Hele dag** inschakelen. 
    3. **Bandbreedtesnelheid** is de bandbreedte in Megabits per seconde (Mbps) die door uw apparaat wordt gebruikt bij bewerkingen die betrekking hebben op de cloud (uploaden en downloaden). Geef voor dit veld een waarde op tussen 1 en 1000. 
    4. Schakel **Onbeperkte** bandbreedte in als u de datumupload en -download niet wilt regelen. 
-   5. Klik op **Add**.
+   5. Klik op **Toevoegen**.
 
       ![Klikken op Gebruiker toevoegen](media/data-box-gateway-manage-bandwidth-schedules/add-schedule-2.png)
 
@@ -84,4 +84,4 @@ Voer de volgende stappen uit als u een bandbreedteschema wilt verwijderen dat is
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Meer informatie over [Bandbreedte beheren](data-box-gateway-manage-bandwidth-schedules.md).
+- Meer informatie over [Bandbreedte beheren](data-box-gateway-manage-bandwidth-schedules.md). 

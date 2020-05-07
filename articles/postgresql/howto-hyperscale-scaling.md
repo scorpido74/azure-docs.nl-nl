@@ -4,14 +4,15 @@ description: De Server groep geheugen, schijf en CPU-bronnen aanpassen om te voo
 author: jonels-msft
 ms.author: jonels
 ms.service: postgresql
+ms.subservice: hyperscale-citus
 ms.topic: conceptual
 ms.date: 3/16/2020
-ms.openlocfilehash: fa48ca287c248155a0271b5134be782d8db1c785
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f8e8e1672f754e843a3bd1c75d496599d31e5f11
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80063100"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82583995"
 ---
 # <a name="scale-a-hyperscale-citus-server-group"></a>Een Citus-Server groep (grootschalige) schalen
 
@@ -41,7 +42,7 @@ Met `rebalance_table_shards` de functie worden alle tabellen in de groep co- [lo
 ## <a name="increase-or-decrease-vcores-on-nodes"></a>VCores op knoop punten verg Roten of verkleinen
 
 > [!NOTE]
-> Deze functie is momenteel beschikbaar als preview-product. [Neem contact op met de ondersteuning van Azure](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)als u een wijziging wilt aanvragen in vCores voor knoop punten in uw server groep.
+> Deze functie is momenteel in preview. [Neem contact op met de ondersteuning van Azure](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)als u een wijziging wilt aanvragen in vCores voor knoop punten in uw server groep.
 
 Naast het toevoegen van nieuwe knoop punten, kunt u de mogelijkheden van bestaande knoop punten verg Roten. Het aanpassen van de reken capaciteit omhoog en omlaag kan nuttig zijn bij het uitvoeren van prestatie experimenten en op korte of lange termijn wijzigingen in verkeers vereisten.
 

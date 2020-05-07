@@ -9,12 +9,12 @@ ms.service: azure-functions
 ms.topic: reference
 ms.date: 11/08/2019
 ms.author: alkarche
-ms.openlocfilehash: c3ed780bc50b690b2f5c3285024695ec6426b9b3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 72a6f97f45ec1adaa42d1f17a1916af137845392
+ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77167315"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82559986"
 ---
 # <a name="azure-functions-warm-up-trigger"></a>Opwarmende trigger Azure Functions
 
@@ -229,9 +229,9 @@ De volgende tabel bevat informatie over de binding configuratie-eigenschappen di
 
 |function. json-eigenschap | Kenmerk eigenschap |Beschrijving|
 |---------|---------|----------------------|
-| **voert** | N.v.t.| Vereist: moet worden ingesteld op `warmupTrigger`. |
-| **direction** | N.v.t.| Vereist: moet worden ingesteld op `in`. |
-| **naam** | N.v.t.| Vereist: de naam van de variabele die wordt gebruikt in de functie code.|
+| **voert** | n.v.t.| Vereist: moet worden ingesteld op `warmupTrigger`. |
+| **draaien** | n.v.t.| Vereist: moet worden ingesteld op `in`. |
+| **naam** | n.v.t.| Vereist: de naam van de variabele die wordt gebruikt in de functie code.|
 
 ## <a name="trigger---usage"></a>Trigger-gebruik
 
@@ -240,7 +240,7 @@ Er wordt geen aanvullende informatie verstrekt aan een door opwarm geactiveerde 
 ## <a name="trigger---limits"></a>Trigger-limieten
 
 * De trigger opwarm is alleen beschikbaar voor apps die worden uitgevoerd op het [Premium-abonnement](./functions-premium-plan.md).
-* De trigger opwarm wordt alleen aangeroepen tijdens het schalen van bewerkingen, niet tijdens het opnieuw opstarten of andere niet-geschaalde opstart handelingen. U moet ervoor zorgen dat uw logica alle vereiste afhankelijkheden kan laden zonder gebruik te maken van de opwarm-trigger. Luie lading is een goed patroon om dit te doen.
+* De trigger opwarm wordt alleen aangeroepen tijdens scale-out bewerkingen, niet tijdens het opnieuw opstarten of andere niet-geschaalde startingen. U moet ervoor zorgen dat uw logica alle vereiste afhankelijkheden kan laden zonder gebruik te maken van de opwarm-trigger. Luie lading is een goed patroon om dit te doen.
 * De trigger opwarm kan niet worden aangeroepen als er al een exemplaar wordt uitgevoerd.
 * Er kan slechts één opwarm-trigger functie per functie-app zijn.
 

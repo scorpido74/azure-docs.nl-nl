@@ -1,27 +1,25 @@
 ---
-title: Naslag informatie over workday-kenmerken | Microsoft Docs
+title: Verwijzing naar Workday-kenmerk
 description: Meer informatie over de kenmerken van SuccessFactors die worden ondersteund door SuccessFactors-HR ingericht inrichten
 services: active-directory
 author: cmmdesai
-documentationcenter: na
-manager: jodadzie
-ms.assetid: afb77f2d-5ddd-4c2e-a840-09021b0efef1
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-provisioning
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
+ms.topic: conceptual
 ms.workload: identity
 ms.date: 04/19/2020
 ms.author: chmutali
-ms.openlocfilehash: 61f374c3fbc15e78784fe30c4e66ea109537727d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.reviewer: celested
+ms.openlocfilehash: b0acb058e7e58656257d55f82f5dd02a8ae7d9c3
+ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82112878"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82593060"
 ---
 # <a name="workday-attribute-reference"></a>Verwijzing naar Workday-kenmerk
+
 Deze sectie bevat een lijst met kenmerken die u uit workday kunt ophalen met behulp van XPATH-query's. Op basis van de workday Web Services API-versie die u wilt gebruiken, raadpleegt u de desbetreffende sectie. 
 
 ## <a name="xpath-values-for-workday-web-services-wws-api-v211"></a>XPATH-waarden voor workday Web Services (WWS) API v 21.1

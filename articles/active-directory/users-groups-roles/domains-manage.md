@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: elkuzmen
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2395aa5984de2a9fe41e4778d16aba69bfef5192
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3e21d850f03fdca300085c864a12611acb968aa8
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77559230"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82582966"
 ---
 # <a name="managing-custom-domain-names-in-your-azure-active-directory"></a>Aangepaste domein namen in uw Azure Active Directory beheren
 
@@ -41,7 +41,7 @@ Als uw directory is gemaakt, is de initiële domein naam, zoals ' contoso.onmicr
 
 U kunt de primaire domein naam voor uw Directory wijzigen naar een geverifieerd aangepast domein dat niet federatief is. Als u het primaire domein voor uw map wijzigt, wordt de gebruikers naam niet gewijzigd voor bestaande gebruikers.
 
-## <a name="add-custom-domain-names-to-your-azure-ad-tenant"></a>Aangepaste domein namen toevoegen aan uw Azure AD-Tenant
+## <a name="add-custom-domain-names-to-your-azure-ad-organization"></a>Aangepaste domein namen toevoegen aan uw Azure AD-organisatie
 
 U kunt Maxi maal 900 beheerde domein namen toevoegen. Als u al uw domeinen configureert voor Federatie met on-premises Active Directory, kunt u Maxi maal 450 domein namen toevoegen aan elke directory.
 
@@ -72,7 +72,7 @@ U kunt een domein naam in het [Azure AD-beheer centrum](https://aad.portal.azure
 Als u **ForceDelete** wilt aanroepen in de Azure Portal, moet u ervoor zorgen dat er minder dan 1000 verwijzingen naar de domein naam zijn en alle verwijzingen waarbij Exchange de inrichtings service is, moeten worden bijgewerkt of verwijderd in het [Exchange-beheer centrum](https://outlook.office365.com/ecp/). Dit geldt ook voor Exchange mail-beveiligings groepen en gedistribueerde lijsten. Zie [beveiligings groepen met e-mail beveiliging verwijderen](https://technet.microsoft.com/library/bb123521(v=exchg.160).aspx#Remove%20mail-enabled%20security%20groups)voor meer informatie. De **ForceDelete** -bewerking kan ook niet worden uitgevoerd als aan een van de volgende voor waarden wordt voldaan:
 
 * U hebt een domein aangeschaft via Office 365 Domain Subscription Services
-* U bent een partner die u beheert namens een andere Tenant van de klant
+* U bent een partner die u beheert namens een andere klant organisatie
 
 De volgende acties worden uitgevoerd als onderdeel van de **ForceDelete** -bewerking:
 

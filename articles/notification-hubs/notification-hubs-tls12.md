@@ -10,20 +10,20 @@ ms.workload: mobile
 ms.tgt_pltfrm: mobile-multiple
 ms.devlang: multiple
 ms.topic: article
-ms.date: 04/07/2020
+ms.date: 04/29/2020
 ms.author: sethm
 ms.reviewer: thsomasu
 ms.lastreviewed: 01/28/2020
-ms.openlocfilehash: 4da96df50e961f4291029a37e883fdcf88c6c87f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a87f3563b995081de8e7cbb4b4499718f77b02ff
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80885749"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82583260"
 ---
 # <a name="transport-layer-security-tls"></a>Transport Layer Security (TLS)
 
-Notification Hubs schakelt de ondersteuning voor TLS-versies 1,0 en 1,1 op 31 mei 2020 (verlengd vanaf 30 april 2020) uit om een hoger beveiligings niveau te garanderen. Deze oudere protocollen leveren zwakke crypto grafie en zijn kwetsbaar voor BEAST-en POODLE-aanvallen. Toepassingen die zijn geïmplementeerd op apparaten met Android versie 5 of hoger of iOS-versie 5 of hoger, worden niet beïnvloed door deze wijziging omdat die besturings systemen TLS 1,2 ondersteunen en de client en server de meest wederzijds ondersteunde versie van het protocol bij de verbinding kunnen onderhandelen.
+Notification Hubs wordt de ondersteuning voor TLS-versies 1,0 en 1,1 op **31 December 2020** uitgeschakeld (verlengd vanaf 30 april 2020) om een hoger beveiligings niveau te garanderen. Deze oudere protocollen leveren zwakke crypto grafie en zijn kwetsbaar voor BEAST-en POODLE-aanvallen. Toepassingen die zijn geïmplementeerd op apparaten met Android versie 5 of hoger of iOS-versie 5 of hoger, worden niet beïnvloed door deze wijziging omdat die besturings systemen TLS 1,2 ondersteunen en de client en server de meest wederzijds ondersteunde versie van het protocol bij de verbinding kunnen onderhandelen.
 
 We raden u aan uw toepassingen die gebruikmaken van Azure Notification Hubs, te controleren om ervoor te zorgen dat ze de meest toepasselijke bibliotheken en TLS-stacks gebruiken die ondersteuning bieden voor TLS 1,2.
 
