@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: sumitp
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ddfc4bf7ed3bdf214a44a5dfe03259d32b2f3f94
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 43eba1b2f3373555e871b586ae633dcb64abfd9b
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74025699"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82582691"
 ---
 # <a name="identify-and-resolve-license-assignment-problems-for-a-group-in-azure-active-directory"></a>Problemen met licentie toewijzing voor een groep in Azure Active Directory identificeren en oplossen
 
@@ -100,7 +100,7 @@ Om dit probleem op te lossen, verwijdert u gebruikers van niet-ondersteunde loca
 
 ## <a name="duplicate-proxy-addresses"></a>Dubbele proxy adressen
 
-Als u Exchange Online gebruikt, zijn sommige gebruikers in uw Tenant mogelijk onjuist geconfigureerd met dezelfde waarde voor het proxy adres. Wanneer op groep gebaseerde licentie verlening probeert een licentie toe te wijzen aan een dergelijke gebruiker, mislukt dit en wordt het ' proxy adres wordt al gebruikt ' weer gegeven.
+Als u Exchange Online gebruikt, zijn sommige gebruikers in uw organisatie mogelijk onjuist geconfigureerd met dezelfde waarde voor het proxy adres. Wanneer op groep gebaseerde licentie verlening probeert een licentie toe te wijzen aan een dergelijke gebruiker, mislukt dit en wordt het ' proxy adres wordt al gebruikt ' weer gegeven.
 
 > [!TIP]
 > Voer de volgende Power shell-cmdlet uit voor Exchange Online om te zien of er sprake is van een dubbel proxy adres:

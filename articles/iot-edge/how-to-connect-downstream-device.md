@@ -11,12 +11,12 @@ services: iot-edge
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: 3113f01341d2a1ec6160cfea3eb9d12d18b8495c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: HT
+ms.openlocfilehash: 49a94b8877d46cf95ec8701f470d87e187713f69
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81687173"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82583311"
 ---
 # <a name="connect-a-downstream-device-to-an-azure-iot-edge-gateway"></a>Een downstreamapparaat verbinden met een Azure IoT Edge-gateway
 
@@ -185,9 +185,9 @@ In deze sectie wordt een voorbeeld toepassing geïntroduceerd om een Azure IoT J
 
 In deze sectie wordt een voorbeeld toepassing geïntroduceerd om een Azure IoT python-apparaatclient te verbinden met een IoT Edge gateway.
 
-1. Bekijk het voor beeld voor **send_message** van de [Azure IOT Device SDK voor python-voor beelden](https://github.com/Azure/azure-iot-sdk-python/tree/master/azure-iot-device/samples/async-edge-scenarios).
-2. Zorg ervoor dat u in een IoT Edge container of in een scenario voor fout opsporing de `EdgeHubConnectionString` omgevings variabelen en `EdgeModuleCACertificateFile` hebt ingesteld.
-3. Raadpleeg de SDK-documentatie voor instructies over het uitvoeren van het voor beeld op het apparaat.
+1. Bekijk het voor beeld voor **send_message_downstream** van de [Azure IOT Device SDK voor python-voor beelden](https://github.com/Azure/azure-iot-sdk-python/tree/master/azure-iot-device/samples/async-edge-scenarios).
+2. Stel de `IOTHUB_DEVICE_CONNECTION_STRING` `IOTEDGE_ROOT_CA_CERT_PATH` omgevings variabelen in zoals opgegeven in de python-script opmerkingen.
+3. Raadpleeg de SDK-documentatie voor aanvullende instructies over het uitvoeren van het voor beeld op het apparaat.
 
 ## <a name="test-the-gateway-connection"></a>De gateway verbinding testen
 

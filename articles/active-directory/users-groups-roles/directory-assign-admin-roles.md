@@ -9,17 +9,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: reference
-ms.date: 04/22/2020
+ms.date: 04/29/2020
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro, fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8033122601077945790005e23ec728911c3a4e1f
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
-ms.translationtype: HT
+ms.openlocfilehash: 0c16ba26d1c59bd932e657f41882fbd23dc3a69e
+ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82207527"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82592227"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Machtigingen voor beheerrol in Azure Active Directory
 
@@ -102,11 +102,11 @@ Gebruikers met deze rol hebben alle machtigingen in de Azure Information Protect
 
 ### <a name="b2c-user-flow-administrator"></a>[Beheerder van B2C-gebruikers stroom](#b2c-user-flow-administrator-permissions)
 
-Gebruikers met deze rol kunnen B2C-Gebruikersstromen (ook wel ingebouwde beleids regels genoemd) maken en beheren in de Azure Portal.Door gebruikers stromen te maken of te bewerken, kunnen deze gebruikers de HTML/CSS/java script-inhoud van de gebruikers ervaring wijzigen, de MFA-vereisten per gebruikers stroom wijzigen, claims wijzigen in het token en sessie-instellingen aanpassen voor alle beleids regels in de Tenant. Aan de andere kant omvat deze rol niet de mogelijkheid om gebruikers gegevens te controleren of wijzigingen aan te brengen in de kenmerken die zijn opgenomen in het Tenant schema.Wijzigingen in het Framework voor identiteits ervaring (ook wel aangepast) zijn ook buiten het bereik van deze rol.
+Gebruikers met deze rol kunnen B2C-Gebruikersstromen (ook wel ingebouwde beleids regels genoemd) maken en beheren in de Azure Portal.Door gebruikers stromen te maken of te bewerken, kunnen deze gebruikers de HTML/CSS/java script-inhoud van de gebruikers ervaring wijzigen, MFA-vereisten per gebruikers stroom wijzigen, claims in het token wijzigen en sessie-instellingen aanpassen voor alle beleids regels in de Azure AD-organisatie. Aan de andere kant omvat deze rol niet de mogelijkheid om gebruikers gegevens te controleren of wijzigingen aan te brengen in de kenmerken die zijn opgenomen in het schema van de organisatie.Wijzigingen in het Framework voor identiteits ervaring (ook wel aangepast) zijn ook buiten het bereik van deze rol.
 
 ### <a name="b2c-user-flow-attribute-administrator"></a>[B2C-gebruikers stroom kenmerk beheerder](#b2c-user-flow-attribute-administrator-permissions)
 
-Gebruikers met deze rol kunnen aangepaste kenmerken toevoegen of verwijderen die beschikbaar zijn voor alle gebruikers stromen in de Tenant.Als zodanig kunnen gebruikers met deze rol nieuwe elementen wijzigen of toevoegen aan het schema van de eind gebruiker en de invloed hebben op de werking van alle gebruikers stromen en indirect als gevolg van wijzigingen in welke gegevens kunnen worden gesteld aan eind gebruikers en uiteindelijk worden verzonden als claims naar toepassingen.Deze rol kan geen gebruikers stromen bewerken.
+Gebruikers met deze rol kunnen aangepaste kenmerken die beschikbaar zijn voor alle gebruikers stromen in de Azure AD-organisatie toevoegen of verwijderen.Als zodanig kunnen gebruikers met deze rol nieuwe elementen wijzigen of toevoegen aan het schema van de eind gebruiker en de invloed hebben op de werking van alle gebruikers stromen en indirect als gevolg van wijzigingen in welke gegevens kunnen worden gesteld aan eind gebruikers en uiteindelijk worden verzonden als claims naar toepassingen.Deze rol kan geen gebruikers stromen bewerken.
 
 ### <a name="b2c-ief-keyset-administrator"></a>[B2C IEF sleutelsetcursor](#b2c-ief-keyset-administrator-permissions)
 
@@ -117,10 +117,10 @@ Gebruiker kan beleids sleutels en geheimen maken en beheren voor token versleute
 
 ### <a name="b2c-ief-policy-administrator"></a>[B2C IEF-beleids beheerder](#b2c-ief-policy-administrator-permissions)
 
-Gebruikers met deze rol kunnen alle aangepaste beleids regels maken, lezen, bijwerken en verwijderen in Azure AD B2C en hebben daarom volledige controle over het Framework voor identiteits ervaring in de relevante Azure AD B2C Tenant. Door beleid te bewerken, kan deze gebruiker directe Federatie tot stand brengen met externe ID-providers, het Directory-schema wijzigen, alle gebruikers inhoud wijzigen (HTML, CSS, java script), de vereisten wijzigen voor het volt ooien van een verificatie, het maken van nieuwe gebruikers, het verzenden van gebruikers gegevens naar externe systemen, inclusief wacht woorden en telefoon nummers. Deze rol kan de versleutelings sleutels daarentegen niet wijzigen of de geheimen bewerken die worden gebruikt voor Federatie in de Tenant.
+Gebruikers met deze rol kunnen alle aangepaste beleids regels maken, lezen, bijwerken en verwijderen in Azure AD B2C en hebben daarom volledige controle over het Framework voor identiteits ervaring in de relevante Azure AD B2C organisatie. Door beleid te bewerken, kan deze gebruiker directe Federatie tot stand brengen met externe ID-providers, het Directory-schema wijzigen, alle gebruikers inhoud wijzigen (HTML, CSS, java script), de vereisten wijzigen voor het volt ooien van een verificatie, het maken van nieuwe gebruikers, het verzenden van gebruikers gegevens naar externe systemen, inclusief wacht woorden en telefoon nummers. Deze rol kan de versleutelings sleutels daarentegen niet wijzigen of de geheimen bewerken die worden gebruikt voor Federatie in de organisatie.
 
 > [!IMPORTANT]
-> De B2 IEF-beleids beheerder is een zeer gevoelige rol die zeer beperkt moet worden toegewezen aan tenants in de productie omgeving.Activiteiten door deze gebruikers moeten nauw keurig worden gecontroleerd, met name voor tenants in de productie omgeving.
+> De B2 IEF-beleids beheerder is een zeer gevoelige rol die zeer beperkt moet worden toegewezen aan organisaties in de productie omgeving.Activiteiten door deze gebruikers moeten nauw keurig worden gecontroleerd, met name voor organisaties die in productie zijn.
 
 ### <a name="billing-administrator"></a>[Factureringsbeheerder](#billing-administrator-permissions)
 
@@ -202,7 +202,7 @@ Dit is een verouderde rol die moet worden toegewezen aan toepassingen die het [t
 
 ### <a name="dynamics-365-administrator--crm-administrator"></a>[Dynamics 365-beheerder/CRM-beheerder](#crm-service-administrator-permissions)
 
-Gebruikers met deze rol hebben algemene machtigingen in micro soft Dynamics 365 online, wanneer de service aanwezig is, evenals de mogelijkheid om ondersteunings tickets te beheren en de service status te controleren. Meer informatie over [het gebruik van de service beheerdersrol voor het beheren van uw Tenant](https://docs.microsoft.com/dynamics365/customer-engagement/admin/use-service-admin-role-manage-tenant).
+Gebruikers met deze rol hebben algemene machtigingen in micro soft Dynamics 365 online, wanneer de service aanwezig is, evenals de mogelijkheid om ondersteunings tickets te beheren en de service status te controleren. Meer informatie over [het gebruik van de service beheerdersrol om uw Azure AD-organisatie te beheren](https://docs.microsoft.com/dynamics365/customer-engagement/admin/use-service-admin-role-manage-tenant).
 
 > [!NOTE]
 > In de Microsoft Graph-API en Azure AD Power shell wordt deze rol aangeduid als ' Dynamics 365 service Administrator '. Het is "Dynamics 365-beheerder" in de [Azure Portal](https://portal.azure.com).
@@ -216,14 +216,14 @@ Gebruikers met deze rol hebben algemene machtigingen in micro soft Exchange Onli
 
 ### <a name="external-identity-provider-administrator"></a>[Beheerder van externe ID-provider](#external-identity-provider-administrator-permissions)
 
-Deze beheerder beheert Federatie tussen Azure Active Directory tenants en externe ID-providers.Met deze rol kunnen gebruikers nieuwe id-providers toevoegen en alle beschik bare instellingen configureren (bijvoorbeeld het pad Authentication, Service-ID, toegewezen sleutel containers).Deze gebruiker kan de Tenant in staat stellen verificaties van externe ID-providers te vertrouwen.De impact van de eindgebruikers ervaring is afhankelijk van het type Tenant:
+Deze beheerder beheert Federatie tussen Azure AD-organisaties en externe ID-providers.Met deze rol kunnen gebruikers nieuwe id-providers toevoegen en alle beschik bare instellingen configureren (bijvoorbeeld het pad Authentication, Service-ID, toegewezen sleutel containers).Deze gebruiker kan de Azure AD-organisatie in staat stellen verificaties van externe ID-providers te vertrouwen.De impact op de ervaring van de eind gebruiker is afhankelijk van het type organisatie:
 
-* Azure Active Directory tenants voor werk nemers en partners: de toevoeging van een Federatie (bijvoorbeeld met Gmail) zal direct invloed hebben op alle uitnodigingen van gasten die nog niet zijn ingewisseld. Zie [Google toevoegen als een id-provider voor B2B-gast gebruikers](https://docs.microsoft.com/azure/active-directory/b2b/google-federation).
-* Azure Active Directory B2C tenants: de toevoeging van een Federatie (bijvoorbeeld met Facebook of met een andere Azure AD-organisatie) is niet direct van invloed op eind gebruikers totdat de ID-provider is toegevoegd als een optie in een gebruikers stroom (ook wel ingebouwd beleid genoemd). Zie [Configure a Microsoft-account als een id-provider](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-setup-msa-app) voor een voor beeld.Als u de gebruikers stromen wilt wijzigen, is de beperkte rol ' B2C User flow Administrator ' vereist.
+* Azure AD-organisaties voor werk nemers en partners: de toevoeging van een Federatie (bijvoorbeeld met Gmail) zal direct invloed hebben op alle uitnodigingen van gasten die nog niet zijn ingewisseld. Zie [Google toevoegen als een id-provider voor B2B-gast gebruikers](https://docs.microsoft.com/azure/active-directory/b2b/google-federation).
+* Azure Active Directory B2C organisaties: de toevoeging van een Federatie (bijvoorbeeld met Facebook of met een andere Azure AD-organisatie) is niet direct van invloed op eind gebruikers totdat de ID-provider is toegevoegd als een optie in een gebruikers stroom (ook wel ingebouwd beleid genoemd). Zie [Configure a Microsoft-account als een id-provider](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-setup-msa-app) voor een voor beeld.Als u de gebruikers stromen wilt wijzigen, is de beperkte rol ' B2C User flow Administrator ' vereist.
 
 ### <a name="global-administrator--company-administrator"></a>[Beheerder van globale beheerder/bedrijf](#company-administrator-permissions)
 
-Gebruikers met deze rol hebben toegang tot alle beheer functies in Azure Active Directory en services die gebruikmaken van Azure Active Directory identiteiten, zoals Microsoft 365 Security Center, Microsoft 365 compliance Center, Exchange Online, share point online en Skype voor bedrijven online. De persoon die zich aanmeldt voor de Azure Active Directory Tenant, wordt een globale beheerder. Uw bedrijf kan meer dan één globale beheerder zijn. Globale beheerders kunnen het wachtwoord voor elke gebruiker en alle andere beheerders opnieuw instellen.
+Gebruikers met deze rol hebben toegang tot alle beheer functies in Azure Active Directory en services die gebruikmaken van Azure Active Directory identiteiten, zoals Microsoft 365 Security Center, Microsoft 365 compliance Center, Exchange Online, share point online en Skype voor bedrijven online. De persoon die zich aanmeldt voor de Azure AD-organisatie, wordt een globale beheerder. Uw bedrijf kan meer dan één globale beheerder zijn. Globale beheerders kunnen het wachtwoord voor elke gebruiker en alle andere beheerders opnieuw instellen.
 
 > [!NOTE]
 > In de Microsoft Graph-API en Azure AD Power shell wordt deze rol aangeduid als ' bedrijfs beheerder '. Het is "globale beheerder" in de [Azure Portal](https://portal.azure.com).
@@ -240,7 +240,6 @@ Gebruikers met deze rol kunnen instellingen en beheer informatie lezen over Micr
 >- [Onedrive-beheer centrum](https://admin.onedrive.com/) : het onedrive-beheer centrum biedt geen ondersteuning voor de globale lezer-rol.
 >- [Azure AD-Portal](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/AllApps/menuId/) -algemene lezer kan de inrichtings modus van een bedrijfs-app niet lezen.
 >- [M365-beheer centrum](https://admin.microsoft.com/Adminportal/Home#/homepage) : globale lezer kan geen lockbox-aanvragen van klanten lezen. U vindt het tabblad **klant lockbox-aanvragen** niet onder **ondersteuning** in het linkerdeel venster van het M365-beheer centrum.
->- [M365 Security Center](https://security.microsoft.com/homepage) : globale lezer kan geen gevoeligheids-en bewaar labels lezen. In het linkerdeel venster van M365 Security Center vindt u geen **gevoeligheids labels**, tabbladen voor het **bewaren van labels**en **labels voor label Analytics** .
 >- [Office Security & compliance Center](https://sip.protection.office.com/homepage) : globale lezer kan geen SCC-controle logboeken lezen, inhoud zoeken of een beveiligde Score bekijken.
 >- [Teams beheer centrum](https://admin.teams.microsoft.com) : wereld wijde lezer kan de **levens cyclus van teams**, **analyses & rapporten**, het **beheer van IP-telefoon apparaten** en de **app-catalogus**niet lezen.
 >- [Privileged Access Management (PAM)](https://docs.microsoft.com/office365/securitycompliance/privileged-access-management-overview) biedt geen ondersteuning voor de globale lezer-rol.
@@ -251,7 +250,7 @@ Gebruikers met deze rol kunnen instellingen en beheer informatie lezen over Micr
 
 ### <a name="groups-administrator"></a>[Groeps beheerder](#groups-administrator-permissions)
 
-Gebruikers met deze rol kunnen groepen en de bijbehorende instellingen maken/beheren, zoals het naamgevings-en verloop beleid. Het is belang rijk om te begrijpen dat het toewijzen van een gebruiker aan deze rol de mogelijkheid biedt om alle groepen in de Tenant te beheren in verschillende werk belastingen, zoals teams, share point, Yammer en Outlook. Daarnaast kan de gebruiker de verschillende groeps instellingen beheren voor verschillende beheerders portals, zoals micro soft-beheer centrum, Azure Portal, en werk belasting-specifieke taken als teams en share point-beheer centrums.
+Gebruikers met deze rol kunnen groepen en de bijbehorende instellingen maken/beheren, zoals het naamgevings-en verloop beleid. Het is belang rijk om te begrijpen dat het toewijzen van een gebruiker aan deze rol de mogelijkheid biedt om alle groepen in de organisatie te beheren in verschillende werk belastingen, zoals teams, share point, Yammer en Outlook. Daarnaast kan de gebruiker de verschillende groeps instellingen beheren voor verschillende beheerders portals, zoals micro soft-beheer centrum, Azure Portal, en werk belasting-specifieke taken als teams en share point-beheer centrums.
 
 ### <a name="guest-inviter"></a>[Gast uitnodiging](#guest-inviter-permissions)
 
@@ -288,7 +287,7 @@ Gebruikers met deze rol kunnen services en instellingen met betrekking tot het i
 
 Gebruikers met deze rol hebben algemene machtigingen binnen Microsoft Intune online, wanneer de service aanwezig is. Daarnaast bevat deze rol de mogelijkheid om gebruikers en apparaten te beheren om het beleid te koppelen, en om groepen te maken en te beheren. Meer informatie over op [rollen gebaseerd beheer beheer (RBAC) met Microsoft intune](https://docs.microsoft.com/intune/role-based-access-control).
 
-Deze rol kan alle beveiligings groepen maken en beheren. De intune-beheerder heeft echter geen beheerders rechten voor Office-groepen. Dit betekent dat de beheerder eigen aren of lidmaatschappen van alle Office-groepen in de Tenant niet kan bijwerken. Hij kan echter de Office-groep die hij maakt, beheren die als onderdeel van de bevoegdheden van de eind gebruiker hoort. Een wille keurige Office-groep (geen beveiligings groep) die hij/zij maakt, moet dus worden geteld voor het quotum van 250.
+Deze rol kan alle beveiligings groepen maken en beheren. De intune-beheerder heeft echter geen beheerders rechten voor Office-groepen. Dit betekent dat de beheerder eigen aren of lidmaatschappen van alle Office-groepen in de organisatie niet kan bijwerken. Hij kan echter de Office-groep die hij maakt, beheren die als onderdeel van de bevoegdheden van de eind gebruiker hoort. Een wille keurige Office-groep (geen beveiligings groep) die hij/zij maakt, moet dus worden geteld voor het quotum van 250.
 
 > [!NOTE]
 > In de Microsoft Graph-API en Azure AD Power shell wordt deze rol aangeduid als intune-service beheerder. Het is de ' intune-beheerder ' in de [Azure Portal](https://portal.azure.com).
@@ -381,7 +380,7 @@ Gebruikers met deze rol hebben volledige toegang tot alle micro soft Search-behe
 
 Gebruikers met deze rol kunnen inhoud voor micro soft Search maken, beheren en verwijderen in het beheer centrum van Microsoft 365, waaronder blad wijzers, Q&als en locaties.
 
-### <a name="security-administrator"></a>[Beveiligings beheerder](#security-administrator-permissions)
+### <a name="security-administrator"></a>[Beveiligingsbeheer](#security-administrator-permissions)
 
 Gebruikers met deze rol hebben machtigingen voor het beheren van beveiligings functies in het Microsoft 365 Security Center, Azure Active Directory Identity Protection, Azure Information Protection en Office 365 Security & compliance Center. Meer informatie over machtigingen voor Office 365 is beschikbaar op [machtigingen in het Office 365 Security & compliance Center](https://support.office.com/article/Permissions-in-the-Office-365-Security-Compliance-Center-d10608af-7934-490a-818e-e68f17d0e9c1).
 
@@ -413,7 +412,7 @@ Windows Defender ATP en EDR | Alle machtigingen van de rol beveiligings lezer<br
 [Cloud App Security](https://docs.microsoft.com/cloud-app-security/manage-admins) | Alle machtigingen van de rol beveiligings lezer
 [Office 365-service status](https://docs.microsoft.com/office365/enterprise/view-service-health) | De status van Office 365-services weer geven
 
-### <a name="security-reader"></a>[Beveiligings lezer](#security-reader-permissions)
+### <a name="security-reader"></a>[Beveiligingslezer](#security-reader-permissions)
 
 Gebruikers met deze rol hebben algemene alleen-lezen toegang voor de functie met betrekking tot beveiliging, inclusief alle informatie in Microsoft 365 Security Center, Azure Active Directory, identiteits beveiliging, Privileged Identity Management, en de mogelijkheid om Azure Active Directory aanmeld rapporten en controle logboeken te lezen, en in Office 365 Security & compliance Center. Meer informatie over machtigingen voor Office 365 is beschikbaar op [machtigingen in het Office 365 Security & compliance Center](https://support.office.com/article/Permissions-in-the-Office-365-Security-Compliance-Center-d10608af-7934-490a-818e-e68f17d0e9c1).
 
@@ -468,7 +467,7 @@ Gebruikers met deze rol kunnen alle aspecten van de werk belasting van micro sof
 
 ### <a name="user-administrator"></a>[Gebruikersbeheerder](#user-administrator-permissions)
 
-Gebruikers met deze rol kunnen gebruikers maken en alle aspecten van gebruikers met enkele beperkingen beheren (zie hieronder) en het verloop beleid voor wacht woorden kan bijwerken. Daarnaast kunnen gebruikers met deze rol alle groepen maken en beheren. Deze rol omvat ook de mogelijkheid om gebruikers weergaven te maken en beheren, ondersteunings tickets te beheren en de service status te controleren. Gebruikers beheerders hebben geen machtiging om bepaalde gebruikers eigenschappen voor gebruikers te beheren in de meeste beheerders rollen. Gebruiker met deze rol heeft geen machtigingen om MFA te beheren. De functies die uitzonde ringen op deze beperking zijn, worden weer gegeven in de volgende tabel.
+Gebruikers met deze rol kunnen gebruikers maken en alle aspecten van gebruikers met enkele beperkingen beheren (zie hieronder) en het verloop beleid voor wacht woorden kan bijwerken. Daarnaast kunnen gebruikers met deze rol alle groepen maken en beheren. Deze rol omvat ook de mogelijkheid om gebruikers weergaven te maken en beheren, ondersteunings tickets te beheren en de service status te controleren. Gebruikers beheerders hebben geen machtiging om bepaalde gebruikers eigenschappen voor gebruikers te beheren in de meeste beheerders rollen. Gebruiker met deze rol heeft geen machtigingen voor het beheren van MFA. De functies die uitzonde ringen op deze beperking zijn, worden weer gegeven in de volgende tabel.
 
 | | |
 | --- | --- |
@@ -1894,12 +1893,12 @@ Apparaatbeheer | Afgeschaft | [Documentatie over afgeschafte functies](directory
 Gebruikers van het apparaat | Afgeschaft | [Documentatie over afgeschafte functies](directory-assign-admin-roles.md#deprecated-roles)
 Directory-synchronisatie accounts | Niet weer gegeven omdat deze niet mag worden gebruikt | [Documentatie voor Directory Synchronization accounts](directory-assign-admin-roles.md#directory-synchronization-accounts)
 Schrijvers van mappen | Niet weer gegeven omdat deze niet mag worden gebruikt | [Documentatie over Directory schrijvers](directory-assign-admin-roles.md#directory-writers)
-Gastgebruiker | Niet weer gegeven omdat deze niet kan worden gebruikt  | N.v.t.
+Gastgebruiker | Niet weer gegeven omdat deze niet kan worden gebruikt  | NA
 Lync-service beheerder | Skype voor Bedrijven-beheerder | [Weerspiegelt huidige product huisstijl](directory-assign-admin-roles.md#role-template-ids)
 Ondersteuning voor partner Tier 1 | Niet weer gegeven omdat deze niet mag worden gebruikt | [Documentatie voor partner Tier1-ondersteuning](directory-assign-admin-roles.md#partner-tier1-support)
 Ondersteuning voor partner Tier 2 | Niet weer gegeven omdat deze niet mag worden gebruikt | [Documentatie voor partner Tier2-ondersteuning](directory-assign-admin-roles.md#partner-tier2-support)
-Beperkte gast gebruiker | Niet weer gegeven omdat deze niet kan worden gebruikt | N.v.t.
-Gebruiker | Niet weer gegeven omdat deze niet kan worden gebruikt | N.v.t.
+Beperkte gast gebruiker | Niet weer gegeven omdat deze niet kan worden gebruikt | NA
+Gebruiker | Niet weer gegeven omdat deze niet kan worden gebruikt | NA
 Werkplek apparaat toevoegen | Afgeschaft | [Documentatie over afgeschafte functies](directory-assign-admin-roles.md#deprecated-roles)
 
 ## <a name="next-steps"></a>Volgende stappen

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b15b022726c09ccbaf9674775d114c8dd1916e1d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 022c6360b97c7c27887ff5d2f6460f69cb8126c6
+ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81457294"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82778461"
 ---
 # <a name="conditional-access-cloud-apps-or-actions"></a>Voorwaardelijke toegang: Cloud-apps of-acties
 
@@ -71,7 +71,7 @@ Beheerders kunnen een beleid voor voorwaardelijke toegang toewijzen aan de volge
 
 Office 365 biedt productiviteits-en samenwerkings Services op basis van de Cloud, zoals Exchange, share point en micro soft teams. Office 365 Cloud Services zijn diep geïntegreerd om soepele en samen werkende ervaringen te garanderen. Deze integratie kan leiden tot Verwar ring bij het maken van beleid als sommige apps, zoals micro soft-teams, afhankelijk zijn van andere onderdelen, zoals share point of Exchange.
 
-De Office 365-app (preview) maakt het mogelijk om deze services in één keer te richten. We raden u aan de nieuwe app Office 365 (preview) te gebruiken, in plaats van afzonderlijke Cloud-apps te richten. Gericht op deze groep toepassingen helpt problemen te voor komen die zich kunnen voordoen als gevolg van inconsistent beleid en afhankelijkheden.
+De Office 365-app (preview) maakt het mogelijk om deze services in één keer te richten. We raden u aan de nieuwe app Office 365 (preview) te gebruiken, in plaats van afzonderlijke Cloud-apps te richten om problemen met [service afhankelijkheden](service-dependencies.md)te voor komen. Gericht op deze groep toepassingen helpt problemen te voor komen die zich kunnen voordoen als gevolg van inconsistent beleid en afhankelijkheden.
 
 Beheerders kunnen ervoor kiezen om specifieke apps uit te sluiten van het beleid als ze dit willen doen door de Office 365 (preview)-app op te nemen en de specifieke apps van hun keuze in het beleid uit te sluiten.
 

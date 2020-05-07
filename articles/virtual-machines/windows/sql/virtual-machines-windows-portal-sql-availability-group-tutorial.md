@@ -15,12 +15,12 @@ ms.workload: iaas-sql-server
 ms.date: 08/30/2018
 ms.author: mikeray
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 426ba4c0ac84799b4d0e6bf9330508f928437fd8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f5494b1a7590e87bac9f8ffeaeef8f1da791fd6e
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80060179"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82791133"
 ---
 # <a name="tutorial-configure-availability-group-on-azure-sql-server-vm-manually"></a>Zelf studie: beschikbaarheids groep op Azure SQL Server VM hand matig configureren
 
@@ -348,14 +348,14 @@ Op dit moment hebt u een beschikbaarheids groep met replica's op twee exemplaren
 
 Op virtuele machines van Azure is een load balancer vereist voor een SQL Server-beschikbaarheids groep. Het load balancer bevat de IP-adressen voor de listeners voor de beschikbaarheids groep en het Windows Server-failovercluster. In deze sectie wordt een overzicht gegeven van het maken van de load balancer in de Azure Portal.
 
-Een Azure Load Balancer kan een Standard Load Balancer of een basis Load Balancer zijn. Standard Load Balancer heeft meer functies dan de basis Load Balancer. Voor een beschikbaarheids groep is de Standard Load Balancer vereist als u een beschikbaarheids zone gebruikt (in plaats van een Beschikbaarheidsset). Zie [Load BALANCER SKU-vergelijking](../../../load-balancer/concepts-limitations.md#skus)voor meer informatie over het verschil tussen de Load Balancer typen.
+Een Azure Load Balancer kan een Standard Load Balancer of een basis Load Balancer zijn. Standard Load Balancer heeft meer functies dan de basis Load Balancer. Voor een beschikbaarheids groep is de Standard Load Balancer vereist als u een beschikbaarheids zone gebruikt (in plaats van een Beschikbaarheidsset). Zie [Load BALANCER SKU-vergelijking](../../../load-balancer/skus.md)voor meer informatie over het verschil tussen de Load Balancer sku's.
 
 1. Ga in het Azure Portal naar de resource groep waar uw SQL-servers zijn en klik op **+ toevoegen**.
 1. Zoeken naar **Load Balancer**. Kies de load balancer gepubliceerd door micro soft.
 
    ![AG in Failoverclusterbeheer](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/82-azureloadbalancer.png)
 
-1. Klik op **maken**.
+1. Klik op **Maken**.
 1. Configureer de volgende para meters voor de load balancer.
 
    | Instelling | Veld |
@@ -365,7 +365,7 @@ Een Azure Load Balancer kan een Standard Load Balancer of een basis Load Balance
    | **Virtueel netwerk** |Gebruik de naam van het virtuele netwerk van Azure. |
    | **Subnetrouter** |Gebruik de naam van het subnet waarin de virtuele machine zich bevindt.  |
    | **Toewijzing van IP-adres** |Statisch |
-   | **IP-adres** |Gebruik een beschikbaar adres van het subnet. Gebruik dit adres voor de listener van uw beschikbaarheids groep. Houd er rekening mee dat dit verschilt van het IP-adres van uw cluster.  |
+   | **Het IP-adres** |Gebruik een beschikbaar adres van het subnet. Gebruik dit adres voor de listener van uw beschikbaarheids groep. Houd er rekening mee dat dit verschilt van het IP-adres van uw cluster.  |
    | **Abonnement** |Gebruik hetzelfde abonnement als de virtuele machine. |
    | **Locatie** |Gebruik dezelfde locatie als de virtuele machine. |
 
@@ -405,7 +405,7 @@ Als u de load balancer wilt configureren, moet u een back-end-pool maken, een te
    | Instelling | Beschrijving | Voorbeeld
    | --- | --- |---
    | **Naam** | Tekst | SQLAlwaysOnEndPointProbe |
-   | **Protocolsubstatus** | Kies TCP | TCP |
+   | **Protocol** | Kies TCP | TCP |
    | **Importeer** | Alle ongebruikte poort | 59999 |
    | **Bereik**  | De hoeveelheid tijd tussen de test pogingen in seconden |5 |
    | **Drempel waarde voor onjuiste status** | Het aantal opeenvolgende test fouten dat moet optreden voor een virtuele machine als een slechte status  | 2 |
@@ -422,7 +422,7 @@ Als u de load balancer wilt configureren, moet u een back-end-pool maken, een te
    | --- | --- |---
    | **Naam** | Tekst | SQLAlwaysOnEndPointListener |
    | **Frontend-IP-adres** | Kies een adres |Gebruik het adres dat u hebt gemaakt tijdens het maken van de load balancer. |
-   | **Protocolsubstatus** | Kies TCP |TCP |
+   | **Protocol** | Kies TCP |TCP |
    | **Importeer** | De poort voor de beschikbaarheids groep-listener gebruiken | 1433 |
    | **Backend-poort** | Dit veld wordt niet gebruikt wanneer er een zwevend IP-adres is ingesteld voor Direct Server Return | 1433 |
    | **Meet** |De naam die u hebt opgegeven voor de test | SQLAlwaysOnEndPointProbe |
@@ -448,7 +448,7 @@ Het WSFC IP-adres moet ook op het load balancer zijn.
    | Instelling | Beschrijving | Voorbeeld
    | --- | --- |---
    | **Naam** | Tekst | WSFCEndPointProbe |
-   | **Protocolsubstatus** | Kies TCP | TCP |
+   | **Protocol** | Kies TCP | TCP |
    | **Importeer** | Alle ongebruikte poort | 58888 |
    | **Bereik**  | De hoeveelheid tijd tussen de test pogingen in seconden |5 |
    | **Drempel waarde voor onjuiste status** | Het aantal opeenvolgende test fouten dat moet optreden voor een virtuele machine als een slechte status  | 2 |
@@ -463,7 +463,7 @@ Het WSFC IP-adres moet ook op het load balancer zijn.
    | --- | --- |---
    | **Naam** | Tekst | WSFCEndPoint |
    | **Frontend-IP-adres** | Kies een adres |Gebruik het adres dat u hebt gemaakt tijdens het configureren van het WSFC IP-adres. Dit wijkt af van het IP-adres van de listener |
-   | **Protocolsubstatus** | Kies TCP |TCP |
+   | **Protocol** | Kies TCP |TCP |
    | **Importeer** | Gebruik de poort voor het IP-adres van het cluster. Dit is een beschik bare poort die niet wordt gebruikt voor de listener-test poort. | 58888 |
    | **Backend-poort** | Dit veld wordt niet gebruikt wanneer er een zwevend IP-adres is ingesteld voor Direct Server Return | 58888 |
    | **Meet** |De naam die u hebt opgegeven voor de test | WSFCEndPointProbe |

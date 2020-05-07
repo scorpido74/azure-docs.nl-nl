@@ -3,12 +3,12 @@ title: Een zelfstandige Azure Service Fabric-cluster upgraden
 description: Meer informatie over het bijwerken van de versie of configuratie van een zelfstandige Azure Service Fabric-cluster.  T
 ms.topic: conceptual
 ms.date: 11/12/2018
-ms.openlocfilehash: 6da9b4c6890895141ecc419382f05f667614fb31
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ac3e80aae440c6709057e4211f7a4f6a1beea058
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75451826"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82790640"
 ---
 # <a name="upgrading-and-updating-a-service-fabric-standalone-cluster"></a>Een Service Fabric zelfstandige cluster bijwerken en bijwerken
 
@@ -38,7 +38,7 @@ De patch Orchestration Application (POA) is een Service Fabric-toepassing waarme
 
 ## <a name="next-steps"></a>Volgende stappen
 * Meer informatie over het aanpassen van een aantal van de [service Fabric-cluster infrastructuur instellingen](service-fabric-cluster-fabric-settings.md)
-* Meer informatie over hoe u [uw cluster in-en uitschaalt](service-fabric-cluster-scale-up-down.md)
+* Meer informatie over hoe u [uw cluster in-en uitschaalt](service-fabric-cluster-scale-in-out.md)
 * Meer informatie over [toepassings upgrades](service-fabric-application-upgrade.md)
 
 <!--Image references-->
