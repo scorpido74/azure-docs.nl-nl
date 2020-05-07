@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 12/07/2019
 ms.author: johnkem
 ms.subservice: logs
-ms.openlocfilehash: d2423d04ead9040cce53d847d24efe75be680d94
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4ea29888d4dcf589e3e5d4dfe594f5f4bff2287e
+ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80397311"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82559970"
 ---
 # <a name="view-and-retrieve-azure-activity-log-events"></a>Activiteiten logboek gebeurtenissen van Azure bekijken en ophalen
 
@@ -71,7 +71,7 @@ Zie [resource wijzigingen ophalen](../../governance/resource-graph/how-to/get-re
 Gebruik de cmdlet [Get-AzLog](https://docs.microsoft.com/powershell/module/az.monitor/get-azlog) om het activiteiten logboek van Power shell op te halen. Hier volgen enkele algemene voor beelden.
 
 > [!NOTE]
-> `Get-AzLog`biedt alleen 15 dagen aan geschiedenis. Gebruik de para meter **-MaxEvents** om de laatste N gebeurtenissen na 15 dagen op te vragen. Als u toegang wilt hebben tot gebeurtenissen die ouder zijn dan 15 dagen, gebruikt u de REST API of SDK. Als u **StartTime**niet opneemt, wordt de standaard waarde **EndTime** min één uur. Als u geen **EndTime**opgeeft, is de standaard waarde huidige tijd. Alle tijden zijn in UTC.
+> `Get-AzLog`biedt alleen 15 dagen aan geschiedenis. Gebruik de para meter **-MaxRecord** om de laatste N gebeurtenissen na 15 dagen op te vragen. Als u toegang wilt hebben tot gebeurtenissen die ouder zijn dan 15 dagen, gebruikt u de REST API of SDK. Als u **StartTime**niet opneemt, wordt de standaard waarde **EndTime** min één uur. Als u geen **EndTime**opgeeft, is de standaard waarde huidige tijd. Alle tijden zijn in UTC.
 
 
 Logboek vermeldingen ophalen die zijn gemaakt na een bepaalde datum en tijd:
@@ -107,7 +107,7 @@ Get-AzLog -Caller 'myname@company.com'
 De laatste 1000 gebeurtenissen ophalen:
 
 ```powershell
-Get-AzLog -MaxEvents 1000
+Get-AzLog -MaxRecord 1000
 ```
 
 

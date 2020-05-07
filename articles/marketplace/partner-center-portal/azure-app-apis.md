@@ -1,20 +1,20 @@
 ---
-title: Onboarding van API voor Azure-apps in de commerciële Marketplace
-description: API-vereisten voor Azure-apps in de commerciële Marketplace op het micro soft Partner Center.
+title: Partner Center-API voor het indienen van Azure-apps in de micro soft Commercial Marketplace
+description: Lees de vereisten voor het gebruik van de Partner Center-API voor het indienen van Azure-apps in commerciële Marketplace op het micro soft partner centrum.
 author: dsindona
 ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 12/10/2019
-ms.openlocfilehash: cc4d56058ce3985ec3a1d9124ef4ec73ff6be1a2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2c37e51ad0c6618e20d9445fab7472b1a3a72ab9
+ms.sourcegitcommit: 3beb067d5dc3d8895971b1bc18304e004b8a19b3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80279756"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82744896"
 ---
-# <a name="api-for-onboarding-azure-apps-in-partner-center"></a>API voor het onboarden van Azure-apps in het partner centrum
+# <a name="partner-center-submission-api-to-onboard-azure-apps-in-partner-center"></a>Partner Center-API voor het indienen van Azure-apps in het partner centrum
 
 Gebruik de *inzendings-API van partner Center* om programmatisch query's uit te geven, inzendingen te maken en Azure-aanbiedingen te publiceren.  Deze API is handig als uw account veel aanbiedingen beheert en u het verzend proces voor deze aanbiedingen wilt automatiseren en optimaliseren.
 
@@ -70,3 +70,8 @@ Voor de *tenant_id* waarde in de `POST URI` para meters en *client_id* en *clien
 Nadat u een Azure AD-toegangs token hebt, kunt u methoden aanroepen in de inzendings-API van partner Center. Als u verzen dingen wilt maken of bijwerken, roept u doorgaans meerdere methoden in de Partner Center-API voor verzenden in een specifieke volg orde aan. Voor informatie over elk scenario en de syntaxis van elke methode raadpleegt u de API-Swagger voor opname-api's.
 
 https://apidocs.microsoft.com/services/partneringestion/
+
+## <a name="next-steps"></a>Volgende stappen
+
+* Meer informatie over het maken van een [technische Asset](create-azure-container-technical-assets.md) voor het maken van een Azure-VM
+* Leer hoe u een [Azure-container aanbod](create-azure-container-offer.md) maakt

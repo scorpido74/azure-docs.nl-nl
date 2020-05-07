@@ -1,20 +1,20 @@
 ---
-title: Analytics voor de commerciële Marketplace in het partner centrum
-description: Overzicht van toegang tot analytische rapporten voor het bewaken van de verkoop, het evalueren van prestaties en het optimaliseren van uw Marketplace-aanbiedingen.
+title: Analytics voor de micro soft Commercial Marketplace in Partner Center
+description: Meer informatie over het openen van analytische rapporten voor het bewaken van de verkoop, het evalueren van prestaties en het optimaliseren van uw Marketplace-aanbiedingen in het micro soft partner centrum.
 author: dsindona
 ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 12/11/2019
-ms.openlocfilehash: 41b9c5244ce9d468d9bf0fb7bafa719b4e6f55ac
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0c406efd30e891c8ca69481299801e7309cdff81
+ms.sourcegitcommit: 3beb067d5dc3d8895971b1bc18304e004b8a19b3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81262278"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82744913"
 ---
-# <a name="analytics-for-the-commercial-marketplace-in-partner-center"></a>Analytics voor de commerciële Marketplace in het partner centrum
+# <a name="access-analytic-reports-for-the-commercial-marketplace-in-partner-center"></a>Toegang krijgen tot analytische rapporten voor de commerciële Marketplace in het partner centrum
 
 Meer informatie over het openen van analytische rapporten in micro soft Partner Center voor het bewaken van de verkoop, het evalueren van prestaties en het optimaliseren van uw aanbiedingen op Marketplace. Als partner kunt u uw aanbiedingen volgen met behulp van de gegevens visualisatie en Insight-grafieken die worden ondersteund door het partner centrum en kunt u manieren vinden om uw verkoop te maximaliseren. Dankzij de verbeterde analyse hulpprogramma's kunt u de resultaten van prestaties verbeteren en betere relaties met uw klanten en wederverkopers onderhouden.
 

@@ -1,5 +1,5 @@
 ---
-title: 'Zelf studie: een model trainen en implementeren met behulp van de Visual Studio code extension'
+title: 'Zelf studie: Train & Deploy modeles: VS code'
 titleSuffix: Azure Machine Learning
 description: Meer informatie over hoe u een afbeeldings classificatie model traint en implementeert met behulp van tensor flow en de Visual Studio code extension van Azure Machine Learning
 services: machine-learning
@@ -9,12 +9,12 @@ ms.topic: tutorial
 author: luisquintanilla
 ms.author: luquinta
 ms.date: 04/13/2020
-ms.openlocfilehash: f793f8c4cb84f821c098cc5ce98e693d272e725f
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: b8b72e85f1d1660ee7d21afe3d34fde66f08ff8c
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81272763"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82791830"
 ---
 # <a name="train-and-deploy-an-image-classification-tensorflow-model-using-the-azure-machine-learning-visual-studio-code-extension"></a>Een tensor flow model voor de classificatie van een installatie kopie trainen en implementeren met behulp van de Visual Studio code extension van Azure Machine Learning
 

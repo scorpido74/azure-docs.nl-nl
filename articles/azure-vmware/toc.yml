@@ -1,0 +1,42 @@
+- name: Azure VMware Solution (AVS)
+  href: index.yml
+- name: Overzicht
+  items:
+    - name: Over Azure VMware Solution (AVS)
+      href: introduction.md
+- name: Zelfstudies
+  items:
+    - name: 1 - Netwerkplanning
+      href: tutorial-network-checklist.md
+    - name: 2- Een AVS-privécloud maken
+      href: tutorial-create-private-cloud.md
+    - name: 3 - Netwerk configureren
+      href: tutorial-configure-networking.md
+    - name: 4- Toegang tot een privécloud
+      href: tutorial-access-private-cloud.md
+    - name: 5- Een privécloud schalen
+      href: tutorial-scale-private-cloud.md
+- name: Concepten
+  items:
+    - name: Privéclouds en -clusters
+      href: concepts-private-clouds-clusters.md
+    - name: Privécloudnetwerken en interconnectiviteit
+      href: concepts-networking.md
+    - name: Opslag in privéclouds
+      href: concepts-storage.md
+    - name: Toegang en identiteit voor privéclouds
+      href: concepts-identity.md
+    - name: Upgrades voor privéclouds
+      href: concepts-upgrades.md
+- name: Instructiegidsen
+  items:
+    - name: DHCP beheren
+      href: manage-dhcp.md
+    - name: Herstel na noodgeval
+      href: disaster-recovery.md
+- name: Naslaginformatie
+  items: null
+- name: Resources
+  items:
+    - name: Veelgestelde vragen
+      href: faq.md

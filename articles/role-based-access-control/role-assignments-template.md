@@ -1,6 +1,6 @@
 ---
-title: Roltoewijzingen toevoegen met RBAC-en Azure Resource Manager-sjablonen
-description: Meer informatie over het verlenen van toegang tot Azure-resources voor gebruikers, groepen, service-principals of beheerde identiteiten met behulp van op rollen gebaseerd toegangs beheer (RBAC) en Azure Resource Manager sjablonen van Azure.
+title: Azure-roltoewijzingen toevoegen met behulp van Azure Resource Manager sjablonen-Azure RBAC
+description: Meer informatie over het verlenen van toegang tot Azure-resources voor gebruikers, groepen, service-principals of beheerde identiteiten met behulp van Azure Resource Manager sjablonen en Azure RBAC (op rollen gebaseerd toegangs beheer).
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -13,14 +13,14 @@ ms.workload: identity
 ms.date: 11/25/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 9f817880f938f5d03024e3aacd9b84817a5ac721
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 777d11a129f02d1a2f5c796dea0af438ca81ba8c
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77138287"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82735620"
 ---
-# <a name="add-role-assignments-using-azure-rbac-and-azure-resource-manager-templates"></a>Roltoewijzingen toevoegen met behulp van Azure RBAC en Azure Resource Manager sjablonen
+# <a name="add-azure-role-assignments-using-azure-resource-manager-templates"></a>Azure-roltoewijzingen toevoegen met behulp van Azure Resource Manager sjablonen
 
 [!INCLUDE [Azure RBAC definition grant access](../../includes/role-based-access-control-definition-grant.md)]Naast het gebruik van Azure PowerShell of de Azure CLI kunt u rollen toewijzen met behulp van [Azure Resource Manager-sjablonen](../azure-resource-manager/templates/template-syntax.md). Sjablonen kunnen nuttig zijn als u resources consistent en herhaaldelijk wilt implementeren. In dit artikel wordt beschreven hoe u rollen toewijst met behulp van sjablonen.
 
@@ -66,7 +66,7 @@ objectid=$(az ad sp list --display-name "{name}" --query [].objectId --output ts
 
 ## <a name="add-a-role-assignment"></a>Een roltoewijzing toevoegen
 
-Als u in RBAC toegang wilt verlenen, voegt u een roltoewijzing toe.
+In azure RBAC kunt u een roltoewijzing toevoegen om toegang te verlenen.
 
 ### <a name="resource-group-without-parameters"></a>Resource groep (zonder para meters)
 
