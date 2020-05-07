@@ -6,12 +6,12 @@ author: sauryadas
 ms.topic: troubleshooting
 ms.date: 12/13/2019
 ms.author: saudas
-ms.openlocfilehash: 7bdabf2ec109fe96c28185bd1a2a680ce19c2650
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8460f4f2a66a1f545bea767cccf3aa77c9d3bff3
+ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79368329"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82778954"
 ---
 # <a name="aks-troubleshooting"></a>AKS-problemen oplossen
 
@@ -58,7 +58,7 @@ De reden voor de waarschuwingen op het dash board is dat het cluster nu is inges
 
 ## <a name="i-cant-connect-to-the-dashboard-what-should-i-do"></a>Ik kan geen verbinding maken met het dashboard. Wat moet ik doen?
 
-De eenvoudigste manier om toegang te krijgen tot uw service buiten het cluster `kubectl proxy`, is om uit te voeren, welke proxy's aanvragen verzonden naar de lokale poort 8001 van de KUBERNETES-API-server. Vanaf daar kan de API-server proxy voor uw service hebben `http://localhost:8001/api/v1/namespaces/kube-system/services/kubernetes-dashboard/proxy/#!/node?namespace=default`:.
+De eenvoudigste manier om toegang te krijgen tot uw service buiten het cluster `kubectl proxy`, is om uit te voeren, welke proxy's aanvragen verzonden naar de lokale poort 8001 van de KUBERNETES-API-server. Vanaf daar kan de API-server proxy voor uw service hebben `http://localhost:8001/api/v1/namespaces/kube-system/services/kubernetes-dashboard/proxy/`:.
 
 Als u het Kubernetes-dash board niet ziet, controleert `kube-proxy` u of de Pod wordt `kube-system` uitgevoerd in de naam ruimte. Als de status niet wordt uitgevoerd, verwijdert u de Pod en wordt de computer opnieuw opgestart.
 

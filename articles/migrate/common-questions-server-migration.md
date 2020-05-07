@@ -1,14 +1,14 @@
 ---
-title: Veelgestelde vragen over de migratie van Azure Migrate server
+title: Veelgestelde vragen over Azure Migrate server migratie
 description: Krijg antwoorden op veelgestelde vragen over het gebruik van Azure Migrate server migratie om machines te migreren.
 ms.topic: conceptual
-ms.date: 02/17/2020
-ms.openlocfilehash: 8d4d83791366e153f0fa8b81ae120ca3fd33be2d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 05/04/2020
+ms.openlocfilehash: 0cfe23b4e544040fc3ab69796988ca34b1bdcdbf
+ms.sourcegitcommit: 3beb067d5dc3d8895971b1bc18304e004b8a19b3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82146036"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82744329"
 ---
 # <a name="azure-migrate-server-migration-common-questions"></a>Migratie van Azure Migrate server: veelgestelde vragen
 
@@ -86,6 +86,10 @@ U kunt dit beperken met behulp van NetQosPolicy. Bijvoorbeeld:
 De AppNamePrefix die in de NetQosPolicy moet worden gebruikt, is "GatewayWindowsService. exe". U kunt een beleid maken op het Azure Migrate apparaat om het replicatie verkeer van het apparaat te beperken door een beleid te maken, bijvoorbeeld:
  
 New-NetQosPolicy-name "ThrottleReplication"-AppPathNameMatchCondition "GatewayWindowsService. exe"-ThrottleRateActionBitsPerSecond 1MB
+
+## <a name="can-i-migrate-vms-that-are-already-being-replicated-to-azure"></a>Kan ik virtuele machines migreren die al naar Azure worden gerepliceerd? 
+
+Als Vm's al een andere manier worden gerepliceerd naar Azure, kunt u deze machines niet migreren als Vm's met Azure Migrate server migratie. Als tijdelijke oplossing kunt u de Vm's als fysieke servers behandelen en deze migreren in overeenstemming met de [ondersteunde fysieke server migratie](migrate-support-matrix-physical-migration.md).
 
 ## <a name="when-do-i-migrate-machines-as-physical-servers"></a>Wanneer kan ik machines migreren als fysieke servers?
 

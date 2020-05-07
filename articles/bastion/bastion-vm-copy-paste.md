@@ -5,20 +5,24 @@ services: bastion
 author: charwen
 ms.service: bastion
 ms.topic: conceptual
-ms.date: 02/03/2020
+ms.date: 05/04/2020
 ms.author: charwen
-ms.openlocfilehash: 0af0fdfa1b0bcbb06d9424390e7ca8c8f406bcb3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8580b7e28c8a4860739efa0763ebb7c20a80585e
+ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80619307"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82780280"
 ---
 # <a name="copy-and-paste-to-a-virtual-machine-azure-bastion"></a>Kopiëren en plakken naar een virtuele machine: Azure Bastion
 
 Dit artikel helpt u bij het kopiëren en plakken van tekst naar en van virtuele machines wanneer u Azure Bastion gebruikt. Voordat u met een virtuele machine gaat werken, moet u ervoor zorgen dat u de stappen hebt gevolgd om [een bastion-host te maken](bastion-create-host-portal.md). Maak vervolgens verbinding met de virtuele machine die u wilt gebruiken met [RDP](bastion-connect-vm-rdp.md) of [SSH](bastion-connect-vm-ssh.md).
 
 Voor browsers die ondersteuning bieden voor de geavanceerde klembord-API-toegang, kunt u tekst kopiëren en plakken tussen uw lokale apparaat en de externe sessie op dezelfde manier als u kopieert en plakt tussen toepassingen op het lokale apparaat. Voor andere browsers kunt u het palet toegang tot het Bastion klem bord gebruiken.
+
+>[!NOTE]
+>Alleen tekst kopiëren/plakken wordt momenteel ondersteund.
+>
 
    ![Klem bord toestaan](./media/bastion-vm-manage/allow.png)
 

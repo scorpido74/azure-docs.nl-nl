@@ -1,18 +1,17 @@
 ---
-title: Best practices voor pod-beveiliging
-titleSuffix: Azure Kubernetes Service
+title: Best practices voor ontwikkel aars-pod Security in azure Kubernetes Services (AKS)
 description: Meer informatie over de aanbevolen procedures voor ontwikkel aars voor het beveiligen van Peul in azure Kubernetes service (AKS)
 services: container-service
 author: zr-msft
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: zarhoads
-ms.openlocfilehash: 1f093b5276ee7ab334043e57f97a108267c32c87
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1d97ae5692a4cdc328833ce4c01a8114506a960a
+ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80804381"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82779061"
 ---
 # <a name="best-practices-for-pod-security-in-azure-kubernetes-service-aks"></a>Aanbevolen procedures voor pod-beveiliging in azure Kubernetes service (AKS)
 
@@ -75,7 +74,7 @@ Vermijd het gebruik van vaste of gedeelde referenties om het risico te beperken 
 Met de volgende [gekoppelde open-source projecten van AKS][aks-associated-projects] kunt u automatisch peul verifiëren of referenties en sleutels van een digitale kluis aanvragen:
 
 * Beheerde identiteiten voor Azure-resources en
-* Azure Key Vault FlexVol-stuur programma
+* [Azure Key Vault provider voor geheimen Store CSI-stuur programma](https://github.com/Azure/secrets-store-csi-driver-provider-azure#usage)
 
 Gerelateerde AKS open-source projecten worden niet ondersteund door de technische ondersteuning van Azure. Ze zijn bedoeld om feedback en bugs van onze community te verzamelen. Deze projecten worden niet aanbevolen voor productie gebruik.
 
@@ -89,28 +88,28 @@ Met een beheerde identiteit hoeft uw toepassings code geen referenties op te gev
 
 Zie [Configure a AKS cluster to use pod Managed Identities and with your Applications][aad-pod-identity] (Engelstalig) voor meer informatie over pod-identiteiten.
 
-### <a name="use-azure-key-vault-with-flexvol"></a>Azure Key Vault gebruiken met FlexVol
+### <a name="use-azure-key-vault-with-secrets-store-csi-driver"></a>Azure Key Vault gebruiken met geheimen Store CSI-stuur programma
 
-Beheerde pod-identiteiten werken geweldig om te verifiëren tegen de ondersteuning van Azure-Services. Voor uw eigen services of toepassingen zonder beheerde identiteiten voor Azure-resources kunt u nog steeds verifiëren met behulp van referenties of sleutels. Een digitale kluis kan worden gebruikt om deze referenties op te slaan.
+Met behulp van het Pod-identiteits project kan verificatie worden uitgevoerd op ondersteuning van Azure-Services. Voor uw eigen services of toepassingen zonder beheerde identiteiten voor Azure-resources kunt u nog steeds verifiëren met behulp van referenties of sleutels. Een digitale kluis kan worden gebruikt om deze geheime inhoud op te slaan.
 
-Wanneer toepassingen een referentie nodig hebben, communiceren ze met de digitale kluis, ophalen we de meest recente referenties en maken ze vervolgens verbinding met de vereiste service. Azure Key Vault kan deze digitale kluis zijn. De vereenvoudigde werk stroom voor het ophalen van een referentie van Azure Key Vault met behulp van pod Managed Identities wordt weer gegeven in het volgende diagram:
+Wanneer toepassingen een referentie nodig hebben, kunnen ze communiceren met de digitale kluis, de laatste geheime inhoud ophalen en vervolgens verbinding maken met de vereiste service. Azure Key Vault kan deze digitale kluis zijn. De vereenvoudigde werk stroom voor het ophalen van een referentie van Azure Key Vault met behulp van pod Managed Identities wordt weer gegeven in het volgende diagram:
 
-![Vereenvoudigde werk stroom voor het ophalen van een referentie van Key Vault met behulp van een door Pod beheerde identiteit](media/developer-best-practices-pod-security/basic-key-vault-flexvol.png)
+![Vereenvoudigde werk stroom voor het ophalen van een referentie van Key Vault met behulp van een door Pod beheerde identiteit](media/developer-best-practices-pod-security/basic-key-vault.png)
 
-Met Key Vault kunt u geheimen, zoals referenties, opslag account sleutels of certificaten, opslaan en regel matig draaien. U kunt Azure Key Vault integreren met een AKS-cluster met behulp van een FlexVolume. Met het FlexVolume-stuur programma kan het AKS-cluster systeem eigen referenties ophalen van Key Vault en deze alleen veilig aanbieden aan de aanvragende pod. Werk samen met uw cluster operator om het Key Vault FlexVol-stuur programma op de AKS-knoop punten te implementeren. U kunt een beheerde pod-id gebruiken om toegang aan te vragen voor Key Vault en de referenties op te halen die u nodig hebt via het FlexVolume-stuur programma.
+Met Key Vault kunt u geheimen, zoals referenties, opslag account sleutels of certificaten, opslaan en regel matig draaien. U kunt Azure Key Vault integreren met een AKS-cluster met behulp [van de Azure Key Vault provider voor het stuur programma geheimen Store CSI](https://github.com/Azure/secrets-store-csi-driver-provider-azure#usage). Met het stuur programma voor geheimen Store CSI kan het AKS-cluster systeem eigen geheime inhoud ophalen uit Key Vault en deze alleen veilig aanbieden aan de aanvraag-pod. Werk samen met uw cluster operator om de geheimen Store CSI-stuur programma te implementeren op AKS worker-knoop punten. U kunt een beheerde pod-id gebruiken om toegang aan te vragen voor Key Vault en de geheime inhoud op te halen die nodig is via het stuur programma geheimen opslaan CSI.
 
-Azure Key Vault met FlexVol is bedoeld voor gebruik met toepassingen en services die worden uitgevoerd op Linux, peulen en knoop punten.
+Azure Key Vault met geheimen Store CSI stuur programma kan worden gebruikt voor Linux-knoop punten en peulen waarvoor een Kubernetes-versie van 1,16 of hoger is vereist. Voor Windows-knoop punten is een Kubernetes-versie van 1,18 of hoger vereist.
 
 ## <a name="next-steps"></a>Volgende stappen
 
 Dit artikel is gericht op hoe u uw peul kunt beveiligen. Raadpleeg de volgende artikelen voor meer informatie over het implementeren van sommige van deze gebieden:
 
 * [Beheerde identiteiten gebruiken voor Azure-resources met AKS][aad-pod-identity]
-* [Azure Key Vault integreren met AKS][aks-keyvault-flexvol]
+* [Azure Key Vault integreren met AKS][aks-keyvault-csi-driver]
 
 <!-- EXTERNAL LINKS -->
 [aad-pod-identity]: https://github.com/Azure/aad-pod-identity#demo
-[aks-keyvault-flexvol]: https://github.com/Azure/kubernetes-keyvault-flexvol
+[aks-keyvault-csi-driver]: https://github.com/Azure/secrets-store-csi-driver-provider-azure#usage
 [linux-capabilities]: http://man7.org/linux/man-pages/man7/capabilities.7.html
 [selinux-labels]: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.12/#selinuxoptions-v1-core
 [aks-associated-projects]: https://github.com/Azure/AKS/blob/master/previews.md#associated-projects

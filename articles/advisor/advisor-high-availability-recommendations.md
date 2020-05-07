@@ -3,12 +3,12 @@ title: Verbeter de beschik baarheid van uw toepassing met Azure Advisor
 description: Gebruik Azure Advisor om de maximale Beschik baarheid van uw Azure-implementaties te verbeteren.
 ms.topic: article
 ms.date: 01/29/2019
-ms.openlocfilehash: 997681ed62fa9985e3122ece22565dbae0e65b53
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5e38a1fb5e07e3811c53e24a5e324575d6774a75
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75443114"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82788022"
 ---
 # <a name="improve-availability-of-your-application-with-azure-advisor"></a>Verbeter de beschik baarheid van uw toepassing met Azure Advisor
 
@@ -28,6 +28,10 @@ U wordt aangeraden om twee of meer virtuele machines in een beschikbaarheidsset 
 ## <a name="use-managed-disks-to-improve-data-reliability"></a>Managed Disks gebruiken voor verbeterde betrouwbaarheid van gegevens
 
 Virtuele machines die deel uitmaken van een beschikbaarheidsset met schijven die opslag accounts of opslag schaal eenheden delen, zijn niet flexibel voor opslag met een enkele storing in de geheugen grootte tijdens uitval. Advisor identificeert deze beschikbaarheids sets en raadt u aan om te migreren naar Azure Managed Disks. Dit zorgt ervoor dat de schijven van de verschillende virtuele machines in de beschikbaarheidsset voldoende geïsoleerd zijn om een Single Point of Failure te voor komen. 
+
+## <a name="known-issue-with-check-point-network-virtual-appliance-image-version"></a>Bekend probleem met installatie kopie versie van virtueel apparaat voor controle punt
+
+Met Advisor kan worden vastgesteld of op uw virtuele machine een versie van Check Point wordt uitgevoerd waarvan bekend is dat deze de netwerk verbinding verliest in het geval van een platform-onderhouds bewerking. Advisor-aanbeveling helpt u bij te werken naar een nieuwere versie van de installatie kopie waarmee dit probleem wordt opgelost. Dit zorgt voor bedrijfs continuïteit door middel van een betere netwerk verbinding.
 
 ## <a name="ensure-application-gateway-fault-tolerance"></a>Fout tolerantie van Application Gateway garanderen
 
@@ -83,7 +87,7 @@ Met Azure Advisor worden Azure Cosmos DB-accounts geïdentificeerd die gebruikma
 
 ## <a name="upgrade-your-azure-cosmos-db-java-sdk-to-the-latest-version-from-maven"></a>Uw Azure Cosmos DB Java SDK bijwerken naar de nieuwste versie van Maven
 
-Azure Advisor identificeert Azure Cosmos DB accounts die gebruikmaken van oude versies van de Java-SDK en raadt u aan om een upgrade uit te voeren naar de meest recente versie van Maven voor de nieuwste oplossingen, prestatie verbeteringen en nieuwe functies. [Meer informatie over Cosmos DB Java SDK](https://aka.ms/cosmosdb/sql-api-sdk-dotnet)
+Azure Advisor identificeert Azure Cosmos DB accounts die gebruikmaken van oude versies van de Java-SDK en raadt u aan om een upgrade uit te voeren naar de meest recente versie van Maven voor de nieuwste oplossingen, prestatie verbeteringen en nieuwe functies. [Meer informatie over Cosmos DB Java SDK](https://aka.ms/cosmosdb/sql-api-sdk-async-java)
 
 ## <a name="upgrade-your-azure-cosmos-db-spark-connector-to-the-latest-version-from-maven"></a>Uw Azure Cosmos DB Spark-connector bijwerken naar de nieuwste versie van Maven
 

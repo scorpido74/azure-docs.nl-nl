@@ -1,26 +1,24 @@
 ---
-title: Veelgestelde vragen en terminologie voor de commerciële Marketplace-analyse in het partner centrum
-description: Lees hoe u veelgestelde vragen over commerciële Marketplace-analyses kunt aanpakken. Bevat een data dictionary voor analyse terminologie.
+title: Veelgestelde vragen over commerciële Marketplace Analytics & terminologie-partner centrum
+description: Krijg antwoorden op veelgestelde vragen over de analyse van commerciële Marketplace in Partner Center. Dit artikel bevat een data dictionary voor analyse terminologie.
 author: dsindona
 ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 02/17/2020
-ms.openlocfilehash: b7367e58de818c20723c02a6763b1bf1e3b18f24
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 42478f6e6d6cb28364fe39aafcb52b3a17aa3c23
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81251823"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82791473"
 ---
-# <a name="frequently-asked-questions-and-terminology-for-commercial-marketplace-analytics"></a>Veelgestelde vragen en terminologie voor commerciële Marketplace-analyses
+# <a name="commercial-marketplace-analytics-terminology-and-common-questions"></a>Commercial Marketplace Analytics terminologie en veelgestelde vragen
 
 Dit artikel heeft betrekking op veelgestelde vragen over analyse berichten in het partner centrum en biedt ook een woorden lijst met analyse terminologie.
 
-## <a name="frequently-asked-questions"></a>Veelgestelde vragen
-
-In deze sectie vindt u antwoorden op veelgestelde vragen over **geen enkele analyse beschik bare** berichten in het partner centrum.
+## <a name="common-questions"></a>Veelgestelde vragen
 
 **Ik kan mijn Analytics-gegevens niet weer geven in het partner centrum. Wanneer ik deze pagina's open, zie ik het onderstaande bericht. Waarom is dit?**
 

@@ -1,10 +1,11 @@
-- name: Azure Security-benchmarks
+- name: Azure Security-benchmark
   href: index.yml
 - name: Inleiding
   href: introduction.md
 - name: Beveiligingsmaatregelen
+  expanded: true
   items:
-    - name: Overzicht van het Azure Beveiligingscentrum
+    - name: Overzicht van Azure-beveiligingsmaatregelen
       href: overview.md
     - name: Netwerkbeveiliging
       href: security-control-network-security.md
@@ -16,7 +17,7 @@
       href: security-control-data-protection.md
     - name: Beheer van beveiligingsproblemen
       href: security-control-vulnerability-management.md
-    - name: Inventarisatie en Asset Management
+    - name: Inventarisatie en asset-management
       href: security-control-inventory-asset-management.md
     - name: Veilige configuratie
       href: security-control-secure-configuration.md
@@ -28,10 +29,12 @@
       href: security-control-incident-response.md
     - name: Penetratietests en Red Team-oefeningen
       href: security-control-penetration-tests-red-team-exercises.md
-- name: Beveiligingsbasislijnen
+- name: Beveiligingsbasislijnen voor Azure
   items:
-    - name: Overzicht van Azure-beveiligingsbasislijnen
+    - name: Overzicht van beveiligingsbasislijnen voor Azure
       href: security-baselines-overview.md
+    - name: API Management-beveiligingsbasislijn
+      href: ../../api-management/security-baseline.md
     - name: Azure Cache voor Redis-beveiligingsbasislijn
       href: ../../azure-cache-for-redis/security-baseline.md
     - name: Basislijn voor back-ups
@@ -44,8 +47,12 @@
       href: ../../cosmos-db/security-baseline.md
     - name: Basislijn voor Data Explorer-beveiliging
       href: /azure/data-explorer/security-baseline
+    - name: Databricks-beveiligingsbasislijn
+      href: ../../azure-databricks/security-baseline.md
     - name: Basislijn voor Event Hubs-beveiliging
       href: ../../event-hubs/security-baseline.md
+    - name: Functions-beveiligingsbasislijn
+      href: ../../azure-functions/security-baseline.md
     - name: Basislijn voor HDInsight-beveiliging
       href: ../../hdinsight/security-baseline.md
     - name: Basislijn voor Key Vault-beveiliging

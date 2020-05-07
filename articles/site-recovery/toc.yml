@@ -11,6 +11,9 @@
   items:
     - name: Een Azure-VM repliceren naar een andere regio
       href: azure-to-azure-quickstart.md
+    - name: Een kluis maken - ARM-sjabloon
+      displayName: Resource Manager
+      href: quickstart-create-vault-template.md
 - name: Zelfstudies
   items:
     - name: Herstel na noodgevallen van virtuele Azure-machines naar Azure
@@ -165,8 +168,6 @@
               href: azure-to-azure-about-networking.md
             - name: Netwerkconfiguraties van de beoogde Azure-VM aanpassen
               href: azure-to-azure-customize-networking.md
-            - name: Proxyinstellingen voor de Mobility-service configureren
-              href: configure-mobility-service-proxy-settings.md
             - name: Netwerktoewijzing instellen en IP-adressen behouden na een failover
               href: azure-to-azure-network-mapping.md
             - name: Voorbeelden voor het behouden van IP-adressen na een failover
@@ -191,6 +192,8 @@
               href: azure-to-azure-how-to-reprotect.md
             - name: Herstel na noodgevallen instellen voor virtuele Azure-machines na migratie naar Azure
               href: azure-to-azure-replicate-after-migration.md
+            - name: Herstel na noodgevallen van zone naar zone inschakelen
+              href: azure-to-azure-how-to-enable-zone-to-zone-disaster-recovery.md
         - name: Beheren
           items:
             - name: De Mobility-service bijwerken voor Azure VM's
@@ -241,7 +244,7 @@
               href: vmware-azure-set-up-replication.md
             - name: De Mobility-service implementeren
               items:
-                - name: Over de installatie van de Mobility-service
+                - name: Overzicht en installatie van de Mobility-service
                   href: vmware-physical-mobility-service-overview.md
                 - name: Voorbereiden op push-installatie
                   href: vmware-azure-install-mobility-service.md

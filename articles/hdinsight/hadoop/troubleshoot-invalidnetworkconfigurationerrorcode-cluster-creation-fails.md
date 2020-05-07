@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 01/22/2020
-ms.openlocfilehash: 6dd4db999cb130c9816ad023888a4333e968c224
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1fb5b78f210a9bd817a2987dcb30fa25d156d5d2
+ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76720381"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82780433"
 ---
 # <a name="cluster-creation-fails-with-invalidnetworkconfigurationerrorcode-in-azure-hdinsight"></a>Het maken van een cluster mislukt met InvalidNetworkConfigurationErrorCode in azure HDInsight
 
@@ -54,7 +54,7 @@ Fout beschrijving bevat ' kan geen verbinding maken met Azure Storage account ' 
 
 ### <a name="cause"></a>Oorzaak
 
-Azure Storage en SQL hebben geen vaste IP-adressen, dus moeten uitgaande verbindingen met alle Ip's worden toegestaan om toegang tot deze services toe te staan. De exacte stappen zijn afhankelijk van het feit of u een netwerk beveiligings groep (NSG) of door de gebruiker gedefinieerde regels (UDR) hebt ingesteld. Raadpleeg de sectie over het [beheren van netwerk verkeer met HDInsight met netwerk beveiligings groepen en door de gebruiker gedefinieerde routes](../hdinsight-plan-virtual-network-deployment.md#hdinsight-ip) voor meer informatie over deze configuraties.
+Azure Storage en SQL hebben geen vaste IP-adressen, dus moeten uitgaande verbindingen met alle Ip's worden toegestaan om toegang tot deze services toe te staan. De exacte stappen zijn afhankelijk van het feit of u een netwerk beveiligings groep (NSG) of door de gebruiker gedefinieerde regels (UDR) hebt ingesteld. Raadpleeg de sectie over het [beheren van netwerk verkeer met HDInsight met netwerk beveiligings groepen en door de gebruiker gedefinieerde routes](../control-network-traffic.md) voor meer informatie over deze configuraties.
 
 ### <a name="resolution"></a>Oplossing
 

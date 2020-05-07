@@ -426,6 +426,8 @@
               href: faq-voice-assistants.md
     - name: Aangepast trefwoord
       items:
+        - name: Overzicht van aangepaste trefwoorden
+          href: custom-keyword-overview.md
         - name: Richtlijnen voor naamgeving van aangepaste trefwoorden
           href: speech-devices-sdk-kws-guidelines.md
         - name: Aangepaste herkenning van trefwoorden
@@ -519,6 +521,10 @@
           href: speech-devices-sdk-roobo-v1.md
         - name: Details Roobo v2
           href: speech-devices-sdk-roobo-v2.md
+    - name: Instructiegidsen
+      items:
+        - name: Een microfoonmatrix configureren
+          href: how-to-devices-microphone-array-configuration.md
     - name: Snelstartgids
       items:
         - name: De Speech Devices SDK gebruiken

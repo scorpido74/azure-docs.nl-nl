@@ -1,274 +1,276 @@
 ---
-title: Een Aanbieding voor de Power BI-app maken - Azure Marketplace
-description: Meer informatie over het maken en publiceren van een Power BI-appaanbieding naar Microsoft AppSource.
+title: Een Power BI-app-aanbieding maken in micro soft Commercial Marketplace
+description: Meer informatie over het maken en publiceren van een Power BI-app-aanbieding naar Microsoft AppSource.
 author: anbene
 ms.author: mingshen
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 04/02/2020
-ms.openlocfilehash: dc036ae3cba6aa4d3a689562afffb991fadc8c0a
-ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
+ms.date: 05/01/2020
+ms.openlocfilehash: 17a6b7e46341ee0231ac88b849495cfc7e46ad88
+ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/22/2020
-ms.locfileid: "81867603"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82839144"
 ---
-# <a name="create-a-power-bi-app"></a>Een Power BI-app maken
+# <a name="create-a-power-bi-app-for-microsoft-appsource"></a>Een Power BI-app maken voor Microsoft AppSource
 
-> [!IMPORTANT]
-> We verplaatsen het beheer van uw Power BI-appaanbiedingen van Cloud Partner Portal naar Partner Center. Volg de instructies in Een Power [BI-app-aanbieding](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/power-bi/cpp-create-offer) voor Cloud Partner Portal maken om uw aanbiedingen te beheren totdat uw aanbiedingen zijn gemigreerd totdat uw aanbiedingen zijn gemigreerd.
+In dit artikel wordt beschreven hoe u een Power BI app-aanbieding maakt en publiceert naar micro soft [AppSource](https://appsource.microsoft.com/).
 
-In dit artikel wordt beschreven hoe u een Power BI-appaanbieding maakt en publiceert naar de Microsoft [AppSource.](https://appsource.microsoft.com/)
-
-Voordat u een Aanbieding voor een Power BI-app maken, moet u een account over een commerciële marktplaats hebben in het Partnercentrum. Zie [Een Commercieel Marketplace-account maken in het Partnercentrum-account](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account) als je er nog geen hebt gemaakt.
+Voordat u begint, moet u [een commercieel Marketplace-account maken in Partner Center](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account) als u dit nog niet hebt gedaan. Zorg ervoor dat uw account is inge schreven in het Commercial Marketplace-programma.
 
 ## <a name="create-a-new-offer"></a>Een nieuwe aanbieding maken
 
 1. Meld u aan bij [Partner Center](https://partner.microsoft.com/dashboard/home).
-2. Selecteer in het menu links navigatie de optie **Overzicht van commerciële marktplaatsen** > **.**
+2. Selecteer in het menu links de optie **commerciële Marketplace** > -**overzicht**.
+3. Selecteer op de pagina overzicht **+ nieuwe aanbieding** > **Power bi service-app**.
 
-    :::image type="content" source="media/power-bi-menu-overview.png" alt-text="overzicht van het commerciële marktplaatsmenu" border="false":::
+   ![Illustreert het navigatie menu.](./media/new-offer-pbi-app.png)
 
-3. Selecteer de**Power BI-app** **voor nieuw aanbod** > . Het dialoogvenster **Nieuwe aanbieding** wordt weergegeven.
+> [!NOTE]
+> Nadat een aanbieding is gepubliceerd, worden wijzigingen die in het partner centrum zijn aangebracht, alleen weer gegeven in de winkel wanneer u de aanbieding opnieuw publiceert. Zorg ervoor dat u altijd opnieuw publiceert nadat u wijzigingen hebt aangebracht.
 
 > [!IMPORTANT]
-> Als de optie **Power BI-app**&#39;niet wordt weergegeven of niet is ingeschakeld&#39;, heeft uw account&#39;geen toestemming om dit aanbiedingstype te maken. Controleer of je&#39;hebt voldaan aan alle [vereisten](create-power-bi-app-overview.md) voor dit aanbiedingstype, inclusief het registreren voor een ontwikkelaarsaccount
+> Als **Power bi service-app** niet wordt weer gegeven of ingeschakeld, is uw account niet gemachtigd om dit aanbiedings type te maken. Controleer of u voldoet aan alle [vereisten](create-power-bi-app-overview.md) voor dit aanbiedings type, inclusief registratie voor een ontwikkelaars account.
 
-### <a name="offer-id-and-alias"></a>Aanbiedings-ID en alias
+## <a name="new-offer"></a>Nieuwe aanbieding
 
-Voer een **aanbiedings-id in**. Dit is een unieke id voor elke aanbieding in uw account.
+Voer een **aanbiedings-id**in. Dit is een unieke id voor elke aanbieding in uw account.
 
-- Deze id is zichtbaar voor klanten in het webadres voor de marketplace-aanbieding en Azure Resource Manager-sjablonen, indien van toepassing.
-- Gebruik alleen kleine letters en cijfers. Het kan koppeltekens en underscores bevatten, maar geen spaties, en is beperkt tot 50 tekens. Als u bijvoorbeeld **test-aanbieding-1** invoert, wordt `https://azuremarketplace.microsoft.com/marketplace/../test-offer-1`het webadres van de aanbieding .
+- Deze ID is zichtbaar voor klanten in het webadres voor de Marketplace-aanbieding en Azure Resource Manager sjablonen, indien van toepassing.
+- Gebruik alleen kleine letters en cijfers. Dit kan afbreek streepjes en onderstrepings tekens bevatten, maar mag niet langer zijn dan 50. Als u hier bijvoorbeeld **test-aanbieding-1** invoert, is het webadres van de aanbieding `https://azuremarketplace.microsoft.com/marketplace/../test-offer-1`.
+- De aanbiedings-ID kan niet worden gewijzigd nadat u **maken**hebt geselecteerd.
 
-- De aanbiedings-id kan niet worden gewijzigd nadat u **Maken**hebt geselecteerd.
+Voer een **alias**voor de aanbieding in. Dit is de naam die wordt gebruikt voor de aanbieding in Partner Center.
 
-Voer een **aanbiedingsalias**in . Dit is de naam die wordt gebruikt om te verwijzen naar de aanbieding in Partner Center.
+- Deze naam wordt niet gebruikt in Marketplace en wijkt af van de naam van de aanbieding en andere waarden die aan klanten worden weer gegeven.
+- De aanbiedings alias kan niet worden gewijzigd nadat u **maken**hebt geselecteerd.
 
-- Deze naam wordt niet gebruikt in de markt en verschilt van de aanbiedingsnaam en andere waarden die aan klanten worden weergegeven.
-- Dit kan niet worden gewijzigd nadat u Maken hebt **geselecteerd.**
+Selecteer **maken** om de aanbieding te genereren en door te gaan.
 
-Nadat u deze twee waarden hebt ingevoerd, selecteert u **Maken** om door te gaan naar de pagina Weergaveoverzicht.
+## <a name="offer-overview"></a>Overzicht van aanbieding
 
-## <a name="offer-overview"></a>Aanbiedingsoverzicht
+Op deze pagina ziet u een visuele weer gave van de stappen die nodig zijn om deze aanbieding (zowel voltooid als gepland) te publiceren en hoe lang elke stap moet worden voltooid.
 
-De **overzichtspagina Aanbieding** toont een visuele weergave van de stappen die nodig zijn om deze aanbieding te publiceren (zowel voltooid als aanstaande) en hoe lang elke stap moet duren om te voltooien.
+Het bevat koppelingen voor het uitvoeren van bewerkingen op deze aanbieding op basis van de selectie die u maakt. Bijvoorbeeld:
 
-Het bevat koppelingen om bewerkingen uit te voeren op basis van de selectie die u maakt. Bijvoorbeeld:
+- Als de aanbieding een concept is- [concept verwijderen](https://docs.microsoft.com/azure/marketplace/partner-center-portal/update-existing-offer#delete-a-draft-offer)
+- Als de aanbieding Live is: [de aanbieding wordt niet meer verkocht](https://docs.microsoft.com/azure/marketplace/partner-center-portal/update-existing-offer#stop-selling-an-offer-or-plan)
+- Als de aanbieding in Preview- [Live](https://docs.microsoft.com/azure/marketplace/partner-center-portal/publishing-status#publisher-approval) staat
+- Als u Publisher-afmelding niet hebt voltooid, kunt u het [Publiceren annuleren](https://docs.microsoft.com/azure/marketplace/partner-center-portal/update-existing-offer#cancel-publishing)
 
-- Als de aanbieding een concept is - [Conceptvoorstel verwijderen](https://docs.microsoft.com/azure/marketplace/partner-center-portal/update-existing-offer#delete-a-draft-offer)
-- Als het aanbod live is - [Stop met de verkoop van het aanbod](https://docs.microsoft.com/azure/marketplace/partner-center-portal/update-existing-offer#stop-selling-an-offer-or-plan)
-- Als de aanbieding in preview is - [Go-live](https://docs.microsoft.com/azure/marketplace/partner-center-portal/publishing-status#publisher-approval)
-- Als u de afmelding van uitgevers nog niet hebt voltooid, [kunt u publiceren annuleren](https://docs.microsoft.com/azure/marketplace/partner-center-portal/update-existing-offer#cancel-publishing)
+## <a name="offer-setup"></a>Installatie van aanbieding
 
-## <a name="offer-setup"></a>Instelling voor aanbieding
+### <a name="connect-lead-management"></a>Lead beheer verbinden
 
-Volg deze stappen om uw aanbieding in te stellen.
+Wanneer u uw aanbieding naar Marketplace publiceert met partner centrum, moet u deze verbinden met het CRM-systeem (Customer Relationship Management). Zo kunt u contact gegevens van klanten ontvangen zodra iemand interesse in of gebruikt voor uw product.
 
-### <a name="connect-lead-management"></a>Leadbeheer verbinden
+1. Selecteer een leadbestemming waarnaar wij de klantenleads moeten sturen. Het partner Centrum ondersteunt de volgende CRM-systemen:
 
-Wanneer u uw aanbieding op de marktplaats publiceert met Partner Center, moet u deze koppelen aan uw CRM-systeem (Customer Relationship Management). Hiermee u klantcontactgegevens ontvangen zodra iemand interesse toont in of uw product gebruikt.
-
-1. Selecteer een leadbestemming waarnaar wij de klantenleads moeten sturen. Partnercenter ondersteunt de volgende CRM-systemen:
-
-    - [Dynamics 365](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-dynamics) voor customer engagement
+    - [Dynamics 365](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-dynamics) voor klant betrokkenheid
     - [Marketo](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-marketo)
     - [SalesForce](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-salesforce)
 
     > [!NOTE]
-    > Als uw CRM-systeem hierboven niet wordt vermeld, gebruikt u [Azure Table](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-azure-table) of [Https Endpoint](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-https) om klantgegevens op te slaan. Exporteer de gegevens vervolgens naar uw CRM-systeem.
+    > Als uw CRM-systeem niet hierboven wordt vermeld, gebruikt u [Azure Table](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-azure-table) of [https-eind punt](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-https) om klant lead gegevens op te slaan. Exporteer de gegevens vervolgens naar uw CRM-systeem.
 
-2. Verbind uw aanbieding met de hoofdbestemming wanneer u publiceert in partnercentrum.
-3. Controleer of de verbinding met de hoofdbestemming correct is geconfigureerd. Nadat u deze hebt gepubliceerd in het Partnercenter, valideren we de verbinding en sturen we u een testlead. Terwijl u een voorbeeld van de aanbieding bekijkt voordat deze live gaat, u ook uw leadverbinding testen door te proberen het aanbod zelf te kopen in de preview-omgeving.
-4. Zorg ervoor dat de verbinding met de hoofdbestemming up-to-date blijft, zodat u geen leads verliest.
+2. Verbind uw aanbieding met de doel locatie van de lead wanneer u publiceert in het partner centrum.
+3. Controleer of de verbinding met de doel locatie juist is geconfigureerd. Nadat u het in het partner centrum hebt gepubliceerd, valideren we de verbinding en sturen we u een test lead. Wanneer u een voor beeld van de aanbieding bekijkt voordat deze live gaat, kunt u ook uw lead verbinding testen door zelf te proberen de aanbieding aan te schaffen in de preview-omgeving.
+4. Zorg ervoor dat de verbinding met de doel locatie van de lead bijgewerkt blijft, zodat u geen leads kwijtraakt.
 
-Hier volgen enkele aanvullende bronnen voor leadbeheer:
+Hier volgen enkele aanvullende bronnen voor het beheer van leads:
 
-- [Overzicht van leadbeheer](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-get-customer-leads)
+- [Overzicht Lead beheer](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-get-customer-leads)
 - [Veelgestelde vragen over leadmanagement](https://docs.microsoft.com/azure/marketplace/lead-management-for-cloud-marketplace#frequently-asked-questions)
 - [Algemene leadconfiguratiefouten](https://docs.microsoft.com/azure/marketplace/lead-management-for-cloud-marketplace#common-lead-configuration-errors-during-publishing-on-cloud-partner-portal)
-- [Overzicht van leadbeheer](https://assetsprod.microsoft.com/mpn/cloud-marketplace-lead-management.pdf) PDF (zorg ervoor dat uw pop-upblokkering is uitgeschakeld)
+- [Overzicht Lead beheer](https://assetsprod.microsoft.com/mpn/cloud-marketplace-lead-management.pdf) PDF (zorg ervoor dat de pop-upblokkering is uitgeschakeld)
 
-Selecteer **Concept opslaan** voordat u doorgaat naar de volgende sectie, Eigenschappen.
+Selecteer **concept opslaan** voordat u doorgaat.
 
 ## <a name="properties"></a>Eigenschappen
 
-Op deze pagina u de categorieën en bedrijfstakken definiëren die worden gebruikt om uw aanbieding op de marktplaats, uw app-versie en de juridische contracten die uw aanbieding ondersteunen, te groeperen.
+Op deze pagina kunt u de categorieën en industrieën definiëren die worden gebruikt voor het groeperen van uw aanbieding op Marketplace, uw app-versie en de juridische contracten die uw aanbieding ondersteunen.
 
 ### <a name="category"></a>Categorie
 
-Selecteer minimaal één en maximaal drie categorieën. Deze categorieën worden gebruikt om uw aanbieding in de juiste zoekgebieden op marktplaats te plaatsen en worden weergegeven op uw pagina met aanbiedingsgegevens. Leg in de aanbiedingsbeschrijving uit hoe uw aanbieding deze categorieën ondersteunt.
+Selecteer mini maal één en Maxi maal drie categorieën. Deze categorieën worden gebruikt om uw aanbieding in de juiste Marketplace-Zoek gebieden te plaatsen en worden weer gegeven op de pagina met details van de aanbieding. In de beschrijving van de aanbieding wordt uitgelegd hoe uw aanbod deze categorieën ondersteunt.
 
 ### <a name="industry"></a>Branche
 
-Selecteer optioneel maximaal twee bedrijfstakken en twee verticalen onder elke bedrijfstak. Terwijl categorieën worden gebruikt voor het weergeven van uw aanbieding, worden branche en verticalen gebruikt in zoekfilters en worden ze toegepast in de Storefront. Als uw aanbod zich richt op een specifieke branche en/of verticaal, gebruikt u de aanbiedingsbeschrijving om uit te leggen hoe uw aanbod de geselecteerde industrieën of verticalen ondersteunt. Als uw aanbieding&#39;niet branchespecifiek is, laat u deze sectie leeg.
+Selecteer eventueel Maxi maal twee branches en twee verticalen onder elke branche. Hoewel categorieën worden gebruikt voor het weer geven van uw aanbieding, worden de industrie en de verticale wereld gebruikt in zoek filters en toegepast op de winkel. Als uw aanbieding gericht is op een specifieke branche en/of verticaal, gebruikt u de beschrijving van de aanbieding om uit te leggen hoe uw aanbod de geselecteerde branches of verticale waarden ondersteunt. Als uw aanbieding niet specifiek is voor de branche, laat u deze sectie leeg.
 
 > [!NOTE]
-> Terwijl we werken aan het introduceren van nieuwe industrieën en verticalen om de detectie-ervaring van het aanbod te verbeteren, zijn sommige industrieën of verticalen mogelijk nog niet zichtbaar op de Storefront. Industrieën en verticalen die zijn gemarkeerd met een (*) zullen beschikbaar zijn op een toekomstige datum. Alle gepubliceerde aanbiedingen zijn vindbaar via trefwoord zoeken.
+> We werken samen met het introduceren van nieuwe branches en verticalen om de ervaring voor de detectie van de aanbieding te verbeteren, maar sommige branches of verticalen zijn mogelijk nog niet zichtbaar op de winkel. Branches en verticale, gemarkeerd met een (*) zijn in de toekomst beschikbaar. Alle gepubliceerde aanbiedingen kunnen worden gedetecteerd via Zoek opdrachten met tref woorden.
 <p>&nbsp;
 
-| **Branche** | **Subindustrie** |
+| **Branche** | **Subsector** |
 | --- | --- |
-| *Automotive | *Automotive |
-| Landbouw | *Overig - Niet gesegmenteerd |
-| Distributie | *Groothandel<br>Verzending van pakketten en pakketten |
-| Education | *Hoger<br> onderwijs* Basis- en Voortgezet Onderwijs / K-12<br>*Bibliotheken en musea |
-| Financiële dienstverlening | *Bank- en<br> kapitaalmarkten* Verzekering |
-| Overheid | *Defensie en Intelligentie (vroeger nationale en<br> openbare veiligheid genoemd)* Openbare veiligheid en rechtvaardigheid<br>*Civiele regering |
-| Gezondheidszorg (vroeger gezondheid genoemd) | *Health Payor<br> * Zorgverlener<br>*Farmaceutische producten |
-| Productie en resources (vroeger Manufacturing genoemd) | *Chemische en<br> Agrochemische* Discrete productie<br>*Energie |
-| Retail en consumer goods (vroeger retail genoemd) | *Consumptiegoederen<br> * Detailhandelaren |
-| *Media en communicatie (heette vroeger Media en Entertainment) | *Media en<br> Entertainment* Telecommunicatie |
-| Professionele diensten | *Wettelijk<br> * Partner Professional Services |
-| *Architectuur en bouw (heette vroeger Architectuurtechniek) | *Overig - Niet gesegmenteerd |
-| *Gastvrijheid en reizen | *Hotels en<br> Vrije tijd* Reizen en vervoer<br>*Restaurants en foodservices |
-| *Andere bedrijfstakken van de publieke sector | *Bosbouw en<br> visserij* Nonprofits |
-| *Onroerend goed | *Overig - Niet gesegmenteerd |
+| * Automobiel | * Automobiel |
+| Landbouw | * Overig-niet-gesegmenteerd |
+| Distributie | * Groot handel<br>Pakje en pakket verzending |
+| Education | *Hoger onderwijs<br> * Primair en secundair onderwijs/K-12<br>* Bibliotheken en musea |
+| Financiële dienstverlening | *Bank-en kapitaal<br> markten* Polis |
+| Overheid | *Verdediging en intelligentie (wordt aangeduid met de naam National en open bare<br> veiligheid)* Open bare veiligheid en rechtvaardigheid<br>* Burger overheid |
+| Gezondheids zorg (gebruikt voor de status) | *Status betaler<br> * Health-provider<br>* Farmaceutische producten |
+| Productie en bronnen (gebruikt om productie te worden genoemd) | *Chemische en Agrochemical<br> * Discrete productie<br>* Energie |
+| Handels-en consumenten artikelen (gebruikt voor de verkoop van Retail) | *Consumenten goederen<br> * Handelaren |
+| * Media en communicatie (gebruikt voor het noemen van media en entertainment) | *Media en entertainment<br> * Telecom |
+| Professionele services | *Juridisch<br> * Partner Professional-Services |
+| * Architectuur en constructie (wordt gebruikt als architectuur techniek) | * Overig-niet-gesegmenteerd |
+| * Horeca en reizen | *Hotels en vrije<br> * tijd Reizen en Trans Port<br>* Restaurants en voedsel Services |
+| * Andere branches uit de open bare sector | *Bosbouw en visserij<br> * Profit organisaties |
+| * Onroerend goed | * Overig-niet-gesegmenteerd |
 
 ### <a name="legal"></a>Juridisch
 
 #### <a name="terms-and-conditions"></a>Voorwaarden
 
-Als u uw eigen aangepaste algemene voorwaarden wilt opgeven, voert u maximaal 10.000 tekens in het vak **Algemene voorwaarden** in. Als uw algemene voorwaarden een langere beschrijving vereisen, voert u één weblink in naar waar ze kunnen worden gevonden. Het zal worden weergegeven aan klanten als een actieve link.
+Als u uw eigen aangepaste voor waarden wilt opgeven, voert u Maxi maal 10.000 tekens in het vak **voor waarden** in. Als voor de voor waarden een langere beschrijving is vereist, voert u één webkoppeling in naar waar ze kunnen worden gevonden. Het wordt weer gegeven voor klanten als een actieve koppeling.
 
-Klanten moeten deze voorwaarden accepteren voordat ze uw aanbieding kunnen proberen.
+Klanten moeten deze voor waarden accepteren voordat ze uw aanbieding kunnen proberen.
 
-Selecteer **Concept opslaan** voordat u doorgaat naar de volgende sectie, Aanbieding smaken.
+Selecteer **concept opslaan** voordat u doorgaat naar de volgende sectie, aanbieding aanbieden.
 
-## <a name="offer-listing"></a>Aanbieding aanbieden
+## <a name="offer-listing"></a>Aanbieding weer geven
 
-Hier definieert u de aanbiedingsgegevens die op de markt worden weergegeven. Dit omvat de aanbiedingnaam, beschrijving, afbeeldingen, enzovoort.
+Hier definieert u de details van het aanbod dat op Marketplace wordt weer gegeven. Dit omvat de naam van de aanbieding, beschrijving, installatie kopieën, enzovoort.
 
 ### <a name="language"></a>Taal
 
-Selecteer de taal waarin uw aanbieding wordt weergegeven. Momenteel is **Engels (Verenigde Staten)** de enige beschikbare optie.
+Selecteer de taal waarin uw aanbieding wordt weer gegeven. **Engels (Verenigde Staten)** is momenteel de enige beschik bare optie.
 
-Definieer marktplaatsdetails (zoals aanbiedingsnaam, beschrijving en afbeeldingen) voor elke taal/markt. Selecteer de taal/marktnaam om deze informatie te verstrekken.
+Marketplace-gegevens (zoals aanbiedings naam, beschrijving en installatie kopieën) definiëren voor elke taal/markt. Selecteer de naam van de taal/markt om deze gegevens op te geven.
 
 > [!NOTE]
-> Aanbiedingdetails hoeven niet in het Engels te zijn als &quot;de aanbiedingsbeschrijving begint met de woordgroep, Deze toepassing is alleen beschikbaar in [niet-Engelse taal]. &quot; Het&#39;is ook goed om een nuttige link te bieden om inhoud aan te bieden in een taal die anders&#39;dan die in de aanbiedingsvermelding.
+> De details van de aanbieding hoeven niet in het Engels te zijn als de beschrijving van de aanbieding begint met de woord groep ' deze toepassing is alleen beschikbaar in [niet-Engelse taal] '. Het is ook handig om een nuttige koppeling te bieden om inhoud te bieden in een andere taal dan die wordt gebruikt in de aanbieding.
 
 ### <a name="name"></a>Naam
 
-De naam die u hier invoert, wordt weergegeven als de titel van uw aanbieding. Dit veld is vooraf gevuld met de tekst die u hebt ingevoerd in het vak **Alias aanbieden** toen u de aanbieding hebt gemaakt. U kunt deze naam later wijzigen.
+De naam die u hier opgeeft, wordt weer gegeven als de titel van uw aanbieding. Dit veld is vooraf ingevuld met de tekst die u hebt ingevoerd in het vak **aanbiedings alias** wanneer u de aanbieding hebt gemaakt. U kunt deze naam later wijzigen.
 
 De naam:
 
-- Kan een handelsmerk zijn (en u handelsmerk- of auteursrechtsymbolen opnemen).
-- Kan niet langer dan 50 tekens zijn.
-- Kan geen emoji's bevatten.
+- Kan worden gemerkt (en u kunt symbolen van het handels merk of copyright bevatten).
+- Mag niet langer zijn dan 50 tekens.
+- Kan geen emojis bevatten.
 
-### <a name="search-results-summary"></a>Overzicht van zoekresultaten
+### <a name="search-results-summary"></a>Samen vatting van zoek resultaten
 
-Geef een korte beschrijving van uw aanbod. Dit kan maximaal 100 tekens lang zijn en wordt gebruikt in de zoekresultaten van marktplaatsen.
+Geef een korte beschrijving van uw aanbieding. Dit kan Maxi maal 100 tekens lang zijn en wordt gebruikt in Zoek resultaten voor Marketplace.
 
 ### <a name="description"></a>Beschrijving
 
-Geef een langere beschrijving van uw aanbieding, tot 3.000 tekens. Dit wordt weergegeven aan klanten in het overzicht van de marktplaatsvermelding.
+Geef een langere beschrijving van uw aanbieding, Maxi maal 3.000 tekens. Dit wordt weer gegeven aan klanten in het overzicht van Marketplace-aanbiedingen.
 
-Neem een of meer van de volgende gegevens op in uw beschrijving:
+Neem een of meer van de volgende opties op in uw beschrijving:
 
-- De waarde en de belangrijkste voordelen van uw aanbod.
-- Categorie- of brancheorganisaties, of beide.
-- In-app aankoopmogelijkheden.
-- Alle vereiste onthullingen.
+- De waarde en belangrijkste voor delen van uw aanbieding bieden.
+- Categorie-of branche koppelingen, of beide.
+- Aankoop kansen in de app.
+- Alle vereiste informatie.
 
-Hier zijn enkele tips voor het schrijven van uw beschrijving:
+Hier volgen enkele tips voor het schrijven van uw beschrijving:
 
-- Beschrijf duidelijk de waarde van uw aanbieding in de eerste paar zinnen van uw beschrijving. Neem de volgende items op:
-  - Beschrijving van het aanbod.
-  - Het type gebruiker dat profiteert van het aanbod.
-  - De behoeften van de klant of geeft de aanbiedingsadressen uit.
-- Vergeet niet dat de eerste paar zinnen kunnen worden weergegeven in de zoekresultaten.
+- Geef in de eerste paar zinnen van uw beschrijving een duidelijke beschrijving van de waarde van uw aanbieding. De volgende items bevatten:
+  - De beschrijving van de aanbieding.
+  - Het type gebruiker dat voor deel is van de aanbieding.
+  - De klant heeft of de adressen van de aanbieding.
+- Houd er rekening mee dat de eerste paar zinnen kunnen worden weer gegeven in Zoek resultaten.
 - Vertrouw niet op functies en functionaliteit om uw product te verkopen. Richt u in plaats daarvan op de waarde die uw aanbieding biedt.
-- Probeer branchespecifieke woordenschat of op voordelen gebaseerde formuleringen te gebruiken.
+- Probeer branchespecifieke woorden lijsten of op basis van voor delen te gebruiken.
 
-Als u de **beschrijving van** uw aanbieding aantrekkelijker wilt maken, gebruikt u de editor voor rijke tekst om uw beschrijving op te maken. Met de rich text editor u getallen, opsommingstekens, vet, cursief en inspringingen toevoegen om uw beschrijving leesbaarder te maken.
+Als u de beschrijving van uw aanbieding aantrekkelijker wilt maken, gebruikt u de RTF-editor om opmaak toe te passen.
 
-:::image type="content" source="media/power-bi-rich-text-editor.png" alt-text="illustreert de rich text editor" border="false":::
+![De RTF-editor gebruiken](./media/rich-text-editor.png)
 
-### <a name="search-keywords"></a>Zoektrefwoorden
+| <center>Tekst indeling wijzigen | <center>Opsommings tekens of nummering toevoegen | <center>Tekst inspringen toevoegen of verwijderen |
+| --- | --- | --- |
+| <center>![De RTF-editor gebruiken om de tekst indeling te wijzigen](./media/text-editor3.png) |  <center>![De RTF-editor gebruiken om lijsten toe te voegen](./media/text-editor4.png) |  <center>![De Rich Text Editor gebruiken om in te springen](./media/text-editor5.png) |
 
-Voer maximaal drie optionele zoekwoorden in om klanten te helpen uw aanbieding op de marktplaats te vinden. Voor de beste resultaten, ook gebruik maken van deze zoekwoorden in uw beschrijving.
+### <a name="search-keywords"></a>Tref woorden zoeken
+
+Voer Maxi maal drie optionele Zoek trefwoorden in om klanten te helpen uw aanbieding op Marketplace te vinden. Voor de beste resultaten gebruikt u deze tref woorden ook in uw beschrijving.
 
 ### <a name="helpprivacy-web-addresses"></a>Help/Privacy-webadressen
 
-Geef links om klanten te helpen uw aanbod beter te begrijpen.
+Geef koppelingen op waarmee klanten beter inzicht kunnen krijgen in uw aanbieding.
 
 #### <a name="help-link"></a>Help-koppeling
 
-Voer het webadres in waar klanten meer te weten kunnen komen over uw aanbieding.
+Voer het webadres in waar klanten meer kunnen weten over uw aanbieding.
 
-#### <a name="privacy-policy-url"></a>URL van het privacybeleid
+#### <a name="privacy-policy-url"></a>URL van privacybeleid
 
-Voer het webadres in voor het privacybeleid van uw organisatie. U bent verantwoordelijk om ervoor te zorgen dat uw aanbod voldoet aan de privacywet- en regelgeving. Je bent ook verantwoordelijk voor het plaatsen van een geldig privacybeleid op je website.
+Voer het webadres in voor het privacybeleid van uw organisatie. U bent verantwoordelijk om ervoor te zorgen dat uw aanbieding voldoet aan de wetten en voor schriften van de privacy. U bent ook verantwoordelijk voor het posten van een geldig privacybeleid op uw website.
 
 ### <a name="contact-information"></a>Contactgegevens
 
-U moet de naam, e-mail en het telefoonnummer opgeven voor een **contactpersoon voor ondersteuning** en een contactpersoon voor **engineering.** Deze informatie wordt&#39;niet aan klanten getoond. Het is beschikbaar voor Microsoft en kan worden verstrekt aan Cloud Solution Provider (CSP) partners.
+U moet de naam, het e-mail adres en het telefoon nummer opgeven voor een **ondersteunings contact** en een **technische contact persoon**. Deze informatie wordt niet weer gegeven aan klanten. Het is beschikbaar voor micro soft en kan worden meegeleverd met de Cloud Solution Provider (CSP)-partners.
 
-- Ondersteuningscontact (vereist): voor algemene ondersteuningsvragen.
-- Technische contactpersoon (vereist): Voor technische vragen en certificeringsproblemen.
-- CSP-programmacontact (optioneel): voor resellervragen met betrekking tot het CSP-programma.
+- Ondersteunings contact (vereist): voor algemene ondersteunings vragen.
+- Technische contact persoon (vereist): voor technische vragen en certificerings problemen.
+- CSP-programma: Neem contact op met de leverancier van het CSP-programma.
 
-Geef in de sectie **Contactpersoon ondersteuning** het webadres van de **ondersteuningswebsite** op waar partners ondersteuning voor uw aanbieding kunnen vinden.
+Geef in de sectie **ondersteuning voor contact persoon** het webadres op van de **ondersteunings website** waar partners ondersteuning voor uw aanbieding kunnen vinden.
 
-### <a name="supporting-documents"></a>Bewijsstukken
+### <a name="supporting-documents"></a>Ondersteunende documenten
 
-Geef ten minste één en maximaal drie gerelateerde marketingdocumenten op in PDF-formaat. Bijvoorbeeld whitepapers, brochures, checklists of presentaties.
+Geef ten minste één en Maxi maal drie gerelateerde marketing documenten op in PDF-indeling. Bijvoorbeeld white papers, brochures, controle lijsten of presentaties.
 
-### <a name="marketplace-images"></a>Marketplace-afbeeldingen
+### <a name="marketplace-images"></a>Marketplace-installatie kopieën
 
-Geef logo's en afbeeldingen om te gebruiken met uw aanbod. Alle afbeeldingen moeten in .png-indeling zijn. Wazige afbeeldingen worden afgewezen.
+Bied logo's en installatie kopieën die u kunt gebruiken met uw aanbieding. Alle installatie kopieën moeten de PNG-indeling hebben. Vage afbeeldingen worden geweigerd.
 
->[!Note]
->Als u een probleem hebt met het uploaden van https://upload.xboxlive.com bestanden, controleert u of uw lokale netwerk de service die door het Partnercentrum wordt gebruikt, niet blokkeert.
+>[!NOTE]
+>Als u een probleem hebt met het uploaden van bestanden, moet u ervoor zorgen dat uw https://upload.xboxlive.com lokale netwerk de door Partner Center gebruikte service niet blokkeert.
 
-#### <a name="store-logos"></a>Winkellogo's
+#### <a name="store-logos"></a>Winkel logo's
 
-Geef .png-bestanden van uw aanbieding&#39;s-logo in twee formaten: **klein** (48 x 48 pixels) en **Groot** (216 x 216 pixels).
+Geef PNG-bestanden van het logo van uw aanbieding op in twee pixel grootten:
+- **Klein** (48 x 48)
+- **Groot** (216 x 216)
 
-Beide logo's zijn vereist en worden gebruikt op verschillende plaatsen in de marktplaats vermelding.
+Beide logo's zijn vereist en worden gebruikt op verschillende plaatsen in de Marketplace-vermelding.
 
 #### <a name="screenshots"></a>Schermopnamen
 
-Voeg ten minste één en maximaal vijf screenshots toe die laten zien hoe uw aanbieding werkt. Elk moet 1280 x 720 pixels groot en in .png-formaat hebben.
+Voeg minstens één en Maxi maal vijf scherm opnamen toe die laten zien hoe uw aanbieding werkt. Elk moet 1280 x 720 pixels groot zijn en de indeling. png.
 
 #### <a name="videos-optional"></a>Video's (optioneel)
 
-Voeg maximaal vijf video's toe die je aanbod demonstreren. Voer de video&#39;s naam, het webadres en de miniatuur .png-afbeelding van de video met een grootte van 1280 x 720 pixels in.
+Voeg Maxi maal vijf Video's toe die uw aanbieding aantonen. Voer de naam van de video, het webadres en de miniatuur. PNG-afbeelding van de video in op 1280 x 720 pixels.
 
-#### <a name="additional-marketplace-listing-resources"></a>Aanvullende bronnen voor marktplaatsvermeldingen
+#### <a name="additional-marketplace-listing-resources"></a>Aanvullende bronnen voor Marketplace-lijst
 
-Zie Aanbevolen aanbiedingsaanbiedingen aanbieden voor meer informatie over het maken van [aanbiedingsaanbiedingen.](https://docs.microsoft.com/azure/marketplace/gtm-offer-listing-best-practices)
+Zie [Aanbevolen procedures](https://docs.microsoft.com/azure/marketplace/gtm-offer-listing-best-practices)voor aanbieding voor meer informatie over het maken van aanbiedingen.
 
 ## <a name="technical-configuration"></a>Technische configuratie
 
-Promoot uw app in Power BI-service in productie en bied de installatiekoppeling van de Power BI-app waarmee klanten uw app kunnen installeren. Zie [Apps publiceren met dashboards en rapporten publiceren in Power BI](https://docs.microsoft.com/power-bi/service-create-distribute-apps)voor meer informatie.
+Promoot uw app in Power BI service voor productie en bied de installatie koppeling van het Power BI app waarmee klanten uw app kunnen installeren. Zie [apps publiceren met Dash boards en rapporten in Power bi](https://docs.microsoft.com/power-bi/service-create-distribute-apps)voor meer informatie.
 
 ## <a name="supplemental-content"></a>Aanvullende inhoud
 
-Geef aanvullende informatie over uw aanbieding om ons te helpen deze te valideren. Deze informatie wordt&#39;niet aan klanten getoond of op de marktplaats gepubliceerd.
+Geef aanvullende informatie over uw aanbieding zodat wij deze kunnen valideren. Deze informatie wordt niet weer gegeven aan klanten of gepubliceerd op Marketplace.
 
-### <a name="validation-assets"></a>Validatie-elementen
+### <a name="validation-assets"></a>Validatie-assets
 
-Voeg eventueel instructies (maximaal 3000 tekens) toe om het Microsoft-validatieteam te helpen uw app te configureren, verbinding te maken en te testen. Voeg typische configuratie-instellingen, accounts, parameters of andere informatie toe die kunnen worden gebruikt om de optie Gegevens verbinden te testen. Deze informatie is alleen zichtbaar voor het validatieteam en wordt alleen gebruikt voor validatiedoeleinden.
+Voeg desgewenst instructies (Maxi maal 3.000 tekens) toe om het micro soft-validatie team te helpen bij het configureren, verbinden en testen van uw app. Bevatten typische configuratie-instellingen, accounts, para meters of andere informatie die kan worden gebruikt voor het testen van de optie gegevens verbinding maken. Deze informatie is alleen zichtbaar voor het validatie team en wordt alleen voor validatie doeleinden gebruikt.
 
-## <a name="review-and-publish"></a>Bekijken en publiceren
+## <a name="review-and-publish"></a>Controleren en publiceren
 
-Nadat u alle vereiste onderdelen van de aanbieding hebt&#39;voltooid, u uw voorstel indienen om te bekijken en te publiceren.
+Nadat u alle vereiste gedeelten van de aanbieding hebt voltooid, kunt u uw aanbieding verzenden om deze te controleren en te publiceren.
 
-Selecteer in de rechterbovenhoek van de portal de optie **Controleren en publiceren**.
+Selecteer in de rechter bovenhoek van de portal **controleren en publiceren**.
 
-Op de review pagina u:
+Op de pagina controleren kunt u het volgende doen:
 
-- Zie de voltooiingsstatus voor elk gedeelte van de aanbieding. U&#39;niet publiceren totdat alle gedeelten van de aanbieding als voltooid zijn gemarkeerd.
-  - **Niet gestart** - De sectie is nog niet gestart en moet worden voltooid.
-  - **Onvolledig** - De sectie bevat fouten die moeten worden opgelost of waarvoor u meer informatie moet verstrekken. Zie de secties eerder in dit document voor richtlijnen.
-  - **Compleet** - De sectie bevat alle vereiste gegevens en er zijn geen fouten. Alle onderdelen van de aanbieding moeten volledig zijn voordat u de aanbieding indienen.
-- Geef het certificeringsteam testinstructies om ervoor te zorgen dat uw app correct is getest. Geef ook aanvullende notities die nuttig zijn voor het begrijpen van uw aanbod.
+- Bekijk de voltooiings status voor elke sectie van de aanbieding. U kunt pas publiceren als alle secties van de aanbieding zijn gemarkeerd als voltooid.
+  - **Niet gestart** : de sectie is niet gestart en moet worden voltooid.
+  - **Onvolledig** : de sectie bevat fouten die moeten worden hersteld of waarvoor u meer informatie moet opgeven. Zie de secties eerder in dit document voor meer informatie.
+  - **Voltooid** : de sectie bevat alle vereiste gegevens en er zijn geen fouten. Alle onderdelen van de aanbieding moeten volledig zijn voordat u de aanbieding kunt indienen.
+- Geef test instructies op het certificerings team om te controleren of uw app correct is getest. Geef ook aanvullende notities op die handig zijn voor het leren van uw aanbieding.
 
-Als u de publicatieaanbieding wilt indienen, selecteert u **Publiceren**.
+Selecteer **publiceren**om de aanbieding voor publicatie in te dienen.
 
-We sturen je een e-mail om je te laten weten wanneer een preview-versie van de aanbieding beschikbaar is om te bekijken en goed te keuren. Als u uw aanbieding wilt publiceren naar het publiek (of als een privé-aanbieding, naar een privépubliek) gaat, gaat u naar partnercentrum en selecteert **u Go-live.**
+We sturen u een e-mail om u te laten weten wanneer een preview-versie van de aanbieding beschikbaar is om te controleren en goed te keuren. Als u uw aanbieding naar het publiek (of als een privé-aanbieding, naar een privé-publiek) wilt publiceren, gaat u naar partner centrum en selecteert u **Go-Live**.

@@ -13,18 +13,18 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 04/20/2020
 ms.author: apimpm
-ms.openlocfilehash: 0f8d9d7d90e88b4e43721dac274833a3b0df275e
-ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
+ms.openlocfilehash: 17c92558ebef2eee0a4daead45d16a295cedd1bb
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82203145"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82790476"
 ---
 # <a name="how-to-deploy-an-azure-api-management-service-instance-to-multiple-azure-regions"></a>Exemplaar van Azure API Management-service implementeren in meerdere Azure-regio's
 
 Azure API Management ondersteunt implementatie met meerdere regio's, waarmee API-uitgevers één Azure API Management-service kunnen distribueren over een wille keurig aantal ondersteunde Azure-regio's. Met de functie voor meerdere regio's kunt u de latentie van aanvragen beperken die wordt waargenomen door geografisch gedistribueerde API-consumenten en de beschik baarheid van de service verbeteren als de ene regio offline gaat.
 
-Een nieuwe Azure API Management-service bevat in eerste instantie slechts één [eenheid][unit] in één Azure-regio, de primaire regio. Extra regio's kunnen worden toegevoegd aan de primaire of secundaire regio's. Een API Management Gateway onderdeel wordt geïmplementeerd op elke geselecteerde primaire en secundaire regio. Binnenkomende API-aanvragen worden automatisch omgeleid naar de dichtstbijzijnde regio. Als een regio offline gaat, worden de API-aanvragen automatisch omgeleid naar de defecte regio naar de dichtstbijzijnde gateway.
+Een nieuwe Azure API Management-service bevat in eerste instantie slechts één [eenheid][unit] in één Azure-regio, de primaire regio. Extra eenheden kunnen worden toegevoegd aan de primaire of secundaire regio's. Een API Management Gateway onderdeel wordt geïmplementeerd op elke geselecteerde primaire en secundaire regio. Binnenkomende API-aanvragen worden automatisch omgeleid naar de dichtstbijzijnde regio. Als een regio offline gaat, worden de API-aanvragen automatisch omgeleid naar de defecte regio naar de dichtstbijzijnde gateway.
 
 > [!NOTE]
 > Alleen het gateway onderdeel van API Management wordt geïmplementeerd in alle regio's. Het Service Management-onderdeel en de ontwikkelaars Portal worden alleen gehost in de primaire regio. In het geval van de onderbreking van de primaire regio, wordt de toegang tot de ontwikkelaars Portal en de mogelijkheid om de configuratie te wijzigen (bijvoorbeeld het toevoegen van Api's, het Toep assen van beleid) verstoord tot de primaire regio weer online is. Terwijl de primaire regio offline beschikbaar is, blijven secundaire regio's het API-verkeer verwerken met de meest recente configuratie die voor hen beschikbaar is.
