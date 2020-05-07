@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 04/01/2020
-ms.openlocfilehash: 0f815003449f0600bce1cb8927b92b85b51b09a1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: da01d0f7d2313b9700c5aae08edbda9e355b3774
+ms.sourcegitcommit: c8a0fbfa74ef7d1fd4d5b2f88521c5b619eb25f8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81641622"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82801770"
 ---
 # <a name="how-to-work-with-search-results-in-azure-cognitive-search"></a>Werken met zoek resultaten in azure Cognitive Search
 
@@ -92,9 +92,15 @@ Een andere optie is het gebruik van een [aangepast Score profiel](index-add-scor
 
 ## <a name="hit-highlighting"></a>Markeren
 
-Treffer markeringen verwijst naar tekst opmaak (zoals vette of gele hooglichten) die wordt toegepast op de overeenkomende term in een resultaat, waardoor het gemakkelijk is om de overeenkomst te herkennen. Instructies voor het markeren van treffers worden vermeld in de [query-aanvraag](https://docs.microsoft.com/rest/api/searchservice/search-documents). De zoek machine omsluit de overeenkomende term in tags `highlightPreTag` en `highlightPostTag`de code verwerkt de reactie (bijvoorbeeld het Toep assen van een vet letter type).
+Treffer markeringen verwijst naar tekst opmaak (zoals vette of gele hooglichten) die wordt toegepast op overeenkomende termen in een resultaat, zodat u de overeenkomst eenvoudig kunt herkennen. Instructies voor het markeren van treffers worden vermeld in de [query-aanvraag](https://docs.microsoft.com/rest/api/searchservice/search-documents). 
 
-De opmaak wordt toegepast op volledige term query's. In het volgende voor beeld zijn de termen "zand", "zand", "stranden", "strand" in het veld Beschrijving gemarkeerd voor markeren. Query's die query-uitbrei ding activeren in de-engine, zoals fuzzy en zoeken met Joker tekens, hebben beperkte ondersteuning voor het markeren van treffers.
+Als u het markeren van treffers `highlight=[comma-delimited list of string fields]` wilt inschakelen, voegt u in om op te geven welke velden markeringen zullen gebruiken. Markeren is handig voor meer inhouds velden, zoals een beschrijvings veld, waarbij de overeenkomst niet onmiddellijk duidelijk is. Alleen veld definities die als **doorzoekbaar** zijn gemarkeerd, komen in aanmerking voor treffer markeringen.
+
+Azure Cognitive Search retourneert standaard Maxi maal vijf hooglichten per veld. U kunt dit nummer aanpassen door toe te voegen aan het veld een streepje gevolgd door een geheel getal. `highlight=Description-10` Retourneert bijvoorbeeld Maxi maal 10 hooglichten voor overeenkomende inhoud in het veld Beschrijving.
+
+De opmaak wordt toegepast op volledige term query's. Het type opmaak wordt bepaald door tags `highlightPreTag` en `highlightPostTag`en uw code verwerkt het antwoord (bijvoorbeeld het Toep assen van een vet letter type of een gele achtergrond).
+
+In het volgende voor beeld zijn de termen "zand", "zand", "stranden", "strand" in het veld Beschrijving gemarkeerd voor markeren. Query's die query-uitbrei ding activeren in de-engine, zoals fuzzy en zoeken met Joker tekens, hebben beperkte ondersteuning voor het markeren van treffers.
 
 ```http
 GET /indexes/hotels-sample-index/docs/search=sandy beaches&highlight=Description?api-version=2019-05-06 

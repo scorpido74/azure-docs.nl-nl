@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 02/18/2020
-ms.openlocfilehash: 12bf807f5866567508b644105f377cfde1494250
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: HT
+ms.openlocfilehash: ba8c35fc1802f7ef3ac54c693c8106bbc40cc185
+ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81410767"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82560159"
 ---
 # <a name="copy-data-to-or-from-azure-data-explorer-by-using-azure-data-factory"></a>Gegevens kopiëren van of naar Azure Data Explorer met behulp van Azure Data Factory
 
@@ -155,7 +155,7 @@ Als u gegevens wilt kopiëren uit Azure Data Explorer, stelt u de eigenschap **t
 >[!NOTE]
 >Data Explorer bron van Azure heeft standaard een maximale grootte van 500.000 records of 64 MB. Als u alle records zonder afkap Ping wilt ophalen, kunt u `set notruncation;` aan het begin van de query opgeven. Zie [query limieten](https://docs.microsoft.com/azure/kusto/concepts/querylimits)voor meer informatie.
 
-**Hierbij**
+**Voorbeeld:**
 
 ```json
 "activities":[
@@ -196,9 +196,9 @@ Als u gegevens wilt kopiëren naar Azure Data Explorer, stelt u de eigenschap ty
 |:--- |:--- |:--- |
 | type | De eigenschap **type** van de Sink voor kopieer activiteiten moet worden ingesteld op: **AzureDataExplorerSink**. | Ja |
 | ingestionMappingName | Naam van een vooraf gemaakte [toewijzing](/azure/kusto/management/mappings#csv-mapping) in een Kusto-tabel. Als u de kolommen van de bron wilt toewijzen aan Azure Data Explorer (wat van toepassing is op [alle ondersteunde bron archieven en-indelingen](copy-activity-overview.md#supported-data-stores-and-formats), waaronder CSV/JSON-AVRO), kunt u de [kolom toewijzing](copy-activity-schema-and-type-mapping.md) van de Kopieer activiteit (impliciet op naam of expliciet als geconfigureerd) en/of Azure Data Explorer toewijzingen gebruiken. | Nee |
-| additionalProperties | Een eigenschappen verzameling die kan worden gebruikt voor het opgeven van de opname-eigenschappen die niet al worden ingesteld door de Azure Data Explorer sink. Het is met name handig om opname Tags op te geven. Meer informatie over het [gegevens opname document van Azure data verkennen](https://kusto.azurewebsites.net/docs/management/data-ingestion/index.html). | Nee |
+| additionalProperties | Een eigenschappen verzameling die kan worden gebruikt voor het opgeven van de opname-eigenschappen die niet al worden ingesteld door de Azure Data Explorer sink. Het is met name handig om opname Tags op te geven. Meer informatie over het [gegevens opname document van Azure data verkennen](https://docs.microsoft.com/azure/data-explorer/ingestion-properties). | Nee |
 
-**Hierbij**
+**Voorbeeld:**
 
 ```json
 "activities":[

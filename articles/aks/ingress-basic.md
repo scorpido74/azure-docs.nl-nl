@@ -4,13 +4,13 @@ titleSuffix: Azure Kubernetes Service
 description: Meer informatie over het installeren en configureren van een Basic NGINX ingress-controller in een Azure Kubernetes service-cluster (AKS).
 services: container-service
 ms.topic: article
-ms.date: 12/20/2019
-ms.openlocfilehash: fc995bc14cd1267da3379890c5be56840487d049
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
-ms.translationtype: HT
+ms.date: 04/27/2020
+ms.openlocfilehash: e5b3d1c94de8406c12222eea59beafd7277d646d
+ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82207459"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82561961"
 ---
 # <a name="create-an-ingress-controller-in-azure-kubernetes-service-aks"></a>Een ingangs controller maken in azure Kubernetes service (AKS)
 
@@ -27,7 +27,7 @@ U kunt ook het volgende doen:
 
 ## <a name="before-you-begin"></a>Voordat u begint
 
-In dit artikel wordt gebruikgemaakt van [helm 3][helm] voor het installeren van de NGINX ingress-controller en een voor beeld-web-app.
+In dit artikel wordt gebruikgemaakt van [helm 3][helm] om de NGINX ingress-controller te installeren.
 
 Voor dit artikel moet u ook de Azure CLI-versie 2.0.64 of hoger uitvoeren. Voer `az --version` uit om de versie te bekijken. Als u Azure CLI 2.0 wilt installeren of upgraden, raadpleegt u [Azure CLI 2.0 installeren][azure-cli-install].
 
@@ -41,7 +41,7 @@ De ingangscontroller moet ook worden gepland op een Linux-knooppunt. Windows Ser
 > In het volgende voor beeld wordt een Kubernetes-naam ruimte gemaakt voor de ingangs resources met de naam *ingress-Basic*. Geef waar nodig een naam ruimte op voor uw eigen omgeving.
 
 > [!TIP]
-> Als u [IP-behoud van client bronnen][client-source-ip] wilt inschakelen voor aanvragen voor containers in uw cluster, voegt `--set controller.service.externalTrafficPolicy=Local` u toe aan de helm-installatie opdracht. Het bron-IP-adres van de client wordt opgeslagen in de aanvraag header onder *X-doorgestuurd-voor*. Bij gebruik van een ingangs controller waarvoor IP-behoud door client bron is ingeschakeld, werkt TLS Pass-Through niet.
+> Als u [IP-behoud van client bronnen][client-source-ip] wilt inschakelen voor aanvragen voor containers in uw cluster, voegt `--set controller.service.externalTrafficPolicy=Local` u toe aan de helm-installatie opdracht. Het bron-IP-adres van de client wordt opgeslagen in de aanvraag header onder *X-doorgestuurd-voor*. Bij gebruik van een ingangs controller waarvoor IP-behoud door client bronnen is ingeschakeld, werkt SSL Pass-Through niet.
 
 ```console
 # Create a namespace for your ingress resources
@@ -72,34 +72,96 @@ Er zijn nog geen regels voor binnenkomend verkeer gemaakt, dus de standaard 404-
 
 ## <a name="run-demo-applications"></a>Demo toepassingen uitvoeren
 
-Als u de ingangs controller in actie wilt zien, gaan we twee demonstratie toepassingen uitvoeren in uw AKS-cluster. In dit voor beeld wordt helm gebruikt om twee exemplaren van een eenvoudige *Hello World* -toepassing te implementeren.
+Als u de ingangs controller in actie wilt zien, voert u twee demonstratie toepassingen uit in uw AKS-cluster. In dit voor beeld gebruikt `kubectl apply` u om twee exemplaren van een eenvoudige *Hello World* -toepassing te implementeren.
 
-Voordat u de voor beelden van helm-grafieken kunt installeren, moet u de opslag plaats voor Azure samples als volgt toevoegen aan uw helm-omgeving:
+Maak een *AKS-HelloWorld-One. yaml-* bestand en kopieer het in het volgende voor beeld YAML:
 
-```console
-helm repo add azure-samples https://azure-samples.github.io/helm-charts/
+```yml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: aks-helloworld-one
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: aks-helloworld-one
+  template:
+    metadata:
+      labels:
+        app: aks-helloworld-one
+    spec:
+      containers:
+      - name: aks-helloworld-one
+        image: neilpeterson/aks-helloworld:v1
+        ports:
+        - containerPort: 80
+        env:
+        - name: TITLE
+          value: "Welcome to Azure Kubernetes Service (AKS)"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: aks-helloworld-one
+spec:
+  type: ClusterIP
+  ports:
+  - port: 80
+  selector:
+    app: aks-helloworld-one
 ```
 
-Maak de eerste demo toepassing vanuit een helm-diagram met de volgende opdracht:
+Maak een *AKS-HelloWorld-twee. yaml-* bestand en kopieer het in het volgende voor beeld YAML:
 
-```console
-helm install aks-helloworld azure-samples/aks-helloworld --namespace ingress-basic
+```yml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: aks-helloworld-two
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: aks-helloworld-two
+  template:
+    metadata:
+      labels:
+        app: aks-helloworld-two
+    spec:
+      containers:
+      - name: aks-helloworld-two
+        image: neilpeterson/aks-helloworld:v1
+        ports:
+        - containerPort: 80
+        env:
+        - name: TITLE
+          value: "AKS Ingress Demo"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: aks-helloworld-two
+spec:
+  type: ClusterIP
+  ports:
+  - port: 80
+  selector:
+    app: aks-helloworld-two
 ```
 
-Installeer nu een tweede exemplaar van de voorbeeld toepassing. Voor het tweede exemplaar geeft u een nieuwe titel op zodat de twee toepassingen visueel worden onderscheiden. U geeft ook een unieke service naam op:
+Voer de twee demo toepassingen uit `kubectl apply`met:
 
 ```console
-helm install aks-helloworld-two azure-samples/aks-helloworld \
-    --namespace ingress-basic \
-    --set title="AKS Ingress Demo" \
-    --set serviceName="aks-helloworld-two"
+kubectl apply -f aks-helloworld-one.yaml --namespace ingress-basic
+kubectl apply -f aks-helloworld-two.yaml --namespace ingress-basic
 ```
 
 ## <a name="create-an-ingress-route"></a>Een ingangs route maken
 
 Beide toepassingen worden nu uitgevoerd op uw Kubernetes-cluster. Als u verkeer naar elke toepassing wilt routeren, maakt u een Kubernetes-ingangs bron. De ingangs resource configureert de regels die verkeer routeren naar een van de twee toepassingen.
 
-In het volgende voor beeld wordt verkeer naar *EXTERNAL_IP* doorgestuurd naar de service met de `aks-helloworld`naam. Verkeer naar *EXTERNAL_IP/Hello-World-Two* wordt doorgestuurd naar de `aks-helloworld-two` service. Verkeer naar *EXTERNAL_IP/static* wordt doorgestuurd naar de service met de `aks-helloworld` naam voor statische activa.
+In het volgende voor beeld wordt verkeer naar *EXTERNAL_IP* doorgestuurd naar de service met de `aks-helloworld-one`naam. Verkeer naar *EXTERNAL_IP/Hello-World-Two* wordt doorgestuurd naar de `aks-helloworld-two` service. Verkeer naar *EXTERNAL_IP/static* wordt doorgestuurd naar de service met de `aks-helloworld-one` naam voor statische activa.
 
 Maak een bestand met `hello-world-ingress.yaml` de naam en kopieer het in het volgende voor beeld YAML.
 
@@ -118,7 +180,7 @@ spec:
   - http:
       paths:
       - backend:
-          serviceName: aks-helloworld
+          serviceName: aks-helloworld-one
           servicePort: 80
         path: /(.*)
       - backend:
@@ -140,7 +202,7 @@ spec:
   - http:
       paths:
       - backend:
-          serviceName: aks-helloworld
+          serviceName: aks-helloworld-one
           servicePort: 80
         path: /static(/|$)(.*)
 ```
@@ -176,12 +238,6 @@ Als u de volledige voorbeeld naam ruimte wilt verwijderen `kubectl delete` , geb
 kubectl delete namespace ingress-basic
 ```
 
-Verwijder vervolgens de helm-opslag plaats voor de AKS Hallo wereld-app:
-
-```console
-helm repo remove azure-samples
-```
-
 ### <a name="delete-resources-individually"></a>Resources afzonderlijk verwijderen
 
 U kunt ook een nauw keurigere benadering van de gemaakte afzonderlijke resources verwijderen. Vermeld de helm-releases met `helm list` de opdracht. Zoek naar grafieken met de naam *nginx-ingangs* en *AKS-HelloWorld*, zoals wordt weer gegeven in de volgende voorbeeld uitvoer:
@@ -190,25 +246,22 @@ U kunt ook een nauw keurigere benadering van de gemaakte afzonderlijke resources
 $ helm list --namespace ingress-basic
 
 NAME                    NAMESPACE       REVISION        UPDATED                                 STATUS          CHART                   APP VERSION
-aks-helloworld          ingress-basic   1               2020-01-06 19:57:00.131576 -0600 CST    deployed        aks-helloworld-0.1.0               
-aks-helloworld-two      ingress-basic   1               2020-01-06 19:57:10.971365 -0600 CST    deployed        aks-helloworld-0.1.0               
 nginx-ingress           ingress-basic   1               2020-01-06 19:55:46.358275 -0600 CST    deployed        nginx-ingress-1.27.1    0.26.1  
 ```
 
-Verwijder de releases met de `helm delete` opdracht. In het volgende voor beeld worden de implementaties van NGINX-inkomend en de twee voor beelden van de AKS Hello World-apps verwijderd.
+Verwijder de releases met de `helm uninstall` opdracht. In het volgende voor beeld wordt de implementatie van de NGINX-ingang verwijderd.
 
 ```
-$ helm delete aks-helloworld aks-helloworld-two nginx-ingress --namespace ingress-basic
+$ helm uninstall nginx-ingress --namespace ingress-basic
 
-release "aks-helloworld" uninstalled
-release "aks-helloworld-two" uninstalled
 release "nginx-ingress" uninstalled
 ```
 
-Verwijder vervolgens de helm-opslag plaats voor de AKS Hallo wereld-app:
+Verwijder vervolgens de twee voorbeeld toepassingen:
 
 ```console
-helm repo remove azure-samples
+kubectl delete -f aks-helloworld-one.yaml --namespace ingress-basic
+kubectl delete -f aks-helloworld-two.yaml --namespace ingress-basic
 ```
 
 Verwijder de ingangs route die het verkeer naar de voor beeld-apps doorstuurt:

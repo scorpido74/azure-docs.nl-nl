@@ -3,14 +3,14 @@ title: Sjabloonimlementatie wat-als (preview)
 description: Bepaal welke wijzigingen er in uw resources optreden voordat u een Azure Resource Manager sjabloon implementeert.
 author: mumian
 ms.topic: conceptual
-ms.date: 04/28/2020
+ms.date: 04/29/2020
 ms.author: jgao
-ms.openlocfilehash: f13789912e5b801295f1f926a12db50849cd75d8
-ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
+ms.openlocfilehash: 70023f4fa5d44c74c7ce14f3a2c09ff14c9d2f8c
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 04/29/2020
-ms.locfileid: "82509581"
+ms.locfileid: "82581198"
 ---
 # <a name="arm-template-deployment-what-if-operation-preview"></a>Wat als'-bewerking van ARM-sjabloon implementatie (preview-versie)
 
@@ -106,7 +106,7 @@ Als u de wijzigingen wilt bekijken voordat u een sjabloon `-Whatif` implementeer
 * `New-AzResourceGroupDeployment -Whatif`voor implementaties van resource groepen
 * `New-AzSubscriptionDeployment -Whatif`en `New-AzDeployment -Whatif` voor implementaties op abonnements niveau
 
-U kunt ook de `-Confirm` para meter switch gebruiken om de wijzigingen te bekijken en u wordt gevraagd om door te gaan met de implementatie.
+U kunt de `-Confirm` para meter switch gebruiken om de wijzigingen te bekijken en u wordt gevraagd om door te gaan met de implementatie.
 
 * `New-AzResourceGroupDeployment -Confirm`voor implementaties van resource groepen
 * `New-AzSubscriptionDeployment -Confirm`en `New-AzDeployment -Confirm` voor implementaties op abonnements niveau
@@ -123,10 +123,10 @@ Als u de wijzigingen wilt bekijken voordat u een `what-if` sjabloon implementeer
 * `az deployment group what-if`voor implementaties van resource groepen
 * `az deployment sub what-if`voor implementaties op abonnements niveau
 
-U kunt ook de `--confirm-with-what-if` para meter gebruiken om de wijzigingen te bekijken en u wordt gevraagd om door te gaan met de implementatie.
+U kunt de `--confirm-with-what-if` switch (of het bijbehorende korte formulier `-c`) gebruiken om de wijzigingen te bekijken en u wordt gevraagd om door te gaan met de implementatie.
 
-* `az deployment group create --confirm-with-what-if`voor implementaties van resource groepen
-* `az deployment sub create --confirm-with-what-if`voor implementaties op abonnements niveau
+* `az deployment group create --confirm-with-what-if`of `-c` voor implementaties van resource groepen
+* `az deployment sub create --confirm-with-what-if`of `-c` voor implementaties op abonnements niveau
 
 De voor gaande opdrachten retour neren een tekst samenvatting die u hand matig kunt controleren. Als u een JSON-object wilt ophalen dat u programmatisch kunt controleren op wijzigingen, gebruikt u:
 
@@ -340,7 +340,7 @@ results=$(az deployment group what-if --resource-group ExampleGroup --template-u
 
 De bewerking What-if ondersteunt het gebruik van de [implementatie modus](deployment-modes.md). Als deze modus is ingesteld op volt ooien, worden de resources die niet in de sjabloon staan, verwijderd. In het volgende voor beeld wordt een [sjabloon geïmplementeerd waarvoor geen resources zijn gedefinieerd](https://github.com/Azure/azure-docs-json-samples/blob/master/empty-template/azuredeploy.json) in de volledige modus.
 
-Als u de wijzigingen wilt bekijken voordat u een sjabloon `-Confirm` implementeert, gebruikt u de para meter switch met de implementatie opdracht. Als de wijzigingen naar verwachting zijn, moet u bevestigen dat u de implementatie wilt volt ooien.
+Als u de wijzigingen wilt bekijken voordat u een sjabloon implementeert, gebruikt u de para meter switch bevestigen met de implementatie opdracht. Als de wijzigingen naar verwachting zijn, moet u bevestigen dat u de implementatie wilt volt ooien.
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 

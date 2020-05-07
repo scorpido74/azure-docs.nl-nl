@@ -5,16 +5,16 @@ author: mjrousos
 ms.topic: conceptual
 ms.date: 01/23/2018
 ms.author: mikerou
-ms.openlocfilehash: ffe07960c6d32bea8ec31b1fe8248b6abc2b63af
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: bd7c57f3089115e4da861fc8fd20331ab92bc33e
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75458281"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82787104"
 ---
 # <a name="scale-a-service-fabric-cluster-programmatically"></a>Een Service Fabric cluster via een programma schalen 
 
-Service Fabric clusters die worden uitgevoerd in azure, zijn gebouwd op schaal sets van virtuele machines.  [Cluster schaalt](./service-fabric-cluster-scale-up-down.md) een beschrijving van hoe service Fabric clusters hand matig of met regels voor automatisch schalen kunnen worden geschaald. In dit artikel wordt beschreven hoe u referenties beheert en een cluster in-of uitschaalt met behulp van de Fluent Azure Compute SDK, een meer geavanceerd scenario. Lees voor een overzicht de [programmatische methoden voor het coördineren van Azure-schaal bewerkingen](service-fabric-cluster-scaling.md#programmatic-scaling). 
+Service Fabric clusters die worden uitgevoerd in azure, zijn gebouwd op schaal sets van virtuele machines.  [Cluster schaalt](./service-fabric-cluster-scale-in-out.md) een beschrijving van hoe service Fabric clusters hand matig of met regels voor automatisch schalen kunnen worden geschaald. In dit artikel wordt beschreven hoe u referenties beheert en een cluster in-of uitschaalt met behulp van de Fluent Azure Compute SDK, een meer geavanceerd scenario. Lees voor een overzicht de [programmatische methoden voor het coördineren van Azure-schaal bewerkingen](service-fabric-cluster-scaling.md#programmatic-scaling). 
 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
@@ -119,6 +119,6 @@ await client.ClusterManager.RemoveNodeStateAsync(mostRecentLiveNode.NodeName);
 
 Raadpleeg de volgende concepten en nuttige Api's om aan de slag te gaan met het implementeren van uw eigen logica voor automatisch schalen:
 
-- [Hand matig schalen of met regels voor automatisch schalen](./service-fabric-cluster-scale-up-down.md)
+- [Hand matig schalen of met regels voor automatisch schalen](./service-fabric-cluster-scale-in-out.md)
 - [Fluent Azure-beheer bibliotheken voor .net](https://github.com/Azure/azure-sdk-for-net/tree/Fluent) (geschikt voor interactie met de onderliggende virtuele-machine schaal sets van een service Fabric cluster)
 - [System. Fabric. FabricClient](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient) (handig voor interactie met een service Fabric cluster en de bijbehorende knoop punten)

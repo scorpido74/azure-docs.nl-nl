@@ -6,12 +6,12 @@ ms.author: msangapu
 ms.date: 08/12/2019
 ms.topic: quickstart
 ms.devlang: javascript
-ms.openlocfilehash: 24b93e9722ff399330b6843f065f183a3b1f5181
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 52466bac083f78002a8208ba52ca7d1b951c4064
+ms.sourcegitcommit: c8a0fbfa74ef7d1fd4d5b2f88521c5b619eb25f8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82202556"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82801481"
 ---
 # <a name="create-a-nodejs-app-in-azure"></a>Een node. js-app maken in azure
 
@@ -25,13 +25,13 @@ U moet [Visual Studio code](https://code.visualstudio.com/) installeren, samen m
 
 U moet ook de [Azure app service-extensie](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azureappservice)installeren, die u kunt gebruiken voor het maken, beheren en implementeren van Linux-web apps op het Azure-Platform as a Service (PaaS).
 
-### <a name="sign-in"></a>Aanmelden
+### <a name="sign-in"></a>Hier
 
 Nadat de extensie is geïnstalleerd, meldt u zich aan bij uw Azure-account. Selecteer in de activiteiten balk het Azure-logo om de **Azure app service** Explorer weer te geven. Selecteer **Aanmelden bij Azure...** en volg de instructies.
 
 ![aanmelden bij Azure](./media/quickstart-nodejs/sign-in.png)
 
-### <a name="troubleshooting"></a>Problemen oplossen
+### <a name="troubleshooting"></a>Probleemoplossing
 
 Als u de fout melding **' kan geen abonnement vinden met de naam [abonnements-id] '** ziet, kan het zijn dat u zich achter een proxy bevindt en de Azure API niet kunt bereiken. Configureer `HTTP_PROXY` en `HTTPS_PROXY` omgevings variabelen met uw proxy gegevens in uw Terminal `export`met behulp van.
 
@@ -134,7 +134,7 @@ Selecteer in de Verkenner van **Azure app service** het pictogram met de blauwe 
 
 Zodra de implementatie is voltooid, selecteert u **Bladeren website** in de prompt om uw nieuw geïmplementeerde web-app weer te geven.
 
-### <a name="troubleshooting"></a>Problemen oplossen
+### <a name="troubleshooting"></a>Probleemoplossing
 
 Als u de fout **' u bent niet gemachtigd om deze map of pagina weer te geven '** ziet, kan de toepassing waarschijnlijk niet correct worden gestart. Kop naar de volgende sectie en bekijkt u de logboek uitvoer om de fout te vinden en op te lossen. Als u het niet kunt oplossen, neemt u contact met ons op door de onderstaande knop met **een probleem** te selecteren. We helpen u graag!
 
@@ -151,7 +151,7 @@ In deze sectie leert u hoe u de logboeken van de actieve App Service-app kunt we
 
 Zoek de app in de **Azure app service** Explorer, klik met de rechter muisknop op de app en kies **streaming-logboeken weer geven**.
 
-Wanneer u hierom wordt gevraagd, kiest u logboek registratie inschakelen en start u de toepassing opnieuw. Zodra de app opnieuw is opgestart, wordt het venster VS code uitvoer geopend met een verbinding met de logboek stroom.
+Het VS code-uitvoer venster wordt geopend met een verbinding met de logboek stroom.
 
 ![Streaming-logboeken weer geven](./media/quickstart-nodejs/view-logs.png)
 

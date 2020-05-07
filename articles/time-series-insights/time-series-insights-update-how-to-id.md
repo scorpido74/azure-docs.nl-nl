@@ -8,14 +8,14 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 02/07/2020
+ms.date: 05/05/2020
 ms.custom: seodec18
-ms.openlocfilehash: a62c2460698408f6a2bfa51c6638bdeaf88bb31f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: faf98d4fc5bf6c7028cf7d20bdf8df89fb3d533b
+ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77083524"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82838719"
 ---
 # <a name="best-practices-for-choosing-a-time-series-id"></a>Aanbevolen procedures voor het kiezen van een time series-ID
 
@@ -27,6 +27,7 @@ Het selecteren van de juiste tijd reeks-ID is van cruciaal belang. Het kiezen va
 
 > [!IMPORTANT]
 > De time series-Id's zijn:
+>
 > * Een *hoofdletter gevoelige* eigenschap: letter-en teken-darmen worden gebruikt in Zoek opdrachten, vergelijkingen, updates en het partitioneren van partities.
 > * Een *onveranderbare* eigenschap: zodra deze is gemaakt, kan deze niet meer worden gewijzigd.
 
@@ -56,7 +57,7 @@ In de volgende scenario's wordt het selecteren van meer dan één sleutel eigens
 
 ### <a name="example-2-time-series-id-with-a-composite-key"></a>Voor beeld 2: een tijd reeks-ID met een samengestelde sleutel
 
-* U wilt dat meerdere eigenschappen uniek zijn binnen dezelfde vloot van activa. 
+* U wilt dat meerdere eigenschappen uniek zijn binnen dezelfde vloot van activa.
 * U bent een fabrikant van Smart gebouwen en implementeert Sens oren in elke kamer. In elke ruimte hebt u doorgaans dezelfde waarden voor **sensorId**. Voor beelden zijn **sensor1**, **sensor2**en **sensor3**.
 * Uw gebouw heeft overlappende vloer-en kamer nummers tussen sites in de eigenschap **flrRm**. Deze getallen hebben waarden als **1a**, **2b**en **3a**.
 * U hebt een eigenschap, **locatie**, die waarden bevat zoals **Redmond**, **Barcelona**en **Tokyo**. Als u een uniek karakter wilt maken, wijst u de volgende drie eigenschappen toe als uw tijd reeks-ID-sleutels: **sensorId**, **flrRm**en **locatie**.
@@ -72,7 +73,7 @@ Voor beeld van onbewerkte gebeurtenis:
 }
 ```
 
-In de Azure Portal, kunt u de samengestelde sleutel als volgt invoeren: 
+In de Azure Portal, kunt u de samengestelde sleutel als volgt invoeren:
 
 ```JSON
 [{"name":"sensorId","type":"String"},{"name":"flrRm","type":"String"},{"name":"location","type":"string"}]

@@ -1,44 +1,41 @@
 ---
-title: Dash board voor beoordelingen en beoordelingen in commerciële Marketplace Analytics op partner centrum
-description: Meer informatie over het openen van een geconsolideerde weer gave van feedback van klanten voor uw aanbiedingen op Azure Marketplace en AppSource.
+title: Beoordelings & beoordelingen analyse dashboard in partner centrum
+description: Meer informatie over het openen van een geconsolideerde weer gave van feedback van klanten voor uw aanbiedingen op Microsoft AppSource en Azure Marketplace.
 author: dsindona
 ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 12/11/2019
-ms.openlocfilehash: 405ba37fd10fa48bf45f1031d2e9b5b17620ea0a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a7ed477ea095defa27878e8f4a84162043829273
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81262414"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82792918"
 ---
-# <a name="ratings-and-reviews-dashboard-in-commercial-marketplace-analytics"></a>Dash board voor beoordelingen en beoordelingen in commerciële Marketplace-analyses
+# <a name="ratings--reviews-analytics-dashboard-in-partner-center"></a>Beoordelings & beoordelingen analyse dashboard in partner centrum
 
-Dit artikel bevat informatie over het dash board beoordelingen & beoordelingen in het partner centrum. Dit dash board geeft een geconsolideerde weer gave van feedback van klanten voor aanbiedingen op Azure Marketplace en AppSource.
-
-Als u het **dash board beoordelingen & beoordelingen** in de Partner Center Analytics Tools wilt openen, opent u het dash board **[analyseren](https://partner.microsoft.com/dashboard/commercial-marketplace/analytics/summary)** onder commerciële Marketplace.
-
->[!NOTE]
-> Zie [Veelgestelde vragen en terminologie voor de analyse van commerciële Marketplace](./faq-terminology.md)voor gedetailleerde definities van analyse terminologie.
-
-## <a name="ratings--reviews"></a>Beoordelingen & beoordelingen
-
-Als klanten bladeren, zoek acties en aanbiedingen kopen in beide marketplaces, kunnen ze beoordelingen en beoordelingen geven voor de aanbiedingen die ze hebben verkregen.
+Dit artikel bevat informatie over het dash board beoordelingen & beoordelingen in het partner centrum. Dit dash board geeft een geconsolideerde weer gave van feedback van klanten voor aanbiedingen op Microsoft AppSource en Azure Marketplace. Als klanten bladeren, zoek acties en aanbiedingen kopen in beide marketplaces, kunnen ze beoordelingen en beoordelingen geven voor de aanbiedingen die ze hebben verkregen.
 
 - Klanten kunnen een nieuwe beoordeling indienen of een bestaande beoordeling bekijken en bijwerken of bekijken. Klanten kunnen alleen wijzigingen aanbrengen in de beoordelingen en beoordelingen waarvan ze eigenaar zijn.  
 - Beoordelingen worden op het tabblad Recensies op de pagina product weergave van de aanbieding in azure Marketplace of AppSource geplaatst. Klanten kunnen hun naam of anoniem op post toevoegen.  
 
-In het **dash board beoordelingen & beoordeling** worden de trends en inzichten van deze activiteit door klanten weer gegeven. U kunt een grafische weer gave van de volgende items bekijken:
+>[!NOTE]
+> Zie [Veelgestelde vragen en terminologie voor de analyse van commerciële Marketplace](./faq-terminology.md)voor gedetailleerde definities van analyse terminologie.
+
+## <a name="access-the-dashboard"></a>Het dash board openen
+
+Vouw in het [dash board commerciële Marketplace](https://partner.microsoft.com/en-us/dashboard/commercial-marketplace/overview) in partner centrum het gedeelte **[analyseren](https://partner.microsoft.com/dashboard/commercial-marketplace/analytics/summary)** uit en selecteer **beoordelingen & beoordelingen**.
+
+Het dash board geeft een grafische weer gave van de volgende activiteit van de klant:
 
 - Beoordelingen & beoordelingen  
 - Opmerkingen controleren
 
-Met de **tabbladen Marketplace-winkel** kunnen uitgevers hun metrische aanbod gegevens afzonderlijk weer geven op de AppSource & Azure Marketplace-tabbladen. Selecteer de aanbieding in de vervolg keuzelijst aanbieding om de metrische gegevens voor de specifieke aanbieding weer te geven.
+Gebruik de tabbladen **Marketplace-winkel** om uw aanbieding Microsoft AppSource en de metrische gegevens van Azure Marketplace afzonderlijk weer te geven. Selecteer de aanbieding in de vervolg keuzelijst aanbieding om de metrische gegevens voor de specifieke aanbieding weer te geven.
 
-
-### <a name="ratings-and-reviews-summary"></a>Overzicht van beoordelingen en beoordelingen
+### <a name="ratings--reviews-summary"></a>Overzicht van beoordelingen & beoordelingen
 
 De overzichts sectie beoordelings & beoordelingen bevat de metrische gegevens hieronder voor een geselecteerd datum bereik:
 

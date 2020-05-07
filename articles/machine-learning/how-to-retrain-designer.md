@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.author: keli19
 author: likebupt
 ms.date: 04/06/2020
-ms.openlocfilehash: 721e5414fc4753cd5d58a17fc7ed51ea99868778
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 77c1cc6ef5a7353d246958d1b047f054d5f49890
+ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80810391"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82837155"
 ---
 # <a name="retrain-models-with-azure-machine-learning-designer-preview"></a>Modellen opnieuw trainen met de Azure Machine Learning-ontwerpfunctie (preview)
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
@@ -32,13 +32,7 @@ In dit artikel leert u het volgende:
 ## <a name="prerequisites"></a>Vereisten
 
 * Een Azure Machine Learning-werk ruimte met de Enter prise-SKU.
-* Een gegevensset die toegankelijk is voor de ontwerper. Dit kan een van de volgende zijn:
-   * Een Azure Machine Learning geregistreerde gegevensset
-    
-     **of**
-   * Een gegevens bestand dat is opgeslagen in een Azure Machine Learning Data Store.
-   
-Zie [gegevens importeren in de ontwerp functie](how-to-designer-import-data.md)voor meer informatie over gegevens toegang met behulp van de ontwerp functie.
+* Voltooi deel 1 van deze instructie-to-reeks, zet [gegevens om in de ontwerp functie](how-to-designer-transform-data.md).
 
 In dit artikel wordt ervan uitgegaan dat u basis kennis hebt van het bouwen van pijp lijnen in de ontwerp functie. Voor een begeleide Inleiding voltooit u de [zelf studie](tutorial-designer-automobile-price-train-score.md). 
 

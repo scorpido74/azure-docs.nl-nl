@@ -1,5 +1,5 @@
 ---
-title: Werk-of school account sluiten in een niet-beheerde Azure AD-adres lijst
+title: Werk-of school account sluiten in een niet-beheerde Azure AD-organisatie
 description: Uw werk-of school account sluiten in een onbeheerde Azure Active Directory.
 services: active-directory
 author: rolyon
@@ -13,18 +13,18 @@ ms.author: rolyon
 ms.reviewer: ''
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3c101c0ef7932151e675c5c514ac558e6e0f94b2
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.openlocfilehash: 11c337f4838279771523a1f375b7349387d68f45
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "73815725"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82582546"
 ---
-# <a name="close-your-work-or-school-account-in-an-unmanaged-directory"></a>Uw werk-of school account sluiten in een niet-beheerde map
+# <a name="close-your-work-or-school-account-in-an-unmanaged-azure-ad-organization"></a>Uw werk-of school account sluiten in een niet-beheerde Azure AD-organisatie
 
-Als u een gebruiker in een niet-beheerde Azure Active Directory-organisatie (Azure AD) bent en u niet langer apps van die organisatie wilt gebruiken of een koppeling ermee wilt behouden, kunt u uw account op elk gewenst moment sluiten. Een onbeheerde map heeft geen globale beheerder. Gebruikers in een onbeheerde map kunnen hun eigen accounts ook op hun eigen account sluiten zonder dat ze contact hoeven op te nemen met een beheerder.
+Als u een gebruiker in een niet-beheerde Azure Active organization-organisatie (Azure AD) bent en u niet langer apps van die organisatie wilt gebruiken of een koppeling ermee wilt onderhouden, kunt u uw account op elk gewenst moment sluiten. Een onbeheerde organisatie heeft geen globale beheerder. Gebruikers in een onbeheerde organisatie kunnen hun accounts zelf sluiten zonder dat ze contact hoeven op te nemen met een beheerder.
 
-Gebruikers in een map die niet wordt beheerd, worden vaak gemaakt tijdens het aanmelden met een self-service. Een voor beeld hiervan is een informatie medewerker in een organisatie die zich aanmeldt voor een gratis service. Zie [Wat is self-service registratie voor Azure Active Directory?](directory-self-service-signup.md)voor meer informatie over selfservice registratie.
+Gebruikers in een onbeheerde organisatie worden vaak gemaakt tijdens het aanmelden door de selfservice. Een voor beeld hiervan is een informatie medewerker in een organisatie die zich aanmeldt voor een gratis service. Zie [Wat is self-service registratie voor Azure Active Directory?](directory-self-service-signup.md)voor meer informatie over selfservice registratie.
 
 [!INCLUDE [GDPR-related guidance](../../../includes/gdpr-intro-sentence.md)]
 
@@ -32,7 +32,7 @@ Gebruikers in een map die niet wordt beheerd, worden vaak gemaakt tijdens het aa
 
 Voordat u uw account kunt sluiten, moet u de volgende items bevestigen:
 
-* Zorg ervoor dat u een gebruiker bent van een onbeheerde Azure AD-adres lijst. U kunt uw account niet sluiten als u deel uitmaakt van een beheerde map. Als u deel uitmaakt van een beheerde map en u uw account wilt sluiten, neemt u contact op met uw beheerder. Zie [de gebruiker verwijderen uit een niet-beheerde Tenant](https://docs.microsoft.com/flow/gdpr-dsr-delete#delete-the-user-from-unmanaged-tenant)voor informatie over hoe u kunt bepalen of u tot een niet-beheerde Directory behoort.
+* Zorg ervoor dat u een gebruiker bent van een onbeheerde Azure AD-organisatie. U kunt uw account niet sluiten als u deel uitmaakt van een beheerde organisatie. Als u deel uitmaakt van een beheerde organisatie en u uw account wilt sluiten, neemt u contact op met uw beheerder. Zie [de gebruiker verwijderen uit een niet-beheerde Tenant](https://docs.microsoft.com/flow/gdpr-dsr-delete#delete-the-user-from-unmanaged-tenant)voor informatie over hoe u kunt bepalen of u behoort tot een niet-beheerde organisatie.
 
 * Sla de gegevens op die u wilt bewaren. Zie door het [systeem gegenereerde logboeken voor niet-beheerde tenants openen en exporteren](https://docs.microsoft.com/power-platform/admin/powerapps-gdpr-dsr-guide-systemlogs#accessing-and-exporting-system-generated-logs-for-unmanaged-tenants)voor meer informatie over het verzenden van een aanvraag voor exporteren.
 

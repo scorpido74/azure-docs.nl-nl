@@ -6,18 +6,18 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.custom: hdinsightactive,hdiseo17may2017
-ms.date: 04/16/2020
-ms.openlocfilehash: 26695df299ba5d0f50c8f271b5da99284a8d6764
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: hdinsightactive,hdiseo17may2017,seoapr2020
+ms.date: 04/27/2020
+ms.openlocfilehash: 48bd53160c3d2e76dccd1f22723c30c2c7e00d7a
+ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81531130"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82559949"
 ---
 # <a name="use-apache-spark-mllib-to-build-a-machine-learning-application-and-analyze-a-dataset"></a>Apache Spark MLlib gebruiken om een machine learning-toepassing te bouwen en een gegevensset te analyseren
 
-Meer informatie over het gebruik van Apache Spark [MLlib](https://spark.apache.org/mllib/) voor het maken van een machine learning-toepassing. De toepassing zal voorspellende analyse uitvoeren op een open gegevensset. Uit de ingebouwde machine learning bibliotheken van Spark gebruikt dit voor beeld *classificatie* door middel van logistiek regressie.
+Meer informatie over het gebruik van Apache Spark MLlib voor het maken van een machine learning-toepassing. De toepassing zal voorspellende analyse uitvoeren op een open gegevensset. Uit de ingebouwde machine learning bibliotheken van Spark gebruikt dit voor beeld *classificatie* door middel van logistiek regressie.
 
 MLlib is een belang rijke Spark-bibliotheek die veel hulpprogram ma's biedt die nuttig zijn voor machine learning taken, zoals:
 
@@ -180,7 +180,7 @@ Laten we een idee krijgen van wat de gegevensset bevat.
 
     ![SQL-query-uitvoer](./media/apache-spark-machine-learning-mllib-ipython/spark-machine-learning-query-output.png "SQL-query-uitvoer")
 
-3. U kunt ook [matplotlib](https://en.wikipedia.org/wiki/Matplotlib)gebruiken, een bibliotheek die wordt gebruikt om visualisatie van gegevens te maken, om een plot te creëren. Omdat het waarnemings punt moet worden gemaakt van de lokaal blijvende persistente **countResultsdf** -data frame, moet het code fragment `%%local` beginnen met het Magic. Met deze actie zorgt u ervoor dat de code lokaal wordt uitgevoerd op de Jupyter-server.
+3. U kunt ook matplotlib gebruiken, een bibliotheek die wordt gebruikt om visualisatie van gegevens te maken, om een plot te creëren. Omdat het waarnemings punt moet worden gemaakt van de lokaal blijvende persistente **countResultsdf** -data frame, moet het code fragment `%%local` beginnen met het Magic. Met deze actie zorgt u ervoor dat de code lokaal wordt uitgevoerd op de Jupyter-server.
 
     ```PySpark
     %%local
@@ -362,28 +362,5 @@ Wanneer u klaar bent met het uitvoeren van de toepassing, moet u het notitie blo
 ## <a name="next-steps"></a>Volgende stappen
 
 * [Overzicht: Apache Spark in Azure HDInsight](apache-spark-overview.md)
-
-### <a name="scenarios"></a>Scenario's
-
-* [Apache Spark met BI: interactieve gegevens analyse met behulp van Spark in HDInsight met BI-hulpprogram ma's](apache-spark-use-bi-tools.md)
-* [Apache Spark met Machine Learning: Spark in HDInsight gebruiken voor het analyseren van de gebouw temperatuur met behulp van HVAC-gegevens](apache-spark-ipython-notebook-machine-learning.md)
 * [Analyse van website logboeken met Apache Spark in HDInsight](apache-spark-custom-library-website-log-analysis.md)
-
-### <a name="create-and-run-applications"></a>Toepassingen maken en uitvoeren
-
-* [Een zelfstandige toepassing maken met behulp van Scala](apache-spark-create-standalone-application.md)
-* [Apache Livy gebruiken om taken op afstand uit te voeren in een Apache Spark-cluster](apache-spark-livy-rest-interface.md)
-
-### <a name="tools-and-extensions"></a>Tools en uitbreidingen
-
-* [De invoegtoepassing HDInsight Tools for IntelliJ IDEA gebruiken om Spark Scala-toepassingen te maken en in te dienen](apache-spark-intellij-tool-plugin.md)
-* [De invoeg toepassing HDInsight tools for IntelliJ-idee gebruiken om op afstand fouten in Apache Spark toepassingen op te sporen](apache-spark-intellij-tool-plugin-debug-jobs-remotely.md)
-* [Apache Zeppelin-notebooks gebruiken met een Apache Spark-cluster in HDInsight](apache-spark-zeppelin-notebook.md)
-* [Kernels die beschikbaar zijn voor Jupyter notebook in Apache Spark cluster voor HDInsight](apache-spark-jupyter-notebook-kernels.md)
-* [Externe pakketten gebruiken met Jupyter-notebooks](apache-spark-jupyter-notebook-use-external-packages.md)
-* [Jupyter op uw computer installeren en verbinding maken met een HDInsight Spark-cluster](apache-spark-jupyter-notebook-install-locally.md)
-
-### <a name="manage-resources"></a>Resources beheren
-
-* [Resources beheren voor het Apache Spark-cluster in Azure HDInsight](apache-spark-resource-manager.md)
-* [Taken die worden uitgevoerd in een Apache Spark-cluster in HDInsight, traceren en er fouten in oplossen](apache-spark-job-debugging.md)
+* [Microsoft Cognitive Toolkit diepe leer model met Azure HDInsight](apache-spark-microsoft-cognitive-toolkit.md)

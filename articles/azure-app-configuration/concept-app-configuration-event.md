@@ -29,7 +29,7 @@ Bekijk de [Route Azure-app configuratie gebeurtenissen naar een aangepast webein
 ## <a name="available-azure-app-configuration-events"></a>Beschik bare Azure-app configuratie gebeurtenissen
 Event grid gebruikt [gebeurtenis abonnementen](../event-grid/concepts.md#event-subscriptions) om gebeurtenis berichten te routeren naar abonnees. Azure-app configuratie gebeurtenis abonnementen kunnen twee typen gebeurtenissen bevatten:  
 
-> |Naam van de gebeurtenis|Beschrijving|
+> |Gebeurtenisnaam|Beschrijving|
 > |----------|-----------|
 > |`Microsoft.AppConfiguration.KeyValueModified`|Wordt geactiveerd wanneer een sleutel waarde wordt gemaakt of vervangen|
 > |`Microsoft.AppConfiguration.KeyValueDeleted`|Wordt geactiveerd wanneer een sleutel waarde wordt verwijderd|

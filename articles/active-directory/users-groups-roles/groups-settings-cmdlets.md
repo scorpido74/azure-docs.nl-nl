@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9d56bb7c30a8289fe7f261979dca6a4ffe2bfe99
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b50118dcd4bf0fafa3e25399cf7d82558b7c776c
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80048141"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82582791"
 ---
 # <a name="azure-active-directory-cmdlets-for-configuring-group-settings"></a>Azure Active Directory cmdlets voor het configureren van groepsinstellingen
 
@@ -160,7 +160,7 @@ Dit zijn de instellingen die zijn gedefinieerd in de groep. Unified SettingsTemp
 |  <ul><li>AllowGuestsToBeGroupOwner<li>Type: Booleaans<li>Standaard: onwaar | Een Booleaanse waarde die aangeeft of een gast gebruiker een eigenaar van groepen kan zijn. |
 |  <ul><li>AllowGuestsToAccessGroups<li>Type: Booleaans<li>Standaard: True | Een Booleaanse waarde die aangeeft of een gast gebruiker toegang kan hebben tot de inhoud van de Office 365-groep.  Voor deze instelling is geen Azure Active Directory Premium P1-licentie vereist.|
 |  <ul><li>GuestUsageGuidelinesUrl<li>Type: String<li>Standaard: | De URL van een koppeling naar de richt lijnen voor gast gebruik. |
-|  <ul><li>AllowToAddGuests<li>Type: Booleaans<li>Standaard: True | Een Booleaanse waarde die aangeeft of gasten aan deze map mogen worden toegevoegd. <br>Deze instelling kan worden overschreven en wordt alleen-lezen als *EnableMIPLabels* is ingesteld op *True* en er een gast beleid is gekoppeld aan het gevoeligheids label dat aan de groep is toegewezen.<br>Als de instelling AllowToAddGuests is ingesteld op False op Tenant niveau, wordt elke AllowToAddGuests-instelling op groeps niveau genegeerd. Als u toegang voor gasten voor slechts enkele groepen wilt inschakelen, moet u AllowToAddGuests instellen op het Tenant niveau en het selectief uitschakelen voor specifieke groepen. |
+|  <ul><li>AllowToAddGuests<li>Type: Booleaans<li>Standaard: True | Een Booleaanse waarde die aangeeft of gasten aan deze map mogen worden toegevoegd. <br>Deze instelling kan worden overschreven en wordt alleen-lezen als *EnableMIPLabels* is ingesteld op *True* en er een gast beleid is gekoppeld aan het gevoeligheids label dat aan de groep is toegewezen.<br>Als de instelling AllowToAddGuests op het niveau van de organisatie is ingesteld op False, wordt een AllowToAddGuests-instelling op groeps niveau genegeerd. Als u toegang voor gasten alleen voor enkele groepen wilt inschakelen, moet u AllowToAddGuests instellen op waar op het niveau van de organisatie en deze vervolgens selectief uitschakelen voor specifieke groepen. |
 |  <ul><li>ClassificationList<li>Type: String<li>Standaard: | Een door komma's gescheiden lijst met geldige classificatie waarden die kunnen worden toegepast op Office 365-groepen. <br>Deze instelling is niet van toepassing wanneer EnableMIPLabels = = True.|
 |  <ul><li>EnableMIPLabels<li>Type: Booleaans<li>Standaard: ' false ' |De vlag die aangeeft of de in Microsoft 365 nalevings centrum gepubliceerde gevoelige labels kunnen worden toegepast op Office 365-groepen. Zie voor meer informatie [toewijzen van gevoeligheid labels voor Office 365-groepen](groups-assign-sensitivity-labels.md). |
 
@@ -323,5 +323,5 @@ U kunt meer Azure Active Directory Power shell-documentatie vinden op [Azure Act
 
 ## <a name="additional-reading"></a>Aanvullende Lees bewerkingen
 
-* [Managing access to resources with Azure Active Directory groups](../fundamentals/active-directory-manage-groups.md) (Toegang tot resources beheren met Azure Active Directory-groepen)
+* [Toegang tot resources beheren met Azure Active Directory groepen](../fundamentals/active-directory-manage-groups.md)
 * [Integrating your on-premises identities with Azure Active Directory (Engelstalig)](../hybrid/whatis-hybrid-identity.md)

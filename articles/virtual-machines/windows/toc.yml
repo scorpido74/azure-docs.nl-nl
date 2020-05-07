@@ -140,6 +140,8 @@
                   href: ./../scripts/virtual-machines-windows-cli-sample-create-vm-oms.md
 - name: Concepten
   items:
+    - name: Installatiekopieën
+      href: shared-image-galleries.md
     - name: Azure Resource Manager
       href: ../../azure-resource-manager/management/overview.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
     - name: Regio's
@@ -524,19 +526,64 @@
         - name: Metrische gebruiksgegevens ophalen met REST
           href: ../linux/metrics-vm-usage-rest.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
     - name: Installatiekopieën gebruiken
+      displayName: 'SIG, AMI, image'
       items:
-        - name: Gedeelde installatiekopieën
+        - name: Installatiekopieën maken en delen
           items:
-            - name: Overzicht
-              href: shared-image-galleries.md
             - name: PowerShell
-              href: shared-images.md
-            - name: Portal
-              href: shared-images-portal.md
+              items:
+                - name: Een galerie maken
+                  href: ../shared-images-powershell.md
+                - name: Een installatiekopie maken
+                  items:
+                    - name: Vanaf een VM
+                      href: ../image-version-vm-powershell.md
+                    - name: Migreren vanaf een beheerde installatiekopie
+                      href: ../image-version-managed-image-powershell.md
+                    - name: Kopiëren uit een andere galerie
+                      href: ../image-version-another-gallery-powershell.md
+                - name: Een virtuele machine maken
+                  items:
+                    - name: Gegeneraliseerd
+                      href: ../vm-generalized-image-version-powershell.md
+                    - name: Gespecialiseerd
+                      href: ../vm-specialized-image-version-powershell.md
+                - name: Afbeeldingsresources bijwerken
+                  href: ../update-image-resources-powershell.md
             - name: CLI
-              href: ../linux/shared-images.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
-            - name: App-registratie voor delen
-              href: share-images-across-tenants.md
+              items:
+                - name: Een galerie maken
+                  href: ../linux/shared-images.md
+                - name: Een installatiekopie maken
+                  items:
+                    - name: Vanaf een VM
+                      href: ../image-version-vm-cli.md
+                    - name: Migreren vanaf een beheerde installatiekopie
+                      href: ../image-version-managed-image-cli.md
+                    - name: Kopiëren uit een andere galerie
+                      href: ../image-version-another-gallery-cli.md
+                    - name: Kopiëren uit een andere galerie
+                      href: ../image-version-another-gallery-cli.md
+                - name: Een virtuele machine maken
+                  items:
+                    - name: Gegeneraliseerd
+                      href: ../vm-generalized-image-version-cli.md
+                - name: Afbeeldingsresources bijwerken
+                  href: ../update-image-resources-cli.md
+            - name: Portal
+              items:
+                - name: 'Een galerie, afbeelding en virtuele machine maken'
+                  href: shared-images-portal.md
+            - name: Resource Manager-sjablonen
+              items:
+                - name: Een gedeelde installatiekopiegalerie maken
+                  href: 'https://azure.microsoft.com/resources/templates/101-sig-create/'
+                - name: Een installatiekopiedefinitie maken in een gedeelde installatiekopiegalerie
+                  href: 'https://azure.microsoft.com/resources/templates/101-sig-image-definition-create/'
+                - name: Een installatiekopieversie maken in een gedeelde installatiekopiegalerie
+                  href: 'https://azure.microsoft.com/resources/templates/101-sig-image-version-create/'
+                - name: Een VM maken van een installatiekopieversie
+                  href: 'https://azure.microsoft.com/resources/templates/101-vm-from-sig/'
             - name: Problemen met gedeelde installatiekopieën oplossen
               href: troubleshooting-shared-images.md
         - name: Functie voor het maken van installatiekopieën (preview)

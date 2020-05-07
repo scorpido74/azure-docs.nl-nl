@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 03/19/2020
+ms.date: 05/04/2020
 ms.author: b-juche
-ms.openlocfilehash: b83f530549ffa43789963fd0c95b4982f5289356
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5f36e40091ada27f411adc2ffa78b6d4a58f8cca
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80054468"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82791405"
 ---
 # <a name="delegate-a-subnet-to-azure-netapp-files"></a>Een subnet delegeren aan Azure NetApp Files 
 
@@ -28,7 +28,8 @@ U dient een subnet te delegeren aan Azure NetApp Files.   Als u een volume maakt
 ## <a name="considerations"></a>Overwegingen
 * De wizard voor het maken van een nieuw subnet gaat standaard over in een /24-netwerkmasker, dat 251 beschikbare IP-adressen onderhoudt. Een /28-netwerkmasker, dat 16 bruikbare IP-adressen onderhoudt, is voldoende voor de service.
 * In elk virtueel Azure-netwerk (VNet) kan er slechts één subnet aan Azure NetApp Files worden gedelegeerd.   
-   Met Azure kunt u meerdere gedelegeerde subnetten in een VNet maken.  Pogingen om een nieuw volume te maken, mislukken echter als u meer dan één overgedragen subnet gebruikt.
+   Met Azure kunt u meerdere gedelegeerde subnetten in een VNet maken.  Pogingen om een nieuw volume te maken, mislukken echter als u meer dan één overgedragen subnet gebruikt.  
+   U kunt slechts één gedelegeerd subnet in een VNet hebben. Een NetApp-account kan volumes implementeren in meerdere VNets, elk met een eigen overgedragen subnet.  
 * U kunt geen netwerkbeveiligingsgroep of service-eindpunt in het gedelegeerde subnet toewijzen. Als u dit doet, mislukt het delegeren van het subnet.
 * Toegang tot een volume vanuit een globaal gekoppeld virtueel netwerk wordt momenteel niet ondersteund.
 * Het maken van door de [gebruiker gedefinieerde aangepaste routes](https://docs.microsoft.com/azure/virtual-network/virtual-networks-udr-overview#custom-routes) op VM-subnetten met een adres voorvoegsel (bestemming) naar een subnet dat is overgedragen aan Azure NetApp files wordt niet ondersteund. Dit heeft gevolgen voor de VM-connectiviteit.

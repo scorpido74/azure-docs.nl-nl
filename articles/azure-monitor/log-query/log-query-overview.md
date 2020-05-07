@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 06/19/2019
-ms.openlocfilehash: 54a6f875bc33d24d412d2424c634d1019b4af399
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6cd2a28ddbe970385ff44deec2158c257937982e
+ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77670114"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82591649"
 ---
 # <a name="overview-of-log-queries-in-azure-monitor"></a>Overzicht van logboek query's in Azure Monitor
 Met logboek query's kunt u de waarde van de gegevens die in [Azure monitor logboeken](../platform/data-platform-logs.md)worden verzameld, volledig benutten. Met een krachtige query taal kunt u gegevens uit meerdere tabellen samen voegen, grote gegevens sets verzamelen en complexe bewerkingen met minimale code uitvoeren. Vrijwel elke vraag kan worden beantwoord en de analyse wordt uitgevoerd zolang de ondersteunende gegevens zijn verzameld en u begrijpt hoe u de juiste query kunt bouwen.
@@ -81,7 +81,7 @@ Log Analytics is het primaire hulp programma in de Azure Portal voor het schrijv
 U kunt Log Analytics vanaf verschillende locaties in de Azure Portal starten. Het bereik van de beschik bare gegevens voor Log Analytics is afhankelijk van hoe u het start. Zie [query bereik](scope.md) voor meer informatie.
 
 - Selecteer **Logboeken** in het menu **Azure monitor** of **log Analytics werk ruimte** menu.
-- Selecteer **analyses** op de pagina **overzicht** van een Application Insights-toepassing.
+- Selecteer **Logboeken** op de pagina **overzicht** van een Application Insights-toepassing.
 - Selecteer **Logboeken** in het menu van een Azure-resource.
 
 ![Log Analytics](media/log-query-overview/log-analytics.png)

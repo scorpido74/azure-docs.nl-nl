@@ -16,12 +16,12 @@ ms.author: mimart
 ms.reviewer: japere
 ms.custom: H1Hack27Feb2017, it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5948fba67d3f071d77192f9ad89bc696fdc0c3cc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 521982a5cf09e0da9c52bca2fe367432a1d29e57
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79253453"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82583136"
 ---
 # <a name="kerberos-constrained-delegation-for-single-sign-on-to-your-apps-with-application-proxy"></a>Beperkte Kerberos-overdracht voor eenmalige aanmelding bij uw apps met toepassings proxy
 
@@ -100,11 +100,13 @@ De configuratie van de Active Directory varieert, afhankelijk van of de connecto
 
 ## <a name="sso-for-non-windows-apps"></a>Eenmalige aanmelding voor niet-Windows-apps
 
-De Kerberos-delegatie stroom in azure AD-toepassingsproxy gestart wanneer de gebruiker door Azure AD wordt geverifieerd in de Cloud. Zodra de aanvraag on-premises arriveert, verzendt de Azure AD-toepassingsproxy-connector een Kerberos-ticket namens de gebruiker door interactie met de lokale Active Directory. Dit proces wordt aangeduid als Kerberos-beperkte delegering (KCD). In de volgende fase wordt een aanvraag verzonden naar de back-end-toepassing met dit Kerberos-ticket. 
+De Kerberos-delegatie stroom in azure AD-toepassingsproxy gestart wanneer de gebruiker door Azure AD wordt geverifieerd in de Cloud. Zodra de aanvraag on-premises arriveert, verzendt de Azure AD-toepassingsproxy-connector een Kerberos-ticket namens de gebruiker door interactie met de lokale Active Directory. Dit proces wordt aangeduid als Kerberos-beperkte delegering (KCD). 
 
-Er zijn verschillende protocollen die bepalen hoe dergelijke aanvragen worden verzonden. De meeste niet-Windows-servers verwachten te onderhandelen met SPNEGO. Dit protocol wordt ondersteund op Azure AD-toepassingsproxy, maar is standaard uitgeschakeld. Een server kan worden geconfigureerd voor SPNEGO of standaard KCD, maar niet voor beide.
+In de volgende fase wordt een aanvraag verzonden naar de back-end-toepassing met dit Kerberos-ticket. 
 
-Als u een connector computer voor SPNEGO configureert, moet u ervoor zorgen dat alle andere connectors in die connector groep ook zijn geconfigureerd met SPNEGO. Toepassingen die standaard KCD verwachten, moeten worden gerouteerd via andere connectors die niet zijn geconfigureerd voor SPNEGO.
+Er zijn verschillende mechanismen die definiëren hoe het Kerberos-ticket in dergelijke aanvragen worden verzonden. De meeste niet-Windows-servers verwachten deze te ontvangen in een vorm van het SPNEGO-token. Dit mechanisme wordt ondersteund op Azure AD-toepassingsproxy, maar is standaard uitgeschakeld. Een connector kan worden geconfigureerd voor het SPNEGO-of standaard-Kerberos-token, maar niet voor beide.
+
+Als u een connector computer voor SPNEGO configureert, moet u ervoor zorgen dat alle andere connectors in die connector groep ook zijn geconfigureerd met SPNEGO. Toepassingen die een standaard Kerberos-token verwachten, moeten worden gerouteerd via andere connectors die niet zijn geconfigureerd voor SPNEGO.
  
 
 SPNEGO inschakelen:

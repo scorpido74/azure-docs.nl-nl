@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 02/03/2020
 ms.author: amverma
 ms.reviewer: jonbeck
-ms.openlocfilehash: df22c857571e51bb886ff1d25db185a306999540
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 409fe69d111e2c5aebe0ad0bd38ced10604b5f1b
+ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80420861"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82839059"
 ---
 # <a name="high-performance-computing-vm-sizes"></a>High Performance Computing VM-grootten
 
@@ -39,7 +39,7 @@ Virtuele machines (Vm's) van de H-serie van Azure zijn ontworpen voor het levere
 
 ## <a name="rdma-capable-instances"></a>Met RDMA compatibele exemplaren
 
-De meeste HPC VM-grootten (HBv2, HB, HC, H16r, H16mr, A8 en A9) beschikken over een netwerk interface voor RDMA-verbindingen (Remote Direct Memory Access). Geselecteerd [N-serie] (https://docs.microsoft.com/azure/virtual-machines/nc-series) grootten die zijn aangeduid met r, zoals de NC24rs-configuraties (NC24rs_v3, NC24rs_v2 en NC24r) zijn ook geschikt voor RDMA. Deze interface is een aanvulling op de standaard Azure-netwerk interface die beschikbaar is in de andere VM-grootten.
+De meeste HPC VM-grootten (HBv2, HB, HC, H16r, H16mr, A8 en A9) beschikken over een netwerk interface voor RDMA-verbindingen (Remote Direct Memory Access). De geselecteerde [N-serie-](https://docs.microsoft.com/azure/virtual-machines/nc-series) grootten die zijn aangewezen met r, zoals de NC24rs-configuraties (NC24rs_v3, NC24rs_v2 en NC24r), zijn ook geschikt voor RDMA. Deze interface is een aanvulling op de standaard Azure-netwerk interface die beschikbaar is in de andere VM-grootten.
 
 Met deze interface kunnen de RDMA-compatibele instanties communiceren via een InfiniBand (IB)-netwerk, op basis van de HDR-tarieven voor HBv2, EDR-tarieven voor HB, HC, FDR-tarieven voor H16r, H16mr en een RDMA-functionaliteit voor A8-en A9-Vm's. Deze RDMA-mogelijkheden kunnen de schaal baarheid en prestaties van bepaalde MPI-toepassingen (Message Passing Interface) verhogen. Zie de details in de tabellen op deze pagina voor meer informatie over de snelheid.
 
@@ -92,7 +92,7 @@ Azure biedt verschillende opties voor het maken van clusters van Windows HPC-Vm'
 
 - **Virtuele machines** : implementeer de met RDMA compatibele HPC-vm's in dezelfde schaalset of beschikbaarheidsset (wanneer u het Azure Resource Manager-implementatie model gebruikt). Als u het klassieke implementatie model gebruikt, implementeert u de virtuele machines in dezelfde Cloud service.
 
-- **Virtuele-machine schaal sets** : in een virtuele-machine Scale set (VMSS), moet u ervoor zorgen dat u de implementatie beperkt tot één plaatsings groep. Stel bijvoorbeeld in een resource manager-sjabloon de `singlePlacementGroup` eigenschap in op. `true` Houd er rekening mee dat de maximale VMSS-grootte die met `singlePlacementGroup` de eigenschap `true` kan worden ingesteld, standaard wordt beperkt bij 100 vm's. Als uw HPC-taken schaal behoeften hoger zijn dan 100 Vm's in één VMSS-Tenant, kunt u een verhoging aanvragen, [een online klant ondersteunings aanvraag openen](../azure-supportability/how-to-create-azure-support-request.md) .
+- **Virtuele-machine schaal sets** : in een VMSS (virtuele-machine schaalset) moet u ervoor zorgen dat u de implementatie beperkt tot één plaatsings groep voor InfiniBand-communicatie in de VMSS. Stel bijvoorbeeld in een resource manager-sjabloon de `singlePlacementGroup` eigenschap in op. `true` Houd er rekening mee dat de maximale VMSS-grootte die met `singlePlacementGroup` de eigenschap `true` kan worden ingesteld, standaard wordt beperkt bij 100 vm's. Als uw HPC-taken schaal behoeften hoger zijn dan 100 Vm's in één VMSS-Tenant, kunt u een verhoging aanvragen, [een online klant ondersteunings aanvraag openen](../azure-supportability/how-to-create-azure-support-request.md) . De limiet voor het aantal virtuele machines in één VMSS kan worden verhoogd tot 300. Houd er rekening mee dat bij het implementeren van Vm's met beschikbaarheids sets de maximum limiet is 200 Vm's per Beschikbaarheidsset.
 
 - **Mpi tussen virtuele machines** : als RDMA (bijvoorbeeld met MPI-communicatie) is vereist tussen virtuele machines (vm's), moet u ervoor zorgen dat de vm's zich in dezelfde virtuele-machine schaalset of beschik bare set bevinden.
 
@@ -129,6 +129,6 @@ Azure biedt verschillende opties voor het maken van clusters van Windows HPC-Vm'
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Meer informatie over het optimaliseren van uw HPC-toepassing voor Azure en enkele voor beelden in [HPC-workloads] (https://docs.microsoft.com/azure/virtual-machines/workloads/hpc/overview) 
+- Meer informatie over het optimaliseren van uw HPC-toepassing voor Azure en enkele voor beelden in [HPC-workloads](https://docs.microsoft.com/azure/virtual-machines/workloads/hpc/overview) 
 
 - Meer informatie over hoe [Azure Compute units (ACU)](acu.md) u kan helpen bij het vergelijken van de reken prestaties in azure-sku's.

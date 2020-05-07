@@ -10,12 +10,12 @@ ms.date: 11/22/2019
 ms.author: brendm
 ms.reviewer: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: f4f6de807628704051cdddf74bcefbed678f8fcd
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 01d94b39354333a8840ded8725625d6a91cf56b7
+ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81457889"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82592159"
 ---
 # <a name="configure-a-linux-java-app-for-azure-app-service"></a>Een Linux Java-app voor Azure App Service configureren
 
@@ -561,21 +561,25 @@ Als u Tomcat met redis wilt gebruiken, moet u uw app configureren voor het gebru
 
 8. Werk de `azure-webapp-maven-plugin` configuratie in het *pom. XML-* bestand van uw app bij om te verwijzen naar uw redis-account gegevens. In dit bestand worden de omgevings variabelen gebruikt die u eerder hebt ingesteld om uw account gegevens uit uw bron bestanden te beveiligen.
 
-    Wijzig zo nodig `1.7.0` in de huidige versie van de [Maven-invoegtoepassing voor Azure App Service](/java/api/overview/azure/maven/azure-webapp-maven-plugin/readme).
+    Wijzig zo nodig `1.9.1` in de huidige versie van de [Maven-invoegtoepassing voor Azure App Service](/java/api/overview/azure/maven/azure-webapp-maven-plugin/readme).
 
     ```xml
     <plugin>
         <groupId>com.microsoft.azure</groupId>
         <artifactId>azure-webapp-maven-plugin</artifactId>
-        <version>1.7.0</version>
-        <configuration>
-
+        <version>1.9.1</version>
+        <configuration>            
             <!-- Web App information -->
+            <schemaVersion>v2</schemaVersion>
             <resourceGroup>${RESOURCEGROUP_NAME}</resourceGroup>
             <appServicePlanName>${WEBAPP_PLAN_NAME}-${REGION}</appServicePlanName>
             <appName>${WEBAPP_NAME}-${REGION}</appName>
-            <region>${REGION}</region>
-            <linuxRuntime>tomcat 9.0-jre8</linuxRuntime>
+            <region>${REGION}</region>            
+            <runtime>
+                <os>linux</os>
+                <javaVersion>jre8</javaVersion>
+                <webContainer>tomcat 9.0</webContainer>
+            </runtime>
 
             <appSettings>
                 <property>

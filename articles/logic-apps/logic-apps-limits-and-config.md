@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: article
 ms.date: 04/17/2020
-ms.openlocfilehash: c650cfcbfeddaa83d8bf3127024ac77b93456a57
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3847ba008747bd37d55977ec47014bf76a52ad24
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81683152"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82789909"
 ---
 # <a name="limits-and-configuration-information-for-azure-logic-apps"></a>Informatie over limieten en configuratie voor Azure Logic Apps
 
@@ -350,7 +350,7 @@ In deze sectie worden alleen de inkomende IP-adressen voor de Azure Logic Apps-s
 | Verenigd Koninkrijk Zuid | 51.140.79.109, 51.140.78.71, 51.140.84.39, 51.140.155.81 |
 | Verenigd Koninkrijk West | 51.141.48.98, 51.141.51.145, 51.141.53.164, 51.141.119.150 |
 | VS - west-centraal | 52.161.26.172, 52.161.8.128, 52.161.19.82, 13.78.137.247 |
-| Europa -west | 13.95.155.53, 52.174.54.218, 52.174.49.6, 52.174.49.6 |
+| Europa -west | 13.95.155.53, 52.174.54.218, 52.174.49.6 |
 | India - west | 104.211.164.112, 104.211.165.81, 104.211.164.25, 104.211.157.237 |
 | VS - west | 52.160.90.237, 138.91.188.137, 13.91.252.184, 157.56.160.212 |
 | VS - west 2 | 13.66.224.169, 52.183.30.10, 52.183.39.67, 13.66.128.68 |

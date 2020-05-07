@@ -1,6 +1,6 @@
 ---
-title: bestand opnemen
-description: bestand opnemen
+title: Include-bestand
+description: Include-bestand
 author: ggailey777
 ms.service: azure-functions
 ms.topic: include

@@ -13,16 +13,16 @@ ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.devlang: javascript
 ms.topic: article
-ms.date: 01/04/2019
+ms.date: 04/29/2020
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
-ms.openlocfilehash: 6e109c5a7f4911893c81c88ae84322fb962fff6e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: cb984a944067ddb1449f58b464e596fd138dc7c7
+ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "71213188"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82592006"
 ---
 # <a name="sending-push-notifications-with-azure-notification-hubs-and-nodejs"></a>Push meldingen verzenden met Azure Notification Hubs en node. js
 
@@ -83,7 +83,7 @@ Haal de verbindings `connectionstring` waarde uit de [Azure Portal] door de volg
 
 1. Klik in het navigatie deel venster links op **Bladeren**.
 2. Selecteer **Notification hubs**en zoek vervolgens de hub die u wilt gebruiken voor het voor beeld. U kunt de [zelf studie aan de slag met Windows Store](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md) raadplegen als u hulp nodig hebt bij het maken van een nieuwe notification hub.
-3. **Instellingen**selecteren.
+3. Selecteer **Instellingen**.
 4. Klik op **toegangs beleid**. U ziet zowel gedeelde als volledige toegang verbindings reeksen.
 
 ![Azure Portal-Notification Hubs](./media/notification-hubs-nodejs-how-to-use-notification-hubs/notification-hubs-portal.png)
@@ -133,7 +133,7 @@ Hetzelfde als met de hierboven beschreven Android-toepassingen `ApnsService` bie
 - **Payload** : de JSON of de teken reeks payload van het bericht.
 - **Call back** -de functie call back.
 
-Zie de sectie **meldings lading** van het document [Local and Push Notification Programming Guide (Engelstalig](https://developer.apple.com/library/ios/#documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/ApplePushService/ApplePushService.html) ) voor meer informatie over de indeling van de nettolading.
+Zie de sectie **meldings inhoud** van de [UserNotifications-gids](https://developer.apple.com/documentation/usernotifications)voor meer informatie over de indeling van de nettolading.
 
 De volgende code gebruikt het `ApnsService` exemplaar dat wordt weer `NotificationHubService` gegeven door de om een waarschuwings bericht te verzenden naar alle clients:
 

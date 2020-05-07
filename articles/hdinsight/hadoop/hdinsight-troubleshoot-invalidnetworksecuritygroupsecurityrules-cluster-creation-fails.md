@@ -7,12 +7,12 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.date: 07/31/2019
-ms.openlocfilehash: a73e1e9f7a9c017dd29b627a24c25ae2e064c0a9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2cf4859d3bf4c34fff4cb076eec11bcd2d81e4ab
+ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75894146"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82780773"
 ---
 # <a name="scenario-invalidnetworksecuritygroupsecurityrules---cluster-creation-fails-in-azure-hdinsight"></a>Scenario: InvalidNetworkSecurityGroupSecurityRules-het maken van een cluster mislukt in azure HDInsight
 
@@ -28,7 +28,7 @@ Er is waarschijnlijk een probleem met de regels voor binnenkomende [netwerk beve
 
 ## <a name="resolution"></a>Oplossing
 
-Ga naar de Azure Portal en Identificeer de NSG die is gekoppeld aan het subnet waar het cluster wordt geïmplementeerd. Controleer in de sectie **binnenkomende beveiligings regels** of de regels binnenkomende toegang tot poort 443 toestaan voor de IP-adressen die [hier](../hdinsight-plan-virtual-network-deployment.md#hdinsight-ip)worden vermeld.
+Ga naar de Azure Portal en Identificeer de NSG die is gekoppeld aan het subnet waar het cluster wordt geïmplementeerd. Controleer in de sectie **binnenkomende beveiligings regels** of de regels binnenkomende toegang tot poort 443 toestaan voor de IP-adressen die [hier](../control-network-traffic.md)worden vermeld.
 
 ## <a name="next-steps"></a>Volgende stappen
 

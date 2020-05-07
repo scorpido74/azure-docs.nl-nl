@@ -4,12 +4,12 @@ description: Meer informatie over het schalen van Azure Service Fabric-clusters 
 ms.topic: conceptual
 ms.date: 11/13/2018
 ms.author: atsenthi
-ms.openlocfilehash: 9dd60a5898b648215fc8b26e49a706a7b19dfeeb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a21182c974d6141264c8ca0c36bfc8f6a366d6f3
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79258692"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82793173"
 ---
 # <a name="scaling-azure-service-fabric-clusters"></a>Azure Service Fabric-clusters schalen
 Een Service Fabric cluster is een met het netwerk verbonden reeks virtuele of fysieke machines waarop uw micro services worden geïmplementeerd en beheerd. Een computer of virtuele machine die deel uitmaakt van een cluster, wordt een knoop punt genoemd. Clusters kunnen mogelijk duizenden knoop punten bevatten. Nadat u een Service Fabric cluster hebt gemaakt, kunt u het cluster horizon taal schalen (Wijzig het aantal knoop punten) of verticaal (Wijzig de resources van de knoop punten).  U kunt het cluster op elk gewenst moment schalen, zelfs wanneer werk belastingen op het cluster worden uitgevoerd.  Naarmate het cluster wordt geschaald, worden uw toepassingen ook automatisch geschaald.
@@ -29,13 +29,13 @@ Houd bij het schalen van een Azure-cluster de volgende richt lijnen in acht:
 - niet-primaire knooppunt typen waarvoor stateful productie workloads worden uitgevoerd, moeten altijd vijf of meer knoop punten hebben.
 - niet-primaire knooppunt typen waarvoor stateless productie werkbelastingen worden uitgevoerd, moeten altijd twee of meer knoop punten hebben.
 - Elk knooppunt type van het [duurzaamheids niveau](service-fabric-cluster-capacity.md#the-durability-characteristics-of-the-cluster) goud of zilver moet altijd vijf of meer knoop punten bevatten.
-- Verwijder geen wille keurige VM-exemplaren/knoop punten uit een knooppunt type en gebruik altijd de functie schaalset schaalset voor virtuele machines. Het verwijderen van wille keurige VM-instanties kan een nadelige invloed hebben op de systeem capaciteit om de taak verdeling te vervolledigen.
+- Verwijder geen wille keurige VM-exemplaren/knoop punten uit een knooppunt type. gebruik altijd de schaalset voor de virtuele machine in functie. Het verwijderen van wille keurige VM-instanties kan een nadelige invloed hebben op de systeem capaciteit om de taak verdeling te vervolledigen.
 - Als u regels voor automatisch schalen gebruikt, stelt u de regels zodanig in dat schalen (VM-exemplaren verwijderen) één knoop punt tegelijk wordt uitgevoerd. Het omlaag schalen van meer dan één exemplaar op een keer is niet veilig.
 
-Aangezien de Service Fabric knooppunt typen in uw cluster bestaan uit virtuele-machine schaal sets op de back-end, kunt u [regels voor automatisch schalen instellen of](service-fabric-cluster-scale-up-down.md) elk knooppunt type/virtuele-machine schaalset hand matig schalen.
+Aangezien de Service Fabric knooppunt typen in uw cluster bestaan uit virtuele-machine schaal sets op de back-end, kunt u [regels voor automatisch schalen instellen of](service-fabric-cluster-scale-in-out.md) elk knooppunt type/virtuele-machine schaalset hand matig schalen.
 
 ### <a name="programmatic-scaling"></a>Programmatisch schalen
-In veel gevallen kunt u [een cluster hand matig schalen of met regels voor automatisch schalen](service-fabric-cluster-scale-up-down.md) zijn er goede oplossingen. Voor meer geavanceerde scenario's is het mogelijk dat ze niet aan de rechter kant voldoen. Mogelijke nadelen van deze benaderingen zijn:
+In veel gevallen kunt u [een cluster hand matig schalen of met regels voor automatisch schalen](service-fabric-cluster-scale-in-out.md) zijn er goede oplossingen. Voor meer geavanceerde scenario's is het mogelijk dat ze niet aan de rechter kant voldoen. Mogelijke nadelen van deze benaderingen zijn:
 
 - Voor hand matig schalen moet u zich aanmelden en expliciet schaal bewerkingen aanvragen. Als schaal bewerkingen vaak of op onvoorspelbare tijden vereist zijn, is het mogelijk dat deze methode geen goede oplossing is.
 - Als regels voor automatisch schalen een exemplaar uit een schaalset voor virtuele machines verwijderen, wordt de kennis van dat knoop punt niet automatisch uit het gekoppelde Service Fabric cluster verwijderd, tenzij het knooppunt type een duurzaamheids niveau van zilver of goud heeft. Omdat regels voor automatisch schalen op het niveau van de schaalset werken (in plaats van op het Service Fabric niveau), kunnen regels voor automatisch schalen Service Fabric knoop punten verwijderen zonder dat ze correct worden afgesloten. Tijdens het verwijderen van het beleefd-knoop punt wordt de status van ' Ghost ' Service Fabric knoop punt achter na de scale-out-bewerkingen. Een persoon (of een service) zou de verwijderde knooppunt status periodiek moeten opschonen in het Service Fabric cluster.

@@ -8,12 +8,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 06/05/2019
 ms.custom: seodec18
-ms.openlocfilehash: 753d606e1fc2dc966c970a210cf6fc5066d5ed83
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7c49467451963ceb52f114430343fafb955ec4f7
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81460134"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82786985"
 ---
 # <a name="azure-disk-encryption-for-linux-virtual-machines-faq"></a>Veelgestelde vragen over Azure Disk Encryption voor virtuele Linux-machines
 
@@ -21,7 +21,7 @@ In dit artikel vindt u antwoorden op veelgestelde vragen over Azure Disk Encrypt
 
 ## <a name="what-is-azure-disk-encryption-for-linux-vms"></a>Wat is Azure Disk Encryption voor virtuele Linux-machines?
 
-Azure Disk Encryption voor Linux-Vm's maakt gebruik van de DM-cryptografie functie van Linux om een volledige schijf versleuteling te bieden van de besturingssysteem schijf * en gegevens schijven. Daarnaast biedt het een versleuteling van de tijdelijke bron schijf wanneer de [functie EncryptFormatAll](disk-encryption-linux.md#use-encryptformatall-feature-for-data-disks-on-linux-vms)wordt gebruikt. De inhouds stromen zijn versleuteld van de virtuele machine naar de back-end van de opslag. Het leveren van end-to-end-versleuteling met een door de klant beheerde sleutel.
+Azure Disk Encryption voor Linux-Vm's maakt gebruik van de DM-cryptografie functie van Linux om een volledige schijf versleuteling te bieden van de besturingssysteem schijf * en gegevens schijven. Daarnaast biedt het een versleuteling van de tijdelijke schijf wanneer de [functie EncryptFormatAll](disk-encryption-linux.md#use-encryptformatall-feature-for-data-disks-on-linux-vms)wordt gebruikt. De inhouds stromen zijn versleuteld van de virtuele machine naar de back-end van de opslag. Het leveren van end-to-end-versleuteling met een door de klant beheerde sleutel.
  
 Zie [ondersteunde vm's en besturings systemen](disk-encryption-overview.md#supported-vms-and-operating-systems).
 
@@ -61,7 +61,7 @@ Versleuteling van de opslag server versleutelt Azure Managed disks in Azure Stor
  
 ## <a name="how-is-azure-disk-encryption-different-from-storage-server-side-encryption-with-customer-managed-key-and-when-should-i-use-each-solution"></a>Hoe wijkt Azure Disk Encryption af van de versleuteling van opslag server met door de klant beheerde sleutel en wanneer moet ik elke oplossing gebruiken?
 
-Azure Disk Encryption biedt end-to-end-versleuteling voor de besturingssysteem schijf, gegevens schijven en de tijdelijke bron schijf met een door de klant beheerde sleutel.
+Azure Disk Encryption biedt end-to-end-versleuteling voor de besturingssysteem schijf, gegevens schijven en de tijdelijke schijf, met behulp van een door de klant beheerde sleutel.
 - Als uw vereisten het versleutelen van alle bovenstaande en end-to-end-versleuteling bevatten, gebruikt u Azure Disk Encryption. 
 - Als uw vereisten het versleutelen van alleen gegevens in rust met door de klant beheerde sleutel bevatten, gebruikt u [versleuteling aan de server zijde met door de klant beheerde sleutels](disk-encryption.md). U kunt een schijf niet versleutelen met zowel Azure Disk Encryption als opslag server versleuteling met door de klant beheerde sleutels. 
 - Als uw Linux-distributie niet wordt vermeld onder [ondersteunde besturings systemen voor Azure Disk Encryption](disk-encryption-overview.md#supported-operating-systems) of als u een scenario gebruikt dat wordt genoemd in de [niet-ondersteunde scenario's voor Windows](disk-encryption-linux.md#unsupported-scenarios), overweegt u [versleuteling aan de server zijde met door de klant beheerde sleutels](disk-encryption.md).
