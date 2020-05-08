@@ -4,12 +4,12 @@ ms.service: virtual-machines-sql
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: jroth
-ms.openlocfilehash: 22f16a7382cb0fe1f3fe2a6ef5e7c00a6989623c
-ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
+ms.openlocfilehash: 9df08151e4af6e82a775b3ee99dab88134a2f032
+ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/26/2020
-ms.locfileid: "67175985"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82784092"
 ---
 ## <a name="next-steps"></a>Volgende stappen
 
@@ -17,7 +17,7 @@ Nadat u Azure Key Vault-integratie hebt ingeschakeld, kunt u SQL Server versleut
 
 Er zijn verschillende soorten versleuteling waarmee u kunt profiteren van:
 
-* [Transparent Data Encryption (TDE)](https://msdn.microsoft.com/library/bb934049.aspx)
+* [TDE (Transparent Data Encryption)](https://msdn.microsoft.com/library/bb934049.aspx)
 * [Versleutelde back-ups](https://msdn.microsoft.com/library/dn449489.aspx)
 * [Versleuteling op kolom niveau (CLE)](https://msdn.microsoft.com/library/ms173744.aspx)
 
@@ -25,7 +25,7 @@ De volgende Transact-SQL-scripts bieden voor beelden voor elk van deze gebieden.
 
 ### <a name="prerequisites-for-examples"></a>Vereisten voor voor beelden
 
-Elk voor beeld is gebaseerd op de twee vereisten: een asymmetrische sleutel uit de sleutel kluis met de naam **CONTOSO_KEY** en een referentie die is gemaakt door de Azure-integratie functie met de naam **Azure_EKM_TDE_cred**. Met de volgende Transact-SQL-opdrachten worden deze vereisten ingesteld voor het uitvoeren van de voor beelden.
+Elk voor beeld is gebaseerd op de twee vereisten: een asymmetrische sleutel uit de sleutel kluis met de naam **CONTOSO_KEY** en een referentie die is gemaakt door de Azure-integratie functie met de naam **Azure_EKM_cred**. Met de volgende Transact-SQL-opdrachten worden deze vereisten ingesteld voor het uitvoeren van de voor beelden.
 
 ``` sql
 USE master;
@@ -33,7 +33,7 @@ GO
 
 --create credential
 --The <<SECRET>> here requires the <Application ID> (without hyphens) and <Secret> to be passed together without a space between them.
-CREATE CREDENTIAL sysadmin_ekm_cred
+CREATE CREDENTIAL Azure_EKM_cred
     WITH IDENTITY = 'keytestvault', --keyvault
     SECRET = '<<SECRET>>'
 FOR CRYPTOGRAPHIC PROVIDER AzureKeyVault_EKM_Prov;
@@ -41,7 +41,7 @@ FOR CRYPTOGRAPHIC PROVIDER AzureKeyVault_EKM_Prov;
 
 --Map the credential to a SQL login that has sysadmin permissions. This allows the SQL login to access the key vault when creating the asymmetric key in the next step.
 ALTER LOGIN [SQL_Login]
-ADD CREDENTIAL sysadmin_ekm_cred;
+ADD CREDENTIAL Azure_EKM_cred;
 
 
 CREATE ASYMMETRIC KEY CONTOSO_KEY

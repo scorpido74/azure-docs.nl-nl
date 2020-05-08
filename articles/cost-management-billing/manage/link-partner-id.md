@@ -4,15 +4,15 @@ description: Volg afspraken met Azure-klanten door een partner-id aan het gebrui
 author: dhirajgandhi
 ms.reviewer: dhgandhi
 ms.author: banders
-ms.date: 02/13/2020
+ms.date: 05/04/2020
 ms.service: cost-management-billing
 ms.topic: conceptual
-ms.openlocfilehash: c3f5dd4d1b67f5b1079a56d5c3428d286fd9d77f
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: f0d45c9dd8dc33226ca75fe34467a8695c8aae4d
+ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79204797"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82778818"
 ---
 # <a name="link-a-partner-id-to-your-azure-accounts"></a>Een partner-id aan uw Azure-accounts koppelen
 
@@ -159,4 +159,5 @@ Ja, u kunt uw partner-id voor Azure Stack koppelen.
 
 **Hoe koppel ik mijn partner-id, als mijn bedrijf [Azure Lighthouse](https://docs.microsoft.com/azure/lighthouse/overview) gebruikt voor toegang tot klantresources?**
 
-Als u klanten onboardt voor gedelegeerd resourcebeheer van Azure door [een aanbieding voor beheerde services te publiceren in Azure Marketplace](https://docs.microsoft.com/azure/lighthouse/how-to/publish-managed-services-offers), wordt uw MPN-id automatisch gekoppeld. Als u [klanten onboardt door Azure Resource Manager-sjablonen te implementeren](https://docs.microsoft.com/azure/lighthouse/how-to/onboard-customer), moet u uw MPN-id (Microsoft Partner Network) koppelen met minstens één gebruikersaccount dat toegang heeft tot al uw abonnementen waarvoor onboarding is uitgevoerd. Let op: u moet dit doen in de tenant van de serviceprovider. Ter vereenvoudiging raden we u aan om in uw tenant een service-principal-account te maken, dat is gekoppeld aan uw MPN-id, en aan elke klant waarvoor u onboarding uitvoert, Lezerstoegang tot dit account te verlenen.
+Als u klanten onboardt voor gedelegeerd resourcebeheer van Azure door [een aanbieding voor beheerde services te publiceren in Azure Marketplace](https://docs.microsoft.com/azure/lighthouse/how-to/publish-managed-services-offers), wordt uw MPN-id automatisch gekoppeld. Als u [klanten onboardt door Azure Resource Manager-sjablonen te implementeren](https://docs.microsoft.com/azure/lighthouse/how-to/onboard-customer), moet u uw MPN-id (Microsoft Partner Network) koppelen met minstens één gebruikersaccount dat toegang heeft tot al uw abonnementen waarvoor onboarding is uitgevoerd. Let op: u moet dit doen in de tenant van de serviceprovider. Ter vereenvoudiging raden we u aan om in uw tenant een service-principal-account te maken, dat is gekoppeld aan uw MPN-id, en aan elke klant waarvoor u onboarding uitvoert, Lezerstoegang tot dit account te verlenen. In dit voorbeeld wordt de rol van de RBAC-lezer gebruikt en is dit een van de rollen die niet in aanmerking komen voor het verdiende tegoed van de partner. Zie [Rollen en machtigingen voor verdiend tegoed van partners](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3QuW2) voor meer informatie over rollen.
+
