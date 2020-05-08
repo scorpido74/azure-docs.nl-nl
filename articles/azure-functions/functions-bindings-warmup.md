@@ -9,12 +9,12 @@ ms.service: azure-functions
 ms.topic: reference
 ms.date: 11/08/2019
 ms.author: alkarche
-ms.openlocfilehash: 72a6f97f45ec1adaa42d1f17a1916af137845392
-ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
+ms.openlocfilehash: 013001eebeec232cc60e31f1a850aeab4fd6c905
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82559986"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82982238"
 ---
 # <a name="azure-functions-warm-up-trigger"></a>Opwarmende trigger Azure Functions
 
@@ -38,7 +38,7 @@ Houd er rekening mee dat de trigger opwarm alleen wordt aangeroepen tijdens scal
 
 ## <a name="trigger---example"></a>Trigger-voor beeld
 
-# <a name="c"></a>[C#](#tab/csharp)
+# <a name="c"></a>[G #](#tab/csharp)
 
 In het volgende voor beeld ziet u een [C#-functie](functions-dotnet-class-library.md) die wordt uitgevoerd op elk nieuw exemplaar wanneer deze wordt toegevoegd aan uw app. Een retour waarde-kenmerk is niet vereist.
 
@@ -132,7 +132,6 @@ Dit is de Java script-code:
 ```javascript
 module.exports = async function (context, warmupContext) {
     context.log('Function App instance is warm 🌞🌞🌞');
-    context.done();
 };
 ```
 
@@ -188,7 +187,7 @@ public void run( ExecutionContext context) {
 
 In [C#-klassen bibliotheken](functions-dotnet-class-library.md)is `WarmupTrigger` het kenmerk beschikbaar voor het configureren van de functie.
 
-# <a name="c"></a>[C#](#tab/csharp)
+# <a name="c"></a>[G #](#tab/csharp)
 
 In dit voor beeld ziet u hoe u het kenmerk [opwarm](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/dev/src/WebJobs.Extensions/Extensions/Warmup/Trigger/WarmupTriggerAttribute.cs) gebruikt.
 

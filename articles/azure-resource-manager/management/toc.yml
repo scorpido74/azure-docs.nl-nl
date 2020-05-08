@@ -4,6 +4,11 @@
   items:
     - name: Wat is Resource Manager?
       href: overview.md
+- name: Voorbeelden
+  items:
+    - name: Ingebouwde modules voor Azure Policy
+      displayName: 'samples, policies, definitions'
+      href: ./policy-samples.md
 - name: Concepten
   items:
     - name: Abonnements- en servicebeperkingen

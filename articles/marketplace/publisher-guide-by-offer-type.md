@@ -7,12 +7,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/14/2020
 ms.author: dsindona
-ms.openlocfilehash: 39bc4e3cc653589686be539da127279b3db41be6
-ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
+ms.openlocfilehash: 9b39cbab71808aaf09f7dc38b3be77f6f35ab598
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82872348"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82982680"
 ---
 # <a name="publishing-guide-by-offer-type"></a>Publicatiehandleiding op type aanbieding
 
@@ -33,7 +33,7 @@ Azure Marketplace-aanbiedings typen worden weer gegeven in de volgende tabel.
 | [**Virtuele machines**](./marketplace-virtual-machines.md) | Gebruik het type virtuele machine-aanbieding wanneer u een virtueel apparaat implementeert op het abonnement dat is gekoppeld aan uw klant. |
 | [**Oplossingssjablonen**](./marketplace-solution-templates.md) | Gebruik de oplossings sjabloon (ook wel bekend als Azure Application)-aanbiedings type wanneer voor uw oplossing extra implementatie-en configuratie automatisering is vereist dan één virtuele machine. Oplossings sjablonen kunnen veel verschillende soorten Azure-resources gebruiken, inclusief, maar niet beperkt tot Vm's.  |
 | [**Beheerde toepassingen**](./marketplace-managed-apps.md) | Gebruik het aanbiedings type Azure-app: beheerde app wanneer de volgende voor waarden zijn vereist: <br> <ul> <li> U implementeert een oplossing op basis van een abonnement voor uw klant met behulp van een virtuele machine of een volledige oplossing op basis van IaaS. </li> <li>U of uw klant vereisen dat de oplossing wordt beheerd door een partner. </li> <ul> |
-| [**SaaS-toepassingen**](./marketplace-saas-applications-technical-publishing-guide.md) | Gebruik het type SaaS-app-aanbieding om uw klant in staat te stellen uw SaaS-gebaseerde technische oplossing als een abonnement te kopen. |
+| [**SaaS-toepassingen**](./partner-center-portal/create-new-saas-offer.md) | Gebruik het type SaaS-app-aanbieding om uw klant in staat te stellen uw SaaS-gebaseerde technische oplossing als een abonnement te kopen. |
 | [**Container aanbiedingen**](./marketplace-containers.md) | Gebruik het type container aanbod wanneer uw oplossing een docker-container installatie kopie is ingericht als een op Kubernetes gebaseerde Azure-container service. |
 | [**Azure IoT Edge modules**](./iot-edge-module.md) | Azure IoT Edge modules zijn de kleinste reken eenheden die worden beheerd door IoT Edge en kunnen micro soft-Services (zoals Azure Stream Analytics), services van derden of uw eigen oplossing-specifieke code bevatten. |
 | [**Adviesservices**](./consulting-services.md) | Consulting Services helpt klanten met services te verbinden om hun gebruik van Azure-, Dynamics 365-of Power suite-services te ondersteunen en uit te breiden.|

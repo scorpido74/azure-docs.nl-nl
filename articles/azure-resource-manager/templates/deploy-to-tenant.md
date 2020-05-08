@@ -3,12 +3,12 @@ title: Resources implementeren voor Tenant
 description: Hierin wordt beschreven hoe u resources implementeert in het Tenant bereik in een Azure Resource Manager sjabloon.
 ms.topic: conceptual
 ms.date: 03/16/2020
-ms.openlocfilehash: fcdfc5b1c4333a0d7eeec80a09ad85579a1f8b77
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8a3748c0948238b588a01f7d91780693a2c5bf3a
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79460259"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82930060"
 ---
 # <a name="create-resources-at-the-tenant-level"></a>Resources maken op Tenant niveau
 
@@ -19,6 +19,7 @@ Als uw organisatie is gerijpt, moet u mogelijk [beleid](../../governance/policy/
 U kunt de volgende bron typen implementeren op Tenant niveau:
 
 * [implementaties](/azure/templates/microsoft.resources/deployments) : voor geneste sjablonen die worden geïmplementeerd op beheer groepen of-abonnementen.
+* managementGroups
 * [policyAssignments](/azure/templates/microsoft.authorization/policyassignments)
 * [policyDefinitions](/azure/templates/microsoft.authorization/policydefinitions)
 * [policySetDefinitions](/azure/templates/microsoft.authorization/policysetdefinitions)
@@ -103,13 +104,13 @@ Voor Tenant implementaties gelden enkele belang rijke aandachtspunten bij het ge
 * Gebruik de functie [tenantResourceId ()](template-functions-resource.md#tenantresourceid) om de resource-id op te halen voor resources die worden geïmplementeerd op Tenant niveau.
 
   Als u bijvoorbeeld de resource-ID voor een beleids definitie wilt ophalen, gebruikt u:
-  
+
   ```json
   tenantResourceId('Microsoft.Authorization/policyDefinitions/', parameters('policyDefinition'))
   ```
-  
+
   De geretourneerde Resource-ID heeft de volgende indeling:
-  
+
   ```json
   /providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
   ```

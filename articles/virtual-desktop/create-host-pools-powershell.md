@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 04/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: c003af296b10037505e6d6006b6bfc788e641dc3
-ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
-ms.translationtype: HT
+ms.openlocfilehash: 474eb4f5247aeb77edce0ebfde1611bf2deef493
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/03/2020
-ms.locfileid: "82731454"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82930400"
 ---
 # <a name="create-a-host-pool-with-powershell"></a>Een hostpool maken met PowerShell
 
@@ -37,7 +37,7 @@ Voer de volgende cmdlet uit om u aan te melden bij de virtuele Windows-bureaubla
 New-AzWvdHostPool -ResourceGroupName <resourcegroupname> -Name <hostpoolname> -WorkspaceName <workspacename> -HostPoolType <Pooled|Personal> -LoadBalancerType <BreadthFirst|DepthFirst|Persistent> -Location <region> -DesktopAppGroupName <appgroupname> 
 ```
 
-Met deze cmdlet worden de groep voor de hostgroep, de werk ruimte en het bureau blad-app gemaakt. Daarnaast wordt de groep bureau blad-apps geregistreerd bij de werk ruimte. U kunt alleen een werk ruimte met deze cmdlet maken, maar geen bestaande werk ruimte gebruiken in deze cmdlet. 
+Met deze cmdlet worden de groep voor de hostgroep, de werk ruimte en het bureau blad-app gemaakt. Daarnaast wordt de groep bureau blad-apps geregistreerd bij de werk ruimte. U kunt een werk ruimte met deze cmdlet maken of een bestaande werk ruimte gebruiken. 
 
 Voer de volgende cmdlet uit om een registratie token te maken om een sessie-host te autoriseren om lid te worden van de hostgroep en deze op te slaan in een nieuw bestand op uw lokale computer. U kunt opgeven hoe lang het registratie token geldig is door gebruik te maken van de para meter-ExpirationHours.
 

@@ -13,16 +13,16 @@ ms.workload: infrastructure-services
 ms.date: 06/13/2019
 ms.author: kumud
 ms.reviewer: ypitsch
-ms.openlocfilehash: 10a061163447a60f1c25b386ef28028436284650
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b78e227159065d2ae85d9b1dc989e8ea192ae26a
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75453074"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82982799"
 ---
 # <a name="microsoft-global-network"></a>Wereldwijd Microsoft-netwerk
 
-Micro soft is eigenaar van een van de grootste backbone-netwerken ter wereld. Deze wereld wijde en geavanceerde architectuur, die meer dan 100.000 mijlen beslaat, maakt verbinding met onze data centers en klanten. 
+Micro soft is eigenaar van een van de grootste backbone-netwerken ter wereld. Deze wereld wijde en geavanceerde architectuur, die meer dan 160.000 mijlen beslaat, maakt verbinding met onze data centers en klanten. 
  
 Elke dag kunnen klanten over de hele wereld verbinding maken en miljarden aanvragen door geven aan Microsoft Azure, Bing, Dynamics 365, Office 365, XBox en vele andere. Klanten verwachten een onmiddellijke betrouw baarheid en reactie tijd van onze services, ongeacht het type. 
  
@@ -32,7 +32,7 @@ Het [micro soft Global Network](https://azure.microsoft.com/global-infrastructur
  
 ## <a name="get-the-premium-cloud-network"></a>Het Premium-Cloud netwerk ophalen
  
-Het is eenvoudig om te kiezen voor de [beste ervaring](https://www.sdxcentral.com/articles/news/azure-tops-aws-gcp-in-cloud-performance-says-thousandeyes/2018/11/) bij het gebruik van micro soft Cloud. Vanaf het moment dat het klant verkeer ons wereld wijde netwerk binnenkomt via onze strategisch geplaatste Edge-knoop punten, worden uw gegevens in de buurt van de snelheid van het licht overgebracht via geoptimaliseerde routes. Dit zorgt voor optimale latentie voor de beste prestaties. Deze Edge-nodes, alle onderling verbonden met meer dan 3500 unieke Internet partners (peers) via duizenden verbindingen op meer dan 145 locaties, bieden de basis van onze Interconnect-strategie. 
+Het is eenvoudig om te kiezen voor de [beste ervaring](https://www.sdxcentral.com/articles/news/azure-tops-aws-gcp-in-cloud-performance-says-thousandeyes/2018/11/) bij het gebruik van micro soft Cloud. Vanaf het moment dat het klant verkeer ons wereld wijde netwerk binnenkomt via onze strategisch geplaatste Edge-knoop punten, worden uw gegevens in de buurt van de snelheid van het licht overgebracht via geoptimaliseerde routes. Dit zorgt voor optimale latentie voor de beste prestaties. Deze Edge-nodes, alle onderling verbonden met meer dan 3500 unieke Internet partners (peers) via duizenden verbindingen op meer dan 165 locaties, bieden de basis van onze Interconnect-strategie. 
  
 Ongeacht of u verbinding maakt tussen Londen en Tokyo of van Washington DC naar Los Angeles, worden netwerk prestaties gekwantificeerd en beïnvloed door zaken als latentie, jitter, pakket verlies en door voer.  Bij micro soft gebruiken we uw voor keur voor directe interconnecties in tegens telling tot Transit-koppelingen, waardoor het antwoord verkeer wordt beperkt en de hops, peering partijen en paden zo kort en eenvoudig mogelijk zijn. 
 

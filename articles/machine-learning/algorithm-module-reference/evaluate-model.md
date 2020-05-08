@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 04/24/2020
-ms.openlocfilehash: cf9597f4a722ff9cda68e87b31db77c989afcb0b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f69a3f61c288b320399d1b3abfc632c93261c540
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82129854"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82983360"
 ---
 # <a name="evaluate-model-module"></a>Model module evalueren
 
@@ -34,9 +34,13 @@ Gebruik deze module om de nauw keurigheid van een getraind model te meten. U gee
 
 
 ## <a name="how-to-use-evaluate-model"></a>Het gebruik van een evalueren model
-1. Verbind de Score van de **gescoorde gegevensset** van het [score model](./score-model.md) naar de links invoer poort van het **Evalueer model**. 
+1. Verbind de Score van de **gescoorde gegevensset** van het [score model](./score-model.md) of de uitvoer van de gegevensset van het resultaat van de gegevens van het type [toewijzen aan clusters](./assign-data-to-clusters.md) aan de linkerkant invoer poort van het **Evalueer model**. 
+  > [!NOTE] 
+  > Als u modules als ' select columns in Dataset ' wilt gebruiken om een deel van een invoer gegevensset te selecteren, moet u ervoor zorgen dat de werkelijke Label kolom (gebruikt in de training), de kolom ' gescoorde kansen ' en de kolom ' gescoorde labels ' bestaan voor het berekenen van metrische gegevens zoals AUC, nauw keurigheid voor binaire classificatie/anomalie detectie.
+  > Kolom werkelijk label, de kolom scoored labels bestaat voor het berekenen van metrische gegevens voor classificatie en regressie met meerdere klassen.
+  > De kolom Assignments, columns DistancesToClusterCenter. X ' (X is massa middelpunt index, variërend van 0,..., aantal centroids-1) bevindt zich voor het berekenen van metrische gegevens voor clustering.
 
-2. Beschrijving Verbind de Score van de **gescoorde gegevensset** van het [score model](./score-model.md) voor het tweede model met de **rechter** invoer van het **Evalueer model**. U kunt de resultaten van twee verschillende modellen op dezelfde gegevens eenvoudig vergelijken. De twee invoer algoritmen moeten hetzelfde algoritme type zijn. U kunt ook scores van twee verschillende uitvoeringen vergelijken met dezelfde gegevens met verschillende para meters.
+2. Beschrijving Verbind de Score van de **gescoorde gegevensset** van het [score model](./score-model.md) of het resultaat van de gegevensset-uitvoer van de gegevens voor het tweede model aan de **juiste** invoer poort van het **Evalueer model**. U kunt de resultaten van twee verschillende modellen op dezelfde gegevens eenvoudig vergelijken. De twee invoer algoritmen moeten hetzelfde algoritme type zijn. U kunt ook scores van twee verschillende uitvoeringen vergelijken met dezelfde gegevens met verschillende para meters.
 
     > [!NOTE]
     > Algoritme type verwijst naar ' Two-class classificatie ', ' multi-class classificatie ', ' regressie ', ' clustering ' onder ' Machine Learning-algoritmen '. 

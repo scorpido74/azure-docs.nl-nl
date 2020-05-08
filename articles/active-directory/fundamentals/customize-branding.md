@@ -8,17 +8,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: fundamentals
 ms.topic: conceptual
-ms.date: 09/18/2018
+ms.date: 05/07/2020
 ms.author: ajburnle
 ms.reviewer: kexia
 ms.custom: it-pro, seodec18, fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 441fdd14cc2c734b6ce532f3ad1d30663b2f56c5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7e0fc3cb450c253882ed34a2c4f5748efe55d0ec
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80049796"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82982034"
 ---
 # <a name="add-branding-to-your-organizations-azure-active-directory-sign-in-page"></a>Een huis stijl toevoegen aan de Azure Active Directory aanmeldings pagina van uw organisatie
 Gebruik het logo van uw organisatie en aangepaste kleuren schema's om een consistent uiterlijk te geven op uw aanmeldings pagina's van Azure Active Directory (Azure AD). Uw aanmeldings pagina's worden weer gegeven wanneer gebruikers zich aanmelden bij de op het web gebaseerde apps van uw organisatie, zoals Office 365, die Azure AD als uw ID-provider gebruikt.
@@ -52,9 +52,9 @@ Uw aangepaste huis stijl wordt niet onmiddellijk weer gegeven wanneer uw gebruik
 
         - **Japanse.** De taal wordt automatisch ingesteld als standaard en kan niet worden gewijzigd.
         
-        - **Achtergrond afbeelding van de aanmeldings pagina.** Selecteer een PNG-of jpg-afbeeldings bestand dat wordt weer gegeven als achtergrond voor uw aanmeldings pagina's. 
+        - **Achtergrond afbeelding van de aanmeldings pagina.** Selecteer een PNG-of jpg-afbeeldings bestand dat wordt weer gegeven als achtergrond voor uw aanmeldings pagina's. De afbeelding wordt verankerd naar het midden van de browser en wordt geschaald naar de grootte van de zicht bare ruimte. U kunt geen afbeelding selecteren die groter is dan 1920 pixels of die een bestands grootte hebben van meer dan 300 KB.
         
-            De afbeelding kan niet groter zijn dan de grootte van de 1920 pixels en moet een bestands grootte hebben van minder dan 300 KB.
+            Het is raadzaam installatie kopieën te gebruiken zonder een sterke focus van een onderwerp, bijvoorbeeld een ondoorzichtig wit vak wordt weer gegeven in het midden van het scherm, en kan elk deel van de afbeelding bedekken, afhankelijk van de afmetingen van de zicht bare ruimte.
 
         - **Banner logo.** Selecteer een PNG-of JPG-versie van uw logo om op de aanmeldings pagina te worden weer gegeven nadat de gebruiker een gebruikers naam heeft ingevoerd en op de portal pagina **mijn apps** .
             
@@ -62,7 +62,7 @@ Uw aangepaste huis stijl wordt niet onmiddellijk weer gegeven wanneer uw gebruik
 
         - **Hint voor gebruikers naam.** Typ de tekst van de hint die wordt weer gegeven voor gebruikers als ze hun gebruikers naam verg eten. Deze tekst moet Unicode zijn, zonder links of code, en mag niet langer zijn dan 64 tekens. Als gasten zich aanmelden bij uw app, raden we u aan deze Hint niet toe te voegen.
 
-        - **Tekst van de aanmeldings pagina.** Typ de tekst die wordt weer gegeven aan de onderkant van de aanmeldings pagina. U kunt deze tekst gebruiken om aanvullende informatie te communiceren, zoals het telefoon nummer van uw Help Desk of een juridische verklaring. Deze tekst moet Unicode zijn en mag niet langer zijn dan 256 tekens. We suggereren ook geen links of HTML-tags.
+        - **Tekst van de aanmeldings pagina.** Typ de tekst die wordt weer gegeven aan de onderkant van de aanmeldings pagina. U kunt deze tekst gebruiken om aanvullende informatie te communiceren, zoals het telefoon nummer van uw Help Desk of een juridische verklaring. Deze tekst moet Unicode zijn en mag niet langer zijn dan 256 tekens.
 
     - **Geavanceerde instellingen**
             
@@ -127,7 +127,7 @@ U kunt de taal van de oorspronkelijke configuratie niet wijzigen in de standaard
 ## <a name="add-your-custom-branding-to-pages"></a>Uw aangepaste huis stijl toevoegen aan pagina's
 Voeg uw aangepaste huis stijl aan pagina's toe door het einde van de URL te wijzigen in `?whr=yourdomainname`de tekst. Deze aanpassing werkt op verschillende pagina's, met inbegrip van de installatie pagina voor de Multi-Factor Authentication (MFA), de Setup-pagina voor het opnieuw instellen van wacht woorden (SSPR) en de aanmeldings pagina.
 
-**Vindt**
+**Voorbeelden:**
 
 **Oorspronkelijke URL:**https://aka.ms/MFASetup<br>
 **Aangepaste URL:**`https://account.activedirectory.windowsazure.com/proofup.aspx?whr=contoso.com`
