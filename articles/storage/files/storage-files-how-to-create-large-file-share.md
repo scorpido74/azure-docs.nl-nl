@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/20/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: bd7726d2bbf2830d18d78b5f0b0d7202b734124d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: add2805d9a360d3d9cd45ab54f476a6852fb7bd5
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81537675"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82858577"
 ---
 # <a name="enable-and-create-large-file-shares"></a>Grote bestands shares inschakelen en maken
 
@@ -26,14 +26,15 @@ Wanneer u grote bestands shares inschakelt voor uw opslag account, kunnen uw bes
 
 ## <a name="restrictions"></a>Beperkingen
 
-U kunt nu alleen lokaal redundante opslag (LRS) of zone-redundante opslag (ZRS) gebruiken op accounts met grote bestands shares. U kunt geen geo-zone-redundante opslag (GZRS), geografisch redundante opslag (GRS) of geografisch redundante opslag met lees toegang (RA-GRS) gebruiken.
-Het inschakelen van grote bestands shares voor een account is een onomkeerbaar proces. Nadat u dit hebt ingeschakeld, kunt u uw account niet converteren naar GZRS, GRS of RA-GRS.
+U kunt nu alleen lokaal redundante opslag (LRS) of zone-redundante opslag (ZRS) gebruiken op accounts met grote bestands shares. U kunt geen geo-zone-redundante opslag (GZRS), geografisch redundante opslag (GRS), geografisch redundante opslag met lees toegang (RA-GRS) of geo-zone-redundante opslag met lees toegang (RA-GZRS) gebruiken.
+
+Het inschakelen van grote bestands shares voor een account is een onomkeerbaar proces. Nadat u dit hebt ingeschakeld, kunt u uw account niet converteren naar GZRS, GRS, RA-GRS of RA-GZRS.
 
 ## <a name="create-a-new-storage-account"></a>Een nieuw opslagaccount maken
 
 ### <a name="portal"></a>Portal
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
+1. Meld u aan bij [Azure Portal](https://portal.azure.com).
 1. Selecteer in het Azure Portal **alle services**. 
 1. Voer **opslag accounts**in de lijst met resources in. Terwijl u typt, worden de lijst filters op basis van uw invoer. Selecteer **Opslagaccounts**.
 1. Selecteer **toevoegen**in het venster **opslag accounts** dat wordt weer gegeven.
@@ -68,7 +69,7 @@ Installeer eerst [de nieuwste versie van de Azure cli](https://docs.microsoft.co
 Als u een opslag account wilt maken waarvoor grote bestands shares zijn ingeschakeld, gebruikt u de volgende opdracht. Vervang `<yourStorageAccountName>`, `<yourResourceGroup>`en `<yourDesiredRegion>` met uw gegevens.
 
 ```azurecli-interactive
-## This command creates a large file share–enabled account. It will not support GZRS, GRS, or RA-GRS.
+## This command creates a large file share–enabled account. It will not support GZRS, GRS, RA-GRS, or RA-GZRS.
 az storage account create --name <yourStorageAccountName> -g <yourResourceGroup> -l <yourDesiredRegion> --sku Standard_LRS --kind StorageV2 --enable-large-file-share
 ```
 
@@ -79,13 +80,13 @@ Installeer eerst [de meest recente versie van Power shell](https://docs.microsof
 Als u een opslag account wilt maken waarvoor grote bestands shares zijn ingeschakeld, gebruikt u de volgende opdracht. Vervang `<yourStorageAccountName>`, `<yourResourceGroup>`en `<yourDesiredRegion>` met uw gegevens.
 
 ```powershell
-## This command creates a large file share–enabled account. It will not support GZRS, GRS, or RA-GRS.
+## This command creates a large file share–enabled account. It will not support GZRS, GRS, RA-GRS, or RA-GZRS.
 New-AzStorageAccount -ResourceGroupName <yourResourceGroup> -Name <yourStorageAccountName> -Location <yourDesiredRegion> -SkuName Standard_LRS -EnableLargeFileShare;
 ```
 
 ## <a name="enable-large-files-shares-on-an-existing-account"></a>Grote bestands shares op een bestaand account inschakelen
 
-U kunt ook grote bestands shares inschakelen voor uw bestaande accounts. Als u grote bestands shares inschakelt, kunt u niet converteren naar GZRS, GRS of RA-GRS. Het inschakelen van grote bestands shares is onomkeerbaar voor dit opslag account.
+U kunt ook grote bestands shares inschakelen voor uw bestaande accounts. Als u grote bestands shares inschakelt, kunt u niet converteren naar GZRS, GRS, RA-GRS of RA-GZRS. Het inschakelen van grote bestands shares is onomkeerbaar voor dit opslag account.
 
 ### <a name="portal"></a>Portal
 

@@ -1,6 +1,6 @@
 ---
 title: Zelf studie-distributies van de Canarische voor Azure Linux Virtual Machines configureren
-description: In deze zelf studie leert u hoe u een CD-pijp lijn (continue implementatie) kunt instellen waarmee een groep van Azure Linux Virtual Machines wordt bijgewerkt met een strategie voor distributie op basis van een Canarische implementatie
+description: In deze zelf studie leert u hoe u een pijp lijn met doorlopende implementatie (CD) kunt instellen. Met deze pijp lijn wordt een groep virtuele machines van Azure Linux bijgewerkt met behulp van de strategie voor de distributie van de Canarische-implementatie.
 author: moala
 manager: jpconnock
 tags: azure-devops-pipelines
@@ -12,65 +12,80 @@ ms.workload: infrastructure
 ms.date: 4/10/2020
 ms.author: moala
 ms.custom: devops
-ms.openlocfilehash: b51b4aed85f737e436565ce8ba1ab4a295714734
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: e0fb26896b79fb23bb0f784c0f23aa3af0593c22
+ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82120476"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82871852"
 ---
-# <a name="tutorial---configure-canary-deployment-strategy-for-azure-linux-virtual-machines"></a>Zelf studie-een strategie voor distributie op het Linux Virtual Machines voor Azure configureren
+# <a name="tutorial---configure-the-canary-deployment-strategy-for-azure-linux-virtual-machines"></a>Zelf studie-de strategie voor distributie van de Canarische-implementatie voor Azure Linux Virtual Machines configureren
 
+## <a name="infrastructure-as-a-service-iaas---configure-cicd"></a>Infrastructure as a Service (IaaS)-CI/CD configureren
 
-## <a name="iaas---configure-cicd"></a>IaaS-CI/CD configureren 
-Azure-pijp lijnen bieden een volledige, volledig uitgeruste set hulpprogram ma's voor het automatiseren van CI/CD voor implementaties op virtuele machines. U kunt direct vanuit Azure Portal een continue leverings pijplijn configureren voor een Azure-VM. Dit document bevat de stappen die zijn gekoppeld aan het instellen van een CI/CD-pijp lijn die gebruikmaakt van de strategie voor distributie op meerdere machines. U kunt ook een kijkje nemen op andere strategieën zoals geassen en [blauw groen](https://aka.ms/AA83fwu), die out [-of-](https://aka.ms/AA7jlh8) box van Azure Portal worden ondersteund. 
+Azure-pijp lijnen bieden een volledig uitgeruste set hulpprogram ma's voor CI/CD-automatisering voor implementaties op virtuele machines. U kunt een pijp lijn voor continue levering configureren voor een Azure-VM vanuit de Azure Portal.
 
+In dit artikel wordt beschreven hoe u een CI/CD-pijp lijn instelt die gebruikmaakt van de strategie voor de distributie van implementaties met een groot aantal machines. De Azure Portal biedt ook ondersteuning voor andere strategieën als [Rolling](https://aka.ms/AA7jlh8) en [Blue-groen](https://aka.ms/AA83fwu).
 
-**CI/CD op Virtual Machines configureren**
+### <a name="configure-cicd-on-virtual-machines"></a>CI/CD op virtuele machines configureren
 
-Virtuele machines kunnen worden toegevoegd als doelen voor een [implementatie groep](https://docs.microsoft.com/azure/devops/pipelines/release/deployment-groups) en kunnen worden gericht op updates voor meerdere machines. Zodra de **implementatie geschiedenis** binnen uw implementatie groep is geïmplementeerd, levert de bezorgings mogelijkheden van de VM naar de pijp lijn en vervolgens naar de door voer. 
- 
-  
-**Canarische implementaties**: een distributie in de Canarische omgeving vermindert het risico door de wijziging in een kleine subset van gebruikers te verkorten. Wanneer u de nieuwe versie meer betrouwt, kunt u deze vrijgeven aan meer servers in uw infra structuur en meer gebruikers ernaar sturen. U kunt distributies op uw virtuele machines met de Azure Portal met behulp van de optie continue levering configureren. Hier volgt stapsgewijze instructies. 
-1. Meld u aan bij uw Azure Portal en navigeer naar een virtuele machine 
-2. Ga in het linkerdeel venster van de VM naar het menu **doorlopende levering** . Klik op **configureren**. 
+U kunt virtuele machines als doelen toevoegen aan een [implementatie groep](https://docs.microsoft.com/azure/devops/pipelines/release/deployment-groups). U kunt deze vervolgens richten op updates voor alle machines. Nadat u op machines hebt geïmplementeerd, kunt u de **implementatie geschiedenis** binnen een implementatie groep bekijken. Met deze weer gave kunt u de virtuele machine traceren naar de pijp lijn en vervolgens naar de door voer.
 
-   ![AzDevOps_configure](media/tutorial-devops-azure-pipelines-classic/azure-devops-configure.png) 
-3. Klik in het configuratie scherm op **Azure DevOps-organisatie** om een bestaand account te selecteren of er een te maken. Selecteer vervolgens het project waaronder u de pijp lijn wilt configureren.  
+### <a name="canary-deployments"></a>Canarische implementaties
 
+Een distributie met een groot aantal vermindert het risico door de wijzigingen in een kleine subset van gebruikers langzaam uit te vouwen. Wanneer u de nieuwe versie betrouwt, kunt u deze vrijgeven aan meer servers in uw infra structuur en er meer gebruikers naar sturen.
 
-   ![AzDevOps_project](media/tutorial-devops-azure-pipelines-classic/azure-devops-rolling.png) 
-4. Een implementatie groep is een logische set implementatie doel machines die de fysieke omgevingen vertegenwoordigen; bijvoorbeeld ' dev ', ' test ', ' bedoeld ' en ' productie '. U kunt een nieuwe implementatie groep maken of een bestaande implementatie groep selecteren. 
-5. Selecteer de build-pijp lijn die het pakket publiceert dat naar de virtuele machine moet worden geïmplementeerd. Houd er rekening mee dat het gepubliceerde pakket een implementatie script moet _implementeren. ps1_ of _Deploy.sh_ in de `deployscripts` map op de hoofdmap van het pakket. Dit implementatie script wordt tijdens runtime uitgevoerd door de Azure DevOps-pijp lijn.
-6. Selecteer de implementatie strategie van uw keuze. Selecteer **Canarische**.
-7. Voeg een ' Canarische ' tag toe aan de virtuele machines die deel uitmaken van de Canarische implementaties en een Prod-tag naar de virtuele machines die deel uitmaken van implementaties nadat de voltooiing van de distributie is geslaagd. Met tags kunt u doel-Vm's richten die alleen specifieke rollen hebben.
-![AzDevOps_configure_canary](media/tutorial-devops-azure-pipelines-classic/azure-devops-configure-canary.png)
+U kunt met behulp van de optie continue levering distributie op uw virtuele machines vanuit de Azure Portal configureren. Dit is de stapsgewijze stapsgewijze instructies:
 
-8. Klik op **OK** in het dialoog venster om de doorlopende bezorgings pijplijn te configureren. U hebt nu een continue leverings pijplijn geconfigureerd om te implementeren op de virtuele machine.
-![AzDevOps_canary_pipeline](media/tutorial-devops-azure-pipelines-classic/azure-devops-canary-pipeline.png)
+1. Meld u aan bij de Azure Portal en navigeer naar een virtuele machine.
+1. Selecteer in het meest linkse deel venster van de VM-instellingen **continue levering**. Selecteer vervolgens **configureren**.
 
+   ![Het deel venster continue levering met de knop configureren](media/tutorial-devops-azure-pipelines-classic/azure-devops-configure.png)
 
-9. Klik op release pijplijn **bewerken** in azure DevOps om de pijplijn configuratie weer te geven. De pijp lijn bestaat uit drie fasen. De eerste fase is een fase van de implementatie groep en wordt geïmplementeerd op Vm's die als _Canarische_zijn gelabeld. De tweede fase, pauzeert de pijp lijn en wacht op hand matige interventie om de uitvoering te hervatten. Zodra een gebruiker heeft nagegaan dat de distributie van de Canarische machine stabiel is, kan de uitvoering van de pijp lijn hervatten, waarna de derde fase wordt uitgevoerd die wordt geïmplementeerd op Vm's die zijn gelabeld als _Prod_. ![AzDevOps_canary_task](media/tutorial-devops-azure-pipelines-classic/azure-devops-canary-task.png)
+1. Selecteer in het configuratie scherm de optie **Azure DevOps Organization** om een bestaand account te kiezen of maak een nieuwe. Selecteer vervolgens het project waaronder u de pijp lijn wilt configureren.  
 
-10. Voordat u de pijp lijn uitvoert, moet u ervoor zorgen dat ten minste één virtuele machine is gelabeld als _Prod_. In de derde fase van de pijp lijn wordt de toepassing alleen geïmplementeerd naar de virtuele machines die een _Prod_ -tag hebben.
+   ![Het deel venster continu bezorgen](media/tutorial-devops-azure-pipelines-classic/azure-devops-rolling.png)
 
-11. De taak Deploy-script uitvoeren voert standaard het implementatie script _Deploy. ps1_ of _Deploy.sh_ in de map ' deployscripts ' uit in de hoofdmap van het gepubliceerde pakket. Zorg ervoor dat de geselecteerde build pijp lijn dit publiceert in de hoofdmap van het pakket. 
-![AzDevOps_publish_package](media/tutorial-deployment-strategy/package.png)
+1. Een implementatie groep is een logische set implementatie doel machines die de fysieke omgevingen vertegenwoordigen. Dev, testen, bedoeld en productie zijn voor beelden. U kunt een nieuwe implementatie groep maken of een bestaande implementeren.
+1. Selecteer de build-pijp lijn die het pakket publiceert dat naar de virtuele machine moet worden geïmplementeerd. Het gepubliceerde pakket moet een implementatie script met de naam Deploy. ps1 of deploy.sh hebben in de map deployscripts in de hoofdmap van het pakket. De pijp lijn voert dit implementatie script uit.
+1. Selecteer in **implementatie strategie**de optie **Canarische**.
+1. Voeg een ' Canarische ' tag toe aan Vm's die deel moeten uitmaken van de distributie van de Canarische. Voeg een ' Prod-tag ' toe aan Vm's die deel uitmaken van implementaties die zijn gemaakt nadat de distributie van de Canarische is geslaagd. Tags helpen u bij het richten op alleen Vm's met een specifieke rol.
 
+   ![Het deel venster continue levering, met de gekozen waarde voor de implementatie strategie](media/tutorial-devops-azure-pipelines-classic/azure-devops-configure-canary.png)
 
+1. Selecteer **OK** om de pijp lijn voor continue levering te configureren die u wilt implementeren op de virtuele machine.
 
+   ![De Canarische pijp lijn](media/tutorial-devops-azure-pipelines-classic/azure-devops-canary-pipeline.png)
+
+1. De implementatie Details voor de virtuele machine worden weer gegeven. U kunt de koppeling selecteren om naar de release pijplijn in azure DevOps te gaan. Selecteer in de release pijplijn de optie **bewerken** om de pijplijn configuratie weer te geven. De pijp lijn heeft deze drie fasen:
+
+   1. Deze fase is een fase van de implementatie groep. Toepassingen worden geïmplementeerd op Vm's die zijn gelabeld als ' Canarische '.
+   1. In deze fase wordt de pijp lijn onderbroken en wordt gewacht op hand matige interventie om de uitvoering te hervatten.
+   1. Dit is opnieuw een fase van de implementatie groep. De update wordt nu geïmplementeerd op Vm's die zijn gelabeld als ' Prod '.
+
+      ![Het deel venster implementatie groep voor de taak distributie distributie](media/tutorial-devops-azure-pipelines-classic/azure-devops-canary-task.png)
+
+1. Zorg ervoor dat ten minste één virtuele machine is gelabeld als ' Prod ' voordat u de pijplijn uitvoering hervat. In de derde fase van de pijp lijn worden toepassingen alleen geïmplementeerd voor virtuele machines die de tag ' Prod ' hebben.
+
+1. Met de taak Deploy script uitvoeren wordt standaard het implementatie script Deploy. ps1 of deploy.sh uitgevoerd. Het script bevindt zich in de map deployscripts in de hoofdmap van het gepubliceerde pakket. Zorg ervoor dat de geselecteerde build pijp lijn de implementatie publiceert in de hoofdmap van het pakket.
+
+   ![Het deel venster artefacten met deploy.sh in de map deployscripts](media/tutorial-deployment-strategy/package.png)
 
 ## <a name="other-deployment-strategies"></a>Andere implementatie strategieën
-- [Strategie voor Rolling implementatie configureren](https://aka.ms/AA7jlh8)
-- [Strategie voor de implementatie van blauw en groen configureren](https://aka.ms/AA83fwu)
+- [De strategie voor Rolling implementatie configureren](https://aka.ms/AA7jlh8)
+- [De implementatie strategie voor blauw-groen configureren](https://aka.ms/AA83fwu)
 
-## <a name="azure-devops-project"></a>Azure DevOps-project 
-Ga gemakkelijker dan ooit aan de slag met Azure.
- 
-Met DevOps Projects kunt u uw toepassing in slechts drie stappen uitvoeren op elke Azure-service: Selecteer een toepassings taal, een runtime en een Azure-service.
- 
-[Meer informatie](https://azure.microsoft.com/features/devops-projects/ ).
- 
-## <a name="additional-resources"></a>Aanvullende bronnen 
-- [Implementeren in azure Virtual Machines met behulp van DevOps-project](https://docs.microsoft.com/azure/devops-project/azure-devops-project-vms)
-- [Continue implementatie van uw app implementeren in een Schaalset voor virtuele Azure-machines](https://docs.microsoft.com/azure/devops/pipelines/apps/cd/azure/deploy-azure-scaleset)
+## <a name="azure-devops-projects"></a>Azure DevOps Projects
+
+U kunt eenvoudig aan de slag met Azure. Met Azure DevOps Projects kunt u uw toepassing in slechts drie stappen uitvoeren op elke Azure-service door het volgende te selecteren:
+
+- Een toepassings taal
+- Een runtime
+- Een Azure-service
+
+[Meer informatie](https://azure.microsoft.com/features/devops-projects/).
+
+## <a name="additional-resources"></a>Aanvullende bronnen
+
+- [Implementeren op virtuele machines van Azure met behulp van Azure DevOps Projects](https://docs.microsoft.com/azure/devops-project/azure-devops-project-vms)
+- [Continue implementatie van uw app implementeren in een schaalset voor virtuele Azure-machines](https://docs.microsoft.com/azure/devops/pipelines/apps/cd/azure/deploy-azure-scaleset)

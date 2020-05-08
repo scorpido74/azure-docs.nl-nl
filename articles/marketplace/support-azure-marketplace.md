@@ -1,24 +1,22 @@
 ---
-title: Ondersteuning voor de commerciële Marketplace | Azure Marketplace
-description: Ondersteunings informatie en koppelingen voor Azure Marketplace en AppSource
+title: Ondersteuning voor micro soft Commercial Marketplace-Azure Marketplace
+description: Ondersteunings informatie en koppelingen voor Azure Marketplace en AppSource in Partner Center
 author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 04/16/2020
+ms.date: 04/14/2020
 ms.author: dsindona
-ms.openlocfilehash: 3871ef232d9a2315ece632f6f764f8377a8435c5
-ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
+ms.openlocfilehash: 9dacbbac1caad33a6ab2f5f09d3f6c9d31c32bb7
+ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/26/2020
-ms.locfileid: "82159912"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82871549"
 ---
-# <a name="support-for-the-marketplace"></a>Ondersteuning voor Marketplace
+# <a name="support-for-microsoft-commercial-marketplace"></a>Ondersteuning voor micro soft Commercial Marketplace
 
-Hier volgt een lijst met ondersteunings opties voor Marketplace.  
-
-Daarnaast kunt u veel van uw vragen beantwoorden in het Marketplace- [kanaal van C + AI Community-Forum](https://www.microsoftpartnercommunity.com/t5/Marketplace/bd-p/2222).  
+Hebt u vragen over hoe u aan de slag kunt met micro soft Commercial Marketplace Publisher? Hier volgt een lijst met ondersteunings opties voor de commerciële Marketplace. Naast de volgende bronnen kunt u ook veel van uw vragen beantwoorden in het [Marketplace-kanaal van C + AI Community-Forum](https://www.microsoftpartnercommunity.com/t5/Marketplace/bd-p/2222).  
 
 ## <a name="onboarding"></a>Onboarding
 

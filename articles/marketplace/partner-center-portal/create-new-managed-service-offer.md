@@ -1,5 +1,5 @@
 ---
-title: Een nieuw aanbod voor een beheerde service maken in de commerciële Marketplace
+title: Een beheerde service aanbieding maken in micro soft Commercial Marketplace
 description: Het maken van een nieuwe, beheerde service aanbieding voor een vermelding in azure Marketplace met behulp van de portal voor commerciële Marketplace in het partner centrum.
 author: JnHs
 ms.author: jenhayes
@@ -8,56 +8,60 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/08/2020
-ms.openlocfilehash: c82c3e0b6e6d11ccc33bf8556b06aeb04a6d37b5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 41b2e12a94f5751e31f482c913c71b4731b1cf6c
+ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82147911"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82871902"
 ---
-# <a name="create-a-new-managed-service-offer"></a>Een nieuwe beheerde service aanbieding maken
+# <a name="create-a-managed-service-offer"></a>Een aanbieding voor beheerde service maken
 
-> [!IMPORTANT]
-> Het beheer van uw aanbiedingen voor beheerde services wordt verplaatst van Cloud Partner-portal naar het partner centrum. Totdat uw aanbiedingen zijn gemigreerd, volgt u de instructies in [een beheerde service aanbieding publiceren naar Azure Marketplace](../../lighthouse/how-to/publish-managed-services-offers.md) voor het beheren van uw aanbiedingen in Cloud Partner-Portal.
+Beheerde service biedt hulp bij het inschakelen van [Azure Lighthouse](../../lighthouse/overview.md) -scenario's. Wanneer een klant een beheerd service aanbod aanvaardt, kunnen ze resources vrijgeven voor het beheer van de [gedelegeerde resources van Azure](../../lighthouse/concepts/azure-delegated-resource-management.md). Voordat u begint, moet u [een commercieel Marketplace-account maken in Partner Center](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account) als u dit nog niet hebt gedaan. Zorg ervoor dat uw account is inge schreven in het Commercial Marketplace-programma.
 
-Beheerde service biedt hulp bij het inschakelen van [Azure Lighthouse](../../lighthouse/overview.md) -scenario's. Wanneer een klant een beheerd service aanbod aanvaardt, kunnen ze resources vrijgeven voor het beheer van de [gedelegeerde resources van Azure](../../lighthouse/concepts/azure-delegated-resource-management.md).
-
-Als u wilt beginnen met het maken van beheerde service aanbiedingen, moet u eerst [een partner centrum-account maken](./create-account.md) en het [dash board commerciële Marketplace](https://partner.microsoft.com/dashboard/commercial-marketplace/offers)openen, waarbij de pagina **overzicht** is geselecteerd. U moet beschikken over een [Silver-of Gold-competentie voor het Cloud platform](https://partner.microsoft.com/membership/cloud-platform-competency) of een [Azure expert msp](https://partner.microsoft.com/membership/azure-expert-msp) -aanbod om een beheerde service te kunnen publiceren.
-
-![Dash board voor commerciële Marketplace in het partner centrum](./media/new-offer-overview.png)
-
->[!Note]
-> Zodra een aanbieding is gepubliceerd, worden wijzigingen die zijn aangebracht in het partner centrum, alleen in het systeem bijgewerkt en opgeslagen vóór het opnieuw publiceren. Zorg ervoor dat u de aanbieding voor publicatie verzendt nadat u wijzigingen hebt aangebracht.
+U moet beschikken over een [Silver-of Gold-competentie voor het Cloud platform](https://partner.microsoft.com/membership/cloud-platform-competency) of een [Azure expert msp](https://partner.microsoft.com/membership/azure-expert-msp) -aanbod om een beheerde service te kunnen publiceren.
 
 ## <a name="create-a-new-offer"></a>Een nieuwe aanbieding maken
 
-Selecteer de knop **+ nieuwe aanbieding** en selecteer vervolgens het menu-item **Managed Service** . Het dialoog venster **nieuwe aanbieding** wordt weer gegeven.
+1. Meld u aan bij [Partner Center](https://partner.microsoft.com/dashboard/home).
+2. Selecteer in het menu links de optie **commerciële Marketplace** > -**overzicht**.
+3. Selecteer op de pagina overzicht **+ nieuwe** > **beheerde service**voor aanbiedingen.
 
-### <a name="offer-id-and-alias"></a>Aanbiedings-ID en alias
+    ![Illustreert het navigatie menu.](./media/new-offer-managed-service.png)
 
-- **Aanbiedings-id**: unieke id voor elke aanbieding in uw account. Deze ID is zichtbaar voor klanten in het URL-adres voor de Marketplace-aanbieding. Deze ID mag alleen kleine letters bevatten (inclusief afbreek streepjes en onderstrepings tekens, maar geen witruimte), beperkt tot 50 tekens en kan niet worden gewijzigd nadat u **maken**hebt geselecteerd.  Als u hier bijvoorbeeld *test-aanbieding-1* invoert, is de URL van de aanbieding `https://azuremarketplace.microsoft.com/marketplace/../test-offer-1`.
+>[!NOTE]
+>Nadat een aanbieding is gepubliceerd, worden wijzigingen die in het partner centrum zijn aangebracht, alleen weer gegeven in de winkel wanneer u de aanbieding opnieuw publiceert. Zorg ervoor dat u altijd opnieuw publiceert nadat u wijzigingen hebt aangebracht.
 
-- **Aanbiedings alias**: de naam die wordt gebruikt om te verwijzen naar de aanbieding in het partner centrum. Deze naam wordt niet gebruikt in Marketplace en wijkt af van de naam van de aanbieding en andere waarden die aan klanten worden weer gegeven. Deze waarde kan niet worden gewijzigd nadat u **maken**hebt geselecteerd.
+## <a name="new-offer"></a>Nieuwe aanbieding
 
-Wanneer u uw **aanbiedings-id** en **aanbiedings alias**hebt ingevoerd, selecteert u **maken**. U kunt nu aan de verschillende onderdelen van uw aanbieding werken.
+Voer een **aanbiedings-id**in. Dit is een unieke id voor elke aanbieding in uw account.
+
+* Deze ID is zichtbaar voor klanten in het webadres voor de Marketplace-aanbieding en Azure Resource Manager sjablonen, indien van toepassing.
+* Gebruik alleen kleine letters en cijfers. Dit kan afbreek streepjes en onderstrepings tekens bevatten, maar mag niet langer zijn dan 50. Als u bijvoorbeeld **test-aanbieding-1**invoert, is het webadres van de aanbieding `https://azuremarketplace.microsoft.com/marketplace/../test-offer-1`.
+* De aanbiedings-ID kan niet worden gewijzigd nadat u **maken**hebt geselecteerd.
+
+Voer een **alias**voor de aanbieding in. Dit is de naam die wordt gebruikt voor de aanbieding in Partner Center.
+
+* Deze naam wordt niet gebruikt in Marketplace en wijkt af van de naam van de aanbieding en andere waarden die aan klanten worden weer gegeven.
+* De alias van het do-aanbod kan niet worden gewijzigd nadat u **maken**hebt geselecteerd.
+
+Selecteer **maken** om de aanbieding te genereren en door te gaan.
 
 ## <a name="offer-setup"></a>Installatie van aanbieding
-
-Op de pagina **aanbieding instellen** wordt u gevraagd om de volgende informatie op te vragen. Zorg ervoor dat u **Opslaan** selecteert na het volt ooien van deze velden.
 
 ## <a name="connect-lead-management"></a>Lead beheer verbinden
 
 [!INCLUDE [Connect lead management](./includes/connect-lead-management.md)]
 
-Houd er rekening mee dat volgens het [certificerings beleid van beheerde services](https://docs.microsoft.com/legal/marketplace/certification-policies#700-managed-services)een doel voor de **lead** is vereist. Hiermee maakt u een record in uw CRM-systeem telkens wanneer een klant uw aanbieding implementeert.
+Volgens het [certificerings beleid van beheerde services](https://docs.microsoft.com/legal/marketplace/certification-policies#700-managed-services)is een doel voor de **lead** vereist. Hiermee maakt u een record in uw CRM-systeem telkens wanneer een klant uw aanbieding implementeert.
 
 Zie [Lead Management Overview](./commercial-marketplace-get-customer-leads.md)voor meer informatie.
 
-Vergeet niet om de pagina op te **slaan** voordat u verdergaat met de volgende sectie.
+Selecteer **concept opslaan** voordat u doorgaat.
 
 ## <a name="properties"></a>Eigenschappen
 
-Op de pagina **Eigenschappen** kunt u de categorieën definiëren die worden gebruikt voor het groeperen van uw aanbieding op Marketplace en de juridische contracten die uw aanbieding ondersteunen. Selecteer **Opslaan** nadat u deze pagina hebt voltooid.
+Op deze pagina kunt u de categorieën definiëren die worden gebruikt voor het groeperen van uw aanbieding op Marketplace en de juridische contracten die uw aanbieding ondersteunen.
 
 ### <a name="category"></a>Categorie
 
@@ -67,12 +71,14 @@ Selecteer mini maal één en Maxi maal vijf categorieën die worden gebruikt voo
 
 Geef uw eigen juridische voor waarden op in het veld voor **waarden** . U kunt ook de URL opgeven waar uw voor waarden kunnen worden gevonden. Klanten moeten deze voor waarden accepteren voordat ze uw aanbieding kunnen proberen.
 
+Selecteer **concept opslaan** voordat u doorgaat.
+
 ## <a name="offer-listing"></a>Aanbieding weer geven
 
-Op de **aanbiedings** pagina kunt u de details van Marketplace (aanbiedings naam, beschrijving, installatie kopieën enz.) definiëren voor uw aanbieding.
+Op deze pagina kunt u Marketplace-Details (zoals aanbiedings naam, beschrijving en installatie kopieën) voor uw aanbieding definiëren.
 
 > [!NOTE]
-> Aanbiedings inhoud (zoals de beschrijving, documenten, scherm afbeeldingen, gebruiks voorwaarden, enzovoort) is niet vereist in het Engels, zolang de beschrijving van het aanbod begint met de woord groep ' deze toepassing is alleen beschikbaar in [niet-Engelse taal] '. Het is ook acceptabel om een *nuttige koppelings-URL* te bieden om inhoud te bieden in een andere taal dan de versie die wordt gebruikt in de inhoud van de aanbieding.
+> De inhoud van het aanbiedings aanbod (zoals de beschrijving, documenten, scherm afbeeldingen en gebruiks voorwaarden) is niet vereist voor het Engels, zolang de beschrijving van het aanbod begint met de woord groep ' deze toepassing is alleen beschikbaar in [niet-Engelse taal] '. Het is ook acceptabel om een *nuttige koppelings-URL* te bieden om inhoud te bieden in een andere taal dan de versie die wordt gebruikt in de inhoud van de aanbieding.
 
 ### <a name="name"></a>Naam
 
@@ -100,23 +106,13 @@ Tips voor het schrijven van uw beschrijving:
 - Vertrouw niet op functies en functionaliteit om uw product te verkopen. Richt u in plaats daarvan op de waarde die u levert.  
 - Gebruik zo veel mogelijk branchespecifieke woorden lijst of op basis van voor delen.
 
-Als u de beschrijving van uw aanbieding aantrekkelijker wilt maken, gebruikt u de RTF-editor om uw beschrijving op te maken.
+Als u de beschrijving van uw aanbieding aantrekkelijker wilt maken, gebruikt u de RTF-editor om opmaak toe te passen.
 
-![De RTF-editor gebruiken](./media/text-editor2.png)
+![De RTF-editor gebruiken](./media/rich-text-editor.png)
 
-Gebruik de volgende instructies voor het gebruik van de RTF-editor:
-
-- Als u de indeling van de inhoud wilt wijzigen, markeert u de tekst die u wilt opmaken en selecteert u een tekst stijl, zoals hieronder wordt weer gegeven:
-
-     ![De RTF-editor gebruiken om de tekst indeling te wijzigen](./media/text-editor3.png)
-
-- Gebruik de onderstaande opties om een lijst met opsommings tekens of genummerde lijsten aan de tekst toe te voegen:
-
-     ![De RTF-editor gebruiken om lijsten toe te voegen](./media/text-editor4.png)
-
-- Gebruik de onderstaande opties om inspringing toe te voegen aan of te verwijderen uit de tekst:
-
-     ![De Rich Text Editor gebruiken om in te springen](./media/text-editor5.png)
+| <center>Tekst indeling wijzigen | <center>Opsommings tekens of nummering toevoegen | <center>Tekst inspringen toevoegen of verwijderen |
+| --- | --- | --- |
+| <center>![De RTF-editor gebruiken om de tekst indeling te wijzigen](./media/text-editor3.png) |  <center>![De RTF-editor gebruiken om lijsten toe te voegen](./media/text-editor4.png) |  <center>![De Rich Text Editor gebruiken om in te springen](./media/text-editor5.png) |
 
 ### <a name="privacy-policy-link"></a>Koppeling Privacybeleid
 
@@ -138,12 +134,19 @@ Als u ondersteuning hebt voor websites voor **Azure Global-klanten** en/of **Azu
 
 In deze sectie kunt u logo's en installatie kopieën opgeven die worden gebruikt wanneer uw aanbieding wordt weer gegeven aan de klant. Alle installatie kopieën moeten de PNG-indeling hebben.
 
->[!Note]
+>[!NOTE]
 >Als u een probleem hebt met het uploaden van bestanden, moet u ervoor zorgen dat uw https://upload.xboxlive.com lokale netwerk de door Partner Center gebruikte service niet blokkeert.
 
 #### <a name="marketplace-logos"></a>Marketplace-logo's
 
-Er zijn vier logo grootten vereist: **Small (40x40)**, **medium (90x90)**, **large (115x115)** en **Wide (255x115)**. Volg deze richt lijnen voor uw logo's:
+Geef het logo van uw aanbod op in vier pixel grootten:
+
+- **Klein** (40 x 40)
+- **Gemiddeld** (90 x 90)
+- **Groot** (115 x 115)
+- **Breed** (255 x 115)
+
+Volg deze richt lijnen voor uw logo's:
 
 - Het Azure-ontwerp heeft een eenvoudig kleurenpalet. Beperk het aantal primaire en secundaire kleuren in uw logo.
 - De themakleuren van de portal zijn wit en zwart. Gebruik deze kleuren niet als de achtergrondkleur voor uw logo. Gebruik een kleur waardoor uw logo opvalt in de portal. We adviseren eenvoudige primaire kleuren.
@@ -164,6 +167,8 @@ U kunt optioneel Maxi maal vijf Video's toevoegen die uw aanbieding aantonen. De
 
 - [Best practices voor Marketplace-aanbiedingen](https://docs.microsoft.com/azure/marketplace/gtm-offer-listing-best-practices)
 
+Selecteer **concept opslaan** voordat u doorgaat.
+
 ## <a name="preview"></a>Preview
 
 Voordat u uw aanbieding naar de bredere Marketplace-aanbieding publiceert, moet u deze eerst beschikbaar maken voor een beperkte preview-doel groep. Zo kunt u bevestigen hoe u in de Azure Marketplace wordt weer gegeven voordat u deze beschikbaar maakt voor klanten. Micro soft-ondersteunings-en engineering teams kunnen tijdens deze preview-periode ook uw aanbieding bekijken.
@@ -171,6 +176,8 @@ Voordat u uw aanbieding naar de bredere Marketplace-aanbieding publiceert, moet 
 U kunt het voor beeld van de doel groep definiëren door Azure-abonnement-Id's in te voeren in de sectie **voor beeld van doel groep** . U kunt Maxi maal 10 abonnements-Id's hand matig invoeren of een CSV-bestand uploaden met Maxi maal 100 abonnement-Id's.
 
 Klanten die aan deze abonnementen zijn gekoppeld, kunnen de aanbieding in azure Marketplace bekijken voordat deze live gaat. Zorg ervoor dat u hier uw eigen abonnementen opneemt, zodat u een voor beeld van uw aanbieding kunt bekijken.
+
+Selecteer **concept opslaan** voordat u doorgaat.
 
 ## <a name="plan-overview"></a>Overzicht van plan
 
@@ -237,18 +244,20 @@ Voor elke **autorisatie**moet u het volgende opgeven. U kunt vervolgens en zo va
 
 Zodra u alle secties voor uw abonnement hebt voltooid, kunt u **+ nieuw plan maken** , net zo vaak als u nodig hebt om extra plannen te maken. Selecteer **Opslaan** als u klaar bent.
 
+Selecteer **concept opslaan** voordat u doorgaat.
+
 ## <a name="publish"></a>Publiceren
 
 ### <a name="submit-offer-to-preview"></a>Aanbieding verzenden naar Preview
 
-Zodra u alle vereiste delen van de aanbieding hebt voltooid, selecteert u **publiceren** in de rechter bovenhoek van de portal. U wordt omgeleid naar de pagina **controleren en publiceren** .
+Zodra u alle vereiste delen van de aanbieding hebt voltooid, selecteert u **controleren en publiceren** in de rechter bovenhoek van de portal.
 
 Als dit de eerste keer is dat u deze aanbieding publiceert, kunt u het volgende doen:
 
 - Bekijk de voltooiings status voor elke sectie van de aanbieding.
-  - *Niet gestart* : de sectie is niet gerakend en moet worden voltooid.
-  - *Onvolledig* : de sectie bevat fouten die moeten worden hersteld of waarvoor meer informatie moet worden verstrekt. Ga terug naar de sectie (s) en werk deze bij.
-  - *Voltooid* : de sectie is voltooid, alle vereiste gegevens zijn opgegeven en er zijn geen fouten. Alle secties van de aanbieding moeten een volledige status hebben voordat u de aanbieding kunt indienen.
+  - **Niet gestart** : de sectie is niet gerakend en moet worden voltooid.
+  - **Onvolledig** : de sectie bevat fouten die moeten worden hersteld of waarvoor meer informatie moet worden verstrekt. Ga terug naar de sectie (s) en werk deze bij.
+  - **Voltooid** : de sectie is voltooid, alle vereiste gegevens zijn opgegeven en er zijn geen fouten. Alle secties van de aanbieding moeten een volledige status hebben voordat u de aanbieding kunt indienen.
 - Geef in de sectie **opmerkingen voor certificering** test instructies op voor het certificerings team om ervoor te zorgen dat uw app correct wordt getest, naast eventuele aanvullende notities die nuttig zijn voor de uitleg van uw app.
 - Verzend de aanbieding voor publicatie door **verzenden**te selecteren. We sturen u een e-mail wanneer een preview-versie van de aanbieding beschikbaar is om te controleren en goed te keuren. Ga terug naar het partner centrum en selecteer **Go-Live** voor de aanbieding om uw aanbieding te publiceren naar het open bare (of als u een privé-aanbieding naar de persoonlijke doel groep hebt).
 

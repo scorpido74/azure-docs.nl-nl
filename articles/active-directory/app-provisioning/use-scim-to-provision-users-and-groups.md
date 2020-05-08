@@ -2,28 +2,23 @@
 title: Een SCIM-eind punt ontwikkelen voor het inrichten van gebruikers voor apps vanuit Azure AD
 description: Met het systeem voor Identity Management (SCIM) met meerdere domeinen wordt automatische gebruikers inrichting gestandaardiseerd. Leer hoe u een SCIM-eind punt ontwikkelt, uw SCIM-API integreert met Azure Active Directory en beginnen met het automatiseren van het inrichten van gebruikers en groepen in uw Cloud toepassingen.
 services: active-directory
-documentationcenter: ''
 author: msmimart
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/07/2020
 ms.author: mimart
 ms.reviewer: arvinh
-ms.custom: aaddev;it-pro;seohack1
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: a54bc3cfa67330fb0056ccd1898d9ab3de2b0ab2
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 65bbb35d041a48e68d01a50e88e42fbeb73f2ea6
+ms.sourcegitcommit: 602e6db62069d568a91981a1117244ffd757f1c2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82229915"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82864280"
 ---
-# <a name="build-a-scim-endpoint-and-configure-user-provisioning-with-azure-active-directory-azure-ad"></a>Een SCIM-eind punt bouwen en gebruikers inrichten configureren met Azure Active Directory (Azure AD)
+# <a name="build-a-scim-endpoint-and-configure-user-provisioning-with-azure-ad"></a>Een SCIM-eind punt bouwen en gebruikers inrichten met Azure AD configureren
 
 Als ontwikkelaar van een toepassing kunt u het systeem gebruiken voor SCIM-gebruikers beheer-API (Cross-Domain Identity Management) om het automatisch inrichten van gebruikers en groepen tussen uw toepassing en Azure AD mogelijk te maken. In dit artikel wordt beschreven hoe u een SCIM-eind punt bouwt en integreert met de Azure AD-inrichtings service. De SCIM-specificatie biedt een gemeen schappelijk gebruikers schema voor het inrichten van. Bij gebruik in combi natie met Federatie standaarden zoals SAML of OpenID Connect Connect biedt beheerders een end-to-end, op standaarden gebaseerde oplossing voor toegangs beheer.
 
@@ -100,12 +95,12 @@ U kunt de onderstaande tabel gebruiken om te begrijpen hoe de kenmerken die uw t
 | Azure Active Directory gebruiker | "urn: IETF: params: scim: schemas: extension: Enter prise: 2.0: User" |
 | --- | --- |
 | IsSoftDeleted |actief |
-|department|urn: IETF: params: scim: schemas: extension: Enter prise: 2.0: gebruiker: Department|
+|afdeling|urn: IETF: params: scim: schemas: extension: Enter prise: 2.0: gebruiker: Department|
 | displayName |displayName |
 |employeeId|urn: IETF: params: scim: schemas: extensie: Enter prise: 2.0: gebruiker: employeeNumber|
 | Fax-TelephoneNumber |phoneNumbers [type EQ "fax"]. waarde |
 | givenName |name. naam |
-| jobTitle |titel |
+| jobTitle |title |
 | mail |e-mail berichten [type EQ "werk]. waarde |
 | mailNickname |externalId |
 | manager |urn: IETF: params: scim: schemas: extensie: Enter prise: 2.0: gebruiker: Manager |
@@ -1200,8 +1195,8 @@ De SCIM spec definieert geen SCIM-specifiek schema voor verificatie en autorisat
 [!NOTE] Het is niet raadzaam om het veld token leeg te laten in de aangepaste app-gebruikers interface van de Azure AD-inrichtings configuratie. Het gegenereerde token is voornamelijk beschikbaar voor test doeleinden.
 
 **Overdrachts stroom OAuth-autorisatie code:** De inrichtings service ondersteunt de [toekenning van autorisatie code](https://tools.ietf.org/html/rfc6749#page-24). Na het verzenden van uw aanvraag voor het publiceren van uw app in de galerie, zal ons team met u samen werken om de volgende informatie te verzamelen:
-*  Autorisatie-URL: een URL door de client voor het verkrijgen van autorisatie van de resource-eigenaar via omleiding van gebruikers agent. De gebruiker wordt omgeleid naar deze URL om toegang te autoriseren. 
-*  Token Exchange-URL: een URL door de client voor het uitwisselen van een autorisatie machtiging voor een toegangs token, meestal met client verificatie.
+*  Autorisatie-URL: een URL door de client voor het verkrijgen van autorisatie van de resource-eigenaar via omleiding van gebruikers agent. De gebruiker wordt omgeleid naar deze URL om toegang te autoriseren. Houd er rekening mee dat deze URL momenteel niet kan worden geconfigureerd per Tenant.
+*  Token Exchange-URL: een URL door de client voor het uitwisselen van een autorisatie machtiging voor een toegangs token, meestal met client verificatie. Houd er rekening mee dat deze URL momenteel niet kan worden geconfigureerd per Tenant.
 *  Client-ID: de autorisatie server geeft de geregistreerde client een client-id. Dit is een unieke teken reeks die de registratie gegevens vertegenwoordigt die door de client worden verstrekt.  De client-id is geen geheim. het wordt blootgesteld aan de resource-eigenaar en **mag niet** alleen voor client verificatie worden gebruikt.  
 *  Client geheim: het client geheim is een geheim dat is gegenereerd door de autorisatie server. Dit moet een unieke waarde zijn die alleen bekend is bij de autorisatie server. 
 

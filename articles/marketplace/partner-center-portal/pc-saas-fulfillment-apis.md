@@ -1,26 +1,25 @@
 ---
-title: SaaS-fulfillment-Api's | Azure Marketplace
-description: Introduceert de versies van de fulfillment-Api's waarmee u uw SaaS-aanbiedingen kunt integreren met de Azure Marketplace.
+title: SaaS-fulfillment-Api's in micro soft Commercial Marketplace
+description: Een inleiding tot de fulfillment-Api's waarmee u uw SaaS-aanbiedingen in Microsoft AppSource en Azure Marketplace kunt integreren.
 author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 05/23/2019
 ms.author: dsindona
-ms.openlocfilehash: 92b1c52457fa92709381124480c05a5f636167f4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ba1b158bc529b148a8e3138d122c13ead19e073e
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80275727"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82858084"
 ---
-# <a name="saas-fulfillment-apis"></a>SaaS-uitvoerings-API's
+# <a name="saas-fulfillment-apis-in-microsoft-commercial-marketplace"></a>SaaS-fulfillment-Api's in micro soft Commercial Marketplace
 
-Met de SaaS-fulfillment-Api's kunnen onafhankelijke software leveranciers (Isv's) hun SaaS-toepassingen integreren met de Azure Marketplace. Met deze Api's kunnen ISV-toepassingen deel nemen aan alle commerce ingeschakelde kanalen: direct, partner-LED (wederverkoper) en veld-LED.  Ze zijn vereist voor het weer geven van transactable SaaS-aanbiedingen op de Azure Marketplace.
+Met de SaaS-fulfillment-Api's kunnen onafhankelijke software leveranciers (Isv's) hun SaaS-toepassingen integreren in Microsoft AppSource en Azure Marketplace. Met deze Api's kunnen ISV-toepassingen deel nemen aan alle commerce ingeschakelde kanalen: directe, partner-LED (wederverkoper) en veld-LED. Ze zijn verplicht om transactable SaaS-aanbiedingen in Microsoft AppSource en Azure Marketplace weer te geven.
 
 > [!WARNING]
 > De huidige versie van deze API is versie 2, die moet worden gebruikt voor alle nieuwe SaaS-aanbiedingen.  Versie 1 van de API is afgeschaft en wordt onderhouden ter ondersteuning van bestaande aanbiedingen.
-
 
 ## <a name="business-model-support"></a>Business model-ondersteuning
 

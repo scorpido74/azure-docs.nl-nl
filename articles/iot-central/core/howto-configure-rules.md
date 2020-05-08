@@ -8,16 +8,14 @@ ms.topic: how-to
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: 509f9557a8128df12353ad02a7c7db02b7b42631
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f6e85ba5aafaad973d28f799a251b6f3aae548e3
+ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80158447"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82871937"
 ---
 # <a name="configure-rules"></a>Regels configureren
-
-
 
 *Dit artikel is van toepassing op operators, opbouwfuncties en beheerders.*
 
@@ -36,6 +34,12 @@ Voor waarden worden de regels geactiveerd. Wanneer u op dit moment meerdere voor
 In de volgende scherm afbeelding worden de voor waarden gecontroleerd wanneer de Tempe ratuur groter&deg; is dan 70 F en de vochtigheid kleiner is dan 10. Wanneer beide instructies waar zijn, evalueert de regel naar waar en wordt een actie geactiveerd.
 
 ![Voorwaarden](media/howto-configure-rules/conditions.png)
+
+### <a name="use-a-cloud-property-in-a-value-field"></a>Een eigenschap Cloud gebruiken in een waardeveld
+
+U kunt vanuit het veld **waarde** voor een voor waarde verwijzen naar een eigenschap cloud van de sjabloon. De Cloud eigenschap en de telemetrie-waarde moeten soort gelijke typen hebben. Als de **Tempe ratuur** bijvoorbeeld een dubbele waarde is, worden alleen eigenschappen van de cloud van het type Double show als opties in de vervolg keuzelijst met **waarden** .
+
+Als u een telemetrie-waarde voor gebeurtenis type kiest, bevat de vervolg keuzelijst **waarde** de optie **any**. Met **deze optie wordt de regel** geactiveerd wanneer uw toepassing een gebeurtenis van dat type ontvangt, ongeacht de payload.
 
 ## <a name="use-aggregate-windowing"></a>Aggregatie venster gebruiken
 

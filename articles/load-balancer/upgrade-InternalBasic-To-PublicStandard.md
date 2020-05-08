@@ -7,15 +7,15 @@ ms.service: load-balancer
 ms.topic: article
 ms.date: 01/23/2020
 ms.author: irenehua
-ms.openlocfilehash: e3eca498e5716ae7c0a03e5e624d618899da8dc8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: df7b8e6243bc45b5d5bdd8a9a72e81b0946454ff
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81770407"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82858406"
 ---
 # <a name="upgrade-azure-internal-load-balancer---outbound-connection-required"></a>Upgrade uitvoeren voor interne Load Balancer van Azure-uitgaande verbinding vereist
-[Azure Standard Load Balancer](load-balancer-overview.md) biedt een uitgebreide set functionaliteit en hoge Beschik baarheid via zone redundantie. Zie [vergelijkings tabel](https://docs.microsoft.com/azure/load-balancer/concepts-limitations#skus)voor meer informatie over Load Balancer SKU. Aangezien standaard interne Load Balancer geen uitgaande verbinding biedt, bieden we een oplossing om in plaats daarvan een open bare standaard Load Balancer te maken.
+[Azure Standard Load Balancer](load-balancer-overview.md) biedt een uitgebreide set functionaliteit en hoge Beschik baarheid via zone redundantie. Zie [vergelijkings tabel](https://docs.microsoft.com/azure/load-balancer/skus#skus)voor meer informatie over Load Balancer SKU. Aangezien standaard interne Load Balancer geen uitgaande verbinding biedt, bieden we een oplossing om in plaats daarvan een open bare standaard Load Balancer te maken.
 
 Er zijn vier fasen in een upgrade:
 
