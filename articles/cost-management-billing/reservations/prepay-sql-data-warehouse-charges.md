@@ -1,46 +1,46 @@
 ---
-title: Bespaar op SQL Data Warehouse-kosten met gereserveerde Azure-capaciteit
-description: Meer informatie over hoe u kosten bespaart voor SQL Data Warehouse-kosten met gereserveerde capaciteit om geld te besparen.
+title: Bespaar op Azure Synapse Analytics-kosten met gereserveerde Azure-capaciteit
+description: Meer informatie over hoe u kosten bespaart met gereserveerde capaciteit voor Azure Synapse Analytics om zo geld te besparen.
 author: yashesvi
 ms.reviewer: yashar
 ms.service: cost-management-billing
 ms.topic: conceptual
-ms.date: 02/12/2020
+ms.date: 04/30/2020
 ms.author: banders
-ms.openlocfilehash: c428472d5564393e9f9fcdc3103bb1506dc50936
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 3706493f0132cd4cc57af589e0d2935c31d6657e
+ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77200364"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82629147"
 ---
-# <a name="save-costs-for-sql-data-warehouse-charges-with-reserved-capacity"></a>Bespaar op SQL Data Warehouse-kosten met gereserveerde capaciteit
+# <a name="save-costs-for-azure-synapse-analytics-charges-with-reserved-capacity"></a>Bespaar op Azure Synapse Analytics-kosten met gereserveerde capaciteit
 
-U kunt met Azure SQL Data Warehouse geld besparen door een reservering vast te leggen voor uw cDWU-gebruik voor de duur van één of drie jaar. Als u SQL Data Warehouse-reserveringscapaciteit wilt kopen, moet u de Azure-regio en de periode kiezen. Voeg daarna de SQL Data Warehouse-SKU toe aan uw winkelwagen en kies de hoeveelheid cDWU-eenheden die u wilt aanschaffen.
+U kunt met Azure Synapse Analytics geld besparen door een reservering vast te leggen voor uw cDWU-gebruik voor de duur van één of drie jaar. Als u Azure Synapse Analytics-reserveringscapaciteit wilt kopen, moet u de Azure-regio en de periode kiezen. Voeg daarna de Azure Synapse Analytics-SKU toe aan uw winkelwagen en kies de hoeveelheid cDWU-eenheden die u wilt aanschaffen.
 
-Wanneer u een reservering aanschaft, wordt het gebruik van SQL Data Warehouse dat met de reserveringskenmerken overeenkomt niet meer tegen het tarief voor betalen per gebruik in rekening gebracht.
+Wanneer u een reservering aanschaft, wordt het gebruik van Azure Synapse Analytics dat met de reserveringskenmerken overeenkomt niet meer tegen het tarief voor betalen per gebruik in rekening gebracht.
 
-Een reservering omvat geen opslag- en netwerkkosten die samenhangen met het gebruik van SQL Data Warehouse.
+Een reservering omvat geen opslag- en netwerkkosten die samenhangen met het gebruik van Azure Synapse Analytics.
 
-Wanneer de gereserveerde capaciteit vervalt, blijven de SQL Data Warehouse-exemplaren actief, maar wordt u gefactureerd tegen het tarief voor betalen per gebruik. Reserveringen worden niet automatisch vernieuwd.
+Wanneer de gereserveerde capaciteit vervalt, blijven de Azure Synapse Analytics-exemplaren actief, maar wordt u gefactureerd tegen het tarief voor betalen per gebruik. Reserveringen worden niet automatisch vernieuwd.
 
-Raadpleeg het [aanbod voor SQL Data Warehouse-reserveringscapaciteit](https://azure.microsoft.com/pricing/details/sql-data-warehouse/gen2/) voor prijsinformatie.
+Raadpleeg het [aanbod voor Azure Synapse Analytics-reserveringscapaciteit](https://azure.microsoft.com/pricing/details/synapse-analytics/) voor prijsinformatie.
 
-U kunt Azure SQL Data Warehouse-reserveringscapaciteit kopen in [Azure Portal](https://portal.azure.com/#blade/Microsoft_Azure_Reservations/ReservationsBrowseBlade). Betaal [vooraf of per maand](monthly-payments-reservations.md) voor de reservering. Gereserveerde capaciteit kopen:
+U kunt Azure Synapse Analytics-reserveringscapaciteit kopen in de [Azure-portal](https://portal.azure.com/#blade/Microsoft_Azure_Reservations/ReservationsBrowseBlade). Betaal [vooraf of per maand](monthly-payments-reservations.md) voor de reservering. Gereserveerde capaciteit kopen:
 
 - U moet de rol van eigenaar hebben voor ten minste één Enterprise- abonnement of een abonnement op gebruiksbasis.
 - Voor Enterprise-abonnementen moet de optie **Gereserveerde instanties toevoegen** zijn ingeschakeld in [EA Portal](https://ea.azure.com/). Als de instelling is uitgeschakeld, moet u een EA-beheerder zijn.
-- Voor het programma Cloud Solution Provider (CSP) kunnen alleen beheerders of verkoopmedewerkers gereserveerde SQL Data Warehouse-capaciteit kopen.
+- Voor het programma Cloud Solution Provider (CSP) kunnen alleen beheerders of verkoopmedewerkers gereserveerde Azure Synapse Analytics-capaciteit kopen.
 
 Zie [Het gebruik van Azure-reserveringen voor uw Enterprise-inschrijving begrijpen](understand-reserved-instance-usage-ea.md) en [Inzicht krijgen in het gebruik van Azure-reserveringen voor uw abonnement op gebruiksbasis](understand-reserved-instance-usage.md) voor meer informatie over hoe kosten voor reserveringsaankopen in rekening worden gebracht bij Enterprise-klanten en bij klanten op gebruiksbasis.
 
 ## <a name="choose-the-right-size-before-purchase"></a>Het juiste formaat kiezen voordat u overgaat tot aanschaf
 
-De grootte van de SQL Data Warehouse-reservering moet worden gebaseerd op het totale aantal cDWU-eenheden (compute Data Warehouse Unit) dat u verbruikt. Aankopen worden gedaan in stappen van 100 cDWU.
+De grootte van de Azure Synapse Analytics-reservering moet worden gebaseerd op het totale aantal cDWU-eenheden (compute Data Warehouse Unit) dat u verbruikt. Aankopen worden gedaan in stappen van 100 cDWU.
 
-Stel dat uw totale verbruik van SQL Data Warehouse DW3000c is. U wilt voor alles gereserveerde capaciteit aanschaffen. U moet dan 30 eenheden van gereserveerde cDWU-capaciteit kopen.
+Stel dat uw totale verbruik van Azure Synapse Analytics DW3000c is. U wilt voor alles gereserveerde capaciteit aanschaffen. U moet dan 30 eenheden van gereserveerde cDWU-capaciteit kopen.
 
-## <a name="buy-sql-data-warehouse-reserved-capacity"></a>Gereserveerde capaciteit van SQL Data Warehouse kopen
+## <a name="buy-azure-synapse-analytics-reserved-capacity"></a>Gereserveerde capaciteit voor Azure Synapse Analytics kopen
 
 1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
 2. Selecteer **Alle services** > **Reserveringen**.
@@ -56,7 +56,7 @@ Stel dat uw totale verbruik van SQL Data Warehouse DW3000c is. U wilt voor alles
 5. Selecteer een regio om een Azure-regio te kiezen die wordt gedekt door de gereserveerde capaciteit.
 6. Kies een hoeveelheid. Voer het aantal van 100 cDWU in dat u wilt kopen.    
    Zo geeft een hoeveelheid van 30 bijvoorbeeld elk uur 3.000 cDWU met gereserveerde capaciteit.
-7. Bekijk de kosten voor de SQL Data Warehouse-capaciteitsreservering in de sectie **Kosten**.
+7. Bekijk de kosten voor de Azure Synapse Analytics-capaciteitsreservering in de sectie **Kosten**.
 8. Selecteer **Aankoop**.
 9. Selecteer **Deze reservering weergeven** om de status van uw aankoop te bekijken.
 
@@ -64,7 +64,7 @@ Stel dat uw totale verbruik van SQL Data Warehouse DW3000c is. U wilt voor alles
 
 Annulering, ruiling of terugbetaling van reserveringen is mogelijk met bepaalde beperkingen. Zie [Selfserviceopties voor inwisselen en retourneren van Azure-reserveringen](exchange-and-refund-azure-reservations.md) voor meer informatie.
 
-Er wordt automatisch een reserveringskorting toegepast op het aantal SQL Data Warehouse-exemplaren dat overeenkomt met het bereik en de regio van de gereserveerde capaciteit van SQL Data Warehouse. U kunt het bereik van de gereserveerde capaciteit van SQL Data Warehouse bijwerken met [Azure Portal](https://portal.azure.com/), PowerShell, CLI of via de API.
+Er wordt automatisch een reserveringskorting toegepast op het aantal Azure Synapse Analytics-exemplaren dat overeenkomt met het bereik en de regio van de gereserveerde capaciteit van Azure Synapse Analytics. U kunt het bereik van de gereserveerde capaciteit van Azure Synapse Analytics bijwerken met de [Azure-portal](https://portal.azure.com/), PowerShell, CLI of via de API.
 
 ## <a name="need-help-contact-us"></a>Hebt u hulp nodig? Contact opnemen
 
@@ -72,7 +72,7 @@ Als u vragen hebt of hulp nodig hebt, [kunt u een ondersteuningsaanvraag maken](
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Zie [Hoe reserveringskortingen van toepassing zijn op Azure SQL Data Warehouse](prepay-sql-data-warehouse-charges.md) voor meer informatie over hoe reserveringskortingen van toepassing zijn op Azure SQL Data Warehouse.
+- Zie [Hoe reserveringskortingen van toepassing zijn op Azure Synapse Analytics](prepay-sql-data-warehouse-charges.md) voor meer informatie over hoe reserveringskortingen van toepassing zijn op Azure Synapse Analytics.
 
 - Raadpleeg de volgende artikelen voor meer informatie over Azure-reserveringen:
   - [Wat zijn Azure-reserveringen?](save-compute-costs-reservations.md)
