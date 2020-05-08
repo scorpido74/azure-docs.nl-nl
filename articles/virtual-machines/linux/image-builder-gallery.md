@@ -3,17 +3,17 @@ title: Azure Image Builder gebruiken met een galerie met installatie kopieën vo
 description: Linux VM-installatie kopieën maken met Azure Image Builder en de galerie met gedeelde afbeeldingen.
 author: cynthn
 ms.author: cynthn
-ms.date: 04/20/2019
+ms.date: 05/05/2019
 ms.topic: how-to
 ms.service: virtual-machines-linux
 ms.subservice: imaging
 ms.reviewer: danis
-ms.openlocfilehash: 196f7b41a9d7eb5da1b2cf52a38917c34905d7bb
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: ccb622f786e6df5271684cf2aabba36cd2f5184f
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82791507"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82930689"
 ---
 # <a name="preview-create-a-linux-image-and-distribute-it-to-a-shared-image-gallery"></a>Voor beeld: een Linux-installatie kopie maken en deze distribueren naar een gedeelde galerie met installatie kopieën 
 
@@ -45,7 +45,8 @@ Controleer uw registratie.
 
 ```azurecli-interactive
 az provider show -n Microsoft.VirtualMachineImages | grep registrationState
-
+az provider show -n Microsoft.KeyVault | grep registrationState
+az provider show -n Microsoft.Compute | grep registrationState
 az provider show -n Microsoft.Storage | grep registrationState
 ```
 
@@ -53,7 +54,8 @@ Als ze niet zijn geregistreerd, voert u de volgende handelingen uit:
 
 ```azurecli-interactive
 az provider register -n Microsoft.VirtualMachineImages
-
+az provider register -n Microsoft.Compute
+az provider register -n Microsoft.KeyVault
 az provider register -n Microsoft.Storage
 ```
 
@@ -90,18 +92,39 @@ Maak de resourcegroep.
 az group create -n $sigResourceGroup -l $location
 ```
 
+## <a name="create-a-user-assigned-identity-and-set-permissions-on-the-resource-group"></a>Een door de gebruiker toegewezen identiteit maken en machtigingen instellen voor de resource groep
+De opbouw functie voor installatie kopieën gebruikt de door de [gebruiker gedefinieerde identiteit](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vm#user-assigned-managed-identity) voor het injecteren van de installatie kopie in de galerie met gedeelde installatie kopieën van Azure (SIG). In dit voor beeld maakt u een Azure-roldefinitie met de gedetailleerde acties waarmee de installatie kopie kan worden gedistribueerd naar de SIG. De roldefinitie wordt vervolgens toegewezen aan de identiteit van de gebruiker.
 
-Stel de Azure Image Builder-machtiging in voor het maken van resources in die resource groep. De `--assignee` waarde is de app-registratie-id voor de Image Builder-service. 
+```bash
+# create user assigned identity for image builder to access the storage account where the script is located
+idenityName=aibBuiUserId$(date +'%s')
+az identity create -g $sigResourceGroup -n $idenityName
 
-```azurecli-interactive
+# get identity id
+imgBuilderCliId=$(az identity show -g $sigResourceGroup -n $idenityName | grep "clientId" | cut -c16- | tr -d '",')
+
+# get the user identity URI, needed for the template
+imgBuilderId=/subscriptions/$subscriptionID/resourcegroups/$sigResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/$idenityName
+
+# this command will download a Azure Role Definition template, and update the template with the parameters specified earlier.
+curl https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/solutions/12_Creating_AIB_Security_Roles/aibRoleImageCreation.json -o aibRoleImageCreation.json
+
+imageRoleDefName="Azure Image Builder Image Def"$(date +'%s')
+
+# update the definition
+sed -i -e "s/<subscriptionID>/$subscriptionID/g" aibRoleImageCreation.json
+sed -i -e "s/<rgName>/$sigResourceGroup/g" aibRoleImageCreation.json
+sed -i -e "s/Azure Image Builder Service Image Creation Role/$imageRoleDefName/g" aibRoleImageCreation.json
+
+# create role definitions
+az role definition create --role-definition ./aibRoleImageCreation.json
+
+# grant role definition to the user assigned identity
 az role assignment create \
-    --assignee cf32a0cc-373c-47c9-9156-0db11f6a6dfc \
-    --role Contributor \
+    --assignee $imgBuilderCliId \
+    --role $imageRoleDefName \
     --scope /subscriptions/$subscriptionID/resourceGroups/$sigResourceGroup
 ```
-
-
-
 
 
 ## <a name="create-an-image-definition-and-gallery"></a>Een definitie en galerie voor een installatie kopie maken
@@ -143,6 +166,7 @@ sed -i -e "s/<sharedImageGalName>/$sigName/g" helloImageTemplateforSIG.json
 sed -i -e "s/<region1>/$location/g" helloImageTemplateforSIG.json
 sed -i -e "s/<region2>/$additionalregion/g" helloImageTemplateforSIG.json
 sed -i -e "s/<runOutputName>/$runOutputName/g" helloImageTemplateforSIG.json
+sed -i -e "s%<imgBuilderId>%$imgBuilderId%g" helloImageTemplateforSIG.json
 ```
 
 ## <a name="create-the-image-version"></a>De versie van de installatie kopie maken
@@ -219,6 +243,18 @@ az resource delete \
     --resource-group $sigResourceGroup \
     --resource-type Microsoft.VirtualMachineImages/imageTemplates \
     -n helloImageTemplateforSIG01
+```
+
+Machtigingen voor asssignments, rollen en identiteit verwijderen
+```azurecli-interactive
+az role assignment delete \
+    --assignee $imgBuilderCliId \
+    --role "$imageRoleDefName" \
+    --scope /subscriptions/$subscriptionID/resourceGroups/$sigResourceGroup
+
+az role definition delete --name "$imageRoleDefName"
+
+az identity delete --ids $imgBuilderId
 ```
 
 De afbeeldings versie ophalen die is gemaakt door de opbouw functie voor `0.`afbeeldingen, dit wordt altijd gestart met en vervolgens de versie van de installatie kopie verwijderen

@@ -8,12 +8,12 @@ author: mgoedtel
 ms.author: magoedte
 ms.date: 03/24/2020
 ms.topic: conceptual
-ms.openlocfilehash: 40885e1de4ff4c16d2a50399c654d8596396ab53
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ac0a795c98673eba30531f586ff634c62673cdd6
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80366369"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82980946"
 ---
 # <a name="connect-hybrid-machines-to-azure-from-the-azure-portal"></a>Verbinding maken tussen hybride computers en Azure via de Azure Portal
 
@@ -73,7 +73,7 @@ Voer bijvoorbeeld het installatie programma uit met de `/?` para meter om de opt
 msiexec.exe /i AzureConnectedMachineAgent.msi /?
 ```
 
-Als u de agent op de achtergrond wilt installeren en een installatie logboek bestand `C:\Support\Logs` in de map wilt maken, voert u de volgende opdracht uit.
+Voer de volgende opdracht uit om de agent op de achtergrond te installeren en `C:\Support\Logs` een installatie logboek bestand te maken in de map die bestaat.
 
 ```dos
 msiexec.exe /i AzureConnectedMachineAgent.msi /qn /l*v "C:\Support\Logs\Azcmagentsetup.log"
@@ -109,7 +109,7 @@ Restart-Service -Name himds
 
 Nadat u de agent hebt geïnstalleerd, moet u de agent configureren om te communiceren met de Azure Arc-service door de volgende opdracht uit te voeren:
 
-`%ProgramFiles%\AzureConnectedMachineAgent\azcmagent.exe" connect --resource-group "<resourceGroupName>" --tenant-id "<tenantID>" --location "<regionName>" --subscription-id "<subscriptionID>"`
+`"%ProgramFiles%\AzureConnectedMachineAgent\azcmagent.exe" connect --resource-group "<resourceGroupName>" --tenant-id "<tenantID>" --location "<regionName>" --subscription-id "<subscriptionID>"`
 
 ## <a name="install-and-validate-the-agent-on-linux"></a>De agent op Linux installeren en valideren
 
@@ -146,7 +146,7 @@ bash ~/Install_linux_azcmagent.sh --proxy "{proxy-url}:{proxy-port}"
 
 Nadat u de agent hebt geïnstalleerd, configureert u deze om te communiceren met de Azure Arc-service door de volgende opdracht uit te voeren:
 
-`/opt/azcmagent/bin/azcmagent.exe" connect --resource-group "<resourceGroupName>" --tenant-id "<tenantID>" --location "<regionName>" --subscription-id "<subscriptionID>"`
+`azcmagent connect --resource-group "<resourceGroupName>" --tenant-id "<tenantID>" --location "<regionName>" --subscription-id "<subscriptionID>"`
 
 ## <a name="verify-the-connection-with-azure-arc"></a>De verbinding met Azure Arc controleren
 

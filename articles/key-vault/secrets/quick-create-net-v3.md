@@ -7,12 +7,12 @@ ms.date: 11/05/2019
 ms.service: key-vault
 ms.subservice: secrets
 ms.topic: quickstart
-ms.openlocfilehash: bdc686284711fb39e6cedb18aea4d1f5c9d1d318
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: 37debf076fcaa4f4b62af93dbdb667fb699b0568
+ms.sourcegitcommit: 0fda81f271f1a668ed28c55dcc2d0ba2bb417edd
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81425005"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82901371"
 ---
 # <a name="quickstart-azure-key-vault-client-library-for-net-sdk-v3"></a>Snelstartgids: Azure Key Vault-client bibliotheek voor .NET (SDK v3)
 
@@ -38,7 +38,7 @@ Met Azure Key Vault kunt u de cryptografische sleutels en geheimen beveiligen di
 ## <a name="prerequisites"></a>Vereisten
 
 * Een Azure-abonnement: [Maak er gratis een](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
-* De [.net Core 2,1 SDK of hoger](https://dotnet.microsoft.com/download/dotnet-core/2.1).
+* De [.net Core 3,1 SDK of hoger](https://dotnet.microsoft.com/download/dotnet-core/3.1).
 * [Azure cli](/cli/azure/install-azure-cli?view=azure-cli-latest) of [Azure PowerShell](/powershell/azure/overview)
 
 In deze Quick Start wordt ervan uitgegaan dat u `dotnet`werkt met, [Azure cli](/cli/azure/install-azure-cli?view=azure-cli-latest)en Windows-opdrachten in een Windows-Terminal (zoals [Power shell core](/powershell/scripting/install/installing-powershell-core-on-windows?view=powershell-6), [Windows Power shell](/powershell/scripting/install/installing-windows-powershell?view=powershell-6)of de [Azure Cloud shell](https://shell.azure.com/)).
@@ -99,12 +99,14 @@ az keyvault create --name <your-unique-keyvault-name> -g "myResourceGroup"
 
 ### <a name="create-a-service-principal"></a>Een service-principal maken
 
-De eenvoudigste manier om een op de cloud gebaseerde .NET-toepassing te verifiëren, is met een beheerde identiteit. Zie [een beheerde app Service-id gebruiken voor toegang tot Azure Key Vault](../general/managed-identity.md) voor meer informatie. Deze Quick Start maakt echter een .NET-console toepassing. Als u een bureaublad toepassing met Azure wilt verifiëren, moet u een Service-Principal en toegangs beheer beleid gebruiken.
+De eenvoudigste manier om een op de cloud gebaseerde .NET-toepassing te verifiëren, is met een beheerde identiteit. Zie [een beheerde app Service-id gebruiken voor toegang tot Azure Key Vault](../general/managed-identity.md) voor meer informatie. 
+
+In het omwille van de eenvoud maakt deze Snelstartgids echter een .NET-console toepassing, waarvoor het gebruik van een Service-Principal en een toegangscontrole beleid is vereist. Voor uw service-principal is een unieke naam vereist in de notatie ' http://<My-Unique-Service-Principle-Name> '.
 
 Maak een service-principal met behulp van de opdracht Azure CLI [AZ AD SP create-for-RBAC](/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac) :
 
 ```azurecli
-az ad sp create-for-rbac -n "http://mySP" --sdk-auth
+az ad sp create-for-rbac -n "http://<my-unique-service-principle-name>" --sdk-auth
 ```
 
 Met deze bewerking wordt een reeks sleutel-waardeparen geretourneerd. 

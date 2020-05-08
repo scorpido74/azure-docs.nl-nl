@@ -12,15 +12,15 @@ ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.topic: tutorial
-ms.date: 01/31/2020
+ms.date: 04/20/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 40fd8217285643aa7d706d194d7f78ba0634dd32
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 4af0390ab7ef8f84860d1d62fa86b8ec87a42210
+ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80048969"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82890806"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-amazon-web-services-aws"></a>Zelf studie: Azure Active Directory-integratie met eenmalige aanmelding (SSO) met Amazon Web Services (AWS)
 
@@ -111,6 +111,18 @@ Volg deze stappen om Azure AD SSO in te scha kelen in de Azure Portal.
 
     `https://signin.aws.amazon.com/saml#2`
 
+1. De AWS-toepassing verwacht de SAML-beweringen in een specifieke indeling. hiervoor moet u aangepaste kenmerk toewijzingen toevoegen aan de configuratie van uw SAML-token kenmerken. In de volgende schermafbeelding wordt de lijst met standaardkenmerken weergegeven.
+
+    ![installatiekopie](common/default-attributes.png)
+
+1. Daarnaast verwacht AWS toepassing nog maar weinig kenmerken die worden door gegeven in de SAML-respons die hieronder worden weer gegeven. Deze kenmerken worden ook vooraf ingevuld, maar u kunt ze controleren volgens uw vereisten.
+    
+    | Naam  | Bronkenmerk  | Naamruimte |
+    | --------------- | --------------- | --------------- |
+    | RoleSessionName | user.userprincipalname | https://aws.amazon.com/SAML/Attributes |
+    | Rol            | user.assignedroles |  https://aws.amazon.com/SAML/Attributes |
+    | SessionDuration             | "Geef een waarde op tussen 900 seconden (15 minuten) en 43200 seconden (12 uur)" |  https://aws.amazon.com/SAML/Attributes |
+
 1. Zoek op de pagina **eenmalige aanmelding met SAML instellen** , in de sectie **SAML-handtekening certificaat** , de **federatieve meta gegevens-XML** en selecteer **downloaden** om het certificaat te downloaden en op uw computer op te slaan.
 
     ![De link om het certificaat te downloaden](common/metadataxml.png)
@@ -130,7 +142,7 @@ In deze sectie maakt u een test gebruiker in de Azure Portal met de naam B. Simo
    1. Voer in het veld **Naam**`B.Simon` in.  
    1. Voer in het veld **gebruikers naam** het username@companydomain.extensionin. Bijvoorbeeld `B.Simon@contoso.com`.
    1. Schakel het selectie vakje **wacht woord weer geven** in en noteer de waarde die wordt weer gegeven in het vak **wacht woord** .
-   1. Klik op **maken**.
+   1. Klik op **Maken**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>De Azure AD-testgebruiker toewijzen
 
@@ -368,7 +380,7 @@ Wanneer u in het toegangsvenster op de tegel Amazon Web Services (AWS) klikt, zo
 
   * De gecombineerde lengte van de ARN van de rol en de SAML-provider ARN voor een rol die wordt geïmporteerd, mag Maxi maal 119 tekens bevatten
 
-## <a name="additional-resources"></a>Aanvullende bronnen
+## <a name="additional-resources"></a>Extra resources
 
 - [Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/07/2019
 ms.author: allensu
-ms.openlocfilehash: acf49c4247c8084a3afd3c2046003ee1b20d2f67
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 80da8d2880509a8ed6a2af8cb181b3bc2c281c09
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81393111"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82930570"
 ---
 # <a name="outbound-connections-in-azure"></a>Uitgaande verbindingen in Azure
 
@@ -119,7 +119,7 @@ Wanneer u [Standard Load Balancer met Beschikbaarheidszones](load-balancer-stand
 
 ### <a name="port-masquerading-snat-pat"></a><a name="pat"></a>Poort maskering SNAT (PAT)
 
-Wanneer een open bare Load Balancer resource is gekoppeld aan VM-exemplaren, wordt elke uitgaande verbindings bron herschreven. De bron wordt herschreven van de privé-IP-adres ruimte van het virtuele netwerk naar het open bare IP-adres van de load balancer. In de open bare IP-adres ruimte moet de 5-tuple van de stroom (bron-IP-adres, bron poort, IP-transport protocol, doel-IP-adres, doel poort) uniek zijn.  Het SNAT-poort masker kan worden gebruikt met TCP-of UDP IP-protocollen.
+Wanneer een open bare Load Balancer resource is gekoppeld aan VM-exemplaren, die geen toegewezen open bare IP-adressen hebben, wordt elke uitgaande verbindings bron herschreven. De bron wordt herschreven van de privé-IP-adres ruimte van het virtuele netwerk naar het open bare IP-adres van de load balancer. In de open bare IP-adres ruimte moet de 5-tuple van de stroom (bron-IP-adres, bron poort, IP-transport protocol, doel-IP-adres, doel poort) uniek zijn. Het SNAT-poort masker kan worden gebruikt met TCP-of UDP IP-protocollen.
 
 Tijdelijke poorten (SNAT-poorten) worden gebruikt om dit te verhelpen na het herschrijven van het IP-adres van de privé bron, omdat meerdere stromen afkomstig zijn van één openbaar IP-adres. Met het SNAT-algoritme voor poort maskering worden de SNAT-poorten anders toegewezen voor UDP versus TCP.
 
@@ -147,7 +147,7 @@ Raadpleeg de sectie [SNAT beheren](#snatexhaust) als u patronen wilt beperken di
 
 ### <a name="ephemeral-port-preallocation-for-port-masquerading-snat-pat"></a><a name="preallocatedports"></a>Tijdelijke poort voortoewijzing voor poort maskering SNAT (PAT)
 
-Azure gebruikt een algoritme om te bepalen hoeveel vooraf toegewezen SNAT-poorten beschikbaar zijn op basis van de grootte van de back-end-pool wanneer poort maskering SNAT ([Pat](#pat)) wordt gebruikt. SNAT-poorten zijn tijdelijke poorten die beschikbaar zijn voor een bepaald openbaar IP-bron adres.
+Azure gebruikt een algoritme om te bepalen hoeveel vooraf toegewezen SNAT-poorten beschikbaar zijn op basis van de grootte van de back-end-pool wanneer poort maskering SNAT ([Pat](#pat)) wordt gebruikt. SNAT-poorten zijn tijdelijke poorten die beschikbaar zijn voor een bepaald openbaar IP-bron adres. Voor elk open bare IP-adres dat is gekoppeld aan een load balancer zijn er 64.000 poorten beschikbaar als SNAT-poorten voor elk IP-transport protocol.
 
 Hetzelfde aantal SNAT-poorten wordt vooraf toegewezen voor UDP en TCP, respectievelijk onafhankelijk per IP-transport protocol.  Het SNAT-poort gebruik is echter anders, afhankelijk van het feit of de stroom UDP of TCP is.
 
@@ -193,11 +193,14 @@ Toewijzing van SNAT-poorten is een specifiek IP-transport protocol (TCP en UDP w
 Deze sectie is bedoeld om te helpen bij het verminderen van de SNAT-uitputting en die kan optreden bij uitgaande verbindingen in Azure.
 
 ### <a name="managing-snat-pat-port-exhaustion"></a><a name="snatexhaust"></a>Poort uitputting van SNAT (PAT) beheren
-[Tijdelijke poorten](#preallocatedports) die worden gebruikt voor [Pat](#pat) zijn een exhaustible-resource, zoals beschreven in [zelfstandige virtuele machine zonder openbaar IP-adres](#defaultsnat) en [VM met gelijke taak verdeling zonder openbaar IP-adres](#lb). U kunt uw gebruik van tijdelijke poorten bewaken en vergelijken met uw huidige toewijzing om het risico van te bepalen of om SNAT exhuastion te bevestigen met behulp van [deze](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-diagnostics#how-do-i-check-my-snat-port-usage-and-allocation) hand leiding.
+[Tijdelijke poorten](#preallocatedports) die worden gebruikt voor [Pat](#pat) zijn een exhaustible-resource, zoals beschreven in [zelfstandige virtuele machine zonder openbaar IP-adres](#defaultsnat) en [VM met gelijke taak verdeling zonder openbaar IP-adres](#lb). Met [deze](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-diagnostics#how-do-i-check-my-snat-port-usage-and-allocation) hand leiding kunt u uw gebruik van tijdelijke poorten bewaken en vergelijken met uw huidige toewijzing om het risico van of te bevestigen dat de SNAT-uitputting wordt bevestigd.
 
 Als u weet dat u een groot aantal uitgaande TCP-of UDP-verbindingen met hetzelfde doel-IP-adres en dezelfde poort wilt initiëren, kunt u zien dat uitgaande verbindingen mislukken of worden aanbevolen door ondersteuning te bieden voor de SNAT-poorten (vooraf toegewezen [tijdelijke poorten](#preallocatedports) die worden gebruikt door [Pat](#pat)), hebt u verschillende algemene opties voor risico beperking. Bekijk deze opties en beslis wat er beschikbaar en beste is voor uw scenario. Het is mogelijk dat een of meer informatie kan helpen bij het beheren van dit scenario.
 
 Als u problemen ondervindt met het gedrag van uitgaande verbindingen, kunt u IP-stack statistieken (netstat) gebruiken. Het kan ook handig zijn om verbindings gedrag te observeren met behulp van pakket opnamen. U kunt deze pakket opnames uitvoeren in het gast besturingssysteem van uw exemplaar of gebruikmaken van [Network Watcher voor pakket opname](../network-watcher/network-watcher-packet-capture-manage-portal.md). 
+
+#### <a name="manually-allocate-snat-ports-to-maximize-snat-ports-per-vm"></a><a name ="manualsnat"></a>Hand matig SNAT-poorten toewijzen om de SNAT-poorten per VM te maximaliseren
+Zoals gedefinieerd in [vooraf toegewezen poorten](#preallocatedports), wijst de Load Balancer automatisch poorten toe op basis van het aantal virtuele machines in de back-end. Dit wordt standaard om de schaal baarheid voor komen. Als u het maximum aantal Vm's weet dat u in de back-end zult hebben, kunt u de SNAT-poorten hand matig toewijzen door dit in elke uitgaande regel te configureren. Als u bijvoorbeeld weet dat u een maximum van 10 virtuele machines hebt, kunt u in plaats van de standaard 1.024 6.400 SNAT-poorten per VM toewijzen. 
 
 #### <a name="modify-the-application-to-reuse-connections"></a><a name="connectionreuse"></a>Wijzig de toepassing om verbindingen opnieuw te gebruiken 
 U kunt de vraag beperken voor tijdelijke poorten die worden gebruikt voor SNAT door verbindingen in uw toepassing opnieuw te gebruiken. Dit geldt met name voor protocollen zoals HTTP/1.1, waarbij hergebruik van verbindingen de standaard instelling is. En andere protocollen die gebruikmaken van HTTP als Trans Port (bijvoorbeeld REST), kunnen op hun beurt profiteren van. 

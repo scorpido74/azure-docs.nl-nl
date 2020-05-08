@@ -6,14 +6,14 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: article
-ms.date: 02/06/2020
+ms.date: 05/07/2020
 ms.author: cherylmc
-ms.openlocfilehash: c32d42de5290bff63a897e7b9d5c8a2b1bf04ce4
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: 19eaaa1ac442a04799bfa8d8d495b9c7dd393e5a
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82786968"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82928275"
 ---
 # <a name="global-transit-network-architecture-and-virtual-wan"></a>Wereld wijde doorvoer netwerk architectuur en virtueel WAN
 
@@ -114,6 +114,15 @@ Via het externe User-to-Branch-pad kunnen externe gebruikers die gebruikmaken va
 
 Met de VNet-naar-VNet-transit kan VNets verbinding maken met elkaar om toepassingen met meerdere lagen die zijn geïmplementeerd over meerdere VNets te verbinden. U kunt eventueel VNets met elkaar verbinden via VNet-peering. Dit kan ook geschikt zijn voor bepaalde scenario's waarbij door Voer via de VWAN-hub niet nodig is.
 
+
+## <a name="force-tunneling-and-default-route-in-azure-virtual-wan"></a><a name="DefaultRoute"></a>Geforceerde tunneling en standaard route in azure Virtual WAN
+
+Geforceerde tunneling kan worden ingeschakeld door het configureren van de standaard route inschakelen op een VPN-, ExpressRoute-of Virtual Network verbinding in een virtueel WAN.
+
+Een virtuele hub geeft een geleerde standaard route door aan een VPN-verbinding tussen een virtueel netwerk en een site-naar-site als de standaard vlag inschakelen is ingeschakeld op de verbinding. 
+
+Deze markering wordt weer gegeven wanneer de gebruiker een verbinding met een virtueel netwerk, een VPN-verbinding of een ExpressRoute wijzigt. Deze vlag wordt standaard uitgeschakeld wanneer een site of een ExpressRoute-circuit is verbonden met een hub. Het is standaard ingeschakeld wanneer een virtuele netwerk verbinding wordt toegevoegd om een VNet te verbinden met een virtuele hub. De standaard route is niet afkomstig van de virtuele WAN-hub. de standaard route wordt door gegeven als deze al is geleerd door de virtuele WAN-hub als gevolg van het implementeren van een firewall in de hub, of als een andere verbonden site geforceerde tunneling heeft ingeschakeld.
+
 ## <a name="security-and-policy-control"></a><a name="security"></a>Beveiliging en beleids beheer
 
 De virtuele WAN-hubs van Azure verdeelen alle netwerk eindpunten via het hybride netwerk en kunnen mogelijk alle verkeer van het tussenliggende netwerk zien. Virtuele WAN-hubs kunnen worden geconverteerd naar beveiligde virtuele hubs door de Azure Firewall binnen VWAN hubs te implementeren om beveiliging, toegang en beleids beheer op basis van de Cloud mogelijk te maken. Integratie van Azure-firewalls in virtuele WAN-hubs kan worden uitgevoerd door Azure Firewall Manager.
@@ -140,6 +149,24 @@ Met de beveiligde door Voer van VNet-naar-Internet of van derden kan VNets verbi
 
 ### <a name="branch-to-internet-or-third-party-security-service-j"></a>Branch-to-Internet of een beveiligings service van derden (j)
 Met behulp van de beveiligde door Voer van Branch-to-Internet of een derde partij kunnen filialen verbinding maken met internet of een ondersteunde beveiligings services van derden via de Azure Firewall in de virtuele WAN-hub.
+
+### <a name="how-do-i-enable-default-route-00000-in-a-secured-virtual-hub"></a>Hoe kan ik standaard route (0.0.0.0/0) in een beveiligde virtuele hub inschakelen
+
+Azure Firewall geïmplementeerd in een virtuele WAN-hub (beveiligde virtuele hub) kan worden geconfigureerd als standaard router voor het internet of een vertrouwde beveiligings provider voor alle vertakkingen (verbonden door VPN of Express route), spoke Vnets en gebruikers (verbonden via P2S VPN). Deze configuratie moet worden uitgevoerd met behulp van Azure Firewall Manager.  Zie verkeer naar uw hub routeren om al het verkeer van branches (inclusief gebruikers) en Vnets op Internet via de Azure Firewall te configureren. 
+
+Dit is een configuratie met twee stappen:
+
+1. Configureer route ring van Internet verkeer met behulp van het instellings menu voor de veilige virtuele hub. Vnets en vertakkingen configureren die verkeer via de firewall naar Internet kunnen verzenden.
+
+2. Configureer welke verbindingen (Vnet en vertakking) verkeer naar Internet (0.0.0.0/0) kunnen routeren via de Azure FW in de hub of de vertrouwde beveiligings provider. Met deze stap zorgt u ervoor dat de standaard route wordt door gegeven aan geselecteerde branches en Vnets die via de verbindingen zijn gekoppeld aan de virtuele WAN-hub. 
+
+### <a name="force-tunneling-traffic-to-on-premises-firewall-in-a-secured-virtual-hub"></a>Verkeer naar een on-premises firewall in een beveiligde virtuele hub forceren
+
+Als er al een standaard route is geleerd (via BGP) door de virtuele hub van een van de vertakkingen (VPN of de sites), wordt deze standaard route overschreven door de standaard route die is geleerd van Azure Firewall Manager-instelling. In dit geval wordt al het verkeer dat de hub vanaf Vnets en vertakkingen die bestemd zijn voor Internet, doorgestuurd naar de Azure Firewall of vertrouwde beveiligings provider.
+
+> [!NOTE]
+> Momenteel is er geen optie voor het selecteren van een on-premises firewall of Azure Firewall (en een vertrouwde beveiligings provider) voor Internet gebonden verkeer dat afkomstig is van Vnets, branches of gebruikers. De standaard route die is geleerd van de instelling van Azure Firewall Manager is altijd de voor keur boven de standaard route die is geleerd van een van de vertakkingen.
+
 
 ## <a name="next-steps"></a>Volgende stappen
 

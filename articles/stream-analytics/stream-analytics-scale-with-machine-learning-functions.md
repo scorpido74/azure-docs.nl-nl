@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 03/16/2020
-ms.openlocfilehash: 5b08625d055063b3804a35a3344ff01c7edb79de
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4e2c99274df90d232754c862f3174b5767392cec
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80067010"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82929040"
 ---
 # <a name="scale-your-stream-analytics-job-with-azure-machine-learning-studio-classic-functions"></a>Uw Stream Analytics-taak schalen met de functies Azure Machine Learning Studio (klassiek)
 
@@ -58,7 +58,7 @@ In het algemeen, ***B*** voor Batch grootte, ***L*** voor de latentie van de web
 
 U kunt ook de ' Maxi maal aantal gelijktijdige aanroepen ' op de Machine Learning-webservice configureren. Het wordt aanbevolen om deze para meter in te stellen op de maximum waarde (200 op dit moment).
 
-Raadpleeg het artikel over het [schalen van machine learning-webservices](../machine-learning/studio/scaling-webservice.md)voor meer informatie over deze instelling.
+Raadpleeg het artikel over het [schalen van machine learning-webservices](../machine-learning/studio/create-endpoint.md)voor meer informatie over deze instelling.
 
 ## <a name="example--sentiment-analysis"></a>Voor beeld – Sentimentanalyse
 Het volgende voor beeld bevat een Stream Analytics job met de functie sentiment Analysis Machine Learning, zoals beschreven in de [zelf studie over Stream Analytics machine learning-integratie](stream-analytics-machine-learning-integration-tutorial.md).

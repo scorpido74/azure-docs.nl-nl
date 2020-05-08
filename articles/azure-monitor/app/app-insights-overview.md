@@ -4,20 +4,20 @@ description: Dit is een service waarmee u de prestaties van toepassingen kunt be
 ms.topic: overview
 ms.date: 06/03/2019
 ms.custom: mvc
-ms.openlocfilehash: 2dbebf13b8674ba4aa0c578e1138a5e279b54355
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 0ffa9e38d0ffbca41e4f4a8f3d27015ebe4b8bae
+ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81536927"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82891742"
 ---
 # <a name="what-is-application-insights"></a>Wat is Application Insights?
-Application Insights, een functie van [Azure monitor](../overview.md), is een flexibele apm-service (Application Performance Management) voor ontwikkel aars en DevOps-professionals. Gebruik het om uw Live-toepassingen te bewaken. Deze detecteert automatisch prestatie afwijkingen en bevat krachtige analyse hulpprogramma's waarmee u problemen kunt vaststellen en inzicht krijgt in wat gebruikers daad werkelijk doen met uw app.  De service is bedoeld om u te helpen de prestaties en bruikbaarheid van uw apps continu te verbeteren. Het werkt voor apps op uiteenlopende platforms, waaronder .NET, Node.js en Java EE, on-premises, of in een hybride of openbare cloud gehost. De service kan ook worden geïntegreerd met uw DevOps-proces en bevat verbindingspunten naar verschillende hulpmiddelen voor ontwikkelaars. Gebruik de service voor het controleren en analyseren van telemetrie van mobiele apps door Application Insights te integreren met Visual Studio App Center.
+Application Insights, een functie van [Azure monitor](../overview.md), is een flexibele apm-service (Application Performance Management) voor ontwikkel aars en DevOps-professionals. Gebruik het om uw Live-toepassingen te bewaken. Deze detecteert automatisch prestatie afwijkingen en bevat krachtige analyse hulpprogramma's waarmee u problemen kunt vaststellen en inzicht krijgt in wat gebruikers daad werkelijk doen met uw app.  De service is bedoeld om u te helpen de prestaties en bruikbaarheid van uw apps continu te verbeteren. Het werkt voor apps op een groot aantal verschillende platformen, zoals .NET, node. js, Java en python die worden gehost op locatie, hybride of een open bare Cloud. De service kan ook worden geïntegreerd met uw DevOps-proces en bevat verbindingspunten naar verschillende hulpmiddelen voor ontwikkelaars. Gebruik de service voor het controleren en analyseren van telemetrie van mobiele apps door Application Insights te integreren met Visual Studio App Center.
 
 ## <a name="how-does-application-insights-work"></a>Hoe werkt Application Insights?
-U installeert een klein instrumentatiepakket in uw toepassing en u stelt een Application Insights-resource in de Microsoft Azure Portal in. Met de instrumentatie wordt uw app gecontroleerd en worden telemetriegegevens naar Azure Monitor verzonden. (De toepassing kan op elke locatie worden uitgevoerd - deze hoeft niet te worden gehost in Azure.)
+U installeert een klein instrumentatie pakket (SDK) in uw toepassing of schakelt Application Insights codelessly in wanneer dit wordt [ondersteund](../../azure-monitor/app/platforms.md). Met de instrumentatie wordt uw app bewaakt en worden de telemetriegegevens doorgestuurd naar een Azure-toepassing Insights-resource met een unieke GUID waarnaar we als instrumentatie sleutel verwijzen.
 
-U kunt niet alleen de webservicetoepassing instrumenteren, maar ook de onderdelen die op de achtergrond worden uitgevoerd en de JavaScript-code van de webpagina's zelf. 
+U kunt niet alleen de webservicetoepassing instrumenteren, maar ook de onderdelen die op de achtergrond worden uitgevoerd en de JavaScript-code van de webpagina's zelf. De toepassing en de bijbehorende onderdelen kunnen overal worden uitgevoerd. Deze hoeven niet te worden gehost in Azure.
 
 ![Met het Application Insights-instrumentatiepakket in uw app wordt telemetrie naar uw Application Insights-resource verzonden.](./media/app-insights-overview/diagram.png)
 

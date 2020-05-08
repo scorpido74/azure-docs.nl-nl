@@ -1,5 +1,6 @@
 ---
-title: OpenID Connect Connect-protocol-micro soft Identity platform | Azure
+title: Micro soft Identity platform en OpenID Connect Connect protocol | Azure
+titleSuffix: Microsoft identity platform
 description: Bouw webtoepassingen met behulp van de micro soft Identity platform-implementatie van het OpenID Connect Connect-verificatie protocol.
 services: active-directory
 author: hpsin
@@ -8,20 +9,20 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 04/12/2019
+ms.date: 05/06/2020
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: be24c4cfd255b33a38acc1e62763350d3d7e989b
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.openlocfilehash: 88f647bbb72c92db194407b677e533a867261ce4
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82688216"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82926490"
 ---
 # <a name="microsoft-identity-platform-and-openid-connect-protocol"></a>Micro soft Identity platform en OpenID Connect Connect protocol
 
-OpenID Connect Connect is een verificatie protocol dat is gebaseerd op OAuth 2,0 en waarmee u een gebruiker veilig kunt aanmelden bij een webtoepassing. Wanneer u de implementatie van OpenID Connect Connect van het micro soft Identity platform-eind punt gebruikt, kunt u aanmelden en API-toegang toevoegen aan uw web-apps. In dit artikel wordt uitgelegd hoe u dit onafhankelijk van taal kunt doen en wordt beschreven hoe u HTTP-berichten verzendt en ontvangt zonder enige micro soft open source-bibliotheken te gebruiken.
+OpenID Connect Connect (OIDC) is een verificatie protocol dat is gebaseerd op OAuth 2,0 en dat u kunt gebruiken om een gebruiker veilig aan te melden bij een webtoepassing. Wanneer u de implementatie van OpenID Connect Connect van het micro soft Identity platform-eind punt gebruikt, kunt u aanmelden en API-toegang toevoegen aan uw web-apps. In dit artikel wordt uitgelegd hoe u dit onafhankelijk van taal kunt doen en wordt beschreven hoe u HTTP-berichten verzendt en ontvangt zonder enige micro soft open source-bibliotheken te gebruiken.
 
 [OpenID Connect Connect](https://openid.net/specs/openid-connect-core-1_0.html) breidt het OAuth 2,0- *autorisatie* protocol uit voor gebruik als een *verificatie* protocol, zodat u eenmalige aanmelding kunt uitvoeren met behulp van OAuth. OpenID Connect Connect introduceert het concept van een *id-token*. Dit is een beveiligings token waarmee de client de identiteit van de gebruiker kan verifiëren. Het ID-token krijgt ook basis profiel informatie over de gebruiker. Omdat OpenID Connect Connect OAuth 2,0 uitbreidt, kunnen apps veilig *toegangs tokens*verkrijgen die kunnen worden gebruikt voor toegang tot bronnen die worden beveiligd door een [autorisatie server](active-directory-v2-protocols.md#the-basics). Met het micro soft Identity platform-eind punt kunnen apps van derden die zijn geregistreerd bij Azure AD, toegangs tokens uitgeven voor beveiligde bronnen zoals web-Api's. Zie [een app registreren met het micro soft Identity platform-eind punt](quickstart-register-app.md)voor meer informatie over het instellen van een toepassing voor het uitgeven van toegangs tokens. U wordt aangeraden OpenID Connect Connect te gebruiken als u een [Webtoepassing](v2-app-types.md#web-apps) bouwt die wordt gehost op een server en toegankelijk is via een browser.
 

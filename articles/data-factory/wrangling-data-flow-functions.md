@@ -7,16 +7,16 @@ ms.reviewer: gamal
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 11/01/2019
-ms.openlocfilehash: 7235e95e5b33fb931411a51796a8dbec96c46355
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0a0947a5e2b57f728023b0f923428814b3e439ec
+ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81417654"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82626680"
 ---
 # <a name="transformation-functions-in-wrangling-data-flow"></a>Transformatie functies in wrangling-gegevens stroom
 
-[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
 Met Wrangling data flow in Azure Data Factory kunt u met code gratis flexibele gegevens voorbereiding en Wrangling op Cloud schaal uitvoeren. De Wrangling-gegevens stroom is geïntegreerd met [Power query online](https://docs.microsoft.com/powerquery-m/power-query-m-reference) en maakt Power query M-functies beschikbaar voor gegevens Wrangling via Spark-uitvoering. 
 
@@ -87,7 +87,7 @@ Hoog behoud en verwijderen, bereik (overeenkomende M-functies, alleen ondersteun
 
 | Functie | Status |
 | -- | -- |
-| Table.PromoteHeaders | Wordt niet ondersteund. U kunt hetzelfde resultaat bereiken door in de gegevensset ' eerste rij als koptekst ' in te stellen. |
+| Table.PromoteHeaders | Niet ondersteund. U kunt hetzelfde resultaat bereiken door in de gegevensset ' eerste rij als koptekst ' in te stellen. |
 | Table.CombineColumns | Dit is een veelvoorkomend scenario dat niet rechtstreeks wordt ondersteund, maar kan worden bereikt door een nieuwe kolom toe te voegen waarmee twee opgegeven kolommen worden samengevoegd.  Bijvoorbeeld Table. AddColumn (RemoveEmailColumn, "name", elk [FirstName] & "" & [LastName]) |
 | Table.TransformColumnTypes | Dit wordt in de meeste gevallen ondersteund. De volgende scenario's worden niet ondersteund: het transformeren van de teken reeks naar het valuta type, het transformeren van de teken reeks naar het type tijd, het transformeren van de teken reeks naar het type percentage. |
 | Table.NestedJoin | Als u een koppeling uitvoert, treedt er een validatie fout op. De kolommen moeten worden uitgevouwen om te kunnen werken. |

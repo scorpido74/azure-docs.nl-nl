@@ -11,12 +11,12 @@ manager: philmea
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: 28abf6fca0933158b067dda7ab54af93dac4b7d9
-ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
-ms.translationtype: HT
+ms.openlocfilehash: ddbb1c6fd705e658867c0d594981e87bc8cd6afe
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82872413"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82930485"
 ---
 # <a name="get-connected-to-azure-iot-central"></a>Maak verbinding met Azure IoT Central
 
@@ -146,11 +146,11 @@ De stroom wijkt enigszins af van de vraag of de apparaten SAS-tokens of X. 509-c
 
 ### <a name="connect-devices-that-use-x509-certificates-without-registering"></a>Apparaten verbinden die X. 509-certificaten gebruiken zonder te registreren
 
-1. [Voeg en verifieer een basis-of tussenliggende X. 509-certificaat](#connect-devices-using-x509-certificates) aan uw IOT Central-toepassing. (#connect-apparaten-gebruiken-x509-certificaten)
+1. [Voeg en verifieer een basis-of tussenliggende X. 509-certificaat](#connect-devices-using-x509-certificates) aan uw IOT Central-toepassing.
 
 1. Genereer de blad certificaten voor uw apparaten met behulp van het basis-of tussenliggende certificaat dat u aan uw IoT Central-toepassing hebt toegevoegd. Gebruik kleine-case apparaat-Id's als `CNAME` de in de Blade certificaten.
 
-1. De OEM knippert elk apparaat met een apparaat-ID, een gegenereerd links X. 509-certificaat en de waarde voor het bereik van de toepassings **-id** .
+1. De OEM knippert elk apparaat met een apparaat-ID, een gegenereerde Leaf X. 509-certificaat en de waarde voor het bereik van de toepassings **-id** .
 
 1. Wanneer u overschakelt op een apparaat, maakt het eerst verbinding met DPS om de IoT Central registratie gegevens op te halen.
 

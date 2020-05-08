@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/28/2020
 ms.author: allensu
-ms.openlocfilehash: cf9fa48019ab88190175131b27f4a40e29eb5ed0
-ms.sourcegitcommit: c8a0fbfa74ef7d1fd4d5b2f88521c5b619eb25f8
+ms.openlocfilehash: 0db91f3c661ebd3087a4389f4112a7214c992227
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82801719"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82925946"
 ---
 # <a name="troubleshoot-azure-load-balancer"></a>Problemen met Azure Load Balancer oplossen
 <p class="alert is-flex is-primary"><span class="has-padding-left-medium has-padding-top-extra-small"><a class="button is-primary" href="https://azurevirtualsupportagent.services.microsoft.com?content=fb23185b-6c56-d9f1-7ce1-758c978e08e1" target='_blank'>Begin</a></span>met<span class="has-padding-small">het snel oplossen van uw probleem door gebruik te maken van onze virtuele agent om <b>geautomatiseerde diagnostische gegevens</b> uit te voeren.</span> <div align="right"> <sub>Privacy Statement</sub> Privacyverklaring <span class="has-padding-small"> <a href="https://privacy.microsoft.com/privacystatement" target='_blank'></div></a></span></p>
@@ -132,11 +132,15 @@ Als er een intern Load Balancer is geconfigureerd in een VNet en een van de back
 ### <a name="cause--the-backend-port-cannot-be-modified-for-a-load-balancing-rule-thats-used-by-a-health-probe-for-load-balancer-referenced-by-vm-scale-set"></a>Oorzaak: de backend-poort kan niet worden gewijzigd voor een taakverdelings regel die wordt gebruikt door een status test voor load balancer waarnaar wordt verwezen door de VM-Schaalset.
 **Oplossing** Als u de poort wilt wijzigen, kunt u de status test verwijderen door de VM-Schaalset bij te werken, de poort bij te werken en de status test vervolgens opnieuw te configureren.
 
+## <a name="symptom-small-traffic-is-still-going-through-load-balancer-after-removing-vms-from-backend-pool-of-the-load-balancer"></a>Symptoom: klein verkeer gaat door load balancer na het verwijderen van Vm's uit de back-end-groep van de load balancer. 
+### <a name="cause--vms-removed-from-backend-pool-should-no-longer-receive-traffic-the-small-amount-of-network-traffic-could-be-related-to-storage-dns-and-other-functions-within-azure"></a>Oorzaak: Vm's die worden verwijderd uit de back-end-groep mogen geen verkeer meer ontvangen. De kleine hoeveelheid netwerk verkeer kan zijn gerelateerd aan opslag, DNS en andere functies in Azure. 
+Als u wilt controleren, kunt u een netwerk tracering uitvoeren. De FQDN die wordt gebruikt voor uw Blob Storage-accounts worden weer gegeven in de eigenschappen van elk opslag account.  Vanaf een virtuele machine binnen uw Azure-abonnement kunt u een nslookup uitvoeren om het Azure IP-adres te bepalen dat aan het opslag account is toegewezen.
+
 ## <a name="additional-network-captures"></a>Aanvullende netwerk opnamen
 Als u besluit een ondersteunings aanvraag te openen, verzamelt u de volgende informatie voor een snellere oplossing. Kies één back-end-VM om de volgende tests uit te voeren:
 - Gebruik Psping van een van de back-end-Vm's binnen het VNet om de test poort reactie te testen (bijvoorbeeld: Psping 10.0.0.4:3389) en de resultaten op te nemen. 
 - Als er geen antwoord wordt ontvangen in deze ping-tests, voert u een gelijktijdige Netsh-tracering uit op de back-end-VM en de VNet-test-VM terwijl u PsPing uitvoert en stopt u de Netsh-tracering. 
-  
+ 
 ## <a name="next-steps"></a>Volgende stappen
 
 Als de voor gaande stappen het probleem niet oplossen, opent u een [ondersteunings ticket](https://azure.microsoft.com/support/options/).

@@ -5,17 +5,17 @@ author: tfitzmac
 ms.topic: conceptual
 ms.date: 10/12/2017
 ms.author: tomfitz
-ms.openlocfilehash: 6e56c5e528a17d42a75da54158f00857a917645c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a93f4ff2ddc0737692de9e5619cf7a7521936224
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79248448"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82980810"
 ---
 # <a name="createuidefinition-functions"></a>CreateUiDefinition-functies
 Deze sectie bevat de hand tekeningen voor alle ondersteunde functies van een CreateUiDefinition.
 
-Als u een functie wilt gebruiken, moet u de declaratie tussen vier Kante haken plaatsen. Bijvoorbeeld:
+Als u een functie wilt gebruiken, plaatst u de aanroep tussen vier Kante haken. Bijvoorbeeld:
 
 ```json
 "[function()]"
@@ -485,6 +485,45 @@ Aannemen `element1` dat `element2` en niet zijn gedefinieerd. In het volgende vo
 "[coalesce(steps('foo').element1, steps('foo').element2, 'foobar')]"
 ```
 
+Deze functie is vooral nuttig in de context van een optionele aanroep die plaatsvindt als gevolg van de gebruikers actie nadat de pagina is geladen. Een voor beeld is als de beperkingen voor één veld in de gebruikers interface afhankelijk zijn van de momenteel geselecteerde waarde van een andere, **niet-zicht bare** veld. In dit geval `coalesce()` kan de functie worden gebruikt om de syntaxis geldig te maken op het moment dat de pagina wordt geladen en het gewenste effect heeft wanneer de gebruiker met het veld communiceert.
+
+Bekijk dit `DropDown`, waarmee de gebruiker uit verschillende soorten data bases kan kiezen:
+
+```
+{
+    "name": "databaseType",
+    "type": "Microsoft.Common.DropDown",
+    "label": "Choose database type",
+    "toolTip": "Choose database type",
+    "defaultValue": "Oracle Database",
+    "visible": "[bool(steps('section_database').connectToDatabase)]"
+    "constraints": {
+        "allowedValues": [
+            {
+                "label": "Azure Database for PostgreSQL",
+                "value": "postgresql"
+            },
+            {
+                "label": "Oracle Database",
+                "value": "oracle"
+            },
+            {
+                "label": "Azure SQL",
+                "value": "sqlserver"
+            }
+        ],
+        "required": true
+    },
+```
+
+Als voor waarde voor de actie van een ander veld op de huidige gekozen waarde van dit `coalesce()`veld, gebruikt u, zoals hier wordt weer gegeven:
+
+```
+"regex": "[concat('^jdbc:', coalesce(steps('section_database').databaseConnectionInfo.databaseType, ''), '.*$')]",
+```
+
+Dit is nodig omdat de `databaseType` is in eerste instantie niet zichtbaar is en daarom geen waarde heeft. Dit zorgt ervoor dat de volledige expressie niet correct wordt geëvalueerd.
+
 ## <a name="conversion-functions"></a>Conversie functies
 Deze functies kunnen worden gebruikt om waarden te converteren tussen JSON-gegevens typen en-code ringen.
 
@@ -545,7 +584,7 @@ In het volgende voor `"{"foo":"bar"}"`beeld wordt geretourneerd:
 "[string({\"foo\":\"bar\"})]"
 ```
 
-### <a name="bool"></a>booleaans
+### <a name="bool"></a>Booleaanse waarde
 Zet de para meter om in een Boole-waarde. Deze functie biedt ondersteuning voor para meters van het type Number, String en Boolean. Vergelijkbaar met Boole-waarden in Java script, een `0` wille keurige waarde, behalve of `'false'` als resultaat `true`.
 
 In het volgende voor `true`beeld wordt geretourneerd:

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 01/29/2018
 ms.author: apimpm
-ms.openlocfilehash: 2f67079938ddcf4a65e01ef50ab7e5cdf7078b73
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0d122a56035e58bd5065da8fde56246da6478d54
+ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81260935"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82871269"
 ---
 # <a name="how-to-log-events-to-azure-event-hubs-in-azure-api-management"></a>Gebeurtenissen vastleggen in azure Event Hubs in azure API Management
 Azure Event Hubs is een zeer schaalbare service voor inkomende gegevens die miljoenen gebeurtenissen per seconde kan opnemen, voor verwerking en analyse van de enorme hoeveelheden gegevens die worden geproduceerd door verbonden apparaten en toepassingen. Event Hubs fungeert als de "front deur" voor een gebeurtenis pijplijn en wanneer gegevens worden verzameld in een Event Hub, kan deze worden getransformeerd en opgeslagen met behulp van een realtime analyse provider of batches/opslag adapters. Event Hubs koppelt de productie van een gebeurtenissenstroom los van het gebruik van deze gebeurtenissen, zodat de consumenten ervan toegang hebben tot de gebeurtenissen op basis van hun eigen planning.
@@ -34,9 +34,9 @@ Nu u een event hub hebt, is de volgende stap het configureren van een [logger](h
 
 API Management-logboeken worden geconfigureerd met behulp van de [API Management rest API](https://aka.ms/apimapi). Zie [Logboeken maken](https://docs.microsoft.com/rest/api/apimanagement/2019-12-01/logger/createorupdate)voor voor beelden van gedetailleerde aanvragen.
 
-## <a name="configure-log-to-eventhubs-policies"></a>Logboek-naar-Event hubs-beleid configureren
+## <a name="configure-log-to-eventhub-policies"></a>Logboek-naar-eventhub-beleid configureren
 
-Zodra uw logboek is geconfigureerd in API Management, kunt u de beleids regels voor aanmelden op Event hubs configureren om de gewenste gebeurtenissen te registreren. Het logboek-naar-Event hubs-beleid kan worden gebruikt in de sectie inkomend beleid of in de sectie uitgaand beleid.
+Zodra uw logboek is geconfigureerd in API Management, kunt u het beleid voor eventhub configureren om de gewenste gebeurtenissen te registreren. Het logboek-naar-eventhub-beleid kan worden gebruikt in de sectie inkomend beleid of in de sectie uitgaand beleid.
 
 1. Blader naar de APIM-instantie.
 2. Selecteer het tabblad API.
@@ -49,15 +49,32 @@ Zodra uw logboek is geconfigureerd in API Management, kunt u de beleids regels v
 9. Selecteer in het venster aan de rechter kant het **Geavanceerde beleid** > **logboek op EventHub**. Hiermee wordt de `log-to-eventhub` sjabloon voor de beleids verklaring ingevoegd.
 
 ```xml
-<log-to-eventhub logger-id ='logger-id'>
-  @( string.Join(",", DateTime.UtcNow, context.Deployment.ServiceName, context.RequestId, context.Request.IpAddress, context.Operation.Name))
+<log-to-eventhub logger-id="logger-id">
+    @{
+        return new JObject(
+            new JProperty("EventTime", DateTime.UtcNow.ToString()),
+            new JProperty("ServiceName", context.Deployment.ServiceName),
+            new JProperty("RequestId", context.RequestId),
+            new JProperty("RequestIp", context.Request.IpAddress),
+            new JProperty("OperationName", context.Operation.Name)
+        ).ToString();
+    }
 </log-to-eventhub>
 ```
-Vervang `logger-id` door de waarde die u `{new logger name}` in de URL hebt gebruikt om de logger in de vorige stap te maken.
+Vervang `logger-id` door de waarde die u hebt `{loggerId}` gebruikt in de aanvraag-URL om de logger in de vorige stap te maken.
 
-U kunt elke expressie gebruiken die een teken reeks retourneert als de waarde van `log-to-eventhub` het element. In dit voor beeld wordt een teken reeks met de datum en tijd, de service naam, de aanvraag-id, het IP-adres van de aanvraag en de bewerkings naam vastgelegd.
+U kunt elke expressie gebruiken die een teken reeks retourneert als de waarde van `log-to-eventhub` het element. In dit voor beeld wordt een teken reeks in JSON-indeling met de datum en tijd, de service naam, de aanvraag-id, het IP-adres van de aanvraag en de bewerkings naam vastgelegd.
 
 Klik op **Opslaan** om de bijgewerkte beleids configuratie op te slaan. Zodra het beleid is opgeslagen, is het actief en worden gebeurtenissen geregistreerd in de aangewezen Event hub.
+
+## <a name="preview-the-log-in-event-hubs-by-using-azure-stream-analytics"></a>Bekijk een voor beeld van het logboek in Event Hubs met behulp van Azure Stream Analytics
+
+U kunt een voor beeld van het logboek in Event Hubs bekijken met behulp van [Azure stream Analytics query's](https://docs.microsoft.com/azure/event-hubs/process-data-azure-stream-analytics). 
+
+1. Blader in het Azure Portal naar de Event Hub waarnaar de logboek gebeurtenissen verzendt. 
+2. Selecteer onder **functies**het tabblad **proces gegevens** .
+3. Op de kaart **real time Insights van gebeurtenissen inschakelen** selecteert u **verkennen**.
+4. U moet een voor beeld van het logboek op het tabblad **invoer voorbeeld** kunnen bekijken. Als de weer gegeven gegevens niet actueel zijn, selecteert u **vernieuwen** om de meest recente gebeurtenissen te bekijken.
 
 ## <a name="next-steps"></a>Volgende stappen
 * Meer informatie over Azure Event Hubs

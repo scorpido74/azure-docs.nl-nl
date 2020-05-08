@@ -3,12 +3,12 @@ title: Live data (preview) weer geven met Azure Monitor voor containers | Micros
 description: In dit artikel wordt een overzicht gegeven van de real-time weer gave van Kubernetes-logboeken, gebeurtenissen en pod-metrische gegevens zonder gebruik te maken van kubectl in Azure Monitor voor containers.
 ms.topic: conceptual
 ms.date: 10/15/2019
-ms.openlocfilehash: 9e7c7a7b7bf276b3451cee1d289b8b07ac0f40ba
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 38615acf079c33c49e27394bfdb9b8104e5a68ac
+ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79216555"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82872110"
 ---
 # <a name="how-to-view-kubernetes-logs-events-and-pod-metrics-in-real-time"></a>Kubernetes-logboeken, gebeurtenissen en metrische gegevens over pod in realtime weer geven
 
@@ -26,7 +26,7 @@ Lees onze [installatie handleiding](container-insights-livedata-setup.md)voor hu
 
 ## <a name="live-data-preview-functionality-overview"></a>Overzicht van de functionaliteit van live data (preview)
 
-### <a name="search"></a>Search
+### <a name="search"></a>Zoeken
 
 ![Filter voorbeeld van live data console-deel venster](./media/container-insights-livedata-overview/livedata-pane-filter-example.png)
 
@@ -42,7 +42,7 @@ Als u de functie voor automatisch schuiven wilt onderbreken en het gedrag van he
 >We raden u aan om tijdens korte tijd alleen een onderbreking in te stellen of te onderbreken tijdens het oplossen van een probleem. Deze aanvragen kunnen van invloed zijn op de beschik baarheid en beperking van de Kubernetes-API op uw cluster. 
 
 >[!IMPORTANT]
->Er worden geen gegevens permanent opgeslagen tijdens de werking van deze functie. Alle gegevens die tijdens de sessie zijn vastgelegd, worden verwijderd wanneer u de browser sluit of verlaat. Gegevens blijven alleen aanwezig voor visualisatie in het venster over vijf minuten van de functie meet waarden. alle metrische gegevens die ouder zijn dan vijf minuten, worden ook verwijderd. De Live-gegevens (preview)-buffer query's binnen de redelijke limieten voor geheugen gebruik (moet hier specifiekere zijn, wat redelijk is?). 
+>Er worden geen gegevens permanent opgeslagen tijdens de werking van deze functie. Alle gegevens die tijdens de sessie zijn vastgelegd, worden verwijderd wanneer u de browser sluit of verlaat. Gegevens blijven alleen aanwezig voor visualisatie in het venster over vijf minuten van de functie meet waarden. alle metrische gegevens die ouder zijn dan vijf minuten, worden ook verwijderd. De Live gegevens (preview)-buffer query's binnen de redelijke limieten voor geheugen gebruik.
 
 ## <a name="view-logs"></a>Logboeken weergeven
 
