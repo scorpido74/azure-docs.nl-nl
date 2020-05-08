@@ -3,12 +3,12 @@ title: 'Sjabloon functies: bronnen'
 description: Hierin worden de functies beschreven die u kunt gebruiken in een Azure Resource Manager sjabloon om waarden over resources op te halen.
 ms.topic: conceptual
 ms.date: 04/28/2020
-ms.openlocfilehash: 4038d95942805ae26b5e82d5b766a80a92ae11bc
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 508933cbea3e21fdec63907cef73102866732bb1
+ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82231302"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82891010"
 ---
 # <a name="resource-functions-for-arm-templates"></a>Resource functies voor ARM-sjablonen
 
@@ -168,9 +168,9 @@ Het mogelijke gebruik van lijst * wordt weer gegeven in de volgende tabel.
 | Micro soft. DomainRegistration/topLevelDomains | [listAgreements](/rest/api/appservice/topleveldomains/listagreements) |
 | Micro soft. EventGrid/domeinen | [Listkeys ophalen](/rest/api/eventgrid/version2019-06-01/domains/listsharedaccesskeys) |
 | Micro soft. EventGrid/topics | [Listkeys ophalen](/rest/api/eventgrid/version2019-06-01/topics/listsharedaccesskeys) |
-| Micro soft. EventHub/naam ruimten/authorizationRules | [listkeys ophalen](/rest/api/eventhub/namespaces/listkeys) |
-| Micro soft. EventHub/naam ruimten/disasterRecoveryConfigs/authorizationRules | [listkeys ophalen](/rest/api/eventhub/disasterrecoveryconfigs/listkeys) |
-| Micro soft. EventHub/naam ruimten/Event hubs/authorizationRules | [listkeys ophalen](/rest/api/eventhub/eventhubs/listkeys) |
+| Micro soft. EventHub/naam ruimten/authorizationRules | [listkeys ophalen](/rest/api/eventhub) |
+| Micro soft. EventHub/naam ruimten/disasterRecoveryConfigs/authorizationRules | [listkeys ophalen](/rest/api/eventhub) |
+| Micro soft. EventHub/naam ruimten/Event hubs/authorizationRules | [listkeys ophalen](/rest/api/eventhub) |
 | Micro soft. ImportExport/Jobs | [listBitLockerKeys](/rest/api/storageimportexport/bitlockerkeys/list) |
 | Micro soft. Kusto/clusters/data bases | [ListPrincipals](/rest/api/azurerekusto/databases/listprincipals) |
 | Micro soft. LabServices/gebruikers | [ListEnvironments](/rest/api/labservices/globalusers/listenvironments) |

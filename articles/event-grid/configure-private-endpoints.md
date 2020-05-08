@@ -7,20 +7,17 @@ ms.service: event-grid
 ms.topic: how-to
 ms.date: 04/22/2020
 ms.author: spelluru
-ms.openlocfilehash: 97f08bf0f89fdb65f0ffef7d18557f210e45a8d3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b72462334fa2311b017be49860ed422dfa35430c
+ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82101005"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82890814"
 ---
-# <a name="configure-private-endpoints-for-azure-event-grid-topics-or-domains-preview"></a>Privé-eind punten configureren voor Azure Event Grid onderwerpen of domeinen (preview-versie)
+# <a name="configure-private-endpoints-for-azure-event-grid-topics-or-domains"></a>Privé-eind punten voor Azure Event Grid onderwerpen of domeinen configureren
 U kunt [privé-eind punten](../private-link/private-endpoint-overview.md) gebruiken om direct vanuit uw virtuele netwerk toegang te geven tot uw onderwerpen en domeinen, zonder dat u het open bare Internet [hoeft te passeren](../private-link/private-link-overview.md) . Het persoonlijke eind punt gebruikt een IP-adres uit de VNet-adres ruimte voor uw onderwerp of domein. Zie [netwerk beveiliging](network-security.md)voor meer conceptuele informatie.
 
 In dit artikel wordt beschreven hoe u privé-eind punten voor onderwerpen of domeinen kunt configureren.
-
-> [!IMPORTANT]
-> De functie privé-eind punten is alleen beschikbaar voor onderwerpen en domeinen in de Premium-laag. Zie het artikel [prijs categorie bijwerken](update-tier.md) als u een upgrade wilt uitvoeren van de Basic-laag naar de Premium-laag. 
 
 ## <a name="use-azure-portal"></a>Azure Portal gebruiken 
 In deze sectie wordt beschreven hoe u de Azure Portal gebruikt om een persoonlijk eind punt te maken voor een onderwerp of een domein.
@@ -205,7 +202,7 @@ Hier volgt een voorbeeld script voor het maken van de volgende Azure-resources:
 - Resourcegroep
 - Virtueel netwerk
 - Subnet in het virtuele netwerk
-- Azure Event Grid onderwerp (Premium-laag)
+- Azure Event Grid onderwerp
 - Persoonlijk eind punt voor het onderwerp
 
 > [!NOTE]
@@ -254,8 +251,7 @@ az network vnet subnet update \
 az eventgrid topic create \
     --resource-group $resourceGroupName \
     --name $topicName \
-    --location $location \
-    --sku "Premium" 
+    --location $location
 
 # verify that the topic was created.
 az eventgrid topic show \
@@ -369,7 +365,7 @@ $virtualNetwork | Set-AzVirtualNetwork
 
 
 ```azurepowershell-interactive
-$body = @{"location"="<LOCATION>"; "sku"= @{"name"="premium"}; "properties"=@{"publicNetworkAccess"="disabled"}} | ConvertTo-Json
+$body = @{"location"="<LOCATION>"; "properties"=@{"publicNetworkAccess"="disabled"}} | ConvertTo-Json
 
 # create topic
 Invoke-RestMethod -Method 'Put'  `

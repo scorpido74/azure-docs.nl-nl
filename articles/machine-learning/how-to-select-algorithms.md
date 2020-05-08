@@ -9,13 +9,13 @@ ms.topic: conceptual
 author: FrancescaLazzeri
 ms.author: lazzeri
 ms.reviewer: cgronlun
-ms.date: 03/05/2020
-ms.openlocfilehash: e0482bac9569a834adf3e1cdef2b3f702980eac0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.date: 05/07/2020
+ms.openlocfilehash: 98f7edac5bbec7a88999c728b2e4db8be7a3d2b5
+ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78328660"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82891349"
 ---
 # <a name="how-to-select-algorithms-for-azure-machine-learning"></a>Algoritmen voor Azure Machine Learning selecteren
 
@@ -40,7 +40,35 @@ Machine Learning Designer voorziet in een uitgebreide Port Folio met algoritmen,
 
 Naast de richt lijnen in het Cheat-venster van de Azure Machine Learning-algoritme moet u andere vereisten overwegen wanneer u een machine learning algoritme voor uw oplossing kiest. Hieronder vindt u aanvullende factoren om rekening mee te houden, zoals de nauw keurigheid, de trainings tijd, de lineariteit, het aantal para meters en het aantal functies.
 
-## <a name="additional-requirements-for-a-data-science-scenario"></a>Aanvullende vereisten voor een Data Science-scenario
+## <a name="comparison-of-machine-learning-algorithms"></a>Vergelijking van machine learning algoritmen
+
+Sommige leer algoritmen maken specifieke veronderstellingen over de structuur van de gegevens of de gewenste resultaten. Als u een spel kunt vinden dat aan uw behoeften voldoet, kunt u meer nuttige resultaten, nauw keurigere voor spellingen of snellere opleidings tijden geven.
+
+De volgende tabel bevat een overzicht van de belangrijkste kenmerken van algoritmen van de classificatie, regressie en clustering-families:
+
+| **Algoritme** | **Nauw keurigheid** | **Trainingstijd** | **Lineariteit** | **Parameters** | **Opmerkingen** |
+| --- |:---:|:---:|:---:|:---:| --- |
+| **Classificatie familie** | | | | | |
+| [Logistiek regressie met twee klassen](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/two-class-logistic-regression?WT.mc_id=docs-article-lazzeri) |Goed  |Hoog |Ja |4 | |
+| [Besluitvormings forest met twee klassen](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/two-class-decision-forest?WT.mc_id=docs-article-lazzeri) |Uitstekend |Gemiddeld |Nee |5 |Hiermee worden langzamere Score tijden weer gegeven. Voorst Ellen om niet te werken met One-vs-All Multiclass vanwege tragere Score tijden die worden veroorzaakt door loopvlak vergrendeling bij het accumuleren van tree-voor spellingen |
+| [Geboostte beslissings structuur met twee klassen](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/two-class-boosted-decision-tree?WT.mc_id=docs-article-lazzeri) |Uitstekend |Gemiddeld |Nee |6 |Grote geheugen capaciteit |
+| [Neural-netwerk met twee klassen](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/two-class-neural-network?WT.mc_id=docs-article-lazzeri) |Goed |Gemiddeld |Nee |8 | |
+| [Gemiddelde Perceptron voor twee klassen](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/two-class-averaged-perceptron?WT.mc_id=docs-article-lazzeri) |Goed |Gemiddeld |Ja |4 | |
+| [Vector computer met twee klassen ondersteuning](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/two-class-support-vector-machine?WT.mc_id=docs-article-lazzeri) |Goed |Hoog |Ja |5 |Geschikt voor grote functie sets |
+| [Multiklasse-logistieke regressie](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/multiclass-logistic-regression?WT.mc_id=docs-article-lazzeri) |Goed |Hoog |Ja |4 | |
+| [Multi Class-besluitvormings forest](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/multiclass-decision-forest?WT.mc_id=docs-article-lazzeri) |Uitstekend |Gemiddeld |Nee |5 |Vertraagde Score tijden weer geven |
+| [Beslissings structuur met een geboostte klasse met klassen](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/multiclass-boosted-decision-tree?WT.mc_id=docs-article-lazzeri) |Uitstekend |Gemiddeld |Nee |6 | Is de nauw keurigheid verbeterd met een klein risico van minder dekking |
+| [Multi Class Neural-netwerk](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/multiclass-neural-network?WT.mc_id=docs-article-lazzeri) |Goed |Gemiddeld |Nee |8 | |
+| [Eén-VS-alle multi klassen](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/one-vs-all-multiclass?WT.mc_id=docs-article-lazzeri) | - | - | - | - |Zie Eigenschappen van de methode met twee klassen geselecteerd |
+| **Regressie familie** | | | | | |
+| [Lineaire regressie](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/linear-regression?WT.mc_id=docs-article-lazzeri) |Goed |Hoog |Ja |4 | |
+| [Regressie voor beslissings structuur](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/decision-forest-regression?WT.mc_id=docs-article-lazzeri)|Uitstekend |Gemiddeld |Nee |5 | |
+| [Regressie verbetering van de beslissings structuur](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/boosted-decision-tree-regression?WT.mc_id=docs-article-lazzeri) |Uitstekend |Gemiddeld |Nee |6 |Grote geheugen capaciteit |
+| [Regressie van Neural-netwerk](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/neural-network-regression?WT.mc_id=docs-article-lazzeri) |Goed |Gemiddeld |Nee |8 | |
+| **Clustering-familie** | | | | | |
+| [k-means clustering](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/k-means-clustering?WT.mc_id=docs-article-lazzeri) |Uitstekend |Gemiddeld |Ja |8 |Een cluster algoritme |
+
+## <a name="requirements-for-a-data-science-scenario"></a>Vereisten voor een Data Science-scenario
 
 Wanneer u weet wat u met uw gegevens wilt doen, moet u aanvullende vereisten voor uw oplossing bepalen. 
 
@@ -117,7 +145,6 @@ Een groot aantal functies kan enkele leer algoritmen verwarrenden, waardoor de t
 De functie selectie verwijst naar het proces van het Toep assen van statistische tests op invoer, op basis van een opgegeven uitvoer. Het doel is om te bepalen welke kolommen meer voor spelling van de uitvoer zijn. De [module](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/filter-based-feature-selection?WT.mc_id=docs-article-lazzeri) voor het selecteren van functies op basis van filters in machine learning Designer bevat meerdere algoritmen voor het selecteren van onderdelen. De module bevat correlatie methoden, zoals Pearson-correlatie en Chi-kwadraat waarden.
 
 U kunt ook de [permutatie functie urgentie module](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/permutation-feature-importance?WT.mc_id=docs-article-lazzeri) gebruiken om een aantal scores voor de functie prioriteit voor uw gegevensset te berekenen. Vervolgens kunt u deze scores gebruiken om te bepalen welke functies het beste in een model moeten worden gebruikt.
-
 
 ## <a name="next-steps"></a>Volgende stappen
 

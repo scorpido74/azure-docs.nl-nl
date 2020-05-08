@@ -3,34 +3,29 @@ title: Zoek classificatie verhogen met behulp van Score profielen
 titleSuffix: Azure Cognitive Search
 description: Verhoog de zoek positie scores voor Azure Cognitive Search resultaten door Score profielen toe te voegen.
 manager: nitinme
-author: Brjohnstmsft
-ms.author: brjohnst
+author: shmed
+ms.author: ramero
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/28/2019
-translation.priority.mt:
-- de-de
-- es-es
-- fr-fr
-- it-it
-- ja-jp
-- ko-kr
-- pt-br
-- ru-ru
-- zh-cn
-- zh-tw
-ms.openlocfilehash: c702ce72492201413d6c72af9dbf37347e49afdd
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.date: 05/06/2020
+ms.openlocfilehash: 56757d1c2810efe608601c231946b2242df82b19
+ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82231098"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82890184"
 ---
 # <a name="add-scoring-profiles-to-an-azure-cognitive-search-index"></a>Scoreprofielen toevoegen aan een Azure Cognitive Search-index
 
 *Score* berekent een zoek score voor elk item in een gerangschikte resultatenset. Aan elk item in een zoek resultatenset wordt een zoek Score toegewezen en vervolgens het hoogste niveau van de laagste waarde.
 
  In azure Cognitive Search wordt gebruikgemaakt van de standaard score voor het berekenen van een eerste score, maar u kunt de berekening aanpassen via een *Score profiel*. Score profielen geven u meer controle over de rang schikking van items in Zoek resultaten. U kunt bijvoorbeeld items verhogen op basis van hun omzet potentieel, nieuwere items promoten of mogelijk objecten verhogen die in de voor Raad te lang zijn.  
+
+ Het volgende video segment wordt snel doorgestuurd naar de manier waarop Score profielen werken in azure Cognitive Search.
+ 
+> [!VIDEO https://www.youtube.com/embed/Y_X6USgvB1g?version=3&start=463&end=970]
+
+## <a name="scoring-profile-definitions"></a>Score profiel definities
 
  Een score profiel maakt deel uit van de definitie van de index, die bestaat uit gewogen velden, functies en para meters.  
 
@@ -286,6 +281,6 @@ De zoek score wordt berekend op basis van de statistische eigenschappen van de g
 
 ## <a name="see-also"></a>Zie ook  
 
-+ [Naslaginformatie over REST-API](https://docs.microsoft.com/rest/api/searchservice/)   
++ [REST API referentie](https://docs.microsoft.com/rest/api/searchservice/)   
 + [Index-API maken](https://docs.microsoft.com/rest/api/searchservice/create-index)   
 + [Azure Cognitive Search .NET SDK](https://docs.microsoft.com/dotnet/api/overview/azure/search?view=azure-dotnet)  

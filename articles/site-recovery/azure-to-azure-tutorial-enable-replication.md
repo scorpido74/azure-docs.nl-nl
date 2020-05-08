@@ -5,12 +5,12 @@ ms.topic: tutorial
 ms.date: 1/24/2020
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: c5d2bbe920f87421550fadf30a7e7e9d23931bfd
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 145ae5f6f9204366052d9a182c61d76ff7ffa715
+ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80292485"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82871508"
 ---
 # <a name="set-up-disaster-recovery-for-azure-vms"></a>Herstel na nood geval instellen voor virtuele Azure-machines
 
@@ -38,7 +38,7 @@ Vereisten om deze zelfstudie te voltooien:
 
 Maak de kluis in elke gewenste regio, met uitzondering van de bronregio.
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
+1. Meld u aan bij [Azure Portal](https://portal.azure.com).
 1. Selecteer in het menu van Azure Portal of op de **Startpagina** de optie **Een resource maken**. Selecteer deze vervolgens **&-beheer hulpprogramma's** > **back-up en site Recovery**.
 1. Geef bij **naam**een beschrijvende naam op om de kluis aan te duiden. Als u meer dan één abonnement hebt, selecteert u het gewenste abonnement.
 1. Maak een resourcegroep of selecteer een bestaande resourcegroep. Geef een Azure-regio op. Zie geografische Beschik baarheid in [Azure site Recovery prijs informatie](https://azure.microsoft.com/pricing/details/site-recovery/)om de ondersteunde regio's te controleren.
@@ -170,8 +170,8 @@ Als de bron-VM voor Azure Disk Encryption (ADE) is ingeschakeld, controleert u d
    1. Key **Encryption Key-kluizen**: standaard maakt site Recovery een nieuwe sleutel kluis in de doel regio. De naam heeft een `asr` achtervoegsel en is gebaseerd op de sleutel versleutelings sleutels van de bron-VM. Als de sleutel kluis die is gemaakt door Site Recovery al bestaat, wordt deze opnieuw gebruikt.
 1. Selecteer **aanpassen** om aangepaste sleutel kluizen te selecteren.
 
-> [!NOTE]
-> Momenteel worden alleen Azure-VM's met Windows-besturingssystemen die zijn [ingeschakeld voor versleuteling met Azure AD-app](https://aka.ms/ade-aad-app), ondersteund voor Azure Site Recovery.
+>[!NOTE]
+> Site Recovery biedt momenteel ondersteuning voor ADE, met en zonder Azure Active Directory (AAD) voor virtuele machines waarop Windows-besturings systemen worden uitgevoerd. Voor Linux-besturings systemen ondersteunen we alleen ADE zonder AAD. Daarnaast moeten de virtuele machines met behulp van beheerde schijven voor computers met ADE 1,1 (zonder AAD). Vm's met niet-beheerde schijven worden niet ondersteund. Als u overschakelt van ADE 0,1 (met AAD) naar 1,1, moet u replicatie uitschakelen en replicatie inschakelen voor een VM na het inschakelen van 1,1.
 
 ### <a name="track-replication-status"></a>Replicatiestatus volgen
 

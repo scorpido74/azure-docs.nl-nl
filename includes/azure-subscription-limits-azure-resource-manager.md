@@ -1,6 +1,6 @@
 ---
-title: Include-bestand
-description: Include-bestand
+title: bestand opnemen
+description: bestand opnemen
 services: azure-resource-manager
 author: tfitzmac
 ms.service: cost-management-billing

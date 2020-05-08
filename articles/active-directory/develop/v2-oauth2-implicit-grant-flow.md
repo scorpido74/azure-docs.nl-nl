@@ -2,7 +2,7 @@
 title: OAuth 2,0 impliciete toekennings stroom-micro soft Identity-platform | Azure
 description: Beveilig apps met één pagina met een impliciete stroom van micro soft Identity platform.
 services: active-directory
-author: rwike77
+author: hpsin
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
@@ -12,12 +12,12 @@ ms.date: 11/19/2019
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 89ae088b9cbb3bb3c593cfcbbfb4ce619baccfa8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 34ae87859b20895598611d25eb069fd05c24d262
+ms.sourcegitcommit: 0fda81f271f1a668ed28c55dcc2d0ba2bb417edd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81868415"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82900419"
 ---
 # <a name="microsoft-identity-platform-and-implicit-grant-flow"></a>Micro soft Identity-platform en impliciete toekennings stroom
 
@@ -239,3 +239,6 @@ https://login.microsoftonline.com/{tenant}/oauth2/v2.0/logout?post_logout_redire
 ## <a name="next-steps"></a>Volgende stappen
 
 * Ga naar de [MSAL js](sample-v2-code.md) -voor beelden om te beginnen met de code ring.
+
+[OAuth2-Spec-Implicit-Misuse]: https://tools.ietf.org/html/rfc6749#section-10.16
+[OAuth2-Threat-Model-And-Security-Implications]: https://tools.ietf.org/html/rfc6819

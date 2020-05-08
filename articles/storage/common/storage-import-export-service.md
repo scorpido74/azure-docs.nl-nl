@@ -5,15 +5,15 @@ author: alkohli
 services: storage
 ms.service: storage
 ms.topic: article
-ms.date: 03/15/2020
+ms.date: 05/06/2020
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: eee0fc2797fbe0666a6b848fde574c7807f47cc9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 120dbe9c4b79755105ba634c68606edfbfdc4ad2
+ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80282440"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82872434"
 ---
 # <a name="what-is-azure-importexport-service"></a>Wat is Azure import/export-service?
 
@@ -41,7 +41,7 @@ Import/export-service maakt gebruik van de volgende onderdelen:
 * **Hulp programma WAImportExport**: dit is een opdracht regel programma dat het volgende doet:
   * Bereidt uw schijf stations voor die worden verzonden om te worden geïmporteerd.
   * Vereenvoudigt het kopiëren van uw gegevens naar het station.
-  * Hiermee worden de gegevens op het station versleuteld met AES 128-bits BitLocker. U kunt een externe sleutel beveiliging gebruiken om uw BitLocker-sleutel te beveiligen.
+  * Hiermee worden de gegevens op het station versleuteld met AES 256-bits BitLocker. U kunt een externe sleutel beveiliging gebruiken om uw BitLocker-sleutel te beveiligen.
   * Genereert de logboek bestanden van het station die worden gebruikt tijdens het maken van het importeren.
   * Helpt bij het identificeren van het aantal stations dat nodig is voor het exporteren van taken.
 
@@ -131,7 +131,7 @@ De Azure import/export-service ondersteunt het kopiëren van gegevens van en naa
 
 ## <a name="security-considerations"></a>Beveiligingsoverwegingen
 
-De gegevens op het station worden versleuteld met AES 128-bits BitLocker-stationsversleuteling. Deze versleuteling beschermt uw gegevens tijdens de overdracht.
+De gegevens op het station worden versleuteld met AES 256-bits BitLocker-stationsversleuteling. Deze versleuteling beschermt uw gegevens tijdens de overdracht.
 
 Voor import taken worden stations op twee manieren versleuteld.  
 

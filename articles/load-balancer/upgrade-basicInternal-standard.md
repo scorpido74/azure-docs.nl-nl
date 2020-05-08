@@ -7,12 +7,12 @@ ms.service: load-balancer
 ms.topic: article
 ms.date: 02/23/2020
 ms.author: irenehua
-ms.openlocfilehash: fe9ae8997e05e4ab99dba66de88976342fbabe56
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.openlocfilehash: 960897abca67bf2a43c4c056b8dfa8cce0119faa
+ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 05/06/2020
-ms.locfileid: "82858362"
+ms.locfileid: "82871579"
 ---
 # <a name="upgrade-azure-internal-load-balancer--no-outbound-connection-required"></a>Upgrade uitvoeren voor interne Load Balancer van Azure: er is geen uitgaande verbinding vereist
 [Azure Standard Load Balancer](load-balancer-overview.md) biedt een uitgebreide set functionaliteit en hoge Beschik baarheid via zone redundantie. Zie [vergelijkings tabel](https://docs.microsoft.com/azure/load-balancer/skus#skus)voor meer informatie over Load Balancer SKU.
@@ -31,6 +31,7 @@ Er is een Azure PowerShell script beschikbaar dat het volgende doet:
 ### <a name="caveatslimitations"></a>Caveats\Limitations
 
 * Script ondersteunt alleen interne Load Balancer upgrade, waarbij geen uitgaande verbinding vereist is. Raadpleeg deze [pagina](upgrade-InternalBasic-To-PublicStandard.md) voor instructies als u een [uitgaande verbinding](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections) voor sommige vm's hebt vereist. 
+* De basis Load Balancer moeten zich in dezelfde resource groep bestemmen als de back-end-Vm's en Nic's.
 * Als de standaard load balancer in een andere regio wordt gemaakt, kunt u de virtuele machines die in de oude regio bestaan, niet koppelen aan de zojuist gemaakte Standard Load Balancer. Om deze beperking te omzeilen, moet u ervoor zorgen dat u een nieuwe virtuele machine maakt in de nieuwe regio.
 * Als uw Load Balancer geen frontend-IP-configuratie of back-end-pool heeft, zult u waarschijnlijk een fout bij het uitvoeren van het script aangaan. Zorg ervoor dat deze niet leeg zijn.
 
@@ -47,7 +48,7 @@ Er is een Azure PowerShell script beschikbaar dat het volgende doet:
 
 ## <a name="download-the-script"></a>Het script downloaden
 
-Down load het migratie script van de [PowerShell Gallery](https://www.powershellgallery.com/packages/AzureILBUpgrade/2.0).
+Down load het migratie script van de [PowerShell Gallery](https://www.powershellgallery.com/packages/AzureILBUpgrade/3.0).
 ## <a name="use-the-script"></a>Het script gebruiken
 
 Er zijn twee opties voor u afhankelijk van de instellingen en voor keuren van uw lokale Power shell-omgeving:
@@ -85,7 +86,7 @@ Het script uitvoeren:
    * **newLBName: [string]: vereist** : dit is de naam voor de Standard Load Balancer die u wilt maken.
 1. Voer het script uit met de juiste para meters. Het kan vijf tot zeven minuten duren voordat de bewerking is voltooid.
 
-    **Voorbeeld**
+    **Hierbij**
 
    ```azurepowershell
    AzureILBUpgrade.ps1 -rgName "test_InternalUpgrade_rg" -oldLBName "LBForInternal" -newlocation "centralus" -newLbName "LBForUpgrade"

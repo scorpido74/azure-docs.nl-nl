@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/14/2019
-ms.openlocfilehash: 75d5203e7c475a44b6a00dbf9286f43114b7b54f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 77fe4b4ffbf7c189a5bf64e662f395fc78e53944
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79480841"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82581503"
 ---
 # <a name="enable-azure-monitor-for-vms-using-azure-powershell-or-resource-manager-templates"></a>Azure Monitor voor VM's inschakelen met behulp van Azure PowerShell-of Resource Manager-sjablonen
 
@@ -170,7 +170,7 @@ provisioningState       : Succeeded
 
 ## <a name="enable-with-powershell"></a>Inschakelen met Power shell
 
-Als u Azure Monitor voor VM's wilt inschakelen voor meerdere Vm's of virtuele-machine schaal sets, gebruikt u het Power shell-script [install-VMInsights. ps1](https://www.powershellgallery.com/packages/Install-VMInsights/1.0). Deze is beschikbaar in de galerie met Azure PowerShell. Dit script doorloopt over:
+Als u Azure Monitor voor VM's wilt inschakelen voor meerdere Vm's of virtuele-machine schaal sets, gebruikt u het Power shell-script [install-VMInsights. ps1](https://www.powershellgallery.com/packages/Install-VMInsights). Deze is beschikbaar in de galerie met Azure PowerShell. Dit script doorloopt over:
 
 - Alle virtuele machines en virtuele-machine schaal sets in uw abonnement.
 - Het bereik van de resource groep die is opgegeven door *ResourceGroup*.

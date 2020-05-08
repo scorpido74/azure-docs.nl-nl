@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: peterlu
 author: peterclu
 ms.date: 11/12/2019
-ms.openlocfilehash: 78a6e7fa8d030185f537136a3a2124d8bc59d808
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 945a27da874071d22952207b7be5add79ce7e2ec
+ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79037632"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82872620"
 ---
 # <a name="what-is-azure-machine-learning-designer-preview"></a>Wat is een Azure Machine Learning-ontwerpfunctie (preview)? 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
@@ -82,7 +82,7 @@ Een module kan een reeks parameters hebben waarmee u de interne algoritmen van d
 
 ![Eigenschappen van module](./media/concept-designer/properties.png)
 
-Zie voor meer informatie over de beschik bare bibliotheek met machine learning algoritmen [overzicht van algoritme & module](algorithm-module-reference/module-reference.md)
+Zie voor meer informatie over de beschik bare bibliotheek met machine learning algoritmen [overzicht van algoritme & module](algorithm-module-reference/module-reference.md). Zie het overzicht van [Azure machine learning Algorithm Cheat](algorithm-cheat-sheet.md)voor meer informatie over het kiezen van een algoritme.
 
 ## <a name="compute-resources"></a><a name="compute"></a>Reken resources
 
@@ -91,9 +91,10 @@ Gebruik reken resources van uw werk ruimte om uw pijp lijn uit te voeren en uw g
 | Rekendoel | Training | Implementatie |
 | ---- |:----:|:----:|
 | Azure Machine Learning compute | ✓ | |
+| Reken instantie Azure Machine Learning | ✓ | |
 | Azure Kubernetes Service | | ✓ |
 
-Reken doelen zijn gekoppeld aan uw [Azure machine learning-werk ruimte](concept-workspace.md). U beheert uw reken doelen in uw werk ruimte in [Azure machine learning Studio (klassiek)](https://ml.azure.com).
+Reken doelen zijn gekoppeld aan uw [Azure machine learning-werk ruimte](concept-workspace.md). U beheert uw reken doelen in uw werk ruimte in de [Azure machine learning Studio](https://ml.azure.com).
 
 ## <a name="deploy"></a>Implementeren
 

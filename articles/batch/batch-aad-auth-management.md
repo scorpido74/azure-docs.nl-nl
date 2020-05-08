@@ -3,12 +3,13 @@ title: Azure Active Directory gebruiken om oplossingen voor Batch Management te 
 description: Verken het gebruik van Azure Active Directory om te verifiëren vanuit toepassingen die gebruikmaken van de Batch Management .NET-bibliotheek.
 ms.topic: article
 ms.date: 04/27/2017
-ms.openlocfilehash: 0aa95aa440303d1577b7646c1a9f1bc5b6e69ac2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: has-adal-ref
+ms.openlocfilehash: 7ca32e5f9ff32d635d7f662c74dea5534e3dd072
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82114782"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82608452"
 ---
 # <a name="authenticate-batch-management-solutions-with-active-directory"></a>Oplossingen voor Batch Management verifiëren met Active Directory
 
@@ -28,7 +29,7 @@ Als u de voorbeeld toepassing AccountManagement wilt registreren, volgt u de sta
 
 ![](./media/batch-aad-auth-management/app-registration-management-plane.png)
 
-Zodra u het registratie proces hebt voltooid, ziet u de toepassings-ID en de object-ID (Service-Principal) die voor uw toepassing wordt vermeld.  
+Zodra u het registratie proces hebt voltooid, ziet u de toepassings-ID en de object-ID (Service-Principal) die voor uw toepassing wordt vermeld.
 
 ![](./media/batch-aad-auth-management/app-registration-client-id.png)
 
@@ -44,7 +45,7 @@ Volg deze stappen in Azure Portal:
     ![Zoek naar de naam van uw toepassing](./media/batch-aad-auth-management/search-app-registration.png)
 
 3. De Blade **instellingen** weer geven. Selecteer in de sectie **API-toegang** de optie **vereiste machtigingen**.
-4. Klik op **toevoegen** om een nieuwe vereiste machtiging toe te voegen. 
+4. Klik op **toevoegen** om een nieuwe vereiste machtiging toe te voegen.
 5. Voer in stap 1 **Windows Azure Service Management-API**in, selecteer de API in de lijst met resultaten en klik op de knop **selecteren** .
 6. Schakel in stap 2 het selectie vakje naast **toegang tot het klassieke Azure-implementatie model in als organisatie gebruikers**en klik op de knop **selecteren** .
 7. Klik op de knop **gereed** .
@@ -70,11 +71,11 @@ De voorbeeld toepassing AccountManagement definieert constanten voor deze eind p
 ```csharp
 // Azure Active Directory "common" endpoint.
 private const string AuthorityUri = "https://login.microsoftonline.com/common";
-// Azure Resource Manager endpoint 
+// Azure Resource Manager endpoint
 private const string ResourceUri = "https://management.core.windows.net/";
 ```
 
-## <a name="reference-your-application-id"></a>Referentie voor uw toepassings-ID 
+## <a name="reference-your-application-id"></a>Referentie voor uw toepassings-ID
 
 Uw client toepassing maakt gebruik van de toepassings-ID (ook wel de client-ID genoemd) om toegang te krijgen tot Azure AD tijdens runtime. Wanneer u uw toepassing hebt geregistreerd in de Azure Portal, werkt u uw code bij om de toepassings-ID van Azure AD te gebruiken voor uw geregistreerde toepassing. Kopieer in de voorbeeld toepassing AccountManagement uw toepassings-ID van de Azure Portal naar de juiste constante:
 
@@ -96,7 +97,7 @@ private const string RedirectUri = "http://myaccountmanagementsample";
 
 ## <a name="acquire-an-azure-ad-authentication-token"></a>Een Azure AD-verificatie token verkrijgen
 
-Nadat u het AccountManagement-voor beeld in de Azure AD-Tenant hebt geregistreerd en de voorbeeld broncode hebt bijgewerkt met uw waarden, is het voor beeld gereed voor verificatie met behulp van Azure AD. Wanneer u het voor beeld uitvoert, probeert de ADAL een verificatie token te verkrijgen. Tijdens deze stap wordt u gevraagd om uw micro soft-referenties: 
+Nadat u het AccountManagement-voor beeld in de Azure AD-Tenant hebt geregistreerd en de voorbeeld broncode hebt bijgewerkt met uw waarden, is het voor beeld gereed voor verificatie met behulp van Azure AD. Wanneer u het voor beeld uitvoert, probeert de ADAL een verificatie token te verkrijgen. Tijdens deze stap wordt u gevraagd om uw micro soft-referenties:
 
 ```csharp
 // Obtain an access token using the "common" AAD resource. This allows the application
@@ -109,7 +110,7 @@ AuthenticationResult authResult = authContext.AcquireToken(ResourceUri,
                                                         PromptBehavior.Auto);
 ```
 
-Nadat u uw referenties hebt verstrekt, kan de voorbeeld toepassing geverifieerde aanvragen door geven aan de Batch Management-service. 
+Nadat u uw referenties hebt verstrekt, kan de voorbeeld toepassing geverifieerde aanvragen door geven aan de Batch Management-service.
 
 ## <a name="next-steps"></a>Volgende stappen
 
@@ -117,7 +118,7 @@ Zie voor meer informatie over het uitvoeren van de [AccountManagement-voorbeeld 
 
 Zie de [Azure Active Directory-documentatie](https://docs.microsoft.com/azure/active-directory/)voor meer informatie over Azure AD. Gedetailleerde voor beelden waarin wordt getoond hoe u ADAL kunt gebruiken, zijn beschikbaar in de [Azure code samples](https://azure.microsoft.com/resources/samples/?service=active-directory) -bibliotheek.
 
-Zie [batch-service oplossingen verifiëren met Active Directory](batch-aad-auth.md)voor het verifiëren van batch service toepassingen met Azure AD. 
+Zie [batch-service oplossingen verifiëren met Active Directory](batch-aad-auth.md)voor het verifiëren van batch service toepassingen met Azure AD.
 
 
 [aad_about]:../active-directory/fundamentals/active-directory-whatis.md "Wat is Azure Active Directory?"

@@ -1,6 +1,6 @@
 ---
-title: bestand opnemen
-description: bestand opnemen
+title: Include-bestand
+description: Include-bestand
 services: machine-learning
 author: sdgilley
 ms.service: machine-learning
@@ -9,12 +9,12 @@ manager: cgronlund
 ms.custom: include file
 ms.topic: include
 ms.date: 08/23/2019
-ms.openlocfilehash: ba1e0eee5de65364d8e5e762195f7de98384c2a7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9eedc0c3044717360494b222c88d73b3c8999e94
+ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76122577"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82587877"
 ---
 | Rekendoel | Gebruikt voor | GPU-ondersteuning | FPGA-ondersteuning | Beschrijving |
 | ----- | ----- | ----- | ----- | ----- |
@@ -25,7 +25,7 @@ ms.locfileid: "76122577"
 | [Azure Machine Learning-rekenclusters](../articles/machine-learning/how-to-use-parallel-run-step.md) | Evaluatie Batch&nbsp;-deinterferentie | [Ja](../articles/machine-learning/how-to-use-parallel-run-step.md) (machine learning pijp lijn) | &nbsp;  | Batch Score uitvoeren op serverloze reken kracht. Biedt ondersteuning voor virtuele machines met normale en lage prioriteit. |
 | [Azure Functions](../articles/machine-learning/how-to-deploy-functions.md) | Evaluatie Real-time deinterferentie | &nbsp; | &nbsp; | &nbsp; |
 | [Azure IoT Edge](../articles/machine-learning/how-to-deploy-and-where.md#iotedge) | Evaluatie IoT&nbsp;-module |  &nbsp; | &nbsp; | Implementeer en bedient ML modellen op IoT-apparaten. |
-| [Azure Data Box Edge](../articles/databox-online/data-box-edge-overview.md)   | Via IoT Edge |  &nbsp; | Ja | Implementeer en bedient ML modellen op IoT-apparaten. |
+| [Azure Data Box Edge](../articles/databox-online/azure-stack-edge-overview.md)   | Via IoT Edge |  &nbsp; | Ja | Implementeer en bedient ML modellen op IoT-apparaten. |
 
 > [!NOTE]
 > Hoewel reken doelen als lokale, Azure Machine Learning Reken instantie en Azure Machine Learning Reken clusters GPU ondersteunen voor training en experimenten, wordt GPU gebruikt voor het afleiden van __een host als een webservice__ alleen wordt ondersteund door de Azure Kubernetes-service.
