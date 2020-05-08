@@ -6,12 +6,12 @@ ms.date: 04/15/2020
 ms.custom:
 - MVC
 - fasttrack-edit
-ms.openlocfilehash: 3b68531319e83eece11833dba475020060e280b6
-ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.openlocfilehash: 87f746108599928d3e1b4a022abc1b3a3779ef29
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82583314"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82853551"
 ---
 # <a name="migrate-hyper-v-vms-to-azure"></a>Hyper-V-VM's migreren naar Azure 
 
@@ -56,7 +56,7 @@ Voordat u aan deze zelfstudie begint, dient u eerst:
 
 Voeg het Azure Migrate: hulp programma voor server migratie toe.
 
-- Als u de tweede zelf studie hebt gevolgd om [VMware-vm's te beoordelen](/tutorial-assess-hyper-v.md), hebt u al een Azure migrate project ingesteld en kunt u het hulp programma nu toevoegen.
+- Als u de tweede zelf studie hebt gevolgd om [VMware-vm's te beoordelen](tutorial-assess-hyper-v.md), hebt u al een Azure migrate project ingesteld en kunt u het hulp programma nu toevoegen.
 - Als u de tweede zelf studie niet hebt gevolgd[, volgt u deze instructies](how-to-add-tool-first-time.md) om een Azure migrate project in te stellen. U voegt de Azure Migrate: hulp programma voor server migratie toe wanneer u het project maakt.
 
 Als u een project hebt ingesteld, voegt u het hulp programma als volgt toe:

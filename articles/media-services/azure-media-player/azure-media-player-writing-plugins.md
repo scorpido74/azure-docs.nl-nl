@@ -6,12 +6,12 @@ ms.author: inhenkel
 ms.service: media-services
 ms.topic: how-to
 ms.date: 04/20/2020
-ms.openlocfilehash: b7aac80b19a7c30d994f3c14e19047583d5334ac
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7902dfdf81d8e44921a5218d56effc90f433f02d
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81727110"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82857400"
 ---
 # <a name="writing-plugins-for-azure-media-player"></a>Invoeg toepassingen schrijven voor Azure Media Player #
 
@@ -87,7 +87,7 @@ Bekijk voor inspiratie en meer voor beelden over het maken van een invoeg toepas
 
 ### <a name="plugin-gallery"></a>Galerie van invoeg toepassingen ###
 
-De [Galerie met invoeg](http//:aka.ms/ampplugins) toepassingen bevat verschillende invoeg toepassingen die de Community al heeft bijgedragen aan functies zoals tijd regel markeringen, zoomen, analyses en meer. De pagina biedt toegang tot de invoeg toepassingen en instructies over hoe u deze kunt instellen, evenals een demo waarin de invoeg toepassing in actie wordt weer gegeven. Als u een koele invoeg toepassing maakt die u in de galerie wilt opnemen, kunt u deze verzenden zodat we deze kunnen controleren.
+De [Galerie met invoeg](https://aka.ms/ampplugins) toepassingen bevat verschillende invoeg toepassingen die de Community al heeft bijgedragen aan functies zoals tijd regel markeringen, zoomen, analyses en meer. De pagina biedt toegang tot de invoeg toepassingen en instructies over hoe u deze kunt instellen, evenals een demo waarin de invoeg toepassing in actie wordt weer gegeven. Als u een koele invoeg toepassing maakt die u in de galerie wilt opnemen, kunt u deze verzenden zodat we deze kunnen controleren.
 
 ## <a name="next-steps"></a>Volgende stappen ##
 

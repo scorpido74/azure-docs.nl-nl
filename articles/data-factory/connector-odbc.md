@@ -9,14 +9,14 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 01/09/2020
+ms.date: 04/22/2020
 ms.author: jingwang
-ms.openlocfilehash: da5c53f8953960c382070be658add2877fff3f8c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 71b05d8607c174dbe9298a1c02f4927ed2218374
+ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81416901"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82891419"
 ---
 # <a name="copy-data-from-and-to-odbc-data-stores-using-azure-data-factory"></a>Gegevens kopiëren van en naar ODBC-gegevens archieven met behulp van Azure Data Factory
 > [!div class="op_single_selector" title1="Selecteer de versie van Data Factory service die u gebruikt:"]
@@ -35,7 +35,7 @@ Deze ODBC-Connector wordt ondersteund voor de volgende activiteiten:
 
 U kunt gegevens van een ODBC-bron naar een ondersteunde Sink-gegevens opslag kopiëren of vanuit elk ondersteund bron gegevens archief naar een ODBC-Sink kopiëren. Zie de tabel [ondersteunde gegevens archieven](copy-activity-overview.md#supported-data-stores-and-formats) voor een lijst met gegevens archieven die worden ondersteund als bron/sinks door de Kopieer activiteit.
 
-Met name deze ODBC-connector ondersteunt het kopiëren van gegevens van/naar **elk ODBC-compatibel gegevens archief** met behulp van **basis** -of **anonieme** verificatie. Er is een **64-bits ODBC-stuur programma** vereist.
+Met name deze ODBC-connector ondersteunt het kopiëren van gegevens van/naar **elk ODBC-compatibel gegevens archief** met behulp van **basis** -of **anonieme** verificatie. Er is een **64-bits ODBC-stuur programma** vereist. Voor ODBC-Sink ondersteunt ADF ODBC-versie 2,0-standaard.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -122,7 +122,7 @@ Als u gegevens wilt kopiëren van/naar een ODBC-compatibel gegevens archief, wor
 | type | De eigenschap type van de gegevensset moet worden ingesteld op: **OdbcTable** | Ja |
 | tableName | De naam van de tabel in het ODBC-gegevens archief. | Nee voor bron (als "query" in activiteits bron is opgegeven);<br/>Ja voor Sink |
 
-**Voorbeeld**
+**Hierbij**
 
 ```json
 {
@@ -156,7 +156,7 @@ Als u gegevens wilt kopiëren vanuit een ODBC-compatibel gegevens archief, worde
 | type | De eigenschap type van de bron van de Kopieer activiteit moet zijn ingesteld op: **OdbcSource** | Ja |
 | query | Gebruik de aangepaste SQL-query om gegevens te lezen. Bijvoorbeeld: `"SELECT * FROM MyTable"`. | Nee (als ' Tablename ' in gegevensset is opgegeven) |
 
-**Hierbij**
+**Voorbeeld:**
 
 ```json
 "activities":[
@@ -204,7 +204,7 @@ Als u gegevens wilt kopiëren naar een ODBC-compatibel gegevens archief, stelt u
 > [!NOTE]
 > Als het ' writeBatchSize ' niet is ingesteld (automatisch gedetecteerd), detecteert de Kopieer activiteit eerst of het stuur programma batch bewerkingen ondersteunt, en stelt dit in 10000 op 1 als dit niet het geval is. Als u de waarde expliciet instelt op 0, wordt door de Kopieer activiteit de waarde nageleefd en mislukt de runtime als het stuur programma geen batch bewerkingen ondersteunt.
 
-**Hierbij**
+**Voorbeeld:**
 
 ```json
 "activities":[
@@ -236,48 +236,9 @@ Als u gegevens wilt kopiëren naar een ODBC-compatibel gegevens archief, stelt u
 ]
 ```
 
-## <a name="sap-hana-sink"></a>SAP HANA Sink
-
->[!NOTE]
->Als u gegevens wilt kopiëren uit SAP HANA gegevens archief, raadpleegt u de systeem eigen [SAP Hana-connector](connector-sap-hana.md). Als u gegevens wilt kopiëren naar SAP HANA, volgt u deze instructie voor het gebruik van ODBC-Connector. Houd er rekening mee dat de gekoppelde services voor SAP HANA connector en ODBC-Connector met een ander type dan niet opnieuw kunnen worden gebruikt.
->
-
-U kunt gegevens kopiëren naar SAP HANA-data base met behulp van de algemene ODBC-Connector.
-
-Stel een zelf-hostende Integration Runtime in op een computer met toegang tot uw gegevens archief. De Integration Runtime gebruikt het ODBC-stuur programma voor SAP HANA om verbinding te maken met het gegevens archief. Installeer daarom het stuur programma als dit nog niet op dezelfde computer is geïnstalleerd. Zie de sectie [vereisten](#prerequisites) voor meer informatie.
-
-Voordat u de SAP HANA sink in een Data Factory oplossing gebruikt, controleert u of de Integration Runtime verbinding kan maken met het gegevens archief met behulp van instructies in het gedeelte [problemen met de verbinding oplossen](#troubleshoot-connectivity-issues) .
-
-Maak een gekoppelde ODBC-service om een SAP HANA gegevens archief te koppelen aan een Azure-data factory zoals wordt weer gegeven in het volgende voor beeld:
-
-```json
-{
-    "name": "SAPHANAViaODBCLinkedService",
-    "properties": {
-        "type": "Odbc",
-        "typeProperties": {
-            "connectionString": "Driver={HDBODBC};servernode=<HANA server>.clouddatahub-int.net:30015",
-            "authenticationType": "Basic",
-            "userName": "<username>",
-            "password": {
-                "type": "SecureString",
-                "value": "<password>"
-            }
-        },
-        "connectVia": {
-            "referenceName": "<name of Integration Runtime>",
-            "type": "IntegrationRuntimeReference"
-        }
-    }
-}
-```
-
-Lees het artikel van het begin voor een gedetailleerd overzicht van het gebruik van ODBC-gegevens archieven als bron/Sink-gegevens opslag in een Kopieer bewerking.
-
 ## <a name="lookup-activity-properties"></a>Eigenschappen van opzoek activiteit
 
 Controleer de [opzoek activiteit](control-flow-lookup-activity.md)voor meer informatie over de eigenschappen.
-
 
 ## <a name="troubleshoot-connectivity-issues"></a>Verbindingsproblemen oplossen
 

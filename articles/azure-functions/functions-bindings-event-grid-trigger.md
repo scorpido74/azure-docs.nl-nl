@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 02/14/2020
 ms.author: cshoe
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 2027629e1e9e297c97cbf40485ebe7dc2e3e6c0d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4673bcb71fc2f45c3b02f8fe5e463184395e8ef8
+ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79277724"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82891279"
 ---
 # <a name="azure-event-grid-trigger-for-azure-functions"></a>Azure Event Grid trigger voor Azure Functions
 
@@ -21,7 +21,7 @@ Zie het [overzicht](./functions-bindings-event-grid.md)voor meer informatie over
 
 ## <a name="example"></a>Voorbeeld
 
-# <a name="c"></a>[C#](#tab/csharp)
+# <a name="c"></a>[G #](#tab/csharp)
 
 Zie [gebeurtenissen op een HTTP-eind punt ontvangen](../event-grid/receive-events.md)voor een voor beeld van een http-trigger.
 
@@ -269,7 +269,7 @@ Gebruik in de [runtime-bibliotheek van Java functions](/java/api/overview/azure/
 
 ## <a name="attributes-and-annotations"></a>Kenmerken en aantekeningen
 
-# <a name="c"></a>[C#](#tab/csharp)
+# <a name="c"></a>[G #](#tab/csharp)
 
 Gebruik in [C# class libraries](functions-dotnet-class-library.md)het kenmerk [EventGridTrigger](https://github.com/Azure/azure-functions-eventgrid-extension/blob/master/src/EventGridExtension/TriggerBinding/EventGridTriggerAttribute.cs) .
 
@@ -310,12 +310,12 @@ De volgende tabel bevat uitleg over de binding configuratie-eigenschappen die u 
 |function. json-eigenschap |Beschrijving|
 |---------|---------|
 | **voert** | Vereist: moet worden ingesteld op `eventGridTrigger`. |
-| **direction** | Vereist: moet worden ingesteld op `in`. |
+| **draaien** | Vereist: moet worden ingesteld op `in`. |
 | **naam** | Vereist: de naam van de variabele die wordt gebruikt in de functie code voor de para meter waarmee de gebeurtenis gegevens worden ontvangen. |
 
 ## <a name="usage"></a>Gebruik
 
-# <a name="c"></a>[C#](#tab/csharp)
+# <a name="c"></a>[G #](#tab/csharp)
 
 In Azure Functions 1. x kunt u de volgende parameter typen gebruiken voor de Event Grid trigger:
 
@@ -570,4 +570,4 @@ De functie Trigger Event Grid wordt uitgevoerd en logboeken worden weer gegeven 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Een Event Grid gebeurtenis verzenden](./functions-bindings-event-grid-trigger.md)
+* [Een Event Grid gebeurtenis verzenden](./functions-bindings-event-grid-output.md)

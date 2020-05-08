@@ -13,16 +13,16 @@ ms.date: 11/8/2019
 ms.author: marsma
 ms.reviewer: lenalepa, alamaral
 ms.custom: aaddev
-ms.openlocfilehash: 50c88dd1785bd9177219054fed3800ca725a5274
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3a954167dc0698389680a92511621fb6acf4b12b
+ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80154590"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82889982"
 ---
 # <a name="the-new-azure-portal-app-registration-experience"></a>De nieuwe app registratie-ervaring voor Azure Portal
 
-Er zijn veel verbeteringen aangebracht in de nieuwe [app-registraties](https://go.microsoft.com/fwlink/?linkid=2083908) ervaring in de Azure Portal. Als u bekend bent met de apps.dev.microsoft.com-ervaring (Application Registration Portal) voor het registreren of beheren van geconvergeerde toepassingen, krijgt u in deze trainings gids de mogelijkheid om aan de slag te gaan met de nieuwe ervaring.
+Er zijn veel verbeteringen aangebracht in de nieuwe [app-registraties](https://go.microsoft.com/fwlink/?linkid=2083908) ervaring in de Azure Portal. Als u bekend bent met de portal voor toepassings registratie (apps.dev.microsoft.com) voor het registreren of beheren van toepassingen, zoals in de oude ervaring, kunt u met deze hand leiding aan de slag met de nieuwe ervaring.
 
 ## <a name="whats-not-changing"></a>Wat wordt er niet gewijzigd?
 
@@ -37,7 +37,7 @@ Er zijn veel verbeteringen aangebracht in de nieuwe [app-registraties](https://g
 
 ## <a name="key-changes"></a>Sleutel wijzigingen
 
--   In de oude ervaring waren apps standaard geregistreerd als geconvergeerde apps die alle organisatie accounts (multi tenant) ondersteunen, evenals persoonlijke micro soft-accounts. Dit kan niet worden gewijzigd met de oude ervaring, waardoor het lastig is om apps te maken die alleen ondersteuning bieden voor organisatie accounts (multi tenant of één Tenant).
+-   In de oude ervaring waren apps standaard geregistreerd als *geconvergeerde* apps: apps die ondersteuning bieden voor alle organisatie accounts (multi tenant) en persoonlijke micro soft-accounts. Dit kan niet worden gewijzigd met de oude ervaring, waardoor het lastig is om apps te maken die alleen ondersteuning bieden voor organisatie accounts (multi tenant of één Tenant).
     Met de nieuwe ervaring kunt u apps registreren die al deze opties ondersteunen. Meer [informatie over app-typen](active-directory-v2-registration-portal.md).
 
 -   Als uw persoonlijke Microsoft-account zich ook in een Azure AD-Tenant bevindt, ziet u in de nieuwe ervaring drie tabbladen: alle toepassingen in de Tenant, toepassingen in eigendom in de Tenant en toepassingen uit uw persoonlijke account. Als u denkt dat apps die zijn geregistreerd bij uw persoonlijke Microsoft-account ontbreken, controleert u het tabblad **toepassingen op uw persoonlijke account** .
@@ -52,28 +52,23 @@ Er zijn veel verbeteringen aangebracht in de nieuwe [app-registraties](https://g
 
 ## <a name="new-app-registration"></a>Nieuwe app-registratie
 
-In de oude ervaring moest u een geconvergeerde app registreren om een naam op te geven. De apps die zijn gemaakt, zijn geregistreerd als geconvergeerde apps die alle organisatorische mappen (multi tenant) ondersteunen, evenals persoonlijke micro soft-accounts.  Dit kan niet worden gewijzigd met de oude ervaring, waardoor het lastig is om apps te maken die alleen ondersteuning bieden voor organisatie accounts (multi tenant of één Tenant). [Meer informatie over ondersteunde account typen](v2-supported-account-types.md)
+In de oude ervaring kunt u een app alleen registreren als u alleen een naam hebt opgegeven. De apps die zijn gemaakt, zijn geregistreerd als *geconvergeerde* apps. apps ondersteunen alle organisatorische directory's (multi tenant) en persoonlijke micro soft-accounts.  Dit kan niet worden gewijzigd via de oude ervaring, waardoor het moeilijk is om apps te maken die alleen ondersteuning bieden voor organisatie accounts (een enkele of meerdere tenants). [Meer informatie over ondersteunde account typen](v2-supported-account-types.md)
 
 In de nieuwe ervaring moet u een naam opgeven voor de app en de ondersteunde account typen kiezen. U kunt desgewenst een omleidings-URI opgeven.
 Als u een omleidings-URI opgeeft, moet u opgeven of deze Web/public (systeem eigen/mobiel en bureau blad) is. Zie [deze Snelstartgids](quickstart-register-app.md)voor meer informatie over het registreren van een app met behulp van de nieuwe app-registraties.
 
 ## <a name="app-management-page"></a>Pagina app-beheer
 
-De oude ervaring had één app-beheer pagina voor geconvergeerde apps met de volgende secties: eigenschappen, toepassings geheimen, platforms, eigen aren, Microsoft Graph machtigingen, profiel en geavanceerde opties.
+De oude ervaring had één app-beheer pagina voor apps met de volgende secties: eigenschappen, toepassings geheimen, platforms, eigen aren, Microsoft Graph machtigingen, profiel en geavanceerde opties.
 
-De nieuwe ervaring in het Azure Portal vertegenwoordigt deze functies in afzonderlijke pagina's. Hier kunt u de equivalente functionaliteit vinden:
+De nieuwe ervaring in de Azure Portal biedt deze functies op afzonderlijke pagina's. Hier kunt u de equivalente functionaliteit vinden:
 
--   Eigenschappen: naam en toepassings-ID bevindt zich op de pagina overzicht.
-
--   Toepassings geheimen bevindt zich op de pagina certificaten & geheimen
-
--   De configuratie van platforms bevindt zich op de verificatie pagina
-
--   Microsoft Graph machtigingen vindt u op de pagina API-machtigingen samen met andere machtigingen
-
--   Profiel is op huisstijl pagina
-
--   Geavanceerde optie: ondersteuning voor Live SDK vindt u op de pagina verificatie.
+- Eigenschappen: naam en toepassings-ID bevindt zich op de pagina overzicht.
+- Toepassings geheimen bevindt zich op de pagina certificaten & geheimen
+- De configuratie van platforms bevindt zich op de verificatie pagina
+- Microsoft Graph machtigingen vindt u op de pagina API-machtigingen samen met andere machtigingen
+- Profiel is op huisstijl pagina
+- Geavanceerde optie: ondersteuning voor Live SDK vindt u op de pagina verificatie.
 
 ## <a name="application-secretscertificates--secrets"></a>Toepassings geheimen/certificaten & geheimen
 
@@ -111,7 +106,7 @@ Er is een nieuwe gebruikers interface voor eigenschappen die voorheen alleen kun
 
 -   Bereiken die zijn gedefinieerd door deze API (oauth2Permissions) en geautoriseerde client toepassingen (preAuthorizedApplications) kunnen worden geconfigureerd via de pagina een API beschikbaar maken. Zie [deze Quick](quickstart-configure-app-expose-web-apis.md)start voor meer informatie over het configureren van een app om een web-API te zijn en machtigingen/bereiken beschikbaar te maken.
 
--   Het Uitgever domein (dat wordt weer gegeven voor gebruikers in de prompt voor de toestemming van de [toepassing\'s](application-consent-experience.md)), vindt u op de pagina huisstijl Blade. Zie voor meer informatie over het configureren van een uitgever domein [deze instructies](howto-configure-publisher-domain.md).
+-   Het uitgevers domein (dat wordt weer gegeven voor gebruikers in de prompt voor toestemming van de [toepassing\'s](application-consent-experience.md)), vindt u op de pagina huis stijl. Zie voor meer informatie over het configureren van een uitgever domein [deze instructies](howto-configure-publisher-domain.md).
 
 ## <a name="limitations"></a>Beperkingen
 
@@ -125,3 +120,7 @@ De nieuwe ervaring heeft de volgende beperkingen:
 
    > [!NOTE]
    > Als u een persoonlijke Microsoft-account gebruiker bent in de Azure AD-Tenant en de Tenant beheerder beperkte toegang heeft tot Azure Portal, wordt de toegang mogelijk geweigerd. Als u echter de snelkoppeling doorloopt door App-registraties op de zoek balk te typen of deze vast te maken, hebt u toegang tot de nieuwe ervaring.
+
+## <a name="next-steps"></a>Volgende stappen
+
+Zie [Quick Start: een toepassing registreren bij het micro soft Identity platform](quickstart-register-app.md)om aan de slag te gaan met de nieuwe app-registratie.

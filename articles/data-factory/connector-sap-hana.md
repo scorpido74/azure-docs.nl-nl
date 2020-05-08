@@ -10,13 +10,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 02/17/2020
-ms.openlocfilehash: 74462b68bea38e4d84219adeedb7c3bb0893bbb4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 04/22/2020
+ms.openlocfilehash: 945ef895304a151ea7e0ef5b94ed0b42757743ad
+ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81417225"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82890619"
 ---
 # <a name="copy-data-from-sap-hana-using-azure-data-factory"></a>Gegevens kopiëren van SAP HANA met behulp van Azure Data Factory
 > [!div class="op_single_selector" title1="Selecteer de versie van Data Factory service die u gebruikt:"]
@@ -46,7 +46,7 @@ Deze SAP HANA-connector ondersteunt met name:
 - Parallelle kopieën van een SAP HANA bron. Zie de sectie [parallelle kopie van SAP Hana](#parallel-copy-from-sap-hana) voor meer informatie.
 
 > [!TIP]
-> Als u gegevens wilt kopiëren **naar** SAP Hana gegevens archief, gebruikt u de algemene ODBC-Connector. Zie [SAP Hana Sink](connector-odbc.md#sap-hana-sink) met details. Houd er rekening mee dat de gekoppelde services voor SAP HANA connector en ODBC-Connector met een ander type dan niet opnieuw kunnen worden gebruikt.
+> Als u gegevens wilt kopiëren **naar** SAP Hana gegevens archief, gebruikt u de algemene ODBC-Connector. Zie [SAP Hana wastafel](#sap-hana-sink) sectie met details. Houd er rekening mee dat de gekoppelde services voor SAP HANA connector en ODBC-Connector met een ander type dan niet opnieuw kunnen worden gebruikt.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -116,7 +116,7 @@ De volgende eigenschappen worden ondersteund voor SAP HANA gekoppelde service:
 
 Als u SAP HANA gekoppelde service met de volgende Payload gebruikt, wordt deze nog steeds ondersteund als-is, terwijl u wordt geadviseerd om het nieuwe item te gebruiken.
 
-**Hierbij**
+**Voorbeeld:**
 
 ```json
 {
@@ -152,7 +152,7 @@ De volgende eigenschappen worden ondersteund voor het kopiëren van gegevens uit
 | schema | De naam van het schema in de SAP HANA-data base. | Nee (als "query" in activiteit bron is opgegeven) |
 | tabel | De naam van de tabel in de SAP HANA-data base. | Nee (als "query" in activiteit bron is opgegeven) |
 
-**Hierbij**
+**Voorbeeld:**
 
 ```json
 {
@@ -194,7 +194,7 @@ Als u gegevens wilt kopiëren uit SAP HANA, worden de volgende eigenschappen ond
 | partitionColumnName | Geef de naam op van de bron kolom die wordt gebruikt voor de partitie voor parallelle kopieën. Als u niets opgeeft, wordt de index of de primaire sleutel van de tabel automatisch gedetecteerd en gebruikt als de partitie kolom.<br>Toep assen wanneer de partitie optie `SapHanaDynamicRange`is. Als u een query gebruikt om de bron gegevens op te halen `?AdfHanaDynamicRangePartitionCondition` , koppelt u de component WHERE. Zie voor beeld in [parallelle kopie van SAP Hana](#parallel-copy-from-sap-hana) sectie. | Ja wanneer de `SapHanaDynamicRange` partitie wordt gebruikt. |
 | packetSize | Hiermee geeft u de grootte van het netwerk pakket (in kilo bytes) op om gegevens te splitsen in meerdere blokken. Als u grote hoeveel heden gegevens moet kopiëren, kan de grootte van het pakket verhogen in de meeste gevallen de Lees snelheid van SAP HANA. Prestatie testen worden aanbevolen bij het aanpassen van de pakket grootte. | Nee.<br>De standaard waarde is 2048 (2 MB). |
 
-**Hierbij**
+**Voorbeeld:**
 
 ```json
 "activities":[
@@ -298,6 +298,34 @@ Bij het kopiëren van gegevens uit SAP HANA worden de volgende toewijzingen gebr
 | VARCHAR            | Tekenreeks                         |
 | Neem          | DateTime                       |
 | VARBINARY          | Byte []                         |
+
+### <a name="sap-hana-sink"></a>SAP HANA Sink
+
+Op dit moment wordt de SAP HANA-connector niet ondersteund als sink, terwijl u de algemene ODBC-Connector met SAP HANA stuur programma kunt gebruiken om gegevens naar SAP HANA te schrijven. 
+
+Volg de [vereisten](#prerequisites) voor het instellen van zelf-hostende Integration runtime en installeer eerst het SAP Hana ODBC-stuur programma. Maak een gekoppelde ODBC-service om verbinding te maken met uw SAP HANA gegevens archief, zoals wordt weer gegeven in het volgende voor beeld. Maak vervolgens een gegevensset en kopieer de Sink-activiteit met het ODBC-type dienovereenkomstig. Meer informatie in het artikel over [ODBC-connectors](connector-odbc.md) .
+
+```json
+{
+    "name": "SAPHANAViaODBCLinkedService",
+    "properties": {
+        "type": "Odbc",
+        "typeProperties": {
+            "connectionString": "Driver={HDBODBC};servernode=<HANA server>.clouddatahub-int.net:30015",
+            "authenticationType": "Basic",
+            "userName": "<username>",
+            "password": {
+                "type": "SecureString",
+                "value": "<password>"
+            }
+        },
+        "connectVia": {
+            "referenceName": "<name of Integration Runtime>",
+            "type": "IntegrationRuntimeReference"
+        }
+    }
+}
+```
 
 ## <a name="lookup-activity-properties"></a>Eigenschappen van opzoek activiteit
 

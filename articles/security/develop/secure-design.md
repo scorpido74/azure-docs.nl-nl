@@ -13,12 +13,12 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: c9e3cfa689f2e528f4d20e796017ae9d91c29fe2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 533f287693ca8aac76a3233674d95f3f49d4ae22
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81461715"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82857172"
 ---
 # <a name="design-secure-applications-on-azure"></a>Veilige toepassingen ontwerpen in azure
 In dit artikel bieden we beveiligings activiteiten en-controles waarmee u rekening moet houden bij het ontwerpen van toepassingen voor de Cloud. Trainings bronnen samen met beveiligings vragen en concepten die u kunt overwegen tijdens de vereisten en ontwerp fasen van micro soft [Security Development Lifecycle (SDL)](https://msdn.microsoft.com/library/windows/desktop/84aed186-1d75-4366-8e61-8d258746bopq.aspx) , worden gedekt. Het doel is om u te helpen bij het definiëren van activiteiten en Azure-Services die u kunt gebruiken om een veiligere toepassing te ontwerpen.
@@ -222,11 +222,11 @@ Moet een software ontwikkelaar domein beheerders rechten hebben? Moet een admini
 Zorg ervoor dat uw toepassing [minimale bevoegdheden](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/security-best-practices/implementing-least-privilege-administrative-models#in-applications) afdwingt in de bijbehorende toegangs patronen.
 
 > [!NOTE]
->  De regels van de minimale bevoegdheid moeten worden toegepast op de software en aan de personen die de software maken. Software ontwikkelaars kunnen een zeer risico op IT-beveiliging zijn als ze te veel toegang krijgen. De gevolgen kunnen ernstig zijn als een ontwikkelaar kwaad aardige intentie heeft of te veel toegang heeft gekregen. We raden aan dat de regels van de minimale bevoegdheid worden toegepast op ontwikkel aars tijdens de ontwikkelings levenscyclus.
+> De regels van de minimale bevoegdheid moeten worden toegepast op de software en aan de personen die de software maken. Software ontwikkelaars kunnen een zeer risico op IT-beveiliging zijn als ze te veel toegang krijgen. De gevolgen kunnen ernstig zijn als een ontwikkelaar kwaad aardige intentie heeft of te veel toegang heeft gekregen. We raden aan dat de regels van de minimale bevoegdheid worden toegepast op ontwikkel aars tijdens de ontwikkelings levenscyclus.
 
 #### <a name="implement-just-in-time-access"></a>Just-in-time-toegang implementeren
 
-Implementeer just *-in-time* -toegang (JIT) om de belichtings tijd van bevoegdheden verder te verlagen. Gebruik [Azure AD privileged Identity Management](../../active-directory/users-groups-roles/directory-admin-roles-secure.md#stage-3-build-visibility-and-take-full-control-of-admin-activity) voor het volgende:
+Implementeer just *-in-time* -toegang (JIT) om de belichtings tijd van bevoegdheden verder te verlagen. Gebruik [Azure AD privileged Identity Management](../../active-directory/users-groups-roles/directory-admin-roles-secure.md#stage-3-take-control-of-admin-activity) voor het volgende:
 
 - Geef gebruikers de machtigingen die ze alleen JIT nodig hebben.
 - Wijs rollen toe voor een verkorte duur met vertrouwen dat de bevoegdheden automatisch worden ingetrokken.
