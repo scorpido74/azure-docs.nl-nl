@@ -3,12 +3,12 @@ title: Zelf studie-een vSphere-cluster implementeren in azure
 description: Meer informatie over het implementeren van een vSphere-cluster in azure met behulp van de Azure VMWare-oplossing (AVS)
 ms.topic: tutorial
 ms.date: 05/04/2020
-ms.openlocfilehash: f6dab0dd56adae8b98137354896412e447931c69
-ms.sourcegitcommit: d9cd51c3a7ac46f256db575c1dfe1303b6460d04
-ms.translationtype: MT
+ms.openlocfilehash: 712be25acf5984a4bcdf95ad70e0ccfa660c06bc
+ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82740141"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82838791"
 ---
 # <a name="tutorial-deploy-an-avs-private-cloud-in-azure"></a>Zelf studie: een privécloud in azure implementeren
 
@@ -28,6 +28,16 @@ In deze zelfstudie leert u het volgende:
 - De juiste beheerders rechten en machtigingen voor het maken van een privécloud.
 - Zorg ervoor dat de juiste netwerken zijn geconfigureerd zoals beschreven in [zelf studie: netwerk controlelijst](tutorial-network-checklist.md).
 
+## <a name="register-the-resource-provider"></a>De resourceprovider registreren
+
+Als u de Azure VMWare-oplossing wilt gebruiken, moet u eerst de resource provider registreren. In het volgende voor beeld wordt de resource provider geregistreerd bij uw abonnement.
+
+```azurecli-interactive
+az provider register -n Microsoft.VMwareVirtustream --subscription <your subscription ID>
+```
+
+Zie [Azure-resource providers en-typen](../azure-resource-manager/management/resource-providers-and-types.md)voor meer manieren om de resource provider te registreren.
+
 ## <a name="sign-in-to-the-azure-portal"></a>Aanmelden bij Azure Portal
 
 Meld u aan bij [Azure Portal](https://portal.azure.com).
@@ -36,9 +46,9 @@ Meld u aan bij [Azure Portal](https://portal.azure.com).
 
 U kunt een privécloud maken met behulp van de [Azure Portal](#azure-portal) of met behulp van de [Azure cli](#azure-cli).
 
-### <a name="azure-portal"></a>Azure Portal
+### <a name="azure-portal"></a>Azure-portal
 
-Selecteer in de Azure Portal **+ een nieuwe resource maken**. In het tekstvak `vmcp` **Marketplace zoeken** en selecteer **VMCP-privécloud** in de lijst. Selecteer **maken** in het venster **VMCP-privécloud**
+Selecteer in de Azure Portal **+ een nieuwe resource maken**. Typ `Azure VMware Solution`in het tekstvak **Marketplace doorzoeken** en selecteer **Azure VMware-oplossing** in de lijst. Selecteer in het venster **Azure VMware** -oplossing **maken**
 
 Voer op het tabblad **basis beginselen** waarden in voor de velden. De volgende tabel bevat een gedetailleerde lijst met eigenschappen.
 
@@ -70,14 +80,6 @@ U kunt ook de Azure CLI gebruiken om een privécloud te maken in Azure. Als u di
 Azure Cloud Shell is een gratis interactieve shell waarmee u de stappen in dit artikel kunt uitvoeren. In deze shell zijn algemene Azure-hulpprogramma's vooraf geïnstalleerd en geconfigureerd voor gebruik met uw account.
 
 Als u Cloud Shell wilt openen, selecteert u **Proberen** in de rechterbovenhoek van een codeblok. U kunt Cloud Shell ook openen in een afzonderlijk browsertabblad door naar https://shell.azure.com/bash te gaan. Selecteer **kopiëren** om de blokken code te kopiëren, plak deze in het Cloud shell en druk op **Enter** om het programma uit te voeren.
-
-#### <a name="register-the-resource-provider"></a>De resourceprovider registreren
-
-Als u de Azure VMWare-oplossing wilt gebruiken, moet u eerst de resource provider registreren. In het volgende voor beeld wordt de resource provider geregistreerd bij uw abonnement.
-
-```azurecli-interactive
-az extension add --name vmware
-```
 
 #### <a name="create-a-resource-group"></a>Een resourcegroep maken
 

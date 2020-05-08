@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-mongo
 ms.topic: conceptual
 ms.date: 01/09/2020
 ms.author: lbosq
-ms.openlocfilehash: 9e867a544de8904274286cb68fc047f3f4b93e0d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 89cd1de3658c16fccdb70567641a68f5c1575507
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82183310"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82791745"
 ---
 # <a name="pre-migration-steps-for-data-migrations-from-mongodb-to-azure-cosmos-dbs-api-for-mongodb"></a>Stappen voorafgaand aan de migratie voor gegevens migraties van MongoDB naar de API van Azure Cosmos DB voor MongoDB
 
@@ -30,7 +30,7 @@ Als u de bovenstaande vereisten voor de migratie al hebt voltooid, kunt u MongoD
 
 Hieronder vindt u specifieke kenmerken over de API van Azure Cosmos DB voor MongoDB:
 
-- **Capaciteits model**: de capaciteit van de data base op Azure Cosmos DB is gebaseerd op een model op basis van door voer. Dit model is gebaseerd op [aanvraag eenheden per seconde](request-units.md). Dit is een eenheid die het aantal database bewerkingen vertegenwoordigt dat per seconde kan worden uitgevoerd voor een verzameling. Deze capaciteit kan worden toegewezen op [Data Base-of verzamelings niveau](set-throughput.md), en kan worden ingericht voor een toewijzings model of met het [model voor automatisch schalen](provision-throughput-autoscale.md).
+- **Capaciteits model**: de capaciteit van de data base op Azure Cosmos DB is gebaseerd op een model op basis van door voer. Dit model is gebaseerd op [aanvraag eenheden per seconde](request-units.md). Dit is een eenheid die het aantal database bewerkingen vertegenwoordigt dat per seconde kan worden uitgevoerd voor een verzameling. Deze capaciteit kan worden toegewezen op [Data Base-of verzamelings niveau](set-throughput.md), en kan worden ingericht voor een toewijzings model, of met de [ingerichte door Voer voor automatisch schalen](provision-throughput-autoscale.md).
 
 - **Aanvraag eenheden**: elke database bewerking heeft een bijbehorende aanvraag eenheden (RUs) in azure Cosmos db. Wanneer dit wordt uitgevoerd, wordt dit afgetrokken van het niveau van de beschik bare aanvraag eenheden van een opgegeven seconde. Als voor een aanvraag meer RUs is vereist dan de momenteel toegewezen RU/s, zijn er twee opties om het probleem op te lossen: Verhoog de hoeveelheid RUs of wacht tot de volgende seconde wordt gestart en voer de bewerking vervolgens opnieuw uit.
 

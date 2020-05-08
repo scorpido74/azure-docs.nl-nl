@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/31/2020
-ms.openlocfilehash: 3d250ef1aba979be04a44acaf31a3d685f162e37
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: df96ceb47bf33b734f2127bade50af18713a97a0
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80283885"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82581365"
 ---
 # <a name="azure-monitor-for-vms-generally-available-ga-frequently-asked-questions"></a>Veelgestelde vragen over Azure Monitor voor VM's algemeen beschikbaar (GA)
 Deze veelgestelde vragen over algemene Beschik baarheid omvatten wijzigingen die zijn aangebracht in Q4 2019 en Q1 2020 van voor bereiding op GA.
@@ -44,7 +44,7 @@ Set-AzureRmOperationalInsightsIntelligencePack -ResourceGroupName <resource-grou
 
 ## <a name="what-should-i-do-about-the-performance-counters-in-my-workspace-if-i-install-the-vminsights-solution"></a>Wat moet ik doen met de prestatie meter items in mijn werk ruimte als ik de VMInsights-oplossing Installeer?
 
-De vorige methode voor het inschakelen van Azure Monitor voor VM's gebruikte prestatie meter items in uw werk ruimte. In de huidige versie worden deze gegevens opgeslagen in een `InsightsMetrics`tabel met de naam. U kunt ervoor kiezen deze prestaties countersin uw werk ruimte uit te scha kelen als u ze niet meer nodig hebt. 
+De vorige methode voor het inschakelen van Azure Monitor voor VM's gebruikte prestatie meter items in uw werk ruimte. In de huidige versie worden deze gegevens opgeslagen in een `InsightsMetrics`tabel met de naam. U kunt ervoor kiezen om deze prestatie meter items in uw werk ruimte uit te scha kelen als u ze niet meer nodig hebt. 
 
 >[!NOTE]
 >Als u waarschuwings regels hebt die naar deze prestatie meter items `Perf` in de tabel verwijzen, moet u deze bijwerken om te verwijzen naar nieuwe `InsightsMetrics` gegevens die zijn opgeslagen in de tabel. Raadpleeg de documentatie voor voorbeeld logboek query's die u kunt gebruiken om deze tabel te raadplegen.

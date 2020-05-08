@@ -3,15 +3,16 @@ title: Azure VM-installatie kopie voorbereiden voor gebruik met Cloud-init
 description: Een bestaande installatie kopie van een Azure-VM voorbereiden voor implementatie met Cloud-init
 author: danis
 ms.service: virtual-machines-linux
+ms.subservice: imaging
 ms.topic: article
 ms.date: 06/24/2019
 ms.author: danis
-ms.openlocfilehash: fef41f4dc90c03e3efbe4c8a75e495c26eec64b8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c41368b311708d5ead36d589cf9c320787e596ec
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80066818"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82792306"
 ---
 # <a name="prepare-an-existing-linux-azure-vm-image-for-use-with-cloud-init"></a>Een bestaande installatie kopie van een virtuele Linux Azure-machine voorbereiden voor gebruik met Cloud-init
 In dit artikel wordt beschreven hoe u een bestaande virtuele machine van Azure maakt en deze bereidt om te worden geïmplementeerd en klaar is om Cloud-init te gebruiken. De resulterende afbeelding kan worden gebruikt om een nieuwe virtuele machine of virtuele-machine schaal sets te implementeren. deze kan vervolgens worden aangepast door Cloud-init tijdens de implementatie.  Deze Cloud-init-scripts worden uitgevoerd bij de eerste keer opstarten zodra de resources zijn ingericht door Azure. Zie [Cloud-init Overview](using-cloud-init.md) (Engelstalig) voor meer informatie over hoe Cloud-init standaard werkt in Azure en de ondersteunde Linux-distributies

@@ -10,12 +10,12 @@ ms.date: 03/13/2020
 author: nabhishek
 ms.author: abnarain
 manager: anandsub
-ms.openlocfilehash: e32530ece3626807b199850a2b4af5461ff51cde
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 901761c8a5dc17cd7f00c3f04153c8e9aa99b648
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81414064"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82858035"
 ---
 # <a name="how-to-create-and-configure-azure-integration-runtime"></a>Azure Integration Runtime maken en configureren
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -59,10 +59,10 @@ Gebruik de volgende stappen om een Azure IR te maken met behulp van Azure Data F
 1. Selecteer op de pagina **Integration runtime Setup** de optie **Azure, zelf-hostend**en selecteer **door gaan**. 
 
 1. Selecteer op de volgende pagina **Azure** om een Azure IR te maken en selecteer vervolgens **door gaan**.
-   ![Een Integration Runtime maken](media/create-azure-integration-runtime/new-azure-ir.png)
+   ![Een Integration Runtime maken](media/create-azure-integration-runtime/new-azure-integration-runtime.png)
 
 1. Voer een naam in voor uw Azure IR en selecteer **maken**.
-   ![Een Azure IR maken](media/create-azure-integration-runtime/create-azure-ir.png)
+   ![Een Azure IR maken](media/create-azure-integration-runtime/create-azure-integration-runtime.png)
 
 1. U ziet een pop-upmelding wanneer het maken is voltooid. Controleer op de pagina **Integration Runtimes** of de ZOJUIST gemaakte IR in de lijst wordt weer geven.
 

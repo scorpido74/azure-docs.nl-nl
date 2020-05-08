@@ -11,12 +11,12 @@ author: jaszymas
 ms.author: jaszymas
 ms.reviewer: vanto
 ms.date: 03/18/2020
-ms.openlocfilehash: d72a1057c359127eb70f0a82fbf2637409535dce
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: fe85fed9268e1a4248ef373d577c89e58c01eba5
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82131165"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82792034"
 ---
 # <a name="azure-sql-transparent-data-encryption-with-customer-managed-key"></a>Azure SQL Transparent Data Encryption met door de klant beheerde sleutel
 
@@ -93,7 +93,7 @@ Audi tors kunnen Azure Monitor gebruiken om de sleutel kluis audit event-logboek
 
 ### <a name="recommendations-when-configuring-akv"></a>Aanbevelingen voor het configureren van Azure
 
-- U kunt in totaal Maxi maal 500 Algemeen of 200 Bedrijfskritiek data bases koppelen aan een sleutel kluis in één abonnement om hoge Beschik baarheid te garanderen wanneer de server toegang heeft tot de TDE-beveiliging in de sleutel kluis. Deze cijfers zijn gebaseerd op de ervaring en gedocumenteerd in de [sleutel kluis-service limieten](https://docs.microsoft.com/azure/key-vault/key-vault-service-limits). Dit is om te voor komen dat u problemen ondervindt na een failover van de server, omdat deze wordt geactiveerd als veel belang rijke bewerkingen voor de kluis als er data bases op die server zijn.
+- U kunt in totaal Maxi maal 500 Algemeen of 200 Bedrijfskritiek data bases koppelen aan een sleutel kluis in één abonnement om hoge Beschik baarheid te garanderen wanneer de server toegang heeft tot de TDE-beveiliging in de sleutel kluis. Deze cijfers zijn gebaseerd op de ervaring en gedocumenteerd in de [sleutel kluis-service limieten](https://docs.microsoft.com/azure/key-vault/general/service-limits). Dit is om te voor komen dat u problemen ondervindt na een failover van de server, omdat deze wordt geactiveerd als veel belang rijke bewerkingen voor de kluis als er data bases op die server zijn.
 
 - Stel een resource vergrendeling in voor de sleutel kluis om te bepalen wie deze kritieke resource kan verwijderen en om onbedoelde of ongeoorloofde verwijdering te voor komen. Meer informatie over [resource vergrendelingen](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-lock-resources).
 
