@@ -5,15 +5,15 @@ services: storage
 author: alkohli
 ms.service: storage
 ms.topic: how-to
-ms.date: 03/12/2020
+ms.date: 05/06/2020
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: d3e4535c05ef077d14ef74310459a84af0f02fd5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 71426d131cdd46b176c387a31e3dc2ca66ae3761
+ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "82176325"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82871158"
 ---
 # <a name="use-customer-managed-keys-in-azure-key-vault-for-importexport-service"></a>Door de klant beheerde sleutels gebruiken in Azure Key Vault voor de import/export-service
 
@@ -90,9 +90,8 @@ Het configureren van door de klant beheerde sleutel voor uw import/export-servic
 
 Op de Blade **versleuteling** ziet u de sleutel kluis en de sleutel die is geselecteerd voor de door de klant beheerde sleutel.
 
-## <a name="disable-keys"></a>Sleutels uitschakelen
-
-U kunt alleen door micro soft beheerde sleutels uitschakelen en verplaatsen naar door de klant beheerde sleutels in elke fase van de import/export-taak. U kunt de door de klant beheerde sleutel echter niet uitschakelen wanneer u deze hebt gemaakt.
+> [!IMPORTANT]
+> U kunt alleen door micro soft beheerde sleutels uitschakelen en verplaatsen naar door de klant beheerde sleutels in elke fase van de import/export-taak. U kunt de door de klant beheerde sleutel echter niet uitschakelen wanneer u deze hebt gemaakt.
 
 ## <a name="troubleshoot-customer-managed-key-errors"></a>Problemen oplossen met door de klant beheerde sleutel fouten
 

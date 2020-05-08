@@ -11,19 +11,19 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: vanto, genemi
 ms.date: 11/14/2019
-ms.openlocfilehash: 7032f9e8f57ea9400bf6a92f89b13fa1866f8fc1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5e7e1f91cd4b647472e1899c3485d038f25b5b24
+ms.sourcegitcommit: d662eda7c8eec2a5e131935d16c80f1cf298cb6b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81414397"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82651808"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-database-servers"></a>Service-eind punten en-regels voor virtuele netwerken gebruiken voor database servers
 
-*Regels voor virtuele netwerken* zijn één firewall beveiligings functie waarmee wordt bepaald of de database server voor uw afzonderlijke data bases en elastische Pools in azure [SQL database](sql-database-technical-overview.md) of voor uw data bases in [SQL Data Warehouse](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md) communicatie accepteert die wordt verzonden vanuit bepaalde subnetten in virtuele netwerken. In dit artikel wordt uitgelegd waarom de regel functie van het virtuele netwerk soms de beste optie is voor het veilig toestaan van communicatie met uw Azure SQL Database en SQL Data Warehouse.
+*Regels voor virtuele netwerken* zijn één firewall beveiligings functie waarmee wordt bepaald of de database server voor uw afzonderlijke data bases en elastische Pools in azure [SQL database](sql-database-technical-overview.md) of voor uw data bases in azure [Synapse Analytics](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md) communicatie accepteert die wordt verzonden vanuit bepaalde subnetten in virtuele netwerken. In dit artikel wordt uitgelegd waarom de regel functie van het virtuele netwerk soms de beste optie is om communicatie met uw Azure SQL Database en Azure Synapse Analytics veilig toe te staan.
 
 > [!IMPORTANT]
-> Dit artikel is van toepassing op Azure SQL Server en op zowel SQL Database-als SQL Data Warehouse-data bases die zijn gemaakt op de Azure SQL-Server. Voor het gemak wordt de term 'SQL Database' gebruikt wanneer er wordt verwezen naar zowel SQL Database als SQL Data Warehouse. Dit artikel is *niet* van toepassing op de implementatie van een **beheerd exemplaar** in Azure SQL database omdat er geen service-eind punt aan is gekoppeld.
+> Dit artikel is van toepassing op Azure SQL Server en op zowel SQL Database-als Azure Synapse Analytics-data bases die zijn gemaakt op de Azure SQL-Server. SQL Database wordt gebruikt om te verwijzen naar zowel SQL Database als Azure Synapse Analytics. Dit artikel is *niet* van toepassing op de implementatie van een **beheerd exemplaar** in Azure SQL database omdat er geen service-eind punt aan is gekoppeld.
 
 Als u een regel voor een virtueel netwerk wilt maken, moet er eerst een [service-eind punt voor het virtuele netwerk][vm-virtual-network-service-endpoints-overview-649d] zijn voor de regel waarnaar moet worden verwezen.
 
@@ -105,11 +105,11 @@ When searching for blogs about ASM, you probably need to use this old and now-fo
 
 ## <a name="impact-of-using-vnet-service-endpoints-with-azure-storage"></a>Gevolgen van het gebruik van VNet-service-eind punten met Azure Storage
 
-Azure Storage heeft dezelfde functie geïmplementeerd waarmee u de connectiviteit met uw Azure Storage-account kunt beperken. Als u ervoor kiest om deze functie te gebruiken met een Azure Storage account dat door Azure SQL Server wordt gebruikt, kunt u problemen ondervinden. Hierna volgt een lijst en bespreking van Azure SQL Database-en Azure SQL Data Warehouse-functies die van invloed zijn op dit onderwerp.
+Azure Storage heeft dezelfde functie geïmplementeerd waarmee u de connectiviteit met uw Azure Storage-account kunt beperken. Als u ervoor kiest om deze functie te gebruiken met een Azure Storage account dat door Azure SQL Server wordt gebruikt, kunt u problemen ondervinden. Hierna volgt een lijst en bespreking van Azure SQL Database-en Azure Synapse Analytics-functies waarop dit van invloed is.
 
-### <a name="azure-sql-data-warehouse-polybase"></a>Azure SQL Data Warehouse poly base
+### <a name="azure-synapse-analytics-polybase"></a>Azure Synapse Analytics poly base
 
-Poly Base wordt vaak gebruikt voor het laden van gegevens in Azure SQL Data Warehouse van Azure Storage-accounts. Als het Azure Storage account waarvan u gegevens wilt laden, alleen toegang heeft tot een set VNet-subnetten, wordt de connectiviteit van poly Base naar het account verbroken. Volg de onderstaande stappen voor het inschakelen van zowel poly base import-als export scenario's met Azure SQL Data Warehouse verbinding maken met Azure Storage die zijn beveiligd met VNet:
+Poly Base wordt vaak gebruikt voor het laden van gegevens in azure Synapse Analytics van Azure Storage-accounts. Als het Azure Storage account waarvan u gegevens wilt laden, alleen toegang heeft tot een set VNet-subnetten, wordt de connectiviteit van poly Base naar het account verbroken. Volg de onderstaande stappen voor het inschakelen van zowel poly base import-als export scenario's met Azure Synapse Analytics waarmee verbinding wordt gemaakt met Azure Storage dat is beveiligd met VNet:
 
 #### <a name="prerequisites"></a>Vereisten
 
@@ -122,7 +122,7 @@ Poly Base wordt vaak gebruikt voor het laden van gegevens in Azure SQL Data Ware
 
 #### <a name="steps"></a>Stappen
 
-1. Registreer in Power shell **uw Azure SQL Server** die als host fungeert voor uw Azure SQL Data Warehouse-exemplaar met Azure Active Directory (Aad):
+1. Registreer in Power shell **uw azure SQL Server** die als host fungeert voor uw Azure Synapse Analytics-exemplaar met Azure Active Directory (Aad):
 
    ```powershell
    Connect-AzAccount
@@ -135,11 +135,11 @@ Poly Base wordt vaak gebruikt voor het laden van gegevens in Azure SQL Data Ware
    > [!NOTE]
    > - Als u een v1-of Blob-opslag account voor algemeen gebruik hebt, moet u **eerst een upgrade uitvoeren naar v2** met behulp van deze [hand leiding](https://docs.microsoft.com/azure/storage/common/storage-account-upgrade).
    > - Raadpleeg deze [hand leiding](https://docs.microsoft.com/azure/storage/data-lake-storage/known-issues)voor bekende problemen met Azure data Lake Storage Gen2.
-
-1. Navigeer naar **Access Control (IAM)** onder uw opslag account en klik op **roltoewijzing toevoegen**. Wijs de RBAC-rol **Storage BLOB data Inzender** toe aan uw Azure-SQL Server die als host fungeert voor uw Azure SQL Data Warehouse die u met Azure Active Directory (Aad) hebt geregistreerd, zoals in stap 1.
+    
+1. Navigeer onder uw opslag account naar **Access Control (IAM)** en selecteer **roltoewijzing toevoegen**. Selecteer de RBAC-rol **Storage BLOB data Inzender** in de vervolg keuzelijst. Voor **toegang toewijzen aan** **gebruiker, groep of Service-Principal van Azure AD**selecteren. Typ bij **selecteren**de server naam van uw azure-SQL Server (logische server van uw Azure Synapse Analytics-Data Warehouse) die u bij Azure Active Directory (Aad) hebt geregistreerd, zoals in stap 1. Alleen de server naam gebruiken niet de volledig gekwalificeerde DNS-naam (**servername** zonder. database.Windows.net)
 
    > [!NOTE]
-   > Alleen leden met de bevoegdheid eigenaar kunnen deze stap uitvoeren. Raadpleeg deze [hand leiding](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles)voor verschillende ingebouwde rollen voor Azure-resources.
+   > Deze stap kan alleen worden uitgevoerd door leden met de bevoegdheid eigenaar van het opslag account. Raadpleeg deze [hand leiding](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles)voor verschillende ingebouwde rollen voor Azure-resources.
   
 1. **Poly base-verbinding met het Azure Storage-account:**
 
@@ -236,7 +236,7 @@ U moet al een subnet hebben dat is gelabeld met de specifieke naam van het Virtu
 
 ## <a name="azure-portal-steps"></a>Azure Portal stappen
 
-1. Meld u aan bij de [Azure-portal][http-azure-portal-link-ref-477t].
+1. Meld u aan bij [Azure Portal][http-azure-portal-link-ref-477t].
 
 2. Zoek en selecteer **SQL-servers**en selecteer vervolgens uw server. Onder **beveiliging**selecteert u **firewalls en virtuele netwerken**.
 

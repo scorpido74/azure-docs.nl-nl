@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 04/21/2020
-ms.openlocfilehash: 47f686f810f62fe03a9b0217677c436f3b91782b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 5/4/2020
+ms.openlocfilehash: cb82b3223d50c66b4d6c176a274d5ccf8d510911
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81767885"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82792102"
 ---
 # <a name="read-replicas-in-azure-database-for-mysql"></a>Leesreplica's in Azure Database for MySQL
 
@@ -56,7 +56,6 @@ Er zijn echter beperkingen om rekening mee te houden:
     
 * Uni-directionele paren: sommige Azure-regio's zijn in slechts één richting gekoppeld. Deze regio's omvatten West-India, Brazilië-zuid en US Gov-Virginia. 
    Dit betekent dat een master-server in West-India een replica kan maken in India-zuid. Een hoofd server in India-zuid kan echter geen replica maken in West-India. Dit komt doordat de secundaire regio van West-India India-zuid is, India-zuid maar de secundaire regio van het westen is niet West-India.
-
 
 ## <a name="create-a-replica"></a>Replica's maken
 
@@ -146,6 +145,8 @@ De volgende server parameters zijn vergrendeld op de Master-en replica servers:
 - [`log_bin_trust_function_creators`](https://dev.mysql.com/doc/refman/5.7/en/replication-options-binary-log.html#sysvar_log_bin_trust_function_creators)
 
 De [`event_scheduler`](https://dev.mysql.com/doc/refman/5.7/en/server-system-variables.html#sysvar_event_scheduler) para meter is vergrendeld op de replica servers. 
+
+Als u een van de bovenstaande para meters op de hoofd server wilt bijwerken, verwijdert u de replica servers, werkt u de parameter waarde op de Master bij en maakt u de replica's opnieuw.
 
 ### <a name="other"></a>Overige
 

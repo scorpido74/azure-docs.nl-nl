@@ -7,14 +7,14 @@ ms.service: sql-database
 ms.subservice: service
 ms.devlang: ''
 ms.topic: conceptual
-ms.date: 04/28/2020
+ms.date: 05/04/2020
 ms.author: sstein
-ms.openlocfilehash: c3dc5b26435f6d876e5eaea943e359055018913b
-ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
-ms.translationtype: MT
+ms.openlocfilehash: aa8d1634c015f338053a4d167db34ef0b5a83505
+ms.sourcegitcommit: c8a0fbfa74ef7d1fd4d5b2f88521c5b619eb25f8
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82201309"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82801685"
 ---
 # <a name="sql-database-release-notes"></a>Opmerkingen bij de release SQL Database
 
@@ -24,7 +24,7 @@ Dit artikel bevat een overzicht van SQL Database functies die momenteel beschikb
 
 ### <a name="single-database"></a>[Eén data base](#tab/single-database)
 
-| Functie | Details |
+| Onderdeel | Details |
 | ---| --- |
 | Nieuwe hardware gegenereerd met de Fsv2-serie en M-serie| Zie [Hardware-generaties](sql-database-service-tiers-vcore.md#hardware-generations)voor meer informatie.|
 | Versneld database herstel met afzonderlijke data bases en elastische Pools | Zie [versneld database herstel](sql-database-accelerated-database-recovery.md)voor meer informatie.|
@@ -43,7 +43,7 @@ Dit artikel bevat een overzicht van SQL Database functies die momenteel beschikb
 
 ### <a name="managed-instance"></a>[Beheerd exemplaar](#tab/managed-instance)
 
-| Functie | Details |
+| Onderdeel | Details |
 | ---| --- |
 | <a href="/azure/sql-database/sql-database-instance-pools">Exemplaargroepen</a> | Een handige en rendabele manier om kleinere SQL-instanties naar de cloud te migreren. |
 | <a href="https://aka.ms/managed-instance-aadlogins">Azure AD server-principals op exemplaar niveau (aanmeldingen)</a> | Aanmeldingen op server niveau maken met behulp van de instructie voor het <a href="https://docs.microsoft.com/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current">maken van een aanmelding vanuit een externe provider</a> . |
@@ -78,30 +78,35 @@ De volgende functies zijn ingeschakeld in het implementatie model voor beheerde 
 
 |Probleem  |Gedetecteerde datum  |Status  |Opgelost op  |
 |---------|---------|---------|---------|
-|[Machtigingen voor de resource groep zijn niet toegepast op een beheerd exemplaar](#permissions-on-resource-group-not-applied-to-managed-instance)|Feb 2020|Heeft tijdelijke oplossing||
-|[Beperking van hand matige failover via de portal voor failover-groepen](#limitation-of-manual-failover-via-portal-for-failover-groups)|Jan 2020|Heeft tijdelijke oplossing||
-|[SQL-Agent rollen hebben expliciete uitvoerings machtigingen nodig voor niet-sysadmin-aanmeldingen](#in-memory-oltp-memory-limits-are-not-applied)|Dec 2019|Heeft tijdelijke oplossing||
+|[De agent reageert niet meer wanneer u bestaande taken wijzigt, uitschakelt of inschakelt](#agent-becomes-unresponsive-upon-modifying-disabling-or-enabling-existing-jobs)|Mei 2020|Automatisch beperkt| |
+|[Machtigingen voor de resource groep zijn niet toegepast op een beheerd exemplaar](#permissions-on-resource-group-not-applied-to-managed-instance)|Feb 2020|Heeft tijdelijke oplossing| |
+|[Beperking van hand matige failover via de portal voor failover-groepen](#limitation-of-manual-failover-via-portal-for-failover-groups)|Jan 2020|Heeft tijdelijke oplossing| |
+|[SQL-Agent rollen hebben expliciete uitvoerings machtigingen nodig voor niet-sysadmin-aanmeldingen](#in-memory-oltp-memory-limits-are-not-applied)|Dec 2019|Heeft tijdelijke oplossing| |
 |[SQL-Agent taken kunnen worden onderbroken door agent proces opnieuw te starten](#sql-agent-jobs-can-be-interrupted-by-agent-process-restart)|Dec 2019|Opgelost|Mrt 2020|
-|[AAD-aanmeldingen en-gebruikers worden niet ondersteund in SSDT](#aad-logins-and-users-are-not-supported-in-ssdt)|Nov 2019|Geen tijdelijke oplossing||
-|[In-Memory OLTP-geheugen limieten worden niet toegepast](#in-memory-oltp-memory-limits-are-not-applied)|Okt 2019|Heeft tijdelijke oplossing||
-|[Verkeerde fout geretourneerd tijdens het verwijderen van een bestand dat niet leeg is](#wrong-error-returned-while-trying-to-remove-a-file-that-is-not-empty)|Okt 2019|Heeft tijdelijke oplossing||
-|[Het wijzigen van de servicelaag en het maken van exemplaar bewerkingen worden geblokkeerd door de huidige Data Base te herstellen](#change-service-tier-and-create-instance-operations-are-blocked-by-ongoing-database-restore)|Sep 2019|Heeft tijdelijke oplossing||
-|[Resource Governor op Bedrijfskritiek servicelaag moet mogelijk opnieuw worden geconfigureerd na een failover](#resource-governor-on-business-critical-service-tier-might-need-to-be-reconfigured-after-failover)|Sep 2019|Heeft tijdelijke oplossing||
-|[Meerdere data base-Service Broker dialoog vensters moeten opnieuw worden geïnitialiseerd na de upgrade van de servicelaag](#cross-database-service-broker-dialogs-must-be-re-initialized-after-service-tier-upgrade)|Aug 2019|Heeft tijdelijke oplossing||
-|[Impersonification van Azure AD-aanmeldings typen wordt niet ondersteund](#impersonification-of-azure-ad-login-types-is-not-supported)|Jul 2019|Geen tijdelijke oplossing||
-|[@queryde para meter wordt niet ondersteund in sp_send_db_mail](#-parameter-not-supported-in-sp_send_db_mail)|Apr 2019|Geen tijdelijke oplossing||
-|[Transactionele replicatie moet opnieuw worden geconfigureerd na geo-failover](#transactional-replication-must-be-reconfigured-after-geo-failover)|Mrt 2019|Geen tijdelijke oplossing||
-|[Er wordt een tijdelijke data base gebruikt tijdens de herstel bewerking](#temporary-database-is-used-during-restore-operation)||Heeft tijdelijke oplossing||
-|[TEMPDB-structuur en-inhoud worden opnieuw gemaakt](#tempdb-structure-and-content-is-re-created)||Geen tijdelijke oplossing||
-|[Opslag ruimte overschrijden met kleine database bestanden](#exceeding-storage-space-with-small-database-files)||Heeft tijdelijke oplossing||
-|[GUID-waarden die worden weer gegeven in plaats van database namen](#guid-values-shown-instead-of-database-names)||Heeft tijdelijke oplossing||
-|[Fouten logboeken zijn niet persistent gemaakt](#error-logs-arent-persisted)||Geen tijdelijke oplossing||
+|[AAD-aanmeldingen en-gebruikers worden niet ondersteund in SSDT](#aad-logins-and-users-are-not-supported-in-ssdt)|Nov 2019|Geen tijdelijke oplossing| |
+|[In-Memory OLTP-geheugen limieten worden niet toegepast](#in-memory-oltp-memory-limits-are-not-applied)|Okt 2019|Heeft tijdelijke oplossing| |
+|[Verkeerde fout geretourneerd tijdens het verwijderen van een bestand dat niet leeg is](#wrong-error-returned-while-trying-to-remove-a-file-that-is-not-empty)|Okt 2019|Heeft tijdelijke oplossing| |
+|[Het wijzigen van de servicelaag en het maken van exemplaar bewerkingen worden geblokkeerd door de huidige Data Base te herstellen](#change-service-tier-and-create-instance-operations-are-blocked-by-ongoing-database-restore)|Sep 2019|Heeft tijdelijke oplossing| |
+|[Resource Governor op Bedrijfskritiek servicelaag moet mogelijk opnieuw worden geconfigureerd na een failover](#resource-governor-on-business-critical-service-tier-might-need-to-be-reconfigured-after-failover)|Sep 2019|Heeft tijdelijke oplossing| |
+|[Meerdere data base-Service Broker dialoog vensters moeten opnieuw worden geïnitialiseerd na de upgrade van de servicelaag](#cross-database-service-broker-dialogs-must-be-re-initialized-after-service-tier-upgrade)|Aug 2019|Heeft tijdelijke oplossing| |
+|[Impersonification van Azure AD-aanmeldings typen wordt niet ondersteund](#impersonification-of-azure-ad-login-types-is-not-supported)|Jul 2019|Geen tijdelijke oplossing| |
+|[@queryde para meter wordt niet ondersteund in sp_send_db_mail](#-parameter-not-supported-in-sp_send_db_mail)|Apr 2019|Geen tijdelijke oplossing| |
+|[Transactionele replicatie moet opnieuw worden geconfigureerd na geo-failover](#transactional-replication-must-be-reconfigured-after-geo-failover)|Mrt 2019|Geen tijdelijke oplossing| |
+|[Er wordt een tijdelijke data base gebruikt tijdens de herstel bewerking](#temporary-database-is-used-during-restore-operation)||Heeft tijdelijke oplossing| |
+|[TEMPDB-structuur en-inhoud worden opnieuw gemaakt](#tempdb-structure-and-content-is-re-created)||Geen tijdelijke oplossing| |
+|[Opslag ruimte overschrijden met kleine database bestanden](#exceeding-storage-space-with-small-database-files)||Heeft tijdelijke oplossing| |
+|[GUID-waarden die worden weer gegeven in plaats van database namen](#guid-values-shown-instead-of-database-names)||Heeft tijdelijke oplossing| |
+|[Fouten logboeken zijn niet persistent gemaakt](#error-logs-arent-persisted)||Geen tijdelijke oplossing| |
 |[Het transactie bereik van twee data bases binnen hetzelfde exemplaar wordt niet ondersteund](#transaction-scope-on-two-databases-within-the-same-instance-isnt-supported)||Heeft tijdelijke oplossing|Mrt 2020|
-|[CLR-modules en gekoppelde servers kunnen soms niet verwijzen naar een lokaal IP-adres](#clr-modules-and-linked-servers-sometimes-cant-reference-a-local-ip-address)||Heeft tijdelijke oplossing||
-|Consistentie van de data base is niet geverifieerd met DBCC CHECKDB na het herstellen van de data base van Azure Blob Storage.||Opgelost|Nov 2019|
-|Het terugzetten van een tijdgebonden data base van Bedrijfskritiek laag naar Algemeen laag mislukt als de bron database in-memory OLTP-objecten bevat.||Opgelost|Okt 2019|
-|Database Mail functie met externe e-mail servers (niet-Azure) via een beveiligde verbinding||Opgelost|Okt 2019|
-|Inge sloten data bases worden niet ondersteund in een beheerd exemplaar||Opgelost|Aug 2019|
+|[CLR-modules en gekoppelde servers kunnen soms niet verwijzen naar een lokaal IP-adres](#clr-modules-and-linked-servers-sometimes-cant-reference-a-local-ip-address)||Heeft tijdelijke oplossing| |
+|Consistentie van de data base is niet geverifieerd met DBCC CHECKDB na het herstellen van de data base van Azure Blob Storage.| |Opgelost|Nov 2019|
+|Het terugzetten van een tijdgebonden data base van Bedrijfskritiek laag naar Algemeen laag mislukt als de bron database in-memory OLTP-objecten bevat.| |Opgelost|Okt 2019|
+|Database Mail functie met externe e-mail servers (niet-Azure) via een beveiligde verbinding| |Opgelost|Okt 2019|
+|Inge sloten data bases worden niet ondersteund in een beheerd exemplaar| |Opgelost|Aug 2019|
+
+### <a name="agent-becomes-unresponsive-upon-modifying-disabling-or-enabling-existing-jobs"></a>De agent reageert niet meer wanneer u bestaande taken wijzigt, uitschakelt of inschakelt
+
+In bepaalde omstandigheden het wijzigen van een bestaande taak, het uitschakelen of inschakelen ervan kan ervoor zorgen dat de agent niet meer reageert. Het probleem wordt automatisch opgelost wanneer de detectie resulteert in het opnieuw opstarten van het agent proces.
 
 ### <a name="permissions-on-resource-group-not-applied-to-managed-instance"></a>Machtigingen voor de resource groep zijn niet toegepast op een beheerd exemplaar
 

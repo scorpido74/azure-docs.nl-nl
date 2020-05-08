@@ -26,10 +26,10 @@ ms.locfileid: "79117135"
 | Webhooks | 2 | 10 | 500 |
 | Geo-replicatie | N.v.t. | N.v.t. | [Geboden][geo-replication] |
 | Inhoud vertrouwen | N.v.t. | N.v.t. | [Geboden][content-trust] |
-| Toegang tot virtueel netwerk | N.v.t. | N.v.t. | [Voorbeeld][vnet] |
-| Integratie van persoonlijke koppelingen | N.v.t. | N.v.t. | [Voorbeeld][plink] |
-| Door klant beheerde sleutels | N.v.t. | N.v.t. | [Voorbeeld][cmk] |
-| Machtigingen voor opslag plaatsen-scoped | N.v.t. | N.v.t. | [Voorbeeld][token]|
+| Toegang tot virtueel netwerk | N.v.t. | N.v.t. | [Preview][vnet] |
+| Integratie van persoonlijke koppelingen | N.v.t. | N.v.t. | [Preview][plink] |
+| Door klant beheerde sleutels | N.v.t. | N.v.t. | [Preview][cmk] |
+| Machtigingen voor opslag plaatsen-scoped | N.v.t. | N.v.t. | [Preview][token]|
 | &bull;Tokens | N.v.t. | N.v.t. | 20.000 |
 | &bull;Scope toewijzingen | N.v.t. | N.v.t. | 20.000 |
 | &bull;Opslag plaatsen per scope toewijzing | N.v.t. | N.v.t. | 500 |

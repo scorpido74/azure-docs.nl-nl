@@ -3,15 +3,15 @@ title: Verbinding maken met virtuele netwerken van Azure met een ISE
 description: Maak een ISE (Integration service Environment) die toegang heeft tot Azure Virtual Networks (VNETs) vanaf Azure Logic Apps
 services: logic-apps
 ms.suite: integration
-ms.reviewer: klam, logicappspm
+ms.reviewer: jonfan, logicappspm
 ms.topic: conceptual
-ms.date: 03/12/2020
-ms.openlocfilehash: fa63380a8e27dcc8f4de414c483f8d8ed2323e7b
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.date: 05/05/2020
+ms.openlocfilehash: 8fab8c51655c860bc63715a5313c18ac72d4b0cd
+ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82234110"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82871614"
 ---
 # <a name="connect-to-azure-virtual-networks-from-azure-logic-apps-by-using-an-integration-service-environment-ise"></a>Verbinding maken met virtuele Azure-netwerken van Azure Logic Apps met behulp van een ISE (Integration service Environment)
 
@@ -80,42 +80,49 @@ Om ervoor te zorgen dat uw ISE toegankelijk is en dat de Logic apps in die ISE k
 
 * Als u een nieuw virtueel Azure-netwerk en subnetten zonder beperkingen hebt gemaakt, hoeft u geen [netwerk beveiligings groepen (nsg's)](../virtual-network/security-overview.md#network-security-groups) in te stellen in uw virtuele netwerk om verkeer tussen subnetten te beheren.
 
-* In een bestaand virtueel netwerk kunt u *optioneel* nsg's instellen door [netwerk verkeer te filteren op subnetten](../virtual-network/tutorial-filter-network-traffic.md). Als u deze route wilt gebruiken of als u al Nsg's gebruikt, moet u ervoor zorgen dat u [de poorten in deze tabel opent](#network-ports-for-ise) op het virtuele netwerk waar u nsg's hebt of nsg's wilt instellen.
+* Voor een bestaand virtueel netwerk kunt u *optioneel* [netwerk beveiligings groepen (nsg's)](../virtual-network/security-overview.md#network-security-groups) instellen om [netwerk verkeer te filteren op subnetten](../virtual-network/tutorial-filter-network-traffic.md). Als u deze route wilt gebruiken of als u al gebruikmaakt van Nsg's, moet u ervoor zorgen dat u [de poorten opent die in deze tabel zijn beschreven](#network-ports-for-ise) voor die nsg's.
 
-  > [!NOTE]
-  > Als u [NSG-beveiligings regels](../virtual-network/security-overview.md#security-rules)gebruikt, moet u *zowel* de TCP-als de UDP-protocollen gebruiken. NSG-beveiligings regels beschrijven de poorten die u moet openen voor de IP-adressen die toegang moeten hebben tot deze poorten. Zorg ervoor dat alle firewalls, routers of andere items die tussen deze eind punten bestaan, deze poorten ook toegankelijk maken voor die IP-adressen.
+  Wanneer u NSG- [beveiligings regels](../virtual-network/security-overview.md#security-rules)instelt, moet u *zowel* de **TCP** -als de **UDP** -protocollen gebruiken. u kunt in plaats daarvan **een wille keurige** optie selecteren, zodat u geen afzonderlijke regels voor elk protocol hoeft te maken. NSG-beveiligings regels beschrijven de poorten die u moet openen voor de IP-adressen die toegang moeten hebben tot deze poorten. Zorg ervoor dat alle firewalls, routers of andere items die tussen deze eind punten bestaan, deze poorten ook toegankelijk maken voor die IP-adressen.
 
 <a name="network-ports-for-ise"></a>
 
 ### <a name="network-ports-used-by-your-ise"></a>Netwerk poorten die worden gebruikt door uw ISE
 
-In deze tabel worden de poorten in uw virtuele Azure-netwerk beschreven die uw ISE gebruikt en waar deze poorten worden gebruikt. Om de complexiteit te verminderen bij het maken van beveiligings regels, vertegenwoordigen de [service Tags](../virtual-network/service-tags-overview.md) in de tabel groepen met IP-adres voorvoegsels voor een specifieke Azure-service.
+In deze tabel worden de poorten beschreven die uw ISE nodig heeft om toegankelijk te zijn en het doel voor die poorten. De tabel gebruikt [service Tags](../virtual-network/service-tags-overview.md) die groepen met IP-adres voorvoegsels vertegenwoordigen voor een specifieke Azure-service om de complexiteit te verminderen bij het instellen van beveiligings regels. Wanneer u dit hebt opgemerkt, verwijzen *interne ISE* en *externe ISE* naar het [toegangs eindpunt dat is geselecteerd tijdens het maken van ISE](connect-virtual-network-vnet-isolated-environment.md#create-environment). Zie [endpoint Access](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#endpoint-access)voor meer informatie.
 
 > [!IMPORTANT]
-> Bron poorten zijn tijdelijk, dus zorg ervoor dat u deze instelt op `*` voor alle regels. Zoals aangegeven, verwijst interne ISE en externe ISE naar het [eind punt dat is geselecteerd bij het maken van ISE](connect-virtual-network-vnet-isolated-environment.md#create-environment). Zie [endpoint Access](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#endpoint-access)voor meer informatie. 
+> Zorg ervoor dat u voor alle regels bron poorten instelt op `*` omdat bron poorten kortstondig zijn.
 
-| Doel | Richting | Doelpoorten | Bron servicetag | Doelservicetag | Opmerkingen |
-|---------|-----------|-------------------|--------------------|-------------------------|-------|
-| Communicatie tussen subnet binnen het virtuele netwerk | Binnenkomende &-uitgaand | * | De adres ruimte voor het virtuele netwerk met de subnetten van uw ISE | De adres ruimte voor het virtuele netwerk met de subnetten van uw ISE | Vereist voor verkeer voor stroom *tussen* de subnetten in het virtuele netwerk. <p><p>**Belang rijk**: Zorg ervoor dat u alle poorten in elk subnet opent voor verkeer tussen de *onderdelen* in elk subnet. |
-| Communicatie met uw logische app | Inkomend | 443 | Interne ISE: <br>VirtualNetwork <p><p>Externe ISE: <br>Internet <br>(Zie de kolom **opmerkingen** ) | VirtualNetwork | In plaats van het label **Internet** te gebruiken, kunt u het bron-IP-adres opgeven voor de computer of service die aanvragen van triggers of webhooks in uw logische app aanroept. <p><p>**Belang rijk**: het sluiten of blok keren van deze poort voor komt http-aanroepen naar Logic apps die aanvraag triggers hebben. |
-| Uitvoerings geschiedenis van de logische app | Inkomend | 443 | Interne ISE: <br>VirtualNetwork <p><p>Externe ISE: <br>Internet <br>(Zie de kolom **opmerkingen** ) | VirtualNetwork | In plaats van het label **Internet** te gebruiken, kunt u het bron-IP-adres voor de computer of service opgeven van waaruit u de uitvoerings geschiedenis van de logische app wilt weer geven. <p><p>**Belang rijk**: Hoewel het sluiten of blok keren van deze poort verhindert dat u de uitvoerings geschiedenis bekijkt, kunt u de invoer en uitvoer voor elke stap in de uitvoerings geschiedenis niet weer geven. |
-| Logic Apps Designer: dynamische eigenschappen | Inkomend | 454 | LogicAppsManagement | VirtualNetwork | Aanvragen zijn afkomstig van de Logic Apps [binnenkomende](../logic-apps/logic-apps-limits-and-config.md#inbound) IP-adressen van het toegangs punt voor die regio. |
-| Connector implementatie | Inkomend | 454 | AzureConnectors | VirtualNetwork | Vereist voor het implementeren en bijwerken van connectors. Als u deze poort sluit of blokkeert, mislukken ISE-implementaties en wordt het bijwerken of oplossen van connectors voor komen. |
-| Netwerk status controle | Inkomend | 454 | LogicApps | VirtualNetwork | Aanvragen zijn afkomstig van het Logic Apps toegangs punt voor zowel [binnenkomende](../logic-apps/logic-apps-limits-and-config.md#inbound) als [uitgaande](../logic-apps/logic-apps-limits-and-config.md#outbound) IP-adressen voor die regio. |
-| Afhankelijkheid van App Service beheer | Inkomend | 454, 455 | AppServiceManagement | VirtualNetwork | |
-| Communicatie van Azure Traffic Manager | Inkomend | Interne ISE: 454 <p><p>Externe ISE: 443 | AzureTrafficManager | VirtualNetwork | |
-| API Management-beheer eindpunt | Inkomend | 3443 | APIManagement | VirtualNetwork | |
-| Implementatie van connector beleid | Inkomend | 3443 | APIManagement | VirtualNetwork | Vereist voor het implementeren en bijwerken van connectors. Als u deze poort sluit of blokkeert, mislukken ISE-implementaties en wordt het bijwerken of oplossen van connectors voor komen. |
-| Communicatie vanuit uw logische app | Uitgaand | 80, 443 | VirtualNetwork | Varieert op basis van bestemming | De eind punten voor de externe service waarmee de logische app moet communiceren. |
-| Azure Active Directory | Uitgaand | 80, 443 | VirtualNetwork | AzureActiveDirectory | |
-| Verbindings beheer | Uitgaand | 443 | VirtualNetwork  | AppService | |
-| Diagnostische logboeken publiceren & metrische gegevens | Uitgaand | 443 | VirtualNetwork  | AzureMonitor | |
-| Azure Storage afhankelijkheid | Uitgaand | 80, 443, 445 | VirtualNetwork | Storage | |
-| Azure SQL-afhankelijkheid | Uitgaand | 1433 | VirtualNetwork | SQL | |
-| Azure Resource Health | Uitgaand | 1886 | VirtualNetwork | AzureMonitor | Vereist voor het publiceren van de status naar Resource Health |
-| Afhankelijkheid van het logboek-naar-Event hub-beleid en-bewakings agent | Uitgaand | 5672 | VirtualNetwork | EventHub | |
-| Toegang tot Azure cache voor redis instanties tussen Rolinstanties | Inkomend <br>Uitgaand | 6379-6383 | VirtualNetwork | VirtualNetwork | Bovendien moet u, om ISE te kunnen gebruiken met Azure cache voor redis, deze [uitgaande en binnenkomende poorten openen die worden beschreven in de Azure-cache voor redis-Veelgestelde vragen](../azure-cache-for-redis/cache-how-to-premium-vnet.md#outbound-port-requirements). |
-||||||
+#### <a name="inbound-security-rules"></a>Inkomende beveiligingsregels
+
+| Doel | Bron servicetag of IP-adressen | Bronpoorten | Servicetag of IP-adressen van doel service | Doelpoorten | Opmerkingen |
+|---------|------------------------------------|--------------|-----------------------------------------|-------------------|-------|
+| Intersubnet-communicatie binnen het virtuele netwerk | Adres ruimte voor het virtuele netwerk met ISE-subnetten | * | Adres ruimte voor het virtuele netwerk met ISE-subnetten | * | Vereist voor verkeer voor stroom *tussen* de subnetten in het virtuele netwerk. <p><p>**Belang rijk**: Zorg ervoor dat u alle poorten in elk subnet opent voor verkeer tussen de *onderdelen* in elk subnet. |
+| Beide: <p>Communicatie met uw logische app <p><p>Geschiedenis van de logische app wordt uitgevoerd| Interne ISE: <br>**VirtualNetwork** <p><p>Externe ISE: **Internet** of Zie **opmerkingen** | * | **VirtualNetwork** | 443 | In plaats van het label **Internet** te gebruiken, kunt u het IP-adres van de bron voor deze items opgeven: <p><p>-De computer of service die aanvraag triggers of webhooks aanroept in uw logische app <p>-De computer of service van waaruit u de geschiedenis van de uitvoering van de logische app wilt openen <p><p>**Belang rijk**: door deze poort te sluiten of te blok keren, voor komt u dat er Logic apps worden aangeroepen die aanvraag triggers of webhooks hebben. U kunt er ook voor zorgen dat u geen toegang hebt tot invoer en uitvoer voor elke stap in de geschiedenis van uitvoeringen. U hebt echter geen toegang tot de geschiedenis van de logische app-uitvoeringen.|
+| Logic Apps Designer: dynamische eigenschappen | **LogicAppsManagement** | * | **VirtualNetwork** | 454 | Aanvragen zijn afkomstig van de [inkomende IP-adressen](../logic-apps/logic-apps-limits-and-config.md#inbound) van het Logic apps toegangs punt voor die regio. |
+| Connector implementatie | **AzureConnectors** | * | **VirtualNetwork** | 454 | Vereist voor het implementeren en bijwerken van connectors. Als u deze poort sluit of blokkeert, mislukken de ISE-implementaties en worden updates en oplossingen voor connectors voor komen. |
+| Netwerk status controle | **LogicApps** | * | **VirtualNetwork** | 454 | Aanvragen zijn afkomstig van de [binnenkomende IP-adressen](../logic-apps/logic-apps-limits-and-config.md#inbound) van het Logic apps-eind punt en de [uitgaande IP-adressen](../logic-apps/logic-apps-limits-and-config.md#outbound) voor die regio. |
+| Afhankelijkheid van App Service beheer | **AppServiceManagement** | * | **VirtualNetwork** | 454, 455 ||
+| Communicatie van Azure Traffic Manager | **AzureTrafficManager** | * | **VirtualNetwork** | Interne ISE: 454 <p><p>Externe ISE: 443 ||
+| Beide: <p>Implementatie van connector beleid <p>API Management-beheer eindpunt | **APIManagement** | * | **VirtualNetwork** | 3443 | Voor de implementatie van connector beleid is toegang tot de poort vereist voor het implementeren en bijwerken van connectors. Als u deze poort sluit of blokkeert, mislukken de ISE-implementaties en worden updates en oplossingen voor connectors voor komen. |
+| Toegang tot Azure cache voor redis instanties tussen Rolinstanties | **VirtualNetwork** | * | **VirtualNetwork** | 6379-6383, plus **opmerkingen** bekijken| Om ISE te kunnen gebruiken met Azure cache voor redis, moet u deze [uitgaande en binnenkomende poorten openen die worden beschreven door de Azure-cache voor redis-Veelgestelde vragen](../azure-cache-for-redis/cache-how-to-premium-vnet.md#outbound-port-requirements). |
+|||||||
+
+#### <a name="outbound-security-rules"></a>Uitgaande beveiligingsregels
+
+| Doel | Bron servicetag of IP-adressen | Bronpoorten | Servicetag of IP-adressen van doel service | Doelpoorten | Opmerkingen |
+|---------|------------------------------------|--------------|-----------------------------------------|-------------------|-------|
+| Intersubnet-communicatie binnen het virtuele netwerk | Adres ruimte voor het virtuele netwerk met ISE-subnetten | * | Adres ruimte voor het virtuele netwerk met ISE-subnetten | * | Vereist voor verkeer voor stroom *tussen* de subnetten in het virtuele netwerk. <p><p>**Belang rijk**: Zorg ervoor dat u alle poorten in elk subnet opent voor verkeer tussen de *onderdelen* in elk subnet. |
+| Communicatie vanuit uw logische app | **VirtualNetwork** | * | Varieert op basis van bestemming | 80, 443 | Bestemming is afhankelijk van de eind punten voor de externe service waarmee de logische app moet communiceren. |
+| Azure Active Directory | **VirtualNetwork** | * | **AzureActiveDirectory** | 80, 443 ||
+| Azure Storage afhankelijkheid | **VirtualNetwork** | * | **Storage** | 80, 443, 445 ||
+| Verbindings beheer | **VirtualNetwork** | * | **AppService** | 443 ||
+| Diagnostische logboeken publiceren & metrische gegevens | **VirtualNetwork** | * | **AzureMonitor** | 443 ||
+| Azure SQL-afhankelijkheid | **VirtualNetwork** | * | **SQL** | 1433 ||
+| Azure Resource Health | **VirtualNetwork** | * | **AzureMonitor** | 1886 | Vereist voor het publiceren van de status naar Resource Health. |
+| Afhankelijkheid van het logboek-naar-Event hub-beleid en-bewakings agent | **VirtualNetwork** | * | **EventHub** | 5672 ||
+| Toegang tot Azure cache voor redis instanties tussen Rolinstanties | **VirtualNetwork** | * | **VirtualNetwork** | 6379-6383, plus **opmerkingen** bekijken| Om ISE te kunnen gebruiken met Azure cache voor redis, moet u deze [uitgaande en binnenkomende poorten openen die worden beschreven door de Azure-cache voor redis-Veelgestelde vragen](../azure-cache-for-redis/cache-how-to-premium-vnet.md#outbound-port-requirements). |
+|||||||
 
 <a name="create-environment"></a>
 
@@ -141,7 +148,7 @@ In deze tabel worden de poorten in uw virtuele Azure-netwerk beschreven die uw I
    | **Locatie** | Ja | <*Azure-Data Center-regio*> | De Azure Data Center-regio waar u uw omgeving kunt implementeren |
    | **SKU** | Ja | **Premium** of **ontwikkelaar (geen sla)** | De ISE-SKU die u wilt maken en gebruiken. Zie [ISE sku's](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level)(Engelstalig) voor verschillen tussen deze sku's. <p><p>**Belang rijk**: deze optie is alleen beschikbaar bij het maken van ISE en kan later niet worden gewijzigd. |
    | **Extra capaciteit** | Premium: <br>Ja <p><p>Developer <br>Niet van toepassing | Premium: <br>0 tot 10 <p><p>Developer <br>Niet van toepassing | Het aantal extra verwerkings eenheden dat voor deze ISE-resource moet worden gebruikt. Zie [ISE-capaciteit toevoegen](../logic-apps/ise-manage-integration-service-environment.md#add-capacity)om capaciteit toe te voegen na het maken. |
-   | **Toegangs eindpunt** | Ja | **Intern** of **extern** | Het type toegangs eindpunten dat moet worden gebruikt voor uw ISE. Deze eind punten bepalen of de aanvraag of webhook triggers op Logic apps in uw ISE kan ontvangen van buiten uw virtuele netwerk. <p><p>Uw selectie is ook van invloed op de manier waarop u invoer en uitvoer kunt weer geven en openen in de geschiedenis van de logische app-uitvoeringen. Zie [ISE endpoint Access](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#endpoint-access)(Engelstalig) voor meer informatie. <p><p>**Belang rijk**: deze optie is alleen beschikbaar bij het maken van ISE en kan later niet worden gewijzigd. |
+   | **Toegangs eindpunt** | Ja | **Intern** of **extern** | Het type toegangs eindpunten dat moet worden gebruikt voor uw ISE. Deze eind punten bepalen of de aanvraag of webhook triggers op Logic apps in uw ISE kan ontvangen van buiten uw virtuele netwerk. <p><p>Uw selectie is ook van invloed op de manier waarop u invoer en uitvoer kunt weer geven en openen in de geschiedenis van de logische app-uitvoeringen. Zie [ISE endpoint Access](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#endpoint-access)(Engelstalig) voor meer informatie. <p><p>**Belang rijk**: u kunt het toegangs eindpunt alleen selecteren tijdens het maken van de ISE en deze optie later niet wijzigen. |
    | **Virtueel netwerk** | Ja | <*Azure-virtueel-netwerk-naam*> | Het virtuele Azure-netwerk waar u uw omgeving wilt injecteren zodat logische apps in die omgeving toegang hebben tot uw virtuele netwerk. Als u nog geen netwerk hebt, [maakt u eerst een virtueel netwerk van Azure](../virtual-network/quick-create-portal.md). <p><p>**Belang rijk**: u kunt deze injectie *alleen* uitvoeren wanneer u uw ISE maakt. |
    | **Subnetten** | Ja | <*subnet-Resource-lijst*> | Een ISE vereist vier *lege* subnetten voor het maken en implementeren van resources in uw omgeving. [Volg de stappen onder deze tabel](#create-subnet)om elk subnet te maken. |
    |||||

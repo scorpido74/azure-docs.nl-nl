@@ -1,22 +1,22 @@
 ---
-title: Persoonlijke aanbiedingen | Azure Marketplace
-description: Persoonlijke aanbiedingen in azure Marketplace voor app-en service-uitgevers.
+title: Privé aanbiedingen in micro soft Commercial Marketplace
+description: Persoonlijke aanbiedingen in micro soft Commercial Marketplace voor app-en service-Publishers.
 author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/19/2020
 ms.author: dsindona
-ms.openlocfilehash: efda9fb66a65f1f2cd40de8bf32a8a3fa99aea7f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e449f65ca65a679aa6c6823938fa561b84e38368
+ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81681433"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82872393"
 ---
-# <a name="private-offers"></a>Persoonlijke aanbiedingen
+# <a name="private-offers-in-the-microsoft-commercial-marketplace"></a>Persoonlijke aanbiedingen in micro soft Commercial Marketplace
 
-Met persoonlijke aanbiedingen op [Microsoft Azure Marketplace](https://azuremarketplace.microsoft.com/) kunnen uitgevers sku's maken die alleen zichtbaar zijn voor doel klanten.
+Met persoonlijke aanbiedingen in [Microsoft Azure Marketplace](https://azuremarketplace.microsoft.com/) kunnen uitgevers plannen maken die alleen zichtbaar zijn voor doel klanten. In dit artikel vindt u meer informatie over de opties en voor delen van privé aanbiedingen.
 
 ## <a name="unlock-enterprise-deals-with-private-offers"></a>Zakelijke deals met persoonlijke aanbiedingen ontgrendelen
 

@@ -6,14 +6,14 @@ ms.reviewer: adwise
 tags: billing
 ms.service: cost-management-billing
 ms.topic: reference
-ms.date: 04/01/2020
+ms.date: 05/04/2020
 ms.author: banders
-ms.openlocfilehash: a9e1d838e7d3322ddf218c5cbec40b652709b5d7
-ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
+ms.openlocfilehash: 633ca5cd16b8e730225900c30c575e74a0956ada
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80586387"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82791677"
 ---
 # <a name="manage-costs-with-azure-budgets"></a>Kosten beheren met Azure Budgets
 
@@ -273,7 +273,7 @@ U gaat verder met de configuratie van **Postman** om een budget te maken door de
 1. Stel de **Waarde** in op de token die aan het einde van het vorige gedeelte is gemaakt met de ARMClient.
 1. Selecteer in Postman het tabblad **Hoofdtekst**.
 1. Selecteer de knop **onbewerkt**.
-1. Plak het onderstaande voorbeeldbudget in het tekstvak. U moet echter de parameters **subscriptionID**, **budgetname** en **actiongroupname** vervangen door uw eigen abonnements-id, een unieke naam voor uw budget en de naam van de actiegroep die u hebt gemaakt in zowel de URL als in de hoofdtekst van de aanvraag:
+1. Plak het onderstaande voorbeeldbudget in het tekstvak. U moet echter de parameters `subscriptionID`, `resourcegroupname` en `actiongroupname` vervangen door uw eigen abonnements-id, een unieke naam voor uw resourcegroep en de naam van de actiegroep die u hebt gemaakt in zowel de URL als in de hoofdtekst van de aanvraag:
 
     ```
         {

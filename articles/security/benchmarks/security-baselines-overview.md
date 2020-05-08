@@ -8,14 +8,14 @@ ms.topic: conceptual
 ms.date: 12/16/2019
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 7c1eb9dceda70cd74237f8a824ef03bb9c2dc7ae
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
-ms.translationtype: HT
+ms.openlocfilehash: 43718e992349ff9bcb3635ab1b949c2b2f2c9ec0
+ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82606837"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82872001"
 ---
-# <a name="security-baselines-for-azure"></a>Beveiligings basislijnen voor Azure
+# <a name="security-baselines-for-azure"></a>Beveiligingsbasislijnen voor Azure
 
 Met beveiligings basislijnen voor Azure kunt u de beveiliging verbeteren door verbeterde hulp middelen, tracering en beveiligings functies te gebruiken. Ze bieden ook een consistente ervaring bij het beveiligen van uw omgeving.
 
@@ -30,3 +30,6 @@ Elke aanbeveling bevat de volgende informatie:
 - **Azure Security Center bewaking**: of het besturings element wordt bewaakt door Azure Security Center, met koppeling naar verwijzing.
 
 Alle aanbevelingen, met inbegrip van aanbevelingen die niet van toepassing zijn op deze specifieke service, zijn opgenomen in de basis lijn om u een volledige beeld te geven van de manier waarop de Azure Security-benchmarks betrekking hebben op elke service. Er kunnen af en toe controles zijn die niet van toepassing zijn op verschillende redenen: bijvoorbeeld IaaS/Compute-besturings elementen (zoals besturings elementen die specifiek zijn voor configuratie beheer van besturings systemen) zijn mogelijk niet van toepassing op PaaS-Services.
+
+
+We hebben uw feedback over de beveiligings basislijnen voor Azure-Services. We raden u aan opmerkingen te geven in het onderstaande feedback gebied. Of als u uw invoer liever persoonlijk wilt delen met het Azure Security Bench Mark-team, kunt u het formulier invullen https://aka.ms/AzSecBenchmark.

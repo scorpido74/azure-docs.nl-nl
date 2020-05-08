@@ -1,39 +1,50 @@
 ---
 title: 'Zelf studie: aangepaste VM-installatie kopieën maken met Azure PowerShell'
-description: In deze zelfstudie leert u hoe u Azure PowerShell gebruikt om een aangepaste installatiekopie van een virtuele machine te maken in Azure
+description: In deze zelf studie leert u hoe u Azure PowerShell kunt gebruiken voor het maken van een installatie kopie van een Windows-aangepaste virtuele machine die is opgeslagen in een galerie met gedeelde installatie kopieën van Azure.
 author: cynthn
 ms.service: virtual-machines-windows
 ms.subservice: imaging
 ms.topic: tutorial
 ms.workload: infrastructure
-ms.date: 11/30/2018
+ms.date: 05/01/2020
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 108ff8d89771217ed2833f2a47aa52ff05aa2f13
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 9061cbbae0b30881fffe1762208216cb8009594a
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82100376"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82791575"
 ---
-# <a name="tutorial-create-a-custom-image-of-an-azure-vm-with-azure-powershell"></a>Zelfstudie: Een aangepaste installatiekopie van een Azure-VM maken met Azure PowerShell
+# <a name="tutorial-create-windows-vm-images-with-azure-powershell"></a>Zelf studie: Windows VM-installatie kopieën maken met Azure PowerShell
 
-Aangepaste installatiekopieën zijn soortgelijk aan Marketplace-installatiekopieën, maar u kunt deze zelf maken. Aangepaste installatiekopieën kunnen worden gebruikt als een bootstrap voor implementaties en zorgen voor consistentie tussen verschillende virtuele machines. In deze zelfstudie maakt u uw eigen aangepaste installatiekopie van een virtuele Azure-machine met behulp van PowerShell. Procedures voor:
+Installatie kopieën kunnen worden gebruikt om implementaties te Boots trappen en consistentie tussen meerdere Vm's te garanderen. In deze zelf studie maakt u uw eigen gespecialiseerde installatie kopie van een virtuele Azure-machine met behulp van Power shell en slaat u deze op in een galerie met gedeelde afbeeldingen. Procedures voor:
 
 > [!div class="checklist"]
-> * Systeem voorbereiden en virtuele machines generaliseren
-> * Een aangepaste installatiekopie maken
-> * Een VM maken van een aangepaste installatiekopie
-> * Alle installatiekopieën in uw abonnement weergeven
-> * Een aangepaste installatiekopie verwijderen
+> * Een gedeelde installatiekopiegalerie maken
+> * Een definitie van een installatie kopie maken
+> * De versie van een installatiekopie maken
+> * Een virtuele machine maken op basis van een installatie kopie 
+> * Een galerie met installatie kopieën delen
 
-In de open bare preview hebben we de [Azure VM Image Builder](https://docs.microsoft.com/azure/virtual-machines/windows/image-builder-overview) -service nodig. Geef een beschrijving van uw aanpassingen in een sjabloon en de stappen voor het maken van de installatie kopie worden verwerkt in dit artikel. [Probeer Azure Image Builder (preview)](https://docs.microsoft.com/azure/virtual-machines/windows/image-builder).
+
 
 ## <a name="before-you-begin"></a>Voordat u begint
 
-In de onderstaande stappen wordt gedetailleerd beschreven hoe u van een bestaande virtuele machine een herbruikbare aangepaste installatiekopie maakt die u kunt gebruiken om nieuwe virtuele machines te maken.
+In de onderstaande stappen wordt beschreven hoe u een bestaande virtuele machine maakt en deze inschakelt in een herbruikbare aangepaste installatie kopie die u kunt gebruiken om nieuwe virtuele machines te maken.
 
-Om het voorbeeld in deze zelfstudie uit te voeren, moet u een bestaande virtuele machine hebben. Zo nodig kan dit [voorbeeld script](../scripts/virtual-machines-windows-powershell-sample-create-vm.md) een voor u maken. Vervang tijdens het volgen van de zelfstudie de namen van de resourcegroep en de virtuele machine waar nodig.
+Om het voorbeeld in deze zelfstudie uit te voeren, moet u een bestaande virtuele machine hebben. Als dat nodig is, kunt u de [Power shell-Snelstartgids](quick-create-powershell.md) bekijken om een virtuele machine te maken die u voor deze zelf studie kunt gebruiken. Wanneer u de zelf studie doorloopt, vervangt u de resource namen waar nodig.
+
+## <a name="overview"></a>Overzicht
+
+Een [Galerie met gedeelde afbeeldingen](shared-image-galleries.md) vereenvoudigt het delen van aangepaste afbeeldingen in uw organisatie. Aangepaste installatiekopieën zijn soortgelijk aan Marketplace-installatiekopieën, maar u kunt deze zelf maken. Aangepaste installatiekopieën kunnen worden gebruikt voor het opstarten van configuraties, zoals het vooraf laden van toepassingen, toepassingsconfiguraties en andere besturingssysteemconfiguraties. 
+
+Met de galerie gedeelde afbeeldingen kunt u uw aangepaste VM-installatie kopieën delen met anderen. Kies welke installatie kopieën u wilt delen, in welke regio's u ze beschikbaar wilt maken en met wie u wilt delen. 
+
+De functie gedeelde installatie kopie galerie heeft meerdere bron typen:
+
+[!INCLUDE [virtual-machines-shared-image-gallery-resources](../../../includes/virtual-machines-shared-image-gallery-resources.md)]
+
 
 ## <a name="launch-azure-cloud-shell"></a>Azure Cloud Shell starten
 
@@ -41,124 +52,173 @@ Azure Cloud Shell is een gratis interactieve shell waarmee u de stappen in dit a
 
 Als u Cloud Shell wilt openen, selecteert u **Proberen** in de rechterbovenhoek van een codeblok. U kunt Cloud Shell ook starten op een afzonderlijk browser tabblad door naar te [https://shell.azure.com/powershell](https://shell.azure.com/powershell)gaan. Klik op **Kopiëren** om de codeblokken te kopiëren, plak deze in Cloud Shell en druk vervolgens op Enter om de code uit te voeren.
 
-## <a name="prepare-vm"></a>VM voorbereiden
+## <a name="get-the-vm"></a>De virtuele machine ophalen
 
-Voor het maken van een installatiekopie van een virtuele machine moet u de bron-VM voorbereiden door deze te generaliseren, de toewijzing ervan ongedaan te maken en de bron-VM vervolgens met Azure als gegeneraliseerd te markeren.
-
-### <a name="generalize-the-windows-vm-using-sysprep"></a>De Windows VM generaliseren met behulp van Sysprep
-
-Sysprep verwijdert onder meer al uw persoonlijke accountinformatie en de machine wordt voorbereid om als een installatiekopie te worden gebruikt. Raadpleeg [Sysprep gebruiken: een inleiding](https://technet.microsoft.com/library/bb457073.aspx) voor meer informatie over Sysprep.
-
-
-1. Maak verbinding met de virtuele machine.
-2. Open het venster met de opdrachtprompt als beheerder. Wijzig de directory in *%windir%\system32\sysprep* en voer dan `sysprep.exe`run uit.
-3. In het dialoogvenster **Hulpprogramma voor systeemvoorbereiding** selecteert u **OOBE (Out-of-Box Experience) van systeem starten** en zorgt u dat het selectievakje **Generaliseren** is ingeschakeld.
-4. In **Opties voor afsluiten** selecteert u **Afsluiten** en klikt u vervolgens op **OK**.
-5. Wanneer Sysprep is voltooid, wordt de virtuele machine afgesloten. **Start de VM niet opnieuw**.
-
-### <a name="deallocate-and-mark-the-vm-as-generalized"></a>De toewijzing van de virtuele machine ongedaan maken en de virtuele machine markeren als gegeneraliseerd
-
-Voor het maken van een installatiekopie moet de toewijzing van de virtuele machine ongedaan worden gemaakt en moet de VM worden gemarkeerd als gegeneraliseerd in Azure.
-
-Hef de toewijzing van de virtuele machine op met behulp van [AzVM](https://docs.microsoft.com/powershell/module/az.compute/stop-azvm).
+U kunt een lijst met virtuele machines die beschikbaar zijn in een resource groep weer geven met behulp van [Get-AzVM](https://docs.microsoft.com/powershell/module/az.compute/get-azvm). Wanneer u de naam van de virtuele machine en de resource groep weet, `Get-AzVM` kunt u opnieuw gebruiken om het VM-object op te halen en dit op te slaan in een variabele, zodat u deze later kunt gebruiken. In dit voor beeld wordt een virtuele machine met de naam *sourceVM* van de resource groep ' myResourceGroup ' opgehaald en toegewezen aan de variabele *$VM*. 
 
 ```azurepowershell-interactive
-Stop-AzVM `
-   -ResourceGroupName myResourceGroup `
-   -Name myVM -Force
+$sourceVM = Get-AzVM `
+   -Name sourceVM `
+   -ResourceGroupName myResourceGroup
 ```
 
-Stel de status van de virtuele machine in op `-Generalized` met [Set-AzVm](https://docs.microsoft.com/powershell/module/az.compute/set-azvm). 
+## <a name="create-a-resource-group"></a>Een resourcegroep maken
+
+Maak een resourcegroep met de opdracht [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup).
+
+Een Azure-resourcegroep is een logische container waarin Azure-resources worden geïmplementeerd en beheerd. In het volgende voor beeld wordt een resource groep met de naam *myGalleryRG* gemaakt in de regio *eastus* :
+
+```azurepowershell-interactive
+$resourceGroup = New-AzResourceGroup `
+   -Name 'myGalleryRG' `
+   -Location 'EastUS'
+```
+
+## <a name="create-an-image-gallery"></a>Een galerie met installatie kopieën maken 
+
+Een galerie met installatie kopieën is de primaire resource die wordt gebruikt voor het inschakelen van het delen van afbeeldingen. Toegestane tekens voor de naam van de galerie bestaan uit hoofd letters of kleine letters, cijfers, punten en punten. De naam van de galerie mag geen streepjes bevatten. Galerie namen moeten uniek zijn binnen uw abonnement. 
+
+Maak een galerie met installatie kopieën met [New-AzGallery](https://docs.microsoft.com/powershell/module/az.compute/new-azgallery). In het volgende voor beeld wordt een galerie gemaakt met de naam *myGallery* in de resource groep *myGalleryRG* .
+
+```azurepowershell-interactive
+$gallery = New-AzGallery `
+   -GalleryName 'myGallery' `
+   -ResourceGroupName $resourceGroup.ResourceGroupName `
+   -Location $resourceGroup.Location `
+   -Description 'Shared Image Gallery for my organization'  
+```
+
+
+## <a name="create-an-image-definition"></a>Een definitie van een installatie kopie maken 
+
+Afbeeldings definities maken een logische groepering voor installatie kopieën. Ze worden gebruikt voor het beheren van informatie over de installatie kopieën die in deze versies worden gemaakt. Definitie namen van afbeeldingen kunnen bestaan uit hoofd letters, kleine letters, cijfers, punten, streepjes en punten. Zie [afbeeldings definities](https://docs.microsoft.com/azure/virtual-machines/windows/shared-image-galleries#image-definitions)voor meer informatie over de waarden die u kunt opgeven voor de definitie van een installatie kopie.
+
+Maak de definitie van de installatie kopie met behulp van [New-AzGalleryImageDefinition](https://docs.microsoft.com/powershell/module/az.compute/new-azgalleryimageversion). In dit voor beeld heeft de galerie-afbeelding de naam *myGalleryImage* en wordt deze gemaakt voor een gespecialiseerde afbeelding. 
+
+```azurepowershell-interactive
+$galleryImage = New-AzGalleryImageDefinition `
+   -GalleryName $gallery.Name `
+   -ResourceGroupName $resourceGroup.ResourceGroupName `
+   -Location $gallery.Location `
+   -Name 'myImageDefinition' `
+   -OsState specialized `
+   -OsType Windows `
+   -Publisher 'myPublisher' `
+   -Offer 'myOffer' `
+   -Sku 'mySKU'
+```
+
+
+## <a name="create-an-image-version"></a>De versie van een installatiekopie maken
+
+Een installatie kopie versie maken op basis van een virtuele machine met [New-AzGalleryImageVersion](https://docs.microsoft.com/powershell/module/az.compute/new-azgalleryimageversion). 
+
+Toegestane tekens voor de versie van de installatie kopie zijn getallen en punten. Getallen moeten binnen het bereik van een 32-bits geheel getal zijn. Indeling: *MajorVersion*. *MinorVersion*. *Patch*.
+
+In dit voor beeld is de versie van de installatie kopie *1.0.0* en wordt deze gerepliceerd naar zowel VS- *Oost* als *Zuid-Centraal VS* -data centers. Wanneer u doel regio's voor replicatie kiest, moet u de *bron* regio als doel voor replicatie toevoegen.
+
+Als u een installatie kopie versie wilt maken op basis `$vm.Id.ToString()` van de `-Source`virtuele machine, gebruikt u voor de.
+
+```azurepowershell-interactive
+   $region1 = @{Name='South Central US';ReplicaCount=1}
+   $region2 = @{Name='East US';ReplicaCount=2}
+   $targetRegions = @($region1,$region2)
+
+New-AzGalleryImageVersion `
+   -GalleryImageDefinitionName $galleryImage.Name`
+   -GalleryImageVersionName '1.0.0' `
+   -GalleryName $gallery.Name `
+   -ResourceGroupName $resourceGroup.ResourceGroupName `
+   -Location $resourceGroup.Location `
+   -TargetRegion $targetRegions  `
+   -Source $vm.Id.ToString() `
+   -PublishingProfileEndOfLifeDate '2020-12-01'
+```
+
+Het kan even duren om de installatie kopie te repliceren naar alle doel regio's.
+
+
+## <a name="create-a-vm"></a>Een virtuele machine maken 
+
+Zodra u een gespecialiseerde afbeelding hebt, kunt u een of meer nieuwe virtuele machines maken. Met de cmdlet [New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) . Als u de installatie kopie wilt gebruiken, gebruikt u '` and set the `set-AzVMSourceImage-id ' in de definitie-id van de installatie kopie ($GalleryImage. id in dit geval) om altijd de nieuwste versie van de installatie kopie te gebruiken. 
+
+Vervang resource namen naar behoefte in dit voor beeld. 
+
+```azurepowershell-interactive
+# Create some variables for the new VM.
+$resourceGroup = "myResourceGroup"
+$location = "South Central US"
+$vmName = "mySpecializedVM"
+
+# Create a resource group
+New-AzResourceGroup -Name $resourceGroup -Location $location
+
+# Create the network resources.
+$subnetConfig = New-AzVirtualNetworkSubnetConfig -Name mySubnet -AddressPrefix 192.168.1.0/24
+$vnet = New-AzVirtualNetwork -ResourceGroupName $resourceGroup -Location $location `
+  -Name MYvNET -AddressPrefix 192.168.0.0/16 -Subnet $subnetConfig
+$pip = New-AzPublicIpAddress -ResourceGroupName $resourceGroup -Location $location `
+  -Name "mypublicdns$(Get-Random)" -AllocationMethod Static -IdleTimeoutInMinutes 4
+$nsgRuleRDP = New-AzNetworkSecurityRuleConfig -Name myNetworkSecurityGroupRuleRDP  -Protocol Tcp `
+  -Direction Inbound -Priority 1000 -SourceAddressPrefix * -SourcePortRange * -DestinationAddressPrefix * `
+  -DestinationPortRange 3389 -Access Allow
+$nsg = New-AzNetworkSecurityGroup -ResourceGroupName $resourceGroup -Location $location `
+  -Name myNetworkSecurityGroup -SecurityRules $nsgRuleRDP
+$nic = New-AzNetworkInterface -Name $vmName -ResourceGroupName $resourceGroup -Location $location `
+  -SubnetId $vnet.Subnets[0].Id -PublicIpAddressId $pip.Id -NetworkSecurityGroupId $nsg.Id
+
+# Create a virtual machine configuration using $imageVersion.Id to specify the image version.
+$vmConfig = New-AzVMConfig -VMName $vmName -VMSize Standard_D1_v2 | `
+Set-AzVMSourceImage -Id $galleryImage.Id | `
+Add-AzVMNetworkInterface -Id $nic.Id
+
+# Create a virtual machine
+New-AzVM -ResourceGroupName $resourceGroup -Location $location -VM $vmConfig
+```
+
+
+## <a name="share-the-gallery"></a>De galerie delen
+
+U wordt aangeraden toegang te delen op het niveau van de galerie met installatie kopieën. Gebruik een e-mail adres en de cmdlet [Get-AzADUser](/powershell/module/az.resources/get-azaduser) om de object-id voor de gebruiker op te halen en gebruik vervolgens [New-AzRoleAssignment](/powershell/module/Az.Resources/New-AzRoleAssignment) om hen toegang tot de galerie te geven. Vervang de voorbeeld-e alinne_montes@contoso.com -mail in dit voor beeld met uw eigen gegevens.
+
+```azurepowershell-interactive
+# Get the object ID for the user
+$user = Get-AzADUser -StartsWith alinne_montes@contoso.com
+# Grant access to the user for our gallery
+New-AzRoleAssignment `
+   -ObjectId $user.Id `
+   -RoleDefinitionName Reader `
+   -ResourceName $gallery.Name `
+   -ResourceType Microsoft.Compute/galleries `
+   -ResourceGroupName $resourceGroup.ResourceGroupName
+```
    
+## <a name="clean-up-resources"></a>Resources opschonen
+
+Wanneer u deze niet meer nodig hebt, kunt u de cmdlet [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) gebruiken om de resource groep en alle gerelateerde resources te verwijderen:
+
 ```azurepowershell-interactive
-Set-AzVM `
-   -ResourceGroupName myResourceGroup `
-   -Name myVM -Generalized
+# Delete the gallery 
+Remove-AzResourceGroup -Name myGalleryRG
+
+# Delete the VM
+Remove-AzResourceGroup -Name myResoureceGroup
 ```
 
+## <a name="azure-image-builder"></a>Azure Image Builder
 
-## <a name="create-the-image"></a>De installatiekopie maken
-
-Maak nu een installatiekopie van de VM met [New-AzImageConfig](https://docs.microsoft.com/powershell/module/az.compute/new-azimageconfig) en [New-AzImage](https://docs.microsoft.com/powershell/module/az.compute/new-azimage). In het volgende voorbeeld wordt een installatiekopie met de naam *myImage* gemaakt van een virtuele machine met de naam *myVM*.
-
-Haal de virtuele machine op. 
-
-```azurepowershell-interactive
-$vm = Get-AzVM `
-   -Name myVM `
-   -ResourceGroupName myResourceGroup
-```
-
-Maak de configuratie van installatiekopie.
-
-```azurepowershell-interactive
-$image = New-AzImageConfig `
-   -Location EastUS `
-   -SourceVirtualMachineId $vm.ID 
-```
-
-Maak de installatiekopie.
-
-```azurepowershell-interactive
-New-AzImage `
-   -Image $image `
-   -ImageName myImage `
-   -ResourceGroupName myResourceGroup
-``` 
-
- 
-## <a name="create-vms-from-the-image"></a>VM's maken van de installatiekopie
-
-Nu u een installatiekopie hebt gemaakt, kunt u een of meer nieuwe VM's van de installatiekopie maken met behulp. Het maken van een VM op basis van een aangepaste installatiekopie is vergelijkbaar met het maken van een VM met behulp van een Marketplace-installatiekopie. Wanneer u een Marketplace-installatiekopie gebruikt, hebt u de informatie over de installatiekopie, de leverancier van de installatiekopie, de aanbieding, de SKU en de versie. Met de vereenvoudigde parameterset voor de cmdlet [New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) hoeft u alleen de naam op te geven van de aangepaste installatiekopie, zolang deze zich in dezelfde resourcegroep bevindt. Als u van plan bent om een virtuele machine in een andere resource groep te maken, geeft u de para meter resource-id van de installatie kopie op.
-
-In dit voorbeeld wordt een VM met de naam *myVMfromImage* gemaakt van een installatiekopie met de naam *myImage* in *myResourceGroup*.
-
-
-```azurepowershell-interactive
-New-AzVm `
-    -ResourceGroupName "myResourceGroup" `
-    -Name "myVMfromImage" `
-    -ImageName "myImage" `
-    -Location "East US" `
-    -VirtualNetworkName "myImageVnet" `
-    -SubnetName "myImageSubnet" `
-    -SecurityGroupName "myImageNSG" `
-    -PublicIpAddressName "myImagePIP" `
-    -OpenPorts 3389
-```
-
-We raden u aan om het aantal gelijktijdige implementaties te beperken tot 20 virtuele machines uit één installatie kopie. Als u grootschalige, gelijktijdige implementaties van meer dan 20 Vm's van dezelfde aangepaste installatie kopie plant, moet u een galerie met [gedeelde afbeeldingen](shared-image-galleries.md) gebruiken met meerdere installatie kopieën van replica's. 
-
-
-## <a name="image-management"></a>Installatiekopiebeheer 
-
-Hier volgen enkele voorbeelden van algemene taken voor beheerde installatiekopieën en hoe u deze kunt uitvoeren met PowerShell.
-
-Geef een lijst weer van alle installatiekopieën gesorteerd op naam.
-
-```azurepowershell-interactive
-$images = Get-AzResource -ResourceType Microsoft.Compute/images 
-$images.name
-```
-
-Een installatiekopie verwijderen. In dit voorbeeld wordt de installatiekopie met de naam *myImage* verwijderd uit *myResourceGroup*.
-
-```azurepowershell-interactive
-Remove-AzImage `
-    -ImageName myImage `
-    -ResourceGroupName myResourceGroup
-```
+Azure biedt ook een service, gebouwd op verpakker, [Azure VM Image Builder](https://docs.microsoft.com/azure/virtual-machines/windows/image-builder-overview). Geef een beschrijving van uw aanpassingen in een sjabloon, waarna het maken van de installatie kopie wordt afgehandeld. 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze zelfstudie hebt u een aangepaste installatiekopie voor een virtuele machine gemaakt. U hebt geleerd hoe u:
+In deze zelf studie hebt u een speciale VM-installatie kopie gemaakt. U hebt geleerd hoe u:
 
 > [!div class="checklist"]
-> * Systeem voorbereiden en virtuele machines generaliseren
-> * Een aangepaste installatiekopie maken
-> * Een VM maken van een aangepaste installatiekopie
-> * Alle installatiekopieën in uw abonnement weergeven
-> * Een aangepaste installatiekopie verwijderen
+> * Een gedeelde installatiekopiegalerie maken
+> * Een definitie van een installatie kopie maken
+> * De versie van een installatiekopie maken
+> * Een virtuele machine maken op basis van een installatie kopie 
+> * Een galerie met installatie kopieën delen
 
 Ga naar de volgende zelf studie voor meer informatie over het maken van Maxi maal beschik bare virtuele machines.
 

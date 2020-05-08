@@ -8,17 +8,17 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: 6b60ccc7a635e4b6071b43d7ff75e182aa96cd08
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 74a4c13197863d0d41e183826cafd64976b44431
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81313630"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82792578"
 ---
 # <a name="azure-disk-encryption-scenarios-on-linux-vms"></a>Azure Disk Encryption-scenario's voor Linux-VM's
 
 
-Azure Disk Encryption voor virtuele Linux-machines (Vm's) maakt gebruik van de DM-cryptografie functie van Linux om een volledige schijf versleuteling te bieden van de besturingssysteem schijf en gegevens schijven. Daarnaast biedt het een versleuteling van de tijdelijke bron schijf wanneer de functie EncryptFormatAll wordt gebruikt.
+Azure Disk Encryption voor virtuele Linux-machines (Vm's) maakt gebruik van de DM-cryptografie functie van Linux om een volledige schijf versleuteling te bieden van de besturingssysteem schijf en gegevens schijven. Daarnaast biedt het een versleuteling van de tijdelijke schijf wanneer de functie EncryptFormatAll wordt gebruikt.
 
 Azure Disk Encryption is [geïntegreerd met Azure Key Vault](disk-encryption-key-vault.md) , zodat u de versleutelings sleutels en geheimen van de schijf kunt beheren. Zie [Azure Disk Encryption voor Linux-vm's](disk-encryption-overview.md)voor een overzicht van de service.
 
@@ -209,9 +209,9 @@ Zie [Azure Disk Encryption voor Linux](https://docs.microsoft.com/azure/virtual-
 
 ## <a name="use-encryptformatall-feature-for-data-disks-on-linux-vms"></a>De functie EncryptFormatAll gebruiken voor gegevens schijven op virtuele Linux-machines
 
-De para meter **EncryptFormatAll** vermindert de tijd voor het versleutelen van Linux-gegevens schijven. Partities die aan bepaalde criteria voldoen, worden opgemaakt (met het huidige bestands systeem) en vervolgens opnieuw gekoppeld aan de locatie van de uitvoering van de opdracht. Als u een gegevens schijf wilt uitsluiten die aan de criteria voldoet, kunt u deze ontkoppelen voordat u de opdracht uitvoert.
+De para meter **EncryptFormatAll** vermindert de tijd voor het versleutelen van Linux-gegevens schijven. Partities die voldoen aan bepaalde criteria worden opgemaakt, samen met de huidige bestands systemen en vervolgens opnieuw gekoppeld aan waar ze waren voordat ze werden uitgevoerd. Als u een gegevens schijf wilt uitsluiten die aan de criteria voldoet, kunt u deze ontkoppelen voordat u de opdracht uitvoert.
 
- Nadat u deze opdracht hebt uitgevoerd, worden alle schijven die eerder zijn gekoppeld, geformatteerd en wordt de versleutelings laag boven op het lege station gestart. Als deze optie is geselecteerd, wordt de tijdelijke bron schijf die aan de VM is gekoppeld, ook versleuteld. Als de tijdelijke schijf opnieuw wordt ingesteld, wordt deze opnieuw ingedeeld en opnieuw versleuteld voor de virtuele machine door de Azure Disk Encryption oplossing bij de volgende mogelijkheid. Zodra de bron schijf is versleuteld, kan de [Microsoft Azure Linux-agent](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-linux) de bron schijf niet beheren en het wissel bestand niet inschakelen, maar u kunt het wissel bestand ook hand matig configureren.
+ Nadat u deze opdracht hebt uitgevoerd, worden alle schijven die eerder zijn gekoppeld, geformatteerd en wordt de versleutelings laag boven op het lege station gestart. Als deze optie is geselecteerd, wordt de tijdelijke schijf die aan de VM is gekoppeld, ook versleuteld. Als de tijdelijke schijf opnieuw wordt ingesteld, wordt deze opnieuw ingedeeld en opnieuw versleuteld voor de virtuele machine door de Azure Disk Encryption oplossing bij de volgende mogelijkheid. Zodra de bron schijf is versleuteld, kan de [Microsoft Azure Linux-agent](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-linux) de bron schijf niet beheren en het wissel bestand niet inschakelen, maar u kunt het wissel bestand ook hand matig configureren.
 
 >[!WARNING]
 > EncryptFormatAll mag niet worden gebruikt wanneer er gegevens op de gegevens volumes van de virtuele machine nodig zijn. U kunt schijven uitsluiten van versleuteling door deze te ontkoppelen. U moet eerst de EncryptFormatAll eerst op een test-VM uitproberen, inzicht krijgen in de para meter van de functie en de implicatie hiervan voordat u deze op de productie-VM probeert. De EncryptFormatAll-optie formatteert de gegevens schijf en alle gegevens erop gaan verloren. Controleer voordat u doorgaat of de schijven die u wilt uitsluiten, goed zijn ontkoppeld. </br></br>
@@ -408,9 +408,10 @@ Azure Disk Encryption werkt niet voor de volgende Linux-scenario's,-functies en-
 - Versleuteling van gedeelde/gedistribueerde bestands systemen zoals (maar niet beperkt tot): DFS, GFS, DRDB en CephFS.
 - Een versleutelde VM verplaatsen naar een ander abonnement.
 - Kernel-crash dump (kdump).
-- Oracle-ACFS (ASM-cluster bestands systeem)
-- Gen2 Vm's (zie: [ondersteuning voor virtuele machines van generatie 2 op Azure](generation-2.md#generation-1-vs-generation-2-capabilities))
-- Vm's uit de Lsv2-serie (zie: [Lsv2-serie](../lsv2-series.md))
+- Oracle-ACFS (ASM-cluster bestands systeem).
+- Gen2 Vm's (zie: [ondersteuning voor virtuele machines van generatie 2 op Azure](generation-2.md#generation-1-vs-generation-2-capabilities)).
+- Vm's uit de Lsv2-serie (zie: [Lsv2-serie](../lsv2-series.md)).
+- Een virtuele machine met ' geneste koppel punten '; dat wil zeggen, meerdere koppel punten in één pad (zoals "/1stmountpoint/data/2stmountpoint").
 
 ## <a name="next-steps"></a>Volgende stappen
 

@@ -11,12 +11,12 @@ ms.date: 03/27/2019
 ms.author: mabasile
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 75020b0dd58a80f989bd03eb92031d904ebf4c82
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: cb37efb796ddf41bd1d19e10d22f934590604274
+ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81313688"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82871712"
 ---
 # <a name="azure-synapse-analytics-business-intelligence-partners"></a>business intelligence partners van Azure Synapse Analytics
 
@@ -38,7 +38,7 @@ Als u uw volledige data warehouse-oplossing wilt maken met behulp van de Synapse
 | ![SiSense](./media/sql-data-warehouse-partner-business-intelligence/sisense_logo.png) |**SiSense**<br>SiSense is een full-stack software voor bedrijfs informatie die wordt geleverd met hulp middelen die een bedrijf nodig heeft om gegevens te analyseren en visualiseren: een hoogwaardige analytische data base, de mogelijkheid om meerdere bronnen, gegevens extractie (ETL) en gegevens visualisatie op Internet toe te voegen. Begin met het analyseren en visualiseren van grote gegevens sets met SiSense BI en Analytics vandaag. |[Product pagina](https://www.sisense.com/product/)<br> |
 | ![Tableau](./media/sql-data-warehouse-partner-business-intelligence/tableau_sparkle_logo.png) |**Tableau**<br>Met de self-service-analyse van tableau kunnen gebruikers hun gegevens bekijken en begrijpen, in veel soorten gegevens van platte bestanden tot data bases. Tableau heeft een native, geoptimaliseerde connector voor Synapse SQL-groep die zowel live data als in-Memory analyse ondersteunt. |[Product pagina](https://www.tableau.com/)<br> [Azure Marketplace](https://azure.microsoft.com/marketplace/partners/tableau/tableau-server/)<br>|
 | ![Targit](./media/sql-data-warehouse-partner-business-intelligence/targit_logo.png) |**TARGIT (besluit Suite)**<br>TARGIT decision Suite biedt BI-en analyse platform dat realtime Dash boards, self-service analyses, gebruikers vriendelijke rapporten, verbluffende mobiele mogelijkheden en eenvoudige technieken voor gegevens detectie biedt in één samenhangende oplossing. TARGIT biedt bedrijven de Voorst te nemen. |[Product pagina](https://www.targit.com/targit-decision-suite/analytics)<br> [Azure Marketplace](https://azure.microsoft.com/marketplace/partners/targit/targit-decision-suite/)<br> |
-| ![ThoughtSpot](./media/sql-data-warehouse-partner-business-intelligence/thoughtspot-logo.png) |**ThoughtSpot**<br>De meest innovatieve ondernemingen van de wereld gebruiken ThoughtSpot om elke persoon binnen hun organisatie in te stellen, van C-Suite Executive tot front-line werk nemer, met de mogelijkheid om snel gegevens te ontdekken. Met ThoughtSpot kunnen zakelijke gebruikers een eenvoudige zoek opdracht typen om direct miljarden rijen gegevens te analyseren en kunst matige intelligentie te gebruiken voor het verkrijgen van vertrouwde, relevante inzichten die naar hen worden gepusht als antwoorden op duizenden vragen die ze mogelijk niet kunnen stellen. ThoughtSpot is eenvoudig genoeg voor elke bedrijfs persoon, die krachtig genoeg is om zelfs de grootste, meest complexe bedrijfs gegevens te verwerken zonder dat de snelheid, beveiliging of governance wordt geoffert. Daarom hebben klanten zoals Walmart, 7-11, BT, Daimler, Exxon, Hulu, Royal Bank of Canada, Bank van de West en de landelijke bouw maatschappij, hun besluitvormings culturen en de onderneming met de naam ThoughtSpot een leider in de 2020 Magic Kwadrant kunnen omzetten. Door inzicht te krijgen in een deel van elke discussie en elke beslissing, is ThoughtSpot de rol van gegevens te vertrouwt bij het maken van een meer feiten gerichte wereld. |[Product pagina](https://www.thoughtspot.com)<br>|
+| ![ThoughtSpot](./media/sql-data-warehouse-partner-business-intelligence/thoughtspot-logo.png) |**ThoughtSpot**<br>Gebruik zoeken om gedetailleerde inzichten te verkrijgen uit miljarden rijen met gegevens, of laat AI inzicht krijgen in vragen die u mogelijk niet wilt vragen. ThoughtSpot helpt businesspeople om in enkele seconden verborgen inzichten in hun bedrijfs gegevens te vinden. Gebruik zoeken om uw gegevens te analyseren en geautomatiseerd inzicht te krijgen wanneer u ze nodig hebt.|[Product pagina](https://www.thoughtspot.com)<br>|
 | ![Volgroeide](./media/sql-data-warehouse-partner-business-intelligence/yellowfin_logo.png) |**Volgroeide**<br>Bij het maken van BARC is een belangrijkste leverancier van Cloud BI voor ad-hoc-rapportage en-dash boards. De BI-enquête. Maak verbinding met de Synapse-SQL-pool en deel prachtige rapporten en dash boards met behulp van bekroonde, samenwerkings functies voor BI en locatie Intelligence. |[Product pagina](https://www.yellowfinbi.com/)<br> [Azure Marketplace](https://azure.microsoft.com/marketplace/partners/yellowfin/yellowfin-for-azure-byol/) |
 
 <!--https://img.youtube.com/vi/0b8sPW2UHrU/0.jpg-->

@@ -1,5 +1,5 @@
 ---
-title: Micro soft Commercial Marketplace-publicatie handleiding per aanbiedings type
+title: Publicatie handleiding per aanbiedings type-micro soft Commercial Marketplace
 description: In dit artikel worden de soorten aanbiedingen beschreven die beschikbaar zijn in de micro soft Commercial Marketplace.
 author: dsindona
 ms.service: marketplace
@@ -7,22 +7,20 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/14/2020
 ms.author: dsindona
-ms.openlocfilehash: 6521f19ea566719fee39c238adda8e3a068e2c25
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 39bc4e3cc653589686be539da127279b3db41be6
+ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81419286"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82872348"
 ---
 # <a name="publishing-guide-by-offer-type"></a>Publicatiehandleiding op type aanbieding
 
-Zodra u [een publicatie optie](https://docs.microsoft.com/azure/marketplace/determine-your-listing-type)hebt geselecteerd, kunt u het aanbiedings type selecteren dat wordt gebruikt om uw aanbieding te presen teren.
+In dit artikel worden de soorten aanbiedingen beschreven die beschikbaar zijn in de commerciële Marketplace. Met het *aanbiedings type* wordt de structuur van de aanbieding gedefinieerd, inclusief de meta gegevens, artefacten en andere inhoud die wordt gebruikt om de aanbieding in Marketplace te presen teren.
 
- Met het *aanbiedings type* wordt de structuur van de aanbieding gedefinieerd, inclusief de meta gegevens, artefacten en andere inhoud die wordt gebruikt om de aanbieding in Marketplace te presen teren.
+Voordat u een aanbieding kunt maken en nadat u [een publicatie optie](https://docs.microsoft.com/azure/marketplace/determine-your-listing-type)hebt gekozen, moet u een aanbiedings type kiezen dat wordt gebruikt om uw aanbieding te presen teren. Het type aanbieding komt overeen met het type van de oplossing, de app of het service aanbod dat u wilt publiceren, evenals de uitlijning van micro soft-producten en-services.
 
-Voordat u een aanbieding kunt maken, moet u een aanbiedings type kiezen. Het type aanbieding komt overeen met het type van de oplossing, de app of het service aanbod dat u wilt publiceren, evenals de uitlijning van micro soft-producten en-services.
-
-Eén type aanbieding kan anders worden geconfigureerd om verschillende publicatie opties, aanroepen naar actie, inrichting of prijzen in te scha kelen. De publicatie optie en configuratie van het aanbiedings type worden ook afgestemd op de beschik baarheid van de aanbieding en technische vereisten.
+Eén type aanbieding kan op verschillende manieren worden geconfigureerd om verschillende publicatie opties, aanroepen naar actie, inrichting of prijzen in te scha kelen. De publicatie optie en configuratie van het aanbiedings type worden ook afgestemd op de beschik baarheid van de aanbieding en technische vereisten.
 
 Controleer de vereisten voor de winkel en het aanbiedings type en de technische publicatie vereisten voordat u uw aanbieding maakt.
 

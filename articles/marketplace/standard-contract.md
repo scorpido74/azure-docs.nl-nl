@@ -1,22 +1,22 @@
 ---
-title: Standard-contract | Azure Marketplace
-description: Standard-contract voor Azure Marketplace en AppSource
+title: Standard-contract voor micro soft Commercial Marketplace
+description: Standard-contract voor Azure Marketplace en AppSource in Partner Center
 author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/14/2020
 ms.author: dsindona
-ms.openlocfilehash: facb500299f7196e0e1387c3a7267a917d13a3a6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3886b29a47edcfb36114cedf8b8edb3799e0c345
+ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81681453"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82871435"
 ---
-# <a name="standard-contract-for-the-microsoft-commercial-marketplace"></a>Standard-contract voor micro soft Commercial Marketplace
+# <a name="standard-contract-for-microsoft-commercial-marketplace"></a>Standard-contract voor micro soft Commercial Marketplace
 
-Micro soft biedt een standaard contract voor de micro soft Commercial Marketplace om trans acties op Marketplace te vergemakkelijken, om het aankoop proces voor klanten te vereenvoudigen en de juridische complexiteit voor software leveranciers te reduceren. In plaats van aangepaste voor waarden te gebruiken, kunnen uitgevers van commerciële markt plaatsen hun software aanbieden onder het Standard-contract, wat klanten alleen hoeven te bevestigen en één keer te accepteren. Het standaard contract vindt u hier: [https://go.microsoft.com/fwlink/?linkid=2041178](https://go.microsoft.com/fwlink/?linkid=2041178).
+Micro soft biedt een standaard contract voor micro soft Commercial Marketplace. Dit helpt het aankoop proces voor klanten te vereenvoudigen, de juridische complexiteit voor software leveranciers te verlagen en trans acties op Marketplace te vergemakkelijken. In plaats van aangepaste voor waarden te gebruiken, kunt u als een commerciële Marketplace-Uitgever kiezen om uw software aan te bieden onder het [Standard-contract](https://go.microsoft.com/fwlink/?linkid=2041178), wat klanten alleen hoeven te bevestigen en één keer te accepteren.
 
 De voor waarden voor een aanbieding worden gedefinieerd bij het maken van de aanbieding in Partner Center. U kunt het standaard contract voor de micro soft Commercial Marketplace selecteren, in plaats van uw eigen aangepaste voor waarden op te geven.
 

@@ -1,14 +1,14 @@
 ---
 title: Voor beeld van CAF Foundation-blauw druk implementeren
 description: Implementeer stappen voor het voor beeld van de CAF Foundation-blauw druk, inclusief blauw drukken-artefact parameter Details.
-ms.date: 08/20/2019
+ms.date: 05/06/2020
 ms.topic: sample
-ms.openlocfilehash: df17f8c3f539e25635ea4718be9d51d5e5e3f708
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: a2d3090e5e9fe265683c077d7056ebf2b108352d
+ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "74545521"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82871636"
 ---
 # <a name="deploy-the-microsoft-cloud-adoption-framework-for-azure-foundation-blueprint-sample"></a>Het Microsoft Cloud-acceptatie raamwerk implementeren voor het voor beeld van Azure Foundation blauw drukken
 
