@@ -13,17 +13,17 @@ ms.workload: identity
 ms.date: 04/22/2020
 ms.author: hahamil
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: ee156c8118a67061d0a000867ee64fe1f3ebd18c
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: f664f5fa4219a8bcc32230b352e90cc2516faceb
+ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82182137"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82890382"
 ---
 # <a name="sign-in-users-and-call-the-microsoft-graph-api-from-a-javascript-single-page-application-spa---msaljs-20"></a>Meld u aan bij gebruikers en roep de Microsoft Graph-API aan vanuit een Java script-toepassing met één pagina (SPA)-MSAL. js 2,0
 
 > [!IMPORTANT]
-> Deze functie is momenteel beschikbaar als preview-product. Previews worden voor u beschikbaar gesteld op voorwaarde dat u akkoord gaat met de [aanvullende gebruiksvoorwaarden](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Sommige aspecten van deze functie kunnen worden gewijzigd vóór algemene Beschik baarheid (GA).
+> Deze functie is momenteel in preview. Previews worden voor u beschikbaar gesteld op voorwaarde dat u akkoord gaat met de [aanvullende gebruiksvoorwaarden](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Sommige aspecten van deze functie kunnen worden gewijzigd vóór algemene Beschik baarheid (GA).
 
 In deze zelf studie wordt gebruikgemaakt van een versie van MSAL. js die gebruikmaakt van de OAuth 2,0-autorisatie code stroom met PKCE. Raadpleeg de [documentatie](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-auth-code-flow)voor meer informatie over dit protocol, evenals de verschillen tussen de impliciete stroom en de autorisatie code stroom. Als u een zelf studie zoekt die gebruikmaakt van de impliciete stroom, raadpleegt u de [zelf studie MSAL. js v1](https://docs.microsoft.com/azure/active-directory/develop/tutorial-v2-javascript-spa).
 
@@ -282,7 +282,7 @@ U hebt nu een eenvoudige server voor uw beveiligd-wachtwoord verificatie. Aan he
 
 ## <a name="register-your-application"></a>Uw toepassing registreren
 
-Volg de instructies voor het [registreren van een nieuwe toepassing met één pagina](https://docs.microsoft.com/zure/active-directory/develop/scenario-spa-app-registration).
+Volg de instructies voor het [registreren van een nieuwe toepassing met één pagina](https://docs.microsoft.com/azure/active-directory/develop/scenario-spa-app-registration).
 
 #### <a name="set-a-redirect-url-for-nodejs"></a>Een omleidings-URL instellen voor node. js
 

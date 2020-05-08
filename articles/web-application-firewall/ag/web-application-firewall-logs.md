@@ -7,12 +7,12 @@ ms.service: web-application-firewall
 ms.topic: article
 ms.date: 10/25/2019
 ms.author: victorh
-ms.openlocfilehash: 4bc2aa055c40fb33edade8f7815311e392633885
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4bca41effc4e9834f8c76308556facb0681717cd
+ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82133868"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82888876"
 ---
 # <a name="resource-logs-for-azure-web-application-firewall"></a>Resource logboeken voor Azure Web Application firewall
 
@@ -305,7 +305,7 @@ We hebben een resource manager-sjabloon gepubliceerd waarmee de populaire [GoAcc
 ## <a name="next-steps"></a>Volgende stappen
 
 * Visualiseer teller-en gebeurtenis logboeken met behulp van [Azure monitor-logboeken](../../azure-monitor/insights/azure-networking-analytics.md).
-* [Visualiseer uw Azure-activiteiten logboek met Power bi](https://blogs.msdn.com/b/powerbi/archive/2015/09/30/monitor-azure-audit-logs-with-power-bi.aspx) blog bericht.
+* [Visualiseer uw Azure-activiteiten logboek met Power bi](https://powerbi.microsoft.com/blog/monitor-azure-audit-logs-with-power-bi/) blog bericht.
 * [Bekijk en analyseer activiteiten logboeken van Azure in Power bi en meer](https://azure.microsoft.com/blog/analyze-azure-audit-logs-in-powerbi-more/) blog berichten.
 
 [1]: ../media/web-application-firewall-logs/figure1.png

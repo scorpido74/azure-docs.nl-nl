@@ -1,5 +1,5 @@
 ---
-title: 'Zelfstudie: Azure Key Vault gebruiken met een Azure-web-app in .NET | Microsoft Docs'
+title: Zelf studie-Azure Key Vault gebruiken met een Azure webapp in .NET | Microsoft Docs
 description: In deze zelf studie configureert u een ASP.NET-kern toepassing voor het lezen van een geheim in uw sleutel kluis.
 services: key-vault
 author: msmbaldwin
@@ -7,209 +7,242 @@ manager: rajvijan
 ms.service: key-vault
 ms.subservice: general
 ms.topic: tutorial
-ms.date: 12/21/2018
+ms.date: 05/06/2020
 ms.author: mbaldwin
-ms.custom: mvc
-ms.openlocfilehash: bb907c809d411128ee799d5057379a2022144882
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 962b738d7e5f91076d17c19daad01f8dbaf92341
+ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81422877"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82888839"
 ---
-# <a name="tutorial-use-azure-key-vault-with-an-azure-web-app-in-net"></a>Zelfstudie - Azure Key Vault gebruiken met een Azure-web-app in .NET
-
-Met Azure Key Vault kunt u geheimen beveiligen, zoals API-sleutels en databaseverbindingsreeksen. Het biedt u toegang tot uw toepassingen, services en IT-resources.
-
-In deze zelfstudie leert u hoe u een Azure-webtoepassing maakt waarmee gegevens uit een Azure-sleutelkluis kunnen worden gelezen. Tijdens dit proces wordt gebruikgemaakt van beheerde identiteiten voor Azure-resources. Zie [Azure App Service](../../app-service/overview.md) voor meer informatie over Azure-webtoepassingen.
-
-In deze zelfstudie leert u het volgende:
-
-> [!div class="checklist"]
-> * Een sleutelkluis maken.
-> * Voeg een geheim toe aan de sleutelkluis.
-> * Een geheim ophalen uit de sleutelkluis.
-> * Een Azure-web-app maken.
-> * Schakel een beheerde identiteit in voor de web-app.
-> * Machtiging voor de web-app toewijzen.
-> * Voer de web-app uit op Azure.
-
-Lees [Key Vault basis concepten](basic-concepts.md)voordat u begint. 
-
-Als u geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
-
-## <a name="prerequisites"></a>Vereisten
-
-* Voor Windows: [.net Core 2,1 SDK of hoger](https://www.microsoft.com/net/download/windows)
-* Voor Mac: [Visual Studio voor Mac](https://visualstudio.microsoft.com/vs/mac/)
-* Voor Windows, Mac en Linux:
-  * [Git](https://git-scm.com/downloads)
-  * Voor deze zelfstudie moet u de Azure CLI lokaal uitvoeren. U moet de Azure CLI-versie 2.0.4 of hoger hebben geïnstalleerd. Voer `az --version` uit om de versie te bekijken. Als u de CLI wilt installeren of upgraden, raadpleegt u [Azure CLI 2.0 installeren](https://docs.microsoft.com/cli/azure/install-azure-cli).
-  * [.NET Core](https://www.microsoft.com/net/download/dotnet-core/2.1)
-
-## <a name="about-managed-service-identity"></a>Informatie over Managed Service Identity
-
-Azure Key Vault referenties veilig opgeslagen, zodat ze niet in uw code worden weer gegeven. U moet u echter verifiëren bij Azure Key Vault om uw sleutels op te halen. En om u te verifiëren bij Key Vault, hebt u een referentie nodig. Dit is een klassiek bootstrap-dilemma. In MSI (Managed Service Identity) is dit probleem opgelost doordat er een _bootstrap-identiteit_ wordt geboden dat het proces vereenvoudigt.
-
-Wanneer u MSI inschakelt voor een Azure-service, zoals Azure Virtual Machines, Azure App Service of Azure Functions, maakt Azure een [Service-Principal](basic-concepts.md). MSI doet dit voor het exemplaar van de service in Azure Active Directory (Azure AD) en activeert de referenties van de Service-Principal in dat exemplaar.
-
-![MSI-diagram](../media/MSI.png)
-
-Om een toegangs token op te halen, roept uw code een lokale meta gegevens service aan die beschikbaar is op de Azure-resource. Uw code gebruikt het toegangstoken dat wordt verkregen van het lokale MSI-eindpunt om zich te authenticeren bij een Azure Key Vault-service.
-
-## <a name="log-in-to-azure"></a>Meld u aan bij Azure.
-
-Als u zich bij Azure wilt aanmelden met de Azure CLI, voert u het volgende in:
-
-```azurecli
-az login
-```
-
-## <a name="create-a-resource-group"></a>Een resourcegroep maken
-
-Een Azure-resourcegroep is een logische container waarin Azure-resources worden geïmplementeerd en beheerd.
-
-Maak een resourcegroep met de opdracht [az group create](/cli/azure/group#az-group-create).
-
-Selecteer vervolgens de naam van een resource groep en vul de tijdelijke aanduiding in. In het volgende voorbeeld wordt een resourcegroep gemaakt in de regio VS - west:
-
-   ```azurecli
-   # To list locations: az account list-locations --output table
-   az group create --name "<YourResourceGroupName>" --location "West US"
-   ```
-
-U gebruikt deze resourcegroep in de hele zelfstudie.
-
-## <a name="create-a-key-vault"></a>Een sleutelkluis maken
-
-Als u een sleutelkluis in de resourcegroep wilt maken, biedt u de volgende informatie:
-
-* Sleutel kluis naam: een teken reeks van 3 tot 24 tekens die alleen getallen (0-9), letters (a-z, A-Z) en afbreek streepjes (-) kan bevatten
-* Naam van de resourcegroep
-* Locatie: **VS-West**
-
-Voer in de Azure CLI de volgende opdracht in:
-
-```azurecli
-az keyvault create --name "<YourKeyVaultName>" --resource-group "<YourResourceGroupName>" --location "West US"
-```
-
-Op dit moment is uw Azure-account de enige die gemachtigd is voor het uitvoeren van bewerkingen op deze nieuwe kluis.
-
-## <a name="add-a-secret-to-the-key-vault"></a>Een geheim toevoegen aan de sleutelkluis
-
-U kunt nu een geheim toevoegen. Dit kan een SQL-verbindingsreeks zijn of enige andere gegevens die u zowel veilig als beschikbaar wilt houden op de toepassing.
-
-Als u een geheim wilt maken in de sleutel kluis met de naam **AppSecret**, voert u de volgende opdracht in: 
-
-```azurecli
-az keyvault secret set --vault-name "<YourKeyVaultName>" --name "AppSecret" --value "MySecret"
-```
-
-Met dit geheim wordt de waarde **MijnGeheim** opgeslagen.
-
-Als u de waarde in het geheim als tekst zonder opmaak wilt weer geven, voert u de volgende opdracht in:
-
-```azurecli
-az keyvault secret show --name "AppSecret" --vault-name "<YourKeyVaultName>"
-```
-
-Met deze opdracht wordt de geheime informatie, inclusief de URI, weer gegeven. 
-
-Wanneer u deze stappen hebt uitgevoerd, beschikt u over een URI voor een geheim in een sleutelkluis. Noteer deze informatie voor later gebruik in deze zelf studie. 
-
-## <a name="create-a-net-core-web-app"></a>Een .NET Core-web-app maken
-
-Als u een .NET core-web-app wilt maken en deze wilt publiceren naar Azure, volgt u de instructies in [een ASP.net core web-app maken in azure](../../app-service/app-service-web-get-started-dotnet.md). 
-
-U kunt ook deze video bekijken:
-
->[!VIDEO https://www.youtube.com/embed/EdiiEH7P-bU]
-
-## <a name="open-and-edit-the-solution"></a>De oplossing openen en bewerken
-
-1. Ga naar het bestand **Pages** > **about.cshtml.cs** .
-
-1. Installeer deze NuGet-pakketten:
-   - [AppAuthentication](https://www.nuget.org/packages/Microsoft.Azure.Services.AppAuthentication)
-   - [KeyVault](https://www.nuget.org/packages/Microsoft.Azure.KeyVault)
-
-1. Importeer de volgende code in het *about.cshtml.cs* -bestand:
-
-   ```csharp
-    using Microsoft.Azure.KeyVault;
-    using Microsoft.Azure.KeyVault.Models;
-    using Microsoft.Azure.Services.AppAuthentication;
-   ```
-
-   De code in de AboutModel-klasse moet er als volgt uitzien:
-
-   ```csharp
-    public class AboutModel : PageModel
-    {
-        public string Message { get; set; }
-
-        public async Task OnGetAsync()
-        {
-            Message = "Your application description page.";
-            int retries = 0;
-            bool retry = false;
-            try
-            {
-                /* The next four lines of code show you how to use AppAuthentication library to fetch secrets from your key vault */
-                AzureServiceTokenProvider azureServiceTokenProvider = new AzureServiceTokenProvider();
-                KeyVaultClient keyVaultClient = new KeyVaultClient(new KeyVaultClient.AuthenticationCallback(azureServiceTokenProvider.KeyVaultTokenCallback));
-                var secret = await keyVaultClient.GetSecretAsync("https://<YourKeyVaultName>.vault.azure.net/secrets/AppSecret")
-                        .ConfigureAwait(false);
-                Message = secret.Value;
-            }
-            /* If you have throttling errors see this tutorial https://docs.microsoft.com/azure/key-vault/tutorial-net-create-vault-azure-web-app */
-            /// <exception cref="KeyVaultErrorException">
-            /// Thrown when the operation returned an invalid status code
-            /// </exception>
-            catch (KeyVaultErrorException keyVaultException)
-            {
-                Message = keyVaultException.Message;
-            }
-        }
-
-        // This method implements exponential backoff if there are 429 errors from Azure Key Vault
-        private static long getWaitTime(int retryCount)
-        {
-            long waitTime = ((long)Math.Pow(2, retryCount) * 100L);
-            return waitTime;
-        }
-
-        // This method fetches a token from Azure Active Directory, which can then be provided to Azure Key Vault to authenticate
-        public async Task<string> GetAccessTokenAsync()
-        {
-            var azureServiceTokenProvider = new AzureServiceTokenProvider();
-            string accessToken = await azureServiceTokenProvider.GetAccessTokenAsync("https://vault.azure.net");
-            return accessToken;
-        }
-    }
-    ```
-
-## <a name="run-the-web-app"></a>De web-app uitvoeren
-
-1. Selecteer in het hoofd menu van Visual Studio 2019 **debug** > **Start**, met of zonder fout opsporing. 
-1. Ga in de browser naar de pagina **over** .  
-    De waarde voor **AppGeheim** wordt weergegeven.
-
-## <a name="enable-a-managed-identity"></a>Een beheerde identiteit inschakelen
+# <a name="tutorial-use-a-managed-identity-to-connect-key-vault-to-an-azure-web-app-with-net"></a>Zelf studie: een beheerde identiteit gebruiken om Key Vault te verbinden met een Azure-web-app met .NET
 
 Azure Key Vault biedt een manier voor het veilig opslaan van referenties en andere geheimen, maar uw code moet worden geverifieerd bij Key Vault om ze op te halen. Het [Overzicht van beheerde identiteiten voor Azure-resources](../../active-directory/managed-identities-azure-resources/overview.md) helpt bij het oplossen van dit probleem door Azure-services een automatisch beheerde identiteit in Azure AD te geven. U kunt deze identiteit gebruiken voor verificatie bij elke service die ondersteuning biedt voor Azure AD-verificatie, met inbegrip van Key Vault, zonder dat u referenties in uw code hoeft weer te geven.
 
-Voer de volgende opdracht uit voor het maken van de identiteit voor deze toepassing in de Azure CLI:
+In deze zelf studie wordt een beheerde identiteit gebruikt voor het verifiëren van een Azure-web-app met een Azure Key Vault. Hoewel de stappen de [Azure Key Vault v4-client bibliotheek voor .net](/dotnet/api/overview/azure/key-vault?view=azure-dotnet) en de [Azure cli](/cli/azure/get-started-with-azure-cli)gebruiken, zijn dezelfde basis principes van toepassing wanneer u de ontwikkelings taal van uw keuze, Azure PowerShell en/of de Azure Portal gebruikt.
 
-```azurecli
-az webapp identity assign --name "<YourAppName>" --resource-group "<YourResourceGroupName>"
+## <a name="prerequisites"></a>Vereisten
+
+Dit zijn de vereisten voor het voltooien van deze snelstart:
+
+* Een Azure-abonnement: [Maak er gratis een](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+* De [.net Core 3,1 SDK of hoger](https://dotnet.microsoft.com/download/dotnet-core/3.1).
+* [Azure cli](/cli/azure/install-azure-cli?view=azure-cli-latest) of [Azure PowerShell](/powershell/azure/overview)
+
+## <a name="create-a-resource-group"></a>Een resourcegroep maken
+
+Een resourcegroep is een logische container waarin Azure-resources worden geïmplementeerd en beheerd. Maak een resource groep om zowel uw sleutel kluis als uw web-app te huis te maken met de opdracht [AZ Group Create](/cli/azure/group?view=azure-cli-latest#az-group-create) :
+
+```azurecli-interactive
+az group create --name "myResourceGroup" -l "EastUS"
 ```
 
-Vervang \<YourAppName> door de naam van de gepubliceerde app op Azure.  
-    Als de naam van uw gepubliceerde app bijvoorbeeld **MyAwesomeapp.azurewebsites.net**is, vervangt \<u YourAppName> door **MyAwesomeapp**.
+## <a name="set-up-your-key-vault"></a>Uw sleutel kluis instellen
 
-Noteer de `PrincipalId` wanneer u de toepassing publiceert in Azure. De uitvoer van de opdracht in stap 1 moet de volgende indeling hebben:
+U gaat nu een sleutel kluis maken en deze in een geheim plaatsen, zodat u deze later in deze zelf studie kunt gebruiken.
+
+Als u een sleutel kluis wilt maken, gebruikt u de opdracht [AZ Key kluis Create](/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-create) :
+
+> [!Important]
+> Elke sleutel kluis moet een unieke naam hebben. Vervang de naam van uw sleutel kluis <door de naam van de> kluis in de volgende voor beelden.
+
+```azurecli-interactive
+az keyvault create --name "<your-keyvault-name>" -g "myResourceGroup"
+```
+
+Noteer de geretourneerde `vaultUri`waarde, die de notatie ' https://<your-sleutel kluis-naam>. Vault.Azure.net/' bevat. Deze wordt gebruikt in de stap voor [het bijwerken van de code](#update-the-code) .
+
+U kunt nu een geheim in uw sleutel kluis plaatsen met de opdracht [AZ sleutel kluis Secret set](/cli/azure/keyvault/secret?view=azure-cli-latest#az-keyvault-secret-set) . Stel de naam van het geheim in op ' MySecret ' en de waarde op ' geslaagd! '.
+
+```azurecli-interactive
+az keyvault secret set --vault-name "<your-keyvault-name>" --name "MySecret" --value "Success!"
+```
+
+## <a name="create-a-net-web-app"></a>Een .NET-web-app maken
+
+### <a name="create-a-local-app"></a>Een lokale app maken
+
+Maak in een terminalvenster op uw computer een map met de naam `akvwebapp` en wijzig de huidige map in die map.
+
+```bash
+mkdir akvwebapp
+cd akvwebapp
+```
+
+Maak nu een nieuwe .NET core-app met de [nieuwe web](/dotnet/core/tools/dotnet-new) -opdracht DotNet:
+
+```bash
+dotnet new web
+```
+
+Voer de toepassing lokaal uit zodat u kunt zien hoe deze eruit ziet wanneer u de toepassing implementeert naar Azure. 
+
+```bash
+dotnet run
+```
+
+Open een webbrowser en navigeer naar de app op `http://localhost:5000`.
+
+U ziet het **Hallo wereld** -bericht van de voor beeld-app die op de pagina wordt weer gegeven.
+
+### <a name="initialize-the-git-repository"></a>De Git-opslag plaats initialiseren
+
+Druk in uw terminalvenster op **Ctrl + C** om de webserver af te sluiten.  Initialiseer een Git-opslagplaats voor het .NET Core-project.
+
+```bash
+git init
+git add .
+git commit -m "first commit"
+```
+
+### <a name="configure-a-deployment-user"></a>Een implementatiegebruiker configureren
+
+FTP en lokale Git kunnen worden geïmplementeerd in een Azure-web-app met behulp van een *implementatie gebruiker*. Wanneer u de implementatie gebruiker hebt geconfigureerd, kunt u deze gebruiken voor al uw Azure-implementaties. De gebruikers naam en het wacht woord voor implementatie op account niveau verschillen van de referenties van uw Azure-abonnement. 
+
+Als u de implementatie gebruiker wilt configureren, voert u de opdracht [AZ webapp Deployment User set](/cli/azure/webapp/deployment/user?view=azure-cli-latest#az-webapp-deployment-user-set) uit. Kies een gebruikers naam en wacht woord die voldoen aan de volgende richt lijnen: 
+
+- De gebruikers naam moet uniek zijn binnen Azure en voor lokale Git-pushes mag het @-teken niet bevatten. 
+- Het wacht woord moet ten minste acht tekens lang zijn, met twee van de volgende drie elementen: letters, cijfers en symbolen. 
+
+```azurecli-interactive
+az webapp deployment user set --user-name "<username>" --password "<password>"
+```
+
+De JSON-uitvoer toont het wacht `null`woord als. Als er een `'Conflict'. Details: 409`-fout optreedt, wijzigt u de gebruikersnaam. Als er een `'Bad Request'. Details: 400`-fout optreedt, kiest u een sterker wachtwoord. 
+
+Registreer de gebruikers naam en het wacht woord die u wilt gebruiken om uw web-apps te implementeren.
+
+### <a name="create-an-app-service-plan"></a>Een app service-plan maken
+
+Maak een App Service plan met de opdracht Azure CLI [AZ appservice plan Create](/cli/azure/appservice/plan?view=azure-cli-latest) . In het volgende voor beeld wordt een App Service `myAppServicePlan` plan gemaakt met de naam in de prijs categorie **gratis** :
+
+```azurecli-interactive
+az appservice plan create --name myAppServicePlan --resource-group myResourceGroup --sku FREE
+```
+
+Wanneer het App Service-plan is gemaakt, toont de Azure CLI soortgelijke informatie als in het volgende voorbeeld:
+
+<pre>
+{ 
+  "adminSiteName": null,
+  "appServicePlanName": "myAppServicePlan",
+  "geoRegion": "West Europe",
+  "hostingEnvironmentProfile": null,
+  "id": "/subscriptions/0000-0000/resourceGroups/myResourceGroup/providers/Microsoft.Web/serverfarms/myAppServicePlan",
+  "kind": "app",
+  "location": "West Europe",
+  "maximumNumberOfWorkers": 1,
+  "name": "myAppServicePlan",
+  &lt; JSON data removed for brevity. &gt;
+  "targetWorkerSizeId": 0,
+  "type": "Microsoft.Web/serverfarms",
+  "workerTierName": null
+} 
+</pre>
+
+
+### <a name="create-a-remote-web-app"></a>Een externe web-app maken
+
+Maak een [Azure-Web](../../app-service/containers/app-service-linux-intro.md) -app `myAppServicePlan` in het app service plan. 
+
+> [!Important]
+> Net als bij Key Vault moet een Azure-web-app een unieke naam hebben. Vervang \<uw-webapp-naam\> door de naam van uw web-app in de volgende voor beelden.
+
+
+```azurecli-interactive
+az webapp create --resource-group "myResourceGroup" --plan "myAppServicePlan" --name "<your-webapp-name>" --deployment-local-git
+```
+
+Wanneer de web-app is gemaakt, toont de Azure CLI soortgelijke uitvoer als in het volgende voorbeeld:
+
+<pre>
+Local git is configured with url of 'https://&lt;username&gt;@&lt;your-webapp-name&gt;.scm.azurewebsites.net/&lt;ayour-webapp-name&gt;.git'
+{
+  "availabilityState": "Normal",
+  "clientAffinityEnabled": true,
+  "clientCertEnabled": false,
+  "clientCertExclusionPaths": null,
+  "cloningInfo": null,
+  "containerSize": 0,
+  "dailyMemoryTimeQuota": 0,
+  "defaultHostName": "&lt;your-webapp-name&gt;.azurewebsites.net",
+  "deploymentLocalGitUrl": "https://&lt;username&gt;@&lt;your-webapp-name&gt;.scm.azurewebsites.net/&lt;your-webapp-name&gt;.git",
+  "enabled": true,
+  &lt; JSON data removed for brevity. &gt;
+}
+</pre>
+
+
+De URL van de externe Git wordt weergegeven in de eigenschap `deploymentLocalGitUrl`, met de indeling `https://<username>@<your-webapp-name>.scm.azurewebsites.net/<your-webapp-name>.git`. Sla deze URL op, zoals u deze later nodig hebt.
+
+Blader naar de app die u net hebt gemaakt. Vervang _ &lt;de naam van uw-webapp>_ door de naam van uw app.
+
+```bash
+https://<your-webapp-name>.azurewebsites.net
+```
+
+De standaard webpagina voor een nieuwe Azure-web-app wordt weer geven.
+
+### <a name="deploy-your-local-app"></a>Uw lokale app implementeren
+
+Voeg in het lokale terminal venster een externe Azure-server toe aan uw lokale Git-opslag plaats, waarbij u * \<deploymentLocalGitUrl* vervangt door het maken van een stap>met de URL van de externe Git die u hebt opgeslagen in de stap [een externe web-app maken](#create-a-remote-web-app) .
+
+```bash
+git remote add azure <deploymentLocalGitUrl-from-create-step>
+```
+
+Push naar de externe Azure-instantie om uw app te implementeren met de volgende opdracht. Wanneer met git Credential Manager om referenties wordt gevraagd, gebruikt u de referenties die u hebt gemaakt in de [gebruikers stap een implementatie configureren](#configure-a-deployment-user) .
+
+```bash
+git push azure master
+```
+
+Het kan enkele minuten duren voor deze opdracht is uitgevoerd. De opdracht geeft informatie weer die lijkt op het volgende voorbeeld:
+<pre>
+Enumerating objects: 5, done.
+Counting objects: 100% (5/5), done.
+Compressing objects: 100% (3/3), done.
+Writing objects: 100% (3/3), 285 bytes | 95.00 KiB/s, done.
+Total 3 (delta 2), reused 0 (delta 0), pack-reused 0
+remote: Deploy Async
+remote: Updating branch 'master'.
+remote: Updating submodules.
+remote: Preparing deployment for commit id 'd6b54472f7'.
+remote: Repository path is /home/site/repository
+remote: Running oryx build...
+remote: Build orchestrated by Microsoft Oryx, https://github.com/Microsoft/Oryx
+remote: You can report issues at https://github.com/Microsoft/Oryx/issues
+remote:
+remote: Oryx Version      : 0.2.20200114.13, Commit: 204922f30f8e8d41f5241b8c218425ef89106d1d, ReleaseTagName: 20200114.13
+remote: Build Operation ID: |imoMY2y77/s=.40ca2a87_
+remote: Repository Commit : d6b54472f7e8e9fd885ffafaa64522e74cf370e1
+.
+.
+.
+remote: Deployment successful.
+remote: Deployment Logs : 'https://&lt;your-webapp-name&gt;.scm.azurewebsites.net/newui/jsonviewer?view_url=/api/deployments/d6b54472f7e8e9fd885ffafaa64522e74cf370e1/log'
+To https://&lt;your-webapp-name&gt;.scm.azurewebsites.net:443/&lt;your-webapp-name&gt;.git
+   d87e6ca..d6b5447  master -> master
+</pre>
+
+Blader naar de geïmplementeerde toepassing (of vernieuw deze) met behulp van uw webbrowser.
+
+```bash
+http://<your-webapp-name>.azurewebsites.net
+```
+
+U ziet de Hallo wereld! bericht dat u eerder hebt gezien `http://localhost:5000`tijdens het bezoek.
+
+## <a name="create-and-assign-a-managed-identity"></a>Een beheerde identiteit maken en toewijzen
+
+In azure CLI voert u de opdracht [AZ webapp-Identity Assign](/cli/azure/webapp/identity?view=azure-cli-latest#az-webapp-identity-assign) uit om de identiteit voor deze toepassing te maken:
+
+```azurecli-interactive
+az webapp identity assign --name "<your-webapp-name>" --resource-group "myResourceGroup"
+```
+
+Met deze bewerking wordt het JSON-fragment geretourneerd:
 
 ```json
 {
@@ -219,35 +252,77 @@ Noteer de `PrincipalId` wanneer u de toepassing publiceert in Azure. De uitvoer 
 }
 ```
 
->[!NOTE]
->De opdracht in deze procedure is het equivalent van het naar de [Azure Portal](https://portal.azure.com) gaan en de instelling van de **identiteit/het systeem** in de eigenschappen **van** de webtoepassing wijzigt in.
+Als u uw web-app **toestemming wilt geven** om bewerkingen uit te voeren en **weer te geven** op uw sleutel kluis, geeft u de PrincipalID door aan de Azure cli [AZ instellen-beleids](/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-set-policy) opdracht:
 
-## <a name="assign-permissions-to-your-app"></a>Machtigingen toewijzen aan uw app
-
-Vervang \<YourKeyVaultName> door de naam van uw sleutel kluis en vervang \<PrincipalId> door de waarde van de **PrincipalId** in de volgende opdracht:
-
-```azurecli
-az keyvault set-policy --name '<YourKeyVaultName>' --object-id <PrincipalId> --secret-permissions get list
+```azurecli-interactive
+az keyvault set-policy --name "<your-keyvault-name>" --object-id "<principalId>" --secret-permissions get list
 ```
 
-Met deze opdracht geeft u de identiteit (MSI) van de app service-machtiging voor het **ophalen** en **weer geven** van bewerkingen op uw sleutel kluis.
 
-## <a name="publish-the-web-app-to-azure"></a>De web-app publiceren in Azure
+## <a name="modify-the-app-to-access-your-key-vault"></a>Wijzig de app om toegang te krijgen tot uw sleutel kluis
 
-Publiceer opnieuw uw web-app naar Azure om te controleren of uw Live Web-App de geheime waarde kan ophalen.
+### <a name="install-the-packages"></a>De pakketten installeren
 
-1. In Visual Studio selecteert u het project **key-vault-dotnet-core-quickstart**.
-2. Selecteer **Publish** > **Start**publiceren.
-3. Selecteer **Maken**.
+Installeer in het Terminal venster de Azure Key Vault-client bibliotheek voor .NET-pakketten:
 
-Wanneer u de toepassing uitvoert, ziet u, als het goed is, dat de geheime waarde wordt opgehaald.
+```console
+dotnet add package Azure.Identity
+dotnet add package Azure.Security.KeyVault.Secrets
+```
 
-Nu hebt u een web-app in .NET gemaakt waarin de geheimen van uw sleutel kluis worden opgeslagen en opgehaald.
+### <a name="update-the-code"></a>De code bijwerken
 
-## <a name="clean-up-resources"></a>Resources opschonen
-Als ze niet meer nodig zijn, kunt u de virtuele machine en de sleutel kluis verwijderen.
+Zoek en open het Startup.cs-bestand in uw akvwebapp-project. 
+
+Voeg deze twee regels toe aan de koptekst:
+
+```csharp
+using Azure.Identity;
+using Azure.Security.KeyVault.Secrets;
+```
+
+Voeg deze drie regels toe vóór `app.UseEndpoints` de aanroep, waarbij u de URI bijwerkt zodat deze overeenkomt met de `vaultUri` sleutel kluis.
+
+```csharp
+var client = new SecretClient(new Uri("https://<your-unique-key-vault-name>.vault.azure.net/"), new DefaultAzureCredential());
+
+KeyVaultSecret secret = client.GetSecret("mySecret");
+
+string secretValue = secret.Value;
+```
+
+De te lezen `await context.Response.WriteAsync("Hello World!");` regel bijwerken:
+
+```csharp
+await context.Response.WriteAsync(secretValue);
+```
+
+Zorg ervoor dat u uw wijzigingen opslaat voordat u verdergaat met de volgende stap.
+
+### <a name="redeploy-your-web-app"></a>Uw web-app opnieuw implementeren
+
+Als u uw code hebt bijgewerkt, kunt u deze opnieuw implementeren in azure met de volgende Git-opdrachten:
+
+```bash
+git add .
+git commit -m "Updated web app to access my key vault"
+git push azure master
+```
+
+## <a name="visit-your-completed-web-app"></a>Ga naar uw voltooide web-app
+
+```bash
+http://<your-webapp-name>.azurewebsites.net
+```
+
+Wanneer u **Hallo wereld**hebt gezien, ziet u nu de waarde van het geheim dat wordt weer gegeven: **geslaagd!**
 
 ## <a name="next-steps"></a>Volgende stappen
 
->[!div class="nextstepaction"]
->[Gids voor Azure Key Vault-ontwikkelaars](developers-guide.md)
+- Meer informatie over [beheerde identiteiten voor Azure-resources](../../active-directory/managed-identities-azure-resources/overview.md)
+- Meer informatie over [beheerde identiteiten voor app service](../../app-service/overview-managed-identity.md?tabs=dotnet)
+- Zie de [Azure Key Vault-client bibliotheek voor .net API-naslag informatie](/dotnet/api/overview/azure/key-vault?view=azure-dotnet)
+- Zie de [Azure Key Vault-client bibliotheek voor .net-bron code](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/keyvault)
+- Zie de [v4-Azure Key Vault-client bibliotheek voor .net NuGet-pakket](https://www.nuget.org/packages/Azure.Security.KeyVault.Secrets/)
+
+

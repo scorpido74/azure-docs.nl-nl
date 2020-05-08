@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 02/18/2020
 ms.author: cshoe
 ms.custom: cc996988-fb4f-47
-ms.openlocfilehash: 76af5f398edd736874fa79095f2e80c02298eac0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: dd8442c00e2b7685b0dc1a7bd5150c87f2c27b7c
+ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79277334"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82891458"
 ---
 # <a name="azure-queue-storage-output-bindings-for-azure-functions"></a>Azure Queue Storage-uitvoer bindingen voor Azure Functions
 
@@ -21,7 +21,7 @@ Zie het [overzicht](./functions-bindings-storage-queue.md)voor meer informatie o
 
 ## <a name="example"></a>Voorbeeld
 
-# <a name="c"></a>[C#](#tab/csharp)
+# <a name="c"></a>[G #](#tab/csharp)
 
 In het volgende voor beeld ziet u een [C#-functie](functions-dotnet-class-library.md) waarmee een wachtrij bericht wordt gemaakt voor elke ontvangen HTTP-aanvraag.
 
@@ -123,7 +123,7 @@ Hier is het bestand *Function. json* :
     {
       "type": "queue",
       "direction": "out",
-      "name": "$return",
+      "name": "myQueueItem",
       "queueName": "outqueue",
       "connection": "MyStorageConnectionAppSetting"
     }
@@ -137,7 +137,8 @@ Dit is de Java script-code:
 
 ```javascript
 module.exports = function (context, input) {
-    context.done(null, input.body);
+    context.bindings.myQueueItem = input.body;
+    context.done();
 };
 ```
 
@@ -235,7 +236,7 @@ Gebruik in de [runtime-bibliotheek van Java](/java/api/overview/azure/functions/
 
 ## <a name="attributes-and-annotations"></a>Kenmerken en aantekeningen
 
-# <a name="c"></a>[C#](#tab/csharp)
+# <a name="c"></a>[G #](#tab/csharp)
 
 Gebruik in [C# class libraries](functions-dotnet-class-library.md)het [QueueAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs.Extensions.Storage/Queues/QueueAttribute.cs).
 
@@ -316,9 +317,9 @@ De volgende tabel bevat informatie over de binding configuratie-eigenschappen di
 
 |function. json-eigenschap | Kenmerk eigenschap |Beschrijving|
 |---------|---------|----------------------|
-|**voert** | N.v.t. | Moet worden ingesteld op `queue`. Deze eigenschap wordt automatisch ingesteld wanneer u de trigger maakt in de Azure Portal.|
-|**direction** | N.v.t. | Moet worden ingesteld op `out`. Deze eigenschap wordt automatisch ingesteld wanneer u de trigger maakt in de Azure Portal. |
-|**naam** | N.v.t. | De naam van de variabele die de wachtrij in functie code vertegenwoordigt. Instellen op `$return` om te verwijzen naar de functie retour waarde.|
+|**voert** | n.v.t. | Moet worden ingesteld op `queue`. Deze eigenschap wordt automatisch ingesteld wanneer u de trigger maakt in de Azure Portal.|
+|**draaien** | n.v.t. | Moet worden ingesteld op `out`. Deze eigenschap wordt automatisch ingesteld wanneer u de trigger maakt in de Azure Portal. |
+|**naam** | n.v.t. | De naam van de variabele die de wachtrij in functie code vertegenwoordigt. Instellen op `$return` om te verwijzen naar de functie retour waarde.|
 |**queueName** |**QueueName** | De naam van de wachtrij. |
 |**verbinding** | **Combi** |De naam van een app-instelling die de opslag connection string bevat die moet worden gebruikt voor deze binding. Als de naam van de app-instelling begint met ' AzureWebJobs ', kunt u hier alleen de rest van de naam opgeven. Als u bijvoorbeeld instelt `connection` op ' mijn opslag ', zoekt de functie runtime naar een app-instelling met de naam ' mijn opslag '. Als u leeg `connection` laat, gebruikt de functions runtime de standaard opslag Connection String in de app-instelling met `AzureWebJobsStorage`de naam.|
 
@@ -326,7 +327,7 @@ De volgende tabel bevat informatie over de binding configuratie-eigenschappen di
 
 ## <a name="usage"></a>Gebruik
 
-# <a name="c"></a>[C#](#tab/csharp)
+# <a name="c"></a>[G #](#tab/csharp)
 
 Een enkel wachtrij bericht schrijven met behulp van een methode parameter `out T paramName`, zoals. U kunt het retour type van de methode gebruiken in `out` plaats van een `T` para meter, en dit kan een van de volgende typen zijn:
 

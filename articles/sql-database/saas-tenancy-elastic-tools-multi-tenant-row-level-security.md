@@ -11,12 +11,12 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: sstein
 ms.date: 12/18/2018
-ms.openlocfilehash: 4cf260620d4e907fdb9190a052155fa22f1c7985
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: fc08916967b4d64667065373cf2d0828a05069d0
+ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80398326"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82890948"
 ---
 # <a name="multi-tenant-applications-with-elastic-database-tools-and-row-level-security"></a>Multi tenant-toepassingen met Elastic data base-hulpprogram ma's en beveiliging op rijniveau
 
@@ -341,13 +341,13 @@ GO
 ### <a name="maintenance"></a>Onderhoud
 
 - **Nieuwe Shards toevoegen**: Voer het T-SQL-script uit om beveiliging op rijniveau in te scha kelen voor een nieuwe Shards, anders worden query's op deze Shards niet gefilterd.
-- **Nieuwe tabellen toevoegen**: Voeg een filter en een PREDIKAAT blok keren toe aan het beveiligings beleid op alle Shards wanneer een nieuwe tabel wordt gemaakt. Anders worden query's voor de nieuwe tabel niet gefilterd. Deze toevoeging kan worden geautomatiseerd met behulp van een DDL-trigger, zoals wordt beschreven in [beveiliging op rijniveau automatisch Toep assen op nieuw gemaakte tabellen (blog)](https://blogs.msdn.com/b/sqlsecurity/archive/20../../apply-row-level-security-automatically-to-newly-created-tables.aspx).
+- **Nieuwe tabellen toevoegen**: Voeg een filter en een PREDIKAAT blok keren toe aan het beveiligings beleid op alle Shards wanneer een nieuwe tabel wordt gemaakt. Anders worden query's voor de nieuwe tabel niet gefilterd. Deze toevoeging kan worden geautomatiseerd met behulp van een DDL-trigger, zoals wordt beschreven in [beveiliging op rijniveau automatisch Toep assen op nieuw gemaakte tabellen (blog)](https://techcommunity.microsoft.com/t5/SQL-Server/Apply-Row-Level-Security-automatically-to-newly-created-tables/ba-p/384393).
 
 ## <a name="summary"></a>Samenvatting
 
 Hulpprogram ma's voor elastische data bases en beveiliging op rijniveau kunnen samen worden gebruikt om de gegevenslaag van een toepassing uit te schalen met ondersteuning voor zowel multi tenant als single-tenant Shards. Multi tenant-Shards kunnen worden gebruikt om gegevens efficiënter op te slaan. Deze efficiëntie wordt uitgesp roken wanneer een groot aantal tenants slechts enkele rijen met gegevens bevat. Shards met één Tenant kunnen Premium-tenants ondersteunen die strenge prestaties en isolatie vereisten hebben. Zie [beveiliging op rijniveau][rls]voor meer informatie.
 
-## <a name="additional-resources"></a>Aanvullende bronnen
+## <a name="additional-resources"></a>Extra resources
 
 - [Wat is een elastische groep van Azure?](sql-database-elastic-pool.md)
 - [Uitbreiden met Azure SQL Database](sql-database-elastic-scale-introduction.md)
