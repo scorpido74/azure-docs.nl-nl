@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 10/05/2018
+ms.date: 05/04/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 2de891ee109677f92ff603759701f7732f5951ba
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 059c43b24ddc9f319eac4f2783cfc203bed8c7f1
+ms.sourcegitcommit: 0fda81f271f1a668ed28c55dcc2d0ba2bb417edd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78188508"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82900439"
 ---
 # <a name="set-up-sign-in-with-an-amazon-account-using-custom-policies-in-azure-active-directory-b2c"></a>Aanmelden met een Amazon-account instellen met behulp van aangepast beleid in Azure Active Directory B2C
 
@@ -29,17 +29,16 @@ In dit artikel leest u hoe u aanmelden kunt inschakelen voor gebruikers van een 
 - Voer de stappen in aan de [slag met aangepast beleid](custom-policy-get-started.md).
 - Als u nog geen Amazon-account hebt, kunt u er [https://www.amazon.com/](https://www.amazon.com/)een maken op.
 
-## <a name="register-the-application"></a>De toepassing registreren
+## <a name="create-an-app-in-the-amazon-developer-console"></a>Een app maken in de Amazon-ontwikkelaars console
 
-Als u het aanmelden voor gebruikers van een Amazon-account wilt inschakelen, moet u een Amazon-toepassing maken.
+Als u een Amazon-account als een federatieve id-provider in Azure Active Directory B2C (Azure AD B2C) wilt gebruiken, moet u een toepassing maken in uw [Amazon-ontwikkelaars Services en-technologieën](https://developer.amazon.com). Als u nog geen Amazon-account hebt, kunt u zich aanmelden bij [https://www.amazon.com/](https://www.amazon.com/).
 
-1. Meld u aan bij het [Amazon Developer Center](https://login.amazon.com/) met uw Amazon-account referenties.
-2. Als u dit nog niet hebt gedaan, klikt u op registreren, volgt **u**de registratie stappen voor de ontwikkelaar en accepteert u het beleid.
-3. Selecteer **nieuwe toepassing registreren**.
-4. Voer een **naam**, **Beschrijving**en URL voor de **privacyverklaring**in en klik vervolgens op **Opslaan**. De privacyverklaring is een pagina die u beheert en die privacy-informatie verstrekt aan gebruikers.
-5. Kopieer de waarden van de **client-id**in het gedeelte **Web Settings** . Selecteer **geheim weer geven** om het client geheim te ontvangen en kopieer het vervolgens. U hebt beide nodig om een Amazon-account te configureren als een id-provider in uw Tenant. **Client geheim** is een belang rijke beveiligings referentie.
-6. Selecteer **bewerken**in de `https://your-tenant-name.b2clogin.com` sectie **Webinstellingen** en voer in **toegestane java script-oorsprong** in en `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp` in **toegestane retour-url's**. Vervang `your-tenant-name` door de naam van uw Tenant. Gebruik alleen kleine letters wanneer u uw Tenant naam invoert, zelfs als de Tenant is gedefinieerd met hoofd letters in Azure AD B2C.
-7. Klik op **Opslaan**.
+> [!NOTE]  
+> Gebruik de volgende Url's in **stap 8** hieronder, waarbij `your-tenant-name` u vervangt door de naam van uw Tenant. Gebruik bij het invoeren van de naam van uw Tenant alle kleine letters, zelfs als de Tenant is gedefinieerd met hoofd letters in Azure AD B2C.
+> - Voer voor **toegestane oorsprongen**`https://your-tenant-name.b2clogin.com` 
+> - Voer voor **toegestane retour-url's**`https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp`
+
+[!INCLUDE [identity-provider-amazon-idp-register.md](../../includes/identity-provider-amazon-idp-register.md)]
 
 ## <a name="create-a-policy-key"></a>Een beleids sleutel maken
 
@@ -54,7 +53,7 @@ U moet het client geheim opslaan dat u eerder in uw Azure AD B2C-Tenant hebt vas
 7. Voer een **naam** in voor de beleids sleutel. Bijvoorbeeld `AmazonSecret`. Het voor `B2C_1A_` voegsel wordt automatisch toegevoegd aan de naam van uw sleutel.
 8. Voer in het **geheim**uw client geheim in dat u eerder hebt vastgelegd.
 9. Selecteer `Signature`voor **sleutel gebruik**.
-10. Klik op **maken**.
+10. Klik op **Maken**.
 
 ## <a name="add-a-claims-provider"></a>Een claim provider toevoegen
 

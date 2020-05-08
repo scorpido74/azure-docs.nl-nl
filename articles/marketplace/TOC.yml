@@ -28,9 +28,9 @@
           items:
             - name: Virtuele machines
               href: ./marketplace-virtual-machines.md
-            - name: 'Azure-toepassingen: oplossingssjablonen'
+            - name: Oplossingssjablonen voor Azure-apps
               href: ./marketplace-solution-templates.md
-            - name: 'Azure-toepassingen: beheerde toepassingen'
+            - name: Beheerde toepassingen voor Azure-apps
               href: ./marketplace-managed-apps.md
             - name: SaaS-apps
               href: ./marketplace-saas-applications-technical-publishing-guide.md
@@ -42,7 +42,7 @@
               href: ./consulting-services.md
             - name: 'Office 365, Dynamics 365 en Power BI'
               href: ./appsource-offer-publishing-guide.md
-            - name: Een AppSource- en Azure Marketplace-vermelding inschakelen met behulp van Azure Active Directory
+            - name: Verificatie met Azure AD inschakelen
               href: ./enable-appsource-marketplace-using-azure-ad.md
             - name: Geïntegreerde oplossingen
               href: ./integrated-solutions-for-publishers.md
@@ -51,7 +51,7 @@
           items:
             - name: Best practices voor aanbiedingsvermeldingen
               href: ./gtm-offer-listing-best-practices.md
-            - name: Hoe u wordt uitgelicht
+            - name: Word uitgelicht
               href: ./gtm-how-to-get-featured.md
             - name: Validatie van Marketplace-inhoud
               href: ./marketplace-criteria-content-validation.md
@@ -69,7 +69,7 @@
         - name: Support voor de commerciële marketplace
           href: ./support-azure-marketplace.md
           items:
-            - name: Veelgestelde vragen over Marketplace
+            - name: Veelgestelde vragen over de commerciële marketplace
               href: ./marketplace-faq-publisher-guide.md
             - name: Geografische beschikbaarheid en valuta's
               href: ./marketplace-geo-availability-currencies.md
@@ -289,49 +289,9 @@
             - name: Help-wiki
               href: ./cloud-partner-portal-orig/help-wiki.md
         - name: Aanbieding voor IoT Edge-module
-          href: ./cloud-partner-portal/iot-edge-module/cpp-offer-process-parts.md
-          items:
-            - name: Vereisten
-              href: ./cloud-partner-portal/iot-edge-module/cpp-prerequisites.md
-            - name: Aanbieding voor IoT Edge-module maken
-              href: ./cloud-partner-portal/iot-edge-module/cpp-create-offer.md
-              items:
-                - name: Tabblad voor aanbiedingsinstellingen
-                  href: ./cloud-partner-portal/iot-edge-module/cpp-offer-settings-tab.md
-                - name: Tabblad voor SKU's
-                  href: ./cloud-partner-portal/iot-edge-module/cpp-skus-tab.md
-                - name: Tabblad voor Marketplace
-                  href: ./cloud-partner-portal/iot-edge-module/cpp-marketplace-tab.md
-                - name: Tabblad voor ondersteuning
-                  href: ./cloud-partner-portal/iot-edge-module/cpp-support-tab.md
-            - name: Technische assets voor IoT Edge-module maken
-              href: ./cloud-partner-portal/iot-edge-module/cpp-create-technical-assets.md
-            - name: Aanbieding voor IoT Edge-module publiceren
-              href: ./cloud-partner-portal/iot-edge-module/cpp-publish-offer.md
-            - name: Bestaande aanbieding bijwerken
-              href: ./cloud-partner-portal/iot-edge-module/cpp-update-existing-offer.md
+          href: ./cloud-partner-portal/iot-edge-module/iot-edge-module-offer.md
         - name: Power BI App-aanbieding
           href: ./cloud-partner-portal/power-bi/cpp-power-bi-offer.md
-          items:
-            - name: Vereisten
-              href: ./cloud-partner-portal/power-bi/cpp-prerequisites.md
-            - name: Power BI App-aanbieding maken
-              href: ./cloud-partner-portal/power-bi/cpp-create-offer.md
-              items:
-                - name: Tabblad voor aanbiedingsinstellingen
-                  href: ./cloud-partner-portal/power-bi/cpp-offer-settings-tab.md
-                - name: Tabblad Technische gegevens
-                  href: ./cloud-partner-portal/power-bi/cpp-technical-info-tab.md
-                - name: Tabblad Details van webwinkel
-                  href: ./cloud-partner-portal/power-bi/cpp-storefront-details-tab.md
-                - name: Tabblad Contactpersonen
-                  href: ./cloud-partner-portal/power-bi/cpp-contacts-tab.md
-            - name: Technische assets van Power BI App maken
-              href: ./cloud-partner-portal/power-bi/cpp-create-technical-assets.md
-            - name: Power BI App-aanbieding publiceren
-              href: ./cloud-partner-portal/power-bi/cpp-publish-offer.md
-            - name: Bestaande aanbieding bijwerken
-              href: ./cloud-partner-portal/power-bi/cpp-update-existing-offer.md
         - name: Aanbieding voor SaaS-toepassing
           href: ./cloud-partner-portal/saas-app/cpp-saas-offer.md
         - name: Virtuele-machineaanbieding
@@ -449,6 +409,8 @@
           items:
             - name: Een Azure-toepassingsaanbieding maken
               href: ./partner-center-portal/create-new-azure-apps-offer.md
+            - name: Facturering voor Azure-toepassingen naar gebruik
+              href: ./partner-center-portal/azure-app-metered-billing.md
             - name: Beoordelingsfeedback verwerken
               href: ./partner-center-portal/azure-apps-review-feedback.md
             - name: API voor onboarding
@@ -493,10 +455,10 @@
               href: ./partner-center-portal/create-new-business-central-offer.md
         - name: Aanbiedingen voor IoT Edge-module
           items:
-            - name: Technische assets voor IoT Edge-module voorbereiden
-              href: ./partner-center-portal/create-iot-edge-module-asset.md
             - name: Aanbieding voor IoT Edge-module maken
               href: ./partner-center-portal/azure-iot-edge-module-creation.md
+            - name: Technische assets voor IoT Edge-module voorbereiden
+              href: ./partner-center-portal/create-iot-edge-module-asset.md
         - name: Aanbieding voor beheerde service
           items:
             - name: Een aanbieding voor beheerde service maken
@@ -515,11 +477,6 @@
               href: ./partner-center-portal/create-new-saas-offer.md
             - name: SaaS-facturering naar gebruik
               href: ./partner-center-portal/saas-metered-billing.md
-              items:
-                - name: Service-API's voor Marketplace-meting - Veelgestelde vragen
-                  href: ./partner-center-portal/marketplace-metering-service-apis-faq.md
-                - name: Service-API's voor Marketplace-meting
-                  href: ./partner-center-portal/marketplace-metering-service-apis.md
             - name: SaaS-uitvoerings-API's
               href: ./partner-center-portal/pc-saas-fulfillment-apis.md
               items:
@@ -546,6 +503,14 @@
               href: ./partner-center-portal/commercial-marketplace-lead-management-instructions-marketo.md
             - name: SalesForce
               href: ./partner-center-portal/commercial-marketplace-lead-management-instructions-salesforce.md
+        - name: Service voor Marketplace-meting
+          items:
+            - name: Verificatiestrategieën
+              href: ./partner-center-portal/marketplace-metering-service-authentication.md
+            - name: Service-API's voor Marketplace-meting
+              href: ./partner-center-portal/marketplace-metering-service-apis.md
+            - name: Service-API's voor Marketplace-meting - Veelgestelde vragen
+              href: ./partner-center-portal/marketplace-metering-service-apis-faq.md
         - name: Test drive uw aanbieding
           href: ./partner-center-portal/test-drive.md
         - name: Optie voor collectieve verkoop
@@ -589,11 +554,13 @@
           href: ./partner-center-portal/get-paid.md
         - name: Stel uw betalingsaccount en belastingformulieren
           href: ./partner-center-portal/set-up-your-payout-account-tax-forms.md
-        - name: Factureringsgegevens
-          href: ./partner-center-portal/billing-details.md
         - name: 'Betalingsdrempels, methoden en tijdsbestek'
           href: ./partner-center-portal/payment-thresholds-methods-timeframes.md
         - name: Betalingsoverzicht
+          href: ./partner-center-portal/payout-summary-overview.md
+        - name: Betalingsoverzichten
           href: ./partner-center-portal/payout-summary.md
+        - name: Details van betaalbeleid
+          href: ./partner-center-portal/payout-policy-details.md
         - name: Belastinginformatie
           href: ./partner-center-portal/tax-details-paid-transactions.md

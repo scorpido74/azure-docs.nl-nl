@@ -5,12 +5,12 @@ author: sideeksh
 manager: rochakm
 ms.date: 04/29/2019
 ms.topic: conceptual
-ms.openlocfilehash: b6f665c5b0f2fbd291d20ef21d0a447d20f7c2da
-ms.sourcegitcommit: 291b2972c7f28667dc58f66bbe9d9f7d11434ec1
+ms.openlocfilehash: bc2acc4303a270a2bf71f0c9ff249b60a0328a09
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82738045"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82983275"
 ---
 # <a name="common-questions-azure-to-azure-disaster-recovery"></a>Veelgestelde vragen: nood herstel voor Azure naar Azure
 
@@ -100,6 +100,10 @@ Nee, Site Recovery vereist geen Internet verbinding. Maar hiervoor is toegang to
 Ja, u kunt de toepassing repliceren en de configuratie voor herstel na nood gevallen ook in een afzonderlijke resource groep laten staan.
 
 Als uw toepassing bijvoorbeeld de toepassing, de data base en het web van elke laag in een afzonderlijke resource groep bevat, moet u de [wizard replicatie](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-how-to-enable-replication#enable-replication) drie keer selecteren om alle lagen te beveiligen. Site Recovery worden deze drie lagen gerepliceerd naar drie verschillende resource groepen.
+
+### <a name="can-i-move-storage-accounts-across-resource-groups"></a>Kan ik opslag accounts verplaatsen over resource groepen?
+
+Nee, dit is een niet-ondersteund scenario. Als u echter per ongeluk opslag accounts naar een andere resource groep verplaatst en de oorspronkelijke resource groep verwijdert, kunt u een nieuwe resource groep maken met dezelfde naam als de oude resource groep en vervolgens het opslag account verplaatsen naar deze resource groep.
 
 ## <a name="replication-policy"></a>Beleid voor replicatie
 

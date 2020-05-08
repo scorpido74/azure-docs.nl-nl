@@ -11,12 +11,12 @@ manager: philmea
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: b66f5a7d85eb91970d5f551b010dd512b216b9c6
-ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
-ms.translationtype: MT
+ms.openlocfilehash: 28abf6fca0933158b067dda7ab54af93dac4b7d9
+ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82509513"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82872413"
 ---
 # <a name="get-connected-to-azure-iot-central"></a>Maak verbinding met Azure IoT Central
 
@@ -95,6 +95,14 @@ Als u apparaten bulksgewijs wilt verbinden met X. 509-certificaten, moet u eerst
 
 Genereer X. 509-blad certificaten voor uw apparaten met het geüploade basis certificaat Gebruik de **apparaat-id** als `CNAME` de waarde in de blad certificaten. De apparaatcode heeft de waarde voor **id-bereik** nodig voor uw toepassing, de **apparaat-id**en het bijbehorende certificaat van het apparaat.
 
+#### <a name="sample-device-code"></a>Voorbeeld code van apparaat
+
+In het volgende voor beeld van de [Azure IOT node. js-SDK](https://github.com/Azure/azure-iot-sdk-node/blob/master/provisioning/device/samples/register_x509.js) ziet u hoe een node. js-Apparaatclient een X. 509-blad certificaat en DPS gebruikt om zich te registreren bij een IOT Central-toepassing:
+
+:::code language="nodejs" source="~/azure-iot-sdk-node/provisioning/device/samples/register_x509.js":::
+
+Zie [prov_dev_client_sample. C](https://github.com/Azure/azure-iot-sdk-c/blob/master/provisioning_client/samples/prov_dev_client_sample/prov_dev_client_sample.c) in de [Azure IOT c-inrichting](https://github.com/Azure/azure-iot-sdk-c/blob/master/provisioning_client/devdoc/using_provisioning_client.md)van de client-SDK voor een gelijkwaardig c-voor beeld.
+
 ### <a name="for-testing-purposes-only"></a>Alleen voor test doeleinden
 
 Voor alleen testen kunt u de volgende hulpprogram ma's gebruiken om basis-, tussenliggende en apparaat certificaten te genereren:
@@ -106,11 +114,6 @@ Voor alleen testen kunt u de volgende hulpprogram ma's gebruiken om basis-, tuss
   - Sla de certificaten op als CER-bestanden die u wilt uploaden naar uw IoT Central-toepassing.
   - Gebruik de verificatie code uit de IoT Central toepassing om het verificatie certificaat te genereren.
   - Maak blad certificaten voor uw apparaten met behulp van uw apparaat-Id's als een para meter voor het hulp programma.
-
-### <a name="further-reference"></a>Aanvullende Naslag informatie
-
-- [Voorbeeld implementatie voor RaspberryPi](https://aka.ms/iotcentral-docs-Raspi-releases)
-- [Voor beeld van apparaatclient in C](https://github.com/Azure/azure-iot-sdk-c/blob/master/provisioning_client/devdoc/using_provisioning_client.md)
 
 ## <a name="connect-without-registering-devices"></a>Verbinding maken zonder apparaten te registreren
 

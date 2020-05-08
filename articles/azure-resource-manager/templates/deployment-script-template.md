@@ -5,14 +5,14 @@ services: azure-resource-manager
 author: mumian
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 04/30/2020
+ms.date: 05/06/2020
 ms.author: jgao
-ms.openlocfilehash: 14663e71126d8c201015996e3e4dc76976128bcc
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
-ms.translationtype: HT
+ms.openlocfilehash: 5b938e2072daec56261e529ab8a2a8b15b55d143
+ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82610799"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82872335"
 ---
 # <a name="use-deployment-scripts-in-templates-preview"></a>Implementatie scripts gebruiken in sjablonen (preview-versie)
 
@@ -304,8 +304,8 @@ Als u de deploymentScripts-resource in de portal wilt bekijken, selecteert u **v
 
 Een opslag account en een container exemplaar zijn nodig voor het uitvoeren van scripts en het oplossen van problemen. U hebt de opties om een bestaand opslag account op te geven, anders wordt het opslag account samen met het container exemplaar automatisch gemaakt door de script service. De vereisten voor het gebruik van een bestaand opslag account:
 
-- De volgende soorten opslag accounts worden ondersteund: v2-accounts voor algemeen gebruik, v1-accounts voor algemeen gebruik en fileStorage-accounts. Zie [typen opslag accounts](../../storage/common/storage-account-overview.md)voor meer informatie.
-- De firewall regels voor het opslag account moeten worden uitgeschakeld. Zie [Azure Storage firewalls en virtuele netwerken configureren](../../storage/common/storage-network-security.md)
+- De volgende typen opslag accounts worden ondersteund: v2-, algemeen-en FileStorage-accounts voor algemeen gebruik. Alleen FileStorage ondersteunt Premium SKU. Zie [typen opslag accounts](../../storage/common/storage-account-overview.md)voor meer informatie.
+- De firewall regels van het opslag account worden nog niet ondersteund. Raadpleeg [Firewalls en virtuele netwerken voor Azure Storage configureren](../../storage/common/storage-network-security.md) voor meer informatie.
 - De door de gebruiker toegewezen beheerde identiteit van het implementatie script moet machtigingen hebben voor het beheren van het opslag account, waaronder lezen, maken, bestands shares verwijderen.
 
 Als u een bestaand opslag account wilt opgeven, voegt u de volgende JSON toe aan `Microsoft.Resources/deploymentScripts`het eigenschaps element van:
@@ -316,6 +316,16 @@ Als u een bestaand opslag account wilt opgeven, voegt u de volgende JSON toe aan
   "storageAccountKey": "myKey"
 },
 ```
+
+- **storageAccountName**: Geef de naam van het opslag account op.
+- **storageAccountKey "**: Geef een van de sleutels voor het opslag account op. U kunt de [`listKeys()`](./template-functions-resource.md#listkeys) functie gebruiken om de sleutel op te halen. Bijvoorbeeld:
+
+    ```json
+    "storageAccountSettings": {
+        "storageAccountName": "[variables('storageAccountName')]",
+        "storageAccountKey": "[listKeys(resourceId('Microsoft.Storage/storageAccounts', variables('storageAccountName')), '2019-06-01').keys[0].value]"
+    }
+    ```
 
 Zie [voorbeeld sjablonen](#sample-templates) voor een volledige `Microsoft.Resources/deploymentScripts` definitie-voor beeld.
 
@@ -336,7 +346,7 @@ De levens cyclus van deze resources wordt bepaald door de volgende eigenschappen
 - **retentionInterval**: Geef het tijds interval op dat een script bron moet worden bewaard en waarna deze wordt verwijderd.
 
 > [!NOTE]
-> Het is niet raadzaam om de implementatie script bronnen voor andere doel einden te gebruiken.
+> Het is niet raadzaam om het opslag account en het container exemplaar dat door de script service wordt gegenereerd voor andere doel einden te gebruiken. De twee resources kunnen worden verwijderd, afhankelijk van de levens cyclus van het script.
 
 ## <a name="run-script-more-than-once"></a>Script meer dan één keer uitvoeren
 

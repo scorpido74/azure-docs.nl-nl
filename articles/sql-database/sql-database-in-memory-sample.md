@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: ''
 ms.date: 12/18/2018
-ms.openlocfilehash: b707d67c88eb550d397134b2294c1c5b0e1f7f7d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7ff4647682f5f4d688f3b581b96715e01976a387
+ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80528221"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82891156"
 ---
 # <a name="in-memory-sample"></a>Voor beeld in het geheugen
 
@@ -182,7 +182,7 @@ Installeer de RML-hulpprogram ma's (Replay Markup Language) op de virtuele machi
 Zie voor meer informatie:
 - De ostress. exe-discussie in de [voorbeeld database voor in-Memory OLTP](https://msdn.microsoft.com/library/mt465764.aspx).
 - [Voorbeeld database voor in-Memory OLTP](https://msdn.microsoft.com/library/mt465764.aspx).
-- De [blog voor het installeren van ostress. exe](https://blogs.msdn.com/b/psssql/archive/20../../cumulative-update-2-to-the-rml-utilities-for-microsoft-sql-server-released.aspx).
+- De [blog voor het installeren van ostress. exe](https://techcommunity.microsoft.com/t5/sql-server-support/cumulative-update-2-to-the-rml-utilities-for-microsoft-sql/ba-p/317910).
 
 
 
@@ -389,7 +389,7 @@ In een Data Base met de prijs categorie P2 kunt u ongeveer negen keer de prestat
 - [OLTP-opslag in het geheugen bewaken](sql-database-in-memory-oltp-monitoring.md) voor OLTP in het geheugen
 
 
-## <a name="additional-resources"></a>Aanvullende bronnen
+## <a name="additional-resources"></a>Extra resources
 
 #### <a name="deeper-information"></a>Dieper informatie
 

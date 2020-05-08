@@ -4,14 +4,14 @@ description: Azure Key Vault met behulp van HPC cache van Azure gebruiken om de 
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: conceptual
-ms.date: 04/23/2020
+ms.date: 04/29/2020
 ms.author: v-erkel
-ms.openlocfilehash: f8a8b8dfedd9c4ac0590dc91e5cdced50d2be6ef
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2d10241b8395c33767ffeeb550d9d8060bde3ce3
+ms.sourcegitcommit: acc558d79d665c8d6a5f9e1689211da623ded90a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82195074"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82597736"
 ---
 # <a name="use-customer-managed-encryption-keys-for-azure-hpc-cache"></a>Door de klant beheerde versleutelings sleutels gebruiken voor Azure HPC-cache
 
@@ -20,11 +20,7 @@ U kunt Azure Key Vault gebruiken om de eigendom te bepalen van de sleutels die w
 > [!NOTE]
 > Alle gegevens die zijn opgeslagen in azure, met inbegrip van de cache schijven, worden standaard versleuteld met behulp van door micro soft beheerde sleutels. U hoeft alleen de stappen in dit artikel uit te voeren als u de sleutels wilt beheren die worden gebruikt voor het versleutelen van uw gegevens.
 
-Deze functie is alleen beschikbaar in deze Azure-regio's:
-
-* VS - oost
-* VS - zuid-centraal
-* VS - west 2
+Deze functie is alleen beschikbaar in een aantal Azure-regio's waar Azure HPC cache beschikbaar is. Raadpleeg de lijst met [Beschik baarheid van regio's](hpc-cache-overview.md#region-availability) voor meer informatie.
 
 Er zijn drie stappen om door de klant beheerde sleutel versleuteling in te scha kelen voor Azure HPC-cache:
 
@@ -71,7 +67,7 @@ Bij het maken van de cache moet u een kluis, sleutel en sleutel versie opgeven d
 Lees de [Azure Key Vault-documentatie](../key-vault/key-vault-overview.md) voor meer informatie.
 
 > [!NOTE]
-> De Azure Key Vault moeten hetzelfde abonnement gebruiken en moeten zich in dezelfde regio bevinden als de Azure HPC-cache. Gebruik een van de ondersteunde regio's die aan het begin van dit artikel worden vermeld.
+> De Azure Key Vault moeten hetzelfde abonnement gebruiken en moeten zich in dezelfde regio bevinden als de Azure HPC-cache. Zorg ervoor dat de regio die u kiest [ondersteuning biedt voor de functie door de klant beheerde sleutels](hpc-cache-overview.md#region-availability).
 
 ## <a name="2-create-the-cache-with-customer-managed-keys-enabled"></a>2. de cache maken met door de klant beheerde sleutels ingeschakeld
 

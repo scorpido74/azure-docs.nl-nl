@@ -7,16 +7,16 @@ ms.topic: how-to
 ms.date: 04/15/2020
 ms.author: ronytho
 ms.reviewer: jrasnick
-ms.openlocfilehash: 9f519022fffe98c565c3b2d30f6578b9ebb70c57
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1f0644c25d0047f774fe8f99efa34a33e10d7b2b
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81428015"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82983292"
 ---
 # <a name="grant-permissions-to-workspace-managed-identity-preview"></a>Machtigingen verlenen voor beheerde identiteit van werk ruimte (preview-versie)
 
-In dit artikel leert u hoe u machtigingen kunt verlenen aan de beheerde identiteit in de Azure Synapse-werk ruimte. Machtigingen hebben op hun beurt toegang tot SQL-groepen in de werk ruimte en het ADLS Gen2-opslag account via de Azure Portal.
+In dit artikel leert u hoe u machtigingen kunt verlenen aan de beheerde identiteit in de Azure Synapse-werk ruimte. Machtigingen hebben op hun beurt toegang tot SQL-groepen in de werk ruimte en ADLS Gen2 opslag account via de Azure Portal.
 
 >[!NOTE]
 >Deze beheerde identiteit van de werk ruimte wordt aangeduid als beheerde identiteit via de rest van dit document.
@@ -29,25 +29,25 @@ Selecteer **beveiliging en netwerken** bij het maken van uw Azure Synapse-werk r
 
 ![Machtigingen beheren voor SQL-groepen](./media/how-to-grant-workspace-managed-identity-permissions/configure-workspace-managed-identity-16.png)
 
-## <a name="grant-the-managed-identity-permissions-to-adls-gen2-storage-account"></a>De beheerde identiteits machtigingen verlenen aan het ADLS Gen2-opslag account
+## <a name="grant-the-managed-identity-permissions-to-adls-gen2-storage-account"></a>De beheerde identiteits machtigingen verlenen aan ADLS Gen2-opslag account
 
-Er is een ADLS Gen2-opslag account vereist om een Azure Synapse-werk ruimte te maken. Voor het starten van Spark-groepen in de Azure Synapse-werk ruimte, moet de beheerde Azure Synapse-identiteit de rol van *BLOB voor gegevens opslag* voor dit opslag account hebben. Pipeline-indeling in azure Synapse biedt ook voor delen van deze rol.
+Een ADLS Gen2 Storage-account is vereist voor het maken van een Azure Synapse-werk ruimte. Voor het starten van Spark-groepen in de Azure Synapse-werk ruimte, moet de beheerde Azure Synapse-identiteit de rol van *BLOB voor gegevens opslag* voor dit opslag account hebben. Pipeline-indeling in azure Synapse biedt ook voor delen van deze rol.
 
 ### <a name="grant-permissions-to-managed-identity-during-workspace-creation"></a>Machtigingen verlenen voor beheerde identiteit tijdens het maken van de werk ruimte
 
-Azure Synapse probeert de rol Storage BLOB data contributor toe te kennen aan de beheerde identiteit nadat u de Azure Synapse-werk ruimte hebt gemaakt met behulp van Azure Portal. U geeft de gegevens van het ADLS Gen2-opslag account op het tabblad **basis beginselen** .
+Azure Synapse probeert de rol Storage BLOB data contributor toe te kennen aan de beheerde identiteit nadat u de Azure Synapse-werk ruimte hebt gemaakt met behulp van Azure Portal. U geeft de gegevens van het ADLS Gen2 Storage-account op het tabblad **basis beginselen** .
 
 ![Tabblad basis informatie in de werk ruimte maken stroom](./media/how-to-grant-workspace-managed-identity-permissions/configure-workspace-managed-identity-1.png)
 
-Kies het ADLS Gen2-opslag account en het bestands systeem in **account naam** en **bestandssysteem naam**.
+Kies het ADLS Gen2 Storage-account en het bestands systeem in **account naam** en **bestandssysteem naam**.
 
-![Details van een ADLS Gen2-opslag account opgeven](./media/how-to-grant-workspace-managed-identity-permissions/configure-workspace-managed-identity-2.png)
+![Details van een ADLS Gen2 Storage-account opgeven](./media/how-to-grant-workspace-managed-identity-permissions/configure-workspace-managed-identity-2.png)
 
-Als de maker van de werk ruimte ook de **eigenaar** van het ADLS Gen2-opslag account is, wijst Azure Synapse de rol van *BLOB voor gegevens* van de opslagreplicacluster toe aan de beheerde identiteit. U ziet het volgende bericht onder de gegevens van het opslag account die u hebt ingevoerd.
+Als de maker van de werk ruimte ook de **eigenaar** van het ADLS Gen2-opslag account is, wijst Azure Synapse de rol van *BLOB voor gegevens opslag* toe aan de beheerde identiteit. U ziet het volgende bericht onder de gegevens van het opslag account die u hebt ingevoerd.
 
 ![Inzender toewijzing van BLOB-gegevens opslag is geslaagd](./media/how-to-grant-workspace-managed-identity-permissions/configure-workspace-managed-identity-3.png)
 
-Als de maker van de werk ruimte niet de eigenaar van het ADLS Gen2-opslag account is, wijst Azure Synapse niet de rol van *BLOB-gegevens* van het type opslag toe aan de beheerde identiteit. In het bericht dat wordt weer gegeven onder de gegevens van het opslag account wordt de maker van de werk ruimte gewaarschuwd dat ze niet voldoende machtigingen hebben om de rol van *BLOB-gegevensinzender voor opslag* toe te kennen aan de beheerde identiteit.
+Als de maker van de werk ruimte niet de eigenaar van het ADLS Gen2 Storage-account is, wijst Azure Synapse niet de rol van BLOB-gegevens van de *opslag groep* toe aan de beheerde identiteit. In het bericht dat wordt weer gegeven onder de gegevens van het opslag account wordt de maker van de werk ruimte gewaarschuwd dat ze niet voldoende machtigingen hebben om de rol van *BLOB-gegevensinzender voor opslag* toe te kennen aan de beheerde identiteit.
 
 ![De Inzender toewijzing voor de opslag van BLOB-gegevens is mislukt](./media/how-to-grant-workspace-managed-identity-permissions/configure-workspace-managed-identity-4.png)
 
@@ -55,12 +55,12 @@ Als bericht status is het niet mogelijk om Spark-groepen te maken, tenzij de *In
 
 ### <a name="grant-permissions-to-managed-identity-after-workspace-creation"></a>Machtigingen verlenen voor beheerde identiteit na het maken van de werk ruimte
 
-Als u tijdens het maken van de werk ruimte de *Inzender voor gegevens van blobs* niet toewijst aan de beheerde identiteit, wijst de **eigenaar** van het ADLS Gen2-opslag account deze rol hand matig toe aan de identiteit. De volgende stappen helpen u hand matige toewijzing uit te voeren.
+Als u tijdens het maken van de werk ruimte de *Inzender voor gegevens van blobs* niet toewijst aan de beheerde identiteit, wijst de **eigenaar** van de ADLS Gen2 Storage-account deze rol hand matig toe aan de identiteit. De volgende stappen helpen u hand matige toewijzing uit te voeren.
 
-#### <a name="step-1-navigate-to-the-adls-gen2-storage-account-in-azure-portal"></a>Stap 1: Navigeer naar het ADLS Gen2-opslag account in Azure Portal
+#### <a name="step-1-navigate-to-the-adls-gen2-storage-account-in-azure-portal"></a>Stap 1: Navigeer naar het ADLS Gen2 Storage-account in Azure Portal
 
-Open in Azure Portal het ADLS Gen2-opslag account en selecteer **overzicht** in het linkernavigatievenster. U hoeft alleen de rol *Storage BLOB data Inzender* toe te wijzen op het niveau van de container of het bestands systeem. Selecteer **containers**.  
-![Overzicht van het ADLS Gen2-opslag account](./media/how-to-grant-workspace-managed-identity-permissions/configure-workspace-managed-identity-5.png)
+Open in Azure Portal het ADLS Gen2 Storage-account en selecteer **overzicht** in het linkernavigatievenster. U hoeft alleen de rol *Storage BLOB data Inzender* toe te wijzen op het niveau van de container of het bestands systeem. Selecteer **containers**.  
+![Overzicht van ADLS Gen2 Storage-account](./media/how-to-grant-workspace-managed-identity-permissions/configure-workspace-managed-identity-5.png)
 
 #### <a name="step-2-select-the-container"></a>Stap 2: de container selecteren
 
@@ -69,7 +69,7 @@ De beheerde identiteit moet gegevens toegang hebben tot de container (bestands s
 
 
 Selecteer diezelfde container of het bestands systeem om de rol van *BLOB voor gegevens opslag* te verlenen aan de beheerde identiteit.
-![ADLS Gen2-opslag account container selecteren](./media/how-to-grant-workspace-managed-identity-permissions/configure-workspace-managed-identity-6.png)
+![Selectie ADLS Gen2 Storage-account container](./media/how-to-grant-workspace-managed-identity-permissions/configure-workspace-managed-identity-6.png)
 
 #### <a name="step-3-navigate-to-access-control"></a>Stap 3: Navigeer naar Access Control
 
@@ -114,7 +114,7 @@ Selecteer **Access Control (IAM)** en selecteer vervolgens **roltoewijzingen**.
 ![Roltoewijzing controleren](./media/how-to-grant-workspace-managed-identity-permissions/configure-workspace-managed-identity-14.png)
 
 De beheerde identiteit wordt weer gegeven onder de sectie **Storage BLOB data contributor** waaraan de rol voor *BLOB data* contributor voor opslag is toegewezen. 
-![ADLS Gen2-opslag account container selecteren](./media/how-to-grant-workspace-managed-identity-permissions/configure-workspace-managed-identity-15.png)
+![Selectie ADLS Gen2 Storage-account container](./media/how-to-grant-workspace-managed-identity-permissions/configure-workspace-managed-identity-15.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 

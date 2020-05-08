@@ -5,16 +5,59 @@ ms.subservice: ''
 ms.topic: overview
 author: bwren
 ms.author: bwren
-ms.date: 03/05/2020
-ms.openlocfilehash: a2e6d2a459a6713aa9372496fc3a933c0a886ed9
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.date: 04/06/2020
+ms.openlocfilehash: 8701acc6ac10dd9d31df99bb04dd030d156250e2
+ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80802601"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82871396"
 ---
 # <a name="whats-new-in-azure-monitor-documentation"></a>Wat is er nieuw in Azure Monitor documentatie?
 In dit artikel vindt u een lijst met Azure Monitor-artikelen die nieuw zijn of aanzienlijk zijn bijgewerkt. Het wordt de eerste week van elke maand vernieuwd, zodat artikel updates van de vorige maand worden meegenomen.
+
+## <a name="april-2020"></a>April 2020
+
+### <a name="general"></a>Algemeen
+- [Azure monitor door de klant beheerde sleutel](https://docs.microsoft.com/azure/azure-monitor/platform/customer-managed-keys.md) toegevoegd voor asynchrone bewerkingen
+- [Beheer log Analytics-werk ruimten in azure monitor](https://docs.microsoft.com/azure/azure-monitor/platform/manage-access.md) -bijgewerkte secties met aangepaste Logboeken.
+
+### <a name="alerts"></a>Waarschuwingen
+- [Actie regels voor door Azure monitor waarschuwingen](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-action-rules) toegevoegde video.
+- [Overzicht van waarschuwings-en meldings bewaking in door Azure](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-overview.md) toegevoegde video.
+
+### <a name="application-insights"></a>Application Insights
+- [Toepassings toewijzing in azure-toepassing Insights](https://docs.microsoft.com/azure/azure-monitor/app/app-map.md) -Cloud rolnaams configuratie voor de Java-Agent is toegevoegd.
+- [Azure-toepassing Insights-API](https://docs.microsoft.com/azure/azure-monitor/app/status-monitor-v2-api-reference.md) -referentie voor .net-agents-geconsolideerde API-verwijzing.
+- [IP-adressen die worden gebruikt door Application Insights en log Analytics](https://docs.microsoft.com/azure/azure-monitor/app/ip-addresses.md) geactualiseerde IP-adressen voor app Insights-en log Analytics-api's, webhooks voor actie groepen, Azure Amerikaanse overheid.
+- [Java-toepassingen overal bewaken](https://docs.microsoft.com/azure/azure-monitor/app/java-standalone-config.md) -nieuw artikel
+- [Java-toepassingen bewaken in elke omgeving](https://docs.microsoft.com/azure/azure-monitor/app/java-in-process-agent.md) -nieuw artikel
+- [Java-toepassingen bewaken die worden uitgevoerd in een omgeving](https://docs.microsoft.com/azure/azure-monitor/app/java-standalone-arguments.md) -nieuw artikel
+- [Java-toepassingen bewaken die on-premises worden uitgevoerd](https://docs.microsoft.com/azure/azure-monitor/app/java-on-premises.md) -nieuw artikel
+- [Application Insights verwijderen in Visual Studio](https://docs.microsoft.com/azure/azure-monitor/app/remove-application-insights.md) -nieuw artikel
+- [Telemetrie-bemonstering in azure-toepassing Insights](https://docs.microsoft.com/azure/azure-monitor/app/sampling) -correctie in het voor beeld met een vaste frequentie in python.
+
+### <a name="containers"></a>Containers
+- [Azure Red Hat open Shift v4. x configureren met Azure monitor voor containers](https://docs.microsoft.com/azure/azure-monitor/insights/container-insights-azure-redhat4-setup) -nieuw artikel
+- [ServiceNow Sync-problemen hand matig oplossen](https://docs.microsoft.com/azure/azure-monitor/platform/itsmc-resync-servicenow) -nieuw artikel
+- [Stoppen met het bewaken van uw Azure en Red Hat open Shift v4-cluster](https://docs.microsoft.com/azure/azure-monitor/insights/container-insights-optout-openshift-v4) -nieuw artikel
+- Het [bewaken van uw Azure Red Hat open Shift v3-cluster beëindigen](https://docs.microsoft.com/azure/azure-monitor/insights/container-insights-optout-openshift-v3) -nieuw artikel
+- [Stoppen met het bewaken van uw hybride Kubernetes-cluster](https://docs.microsoft.com/azure/azure-monitor/insights/container-insights-optout-hybrid) -nieuw artikel
+
+### <a name="insights"></a>Inzichten
+- [Azure-sleutel kluizen controleren met Azure monitor voor sleutel kluizen (preview)](https://docs.microsoft.com/azure/azure-monitor/insights/key-vault-insights-overview) -nieuw artikel
+
+### <a name="logs"></a>Logboeken
+- [Azure Monitor service limieten](https://docs.microsoft.com/azure/azure-monitor/service-limits) -toegevoegde gebruikers query beperking.
+- Het [gebruik en de kosten voor Azure monitor logboeken beheren](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage) -facturering voor logboek clusters. Er is een Kusto-query toegevoegd waarmee klanten met een verouderde prijs categorie per knoop punt kunnen bepalen of ze moeten worden verplaatst naar een reserverings laag per GB of capaciteit.
+
+### <a name="metrics"></a>Metrische gegevens
+- [Geavanceerde functies van Azure Metrics Explorer](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-charts) toegevoegde aggregatie sectie.
+
+### <a name="workbooks"></a>Werkmappen
+- [Azure monitor werkmappen en Azure Resource Manager sjablonen](https://docs.microsoft.com/azure/azure-monitor/platform/workbooks-automate) -Resource Manager-sjabloon voor het implementeren van een werkmap sjabloon toevoegen.
+
+
 
 ## <a name="march-2020"></a>Maart 2020
 

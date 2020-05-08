@@ -6,12 +6,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 08/29/2016
 ms.custom: seodec18
-ms.openlocfilehash: 3305cfb81980984574961b2a84a056f5d1879ead
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: cb68860af56914acede6c9cbf04d3e8ad3edbe04
+ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79280051"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82891061"
 ---
 # <a name="troubleshoot-an-app-in-azure-app-service-using-visual-studio"></a>Problemen met een app in Azure App Service oplossen met Visual Studio
 ## <a name="overview"></a>Overzicht
@@ -614,7 +614,7 @@ U hebt gezien hoe u met Visual Studio eenvoudig Logboeken kunt weer geven die zi
 Raadpleeg de volgende bronnen voor meer informatie over het oplossen van problemen met apps in Azure App Service:
 
 * [Apps controleren](web-sites-monitor.md)
-* Het [onderzoeken van geheugen lekken in azure app service met Visual Studio 2013](https://blogs.msdn.com/b/visualstudioalm/archive/2013/12/20/investigating-memory-leaks-in-azure-web-sites-with-visual-studio-2013.aspx). Micro soft ALM blog bericht over de functies van Visual Studio voor het analyseren van problemen met beheerde geheugen.
+* Het [onderzoeken van geheugen lekken in azure app service met Visual Studio 2013](https://devblogs.microsoft.com/devops/investigating-memory-leaks-in-azure-web-sites-with-visual-studio-2013/). Micro soft ALM blog bericht over de functies van Visual Studio voor het analyseren van problemen met beheerde geheugen.
 * [Azure app service online hulp middelen waarover u moet weten](https://azure.microsoft.com/blog/2014/03/28/windows-azure-websites-online-tools-you-should-know-about-2/). Blog bericht van Amit Apple.
 
 Start een thread in een van de volgende forums voor hulp bij een specifieke vraag om problemen op te lossen:
@@ -678,7 +678,7 @@ Raadpleeg de volgende bronnen voor meer informatie over het analyseren van webse
   Een hulp programma voor het weer geven van gegevens in webserver logboeken (*logboek* bestanden).
 * [Problemen met IIS-prestatie problemen of toepassings fouten oplossen met LogParser](https://www.iis.net/learn/troubleshoot/performance-issues/troubleshooting-iis-performance-issues-or-application-errors-using-logparser)<br/>
   Een inleiding tot het hulp programma log parser dat u kunt gebruiken om webserver logboeken te analyseren.
-* [Blog berichten door Robert McMurray met LogParser](https://blogs.msdn.com/b/robert_mcmurray/archive/tags/logparser/)<br/>
+* [Blog berichten door Robert McMurray met LogParser](https://docs.microsoft.com/archive/blogs/robert_mcmurray/using-logparser-with-ftp-7-x-sessions)<br/>
 * [De HTTP-status code in IIS 7,0, IIS 7,5 en IIS 8,0](https://support.microsoft.com/kb/943891)
 
 ### <a name="analyzing-failed-request-tracing-logs"></a>Logboeken voor tracering van mislukte aanvragen analyseren

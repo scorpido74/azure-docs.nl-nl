@@ -7,12 +7,12 @@ ms.date: 02/23/2020
 ms.author: rogarana
 ms.subservice: files
 ms.topic: conceptual
-ms.openlocfilehash: 5aee3a19e33204da00483d0f4ee3f6ee97e8a07d
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.openlocfilehash: b4d3be9fbacee82f36f1238c5d9b4598c95b5df2
+ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82856265"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82888809"
 ---
 # <a name="frequently-asked-questions-faq-about-azure-files"></a>Lees de veelgestelde vragen (FAQ) over Azure Files
 [Azure files](storage-files-introduction.md) biedt volledig beheerde bestands shares in de cloud die toegankelijk zijn via het industrie standaard [SMB-protocol (Server Message Block)](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx). U kunt Azure-bestands shares gelijktijdig koppelen aan Cloud-of on-premises implementaties van Windows, Linux en macOS. U kunt ook Azure-bestands shares op Windows Server-computers in de cache opslaan met behulp van Azure File Sync voor snelle toegang, waarbij de gegevens worden gebruikt.
@@ -170,7 +170,7 @@ In dit artikel vindt u antwoorden op veelgestelde vragen over Azure Files-functi
 
     - U kunt Shared Access signatures (SAS) gebruiken voor het genereren van tokens met specifieke machtigingen en die geldig zijn voor een opgegeven tijds interval. U kunt bijvoorbeeld een token genereren met alleen-lezen toegang tot een specifiek bestand met een verval datum van 10 minuten. Iedereen die beschikt over het token terwijl het token geldig is heeft alleen-lezen toegang tot dat bestand voor die tien minuten. Sleutels voor gedeelde toegangs handtekeningen worden alleen ondersteund via de REST API of in client bibliotheken. U moet de Azure-bestands share via SMB koppelen met behulp van de sleutels voor het opslag account.
 
-    - Azure File Sync behoudt en repliceert alle discretionaire Acl's, of DACL'S, (of Active Directory of lokaal) naar alle server eindpunten die worden gesynchroniseerd. Omdat Windows Server al kan worden geverifieerd met Active Directory, is Azure File Sync een efficiënte optie voor stop-gap totdat volledige ondersteuning voor verificatie op basis van Active Directory en ACL-ondersteuning arriveert.
+    - Azure File Sync behoudt en repliceert alle discretionaire Acl's, of DACL'S, (of Active Directory of lokaal) naar alle server eindpunten die worden gesynchroniseerd. 
     
     U kunt de [toegang tot Azure Storage machtigen](https://docs.microsoft.com/azure/storage/common/storage-auth?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) voor een uitgebreide weer gave van alle protocollen die worden ondersteund op Azure Storage services. 
 

@@ -12,12 +12,12 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: ''
 ms.date: 03/12/2019
-ms.openlocfilehash: f1d08581c5d29fc41fb33541d766af7cece88cdc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5c171c1bab99e4e3748267308745ee66631ed08d
+ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81451666"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82888963"
 ---
 # <a name="always-encrypted-protect-sensitive-data-and-store-encryption-keys-in-azure-key-vault"></a>Always Encrypted: gevoelige gegevens beveiligen en versleutelings sleutels opslaan in Azure Key Vault
 
@@ -57,7 +57,7 @@ Nu uw client-app is geconfigureerd en u uw toepassings-ID hebt, is het tijd om e
 
 U kunt snel een sleutel kluis maken door het volgende script uit te voeren. Zie [Wat is Azure Key Vault?](../key-vault/general/overview.md)voor een gedetailleerde uitleg van deze opdrachten en meer informatie over het maken en configureren van een sleutel kluis.
 
-# <a name="powershell"></a>[Zo](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 > [!IMPORTANT]
 > De module Power shell Azure Resource Manager (RM) wordt nog steeds ondersteund door Azure SQL Database, maar alle toekomstige ontwikkeling is voor de module AZ. SQL. De AzureRM-module blijft oplossingen ontvangen tot ten minste december 2020.  De argumenten voor de opdrachten in de module AZ en in de AzureRm-modules zijn aanzienlijk identiek. Zie [Inleiding tot de nieuwe Azure PowerShell AZ-module](/powershell/azure/new-azureps-module-az)voor meer informatie over de compatibiliteit.
@@ -621,4 +621,4 @@ Nadat u een Data Base hebt gemaakt die gebruikmaakt van Always Encrypted, kunt u
 - [Transparante gegevens versleuteling](https://msdn.microsoft.com/library/bb934049.aspx)
 - [Versleuteling SQL Server](https://msdn.microsoft.com/library/bb510663.aspx)
 - [Wizard Always Encrypted](https://msdn.microsoft.com/library/mt459280.aspx)
-- [Always Encrypted blog](https://blogs.msdn.com/b/sqlsecurity/archive/tags/always-encrypted/)
+- [Always Encrypted blog](https://docs.microsoft.com/archive/blogs/sqlsecurity/always-encrypted-key-metadata)

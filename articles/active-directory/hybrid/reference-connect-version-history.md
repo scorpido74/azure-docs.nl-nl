@@ -12,12 +12,12 @@ ms.date: 04/23/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7704a758f53b6ba26b1c9cf9e9e2811f533601f0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 08f142a270cae525571ae414602a89b2538c17d0
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82112198"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82981983"
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Azure AD Connect: release geschiedenis van versie
 Het Azure Active Directory (Azure AD)-team werkt Azure AD Connect regel matig bij met nieuwe functies en functionaliteit. Niet alle toevoegingen zijn van toepassing op alle doel groepen.
@@ -47,6 +47,17 @@ Niet alle versies van Azure AD Connect worden beschikbaar gesteld voor automatis
 >Als u Azure AD Connect voor synchronisatie hebt ingeschakeld, kunt u binnenkort automatisch status meldingen ontvangen die u waarschuwen over toekomstige afschaffing wanneer u een van de oudere versies uitvoert.
 >
 >Raadpleeg [dit artikel](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-upgrade-previous-version) voor meer informatie over het upgraden van Azure AD Connect naar de nieuwste versie.
+
+## <a name="15300"></a>1.5.30.0
+
+### <a name="release-status"></a>Status van de release
+05/07/2020: uitgebracht voor downloaden
+
+### <a name="fixed-issues"></a>Problemen opgelost
+- Er is een probleem opgelost waarbij niet-geselecteerde domeinen onjuist zijn geselecteerd in de gebruikers interface van de wizard.
+- Er is een probleem opgelost in de Power shell-module ADSyncConfig, waarbij het aanroepen van de opdracht DSACLS die wordt gebruikt in alle cmdlets voor de set-ADSync *-machtigingen een van de volgende fouten veroorzaken:
+     - `GrantAclsNoInheritance : The parameter is incorrect.   The command failed to complete successfully.`
+     - `GrantAcls : No GUID Found for computer …`
 
 ## <a name="15290"></a>1.5.29.0
 
@@ -105,6 +116,7 @@ Met deze hotfix-build wordt een probleem met build 1.5.18.0 opgelost als u de fu
 - Er is een probleem opgelost met het maken van het Azure Active Directory synchronisatie account waar Directory-extensies of PHS kunnen mislukken omdat het account niet is door gegeven aan alle service replica's voordat een poging wordt gedaan om te gebruiken. 
 - Er is een fout opgelost in het compressie hulpprogramma synchronisatie fouten dat geen surrogaat tekens goed afhandelen. 
 - Er is een fout opgelost in de automatische upgrade die de server heeft verlaten in de onderbroken status van scheduler. 
+- Er is een fout opgelost in de pagina domein/organisatie-eenheid filteren waarmee de profielen voor het uitvoeren van een domein worden verwijderd door de domein structuur alleen gedeeltelijk uit te breiden zonder wijzigingen aan te brengen.
 
 ## <a name="14380"></a>1.4.38.0
 ### <a name="release-status"></a>Status van de release

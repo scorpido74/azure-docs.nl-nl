@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 03/10/2020
-ms.openlocfilehash: eb778c8d24639320b60927438de76a29de724ac2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 04/27/2020
+ms.openlocfilehash: 7b72d83740e0e2b02ef9d2ea3cd1cbf04a4c99cc
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81684718"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82983564"
 ---
 # <a name="execute-r-script"></a>R-Script uitvoeren
 
@@ -42,6 +42,8 @@ azureml_main <- function(dataframe1, dataframe2){
   return(list(dataset1=dataframe1, dataset2=dataframe2))
 }
 ```
+> [!NOTE]
+> Als uw pijp lijn meerdere R-script modules voor uitvoeren bevat en dezelfde pakketten nodig heeft die niet voor komen in de lijst met vooraf geïnstalleerde, moet u de pakketten in elke module installeren. 
 
 ## <a name="installing-r-packages"></a>R-pakketten installeren
 Als u extra R-pakketten wilt installeren `install.packages()` , gebruikt u de-methode. Pakketten worden geïnstalleerd voor elke **Execute r-script** module en worden niet gedeeld met andere **uitvoering r-script** modules.
@@ -140,7 +142,7 @@ Gegevens sets die zijn opgeslagen in de ontwerp functie worden automatisch gecon
 1. Typ of plak een geldig R-script in het tekstvak **R-script** .
 
     > [!NOTE]
-    > Zorg ervoor dat u uw script schrijft en er zeker van zijn dat er geen syntaxis fout is, zoals het gebruik van een niet-gedeclareerde variabele of een niet-geïmporteerde module of functie. U kunt ook extra aandacht best Eden aan de lijst met vooraf geïnstalleerde pakketten aan het einde van dit document. Als u pakketten wilt gebruiken die niet worden vermeld, installeert u ze in uw script zoals`install.packages("zoo",repos = "http://cran.us.r-project.org")`
+    > Zorg ervoor dat u uw script schrijft en er zeker van zijn dat er geen syntaxis fout is, zoals het gebruik van niet-gedeclareerde variabelen of niet-geïmporteerde modules of functies. U kunt ook extra aandacht best Eden aan de lijst met vooraf geïnstalleerde pakketten aan het einde van dit document. Als u pakketten wilt gebruiken die niet worden vermeld, installeert u ze in uw script zoals`install.packages("zoo",repos = "http://cran.us.r-project.org")`
     
     > [!NOTE]
     > Functions is afhankelijk van de X11-bibliotheek, zoals View, worden niet ondersteund omdat de X11-bibliotheek niet vooraf is geïnstalleerd.
@@ -447,7 +449,7 @@ De huidige lijst met vooraf geïnstalleerde R-pakketten die beschikbaar zijn voo
 | stringi      | 1.4.3      | 
 | stringr      | 1.3.1      | 
 | survival     | 2.44-1.1   | 
-| sys          | 3,2        | 
+| sys          | 3.2        | 
 | tcltk        | 3.5.1      | 
 | tibble       | 2.1.3      | 
 | tidyr        | 0.8.3      | 

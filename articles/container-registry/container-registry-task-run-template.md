@@ -3,12 +3,12 @@ title: Snelle taak uitvoeren met sjabloon
 description: Een ACR-taak in een wachtrij plaatsen om een installatie kopie te bouwen met behulp van een Azure Resource Manager sjabloon
 ms.topic: article
 ms.date: 04/22/2020
-ms.openlocfilehash: 6e85e4a3d10ea34d71efde959aa7d179eba69e3b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7ad40d2e925d5e1443af9bce4115d45b0e8c06e1
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82196528"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82927765"
 ---
 # <a name="run-acr-tasks-using-resource-manager-templates"></a>ACR-taken uitvoeren met behulp van Resource Manager-sjablonen
 
@@ -139,7 +139,7 @@ Voor demonstratie doeleinden maakt u een afzonderlijk container register als het
 
 ### <a name="create-new-dockerfile"></a>Nieuwe Dockerfile maken
 
-Maak een Dockerfile die de basis installatie kopie uit het basis register ophaalt. Voer de volgende stappen uit in uw lokale Fork van de GitHub-opslag plaats, bijvoorbeeld https://github.com/myGitHubID/acr-build-helloworld-node.git*.
+Maak een Dockerfile die de basis installatie kopie uit het basis register ophaalt. Voer de volgende stappen uit in uw lokale Fork van de GitHub-opslag plaats, bijvoorbeeld `https://github.com/myGitHubID/acr-build-helloworld-node.git`.
 
 1. Selecteer in de GitHub-gebruikers interface de optie **nieuw bestand maken**.
 1. Geef het bestand de naam *Dockerfile-test* en plak de volgende inhoud. Vervang de register naam door de *mybaseregistry*.

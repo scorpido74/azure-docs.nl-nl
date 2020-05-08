@@ -2,13 +2,13 @@
 title: Gegevens wijziging-LUIS
 description: Meer informatie over hoe gegevens kunnen worden gewijzigd voordat voor spellingen in Language Understanding (LUIS)
 ms.topic: conceptual
-ms.date: 02/11/2020
-ms.openlocfilehash: b3b36351a64a4e1a0bd13d5785a4e0609a80901d
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.date: 05/06/2020
+ms.openlocfilehash: 3a88739caa9b35679f10b0cb63a804e9464c871c
+ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80292062"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82872243"
 ---
 # <a name="alter-utterance-data-before-or-during-prediction"></a>Utterance-gegevens wijzigen vóór of tijdens de voor spelling
 LUIS biedt manieren om de utterance voor of tijdens de voor spelling te bewerken. Dit zijn onder andere het corrigeren van de [Spelling](luis-tutorial-bing-spellcheck.md)en het oplossen van problemen met de tijd zone voor vooraf ontwikkelde [datetimeV2](luis-reference-prebuilt-datetimev2.md).
@@ -75,42 +75,27 @@ De Bing spell check-API die in LUIS wordt gebruikt, biedt geen ondersteuning voo
 ## <a name="change-time-zone-of-prebuilt-datetimev2-entity"></a>Tijd zone van vooraf gemaakte datetimeV2-entiteit wijzigen
 Wanneer een LUIS-app gebruikmaakt van de vooraf gemaakte [datetimeV2](luis-reference-prebuilt-datetimev2.md) -entiteit, kan een datum/tijd-waarde worden geretourneerd in het Voorspellings antwoord. De tijd zone van de aanvraag wordt gebruikt om te bepalen of de juiste datum/tijd moet worden geretourneerd. Als de aanvraag afkomstig is van een bot of een andere gecentraliseerde toepassing voordat LUIS wordt opgehaald, moet u de LUIS van de tijd zone corrigeren.
 
-### <a name="endpoint-querystring-parameter"></a>Para meter voor eindpunt query
-De tijd zone wordt gecorrigeerd door de tijd zone van de gebruiker toe te voegen aan het [eind punt](https://go.microsoft.com/fwlink/?linkid=2092356) met behulp van de `timezoneOffset` para meter. De waarde van `timezoneOffset` moet het positieve of negatieve getal zijn, in minuten, voor het wijzigen van de tijd.
+### <a name="v3-prediction-api-to-alter-timezone"></a>V3 Voorspellings-API voor het wijzigen van de tijd zone
 
-|Param|Waarde|
-|--|--|
-|`timezoneOffset`|positief of negatief getal, in minuten|
+In v3 bepaalt de `datetimeReference` tijds interval-offset. Meer informatie over de voor [spellingen van v3](luis-migration-api-v3.md#v3-post-body).
 
-### <a name="daylight-savings-example"></a>Voor beeld van zomer-en winter tijd
-Als u de geretourneerde vooraf gemaakte datetimeV2 wilt aanpassen aan zomer tijd, moet u de `timezoneOffset` query reeks-para meter met een +/-waarde in minuten gebruiken voor de [eindpunt](https://go.microsoft.com/fwlink/?linkid=2092356) query.
+### <a name="v2-prediction-api-to-alter-timezone"></a>V2 Voorspellings-API voor het wijzigen van de tijd zone
+De tijd zone wordt gecorrigeerd door de tijd zone van de gebruiker toe te voegen aan het eind punt met de `timezoneOffset` para meter op basis van de API-versie. De waarde van de para meter moet het positieve of negatieve getal zijn, in minuten, voor het wijzigen van de tijd.
 
-#### <a name="v2-prediction-endpoint-request"></a>[V2-aanvraag voor Voorspellings eindpunt](#tab/V2)
+#### <a name="v2-prediction-daylight-savings-example"></a>Voor beeld van een zomer-en winter tijd voor v2
+Als u de geretourneerde vooraf gemaakte datetimeV2 wilt aanpassen aan zomer tijd, moet u de query reeks-para meter met een +/-waarde in minuten gebruiken voor de [eindpunt](https://go.microsoft.com/fwlink/?linkid=2092356) query.
 
 60 minuten toevoegen:
 
-`https://{region}.api.cognitive.microsoft.com/luis/v2.0/apps/{appId}?q=Turn the lights on?**timezoneOffset=60**&verbose={boolean}&spellCheck={boolean}&staging={boolean}&bing-spell-check-subscription-key={string}&log={boolean}`
+`https://{region}.api.cognitive.microsoft.com/luis/v2.0/apps/{appId}?q=Turn the lights on?timezoneOffset=60&verbose={boolean}&spellCheck={boolean}&staging={boolean}&bing-spell-check-subscription-key={string}&log={boolean}`
 
 60 minuten verwijderen:
 
-`https://{region}.api.cognitive.microsoft.com/luis/v2.0/apps/{appId}?q=Turn the lights on?**timezoneOffset=-60**&verbose={boolean}&spellCheck={boolean}&staging={boolean}&bing-spell-check-subscription-key={string}&log={boolean}`
+`https://{region}.api.cognitive.microsoft.com/luis/v2.0/apps/{appId}?q=Turn the lights on?timezoneOffset=-60&verbose={boolean}&spellCheck={boolean}&staging={boolean}&bing-spell-check-subscription-key={string}&log={boolean}`
 
-#### <a name="v3-prediction-endpoint-request"></a>[V3-Voorspellings eindpunt aanvraag](#tab/V3)
+#### <a name="v2-prediction-c-code-determines-correct-value-of-parameter"></a>V2-voor spelling C#-code bepaalt de juiste waarde van para meter
 
-60 minuten toevoegen:
-
-`https://{region}.api.cognitive.microsoft.com/luis/v3.0-preview/apps/{appId}/slots/production/predict?query=Turn the lights on?**timezoneOffset=60**&spellCheck={boolean}&bing-spell-check-subscription-key={string}&log={boolean}`
-
-60 minuten verwijderen:
-
-`https://{region}.api.cognitive.microsoft.com/luis/v3.0-preview/apps/{appId}/slots/production/predict?query=Turn the lights on?**timezoneOffset=-60**&spellCheck={boolean}&bing-spell-check-subscription-key={string}&log={boolean}`
-
-Meer informatie over het [v3-Voorspellings eindpunt](luis-migration-api-v3.md).
-
-* * *
-
-## <a name="c-code-determines-correct-value-of-timezoneoffset"></a>C#-code bepaalt de juiste waarde van time zone offset
-In de volgende C#-code wordt de methode [FindSystemTimeZoneById](https://docs.microsoft.com/dotnet/api/system.timezoneinfo.findsystemtimezonebyid#examples) van de klasse [time zone info](https://docs.microsoft.com/dotnet/api/system.timezoneinfo) gebruikt `timezoneOffset` om de juiste te bepalen op basis van de systeem tijd:
+De volgende C#-code maakt gebruik van de methode [FindSystemTimeZoneById](https://docs.microsoft.com/dotnet/api/system.timezoneinfo.findsystemtimezonebyid#examples) van de klasse [time zone info](https://docs.microsoft.com/dotnet/api/system.timezoneinfo) om de juiste offset waarde te bepalen op basis van de systeem tijd:
 
 ```csharp
 // Get CST zone id
@@ -122,8 +107,8 @@ DateTime utcDatetime = DateTime.UtcNow;
 // Get Central Standard Time value of Now
 DateTime cstDatetime = TimeZoneInfo.ConvertTimeFromUtc(utcDatetime, targetZone);
 
-// Find timezoneOffset
-int timezoneOffset = (int)((cstDatetime - utcDatetime).TotalMinutes);
+// Find timezoneOffset/datetimeReference
+int offset = (int)((cstDatetime - utcDatetime).TotalMinutes);
 ```
 
 ## <a name="next-steps"></a>Volgende stappen

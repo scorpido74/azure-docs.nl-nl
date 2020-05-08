@@ -8,19 +8,19 @@ ms.date: 03/12/2019
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: e83c7074d252083329537e205666374705a31873
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c59e8ec67777a9cfebc12508b197e1237a61df4a
+ms.sourcegitcommit: 602e6db62069d568a91981a1117244ffd757f1c2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81733578"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82864195"
 ---
 # <a name="troubleshoot-shared-resources-in-azure-automation"></a>Problemen met gedeelde resources in Azure Automation oplossen
 
-In dit artikel worden oplossingen beschreven voor problemen die u kunt uitvoeren wanneer u [gedeelde resources](../automation-intro.md#shared-resources) gebruikt in azure Automation.
+In dit artikel worden oplossingen beschreven voor problemen die u mogelijk hebt wanneer u [gedeelde bronnen](../automation-intro.md#shared-resources) gebruikt in azure Automation.
 
 >[!NOTE]
->Dit artikel is bijgewerkt voor het gebruik van de nieuwe Azure PowerShell Az-module. De AzureRM-module kan nog worden gebruikt en krijgt bugoplossingen tot ten minste december 2020. Zie voor meer informatie over de nieuwe Az-module en compatibiliteit met AzureRM [Introductie van de nieuwe Az-module van Azure PowerShell](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.5.0). Zie [de module Azure PowerShell installeren](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0)voor de installatie-instructies voor AZ module op uw Hybrid Runbook Worker. Voor uw Automation-account kunt u uw modules bijwerken naar de nieuwste versie met behulp van [het bijwerken van Azure PowerShell-modules in azure Automation](../automation-update-azure-modules.md).
+>Dit artikel is bijgewerkt voor het gebruik van de nieuwe Azure PowerShell Az-module. U kunt de AzureRM-module op dit moment nog steeds gebruiken. Zie voor meer informatie over de nieuwe Az-module en compatibiliteit met AzureRM [Introductie van de nieuwe Az-module van Azure PowerShell](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.5.0). Zie [de module Azure PowerShell installeren](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0)voor de installatie-instructies voor AZ module op uw Hybrid Runbook Worker. Voor uw Automation-account kunt u uw modules bijwerken naar de nieuwste versie met behulp van [het bijwerken van Azure PowerShell-modules in azure Automation](../automation-update-azure-modules.md).
 
 ## <a name="modules"></a>Modules
 
@@ -28,15 +28,15 @@ In dit artikel worden oplossingen beschreven voor problemen die u kunt uitvoeren
 
 #### <a name="issue"></a>Probleem
 
-Wanneer u uw Azure Automation-modules importeert of bijwerkt, is een module vastgelopen in de import status.
+Wanneer u uw Azure Automation-modules importeert of bijwerkt, is er een module vastgelopen in de *import* status.
 
 #### <a name="cause"></a>Oorzaak
 
-Omdat het importeren van Power shell-modules een complexe proces voor meerdere stappen is, is het mogelijk dat een module niet correct kan worden geïmporteerd en in een tijdelijke status kan worden vastgelopen. Zie [een Power shell-module importeren](/powershell/scripting/developer/module/importing-a-powershell-module#the-importing-process)voor meer informatie over het import proces.
+Omdat het importeren van Power shell-modules een complexe werk proces is, kan een module mogelijk niet correct worden geïmporteerd en vastlopen in een tijdelijke status. Zie [een Power shell-module importeren](/powershell/scripting/developer/module/importing-a-powershell-module#the-importing-process)voor meer informatie over het import proces.
 
 #### <a name="resolution"></a>Oplossing
 
-Om dit probleem op te lossen, moet u de module die in de import status zit, verwijderen met de cmdlet [Remove-AzAutomationModule](https://docs.microsoft.com/powershell/module/Az.Automation/Remove-AzAutomationModule?view=azps-3.7.0) . U kunt de module vervolgens opnieuw importeren.
+Om dit probleem op te lossen, moet u de module verwijderen die vastzit met de cmdlet [Remove-AzAutomationModule](https://docs.microsoft.com/powershell/module/Az.Automation/Remove-AzAutomationModule?view=azps-3.7.0) . U kunt de module vervolgens opnieuw importeren.
 
 ```azurepowershell-interactive
 Remove-AzAutomationModule -Name ModuleName -ResourceGroupName ExampleResourceGroup -AutomationAccountName ExampleAutomationAccount -Force
@@ -54,7 +54,7 @@ Azure modules are being updated
 
 #### <a name="cause"></a>Oorzaak
 
-Er is een bekend probleem met het bijwerken van de AzureRM-modules in een Automation-account in een resource groep met een numerieke naam die begint met 0.
+Er is een bekend probleem met het bijwerken van de AzureRM-modules in een Automation-account. Het probleem treedt met name op als de modules zich in een resource groep bevinden met een numerieke naam die begint met 0.
 
 #### <a name="resolution"></a>Oplossing
 
@@ -64,7 +64,7 @@ Als u uw AzureRM-modules in uw Automation-account wilt bijwerken, moet het accou
 
 #### <a name="issue"></a>Probleem
 
-Een module kan niet worden geïmporteerd of geïmporteerd, maar er worden geen cmdlets geëxtraheerd.
+Een module kan niet worden geïmporteerd of worden geïmporteerd, maar er worden geen cmdlets geëxtraheerd.
 
 #### <a name="cause"></a>Oorzaak
 
@@ -73,11 +73,11 @@ Enkele veelvoorkomende redenen waarom een module mogelijk niet met succes kan wo
 * De structuur komt niet overeen met de structuur die nodig is voor automatisering.
 * De module is afhankelijk van een andere module die niet is geïmplementeerd in uw Automation-account.
 * De afhankelijkheden van de module ontbreken in de map.
-* De cmdlet [New-AzAutomationModule](https://docs.microsoft.com/powershell/module/Az.Automation/New-AzAutomationModule?view=azps-3.7.0) wordt gebruikt om de module te uploaden, en u hebt niet het volledige opslagpad opgegeven of u hebt de module niet geladen met behulp van een openbaar toegankelijke URL.
+* De cmdlet [New-AzAutomationModule](https://docs.microsoft.com/powershell/module/Az.Automation/New-AzAutomationModule?view=azps-3.7.0) wordt gebruikt om de module te uploaden, en u hebt niet het volledige opslagpad gegeven of u hebt de module niet geladen met behulp van een openbaar toegankelijke URL.
 
 #### <a name="resolution"></a>Oplossing
 
-Gebruik een van deze oplossingen om het probleem op te lossen.
+Gebruik een van de volgende oplossingen om het probleem op te lossen:
 
 * Zorg ervoor dat de module de indeling: module naam. zip-> module of versie nummer-> (module naam. psm1, module naam. psd1) volgt.
 * Open het **. psd1** -bestand en controleer of de module afhankelijkheden heeft. Als dit het geval is, uploadt u deze modules naar het Automation-account.
@@ -91,16 +91,16 @@ Wanneer u het runbook [Update-AzureModule. ps1](https://github.com/azureautomati
 
 #### <a name="cause"></a>Oorzaak
 
-De standaard instelling om te bepalen hoeveel modules tegelijk worden bijgewerkt, is 10 bij gebruik van **Update-AzureModule. ps1**. Het update proces is gevoelig voor fouten wanneer te veel modules tegelijk worden bijgewerkt.
+Voor dit runbook is de standaard instelling om te bepalen hoeveel modules tegelijkertijd worden bijgewerkt, is 10. Het update proces is gevoelig voor fouten wanneer te veel modules tegelijk worden bijgewerkt.
 
 #### <a name="resolution"></a>Oplossing
 
-Het is niet gebruikelijk dat alle AzureRM-of AZ-modules zijn vereist in hetzelfde Automation-account. Het is raadzaam om alleen de specifieke modules te importeren die u nodig hebt.
+Het is niet gebruikelijk dat alle AzureRM-of AZ-modules zijn vereist in hetzelfde Automation-account. Importeer alleen de specifieke modules die u nodig hebt.
 
 > [!NOTE]
 > Vermijd het importeren van `Az.Automation` het `AzureRM.Automation` hele of-module, waardoor alle opgenomen modules worden geïmporteerd.
 
-Als het update proces wordt onderbroken, voegt u `SimultaneousModuleImportJobCount` de para meter toe aan het script **Update-AzureModules. ps1** en levert u een lagere waarde dan de standaard instelling van 10. Als u deze logica implementeert, is het raadzaam om te beginnen met een waarde van 3 of 5. `SimultaneousModuleImportJobCount`is een para meter van het runbook **Update-AutomationAzureModulesForAccount** System dat wordt gebruikt om Azure-modules bij te werken. Als u deze aanpassing aanbrengt, wordt het update proces langer uitgevoerd, maar heeft het een grotere kans om te volt ooien. In het volgende voor beeld ziet u de para meter en waar u deze in het runbook plaatst:
+Als het update proces wordt onderbroken, voegt u `SimultaneousModuleImportJobCount` de para meter toe aan het script **Update-AzureModules. ps1** en geeft u een lagere waarde dan de standaard instelling van 10. Als u deze logica implementeert, kunt u beginnen met een waarde van 3 of 5. `SimultaneousModuleImportJobCount`is een para meter van het runbook **Update-AutomationAzureModulesForAccount** System dat wordt gebruikt om Azure-modules bij te werken. Als u deze aanpassing aanbrengt, wordt het update proces langer uitgevoerd, maar heeft het een grotere kans om te volt ooien. In het volgende voor beeld ziet u de para meter en waar u deze in het runbook plaatst:
 
  ```powershell
          $Body = @"
@@ -139,7 +139,7 @@ U hebt niet de machtigingen die u nodig hebt om het uitvoeren als-account te mak
 
 Als u een uitvoeren als-account wilt maken of bijwerken, moet u de juiste [machtigingen](../manage-runas-account.md#permissions) hebben voor de verschillende resources die worden gebruikt door het run as-account. 
 
-Als het probleem wordt veroorzaakt door een vergren deling, controleert u of de vergren deling kan worden verwijderd. Ga vervolgens naar de resource die in Azure Portal is vergrendeld, klik met de rechter muisknop op de vergren deling en klik op **verwijderen**.
+Als het probleem wordt veroorzaakt door een vergren deling, controleert u of de vergren deling kan worden verwijderd. Ga vervolgens naar de resource die is vergrendeld in Azure Portal, klik met de rechter muisknop op de vergren deling en selecteer **verwijderen**.
 
 ### <a name="scenario-you-receive-the-error-unable-to-find-an-entry-point-named-getperadapterinfo-in-dll-iplpapidll-when-executing-a-runbook"></a><a name="iphelper"></a>Scenario: u ontvangt de fout ' kan geen ingangs punt vinden met de naam ' GetPerAdapterInfo ' in DLL ' iplpapi. dll ' ' tijdens het uitvoeren van een runbook
 
@@ -157,7 +157,7 @@ Deze fout wordt waarschijnlijk veroorzaakt door een onjuist geconfigureerd [uitv
 
 #### <a name="resolution"></a>Oplossing
 
-Zorg ervoor dat het uitvoeren als-account correct is geconfigureerd. Controleer vervolgens of u de juiste code in uw runbook hebt om te verifiëren met Azure. In het volgende voor beeld ziet u een code fragment voor het verifiëren van Azure in een runbook met behulp van een run as-account.
+Zorg ervoor dat het uitvoeren als-account correct is geconfigureerd. Controleer vervolgens of u de juiste code in uw runbook hebt om te verifiëren met Azure. In het volgende voor beeld ziet u een code fragment voor het verifiëren van Azure in een runbook met behulp van een uitvoeren als-account.
 
 ```powershell
 $connection = Get-AutomationConnection -Name AzureRunAsConnection
@@ -167,8 +167,9 @@ Connect-AzAccount -ServicePrincipal -Tenant $connection.TenantID `
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Als uw probleem niet hierboven wordt weer geven of als u het probleem niet kunt oplossen, kunt u een van de volgende kanalen proberen voor aanvullende ondersteuning:
+Als u het probleem niet kunt oplossen met dit artikel, kunt u een van de volgende kanalen proberen voor aanvullende ondersteuning:
 
 * Krijg antwoorden van Azure-experts via [Azure-forums](https://azure.microsoft.com/support/forums/).
-* Maak verbinding [@AzureSupport](https://twitter.com/azuresupport)met, het officiële Microsoft Azure account voor het verbeteren van de gebruikers ervaring door de Azure-community te verbinden met de juiste resources: antwoorden, ondersteuning en experts.
-* Een ondersteunings incident voor Azure. Ga naar de [ondersteunings site van Azure](https://azure.microsoft.com/support/options/) en selecteer **ondersteuning verkrijgen**.
+* Verbinding maken [@AzureSupport](https://twitter.com/azuresupport)met. Dit is het officiële Microsoft Azure account voor het verbinden van de Azure-community met de juiste resources: antwoorden, ondersteuning en experts.
+* Een ondersteunings incident voor Azure. Ga naar de [ondersteunings site van Azure](https://azure.microsoft.com/support/options/)en selecteer **ondersteuning verkrijgen**.
+

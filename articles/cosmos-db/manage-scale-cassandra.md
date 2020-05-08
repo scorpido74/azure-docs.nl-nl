@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 01/13/2020
 ms.author: thvankra
-ms.openlocfilehash: 94cdeff36553268d691fc968036c5264e77fddc2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 13d7e0bfd3c7061d9dec68a1d14ff2a5e2c05fcd
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82188804"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82791252"
 ---
 # <a name="elastically-scale-an-azure-cosmos-db-cassandra-api-account"></a>Een Azure Cosmos DB Cassandra-API account elastisch schalen
 
@@ -58,9 +58,9 @@ U kunt het systeem dynamisch schalen met code door de [CQL Alter-opdrachten](cas
 
 Het voor deel van deze benadering is dat u op dynamische wijze op schaal behoeften kunt reageren op een aangepaste manier die aansluit bij uw toepassing. Met deze methode kunt u nog steeds gebruikmaken van de standaard kosten en-tarieven van de RU. Als de schaal behoefte van uw systeem voornamelijk voorspelbaar is (ongeveer 70% of meer), is het gebruik van SDK met CQL mogelijk een voordeligere methode voor automatisch schalen dan het gebruik van automatische schaling. Het nadeel van deze benadering is dat het lastig kan zijn om nieuwe pogingen te implementeren terwijl de frequentie beperking de latentie kan verg Roten.
 
-## <a name="use-autoscale"></a><a id="use-autoscale"></a>Automatisch schalen gebruiken
+## <a name="use-autoscale-provisioned-throughput"></a><a id="use-autoscale"></a>Ingerichte door Voer voor automatisch schalen gebruiken
 
-Naast de hand matige of programmatische manier om door Voer in te richten, kunt u ook Azure Cosmos-containers configureren in de modus voor automatisch schalen. De modus voor automatisch schalen wordt direct aangepast aan de behoeften van het gebruik binnen de opgegeven RU-bereiken zonder in te boeten voor Sla's. Zie het artikel [Azure Cosmos-containers en-data bases maken in de modus voor automatisch schalen](provision-throughput-autoscale.md) voor meer informatie.
+Naast standaard (hand matig) of programmatische manier om door Voer in te richten, kunt u ook Azure Cosmos-containers configureren in ingerichte door Voer voor automatisch schalen. Automatisch schalen wordt voor de behoeften van het gebruik binnen de opgegeven RU-bereiken en direct aangepast zonder dat er in rekening wordt gebracht over Sla's. Zie het artikel [Azure Cosmos-containers en-data bases maken in automatisch schalen](provision-throughput-autoscale.md) voor meer informatie.
 
 Het voor deel van deze benadering is dat het de eenvoudigste manier is om de schaal vereisten in uw systeem te beheren. Hiermee wordt gegarandeerd dat er geen beperking wordt toegepast **binnen de geconfigureerde ru-bereiken**. Het nadeel is dat, als de schaal behoefte in uw systeem voorspelbaar is, de functie voor automatisch schalen een minder rendabele manier is om uw schaal behoeften te verwerken dan met behulp van het Bespoke-besturings vlak of het hierboven vermelde SDK-niveau.
 

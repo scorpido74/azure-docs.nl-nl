@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 03/26/2020
-ms.openlocfilehash: ffa348c796a4d9d4e3bdb8e7ce18ba0eb82e17ad
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 214d97822bdb2efbe164c3526939ddbe78777e59
+ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81418376"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82890740"
 ---
 # <a name="integration-runtime-in-azure-data-factory"></a>Integration Runtime in Azure Data Factory 
 
@@ -128,6 +128,10 @@ De locatie van de IR definieert de locatie van de back-end rekenkracht en in wez
 
 ### <a name="azure-ir-location"></a>Locatie van Azure IR
 
+U kunt een bepaalde locatie van een Azure IR instellen, in welk geval de uitvoering van de activiteit of verzen ding plaatsvindt in die specifieke regio.
+
+Als u ervoor kiest om de Azure IR automatisch oplossen te gebruiken. Dit is de standaard instelling.
+
 - Voor kopieer activiteiten maakt ADF een beste manier om de locatie van uw Sink-gegevens opslag automatisch te detecteren. vervolgens gebruikt u de IR in dezelfde regio, indien beschikbaar of het dichtstbijzijnde deel van hetzelfde Geografie; Als de regio van de Sink-gegevens opslag niet kan worden gedetecteerd, wordt IR in de data factory regio als alternatief gebruikt.
 
   Stel dat u uw fabriek hebt gemaakt in VS-Oost, 
@@ -135,7 +139,8 @@ De locatie van de IR definieert de locatie van de back-end rekenkracht en in wez
   - Als u gegevens naar Azure-Blob in West-VS kopieert en als ADF is gedetecteerd dat de BLOB zich in VS West bevindt, wordt de Kopieer activiteit uitgevoerd op IR in VS-West. Als de detectie van de regio mislukt, wordt de Kopieer activiteit uitgevoerd op IR in VS-Oost.
   - Wanneer u gegevens kopieert naar Sales Force waarvan de regio niet kan worden gedetecteerd, wordt de Kopieer activiteit uitgevoerd op IR in VS-Oost.
 
-- Voor kopieer activiteiten maakt ADF een beste manier om uw Sink en brongegevens archief automatisch te detecteren om de beste locatie te kiezen, hetzij in dezelfde regio (indien beschikbaar), hetzij in dezelfde geografie, of als de data factory regio als alternatief niet kan worden gebruikt.
+  >[!TIP] 
+  >Als u strikte gegevensnalevingsvereisten hebt en u ervoor moet zorgen moet dat gegevens een bepaalde geografie niet verlaten, kunt u expliciet een Azure IR maken in een bepaalde regio en de gekoppelde service naar deze IR laten wijzen met behulp van de eigenschap ConnectVia. Als u bijvoorbeeld gegevens uit Blob in VK - zuid naar SQL DW in VK - zuid wilt kopiëren en u ervoor wilt zorgen dat de gegevens het UK niet verlaten, maakt u een Azure IR en koppelt u beide gekoppelde services aan deze IR.
 
 - Voor het uitvoeren van opzoek-GetMetadata/het verwijderen van de activiteit (ook wel pijplijn activiteiten genoemd), het verzenden van trans formatie-activiteiten (ook wel externe activiteiten genoemd) en het maken van bewerkingen (verbinding testen, bladeren in mappen lijst en tabel lijst, preview-gegevens), ADF gebruikt de IR in de regio data factory.
 
