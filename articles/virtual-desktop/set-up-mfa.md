@@ -5,15 +5,15 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 04/22/2020
+ms.date: 04/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 069d2a153e307ed94032ce1d980f26521969fc56
-ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
-ms.translationtype: MT
+ms.openlocfilehash: 2527071aa246b34c103c2a8732d735f459977a47
+ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82508309"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82629521"
 ---
 # <a name="enable-azure-multi-factor-authentication-for-windows-virtual-desktop"></a>Azure Multi-Factor Authentication voor virtueel bureau blad van Windows inschakelen
 
@@ -39,19 +39,21 @@ U hebt de volgende informatie nodig om aan de slag te gaan:
 In deze sectie wordt uitgelegd hoe u een beleid voor voorwaardelijke toegang maakt waarvoor multi-factor Authentication is vereist wanneer verbinding wordt gemaakt met een virtueel Windows-bureau blad.
 
 1. Meld u aan bij de **Azure Portal** als globale beheerder, beveiligings beheerder of beheerder van de voorwaardelijke toegang.
-1. Blader naar **Azure Active Directory** > **beveiligings** > **voorwaardelijke toegang**.
-1. Selecteer **Nieuw beleid**.
-1. Geef uw beleid een naam. Het is raadzaam dat organisaties een zinvolle norm maken voor de namen van hun beleid.
-1. Onder **Toewijzingen** selecteert u **Gebruikers en groepen**.
-   1. Onder **insluiten**selecteert u **gebruikers en groepen** > **gebruikers en groepen** selecteren > kiest u de groep die in de vereisten fase is gemaakt.
-   1. Selecteer **Done**.
-1. Onder **Cloud-apps of acties** > **, selecteert**u **apps selecteren**.
-   1. Kies **virtuele bureau blad van Windows** en **Windows Virtual Desktop Client**en **Selecteer** vervolgens **gereed**.
-   ![Een scherm opname van de pagina Cloud-apps of-acties. De Windows Virtual Desktop-en Windows Virtual Desktop Client-apps worden rood gemarkeerd.](media/cloud-apps-enterprise-selected.png)
-1. Onder **toegangs beheer** > **toekennen**selecteert u **toegang verlenen**, **multi-factor Authentication vereisen**en **selecteert**u vervolgens.
-1. Onder **toegangs beheer** > **sessie**selecteert u **aanmeldings frequentie**, stelt u de waarde in op **1** en de eenheid op **uren**, en **selecteert**u vervolgens.
-1. Bevestig de instellingen en stel **beleid inschakelen** in **op aan**.
-1. Selecteer **maken** om uw beleid in te scha kelen.
+2. Blader naar **Azure Active Directory** > **beveiligings** > **voorwaardelijke toegang**.
+3. Selecteer **Nieuw beleid**.
+4. Geef uw beleid een naam. Het is raadzaam dat organisaties een zinvolle norm maken voor de namen van hun beleid.
+5. Onder **Toewijzingen** selecteert u **Gebruikers en groepen**.
+   - Onder **insluiten**selecteert u **gebruikers en groepen** > **gebruikers en groepen** selecteren > kiest u de groep die in de vereisten fase is gemaakt.
+   - Selecteer **Voltooid**.
+6. Onder **Cloud-apps of acties** > **, selecteert**u **apps selecteren**.
+   - Kies **virtuele Windows-bureau blad**, **Selecteer**en vervolgens **gereed**.
+   
+     ![Een scherm opname van de pagina Cloud-apps of-acties. De Windows Virtual Desktop-en Windows Virtual Desktop Client-apps worden rood gemarkeerd.](media/cloud-apps-enterprise.png)
+
+7. Onder **toegangs beheer** > **toekennen**selecteert u **toegang verlenen**, **multi-factor Authentication vereisen**en **selecteert**u vervolgens.
+8. Onder **toegangs beheer** > **sessie**selecteert u **aanmeldings frequentie**, stelt u de waarde in op **1** en de eenheid op **uren**en selecteert u **selecteren**.
+9. Bevestig de instellingen en stel **beleid inschakelen** in **op aan**.
+10. Selecteer **maken** om uw beleid in te scha kelen.
 
 ## <a name="next-steps"></a>Volgende stappen
 

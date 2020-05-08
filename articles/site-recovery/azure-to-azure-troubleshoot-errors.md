@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 04/07/2020
 ms.author: rochakm
-ms.openlocfilehash: 9f95677211a89c1bb2a18076741dec08e76c5d70
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: bbb2ddaa1fb84590f9dec1c84ac4bc87a8e03022
+ms.sourcegitcommit: 291b2972c7f28667dc58f66bbe9d9f7d11434ec1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81390395"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82738113"
 ---
 # <a name="troubleshoot-azure-to-azure-vm-replication-errors"></a>Replicatie fouten van Azure naar Azure-VM oplossen
 
@@ -172,8 +172,6 @@ Omdat SUSE Linux symbolische koppelingen of symlinks gebruikt om een certificaat
 ## <a name="outbound-urls-or-ip-ranges-error-code-151037-or-151072"></a>Uitgaande Url's of IP-adresbereiken (fout code 151037 of 151072)
 
 Voor een goede werking van Site Recovery replicatie is uitgaande verbinding met specifieke Url's vereist van de virtuele machine. Als uw virtuele machine zich achter een firewall bevindt of gebruikmaakt van regels voor netwerk beveiligings groepen (NSG) om de uitgaande connectiviteit te beheren, kunt u een van deze problemen tegen komen. Hoewel we de ondersteuning van uitgaande toegang via Url's blijven ondersteunen, wordt het gebruik van een acceptatie lijst met IP-adresbereiken niet meer ondersteund.
-
-### <a name="issue-1-failed-to-register-azure-vm-with-site-recovery-151195"></a>Probleem 1: de Azure-VM kan niet worden geregistreerd met Site Recovery (151195)
 
 #### <a name="possible-causes"></a>Mogelijke oorzaken
 

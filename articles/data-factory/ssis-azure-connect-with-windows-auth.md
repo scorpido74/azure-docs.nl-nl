@@ -10,14 +10,16 @@ ms.technology: integration-services
 author: swinarko
 ms.author: sawinark
 ms.reviewer: maghan
-ms.openlocfilehash: 0c4cdc3481fb58efd8eaa4cd83e1d6167f203a4e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6f2983b375e3eeb73a0372e123d4d2763b3c65ec
+ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81760184"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82629385"
 ---
 # <a name="access-data-stores-and-file-shares-with-windows-authentication-from-ssis-packages-in-azure"></a>Toegang tot gegevensarchieven en bestandsshares met Windows-verificatie van SSIS-pakketten in Azure
+
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
 U kunt Windows-verificatie gebruiken voor toegang tot gegevens archieven, zoals SQL-servers, bestands shares, Azure Files, enzovoort, van SSIS-pakketten die worden uitgevoerd op uw Azure-SSIS Integration Runtime (IR) in Azure Data Factory (ADF). Uw gegevens archieven kunnen zich op locatie bevinden, worden gehost op Azure-Virtual Machines (Vm's) of worden uitgevoerd in azure als beheerde services. Als ze on-premises zijn, moet u uw Azure-SSIS IR lid maken van een Virtual Network (Microsoft Azure Virtual Network) die is verbonden met uw on-premises netwerk. Zie [Azure-SSIS IR toevoegen aan een Microsoft Azure Virtual Network voor](https://docs.microsoft.com/azure/data-factory/join-azure-ssis-integration-runtime-virtual-network)meer informatie. Er zijn vier methoden om toegang te krijgen tot gegevens archieven met Windows-verificatie vanaf SSIS-pakketten die worden uitgevoerd op uw Azure-SSIS IR:
 

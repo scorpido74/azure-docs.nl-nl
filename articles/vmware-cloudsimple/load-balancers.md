@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 6c98b699b1d3aba15ce69c519d35d7ce3e90d123
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2fec54c19b9040e7cb44f1a5d2b7909510ab7313
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77014875"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82734600"
 ---
 # <a name="choose-a-load-balancing-solution-for-cloudsimple-private-clouds"></a>Een taakverdelings oplossing kiezen voor CloudSimple persoonlijke Clouds
 
@@ -37,7 +37,7 @@ Voor meer informatie over het configureren van deze oplossing raadpleegt u de ha
 
 Als u ervoor kiest om uw toepassing uit te voeren in een hybride implementatie waarbij de web-front-end-laag wordt uitgevoerd in een Azure-vNet in uw Azure-abonnement en de data base-laag van de toepassing wordt uitgevoerd in virtuele VMware-machines in CloudSimple Privécloud, kunt u de interne load balancer (N4-load balancer) van Azure gebruiken voor uw DB-laag voor verkeers beheer.
 
-Zie de documentatie van Azure [Internal Load Balancer](../load-balancer/concepts-limitations.md#internalloadbalancer) voor meer informatie.
+Zie de documentatie van Azure [Internal Load Balancer](../load-balancer/components.md#frontend-ip-configurations) voor meer informatie.
 
 ## <a name="global-server-load-balancer"></a>load balancer globale server
 
