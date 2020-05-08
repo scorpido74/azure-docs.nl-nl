@@ -9,12 +9,12 @@ ms.topic: reference
 ms.author: jmartens
 author: j-martens
 ms.date: 03/10/2020
-ms.openlocfilehash: fca57f846b47435d23700c95c03e7246713a9b0c
-ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
+ms.openlocfilehash: 40ea1bfe65c963dbbe78c8aca8f5e9e96fd986cb
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82780127"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82928887"
 ---
 # <a name="azure-machine-learning-release-notes"></a>Opmerkingen bij de release Azure Machine Learning
 
@@ -116,7 +116,7 @@ Toegang tot de volgende webgebaseerde hulp middelen voor ontwerpen vanuit Studio
     + De regressie in vroege stop opgelost
     + Verouderd azureml. dprep. gegevensstroom als een geldig type voor invoer gegevens.
     +  Standaard time-out van AutoML-experiment wijzigen in 6 dagen.
-  + **azureml-Train-automl-runtime**
+  + **azureml-train-automl-runtime**
     + Er is extra telemetrie toegevoegd rondom post training-bewerkingen.
     + ondersteuning voor sparse automl E2E toegevoegd
   + **azureml-opendatasets**
@@ -238,7 +238,7 @@ Toegang tot de volgende webgebaseerde hulp middelen voor ontwerpen vanuit Studio
   + **azureml-train-automl-client**
     + Er is een probleem opgelost waarbij bepaalde pakketten op externe uitvoeringen op onjuiste versies kunnen worden geïnstalleerd.
     + Er is een vast FeaturizationConfig-probleem opgetreden waardoor aangepaste parametrisatie-configuratie wordt gefilterd.
-  + **azureml-train-automl-runtime**
+  + **azureml-Train-automl-runtime**
     + Het probleem met de frequentie detectie is opgelost in de externe uitvoeringen
     + De `AutoMLStep` in het `azureml-pipeline-steps` pakket is verplaatst. Afgeschaft `AutoMLStep` in `azureml-train-automl-runtime`.
   + **azureml-train-core**
@@ -376,7 +376,7 @@ Toegang tot de volgende webgebaseerde hulp middelen voor ontwerpen vanuit Studio
     + Shap bijgewerkt naar 0.33.0 en interpreteert-community naar 0,4. *
   + **azureml-interpret**
     + Shap bijgewerkt naar 0.33.0 en interpreteert-community naar 0,4. *
-  + **azureml-train-automl-runtime**
+  + **azureml-Train-automl-runtime**
     + Er is een Matthews-correlatie coëfficiënt toegevoegd als classificatie-metriek voor zowel binaire als multi klassen classificatie.
     + Preproces-markering van code uitdrukken en vervangen door parametrisatie-parametrisatie is standaard ingeschakeld
 
@@ -584,7 +584,7 @@ Raadpleeg de [pakket website](https://azure.github.io/azureml-sdk-for-r) voor vo
 
 ### <a name="azure-machine-learning-integration-with-event-grid"></a>Integratie met Event Grid Azure Machine Learning 
 
-Azure Machine Learning is nu een resource provider voor Event Grid, kunt u machine learning gebeurtenissen configureren via de Azure Portal of Azure CLI. Gebruikers kunnen gebeurtenissen maken voor het volt ooien van de uitvoering, model registratie, model implementatie en gegevens drift gedetecteerd. Deze gebeurtenissen kunnen worden doorgestuurd naar gebeurtenis-handlers die worden ondersteund door Event Grid voor verbruik. Zie machine learning gebeurtenis [schema](https://docs.microsoft.com/azure/event-grid/event-schema-machine-learning), [concepten](https://docs.microsoft.com/azure/machine-learning/concept-event-grid-integration) en [zelf studie](https://docs.microsoft.com/azure/machine-learning/how-to-use-event-grid) artikelen voor meer informatie.
+Azure Machine Learning is nu een resource provider voor Event Grid, kunt u machine learning gebeurtenissen configureren via de Azure Portal of Azure CLI. Gebruikers kunnen gebeurtenissen maken voor het volt ooien van de uitvoering, model registratie, model implementatie en gegevens drift gedetecteerd. Deze gebeurtenissen kunnen worden doorgestuurd naar gebeurtenis-handlers die worden ondersteund door Event Grid voor verbruik. Zie machine learning gebeurtenis [schema](https://docs.microsoft.com/azure/event-grid/event-schema-machine-learning) en [zelf studie](how-to-use-event-grid.md) artikelen voor meer informatie.
 
 ## <a name="2019-10-31"></a>2019-10-31
 

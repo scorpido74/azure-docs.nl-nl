@@ -6,12 +6,12 @@ ms.author: inhenkel
 ms.service: media-services
 ms.topic: reference
 ms.date: 04/20/2020
-ms.openlocfilehash: ff8dc58b9122e5173a9a6065e2efdbc5697be0d7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 250fd242e76f64002a6e55e7caf616ac201b593b
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81727214"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82692246"
 ---
 # <a name="known-issues"></a>Bekende problemen #
 
@@ -46,9 +46,10 @@ De huidige versie heeft de volgende bekende problemen:
 
 - In het DVR-venster van live content, blijft de inhoud van de tijd lijn toenemen totdat het naar het gebied wordt gezocht of het einde van de presentatie wordt bereikt.
 - Live presentaties in Firefox met MSE ingeschakeld hebben enkele problemen
-- Activa die alleen audio of video zijn, worden niet afgespeeld via de AzureHtml5JS-techniek.
-  - Als u activa wilt afspelen zonder audio of video, kunt u dit doen door lege audio of video in te voegen met behulp van de [Azure Media Services Explorer](https://aka.ms/amse)
-    - Instructies voor het invoegen van Silent audio vindt u [hier](https://azure.microsoft.com/documentation/articles/media-services-advanced-encoding-with-mes/#silent_audio)
+
+- Activa die alleen audio zijn, worden niet afgespeeld via de AzureHtml5JS-techniek.
+  - Als u activa zonder audio wilt afspelen, kunt u dit doen door lege audio in te voegen met behulp van de [Azure Media Services Explorer](https://aka.ms/amse)
+  - Instructies voor het invoegen van Silent audio vindt u [hier](https://azure.microsoft.com/documentation/articles/media-services-advanced-encoding-with-mes/#silent_audio)
 
 ## <a name="flash"></a>Flits ##
 
@@ -91,7 +92,7 @@ De huidige versie heeft de volgende bekende problemen:
 ## <a name="apple"></a>Apple ##
 
 - In Safari op Mac wordt de energiebesparings modus vaak standaard ingeschakeld met de instelling ' invoeg toepassingen stoppen om energie te besparen ', waarmee invoeg toepassingen zoals Flash en Silverlight worden geblokkeerd wanneer ze van mening zijn dat deze niet van toepassing zijn op de gebruiker. Dit blok blokkeert de bestaande en alleen mogelijkheden van de invoeg toepassing niet. Dit kan problemen veroorzaken bij het afspelen van de standaard techOrder.
-  - Risico beperking 1: als de video speler vooraan en gecentreerd (binnen een 3000 x 3000 pixel grens in de linkerbovenhoek van het document wordt gestart), moet deze nog steeds worden afgespeeld.
+  - Risico beperking 1: als de video speler vooraan en gecentreerd is (binnen een 3000 x 3000 pixel grens in de linkerbovenhoek van het document), moet deze nog steeds worden afgespeeld.
   - Beperking 2: Wijzig techOrder voor Safari in ["azureHtml5JS", "HTML5"]. Deze beperking heeft gevolgen voor niet alle functies die beschikbaar zijn in de beschik baarheid van de technologie.
 - Voor inhoud van PlayReady via Silverlight kunnen problemen optreden in Safari.
 - AES-en beperkte token inhoud wordt niet afgespeeld met iOS-en oudere Android-apparaten.

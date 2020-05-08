@@ -11,12 +11,12 @@ ms.author: clauren
 ms.reviewer: jmartens
 ms.date: 03/05/2020
 ms.custom: seodec18
-ms.openlocfilehash: fab46f7d7ae74ad643ce3f122b27b0dc767f5a78
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 01fa9c111371c3ede5d3be33f4066f325bad4680
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78399680"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82929244"
 ---
 # <a name="troubleshooting-azure-machine-learning-azure-kubernetes-service-and-azure-container-instances-deployment"></a>Problemen met Azure Machine Learning Azure Kubernetes-service en Azure Container Instances-implementatie oplossen
 
@@ -24,12 +24,12 @@ Meer informatie over het oplossen van veelvoorkomende docker-implementatie foute
 
 Bij het implementeren van een model in Azure Machine Learning, voert het systeem een aantal taken uit.
 
-De aanbevolen en meest recente benadering voor model implementatie is via de API [model. Deploy ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model%28class%29?view=azure-ml-py#deploy-workspace--name--models--inference-config-none--deployment-config-none--deployment-target-none--overwrite-false-) met behulp van een [omgevings](https://docs.microsoft.com/azure/machine-learning/service/how-to-use-environments) object als invoer parameter. In dit geval maakt onze service een basis-docker-installatie kopie voor u tijdens de implementatie fase en koppelt u de vereiste modellen in één aanroep. De basis taken voor implementatie zijn:
+De aanbevolen en meest recente benadering voor model implementatie is via de API [model. Deploy ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model%28class%29?view=azure-ml-py#deploy-workspace--name--models--inference-config-none--deployment-config-none--deployment-target-none--overwrite-false-) met behulp van een [omgevings](how-to-use-environments.md) object als invoer parameter. In dit geval maakt onze service een basis-docker-installatie kopie voor u tijdens de implementatie fase en koppelt u de vereiste modellen in één aanroep. De basis taken voor implementatie zijn:
 
 1. Registreer het model in het werkruimte model register.
 
 2. Configuratie voor in-of afleiding definiëren:
-    1. Maak een [omgevings](https://docs.microsoft.com/azure/machine-learning/service/how-to-use-environments) object op basis van de afhankelijkheden die u opgeeft in het yaml-bestand van de omgeving of gebruik een van onze aangeschafte omgevingen.
+    1. Maak een [omgevings](how-to-use-environments.md) object op basis van de afhankelijkheden die u opgeeft in het yaml-bestand van de omgeving of gebruik een van onze aangeschafte omgevingen.
     2. Maak een Afleidings configuratie (InferenceConfig-object) op basis van de omgeving en het Score script.
 
 3. Implementeer het model op de Azure container instance-service (ACI) of naar de Azure Kubernetes-service (AKS).
@@ -50,7 +50,7 @@ Meer informatie over dit proces vindt u in de [ModelBeheer](concept-model-manage
 
 Als u een probleem ondervindt, moet u eerst de implementatie taak (eerder beschreven) opsplitsen in afzonderlijke stappen om het probleem te isoleren.
 
-Als u de nieuwe/Aanbevolen implementatie methode via [model. Deploy ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model%28class%29?view=azure-ml-py#deploy-workspace--name--models--inference-config-none--deployment-config-none--deployment-target-none--overwrite-false-) -API met een [omgevings](https://docs.microsoft.com/azure/machine-learning/service/how-to-use-environments) object als een invoer parameter gebruikt, kan uw code worden onderverdeeld in drie belang rijke stappen:
+Als u de nieuwe/Aanbevolen implementatie methode via [model. Deploy ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model%28class%29?view=azure-ml-py#deploy-workspace--name--models--inference-config-none--deployment-config-none--deployment-target-none--overwrite-false-) -API met een [omgevings](how-to-use-environments.md) object als een invoer parameter gebruikt, kan uw code worden onderverdeeld in drie belang rijke stappen:
 
 1. Registreer het model. Hier volgt een voor beeld van code:
 

@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 03/25/2020
+ms.date: 05/01/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: dawoo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bd41e79a1e08c57e806f6ada32faccfa5fdf5792
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0c5643b0ce9d93c28372b30e6fc114816cafbce6
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80295290"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82690473"
 ---
 # <a name="what-is-conditional-access-report-only-mode"></a>Wat is de modus alleen rapport-alleen voor voorwaardelijke toegang?
 
@@ -26,7 +26,7 @@ De modus alleen rapport is een nieuwe beleids status voor voorwaardelijk toegang
 
 - Beleid voor voorwaardelijke toegang kan worden ingeschakeld in de modus alleen rapport.
 - Tijdens het aanmelden worden beleids regels in de modus alleen rapport geëvalueerd, maar niet afgedwongen.
-- De resultaten worden vastgelegd in de tabbladen **voorwaardelijke toegang** en **rapport-enkel (preview)** van de logboek gegevens van de aanmelding.
+- De resultaten worden vastgelegd in de tabbladen **voorwaardelijke toegang** en **alleen rapport** van de details van het aanmeldings logboek.
 - Klanten met een Azure Monitor-abonnement kunnen de impact van hun beleids regels voor voorwaardelijke toegang bewaken met behulp van de Insights-werkmap voor voorwaardelijke toegang.
 
 > [!WARNING]

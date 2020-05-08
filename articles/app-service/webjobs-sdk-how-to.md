@@ -6,12 +6,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 02/18/2019
 ms.author: glenga
-ms.openlocfilehash: 5a8d5f96449cfecd4628c38fa2788a1e06e96b07
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a046791b8c50577c1921764b06bac5d88780194d
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81758890"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82734991"
 ---
 # <a name="how-to-use-the-azure-webjobs-sdk-for-event-driven-background-processing"></a>De Azure WebJobs SDK gebruiken voor gebeurtenisgestuurde verwerking op de achtergrond
 
@@ -956,9 +956,9 @@ In versie 3. *x*, hoeft u niet meer te wissen [`TelemetryClient`] wanneer de hos
 
 #### <a name="version-2x"></a>Versie 2. *x*
 
-In versie 2. *x*, de [`TelemetryClient`] interne door de Application Insights provider voor de webjobs SDK gebruikte [`ServerTelemetryChannel`](https://github.com/Microsoft/ApplicationInsights-dotnet/blob/develop/src/ServerTelemetryChannel/ServerTelemetryChannel.cs). Wanneer het Application Insights-eind punt niet beschikbaar is of het beperken van binnenkomende aanvragen, slaat dit kanaal [aanvragen op in het bestands systeem van de web-app en verzendt deze later opnieuw](https://apmtips.com/blog/2015/09/03/more-telemetry-channels).
+In versie 2. *x*, de [`TelemetryClient`] interne door de Application Insights provider voor de webjobs SDK gebruikte [`ServerTelemetryChannel`](https://github.com/microsoft/ApplicationInsights-dotnet/tree/develop/.publicApi/Microsoft.AI.ServerTelemetryChannel.dll). Wanneer het Application Insights-eind punt niet beschikbaar is of het beperken van binnenkomende aanvragen, slaat dit kanaal [aanvragen op in het bestands systeem van de web-app en verzendt deze later opnieuw](https://apmtips.com/blog/2015/09/03/more-telemetry-channels).
 
-De [`TelemetryClient`] wordt gemaakt door een klasse die wordt geïmplementeerd `ITelemetryClientFactory`. Standaard is dit de [`DefaultTelemetryClientFactory`](https://github.com/Azure/azure-webjobs-sdk/blob/dev/src/Microsoft.Azure.WebJobs.Logging.ApplicationInsights/DefaultTelemetryClientFactory.cs).
+De [`TelemetryClient`] wordt gemaakt door een klasse die wordt geïmplementeerd `ITelemetryClientFactory`. Standaard is dit de [`DefaultTelemetryClientFactory`](https://github.com/Azure/azure-webjobs-sdk/blob/dev/src/Microsoft.Azure.WebJobs.Logging.ApplicationInsights/).
 
 Als u een deel van de Application Insights-pijp lijn wilt wijzigen, kunt u uw eigen `ITelemetryClientFactory`klasse opgeven en wordt de host gebruikt voor het maken van een [`TelemetryClient`]. Deze code overschrijft `DefaultTelemetryClientFactory` bijvoorbeeld voor het wijzigen van een eigenschap van `ServerTelemetryChannel`:
 
