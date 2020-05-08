@@ -1,7 +1,7 @@
 ---
-title: Invoer-en uitvoer gegevens van ML-pijp lijnen
+title: Gegevens verplaatsen in ML-pijp lijnen
 titleSuffix: Azure Machine Learning
-description: Gegevens in Azure Machine Learning pijp lijnen voorbereiden, gebruiken en genereren
+description: Meer informatie over invoer & uitvoer van gegevens in Azure Machine Learning pijp lijnen.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,18 +9,19 @@ ms.topic: conceptual
 ms.author: laobri
 author: lobrien
 ms.date: 04/01/2020
-ms.openlocfilehash: 3dd1a82bf7fad1f201f5c0f52af944ef44a3fdf9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: contperfq4
+ms.openlocfilehash: 233361fb238342cde3c692174e85fb57f69979b1
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80879763"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82858464"
 ---
 # <a name="moving-data-into-and-between-ml-pipeline-steps-python"></a>Gegevens verplaatsen naar en tussen ML-pijplijnstappen (Python)
 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-Gegevens zijn centraal voor machine learning pijp lijnen. Dit artikel bevat code voor het importeren, transformeren en verplaatsen van gegevens tussen stappen in een Azure Machine Learning-pijp lijn. Zie [toegang tot gegevens in azure Storage-services](how-to-access-data.md)voor een overzicht van de werking van gegevens in azure machine learning. Zie [Wat zijn Azure machine learning pijp lijnen?](concept-ml-pipelines.md)voor de voor delen en de structuur van Azure machine learning pijp lijnen.
+Dit artikel bevat code voor het importeren, transformeren en verplaatsen van gegevens tussen stappen in een Azure Machine Learning-pijp lijn. Zie [toegang tot gegevens in azure Storage-services](how-to-access-data.md)voor een overzicht van de werking van gegevens in azure machine learning. Zie [Wat zijn Azure machine learning pijp lijnen?](concept-ml-pipelines.md)voor de voor delen en de structuur van Azure machine learning pijp lijnen.
 
 In dit artikel wordt uitgelegd hoe u:
 

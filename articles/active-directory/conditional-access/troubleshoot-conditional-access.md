@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: troubleshooting
-ms.date: 03/13/2020
+ms.date: 04/30/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, martinco
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bdf1daca79f3ed20d9b7a89af20d74ff5f3148b5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c9a2ab4b1ebc1c958be9dc4bd07a010f7fef8afc
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80337439"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82610503"
 ---
 # <a name="troubleshooting-sign-in-problems-with-conditional-access"></a>Problemen met aanmelden oplossen met voorwaardelijke toegang
 
@@ -55,8 +55,11 @@ Ga als volgt te werk om te ontdekken welk beleid of beleid voor voorwaardelijke 
    1. Informatie op het tabblad **probleem oplossing en ondersteuning** kan een duidelijke reden geven voor het mislukken van een aanmelding, zoals een apparaat dat niet aan de nalevings vereisten voldoet.
    1. Als u verder wilt onderzoeken, zoomt u in op de configuratie van het beleid door te klikken op de naam van het **beleid**. Als u op de **beleids naam** klikt, wordt de gebruikers interface van de beleids configuratie voor het geselecteerde beleid weer gegeven voor controle en bewerking.
    1. De gegevens van de **client gebruiker** en het **apparaat** die zijn gebruikt voor de evaluatie van het voorwaardelijke toegangs beleid zijn ook beschikbaar in de **basis informatie**, **locatie**, **apparaatgegevens**, **verificatie gegevens**en **aanvullende details** tabbladen van de aanmeldings gebeurtenis.
+   1. Als u het beletsel teken aan de rechter kant van het beleid selecteert, worden de beleids Details van het beleid geopend. Dit geeft beheerders aanvullende informatie over waarom een beleid is toegepast of niet.
 
    ![Tabblad voorwaardelijke toegang voor gebeurtenis aanmelden](./media/troubleshoot-conditional-access/image5.png)
+
+   ![Beleids Details (preview-versie)](./media/troubleshoot-conditional-access/policy-details.png)
 
 Als de informatie in de gebeurtenis niet voldoende is om inzicht te krijgen in de aanmeldings resultaten of het beleid aan te passen om de gewenste resultaten te krijgen, kan een ondersteunings incident worden geopend. Navigeer naar het tabblad **probleem oplossing en ondersteuning** van het aanmeldings gebeurtenis en selecteer **een nieuwe ondersteunings aanvraag maken**.
 

@@ -6,12 +6,12 @@ ms.author: suvetriv
 ms.topic: tutorial
 ms.service: container-service
 ms.date: 04/24/2020
-ms.openlocfilehash: 32069d9594d4579bd18ec3fd0e76af7bdc69f4d0
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: HT
+ms.openlocfilehash: 78ec45f5e6c354644e4303db53f276343225eff9
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82232152"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82858829"
 ---
 # <a name="tutorial-create-an-azure-red-hat-openshift-4-cluster"></a>Zelf studie: een Azure Red Hat open Shift 4-cluster maken
 
@@ -66,11 +66,17 @@ aro                                1.0.0
 
 Met een Red Hat pull-geheim kan uw cluster toegang krijgen tot Red Hat-container registers, samen met aanvullende inhoud. Deze stap is optioneel, maar wordt aanbevolen.
 
-Verschaf uw pull-geheim door te https://cloud.redhat.com/openshift/install/azure/aro-provisioned navigeren naar en klik op *pull Secret downloaden*.
+1. **[Navigeer naar uw Red Hat open Shift cluster manager-Portal en meld u aan](https://cloud.redhat.com/openshift/install/azure/aro-provisioned) .**
 
-U moet zich aanmelden bij uw Red Hat-account of een nieuw Red Hat-account maken met uw zakelijke e-mail adres en de voor waarden accepteren.
+   U moet zich aanmelden bij uw Red Hat-account of een nieuw Red Hat-account maken met uw zakelijke e-mail adres en de voor waarden accepteren.
+
+2. **Klik op pull Secret downloaden.**
 
 Bewaar het opgeslagen `pull-secret.txt` bestand ergens anders. het wordt gebruikt bij het maken van een cluster.
+
+Wanneer u de `az aro create` opdracht uitvoert, kunt u naar uw pull-geheim `--pull-secret @pull-secret.txt` verwijzen met behulp van de para meter. Voer `az aro create` uit in de map waar u het `pull-secret.txt` bestand hebt opgeslagen. Vervang `@pull-secret.txt` anders door `@<path-to-my-pull-secret-file>`.
+
+Als u uw pull-geheim kopieert of naar een ander script verwijst, moet uw pull-geheim worden geformatteerd als een geldige JSON-teken reeks.
 
 ### <a name="create-a-virtual-network-containing-two-empty-subnets"></a>Een virtueel netwerk met twee lege subnetten maken
 
@@ -80,7 +86,7 @@ Vervolgens maakt u een virtueel netwerk met twee lege subnetten.
 
    ```console
    LOCATION=eastus                 # the location of your cluster
-   RESOURCEGROUP="v4-$LOCATION"    # the name of the resource group where you want to create your cluster
+   RESOURCEGROUP=aro-rg            # the name of the resource group where you want to create your cluster
    CLUSTER=cluster                 # the name of your cluster
    ```
 
@@ -89,7 +95,7 @@ Vervolgens maakt u een virtueel netwerk met twee lege subnetten.
     Een Azure-resourcegroep is een logische groep waarin Azure-resources worden geïmplementeerd en beheerd. Wanneer u een resourcegroep maakt, wordt u gevraagd een locatie op te geven. Op deze locatie worden de meta gegevens van de resource groep opgeslagen, maar ook de resources die in Azure worden uitgevoerd als u geen andere regio opgeeft tijdens het maken van resources. Maak een resource groep met de opdracht [AZ Group Create] [AZ-Group-Create].
 
     ```azurecli-interactive
-    az group create --name $CLUSTER --location $LOCATION
+    az group create --name $RESOURCEGROUP --location $LOCATION
     ```
 
     In de volgende voorbeelduitvoer ziet u dat de resourcegroep is gemaakt:
@@ -174,7 +180,10 @@ Vervolgens maakt u een virtueel netwerk met twee lege subnetten.
 
 ## <a name="create-the-cluster"></a>Het cluster maken
 
-Voer de volgende opdracht uit om een cluster te maken. U kunt eventueel een pull-geheim door geven waarmee uw cluster toegang kan krijgen tot Red Hat-container registers en aanvullende inhoud. Open uw pull-geheim door te navigeren naar de [Red Hat open Shift cluster manager](https://cloud.redhat.com/openshift/install/azure/installer-provisioned) en op **pull Secret kopiëren**te klikken.
+Voer de volgende opdracht uit om een cluster te maken. U kunt ook [uw Red Hat pull Secret door geven](#get-a-red-hat-pull-secret-optional) , zodat uw cluster toegang kan krijgen tot Red Hat-container registers en aanvullende inhoud.
+
+>[!NOTE]
+> Als u de opdrachten kopiëren/plakken en een van de optionele para meters gebruikt, moet u ervoor zorgen dat u de oorspronkelijke Hashtags en de achterstallige tekst van de opmerking verwijdert. U kunt ook het argument op de voor gaande regel van de opdracht sluiten met een afsluitende back slash.
 
 ```azurecli-interactive
 az aro create \
@@ -184,10 +193,10 @@ az aro create \
   --master-subnet master-subnet \
   --worker-subnet worker-subnet
   # --domain foo.example.com # [OPTIONAL] custom domain
-  # --pull-secret '$(< pull-secret.txt)' # [OPTIONAL]
+  # --pull-secret @pull-secret.txt # [OPTIONAL]
 ```
->[!NOTE]
-> Het maken van een cluster duurt normaal gesp roken ongeveer 35 minuten.
+
+Nadat de `az aro create` opdracht is uitgevoerd, duurt het ongeveer 35 minuten om een cluster te maken.
 
 >[!IMPORTANT]
 > Als u ervoor kiest om een aangepast domein op te geven, bijvoorbeeld **foo.example.com**, is de open Shift-console beschikbaar op een URL `https://console-openshift-console.apps.foo.example.com`, zoals in plaats van het ingebouwde domein `https://console-openshift-console.apps.<random>.<location>.aroapp.io`.

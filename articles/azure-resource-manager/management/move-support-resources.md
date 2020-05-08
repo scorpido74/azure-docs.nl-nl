@@ -3,12 +3,12 @@ title: Ondersteuning voor het verplaatsen van bewerkingen per resource type
 description: Een lijst met de Azure-resource typen die kunnen worden verplaatst naar een nieuwe resource groep of een nieuw abonnement.
 ms.topic: conceptual
 ms.date: 04/06/2020
-ms.openlocfilehash: 90fbec4dc076feb1fee8c38cf9757d3c5ddbafaf
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: a92da04f5b883661d53fd291dc72351a1c4eafb1
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80804789"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82610833"
 ---
 # <a name="move-operation-support-for-resources"></a>Ondersteuning voor het verplaatsen van resources
 Dit artikel geeft een overzicht van de vraag of een Azure-resource type de verplaatsings bewerking ondersteunt. Het bevat ook informatie over speciale voor waarden die u moet overwegen bij het verplaatsen van een resource.
@@ -1523,6 +1523,7 @@ Ga naar de naam ruimte van een resource provider:
 > | Resourcetype | Resourcegroep | Abonnement |
 > | ------------- | ----------- | ---------- |
 > | instancepools | Nee | Nee |
+> | locaties | Ja | Ja |
 > | managedinstances | Nee | Nee |
 > | managedinstances/data bases | Nee | Nee |
 > | Server | Ja | Ja |

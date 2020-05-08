@@ -5,13 +5,13 @@ author: kummanish
 ms.author: manishku
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 10/17/2019
-ms.openlocfilehash: 66d7228e78f03196da0b26249e7f1f86e79d79fd
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 05/02/2020
+ms.openlocfilehash: 7f671e2a77a0a00fd1cc4338e29c14f7b8fca4f2
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80159010"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82734719"
 ---
 # <a name="prepay-for-azure-database-for-postgresql-compute-resources-with-reserved-capacity"></a>Vooruitbetalen voor Azure Database for PostgreSQL Compute-resources met gereserveerde capaciteit
 
@@ -22,7 +22,7 @@ U hoeft de reserve ring niet toe te wijzen aan specifieke Azure Database for Pos
 > [!IMPORTANT]
 > Prijzen voor gereserveerde capaciteit zijn alleen beschikbaar voor de implementatie van Azure Database for PostgreSQL [één server](https://docs.microsoft.com/azure/postgresql/overview#azure-database-for-postgresql---single-server) en niet voor de implementatie van [grootschalige Citus](https://docs.microsoft.com/azure/postgresql/overview#azure-database-for-postgresql---hyperscale-citus) .
 
-U kunt Azure Database for PostgreSQL gereserveerde capaciteit kopen in de [Azure Portal](https://portal.azure.com/). De gereserveerde capaciteit kopen:
+U kunt Azure Database for PostgreSQL gereserveerde capaciteit kopen in de [Azure Portal](https://portal.azure.com/). Betaal [vooraf of per maand](../cost-management-billing/reservations/monthly-payments-reservations.md) voor de reservering. De gereserveerde capaciteit kopen:
 
 * U moet de rol van eigenaar zijn voor minstens één bedrijf of een afzonderlijk abonnement met betalen per gebruik-tarieven.
 * Voor Enterprise Agreements moet de optie **Gereserveerde instanties toevoegen** zijn ingeschakeld in de [EA Portal](https://ea.azure.com/). Als deze instelling is uitgeschakeld, moet u een EA-beheerder zijn voor het abonnement.
@@ -40,7 +40,7 @@ Stel bijvoorbeeld dat u een algemeen doel, GEN5-32 vCore PostgreSQL-data base, e
 
 ## <a name="buy-azure-database-for-postgresql-reserved-capacity"></a>Azure Database for PostgreSQL gereserveerde capaciteit kopen
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
+1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
 2. Selecteer **alle services** > -**reserve ringen**.
 3. Selecteer **toevoegen** en selecteer vervolgens in het deel venster reserve ringen **Azure database for PostgreSQL** om een nieuwe reserve ring voor uw postgresql-data bases aan te schaffen.
 4. Vul de vereiste velden in. Bestaande of nieuwe data bases die overeenkomen met de kenmerken die u selecteert, komen in aanmerking voor de korting op gereserveerde capaciteit. Het werkelijke aantal Azure Database for PostgreSQL servers dat de korting krijgt, is afhankelijk van het bereik en de geselecteerde hoeveelheid.

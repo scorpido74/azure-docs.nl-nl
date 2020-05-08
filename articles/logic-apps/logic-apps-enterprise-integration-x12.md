@@ -1,308 +1,391 @@
 ---
-title: X12 berichten voor B2B-integratie
-description: Exchange X12-berichten in EDI-indeling voor B2B Enter prise integration in Azure Logic Apps met Enterprise Integration Pack
+title: X12-berichten verzenden en ontvangen voor B2B
+description: X12-berichten uitwisselen voor B2B-scenario's voor bedrijfs integratie met behulp van Azure Logic Apps met Enterprise Integration Pack
 services: logic-apps
 ms.suite: integration
 author: divyaswarnkar
 ms.author: divswa
 ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
-ms.date: 01/31/2017
-ms.openlocfilehash: 12a1cd3c170fd7444362d1eabba1541cefb37d1a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 04/29/2020
+ms.openlocfilehash: 8ec20e03544ba54b83130ae41244dcdb186252d0
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82115547"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82613041"
 ---
 # <a name="exchange-x12-messages-for-b2b-enterprise-integration-in-azure-logic-apps-with-enterprise-integration-pack"></a>Exchange X12-berichten voor B2B Enter prise integration in Azure Logic Apps met Enterprise Integration Pack
 
-Voordat u X12-berichten kunt uitwisselen voor Azure Logic Apps, moet u een X12-overeenkomst maken en die overeenkomst opslaan in uw integratie account. Hier volgen de stappen voor het maken van een X12-overeenkomst.
+Als u wilt werken met X12-berichten in Azure Logic Apps, kunt u de X12-connector gebruiken. Deze bevat triggers en acties voor het beheren van X12-communicatie. Zie [Exchange EDIFACT-berichten](logic-apps-enterprise-integration-edifact.md)voor meer informatie over EDIFACT-berichten.
 
-> [!NOTE]
-> Op deze pagina worden de X12-functies voor Azure Logic Apps beschreven. Zie [EDIFACT](logic-apps-enterprise-integration-edifact.md)voor meer informatie.
+## <a name="prerequisites"></a>Vereisten
 
-## <a name="before-you-start"></a>Voordat u begint
+* Een Azure-abonnement. Als u nog geen Azure-abonnement hebt, [meldt u zich aan voor een gratis Azure-account](https://azure.microsoft.com/free/).
 
-Dit zijn de items die u nodig hebt:
+* De logische app van waaruit u de X12-connector wilt gebruiken en een trigger waarmee de werk stroom van de logische app wordt gestart. De X12-connector biedt alleen acties, geen triggers. Als u geen ervaring hebt met Logic apps, raadpleegt u [Wat is Azure Logic apps](../logic-apps/logic-apps-overview.md) en [Quick Start: uw eerste logische app maken](../logic-apps/quickstart-create-first-logic-app-workflow.md).
 
-* Een [integratie account](logic-apps-enterprise-integration-create-integration-account.md) dat al is gedefinieerd en gekoppeld aan uw Azure-abonnement
-* Ten minste twee [partners](../logic-apps/logic-apps-enterprise-integration-partners.md) die zijn gedefinieerd in uw integratie account en zijn geconfigureerd met de X12-id onder **Business Identities**    
-* Een vereist [schema](../logic-apps/logic-apps-enterprise-integration-schemas.md) dat u kunt uploaden naar uw integratie account
+* Een [integratie account](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md) dat is gekoppeld aan uw Azure-abonnement en gekoppeld aan de logische app waar u de X12-connector wilt gaan gebruiken. De logische app en het integratie account moeten zich op dezelfde locatie of Azure-regio bevinden.
 
-Nadat u [een integratie account hebt gemaakt](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md), [partners hebt toegevoegd](logic-apps-enterprise-integration-partners.md)en een [schema](../logic-apps/logic-apps-enterprise-integration-schemas.md) hebt dat u wilt gebruiken, kunt u een X12-overeenkomst maken door de volgende stappen uit te voeren.
+* Ten minste twee [handels partners](../logic-apps/logic-apps-enterprise-integration-partners.md) die u al hebt gedefinieerd in uw integratie account met behulp van de X12-identiteits kwalificatie.
 
-## <a name="create-an-x12-agreement"></a>Een X12-overeenkomst maken
+* De [schema's](../logic-apps/logic-apps-enterprise-integration-schemas.md) die u voor XML-validatie wilt gebruiken die u al aan uw integratie account hebt toegevoegd. Zie [HIPAA-schema's](#hipaa-schemas)als u werkt met de Health-Schema's voor portabiliteit en aansprakelijkheids Act (HIPAA).
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com "Azure Portal"). 
+* Voordat u de X12-connector kunt gebruiken, moet u een X12- [overeenkomst](../logic-apps/logic-apps-enterprise-integration-agreements.md) maken tussen uw handels partners en de overeenkomst opslaan in uw integratie account. Als u met Health Insurance-schema's (porteer baarheid en aansprakelijkheids Act) werkt, moet u een `schemaReferences` sectie toevoegen aan uw overeenkomst. Zie voor meer informatie [HIPAA-schema's](#hipaa-schemas).
 
-2. Selecteer in het hoofd menu van Azure **alle services**. 
-   Voer in het zoekvak ' Integration ' in en selecteer vervolgens **integratie accounts**.  
+<a name="receive-settings"></a>
 
-   ![Uw integratie account zoeken](./media/logic-apps-enterprise-integration-x12/account-1.png)
+## <a name="receive-settings"></a>Instellingen voor ontvangen
 
-   > [!TIP]
-   > Als **alle services** niet worden weer gegeven, moet u het menu mogelijk eerst uitbreiden. Selecteer boven in het samengevouwen menu de optie **menu weer geven**.
+Nadat u de eigenschappen van de overeenkomst hebt ingesteld, kunt u configureren hoe deze overeenkomst inkomende berichten identificeert en verwerkt die u van uw partner ontvangt via deze overeenkomst.
 
-3. Onder **integratie accounts**selecteert u het integratie account waaraan u de overeenkomst wilt toevoegen.
+1. Onder **toevoegen**selecteert u **instellingen voor ontvangen**.
 
-   ![Integratie account selecteren waar de overeenkomst moet worden gemaakt](./media/logic-apps-enterprise-integration-x12/account-3.png)
+1. Configureer deze eigenschappen op basis van uw overeenkomst met de partner die berichten met u uitwisselt. De **Receive-instellingen** zijn ingedeeld in de volgende secties:
 
-4. Selecteer **overzicht**en selecteer vervolgens de tegel **overeenkomsten** . 
-   Als u geen tegel overeenkomsten hebt, voegt u eerst de tegel toe. 
+   * [Id's](#inbound-identifiers)
+   * [Bevestigings](#inbound-acknowledgement)
+   * [Schema 's](#inbound-schemas)
+   * [Enveloppen](#inbound-envelopes)
+   * [Controle nummers](#inbound-control-numbers)
+   * [Validaties](#inbound-validations)
+   * [Interne instellingen](#inbound-internal-settings)
 
-   ![Kies de tegel ' overeenkomsten '](./media/logic-apps-enterprise-integration-x12/agreement-1.png)
+   Zie voor beschrijvingen van eigenschappen de tabellen in deze sectie.
 
-5. Klik onder **overeenkomsten**op **toevoegen**.
+1. Wanneer u klaar bent, moet u de instellingen opslaan door **OK**te selecteren.
 
-   ![Kies toevoegen](./media/logic-apps-enterprise-integration-x12/agreement-2.png)     
+<a name="inbound-identifiers"></a>
 
-6. Voer onder **toevoegen**een **naam** in voor uw overeenkomst. 
-   Selecteer **X12**voor het type overeenkomst. 
-   Selecteer de **host-partner**, de **identiteit**van de host, de **gast partner**en de **gast identiteit** voor uw overeenkomst. 
-   Zie de tabel in deze stap voor meer informatie over de eigenschap.
+### <a name="receive-settings---identifiers"></a>Instellingen ontvangen-Id's
 
-    ![Details van overeenkomst opgeven](./media/logic-apps-enterprise-integration-x12/x12-1.png)  
-
-    | Eigenschap | Beschrijving |
-    | --- | --- |
-    | Naam |Naam van de overeenkomst |
-    | Type overeenkomst | Moet X12 zijn |
-    | Host-partner |Een overeenkomst heeft zowel een host-als een gast partner nodig. De host-partner vertegenwoordigt de organisatie die de overeenkomst configureert. |
-    | Host-id |Een id voor de host-partner |
-    | Gast partner |Een overeenkomst heeft zowel een host-als een gast partner nodig. De gast partner vertegenwoordigt de organisatie die zakendoet met de host-partner. |
-    | Gast identiteit |Een id voor de gast partner |
-    | Instellingen voor ontvangen |Deze eigenschappen zijn van toepassing op alle berichten die door een overeenkomst worden ontvangen. |
-    | Instellingen verzenden |Deze eigenschappen zijn van toepassing op alle berichten die door een overeenkomst worden verzonden. |  
-
-   > [!NOTE]
-   > De oplossing van de X12-overeenkomst is afhankelijk van de kwalificatie en id van de afzender en de ontvanger en id die zijn gedefinieerd in de partner en het inkomende bericht. Als deze waarden worden gewijzigd voor uw partner, werkt u de overeenkomst ook bij.
-
-## <a name="configure-how-your-agreement-handles-received-messages"></a>Configureren hoe uw overeenkomst ontvangen berichten verwerkt
-
-Nu u de eigenschappen van de overeenkomst hebt ingesteld, kunt u configureren hoe deze overeenkomst inkomende berichten die van uw partner worden ontvangen via deze overeenkomst identificeren en verwerken.
-
-1.  Onder **toevoegen**selecteert u **instellingen voor ontvangen**.
-Configureer deze eigenschappen op basis van uw overeenkomst met de partner die berichten met u uitwisselt. Zie voor beschrijvingen van eigenschappen de tabellen in deze sectie.
-
-    **Ontvangst-instellingen** zijn ingedeeld in de volgende secties: Id's, bevestiging, Schema's, enveloppen, controle nummers, validaties en interne instellingen.
-
-2. Wanneer u klaar bent, slaat u de instellingen op door **OK**te kiezen.
-
-U bent nu klaar om inkomende berichten af te handelen die overeenkomen met de geselecteerde instellingen.
-
-### <a name="identifiers"></a>Id's
-
-![Id-eigenschappen instellen](./media/logic-apps-enterprise-integration-x12/x12-2.png)  
+![Id-eigenschappen voor inkomende berichten](./media/logic-apps-enterprise-integration-x12/x12-receive-settings-identifiers.png)
 
 | Eigenschap | Beschrijving |
-| --- | --- |
-| ISA1 (autorisatie kwalificatie) |Selecteer de waarde voor autorisatie kwalificatie in de vervolg keuzelijst. |
-| ISA2 |Optioneel. Voer de waarde voor autorisatie gegevens in. Als de waarde die u hebt ingevoerd voor ISA1 andere dan 00, voert u Mini maal één alfanumeriek teken en Maxi maal 10 in. |
-| ISA3 (beveiligings kwalificatie) |Selecteer de waarde voor de beveiligings kwalificatie in de vervolg keuzelijst. |
-| ISA4 |Optioneel. Geef de waarde voor de beveiligings gegevens op. Als de waarde die u hebt ingevoerd voor ISA3 andere dan 00, voert u Mini maal één alfanumeriek teken en Maxi maal 10 in. |
+|----------|-------------|
+| **ISA1 (autorisatie kwalificatie)** | De waarde van de autorisatie kwalificatie die u wilt gebruiken. De standaard waarde is **00-er is geen autorisatie-informatie aanwezig**. <p>**Opmerking**: als u andere waarden selecteert, geeft u een waarde op voor de eigenschap **ISA2** . |
+| **ISA2** | De waarde van de autorisatie gegevens die moet worden gebruikt wanneer de eigenschap **ISA1** niet **00 is: er zijn geen autorisatie gegevens aanwezig**. Deze eigenschaps waarde moet mini maal één alfanumeriek teken en Maxi maal 10 hebben. |
+| **ISA3 (beveiligings kwalificatie)** | De waarde van de beveiligings kwalificatie die u wilt gebruiken. De standaard waarde is **00: er zijn geen beveiligings gegevens aanwezig**. <p>**Opmerking**: als u andere waarden selecteert, geeft u een waarde op voor de eigenschap **ISA4** . |
+| **ISA4** | De waarde voor de beveiligings gegevens die moet worden gebruikt wanneer de eigenschap **ISA3** niet **00 is: er is geen beveiligings informatie aanwezig**. Deze eigenschaps waarde moet mini maal één alfanumeriek teken en Maxi maal 10 hebben. |
+|||
 
-### <a name="acknowledgment"></a>Bevestiging
+<a name="inbound-acknowledgement"></a>
 
-![Eigenschappen voor bevestiging instellen](./media/logic-apps-enterprise-integration-x12/x12-3.png) 
+### <a name="receive-settings---acknowledgement"></a>Instellingen ontvangen-bevestiging
 
-| Eigenschap | Beschrijving |
-| --- | --- |
-| TA1 verwacht |Retourneert een technische bevestiging van de verzender van het uitwisselings certificaat |
-| FA verwacht |Retourneert een functionele bevestiging van de verzender van het uitwisselings certificaat. Selecteer vervolgens of u de 997-of 999-bevestigingen wilt, op basis van de schema versie |
-| AK2/IK2-lus toevoegen |Hiermee kunnen AK2-lussen worden gegenereerd in functionele bevestigingen voor geaccepteerde transactie sets |
-
-### <a name="schemas"></a>Schema 's
-
-Selecteer een schema voor elk transactie type (ST1) en Sender Application (GS2). De receive-pijp lijn ontleedt het inkomende bericht door te voldoen aan de waarden voor ST1 en GS2 in het inkomende bericht met de waarden die u hier instelt, en het schema van het inkomende bericht met het schema dat u hier hebt ingesteld.
-
-![Schema selecteren](./media/logic-apps-enterprise-integration-x12/x12-33.png) 
+![Bevestiging voor inkomende berichten](./media/logic-apps-enterprise-integration-x12/x12-receive-settings-acknowledgement.png)
 
 | Eigenschap | Beschrijving |
-| --- | --- |
-| Versie |De X12-versie selecteren |
-| Transactie type (ST01) |Het transactie type selecteren |
-| Sender Application (GS02) |De toepassing voor de afzender selecteren |
-| Schema |Selecteer het schema bestand dat u wilt gebruiken. Schema's worden toegevoegd aan uw integratie account. |
+|----------|-------------|
+| **TA1 verwacht** | Een technische bevestiging (TA1) retour neren aan de verzender van het uitwisselings certificaat. |
+| **FA verwacht** | Een functie-bevestigingen (FA) retour neren naar de verzender van het uitwisselings certificaat. <p>Selecteer de 997-of 999-bevestigingen op basis van de schema versie voor de eigenschap **VA-versie** . <p>Als u het genereren van AK2-lussen in functionele bevestigingen voor geaccepteerde transactie sets wilt inschakelen, selecteert u **AK2/IK2-lus toevoegen**. |
+||||
 
-> [!NOTE]
-> Configureer het vereiste [schema](../logic-apps/logic-apps-enterprise-integration-schemas.md) dat is geüpload naar uw [integratie account](../logic-apps/logic-apps-enterprise-integration-accounts.md).
+<a name="inbound-schemas"></a>
 
-### <a name="envelopes"></a>Enveloppen
+### <a name="receive-settings---schemas"></a>Instellingen ontvangen-Schema's
 
-![Geef het scheidings teken in een transactieset op: Kies een standaard-id of herhalings scheidings teken](./media/logic-apps-enterprise-integration-x12/x12-34.png)
+![Schema's voor inkomende berichten](./media/logic-apps-enterprise-integration-x12/x12-receive-settings-schemas.png)
 
-| Eigenschap | Beschrijving |
-| --- | --- |
-| ISA11 gebruik |Hiermee geeft u het scheidings teken moet worden gebruikt in een transactieset: <p>Selecteer **standaard-id** voor het gebruik van een punt (.) voor de decimale notatie, in plaats van de decimale notatie van het inkomende document in de EDI-ontvangst pijplijn. <p>Selecteer **herhalings scheidings teken** om het scheidings teken voor herhalingen van een eenvoudig gegevens element of een herhaalde gegevens structuur op te geven. Meestal wordt de dakje (^) gebruikt als scheidings teken voor herhalingen. Voor HIPAA-schema's kunt u alleen de dakje gebruiken. |
-
-### <a name="control-numbers"></a>Controle nummers
-
-![Selecteren hoe dubbele controle nummers moeten worden verwerkt](./media/logic-apps-enterprise-integration-x12/x12-35.png) 
+Selecteer voor deze sectie een [schema](../logic-apps/logic-apps-enterprise-integration-schemas.md) uit uw [integratie account](../logic-apps/logic-apps-enterprise-integration-accounts.md) voor elk transactie type (ST01) en Sender Application (GS02). De EDI receive-pijp lijn ontleedt het inkomende bericht door te voldoen aan de waarden en het schema dat u in deze sectie hebt ingesteld met de waarden voor ST01 en GS02 in het inkomende bericht en met het schema van het binnenkomende bericht. Nadat u elke rij hebt voltooid, wordt er automatisch een nieuwe lege rij weer gegeven.
 
 | Eigenschap | Beschrijving |
-| --- | --- |
-| Dubbele uitwisselings controle nummers niet toestaan |Dubbele interwijzigingen blok keren. Controleert het uitwisselings controle nummer (ISA13) voor het ontvangen Interchange Control-nummer. Als er een overeenkomst wordt gedetecteerd, wordt de uitwisseling niet verwerkt door de receiver-pijp lijn. U kunt het aantal dagen opgeven voor het uitvoeren van de controle door een waarde op te geven voor het *controleren op dubbele ISA13 elke (dagen)*. |
-| Dubbele items van groeps controle nummers niet toestaan |Interwijzigingen met dubbele groeps controle nummers blok keren. |
-| Geen duplicaten voor het instellen van transactie sets toestaan |Interacties blok keren met dubbele trans acties set control numbers. |
+|----------|-------------|
+| **Versie** | De X12-versie voor het schema |
+| **Transactie type (ST01)** | Het transactie type |
+| **Sender Application (GS02)** | De afzender toepassing |
+| **Schema** | Het schema bestand dat u wilt gebruiken |
+|||
 
-### <a name="validation"></a>Validatie
+<a name="inbound-envelopes"></a>
 
-![Validatie-eigenschappen voor ontvangen berichten instellen](./media/logic-apps-enterprise-integration-x12/x12-36.png) 
+### <a name="receive-settings---envelopes"></a>Instellingen ontvangen-enveloppen
 
-Wanneer u elke validatie rij voltooit, wordt er automatisch een andere toegevoegd. Als u geen regels opgeeft, wordt met de validatie de rij ' default ' gebruikt.
-
-| Eigenschap | Beschrijving |
-| --- | --- |
-| Bericht type |Selecteer het type EDI-bericht. |
-| EDI-validatie |Voer EDI-validatie uit op gegevens typen zoals gedefinieerd door de EDI-eigenschappen, lengte beperkingen, lege gegevens elementen en navolgende scheidings tekens van het schema. |
-| Uitgebreide validatie |Als het gegevens type niet EDI is, is validatie van de vereiste voor het gegevens element en de toegestane herhaling, opsommingen en gegevens element lengte validatie (min/max). |
-| Voor loop-en volg nullen toestaan |Bewaar eventuele extra voor loop-of volg spaties. Verwijder deze tekens niet. |
-| Voor loop-en volg nullen bijsnijden |Voor loop-of volg spaties verwijderen. |
-| Volg scheidings beleid |Navolgende scheidings tekens genereren. <p>Selecteer **niet toegestaan** om navolgende scheidings tekens en schei in de ontvangen uitwisseling te verbieden. Als de uitwisseling navolgende scheidings tekens en schei heeft, wordt de uitwisseling gedeclareerd als ongeldig. <p>Selecteer **optioneel** om wissels met of zonder navolgende scheidings tekens en schei te accepteren. <p>Selecteer **verplicht** wanneer het uitwisselings-en scheidings tekens moeten worden gevolgd. |
-
-### <a name="internal-settings"></a>Interne instellingen
-
-![Interne instellingen selecteren](./media/logic-apps-enterprise-integration-x12/x12-37.png) 
+![Scheidings tekens die moeten worden gebruikt in transactie sets voor inkomende berichten](./media/logic-apps-enterprise-integration-x12/x12-receive-settings-envelopes.png)
 
 | Eigenschap | Beschrijving |
-| --- | --- |
-| De geïmpliceerde decimale notatie "nn" converteren naar een numerieke waarde met grondtal 10 |Converteert een EDI-nummer dat is opgegeven met de notatie "nn" in een numerieke waarde van grondtal 10 |
-| Lege XML-tags maken als navolgende scheidings tekens zijn toegestaan |Schakel dit selectie vakje in als u wilt dat de verzender van de uitwisseling lege XML-codes bevat voor afsluitende scheidings tekens. |
-| Gesplitste uitwisseling als transactie sets-transactie sets uitstellen bij fout|Parseert elke transactie set in een uitwisseling in een afzonderlijk XML-document door de juiste envelop toe te passen op de transactieset. Hiermee worden alleen de trans acties onderbroken waarbij de validatie mislukt. |
-| Gesplitste uitwisseling als transactie sets: uitwisseling onderbreken bij fout|Parseert elke transactie set in een uitwisseling in een afzonderlijk XML-document door de juiste envelop toe te passen. Hiermee wordt het hele uitwisselings proces onderbroken wanneer een of meer transactie sets in de uitwisselings fout worden gevalideerd. | 
-| Trans actie sets met uitwisselingen behouden bij fout |Laat de uitwisseling intact, maakt een XML-document voor de gehele gebatcheerde uitwisseling. Suspendeert alleen de transactie sets die niet zijn gevalideerd, terwijl alle andere transactie sets worden verwerkt. |
-| Uitwisseling van uitwisseling met fouten behouden |Laat de uitwisseling intact, maakt een XML-document voor de gehele gebatcheerde uitwisseling. Hiermee wordt het hele uitwisselings proces onderbroken wanneer een of meer transactie sets in de uitwisseling mislukt. |
+|----------|-------------|
+| **ISA11 gebruik** | Het scheidings teken dat in een transactieset moet worden gebruikt: <p>- **Standaard-id**: gebruik een punt (.) voor de decimale notatie in plaats van de decimale notatie van het inkomende document in de EDI-ontvangst pijplijn. <p>- **Herhalings scheidings teken**: Geef het scheidings teken voor herhaalde exemplaren van een eenvoudig gegevens element of een herhaalde gegevens structuur op. Meestal wordt de dakje (^) gebruikt als scheidings teken voor herhalingen. Voor HIPAA-schema's kunt u alleen de dakje gebruiken. |
+|||
 
-## <a name="configure-how-your-agreement-sends-messages"></a>Configureren hoe uw overeenkomst berichten verzendt
+<a name="inbound-control-numbers"></a>
 
-U kunt configureren hoe deze overeenkomst uitgaande berichten identificeert en verwerkt die u via deze overeenkomst naar uw partner verzendt.
+### <a name="receive-settings---control-numbers"></a>Instellingen ontvangen-controle nummers
 
-1.  Onder **toevoegen**selecteert u **instellingen verzenden**.
-Configureer deze eigenschappen op basis van uw overeenkomst met uw partner die berichten met u uitwisselt. Zie voor beschrijvingen van eigenschappen de tabellen in deze sectie.
-
-    De **instellingen voor verzenden** zijn onderverdeeld in de volgende secties: Id's, bevestiging, Schema's, enveloppen, teken sets en scheidings tekens, controle nummers en validatie.
-
-2. Wanneer u klaar bent, slaat u de instellingen op door **OK**te kiezen.
-
-Uw overeenkomst is nu klaar voor het afhandelen van uitgaande berichten die voldoen aan de geselecteerde instellingen.
-
-### <a name="identifiers"></a>Id's
-
-![Id-eigenschappen instellen](./media/logic-apps-enterprise-integration-x12/x12-4.png)  
+![Controle nummer duplicaten voor inkomende berichten verwerken](./media/logic-apps-enterprise-integration-x12/x12-receive-settings-control-numbers.png) 
 
 | Eigenschap | Beschrijving |
-| --- | --- |
-| Autorisatie kwalificatie (ISA1) |Selecteer de waarde voor autorisatie kwalificatie in de vervolg keuzelijst. |
-| ISA2 |Voer de waarde voor autorisatie gegevens in. Als deze waarde niet gelijk is aan 00, voert u Mini maal één alfanumeriek teken en Maxi maal 10 in. |
-| Beveiligings kwalificatie (ISA3) |Selecteer de waarde voor de beveiligings kwalificatie in de vervolg keuzelijst. |
-| ISA4 |Geef de waarde voor de beveiligings gegevens op. Als deze waarde niet gelijk is aan 00, voor het tekstvak value (ISA4), voert u Mini maal één alfanumerieke waarde en Maxi maal 10 in. |
+|----------|-------------|
+| **Dubbele uitwisselings controle nummers niet toestaan** | Dubbele interwijzigingen blok keren. Controleer het uitwisselings controle nummer (ISA13) voor het ontvangen Interchange Control-nummer. Als er een overeenkomst wordt gedetecteerd, verwerkt de EDI receive-pijp lijn de uitwisseling niet. <p><p>Als u het aantal dagen wilt opgeven dat de controle moet worden uitgevoerd, voert u een waarde in voor de eigenschap **controleren op dubbele ISA13 elke (dagen)** . |
+| **Dubbele items van groeps controle nummers niet toestaan** | Interwijzigingen met dubbele groeps controle nummers blok keren. |
+| **Geen duplicaten voor het instellen van transactie sets toestaan** | Interacties blok keren die dubbele trans acties hebben voor het instellen van controle nummers. |
+|||
 
-### <a name="acknowledgment"></a>Bevestiging
+<a name="inbound-validations"></a>
 
-![Eigenschappen voor bevestiging instellen](./media/logic-apps-enterprise-integration-x12/x12-5.png)  
+### <a name="receive-settings---validations"></a>Instellingen ontvangen-validaties
 
-| Eigenschap | Beschrijving |
-| --- | --- |
-| TA1 verwacht |Een technische bevestiging (TA1) retour neren aan de verzender van het uitwisselings certificaat. Met deze instelling geeft u op dat de host-partner die het bericht verzendt, een bevestiging vraagt van de gast partner in de overeenkomst. Deze bevestigingen worden verwacht door de host-partner op basis van de ontvangst instellingen van de overeenkomst. |
-| FA verwacht |Een functie-bevestigingen (FA) retour neren naar de verzender van het uitwisselings certificaat. Selecteer of u de 997-of 999-bevestigingen wilt, op basis van de schema versies waarmee u werkt. Deze bevestigingen worden verwacht door de host-partner op basis van de ontvangst instellingen van de overeenkomst. |
-| VA-versie |De VA-versie selecteren |
+![Validaties voor inkomende berichten](./media/logic-apps-enterprise-integration-x12/x12-receive-settings-validations.png)
 
-### <a name="schemas"></a>Schema 's
-
-![Te gebruiken schema selecteren](./media/logic-apps-enterprise-integration-x12/x12-5.png)  
+De **standaard** rij bevat de validatie regels die worden gebruikt voor een EDI-bericht type. Als u verschillende regels wilt definiëren, selecteert u elk vak waar u de regel wilt instellen op **waar**. Nadat u elke rij hebt voltooid, wordt er automatisch een nieuwe lege rij weer gegeven.
 
 | Eigenschap | Beschrijving |
-| --- | --- |
-| Versie |De X12-versie selecteren |
-| Transactie type (ST01) |Het transactie type selecteren |
-| SCHEMA |Selecteer het schema dat u wilt gebruiken. Schema's bevinden zich in uw integratie account. Als u eerst schema selecteert, worden de versie en het transactie type automatisch geconfigureerd  |
+|----------|-------------|
+| **Bericht type** | Het EDI-bericht type |
+| **EDI-validatie** | Voer EDI-validatie uit op gegevens typen zoals gedefinieerd door de EDI-eigenschappen, lengte beperkingen, lege gegevens elementen en navolgende scheidings tekens van het schema. |
+| **Uitgebreide validatie** | Als het gegevens type niet EDI is, is validatie van de vereiste voor het gegevens element en de toegestane herhaling, opsommingen en gegevens element lengte validatie (min of Max). |
+| **Voor loop-en volg nullen toestaan** | Bewaar eventuele extra voor loop-of volg spaties. Verwijder deze tekens niet. |
+| **Voor loop-en volg nullen bijsnijden** | Verwijder alle voor loop-of volg spaties. |
+| **Volg scheidings beleid** | Navolgende scheidings tekens genereren. <p>- **Niet toegestaan**: de Volg begrenzingen en scheidings tekens in de binnenkomende uitwisseling verbieden. Als de uitwisseling navolgende scheidings tekens en schei heeft, wordt de uitwisseling gedeclareerd als ongeldig. <p>- **Optioneel**: interwijzigingen accepteren met of zonder navolgende scheidings tekens en schei. <p>- **Verplicht**: de inkomende uitwisseling moet volg scheidings tekens en scheidings tekens bevatten. |
+|||
 
-> [!NOTE]
-> Configureer het vereiste [schema](../logic-apps/logic-apps-enterprise-integration-schemas.md) dat is geüpload naar uw [integratie account](../logic-apps/logic-apps-enterprise-integration-accounts.md).
+<a name="inbound-internal-settings"></a>
 
-### <a name="envelopes"></a>Enveloppen
+### <a name="receive-settings---internal-settings"></a>Instellingen ontvangen-interne instellingen
 
-![Geef het scheidings teken in een transactieset op: Kies een standaard-id of herhalings scheidings teken](./media/logic-apps-enterprise-integration-x12/x12-6.png) 
-
-| Eigenschap | Beschrijving |
-| --- | --- |
-| ISA11 gebruik |Hiermee geeft u het scheidings teken moet worden gebruikt in een transactieset: <p>Selecteer **standaard-id** voor het gebruik van een punt (.) voor de decimale notatie, in plaats van de decimale notatie van het inkomende document in de EDI-ontvangst pijplijn. <p>Selecteer **herhalings scheidings teken** om het scheidings teken voor herhalingen van een eenvoudig gegevens element of een herhaalde gegevens structuur op te geven. Meestal wordt de dakje (^) gebruikt als scheidings teken voor herhalingen. Voor HIPAA-schema's kunt u alleen de dakje gebruiken. |
-
-### <a name="control-numbers"></a>Controle nummers
-
-![Eigenschappen van controle nummers opgeven](./media/logic-apps-enterprise-integration-x12/x12-8.png) 
+![Interne instellingen voor inkomende berichten](./media/logic-apps-enterprise-integration-x12/x12-receive-settings-internal-settings.png)
 
 | Eigenschap | Beschrijving |
-| --- | --- |
-| Controle versie nummer (ISA12) |Selecteer de versie van de X12-standaard |
-| Gebruiks indicator (ISA15) |Selecteer de context van een uitwisseling.  De waarden zijn informatie, productie gegevens of test gegevens |
-| Schema |Genereert de GS-en ST-segmenten voor een met X12 gecodeerde uitwisseling die wordt verzonden naar de verzendende pijp lijn |
-| GS1 |Optioneel, selecteer een waarde voor de functie code in de vervolg keuzelijst |
-| GS2 |Optioneel, afzender van de toepassing |
-| GS3 |Optioneel, ontvanger van toepassing |
-| GS4 |Optioneel, selecteer CCYYMMDD of JJMMDD |
-| GS5 |Optioneel, selecteer HHMM, HHMMSS of HHMMSSdd |
-| GS7 |Optioneel, selecteer een waarde voor de verantwoordelijke instantie in de vervolg keuzelijst |
-| GS8 |Optionele versie van het document |
-| Uitwisselings controle nummer (ISA13) |Vereist, voer een bereik van waarden in voor het uitwisselings controle nummer. Voer een numerieke waarde in met mini maal 1 en Maxi maal 999999999 |
-| Groeps controle nummer (GS06) |Vereist, voer een bereik van getallen in voor het groeps controle nummer. Voer een numerieke waarde in met mini maal 1 en Maxi maal 999999999 |
-| ST02 (trans actie set Control Number) |Vereist, voer een bereik van getallen in voor het besturings nummer van de Transactieset. Voer een bereik met numerieke waarden in met mini maal 1 en Maxi maal 999999999 |
-| Voorvoegsel |Optioneel, opgegeven voor het bereik van de trans actie besturings nummers die worden gebruikt bij bevestiging. Voer een numerieke waarde in voor de middelste twee velden en een alfanumerieke waarde (indien gewenst) voor het voor voegsel en de achtervoegsel velden. De middelste velden zijn vereist en bevatten de minimum-en maximum waarden voor het controle nummer |
-| Achtervoegsel |Optioneel, opgegeven voor het bereik van de besturings getallen voor trans actie sets die worden gebruikt in een bevestiging. Voer een numerieke waarde in voor de middelste twee velden en een alfanumerieke waarde (indien gewenst) voor het voor voegsel en de achtervoegsel velden. De middelste velden zijn vereist en bevatten de minimum-en maximum waarden voor het controle nummer |
+|----------|-------------|
+| **De geïmpliceerde decimale notatie nn converteren naar een numerieke waarde met grondtal 10** | Een EDI-nummer dat is opgegeven met de indeling "nn" converteren naar een numerieke waarde met grondtal 10. |
+| **Lege XML-tags maken als navolgende scheidings tekens zijn toegestaan** | Laat de verzender van de uitwisseling lege XML-tags bevatten voor navolgende scheidings tekens. |
+| **Gesplitste uitwisseling als transactie sets-transactie sets uitstellen bij fout** | Parseer elke transactie groep in een uitwisseling in een afzonderlijk XML-document door de juiste envelop toe te passen op de transactieset. Alleen de trans acties onderbreken waarvoor de validatie is mislukt. |
+| **Gesplitste uitwisseling als transactie sets: uitwisseling onderbreken bij fout** | Parseer elke transactieset in een uitwisseling in een afzonderlijk XML-document door de juiste envelop toe te passen. De volledige uitwisseling onderbreken wanneer een of meer transactie sets in de uitwisseling mislukt. |
+| **Trans actie sets met uitwisselingen behouden bij fout** | Laat de uitwisseling intact en maak een XML-document voor de gehele gebatcheerde uitwisseling. Onderbreek alleen de transactie sets die niet zijn gevalideerd, maar blijf alle andere transactie sets verwerken. |
+| **Uitwisseling van uitwisseling met fouten behouden** |Laat de uitwisseling intact, maakt een XML-document voor de gehele gebatcheerde uitwisseling. Hiermee wordt het hele uitwisselings proces onderbroken wanneer een of meer transactie sets in de uitwisseling mislukt. |
+|||
 
-### <a name="character-sets-and-separators"></a>Teken sets en scheidings tekens
+<a name="send-settings"></a>
 
-Met uitzonde ring van de tekenset, kunt u een andere set scheidings tekens voor elk bericht type opgeven. Als er geen tekenset is opgegeven voor een bepaald bericht schema, wordt de standaard tekenset gebruikt.
+## <a name="send-settings"></a>Instellingen verzenden
 
-![Scheidings tekens voor bericht typen opgeven](./media/logic-apps-enterprise-integration-x12/x12-9.png) 
+Nadat u de eigenschappen van de overeenkomst hebt ingesteld, kunt u configureren hoe deze overeenkomst uitgaande berichten identificeert en verwerkt die u via deze overeenkomst naar uw partner verzendt.
+
+1. Onder **toevoegen**selecteert u **instellingen verzenden**.
+
+1. Configureer deze eigenschappen op basis van uw overeenkomst met de partner die berichten met u uitwisselt. Zie voor beschrijvingen van eigenschappen de tabellen in deze sectie.
+
+   De **instellingen voor verzenden** zijn ingedeeld in de volgende secties:
+
+   * [Id's](#outbound-identifiers)
+   * [Bevestigings](#outbound-acknowledgement)
+   * [Schema 's](#outbound-schemas)
+   * [Enveloppen](#outbound-envelopes)
+   * [Versie nummer van besturings element](#outbound-control-version-number)
+   * [Controle nummers](#outbound-control-numbers)
+   * [Teken sets en scheidings tekens](#outbound-character-sets-separators)
+   * [Validatie](#outbound-validation)
+
+1. Wanneer u klaar bent, moet u de instellingen opslaan door **OK**te selecteren.
+
+<a name="outbound-identifiers"></a>
+
+### <a name="send-settings---identifiers"></a>Instellingen verzenden-Id's
+
+![Id-eigenschappen voor uitgaande berichten](./media/logic-apps-enterprise-integration-x12/x12-send-settings-identifiers.png)
 
 | Eigenschap | Beschrijving |
-| --- | --- |
-| Tekenset die moet worden gebruikt |Als u de eigenschappen wilt valideren, selecteert u de X12 teken reeks. De opties zijn Basic, Extended en UTF8. |
-| Schema |Selecteer een schema in de vervolg keuzelijst. Nadat u elke rij hebt voltooid, wordt er automatisch een nieuwe rij toegevoegd. Voor het geselecteerde schema selecteert u de scheidings tekens die u wilt gebruiken, op basis van de onderstaande scheidings tekens. |
-| Invoertype |Selecteer een invoer type in de vervolg keuzelijst. |
-| Onderdeel scheidings teken |Voer één teken in om samengestelde gegevens elementen van elkaar te scheiden. |
-| Scheidings teken voor gegevens elementen |Als u eenvoudige gegevens elementen in samengestelde gegevens elementen wilt scheiden, voert u één teken in. |
-| Vervangings teken |Voer een vervangings teken in dat wordt gebruikt om alle scheidings tekens in de payloadgegevens te vervangen wanneer het uitgaande X12-bericht wordt gegenereerd. |
-| Segment Terminator |Voer één teken in om het einde van een EDI-segment aan te geven. |
-| Achtervoegsel |Selecteer het teken dat wordt gebruikt met de segment-id. Als u een achtervoegsel aanwijst, kan het gegevens element van het segment Terminator leeg zijn. Als de eind afsluit van het segment leeg blijft, moet u een achtervoegsel aanwijzen. |
+|----------|-------------|
+| **ISA1 (autorisatie kwalificatie)** | De waarde van de autorisatie kwalificatie die u wilt gebruiken. De standaard waarde is **00-er is geen autorisatie-informatie aanwezig**. <p>**Opmerking**: als u andere waarden selecteert, geeft u een waarde op voor de eigenschap **ISA2** . |
+| **ISA2** | De waarde van de autorisatie gegevens die moet worden gebruikt wanneer de eigenschap **ISA1** niet **00 is: er zijn geen autorisatie gegevens aanwezig**. Deze eigenschaps waarde moet mini maal één alfanumeriek teken en Maxi maal 10 hebben. |
+| **ISA3 (beveiligings kwalificatie)** | De waarde van de beveiligings kwalificatie die u wilt gebruiken. De standaard waarde is **00: er zijn geen beveiligings gegevens aanwezig**. <p>**Opmerking**: als u andere waarden selecteert, geeft u een waarde op voor de eigenschap **ISA4** . |
+| **ISA4** | De waarde voor de beveiligings gegevens die moet worden gebruikt wanneer de eigenschap **ISA3** niet **00 is: er is geen beveiligings informatie aanwezig**. Deze eigenschaps waarde moet mini maal één alfanumeriek teken en Maxi maal 10 hebben. |
+|||
+
+<a name="outbound-acknowledgement"></a>
+
+### <a name="send-settings---acknowledgement"></a>Instellingen verzenden-bevestiging
+
+![Bevestigings eigenschappen voor uitgaande berichten](./media/logic-apps-enterprise-integration-x12/x12-send-settings-acknowledgement.png)
+
+| Eigenschap | Beschrijving |
+|----------|-------------|
+| **TA1 verwacht** | Een technische bevestiging (TA1) retour neren aan de verzender van het uitwisselings certificaat. <p>Met deze instelling geeft u op dat de host-partner die het bericht verzendt, een bevestiging vraagt van de gast partner in de overeenkomst. Deze bevestigingen worden verwacht door de host-partner op basis van de ontvangst instellingen van de overeenkomst. |
+| **FA verwacht** | Een functie-bevestigingen (FA) retour neren naar de verzender van het uitwisselings certificaat. Selecteer de 997-of 999-bevestigingen op basis van de schema versie voor de eigenschap **VA-versie** . <p>Met deze instellingen geeft u op dat de host-partner die het bericht verzendt, een bevestiging vraagt van de gast partner in de overeenkomst. Deze bevestigingen worden verwacht door de host-partner op basis van de ontvangst instellingen van de overeenkomst. |
+|||
+
+<a name="outbound-schemas"></a>
+
+### <a name="send-settings---schemas"></a>Instellingen verzenden-Schema's
+
+![Schema's voor uitgaande berichten](./media/logic-apps-enterprise-integration-x12/x12-send-settings-schemas.png)
+
+Selecteer voor deze sectie een [schema](../logic-apps/logic-apps-enterprise-integration-schemas.md) uit uw [integratie account](../logic-apps/logic-apps-enterprise-integration-accounts.md) voor elk transactie type (ST01). Nadat u elke rij hebt voltooid, wordt er automatisch een nieuwe lege rij weer gegeven.
+
+| Eigenschap | Beschrijving |
+|----------|-------------|
+| **Versie** | De X12-versie voor het schema |
+| **Transactie type (ST01)** | Het transactie type voor het schema |
+| **Schema** | Het schema bestand dat u wilt gebruiken. Als u eerst het schema selecteert, worden de versie en het transactie type automatisch ingesteld. |
+|||
+
+<a name="outbound-envelopes"></a>
+
+### <a name="send-settings---envelopes"></a>Instellingen verzenden-enveloppen
+
+![Scheidings tekens in een trans actie die moeten worden gebruikt voor uitgaande berichten](./media/logic-apps-enterprise-integration-x12/x12-send-settings-envelopes.png)
+
+| Eigenschap | Beschrijving |
+|----------|-------------|
+| **ISA11 gebruik** | Het scheidings teken dat in een transactieset moet worden gebruikt: <p>- **Standaard-id**: gebruik een punt (.) voor de decimale notatie in plaats van de decimale notatie van het uitgaande document in de EDI Send-pijp lijn. <p>- **Herhalings scheidings teken**: Geef het scheidings teken voor herhaalde exemplaren van een eenvoudig gegevens element of een herhaalde gegevens structuur op. Meestal wordt de dakje (^) gebruikt als scheidings teken voor herhalingen. Voor HIPAA-schema's kunt u alleen de dakje gebruiken. |
+|||
+
+<a name="outbound-control-version-number"></a>
+
+### <a name="send-settings---control-version-number"></a>Instellingen verzenden-versie nummer van besturings element
+
+![Het versie nummer van het besturings element voor uitgaande berichten](./media/logic-apps-enterprise-integration-x12/x12-send-settings-control-version-number.png)
+
+Selecteer voor deze sectie een [schema](../logic-apps/logic-apps-enterprise-integration-schemas.md) uit uw [integratie account](../logic-apps/logic-apps-enterprise-integration-accounts.md) voor elke uitwisseling. Nadat u elke rij hebt voltooid, wordt er automatisch een nieuwe lege rij weer gegeven.
+
+| Eigenschap | Beschrijving |
+|----------|-------------|
+| **Controle versie nummer (ISA12)** | De versie van de X12-standaard |
+| **Gebruiks indicator (ISA15)** | De context van een uitwisseling, ofwel **test** gegevens, **informatie** gegevens of **productie** gegevens |
+| **Schema** | Het schema dat moet worden gebruikt voor het genereren van de GS-en ST-segmenten voor een met X12 gecodeerde uitwisseling die wordt verzonden naar de EDI Send-pijp lijn. |
+| **GS1** | Optioneel, selecteer de functie code. |
+| **GS2** | Optioneel, geef de afzender van de toepassing op. |
+| **GS3** | Optioneel, geef de ontvanger van de toepassing op. |
+| **GS4** | Optioneel, selecteer **CCYYMMDD** of **JJMMDD**. |
+| **GS5** | Optioneel, selecteer **HHMM**, **hhmmss**of **HHMMSSdd**. |
+| **GS7** | Optioneel, selecteer een waarde voor het verantwoordelijke instituut. |
+| **GS8** | Optioneel, de versie van het schema document opgeven. |
+|||
+
+<a name="outbound-control-numbers"></a>
+
+### <a name="send-settings---control-numbers"></a>Instellingen verzenden-controle nummers
+
+![Controle nummers voor uitgaande berichten](./media/logic-apps-enterprise-integration-x12/x12-send-settings-control-numbers.png)
+
+| Eigenschap | Beschrijving |
+|----------|-------------|
+| **Uitwisselings controle nummer (ISA13)** | Het waarden bereik voor het uitwisselings controle nummer, dat een minimum van waarde 1 en een maximum waarde van 999999999 kan hebben |
+| **Groeps controle nummer (GS06)** | Het waarden bereik voor het groeps besturings element nummer, dat een minimum waarde van 1 en een maximum waarde van 999999999 kan hebben |
+| **ST02 (trans actie set Control Number)** | Het waarden bereik voor het besturings nummer van de transactieset, die een minimum waarde van 1 en een maximum waarde van 999999999 kunnen hebben <p>- **Voor voegsel**: optioneel, een alfanumerieke waarde <br>- **Achtervoegsel**: optioneel, een alfanumerieke waarde |
+|||
+
+<a name="outbound-character-sets-separators"></a>
+
+### <a name="send-settings---character-sets-and-separators"></a>Instellingen verzenden: teken sets en scheidings tekens
+
+![Scheidings tekens voor bericht typen in uitgaande berichten](./media/logic-apps-enterprise-integration-x12/x12-send-settings-character-sets-separators.png)
+
+De **standaard** rij toont de tekenset die wordt gebruikt als scheidings teken voor een bericht schema. Als u de **standaard** tekenset niet wilt gebruiken, kunt u een andere set scheidings tekens voor elk bericht type opgeven. Nadat u elke rij hebt voltooid, wordt er automatisch een nieuwe lege rij weer gegeven.
 
 > [!TIP]
 > Als u speciale teken waarden wilt opgeven, bewerkt u de overeenkomst als JSON en geeft u de ASCII-waarde voor het speciale teken op.
 
-### <a name="validation"></a>Validatie
+| Eigenschap | Beschrijving |
+|----------|-------------|
+| **Tekenset die moet worden gebruikt** | De X12-tekenset, een **Basic**, **Extended**of **utf8**. |
+| **Schema** | Het schema dat u wilt gebruiken. Nadat u het schema hebt geselecteerd, selecteert u de tekenset die u wilt gebruiken, op basis van de onderstaande scheidings tekens. |
+| **Invoer type** | Het invoer type voor de tekenset |
+| **Onderdeel scheidings teken** | Eén teken waarmee samengestelde gegevens elementen worden gescheiden |
+| **Scheidings teken voor gegevens elementen** | Eén teken waarmee eenvoudige gegevens elementen worden gescheiden in samengestelde gegevens |
+| **vervangende teken scheiding** | Een vervangings teken dat alle scheidings tekens in de payload-gegevens vervangt bij het genereren van het uitgaande X12-bericht |
+| **Segment Terminator** | Een enkel teken dat het einde van een EDI-segment aangeeft |
+| **Achtervoegsel** | Het teken dat moet worden gebruikt met de segment-id. Als u een achtervoegsel opgeeft, kan het gegevens element van het segment Terminator leeg zijn. Als de eind afsluit van het segment leeg blijft, moet u een achtervoegsel aanwijzen. |
+|||
 
-![Validatie-eigenschappen instellen voor het verzenden van berichten](./media/logic-apps-enterprise-integration-x12/x12-10.png) 
+<a name="outbound-validation"></a>
 
-Wanneer u elke validatie rij voltooit, wordt er automatisch een andere toegevoegd. Als u geen regels opgeeft, wordt met de validatie de rij ' default ' gebruikt.
+### <a name="send-settings---validation"></a>Instellingen verzenden-validatie
+
+![Validatie-eigenschappen voor uitgaande berichten](./media/logic-apps-enterprise-integration-x12/x12-send-settings-validation.png) 
+
+De **standaard** rij bevat de validatie regels die worden gebruikt voor een EDI-bericht type. Als u verschillende regels wilt definiëren, selecteert u elk vak waar u de regel wilt instellen op **waar**. Nadat u elke rij hebt voltooid, wordt er automatisch een nieuwe lege rij weer gegeven.
 
 | Eigenschap | Beschrijving |
-| --- | --- |
-| Bericht type |Selecteer het type EDI-bericht. |
-| EDI-validatie |Voer EDI-validatie uit op gegevens typen zoals gedefinieerd door de EDI-eigenschappen, lengte beperkingen, lege gegevens elementen en navolgende scheidings tekens van het schema. |
-| Uitgebreide validatie |Als het gegevens type niet EDI is, is validatie van de vereiste voor het gegevens element en de toegestane herhaling, opsommingen en gegevens element lengte validatie (min/max). |
-| Voor loop-en volg nullen toestaan |Bewaar eventuele extra voor loop-of volg spaties. Verwijder deze tekens niet. |
-| Voor loop-en volg nullen bijsnijden |Voor loop-of volg spaties verwijderen. |
-| Volg scheidings beleid |Navolgende scheidings tekens genereren. <p>Selecteer **niet toegestaan** om het afsluiten van de scheidings tekens en schei ding van de gezonden uitwisseling te verhinderen. Als de uitwisseling navolgende scheidings tekens en schei heeft, wordt de uitwisseling gedeclareerd als ongeldig. <p>Selecteer **optioneel** om wissels met of zonder navolgende scheidings tekens en schei dingen te verzenden. <p>Selecteer **verplicht** als het gestuurde uitwisseling moet navolgende scheidings tekens en schei ding. |
+|----------|-------------|
+| **Bericht type** | Het EDI-bericht type |
+| **EDI-validatie** | Voer EDI-validatie uit op gegevens typen zoals gedefinieerd door de EDI-eigenschappen, lengte beperkingen, lege gegevens elementen en navolgende scheidings tekens van het schema. |
+| **Uitgebreide validatie** | Als het gegevens type niet EDI is, is validatie van de vereiste voor het gegevens element en de toegestane herhaling, opsommingen en gegevens element lengte validatie (min of Max). |
+| **Voor loop-en volg nullen toestaan** | Bewaar eventuele extra voor loop-of volg spaties. Verwijder deze tekens niet. |
+| **Voor loop-en volg nullen bijsnijden** | Verwijder alle voor loop-of volg spaties. |
+| **Volg scheidings beleid** | Navolgende scheidings tekens genereren. <p>- **Niet toegestaan**: eind scheidingen en scheidings tekens in de uitgaande uitwisseling verbieden. Als de uitwisseling navolgende scheidings tekens en schei heeft, wordt de uitwisseling gedeclareerd als ongeldig. <p>- **Optioneel**: verwisselt met of zonder navolgende scheidings tekens en schei dingen. <p>- **Verplicht**: de uitgaande uitwisseling moet volg scheidings tekens en scheidings tekens bevatten. |
+|||
 
-## <a name="find-your-created-agreement"></a>Uw gemaakte overeenkomst zoeken
+<a name="hipaa-schemas"></a>
 
-1.  Nadat u alle eigenschappen van de overeenkomst hebt ingesteld, kiest u **OK** op de pagina **toevoegen** om uw overeenkomst te maken en terug te keren naar uw integratie account.
+## <a name="hipaa-schemas-and-message-types"></a>HIPAA-schema's en-bericht typen
 
-    De zojuist toegevoegde overeenkomst wordt nu weer gegeven in de lijst met **overeenkomsten** .
+Wanneer u werkt met HIPAA-schema's en de 277-of 837-bericht typen, moet u een paar extra stappen uitvoeren. De [document versie nummers (gs8)](#outbound-control-version-number) voor deze bericht typen bevatten meer dan 9 tekens, bijvoorbeeld ' 005010X222A1 '. Sommige document versie nummers worden ook toegewezen aan de typen van de variant-berichten. Als u niet naar het juiste bericht type verwijst in uw schema en in uw overeenkomst, wordt dit fout bericht weer gegeven:
 
-2.  U kunt uw overeenkomsten ook bekijken in het overzicht van het integratie account. Kies **overzicht**in het menu integratie account en selecteer vervolgens de tegel **overeenkomsten** .
+`"The message has an unknown document type and did not resolve to any of the existing schemas configured in the agreement."`
 
-    ![Kies de tegel ' overeenkomsten '](./media/logic-apps-enterprise-integration-x12/x12-1-5.png)   
+Deze tabel bevat de betrokken bericht typen, varianten en de document versie nummers die zijn toegewezen aan deze bericht typen:
+
+| Bericht type of-variant |  Beschrijving | Document versie nummer (GS8) |
+|-------------------------|--------------|-------------------------------|
+| 277 | Melding van status van informatie over gezondheids zorg | 005010X212 |
+| 837_I | Claim tand gezondheids zorg | 004010X096A1 <br>005010X223A1 <br>005010X223A2 |
+| 837_D | Gezondheids zorg claim institutionele | 004010X097A1 <br>005010X224A1 <br>005010X224A2 |
+| 837_P | Claim medewerker gezondheids zorg | 004010X098A1 <br>005010X222 <br>005010X222A1 |
+|||
+
+U moet ook EDI-validatie uitschakelen wanneer u deze document versie nummers gebruikt, omdat ze een fout veroorzaken waardoor de teken lengte ongeldig is.
+
+Voer de volgende stappen uit om deze document versie nummers en bericht typen op te geven:
+
+1. Vervang in uw HIPAA-schema het huidige bericht type door het bericht type variant voor het document versie nummer dat u wilt gebruiken.
+
+   Stel dat u het document versie nummer `005010X222A1` met het `837` bericht type wilt gebruiken. Vervang in uw schema elke `"X12_00501_837"` waarde door de `"X12_00501_837_P"` waarde in plaats daarvan.
+
+   Voer de volgende stappen uit om het schema bij te werken:
+
+   1. Ga in het Azure Portal naar uw integratie account. Zoek en down load het schema. Vervang het bericht type en wijzig de naam van het schema bestand en upload uw gereviseerde schema naar uw integratie account. Zie [Schema's bewerken](../logic-apps/logic-apps-enterprise-integration-schemas.md#edit-schemas)voor meer informatie.
+
+   1. In de bericht instellingen van uw overeenkomst selecteert u het gewijzigde schema.
+
+1. Voeg in het object `schemaReferences` van de overeenkomst een andere vermelding toe die het type variant bericht opgeeft dat overeenkomt met het versie nummer van uw document.
+
+   Stel dat u het document versie nummer `005010X222A1` voor het `837` bericht type wilt gebruiken. Uw overeenkomst heeft een `schemaReferences` sectie met de volgende eigenschappen en waarden:
+
+   ```json
+   "schemaReferences": [
+      {
+         "messageId": "837",
+         "schemaVersion": "00501",
+         "schemaName": "X12_00501_837"
+      }
+   ]
+   ```
+
+   In deze `schemaReferences` sectie voegt u een andere vermelding toe met de volgende waarden:
+
+   * `"messageId": "837_P"`
+   * `"schemaVersion": "00501"`
+   * `"schemaName": "X12_00501_837_P"`
+
+   Wanneer u klaar bent, ziet `schemaReferences` uw sectie er als volgt uit:
+
+   ```json
+   "schemaReferences": [
+      {
+         "messageId": "837",
+         "schemaVersion": "00501",
+         "schemaName": "X12_00501_837"
+      },
+      {
+         "messageId": "837_P",
+         "schemaVersion": "00501",
+         "schemaName": "X12_00501_837_P"
+      }
+   ]
+   ```
+
+1. Schakel in de bericht instellingen van uw overeenkomst EDI-validatie uit door het selectie vakje **EDI-validatie** uit te scha kelen voor elk bericht type of voor alle bericht typen als u de **standaard** waarden gebruikt.
+
+   ![Validatie uitschakelen voor alle bericht typen of elk bericht type](./media/logic-apps-enterprise-integration-x12/x12-disable-validation.png) 
 
 ## <a name="connector-reference"></a>Connector-verwijzing
 
-Voor meer technische informatie over deze connector, zoals acties en limieten zoals beschreven in het Swagger-bestand van de connector, raadpleegt u de [referentie pagina van de connector](https://docs.microsoft.com/connectors/x12/). 
+Zie de [referentie pagina van de connector](https://docs.microsoft.com/connectors/x12/)voor aanvullende technische informatie over deze connector, zoals acties en limieten zoals beschreven in het Swagger-bestand van de connector.
 
 > [!NOTE]
 > Voor Logic apps in een [Integration service Environment (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md), gebruikt de ISE-label versie van deze connector de [limieten voor B2B-berichten voor ISE](../logic-apps/logic-apps-limits-and-config.md#b2b-protocol-limits).
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Meer informatie over andere [Logic apps-connectors](../connectors/apis-list.md)
+* Meer informatie over andere [connectors voor Logic apps](../connectors/apis-list.md)

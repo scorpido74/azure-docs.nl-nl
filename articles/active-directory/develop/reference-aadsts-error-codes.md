@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: reference
-ms.date: 04/07/2020
+ms.date: 04/30/2020
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 87a962709638391887eaa275f059bf4ceae9218b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3ec1e7e9aa84c01cd62836f3c09f22cdb143817a
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81406979"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82611327"
 ---
 # <a name="azure-ad-authentication-and-authorization-error-codes"></a>Fout codes voor Azure AD-verificatie en-autorisatie
 
@@ -72,9 +72,9 @@ Het `error` veld heeft verschillende mogelijke waarden: Controleer de koppelinge
 | `temporarily_unavailable` | De server is tijdelijk niet actief om de aanvraag af te handelen. | Voer de aanvraag opnieuw uit. De client toepassing kan bijvoorbeeld verklaren dat de reactie van de gebruiker is vertraagd vanwege een tijdelijke voor waarde. |
 
 ## <a name="lookup-current-error-code-information"></a>Informatie over actuele fout code opzoeken
-Fout codes en berichten zijn onderhevig aan wijzigingen.  Voor de meest recente informatie raadpleegt u de `https://login.microsoftonline.com/error` pagina om AADSTS-fout beschrijvingen, fixes en enkele voorgestelde tijdelijke oplossingen te vinden.  
+Fout codes en berichten zijn onderhevig aan wijzigingen.  Voor de meest recente informatie raadpleegt u de [https://login.microsoftonline.com/error](https://login.microsoftonline.com/error) pagina om AADSTS-fout beschrijvingen, fixes en enkele voorgestelde tijdelijke oplossingen te vinden.  
 
-Zoek naar het numerieke deel van de geretourneerde fout code.  Als u bijvoorbeeld de fout code ' AADSTS16000 ' hebt ontvangen, voert u een zoek opdracht `https://login.microsoftonline.com/error` uit voor ' 16000 '.  U kunt ook rechtstreeks een koppeling naar een specifieke fout maken door het fout code nummer toe te voegen aan de URL: `https://login.microsoftonline.com/error?code=16000`.
+Zoek naar het numerieke deel van de geretourneerde fout code.  Als u bijvoorbeeld de fout code ' AADSTS16000 ' hebt ontvangen, voert u een zoek opdracht [https://login.microsoftonline.com/error](https://login.microsoftonline.com/error) uit voor ' 16000 '.  U kunt ook rechtstreeks een koppeling naar een specifieke fout maken door het fout code nummer toe te voegen aan de URL: [https://login.microsoftonline.com/error?code=16000](https://login.microsoftonline.com/error?code=16000).
 
 ## <a name="aadsts-error-codes"></a>AADSTS-fout codes
 
@@ -189,6 +189,7 @@ Zoek naar het numerieke deel van de geretourneerde fout code.  Als u bijvoorbeel
 | AADSTS65001 | DelegationDoesNotExist-de gebruiker of beheerder heeft niet ingestemd met het gebruik van de toepassing met ID X. Verzend een interactieve autorisatie aanvraag voor deze gebruiker en resource. |
 | AADSTS65004 | UserDeclinedConsent: de gebruiker heeft geen toestemming gegeven om toegang te krijgen tot de app. Laat de gebruiker zich opnieuw aanmelden en toestemming geven voor de app|
 | AADSTS65005 | MisconfiguredApplication-de vereiste resource toegangs lijst van de app bevat geen apps die kunnen worden gedetecteerd door de resource of de client-app heeft toegang aangevraagd tot de resource, die niet is opgegeven in de vereiste resource toegangs lijst of de grafiek service heeft een ongeldige aanvraag of bron niet gevonden. Als de app SAML ondersteunt, is het mogelijk dat u de app met de verkeerde id (entiteit) hebt geconfigureerd. Probeer de oplossing die wordt vermeld voor SAML uit met behulp van de onderstaande koppeling:[https://docs.microsoft.com/azure/active-directory/application-sign-in-problem-federated-sso-gallery#no-resource-in-requiredresourceaccess-list](https://docs.microsoft.com/azure/active-directory/application-sign-in-problem-federated-sso-gallery?/?WT.mc_id=DMC_AAD_Manage_Apps_Troubleshooting_Nav) |
+| AADSTS650052 | De app heeft toegang nodig tot een `(\"{name}\")` service waarvoor uw `\"{organization}\"` organisatie geen abonnement heeft of is ingeschakeld. Neem contact op met uw IT-beheerder om de configuratie van uw service abonnementen te controleren. |
 | AADSTS67003 | ActorNotValidServiceIdentity |
 | AADSTS70000 | InvalidGrant-verificatie is mislukt. Het vernieuwings token is niet geldig. De fout kan de volgende oorzaken hebben:<ul><li>De header voor token binding is leeg</li><li>Hash van token binding komt niet overeen</li></ul> |
 | AADSTS70001 | UnauthorizedClient-de toepassing is uitgeschakeld. |
@@ -206,6 +207,7 @@ Zoek naar het numerieke deel van de geretourneerde fout code.  Als u bijvoorbeel
 | AADSTS75001 | BindingSerializationError: er is een fout opgetreden tijdens het binden van SAML-berichten. |
 | AADSTS75003 | UnsupportedBindingError: de app heeft een fout geretourneerd die is gerelateerd aan een niet-ondersteunde binding (SAML-protocol antwoord kan niet worden verzonden via bindingen die geen HTTP POST zijn). |
 | AADSTS75005 | Saml2MessageInvalid: Azure AD biedt geen ondersteuning voor de SAML-aanvraag die door de app voor SSO wordt verzonden. |
+| AADSTS7500514 | Er is geen ondersteund type SAML-respons gevonden. De ondersteunde antwoord typen zijn ' Response ' (in XML-naam ruimte ' urn: Oasis: names: TC: SAML: 2.0: Protocol ') of ' Assertion ' (in XML-naam ruimte ' urn: Oasis: names: TC: SAML: ' bewering '). Toepassings fout: de ontwikkelaar zal deze fout afhandelen.|
 | AADSTS75008 | RequestDeniedError-de aanvraag van de app is geweigerd omdat de SAML-aanvraag een onverwachte bestemming heeft. |
 | AADSTS75011 | NoMatchedAuthnContextInOutputClaims: de verificatie methode waarmee de gebruiker die is geverifieerd met de service, niet overeenkomt met de aangevraagde verificatie methode. |
 | AADSTS75016 | De Saml2AuthenticationRequestInvalidNameIDPolicy-SAML2-verificatie aanvraag heeft een ongeldige NameIdPolicy. |
@@ -311,6 +313,7 @@ Zoek naar het numerieke deel van de geretourneerde fout code.  Als u bijvoorbeel
 | AADSTS700020 | InteractionRequired: de toegangs toekenning vereist interactie. |
 | AADSTS700022 | InvalidMultipleResourcesScope: de opgegeven waarde voor het bereik van de invoer parameter is niet geldig omdat deze meer dan één resource bevat. |
 | AADSTS700023 | InvalidResourcelessScope: de opgegeven waarde voor het bereik van de invoer parameter is niet geldig bij het aanvragen van een toegangs token. |
+| AADSTS7000215 | Er is een ongeldig client geheim gegeven. Ontwikkelaars fout: de app probeert zich aan te melden zonder de vereiste of juiste verificatie parameters.|
 | AADSTS7000222| InvalidClientSecretExpiredKeysProvided-de aangestuurde geheime sleutels van de client zijn verlopen. Ga naar de Azure-Portal om nieuwe sleutels voor uw app te maken of overweeg de certificaat referenties te gebruiken voor extra beveiliging:https://aka.ms/certCreds |
 | AADSTS700005 | De InvalidGrantRedeemAgainstWrongTenant-meegeleverde autorisatie code is bedoeld voor gebruik met andere tenants en daarom afgewezen. De OAuth2-autorisatie code moet worden ingewisseld voor dezelfde Tenant die is verkregen voor (/veelvoorkomende of/{tenant-ID} indien van toepassing) |
 | AADSTS1000000 | UserNotBoundError-voor de BIND-API moet de Azure AD-gebruiker ook worden geverifieerd met een externe IDP, die nog niet heeft plaatsgevonden. |

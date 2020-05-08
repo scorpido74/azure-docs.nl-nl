@@ -9,12 +9,12 @@ ms.date: 12/20/2019
 ms.author: normesta
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 69983502fb7d099f474fb1c4c084f5d381a173e9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8dc3c629830019a6c207c18f1783559e89512172
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76314756"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82610969"
 ---
 # <a name="end-to-end-troubleshooting-using-azure-storage-metrics-and-logging-azcopy-and-message-analyzer"></a>End-to-end-probleemoplossing op basis van metrische gegevens en logboekregistratie van Azure Storage, AzCopy en Message Analyzer
 
@@ -161,7 +161,7 @@ Message Analyzer bevat assets voor Azure Storage waarmee u Server-, client-en ne
 
 ### <a name="download-and-install-message-analyzer-and-the-azure-storage-assets"></a>Message Analyzer en de Azure Storage-assets downloaden en installeren
 
-1. Down load [Message Analyzer](https://www.microsoft.com/download/details.aspx?id=44226) van het micro soft Download centrum en voer het installatie programma uit.
+1. Down load [Message Analyzer](https://docs.microsoft.com/message-analyzer/installing-and-upgrading-message-analyzer).
 2. Start Message Analyzer.
 3. Selecteer in het menu **extra** de optie **Asset Manager**. Selecteer in het dialoog venster **Asset Manager** **down loads**en filter op **Azure Storage**. U ziet de Azure Storage assets, zoals in de onderstaande afbeelding wordt weer gegeven.
 4. Klik op **alle weer gegeven items synchroniseren** om de Azure Storage assets te installeren. De beschik bare assets zijn onder andere:
@@ -319,10 +319,10 @@ Nu u bekend bent met het gebruik van Message Analyzer om uw logboek gegevens te 
 | Een probleem met de verificatie van een SAS (Shared Access Signature) |AzureStorageLog. RequestStatus = = "SASAuthorizationError" |Netwerk |
 | HTTP 409-berichten (conflict) |HTTP. Response. status code = = 409 |Netwerk |
 | 409 (alle) |* Status code = = 409 |Alle |
-| Lage PercentSuccess of logboek vermeldingen van de analyse hebben bewerkingen met de transactie status ClientOtherErrors |AzureStorageLog. RequestStatus = = "ClientOtherError" |server |
-| Nagle-waarschuwing |((AzureStorageLog. EndToEndLatencyMS-AzureStorageLog. ServerLatencyMS) > (AzureStorageLog. ServerLatencyMS * 1,5)) en (AzureStorageLog. RequestPacketSize <1460) en (AzureStorageLog. EndToEndLatencyMS-AzureStorageLog. ServerLatencyMS >= 200) |server |
+| Lage PercentSuccess of logboek vermeldingen van de analyse hebben bewerkingen met de transactie status ClientOtherErrors |AzureStorageLog. RequestStatus = = "ClientOtherError" |Server |
+| Nagle-waarschuwing |((AzureStorageLog. EndToEndLatencyMS-AzureStorageLog. ServerLatencyMS) > (AzureStorageLog. ServerLatencyMS * 1,5)) en (AzureStorageLog. RequestPacketSize <1460) en (AzureStorageLog. EndToEndLatencyMS-AzureStorageLog. ServerLatencyMS >= 200) |Server |
 | Tijds bereik in server-en netwerk logboeken |#Timestamp >= 2014-10-20T16:36:38 en #Timestamp <= 2014-10-20T16:36:39 |Server, netwerk |
-| Tijds bereik in Server logboeken |AzureStorageLog. time stamp >= 2014-10-20T16:36:38 en AzureStorageLog. time stamp <= 2014-10-20T16:36:39 |server |
+| Tijds bereik in Server logboeken |AzureStorageLog. time stamp >= 2014-10-20T16:36:38 en AzureStorageLog. time stamp <= 2014-10-20T16:36:39 |Server |
 
 ## <a name="next-steps"></a>Volgende stappen
 

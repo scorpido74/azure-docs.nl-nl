@@ -6,15 +6,15 @@ ms.service: firewall
 services: firewall
 ms.topic: overview
 ms.custom: mvc
-ms.date: 04/23/2020
+ms.date: 05/06/2020
 ms.author: victorh
 Customer intent: As an administrator, I want to evaluate Azure Firewall so I can determine if I want to use it.
-ms.openlocfilehash: a0bd89a2ffdc15e192e51660c58c1d66efa1284a
-ms.sourcegitcommit: acc558d79d665c8d6a5f9e1689211da623ded90a
+ms.openlocfilehash: 9d5fc95c5845b9a75666860ce8900676972a16bc
+ms.sourcegitcommit: 602e6db62069d568a91981a1117244ffd757f1c2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82598450"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82864093"
 ---
 # <a name="what-is-azure-firewall"></a>Wat is Azure Firewall?
 
@@ -83,12 +83,12 @@ Binnenkomend Internet netwerk verkeer naar uw firewall openbaar IP-adres is vert
 
 ## <a name="multiple-public-ip-addresses"></a>Meerdere open bare IP-adressen
 
-U kunt meerdere open bare IP-adressen (Maxi maal 100) koppelen aan uw firewall.
+U kunt meerdere open bare IP-adressen (Maxi maal 250) koppelen aan uw firewall.
 
 Hiermee worden de volgende scenario's ingeschakeld:
 
 - **DNAT** : u kunt meerdere exemplaren van de standaard poort naar uw back-endservers omzetten. Als u bijvoorbeeld twee open bare IP-adressen hebt, kunt u TCP-poort 3389 (RDP) voor beide IP-adressen omzetten.
-- **SNAT** : er zijn extra poorten beschikbaar voor uitgaande SNAT-verbindingen, waardoor de kans op een SNAT-poort ontstaat. Op dit moment Azure Firewall het open bare IP-adres van de bron wille keurig selecteren dat moet worden gebruikt voor een verbinding. Als u een stroomafwaarts filter op uw netwerk hebt, moet u alle open bare IP-adressen die zijn gekoppeld aan uw firewall toestaan.
+- **SNAT** : er zijn extra poorten beschikbaar voor uitgaande SNAT-verbindingen, waardoor de kans op een SNAT-poort ontstaat. Op dit moment Azure Firewall het open bare IP-adres van de bron wille keurig selecteren dat moet worden gebruikt voor een verbinding. Als u een stroomafwaarts filter op uw netwerk hebt, moet u alle open bare IP-adressen die zijn gekoppeld aan uw firewall toestaan. Overweeg het gebruik van een [openbaar IP-adres voorvoegsel](../virtual-network/public-ip-address-prefix.md) om deze configuratie te vereenvoudigen.
 
 ## <a name="azure-monitor-logging"></a>Logboekregistratie van Azure Monitor
 

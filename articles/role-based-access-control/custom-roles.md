@@ -1,6 +1,6 @@
 ---
-title: Aangepaste rollen voor Azure-resources | Microsoft Docs
-description: Meer informatie over het maken van aangepaste rollen met op rollen gebaseerd toegangs beheer (RBAC) voor een nauw keurig toegangs beheer van Azure-resources.
+title: Aangepaste Azure-rollen-Azure RBAC
+description: Meer informatie over het maken van aangepaste Azure-rollen met Azure op rollen gebaseerd toegangs beheer (Azure RBAC) voor een nauw keurig toegangs beheer van Azure-resources.
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -11,27 +11,27 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 03/19/2020
+ms.date: 04/30/2020
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 9454962e210781559f2fdceb1c36f499c4ae8ff7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5030fb50313e1db2173990c55930c22fdf58f559
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80062171"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82734787"
 ---
-# <a name="custom-roles-for-azure-resources"></a>Aangepaste rollen voor Azure-resources
+# <a name="azure-custom-roles"></a>Aangepaste Azure-rollen
 
 > [!IMPORTANT]
 > Een beheer groep toevoegen aan `AssignableScopes` is momenteel beschikbaar als preview-versie.
 > Deze preview-versie wordt aangeboden zonder service level agreement en wordt niet aanbevolen voor productieworkloads. Misschien worden bepaalde functies niet ondersteund of zijn de mogelijkheden ervan beperkt.
 > Zie voor meer informatie [aanvullende gebruiks voorwaarden voor Microsoft Azure-previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-Als de [ingebouwde rollen voor Azure-resources](built-in-roles.md) niet voldoen aan de specifieke behoeften van uw organisatie, kunt u uw eigen aangepaste rollen maken. Net als bij ingebouwde rollen kunt u aangepaste rollen toewijzen aan gebruikers, groepen en service-principals in de beheer groep, het abonnement en het bereik van de resource groep.
+Als de [ingebouwde rollen van Azure](built-in-roles.md) niet voldoen aan de specifieke behoeften van uw organisatie, kunt u uw eigen aangepaste rollen maken. Net als bij ingebouwde rollen kunt u aangepaste rollen toewijzen aan gebruikers, groepen en service-principals in de beheer groep, het abonnement en het bereik van de resource groep.
 
-Aangepaste rollen kunnen worden gedeeld tussen abonnementen die dezelfde Azure AD-Directory vertrouwen. Er geldt een limiet van **5.000** aangepaste rollen per map. (Voor Azure Duitsland en Azure China 21Vianet is de limiet 2.000 aangepaste rollen.) Aangepaste rollen kunnen worden gemaakt met behulp van de Azure Portal (preview), Azure PowerShell, Azure CLI of de REST API.
+Aangepaste rollen kunnen worden gedeeld tussen abonnementen die dezelfde Azure AD-Directory vertrouwen. Er geldt een limiet van **5.000** aangepaste rollen per map. (Voor Azure Duitsland en Azure China 21Vianet is de limiet 2.000 aangepaste rollen.) Aangepaste rollen kunnen worden gemaakt met behulp van de Azure Portal, Azure PowerShell, Azure CLI of de REST API.
 
 ## <a name="custom-role-example"></a>Voor beeld van aangepaste rol
 
@@ -75,7 +75,7 @@ Wanneer u een aangepaste rol maakt, wordt deze weer gegeven in de Azure Portal m
 
 1. Bepalen hoe u de aangepaste rol wilt maken
 
-    U kunt aangepaste rollen maken met behulp van [Azure Portal](custom-roles-portal.md) (preview), [Azure POWERSHELL](custom-roles-powershell.md), [Azure cli](custom-roles-cli.md)of de [rest API](custom-roles-rest.md).
+    U kunt aangepaste rollen maken met behulp van [Azure Portal](custom-roles-portal.md), [Azure POWERSHELL](custom-roles-powershell.md), [Azure cli](custom-roles-cli.md)of de [rest API](custom-roles-rest.md).
 
 1. De benodigde machtigingen bepalen
 
@@ -89,7 +89,7 @@ Wanneer u een aangepaste rol maakt, wordt deze weer gegeven in de Azure Portal m
 
     Wanneer u uw aangepaste rol hebt, moet u deze testen om te controleren of deze werkt zoals verwacht. Als u later aanpassingen wilt aanbrengen, kunt u de aangepaste rol bijwerken.
 
-Voor een stapsgewijze zelf studie over het maken van een aangepaste rol, Zie [zelf studie: een aangepaste rol maken met behulp van Azure PowerShell](tutorial-custom-role-powershell.md) of [zelf studie: een aangepaste rol maken met behulp van Azure cli](tutorial-custom-role-cli.md).
+Voor een stapsgewijze zelf studie over het maken van een aangepaste rol, Zie [zelf studie: een aangepaste Azure-rol maken met behulp van Azure PowerShell](tutorial-custom-role-powershell.md) of [zelf studie: een aangepaste Azure-rol maken met behulp van Azure cli](tutorial-custom-role-cli.md).
 
 ## <a name="custom-role-properties"></a>Eigenschappen van aangepaste rol
 
@@ -131,6 +131,6 @@ In de volgende lijst worden de limieten voor aangepaste rollen beschreven.
 Zie [uw resources organiseren met Azure-beheer groepen](../governance/management-groups/overview.md#custom-rbac-role-definition-and-assignment)voor meer informatie over aangepaste rollen en beheer groepen.
 
 ## <a name="next-steps"></a>Volgende stappen
-- [Aangepaste Azure-rollen maken of bijwerken met behulp van de Azure Portal (preview)](custom-roles-portal.md)
-- [Functie definities voor Azure-resources begrijpen](role-definitions.md)
-- [Problemen met RBAC voor Azure-resources oplossen](troubleshooting.md)
+- [Aangepaste Azure-rollen maken of bijwerken met behulp van de Azure Portal](custom-roles-portal.md)
+- [Informatie over Azure Role-definities](role-definitions.md)
+- [Problemen met Azure RBAC oplossen](troubleshooting.md)

@@ -4,12 +4,12 @@ description: Meer informatie over het maken en beheren van meerdere knooppunt gr
 services: container-service
 ms.topic: article
 ms.date: 04/08/2020
-ms.openlocfilehash: f948c115b86abc532a121c68fa7a148ff15caae9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: bf7e767f1a7b0c657c744c96b308160393e3f326
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81259082"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82610918"
 ---
 # <a name="create-and-manage-multiple-node-pools-for-a-cluster-in-azure-kubernetes-service-aks"></a>Meerdere knooppunt groepen maken en beheren voor een cluster in azure Kubernetes service (AKS)
 
@@ -722,22 +722,65 @@ az group deployment create \
 
 Het kan een paar minuten duren voordat u uw AKS-cluster bijwerkt, afhankelijk van de instellingen van de knooppunt groep en de bewerkingen die u in uw Resource Manager-sjabloon definieert.
 
-## <a name="assign-a-public-ip-per-node-for-a-node-pool-preview"></a>Een openbaar IP-adres per knoop punt toewijzen voor een knooppunt groep (preview-versie)
+## <a name="assign-a-public-ip-per-node-for-your-node-pools-preview"></a>Wijs een openbaar IP-adres per knoop punt toe voor uw knooppunt Pools (preview-versie)
 
 > [!WARNING]
-> Tijdens de preview van het toewijzen van een openbaar IP-adres per knoop punt, kan het niet worden gebruikt met de *Standard load BALANCER SKU in AKS* vanwege mogelijke Load Balancer regels die conflicteren met de inrichting van de virtuele machine. Als gevolg van deze beperking worden Windows-agent groepen niet ondersteund met deze preview-functie. In de preview-versie moet u de *Basic Load BALANCER SKU* gebruiken als u een openbaar IP-adres per knoop punt moet toewijzen.
+> U moet de CLI preview-extensie 0.4.43 of hoger installeren om de open bare IP per knooppunt functie te kunnen gebruiken.
 
 AKS-knoop punten vereisen geen eigen open bare IP-adressen voor communicatie. Scenario's kunnen echter knoop punten in een knooppunt groep vereisen om hun eigen toegewezen open bare IP-adressen te ontvangen. Een veelvoorkomend scenario is voor gaming werk belastingen, waarbij een-console een directe verbinding met een virtuele machine in de Cloud moet maken om de hops te minimaliseren. Dit scenario kan worden bereikt op AKS door zich te registreren voor een preview-functie, een open bare IP-adres van het knoop punt (preview).
 
-Meld u aan voor de open bare IP-functie van het knoop punt door de volgende Azure CLI-opdracht uit te geven.
+Gebruik de volgende Azure CLI-opdrachten om de meest recente AKS-preview-extensie te installeren en bij te werken:
+
+```azurecli
+az extension add --name aks-preview
+az extension update --name aks-preview
+az extension list
+```
+
+Registreer u voor de open bare IP-functie van het knoop punt met de volgende Azure CLI-opdracht:
 
 ```azurecli-interactive
 az feature register --name NodePublicIPPreview --namespace Microsoft.ContainerService
 ```
+Het kan enkele minuten duren voordat de functie is geregistreerd.  U kunt de status controleren met de volgende opdracht:
 
-Na een geslaagde registratie implementeert u een Azure Resource Manager-sjabloon volgens dezelfde instructies als [hierboven](#manage-node-pools-using-a-resource-manager-template) en voegt `enableNodePublicIP` u de eigenschap Boolean toe aan agentPoolProfiles. Stel de waarde in `true` op als standaard ingesteld `false` op als niet opgegeven. 
+```azurecli-interactive
+ az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/NodePublicIPPreview')].{Name:name,State:properties.state}"
+```
 
-Deze eigenschap is een alleen-maken eigenschap en vereist een minimale API-versie van 2019-06-01. Dit kan worden toegepast op zowel Linux-als Windows-knooppunt groepen.
+Maak na een geslaagde registratie een nieuwe resource groep.
+
+```azurecli-interactive
+az group create --name myResourceGroup2 --location eastus
+```
+
+Maak een nieuw AKS-cluster en koppel een openbaar IP-adres voor uw knoop punten. Elk knoop punt in de knooppunt groep ontvangt een uniek openbaar IP-adres. U kunt dit controleren door te kijken naar de exemplaren van de virtuele-machine schaal sets.
+
+```azurecli-interactive
+az aks create -g MyResourceGroup2 -n MyManagedCluster -l eastus  --enable-node-public-ip
+```
+
+Voor bestaande AKS-clusters kunt u ook een nieuwe knooppunt groep toevoegen en een openbaar IP-adres voor uw knoop punten koppelen.
+
+```azurecli-interactive
+az aks nodepool add -g MyResourceGroup2 --cluster-name MyManagedCluster -n nodepool2 --enable-node-public-ip
+```
+
+> [!Important]
+> Tijdens de preview-periode biedt Azure Instance Metadata Service momenteel geen ondersteuning voor het ophalen van open bare IP-adressen voor de Standard-VM-SKU van de laag. Als gevolg van deze beperking kunt u kubectl-opdrachten niet gebruiken om de open bare Ip's weer te geven die aan de knoop punten zijn toegewezen. De Ip's worden echter toegewezen en werken zoals bedoeld. De open bare Ip's voor uw knoop punten zijn gekoppeld aan de instanties in de Schaalset van de virtuele machine.
+
+U kunt de open bare Ip's voor uw knoop punten op verschillende manieren vinden:
+
+* Gebruik de Azure CLI [-opdracht AZ vmss List-instance-open bare ip's][az-list-ips]
+* Gebruik [Power shell-of bash-opdrachten][vmss-commands]. 
+* U kunt ook de open bare Ip's weer geven in de Azure Portal door de instanties in de Schaalset voor virtuele machines te bekijken.
+
+> [!Important]
+> De [resource groep node][node-resource-group] bevat de knoop punten en hun open bare ip's. Gebruik de resource groep knoop punt bij het uitvoeren van opdrachten om de open bare Ip's voor uw knoop punten te vinden.
+
+```azurecli
+az vmss list-instance-public-ips -g MC_MyResourceGroup2_MyManagedCluster_eastus -n YourVirtualMachineScaleSetName
+```
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
@@ -753,6 +796,12 @@ Als u het cluster zelf wilt verwijderen, gebruikt u de opdracht [AZ Group delete
 
 ```azurecli-interactive
 az group delete --name myResourceGroup --yes --no-wait
+```
+
+U kunt ook het extra cluster verwijderen dat u hebt gemaakt voor het scenario voor het open bare IP-adres voor knooppunt groepen.
+
+```azurecli-interactive
+az group delete --name myResourceGroup2 --yes --no-wait
 ```
 
 ## <a name="next-steps"></a>Volgende stappen
@@ -795,3 +844,7 @@ Zie [een Windows Server-container maken in AKS][aks-windows]om Windows Server-co
 [taints-tolerations]: operator-best-practices-advanced-scheduler.md#provide-dedicated-nodes-using-taints-and-tolerations
 [vm-sizes]: ../virtual-machines/linux/sizes.md
 [use-system-pool]: use-system-pools.md
+[ip-limitations]: ../virtual-network/virtual-network-ip-addresses-overview-arm#standard
+[node-resource-group]: faq.md#why-are-two-resource-groups-created-with-aks
+[vmss-commands]: ../virtual-machine-scale-sets/virtual-machine-scale-sets-networking.md#public-ipv4-per-virtual-machine
+[az-list-ips]: /cli/azure/vmss?view=azure-cli-latest.md#az-vmss-list-instance-public-ips

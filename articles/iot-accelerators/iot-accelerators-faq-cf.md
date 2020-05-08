@@ -8,12 +8,12 @@ services: iot-accelerators
 ms.topic: conceptual
 ms.date: 12/12/2017
 ms.author: dobett
-ms.openlocfilehash: f2f8c08176f80436a339924adb4b2a09338a548a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0c8739dff39490f14b613af483f769ac031c1bd9
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81313589"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82792374"
 ---
 # <a name="frequently-asked-questions-for-connected-factory-solution-accelerator"></a>Veelgestelde vragen over de oplossings versneller Connected Factory
 
@@ -111,7 +111,7 @@ Met de simulatie zelf registreert u de volgende apparaten:
 * Publisher. Rio. Corp. contoso
 * Publisher. Seattle. Corp. contoso
 
-Met behulp van de [DeviceExplorer](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/tools/DeviceExplorer) of [de IOT-extensie voor Azure cli](https://github.com/Azure/azure-iot-cli-extension) kunt u controleren welke apparaten zijn geregistreerd bij de IOT-hub die door uw oplossing wordt gebruikt. Als u Device Explorer wilt gebruiken, hebt u de connection string voor de IoT-hub nodig in uw implementatie. Als u de IoT-extensie voor Azure CLI wilt gebruiken, hebt u uw IoT Hub naam nodig.
+Met behulp van de [DeviceExplorer](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/tools/) of [de IOT-extensie voor Azure cli](https://github.com/Azure/azure-iot-cli-extension) kunt u controleren welke apparaten zijn geregistreerd bij de IOT-hub die door uw oplossing wordt gebruikt. Als u Device Explorer wilt gebruiken, hebt u de connection string voor de IoT-hub nodig in uw implementatie. Als u de IoT-extensie voor Azure CLI wilt gebruiken, hebt u uw IoT Hub naam nodig.
 
 ### <a name="how-can-i-get-log-data-from-the-simulation-components"></a>Hoe kan ik logboek gegevens ophalen uit de simulatie onderdelen?
 
@@ -125,7 +125,7 @@ Meld u aan bij de virtuele machine via SSH en Inspecteer de logboek bestanden ti
 
 ### <a name="how-can-i-check-if-the-simulation-is-sending-data-to-the-cloud"></a>Hoe kan ik controleren of de simulatie gegevens verzendt naar de Cloud?
 
-Met de [DeviceExplorer](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/tools/DeviceExplorer) -of [Azure IOT cli-uitbreidings monitor-gebeurtenis](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/hub?view=azure-cli-latest#ext-azure-iot-az-iot-hub-monitor-events) opdracht kunt u de gegevens die naar IOT hub worden verzonden, inspecteren vanaf bepaalde apparaten. Als u deze hulpprogram ma's wilt gebruiken, moet u de connection string voor de IoT-hub in uw implementatie weten. Zie [Hoe kan ik de Connection String van de IOT-hub die wordt gebruikt door mijn oplossing vinden?](#how-do-i-find-out-the-connection-string-of-the-iot-hub-used-by-my-solution)
+Met de [Azure IOT Explorer](https://github.com/Azure/azure-iot-explorer) -of de [Azure IOT cli-uitbreidings monitor-gebeurtenissen](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/hub?view=azure-cli-latest#ext-azure-iot-az-iot-hub-monitor-events) opdracht kunt u de gegevens die naar IOT hub worden verzonden, inspecteren vanaf bepaalde apparaten. Als u deze hulpprogram ma's wilt gebruiken, moet u de connection string voor de IoT-hub in uw implementatie weten. Zie [Hoe kan ik de Connection String van de IOT-hub die wordt gebruikt door mijn oplossing vinden?](#how-do-i-find-out-the-connection-string-of-the-iot-hub-used-by-my-solution)
 
 Inspecteer de gegevens die worden verzonden door een van de uitgevers-apparaten:
 

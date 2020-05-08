@@ -4,12 +4,12 @@ description: Meer informatie over het maken van een AKS-cluster (private Azure K
 services: container-service
 ms.topic: article
 ms.date: 2/21/2020
-ms.openlocfilehash: 87f52c5a749b531e5b0656e0b30ff0fe9c1a57bf
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4f0d702a213c4c34024c043edc50d25e6696cbc1
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80398051"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82610935"
 ---
 # <a name="create-a-private-azure-kubernetes-service-cluster"></a>Een persoonlijk Azure Kubernetes service-cluster maken
 
@@ -101,7 +101,7 @@ Zoals vermeld, is VNet-peering een manier om toegang te krijgen tot uw persoonli
 ## <a name="limitations"></a>Beperkingen 
 * Toegestane IP-bereiken kunnen niet worden toegepast op het eind punt van de persoonlijke API-server, maar zijn alleen van toepassing op de open bare API-server
 * Beschikbaarheidszones momenteel worden ondersteund voor bepaalde regio's, zie het begin van dit document 
-* De beperkingen van de [Azure Private Link-service][private-link-service] zijn van toepassing op persoonlijke clusters, Azure-eind punten en service-eind punten van virtuele netwerken, die momenteel niet worden ondersteund in hetzelfde virtuele netwerk.
+* De beperkingen van de [Azure Private Link-service][private-link-service] zijn van toepassing op persoonlijke clusters.
 * Geen ondersteuning voor virtuele knoop punten in een persoonlijk cluster om persoonlijke Azure Container Instances (ACI) in te draaien in een particulier Azure Virtual Network
 * Geen ondersteuning voor Azure DevOps-integratie uit het vak met privé clusters
 * Voor klanten die Azure Container Registry kunnen gebruiken met persoonlijke AKS, moet het virtuele netwerk Container Registry worden gekoppeld aan het virtuele netwerk van het agent cluster.
@@ -116,7 +116,7 @@ Zoals vermeld, is VNet-peering een manier om toegang te krijgen tot uw persoonli
 [az-feature-list]: /cli/azure/feature?view=azure-cli-latest#az-feature-list
 [az-extension-add]: /cli/azure/extension#az-extension-add
 [az-extension-update]: /cli/azure/extension#az-extension-update
-[private-link-service]: /azure/private-link/private-link-service-overview
+[private-link-service]: /azure/private-link/private-link-service-overview#limitations
 [virtual-network-peering]: ../virtual-network/virtual-network-peering-overview.md
 [azure-bastion]: ../bastion/bastion-create-host-portal.md
 [express-route-or-vpn]: ../expressroute/expressroute-about-virtual-network-gateways.md

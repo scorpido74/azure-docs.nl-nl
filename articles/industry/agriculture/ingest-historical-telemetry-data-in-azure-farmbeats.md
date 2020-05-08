@@ -5,12 +5,13 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: 5b50906fac613a4e7470b0e13d6f068c3872f625
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: has-adal-ref
+ms.openlocfilehash: 3833b27e9f90cbffa2320c84877d4eb5bb6520f7
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82136903"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82613265"
 ---
 # <a name="ingest-historical-telemetry-data"></a>Historische telemetriegegevens opnemen
 
@@ -58,7 +59,7 @@ Volg deze stappen:
 5. Ga naar de basismap.
 
     ```azurepowershell-interactive 
-    cd  
+    cd
     ```
 
 6. Voer de volgende opdracht uit. Hiermee wordt een script gedownload naar uw basismap.
@@ -73,7 +74,7 @@ Volg deze stappen:
 
     ```azurepowershell-interactive 
 
-    ./generatePartnerCredentials.ps1   
+    ./generatePartnerCredentials.ps1
 
     ```
 
@@ -92,7 +93,7 @@ Volg deze stappen:
 - /**DeviceModel**: DeviceModel komt overeen met de meta gegevens van het apparaat, zoals de fabrikant en het type apparaat, ofwel een gateway of een knoop punt.
 - /**Apparaat**: het apparaat komt overeen met een fysiek apparaat dat aanwezig is op de farm.
 - /**SensorModel**: SensorModel komt overeen met de meta gegevens van de sensor, zoals de fabrikant, het type sensor dat analoog of digitaal is en de sensor meting, zoals omgevings temperatuur en druk.
-- /**Sensor**: sensor komt overeen met een fysieke sensor waarmee waarden worden vastgelegd. Een sensor is doorgaans verbonden met een apparaat met een apparaat-ID.  
+- /**Sensor**: sensor komt overeen met een fysieke sensor waarmee waarden worden vastgelegd. Een sensor is doorgaans verbonden met een apparaat met een apparaat-ID.
 
 
 |        DeviceModel   |  Suggesties   |
@@ -108,7 +109,7 @@ Volg deze stappen:
 |   DeviceModelId     |     ID van het gekoppelde model.  |
 |  HardwareId          | De unieke ID voor het apparaat, zoals het MAC-adres.
 |  ReportingInterval        |   Rapportage-interval in seconden.
-|  Locatie            |  Apparaat Latitude (-90 tot + 90), lengte graad (-180 tot 180) en uitbrei ding (in meters).   
+|  Locatie            |  Apparaat Latitude (-90 tot + 90), lengte graad (-180 tot 180) en uitbrei ding (in meters).
 |ParentDeviceId       |    De ID van het bovenliggende apparaat waarmee dit apparaat is verbonden. Bijvoorbeeld een knoop punt dat is verbonden met een gateway. Een knoop punt heeft parentDeviceId als de gateway.  |
 |    Naam            | Een naam om de resource te identificeren. Apparaat-partners moeten een naam verzenden die consistent is met de apparaatnaam aan de partner zijde. Als de naam van de partner apparaat door de gebruiker is gedefinieerd, moet dezelfde door de gebruiker gedefinieerde naam worden door gegeven aan FarmBeats.|
 |     Beschrijving       |      Geef een zinvolle beschrijving op. |
@@ -139,7 +140,7 @@ Zie [Swagger](https://aka.ms/FarmBeatsDatahubSwagger)voor meer informatie over o
 
 ### <a name="api-request-to-create-metadata"></a>API-aanvraag voor het maken van meta gegevens
 
-Als u een API-aanvraag wilt maken, combineert u de HTTP-methode (POST), de URL naar de API-service en de URI naar een resource om een query uit te voeren, gegevens te verzenden naar, te maken of te verwijderen. Vervolgens voegt u een of meer HTTP-aanvraag headers toe. De URL van de API-service is het API-eind punt, dat wil zeggen, de\<DATAHUB-url (https://yourdatahub>. azurewebsites.net).  
+Als u een API-aanvraag wilt maken, combineert u de HTTP-methode (POST), de URL naar de API-service en de URI naar een resource om een query uit te voeren, gegevens te verzenden naar, te maken of te verwijderen. Vervolgens voegt u een of meer HTTP-aanvraag headers toe. De URL van de API-service is het API-eind punt, dat wil zeggen, de\<DATAHUB-url (https://yourdatahub>. azurewebsites.net).
 
 ### <a name="authentication"></a>Verificatie
 
@@ -297,10 +298,10 @@ Sensoren
 Met de volgende voorbeeld aanvraag wordt een apparaat gemaakt. Deze aanvraag bevat de invoer JSON als Payload met de aanvraag tekst.
 
 ```bash
-curl -X POST "https://<datahub>.azurewebsites.net/Device" -H  
+curl -X POST "https://<datahub>.azurewebsites.net/Device" -H
 "accept: application/json" -H  "Content-Type: application/json" -H
-"Authorization: Bearer <Access-Token>" -d "{  \"deviceModelId\": \"ID123\",  \"hardwareId\": \"MHDN123\",  
-\"reportingInterval\": 900,  \"name\": \"Device123\",  
+"Authorization: Bearer <Access-Token>" -d "{  \"deviceModelId\": \"ID123\",  \"hardwareId\": \"MHDN123\",
+\"reportingInterval\": 900,  \"name\": \"Device123\",
 \"description\": \"Test Device 123\"}" *
 ```
 
@@ -420,7 +421,7 @@ Hier volgt een voor beeld van een telemetrie-bericht:
 }
 ```
 
-## <a name="troubleshooting"></a>Problemen oplossen
+## <a name="troubleshooting"></a>Probleemoplossing
 
 ### <a name="cant-view-telemetry-data-after-ingesting-historicalstreaming-data-from-your-sensors"></a>Er kunnen geen telemetriegegevens worden weer gegeven na het opnemen van historische/streaming-gegevens van uw Sens oren
 

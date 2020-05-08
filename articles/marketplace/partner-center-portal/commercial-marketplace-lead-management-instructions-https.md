@@ -1,25 +1,27 @@
 ---
-title: Micro soft Commercial Marketplace lead management met HTTPS
-description: Micro soft Commercial Marketplace Lead Management configureren voor een HTTPS-eind punt.
+title: Lead beheer met een HTTPS-eind punt-micro soft Commercial Marketplace
+description: Meer informatie over het gebruik van energie automatisering en een HTTPS-eind punt voor het beheren van leads van Microsoft AppSource en Azure Marketplace.
 author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 03/30/2020
 ms.author: dsindona
-ms.openlocfilehash: 1c3337e970fdbb22cb1ed88f105d5e7798a68f74
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7a4fc57b3be8dd59997ef2bfc9624892cf726160
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82133742"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82790980"
 ---
-# <a name="configure-lead-management-by-using-an-https-endpoint"></a>Beheer van leads configureren met behulp van een HTTPS-eind punt
+# <a name="use-an-https-endpoint-to-manage-commercial-marketplace-leads"></a>Een HTTPS-eind punt gebruiken om leads voor commerciële Marketplace te beheren
+
+Als uw Customer Relationship Management-systeem (CRM) niet expliciet wordt ondersteund in het partner centrum om Microsoft AppSource en Azure Marketplace-leads te ontvangen, kunt u een HTTPS-eind punt in [automatische energie automatisering](https://powerapps.microsoft.com/automate-processes/) gebruiken om deze leads af te handelen. Met een HTTPS-eind punt kunnen commerciële Marketplace-leads worden verzonden als een e-mail melding of ze kunnen worden geschreven naar een CRM-systeem dat wordt ondersteund door het automatiseren van de stroom.
+
+In dit artikel wordt uitgelegd hoe u een nieuwe stroom maakt in automatische energie voor het genereren van de HTTP POST-URL die u gebruikt om leads te configureren in het partner centrum. Het bevat ook stappen voor het testen van uw stroom met behulp van [postman](https://www.getpostman.com/downloads/).
 
 >[!NOTE]
->Voor de stroom voor het automatisch uitvoeren van connectors die in deze instructies worden gebruikt, is een betaald abonnement vereist om te automatiseren. Zorg ervoor dat u dit account voordat u de instructies in dit artikel volgt.
-
-Als uw Customer Relationship Management-systeem (CRM) niet expliciet wordt ondersteund in het partner centrum om Microsoft AppSource en Azure Marketplace-leads te ontvangen, kunt u een HTTPS-eind punt in automatische energie automatisering gebruiken om deze leads af te handelen. Met een HTTPS-eind punt kunnen deze leads worden verzonden als een e-mail melding of kunnen ze worden geschreven naar een CRM-systeem dat wordt ondersteund door het automatiseren van de stroom. De instructies in dit artikel begeleiden u bij het basis proces voor het maken van een nieuwe stroom met behulp van energie automatisering, waarmee de http post-URL wordt gegenereerd die u in de portal publiceert voor het**https-eind punt URL** veld voor **lead beheer** > . Ook vindt u hier instructies voor het testen van uw stroom met behulp van een hulp programma dat wordt weer gegeven als ' [postman](https://www.getpostman.com/downloads/)', dat online beschikbaar is.
+>Voor de stroom voor het automatisch uitvoeren van connectors die in deze instructies worden gebruikt, is een betaald abonnement vereist om te automatiseren. Zorg ervoor dat u dit account hebt voordat u deze stroom configureert.
 
 ## <a name="create-a-flow-by-using-power-automate"></a>Een stroom maken met behulp van energie automatisering
 
@@ -27,22 +29,24 @@ Als uw Customer Relationship Management-systeem (CRM) niet expliciet wordt onder
 
 1. Meld u aan en selecteer **mijn stromen** in het menu.
 
-1. Selecteer **+ automatisch--van leeg**.
+    ![Meld u aan bij mijn stromen](./media/commercial-marketplace-lead-management-instructions-https/my-flows-automated.png)
 
-    ![Mijn stromen + geautomatiseerd--leeg](./media/commercial-marketplace-lead-management-instructions-https/my-flows-automated.png)
+1. Onder **+ Nieuw**selecteert u **+ direct, leeg**.
 
-1. Selecteer in het venster **een automatische stroom maken** de optie **overs Laan**. 
+    ![Mijn stromen + geautomatiseerd--leeg](./media/commercial-marketplace-lead-management-instructions-https/https-myflows-create-fromblank.png)
 
-    ![Een automatische stroom venster knop overs Laan maken](./media/commercial-marketplace-lead-management-instructions-https/build-automated-flow.png)
+1. Geef uw stroom een naam en selecteer vervolgens onder **kiezen hoe deze stroom moet worden geactiveerd**, **Wanneer een HTTP-aanvraag wordt ontvangen**.
 
-1. Voer in het veld **connectors en triggers zoeken** de **aanvraag** in om de aanvraag connector te vinden.
-1. Onder **Triggers**selecteert u **Wanneer een HTTP-aanvraag wordt ontvangen**. 
+    ![Een automatische stroom venster knop overs Laan maken](./media/commercial-marketplace-lead-management-instructions-https/https-myflows-pick-request-trigger.png)
 
-    ![Menu triggers](./media/commercial-marketplace-lead-management-instructions-https/request-connector.png)
+1. Klik op de stap van de stroom om deze uit te vouwen.
 
-1. In het venster **Wanneer een HTTP-aanvraag wordt ontvangen** , kopieert en plakt u het volgende JSON-schema in het tekstvak **aanvraag tekst JSON schema** . Dit schema wordt door micro soft gebruikt voor het opnemen van uw lead gegevens.
+    ![De stroom stap uitvouwen](./media/commercial-marketplace-lead-management-instructions-https/expand-flow-step.png)
 
-    ![Tekstvak voor JSON-schema van aanvraag tekst](./media/commercial-marketplace-lead-management-instructions-https/https-request-received.png)
+1. Gebruik een van de volgende methoden om het JSON-schema van de **aanvraag tekst**te configureren:
+
+    - Kopieer het JSON-schema in het tekstvak aanvraag tekst van **JSON-schema** .
+    - Selecteer **Voorbeeldnettolading om een schema te genereren**. Plak in het tekstvak **een voor beeld van een JSON-nettolading invoeren of plakken** in het JSON-voor beeld. Selecteer **gereed** om het schema te maken.
 
     **JSON-schema**
 
@@ -103,6 +107,26 @@ Als uw Customer Relationship Management-systeem (CRM) niet expliciet wordt onder
     }
     ```
 
+    **JSON-voor beeld**
+    
+    ```json
+    {
+      "UserDetails": {
+        "FirstName": "Some",
+        "LastName": "One",
+        "Email": "someone@contoso.com",
+        "Phone": "16175555555",
+        "Country": "USA",
+        "Company": "Contoso",
+        "Title": "Esquire"
+     },
+      "LeadSource": "AzureMarketplace",
+      "ActionCode": "INS",
+      "OfferTitle": "Test Microsoft",
+      "Description": "Test run through Power Automate"
+    }
+    ```
+
 >[!NOTE]
 >U kunt op dit punt in de configuratie selecteren om verbinding te maken met een CRM-systeem of een e-mail melding te configureren. Volg de overige instructies op basis van uw keuze.
 
@@ -157,7 +181,7 @@ Als uw Customer Relationship Management-systeem (CRM) niet expliciet wordt onder
 
 ### <a name="testing"></a>Testen
 
-U kunt testen of alles werkt zoals verwacht door gebruik te maken van een hulp programma ' [postman](https://app.getpostman.com/app/download/win64)', dat online kan worden gedownload. Dit hulp programma is beschikbaar voor Windows. 
+U kunt uw configuratie testen met behulp van [postman](https://app.getpostman.com/app/download/win64). Er is een online down load van Postman beschikbaar voor Windows. 
 
 1. Start postman en selecteer **nieuwe** > **aanvraag** om uw test programma in te stellen. 
 
@@ -201,10 +225,18 @@ U kunt testen of alles werkt zoals verwacht door gebruik te maken van een hulp p
 
 Wanneer u klaar bent om de informatie over het beheer van leads voor uw aanbieding te configureren in de portal voor publiceren, voert u de volgende stappen uit.
 
-1. Ga naar de pagina voor het instellen van de **aanbieding** voor uw aanbieding.
-1. Selecteer **verbinding maken** in het gedeelte **lead beheer** .
+1. Meld u aan bij [Partner Center](https://partner.microsoft.com/dashboard/home).
+
+1. Selecteer uw aanbieding en ga naar het tabblad **installatie** van de aanbieding.
+
+1. Selecteer in het gedeelte **lead beheer** de optie **verbinding maken**. 
+    ![Knop verbinding maken met lead beheer](./media/commercial-marketplace-lead-management-instructions-https/lead-management-connect.png)
+
 1. Selecteer in het pop-upvenster **verbindings Details** het **https-eind punt** voor de **doel locatie**van de lead. Plak de URL van de HTTP POST uit de stroom die u hebt gemaakt door eerdere stappen in het veld **https-eind punt URL** te volgen.
+    ![Verbindings gegevens contact opnemen met e-mail](./media/commercial-marketplace-lead-management-instructions-https/https-connection-details.png)
+
 1. Voer onder **contact-e-mail**de e-mail adressen in voor personen in uw bedrijf die e-mail meldingen moeten ontvangen wanneer er een nieuwe lead wordt ontvangen. U kunt meerdere e-mail berichten opgeven door deze te scheiden met een punt komma.
+
 1. Selecteer **OK**.
 
 Selecteer de knop **valideren** om te controleren of u verbinding hebt gemaakt met een doel van een lead. Als dat lukt, hebt u een test lead in de doel locatie van de lead.
@@ -213,10 +245,3 @@ Selecteer de knop **valideren** om te controleren of u verbinding hebt gemaakt m
 >U moet de configuratie van de rest van de aanbieding volt ooien en publiceren voordat u leads voor de aanbieding kunt ontvangen.
 
 Wanneer leads worden gegenereerd, stuurt micro soft leads naar de stroom. De leads worden doorgestuurd naar het CRM-systeem of het e-mail adres dat u hebt geconfigureerd.
-
-![Knop verbinding maken met lead beheer](./media/commercial-marketplace-lead-management-instructions-https/lead-management-connect.png)
-
-![Verbindings Details doel van potentiële klant](./media/commercial-marketplace-lead-management-instructions-https/connection-details.png)
-
-![Verbindings gegevens contact opnemen met e-mail](./media/commercial-marketplace-lead-management-instructions-https/https-connection-details.png)
-
