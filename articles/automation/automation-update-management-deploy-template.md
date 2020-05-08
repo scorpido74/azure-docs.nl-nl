@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: mgoedtel
 ms.author: magoedte
 ms.date: 04/24/2020
-ms.openlocfilehash: 45045cb1360658d394e5469d022ac03033d11aff
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.openlocfilehash: dd8706c1e95e6b1e4ca4a38d4a336f6186464696
+ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "82165787"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82872205"
 ---
 # <a name="onboard-update-management-solution-using-azure-resource-manager-template"></a>Updatebeheer oplossing voor onboarding met behulp van Azure Resource Manager-sjabloon
 
@@ -26,6 +26,9 @@ U kunt [Azure Resource Manager sjablonen](../azure-resource-manager/templates/te
 Met de sjabloon wordt het onboarden van een of meer virtuele machines in azure of niet-Azure geautomatiseerd.
 
 Als u al een Log Analytics werk ruimte en een Automation-account hebt geïmplementeerd in een ondersteunde regio in uw abonnement, zijn deze niet gekoppeld. De Updatebeheer oplossing is niet al geïmplementeerd voor de werk ruimte. Met deze sjabloon maakt u de koppeling en implementeert u de Updatebeheer-oplossing. 
+
+>[!NOTE]
+>De **nxautomation** -gebruiker die is voorbereid als onderdeel van updatebeheer op Linux, voert alleen ondertekende runbooks uit.
 
 >[!NOTE]
 >Dit artikel is bijgewerkt voor het gebruik van de nieuwe Azure PowerShell Az-module. De AzureRM-module kan nog worden gebruikt en krijgt bugoplossingen tot ten minste december 2020. Zie voor meer informatie over de nieuwe Az-module en compatibiliteit met AzureRM [Introductie van de nieuwe Az-module van Azure PowerShell](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.5.0). Zie [de module Azure PowerShell installeren](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0)voor de installatie-instructies voor AZ module op uw Hybrid Runbook Worker. Voor uw Automation-account kunt u uw modules bijwerken naar de nieuwste versie met behulp van [het bijwerken van Azure PowerShell-modules in azure Automation](automation-update-azure-modules.md).

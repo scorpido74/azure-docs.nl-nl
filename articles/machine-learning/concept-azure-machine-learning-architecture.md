@@ -10,12 +10,12 @@ ms.author: larryfr
 author: Blackmist
 ms.date: 03/17/2020
 ms.custom: seoapril2019, seodec18
-ms.openlocfilehash: 95a1734a3e7fd65fc87f4825ae71ee3006616bc3
-ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
-ms.translationtype: HT
+ms.openlocfilehash: e70401bbaa97920163f3c7e76e32b9b9be2f5e72
+ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82629368"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82871462"
 ---
 # <a name="how-azure-machine-learning-works-architecture-and-concepts"></a>Hoe Azure Machine Learning werkt: architectuur en concepten
 
@@ -119,7 +119,7 @@ Zie bijvoorbeeld configuraties [selecteren en een compute-doel gebruiken om uw m
 Wanneer u een uitvoering verzendt, comprimeert Azure Machine Learning de map die het script bevat als een zip-bestand en verzendt het naar het Compute-doel. Het zip-bestand wordt vervolgens geëxtraheerd en het script wordt uitgevoerd. Azure Machine Learning slaat het zip-bestand ook als een moment opname op als onderdeel van de uitvoerings record. Iedereen met toegang tot de werk ruimte kan bladeren in een uitvoerings record en de moment opname downloaden.
 
 > [!NOTE]
-> Als u wilt voor komen dat er onnodige bestanden in de moment opname worden opgenomen, maakt u een ignore-bestand (. gitignore of. amlignore). Plaats dit bestand in de map met moment opnamen en voeg de bestands namen toe die u wilt negeren. Het. amlignore-bestand gebruikt dezelfde [syntaxis en patronen als het. gitignore-bestand](https://git-scm.com/docs/gitignore). Als beide bestanden bestaan, heeft het. amlignore-bestand voor rang.
+> [!INCLUDE [amlinclude-info](../../includes/machine-learning-amlignore-gitignore.md)]
 
 ### <a name="github-tracking-and-integration"></a>GitHub bijhouden en integreren
 

@@ -9,12 +9,12 @@ services: iot-edge
 ms.topic: conceptual
 ms.date: 04/09/2020
 ms.author: kgremban
-ms.openlocfilehash: 61b382f1c286209a12d0be39a81e6817806d3251
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e95f68610f8469a829255d6a16115dcf728ef612
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81113465"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82856750"
 ---
 # <a name="install-the-azure-iot-edge-runtime-on-windows"></a>De Azure IoT Edge-runtime op Windows installeren
 
@@ -193,17 +193,21 @@ Bekijk service Logboeken in de afgelopen vijf minuten. Als u de IoT Edge runtime
 . {Invoke-WebRequest -useb https://aka.ms/iotedge-win} | Invoke-Expression; Get-IoTEdgeLog
 ```
 
-Voer een automatische controle uit voor de meest voorkomende configuratie-en netwerk fouten.
+Voer het [hulp programma voor probleem oplossing](troubleshoot.md#run-the-check-command) uit om te controleren op de meest voorkomende configuratie-en netwerk fouten.
 
 ```powershell
 iotedge check
 ```
 
-Een lijst met actieve modules weer geven. Na een nieuwe installatie is de enige module die u moet zien, **edgeAgent**. Nadat u [IOT Edge-modules](how-to-deploy-modules-portal.md) voor de eerste keer hebt geïmplementeerd, wordt de andere systeem module, **edgeHub**, ook op het apparaat gestart.
+De **$edgeHub** systeem module wordt niet geïmplementeerd op het apparaat totdat u uw eerste module implementeert voor IOT Edge op het apparaat. Als gevolg hiervan geeft de geautomatiseerde controle een fout melding voor de `Edge Hub can bind to ports on host` connectiviteits controle. Deze fout kan worden genegeerd, tenzij deze optreedt nadat een module op het apparaat is geïmplementeerd.
+
+Ten slotte lijst met actieve modules:
 
 ```powershell
 iotedge list
 ```
+
+Na een nieuwe installatie is de enige module die u moet zien, **edgeAgent**. Nadat u [IOT Edge-modules](how-to-deploy-modules-portal.md) voor de eerste keer hebt geïmplementeerd, wordt de andere systeem module, **edgeHub**, ook op het apparaat gestart.
 
 ## <a name="manage-module-containers"></a>Module containers beheren
 

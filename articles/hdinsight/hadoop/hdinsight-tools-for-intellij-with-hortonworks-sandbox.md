@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 05/16/2018
-ms.openlocfilehash: 65a15a8506b88e95e14af8c87bcbe33087301519
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 986c2783f3d130114da93406bfaf70d5c038d5ed
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75647829"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82856145"
 ---
 # <a name="use-hdinsight-tools-for-intellij-with-hortonworks-sandbox"></a>HDInsight-Hulpprogram Ma's gebruiken voor IntelliJ met Hortonworks sandbox
 
@@ -32,7 +32,7 @@ Voordat u met dit artikel begint, moet u beschikken over de volgende items:
 
 - [Jdk-versie 1,8 of hoger van Java Developer Kit](https://aka.ms/azure-jdks). Voor Azure-toolkit voor IntelliJ is JDK vereist.
 
-- [IntelliJ-idee Community-editie](https://www.jetbrains.com/idea/download) met de [scala](https://plugins.jetbrains.com/idea/plugin/1347-scala) -invoeg toepassing en de [Azure-Toolkit voor IntelliJ](https://docs.microsoft.com/java/azure/intellij/azure-toolkit-for-intellij) -invoeg toepassing. HDInsight-Hulpprogram Ma's voor IntelliJ is beschikbaar als onderdeel van Azure-toolkit voor IntelliJ. 
+- [IntelliJ-idee Community-editie](https://www.jetbrains.com/idea/download) met de [scala](https://plugins.jetbrains.com/idea/plugin/1347-scala) -invoeg toepassing en de [Azure-Toolkit voor IntelliJ](https://docs.microsoft.com/azure/developer/java/toolkit-for-intellij) -invoeg toepassing. HDInsight-Hulpprogram Ma's voor IntelliJ is beschikbaar als onderdeel van Azure-toolkit voor IntelliJ.
 
 De invoeg toepassingen installeren:
 
@@ -57,7 +57,7 @@ In deze sectie maakt u een voor beeld van een scala-project met behulp van Intel
 
    ![IntelliJ nieuw scala-project maken](./media/hdinsight-tools-for-intellij-with-hortonworks-sandbox/intellij-create-scala-project.png)
 
-2. Selecteer **Next**.
+2. Selecteer **Volgende**.
 3. Voer de volgende stappen uit in het dialoog venster volgende **Nieuw project** :
 
    1. Voer in het vak **project naam** een project naam in.

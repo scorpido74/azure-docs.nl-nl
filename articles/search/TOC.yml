@@ -60,6 +60,8 @@
           href: search-semi-structured-data.md
         - name: Meerdere Azure-gegevensbronnen indexeren
           href: tutorial-multiple-data-sources.md
+    - name: Gegevens indexeren
+      href: tutorial-optimize-indexing-push-api.md
     - name: AI gebruiken om inhoud te maken
       items:
         - name: 'C#'
@@ -82,6 +84,9 @@
       href: 'https://docs.microsoft.com/samples/browse/?products=azure-cognitive-search&languages=python'
     - name: REST-voorbeelden
       href: 'https://docs.microsoft.com/samples/browse/?products=azure-cognitive-search&languages=rest'
+    - name: Ingebouwde modules voor Azure Policy
+      displayName: 'samples, policies, definitions'
+      href: ./policy-samples.md
 - name: Concepten
   items:
     - name: Zoekopdracht in volledige tekst

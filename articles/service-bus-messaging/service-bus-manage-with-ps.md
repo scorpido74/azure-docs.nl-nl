@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/24/2020
 ms.author: aschhab
-ms.openlocfilehash: e333dfb109840538fd5dec8110e1c32adedce989
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8605e269f09e4fedf7a61817a3634e75081593ca
+ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76759258"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82890237"
 ---
 # <a name="use-powershell-to-manage-service-bus-resources"></a>Power shell gebruiken voor het beheren van Service Bus resources
 
@@ -170,8 +170,8 @@ U kunt de [Service Bus Power shell-module](/powershell/module/az.servicebus) geb
 
 Er zijn een aantal alternatieve manieren om Service Bus entiteiten te beheren, zoals beschreven in deze blog berichten:
 
-* [Service Bus-wacht rijen,-onderwerpen en-abonnementen maken met een Power shell-script](https://blogs.msdn.com/b/paolos/archive/2014/12/02/how-to-create-a-service-bus-queues-topics-and-subscriptions-using-a-powershell-script.aspx)
-* [Een Service Bus naam ruimte en een event hub maken met een Power shell-script](https://blogs.msdn.com/b/paolos/archive/2014/12/01/how-to-create-a-service-bus-namespace-and-an-event-hub-using-a-powershell-script.aspx)
+* [Service Bus-wacht rijen,-onderwerpen en-abonnementen maken met een Power shell-script](https://docs.microsoft.com/archive/blogs/paolos/how-to-create-service-bus-queues-topics-and-subscriptions-using-a-powershell-script)
+* [Een Service Bus naam ruimte en een event hub maken met een Power shell-script](https://docs.microsoft.com/archive/blogs/paolos/how-to-create-a-service-bus-namespace-and-an-event-hub-using-a-powershell-script)
 * [Service Bus Power shell-scripts](https://code.msdn.microsoft.com/Service-Bus-PowerShell-a46b7059)
 
 <!--Anchors-->

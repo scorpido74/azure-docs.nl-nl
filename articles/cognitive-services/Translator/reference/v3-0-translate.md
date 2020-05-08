@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: reference
-ms.date: 03/20/2020
+ms.date: 04/17/2020
 ms.author: swmachan
-ms.openlocfilehash: 1821623fbe2a22234af649934ac06e72897a19cf
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 14d1f042240fd045925afe1725b32ddade490dfe
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80052399"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82858539"
 ---
 # <a name="translator-text-api-30-translate"></a>Translator Text-API 3,0: vertalen
 
@@ -202,7 +202,7 @@ Hier volgen de mogelijke HTTP-status codes die een aanvraag retourneert.
   <th>Beschrijving</th>
   <tr>
     <td>200</td>
-    <td>Geslaagd.</td>
+    <td>Voltooid.</td>
   </tr>
   <tr>
     <td>400</td>
@@ -363,7 +363,7 @@ Als u wilt voor komen dat de vertaling in het gemoeds oog komt, ongeacht de aanw
 
 <table width="100%">
   <th width="20%">ProfanityAction</th>
-  <th>Bewerking</th>
+  <th>Actie</th>
   <tr>
     <td><code>NoAction</code></td>
     <td>Dit is de standaardinstelling. Scheld is van bron naar doel.<br/><br/>
@@ -454,6 +454,14 @@ Het antwoord is:
 
 ### <a name="obtain-alignment-information"></a>Informatie over uitlijning ophalen
 
+Uitlijning wordt geretourneerd als een teken reeks waarde van de volgende notatie voor elk woord van de bron. De gegevens voor elk woord worden gescheiden door een spatie, met inbegrip van talen die niet met een spatie zijn gescheiden (scripts), zoals Chinees:
+
+[[SourceTextStartIndex]:[SourceTextEndIndex]–[TgtTextStartIndex]:[TgtTextEndIndex]] *
+
+Voor beeld van een uitlijnings teken reeks: "0:0-7:10 1:2-11:20 3:4-0:3 3:4-4:6 5:5-21:21".
+
+Met andere woorden, de dubbele punt scheidt begin-en eind index, het streepje scheidt de talen en de spaties scheidt de woorden. Eén woord kan worden uitgelijnd met nul, één of meerdere woorden in de andere taal en de uitgelijnde woorden kunnen niet-aaneengesloten zijn. Als er geen uitlijnings gegevens beschikbaar zijn, is het element uitlijning leeg. De methode retourneert in dat geval geen fout.
+
 Als u uitlijnings gegevens `includeAlignment=true` wilt ontvangen, geeft u op de query teken reeks op.
 
 ```curl
@@ -483,9 +491,10 @@ Het verkrijgen van informatie over uitlijning is een experimentele functie die i
 
 * Uitlijning is niet beschikbaar voor tekst in HTML-indeling, dat wil zeggen textType = HTML
 * Uitlijning wordt alleen geretourneerd voor een subset van de taal paren:
-  - van het Engels naar een andere taal;
-  - van een andere taal in het Engels, met uitzonde ring van vereenvoudigd Chinees, traditioneel Chinees en Lets in het Engels.
+  - Engels naar/van een andere taal, behalve traditioneel Chinees, Kantonees (traditioneel) of Servisch (cyrillisch).
   - van Japans naar Koreaans of van Koreaans tot Japans.
+  - van Japans tot Chinees vereenvoudigd en vereenvoudigd Chinees in het Japans. 
+  - van vereenvoudigd Chinees in traditioneel Chinees en traditioneel Chinees in vereenvoudigd Chinees. 
 * U ontvangt geen uitlijning als de zin een ingeblikte vertaling is. Een voor beeld van een ingestelde vertaling is ' Dit is een test ', ' Ik ben gek ' en andere hoge frequentie zinnen.
 * Uitlijning is niet beschikbaar wanneer u een van de benaderingen toepast om omzetting te voor komen, zoals [hier](../prevent-translation.md) wordt beschreven
 
@@ -515,7 +524,7 @@ Het antwoord is:
 
 ### <a name="translate-with-dynamic-dictionary"></a>Vertalen met dynamische woorden lijst
 
-Als u al weet wat de vertaling is die u wilt Toep assen op een woord of een woord groep, kunt u deze als aantekeningen opgeven in de aanvraag. De dynamische woorden lijst is alleen veilig voor samengestelde samen stellingen, zoals eigen namen en product namen.
+Als u al weet wat de vertaling is die u wilt Toep assen op een woord of een woord groep, kunt u deze als aantekeningen opgeven in de aanvraag. De dynamische woorden lijst is alleen veilig voor de juiste zelfstandige naam woorden, zoals persoonlijke namen en product namen.
 
 De op te geven opmaak maakt gebruik van de volgende syntaxis.
 

@@ -6,13 +6,13 @@ ms.service: open-datasets
 ms.topic: overview
 author: cjgronlund
 ms.author: cgronlun
-ms.date: 11/04/2019
-ms.openlocfilehash: fd5697f9c325dc4ad866c333ce1b20e008ebfa24
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.date: 05/06/2020
+ms.openlocfilehash: aa7cbd9b213d35becd65d9335312c0468760d655
+ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "73606162"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82872039"
 ---
 # <a name="what-are-azure-open-datasets-and-how-can-you-use-them"></a>Wat zijn Azure open gegevens sets en hoe kunt u deze gebruiken?
 
@@ -24,6 +24,8 @@ Gegevens sets bevatten informatie over openbaar domein voor weer, telling, feest
 
 ## <a name="curated-prepared-datasets"></a>Met curator gekweekte gegevens sets
 Met de openstaande open bare gegevens sets in azure kunnen gegevens sets worden geoptimaliseerd voor gebruik in machine learning werk stromen. 
+
+Als u alle beschik bare gegevens sets wilt zien, gaat u naar de [Azure open data sets-catalogus](https://azure.microsoft.com/services/open-datasets/catalog/).
 
 Gegevens wetenschappers best Eden vaak het meren deel van hun tijd over het schoonmaken en voorbereiden van gegevens voor geavanceerde analyses. Open gegevens sets worden gekopieerd naar de Azure-Cloud en worden voor het eerst geverwerkt om tijd te besparen. Met regel matige intervallen worden gegevens uit de bronnen opgehaald, bijvoorbeeld door een FTP-verbinding met het National Oceanic and atmosferisch Administration (NOAA). Vervolgens worden gegevens geparseerd naar een gestructureerde indeling en vervolgens uitgebreid naar wens met functies zoals post code of locatie van het dichtstbijzijnde weer station.
 

@@ -11,12 +11,12 @@ ms.author: abnarain
 manager: anandsub
 ms.custom: seo-lt-2019
 ms.date: 03/13/2020
-ms.openlocfilehash: 6bc0f002c6927cfd9a314797663e1dabbac392b6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6d18a8d09749b832984872b57eec8a36abc1b2e2
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81416643"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82857689"
 ---
 # <a name="create-and-configure-a-self-hosted-integration-runtime"></a>Zelf-hostende Integration Runtime maken en configureren
 
@@ -67,7 +67,7 @@ Gebruik de volgende stappen om een zelf-hostende IR te maken met behulp van Azur
 1. Selecteer op de pagina **Integration runtime Setup** de optie **Azure, zelf-hostend**en selecteer **door gaan**. 
 
 1. Selecteer op de volgende pagina **zelf-hosten** om een zelf-hostende IR te maken en selecteer vervolgens **door gaan**.
-   ![Een selfhosted-IR maken](media/create-self-hosted-integration-runtime/new-selfhosted-ir.png)
+   ![Een selfhosted-IR maken](media/create-self-hosted-integration-runtime/new-selfhosted-integration-runtime.png)
 
 1. Voer een naam in voor uw IR en selecteer **maken**.
 
@@ -117,7 +117,7 @@ Hier volgen de details van de para meters en eigenschappen van de toepassing:
 | **Sleutel** "`<AuthenticationKey>`"                                 | De vorige verificatie sleutel overschrijven of bijwerken. Wees voorzichtig met deze actie. Het vorige zelf-hostende IR-knoop punt kan offline gaan als de sleutel een nieuwe Integration runtime is. | Nee       |
 | **GenerateBackupFile** "`<filePath>`" "`<password>`"            | Genereer een back-upbestand voor het huidige knoop punt. Het back-upbestand bevat de referenties van de knooppunt sleutel en de gegevens opslag. | Nee       |
 | **ImportBackupFile** "`<filePath>`" "`<password>`"              | Herstel het knoop punt uit een back-upbestand.                          | Nee       |
-| **Opnieuw**                                                     | Start de zelf-hostende Integration runtime host-service opnieuw.   | Nee       |
+| **Opnieuw opstarten**                                                     | Start de zelf-hostende Integration runtime host-service opnieuw.   | Nee       |
 | **Begin**                                                       | Start de zelf-hostende integratie runtime host service.     | Nee       |
 | **Stoppen**                                                        | Stop de zelf-hostende integratie runtime host service.        | Nee       |
 | **StartUpgradeService**                                         | Start de zelf-hostende Integration runtime upgrade-service.       | Nee       |
@@ -362,7 +362,7 @@ Wanneer u de zelf-hostende Integration runtime hebt geregistreerd en u de proxy-
 1. Open **Microsoft Integration Runtime Configuration Manager**.
 1. Selecteer het tabblad **Instellingen**.
 1. Selecteer onder **http-proxy**de **wijzigings** koppeling om het dialoog venster **http-proxy instellen** te openen.
-1. Selecteer **Next**. Vervolgens wordt er een waarschuwing weer gegeven waarin u wordt gevraagd om de proxy instelling op te slaan en de integratie runtime host-service opnieuw te starten.
+1. Selecteer **Volgende**. Vervolgens wordt er een waarschuwing weer gegeven waarin u wordt gevraagd om de proxy instelling op te slaan en de integratie runtime host-service opnieuw te starten.
 
 U kunt het hulp programma Configuration Manager gebruiken om de HTTP-proxy weer te geven en bij te werken.
 

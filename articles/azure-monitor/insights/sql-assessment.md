@@ -5,13 +5,13 @@ ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 03/28/2019
-ms.openlocfilehash: ceaed0800df01bf2c44fee13d98b01b6e726200d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 05/05/2020
+ms.openlocfilehash: b6b32f9eadc6677bad591f4040981c4c95bf1f76
+ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77662481"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82871238"
 ---
 # <a name="optimize-your-sql-environment-with-the-sql-server-health-check-solution-in-azure-monitor"></a>Optimaliseer uw SQL-omgeving met de SQL Server Health Check-oplossing in Azure Monitor
 
@@ -34,8 +34,8 @@ Nadat u de oplossing hebt toegevoegd en een evaluatie is voltooid, wordt de same
 ## <a name="prerequisites"></a>Vereisten
 
 * Voor de oplossing SQL Health check is een ondersteunde versie van .NET Framework 4.6.2 geïnstalleerd op elke computer waarop micro soft Monitoring Agent (MMA) is geïnstalleerd.  De MMA-agent wordt gebruikt door System Center 2016-Operations Manager en Operations Manager 2012 R2 en Azure Monitor.  
-* De oplossing ondersteunt SQL Server versie 2012, 2014 en 2016.
-* Een Log Analytics-werk ruimte om de SQL Health Check-oplossing toe te voegen vanuit Azure Marketplace in de Azure Portal.  Als u de oplossing wilt installeren, moet u een beheerder of Inzender zijn in het Azure-abonnement.
+* De oplossing ondersteunt SQL Server versie 2012, 2014, 2016, 2017 en 2019.
+* Een Log Analytics-werk ruimte om de SQL Health Check-oplossing toe te voegen vanuit Azure Marketplace in de Azure Portal. Als u de oplossing wilt installeren, moet u een beheerder of Inzender zijn in het Azure-abonnement.
 
   > [!NOTE]
   > Nadat u de oplossing hebt toegevoegd, wordt het bestand AdvisorAssessment. exe toegevoegd aan servers met agents. Configuratie gegevens worden gelezen en vervolgens naar Azure Monitor in de Cloud verzonden voor verwerking. Logica wordt toegepast op de ontvangen gegevens en de gegevens worden vastgelegd door de cloudservice.

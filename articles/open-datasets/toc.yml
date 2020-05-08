@@ -27,7 +27,7 @@
     - name: Jupyter-notebooks
       displayName: python notebooks
       href: 'https://github.com/Azure/OpenDatasetsNotebooks'
-- name: Bronnen
+- name: Resources
   items:
     - name: Catalogus Azure Open Datasets
       href: 'https://azure.microsoft.com/services/open-datasets/catalog/'
@@ -38,7 +38,7 @@
     - name: Prijzen
       href: 'https://azure.microsoft.com/pricing/details/open-datasets/'
     - name: Regionale beschikbaarheid
-      href: 'https://azure.microsoft.com/regions/services/'
+      href: 'https://azure.microsoft.com/en-us/global-infrastructure/services/?products=open-datasets&regions=non-regional'
     - name: Gebruikersforum
       href: 'https://aka.ms/open-datasets-forum'
     - name: Stack Overflow

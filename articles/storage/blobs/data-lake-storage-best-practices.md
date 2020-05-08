@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: normesta
 ms.reviewer: sachins
-ms.openlocfilehash: ac4e126c7ecbd1fc781db74e5b19635b273bbb34
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 79c4f051318113ebe0c7e0085539d2f24405b4f9
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "72299676"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82857878"
 ---
 # <a name="best-practices-for-using-azure-data-lake-storage-gen2"></a>Aanbevolen procedures voor het gebruik van Azure Data Lake Storage Gen2
 
@@ -49,7 +49,7 @@ Bij het ontwerpen van een systeem met Data Lake Storage Gen2 of een Cloud servic
 
 ### <a name="high-availability-and-disaster-recovery"></a>Hoge beschikbaarheid en herstel na noodgevallen
 
-Hoge Beschik baarheid (HA) en herstel na nood gevallen (DR) kunnen soms samen worden gecombineerd, hoewel elk een iets andere strategie heeft, met name wanneer het gaat om gegevens. Data Lake Storage Gen2 heeft reeds 3x-replicatie op de schermen afgehandeld tegen de beveiliging tegen gelokaliseerde hardwarestoringen. Daarnaast kunnen andere replicatie opties, zoals ZRS of GZRS (preview), de HA verbeteren, terwijl GRS & RA-GRS DR verbeteren. Bij het bouwen van een plan voor HA moet de werk belasting, in het geval van een onderbreking van de service, zo snel mogelijk toegang hebben tot de meest recente gegevens door over te scha kelen naar een afzonderlijk gerepliceerd exemplaar lokaal of in een nieuwe regio.
+Hoge Beschik baarheid (HA) en herstel na nood gevallen (DR) kunnen soms samen worden gecombineerd, hoewel elk een iets andere strategie heeft, met name wanneer het gaat om gegevens. Data Lake Storage Gen2 heeft reeds 3x-replicatie op de schermen afgehandeld tegen de beveiliging tegen gelokaliseerde hardwarestoringen. Daarnaast kunt u met andere replicatie opties, zoals ZRS of GZRS, de HA verbeteren, terwijl GRS & RA-GRS DR verbeteren. Bij het bouwen van een plan voor HA moet de werk belasting, in het geval van een onderbreking van de service, zo snel mogelijk toegang hebben tot de meest recente gegevens door over te scha kelen naar een afzonderlijk gerepliceerd exemplaar lokaal of in een nieuwe regio.
 
 In een DR-strategie is het belang rijk dat de gegevens die worden gerepliceerd naar een andere regio met GRS of RA-GRS-replicatie, kunnen worden voor bereid voor het onwaarschijnlijke geval van een ernstige storing van een regio. U moet ook rekening houden met uw vereisten voor rand gevallen, zoals beschadiging van gegevens, waarbij u mogelijk periodieke moment opnamen wilt maken om terug te vallen op. Afhankelijk van het belang en de grootte van de gegevens, kunt u het beste Delta momentopnamen van 1-, 6-en 24-uurs periode op basis van risico toleranties.
 

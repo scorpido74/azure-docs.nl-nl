@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/30/2019
-ms.openlocfilehash: 29d5213b8eecd94ed8c8ce565972c9f98872a362
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9ae0aec6b87a746ed1f141dcf98f599acd20ab3a
+ms.sourcegitcommit: 602e6db62069d568a91981a1117244ffd757f1c2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80411437"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82864246"
 ---
 # <a name="optimize-log-queries-in-azure-monitor"></a>Logboek query's in Azure Monitor optimaliseren
 Azure Monitor logboeken maakt gebruik van [Azure Data Explorer (ADX)](/azure/data-explorer/) om logboek gegevens op te slaan en query's uit te voeren voor het analyseren van die gegevens. Het maakt, beheert en onderhoudt de ADX-clusters en optimaliseert deze voor de werk belasting van uw logboek analyse. Wanneer u een query uitvoert, wordt deze geoptimaliseerd en doorgestuurd naar het juiste ADX-cluster waarin de werkruimte gegevens worden opgeslagen. Zowel Azure Monitor-Logboeken als Azure Data Explorer maakt gebruik van veel automatische optimalisatie mechanismen voor query's. Automatische optimalisaties bieden een aanzienlijke Boost, maar in sommige gevallen kunt u de query prestaties aanzienlijk verbeteren. In dit artikel worden de prestatie overwegingen en verschillende technieken uitgelegd om ze op te lossen.
@@ -108,7 +108,7 @@ Heartbeat
 | summarize count() by Computer
 ```
 
-### <a name="use-effective-aggregation-commands-and-dimmentions-in-summarize-and-join"></a>Effectief aggregatie opdrachten en dimmentions gebruiken in samenvatten en samen voegen
+### <a name="use-effective-aggregation-commands-and-dimensions-in-summarize-and-join"></a>Effectief aggregatie opdrachten en dimensies gebruiken in samenvatten en samen voegen
 
 Hoewel sommige aggregatie opdrachten zoals [Max ()](/azure/kusto/query/max-aggfunction), [Sum ()](/azure/kusto/query/sum-aggfunction), [Count (](/azure/kusto/query/count-aggfunction)) en [AVG ()](/azure/kusto/query/avg-aggfunction) een laag CPU-effect hebben vanwege hun logica, zijn andere complexer, en zijn er heuristische en schattingen opgenomen die ervoor zorgen dat ze efficiënt kunnen worden uitgevoerd. Zo maakt [DCount ()](/azure/kusto/query/dcount-aggfunction) gebruik van het HyperLogLog-algoritme om een nauw keurigheid te bieden voor het aantal grote sets gegevens, zonder dat elke waarde daad werkelijk wordt geteld. de percentiel functies voeren vergelijk bare benaderingen uit met behulp van het dichtstbijzijnde rang percentiel-algoritme. Enkele van de opdrachten bevatten optionele para meters om de impact te verminderen. De functie [makenset ()](/azure/kusto/query/makeset-aggfunction) heeft bijvoorbeeld een optionele para meter voor het definiëren van de maximale set grootte, die aanzienlijk van invloed is op de CPU en het geheugen.
 

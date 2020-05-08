@@ -5,15 +5,15 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: overview
-ms.date: 04/30/2020
+ms.date: 05/07/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 438edd88b3699f3811d8bd32170b62569971c2e9
-ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
+ms.openlocfilehash: ab1d0318464f6b44e1f46bd30dc76272584fde64
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82837393"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82929822"
 ---
 # <a name="what-is-windows-virtual-desktop"></a>Wat is Windows Virtual Desktop? 
 
@@ -67,8 +67,8 @@ We willen ondersteuning voor de volgende besturings systemen toevoegen, dus zorg
 
 |Besturingssysteem|Vereiste licentie|
 |---|---|
-|Windows 10 Enter prise-meerdere sessies of Windows 10 Enter prise|Microsoft 365 E3, E5, a3, A5, F3, zakelijk<br>Windows E3, E5, a3, A5|
-|Windows 7 Enterprise |Microsoft 365 E3, E5, a3, A5, F3, zakelijk<br>Windows E3, E5, a3, A5|
+|Windows 10 Enter prise-meerdere sessies of Windows 10 Enter prise|Microsoft 365 E3, E5, a3, A5, F3, Business Premium<br>Windows E3, E5, a3, A5|
+|Windows 7 Enterprise |Microsoft 365 E3, E5, a3, A5, F3, Business Premium<br>Windows E3, E5, a3, A5|
 |Windows Server 2012 R2, 2016, 2019|RDS Client Access License (CAL) met Software Assurance|
 
 Uw infra structuur heeft de volgende zaken nodig om virtueel bureau blad van Windows te ondersteunen:
@@ -101,9 +101,9 @@ De virtuele machines van Azure die u voor virtuele Windows-Bureau bladen maakt, 
 |wvdportalstorageblob.blob.core.windows.net|443|Ondersteuning voor Azure Portal|AzureCloud|
 
 >[!IMPORTANT]
->In de meeste gevallen kunt u het beste de service tags in plaats van Url's gebruiken om problemen met de service te voor komen. Het opheffen van de blok kering van deze Url's is essentieel voor een betrouw bare implementatie van Windows virtueel bureau blad. Het blok keren van de toegang tot deze Url's wordt niet ondersteund en heeft invloed op de service functionaliteit. Deze Url's komen alleen overeen met virtuele bureau blad-sites en-bronnen van Windows en bevatten geen Url's voor andere services, zoals Azure Active Directory.
->
 >Virtueel bureau blad van Windows ondersteunt nu de FQDN-code. Zie [Azure firewall gebruiken om virtuele bureau blad-implementaties te beveiligen](../firewall/protect-windows-virtual-desktop.md)voor meer informatie.
+>
+>U wordt aangeraden FQDN-Tags of service tags te gebruiken in plaats van Url's om problemen met de service te voor komen. De vermelde Url's en Tags komen alleen overeen met virtuele bureau blad-sites en-bronnen van Windows. Ze bevatten geen Url's voor andere services, zoals Azure Active Directory.
 
 De volgende tabel bevat de optionele Url's die uw virtuele Azure-machines kunnen gebruiken:
 
@@ -201,4 +201,4 @@ Als u de versie van het Windows-bureau blad van Virtual Desktop 2019 gebruikt, k
 Als u de Windows-versie van Virtual Desktop lente 2020 gebruikt, moet u in plaats daarvan een hostgroep maken. Kop aan de volgende zelf studie om aan de slag te gaan.
 
 > [!div class="nextstepaction"]
-> [Een hostgroep met de Azure Portal maken](create-host-pools-azure-marketplace.md)
+> [Een hostpool maken met de Azure-portal](create-host-pools-azure-marketplace.md)

@@ -1,41 +1,44 @@
 ---
-title: Publicatie handleiding voor de oplossings sjabloon van Azure Applications Azure Marketplace
-description: In dit artikel worden de vereisten beschreven voor het publiceren van een oplossings sjabloon in azure Marketplace.
+title: Publicatie handleiding voor Azure Applications Solution-sjabloon aanbiedingen-Azure Marketplace
+description: In dit artikel worden de vereisten beschreven voor het publiceren van oplossings sjablonen op Azure Marketplace.
 author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/22/2020
 ms.author: dsindona
-ms.openlocfilehash: 6533fa930716552c91fffd13b196bdbf78158816
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f62b3478c5c711423913b5918886b43b79ac691d
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82084852"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82858323"
 ---
-# <a name="azure-applications-solution-template-offer-publishing-requirements"></a>Azure-toepassingen: oplossings sjabloon bieden publicatie vereisten
+# <a name="publishing-guide-for-azure-applications-solution-template-offers"></a>Publicatie handleiding voor Azure Applications Solution Temp late-aanbiedingen
 
-In dit artikel worden de vereisten beschreven voor het aanbiedings type voor de oplossings sjabloon, een manier om een Azure-toepassings aanbieding te publiceren in azure Marketplace. Voor het type van de oplossings sjabloon is een [Azure Resource Manager sjabloon (arm-sjabloon)](../azure-resource-manager/templates/overview.md) vereist om uw oplossings infrastructuur automatisch te implementeren.
+In dit artikel worden de vereisten voor het publiceren van oplossingen sjablonen beschreven. Dit is een manier om Azure-aanbiedingen in azure Marketplace te publiceren. Voor het type van de oplossings sjabloon is een [Azure Resource Manager sjabloon (arm-sjabloon)](../azure-resource-manager/templates/overview.md) vereist om uw oplossings infrastructuur automatisch te implementeren.
 
-Gebruik het aanbiedings type van de Azure-toepassings oplossings sjabloon wanneer de volgende voor waarden zijn vereist:
+Gebruik het aanbiedings type van de Azure Application *Solution-sjabloon* onder de volgende voor waarden:
 
-- Voor uw oplossing is extra implementatie-en configuratie automatisering meer nodig dan één virtuele machine, zoals een combi natie van Vm's, netwerken en opslag resources.
-- Uw klant gaat zelf de oplossing beheren.
+- Voor uw oplossing is aanvullende implementatie-en configuratie automatisering nodig tot meer dan één virtuele machine (VM), zoals een combi natie van Vm's, netwerken en opslag resources.
+- Uw klanten gaan zelf de oplossing beheren.
 
-De aanroep van een actie die een gebruiker voor dit aanbiedings type ziet is ' nu ophalen '.
+De aanroep van een actie die een klant voor dit aanbiedings type ziet, is *nu downloaden*.
 
 ## <a name="requirements-for-solution-template-offers"></a>Vereisten voor oplossingen sjabloon bieden
 
-| **Vereisten** | **Nadere**  |
+| **Vereisten** | **Details**  |
 | ---------------  | -----------  |
-|Facturering en meting    |  Oplossingen voor oplossings sjablonen zijn geen Transact-aanbiedingen, maar kunnen worden gebruikt om betaalde VM-aanbiedingen te implementeren die worden gefactureerd via de micro soft Commercial Marketplace. De resources die door de ARM-sjabloon implementaties van de oplossing worden geïmplementeerd, worden ingericht in het Azure-abonnement van de klant. De virtuele machines van betalen per gebruik (PAYGO) worden door micro soft gefactureerd met de klant, in rekening gebracht via het Azure-abonnement van de klant.<br/> In het geval van uw eigen licentie (BYOL), terwijl micro soft de kosten voor de infra structuur factureert die in het abonnement van de klant worden gemaakt, kunt u de kosten voor software licenties rechtstreeks aan de klant door geven.   |
-|Azure-compatibele virtuele harde schijf (VHD)  |   Vm's moeten zijn gebouwd op Windows of Linux. Zie voor meer informatie: <ul> <li>[Een Azure-toepassings aanbieding maken](./partner-center-portal/create-new-azure-apps-offer.md)(voor Windows-vhd's)</li><li>[Linux-distributies die zijn goedgekeurd op Azure](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros) (voor Linux-vhd's).</li></ul> |
-| Toewijzing van klant gebruik | Het inschakelen van de toewijzing van klant gebruik is vereist voor alle oplossings sjablonen die naar Azure Marketplace worden gepubliceerd. Zie voor meer informatie over het gebruik van de klant en hoe u deze functie inschakelt, de [klant gebruiks toewijzing van Azure-partners](./azure-partner-customer-usage-attribution.md).  |
-| Managed Disks gebruiken | [Managed disks](https://docs.microsoft.com/azure/virtual-machines/windows/managed-disks-overview) is de standaard optie voor persistente schijven van IaaS-Vm's in Azure. U moet Managed Disks gebruiken in oplossings sjablonen. <br> <br> 1. Volg de [richt lijnen](https://docs.microsoft.com/azure/virtual-machines/windows/using-managed-disks-template-deployments) en voor [beelden](https://github.com/Azure/azure-quickstart-templates/blob/master/managed-disk-support-list.md) voor het gebruik van Managed DISKS in de Azure arm-sjablonen om uw oplossings sjablonen bij te werken. <br> <br> 2. Volg de onderstaande instructies om de onderliggende VHD van de Managed Disks te importeren in een opslag account voor het publiceren van de VHD als een installatie kopie op Marketplace: <br> <ul> <li> [Zo](https://docs.microsoft.com/azure/virtual-machines/scripts/virtual-machines-windows-powershell-sample-copy-managed-disks-vhd?toc=%2fpowershell%2fmodule%2ftoc.json) </li> <li> [CLI](https://docs.microsoft.com/azure/virtual-machines/scripts/virtual-machines-linux-cli-sample-copy-managed-disks-vhd?toc=%2fcli%2fmodule%2ftoc.json) </li> </ul> |
+|Facturering en meting    |  Oplossingen voor oplossings sjablonen zijn geen transactie aanbiedingen, maar ze kunnen worden gebruikt voor het implementeren van betaalde VM-aanbiedingen die worden gefactureerd via micro soft Commercial Marketplace. De resources die de ARM-sjabloon implementeren van de oplossing zijn ingesteld in het Azure-abonnement van de klant. Voor betalen per gebruik-virtuele machines wordt gehandeld met de klant via micro soft en gefactureerd via het Azure-abonnement van de klant.<br/> Voor een BYOL-facturering (meebrengen van uw eigen licentie), hoewel kosten voor de infra structuur van micro soft billing die in het abonnement van de klant worden gemaakt, kunt u uw software licentie kosten rechtstreeks aan de klant door geven.   |
+|Azure-compatibele virtuele harde schijf (VHD)  |   Vm's moeten zijn gebouwd op Windows of Linux. Zie voor meer informatie: <ul> <li>[Maak een Azure-toepassings aanbieding](./partner-center-portal/create-new-azure-apps-offer.md) (voor Windows-vhd's).</li><li>[Linux-distributies die zijn goedgekeurd op Azure](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros) (voor Linux-vhd's).</li></ul> |
+| Gebruikskenmerken van klanten | Het inschakelen van de toewijzing van klant gebruik is vereist voor alle oplossings sjablonen die op Azure Marketplace worden gepubliceerd. Zie voor meer informatie over het gebruik van de klant en hoe u deze functie inschakelt, de [klant gebruiks toewijzing van Azure-partners](./azure-partner-customer-usage-attribution.md).  |
+| Beheerde schijven gebruiken | [Managed disks](https://docs.microsoft.com/azure/virtual-machines/windows/managed-disks-overview) is de standaard optie voor persistente schijven van Infrastructure as a Service (IaaS) Vm's in Azure. U moet beheerde schijven gebruiken in oplossings sjablonen. <ul><li>Volg de richt lijnen in [Managed disks in azure Resource Manager Templates](https://docs.microsoft.com/azure/virtual-machines/windows/using-managed-disks-template-deployments)en gebruik de voor [beelden](https://github.com/Azure/azure-quickstart-templates)om uw oplossings sjablonen bij te werken.<br><br> </li><li>Als u de VHD als een installatie kopie wilt publiceren in azure Marketplace, importeert u de onderliggende VHD van de beheerde schijven naar een opslag account met behulp van een van de volgende methoden:<ul><li>[Azure PowerShell](https://docs.microsoft.com/azure/virtual-machines/scripts/virtual-machines-windows-powershell-sample-copy-managed-disks-vhd?toc=%2fpowershell%2fmodule%2ftoc.json) </li> <li> [De Azure CLI](https://docs.microsoft.com/azure/virtual-machines/scripts/virtual-machines-linux-cli-sample-copy-managed-disks-vhd?toc=%2fcli%2fmodule%2ftoc.json) </li> </ul></ul> |
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Meer informatie](https://azuremarketplace.microsoft.com/sell) over Azure Marketplace als u dit nog niet hebt gedaan.
+Als u dit nog niet hebt gedaan, leert u hoe u [uw Cloud activiteiten kunt verg Roten met Azure Marketplace](https://azuremarketplace.microsoft.com/sell).
+
+Registreren voor en werken in het partner centrum:
+
 - [Meld u aan bij Partner Center](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership) om uw aanbieding te maken of te volt ooien.
-- [Maak een Azure-toepassings aanbieding](./partner-center-portal/create-new-azure-apps-offer.md) voor meer informatie.
+- Zie [een Azure-toepassings aanbieding maken](./partner-center-portal/create-new-azure-apps-offer.md) voor meer informatie.

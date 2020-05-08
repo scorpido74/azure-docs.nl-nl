@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: tutorial
-ms.date: 04/13/2020
+ms.date: 05/07/2020
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0ef9172ca5d0961bb6de1949a61199ce1d6c1bff
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: f0f88b310bc00881e66ee8e8b5f2d40616d60315
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81603423"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82926908"
 ---
 # <a name="tutorial-bulk-invite-azure-ad-b2b-collaboration-users"></a>Zelfstudie: Bulksgewijs gebruikers uitnodigen voor Microsoft Azure AD B2B-samenwerking
 
@@ -29,6 +29,27 @@ Als u Azure Active Directory (Azure AD) B2B-samenwerking gebruikt om te werken m
 
 Als u geen Azure Active Directory hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) voordat u begint.
 
+## <a name="understand-the-csv-template"></a>De CSV-sjabloon begrijpen
+
+Down load en vul het CSV-sjabloon bulksgewijs uploaden in om Azure AD-gast gebruikers bulksgewijs te kunnen uitnodigen. De CSV-sjabloon die u downloadt, kan eruitzien als in dit voor beeld:
+
+![Werk blad voor upload-en aanroep-outs waarin het doel en de waarden voor elke rij en kolom worden uitgelegd](media/tutorial-bulk-invite/understand-template.png)
+
+### <a name="csv-template-structure"></a>Structuur van CSV-sjabloon
+
+De rijen in een gedownloade CSV-sjabloon zijn als volgt:
+
+- **Versie nummer**: de eerste rij met het versie nummer moet worden opgenomen in de upload CSV.
+- **Kolom koppen**: de indeling van de kolom koppen is &lt;de *item naam* &gt; [propertyname] &lt; *vereist of leeg*&gt;. Bijvoorbeeld `Email address to invite [inviteeEmail] Required`. Sommige oudere versies van de sjabloon hebben mogelijk een kleine variatie.
+- **Voor beelden van rij**: we hebben in de sjabloon een rij met voor beelden van geldige waarden voor elke kolom opgenomen. U moet de voor beelden van de rij verwijderen en vervangen door uw eigen vermeldingen.
+
+### <a name="additional-guidance"></a>Aanvullende richtlijnen
+
+- De eerste twee rijen van de upload sjabloon mogen niet worden verwijderd of gewijzigd, of de upload kan niet worden verwerkt.
+- De vereiste kolommen worden eerst weer gegeven.
+- Het is niet raadzaam om nieuwe kolommen toe te voegen aan de sjabloon. Alle extra kolommen die u toevoegt, worden genegeerd en worden niet verwerkt.
+- U wordt aangeraden de meest recente versie van de CSV-sjabloon zo vaak mogelijk te downloaden.
+
 ## <a name="prerequisites"></a>Vereisten
 
 U moet twee of meer test e-mailaccounts hebben waarnaar u uitnodigingen kunt verzenden. De accounts moet van buiten uw organisatie zijn. U kunt elk type account gebruiken, met inbegrip van sociale accounts, bijvoorbeeld met een adres van gmail.com of outlook.com.
@@ -38,11 +59,11 @@ U moet twee of meer test e-mailaccounts hebben waarnaar u uitnodigingen kunt ver
 1. Meld u aan bij de Azure Portal met een account dat een gebruikers beheerder in de organisatie is.
 2. Selecteer **Azure Active Directory**in het navigatie deel venster.
 3. Selecteer onder **beheren**de optie **gebruikers** > **bulksgewijs uitnodigen**.
-4. Selecteer op de pagina **gebruikers bulksgewijs uitnodigen** de optie **downloaden** om een geldig. CSV-bestand met de uitnodigings eigenschappen te verkrijgen.
+4. Selecteer op de pagina **gebruikers bulksgewijs uitnodigen** de optie **downloaden** om een geldige. CSV-sjabloon met uitnodigings eigenschappen te verkrijgen.
 
     ![Knop downloaden in bulk-uitnodiging](media/tutorial-bulk-invite/bulk-invite-button.png)
 
-5. Open het CSV-bestand en voeg een regel toe voor elke gast gebruiker. De vereiste waarden zijn:
+5. Open de CSV-sjabloon en voeg een regel toe voor elke gast gebruiker. De vereiste waarden zijn:
 
    * **E-mail adres dat moet worden uitgenodigd** : de gebruiker die een uitnodiging ontvangt
 

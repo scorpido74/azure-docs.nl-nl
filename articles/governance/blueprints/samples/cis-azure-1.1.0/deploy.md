@@ -1,14 +1,14 @@
 ---
 title: Het voor beeld van CIS Microsoft Azure Stichtings-benchmark installatie implementeren
 description: Implementeer stappen voor het voor beeld van de CIS Microsoft Azure Stichtings-Bench Mark, inclusief blauw drukken-artefact parameter Details.
-ms.date: 10/14/2019
+ms.date: 05/06/2020
 ms.topic: sample
-ms.openlocfilehash: 7476addee3d31ec355c793ab7fbe1fbb732b8013
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 9f132ee47784eedf8d1ced7e0b67f957877d12ef
+ms.sourcegitcommit: 602e6db62069d568a91981a1117244ffd757f1c2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "74544528"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82864467"
 ---
 # <a name="deploy-the-cis-microsoft-azure-foundations-benchmark-blueprint-sample"></a>Het voor beeld van het CIS Microsoft Azure Stichtings-Bench Mark implementeren
 
@@ -93,8 +93,8 @@ De volgende tabel geeft een lijst van de para meters van de blauw druk-artefact:
 
 |Artefact naam|Type artefact|Parameternaam|Beschrijving|
 |-|-|-|-|
-|\[Voor\]beeld: controle CIS Microsoft Azure Stichting 1.1.0 aanbevelingen en implementeer specifieke ondersteunende VM-extensies|Beleidstoewijzing|Lijst met regio's waar Network Watcher moet worden ingeschakeld|Een door punt komma's gescheiden lijst met regio's. Gebruik Get-AzLocation om een volledige lijst met regio's weer te geven. Bijvoorbeeld: oostus; eastus2|
-|\[Voor\]beeld: controle CIS Microsoft Azure Stichting 1.1.0 aanbevelingen en implementeer specifieke ondersteunende VM-extensies|Beleidstoewijzing|Lijst met uitbrei dingen voor virtuele machines die zijn goedgekeurd voor gebruik|Een door punt komma's gescheiden lijst met uitbrei dingen. Gebruik Get-AzVMExtensionImage om een volledige lijst met extensies voor virtuele machines weer te geven. Bijvoorbeeld: AzureDiskEncryption; IaaSAntimalware|
+|Aanbevelingen voor CIS Microsoft Azure-benchmark 1.1.0 controleren en specifieke ondersteunende VM-extensies implementeren|Beleidstoewijzing|Lijst met regio's waar Network Watcher moet worden ingeschakeld|Een door punt komma's gescheiden lijst met regio's. Gebruik Get-AzLocation om een volledige lijst met regio's weer te geven. Bijvoorbeeld: oostus; eastus2|
+|Aanbevelingen voor CIS Microsoft Azure-benchmark 1.1.0 controleren en specifieke ondersteunende VM-extensies implementeren|Beleidstoewijzing|Lijst met uitbrei dingen voor virtuele machines die zijn goedgekeurd voor gebruik|Een door punt komma's gescheiden lijst met uitbrei dingen. Gebruik Get-AzVMExtensionImage om een volledige lijst met extensies voor virtuele machines weer te geven. Bijvoorbeeld: AzureDiskEncryption; IaaSAntimalware|
 
 ## <a name="next-steps"></a>Volgende stappen
 

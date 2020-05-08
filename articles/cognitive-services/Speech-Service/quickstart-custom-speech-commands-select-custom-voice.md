@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 12/10/2019
 ms.author: anhoang
-ms.openlocfilehash: b0ecbc4dc030fa8e7fbe362c1304c3c97278bdf5
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: c2b9b4d51e89975d988ed94bf85695bd8a1cc770
+ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "75456408"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82872466"
 ---
 # <a name="quickstart-use-custom-commands-with-custom-voice-preview"></a>Snelstartgids: aangepaste opdrachten gebruiken met aangepaste spraak (preview-versie)
 
@@ -35,7 +35,8 @@ In dit artikel selecteren we een aangepaste uitvoer stem voor de toepassing die 
 > ![Voorbeeld zinnen met para meters](media/custom-speech-commands/select-custom-voice.png)
 
 > [!NOTE]
-> Aangepaste stemmen kunnen worden gemaakt op de pagina aangepast spraak project. Selecteer de link **Speech Studio** en klik vervolgens op **Custom Voice** om aan de slag te gaan.
+> - Voor **open bare stemmen**zijn **Neural typen** alleen beschikbaar voor bepaalde regio's. Zie [standaard en Neural stemmen per regio/eind punt](https://docs.microsoft.com/azure/cognitive-services/speech-service/regions#standard-and-neural-voices)om de beschik baarheid te controleren.
+> - Voor **aangepaste stemmen**kunnen ze worden gemaakt op de pagina aangepast spraak project. Zie [aan de slag met aangepaste spraak](./how-to-custom-voice.md).
 
 De toepassing reageert nu op de geselecteerde stem, in plaats van de standaard stem.
 

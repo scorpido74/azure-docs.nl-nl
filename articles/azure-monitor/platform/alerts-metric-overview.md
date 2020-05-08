@@ -4,12 +4,12 @@ description: Bekijk een overzicht van wat u met metrische waarschuwingen kunt do
 ms.date: 03/17/2020
 ms.topic: conceptual
 ms.subservice: alerts
-ms.openlocfilehash: a6860cad077b597df923274f8971f5652d4ba9e3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 310d484fa1c88b2c54918fff84020a3438db9ae0
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80397976"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82855035"
 ---
 # <a name="understand-how-metric-alerts-work-in-azure-monitor"></a>Begrijpen hoe waarschuwingen voor metrische gegevens werken in Azure Monitor
 
@@ -26,7 +26,7 @@ Stel dat u als volgt een eenvoudige waarschuwings regel voor een statische dremp
 - Doel resource (de Azure-resource die u wilt bewaken): myVM
 - Metriek: percentage CPU
 - Voorwaarde type: statisch
-- Tijd aggregatie (statistiek dat wordt uitgevoerd boven onbewerkte meet waarden. Ondersteunde tijd aggregaties zijn min, Max, Gem, totaal, aantal): gemiddeld
+- Tijd aggregatie (statistiek dat wordt uitgevoerd boven onbewerkte meet waarden. [Ondersteunde tijd aggregaties](metrics-charts.md#changing-aggregation) zijn min, Max, Gem, totaal, aantal): gemiddeld
 - Periode (het venster terugkijken waarover metrische waarden worden gecontroleerd): in de afgelopen 5 minuten
 - Frequentie (de frequentie waarmee met de metrische waarschuwing wordt gecontroleerd of aan de voor waarden wordt voldaan): 1 min.
 - Operator: groter dan
@@ -43,7 +43,7 @@ Stel dat u een regel voor metrische waarschuwing voor eenvoudige dynamische drem
 - Doel resource (de Azure-resource die u wilt bewaken): myVM
 - Metriek: percentage CPU
 - Voorwaarde type: dynamisch
-- Tijd aggregatie (statistiek dat wordt uitgevoerd boven onbewerkte meet waarden. Ondersteunde tijd aggregaties zijn min, Max, Gem, totaal, aantal): gemiddeld
+- Tijd aggregatie (statistiek dat wordt uitgevoerd boven onbewerkte meet waarden. [Ondersteunde tijd aggregaties](metrics-charts.md#changing-aggregation) zijn min, Max, Gem, totaal, aantal): gemiddeld
 - Periode (het venster terugkijken waarover metrische waarden worden gecontroleerd): in de afgelopen 5 minuten
 - Frequentie (de frequentie waarmee met de metrische waarschuwing wordt gecontroleerd of aan de voor waarden wordt voldaan): 1 min.
 - Operator: groter dan

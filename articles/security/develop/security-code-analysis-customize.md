@@ -2,7 +2,7 @@
 title: Analyse taken van micro soft-beveiligings code aanpassen
 titleSuffix: Azure
 description: In dit artikel wordt beschreven hoe u de taken in de uitbrei ding analyse van micro soft-beveiligings code aanpast
-author: vharindra
+author: sukhans
 manager: sukhans
 ms.author: terrylan
 ms.date: 07/31/2019
@@ -13,12 +13,12 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: 6cdf892651407defc21f359a8e3b326b4af63b62
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8d074c12f28abdc61f4d70356c2a7aa264deb44c
+ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77499993"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82871888"
 ---
 # <a name="configure-and-customize-the-build-tasks"></a>De build-taken configureren en aanpassen
 
@@ -91,7 +91,8 @@ Details van taak configuratie worden weer gegeven in de volgende scherm afbeeldi
 ![De taak voor het maken van referentie scanner configureren](./media/security-tools/3-taskdetails.png)
 
 Beschikbare opties zijn onder meer:
-
+  - **Weergave naam**: naam van de Azure DevOps-taak. De standaard waarde is referentie scanner uitvoeren
+  - **Primaire versie van hulp programma**: beschik bare waarden zijn **CredScan v2**, **CredScan v1**. Klanten wordt aangeraden de versie van **CredScan v2** te gebruiken.
   - **Uitvoer indeling**: beschik bare waarden zijn **TSV**, **CSV**, **SARIF**en **PREfast**.
   - **Versie van het hulp programma**: we raden u aan om **nieuwste**te selecteren.
   - **Map scannen**: de map van de opslag plaats die moet worden gescand.
@@ -105,7 +106,7 @@ Beschikbare opties zijn onder meer:
   - **Besturings opties** > **Voer deze taak uit**: Hiermee geeft u op wanneer de taak wordt uitgevoerd. Selecteer **aangepaste voor waarden** om complexere voor waarden op te geven.
   - **Versie**: de versie van de build-taak in azure DevOps. Deze optie wordt niet regel matig gebruikt.
 
-Raadpleeg voor meer informatie over de YAML-configuratie voor deze taak onze [referentie scanner yaml-opties](yaml-configuration.md#credential-scanner-task)
+Voor informatie over YAML-configuratie voor deze taak raadpleegt u de opties voor de [yaml voor referentie scanner](yaml-configuration.md#credential-scanner-task)
 
 ## <a name="microsoft-security-risk-detection-task"></a>Micro soft-taak risico detectie
 
@@ -135,7 +136,7 @@ Details voor het configureren van deze taak worden weer gegeven in de volgende l
        - De naam van het **test stuur programma kan worden gewijzigd**: Schakel dit selectie vakje in als u de naam van het uitvoer bare bestand van het test stuur programma wilt wijzigen en nog steeds correct wilt werken.
        - **De toepassing die u wilt uitvoeren, wordt uitgevoerd als één besturingssysteem proces**: Schakel dit selectie vakje in als het test stuur programma wordt uitgevoerd onder één besturingssysteem proces. Schakel deze optie uit als het test stuur programma extra processen heeft gestart.
 
-Voor informatie over YAML-configuratie voor deze taak raadpleegt u onze [micro soft-beveiligings Risico's detectie yaml-opties](yaml-configuration.md#microsoft-security-risk-detection-task)
+Voor informatie over de YAML-configuratie voor deze taak raadpleegt u onze [micro soft-beveiligings Risico's detectie yaml-opties](yaml-configuration.md#microsoft-security-risk-detection-task)
 
 ## <a name="roslyn-analyzers-task"></a>Roslyn-analyse taak
 
@@ -172,7 +173,7 @@ Bekijk voor aanvullende bronnen voor de taak Roslyn-analysen [de op Roslyn gebas
 
 U kunt het analyse pakket dat is geïnstalleerd en wordt gebruikt door deze build-taak vinden op de NuGet-pagina [micro soft. CodeAnalysis. FxCopAnalyzers](https://www.nuget.org/packages/Microsoft.CodeAnalysis.FxCopAnalyzers).
 
-Raadpleeg voor meer informatie over de YAML-configuratie voor deze taak onze [Roslyn-analyse functies yaml opties](yaml-configuration.md#roslyn-analyzers-task)
+Voor informatie over YAML-configuratie voor deze taak raadpleegt u onze [Roslyn-analyse functies yaml opties](yaml-configuration.md#roslyn-analyzers-task)
 
 ## <a name="tslint-task"></a>TSLint-taak
 
@@ -193,7 +194,7 @@ Details van taak configuratie worden weer gegeven in de volgende scherm afbeeldi
 - **Type artefact**: afhankelijk van uw selectie kunt u Logboeken publiceren naar uw Azure DevOps server of naar een gedeeld bestand dat toegankelijk is voor de build-agent.
 - **Hulpprogram ma's**: u kunt ervoor kiezen om logboeken voor specifieke hulpprogram ma's te bewaren of u kunt **alle hulpprogram ma's** selecteren om alle logboeken te bewaren.
 
-Raadpleeg voor meer informatie over de YAML-configuratie voor deze taak onze opties voor het [publiceren van beveiligings logboeken yaml](yaml-configuration.md#publish-security-analysis-logs-task)
+Voor informatie over YAML-configuratie voor deze taak raadpleegt u de [beveiligings logboeken](yaml-configuration.md#publish-security-analysis-logs-task) van de yaml-opties voor publiceren
 
 ## <a name="security-report-task"></a>Beveiligings rapport taak
 
@@ -206,7 +207,7 @@ Details van de configuratie van het beveiligings rapport worden weer gegeven in 
 - **Geavanceerde opties**: als er geen logboeken voor een van de hulpprogram ma's zijn geselecteerd, kunt u ervoor kiezen om een waarschuwing of een fout te registreren. Als u een fout registreert, mislukt de taak.
 - **Basis logboeken map**: u kunt de map basis logboeken aanpassen waarin de logboeken moeten worden gevonden. Deze optie wordt meestal niet gebruikt.
 
-Raadpleeg voor meer informatie over de YAML-configuratie voor deze taak onze [beveiligings rapporten yaml-opties](yaml-configuration.md#security-report-task)
+Voor informatie over YAML-configuratie voor deze taak raadpleegt u de [yaml-opties voor beveiligings rapporten](yaml-configuration.md#security-report-task)
 
 ## <a name="post-analysis-task"></a>Taak na de analyse
 
@@ -218,7 +219,7 @@ Details van taak configuratie worden weer gegeven in de volgende scherm afbeeldi
 - **Rapport**: u kunt desgewenst de resultaten schrijven die de build-afbreek bewerking veroorzaken. De resultaten worden geschreven naar het venster en het logboek bestand van de Azure DevOps-console.
 - **Geavanceerde opties**: als er geen logboeken voor een van de hulpprogram ma's zijn geselecteerd, kunt u ervoor kiezen om een waarschuwing of een fout te registreren. Als u een fout registreert, mislukt de taak.
 
-Voor informatie over YAML-configuratie voor deze taak raadpleegt u onze [yaml-opties voor post analyse](yaml-configuration.md#post-analysis-task)
+Voor informatie over de YAML-configuratie voor deze taak raadpleegt u onze [Opties voor yaml post-analyse](yaml-configuration.md#post-analysis-task)
 
 ## <a name="next-steps"></a>Volgende stappen
 

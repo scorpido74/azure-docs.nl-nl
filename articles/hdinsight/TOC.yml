@@ -155,8 +155,16 @@
           items:
             - name: Clusters beheren met de Apache Ambari-webinterface
               href: ./hdinsight-hadoop-manage-ambari.md
-            - name: Clusters optimaliseren met de Apache Ambari-webinterface
-              href: ./hdinsight-changing-configs-via-ambari.md
+            - name: Optimaliseren met Apache Ambari
+              items:
+                - name: Clusters optimaliseren
+                  href: ./hdinsight-changing-configs-via-ambari.md
+                - name: Apache HBase optimaliseren
+                  href: ./optimize-hbase-ambari.md
+                - name: Apache Hive optimaliseren
+                  href: ./optimize-hive-ambari.md
+                - name: Apache Pig optimaliseren
+                  href: ./optimize-pig-ambari.md
             - name: Apache Ambari REST API gebruiken
               href: ./hdinsight-hadoop-manage-ambari-rest-api.md
             - name: Een cluster verwijderen
@@ -221,14 +229,18 @@
               href: ./hdinsight-hadoop-oms-log-analytics-use-queries.md
             - name: Cluster-prestaties bewaken
               href: ./hdinsight-key-scenarios-to-monitor.md
-            - name: Beschikbaarheid van het cluster bewaken met Ambari en Azure Monitor-logboeken
+            - name: Clusterbeschikbaarheid - Apache Ambari
               href: ./hdinsight-cluster-availability.md
+            - name: Clusterbeschikbaarheid - Azure Monitor-logboeken
+              href: ./cluster-availability-monitor-logs.md
         - name: Problemen oplossen
           items:
             - name: Problemen met scriptacties oplossen
               href: ./troubleshoot-script-action.md
             - name: Fouten bij het maken van resources
               href: ./troubleshoot-resource-creation-fails.md
+            - name: Problemen met Apache Oozie oplossen
+              href: ./troubleshoot-oozie.md
     - name: Naslaginformatie
       items:
         - name: Azure PowerShell
@@ -699,6 +711,8 @@
               href: ./hbase/hbase-troubleshoot-timeouts-hbase-hbck.md
             - name: Problemen met Apache HBase oplossen
               href: ./hbase/apache-troubleshoot-hbase.md
+            - name: REST API naar query Apache HBase
+              href: ./hbase/troubleshoot-rest-api.md
 - name: Interactive Query
   items:
     - name: Overzicht
@@ -901,6 +915,8 @@
           href: ./transport-layer-security.md
         - name: VNETs plannen voor HDInsight
           href: ./hdinsight-plan-virtual-network-deployment.md
+        - name: Netwerkverkeer beheren
+          href: ./control-network-traffic.md
         - name: Vereiste IP-adressen voor NSG's en UDR's
           href: ./hdinsight-management-ip-addresses.md
         - name: Servicetags voor Azure Firewall
@@ -931,6 +947,8 @@
           href: ./hdinsight-hadoop-create-linux-clusters-with-secure-transfer-storage.md
         - name: Firewall gebruiken om uitgaand verkeer te beperken
           href: ./hdinsight-restrict-outbound-traffic.md
+        - name: Virtueel netwerkapparaat configureren
+          href: ./network-virtual-appliance.md
         - name: Problemen oplossen
           items:
             - name: ESP-verificatieproblemen

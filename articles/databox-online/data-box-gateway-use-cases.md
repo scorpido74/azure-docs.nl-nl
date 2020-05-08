@@ -8,12 +8,12 @@ ms.subservice: gateway
 ms.topic: article
 ms.date: 03/02/2019
 ms.author: alkohli
-ms.openlocfilehash: e72113313e27949819db567c550401b1f051473f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: dde84f0973cc7e21e57574bbabe398b38581358f
+ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77022678"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82562384"
 ---
 # <a name="use-cases-for-azure-data-box-gateway"></a>Gebruiks voorbeelden voor Azure Data Box Gateway
 
@@ -77,7 +77,7 @@ Deze bulk overdracht voltooit de initiële seeding-fase.
 
 ### <a name="ongoing-feed-with-data-box-gateway"></a>Voortdurende feed met Data Box Gateway
 
-Volg deze stappen voor een doorlopende opname door Data Box Gateway.
+Volg deze stappen voor een doorlopende opname door Data Box Gateway. 
 
 1. Maak een Cloud share op Data Box Gateway. Deze share uploadt automatisch alle gegevens naar het Azure Storage-account. Ga naar **shares** in uw data Box gateway-resource en klik op **+ share toevoegen**.
 

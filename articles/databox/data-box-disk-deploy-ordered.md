@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 07/03/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to be able to order Data Box Disk to upload on-premises data from my server onto Azure.
-ms.openlocfilehash: 7b27f10567816884b14a0a2c69e3bd8e85cb7a76
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 91177c67c9d24f73934381704bca8259af31adca
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81398706"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82858631"
 ---
 # <a name="tutorial-order-an-azure-data-box-disk"></a>Zelf studie: een Azure Data Box Disk best Ellen
 
@@ -55,7 +55,7 @@ Voer de volgende stappen uit om Data Box Disk te best Ellen.
     
    ![Zoek naar Azure Data Box 1](media/data-box-disk-deploy-ordered/search-data-box11.png)
 
-2. Klik op **maken**.
+2. Klik op **Maken**.
 
 3. Controleer of de Data Box-service beschikbaar is in uw regio. Voer de volgende gegevens in of selecteer deze en klik op **Toepassen**.
 
@@ -102,7 +102,7 @@ Voer de volgende stappen uit om Data Box Disk te best Ellen.
 
     ![Ordergegevens invoeren](media/data-box-disk-deploy-ordered/data-box-order-details.png)
 
-14. In het tabblad **Verzendadres** geeft u uw voor- en achternaam, de naam en het postadres van het bedrijf en een geldig telefoonnummer op. Klik op **Adres valideren**. De service controleert of de service beschikbaar is voor de regio van het verzendadres. Als de service beschikbaar is voor het opgegeven verzendadres, ontvangt u daarover een melding. 
+14. In het tabblad **Verzendadres** geeft u uw voor- en achternaam, de naam en het postadres van het bedrijf en een geldig telefoonnummer op. Klik op **Adres valideren**. De service controleert of de service beschikbaar is voor de regio van het verzendadres. Als de service beschikbaar is voor het opgegeven verzendadres, ontvangt u daarover een melding. Klanten die de service in Japan, Singapore, Korea en Europa-west gebruiken, hebben de mogelijkheid om zelf beheerde verzen ding te selecteren tijdens het plaatsen van de bestelling. Nadat de order is geplaatst, ontvangt u een e-mail met instructies om het apparaat op te halen uit het aangewezen Azure-Data Center.
 
     ![Verzendadres opgeven](media/data-box-disk-deploy-ordered/data-box-shipping-address.png)
 15. In de **Meldingsdetails** geeft u een e-mailadres op. De service stuurt e-mailmeldingen naar het opgegeven e-mailadres over updates van de bestelstatus. 

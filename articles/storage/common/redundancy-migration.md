@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 02/10/2020
+ms.date: 05/05/2020
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: 5c37dbdc34138faab8adae6ad18252c18a75cad4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 6376d858ae5113996bf7c93a8b3054797151c6b3
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80337081"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82858684"
 ---
 # <a name="change-how-a-storage-account-is-replicated"></a>Wijzigen hoe een opslag account wordt gerepliceerd
 
@@ -26,7 +26,7 @@ Azure Storage biedt de volgende typen replicatie:
 - Lokaal redundante opslag (LRS)
 - Zone-redundante opslag (ZRS)
 - Geografisch redundante opslag (GRS) of geografisch redundante opslag met lees toegang (RA-GRS)
-- Geo-zone-redundante opslag (GZRS) of geo-zone-redundante opslag met lees toegang (RA-GZRS) (preview)
+- Geo-zone-redundante opslag (GZRS) of geo-zone-redundante opslag met lees toegang (RA-GZRS)
 
 Zie [Azure Storage redundantie](storage-redundancy.md)voor een overzicht van elk van deze opties.
 
@@ -46,7 +46,7 @@ De volgende tabel bevat een overzicht van de manier waarop u van elk type replic
 <sup>1</sup> maakt een eenmalige uitvulling van kosten.
 
 > [!CAUTION]
-> Als u een [account-failover](https://docs.microsoft.com/azure/storage/common/storage-disaster-recovery-guidance) hebt uitgevoerd voor uw (RA-) GRS of (RA-) GZRS-account, is deze geconfigureerd om lokaal redundant te zijn in de nieuwe primaire regio. Livemigratie naar ZRS of GZRS voor dergelijke LRS-accounts wordt niet ondersteund. U moet [hand matige migratie](https://docs.microsoft.com/azure/storage/common/redundancy-migration#perform-a-manual-migration-to-zrs)uitvoeren.
+> Als u een [account-failover](storage-disaster-recovery-guidance.md) hebt uitgevoerd voor uw (RA-) GRS of (RA-) GZRS-account, is het account lokaal redundant in de nieuwe primaire regio na de failover. Livemigratie naar ZRS of GZRS voor een LRS-account dat voortkomt uit een failover, wordt niet ondersteund. U moet een [hand matige migratie](#perform-a-manual-migration-to-zrs) uitvoeren naar ZRS of GZRS.
 
 ## <a name="change-the-replication-setting"></a>De replicatie-instelling wijzigen
 
@@ -64,7 +64,7 @@ Voer de volgende stappen uit om de redundantie optie voor uw opslag account te w
 
 ![Scherm afbeelding die laat zien hoe u de replicatie optie in de portal wijzigt](media/redundancy-migration/change-replication-option.png)
 
-# <a name="powershell"></a>[Zo](#tab/powershell)
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
 
 Als u de optie voor redundantie voor uw opslag account wilt wijzigen met Power shell, roept u de opdracht [set-AzStorageAccount](/powershell/module/az.storage/set-azstorageaccount) aan en geeft u de `-SkuName` para meter:
 
@@ -121,14 +121,14 @@ U kunt Live migratie aanvragen via de [ondersteunings portal van Azure](https://
 
 1. **Nieuwe ondersteunings aanvraag** selecteren
 2. Voltooi de basis **beginselen** op basis van uw account gegevens. Selecteer in de sectie **service** **opslag account beheer** en de resource die u wilt converteren naar ZRS.
-3. Selecteer **Next**.
+3. Selecteer **Volgende**.
 4. Geef de volgende waarden op voor het **probleem** gedeelte:
     - **Ernst**: behoud de standaard waarde in.
     - **Probleem type**: **gegevens migratie**selecteren.
     - **Categorie**: Selecteer **migreren naar ZRS**.
     - **Titel**: Typ een beschrijvende titel, bijvoorbeeld ZRS- **account migratie**.
     - **Details**: Typ meer details in het vak **Details** , bijvoorbeeld ik wil migreren naar ZRS vanuit [LRS, GRS] in de \_ \_ regio.
-5. Selecteer **Next**.
+5. Selecteer **Volgende**.
 6. Controleer of de contact gegevens juist zijn op de Blade **contact gegevens** .
 7. Selecteer **Maken**.
 
@@ -162,7 +162,7 @@ Als u een upgrade wilt uitvoeren naar ZRS in de Azure Portal, gaat u naar de **c
 
 ![Upgrade ZRS Classic naar ZRS in de portal](media/redundancy-migration/portal-zrs-classic-upgrade.png)
 
-# <a name="powershell"></a>[Zo](#tab/powershell)
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
 
 Als u wilt bijwerken naar ZRS met behulp van Power shell, roept u de volgende opdracht aan:
 
@@ -195,4 +195,4 @@ Als u uw opslag account migreert van GRS naar LRS, zijn er geen extra kosten, ma
 
 - [Azure Storage redundantie](storage-redundancy.md)
 - [De eigenschap van de laatste synchronisatie tijd voor een opslag account controleren](last-sync-time-get.md)
-- [Maxi maal beschik bare toepassingen ontwerpen met geografisch redundante opslag met lees toegang](storage-designing-ha-apps-with-ragrs.md)
+- [Geo-redundantie gebruiken om Maxi maal beschik bare toepassingen te ontwerpen](geo-redundant-design.md)

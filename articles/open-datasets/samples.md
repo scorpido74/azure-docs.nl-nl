@@ -6,13 +6,13 @@ ms.service: open-datasets
 ms.topic: sample
 author: cjgronlund
 ms.author: cgronlun
-ms.date: 11/04/2019
-ms.openlocfilehash: 8b96a35db91a282be1fb5e4c6143e6bd0a0203f2
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.date: 05/06/2020
+ms.openlocfilehash: e4d9003a6786af1218e4e1b85d1bd93b65f1abe5
+ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "73606144"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82872021"
 ---
 # <a name="example-jupyter-notebooks-show-how-to-enrich-data-with-open-datasets"></a>Voor beelden van Jupyter-notebooks laten zien hoe gegevens kunnen worden verrijkt met open gegevens sets 
 In het voor beeld Jupyter-notebooks voor Azure open gegevens sets kunt u zien hoe u open gegevens sets laadt en hoe u deze gebruikt voor het verrijken van demo gegevens Technieken zijn het gebruik van Apache Spark en Pandas voor het verwerken van gegevens.

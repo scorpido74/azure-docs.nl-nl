@@ -1,14 +1,14 @@
 ---
 title: Inzicht in de levens cyclus van een blauw druk
 description: Meer informatie over de levens cyclus van de definitie van een blauw druk en informatie over elke fase, inclusief het bijwerken en verwijderen van blauw druk-toewijzingen.
-ms.date: 07/30/2019
+ms.date: 05/06/2020
 ms.topic: conceptual
-ms.openlocfilehash: 46da42ec97f16af91ef8e41362a085d466bbb887
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: dc024c0e6643420d26bdc92e47fabe647c55ae7b
+ms.sourcegitcommit: 602e6db62069d568a91981a1117244ffd757f1c2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80677372"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82864025"
 ---
 # <a name="understand-the-lifecycle-of-an-azure-blueprint"></a>Inzicht in de levens cyclus van een Azure Blueprint
 

@@ -8,12 +8,12 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 01/23/2020
 ms.author: spelluru
-ms.openlocfilehash: 16587feaca65aa21836d9be1c44e00faa0f4f8d8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7a01ab91fe84aaa1fe55018754eddbf8b8f89643
+ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76722132"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82890858"
 ---
 # <a name="monitor-event-grid-message-delivery"></a>Bezorging van Event Grid bericht bewaken 
 
@@ -27,18 +27,21 @@ Event Grid biedt een duurzame levering. Het levert elk bericht ten minste één 
 
 In de portal worden metrische gegevens weer gegeven voor de status van het leveren van gebeurtenis berichten.
 
-Voor onderwerpen zijn de metrische gegevens:
+Hier volgen enkele metrische gegevens voor onderwerpen:
 
 * **Publiceren is voltooid**: de gebeurtenis is verzonden naar het onderwerp en verwerkt met een 2xx-antwoord.
 * **Publiceren is mislukt**: de gebeurtenis is verzonden naar het onderwerp, maar er is een fout code afgewezen.
 * Niet- **overeenkomende**: de gebeurtenis is gepubliceerd naar het onderwerp, maar is niet gekoppeld aan een gebeurtenis abonnement. De gebeurtenis is verwijderd.
 
-Voor abonnementen zijn de metrische gegevens:
+Hier volgen enkele metrische gegevens voor abonnementen:
 
 * De **levering is voltooid**: de gebeurtenis is bezorgd bij het eind punt van het abonnement en er is een 2xx-antwoord ontvangen.
-* De **Bezorging is mislukt**: de gebeurtenis is verzonden naar het eind punt van het abonnement, maar er is een 4xx-of 5xx-antwoord ontvangen.
+* De **Bezorging is mislukt**: elke keer dat de service probeert te leveren en de gebeurtenis-handler retourneert geen succes 2xx-code, wordt het prestatie meter item dat **kan worden bezorgd** verhoogd. Als we proberen dezelfde gebeurtenis meerdere keren te leveren en mislukken, wordt het **prestatie meter** item voor elke fout verhoogd.
 * **Verlopen gebeurtenissen**: de gebeurtenis is niet bezorgd en alle nieuwe pogingen zijn verzonden. De gebeurtenis is verwijderd.
 * **Overeenkomende gebeurtenissen**: de gebeurtenis in het onderwerp is afgestemd op het gebeurtenis abonnement.
+
+    > [!NOTE]
+    > Zie [metrische gegevens die worden ondersteund door Azure Event grid](metrics.md)voor een volledige lijst met metrische gegevens.
 
 ## <a name="event-subscription-status"></a>Status van gebeurtenis abonnement
 
