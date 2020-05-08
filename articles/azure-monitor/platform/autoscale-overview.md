@@ -4,12 +4,12 @@ description: Automatisch schalen in Microsoft Azure
 ms.subservice: autoscale
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: faf393c01c494538ab647f39e2c4eb1d823d1abd
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: 08b39fce046ea9dee02ddf6ffe34971b81c3b5b7
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82791439"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82928700"
 ---
 # <a name="overview-of-autoscale-in-microsoft-azure"></a>Overzicht van automatisch schalen in Microsoft Azure
 In dit artikel wordt beschreven wat Microsoft Azure automatisch schalen is, wat de voor delen zijn en hoe u het kunt gaan gebruiken.  
@@ -105,7 +105,8 @@ U kunt automatisch schalen instellen via
 | Virtual Machines: Windows-voor beeld |[Geavanceerde configuratie voor automatisch schalen met Resource Manager-sjablonen voor VM Scale Sets](../../azure-monitor/platform/autoscale-virtual-machine-scale-sets.md) |
 | API Management-service|[Exemplaar van Azure API Management automatisch schalen](https://docs.microsoft.com/azure/api-management/api-management-howto-autoscale)
 | Azure Data Explorer-clusters|[Het schalen van Azure Data Explorer-clusters beheren voor het wijzigen van de vraag](https://docs.microsoft.com/azure/data-explorer/manage-cluster-horizontal-scaling)|
-
+| Azure App Service |[Een app omhoog schalen in Azure-app service](https://docs.microsoft.com/azure/app-service/manage-scale-up)|
+| Logic Apps |[De capaciteit van de Integration service Environment (ISE) toevoegen](https://docs.microsoft.com/azure/logic-apps/ise-manage-integration-service-environment#add-ise-capacity)|
 ## <a name="next-steps"></a>Volgende stappen
 Voor meer informatie over automatisch schalen gebruikt u de instructies voor automatisch schalen die eerder zijn vermeld of raadpleegt u de volgende bronnen:
 

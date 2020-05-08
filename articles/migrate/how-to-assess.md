@@ -1,31 +1,21 @@
 ---
 title: Beoordelings hulpprogramma's toevoegen in Azure Migrate
 description: Meer informatie over het toevoegen van beoordelings hulpprogramma's in Azure Migrate.
-author: rayne-wiselman
-ms.service: azure-migrate
-ms.topic: article
-ms.manager: carmonm
-ms.date: 11/19/2019
-ms.author: raynew
-ms.openlocfilehash: 64af78abd8f82b41d4a03fbb56c96e3038cef5a5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.topic: how-to
+ms.date: 04/26/2020
+ms.openlocfilehash: 7e7d7cf26cab30cd7449e4643fdfb59faece47f2
+ms.sourcegitcommit: 0fda81f271f1a668ed28c55dcc2d0ba2bb417edd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74185915"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82901064"
 ---
 # <a name="add-assessment-tools"></a>Evaluatiehulpprogramma's toevoegen
 
-In dit artikel wordt beschreven hoe u beoordelings hulpprogramma's toevoegt in [Azure migrate](migrate-overview.md).
+In dit artikel wordt beschreven hoe u beoordelings hulpprogramma's toevoegt in [Azure migrate](migrate-overview.md). 
 
-Azure Migrate biedt een hub van hulpprogram ma's voor de evaluatie en migratie naar Azure. Het bevat Azure Migrate-hulpprogram ma's, evenals andere hulpprogram ma's en ISV-aanbiedingen (Independent Software Vendor).
-
-Als u een evaluatie programma wilt toevoegen en u nog geen Azure Migrate project hebt, volgt u dit [artikel](how-to-add-tool-first-time.md).
-
-## <a name="select-a-tool"></a>Selecteer een hulp programma
-
-Als u een niet-Azure Migrate hulp programma voor evaluatie kiest, moet u eerst een licentie aanvragen of zich aanmelden voor een gratis proef versie, in overeenstemming met het hulp programma beleid. Hulpprogram ma's hebben een optie om verbinding te maken met Azure Migrate. Volg de instructies en documentatie om het hulp programma te verbinden met Azure Migrate. [Meer informatie](migrate-services-overview.md) over hulpprogram ma's.
-
+- Als u een evaluatie programma wilt toevoegen en u nog geen Azure Migrate project hebt, volgt u dit [artikel](how-to-add-tool-first-time.md).
+- Als u een ISV-hulp programma hebt toegevoegd, of als u het wilt inpakken, [voert u de stappen uit](prepare-isv-movere.md)om het voor te bereiden op het werken met het hulp programma.
 
 ## <a name="select-an-assessment-scenario"></a>Een evaluatie scenario selecteren
 

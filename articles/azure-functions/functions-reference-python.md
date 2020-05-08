@@ -3,12 +3,12 @@ title: Python-ontwikkelaars referentie voor Azure Functions
 description: Meer informatie over het ontwikkelen van functies met python
 ms.topic: article
 ms.date: 12/13/2019
-ms.openlocfilehash: 936d6455f448e0243c7d4de2b9f1b88673a32798
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ea128fc7c68b49fc14d796e9a3b91a9dbddd9b26
+ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82185979"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82780042"
 ---
 # <a name="azure-functions-python-developer-guide"></a>Azure Functions python-ontwikkelaars handleiding
 
@@ -22,7 +22,7 @@ Azure Functions verwacht dat een functie een stateless methode is in uw python-s
 
 Gegevens van triggers en bindingen zijn gekoppeld aan de functie via methoden Attributes met `name` behulp van de eigenschap die in het bestand *Function. json* is gedefinieerd. Met de _functie. json_ hieronder wordt bijvoorbeeld een eenvoudige functie beschreven die wordt geactiveerd door een http- `req`aanvraag met de naam:
 
-:::code language="son" source="~/functions-quickstart-templates/Functions.Templates/Templates/HttpTrigger-Python/function.json":::
+:::code language="json" source="~/functions-quickstart-templates/Functions.Templates/Templates/HttpTrigger-Python/function.json":::
 
 Op basis van deze definitie ziet `__init__.py` het bestand dat de functie code bevat, eruit als in het volgende voor beeld:
 
@@ -77,6 +77,7 @@ De aanbevolen mapstructuur voor een python functions-project ziet eruit als in h
  | | - my_second_helper_function.py
  | - host.json
  | - requirements.txt
+ | - Dockerfile
  tests
 ```
 De hoofdmap van het project\_\_(\_\_app) kan de volgende bestanden bevatten:
@@ -86,6 +87,7 @@ De hoofdmap van het project\_\_(\_\_app) kan de volgende bestanden bevatten:
 * *host. json*: bevat globale configuratie opties die van invloed zijn op alle functies in een functie-app. Dit bestand wordt gepubliceerd naar Azure. Niet alle opties worden ondersteund bij het lokaal uitvoeren. Zie [host. json](functions-host-json.md)voor meer informatie.
 * *. funcignore*: (optioneel) declareert bestanden die niet naar Azure mogen worden gepubliceerd.
 * *. gitignore*: (optioneel) declareert bestanden die zijn uitgesloten van een Git-opslag plaats, zoals local. settings. json.
+* *Dockerfile*: (optioneel) gebruikt bij het publiceren van uw project in een [aangepaste container](functions-create-function-linux-custom-image.md).
 
 Elke functie heeft een eigen code bestand en een bindings configuratie bestand (function. json). 
 

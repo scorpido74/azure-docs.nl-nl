@@ -9,12 +9,12 @@ ms.service: synapse-analytics
 ms.subservice: ''
 ms.topic: quickstart
 ms.date: 04/15/2020
-ms.openlocfilehash: ae866c8be8d162213077e0488a19a556399384b2
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.openlocfilehash: 47235ca0e420e0de9f6c4beb070e0b75b72e7549
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82692694"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82786665"
 ---
 # <a name="quickstart-create-an-apache-spark-pool-preview-in-azure-synapse-analytics-using-web-tools"></a>Snelstartgids: een Apache Spark groep maken (preview) in azure Synapse Analytics met behulp van web-hulpprogram ma's
 
@@ -23,17 +23,17 @@ In deze Quick Start leert u hoe u een Apache Spark pool (preview) maakt in azure
 > [!IMPORTANT]
 > Facturering voor Spark-instanties wordt per minuut naar beneden geclassificeerd, ongeacht of u deze gebruikt. Zorg ervoor dat u de Spark-instantie afsluit nadat u deze hebt gebruikt of een korte time-out hebt ingesteld. Zie voor meer informatie de sectie **Resources opschonen** van dit artikel.
 
-Als u nog geen abonnement op Azure hebt, [Maak dan een gratis account aan voordat u begint](https:/azure.microsoft.com/free/).
+Als u nog geen abonnement op Azure hebt, [Maak dan een gratis account aan voordat u begint](https://azure.microsoft.com/free/).
 
 ## <a name="prerequisites"></a>Vereisten
 
-- Azure-abonnement: [Maak er gratis een](https:/azure.microsoft.com/free/)
+- Azure-abonnement: [Maak er gratis een](https://azure.microsoft.com/free/)
 - [Synapse Analytics-werk ruimte](quickstart-create-workspace.md)
 - [Apache Spark pool](quickstart-create-apache-spark-pool.md)
 
 ## <a name="sign-in-to-the-azure-portal"></a>Aanmelden bij Azure Portal
 
-Meld u aan bij de [Azure-portal](https:/portal.azure.com/).
+Meld u aan bij [Azure Portal](https://portal.azure.com/).
 
 Als u nog geen abonnement op Azure hebt, [Maak dan een gratis account](https://azure.microsoft.com/free/) aan voordat u begint.
 

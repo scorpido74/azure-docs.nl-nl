@@ -5,14 +5,14 @@ services: logic-apps
 ms.suite: integration
 ms.reviewers: klam, logicappspm
 ms.topic: conceptual
-ms.date: 03/12/2020
+ms.date: 05/04/2020
 tags: connectors
-ms.openlocfilehash: 1885d7f8713b3801ce0c9846b7a8509b3864032a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 8137bea37c25554d814e237380ba5c57c5b24d57
+ms.sourcegitcommit: 0fda81f271f1a668ed28c55dcc2d0ba2bb417edd
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80656304"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82900964"
 ---
 # <a name="receive-and-respond-to-inbound-https-requests-in-azure-logic-apps"></a>Inkomende HTTPS-aanvragen ontvangen en erop reageren in Azure Logic Apps
 
@@ -22,10 +22,13 @@ Met [Azure Logic apps](../logic-apps/logic-apps-overview.md) en de ingebouwde aa
 * Activeer een werk stroom wanneer een externe webhook-gebeurtenis plaatsvindt.
 * Ontvangen en reageren op een HTTPS-aanroep vanuit een andere logische app.
 
+De trigger voor aanvragen ondersteunt [Azure Active Directory open verificatie](../active-directory/develop/about-microsoft-identity-platform.md) (Azure AD OAuth) voor het machtigen van binnenkomende oproepen aan uw logische app. Zie voor meer informatie over het inschakelen van deze verificatie [beveiligde toegang en gegevens in azure Logic apps-Azure AD OAuth-verificatie inschakelen](../logic-apps/logic-apps-securing-a-logic-app.md#enable-oauth).
+
 > [!NOTE]
-> De trigger voor aanvragen ondersteunt *alleen* Transport Layer Security (TLS) 1,2 voor binnenkomende oproepen. Uitgaande oproepen blijven ondersteuning bieden voor TLS 1,0, 1,1 en 1,2. Zie [het probleem met het TLS 1,0 oplossen](https://docs.microsoft.com/security/solving-tls1-problem)voor meer informatie.
+> De trigger voor aanvragen ondersteunt *alleen* Transport Layer Security (TLS) 1,2 voor binnenkomende oproepen. Uitgaande oproepen ondersteunen TLS 1,0, 1,1 en 1,2. Zie [het probleem met het TLS 1,0 oplossen](https://docs.microsoft.com/security/solving-tls1-problem)voor meer informatie.
 >
-> Als er TLS-Handshake-fouten worden weer geven, moet u ervoor zorgen dat u TLS 1,2 gebruikt. Hier volgen de ondersteunde coderings suites voor inkomende oproepen:
+> Als u TLS-Handshake-fouten ontvangt, moet u ervoor zorgen dat u TLS 1,2 gebruikt. 
+> Hier volgen de ondersteunde coderings suites voor inkomende oproepen:
 >
 > * TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384
 > * TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256
@@ -46,7 +49,7 @@ Met [Azure Logic apps](../logic-apps/logic-apps-overview.md) en de ingebouwde aa
 
 ## <a name="add-request-trigger"></a>Aanvraag trigger toevoegen
 
-Deze ingebouwde trigger maakt een hand matig aanroep bare HTTPS-eind punt dat *alleen* binnenkomende HTTPS-aanvragen kan ontvangen. Wanneer deze gebeurtenis plaatsvindt, wordt de trigger geactiveerd en wordt de logische app uitgevoerd. Voor meer informatie over de onderliggende JSON-definitie van de trigger en hoe u deze trigger aanroept, raadpleegt u het [type trigger voor aanvragen](../logic-apps/logic-apps-workflow-actions-triggers.md#request-trigger) en [roept u werk stromen met http-eind punten aan in azure Logic apps](../logic-apps/logic-apps-http-endpoint.md).
+Deze ingebouwde trigger maakt een hand matig aanroep bare HTTPS-eind punt dat *alleen* binnenkomende HTTPS-aanvragen kan ontvangen. Wanneer deze gebeurtenis plaatsvindt, wordt de trigger geactiveerd en wordt de logische app uitgevoerd.
 
 1. Meld u aan bij de [Azure-portal](https://portal.azure.com). Een lege, logische app maken.
 
@@ -177,13 +180,17 @@ Deze ingebouwde trigger maakt een hand matig aanroep bare HTTPS-eind punt dat *a
 
    Met uw logische app wordt de inkomende aanvraag voor één minuut geopend. Ervan uitgaande dat uw logische app-werk stroom een reactie actie bevat, als de logische app geen antwoord retourneert nadat deze tijd is verstreken, retourneert uw `504 GATEWAY TIMEOUT` logische app een naar de aanroeper. Als uw logische app geen reactie actie bevat, retourneert uw logische app onmiddellijk een `202 ACCEPTED` antwoord op de aanroeper.
 
-1. Wanneer u klaar bent, slaat u de logische app op. Selecteer **Opslaan**op de werk balk van de ontwerp functie. 
+1. Wanneer u klaar bent, slaat u de logische app op. Selecteer **Opslaan**op de werk balk van de ontwerp functie.
 
    Met deze stap wordt de URL gegenereerd die moet worden gebruikt voor het verzenden van de aanvraag die de logische app activeert. Als u deze URL wilt kopiëren, selecteert u het Kopieer pictogram naast de URL.
 
    ![URL die moet worden gebruikt om de logische app te activeren](./media/connectors-native-reqres/generated-url.png)
 
-1. Als u uw logische app wilt activeren, verzendt u een HTTP POST naar de gegenereerde URL. U kunt bijvoorbeeld een hulp programma gebruiken zoals [postman](https://www.getpostman.com/).
+1. Als u uw logische app wilt activeren, verzendt u een HTTP POST naar de gegenereerde URL.
+
+   U kunt bijvoorbeeld een hulp programma zoals [postman](https://www.getpostman.com/) gebruiken om het HTTP-bericht te verzenden. Als u [Azure Active Directory open verificatie](../logic-apps/logic-apps-securing-a-logic-app.md#enable-oauth) (Azure AD OAuth) hebt ingeschakeld voor het autoriseren van binnenkomende aanroepen aan de aanvraag trigger, roept u de trigger aan met behulp van een [URL voor Shared Access Signature (SAS)](../logic-apps/logic-apps-securing-a-logic-app.md#sas) of met behulp van een verificatie token, maar u kunt niet beide gebruiken. Het verificatie token moet het `Bearer` type opgeven in de autorisatie-header. Zie voor meer informatie [beveiligde toegang en gegevens in azure Logic apps toegang tot op aanvragen gebaseerde triggers](../logic-apps/logic-apps-securing-a-logic-app.md#secure-triggers).
+
+Voor meer informatie over de onderliggende JSON-definitie van de trigger en hoe u deze trigger aanroept, raadpleegt u deze onderwerpen, [type aanvraag trigger](../logic-apps/logic-apps-workflow-actions-triggers.md#request-trigger) en [aanroepen, activeren of nesten van werk stromen met http-eind punten in azure Logic apps](../logic-apps/logic-apps-http-endpoint.md).
 
 ### <a name="trigger-outputs"></a>Trigger uitvoer
 

@@ -5,14 +5,14 @@ author: yashesvi
 ms.reviewer: yashar
 ms.service: cost-management-billing
 ms.topic: conceptual
-ms.date: 02/12/2020
+ms.date: 04/30/2020
 ms.author: banders
-ms.openlocfilehash: 21c4b7de0324abd2755644265bec61de5e16724f
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: d6d91b455501e2deec4f5ea36e48fafd17144b2c
+ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77199412"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82628143"
 ---
 # <a name="save-costs-for-azure-app-service-isolated-stamp-fee-with-reserved-capacity"></a>Bespaar op zegelkosten voor Azure App Service Isolated met gereserveerde capaciteit
 
@@ -41,9 +41,9 @@ Koop Windows-zegelreserveringen als u een of meer Windows-werkrollen op de zegel
 U kunt gereserveerde capaciteit voor Isolated-zegels kopen in [Azure Portal](https://portal.azure.com/#blade/Microsoft_Azure_Reservations/CreateBlade/referrer/documentation/filters/%7B%22reservedResourceType%22%3A%22AppService%22%7D). Betaal [vooraf of per maand](monthly-payments-reservations.md) voor de reservering. Als u gereserveerde capaciteit wilt kopen, moet u de eigenaarsrol hebben voor ten minste één Enterprise-abonnement of een afzonderlijk abonnement met tarieven voor betalen per gebruik.
 
 - Voor Enterprise-abonnementen moet de optie **Gereserveerde instanties toevoegen** zijn ingeschakeld in [EA Portal](https://ea.azure.com/). Als de instelling is uitgeschakeld, moet u een EA-beheerder zijn.
-- Voor het programma Cloud Solution Provider (CSP) kunnen alleen beheerders of verkoopmedewerkers gereserveerde SQL Data Warehouse-capaciteit kopen.
+- Voor het programma Cloud Solution Provider (CSP) kunnen alleen beheerders of verkoopmedewerkers gereserveerde Azure Synapse Analytics-capaciteit kopen.
 
-**Kopen:**
+**Ga als volgt te werk om gereserveerde capaciteit te kopen:**
 
 1. Ga naar [Azure Portal](https://portal.azure.com/#blade/Microsoft_Azure_Reservations/CreateBlade/referrer/documentation/filters/%7B%22reservedResourceType%22%3A%22AppService%22%7D).
 1. Selecteer een abonnement. Gebruik de lijst **Abonnementen** om het abonnement te kiezen dat wordt gebruikt om te betalen voor de gereserveerde capaciteit. Via de betalingswijze voor het abonnement worden de kosten voor de gereserveerde capaciteit in rekening gebracht. Het abonnementstype moet een Enterprise-overeenkomst zijn (nummers van aanbieding: MS-AZR-0017P of MS-AZR-0148P) of Betalen per gebruik (nummers van aanbieding: MS-AZR-0003P of MS-AZR-0023P) of een CSP-abonnement.

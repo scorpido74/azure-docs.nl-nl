@@ -3,12 +3,12 @@ title: Meer informatie over Azure Service Fabric
 description: Meer informatie over de belangrijkste concepten en belang rijke gebieden van Azure Service Fabric. Biedt een uitgebreid overzicht van Service Fabric en hoe u micro Services maakt.
 ms.topic: conceptual
 ms.date: 12/08/2017
-ms.openlocfilehash: 4e6e21f5f9ebfeddb5292e00dc8a929341e77372
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 573b1ec662bdc7e72f964698f5e0670860895586
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75458142"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82791847"
 ---
 # <a name="so-you-want-to-learn-about-service-fabric"></a>Wilt u meer informatie over Service Fabric?
 Azure Service Fabric is een gedistribueerde systemen platform waarmee u gemakkelijk pakket, implementeren en beheren van schaalbare en betrouwbare microservices.  Service Fabric heeft echter een grote surface area, maar er is veel te leren.  In dit artikel vindt u een samen vatting van Service Fabric en worden de belangrijkste concepten, programmeer modellen, toepassings levenscyclus, testen, clusters en status controle beschreven. Lees het [overzicht](service-fabric-overview.md) en [Wat zijn micro Services?](service-fabric-overview-microservices.md) voor een inleiding en hoe service Fabric kan worden gebruikt om micro services te maken. Dit artikel bevat geen uitgebreide inhouds lijst, maar bevat een koppeling naar overzicht en aan de slag-artikelen voor elk gebied van Service Fabric. 
@@ -136,7 +136,7 @@ De cluster beveiligings scenario's zijn:
 Lees [een cluster beveiligen](service-fabric-cluster-security.md)voor meer informatie.
 
 ### <a name="scaling"></a>Schalen
-Als u nieuwe knoop punten aan het cluster toevoegt, worden in Service Fabric de partitie replica's en instanties over het verhoogde aantal knoop punten gebalanceerd. De algehele prestaties van toepassingen verbeteren en conflicten voor toegang tot het geheugen neemt af. Als de knoop punten in het cluster niet efficiënt worden gebruikt, kunt u het aantal knoop punten in het cluster verlagen. Service Fabric opnieuw, worden de partitie replica's en instanties over het aantal knoop punten verkleind om beter gebruik te maken van de hardware op elk knoop punt. U kunt clusters [hand matig](service-fabric-cluster-scale-up-down.md) of [programmatisch](service-fabric-cluster-programmatic-scaling.md)schalen op Azure. Zelfstandige clusters kunnen [hand matig](service-fabric-cluster-windows-server-add-remove-nodes.md)worden geschaald.
+Als u nieuwe knoop punten aan het cluster toevoegt, worden in Service Fabric de partitie replica's en instanties over het verhoogde aantal knoop punten gebalanceerd. De algehele prestaties van toepassingen verbeteren en conflicten voor toegang tot het geheugen neemt af. Als de knoop punten in het cluster niet efficiënt worden gebruikt, kunt u het aantal knoop punten in het cluster verlagen. Service Fabric opnieuw, worden de partitie replica's en instanties over het aantal knoop punten verkleind om beter gebruik te maken van de hardware op elk knoop punt. U kunt clusters [hand matig](service-fabric-cluster-scale-in-out.md) of [programmatisch](service-fabric-cluster-programmatic-scaling.md)schalen op Azure. Zelfstandige clusters kunnen [hand matig](service-fabric-cluster-windows-server-add-remove-nodes.md)worden geschaald.
 
 ### <a name="cluster-upgrades"></a>Cluster upgrades
 Er worden regel matig nieuwe versies van de Service Fabric runtime uitgebracht. Voer runtime, of Fabric, upgrades uit op het cluster, zodat u altijd een [ondersteunde versie](service-fabric-support.md)uitvoert. Naast infrastructuur upgrades kunt u ook de cluster configuratie, zoals certificaten of toepassings poorten, bijwerken.

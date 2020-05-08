@@ -5,12 +5,12 @@ author: peterpogorski
 ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: pepogors
-ms.openlocfilehash: bf228e17ca24df9833f96f0c6fd3ef232cdf7ae6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: be0f0a48e2fd334e2000c8a4b8c2e0101b291cef
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79258991"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82791864"
 ---
 # <a name="capacity-planning-and-scaling-for-azure-service-fabric"></a>Capaciteits planning en schalen voor Azure Service Fabric
 
@@ -74,7 +74,7 @@ Als de knooppunt eigenschappen en plaatsings beperkingen zijn gedeclareerd, voer
 
 ## <a name="horizontal-scaling"></a>Horizontaal schalen
 
-U kunt horizon taal schalen ofwel [hand matig](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-scale-up-down) of [programmatisch](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-programmatic-scaling)uitvoeren.
+U kunt horizon taal schalen ofwel [hand matig](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-scale-in-out) of [programmatisch](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-programmatic-scaling)uitvoeren.
 
 > [!NOTE]
 > Als u een knooppunt type met Silver of Gold duurzaamheid schaalt, is de schaal vertraging langzaam.
@@ -103,7 +103,7 @@ Als u hand matig wilt schalen, werkt u de capaciteit bij in de SKU-eigenschap va
 
 Schalen in vereist meer aandacht dan uitschalen. Bijvoorbeeld:
 
-* Service Fabric systeem services worden uitgevoerd in het primaire knooppunt type in uw cluster. Sluit nooit af of verklein het aantal exemplaren voor het knooppunt type zo dat u minder exemplaren hebt dan wat de betrouwbaarheids categorie garandeert. 
+* Service Fabric systeem services worden uitgevoerd in het primaire knooppunt type in uw cluster. Sluit het aantal exemplaren voor het type knoop punt nooit af of schaal deze zo dat u minder exemplaren hebt dan wat de betrouwbaarheids categorie garandeert. 
 * Voor een stateful service hebt u een bepaald aantal knoop punten nodig die altijd beschikbaar zijn om de beschik baarheid te behouden en de status van uw service te behouden. U hebt mini maal een aantal knoop punten nodig die gelijk zijn aan het aantal doel replica sets van de partitie of service.
 
 Voer de volgende stappen uit om de schaal hand matig in te schalen:
@@ -111,7 +111,7 @@ Voer de volgende stappen uit om de schaal hand matig in te schalen:
 1. Voer `Disable-ServiceFabricNode` met behulp van Power shell `RemoveNode` uit met opzet om het knoop punt dat u wilt verwijderen, uit te scha kelen. Verwijder het knooppunt type met het hoogste nummer. Als u bijvoorbeeld een cluster met zes knoop punten hebt, verwijdert u het exemplaar van de virtuele machine "MyNodeType_5".
 2. Voer `Get-ServiceFabricNode` uit om ervoor te zorgen dat het knoop punt is overgeschakeld naar uitgeschakeld. Als dat niet het geval is, wacht u totdat het knoop punt is uitgeschakeld. Dit kan enkele uren duren voor elk knoop punt. Ga niet verder totdat het knoop punt is overgeschakeld op uitgeschakeld.
 3. Verminder het aantal Vm's met één in dat knooppunt type. Het hoogste VM-exemplaar wordt nu verwijderd.
-4. Herhaal de stappen 1 tot en met 3 totdat u de gewenste capaciteit hebt ingericht. U kunt het aantal instanties in de primaire knooppunt typen niet verkleinen tot minder dan wat de betrouwbaarheids categorie garandeert. Zie [de service Fabric cluster capaciteit plannen](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-capacity) voor een lijst met aanbevolen exemplaren.
+4. Herhaal de stappen 1 tot en met 3 totdat u de gewenste capaciteit hebt ingericht. Schaal niet in het aantal instanties in de primaire knooppunt typen tot minder dan wat de betrouwbaarheids categorie garandeert. Zie [de service Fabric cluster capaciteit plannen](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-capacity) voor een lijst met aanbevolen exemplaren.
 
 Als u hand matig wilt schalen, werkt u de capaciteit bij in de SKU-eigenschap van de gewenste resource voor de [schaalset van virtuele machines](https://docs.microsoft.com/rest/api/compute/virtualmachinescalesets/createorupdate#virtualmachinescalesetosprofile) .
 
@@ -166,7 +166,7 @@ scaleSet.Update().WithCapacity(newCapacity).Apply();
 ```
 
 > [!NOTE]
-> Wanneer u omlaag schaalt in een cluster, ziet u dat het verwijderde knoop punt/VM-exemplaar wordt weer gegeven in een slechte staat in Service Fabric Explorer. Zie [gedragingen die u mogelijk in service Fabric Explorer kunt](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-scale-up-down#behaviors-you-may-observe-in-service-fabric-explorer)zien voor een uitleg van dit gedrag. U kunt het volgende doen:
+> Wanneer u in een cluster schaalt, ziet u dat het verwijderde knoop punt/VM-exemplaar wordt weer gegeven in een slechte staat in Service Fabric Explorer. Zie [gedragingen die u mogelijk in service Fabric Explorer kunt](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-scale-in-out#behaviors-you-may-observe-in-service-fabric-explorer)zien voor een uitleg van dit gedrag. U kunt het volgende doen:
 > * Roep de [opdracht Remove-ServiceFabricNodeState](https://docs.microsoft.com/powershell/module/servicefabric/remove-servicefabricnodestate?view=azureservicefabricps) aan met de juiste knooppunt naam.
 > * Implementeer het [service Fabric hulp programma voor automatisch schalen](https://github.com/Azure/service-fabric-autoscale-helper/) in uw cluster. Deze toepassing zorgt ervoor dat de geschaalde knoop punten uit Service Fabric Explorer worden gewist.
 

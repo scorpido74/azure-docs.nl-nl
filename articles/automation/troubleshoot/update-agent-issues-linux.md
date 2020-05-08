@@ -9,36 +9,39 @@ ms.topic: conceptual
 ms.service: automation
 ms.subservice: update-management
 manager: carmonm
-ms.openlocfilehash: dadfe0022cfb99703222ba7a91ca3ec6f5fce645
-ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
+ms.openlocfilehash: 1f9c8d449fb060d5b1a5f810f9e387057eac3252
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82836628"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82927969"
 ---
 # <a name="troubleshoot-linux-update-agent-issues"></a>Problemen met Linux Update agent oplossen
 
-Er kunnen veel redenen zijn waarom uw computer niet wordt weer gegeven als gereed (in orde) in het Azure Automation Updatebeheer oplossing. In Updatebeheer kunt u de status van een Hybrid Runbook Worker agent controleren om het onderliggende probleem te bepalen. In dit artikel wordt beschreven hoe u de probleem oplosser voor Azure-machines uitvoert vanaf de Azure Portal-en niet-Azure-machines in het [offline scenario](#troubleshoot-offline). 
+Er kunnen verschillende redenen zijn waarom uw computer niet wordt weer gegeven als gereed (in orde) in Updatebeheer. U kunt de status van een Linux Hybrid Runbook Worker-agent controleren om het onderliggende probleem te bepalen. Hier volgen de drie gereedheids statussen voor een machine:
 
-Een machine kan zich in drie gereedheids statussen bevindt:
-
-* **Gereed**: de Hybrid Runbook Worker is gedistribueerd en is minder dan één uur geleden voor het laatst gezien.
-* De **verbinding is verbroken**: de Hybrid Runbook Worker is geïmplementeerd en de laatste keer één uur geleden voor het laatst weer gegeven.
-* **Niet geconfigureerd**: de Hybrid Runbook Worker is niet gevonden of is niet gereed voor onboarding.
+* Gereed: de Hybrid Runbook Worker is gedistribueerd en is minder dan één uur geleden voor het laatst gezien.
+* De verbinding is verbroken: de Hybrid Runbook Worker is geïmplementeerd en de laatste keer één uur geleden voor het laatst weer gegeven.
+* Niet geconfigureerd: de Hybrid Runbook Worker is niet gevonden of is niet gereed voor onboarding.
 
 > [!NOTE]
 > Er kan een lichte vertraging optreden tussen de Azure Portal weer geven en de huidige status van een machine.
 
+In dit artikel wordt beschreven hoe u de probleem oplosser voor Azure-machines uitvoert vanaf de Azure Portal-en niet-Azure-machines in het [offline scenario](#troubleshoot-offline). 
+
+> [!NOTE]
+> Het script voor de probleem Oplosser stuurt momenteel geen verkeer via een proxy server als er een is geconfigureerd.
+
 ## <a name="start-the-troubleshooter"></a>De probleem Oplosser starten
 
-Voor Azure-machines selecteert u de koppeling **problemen oplossen** onder de gereedheids kolom van de **Update Agent** in de portal om de pagina **problemen met de Update Agent** te openen. Voor niet-Azure-computers brengt de koppeling u naar dit artikel. Zie de instructies in de sectie ' offline oplossen ' voor informatie over het oplossen van problemen met een niet-Azure-machine.
+Voor Azure-machines selecteert u de koppeling **problemen oplossen** onder de gereedheids kolom van de **Update Agent** in de portal om de pagina problemen met de Update Agent te openen. Voor niet-Azure-computers brengt de koppeling u naar dit artikel. Zie de instructies in de sectie ' offline oplossen ' voor informatie over het oplossen van problemen met een niet-Azure-machine.
 
 ![Lijst pagina met VM'S](../media/update-agent-issues-linux/vm-list.png)
 
 > [!NOTE]
 > Voor de controles moet de virtuele machine worden uitgevoerd. Als de VM niet wordt uitgevoerd, **start u de virtuele machine** weer.
 
-Selecteer op de pagina **Update Agent voor problemen oplossen** de optie **controles uitvoeren** om de probleem oplosser te starten. De probleem Oplosser gebruikt de [opdracht uitvoeren](../../virtual-machines/linux/run-command.md) om een script uit te voeren op de machine om de afhankelijkheden te controleren. Wanneer de probleem Oplosser is voltooid, wordt het resultaat van de controles geretourneerd.
+Selecteer op de pagina Update Agent voor problemen oplossen de optie **controles uitvoeren** om de probleem oplosser te starten. De probleem Oplosser gebruikt de [opdracht uitvoeren](../../virtual-machines/linux/run-command.md) om een script uit te voeren op de machine om de afhankelijkheden te controleren. Wanneer de probleem Oplosser is voltooid, wordt het resultaat van de controles geretourneerd.
 
 ![Pagina problemen oplossen](../media/update-agent-issues-linux/troubleshoot-page.png)
 
@@ -84,6 +87,9 @@ Met deze controle wordt gecontroleerd of de Log Analytics-agent voor Linux het H
 ### <a name="hybrid-runbook-worker-status"></a>Hybrid Runbook Worker status
 
 Met deze controle wordt gecontroleerd of de Hybrid Runbook Worker op de computer wordt uitgevoerd. De volgende processen moeten aanwezig zijn als de Hybrid Runbook Worker correct wordt uitgevoerd. Zie [problemen met de log Analytics-agent voor Linux oplossen](hybrid-runbook-worker.md#oms-agent-not-running)voor meer informatie.
+
+> [!NOTE]
+> Als de Hybrid Runbook Worker niet wordt uitgevoerd en het eind punt van de bewerking is mislukt, kan de update mislukken. Updatebeheer downloadt de Hybrid worker-pakketten van het eind punt van de bewerking.
 
 ```bash
 nxautom+   8567      1  0 14:45 ?        00:00:00 python /opt/microsoft/omsconfig/modules/nxOMSAutomationWorker/DSCResources/MSFT_nxOMSAutomationWorkerResource/automationworker/worker/main.py /var/opt/microsoft/omsagent/state/automationworker/oms.conf rworkspace:<workspaceId> <Linux hybrid worker version>

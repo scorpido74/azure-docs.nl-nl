@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 2/5/2019
 ms.author: absha
-ms.openlocfilehash: ebbdda39f019f374f8e5abe951d0180c0dd453f6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a4770b3ae7c52b9a05ff704915a3e9f401fd1741
+ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81457872"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82889610"
 ---
 # <a name="metrics-for-application-gateway"></a>Metrische gegevens voor Application Gateway
 
@@ -237,7 +237,7 @@ Ga voor meer informatie over webhooks en hoe u deze kunt gebruiken met waarschuw
 ## <a name="next-steps"></a>Volgende stappen
 
 * Visualiseer teller-en gebeurtenis logboeken met behulp van [Azure monitor-logboeken](../azure-monitor/insights/azure-networking-analytics.md).
-* [Visualiseer uw Azure-activiteiten logboek met Power bi](https://blogs.msdn.com/b/powerbi/archive/2015/09/30/monitor-azure-audit-logs-with-power-bi.aspx) blog bericht.
+* [Visualiseer uw Azure-activiteiten logboek met Power bi](https://powerbi.microsoft.com/blog/monitor-azure-audit-logs-with-power-bi/) blog bericht.
 * [Bekijk en analyseer activiteiten logboeken van Azure in Power bi en meer](https://azure.microsoft.com/blog/analyze-azure-audit-logs-in-powerbi-more/) blog berichten.
 
 [1]: ./media/application-gateway-diagnostics/figure1.png

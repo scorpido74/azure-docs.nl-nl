@@ -11,12 +11,12 @@ ms.subservice: user-help
 ms.topic: conceptual
 ms.date: 07/18/2019
 ms.author: curtand
-ms.openlocfilehash: ee868ded0dc3a46f2ec20d0141aa2576cbf71f45
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 016a09432499c5fd2be8fd488c7ef7a644c00bca
+ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77062333"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82628330"
 ---
 # <a name="set-up-a-security-key-as-your-verification-method"></a>Stel een beveiligings sleutel in als uw verificatie methode
 
@@ -63,7 +63,7 @@ Voordat u uw beveiligings sleutel kunt registreren, moet aan de volgende voor wa
 
 U moet uw beveiligings sleutel maken en deze een unieke pincode geven voordat u zich kunt aanmelden bij uw werk-of school account met behulp van de-sleutel. U kunt Maxi maal 10 sleutels registreren die bij uw account zijn geregistreerd. 
 
-1. Ga naar de pagina **Mijn profiel** op https://myprofile.microsoft.com en meld u aan als u dat nog niet hebt gedaan.
+1. Ga naar de pagina **Mijn profiel** op https://myaccount.microsoft.com en meld u aan als u dat nog niet hebt gedaan.
 
 2. Selecteer **beveiligings gegevens**, selecteer **methode toevoegen**en selecteer vervolgens **beveiligings sleutel** in de vervolg keuzelijst **een methode toevoegen** .
 
@@ -92,7 +92,7 @@ U moet uw beveiligings sleutel maken en deze een unieke pincode geven voordat u 
 
     U keert terug naar het vak **uw nieuwe aanmeldings methode instellen** .
 
-7. Selecteer **Next**.
+7. Selecteer **Volgende**.
 
 8. Ga terug naar de pagina **beveiligings gegevens** , typ een naam die u later voor uw nieuwe beveiligings sleutel gaat herkennen en selecteer **volgende**.
 

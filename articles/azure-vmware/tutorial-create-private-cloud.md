@@ -3,12 +3,12 @@ title: Zelf studie-een vSphere-cluster implementeren in azure
 description: Meer informatie over het implementeren van een vSphere-cluster in azure met behulp van de Azure VMWare-oplossing (AVS)
 ms.topic: tutorial
 ms.date: 05/04/2020
-ms.openlocfilehash: 712be25acf5984a4bcdf95ad70e0ccfa660c06bc
-ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
+ms.openlocfilehash: a11928dd936c29b8be0816257a64deadacda4578
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82838791"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82928547"
 ---
 # <a name="tutorial-deploy-an-avs-private-cloud-in-azure"></a>Zelf studie: een privécloud in azure implementeren
 
@@ -19,7 +19,7 @@ Omdat AVS u niet in staat stelt om uw privécloud met uw on-premises vCenter te 
 In deze zelfstudie leert u het volgende:
 
 > [!div class="checklist"]
-> * Een privécloud maken
+> * Een AVS-privécloud maken
 > * Controleer of de privécloud is geïmplementeerd
 
 ## <a name="prerequisites"></a>Vereisten
@@ -40,13 +40,13 @@ Zie [Azure-resource providers en-typen](../azure-resource-manager/management/res
 
 ## <a name="sign-in-to-the-azure-portal"></a>Aanmelden bij Azure Portal
 
-Meld u aan bij [Azure Portal](https://portal.azure.com).
+Meld u aan bij de [Azure-portal](https://portal.azure.com).
 
 ## <a name="create-a-private-cloud"></a>Een privécloud maken
 
 U kunt een privécloud maken met behulp van de [Azure Portal](#azure-portal) of met behulp van de [Azure cli](#azure-cli).
 
-### <a name="azure-portal"></a>Azure-portal
+### <a name="azure-portal"></a>Azure Portal
 
 Selecteer in de Azure Portal **+ een nieuwe resource maken**. Typ `Azure VMware Solution`in het tekstvak **Marketplace doorzoeken** en selecteer **Azure VMware-oplossing** in de lijst. Selecteer in het venster **Azure VMware** -oplossing **maken**
 
@@ -58,7 +58,7 @@ Voer op het tabblad **basis beginselen** waarden in voor de velden. De volgende 
 | **Resourcegroep** | De resource groep voor uw privécloud-resources. |
 | **Locatie** | Selecteer een locatie, zoals **VS-Oost**.|
 | **Resourcenaam** | De naam van de privécloud van uw AVS. |
-| **SKU** | Selecteer de juiste SKU. Dit zijn de beschik bare waarden: |
+| **SKU** | Selecteer de followng SKU-waarde: AV36 |
 | **Hosts** | Dit is het aantal hosts dat aan het privécloud moet worden toegevoegd. De standaard waarde is 3. Deze waarde kan na de implementatie worden verhoogd of verlaagd.  |
 | **vCenter-beheerders wachtwoord** | Voer een wacht woord voor de Cloud beheerder in. |
 | **NSX-T-beheer wachtwoord** | Voer een NSX-T-beheerders wachtwoord in. |
@@ -126,7 +126,7 @@ Als u dit wilt doen, gaat u naar uw privécloud in het Azure Portal en selecteer
 In deze zelfstudie hebt u het volgende geleerd:
 
 > [!div class="checklist"]
-> * Een privécloud maken
+> * Een AVS-privécloud maken
 > * De geïmplementeerde Privécloud is geverifieerd
 
 Ga door naar de volgende zelf studie voor meer informatie over het maken van een virtueel netwerk voor gebruik met uw privécloud als onderdeel van het instellen van lokaal beheer voor uw particuliere cloud clusters.
