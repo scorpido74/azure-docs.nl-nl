@@ -3,12 +3,13 @@ title: Azure Batch Services verifiëren met Azure Active Directory
 description: Batch ondersteunt Azure AD voor verificatie vanuit de batch-service. Lees hoe u zich op een van de volgende twee manieren kunt verifiëren.
 ms.topic: article
 ms.date: 01/28/2020
-ms.openlocfilehash: e1f95871788b4b9848ba622da1c8eb0cc83c07aa
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: has-adal-ref
+ms.openlocfilehash: 3fa1aa2bb7389200fe5e5a80598686143344d636
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82116176"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82608469"
 ---
 # <a name="authenticate-batch-service-solutions-with-active-directory"></a>Batch-service oplossingen verifiëren met Active Directory
 
@@ -35,9 +36,9 @@ Voor verificatie met Azure AD gebruikt u dit eind punt samen met de Tenant-ID (D
 
 `https://login.microsoftonline.com/<tenant-id>`
 
-> [!NOTE] 
-> Het Tenant-specifieke eind punt is vereist wanneer u verifieert met behulp van een service-principal. 
-> 
+> [!NOTE]
+> Het Tenant-specifieke eind punt is vereist wanneer u verifieert met behulp van een service-principal.
+>
 > Het Tenant-specifieke eind punt is optioneel wanneer u verifieert met behulp van geïntegreerde verificatie, maar wordt aanbevolen. U kunt echter ook het gemeen schappelijke eind punt van Azure AD gebruiken. Het algemene eind punt biedt een algemene interface voor het verzamelen van referenties wanneer er geen specifieke Tenant is opgegeven. Het algemene eind punt `https://login.microsoftonline.com/common`is.
 >
 >
@@ -126,7 +127,7 @@ Als u een Service-Principal wilt verifiëren, moet u RBAC toewijzen aan uw toepa
 1. Selecteer **Access Control (IAM)** in het gedeelte **instellingen** van het batch-account.
 1. Selecteer het tabblad **roltoewijzingen** .
 1. Selecteer **Roltoewijzing toevoegen**.
-1. Kies in de vervolg keuzelijst **functie** de rol *Inzender* of *lezer* voor uw toepassing. Zie [aan de slag met op rollen gebaseerde Access Control in de Azure Portal](../role-based-access-control/overview.md)voor meer informatie over deze rollen.  
+1. Kies in de vervolg keuzelijst **functie** de rol *Inzender* of *lezer* voor uw toepassing. Zie [aan de slag met op rollen gebaseerde Access Control in de Azure Portal](../role-based-access-control/overview.md)voor meer informatie over deze rollen.
 1. Voer in het veld **selecteren** de naam van uw toepassing in. Selecteer uw toepassing in de lijst en selecteer vervolgens **Opslaan**.
 
 Uw toepassing moet nu worden weer gegeven in de instellingen voor toegangs beheer waaraan een RBAC-rol is toegewezen.
@@ -209,7 +210,7 @@ Met de Tenant-ID wordt de Azure AD-Tenant geïdentificeerd waarmee verificatie s
 De code voorbeelden in deze sectie laten zien hoe u met Azure AD verifieert met geïntegreerde verificatie en met een service-principal. De meeste van deze code voorbeelden gebruiken .NET, maar de concepten zijn vergelijkbaar voor andere talen.
 
 > [!NOTE]
-> Een Azure AD-verificatie token verloopt na één uur. Wanneer u een lang bewaard **BatchClient** -object gebruikt, wordt u aangeraden een token op te halen uit ADAL op elke aanvraag om ervoor te zorgen dat u altijd een geldig token hebt. 
+> Een Azure AD-verificatie token verloopt na één uur. Wanneer u een lang bewaard **BatchClient** -object gebruikt, wordt u aangeraden een token op te halen uit ADAL op elke aanvraag om ervoor te zorgen dat u altijd een geldig token hebt.
 >
 >
 > Als u dit wilt doen in .NET, schrijft u een methode die het token uit Azure AD ophaalt en geeft u deze methode door aan een **BatchTokenCredentials** -object als gemachtigde. De gemachtigde methode wordt aangeroepen voor elke aanvraag bij de batch-service om ervoor te zorgen dat er een geldig token wordt gegeven. ADAL-tokens worden standaard in de cache opgeslagen, zodat een nieuw token alleen wordt opgehaald uit Azure AD als dat nodig is. Zie [verificatie scenario's voor Azure AD][aad_auth_scenarios]voor meer informatie over tokens in azure AD.
@@ -266,9 +267,9 @@ public static async Task<string> GetAuthenticationTokenAsync()
     var authContext = new AuthenticationContext(AuthorityUri);
 
     // Acquire the authentication token from Azure AD.
-    var authResult = await authContext.AcquireTokenAsync(BatchResourceUri, 
-                                                        ClientId, 
-                                                        new Uri(RedirectUri), 
+    var authResult = await authContext.AcquireTokenAsync(BatchResourceUri,
+                                                        ClientId,
+                                                        new Uri(RedirectUri),
                                                         new PlatformParameters(PromptBehavior.Auto));
 
     return authResult.AccessToken;
@@ -307,7 +308,7 @@ Raadpleeg het Azure AD-eind punt in uw code, inclusief de Tenant-ID. Wanneer u e
 private const string AuthorityUri = "https://login.microsoftonline.com/<tenant-id>";
 ```
 
-Naslag het eind punt voor de batch-Service Resource:  
+Naslag het eind punt voor de batch-Service Resource:
 
 ```csharp
 private const string BatchResourceUri = "https://batch.core.windows.net/";
@@ -372,7 +373,7 @@ Wanneer u een Service-Principal gebruikt, moet u de Tenant-ID opgeven. Volg de s
 TENANT_ID = "<tenant-id>"
 ```
 
-Naslag het eind punt voor de batch-Service Resource:  
+Naslag het eind punt voor de batch-Service Resource:
 
 ```python
 RESOURCE = "https://batch.core.windows.net/"

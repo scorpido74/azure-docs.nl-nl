@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/14/2017
 ms.author: rasquill
 ms.custom: mvc
-ms.openlocfilehash: 8d688d2918c9100019d033e93e9a3dca9e492de2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 039879cb725c20af3c40698947ea9abe189d08ad
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76271137"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82731760"
 ---
 # <a name="deprecated-use-draft-with-azure-container-service-and-azure-container-registry-to-build-and-deploy-an-application-to-kubernetes"></a>KEUR Concept gebruiken met Azure Container Service en Azure Container Registry een toepassing bouwen en implementeren op Kubernetes
 
@@ -102,7 +102,7 @@ Wanneer u een cluster hebt, kunt u de referenties importeren met de opdracht [az
 
 
 1. Down load concepten voor uw omgeving https://github.com/Azure/draft/releases op en installeer deze in uw pad zodat u de opdracht kunt gebruiken.
-2. Down load helm voor uw omgeving https://github.com/kubernetes/helm/releases en [Installeer deze in uw pad zodat u de opdracht kunt gebruiken](https://github.com/kubernetes/helm/blob/master/docs/install.md#installing-the-helm-client).
+2. Down load helm voor uw omgeving https://github.com/kubernetes/helm/releases en [Installeer deze in uw pad zodat u de opdracht kunt gebruiken](https://helm.sh/docs/intro/quickstart#install-helm).
 3. Configureer Draft om uw eigen register te gebruiken en om subdomeinen te maken voor elk Helm-diagram dat wordt gemaakt. U hebt het volgende nodig voor het configureren van Draft:
    - de naam van uw Azure Container Registry (in dit voorbeeld is dat `draftacsdemo`)
    - de registersleutel of het wachtwoord van `az acr credential show -n <registry name> --output tsv --query "passwords[0].value"`.

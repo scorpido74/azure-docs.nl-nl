@@ -3,12 +3,12 @@ title: Ondersteuning voor de beoordeling van fysieke servers in Azure Migrate
 description: Meer informatie over ondersteuning voor fysieke server beoordeling met Azure Migrate server-evaluatie
 ms.topic: conceptual
 ms.date: 04/15/2020
-ms.openlocfilehash: f21ec149aa6f85c0a1f33e91dacf9de48ff72bbb
-ms.sourcegitcommit: 3beb067d5dc3d8895971b1bc18304e004b8a19b3
+ms.openlocfilehash: 31fd676a339a6c82cec84e0f355ac875f68a653c
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82744519"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82983666"
 ---
 # <a name="support-matrix-for-physical-server-assessment"></a>Ondersteunings matrix voor fysieke server evaluatie 
 

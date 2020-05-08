@@ -1,23 +1,17 @@
 ---
-title: Gegevens registreren van Azure Data Lake Storage Gen1 in Azure Data Catalog | Microsoft Docs
-description: Gegevens van Azure Data Lake Storage Gen1 in Azure Data Catalog registreren
-services: data-lake-store,data-catalog
-documentationcenter: ''
+title: Data Lake Storage Gen1 integreren met Azure Data Catalog
+description: Meer informatie over het registreren van gegevens van Azure Data Lake Storage Gen1 in Azure Data Catalog om gegevens detecteerbaar te maken in uw organisatie.
 author: twooley
-manager: mtillman
-editor: cgronlun
-ms.assetid: 3294d91e-a723-41b5-9eca-ace0ee408a4b
 ms.service: data-lake-store
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: fd887560c0011fb1ec2141e33f02f7e3d8a39c81
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.openlocfilehash: 66191a52c6ef1f3d19afd2a47356487b07e9eff4
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "60196537"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82692344"
 ---
 # <a name="register-data-from-azure-data-lake-storage-gen1-in-azure-data-catalog"></a>Gegevens van Azure Data Lake Storage Gen1 in Azure Data Catalog registreren
 In dit artikel leert u hoe u Azure Data Lake Storage Gen1 integreert met Azure Data Catalog, zodat uw gegevens binnen een organisatie kunnen worden gedetecteerd door deze te integreren met Data Catalog. Zie [Azure Data Catalog](../data-catalog/data-catalog-what-is-data-catalog.md)voor meer informatie over het catalogiseren van gegevens. Zie [Azure Data Catalog algemene scenario's](../data-catalog/data-catalog-common-scenarios.md)voor meer informatie over scenario's waarin u Data Catalog kunt gebruiken.
@@ -27,7 +21,7 @@ Voordat u met deze zelfstudie begint, moet u het volgende hebben of hebben gedaa
 
 * **Een Azure-abonnement**. Zie [Gratis proefversie van Azure ophalen](https://azure.microsoft.com/pricing/free-trial/).
 * **Schakel uw Azure-abonnement in** voor data Lake Storage gen1. Zie [Instructies](data-lake-store-get-started-portal.md).
-* **Een Data Lake Storage gen1-account**. Volg de instructies in aan [de slag met Azure data Lake Storage gen1 met behulp van Azure Portal](data-lake-store-get-started-portal.md). Maak voor deze zelf studie een Data Lake Storage Gen1 account met de naam **datacatalogstore**.
+* **Een Data Lake Storage gen1-account**. Volg de instructies in aan [de slag met Azure data Lake Storage gen1 met behulp van de Azure Portal](data-lake-store-get-started-portal.md). Maak voor deze zelf studie een Data Lake Storage Gen1 account met de naam **datacatalogstore**.
 
     Nadat u het account hebt gemaakt, uploadt u een set met voorbeeld gegevens. Voor deze zelf studie kunt u alle CSV-bestanden in de map **AmbulanceData** in de Git- [opslag plaats van Azure data Lake](https://github.com/Azure/usql/tree/master/Examples/Samples/Data/AmbulanceData/)uploaden. U kunt verschillende clients, zoals [Azure Storage Explorer](https://storageexplorer.com/), gebruiken om gegevens te uploaden naar een BLOB-container.
 * **Azure Data Catalog**. Uw organisatie moet al een Azure Data Catalog hebben gemaakt voor uw organisatie. Er is slechts één catalogus toegestaan voor elke organisatie.
@@ -56,7 +50,7 @@ Voordat u met deze zelfstudie begint, moet u het volgende hebben of hebben gedaa
 
     b. In het vak **beschik bare objecten** worden de bestanden en mappen in de map **AmbulanceData** weer gegeven.
 
-    c. In het vak **te registreren objecten** worden de bestanden en mappen vermeld die u wilt registreren in azure Data Catalog.
+    c. In het vak objecten die moeten **worden geregistreerd** worden de bestanden en mappen vermeld die u wilt registreren in azure Data Catalog.
 
     ![Gegevens structuur weer geven](./media/data-lake-store-with-data-catalog/view-data-structure.png "Gegevens structuur weer geven")
 1. Voor deze zelf studie moet u alle bestanden in de map registreren. Klik hiervoor op de knop (![objecten verplaatsen](./media/data-lake-store-with-data-catalog/move-objects.png "Objecten verplaatsen")) om alle bestanden te verplaatsen naar objecten die moeten **worden geregistreerd** .

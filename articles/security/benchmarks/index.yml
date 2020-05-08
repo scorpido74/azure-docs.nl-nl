@@ -3,22 +3,22 @@ title: Documentatie voor Azure Security-benchmarks
 summary: Meer informatie over hoe u onze best practices en begeleiding kunt gebruiken om uw cloudoplossingen in Azure te beveiligen.
 metadata:
   title: Azure Security-benchmarks
-  description: De benchmark voor Azure-beveiligingsmaatregelen bevat aanbevelingen die u helpen om de beveiliging van uw toepassingen en gegevens in Azure te verbeteren.
+  description: De Azure Security-benchmark bevat aanbevelingen die u helpen om de beveiliging van uw toepassingen en gegevens in Azure te verbeteren.
   services: security
   ms.service: security
   ms.subservice: fundamentals
-  ms.custom: security-baselines
+  ms.custom: security-benchmark
   ms.topic: landing-page
   author: msmbaldwin
   ms.author: mbaldwin
   manager: rkarlin
   ms.date: 12/23/2019
-  ms.openlocfilehash: c2b36e098314af78ca3d6f28534c3d3e97697363
-  ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
+  ms.openlocfilehash: 7cebc4fb6e676470b46a52cf1ea62e0990e708e9
+  ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
   ms.translationtype: HT
   ms.contentlocale: nl-NL
-  ms.lasthandoff: 04/15/2020
-  ms.locfileid: "81393843"
+  ms.lasthandoff: 04/30/2020
+  ms.locfileid: "82607742"
 landingContent:
 - title: Over de Azure Security-benchmark
   linkLists:
@@ -26,7 +26,7 @@ landingContent:
     links:
     - text: Inleiding tot Azure Security-benchmark
       url: introduction.md
-    - text: Overzicht van het Azure Beveiligingscentrum
+    - text: Overzicht van Azure-beveiligingsmaatregelen
       url: overview.md
 - title: Beveiligingsmaatregelen
   linkLists:

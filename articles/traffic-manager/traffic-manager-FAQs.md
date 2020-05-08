@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/26/2019
 ms.author: rohink
-ms.openlocfilehash: acdac6e3eafc5251ebd31a34bcb9a4db34f0ebbe
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: HT
+ms.openlocfilehash: ad6acbad57df24e5cd78c72c9d00bcd32a83219a
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79254363"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82731574"
 ---
 # <a name="traffic-manager-frequently-asked-questions-faq"></a>Veelgestelde vragen over Traffic Manager
 
@@ -29,7 +29,7 @@ Zoals beschreven in de werking van [Traffic Manager](../traffic-manager/traffic-
 Daarom biedt Traffic Manager geen eind punt of IP-adres waarmee clients verbinding kunnen maken. Als u een statisch IP-adres voor uw service wilt, dat moet worden geconfigureerd op de service, niet in Traffic Manager.
 
 ### <a name="what-types-of-traffic-can-be-routed-using-traffic-manager"></a>Welk type verkeer kan worden gerouteerd met Traffic Manager?
-Zoals beschreven in de werking van [Traffic Manager](../traffic-manager/traffic-manager-how-it-works.md), kan een Traffic Manager-eind punt een Internet gerichte service zijn die binnen of buiten Azure wordt gehost. Daarom kan Traffic Manager verkeer dat afkomstig is van het open bare Internet, routeren naar een set eind punten die ook Internet Facing zijn. Als u eind punten hebt die zich in een particulier netwerk (bijvoorbeeld een interne versie van [Azure Load Balancer](../load-balancer/concepts-limitations.md#internalloadbalancer)) bevinden of als u wilt dat gebruikers DNS-aanvragen van dergelijke interne netwerken hebben gedaan, kunt u Traffic Manager niet gebruiken om dit verkeer te routeren.
+Zoals beschreven in de werking van [Traffic Manager](../traffic-manager/traffic-manager-how-it-works.md), kan een Traffic Manager-eind punt een Internet gerichte service zijn die binnen of buiten Azure wordt gehost. Daarom kan Traffic Manager verkeer dat afkomstig is van het open bare Internet, routeren naar een set eind punten die ook Internet Facing zijn. Als u eind punten hebt die zich in een particulier netwerk (bijvoorbeeld een interne versie van [Azure Load Balancer](../load-balancer/components.md#frontend-ip-configurations)) bevinden of als u wilt dat gebruikers DNS-aanvragen van dergelijke interne netwerken hebben gedaan, kunt u Traffic Manager niet gebruiken om dit verkeer te routeren.
 
 ### <a name="does-traffic-manager-support-sticky-sessions"></a>Ondersteunt Traffic Manager ' Sticky ' sessies?
 
