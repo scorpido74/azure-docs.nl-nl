@@ -1,146 +1,197 @@
 ---
 title: 'Zelf studie: aangepaste VM-installatie kopieën maken met Azure CLI'
 description: In deze zelfstudie leert u hoe u Azure CLI gebruikt om een aangepaste installatiekopie van een virtuele machine te maken in Azure
-services: virtual-machines-linux
-documentationcenter: virtual-machines
 author: cynthn
-manager: gwallace
-tags: azure-resource-manager
-ms.assetid: ''
 ms.service: virtual-machines-linux
+ms.subservice: imaging
 ms.topic: tutorial
-ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 12/13/2017
+ms.date: 05/04/2020
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: dc7b395d46fd28cde9ccbbda8a8a55447efa61c9
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.reviewer: akjosh
+ms.openlocfilehash: 9f3a175352aa0455cecc2e31e235a60cc27c76c5
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81460049"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82792170"
 ---
 # <a name="tutorial-create-a-custom-image-of-an-azure-vm-with-the-azure-cli"></a>Zelfstudie: Een aangepaste installatiekopie van een Azure-VM maken met Azure CLI
 
 Aangepaste installatiekopieën zijn soortgelijk aan Marketplace-installatiekopieën, maar u kunt deze zelf maken. Aangepaste installatiekopieën kunnen worden gebruikt voor het opstarten van configuraties, zoals het vooraf laden van toepassingen, toepassingsconfiguraties en andere besturingssysteemconfiguraties. In deze zelfstudie maakt u uw eigen aangepaste installatiekopie van een virtuele Azure-machine. Procedures voor:
 
 > [!div class="checklist"]
-> * De inrichting van virtuele machines ongedaan maken en virtuele machines generaliseren
-> * Een aangepaste installatiekopie maken
-> * Een VM maken van een aangepaste installatiekopie
-> * Alle installatiekopieën in uw abonnement weergeven
-> * Een aangepaste installatiekopie verwijderen
+> * Een gedeelde installatiekopiegalerie maken
+> * Een definitie van een installatie kopie maken
+> * De versie van een installatiekopie maken
+> * Een virtuele machine maken op basis van een installatie kopie 
+> * Een galerie met installatie kopieën delen
+
 
 In deze zelf studie wordt gebruikgemaakt van de CLI binnen de [Azure Cloud shell](https://docs.microsoft.com/azure/cloud-shell/overview), die voortdurend wordt bijgewerkt naar de nieuwste versie. Als u de Cloud Shell wilt openen, selecteert u **deze** in het begin van een wille keurig code blok.
 
-Als u ervoor kiest om de CLI lokaal te installeren en te gebruiken, moet u Azure CLI 2.0.30 of hoger gebruiken voor deze zelfstudie. Voer `az --version` uit om de versie te bekijken. Als u Azure CLI 2.0 wilt installeren of upgraden, raadpleegt u [Azure CLI 2.0 installeren]( /cli/azure/install-azure-cli).
+Als u ervoor kiest om de CLI lokaal te installeren en te gebruiken, moet u voor deze zelf studie gebruikmaken van de Azure CLI-versie 2.4.0 of hoger. Voer `az --version` uit om de versie te bekijken. Als u Azure CLI 2.0 wilt installeren of upgraden, raadpleegt u [Azure CLI 2.0 installeren]( /cli/azure/install-azure-cli).
+
+## <a name="overview"></a>Overzicht
+
+Een [Galerie met gedeelde afbeeldingen](shared-image-galleries.md) vereenvoudigt het delen van aangepaste afbeeldingen in uw organisatie. Aangepaste installatiekopieën zijn soortgelijk aan Marketplace-installatiekopieën, maar u kunt deze zelf maken. Aangepaste installatiekopieën kunnen worden gebruikt voor het opstarten van configuraties, zoals het vooraf laden van toepassingen, toepassingsconfiguraties en andere besturingssysteemconfiguraties. 
+
+Met de galerie gedeelde afbeeldingen kunt u uw aangepaste VM-installatie kopieën delen met anderen. Kies welke installatie kopieën u wilt delen, in welke regio's u ze beschikbaar wilt maken en met wie u wilt delen. 
+
+De functie gedeelde installatie kopie galerie heeft meerdere bron typen:
+
+[!INCLUDE [virtual-machines-shared-image-gallery-resources](../../../includes/virtual-machines-shared-image-gallery-resources.md)]
 
 ## <a name="before-you-begin"></a>Voordat u begint
 
 In de onderstaande stappen wordt gedetailleerd beschreven hoe u van een bestaande virtuele machine een herbruikbare aangepaste installatiekopie maakt die u kunt gebruiken om nieuwe virtuele machines te maken.
 
-Om het voorbeeld in deze zelfstudie uit te voeren, moet u een bestaande virtuele machine hebben. Zo nodig kan dit [voorbeeld script](../scripts/virtual-machines-linux-cli-sample-create-vm-nginx.md) een voor u maken. Vervang tijdens het volgen van de zelfstudie de namen van de resourcegroep en de virtuele machine waar nodig.
+Om het voorbeeld in deze zelfstudie uit te voeren, moet u een bestaande virtuele machine hebben. Als dat nodig is, kunt u de [cli-Snelstartgids](quick-create-cli.md) bekijken om een virtuele machine te maken die u voor deze zelf studie kunt gebruiken. Wanneer u de zelf studie doorloopt, vervangt u de resource namen waar nodig.
 
-## <a name="create-a-custom-image"></a>Een aangepaste installatiekopie maken
+## <a name="launch-azure-cloud-shell"></a>Azure Cloud Shell starten
 
-Voor het maken van een installatiekopie van een virtuele machine moet u de virtuele machine voorbereiden door de inrichting ervan ongedaan te maken, de toewijzing ervan ongedaan te maken en de bron-VM vervolgens als gegeneraliseerd te markeren. Wanneer de VM is voorbereid, kunt u een installatiekopie maken.
+Azure Cloud Shell is een gratis interactieve shell waarmee u de stappen in dit artikel kunt uitvoeren. In deze shell zijn algemene Azure-hulpprogramma's vooraf geïnstalleerd en geconfigureerd voor gebruik met uw account. 
 
-### <a name="deprovision-the-vm"></a>De inrichting van de virtuele machine ongedaan maken 
+Als u Cloud Shell wilt openen, selecteert u **Proberen** in de rechterbovenhoek van een codeblok. U kunt Cloud Shell ook starten op een afzonderlijk browser tabblad door naar te [https://shell.azure.com/powershell](https://shell.azure.com/powershell)gaan. Klik op **Kopiëren** om de codeblokken te kopiëren, plak deze in Cloud Shell en druk vervolgens op Enter om de code uit te voeren.
 
-Met het ongedaan maken van de inrichting wordt de virtuele machine gegeneraliseerd omdat machinespecifieke informatie wordt verwijderd. Dankzij deze generalisatie kunnen meerdere virtuele machines worden geïmplementeerd op basis van één installatiekopie. Tijdens het ongedaan maken van de inrichting wordt de naam van de host opnieuw ingesteld op *localhost.localdomain*. SSH-hostsleutels, naamserverconfiguraties hoofdwachtwoord en in de cache geplaatste DHCP-leases worden ook verwijderd.
+## <a name="create-an-image-gallery"></a>Een galerie met installatie kopieën maken 
 
-> [!WARNING]
-> Als u de virtuele machine onbeschikbaar maakt en markeert als gegeneraliseerd, wordt de bron-VM onbruikbaar en kan deze niet opnieuw worden gestart. 
+Een galerie met installatie kopieën is de primaire resource die wordt gebruikt voor het inschakelen van het delen van afbeeldingen. 
 
-Voor het ongedaan maken van de inrichting van de virtuele machine gebruikt u de Azure VM-agent (waagent). De Azure VM-agent is geïnstalleerd op de virtuele machine en beheert de inrichting en interactie met de Azure-infrastructuurcontroller. Zie de [Gebruikershandleiding voor Azure Linux Agent](../extensions/agent-linux.md) voor meer informatie.
+Toegestane tekens voor de naam van de galerie bestaan uit hoofd letters of kleine letters, cijfers, punten en punten. De naam van de galerie mag geen streepjes bevatten.   Galerie namen moeten uniek zijn binnen uw abonnement. 
 
-Maak verbinding met uw virtuele machine via SSH en voer de opdracht voor het ongedaan maken van de inrichting van de virtuele machine uit. Met het argument `+user` worden de laatste ingerichte gebruikersaccount en alle bijbehorende gegevens ook verwijderd. Vervang het IP-voorbeeldadres door het openbare IP-adres van de virtuele machine.
+Maak een galerie met installatie kopieën met [AZ sig Create](/cli/azure/sig#az-sig-create). In het volgende voor beeld wordt een resource groep met de naam Gallery gemaakt met de naam *myGalleryRG* in *VS-Oost*en een galerie met de naam *myGallery*.
 
-Maak via SSH verbinding met de virtuele machine.
-```bash
-ssh azureuser@52.174.34.95
-```
-Maak de inrichting van de virtuele machine ongedaan.
-
-```bash
-sudo waagent -deprovision+user -force
-```
-Sluit de SSH-sessie.
-
-```bash
-exit
+```azurecli-interactive
+az group create --name myGalleryRG --location eastus
+az sig create --resource-group myGalleryRG --gallery-name myGallery
 ```
 
-### <a name="deallocate-and-mark-the-vm-as-generalized"></a>De toewijzing van de virtuele machine ongedaan maken en de virtuele machine markeren als gegeneraliseerd
+## <a name="get-infornation-about-the-vm"></a>Infornation over de virtuele machine ophalen
 
-Voor het maken van een installatiekopie moet de toewijzing van de VM ongedaan worden gemaakt. Maak de toewijzing van de VM ongedaan met [az vm deallocate](/cli//azure/vm). 
-   
+U ziet een lijst met virtuele machines die beschikbaar zijn via de [AZ VM-lijst](/cli/azure/vm#az-vm-list). 
+
+```azurecli-interactive
+az vm list --output table
+```
+
+Wanneer u de naam van de virtuele machine kent en de resource groep waarin deze zich bevindt, haalt u de ID van de virtuele machine op met [AZ VM Get-instance-View](/cli/azure/vm#az-vm-get-instance-view). 
+
+```azurecli-interactive
+az vm get-instance-view -g MyResourceGroup -n MyVm --query id
+```
+
+Kopieer de ID van de virtuele machine die u later wilt gebruiken.
+
+## <a name="create-an-image-definition"></a>Een definitie van een installatie kopie maken
+
+Afbeeldings definities maken een logische groepering voor installatie kopieën. Ze worden gebruikt voor het beheren van informatie over de installatie kopieën die in deze versies worden gemaakt. 
+
+Definitie namen van afbeeldingen kunnen bestaan uit hoofd letters, kleine letters, cijfers, punten, streepjes en punten. 
+
+Zie [afbeeldings definities](https://docs.microsoft.com/azure/virtual-machines/linux/shared-image-galleries#image-definitions)voor meer informatie over de waarden die u kunt opgeven voor de definitie van een installatie kopie.
+
+Maak een definitie van een installatie kopie in de galerie met behulp van [AZ sig image-definition Create](/cli/azure/sig/image-definition#az-sig-image-definition-create). 
+
+In dit voor beeld heeft de definitie van de installatie kopie de naam *myImageDefinition*en is voor een [gespecialiseerde](https://docs.microsoft.com/azure/virtual-machines/linux/shared-image-galleries#generalized-and-specialized-images) Linux-installatie kopie van het besturings systeem. 
+
 ```azurecli-interactive 
-az vm deallocate --resource-group myResourceGroup --name myVM
+az sig image-definition create \
+   --resource-group myGalleryRG \
+   --gallery-name myGallery \
+   --gallery-image-definition myImageDefinition \
+   --publisher myPublisher \
+   --offer myOffer \
+   --sku mySKU \
+   --os-type Linux \
+   --os-state specialized
 ```
 
-Tot slot stelt u de status van de virtuele machine in als gegeneraliseerd met [az vm generalize](/cli//azure/vm) zodat het Azure-platform weet de VM is gegeneraliseerd. U kunt een installatiekopie alleen maken van een gegeneraliseerde virtuele machine.
-   
+Kopieer de ID van de afbeeldings definitie uit de uitvoer die u later wilt gebruiken.
+
+## <a name="create-the-image-version"></a>De versie van de installatie kopie maken
+
+Maak een installatie kopie versie van de virtuele machine met behulp van [AZ Image Gallery Create-Image galerie-version](/cli/azure/sig/image-version#az-sig-image-version-create).  
+
+Toegestane tekens voor de versie van de installatie kopie zijn getallen en punten. Getallen moeten binnen het bereik van een 32-bits geheel getal zijn. Indeling: *MajorVersion*. *MinorVersion*. *Patch*.
+
+In dit voor beeld is de versie van onze installatie kopie *1.0.0* en we gaan twee replica's maken in de regio *West-Centraal VS* , 1 replica in de regio *Zuid-Centraal VS* en 1 replica in de regio *VS-Oost 2* met zone-redundante opslag. De replicatie regio's moeten de regio bevatten waarin de bron-VM zich bevindt.
+
+Vervang de waarde van `--managed-image` in dit voor beeld door de id van uw virtuele machine uit de vorige stap.
+
 ```azurecli-interactive 
-az vm generalize --resource-group myResourceGroup --name myVM
+az sig image-version create \
+   --resource-group myGalleryRG \
+   --gallery-name myGallery \
+   --gallery-image-definition myImageDefinition \
+   --gallery-image-version 1.0.0 \
+   --target-regions "westcentralus" "southcentralus=1" "eastus=1=standard_zrs" \
+   --replica-count 2 \
+   --managed-image "/subscriptions/<Subscription ID>/resourceGroups/MyResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM"
 ```
 
-### <a name="create-the-image"></a>De installatiekopie maken
+> [!NOTE]
+> U moet wachten tot de versie van de installatie kopie volledig is gebouwd en gerepliceerd voordat u dezelfde beheerde installatie kopie kunt gebruiken om een andere versie van de installatie kopie te maken.
+>
+> U kunt uw installatie kopie ook opslaan in Premiun-opslag door `--storage-account-type  premium_lrs`een toevoeg-of [zone-redundante opslag](https://docs.microsoft.com/azure/storage/common/storage-redundancy-zrs) door toe te voegen `--storage-account-type  standard_zrs` wanneer u de versie van de installatie kopie maakt.
+>
 
-U kunt nu een installatiekopie van de virtuele machine maken met behulp van [az image create](/cli//azure/image). In het volgende voorbeeld wordt een installatiekopie met de naam *myImage* gemaakt van een virtuele machine met de naam *myVM*.
-   
-```azurecli-interactive 
-az image create \
-    --resource-group myResourceGroup \
-    --name myImage \
-    --source myVM
-```
  
-## <a name="create-vms-from-the-image"></a>VM's maken van de installatiekopie
+## <a name="create-the-vm"></a>De virtuele machine maken
 
-Nu u een installatiekopie hebt gemaakt, kunt u een of meer nieuwe virtuele machines maken van de installatiekopie met behulp van [az vm create](/cli/azure/vm). In het volgende voorbeeld wordt een virtuele machine met de naam *myVMfromImage* gemaakt van een installatiekopie met de naam *myImage*.
+Maak de virtuele machine met [AZ VM Create](/cli/azure/vm#az-vm-create) met behulp van de--gespecialiseerde para meter om aan te geven dat de afbeelding een gespecialiseerde installatie kopie is. 
 
-```azurecli-interactive 
-az vm create \
-    --resource-group myResourceGroup \
-    --name myVMfromImage \
-    --image myImage \
-    --admin-username azureuser \
-    --generate-ssh-keys
+Gebruik de definitie-ID van `--image` de installatie kopie om de virtuele machine te maken op basis van de meest recente versie van de installatie kopie die beschikbaar is. U kunt de virtuele machine ook maken op basis van een specifieke versie door de versie-ID `--image`voor de installatie kopie op te geven voor. 
+
+In dit voor beeld maken we een VM op basis van de nieuwste versie van de *myImageDefinition* -installatie kopie.
+
+```azurecli
+az group create --name myResourceGroup --location eastus
+az vm create --resource-group myResourceGroup \
+    --name myVM \
+    --image "/subscriptions/<Subscription ID>/resourceGroups/myGalleryRG/providers/Microsoft.Compute/galleries/myGallery/images/myImageDefinition" \
+    --specialized
 ```
 
-We raden u aan om het aantal gelijktijdige implementaties te beperken tot 20 virtuele machines uit één installatie kopie. Als u grootschalige, gelijktijdige implementaties van meer dan 20 Vm's van dezelfde aangepaste installatie kopie plant, moet u een galerie met [gedeelde afbeeldingen](shared-image-galleries.md) gebruiken met meerdere installatie kopieën van replica's. 
+## <a name="share-the-gallery"></a>De galerie delen
 
-## <a name="image-management"></a>Installatiekopiebeheer 
+U kunt afbeeldingen in abonnementen delen met behulp van op rollen gebaseerde Access Control (RBAC). U kunt afbeeldingen delen in de galerie, afbeeldings definitie of installatie kopie versie leve. Elke gebruiker met lees machtigingen voor een installatie kopie versie, zelfs via abonnementen, kan een virtuele machine implementeren met de versie van de installatie kopie.
 
-Hier volgen enkele voorbeelden van algemene beheertaken voor installatiekopieën en hoe u deze kunt uitvoeren met de Azure CLI.
+We raden u aan om te delen met andere gebruikers op het niveau van de galerie. Gebruik [AZ sig show](/cli/azure/sig#az-sig-show)om de object-id van uw galerie op te halen.
 
-Een lijst weergeven met alle installatiekopieën op naam in een tabelindeling.
-
-```azurecli-interactive 
-az image list \
-    --resource-group myResourceGroup
+```azurecli-interactive
+az sig show \
+   --resource-group myGalleryRG \
+   --gallery-name myGallery \
+   --query id
 ```
 
-Een installatiekopie verwijderen. In dit voorbeeld wordt de installatiekopie met de naam *myOldImage* verwijderd uit de *myResourceGroup*.
+Gebruik de object-ID als bereik, samen met een e-mail adres en [AZ-roltoewijzing maken](/cli/azure/role/assignment#az-role-assignment-create) om een gebruiker toegang te geven tot de galerie met gedeelde afbeeldingen. Vervang `<email-address>` en `<gallery iD>` door uw eigen gegevens.
 
-```azurecli-interactive 
-az image delete \
-    --name myOldImage \
-    --resource-group myResourceGroup
+```azurecli-interactive
+az role assignment create \
+   --role "Reader" \
+   --assignee <email address> \
+   --scope <gallery ID>
 ```
+
+Zie [toegang beheren met RBAC en Azure cli](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli)voor meer informatie over het delen van resources met RBAC.
+
+## <a name="azure-image-builder"></a>Azure Image Builder
+
+Azure biedt ook een service, gebouwd op verpakker, [Azure VM Image Builder](https://docs.microsoft.com/azure/virtual-machines/linux/image-builder-overview). Geef een beschrijving van uw aanpassingen in een sjabloon, waarna het maken van de installatie kopie wordt afgehandeld. 
 
 ## <a name="next-steps"></a>Volgende stappen
 
 In deze zelfstudie hebt u een aangepaste installatiekopie voor een virtuele machine gemaakt. U hebt geleerd hoe u:
 
 > [!div class="checklist"]
-> * De inrichting van virtuele machines ongedaan maken en virtuele machines generaliseren
-> * Een aangepaste installatiekopie maken
-> * Een VM maken van een aangepaste installatiekopie
-> * Alle installatiekopieën in uw abonnement weergeven
-> * Een aangepaste installatiekopie verwijderen
+> * Een gedeelde installatiekopiegalerie maken
+> * Een definitie van een installatie kopie maken
+> * De versie van een installatiekopie maken
+> * Een virtuele machine maken op basis van een installatie kopie 
+> * Een galerie met installatie kopieën delen
 
 Ga naar de volgende zelfstudie voor meer informatie over virtuele machines met hoge beschikbaarheid.
 

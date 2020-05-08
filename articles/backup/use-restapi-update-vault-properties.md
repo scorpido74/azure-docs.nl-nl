@@ -4,12 +4,12 @@ description: In dit artikel leert u hoe u de configuratie van de kluis kunt bijw
 ms.topic: conceptual
 ms.date: 12/06/2019
 ms.assetid: 9aafa5a0-1e57-4644-bf79-97124db27aa2
-ms.openlocfilehash: 6cecbb18e0cd6f548e1688ef978f10dcee7d9fbc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4c604fe067e73f5f9a17f4b5f810708121cff767
+ms.sourcegitcommit: 3beb067d5dc3d8895971b1bc18304e004b8a19b3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79252361"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82744570"
 ---
 # <a name="update-azure-recovery-services-vault-configurations-using-rest-api"></a>Recovery Services kluis configuraties van Azure bijwerken met behulp van REST API
 
@@ -21,7 +21,7 @@ Het verwijderen van back-ups van een beveiligd item is een belang rijke bewerkin
 
 Maar er zijn scenario's waarin deze mogelijkheid niet is vereist. Een Azure Recovery Services kluis kan niet worden verwijderd als er back-upitems in zijn, zelfs als deze worden verwijderd. Dit kan een probleem vormen als de kluis onmiddellijk moet worden verwijderd. Bijvoorbeeld: implementatie bewerkingen schonen vaak de gemaakte resources in dezelfde werk stroom. Een implementatie kan een kluis maken, back-ups voor een item configureren, een test herstellen en vervolgens door gaan met het verwijderen van de back-upitems en de kluis. Als het verwijderen van de kluis mislukt, kan de volledige implementatie mislukken. Het uitschakelen van zacht verwijderen is de enige manier om direct verwijderen te garanderen.
 
-Daarom moet de klant zorgvuldig bepalen of u het voorlopig verwijderen van een bepaalde kluis wilt uitschakelen, afhankelijk van het scenario. Zie het [artikel voorlopig verwijderen](backup-azure-security-feature-cloud.md#soft-delete)voor meer informatie.
+Daarom moet de klant zorgvuldig bepalen of u het voorlopig verwijderen van een bepaalde kluis wilt uitschakelen, afhankelijk van het scenario. Zie het [artikel voorlopig verwijderen](backup-azure-security-feature-cloud.md)voor meer informatie.
 
 ### <a name="fetch-soft-delete-state-using-rest-api"></a>Status van voorlopig verwijderen ophalen met REST API
 

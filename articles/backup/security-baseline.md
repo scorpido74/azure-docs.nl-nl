@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/23/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: acc8ceaa96f6fddafdbf4aa74ab9e43a1a60714a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 68453341defd2d359e69e0ecf8a821464fead0d3
+ms.sourcegitcommit: 3beb067d5dc3d8895971b1bc18304e004b8a19b3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82195669"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82744063"
 ---
 # <a name="azure-security-baseline-for-backup"></a>Azure-beveiligings basislijn voor back-up
 
@@ -410,7 +410,7 @@ U kunt dit proces stroom lijnen door Diagnostische instellingen voor Azure AD-ge
 
 **Verantwoordelijkheid**: klant
 
-## <a name="data-protection"></a>Gegevensbeveiliging
+## <a name="data-protection"></a>Gegevensbescherming
 
 *Zie [beveiligings beheer: gegevens beveiliging](https://docs.microsoft.com/azure/security/benchmarks/security-control-data-protection)voor meer informatie.*
 
@@ -460,7 +460,7 @@ Micro soft beheert de onderliggende infra structuur voor Azure Backup en heeft s
 
 **Hulp**: er wordt een back-upverkeer van servers naar de Recovery Services kluis overgedragen via een beveiligde HTTPS-koppeling en versleuteld met behulp van Advanced Encryption Standard (AES) 256 wanneer deze wordt opgeslagen in de kluis.
 
-- [Meer informatie over versleuteling in de rest van Azure Backup](https://docs.microsoft.com/azure/backup/backup-azure-security-feature-cloud#encryption)
+- [Meer informatie over versleuteling in de rest van Azure Backup](https://docs.microsoft.com/azure/backup/backup-encryption)
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -508,7 +508,7 @@ Azure Backup biedt drie ingebouwde rollen voor het beheren van de bewerkingen vo
 
 Wanneer u een back-up maakt van de MARS-agent of een Recovery Services kluis versleutelt met een door de klant beheerde sleutel, hebt u alleen toegang tot de versleutelings sleutel. Microsoft bewaart nooit een kopie en heeft geen toegang tot de sleutel. Als de sleutel verkeerd wordt geplaatst, kan Microsoft de back-upgegevens niet herstellen.
 
-- [Meer informatie over versleuteling in rust voor Azure Backup](https://docs.microsoft.com/azure/backup/backup-azure-security-feature-cloud#encryption)
+- [Meer informatie over versleuteling in rust voor Azure Backup](https://docs.microsoft.com/azure/backup/backup-encryption)
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -902,7 +902,7 @@ Back-ups van door de klant beheerde sleutels binnen Azure Key Vault.
 
 - [Hoe kan ik een back-up maken van sleutel kluis sleutels in azure?](https://docs.microsoft.com/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey)
 
-- [Informatie over versleuteling in Azure Backup](https://docs.microsoft.com/azure/backup/backup-azure-security-feature-cloud#encryption-of-backup-data-using-customer-managed-keys)
+- [Informatie over versleuteling in Azure Backup](https://docs.microsoft.com/azure/backup/backup-encryption#encryption-of-backup-data-using-customer-managed-keys)
 
 **Azure Security Center bewaking**: niet van toepassing
 
