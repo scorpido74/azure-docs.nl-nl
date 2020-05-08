@@ -5,12 +5,12 @@ services: automation
 ms.subservice: update-management
 ms.date: 05/04/2020
 ms.topic: conceptual
-ms.openlocfilehash: 24befd6e5d90c7c3fffd2049bae3bee392e6e0e0
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
-ms.translationtype: HT
+ms.openlocfilehash: ca5d8c35aea06143e058aade473282a038212605
+ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
+ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 05/06/2020
-ms.locfileid: "82855667"
+ms.locfileid: "82872163"
 ---
 # <a name="update-management-in-azure-automation"></a>Updatebeheer in Azure Automation
 
@@ -197,7 +197,7 @@ Voor Windows-computers moet u ook verkeer toestaan voor eind punten die vereist 
 
 Zie IP-adressen voor de vereiste eind punten voor [de RHUI content delivery servers](../virtual-machines/workloads/redhat/redhat-rhui.md#the-ips-for-the-rhui-content-delivery-servers) voor Red Hat Linux-machines. Raadpleeg de documentatie van uw provider voor andere Linux-distributies.
 
-Zie [Hybrid worker Role ports](automation-hybrid-runbook-worker.md#hybrid-worker-role)(Engelstalig) voor meer informatie over poorten die vereist zijn voor de Hybrid Runbook Worker.
+Zie [updatebeheer adressen voor Hybrid Runbook worker](automation-hybrid-runbook-worker.md#update-management-addresses-for-hybrid-runbook-worker)voor meer informatie over de poorten die zijn vereist voor de Hybrid Runbook Worker.
 
 U wordt aangeraden de adressen te gebruiken die worden weer gegeven bij het definiëren van uitzonde ringen. Voor IP-adressen kunt u de [IP-adresbereiken van Microsoft Azure Data Center](https://www.microsoft.com/download/details.aspx?id=41653)downloaden. Dit bestand wordt wekelijks bijgewerkt en weerspiegelt de huidige geïmplementeerde bereiken en eventuele toekomstige wijzigingen in de IP-bereiken.
 

@@ -7,13 +7,13 @@ author: MarkHeff
 ms.author: maheff
 ms.service: cognitive-search
 ms.topic: tutorial
-ms.date: 02/27/2020
-ms.openlocfilehash: 51e1b24f9080d102dee234fa1ca6d460c400ba78
-ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
+ms.date: 05/05/2020
+ms.openlocfilehash: 57cb68726adf8818f9ef0c8804be9c388ea39ff5
+ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82780671"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82872285"
 ---
 # <a name="tutorial-ai-generated-searchable-content-from-azure-blobs-using-the-net-sdk"></a>Zelf studie: door AI gegenereerde Doorzoek bare inhoud van Azure-blobs met behulp van de .NET SDK
 
@@ -43,7 +43,9 @@ Als u geen Azure-abonnement hebt, opent u een [gratis account](https://azure.mic
 
 1. Open deze [OneDrive-map](https://1drv.ms/f/s!As7Oy81M_gVPa-LCb5lC_3hbS-4) en klik in de linkerbovenhoek op **downloaden** om de bestanden naar uw computer te kopiëren. 
 
-1. Klik met de rechter muisknop op het zip-bestand en selecteer **Alles uitpakken**. Er zijn 14 bestanden van verschillende typen. Gebruik al deze zelf studie.
+1. Klik met de rechter muisknop op het zip-bestand en selecteer **Alles uitpakken**. Er zijn 14 bestanden van verschillende typen. U gebruikt 7 voor deze oefening.
+
+U kunt ook de bron code voor deze zelf studie downloaden. De bron code bevindt zich in de map zelf studie-AI-verrijking in de opslag plaats [Azure-Search-DotNet-samples](https://github.com/Azure-Samples/azure-search-dotnet-samples) .
 
 ## <a name="1---create-services"></a>1-services maken
 
@@ -75,22 +77,22 @@ Maak, indien mogelijk, beide in dezelfde regio en resource groep voor nabijheid 
 
 1. Klik op **blobs** -service.
 
-1. Klik op **+ container** om een container te maken en geef deze de naam *Basic-demo-data-PR*.
+1. Klik op **+ container** om een container te maken en geef deze de naam *tandwiel-Search-demo*.
 
-1. Selecteer *Basic-demo-data-PR* en klik vervolgens op **uploaden** om de map te openen waar u de Download bestanden hebt opgeslagen. Selecteer alle veer tien bestanden en klik op **OK** om te uploaden.
+1. Selecteer *tandwiel-Search-demo* en klik vervolgens op **uploaden** om de map te openen waarin u de bestanden hebt opgeslagen. Selecteer alle veer tien bestanden en klik op **OK** om te uploaden.
 
    ![Voorbeeld bestanden uploaden](media/cognitive-search-quickstart-blob/sample-data.png "Voorbeeld bestanden uploaden")
 
 1. Voordat u Azure Storage verlaat, moet u een connection string ophalen zodat u een verbinding in azure Cognitive Search kunt formuleren. 
 
-   1. Ga terug naar de pagina overzicht van uw opslag account (we hebben *blobstragewestus* als voor beeld gebruikt). 
+   1. Ga terug naar de pagina overzicht van uw opslag account (we hebben *blobstoragewestus* als voor beeld gebruikt). 
    
    1. Selecteer in het navigatie deel venster links de optie **toegangs sleutels** en kopieer een van de verbindings reeksen. 
 
    De connection string is een URL die vergelijkbaar is met het volgende voor beeld:
 
       ```http
-      DefaultEndpointsProtocol=https;AccountName=cogsrchdemostorage;AccountKey=<your account key>;EndpointSuffix=core.windows.net
+      DefaultEndpointsProtocol=https;AccountName=blobstoragewestus;AccountKey=<your account key>;EndpointSuffix=core.windows.net
       ```
 
 1. Sla de connection string op in Klad blok. U hebt deze later nodig bij het instellen van de gegevens bron verbinding.
@@ -99,7 +101,7 @@ Maak, indien mogelijk, beide in dezelfde regio en resource groep voor nabijheid 
 
 AI-verrijking wordt ondersteund door Cognitive Services, waaronder Text Analytics en Computer Vision voor de verwerking van natuurlijke taal en afbeelding. Als u een echt prototype of project wilt volt ooien, moet u op dit punt Cognitive Services (in dezelfde regio als Azure Cognitive Search), zodat u het kunt koppelen aan index bewerkingen.
 
-Voor deze oefening kunt u echter het inrichten van resources overs Laan omdat Azure Cognitive Search verbinding kan maken met Cognitive Services achter de schermen en u 20 gratis trans acties per Indexeer functie uitvoert. Omdat in deze zelf studie 7 trans acties worden gebruikt, is de gratis toewijzing voldoende. Voor grotere projecten plant u het inrichten van Cognitive Services op de S0-laag voor betalen per gebruik. Zie [Cognitive Services koppelen](cognitive-search-attach-cognitive-services.md)voor meer informatie.
+Voor deze oefening kunt u echter het inrichten van resources overs Laan omdat Azure Cognitive Search verbinding kan maken met Cognitive Services achter de schermen en u 20 gratis trans acties per Indexeer functie uitvoert. Omdat in deze zelf studie 14 trans acties worden gebruikt, is de gratis toewijzing voldoende. Voor grotere projecten plant u het inrichten van Cognitive Services op de S0-laag voor betalen per gebruik. Zie [Cognitive Services koppelen](cognitive-search-attach-cognitive-services.md)voor meer informatie.
 
 ### <a name="azure-cognitive-search"></a>Azure Cognitive Search
 
@@ -129,15 +131,15 @@ De [Azure Cognitive Search .NET SDK](https://aka.ms/search-sdk) bestaat uit een 
 
 Voor dit project installeert u versie 9 of hoger van het `Microsoft.Azure.Search` NuGet-pakket.
 
-1. Open de Package Manager-console. Selecteer **extra** > **NuGet package manager** > **package**Manager-console. 
-
-1. Navigeer naar de [pagina micro soft. Azure. Search NuGet package](https://www.nuget.org/packages/Microsoft.Azure.Search).
+1. Ga in een browser naar de [pagina micro soft. Azure. Search NuGet package](https://www.nuget.org/packages/Microsoft.Azure.Search).
 
 1. Selecteer de nieuwste versie (9 of hoger).
 
 1. Kopieer de opdracht Package Manager.
 
-1. Ga terug naar de Package Manager-console en voer de opdracht uit die u in de vorige stap hebt gekopieerd.
+1. Open de Package Manager-console. Selecteer **extra** > **NuGet package manager** > **package**Manager-console. 
+
+1. Plak en voer de opdracht uit die u in de vorige stap hebt gekopieerd.
 
 Installeer vervolgens het meest recente `Microsoft.Extensions.Configuration.Json` NuGet-pakket.
 
@@ -167,8 +169,10 @@ Installeer vervolgens het meest recente `Microsoft.Extensions.Configuration.Json
       "AzureBlobConnectionString": "Put your Azure Blob connection string here",
     }
     ```
-
+    
 Voeg de gegevens van uw zoek service en Blob-opslag account toe. U kunt deze informatie ophalen uit de stappen voor het inrichten van de service, zoals aangegeven in de vorige sectie.
+
+Voer voor **SearchServiceName**de korte service naam en niet de volledige URL in.
 
 ### <a name="add-namespaces"></a>Naam ruimten toevoegen
 
@@ -246,7 +250,7 @@ private static DataSource CreateOrUpdateDataSource(SearchServiceClient serviceCl
     DataSource dataSource = DataSource.AzureBlobStorage(
         name: "demodata",
         storageConnectionString: configuration["AzureBlobConnectionString"],
-        containerName: "basic-demo-data-pr",
+        containerName: "cog-search-demo",
         description: "Demo files to demonstrate cognitive search capabilities.");
 
     // The data source does not need to be deleted if it was already created
@@ -281,34 +285,6 @@ public static void Main(string[] args)
     Console.WriteLine("Creating or updating the data source...");
     DataSource dataSource = CreateOrUpdateDataSource(serviceClient, configuration);
 ```
-
-
-<!-- 
-```csharp
-DataSource dataSource = DataSource.AzureBlobStorage(
-    name: "demodata",
-    storageConnectionString: configuration["AzureBlobConnectionString"],
-    containerName: "basic-demo-data-pr",
-    deletionDetectionPolicy: new SoftDeleteColumnDeletionDetectionPolicy(
-        softDeleteColumnName: "IsDeleted",
-        softDeleteMarkerValue: "true"),
-    description: "Demo files to demonstrate cognitive search capabilities.");
-```
-
-Now that you have initialized the `DataSource` object, create the data source. `SearchServiceClient` has a `DataSources` property. This property provides all the methods you need to create, list, update, or delete Azure Cognitive Search data sources.
-
-For a successful request, the method will return the data source that was created. If there is a problem with the request, such as an invalid parameter, the method will throw an exception.
-
-```csharp
-try
-{
-    serviceClient.DataSources.CreateOrUpdate(dataSource);
-}
-catch (Exception e)
-{
-    // Handle the exception
-}
-``` -->
 
 Bouw de oplossing en voer deze uit. Aangezien dit uw eerste aanvraag is, controleert u de Azure Portal om te bevestigen dat de gegevens bron is gemaakt in azure Cognitive Search. Controleer op de dashboardpagina van de zoekservice of de tegel Gegevensbronnen een nieuw item heeft. U moet mogelijk een paar minuten wachten tot de portalpagina is vernieuwd.
 
@@ -630,33 +606,6 @@ namespace EnrichwithAI
 }
 ```
 
-<!-- Add the below model class definition to `DemoIndex.cs` and include it in the same namespace where you'll create the index.
-
-```csharp
-// The SerializePropertyNamesAsCamelCase attribute is defined in the Azure Cognitive Search .NET SDK.
-// It ensures that Pascal-case property names in the model class are mapped to camel-case
-// field names in the index.
-[SerializePropertyNamesAsCamelCase]
-public class DemoIndex
-{
-    [System.ComponentModel.DataAnnotations.Key]
-    [IsSearchable, IsSortable]
-    public string Id { get; set; }
-
-    [IsSearchable]
-    public string Content { get; set; }
-
-    [IsSearchable]
-    public string LanguageCode { get; set; }
-
-    [IsSearchable]
-    public string[] KeyPhrases { get; set; }
-
-    [IsSearchable]
-    public string[] Organizations { get; set; }
-}
-``` -->
-
 Nu u een model klasse hebt gedefinieerd, kunt `Program.cs` u weer een index definitie vrij eenvoudig maken. De naam voor deze index is `demoindex`. Als er al een index met deze naam bestaat, wordt deze verwijderd.
 
 ```csharp
@@ -696,27 +645,14 @@ Voeg de volgende regels toe `Main`aan.
 ```csharp
     // Create the index
     Console.WriteLine("Creating the index...");
-    Index demoIndex = CreateDemoIndex(serviceClient);
+    Microsoft.Azure.Search.Models.Index demoIndex = CreateDemoIndex(serviceClient);
 ```
 
-<!-- ```csharp
-try
-{
-    bool exists = serviceClient.Indexes.Exists(index.Name);
+Voeg de volgende using-instructie toe om de dubbel zinnigheid-verwijzing op te lossen.
 
-    if (exists)
-    {
-        serviceClient.Indexes.Delete(index.Name);
-    }
-
-    serviceClient.Indexes.Create(index);
-}
-catch (Exception e)
-{
-    // Handle exception
-}
+```csharp
+using Index = Microsoft.Azure.Search.Models.Index;
 ```
- -->
 
 Zie [Create Index (Azure Cognitive Search rest API)](https://docs.microsoft.com/rest/api/searchservice/create-index)voor meer informatie over het definiëren van een index.
 
@@ -799,7 +735,7 @@ Voeg de volgende regels toe `Main`aan.
 
 ```csharp
     // Create the indexer, map fields, and execute transformations
-    Console.WriteLine("Creating the indexer...");
+    Console.WriteLine("Creating the indexer and executing the pipeline...");
     Indexer demoIndexer = CreateDemoIndexer(serviceClient, dataSource, skillset, demoIndex);
 ```
 

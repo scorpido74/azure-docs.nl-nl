@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
-ms.date: 04/03/2020
-ms.openlocfilehash: e53164d1e25f8a8d0a14d21c0544d95cf912fe9f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 04/30/2020
+ms.openlocfilehash: 14d4a3616a1be0964029ddfd8d2697df8e4e8031
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81313942"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82929329"
 ---
 # <a name="use-external-metadata-stores-in-azure-hdinsight"></a>Externe metagegevensopslag gebruiken in Azure HDInsight
 
@@ -41,6 +41,8 @@ HDInsight maakt standaard een meta Store met elk cluster type. U kunt in plaats 
 * In de standaard-META Store wordt gebruikgemaakt van de Basic Azure SQL-data base, die een limiet heeft van vijf DTU (data base Trans Action Unit).
 Deze standaard META Store wordt doorgaans gebruikt voor relatief eenvoudige workloads. Werk belastingen waarvoor geen meerdere clusters zijn vereist en die geen meta gegevens nodig hebben die langer zijn dan de levens cyclus van het cluster.
 
+* Voor werk belastingen wordt u aangeraden naar een externe meta Store te migreren. Raadpleeg de volgende sectie voor meer informatie.
+
 ## <a name="custom-metastore"></a>Aangepaste meta Store
 
 HDInsight biedt ook ondersteuning voor aangepaste meta Stores, die worden aanbevolen voor productie clusters:
@@ -64,6 +66,8 @@ HDInsight biedt ook ondersteuning voor aangepaste meta Stores, die worden aanbev
 Maak een bestaande Azure SQL Database voordat u een aangepaste Hive-metastore voor een HDInsight-cluster instelt.  Zie [Quick Start: een enkele data base maken in Azure SQL DB](https://docs.microsoft.com/azure/sql-database/sql-database-single-database-get-started?tabs=azure-portal)voor meer informatie.
 
 Tijdens het maken van het cluster moet de HDInsight-service verbinding maken met de externe meta Store en uw referenties verifiëren. Configureer Azure SQL Database firewall regels om Azure-Services en-bronnen toegang te geven tot de server. Schakel deze optie in het Azure Portal in door **Server firewall instellen**te selecteren. Selecteer vervolgens **niet** onder **open bare netwerk toegang weigeren**en **Ja** onder **toestaan dat Azure-Services en-bronnen toegang hebben tot deze server** voor de Azure SQL database-server of-Data Base. Zie [IP-firewall regels maken en beheren](https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure#use-the-azure-portal-to-manage-server-level-ip-firewall-rules) voor meer informatie.
+
+Privé-eind punten voor SQL-archieven worden niet ondersteund.
 
 ![knop Server firewall instellen](./media/hdinsight-use-external-metadata-stores/configure-azure-sql-database-firewall1.png)
 
@@ -94,6 +98,8 @@ U kunt uw cluster op elk gewenst moment naar een eerder gemaakt Azure SQL Databa
 * Als u een meta Store in meerdere clusters deelt, moet u ervoor zorgen dat alle clusters dezelfde HDInsight-versie zijn. Verschillende Hive-versies gebruiken verschillende meta Store-Database schema's. U kunt bijvoorbeeld geen meta Store delen via hive 2,1 en Hive 3,1 versie-clusters.
 
 * In HDInsight 4,0 gebruiken Spark en Hive onafhankelijke catalogi om toegang te krijgen tot SparkSQL of Hive-tabellen. Een tabel gemaakt door Spark in de Spark-catalogus. Een tabel die door Hive is gemaakt, bevindt zich in de Hive-catalogus. Dit gedrag wijkt af van HDInsight 3,6 waarbij een gemeen schappelijke catalogus van Hive en Spark wordt gedeeld. De Hive-en Spark-integratie in HDInsight 4,0 is afhankelijk van Hive Warehouse connector (HWC). HWC werkt als een brug tussen Spark en Hive. [Meer informatie over Hive Warehouse connector](../hdinsight/interactive-query/apache-hive-warehouse-connector.md).
+
+* Als u in HDInsight 4,0 de meta Store tussen Hive en Spark wilt delen, kunt u dit doen door de Property Store. catalog. default in te wijzigen in Hive in uw Spark-cluster. U kunt deze eigenschap vinden in Ambari Advanced spark2-component-site-override. Het is belang rijk om te begrijpen dat het delen van de meta Store alleen werkt voor externe Hive-tabellen. dit werkt niet als u interne/beheerde Hive-tabellen of zuur tabellen hebt.  
 
 ## <a name="apache-oozie-metastore"></a>Apache Oozie-meta Store
 

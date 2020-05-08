@@ -12,15 +12,16 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 12/24/2018
-ms.openlocfilehash: 01a6d796a9a8306da5bb707111b07786136a66cc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4da54318bea21daf9ec363be61bea18adaa2ce63
+ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81414787"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82629028"
 ---
 # <a name="delta-copy-from-a-database-with-a-control-table"></a>Delta kopie van een Data Base met een controle tabel
-[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
+
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
 In dit artikel wordt een sjabloon beschreven die beschikbaar is voor het stapsgewijs laden van nieuwe of bijgewerkte rijen van een database tabel naar Azure met behulp van een externe controle tabel waarin een waarde met een bovengrens wordt opgeslagen.
 

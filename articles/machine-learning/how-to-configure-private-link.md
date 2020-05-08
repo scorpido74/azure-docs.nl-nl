@@ -10,12 +10,12 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 03/13/2020
-ms.openlocfilehash: 8140fc4286ac97260e0b23ea700a70303ec69e2e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5428f24ea5ab780c4b51e0af37908077ddc32232
+ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81411206"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82891371"
 ---
 # <a name="configure-azure-private-link-for-an-azure-machine-learning-workspace-preview"></a>Een persoonlijke Azure-koppeling configureren voor een Azure Machine Learning-werk ruimte (preview)
 
@@ -118,7 +118,7 @@ Zie [een opslag account voor uw werk ruimte gebruiken](how-to-enable-virtual-net
 
 Als u de Azure Key Vault wilt beveiligen die wordt gebruikt door uw werk ruimte, kunt u deze in het virtuele netwerk plaatsen of een persoonlijke koppeling inschakelen.
 
-Zie [een sleutel kluis-instantie gebruiken met uw werk ruimte](how-to-enable-virtual-network.md#use-a-key-vault-instance-with-your-workspace)voor meer informatie over het plaatsen van de sleutel kluis in het virtuele netwerk.
+Zie [een sleutel kluis-instantie gebruiken met uw werk ruimte](how-to-enable-virtual-network.md#key-vault-instance)voor meer informatie over het plaatsen van de sleutel kluis in het virtuele netwerk.
 
 Zie voor meer informatie over het inschakelen van een persoonlijke koppeling voor de sleutel kluis [Key Vault integreren met persoonlijke Azure-koppeling](/azure/key-vault/private-link-service).
 
@@ -131,7 +131,7 @@ Als u de Azure Kubernetes-services die door uw werk ruimte worden gebruikt, wilt
 
 ## <a name="azure-container-registry"></a>Azure Container Registry
 
-Zie [Azure container Registry gebruiken](how-to-enable-virtual-network.md#use-azure-container-registry)voor meer informatie over het beveiligen van Azure container registry in het virtuele netwerk.
+Zie [Azure container Registry gebruiken](how-to-enable-virtual-network.md#azure-container-registry)voor meer informatie over het beveiligen van Azure container registry in het virtuele netwerk.
 
 > [!IMPORTANT]
 > Als u een persoonlijke koppeling voor uw Azure Machine Learning-werk ruimte gebruikt en de Azure Container Registry voor uw werk ruimte in een virtueel netwerk hebt geplaatst, moet u ook de volgende Azure Resource Manager sjabloon Toep assen. Met deze sjabloon kan uw werk ruimte communiceren met ACR via de persoonlijke koppeling.

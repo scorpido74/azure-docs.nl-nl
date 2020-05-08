@@ -2,43 +2,94 @@
 title: Grote gegevensset indexeren met ingebouwde Indexeer functies
 titleSuffix: Azure Cognitive Search
 description: Strategieën voor het indexeren van grote gegevens of reken kundige, intensieve indexering via de batch modus, het opruimen en technieken voor geplande, parallelle en gedistribueerde indexeringen.
-manager: nitinme
-author: HeidiSteen
-ms.author: heidist
+manager: liamca
+author: dereklegenzoff
+ms.author: delegenz
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 12/17/2019
-ms.openlocfilehash: 4ad5e961e390b60784355ff3bc72aca4a2f73e11
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 05/05/2020
+ms.openlocfilehash: 915243fb4dbc6bb274e26261bc5741811ef24592
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77190967"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82925980"
 ---
 # <a name="how-to-index-large-data-sets-in-azure-cognitive-search"></a>Grote gegevens sets indexeren in azure Cognitive Search
+
+Azure Cognitive Search ondersteunt [twee basis benaderingen](search-what-is-data-import.md) voor het importeren van gegevens in een zoek index: het *pushen* van uw gegevens in de index via een programma of het aanwijzen van een [Azure Cognitive Search indexer](search-indexer-overview.md) bij een ondersteunde gegevens bron om de gegevens op te *halen* .
 
 Naarmate gegevens volumes groeien of verwerkings behoeften veranderen, is het mogelijk dat eenvoudige of standaard indexerings strategieën niet meer praktisch zijn. Voor Azure Cognitive Search zijn er verschillende benaderingen voor het maken van grotere gegevens sets, variërend van de manier waarop u een aanvraag voor het uploaden van gegevens structureert, voor het gebruik van een bron-specifieke Indexeer functie voor geplande en gedistribueerde werk belastingen.
 
 Dezelfde technieken zijn ook van toepassing op langlopende processen. Met name de stappen die worden beschreven in [parallelle indexering](#parallel-indexing) zijn handig voor reken kundige indexen, zoals afbeeldings analyses of natuurlijke taal verwerking in een [AI-verrijkings pijplijn](cognitive-search-concept-intro.md).
 
-In de volgende secties worden drie technieken voor het indexeren van grote hoeveel heden gegevens besproken.
+In de volgende secties worden technieken besproken voor het indexeren van grote hoeveel heden gegevens met behulp van de Push-API en Indexeer functies.
 
-## <a name="option-1-pass-multiple-documents"></a>Optie 1: meerdere documenten door geven
+## <a name="push-api"></a>Push-API
 
-Een van de eenvoudigste mechanismen voor het indexeren van een grotere gegevensset is het indienen van meerdere documenten of records in één aanvraag. Zolang de volledige Payload minder is dan 16 MB, kan een aanvraag tot 1000 documenten in een bulk upload bewerking verwerken. Deze limieten zijn van toepassing, ongeacht of u de [rest API documenten toevoegen](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents) of de [methode index](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.documentsoperationsextensions.index?view=azure-dotnet) gebruikt in de .NET SDK. Voor beide API'S, pakt u 1000-documenten in de hoofd tekst van elke aanvraag.
+Bij het pushen van gegevens naar een index, zijn er verschillende belang rijke overwegingen die van invloed zijn op indexerings snelheden voor de Push-API. Deze factoren worden beschreven in de volgende sectie. 
 
-Batch indexering wordt geïmplementeerd voor afzonderlijke aanvragen met behulp van REST of .NET of via Indexeer functies. Een paar Indexeer functies kunnen worden gebruikt onder verschillende limieten. Met de indexering van Azure Blob wordt de Batch grootte bij 10 documenten ingesteld op het herkennen van de grotere gemiddelde document grootte. Voor Indexeer functies op basis van de [rest API Indexeer functie maken](https://docs.microsoft.com/rest/api/searchservice/Create-Indexer), kunt u het `BatchSize` argument instellen om deze instelling aan te passen, zodat deze beter overeenkomt met de kenmerken van uw gegevens. 
+Naast de informatie in dit artikel, kunt u ook gebruikmaken van de code voorbeelden in de [zelf studie indexerings snelheden optimaliseren](tutorial-optimize-indexing-push-api.md) voor meer informatie.
+
+### <a name="service-tier-and-number-of-partitionsreplicas"></a>Servicelaag en aantal partities/replica's
+
+Door partities toe te voegen of de laag van uw zoek service te verhogen, worden de indexerings snelheden verhoogd.
+
+Het toevoegen van extra replica's kan ook leiden tot hogere indexerings snelheden, maar dit is niet gegarandeerd. Aan de andere kant verhogen extra replica's het query volume dat door de zoek service kan worden verwerkt. Replica's zijn ook een belang rijk onderdeel voor het ophalen van een [Sla](https://azure.microsoft.com/support/legal/sla/search/v1_0/).
+
+Voordat u partitie/replica's toevoegt of een upgrade naar een hogere laag uitvoert, moet u rekening houden met de monetaire kosten en toewijzings tijd. Het toevoegen van partities kan de indexerings snelheid aanzienlijk verhogen, maar het toevoegen/verwijderen ervan kan vijf tien minuten tot enkele uren duren. Zie de documentatie over het [aanpassen van capaciteit](search-capacity-planning.md)voor meer informatie.
+
+### <a name="index-schema"></a>Index schema
+
+Het schema van uw index speelt een belang rijke rol bij het indexeren van gegevens. Het is mogelijk om velden toe te voegen en aanvullende eigenschappen toe te voegen aan deze velden (zoals *doorzoekbaar*, *facetbaar*of *filterbaar*) beide de indexerings snelheden verlagen.
+
+Over het algemeen raden we u aan om extra eigenschappen toe te voegen aan velden als u ze wilt gebruiken.
 
 > [!NOTE]
 > Voorkom dat de document grootte kleiner wordt door niet-query bare gegevens toe te voegen aan een index. Afbeeldingen en andere binaire gegevens kunnen niet rechtstreeks worden doorzocht en mogen niet worden opgeslagen in de index. Als u niet-query bare gegevens wilt integreren in Zoek resultaten, moet u een niet-doorzoekbaar veld definiëren waarin een URL-verwijzing naar de resource wordt opgeslagen.
 
-## <a name="option-2-add-resources"></a>Optie 2: resources toevoegen
+### <a name="batch-size"></a>Batch grootte
 
-Services die zijn ingericht in een van de [standaard prijs categorieën](search-sku-tier.md) , hebben vaak weinig gebruikte capaciteit voor zowel opslag als werk belastingen (query's of indexeringen), waardoor [het verhogen van de partitie en replica](search-capacity-planning.md) een duidelijke oplossing telt voor grotere gegevens sets. Voor de beste resultaten moet u beide bronnen gebruiken: partities voor opslag en replica's voor de gegevens opname.
+Een van de eenvoudigste mechanismen voor het indexeren van een grotere gegevensset is het indienen van meerdere documenten of records in één aanvraag. Zolang de volledige Payload minder is dan 16 MB, kan een aanvraag tot 1000 documenten in een bulk upload bewerking verwerken. Deze limieten zijn van toepassing, ongeacht of u gebruikmaakt van de [rest API documenten toevoegen](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents) of de [methode index](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.documentsoperationsextensions.index?view=azure-dotnet) in de .NET SDK. Voor beide API'S, pakt u 1000-documenten in de hoofd tekst van elke aanvraag.
 
-Het verg Roten van replica's en partities zijn factureer bare gebeurtenissen waarmee uw kosten worden verhoogd, maar tenzij u continu wilt indexeren onder maximale belasting, kunt u een schaal voor de duur van het indexerings proces toevoegen en vervolgens de resource niveaus weer herstellen nadat het indexeren is voltooid.
+Door batches te gebruiken om documenten te indexeren, worden de index prestaties aanzienlijk verbeterd. Het bepalen van de optimale Batch grootte voor uw gegevens is een belang rijk onderdeel van het optimaliseren van de index snelheid. De twee primaire factoren die van invloed zijn op de optimale Batch grootte zijn:
++ Het schema van uw index
++ De grootte van uw gegevens
 
-## <a name="option-3-use-indexers"></a>Optie 3: Indexeer functies gebruiken
+Omdat de optimale Batch grootte afhankelijk is van uw index en uw gegevens, is de beste manier om verschillende batch grootten te testen om te bepalen wat resulteert in de snelste indexerings snelheden voor uw scenario. Deze [zelf studie](tutorial-optimize-indexing-push-api.md) bevat voorbeeld code voor het testen van batch groottes met behulp van de .NET SDK. 
+
+### <a name="number-of-threadsworkers"></a>Aantal threads/werk rollen
+
+Als u optimaal gebruik wilt maken van de indexerings snelheden van Azure Cognitive Search, moet u waarschijnlijk meerdere threads gebruiken voor het gelijktijdig verzenden van batch-indexerings aanvragen naar de service.  
+
+Het optimale aantal threads wordt bepaald door:
+
++ De laag van uw zoek service
++ Het aantal partities
++ De grootte van uw batches
++ Het schema van uw index
+
+U kunt dit voor beeld wijzigen en testen met verschillende thread aantallen om het optimale thread aantal voor uw scenario te bepalen. Als er echter meerdere threads gelijktijdig worden uitgevoerd, kunt u profiteren van de meeste efficiëntie-winsten van. 
+
+> [!NOTE]
+> Wanneer u de laag van uw zoek service verhoogt of de partities verg root, moet u ook het aantal gelijktijdige threads verg Roten.
+
+Wanneer u de aanvragen van de zoek service aanpast, kunnen er [HTTP-status codes](https://docs.microsoft.com/rest/api/searchservice/http-status-codes) worden weer gegeven die aangeven dat de aanvraag niet volledig is voltooid. Tijdens het indexeren zijn twee veelvoorkomende HTTP-status codes:
+
++ **503-Service niet beschikbaar** : deze fout betekent dat het systeem zwaar wordt belast en dat de aanvraag op dit moment niet kan worden verwerkt.
++ **207 multi-status** : deze fout betekent dat sommige documenten zijn geslaagd, maar dat er ten minste één is mislukt.
+
+### <a name="retry-strategy"></a>Strategie voor opnieuw proberen 
+
+Als er een fout optreedt, moeten aanvragen opnieuw worden geprobeerd met een [exponentiële uitstel-strategie voor opnieuw proberen](https://docs.microsoft.com/dotnet/architecture/microservices/implement-resilient-applications/implement-retries-exponential-backoff).
+
+Met de .NET SDK van Azure Cognitive Search worden automatisch 503s en andere mislukte aanvragen opnieuw geprobeerd, maar u moet uw eigen logica implementeren om 207s opnieuw uit te voeren. Open source-hulpprogram ma's, zoals [Polly](https://github.com/App-vNext/Polly) , kunnen ook worden gebruikt voor het implementeren van een strategie voor opnieuw proberen.
+
+### <a name="network-data-transfer-speeds"></a>Netwerk gegevens overdrachts snelheden
+
+Netwerk gegevens overdrachts snelheden kunnen een beperkende factor zijn bij het indexeren van gegevens. Het indexeren van gegevens vanuit uw Azure-omgeving is een eenvoudige manier om indexeren sneller te maken.
+
+## <a name="indexers"></a>Indexeerfuncties
 
 [Indexeer functies](search-indexer-overview.md) worden gebruikt voor het verkennen van ondersteunde Azure-gegevens bronnen voor Doorzoek bare inhoud. Hoewel het niet specifiek is bedoeld voor grootschalig indexeren, zijn verschillende indexerings mogelijkheden bijzonder nuttig voor grotere gegevens sets:
 
@@ -48,6 +99,12 @@ Het verg Roten van replica's en partities zijn factureer bare gebeurtenissen waa
 
 > [!NOTE]
 > Indexeer functies zijn gegevens bron-specifiek, dus het gebruik van een indexerings benadering is alleen haalbaar voor geselecteerde gegevens bronnen op Azure: [SQL database](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md), [Blob Storage](search-howto-indexing-azure-blob-storage.md), [Table Storage](search-howto-indexing-azure-tables.md), [Cosmos DB](search-howto-index-cosmosdb.md).
+
+### <a name="batch-size"></a>Batch grootte
+
+Net als bij de Push-API kunt u met Indexeer functies het aantal items per batch configureren. Voor Indexeer functies op basis van de [rest API Indexeer functie maken](https://docs.microsoft.com/rest/api/searchservice/Create-Indexer), kunt u het `batchSize` argument instellen om deze instelling aan te passen, zodat deze beter overeenkomt met de kenmerken van uw gegevens. 
+
+De standaard batch grootten zijn gegevens bronnen die specifiek zijn. Azure SQL Database en Azure Cosmos DB hebben een standaard Batch grootte van 1000. Met Azure Blob-indexering wordt daarentegen de Batch grootte bij 10 documenten ingesteld op het herkennen van de grotere gemiddelde document grootte. 
 
 ### <a name="scheduled-indexing"></a>Geplande indexering
 

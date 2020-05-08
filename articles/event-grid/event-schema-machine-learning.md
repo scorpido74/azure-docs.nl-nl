@@ -7,12 +7,12 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 04/09/2020
 ms.author: spelluru
-ms.openlocfilehash: 7d9af420c7e2b47d2aeb4a8bf42ee138a605b305
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f77a76d6acb67c739e0adf186d23e9b16ff7e2ee
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81393283"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82928870"
 ---
 # <a name="azure-machine-learning-as-an-event-grid-source"></a>Azure Machine Learning als Event Grid bron
 
@@ -224,7 +224,7 @@ Het gegevens object heeft de volgende eigenschappen voor elk gebeurtenis type:
 
 ### <a name="microsoftmachinelearningservicesruncompleted"></a>Micro soft. MachineLearningServices. RunCompleted
 
-| Eigenschap | Type | Beschrijving |
+| Eigenschap | Type | Description |
 | -------- | ---- | ----------- |
 | ExperimentId | tekenreeks | De ID van het experiment waarvan de uitvoering deel uitmaakt. |
 | Experimentnaam | tekenreeks | De naam van het experiment waarvan de uitvoering deel uitmaakt. |
@@ -235,7 +235,7 @@ Het gegevens object heeft de volgende eigenschappen voor elk gebeurtenis type:
 
 ### <a name="microsoftmachinelearningservicesdatasetdriftdetected"></a>Micro soft. MachineLearningServices. DatasetDriftDetected
 
-| Eigenschap | Type | Beschrijving |
+| Eigenschap | Type | Description |
 | -------- | ---- | ----------- |
 | DataDriftId | tekenreeks | De ID van de gegevensdrijf monitor die de gebeurtenis heeft geactiveerd. |
 | DataDriftName | tekenreeks | De naam van de gegevensdrijf monitor die de gebeurtenis heeft geactiveerd. |
@@ -248,7 +248,7 @@ Het gegevens object heeft de volgende eigenschappen voor elk gebeurtenis type:
 
 ### <a name="microsoftmachinelearningservicesrunstatuschanged"></a>Micro soft. MachineLearningServices. RunStatusChanged
 
-| Eigenschap | Type | Beschrijving |
+| Eigenschap | Type | Description |
 | -------- | ---- | ----------- |
 | ExperimentId | tekenreeks | De ID van het experiment waarvan de uitvoering deel uitmaakt. |
 | Experimentnaam | tekenreeks | De naam van het experiment waarvan de uitvoering deel uitmaakt. |
@@ -267,5 +267,5 @@ Het gegevens object heeft de volgende eigenschappen voor elk gebeurtenis type:
 
 * Zie [Wat is Event grid?](overview.md) voor een inleiding tot Azure Event grid.
 * Zie [Event grid-abonnements schema](subscription-creation-schema.md) voor meer informatie over het maken van een Azure Event grid-abonnement
-* Zie voor een inleiding tot het gebruik van Azure Event Grid met Azure Machine Learning [Azure machine learning gebeurtenissen gebruiken](/azure/machine-learning/service/concept-event-grid-integration)
-* Zie [gebeurtenis gerichte machine learning werk stromen maken](/azure/machine-learning/service/how-to-use-event-grid) voor een voor beeld van het gebruik van Azure Event Grid met Azure machine learning.
+* Zie voor een inleiding tot het gebruik van Azure Event Grid met Azure Machine Learning [Azure machine learning gebeurtenissen gebruiken](/azure/machine-learning/concept-event-grid-integration)
+* Zie [gebeurtenis gerichte machine learning werk stromen maken](/azure/machine-learning/how-to-use-event-grid) voor een voor beeld van het gebruik van Azure Event Grid met Azure machine learning.

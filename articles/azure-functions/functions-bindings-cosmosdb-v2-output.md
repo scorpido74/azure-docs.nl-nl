@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 02/24/2020
 ms.author: cshoe
-ms.openlocfilehash: 636903c20e07f11a2fd919654cfaa62037171f20
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 743bd21a4fd974654760402a639c661fe086d2d5
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79277763"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82735008"
 ---
 # <a name="azure-cosmos-db-output-binding-for-azure-functions-2x"></a>Azure Cosmos DB uitvoer binding voor Azure Functions 2. x
 
@@ -527,7 +527,7 @@ Gebruik in de [runtime-bibliotheek van Java](/java/api/overview/azure/functions/
 
 # <a name="c"></a>[C#](#tab/csharp)
 
-Gebruik in [C# class libraries](functions-dotnet-class-library.md)het kenmerk [CosmosDB](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/v2.x/master/WebJobs.Extensions.CosmosDB/CosmosDBAttribute.cs) .
+Gebruik in [C# class libraries](functions-dotnet-class-library.md)het kenmerk [CosmosDB](https://github.com/Azure/azure-webjobs-sdk-extensions/tree/dev/test/WebJobs.Extensions.CosmosDB.Tests) .
 
 De constructor van het kenmerk neemt de naam van de data base en de verzameling. Zie [uitvoer-configuratie](#configuration)voor meer informatie over deze instellingen en andere eigenschappen die u kunt configureren. Hier volgt een `CosmosDB` voor beeld van een kenmerk in een methode handtekening:
 
@@ -565,9 +565,9 @@ De volgende tabel bevat informatie over de binding configuratie-eigenschappen di
 
 |function. json-eigenschap | Kenmerk eigenschap |Beschrijving|
 |---------|---------|----------------------|
-|**voert**     | N.v.t. | Moet worden ingesteld op `cosmosDB`.        |
-|**direction**     | N.v.t. | Moet worden ingesteld op `out`.         |
-|**naam**     | N.v.t. | De naam van de bindings parameter die het document in de functie vertegenwoordigt.  |
+|**voert**     | n.v.t. | Moet worden ingesteld op `cosmosDB`.        |
+|**draaien**     | n.v.t. | Moet worden ingesteld op `out`.         |
+|**naam**     | n.v.t. | De naam van de bindings parameter die het document in de functie vertegenwoordigt.  |
 |**databaseName** | **DatabaseName**|De data base met de verzameling waarin het document is gemaakt.     |
 |**collectionName** |**CollectionName**  | De naam van de verzameling waar het document wordt gemaakt. |
 |**createIfNotExists**  |**CreateIfNotExists**    | Een Booleaanse waarde die aangeeft of de verzameling wordt gemaakt wanneer deze niet bestaat. De standaard waarde is *False* omdat nieuwe verzamelingen worden gemaakt met gereserveerde door Voer, wat gevolgen heeft voor de kosten. Zie de pagina [prijzen](https://azure.microsoft.com/pricing/details/cosmos-db/) voor meer informatie.  |
@@ -617,7 +617,7 @@ In deze sectie worden de algemene configuratie-instellingen beschreven die besch
 |---------|---------|---------|
 |GatewayMode|Gateway|De verbindings modus die wordt gebruikt door de functie bij het maken van verbinding met de Azure Cosmos DB-service. Opties zijn `Direct` en`Gateway`|
 |Protocol|Https|Het verbindings protocol dat door de functie wordt gebruikt bij het verbinden met de Azure Cosmos DB-service.  Lees [hier voor een uitleg van beide modi](../cosmos-db/performance-tips.md#networking)|
-|leasePrefix|N.v.t.|Het lease voorvoegsel dat moet worden gebruikt voor alle functies in een app.|
+|leasePrefix|n.v.t.|Het lease voorvoegsel dat moet worden gebruikt voor alle functies in een app.|
 
 ## <a name="next-steps"></a>Volgende stappen
 
