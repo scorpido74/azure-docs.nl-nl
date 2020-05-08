@@ -7,12 +7,12 @@ ms.service: dns
 ms.topic: article
 ms.date: 08/09/2019
 ms.author: rohink
-ms.openlocfilehash: 271770935cf4cb83d4abc6e82a4f4b13ffe865b3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3378036c4800b274d879743abf937c7860e63ded
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80295489"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82926227"
 ---
 # <a name="azure-dns-alias-records-overview"></a>Overzicht van Azure DNS-aliasrecords
 
@@ -66,7 +66,7 @@ Contoso.com en www\.contoso.com kunnen bijvoorbeeld verwijzen naar hetzelfde Tra
 
 Net als bij een Traffic Manager profiel kunt u ook alias records gebruiken om uw DNS-zone te laten verwijzen naar Azure CDN-eind punten. Dit is handig wanneer u statische websites maakt met behulp van Azure Storage en Azure CDN. U kunt vervolgens toegang krijgen tot de website zonder ' www ' in behandeling te nemen in uw DNS-naam.
 
-Bijvoorbeeld, als uw statische website een naam `www.contoso.com, your users can access your site using contoso.com` heeft zonder dat u www-laten voorafgaan door hoeft te doen met de DNS-naam.
+Als uw statische website bijvoorbeeld een naam `www.contoso.com`heeft, hebben uw gebruikers toegang tot uw site met `contoso.com` behulp van zonder de nood zaak om www-laten voorafgaan door te maken met de DNS-naam.
 
 Zoals eerder beschreven, worden CNAME-records niet ondersteund op de zone Apex. U kunt dus geen CNAME-record gebruiken om contoso.com te verwijzen naar uw CDN-eind punt. In plaats daarvan kunt u een alias record gebruiken om de zone rechtstreeks naar een CDN-eind punt te wijzen.
 

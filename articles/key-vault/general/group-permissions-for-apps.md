@@ -10,12 +10,12 @@ ms.subservice: general
 ms.topic: tutorial
 ms.date: 09/27/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 008058e42dfeb84cb2812ac4e8378cb5a8b5913a
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: db6b8b2ff199b7b26d0c641ded31a5c1417468b9
+ms.sourcegitcommit: 0fda81f271f1a668ed28c55dcc2d0ba2bb417edd
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81422597"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82901265"
 ---
 # <a name="provide-key-vault-authentication-with-an-access-control-policy"></a>Key Vault verificatie met een toegangscontrole beleid bieden
 
@@ -60,10 +60,10 @@ De objectId voor een toepassing komt overeen met de bijbehorende service-princip
 
 Er zijn twee manieren om een objectId voor een toepassing te verkrijgen.  Allereerst moet u uw toepassing registreren bij Azure Active Directory. Volg hiervoor de stappen in de Snelstartgids [een toepassing registreren bij het micro soft Identity-platform](../../active-directory/develop/quickstart-register-app.md). Wanneer de registratie is voltooid, wordt de objectID vermeld als de ' toepassing (client)-ID '.
 
-De tweede is het maken van een Service-Principal in een Terminal venster. Met de Azure CLI, gebruikt u de opdracht [AZ AD SP create-for-RBAC](/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac) .
+De tweede is het maken van een Service-Principal in een Terminal venster. Met de Azure CLI gebruikt u de opdracht [AZ AD SP create-for-RBAC](/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac) en geeft u een unieke naam op voor het Service principe voor de vlag-n in de notatie ' http://<My-Unique-Service-Principle-Name> '.
 
 ```azurecli-interactive
-az ad sp create-for-rbac -n "http://mySP"
+az ad sp create-for-rbac -n "http://<my-unique-service-principle-name"
 ```
 
 De objectId wordt weer gegeven in de uitvoer als `clientID`.
@@ -72,7 +72,7 @@ Gebruik met Azure PowerShell de cmdlet [New-AzADServicePrincipal](/powershell/mo
 
 
 ```azurepowershell-interactive
-New-AzADServicePrincipal -DisplayName mySP
+New-AzADServicePrincipal -DisplayName <my-unique-service-principle-name>
 ```
 
 De objectId wordt weer gegeven in de uitvoer als `Id` (niet `ApplicationId`).

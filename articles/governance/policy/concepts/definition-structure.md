@@ -3,12 +3,12 @@ title: Details van de structuur van de beleids definitie
 description: Hierin wordt beschreven hoe beleids definities worden gebruikt om conventies voor Azure-resources in uw organisatie in te richten.
 ms.date: 04/03/2020
 ms.topic: conceptual
-ms.openlocfilehash: 5d4a86f4d9f74cf17229467f19a3afa8bebcf40f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f396f46fa77f75452ac8ac3cd98bccd58fe0dfe4
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82187763"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82613299"
 ---
 # <a name="azure-policy-definition-structure"></a>Structuur van Azure-beleidsdefinities
 
@@ -73,14 +73,14 @@ De **modus** is geconfigureerd, afhankelijk van of het beleid is gericht op een 
 
 De **modus** bepaalt welke resource typen worden geëvalueerd voor een beleid. De ondersteunde modi zijn:
 
-- `all`: resource groepen en alle resource typen evalueren
+- `all`: resource groepen, abonnementen en alle resource typen evalueren
 - `indexed`: alleen resource typen evalueren die ondersteuning bieden voor labels en locaties
 
 Resource `Microsoft.Network/routeTables` ondersteunt bijvoorbeeld tags en locatie en wordt in beide modi geëvalueerd. De resource `Microsoft.Network/routeTables/routes` kan echter niet worden gelabeld en wordt niet `Indexed` geëvalueerd in de modus.
 
 U wordt aangeraden de **modus** in `all` de meeste gevallen in te stellen. Alle beleids definities die via de portal zijn gemaakt `all` , maken gebruik van de modus. Als u Power shell of Azure CLI gebruikt, kunt u de para meter **mode** hand matig opgeven. Als de beleids definitie geen **modus** waarde bevat, wordt standaard `all` in azure PowerShell en naar `null` in azure cli. Een `null` modus is dezelfde als die gebruikt `indexed` om achterwaartse compatibiliteit te ondersteunen.
 
-`indexed`moet worden gebruikt bij het maken van beleids regels voor het afdwingen van tags of locaties. Hoewel dit niet vereist is, voor komt u dat resources die tags en locaties ondersteunen, niet kunnen worden weer gegeven als niet-compatibel in de nalevings resultaten. De uitzonde ring is **resource groepen**. Beleids regels die de locatie of tags voor een resource groep afdwingen, `all` moeten de **modus** instellen `Microsoft.Resources/subscriptions/resourceGroups` op en specifiek gericht zijn op het type. Zie Labels voor een [resource groep afdwingen](../samples/enforce-tag-rg.md)voor een voor beeld. Zie [tag-ondersteuning voor Azure-resources](../../../azure-resource-manager/management/tag-support.md)voor een lijst met resources die Tags ondersteunen.
+`indexed`moet worden gebruikt bij het maken van beleids regels voor het afdwingen van tags of locaties. Hoewel dit niet vereist is, voor komt u dat resources die tags en locaties ondersteunen, niet kunnen worden weer gegeven als niet-compatibel in de nalevings resultaten. De uitzonde ring is **resource groepen** en **abonnementen**. Beleids regels die de locatie of tags voor een resource groep of-abonnement **mode** afdwingen `all` , moeten de modus `Microsoft.Resources/subscriptions/resourceGroups` instellen `Microsoft.Resources/subscriptions` op en specifiek gericht op het of-type. Zie Labels voor een [resource groep afdwingen](../samples/enforce-tag-rg.md)voor een voor beeld. Zie [tag-ondersteuning voor Azure-resources](../../../azure-resource-manager/management/tag-support.md)voor een lijst met resources die Tags ondersteunen.
 
 ### <a name="resource-provider-modes-preview"></a><a name="resource-provider-modes" />Resource provider modi (preview-versie)
 
@@ -410,7 +410,7 @@ Gebruik in plaats daarvan de functie [als ()](../../../azure-resource-manager/te
 
 Met de gereviseerde beleids regel `if()` controleert u de lengte van de **naam** voordat u probeert `substring()` een waarde op te halen die korter is dan drie tekens. Als de **naam** te kort is, wordt de waarde ' niet beginnend met ABC ' geretourneerd in plaats van **ABC**. Een resource met een korte naam die niet met **ABC** begint, mislukt nog steeds de beleids regel, maar veroorzaakt geen fout meer tijdens de evaluatie.
 
-### <a name="count"></a>Count
+### <a name="count"></a>Aantal
 
 Voor waarden die tellen hoeveel leden van een matrix in de resource-nettolading voldoen aan een voor waarde-expressie, kunnen worden gevormd met de expressie **Count** . Bij algemene scenario's wordt gecontroleerd of ten minste één van ', ' precies één van ', ' alle of ' geen van ' de matrix leden voldoen aan de voor waarde. met **Count** wordt elk [ \[ \* \] ](#understanding-the--alias) lid van een alias matrix geëvalueerd voor een voorwaarde expressie en worden de _werkelijke_ resultaten opgeteld, die vervolgens worden vergeleken met de operator voor expressies. Expressies voor **tellingen** kunnen Maxi maal drie keer worden toegevoegd aan een enkele **policyRule** -definitie.
 

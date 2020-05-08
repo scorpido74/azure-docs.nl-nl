@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/25/2020
 ms.author: memildin
-ms.openlocfilehash: f6384c1e9e14e38b4c44c5ac79a674839b43b4ca
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2fe306cf7d17f0789c5e134c3fcad3f8f07a0b80
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80436153"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82612823"
 ---
 # <a name="faq-for-customers-already-using-azure-monitor-logs"></a>Veelgestelde vragen voor klanten die Azure Monitor-logboeken al gebruiken<a name="existingloganalyticscust"></a>
 
@@ -42,7 +42,7 @@ Als Security Center identificeert dat er al een virtuele machine is verbonden me
 ## <a name="i-already-have-workspaces-in-my-environment-can-i-use-them-to-collect-security-data"></a>Ik heb al werk ruimten in mijn omgeving. kan ik deze gebruiken voor het verzamelen van beveiligings gegevens?
 Als de Log Analytics-agent al is geïnstalleerd op een virtuele machine als Azure-extensie, Security Center gebruikt de bestaande verbonden werk ruimte. Er wordt een Security Center oplossing geïnstalleerd op de werk ruimte als deze nog niet aanwezig is, en de oplossing wordt alleen toegepast op de relevante Vm's via de [doel stellingen](../operations-management-suite/operations-management-suite-solution-targeting.md)van de oplossing.
 
-Wanneer Security Center de Log Analytics-agent op Vm's installeert, worden de standaardwerk ruimte (n) gebruikt die door Security Center is gemaakt.
+Als Security Center de Log Analytics-agent op Vm's installeert, worden de standaardwerk ruimte (n) gebruikt die door Security Center is gemaakt als Security Center niet naar een bestaande werk ruimte wijst.
 
 ## <a name="i-already-have-security-solution-on-my-workspaces-what-are-the-billing-implications"></a>Ik heb al een beveiligings oplossing voor mijn werk ruimten. Wat zijn de gevolgen voor facturering?
 De oplossing beveiligings & controle wordt gebruikt om Security Center Standard-laag functies voor Azure-Vm's in te scha kelen. Als de oplossing beveiligings & controle al is geïnstalleerd op een werk ruimte, gebruikt Security Center de bestaande oplossing. Er is geen wijziging in de facturering.

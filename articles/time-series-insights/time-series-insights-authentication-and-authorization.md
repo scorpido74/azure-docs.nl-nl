@@ -11,13 +11,13 @@ ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
 ms.date: 04/14/2020
-ms.custom: seodec18
-ms.openlocfilehash: beefad41a270233336bb9134268c98341e81a7cd
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: seodec18, has-adal-ref
+ms.openlocfilehash: bf959a7ac8c1038c4306a45ba4519374c5d85f29
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81380810"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82612279"
 ---
 # <a name="authentication-and-authorization-for-azure-time-series-insights-api"></a>Verificatie en autorisatie voor Azure Time Series Insights-API
 
@@ -93,7 +93,7 @@ In het volgende voor **stap 3**kunt u met behulp van de referenties van uw toepa
 
    1. Het token kan vervolgens worden door gegeven in `Authorization` de header wanneer de toepassing de time series INSIGHTS-API aanroept.
 
-* Ontwikkel aars kunnen er ook voor kiezen om te verifiëren met behulp van MSAL. Meer informatie over het [migreren naar MSAL](https://docs.microsoft.com/azure/active-directory/develop/msal-net-migration) vindt u in onze [referentie gegevens voor beheren voor een Azure time series Insights omgeving met behulp](time-series-insights-manage-reference-data-csharp.md) van het C#-artikel. 
+* Ontwikkel aars kunnen er ook voor kiezen om te verifiëren met behulp van MSAL. Meer informatie over het [migreren naar MSAL](https://docs.microsoft.com/azure/active-directory/develop/msal-net-migration) vindt u in onze [referentie gegevens voor beheren voor een Azure time series Insights omgeving met behulp](time-series-insights-manage-reference-data-csharp.md) van het C#-artikel.
 
 ## <a name="common-headers-and-parameters"></a>Algemene kopteksten en para meters
 
@@ -104,7 +104,7 @@ In deze sectie worden algemene HTTP-aanvraag headers en-para meters beschreven d
 
 ### <a name="authentication"></a>Verificatie
 
-Als u geverifieerde query's wilt uitvoeren op de [Time Series INSIGHTS rest api's](https://docs.microsoft.com/rest/api/time-series-insights/), moet er een geldig OAuth 2,0 Bearer-token worden door gegeven in de [autorisatie-header](/rest/api/apimanagement/2019-12-01/authorizationserver/createorupdate) met behulp van een rest-client van uw keuze (Postman, java script, C#). 
+Als u geverifieerde query's wilt uitvoeren op de [Time Series INSIGHTS rest api's](https://docs.microsoft.com/rest/api/time-series-insights/), moet er een geldig OAuth 2,0 Bearer-token worden door gegeven in de [autorisatie-header](/rest/api/apimanagement/2019-12-01/authorizationserver/createorupdate) met behulp van een rest-client van uw keuze (Postman, java script, C#).
 
 > [!TIP]
 > Lees de voor [beeld-visualisatie](https://tsiclientsample.azurewebsites.net/) van de gehoste Azure time series Insights client-SDK voor meer informatie over de verificatie met de time series Insights api's programmatisch met behulp van de [Java script-client-SDK](https://github.com/microsoft/tsiclient/blob/master/docs/API.md) samen met grafieken en grafieken.
@@ -115,7 +115,7 @@ De vereiste aanvraag headers worden hieronder beschreven.
 
 | Header vereiste aanvraag | Beschrijving |
 | --- | --- |
-| Autorisatie | Als u wilt verifiëren met Time Series Insights, moet een geldig OAuth 2,0 Bearer-token worden door gegeven in de **autorisatie** -header. | 
+| Autorisatie | Als u wilt verifiëren met Time Series Insights, moet een geldig OAuth 2,0 Bearer-token worden door gegeven in de **autorisatie** -header. |
 
 > [!IMPORTANT]
 > Het token moet exact worden uitgegeven aan de `https://api.timeseries.azure.com/` resource (ook wel bekend als het ' publiek ' van het token).

@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 02/26/2019
+ms.date: 05/07/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bfd61b78ca3027ade1f2f48dec33e0a8ed508d3d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ae0632fbc3208befe197c15ffdbf2d9a4e7b2d7a
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "60349817"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82926473"
 ---
 # <a name="azure-ad-connect-automatic-upgrade"></a>Azure AD Connect: automatische upgrade
 Deze functie is geïntroduceerd in build [1.1.105.0 (uitgebracht op februari 2016)](reference-connect-version-history.md#111050).  Deze functie is bijgewerkt in [Build 1.1.561](reference-connect-version-history.md#115610) en ondersteunt nu aanvullende scenario's die voorheen niet werden ondersteund.
@@ -99,7 +99,6 @@ Hier volgt een lijst met de meest voorkomende berichten die u vindt. Er worden n
 | UpgradeNotSupportedNonLocalDbInstall |U gebruikt geen SQL Server Express LocalDB-data base. |
 | UpgradeNotSupportedNonMsolAccount |Het [AD DS Connector-account](reference-connect-accounts-permissions.md#ad-ds-connector-account) is niet het standaard MSOL_-account. |
 | UpgradeNotSupportedNotConfiguredSignInMethod | Bij het instellen van AAD Connect kiest u *niet configureren* wanneer u de aanmeldings methode selecteert. |
-| UpgradeNotSupportedPtaSignInMethod | U hebt Pass-Through-verificatie geselecteerd als de aanmeldings methode. |
 | UpgradeNotSupportedStagingModeEnabled |De server is ingesteld om te worden uitgevoerd in de [faserings modus](how-to-connect-sync-staging-server.md). |
 | UpgradeNotSupportedUserWritebackEnabled |De functie voor het [terugschrijven van gebruikers](how-to-connect-preview.md#user-writeback) is ingeschakeld. |
 

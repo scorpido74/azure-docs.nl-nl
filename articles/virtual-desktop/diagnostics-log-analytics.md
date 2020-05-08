@@ -5,131 +5,271 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 12/18/2019
+ms.date: 04/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 355acb081afef8c78cdf971c7a82acdb91ab5593
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: e76b100607c0ac39c1b05e44ac0d1e76a6129384
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79127972"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82612670"
 ---
 # <a name="use-log-analytics-for-the-diagnostics-feature"></a>Log Analytics gebruiken voor de functie voor diagnostische gegevens
 
-Virtueel bureau blad van Windows biedt een functie voor diagnostische gegevens waarmee de beheerder problemen kan identificeren via één interface. Met deze functie worden diagnostische gegevens vastgelegd wanneer de service wordt gebruikt door iemand die is toegewezen aan de Windows-functie virtueel bureau blad. Elk logboek bevat informatie over welke Windows-functie voor virtueel bureau blad is betrokken bij de activiteit, eventuele fout berichten die tijdens de sessie worden weer gegeven, informatie over de Tenant en gebruikers gegevens. De functie diagnostische gegevens maakt activiteiten logboeken voor gebruikers-en beheer acties. Elk activiteiten logboek valt onder drie hoofd categorieën: 
+>[!IMPORTANT]
+>Deze inhoud is van toepassing op de lente 2020-update met Azure Resource Manager virtueel-bureaublad objecten van Windows. Raadpleeg [dit artikel](./virtual-desktop-fall-2019/diagnostics-log-analytics-2019.md)als u de versie van het Windows-bureau blad van Virtual Desktop 2019 zonder Azure Resource Manager objecten gebruikt.
+>
+> De Windows Virtual Desktop lente 2020-update is momenteel beschikbaar als open bare preview. Deze preview-versie is beschikbaar zonder service level agreement. het wordt niet aangeraden deze te gebruiken voor productie werkbelastingen. Misschien worden bepaalde functies niet ondersteund of zijn de mogelijkheden ervan beperkt. 
+> Zie voor meer informatie [aanvullende gebruiks voorwaarden voor Microsoft Azure-previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-- Activiteiten voor feed-abonnementen: wanneer een gebruiker verbinding probeert te maken met hun feed via Microsoft Extern bureaublad toepassingen.
-- Verbindings activiteiten: wanneer een gebruiker verbinding probeert te maken met een bureau blad of RemoteApp via Microsoft Extern bureaublad toepassingen.
-- Beheer activiteiten: wanneer een beheerder beheer bewerkingen op het systeem uitvoert, zoals het maken van hostgroepen, het toewijzen van gebruikers aan app-groepen en het maken van roltoewijzingen.
+Het virtuele bureau blad van Windows maakt gebruik van [Azure monitor](../azure-monitor/overview.md) voor bewaking en waarschuwingen, zoals veel andere Azure-Services. Hiermee kunnen beheerders problemen identificeren via één interface. De service maakt activiteiten logboeken voor zowel gebruikers-als beheer acties. Elk activiteiten logboek valt onder de volgende categorieën:  
+
+- Beheer activiteiten:  
+
+   - Controleren of er wordt geprobeerd Windows virtueel-bureaublad objecten te wijzigen met behulp van Api's of Power shell. Kan iemand bijvoorbeeld een hostgroep maken met behulp van Power shell?
+
+- Voerder 
+
+   - Kunnen gebruikers zich abonneren op werk ruimten? 
+
+   - Zien gebruikers alle resources die zijn gepubliceerd in de Extern bureaublad-client?
+
+- Verbindingen: 
+
+   - Wanneer gebruikers verbindingen met de service initiëren en volt ooien. 
+
+- Registratie van de host: 
+
+   - Is de sessiehost geregistreerd bij de service bij het verbinden?
+
+- Bufferoverschrijdingsfouten 
+
+   - Ondervinden gebruikers problemen met specifieke activiteiten? Met deze functie kan een tabel worden gegenereerd die de activiteit gegevens voor u registreert, zolang de gegevens worden gekoppeld aan de activiteiten.
+
+- Controle punten  
+
+   - Specifieke stappen in de levens duur van een activiteit die is bereikt. Tijdens een sessie is een gebruiker bijvoorbeeld gelijkmatig verdeeld over een bepaalde host. vervolgens is de gebruiker aangemeld tijdens een verbinding, enzovoort.
 
 Verbindingen die zich niet in het virtuele bureau blad van Windows bevinden, worden niet weer gegeven in de resultaten van diagnostische gegevens omdat de functie Service diagnostiek zelf deel uitmaakt van Windows virtueel bureau blad. Er kunnen problemen met de Windows-verbinding met virtueel bureau blad optreden wanneer de gebruiker problemen met de netwerk verbinding ondervindt.
 
-## <a name="why-you-should-use-log-analytics"></a>Waarom u Log Analytics moet gebruiken
+Met Azure Monitor kunt u gegevens van Windows virtueel bureau blad analyseren en de prestatie meter items van virtuele machines (VM) controleren, allemaal binnen hetzelfde hulp programma. In dit artikel vindt u meer informatie over het inschakelen van diagnostische gegevens voor uw virtuele Windows-desktop omgeving. 
 
-U kunt het beste Log Analytics gebruiken voor het analyseren van diagnostische gegevens in de Azure-client die meer dan één gebruiker problemen oplossen. Als u prestatie meter items voor virtuele machines in Log Analytics hebt, hebt u één hulp programma om informatie te verzamelen voor uw implementatie.
+>[!NOTE] 
+>Zie [Azure virtual machines bewaken met Azure monitor](../azure-monitor/insights/monitor-vm-azure.md)voor meer informatie over het bewaken van uw Vm's in Azure. Zorg er ook voor dat u [de drempel waarden voor prestatie meter items bekijkt](../virtual-desktop/virtual-desktop-fall-2019/deploy-diagnostics.md#windows-performance-counter-thresholds) voor een beter inzicht in uw gebruikers ervaring op de sessiehost.
 
 ## <a name="before-you-get-started"></a>Voordat u aan de slag gaat
 
-Voordat u Log Analytics kunt gebruiken met de functie diagnostische gegevens, moet u [een werk ruimte maken](../azure-monitor/learn/quick-collect-windows-computer.md#create-a-workspace).
+Voordat u Log Analytics kunt gebruiken, moet u een werk ruimte maken. Volg hiervoor de instructies in een van de volgende twee artikelen:
 
-Nadat u uw werk ruimte hebt gemaakt, volgt u de instructies in [Windows-computers verbinden met Azure monitor](../azure-monitor/platform/agent-windows.md#obtain-workspace-id-and-key) om de volgende informatie te verkrijgen: 
+- Als u liever Azure Portal gebruikt, raadpleegt u [een log Analytics-werk ruimte maken in azure Portal](../azure-monitor/learn/quick-create-workspace.md).
+- Zie [een log Analytics-werk ruimte maken met Power shell als u de voor](../azure-monitor/learn/quick-create-workspace-posh.md)keur geeft aan Power shell.
+
+Nadat u uw werk ruimte hebt gemaakt, volgt u de instructies in [Windows-computers verbinden met Azure monitor](../azure-monitor/platform/agent-windows.md#obtain-workspace-id-and-key) om de volgende informatie te verkrijgen:
 
 - De werk ruimte-ID
 - De primaire sleutel van uw werk ruimte
 
 U hebt deze gegevens later nodig in het installatie proces.
 
-## <a name="push-diagnostics-data-to-your-workspace"></a>Diagnostische gegevens naar uw werk ruimte pushen 
+Zorg ervoor dat u het machtigings beheer voor Azure Monitor controleert om gegevens toegang in te scha kelen voor degenen die uw virtuele Windows-desktop omgeving controleren en onderhouden. Zie [aan de slag met rollen, machtigingen en beveiliging met Azure monitor](../azure-monitor/platform/roles-permissions-security.md)voor meer informatie. 
 
-U kunt Diagnostische gegevens van uw Windows Virtual Desktop-Tenant pushen naar de Log Analytics voor uw werk ruimte. U kunt deze functie meteen instellen wanneer u uw Tenant voor het eerst maakt door uw werk ruimte te koppelen aan uw Tenant of u kunt deze later instellen met een bestaande Tenant.
+## <a name="push-diagnostics-data-to-your-workspace"></a>Diagnostische gegevens naar uw werk ruimte pushen
 
-Als u uw Tenant wilt koppelen aan uw Log Analytics-werk ruimte terwijl u uw nieuwe Tenant instelt, voert u de volgende cmdlet uit om u aan te melden bij Windows Virtual Desktop met uw TenantCreator-gebruikers account: 
+U kunt Diagnostische gegevens van uw virtuele bureau blad-objecten van Windows naar de Log Analytics voor uw werk ruimte pushen. U kunt deze functie meteen instellen wanneer u uw objecten voor het eerst maakt.
 
-```powershell
-Add-RdsAccount -DeploymentUrl https://rdbroker.wvd.microsoft.com 
-```
+Log Analytics instellen voor een nieuw object:
 
-Als u een bestaande Tenant wilt koppelen in plaats van een nieuwe Tenant, voert u de volgende cmdlet uit: 
+1. Meld u aan bij de Azure Portal en ga naar het **virtuele bureau blad van Windows**. 
 
-```powershell
-Set-RdsTenant -Name <TenantName> -AzureSubscriptionId <SubscriptionID> -LogAnalyticsWorkspaceId <String> -LogAnalyticsPrimaryKey <String> 
-```
+2. Navigeer naar het object (zoals een hostgroep, app-groep of werk ruimte) waarvoor u Logboeken en gebeurtenissen wilt vastleggen. 
 
-U moet deze cmdlets uitvoeren voor elke Tenant die u wilt koppelen aan Log Analytics. 
+3. Selecteer **Diagnostische instellingen** in het menu aan de linkerkant van het scherm. 
+
+4. Selecteer **Diagnostische instelling toevoegen** in het menu dat wordt weer gegeven aan de rechter kant van het scherm. 
+   
+    De opties die worden weer gegeven op de pagina Diagnostische instellingen variëren, afhankelijk van het soort object dat u bewerkt.
+
+    Wanneer u bijvoorbeeld diagnostische gegevens inschakelt voor een app-groep, ziet u opties voor het configureren van controle punten, fouten en beheer. Voor werk ruimten configureren deze categorieën een feed om te volgen wanneer gebruikers zich abonneren op de lijst met apps. Zie voor meer informatie over diagnostische instellingen [Diagnostische instelling maken om bron logboeken en metrische gegevens in azure te verzamelen](../azure-monitor/platform/diagnostic-settings.md). 
+
+     >[!IMPORTANT] 
+     >Vergeet niet om diagnostische gegevens in te scha kelen voor elk Azure Resource Manager object dat u wilt bewaken. Er zijn gegevens beschikbaar voor activiteiten nadat de diagnose is ingeschakeld. Het kan enkele uren duren voordat de eerste keer is ingesteld.  
+
+5. Voer een naam in voor de configuratie van uw instellingen en selecteer vervolgens **verzenden naar log Analytics**. De naam die u gebruikt, mag geen spaties bevatten en moet voldoen aan de [naamgevings conventies van Azure](../azure-resource-manager/management/resource-name-rules.md). Als onderdeel van de logboeken kunt u alle opties selecteren die u wilt toevoegen aan uw Log Analytics, zoals controle punt, fout, beheer, enzovoort.
+
+6. Selecteer **Opslaan**.
 
 >[!NOTE]
->Als u de Log Analytics-werk ruimte niet wilt koppelen wanneer u een Tenant maakt, voert `New-RdsTenant` u in plaats daarvan de cmdlet uit. 
+>Log Analytics biedt u de mogelijkheid om gegevens te streamen naar [Event hubs](../event-hubs/event-hubs-about.md) of deze te archiveren in een opslag account. Zie [Azure-bewakings gegevens streamen naar een event hub](../azure-monitor/platform/stream-monitoring-data-event-hubs.md) en [Azure-resource logboeken archiveren in een opslag account](../azure-monitor/platform/resource-logs-collect-storage.md)voor meer informatie over deze functie. 
+
+## <a name="how-to-access-log-analytics"></a>Toegang tot Log Analytics
+
+U hebt toegang tot Log Analytics-werk ruimten op het Azure Portal of Azure Monitor.
+
+### <a name="access-log-analytics-on-a-log-analytics-workspace"></a>Toegang tot Log Analytics op een Log Analytics werk ruimte
+
+1. Meld u aan bij Azure Portal.
+
+2. Zoeken naar **log Analytics-werk ruimte**. 
+
+3. Onder Services selecteert u **log Analytics werk ruimten**. 
+   
+4. Selecteer in de lijst de werk ruimte die u hebt geconfigureerd voor het virtueel-bureaublad object van Windows.
+
+5. Selecteer **Logboeken**in uw werk ruimte. U kunt de menu lijst filteren met de functie **zoeken** . 
+
+### <a name="access-log-analytics-on-azure-monitor"></a>Toegang tot Log Analytics op Azure Monitor
+
+1. Aanmelden bij Azure Portal
+
+2. Zoek en selecteer **monitor**. 
+
+3. Selecteer **Logboeken**.
+
+4. Volg de instructies op de pagina logboek registratie om het bereik van uw query in te stellen.  
+
+5. U kunt een query uitvoeren op diagnostische gegevens. Alle diagnostische tabellen hebben het voor voegsel ' WVD '.
 
 ## <a name="cadence-for-sending-diagnostic-events"></a>Uitgebracht voor het verzenden van diagnostische gebeurtenissen
 
-Diagnostische gebeurtenissen worden verzonden naar Log Analytics wanneer deze zijn voltooid.  
+Diagnostische gebeurtenissen worden verzonden naar Log Analytics wanneer deze zijn voltooid.
+
+Log Analytics alleen rapporten in deze tussenliggende status voor verbindings activiteiten:
+
+- Gestart
+- Verbonden
+- Voltooid
 
 ## <a name="example-queries"></a>Voorbeelden van query's
 
-De volgende voorbeeld query's laten zien hoe de diagnostische functie een rapport genereert voor de meest voorkomende activiteiten in uw systeem:
+De volgende voorbeeld query's laten zien hoe de diagnostische functie een rapport genereert voor de meest voorkomende activiteiten in uw systeem.
 
-In dit eerste voor beeld ziet u verbindings activiteiten die worden geïnitieerd door gebruikers met ondersteunde extern bureau blad-clients:
+Voer de volgende cmdlet uit om een lijst op te halen met de verbindingen die uw gebruikers hebben gemaakt:
 
 ```powershell
-WVDActivityV1_CL 
-
-| where Type_s == "Connection" 
-
+WVDConnections 
+| project-away TenantId,SourceSystem 
+| summarize arg_max(TimeGenerated, *), StartTime =  min(iff(State== 'Started', TimeGenerated , datetime(null) )), ConnectTime = min(iff(State== 'Connected', TimeGenerated , datetime(null) ))   by CorrelationId 
 | join kind=leftouter ( 
-
-    WVDErrorV1_CL 
-
-    | summarize Errors = makelist(pack('Time', Time_t, 'Code', ErrorCode_s , 'CodeSymbolic', ErrorCodeSymbolic_s, 'Message', ErrorMessage_s, 'ReportedBy', ReportedBy_s , 'Internal', ErrorInternal_s )) by ActivityId_g 
-
-    ) on $left.Id_g  == $right.ActivityId_g   
-
-| join  kind=leftouter (  
-
-    WVDCheckpointV1_CL 
-
-    | summarize Checkpoints = makelist(pack('Time', Time_t, 'ReportedBy', ReportedBy_s, 'Name', Name_s, 'Parameters', Parameters_s) ) by ActivityId_g 
-
-    ) on $left.Id_g  == $right.ActivityId_g  
-
-|project-away ActivityId_g, ActivityId_g1 
+    WVDErrors 
+    |summarize Errors=makelist(pack('Code', Code, 'CodeSymbolic', CodeSymbolic, 'Time', TimeGenerated, 'Message', Message ,'ServiceError', ServiceError, 'Source', Source)) by CorrelationId 
+    ) on CorrelationId     
+| join kind=leftouter ( 
+   WVDCheckpoints 
+   | summarize Checkpoints=makelist(pack('Time', TimeGenerated, 'Name', Name, 'Parameters', Parameters, 'Source', Source)) by CorrelationId 
+   | mv-apply Checkpoints on 
+    ( 
+        order by todatetime(Checkpoints['Time']) asc 
+        | summarize Checkpoints=makelist(Checkpoints) 
+    ) 
+   ) on CorrelationId 
+| project-away CorrelationId1, CorrelationId2 
+| order by  TimeGenerated desc 
 ```
 
-In dit volgende voor beeld worden beheer activiteiten door beheerders op tenants weer gegeven:
+De feed-activiteit van uw gebruikers weer geven:
 
 ```powershell
-WVDActivityV1_CL 
+WVDFeeds  
 
-| where Type_s == "Management" 
+| project-away TenantId,SourceSystem  
 
-| join kind=leftouter ( 
+| join kind=leftouter (  
 
-    WVDErrorV1_CL 
+    WVDErrors  
 
-    | summarize Errors = makelist(pack('Time', Time_t, 'Code', ErrorCode_s , 'CodeSymbolic', ErrorCodeSymbolic_s, 'Message', ErrorMessage_s, 'ReportedBy', ReportedBy_s , 'Internal', ErrorInternal_s )) by ActivityId_g 
+    |summarize Errors=makelist(pack('Code', Code, 'CodeSymbolic', CodeSymbolic, 'Time', TimeGenerated, 'Message', Message ,'ServiceError', ServiceError, 'Source', Source)) by CorrelationId  
 
-    ) on $left.Id_g  == $right.ActivityId_g   
+    ) on CorrelationId      
 
-| join  kind=leftouter (  
+| join kind=leftouter (  
 
-    WVDCheckpointV1_CL 
+   WVDCheckpoints  
 
-    | summarize Checkpoints = makelist(pack('Time', Time_t, 'ReportedBy', ReportedBy_s, 'Name', Name_s, 'Parameters', Parameters_s) ) by ActivityId_g 
+   | summarize Checkpoints=makelist(pack('Time', TimeGenerated, 'Name', Name, 'Parameters', Parameters, 'Source', Source)) by CorrelationId  
 
-    ) on $left.Id_g  == $right.ActivityId_g  
+   | mv-apply Checkpoints on  
 
-|project-away ActivityId_g, ActivityId_g1 
+    (  
+
+        order by todatetime(Checkpoints['Time']) asc  
+
+        | summarize Checkpoints=makelist(Checkpoints)  
+
+    )  
+
+   ) on CorrelationId  
+
+| project-away CorrelationId1, CorrelationId2  
+
+| order by  TimeGenerated desc 
+```
+
+Alle verbindingen voor één gebruiker zoeken: 
+
+```powershell
+|where UserName == "userupn" 
+|take 100 
+|sort by TimeGenerated asc, CorrelationId 
 ```
  
-## <a name="stop-sending-data-to-log-analytics"></a>Verzenden van gegevens naar Log Analytics stoppen 
 
-Als u wilt stoppen met het verzenden van gegevens van een bestaande Tenant naar Log Analytics, voert u de volgende cmdlet uit en stelt u lege teken reeksen in:
+Zoeken naar het aantal keren dat een gebruiker is verbonden per dag:
 
 ```powershell
-Set-RdsTenant -Name <TenantName> -AzureSubscriptionId <SubscriptionID> -LogAnalyticsWorkspaceId <String> -LogAnalyticsPrimaryKey <String> 
+WVDConnections 
+|where UserName == "userupn" 
+|take 100 
+|sort by TimeGenerated asc, CorrelationId 
+|summarize dcount(CorrelationId) by bin(TimeGenerated, 1d) 
+```
+ 
+
+Sessie duur zoeken op gebruiker:
+
+```powershell
+let Events = WVDConnections | where UserName == "userupn" ; 
+Events 
+| where State == "Connected" 
+| project CorrelationId , UserName, ResourceAlias , StartTime=TimeGenerated 
+| join (Events 
+| where State == "Completed" 
+| project EndTime=TimeGenerated, CorrelationId) 
+on CorrelationId 
+| project Duration = EndTime - StartTime, ResourceAlias 
+| sort by Duration asc 
 ```
 
-U moet deze cmdlet uitvoeren voor elke Tenant waarvan u wilt stoppen met het verzenden van gegevens. 
+Fouten voor een specifieke gebruiker zoeken:
+
+```powershell
+WVDErrors
+| where UserName == "johndoe@contoso.com" 
+|take 100
+```
+
+Nagaan of er een specifieke fout is opgetreden:
+
+```powershell
+WVDErrors 
+| where CodeSymbolic =="ErrorSymbolicCode" 
+| summarize count(UserName) by CodeSymbolic 
+```
+
+Zoeken naar een fout voor alle gebruikers:
+
+```powershell
+WVDErrors 
+| where ServiceError =="false" 
+| summarize usercount = count(UserName) by CodeSymbolic 
+| sort by usercount desc
+| render barchart 
+```
+
+>[!NOTE]
+>De belangrijkste tabel voor het oplossen van problemen is WVDErrors. Gebruik deze query om te begrijpen welke problemen optreden voor gebruikers activiteiten als verbindingen of feeds wanneer een gebruiker zich abonneert op de lijst met apps of Bureau bladen. In de tabel worden beheer fouten en registratie problemen van hosts weer gegeven.
+>
+>Als u tijdens de open bare preview hulp nodig hebt bij het oplossen van een probleem, zorg er dan voor dat u de CorrelationID voor de fout in uw Help-verzoek geeft. Zorg er ook voor dat de waarde van de service fout altijd ServiceError = "false" aangeeft. Een ' onwaar ' betekent dat het probleem kan worden opgelost door een beheer taak aan het eind. Als ServiceError = "True", moet u het probleem escaleren naar micro soft.
 
 ## <a name="next-steps"></a>Volgende stappen 
 
