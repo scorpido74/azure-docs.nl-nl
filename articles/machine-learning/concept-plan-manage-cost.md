@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 04/22/2020
-ms.openlocfilehash: 67b703f0079e26d01330d52d170f99699480fad6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: b777e6a45bdfe78889366982a6c28e10e21c4fbc
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82196385"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82856995"
 ---
 # <a name="plan-and-manage-costs-for-azure-machine-learning"></a>Kosten plannen en beheren voor Azure Machine Learning
 
@@ -90,7 +90,7 @@ az ml computetarget create amlcompute --name testcluster --vm-size Standard_NC6 
 
 Net als andere Azure Compute-bronnen wordt AmlCompute geleverd met een inherente [quotum configuratie (of limiet)](how-to-manage-quotas.md#azure-machine-learning-compute). Dit quotum is van de VM-serie (bijvoorbeeld dv2-serie, NCv3-serie) en varieert per regio voor elk abonnement. Abonnementen beginnen met kleine standaard waarden om aan de slag te gaan, maar u kunt deze instelling gebruiken om te bepalen hoeveel Amlcompute resources beschikbaar zijn in uw abonnement. 
 
-Configureer ook het [quotum van het werkruimte niveau per VM-serie](/how-to-manage-quotas.md#workspace-level-quota)voor elke werk ruimte in een abonnement. Zo kunt u meer gedetailleerde controle over de kosten die elke werk ruimte kan opleveren en bepaalde VM-families beperken. 
+Configureer ook het [quotum van het werkruimte niveau per VM-serie](how-to-manage-quotas.md#workspace-level-quota)voor elke werk ruimte in een abonnement. Zo kunt u meer gedetailleerde controle over de kosten die elke werk ruimte kan opleveren en bepaalde VM-families beperken. 
 
 Als u quota's op het niveau van de werk ruimte wilt instellen, begint u in de [Azure Portal](https://portal.azure.com).  Selecteer een werk ruimte in uw abonnement en selecteer **gebruik en quota's** in het linkerdeel venster. Selecteer vervolgens het tabblad **Quota's configureren** om de quota's weer te geven. U hebt bevoegdheden nodig bij het abonnements bereik om dit quotum in te stellen, omdat het een instelling is die van invloed is op meerdere werk ruimten.
 

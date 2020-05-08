@@ -6,12 +6,12 @@ ms.service: analysis-services
 ms.topic: conceptual
 ms.date: 10/30/2019
 ms.author: chlound
-ms.openlocfilehash: a79123d57f80474e1871ef68f9a92ea9417089ac
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
-ms.translationtype: MT
+ms.openlocfilehash: 7908b168adcaa00819990d7ced04ba4888d67d63
+ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "73572355"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82871315"
 ---
 # <a name="refresh-with-azure-automation"></a>Vernieuwen met Azure Automation
 
@@ -105,7 +105,7 @@ Dit kan als volgt worden geconfigureerd:
 
     ![Planning configureren](./media/analysis-services-refresh-azure-automation/15.png)
 
-3. Klik op **maken**.
+3. Klik op **Maken**.
 
 4. Vul de para meters voor de planning in. Deze worden gebruikt telkens wanneer het Runbook wordt geactiveerd. De para meter **WEBHOOKDATA** moet leeg blijven als deze wordt uitgevoerd via een schema.
 
@@ -173,7 +173,7 @@ Een virtuele machine van Azure met een statisch openbaar IP-adres kan worden geb
 > [!IMPORTANT]
 > Zorg ervoor dat het open bare IP-adres van de virtuele machine is geconfigureerd als statisch.
 >
->Zie voor meer informatie over het configureren van Azure Automation Hybrid Workers [resources in uw Data Center of Cloud automatiseren met behulp van Hybrid Runbook worker](../automation/automation-hybrid-runbook-worker.md#install-a-hybrid-runbook-worker).
+>Zie [Hybrid Runbook worker Installation](../automation/automation-hybrid-runbook-worker.md#hybrid-runbook-worker-installation)(Engelstalig) voor meer informatie over het configureren van Azure Automation Hybrid Workers.
 
 Nadat een Hybrid Worker is geconfigureerd, maakt u een webhook zoals beschreven in de sectie [die wordt gebruikt met Data Factory](#consume-with-data-factory).  Het enige verschil is hier het selecteren van de optie **uitvoeren op** > **Hybrid worker** bij het configureren van de webhook.
 

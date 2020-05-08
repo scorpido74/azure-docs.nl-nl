@@ -8,12 +8,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 10/05/2019
 ms.custom: seodec18
-ms.openlocfilehash: 8bed34e816207c9f0bd0565abab6af4adbaeb7fd
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5648dc1a915f2d38dc7811e6fe23ec76d0aa6f23
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82081639"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82857275"
 ---
 # <a name="azure-disk-encryption-for-windows-vms"></a>Azure Disk Encryption voor Windows-Vm's 
 
@@ -37,7 +37,7 @@ Virtuele Windows-machines zijn beschikbaar in [verschillende grootten](sizes-gen
 
 Azure Disk Encryption is ook beschikbaar voor virtuele machines met Premium Storage.
 
-Azure Disk Encryption is niet beschikbaar op [virtuele machines van de tweede generatie](generation-2.md#generation-1-vs-generation-2-capabilities)) en vm's uit de [Lsv2-serie](../lsv2-series.md). Zie [Azure Disk Encryption: niet-ondersteunde scenario's](disk-encryption-windows.md#unsupported-scenarios)voor meer uitzonde ringen.
+Azure Disk Encryption is niet beschikbaar op virtuele machines van de [2e generatie](generation-2.md#generation-1-vs-generation-2-capabilities) en [Lsv2-serie](../lsv2-series.md). Zie [Azure Disk Encryption: niet-ondersteunde scenario's](disk-encryption-windows.md#unsupported-scenarios)voor meer uitzonde ringen.
 
 ### <a name="supported-operating-systems"></a>Ondersteunde besturingssystemen
 

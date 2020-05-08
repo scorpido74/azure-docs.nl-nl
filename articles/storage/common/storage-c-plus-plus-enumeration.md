@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: common
 ms.topic: conceptual
 ms.reviewer: dineshm
-ms.openlocfilehash: 0f9e80aff20c1b2663491f6d6ceb99aaec58230f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 29ce845fa3239dd48ff2ff0480beff08cf704b30
+ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "74269451"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82591682"
 ---
 # <a name="list-azure-storage-resources-in-c"></a>Azure Storage-resources in C++ weergeven
 
@@ -62,7 +62,7 @@ De reactie voor een gesegmenteerde vermelding omvat het volgende:
 * *_segment*, dat de set resultaten bevat die voor één aanroep naar de listing-API wordt geretourneerd.
 * *continuation_token*, dat wordt door gegeven aan de volgende aanroep om de volgende pagina met resultaten op te halen. Wanneer er geen resultaten meer zijn om te retour neren, is het vervolg token null.
 
-Zo kan een typische aanroep voor het weer geven van een lijst met alle blobs in een container eruitzien zoals in het volgende code fragment. De code is beschikbaar in onze voor [beelden](https://github.com/Azure/azure-storage-cpp/blob/master/Microsoft.WindowsAzure.Storage/samples/BlobsGettingStarted/Application.cpp):
+Zo kan een typische aanroep voor het weer geven van een lijst met alle blobs in een container eruitzien zoals in het volgende code fragment. De code is beschikbaar in onze voor [beelden](https://github.com/Azure/azure-storage-cpp/blob/master/Microsoft.WindowsAzure.Storage/samples/BlobsGettingStarted.cpp):
 
 ```cpp
 // List blobs in the blob container
@@ -185,7 +185,7 @@ In de Storage-client bibliotheek voor C++ in versie 2.2.0 worden de API voor Laz
 
 ## <a name="conclusion"></a>Conclusie
 
-In dit artikel hebben we verschillende Overloads besproken voor het weer geven van Api's voor verschillende objecten in de Storage-client bibliotheek voor C++. Samenvattend:
+In dit artikel hebben we verschillende Overloads besproken voor het weer geven van Api's voor verschillende objecten in de Storage-client bibliotheek voor C++. Samenvatting:
 
 * Asynchrone Api's worden sterk aanbevolen onder meerdere threading-scenario's.
 * Een gesegmenteerde vermelding wordt aanbevolen voor de meeste scenario's.

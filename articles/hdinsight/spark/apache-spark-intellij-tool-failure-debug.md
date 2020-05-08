@@ -9,16 +9,16 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 07/12/2019
-ms.openlocfilehash: 1a0a6cf5a26854539dc4bbb0ae0254bbf08dad1f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 052b12817b788ff38f0fab72a5420896b062c732
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "73494605"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82857428"
 ---
 # <a name="failure-spark-job-debugging-with-azure-toolkit-for-intellij-preview"></a>Fout bij het opsporen van Spark-taken met Azure-toolkit voor IntelliJ (preview-versie)
 
-In dit artikel vindt u stapsgewijze richt lijnen voor het gebruik van HDInsight-Hulpprogram Ma's in [Azure-Toolkit voor IntelliJ](https://docs.microsoft.com/java/azure/intellij/azure-toolkit-for-intellij?view=azure-java-stable) voor het uitvoeren van fout **opsporing in Spark** -toepassingen.
+In dit artikel vindt u stapsgewijze richt lijnen voor het gebruik van HDInsight-Hulpprogram Ma's in [Azure-Toolkit voor IntelliJ](https://docs.microsoft.com/azure/developer/java/toolkit-for-intellij) voor het uitvoeren van fout **opsporing in Spark** -toepassingen.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -26,7 +26,7 @@ In dit artikel vindt u stapsgewijze richt lijnen voor het gebruik van HDInsight-
   
 * IntelliJ-idee. In dit artikel wordt gebruikgemaakt van [IntelliJ-idee Community ver. 2019.1.3](https://www.jetbrains.com/idea/download/#section=windows).
   
-* Azure-toolkit voor IntelliJ. Zie [Installing the Azure Toolkit for IntelliJ](https://docs.microsoft.com/java/azure/intellij/azure-toolkit-for-intellij-installation?view=azure-java-stable) (De Azure Toolkit voor IntelliJ installeren).
+* Azure-toolkit voor IntelliJ. Zie [Installing the Azure Toolkit for IntelliJ](https://docs.microsoft.com/azure/developer/java/toolkit-for-intellij/installation) (De Azure Toolkit voor IntelliJ installeren).
 
 * Verbinding maken met uw HDInsight-cluster. Zie [verbinding maken met uw HDInsight-cluster](apache-spark-intellij-tool-plugin.md).
 
@@ -44,7 +44,7 @@ Een Spark 2.3.2-project maken om de fout opsporing voort te zetten, fout in het 
 
      ![IntelliJ een debug-project maken](./media/apache-spark-intellij-tool-failure-debug/hdinsight-create-projectfor-failure-debug.png)
 
-   c. Selecteer **Next**.
+   c. Selecteer **Volgende**.
 
 2. Voer in het venster **New Project** de volgende stappen uit:
 

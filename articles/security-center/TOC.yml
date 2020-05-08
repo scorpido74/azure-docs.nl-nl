@@ -37,6 +37,11 @@
       href: tutorial-security-incident.md
     - name: Uw regelnaleving verbeteren
       href: security-center-compliance-dashboard.md
+- name: Voorbeelden
+  items:
+    - name: Ingebouwde modules voor Azure Policy
+      displayName: 'samples, policies, definitions'
+      href: ./policy-samples.md
 - name: Concepten
   items:
     - name: Beveiligingsscore
@@ -107,7 +112,7 @@
           href: custom-security-policies.md
         - name: Beleid beheren met de Azure Policy REST API
           href: configure-security-policy-azure-policy.md
-    - name: Dynamische nalevingspakketten toevoegen
+    - name: Standaarden voor uw compatibiliteitsdashboard kiezen
       href: update-regulatory-compliance-packages.md
     - name: Het informatiebeschermingsbeleid aanpassen
       href: security-center-info-protection-policy.md

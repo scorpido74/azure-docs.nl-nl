@@ -14,12 +14,12 @@ ms.topic: article
 ms.custom: seodec18
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: 61318fbccdf92c6502aa8b2236d8b234cec67668
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 2c42637dda9d1a413c0521ea2d7565a63ca58e81
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82209142"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82858283"
 ---
 # <a name="azure-event-hubs---geo-disaster-recovery"></a>Azure-Event Hubs-geo-nood herstel 
 
@@ -138,7 +138,7 @@ U kunt Beschikbaarheidszones alleen inschakelen voor nieuwe naam ruimten, met be
 ## <a name="next-steps"></a>Volgende stappen
 
 * Het [voor beeld op github gaat over](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/GeoDRClient) een eenvoudige werk stroom die een geo-koppeling maakt en initieert een failover voor een nood herstel scenario.
-* In de [rest API-verwijzing](/rest/api/eventhub/disasterrecoveryconfigs) worden api's beschreven voor het uitvoeren van de configuratie voor geo-nood herstel.
+* In de [rest API-verwijzing](/rest/api/eventhub/) worden api's beschreven voor het uitvoeren van de configuratie voor geo-nood herstel.
 
 Voor meer informatie over Event Hubs gaat u naar de volgende koppelingen:
 

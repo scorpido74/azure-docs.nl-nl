@@ -4,14 +4,14 @@ description: Ruimtelijke gegevens indexeren met Azure Cosmos DB
 author: timsander1
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 02/20/2020
+ms.date: 05/03/2020
 ms.author: tisande
-ms.openlocfilehash: eb0a2b2778b3217e185b9883def6eaa54674cc5b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: cd96f440c4e8c971d1f1473f667d31e60edef137
+ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79137900"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82839199"
 ---
 # <a name="index-geospatial-data-with-azure-cosmos-db"></a>Georuimtelijke gegevens indexeren met Azure Cosmos DB
 
@@ -28,11 +28,17 @@ Als u een indexerings beleid opgeeft dat ruimtelijke index voor/* (alle paden) b
 
 ## <a name="modifying-geospatial-data-type"></a>Georuimtelijk gegevens type wijzigen
 
-In uw container geeft de `geospatialConfig` opgegeven hoe de georuimtelijke gegevens worden geïndexeerd. U moet één `geospatialConfig` per container of geometrie opgeven. Als u niets opgeeft, `geospatialConfig` wordt de standaard waarde ingesteld op het gegevens type geografie. Wanneer u de `geospatialConfig`wijzigt, worden alle bestaande georuimtelijke gegevens in de container opnieuw geïndexeerd.
+In uw container geeft de **georuimtelijke configuratie** aan hoe de ruimtelijke gegevens worden geïndexeerd. Geef één **georuimtelijke configuratie** per container op: Geografie of geometrie.
 
-> [!NOTE]
-> Azure Cosmos DB ondersteunt momenteel alleen wijzigingen in de geospatialConfig in de .NET SDK in versie 3,6 en hoger.
->
+U kunt scha kelen tussen het ruimtelijke type **geografie** en **geometrie** in de Azure Portal. Het is belang rijk dat u een [geldig indexerings beleid voor ruimtelijke geometrie met een selectie kader](#geometry-data-indexing-examples) maakt voordat u overschakelt naar het ruimtelijke type geometrie.
+
+U kunt als volgt de **georuimtelijke configuratie** instellen in **Data Explorer** in het Azure portal:
+
+![Georuimtelijke configuratie instellen](./media/sql-query-geospatial-index/geospatial-configuration.png)
+
+U kunt ook de `geospatialConfig` in de .NET SDK aanpassen om de **georuimtelijke configuratie**aan te passen:
+
+Als u niets opgeeft, `geospatialConfig` wordt de standaard waarde ingesteld op het gegevens type geografie. Wanneer u de `geospatialConfig`wijzigt, worden alle bestaande georuimtelijke gegevens in de container opnieuw geïndexeerd.
 
 Hier volgt een voor beeld van het wijzigen van het georuimtelijke gegevens type `geospatialConfig` naar door de eigenschap in te stellen en een **boundingBox**toe te `geometry` voegen:
 
@@ -112,7 +118,7 @@ Het selectie kader bestaat uit de volgende eigenschappen:
 
 Een selectie kader is vereist omdat geometrische gegevens een vlieg tuig in beslag nemen dat oneindig kan zijn. Ruimtelijke indexen vereisen echter een eindige spatie. Voor het gegevens type **geografie** is de aarde de grens en hoeft u geen begrenzingsvak in te stellen.
 
-U moet een selectie kader maken dat alle (of de meeste) van uw gegevens bevat. Alleen bewerkingen die zijn berekend op de objecten die zich volledig binnen het begrenzingsvak bevinden, kunnen de ruimtelijke index gebruiken. U moet het selectie kader niet aanzienlijk groter maken dan nodig is, omdat dit een negatieve invloed heeft op de query prestaties.
+Maak een selectie kader dat alle (of de meeste) gegevens bevat. Alleen bewerkingen die zijn berekend op de objecten die zich volledig binnen het begrenzingsvak bevinden, kunnen de ruimtelijke index gebruiken. Als het selectie vakje groter is dan nodig is, heeft dit een negatieve invloed op de query prestaties.
 
 Hier volgt een voor beeld van een indexerings beleid waarmee **geometrie** gegevens worden `geometry`geïndexeerd waarbij **geospatialConfig** is ingesteld op:
 

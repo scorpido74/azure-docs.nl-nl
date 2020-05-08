@@ -1,33 +1,26 @@
 ---
-title: Voorbeeldsjablonen van Azure Policy | Microsoft Docs
-description: Azure Policy sjabloon voorbeelden voor Virtual Network.
-services: virtual-network
-documentationcenter: ''
-author: KumudD
-manager: twooley
-editor: ''
-tags: ''
-ms.assetid: ''
-ms.service: virtual-network
-ms.devlang: na
-ms.topic: sample
-ms.tgt_pltfrm: ''
-ms.workload: ''
+title: Ingebouwde beleids definities voor Azure Virtual Network
+description: Een lijst met Azure Policy ingebouwde beleids definities voor Azure Virtual Network. Deze ingebouwde beleids definities bieden gang bare benaderingen voor het beheren van uw Azure-resources.
 ms.date: 05/05/2020
+ms.topic: sample
+author: KumudD
 ms.author: kumud
-ms.custom: mvc
-ms.openlocfilehash: 93d0138f336ffc7055daf9988658a6284af53188
-ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
+ms.service: virtual-network
+ms.custom: subject-policy-samples
+ms.openlocfilehash: 557e3658b73314660ffde134b6151f9d83b26824
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82839127"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82928513"
 ---
-# <a name="azure-policy-sample-built-ins-for-virtual-network"></a>Azure Policy voor beeld van ingebouwde invoeg toepassingen voor het virtuele netwerk
+# <a name="azure-policy-built-in-policy-definitions-for-azure-virtual-network"></a>Azure Policy ingebouwde beleids definities voor Azure Virtual Network
 
-De volgende tabel bevat koppelingen naar voorbeelden voor [Azure Policy](../governance/policy/overview.md). De voorbeelden staan in [opslagplaats met voorbeelden voor Azure Policy](https://github.com/Azure/azure-policy).
+Deze pagina bevat een index van [Azure Policy](../governance/policy/overview.md) ingebouwde beleids definities voor Azure Virtual Network. Zie [Azure Policy ingebouwde definities](../governance/policy/samples/built-in-policies.md)voor aanvullende Azure Policy-invoeg toepassingen voor andere services.
 
-## <a name="network"></a>Netwerk
+De naam van elke ingebouwde beleids definitie is gekoppeld aan de beleids definitie in de Azure Portal. Gebruik de koppeling in de kolom **github** om de bron weer te geven op het [Azure Policy github opslag plaats](https://github.com/Azure/azure-policy).
+
+## <a name="azure-virtual-network"></a>Azure Virtual Network
 
 [!INCLUDE [azure-policy-samples-policies-network](../../includes/policy/samples/bycat/policies-network.md)]
 
@@ -38,3 +31,9 @@ De volgende tabel bevat koppelingen naar voorbeelden voor [Azure Policy](../gove
 ## <a name="general"></a>Algemeen
 
 [!INCLUDE [azure-policy-samples-policies-general](../../includes/policy/samples/bycat/policies-general.md)]
+
+## <a name="next-steps"></a>Volgende stappen
+
+- Bekijk de inbouwingen op de [Azure Policy GitHub-opslagplaats](https://github.com/Azure/azure-policy).
+- Lees over de [structuur van Azure Policy-definities](../governance/policy/concepts/definition-structure.md).
+- Lees [Informatie over de effecten van het beleid](../governance/policy/concepts/effects.md).

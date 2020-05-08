@@ -1,0 +1,22 @@
+---
+author: DCtheGeek
+ms.service: azure-policy
+ms.topic: include
+ms.date: 05/05/2020
+ms.author: dacoulte
+ms.custom: generated
+ms.openlocfilehash: 42d60c907fa0db8e04e121ce77e6cd50b34fdf03
+ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
+ms.translationtype: MT
+ms.contentlocale: nl-NL
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82966125"
+---
+|Naam |Beschrijving |Effect (s) |Versie |GitHub |
+|---|---|---|---|---|
+|[Zorg ervoor dat uw eigen sleutel gegevens bescherming is ingeschakeld voor MySQL-servers](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F83cef61d-dbd1-4b20-a4fc-5fbc7da10833) |Met dit beleid worden MySQL-servers in uw omgeving gecontroleerd zonder uw eigen sleutel gegevens bescherming in te scha kelen. Ga voor meer informatie naar [https://aka.ms/mysqlbyok](https://aka.ms/mysqlbyok). |AuditIfNotExists, uitgeschakeld |1.0.0 |[Koppeling](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/SQL/MySQL_EnableByok_Audit.json) |
+|[SSL-verbinding afdwingen moet zijn ingeschakeld voor MySQL-database servers](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fe802a67a-daf5-4436-9ea6-f6d821dd0c5d) |Met dit beleid wordt een MySQL-server gecontroleerd die geen SSL-verbinding afdwingt. Azure Database for MySQL ondersteunt het verbinden van uw Azure Database for MySQL server met client toepassingen met behulp van Secure Sockets Layer (SSL). Het afdwingen van SSL-verbindingen tussen uw database server en uw client toepassingen helpt bij het versleutelen van de gegevens stroom tussen de server en uw toepassing. |Controle, uitgeschakeld |1.0.0 |[Koppeling](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/SQL/MySQL_EnableSSL_Audit.json) |
+|[De geo-redundante back-up moet zijn ingeschakeld voor Azure Database for MySQL](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F82339799-d096-41ae-8538-b108becf0970) |Dit beleid controleert alle Azure Database for MySQL waarvoor geo-redundante back-up niet is ingeschakeld. |Controle, uitgeschakeld |1.0.0 |[Koppeling](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/SQL/GeoRedundant_DBForMySQL_Audit.json) |
+|[MySQL-server moet een service-eind punt van een virtueel netwerk gebruiken](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F3375856c-3824-4e0e-ae6a-79e011dd4c47) |Dit beleid controleert MySQL-servers die niet zijn geconfigureerd voor het gebruik van een service-eind punt voor een virtueel netwerk. Ga voor meer informatie naar [https://aka.ms/mysqlvnet](https://aka.ms/mysqlvnet). |AuditIfNotExists, uitgeschakeld |1.0.1 |[Koppeling](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/SQL/MySQL_VirtualNetworkServiceEndpoint_Audit.json) |
+|[Het persoonlijke eind punt moet worden ingeschakeld voor MySQL-servers](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F7595c971-233d-4bcf-bd18-596129188c49) |Dit beleid controleert MySQL-servers die niet zijn geconfigureerd voor het gebruik van een persoonlijk eind punt. Ga voor meer informatie naar [https://aka.ms/mysqlprivatelink](https://aka.ms/mysqlprivatelink). |AuditIfNotExists, uitgeschakeld |1.0.1 |[Koppeling](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/SQL/MySQL_EnablePrivateEndPoint_Audit.json) |
+|[Open bare netwerk toegang moet worden uitgeschakeld voor MySQL-servers](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fd9844e8a-1437-4aeb-a32c-0c992f056095) |Met dit beleid worden MySQL-servers in uw omgeving gecontroleerd waarvoor open bare netwerk toegang is ingeschakeld. Ga voor meer informatie naar [https://go.microsoft.com/fwlink/?linkid=2120014](https://go.microsoft.com/fwlink/?linkid=2120014). |Controle, uitgeschakeld |1.0.0 |[Koppeling](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/SQL/MySQL_DisablePublicNetworkAccess_Audit.json) |
