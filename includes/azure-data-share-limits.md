@@ -1,6 +1,6 @@
 ---
-title: Include-bestand
-description: Include-bestand
+title: bestand opnemen
+description: bestand opnemen
 services: azure data share
 author: jife
 ms.service: azure data share

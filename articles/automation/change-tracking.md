@@ -5,12 +5,12 @@ services: automation
 ms.subservice: change-inventory-management
 ms.date: 01/28/2019
 ms.topic: conceptual
-ms.openlocfilehash: 1208e08f7b85e893ba754bdbdf71a2da4f68c90a
-ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
+ms.openlocfilehash: 6a21effc3e567e75a8851fec35ff80dffc60a761
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82509059"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82787172"
 ---
 # <a name="overview-of-change-tracking-and-inventory"></a>Overzicht van Wijzigingen bijhouden en inventaris
 
@@ -23,10 +23,15 @@ In dit artikel wordt beschreven hoe u Wijzigingen bijhouden en inventariseert in
 - Micro soft-Services
 - Linux-daemons
 
-Wijzigingen bijhouden en de inventarisatie worden gegevens opgehaald uit de Azure Monitor-service in de Cloud. Azure verzendt wijzigingen aan geïnstalleerde software, micro soft-Services, Windows-REGI ster en-bestanden en Linux-daemons op bewaakte servers om te Azure Monitor voor verwerking. De Cloud service past logica toe op de ontvangen gegevens, registreert deze en maakt deze beschikbaar. 
-
 > [!NOTE]
 > Zie de [wijzigings geschiedenis](../governance/resource-graph/how-to/get-resource-changes.md)van de Azure-resource grafiek voor het bijhouden van wijzigingen in de eigenschappen van Azure Resource Manager.
+
+Wijzigingen bijhouden en de inventarisatie verkrijgen de gegevens van Azure Monitor. Virtuele machines die zijn verbonden met Log Analytics-werk ruimten, gebruiken Log Analytics agents om gegevens te verzamelen over wijzigingen in geïnstalleerde software, micro soft-Services, Windows-REGI ster en-bestanden en eventuele Linux-daemons op bewaakte servers. Wanneer de gegevens beschikbaar zijn, sturen de agents deze naar Azure Monitor voor verwerking. Azure Monitor past logica toe op de ontvangen gegevens, registreert deze en maakt deze beschikbaar. 
+
+Met de functie Wijzigingen bijhouden en Inventory kunt u zowel de functionaliteit voor het bijhouden van wijzigingen als voor de inventaris in Azure Automation. Omdat beide gebieden dezelfde Log Analytics-agent gebruiken, is het proces voor het toevoegen van een virtuele machine hetzelfde in beide functionele gebieden. 
+
+> [!NOTE]
+> Als u de functie voor Wijzigingen bijhouden en inventaris wilt gebruiken, moet u alle virtuele machines in hetzelfde abonnement en dezelfde regio van het Automation-account zoeken.
 
 Wijzigingen bijhouden en inventaris bieden momenteel geen ondersteuning voor de volgende items:
 
@@ -38,7 +43,7 @@ Wijzigingen bijhouden en inventaris bieden momenteel geen ondersteuning voor de 
 Andere beperkingen:
 
 * De kolom en waarden voor de **maximale bestands grootte** worden niet gebruikt in de huidige implementatie.
-* Als u meer dan 2500 bestanden in een verzamelings cyclus van 30 minuten verzamelt, kunnen de prestaties van de oplossing afnemen.
+* Als u meer dan 2500 bestanden in een verzamelings cyclus van 30 minuten verzamelt, kunnen wijzigingen worden bijgehouden en de prestaties van de inventaris worden verslechterd.
 * Wanneer het netwerk verkeer hoog is, kan het tot zes uur duren voordat wijzigings records worden weer gegeven.
 * Als u een configuratie wijzigt terwijl een computer is uitgeschakeld, kan het zijn dat de computer wijzigingen post die horen bij de vorige configuratie.
 
@@ -49,33 +54,7 @@ Wijzigingen bijhouden en inventaris ondervindt momenteel de volgende problemen:
 
 ## <a name="supported-operating-systems"></a>Ondersteunde besturingssystemen
 
-Wijzigingen bijhouden en inventarisatie en de Azure Monitor Log Analytics agents worden ondersteund in zowel Windows-als Linux-besturings systemen.
-
-### <a name="windows-operating-systems"></a>Windows-besturings systemen
-
-De versie van het Windows-besturings systeem die officieel wordt ondersteund, is Windows Server 2008 R2 of hoger.
-
-### <a name="linux-operating-systems"></a>Linux-besturings systemen
-
-De Linux-distributies die hieronder worden besproken, worden officieel ondersteund voor de Log Analytics-agent voor Linux. De Linux-agent kan echter ook worden uitgevoerd op andere distributies die niet worden vermeld. Tenzij anders vermeld, worden alle secundaire releases ondersteund voor elke primaire versie die wordt vermeld.
-
-#### <a name="64-bit-linux-operating-systems"></a>64-bits Linux-besturings systemen
-
-* CentOS 6 en 7
-* Amazon Linux 2017,09
-* Oracle Linux 6 en 7
-* Red Hat Enterprise Linux Server 6 en 7
-* Debian GNU/Linux 8 en 9
-* Ubuntu Linux 14,04 LTS, 16,04 LTS en 18,04 LTS
-* SUSE Linux Enterprise Server 12
-
-#### <a name="32-bit-linux-operating-systems"></a>32-bits Linux-besturings systemen
-
-* CentOS 6
-* Oracle Linux 6
-* Red Hat Enterprise Linux Server 6
-* Debian GNU/Linux 8 en 9
-* Ubuntu Linux 14,04 LTS en 16,04 LTS
+Wijzigingen bijhouden en inventarisatie wordt ondersteund op alle besturings systemen die voldoen aan de vereisten van Log Analytics agent. De versies van het Windows-besturings systeem die officieel worden ondersteund, zijn Windows Server 2008 SP1 of hoger en Windows 7 SP1 of hoger. Een aantal Linux-besturings systemen wordt ook ondersteund. Zie [overzicht van log Analytics agent](https://docs.microsoft.com/azure/azure-monitor/platform/log-analytics-agent). 
 
 ## <a name="network-requirements"></a>Netwerkvereisten
 
@@ -83,14 +62,14 @@ Voor Wijzigingen bijhouden en de inventarisatie zijn specifieke netwerk adressen
 
 |Openbare Azure-peering  |Azure Government  |
 |---------|---------|
-|*.ods.opinsights.azure.com     |*. ods.opinsights.azure.us         |
+|*.ods.opinsights.azure.com    | *. ods.opinsights.azure.us         |
 |*.oms.opinsights.azure.com     | *. oms.opinsights.azure.us        |
-|*.blob.core.windows.net|*. blob.core.usgovcloudapi.net|
-|*.azure-automation.net|*. azure-automation.us|
+|*.blob.core.windows.net | *. blob.core.usgovcloudapi.net|
+|*.azure-automation.net | *. azure-automation.us|
 
 ## <a name="change-tracking-and-inventory-user-interface"></a>Gebruikers interface van Wijzigingen bijhouden en inventaris
 
-Gebruik Wijzigingen bijhouden en inventaris in de Azure Portal om het overzicht van de wijzigingen voor bewaakte computers weer te geven. De functie is beschikbaar als u **Wijzigingen bijhouden** selecteert onder **configuratie beheer** in uw Automation-account. 
+Gebruik Wijzigingen bijhouden en inventaris in de Azure Portal om het overzicht van de wijzigingen voor bewaakte computers weer te geven. De functie is beschikbaar als u een van de opties voor het bijhouden van **wijzigingen** of **inventarisatie** onder **configuratie beheer** in uw Automation-account selecteert.  
 
 ![Wijzigingen bijhouden dash board](./media/change-tracking/change-tracking-dash01.png)
 
@@ -186,7 +165,7 @@ De volgende tabel bevat de limieten voor bijgehouden items per computer voor Wij
 |Services|250|
 |Daemons|250|
 
-Het gemiddelde Log Analytics gegevens gebruik voor een machine met Wijzigingen bijhouden en inventaris is ongeveer 40 MB per maand. Deze waarde is alleen een benadering en kan worden gewijzigd op basis van uw omgeving. Het is raadzaam om uw omgeving te controleren om precies het gebruik te zien dat u hebt.
+Het gemiddelde Log Analytics gegevens gebruik voor een machine met Wijzigingen bijhouden en inventaris is ongeveer 40 MB per maand, afhankelijk van uw omgeving. Met de functie gebruik en geschatte kosten van de Log Analytics-werk ruimte kunt u de gegevens weer geven die zijn opgenomen door Wijzigingen bijhouden en inventaris in een gebruiks diagram. U kunt deze gegevens weergave gebruiken om uw gegevens gebruik te evalueren en te bepalen hoe uw factuur wordt beïnvloed. Bekijk [inzicht in uw gebruik en geschatte kosten](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#understand-your-usage-and-estimate-costs).  
 
 ### <a name="microsoft-service-data"></a>Micro soft-service gegevens
 

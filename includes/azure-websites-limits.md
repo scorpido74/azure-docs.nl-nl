@@ -4,12 +4,12 @@ ms.service: cost-management-billing
 ms.topic: include
 ms.date: 03/04/2020
 ms.author: jroth
-ms.openlocfilehash: 505e2d8eec20853fba3743b40cbe289585d14d61
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: af0f7ef04ce746c502a8ddf7b0d3971f13a42484
+ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78305057"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82844553"
 ---
 | Resource | Gratis | Gedeeld | Basic | Standard | Premium (v2) | Geïsoleerd </th> |
 | --- | --- | --- | --- | --- | --- | --- |
@@ -17,7 +17,7 @@ ms.locfileid: "78305057"
 | [App Service plan](../articles/app-service/overview-hosting-plans.md) |10 per regio |10 per resource groep |100 per resource groep |100 per resource groep |100 per resource groep |100 per resource groep|
 | Type Compute-instantie |Gedeeld |Gedeeld |Toegewezen<sup>3</sup> |Toegewezen<sup>3</sup> |Toegewezen<sup>3</sup></p> |Toegewezen<sup>3</sup>|
 | [Uitschalen](../articles/app-service/manage-scale-up.md) (maximum aantal instanties) |1 gedeeld |1 gedeeld |3 toegewezen<sup>3</sup> |10 toegewezen<sup>3</sup> |30 toegewezen<sup>3</sup>|100 toegewezen<sup>4</sup>|
-| Opslag<sup>5</sup> |1 GB<sup>5</sup> |1 GB<sup>5</sup> |10 GB<sup>5</sup> |50 GB<sup>5</sup> |250 GB<sup>5</sup></p> |1 TB<sup>5</sup>|
+| Opslag<sup>5</sup> |1 GB<sup>5</sup> |1 GB<sup>5</sup> |10 GB<sup>5</sup> |50 GB<sup>5</sup> |250 GB<sup>5</sup> <br/><br/> Voor meer dan 250 GB dient u een ondersteunings aanvraag in. |1 TB<sup>5</sup> <br/><br/> De beschik bare opslag limiet is 999 GB. |
 | CPU-tijd (5 minuten)<sup>6</sup> |3 minuten |3 minuten |Onbeperkt, betalen tegen standaard [tarieven](https://azure.microsoft.com/pricing/details/app-service/)</a> |Onbeperkt, betalen tegen standaard [tarieven](https://azure.microsoft.com/pricing/details/app-service/)</a> |Onbeperkt, betalen tegen standaard [tarieven](https://azure.microsoft.com/pricing/details/app-service/)</a> |Onbeperkt, betalen tegen standaard [tarieven](https://azure.microsoft.com/pricing/details/app-service/)</a>|
 | CPU-tijd (dag)<sup>6</sup> |60 minuten |240 minuten |Onbeperkt, betalen tegen standaard [tarieven](https://azure.microsoft.com/pricing/details/app-service/)</a> |Onbeperkt, betalen tegen standaard [tarieven](https://azure.microsoft.com/pricing/details/app-service/)</a> |Onbeperkt, betalen tegen standaard [tarieven](https://azure.microsoft.com/pricing/details/app-service/)</a> |Onbeperkt, betalen tegen standaard [tarieven](https://azure.microsoft.com/pricing/details/app-service/)</a> |
 | Geheugen (1 uur) |1.024 MB per App Service-abonnement |1.024 MB per app |N.v.t. |N.v.t. |N.v.t. |N.v.t. |

@@ -3,12 +3,12 @@ title: De Azure Service Fabric-versie van een cluster upgraden
 description: Voer een upgrade uit voor de Service Fabric code en/of configuratie waarmee een Service Fabric cluster wordt uitgevoerd, met inbegrip van het instellen van de cluster update modus, het bijwerken van certificaten, het toevoegen van toepassings poorten, het uitvoeren van besturingssysteem patches, enzovoort. Wat kunt u verwachten wanneer de upgrades worden uitgevoerd?
 ms.topic: conceptual
 ms.date: 11/12/2018
-ms.openlocfilehash: c3ffcbd4296385623ff5e2c1ee001c27598ff3fb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 802e7402f60370b7151c5e373c8a4921a5af7c80
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75451811"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82789597"
 ---
 # <a name="upgrade-the-service-fabric-version-of-a-cluster"></a>Upgrade uitvoeren voor de Service Fabric-versie van een cluster
 
@@ -110,7 +110,7 @@ Output:
 
 ## <a name="next-steps"></a>Volgende stappen
 * Meer informatie over het aanpassen van een aantal van de [service Fabric-cluster infrastructuur instellingen](service-fabric-cluster-fabric-settings.md)
-* Meer informatie over hoe u [uw cluster in-en uitschaalt](service-fabric-cluster-scale-up-down.md)
+* Meer informatie over hoe u [uw cluster in-en uitschaalt](service-fabric-cluster-scale-in-out.md)
 * Meer informatie over [toepassings upgrades](service-fabric-application-upgrade.md)
 
 <!--Image references-->
