@@ -7,14 +7,14 @@ ms.service: mysql
 ms.devlang: azurepowershel
 ms.topic: conceptual
 ms.date: 4/28/2020
-ms.openlocfilehash: 1e63a6e57e1dc929c78e5278df6ef0e4ab2a17d7
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 871b1ba81f672459378b23705ad5b96213667a73
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82230845"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82609060"
 ---
-# <a name="how-to-back-up-and-restore-a-server-in-azure-database-for-mysql-using-powershell"></a>Een back-up maken en herstellen van een server in Azure Database for MySQL met behulp van Power shell
+# <a name="how-to-back-up-and-restore-an-azure-database-for-mysql-server-using-powershell"></a>Een back-up maken van een Azure Database for MySQL-server en deze herstellen met Power shell
 
 Er wordt regel matig een back-up van Azure Database for MySQL servers gemaakt om herstel functies in te scha kelen. Met deze functie kunt u de server en alle bijbehorende data bases naar een eerder tijdstip herstellen op een nieuwe server.
 
@@ -131,6 +131,5 @@ De nieuwe server die tijdens het herstellen is gemaakt, heeft geen VNet-service-
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Meer informatie over de [back-ups](concepts-backup.md) van de service
-- Meer informatie over [replica's](concepts-read-replicas.md)
-- Meer informatie over opties voor [bedrijfs continuïteit](concepts-business-continuity.md)
+> [!div class="nextstepaction"]
+> [Azure Database for MySQL server parameters aanpassen met behulp van Power shell](howto-configure-server-parameters-using-powershell.md)

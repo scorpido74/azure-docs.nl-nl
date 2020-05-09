@@ -4,12 +4,12 @@ description: Stapsgewijze uitleg over het herstellen van de systeem status van W
 ms.reviewer: saurse
 ms.topic: conceptual
 ms.date: 08/18/2017
-ms.openlocfilehash: 6d46a091a4e620e26d05735f12a201009663e65d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 39cac84c4a33c1da209d0a0cc7b0f8ac8ee390a0
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77602462"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82610782"
 ---
 # <a name="restore-system-state-to-windows-server"></a>Systeem status herstellen naar Windows Server
 
@@ -89,7 +89,7 @@ De terminologie die in deze stappen wordt gebruikt, omvat:
 6. Selecteer in het deel venster back-upserver selecteren de *bron machine* in de lijst met weer gegeven machines.
 7. Kies in het deel venster herstel modus selecteren de optie **systeem status** en klik op **volgende**.
 
-    ![Search](./media/backup-azure-restore-system-state/recover-type-selection.png)
+    ![Zoeken](./media/backup-azure-restore-system-state/recover-type-selection.png)
 
 8. Selecteer een herstel punt in de agenda in het deel venster **volume en datum selecteren** . U kunt herstellen vanaf een herstel punt in de tijd. **Vetgedrukte** datums geven de beschik baarheid van ten minste één herstel punt aan. Wanneer u een datum selecteert en er meerdere herstel punten beschikbaar zijn, kiest u het specifieke herstel punt in het vervolg keuzemenu **tijd** .
 
@@ -124,7 +124,7 @@ Nadat u de systeem status hebt hersteld als bestanden met behulp van Azure Recov
 
 2. Nadat het systeem opnieuw is opgestart, opent u de module Windows Server Back-up. Als u niet weet waar de module is geïnstalleerd, zoekt u op de computer of server naar **Windows Server back-up**.
 
-    De bureau blad-app wordt weer gegeven in de zoek resultaten.
+    De bureau blad-app wordt weer gegeven in de zoek resultaten. Als het niet wordt weer gegeven, of als er fouten optreden bij het openen van de toepassing, moet u de **Windows Server back-up-functies**en afhankelijke onderdelen ervan installeren die beschikbaar zijn in de **wizard functies toevoegen** in **Serverbeheer**.
 
 3. Selecteer in de module de optie **lokale back-up**.
 

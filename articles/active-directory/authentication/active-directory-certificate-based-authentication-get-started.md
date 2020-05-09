@@ -11,12 +11,13 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: annaba
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3a6c44a8253c81b44d02351b2df9c943d9f358f8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: has-adal-ref
+ms.openlocfilehash: 9c3ea7596e589431412489bea4ac9a23fa604540
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80654340"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82610646"
 ---
 # <a name="get-started-with-certificate-based-authentication-in-azure-active-directory"></a>Aan de slag met verificatie op basis van certificaten in Azure Active Directory
 
@@ -45,7 +46,7 @@ Als u verificatie op basis van certificaten wilt configureren, moeten de volgend
 - Er moet een client certificaat voor client verificatie worden verleend aan de client.
 
 >[!IMPORTANT]
->De maximale grootte van een CRL voor Azure Active Directory het downloaden en opslaan van de cache is 20 MB, en de tijd die nodig is om de CRL te downloaden, mag niet langer zijn dan 10 seconden.  Als Azure Active Directory geen CRL kan downloaden, zullen op certificaten gebaseerde verificaties die gebruikmaken van certificaten die zijn uitgegeven door de bijbehorende CA, mislukken. Aanbevolen procedures om ervoor te zorgen dat CRL-bestanden zich in grootte beperkingen bevinden, is om de levens duur van certificaten binnen redelijke limieten te houden en verlopen certificaten op te schonen. 
+>De maximale grootte van een CRL voor Azure Active Directory het downloaden en opslaan van de cache is 20 MB, en de tijd die nodig is om de CRL te downloaden, mag niet langer zijn dan 10 seconden.  Als Azure Active Directory geen CRL kan downloaden, zullen op certificaten gebaseerde verificaties die gebruikmaken van certificaten die zijn uitgegeven door de bijbehorende CA, mislukken. Aanbevolen procedures om ervoor te zorgen dat CRL-bestanden zich in grootte beperkingen bevinden, is om de levens duur van certificaten binnen redelijke limieten te houden en verlopen certificaten op te schonen.
 
 ## <a name="step-1-select-your-device-platform"></a>Stap 1: het platform van het apparaat selecteren
 
