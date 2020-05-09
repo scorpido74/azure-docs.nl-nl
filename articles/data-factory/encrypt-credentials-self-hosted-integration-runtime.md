@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/15/2018
 ms.author: abnarain
-ms.openlocfilehash: 8ce26360aca8d8408135cbe89aabff4f923013b4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: cd775c5a3bf367600a4537a9409a9bb8f902f588
+ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81416372"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82628977"
 ---
 # <a name="encrypt-credentials-for-on-premises-data-stores-in-azure-data-factory"></a>Referenties voor on-premises gegevens archieven in Azure Data Factory versleutelen
 
@@ -25,7 +25,6 @@ ms.locfileid: "81416372"
 U kunt referenties voor uw on-premises gegevens archieven (gekoppelde services met gevoelige informatie) versleutelen en opslaan op een computer met zelf-hostende Integration runtime. 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
-[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
 U geeft een JSON-definitie bestand met referenties door aan de <br/>De cmdlet [**New-AzDataFactoryV2LinkedServiceEncryptedCredential**](/powershell/module/az.datafactory/New-AzDataFactoryV2LinkedServiceEncryptedCredential) voor het maken van een JSON-uitvoer bestand met de versleutelde referenties. Gebruik vervolgens de bijgewerkte JSON-definitie om de gekoppelde services te maken.
 

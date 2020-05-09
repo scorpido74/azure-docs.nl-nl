@@ -11,12 +11,12 @@ ms.subservice: user-help
 ms.topic: conceptual
 ms.date: 02/13/2019
 ms.author: curtand
-ms.openlocfilehash: 236f1e4e41488b926d9fc2e5e717e68090a0ed7b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d4714a78ed03a9b861f3a266cfd0d7bca456b3c4
+ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77063965"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82628347"
 ---
 # <a name="set-up-security-questions-as-your-verification-method"></a>Beveiligings vragen instellen als verificatie methode
 
@@ -55,7 +55,7 @@ Als u beveiligings vragen gebruikt, raden wij u aan deze te gebruiken in combi n
 
 ### <a name="to-set-up-your-security-questions"></a>Uw beveiligings vragen instellen
 
-1. Meld u aan bij uw werk-of school account en ga vervolgens https://myprofile.microsoft.com/ naar de pagina.
+1. Meld u aan bij uw werk-of school account en ga vervolgens https://myaccount.microsoft.com/ naar de pagina.
 
     ![Mijn profiel pagina, met gemarkeerde koppelingen voor beveiligings gegevens](media/security-info/securityinfo-myprofile-page.png)
 
@@ -100,7 +100,7 @@ U hebt extra opties voor het controleren van uw identiteit door uw organisatie, 
 
 - **Beveiligings sleutel.** Registreer uw door micro soft compatibele beveiligings sleutel en gebruik deze samen met een pincode voor verificatie in twee stappen of het opnieuw instellen van wacht woorden. Zie [beveiligings informatie instellen voor het gebruik van een beveiligings sleutel](security-info-setup-security-key.md)voor stapsgewijze instructies over het verifiëren van uw identiteit met een beveiligings sleutel.
 
-- **E-mailadres.** Voer het e-mail adres van uw werk of school in om een e-mail te ontvangen voor het opnieuw instellen van wacht woorden. Deze optie is niet beschikbaar voor verificatie in twee stappen. Zie [beveiligings informatie instellen voor het gebruik van e-mail](security-info-setup-email.md)voor stapsgewijze instructies voor het instellen van uw e-mail adres.
+- **E-mail adres.** Voer het e-mail adres van uw werk of school in om een e-mail te ontvangen voor het opnieuw instellen van wacht woorden. Deze optie is niet beschikbaar voor verificatie in twee stappen. Zie [beveiligings informatie instellen voor het gebruik van e-mail](security-info-setup-email.md)voor stapsgewijze instructies voor het instellen van uw e-mail adres.
 
     >[!Note]
     >Als sommige van deze opties ontbreken, is het waarschijnlijk dat uw organisatie deze methoden niet toestaat. Als dit het geval is, moet u een beschik bare methode kiezen of contact opnemen met de beheerder voor meer hulp.

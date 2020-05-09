@@ -1,17 +1,17 @@
 ---
 title: Lokale cache
-description: Meer informatie over hoe de lokale cache werkt in Azure App Service en hoe u de status van de lokale cache van uw app kunt inschakelen, verg Roten of verkleinen.
+description: Meer informatie over hoe lokale cache werkt in Azure App Service en hoe u de status van de lokale cache van uw app kunt inschakelen, verg Roten of verkleinen.
 tags: optional
 ms.assetid: e34d405e-c5d4-46ad-9b26-2a1eda86ce80
 ms.topic: article
 ms.date: 03/04/2016
 ms.custom: seodec18
-ms.openlocfilehash: 1945730acaddb0c1c7ee1b28eeb926635efad643
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2a1fc4de572fbb8634f8f58452ce5f9b632023a5
+ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78227890"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82628790"
 ---
 # <a name="azure-app-service-local-cache-overview"></a>Overzicht van lokale cache Azure App Service
 
@@ -36,7 +36,7 @@ De functie Azure App Service lokale cache biedt een weer gave van webrollen van 
 
 ## <a name="how-the-local-cache-changes-the-behavior-of-app-service"></a>Hoe de lokale cache het gedrag van App Service wijzigt
 * _D:\home_ verwijst naar de lokale cache, die op het VM-exemplaar wordt gemaakt wanneer de app wordt gestart. _D:\Local_ blijft verwijzen naar de tijdelijke VM-specifieke opslag.
-* De lokale cache bevat een eenmalige kopie van de _/site_ -en _/siteextensions_ -mappen van het gedeelde inhouds archief, respectievelijk op _D:\home\site_ en _D:\home\siteextensions_. De bestanden worden gekopieerd naar de lokale cache wanneer de app wordt gestart. De grootte van de twee mappen voor elke app is standaard beperkt tot 300 MB, maar u kunt deze verhogen tot 2 GB. Als de gekopieerde bestanden de grootte van de lokale cache overschrijden, App Service lokale cache op de achtergrond negeren en lezen van de externe bestands share.
+* De lokale cache bevat een eenmalige kopie van de _/site_ -en _/siteextensions_ -mappen van het gedeelde inhouds archief, respectievelijk op _D:\home\site_ en _D:\home\siteextensions_. De bestanden worden gekopieerd naar de lokale cache wanneer de app wordt gestart. De grootte van de twee mappen voor elke app is standaard beperkt tot 1 GB, maar kan worden verhoogd tot 2 GB. Houd er rekening mee dat als de cache groter wordt, het langer duurt om de cache te laden. Als de gekopieerde bestanden de grootte van de lokale cache overschrijden, App Service lokale cache op de achtergrond negeren en lezen van de externe bestands share.
 * De lokale cache is lezen/schrijven. Elke wijziging wordt echter verwijderd wanneer de app virtuele machines verplaatst of opnieuw wordt gestart. Gebruik niet de lokale cache voor apps die essentiële gegevens in het inhouds archief opslaan.
 * _D:\home\LogFiles_ en _D:\home\Data_ bevatten logboek bestanden en app-gegevens. De twee submappen worden lokaal opgeslagen in het VM-exemplaar en worden periodiek naar het gedeelde inhouds archief gekopieerd. Apps kunnen logboek bestanden en gegevens persistent maken door deze te schrijven naar deze mappen. De kopie naar het gedeelde inhouds archief is echter het meest geschikt voor het geval dat logboek bestanden en gegevens verloren gaan als gevolg van een plotselinge crash van een VM-exemplaar.
 * Het [streamen van Logboeken](troubleshoot-diagnostic-logs.md#stream-logs) wordt beïnvloed door de best mogelijke kopieer activiteit. U kunt in de gestreamde Logboeken een vertraging van één minuut opvolgen.
@@ -75,7 +75,7 @@ U schakelt lokale cache per web-app in met behulp van deze app-instelling:`WEBSI
 
     "properties": {
         "WEBSITE_LOCAL_CACHE_OPTION": "Always",
-        "WEBSITE_LOCAL_CACHE_SIZEINMB": "300"
+        "WEBSITE_LOCAL_CACHE_SIZEINMB": "1000"
     }
 }
 
@@ -83,7 +83,7 @@ U schakelt lokale cache per web-app in met behulp van deze app-instelling:`WEBSI
 ```
 
 ## <a name="change-the-size-setting-in-local-cache"></a>De instelling grootte in lokale cache wijzigen
-De grootte van de lokale cache is standaard **300 MB**. Dit geldt ook voor de mappen/site en/siteextensions die worden gekopieerd uit het inhouds archief, evenals alle lokaal gemaakte logboeken en gegevens mappen. Gebruik de app-instelling `WEBSITE_LOCAL_CACHE_SIZEINMB`om deze limiet te verhogen. U kunt de grootte verhogen tot **2 GB** (2000 MB) per app.
+De grootte van de lokale cache is standaard **1 GB**. Dit geldt ook voor de mappen/site en/siteextensions die worden gekopieerd uit het inhouds archief, evenals alle lokaal gemaakte logboeken en gegevens mappen. Gebruik de app-instelling `WEBSITE_LOCAL_CACHE_SIZEINMB`om deze limiet te verhogen. U kunt de grootte verhogen tot **2 GB** (2000 MB) per app. Houd er rekening mee dat het langer duurt voordat de lokale cache wordt geladen naarmate de grootte toeneemt.
 
 ## <a name="best-practices-for-using-app-service-local-cache"></a>Aanbevolen procedures voor het gebruik van App Service lokale cache
 U wordt aangeraden lokale cache te gebruiken in combi natie met de functie [staging Environment](../app-service/deploy-staging-slots.md) .
@@ -94,7 +94,7 @@ U wordt aangeraden lokale cache te gebruiken in combi natie met de functie [stag
 * Wanneer u klaar bent, kunt u een [swap bewerking](../app-service/deploy-staging-slots.md#Swap) uitgeven tussen uw staging-en productie-sleuven.  
 * Plak instellingen bevatten naam en plak een sleuf. Als de Faserings sleuf wordt gewisseld naar productie, neemt deze de instellingen van de lokale cache-app over. De zojuist verwisselde productie sleuf wordt na een paar minuten uitgevoerd op de lokale cache en wordt na de wisseling opwarmen als onderdeel van de sleuf opwarm. Wanneer de wisseling van de sleuf is voltooid, wordt uw productie sleuf uitgevoerd op basis van de lokale cache.
 
-## <a name="frequently-asked-questions-faq"></a>Veelgestelde vragen
+## <a name="frequently-asked-questions-faq"></a>Veelgestelde vragen (FAQ's)
 
 ### <a name="how-can-i-tell-if-local-cache-applies-to-my-app"></a>Hoe kan ik zien of de lokale cache van toepassing is op mijn app?
 Als uw app een hoogwaardige, betrouw bare inhouds opslag nodig heeft, wordt het inhouds archief niet gebruikt voor het schrijven van kritieke gegevens tijdens runtime. Dit is minder dan 2 GB in totale grootte. het antwoord is "ja"! Als u de totale grootte van uw/site-en/siteextensions-mappen wilt ophalen, kunt u de site-extensie ' Azure Web Apps Disk Usage ' gebruiken.

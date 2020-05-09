@@ -1,6 +1,6 @@
 ---
-title: bestand opnemen
-description: bestand opnemen
+title: Include-bestand
+description: Include-bestand
 services: iot-hub
 author: kgremban
 ms.service: iot-hub

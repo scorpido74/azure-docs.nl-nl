@@ -8,22 +8,26 @@ ms.topic: conceptual
 ms.date: 08/29/2019
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 24a295d220cfaa7efe2fdc0d4eee53bb5c409708
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 961fadfff0147d8c5258fa5acf31d8b0649ea12a
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79128079"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82612891"
 ---
 # <a name="customize-feed-for-windows-virtual-desktop-users"></a>Feed aanpassen voor Windows Virtual Desktop-gebruikers
 
+>[!IMPORTANT]
+>Deze inhoud is van toepassing op de lente 2020-update met Azure Resource Manager virtueel-bureaublad objecten van Windows. Raadpleeg [dit artikel](./virtual-desktop-fall-2019/customize-feed-virtual-desktop-users-2019.md)als u de versie van het Windows-bureau blad van Virtual Desktop 2019 zonder Azure Resource Manager objecten gebruikt.
+>
+> De Windows Virtual Desktop lente 2020-update is momenteel beschikbaar als open bare preview. Deze preview-versie is beschikbaar zonder service level agreement. het wordt niet aangeraden deze te gebruiken voor productie werkbelastingen. Misschien worden bepaalde functies niet ondersteund of zijn de mogelijkheden ervan beperkt. 
+> Zie voor meer informatie [aanvullende gebruiks voorwaarden voor Microsoft Azure-previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+
 U kunt de feed aanpassen zodat de RemoteApp-en extern bureau blad-resources op een herken bare manier worden weer gegeven voor uw gebruikers.
 
-[Down load en Importeer eerst de Windows Virtual Desktop Power shell-module](/powershell/windows-virtual-desktop/overview/) voor gebruik in uw Power shell-sessie als u dat nog niet hebt gedaan. Daarna voert u de volgende cmdlet uit om u aan te melden bij uw account:
+## <a name="prerequisites"></a>Vereisten
 
-```powershell
-Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com"
-```
+In dit artikel wordt ervan uitgegaan dat u de Windows Power shell-module voor virtueel bureau blad al hebt gedownload en geïnstalleerd. Als dat niet het geval is, volgt u de instructies in [de Power shell-module instellen](powershell-module.md).
 
 ## <a name="customize-the-display-name-for-a-remoteapp"></a>De weergave naam voor een RemoteApp aanpassen
 
@@ -32,16 +36,55 @@ U kunt de weergave naam voor een gepubliceerde RemoteApp wijzigen door de beschr
 Voer de volgende Power shell-cmdlet uit om een lijst met gepubliceerde RemoteApps voor een app-groep op te halen:
 
 ```powershell
-Get-RdsRemoteApp -TenantName <tenantname> -HostPoolName <hostpoolname> -AppGroupName <appgroupname>
+Get-AzWvdApplication -ResourceGroupName <resourcegroupname> -ApplicationGroupName <appgroupname>
 ```
-![Een scherm opname van de Power shell-cmdlet Get-RDSRemoteApp met de naam en FriendlyName is gemarkeerd.](media/get-rdsremoteapp.png)
 
-Voer de volgende Power shell-cmdlet uit om een beschrijvende naam toe te wijzen aan een RemoteApp:
+Voer de volgende cmdlet uit met de vereiste para meters om een beschrijvende naam toe te wijzen aan een RemoteApp:
 
 ```powershell
-Set-RdsRemoteApp -TenantName <tenantname> -HostPoolName <hostpoolname> -AppGroupName <appgroupname> -Name <existingappname> -FriendlyName <newfriendlyname>
+Update-AzWvdApplication -ResourceGroupName <resourcegroupname> -ApplicationGroupName <appgroupname> -Name <applicationname> -FriendlyName <newfriendlyname>
 ```
-![Een scherm opname van de Power shell-cmdlet Set-RDSRemoteApp met de naam en de nieuwe FriendlyName is gemarkeerd.](media/set-rdsremoteapp.png)
+
+Stel bijvoorbeeld dat u de huidige toepassingen hebt opgehaald met de volgende voor beeld-cmdlet:
+
+```powershell
+Get-AzWvdApplication -ResourceGroupName 0301RG -ApplicationGroupName 0301RAG | format-list
+```
+
+De uitvoer ziet er als volgt uit:
+
+```powershell
+CommandLineArgument : 
+CommandLineSetting  : DoNotAllow 
+Description         : 
+FilePath            : C:\Program Files\Windows NT\Accessories\wordpad.exe 
+FriendlyName        : Microsoft Word 
+IconContent         : {0, 0, 1, 0…} 
+IconHash            : --iom0PS6XLu-EMMlHWVW3F7LLsNt63Zz2K10RE0_64 
+IconIndex           : 0 
+IconPath            : C:\Program Files\Windows NT\Accessories\wordpad.exe 
+Id                  : /subscriptions/<subid>/resourcegroups/0301RG/providers/Microsoft.DesktopVirtualization/applicationgroups/0301RAG/applications/Microsoft Word 
+Name                : 0301RAG/Microsoft Word 
+ShowInPortal        : False 
+Type                : Microsoft.DesktopVirtualization/applicationgroups/applications 
+```
+Voer de volgende cmdlet uit om de beschrijvende naam bij te werken:
+
+```powershell
+Update-AzWvdApplication -GroupName 0301RAG -Name "Microsoft Word" -FriendlyName "WordUpdate" -ResourceGroupName 0301RG -IconIndex 0 -IconPath "C:\Program Files\Windows NT\Accessories\wordpad.exe" -ShowInPortal:$true -CommandLineSetting DoNotallow -FilePath "C:\Program Files\Windows NT\Accessories\wordpad.exe" 
+```
+
+Voer de volgende cmdlet uit om te bevestigen dat u de beschrijvende naam hebt bijgewerkt:
+
+```powershell
+Get-AzWvdApplication -ResourceGroupName 0301RG -ApplicationGroupName 0301RAG | format-list FriendlyName 
+```
+
+De cmdlet geeft u de volgende uitvoer:
+
+```powershell
+FriendlyName        : WordUpdate
+```
 
 ## <a name="customize-the-display-name-for-a-remote-desktop"></a>De weergave naam voor een Extern bureaublad aanpassen
 
@@ -50,20 +93,39 @@ U kunt de weergave naam voor een gepubliceerd extern bureau blad wijzigen door e
 Voer de volgende Power shell-cmdlet uit om de resource van het externe bureau blad op te halen:
 
 ```powershell
-Get-RdsRemoteDesktop -TenantName <tenantname> -HostPoolName <hostpoolname> -AppGroupName <appgroupname>
+Get-AzWvdDesktop -ResourceGroupName <resourcegroupname> -ApplicationGroupName <appgroupname> -Name <applicationname>
 ```
-![Een scherm opname van de Power shell-cmdlet Get-RDSRemoteApp met de naam en FriendlyName is gemarkeerd.](media/get-rdsremotedesktop.png)
 
 Voer de volgende Power shell-cmdlet uit om een beschrijvende naam toe te wijzen aan de extern bureau blad-resource:
 
 ```powershell
-Set-RdsRemoteDesktop -TenantName <tenantname> -HostPoolName <hostpoolname> -AppGroupName <appgroupname> -FriendlyName <newfriendlyname>
+Update-AzWvdDesktop -ResourceGroupName <resourcegroupname> -ApplicationGroupName <appgroupname> -Name <applicationname> -FriendlyName <newfriendlyname>
 ```
-![Een scherm opname van de Power shell-cmdlet Set-RDSRemoteApp met de naam en de nieuwe FriendlyName is gemarkeerd.](media/set-rdsremotedesktop.png)
+
+## <a name="customize-a-display-name-in-azure-portal"></a>Een weergave naam in Azure Portal aanpassen
+
+U kunt de weergave naam voor een gepubliceerd extern bureau blad wijzigen door een beschrijvende naam in te stellen met behulp van de Azure Portal. 
+
+1. Meld u aan bij Azure Portal op <https://portal.azure.com>. 
+
+2. Zoeken naar **virtueel bureau blad van Windows**.
+
+3. Onder Services selecteert u **virtueel bureau blad voor Windows**. 
+
+4. Selecteer op de pagina virtueel bureau blad van Windows de optie **toepassings groepen** aan de linkerkant van het scherm en selecteer vervolgens de naam van de app-groep die u wilt bewerken. 
+
+5. Selecteer **toepassingen** in het menu aan de linkerkant van het scherm.
+
+6. Selecteer de toepassing die u wilt bijwerken en voer vervolgens een nieuwe **weergave naam**in. 
+
+7. Selecteer **Opslaan**. De toepassing die u hebt bewerkt, moet nu de bijgewerkte naam weer geven.
 
 ## <a name="next-steps"></a>Volgende stappen
 
 Nu u de feed voor gebruikers hebt aangepast, kunt u zich aanmelden bij een virtueel-bureaubladclient van Windows om het te testen. Als u dit wilt doen, gaat u naar de uitleg verbinding maken met Windows virtueel bureau blad:
     
- * [Verbinding maken vanaf Windows 10 of Windows 7](connect-windows-7-and-10.md)
- * [Verbinding maken via een webbrowser](connect-web.md) 
+ * [Verbinding maken met Windows 10 of Windows 7](connect-windows-7-and-10.md)
+ * [Verbinding maken met de webclient](connect-web.md) 
+ * [Verbinding maken met de Android-client](connect-android.md)
+ * [Verbinding maken met de iOS-client](connect-ios.md)
+ * [Verbinding maken met de macOS-client](connect-macos.md)

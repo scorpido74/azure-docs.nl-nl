@@ -6,14 +6,14 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 4/28/2020
-ms.openlocfilehash: 09431a6690be751324bb796415d308d3b7727dad
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: c8a19fe338af14f97e0eb191d7b57e840c71e400
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82254094"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82612721"
 ---
-# <a name="auto-grow-storage-in-azure-database-for-mysql-storage-using-powershell"></a>Opslag automatisch uitbreiden in Azure Database for MySQL Storage met behulp van Power shell
+# <a name="auto-grow-storage-in-azure-database-for-mysql-server-using-powershell"></a>Opslag automatisch uitbreiden in Azure Database for MySQL server met behulp van Power shell
 
 In dit artikel wordt beschreven hoe u een Azure Database for MySQL server-opslag kunt configureren om te groeien zonder dat dit van invloed is op de werk belasting.
 
@@ -52,4 +52,5 @@ New-AzMySqlServer -Name mydemoserver -ResourceGroupName myresourcegroup -Sku GP_
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Meer informatie over [het maken van waarschuwingen over metrische gegevens](howto-alert-on-metric.md).
+> [!div class="nextstepaction"]
+> [Lees replica's maken en beheren in azure database for MySQL met behulp van Power shell](howto-read-replicas-powershell.md).

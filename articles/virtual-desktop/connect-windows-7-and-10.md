@@ -8,18 +8,21 @@ ms.topic: conceptual
 ms.date: 03/19/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: b6436059cc8b3637edfc2a146d0aab3e2beae6a8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2b16818856ca8196b82eb8f618cf22b5fc1b6854
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80154335"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82612687"
 ---
 # <a name="connect-with-the-windows-desktop-client"></a>Verbinding maken met de Windows Desktop-client
 
 > Van toepassing op: Windows 7, Windows 10 en Windows 10 IoT Enter prise
 
 U hebt toegang tot de virtuele Bureau bladen van Windows op apparaten met Windows 7, Windows 10 en Windows 10 IoT Enter prise met behulp van de Windows-bureaubladclient.
+
+>[!NOTE]
+>De Windows-client wordt automatisch standaard ingesteld op Windows Virtual Desktop 2019 release. Als de client echter detecteert dat de gebruiker ook Azure Resource Manager resources heeft, worden de resources automatisch toegevoegd of krijgt de gebruiker een melding dat ze beschikbaar zijn. 
 
 > [!IMPORTANT]
 > Windows virtueel bureau blad biedt geen ondersteuning voor de client RemoteApp-en bureaublad verbindingen (RADC) of de Verbinding met extern bureaublad-client (MSTSC).

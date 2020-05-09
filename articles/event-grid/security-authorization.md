@@ -8,15 +8,16 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 05/22/2019
 ms.author: babanisa
-ms.openlocfilehash: 03bc2f9de6f50f08c9f62f86a3d1791a067cecd0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5f8b0a779e6cb70537d126c251e1e065892934a9
+ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78899280"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82629504"
 ---
 # <a name="authorizing-access-to-event-grid-resources"></a>Toegang tot Event Grid-resources autoriseren
 Met Azure Event Grid kunt u het toegangs niveau dat aan verschillende gebruikers wordt gegeven, beheren om verschillende beheer bewerkingen uit te voeren, zoals abonnementen op lijst gebeurtenissen, nieuwe maken en sleutels genereren. Event Grid maakt gebruik van het op rollen gebaseerd toegangs beheer (RBAC) van Azure.
+
 
 ## <a name="operation-types"></a>Bewerkings typen
 
@@ -182,6 +183,23 @@ U kunt aangepaste rollen maken met [Power shell](../role-based-access-control/cu
 ### <a name="encryption-at-rest"></a>Versleuteling 'at rest'
 
 Alle gebeurtenissen of gegevens die door de Event Grid-Service naar schijf worden geschreven, worden versleuteld met een door micro soft beheerde sleutel, zodat deze op rest versleuteld is. Bovendien is de maximale tijds duur dat gebeurtenissen of gegevens bewaard 24 uur in acht te komen in de [Event grid beleid voor opnieuw proberen](delivery-and-retry.md). Event Grid verwijdert automatisch alle gebeurtenissen of gegevens na 24 uur, of de TTL van de gebeurtenis, afhankelijk van wat kleiner is.
+
+## <a name="permissions-for-event-subscriptions"></a>Machtigingen voor gebeurtenis abonnementen
+Als u een gebeurtenis-handler gebruikt die geen webhook is (zoals een Event Hub of een wachtrij opslag), moet u schrijf toegang hebben voor die bron. Met deze machtigingen kunt u voor komen dat een niet-geautoriseerde gebruiker gebeurtenissen naar uw resource verzendt.
+
+U moet beschikken over de machtiging **micro soft. EventGrid/EventSubscriptions/write** voor de resource die de bron van de gebeurtenis is. U hebt deze machtiging nodig omdat u een nieuw abonnement op het bereik van de resource schrijft. De vereiste resource wijkt af van de vraag of u zich abonneert op een systeem onderwerp of een aangepast onderwerp. Beide typen worden beschreven in deze sectie.
+
+### <a name="system-topics-azure-service-publishers"></a>Systeem onderwerpen (Azure service Publishers)
+Voor systeem onderwerpen hebt u toestemming nodig voor het schrijven van een nieuw gebeurtenis abonnement op het bereik van de resource die de gebeurtenis publiceert. De indeling van de resource is:`/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/{resource-provider}/{resource-type}/{resource-name}`
+
+Als u zich bijvoorbeeld wilt abonneren op een gebeurtenis in een opslag account met de naam **myacct**, hebt u de machtiging micro soft. EventGrid/EventSubscriptions/write nodig voor:`/subscriptions/####/resourceGroups/testrg/providers/Microsoft.Storage/storageAccounts/myacct`
+
+### <a name="custom-topics"></a>Aangepaste onderwerpen
+Voor aangepaste onderwerpen hebt u toestemming nodig voor het schrijven van een nieuw gebeurtenis abonnement in het bereik van het event grid-onderwerp. De indeling van de resource is:`/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.EventGrid/topics/{topic-name}`
+
+Als u zich bijvoorbeeld wilt abonneren op een aangepast onderwerp met de naam **mytopic**, hebt u de machtiging micro soft. EventGrid/EventSubscriptions/write nodig voor:`/subscriptions/####/resourceGroups/testrg/providers/Microsoft.EventGrid/topics/mytopic`
+
+
 
 ## <a name="next-steps"></a>Volgende stappen
 

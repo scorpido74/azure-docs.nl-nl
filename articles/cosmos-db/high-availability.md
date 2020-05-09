@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/20/2020
 ms.author: mjbrown
 ms.reviewer: sngun
-ms.openlocfilehash: 0a67360ab840b7897c85a382dfc3965bd27f6a3e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9667d82551e169dcc4a4bfd3ac79b15390f58aa0
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81688063"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82609218"
 ---
 # <a name="high-availability-with-azure-cosmos-db"></a>Hoge beschikbaarheid met Azure Cosmos DB
 
@@ -99,6 +99,10 @@ Deze functie is beschikbaar in de volgende Azure-regio's:
 - VS - west 2
 
 - Australië - oost
+
+- Japan - oost
+
+- Europa - noord
 
 > [!NOTE]
 > Als u Beschikbaarheidszones inschakelt voor een Azure Cosmos-account in één regio, worden er kosten in rekening gebracht die gelijk zijn aan het toevoegen van een extra regio aan uw account. Zie de [pagina met prijzen](https://azure.microsoft.com/pricing/details/cosmos-db/) en de [kosten voor meerdere regio's in azure Cosmos DB](optimize-cost-regions.md) artikelen voor meer informatie over prijzen.
