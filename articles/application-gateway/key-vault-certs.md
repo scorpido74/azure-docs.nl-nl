@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 4/25/2019
 ms.author: victorh
-ms.openlocfilehash: 934cf854b0c526ed994c7dc91763f65de64fd14b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 780f2774cb37e3d6d43ed5137c29119c0f63fd0a
+ms.sourcegitcommit: 3beb067d5dc3d8895971b1bc18304e004b8a19b3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81617511"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82743702"
 ---
 # <a name="tls-termination-with-key-vault-certificates"></a>TLS-beëindiging met Key Vault certificaten
 
@@ -50,7 +50,21 @@ Voor de integratie van Application Gateway met Key Vault is een configuratie pro
    Vervolgens importeert u een bestaand certificaat of maakt u een nieuwe in uw sleutel kluis. Het certificaat wordt gebruikt door toepassingen die via de toepassings gateway worden uitgevoerd. In deze stap kunt u ook een sleutel kluis geheim gebruiken dat is opgeslagen als een met een wacht woord kleiner, met base 64 gecodeerd PFX-bestand. We raden u aan om een certificaat type te gebruiken vanwege de mogelijkheid tot het vernieuwen van de sleutel die beschikbaar is voor de objecten van het type certificaat. Nadat u een certificaat of een geheim hebt gemaakt, definieert u het toegangs beleid in de sleutel kluis zodat de identiteit kan worden toegekend toegang tot het geheim *te krijgen.*
    
    > [!NOTE]
-   > Als u de toepassings gateway via een ARM-sjabloon implementeert door gebruik te maken van de Azure CLI of Power shell of via een Azure-toepassing geïmplementeerd vanuit de Azure Portal, moet het SSL-certificaat dat is opgeslagen in de sleutel kluis als een met base-64-gecodeerd PFX-bestand, als een **wacht woord worden**gebruikt. Daarnaast moet u de stappen in [gebruik Azure Key Vault gebruiken om de waarde van een beveiligde para meter door te geven tijdens de implementatie](../azure-resource-manager/templates/key-vault-parameter.md). Het is met name belang rijk `enabledForTemplateDeployment` om `true`in te stellen op.
+   > Als u de toepassings gateway via een ARM-sjabloon implementeert door gebruik te maken van de Azure CLI of Power shell of via een Azure-toepassing die is geïmplementeerd vanuit het Azure Portal, wordt het SSL-certificaat opgeslagen in de sleutel kluis als een base64-gecodeerd PFX-bestand. U moet de stappen in [Use Azure Key Vault volt ooien om de waarde van Secure para meter door te geven tijdens de implementatie](../azure-resource-manager/templates/key-vault-parameter.md). 
+   >
+   > Het is met name belang rijk `enabledForTemplateDeployment` om `true`in te stellen op. Het certificaat is mogelijk geen wacht woord of het kan een wacht woord hebben. In het geval van een certificaat met een wacht woord toont het volgende voor beeld een mogelijke configuratie voor `sslCertificates` de vermelding in `properties` de voor de arm-sjabloon configuratie voor een app-gateway. De waarden van `appGatewaySSLCertificateData` en `appGatewaySSLCertificatePassword` worden opgezocht uit de sleutel kluis, zoals beschreven in de sectie [referentie geheimen met een dynamische id](../azure-resource-manager/templates/key-vault-parameter.md#reference-secrets-with-dynamic-id). Volg de verwijzingen `parameters('secretName')` naar achter om te zien hoe de zoek actie plaatsvindt. Als het certificaat geen wacht woord is, laat `password` u het item weg.
+   >   
+   > ```
+   > "sslCertificates": [
+   >     {
+   >         "name": "appGwSslCertificate",
+   >         "properties": {
+   >             "data": "[parameters('appGatewaySSLCertificateData')]",
+   >             "password": "[parameters('appGatewaySSLCertificatePassword')]"
+   >         }
+   >     }
+   > ]
+   > ```
 
 1. **De toepassingsgateway configureren**
 

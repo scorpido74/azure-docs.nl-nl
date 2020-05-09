@@ -13,17 +13,17 @@ ms.date: 04/22/2020
 ms.author: hahamil
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:JavaScript
 ROBOTS: NOINDEX
-ms.openlocfilehash: d362db3a51848603c78d663c5b628192ff028d02
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 9663c11508b0478a67f528cb301d705a3125e4f6
+ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82209530"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82871525"
 ---
 # <a name="quickstart-sign-in-users-and-get-an-access-token-in-a-javascript-spa-using-the-auth-code-flow"></a>Snelstartgids: gebruikers aanmelden en een toegangs token verkrijgen in een Java script-beveiligd-wachtwoord verificatie met behulp van de autorisatie code stroom 
 
 > [!IMPORTANT]
-> Deze functie is momenteel beschikbaar als preview-product. Previews worden voor u beschikbaar gesteld op voorwaarde dat u akkoord gaat met de [aanvullende gebruiksvoorwaarden](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Sommige aspecten van deze functie kunnen worden gewijzigd vóór algemene Beschik baarheid (GA).
+> Deze functie is momenteel in preview. Previews worden voor u beschikbaar gesteld op voorwaarde dat u akkoord gaat met de [aanvullende gebruiksvoorwaarden](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Sommige aspecten van deze functie kunnen worden gewijzigd vóór algemene Beschik baarheid (GA).
 
 
 Deze Snelstartgids maakt gebruik van MSAL. js 2,0 met de autorisatie code stroom. Als u MSAL. js 1,0 met de impliciete stroom wilt gebruiken, bekijkt u [deze Snelstartgids](https://docs.microsoft.com/azure/active-directory/develop/quickstart-v2-javascript).
@@ -43,7 +43,7 @@ In deze Snelstartgids gebruikt u een code voorbeeld om te zien hoe een Java scri
 >
 > ### <a name="option-1-express-register-and-auto-configure-your-app-and-then-download-your-code-sample"></a>Optie 1 (Express): uw app registreren en automatisch configureren en vervolgens uw voorbeeld code downloaden
 >
-> 1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
+> 1. Meld u aan bij [Azure Portal](https://portal.azure.com).
 > 1. Als uw account u toegang geeft tot meer dan één Tenant, selecteert u het account in de rechter bovenhoek en stelt u vervolgens uw portal-sessie in op de Azure Active Directory (Azure AD)-Tenant die u wilt gebruiken.
 > 1. Selecteer [app-registraties](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade/quickStartType/JavascriptSpaQuickstartPage/sourceType/docs).
 > 1. Voer een naam in voor de toepassing.
@@ -55,7 +55,7 @@ In deze Snelstartgids gebruikt u een code voorbeeld om te zien hoe een Java scri
 >
 > #### <a name="step-1-register-your-application"></a>Stap 1: Uw toepassing registreren
 >
-> 1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
+> 1. Meld u aan bij [Azure Portal](https://portal.azure.com).
 >
 > 1. Als uw account u toegang geeft tot meer dan één Tenant, selecteert u uw account in de rechter bovenhoek en stelt u vervolgens uw portal-sessie in op de Azure AD-Tenant die u wilt gebruiken.
 > 1. Selecteer [app-registraties](https://go.microsoft.com/fwlink/?linkid=2083908).
@@ -112,7 +112,7 @@ In deze Snelstartgids gebruikt u een code voorbeeld om te zien hoe een Java scri
 
 > [!div renderon="portal" class="sxs-lookup"]
 > > [!NOTE]
-> > `Enter_the_Supported_Account_Info_Here`
+> > :::no-loc text="Enter_the_Supported_Account_Info_Here":::
 
 > [!div renderon="docs"]
 >
@@ -178,7 +178,8 @@ Voer het project uit met een webserver met behulp van [node. js](https://nodejs.
 De MSAL. JS-bibliotheek meldt gebruikers en vraagt de tokens aan die worden gebruikt voor toegang tot een API die wordt beveiligd door het micro soft Identity-platform. Het bestand *index. html* van het voor beeld bevat een verwijzing naar de bibliotheek:
 
 ```html
-<script type="text/javascript" src="https://alcdn.msftauth.net/lib/1.2.1/js/msal.js" integrity="sha384-9TV1245fz+BaI+VvCjMYL0YDMElLBwNS84v3mY57pXNOt6xcUYch2QLImaTahcOP" crossorigin="anonymous"></script>
+<script type="text/javascript" src="https://alcdn.msauth.net/browser/2.0.0-beta.0/js/msal-browser.js" integrity=
+"sha384-r7Qxfs6PYHyfoBR6zG62DGzptfLBxnREThAlcJyEfzJ4dq5rqExc1Xj3TPFE/9TH" crossorigin="anonymous"></script>
 ```
 > [!TIP]
 > U kunt de voor gaande versie vervangen door de nieuwste release versie onder [MSAL. js-releases](https://github.com/AzureAD/microsoft-authentication-library-for-js/releases).
@@ -186,7 +187,7 @@ De MSAL. JS-bibliotheek meldt gebruikers en vraagt de tokens aan die worden gebr
 Als node. js is geïnstalleerd, kunt u ook de nieuwste versie downloaden met behulp van de node. js-pakket beheer (NPM):
 
 ```batch
-npm install msal
+npm install @azure/msal-browser
 ```
 
 ## <a name="next-steps"></a>Volgende stappen

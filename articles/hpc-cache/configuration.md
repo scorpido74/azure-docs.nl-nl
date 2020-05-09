@@ -4,14 +4,14 @@ description: In dit artikel wordt uitgelegd hoe u aanvullende instellingen voor 
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: conceptual
-ms.date: 04/27/2020
+ms.date: 05/06/2020
 ms.author: v-erkel
-ms.openlocfilehash: 7938fcc0819fc3e5e0762cc8c3c2931594ed1c68
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a3bab06166110a3627bb3a99d51ceb09b0c7ed80
+ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82195057"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82871408"
 ---
 # <a name="configure-additional-azure-hpc-cache-settings"></a>Aanvullende instellingen voor de Azure HPC-cache configureren
 
@@ -42,13 +42,15 @@ Lees meer over MTU-instellingen in virtuele netwerken van Azure door het [afstem
 ## <a name="configure-root-squash"></a>Basis-Squash configureren
 <!-- linked from troubleshoot -->
 
-De instelling **basis Squash inschakelen** bepaalt hoe de Azure HPC-cache toegang tot het hoofd niveau toestaat. Met root Squash kunt u toegang op toegangs niveau voor komen van niet-geautoriseerde clients.
+De instelling **basis Squash inschakelen** bepaalt hoe Azure HPC cache aanvragen van de hoofd gebruiker op client computers verwerkt.
 
-Met deze instelling kunnen gebruikers de toegang tot de hoofdmap beheren op het niveau van de cache, waarmee de ``no_root_squash`` vereiste instelling voor NAS-systemen die worden gebruikt als opslag doelen kan worden gecompenseerd. (Lees meer over de [vereisten voor NFS-opslag doel](hpc-cache-prereqs.md#nfs-storage-requirements).) Het kan ook de beveiliging verbeteren wanneer deze wordt gebruikt met Azure Blob Storage-doelen.
+Wanneer root Squash is ingeschakeld, worden hoofd gebruikers van een client automatisch toegewezen aan de gebruiker ' niemand ' wanneer ze aanvragen verzenden via de Azure HPC-cache. Ook wordt voor komen dat client aanvragen gebruikmaken van Set-UID permissions-machtigingen.
+
+Als hoofdmap Squash is uitgeschakeld, wordt een aanvraag van de client root user (UID 0) door gegeven aan een back-end-NFS-opslag systeem als root. Deze configuratie kan ongepaste bestands toegang toestaan.
+
+Met het instellen van basis-squash in de cache kunt u de ``no_root_squash`` vereiste instelling compenseren op NAS-systemen die worden gebruikt als opslag doelen. (Lees meer over de [vereisten voor NFS-opslag doel](hpc-cache-prereqs.md#nfs-storage-requirements).) Het kan ook de beveiliging verbeteren wanneer deze wordt gebruikt met Azure Blob Storage-doelen.
 
 De standaard instelling is **Ja**. (Caches die vóór april 2020 zijn gemaakt, kunnen de standaard instelling **Nee**hebben.)
-
-Als deze functie is ingeschakeld, wordt het gebruik van de set-UID-machtigings bits in client aanvragen voor de cache ook voor komen.
 
 ## <a name="view-snapshots-for-blob-storage-targets"></a>Moment opnamen voor Blob-opslag doelen weer geven
 

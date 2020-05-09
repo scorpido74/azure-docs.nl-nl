@@ -1,18 +1,18 @@
 ---
 title: Er is onvoldoende schijf ruimte voor het cluster knooppunt in azure HDInsight
 description: Problemen met de schijf ruimte van Apache Hadoop cluster knooppunten in azure HDInsight oplossen.
-ms.service: hdinsight
-ms.topic: troubleshooting
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
-ms.date: 08/05/2019
-ms.openlocfilehash: fbfd82473b68f5032d19834ac809191d498a5a67
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.service: hdinsight
+ms.topic: troubleshooting
+ms.date: 04/30/2020
+ms.openlocfilehash: ead79ca0a37a270f03a305064c80426553db59ca
+ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75894134"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82628534"
 ---
 # <a name="scenario-cluster-node-runs-out-of-disk-space-in-azure-hdinsight"></a>Scenario: er is onvoldoende schijf ruimte beschikbaar voor het cluster knooppunt in azure HDInsight
 
@@ -36,7 +36,17 @@ Apache garen-toepassings cache heeft mogelijk alle beschik bare schijf ruimte ve
 
 1. Als u het probleem wilt verhelpen, moet u de toepassing afbreken, waardoor de schijf ruimte die door de toepassing wordt gebruikt, wordt vrijgegeven.
 
-1. Optimaliseer uw toepassing om het probleem uiteindelijk op te lossen.
+1. Als het probleem regel matig optreedt op de worker-knoop punten, kunt u de instellingen voor de lokale cache van het garen afstemmen op het cluster.
+
+    Open de Ambari-gebruikers interface navigeer naar GARENs--> configuraties--> Geavanceerd.  
+    Voeg de volgende twee eigenschappen toe aan de aangepaste sectie Yarn-site. XML en sla het bestand op:
+
+    ```
+    yarn.nodemanager.localizer.cache.target-size-mb=2048
+    yarn.nodemanager.localizer.cache.cleanup.interval-ms=300000
+    ```
+
+1. Als het probleem hiermee niet permanent wordt opgelost, optimaliseert u uw toepassing.
 
 ## <a name="next-steps"></a>Volgende stappen
 

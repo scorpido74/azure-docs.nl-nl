@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/11/2020
 ms.author: erhopf
-ms.openlocfilehash: add0d27ae6a612fed0320b5329d19236b7bbbd01
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 3fb5f1df0eb4473483c9298cdbf36909b75065e7
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79370641"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82927204"
 ---
 # <a name="what-is-the-speech-devices-sdk"></a>Wat is de SDK voor spraak apparaten?
 
@@ -49,7 +49,7 @@ De toepassing is gebouwd met het Speech SDK-pakket en de eclips Java IDE (v4) op
 Voor Linux wordt de voorbeeld toepassing meegeleverd als een cross-platform Java-toepassing. Down load de nieuwste versie van de software voor [jre speech-apparaten](https://aka.ms/sdsdk-download-JRE).
 De toepassing is gebouwd met het Speech SDK-pakket en de eclips Java IDE (v4) op 64-bits Linux (Ubuntu 16,04, Ubuntu 18,04, Debian 9, RHEL 8, CentOS 8). De toepassing wordt uitgevoerd op een 64-bit Java 8 runtime-omgeving (JRE).
 
-Er zijn extra binaire bestanden ter ondersteuning van aanstaande apparaten, [roobo v2 DDK](https://aka.ms/sdsdk-download-roobov2), [Urbetter DDK](https://aka.ms/sdsdk-download-urbetter)en [GGEC spreker](https://aka.ms/sdsdk-download-speaker).
+Er zijn extra binaire bestanden ter ondersteuning van aanstaande apparaten, [roobo v2 DDK](https://aka.ms/sdsdk-download-roobov2), [Urbetter DDK](https://aka.ms/sdsdk-download-urbetter), [GGEC spreker](https://aka.ms/sdsdk-download-speaker), [Linux ARM32](https://aka.ms/sdsdk-download-linux-arm32)en [Linux ARM64](https://aka.ms/sdsdk-download-linux-arm64).
 
 ## <a name="next-steps"></a>Volgende stappen
 

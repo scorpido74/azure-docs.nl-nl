@@ -3,12 +3,12 @@ title: Ondersteunings matrix voor back-up van Azure-bestands share
 description: Hierin wordt een overzicht gegeven van de ondersteunings instellingen en beperkingen bij het maken van back-ups van Azure-bestands shares.
 ms.topic: conceptual
 ms.date: 5/07/2020
-ms.openlocfilehash: 4da17bb591e94a0eaf26f95210a3e841ad17973b
-ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
+ms.openlocfilehash: 92fbd1333fa80c73bb48020d6e0e73e0cf545476
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82890723"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82977614"
 ---
 # <a name="support-matrix-for-azure-file-share-backup"></a>Ondersteunings matrix voor back-up van Azure-bestands share
 
@@ -20,7 +20,7 @@ Back-ups voor Azure-bestands shares zijn beschikbaar in de volgende geografische
 
 | GA-regio's | Ondersteunde regio's (als onderdeel van de preview-versie) maar nog niet                                                      |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| Australië-Zuid-Oost (ASE), Canada-centraal (CNC), VS-West-Centraal (WCUS), VS-West 2 (WUS 2), India Zuid (INS), Noord-Centraal VS (NCUS), Japan-Oost (JPE), Brazilië-zuid (BRS), Zuid-Azië-oost (SEA), Zwitserland-west (SZW), UAE-centraal (UAC), Noor wegen Oost (NAANBEVOLEN), India-West (INW), Australië-centraal (ACL), Korea-centraal (KRC), Japan (JPW), Zuid-Afrika-Noord (SAN) , Korea-zuid (KRS), Duitsland-noord (GN), Noor wegen West (NWW), Zuid-Afrika-west (zaag), Zwitserland-noord (SZN), Duitsland-west-centraal (GWC), UAE-noord (UAN), Frankrijk-centraal (FRC), India centraal (INC.), Canada-oost (CNE), Azië-oost (EA), Australië-oost (AE), Central VS (), VS-West (WUS)                                                  |  VS-Oost (EUS), VS-Oost 2 (EUS2), Europa-noord (NE), Zuid-Centraal VS (SCUS), UK-zuid (UKS), Europa-west (WE), US Gov-Arizona (UGA), US Gov-Texas (UGT), US Gov-Virginia (UGV)           |
+| Australië-Zuid-Oost (ASE), Canada-centraal (CNC), VS-West-Centraal (WCUS), VS-West 2 (WUS 2), India Zuid (INS), Noord-Centraal VS (NCUS), Japan-Oost (JPE), Brazilië-zuid (BRS), Zuid-Azië-oost (SEA), Zwitserland-west (SZW), UAE-centraal (UAC), Noor wegen Oost (NAANBEVOLEN), India-West (INW), Australië-centraal (ACL), Korea-centraal (KRC), Japan (JPW), Zuid-Afrika-Noord (SAN) , Korea-zuid (KRS), Duitsland-noord (GN), Noor wegen West (NWW), Zuid-Afrika-west (zaag), Zwitserland-noord (SZN), Duitsland-west-centraal (GWC), UAE-noord (UAN), Frankrijk-centraal (FRC), India Central (INC), Canada-oost (CNE), Azië-oost (EA), Australië-oost (AE), Central US (CUS), VS-West (WUS), US Gov-Arizona (UGA), US Gov-Texas (UGT), US Gov-Virginia (UGV), US DoD-centraal (UDC), US DoD-Oost (usief)                                                  |  VS-Oost (EUS), VS-Oost 2 (EUS2), Europa-noord (NE), Zuid-Centraal VS (SCUS), UK-zuid (UKS), Europa-west (WE)            |
 
 ## <a name="supported-storage-accounts"></a>Ondersteunde opslagaccounts
 
