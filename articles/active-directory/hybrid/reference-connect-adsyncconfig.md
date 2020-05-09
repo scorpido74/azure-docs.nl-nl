@@ -10,12 +10,12 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.topic: reference
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 554bb99121190198982f64deb6ee0674aa8831ed
-ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
+ms.openlocfilehash: 8159ef45dee8a2f9ace69c2a5b66a29e4948d82c
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/26/2020
-ms.locfileid: "60381192"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82982000"
 ---
 # <a name="azure-ad-connect--adsyncconfig-powershell-reference"></a>Azure AD Connect: ADSyncConfig Power shell-referentie
 De volgende documentatie bevat referentie-informatie voor de Power shell-module ADSyncConfig. psm1, die deel uitmaakt van Azure AD Connect.
@@ -59,25 +59,24 @@ Zoekt in AD vanuit de para meter SearchBase en retourneert alle objecten, gefilt
 ### <a name="examples"></a>VOORBEELDEN
 
 #### <a name="example-1"></a>VOOR BEELD 1
+Objecten zoeken met uitgeschakelde overname in het domein contoso (standaard retourneert alleen ' organizationalUnit-objecten)
 ```
-Find objects with disabled inheritance in 'Contoso' domain (by default returns 'organizationalUnit' objects only)
+Get-ADSyncObjectsWithInheritanceDisabled -SearchBase 'Contoso'
 ```
-
-Get-ADSyncObjectsWithInheritanceDisabled-SearchBase ' Contoso '
 
 #### <a name="example-2"></a>VOOR BEELD 2
+Gebruikers objecten met uitgeschakelde overname in domein ' Contoso ' zoeken
 ```
-Find 'user' objects with disabled inheritance in 'Contoso' domain
+Get-ADSyncObjectsWithInheritanceDisabled -SearchBase 'Contoso' -ObjectClass 'user'
 ```
-
-Get-ADSyncObjectsWithInheritanceDisabled-SearchBase ' Contoso '-object class ' gebruiker '
 
 #### <a name="example-3"></a>VOOR BEELD 3
+Alle typen objecten zoeken met uitgeschakelde overname in een organisatie-eenheid
 ```
-Find all types of objects with disabled inheritance in a OU
+Get-ADSyncObjectsWithInheritanceDisabled -SearchBase OU=AzureAD,DC=Contoso,DC=com -ObjectClass '*'
 ```
 
-Get-ADSyncObjectsWithInheritanceDisabled-SearchBase-OE = AzureAD, DC = contoso, DC = com-object class *
+
 
 ### <a name="parameters"></a>PARAMETERS
 

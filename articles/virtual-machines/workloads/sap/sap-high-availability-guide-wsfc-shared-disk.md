@@ -16,13 +16,111 @@ ms.workload: infrastructure-services
 ms.date: 05/05/2017
 ms.author: radeltch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 8156f8706828afae30889b3250cf0b26252bf394
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: cf85632ff062bff5b71451379f37c14830bf6b68
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77598473"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82982952"
 ---
+# <a name="cluster-an-sap-ascsscs-instance-on-a-windows-failover-cluster-by-using-a-cluster-shared-disk-in-azure"></a>Een SAP ASCS/SCS-exemplaar op een Windows-failovercluster clusteren met behulp van een gedeelde cluster schijf in azure
+
+> ![Windows][Logo_Windows] Windows
+>
+
+Windows Server Failover Clustering is de basis van een High-Availability SAP-ASCS/SCS-installatie en DBMS in Windows.
+
+Een failovercluster is een groep van 1 + n onafhankelijke servers (knoop punten) die samen werken om de beschik baarheid van toepassingen en services te verg Roten. Als er een storing optreedt in een knoop punt, wordt in Windows Server failover clustering het aantal fouten berekend dat kan optreden en nog steeds een goed onderhanden cluster voor het leveren van toepassingen en services. U kunt kiezen uit verschillende quorum modi om failover clustering te bezorgen.
+
+## <a name="prerequisites"></a>Vereisten
+Voordat u aan de slag gaat met de taken in dit artikel, raadpleegt u het volgende artikel:
+
+* [Azure Virtual Machines architectuur en scenario's met hoge Beschik baarheid voor SAP net-Weaver][sap-high-availability-architecture-scenarios]
+
+
+## <a name="windows-server-failover-clustering-in-azure"></a>Windows Server Failover Clustering in azure
+
+Vergeleken met bare-metal of privécloud-implementaties, vereist Azure Virtual Machines extra stappen voor het configureren van Windows Server Failover Clustering. Wanneer u een cluster bouwt, moet u verschillende IP-adressen en namen van virtuele hosts instellen voor het SAP-exemplaar ASCS/SCS.
+
+### <a name="name-resolution-in-azure-and-the-cluster-virtual-host-name"></a>Naam omzetting in Azure en de naam van de virtuele cluster-host
+
+Het Azure-Cloud platform biedt geen optie voor het configureren van virtuele IP-adressen, zoals zwevende IP-adressen. U hebt een alternatieve oplossing nodig om een virtueel IP-adres in te stellen om de cluster bron in de cloud te bereiken. 
+
+De Azure Load Balancer-service biedt een *interne Load Balancer* voor Azure. Met de interne load balancer bereiken clients het cluster via het virtuele IP-adres van het cluster. 
+
+Implementeer de interne load balancer in de resource groep die de cluster knooppunten bevat. Configureer vervolgens alle benodigde regels voor het door sturen van poorten met behulp van de test poorten van de interne load balancer. Clients kunnen verbinding maken via de naam van de virtuele host. De DNS-server zet het IP-adres van het cluster op en de interne load balancer verwerkt poort door sturen naar het actieve knoop punt van het cluster.
+
+![Afbeelding 1: configuratie van Windows Failover Clustering in azure zonder een gedeelde schijf][sap-ha-guide-figure-1001]
+
+_**Afbeelding 1:** Configuratie van Windows Server Failover Clustering in azure zonder een gedeelde schijf_
+
+### <a name="sap-ascsscs-ha-with-cluster-shared-disks"></a>SAP ASCS/SCS HA met gedeelde cluster schijven
+In Windows bevat een SAP ASCS/SCS-instantie SAP Central Services, de SAP-berichten server, server processen in de wachtrij en SAP Global host-bestanden. Met SAP Global host files worden centrale bestanden opgeslagen voor het hele SAP-systeem.
+
+Een SAP ASCS/SCS-exemplaar heeft de volgende onderdelen:
+
+* SAP-Centrale Services:
+    * Twee processen, een bericht en een bewerkings server \<, en een ASCS/SCS-naam>, die wordt gebruikt voor toegang tot deze twee processen.
+    * Bestands structuur: S:\usr\sap\\&lt;sid&gt;\ ASCS/SCS\<-instantie nummer\>
+
+
+* SAP Global host files:
+  * Bestands structuur: S:\usr\sap\\&lt;sid&gt;\SYS\...
+  * De bestands share sapmnt, waarmee toegang tot deze\\&lt;globale S:\usr\sap sid&gt;-\SYS\.mogelijk wordt. bestanden met behulp van het volgende UNC-pad:
+
+    \\\\<ASCS/\>SCS-naam van virtuele\\&lt;host&gt;\sapmnt\.sid \SYS..
+
+
+![Afbeelding 2: processen, bestands structuur en globale host sapmnt-bestands share van een SAP ASCS/SCS-exemplaar][sap-ha-guide-figure-8001]
+
+_**Afbeelding 2:** Processen, bestands structuur en globale host sapmnt bestands share van een SAP ASCS/SCS-exemplaar_
+
+In een instelling met hoge Beschik baarheid, cluster SAP ASCS/SCS instances. We gebruiken *geclusterde gedeelde schijven* (stations S, in ons voor beeld) om de ASCS/SCS en SAP Global host-bestanden te plaatsen.
+
+![Afbeelding 3: SAP ASCS/SCS HA Architecture met gedeelde schijf][sap-ha-guide-figure-8002]
+
+_**Afbeelding 3:** SAP ASCS/SCS HA-architectuur met gedeelde schijf_
+
+> [!IMPORTANT]
+> Deze twee onderdelen worden uitgevoerd onder hetzelfde SAP ASCS/SCS-exemplaar:
+>* Dezelfde \<ASCS/SCS virtuele hostnaam> wordt gebruikt voor toegang tot het SAP-bericht en server processen in de wachtrij en de SAP Global host-bestanden via de bestands share sapmnt.
+>* Dezelfde gedeelde cluster schijf stations worden onderling gedeeld.
+>
+
+
+![Afbeelding 4: de architectuur van SAP ASCS/SCS HA met een gedeelde schijf][sap-ha-guide-figure-8003]
+
+_**Afbeelding 4:** SAP ASCS/SCS HA-architectuur met gedeelde schijf_
+
+### <a name="shared-disks-in-azure-with-sios-datakeeper"></a>Gedeelde schijven in azure met SIOS data keeper
+
+U hebt gedeelde cluster opslag nodig voor een High-Availability SAP-ASCS/SCS-exemplaar.
+
+U kunt software van derden SIOS data keeper cluster Edition gebruiken om een gespiegelde opslag te maken die gedeelde cluster opslag simuleert. De SIOS-oplossing biedt synchrone gegevens replicatie in realtime.
+
+Een gedeelde schijf bron voor een cluster maken:
+
+1. Koppel een extra schijf aan elk van de virtuele machines in een Windows-cluster configuratie.
+2. Voer SIOS data keeper cluster Edition uit op beide VM-knoop punten.
+3. Configureer de data keeper-cluster versie van SIOS zodat de inhoud van het extra schijf volume dat is gekoppeld aan de virtuele bron machine, wordt Spie gels op het extra schijf volume dat is gekoppeld aan de virtuele doel machine. SIOS data keeper maakt samen vatting van de bron-en doel volumes en geeft deze vervolgens weer als één gedeelde schijf aan Windows Server Failover Clustering.
+
+Meer informatie over [SIOS data keeper](https://us.sios.com/products/datakeeper-cluster/).
+
+![Afbeelding 5: configuratie van Windows Server Failover Clustering in azure met SIOS data keeper][sap-ha-guide-figure-1002]
+
+_**Afbeelding 5:** Configuratie van Windows Failover Clustering in azure met SIOS data keeper_
+
+> [!NOTE]
+> U hebt geen gedeelde schijven nodig voor hoge Beschik baarheid met enkele DBMS-producten, zoals SQL Server. SQL Server AlwaysOn repliceert DBMS-gegevens en logboek bestanden van de lokale schijf van een cluster knooppunt naar de lokale schijf van een ander cluster knooppunt. In dit geval heeft de configuratie van het Windows-cluster geen gedeelde schijf nodig.
+>
+
+## <a name="next-steps"></a>Volgende stappen
+
+* [De Azure-infra structuur voor SAP HA voorbereiden met behulp van een Windows-failovercluster en een gedeelde schijf voor een SAP ASCS/SCS-exemplaar][sap-high-availability-infrastructure-wsfc-shared-disk]
+
+* [SAP NetWeaver HA installeren op een Windows-failovercluster en gedeelde schijf voor een SAP ASCS/SCS-exemplaar][sap-high-availability-installation-wsfc-shared-disk]
+
+
 [1928533]:https://launchpad.support.sap.com/#/notes/1928533
 [1999351]:https://launchpad.support.sap.com/#/notes/1999351
 [2015553]:https://launchpad.support.sap.com/#/notes/2015553
@@ -181,100 +279,3 @@ ms.locfileid: "77598473"
 [virtual-machines-azure-resource-manager-architecture-benefits-arm]:../../../azure-resource-manager/management/overview.md#the-benefits-of-using-resource-manager
 
 [virtual-machines-manage-availability]:../../virtual-machines-windows-manage-availability.md
-
-# <a name="cluster-an-sap-ascsscs-instance-on-a-windows-failover-cluster-by-using-a-cluster-shared-disk-in-azure"></a>Een SAP ASCS/SCS-exemplaar op een Windows-failovercluster clusteren met behulp van een gedeelde cluster schijf in azure
-
-> ![Windows][Logo_Windows] Windows
->
-
-Windows Server Failover Clustering is de basis van een High-Availability SAP-ASCS/SCS-installatie en DBMS in Windows.
-
-Een failovercluster is een groep van 1 + n onafhankelijke servers (knoop punten) die samen werken om de beschik baarheid van toepassingen en services te verg Roten. Als er een storing optreedt in een knoop punt, wordt in Windows Server failover clustering het aantal fouten berekend dat kan optreden en nog steeds een goed onderhanden cluster voor het leveren van toepassingen en services. U kunt kiezen uit verschillende quorum modi om failover clustering te bezorgen.
-
-## <a name="prerequisites"></a>Vereisten
-Voordat u aan de slag gaat met de taken in dit artikel, raadpleegt u het volgende artikel:
-
-* [Azure Virtual Machines architectuur en scenario's met hoge Beschik baarheid voor SAP net-Weaver][sap-high-availability-architecture-scenarios]
-
-
-## <a name="windows-server-failover-clustering-in-azure"></a>Windows Server Failover Clustering in azure
-
-Vergeleken met bare-metal of privécloud-implementaties, vereist Azure Virtual Machines extra stappen voor het configureren van Windows Server Failover Clustering. Wanneer u een cluster bouwt, moet u verschillende IP-adressen en namen van virtuele hosts instellen voor het SAP-exemplaar ASCS/SCS.
-
-### <a name="name-resolution-in-azure-and-the-cluster-virtual-host-name"></a>Naam omzetting in Azure en de naam van de virtuele cluster-host
-
-Het Azure-Cloud platform biedt geen optie voor het configureren van virtuele IP-adressen, zoals zwevende IP-adressen. U hebt een alternatieve oplossing nodig om een virtueel IP-adres in te stellen om de cluster bron in de cloud te bereiken. 
-
-De Azure Load Balancer-service biedt een *interne Load Balancer* voor Azure. Met de interne load balancer bereiken clients het cluster via het virtuele IP-adres van het cluster. 
-
-Implementeer de interne load balancer in de resource groep die de cluster knooppunten bevat. Configureer vervolgens alle benodigde regels voor het door sturen van poorten met behulp van de test poorten van de interne load balancer. Clients kunnen verbinding maken via de naam van de virtuele host. De DNS-server zet het IP-adres van het cluster op en de interne load balancer verwerkt poort door sturen naar het actieve knoop punt van het cluster.
-
-![Afbeelding 1: configuratie van Windows Failover Clustering in azure zonder een gedeelde schijf][sap-ha-guide-figure-1001]
-
-_**Afbeelding 1:** Configuratie van Windows Server Failover Clustering in azure zonder een gedeelde schijf_
-
-### <a name="sap-ascsscs-ha-with-cluster-shared-disks"></a>SAP ASCS/SCS HA met gedeelde cluster schijven
-In Windows bevat een SAP ASCS/SCS-instantie SAP Central Services, de SAP-berichten server, server processen in de wachtrij en SAP Global host-bestanden. Met SAP Global host files worden centrale bestanden opgeslagen voor het hele SAP-systeem.
-
-Een SAP ASCS/SCS-exemplaar heeft de volgende onderdelen:
-
-* SAP-Centrale Services:
-    * Twee processen, een bericht en een bewerkings server \<, en een ASCS/SCS-naam>, die wordt gebruikt voor toegang tot deze twee processen.
-    * Bestands structuur: S:\usr\sap\\&lt;sid&gt;\ ASCS/SCS\<-instantie nummer\>
-
-
-* SAP Global host files:
-  * Bestands structuur: S:\usr\sap\\&lt;sid&gt;\SYS\...
-  * De bestands share sapmnt, waarmee toegang tot deze\\&lt;globale S:\usr\sap sid&gt;-\SYS\.mogelijk wordt. bestanden met behulp van het volgende UNC-pad:
-
-    \\\\<ASCS/\>SCS-naam van virtuele\\&lt;host&gt;\sapmnt\.sid \SYS..
-
-
-![Afbeelding 2: processen, bestands structuur en globale host sapmnt-bestands share van een SAP ASCS/SCS-exemplaar][sap-ha-guide-figure-8001]
-
-_**Afbeelding 2:** Processen, bestands structuur en globale host sapmnt bestands share van een SAP ASCS/SCS-exemplaar_
-
-In een instelling met hoge Beschik baarheid, cluster SAP ASCS/SCS instances. We gebruiken *geclusterde gedeelde schijven* (stations S, in ons voor beeld) om de ASCS/SCS en SAP Global host-bestanden te plaatsen.
-
-![Afbeelding 3: SAP ASCS/SCS HA Architecture met gedeelde schijf][sap-ha-guide-figure-8002]
-
-_**Afbeelding 3:** SAP ASCS/SCS HA-architectuur met gedeelde schijf_
-
-> [!IMPORTANT]
-> Deze twee onderdelen worden uitgevoerd onder hetzelfde SAP ASCS/SCS-exemplaar:
->* Dezelfde \<ASCS/SCS virtuele hostnaam> wordt gebruikt voor toegang tot het SAP-bericht en server processen in de wachtrij en de SAP Global host-bestanden via de bestands share sapmnt.
->* Dezelfde gedeelde cluster schijf stations worden onderling gedeeld.
->
-
-
-![Afbeelding 4: de architectuur van SAP ASCS/SCS HA met een gedeelde schijf][sap-ha-guide-figure-8003]
-
-_**Afbeelding 4:** SAP ASCS/SCS HA-architectuur met gedeelde schijf_
-
-### <a name="shared-disks-in-azure-with-sios-datakeeper"></a>Gedeelde schijven in azure met SIOS data keeper
-
-U hebt gedeelde cluster opslag nodig voor een High-Availability SAP-ASCS/SCS-exemplaar.
-
-U kunt software van derden SIOS data keeper cluster Edition gebruiken om een gespiegelde opslag te maken die gedeelde cluster opslag simuleert. De SIOS-oplossing biedt synchrone gegevens replicatie in realtime.
-
-Een gedeelde schijf bron voor een cluster maken:
-
-1. Koppel een extra schijf aan elk van de virtuele machines in een Windows-cluster configuratie.
-2. Voer SIOS data keeper cluster Edition uit op beide VM-knoop punten.
-3. Configureer de data keeper-cluster versie van SIOS zodat de inhoud van het extra schijf volume dat is gekoppeld aan de virtuele bron machine, wordt Spie gels op het extra schijf volume dat is gekoppeld aan de virtuele doel machine. SIOS data keeper maakt samen vatting van de bron-en doel volumes en geeft deze vervolgens weer als één gedeelde schijf aan Windows Server Failover Clustering.
-
-Meer informatie over [SIOS data keeper](https://us.sios.com/products/datakeeper-cluster/).
-
-![Afbeelding 5: configuratie van Windows Server Failover Clustering in azure met SIOS data keeper][sap-ha-guide-figure-1002]
-
-_**Afbeelding 5:** Configuratie van Windows Failover Clustering in azure met SIOS data keeper_
-
-> [!NOTE]
-> U hebt geen gedeelde schijven nodig voor hoge Beschik baarheid met enkele DBMS-producten, zoals SQL Server. SQL Server AlwaysOn repliceert DBMS-gegevens en logboek bestanden van de lokale schijf van een cluster knooppunt naar de lokale schijf van een ander cluster knooppunt. In dit geval heeft de configuratie van het Windows-cluster geen gedeelde schijf nodig.
->
-
-## <a name="next-steps"></a>Volgende stappen
-
-* [De Azure-infra structuur voor SAP HA voorbereiden met behulp van een Windows-failovercluster en een gedeelde schijf voor een SAP ASCS/SCS-exemplaar][sap-high-availability-infrastructure-wsfc-shared-disk]
-
-* [SAP NetWeaver HA installeren op een Windows-failovercluster en gedeelde schijf voor een SAP ASCS/SCS-exemplaar][sap-high-availability-installation-wsfc-shared-disk]

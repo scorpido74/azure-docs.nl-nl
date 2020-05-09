@@ -5,12 +5,12 @@ author: sideeksh
 manager: rochakm
 ms.topic: troubleshooting
 ms.date: 04/03/2020
-ms.openlocfilehash: 8cba02d3c7d1e649853570b199b646b1c4dcce2d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3c7d4f0a6d33a52fd972815923e60b33ce8a7448
+ms.sourcegitcommit: 0fda81f271f1a668ed28c55dcc2d0ba2bb417edd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80667406"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82901354"
 ---
 # <a name="troubleshoot-replication-in-azure-vm-disaster-recovery"></a>Problemen met replicatie in nood herstel voor Azure VM oplossen
 
@@ -41,7 +41,7 @@ Als u de gebeurtenis selecteert, ziet u de exacte schijf gegevens:
 
 De volgende tabel bevat de Azure Site Recovery-limieten. Deze limieten zijn gebaseerd op onze tests, maar ze kunnen niet alle mogelijke combi Naties van invoer uitvoer (I/O) voor toepassingen bedekken. De werkelijke resultaten kunnen variëren op basis van uw toepassings-I/O-combinatie.
 
-Er zijn twee limieten die u moet overwegen: gegevens verloop per schijf en gegevens verloop per virtuele machine. Laten we eens kijken naar de Premium P20-schijf in de volgende tabel voor een voor beeld. Voor één virtuele machine kan Site Recovery 5 MB/s aan verloop per schijf verwerken met een maximum van vijf dergelijke schijven. Site Recovery heeft een limiet van 25 MB/s van het totale verloop per VM.
+Er zijn twee limieten die u moet overwegen: gegevens verloop per schijf en gegevens verloop per virtuele machine. Laten we eens kijken naar de Premium P20-schijf in de volgende tabel voor een voor beeld. Voor één virtuele machine kan Site Recovery 5 MB/s aan verloop per schijf verwerken met een maximum van vijf dergelijke schijven. Site Recovery heeft een limiet van 54 MB/s voor het totale verloop per VM.
 
 **Doel van replicatie opslag** | **Gemiddelde I/O-grootte voor de bron schijf** |**Gemiddeld gegevens verloop van bron schijf** | **Totaal gegevens verloop per dag voor bron gegevens schijf**
 ---|---|---|---

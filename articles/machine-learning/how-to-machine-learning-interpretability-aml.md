@@ -10,12 +10,12 @@ ms.author: mesameki
 author: mesameki
 ms.reviewer: Luis.Quintanilla
 ms.date: 04/12/2020
-ms.openlocfilehash: 45eef976fe10bbb5acda2cd348a77b28c3ffbe02
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 39d2bf0e527d43e2a5fb9437720f249e54b4dff3
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81769811"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82983632"
 ---
 # <a name="use-the-interpretability-package-to-explain-ml-models--predictions-in-python"></a>Gebruik het vertolkings pakket om ML-modellen & voor spellingen in python uit te leggen
 
@@ -238,10 +238,10 @@ In het volgende voor beeld ziet u hoe u `ExplanationClient` de-klasse kunt gebru
 * Gebruik de `ExplanationClient` in de externe uitvoering om de interpreter-context te uploaden.
 * Down load de context later in een lokale omgeving.
 
-1. Installatie `azureml-interpret` en `azureml-interpret-contrib` pakketten.
+1. Installatie `azureml-interpret` en `azureml-contrib-interpret` pakketten.
     ```bash
     pip install azureml-interpret
-    pip install azureml-interpret-contrib
+    pip install azureml-contrib-interpret
     ```
 1. Een trainings script maken in een lokale Jupyter-notebook. Bijvoorbeeld `train_explain.py`.
 

@@ -11,12 +11,12 @@ ms.subservice: user-help
 ms.topic: conceptual
 ms.date: 10/28/2019
 ms.author: curtand
-ms.openlocfilehash: b68e7b517ddaa9b2aaef00cf87d5b6e63871654b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c828878506ee69e90945d1f4be07eb81541b9757
+ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77064016"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82625405"
 ---
 # <a name="view-and-search-your-recent-sign-in-activity-from-the-my-sign-ins-preview-page"></a>Uw recente aanmeldings activiteit bekijken en doorzoeken via de pagina Mijn aanmeldingen (preview)
 
@@ -30,7 +30,7 @@ U kunt al uw recente aanmeldings activiteiten voor werk-of school accounts bekij
 
 ## <a name="view-your-recent-sign-in-activity"></a>Uw recente aanmeldingsactiviteiten bekijken
 
-1. Meld u aan bij uw werk-of school account en ga vervolgens https://myprofile.microsoft.com/ naar de pagina.
+1. Meld u aan bij uw werk-of school account en ga vervolgens https://myaccount.microsoft.com/ naar de pagina.
 
 2. Selecteer **mijn aanmeldingen (preview)** in het navigatie deel venster links of selecteer de koppeling **recente activiteit controleren** van het blok **mijn aanmeldingen (preview)** .
 

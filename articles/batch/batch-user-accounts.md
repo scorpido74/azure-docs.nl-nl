@@ -4,20 +4,20 @@ description: Het is handig om het gebruikers account te configureren waaronder u
 ms.topic: article
 ms.date: 11/18/2019
 ms.custom: seodec18
-ms.openlocfilehash: 22827a1a1406be7cb6ea0bd6e19f6ce316598a48
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1aeb96075e95d7bc0d1e4527fb50b2d5238dbab5
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82111739"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82980283"
 ---
+# <a name="run-tasks-under-user-accounts-in-batch"></a>Taken uitvoeren onder gebruikers accounts in batch
+
 > [!NOTE] 
 > De gebruikers accounts die in dit artikel worden besproken, verschillen van gebruikers accounts die worden gebruikt voor Remote Desktop Protocol (RDP) of Secure Shell (SSH) om veiligheids redenen. 
 >
 > Zie [extern bureaublad gebruiken voor een Linux-vm in azure](../virtual-machines/virtual-machines-linux-use-remote-desktop.md)om verbinding te maken met een knoop punt met de configuratie van de virtuele Linux-machine via SSH. Zie [verbinding maken met een virtuele machine van Windows Server](../virtual-machines/windows/connect-logon.md)om verbinding te maken met knoop punten met Windows via RDP.<br /><br />
 > Zie [verbinding met extern bureaublad inschakelen voor een rol in Azure Cloud Services](../cloud-services/cloud-services-role-enable-remote-desktop-new-portal.md)om verbinding te maken met een knoop punt met de Cloud service configuratie via RDP.
-
-# <a name="run-tasks-under-user-accounts-in-batch"></a>Taken uitvoeren onder gebruikers accounts in batch
 
 Een taak in Azure Batch altijd onder een gebruikers account wordt uitgevoerd. Taken worden standaard uitgevoerd onder standaard gebruikers accounts, zonder beheerders machtigingen. Deze standaard instellingen voor gebruikers accounts zijn doorgaans voldoende. Voor bepaalde scenario's is het echter handig om het gebruikers account te configureren waarmee u een taak wilt uitvoeren. In dit artikel worden de typen gebruikers accounts beschreven en wordt uitgelegd hoe u deze kunt configureren voor uw scenario.
 

@@ -8,14 +8,14 @@ ms.topic: conceptual
 ms.date: 02/19/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: d7ea99e2ee8e2882c211ee17acec70222dc058a8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 143410f0bf0659161427f4b5391124f53f712972
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80637088"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82611990"
 ---
-# <a name="windows-10-enterprise-multi-session-faq"></a>Veelgestelde vragen over meervoudige Windows 10 Enterprise-sessies
+# <a name="windows-10-enterprise-multi-session-faq"></a>Veelgestelde vragen over Windows 10 Enterprise met meerdere sessies
 
 In dit artikel vindt u antwoorden op veelgestelde vragen en worden aanbevolen procedures voor Windows 10 Enter prise multi-session beschreven.
  
@@ -104,4 +104,4 @@ Meer informatie over Windows Virtual Desktop en Windows 10 Enter prise multi-ses
 
 - Lees de [documentatie voor Windows Virtual Desktop Preview](overview.md)
 - Bezoek onze [Windows-TechCommunity voor virtueel bureau blad](https://techcommunity.microsoft.com/t5/Windows-Virtual-Desktop/bd-p/WindowsVirtualDesktop)
-- Uw Windows-implementatie voor virtueel bureau blad instellen met de [zelf studies voor virtueel Windows-bureau blad](tenant-setup-azure-active-directory.md)
+- Uw Windows-implementatie voor virtueel bureau blad instellen met de [zelf studies voor virtueel Windows-bureau blad](./virtual-desktop-fall-2019/tenant-setup-azure-active-directory.md)

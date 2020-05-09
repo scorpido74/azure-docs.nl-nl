@@ -46,6 +46,8 @@
           href: user-help-auth-app-add-account-manual.md
     - name: Aanmelden met de Microsoft Authenticator-app
       href: user-help-auth-app-sign-in.md
+    - name: Android-beperkingen in China
+      href: auth-app-android-china.md
     - name: Een back-up maken van uw accounts en deze herstellen
       href: user-help-auth-app-backup-recovery.md
     - name: Veelgestelde vragen

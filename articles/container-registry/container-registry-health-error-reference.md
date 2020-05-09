@@ -3,12 +3,12 @@ title: Fout referentie voor status controles
 description: Fout codes en mogelijke oplossingen voor problemen die worden gevonden door de opdracht AZ ACR check-Health Diagnostic uit te voeren in Azure Container Registry
 ms.topic: article
 ms.date: 07/02/2019
-ms.openlocfilehash: 971b28b2bf8d9ac22cec0efe979837886762cf17
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a23b95ea0eaffc053c47b70107c95d2b1cdc0645
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80289138"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82978311"
 ---
 # <a name="health-check-error-reference"></a>Naslag informatie voor status controle fout
 
@@ -58,7 +58,7 @@ Deze fout betekent dat de DNS voor de opgegeven register aanmeldings server is g
 
 ## <a name="connectivity_forbidden_error"></a>CONNECTIVITY_FORBIDDEN_ERROR
 
-Deze fout houdt in dat het controle-eind punt voor het opgegeven REGI ster heeft gereageerd met een 403 verboden HTTP-status. Deze fout betekent dat gebruikers geen toegang hebben tot het REGI ster, waarschijnlijk vanwege een configuratie van een virtueel netwerk. Als u de momenteel geconfigureerde firewall regels wilt `az acr show --query networkRuleSet --name <registry>`zien, voert u uit.
+Deze fout houdt in dat het controle-eind punt voor het opgegeven REGI ster heeft gereageerd met een 403 verboden HTTP-status. Deze fout betekent dat gebruikers geen toegang hebben tot het REGI ster, waarschijnlijk vanwege een configuratie van een virtueel netwerk of omdat toegang tot het open bare eind punt van het REGI ster niet is toegestaan. Als u de momenteel geconfigureerde firewall regels wilt `az acr show --query networkRuleSet --name <registry>`zien, voert u uit.
 
 *Mogelijke oplossingen*: Verwijder de regels voor het virtuele netwerk of Voeg het huidige client-IP-adres toe aan de lijst met toegestane toepassingen.
 

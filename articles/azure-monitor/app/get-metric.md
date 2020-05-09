@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 04/28/2020
-ms.openlocfilehash: 309e467f5831961b6bc5a94ad2ce05fd3b991794
-ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
-ms.translationtype: HT
+ms.openlocfilehash: 94525ce901a89935c4ee7800ada44a9dff84b27a
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82629266"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82927901"
 ---
 # <a name="custom-metric-collection-in-net-and-net-core"></a>Aangepaste metrische verzameling in .NET en .NET core
 
@@ -20,7 +20,7 @@ De Azure Monitor Application Insights .NET en .NET core Sdk's hebben twee versch
 
 ## <a name="trackmetric-versus-getmetric"></a>TrackMetric versus GetMetric
 
-`TrackMetric()`Hiermee verzendt u een ruwe telemetrie die een metriek aangeeft. Het is niet efficiënt om één telemetrie-item voor elke waarde te verzenden. `TrackMetric()`Hiermee verzendt u een ruwe telemetrie die een metriek aangeeft. Het is niet efficiënt om één telemetrie-item voor elke waarde te verzenden. `TrackMetric()`is ook inefficiënt in termen van prestaties, omdat `TrackMetric(item)` elke keer de volledige SDK-pijp lijn van de telemetrie-initialisatie functies en-processors doorloopt. In tegens telling tot `TrackMetric()`, worden `GetMetric()` lokale vooraf aggregatie voor u verwerkt en wordt vervolgens alleen een statistische samenvattings waarde verzonden met een vast interval van één minuut. Als u dus een aantal aangepaste metrische gegevens wilt bewaken op het tweede of zelfs milliseconde niveau, kunt u dit doen, waarbij alleen de kosten voor opslag en netwerk verkeer van elke minuut worden bewaakt. Dit vermindert ook aanzienlijk het risico van beperking, omdat het totale aantal telemetriegegevens dat voor een geaggregeerde metriek moet worden verzonden, sterk wordt verminderd.
+`TrackMetric()`Hiermee verzendt u een ruwe telemetrie die een metriek aangeeft. Het is niet efficiënt om één telemetrie-item voor elke waarde te verzenden. `TrackMetric()`is ook inefficiënt in termen van prestaties, omdat `TrackMetric(item)` elke keer de volledige SDK-pijp lijn van de telemetrie-initialisatie functies en-processors doorloopt. In tegens telling tot `TrackMetric()`, worden `GetMetric()` lokale vooraf aggregatie voor u verwerkt en wordt vervolgens alleen een statistische samenvattings waarde verzonden met een vast interval van één minuut. Als u dus een aantal aangepaste metrische gegevens wilt bewaken op het tweede of zelfs milliseconde niveau, kunt u dit doen, waarbij alleen de kosten voor opslag en netwerk verkeer van elke minuut worden bewaakt. Dit vermindert ook aanzienlijk het risico van beperking, omdat het totale aantal telemetriegegevens dat voor een geaggregeerde metriek moet worden verzonden, sterk wordt verminderd.
 
 In Application Insights worden aangepaste metrische gegevens verzameld via `TrackMetric()` en `GetMetric()` niet onderhevig aan [steek proeven](https://docs.microsoft.com/azure/azure-monitor/app/sampling). Het bemonsteren van belang rijke metrische gegevens kan leiden tot scenario's waarbij waarschuwingen die u mogelijk hebt gemaakt om deze metrische gegevens onbetrouwbaar te raken. Door nooit uw aangepaste metrische gegevens te bemonsteren, kunt u er in het algemeen zeker van zijn dat wanneer uw waarschuwings drempels worden geschonden, een waarschuwing wordt geactiveerd.  Maar omdat aangepaste metrische gegevens niet worden bemonsterd, zijn er mogelijke problemen.
 
@@ -186,7 +186,22 @@ U zult echter merken dat u de metrische gegevens niet kunt splitsen op basis van
 
 ![Ondersteuning voor splitsen](./media/get-metric/splitting-support.png)
 
-Multidimensionale metrische gegevens in de metrische Explorer-ervaring zijn niet ingeschakeld in Application Insights resources. Als u dit gedrag wilt inschakelen, gaat u naar het tabblad gebruik en geschatte kosten door [' waarschuwingen inschakelen op aangepaste metrische dimensies '](pre-aggregated-metrics-log-metrics.md#custom-metrics-dimensions-and-pre-aggregation)in te scha kelen.
+Multidimensionale metrische gegevens in de metrische Explorer-ervaring zijn niet ingeschakeld in Application Insights resources.
+
+### <a name="enable-multi-dimensional-metrics"></a>Multidimensionale metrische gegevens inschakelen
+
+Als u multidimensionale metrische gegevens wilt inschakelen voor een Application Insights resource, selecteert u **gebruik en geschatte kosten** > **aangepaste metrische gegevens** > Hiermee**kunt u waarschuwingen op aangepaste metrische dimensies** > **OK**maken. Meer informatie hierover vindt u [hier](pre-aggregated-metrics-log-metrics.md#custom-metrics-dimensions-and-pre-aggregation).
+
+Zodra u hebt vastgesteld dat er nieuwe multi-dimensionale telemetrie is gewijzigd en verzonden, kunt u **splitsen Toep assen**.
+
+> [!NOTE]
+> Alleen recent verzonden metrische gegevens nadat de functie is ingeschakeld in de portal, hebben de dimensies opgeslagen.
+
+![Splitsing Toep assen](./media/get-metric/apply-splitting.png)
+
+En Bekijk uw metrische aggregaties voor elke _FormFactor_ -dimensie:
+
+![Formulier factoren](./media/get-metric/formfactor.png)
 
 ### <a name="how-to-use-metricidentifier-when-there-are-more-than-three-dimensions"></a>MetricIdentifier gebruiken wanneer er meer dan drie dimensies zijn
 
@@ -199,21 +214,6 @@ MetricIdentifier id = new MetricIdentifier("CustomMetricNamespace","ComputerSold
 Metric computersSold  = _telemetryClient.GetMetric(id);
 computersSold.TrackValue(110,"Laptop", "Nvidia", "DDR4", "39Wh", "1TB");
 ```
-
-### <a name="enable-multi-dimensional-metrics"></a>Multidimensionale metrische gegevens inschakelen
-
-Als u multidimensionale metrische gegevens wilt inschakelen voor een Application Insights resource, selecteert u **gebruik en geschatte kosten** > **aangepaste metrische gegevens** > Hiermee**kunt u waarschuwingen op aangepaste metrische dimensies** > **OK**maken.
-
-Zodra u hebt vastgesteld dat er nieuwe multi-dimensionale telemetrie is gewijzigd en verzonden, kunt u **splitsen Toep assen**.
-
-> [!NOTE]
-> Alleen recent verzonden metrische gegevens nadat de functie is ingeschakeld in de portal, hebben de dimensies opgeslagen.
-
-![Splitsing Toep assen](./media/get-metric/apply-splitting.png)
-
-En Bekijk uw metrische aggregaties voor elke _FormFactor_ -dimensie:
-
-![Formulier factoren](./media/get-metric/formfactor.png)
 
 ## <a name="custom-metric-configuration"></a>Aangepaste metrische configuratie
 

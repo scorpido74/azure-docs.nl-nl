@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 04/16/2019
+ms.date: 05/07/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 160898f8535d3dad4811af016ebca779b7ef43a8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a2b9cc0c69f0c559c9561a02de4192974ee7f521
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78189614"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82926184"
 ---
 # <a name="configure-tokens-in-azure-active-directory-b2c"></a>Tokens configureren in Azure Active Directory B2C
 
@@ -25,7 +25,7 @@ In dit artikel leert u hoe u de [levens duur en compatibiliteit van een token](t
 
 [Maak een gebruikers stroom](tutorial-create-user-flows.md) zodat gebruikers zich kunnen registreren en zich kunnen aanmelden bij uw toepassing.
 
-## <a name="configure-token-lifetime"></a>Levens duur van token configureren
+## <a name="configure-jwt-token-lifetime"></a>De levens duur van het JWT-token configureren
 
 U kunt de levens duur van het token configureren voor elke gebruikers stroom.
 
@@ -41,7 +41,7 @@ U kunt de levens duur van het token configureren voor elke gebruikers stroom.
 
 8. Klik op **Opslaan**.
 
-## <a name="configure-token-compatibility"></a>Token compatibiliteit configureren
+## <a name="configure-jwt-token-compatibility"></a>JWT-token compatibiliteit configureren
 
 1. Selecteer **gebruikers stromen (beleid)**.
 2. Open de gebruikers stroom die u eerder hebt gemaakt.

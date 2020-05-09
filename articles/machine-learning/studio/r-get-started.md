@@ -9,41 +9,37 @@ author: likebupt
 ms.author: keli19
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/01/2019
-ms.openlocfilehash: 1dcda3efe3872100100d6e85b68a36359b7eab84
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 665bb12c91c8d6a5a60fd8f60216f30131f34915
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82209499"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82982187"
 ---
 # <a name="get-started-with-azure-machine-learning-studio-classic-in-r"></a>Aan de slag met Azure Machine Learning Studio (klassiek) in R
 
 [!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 
 <!-- Stephen F Elston, Ph.D. -->
-Deze zelf studie helpt u bij het uitbreiden van Azure Machine Learning Studio (klassiek) met behulp van de programmeer taal R. Volg deze zelf studie over R-Program ma's om R-code te maken, te testen en uit te voeren in Studio (klassiek). Tijdens het werken met de zelf studie maakt u een volledige prognose oplossing met behulp van de R-taal in Studio (klassiek).  
+In deze zelf studie leert u hoe u ML Studio (klassiek) kunt gebruiken om R-code te maken, te testen en uit te voeren. Uiteindelijk hebt u een volledige oplossing voor prognoses.  
 
-Azure Machine Learning Studio (klassiek) bevat veel krachtige modules voor machine learning en gegevens manipulatie. De krachtige R-taal is beschreven als franca van Analytics. U kunt met behulp van R de analyse en gegevens manipulatie in Studio (klassiek) opwaarderen. Deze combi natie biedt de schaal baarheid en eenvoudigere implementatie van Studio (klassiek) met de flexibiliteit en diepe analyse van R.
+> [!div class="checklist"]
+> * Maak code voor het opschonen van gegevens en de trans formatie.
+> * Analyseer de correlaties tussen verschillende variabelen in onze gegevensset.
+> * Maak een prognose model voor seizoensgebonden tijd reeksen voor de melk productie.
 
-### <a name="forecasting-and-the-dataset"></a>Prognoses en de gegevensset
 
-Het maken van prognoses is een veelgebruikte en zeer nuttige analyse methode. Veelvoorkomende toepassingen variëren van het voors pellen van de verkoop van seizoensgebonden artikelen, het bepalen van optimale inventaris niveaus, voor het voors pellen van macro-variabelen. Prognoses worden doorgaans uitgevoerd met Time Series-modellen.
+Azure Machine Learning Studio (klassiek) bevat veel krachtige modules voor machine learning en gegevens manipulatie. En met de programmeer taal R biedt deze combi natie de schaal baarheid en eenvoudigere implementatie van Studio (klassiek) met de flexibiliteit en diepe analyse van R.
 
-Time Series-gegevens zijn gegevens waarin de waarden een tijd index hebben. De tijd index kan normaal, bijvoorbeeld elke maand of elke minuut, of onregelmatig zijn. Een tijdreeks model is gebaseerd op Time Series-gegevens. De programmeer taal R bevat een flexibel Framework en uitgebreide analyses voor tijdreeks gegevens.
+Het maken van prognoses is een veelgebruikte en zeer nuttige analyse methode. Veelvoorkomende toepassingen variëren van het voors pellen van de verkoop van seizoensgebonden artikelen, het bepalen van optimale inventaris niveaus, voor het voors pellen van macro-variabelen. Prognoses worden doorgaans uitgevoerd met Time Series-modellen. Time Series-gegevens zijn gegevens waarin de waarden een tijd index hebben. De tijd index kan normaal, bijvoorbeeld elke maand of elke minuut, of onregelmatig zijn. Een tijdreeks model is gebaseerd op Time Series-gegevens. De programmeer taal R bevat een flexibel Framework en uitgebreide analyses voor tijdreeks gegevens.
 
-In deze hand leiding gaan we werken met productie-en prijs gegevens van Californië zuivel. Deze gegevens omvatten maandelijkse gegevens over de productie van verschillende zuivel producten en de prijs van melkvet, een benchmark product.
+## <a name="get-the-data"></a>De gegevens ophalen
+
+In deze zelf studie gebruikt u de productie-en prijs gegevens van Californië zuivel, waaronder maandelijkse gegevens over de productie van verschillende zuivel producten en de prijs van melkvet, een bench Mark-basis.
 
 De gegevens die in dit artikel worden gebruikt, samen met R-scripts, kunnen worden gedownload van [MachineLearningSamples-notebooks/Studio-samples](https://github.com/Azure-Samples/MachineLearningSamples-Notebooks/tree/master/studio-samples). Gegevens in het bestand `cadairydata.csv` werden oorspronkelijk gesynthesizerd op basis van de informatie die beschikbaar is [https://dairymarkets.com](https://dairymarkets.com)van de University of Wisconsin op.
 
-### <a name="organization"></a>Organisatie
 
-Er worden verschillende stappen uitgevoerd voor het maken, testen en uitvoeren van analyse-en gegevens manipulatie R-code in de omgeving Azure Machine Learning Studio (klassiek).  
-
-* Eerst gaan we de basis beginselen van het gebruik van de R-taal in de omgeving Azure Machine Learning Studio (klassiek) verkennen.
-* Vervolgens wordt er geadviseerd om verschillende aspecten van I/O te bespreken voor gegevens, R-code en grafische afbeeldingen in de omgeving Azure Machine Learning Studio (klassiek).
-* We bouwen nu het eerste deel van onze prognose oplossing door code te maken voor het opschonen van gegevens en trans formatie.
-* Met onze gegevens die zijn voor bereid, voeren we een analyse uit van de correlaties tussen verschillende variabelen in onze gegevensset.
-* Ten slotte gaan we een seizoen prognose model voor de productie van de melk maken.
 
 ## <a name="interact-with-r-language-in-machine-learning-studio-classic"></a><a id="mlstudio"></a>Communiceren met R-taal in Machine Learning Studio (klassiek)
 
@@ -143,7 +139,7 @@ In deze sectie wordt uitgelegd hoe u gegevens in en uit de module voor het [uitv
 
 De volledige code voor deze sectie bevindt zich in [MachineLearningSamples-notebooks/Studio-samples](https://github.com/Azure-Samples/MachineLearningSamples-Notebooks/tree/master/studio-samples).
 
-### <a name="load-and-check-data-in-machine-learning-studio-classic"></a>Gegevens in Machine Learning Studio laden en controleren (klassiek)
+### <a name="load-and-check-data"></a>Gegevens laden en controleren 
 
 #### <a name="load-the-dataset"></a><a id="loading"></a>De gegevensset laden
 

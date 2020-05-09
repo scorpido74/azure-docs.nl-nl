@@ -7,12 +7,12 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 11/18/2019
 ms.author: babanisa
-ms.openlocfilehash: 4cb8168cd6d1c19cc797a7cd5454b96131fa35be
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 86d647ebfcf6e4c1ea8d05f58dd1f559d6e30cfc
+ms.sourcegitcommit: 0fda81f271f1a668ed28c55dcc2d0ba2bb417edd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82106614"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82900459"
 ---
 # <a name="publish-events-to-azure-active-directory-protected-endpoints"></a>Gebeurtenissen publiceren naar Azure Active Directory beveiligde eind punten
 
@@ -31,8 +31,8 @@ Maak eerst een Azure AD-toepassing voor uw beveiligde eind punt. Zie https://doc
 
 Gebruik het onderstaande Power shell-script om een functie-en service principe te maken in uw Azure AD-toepassing. U hebt de Tenant-ID en de object-ID van uw Azure AD-toepassing nodig:
 
-    > [!NOTE]
-    > You must be a member of the [Azure AD Application Administrator role](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles#available-roles) to execute this script.
+   > [!NOTE]
+   > U moet lid zijn van de [rol Azure AD-toepassings beheerder](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles#available-roles) om dit script uit te voeren.
     
 1. Wijzig de $myTenantId van het Power shell-script om uw Azure AD-Tenant-ID te gebruiken.
 1. Wijzig de $myAzureADApplicationObjectId van het Power shell-script om de object-ID van uw Azure AD-toepassing te gebruiken
