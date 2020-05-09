@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: acomet
 ms.reviewer: jrasnick
-ms.openlocfilehash: aa93a816fc11158d928978bdec2dbf42119fa149
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: c7ae76128e90dbd9328c4bc5adcbddc334ab11cc
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81424655"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82983156"
 ---
 # <a name="azure-synapse-analytics-cheat-sheet"></a>Cheat-blad voor Azure Synapse Analytics
 
@@ -30,7 +30,7 @@ Het Azure Synapse Analytics Cheat-blad bevat een overzicht van de basis concepte
 ## <a name="concepts"></a>Concepten
 | Zelfstandig naam woord en werk woord                         | Wat het doet       |
 |:---                                 |:---                 |
-| **Synapse-werk ruimte (preview-versie)** | Een Beveilig bare samenwerkings grens voor het uitvoeren van cloud-based Enter prise-analyses in Azure. Een werk ruimte wordt in een specifieke regio geïmplementeerd en heeft een bijbehorend ADLSg2-account en-bestands systeem (voor het opslaan van tijdelijke gegevens). Een werk ruimte bevindt zich onder een resource groep. |
+| **Synapse-werk ruimte (preview-versie)** | Een Beveilig bare samenwerkings grens voor het uitvoeren van cloud-based Enter prise-analyses in Azure. Een werk ruimte wordt geïmplementeerd in een specifieke regio en heeft een gekoppeld ADLS Gen2 account en bestands systeem (voor het opslaan van tijdelijke gegevens). Een werk ruimte bevindt zich onder een resource groep. |
 | **SQL Analytics**   | Voer analyses uit met Pools of met mogelijkheden op aanvraag.  |
 | **SQL-pool**   | met de bijbehorende data bases kunnen 0-naar-N SQL-ingerichte resources worden geïmplementeerd in een werk ruimte. Elke SQL-groep heeft een gekoppelde data base. Een SQL-groep kan worden geschaald, gepauzeerd en hand matig of automatisch worden hervat. Een SQL-pool kan worden geschaald van 100 DWU tot 30.000 DWU.       |
 | **SQL op aanvraag (preview-versie)**   | Het systeem voor gedistribueerde gegevens verwerking is gebouwd voor grootschalige gegevens waarmee u T-SQL-query's kunt uitvoeren op gegevens in data Lake. Het is serverloos, zodat u de infra structuur niet hoeft te beheren.       |

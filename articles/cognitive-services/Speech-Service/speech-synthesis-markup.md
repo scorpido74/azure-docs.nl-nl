@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/23/2020
 ms.author: trbye
-ms.openlocfilehash: eb3db23189cbfd07362b1bd5be9aaa181064a2d6
-ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.openlocfilehash: b1c19ed556a55dec8c84686e80ec988bc593a7a2
+ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82583223"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "82996031"
 ---
 # <a name="improve-synthesis-with-speech-synthesis-markup-language-ssml"></a>De synthese verbeteren met Markup Language voor spraak synthese (SSML)
 
@@ -79,7 +79,7 @@ Het `voice` element is vereist. Dit wordt gebruikt om de stem op te geven die wo
 |-----------|-------------|---------------------|
 | `name` | Hiermee wordt de stem geïdentificeerd die wordt gebruikt voor de tekst-naar-spraak-uitvoer. Zie [taal ondersteuning](language-support.md#text-to-speech)voor een volledige lijst met ondersteunde stemmen. | Vereist |
 
-**Voorbeeld**
+**Hierbij**
 
 > [!NOTE]
 > In dit voor beeld `en-US-AriaRUS` wordt de stem gebruikt. Zie [taal ondersteuning](language-support.md#text-to-speech)voor een volledige lijst met ondersteunde stemmen.
@@ -109,7 +109,7 @@ Binnen het `speak` -element kunt u meerdere stemmen opgeven voor tekst-naar-spra
 
 Afhankelijk van de taal van de Speech SDK, stelt u de `"SpeechServiceResponse_Synthesis_WordBoundaryEnabled"` eigenschap in `false` op een exemplaar van het `SpeechConfig` object.
 
-# <a name="c"></a>[G #](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 <a href="https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechconfig.setproperty?view=azure-dotnet" target="_blank"> `SetProperty` Zie <span class="docon docon-navigate-external x-hidden-focus"> </span> </a>voor meer informatie.
 
@@ -173,7 +173,7 @@ speechConfig!.setPropertyTo(
 
 ---
 
-**Voorbeeld**
+**Hierbij**
 
 ```xml
 <speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xml:lang="en-US">
@@ -225,7 +225,7 @@ Gebruik deze tabel om te bepalen welke spraak stijlen worden ondersteund voor el
 |                         | `style="assistant"`       | Een warme en beperkte Toon voor digitale assistenten    |
 |                         | `style="lyrical"`         | Drukt op emoties op een melodic-en Sentimental manier         |
 
-**Voorbeeld**
+**Hierbij**
 
 Dit SSML-fragment laat zien hoe `<mstts:express-as>` het element wordt gebruikt voor het wijzigen van de `cheerful`spreek stijl in.
 
@@ -270,7 +270,7 @@ Gebruik het `break` element om pauzes (of onderbrekingen) tussen woorden in te v
 | strakk                        | 1000 MS     |
 | x-Strong                      | 1250 MS     |
 
-**Voorbeeld**
+**Hierbij**
 
 ```xml
 <speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xml:lang="en-US">
@@ -295,7 +295,7 @@ Het `s` element kan tekst en de volgende elementen bevatten: `audio`, `break`, `
 <s></s>
 ```
 
-**Voorbeeld**
+**Hierbij**
 
 ```XML
 <speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xml:lang="en-US">
@@ -359,7 +359,10 @@ Fonetische alfabetten bestaan uit telefoons, die bestaan uit letters, cijfers of
 
 ## <a name="use-custom-lexicon-to-improve-pronunciation"></a>Aangepaste Lexicon gebruiken om de uitspraak te verbeteren
 
-Soms kan TTS geen woord nauw keurig uitspreken, bijvoorbeeld een bedrijf of een externe naam. Ontwikkel aars kunnen het lezen van deze entiteiten in SSML definiëren `phoneme` met `sub` behulp van en tags of het lezen van meerdere entiteiten definiëren door te verwijzen naar een `lexicon` aangepast Lexicon bestand met behulp van tag.
+Soms kan de tekst naar spraak-service een woord niet nauw keurig uitspreken. Bijvoorbeeld de naam van een bedrijf of een medische term. Ontwikkel aars kunnen bepalen hoe afzonderlijke entiteiten in SSML worden gelezen met `phoneme` behulp van de tags en `sub` . Als u echter wilt definiëren hoe meerdere entiteiten worden gelezen, kunt u een aangepast Lexicon maken met behulp van `lexicon` de tag.
+
+> [!NOTE]
+> Aangepaste Lexicon ondersteunt momenteel UTF-8-code ring. 
 
 **Syntaxis**
 
@@ -375,14 +378,10 @@ Soms kan TTS geen woord nauw keurig uitspreken, bijvoorbeeld een bedrijf of een 
 
 **Belasting**
 
-Stap 1: aangepaste Lexicon definiëren 
-
-U kunt het lezen van entiteiten definiëren met een lijst met aangepaste lexicon items, opgeslagen als een. XML-of. gebruik-bestand.
-
-**Voorbeeld**
+Als u wilt definiëren hoe meerdere entiteiten worden gelezen, kunt u een aangepast Lexicon maken, dat is opgeslagen als een. XML-of. gebruik-bestand. Hier volgt een voor beeld van een XML-bestand.
 
 ```xml
-<?xml version="1.0" encoding="UTF-16"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <lexicon version="1.0" 
       xmlns="http://www.w3.org/2005/01/pronunciation-lexicon"
       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
@@ -400,39 +399,61 @@ U kunt het lezen van entiteiten definiëren met een lijst met aangepaste lexicon
 </lexicon>
 ```
 
-Elk `lexeme` element is een lexicon item. `grapheme`bevat tekst met een beschrijving van `lexeme`de orthograph van. Het Lees formulier kan worden gegeven `alias`als. De telefoon reeks kan worden gegeven `phoneme` in het element.
+Het `lexicon` element bevat ten minste één `lexeme` element. Elk `lexeme` element bevat ten minste één `grapheme` element en een of meer `grapheme`elementen `alias`, en `phoneme` . Het `grapheme` element bevat tekst met een beschrijving van de <a href="https://www.w3.org/TR/pronunciation-lexicon/#term-Orthography" target="_blank">orthography <span class="docon docon-navigate-external x-hidden-focus"> </span> </a>. De `alias` elementen worden gebruikt om de uitspraak van een acroniem of een kortere term aan te geven. Het `phoneme` element biedt tekst die beschrijft hoe `lexeme` de wordt uitgesp roken.
 
-Het `lexicon` element bevat ten minste één `lexeme` element. Elk `lexeme` element bevat ten minste één `grapheme` element en een of meer `grapheme`elementen `alais`, en `phoneme` . Het `grapheme` element bevat tekst met een beschrijving van de <a href="https://www.w3.org/TR/pronunciation-lexicon/#term-Orthography" target="_blank">orthography <span class="docon docon-navigate-external x-hidden-focus"> </span> </a>. De `alias` elementen worden gebruikt om de uitspraak van een acroniem of een kortere term aan te geven. Het `phoneme` element biedt tekst die beschrijft hoe `lexeme` de wordt uitgesp roken.
+Het is belang rijk te weten dat u de uitspraak van een woord niet rechtstreeks kunt instellen met behulp van het aangepaste lexicon. Als u de uitspraak voor een wilt instellen, geeft u eerst een `alias`op en koppelt u `phoneme` deze aan `alias`die. Bijvoorbeeld:
 
-Zie [gebruik-versie 1,0](https://www.w3.org/TR/pronunciation-lexicon/) op de W3C-website voor meer informatie over het aangepaste Lexicon bestand.
+```xml
+  <lexeme>
+    <grapheme>Scotland MV</grapheme> 
+    <alias>ScotlandMV</alias> 
+  </lexeme>
+  <lexeme>
+    <grapheme>ScotlandMV</grapheme> 
+    <phoneme>ˈskɒtlənd.ˈmiːdiəm.weɪv</phoneme>
+  </lexeme>
+```
 
-Stap 2: het aangepaste Lexicon bestand uploaden dat is gemaakt in stap 1 online, u kunt het overal opslaan en u wordt aangeraden deze op te slaan in Microsoft Azure, bijvoorbeeld [Azure Blob Storage](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal).
+> [!IMPORTANT]
+> Het `phoneme` element mag geen spaties bevatten wanneer IPA wordt gebruikt.
 
-Stap 3: naar het aangepaste Lexicon bestand verwijzen in SSML
+Zie [gebruik-versie 1,0 (conuitspraak Lexicon Specification) (Engelstalig)](https://www.w3.org/TR/pronunciation-lexicon/)voor meer informatie over het aangepaste Lexicon bestand.
+
+Publiceer vervolgens uw aangepaste Lexicon bestand. Er zijn geen beperkingen voor het opslaan van dit bestand, maar we raden u aan [Azure Blob Storage](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal)te gebruiken.
+
+Nadat u uw aangepaste Lexicon hebt gepubliceerd, kunt u ernaar verwijzen vanuit uw SSML.
+
+> [!NOTE]
+> Het `lexicon` element moet zich in het `voice` -element bevindt.
 
 ```xml
 <speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" 
           xmlns:mstts="http://www.w3.org/2001/mstts" 
           xml:lang="en-US">
-<lexicon uri="http://www.example.com/customlexicon.xml"/>
-BTW, we will be there probably 8:00 tomorrow morning.
-Could you help leave a message to Robert Benigni for me?
+    <voice name="en-US-AriaRUS">
+        <lexicon uri="http://www.example.com/customlexicon.xml"/>
+        BTW, we will be there probably at 8:00 tomorrow morning.
+        Could you help leave a message to Robert Benigni for me?
+    </voice>
 </speak>
 ```
-"BTW" wordt gelezen als "op de manier". ' Benigni ' wordt gelezen met de meegeleverde IPA ' bɛ ˈ ni ː nji '.  
 
-**Beperking**
+Als u dit aangepaste Lexicon gebruikt, wordt "BTW" als "op de manier" gelezen. ' Benigni ' wordt gelezen met de meegeleverde IPA ' bɛ ˈ ni ː nji '.  
+
+**Beperkingen**
 - Bestands grootte: de maximale limiet voor de grootte van het aangepaste Lexicon bestand is 100KB. als dit niet het geval is, mislukt de synthese aanvraag.
 - Vernieuwen van Lexicon cache: het aangepaste Lexicon wordt in de cache opgeslagen als Key op de TTS-service wanneer het voor het eerst wordt geladen. Een Lexicon met dezelfde URI kan niet binnen 15 minuten opnieuw worden geladen, dus de aangepaste Lexicon wijziging moet worden gewacht om te worden doorgevoerd.
 
 **Fonetische sets van spraak service**
 
-In het bovenstaande voor beeld gebruiken we het internationale fonetische alfabet, ook wel bekend als de IPA-telefoonset. Ontwikkel aars suggereren dat ze de IPA gebruiken, omdat dit de internationale standaard is. Als u overweegt dat de IPA niet eenvoudig te onthouden is, definieert de speech-service een fonetische`en-US`set `fr-FR`voor `de-DE`zeven `es-ES`talen `ja-JP`( `zh-CN`,, `zh-TW`,,, en).
+In het bovenstaande voor beeld gebruiken we het internationale fonetische alfabet, ook wel bekend als de IPA-telefoonset. Ontwikkel aars suggereren dat ze de IPA gebruiken, omdat dit de internationale standaard is. Voor sommige IPA-tekens hebben ze de versie ' premated ' en ' ontgebouwd ' wanneer ze worden weer gegeven met Unicode. Aangepaste Lexicon biedt alleen ondersteuning voor de ontgebouwde Unicode-tekens.
+
+Als u overweegt dat de IPA niet eenvoudig te onthouden is, definieert de speech-service een fonetische`en-US`set `fr-FR`voor `de-DE`zeven `es-ES`talen `ja-JP`( `zh-CN`,, `zh-TW`,,, en).
 
 U kunt de `sapi` as Vale voor het `alphabet` kenmerk gebruiken met aangepaste lexicons, zoals hieronder wordt geïllustreerd:
 
 ```xml
-<?xml version="1.0" encoding="UTF-16"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <lexicon version="1.0" 
       xmlns="http://www.w3.org/2005/01/pronunciation-lexicon"
       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -479,7 +500,7 @@ Omdat Prosodic kenmerk waarden kunnen variëren per breed bereik, interpreteert 
 
 Het spreek tempo kan worden toegepast op Neural stemmen en standaard stemmen op het niveau van het woord of de zin. 
 
-**Voorbeeld**
+**Hierbij**
 
 ```xml
 <speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xml:lang="en-US">
@@ -495,7 +516,7 @@ Het spreek tempo kan worden toegepast op Neural stemmen en standaard stemmen op 
 
 Volume wijzigingen kunnen worden toegepast op standaard stemmen op het niveau van het woord of de zin. Terwijl volume wijzigingen alleen kunnen worden toegepast op Neural stemmen op het niveau van de zin.
 
-**Voorbeeld**
+**Hierbij**
 
 ```xml
 <speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xml:lang="en-US">
@@ -511,7 +532,7 @@ Volume wijzigingen kunnen worden toegepast op standaard stemmen op het niveau va
 
 Wijzigingen in de hoogte kunnen worden toegepast op standaard stemmen op het niveau van het woord of de zin. Dat wijzigingen in de hoogte alleen kunnen worden toegepast op Neural stemmen op het niveau van de zin.
 
-**Voorbeeld**
+**Hierbij**
 
 ```xml
 <speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xml:lang="en-US">
@@ -526,7 +547,7 @@ Wijzigingen in de hoogte kunnen worden toegepast op standaard stemmen op het niv
 > [!IMPORTANT]
 > De hoogte van de contour wijzigingen wordt nu ondersteund met Neural stemmen.
 
-**Voorbeeld**
+**Hierbij**
 
 ```xml
 <speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xml:lang="en-US">
@@ -575,7 +596,7 @@ Hieronder vindt u de ondersteunde inhouds typen voor de `interpret-as` kenmerken
 
 Het `say-as` element mag alleen tekst bevatten.
 
-**Voorbeeld**
+**Hierbij**
 
 De engine voor spraak synthese spreekt het volgende voor beeld uit als ' uw eerste aanvraag is voor één kamer op nineteenth oktober 20 10 met vroege aankomst om 12 35 uur. '
  
@@ -615,7 +636,7 @@ Audio die is opgenomen in het SSML-document moet voldoen aan deze vereisten:
 |-----------|-----------------------------------------------|------------------------------------------------------------|
 | `src`     | Hiermee geeft u de locatie/URL van het audio bestand op. | Vereist als u het audio-element in uw SSML-document gebruikt. |
 
-**Voorbeeld**
+**Hierbij**
 
 ```xml
 <speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xml:lang="en-US">
@@ -654,7 +675,7 @@ Er is slechts één achtergrond geluids bestand toegestaan per SSML-document. U 
 | `fadein` | Hiermee geeft u de duur van de achtergrond audio "infaden" als milliseconden. De standaard waarde is `0`, die gelijk is aan niet vervagen in. **Geaccepteerde waarden** `0` : `10000` tot inclusief.  | Optioneel |
 | `fadeout` | Hiermee geeft u de duur van de achtergrond audio vervagen in milliseconden. De standaard waarde is `0`, die gelijk is aan geen uitfaden. **Geaccepteerde waarden** `0` : `10000` tot inclusief.  | Optioneel |
 
-**Voorbeeld**
+**Hierbij**
 
 ```xml
 <speak version="1.0" xml:lang="en-US" xmlns:mstts="http://www.w3.org/2001/mstts">

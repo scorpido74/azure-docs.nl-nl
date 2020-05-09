@@ -5,46 +5,40 @@ services: cdn
 author: SyntaxC4
 ms.service: azure-cdn
 ms.topic: include
-ms.date: 05/24/2018
+ms.date: 04/30/2020
 ms.author: cfowler
 ms.custom: include file
-ms.openlocfilehash: 8aa6cb3f10b86a6821cd93190ecc2135508739cb
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: d73a8d743a948cbd94a3af81fe2e77c45c0eeb67
+ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "67593996"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "82996310"
 ---
 ## <a name="create-a-new-cdn-profile"></a>Nieuwe CDN-profielen maken
 
 Een CDN-profiel is een container voor CDN-eindpunten waarmee een prijscategorie wordt opgegeven.
 
-1. Selecteer linksboven in Azure Portal **Een resource maken**. 
-    
-    Het deelvenster **Nieuw** verschijnt.
+1. Selecteer in de Azure Portal **een resource maken** (linksboven). Het deelvenster **Nieuw** verschijnt.
    
-2. Selecteer **Web en mobiel** en vervolgens **CDN**.
+1. Zoek en selecteer **CDN**en selecteer vervolgens **maken**:
    
     ![CDN-resource selecteren](./media/cdn-create-profile/cdn-new-resource.png)
 
     Het deel venster **CDN-profiel** wordt weer gegeven.
 
-3. Gebruik voor de CDN-profielinstellingen de waarden die in de volgende tabel zijn opgegeven:
+1. Voer de volgende waarden in:
    
     | Instelling  | Waarde |
     | -------- | ----- |
-    | **Naam** | Voer *my-cdn-profile-123* in als profielnaam. Deze naam moet wereldwijd uniek zijn. Als deze al in gebruik is, kunt u een andere naam invoeren. |
+    | **Naam** | Voer het *CDN-profiel-123* in voor uw profiel naam. Deze naam moet globaal uniek zijn. Als deze al in gebruik is, voert u een andere naam in. |
     | **Abonnement** | Kies een Azure-abonnement in de vervolgkeuzelijst. |
-    | **Resourcegroep** | Selecteer **Nieuwe maken** en voer *my-resource-group-123* in als naam voor de resourcegroep. Als deze al in gebruik is, kunt u een andere naam invoeren of **Bestaande gebruiken** selecteren en **my-resource-group-123** in de vervolgkeuzelijst selecteren. | 
-    | **Resourcegroeplocatie** | Selecteer **VS - centraal** in de vervolgkeuzelijst. |
-    | **Prijs categorie** | Selecteer **Standard - Verizon** in de vervolgkeuzelijst. |
+    | **Resourcegroep** | Selecteer **nieuwe maken** en voer *CDNQuickstart-RG* in voor de naam van de resource groep of selecteer **bestaande gebruiken** en kies *CDNQuickstart-RG* als u de groep al hebt. | 
+    | **Resourcegroeplocatie** | Selecteer een locatie bij u in de vervolg keuzelijst. |
+    | **Prijs categorie** | Selecteer een **standaard** optie voor Akamai in de vervolg keuzelijst. (De implementatie tijd voor de Akamai-laag is ongeveer een minuut. De micro soft-laag neemt ongeveer 10 minuten in beslag en de Verizon-lagen nemen ongeveer 90 minuten in.) |
     | **Nu een nieuw CDN-eindpunt maken** | Laat het selectievakje uitgeschakeld. |  
    
     ![Nieuw CDN-profiel](./media/cdn-create-profile/cdn-new-profile.png)
 
-4. Selecteer **Aan dashboard vastmaken** om het profiel in het dashboard op te slaan nadat het is gemaakt.
-    
-5. Selecteer **Maken** om het profiel te maken. 
-
-    Voor alleen **Azure CDN Standard van Microsoft**-profielen duurt het voltooien van het profiel meestal twee uur. 
+1. Selecteer **Maken** om het profiel te maken.
 

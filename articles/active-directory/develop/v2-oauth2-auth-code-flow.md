@@ -1,5 +1,6 @@
 ---
-title: Stroom voor OAuth-autorisatie code-micro soft Identity-platform | Azure
+title: Micro soft Identity platform en OAuth 2,0-autorisatie code stroom | Azure
+titleSuffix: Microsoft identity platform
 description: Bouw webtoepassingen met behulp van de micro soft Identity platform-implementatie van het OAuth 2,0-verificatie protocol.
 services: active-directory
 author: hpsin
@@ -8,16 +9,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 01/31/2020
+ms.date: 05/06/2020
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: b01a0a9162412092f9339810a51838c4bdbb0a20
-ms.sourcegitcommit: 602e6db62069d568a91981a1117244ffd757f1c2
-ms.translationtype: HT
+ms.openlocfilehash: 29720b338326a29e65af1b6564cb0b59a976c62c
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82864178"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82926439"
 ---
 # <a name="microsoft-identity-platform-and-oauth-20-authorization-code-flow"></a>Micro soft Identity platform en OAuth 2,0-autorisatie code stroom
 
@@ -25,11 +26,11 @@ De OAuth 2,0-autorisatie code toekenning kan worden gebruikt in apps die op een 
 
 In dit artikel wordt beschreven hoe u direct kunt Program meren met het protocol in uw toepassing.  Als dat mogelijk is, kunt u het beste de ondersteunde micro soft-verificatie bibliotheken (MSAL) gebruiken in plaats van [tokens te verkrijgen en beveiligde web-api's](authentication-flows-app-scenarios.md#scenarios-and-supported-authentication-flows)aan te roepen.  Bekijk ook de voor beeld- [apps die gebruikmaken van MSAL](sample-v2-code.md).
 
-De OAuth 2,0-autorisatie code stroom wordt beschreven in [sectie 4,1 van de oauth 2,0-specificatie](https://tools.ietf.org/html/rfc6749). Het wordt gebruikt om verificatie en autorisatie uit te voeren in het meren deel van de app-typen, inclusief [Web apps](v2-app-types.md#web-apps) en [systeem eigen geïnstalleerde apps](v2-app-types.md#mobile-and-native-apps). Met de stroom kunnen apps veilig access_tokens ophalen dat kan worden gebruikt om toegang te krijgen tot resources die zijn beveiligd met het micro soft Identity platform-eind punt.
+De OAuth 2,0-autorisatie code stroom wordt beschreven in [sectie 4,1 van de oauth 2,0-specificatie](https://tools.ietf.org/html/rfc6749). Het wordt gebruikt om verificatie en autorisatie uit te voeren in het meren deel van de app-typen, inclusief [Web apps](v2-app-types.md#web-apps) en [systeem eigen geïnstalleerde apps](v2-app-types.md#mobile-and-native-apps). Met deze OAuth-stroom kunnen apps veilig access_tokens ophalen dat kan worden gebruikt voor toegang tot bronnen die worden beveiligd door het micro soft Identity platform-eind punt.
 
 ## <a name="protocol-diagram"></a>Protocol diagram
 
-Op hoog niveau ziet de volledige verificatie stroom voor een systeem eigen/mobiele toepassing er ongeveer als volgt uit:
+Op hoog niveau ziet de hele OAuth2-verificatie stroom voor een systeem eigen/mobiele toepassing er ongeveer als volgt uit:
 
 ![OAuth-verificatie code stroom](./media/v2-oauth2-auth-code-flow/convergence-scenarios-native.svg)
 
@@ -148,7 +149,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 | `scope`      | vereist   | Een lijst met door spaties gescheiden bereiken. De bereiken die in dit gedeelte worden aangevraagd, moeten gelijk zijn aan of een subset zijn van de bereiken die in de eerste poot zijn aangevraagd. De scopes moeten allemaal van één resource zijn, samen met OIDC-bereiken (`profile`, `openid`, `email`). Raadpleeg [machtigingen, toestemming en bereiken](v2-permissions-and-consent.md)voor een gedetailleerdere uitleg van scopes. |
 | `code`          | vereist  | Het authorization_code dat u hebt verkregen in het eerste gedeelte van de stroom. |
 | `redirect_uri`  | vereist  | Dezelfde redirect_uri waarde die is gebruikt om de authorization_code op te halen. |
-| `client_secret` | vereist voor web-apps | Het toepassings geheim dat u hebt gemaakt in de app-registratie portal voor uw app. U moet het toepassings geheim niet gebruiken in een systeem eigen app omdat client_secrets niet betrouwbaar kan worden opgeslagen op apparaten. Het is vereist voor web-apps en Web-Api's, die de mogelijkheid hebben om de client_secret veilig op te slaan aan de server zijde.  Het client geheim moet URL-gecodeerd zijn voordat het wordt verzonden. Klik [hier](https://tools.ietf.org/html/rfc3986#page-12)voor meer informatie. |
+| `client_secret` | vereist voor web-apps | Het toepassings geheim dat u hebt gemaakt in de app-registratie portal voor uw app. U moet het toepassings geheim niet gebruiken in een systeem eigen app omdat client_secrets niet betrouwbaar kan worden opgeslagen op apparaten. Het is vereist voor web-apps en Web-Api's, die de mogelijkheid hebben om de client_secret veilig op te slaan aan de server zijde.  Het client geheim moet URL-gecodeerd zijn voordat het wordt verzonden. Zie voor meer informatie de specificatie van de [generieke URI-syntaxis](https://tools.ietf.org/html/rfc3986#page-12). |
 | `code_verifier` | optioneel  | Hetzelfde code_verifier dat is gebruikt om de authorization_code op te halen. Vereist als PKCE is gebruikt in de aanvraag voor autorisatie code toekenning. Zie [PKCE RFC](https://tools.ietf.org/html/rfc7636)(Engelstalig) voor meer informatie. |
 
 ### <a name="successful-response"></a>Geslaagde reactie
@@ -260,7 +261,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 | `grant_type`    | vereist    | Moet voor `refresh_token` deze poot van de autorisatie code stroom zijn. |
 | `scope`         | vereist    | Een lijst met door spaties gescheiden bereiken. De scopes die in deze leg worden aangevraagd, moeten gelijk zijn aan of een subset zijn van de bereiken die in de oorspronkelijke authorization_code aanvraag poot zijn aangevraagd. Als de scopes die in deze aanvraag zijn opgegeven meerdere bron servers beslaan, retourneert het micro soft Identity platform-eind punt een token voor de resource die in het eerste bereik is opgegeven. Raadpleeg [machtigingen, toestemming en bereiken](v2-permissions-and-consent.md)voor een gedetailleerdere uitleg van scopes. |
 | `refresh_token` | vereist    | Het refresh_token dat u hebt verkregen in het tweede gedeelte van de stroom. |
-| `client_secret` | vereist voor web-apps | Het toepassings geheim dat u hebt gemaakt in de app-registratie portal voor uw app. Het mag niet worden gebruikt in een systeem eigen app, omdat client_secrets niet betrouwbaar kan worden opgeslagen op apparaten. Het is vereist voor web-apps en Web-Api's, die de mogelijkheid hebben om de client_secret veilig op te slaan aan de server zijde. Dit geheim moet URL-gecodeerd zijn. Klik [hier](https://tools.ietf.org/html/rfc3986#page-12)voor meer informatie. |
+| `client_secret` | vereist voor web-apps | Het toepassings geheim dat u hebt gemaakt in de app-registratie portal voor uw app. Het mag niet worden gebruikt in een systeem eigen app, omdat client_secrets niet betrouwbaar kan worden opgeslagen op apparaten. Het is vereist voor web-apps en Web-Api's, die de mogelijkheid hebben om de client_secret veilig op te slaan aan de server zijde. Dit geheim moet URL-gecodeerd zijn. Zie voor meer informatie de specificatie van de [generieke URI-syntaxis](https://tools.ietf.org/html/rfc3986#page-12). |
 
 #### <a name="successful-response"></a>Geslaagde reactie
 

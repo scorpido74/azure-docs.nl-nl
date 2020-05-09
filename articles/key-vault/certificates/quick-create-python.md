@@ -7,12 +7,12 @@ ms.date: 3/30/2020
 ms.service: key-vault
 ms.subservice: certificates
 ms.topic: quickstart
-ms.openlocfilehash: 8bac2af112bbecd90ce3ba3aa63475071d6edb26
-ms.sourcegitcommit: 0fda81f271f1a668ed28c55dcc2d0ba2bb417edd
+ms.openlocfilehash: 218edb146ee0107803561c6ba52cc42406b69746
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82901224"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82982782"
 ---
 # <a name="quickstart-azure-key-vault-client-library-for-python"></a>Snelstartgids: Azure Key Vault-client bibliotheek voor python
 
@@ -69,12 +69,12 @@ az keyvault create --name <your-unique-keyvault-name> -g "myResourceGroup"
 
 De eenvoudigste manier om een op de cloud gebaseerde .NET-toepassing te verifiëren, is met een beheerde identiteit. Zie [een beheerde app Service-id gebruiken voor toegang tot Azure Key Vault](../general/managed-identity.md) voor meer informatie.
 
-In het omwille van de eenvoud maakt deze Snelstartgids echter een bureaublad toepassing, waarvoor het gebruik van een Service-Principal en een beleid voor toegangs beheer vereist is. Voor uw service-principal is een unieke naam vereist in de notatie ' http://<My-Unique-Service-Principle-Name> '.
+In het omwille van de eenvoud maakt deze Snelstartgids echter een bureaublad toepassing, waarvoor het gebruik van een Service-Principal en een beleid voor toegangs beheer vereist is. Voor uw service-principal is een unieke naam vereist in de&lt;indeling ' http://My-Unique-service-&gt;Principle-Name '.
 
 Maak een service-principal met behulp van de opdracht Azure CLI [AZ AD SP create-for-RBAC](/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac) :
 
 ```azurecli
-az ad sp create-for-rbac -n "http://<my-unique-service-principle-name>" --sdk-auth
+az ad sp create-for-rbac -n "http://&lt;my-unique-service-principle-name&gt;" --sdk-auth
 ```
 
 Met deze bewerking wordt een reeks sleutel-waardeparen geretourneerd. 

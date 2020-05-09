@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/30/2019
 ms.author: spelluru
-ms.openlocfilehash: 889d0d1e98f5c9947588011774d02e54f05edca1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0dab5f3dcdfb6ddabbd94960dcf8a8bf2bce98af
+ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81257756"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82890777"
 ---
 # <a name="set-up-a-lab-focused-on-deep-learning-in-natural-language-processing-using-azure-lab-services"></a>Stel een lab in dat is gericht op diep gaande lessen in de verwerking van natuurlijke taal met behulp van Azure Lab Services
 In dit artikel wordt beschreven hoe u een test omgeving kunt instellen voor een diep gaande cursus in natuurlijke taal verwerking (NLP) met behulp van Azure Lab Services. De verwerking van natuurlijke taal (NLP) is een vorm van kunst matige intelligentie (AI) waarmee computers kunnen beschikken over mogelijkheden voor vertaling, spraak herkenning en andere talen.  
@@ -40,7 +40,7 @@ Volg [deze zelf studie](tutorial-setup-classroom-lab.md) om een nieuw lab te mak
 | ------------ | ------------------ |
 | Grootte van virtuele machine (VM) | Kleine GPU (Compute). Deze grootte is het meest geschikt voor computerintensieve en netwerkintensieve toepassingen, zoals kunst matige intelligentie en diep gaande lessen. |
 | VM-installatie kopie | [Data Science virtual machine voor Linux (Ubuntu)](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.ubuntu-1804). Deze afbeelding biedt diep gaande frameworks en hulp middelen voor machine learning en gegevens wetenschap. Als u de volledige lijst met geïnstalleerde hulpprogram ma's op deze installatie kopie wilt weer geven, raadpleegt u het volgende artikel: [Wat is opgenomen in de DSVM?](../../machine-learning/data-science-virtual-machine/overview.md#whats-included-on-the-dsvm). |
-| Verbinding met extern bureau blad inschakelen | Inschakelen. <p>Als u deze instelling inschakelt, kunnen docenten en studenten verbinding maken met hun Virtual Machines (VM) met behulp van Extern bureaublad (RDP).</p><p>**Belang rijk**: RDP is al geïnstalleerd en geconfigureerd op de installatie kopie van data Science virtual machine voor Linux. Als gevolg hiervan kunnen docenten/studenten zonder extra stappen verbinding maken met Vm's via RDP. Als u verbinding moet maken met het grafische bureau blad, heeft deze installatie kopie al een [X2Go-server](https://wiki.x2go.org/doku.php/doc:newtox2go) geïnstalleerd op de virtuele machine. Studenten moeten de X2Go-client installeren op hun lokale computers en de client gebruiken om verbinding te maken. Zie de volgende hand leidingen voor meer informatie: <ul><li>[Toegang tot de Data Science Virtual Machine voor Linux](../../machine-learning/data-science-virtual-machine/dsvm-ubuntu-intro.md#how-to-access-the-ubuntu-data-science-virtual-machine)</li><li>[Verbinding maken met de VM van de sjabloon voor het installeren van RDP-en GUI-pakketten](how-to-enable-remote-desktop-linux.md#connect-to-the-template-vm)</li></ul></p>   |
+| Verbinding met extern bureau blad inschakelen | <p>Als u deze instelling inschakelt, kunnen docenten en studenten verbinding maken met hun Virtual Machines (VM) met behulp van Extern bureaublad (RDP).</p><p>**Belang rijk**: als u deze instelling inschakelt, wordt alleen de **RDP** -poort op Linux-machines geopend. Als RDP al is geïnstalleerd en geconfigureerd op de installatie kopie van de virtuele machine, kunnen u/studenten verbinding maken met Vm's via RDP zonder dat u extra stappen hoeft te volgen. <p>Als RDP niet is geïnstalleerd en geconfigureerd op de installatie kopie van de virtuele machine, moet u voor het eerst verbinding maken met de Linux-computer en vervolgens RDP-en GUI-pakketten installeren, zodat u/studenten later met RDP verbinding kunnen maken met de Linux-machine. Zie [extern bureaublad installeren en configureren om verbinding te maken met een virtuele Linux-machine in azure](../../virtual-machines/linux/use-remote-desktop.md)voor meer informatie. Vervolgens publiceert u de installatie kopie zodat studenten RDP kunnen hebben in de student Linux-Vm's.  |
 
 De installatie kopie van Data Science Virtual Machine voor Linux biedt de nodige diepe leer raamwerken en hulp middelen die vereist zijn voor dit type klasse. Als gevolg hiervan hoeft u de computer niet verder aan te passen nadat u de sjabloon hebt gemaakt. Het kan worden gepubliceerd voor studenten om te gebruiken. Selecteer de knop **publiceren** op de sjabloon pagina om de sjabloon te publiceren naar het lab.  
 

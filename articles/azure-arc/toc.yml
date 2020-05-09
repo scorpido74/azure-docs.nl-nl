@@ -4,6 +4,11 @@
   items:
     - name: Wat is Azure Arc voor servers?
       href: ./servers/overview.md
+- name: Voorbeelden
+  items:
+    - name: Ingebouwde modules voor Azure Policy
+      displayName: 'samples, policies, definitions'
+      href: ./servers/policy-samples.md
 - name: Instructiegidsen
   items:
     - name: Verbinding maken met Azure Arc

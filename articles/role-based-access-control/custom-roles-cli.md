@@ -1,6 +1,6 @@
 ---
-title: Aangepaste rollen maken of bijwerken voor Azure-resources met behulp van Azure CLI | Microsoft Docs
-description: Meer informatie over het weer geven, maken, bijwerken of verwijderen van aangepaste rollen met op rollen gebaseerd toegangs beheer (RBAC) voor Azure-resources met behulp van Azure CLI.
+title: Aangepaste Azure-rollen maken of bijwerken met Azure CLI-Azure RBAC
+description: Meer informatie over het weer geven, maken, bijwerken of verwijderen van aangepaste Azure-rollen met Azure CLI en Azure op rollen gebaseerd toegangs beheer (Azure RBAC).
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -14,23 +14,23 @@ ms.workload: identity
 ms.date: 03/18/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 44676f7b92c2bcd30612295840054ab2f0c0cf12
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: cac0116cf7a068e63cb54698f7273b8c063ff854
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80062218"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82734838"
 ---
-# <a name="create-or-update-custom-roles-for-azure-resources-using-azure-cli"></a>Aangepaste rollen maken of bijwerken voor Azure-resources met behulp van Azure CLI
+# <a name="create-or-update-azure-custom-roles-using-azure-cli"></a>Aangepaste Azure-rollen maken of bijwerken met Azure CLI
 
 > [!IMPORTANT]
 > Een beheer groep toevoegen aan `AssignableScopes` is momenteel beschikbaar als preview-versie.
 > Deze preview-versie wordt aangeboden zonder service level agreement en wordt niet aanbevolen voor productieworkloads. Misschien worden bepaalde functies niet ondersteund of zijn de mogelijkheden ervan beperkt.
 > Zie voor meer informatie [aanvullende gebruiks voorwaarden voor Microsoft Azure-previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-Als de [ingebouwde rollen voor Azure-resources](built-in-roles.md) niet voldoen aan de specifieke behoeften van uw organisatie, kunt u uw eigen aangepaste rollen maken. In dit artikel wordt beschreven hoe u aangepaste rollen oplijstt, maakt, bijwerkt of verwijdert met behulp van Azure CLI.
+Als de [ingebouwde rollen van Azure](built-in-roles.md) niet voldoen aan de specifieke behoeften van uw organisatie, kunt u uw eigen aangepaste rollen maken. In dit artikel wordt beschreven hoe u aangepaste rollen oplijstt, maakt, bijwerkt of verwijdert met behulp van Azure CLI.
 
-Zie [zelf studie: een aangepaste rol maken voor Azure-resources met behulp van Azure cli](tutorial-custom-role-cli.md)voor een stapsgewijze zelf studie over het maken van een aangepaste rol.
+Zie [zelf studie: een aangepaste Azure-rol maken met behulp van Azure cli](tutorial-custom-role-cli.md)voor een stapsgewijze zelf studie over het maken van een aangepaste rol.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -244,6 +244,6 @@ az role definition delete --name "Virtual Machine Operator"
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Zelf studie: een aangepaste rol maken voor Azure-resources met behulp van Azure CLI](tutorial-custom-role-cli.md)
-- [Aangepaste rollen voor Azure-resources](custom-roles.md)
+- [Zelf studie: een aangepaste Azure-rol maken met behulp van Azure CLI](tutorial-custom-role-cli.md)
+- [Aangepaste Azure-rollen](custom-roles.md)
 - [Bewerkingen voor de resource provider Azure Resource Manager](resource-provider-operations.md)

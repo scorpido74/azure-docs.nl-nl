@@ -112,8 +112,6 @@
           href: platform/alerts-unified-log.md
         - name: Waarschuwingen voor activiteitenlogboeken
           href: platform/activity-log-alerts.md
-        - name: Wijzigingsanalyse
-          href: app/change-analysis.md
     - name: Gegevens visualiseren
       href: visualizations.md
     - name: Partnerintegraties
@@ -528,6 +526,8 @@
               href: platform/resource-logs-blob-format.md
         - name: Gegevens streamen naar Event Hubs
           href: platform/stream-monitoring-data-event-hubs.md
+        - name: Wijzigingsanalyse
+          href: app/change-analysis.md
     - name: VM's en gastbesturingssysteem beheren
       items:
         - name: Virtuele Azure-machine bewaken

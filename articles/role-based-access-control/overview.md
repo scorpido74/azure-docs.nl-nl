@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 04/17/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: d186fd2182603709921f876d0bc212762cb8586b
-ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
+ms.openlocfilehash: 3846a4669cc2a77862e73dbb8e7743b19740e8a4
+ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/03/2020
-ms.locfileid: "82735858"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "82996495"
 ---
 # <a name="what-is-azure-role-based-access-control-azure-rbac"></a>Wat is Azure op rollen gebaseerd toegangs beheer (Azure RBAC)?
 
@@ -90,7 +90,7 @@ Het volgende diagram toont een voorbeeld van een roltoewijzing. In dit voorbeeld
 
 ![Roltoewijzing om toegang te beheren](./media/overview/rbac-overview.png)
 
-U kunt roltoewijzingen maken met behulp van Azure Portal, Azure CLI, Azure PowerShell, Azure-SDK's of REST-API's. U kunt Maxi maal **2000** roltoewijzingen in elk abonnement en **500** roltoewijzingen in elke beheer groep. Om roltoewijzingen te maken en te verwijderen, moet u een `Microsoft.Authorization/roleAssignments/*`-machtiging hebben. Deze machtiging wordt verleend via de rol van [eigenaar](built-in-roles.md#owner) of [administrator](built-in-roles.md#user-access-administrator).
+U kunt roltoewijzingen maken met behulp van Azure Portal, Azure CLI, Azure PowerShell, Azure-SDK's of REST-API's. U kunt Maxi maal **2000** roltoewijzingen in elk abonnement hebben. Deze limiet omvat roltoewijzingen voor het abonnement, de resource groep en de resource scopes. U kunt Maxi maal **500** roltoewijzingen in elke beheer groep hebben. Om roltoewijzingen te maken en te verwijderen, moet u een `Microsoft.Authorization/roleAssignments/*`-machtiging hebben. Deze machtiging wordt verleend via de rol van [eigenaar](built-in-roles.md#owner) of [administrator](built-in-roles.md#user-access-administrator).
 
 ## <a name="multiple-role-assignments"></a>Meervoudige roltoewijzingen
 

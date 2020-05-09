@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 04/23/2020
 ms.author: yinhew
-ms.openlocfilehash: 005824b0953be741f47c027d121dbe073adca3ba
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 2f102199c14ba9611a83e3ed3b31ebcd189624d6
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82131286"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82978617"
 ---
 # <a name="speech-to-text-rest-api"></a>REST API voor spraak-naar-tekst
 
@@ -52,7 +52,7 @@ Deze para meters kunnen worden opgenomen in de query reeks van de REST-aanvraag.
 | Parameter | Beschrijving | Vereist/optioneel |
 |-----------|-------------|---------------------|
 | `language` | Hiermee wordt de gesp roken taal aangegeven die wordt herkend. Zie [ondersteunde talen](language-support.md#speech-to-text). | Vereist |
-| `format` | Geeft de resultaat indeling aan. Geaccepteerde waarden `simple` zijn `detailed`en. Eenvoudige resultaten zijn `RecognitionStatus`onder `DisplayText`andere `Offset`,, `Duration`en. Gedetailleerde antwoorden omvatten meerdere resultaten met betrouw bare waarden en vier verschillende representaties. De standaardinstelling is `simple`. | Optioneel |
+| `format` | Geeft de resultaat indeling aan. Geaccepteerde waarden `simple` zijn `detailed`en. Eenvoudige resultaten zijn `RecognitionStatus`onder `DisplayText`andere `Offset`,, `Duration`en. Gedetailleerde antwoorden zijn vier verschillende weer gaven van weergave tekst. De standaardinstelling is `simple`. | Optioneel |
 | `profanity` | Hiermee geeft u op hoe scheld woorden in de herkennings resultaten moet worden afgehandeld. Geaccepteerde waarden `masked`zijn, waarbij de woorden met sterretjes `removed`worden vervangen, waardoor alle woorden van het resultaat worden verwijderd of `raw`, waarbij de scheld woorden in het resultaat wordt opgenomen. De standaardinstelling is `masked`. | Optioneel |
 | `pronunciationScoreParams` | Hiermee geeft u de para meters op voor het weer geven van uitspraak cijfers in de herkennings resultaten, waarmee de uitspraak kwaliteit van spraak invoer wordt beoordeeld, met indica toren van nauw keurigheid, Fluency, volledigheid, enzovoort. Deze para meter is een base64-gecodeerde JSON met meerdere gedetailleerde para meters. Zie [para meters voor uitspraak beoordeling](#pronunciation-assessment-parameters) voor het maken van deze para meter. | Optioneel |
 | `cid` | Wanneer u de [Custom speech Portal](how-to-custom-speech.md) gebruikt om aangepaste modellen te maken, kunt u aangepaste modellen gebruiken via hun **eind punt-id** op de pagina **implementatie** . Gebruik de **eind punt-id** als argument voor `cid` de query teken reeks parameter. | Optioneel |
@@ -74,10 +74,10 @@ Deze tabel bevat de vereiste en optionele kopteksten voor aanvragen voor spraak 
 
 Audio wordt verzonden in de hoofd tekst van de `POST` HTTP-aanvraag. Deze moet een van de volgende indelingen hebben:
 
-| Indeling | Videocodec | Bitsnelheid | Sample frequentie  |
-|--------|-------|---------|--------------|
-| WAV    | PCM   | 16-bits  | 16 kHz, mono |
-| OGG    | OPUS  | 16-bits  | 16 kHz, mono |
+| Indeling | Videocodec | Bitrate | Sample frequentie  |
+|--------|-------|----------|--------------|
+| WAV    | PCM   | 256 kbps | 16 kHz, mono |
+| OGG    | OPUS  | 256 kpbs | 16 kHz, mono |
 
 >[!NOTE]
 >De bovenstaande indelingen worden ondersteund via REST API en WebSocket in de speech-service. De [Speech SDK](speech-sdk.md) ondersteunt momenteel de WAV-indeling met PCM-codec en [andere indelingen](how-to-use-codec-compressed-audio-input-streams.md).
@@ -200,9 +200,10 @@ Het `RecognitionStatus` veld kan deze waarden bevatten:
 > [!NOTE]
 > Als de audio alleen uit scheld woorden bestaat en de `profanity` query parameter is ingesteld op `remove`, wordt door de service geen gesp roken resultaat geretourneerd.
 
-De `detailed` indeling bevat dezelfde gegevens als de `simple` indeling, samen met `NBest`een lijst met alternatieve interpretaties van hetzelfde herkennings resultaat. Deze resultaten worden geclassificeerd op basis van de meest waarschijnlijke kans op minst. De eerste vermelding is hetzelfde als het belangrijkste herkennings resultaat.  Wanneer u de `detailed` indeling gebruikt `DisplayText` , wordt de `Display` voor elk resultaat in de `NBest` lijst weer gegeven.
+De `detailed` indeling bevat aanvullende vormen van herkende resultaten.
+Wanneer u de `detailed` indeling gebruikt `DisplayText` , wordt de `Display` voor elk resultaat in de `NBest` lijst weer gegeven.
 
-Elk object in de `NBest` lijst bevat:
+Het object in de `NBest` lijst kan het volgende bevatten:
 
 | Parameter | Beschrijving |
 |-----------|-------------|
@@ -244,13 +245,6 @@ Een typisch antwoord voor `detailed` herkenning:
         "ITN" : "remind me to buy 5 pencils",
         "MaskedITN" : "remind me to buy 5 pencils",
         "Display" : "Remind me to buy 5 pencils.",
-      },
-      {
-        "Confidence" : "0.54",
-        "Lexical" : "rewind me to buy five pencils",
-        "ITN" : "rewind me to buy 5 pencils",
-        "MaskedITN" : "rewind me to buy 5 pencils",
-        "Display" : "Rewind me to buy 5 pencils.",
       }
   ]
 }

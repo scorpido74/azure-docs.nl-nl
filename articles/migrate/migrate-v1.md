@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 11/19/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: c9cea52e04a991e6e3ac64426f0443939f8aaa3a
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 7b02560d1e7b7c34a4d87dbdc468a85362aca4f7
+ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77914378"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "82993810"
 ---
 # <a name="work-with-the-previous-version-of-azure-migrate"></a>Werken met de vorige versie van Azure Migrate
 
@@ -216,7 +216,7 @@ Nadat u een werk ruimte hebt geconfigureerd, downloadt en installeert u agents o
 4. Kopieer de werkruimte-id en -sleutel. U hebt deze nodig wanneer u de MMA installeert op de on-premises machine.
 
 > [!NOTE]
-> Als u de installatie van agents wilt automatiseren, kunt u een implementatie hulpprogramma, zoals Configuration Manager of een partner programma, zoals [Intigua](https://www.intigua.com/getting-started-intigua-for-azure-migration), gebruiken dat een oplossing voor agent implementatie biedt voor Azure Migrate.
+> Als u de installatie van agents wilt automatiseren, kunt u een implementatie hulpprogramma, zoals Configuration Manager of een partner programma, zoals [Intigua](https://www.intigua.com/intigua-for-azure-migration), gebruiken dat een oplossing voor agent implementatie biedt voor Azure Migrate.
 
 
 #### <a name="install-the-mma-agent-on-a-windows-machine"></a>De MMA-agent op een Windows-computer installeren

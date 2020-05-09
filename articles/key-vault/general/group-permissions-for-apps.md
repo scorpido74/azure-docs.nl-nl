@@ -10,12 +10,12 @@ ms.subservice: general
 ms.topic: tutorial
 ms.date: 09/27/2019
 ms.author: mbaldwin
-ms.openlocfilehash: db6b8b2ff199b7b26d0c641ded31a5c1417468b9
-ms.sourcegitcommit: 0fda81f271f1a668ed28c55dcc2d0ba2bb417edd
-ms.translationtype: HT
+ms.openlocfilehash: 9ba568f3a6b6e85ce90db7d6b4d72c2c0d958da1
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82901265"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82982714"
 ---
 # <a name="provide-key-vault-authentication-with-an-access-control-policy"></a>Key Vault verificatie met een toegangscontrole beleid bieden
 
@@ -60,7 +60,7 @@ De objectId voor een toepassing komt overeen met de bijbehorende service-princip
 
 Er zijn twee manieren om een objectId voor een toepassing te verkrijgen.  Allereerst moet u uw toepassing registreren bij Azure Active Directory. Volg hiervoor de stappen in de Snelstartgids [een toepassing registreren bij het micro soft Identity-platform](../../active-directory/develop/quickstart-register-app.md). Wanneer de registratie is voltooid, wordt de objectID vermeld als de ' toepassing (client)-ID '.
 
-De tweede is het maken van een Service-Principal in een Terminal venster. Met de Azure CLI gebruikt u de opdracht [AZ AD SP create-for-RBAC](/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac) en geeft u een unieke naam op voor het Service principe voor de vlag-n in de notatie ' http://<My-Unique-Service-Principle-Name> '.
+De tweede is het maken van een Service-Principal in een Terminal venster. Met de Azure CLI, gebruikt u de opdracht [AZ AD SP create-for-RBAC](/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac) en geeft u een unieke naam op voor het Service principe in de notatie ' http://&lt;My-Unique-Service-Principle-Name&gt;'.
 
 ```azurecli-interactive
 az ad sp create-for-rbac -n "http://<my-unique-service-principle-name"
