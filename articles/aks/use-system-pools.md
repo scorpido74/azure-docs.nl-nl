@@ -3,13 +3,13 @@ title: Systeem knooppunt groepen gebruiken in azure Kubernetes service (AKS)
 description: Meer informatie over het maken en beheren van groepen met systeem knooppunten in azure Kubernetes service (AKS)
 services: container-service
 ms.topic: article
-ms.date: 04/06/2020
-ms.openlocfilehash: b567d9e618877463e1e659f368d35fbb787a4ef2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 04/28/2020
+ms.openlocfilehash: 04322bdaa2e0e72c5fbdbadb07f2608ee360e1e3
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81259065"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82790555"
 ---
 # <a name="manage-system-node-pools-in-azure-kubernetes-service-aks"></a>Systeem knooppunt groepen beheren in azure Kubernetes service (AKS)
 
@@ -29,6 +29,8 @@ De volgende beperkingen zijn van toepassing wanneer u AKS-clusters maakt en behe
 * Zie [quota's, beperkingen voor de grootte van virtuele machines en beschik baarheid van regio's in azure Kubernetes service (AKS)][quotas-skus-regions].
 * Het AKS-cluster moet worden gebouwd met virtuele-machine schaal sets als VM-type.
 * De naam van een knooppunt groep mag alleen kleine letters bevatten en moet beginnen met een kleine letter. Voor Linux-knooppunt Pools moet de lengte tussen de 1 en 12 tekens liggen. Voor Windows-knooppunt groepen moet de lengte tussen de 1 en 6 tekens zijn.
+* Een API-versie van 2020-03-01 of hoger moet worden gebruikt om een modus voor de knooppunt groep in te stellen.
+* De modus van een knooppunt groep is een vereiste eigenschap en moet expliciet worden ingesteld wanneer ARM-sjablonen of directe API-aanroepen worden gebruikt.
 
 ## <a name="system-and-user-node-pools"></a>Systeem-en gebruikers knooppunt groepen
 
@@ -175,4 +177,4 @@ In dit artikel hebt u geleerd hoe u systeem knooppunt groepen kunt maken en behe
 [taints-tolerations]: operator-best-practices-advanced-scheduler.md#provide-dedicated-nodes-using-taints-and-tolerations
 [vm-sizes]: ../virtual-machines/linux/sizes.md
 [use-multiple-node-pools]: use-multiple-node-pools.md
-[maximum-pods]: faq.md#why-cant-i-set-maxpods-below-30
+[maximum-pods]: configure-azure-cni.md#maximum-pods-per-node

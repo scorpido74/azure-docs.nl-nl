@@ -5,12 +5,12 @@ ms.assetid: 0f96c0e7-0901-489b-a95a-e3b66ca0a1c2
 ms.topic: article
 ms.date: 03/05/2020
 ms.custom: seodec18
-ms.openlocfilehash: f8322c12669e41fc7c9aa88e99f95cf1b26ea87d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5ae68a8871bc2894191644e4ab183be4b469bf16
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78944138"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82610238"
 ---
 # <a name="configure-a-custom-domain-name-in-azure-app-service-with-traffic-manager-integration"></a>Een aangepaste domein naam configureren in Azure App Service met Traffic Manager-integratie
 
@@ -66,12 +66,18 @@ Zodra uw App Service-app een ondersteunde prijs categorie heeft, wordt deze weer
 
 [!INCLUDE [Access DNS records with domain provider](../../includes/app-service-web-access-dns-records-no-h.md)]
 
-Hoewel de specifieke kenmerken van elke domein provider verschillen, kunt u toewijzen *vanuit* de aangepaste domein naam (zoals **contoso.com**) *aan* de Traffic Manager domein naam (**contoso.trafficmanager.net**) die is geïntegreerd met uw app.
+Hoewel de specifieke kenmerken van elke domein provider verschillen, kunt u toewijzen *vanuit* een [niet-root aangepaste domein naam](#what-about-root-domains) (zoals **www.contoso.com**) *aan* de Traffic Manager domein naam (**contoso.trafficmanager.net**) die is geïntegreerd met uw app. 
 
 > [!NOTE]
 > Als er al een record wordt gebruikt en u uw apps aan het preventief moet koppelen, kunt u een extra CNAME-record maken. Als u bijvoorbeeld preventief **www\.contoso.com** wilt binden aan uw app, maakt u een CNAME-record van **awverify. www** in **contoso.trafficmanager.net**. U kunt vervolgens ' www\.contoso.com ' aan uw app toevoegen zonder dat u de ' www ' CNAME-record hoeft te wijzigen. Zie [een actieve DNS-naam migreren naar Azure app service](manage-custom-dns-migrate-domain.md)voor meer informatie.
 
 Zodra u klaar bent met het toevoegen of wijzigen van DNS-records bij uw domein provider, slaat u de wijzigingen op.
+
+### <a name="what-about-root-domains"></a>Hoe zit het met hoofd domeinen?
+
+Omdat Traffic Manager alleen aangepaste domein toewijzing met CNAME-records ondersteunt, en omdat DNS-standaarden geen CNAME-records ondersteunen voor het toewijzen van hoofd domeinen (bijvoorbeeld **contoso.com**), ondersteunt Traffic Manager geen toewijzing aan hoofd domeinen. U kunt dit probleem omzeilen door een URL-omleiding te gebruiken op het niveau van de app. In ASP.NET Core kunt u bijvoorbeeld het [herschrijven van url's](/aspnet/core/fundamentals/url-rewriting)gebruiken. Gebruik vervolgens Traffic Manager om de taak verdeling van het subdomein (**www.contoso.com**) uit te sluiten.
+
+Voor scenario's met een hoge Beschik baarheid kunt u een fout tolerante DNS-installatie zonder Traffic Manager implementeren door meerdere *records* te maken die van het hoofd domein verwijzen naar het IP-adres van elke app. Wijs vervolgens [hetzelfde hoofd domein toe aan alle exemplaren van de app](app-service-web-tutorial-custom-domain.md#map-an-a-record). Omdat dezelfde domein naam niet kan worden toegewezen aan twee verschillende apps in dezelfde regio, werkt deze installatie alleen wanneer de app kopieert in verschillende regio's.
 
 ## <a name="enable-custom-domain"></a>Aangepast domein inschakelen
 Nadat de records voor uw domein naam zijn door gegeven, gebruikt u de browser om te controleren of uw aangepaste domein naam wordt omgezet in uw App Service-app.
