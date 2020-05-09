@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 04/28/2020
+ms.date: 05/06/2020
 ms.author: ryanwi
 ms.reviewer: jmprieur, saeeda, sureshja, hirsin
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started
-ms.openlocfilehash: faaf4a9c4fe37bc184b9860390f1eb99eede035c
-ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
-ms.translationtype: HT
+ms.openlocfilehash: 1161575104efe8cfc797f84c109a12116f723cad
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82584283"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82926575"
 ---
 # <a name="security-tokens"></a>Beveiligings tokens
 
@@ -29,6 +29,9 @@ Een **toegangs token** is een beveiligings token dat is uitgegeven door een [aut
 Toegangs tokens zijn alleen geldig gedurende korte tijd, waardoor autorisatie servers soms een **vernieuwings token** uitgeven op hetzelfde moment dat het toegangs token wordt uitgegeven. De client toepassing kan dit vernieuwings token vervolgens voor een nieuw toegangs token uitwisselen wanneer dat nodig is. Zie het [intrekken van tokens](access-tokens.md#token-revocation)voor meer informatie over hoe micro soft Identity platform vernieuwings tokens gebruikt om machtigingen in te trekken.
 
 **Id-tokens** worden verzonden naar de client toepassing als onderdeel van een [OpenID Connect Connect](v2-protocols-oidc.md) -stroom. Ze kunnen worden verzonden aan de zijkant of in plaats van een toegangs token en worden door de client gebruikt om de gebruiker te verifiëren. Zie [id-tokens](id-tokens.md)voor meer informatie over het oplossen van problemen met id-tokens van micro soft Identity platform.
+
+> [!NOTE]
+> In dit artikel worden beveiligings tokens beschreven voor de Connect-protocollen OAuth2 en OpenID Connect. Veel zakelijke toepassingen gebruiken SAML om gebruikers te verifiëren. Zie overzicht van [Azure AD SAML-tokens](reference-saml-tokens.md) voor informatie over SAML-bevestigingen.
 
 ## <a name="validating-security-tokens"></a>Beveiligings tokens valideren
 
@@ -45,7 +48,7 @@ Toegangs tokens worden door gegeven aan een web-API als het Bearer- `Authorizati
 
 Het micro soft Identity-platform implementeert beveiligings tokens als **JSON-Webtokens (JWTs)** die **claims**bevatten.
 
-Een [claim](developer-glossary.md#claim) biedt bevestigingen over één entiteit, zoals een client toepassing of [resource-eigenaar](developer-glossary.md#resource-owner), naar een andere entiteit, zoals een resource server.
+Een [claim](developer-glossary.md#claim) biedt bevestigingen over één entiteit, zoals een client toepassing of [resource-eigenaar](developer-glossary.md#resource-owner), naar een andere entiteit, zoals een resource server. Een claim kan ook worden aangeduid als een JWT-claim of JSON Web Token claim.
 
 Claims zijn naam/waarde-paren die feiten over het onderwerp van de token door sturen. Een claim kan bijvoorbeeld feiten bevatten over de beveiligingsprincipal die door de autorisatie server is geverifieerd. De claims in een bepaald token zijn afhankelijk van veel dingen, waaronder het type token, het type referentie dat wordt gebruikt voor het verifiëren van het onderwerp, de configuratie van de toepassing, enzovoort.
 
