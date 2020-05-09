@@ -3,13 +3,13 @@ title: Concepten-beveiliging in azure Kubernetes Services (AKS)
 description: Meer informatie over beveiliging in azure Kubernetes service (AKS), met inbegrip van Master-en knooppunt communicatie, netwerk beleid en Kubernetes geheimen.
 services: container-service
 ms.topic: conceptual
-ms.date: 03/01/2019
-ms.openlocfilehash: 1960d18396f47b3dbdd51a50ec4241be5ebe4ff1
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.date: 05/08/2020
+ms.openlocfilehash: f3c4fd922ef0e4243344b34dd90f7e48f903abcd
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82206626"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82981388"
 ---
 # <a name="security-concepts-for-applications-and-clusters-in-azure-kubernetes-service-aks"></a>Beveiligings concepten voor toepassingen en clusters in azure Kubernetes service (AKS)
 
@@ -20,14 +20,16 @@ In dit artikel worden de belangrijkste concepten geïntroduceerd voor het beveil
 - [Beveiliging van hoofd onderdelen](#master-security)
 - [Knooppunt beveiliging](#node-security)
 - [Cluster upgrades](#cluster-upgrades)
-- [Netwerkbeveiliging](#network-security)
+- [Netwerk beveiliging](#network-security)
 - [Kubernetes Secrets](#kubernetes-secrets)
 
 ## <a name="master-security"></a>Master beveiliging
 
 In AKS maken de Kubernetes-hoofd onderdelen deel uit van de beheerde service van micro soft. Elk AKS-cluster heeft een eigen Kubernetes-Master met één Tenant om de API-server, scheduler, enzovoort te bieden. Dit model wordt beheerd en onderhouden door micro soft.
 
-De Kubernetes API-server gebruikt standaard een openbaar IP-adres en een Fully Qualified Domain Name (FQDN). U kunt de toegang tot de API-server beheren met behulp van Kubernetes met toegangs beheer op basis van rollen en Azure Active Directory. Zie [Azure AD-integratie met AKS][aks-aad]voor meer informatie.
+De Kubernetes API-server gebruikt standaard een openbaar IP-adres en een Fully Qualified Domain Name (FQDN). U kunt de toegang tot het API-server eindpunt beperken met behulp van [geautoriseerde IP-bereiken][authorized-ip-ranges]. U kunt ook een volledig [particulier cluster][private-clusters] maken om de API-server toegang tot uw virtuele netwerk te beperken.
+
+U kunt de toegang tot de API-server beheren met behulp van Kubernetes met toegangs beheer op basis van rollen en Azure Active Directory. Zie [Azure AD-integratie met AKS][aks-aad]voor meer informatie.
 
 ## <a name="node-security"></a>Knooppunt beveiliging
 
@@ -65,6 +67,10 @@ Voor connectiviteit en beveiliging met on-premises netwerken kunt u uw AKS-clust
 ### <a name="azure-network-security-groups"></a>Netwerkbeveiligingsgroepen in Azure
 
 Azure gebruikt regels voor netwerk beveiligings groepen om de stroom van verkeer in virtuele netwerken te filteren. Met deze regels worden de bron-en doel-IP-adresbereiken, poorten en protocollen gedefinieerd die toegang tot bronnen toestaan of weigeren. Standaard regels worden gemaakt om TLS-verkeer toe te staan voor de Kubernetes-API-server. Bij het maken van services met load balancers, poort toewijzingen of ingangs routes, wijzigt AKS automatisch de netwerk beveiligings groep voor verkeer dat op de juiste wijze stroomt.
+
+### <a name="kubernetes-network-policy"></a>Kubernetes-netwerk beleid
+
+AKS biedt ondersteuning voor [Kubernetes-netwerk beleid][network-policy]om het netwerk verkeer tussen de peulen in uw cluster te beperken. Met netwerk beleid kunt u ervoor kiezen om specifieke netwerk paden binnen het cluster toe te staan of te weigeren op basis van naam ruimten en label selectie.
 
 ## <a name="kubernetes-secrets"></a>Kubernetes Secrets
 
@@ -104,3 +110,6 @@ Raadpleeg de volgende artikelen voor meer informatie over de belangrijkste Kuber
 [operator-best-practices-cluster-security]: operator-best-practices-cluster-security.md
 [developer-best-practices-pod-security]:developer-best-practices-pod-security.md
 [nodepool-upgrade]: use-multiple-node-pools.md#upgrade-a-node-pool
+[authorized-ip-ranges]: api-server-authorized-ip-ranges.md
+[private-clusters]: private-clusters.md
+[network-policy]: use-network-policies.md

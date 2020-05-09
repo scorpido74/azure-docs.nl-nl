@@ -11,12 +11,12 @@ author: jpe316
 ms.author: jordane
 ms.date: 03/17/2020
 ms.custom: seodec18
-ms.openlocfilehash: 7857d11c625911cd1b49dfcf0e0d612fc6a3871e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 12d86f9415f7f5b813d2dce8eb3ad4bb63dec30c
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81314299"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82929754"
 ---
 # <a name="mlops-model-management-deployment-and-monitoring-with-azure-machine-learning"></a>MLOps: model beheer, implementatie en bewaking met Azure Machine Learning
 
@@ -153,7 +153,7 @@ Azure ML biedt u de mogelijkheid om de end-to-end-audittrail van al uw ML-assets
 - Door te [interpreteren](how-to-machine-learning-interpretability.md) kunt u uw modellen uitleggen, voldoen aan de naleving van regelgeving en inzicht krijgen in de manier waarop modellen aan een resultaat van een gegeven invoer komen.
 - In de geschiedenis van Azure ML run wordt een moment opname van de code, gegevens en berekeningen opgeslagen waarmee een model wordt getraind.
 - In het REGI ster van Azure ML-model worden alle meta gegevens vastgelegd die aan uw model zijn gekoppeld (waarbij experiment wordt getraind, waar het wordt geïmplementeerd als de implementaties in orde zijn).
-- Dankzij [integratie met Azure Event grid](concept-event-grid-integration.md) kunt u op gebeurtenissen in de ml-levens cyclus reageren. Bijvoorbeeld model registratie, implementatie, gegevens drift en training (run)-gebeurtenissen.
+- Dankzij de [integratie met Azure](how-to-use-event-grid.md) kunt u op gebeurtenissen reageren in de levens cyclus van ml. Bijvoorbeeld model registratie, implementatie, gegevens drift en training (run)-gebeurtenissen.
 
 > [!TIP]
 > Hoewel er automatisch een aantal informatie over modellen en gegevens sets wordt vastgelegd, kunt u extra informatie toevoegen met behulp van __Tags__. Wanneer u op zoek bent naar geregistreerde modellen en gegevens sets in uw werk ruimte, kunt u Tags gebruiken als filter.

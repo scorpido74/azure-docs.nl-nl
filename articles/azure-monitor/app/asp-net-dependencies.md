@@ -3,12 +3,12 @@ title: Afhankelijkheden bijhouden in Azure-toepassing Insights | Microsoft Docs
 description: Afhankelijkheids aanroepen bewaken vanaf uw on-premises of Microsoft Azure webtoepassing met Application Insights.
 ms.topic: conceptual
 ms.date: 03/26/2020
-ms.openlocfilehash: 1e30d8036c1fc624d39f027f38e314c6c57360f6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2b7a20731fa5eae8313adcf07d877626fcaa4dce
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81731493"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82980844"
 ---
 # <a name="dependency-tracking-in-azure-application-insights"></a>Afhankelijkheden bijhouden in Azure-toepassing Insights 
 
@@ -92,14 +92,14 @@ Voor SQL-aanroepen wordt de naam van de server en data base altijd verzameld en 
 
 Voor ASP.NET Core toepassingen is er geen extra stap vereist voor het ophalen van de volledige SQL-query.
 
-Voor ASP.NET-toepassingen wordt volledige SQL-query verzameld met behulp van byte code Instrumentation, waarvoor instrumentatie-engine vereist is. Aanvullende,, zoals hieronder beschreven, specifieke platformspecifieke stappen zijn vereist.
+Voor ASP.NET-toepassingen wordt volledige SQL-query verzameld met behulp van byte code Instrumentation, waarvoor instrumentatie-engine vereist is of met behulp van het NuGet-pakket [micro soft. data. SqlClient](https://www.nuget.org/packages/Microsoft.Data.SqlClient) in plaats van de System. data. SqlClient-bibliotheek. Aanvullende,, zoals hieronder beschreven, specifieke platformspecifieke stappen zijn vereist.
 
 | Platform | Er zijn een of meer stappen nodig om een volledige SQL-query te verkrijgen |
 | --- | --- |
 | Azure Web App |Open in het configuratie scherm van uw web-app [de blade Application Insights](../../azure-monitor/app/azure-web-apps.md) en Schakel SQL-opdrachten in onder .net |
-| IIS-server (Azure VM, on-premises, enzovoort) | Gebruik de Status Monitor Power shell-module om [de instrumentatie-engine te installeren](../../azure-monitor/app/status-monitor-v2-api-reference.md) en IIS opnieuw te starten. |
+| IIS-server (Azure VM, on-premises, enzovoort) | Gebruik het pakket [micro soft. data. SqlClient](https://www.nuget.org/packages/Microsoft.Data.SqlClient) NuGet of gebruik de status monitor Power shell-module om [de instrumentatie-engine te installeren](../../azure-monitor/app/status-monitor-v2-api-reference.md) en IIS opnieuw te starten. |
 | Azure Cloud Service | [Opstart taak toevoegen om StatusMonitor te installeren](../../azure-monitor/app/cloudservices.md#set-up-status-monitor-to-collect-full-sql-queries-optional) <br> Uw app moet worden uitgevoerd tot ApplicationInsights SDK tijdens het bouwen door NuGet-pakketten te installeren voor [ASP.net](https://docs.microsoft.com/azure/azure-monitor/app/asp-net) -of [ASP.net core-toepassingen](https://docs.microsoft.com/azure/azure-monitor/app/asp-net-core) |
-| IIS Express | Niet ondersteund
+| IIS Express | Het NuGet-pakket [micro soft. data. SqlClient](https://www.nuget.org/packages/Microsoft.Data.SqlClient) gebruiken
 
 In de bovenstaande gevallen wordt de juiste methode voor het valideren van de instrumentatie-engine correct geïnstalleerd door te controleren of de SDK-versie van `DependencyTelemetry` verzamelde ' rddp ' is. ' rdddsd ' of ' rddf ' geeft aan dat afhankelijkheden worden verzameld via DiagnosticSource of event source-retour aanroepen, en daarom wordt volledige SQL-query niet vastgelegd.
 

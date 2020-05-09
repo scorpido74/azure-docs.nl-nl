@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 03/18/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: a4c02369f44255dfa472202215496378d41f8c6c
-ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
+ms.openlocfilehash: ed7f2b57df97a99a73ad191e45fb900a04f8021f
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/03/2020
-ms.locfileid: "82735722"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82983020"
 ---
 # <a name="list-azure-role-assignments-using-the-azure-portal"></a>Azure-roltoewijzingen weer geven met behulp van de Azure Portal
 
@@ -32,7 +32,9 @@ ms.locfileid: "82735722"
 
 De eenvoudigste manier om de rollen weer te geven die zijn toegewezen aan een gebruiker of groep in een abonnement is het gebruik van het deel venster **Azure-resources** .
 
-1. Klik in de Azure Portal op **alle services** en selecteer vervolgens **gebruikers** of **groepen**.
+1. Selecteer in het Azure Portal **alle services** in het menu Azure Portal.
+
+1. Selecteer **Azure Active Directory** en selecteer vervolgens **gebruikers** of **groepen**.
 
 1. Klik op de gebruiker of groep waarvoor u de roltoewijzingen wilt weer geven.
 

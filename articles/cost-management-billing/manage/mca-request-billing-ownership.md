@@ -5,20 +5,20 @@ author: amberbhargava
 tags: billing
 ms.service: cost-management-billing
 ms.topic: conceptual
-ms.date: 02/13/2020
+ms.date: 05/01/2020
 ms.author: banders
-ms.openlocfilehash: 10f1052f9acf9bf91c1d7fb0b64a1d3285487cf3
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 3aaf2a949d5b3e6670e7885adea4579ac2802428
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77200724"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82692327"
 ---
 # <a name="get-billing-ownership-of-azure-subscriptions-from-other-accounts"></a>Eigendom van facturering van Azure-abonnementen van andere accounts krijgen
 
 Mogelijk wilt u het eigendom van Azure-abonnementen overnemen als de bestaande factureringseigenaar uw organisatie verlaat of als u via uw factureringsaccount wilt betalen voor de abonnementen. Als u het eigendom overneemt, worden factureringsverantwoordelijkheden van abonnementen naar uw account overgedragen.
 
-Dit artikel is van toepassing op een factureringsrekening voor een Microsoft-klantovereenkomst. [Controleer of u toegang hebt tot een Microsoft-klantovereenkomst](#check-for-access).
+Dit artikel is van toepassing op een factureringsaccount voor een Microsoft-klantovereenkomst. [Controleer of u toegang hebt tot een Microsoft-klantovereenkomst](#check-for-access).
 
 Als u het eigendom van facturering wilt aanvragen, moet u **eigenaar van de factuursectie** zijn of **inzender van de factuursectie**. Zie [Rollen en taken van factuursectie](understand-mca-roles.md#invoice-section-roles-and-tasks) voor meer informatie.
 
@@ -26,9 +26,9 @@ Als u het eigendom van facturering wilt aanvragen, moet u **eigenaar van de fact
 
 1. Meld u aan bij [Azure Portal](https://portal.azure.com) als eigenaar of inzender van een factuursectie voor een factureringsaccount voor Microsoft-klantovereenkomst.
 
-2. Zoek naar **Cost Management en facturering**.
+2. Zoek naar **Kostenbeheer en facturering**.
 
-    ![Schermopname van de zoekopdracht in Azure Portal naar kostenbeheer en facturering](./media/mca-request-billing-ownership/billing-search-cost-management-billing.png)
+    ![Schermopname van zoekopdracht in de Azure-portal naar kostenbeheer en facturering](./media/mca-request-billing-ownership/billing-search-cost-management-billing.png)
 
 3. Selecteer op de pagina met factureringsbereiken het factureringsaccount dat zou worden gebruikt om het gebruik van de abonnementen te betalen. Het factureringsaccount moet van het type **Microsoft-klantovereenkomst** zijn.
 
@@ -50,7 +50,7 @@ Als u het eigendom van facturering wilt aanvragen, moet u **eigenaar van de fact
 
 6. Selecteer **Factuursecties** aan de linkerkant.
 
-    ![Schermopname van het selecteren van factuursecties](./media/mca-request-billing-ownership/mca-select-invoice-sections.png)   
+    ![Schermopname van de selectie van factuursecties](./media/mca-request-billing-ownership/mca-select-invoice-sections.png)   
 
 7. Selecteer een factuursectie in de lijst. Zodra u het eigendom van de abonnementen hebt overgenomen, wordt het gebruik ervan toegewezen aan deze sectie van de factuur voor het factureringsprofiel.
 
@@ -74,9 +74,9 @@ Als u het eigendom van facturering wilt aanvragen, moet u **eigenaar van de fact
 
 1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 
-2. Zoek naar **Cost Management en facturering**.
+2. Zoek naar **Kostenbeheer en facturering**.
 
-    ![Schermopname van de zoekopdracht in Azure Portal naar kostenbeheer en facturering](./media/mca-request-billing-ownership/billing-search-cost-management-billing.png)
+    ![Schermopname van zoekopdracht in de Azure-portal naar kostenbeheer en facturering](./media/mca-request-billing-ownership/billing-search-cost-management-billing.png)
 
 3. Selecteer op de pagina met factureringsbereiken het factureringsaccount waarvoor de overdrachtsaanvraag is verzonden.
 
@@ -88,7 +88,7 @@ Als u het eigendom van facturering wilt aanvragen, moet u **eigenaar van de fact
 
 6. Selecteer **Factuursecties** aan de linkerkant.
 
-    ![Schermopname van het selecteren van factuursecties](./media/mca-request-billing-ownership/mca-select-invoice-sections.png)   
+    ![Schermopname van de selectie van factuursecties](./media/mca-request-billing-ownership/mca-select-invoice-sections.png)   
 
 7. Selecteer de factuursectie in de lijst waarvoor de overdrachtsaanvraag is verzonden.
 
@@ -177,7 +177,7 @@ Azure Marketplace-producten worden overgebracht samen met hun respectieve abonne
 
 ### <a name="azure-reservations-transfer"></a>Overdracht van Azure-reserveringen
 
-Azure-reserveringen worden niet automatisch verplaatst met abonnementen. [Neem contact op met ondersteuning voor Azure](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) om reserveringen te verplaatsen.
+Als u een Enterprise Agreement (EA)-abonnementen overbrengt, worden Azure-reserveringen niet automatisch samen met de abonnementen verplaatst. [Neem contact op met ondersteuning voor Azure](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) om reserveringen te verplaatsen.
 
 ### <a name="access-to-azure-services"></a>Toegang tot Azure-services
 
@@ -202,7 +202,7 @@ SaaS-producten worden niet overgedragen met de abonnementen. Vraag de gebruiker 
 ## <a name="check-for-access"></a>Controleren op toegang
 [!INCLUDE [billing-check-mca](../../../includes/billing-check-mca.md)]
 
-## <a name="need-help-contact-support"></a>Hulp nodig? Contact opnemen met ondersteuning
+## <a name="need-help-contact-support"></a>Hebt u hulp nodig? Contact opnemen met ondersteuning
 
 Als u hulp nodig hebt, kunt u [contact opnemen met ondersteuning](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) om uw probleem snel op te lossen.
 

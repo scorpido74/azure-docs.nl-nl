@@ -3,16 +3,16 @@ title: Container groep bijwerken
 description: Meer informatie over het bijwerken van actieve containers in uw Azure Container Instances-container groepen.
 ms.topic: article
 ms.date: 04/17/2020
-ms.openlocfilehash: dc10e38aa6be9473f89df6f7fa10a72f63d9ada8
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.openlocfilehash: cfc27de8caae98dd1c3065b5ed06433c4baaa5d2
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82854444"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82928717"
 ---
 # <a name="update-containers-in-azure-container-instances"></a>Containers in Azure Container Instances bijwerken
 
-Tijdens de normale werking van uw container instanties is het wellicht nood zakelijk om de actieve containers in een [container groep](container-instances-container-groups.md)bij te werken. U kunt bijvoorbeeld een eigenschap bijwerken zoals een installatie kopie versie, een DNS-naam of een omgevings variabele, of een eigenschap vernieuwen in een container waarvan de toepassing is gecrasht.
+Tijdens de normale werking van uw container instanties is het wellicht nood zakelijk om de actieve containers in een [container groep](./container-instances-container-groups.md)bij te werken. U kunt bijvoorbeeld een eigenschap bijwerken zoals een installatie kopie versie, een DNS-naam of een omgevings variabele, of een eigenschap vernieuwen in een container waarvan de toepassing is gecrasht.
 
 Werk de containers in een actieve container groep bij door een bestaande groep opnieuw te implementeren met ten minste één gewijzigde eigenschap. Wanneer u een container groep bijwerkt, worden alle actieve containers in de groep op locatie opnieuw gestart, meestal op dezelfde onderliggende container host.
 
@@ -28,7 +28,7 @@ Een bestaande container groep bijwerken:
 * Stel andere eigenschappen in met de waarden die u eerder hebt opgegeven. Als u geen waarde voor een eigenschap instelt, keert deze terug naar de standaard waarde.
 
 > [!TIP]
-> Een [yaml-bestand](container-instances-container-groups.md#deployment) helpt bij het onderhouden van de implementatie configuratie van een container groep en biedt een start punt voor het implementeren van een bijgewerkte groep. Als u een andere methode hebt gebruikt om de groep te maken, kunt u de configuratie exporteren naar YAML met [AZ container export][az-container-export], 
+> Een [yaml-bestand](./container-instances-container-groups.md#deployment) helpt bij het onderhouden van de implementatie configuratie van een container groep en biedt een start punt voor het implementeren van een bijgewerkte groep. Als u een andere methode hebt gebruikt om de groep te maken, kunt u de configuratie exporteren naar YAML met [AZ container export][az-container-export], 
 
 ### <a name="example"></a>Voorbeeld
 
@@ -80,7 +80,7 @@ Wanneer u een container groep verwijdert en opnieuw maakt, wordt deze niet opnie
 
 Dit artikel bevat meerdere keren de **container groep**. Elke container in Azure Container Instances wordt geïmplementeerd in een container groep en container groepen kunnen meer dan één container bevatten.
 
-[Containergroepen in Azure Container Instances](container-instances-container-groups.md)
+[Containergroepen in Azure Container Instances](./container-instances-container-groups.md)
 
 [Een groep met meerdere containers implementeren](container-instances-multi-container-group.md)
 

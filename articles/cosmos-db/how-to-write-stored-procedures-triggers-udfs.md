@@ -1,17 +1,17 @@
 ---
 title: Opgeslagen procedures, triggers en Udf's in Azure Cosmos DB schrijven
 description: Meer informatie over het definiëren van opgeslagen procedures, triggers en door de gebruiker gedefinieerde functies in Azure Cosmos DB
-author: markjbrown
+author: timsander1
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 10/31/2019
-ms.author: mjbrown
-ms.openlocfilehash: 4dee017323bda5fc08598a9b24cadd11516807cf
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 05/07/2020
+ms.author: tisande
+ms.openlocfilehash: 3c0ac8ac419b3cdd2b154974d3ccbcce6896e847
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75441735"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82982289"
 ---
 # <a name="how-to-write-stored-procedures-triggers-and-user-defined-functions-in-azure-cosmos-db"></a>Opgeslagen procedures, triggers en door de gebruiker gedefinieerde functies schrijven in Azure Cosmos DB
 
@@ -21,15 +21,12 @@ Als u een opgeslagen procedure, trigger en een door de gebruiker gedefinieerde f
 
 > [!NOTE]
 > Bij het uitvoeren van een opgeslagen procedure voor gepartitioneerde containers moet een waarde voor de partitiesleutel worden opgegeven in de aanvraagopties. Opgeslagen procedures zijn altijd gerelateerd aan een partitiesleutel. Items met een andere partitiesleutelwaarde zijn niet zichtbaar voor de opgeslagen procedure. Dit geldt ook voor triggers.
-
 > [!Tip]
 > Cosmos biedt ondersteuning voor het implementeren van containers met opgeslagen procedures, triggers en door de gebruiker gedefinieerde functies. Zie [een Azure Cosmos DB-container maken met functionaliteit aan server zijde](manage-sql-with-resource-manager.md#create-sproc) voor meer informatie.
 
 ## <a name="how-to-write-stored-procedures"></a><a id="stored-procedures"></a>Opgeslagen procedures uitvoeren schrijven
 
 Opgeslagen procedures worden geschreven met behulp van JavaScript. Met deze kunt u items binnen een Azure Cosmos-container maken, bijwerken, lezen, query's ernaar uitvoeren en verwijderen. Opgeslagen procedures worden geregistreerd per verzameling en kunnen worden uitgevoerd op elk document of een in deze verzameling aanwezige bijlage.
-
-**Voorbeeld**
 
 Hier volgt een eenvoudige, opgeslagen procedure die een 'Hallo wereld'-antwoord retourneert.
 
@@ -51,7 +48,7 @@ Na te zijn geschreven moet de opgeslagen procedure worden geregistreerd bij een 
 
 ### <a name="create-an-item-using-stored-procedure"></a><a id="create-an-item"></a>Een item maken met behulp van opgeslagen procedure
 
-Wanneer u een item maakt met behulp van een opgeslagen procedure, wordt het item ingevoegd in de Azure Cosmos-container en wordt er een ID voor het nieuwe item geretourneerd. Het maken van een item is een asynchrone bewerking en is afhankelijk van de callback-functies van JavaScript. De callback-functie heeft twee parameters: een voor het foutobject in geval dat de bewerking mislukt en een voor een retourwaarde; in dit geval het gemaakte object. Binnen de callback kunt u de uitzondering verwerken of een fout genereren. Indien er geen callback is opgegeven en er een fout is opgetreden, genereert de Azure Cosmos DB-runtime een fout. 
+Wanneer u een item maakt met behulp van een opgeslagen procedure, wordt het item ingevoegd in de Azure Cosmos-container en wordt er een ID voor het nieuwe item geretourneerd. Het maken van een item is een asynchrone bewerking en is afhankelijk van de callback-functies van JavaScript. De callback-functie heeft twee parameters: een voor het foutobject in geval dat de bewerking mislukt en een voor een retourwaarde; in dit geval het gemaakte object. Binnen de callback kunt u de uitzondering verwerken of een fout genereren. Indien er geen callback is opgegeven en er een fout is opgetreden, genereert de Azure Cosmos DB-runtime een fout.
 
 De opgeslagen procedure bevat ook een parameter voor het instellen van de beschrijving, het is een Booleaanse waarde. Als de parameter is ingesteld op true en de beschrijving ontbreekt, genereert de opgeslagen procedure een uitzondering. Anders gaat de uitvoering van de rest van de opgeslagen procedure verder.
 
@@ -73,7 +70,7 @@ function createToDoItem(itemToCreate) {
 }
 ```
 
-### <a name="arrays-as-input-parameters-for-stored-procedures"></a>Matrices als invoerparameters voor opgeslagen procedures 
+### <a name="arrays-as-input-parameters-for-stored-procedures"></a>Matrices als invoerparameters voor opgeslagen procedures
 
 Bij het definiëren van een opgeslagen procedure in Azure Portal worden invoerparameters altijd verzonden naar de opgeslagen procedure als een tekenreeks. Zelfs als u een matrix met tekenreeksen als invoer doorgeeft, wordt de matrix geconverteerd naar een tekenreeks en verzonden naar de opgeslagen procedure. Om dit te omzeilen kunt u een functie definiëren binnen de opgeslagen procedure voor het parseren van de tekenreeks als matrix. De volgende code laat zien hoe u een invoerparameter van de tekenreeks als matrix kunt parseren:
 
@@ -102,12 +99,12 @@ function tradePlayers(playerId1, playerId2) {
     var player1Document, player2Document;
 
     // query for players
-    var filterQuery = 
-    {     
+    var filterQuery =
+    {
         'query' : 'SELECT * FROM Players p where p.id = @playerId1',
         'parameters' : [{'name':'@playerId1', 'value':playerId1}] 
     };
-            
+
     var accept = container.queryDocuments(container.getSelfLink(), filterQuery, {},
         function (err, items, responseOptions) {
             if (err) throw new Error("Error" + err.message);
@@ -115,10 +112,10 @@ function tradePlayers(playerId1, playerId2) {
             if (items.length != 1) throw "Unable to find both names";
             player1Item = items[0];
 
-            var filterQuery2 = 
-            {     
+            var filterQuery2 =
+            {
                 'query' : 'SELECT * FROM Players p where p.id = @playerId2',
-                'parameters' : [{'name':'@playerId2', 'value':playerId2}] 
+                'parameters' : [{'name':'@playerId2', 'value':playerId2}]
             };
             var accept2 = container.queryDocuments(container.getSelfLink(), filterQuery2, {},
                 function (err2, items2, responseOptions2) {
@@ -208,6 +205,56 @@ function bulkImport(items) {
             tryCreate(items[count], callback);
         }
     }
+}
+```
+
+### <a name="async-await-with-stored-procedures"></a><a id="async-promises"></a>Asynchrone wacht met opgeslagen procedures
+
+Hier volgt een voor beeld van een opgeslagen procedure die gebruikmaakt van async-await met belooft met behulp van een helper-functie. De opgeslagen procedure zoekt naar een item en vervangt het.
+
+```javascript
+function async_sample() {
+    const ERROR_CODE = {
+        NotAccepted: 429
+    };
+
+    const asyncHelper = {
+        queryDocuments(sqlQuery, options) {
+            return new Promise((resolve, reject) => {
+                const isAccepted = __.queryDocuments(__.getSelfLink(), sqlQuery, options, (err, feed, options) => {
+                    if (err) reject(err);
+                    resolve({ feed, options });
+                });
+                if (!isAccepted) reject(new Error(ERROR_CODE.NotAccepted, "replaceDocument was not accepted."));
+            });
+        },
+
+        replaceDocument(doc) {
+            return new Promise((resolve, reject) => {
+                const isAccepted = __.replaceDocument(doc._self, doc, (err, result, options) => {
+                    if (err) reject(err);
+                    resolve({ result, options });
+                });
+                if (!isAccepted) reject(new Error(ERROR_CODE.NotAccepted, "replaceDocument was not accepted."));
+            });
+        }
+    };
+
+    async function main() {
+        let continuation;
+        do {
+            let { feed, options } = await asyncHelper.queryDocuments("SELECT * from c", { continuation });
+
+            for (let doc of feed) {
+                doc.newProp = 1;
+                await asyncHelper.replaceDocument(doc);
+            }
+
+            continuation = options.continuation;
+        } while (continuation);
+    }
+
+    main().catch(err => getContext().abort(err));
 }
 ```
 
