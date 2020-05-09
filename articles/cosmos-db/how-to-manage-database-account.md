@@ -4,14 +4,14 @@ description: Meer informatie over het beheren van Azure Cosmos DB-resources met 
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 12/02/2019
+ms.date: 04/30/2020
 ms.author: mjbrown
-ms.openlocfilehash: 61670d757611bd0c1dd11c389282b18edb3d7fa1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 24eec27f0bc6357942420595a1318e3eb0945a5f
+ms.sourcegitcommit: 3beb067d5dc3d8895971b1bc18304e004b8a19b3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79247382"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82745031"
 ---
 # <a name="manage-an-azure-cosmos-account"></a>Een Azure Cosmos-account beheren
 
@@ -33,7 +33,7 @@ Zie [een Azure Cosmos DB-account maken met Power shell](manage-with-powershell.m
 
 ### <a name="azure-resource-manager-template"></a><a id="create-database-account-via-arm-template"></a>Azure Resource Manager sjabloon
 
-Met deze Azure Resource Manager sjabloon wordt een Azure Cosmos-account gemaakt voor de SQL-API die is geconfigureerd met twee regio's en opties om consistentie niveau, automatische failover en multi-master te selecteren. Als u deze sjabloon wilt implementeren, klikt u op implementeren in azure op de pagina README, maakt u een [Azure Cosmos-account](https://github.com/Azure/azure-quickstart-templates/tree/master/101-cosmosdb-sql)
+Zie [Azure Cosmos DB-account maken met Azure Resource Manager sjablonen](manage-sql-with-resource-manager.md)
 
 ## <a name="addremove-regions-from-your-database-account"></a>Regio's toevoegen aan of verwijderen uit uw databaseaccount
 

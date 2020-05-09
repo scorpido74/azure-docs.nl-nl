@@ -11,15 +11,16 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 7/12/2019
-ms.openlocfilehash: b36eb2615e98ee8ea7751c836fd43e81a5a0f4e2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 81f072822226e4a573cf0086cac7e64ca1cfe45f
+ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81414751"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82628160"
 ---
 # <a name="move-files-with-azure-data-factory"></a>Bestanden verplaatsen met Azure Data Factory
-[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
+
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
 In dit artikel wordt een oplossings sjabloon beschreven die u kunt gebruiken om bestanden van de ene map naar de andere te verplaatsen tussen archieven op basis van bestanden. Een van de veelvoorkomende scenario's voor het gebruik van deze sjabloon: bestanden worden doorlopend verplaatst naar een opslagmap in uw bron archief. Door een schema trigger te maken, kunt u deze bestanden regel matig van de bron naar het doel archief verplaatsen.  Op basis van de manier waarop ADF-pijp lijn ' bestanden verplaatsen ' krijgt, worden de bestanden opgehaald uit de map voor de overloop, worden ze gekopieerd naar een andere map in het doel archief en worden de bestanden vervolgens verwijderd uit de map voor het land van het bron archief.
 

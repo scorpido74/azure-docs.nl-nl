@@ -3,20 +3,18 @@ title: Uw eerste duurzame functie in Azure maken met behulp van JavaScript
 description: Maak en publiceer een duurzame Azure-functie met behulp van Visual Studio Code.
 author: anthonychu
 ms.topic: quickstart
-ms.date: 03/24/2020
+ms.date: 05/07/2020
 ms.reviewer: azfuncdf, antchu
-ms.openlocfilehash: 55098daa69d3e878140b20095b0a3e08811269e1
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 6544cd115dbae2268492a8775a780d2f045f4e4a
+ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80257645"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82889679"
 ---
 # <a name="create-your-first-durable-function-in-javascript"></a>Uw eerste duurzame functie maken in JavaScript
 
 *Durable Functions* is een extensie van [Azure Functions](../functions-overview.md) waarmee u stateful functies kunt schrijven in een serverloze omgeving. Met de extensie worden status, controlepunten en het opnieuw opstarten voor u beheerd.
-
-[!INCLUDE [v1-note](../../../includes/functions-durable-v1-tutorial-note.md)]
 
 In dit artikel leert u hoe u de Azure Functions-extensie van Visual Studio Code kunt gebruiken om lokaal een duurzame ‘Hallo wereld’-functie te maken en te testen.  Met deze functie worden aanroepen naar andere functies ingedeeld en aan elkaar gekoppeld. Vervolgens publiceert u de functiecode op Azure.
 
@@ -61,7 +59,7 @@ Met Visual Studio code worden de Azure Functions Core Tools, indien nodig, geïn
 
 Er wordt ook een package. JSON-bestand gemaakt in de hoofdmap.
 
-### <a name="enable-azure-functions-v2-compatibility-mode"></a>Compatibiliteits modus voor Azure Functions v2 inschakelen
+### <a name="enable-compatibility-mode"></a>Compatibiliteits modus inschakelen
 
 Java script Durable Functions vereisen dat de Azure Functions v2-compatibiliteits modus is ingeschakeld.
 
@@ -165,7 +163,7 @@ Met Azure Functions Core-hulpprogramma's kunt u een Azure Functions-project uitv
     | Een opslag account selecteren | Een nieuw opslagaccount maken |  |
     | Voer de naam van het nieuwe opslag account in | *unieke naam* | De naam van het opslag account dat moet worden gemaakt |
     | Een resourcegroep selecteren | *unieke naam* | De naam van de resource groep die u wilt maken |
-    | Een locatie selecteren | *deel* | Selecteer een regio die dicht bij u ligt |
+    | Een locatie selecteren | *regio* | Selecteer een regio die dicht bij u ligt |
 
 1. Kopieer het URL-eindpunt van de door HTTP getriggerde functie in het deelvenster **Terminal**.
 
@@ -204,7 +202,7 @@ Nadat u hebt gecontroleerd of de functie correct wordt uitgevoerd op uw lokale c
 
 [!INCLUDE [functions-publish-project-vscode](../../../includes/functions-publish-project-vscode.md)]
 
-### <a name="enable-azure-functions-v2-compatibility-mode"></a>Compatibiliteits modus voor Azure Functions v2 inschakelen
+### <a name="enable-compatibility-mode"></a>Compatibiliteits modus inschakelen
 
 Dezelfde Azure Functions v2-compatibiliteit die u lokaal hebt ingeschakeld, moet worden ingeschakeld in de app in Azure.
 

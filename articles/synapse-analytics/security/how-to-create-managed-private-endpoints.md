@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 04/15/2020
 ms.author: ronytho
 ms.reviewer: jrasnick
-ms.openlocfilehash: 363dc4d469d912c14f5f89ef6ff433a2243587e8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d6a0a84050cb8f1b3ad0c04aa66c5b3797282f2e
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81428899"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82983224"
 ---
 # <a name="create-a-managed-private-endpoint-to-your-data-source-preview"></a>Een beheerd persoonlijk eind punt maken voor uw gegevens bron (preview-versie)
 
@@ -35,12 +35,12 @@ Selecteer het type gegevens bron. In dit geval is de doel gegevens bron een ADLS
 
 ## <a name="step-4-enter-information-about-the-data-source"></a>Stap 4: Voer informatie over de gegevens bron in
 
-Voer in het volgende venster informatie over de gegevens bron in. In dit voor beeld maken we een beheerd privé-eind punt voor een ADLS Gen2-account. Voer een **naam** in voor het beheerde persoonlijke eind punt. Geef een **Azure-abonnement** en een naam voor het **opslag account**op. Selecteer **Maken**.
+Voer in het volgende venster informatie over de gegevens bron in. In dit voor beeld maken we een beheerd persoonlijk eind punt met een ADLS Gen2-account. Voer een **naam** in voor het beheerde persoonlijke eind punt. Geef een **Azure-abonnement** en een naam voor het **opslag account**op. Selecteer **Maken**.
 ![Details van doel gegevens bron opgeven](./media/how-to-create-managed-private-endpoints/managed-private-endpoint-4.png)
 
 ## <a name="step-5-verify-that-your-managed-private-endpoint-was-successfully-created"></a>Stap 5: controleren of uw beheerde persoonlijke eind punt is gemaakt
 
-Nadat de aanvraag is verzonden, ziet u de status. Controleer de *inrichtings status*om te controleren of uw beheerde persoonlijke eind punt is gemaakt. Mogelijk moet u 1 minuut wachten en vervolgens **vernieuwen** selecteren om de inrichtings status bij te werken. U kunt zien dat het beheerde persoonlijke eind punt voor het ADLS Gen2-account is gemaakt.
+Nadat de aanvraag is verzonden, ziet u de status. Controleer de *inrichtings status*om te controleren of uw beheerde persoonlijke eind punt is gemaakt. Mogelijk moet u 1 minuut wachten en vervolgens **vernieuwen** selecteren om de inrichtings status bij te werken. U kunt zien dat het beheerde persoonlijke eind punt naar het ADLS Gen2-account is gemaakt.
 
 U kunt ook zien dat de *goedkeurings status* *in behandeling*is. De eigenaar van de doel resource kan de verbindings aanvraag van het particuliere eind punt goed keuren of weigeren. Als de eigenaar de verbindings aanvraag van het particuliere eind punt goedkeurt, wordt een privé-koppeling tot stand gebracht. Als u deze weigert, wordt er geen persoonlijke koppeling tot stand gebracht.
 ![Status van de aanvraag voor het maken van beheerde privé-eind punten](./media/how-to-create-managed-private-endpoints/managed-private-endpoint-5.png)

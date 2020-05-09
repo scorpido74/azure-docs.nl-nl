@@ -1,22 +1,22 @@
 ---
-title: Beheer van leads in de Market configureren | Azure Marketplace
-description: Configureer het beheer van leads voor de klanten van Azure Marketplace.
+title: Lead beheer in Marketo-micro soft Commercial Marketplace
+description: Meer informatie over het gebruik van een Marketo CRM-systeem voor het beheer van leads van Microsoft AppSource en Azure Marketplace.
 author: qianw211
 ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 03/30/2020
-ms.openlocfilehash: b142e0ab1aaa242157e207ceecf958be51bb1721
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1f3a097629f8c5f4a3f0ecefa5ee50f2d3e62162
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82133654"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82789875"
 ---
-# <a name="configure-lead-management-in-marketo"></a>Beheer van leads in de Market configureren
+# <a name="use-marketo-to-manage-commercial-marketplace-leads"></a>Marketo gebruiken om leads voor commerciële Marketplace te beheren
 
-In dit artikel wordt beschreven hoe u uw Marketo CRM-systeem zo instelt dat verkoop leads van uw aanbieding voor commerciële Marketplace kunnen worden verwerkt.
+In dit artikel wordt beschreven hoe u uw Marketo CRM-systeem zo instelt dat verkoop leads van uw aanbiedingen in Microsoft AppSource en Azure Marketplace kunnen worden verwerkt.
 
 ## <a name="set-up-your-marketo-crm-system"></a>Uw Marketo CRM-systeem instellen
 
@@ -67,9 +67,11 @@ In dit artikel wordt beschreven hoe u uw Marketo CRM-systeem zo instelt dat verk
 
 Wanneer u klaar bent om de informatie over het beheer van leads voor uw aanbieding te configureren in de portal voor publiceren, voert u de volgende stappen uit. 
 
-1. Ga naar de pagina voor het instellen van de **aanbieding** voor uw aanbieding.
+1. Meld u aan bij [Partner Center](https://partner.microsoft.com/dashboard/home).
 
-1. Selecteer **verbinding maken** in het gedeelte **lead beheer** . 
+1. Selecteer uw aanbieding en ga naar het tabblad **installatie** van de aanbieding.
+
+1. Selecteer in het gedeelte **lead beheer** de optie **verbinding maken**. 
 
     ![De knop verbinding maken in de sectie Lead beheer](./media/commercial-marketplace-lead-management-instructions-marketo/lead-management-connect.png)
 
@@ -86,6 +88,6 @@ Wanneer u klaar bent om de informatie over het beheer van leads voor uw aanbiedi
 
 1. Selecteer **OK**.
 
-   Selecteer de knop **valideren** om ervoor te zorgen dat u verbinding hebt gemaakt met een doel van een lead. Als dat lukt, hebt u een test lead in de doel locatie van de lead.
+   Selecteer **valideren**om ervoor te zorgen dat u verbinding hebt gemaakt met een doel van de lead. Als dat lukt, hebt u een test lead in de doel locatie van de lead.
 
    ![Pop-upvenster voor verbindings Details](./media/commercial-marketplace-lead-management-instructions-marketo/marketo-connection-details.png)

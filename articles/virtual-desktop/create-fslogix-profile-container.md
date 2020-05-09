@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 04/13/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 149fb5818ee360c7333997655ea9eb8d7ded346c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 294a59ed94344ecf590eb9b34f991deaaa10db69
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81270890"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82607381"
 ---
 # <a name="create-an-fslogix-profile-container-for-a-host-pool-using-azure-netapp-files"></a>Een FSLogix-profiel container maken voor een hostgroep met Azure NetApp Files
 
@@ -23,7 +23,7 @@ U kunt FSLogix-profiel containers maken met behulp van [Azure NetApp files](http
 
 In deze hand leiding wordt uitgelegd hoe u een Azure NetApp Files account instelt en FSLogix profiel containers maakt in Windows virtueel bureau blad.
 
-In dit artikel wordt ervan uitgegaan dat u al [hostgroepen](create-host-pools-azure-marketplace.md) hebt ingesteld en gegroepeerd in een of meer tenants in uw Windows Virtual Desktop-omgeving. Zie voor meer informatie over het instellen van tenants [een Tenant maken in het virtuele bureau blad van Windows](tenant-setup-azure-active-directory.md) en [onze technische community-blog post](https://techcommunity.microsoft.com/t5/Windows-IT-Pro-Blog/Getting-started-with-Windows-Virtual-Desktop/ba-p/391054).
+In dit artikel wordt ervan uitgegaan dat u al [hostgroepen](create-host-pools-azure-marketplace.md) hebt ingesteld en gegroepeerd in een of meer tenants in uw Windows Virtual Desktop-omgeving. Zie voor meer informatie over het instellen van tenants [een Tenant maken in het virtuele bureau blad van Windows](./virtual-desktop-fall-2019/tenant-setup-azure-active-directory.md) en [onze technische community-blog post](https://techcommunity.microsoft.com/t5/Windows-IT-Pro-Blog/Getting-started-with-Windows-Virtual-Desktop/ba-p/391054).
 
 De instructies in deze hand leiding zijn specifiek voor Windows-gebruikers met een virtueel bureau blad. Als u meer algemene richt lijnen wilt voor het instellen van Azure NetApp Files en het maken van FSLogix-profiel containers buiten Windows virtueel bureau blad, raadpleegt u de Snelstartgids voor het [instellen van Azure NetApp files en het maken van een NFS-volume](../azure-netapp-files/azure-netapp-files-quickstart-set-up-account-create-volumes.md).
 
@@ -45,7 +45,7 @@ Voordat u een FSLogix-profiel container voor een hostgroep kunt maken, moet u he
 
 Als u aan de slag wilt gaan, moet u een Azure NetApp Files-account instellen.
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com). Zorg ervoor dat uw account Inzender-of beheerders machtigingen heeft.
+1. Meld u aan bij [Azure Portal](https://portal.azure.com). Zorg ervoor dat uw account Inzender-of beheerders machtigingen heeft.
 
 2. Selecteer het **Azure Cloud shell pictogram** rechts van de zoek balk om Azure Cloud shell te openen.
 
@@ -210,7 +210,7 @@ Deze sectie is gebaseerd op het [maken van een profiel container voor een hostgr
 
 ## <a name="make-sure-users-can-access-the-azure-netapp-file-share"></a>Zorg ervoor dat gebruikers toegang hebben tot de bestands share van Azure NetApp
 
-1. Open uw Internet browser en ga naar <https://rdweb.wvd.microsoft.com/webclient/index.html>.
+1. Open uw Internet browser en ga naar <https://rdweb.wvd.microsoft.com/arm/webclient>.
 
 2. Meld u aan met de referenties van een gebruiker die is toegewezen aan de Extern bureaublad groep.
 

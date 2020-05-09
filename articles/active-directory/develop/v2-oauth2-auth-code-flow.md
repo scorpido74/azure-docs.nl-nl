@@ -12,12 +12,12 @@ ms.date: 01/31/2020
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: ed41150e8247a738d3222127243083470211f7a9
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.openlocfilehash: b01a0a9162412092f9339810a51838c4bdbb0a20
+ms.sourcegitcommit: 602e6db62069d568a91981a1117244ffd757f1c2
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82689800"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82864178"
 ---
 # <a name="microsoft-identity-platform-and-oauth-20-authorization-code-flow"></a>Micro soft Identity platform en OAuth 2,0-autorisatie code stroom
 
@@ -35,7 +35,7 @@ Op hoog niveau ziet de volledige verificatie stroom voor een systeem eigen/mobie
 
 ## <a name="request-an-authorization-code"></a>Een autorisatie code aanvragen
 
-De autorisatie code stroom begint met de client die de gebruiker omleidt naar `/authorize` het eind punt. In deze aanvraag vraagt de client de `openid`, `offline_access`, en `https://graph.microsoft.com/mail.read ` machtigingen van van de gebruiker.  Sommige machtigingen zijn door de beheerder beperkt, bijvoorbeeld het schrijven van gegevens naar de directory van een `Directory.ReadWrite.All`organisatie met behulp van. Als uw toepassing toegang vraagt tot een van deze machtigingen van een organisatie gebruiker, ontvangt de gebruiker een fout bericht waarin staat dat ze niet zijn geautoriseerd om toestemming te geven voor de machtigingen van uw app. Als u toegang wilt aanvragen voor beheerders met beperkte bereiken, moet u deze rechtstreeks aanvragen bij een bedrijfs beheerder.  Lees [machtigingen met beheerders rechten](v2-permissions-and-consent.md#admin-restricted-permissions)voor meer informatie.
+De autorisatie code stroom begint met de client die de gebruiker omleidt naar `/authorize` het eind punt. In deze aanvraag vraagt de client de `openid`, `offline_access`, en `https://graph.microsoft.com/mail.read ` machtigingen van de gebruiker.  Sommige machtigingen zijn door de beheerder beperkt, bijvoorbeeld het schrijven van gegevens naar de directory van een `Directory.ReadWrite.All`organisatie met behulp van. Als uw toepassing toegang vraagt tot een van deze machtigingen van een organisatie gebruiker, ontvangt de gebruiker een fout bericht waarin staat dat ze niet zijn geautoriseerd om toestemming te geven voor de machtigingen van uw app. Als u toegang wilt aanvragen voor beheerders met beperkte bereiken, moet u deze rechtstreeks aanvragen bij een bedrijfs beheerder.  Lees [machtigingen met beheerders rechten](v2-permissions-and-consent.md#admin-restricted-permissions)voor meer informatie.
 
 ```
 // Line breaks for legibility only

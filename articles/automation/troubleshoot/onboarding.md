@@ -1,6 +1,6 @@
 ---
 title: Problemen oplossen met de onboarding van Azure Automation-beheer oplossingen
-description: Meer informatie over het oplossen van problemen met de oplossing voor onboarding.
+description: Meer informatie over het oplossen van problemen met Azure Automation oplossingen voor onboarding.
 services: automation
 author: mgoedtel
 ms.author: magoedte
@@ -8,16 +8,16 @@ ms.date: 05/22/2019
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: da5152b459f54cbaae5ec168f103f23a237edebd
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 371094ecba5168fd32a7af9fb81a71eb722efc91
+ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81679236"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82836526"
 ---
 # <a name="troubleshoot-solution-onboarding"></a>Problemen oplossen met oplossing voor onboarding
 
-Er kunnen fouten optreden bij het voorbereiden van de Updatebeheer oplossing of de Wijzigingen bijhouden-en voorraad oplossing. In dit artikel worden de verschillende fouten beschreven die zich kunnen voordoen en hoe u deze kunt oplossen.
+Er kunnen fout berichten worden weer gegeven wanneer u de Azure Automation Updatebeheer oplossing of de oplossing Wijzigingen bijhouden en inventarisatie. In dit artikel worden de verschillende fouten beschreven die zich kunnen voordoen en hoe u deze kunt oplossen.
 
 ## <a name="known-issues"></a>Bekende problemen
 
@@ -25,21 +25,21 @@ Er kunnen fouten optreden bij het voorbereiden van de Updatebeheer oplossing of 
 
 #### <a name="issue"></a>Probleem
 
-Een knoop punt is geregistreerd bij Azure Automation en vervolgens wordt de computer naam van het besturings systeem gewijzigd. Rapporten van het knoop punt worden nog steeds weer gegeven met de oorspronkelijke naam.
+Een knoop punt is geregistreerd voor Azure Automation en vervolgens wordt de computer naam van het besturings systeem gewijzigd. Rapporten van het knoop punt worden nog steeds weer gegeven met de oorspronkelijke naam.
 
 #### <a name="cause"></a>Oorzaak
 
-Bij het wijzigen van de naam van geregistreerde knoop punten wordt de knooppunt naam in Azure Automation niet bijgewerkt.
+Als u de naam van geregistreerde knoop punten wijzigt, wordt de knooppunt naam in Azure Automation niet bijgewerkt.
 
 #### <a name="resolution"></a>Oplossing
 
-Hef de registratie van het knoop punt uit de configuratie van Azure Automation status op en registreer dit vervolgens opnieuw. Rapporten die worden gepubliceerd naar de service vóór dat moment, zijn niet meer beschikbaar.
+Hef de registratie van het knoop punt uit de configuratie van Azure Automation status op en registreer het vervolgens opnieuw. Rapporten die worden gepubliceerd naar de service vóór dat moment, zijn niet meer beschikbaar.
 
-### <a name="scenario-re-signing-certificates-via-https-proxy-is-not-supported"></a><a name="resigning-cert"></a>Scenario: het opnieuw ondertekenen van certificaten via een HTTPS-proxy wordt niet ondersteund
+### <a name="scenario-re-signing-certificates-via-https-proxy-isnt-supported"></a><a name="resigning-cert"></a>Scenario: het opnieuw ondertekenen van certificaten via een HTTPS-proxy wordt niet ondersteund
 
 #### <a name="issue"></a>Probleem
 
-Wanneer u verbinding maakt via een proxy-oplossing die HTTPS-verkeer beëindigt en vervolgens het verkeer opnieuw versleutelt met een nieuw certificaat, staat de service de verbinding niet toe.
+Wanneer u verbinding maakt via een proxy-oplossing die HTTPS-verkeer beëindigt en vervolgens het verkeer opnieuw versleutelt met een nieuw certificaat, wordt de verbinding niet toegestaan door de service.
 
 #### <a name="cause"></a>Oorzaak
 
@@ -51,7 +51,7 @@ Er is momenteel geen oplossing voor dit probleem.
 
 ## <a name="general-errors"></a>Algemene fouten
 
-### <a name="scenario-onboarding-fails-with-the-message---the-solution-cannot-be-enabled"></a><a name="missing-write-permissions"></a>Scenario: onboarding mislukt met het bericht-de oplossing kan niet worden ingeschakeld
+### <a name="scenario-onboarding-fails-with-the-message-the-solution-cannot-be-enabled"></a><a name="missing-write-permissions"></a>Scenario: onboarding mislukt met het bericht ' de oplossing kan niet worden ingeschakeld '
 
 #### <a name="issue"></a>Probleem
 
@@ -71,9 +71,9 @@ Deze fout wordt veroorzaakt door onjuiste of ontbrekende machtigingen voor de vi
 
 #### <a name="resolution"></a>Oplossing
 
-Zorg ervoor dat u de juiste [machtigingen hebt voor het onboarden van machines](../automation-role-based-access-control.md#onboarding-permissions) en probeer de oplossing opnieuw te proberen. Als u het fout `The solution cannot be enabled on this VM because the permission to read the workspace is missing`bericht ontvangt, moet u ervoor zorgen `Microsoft.OperationalInsights/workspaces/read` dat u gemachtigd bent om te kunnen vinden of de virtuele machine onboarded is voor een werk ruimte.
+Zorg ervoor dat u de juiste [machtigingen hebt voor het onboarden van machines](../automation-role-based-access-control.md#onboarding-permissions)en probeer het opnieuw. Als u het fout bericht `The solution cannot be enabled on this VM because the permission to read the workspace is missing`ontvangt, moet u ervoor zorgen dat `Microsoft.OperationalInsights/workspaces/read` u gemachtigd bent om te kunnen vinden of de virtuele machine onboarded is voor een werk ruimte.
 
-### <a name="scenario-onboarding-fails-with-the-message-failed-to-configure-automation-account-for-diagnostic-logging"></a><a name="diagnostic-logging"></a>Scenario: onboarding mislukt met het volgende bericht: kan het Automation-account niet configureren voor diagnostische logboek registratie
+### <a name="scenario-onboarding-fails-with-the-message-failed-to-configure-automation-account-for-diagnostic-logging"></a><a name="diagnostic-logging"></a>Scenario: onboarding mislukt met het bericht ' kan Automation-account niet configureren voor diagnostische logboek registratie '
 
 #### <a name="issue"></a>Probleem
 
@@ -85,7 +85,7 @@ Failed to configure automation account for diagnostic logging
 
 #### <a name="cause"></a>Oorzaak
 
-Deze fout kan optreden als de prijs categorie niet overeenkomt met het facturerings model van het abonnement. Zie [gebruik en geschatte kosten in azure monitor bewaken](https://aka.ms/PricingTierWarning).
+Deze fout kan optreden als de prijs categorie niet overeenkomt met het facturerings model van het abonnement. Zie [verbruik en geschatte kosten in azure monitor bewaken](https://aka.ms/PricingTierWarning)voor meer informatie.
 
 #### <a name="resolution"></a>Oplossing
 
@@ -95,7 +95,7 @@ Maak uw Log Analytics-werk ruimte hand matig en herhaal het voorbereidings proce
 
 #### <a name="issue"></a>Probleem
 
-Deze fout code geeft aan dat de query voor de opgeslagen Zoek computer groep die wordt gebruikt om de oplossing te richten, niet op de juiste wijze is ingedeeld. 
+Deze fout code geeft aan dat de query voor de opgeslagen Zoek computer groep die wordt gebruikt om de oplossing te richten, niet correct is ingedeeld. 
 
 #### <a name="cause"></a>Oorzaak
 
@@ -103,7 +103,7 @@ Mogelijk hebt u de query gewijzigd, of is het systeem mogelijk gewijzigd.
 
 #### <a name="resolution"></a>Oplossing
 
-U kunt de query voor de oplossing verwijderen en vervolgens de oplossing opnieuw uitvoeren, waardoor de query opnieuw wordt gemaakt. U vindt de query in uw werk ruimte, onder **opgeslagen Zoek opdrachten**. De naam van de query is **MicrosoftDefaultComputerGroup**en de categorie van de query is de naam van de bijbehorende oplossing. Als er meerdere oplossingen zijn ingeschakeld, wordt in de **MicrosoftDefaultComputerGroup** -query meerdere keren weer gegeven onder **opgeslagen Zoek opdrachten**.
+U kunt de query voor de oplossing verwijderen en vervolgens de oplossing opnieuw uitvoeren, waardoor de query opnieuw wordt gemaakt. U vindt de query in uw werk ruimte onder **opgeslagen Zoek opdrachten**. De naam van de query is **MicrosoftDefaultComputerGroup**en de categorie van de query is de naam van de bijbehorende oplossing. Als er meerdere oplossingen zijn ingeschakeld, wordt in de **MicrosoftDefaultComputerGroup** -query meerdere keren weer gegeven onder **opgeslagen Zoek opdrachten**.
 
 ### <a name="scenario-policyviolation"></a><a name="policy-violation"></a>Scenario: PolicyViolation
 
@@ -121,16 +121,16 @@ Als u de oplossing wilt implementeren, moet u overwegen om het aangegeven beleid
 
 * Verwijder het beleid samen.
 * Voer de oplossing uit voor een andere resource groep.
-* Wijs het beleid opnieuw toe aan een specifieke resource, bijvoorbeeld een Automation-account.
+* Het beleid opnieuw instellen voor een specifieke resource, bijvoorbeeld een Automation-account.
 * Wijzig de set resources die het beleid heeft geconfigureerd om te weigeren.
 
-Controleer de meldingen in de rechter bovenhoek van de Azure Portal of navigeer naar de resource groep die uw Automation-account bevat en selecteer **implementaties** onder **instellingen** om de mislukte implementatie te bekijken. Zie [overzicht van Azure Policy](../../governance/policy/overview.md?toc=%2fazure%2fautomation%2ftoc.json)voor meer informatie over Azure Policy.
+Controleer de meldingen in de rechter bovenhoek van de Azure Portal of ga naar de resource groep die uw Automation-account bevat en selecteer **implementaties** onder **instellingen** om de mislukte implementatie te bekijken. Zie [overzicht van Azure Policy](../../governance/policy/overview.md?toc=%2fazure%2fautomation%2ftoc.json)voor meer informatie over Azure Policy.
 
 ### <a name="scenario-errors-trying-to-unlink-a-workspace"></a><a name="unlink"></a>Scenario: fouten bij het ontkoppelen van een werk ruimte
 
 #### <a name="issue"></a>Probleem
 
-U ontvangt de volgende fout wanneer u een werk ruimte probeert te ontkoppelen:
+Het volgende fout bericht wordt weer gegeven wanneer u een werk ruimte probeert te ontkoppelen:
 
 ```error
 The link cannot be updated or deleted because it is linked to Update Management and/or ChangeTracking Solutions.
@@ -148,10 +148,10 @@ Verwijder de volgende oplossingen uit uw werk ruimte als u ze gebruikt:
 * Wijzigingen bijhouden en Inventaris
 * VM's starten/stoppen buiten kantooruren
 
-Wanneer u de oplossingen hebt verwijderd, kunt u de koppeling met uw werk ruimte verwijderen. Het is belang rijk dat u bestaande artefacten uit deze oplossingen opschoont vanuit uw werk ruimte en uw Automation-account 
+Nadat u de oplossingen hebt verwijderd, kunt u uw werk ruimte ontkoppelen. Het is belang rijk om bestaande artefacten uit deze oplossingen op te schonen vanuit uw werk ruimte en uw Automation-account:
 
-* Verwijder voor Updatebeheer update-implementaties (Schema's) uit uw Automation-account.
-* Verwijder voor VM's buiten bedrijfsuren starten/stoppen alle vergren delingen van oplossings onderdelen in uw Automation-account onder **instellingen** > **vergrendelingen**. Zie [de VM's buiten bedrijfsuren starten/stoppen-oplossing verwijderen](../automation-solution-vm-management.md#remove-the-solution).
+* Verwijder voor Updatebeheer **Update-implementaties (schema's)** uit uw Automation-account.
+* Verwijder voor VM's buiten bedrijfsuren starten/stoppen alle vergren delingen van oplossings onderdelen in uw Automation-account onder **instellingen** > **vergrendelingen**. Zie [de VM's buiten bedrijfsuren starten/stoppen-oplossing verwijderen](../automation-solution-vm-management.md#remove-the-solution)voor meer informatie.
 
 ## <a name="log-analytics-for-windows-extension-failures"></a><a name="mma-extension-failures"></a>Log Analytics voor Windows-extensie fouten
 
@@ -189,13 +189,13 @@ Enkele mogelijke oorzaken van deze fout zijn:
 
 Zorg ervoor dat u de juiste poorten en adressen voor communicatie hebt geopend. Zie [uw netwerk plannen](../automation-hybrid-runbook-worker.md#network-planning)voor een lijst met poorten en adressen.
 
-### <a name="scenario-install-failed-because-of-a-transient-environment-issues"></a><a name="transient-environment-issue"></a>Scenario: de installatie is mislukt vanwege problemen met de tijdelijke omgeving
+### <a name="scenario-install-failed-because-of-transient-environment-issues"></a><a name="transient-environment-issue"></a>Scenario: de installatie is mislukt vanwege problemen met de tijdelijke omgeving
 
-De installatie van de Log Analytics voor Windows-uitbrei ding is mislukt tijdens de implementatie vanwege een andere installatie of actie die de installatie blokkeert
+De installatie van de Log Analytics voor Windows-uitbrei ding is mislukt tijdens de implementatie vanwege een andere installatie of actie die de installatie blokkeert.
 
 #### <a name="issue"></a>Probleem
 
-Hier volgen enkele voor beelden van fout berichten die kunnen worden weer gegeven:
+Hier volgen enkele voor beelden van fout berichten die kunnen worden geretourneerd:
 
 ```error
 The Microsoft Monitoring Agent failed to install on this machine. Please try to uninstall and reinstall the extension. If the issue persists, please contact support.
@@ -242,8 +242,8 @@ Installeer de Log Analytics agent voor Windows-extensie wanneer de virtuele mach
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Als uw probleem niet hierboven wordt weer geven of als u het probleem niet kunt oplossen, kunt u een van de volgende kanalen proberen voor aanvullende ondersteuning:
+Als uw probleem hier niet wordt weer gegeven of u het probleem niet kunt oplossen, kunt u een van de volgende kanalen proberen voor aanvullende ondersteuning:
 
 * Krijg antwoorden van Azure-experts via [Azure-forums](https://azure.microsoft.com/support/forums/).
-* Maak verbinding [@AzureSupport](https://twitter.com/azuresupport)met, het officiële Microsoft Azure account voor het verbeteren van de gebruikers ervaring door de Azure-community te verbinden met de juiste resources: antwoorden, ondersteuning en experts.
-* Een ondersteunings incident voor Azure. Ga naar de [ondersteunings site van Azure](https://azure.microsoft.com/support/options/) en selecteer **ondersteuning verkrijgen**.
+* Maak verbinding [@AzureSupport](https://twitter.com/azuresupport)met, het officiële Microsoft Azure account voor het verbeteren van de gebruikers ervaring. Azure-ondersteuning verbindt de Azure-community met antwoorden, ondersteuning en experts.
+* Een ondersteunings incident voor Azure. Ga naar de [ondersteunings site van Azure](https://azure.microsoft.com/support/options/)en selecteer **ondersteuning verkrijgen**.

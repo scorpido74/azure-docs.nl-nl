@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: josels
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: 0fd8a379927396f2ae44d74c2d968d48fbd039c1
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 2501f66c42360d3ec1626f5f4ee42e0212f1967b
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82096364"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82792238"
 ---
 # <a name="quickstart-create-a-new-apache-spark-pool-preview"></a>Snelstartgids: een nieuwe Apache Spark groep maken (preview)
 
@@ -25,16 +25,16 @@ In deze Quick Start leert u hoe u de Azure Portal kunt gebruiken om een Apache S
 > [!IMPORTANT]
 > Facturering voor Spark-instanties wordt per minuut naar beneden geclassificeerd, ongeacht of u deze gebruikt. Zorg ervoor dat u de Spark-instantie afsluit nadat u deze hebt gebruikt of een korte time-out hebt ingesteld. Zie voor meer informatie de sectie **Resources opschonen** van dit artikel.
 
-Als u nog geen abonnement op Azure hebt, [Maak dan een gratis account aan voordat u begint](https:/azure.microsoft.com/free/).
+Als u nog geen abonnement op Azure hebt, [Maak dan een gratis account aan voordat u begint](https://azure.microsoft.com/free/).
 
 ## <a name="prerequisites"></a>Vereisten
 
-- Azure-abonnement: [Maak er gratis een](https:/azure.microsoft.com/free/)
+- Azure-abonnement: [Maak er gratis een](https://azure.microsoft.com/free/)
 - [Synapse Analytics-werk ruimte](quickstart-create-workspace.md)
 
 ## <a name="sign-in-to-the-azure-portal"></a>Aanmelden bij Azure Portal
 
-Meld u aan bij de [Azure Portal](https:/portal.azure.com/)
+Meld u aan bij de [Azure Portal](https://portal.azure.com/)
 
 ## <a name="create-new-apache-spark-pool"></a>Nieuwe Apache Spark pool maken
 

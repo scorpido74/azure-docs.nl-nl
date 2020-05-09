@@ -5,17 +5,17 @@ author: mimckitt
 tags: azure-resource-manager
 ms.service: virtual-machine-scale-sets
 ms.topic: conceptual
-ms.date: 01/30/2019
+ms.date: 05/06/2020
 ms.author: mimckitt
-ms.openlocfilehash: cb5f1d48bb1a95db004d9da553e19a35071c73b0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 30f68d22a228e6de596e6999490ea7789ab21547
+ms.sourcegitcommit: 602e6db62069d568a91981a1117244ffd757f1c2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81273729"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82864365"
 ---
 # <a name="using-application-health-extension-with-virtual-machine-scale-sets"></a>De toepassingsstatusextensie gebruiken met virtuele-machineschaalsets
-Het controleren van de status van uw toepassing is een belang rijk signaal voor het beheren en upgraden van uw implementatie. Virtuele-machine schaal sets van Azure bieden ondersteuning voor [rolling upgrades](virtual-machine-scale-sets-upgrade-scale-set.md#how-to-bring-vms-up-to-date-with-the-latest-scale-set-model) , waaronder [automatische upgrades van besturings systemen](virtual-machine-scale-sets-automatic-upgrade.md), die afhankelijk zijn van de status controle van de afzonderlijke instanties om uw implementatie bij te werken.
+Het controleren van de status van uw toepassing is een belang rijk signaal voor het beheren en upgraden van uw implementatie. Virtuele-machine schaal sets van Azure bieden ondersteuning voor [rolling upgrades](virtual-machine-scale-sets-upgrade-scale-set.md#how-to-bring-vms-up-to-date-with-the-latest-scale-set-model) , waaronder [automatische upgrades van besturings systemen](virtual-machine-scale-sets-automatic-upgrade.md), die afhankelijk zijn van de status controle van de afzonderlijke instanties om uw implementatie bij te werken. U kunt ook de status extensie gebruiken om de toepassings status van elk exemplaar in uw schaalset te bewaken en de reparatie van instanties uit te voeren met [automatische herstel bewerkingen](virtual-machine-scale-sets-automatic-instance-repairs.md).
 
 In dit artikel wordt beschreven hoe u de toepassings status uitbreiding kunt gebruiken om de status van uw toepassingen te controleren die zijn geïmplementeerd op schaal sets voor virtuele machines.
 
@@ -31,7 +31,7 @@ Als de uitbrei ding rapporteert over de status van binnen een virtuele machine, 
 
 ## <a name="extension-schema"></a>Extensieschema
 
-De volgende JSON toont het schema voor de uitbrei ding van de toepassings status. Voor de uitbrei ding is mini maal een TCP-of HTTP-aanvraag met respectievelijk een bijbehorend poort-of aanvraag pad vereist.
+De volgende JSON toont het schema voor de uitbrei ding van de toepassings status. Voor de uitbrei ding is mini maal een TCP-, http-of HTTPS-aanvraag met een bijbehorend poort-of aanvraag pad vereist.
 
 ```json
 {
@@ -57,8 +57,8 @@ De volgende JSON toont het schema voor de uitbrei ding van de toepassings status
 
 | Naam | Waarde/voor beeld | Gegevenstype
 | ---- | ---- | ---- 
-| apiVersion | `2018-10-01` | date |
-| uitgever | `Microsoft.ManagedServices` | tekenreeks |
+| apiVersion | `2018-10-01` | datum |
+| publisher | `Microsoft.ManagedServices` | tekenreeks |
 | type | `ApplicationHealthLinux`(Linux), `ApplicationHealthWindows` (Windows) | tekenreeks |
 | typeHandlerVersion | `1.0` | int |
 
@@ -66,9 +66,9 @@ De volgende JSON toont het schema voor de uitbrei ding van de toepassings status
 
 | Naam | Waarde/voor beeld | Gegevenstype
 | ---- | ---- | ----
-| Protocolsubstatus | `http` of `tcp` | tekenreeks |
-| poort | Optioneel wanneer protocol is `http`, verplicht wanneer protocol wordt`tcp` | int |
-| requestPath | Verplicht wanneer protocol is `http`, niet toegestaan als protocol wordt`tcp` | tekenreeks |
+| Protocolsubstatus | `http`of `https` of`tcp` | tekenreeks |
+| poort | Optioneel wanneer protocol is `http` of `https`, verplicht wanneer protocol wordt`tcp` | int |
+| requestPath | Verplicht wanneer het protocol `http` is `https`of niet is toegestaan wanneer het protocol is`tcp` | tekenreeks |
 
 ## <a name="deploy-the-application-health-extension"></a>De toepassings status uitbreiding implementeren
 Er zijn meerdere manieren om de toepassings status extensie te implementeren op uw schaal sets, zoals beschreven in de onderstaande voor beelden.

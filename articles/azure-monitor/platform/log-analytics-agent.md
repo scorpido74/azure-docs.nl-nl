@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 02/04/2020
-ms.openlocfilehash: 08c80b0a37e21d53fc974bd878501b9326c9449b
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 658543dc96f23fc86ea50f64d7a3265ba64150e7
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82207221"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82982204"
 ---
 # <a name="log-analytics-agent-overview"></a>Overzicht van Log Analytics-agent
 De Azure Log Analytics-agent is ontwikkeld voor uitgebreid beheer over virtuele machines in elke Cloud, on-premises machines en die worden bewaakt door [System Center Operations Manager](https://docs.microsoft.com/system-center/scom/). De Windows-en Linux-agents verzenden verzamelde gegevens van verschillende bronnen naar uw Log Analytics-werk ruimte in Azure Monitor, evenals alle unieke Logboeken of meet waarden zoals gedefinieerd in een bewakings oplossing. De Log Analytics-agent biedt ook ondersteuning voor inzichten en andere services in Azure Monitor zoals [Azure monitor voor VM's](../insights/vminsights-enable-overview.md), [Azure Security Center](/azure/security-center/)en [Azure Automation](../../automation/automation-intro.md).
@@ -43,7 +43,7 @@ De volgende tabel bevat de typen gegevens die u kunt configureren voor het verza
 | --- | --- |
 | [Windows-gebeurtenis logboeken](data-sources-windows-events.md) | Gegevens die worden verzonden naar het Windows-systeem voor gebeurtenis registratie. |
 | [Syslog](data-sources-syslog.md)                     | Informatie die wordt verzonden naar het systeem voor het registreren van Linux-gebeurtenissen. |
-| [Prestaties](data-sources-performance-counters.md)  | Numerieke waarden meten de prestaties van verschillende aspecten van het besturings systeem en de werk belastingen. |
+| [Nemen](data-sources-performance-counters.md)  | Numerieke waarden meten de prestaties van verschillende aspecten van het besturings systeem en de werk belastingen. |
 | [IIS-logboeken](data-sources-iis-logs.md)                 | Gebruiks gegevens voor IIS-websites die worden uitgevoerd op het gast besturingssysteem. |
 | [Aangepaste logboeken](data-sources-custom-logs.md)           | Gebeurtenissen uit tekst bestanden op zowel Windows-als Linux-computers. |
 
@@ -147,7 +147,7 @@ We raden u ten zeerste aan de agent te configureren om ten minste Transport Laye
 
 
 ## <a name="sha-2-code-signing-support-requirement-for-windows"></a>SHA-2-ondersteuning voor ondertekening van code voor Windows
-De Windows-agent gaat uitsluitend gebruikmaken van SHA-2-ondertekening op 18 mei 2020. Deze wijziging is van invloed op klanten die de Log Analytics-agent gebruiken op een verouderd besturings systeem als onderdeel van een Azure-service (Azure Monitor, Azure Automation, Azure Updatebeheer, Azure Wijzigingen bijhouden, Azure Security Center, Azure Sentinel, Windows Defender ATP). Voor de wijziging is geen actie van de klant vereist tenzij u de agent uitvoert op een verouderde versie van het besturings systeem (Windows 7, Windows Server 2008 R2 en Windows Server 2008). Klanten die gebruikmaken van een verouderde versie van het besturings systeem, moeten de volgende acties uitvoeren op hun computers vóór 18 mei 2020 of de agents verzenden geen gegevens naar hun Log Analytics-werk ruimten:
+De Windows-agent gaat exclusief SHA-2-ondertekening gebruiken op 17 augustus 2020. Deze wijziging is van invloed op klanten die de Log Analytics-agent gebruiken op een verouderd besturings systeem als onderdeel van een Azure-service (Azure Monitor, Azure Automation, Azure Updatebeheer, Azure Wijzigingen bijhouden, Azure Security Center, Azure Sentinel, Windows Defender ATP). Voor de wijziging is geen actie van de klant vereist tenzij u de agent uitvoert op een verouderde versie van het besturings systeem (Windows 7, Windows Server 2008 R2 en Windows Server 2008). Klanten die gebruikmaken van een verouderde versie van het besturings systeem, moeten de volgende acties uitvoeren op hun computers vóór 17 augustus 2020 of hun agents stoppen met het verzenden van gegevens naar hun Log Analytics-werk ruimten:
 
 1. Installeer het meest recente Service Pack voor uw besturings systeem. De vereiste Service Pack versies zijn:
     - Windows 7 SP1
@@ -174,7 +174,6 @@ De volgende tabel bevat de proxy-en firewall configuratie-informatie die is vere
 |*.oms.opinsights.azure.com |Poort 443 |Inkomend en uitgaand|Ja |  
 |*.blob.core.windows.net |Poort 443 |Inkomend en uitgaand|Ja |
 |*.azure-automation.net |Poort 443 |Inkomend en uitgaand|Ja |
-|*.azure.com |Poort 443|Inkomend en uitgaand|Ja |
 
 Zie [Azure Government Management](../../azure-government/documentation-government-services-monitoringandmanagement.md#azure-monitor-logs)voor informatie over de firewall die vereist is voor Azure Government. 
 

@@ -7,12 +7,12 @@ ms.service: virtual-machines-linux
 ms.subservice: security
 ms.topic: quickstart
 ms.date: 10/02/2019
-ms.openlocfilehash: 9f09f28dc63e7f061946a66beb59bd4c62be70aa
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 6e32bfdf8c4b2dd7ce61393ab545770cafc73cf5
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "78970560"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82792527"
 ---
 # <a name="quickstart-create-and-encrypt-a-virtual-machine-with-the-azure-portal"></a>Snelstartgids: een virtuele machine maken en versleutelen met de Azure Portal
 
@@ -22,7 +22,7 @@ Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://a
 
 ## <a name="sign-in-to-azure"></a>Aanmelden bij Azure
 
-Meld u aan bij de [Azure-portal](https://portal.azure.com).
+Meld u aan bij [Azure Portal](https://portal.azure.com).
 
 ## <a name="create-a-virtual-machine"></a>Een virtuele machine maken
 
@@ -34,8 +34,19 @@ Meld u aan bij de [Azure-portal](https://portal.azure.com).
 1. Selecteer voor **regio**dezelfde regio die u hebt gebruikt bij het maken van uw sleutel kluis (bijvoorbeeld **VS-Oost**).
 1. Zorg ervoor dat **Size** de grootte *standaard D2s v3*is.
 1. Selecteer **wacht woord**onder **Administrator-account**. Voer een gebruikers naam en wacht woord in.
-    ![Scherm ResourceGroup maken](./media/disk-encryption/portal-qs-vm-creation.png)
-1. Selecteer het tabblad beheer en controleer of u een diagnostische opslag account hebt. Als u geen opslag accounts hebt, selecteert u nieuwe maken, geeft u een naam op voor het nieuwe account en selecteert u ' ![OK ' ResourceGroup-scherm maken](./media/disk-encryption/portal-qs-vm-creation-storage.png)
+
+    :::image type="content" source="./media/disk-encryption/portal-qs-vm-creation.png" alt-text="Scherm ResourceGroup maken":::
+
+
+    > [!WARNING]
+    > Het tabblad schijven bevat een veld versleutelings type onder **schijf opties**. Dit veld wordt gebruikt om versleutelings opties op te geven voor [Managed disks](managed-disks-overview.md) + CMK, niet voor Azure Disk Encryption. 
+    >
+    > Om Verwar ring te voor komen, wordt u aangeraden het tabblad *schijven* helemaal over te slaan en deze zelf studie te volt ooien. 
+
+1. Selecteer het tabblad beheer en controleer of u een diagnostische opslag account hebt. Als u geen opslag accounts hebt, selecteert u nieuwe maken, geeft u het nieuwe account een naam en selecteert u OK.
+
+    :::image type="content" source="./media/disk-encryption/portal-qs-vm-creation-storage.png" alt-text="Scherm ResourceGroup maken":::
+
 1. Klik op ' bekijken + maken '.
 1. Op de pagina **Een virtuele machine maken** ziet u de details van de virtuele machine die u gaat maken. Wanneer u klaar bent, selecteert u **Maken**.
 
@@ -47,19 +58,19 @@ Het duurt een paar minuten voor uw virtuele machine is geïmplementeerd. Wanneer
 1. Selecteer op de zijbalk links de optie **schijven**.
 1. Selecteer op het scherm schijven de optie **versleuteling**. 
 
-    ![schijven en versleutelings selectie](../media/disk-encryption/portal-qs-disks-to-encryption.png)
+    :::image type="content" source="../media/disk-encryption/portal-qs-disks-to-encryption.png" alt-text="schijven en versleutelings selectie":::
 
 1. Kies op het scherm versleuteling onder **schijven die moeten worden versleuteld, het** **besturings systeem en de gegevens schijven**.
 1. Kies onder **versleutelings instellingen** **de optie Selecteer een sleutel kluis en sleutel voor versleuteling**.
 1. Selecteer **nieuwe maken**op het scherm **sleutel selecteren in azure Key Vault** .
 
-    ![schijven en versleutelings selectie](../media/disk-encryption/portal-qs-keyvault-create.png)
+    :::image type="content" source="../media/disk-encryption/portal-qs-keyvault-create.png" alt-text="schijven en versleutelings selectie":::
 
 1. Zorg ervoor dat in het scherm **sleutel kluis maken** de resource groep gelijk is aan die u hebt gebruikt om de virtuele machine te maken.
 1. Geef uw sleutel kluis een naam.  Elke sleutel kluis in azure moet een unieke naam hebben.
 1. Schakel op het tabblad **toegangs beleid** het selectie vakje **Azure Disk Encryption voor volume versleuteling** in.
 
-    ![schijven en versleutelings selectie](../media/disk-encryption/portal-qs-keyvault-enable.png)
+    :::image type="content" source="../media/disk-encryption/portal-qs-keyvault-enable.png" alt-text="schijven en versleutelings selectie":::
 
 1. Selecteer **controleren + maken**.  
 1. Nadat de sleutel kluis validatie heeft door gegeven, selecteert u **maken**. Hiermee keert u terug naar het scherm **sleutel selecteren in azure Key Vault** .

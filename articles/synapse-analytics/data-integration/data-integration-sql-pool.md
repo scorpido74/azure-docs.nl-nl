@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: daperlov
 ms.reviewer: jrasnick
-ms.openlocfilehash: fbd8e03b1f8af7802133c35ae4860116aaea0c3c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ab25b2e300f9fe9b0b1d077a42538c69fa543af2
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81430563"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82982697"
 ---
 # <a name="ingesting-data-into-a-sql-pool"></a>Gegevens opnemen in een SQL-groep
 
@@ -39,7 +39,7 @@ In azure Synapse Analytics is een gekoppelde service waar u de verbindings gegev
 
 ## <a name="create-pipeline"></a>Pijplijn maken
 
-Een pijp lijn bevat de logische stroom voor het uitvoeren van een reeks activiteiten. In deze sectie maakt u een pijp lijn met een Kopieer activiteit waarmee gegevens uit ADLS gen 2 worden opgenomen in een SQL-groep.
+Een pijp lijn bevat de logische stroom voor het uitvoeren van een reeks activiteiten. In deze sectie maakt u een pijp lijn met een Kopieer activiteit waarmee gegevens uit ADLS Gen2 worden opgenomen in een SQL-groep.
 
 1. Ga naar het tabblad **Orchestration** . Klik op het plus pictogram naast de pijp lijnen kop en selecteer **pijp lijn**.
 1. Sleep onder **verplaatsen en transformeren** in het deel venster activiteiten de gegevens naar het pijp lijn papier **kopiëren** .

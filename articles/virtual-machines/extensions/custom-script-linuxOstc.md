@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 08/14/2018
 ms.author: danis
-ms.openlocfilehash: a3eae08510e57227b91deeeb7a7a608a6652cb4a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1ca20f2c8cda84c241391f67ac542faa4a1f5ecd
+ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79535405"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82594709"
 ---
 # <a name="use-the-azure-custom-script-extension-version-1-with-linux-virtual-machines"></a>Gebruik de aangepaste script extensie versie 1 van Azure met virtuele Linux-machines
 
@@ -120,11 +120,11 @@ Deze items moeten worden behandeld als gevoelige gegevens en worden opgegeven in
 
 | Naam | Waarde/voor beeld | Gegevenstype |
 | ---- | ---- | ---- |
-| apiVersion | 2015-06-15 | date |
-| uitgever | Micro soft. OSTCExtensions | tekenreeks |
+| apiVersion | 2015-06-15 | datum |
+| publisher | Micro soft. OSTCExtensions | tekenreeks |
 | type | CustomScriptForLinux | tekenreeks |
 | typeHandlerVersion | 1.5 | int |
-| fileUris (bijvoorbeeld) | https://github.com/MyProject/Archive/MyPythonScript.py | matrix |
+| fileUris (bijvoorbeeld) | `https://github.com/MyProject/Archive/MyPythonScript.py` | matrix |
 | commandToExecute (bijvoorbeeld) | python MyPythonScript.py \<My-param1\> | tekenreeks |
 | enableInternalDNSCheck | waar | booleaans |
 | storageAccountName (bijvoorbeeld) | examplestorageacct | tekenreeks |

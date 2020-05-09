@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 01/24/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: aa0810818bf7cfea21f925ee639b4b5a50dcb23b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d9cf3d739054422d219bb6536129c5eb22a2994a
+ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79246121"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82594879"
 ---
 # <a name="high-availability-for-sap-netweaver-on-azure-vms"></a>Hoge Beschik baarheid voor SAP net-Weaver op Azure-Vm's
 
@@ -452,7 +452,7 @@ Ter vereenvoudiging van de implementatie en configuratie gebruiken we in dit art
 ## <a name="prerequisites"></a><a name="217c5479-5595-4cd8-870d-15ab00d4f84c"></a>Vereisten
 Voordat u begint, moet u ervoor zorgen dat u voldoet aan de vereisten die worden beschreven in de volgende secties. Zorg er ook voor dat alle resources die worden vermeld in de sectie [resources][sap-ha-guide-2] , worden gecontroleerd.
 
-In dit artikel gebruiken we Azure Resource Manager sjablonen voor een [SAP NetWeaver met drie lagen](https://github.com/Azure/azure-quickstart-templates/tree/master/sap-3-tier-marketplace-image/). Zie [SAP Azure Resource Manager-sjablonen](https://blogs.msdn.microsoft.com/saponsqlserver/2016/05/16/azure-quickstart-templates-for-sap/)voor een nuttige overzicht van sjablonen.
+In dit artikel gebruiken we Azure Resource Manager sjablonen voor een [SAP NetWeaver met drie lagen](https://github.com/Azure/azure-quickstart-templates/). Zie [SAP Azure Resource Manager-sjablonen](https://blogs.msdn.microsoft.com/saponsqlserver/2016/05/16/azure-quickstart-templates-for-sap/)voor een nuttige overzicht van sjablonen.
 
 ## <a name="resources"></a><a name="42b8f600-7ba3-4606-b8a5-53c4f026da08"></a>Resources
 Deze artikelen behandelen SAP-implementaties in Azure:
@@ -677,8 +677,8 @@ De sjablonen met drie lagen in Azure Resource Manager bieden ook ondersteuning v
 
 Hier kunt u Azure Resource Manager sjablonen ophalen voor het voorbeeld scenario dat in dit artikel wordt beschreven:
 
-* [Azure Marketplace-installatie kopie](https://github.com/Azure/azure-quickstart-templates/tree/master/sap-3-tier-marketplace-image)  
-* [Aangepaste installatie kopie](https://github.com/Azure/azure-quickstart-templates/tree/master/sap-3-tier-user-image)
+* [Azure Marketplace-installatie kopie](https://github.com/Azure/azure-quickstart-templates/)  
+* [Aangepaste installatie kopie](https://github.com/Azure/azure-quickstart-templates/)
 
 De infra structuur voorbereiden voor de architectuur sjabloon 1:
 
@@ -768,8 +768,8 @@ U kunt deze Azure Resource Manager sjabloon voor SAP gebruiken om de implementat
 
 Hier kunt u Azure Resource Manager sjablonen voor dit implementatie scenario ophalen:
 
-* [Azure Marketplace-installatie kopie](https://github.com/Azure/azure-quickstart-templates/tree/master/sap-3-tier-marketplace-image-converged)  
-* [Aangepaste installatie kopie](https://github.com/Azure/azure-quickstart-templates/tree/master/sap-3-tier-user-image-converged)
+* [Azure Marketplace-installatie kopie](https://github.com/Azure/azure-quickstart-templates/)  
+* [Aangepaste installatie kopie](https://github.com/Azure/azure-quickstart-templates/)
 
 
 ### <a name="prepare-the-infrastructure-for-architectural-template-3"></a>De infra structuur voorbereiden voor de architectuur sjabloon 3

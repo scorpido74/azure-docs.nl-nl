@@ -1,26 +1,26 @@
 ---
-title: Api's voor SaaS-uitvoering-Veelgestelde vragen | Azure Marketplace
-description: Ervaringen voor detectie en aankopen door de klanten van een SaaS-aanbieding op de Azure Marketplace.
+title: Veelgestelde vragen over SaaS-fulfillment-micro soft Commercial Marketplace
+description: Meer informatie over een aantal integratie vereisten voor de micro soft Commercial Marketplace, waarmee Azure-klanten zich kunnen abonneren op SaaS-aanbiedingen.
 author: dsindona
 ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 07/11/2019
-ms.openlocfilehash: 6d3a84341d5221950da20f39456461dafc5d2e75
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1a1ba6f393eba257fcbe2757b8b4bced00bef8fe
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80275693"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82792901"
 ---
-# <a name="saas-fulfillment-apis---faq"></a>SaaS-uitvoerings-API's - Veelgestelde vragen
+# <a name="common-questions-about-saas-fulfillment-apis"></a>Veelgestelde vragen over Api's voor SaaS-uitvoering
 
-De integratie vereisten met Azure Marketplace, waarmee Azure-klanten zich kunnen abonneren op de SaaS-aanbieding, worden weer gegeven.
+In dit artikel wordt een aantal integratie vereisten voor de micro soft Commercial Marketplace beschreven, waarmee Azure-klanten zich kunnen abonneren op SaaS-aanbiedingen.
 
 ## <a name="discovery-experience"></a>Detectie-ervaring
 
-Zodra de aanbieding is gepubliceerd, kunnen Azure-gebruikers de SaaS-aanbieding in azure Marketplace ontdekken. Uw klanten kunnen aanbiedingen filteren op basis van product type (SaaS) en de SaaS-services ontdekken waar ze mee geïnteresseerd zijn.
+Zodra een SaaS-aanbieding is gepubliceerd, kunnen Azure-gebruikers deze in azure Marketplace ontdekken. Uw klanten kunnen aanbiedingen filteren op basis van product type (SaaS) en de SaaS-services ontdekken waar ze geïnteresseerd zijn.
 
 ## <a name="purchase-experience"></a>Ervaring kopen
 
@@ -30,7 +30,7 @@ Zodra een gebruiker is geïnteresseerd in een specifieke SaaS-service, kan de ge
 
 Dit betekent dat een gebruiker de gebruiksrecht overeenkomst en privacyverklaring kan bekijken die is gekoppeld aan de SaaS-service en ermee akkoord gaat om deze te betalen volgens de door u ingestelde facturerings voorwaarden, de uitgever van de SaaS-aanbieding op de factuur van micro soft. Gebruikers kunnen hun bestaande betalings profiel in azure gebruiken om te betalen voor het SaaS-service verbruik.
 
-Dit kan een groot aantal redenen zijn. Klanten kunnen nu op één plek ontdekken en zich abonneren met Microsoft Cloud platform als een vertrouwde bron, zonder dat ze elke ISV-Software moeten gebruiken die ze nodig hebben. Klanten kunnen ook hun bestaande betalings profiel gebruiken zonder dat ze expliciet afzonderlijke ISV-software hoeven te betalen.
+Deze mogelijkheid is op verschillende manieren nuttig. Klanten kunnen nu op één plek ontdekken en zich abonneren met Microsoft Cloud platform als een vertrouwde bron, zonder dat ze elke ISV-Software moeten gebruiken die ze nodig hebben. Klanten kunnen ook hun bestaande betalings profiel gebruiken zonder dat ze expliciet afzonderlijke ISV-software hoeven te betalen.
 
 ### <a name="is-the-user-charged-automatically-when-the-offer-is-subscribed"></a>Worden de gebruikers automatisch in rekening gebracht wanneer de aanbieding is geabonneerd?
 
@@ -38,15 +38,15 @@ Tijdens het abonneren op de SaaS-aanbieding heeft de gebruiker besloten om te be
 
 ### <a name="how-are-you-notified-when-a-user-subscribes-to-your-saas-offer"></a>Hoe wordt u gewaarschuwd wanneer een gebruiker zich abonneert op uw SaaS-aanbieding?
 
-Nadat u zich hebt geabonneerd op een aanbieding, kan de Azure-gebruiker al hun aanbiedingen in azure detecteren en beheren. Standaard is de status van een nieuw geabonneerde SaaS **-aanbieding ' inrichting, in behandeling '**. In deze status wordt de Azure-gebruiker gevraagd om een actie te **' account configureren '** om te bladeren naar de beheer ervaring van het SaaS-abonnement in de Azure Portal.
+Nadat u zich hebt geabonneerd op een aanbieding, kan de Azure-gebruiker al hun aanbiedingen in azure detecteren en beheren. Standaard wordt de status van een nieuw geabonneerde SaaS-aanbieding weer gegeven als **inrichting, in afwachting**van de uitvoering. In deze status wordt de Azure-gebruiker gevraagd om het **account te configureren**, om te bladeren naar de beheer ervaring van het SaaS-abonnement in de Azure Portal.
 
-Wanneer de gebruiker op **account configureren**klikt, wordt deze omgeleid naar de website van de SaaS-service. De URL waarnaar ze worden genavigeerd, wordt geboden door de uitgever op het moment dat de aanbieding wordt gepubliceerd. Deze pagina wordt de landings pagina van de uitgever genoemd. Azure-gebruikers moeten zich kunnen aanmelden bij de SaaS-landings pagina op basis van hun bestaande AAD-referenties in Azure.
+Wanneer de gebruiker **account configureren**selecteert, wordt deze omgeleid naar de website van de SaaS-service. De uitgever heeft de URL geconfigureerd op het moment van publicatie van de aanbieding. Deze pagina wordt de landings pagina van de uitgever genoemd. Azure-gebruikers melden zich aan bij de SaaS-landings pagina op basis van hun bestaande AAD-referenties in Azure.
 
 Wanneer de Azure-gebruiker wordt omgeleid naar de landings pagina, wordt een token toegevoegd aan de query-URL. Dit token is korte tijd en geldig voor een tijds duur van 24 uur. U kunt vervolgens de aanwezigheid van dit token detecteren en de API van micro soft aanroepen om meer context te verkrijgen die aan het token is gekoppeld.
 
 ![Abonnements stroom van de klant](media/saas-metering-service-integration-flow-a.png)
 
-Zie het document [SaaS fulfillment API](https://docs.microsoft.com/azure/marketplace/partner-center-portal/pc-saas-fulfillment-api-v2) voor meer informatie over het API-contract voor het verwerken van Transact-scenario's in de levens cyclus van een SaaS-aanbieding.
+Zie [SaaS fulfillment API](https://docs.microsoft.com/azure/marketplace/partner-center-portal/pc-saas-fulfillment-api-v2)voor meer informatie over het API-contract voor het verwerken van Transact-scenario's in de levens cyclus van een SaaS-aanbieding.
 
 ### <a name="how-do-you-know-the-saas-offer-to-which-the-user-subscribes-in-azure"></a>Hoe weet u wat de SaaS-aanbieding is waarmee de gebruiker zich abonneert in azure?
 
@@ -56,7 +56,7 @@ De reactie op de `Resolve` API omvat de aanbieding en plan informatie die is gek
 
 * De Azure-gebruiker kan het abonnement dat is gekoppeld aan het SaaS-abonnement rechtstreeks wijzigen in de SaaS-ervaring of via het micro soft-platform.
 
-* Conversies kunnen op elk gewenst moment worden uitgevoerd in de facturerings cyclus. U moet een conversie bevestigen, die wordt uitgevoerd wanneer deze eenmaal is bevestigd.
+* Conversies kunnen op elk gewenst moment worden uitgevoerd in de facturerings cyclus. U wordt gevraagd om eventuele conversie te bevestigen. deze wordt van kracht zodra deze wordt bevestigd.
 
 * Tarieven voor het vooraf betaalde abonnement (**maandelijks** of **jaarlijks**) zijn Pro-beoordeeld. Alle overschrijding die tot de tijd van de conversie worden verzonden, worden in de volgende factuur in rekening gebracht. Nieuwe overschotten worden verzonden op basis van het nieuwe abonnement.
 
@@ -85,4 +85,4 @@ In de onderstaande volg orde wordt de stroom vastgelegd wanneer de Azure-gebruik
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Zie [api's voor Marketplace metering service](./marketplace-metering-service-apis.md) voor meer informatie.
+[Service-API's voor Marketplace-meting](./marketplace-metering-service-apis.md)

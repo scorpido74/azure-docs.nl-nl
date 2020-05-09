@@ -2,26 +2,21 @@
 title: Nagaan wanneer een specifieke gebruiker toegang kan krijgen tot een app
 description: Nagaan of een belang rijke gebruiker toegang heeft tot een toepassing die u hebt geconfigureerd voor het inrichten van gebruikers met Azure AD
 services: active-directory
-documentationcenter: ''
 author: msmimart
 manager: CelesteDG
-ms.assetid: ''
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/03/2019
 ms.author: mimart
 ms.reviewer: arvinh
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 48370e2806b70d550bce95ceff3857a79561f247
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9d976785340e1a032aa4484dd2e8fd6cb2915129
+ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79264139"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82593910"
 ---
 # <a name="check-the-status-of-user-provisioning"></a>De status van het inrichten van gebruikers controleren
 
@@ -35,7 +30,7 @@ Wanneer u voor het eerst automatische inrichting configureert, ziet u in de sect
 - Het type inrichtings cyclus (eerste of incrementeel) dat momenteel wordt uitgevoerd of de laatste keer is voltooid.
 - Een **voortgangs balk** met het percentage van de inrichtings cyclus dat is voltooid. Het percentage weerspiegelt het aantal pagina's dat is ingericht. Houd er rekening mee dat elke pagina meerdere gebruikers of groepen kan bevatten, zodat het percentage niet rechtstreeks overeenkomt met het aantal gebruikers, groepen of rollen dat is ingericht.
 - Een knop voor **vernieuwen** die u kunt gebruiken om de weer gave bijgewerkt te laten worden.
-- Het aantal **gebruikers** en **groepen** in het gegevens archief van de connector. De telling neemt toe wanneer een object wordt toegevoegd aan het bereik van de inrichting. Het aantal wordt niet weer gegeven als een gebruiker zacht wordt verwijderd of permanent wordt verwijderd omdat hiermee het object niet uit de gegevens opslag van de connector wordt verwijderd. Het aantal wordt recaculated de eerste synchronisatie nadat de CD'S opnieuw zijn [ingesteld](https://docs.microsoft.com/graph/api/synchronization-synchronizationjob-restart?view=graph-rest-beta&tabs=http) 
+- Het aantal **gebruikers** en **groepen** in het gegevens archief van de connector. De telling neemt toe wanneer een object wordt toegevoegd aan het bereik van de inrichting. Het aantal wordt niet weer gegeven als een gebruiker zacht wordt verwijderd of permanent wordt verwijderd omdat hiermee het object niet uit de gegevens opslag van de connector wordt verwijderd. De telling wordt opnieuw berekend op de eerste synchronisatie nadat de CD'S [opnieuw zijn ingesteld](https://docs.microsoft.com/graph/api/synchronization-synchronizationjob-restart?view=graph-rest-beta&tabs=http) 
 - Een koppeling **voor controle logboeken weer geven** waarmee de Azure AD-inrichtings logboeken worden geopend voor meer informatie over alle bewerkingen die worden uitgevoerd door de gebruikers Provisioning Service, inclusief de inrichtings status voor afzonderlijke gebruikers (Zie de sectie [inrichtings Logboeken gebruiken](#use-provisioning-logs-to-check-a-users-provisioning-status) ).
 
 Nadat een inrichtings cyclus is voltooid, toont de sectie **statistieken tot datum** de cumulatieve aantallen gebruikers en groepen die zijn ingericht tot datum, samen met de voltooiings datum en duur van de laatste cyclus. Met de **activiteit-ID** wordt de meest recente inrichtings cyclus uniek geïdentificeerd. De **taak-id** is een unieke id voor de inrichtings taak en is specifiek voor de app in uw Tenant.

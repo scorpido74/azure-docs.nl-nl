@@ -13,12 +13,12 @@ ms.author: ajburnle
 ms.reviewer: elkuzmen
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: de91bd7e1e4c5f9909213f663dd3ede0f979d4de
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 69c96d123ebe97ba4a7a6df0395efe698924fef1
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79262150"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82734736"
 ---
 # <a name="add-your-custom-domain-name-using-the-azure-active-directory-portal"></a>Uw aangepaste domein naam toevoegen met behulp van de Azure Active Directory Portal
 
@@ -37,7 +37,7 @@ Maak een nieuwe map door de stappen in [een nieuwe Tenant voor uw organisatie ma
 >[!IMPORTANT]
 >De persoon die de Tenant maakt, wordt automatisch de globale beheerder voor die Tenant. De globale beheerder kan extra beheerders toevoegen aan de Tenant.
 
-Zie [Azure RBAC-rollen](../../role-based-access-control/rbac-and-directory-admin-roles.md#azure-rbac-roles)voor meer informatie over abonnements rollen.
+Zie [Azure roles](../../role-based-access-control/rbac-and-directory-admin-roles.md#azure-roles)(Engelstalig) voor meer informatie over abonnements rollen.
 
 >[!TIP]
 > Als u van plan bent om uw on-premises Windows Server AD te hosten met Azure AD, moet u de optie **Ik wil dit domein configureren voor eenmalige aanmelding met mijn lokale Active Directory** wanneer u het Azure AD Connect-hulp programma uitvoert om uw mappen te synchroniseren.

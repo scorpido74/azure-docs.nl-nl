@@ -3,12 +3,12 @@ title: Rolling over een Azure Service Fabric-cluster certificaat
 description: Meer informatie over het oprollen van een Service Fabric cluster certificaat dat wordt geïdentificeerd door de algemene naam van het certificaat.
 ms.topic: conceptual
 ms.date: 09/06/2019
-ms.openlocfilehash: 94cc6841886b1b0eb4271ac0f727a2e3561e0081
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7a5fe2a7f2a05295605ef0e1d5db321a83b96712
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75451963"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82611905"
 ---
 # <a name="manually-roll-over-a-service-fabric-cluster-certificate"></a>Hand matig overschakelen op een Service Fabric cluster certificaat
 Wanneer een Service Fabric cluster certificaat bijna verloopt, moet u het certificaat bijwerken.  Certificaat overschakeling is eenvoudig als het cluster is ingesteld op het [gebruik van certificaten op basis van algemene naam](service-fabric-cluster-change-cert-thumbprint-to-cn.md) (in plaats van een vinger afdruk).  Vraag een nieuw certificaat aan bij een certificerings instantie met een nieuwe verval datum.  Zelfondertekende certificaten bieden geen ondersteuning voor productie Service Fabric clusters, om certificaten op te nemen die zijn gegenereerd tijdens de werk stroom voor het maken van een Azure Portal cluster. Het nieuwe certificaat moet dezelfde algemene naam hebben als het oudere certificaat. 
@@ -64,7 +64,7 @@ $certConfig = New-AzVmssVaultCertificateConfig -CertificateUrl $CertificateURL -
 $vmss = Get-AzVmss -ResourceGroupName $VmssResourceGroupName -VMScaleSetName $VmssName
 
 # Add new secret to the VM scale set.
-$vmss = Add-AzVmssSecret -VirtualMachineScaleSet $vmss -SourceVaultId $SourceVault -VaultCertificate $certConfig
+$vmss.VirtualMachineProfile.OsProfile.Secrets[0].VaultCertificates.Add($newVaultCertificate)
 
 # Update the VM scale set 
 Update-AzVmss -ResourceGroupName $VmssResourceGroupName -Name $VmssName -VirtualMachineScaleSet $vmss  -Verbose

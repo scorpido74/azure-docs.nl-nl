@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: seoapr2020
 ms.date: 04/17/2020
-ms.openlocfilehash: c65e3ad7ed02ddd4e6ed1d60628a738d333e9a9c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: eaf51f6778d38d236808c3fd809082bc3b2d54b2
+ms.sourcegitcommit: 602e6db62069d568a91981a1117244ffd757f1c2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82189378"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82863430"
 ---
 # <a name="configure-outbound-network-traffic-for-azure-hdinsight-clusters-using-firewall"></a>Uitgaand netwerk verkeer voor Azure HDInsight-clusters configureren met behulp van Firewall
 
@@ -65,7 +65,7 @@ Maak een toepassings regel verzameling waarmee het cluster belang rijke communic
     |---|---|
     |Naam| FwAppRule|
     |Prioriteit|200|
-    |Bewerking|Toestaan|
+    |Actie|Toestaan|
 
     **Sectie FQDN-Tags**
 
@@ -99,7 +99,7 @@ Maak de netwerk regels om uw HDInsight-cluster correct te configureren.
     |---|---|
     |Naam| FwNetRule|
     |Prioriteit|200|
-    |Bewerking|Toestaan|
+    |Actie|Toestaan|
 
     **Sectie IP-adressen**
 
@@ -140,12 +140,12 @@ Gebruik bijvoorbeeld de volgende stappen om de route tabel te configureren voor 
 
 | Routenaam | Adresvoorvoegsel | Volgend hoptype | Adres van de volgende hop |
 |---|---|---|---|
-| 168.61.49.99 | 168.61.49.99/32 | Internet | N.v.t. |
-| 23.99.5.239 | 23.99.5.239/32 | Internet | N.v.t. |
-| 168.61.48.131 | 168.61.48.131/32 | Internet | N.v.t. |
-| 138.91.141.162 | 138.91.141.162/32 | Internet | N.v.t. |
-| 13.82.225.233 | 13.82.225.233/32 | Internet | N.v.t. |
-| 40.71.175.99 | 40.71.175.99/32 | Internet | N.v.t. |
+| 168.61.49.99 | 168.61.49.99/32 | Internet | NA |
+| 23.99.5.239 | 23.99.5.239/32 | Internet | NA |
+| 168.61.48.131 | 168.61.48.131/32 | Internet | NA |
+| 138.91.141.162 | 138.91.141.162/32 | Internet | NA |
+| 13.82.225.233 | 13.82.225.233/32 | Internet | NA |
+| 40.71.175.99 | 40.71.175.99/32 | Internet | NA |
 | 0.0.0.0 | 0.0.0.0/0 | Virtueel apparaat | 10.0.2.4 |
 
 De configuratie van de route tabel volt ooien:
@@ -188,61 +188,7 @@ Nadat de firewall is ingesteld, kunt u het interne eind punt (`https://CLUSTERNA
 
 Als u het open bare eind`https://CLUSTERNAME.azurehdinsight.net`punt () of SSH`CLUSTERNAME-ssh.azurehdinsight.net`-eind punt () wilt gebruiken, moet u ervoor zorgen dat u de juiste routes in de tabel route en NSG hebt om te voor komen dat het asymmetrische routerings probleem [hier](../firewall/integrate-lb.md)wordt uitgelegd. In dit geval moet u het IP-adres van de client in de regels voor binnenkomende NSG toestaan en dit ook toevoegen aan de door de gebruiker gedefinieerde route tabel waarbij de volgende hop `internet`is ingesteld als. Als de route ring niet op de juiste wijze is ingesteld, ziet u een time-outfout.
 
-## <a name="configure-another-network-virtual-appliance"></a>Een ander virtueel netwerk apparaat configureren
-
-> [!Important]
-> De volgende informatie is **alleen** vereist als u een andere virtuele netwerk apparaten (NVA) dan Azure firewall wilt configureren.
-
-Met de vorige instructies kunt u Azure Firewall configureren voor het beperken van uitgaand verkeer van uw HDInsight-cluster. Azure Firewall wordt automatisch geconfigureerd om verkeer toe te staan voor veel van de algemene belang rijke scenario's. Als u een ander virtueel netwerk apparaat wilt gebruiken, moet u een aantal extra functies configureren. Houd rekening met de volgende factoren wanneer u uw virtuele netwerk apparaat configureert:
-
-* Services die geschikt zijn voor service-eind punten moeten worden geconfigureerd met Service-eind punten.
-* Afhankelijkheden van IP-adressen zijn voor niet-HTTP/S-verkeer (TCP-en UDP-verkeer).
-* FQDN HTTP/HTTPS-eind punten kunnen worden geplaatst op uw NVA-apparaat.
-* Joker teken-HTTP/HTTPS-eind punten zijn afhankelijkheden die kunnen variëren op basis van een aantal kwalificaties.
-* Wijs de route tabel toe die u hebt gemaakt voor uw HDInsight-subnet.
-
-### <a name="service-endpoint-capable-dependencies"></a>Afhankelijkheden voor service-eind punten
-
-| **Endpoints** |
-|---|
-| Azure SQL |
-| Azure Storage |
-| Azure Active Directory |
-
-#### <a name="ip-address-dependencies"></a>Afhankelijkheden van IP-adressen
-
-| **Endpoints** | **Nadere** |
-|---|---|
-| \*: 123 | NTP-klok controle. Verkeer wordt gecontroleerd op meerdere eind punten op poort 123 |
-| [Hier](hdinsight-management-ip-addresses.md) gepubliceerde ip's | Deze IP-adressen zijn HDInsight-service |
-| Privé-IP-adressen van AAD-DS voor ESP-clusters |
-| \*: 16800 voor KMS Windows-activering |
-| \*12000 voor Log Analytics |
-
-#### <a name="fqdn-httphttps-dependencies"></a>FQDN HTTP/HTTPS-afhankelijkheden
-
-> [!Important]
-> De onderstaande lijst bevat alleen enkele van de belangrijkste FQDN-namen. U kunt aanvullende FQDN-namen (voornamelijk Azure Storage en Azure Service Bus) verkrijgen voor het configureren [van uw NVA in dit bestand](https://github.com/Azure-Samples/hdinsight-fqdn-lists/blob/master/HDInsightFQDNTags.json).
-
-| **Endpoints**                                                          |
-|---|
-| azure.archive.ubuntu.com:80                                           |
-| security.ubuntu.com:80                                                |
-| ocsp.msocsp.com:80                                                    |
-| ocsp.digicert.com:80                                                  |
-| wawsinfraprodbay063.blob.core.windows.net:443                         |
-| registry-1.docker.io:443                                              |
-| auth.docker.io:443                                                    |
-| production.cloudflare.docker.com:443                                  |
-| download.docker.com:443                                               |
-| us.archive.ubuntu.com:80                                              |
-| download.mono-project.com:80                                          |
-| packages.treasuredata.com:80                                          |
-| security.ubuntu.com:80                                                |
-| azure.archive.ubuntu.com:80                                           |
-| ocsp.msocsp.com:80                                                    |
-| ocsp.digicert.com:80                                                  |
-
 ## <a name="next-steps"></a>Volgende stappen
 
 * [Azure HDInsight Virtual Network-architectuur](hdinsight-virtual-network-architecture.md)
+* [Virtueel netwerk apparaat configureren](./network-virtual-appliance.md)

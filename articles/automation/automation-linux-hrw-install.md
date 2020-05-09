@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 03/02/2020
 ms.topic: conceptual
-ms.openlocfilehash: 38e9134fdd6fb922fd9ed6efa9aa258a77487013
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
-ms.translationtype: HT
+ms.openlocfilehash: 82f6d9e56e5d5745077ef512cb3392c16b95961f
+ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82787563"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82872178"
 ---
 # <a name="deploy-a-linux-hybrid-runbook-worker"></a>Een Linux-Hybrid Runbook Worker implementeren
 
@@ -73,6 +73,9 @@ De minimale vereisten voor een Linux-Hybrid Runbook Worker zijn:
 Als u een Hybrid Runbook Worker op uw Linux-computer wilt installeren en configureren, volgt u een eenvoudig hand matig proces. Hiervoor moet u de Automatisering-Hybrid Worker oplossing inschakelen in uw Azure Log Analytics-werk ruimte en vervolgens een reeks opdrachten uitvoeren om de computer als een werk nemer te registreren en toe te voegen aan een groep.
 
 Voordat u verder gaat, moet u de Log Analytics-werk ruimte zien waaraan uw Automation-account is gekoppeld. Let ook op de primaire sleutel voor uw Automation-account. U kunt beide van de Azure Portal vinden door uw Automation-account te selecteren, **werk ruimte** te selecteren voor de werk ruimte-id en **sleutels** te selecteren voor de primaire sleutel. Zie [uw netwerk configureren](automation-hybrid-runbook-worker.md#network-planning)voor meer informatie over de poorten en adressen die u nodig hebt voor de Hybrid Runbook Worker.
+
+>[!NOTE]
+> Het [nxautomation-account](automation-runbook-execution.md#log-analytics-agent-for-linux) met de bijbehorende sudo-machtigingen moet aanwezig zijn tijdens de installatie van de Linux-Hybrid Worker. Als u de werk nemer probeert te installeren en het account niet aanwezig is of niet de juiste machtigingen heeft, mislukt de installatie.
 
 1. Gebruik een van de volgende methoden om de Automatisering-Hybrid Worker-oplossing in Azure in te scha kelen:
 
