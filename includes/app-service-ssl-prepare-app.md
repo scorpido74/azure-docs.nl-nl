@@ -1,6 +1,6 @@
 ---
-title: bestand opnemen
-description: bestand opnemen
+title: Include-bestand
+description: Include-bestand
 services: app-service
 author: cephalin
 ms.service: app-service
@@ -21,7 +21,7 @@ Als u aangepaste beveiligings bindingen wilt maken of client certificaten wilt i
 
 ### <a name="sign-in-to-azure"></a>Aanmelden bij Azure
 
-Open de [Azure Portal](https://portal.azure.com).
+Open [Azure Portal](https://portal.azure.com).
 
 ### <a name="navigate-to-your-web-app"></a>Navigeer naar uw web-app
 

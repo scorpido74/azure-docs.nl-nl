@@ -11,12 +11,12 @@ author: jaszymas
 ms.author: jaszymas
 ms.reviewer: vanto, carlrab, emlisa
 ms.date: 05/14/2019
-ms.openlocfilehash: 1d08770d81ade2d976142b2ce1fd94dae044cf32
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: HT
+ms.openlocfilehash: 7feb6282f3a3551e08d1bb8db2cf6ad2fcd754a8
+ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81461392"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82626153"
 ---
 # <a name="an-overview-of-azure-sql-database-security-capabilities"></a>Een overzicht van Azure SQL Database beveiligings mogelijkheden
 
@@ -30,7 +30,7 @@ Microsoft Azure SQL Database biedt een relationele database service voor Cloud-e
 
 ### <a name="ip-firewall-rules"></a>IP-firewall regels
 
-IP-firewall regels verlenen toegang tot data bases op basis van het oorspronkelijke IP-adres van elke aanvraag. Zie [overzicht van Azure SQL database en SQL Data Warehouse firewall regels](sql-database-firewall-configure.md)voor meer informatie.
+IP-firewall regels verlenen toegang tot data bases op basis van het oorspronkelijke IP-adres van elke aanvraag. Zie [overzicht van de firewall regels voor Azure SQL database en Azure Synapse Analytics](sql-database-firewall-configure.md)voor meer informatie.
 
 ### <a name="virtual-network-firewall-rules"></a>Firewallregels voor virtueel netwerk
 
@@ -56,7 +56,7 @@ Verificatie is het proces waarbij de gebruiker wordt geclaimd. Azure SQL Databas
 
 - **Azure Active Directory-verificatie**:
 
-    Azure Active Directory-verificatie is een mechanisme om verbinding te maken met [Azure SQL database](sql-database-technical-overview.md) en [SQL Data Warehouse](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md) met behulp van identiteiten in azure Active Directory (Azure AD). Met Azure AD-verificatie kunnen beheerders de identiteiten en machtigingen van database gebruikers centraal beheren, samen met andere micro soft-Services op één centrale locatie. Dit omvat de minimale wacht woord opslag en maakt beleid voor gecentraliseerde wachtwoord rotatie mogelijk.
+    Azure Active Directory-verificatie is een mechanisme om verbinding te maken met [Azure SQL database](sql-database-technical-overview.md) en [Azure Synapse Analytics](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md) met behulp van identiteiten in azure Active Directory (Azure AD). Met Azure AD-verificatie kunnen beheerders de identiteiten en machtigingen van database gebruikers centraal beheren, samen met andere micro soft-Services op één centrale locatie. Dit omvat de minimale wacht woord opslag en maakt beleid voor gecentraliseerde wachtwoord rotatie mogelijk.
 
      Een server beheerder met de naam **Active Directory beheerder** moet worden gemaakt voor het gebruik van Azure AD-verificatie met SQL database. Zie [verbinding maken met SQL database met behulp van Azure Active Directory-verificatie](sql-database-aad-authentication.md)voor meer informatie. Azure AD-verificatie ondersteunt zowel beheerde als federatieve accounts. De federatieve accounts ondersteunen Windows-gebruikers en-groepen voor een klant domein Federated met Azure AD.
 
@@ -97,7 +97,7 @@ Geavanceerde beveiliging tegen bedreigingen is het analyseren van uw SQL Server 
 
 SQL Database klant gegevens beveiligen door gegevens in beweging te versleutelen met [Transport Layer Security](https://support.microsoft.com/help/3135244/tls-1-2-support-for-microsoft-sql-server).
 
-SQL Server dwingt te allen tijde versleuteling (SSL/TLS) af voor alle verbindingen. Dit zorgt ervoor dat alle gegevens in transit tussen de client en server worden versleuteld, ongeacht de instelling van **versleutelen** of **TrustServerCertificate** in de Connection String.
+SQL Server dwingt te allen tijde Encryption (TLS) af voor alle verbindingen. Dit zorgt ervoor dat alle gegevens in transit tussen de client en server worden versleuteld, ongeacht de instelling van **versleutelen** of **TrustServerCertificate** in de Connection String.
 
 Als best practice kunt u het beste een versleutelde verbinding opgeven in de connection string van uw toepassing en het server certificaat _**niet**_ vertrouwen. Dit dwingt uw toepassing af om het server certificaat te verifiëren en zorgt er daarom voor dat uw toepassing kwetsbaar is voor man in het middelste type aanvallen.
 
