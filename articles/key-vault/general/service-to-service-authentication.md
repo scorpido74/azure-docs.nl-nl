@@ -10,12 +10,12 @@ ms.date: 08/28/2019
 ms.topic: conceptual
 ms.service: key-vault
 ms.subservice: general
-ms.openlocfilehash: cd630acfd65f0a79c186ba35bc15627bf7ccfdbe
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 84cf12aa91de72ae54e63f2cfe7a61586b6bf457
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81686195"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82857079"
 ---
 # <a name="service-to-service-authentication-to-azure-key-vault-using-net"></a>Service-naar-service-verificatie voor het Azure Key Vault met behulp van .NET
 
@@ -272,7 +272,7 @@ Stel met behulp van Azure CLI het standaard abonnement in op een met het account
 
 #### <a name="unauthorized-access-access-denied-forbidden-or-similar-error"></a>Onbevoegde toegang, toegang geweigerd, verboden of soort gelijke fout
 
-De gebruikte principal heeft geen toegang tot de resource waartoe deze toegang probeert te krijgen. Verleen uw gebruikers account of het MSI-bestand van de App Service de toegang tot een bron. Welk exemplaar is afhankelijk van het feit of u het voor beeld uitvoert op uw lokale computer of in azure hebt geïmplementeerd op uw App Service. Sommige resources, zoals sleutel kluizen, hebben ook een eigen [toegangs beleid](https://docs.microsoft.com/azure/key-vault/secure-your-key-vault#data-plane-and-access-policies) dat u kunt gebruiken om toegang te verlenen tot principals, zoals gebruikers, apps en groepen.
+De gebruikte principal heeft geen toegang tot de resource waartoe deze toegang probeert te krijgen. Verleen uw gebruikers account of het MSI-bestand van de App Service de toegang tot een bron. Welk exemplaar is afhankelijk van het feit of u het voor beeld uitvoert op uw lokale computer of in azure hebt geïmplementeerd op uw App Service. Sommige resources, zoals sleutel kluizen, hebben ook een eigen [toegangs beleid](https://docs.microsoft.com/azure/key-vault/general/secure-your-key-vault#data-plane-and-access-policies) dat u kunt gebruiken om toegang te verlenen tot principals, zoals gebruikers, apps en groepen.
 
 ### <a name="common-issues-when-deployed-to-azure-app-service"></a>Veelvoorkomende problemen bij de implementatie van Azure App Service
 

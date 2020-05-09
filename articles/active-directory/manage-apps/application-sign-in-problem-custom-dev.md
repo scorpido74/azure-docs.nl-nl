@@ -16,12 +16,12 @@ ms.date: 07/11/2017
 ms.author: mimart
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b8ad2499aea8bf4e41ca00d6c78d76e112f0493e
-ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
+ms.openlocfilehash: 01a424129abf88c18500c96bd1889fc6dcce2ec6
+ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/26/2020
-ms.locfileid: "65825241"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82890708"
 ---
 # <a name="problems-signing-in-to-a-custom-developed-application"></a>Problemen bij het aanmelden bij een aangepaste toepassing
 
@@ -41,6 +41,6 @@ Er zijn verschillende fouten die ertoe kunnen leiden dat u zich niet kunt aanmel
 
 [Apps goed keuren en integreren in azure AD](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications)<br>
 
-[Toestemming en machtiging voor Azure AD v 2.0 geconvergeerde apps](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-scopes)<br>
+[Machtigingen en toestemming in het micro soft Identity platform-eind punt](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-scopes)<br>
 
 [Azure AD stack overflow](https://stackoverflow.com/questions/tagged/azure-active-directory>)

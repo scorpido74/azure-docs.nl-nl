@@ -3,12 +3,12 @@ title: Ondersteuning voor het verplaatsen van bewerkingen per resource type
 description: Een lijst met de Azure-resource typen die kunnen worden verplaatst naar een nieuwe resource groep of een nieuw abonnement.
 ms.topic: conceptual
 ms.date: 04/06/2020
-ms.openlocfilehash: a92da04f5b883661d53fd291dc72351a1c4eafb1
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
-ms.translationtype: HT
+ms.openlocfilehash: 45450b21b1cd3236712043629f433c2c5fe20f80
+ms.sourcegitcommit: 0fda81f271f1a668ed28c55dcc2d0ba2bb417edd
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82610833"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82900982"
 ---
 # <a name="move-operation-support-for-resources"></a>Ondersteuning voor het verplaatsen van resources
 Dit artikel geeft een overzicht van de vraag of een Azure-resource type de verplaatsings bewerking ondersteunt. Het bevat ook informatie over speciale voor waarden die u moet overwegen bij het verplaatsen van een resource.
@@ -1253,6 +1253,9 @@ Ga naar de naam ruimte van een resource provider:
 
 > [!IMPORTANT]
 > Zorg ervoor dat het verplaatsen naar een nieuw abonnement geen [abonnements quota's](azure-subscription-service-limits.md#azure-monitor-limits)overschrijdt.
+
+> [!IMPORTANT]
+> U kunt geen werk ruimten verplaatsen die een gekoppeld Automation-account hebben. Zorg ervoor dat u alle Automation-accounts ontkoppelt voordat u begint met een Verplaats bewerking.   
 
 ## <a name="microsoftoperationsmanagement"></a>Microsoft.OperationsManagement
 

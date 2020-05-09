@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/17/2017
 ms.author: rasquill
 ms.custom: mvc
-ms.openlocfilehash: 2af20a1ddf4239b7eec6cceabf2ff9711959c128
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: dfdf6e1f8edfb4dafaf93e62090ed51878f9b2aa
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77189116"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82734821"
 ---
 # <a name="deprecated-canary-release-microservices-with-vamp-on-an-azure-container-service-dcos-cluster"></a>KEUR Micro services van de Canarische release met een versie van een Azure Container Service DC/OS-cluster
 
@@ -129,11 +129,11 @@ Nu u hebt gemaakt, kunt u een service van een blauw druk implementeren.
 
 In de meest eenvoudige vorm van een standaard [blauw druk](https://docs.vamp.io/how-vamp-works/vamp-and-kubernetes#vamp-deployments) worden de eind punten (gateways), clusters en services beschreven die moeten worden geïmplementeerd. Er worden clusters gebruikt om verschillende varianten van dezelfde service te groeperen in logische groepen voor het vrijgeven van een groot aantal of A/B-tests.  
 
-In dit scenario wordt gebruikgemaakt van een voor beeld van een monolithische-toepassing met de naam [**Sava**](https://github.com/magneticio/sava), die op versie 1,0 is. De op is verpakt in een docker-container, die zich in docker hub onder magneticio/Sava: 1.0.0 bevindt. De app wordt normaal gesp roken uitgevoerd op poort 8080, maar u wilt deze beschikbaar maken onder poort 9050 in dit geval. Implementeer de app met behulp van een eenvoudige blauw druk.
+In dit scenario wordt gebruikgemaakt van een voor beeld van een monolithische-toepassing met de naam [**Sava**](https://github.com/magneticio/sava-product), die op versie 1,0 is. De op is verpakt in een docker-container, die zich in docker hub onder magneticio/Sava: 1.0.0 bevindt. De app wordt normaal gesp roken uitgevoerd op poort 8080, maar u wilt deze beschikbaar maken onder poort 9050 in dit geval. Implementeer de app met behulp van een eenvoudige blauw druk.
 
 1. Ga naar **implementaties**.
 
-2. Klik op **Add**.
+2. Klik op **Toevoegen**.
 
 3. Plak de volgende blauw druk YAML. Deze blauw druk bevat één cluster met slechts één service variant, die in een latere stap wordt gewijzigd:
 

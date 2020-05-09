@@ -7,12 +7,12 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 04/28/2020
 ms.author: spelluru
-ms.openlocfilehash: ab5dd716253875e4a992b94a4e143cb3e806a4b0
-ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
+ms.openlocfilehash: 0f503b21d5a7d0fdfbee79354c198775789c0b91
+ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82509649"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82888787"
 ---
 # <a name="understand-event-filtering-for-event-grid-subscriptions"></a>Gebeurtenis filters begrijpen voor Event Grid-abonnementen
 
@@ -158,6 +158,7 @@ Geavanceerde filtering heeft de volgende beperkingen:
 * Vijf geavanceerde filters per Event grid-abonnement
 * 512 tekens per teken reeks waarde
 * Vijf waarden voor **in** en **niet in** Opera tors
+* Sleutels met ** `.` een teken (punt)** . Bijvoorbeeld: `http://schemas.microsoft.com/claims/authnclassreference` of `john.doe@contoso.com`. Er is momenteel geen ondersteuning voor Escape tekens in sleutels. 
 
 Dezelfde sleutel kan in meer dan één filter worden gebruikt.
 

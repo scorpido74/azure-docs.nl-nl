@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: b945beaa7497e1ad19315bacf1284dd0cbc24d6a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f657e18d7185d6b3c63ac8f1424da9d36d4189e9
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81868081"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82793037"
 ---
 # <a name="optimize-your-cloudsimple-private-cloud-for-installing-oracle-rac"></a>Optimaliseer uw CloudSimple-Privécloud voor het installeren van Oracle RAC
 
@@ -46,7 +46,7 @@ In het volgende voor beeld worden de schijven gebruikt die in de onderstaande ta
 
 | Schijf                                      | Doel                                       | Gedeelde schijf |
 |-------------------------------------------|-----------------------------------------------|-------------|
-| OS                                        | Besturingssysteemschijf                         | Nee          |
+| Besturingssysteem                                        | Besturingssysteemschijf                         | Nee          |
 | YRASTER                                      | Installatie locatie voor Oracle grid software     | Nee          |
 | ENDDATABASE                                  | Installatie locatie voor Oracle data base-software | Nee          |
 | ORAHOME                                   | Basis locatie voor binaire bestanden van Oracle-data base    | Nee          |
@@ -244,7 +244,7 @@ Herhaal stap 2 tot en met 7 voor alle nieuwe schijven die nodig zijn voor de Ora
 Regels voor affiniteit tussen de virtuele machine en de host zorgen ervoor dat de VM wordt uitgevoerd op de gewenste host.  U kunt regels definiëren in vCenter om ervoor te zorgen dat de Oracle-VM wordt uitgevoerd op de host met voldoende bronnen en om te voldoen aan de specifieke licentie vereisten.
 
 1. [Escaleren de bevoegdheden](escalate-private-cloud-privileges.md) van de cloudowner-gebruiker in de CloudSimple-Portal.
-2. [Meld u aan bij de vSphere-client](https://docs.azure.cloudsimple.com/vsphere-access) van uw privécloud.
+2. Meld u aan bij de vSphere-client van uw Privécloud.
 3. Selecteer in de vSphere-client het cluster waar Oracle Vm's worden geïmplementeerd en klik op **configureren**.
 4. Onder configureren selecteert u **virtuele machines/hostgroepen**.
 5. Klik **+** op.
