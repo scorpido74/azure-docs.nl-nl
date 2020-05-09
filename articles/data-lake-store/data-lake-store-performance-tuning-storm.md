@@ -1,23 +1,17 @@
 ---
-title: Richt lijnen voor het afstemmen van Azure Data Lake Storage Gen1 Storm-prestaties | Microsoft Docs
-description: Richt lijnen voor het afstemmen van Azure Data Lake Storage Gen1 Storm
-services: data-lake-store
-documentationcenter: ''
+title: Prestaties afstemmen-Storm met Azure Data Lake Storage Gen1
+description: Meer informatie over richt lijnen voor het afstemmen van de prestaties van een storm-cluster op Azure Data Lake Storage Gen1.
 author: stewu
-manager: amitkul
-editor: stewu
-ms.assetid: ebde7b9f-2e51-4d43-b7ab-566417221335
 ms.service: data-lake-store
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 12/19/2016
 ms.author: stewu
-ms.openlocfilehash: 8066a759cf80be6e9ca232bcd3693a5fa4d2f2f9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 85a38a4da65d1b4a669a41eba902b39508e9216c
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "61436474"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82691647"
 ---
 # <a name="performance-tuning-guidance-for-storm-on-hdinsight-and-azure-data-lake-storage-gen1"></a>Richt lijnen voor het afstemmen van de prestaties voor Storm op HDInsight en Azure Data Lake Storage Gen1
 
@@ -42,7 +36,7 @@ Mogelijk kunt u de prestaties verbeteren door de gelijktijdigheid van de I/O naa
 
 U kunt bijvoorbeeld in een cluster met vier Vm's en 4 werk processen, 32 Spout-uitvoeringen en 32 Spout-taken en 256 Schicht-uitvoerendes en 512-flitsen het volgende overwegen:
 
-Elke Super Visor, een worker-knoop punt, heeft een JVM-proces (Java Virtual Machine) van één werk nemer. Dit JVM-proces beheert vier Spout-threads en 64-Schicht-threads. Binnen elke thread worden taken sequentieel uitgevoerd. Met de voor gaande configuratie heeft elke Spout-thread één taak en elke bout thread heeft twee taken.
+Elke Super Visor, een worker-knoop punt, heeft een JVM-proces (Java Virtual Machine) van één werk nemer. Dit JVM-proces beheert vier Spout-threads en 64-Schicht-threads. Binnen elke thread worden taken sequentieel uitgevoerd. Met de voor gaande configuratie bevat elke Spout-thread één taak en elke Schicht-thread heeft twee taken.
 
 In Storm zijn dit de verschillende onderdelen die van invloed zijn op het niveau van parallellisme dat u hebt:
 * Het hoofd knooppunt (met de naam Nimbus in Storm) wordt gebruikt om taken te verzenden en te beheren. Deze knoop punten hebben geen invloed op de mate van parallelle uitvoering.
@@ -59,9 +53,9 @@ Wanneer u met Data Lake Storage Gen1 werkt, krijgt u de beste prestaties als u h
 
 ### <a name="example-topology"></a>Voorbeeld topologie
 
-Stel dat u een cluster met 8 worker-knoop punten hebt met een D13v2 Azure-VM. Deze VM heeft 8 kernen, dus in de 8 worker-knoop punten hebt u 64 totale kernen.
+We gaan ervan uit dat u een 8 work node-cluster hebt met een D13v2 Azure-VM. Deze VM heeft acht kernen, dus van de acht worker-knoop punten hebt u 64 totale kernen.
 
-Stel dat we 8 Schicht-threads per kern uitvoeren. Dit betekent dat er 64 kernen zijn, dat wil zeggen dat 512 totaal aantal malen uitvoeringen (dat wil zeggen, threads). Stel dat we in dit geval beginnen met één JVM per VM en hoofd zakelijk de gelijktijdigheid van de thread in de JVM gebruiken om gelijktijdig in te stellen. Dit betekent dat er 8 werk taken (één per Azure-VM) en 512-flitsen moeten worden uitgevoerd. Op basis van deze configuratie probeert Storm de werk nemers gelijkmatig te verdelen over werk knooppunten (ook wel Super Visor-knoop punten genoemd), waardoor elk worker-knoop punt 1 JVM. Nu binnen de supervisors probeert Storm de uitvoerendeers gelijkmatig te verdelen tussen de supervisors, waarbij elke Super Visor (dat wil zeggen JVM) 8 threads elke.
+Stel dat we acht Schicht-threads per kern uitvoeren. Dit betekent dat er 64 kernen zijn, dat wil zeggen dat 512 totaal aantal malen uitvoeringen (dat wil zeggen, threads). Stel dat we in dit geval beginnen met één JVM per VM en hoofd zakelijk de gelijktijdigheid van de thread in de JVM gebruiken om gelijktijdig in te stellen. Dit betekent dat we acht werk taken (één per Azure-VM) en 512-flitsen nodig hebben. Op basis van deze configuratie probeert Storm de werk nemers gelijkmatig te verdelen over werk knooppunten (ook wel Super Visor-knoop punten genoemd), waardoor elk worker-knoop punt één JVM. Nu binnen de supervisors probeert Storm de uitvoerendeers gelijkmatig te verdelen tussen de supervisors, waarbij elke Super Visor (dat wil zeggen JVM) acht threads elke.
 
 ## <a name="tune-additional-parameters"></a>Aanvullende para meters afstemmen
 Nadat u de basis topologie hebt, kunt u overwegen of u de para meters wilt aanpassen:
@@ -76,7 +70,7 @@ Dit basis scenario is een goed uitgangs punt. Test met uw eigen gegevens om de v
 
 U kunt de volgende instellingen wijzigen om de Spout af te stemmen.
 
-- **Tuple-time-out: topologie. Message. timeout. sec**. Met deze instelling bepaalt u de hoeveelheid tijd die een bericht duurt en ontvangt u bevestiging voordat dit wordt beschouwd als mislukt.
+- **Tuple-time-out: topologie. Message. timeout. sec**. Met deze instelling wordt bepaald hoe lang het duurt voordat een bericht is voltooid en dat er een bevestiging wordt ontvangen voordat dit wordt beschouwd als mislukt.
 
 - **Maxi maal geheugen per werk proces: worker. childopts**. Met deze instelling kunt u aanvullende opdracht regel parameters voor de Java-werk rollen opgeven. De meest gebruikte instelling hier is XmX, waarmee het maximale geheugen wordt bepaald dat is toegewezen aan de heap van een JVM.
 
@@ -85,7 +79,7 @@ U kunt de volgende instellingen wijzigen om de Spout af te stemmen.
   Een goede berekening is om de grootte van elk van uw Tuples te schatten. Bepaal vervolgens hoeveel geheugen één Spout-thread heeft. Het totale geheugen dat is toegewezen aan een thread, gedeeld door deze waarde, geeft u de bovengrens voor de para meter Max spout in behandeling.
 
 ## <a name="tune-the-bolt"></a>De schicht afstemmen
-Wanneer u naar Data Lake Storage Gen1 schrijft, stelt u een synchronisatie beleid voor grootte (buffer aan de client zijde) in op 4 MB. Een leegmaak-of hsync () wordt vervolgens alleen uitgevoerd wanneer de buffer grootte op deze waarde is. Het Data Lake Storage Gen1-stuur programma op de werk machine van worker voert deze buffer automatisch uit, tenzij u expliciet een hsync () uitvoert.
+Wanneer u naar Data Lake Storage Gen1 schrijft, stelt u een synchronisatie beleid voor grootte (buffer aan de client zijde) in op 4 MB. Een leegmaak-of hsync () wordt vervolgens alleen uitgevoerd wanneer de buffer grootte deze waarde heeft. Het Data Lake Storage Gen1-stuur programma op de werk machine van worker voert deze buffer automatisch uit, tenzij u expliciet een hsync () uitvoert.
 
 De standaard Data Lake Storage Gen1 Storm-Schicht heeft een para meter voor de grootte van het synchronisatie beleid (fileBufferSize) die kan worden gebruikt om deze para meter af te stemmen.
 
@@ -104,14 +98,14 @@ Als het binnenkomende aantal Tuples niet hoog is, kan de 4-MB buffer veel tijd i
 * Als u het aantal schichten reduceert, zijn er minder buffers om in te vullen.
 * Een beleid op basis van tijd of aantal, waarbij een hflush () wordt geactiveerd elke x-leegmaak acties of elke y milliseconden, en de Tuples die tot nu toe zijn verzameld, worden teruggestuurd.
 
-Houd er rekening mee dat de door Voer in dit geval lager is, maar met een trage snelheid van gebeurtenissen, de maximale door Voer is toch niet het grootste doel. Met deze oplossingen kunt u de totale tijd beperken die een tuple nodig heeft om door te stromen naar de Store. Dit kan van belang zijn als u een realtime pijp lijn wilt, zelfs met een lage gebeurtenis frequentie. Als uw binnenkomende tuple laag is, moet u ook de para meter topologie. Message. timeout_secs aanpassen, zodat er geen time-out is opgetreden voor de Tuples terwijl ze worden gebufferd of verwerkt.
+De door Voer in dit geval is lager, maar met een trage snelheid van gebeurtenissen is de maximale door Voer toch niet het grootste doel. Met deze oplossingen kunt u de totale tijd beperken die een tuple nodig heeft om door te stromen naar de Store. Dit kan van belang zijn als u een realtime pijp lijn wilt, zelfs met een lage gebeurtenis frequentie. Als uw binnenkomende tuple laag is, moet u ook de para meter topologie. Message. timeout_secs aanpassen, zodat er geen time-out is opgetreden voor de Tuples terwijl ze worden gebufferd of verwerkt.
 
 ## <a name="monitor-your-topology-in-storm"></a>Uw topologie bewaken in Storm  
 Terwijl uw topologie wordt uitgevoerd, kunt u deze bewaken in de Storm-gebruikers interface. Hier volgen de belangrijkste para meters om te kijken naar:
 
 * **Totale latentie voor het uitvoeren van processen.** Dit is de gemiddelde tijd die een tuple nodig heeft om te worden verzonden door de Spout, verwerkt door de flits en bevestigd.
 
-* **Totale aantal latentie processen van bout.** Dit is de gemiddelde tijd die de tuple op de flits heeft besteed tot deze een bevestiging ontvangt.
+* **Totale aantal latentie processen van bout.** Dit is de gemiddelde tijd die de tuple bij de flits heeft besteed tot deze een bevestiging ontvangt.
 
 * **Totale latentie van flits uitvoering.** Dit is de gemiddelde tijd die is besteed door de schicht in de methode Execute.
 
