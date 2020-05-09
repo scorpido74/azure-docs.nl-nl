@@ -3,13 +3,13 @@ title: Beperk de toegang tot kubeconfig in azure Kubernetes service (AKS)
 description: Meer informatie over het beheren van de toegang tot het Kubernetes-configuratie bestand (kubeconfig) voor cluster beheerders en cluster gebruikers
 services: container-service
 ms.topic: article
-ms.date: 01/28/2020
-ms.openlocfilehash: 25c710cce2855d6af985d3f46082f47573bbc101
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 05/06/2020
+ms.openlocfilehash: 87f4dc18fc595242117e10233d4fecd77e66373f
+ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79259550"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82890885"
 ---
 # <a name="use-azure-role-based-access-controls-to-define-access-to-the-kubernetes-configuration-file-in-azure-kubernetes-service-aks"></a>Gebruik Azure-functies voor toegangs beheer op basis van rollen om toegang te definiëren tot het Kubernetes-configuratie bestand in azure Kubernetes service (AKS)
 
@@ -40,7 +40,8 @@ De twee ingebouwde rollen zijn:
 
 Deze RBAC-rollen kunnen worden toegepast op een Azure Active Directory (AD) gebruiker of groep.
 
-> ! ERAAN Voor clusters die gebruikmaken van Azure AD, hebben gebruikers met de rol *clusterUser* een leeg *kubeconfig* -bestand waarin wordt gevraagd om zich aan te melden. Wanneer gebruikers eenmaal zijn aangemeld, hebben ze toegang tot de gebruikers-of groeps instellingen van Azure AD. Gebruikers met de rol *clusterAdmin* hebben beheerders toegang.
+> [!NOTE]
+> Voor clusters die gebruikmaken van Azure AD, hebben gebruikers met de rol *clusterUser* een leeg *kubeconfig* -bestand waarin wordt gevraagd om zich aan te melden. Wanneer gebruikers eenmaal zijn aangemeld, hebben ze toegang tot de gebruikers-of groeps instellingen van Azure AD. Gebruikers met de rol *clusterAdmin* hebben beheerders toegang.
 >
 > Clusters die niet gebruikmaken van Azure AD, maken alleen gebruik van de functie *clusterAdmin* .
 

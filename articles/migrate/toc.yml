@@ -92,6 +92,8 @@
       href: create-manage-projects.md
     - name: Een hulpprogramma voor de eerste keer toevoegen
       href: how-to-add-tool-first-time.md
+    - name: Voorbereiden om te werken met ISV-hulpprogramma's/Movere
+      href: prepare-isv-movere.md
     - name: Evaluatiehulpprogramma's toevoegen
       href: how-to-assess.md
     - name: Azure Migrate-apparaat implementeren

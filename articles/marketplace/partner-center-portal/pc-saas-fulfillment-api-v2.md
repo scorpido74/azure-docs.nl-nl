@@ -1,22 +1,22 @@
 ---
-title: API voor SaaS-uitvoering v2 | Azure Marketplace
-description: In dit artikel wordt uitgelegd hoe u een SaaS-aanbieding maakt en beheert op de AppSource en Azure Marketplace met behulp van de bijbehorende fulfillment v2 Api's.
+title: SaaS-fulfillment-Api's v2 in micro soft Commercial Marketplace
+description: Meer informatie over het maken en beheren van een SaaS-aanbieding op Microsoft AppSource en Azure Marketplace met behulp van de fulfillment Api's versie 2.
 author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: reference
 ms.date: 10/18/2019
 ms.author: dsindona
-ms.openlocfilehash: ca49418013357ecaae62ea5e91374eaa1cbde59d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8f452349c0d636bc74a3722e2526623c955093f7
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80275761"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82854185"
 ---
-# <a name="saas-fulfillment-apis-version-2"></a>SaaS-leverings-API's, versie 2 
+# <a name="saas-fulfillment-apis-version-2-in-microsoft-commercial-marketplace"></a>SaaS-fulfillment-Api's versie 2 in micro soft Commercial Marketplace
 
-In dit artikel vindt u meer informatie over de Api's waarmee partners hun SaaS-toepassingen kunnen verkopen in de AppSource Marketplace en de Azure Marketplace. Deze Api's zijn een vereiste voor transactable SaaS-aanbiedingen op de AppSource en Azure Marketplace.
+In dit artikel vindt u informatie over de fulfillment-Api's waarmee partners hun SaaS-toepassingen kunnen verkopen in Microsoft AppSource en Azure Marketplace. Deze Api's zijn vereist voor transactable SaaS-aanbiedingen.
 
 ## <a name="managing-the-saas-subscription-life-cycle"></a>De levens cyclus van het SaaS-abonnement beheren
 
@@ -859,7 +859,7 @@ Waarbij de actie een van de volgende acties kan zijn:
 Waar de status kan een van de volgende zijn: 
 - **NotStarted** <br>
  - **InProgress** <br>
-- **Geslaagd** <br>
+- **Is voltooid** <br>
 - **Mislukt** <br>
 - **Conflicteren** <br>
 

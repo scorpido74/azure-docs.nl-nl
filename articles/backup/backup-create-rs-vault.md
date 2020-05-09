@@ -4,12 +4,12 @@ description: In dit artikel leert u hoe u Recovery Services kluizen maakt waarin
 ms.reviewer: sogup
 ms.topic: conceptual
 ms.date: 05/30/2019
-ms.openlocfilehash: 439f102e8f13bff63ab388be8f10df07ab2dc7d2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6ac1c7e887f80767d6ff1819476e91cb4b06bf1b
+ms.sourcegitcommit: 3beb067d5dc3d8895971b1bc18304e004b8a19b3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80672854"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82744946"
 ---
 # <a name="create-a-recovery-services-vault"></a>Een Recovery Services-kluis maken
 
@@ -121,7 +121,7 @@ We raden u ten zeerste aan de standaard instellingen voor het **type opslag repl
 
 - **Type opslag replicatie** is standaard ingesteld op **geo-redundant**. Zodra u de back-up hebt geconfigureerd, is de optie om te wijzigen uitgeschakeld. Volg deze [stappen](https://docs.microsoft.com/azure/backup/backup-create-rs-vault#set-storage-redundancy) om de instellingen te controleren en te wijzigen.
 
-- **Voorlopig verwijderen** is standaard **ingeschakeld** op nieuwe kluizen om back-upgegevens te beschermen tegen onbedoelde of schadelijke verwijderingen. Volg deze [stappen](https://docs.microsoft.com/azure/backup/backup-azure-security-feature-cloud#disabling-soft-delete) om de instellingen te controleren en te wijzigen.
+- **Voorlopig verwijderen** is standaard **ingeschakeld** op nieuwe kluizen om back-upgegevens te beschermen tegen onbedoelde of schadelijke verwijderingen. Volg deze [stappen](https://docs.microsoft.com/azure/backup/backup-azure-security-feature-cloud#enabling-and-disabling-soft-delete) om de instellingen te controleren en te wijzigen.
 
 ## <a name="next-steps"></a>Volgende stappen
 

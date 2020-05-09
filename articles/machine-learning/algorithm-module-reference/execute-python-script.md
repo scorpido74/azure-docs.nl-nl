@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 03/10/2020
-ms.openlocfilehash: 79dc1b188e91028a98f43dc24972228f2d2101be
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 04/27/2020
+ms.openlocfilehash: 9b2114672db755efba1818505c8f399ac01aea71
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81684732"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82983598"
 ---
 # <a name="execute-python-script-module"></a>Python-script module uitvoeren
 
@@ -150,6 +150,8 @@ De vooraf geïnstalleerde pakketten zijn:
 import os
 os.system(f"pip install scikit-misc")
 ```
+> [!NOTE]
+> Als uw pijp lijn meerdere python-script modules voor uitvoeren bevat en dezelfde pakketten nodig heeft die niet voor komen in de lijst met vooraf geïnstalleerde, installeert u de pakketten in elke module. 
 
 ## <a name="upload-files"></a>Bestanden uploaden
 Het **script python uitvoeren** ondersteunt het uploaden van bestanden met behulp van [Azure machine learning python SDK](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run%28class%29?view=azure-ml-py#upload-file-name--path-or-stream-).
@@ -218,7 +220,7 @@ De **script module python uitvoeren** bevat een voor beeld van python-code die u
 5. Typ of plak geldige python-script in het tekstvak **python-script** .
 
     > [!NOTE]
-    > Wees zeer voorzichtig bij het schrijven van uw script en zorg ervoor dat er geen syntaxis fout is, zoals het gebruik van een niet-gedeclareerd object of een niet-geïmporteerde module. U kunt ook extra aandacht schenken aan de lijst met vooraf geïnstalleerde modules. Als u modules wilt importeren die niet worden weer gegeven, installeert u de bijbehorende pakketten in uw script, zoals
+    > Wees zeer voorzichtig bij het schrijven van uw script en zorg ervoor dat er geen syntaxis fout is, zoals het gebruik van niet-gedeclareerde objecten of niet-geïmporteerde modules. U kunt ook extra aandacht best Eden aan de lijst met vooraf geïnstalleerde modules. Als u modules wilt importeren die niet worden weer gegeven, installeert u de bijbehorende pakketten in uw script, zoals
     >  ``` Python
     > import os
     > os.system(f"pip install scikit-misc")

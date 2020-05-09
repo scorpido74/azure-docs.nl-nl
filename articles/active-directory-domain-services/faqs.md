@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: how-to
 ms.date: 03/09/2020
 ms.author: iainfou
-ms.openlocfilehash: 86b68b794928900717bea25623e7eb833c23e86c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 92b3fd2453a4fb121c97f8f25f1d3ca129826092
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80655352"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82926966"
 ---
 # <a name="frequently-asked-questions-faqs"></a>Veelgestelde vragen (FAQ)
 
@@ -91,6 +91,7 @@ Ja. Elk Azure AD Domain Services beheerd domein bevat twee domein controllers. U
 * [Kan ik DNS-records in mijn beheerde domein wijzigen of toevoegen?](#can-i-modify-or-add-dns-records-in-my-managed-domain)
 * [Wat is het beleid voor de levens duur van wacht woorden op een beheerd domein?](#what-is-the-password-lifetime-policy-on-a-managed-domain)
 * [Biedt Azure AD Domain Services AD-account vergrendelings beveiliging?](#does-azure-ad-domain-services-provide-ad-account-lockout-protection)
+* [Kan ik Distributed File System (DFS) en replicatie binnen Azure AD Domain Services configureren?](#can-i-configure-distributed-file-system-and-replication-within-azure-ad-domain-services)
 
 ### <a name="can-i-connect-to-the-domain-controller-for-my-managed-domain-using-remote-desktop"></a>Kan ik verbinding maken met de domein controller voor mijn beheerde domein met behulp van Extern bureaublad?
 Nee. U bent niet gemachtigd om verbinding te maken met domein controllers voor het beheerde domein met behulp van Extern bureaublad. Leden van de groep *Aad DC-Administrators* kunnen het beheerde domein beheren met AD-beheer Programma's zoals het Active Directory Administration Center (ADAC) of AD Power shell. Deze hulpprogram ma's worden geïnstalleerd met behulp van de functie *Remote Server Administration Tools* op een Windows-Server die is gekoppeld aan het beheerde domein. Zie [een beheer-VM maken voor het configureren en beheren van een Azure AD Domain Services beheerd domein](tutorial-create-management-vm.md)voor meer informatie.
@@ -118,6 +119,9 @@ De standaard levensduur van het wacht woord voor een Azure AD Domain Services be
 
 ### <a name="does-azure-ad-domain-services-provide-ad-account-lockout-protection"></a>Biedt Azure AD Domain Services AD-account vergrendelings beveiliging?
 Ja. Vijf ongeldige wachtwoord pogingen binnen twee minuten op het beheerde domein zorgen ervoor dat een gebruikers account 30 minuten wordt vergrendeld. Na 30 minuten wordt het gebruikers account automatisch ontgrendeld. Bij ongeldige wachtwoord pogingen op het beheerde domein wordt het gebruikers account in azure AD niet vergrendeld. Het gebruikers account is alleen vergrendeld binnen uw Azure AD Domain Services beheerde domein. Zie voor meer informatie [wacht woord-en account vergrendelings beleid in beheerde domeinen](password-policy.md).
+
+### <a name="can-i-configure-distributed-file-system-and-replication-within-azure-ad-domain-services"></a>Kan ik Distributed File System en replicatie binnen Azure AD Domain Services configureren?
+Nee. Distributed File System (DFS) en replicatie zijn niet beschikbaar wanneer u Azure AD Domain Services gebruikt.
 
 ## <a name="billing-and-availability"></a>Facturering en beschik baarheid
 

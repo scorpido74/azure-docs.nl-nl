@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/22/2019
-ms.openlocfilehash: 1d647ba7e8d4f0e29252dfff95099e39bab87895
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b1463415a464fe1d7a7146cec20f2c17d7c8eb03
+ms.sourcegitcommit: 291b2972c7f28667dc58f66bbe9d9f7d11434ec1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77662073"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82738079"
 ---
 # <a name="structure-of-azure-monitor-logs"></a>Structuur van Azure Monitor logboeken
 De mogelijkheid om snel inzicht te krijgen in uw gegevens met behulp van een [logboek query](log-query-overview.md) is een krachtige functie van Azure monitor. Als u efficiënte en nuttige query's wilt maken, moet u een aantal basis concepten begrijpen, zoals waar de gewenste gegevens zich bevinden en hoe deze worden gestructureerd. In dit artikel worden de basis concepten beschreven die u nodig hebt om aan de slag te gaan.
@@ -54,16 +54,17 @@ In tegens telling tot een Log Analytics-werk ruimte heeft een Application Insigh
 
 | Tabel | Beschrijving | 
 |:---|:---|
-| availabilityResults | Samenvattings gegevens van beschikbaarheids testen. |
-| browserTimings      | Gegevens over client prestaties, zoals de tijd die nodig is om de binnenkomende gegevens te verwerken. |
-| customEvents        | Aangepaste gebeurtenissen die door uw toepassing zijn gemaakt. |
-| customMetrics       | Aangepaste metrische gegevens die door uw toepassing zijn gemaakt. |
-| elkaar        | Aanroepen van de toepassing naar externe onderdelen. |
-| uitzonderingen          | Uitzonde ringen die worden veroorzaakt door de runtime van de toepassing. |
-| Page views           | Gegevens over elke website weergave met browser informatie. |
-| Performance Counters | Prestatie metingen van de reken resources die de toepassing ondersteunen. |
-| aanvragen            | Details van elke toepassings aanvraag.  |
-| traceringen              | Resultaten van gedistribueerde tracering. |
+| availabilityResults   | Samenvattings gegevens van beschikbaarheids testen.
+| browserTimings      |     Gegevens over client prestaties, zoals de tijd die nodig is om de binnenkomende gegevens te verwerken.
+| customEvents        | Aangepaste gebeurtenissen die door uw toepassing zijn gemaakt.
+| customMetrics       | Aangepaste metrische gegevens die door uw toepassing zijn gemaakt.
+| elkaar        | Aanroepen van de toepassing naar andere onderdelen (waaronder externe onderdelen) die zijn vastgelegd via TrackDependency (), bijvoorbeeld aanroepen naar REST API, data base of een bestands systeem. 
+| uitzonderingen            | Uitzonde ringen die worden veroorzaakt door de runtime van de toepassing, legt zowel server-als client-side-uitzonde ringen vast.
+| Page views           | Gegevens over elke website weergave met browser informatie.
+| Performance Counters   | Prestatie metingen van de reken bronnen die de toepassing ondersteunen, bijvoorbeeld Windows-prestatie meter items.
+| aanvragen            | Aanvragen die door uw toepassing zijn ontvangen. Een afzonderlijke aanvraag record wordt bijvoorbeeld vastgelegd voor elke HTTP-aanvraag die uw web-app ontvangt. 
+| traceringen                | Gedetailleerde logboeken (traceringen) die worden verzonden via toepassings code/logboek registratie raamwerken vastgelegd via TrackTrace ().
+
 
 U kunt het schema voor elke tabel weer geven op het tabblad **schema** in log Analytics voor de toepassing.
 

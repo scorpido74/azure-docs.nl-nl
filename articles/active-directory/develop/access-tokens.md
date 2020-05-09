@@ -1,29 +1,30 @@
 ---
-title: Naslag informatie over micro soft Identity platform-toegangs tokens | Azure
+title: Toegangs tokens voor micro soft Identity platform | Azure
+titleSuffix: Microsoft identity platform
 description: Meer informatie over toegangs tokens die worden verzonden door de Azure AD v 1.0-en micro soft Identity platform (v 2.0)-eind punten.
 services: active-directory
-author: rwike77
+author: hpsin
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 3/27/2020
+ms.date: 05/06/2020
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40, fasttrack-edit
-ms.openlocfilehash: ed583abc8f60f3d367bf75254807e3f28cd0f1c9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: dedaf5214305003bf302c7c74466adb84c42b2f4
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81309716"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82926796"
 ---
 # <a name="microsoft-identity-platform-access-tokens"></a>Toegangs tokens van micro soft Identity platform
 
-Met toegangs tokens kunnen clients veilig Api's aanroepen die worden beveiligd door Azure. Toegangs tokens voor micro soft Identity platform zijn [JWTs](https://tools.ietf.org/html/rfc7519), Base64 Encoded JSON Objects ondertekend door Azure. Clients moeten toegangs tokens behandelen als ondoorzichtige teken reeksen, omdat de inhoud van het token alleen voor de resource is bedoeld. Ontwikkel aars kunnen met behulp van een site, zoals [JWT.MS](https://jwt.ms), JWTs voor validatie en fout opsporing. Uw client kan een toegangs token verkrijgen van het v 1.0-eind punt of het v 2.0-eind punt met behulp van verschillende protocollen.
+Met toegangs tokens kunnen clients beveiligde Api's veilig aanroepen. Toegangs tokens van micro soft Identity platform zijn [JWTs](https://tools.ietf.org/html/rfc7519), Base64 Encoded JSON Objects ondertekend door micro soft Identity platform. Clients moeten toegangs tokens behandelen als ondoorzichtige teken reeksen, omdat de inhoud van het token alleen voor de resource is bedoeld. Ontwikkel aars kunnen voor validatie en fout opsporing JWTs (JSON-webtokens) decoderen met behulp van een site zoals [JWT.MS](https://jwt.ms). Uw client kan een toegangs token verkrijgen van het v 1.0-eind punt of het v 2.0-eind punt met behulp van verschillende protocollen.
 
-Als uw client een toegangs token aanvraagt, retourneert Azure AD ook meta gegevens over het toegangs token voor het verbruik van uw app. Deze informatie omvat de verloop tijd van het toegangs token en de scopes waarvoor deze geldig is. Met deze gegevens kan uw app intelligente caching van toegangs tokens uitvoeren zonder dat het toegangs token zelf moet worden geparseerd.
+Als uw client een toegangs token aanvraagt, retourneert micro soft Identity platform ook meta gegevens over het toegangs token voor het verbruik van uw app. Deze informatie omvat de verloop tijd van het toegangs token en de scopes waarvoor deze geldig is. Met deze gegevens kan uw app intelligente caching van toegangs tokens uitvoeren zonder dat het toegangs token zelf moet worden geparseerd.
 
 Als uw toepassing een bron (Web-API) is waarmee clients toegang kunnen aanvragen, bieden toegangs tokens nuttige informatie voor gebruik bij verificatie en autorisatie, zoals de gebruiker, client, verlener, machtigingen en meer.
 
@@ -55,7 +56,7 @@ Bekijk dit v 2.0-token in [JWT.MS](https://jwt.ms/#access_token=eyJ0eXAiOiJKV1Qi
 
 ## <a name="claims-in-access-tokens"></a>Claims in toegangs tokens
 
-JWTs zijn onderverdeeld in drie delen:
+JWTs (JSON-webtokens) zijn onderverdeeld in drie delen:
 
 * **Header** : bevat informatie over het [valideren van het token](#validating-tokens) , inclusief informatie over het type token en hoe deze is ondertekend.
 * **Payload** : bevat alle belang rijke gegevens over de gebruiker of app die probeert uw service aan te roepen.

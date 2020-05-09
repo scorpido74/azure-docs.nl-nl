@@ -7,13 +7,13 @@ ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 04/20/2020
-ms.openlocfilehash: 6b353967c9b9c7517f1a42581717c6394c0e6374
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.date: 05/06/2020
+ms.openlocfilehash: 0a8864555798d3b64d675c70728ab97d191be81f
+ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81729142"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82891376"
 ---
 # <a name="alter-row-transformation-in-mapping-data-flow"></a>Rij transformatie wijzigen in gegevens stroom toewijzen
 
@@ -24,6 +24,8 @@ Gebruik de Alter Row trans formatie om INSERT-, Delete-, update-en upsert-beleid
 ![Rij-instellingen wijzigen](media/data-flow/alter-row1.png "Rij-instellingen wijzigen")
 
 Alter Row-trans formaties worden alleen toegepast op Data Base-of CosmosDB-sinks in uw gegevens stroom. De acties die u toewijst aan rijen (invoegen, bijwerken, verwijderen, upsert) worden niet uitgevoerd tijdens foutopsporingssessie. Voer een activiteit gegevens stroom uitvoeren in een pijp lijn uit om het alter Row-beleid in uw database tabellen te bepalen.
+
+> [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4vJYc]
 
 ## <a name="specify-a-default-row-policy"></a>Een standaard beleid voor rijen opgeven
 
@@ -54,6 +56,18 @@ Het standaard gedrag is alleen invoegen toestaan. Als u updates, upsert of verwi
 > Als uw invoeg-, update-of upsert het schema van de doel tabel in de Sink wijzigt, mislukt de gegevens stroom. Als u het doel schema in uw Data Base wilt wijzigen, kiest u **tabel opnieuw maken** als tabel actie. Hiermee wordt de tabel verwijderd en opnieuw gemaakt met de nieuwe schema definitie.
 
 Voor de Sink-trans formatie is een enkele sleutel of een reeks sleutels vereist voor een unieke identificatie van de rij in de doel database. Voor SQL-sinks stelt u de sleutels in op het tabblad Instellingen voor sink. Stel voor CosmosDB de partitie sleutel in de instellingen in en stel het veld id van het CosmosDB-systeem in op uw Sink-toewijzing. Voor CosmosDB is het verplicht om de systeem kolom ' id ' op te Neem voor updates, upsert en verwijderingen.
+
+## <a name="merges-and-upserts-with-azure-sql-database-and-synapse"></a>Samen voegen en upsert met Azure SQL Database en Synapse
+
+ADF-gegevens stromen bieden ondersteuning voor samen voegingen van Azure SQL Database-en Synapse-database groep (Data Warehouse) met de optie upsert.
+
+U kunt echter scenario's uitvoeren waarbij uw doel database schema gebruik maakt van de identiteits eigenschap van sleutel kolommen. Voor ADF moeten de sleutels worden geïdentificeerd die u gaat gebruiken om te voldoen aan de rijwaarden voor updates en upsert. Maar als voor de doel kolom de eigenschap identiteit is ingesteld en u het upsert-beleid gebruikt, kunt u in de doel database niet naar de kolom schrijven.
+
+U hebt hiervoor twee opties:
+
+1. Gebruik de voor verwerking van de SQL-optie Sink ```SET IDENTITY_INSERT tbl_content ON```trans formatie voor bereiding:. Schakel deze vervolgens uit met de SQL-eigenschap na de verwerking: ```SET IDENTITY_INSERT tbl_content OFF```.
+
+2. In plaats van upsert te gebruiken, moet u uw logica overzetten om de update voorwaarden van de invoeg voorwaarden te scheiden met behulp van een voorwaardelijke Splits-trans formatie. Op deze manier kunt u de toewijzing instellen op het pad van de update om de sleutel kolom toewijzing te negeren.
 
 ## <a name="data-flow-script"></a>Script voor gegevensstroom
 

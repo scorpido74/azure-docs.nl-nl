@@ -2,13 +2,13 @@
 title: Azure-toepassing Insights automatiseren met Power shell | Microsoft Docs
 description: Het maken en beheren van resources, waarschuwingen en beschikbaarheids tests in Power shell automatiseren met behulp van een Azure Resource Manager sjabloon.
 ms.topic: conceptual
-ms.date: 10/17/2019
-ms.openlocfilehash: 9494b659b5b4357f3190c45d8cc72c4e130f0ecc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 05/02/2020
+ms.openlocfilehash: fba85981f32611164c328945e45de4032ad949eb
+ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79275878"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82780484"
 ---
 #  <a name="manage-application-insights-resources-using-powershell"></a>Application Insights-resources beheren met Power shell
 
@@ -21,10 +21,10 @@ De sleutel voor het maken van deze resources is JSON-sjablonen voor [Azure Resou
 ## <a name="one-time-setup"></a>Eenmalige installatie
 Als u Power shell nog niet eerder hebt gebruikt met uw Azure-abonnement:
 
-Installeer de Azure Power shell-module op de computer waarop u de scripts wilt uitvoeren:
+Installeer de Azure PowerShell-module op de computer waarop u de scripts wilt uitvoeren:
 
 1. Installeer het [installatie programma voor het micro soft-webplatform (V5 of hoger)](https://www.microsoft.com/web/downloads/platform.aspx).
-2. Gebruik het om Microsoft Azure Power shell te installeren.
+2. Gebruik het om Microsoft Azure PowerShell te installeren.
 
 Naast het gebruik van Resource Manager-sjablonen beschikt u over een uitgebreide set [Application Insights Power shell-cmdlets](https://docs.microsoft.com/powershell/module/az.applicationinsights), waarmee u eenvoudig Application Insights resources kunt configureren. De mogelijkheden die zijn ingeschakeld door de cmdlets zijn onder andere:
 
@@ -229,7 +229,21 @@ Aanvullende eigenschappen zijn beschikbaar via de-cmdlets:
 
 Raadpleeg de [gedetailleerde documentatie](https://docs.microsoft.com/powershell/module/az.applicationinsights) voor de para meters voor deze cmdlets.  
 
-## <a name="set-the-data-retention"></a>De Bewaar periode voor gegevens instellen 
+## <a name="set-the-data-retention"></a>De Bewaar periode voor gegevens instellen
+
+Hieronder vindt u drie methoden om de gegevens retentie op een Application Insights resource programmatisch in te stellen.
+
+### <a name="setting-data-retention-using-a-powershell-commands"></a>Gegevens retentie instellen met behulp van een Power shell-opdracht
+
+Hier volgt een eenvoudige set Power shell-opdrachten voor het instellen van de gegevens retentie voor uw Application Insights-resource:
+
+```PS
+$Resource = Get-AzResource -ResourceType Microsoft.Insights/components -ResourceGroupName MyResourceGroupName -ResourceName MyResourceName
+$Resource.Properties.RetentionInDays = 365
+$Resource | Set-AzResource -Force
+```
+
+### <a name="setting-data-retention-using-rest"></a>Gegevens bewaaring instellen met behulp van REST
 
 Als u de huidige gegevens retentie voor uw Application Insights resource wilt ophalen, kunt u het OSS-hulp programma [ARMClient](https://github.com/projectkudu/ARMClient)gebruiken.  (Meer informatie over ARMClient van artikelen op [David Ebbo](http://blog.davidebbo.com/2015/01/azure-resource-manager-client.html) en de [Bowbyes](https://blog.bowbyes.co.nz/2016/11/02/using-armclient-to-directly-access-azure-arm-rest-apis-and-list-arm-policy-details/).)  Hier volgt een voor beeld `ARMClient`van om de huidige retentie te verkrijgen:
 
@@ -251,6 +265,8 @@ New-AzResourceGroupDeployment -ResourceGroupName "<resource group>" `
        -retentionInDays 365 `
        -appName myApp
 ```
+
+### <a name="setting-data-retention-using-a-powershell-script"></a>Bewaren van gegevens met behulp van een Power shell-script
 
 Het volgende script kan ook worden gebruikt voor het wijzigen van de Bewaar periode. Kopieer dit script om op te `Set-ApplicationInsightsRetention.ps1`slaan.
 
