@@ -12,18 +12,18 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
-ms.date: 08/27/2019
+ms.date: 05/07/2020
 ms.author: juliako
-ms.openlocfilehash: 4c7618b60e5fd86a9b8b3f22fb3333c00cfdfa61
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 231aeb210a7b97e8c0cfd0e21c48053c660b6128
+ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74899798"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "82995806"
 ---
 # <a name="use-time-shifting-and-live-outputs-to-create-on-demand-video-playback"></a>Gebruik tijd verschuivingen en live uitvoer om video weergave op aanvraag te maken
 
-In Azure Media Services is een [Live uitvoer](https://docs.microsoft.com/rest/api/media/liveoutputs) object net als een digitale video recorder waarmee uw live stream wordt onderschept en opgenomen in een asset in uw Media Services-account. De opgenomen inhoud wordt opgeslagen in de container die is gedefinieerd door de bron van de [Asset](https://docs.microsoft.com/rest/api/media/assets) (de container bevindt zich in het Azure Storage-account dat aan uw account is gekoppeld). Met de live uitvoer kunt u ook enkele eigenschappen van de uitgaande Live Stream beheren, zoals hoeveel van de stroom wordt bewaard in de registratie van het archief (bijvoorbeeld de capaciteit van de Cloud-DVR) of wanneer viewers kunnen beginnen met het bekijken van de live stream. Het archief op schijf is een circulair Archief ' venster ' dat alleen de hoeveelheid inhoud bevat die is opgegeven in de eigenschap **archiveWindowLength** van de actieve uitvoer. Inhoud die buiten dit venster valt, wordt automatisch verwijderd uit de opslag container en kan niet worden hersteld. De waarde archiveWindowLength vertegenwoordigt een duur van ISO-8601 time span (bijvoorbeeld PTHH: MM: SS), waarmee de capaciteit van het DVR wordt opgegeven. De waarde kan worden ingesteld van Mini maal drie minuten tot Maxi maal 25 uur.
+In Azure Media Services is een [Live uitvoer](https://docs.microsoft.com/rest/api/media/liveoutputs) object net als een digitale video recorder waarmee uw live stream wordt onderschept en opgenomen in een asset in uw Media Services-account. De opgenomen inhoud wordt opgeslagen in de container die is gedefinieerd door de bron van de [Asset](https://docs.microsoft.com/rest/api/media/assets) (de container bevindt zich in het Azure Storage-account dat aan uw account is gekoppeld). Met de live uitvoer kunt u ook enkele eigenschappen van de uitgaande Live Stream beheren, zoals hoeveel van de stroom wordt bewaard in de registratie van het archief (bijvoorbeeld de capaciteit van de Cloud-DVR) of wanneer viewers kunnen beginnen met het bekijken van de live stream. Het archief op schijf is een circulair Archief ' venster ' dat alleen de hoeveelheid inhoud bevat die is opgegeven in de eigenschap **archiveWindowLength** van de actieve uitvoer. Inhoud die buiten dit venster valt, wordt automatisch verwijderd uit de opslag container en kan niet worden hersteld. De waarde archiveWindowLength vertegenwoordigt een duur van ISO-8601 time span (bijvoorbeeld PTHH: MM: SS), waarmee de capaciteit van het DVR wordt opgegeven. De waarde kan worden ingesteld van Mini maal één minuut tot Maxi maal 25 uur.
 
 De relatie tussen een live gebeurtenis en de live uitvoer is vergelijkbaar met de traditionele TV-uitzending, in dat een kanaal (live event) een constante stroom video en een opname (live-uitvoer) is gericht op een specifiek tijds segment (bijvoorbeeld avond nieuws van 6:17.30 tot 7:13:00). Zodra u de stroom naar de live gebeurtenis hebt gestroomd, kunt u de streaming-gebeurtenis starten door een Asset, live output en streaming-Locator te maken. Live uitvoer archiveert de stream en maakt deze beschikbaar voor gebruikers via het [streaming-eind punt](https://docs.microsoft.com/rest/api/media/streamingendpoints). U kunt meerdere Live outputs (Maxi maal drie) maken voor een live-gebeurtenis met verschillende archief lengten en-instellingen. Zie de sectie [algemene stappen](live-streaming-overview.md#general-steps) voor informatie over de werk stroom voor live streamen.
 

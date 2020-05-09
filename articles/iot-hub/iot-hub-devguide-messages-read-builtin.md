@@ -9,12 +9,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 08/08/2019
 ms.custom: amqp
-ms.openlocfilehash: 169d926e466559bc83ba64ce9e976e0d725f614d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: bf7c4118e17727c6c8141570ab146026d5383059
+ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81729992"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "82996936"
 ---
 # <a name="read-device-to-cloud-messages-from-the-built-in-endpoint"></a>Apparaat-naar-cloud-berichten lezen van het geïntegreerde eindpunt
 
@@ -51,7 +51,7 @@ Wanneer u Event Hubs Sdk's of product integraties gebruikt die niet op de hoogte
 
 In de portal bevat het veld met de Event hub-compatibel eind punt een volledig Event Hubs connection string dat er als volgt uitziet: **eind punt = SB://abcd1234namespace.servicebus.Windows.net/; SharedAccessKeyName = iothubowner; SharedAccessKey = keykeykeykeykeykey =; EntityPath = iothub-eHub-ABCD-1234-123456**. Als de SDK die u gebruikt andere waarden vereist, dan zou het volgende zijn:
 
-| Naam | Waarde |
+| Name | Waarde |
 | ---- | ----- |
 | Eindpunt | sb://abcd1234namespace.servicebus.windows.net/ |
 | Hostnaam | abcd1234namespace.servicebus.windows.net |
@@ -61,12 +61,12 @@ U kunt vervolgens elk gedeeld toegangs beleid gebruiken dat de **ServiceConnect*
 
 De Sdk's die u kunt gebruiken om verbinding te maken met het ingebouwde Event hub-compatibele eind punt dat IoT Hub beschikbaar is, zijn:
 
-| Taal | SDK | Voorbeeld | Opmerkingen |
-| -------- | --- | ------ | ----- |
-| .NET | https://github.com/Azure/azure-event-hubs-dotnet | [Snelstartgids](quickstart-send-telemetry-dotnet.md) | Maakt gebruik van Event Hubs compatibele informatie |
- Java | https://github.com/Azure/azure-event-hubs-java | [Snelstartgids](quickstart-send-telemetry-java.md) | Maakt gebruik van Event Hubs compatibele informatie |
-| Node.js | https://github.com/Azure/azure-event-hubs-node | [Snelstartgids](quickstart-send-telemetry-node.md) | Maakt gebruik van IoT Hub connection string |
-| Python | https://github.com/Azure/azure-event-hubs-python | https://github.com/Azure/azure-event-hubs-python/blob/master/examples/iothub_recv.py | Maakt gebruik van IoT Hub connection string |
+| Taal | SDK | Voorbeeld |
+| -------- | --- | ------ |
+| .NET | https://github.com/Azure/azure-event-hubs-dotnet | [Snelstartgids](quickstart-send-telemetry-dotnet.md) |
+ Java | https://github.com/Azure/azure-event-hubs-java | [Snelstartgids](quickstart-send-telemetry-java.md) |
+| Node.js | https://www.npmjs.com/package/@azure/event-hubs | [Snelstartgids](quickstart-send-telemetry-node.md) |
+| Python | https://pypi.org/project/azure-eventhub/ | https://github.com/Azure-Samples/azure-iot-samples-python/tree/master/iot-hub/Quickstarts/read-d2c-messages |
 
 De product integraties die u kunt gebruiken met het ingebouwde Event hub-compatibele eind punt dat IoT Hub beschikbaar zijn, zijn:
 

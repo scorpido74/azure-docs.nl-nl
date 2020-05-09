@@ -15,12 +15,12 @@ ms.date: 05/01/2020
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: seohack1
-ms.openlocfilehash: 9eabd6d2a8f3179c5553bc6ca6d59407388c4d42
-ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
+ms.openlocfilehash: 58e7a46633b7bbdd6074fa7e511569ff9e2aebdf
+ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/03/2020
-ms.locfileid: "82735557"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "82996600"
 ---
 # <a name="troubleshoot-azure-rbac"></a>Problemen met Azure RBAC oplossen
 
@@ -28,7 +28,7 @@ In dit artikel worden enkele veelgestelde vragen over toegangs beheer op basis v
 
 ## <a name="azure-role-assignments-limit"></a>Limiet voor Azure-roltoewijzingen
 
-Azure ondersteunt maximaal **2000** roltoewijzingen per abonnement. Als u het fout bericht ' er kunnen geen roltoewijzingen meer worden gemaakt (code: RoleAssignmentLimitExceeded) ' wordt weer gegeven wanneer u probeert een rol toe te wijzen, kunt u het aantal roltoewijzingen in het abonnement verminderen.
+Azure ondersteunt maximaal **2000** roltoewijzingen per abonnement. Deze limiet omvat roltoewijzingen voor het abonnement, de resource groep en de resource scopes. Als u het fout bericht ' er kunnen geen roltoewijzingen meer worden gemaakt (code: RoleAssignmentLimitExceeded) ' wordt weer gegeven wanneer u probeert een rol toe te wijzen, kunt u het aantal roltoewijzingen in het abonnement verminderen.
 
 > [!NOTE]
 > De limieten voor het aantal roltoewijzingen per abonnement van **2000** zijn vast en kunnen niet worden verhoogd.

@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: automation
 ms.subservice: update-management
 manager: carmonm
-ms.openlocfilehash: 1b4467128fae3fd71a6e588e3c05d287c153e168
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.openlocfilehash: e9af9c6472f49ebccd36e8d73688636c98918ff1
+ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82927884"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "82996439"
 ---
 # <a name="troubleshoot-windows-update-agent-issues"></a>Problemen met Windows Update agent oplossen
 
@@ -27,21 +27,21 @@ Er kunnen verschillende redenen zijn waarom uw computer niet wordt weer gegeven 
 > [!NOTE]
 > Er kan een lichte vertraging optreden tussen de Azure Portal weer geven en de huidige status van een machine.
 
-In dit artikel wordt beschreven hoe u de probleem Oplosser uitvoert voor Azure-machines vanaf het Azure Portal en niet-Azure-machines in het [offline scenario](#troubleshoot-offline). De probleem Oplosser bevat nu controles voor Windows Server Update Services (WSUS) en voor de sleutels autodownload en installatie.
+In dit artikel wordt beschreven hoe u de probleem Oplosser uitvoert voor Azure-machines vanaf het Azure Portal en niet-Azure-machines in het [offline scenario](#troubleshoot-offline). 
 
 > [!NOTE]
-> Het script voor de probleem Oplosser stuurt momenteel geen verkeer via een proxy server als er een is geconfigureerd.
+> Het script voor de probleem Oplosser bevat nu controles voor Windows Server Update Services (WSUS) en voor de sleutels autodown load en install. 
 
 ## <a name="start-the-troubleshooter"></a>De probleem Oplosser starten
 
-Voor Azure-machines kunt u de pagina **problemen met Update agent oplossen** starten door de koppeling **problemen oplossen** te selecteren in de kolom **Update-gereedheid** in de portal. Voor niet-Azure-computers brengt de koppeling u naar dit artikel. Zie de [offline-instructies](#troubleshoot-offline) voor het oplossen van problemen met een niet-Azure-machine.
+Voor Azure-machines kunt u de pagina problemen met Update agent oplossen starten door de koppeling **problemen oplossen** te selecteren in de kolom **Update-gereedheid** in de portal. Voor niet-Azure-computers brengt de koppeling u naar dit artikel. Zie de [offline-instructies](#troubleshoot-offline) voor het oplossen van problemen met een niet-Azure-machine.
 
 ![Scherm afbeelding van de Updatebeheer lijst met virtuele machines](../media/update-agent-issues/vm-list.png)
 
 > [!NOTE]
 > De virtuele machine moet worden uitgevoerd om de status van de Hybrid Runbook Worker te controleren. Als de VM niet wordt uitgevoerd, wordt **de knop VM starten** weer gegeven.
 
-Selecteer op de pagina **Update Agent voor problemen oplossen** de optie **controles uitvoeren** om de probleem oplosser te starten. De probleem Oplosser gebruikt de [opdracht uitvoeren](../../virtual-machines/windows/run-command.md) om een script uit te voeren op de computer om afhankelijkheden te controleren. Wanneer de probleem Oplosser is voltooid, wordt het resultaat van de controles geretourneerd.
+Selecteer op de pagina Update Agent voor problemen oplossen de optie **controles uitvoeren** om de probleem oplosser te starten. De probleem Oplosser gebruikt de [opdracht uitvoeren](../../virtual-machines/windows/run-command.md) om een script uit te voeren op de computer om afhankelijkheden te controleren. Wanneer de probleem Oplosser is voltooid, wordt het resultaat van de controles geretourneerd.
 
 ![Scherm afbeelding van de pagina Update Agent voor problemen oplossen](../media/update-agent-issues/troubleshoot-page.png)
 
@@ -53,7 +53,7 @@ De resultaten worden weer gegeven op de pagina wanneer ze klaar zijn. In de sect
 
 ### <a name="operating-system"></a>Besturingssysteem
 
-Met de controle van het besturings systeem wordt gecontroleerd of op de Hybrid Runbook Worker een van de volgende besturings systemen wordt uitgevoerd:
+Met de controle van het besturings systeem wordt gecontroleerd of op de Hybrid Runbook Worker een van de besturings systemen wordt uitgevoerd die in de volgende tabel worden weer gegeven.
 
 |Besturingssysteem  |Opmerkingen  |
 |---------|---------|
@@ -61,11 +61,11 @@ Met de controle van het besturings systeem wordt gecontroleerd of op de Hybrid R
 
 ### <a name="net-462"></a>.NET-4.6.2
 
-Met de .NET Framework controle wordt gecontroleerd of er mini maal [.NET Framework 4.6.2](https://www.microsoft.com/en-us/download/details.aspx?id=53345) is geïnstalleerd op het systeem.
+Met de .NET Framework controle wordt gecontroleerd of het systeem [.NET Framework 4.6.2](https://www.microsoft.com/en-us/download/details.aspx?id=53345) of hoger is geïnstalleerd.
 
 ### <a name="wmf-51"></a>WMF 5.1
 
-De WMF-controle controleert of het systeem beschikt over de vereiste versie van Windows Management Framework (WMF): [Windows Management framework 5,1](https://www.microsoft.com/download/details.aspx?id=54616).
+De WMF-controle controleert of het systeem beschikt over de vereiste versie van Windows Management Framework (WMF), het [Windows Management framework 5,1](https://www.microsoft.com/download/details.aspx?id=54616).
 
 ### <a name="tls-12"></a>TLS 1.2
 
@@ -77,13 +77,13 @@ Met deze controle wordt bepaald of u gebruikmaakt van TLS 1,2 om uw communicatie
 
 Met deze controle wordt bepaald of de agent goed kan communiceren met de Agent service.
 
-Proxy-en firewall configuraties moeten de Hybrid Runbook Worker agent toestaan te communiceren met het eind punt van de registratie. Zie [netwerk planning voor Hybrid Workers](../automation-hybrid-runbook-worker.md#network-planning)voor een lijst met adressen en poorten die moeten worden geopend.
+Proxy-en firewall configuraties moeten de Hybrid Runbook Worker agent toestaan te communiceren met het eind punt van de registratie. Zie [netwerk planning](../automation-hybrid-runbook-worker.md#network-planning)voor een lijst met adressen en poorten die moeten worden geopend.
 
 ### <a name="operations-endpoint"></a>Eind punt van bewerkingen
 
 Met deze controle wordt bepaald of de agent goed kan communiceren met de taak runtime gegevens service.
 
-Proxy-en firewall configuraties moeten de Hybrid Runbook Worker agent toestaan te communiceren met de taak runtime gegevens service. Zie [netwerk planning voor Hybrid Workers](../automation-hybrid-runbook-worker.md#network-planning)voor een lijst met adressen en poorten die moeten worden geopend.
+Proxy-en firewall configuraties moeten de Hybrid Runbook Worker agent toestaan te communiceren met de taak runtime gegevens service. Zie [netwerk planning](../automation-hybrid-runbook-worker.md#network-planning)voor een lijst met adressen en poorten die moeten worden geopend.
 
 ## <a name="vm-service-health-checks"></a>Status controles van de VM-service
 
@@ -91,15 +91,18 @@ Proxy-en firewall configuraties moeten de Hybrid Runbook Worker agent toestaan t
 
 Met deze controle wordt bepaald of de Log Analytics-agent`healthservice`voor Windows () op de computer wordt uitgevoerd. Voor meer informatie over het oplossen van problemen met de service, Zie [de log Analytics-agent voor Windows wordt niet uitgevoerd](hybrid-runbook-worker.md#mma-not-running).
 
-Zie [de log Analytics agent voor Windows installeren en configureren](../../azure-monitor/learn/quick-collect-windows-computer.md#install-the-agent-for-windows)om de log Analytics-agent voor Windows opnieuw te installeren.
+Zie [de agent voor Windows installeren](../../azure-monitor/learn/quick-collect-windows-computer.md#install-the-agent-for-windows)als u de log Analytics-agent voor Windows opnieuw wilt installeren.
 
 ### <a name="monitoring-agent-service-events"></a>Service gebeurtenissen van monitoring agent
 
 Met deze controle wordt bepaald of 4502 gebeurtenissen in de afgelopen 24 uur worden weer gegeven in het Azure Operations Manager-logboek op de computer.
 
-Raadpleeg de [gids voor probleem oplossing](hybrid-runbook-worker.md#event-4502) voor deze gebeurtenis voor meer informatie over deze gebeurtenis.
+Zie [gebeurtenis 4502 in het Operations Manager-logboek](hybrid-runbook-worker.md#event-4502) voor deze gebeurtenis voor meer informatie over deze gebeurtenis.
 
 ## <a name="access-permissions-checks"></a>Controles van toegangs machtigingen
+
+> [!NOTE]
+> De probleem Oplosser stuurt momenteel geen verkeer via een proxy server als er een is geconfigureerd.
 
 ### <a name="crypto-folder-access"></a>Toegang tot crypto-map
 

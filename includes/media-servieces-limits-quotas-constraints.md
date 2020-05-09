@@ -4,12 +4,12 @@ ms.service: media-services
 ms.topic: include
 ms.date: 03/31/2020
 ms.author: juliako
-ms.openlocfilehash: 99aeb5384b317d1b4d291c769b5402e829247b30
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d6ff823951e6474a35a514036f02c0aabb17bf01
+ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80656220"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "82997738"
 ---
 > [!NOTE]
 > Voor bronnen die niet zijn opgelost, opent u een ondersteunings ticket om te vragen om een toename van de quota's. Maak geen aanvullende Azure Media Services accounts in een poging om hogere limieten te verkrijgen.
@@ -66,7 +66,7 @@ Alle taak records in uw account die ouder zijn dan 90 dagen worden automatisch v
 | --- | --- | 
 | Live-gebeurtenissen <sup>(4)</sup> per Media Services-account |5|
 | Live outputs per live gebeurtenis |3 <sup>(5)</sup> |
-| Maximale duur van live uitvoer | 25 uur |
+| Maximale duur van live uitvoer | [Grootte van het DVR-venster](../articles/media-services/latest/live-event-cloud-dvr.md) |
 
 <sup>4</sup> Zie [vergelijking van live-gebeurtenis typen en beperkingen](../articles/media-services/latest/live-event-types-comparison.md)voor meer informatie over beperkingen van Live-gebeurtenissen.
 
