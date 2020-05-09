@@ -8,21 +8,18 @@ ms.subservice: studio
 ms.topic: conceptual
 author: likebupt
 ms.author: keli19
-ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 11/29/2017
-ms.openlocfilehash: 9a0b855f48085138b28e02e0a5d01c5dd0f666be
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 23a201ef63a9a1a6bb5bd078867ccc1200893049
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79218072"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82982017"
 ---
 # <a name="interpret-model-results-in-azure-machine-learning-studio-classic"></a>Model resultaten interpreteren in Azure Machine Learning Studio (klassiek)
 
 [!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 In dit onderwerp wordt uitgelegd hoe u de Voorspellings resultaten in Azure Machine Learning Studio (klassiek) kunt visualiseren en interpreteren. Nadat u een model hebt getraind en voor spellingen hebt uitgevoerd (het ' gescoorde ' model '), moet u het Voorspellings resultaat begrijpen en interpreteren.
-
-
 
 Er zijn vier hoofd soorten machine learning modellen in Azure Machine Learning Studio (klassiek):
 
@@ -37,11 +34,11 @@ De modules die worden gebruikt voor de voor spelling boven op deze modellen zijn
 * [Toewijzen aan clusters][assign-to-clusters] module voor clustering
 * [Score matchbox aanbevolen][score-matchbox-recommender] voor aanbevolen systemen
 
-In dit document wordt uitgelegd hoe u de Voorspellings resultaten voor elk van deze modules kunt interpreteren. Zie [para meters kiezen voor het optimaliseren van uw algoritmen in azure machine learning Studio (klassiek)](algorithm-parameters-optimize.md)voor een overzicht van deze modules.
+Meer informatie over het [kiezen van para meters voor het optimaliseren van uw algoritmen in ml Studio (klassiek)](algorithm-parameters-optimize.md).
 
-In dit onderwerp wordt de interpretatie van voor spellingen, maar geen model evaluatie beschreven. Zie voor meer informatie over het evalueren van uw model de [prestaties van modellen in azure machine learning Studio (klassiek) evalueren](evaluate-model-performance.md).
+Zie de prestaties van een [model evalueren](evaluate-model-performance.md)voor meer informatie over het evalueren van uw modellen.
 
-Als u geen ervaring hebt met Azure Machine Learning Studio (klassiek) en u hulp nodig hebt bij het maken van een eenvoudig experiment om aan de slag te gaan, raadpleegt u [een eenvoudig experiment maken in azure machine learning Studio (klassiek)](create-experiment.md).
+Als u geen ervaring hebt met ML Studio (klassiek), kunt u [leren hoe u een eenvoudig experiment kunt maken](create-experiment.md).
 
 ## <a name="classification"></a>Classificatie
 Er zijn twee subcategorieën van classificatie problemen:

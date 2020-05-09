@@ -1,6 +1,6 @@
 ---
-title: Toewijzing van toewijzingen voor Azure-resources met Azure PowerShell weigeren
-description: Meer informatie over het weer geven van de gebruikers, groepen, service-principals en beheerde identiteiten die toegang hebben gekregen tot specifieke Azure-resource acties voor bepaalde bereiken met behulp van Azure PowerShell.
+title: Een lijst met Azure deny-toewijzingen met Azure PowerShell-Azure RBAC
+description: Meer informatie over het weer geven van de gebruikers, groepen, service-principals en beheerde identiteiten die toegang hebben gekregen tot specifieke Azure-resource acties voor bepaalde bereiken met Azure PowerShell en Azure op rollen gebaseerd toegangs beheer (Azure RBAC).
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -13,25 +13,25 @@ ms.workload: identity
 ms.date: 06/12/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 5ba18b89bd37dbd55350321c503e37ab0590ab87
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: cd852d19b284f97995855fe06c97ea0ea69be293
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77137397"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82733959"
 ---
-# <a name="list-deny-assignments-for-azure-resources-using-azure-powershell"></a>Toewijzing van toewijzingen voor Azure-resources in een lijst weigeren met Azure PowerShell
+# <a name="list-azure-deny-assignments-using-azure-powershell"></a>Azure deny-toewijzingen weer geven met Azure PowerShell
 
-[Toewijzingen weigeren](deny-assignments.md) blok keren dat gebruikers specifieke Azure-resource acties kunnen uitvoeren, zelfs als een roltoewijzing deze toegang verleent. In dit artikel wordt beschreven hoe u het weigeren van toewijzingen in Azure PowerShell kunt weer geven.
+Met [Azure deny-toewijzingen](deny-assignments.md) kunnen gebruikers specifieke Azure-resource acties uitvoeren, zelfs als een roltoewijzing deze toegang verleent. In dit artikel wordt beschreven hoe u het weigeren van toewijzingen in Azure PowerShell kunt weer geven.
 
 > [!NOTE]
-> U kunt niet rechtstreeks uw eigen weigerings toewijzingen maken. Zie [toewijzingen weigeren](deny-assignments.md)voor meer informatie over hoe weigerings toewijzingen worden gemaakt.
+> U kunt niet rechtstreeks uw eigen weigerings toewijzingen maken. Zie [Azure deny-toewijzingen](deny-assignments.md)voor meer informatie over hoe weigerings toewijzingen worden gemaakt.
 
 ## <a name="prerequisites"></a>Vereisten
 
 Als u informatie wilt ophalen over een weiger toewijzing, hebt u het volgende nodig:
 
-- `Microsoft.Authorization/denyAssignments/read`machtiging, die is opgenomen in de meeste [ingebouwde rollen voor Azure-resources](built-in-roles.md)
+- `Microsoft.Authorization/denyAssignments/read`machtiging, die deel uitmaakt van de meeste [ingebouwde rollen van Azure](built-in-roles.md)
 - [Power shell in azure Cloud shell](/azure/cloud-shell/overview) of [Azure PowerShell](/powershell/azure/install-az-ps)
 
 ## <a name="list-deny-assignments"></a>Lijst met geweigerde toewijzingen weergeven
@@ -125,6 +125,6 @@ PS C:\> Get-AzDenyAssignment -Scope /subscriptions/11111111-1111-1111-1111-11111
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Meer informatie over het weigeren van toewijzingen voor Azure-resources](deny-assignments.md)
-- [Toewijzing van toewijzingen voor Azure-resources met behulp van de Azure Portal weer geven](deny-assignments-portal.md)
-- [Toewijzing van toewijzingen voor Azure-resources met behulp van de REST API weer geven](deny-assignments-rest.md)
+- [Meer informatie over Azure deny-toewijzingen](deny-assignments.md)
+- [Azure deny-toewijzingen weer geven met behulp van de Azure Portal](deny-assignments-portal.md)
+- [Azure deny-toewijzingen weer geven met behulp van de REST API](deny-assignments-rest.md)

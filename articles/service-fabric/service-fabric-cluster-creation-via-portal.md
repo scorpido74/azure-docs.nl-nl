@@ -3,12 +3,12 @@ title: Een Service Fabric-cluster maken in Azure Portal
 description: Meer informatie over het instellen van een beveiligd Service Fabric-cluster in azure met behulp van de Azure Portal en Azure Key Vault.
 ms.topic: conceptual
 ms.date: 09/06/2018
-ms.openlocfilehash: e0cd3d5e5a37720134a5bce596bba211b375f19d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 64a4c430cc7402419d64b77fdcc9a6389cf9de6d
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81458314"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82792476"
 ---
 # <a name="create-a-service-fabric-cluster-in-azure-using-the-azure-portal"></a>Een Service Fabric-cluster maken in azure met behulp van de Azure Portal
 > [!div class="op_single_selector"]
@@ -68,7 +68,7 @@ Het maken van een productie cluster om te voldoen aan de behoeften van uw toepas
 
 ### <a name="search-for-the-service-fabric-cluster-resource"></a>Zoeken naar de Service Fabric cluster resource
 
-Meld u aan bij de [Azure-portal][azure-portal].
+Meld u aan bij [Azure Portal][azure-portal].
 Klik op **een resource maken** om een nieuwe resource sjabloon toe te voegen. Zoek de Service Fabric cluster sjabloon op de **Marketplace** onder **Alles**.
 Selecteer **service Fabric cluster** in de lijst.
 
@@ -107,7 +107,7 @@ Configureer uw cluster knooppunten. Knooppunt typen definiëren de VM-grootten, 
 2. De minimale **grootte** van vm's voor het primaire knooppunt type wordt bepaald door de **duurzaamheids categorie** die u voor het cluster kiest. De standaard waarde voor de duurzaamheids categorie is bronzen. Zie [How to choose the service Fabric cluster duurzaamheid][service-fabric-cluster-durability](Engelstalig) voor meer informatie over duurzaamheid.
 3. Selecteer de **grootte van de virtuele machine**. Vm's uit de D-serie hebben SSD-stations en worden ten zeerste aanbevolen voor stateful toepassingen. Gebruik geen VM-SKU met gedeeltelijke kernen of minder dan 10 GB aan beschik bare schijf capaciteit. Raadpleeg het [document plannings overweging van service Fabric-cluster][service-fabric-cluster-capacity] voor hulp bij het selecteren van de VM-grootte.
 4.  **Cluster met één knoop punt en drie knooppunt clusters** zijn uitsluitend bedoeld voor test doeleinden. Ze worden niet ondersteund voor actieve werk belastingen voor productie.
-5. Kies de **eerste capaciteit van de VM-schaalset** voor het knooppunt type. U kunt het aantal Vm's in een knooppunt type later omhoog of omlaag schalen, maar op het primaire knooppunt type is het minimum vijf voor werk belastingen voor productie. Andere knooppunt typen kunnen mini maal één virtuele machine hebben. Het minimum **aantal** vm's voor het primaire knooppunt type stuurt de **betrouw baarheid** van uw cluster.  
+5. Kies de **eerste capaciteit van de VM-schaalset** voor het knooppunt type. U kunt het aantal Vm's in een knooppunt type later in-of uitschalen, maar op het primaire knooppunt type is het minimum vijf voor de werk belasting van de productie. Andere knooppunt typen kunnen mini maal één virtuele machine hebben. Het minimum **aantal** vm's voor het primaire knooppunt type stuurt de **betrouw baarheid** van uw cluster.  
 6. **Aangepaste eind punten**configureren. In dit veld kunt u een door komma's gescheiden lijst met poorten invoeren die u wilt weer geven via de Azure Load Balancer op het open bare Internet voor uw toepassingen. Als u bijvoorbeeld van plan bent een webtoepassing te implementeren op uw cluster, voert u ' 80 ' hier in om verkeer op poort 80 toe te staan in uw cluster. Zie [communicatie met toepassingen][service-fabric-connect-and-communicate-with-services] voor meer informatie over eind punten
 7. **Schakel omgekeerde proxy in**.  De [service Fabric reverse-proxy](service-fabric-reverseproxy.md) helpt micro services die worden uitgevoerd in een service Fabric cluster te detecteren en te communiceren met andere services met http-eind punten.
 8. Ga terug naar de Blade **cluster configuratie** , onder **+ optionele instellingen weer geven**, cluster **diagnostiek**configureren. Diagnostische gegevens zijn standaard ingeschakeld in uw cluster om te helpen bij het oplossen van problemen. Als u Diagnostische gegevens wilt uitschakelen, wijzigt u de **status** in-en **uitschakelen**. Het uitschakelen van diagnostische gegevens wordt **niet** aanbevolen. Als u Application Insights project al hebt gemaakt, geeft u de bijbehorende sleutel, zodat de toepassings traceringen ernaar worden doorgestuurd.

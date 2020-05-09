@@ -7,18 +7,18 @@ ms.date: 11/22/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 55512491121aee28404ab5f85b4223c67a2f0e1e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 588926a90d9a40c00bca4914dc1d5ed08301ff75
+ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80236066"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82780790"
 ---
 # <a name="understand-extended-offline-capabilities-for-iot-edge-devices-modules-and-child-devices"></a>Uitgebreide offline mogelijkheden voor IoT Edge apparaten, modules en onderliggende apparaten begrijpen
 
 Azure IoT Edge ondersteunt uitgebreide offline bewerkingen op uw IoT Edge apparaten en schakelt offline bewerkingen op niet-IoT Edge onderliggende apparaten uit. Zolang een IoT Edge apparaat één mogelijkheid heeft om verbinding te maken met IoT Hub, kunnen het apparaat en eventuele onderliggende apparaten blijven functioneren met een onregelmatige of geen Internet verbinding.
 
-## <a name="how-it-works"></a>Hoe werkt het?
+## <a name="how-it-works"></a>Hoe het werkt
 
 Wanneer een IoT Edge apparaat in de offline modus wordt gezet, neemt de IoT Edge hub drie rollen in beslag. Eerst worden berichten opgeslagen die naar de upstream gaan en deze opslaan totdat het apparaat opnieuw verbinding maakt. Ten tweede fungeert deze namens IoT Hub om modules en onderliggende apparaten te verifiëren, zodat ze kunnen blijven werken. Ten derde wordt er communicatie mogelijk tussen onderliggende apparaten die normaal gesp roken via IoT Hub.
 
@@ -108,7 +108,7 @@ Een manier om deze vertrouwens relatie te maken, wordt gedetailleerd beschreven 
 
 ## <a name="specify-dns-servers"></a>DNS-servers opgeven
 
-Ter verbetering van de robuustheid wordt u ten zeerste aangeraden de DNS-server adressen op te geven die in uw omgeving worden gebruikt. Als u uw DNS-server voor IoT Edge wilt instellen, raadpleegt u de oplossing voor de [module Edge agent doorlopend het ' lege configuratie bestand ' en worden er geen modules gestart op het apparaat](troubleshoot.md#edge-agent-module-continually-reports-empty-config-file-and-no-modules-start-on-the-device) in het artikel over probleem oplossing.
+Ter verbetering van de robuustheid wordt u ten zeerste aangeraden de DNS-server adressen op te geven die in uw omgeving worden gebruikt. Als u uw DNS-server voor IoT Edge wilt instellen, raadpleegt u de oplossing voor de [module Edge agent doorlopend het ' lege configuratie bestand ' en worden er geen modules gestart op het apparaat](troubleshoot-common-errors.md#edge-agent-module-reports-empty-config-file-and-no-modules-start-on-the-device) in het artikel over probleem oplossing.
 
 ## <a name="optional-offline-settings"></a>Optionele offline-instellingen
 

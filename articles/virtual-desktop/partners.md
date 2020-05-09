@@ -5,15 +5,15 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 03/10/2020
+ms.date: 05/01/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: e10908a3ce0ad372ab7d05fda9a15481d0efc5a8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 15bfb1e4d21e4f91cb37fed6e43b4e03f5643b13
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79127569"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82692195"
 ---
 # <a name="windows-virtual-desktop-partner-integrations"></a>Integratie van virtuele bureau blad-partners van Windows
 
@@ -82,6 +82,16 @@ In combi natie met Windows Virtual Desktop biedt ControlUp extra mogelijkheden v
 - [Bekijk de kortere oplossing](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3PUit).
 - [Ga naar de website van de partner](https://www.controlup.com/solutions/ms_wvd/).
 
+## <a name="dell"></a>Dell
+
+![Logo van Dell](./media/partners/dell.png)
+
+De thin clients van Dell Technologies zijn geoptimaliseerd voor toegang tot Microsoft Azure en virtuele bureau blad-services van Windows. Wyse thin-clients kunnen voldoen aan de behoeften van werk nemers met samenwerkings kennis tot grafische intensieve kracht gebruikers, maar bieden een hoogwaardige computer ervaring om optimaal te profiteren van het groeiende aantal apps en inhoud. Het is ideaal voor omgevingen met beperkte ruimte, maar Wyse thin-clients worden aangepast aan de manier waarop mensen werken met veelzijdige vorm factoren en een breed scala aan mogelijkheden voor het koppelen van opties.
+
+Wyse thin-clients zijn ontworpen met beveiliging in het licht van beperkte kwets baarheid, ondersteuning voor nalevings normen voor beveiliging en geavanceerde multi-factor Authentication-oplossingen. Implementeer uiterst beveiligde thin clients met door Dell exclusieve Wyse ThinOS of Bewaak beveiligde toegang tot Cloud toepassingen en virtuele werk ruimten van geharde Wyse ThinLinux met een commercieel bewezen ontwerp en Windows 10 IoT Enter prise met door Dell toegevoegde beveiligings functies. Met veilige, op HTTPS gebaseerde communicatie en Active Directory-verificatie voor op rollen gebaseerd beheer, houdt Wyse Management Suite Wyse-eind punten altijd up-to-date en met de mobiele app voor WMS Pro kan IT kritieke waarschuwingen weer geven en realtime opdrachten met één tik op elk gewenst moment verzenden.
+
+- [Ga naar de website van de partner](https://www.delltechnologies.com/en-us/wyse/index.htm#scroll=off&overlay=//www.dellemc.com/en-us/collaterals/unauth/brochures/products/thin-clients/Wyse_Windows_Embedded_Standard_thin_clients_brochure.pdf).
+
 ## <a name="devicetrust"></a>deviceTRUST
 
 ![deviceTRUST-logo](./media/partners/devicetrust.png)
@@ -110,6 +120,7 @@ IGEL is een goedgekeurde en geverifieerde partner van Microsoft Azure en virtuel
  
 IGEL-besturings systeem ondersteunt alle populaire virtuele apps, Bureau bladen en Cloud werkruimte client protocollen van Citrix, micro soft en VMware. Het bevat geïntegreerde technologieën van 85 Peripheral-, Interface-en protocol partners om organisaties in staat te stellen om snel virtuele bureau blad-services van Windows in hun eigen, unieke gebruikers omgevingen aan te nemen. Het besturings systeem IGEL is een alleen-lezen, Modulair eindpunt besturingssysteem, waardoor het niet kan worden geknoeid. Het bevat nu ook een volledige vertrouwens keten die de integriteit verifieert van alle belang rijke processen die op het eind punt worden uitgevoerd, van de eindpunt-hardware (sommige geselecteerde modellen) of het UEFI-proces helemaal naar de Azure-Cloud en virtuele bureau blad-services van Windows. Met het IGEL-besturings systeem kunnen bedrijven zich abonneren op virtuele Windows-Bureau bladen vanuit de Azure-Cloud met volledig vertrouwen in de integriteit, beveiliging en beheer baarheid van de eindpunt apparaten van hun gebruikers.
 
+- [Bekijk de kortere oplossing](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4vviO).
 - [Ga naar de website van de partner](https://www.igel.com/igel-os-universal-desktop-operating-system/).
 
 ## <a name="ivanti"></a>Ivanti
@@ -191,6 +202,7 @@ PolicyPak software is een virtueel bureau blad-partner voor Windows waarmee het 
 
 De belangrijkste use cases voor PolicyPak zijn het verwijderen van lokale beheerders rechten en het oplossen van UAC-Prompts, het blok keren van Ransomware, het beheren van meerdere browsers, het beheren van de bedrijfs-en compatibiliteits modus van Internet Explorer, het aantal groeps beleidsobjecten voor het beheren van Windows 10-bestands koppelingen, het beheren van Windows 10-functies en optionele functies.  
 
+- [Bekijk de kortere oplossing](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4vviN).
 - [Ga](https://www.policypak.com/integration/policypak-windows-virtual-desktop.html)naar de website van de partner.
 
 ## <a name="printerlogic"></a>PrinterLogic
@@ -211,8 +223,8 @@ Printix is een Windows-service provider met toegevoegde waarde waarmee gebruiker
 
 Afdrukken is een fundamentele taak in slechts elke Office-en Small Business-omgeving. Om optimaal gebruik te kunnen maken van het virtuele bureau blad van Windows en een fantastische gebruikers ervaring te bieden, is het van essentieel belang om ervoor te zorgen dat uw gebruikers verbinding maken met printers met minimale inspanning en maximale betrouw baarheid. Met Printix kunt u optimaal gebruikmaken van Windows virtueel bureau blad via eenmalige aanmelding (SSO), stille configuratie, regel matige updates en doorlopende bewaking van uw afdruk omgeving.
 
-- [Bekijk de gezamenlijke oplossing](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4aiK2)
-- [Ga naar de partner website](https://www.printix.net/printix-for-windows-virtual-desktop)
+- [Bekijk de kortere oplossing](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4aiK2).
+- [Ga naar de website van de partner](https://www.printix.net/printix-for-windows-virtual-desktop).
 
 ## <a name="rdpsoft"></a>RDPSoft
 
@@ -222,7 +234,7 @@ RDPSoft is een virtueel-bureaublad partner van Windows die krachtige en goedkope
  
 De Extern bureaublad Commander-oplossingen van RDPSoft verbeteren het beheer van virtuele Windows-Bureau bladen. Premium-beheer functies vereenvoudigen de overdracht van beheer taken voor virtuele Windows-Bureau bladen ter ondersteuning van Desk medewerkers door hulp op afstand, gebruikers sessie en proces beheer te bieden. Terzelfder tijd verzamelt de Extern bureaublad Commander Suite rijke metrische gegevens over de prestaties van de gebruiker en de belasting, gebruikers activiteit en controle, Windows Virtual Desktop-verbindings kwaliteit (latentie en band breedte), licenties en beveiliging in een centraal Azure SQL database-exemplaar voor beoordeling. Met RDPSoft zijn uitgebreide historische rapporten en uitgebreide Dash boards gewoon op weg.
 
-- [Ga naar de partner website](https://www.rdpsoft.com/products/remote-desktop-commander/suite/)
+- [Ga naar de website van de partner](https://www.rdpsoft.com/products/remote-desktop-commander/suite/).
 
 ## <a name="sepago"></a>sepago
 
@@ -232,7 +244,8 @@ sepago is opgericht in 2002 door vier vrienden in Cologne. Tegenwoordig is sepag
 
 het innovatie-en ontwikkelings Lab van sepago bouwt slimme oplossingen met behulp van big data-en AI-technologieën. Deze oplossingen zijn gericht op het verbeteren van het bedrijf, de gebruikers ervaring en de administraties van partner producten zoals virtueel bureau blad van Windows.
 
-- [Ga naar de partner website](https://www.sepago.de/wvd-value-add-tools/)
+- [Bekijk de kortere oplossing](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4qMsm).
+- [Ga naar de website van de partner](https://www.sepago.de/wvd-value-add-tools/).
 
 ## <a name="thinprint"></a>ThinPrint
 
@@ -263,7 +276,18 @@ een grote limiet, het uberAgent-bedrijf, geeft inzicht in de implementaties van 
 
 uberAgent is een bewakings-en analyse product dat is ontworpen voor eind gebruikers die niet alleen gegevens verzamelen; het biedt klanten de informatie die van belang is. uberAgent heeft zijn eigen metrische gegevens, met belang rijke aspecten van de gebruikers ervaring, de prestaties van toepassingen en Endpoint Security, waarmee u alles wat u nodig hebt om te weten te komen over uw virtuele bureau blad-Vm's in Windows zonder dat dit van invloed is op de gebruikers densiteit van uw systemen. uberAgent vereenvoudigt het oplossen van problemen, helpt bij het verg Roten/verkleinen en biedt uitgebreide informatie die essentieel is voor informatie beveiliging.
 
-- [Ga naar de partner website](https://uberagent.com/docs/uberagent/latest/about-uberagent/system-requirements/#windows-virtual-desktop)
+- [Ga naar de website van de partner](https://uberagent.com/docs/uberagent/latest/about-uberagent/system-requirements/#windows-virtual-desktop).
+
+## <a name="workspace-365"></a>Werk ruimte 365
+
+![Werk ruimte 365-logo](./media/partners/workspace-365.png)
+
+In werk ruimte 365 worden al uw gegevens (zakelijke gegevens, documenten, communicatie en micro-apps) opgenomen en wordt toegang geboden tot lokale, Web-of gehoste toepassingen in één werk ruimte. Het wordt automatisch aangepast aan uw rol, locatie, apparaat, browser en meer om een persoonlijke werk ruimte te bieden. Gebruikers krijgen een vereenvoudigde en consistente ervaring, ongeacht welke technologie zich onder het Opper vlak bevindt. U kunt uw huidige oplossingen, zoals RDP, Citrix en verouderde toepassingen, integreren en verplaatsen naar het virtuele bureau blad van Windows en tegelijkertijd dezelfde gebruikers ervaring behouden. Daarnaast kunt u al uw bestands locaties, zoals share point, OneDrive, teams en bestands servers, integreren in één document beheer-app.
+
+Met werk ruimte 365 kunnen IT-beheerders Windows-toepassingen met virtueel bureau blad beschikbaar maken voor gebruikers op basis van machtigingen. De beheerder kan deze toepassingen vervolgens toevoegen aan een gedeelde toepassings groep. Wanneer de Windows-toepassing voor virtueel bureau blad wordt weer gegeven in werk ruimte 365, kunnen gebruikers deze openen vanuit hun werk ruimte zonder zich opnieuw aan te melden. 
+
+- [Bekijk de kortere oplossing](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4vARh).
+- [Ga naar de website van de partner](https://workspace365.net/product-tour/hybrid-workspace-365/).
 
 ## <a name="workspot"></a>Workspot
 
@@ -279,4 +303,4 @@ Workspot breidt de waarde van Windows virtueel bureau blad uit door het inrichti
 ## <a name="next-steps"></a>Volgende stappen
 
 - [Meer informatie over virtueel bureau blad van Windows](overview.md).
-- [Een Tenant maken in Windows virtueel bureau blad](tenant-setup-azure-active-directory.md).
+- [Een Tenant maken in Windows virtueel bureau blad](./virtual-desktop-fall-2019/tenant-setup-azure-active-directory.md).

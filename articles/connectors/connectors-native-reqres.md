@@ -3,20 +3,20 @@ title: Oproepen ontvangen en erop reageren via HTTPS
 description: Binnenkomende HTTPS-aanvragen van externe services verwerken door gebruik te maken van Azure Logic Apps
 services: logic-apps
 ms.suite: integration
-ms.reviewers: klam, logicappspm
+ms.reviewers: jonfan, logicappspm
 ms.topic: conceptual
-ms.date: 05/04/2020
+ms.date: 05/06/2020
 tags: connectors
-ms.openlocfilehash: 8137bea37c25554d814e237380ba5c57c5b24d57
-ms.sourcegitcommit: 0fda81f271f1a668ed28c55dcc2d0ba2bb417edd
-ms.translationtype: HT
+ms.openlocfilehash: c6d8dc087e6306173fc4d55368cd3c4c624d5302
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82900964"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82978566"
 ---
 # <a name="receive-and-respond-to-inbound-https-requests-in-azure-logic-apps"></a>Inkomende HTTPS-aanvragen ontvangen en erop reageren in Azure Logic Apps
 
-Met [Azure Logic apps](../logic-apps/logic-apps-overview.md) en de ingebouwde aanvraag-of reactie actie, kunt u geautomatiseerde taken en werk stromen maken die binnenkomende HTTPS-aanvragen ontvangen en erop reageren. U kunt bijvoorbeeld uw logische app:
+Met [Azure Logic apps](../logic-apps/logic-apps-overview.md) en de ingebouwde aanvraag-en reactie actie, kunt u geautomatiseerde taken en werk stromen maken die binnenkomende HTTPS-aanvragen ontvangen en erop reageren. U kunt bijvoorbeeld uw logische app:
 
 * Ontvangen en reageren op een HTTPS-aanvraag voor gegevens in een on-premises data base.
 * Activeer een werk stroom wanneer een externe webhook-gebeurtenis plaatsvindt.
@@ -49,11 +49,11 @@ De trigger voor aanvragen ondersteunt [Azure Active Directory open verificatie](
 
 ## <a name="add-request-trigger"></a>Aanvraag trigger toevoegen
 
-Deze ingebouwde trigger maakt een hand matig aanroep bare HTTPS-eind punt dat *alleen* binnenkomende HTTPS-aanvragen kan ontvangen. Wanneer deze gebeurtenis plaatsvindt, wordt de trigger geactiveerd en wordt de logische app uitgevoerd.
+Deze ingebouwde trigger maakt een hand matig aanroep bare HTTPS-eind punt dat *alleen* binnenkomende HTTPS-aanvragen kan ontvangen. Wanneer deze gebeurtenis plaatsvindt, wordt de trigger geactiveerd en wordt de logische app uitgevoerd. Voor meer informatie over de onderliggende JSON-definitie van de trigger en hoe u deze trigger aanroept, raadpleegt u de [aanvraag trigger type](../logic-apps/logic-apps-workflow-actions-triggers.md#request-trigger) en [roept u werk stromen met https-eind punten aan in azure Logic apps](../logic-apps/logic-apps-http-endpoint.md).
 
 1. Meld u aan bij de [Azure-portal](https://portal.azure.com). Een lege, logische app maken.
 
-1. Wanneer Logic app Designer wordt geopend, voert u in het zoekvak ' HTTP-aanvraag ' in als uw filter. Selecteer in de lijst triggers de trigger **Wanneer een HTTP-aanvraag wordt ontvangen** . Dit is de eerste stap in de werk stroom van uw logische app.
+1. Wanneer Logic app Designer wordt geopend, voert `http request` u in het zoekvak in als uw filter. Selecteer in de lijst triggers de trigger **Wanneer een HTTP-aanvraag wordt ontvangen** . Dit is de eerste stap in de werk stroom van uw logische app.
 
    ![Aanvraag trigger selecteren](./media/connectors-native-reqres/select-request-trigger.png)
 

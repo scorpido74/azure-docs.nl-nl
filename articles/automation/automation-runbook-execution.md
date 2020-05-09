@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 04/14/2020
 ms.topic: conceptual
-ms.openlocfilehash: ace701a6c19f4fe3af1c9ae6f5e63097dd59d405
-ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
+ms.openlocfilehash: 1a9a503fd566c9b50f1503e0955bf12f69ac9960
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82871689"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82927918"
 ---
 # <a name="runbook-execution-in-azure-automation"></a>Uitvoering van runbooks in Azure Automation
 
@@ -86,7 +86,7 @@ Azure Automation maakt gebruik van de [Azure monitor](https://docs.microsoft.com
 
 ### <a name="log-analytics-agent-for-windows"></a>Log Analytics-agent voor Windows
 
-De [log Analytics-agent voor Windows](https://docs.microsoft.com/azure/azure-monitor/platform/agent-windowsmonitor) werkt met Azure monitor voor het beheren van Windows-vm's en fysieke computers. De machines kunnen worden uitgevoerd in azure of in een niet-Azure-omgeving, zoals een lokaal Data Center. U moet de agent configureren om te rapporteren aan een of meer Log Analytics-werk ruimten. 
+De [log Analytics-agent voor Windows](https://docs.microsoft.com/azure/azure-monitor/platform/agent-windows) werkt met Azure monitor voor het beheren van Windows-vm's en fysieke computers. De machines kunnen worden uitgevoerd in azure of in een niet-Azure-omgeving, zoals een lokaal Data Center. U moet de agent configureren om te rapporteren aan een of meer Log Analytics-werk ruimten. 
 
 >[!NOTE]
 >De Log Analytics-agent voor Windows was voorheen bekend als micro soft Monitoring Agent (MMA).

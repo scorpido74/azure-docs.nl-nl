@@ -4,171 +4,269 @@ description: Informatie over het gebruik van Azure PowerShell voor het maken van
 author: cynthn
 tags: azure-resource-manager
 ms.service: virtual-machine-scale-sets
+ms.subservice: imaging
 ms.topic: tutorial
-ms.date: 03/27/2018
+ms.date: 05/04/2020
 ms.author: cynthn
-ms.custom: mvc
-ms.openlocfilehash: daef03b411a451fc3e5b73e46091672810b0f9bd
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.reviewer: akjosh
+ms.openlocfilehash: 4b072991a86922fe2b4ba5be93b4c96841dc24af
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "76278295"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82792765"
 ---
 # <a name="tutorial-create-and-use-a-custom-image-for-virtual-machine-scale-sets-with-azure-powershell"></a>Zelfstudie: Een aangepaste installatiekopie voor virtuele-machineschaalsets maken en gebruiken met Azure PowerShell
 
 Wanneer u een schaalset maakt, geeft u een installatiekopie op die moet worden gebruikt wanneer de VM-exemplaren zijn geïmplementeerd. Om het aantal taken na de implementatie van VM-exemplaren te verminderen, kunt u een aangepaste VM-installatiekopie gebruiken. Deze aangepaste VM-installatiekopie bevat alle geïnstalleerde toepassingen of configuraties die vereist zijn. Alle VM-exemplaren die in de schaalset zijn gemaakt, gebruiken de aangepaste VM-installatiekopie en zijn gereed voor uw toepassingsverkeer. In deze zelfstudie leert u het volgende:
 
 > [!div class="checklist"]
-> * Een VM maken en aanpassen
-> * De inrichting van de VM ongedaan maken en de VM generaliseren
-> * Een aangepaste VM-installatiekopie maken van de bron-VM
-> * Een schaalset implementeren die gebruikmaakt van de aangepaste VM-installatiekopie
+> * Een galerie met gedeelde afbeeldingen maken
+> * Een definitie van een installatie kopie maken
+> * Een versie van een installatie kopie maken
+> * Een schaalset maken op basis van een afbeelding 
+> * Een galerie met installatie kopieën delen
 
 Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
 
-[!INCLUDE [updated-for-az.md](../../includes/updated-for-az.md)]
+## <a name="before-you-begin"></a>Voordat u begint
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+In de onderstaande stappen wordt beschreven hoe u een bestaande virtuele machine maakt en deze inschakelt in een nieuwe, bruikbare aangepaste installatie kopie die u kunt gebruiken om een schaalset te maken.
+
+Om het voorbeeld in deze zelfstudie uit te voeren, moet u een bestaande virtuele machine hebben. Als dat nodig is, kunt u de [Power shell-Snelstartgids](quick-create-powershell.md) bekijken om een virtuele machine te maken die u voor deze zelf studie kunt gebruiken. Wanneer u de zelf studie doorloopt, vervangt u de resource namen waar nodig.
+
+## <a name="launch-azure-cloud-shell"></a>Azure Cloud Shell starten
+
+Azure Cloud Shell is een gratis interactieve shell waarmee u de stappen in dit artikel kunt uitvoeren. In deze shell zijn algemene Azure-hulpprogramma's vooraf geïnstalleerd en geconfigureerd voor gebruik met uw account. 
+
+Als u Cloud Shell wilt openen, selecteert u **Proberen** in de rechterbovenhoek van een codeblok. U kunt Cloud Shell ook starten op een afzonderlijk browser tabblad door naar te [https://shell.azure.com/powershell](https://shell.azure.com/powershell)gaan. Klik op **Kopiëren** om de codeblokken te kopiëren, plak deze in Cloud Shell en druk vervolgens op Enter om de code uit te voeren.
 
 
-## <a name="create-and-configure-a-source-vm"></a>Een bron-VM maken en configureren
+## <a name="get-the-vm"></a>De virtuele machine ophalen
 
->[!NOTE]
-> Deze zelfstudie leidt u door het proces van het maken en gebruiken van een algemene VM-installatiekopie. Het maken van een schaalset op basis van een gespecialiseerde VHD wordt niet ondersteund.
-
-Maak eerst een resourcegroep met [New-AzResourceGroup](/powershell/module/az.compute/new-azvm) en vervolgens een VM met [New-AzVM](/powershell/module/az.resources/new-azresourcegroup). Deze VM wordt vervolgens gebruikt als bron voor een aangepaste VM-installatiekopie. In het volgende voorbeeld wordt een VM met de naam *myCustomVM* gemaakt in de resourcegroep met de naam *myResourceGroup*. Wanneer u hierom wordt gevraagd, geeft u een gebruikersnaam en wachtwoord op dat moet worden gebruikt als de aanmeldingsreferenties voor de VM:
-
-```azurepowershell-interactive
-# Create a resource a group
-New-AzResourceGroup -Name "myResourceGroup" -Location "EastUS"
-
-# Create a Windows Server 2016 Datacenter VM
-New-AzVm `
-  -ResourceGroupName "myResourceGroup" `
-  -Name "myCustomVM" `
-  -ImageName "Win2016Datacenter" `
-  -OpenPorts 3389
-```
-
-Geef voor verbinding met uw VM het openbare IP-adres met [Get-AzPublicIpAddress](/powershell/module/az.network/get-azpublicipaddress) als volgt op:
+U kunt een lijst met virtuele machines die beschikbaar zijn in een resource groep weer geven met behulp van [Get-AzVM](https://docs.microsoft.com/powershell/module/az.compute/get-azvm). Wanneer u de naam van de virtuele machine en de resource groep weet, `Get-AzVM` kunt u opnieuw gebruiken om het VM-object op te halen en dit op te slaan in een variabele, zodat u deze later kunt gebruiken. In dit voor beeld wordt een virtuele machine met de naam *sourceVM* van de resource groep ' myResourceGroup ' opgehaald en toegewezen aan de variabele *$VM*. 
 
 ```azurepowershell-interactive
-Get-AzPublicIpAddress -ResourceGroupName myResourceGroup | Select IpAddress
+$sourceVM = Get-AzVM `
+   -Name sourceVM `
+   -ResourceGroupName myResourceGroup
 ```
+## <a name="create-a-resource-group"></a>Een resourcegroep maken
 
-Maak een externe verbinding met de VM. Als u Azure Cloud Shell gebruikt, voert u deze stap uit vanaf een lokale PowerShell-prompt of vanuit de Extern bureaublad-client. Geef uw eigen IP-adres op uit de vorige opdracht. Wanneer u hierom wordt gevraagd, voert u de referenties in die zijn gebruikt bij het maken van de VM:
+Maak een resourcegroep met de opdracht [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup).
 
-```powershell
-mstsc /v:<IpAddress>
-```
-
-We gaan een eenvoudige webserver voor het aanpassen van uw VM installeren. Bij implementatie van het VM-exemplaar in de schaalset heeft dit hiermee alle vereiste pakketten om een webtoepassing uit te voeren. Open een lokale PowerShell-opdrachtprompt op de VM en installeer de IIS-webserver met [Install-WindowsFeature](/powershell/module/servermanager/install-windowsfeature) als volgt:
-
-```powershell
-Install-WindowsFeature -name Web-Server -IncludeManagementTools
-```
-
-De laatste stap voor het voorbereiden van uw VM voor gebruik als een aangepaste installatiekopie is het generaliseren van de VM. Sysprep verwijdert al uw persoonlijke gegevens en configuraties en stelt de virtuele machine opnieuw in op een schone toestand voor toekomstige implementaties. Zie voor meer informatie [Sysprep gebruiken: een inleiding](https://technet.microsoft.com/library/bb457073.aspx).
-
-Voer Sysprep uit om de virtuele machine te generaliseren, en stel de virtuele machine in voor een out-of-the-box-ervaring. Als u klaar bent, instrueer dan Sysprep om de virtuele machine af te sluiten:
-
-```powershell
-C:\Windows\system32\sysprep\sysprep.exe /oobe /generalize /shutdown
-```
-
-De externe verbinding naar de virtuele machine wordt automatisch gesloten wanneer het proces door Sysprep is uitgevoerd en de virtuele machine wordt afgesloten.
-
-
-## <a name="create-a-custom-vm-image-from-the-source-vm"></a>Een aangepaste VM-installatiekopie maken van de bron-VM
-De bron-VM is nu aangepast met de geïnstalleerde IIS-webserver. We maken een aangepaste VM-installatiekopie om deze te gebruiken met een schaalset.
-
-Voor het maken van een installatiekopie moet de toewijzing van de VM ongedaan worden gemaakt. Maak de toewijzing van de virtuele machine ongedaan met [Stop-AzVm](/powershell/module/az.compute/stop-azvm). Vervolgens stelt u de status van de virtuele machine in als gegeneraliseerd met [Set-AzVm](/powershell/module/az.compute/set-azvm), zodat het Azure-platform weet dat de virtuele machine klaar is voor het gebruik van een aangepaste installatiekopie. U kunt alleen een installatiekopie maken op basis van een gegeneraliseerde virtuele machine:
+Een Azure-resourcegroep is een logische container waarin Azure-resources worden geïmplementeerd en beheerd. In het volgende voor beeld wordt een resource groep met de naam *myGalleryRG* gemaakt in de regio *eastus* :
 
 ```azurepowershell-interactive
-Stop-AzVM -ResourceGroupName "myResourceGroup" -Name "myCustomVM" -Force
-Set-AzVM -ResourceGroupName "myResourceGroup" -Name "myCustomVM" -Generalized
+$resourceGroup = New-AzResourceGroup `
+   -Name 'myGalleryRG' `
+   -Location 'EastUS'
 ```
 
-Het duurt enkele minuten om de toewijzing ongedaan te maken en de virtuele machine te generaliseren.
+## <a name="create-an-image-gallery"></a>Een galerie met installatie kopieën maken 
 
-Maak nu een installatiekopie van de virtuele machine met [New-AzImageConfig](/powershell/module/az.compute/new-azimageconfig) en [New-AzImage](/powershell/module/az.compute/new-azimage). In het volgende voorbeeld wordt er een installatiekopie met de naam *myImage* gemaakt van uw virtuele machine:
+Een galerie met installatie kopieën is de primaire resource die wordt gebruikt voor het inschakelen van het delen van afbeeldingen. Toegestane tekens voor de naam van de galerie bestaan uit hoofd letters of kleine letters, cijfers, punten en punten. De naam van de galerie mag geen streepjes bevatten. Galerie namen moeten uniek zijn binnen uw abonnement. 
+
+Maak een galerie met installatie kopieën met [New-AzGallery](https://docs.microsoft.com/powershell/module/az.compute/new-azgallery). In het volgende voor beeld wordt een galerie gemaakt met de naam *myGallery* in de resource groep *myGalleryRG* .
 
 ```azurepowershell-interactive
-# Get VM object
-$vm = Get-AzVM -Name "myCustomVM" -ResourceGroupName "myResourceGroup"
-
-# Create the VM image configuration based on the source VM
-$image = New-AzImageConfig -Location "EastUS" -SourceVirtualMachineId $vm.ID 
-
-# Create the custom VM image
-New-AzImage -Image $image -ImageName "myImage" -ResourceGroupName "myResourceGroup"
+$gallery = New-AzGallery `
+   -GalleryName 'myGallery' `
+   -ResourceGroupName $resourceGroup.ResourceGroupName `
+   -Location $resourceGroup.Location `
+   -Description 'Shared Image Gallery for my organization'  
 ```
 
-## <a name="configure-the-network-security-group-rules"></a>De regels voor de netwerk beveiligings groep configureren
-Voordat u de Schaalset maakt, moet u de regels voor het koppelen van netwerk beveiligings groepen configureren om toegang tot HTTP, RDP en externe communicatie toe te staan 
+
+## <a name="create-an-image-definition"></a>Een definitie van een installatie kopie maken 
+
+Afbeeldings definities maken een logische groepering voor installatie kopieën. Ze worden gebruikt voor het beheren van informatie over de installatie kopieën die in deze versies worden gemaakt. Definitie namen van afbeeldingen kunnen bestaan uit hoofd letters, kleine letters, cijfers, punten, streepjes en punten. Zie [afbeeldings definities](https://docs.microsoft.com/azure/virtual-machines/windows/shared-image-galleries#image-definitions)voor meer informatie over de waarden die u kunt opgeven voor de definitie van een installatie kopie.
+
+Maak de definitie van de installatie kopie met behulp van [New-AzGalleryImageDefinition](https://docs.microsoft.com/powershell/module/az.compute/new-azgalleryimageversion). In dit voor beeld heeft de galerie-afbeelding de naam *myGalleryImage* en wordt deze gemaakt voor een gespecialiseerde afbeelding. 
 
 ```azurepowershell-interactive
-$rule1 = New-AzNetworkSecurityRuleConfig -Name web-rule -Description "Allow HTTP" -Access Allow -Protocol Tcp -Direction Inbound -Priority 100 -SourceAddressPrefix Internet -SourcePortRange * -DestinationAddressPrefix * -DestinationPortRange 80
-
-$rule2 = New-AzNetworkSecurityRuleConfig -Name rdp-rule -Description "Allow RDP" -Access Allow -Protocol Tcp -Direction Inbound -Priority 110 -SourceAddressPrefix Internet -SourcePortRange * -DestinationAddressPrefix * -DestinationPortRange 3389
-
-$rule3 = New-AzNetworkSecurityRuleConfig -Name remoting-rule -Description "Allow PS Remoting" -Access Allow -Protocol Tcp -Direction Inbound -Priority 120 -SourceAddressPrefix Internet -SourcePortRange * -DestinationAddressPrefix * -DestinationPortRange 5985
-
-New-AzNetworkSecurityGroup -Name "myNSG" -ResourceGroupName "myResourceGroup" -Location "EastUS" -SecurityRules $rule1,$rule2,$rule3
+$galleryImage = New-AzGalleryImageDefinition `
+   -GalleryName $gallery.Name `
+   -ResourceGroupName $resourceGroup.ResourceGroupName `
+   -Location $gallery.Location `
+   -Name 'myImageDefinition' `
+   -OsState specialized `
+   -OsType Windows `
+   -Publisher 'myPublisher' `
+   -Offer 'myOffer' `
+   -Sku 'mySKU'
 ```
 
-## <a name="create-a-scale-set-from-the-custom-vm-image"></a>Een schaalset maken op basis van de aangepaste VM-installatiekopie
+
+## <a name="create-an-image-version"></a>Een versie van een installatie kopie maken
+
+Een installatie kopie versie maken op basis van een virtuele machine met [New-AzGalleryImageVersion](https://docs.microsoft.com/powershell/module/az.compute/new-azgalleryimageversion). 
+
+Toegestane tekens voor de versie van de installatie kopie zijn getallen en punten. Getallen moeten binnen het bereik van een 32-bits geheel getal zijn. Indeling: *MajorVersion*. *MinorVersion*. *Patch*.
+
+In dit voor beeld is de versie van de installatie kopie *1.0.0* en wordt deze gerepliceerd naar zowel VS- *Oost* als *Zuid-Centraal VS* -data centers. Wanneer u doel regio's voor replicatie kiest, moet u de *bron* regio als doel voor replicatie toevoegen.
+
+Als u een installatie kopie versie wilt maken op basis `$vm.Id.ToString()` van de `-Source`virtuele machine, gebruikt u voor de.
+
+```azurepowershell-interactive
+$region1 = @{Name='South Central US';ReplicaCount=1}
+$region2 = @{Name='East US';ReplicaCount=2}
+$targetRegions = @($region1,$region2)
+
+New-AzGalleryImageVersion `
+   -GalleryImageDefinitionName $galleryImage.Name`
+   -GalleryImageVersionName '1.0.0' `
+   -GalleryName $gallery.Name `
+   -ResourceGroupName $resourceGroup.ResourceGroupName `
+   -Location $resourceGroup.Location `
+   -TargetRegion $targetRegions  `
+   -Source $vm.Id.ToString() `
+   -PublishingProfileEndOfLifeDate '2020-12-01'
+```
+
+Het kan even duren om de installatie kopie te repliceren naar alle doel regio's.
+
+## <a name="create-a-scale-set-from-the-image"></a>Een schaalset maken op basis van de afbeelding
 Maak nu een schaalset met [New-AzVmss](/powershell/module/az.compute/new-azvmss) die gebruikmaakt van de parameter `-ImageName` voor het definiëren van de aangepaste VM-installatiekopie die in de vorige stap is gemaakt. Om het verkeer te distribueren naar de verschillende VM-exemplaren, wordt er ook een load balancer gemaakt. De load balancer bevat regels voor het distribueren van verkeer op TCP-poort 80, en voor het toestaan van verkeer van Extern bureaublad op TCP-poort 3389 en externe toegang via PowerShell op TCP-poort 5985. Geef desgevraagd uw eigen beheerdersreferenties op voor de VM-exemplaren in de schaalset:
 
 ```azurepowershell-interactive
+# Define variables for the scale set
+$resourceGroupName = "myVMSSRG3"
+$scaleSetName = "myScaleSet3"
+$location = "East US"
+
+# Create a resource group
+New-AzResourceGroup -ResourceGroupName $resourceGroupName -Location $location
+
+# Create a networking pieces
+$subnet = New-AzVirtualNetworkSubnetConfig `
+  -Name "mySubnet" `
+  -AddressPrefix 10.0.0.0/24
+$vnet = New-AzVirtualNetwork `
+  -ResourceGroupName $resourceGroupName `
+  -Name "myVnet" `
+  -Location $location `
+  -AddressPrefix 10.0.0.0/16 `
+  -Subnet $subnet
+$publicIP = New-AzPublicIpAddress `
+  -ResourceGroupName $resourceGroupName `
+  -Location $location `
+  -AllocationMethod Static `
+  -Name "myPublicIP"
+$frontendIP = New-AzLoadBalancerFrontendIpConfig `
+  -Name "myFrontEndPool" `
+  -PublicIpAddress $publicIP
+$backendPool = New-AzLoadBalancerBackendAddressPoolConfig -Name "myBackEndPool"
+$inboundNATPool = New-AzLoadBalancerInboundNatPoolConfig `
+  -Name "myRDPRule" `
+  -FrontendIpConfigurationId $frontendIP.Id `
+  -Protocol TCP `
+  -FrontendPortRangeStart 50001 `
+  -FrontendPortRangeEnd 50010 `
+  -BackendPort 3389
+# Create the load balancer and health probe
+$lb = New-AzLoadBalancer `
+  -ResourceGroupName $resourceGroupName `
+  -Name "myLoadBalancer" `
+  -Location $location `
+  -FrontendIpConfiguration $frontendIP `
+  -BackendAddressPool $backendPool `
+  -InboundNatPool $inboundNATPool
+Add-AzLoadBalancerProbeConfig -Name "myHealthProbe" `
+  -LoadBalancer $lb `
+  -Protocol TCP `
+  -Port 80 `
+  -IntervalInSeconds 15 `
+  -ProbeCount 2
+Add-AzLoadBalancerRuleConfig `
+  -Name "myLoadBalancerRule" `
+  -LoadBalancer $lb `
+  -FrontendIpConfiguration $lb.FrontendIpConfigurations[0] `
+  -BackendAddressPool $lb.BackendAddressPools[0] `
+  -Protocol TCP `
+  -FrontendPort 80 `
+  -BackendPort 80 `
+  -Probe (Get-AzLoadBalancerProbeConfig -Name "myHealthProbe" -LoadBalancer $lb)
+Set-AzLoadBalancer -LoadBalancer $lb
+
+# Create IP address configurations
+$ipConfig = New-AzVmssIpConfig `
+  -Name "myIPConfig" `
+  -LoadBalancerBackendAddressPoolsId $lb.BackendAddressPools[0].Id `
+  -LoadBalancerInboundNatPoolsId $inboundNATPool.Id `
+  -SubnetId $vnet.Subnets[0].Id
+
+# Create a configuration 
+$vmssConfig = New-AzVmssConfig `
+    -Location $location `
+    -SkuCapacity 2 `
+    -SkuName "Standard_DS2" `
+    -UpgradePolicyMode "Automatic"
+
+# Reference the image version
+Set-AzVmssStorageProfile $vmssConfig `
+  -OsDiskCreateOption "FromImage" `
+  -ImageReferenceId $galleryImage.Id
+
+# Complete the configuration
+ 
+Add-AzVmssNetworkInterfaceConfiguration `
+  -VirtualMachineScaleSet $vmssConfig `
+  -Name "network-config" `
+  -Primary $true `
+  -IPConfiguration $ipConfig 
+
+# Create the scale set 
 New-AzVmss `
-  -ResourceGroupName "myResourceGroup" `
-  -Location "EastUS" `
-  -VMScaleSetName "myScaleSet" `
-  -VirtualNetworkName "myVnet" `
-  -SubnetName "mySubnet" `
-  -SecurityGroupName "myNSG"
-  -PublicIpAddressName "myPublicIPAddress" `
-  -LoadBalancerName "myLoadBalancer" `
-  -UpgradePolicyMode "Automatic" `
-  -ImageName "myImage"
+  -ResourceGroupName $resourceGroupName `
+  -Name $scaleSetName `
+  -VirtualMachineScaleSet $vmssConfig
 ```
 
 Het duurt enkele minuten om alle schaalsetresources en VM's te maken en te configureren.
 
 
-## <a name="test-your-scale-set"></a>Uw schaalset testen
-Als u de schaalset in actie wilt zien, achterhaalt u het openbare IP-adres van de load balancer met [Get-AzPublicIpAddress](/powershell/module/az.network/Get-AzPublicIpAddress). Dit doet u als volgt:
+## <a name="share-the-gallery"></a>De galerie delen
 
+U wordt aangeraden toegang te delen op het niveau van de galerie met installatie kopieën. Gebruik een e-mail adres en de cmdlet [Get-AzADUser](/powershell/module/az.resources/get-azaduser) om de object-id voor de gebruiker op te halen en gebruik vervolgens [New-AzRoleAssignment](/powershell/module/Az.Resources/New-AzRoleAssignment) om hen toegang tot de galerie te geven. Vervang de voorbeeld-e alinne_montes@contoso.com -mail in dit voor beeld met uw eigen gegevens.
 
 ```azurepowershell-interactive
-Get-AzPublicIpAddress `
-  -ResourceGroupName "myResourceGroup" `
-  -Name "myPublicIPAddress" | Select IpAddress
+# Get the object ID for the user
+$user = Get-AzADUser -StartsWith alinne_montes@contoso.com
+# Grant access to the user for our gallery
+New-AzRoleAssignment `
+   -ObjectId $user.Id `
+   -RoleDefinitionName Reader `
+   -ResourceName $gallery.Name `
+   -ResourceType Microsoft.Compute/galleries `
+   -ResourceGroupName $resourceGroup.ResourceGroupName
 ```
-
-Voer in uw webbrowser het openbare IP-adres in. De standaard IIS-webpagina wordt weergegeven, zoals in het volgende voorbeeld:
-
-![IIS uitgevoerd vanuit een aangepaste VM-installatiekopie](media/tutorial-use-custom-image-powershell/default-iis-website.png)
-
 
 ## <a name="clean-up-resources"></a>Resources opschonen
-Als u de schaalset en aanvullende resources wilt verwijderen, verwijdert u de resourcegroep en alle bijbehorende resources met [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup). De parameter `-Force` bevestigt dat u de resources wilt verwijderen, zonder een extra prompt om dit te doen. De parameter `-AsJob` retourneert het besturingselement naar de prompt zonder te wachten totdat de bewerking is voltooid.
+
+Wanneer u deze niet meer nodig hebt, kunt u de cmdlet [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) gebruiken om de resource groep en alle gerelateerde resources te verwijderen:
 
 ```azurepowershell-interactive
-Remove-AzResourceGroup -Name "myResourceGroup" -Force -AsJob
+# Delete the gallery 
+Remove-AzResourceGroup -Name myGalleryRG
+
+# Delete the scale set resource group
+Remove-AzResourceGroup -Name myResoureceGroup
 ```
 
+## <a name="azure-image-builder"></a>Azure Image Builder
+
+Azure biedt ook een service, gebouwd op verpakker, [Azure VM Image Builder](https://docs.microsoft.com/azure/virtual-machines/windows/image-builder-overview). Geef een beschrijving van uw aanpassingen in een sjabloon, waarna het maken van de installatie kopie wordt afgehandeld. 
 
 ## <a name="next-steps"></a>Volgende stappen
 In deze zelfstudie hebt u geleerd hoe u een aangepaste VM-installatiekopie maakt en gebruikt voor uw schaalsets met Azure PowerShell:
 
 > [!div class="checklist"]
-> * Een VM maken en aanpassen
-> * De inrichting van de VM ongedaan maken en de VM generaliseren
-> * Een aangepaste VM-installatiekopie maken
-> * Een schaalset implementeren die gebruikmaakt van de aangepaste VM-installatiekopie
+> * Een galerie met gedeelde afbeeldingen maken
+> * Een definitie van een installatie kopie maken
+> * Een versie van een installatie kopie maken
+> * Een schaalset maken op basis van een afbeelding 
+> * Een galerie met installatie kopieën delen
 
 Ga door naar de volgende zelfstudie voor informatie over het implementeren van toepassingen naar uw schaalset.
 

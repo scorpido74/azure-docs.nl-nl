@@ -6,16 +6,18 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 04/09/2020
 ms.author: thvankra
-ms.openlocfilehash: 9b771a82d88f9902aeb6022f07811ded8a6e0e62
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7d4618382c31f0b1f2efa42fe87a6efe4bc85319
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82192830"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82608248"
 ---
-# <a name="frequently-asked-questions-about-the-cassandra-api-for-azure-cosmos-db"></a>Veelgestelde vragen over de Cassandra-API voor Azure Cosmos DB
+# <a name="frequently-asked-questions-about-the-cassandra-api-in-azure-cosmos-db"></a>Veelgestelde vragen over de Cassandra-API in Azure Cosmos DB
 
-## <a name="what-are-some-key-differences-between-apache-cassandra-and-the-cassandra-api"></a>Wat zijn enkele belang rijke verschillen tussen Apache Cassandra en de Cassandra-API?
+In dit artikel worden de functionaliteits verschillen tussen Apache Cassandra en Cassandra-API in Azure Cosmos DB beschreven. Ook vindt u hier antwoorden op veelgestelde vragen over de Cassandra-API in Azure Cosmos DB.
+
+## <a name="key-differences-between-apache-cassandra-and-the-cassandra-api"></a>De belangrijkste verschillen tussen Apache Cassandra en de Cassandra-API
 
 - Apache Cassandra raadt een limiet van 100 MB aan voor de grootte van een partitie sleutel. De Cassandra-API voor Azure Cosmos DB mag Maxi maal 20 GB per partitie bevatten.
 - Met Apache Cassandra kunt u duurzame door voeringen uitschakelen. U kunt de schrijf bewerkingen naar het commit-logboek overs Laan en direct naar de memtables gaan. Dit kan leiden tot verlies van gegevens als het knoop punt uitvalt voordat memtables naar SSTables op schijf worden leeg gemaakt. Azure Cosmos DB bevat altijd duurzame door voeringen om gegevens verlies te voor komen.

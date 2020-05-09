@@ -972,10 +972,14 @@
               href: sql-api-query-metrics.md
             - name: Tips voor betere prestaties voor de .NET-SDK
               href: performance-tips.md
-            - name: Tips voor betere prestaties voor de Java-SDK
-              href: performance-tips-java.md
-            - name: Tips voor betere prestaties voor de Async Java-SDK
-              href: performance-tips-async-java.md
+            - name: Tips voor betere prestaties voor de Java-SDK v4
+              href: performance-tips-java-sdk-v4-sql.md
+            - name: Tips voor betere prestaties voor oudere Java-SDK's
+              items:
+                - name: Async Java-SDK v2
+                  href: performance-tips-async-java.md
+                - name: Sync Java-SDK v2
+                  href: performance-tips-java.md
             - name: Prestatietest - voorbeeld-app
               href: performance-testing.md
         - name: Rendabele lees- en schrijfbewerkingen
@@ -984,8 +988,12 @@
       items:
         - name: Prestatieproblemen van query's oplossen
           href: troubleshoot-query-performance.md
-        - name: Problemen met Java Async SDK oplossen
-          href: troubleshoot-java-async-sdk.md
+        - name: Problemen met Java-SDK v4 oplossen
+          href: troubleshoot-java-sdk-v4-sql.md
+        - name: Problemen met oudere Java-SDK's oplossen
+          items:
+            - name: Async Java-SDK v2
+              href: troubleshoot-java-async-sdk.md
         - name: Problemen met .NET SDK oplossen
           href: troubleshoot-dot-net-sdk.md
     - name: Feed wijzigen

@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/14/2020
+ms.date: 05/07/2020
 ms.author: spelluru
-ms.openlocfilehash: 8d1ed128181d036af0026ae273c2c5bf1d3a066e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2c8cc4c01b172cd11c13558cd195673d21499b41
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77443496"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82983904"
 ---
 # <a name="classroom-labs-in-azure-lab-services--frequently-asked-questions-faq"></a>Klassikale Labs in Azure Lab Services: veelgestelde vragen (FAQ)
 Krijg antwoorden op enkele van de meest voorkomende vragen over klassikale Labs in Azure Lab Services. 
@@ -58,13 +58,16 @@ Zie [Azure IP-adresbereiken en service tags (open bare Cloud](https://www.micros
 
 Wanneer een beheerder u als een Lab-maker aan een Lab-account toevoegt, krijgt u de benodigde machtigingen voor het maken van Labs. Maar u beschikt niet over de machtigingen voor het bewerken van instellingen in het lab-account, met inbegrip van de lijst met ingeschakelde installatie kopieën van virtuele machines. Als u extra installatie kopieën wilt inschakelen, neemt u contact op met de beheerder van uw Lab-account om dit voor u te doen, of vraag de beheerder u als Inzender rol toe te voegen aan het lab-account. De rol Inzender geeft u de machtigingen om de lijst met installatie kopieën van virtuele machines te bewerken in het lab-account.
 
+### <a name="can-i-attach-additional-disks-to-a-virtual-machine"></a>Kan ik extra schijven koppelen aan een virtuele machine?
+Nee. het is niet mogelijk om extra schijven aan een virtuele machine in een leslokaal te koppelen. 
+
 ## <a name="users"></a>Gebruikers
 
 ### <a name="how-many-users-can-be-in-a-classroom-lab"></a>Hoeveel gebruikers kunnen er in een leslokaal Lab?
 U kunt Maxi maal 400 gebruikers toevoegen aan een leslokaal Lab. 
 
 ## <a name="blog-post"></a>Blog bericht
-Abonneer u op de [Azure Lab Services blog](https://azure.microsoft.com/blog/tag/azure-lab-services/).
+Abonneer u op de [Azure Lab Services blog](https://aka.ms/azlabs-blog).
 
 ## <a name="update-notifications"></a>Meldingen bijwerken
 Abonneer u op de [updates van Lab Services](https://azure.microsoft.com/updates/?product=lab-services) om op de hoogte te blijven van nieuwe functies in de test services.

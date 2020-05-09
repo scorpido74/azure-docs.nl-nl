@@ -3,12 +3,12 @@ title: Overzicht van het CAF Foundation-blauwdrukvoorbeeld
 description: Overzicht en architectuur van het Cloud Adoption Framework (CAF) voor Azure Foundation-blauwdrukvoorbeeld
 ms.date: 04/15/2020
 ms.topic: sample
-ms.openlocfilehash: 1f14b4d4811b9bdcb64f3860b2cf25b82825d5c4
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.openlocfilehash: 3291fdc299652d2b22bff89f5b1dadbdc064e561
+ms.sourcegitcommit: 0fda81f271f1a668ed28c55dcc2d0ba2bb417edd
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81458468"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82901304"
 ---
 # <a name="overview-of-the-microsoft-cloud-adoption-framework-for-azure-foundation-blueprint-sample"></a>Overzicht van Microsoft Cloud Adoption Framework voor het Azure Foundation-blauwdrukvoorbeeld
 
@@ -31,7 +31,7 @@ Deze implementatie omvat verschillende Azure-services die worden gebruikt om een
   - Toegestane Azure-regio voor resources en resourcegroepen
   - Toegestane opslagaccount-SKU's (kiezen tijden het implementeren)
   - Toegestane Azure-VM-SKU's (kiezen tijdens het implementeren)
-  - Vereisen dat Network Watch wordt geïmplementeerd 
+  - Vereisen dat Network Watcher wordt geïmplementeerd 
   - Veilige overdrachtversleuteling voor Azure-opslagaccount vereisen
   - Resourcetypen weigeren (kiezen tijdens implementeren)  
 - Initiatieven

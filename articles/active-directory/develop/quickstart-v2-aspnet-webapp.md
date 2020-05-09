@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 04/11/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET
-ms.openlocfilehash: 7f927d230efba580cff163d31c6f572a10d0b4aa
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 2e225d4d37f6bdb3d50b32f6464456e4f7fa0036
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80991137"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82853954"
 ---
 # <a name="quickstart-add-microsoft-identity-platform-sign-in-to-an-aspnet-web-app"></a>Snelstartgids: aanmelden van micro soft Identity platform toevoegen aan een ASP.NET-Web-app
 In deze Quick Start gebruikt u een code voorbeeld om te zien hoe een ASP.NET-Web-app zich aanmeldt bij persoonlijke accounts (hotmail.com, outlook.com, anderen) en werk-en school accounts van elk Azure Active Directory (Azure AD)-exemplaar.  (Zie [hoe het voor beeld werkt](#how-the-sample-works) voor een illustratie.)
@@ -43,7 +43,7 @@ In deze Quick Start gebruikt u een code voorbeeld om te zien hoe een ASP.NET-Web
 > 1. Selecteer **nieuwe registratie**.
 > 1. Wanneer de pagina **Een toepassing registreren** verschijnt, voert u de registratiegegevens van de toepassing in:
 >      - Voer in de sectie **Naam** een beschrijvende toepassingsnaam in die zichtbaar is voor gebruikers van de app. Bijvoorbeeld: `ASPNET-Quickstart`.
->      - Voeg `http://localhost:44368/` de **omleidings-URI**toe en klik op **registreren**.
+>      - Voeg `https://localhost:44368/` de **omleidings-URI**toe en klik op **registreren**.
 >      - Selecteer in het navigatie deel venster links onder de sectie beheren de optie **verificatie**
 >          - Selecteer in de Subsectie **impliciete toekenning** **id-tokens**.
 >          - En selecteer vervolgens **Opslaan**.

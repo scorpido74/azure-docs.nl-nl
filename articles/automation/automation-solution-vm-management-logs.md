@@ -1,20 +1,20 @@
 ---
-title: Een query uitvoeren op Logboeken van de oplossing Vm's starten/stoppen
-description: In dit artikel wordt beschreven hoe u een query uitvoert op logboek gegevens die zijn gegenereerd door de oplossing Vm's starten en stoppen van Azure Monitor.
+title: Logboeken van VM's buiten bedrijfsuren starten/stoppen opvragen
+description: In dit artikel wordt beschreven hoe u een query uitvoert op logboek gegevens die zijn gegenereerd door VM's buiten bedrijfsuren starten/stoppen oplossing van Azure Monitor.
 services: automation
 ms.subservice: process-automation
 ms.date: 04/01/2020
 ms.topic: conceptual
-ms.openlocfilehash: 472f3762ca18f71ba95053576daf025d8477fee9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 472baa3f4b3cbb970a8f365ccc94929ad565c421
+ms.sourcegitcommit: 602e6db62069d568a91981a1117244ffd757f1c2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81604730"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82864229"
 ---
-# <a name="how-to-query-logs-from-startstop-vms-solution"></a>Een query uitvoeren op Logboeken van de oplossing Vm's starten/stoppen
+# <a name="how-to-query-logs-from-startstop-vms-during-off-hours"></a>Logboeken van VM's buiten bedrijfsuren starten/stoppen opvragen
 
-Azure Automation twee typen records worden doorgestuurd naar de gekoppelde Log Analytics werk ruimte: taak logboeken en taak stromen. Deze gegevens zijn beschikbaar voor [query's](../azure-monitor/log-query/log-query-overview.md) in azure monitor.
+Azure Automation twee typen records worden doorgestuurd naar de gekoppelde Log Analytics werk ruimte: taak logboeken en taak stromen. In dit artikel worden de gegevens weer gegeven die beschikbaar zijn voor [query's](../azure-monitor/log-query/log-query-overview.md) in azure monitor.
 
 ## <a name="job-logs"></a>Taaklogboeken
 

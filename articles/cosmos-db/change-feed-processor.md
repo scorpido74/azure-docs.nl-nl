@@ -6,14 +6,14 @@ ms.author: tisande
 ms.service: cosmos-db
 ms.devlang: dotnet
 ms.topic: conceptual
-ms.date: 4/29/2020
+ms.date: 05/06/2020
 ms.reviewer: sngun
-ms.openlocfilehash: d069df0a095cc0356cd61155dde875a5d92ed18d
-ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
+ms.openlocfilehash: aa9b090627b6f27a54b67c361b45b6f99e3a6338
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82594148"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82982374"
 ---
 # <a name="change-feed-processor-in-azure-cosmos-db"></a>Processor voor wijzigingenfeed in Azure Cosmos DB
 
@@ -89,7 +89,7 @@ Daarnaast kan de wijzigings processor van de feed dynamisch worden aangepast aan
 
 Er worden kosten in rekening gebracht voor het verbruikte RUs, omdat gegevens verplaatsing in en buiten Cosmos containers altijd RUs gebruikt. Er worden kosten in rekening gebracht voor RUs dat wordt gebruikt door de lease-container.
 
-## <a name="additional-resources"></a>Aanvullende bronnen
+## <a name="additional-resources"></a>Extra resources
 
 * [Azure Cosmos DB SDK](sql-api-sdk-dotnet.md)
 * [Voor beelden van gebruik op GitHub](https://github.com/Azure/azure-cosmos-dotnet-v3/tree/master/Microsoft.Azure.Cosmos.Samples/Usage/ChangeFeed)
@@ -100,6 +100,7 @@ Er worden kosten in rekening gebracht voor het verbruikte RUs, omdat gegevens ve
 U kunt nu door gaan met meer informatie over het wijzigen van de feed-processor in de volgende artikelen:
 
 * [Overzicht van wijzigings feed](change-feed.md)
+* [Pull-model voor feed wijzigen](change-feed-pull-model.md)
 * [Migreren vanuit de bibliotheek van de wijzigings feed-processor](how-to-migrate-from-change-feed-library.md)
 * [De wijzigingenfeedschatting gebruiken](how-to-use-change-feed-estimator.md)
 * [Starttijd van verwerker van wijzigingenfeed](how-to-configure-change-feed-start-time.md)

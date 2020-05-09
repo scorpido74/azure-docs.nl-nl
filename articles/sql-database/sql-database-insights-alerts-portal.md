@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: aamalvea
 ms.author: aamalvea
 ms.reviewer: jrasnik, carlrab
-ms.date: 03/10/2020
-ms.openlocfilehash: 67c47b35e84a93d7d9032ad55b425ae2bb6971fe
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 05/04/2020
+ms.openlocfilehash: 37eabd4b2f61a82388b1c8d0aaf4aef2320f008e
+ms.sourcegitcommit: c8a0fbfa74ef7d1fd4d5b2f88521c5b619eb25f8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79209499"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82801804"
 ---
 # <a name="create-alerts-for-azure-sql-database-and-azure-synapse-analytics-databases-using-azure-portal"></a>Waarschuwingen maken voor Azure SQL Database en Azure Synapse Analytics-data bases met behulp van Azure Portal
 
@@ -24,8 +24,8 @@ ms.locfileid: "79209499"
 
 In dit artikel wordt beschreven hoe u met behulp van de Azure Portal waarschuwingen kunt instellen voor afzonderlijke, gepoolde en Data Warehouse-data bases in Azure SQL Database en Azure Synapse Analytics (voorheen Azure SQL Data Warehouse). Waarschuwingen kunnen u een e-mail sturen of een webhook aanroepen wanneer bepaalde metrische gegevens (zoals de grootte van de data base of het CPU-gebruik) de drempel waarde hebben bereikt. Dit artikel bevat ook aanbevolen procedures voor het instellen van waarschuwings perioden.
 
-> [!IMPORTANT]
-> Deze functie is nog niet beschikbaar in het beheerde exemplaar. Als alternatief kunt u SQL Agent gebruiken om e-mail waarschuwingen te verzenden voor bepaalde metrische gegevens op basis van [dynamische beheer weergaven](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/system-dynamic-management-views).
+> [!NOTE]
+> Zie [Create Alerts for Azure SQL Managed instance](sql-database-managed-instance-alerts.md)(Engelstalig) voor SQL Managed instance-specifieke instructies.
 
 U kunt een waarschuwing ontvangen op basis van metrische bewakings gegevens voor of gebeurtenissen op uw Azure-Services.
 
@@ -40,8 +40,8 @@ U kunt een waarschuwing configureren om het volgende te doen wanneer deze wordt 
 
 U kunt informatie over waarschuwings regels configureren en ophalen met behulp van
 
-* [Azure Portal](../monitoring-and-diagnostics/insights-alerts-portal.md)
-* [Zo](../azure-monitor/platform/alerts-classic-portal.md)
+* [Azure-portal](../monitoring-and-diagnostics/insights-alerts-portal.md)
+* [PowerShell](../azure-monitor/platform/alerts-classic-portal.md)
 * [opdracht regel interface (CLI)](../azure-monitor/platform/alerts-classic-portal.md)
 * [Azure Monitor REST API](https://msdn.microsoft.com/library/azure/dn931945.aspx)
 
@@ -50,7 +50,7 @@ U kunt informatie over waarschuwings regels configureren en ophalen met behulp v
 1. Zoek in de [Portal](https://portal.azure.com/)de resource die u wilt bewaken en selecteer deze.
 2. Selecteer **waarschuwingen** in het gedeelte bewaking. De tekst en het pictogram kunnen enigszins verschillen voor verschillende resources.  
 
-   ![Bewaking](media/sql-database-insights-alerts-portal/Alerts.png)
+   ![Controleren](media/sql-database-insights-alerts-portal/Alerts.png)
   
 3. Selecteer de knop **nieuwe waarschuwings regel** om de pagina **regel maken** te openen.
   ![Regel maken](media/sql-database-insights-alerts-portal/create-rule.png)

@@ -10,12 +10,12 @@ ms.author: mesameki
 author: mesameki
 ms.reviewer: Luis.Quintanilla
 ms.date: 04/02/2020
-ms.openlocfilehash: fcb837af85a54102e8c9eafc33249af9dba6b5ce
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f4210352a9d8cd3cd9cb9afda7d9a4798d96f44b
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80631393"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82982884"
 ---
 # <a name="model-interpretability-in-azure-machine-learning"></a>De interpretatie van modellen in Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -74,17 +74,17 @@ Meer informatie over ondersteunde technieken voor interpretatie, ondersteunde ma
 
 |Geïnterpreteerde techniek|Beschrijving|Type|
 |--|--|--------------------|
-|1. uitleg van de SHAP-structuur| De boom uitleg van de [Shap](https://github.com/slundberg/shap), die gericht is op een polynomiale, snelle Shap waarde schattings algoritme die specifiek is voor **bomen en ensembles van structuren**.|Model-specifiek|
-|2. SHAP diepe uitleg| Op basis van de uitleg van [Shap](https://github.com/slundberg/shap)is diepe uitleg een uiterst snelle benaderings ALGORITME voor Shap-waarden in diepe leer modellen die zijn gebaseerd op een verbinding met DeepLIFT beschreven in het [Shap NIPS-papier](https://papers.nips.cc/paper/7062-a-unified-approach-to-interpreting-model-predictions). **Tensor flow** -modellen en **Keras** -modellen met behulp van de tensor flow-backend worden ondersteund (er is ook voorlopige ondersteuning voor PyTorch) '.|Model-specifiek|
-|3. SHAP lineaire uitleg| De lineaire uitleg van [Shap](https://github.com/slundberg/shap)berekent Shap-waarden voor een **lineair model**, eventueel administratief voor correlaties tussen functies.|Model-specifiek|
-|4. SHAP-kernel-uitleg| De kernel-uitleg van [Shap](https://github.com/slundberg/shap)maakt gebruik van een speciaal gewogen lokale lineaire REGRESSIE om Shap-waarden voor **elk model**te schatten.|Model-neutraal|
-|5. imiteer de Uitleger (globale vervanging)| Nabooter is gebaseerd op het idee van [globale surrogaat modellen](https://christophm.github.io/interpretable-ml-book/global.html) met training om blackbox modellen te simuleren. Een globaal surrogaat model is een intrinsiek interpretable model dat is getraind om de voor spellingen van **een zwart box-model** zo nauw keurig mogelijk te benaderen. Gegevens wetenschappers kunnen het surrogaat model interpreteren om conclusies over het zwarte box-model te tekenen. U kunt een van de volgende verwerkte modellen gebruiken als surrogaat model: LightGBM (LGBMExplainableModel), lineaire regressie (LinearExplainableModel), stochastische Gradient Daal verklarend model (SGDExplainableModel) en beslissings structuur (DecisionTreeExplainableModel).|Model-neutraal|
-|6. de belang rijke uitleg van de functie van permutatie (PFI)| Het belang van de permutatie functie is een techniek die wordt gebruikt om classificatie-en regressie modellen te verklaren die zijn geïnspireerd op [het breiman van een wille keurige bossen](https://www.stat.berkeley.edu/~breiman/randomforest2001.pdf) (zie sectie 10). Op hoog niveau kan de manier waarop het werkt, worden uitgevoerd door in wille keurige volg orde de gegevens per functie op te nemen voor de hele gegevensset en te berekenen hoeveel de prestatie metriek van de interesses is gewijzigd. Hoe groter de verandering, des te belang rijker deze functie is. PFI kan het algemene gedrag van **elk onderliggend model** uitleggen, maar verklaart geen afzonderlijke voor spellingen. |Model-neutraal|
+|Uitleg over de SHAP-structuur| De boom uitleg van de [Shap](https://github.com/slundberg/shap), die gericht is op een polynomiale, snelle Shap waarde schattings algoritme die specifiek is voor **bomen en ensembles van structuren**.|Model-specifiek|
+|Uitgebreide uitleg van SHAP| Op basis van de uitleg van SHAP is diepe uitleg een uiterst snelle benaderings algoritme voor SHAP-waarden in diepe leer modellen die zijn gebaseerd op een verbinding met DeepLIFT beschreven in het [Shap NIPS-papier](https://papers.nips.cc/paper/7062-a-unified-approach-to-interpreting-model-predictions). **Tensor flow** -modellen en **Keras** -modellen met behulp van de tensor flow-backend worden ondersteund (er is ook voorlopige ondersteuning voor PyTorch) '.|Model-specifiek|
+|SHAP lineaire uitleg| De lineaire uitleg van SHAP berekent SHAP-waarden voor een **lineair model**, eventueel administratief voor correlaties tussen functies.|Model-specifiek|
+|SHAP-kernel-uitleg| De kernel-uitleg van SHAP maakt gebruik van een speciaal gewogen lokale lineaire regressie om SHAP-waarden voor **elk model**te schatten.|Model-neutraal|
+|Nabooter (globaal surrogaat)| Nabooter is gebaseerd op het idee van [globale surrogaat modellen](https://christophm.github.io/interpretable-ml-book/global.html) met training om blackbox modellen te simuleren. Een globaal surrogaat model is een intrinsiek interpretable model dat is getraind om de voor spellingen van **een zwart box-model** zo nauw keurig mogelijk te benaderen. Gegevens wetenschappers kunnen het surrogaat model interpreteren om conclusies over het zwarte box-model te tekenen. U kunt een van de volgende verwerkte modellen gebruiken als surrogaat model: LightGBM (LGBMExplainableModel), lineaire regressie (LinearExplainableModel), stochastische Gradient Daal verklarend model (SGDExplainableModel) en beslissings structuur (DecisionTreeExplainableModel).|Model-neutraal|
+|Beschrijving van de permutatie functie (PFI)| Het belang van de permutatie functie is een techniek die wordt gebruikt om classificatie-en regressie modellen te verklaren die zijn geïnspireerd op [het breiman van een wille keurige bossen](https://www.stat.berkeley.edu/~breiman/randomforest2001.pdf) (zie sectie 10). Op hoog niveau kan de manier waarop het werkt, worden uitgevoerd door in wille keurige volg orde de gegevens per functie op te nemen voor de hele gegevensset en te berekenen hoeveel de prestatie metriek van de interesses is gewijzigd. Hoe groter de verandering, des te belang rijker deze functie is. PFI kan het algemene gedrag van **elk onderliggend model** uitleggen, maar verklaart geen afzonderlijke voor spellingen. |Model-neutraal|
 
 
 
 
-Naast de methoden voor het interpreteren die hierboven worden beschreven, ondersteunen we nog een [op Shap gebaseerde uitleg](https://github.com/slundberg/shap), ook wel genoemd `TabularExplainer`. Afhankelijk van het model gebruikt een `TabularExplainer` van de ondersteunde Shap-uitleg:
+Naast de methoden voor het interpreteren die hierboven worden beschreven, ondersteunen we nog een op `TabularExplainer`Shap gebaseerde uitleg, ook wel genoemd. Afhankelijk van het model gebruikt een `TabularExplainer` van de ondersteunde Shap-uitleg:
 
 * TreeExplainer voor alle modellen op basis van een structuur
 * DeepExplainer voor DNN-modellen
@@ -120,4 +120,6 @@ U kunt uitleg op afstand uitvoeren op Azure Machine Learning Compute en de uitle
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie de [procedure](how-to-machine-learning-interpretability-aml.md) voor het inschakelen van de functie voor interpretering voor model training zowel lokaal als op Azure machine learning externe Compute-resources. Raadpleeg de [voorbeeld notitieblokken](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/explain-model) voor aanvullende scenario's.
+- Zie de [procedure](how-to-machine-learning-interpretability-aml.md) voor het inschakelen van de functie voor interpretering voor model training zowel lokaal als op Azure machine learning externe Compute-resources. 
+- Raadpleeg de [voorbeeld notitieblokken](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/explain-model) voor aanvullende scenario's. 
+- Zie Interpreting [-Text](https://github.com/interpretml/interpret-text), een gerelateerde open source-opslag plaats om te interpreteren [-Community](https://github.com/interpretml/interpret-community/), voor de interpretatieve technieken voor NLP, als u geïnteresseerd bent in de interpretatie van tekst scenario's. `azureml.interpret`het pakket biedt momenteel geen ondersteuning voor deze technieken, maar u kunt aan de slag met een [voorbeeld notitieblok in tekst classificatie](https://github.com/interpretml/interpret-text/blob/master/notebooks/text_classification/text_classification_classical_text_explainer.ipynb).

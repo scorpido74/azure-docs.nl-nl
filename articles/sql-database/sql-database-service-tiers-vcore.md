@@ -9,12 +9,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: sashan, moslake, carlrab
 ms.date: 11/27/2019
-ms.openlocfilehash: 5fd69dcd30292630862887ab5434764ba377b396
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 78e01c854201e3c5253cd86aebcd85b62bf5568d
+ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79481079"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82629297"
 ---
 # <a name="vcore-model-overview"></a>Overzicht van vCore-modellen
 
@@ -102,7 +102,7 @@ Als u hardware van de M-serie wilt inschakelen voor een abonnement en regio, moe
 |Gen4     |-Intel E5-2673 v3 (Haswell) 2,4 GHz-processors<br>-Tot 24 vCores (1 vCore = 1 fysieke kern) inrichten  |-7 GB per vCore<br>-Maxi maal 168 GB inrichten|
 |GEN5     |**Ingerichte compute**<br>-Intel E5-2673 v4 (Broadwell) 2,3-GHz en Intel SP-8160 (Skylake) * processors<br>-Maxi maal 80 vCores (1 vCore = 1 Hyper Thread) inrichten<br><br>**Serverloze compute**<br>-Intel E5-2673 v4 (Broadwell) 2,3-GHz en Intel SP-8160 (Skylake) * processors<br>-Schaal automatisch naar 16 vCores (1 vCore = 1 Hyper Thread)|**Ingerichte compute**<br>-5,1 GB per vCore<br>-Maxi maal 408 GB inrichten<br><br>**Serverloze compute**<br>-Automatisch schalen naar 24 GB per vCore<br>-Maxi maal 48 GB automatisch schalen|
 |Fsv2-serie     |-Intel Xeon Platinum 8168-processors (SkyLake)<br>-Met een zeer hoge Turbo klok snelheid van 3,4 GHz en een maximale klok snelheid van Maxi maal één kern van 3,7 GHz.<br>-Provision 72 vCores (1 vCore = 1 Hyper Thread)|-1,9 GB per vCore<br>-Inrichting van 136 GB|
-|M-serie     |-Intel Xeon E7-8890 v3 2,5 GHz-processors<br>-Provision 128 vCores (1 vCore = 1 Hyper Thread)|-29 GB per vCore<br>-Inrichting van 3,7 TB|
+|M-serie     |-Intel Xeon E7-8890 v3 2,5 GHz en Intel Xeon Platinum 8280M 2,7 GHz (Cascade Lake)-processors<br>-Provision 128 vCores (1 vCore = 1 Hyper Thread)|-29 GB per vCore<br>-Inrichting van 3,7 TB|
 
 \*In de weer gave [sys. dm_user_db_resource_governance](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-user-db-resource-governor-azure-sql-database) Dynamic Management worden de hardware-generatie voor GEN5-data bases met Intel SP-8160 (Skylake)-processors weer gegeven als Gen6. Resource limieten voor alle GEN5-data bases zijn hetzelfde, ongeacht het processor type (Broadwell of Skylake).
 
@@ -153,7 +153,7 @@ Selecteer op de pagina beheerd exemplaar de **prijs categorie** koppeling die in
 
 Op de pagina **prijs categorie** kunt u de generatie van de hardware wijzigen, zoals beschreven in de vorige stappen.
 
-# <a name="powershell"></a>[Zo](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 Gebruik het volgende PowerShell-script:
 

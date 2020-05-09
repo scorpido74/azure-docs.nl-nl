@@ -7,12 +7,12 @@ ms.subservice: blobs
 ms.topic: conceptual
 ms.author: normesta
 ms.date: 03/04/2020
-ms.openlocfilehash: 056e23f0f0cf1a3a1c70042cef3c92dd41f14f82
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 23a5d2c0e52a22872a8b9a64503d61493018b611
+ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80247007"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82839161"
 ---
 # <a name="host-a-static-website-in-azure-storage"></a>Een statische website hosten in Azure Storage
 
@@ -74,7 +74,7 @@ U kunt statisch website hosting inschakelen met behulp van de [Azure-opdracht re
 
    * Vervang de `<index-document-name>` tijdelijke aanduiding door de naam van het index document. Dit document is vaak "index. html".
 
-### <a name="powershell"></a>[Zo](#tab/azure-powershell)
+### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 <a id="powershell" />
 
@@ -159,8 +159,11 @@ Objecten uploaden naar de *$Web* container vanuit een bronmap.
 In dit voor beeld wordt ervan uitgegaan dat u opdrachten uit Azure Cloud Shell sessie uitvoert.
 
 ```azurecli-interactive
-az storage blob upload-batch -s <source-path> -d \$web --account-name <storage-account-name> --content-type 'text/html; charset=utf-8'
+az storage blob upload-batch -s <source-path> -d \$web --account-name <storage-account-name>
 ```
+
+> [!NOTE] 
+> Als gebruikers van de browser wordt gevraagd om het bestand te downloaden in plaats van de inhoud weer te `--content-type 'text/html; charset=utf-8'` geven, kunt u toevoegen aan de opdracht. 
 
 * Vervang de waarde van de tijdelijke plaatsaanduiding `<storage-account-name>` door de naam van uw opslagaccount.
 
@@ -171,18 +174,20 @@ az storage blob upload-batch -s <source-path> -d \$web --account-name <storage-a
 >
 > Als u Azure Cloud Shell gebruikt, moet u verwijzen naar een bestands share die zichtbaar is voor de Cloud Shell. Deze locatie kan de bestands share zijn van de Cloud share zelf of een bestaande bestands share die u koppelt van de Cloud Shell. Zie [bestanden in azure Cloud shell persistent](https://docs.microsoft.com/azure/cloud-shell/persisting-shell-storage)maken voor meer informatie over hoe u dit doet.
 
-### <a name="powershell"></a>[Zo](#tab/azure-powershell)
+### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 Objecten uploaden naar de *$Web* container vanuit een bronmap.
 
 ```powershell
 # upload a file
 set-AzStorageblobcontent -File "<path-to-file>" `
--Properties @{ ContentType = "text/html; charset=utf-8";} `
 -Container `$web `
 -Blob "<blob-name>" `
 -Context $ctx
 ```
+
+> [!NOTE] 
+> Als gebruikers van de browser wordt gevraagd om het bestand te downloaden in plaats van de inhoud weer te `-Properties @{ ContentType = "text/html; charset=utf-8";}` geven, kunt u toevoegen aan de opdracht.
 
 * Vervang de `<path-to-file>` waarde van de tijdelijke aanduiding door het volledig gekwalificeerde pad naar het bestand dat u wilt uploaden (bijvoorbeeld `C:\temp\index.html`:).
 
@@ -216,7 +221,7 @@ az storage account show -n <storage-account-name> -g <resource-group-name> --que
 
 * Vervang de `<resource-group-name>` waarde van de tijdelijke aanduiding door de naam van uw resource groep.
 
-### <a name="powershell"></a>[Zo](#tab/azure-powershell)
+### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 <a id="powershell-find-url" />
 

@@ -11,12 +11,13 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 330363a78aa9b642f4794cee40bbf040d3484b4b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: has-adal-ref
+ms.openlocfilehash: 09468272397925d9afd1d3014f4fcc1d6a222198
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80653716"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82611378"
 ---
 # <a name="resolve-error-messages-from-the-nps-extension-for-azure-multi-factor-authentication"></a>Resolve error messages from the NPS extension for Azure Multi-Factor Authentication (Foutberichten van de NPS-extensie voor Azure Multi-Factor Authentication oplossen)
 
@@ -66,9 +67,9 @@ Als u problemen ondervindt met de NPS-extensie voor Azure Multi-Factor Authentic
 
 Soms ontvangen uw gebruikers berichten van Multi-Factor Authentication omdat de verificatie aanvraag is mislukt. Dit zijn geen fouten in het product van de configuratie, maar zijn opzettelijke waarschuwingen waarin wordt uitgelegd waarom een verificatie aanvraag is geweigerd.
 
-| Foutcode | Foutbericht | Aanbevolen stappen | 
+| Foutcode | Foutbericht | Aanbevolen stappen |
 | ---------- | ------------- | ----------------- |
-| **OathCodeIncorrect** | Onjuiste code entered\OATH code onjuist | De gebruiker heeft de verkeerde code ingevoerd. Probeer het opnieuw door een nieuwe code aan te vragen of u opnieuw aan te melden. | 
+| **OathCodeIncorrect** | Onjuiste code entered\OATH code onjuist | De gebruiker heeft de verkeerde code ingevoerd. Probeer het opnieuw door een nieuwe code aan te vragen of u opnieuw aan te melden. |
 | **SMSAuthFailedMaxAllowedCodeRetryReached** | Maximum toegestane code voor nieuwe poging bereikt | De gebruiker heeft de verificatie vraag te vaak mislukt. Afhankelijk van uw instellingen, moeten deze mogelijk nu door een beheerder worden gedeblokkeerd.  |
 | **SMSAuthFailedWrongCodeEntered** | Onjuiste code ingevoerd/OTP van SMS-bericht onjuist | De gebruiker heeft de verkeerde code ingevoerd. Probeer het opnieuw door een nieuwe code aan te vragen of u opnieuw aan te melden. |
 

@@ -11,12 +11,12 @@ services: iot-edge
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: 173e663b66eeca676e8120dd46e8eca8b0126a17
-ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
+ms.openlocfilehash: e818de4885d3859199108d7d88e4cbcb215dc4cc
+ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82204199"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82780739"
 ---
 # <a name="prepare-to-deploy-your-iot-edge-solution-in-production"></a>De implementatie van uw IoT Edge oplossing in productie voorbereiden
 
@@ -107,7 +107,7 @@ De IoT Edge hub is standaard geoptimaliseerd voor prestaties, zodat er grote del
 
 Wanneer **OptimizeForPerformance** is ingesteld op **True**, gebruikt de MQTT-protocol kop de PooledByteBufferAllocator, die betere prestaties heeft, maar meer geheugen toewijst. De allocator werkt niet goed op 32-bits besturings systemen of op apparaten met weinig geheugen. Daarnaast wijst RocksDb, wanneer deze is geoptimaliseerd voor prestaties, meer geheugen toe voor de rol van de lokale opslag provider.
 
-Zie [stabiliteits problemen op apparaten met beperkte bronnen](troubleshoot.md#stability-issues-on-resource-constrained-devices)voor meer informatie.
+Zie [stabiliteits problemen op kleinere apparaten](troubleshoot-common-errors.md#stability-issues-on-smaller-devices)voor meer informatie.
 
 #### <a name="disable-unused-protocols"></a>Ongebruikte protocollen uitschakelen
 
@@ -200,7 +200,7 @@ Zorg er vervolgens voor dat u de afbeeldings verwijzingen in het bestand Deploym
 
 ### <a name="review-outboundinbound-configuration"></a>Uitgaande/binnenkomende configuratie controleren
 
-Communicatie kanalen tussen Azure IoT Hub en IoT Edge zijn altijd geconfigureerd als uitgaand verkeer. Voor de meeste IoT Edge scenario's zijn slechts drie verbindingen nodig. De container-engine moet verbinding maken met het container register (of registers) waarin de module installatie kopieën worden bewaard. De IoT Edge runtime moet verbinding maken met IoT Hub om configuratie-informatie over het apparaat op te halen en om berichten en telemetrie te verzenden. En als u automatische inrichting gebruikt, moet de IoT Edge-daemon verbinding maken met de Device Provisioning Service. Zie [firewall-en poort configuratie regels](troubleshoot.md#firewall-and-port-configuration-rules-for-iot-edge-deployment)voor meer informatie.
+Communicatie kanalen tussen Azure IoT Hub en IoT Edge zijn altijd geconfigureerd als uitgaand verkeer. Voor de meeste IoT Edge scenario's zijn slechts drie verbindingen nodig. De container-engine moet verbinding maken met het container register (of registers) waarin de module installatie kopieën worden bewaard. De IoT Edge runtime moet verbinding maken met IoT Hub om configuratie-informatie over het apparaat op te halen en om berichten en telemetrie te verzenden. En als u automatische inrichting gebruikt, moet de IoT Edge-daemon verbinding maken met de Device Provisioning Service. Zie [firewall-en poort configuratie regels](troubleshoot.md#check-your-firewall-and-port-configuration-rules)voor meer informatie.
 
 ### <a name="allow-connections-from-iot-edge-devices"></a>Verbindingen van IoT Edge apparaten toestaan
 
