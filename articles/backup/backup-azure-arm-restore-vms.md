@@ -4,12 +4,12 @@ description: Een virtuele Azure-machine herstellen vanaf een herstel punt met be
 ms.reviewer: geg
 ms.topic: conceptual
 ms.date: 09/17/2019
-ms.openlocfilehash: 687406676320f93bab22e34ca95951035187718d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6a170755673c05448d1bb86af993cad929664949
+ms.sourcegitcommit: acc558d79d665c8d6a5f9e1689211da623ded90a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82182885"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82597770"
 ---
 # <a name="how-to-restore-azure-vm-data-in-azure-portal"></a>Azure VM-gegevens herstellen in Azure Portal
 
@@ -19,7 +19,7 @@ In dit artikel wordt beschreven hoe u Azure VM-gegevens terugzet van de herstel 
 
 Azure Backup biedt een aantal manieren om een virtuele machine te herstellen.
 
-**Optie voor terugzetten** | **Nadere**
+**Optie voor terugzetten** | **Details**
 --- | ---
 **Een nieuwe VM maakt** | Maakt en haalt snel een standaard-VM op die vanaf een herstel punt actief is.<br/><br/> U kunt een naam opgeven voor de virtuele machine, de resource groep en het virtuele netwerk (VNet) selecteren waarin deze wordt geplaatst en een opslag account opgeven voor de herstelde VM. De nieuwe virtuele machine moet in dezelfde regio worden gemaakt als de bron-VM.
 **Schijf herstellen** | Hiermee wordt een VM-schijf teruggezet, die vervolgens kan worden gebruikt om een nieuwe virtuele machine te maken.<br/><br/> Azure Backup biedt een sjabloon waarmee u een virtuele machine kunt aanpassen en maken. <br/><br> De herstel taak genereert een sjabloon die u kunt downloaden en gebruiken om aangepaste VM-instellingen op te geven en om een virtuele machine te maken.<br/><br/> De schijven worden gekopieerd naar de resource groep die u opgeeft.<br/><br/> U kunt de schijf ook koppelen aan een bestaande virtuele machine of een nieuwe virtuele machine maken met behulp van Power shell.<br/><br/> Deze optie is handig als u de virtuele machine wilt aanpassen, configuratie-instellingen wilt toevoegen die niet aanwezig zijn op het moment van de back-up of instellingen toevoegen die moeten worden geconfigureerd met de sjabloon of Power shell.
@@ -136,7 +136,7 @@ Als een van de [Opties voor terugzetten](#restore-options)kunt u een bestaande V
 
 Als een van de [Opties voor terugzetten](https://docs.microsoft.com/azure/backup/backup-azure-arm-restore-vms#restore-options)met behulp van cross Region Restore (CRR) kunt u virtuele Azure-machines herstellen in een secundaire regio, een Azure-gekoppelde regio.
 
-Lees de [sectie voordat u begint](https://docs.microsoft.com/azure/backup/backup-create-rs-vault#set-cross-region-restore)voor het onboarden van de functie tijdens de preview.
+Lees de [sectie voordat u begint](https://docs.microsoft.com/azure/backup/backup-create-rs-vault#set-cross-region-restore)om het onderdeel tijdens de preview-periode onboarding uit te voeren.
 
 Als u wilt zien of CRR is ingeschakeld, volgt u de instructies in [herstel van meerdere regio's configureren](backup-create-rs-vault.md#configure-cross-region-restore)
 
@@ -190,7 +190,7 @@ Er zijn een aantal algemene scenario's waarin u mogelijk Vm's moet herstellen.
 **Bare-metal terugzet bewerking** | Het belangrijkste verschil tussen Azure Vm's en on-premises Hyper visors is dat er geen VM-console beschikbaar is in Azure. Een-console is vereist voor bepaalde scenario's, zoals het herstellen met behulp van een Bare-Metal Recovery (BMR)-type back-up. Het terugzetten van de VM vanuit de kluis is echter een volledige vervanging van BMR.
 **Vm's herstellen met speciale netwerk configuraties** | Speciale netwerk configuraties zijn Vm's met behulp van interne of externe taak verdeling, met behulp van meerdere NIC'S of meerdere gereserveerde IP-adressen. U herstelt deze Vm's met behulp van de [optie schijf herstellen](#restore-disks). Met deze optie maakt u een kopie van de Vhd's naar het opgegeven opslag account en kunt u vervolgens een virtuele machine maken met een [intern](https://azure.microsoft.com/documentation/articles/load-balancer-internal-getstarted/) of [extern](/azure/load-balancer/quickstart-create-standard-load-balancer-powershell) Load Balancer, [meerdere nic's](../virtual-machines/windows/multiple-nics.md)of [meerdere gereserveerde IP-adressen](../virtual-network/virtual-network-multiple-ip-addresses-powershell.md), in overeenstemming met uw configuratie.
 **Netwerk beveiligings groep (NSG) op NIC/subnet** | Azure VM Backup ondersteunt het maken van back-ups en het herstellen van NSG-informatie op vnet-, subnet-en NIC-niveau.
-**Met zone vastgemaakte Vm's** | Azure Backup ondersteunt het maken van back-ups en het herstellen van vastgemaakte Vm's in een zone. [Meer informatie](https://azure.microsoft.com/global-infrastructure/availability-zones/)
+**Met zone vastgemaakte Vm's** | Als u een back-up maakt van een virtuele machine van Azure die is vastgemaakt aan een zone (met Azure Backup), kunt u deze herstellen in dezelfde zone als waarin deze is vastgemaakt. [Meer informatie](https://docs.microsoft.com/azure/availability-zones/az-overview)
 
 ## <a name="track-the-restore-operation"></a>De herstel bewerking bijhouden
 
@@ -218,7 +218,7 @@ Er zijn een aantal dingen die u moet weten na het herstellen van een virtuele ma
 - Als de back-up van de virtuele machine een statisch IP-adres heeft, heeft de herstelde VM een dynamisch IP-adres om een conflict te voor komen. U kunt [een statisch IP-adres toevoegen aan de herstelde VM](https://docs.microsoft.com/powershell/module/az.network/set-aznetworkinterfaceipconfig?view=azps-3.5.0#description).
 - Een herstelde VM heeft geen beschikbaarheidsset. Als u de optie schijf herstellen gebruikt, kunt u [een beschikbaarheidsset opgeven](../virtual-machines/windows/tutorial-availability-sets.md) wanneer u een virtuele machine van de schijf maakt met behulp van de meegeleverde sjabloon of Power shell.
 - Als u een Linux-distributie op basis van Cloud-init gebruikt, zoals Ubuntu, om veiligheids redenen wordt het wacht woord na het herstellen geblokkeerd. Gebruik de VMAccess-extensie op de herstelde VM om [het wacht woord opnieuw](../virtual-machines/linux/reset-password.md)in te stellen. U kunt het beste SSH-sleutels gebruiken voor deze distributies, dus u hoeft het wacht woord niet opnieuw in te stellen na het herstellen.
-- Als u geen toegang meer hebt tot de virtuele machine nadat deze is hersteld vanwege een verbroken relatie met de domein controller, volgt u de onderstaande stappen om de virtuele machine te openen:
+- Als u na het herstellen geen toegang hebt tot een virtuele machine als gevolg van een verbroken relatie met de domein controller, volgt u de onderstaande stappen om de virtuele machine te openen:
   - Koppel de besturingssysteem schijf als een gegevens schijf aan een herstelde VM.
   - Installeer de VM-agent hand matig als de Azure agent niet meer reageert door deze [koppeling](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/install-vm-agent-offline)te volgen.
   - Toegang tot seriële console inschakelen op VM om opdracht regel toegang tot de virtuele machine toe te staan
@@ -239,7 +239,7 @@ Er zijn een aantal dingen die u moet weten na het herstellen van een virtuele ma
     cmd /c "netdom remove <<MachineName>> /domain:<<DomainName>> /userD:<<DomainAdminhere>> /passwordD:<<PasswordHere>> /reboot:10 /Force"
     ```
 
-- Zodra de VM is ontkoppeld en opnieuw is gestart, kunt u RDP met de lokale beheerders referenties met behulp van een VM-verbinding maken en de VM opnieuw toevoegen aan het domein.
+- Zodra de VM is ontkoppeld en opnieuw is gestart, kunt u met behulp van de lokale beheerders referenties van RDP naar de VM gaan en de VM opnieuw toevoegen aan het domein.
 
 ## <a name="backing-up-restored-vms"></a>Back-ups maken van herstelde Vm's
 

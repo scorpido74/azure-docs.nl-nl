@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 02/27/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 3182b3f059bf586dce32d8a555ec0d15542c6afc
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 5765c2e7335183734c86f1ddd11e4fa61576740c
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81460355"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82977546"
 ---
 # <a name="create-a-highly-available-vm"></a>Een virtuele machines met maximale beschikbaarheid maken
 
@@ -53,7 +53,7 @@ Dit script gebruikt de volgende opdrachten voor het maken van een resourcegroep,
 | [az network public-ip create](https://docs.microsoft.com/cli/azure/network/public-ip) | Hiermee maakt u een openbaar IP-adres met een statisch IP-adres en een bijbehorende DNS-naam. |
 | [az network lb create](https://docs.microsoft.com/cli/azure/network/lb) | Hiermee maakt u een Azure Network Load Balancer (NLB). |
 | [az network lb probe create](https://docs.microsoft.com/cli/azure/network/lb/probe) | Hiermee maakt u een NLB-probe. Een NLB-probe wordt gebruikt voor het controleren van elke virtuele machine in de NLB-set. Als een virtuele machine niet meer toegankelijk is, wordt verkeer niet meer naar die virtuele machine doorgestuurd. |
-| [az network lb rule create](https://docs.microsoft.com/cli/azure/network/lb/rule) | Hiermee maakt u een NLB-regel. In dit voorbeeld wordt een regel gemaakt voor poort 80. Wanneer HTTP-verkeer bij de NLB aankomt, wordt dat doorgestuurd naar poort 80 van een van de virtuele machines in de NLB-set. |
+| [az network lb rule create](https://docs.microsoft.com/cli/azure/network/lb/rule) | Hiermee maakt u een NLB-regel. In dit voorbeeld wordt een regel gemaakt voor poort 80. Omdat HTTP-verkeer bij het NLB arriveert, wordt het doorgestuurd naar poort 80 van een van de virtuele machines in de NLB-set. |
 | [az network lb inbound-nat-rule create](https://docs.microsoft.com/cli/azure/network/lb/inbound-nat-rule) | Maakt een regel voor NLB Network Address Translation (NAT).  NAT-regels wijzen een poort van de NLB toe aan een poort op een virtuele machine. In dit voorbeeld wordt een NAT-regel gemaakt voor SSH-verkeer naar elke virtuele machine in de NLB-set.  |
 | [az network nsg create](https://docs.microsoft.com/cli/azure/network/nsg) | Hiermee maakt u een netwerkbeveiligingsgroep (NSG), die fungeert als een beveiligingsgrens tussen het internet en de virtuele machine. |
 | [az network nsg rule create](https://docs.microsoft.com/cli/azure/network/nsg/rule) | Hiermee maakt u een NSG-regel om binnenkomend verkeer toe te staan. In dit voorbeeld wordt poort 22 geopend voor SSH-verkeer. |

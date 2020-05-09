@@ -1,24 +1,24 @@
 ---
-title: Lijst met ingebouwde beleids definities voor Azure Data Lake Analytics
-description: Een lijst met Azure Policy ingebouwde beleids definities voor Azure Data Lake Analytics. Deze ingebouwde oplossingen bieden gang bare benaderingen voor het beheren van uw Azure-resources.
+title: Ingebouwde beleids definities voor Azure Data Lake Analytics
+description: Een lijst met Azure Policy ingebouwde beleids definities voor Azure Data Lake Analytics. Deze ingebouwde beleids definities bieden gang bare benaderingen voor het beheren van uw Azure-resources.
 ms.date: 04/30/2020
 ms.topic: sample
 author: hrasheed-msft
 ms.author: hrasheed
 ms.service: data-lake-analytics
 ms.custom: subject-policy-samples
-ms.openlocfilehash: ea969b167773df4ebd75352c2652cc7d665a27e2
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.openlocfilehash: 54af0e831357af37284e3d57cbfbe15721cfdda9
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 05/08/2020
-ms.locfileid: "82966328"
+ms.locfileid: "82982561"
 ---
 # <a name="azure-policy-built-in-policy-definitions-for-azure-data-lake-analytics"></a>Azure Policy ingebouwde beleids definities voor Azure Data Lake Analytics
 
 Deze pagina bevat een index van [Azure Policy](../governance/policy/overview.md) ingebouwde beleids definities voor Azure data Lake Analytics. Zie [Azure Policy ingebouwde definities](../governance/policy/samples/built-in-policies.md)voor aanvullende Azure Policy-invoeg toepassingen voor andere services.
 
-De naam van elke ingebouwde koppeling naar de beleids definitie in Azure Portal. Gebruik de koppeling in de kolom **bron** om de bron weer te geven op het [Azure Policy github opslag plaats](https://github.com/Azure/azure-policy).
+De naam van elke ingebouwde beleids definitie is gekoppeld aan de beleids definitie in de Azure Portal. Gebruik de koppeling in de kolom **github** om de bron weer te geven op het [Azure Policy github opslag plaats](https://github.com/Azure/azure-policy).
 
 ## <a name="azure-data-lake-analytics"></a>Azure Data Lake Analytics
 

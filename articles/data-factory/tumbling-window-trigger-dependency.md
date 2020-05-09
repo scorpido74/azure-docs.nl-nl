@@ -11,12 +11,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 07/29/2019
-ms.openlocfilehash: bbcbb19530aebe777a91cbe4c5487e1b50ace2e5
-ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
+ms.openlocfilehash: 3b417e7c4589f3a4214400a877812d196a63349b
+ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82559770"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82870036"
 ---
 # <a name="create-a-tumbling-window-trigger-dependency"></a>Een afhankelijkheid voor een tumblingvenstertrigger maken
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -90,7 +90,10 @@ De volgende tabel bevat de lijst met kenmerken die nodig zijn voor het definiër
 
 ## <a name="tumbling-window-self-dependency-properties"></a>Eigenschappen van tumblingvenstertriggers-venster met eigen afhankelijkheid
 
-In scenario's waarin de trigger niet moet door gaan naar het volgende venster totdat het vorige venster is voltooid, bouwt u een self-afhankelijkheid. Een trigger voor zelf afhankelijkheid die afhankelijk is van het succes van eerdere versies van zichzelf in de vorige werk plaats, heeft de volgende eigenschappen:
+In scenario's waarin de trigger niet moet door gaan naar het volgende venster totdat het vorige venster is voltooid, bouwt u een self-afhankelijkheid. Een trigger voor zelf afhankelijkheid die afhankelijk is van het slagen van een eerdere uitvoering van zichzelf binnen het voor gaande uur, heeft de eigenschappen die in de volgende code worden aangegeven.
+
+> [!NOTE]
+> Als uw geactiveerde pijp lijn afhankelijk is van de uitvoer van pijp lijnen in eerder geactiveerde Windows, raden we u aan om alleen tumblingvenstertriggers venster trigger-afhankelijkheid te gebruiken. Als u parallelle trigger uitvoeringen wilt beperken, stelt u de gelijktijdigheid van de maximimum-trigger in.
 
 ```json
 {

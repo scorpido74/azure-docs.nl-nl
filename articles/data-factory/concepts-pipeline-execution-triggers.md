@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 07/05/2018
-ms.openlocfilehash: fac9933c57a54736aed5ccfdd54d126f0ca32973
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a31f800ad157e22f3d35abae3d3b714fa29178ef
+ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81418351"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82562199"
 ---
 # <a name="pipeline-execution-and-triggers-in-azure-data-factory"></a>Pijplijnen uitvoeren en triggers in Azure Data Factory
 
@@ -327,6 +327,9 @@ Tumblingvenstertriggers zijn triggers die vanaf een opgegeven begintijd worden g
 
 Zie [trigger voor het maken van een tumblingvenstertriggers-venster](how-to-create-tumbling-window-trigger.md)voor meer informatie over tumblingvenstertriggers-venster triggers en voor beelden.
 
+> [!NOTE]
+> De trigger voor het tumblingvenstertriggers-venster wordt uitgevoerd, *wacht tot de geactiveerde pijplijn uitvoering* is voltooid. De uitvoerings status weerspiegelt de status van de geactiveerde pijplijn uitvoering. Als bijvoorbeeld een geactiveerde pijplijn uitvoering wordt geannuleerd, wordt de bijbehorende trigger voor het tumblingvenstertriggers-venster geactiveerd als geannuleerd gemarkeerd. Dit wijkt af van het gedrag ' brand and vergeet ' van de Schedule-trigger. Dit is gemarkeerd als een pijp lijn gestart.
+
 ## <a name="event-based-trigger"></a>Trigger op basis van gebeurtenissen
 
 Een trigger op basis van een gebeurtenis voert pijp lijnen uit als reactie op een gebeurtenis, zoals de ontvangst van een bestand of het verwijderen van een bestand, in Azure Blob Storage.
@@ -374,11 +377,11 @@ In de volgende tabel wordt een vergelijking weergegeven tussen de tumblingvenste
 
 |  | Tumblingvenstertrigger | Schematrigger |
 |:--- |:--- |:--- |
-| **Backfill-scenario's** | Ondersteund. Pijplijnuitvoeringen kunnen voor tijdvensters in het verleden worden gepland. | Wordt niet ondersteund. Pijplijnuitvoeringen kunnen alleen worden uitgevoerd in perioden vanaf de huidige tijd. |
+| **Backfill-scenario's** | Ondersteund. Pijplijnuitvoeringen kunnen voor tijdvensters in het verleden worden gepland. | Niet ondersteund. Pijplijnuitvoeringen kunnen alleen worden uitgevoerd in perioden vanaf de huidige tijd. |
 | **Betrouwbaarheid** | 100% betrouwbaarheid. Pijplijnuitvoeringen kunnen vanaf een bepaalde begindatum zonder onderbrekingen worden uitgevoerd voor alle tijdvensters. | Minder betrouwbaar. |
-| **Mogelijkheid voor nieuwe uitvoerpogingen** | Ondersteund. Nieuwe pogingen van pijplijnuitvoeringen vinden plaats volgens het standaardbeleid van 0 of volgens een beleid dat de gebruiker in de triggerdefinitie heeft opgegeven. Wordt automatisch opnieuw geprobeerd wanneer de pijp lijn wordt uitgevoerd vanwege gelijktijdigheids-, server-en beperkings limieten (dat wil zeggen, status codes 400: gebruikers fout, 429: te veel aanvragen en 500: interne server fout). | Wordt niet ondersteund. |
-| **Gelijktijdigheid** | Ondersteund. Gebruikers kunnen expliciet gelijktijdigheidsbeperkingen voor de trigger instellen. Het is mogelijk om tussen de 1 en 50 door triggers geactiveerde pijplijnuitvoeringen gelijktijdig uit te voeren. | Wordt niet ondersteund. |
-| **Systeemvariabelen** | Ondersteunt het gebruik van de systeemvariabelen **WindowStart** en **WindowEnd**. Gebruikers kunnen voor de triggerdefinitie gebruikmaken van `triggerOutputs().windowStartTime` en `triggerOutputs().windowEndTime` als systeemvariabelen in de trigger. De waarden worden respectievelijk als de begin- en eindtijd van het tijdvenster gebruikt. Voor bijvoorbeeld een tumblingvenstertrigger die elk uur wordt uitgevoerd in het tijdvenster 1:00 uur tot 2:00 uur, is de definitie `triggerOutputs().WindowStartTime = 2017-09-01T01:00:00Z` en `triggerOutputs().WindowEndTime = 2017-09-01T02:00:00Z`. | Wordt niet ondersteund. |
+| **Mogelijkheid voor nieuwe uitvoerpogingen** | Ondersteund. Nieuwe pogingen van pijplijnuitvoeringen vinden plaats volgens het standaardbeleid van 0 of volgens een beleid dat de gebruiker in de triggerdefinitie heeft opgegeven. Wordt automatisch opnieuw geprobeerd wanneer de pijp lijn wordt uitgevoerd vanwege gelijktijdigheids-, server-en beperkings limieten (dat wil zeggen, status codes 400: gebruikers fout, 429: te veel aanvragen en 500: interne server fout). | Niet ondersteund. |
+| **Gelijktijdigheid** | Ondersteund. Gebruikers kunnen expliciet gelijktijdigheidsbeperkingen voor de trigger instellen. Het is mogelijk om tussen de 1 en 50 door triggers geactiveerde pijplijnuitvoeringen gelijktijdig uit te voeren. | Niet ondersteund. |
+| **Systeemvariabelen** | Ondersteunt het gebruik van de systeemvariabelen **WindowStart** en **WindowEnd**. Gebruikers kunnen voor de triggerdefinitie gebruikmaken van `triggerOutputs().windowStartTime` en `triggerOutputs().windowEndTime` als systeemvariabelen in de trigger. De waarden worden respectievelijk als de begin- en eindtijd van het tijdvenster gebruikt. Voor bijvoorbeeld een tumblingvenstertrigger die elk uur wordt uitgevoerd in het tijdvenster 1:00 uur tot 2:00 uur, is de definitie `triggerOutputs().WindowStartTime = 2017-09-01T01:00:00Z` en `triggerOutputs().WindowEndTime = 2017-09-01T02:00:00Z`. | Niet ondersteund. |
 | **Pipeline-trigger-relatie** | Ondersteunt een een-op-een-relatie. Slechts één pijplijn kan worden geactiveerd. | Ondersteunt veel-op-veel-relaties. Meerdere triggers kunnen één pijplijn activeren. Eén trigger kan meerdere pijplijnen activeren. |
 
 ## <a name="next-steps"></a>Volgende stappen

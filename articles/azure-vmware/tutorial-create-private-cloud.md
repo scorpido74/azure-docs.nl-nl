@@ -3,12 +3,12 @@ title: Zelf studie-een vSphere-cluster implementeren in azure
 description: Meer informatie over het implementeren van een vSphere-cluster in azure met behulp van de Azure VMWare-oplossing (AVS)
 ms.topic: tutorial
 ms.date: 05/04/2020
-ms.openlocfilehash: a11928dd936c29b8be0816257a64deadacda4578
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
-ms.translationtype: HT
+ms.openlocfilehash: 6a192454367f2e6ca071e9cfe0a9f1a94868cbdb
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 05/08/2020
-ms.locfileid: "82928547"
+ms.locfileid: "82977693"
 ---
 # <a name="tutorial-deploy-an-avs-private-cloud-in-azure"></a>Zelf studie: een privécloud in azure implementeren
 
@@ -33,7 +33,7 @@ In deze zelfstudie leert u het volgende:
 Als u de Azure VMWare-oplossing wilt gebruiken, moet u eerst de resource provider registreren. In het volgende voor beeld wordt de resource provider geregistreerd bij uw abonnement.
 
 ```azurecli-interactive
-az provider register -n Microsoft.VMwareVirtustream --subscription <your subscription ID>
+az provider register -n Microsoft.AVS --subscription <your subscription ID>
 ```
 
 Zie [Azure-resource providers en-typen](../azure-resource-manager/management/resource-providers-and-types.md)voor meer manieren om de resource provider te registreren.

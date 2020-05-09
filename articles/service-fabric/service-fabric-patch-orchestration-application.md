@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 2/01/2019
 ms.author: atsenthi
-ms.openlocfilehash: 857a4da0b24d600ecc572933af578e2e8faf501a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5a5ffdf217483c60836f67213c20ff3afd9043d5
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80366319"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82608912"
 ---
 # <a name="patch-the-windows-operating-system-in-your-service-fabric-cluster"></a>Het Windows-besturings systeem in uw Service Fabric cluster bijwerken
 
@@ -161,12 +161,12 @@ U kunt POA-gedrag configureren om te voldoen aan uw behoeften. De standaard waar
 |TaskApprovalPolicy   |Enum <br> { NodeWise, UpgradeDomainWise }                          |TaskApprovalPolicy geeft het beleid aan dat door de coördinator service moet worden gebruikt om Windows-updates op de Service Fabric cluster knooppunten te installeren.<br><br>De toegestane waarden zijn: <br>*NodeWise*: Windows-updates worden één knoop punt tegelijk geïnstalleerd. <br> *UpgradeDomainWise*: Windows-updates worden per keer één update domein geïnstalleerd. (De meeste knoop punten die deel uitmaken van een update domein kunnen naar een Windows-Update gaan.)<br><br> Zie de sectie [Veelgestelde vragen](#frequently-asked-questions) om te bepalen welk beleid het meest geschikt is voor uw cluster.
 |LogsDiskQuotaInMB   |Omvang  <br> (Standaard: *1024*)               | De maximale grootte van Logboeken voor patch indelings toepassingen in MB, die lokaal kan worden bewaard op knoop punten.
 | WUQuery               | tekenreeks<br>(Standaard: *IsInstalled = 0*)                | Query uitvoeren om Windows-updates op te halen. Zie WuQuery voor meer informatie [.](https://msdn.microsoft.com/library/windows/desktop/aa386526(v=vs.85).aspx)
-| InstallWindowsOSOnlyUpdates | *Booleaans* <br> (standaard: onwaar)                 | Gebruik deze markering om te bepalen welke updates moeten worden gedownload en geïnstalleerd. De volgende waarden zijn toegestaan <br>True: installeert alleen updates van het Windows-besturings systeem.<br>onwaar: alle beschik bare updates op de computer worden geïnstalleerd.          |
+| InstallWindowsOSOnlyUpdates | *Boolean-waarde* <br> (standaard: onwaar)                 | Gebruik deze markering om te bepalen welke updates moeten worden gedownload en geïnstalleerd. De volgende waarden zijn toegestaan <br>True: installeert alleen updates van het Windows-besturings systeem.<br>onwaar: alle beschik bare updates op de computer worden geïnstalleerd.          |
 | WUOperationTimeOutInMinutes | Int <br>(Standaard: *90*)                   | Hiermee geeft u de time-out voor een Windows Update bewerking (zoeken of downloaden of installeren). Als de bewerking niet binnen de opgegeven time-out wordt voltooid, wordt deze afgebroken.       |
 | WURescheduleCount     | Int <br> (Standaard: *5*)                  | Het maximum aantal keren dat de service de Windows-Update opnieuw plant als een bewerking permanent mislukt.          |
 | WURescheduleTimeInMinutes | Int <br>(Standaard: *30*) | Het interval waarmee de Windows-updates opnieuw worden gepland als de fout zich blijft voordoen. |
-| WUFrequency           | Door komma's gescheiden teken reeks (standaard: *wekelijks, woensdag, 7:00:00*)     | De frequentie voor het installeren van Windows-updates. De notatie en mogelijke waarden zijn: <br>&nbsp;&nbsp;-Maandelijks: DD, uu: MM: SS (bijvoorbeeld *maandelijks, 5, 12:22:32*)<br>Toegestane waarden voor het veld DD (dag) zijn getallen van 1 tot en met 28 en de laatste. <br> &nbsp;&nbsp;-Wekelijks, dag, uu: MM: SS (bijvoorbeeld *wekelijks, dinsdag, 12:22:32*)  <br> &nbsp;&nbsp;-Dagelijks, uu: MM: SS (bijvoorbeeld *dagelijks, 12:22:32*)  <br> &nbsp;&nbsp;-  *Geen* geeft aan dat Windows-updates niet mogen worden uitgevoerd.  <br><br> Tijden zijn UTC.|
-| AcceptWindowsUpdateEula | Booleaans <br>(Standaard: *True*) | Door deze vlag in te stellen, accepteert de toepassing de gebruiksrecht overeenkomst voor Windows Update namens de eigenaar van de computer.              |
+| WUFrequency           | Door komma's gescheiden teken reeks (standaard: *wekelijks, woensdag, 7:00:00*)     | De frequentie voor het installeren van Windows-updates. De notatie en mogelijke waarden zijn: <br>-Maandelijks, DD, uu: MM: SS (voor beeld: *Monthly, 5, 12:22:32*). Toegestane waarden voor het veld _dd_ (dag) zijn getallen van 1 tot en met 28 en _laatste_. <br>-Wekelijks, dag, uu: MM: SS (voor beeld: *wekelijks, dinsdag, 12:22:32*)  <br>-Dagelijks, uu: MM: SS (voor beeld: *dagelijks, 12:22:32*)  <br>-Week, dag, uu: MM: SS (voor beeld: *2, vrijdag, 21:00:00* geeft 9:00 uur UTC op vrijdag van de 2e week van elke maand) <br>- *Geen* geeft aan dat Windows-updates niet mogen worden uitgevoerd.  <br><br> Tijden zijn UTC.|
+| AcceptWindowsUpdateEula | Boolean-waarde <br>(Standaard: *True*) | Door deze vlag in te stellen, accepteert de toepassing de gebruiksrecht overeenkomst voor Windows Update namens de eigenaar van de computer.              |
 
 > [!TIP]
 > Als u wilt dat Windows-updates onmiddellijk worden uitgevoerd `WUFrequency` , stelt u in ten opzichte van de implementatie tijd van de toepassing. Stel dat u een test cluster met vijf knoop punten hebt en u de app op ongeveer 5:00 uur UTC wilt implementeren. Als u ervan uitgaat dat de upgrade of implementatie van de toepassing 30 minuten Maxi maal duurt, stelt u de WUFrequency als dagelijks in op *17:30:00*.

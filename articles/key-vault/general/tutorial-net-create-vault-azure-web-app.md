@@ -9,12 +9,12 @@ ms.subservice: general
 ms.topic: tutorial
 ms.date: 05/06/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 962b738d7e5f91076d17c19daad01f8dbaf92341
-ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
-ms.translationtype: HT
+ms.openlocfilehash: dca7392c35c398ae3d9da62114c991ee4c0e57ca
+ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82888839"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "82997007"
 ---
 # <a name="tutorial-use-a-managed-identity-to-connect-key-vault-to-an-azure-web-app-with-net"></a>Zelf studie: een beheerde identiteit gebruiken om Key Vault te verbinden met een Azure-web-app met .NET
 
@@ -102,7 +102,7 @@ FTP en lokale Git kunnen worden geïmplementeerd in een Azure-web-app met behulp
 
 Als u de implementatie gebruiker wilt configureren, voert u de opdracht [AZ webapp Deployment User set](/cli/azure/webapp/deployment/user?view=azure-cli-latest#az-webapp-deployment-user-set) uit. Kies een gebruikers naam en wacht woord die voldoen aan de volgende richt lijnen: 
 
-- De gebruikers naam moet uniek zijn binnen Azure en voor lokale Git-pushes mag het @-teken niet bevatten. 
+- De gebruikers naam moet uniek zijn binnen Azure en voor lokale Git-pushes mag het symbool ' @ ' niet bevatten. 
 - Het wacht woord moet ten minste acht tekens lang zijn, met twee van de volgende drie elementen: letters, cijfers en symbolen. 
 
 ```azurecli-interactive
@@ -281,10 +281,20 @@ using Azure.Identity;
 using Azure.Security.KeyVault.Secrets;
 ```
 
-Voeg deze drie regels toe vóór `app.UseEndpoints` de aanroep, waarbij u de URI bijwerkt zodat deze overeenkomt met de `vaultUri` sleutel kluis.
+Voeg deze regels toe vóór `app.UseEndpoints` de aanroep, waarbij u de URI bijwerkt zodat deze overeenkomt met de `vaultUri` sleutel kluis. De onderstaande code gebruikt [' DefaultAzureCredential () '](/dotnet/api/azure.identity.defaultazurecredential?view=azure-dotnet) voor verificatie bij sleutel kluis, die token gebruikt uit de door de toepassing beheerde identiteit om te verifiëren. Er wordt ook exponentiële uitstel gebruikt voor nieuwe pogingen wanneer de sleutel kluis wordt beperkt.
 
 ```csharp
-var client = new SecretClient(new Uri("https://<your-unique-key-vault-name>.vault.azure.net/"), new DefaultAzureCredential());
+SecretClientOptions options = new SecretClientOptions()
+    {
+        Retry =
+        {
+            Delay= TimeSpan.FromSeconds(2),
+            MaxDelay = TimeSpan.FromSeconds(16),
+            MaxRetries = 5,
+            Mode = RetryMode.Exponential
+         }
+    };
+var client = new SecretClient(new Uri("https://<your-unique-key-vault-name>.vault.azure.net/"), new DefaultAzureCredential(),options);
 
 KeyVaultSecret secret = client.GetSecret("mySecret");
 

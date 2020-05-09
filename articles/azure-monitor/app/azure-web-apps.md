@@ -3,13 +3,12 @@ title: Prestaties van Azure app Services controleren | Microsoft Docs
 description: Bewaking van toepassings prestaties voor Azure app Services. Grafiek belasting en respons tijd, afhankelijkheids informatie en waarschuwingen instellen voor prestaties.
 ms.topic: conceptual
 ms.date: 12/11/2019
-ms.custom: fasttrack-edit
-ms.openlocfilehash: dd0d3be6ed7e5185183618cc2bdeff5ee8d749f3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0f4d4dedab30839db56cb47ac7ac103413f2d4be
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81729793"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82733444"
 ---
 # <a name="monitor-azure-app-service-performance"></a>Azure App Service-prestaties bewaken
 
@@ -71,7 +70,7 @@ Er zijn twee manieren om toepassings bewaking in te scha kelen voor door Azure-a
 
     * Als u bijvoorbeeld het eerste sampling percentage wilt wijzigen, kunt u een toepassings instelling maken van: `MicrosoftAppInsights_AdaptiveSamplingTelemetryProcessor_InitialSamplingPercentage` en een waarde van `100`.
 
-    * Raadpleeg de [code](https://github.com/Microsoft/ApplicationInsights-dotnet/blob/master/src/ServerTelemetryChannel/AdaptiveSamplingTelemetryProcessor.cs) en de [bijbehorende documentatie](https://docs.microsoft.com/azure/azure-monitor/app/sampling)voor een lijst met ondersteunde instellingen voor adaptieve bemonsterings-telemetrie.
+    * Raadpleeg de [code](https://github.com/microsoft/ApplicationInsights-dotnet/blob/master/BASE/Test/ServerTelemetryChannel.Test/TelemetryChannel.Tests/AdaptiveSamplingTelemetryProcessorTest.cs) en de [bijbehorende documentatie](https://docs.microsoft.com/azure/azure-monitor/app/sampling)voor een lijst met ondersteunde instellingen voor adaptieve bemonsterings-telemetrie.
 
 # <a name="net-core"></a>[.NET Core](#tab/netcore)
 
@@ -399,7 +398,11 @@ Bekijk de opmerkingen bij de [release](https://github.com/Microsoft/ApplicationI
 
 ### <a name="php-and-wordpress-are-not-supported"></a>PHP en WordPress worden niet ondersteund
 
-PHP-en WordPress-sites worden niet ondersteund. Er is momenteel geen officieel ondersteunde SDK/agent voor bewaking aan server zijde van deze werk belastingen. Hand matig de client-side-trans acties op een PHP-of WordPress-site instrumenteren door de Java script-client toe te voegen aan uw webpagina's kan worden uitgevoerd met behulp van de [Java script SDK](https://docs.microsoft.com/azure/azure-monitor/app/javascript). 
+PHP-en WordPress-sites worden niet ondersteund. Er is momenteel geen officieel ondersteunde SDK/agent voor bewaking aan server zijde van deze werk belastingen. Hand matig de client-side-trans acties op een PHP-of WordPress-site instrumenteren door de Java script-client toe te voegen aan uw webpagina's kan worden uitgevoerd met behulp van de [Java script SDK](https://docs.microsoft.com/azure/azure-monitor/app/javascript).
+
+### <a name="connection-string-and-instrumentation-key"></a>Verbindings reeks en instrumentatie sleutel
+
+Wanneer bewaking zonder code wordt gebruikt, is alleen de connection string vereist. We raden u echter aan om de instrumentatie sleutel in te stellen om achterwaartse compatibiliteit met oudere versies van de SDK te behouden wanneer hand matige instrumentatie wordt uitgevoerd.
 
 ## <a name="next-steps"></a>Volgende stappen
 * [Voer de profiler uit in uw live app](../app/profiler.md).

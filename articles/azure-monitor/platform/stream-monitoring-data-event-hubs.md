@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/15/2019
 ms.author: bwren
 ms.subservice: ''
-ms.openlocfilehash: 32bc90cc069ac82641c3aa7692c900c60db7ba87
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 915df5d6356e2246c8937cb167c8068b00e0917b
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81733106"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82854617"
 ---
 # <a name="stream-azure-monitoring-data-to-an-event-hub"></a>Bewakingsgegevens van Azure naar een event hub
 Azure Monitor biedt een volledige stack bewakings oplossing voor toepassingen en services in azure, in andere Clouds en on-premises. Naast het gebruik van Azure Monitor voor het analyseren van die gegevens en het gebruiken voor verschillende bewakings scenario's, moet u deze mogelijk verzenden naar andere controle hulpprogramma's in uw omgeving. De meest efficiënte methode voor het streamen van bewakings gegevens naar externe hulpprogram ma's is in de meeste gevallen het gebruik van [Azure Event hubs](/azure/event-hubs/). In dit artikel vindt u een korte beschrijving van de manier waarop u bewakings gegevens uit verschillende bronnen kunt streamen naar een Event Hub en koppelingen naar gedetailleerde richt lijnen.
@@ -23,7 +23,7 @@ Azure Monitor biedt een volledige stack bewakings oplossing voor toepassingen en
 Voordat u streaming voor een gegevens bron configureert, moet u [een event hubs naam ruimte en Event hub maken](../../event-hubs/event-hubs-create.md). Deze naam ruimte en Event Hub is het doel voor al uw bewakings gegevens. Een Event Hubs naam ruimte is een logische groepering van Event hubs die hetzelfde toegangs beleid delen, net zoals een opslag account afzonderlijke blobs in dat opslag account heeft. Houd rekening met de volgende details over de Event hubs-naam ruimte en Event hubs die u gebruikt voor het streamen van bewakings gegevens:
 
 * Met het aantal doorvoer eenheden kunt u de doorvoer schaal voor uw event hubs verhogen. Normaal gesp roken is er slechts één doorvoer eenheid nodig. Als u de schaal van het logboek gebruik wilt verg Roten, kunt u het aantal doorvoer eenheden voor de naam ruimte hand matig verhogen of de automatische inflatie inschakelen.
-* Met het aantal partities kunt u het verbruik van verschillende gebruikers parallelliseren. Eén partitie kan Maxi maal 20MBps of ongeveer 20.000 berichten per seconde ondersteunen. Afhankelijk van het hulp programma dat de gegevens gebruikt, kan het al dan niet voor komen dat er meerdere partities worden verbruikt. Het kan zijn dat vier partities worden gestart als u niet zeker weet of u niet zeker weet of het aantal partities moet worden ingesteld.
+* Met het aantal partities kunt u het verbruik van verschillende gebruikers parallelliseren. Eén partitie kan Maxi maal 20MBps of ongeveer 20.000 berichten per seconde ondersteunen. Afhankelijk van het hulp programma dat de gegevens gebruikt, kan het al dan niet voor komen dat er meerdere partities worden verbruikt. Vier partities zijn redelijk om te beginnen met als u niet zeker weet hoeveel partities er moeten worden ingesteld.
 * U stelt de Bewaar periode voor berichten in op uw Event Hub ten minste 7 dagen. Als uw verbruikte hulp programma meer dan een dag uitvalt, zorgt u ervoor dat het hulp programma kan ophalen waar het niet langer dan zeven dagen oud was.
 * U moet de standaard Consumer groep voor uw Event Hub gebruiken. U hoeft geen andere consumenten groepen te maken of een afzonderlijke consumenten groep te gebruiken, tenzij u van plan bent om twee verschillende hulpprogram ma's dezelfde gegevens van dezelfde Event Hub te laten gebruiken.
 * Voor het Azure-activiteiten logboek kiest u een Event Hubs naam ruimte en Azure Monitor maakt u een Event Hub binnen die naam ruimte met de naam _Insights-logboeken: operationele logboeken_. Voor andere logboek typen kunt u een bestaande Event Hub kiezen of Azure Monitor een Event Hub per logboek categorie maken.
