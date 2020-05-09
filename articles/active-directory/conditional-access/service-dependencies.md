@@ -11,18 +11,21 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3b0d7816dc83a7c3536e44ff2461d85ea6178ff1
-ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
+ms.openlocfilehash: a108c952c4f1f9b8298e57c8fd94c767bb065f00
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82778478"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82981770"
 ---
 # <a name="what-are-service-dependencies-in-azure-active-directory-conditional-access"></a>Wat zijn service afhankelijkheden in Azure Active Directory voorwaardelijke toegang? 
 
 Met beleid voor voorwaardelijke toegang kunt u toegangs vereisten voor websites en services opgeven. Uw toegangs vereisten kunnen bijvoorbeeld bestaan uit het vereisen van multi-factor Authentication (MFA) of [beheerde apparaten](require-managed-devices.md). 
 
 Wanneer u rechtstreeks toegang krijgt tot een site of service, is de impact van een gerelateerd beleid doorgaans gemakkelijk te beoordelen. Als u bijvoorbeeld een beleid hebt waarvoor multi-factor Authentication (MFA) voor share point online is geconfigureerd, wordt MFA afgedwongen voor elke aanmelding bij de share point-webportal. Het is echter niet altijd direct voor het beoordelen van de impact van een beleid, omdat er Cloud-apps zijn met afhankelijkheden van andere Cloud-apps. Micro soft teams kunnen bijvoorbeeld toegang bieden tot resources in share point online. Als u in het huidige scenario toegang hebt tot micro soft-teams, bent u daarom ook gebonden aan het share point MFA-beleid. 
+
+> [!TIP]
+> Als u de app [office 365 (preview)](concept-conditional-access-cloud-apps.md#office-365-preview) gebruikt, zijn alle Office-apps gericht op het voor komen van problemen met service afhankelijkheden in de Office-stack.
 
 ## <a name="policy-enforcement"></a>Beleidsafdwinging 
 

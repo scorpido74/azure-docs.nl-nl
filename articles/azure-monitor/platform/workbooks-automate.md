@@ -9,12 +9,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 04/30/2020
 ms.author: mbullwin
-ms.openlocfilehash: d62fa84711bd8cba57d07f3464c21344bc5c32c6
-ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
+ms.openlocfilehash: 76ecc3ee17353ebd0bbead1bba959f85d521d0df
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/03/2020
-ms.locfileid: "82731731"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82982136"
 ---
 # <a name="programmatically-manage-workbooks"></a>Werkmappen programmatisch beheren
 
@@ -42,7 +42,7 @@ Er zijn twee soorten werkmap bronnen die programmatisch kunnen worden beheerd:
 2. Hieronder ziet u een voor beeld Azure Resource Manager sjabloon waarmee een werkmap sjabloon wordt geïmplementeerd voor Azure Monitor werkmap galerie. Plak de JSON die u hebt gekopieerd in `<PASTE-COPIED-WORKBOOK_TEMPLATE_HERE>`plaats van. Een referentie Azure Resource Manager sjabloon waarmee een werkmap sjabloon wordt gemaakt, vindt u [hier](https://github.com/microsoft/Application-Insights-Workbooks/blob/master/Documentation/ARM-template-for-creating-workbook-template).
 
     ```json
-          {
+    {
         "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
         "contentVersion": "1.0.0.0",
         "parameters": {
@@ -114,7 +114,7 @@ Er zijn twee soorten werkmap bronnen die programmatisch kunnen worden beheerd:
 | Werkmappen in resource groepen                   | `microsoft.resources/subscriptions/resourcegroups` | `workbook`    |
 | Werkmappen in Azure Active Directory            | `microsoft.aadiam/tenant`                          | `workbook`    |
 | VM Insights in virtuele machines                | `microsoft.compute/virtualmachines`                | `insights`    |
-| VM-inzichten in virtuele-machine schaal sets                   | `microsoft.compute/virtualmachinescalesets`        | `insights`    |
+| VM-inzichten in virtuele-machine schaal sets      | `microsoft.compute/virtualmachinescalesets`        | `insights`    |
 
 ## <a name="azure-resource-manager-template-for-deploying-a-workbook-instance"></a>Azure Resource Manager sjabloon voor het implementeren van een werkmap exemplaar
 

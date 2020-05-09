@@ -2,31 +2,27 @@
 title: Meer informatie over de werking van Azure AD Provisioning | Microsoft Docs
 description: Meer informatie over de werking van Azure AD-inrichting
 services: active-directory
-documentationcenter: ''
 author: msmimart
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-provisioning
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 12/10/2019
 ms.author: mimart
 ms.reviewer: arvinh
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 241d90981ed9ba54d253e6c22c00f9e5a9197863
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7ee685da3492b6915a687151beea3e82e46185de
+ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80884882"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82593723"
 ---
 # <a name="how-provisioning-works"></a>Hoe inrichting werkt
 
 Automatische inrichting heeft betrekking op het maken van gebruikers-id's en-rollen in de Cloud toepassingen waartoe gebruikers toegang nodig hebben. Naast het maken van gebruikers identiteiten, omvat automatische inrichting het onderhoud en de verwijdering van gebruikers identiteiten als status of rollen worden gewijzigd. Voordat u begint met het implementeren van een implementatie, kunt u dit artikel raadplegen voor meer informatie over de werking van Azure AD en over het verkrijgen van configuratie aanbevelingen. 
 
-De **Azure AD-inrichtings service voorziet** gebruikers van SaaS-apps en andere systemen door verbinding te maken met een systeem voor scim (Cross-Domain Identity Management) 2,0 gebruikers beheer API-eind punt van de leverancier van de toepassing. Met dit SCIM-eind punt kan Azure AD programmatisch gebruikers maken, bijwerken en verwijderen. Voor geselecteerde toepassingen kan de inrichtings service ook extra identiteits-gerelateerde objecten, zoals groepen en rollen, maken, bijwerken en verwijderen. Het kanaal dat wordt gebruikt voor het inrichten tussen Azure AD en de toepassing, wordt versleuteld met behulp van HTTPS TLS-versleuteling.
+De **Azure AD-inrichtings service voorziet** gebruikers van SaaS-apps en andere systemen door verbinding te maken met een systeem voor scim (Cross-Domain Identity Management) 2,0 gebruikers beheer API-eind punt van de leverancier van de toepassing. Met dit SCIM-eind punt kan Azure AD programmatisch gebruikers maken, bijwerken en verwijderen. Voor geselecteerde toepassingen kan de inrichtings service ook extra identiteits-gerelateerde objecten, zoals groepen en rollen, maken, bijwerken en verwijderen. Het kanaal dat wordt gebruikt voor het inrichten tussen Azure AD en de toepassing, wordt versleuteld met HTTPS TLS 1,2-versleuteling.
 
 
 ![Azure AD Provisioning](./media/how-provisioning-works/provisioning0.PNG)

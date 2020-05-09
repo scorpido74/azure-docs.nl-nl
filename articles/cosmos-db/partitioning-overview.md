@@ -5,13 +5,13 @@ author: deborahc
 ms.author: dech
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 04/28/2020
-ms.openlocfilehash: 1a760b4cedad5e43a2ef9f186162675aaf6d5ea5
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.date: 05/06/2020
+ms.openlocfilehash: a9368e67abf3c45981cf1f85fe46a2a2799a6877
+ms.sourcegitcommit: 602e6db62069d568a91981a1117244ffd757f1c2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82234176"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82864331"
 ---
 # <a name="partitioning-in-azure-cosmos-db"></a>Partitionering in Azure Cosmos DB
 
@@ -56,7 +56,7 @@ Als uw container echter klein is, hebt u waarschijnlijk niet genoeg fysieke part
 Als uw container kan worden uitgebreid naar meer dan een paar fysieke partities, moet u ervoor zorgen dat u een partitie sleutel kiest die kruis partitie query's minimaliseert. De container heeft meer dan een paar fysieke partities nodig wanneer aan een van de volgende voor waarden wordt voldaan:
 
 * Uw container heeft meer dan 30.000 RU ingericht
-* Met de container worden gegevens van 100 GB opgeslagen
+* In uw container worden gegevens van 100 GB opgeslagen
 
 ## <a name="using-item-id-as-the-partition-key"></a>Item-ID als de partitie sleutel gebruiken
 

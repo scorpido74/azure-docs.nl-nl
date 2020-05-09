@@ -9,14 +9,14 @@ manager: cshankar
 ms.reviewer: jasonh, kfile
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 02/07/2020
+ms.date: 05/05/2020
 ms.custom: seodec18~~~~
-ms.openlocfilehash: 79628ed44753577023464ef6208027e1b7996d30
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 010f7b908ceb9c8d07208db1312d8af8d4e27051
+ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77087258"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82838515"
 ---
 # <a name="create-a-reference-data-set-for-your-time-series-insights-environment-using-the-azure-portal"></a>Maak een referentie gegevensverzameling voor uw Time Series Insights-omgeving met behulp van de Azure Portal
 
@@ -34,7 +34,7 @@ Referentie gegevens worden niet met terugwerkende kracht samengevoegd. Daarom wo
 
 ## <a name="add-a-reference-data-set"></a>Een set met referentie gegevens toevoegen
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
+1. Meld u aan bij [Azure Portal](https://portal.azure.com).
 
 1. Zoek uw bestaande Azure Time Series Insights-omgeving. Selecteer **alle resources** in het menu aan de linkerkant van het Azure Portal. Selecteer uw Time Series Insights-omgeving.
 
@@ -78,7 +78,7 @@ Referentie gegevens worden niet met terugwerkende kracht samengevoegd. Daarom wo
 
    [![Kies gegevens typen in de kolom koppen.](media/add-reference-data-set/select-column-types.png)](media/add-reference-data-set/select-column-types.png#lightbox)
 
-1. Wijzig de naam van de kolom koppen, indien nodig. De naam van de sleutel kolom is nodig om lid te worden van de bijbehorende eigenschap in de bron van de gebeurtenis. 
+1. Wijzig de naam van de kolom koppen, indien nodig. De naam van de sleutel kolom is nodig om lid te worden van de bijbehorende eigenschap in de bron van de gebeurtenis.
 
    > [!IMPORTANT]
    > Zorg ervoor dat de kolom namen van de referentie gegevens sleutel exact overeenkomen met de naam van de gebeurtenis voor uw binnenkomende gegevens, met inbegrip van hoofdletter gevoeligheid. De niet-sleutel kolom namen worden gebruikt voor het verbeteren van de inkomende gegevens met de bijbehorende referentie gegevens waarden.

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/23/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 184b60f6147089cbdfd855b473b3346d021f7fbc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 92f2102d8d6353da2002a4ee9d5bfbe57a774e10
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "82176597"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82792068"
 ---
 # <a name="azure-security-baseline-for-azure-storage"></a>Azure-beveiligings basislijn voor Azure Storage
 
@@ -82,7 +82,7 @@ Als u privé-eind punten aan uw opslag account hebt gekoppeld, kunt u geen NSG-r
 
 **Hulp**: bij het vastleggen van Network Watcher-pakketten kunt u opname sessies maken om verkeer tussen het opslag account en een virtuele machine bij te houden. Er worden filters voor de opname sessie gegeven om ervoor te zorgen dat u alleen het gewenste verkeer vastlegt. Met pakket opname kunt u netwerk afwijkingen, zowel reactief als proactief, vaststellen. Andere gebruiken zijn onder andere het verzamelen van netwerk statistieken, het verkrijgen van informatie over inbreuken op het netwerk, het opsporen van fouten in client-server communicatie en nog veel meer. Als u pakket opnames op afstand wilt activeren, vereenvoudigt u de belasting van het hand matig uitvoeren van een pakket opname op een gewenste virtuele machine, waardoor kost bare tijd wordt bespaard. 
 
-- [Pakket opnames beheren met Azure Network Watcher met behulp van de portal](https://docs.microsoft.comazure/network-watcher/network-watcher-packet-capture-manage-portal)
+- [Pakket opnames beheren met Azure Network Watcher met behulp van de portal](https://docs.microsoft.com/azure/network-watcher/network-watcher-packet-capture-manage-portal)
 
 **Azure Security Center bewaking**: Ja
 
@@ -240,7 +240,7 @@ Schakel ook geavanceerde beveiliging tegen bedreigingen in voor uw Azure Storage
 
 - [Een waarschuwing over logboek gegevens van log Analytics](https://docs.microsoft.com/azure/azure-monitor/learn/tutorial-response)
 
-- [Logboekregistratie van Azure Opslaganalyse](https://docs.microsoft.com/azure/storage/common/storage-analytics-logging)
+- [Azure Storage-analyselogboeken](https://docs.microsoft.com/azure/storage/common/storage-analytics-logging)
 
 **Azure Security Center bewaking**: Ja
 
@@ -428,7 +428,7 @@ Een efficiënte manier om het risico van onvermoede gebruikers accounts te beper
 
 Diagnostische instellingen voor Azure Active Directory gebruikers accounts maken, de audit logboeken en aanmeldings logboeken verzenden naar een Log Analytics-werk ruimte. U kunt de gewenste waarschuwingen configureren in Log Analytics werk ruimte. Als u verificatie fouten wilt controleren op Azure Storage accounts, kunt u waarschuwingen maken om u te waarschuwen wanneer bepaalde drempel waarden zijn bereikt voor metrische gegevens van de opslag resource. Daarnaast kunt u met behulp van Azure Monitor op anonieme toegang waarschuwen voor opslag accounts met behulp van anonieme verificatie.
 
-- [Logboekregistratie van Azure Opslaganalyse](https://docs.microsoft.com/azure/storage/common/storage-analytics-logging)
+- [Azure Storage-analyselogboeken](https://docs.microsoft.com/azure/storage/common/storage-analytics-logging)
 
 - [Azure-activiteiten logboeken integreren in Azure Monitor](https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics)
 
@@ -462,7 +462,7 @@ Diagnostische instellingen voor Azure Active Directory gebruikers accounts maken
 
 **Verantwoordelijkheid**: klant
 
-## <a name="data-protection"></a>Gegevensbeveiliging
+## <a name="data-protection"></a>Gegevensbescherming
 
 *Zie [beveiligings beheer: gegevens beveiliging](https://docs.microsoft.com/azure/security/benchmarks/security-control-data-protection)voor meer informatie.*
 
@@ -574,7 +574,7 @@ Daarnaast kunt u het virtuele netwerk service-eindpunt beleid gebruiken om uitga
 
 - [Waarschuwingen maken voor gebeurtenissen in het Azure-activiteiten logboek](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log)
 
-- [Logboekregistratie van Azure Opslaganalyse](https://docs.microsoft.com/azure/storage/common/storage-analytics-logging)
+- [Azure Storage-analyselogboeken](https://docs.microsoft.com/azure/storage/common/storage-analytics-logging)
 
 - [Metrische waarschuwingen voor Azure Storage accounts configureren](https://docs.microsoft.com/azure/storage/common/storage-monitor-storage-account)
 
@@ -887,7 +887,7 @@ Gebruik aanbevelingen van Azure Security Center als een veilige configuratie bas
 
 U kunt ook de sleutels van het opslag account regel matig draaien om de impact van het verlies of de openbaar making van de sleutels van het opslag account te beperken.
 
-- [Azure Storage versleuteling voor Data-at-rest](https://docs.microsoft.com/azure/storage/common/storage-service-encryption)
+- [Azure Storage-versleuteling voor inactieve gegevens](https://docs.microsoft.com/azure/storage/common/storage-service-encryption)
 
 - [Toegangs sleutels voor opslag accounts beheren](https://docs.microsoft.com/azure/storage/common/storage-account-keys-manage)
 

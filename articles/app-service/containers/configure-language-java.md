@@ -10,12 +10,12 @@ ms.date: 11/22/2019
 ms.author: brendm
 ms.reviewer: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 01d94b39354333a8840ded8725625d6a91cf56b7
-ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
+ms.openlocfilehash: ffc7c289fd675a68c8b02af1777fea3d4530e17a
+ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82592159"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82889502"
 ---
 # <a name="configure-a-linux-java-app-for-azure-app-service"></a>Een Linux Java-app voor Azure App Service configureren
 
@@ -25,7 +25,7 @@ Deze hand leiding bevat belang rijke concepten en instructies voor Java-Ontwikke
 
 ## <a name="deploying-your-app"></a>Uw app implementeren
 
-U kunt de [maven-invoeg toepassing voor Azure app service](/java/api/overview/azure/maven/azure-webapp-maven-plugin/readme) gebruiken voor het implementeren van zowel jar-als. War-bestanden. Implementatie met populaire Ide's wordt ook ondersteund met [Azure-Toolkit voor IntelliJ](/java/azure/intellij/azure-toolkit-for-intellij) of [Azure-Toolkit voor eclipse](/java/azure/eclipse/azure-toolkit-for-eclipse).
+U kunt de [maven-invoeg toepassing voor Azure app service](/java/api/overview/azure/maven/azure-webapp-maven-plugin/readme) gebruiken voor het implementeren van zowel jar-als. War-bestanden. Implementatie met populaire Ide's wordt ook ondersteund met [Azure-Toolkit voor IntelliJ](/azure/developer/java/toolkit-for-intellij/) of [Azure-Toolkit voor eclipse](/azure/developer/java/toolkit-for-eclipse).
 
 Anders is uw implementatie methode afhankelijk van het type archief:
 

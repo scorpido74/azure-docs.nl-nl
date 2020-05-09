@@ -12,15 +12,15 @@ ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.topic: tutorial
-ms.date: 02/14/2020
+ms.date: 05/06/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5b3282dd88b62a6811031e95672638d67702215a
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: b025d98c230bc82b86a736785fb8e6581ec4519c
+ms.sourcegitcommit: 602e6db62069d568a91981a1117244ffd757f1c2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80048451"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82864416"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-google-cloud-g-suite-connector"></a>Zelf studie: Azure Active Directory-integratie met eenmalige aanmelding (SSO) met Google Cloud (G suite)-connector
 
@@ -140,8 +140,8 @@ Volg deze stappen om Azure AD SSO in te scha kelen in de Azure Portal.
 
     | |
     |--|
-    | `https://google.com` |
-    | `https://google.com/a/<yourdomain.com>` |
+    | `https://www.google.com` |
+    | `https://www.google.com/a/<yourdomain.com>` |
 
 
 1. Voer in het gedeelte **Standaard SAML-configuratie** de volgende stappen uit als u wilt configureren voor **Google Cloud Platform**:
@@ -161,8 +161,8 @@ Volg deze stappen om Azure AD SSO in te scha kelen in de Azure Portal.
     
     | |
     |--|
-    | `https://google.com` |
-    | `https://google.com/a/<yourdomain.com>` |
+    | `https://www.google.com` |
+    | `https://www.google.com/a/<yourdomain.com>` |
 
     > [!NOTE]
     > Dit zijn geen echte waarden. Werk deze waarden bij met de daadwerkelijke aanmeldings-URL en id. De Google Cloud (G suite)-connector biedt geen Entiteits-ID/ID-waarde voor de configuratie van eenmalige aanmelding, dus als u de optie voor de **specifieke uitgever** van het domein uitschakelt, is de id-waarde `google.com`. Als u de optie **domein specifieke uitgever** inschakelt, is `google.com/a/<yourdomainname.com>`dit. Als u de optie **specifieke certificaat verlener** wilt in-of uitschakelen, gaat u naar de sectie **SSO-connector van Google Cloud (G suite) configureren** die verderop in de zelf studie wordt beschreven. Neem contact op met het [ondersteunings team van de Google Cloud (G suite)-connector](https://www.google.com/contact/)voor meer informatie.
@@ -190,7 +190,7 @@ In deze sectie maakt u een test gebruiker in de Azure Portal met de naam B. Simo
    1. Voer in het veld **Naam**`B.Simon` in.  
    1. Voer in het veld **gebruikers naam** het username@companydomain.extensionin. Bijvoorbeeld `B.Simon@contoso.com`.
    1. Schakel het selectie vakje **wacht woord weer geven** in en noteer de waarde die wordt weer gegeven in het vak **wacht woord** .
-   1. Klik op **maken**.
+   1. Klik op **Maken**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>De Azure AD-testgebruiker toewijzen
 

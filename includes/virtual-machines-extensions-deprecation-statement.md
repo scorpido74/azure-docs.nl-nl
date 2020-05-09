@@ -1,6 +1,6 @@
 ---
-title: bestand opnemen
-description: bestand opnemen
+title: Include-bestand
+description: Include-bestand
 services: virtual-machines-linux
 author: cynthn
 ms.service: virtual-machines-linux

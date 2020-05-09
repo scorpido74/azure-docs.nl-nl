@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.topic: troubleshooting
 ms.date: 11/01/2018
 ms.author: genli
-ms.openlocfilehash: cdbaeb5a97beba342bc471e75d1b07be0d0141ae
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 03804229221c2b1deb94f6c32a5be9defd304ff6
+ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77921408"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82628279"
 ---
 # <a name="troubleshoot-deploying-windows-virtual-machine-issues-in-azure"></a>Problemen bij het implementeren van virtuele Windows-machines in Azure oplossen
 
@@ -82,13 +82,13 @@ De mogelijkheid om abonnementen te maken op basis van de Enterprise Dev/Test aan
 
 ## <a name="my-drivers-are-missing-for-my-windows-n-series-vm"></a>Mijn stuur Programma's ontbreken voor mijn VM van de Windows N-serie
 
-Stuur Programma's voor op Windows gebaseerde virtuele machines bevinden zich [hier](../windows/n-series-driver-setup.md).
+Instructies voor het installeren van Stuur Programma's voor op Windows gebaseerde Vm's vindt u [hier](../sizes-gpu.md#supported-operating-systems-and-drivers).
 
 ## <a name="i-cant-find-a-gpu-instance-within-my-n-series-vm"></a>Ik kan geen GPU-exemplaar vinden in mijn N-serie-VM
 
-Als u gebruik wilt maken van de GPU-mogelijkheden van Azure N-serie Vm's met Windows Server 2016 of Windows Server 2012 R2, moet u na de implementatie NVIDIA grafische Stuur Programma's installeren op elke VM. Informatie over stuur programma-instellingen is beschikbaar voor virtuele [Windows-machines](../windows/n-series-driver-setup.md) en [Linux-vm's](../linux/n-series-driver-setup.md).
+Als u gebruik wilt maken van de GPU-mogelijkheden van Vm's uit de Azure N-serie, moet u na de implementatie grafische Stuur Programma's installeren op elke VM. Informatie over stuur programma-installatie is [hier](../sizes-gpu.md#supported-operating-systems-and-drivers)beschikbaar.
 
-## <a name="is-n-series-vms-available-in-my-region"></a>Zijn er Vm's uit de N-serie beschikbaar in mijn regio?
+## <a name="are-n-series-vms-available-in-my-region"></a>Zijn er Vm's uit de N-serie beschikbaar in mijn regio?
 
 U kunt de beschik baarheid controleren vanuit de [tabel met beschik bare producten per regio](https://azure.microsoft.com/regions/services)en [de prijzen.](https://azure.microsoft.com/pricing/details/virtual-machines/series/#n-series)
 

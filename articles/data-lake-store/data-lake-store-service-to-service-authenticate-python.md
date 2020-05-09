@@ -1,22 +1,18 @@
 ---
-title: 'Service-naar-service-verificatie: python met Azure Data Lake Storage Gen1 met behulp van Azure Active Directory | Microsoft Docs'
+title: Python-service-naar-service-verificatie-Data Lake Storage Gen1
 description: Meer informatie over service-to-service-verificatie met Azure Data Lake Storage Gen1 met behulp van Azure Active Directory met behulp van python
-services: data-lake-store
-documentationcenter: ''
 author: twooley
-manager: mtillman
-editor: cgronlun
 ms.service: data-lake-store
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: 009aff2703829e6d30f93b3c8e3696724594f29b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: has-adal-ref
+ms.openlocfilehash: 449159f6857cb2120f4570a8c20cd82fd11016a2
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79260291"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82688128"
 ---
 # <a name="service-to-service-authentication-with-azure-data-lake-storage-gen1-using-python"></a>Service-naar-service verificatie met Azure Data Lake Storage Gen1 met behulp van python
 > [!div class="op_single_selector"]
@@ -24,8 +20,8 @@ ms.locfileid: "79260291"
 > * [.NET SDK gebruiken](data-lake-store-service-to-service-authenticate-net-sdk.md)
 > * [Python gebruiken](data-lake-store-service-to-service-authenticate-python.md)
 > * [REST-API gebruiken](data-lake-store-service-to-service-authenticate-rest-api.md)
-> 
->  
+>
+>
 
 In dit artikel leert u hoe u de python-SDK kunt gebruiken om service-naar-service-verificatie met Azure Data Lake Storage Gen1 uit te voeren. Zie voor verificatie door eind gebruikers met Data Lake Storage Gen1 met behulp van python [verificatie van eind gebruikers met data Lake Storage gen1 met behulp van python](data-lake-store-end-user-authenticate-python.md).
 
@@ -92,7 +88,7 @@ Gebruik dit fragment om te verifiëren met Azure AD voor account beheer bewerkin
     RESOURCE = 'https://management.core.windows.net/'
     client_id = '<CLIENT_ID>'
     client_secret = '<CLIENT_SECRET>'
-    
+
     context = adal.AuthenticationContext(authority_uri, api_version=None)
     mgmt_token = context.acquire_token_with_client_credentials(RESOURCE, client_id, client_secret)
     armCreds = AADTokenCredentials(mgmt_token, client_id, resource=RESOURCE)
@@ -105,7 +101,7 @@ Gebruik het volgende code fragment om te verifiëren met Azure AD voor bestandss
     RESOURCE = 'https://datalake.azure.net/'
     client_id = '<CLIENT_ID>'
     client_secret = '<CLIENT_SECRET>'
-    
+
     adlCreds = lib.auth(tenant_id = tenant,
                     client_secret = client_secret,
                     client_id = client_id,
@@ -132,5 +128,3 @@ In dit artikel hebt u geleerd hoe u service-naar-service-verificatie kunt gebrui
 
 * [Account beheer bewerkingen op Data Lake Storage Gen1 met behulp van python](data-lake-store-get-started-python.md)
 * [Gegevens bewerkingen op Data Lake Storage Gen1 met behulp van python](data-lake-store-data-operations-python.md)
-
-

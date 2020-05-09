@@ -26,6 +26,11 @@
       href: tutorial-custom-role-powershell.md
     - name: Een aangepaste rol maken - CLI
       href: tutorial-custom-role-cli.md
+- name: Voorbeelden
+  items:
+    - name: Ingebouwde modules voor Azure Policy
+      displayName: 'samples, policies, definitions'
+      href: ./policy-samples.md
 - name: Concepten
   items:
     - name: Aanbevolen procedures
