@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 04/16/2020
 ms.author: alsin
-ms.openlocfilehash: 028c30fced14a60af9f5683e6c6e087b15591735
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 089858c789bb11245e98f32047cabb4117ece904
+ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81605485"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82838583"
 ---
 # <a name="red-hat-enterprise-linux-rhel-images-available-in-azure"></a>Red Hat Enterprise Linux-installatie kopieën (RHEL) die beschikbaar zijn in azure
 Azure biedt een aantal RHEL-installatie kopieën voor verschillende use cases.
@@ -27,6 +27,9 @@ Azure biedt een aantal RHEL-installatie kopieën voor verschillende use cases.
 
 ## <a name="list-of-rhel-images"></a>Lijst met RHEL-installatie kopieën
 Dit is een lijst met RHEL-installatie kopieën die beschikbaar zijn in Azure. Tenzij anders vermeld, worden alle installatie kopieën gepartitioneerd en gekoppeld aan gewone RHEL-opslag plaatsen (niet EUS, niet E4S). De volgende installatie kopieën zijn momenteel beschikbaar voor algemeen gebruik:
+
+> [!NOTE]
+> Onbewerkte afbeeldingen worden niet meer geproduceerd in het voor deel van LVM-gepartitioneerde installatie kopieën. LVM biedt verschillende voor delen ten opzichte van het oudere schema voor onbewerkte (niet-LVM), waaronder aanzienlijk meer flexibele opties voor het wijzigen van de partitie.
 
 Aanbieding| SKU | Partitionering | Inrichten | Opmerkingen
 :----|:----|:-------------|:-------------|:-----
@@ -47,6 +50,9 @@ RHEL          | 6.7      | UITGANG    | Linux-agent |
 |             | 7,6      | UITGANG    | Linux-agent | Gekoppeld aan EUS-opslag plaatsen standaard vanaf mei 2019.
 |             | 76-Gen2  | UITGANG    | Linux-agent | Standaard gekoppeld aan EUS-opslag plaatsen.
 |             | 7,7      | LVM    | Linux-agent | Standaard gekoppeld aan EUS-opslag plaatsen.
+|             | 77-Gen2  | LVM    | Linux-agent | Standaard gekoppeld aan EUS-opslag plaatsen.
+|             | 7,8      | LVM    | Linux-agent | Gekoppeld aan reguliere opslag plaatsen (EUS niet beschikbaar voor RHEL 7,8)
+|             | 78-Gen2  | LVM    | Linux-agent | Gekoppeld aan reguliere opslag plaatsen (EUS niet beschikbaar voor RHEL 7,8)
 |             | 8-LVM    | LVM    | Linux-agent | RHEL 8. x-familie van installatie kopieën. Gekoppeld aan reguliere opslag plaatsen.
 |             | 8-LVM-Gen2| LVM    | Linux-agent | Hyper-V-generatie 2-RHEL 8. x-familie van installatie kopieën. Gekoppeld aan reguliere opslag plaatsen.
 |             | 8        | LVM    | Linux-agent | RHEL 8,0-installatie kopieën

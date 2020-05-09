@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/10/2017
 ms.author: saudas
 ms.custom: mvc
-ms.openlocfilehash: a32c9fab3877a693d2df26571b9fae4aa7b4380c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2a3423b908ac5e089faa30b19914d3b74ae9a547
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76271083"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82735416"
 ---
 # <a name="deprecated-use-helm-to-deploy-containers-on-a-kubernetes-cluster"></a>KEUR Helm gebruiken om containers in een Kubernetes-cluster te implementeren
 
@@ -34,7 +34,7 @@ Helm heeft twee onderdelen:
 
 * [Installeren en configureren `kubectl` ](../container-service-connect.md) op een lokale computer
 
-* [Helm installeren](https://github.com/kubernetes/helm/blob/master/docs/install.md) op een lokale computer
+* [Helm installeren](https://helm.sh/docs/intro/quickstart/) op een lokale computer
 
 ## <a name="helm-basics"></a>Basis beginselen van helm 
 
@@ -149,5 +149,5 @@ U kunt nu standaard SQL-opdrachten gebruiken voor het maken van data bases, tabe
  
 ## <a name="next-steps"></a>Volgende stappen
 
-* Zie de [helm-documentatie](https://github.com/kubernetes/helm/blob/master/docs/index.md)voor meer informatie over het beheren van Kubernetes-grafieken. 
+* Zie de [helm-documentatie](https://helm.sh/docs/)voor meer informatie over het beheren van Kubernetes-grafieken. 
 

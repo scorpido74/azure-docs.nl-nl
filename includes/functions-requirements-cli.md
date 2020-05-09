@@ -4,12 +4,12 @@ ms.service: azure-functions
 ms.topic: include
 ms.date: 03/25/2020
 ms.author: glenga
-ms.openlocfilehash: a84f0a92703d1b626710cfc4dcfa2820bc58bda6
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 3929ffa81a8b558d8cb0dbd74135acc9cf1ea47b
+ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80673131"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82876046"
 ---
 ## <a name="configure-your-local-environment"></a>Uw lokale omgeving configureren
 
@@ -24,7 +24,7 @@ Voordat u begint, moet u het volgende hebben:
 + Voor python 3,6 en 3,7 is [Azure functions core tools](../articles/azure-functions/functions-run-local.md#v2) versie 2.7.1846 of een latere versie van 2. x vereist. Voor python 3,8 is [versie 3. x](../articles/azure-functions/functions-run-local.md#v2) van de kern hulpprogramma's vereist.
 ::: zone-end
 
-+ De [Azure cli](/cli/azure/install-azure-cli) -versie 2.0.76 of hoger. 
++ De [Azure cli](/cli/azure/install-azure-cli) -versie 2,4 of hoger. 
 ::: zone pivot="programming-language-javascript,programming-language-typescript"
 + [Node. js](https://nodejs.org/), Active LTS en onderhoud LTS-versies (8.11.1 en 10.14.1 aanbevolen).
 ::: zone-end

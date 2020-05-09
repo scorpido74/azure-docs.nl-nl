@@ -5,12 +5,12 @@ author: radicmilos
 ms.topic: conceptual
 ms.date: 04/17/2018
 ms.author: miradic
-ms.openlocfilehash: edcf2774873cc23a74a47cc1c9a12e2daa2ed419
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3d81feaede7658de69e255c32d3a3ef570156f93
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80984534"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82793088"
 ---
 # <a name="introduction-to-auto-scaling"></a>Inleiding tot automatisch schalen
 Automatisch schalen is een extra mogelijkheid van Service Fabric om uw services dynamisch te schalen op basis van de belasting die door de Services wordt gerapporteerd of op basis van het gebruik van resources. Automatisch schalen biedt een fantastische elasticiteit en maakt het inrichten van aanvullende instanties of partities van uw service op aanvraag mogelijk. Het volledige automatische schaal proces is geautomatiseerd en transparant en wanneer u uw beleid hebt ingesteld voor een service, hoeft u geen hand matige schaal bewerkingen op service niveau uit te stellen. Automatisch schalen kan worden ingeschakeld op het moment dat de service wordt gemaakt, of op elk gewenst moment door de service bij te werken.
@@ -130,7 +130,7 @@ Hetzelfde als bij het mechanisme dat gebruikmaakt van schalen door instanties to
 * _Minimum aantal exemplaren_ definieert de ondergrens voor schalen. Als het aantal partities van de service deze limiet bereikt, wordt de service niet geschaald, ongeacht de belasting.
 
 > [!WARNING] 
-> Wanneer AddRemoveIncrementalNamedPartitionScalingMechanism wordt gebruikt met stateful Services, worden er door Service Fabric partities toegevoegd of verwijderd zonder dat er een **melding of waarschuwing**wordt weer gegeven. Het opnieuw partitioneren van gegevens wordt niet uitgevoerd wanneer het schaal mechanisme wordt geactiveerd. In het geval van een schaal bewerking worden nieuwe partities leeg en in het geval van een schaal bewerking **wordt de partitie met alle gegevens die deze bevat, verwijderd**.
+> Wanneer AddRemoveIncrementalNamedPartitionScalingMechanism wordt gebruikt met stateful Services, worden er door Service Fabric partities toegevoegd of verwijderd zonder dat er een **melding of waarschuwing**wordt weer gegeven. Het opnieuw partitioneren van gegevens wordt niet uitgevoerd wanneer het schaal mechanisme wordt geactiveerd. In het geval van een uitschaal bewerking worden nieuwe partities leeg en in het geval van een schaal bewerking **wordt de partitie met alle gegevens die deze bevat, verwijderd**.
 
 ## <a name="setting-auto-scaling-policy"></a>Beleid voor automatisch schalen instellen
 

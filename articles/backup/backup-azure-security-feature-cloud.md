@@ -1,139 +1,32 @@
 ---
-title: Beveiligings functies voor het beveiligen van Cloud werkbelastingen
+title: Zacht verwijderen voor Azure Backup
 description: Meer informatie over het gebruik van beveiligings functies in Azure Backup om back-ups veiliger te maken.
 ms.topic: conceptual
-ms.date: 09/13/2019
-ms.openlocfilehash: bd7c86e18114513a264a0f9252589533fb7ff2d3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 04/30/2020
+ms.openlocfilehash: d7831488482ef154ce00685e513b36ed235e335e
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80668742"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82791388"
 ---
-# <a name="security-features-to-help-protect-cloud-workloads-that-use-azure-backup"></a>Beveiligings functies voor het beveiligen van Cloud werkbelastingen die gebruikmaken van Azure Backup
+# <a name="soft-delete-for-azure-backup"></a>Zacht verwijderen voor Azure Backup
 
 Problemen met betrekking tot beveiligings problemen, zoals malware, Ransomware en indringing, worden verhoogd. Deze beveiligings problemen kunnen kostbaar zijn, zowel voor geld als voor gegevens. Azure Backup biedt nu beveiligings functies die u helpen bij het beveiligen van back-upgegevens, zelfs na het verwijderen.
 
-Een dergelijke functie is zacht verwijderen. Met zacht verwijderen, zelfs als een schadelijke actor de back-up van een virtuele machine verwijdert (of als er per ongeluk back-upgegevens worden verwijderd), worden de back-upgegevens 14 extra dagen bewaard, zodat het back-upitem zonder gegevens verlies kan worden hersteld. De extra 14 dagen retentie van back-upgegevens in de status ' voorlopig verwijderen ' maken geen kosten voor de klant. Azure versleutelt ook alle back-upgegevens op rest met behulp van [Storage service Encryption](https://docs.microsoft.com/azure/storage/common/storage-service-encryption) om uw gegevens verder te beveiligen.
+Een dergelijke functie is zacht verwijderen. Met zacht verwijderen, zelfs als een schadelijke actor een back-up verwijdert (of als er per ongeluk back-upgegevens worden verwijderd), worden de back-upgegevens 14 extra dagen bewaard, zodat het back-upitem zonder gegevens verlies kan worden hersteld. De extra 14 dagen retentie van back-upgegevens in de status ' voorlopig verwijderen ' maken geen kosten voor de klant.
 
-Tijdelijke verwijderings beveiliging voor virtuele machines van Azure is algemeen beschikbaar.
-
->[!NOTE]
->Voorlopig verwijderen voor SQL Server in azure VM en voorlopig verwijderen voor SAP HANA in azure VM-workloads is nu beschikbaar als preview-versie.<br>
->Als u zich wilt aanmelden voor de preview, schrijft u voorAskAzureBackupTeam@microsoft.com
-
-## <a name="soft-delete"></a>Voorlopig verwijderen
-
-### <a name="soft-delete-for-vms"></a>Voorlopig verwijderen voor Vm's
-
-Zacht verwijderen voor Vm's beveiligt de back-ups van uw Vm's tegen onbedoeld verwijderen. Zelfs nadat de back-ups zijn verwijderd, blijven ze gedurende 14 extra dagen bewaard in de status van zacht verwijderen.
-
-> [!NOTE]
-> Met zacht verwijderen worden verwijderde back-upgegevens alleen beveiligd. Als een virtuele machine wordt verwijderd zonder een back-up, worden de gegevens niet bewaard met de functie voor voorlopig verwijderen. Alle resources moeten worden beveiligd met Azure Backup om volledige tolerantie te garanderen.
->
-
-### <a name="supported-regions"></a>Ondersteunde regio’s
-
-Voorlopig verwijderen wordt momenteel ondersteund in de West-Centraal VS, Azië-oost, Canada-centraal, Canada-oost, Frankrijk-centraal, Frankrijk-zuid, Korea-centraal, Korea-zuid, UK-zuid, UK-west, Australië-oost, Australië-Zuid-Oost, Europa-noord, VS-West, West VS2, VS-midden, Zuid-Azië-oost, Noord-Centraal VS, Zuid-Centraal VS, Japan-Oost, Japan-West, VS-Oost 2 , Zwitserland-noord, Zwitserland-west, Noor wegen West, Noor wegen Oost en alle nationale regio's.
-
-### <a name="soft-delete-for-vms-using-azure-portal"></a>Voorlopig verwijderen voor Vm's met behulp van Azure Portal
-
-1. Voor het verwijderen van de back-upgegevens van een virtuele machine moet de back-up worden gestopt. Ga in het Azure Portal naar uw Recovery Services-kluis, klik met de rechter muisknop op het back-upitem en kies **back-up stoppen**.
-
-   ![Scherm opname van Azure Portal back-upitems](./media/backup-azure-security-feature-cloud/backup-stopped.png)
-
-2. In het volgende venster krijgt u de mogelijkheid om de back-upgegevens te verwijderen of te bewaren. Als u **back-upgegevens verwijderen** kiest en vervolgens **back-up stoppen**, wordt de back-up van de virtuele machine niet definitief verwijderd. In plaats daarvan worden de back-upgegevens 14 dagen in de modus voorlopig verwijderd bewaard. Als er **back-upgegevens verwijderen** wordt gekozen, wordt een waarschuwing voor verwijderen van e-mail verzonden naar de geconfigureerde e-mail-id waarmee de gebruiker 14 dagen op de hoogte blijft van de uitgebreide Bewaar periode voor back-upgegevens. Er wordt ook een e-mail waarschuwing verzonden op de twaalfde dag, waarin wordt gemeld dat er nog twee resterende dagen zijn om de verwijderde gegevens te Resurrect. De verwijdering wordt uitgesteld tot de vijftiende dag, wanneer er permanent wordt verwijderd en er wordt een definitieve e-mail waarschuwing verzonden over het permanent verwijderen van de gegevens.
-
-   ![Scherm opname van Azure Portal, back-upvenster stoppen](./media/backup-azure-security-feature-cloud/delete-backup-data.png)
-
-3. Gedurende die 14 dagen, in de Recovery Services kluis, wordt de voorlopig verwijderde virtuele machine weer gegeven met een rood pictogram ' zacht verwijderen ' ernaast.
-
-   ![Scherm opname van Azure Portal, VM in de status zacht verwijderen](./media/backup-azure-security-feature-cloud/vm-soft-delete.png)
-
-   > [!NOTE]
-   > Als er tijdelijke, verwijderde back-upitems aanwezig zijn in de kluis, kan de kluis op dat moment niet worden verwijderd. Probeer het verwijderen van de kluis nadat de back-upitems definitief zijn verwijderd en er is geen item met de status zacht verwijderd links in de kluis.
-
-4. Als u de voorlopig verwijderde virtuele machine wilt herstellen, moet deze eerst worden verwijderd. Als u de verwijdering ongedaan wilt maken, kiest u de voorlopig verwijderde virtuele machine en selecteert u vervolgens de optie **verwijderen ongedaan**maken.
-
-   ![Scherm opname van Azure Portal, verwijderen van virtuele machine ongedaan maken](./media/backup-azure-security-feature-cloud/choose-undelete.png)
-
-   Er wordt een venster weer gegeven waarin wordt vermeld dat als ongedaan maken is gekozen, alle herstel punten voor de virtuele machine worden verwijderd en beschikbaar zijn voor het uitvoeren van een herstel bewerking. De virtuele machine wordt bewaard in de status ' beveiliging met behoud van gegevens stoppen ' met back-ups onderbroken en back-upgegevens blijven behouden zonder dat er back-upbeleid van kracht is.
-
-   ![Scherm opname van Azure Portal, bevestig de verwijdering van de virtuele machine](./media/backup-azure-security-feature-cloud/undelete-vm.png)
-
-   Op dit moment kunt u ook de virtuele machine herstellen door **VM herstellen** uit het gekozen herstel punt te selecteren.  
-
-   ![Scherm opname van Azure Portal, VM-optie herstellen](./media/backup-azure-security-feature-cloud/restore-vm.png)
-
-   > [!NOTE]
-   > De garbage collector voert alleen verlopen herstel punten uit en reinigt nadat de gebruiker de **back-** upbewerking voor hervatten heeft uitgevoerd.
-
-5. Nadat het verwijderen is voltooid, wordt de status weer gegeven als back-up stoppen met gegevens behouden en vervolgens kunt u **back-up hervatten**kiezen. Met de **back-** upbewerking hervatten wordt het back-upitem teruggezet in de actieve status, gekoppeld aan een back-upbeleid dat is geselecteerd door de gebruiker die de back-up-en bewaar schema's definieert.
-
-   ![Scherm opname van Azure Portal, back-upoptie hervatten](./media/backup-azure-security-feature-cloud/resume-backup.png)
+De [beveiliging tegen verwijderen van virtuele machines van Azure](soft-delete-virtual-machines.md) en het [voorlopig verwijderen voor SQL Server in azure VM en het voorlopig verwijderen van SAP Hana in azure VM-workloads](soft-delete-sql-saphana-in-azure-vm.md) zijn voor iedereen beschikbaar.
 
 In dit stroom diagram worden de verschillende stappen en statussen van een back-upitem weer gegeven wanneer zacht verwijderen is ingeschakeld:
 
 ![Levens cyclus van een zacht verwijderd back-upitem](./media/backup-azure-security-feature-cloud/lifecycle.png)
 
-Zie het gedeelte Veelgestelde [vragen](backup-azure-security-feature-cloud.md#frequently-asked-questions) hieronder voor meer informatie.
-
-### <a name="soft-delete-for-vms-using-azure-powershell"></a>Voorlopig verwijderen voor Vm's met behulp van Azure PowerShell
-
-> [!IMPORTANT]
-> De AZ. Recovery Services-versie die is vereist voor het gebruik van voorlopig verwijderen met Azure PS, is mini maal 2.2.0. Gebruik ```Install-Module -Name Az.RecoveryServices -Force``` om de nieuwste versie op te halen.
-
-Zoals hierboven wordt beschreven voor Azure Portal, is de volg orde van de stappen hetzelfde wanneer u ook Azure PowerShell.
-
-#### <a name="delete-the-backup-item-using-azure-powershell"></a>Het back-upitem verwijderen met Azure PowerShell
-
-Verwijder het back-upitem met de cmdlet [Disable-AzRecoveryServicesBackupProtection](https://docs.microsoft.com/powershell/module/az.recoveryservices/Disable-AzRecoveryServicesBackupProtection?view=azps-1.5.0) PS.
-
-```powershell
-Disable-AzRecoveryServicesBackupProtection -Item $myBkpItem -RemoveRecoveryPoints -VaultId $myVaultID -Force
-
-WorkloadName     Operation            Status               StartTime                 EndTime                   JobID
-------------     ---------            ------               ---------                 -------                   -----
-AppVM1           DeleteBackupData     Completed            12/5/2019 12:44:15 PM     12/5/2019 12:44:50 PM     0488c3c2-accc-4a91-a1e0-fba09a67d2fb
-```
-
-Het ' DeleteState ' van het back-upitem wordt gewijzigd van ' NotDeleted ' in ' ToBeDeleted '. De back-upgegevens worden 14 dagen bewaard. Als u de Verwijder bewerking wilt terugdraaien, moet u het ongedaan maken verwijderen.
-
-#### <a name="undoing-the-deletion-operation-using-azure-powershell"></a>De verwijderings bewerking ongedaan maken met Azure PowerShell
-
-U moet eerst het relevante back-upitem ophalen dat zich in de status voorlopig verwijderen bevindt (dat wil zeggen, dat wil zeggen dat het wordt verwijderd).
-
-```powershell
-
-Get-AzRecoveryServicesBackupItem -BackupManagementType AzureVM -WorkloadType AzureVM -VaultId $myVaultID | Where-Object {$_.DeleteState -eq "ToBeDeleted"}
-
-Name                                     ContainerType        ContainerUniqueName                      WorkloadType         ProtectionStatus     HealthStatus         DeleteState
-----                                     -------------        -------------------                      ------------         ----------------     ------------         -----------
-VM;iaasvmcontainerv2;selfhostrg;AppVM1    AzureVM             iaasvmcontainerv2;selfhostrg;AppVM1       AzureVM              Healthy              Passed               ToBeDeleted
-
-$myBkpItem = Get-AzRecoveryServicesBackupItem -BackupManagementType AzureVM -WorkloadType AzureVM -VaultId $myVaultID -Name AppVM1
-```
-
-Vervolgens voert u de bewerking voor ongedaan maken uit met de PS [-cmdlet Undo-AzRecoveryServicesBackupItemDeletion](https://docs.microsoft.com/powershell/module/az.recoveryservices/undo-azrecoveryservicesbackupitemdeletion?view=azps-3.1.0) .
-
-```powershell
-Undo-AzRecoveryServicesBackupItemDeletion -Item $myBKpItem -VaultId $myVaultID -Force
-
-WorkloadName     Operation            Status               StartTime                 EndTime                   JobID
-------------     ---------            ------               ---------                 -------                   -----
-AppVM1           Undelete             Completed            12/5/2019 12:47:28 PM     12/5/2019 12:47:40 PM     65311982-3755-46b5-8e53-c82ea4f0d2a2
-```
-
-De ' DeleteState ' van het back-upitem wordt teruggezet op ' NotDeleted '. De beveiliging is echter nog steeds gestopt. [Hervat de back-up](https://docs.microsoft.com/azure/backup/backup-azure-vms-automation#change-policy-for-backup-items) om de beveiliging opnieuw in te scha kelen.
-
-### <a name="soft-delete-for-vms-using-rest-api"></a>Voorlopig verwijderen voor Vm's met behulp van REST API
-
-- Verwijder de back-ups met REST API zoals [hier](backup-azure-arm-userestapi-backupazurevms.md#stop-protection-and-delete-data)wordt vermeld.
-- Als de gebruiker deze Verwijder bewerkingen ongedaan wil maken, raadpleegt u de stappen die [hier](backup-azure-arm-userestapi-backupazurevms.md#undo-the-stop-protection-and-delete-data)worden beschreven.
-
-## <a name="disabling-soft-delete"></a>Tijdelijke verwijdering uitschakelen
+## <a name="enabling-and-disabling-soft-delete"></a>Voorlopig verwijderen inschakelen en uitschakelen
 
 Voorlopig verwijderen is standaard ingeschakeld op nieuwe kluizen om back-upgegevens te beschermen tegen onbedoelde of schadelijke verwijderingen.  Het uitschakelen van deze functie wordt niet aanbevolen. De enige omstandigheid waarbij het uitschakelen van de functie voor het verwijderen van uw beveiligde items naar een nieuwe kluis moet worden aangeraden, is dat u de 14 dagen die vereist zijn voor het verwijderen en opnieuw beveiligen van een test omgeving, niet kunt wachten. Alleen de eigenaar van de kluis kan deze functie uitschakelen. Als u deze functie uitschakelt, worden alle toekomstige verwijderingen van beveiligde items onmiddellijk verwijderd, zonder dat u de mogelijkheid hebt om te herstellen. Back-upgegevens die aanwezig zijn in de status zacht verwijderd voordat u deze functie uitschakelt, blijven voor de periode van 14 dagen de status voorlopig verwijderd. Als u deze onmiddellijk permanent wilt verwijderen, moet u het verwijderen ongedaan maken en opnieuw verwijderen om het permanent te laten worden verwijderd.
+
+ Het is belang rijk om te onthouden dat zodra het uitvoeren van een soft-verwijdering is uitgeschakeld, de functie is uitgeschakeld voor alle typen werk belastingen, waaronder SQL Server en SAP HANA workloads. Als bijvoorbeeld de preview van [SQL Server/SAP Hana](https://docs.microsoft.com/azure/backup/soft-delete-sql-saphana-in-azure-vm#steps-to-enroll-in-preview) is ingeschakeld voor een abonnement, is het niet mogelijk om alleen de optie voorlopig verwijderen uit te scha KELEN voor SQL Server of SAP Hana db's terwijl de virtuele machines in dezelfde kluis ingeschakeld blijven. U kunt afzonderlijke kluizen maken voor gedetailleerde controle.
 
 ### <a name="disabling-soft-delete-using-azure-portal"></a>Zacht verwijderen uitschakelen met Azure Portal
 
@@ -175,10 +68,11 @@ Back-upgegevens in de modus zacht verwijderd voordat deze functie wordt uitgesch
 
 Volg deze stappen:
 
-1. Volg de stappen om [zacht verwijderen uit te scha kelen](#disabling-soft-delete).
-2. Ga in het Azure Portal naar uw kluis, ga naar **Back-upitems**en kies de voorlopig verwijderde virtuele machine.
+1. Volg de stappen om [zacht verwijderen uit te scha kelen](#enabling-and-disabling-soft-delete).
 
-   ![Zacht verwijderde virtuele machine kiezen](./media/backup-azure-security-feature-cloud/vm-soft-delete.png)
+2. In de Azure Portal gaat u naar uw kluis, gaat u naar **back-** upitems en kiest u het onderdeel voorlopig verwijderd.
+
+   ![Voorlopig verwijderd item kiezen](./media/backup-azure-security-feature-cloud/vm-soft-delete.png)
 
 3. Selecteer de optie **verwijderen ongedaan**maken.
 
@@ -243,89 +137,44 @@ Als er items zijn verwijderd voordat de Soft-verwijdering werd uitgeschakeld, wo
 2. Schakel vervolgens de functie voor voorlopig verwijderen met REST API uit met behulp van de stappen die [hier](use-restapi-update-vault-properties.md#update-soft-delete-state-using-rest-api)worden beschreven.
 3. Verwijder vervolgens de back-ups met REST API zoals [hier](backup-azure-arm-userestapi-backupazurevms.md#stop-protection-and-delete-data)wordt vermeld.
 
-## <a name="encryption"></a>Versleuteling
-
-Al uw back-upgegevens worden automatisch versleuteld wanneer deze worden opgeslagen in de Cloud met behulp van Azure Storage versleuteling, waarmee u kunt voldoen aan de verplichtingen voor beveiliging en naleving. Deze gegevens in rust worden versleuteld met 256-bits AES-versleuteling, een van de krach tigste blok cijfers die beschikbaar zijn en is compatibel met FIPS 140-2.
-
-Naast versleuteling in rust worden al uw back-upgegevens overgebracht via HTTPS. Het blijft altijd op het Azure-backbone-netwerk.
-
-Zie [Azure Storage versleuteling voor Data-at-rest](https://docs.microsoft.com/azure/storage/common/storage-service-encryption)voor meer informatie. Raadpleeg de [Veelgestelde vragen over Azure backup](https://docs.microsoft.com/azure/backup/backup-azure-backup-faq#encryption) voor het beantwoorden van vragen die u mogelijk hebt over versleuteling.
-
-### <a name="encryption-of-backup-data-using-platform-managed-keys"></a>Versleuteling van back-upgegevens met door het platform beheerde sleutels
-
-Standaard worden al uw gegevens versleuteld met sleutels die door het platform worden beheerd. U hoeft geen expliciete actie van uw end uit te voeren om deze versleuteling in te scha kelen en is van toepassing op alle werk belastingen waarvan een back-up wordt gemaakt naar uw Recovery Services kluis.
-
-### <a name="encryption-of-backup-data-using-customer-managed-keys"></a>Versleuteling van back-upgegevens met door de klant beheerde sleutels
-
-Wanneer u een back-up maakt van uw Azure-Virtual Machines, kunt u uw gegevens nu versleutelen met sleutels die eigendom zijn van en worden beheerd door u. Met Azure Backup kunt u uw RSA-sleutels gebruiken die zijn opgeslagen in de Azure Key Vault voor het versleutelen van uw back-ups. De versleutelings sleutel die wordt gebruikt voor het versleutelen van back-ups is mogelijk anders dan die voor de bron. De gegevens worden beveiligd met behulp van een AES 256-gegevens versleutelings sleutel (DEK), die op zijn beurt wordt beveiligd met uw sleutels. Hiermee krijgt u volledige controle over de gegevens en de sleutels. Als u versleuteling wilt toestaan, moet de Recovery Services-kluis toegang krijgen tot de versleutelings sleutel in de Azure Key Vault. U kunt de sleutel uitschakelen of toegang intrekken wanneer dit nodig is. U moet echter versleuteling inschakelen met behulp van uw sleutels voordat u de items in de kluis probeert te beveiligen.
-
->[!NOTE]
->Deze functie is momenteel beperkt beschikbaar. Vul [deze enquête](https://forms.microsoft.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR0H3_nezt2RNkpBCUTbWEapURE9TTDRIUEUyNFhNT1lZS1BNVDdZVllHWi4u) in AskAzureBackupTeam@microsoft.com en stuur ons een e-mail naar als u uw back-upgegevens wilt versleutelen met door de klant beheerde sleutels. Houd er rekening mee dat de mogelijkheid om deze functie te gebruiken afhankelijk is van de Azure Backup service.
-
-### <a name="backup-of-managed-disk-vms-encrypted-using-customer-managed-keys"></a>Back-up van virtuele machines met beheerde schijven versleuteld met door de klant beheerde sleutels
-
-Azure Backup kunt u ook een back-up maken van uw Azure-Vm's die gebruikmaken van uw sleutel voor versleuteling aan de server zijde. De sleutel die wordt gebruikt voor het versleutelen van de schijven wordt opgeslagen in de Azure Key Vault en door u worden beheerd. Versleuteling aan de server zijde met door de klant beheerde sleutels verschilt van Azure Disk Encryption, omdat ADE gebruikmaakt van BitLocker (voor Windows) en DM-crypt (voor Linux) voor het uitvoeren van in-gast versleuteling, worden gegevens in de opslag service met SSE versleuteld, zodat u elk besturings systeem of installatie kopieën voor uw virtuele machines kunt gebruiken. Raadpleeg voor meer informatie de [versleuteling van Managed disks met door de klant beheerde sleutels](https://docs.microsoft.com/azure/virtual-machines/windows/disk-encryption#customer-managed-keys) .
-
-### <a name="backup-of-vms-encrypted-using-ade"></a>Back-up van virtuele machines die zijn versleuteld met ADE
-
-Met Azure Backup kunt u ook een back-up maken van uw virtuele Azure-machines waarvan het besturings systeem of de gegevens schijven zijn versleuteld met behulp van Azure Disk Encryption. ADE maakt gebruik van BitLocker voor Windows-Vm's en DM-crypt voor Linux-Vm's voor het uitvoeren van in-gast versleuteling. Zie [back-up en herstel van versleutelde virtuele machines met Azure backup](https://docs.microsoft.com/azure/backup/backup-azure-vms-encryption)voor meer informatie.
-
-## <a name="private-endpoints"></a>Privé-eind punten
-
-[!INCLUDE [Private Endpoints](../../includes/backup-private-endpoints.md)]
-
-## <a name="other-security-features"></a>Andere beveiligings functies
-
-### <a name="protection-of-azure-backup-recovery-points"></a>Beveiliging van Azure Backup herstel punten
-
-Opslag accounts die worden gebruikt door Recovery Services-kluizen, zijn geïsoleerd en kunnen niet worden geopend door gebruikers voor schadelijke doel einden. De toegang is alleen toegestaan via Azure Backup beheer bewerkingen, zoals herstellen. Deze beheer bewerkingen worden beheerd via op rollen gebaseerde Access Control (RBAC).
-
-Zie [Access Control op rollen gebaseerd gebruiken om Azure backup herstel punten te beheren](https://docs.microsoft.com/azure/backup/backup-rbac-rs-vault)voor meer informatie.
-
 ## <a name="frequently-asked-questions"></a>Veelgestelde vragen
 
-### <a name="for-soft-delete"></a>Voor zacht verwijderen
+### <a name="do-i-need-to-enable-the-soft-delete-feature-on-every-vault"></a>Moet ik de functie voor voorlopig verwijderen inschakelen voor elke kluis?
 
-#### <a name="do-i-need-to-enable-the-soft-delete-feature-on-every-vault"></a>Moet ik de functie voor voorlopig verwijderen inschakelen voor elke kluis?
+Nee, het is ingebouwd en is standaard ingeschakeld voor alle Recovery Services-kluizen.
 
-Nee, het is standaard gemaakt en ingeschakeld voor alle Recovery Services-kluizen.
-
-#### <a name="can-i-configure-the-number-of-days-for-which-my-data-will-be-retained-in-soft-deleted-state-after-delete-operation-is-complete"></a>Kan ik het aantal dagen configureren dat mijn gegevens behouden blijven in de modus voor zacht verwijderen nadat de bewerking is voltooid?
+### <a name="can-i-configure-the-number-of-days-for-which-my-data-will-be-retained-in-soft-deleted-state-after-the-delete-operation-is-complete"></a>Kan ik het aantal dagen configureren dat mijn gegevens behouden blijven wanneer de verwijderings bewerking is voltooid?
 
 Nee, het is vast tot 14 dagen na het verwijderen van de bewerking.
 
-#### <a name="do-i-need-to-pay-the-cost-for-this-additional-14-day-retention"></a>Moet ik de kosten voor deze extra retentie van 14 dagen betalen?
+### <a name="do-i-need-to-pay-the-cost-for-this-additional-14-day-retention"></a>Moet ik de kosten voor deze extra retentie van 14 dagen betalen?
 
 Nee, deze extra Bewaar periode van 14 dagen is gratis als onderdeel van de functie voor zacht verwijderen.
 
-#### <a name="can-i-perform-a-restore-operation-when-my-data-is-in-soft-delete-state"></a>Kan ik een herstel bewerking uitvoeren wanneer mijn gegevens de status zacht verwijderen hebben?
+### <a name="can-i-perform-a-restore-operation-when-my-data-is-in-soft-delete-state"></a>Kan ik een herstel bewerking uitvoeren wanneer mijn gegevens de status zacht verwijderen hebben?
 
 Nee, u moet de tijdelijke verwijderde resource verwijderen om te herstellen. Met de bewerking voor het ongedaan maken van de verwijdering wordt de resource weer **gestopt met de status beveiliging stoppen met gegevens behouden** , waarin u naar een wille keurig moment kunt herstellen. De garbage collector blijft onderbroken in deze status.
 
-#### <a name="will-my-snapshots-follow-the-same-lifecycle-as-my-recovery-points-in-the-vault"></a>Volgen mijn moment opnamen dezelfde levens cyclus als mijn herstel punten in de kluis?
+### <a name="will-my-snapshots-follow-the-same-lifecycle-as-my-recovery-points-in-the-vault"></a>Volgen mijn moment opnamen dezelfde levens cyclus als mijn herstel punten in de kluis?
 
 Ja.
 
-#### <a name="how-can-i-trigger-the-scheduled-backups-again-for-a-soft-deleted-resource"></a>Hoe kan ik de geplande back-ups opnieuw activeren voor een tijdelijke verwijderde resource?
+### <a name="how-can-i-trigger-the-scheduled-backups-again-for-a-soft-deleted-resource"></a>Hoe kan ik de geplande back-ups opnieuw activeren voor een tijdelijke verwijderde resource?
 
-Als u de verwijdering opheffen, gevolgd door de bewerking hervatten wordt de resource opnieuw beveiligd. Met de bewerking hervatten wordt een back-upbeleid gekoppeld om de geplande back-ups te activeren met de geselecteerde Bewaar periode. Daarnaast wordt de garbage collector uitgevoerd zodra de bewerking hervatten is voltooid. Als u een herstel bewerking wilt uitvoeren vanaf een herstel punt dat voorbij de verloop datum ligt, wordt u geadviseerd om het te doen voordat u de hervatting hervat.
+Als de verwijdering ongedaan wordt gemaakt en de bewerking wordt hervat, wordt de resource opnieuw beveiligd. Met de bewerking hervatten wordt een back-upbeleid gekoppeld om de geplande back-ups te activeren met de geselecteerde Bewaar periode. Daarnaast wordt de garbage collector uitgevoerd zodra de bewerking hervatten is voltooid. Als u een herstel bewerking wilt uitvoeren vanaf een herstel punt dat na de verloop datum ligt, wordt u geadviseerd om het te doen voordat u de hervatting hervat.
 
-#### <a name="can-i-delete-my-vault-if-there-are-soft-deleted-items-in-the-vault"></a>Kan ik mijn kluis verwijderen als er sprake is van tijdelijke verwijderde items in de kluis?
+### <a name="can-i-delete-my-vault-if-there-are-soft-deleted-items-in-the-vault"></a>Kan ik mijn kluis verwijderen als er sprake is van tijdelijke verwijderde items in de kluis?
 
-De Recovery Services kluis kan niet worden verwijderd als er back-upitems in de kluis worden verwijderd. De voorlopig verwijderde items worden definitief verwijderd 14 dagen na de verwijderings bewerking. Als u 14 dagen niet kunt wachten, schakelt u de [optie voorlopig verwijderen uit](#disabling-soft-delete), verwijdert u de voorlopig verwijderde items en verwijdert u deze opnieuw om ze definitief te verwijderen. Nadat u hebt gecontroleerd of er geen beveiligde items zijn en geen tijdelijke verwijderde items, kan de kluis worden verwijderd.  
+De Recovery Services kluis kan niet worden verwijderd als er back-upitems in de kluis worden verwijderd. De voorlopig verwijderde items worden definitief verwijderd 14 dagen na de verwijderings bewerking. Als u 14 dagen niet kunt wachten, schakelt u de [optie voorlopig verwijderen uit](#enabling-and-disabling-soft-delete), verwijdert u de voorlopig verwijderde items en verwijdert u deze opnieuw om ze definitief te verwijderen. Nadat u hebt gecontroleerd of er geen beveiligde items zijn en geen tijdelijke verwijderde items, kan de kluis worden verwijderd.  
 
-#### <a name="can-i-delete-the-data-earlier-than-the-14-days-soft-delete-period-after-deletion"></a>Kan ik de gegevens die ouder zijn dan de 14 dagen na het verwijderen verwijderen?
+### <a name="can-i-delete-the-data-earlier-than-the-14-days-soft-delete-period-after-deletion"></a>Kan ik de gegevens die ouder zijn dan de 14 dagen na het verwijderen verwijderen?
 
-Nee. U kunt het verwijderen van de voorlopig verwijderde items niet afdwingen. deze worden na 14 dagen automatisch verwijderd. Deze beveiligings functie is ingeschakeld om de back-upgegevens te beschermen tegen onbedoelde of schadelijke verwijderingen.  U moet 14 dagen wachten voordat u een andere bewerking op de virtuele machine uitvoert.  In rekening gebrachte voorlopig verwijderde items worden gefactureerd.  Neem contact op met micro soft ondersteuning als u de virtuele machines die binnen 14 dagen zijn gemarkeerd voor zacht verwijderen, opnieuw moet beveiligen.
+Nee. U kunt het verwijderen van de voorlopig verwijderde items niet afdwingen. Ze worden na 14 dagen automatisch verwijderd. Deze beveiligings functie is ingeschakeld om de back-upgegevens te beschermen tegen onbedoelde of schadelijke verwijderingen.  U moet 14 dagen wachten voordat u een andere actie op het item uitvoert.  Er worden geen kosten in rekening gebracht voor voorlopig verwijderde items.  Neem contact op met micro soft ondersteuning als u de items die zijn gemarkeerd voor zacht verwijderen binnen 14 dagen in een nieuwe kluis opnieuw moet beveiligen.
 
-#### <a name="can-soft-delete-operations-be-performed-in-powershell-or-cli"></a>Kunnen er tijdelijke Verwijder bewerkingen worden uitgevoerd in Power shell of CLI?
+### <a name="can-soft-delete-operations-be-performed-in-powershell-or-cli"></a>Kunnen er tijdelijke Verwijder bewerkingen worden uitgevoerd in Power shell of CLI?
 
-U kunt tijdelijke Verwijder bewerkingen uitvoeren met behulp van [Power shell](#soft-delete-for-vms-using-azure-powershell). CLI wordt momenteel niet ondersteund.
-
-#### <a name="is-soft-delete-supported-for-other-cloud-workloads-like-sql-server-in-azure-vms-and-sap-hana-in-azure-vms"></a>Wordt zacht verwijderen ondersteund voor andere werk belastingen in de Cloud, zoals SQL Server in azure-Vm's en SAP HANA in azure-Vm's?
-
-Nee. Momenteel wordt een tijdelijke verwijdering alleen ondersteund voor virtuele machines van Azure.
+U kunt tijdelijke Verwijder bewerkingen uitvoeren met behulp van Power shell. CLI wordt momenteel niet ondersteund.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Meer informatie over [beveiligings controles voor Azure backup](backup-security-controls.md).
+- [Overzicht van beveiligings functies in Azure Backup](security-overview.md)

@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 04/27/2020
-ms.openlocfilehash: 9f9cc4c29b117c83595a36c4e28b1edb428c3cde
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 4b02039c86f43e6bebed58dfff475816f09a3da1
+ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82254120"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82890147"
 ---
 # <a name="similarity-and-scoring-in-azure-cognitive-search"></a>Gelijkenis en score in azure Cognitive Search
 
@@ -59,16 +59,9 @@ Azure Cognitive Search ondersteunt twee verschillende classificatie algoritmen v
 
 U kunt voor Taan opgeven welk classificatie algoritme voor overeenkomsten u wilt gebruiken. Zie voor meer informatie [classificatie algoritme](index-ranking-similarity.md).
 
-## <a name="watch-this-video"></a>Deze video bekijken
+Het volgende video segment is een snelle doorstuur naar een uitleg van de classificatie algoritmen die worden gebruikt in azure Cognitive Search. U kunt de volledige video bekijken voor meer achtergrond.
 
-In deze video van 16 minuten wordt door software engineer Raouf Merouche het proces van indexeren, query's en het maken van Score profielen uitgelegd. Het biedt u een goed idee van wat er gebeurt onder de schermen wanneer uw documenten worden geïndexeerd en opgehaald.
-
->[!VIDEO https://channel9.msdn.com/Shows/AI-Show/Similarity-and-Scoring-in-Azure-Cognitive-Search/player]
-
-+ 2-3 minuten voor de indexering: tekst verwerking en lexicale analyse.
-+ 3-4 minuten voor de indexering: omgekeerde indexen.
-+ 4-6 minuten voor het uitvoeren van query's: ophalen en rang schikking.
-+ 7-16 minuten bestrijkt Score profielen.
+> [!VIDEO https://www.youtube.com/embed/Y_X6USgvB1g?version=3&start=322&end=643]
 
 ## <a name="see-also"></a>Zie ook
 

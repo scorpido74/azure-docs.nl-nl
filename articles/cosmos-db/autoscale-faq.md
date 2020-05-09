@@ -1,50 +1,50 @@
 ---
-title: Veelgestelde vragen over de modus voor automatisch schalen in Azure Cosmos DB
+title: Veelgestelde vragen over het automatisch schalen van ingerichte door Voer in Azure Cosmos DB
 description: Veelgestelde vragen over het automatisch schalen van ingerichte door Voer voor Azure Cosmos DB data bases en containers
 author: deborahc
 ms.author: dech
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 04/28/2020
-ms.openlocfilehash: 413e9c71850b047172859c681cdbb422b7def032
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: fa4c2708f34a377a17914c7e6e5abdd709cbb5b1
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82196463"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82791779"
 ---
 # <a name="frequently-asked-questions-about-autoscale-provisioned-throughput-in-azure-cosmos-db"></a>Veelgestelde vragen over het automatisch schalen van ingerichte door Voer in Azure Cosmos DB
 
-Met de ingerichte door Voer in de modus voor automatisch schalen, beheert en schaalt Azure Cosmos DB de RU/s van uw container of Data Base op basis van het gebruik. In dit artikel vindt u antwoorden op veelgestelde vragen over automatisch schalen.
+Met de ingerichte door Voer voor automatisch schalen beheert en schaalt Azure Cosmos DB de RU/s van uw container of Data Base, op basis van het gebruik. In dit artikel vindt u antwoorden op veelgestelde vragen over automatisch schalen.
 
 ## <a name="frequently-asked-questions"></a>Veelgestelde vragen
 
-### <a name="is-autoscale-mode-supported-for-all-apis"></a>Wordt de modus voor automatisch schalen ondersteund voor alle Api's?
-Ja, de modus voor automatisch schalen wordt ondersteund voor alle Api's: core (SQL), Gremlin, Table, Cassandra en API voor MongoDB.
+### <a name="is-autoscale-supported-for-all-apis"></a>Wordt automatisch schalen ondersteund voor alle Api's?
+Ja, automatisch schalen wordt ondersteund voor alle Api's: core (SQL), Gremlin, Table, Cassandra en API voor MongoDB.
 
-### <a name="is-autoscale-mode-supported-for-multi-master-accounts"></a>Wordt de modus voor automatisch schalen ondersteund voor Multi-Master accounts?
-Ja, de modus voor automatisch schalen wordt ondersteund voor Multi-Master-accounts. Het maximum aantal RU/s is beschikbaar in elke regio die wordt toegevoegd aan het Cosmos-account. 
+### <a name="is-autoscale-supported-for-multi-master-accounts"></a>Wordt automatisch schalen ondersteund voor Multi-Master-accounts?
+Ja, automatisch schalen wordt ondersteund voor Multi-Master-accounts. Het maximum aantal RU/s is beschikbaar in elke regio die wordt toegevoegd aan het Cosmos-account. 
 
-### <a name="what-is-the-pricing-for-autoscale"></a>Wat zijn de prijzen voor automatisch schalen?
+### <a name="what-is-the-pricing-for-autoscale-"></a>Wat zijn de prijzen voor automatisch schalen?
 Raadpleeg de pagina met [prijzen](https://azure.microsoft.com/pricing/details/cosmos-db/) voor Azure Cosmos DB voor meer informatie. 
 
 ### <a name="how-do-i-enable-autoscale-for-my-containers-or-databases"></a>Hoe kan ik automatisch schalen inschakelen voor mijn containers of data bases?
-De modus voor automatisch schalen kan worden ingeschakeld voor nieuwe containers en data bases die zijn gemaakt met behulp van de Azure Portal. 
+Automatisch schalen kan worden ingeschakeld voor nieuwe containers en data bases die zijn gemaakt met behulp van de Azure Portal.
 
-### <a name="is-there-cli-or-sdk-support-to-create-containers-or-databases-with-autoscale-mode"></a>Is er CLI-of SDK-ondersteuning voor het maken van containers of data bases met de modus voor automatisch schalen?
-Op dit moment kunt u alleen resources maken met de modus voor automatisch schalen vanuit het Azure Portal. Ondersteuning voor CLI en SDK is nog niet beschikbaar.
+### <a name="is-there-cli-or-sdk-support-to-create-containers-or-databases-with-autoscale-provisioned-throughput"></a>Is er CLI-of SDK-ondersteuning voor het maken van containers of data bases met een door Voer ingericht voor automatisch schalen?
+Op dit moment kunt u alleen resources maken met de door Voer van automatisch schalen vanuit het Azure Portal. Ondersteuning voor CLI en SDK is nog niet beschikbaar.
 
 ### <a name="can-i-enable-autoscale-on-an-existing-container-or-a-database"></a>Kan ik automatisch schalen inschakelen voor een bestaande container of een Data Base?
-Op dit moment kunt u automatisch schalen inschakelen voor nieuwe containers en data bases bij het maken van deze. Ondersteuning voor het inschakelen van de modus voor automatisch schalen op bestaande containers en data bases is nog niet beschikbaar. U kunt bestaande containers naar een nieuwe container migreren met behulp van [Azure Data Factory](../data-factory/connector-azure-cosmos-db.md) of een [andere feed](change-feed.md). 
+Op dit moment kunt u automatisch schalen inschakelen voor nieuwe containers en data bases bij het maken van deze. Ondersteuning voor het inschakelen van automatisch schalen op bestaande containers en data bases is nog niet beschikbaar. U kunt bestaande containers naar een nieuwe container migreren met behulp van [Azure Data Factory](../data-factory/connector-azure-cosmos-db.md) of een [andere feed](change-feed.md). 
 
-### <a name="can-i-turn-off-autoscale-mode-on-a-container-or-database"></a>Kan ik de modus voor automatisch schalen uitschakelen voor een container of data base?
-Ja, u kunt automatisch schalen uitschakelen door te scha kelen naar de optie ' hand matig ' voor de ingerichte door voer. Nadat u in de huidige versie hebt overgeschakeld van de modus automatisch schalen naar hand matige modus, kunt u automatisch schalen niet meer inschakelen voor dezelfde resource. 
+### <a name="can-i-turn-off-autoscale-on-a-container-or-database"></a>Kan ik automatisch schalen uitschakelen voor een container of data base?
+Ja, u kunt automatisch schalen uitschakelen door te scha kelen naar de optie standaard (hand matig) voor de ingerichte door voer. In de huidige release kunt u na het overschakelen van automatisch schalen naar de standaard ingerichte door Voer niet meer automatisch schalen inschakelen voor dezelfde resource. 
 
-### <a name="is-autoscale-mode-supported-for-shared-throughput-databases"></a>Wordt de modus voor automatisch schalen ondersteund voor gedeelde doorvoer databases?
-Ja, de modus voor automatisch schalen wordt ondersteund voor gedeelde doorvoer databases. Als u deze functie wilt inschakelen, selecteert u modus voor automatisch schalen en de optie **door Voer** bij het maken van de data base. 
+### <a name="is-autoscale-supported-for-shared-throughput-databases"></a>Wordt automatisch schalen ondersteund voor gedeelde doorvoer databases?
+Ja, automatisch schalen wordt ondersteund voor gedeelde doorvoer databases. Als u deze functie wilt inschakelen, selecteert u automatisch schalen en de optie **door Voer** bij het maken van de data base. 
 
 ### <a name="what-is-the-number-of-allowed-collections-per-shared-throughput-database-when-autoscale-is-enabled"></a>Wat is het aantal toegestane verzamelingen per gedeelde doorvoer database wanneer automatisch schalen is ingeschakeld?
-Voor gedeelde doorvoer databases waarvoor de modus voor automatisch schalen is ingeschakeld, is het aantal toegestane verzamelingen: MIN (25, Max. RU/s van data base/1000). Als de maximale door Voer van de data base bijvoorbeeld 20.000 RU/s is, kan de Data Base mini maal (25, 20.000 RU/s/1000) = 20 verzamelingen bevatten. 
+Voor gedeelde doorvoer databases waarvoor automatisch schalen is ingeschakeld, is het aantal toegestane verzamelingen: MIN (25, Max. RU/s van data base/1000). Als de maximale door Voer van de data base bijvoorbeeld 20.000 RU/s is, kan de Data Base mini maal (25, 20.000 RU/s/1000) = 20 verzamelingen bevatten. 
 
 
 ### <a name="what-is-the-storage-limit-associated-with-each-max-rus-option"></a>Wat is de opslag limiet die is gekoppeld aan elke maximum RU/s optie?  
@@ -54,13 +54,13 @@ De opslag limiet in GB voor elke maximum versie van RU/s is: Max RU/s van data b
 Als de opslag limiet die is gekoppeld aan de maximale door Voer van de data base of container wordt overschreden, wordt door Azure Cosmos DB de maximale door Voer automatisch verhoogd naar de volgende hoogste laag die dat opslag niveau kan ondersteunen. Stel bijvoorbeeld dat een Data Base of container is ingericht met de optie maximale door Voer van 4000 RU/s, die een opslag limiet van 50 GB heeft. Als de opslag van de resource toeneemt tot 100 GB, wordt het maximum aantal RU/s van de data base of container automatisch verhoogd tot 20.000 RU/s, die Maxi maal 200 GB kan ondersteunen. 
 
 ### <a name="how-quickly-will-autoscale-up-and-down-based-on-spikes-in-traffic"></a>Hoe snel wordt automatisch omhoog en omlaag geschaald op basis van pieken in verkeer?
-In de modus voor automatisch schalen kunt u de RU/s in het minimale en maximale RU/s-bereik direct omhoog of omlaag schalen, op basis van binnenkomend verkeer. Facturering geschiedt met een granulatie van 1 uur, waarbij u in rekening wordt gebracht voor de hoogste RU/s in een bepaald uur.
+Met automatisch schalen kunt u de RU/s in het minimale en maximale RU/s-bereik direct omhoog of omlaag schalen, op basis van binnenkomend verkeer. Facturering geschiedt met een granulatie van 1 uur, waarbij u in rekening wordt gebracht voor de hoogste RU/s in een bepaald uur.
 
-### <a name="can-i-specify-a-custom-max-throughput-rus-value-for-autoscale-mode"></a>Kan ik een aangepaste waarde voor maximale door Voer (RU/s) voor de modus voor automatisch schalen opgeven?
+### <a name="can-i-specify-a-custom-max-throughput-rus-value-for-autoscale"></a>Kan ik een aangepaste waarde voor maximale door Voer (RU/s) voor automatisch schalen opgeven?
 Op dit moment kunt u kiezen uit [vier opties](provision-throughput-autoscale.md#autoscale-limits) voor maximale door Voer (ru/s).
 
 ### <a name="can-i-increase-the-max-rus-move-to-a-higher-tier-on-the-database-or-container"></a>Kan ik het maximum aantal RU/s (verplaatsen naar een hogere laag) op de data base of container verhogen? 
-Ja. Vanuit de optie **schaal & instellingen** voor uw container of **schaal** optie voor uw data base kunt u een hoger maximum aantal ru/s voor de modus voor automatisch schalen selecteren. Dit is een asynchrone opschalende bewerking die veel tijd in beslag kan nemen (meestal 4-6 uur, afhankelijk van de geselecteerde RU/s), aangezien de service meer bronnen nodig heeft om de hogere schaal te ondersteunen. 
+Ja. Vanuit de optie **schaal & instellingen** voor uw container of **schaal** optie voor uw data base kunt u een hoger maximum aantal ru/s voor automatisch schalen selecteren. Dit is een asynchrone opschalende bewerking die veel tijd in beslag kan nemen (meestal 4-6 uur, afhankelijk van de geselecteerde RU/s), aangezien de service meer bronnen nodig heeft om de hogere schaal te ondersteunen. 
 
 ### <a name="can-i-reduce-the-max-rus-move-to-a-lower-tier-on-the-database-or-container"></a>Kan ik het maximum aantal RU/s (verplaatsen naar een lagere laag) op de data base of container verlagen?
 Ja. Zolang de huidige opslag van de data base of container zich onder de [opslag limiet](#what-is-the-storage-limit-associated-with-each-max-rus-option) bevindt die is gekoppeld aan de Max ru/s-laag die u omlaag wilt schalen, kunt u het maximum aantal ru/s beperken tot die laag. Als u bijvoorbeeld 20.000 RU/s hebt geselecteerd als maximum aantal RU/s, kunt u het maximum aantal RU/s naar 4000 RU/s schalen als u minder dan 50 GB opslag ruimte hebt (de opslag limiet die is gekoppeld aan 4000 RU/s).
@@ -86,5 +86,5 @@ Als u bijvoorbeeld de optie Max-doorvoer capaciteit 20.000 RU/s selecteert en 20
 ## <a name="next-steps"></a>Volgende stappen
 
 * Meer informatie over het [inschakelen van automatisch schalen op een Azure Cosmos-container of-data base](provision-throughput-autoscale.md#create-db-container-autoscale).
-* Meer informatie over de [voor delen van ingerichte door Voer in de modus voor automatisch schalen](provision-throughput-autoscale.md#autoscale-benefits).
+* Meer informatie over de [voor delen van ingerichte door Voer met automatisch schalen ](provision-throughput-autoscale.md#autoscale-benefits).
 * Meer informatie over [logische en fysieke partities](partition-data.md).
