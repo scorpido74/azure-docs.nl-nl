@@ -8,12 +8,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 03/15/2019
 ms.custom: seodec18
-ms.openlocfilehash: ee365d37a957350fa8a68da0f34149d3210d6238
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2ce3afb533aa33b88b15510eacc88c0884811cc6
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78970611"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82792595"
 ---
 # <a name="enable-azure-disk-encryption-with-azure-ad-on-linux-vms-previous-release"></a>Azure Disk Encryption met Azure AD inschakelen op virtuele Linux-machines (vorige versie)
 
@@ -158,7 +158,7 @@ De volgende tabel bevat de para meters van Resource Manager-sjablonen voor besta
 ## <a name="use-the-encryptformatall-feature-for-data-disks-on-linux-iaas-vms"></a><a name="bkmk_EFA"> </a>De functie EncryptFormatAll gebruiken voor gegevens schijven op virtuele Linux IaaS-machines
 De para meter EncryptFormatAll vermindert de tijd voor het versleutelen van Linux-gegevens schijven. Partities die aan bepaalde criteria voldoen, worden opgemaakt (met hun huidige bestands systeem). Vervolgens worden ze opnieuw gekoppeld aan waar ze zich bevonden voordat de opdracht werd uitgevoerd. Als u een gegevens schijf wilt uitsluiten die aan de criteria voldoet, kunt u deze ontkoppelen voordat u de opdracht uitvoert.
 
- Nadat u deze opdracht hebt uitgevoerd, worden alle schijven die eerder zijn gekoppeld, geformatteerd. Vervolgens begint de versleutelings laag boven op het station dat nu leeg is. Als deze optie is geselecteerd, wordt de tijdelijke bron schijf die is gekoppeld aan de virtuele machine, ook versleuteld. Als het tijdelijke station opnieuw wordt ingesteld, wordt het opnieuw geformatteerd en opnieuw versleuteld voor de virtuele machine door de Azure Disk Encryption oplossing bij de volgende mogelijkheid.
+ Nadat u deze opdracht hebt uitgevoerd, worden alle schijven die eerder zijn gekoppeld, geformatteerd. Vervolgens begint de versleutelings laag boven op het station dat nu leeg is. Als deze optie is geselecteerd, wordt de aan de virtuele machine gekoppelde tijdelijke schijf ook versleuteld. Als het tijdelijke station opnieuw wordt ingesteld, wordt het opnieuw geformatteerd en opnieuw versleuteld voor de virtuele machine door de Azure Disk Encryption oplossing bij de volgende mogelijkheid.
 
 >[!WARNING]
 > EncryptFormatAll mag niet worden gebruikt wanneer er gegevens nodig zijn op de gegevens volumes van de virtuele machine. U kunt schijven uitsluiten van versleuteling door deze te ontkoppelen. Probeer eerst de para meter EncryptFormatAll op een VM testen om inzicht te krijgen in de para meter en de implicatie van de functie voordat u deze op de productie-VM probeert te gebruiken. De EncryptFormatAll-optie formatteert de gegevens schijf, zodat alle gegevens erop verloren gaan. Voordat u doorgaat, controleert u of alle schijven die u wilt uitsluiten, correct zijn ontkoppeld. </br></br>

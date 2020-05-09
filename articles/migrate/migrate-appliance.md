@@ -2,13 +2,13 @@
 title: Azure Migrate-apparaat
 description: Biedt een overzicht van het Azure Migrate apparaat dat in Server evaluatie en-migratie wordt gebruikt.
 ms.topic: conceptual
-ms.date: 04/23/2020
-ms.openlocfilehash: 71a17211a530b4cb55764f3b3ab84ff5a4d5f3e6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 05/04/2020
+ms.openlocfilehash: 439f6d9c80a0b93f071d30d580facc4604cabbac
+ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82106351"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82780331"
 ---
 # <a name="azure-migrate-appliance"></a>Azure Migrate-apparaat
 
@@ -42,6 +42,7 @@ De volgende tabel bevat een overzicht van de Azure Migrate vereisten voor VMware
 
 **Vereiste** | **VMware** 
 --- | ---
+**Machtigingen** | Als u de Web-App van het apparaat lokaal of op afstand wilt openen, moet u een domein beheerder of lokale beheerder op de apparaatapparaat zijn.
 **Toestel onderdelen** | Het apparaat heeft de volgende onderdelen:<br/><br/> - **Beheer-app**: dit is een web-app voor gebruikers invoer tijdens de implementatie van het apparaat. Wordt gebruikt bij de beoordeling van computers voor migratie naar Azure.<br/> - **Detectie agent**: de agent verzamelt computer configuratie gegevens. Wordt gebruikt bij de beoordeling van computers voor migratie naar Azure.<br/>- **Beoordelings agent**: de agent verzamelt prestatie gegevens. Wordt gebruikt bij de beoordeling van computers voor migratie naar Azure.<br/>- **Service voor automatische updates**: updates van de onderdelen van het apparaat (elke 24 uur wordt uitgevoerd).<br/>- **DRA-agent**: organiseert de replicatie van de virtuele machine en coördineert de communicatie tussen gerepliceerde machines en Azure. Wordt alleen gebruikt bij het repliceren van virtuele VMware-machines naar Azure met migratie zonder agent.<br/>- **Gateway**: verstuurt gerepliceerde gegevens naar Azure. Wordt alleen gebruikt bij het repliceren van virtuele VMware-machines naar Azure met migratie zonder agent.
 **Ondersteunde implementatie** | Implementeren als VMware-VM met behulp van de eicellen-sjabloon.<br/><br/> Implementeren als een VMware-VM of fysieke machine met behulp van een Power shell-installatie script.
 **Project ondersteuning** |  Een apparaat kan worden gekoppeld aan een enkel project. <br/> Een wille keurig aantal apparaten kan aan één project worden gekoppeld.<br/> 
@@ -61,6 +62,7 @@ De volgende tabel bevat een overzicht van de Azure Migrate vereisten voor VMware
 
 **Vereiste** | **Hyper-V** 
 --- | ---
+**Machtigingen** | Als u de Web-App van het apparaat lokaal of op afstand wilt openen, moet u een domein beheerder of lokale beheerder op de apparaatapparaat zijn.
 **Toestel onderdelen** | Het apparaat heeft de volgende onderdelen:<br/><br/>- **Beheer-app**: dit is een web-app voor gebruikers invoer tijdens de implementatie van het apparaat. Wordt gebruikt bij de beoordeling van computers voor migratie naar Azure.<br/> - **Detectie agent**: de agent verzamelt computer configuratie gegevens. Wordt gebruikt bij de beoordeling van computers voor migratie naar Azure.<br/>- **Beoordelings agent**: de agent verzamelt prestatie gegevens. Wordt gebruikt bij de beoordeling van computers voor migratie naar Azure.<br/>- **Service voor automatische updates**: updates van de onderdelen van het apparaat (elke 24 uur wordt uitgevoerd).
 **Ondersteunde implementatie** | Als Hyper-V-VM implementeren met behulp van een VHD-sjabloon.<br/><br/> Implementeer als een Hyper-V-VM of fysieke machine met behulp van een Power shell-installatie script.
 **Project ondersteuning** |  Een apparaat kan worden gekoppeld aan een enkel project. <br/> Een wille keurig aantal apparaten kan aan één project worden gekoppeld.<br/> 
@@ -77,12 +79,13 @@ De volgende tabel bevat een overzicht van de Azure Migrate vereisten voor VMware
 
 **Vereiste** | **Fysiek** 
 --- | ---
+**Machtigingen** | Als u de Web-App van het apparaat lokaal of op afstand wilt openen, moet u een domein beheerder of lokale beheerder op de apparaatapparaat zijn.
 **Toestel onderdelen** | Het apparaat heeft de volgende onderdelen: <br/><br/> - **Beheer-app**: dit is een web-app voor gebruikers invoer tijdens de implementatie van het apparaat. Wordt gebruikt bij de beoordeling van computers voor migratie naar Azure.<br/> - **Detectie agent**: de agent verzamelt computer configuratie gegevens. Wordt gebruikt bij de beoordeling van computers voor migratie naar Azure.<br/>- **Beoordelings agent**: de agent verzamelt prestatie gegevens. Wordt gebruikt bij de beoordeling van computers voor migratie naar Azure.<br/>- **Service voor automatische updates**: updates van de onderdelen van het apparaat (elke 24 uur wordt uitgevoerd).
 **Ondersteunde implementatie** | Implementeren als een toegewezen fysieke machine, of een VM, met behulp van een Power shell-installatie script. Het script kan vanuit de portal worden gedownload.
 **Project ondersteuning** |  Een apparaat kan worden gekoppeld aan een enkel project. <br/> Een wille keurig aantal apparaten kan aan één project worden gekoppeld.<br/> 
 **Detectie limieten** | Een apparaat kan Maxi maal 250 fysieke servers detecteren.
 **PowerShell-script** | Down load het script (AzureMigrateInstaller. ps1) in een gezipte map vanuit de portal. [Meer informatie](tutorial-assess-physical.md#set-up-the-appliance). U kunt ook [rechtstreeks downloaden](https://go.microsoft.com/fwlink/?linkid=2105112).<br/><br/> De download grootte is 59,7 MB.
-**Software/hardware** |  Het apparaat moet worden uitgevoerd op de computer met Windows Server 2016, 32-GB RAM, 8 Vcpu's, ongeveer 80 GB aan schijf opslag en een externe virtuele switch.<br/> Het apparaat heeft een statisch of dynamisch IP-adres nodig en vereist Internet toegang, hetzij rechtstreeks hetzij via een proxy.<br/><br/> Als u het apparaat op een fysieke computer uitvoert, moet u ervoor zorgen dat Windows Server 2016 wordt uitgevoerd en voldoet aan de hardwarevereisten. 
+**Software/hardware** |  Het apparaat moet worden uitgevoerd op de computer met Windows Server 2016, 32-GB RAM, 8 Vcpu's, ongeveer 80 GB aan schijf opslag en een externe virtuele switch.<br/> Het apparaat heeft een statisch of dynamisch IP-adres nodig en vereist Internet toegang, hetzij rechtstreeks hetzij via een proxy.<br/><br/> Als u het apparaat op een fysieke computer uitvoert, moet u ervoor zorgen dat Windows Server 2016 wordt uitgevoerd en voldoet aan de hardwarevereisten.<br/> Het apparaat wordt niet ondersteund op een computer met Windows Server 2019.
 **Hash-waarde** | [Controleer](deploy-appliance-script.md#verify-file-security) de hash-waarden van het Power shell-script.
 
 ## <a name="url-access"></a>URL-toegang
@@ -90,17 +93,18 @@ De volgende tabel bevat een overzicht van de Azure Migrate vereisten voor VMware
 Het Azure Migrate-apparaat heeft verbinding met internet nodig.
 
 - Wanneer u het apparaat implementeert, controleert Azure Migrate een connectiviteits controle op de vereiste Url's.
-- Als u een proxy op basis van een URL gebruikt om verbinding te maken met internet, moet u toegang tot deze Url's toestaan, zodat u zeker weet dat de proxy alle CNAME-records die zijn ontvangen, oplost tijdens het opzoeken van de Url's.
+- U moet toegang tot alle Url's in de lijst toestaan. Als u alleen de evaluatie uitvoert, kunt u de Url's die zijn gemarkeerd als vereist voor VMware-agentloze migratie, overs Laan.
+-  Als u een op URL gebaseerde proxy gebruikt om verbinding te maken met internet, moet u ervoor zorgen dat de proxy alle CNAME-records verhelpt die zijn ontvangen tijdens het opzoeken van de Url's.
 
 ### <a name="public-cloud-urls"></a>Url's voor open bare Clouds
 
-**URL** | **Nadere**  
+**URL** | **Details**  
 --- | --- |
 *.portal.azure.com  | Ga naar Azure Portal.
 *.windows.net <br/> *.msftauth.net <br/> *.msauth.net <br/> *.microsoft.com <br/> *. live.com | Meld u aan bij uw Azure-abonnement.
 *.microsoftonline.com <br/> *.microsoftonline-p.com | Maak Azure Active Directory (AD)-apps voor het apparaat om te communiceren met Azure Migrate.
 management.azure.com | Maak Azure AD-apps voor het apparaat om te communiceren met de Azure Migrate-service.
-dc.services.visualstudio.com | App-logboeken uploaden die worden gebruikt voor interne bewaking.
+*.services.visualstudio.com | App-logboeken uploaden die worden gebruikt voor interne bewaking.
 *.vault.azure.net | Geheimen beheren in de Azure Key Vault.
 aka.ms/* | Toegang tot ook wel-koppelingen toestaan. Wordt gebruikt voor Azure Migrate apparaat-updates.
 download.microsoft.com/download | Down loads van micro soft downloaden toestaan.
@@ -111,7 +115,7 @@ download.microsoft.com/download | Down loads van micro soft downloaden toestaan.
 
 ### <a name="government-cloud-urls"></a>Cloud-Url's voor de overheid
 
-**URL** | **Nadere**  
+**URL** | **Details**  
 --- | --- |
 *. portal.azure.us  | Ga naar Azure Portal.
 graph.windows.net | Meld u aan bij uw Azure-abonnement.
@@ -257,7 +261,7 @@ Met de meta gegevens die door het Azure Migrate-apparaat worden gedetecteerd, ku
 
 Hier vindt u de volledige lijst met meta gegevens van Hyper-V-VM'S die het apparaat verzamelt en verzendt naar Azure.
 
-**GEGEVENS* | **WMI-KLASSE** | **WMI-KLASSE-EIGENSCHAP**
+**GEGEVENS** | **WMI-KLASSE** | **WMI-KLASSE-EIGENSCHAP**
 --- | --- | ---
 **Computer Details** | 
 Serie nummer van BIOS _ Msvm_BIOSElement | BIOSSerialNumber
@@ -298,6 +302,84 @@ Virtual Network Adapter voor Hyper-V | Verzonden bytes per seconde | Berekening 
 - CPU-gebruik is de som van alle gebruik voor alle virtuele processors die zijn gekoppeld aan een virtuele machine.
 - Geheugen gebruik is (huidige druk * gast zichtbaar fysiek geheugen)/100.
 - De waarden voor de schijf-en netwerk gebruik worden verzameld uit de vermelde Hyper-V-prestatie meter items.
+
+
+## <a name="collected-data---physical"></a>Verzamelde gegevens-fysiek
+
+Het apparaat verzamelt meta gegevens, prestatie gegevens en informatie over afhankelijkheids analyse (als [afhankelijkheids analyse](concepts-dependency-visualization.md) zonder agent wordt gebruikt).
+
+### <a name="windows-metadata"></a>Windows-meta gegevens
+
+Met de meta gegevens die door het Azure Migrate-apparaat worden gedetecteerd, kunt u nagaan of machines en apps gereed zijn voor migratie naar Azure, op de juiste manier computers en apps, kosten plannen en toepassings afhankelijkheden analyseren. Micro soft gebruikt deze gegevens niet in een controle op de naleving van licenties.
+
+Hier volgt de volledige lijst met meta gegevens van Windows Server die door het apparaat worden verzameld en naar Azure worden verzonden.
+
+**GEGEVENS** | **WMI-KLASSE** | **WMI-KLASSE-EIGENSCHAP**
+--- | --- | ---
+FQDN | Win32_ComputerSystem | Domein, naam, PartOfDomain
+Aantal processor kernen | Win32_PRocessor | NumberOfCores
+Toegewezen geheugen | Win32_ComputerSystem | TotalPhysicalMemory
+BIOS-serie nummer | Win32_ComputerSystemProduct | Nummer
+BIOS-GUID | Win32_ComputerSystemProduct | MEE
+Opstart type | Win32_DiskPartition | Controleren op partitie met type = **GPT: systeem** voor EFI/BIOS
+Naam van besturings systeem | Win32_OperatingSystem | Caption
+Besturingssysteemversie |Win32_OperatingSystem | Versie
+Architectuur van besturings systeem | Win32_OperatingSystem | OSArchitecture
+Aantal schijven | Win32_DiskDrive | Model, grootte, DeviceID, media type, naam
+Schijfgrootte | Win32_DiskDrive | Grootte
+NIC-lijst | Win32_NetworkAdapterConfiguration | Beschrijving, index
+IP-adres van NIC | Win32_NetworkAdapterConfiguration | IPAddress
+MAC-adres van NIC | Win32_NetworkAdapterConfiguration | MACAddress
+
+### <a name="linux-metadata"></a>Linux-meta gegevens
+
+Hier volgt de volledige lijst met meta gegevens van de Linux-server die het apparaat verzamelt en verzendt naar Azure.
+
+**GEGEVENS** | **SPREEK** 
+--- | --- 
+FQDN | kat/proc/sys/kernel/hostname, hostnaam-f
+Aantal processor kernen |  /proc/cpuinfo \| awk '/^ processor/{print $3} ' \| wc-l
+Toegewezen geheugen | kat/proc/meminfo \| grep MemTotal \| awk {printf "%. 0f", $2/1024}
+BIOS-serie nummer | lshw \| grep "serieel: \| " Head- \| N1 awk {print $2} " <br/> /usr/sbin/dmidecode-t 1 \| grep ' serie ' \| awk ' {$1 = ""; $2 = ""; afdrukken} '
+BIOS-GUID | kat/sys/class/DMI/id/product_uuid
+Opstart type | [-d/sys/firmware/EFI]  && ECHO EFI \| \| -ECHO BIOS
+Naam/versie van besturings systeem | We hebben toegang tot deze bestanden voor de versie van het besturings systeem en de naam:<br/><br/> /etc/os-release<br/> /usr/lib/os-release <br/> /etc/enterprise-release <br/> /etc/redhat-release<br/> /etc/oracle-release<br/>  /etc/SuSE-release<br/>  /etc/lsb-release  <br/> /etc/debian_version
+Architectuur van besturings systeem | Uname-m
+Aantal schijven | fdisk-l \| egrep ' Disk. * bytes ' \| awk ' {Print $2} ' \| knippen-F1-d ': '
+Opstart schijf | DF/boot \| sed-n 2p \| awk {print $1}
+Schijfgrootte | fdisk-l \| egrep ' Disk. * bytes ' \| egrep $disk: \| awk ' {Print $5} '
+NIC-lijst | IP-o-4 adres show \| awk {print $2}
+IP-adres van NIC | IP-adres geven \| $NIC grep \| inet awk ' {Print $2} \| ' knippen-F1-d '/' 
+MAC-adres van NIC | IP-adres geeft \| $NIC grep \| -awk ' {Print $2} ' weer
+
+### <a name="windows-performance-data"></a>Prestatie gegevens van Windows
+
+Dit zijn de prestatie gegevens van de Windows-Server die het apparaat verzamelt en verzendt naar Azure.
+
+**Gegevens** | **WMI-klasse** | **WMI-klasse-eigenschap**
+--- | --- | ---
+CPU-gebruik | Win32_PerfFormattedData_PerfOS_Processor | PercentIdleTime
+Geheugengebruik | Win32_PerfFormattedData_PerfOS_Memory | AvailableMBytes
+Aantal NIC'S | Win32_PerfFormattedData_Tcpip_NetworkInterface | Het aantal netwerk apparaten ophalen.
+Ontvangen gegevens per NIC | Win32_PerfFormattedData_Tcpip_NetworkInterface  | BytesReceivedPerSec
+Gegevens die per NIC worden verzonden | BWin32_PerfFormattedData_Tcpip_NetworkInterface | BytesSentPersec
+Aantal schijven | BWin32_PerfFormattedData_PerfDisk_PhysicalDisk | Aantal schijven
+Details van schijf | Win32_PerfFormattedData_PerfDisk_PhysicalDisk | DiskWritesPerSec, DiskWriteBytesPerSec, DiskReadsPerSec, DiskReadBytesPerSec.
+
+### <a name="linux-performance-data"></a>Linux-prestatie gegevens
+
+Dit zijn de prestatie gegevens van de Linux-server die het apparaat verzamelt en verzendt naar Azure.
+
+**Gegevens** | **Linux** 
+--- | --- 
+CPU-gebruik | kat/proc/stat/| grep ' CPU '/proc/stat
+Geheugengebruik | gratis \| grep- \| mem awk ' {Print $3/$ 2 * 100,0} '
+Aantal NIC'S | lshw-class Network \| grep ETH [0-60] \| wc-l
+Ontvangen gegevens per NIC | kat/sys/class/net/ETH $ NIC/statistieken/rx_bytes
+Gegevens die per NIC worden verzonden | kat/sys/class/net/ETH $ NIC/statistieken/tx_bytes
+Aantal schijven | fdisk-l \| egrep ' Disk. * bytes ' \| awk ' {Print $2} ' \| knippen-F1-d ': '
+Details van schijf | kat/proc/diskstats
+
 
 ## <a name="appliance-upgrades"></a>Toestel-upgrades
 

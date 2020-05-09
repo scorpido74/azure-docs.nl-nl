@@ -1,5 +1,5 @@
 ---
-title: Administrators van het klassieke Azure-abonnement | Microsoft Docs
+title: Klassieke abonnementsbeheerders van Azure
 description: Hierin wordt beschreven hoe u de rollen Azure mede beheerder en service beheerder toevoegt of wijzigt, en hoe u de account beheerder kunt weer geven.
 services: active-directory
 documentationcenter: ''
@@ -14,16 +14,16 @@ ms.workload: identity
 ms.date: 01/22/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 2493e893f9afda0642bd838c94538dd0b984bce5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: cacdeee4512c512b058be96c4fe3a829c2933f06
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79243482"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82734855"
 ---
 # <a name="azure-classic-subscription-administrators"></a>Klassieke abonnementsbeheerders van Azure
 
-Micro soft raadt u aan om de toegang tot Azure-resources te beheren met op rollen gebaseerd toegangs beheer (RBAC). Als u nog steeds gebruikmaakt van het klassieke implementatie model, moet u echter een klassieke rol voor abonnements beheerders gebruiken: Service beheerder en mede beheerder. Zie [Azure Resource Manager vs. klassieke implementatie](../azure-resource-manager/management/deployment-models.md)voor meer informatie.
+Micro soft raadt u aan om de toegang tot Azure-resources te beheren met behulp van Azure op rollen gebaseerd toegangs beheer (Azure RBAC). Als u nog steeds gebruikmaakt van het klassieke implementatie model, moet u echter een klassieke rol voor abonnements beheerders gebruiken: Service beheerder en mede beheerder. Zie [Azure Resource Manager vs. klassieke implementatie](../azure-resource-manager/management/deployment-models.md)voor meer informatie.
 
 In dit artikel wordt beschreven hoe u de rollen mede beheerder en service beheerder kunt toevoegen of wijzigen, en hoe u de account beheerder kunt weer geven.
 
@@ -71,9 +71,9 @@ Gast gebruikers aan wie de rol mede beheerder is toegewezen, kunnen enkele versc
 
 U verwacht dat gebruiker B alles kan beheren. De reden hiervoor is dat de Microsoft-account wordt toegevoegd aan het abonnement als gast gebruiker in plaats van een lid van een gebruiker. Gast gebruikers hebben een andere standaard machtiging in azure AD, vergeleken met gebruikers van leden. Gebruikers kunnen bijvoorbeeld andere gebruikers in azure AD en gast gebruikers lezen. Gebruikers van leden kunnen nieuwe service-principals in azure AD en gast gebruikers registreren.
 
-Als een gast gebruiker deze taken moet kunnen uitvoeren, is een mogelijke oplossing om de specifieke Azure AD-beheerders rollen toe te wijzen die de gast gebruiker nodig heeft. In het vorige scenario kunt u bijvoorbeeld de rol van [Directory lezers](../active-directory/users-groups-roles/directory-assign-admin-roles.md#directory-readers) toewijzen om andere gebruikers te lezen en de rol [toepassings ontwikkelaar](../active-directory/users-groups-roles/directory-assign-admin-roles.md#application-developer) toe te wijzen om service-principals te kunnen maken. Zie [Wat zijn de standaard machtigingen voor gebruikers in azure Active Directory?](../active-directory/fundamentals/users-default-permissions.md)voor meer informatie over lid-en gast gebruikers en de bijbehorende machtigingen. Voor meer informatie over het verlenen van toegang voor gast gebruikers, Zie [toegang beheren tot Azure-resources voor externe gast gebruikers met RBAC](role-assignments-external-users.md).
+Als een gast gebruiker deze taken moet kunnen uitvoeren, is een mogelijke oplossing om de specifieke Azure AD-rollen toe te wijzen die de gast gebruiker nodig heeft. In het vorige scenario kunt u bijvoorbeeld de rol van [Directory lezers](../active-directory/users-groups-roles/directory-assign-admin-roles.md#directory-readers) toewijzen om andere gebruikers te lezen en de rol [toepassings ontwikkelaar](../active-directory/users-groups-roles/directory-assign-admin-roles.md#application-developer) toe te wijzen om service-principals te kunnen maken. Zie [Wat zijn de standaard machtigingen voor gebruikers in azure Active Directory?](../active-directory/fundamentals/users-default-permissions.md)voor meer informatie over lid-en gast gebruikers en de bijbehorende machtigingen. Voor meer informatie over het verlenen van toegang voor gast gebruikers raadpleegt [u Azure-roltoewijzingen voor externe gast gebruikers toevoegen of verwijderen met behulp van de Azure Portal](role-assignments-external-users.md).
 
-Houd er rekening mee dat de [ingebouwde rollen voor Azure-resources verschillen van](../role-based-access-control/built-in-roles.md) de [Azure AD-beheerders rollen](../active-directory/users-groups-roles/directory-assign-admin-roles.md). De ingebouwde rollen verlenen geen toegang tot Azure AD. Zie [inzicht krijgen in de verschillende rollen](../role-based-access-control/rbac-and-directory-admin-roles.md)voor meer informatie.
+Houd er rekening mee dat de [ingebouwde rollen van Azure](../role-based-access-control/built-in-roles.md) verschillen van de [Azure AD-functies](../active-directory/users-groups-roles/directory-assign-admin-roles.md). De ingebouwde rollen verlenen geen toegang tot Azure AD. Zie [inzicht krijgen in de verschillende rollen](../role-based-access-control/rbac-and-directory-admin-roles.md)voor meer informatie.
 
 Zie [Wat zijn de standaard machtigingen voor gebruikers in azure Active Directory?](../active-directory/fundamentals/users-default-permissions.md)voor informatie waarmee leden van gebruikers en gast gebruikers worden vergeleken.
 
@@ -126,7 +126,7 @@ Er kan slechts één service beheerder per Azure-abonnement zijn. Het wijzigen v
 | Account beheerders account | Kan de service beheerder wijzigen in een andere Microsoft-account? | Kan de service beheerder wijzigen in een Azure AD-account in dezelfde map? | Kan de service beheerder wijzigen in een Azure AD-account in een andere adres lijst? |
 | --- | --- | --- | --- |
 | Microsoft-account | Ja | Nee | Nee |
-| Azure AD-account | Ja | Ja | Nee |
+| Microsoft Azure Active Directory-account | Ja | Ja | Nee |
 
 Als de account beheerder een Azure AD-account is, kunt u de service beheerder wijzigen in een Azure AD-account in dezelfde map, maar niet in een andere map. Bijvoorbeeld, abby@contoso.com kan de service beheerder wijzigen in bob@contoso.com, maar kan de service beheerder niet wijzigen in john@notcontoso.com , john@notcontoso.com tenzij er een aanwezigheid is in de contoso.com-map.
 
@@ -138,7 +138,7 @@ De account beheerder is de gebruiker die zich voor het eerst aanmeldt voor het A
 
 Volg deze stappen om de account beheerder weer te geven.
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
+1. Meld u aan bij [Azure Portal](https://portal.azure.com).
 
 1. Open [Abonnementen](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) en selecteer een abonnement.
 
@@ -151,5 +151,5 @@ Volg deze stappen om de account beheerder weer te geven.
 ## <a name="next-steps"></a>Volgende stappen
 
 * [Inzicht in de verschillende rollen](../role-based-access-control/rbac-and-directory-admin-roles.md)
-* [Toegang tot Azure-resources beheren met op rollen gebaseerd toegangsbeheer en de Azure-portal](../role-based-access-control/role-assignments-portal.md)
+* [Azure-roltoewijzingen toevoegen of verwijderen met behulp van de Azure Portal](../role-based-access-control/role-assignments-portal.md)
 * [Beheerders van Azure-abonnementen toevoegen of wijzigen](../cost-management-billing/manage/add-change-subscription-administrator.md)
