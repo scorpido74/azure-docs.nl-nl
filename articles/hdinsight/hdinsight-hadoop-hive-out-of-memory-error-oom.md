@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.topic: troubleshooting
 ms.custom: hdinsightactive
 ms.date: 11/28/2019
-ms.openlocfilehash: add55c29bb93d8dce9ad69bd9850a1db02ea5afe
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 371c00fd63f7a89f4d50ce130e89f10e2a7a38bd
+ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74687774"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82891091"
 ---
 # <a name="fix-an-apache-hive-out-of-memory-error-in-azure-hdinsight"></a>De fout Apache Hive onvoldoende geheugen in azure HDInsight oplossen
 
@@ -101,7 +101,7 @@ De **component. auto. Convert. joinexpressie. noconditionaltask** in het bestand
 </property>
 ```
 
-Het is waarschijnlijk dat de toewijzing van de Java-heap onvoldoende geheugen is vanwege de fout melding. Zoals uitgelegd in de blog post [Hadoop-geheugen instellingen in HDInsight](https://blogs.msdn.com/b/shanyu/archive/2014/07/31/hadoop-yarn-memory-settings-in-hdinsigh.aspx), wanneer TEZ Execution Engine wordt gebruikt, wordt de gebruikte heap-ruimte van de TEZ-container. Bekijk de volgende afbeelding met een beschrijving van het geheugen van de TEZ-container.
+Het is waarschijnlijk dat de toewijzing van de Java-heap onvoldoende geheugen is vanwege de fout melding. Zoals uitgelegd in de blog post [Hadoop-geheugen instellingen in HDInsight](https://docs.microsoft.com/archive/blogs/shanyu/hadoop-yarn-memory-settings-in-hdinsight), wanneer TEZ Execution Engine wordt gebruikt, wordt de gebruikte heap-ruimte van de TEZ-container. Bekijk de volgende afbeelding met een beschrijving van het geheugen van de TEZ-container.
 
 ![TEZ container-geheugen diagram: fout in geheugen van Hive](./media/hdinsight-hadoop-hive-out-of-memory-error-oom/hive-out-of-memory-error-oom-tez-container-memory.png)
 

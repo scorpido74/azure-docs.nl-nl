@@ -10,12 +10,12 @@ ms.subservice: secrets
 ms.topic: overview
 ms.date: 09/04/2019
 ms.author: mbaldwin
-ms.openlocfilehash: eabfa03aa70f54a967fe256f694ef59ad0fe7ebe
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 7aa2feba5a2b2fa47bbb0c055a2f556b8997ab34
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81685441"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82930468"
 ---
 # <a name="about-azure-key-vault-secrets"></a>Over Azure Key Vault geheimen
 
@@ -26,6 +26,10 @@ Vanuit het oogpunt van een ontwikkelaar Key Vault Api's accepteren en geheime wa
 In het geval van zeer gevoelige gegevens is het raadzaam dat klanten extra beveiligingslagen overwegen. Dit kan bijvoorbeeld door het versleutelen van gegevens met behulp van een afzonderlijke beveiligingssleutel vóór de opslag in Key Vault.  
 
 Key Vault biedt ook ondersteuning voor een veld Content type voor geheimen. Clients kunnen het inhouds type van een geheim opgeven om te helpen bij het interpreteren van de geheime gegevens wanneer deze worden opgehaald. De maximale lengte van dit veld is 255 tekens. Er zijn geen vooraf gedefinieerde waarden. Het voorgestelde gebruik is als hint voor het interpreteren van de geheime gegevens. Een implementatie kan bijvoorbeeld beide wacht woorden en certificaten opslaan als geheimen en vervolgens dit veld gebruiken om onderscheid te maken. Er zijn geen vooraf gedefinieerde waarden.  
+
+## <a name="encryption"></a>Versleuteling
+
+Alle geheimen in uw Key Vault worden versleuteld opgeslagen. Deze versleuteling is transparant en vereist geen actie van de gebruiker. De Azure Key Vault-service versleutelt uw geheimen wanneer u deze toevoegt en ontsleutelt deze automatisch wanneer u ze leest. De versleutelings sleutel is uniek voor elke sleutel kluis.
 
 ## <a name="secret-attributes"></a>Geheime kenmerken
 
