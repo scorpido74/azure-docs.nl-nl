@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 03/10/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: c4e8b544ea3daeb23b22f3864beb21ba9d3f342f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b0d8228586c0e20e4314331339aa2f2c46a38c9a
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81255614"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82792153"
 ---
 # <a name="sap-hana-azure-virtual-machine-storage-configurations"></a>Configuraties van SAP HANA in virtuele Azure-machineopslag
 
@@ -281,7 +281,7 @@ De [Azure NetApp files doorvoer limieten](https://docs.microsoft.com/azure/azure
 - Ultra Storage-laag-128 MiB/s  
 
 > [!IMPORTANT]
-> Onafhankelijk van de capaciteit die u implementeert op één NFS-volume, wordt de door Voer verwacht tot een hoeveelheid van 1,2-1.4 GB/sec. band breedte die wordt gebruikt door een consument op een virtuele machine. Dit heeft te maken met de onderliggende architectuur van de ANF-aanbieding en de gerelateerde Linux-sessie limieten rondom NFS. De prestatie-en doorvoer aantallen zoals beschreven in de [resultaten van het artikel prestatie benchmark test voor Azure NetApp files](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-performance-benchmarks) zijn uitgevoerd op een gedeeld NFS-volume met meerdere client-vm's en als gevolg van meerdere sessies. Dit scenario wijkt af van het scenario dat we in SAP meten. Waarbij de door Voer van een enkele virtuele machine wordt gemeten op basis van een NFS-volume. gehost op ANF.
+> Onafhankelijk van de capaciteit die u implementeert op één NFS-volume, wordt de door Voer verwacht tot een hoeveelheid van 1,2-1.4 GB/sec. band breedte die wordt gebruikt door een consument op een virtuele machine. Dit heeft te maken met de onderliggende architectuur van de ANF-aanbieding en de gerelateerde Linux-sessie limieten rondom NFS. De prestatie-en doorvoer aantallen zoals beschreven in de [resultaten van het artikel prestatie benchmark test voor Azure NetApp files](https://docs.microsoft.com/azure/azure-netapp-files/performance-benchmarks-linux) zijn uitgevoerd op een gedeeld NFS-volume met meerdere client-vm's en als gevolg van meerdere sessies. Dit scenario wijkt af van het scenario dat we in SAP meten. Waarbij de door Voer van een enkele virtuele machine wordt gemeten op basis van een NFS-volume. gehost op ANF.
 
 Om te voldoen aan de vereisten voor de minimum doorvoer van SAP voor gegevens en logboeken en `/hana/shared`volgens de richt lijnen voor, zien de aanbevolen grootten er als volgt uit:
 

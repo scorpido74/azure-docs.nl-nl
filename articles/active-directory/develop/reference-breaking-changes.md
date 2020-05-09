@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 3/13/2020
+ms.date: 5/4/2020
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: a60b927f7239818b582ffcd85ddb4b7d69594482
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 09f27c922df4a15858236b2635b962f4bc92811b
+ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81535958"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82871535"
 ---
 # <a name="whats-new-for-authentication"></a>Wat is er nieuw voor verificatie?
 
@@ -37,13 +37,31 @@ Het verificatie systeem wijzigt en voegt voortdurend functies toe om de naleving
 
 Geen gepland op dit moment.  Hieronder vindt u een overzicht van de wijzigingen die in of beschikbaar zijn voor productie.
 
+## <a name="may-2020"></a>Mei 2020
+
+### <a name="azure-government-endpoints-are-changing"></a>Azure Government-eind punten worden gewijzigd
+
+**Ingangs datum**: 5 mei (volt ooien van juni 2020) 
+
+**Beïnvloede eind punten**: alle
+
+**Beïnvloede protocollen**: alle stromen
+
+Op 1 juni 2018 is de certificerings instantie van officiële Azure Active Directory (AAD) voor `https://login-us.microsoftonline.com` Azure Government `https://login.microsoftonline.us`gewijzigd van naar. Deze wijziging is ook van toepassing op Microsoft 365 GCC High en DoD, die ook services van AAD Azure Government. Als u eigenaar bent van een toepassing in een Amerikaanse Government-Tenant, moet u uw toepassing bijwerken om gebruikers in `.us` te schrijven op het eind punt.  
+
+Vanaf 5 mei is Azure AD bezig met het afdwingen van de wijziging van het eind punt, waardoor overheids gebruikers zich niet kunnen aanmelden bij apps die worden gehost in`microsoftonline.com`Amerikaanse overheids tenants met behulp van het open bare eind punt ().  Er wordt een fout `AADSTS900439`  -  `USGClientNotSupportedOnPublicEndpoint`weer gegeven wanneer er betrokken apps worden weer gegeven. Deze fout geeft aan dat de app probeert zich aan te melden bij een Amerikaanse overheids gebruiker op het eind punt van de open bare Cloud. Als uw app zich in een open bare Cloud Tenant bevindt en bedoeld is voor de ondersteuning van Amerikaanse overheids gebruikers, moet u [uw app bijwerken zodat deze expliciet worden ondersteund](https://docs.microsoft.com/azure/active-directory/develop/authentication-national-cloud). Hiervoor moet u mogelijk een nieuwe app-registratie in de Amerikaanse overheids Cloud maken. 
+
+Het afdwingen van deze wijziging wordt uitgevoerd met behulp van een geleidelijke implementatie op basis van hoe vaak gebruikers van de Amerikaanse overheids Cloud zich aanmelden bij de toepassing-apps die door Amerikaanse overheids gebruikers worden gebruikt, en apps die regel matig door de gebruikers van de Amerikaanse overheid worden gehanteerd, zullen afdwinging hebben toegepast. We verwachten dat afdwinging voor alle apps in juni 2020 is voltooid. 
+
+Raadpleeg het [Azure Government blog bericht over deze migratie](https://devblogs.microsoft.com/azuregov/azure-government-aad-authority-endpoint-update/)voor meer informatie. 
+
 ## <a name="march-2020"></a>Maart 2020
 
 ### <a name="user-passwords-will-be-restricted-to-256-characters"></a>Gebruikers wachtwoorden worden beperkt tot 256 tekens.
 
 **Ingangs datum**: 13 maart 2020
 
-**Beïnvloede eind punten**: zowel v 1.0 als v 2.0
+**Beïnvloede eind punten**: alle
 
 **Beïnvloede protocollen**: alle gebruikers stromen.
 
