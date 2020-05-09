@@ -4,20 +4,19 @@ description: In dit artikel wordt het implementatie proces beschreven voor de in
 services: active-directory
 author: martincoetzer
 manager: CelesteDG
-tags: azuread
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.topic: conceptual
 ms.workload: identity
 ms.date: 11/22/2019
 ms.author: martinco
-ms.reviewer: arvindha
-ms.openlocfilehash: 28abe2dfa5a1a13ba09e20202180cb5e47d94072
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.reviewer: arvindha, celested
+ms.openlocfilehash: 86b858b628dc2ed9eac730d4c3f090f4d7d6c7e2
+ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77522429"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82593298"
 ---
 # <a name="plan-cloud-hr-application-to-azure-active-directory-user-provisioning"></a>Cloud-HR-toepassing plannen voor Azure Active Directory gebruikers inrichting
 
@@ -53,11 +52,11 @@ De integratie van Cloud-apps met Azure AD-gebruikers inrichten is in het ideale 
 - Vereisen dat gebruikers lid worden van een of meer Active Directory forests, domeinen en organisatie-eenheden op basis van gewijzigde informatie die is gedetecteerd in de Cloud HR-app.
 - Gebruik Office 365 voor e-mail.
 
-## <a name="learn"></a>Leren
+## <a name="learn"></a>Learn
 
 Gebruikers inrichten maakt een basis voor de voortdurende identiteits bestuur. Het verbetert de kwaliteit van bedrijfs processen die afhankelijk zijn van gezaghebbende identiteits gegevens.
 
-### <a name="terms"></a>Voorwaarden
+### <a name="terms"></a>Termen
 
 In dit artikel worden de volgende termen gebruikt:
 

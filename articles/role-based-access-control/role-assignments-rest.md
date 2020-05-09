@@ -12,15 +12,15 @@ ms.workload: multiple
 ms.tgt_pltfrm: rest-api
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 03/19/2020
+ms.date: 05/06/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: b73de61834a3ab20cab5e664ed307ad63e087608
-ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
-ms.translationtype: HT
+ms.openlocfilehash: f9a8b35b07a4149fa2d6b9f8e6698e41f3e6870c
+ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/03/2020
-ms.locfileid: "82735637"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82891299"
 ---
 # <a name="add-or-remove-azure-role-assignments-using-the-rest-api"></a>Azure-roltoewijzingen toevoegen of verwijderen met behulp van de REST API
 
@@ -43,7 +43,7 @@ In azure RBAC kunt u een roltoewijzing toevoegen om toegang te verlenen. Als u e
 1. Beginnen met de volgende aanvraag en hoofd tekst:
 
     ```http
-    PUT https://management.azure.com/{scope}/providers/Microsoft.Authorization/roleAssignments/{roleAssignmentName}?api-version=2015-07-01
+    PUT https://management.azure.com/{scope}/providers/Microsoft.Authorization/roleAssignments/{roleAssignmentId}?api-version=2015-07-01
     ```
 
     ```json
@@ -67,7 +67,7 @@ In azure RBAC kunt u een roltoewijzing toevoegen om toegang te verlenen. Als u e
 
     In het vorige voor beeld is micro soft. web een resource provider die verwijst naar een App Service-exemplaar. U kunt ook andere resource providers gebruiken en het bereik opgeven. Zie voor meer informatie [Azure-resource providers en-typen](../azure-resource-manager/management/resource-providers-and-types.md) en ondersteunde Azure Resource Manager van de [resource provider](resource-provider-operations.md).  
 
-1. Vervang *{roleAssignmentName}* door de GUID-id van de roltoewijzing.
+1. Vervang *{roleAssignmentId}* door de GUID-id van de roltoewijzing.
 
 1. Vervang *{Scope}* in de hoofd tekst van de aanvraag door het bereik voor de roltoewijzing.
 
@@ -83,6 +83,40 @@ In azure RBAC kunt u een roltoewijzing toevoegen om toegang te verlenen. Als u e
 
 1. Vervang *{principalId}* door de object-id van de gebruiker, groep of service-principal die wordt toegewezen aan de rol.
 
+De volgende aanvraag en hoofd tekst wijst de rol van [back-uplezer](built-in-roles.md#backup-reader) toe aan een gebruiker op het abonnements bereik:
+
+```http
+PUT https://management.azure.com/subscriptions/{subscriptionId1}/providers/microsoft.authorization/roleassignments/{roleAssignmentId1}?api-version=2015-07-01
+```
+
+```json
+{
+  "properties": {
+    "roleDefinitionId": "/subscriptions/{subscriptionId1}/providers/Microsoft.Authorization/roleDefinitions/a795c7a0-d4a2-40c1-ae25-d81f01202912",
+    "principalId": "{objectId1}"
+  }
+}
+```
+
+Hieronder ziet u een voor beeld van de uitvoer:
+
+```json
+{
+    "properties": {
+        "roleDefinitionId": "/subscriptions/{subscriptionId1}/providers/Microsoft.Authorization/roleDefinitions/a795c7a0-d4a2-40c1-ae25-d81f01202912",
+        "principalId": "{objectId1}",
+        "scope": "/subscriptions/{subscriptionId1}",
+        "createdOn": "2020-05-06T23:55:23.7679147Z",
+        "updatedOn": "2020-05-06T23:55:23.7679147Z",
+        "createdBy": null,
+        "updatedBy": "{updatedByObjectId1}"
+    },
+    "id": "/subscriptions/{subscriptionId1}/providers/Microsoft.Authorization/roleAssignments/{roleAssignmentId1}",
+    "type": "Microsoft.Authorization/roleAssignments",
+    "name": "{roleAssignmentId1}"
+}
+```
+
 ## <a name="remove-a-role-assignment"></a>Roltoewijzing verwijderen
 
 In azure RBAC kunt u een roltoewijzing verwijderen om de toegang te verwijderen. Als u een roltoewijzing wilt verwijderen, gebruikt u de [roltoewijzingen rest API verwijderen](/rest/api/authorization/roleassignments/delete) . U moet toegang hebben tot de `Microsoft.Authorization/roleAssignments/delete` bewerking om deze API aan te roepen. Van de ingebouwde rollen wordt alleen de beheerder van de [eigenaar](built-in-roles.md#owner) en de [gebruiker toegang](built-in-roles.md#user-access-administrator) verleend tot deze bewerking.
@@ -92,7 +126,7 @@ In azure RBAC kunt u een roltoewijzing verwijderen om de toegang te verwijderen.
 1. Begin met de volgende aanvraag:
 
     ```http
-    DELETE https://management.azure.com/{scope}/providers/Microsoft.Authorization/roleAssignments/{roleAssignmentName}?api-version=2015-07-01
+    DELETE https://management.azure.com/{scope}/providers/Microsoft.Authorization/roleAssignments/{roleAssignmentId}?api-version=2015-07-01
     ```
 
 1. Vervang *{Scope}* in de URI door het bereik voor het verwijderen van de roltoewijzing.
@@ -105,7 +139,32 @@ In azure RBAC kunt u een roltoewijzing verwijderen om de toegang te verwijderen.
     > | `subscriptions/{subscriptionId1}/resourceGroups/myresourcegroup1` | Resourcegroep |
     > | `subscriptions/{subscriptionId1}/resourceGroups/myresourcegroup1/providers/microsoft.web/sites/mysite1` | Resource |
 
-1. Vervang *{roleAssignmentName}* door de GUID-id van de roltoewijzing.
+1. Vervang *{roleAssignmentId}* door de GUID-id van de roltoewijzing.
+
+Met de volgende aanvraag verwijdert u de opgegeven roltoewijzing bij het abonnements bereik:
+
+```http
+DELETE https://management.azure.com/subscriptions/{subscriptionId1}/providers/microsoft.authorization/roleassignments/{roleAssignmentId1}?api-version=2015-07-01
+```
+
+Hieronder ziet u een voor beeld van de uitvoer:
+
+```json
+{
+    "properties": {
+        "roleDefinitionId": "/subscriptions/{subscriptionId1}/providers/Microsoft.Authorization/roleDefinitions/a795c7a0-d4a2-40c1-ae25-d81f01202912",
+        "principalId": "{objectId1}",
+        "scope": "/subscriptions/{subscriptionId1}",
+        "createdOn": "2020-05-06T23:55:24.5379478Z",
+        "updatedOn": "2020-05-06T23:55:24.5379478Z",
+        "createdBy": "{createdByObjectId1}",
+        "updatedBy": "{updatedByObjectId1}"
+    },
+    "id": "/subscriptions/{subscriptionId1}/providers/Microsoft.Authorization/roleAssignments/{roleAssignmentId1}",
+    "type": "Microsoft.Authorization/roleAssignments",
+    "name": "{roleAssignmentId1}"
+}
+```
 
 ## <a name="next-steps"></a>Volgende stappen
 

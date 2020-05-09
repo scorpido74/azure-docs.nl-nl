@@ -2,20 +2,20 @@
 title: Aanbevolen procedures voor SQL on-demand (preview) in azure Synapse Analytics
 description: Aanbevelingen en aanbevolen procedures die u moet weten tijdens het werken met SQL op aanvraag (preview).
 services: synapse-analytics
-author: mlee3gsd
+author: filippopovic
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: ''
-ms.date: 04/15/2020
-ms.author: martinle
-ms.reviewer: igorstan
-ms.openlocfilehash: 1d4203141973c10fe7673f6ab9dedbc3bfdc8999
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 05/01/2020
+ms.author: fipopovi
+ms.reviewer: jrasnick
+ms.openlocfilehash: 0015beadfea61fc31bf3f37232105b9cfd2ced71
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81429068"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82692151"
 ---
 # <a name="best-practices-for-sql-on-demand-preview-in-azure-synapse-analytics"></a>Aanbevolen procedures voor SQL on-demand (preview) in azure Synapse Analytics
 
@@ -50,11 +50,73 @@ Als dat mogelijk is, kunt u bestanden voorbereiden voor betere prestaties:
 - Het is beter om even grote bestanden te hebben voor één OPENROWSET-pad of een externe tabel locatie.
 - Uw gegevens partitioneren door partities op te slaan in verschillende mappen of bestands namen. Controleer de [functies bestands naam en bestandspad gebruiken om specifieke partities te bereiken](#use-fileinfo-and-filepath-functions-to-target-specific-partitions).
 
+## <a name="push-wildcards-to-lower-levels-in-path"></a>Joker tekens pushen naar lagere niveaus in het pad
+
+U kunt joker tekens in het pad gebruiken om [meerdere bestanden en mappen](develop-storage-files-overview.md#query-multiple-files-or-folders)op te vragen. SQL op aanvraag geeft een lijst van bestanden in uw opslag account aan vanaf de eerste * met behulp van Storage API en worden bestanden geëlimineerd die niet overeenkomen met het opgegeven pad. Het verminderen van de eerste lijst met bestanden kan de prestaties verbeteren als er veel bestanden zijn die overeenkomen met het opgegeven pad tot het eerste Joker teken.
+
+## <a name="use-appropriate-data-types"></a>De juiste gegevens typen gebruiken
+
+De gegevens typen die in uw query worden gebruikt, zijn van invloed op de prestaties. U kunt betere prestaties krijgen als u: 
+
+- Gebruik de kleinste gegevens grootte die geschikt is voor de grootste mogelijke waarde.
+  - Gebruik het gegevens type Character van lengte 30 als de waarde voor de maximum lengte van tekens 30 tekens is.
+  - Gebruik char of NCHAR als alle waarden van een teken kolom een vaste grootte hebben. Gebruik anders varchar of nvarchar.
+  - Als het maximum aantal kolom waarden 500 is, gebruikt u smallint zoals het kleinste gegevens type is dat deze waarde kan bevatten. U kunt [hier](https://docs.microsoft.com/sql/t-sql/data-types/int-bigint-smallint-and-tinyint-transact-sql?view=sql-server-ver15)waarden voor het gegevens type geheel getal vinden.
+- Gebruik, indien mogelijk, varchar en char in plaats van nvarchar en NCHAR.
+- Gebruik, indien mogelijk, gegevens typen op basis van een geheel getal. Sorteren, samen voegen en groeperen op bewerkingen worden sneller uitgevoerd op gehele getallen dan op gegevens over tekens.
+- Als u schema-deferrometalie gebruikt, [controleert u het uitgestelde gegevens type](#check-inferred-data-types).
+
+## <a name="check-inferred-data-types"></a>Instelde gegevens typen controleren
+
+Met [schema-deinterferentie](query-parquet-files.md#automatic-schema-inference) kunt u snel query's schrijven en gegevens verkennen zonder dat u het bestands schema kent. Dit comfort is ten koste van niet-verstelde gegevens typen die groter zijn dan werkelijk. Dit gebeurt wanneer er onvoldoende gegevens aanwezig zijn in de bron bestanden om ervoor te zorgen dat het juiste gegevens type wordt gebruikt. Parquet-bestanden bevatten bijvoorbeeld geen meta gegevens over de maximale teken kolom lengte en SQL op aanvraag wordt als varchar (8000) toegewezen. 
+
+U kunt de resulterende gegevens typen van de query controleren met behulp van [sp_describe_first_results_set](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-describe-first-result-set-transact-sql?view=sql-server-ver15).
+
+In het volgende voor beeld ziet u hoe u de verstelde gegevens typen kunt optimaliseren. De procedure wordt gebruikt om instelde gegevens typen weer te geven. 
+```sql  
+EXEC sp_describe_first_result_set N'
+    SELECT
+        vendor_id, pickup_datetime, passenger_count
+    FROM 
+        OPENROWSET(
+            BULK ''https://sqlondemandstorage.blob.core.windows.net/parquet/taxi/*/*/*'',
+            FORMAT=''PARQUET''
+        ) AS nyc';
+```
+
+Dit is de resultatenset.
+
+|is_hidden|column_ordinal|name|system_type_name|max_length|
+|----------------|---------------------|----------|--------------------|-------------------||
+|0|1|vendor_id|varchar (8000)|8000|
+|0|2|pickup_datetime|DATETIME2 (7)|8|
+|0|3|passenger_count|int|4|
+
+Zodra we de gegevens typen hebben vastgesteld voor de query, kunnen we de juiste gegevens typen opgeven:
+
+```sql  
+SELECT
+    vendor_id, pickup_datetime, passenger_count
+FROM 
+    OPENROWSET(
+        BULK 'https://sqlondemandstorage.blob.core.windows.net/parquet/taxi/*/*/*',
+        FORMAT='PARQUET'
+    ) 
+    WITH (
+        vendor_id varchar(4), -- we used length of 4 instead of inferred 8000
+        pickup_datetime datetime2,
+        passenger_count int
+    ) AS nyc;
+```
+
 ## <a name="use-fileinfo-and-filepath-functions-to-target-specific-partitions"></a>De functies file info en filepath gebruiken om specifieke partities te bereiken
 
 Gegevens zijn vaak ingedeeld in partities. U kunt SQL op aanvraag een instructie geven om specifieke mappen en bestanden op te vragen. Met deze functie wordt het aantal bestanden en de hoeveelheid gegevens beperkt die de query moet lezen en verwerken. Een extra bonus is dat u betere prestaties krijgt.
 
 Controleer voor meer informatie de functies [filename](develop-storage-files-overview.md#filename-function) en [filepath](develop-storage-files-overview.md#filepath-function) en voor beelden voor het [uitvoeren van query's op specifieke bestanden](query-specific-files.md).
+
+> [!TIP]
+> Converteer het resultaat van filepath-en file info-functies altijd naar de juiste gegevens typen. Als u teken gegevens typen gebruikt, moet u ervoor zorgen dat de juiste lengte wordt gebruikt.
 
 Als uw opgeslagen gegevens niet zijn gepartitioneerd, kunt u de partities partitioneren zodat u de functies voor het optimaliseren van query's die zijn gericht op die bestanden. Bij het uitvoeren van een [query op gepartitioneerde Spark-tabellen](develop-storage-files-spark-tables.md) vanuit SQL op aanvraag, worden alleen de benodigde bestanden automatisch door de query gericht.
 

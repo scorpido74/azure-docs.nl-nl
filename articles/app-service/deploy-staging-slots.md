@@ -3,14 +3,14 @@ title: Faserings omgevingen instellen
 description: Meer informatie over het implementeren van apps op een niet-productie sleuf en voor het omwisselen naar productie. Verg root de betrouw baarheid en Elimineer de uitval tijd van de app van implementaties.
 ms.assetid: e224fc4f-800d-469a-8d6a-72bcde612450
 ms.topic: article
-ms.date: 03/04/2020
+ms.date: 04/30/2020
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 21e025088e59c7f65f848b332ecb393b05918261
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 11e133a24ff728cc864e50e898e9db982b186337
+ms.sourcegitcommit: acc558d79d665c8d6a5f9e1689211da623ded90a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78300840"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82597910"
 ---
 # <a name="set-up-staging-environments-in-azure-app-service"></a>Faseringsomgevingen in Azure App Service instellen
 <a name="Overview"></a>
@@ -58,11 +58,11 @@ De app moet worden uitgevoerd in de **Standard**-, **Premium**-of **geïsoleerde
    
     ![Titel implementatie site](./media/web-sites-staged-publishing/StagingTitle.png)
 
-    De faserings sleuf heeft een beheer pagina net als andere App Service-apps. U kunt de configuratie van de sleuf wijzigen. De naam van de sleuf wordt boven aan de pagina weer gegeven om u eraan te herinneren dat u de implementatie site bekijkt.
+    De faserings sleuf heeft een beheer pagina net als andere App Service-apps. U kunt de configuratie van de sleuf wijzigen. Om u eraan te herinneren dat u de implementatie site bekijkt, wordt de naam van de app weer gegeven als ** \<app\<-naam>/sleuf naam>** en is het app-type **app service (sleuf)**. U kunt de sleuf ook als een afzonderlijke app in de resource groep weer geven, met dezelfde ontwerps.
 
 6. Selecteer de URL van de app op de resource pagina van de sleuf. De implementatie site heeft een eigen hostnaam en is ook een live app. Zie [Azure app service IP-beperkingen](app-service-ip-restrictions.md)voor het beperken van open bare toegang tot de implementatie site.
 
-De nieuwe implementatie site heeft geen inhoud, zelfs niet als u de instellingen van een andere sleuf kloont. U kunt bijvoorbeeld [publiceren naar deze sleuf met git](app-service-deploy-local-git.md). U kunt implementeren in de sleuf vanuit een andere opslagplaats vertakking of een andere opslag plaats. 
+De nieuwe implementatie site heeft geen inhoud, zelfs niet als u de instellingen van een andere sleuf kloont. U kunt bijvoorbeeld [publiceren naar deze sleuf met git](app-service-deploy-local-git.md). U kunt implementeren in de sleuf vanuit een andere opslagplaats vertakking of een andere opslag plaats.
 
 <a name="AboutConfiguration"></a>
 
@@ -272,7 +272,7 @@ Standaard krijgen nieuwe sleuven een routerings regel van `0%`, die grijs wordt 
 
 ## <a name="delete-a-slot"></a>Een sleuf verwijderen
 
-Zoek en selecteer uw app. Selecteer sleuf voor **implementatie sleuven** > *\<om>*  >  **overzicht**te verwijderen. Selecteer **verwijderen** op de opdracht balk.  
+Zoek en selecteer uw app. Selecteer sleuf voor **implementatie sleuven** > *\<om>*  >  **overzicht**te verwijderen. Het app-type wordt weer gegeven als **app service (sleuf)** om u eraan te herinneren dat u een implementatie site bekijkt. Selecteer **verwijderen** op de opdracht balk.  
 
 ![Een implementatie site verwijderen](./media/web-sites-staged-publishing/DeleteStagingSiteButton.png)
 

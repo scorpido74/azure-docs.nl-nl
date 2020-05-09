@@ -1,25 +1,25 @@
 ---
-title: Een Azure virtual machine-aanbieding maken-Azure Marketplace
-description: Meer informatie over het maken van een aanbieding voor de virtuele machine in de commerciële Marketplace.
+title: Een Azure virtual machine-aanbieding maken in azure Marketplace
+description: Meer informatie over het maken van een virtuele-machine aanbieding op de Azure Marketplace met de vereiste SKU.
 author: emuench
 ms.author: mingshen
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 04/10/2020
-ms.openlocfilehash: d598f741c5add58a89aa2b7aa01802a7e35f9a19
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 05/01/2020
+ms.openlocfilehash: 31b8960f5617566a72545510cf03771f7a3bfcbd
+ms.sourcegitcommit: 3beb067d5dc3d8895971b1bc18304e004b8a19b3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81869066"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82745012"
 ---
-# <a name="create-an-azure-virtual-machine-offer"></a>Een Azure virtual machine-aanbieding maken
+# <a name="create-an-azure-virtual-machine-offer-in-the-azure-marketplace"></a>Een Azure virtual machine-aanbieding maken in azure Marketplace
 
 > [!IMPORTANT]
 > We verplaatsen het beheer van uw Azure VM-aanbiedingen van Cloud Partner-portal naar het partner centrum. Totdat uw aanbiedingen zijn gemigreerd, volgt u de instructies in de [aanbieding voor het maken van virtuele machines](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/virtual-machine/cpp-create-offer) in Cloud Partner-Portal om uw aanbiedingen te beheren.
 
-In dit artikel wordt beschreven hoe u een Azure virtual machine-aanbieding maakt en publiceert naar [Azure Marketplace](https://azuremarketplace.microsoft.com/). Het behandelt virtuele Windows-en Linux-machines die een besturings systeem, virtuele harde schijf (VHD) en Maxi maal 16 gegevens schijven bevatten.
+In dit artikel wordt beschreven hoe u een Azure virtual machine-aanbieding maakt en publiceert naar [Azure Marketplace](https://azuremarketplace.microsoft.com/). Het behandelt virtuele Windows-en Linux-machines die een besturings systeem, virtuele harde schijf (VHD) en Maxi maal 16 gegevens schijven bevatten. Voordat u begint, moet u [een commercieel Marketplace-account maken in Partner Center](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account) als u dit nog niet hebt gedaan. Zorg ervoor dat uw account is inge schreven in het Commercial Marketplace-programma.
 
 ## <a name="introduction"></a>Inleiding
 
@@ -58,17 +58,18 @@ Uw technische team moet inzicht hebben in de volgende micro soft-technologieën:
 - Azure- [toepassingen ontwerpen en ontwikkelen](https://azure.microsoft.com/solutions/architecture/)
 - Praktische kennis van [Azure-virtual machines](https://azure.microsoft.com/services/virtual-machines/), [Azure Storage](https://azure.microsoft.com/services/?filter=storage#storage)en [Azure-netwerken](https://azure.microsoft.com/services/?filter=networking#networking)
 
-## <a name="create-an-azure-virtual-machine-offer"></a>Een Azure virtual machine-aanbieding maken
+## <a name="create-a-new-offer"></a>Een nieuwe aanbieding maken
 
-Voordat u een Azure virtual machine-aanbieding kunt maken, moet u een commerciële Marketplace-account hebben in het partner centrum. Als u nog geen account hebt gemaakt, raadpleegt u [een abonnement voor commerciële Marketplace maken in Partner Center](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account).
+1. Meld u aan bij [Partner Center](https://partner.microsoft.com/dashboard/home).
+2. Selecteer in het menu links de optie **commerciële Marketplace** > -**overzicht**.
+3. Selecteer op de pagina overzicht **+ nieuwe** > **Azure virtual machine**aanbieden.
 
-1. Meld u aan bij [Partner Center](https://partner.microsoft.com/dashboard/home)en selecteer vervolgens **dash board**in het bovenste menu.
-2. Selecteer in de linkernavigatiebalk-balk de optie **Commercial Marketplace**en vervolgens **overzicht**.
-3. Selecteer op de pagina **overzicht** de optie **+ nieuwe aanbieding**en vervolgens op **Azure virtual machine**. Het dialoog venster **nieuwe aanbieding** wordt weer gegeven.
+    ![Illustreert het navigatie menu.](./media/new-offer-azure-vm.png)
 
-    ![Illustreert de overzichts pagina in Partner Center met de nieuwe aanbiedings knop en Azure virtual machine-aanbieding geselecteerd.](media/avm-create7.png)
+> [!NOTE]
+> Nadat een aanbieding is gepubliceerd, worden wijzigingen die in het partner centrum zijn aangebracht, alleen weer gegeven in de winkel wanneer u de aanbieding opnieuw publiceert. Zorg ervoor dat u altijd opnieuw publiceert nadat u wijzigingen hebt aangebracht.
 
-## <a name="offer-id-and-alias"></a>Aanbiedings-ID en alias
+## <a name="new-offer"></a>Nieuwe aanbieding
 
 Voer een **aanbiedings-id**in. Dit is een unieke id voor elke aanbieding in uw account.
 
@@ -76,7 +77,9 @@ Voer een **aanbiedings-id**in. Dit is een unieke id voor elke aanbieding in uw a
 - Gebruik alleen kleine letters en cijfers. Dit kan afbreek streepjes en onderstrepings tekens bevatten, maar mag niet langer zijn dan 50. Als u hier bijvoorbeeld **test-aanbieding-1** invoert, is het webadres van de aanbieding `https://azuremarketplace.microsoft.com/marketplace/../test-offer-1`.
 - De aanbiedings-ID kan niet worden gewijzigd nadat u **maken**hebt geselecteerd.
 
-Voer een **alias**voor de aanbieding in. Dit is de naam die wordt gebruikt voor de aanbieding in Partner Center. Deze naam wordt niet gebruikt in Marketplace en wijkt af van de naam van de aanbieding en andere waarden die aan klanten worden weer gegeven.
+Voer een **alias**voor de aanbieding in. Dit is de naam die wordt gebruikt voor de aanbieding in Partner Center.
+
+- Deze naam wordt niet gebruikt in Marketplace en wijkt af van de naam van de aanbieding en andere waarden die aan klanten worden weer gegeven.
 
 Selecteer **maken** om de aanbieding te genereren en door te gaan.
 
@@ -84,15 +87,15 @@ Selecteer **maken** om de aanbieding te genereren en door te gaan.
 
 ### <a name="test-drive"></a>Station testen
 
-Stel een demonstratie (test drive) in waarmee klanten uw aanbieding kunnen uitproberen voordat ze deze aanschaffen. Voor het maken van een demonstratie omgeving waarmee klanten uw aanbieding voor een bepaalde periode kunnen uitproberen, raadpleegt u [uw aanbieding in de commerciële Marketplace testen](https://docs.microsoft.com/azure/marketplace/partner-center-portal/test-drive).
+Een test drive is een fantastische manier om uw aanbieding aan potentiële klanten te laten presen teren door hen de mogelijkheid te bieden om te kopen voordat u aan de slag gaat, wat resulteert in een verhoogde conversie en de generatie van uiterst gekwalificeerde leads. Meer [informatie over test stations](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/what-is-test-drive).
 
-Als u een test drive wilt inschakelen, schakelt u het selectie vakje **een test drive inschakelen** in. Als u test drive uit uw aanbieding wilt verwijderen, schakelt u dit selectie vakje uit.
+Als u een test drive voor een bepaalde periode wilt inschakelen, schakelt u het selectie vakje **een test drive inschakelen** in. Als u test drive uit uw aanbieding wilt verwijderen, schakelt u dit selectie vakje uit.
 
 Aanvullende test drive resources:
 
 - [Technische best practices](https://github.com/Azure/AzureTestDrive/wiki/Test-Drive-Best-Practices)
 - [Best practices voor marketing](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/marketing-and-best-practices)
-- [Overzicht van test stations](https://assetsprod.microsoft.com/mpn/azure-marketplace-appsource-test-drives.pdf) PDF (zorg ervoor dat de pop-upblokkering is uitgeschakeld).
+- [Overzicht van test stations](https://assetsprod.microsoft.com/mpn/azure-marketplace-appsource-test-drives.pdf) PDF (zorg ervoor dat de pop-upblokkering is uitgeschakeld)
 
 ### <a name="lead-management"></a>Leadbeheer
 
@@ -213,9 +216,13 @@ Hier volgen enkele tips voor het schrijven van uw beschrijving:
 - Vertrouw niet op functies en functionaliteit om uw aanbieding te verkopen. Richt u in plaats daarvan op de waarde die uw aanbieding biedt.
 - Gebruik woorden die specifiek zijn voor de industrie of op voor delen.
 
-Als u de beschrijving van uw aanbieding aantrekkelijker wilt maken, gebruikt u de RTF-editor om uw beschrijving op te maken. Met de RTF-editor kunt u nummers, opsommings tekens, vet, cursief en inspringingen toevoegen om uw beschrijving beter leesbaar te maken.
+Als u de beschrijving van uw aanbieding aantrekkelijker wilt maken, gebruikt u de RTF-editor om opmaak toe te passen.
 
-![Illustreert de overzichts pagina in partner centrum met de nieuwe aanbiedings knop en advies service aanbieding geselecteerd.](media/power-bi-rich-text-editor.png)
+![De RTF-editor gebruiken](./media/rich-text-editor.png)
+
+| <center>Tekst indeling wijzigen | <center>Opsommings tekens of nummering toevoegen | <center>Tekst inspringen toevoegen of verwijderen |
+| --- | --- | --- |
+| <center>![De RTF-editor gebruiken om de tekst indeling te wijzigen](./media/text-editor3.png) |  <center>![De RTF-editor gebruiken om lijsten toe te voegen](./media/text-editor4.png) |  <center>![De Rich Text Editor gebruiken om in te springen](./media/text-editor5.png) |
 
 #### <a name="privacy-policy-link"></a>Koppeling Privacybeleid
 
@@ -256,7 +263,7 @@ Geef contact gegevens op die micro soft kan gebruiken wanneer er problemen zijn 
 Bied logo's en installatie kopieën die u kunt gebruiken met uw aanbieding. Alle installatie kopieën moeten de PNG-indeling hebben. Vage afbeeldingen zorgen ervoor dat uw inzending wordt afgewezen.
 
 >[!Note]
->Als u een probleem hebt met het uploaden van bestanden, moet u ervoor zorgen dat uw https://upload.xboxlive.com lokale netwerk de door Partner Center gebruikte service niet blokkeert.
+>Als u een probleem hebt met het uploaden van bestanden, moet u ervoor zorgen dat https://upload.xboxlive.com uw lokale netwerk de service die wordt gebruikt door het partner centrum niet blokkeert.
 
 #### <a name="marketplace-logos"></a>Marketplace-logo's
 
@@ -271,7 +278,7 @@ Alle vier de logo's zijn vereist en worden gebruikt op verschillende plaatsen in
 
 #### <a name="screenshots"></a>Schermopnamen
 
-Voeg Maxi maal vijf scherm opnamen toe die laten zien hoe uw aanbieding werkt. Elke scherm afbeelding moet 1280 x 720 pixels groot en in PNG-indeling zijn. U moet ook een bijschrift toevoegen om uw scherm afbeelding te beschrijven.
+Voeg Maxi maal vijf scherm opnamen toe die laten zien hoe uw aanbieding werkt. Elke scherm afbeelding moet 1280 x 720 pixels groot en in PNG-indeling zijn. Elke scherm opname moet een bijschrift bevatten.
 
 #### <a name="videos"></a>Video's
 
@@ -331,7 +338,7 @@ Selecteer **Maken**.
 
 Stel de configuratie op hoog niveau in voor het type abonnement, of het opnieuw gebruikmaakt van technische configuratie van een ander abonnement en in welke Azure-regio's het plan beschikbaar moet zijn. Uw selecties bepalen welke velden worden weer gegeven op andere tabbladen voor hetzelfde abonnement.
 
-#### <a name="reuse-technical-configuration"></a>Technische configuratie opnieuw gebruiken
+#### <a name="re-use-technical-configuration"></a>Technische configuratie opnieuw gebruiken
 
 Als u meer dan één abonnement van hetzelfde type hebt en de pakketten identiek zijn, kunt u de **technische configuratie van een ander abonnement selecteren met dit abonnement**. Met deze optie kunt u een van de andere plannen van hetzelfde type voor deze aanbieding selecteren en de technische configuratie ervan opnieuw gebruiken.
 
@@ -342,7 +349,7 @@ Als u meer dan één abonnement van hetzelfde type hebt en de pakketten identiek
 
 Uw abonnement moet beschikbaar worden gesteld in ten minste één Azure-regio.
 
-Selecteer de optie **Azure Global** om uw abonnement beschikbaar te maken voor klanten in alle open bare Azure-regio's met een commerciële Marketplace-integratie. Zie [geografische Beschik baarheid en valuta ondersteuning](https://docs.microsoft.com/azure/marketplace/marketplace-geo-availability-currencies)voor meer informatie.
+Selecteer de optie **Azure Global** om uw plan beschikbaar te maken voor klanten in alle wereld wijde Azure-regio's die een commerciële Marketplace-integratie hebben. Zie [geografische Beschik baarheid en valuta ondersteuning](https://docs.microsoft.com/azure/marketplace/marketplace-geo-availability-currencies)voor meer informatie.
 
 Selecteer de optie **Azure Government** om uw plan beschikbaar te maken in de regio [Azure Government](https://docs.microsoft.com/azure/azure-government/documentation-government-welcome) . Deze regio voorziet in gecontroleerde toegang voor klanten van Amerikaanse federale, staats-, lokale of tribalee entiteiten, evenals partners die in aanmerking komen voor hen. Als uitgever bent u verantwoordelijk voor nalevings controles, beveiligings maatregelen en aanbevolen procedures. Azure Government maakt gebruik van fysiek geïsoleerde data centers en netwerken (alleen in de Verenigde Staten).
 
@@ -353,7 +360,7 @@ Voordat u naar [Azure Government](https://docs.microsoft.com/azure/azure-governm
 
 #### <a name="azure-government-certifications"></a>Azure Government-certificeringen
 
-Deze optie is alleen zichtbaar als u **Azure Government** selecteert onder **Azure-regio's**.
+Deze optie is alleen zichtbaar als u **Azure Government**hebt geselecteerd.
 
 Azure Government services verwerken gegevens die onderworpen zijn aan bepaalde wettelijke voor schriften en vereisten. Bijvoorbeeld FedRAMP, NIST 800,171 (DIB), ITAR, IRS 1075, DoD N4 en CJIS. Als u uw certificeringen voor deze Program ma's wilt controleren, kunt u Maxi maal 100 koppelingen opgeven. Deze kunnen links naar uw vermelding in het programma staan, of koppelingen naar beschrijvingen van uw naleving met hen op uw eigen websites. Deze koppelingen zijn alleen zichtbaar voor Azure Government klanten.
 
@@ -361,7 +368,7 @@ Selecteer **concept opslaan** voordat u doorgaat.
 
 ### <a name="plan-listing"></a>Aanbieding plannen
 
-Hier kunt u de details van het plan van de aanbieding configureren. Dit tabblad bevat specifieke informatie die kan verschillen tussen plannen in dezelfde aanbieding.
+Hier kunt u de vermeldings gegevens van het plan configureren. Dit tabblad bevat specifieke informatie die kan verschillen tussen plannen in dezelfde aanbieding.
 
 #### <a name="plan-name"></a>Plan naam
 
@@ -488,9 +495,9 @@ Als u een test drive wilt inschakelen, schakelt u het selectie vakje een test dr
 
 Aanvullende test drive resources:
 
-- Technische best practices
-- Best practices voor marketing
-- Test stations Overview (PDF; Controleer of de pop-upblokkering is uitgeschakeld).
+- [Best practices voor marketing](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/marketing-and-best-practices)
+- [Technische best practices](https://github.com/Azure/AzureTestDrive/wiki/Test-Drive-Best-Practices)
+- [Overzicht](https://assetsprod.microsoft.com/mpn/azure-marketplace-appsource-test-drives.pdf) (PDF; Controleer of de pop-upblokkering is uitgeschakeld)
 
 Selecteer **concept opslaan** voordat u doorgaat.
 
