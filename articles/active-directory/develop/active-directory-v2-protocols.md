@@ -1,6 +1,5 @@
 ---
-title: OAuth 2,0 en OpenID Connect Connect protocols op micro soft Identity platform | Azure
-titleSuffix: Microsoft identity platform
+title: OAuth 2,0 en OpenID Connect Connect protocols-micro soft Identity platform | Azure
 description: Een hand leiding voor OAuth 2,0 en OpenID Connect Connect-protocollen die worden ondersteund door het micro soft Identity platform-eind punt.
 services: active-directory
 author: hpsin
@@ -9,20 +8,20 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 05/06/2020
+ms.date: 04/13/2020
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 12f5df9b644246092f0a5da2b30dc5a7187ca827
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
-ms.translationtype: MT
+ms.openlocfilehash: 80b93efb58d225c53a64fa044f51145b392460d7
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82926813"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82690266"
 ---
-# <a name="oauth-20-and-openid-connect-protocols-on-microsoft-identity-platform"></a>OAuth 2,0 en OpenID Connect Connect protocols op micro soft Identity platform
+# <a name="oauth-20-and-openid-connect-protocols-on-the-microsoft-identity-platform"></a>OAuth 2,0 en OpenID Connect Connect protocollen op het micro soft Identity-platform
 
-Het micro soft Identity platform-eind punt voor Identity-as-a-service met industrie standaard protocollen, OpenID Connect Connect (OIDC) en OAuth 2,0. Hoewel de service compatibel is met standaarden, kunnen er subtiele verschillen zijn tussen twee implementaties van deze protocollen. Deze informatie is nuttig als u ervoor kiest om uw code te schrijven door rechtstreeks HTTP-aanvragen te verzenden en af te handelen of door een open-source bibliotheek van derden te gebruiken in plaats van een van de [open source-bibliotheken](reference-v2-libraries.md)te gebruiken.
+Het micro soft Identity platform-eind punt voor Identity-as-a-service met industrie standaard protocollen, OpenID Connect Connect en OAuth 2,0. Hoewel de service compatibel is met standaarden, kunnen er subtiele verschillen zijn tussen twee implementaties van deze protocollen. Deze informatie is nuttig als u ervoor kiest om uw code te schrijven door rechtstreeks HTTP-aanvragen te verzenden en af te handelen of een open-source bibliotheek van derden te gebruiken, in plaats van een van de [open source-bibliotheken](reference-v2-libraries.md)te gebruiken.
 
 ## <a name="the-basics"></a>De basisbeginselen
 
@@ -70,13 +69,13 @@ Als u wilt weten hoe u deze eind punten kunt gebruiken, kiest u een bepaald type
 
 ## <a name="tokens"></a>Tokens
 
-De micro soft Identity platform-implementatie van OAuth 2,0 en OpenID Connect Connect maken uitgebreid gebruik van Bearer-tokens, inclusief Bearer-tokens die worden weer gegeven als JWTs (JSON-webtokens). Een Bearer-token is een licht gewicht beveiligings token dat de ' Bearer ' toegang verleent tot een beveiligde bron. In deze zin is de ' Bearer ' een partij die het token kan presen teren. Een feestje moet eerst worden geverifieerd met het micro soft Identity-platform om het Bearer-token te ontvangen, als de vereiste stappen niet worden uitgevoerd om het token in trans missie en opslag te beveiligen, het kan worden onderschept en gebruikt door een onbedoelde partij. Hoewel sommige beveiligings tokens een ingebouwd mechanisme hebben om te voor komen dat niet-geautoriseerde partijen deze gebruiken, hebben Bearer-tokens dit mechanisme niet en moeten ze worden getransporteerd in een beveiligd kanaal, zoals trans port Layer Security (HTTPS). Als een Bearer-token in de heldere staat wordt verzonden, kan een kwaadwillende partij een man-in-the-middle-aanval gebruiken om het token te verkrijgen en dit te gebruiken voor onbevoegde toegang tot een beveiligde bron. Dezelfde beveiligings principes zijn van toepassing bij het opslaan of caching van Bearer-tokens voor later gebruik. Zorg er altijd voor dat uw app Bearer-tokens op een veilige manier verzendt en opslaat. Zie [RFC 6750 Section 5](https://tools.ietf.org/html/rfc6750)(Engelstalig) voor meer informatie over de beveiligings overwegingen voor Bearer-tokens.
+De micro soft Identity platform-implementatie van OAuth 2,0 en OpenID Connect Connect maken uitgebreid gebruik van Bearer-tokens, met inbegrip van Bearer-tokens die worden weer gegeven als JWTs. Een Bearer-token is een licht gewicht beveiligings token dat de ' Bearer ' toegang verleent tot een beveiligde bron. In deze zin is de ' Bearer ' een partij die het token kan presen teren. Een feestje moet eerst worden geverifieerd met het micro soft Identity-platform om het Bearer-token te ontvangen, als de vereiste stappen niet worden uitgevoerd om het token in trans missie en opslag te beveiligen, het kan worden onderschept en gebruikt door een onbedoelde partij. Hoewel sommige beveiligings tokens een ingebouwd mechanisme hebben om te voor komen dat niet-geautoriseerde partijen deze gebruiken, hebben Bearer-tokens dit mechanisme niet en moeten ze worden getransporteerd in een beveiligd kanaal, zoals trans port Layer Security (HTTPS). Als een Bearer-token in de heldere staat wordt verzonden, kan een kwaadwillende partij een man-in-the-middle-aanval gebruiken om het token te verkrijgen en dit te gebruiken voor onbevoegde toegang tot een beveiligde bron. Dezelfde beveiligings principes zijn van toepassing bij het opslaan of caching van Bearer-tokens voor later gebruik. Zorg er altijd voor dat uw app Bearer-tokens op een veilige manier verzendt en opslaat. Zie [RFC 6750 Section 5](https://tools.ietf.org/html/rfc6750)(Engelstalig) voor meer informatie over de beveiligings overwegingen voor Bearer-tokens.
 
 Meer informatie over de verschillende typen tokens die worden gebruikt in het micro soft Identity platform-eind punt is beschikbaar in [de naslag informatie voor het micro soft Identity platform endpoint-token](v2-id-and-access-tokens.md).
 
 ## <a name="protocols"></a>Protocollen
 
-Als u een aantal voorbeeld aanvragen wilt zien, kunt u aan de slag met een van de onderstaande zelf studies. Elk abonnement komt overeen met een bepaald verificatie scenario. Als u hulp nodig hebt bij het bepalen van de juiste stroom voor u, bekijkt [u de typen apps die u met micro soft Identity platform kunt bouwen](v2-app-types.md).
+Als u een aantal voorbeeld aanvragen wilt zien, kunt u aan de slag met een van de onderstaande zelf studies. Elk abonnement komt overeen met een bepaald verificatie scenario. Als u hulp nodig hebt bij het bepalen van de juiste stroom, bekijkt u [de typen apps die u met micro soft Identity platform kunt bouwen](v2-app-types.md).
 
 * [Mobiele en systeem eigen toepassing bouwen met OAuth 2,0](v2-oauth2-auth-code-flow.md)
 * [Web-apps bouwen met OpenID Connect Connect](v2-protocols-oidc.md)

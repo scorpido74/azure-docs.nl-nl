@@ -9,12 +9,12 @@ ms.author: magoedte
 ms.date: 08/01/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 2ef7db244057bc8b3b2e4d938b9f3bdd11c7940a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: aef6a58d18c0d9c1b18915786dd6e3359c31eda0
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81406032"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82855788"
 ---
 # <a name="editing-textual-runbooks-in-azure-automation"></a>Het bewerken van tekst runbooks in Azure Automation
 
@@ -22,7 +22,7 @@ De tekst editor in Azure Automation kan worden gebruikt voor het bewerken van [P
 
 De tekst editor bevat een functie voor het invoegen van code voor cmdlets, assets en onderliggende runbooks in een runbook. In plaats van de code zelf zelf te typen, kunt u een keuze uit een lijst met beschik bare resources selecteren. in de editor wordt de juiste code in het runbook ingevoegd.
 
-Elk runbook in Azure Automation heeft twee versies: concept en gepubliceerd. U bewerkt de concept versie van het runbook en publiceert deze zodat het kan worden uitgevoerd. De gepubliceerde versie kan niet worden bewerkt. Zie [een Runbook publiceren](manage-runbooks.md#publishing-a-runbook)voor meer informatie.
+Elk runbook in Azure Automation heeft twee versies: concept en gepubliceerd. U bewerkt de concept versie van het runbook en publiceert deze zodat het kan worden uitgevoerd. De gepubliceerde versie kan niet worden bewerkt. Zie [een Runbook publiceren](manage-runbooks.md#publish-a-runbook)voor meer informatie.
 
 In dit artikel vindt u gedetailleerde stappen voor het uitvoeren van verschillende functies met deze editor. Deze zijn niet van toepassing op [grafische runbooks](automation-runbook-types.md#graphical-runbooks). Als u met deze runbooks wilt werken, raadpleegt u [grafisch ontwerpen in azure Automation](automation-graphical-authoring-intro.md).
 
@@ -84,7 +84,7 @@ Export-AzAutomationRunbook -Name $runbookName -AutomationAccountName $automation
 
 ### <a name="change-the-contents-of-a-runbook-using-windows-powershell"></a>De inhoud van een runbook wijzigen met Windows Power shell
 
-De volgende voorbeeld opdrachten laten zien hoe u de bestaande inhoud van een runbook vervangt door de inhoud van een script bestand. Dit is dezelfde voorbeeld procedure als in [om een Runbook te importeren uit een script bestand met Windows Power shell](manage-runbooks.md#importing-a-runbook).
+De volgende voorbeeld opdrachten laten zien hoe u de bestaande inhoud van een runbook vervangt door de inhoud van een script bestand. 
 
 ```powershell-interactive
 $resourceGroupName = "MyResourceGroup"

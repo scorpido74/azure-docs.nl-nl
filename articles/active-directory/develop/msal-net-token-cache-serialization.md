@@ -13,12 +13,12 @@ ms.date: 09/16/2019
 ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: 1aa7de4290d0050b9d6b1c8b048f9e5a2836790f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: abc4836b5e8729eec45a0eb2cd8b5fa7be6b1ce4
+ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82127985"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82890559"
 ---
 # <a name="token-cache-serialization-in-msalnet"></a>Serialisatie van token cache in MSAL.NET
 Nadat een [token is verkregen](msal-acquire-cache-tokens.md), wordt het in de cache opgeslagen door micro soft Authentication Library (MSAL).  De toepassings code moet proberen een token op te halen uit de cache voordat een token wordt verkregen met een andere methode.  In dit artikel wordt de standaard-en aangepaste serialisatie van de token cache in MSAL.NET beschreven.
@@ -51,7 +51,7 @@ De volgende klassen en interfaces worden gebruikt in de serialisatie van de toke
 
 De strategieën verschillen, afhankelijk van of u een token cache-serialisatie schrijft voor een [open bare client toepassing](msal-client-applications.md) (Desktop) of een [vertrouwelijke client toepassing](msal-client-applications.md)) (Web-app/Web-API, daemon-app).
 
-### <a name="token-cache-for-a-public-client"></a>Token cache voor een open bare client 
+### <a name="token-cache-for-a-public-client"></a>Token cache voor een open bare client
 
 Sinds MSAL.NET v2. x hebt u verschillende opties voor het serialiseren van de token cache van een open bare client. U kunt de cache alleen serialiseren naar de MSAL.NET-indeling (de Unified Format-cache is gebruikelijk in MSAL en de platformen).  U kunt ook de [verouderde](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/wiki/Token-cache-serialization) token cache-serialisatie van ADAL v3 ondersteunen.
 
@@ -124,7 +124,7 @@ $"{Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData)}\{A
  }
 ```
 
-Een voor beeld van een productkwaliteits token op basis van een op het bestand gebaseerde serializer voor open bare client toepassingen (voor bureaublad toepassingen die worden uitgevoerd op Windows, Mac en Linux) is beschikbaar in de open-source bibliotheek van [micro soft. Identity. client. Extensions. Msal](https://github.com/AzureAD/microsoft-authentication-extensions-for-dotnet/tree/master/src/Microsoft.Identity.Client.Extensions.Msal) . U kunt deze in uw toepassingen insluiten vanuit het volgende nuget-pakket: [micro soft. Identity. client. Extensions. Msal](https://www.nuget.org/packages/Microsoft.Identity.Client.Extensions.Msal/).
+Een productkwaliteits token op basis van een op het bestand gebaseerde serializer voor open bare client toepassingen (voor bureaublad toepassingen die worden uitgevoerd op Windows, Mac en Linux) is beschikbaar in de open-source bibliotheek [micro soft. Identity. client. Extensions. Msal](https://github.com/AzureAD/microsoft-authentication-extensions-for-dotnet/tree/master/src/Microsoft.Identity.Client.Extensions.Msal) . U kunt deze in uw toepassingen insluiten vanuit het volgende NuGet-pakket: [micro soft. Identity. client. Extensions. Msal](https://www.nuget.org/packages/Microsoft.Identity.Client.Extensions.Msal/).
 
 #### <a name="dual-token-cache-serialization-msal-unified-cache-and-adal-v3"></a>Dubbele token cache-serialisatie (MSAL Unified cache en ADAL v3)
 
@@ -273,14 +273,63 @@ namespace CommonCacheMsalV3
 
 In web apps of Web-Api's kan de cache gebruikmaken van de sessie, een redis-cache of een-Data Base.
 
-Bewaar in web apps of Web-Api's één token cache per account.  Voor web-apps moet de token cache worden gesleuteld met de account-ID.  Voor web-Api's moet het account worden gefilterd op de hash van het token dat wordt gebruikt om de API aan te roepen. MSAL.NET biedt aangepaste token cache-serialisatie in .NET Framework en .NET core-subplatformen. Gebeurtenissen die worden geactiveerd wanneer de cache wordt geopend, apps kunnen kiezen of de cache moet worden geserialiseerd of gedeserialiseerd. Als er sprake is van vertrouwelijke client toepassingen die gebruikers verwerken (Web-apps waarmee gebruikers zich aanmelden en Web-api's aanroepen, en webtoepassingen stroomafwaartse Web-Api's), kunnen er veel gebruikers zijn en worden de gebruikers parallel verwerkt. Uit veiligheids overwegingen is het aan te raden één cache per gebruiker te serialiseren. Met serialisatie-gebeurtenissen wordt een cache sleutel berekend op basis van de identiteit van de verwerkte gebruiker en wordt een token cache voor die gebruiker geserialiseerd/deserialie.
+Bewaar in web apps of Web-Api's één token cache per account.  Voor web-apps moet de token cache worden gesleuteld met de account-ID.  Voor web-Api's moet het account worden gefilterd op de hash van het token dat wordt gebruikt om de API aan te roepen. MSAL.NET biedt aangepaste token cache-serialisatie in .NET Framework en .NET core-subplatformen. Gebeurtenissen die worden geactiveerd wanneer de cache wordt geopend, apps kunnen kiezen of de cache moet worden geserialiseerd of gedeserialiseerd. Als er sprake is van vertrouwelijke client toepassingen die gebruikers verwerken (Web-apps waarmee gebruikers zich aanmelden en Web-api's aanroepen, en webtoepassingen stroomafwaartse Web-Api's), kunnen er veel gebruikers zijn en worden de gebruikers parallel verwerkt. Uit veiligheids overwegingen is het aan te raden één cache per gebruiker te serialiseren. Met serialisatie-gebeurtenissen wordt een cache sleutel berekend op basis van de identiteit van de verwerkte gebruiker en wordt een token cache voor die gebruiker geserialiseerd/gedeserialiseerd.
 
-Voor beelden van het gebruik van token caches voor web apps en Web-Api's zijn beschikbaar in de [zelf studie](https://docs.microsoft.com/aspnet/core/tutorials/first-mvc-app/) voor de ASP.net core-web-app in de phase [2-2-token cache](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/2-WebApp-graph-user/2-2-TokenCache). Voor implementaties ziet u de map [TokenCacheProviders](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/Microsoft.Identity.Web/TokenCacheProviders) in de bibliotheek [micro soft-Authentication-Extensions-voor-dotnet](https://github.com/AzureAD/microsoft-authentication-extensions-for-dotnet) (in de map [micro soft. Identity. client. Extensions. Web](https://github.com/AzureAD/microsoft-authentication-extensions-for-dotnet/tree/master/src/Microsoft.Identity.Client.Extensions.Web) ). 
+De [micro soft. Identity. Web](https://github.com/AzureAD/microsoft-identity-web) -bibliotheek biedt een preview NuGet-pakket [micro soft. Identity. Web](https://www.nuget.org/packages/Microsoft.Identity.Web) met de token cache-serialisatie:
+
+
+| Extensie methode | Micro soft. Identity. Web-sub-naam ruimte | Beschrijving  |
+| ---------------- | --------- | ------------ |
+| `AddInMemoryTokenCaches` | `TokenCacheProviders.InMemory` | In geheugen token cache-serialisatie. Deze implementatie is geweldig in voor beelden. Het is ook handig in productie toepassingen die u niet bedenkt als de token cache verloren gaat wanneer de web-app opnieuw wordt gestart. `AddInMemoryTokenCaches`neemt een optionele para meter van `MsalMemoryTokenCacheOptions` het type waarmee u de duur kunt opgeven waarna de cache vermelding verloopt, tenzij deze wordt gebruikt.
+| `AddSessionTokenCaches` | `TokenCacheProviders.Session` | De token cache is gebonden aan de gebruikers sessie. Deze optie is niet ideaal als het ID-token veel claims bevat omdat de cookie te groot wordt.
+| `AddDistributedTokenCaches` | `TokenCacheProviders.Distributed` | De token cache is een adapter die voldoet `IDistributedCache` aan de ASP.net core-implementatie, zodat u kunt kiezen tussen een gedistribueerde geheugen cache, een redis-cache, een gedistribueerde NCache of een SQL server cache. Zie https://docs.microsoft.com/aspnet/core/performance/caching/distributed#distributed-memory-cachevoor meer informatie `IDistributedCache` over de implementaties.
+
+Eenvoudige case met de cache in het geheugen:
+
+```C#
+// or use a distributed Token Cache by adding
+    services.AddSignIn(Configuration);
+    services.AddWebAppCallsProtectedWebApi(Configuration, new string[] { scopesToRequest })
+            .AddInMemoryTokenCaches();
+```
+
+
+Voor beelden van mogelijke gedistribueerde caches:
+
+```C#
+// or use a distributed Token Cache by adding
+    services.AddSignIn(Configuration);
+    services.AddWebAppCallsProtectedWebApi(Configuration, new string[] { scopesToRequest })
+            .AddDistributedTokenCaches();
+
+// and then choose your implementation
+
+// For instance the distributed in memory cache (not cleared when you stop the app)
+services.AddDistributedMemoryCache()
+
+// Or a Redis cache
+services.AddStackExchangeRedisCache(options =>
+{
+ options.Configuration = "localhost";
+ options.InstanceName = "SampleInstance";
+});
+
+// Or even a SQL Server token cache
+services.AddDistributedSqlServerCache(options =>
+{
+ options.ConnectionString = _config["DistCache_ConnectionString"];
+ options.SchemaName = "dbo";
+ options.TableName = "TestCache";
+});
+```
+
+Hun gebruik wordt aanbevolen in de [ASP.net core web-app-zelf studie](https://docs.microsoft.com/aspnet/core/tutorials/first-mvc-app/) in de fase [2-2-token cache](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/2-WebApp-graph-user/2-2-TokenCache).
 
 ## <a name="next-steps"></a>Volgende stappen
+
 De volgende voor beelden illustreren de token cache-serialisatie.
 
 | Voorbeeld | Platform | Beschrijving|
 | ------ | -------- | ----------- |
 |[Active-Directory-DotNet-Desktop-MSGraph-v2](https://github.com/azure-samples/active-directory-dotnet-desktop-msgraph-v2) | Bureau blad (WPF) | Windows Desktop .NET (WPF)-toepassing die de Microsoft Graph-API aanroept. ![Topologie](media/msal-net-token-cache-serialization/topology.png)|
-|[Active-Directory-DotNet-v1-naar-v2](https://github.com/Azure-Samples/active-directory-dotnet-v1-to-v2) | Bureau blad (console) | Set Visual Studio-oplossingen die de migratie van Azure AD v 1.0-toepassingen (met behulp van ADAL.NET) illustreren naar Azure AD v 2.0-toepassingen, ook wel geconvergeerde toepassingen (met behulp van MSAL.NET) genoemd, met name de migratie van de [token cache](https://github.com/Azure-Samples/active-directory-dotnet-v1-to-v2/blob/master/TokenCacheMigration/README.md)|
+|[Active-Directory-DotNet-v1-naar-v2](https://github.com/Azure-Samples/active-directory-dotnet-v1-to-v2) | Bureau blad (console) | Set Visual Studio-oplossingen die de migratie van Azure AD v 1.0-toepassingen (met behulp van ADAL.NET) naar micro soft Identity platform-toepassingen (met behulp van MSAL.NET) illustreren. Zie bijvoorbeeld migratie van [token cache](https://github.com/Azure-Samples/active-directory-dotnet-v1-to-v2/blob/master/TokenCacheMigration/README.md)|

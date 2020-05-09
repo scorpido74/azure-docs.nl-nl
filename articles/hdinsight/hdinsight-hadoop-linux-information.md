@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
+ms.custom: hdinsightactive,seoapr2020
 ms.topic: conceptual
-ms.date: 11/14/2019
-ms.openlocfilehash: 3d9dec0065bb62821fcedcbc4f6e5b578c061caf
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 04/29/2020
+ms.openlocfilehash: e9f8fe17fa28cc5fcc4543bfb5e194bd3e7b837d
+ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79272459"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82594094"
 ---
 # <a name="information-about-using-hdinsight-on-linux"></a>Informatie over het gebruik van HDInsight in Linux
 
@@ -95,13 +95,13 @@ Voor beelden van gegevens-en JAR-bestanden vindt u `/example` op `/HdiSamples`Ha
 
 ## <a name="hdfs-azure-storage-and-data-lake-storage"></a>HDFS, Azure Storage en Data Lake Storage
 
-In de meeste Hadoop-distributies worden de gegevens opgeslagen in HDFS, die wordt ondersteund door de lokale opslag op de computers in het cluster. Het gebruik van lokale opslag kan kostenbesparend zijn voor een Cloud oplossing waarbij u per uur of per minuut voor reken resources in rekening wordt gebracht.
+In de meeste Hadoop-distributies worden de gegevens opgeslagen in HDFS. HDFS wordt ondersteund door de lokale opslag op de computers in het cluster. Het gebruik van lokale opslag kan kostenbesparend zijn voor een Cloud oplossing waarbij u per uur of per minuut voor reken resources in rekening wordt gebracht.
 
-Wanneer u HDInsight gebruikt, worden de gegevens bestanden op een schaal bare en robuuste manier opgeslagen in de Cloud met behulp van Azure Blob Storage en optioneel Azure Data Lake Storage. Deze services bieden de volgende voor delen:
+Wanneer u HDInsight gebruikt, worden de gegevens bestanden opgeslagen in een aanpas bare en robuuste manier in de Cloud met behulp van Azure Blob Storage en optioneel Azure Data Lake Storage. Deze services bieden de volgende voor delen:
 
 * Lange termijn voor goedkope opslag.
 * Toegankelijkheid van externe services, zoals websites, hulpprogram ma's voor het uploaden/downloaden van bestanden, diverse taal-Sdk's en webbrowsers.
-* Grote bestands capaciteit en grote schaal bare opslag.
+* Grote bestands capaciteit en grote aanpas bare opslag.
 
 Zie [Wat zijn Blobs](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs) en [Data Lake Storage](https://azure.microsoft.com/services/storage/data-lake-storage/)? voor meer informatie.
 
@@ -109,7 +109,7 @@ Wanneer u Azure Storage of Data Lake Storage gebruikt, hoeft u niets te doen van
 
     hdfs dfs -ls /example/data
 
-In HDInsight worden de gegevens opslag bronnen (Azure Blob Storage en Azure Data Lake Storage) losgekoppeld van reken resources. Daarom kunt u HDInsight-clusters maken voor de reken activiteiten zoals u dat nodig hebt, en het cluster later verwijderen wanneer het werk is voltooid. Houd er rekening mee dat uw gegevens bestanden veilig blijven in de Cloud opslag, zolang u dat nodig hebt.
+In HDInsight worden de gegevens opslag bronnen (Azure Blob Storage en Azure Data Lake Storage) losgekoppeld van reken resources. U kunt HDInsight-clusters maken voor de reken activiteiten en deze later verwijderen wanneer het werk is voltooid. Ondertussen blijven uw gegevens bestanden veilig bewaard in de Cloud opslag, zolang u dat nodig hebt.
 
 ### <a name="uri-and-scheme"></a><a name="URI-and-scheme"></a>URI en schema
 
@@ -210,46 +210,11 @@ Als u __Azure data Lake Storage__gebruikt, raadpleegt u de volgende koppelingen 
 
 ## <a name="scaling-your-cluster"></a><a name="scaling"></a>Uw cluster schalen
 
-Met de functie voor het schalen van clusters kunt u het aantal gegevens knooppunten dat door een cluster wordt gebruikt, dynamisch wijzigen. U kunt schaal bewerkingen uitvoeren terwijl andere taken of processen op een cluster worden uitgevoerd.  Zie ook [HDInsight-clusters schalen](./hdinsight-scaling-best-practices.md)
-
-De verschillende cluster typen worden als volgt beïnvloed door schalen:
-
-* **Hadoop**: wanneer het aantal knoop punten in een cluster wordt geschaald, worden enkele van de services in het cluster opnieuw gestart. Schaal bewerkingen kunnen ertoe leiden dat taken die actief of in behandeling zijn, mislukken wanneer de schaal bewerking is voltooid. Zodra de bewerking is voltooid, kunt u de taken opnieuw verzenden.
-* **HBase**: regionale servers worden automatisch binnen enkele minuten gebalanceerd, zodra de schaal bewerking is voltooid. Gebruik de volgende stappen om hand matig regionale servers te salderen:
-
-    1. Maak verbinding met het HDInsight-cluster via SSH. Zie [SSH gebruiken met HDInsight](hdinsight-hadoop-linux-use-ssh-unix.md)voor meer informatie.
-
-    2. Gebruik het volgende om de HBase-shell te starten:
-
-            hbase shell
-
-    3. Zodra de HBase-shell is geladen, gebruikt u het volgende om hand matig de regionale servers te salderen:
-
-            balancer
-
-* **Storm**: u moet eventuele actieve Storm-topologieën opnieuw verdelen nadat een schaal bewerking is uitgevoerd. Met herverdeling kunt u de instellingen van het parallellisme aanpassen op basis van het nieuwe aantal knoop punten in het cluster. Gebruik een van de volgende opties om de uitvoering van topologieën te herverdelen:
-
-    * **SSH**: Maak verbinding met de server en gebruik de volgende opdracht om een topologie opnieuw te verdelen:
-
-            storm rebalance TOPOLOGYNAME
-
-        U kunt ook para meters opgeven voor het overschrijven van de parallellisme-hints die oorspronkelijk door de topologie worden opgegeven. De topologie wordt `storm rebalance mytopology -n 5 -e blue-spout=3 -e yellow-bolt=10` bijvoorbeeld opnieuw geconfigureerd op 5 werk processen, 3 voor de uitvoering van het onderdeel Blue-Spout en 10 uitvoerende modules voor het onderdeel Yellow-schicht.
-
-    * **Storm-gebruikers interface**: gebruik de volgende stappen om een topologie te herverdelen met behulp van de Storm-gebruikers interface.
-
-        1. Open `https://CLUSTERNAME.azurehdinsight.net/stormui` in uw webbrowser, waarbij `CLUSTERNAME` de naam van uw Storm-cluster is. Als u hierom wordt gevraagd, voert u de naam en het wacht woord voor HDInsight Cluster Administrator (admin) in die u hebt opgegeven bij het maken van het cluster.
-        2. Selecteer de topologie die u wilt herverdelen en selecteer vervolgens de knop opnieuw **verdelen** . Voer de vertraging in voordat de herverdelings bewerking wordt uitgevoerd.
-
-* **Kafka**: u moet partitie replica's na schaal bewerkingen opnieuw verdelen. Zie voor meer informatie de [hoge Beschik baarheid van gegevens met Apache Kafka in HDInsight](./kafka/apache-kafka-high-availability.md) -document.
-
-Zie voor specifieke informatie over het schalen van uw HDInsight-cluster:
-
-* [Apache Hadoop clusters in HDInsight beheren door gebruik te maken van de Azure Portal](hdinsight-administer-use-portal-linux.md#scale-clusters)
-* [Apache Hadoop clusters in HDInsight beheren met behulp van Azure CLI](hdinsight-administer-use-command-line.md#scale-clusters)
+Met de functie voor het schalen van clusters kunt u het aantal gegevens knooppunten dat door een cluster wordt gebruikt, dynamisch wijzigen. U kunt bewerkingen schalen terwijl andere taken of processen op een cluster worden uitgevoerd.  Zie [HDInsight-clusters schalen](./hdinsight-scaling-best-practices.md)
 
 ## <a name="how-do-i-install-hue-or-other-hadoop-component"></a>Hoe kan ik tint installeren (of een ander Hadoop-onderdeel)?
 
-HDInsight is een beheerde service. Als Azure een probleem met het cluster detecteert, kan het het knoop punt dat niet werkt, verwijderen en een knoop punt maken om dit te vervangen. Als u hand matig dingen op het cluster installeert, worden deze niet bewaard wanneer deze bewerking wordt uitgevoerd. Gebruik in plaats daarvan [HDInsight-script acties](hdinsight-hadoop-customize-cluster-linux.md). Een script actie kan worden gebruikt om de volgende wijzigingen aan te brengen:
+HDInsight is een beheerde service. Als Azure een probleem met het cluster detecteert, kan het het knoop punt dat niet werkt, verwijderen en een knoop punt maken om dit te vervangen. Wanneer u hand matig dingen op het cluster installeert, worden deze niet behouden wanneer deze bewerking wordt uitgevoerd. Gebruik in plaats daarvan [HDInsight-script acties](hdinsight-hadoop-customize-cluster-linux.md). Een script actie kan worden gebruikt om de volgende wijzigingen aan te brengen:
 
 * Een service of website installeren en configureren.
 * Installeer en configureer een onderdeel waarvoor configuratie wijzigingen moeten worden aangebracht op meerdere knoop punten in het cluster.
@@ -258,7 +223,7 @@ Script acties zijn bash-scripts. De scripts worden uitgevoerd tijdens het maken 
 
 ### <a name="jar-files"></a>Jar-bestanden
 
-Sommige Hadoop-technologieën zijn opgenomen in op zichzelf staande jar-bestanden die functies bevatten die worden gebruikt als onderdeel van een MapReduce-taak, of van binnen varken of Hive. Ze vereisen vaak geen Setup en kunnen worden geüpload naar het cluster nadat het is gemaakt en rechtstreeks is gebruikt. Als u er zeker van wilt zijn dat het onderdeel het herstellen van het cluster onactief maakt, kunt u het jar-bestand opslaan in de standaard opslag voor uw cluster (WASB of ADL).
+Sommige Hadoop-technologieën bieden op zichzelf staande jar-bestanden. Deze bestanden bevatten functies die deel uitmaken van een MapReduce-taak, of van binnen varken of Hive. Ze vereisen vaak geen Setup en kunnen worden geüpload naar het cluster nadat het is gemaakt en rechtstreeks is gebruikt. Sla het jar-bestand op in de standaard opslag van het cluster als u er zeker van wilt zijn dat het onderdeel het herstellen van het cluster overlaat.
 
 Als u bijvoorbeeld de meest recente versie van [Apache DataFu](https://datafu.incubator.apache.org/)wilt gebruiken, kunt u een jar met het project downloaden en uploaden naar het HDInsight-cluster. Volg vervolgens de DataFu-documentatie voor informatie over het gebruik van varken of Hive.
 

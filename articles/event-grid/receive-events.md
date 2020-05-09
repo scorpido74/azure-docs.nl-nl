@@ -8,16 +8,16 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 01/01/2019
 ms.author: babanisa
-ms.openlocfilehash: cb38fd17c0c1bfbe3e5957d8f432f0a43b285c93
-ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
+ms.openlocfilehash: 2c34a9e1463c49ab1822d1de6bf33e81f19cf003
+ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "60803811"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82629589"
 ---
 # <a name="receive-events-to-an-http-endpoint"></a>Gebeurtenissen op een HTTP-eindpunt ontvangen
 
-In dit artikel wordt beschreven hoe u [een HTTP-eind punt kunt valideren](security-authentication.md#webhook-event-delivery) om gebeurtenissen van een gebeurtenis abonnement te ontvangen en vervolgens gebeurtenissen te ontvangen en te deserialiseren. In dit artikel wordt een Azure-functie gebruikt voor demonstratie doeleinden, maar dezelfde concepten zijn echter van toepassing, ongeacht waar de toepassing wordt gehost.
+In dit artikel wordt beschreven hoe u [een HTTP-eind punt kunt valideren](webhook-event-delivery.md) om gebeurtenissen van een gebeurtenis abonnement te ontvangen en vervolgens gebeurtenissen te ontvangen en te deserialiseren. In dit artikel wordt een Azure-functie gebruikt voor demonstratie doeleinden, maar dezelfde concepten zijn echter van toepassing, ongeacht waar de toepassing wordt gehost.
 
 > [!NOTE]
 > Het wordt **ten zeerste** aanbevolen om een [Event grid trigger](../azure-functions/functions-bindings-event-grid.md) te gebruiken bij het activeren van een Azure-functie met Event grid. Het gebruik van een generieke webhook-trigger is hier aangetoond.
@@ -28,7 +28,7 @@ U hebt een functie-app met een door HTTP geactiveerde functie nodig.
 
 ## <a name="add-dependencies"></a>Afhankelijkheden toevoegen
 
-Als u in .net ontwikkelt, [voegt u een afhankelijkheid](../azure-functions/functions-reference-csharp.md#referencing-custom-assemblies) toe aan uw functie `Microsoft.Azure.EventGrid` voor het [Nuget-pakket](https://www.nuget.org/packages/Microsoft.Azure.EventGrid). Voor de voor beelden in dit artikel is versie 1.4.0 of hoger vereist.
+Als u in .net ontwikkelt, [voegt u een afhankelijkheid](../azure-functions/functions-reference-csharp.md#referencing-custom-assemblies) toe aan uw functie `Microsoft.Azure.EventGrid` voor het [NuGet-pakket](https://www.nuget.org/packages/Microsoft.Azure.EventGrid). Voor de voor beelden in dit artikel is versie 1.4.0 of hoger vereist.
 
 Sdk's voor andere talen zijn beschikbaar via de naslag informatie over het [publiceren van sdk's](./sdk-overview.md#data-plane-sdks) . Deze pakketten hebben de modellen voor systeem eigen gebeurtenis typen zoals `EventGridEvent`, `StorageBlobCreatedEventData`en `EventHubCaptureFileCreatedEventData`.
 
@@ -50,7 +50,7 @@ Klik op de koppeling ' bestanden weer geven ' in uw Azure function (rechter deel
 
 ## <a name="endpoint-validation"></a>Eindpunt validatie
 
-Het eerste wat u wilt doen, is het `Microsoft.EventGrid.SubscriptionValidationEvent` verwerken van gebeurtenissen. Telkens wanneer iemand zich abonneert op een gebeurtenis, stuurt Event Grid een validatie gebeurtenis naar het eind punt `validationCode` met een in de gegevens lading. Het eind punt is vereist om dit terug te echo's in de antwoord tekst, om aan te [tonen dat het eind punt geldig is en het eigendom van u is](security-authentication.md#webhook-event-delivery). Als u een [Event grid trigger](../azure-functions/functions-bindings-event-grid.md) gebruikt in plaats van een door een webhook geactiveerde functie, wordt de eindpunt validatie voor u afgehandeld. Als u een API-service van derden gebruikt (zoals [Zapier](https://zapier.com) of [IFTTT](https://ifttt.com/)), is het mogelijk dat u de validatie code niet programmatisch kunt echo. Voor die services kunt u het abonnement hand matig valideren met behulp van een validatie-URL die wordt verzonden in de validatie gebeurtenis van het abonnement. Kopieer de URL in de `validationUrl` eigenschap en verzend een GET-aanvraag via een rest-client of uw webbrowser.
+Het eerste wat u wilt doen, is het `Microsoft.EventGrid.SubscriptionValidationEvent` verwerken van gebeurtenissen. Telkens wanneer iemand zich abonneert op een gebeurtenis, stuurt Event Grid een validatie gebeurtenis naar het eind punt `validationCode` met een in de gegevens lading. Het eind punt is vereist om dit terug te echo's in de antwoord tekst, om aan te [tonen dat het eind punt geldig is en het eigendom van u is](webhook-event-delivery.md). Als u een [Event grid trigger](../azure-functions/functions-bindings-event-grid.md) gebruikt in plaats van een door een webhook geactiveerde functie, wordt de eindpunt validatie voor u afgehandeld. Als u een API-service van derden gebruikt (zoals [Zapier](https://zapier.com) of [IFTTT](https://ifttt.com/)), is het mogelijk dat u de validatie code niet programmatisch kunt echo. Voor die services kunt u het abonnement hand matig valideren met behulp van een validatie-URL die wordt verzonden in de validatie gebeurtenis van het abonnement. Kopieer de URL in de `validationUrl` eigenschap en verzend een GET-aanvraag via een rest-client of uw webbrowser.
 
 In C# deserialiseren de `DeserializeEventGridEvents()` functie de Event grid-gebeurtenissen. Het deserialiseren van de gebeurtenis gegevens in het juiste type, zoals StorageBlobCreatedEventData. Gebruik de `Microsoft.Azure.EventGrid.EventTypes` -klasse om ondersteunde gebeurtenis typen en-namen op te halen.
 

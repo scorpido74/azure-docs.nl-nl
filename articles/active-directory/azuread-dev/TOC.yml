@@ -22,7 +22,7 @@
           href: native-app.md
         - name: Daemon- of servertoepassing
           href: service-to-service.md
-    - name: Authentication
+    - name: Verificatie
       items:
         - name: Basisbeginselen van verificatie
           href: v1-authentication-scenarios.md
@@ -83,7 +83,7 @@
       href: ../develop/authentication-national-cloud.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json
 - name: Instructiegidsen
   items:
-    - name: Authentication
+    - name: Verificatie
       items:
         - name: Eenmalige aanmelding configureren
           displayName: SSO
@@ -158,7 +158,7 @@
     - name: De Microsoft Graph API gebruiken
       href: ../develop/microsoft-graph-intro.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json
     - name: AD FS voor ontwikkelaars
-      href: 'https://docs.microsoft.com/windows-server/identity/ad-fs/overview/ad-fs-scenarios-for-developers'
+      href: 'https://docs.microsoft.com/windows-server/identity/ad-fs/ad-fs-overview'
 - name: Verwijzingen
   items:
     - name: Verificatiebibliotheken
@@ -172,7 +172,7 @@
       href: ../develop/reference-aadsts-error-codes.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json
     - name: Wijzigingen die fouten veroorzaken
       href: ../develop/reference-breaking-changes.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json
-- name: Bronnen
+- name: Resources
   items:
     - name: Woordenlijst
       href: ../develop/developer-glossary.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json

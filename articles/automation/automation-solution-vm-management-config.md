@@ -1,20 +1,20 @@
 ---
-title: De oplossing voor het starten/stoppen van Vm's Azure Automation configureren
+title: VM's buiten bedrijfsuren starten/stoppen oplossing Azure Automation configureren
 description: In dit artikel wordt beschreven hoe u de VM's buiten bedrijfsuren starten/stoppen-oplossing kunt configureren voor de ondersteuning van verschillende use cases of scenario's.
 services: automation
 ms.subservice: process-automation
 ms.date: 04/01/2020
 ms.topic: conceptual
-ms.openlocfilehash: 9842a736cf922e0490f2b0c8acb1d2e5833f3d6c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: HT
+ms.openlocfilehash: 4cceb0d5ada82de73bc74c0ed408f8eb988ea8ec
+ms.sourcegitcommit: 602e6db62069d568a91981a1117244ffd757f1c2
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81604761"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82864263"
 ---
-# <a name="how-to-configure-startstop-vms-during-off-hours-solution"></a>Het configureren van Vm's voor starten/stoppen tijdens een buiten-kantoor oplossing
+# <a name="how-to-configure-startstop-vms-during-off-hours-solution"></a>VM's buiten bedrijfsuren starten/stoppen oplossing configureren
 
-Met de oplossing **Vm's starten/stoppen buiten kantoor uren** kunt u het volgende doen:
+Met de **VM's buiten bedrijfsuren starten/stoppen** oplossing kunt u het volgende doen:
 
 - [Plan vm's om te starten en te stoppen](#schedule).
 - Plan Vm's om in oplopende volg orde te starten en te stoppen met [behulp van Azure Tags](#tags) (niet ondersteund voor klassieke vm's).
@@ -125,7 +125,7 @@ Wanneer u het **AutoStop_CreateAlert_Parent** runbook uitvoert, wordt gecontrole
 
 ### <a name="to-target-the-autostop-action-to-a-list-of-vms"></a>De actie voor het uitschakelen van een lijst met Vm's
 
-1. Maak een nieuwe [planning](shared-resources/schedules.md#creating-a-schedule) en koppel deze aan het **AutoStop_CreateAlert_Parent** runbook en voeg een door KOMMA'S gescheiden lijst met VM-namen toe `VMList` aan de para meter.
+1. Maak een nieuwe [planning](shared-resources/schedules.md#create-a-schedule) en koppel deze aan het **AutoStop_CreateAlert_Parent** runbook en voeg een door KOMMA'S gescheiden lijst met VM-namen toe `VMList` aan de para meter.
 
 2. Als u sommige Vm's wilt uitsluiten van automatisch afsluiten, kunt u desgewenst een door komma's gescheiden lijst met VM-namen toevoegen aan de `External_ExcludeVMNames` variabele.
 

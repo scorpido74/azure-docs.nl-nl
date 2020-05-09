@@ -1,19 +1,20 @@
 ---
-title: Betalen in commerciële Marketplace | Azure Marketplace
-description: Meer informatie over het ontvangen van betalingen voor uw inkomsten in de commerciële Marketplace.
+title: Aan de slag met micro soft Commercial Marketplace
+description: Meer informatie over het ontvangen van betalingen voor uw inkomsten in micro soft Commercial Marketplace.
 author: dsindona
 ms.author: dsindona
 ms.service: marketplace
 ms.topic: conceptual
 ms.date: 12/10/2019
-ms.openlocfilehash: 3c75d5ccdd2d632fbc31d1be3faf6cbc6d3fb223
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 678c47fc345838f6d1e93ac397a4e54d1c61391f
+ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80275829"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82780494"
 ---
-# <a name="getting-paid"></a>Betaald krijgen
+# <a name="getting-paid-in-commercial-marketplace"></a>Betalen in commerciële Marketplace
+
 Hieronder vindt u belang rijke informatie over het ontvangen van betalingen voor uw aanbiedingen, invoeg toepassingen en reclame-inkomsten.
 
 > [!IMPORTANT]
@@ -40,18 +41,17 @@ Elke prijs categorie heeft een overeenkomende waarde in elk van de valuta's die 
 
 U hebt ook de mogelijkheid om een prijs voor vrije vorm in te voeren voor uw keuze in de lokale valuta van een specifieke markt. Wanneer u dit doet, wordt de prijs niet aangepast (zelfs als de conversie tarieven veranderen), tenzij u een update met een nieuwe prijs verzendt. 
 
-Houd er rekening mee dat de prijs die u selecteert, mogelijk verkoop of belasting toegevoegde waarde bevat die uw klanten moeten betalen. Bekijk de [belasting gegevens voor de betaalde aanbieding](tax-details-paid-transactions.md) voor meer informatie.
+Houd er rekening mee dat de prijs die u selecteert, mogelijk verkoop of belasting toegevoegde waarde bevat die uw klanten moeten betalen. Zie [belasting Details voor betaalde aanbieding](tax-details-paid-transactions.md)voor meer informatie.
 
 
 ## <a name="payout-reporting"></a>Betalingsrapportage
 
-U kunt meer informatie krijgen over uw betalings gegevens en rapporten downloaden in het **overzicht** van uitbetalingen van [Partner Center](https://partner.microsoft.com/dashboard). Zie [overzicht van uitbetaling](payout-summary.md)voor meer informatie over de informatie die hier wordt weer gegeven en hoe we het geld dat u verdient te categoriseren.
+U kunt meer informatie krijgen over uw betalings gegevens en rapporten downloaden in het **overzicht** van uitbetalingen van [Partner Center](https://partner.microsoft.com/dashboard). Zie [overzicht van uitbetalings](payout-summary-overview.md)overzicht voor meer informatie over de informatie die hier wordt weer gegeven en hoe we het geld dat u verdient gecategoriseerd.
 
 
-## <a name="payout-timeframe"></a>Periode uitbetaling
+## <a name="payout-time-frame"></a>Tijds bestek voor uitbetaling
 
-Betalingen worden maandelijks uitgevoerd (op voor waarde dat de toepasselijke betalings drempel is bereikt en u hebt uw betaling niet in de wacht stand gezet, zoals hieronder wordt beschreven). We sturen doorgaans een betaling die in een bepaalde maand vervalt op de vijftiende dag van die maand. Houd er rekening mee dat betalingen over het algemeen tussen 3 en 10 extra dagen duren om uw uitbetalings account te bereiken. Zie [betalings drempels, methoden en tijds perioden](payment-thresholds-methods-timeframes.md)voor meer informatie.
-
+Betalingen worden maandelijks uitgevoerd (op voor waarde dat de toepasselijke betalings drempel is bereikt en u hebt uw betaling niet in de wacht stand gezet, zoals hieronder wordt beschreven). We sturen doorgaans een betaling die in een bepaalde maand vervalt op de vijftiende dag van die maand. Houd er rekening mee dat betalingen over het algemeen tussen 3 en 10 extra dagen duren om uw uitbetalings account te bereiken. Zie [betalings drempels, methoden en tijd frames](payment-thresholds-methods-timeframes.md)voor meer informatie.
 
 ##  <a name="payout-hold-status"></a>Status uitbetalings blokkering
 
@@ -63,12 +63,3 @@ Zodra u de status van de uitbetalings blokkering hebt ingesteld op **aan**, word
 
 > [!NOTE]
 > De **status van uw uitbetalings blokkering** geldt voor elk afzonderlijk programma (Microsoft Store, reclame, Azure Marketplace, enzovoort). Als u betalingen wilt bewaren voor al uw Program ma's, moet u de betalingen voor elk programma afzonderlijk bewaren.
-
-
- 
-
- 
-
-
-
-

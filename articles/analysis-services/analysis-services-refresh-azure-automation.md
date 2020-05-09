@@ -4,14 +4,14 @@ description: In dit artikel wordt beschreven hoe u code model vernieuwt voor Azu
 author: chrislound
 ms.service: analysis-services
 ms.topic: conceptual
-ms.date: 10/30/2019
+ms.date: 05/07/2020
 ms.author: chlound
-ms.openlocfilehash: 7908b168adcaa00819990d7ced04ba4888d67d63
-ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
-ms.translationtype: HT
+ms.openlocfilehash: bbbc2863e06b4602a4175d46bbe21414041583ba
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82871315"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82926558"
 ---
 # <a name="refresh-with-azure-automation"></a>Vernieuwen met Azure Automation
 
@@ -60,7 +60,7 @@ De service-principal die u maakt, moet Server Administrator-machtigingen hebben 
 
     ![Referentie maken](./media/analysis-services-refresh-azure-automation/6.png)
 
-2. Voer de details in voor de referentie.  Voer voor de **gebruikers naam**de **SPN ClientId**in voor het **wacht woord**, voer het **geheim**van de SPN in.
+2. Voer de details in voor de referentie. Voer in **gebruikers naam**de Service Principal-toepassings-id (AppID) in en voer vervolgens bij **wacht woord**het geheim van de Service-Principal in.
 
     ![Referentie maken](./media/analysis-services-refresh-azure-automation/7.png)
 
@@ -227,4 +227,4 @@ else
 ## <a name="next-steps"></a>Volgende stappen
 
 [Voorbeelden](analysis-services-samples.md)  
-[REST-API](https://docs.microsoft.com/rest/api/analysisservices/servers)
+[REST API](https://docs.microsoft.com/rest/api/analysisservices/servers)
