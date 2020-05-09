@@ -3,17 +3,26 @@ title: Een hulp programma voor beoordeling/migratie toevoegen in Azure Migrate
 description: Hierin wordt beschreven hoe u een Azure Migrate project maakt en een hulp programma voor evaluatie/migratie toevoegt.
 ms.topic: how-to
 ms.date: 04/16/2020
-ms.openlocfilehash: 48bdea31d17ea1ddf0b983af962dce30b22d8dcf
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1294831162df973e1f87052c1520d5d95990cf8f
+ms.sourcegitcommit: 0fda81f271f1a668ed28c55dcc2d0ba2bb417edd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81537726"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82901193"
 ---
 # <a name="add-an-assessmentmigration-tool-for-the-first-time"></a>Voor de eerste keer een evaluatie-/migratiehulpprogramma toevoegen
 
 In dit artikel wordt beschreven hoe u voor de eerste keer een hulp programma voor beoordeling of migratie toevoegt aan een [Azure migrate](migrate-overview.md) project.  
 Azure Migrate biedt een centrale hub voor het bijhouden van detectie, evaluatie en migratie van uw on-premises apps en werk belastingen, en persoonlijke/open bare Cloud-Vm's naar Azure. De hub biedt Azure Migrate tools voor evaluatie en migratie, evenals andere hulpprogram ma's en ISV- [aanbiedingen](migrate-services-overview.md#isv-integration) (Independent Software Vendor). 
+
+## <a name="check-permissions-to-create-project"></a>Controleer de machtigingen voor het maken van het project
+
+Als u nog geen Azure Migrate project hebt gemaakt, controleert u of u de juiste machtigingen hebt.
+
+1. Open in het Azure Portal het abonnement en selecteer **toegangs beheer (IAM)**.
+2. Zoek in toegang controleren het relevante account en klik erop om de machtigingen weer te geven. U moet machtigingen voor Inzender of eigenaar hebben.
+    - Als u zojuist een gratis Azure-account hebt gemaakt, bent u de eigenaar van uw abonnement.
+    - Als u niet de eigenaar van het abonnement bent, kunt u met de eigenaar samen werken om de rol toe te wijzen.
 
 ## <a name="create-a-project-and-add-a-tool"></a>Een project maken en een hulp programma toevoegen
 
@@ -66,4 +75,6 @@ In sommige gevallen moet u mogelijk aanvullende Azure Migrate-projecten maken. A
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Meer informatie over het toevoegen van extra hulpprogram ma's voor [evaluatie](how-to-assess.md) en [migratie](how-to-migrate.md) . 
+- Aan de slag met [Azure migrate: Server evaluatie](migrate-services-overview.md#azure-migrate-server-assessment-tool)of [Azure migrate: Server migratie](migrate-services-overview.md#azure-migrate-server-migration-tool).
+- Als u een ISV-hulp programma hebt toegevoegd, of als u de bewerking wilt inpakken, controleert u de [stappen](prepare-isv-movere.md) voor het koppelen van het hulp programma aan Azure Migrate.
+- Meer informatie over het toevoegen van extra hulpprogram ma's voor [evaluatie](how-to-assess.md) en [migratie](how-to-migrate.md) . 

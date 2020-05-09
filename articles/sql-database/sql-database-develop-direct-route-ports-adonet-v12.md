@@ -11,12 +11,12 @@ author: MightyPen
 ms.author: genemi
 ms.reviewer: sstein
 ms.date: 04/03/2019
-ms.openlocfilehash: c0012b61cf43d01afd5e7f5f52948310b5eb8420
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 34e9b40b0b6989edacd72eb23d357e2a84b6f8d8
+ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "73828063"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82891083"
 ---
 # <a name="ports-beyond-1433-for-adonet-45"></a>Poorten boven 1433 voor ADO.NET 4.5
 
@@ -72,9 +72,9 @@ Deze sectie verduidelijkt de monikers die verwijzen naar de product versies. Er 
 
 ## <a name="related-links"></a>Verwante koppelingen
 
-* ADO.NET 4,6 is uitgebracht op 20 juli 2015. [Hier](https://blogs.msdn.com/b/dotnet/archive/20../../announcing-net-framework-4-6.aspx)vindt u een blog aankondiging van het .net-team.
-* ADO.NET 4,5 is uitgebracht op 15 augustus 2012. [Hier](https://blogs.msdn.com/b/dotnet/archive/20../../announcing-the-release-of-net-framework-4-5-rtm-product-and-source-code.aspx)vindt u een blog aankondiging van het .net-team.
-  * Een blog bericht over ADO.NET 4.5.1 is [hier](https://blogs.msdn.com/b/dotnet/archive/20../../announcing-the-net-framework-4-5-1-preview.aspx)beschikbaar.
+* ADO.NET 4,6 is uitgebracht op 20 juli 2015. [Hier](https://devblogs.microsoft.com/dotnet/announcing-net-framework-4-6/)vindt u een blog aankondiging van het .net-team.
+* ADO.NET 4,5 is uitgebracht op 15 augustus 2012. [Hier](https://devblogs.microsoft.com/dotnet/announcing-the-release-of-net-framework-4-5-rtm-product-and-source-code/)vindt u een blog aankondiging van het .net-team.
+  * Een blog bericht over ADO.NET 4.5.1 is [hier](https://devblogs.microsoft.com/dotnet/announcing-the-net-framework-4-5-1-preview/)beschikbaar.
 
 * Micro soft® ODBC-stuur programma 17 voor SQL Server®-Windows, Linux, & macOShttps://www.microsoft.com/download/details.aspx?id=56567
 

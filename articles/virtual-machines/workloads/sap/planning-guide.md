@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 05/05/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: c2e3219cebcc5e989059c02fec86ba242e1c31cc
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.openlocfilehash: b8f6691eab7da42c1f82952b3a20df95ab28d97b
+ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82853875"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82891592"
 ---
 # <a name="azure-virtual-machines-planning-and-implementation-for-sap-netweaver"></a>Azure Virtual Machines planning en implementatie voor SAP net-Weaver
 
@@ -1240,7 +1240,7 @@ Ervaar de ervaring van SAP-implementaties in de afgelopen twee jaar. Dit zijn en
 >
 > * [Software-RAID op Linux configureren][virtual-machines-linux-configure-raid]
 > * [LVM configureren op een virtuele Linux-machine in azure][virtual-machines-linux-configure-lvm]
-> * [Azure Storage geheimen en Linux I/O-optimalisaties](https://blogs.msdn.com/b/igorpag/archive/2014/10/23/azure-storage-secrets-and-linux-i-o-optimizations.aspx)
+> * [Azure Storage geheimen en Linux I/O-optimalisaties](https://docs.microsoft.com/archive/blogs/igorpag/azure-storage-secrets-and-linux-io-optimizations)
 >
 >
 

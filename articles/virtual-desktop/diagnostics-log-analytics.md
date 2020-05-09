@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 04/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: e76b100607c0ac39c1b05e44ac0d1e76a6129384
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
-ms.translationtype: HT
+ms.openlocfilehash: 99a9e68a2e0c39364cc5105f230b00ffb90d867d
+ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82612670"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82888795"
 ---
 # <a name="use-log-analytics-for-the-diagnostics-feature"></a>Log Analytics gebruiken voor de functie voor diagnostische gegevens
 
@@ -25,31 +25,19 @@ ms.locfileid: "82612670"
 
 Het virtuele bureau blad van Windows maakt gebruik van [Azure monitor](../azure-monitor/overview.md) voor bewaking en waarschuwingen, zoals veel andere Azure-Services. Hiermee kunnen beheerders problemen identificeren via één interface. De service maakt activiteiten logboeken voor zowel gebruikers-als beheer acties. Elk activiteiten logboek valt onder de volgende categorieën:  
 
-- Beheer activiteiten:  
-
-   - Controleren of er wordt geprobeerd Windows virtueel-bureaublad objecten te wijzigen met behulp van Api's of Power shell. Kan iemand bijvoorbeeld een hostgroep maken met behulp van Power shell?
-
+- Beheer activiteiten:
+    - Controleren of er wordt geprobeerd Windows virtueel-bureaublad objecten te wijzigen met behulp van Api's of Power shell. Kan iemand bijvoorbeeld een hostgroep maken met behulp van Power shell?
 - Voerder 
-
-   - Kunnen gebruikers zich abonneren op werk ruimten? 
-
-   - Zien gebruikers alle resources die zijn gepubliceerd in de Extern bureaublad-client?
-
+    - Kunnen gebruikers zich abonneren op werk ruimten? 
+    - Zien gebruikers alle resources die zijn gepubliceerd in de Extern bureaublad-client?
 - Verbindingen: 
-
-   - Wanneer gebruikers verbindingen met de service initiëren en volt ooien. 
-
+    - Wanneer gebruikers verbindingen met de service initiëren en volt ooien. 
 - Registratie van de host: 
-
-   - Is de sessiehost geregistreerd bij de service bij het verbinden?
-
+    - Is de sessiehost geregistreerd bij de service bij het verbinden?
 - Bufferoverschrijdingsfouten 
-
-   - Ondervinden gebruikers problemen met specifieke activiteiten? Met deze functie kan een tabel worden gegenereerd die de activiteit gegevens voor u registreert, zolang de gegevens worden gekoppeld aan de activiteiten.
-
+    - Ondervinden gebruikers problemen met specifieke activiteiten? Met deze functie kan een tabel worden gegenereerd die de activiteit gegevens voor u registreert, zolang de gegevens worden gekoppeld aan de activiteiten.
 - Controle punten  
-
-   - Specifieke stappen in de levens duur van een activiteit die is bereikt. Tijdens een sessie is een gebruiker bijvoorbeeld gelijkmatig verdeeld over een bepaalde host. vervolgens is de gebruiker aangemeld tijdens een verbinding, enzovoort.
+    - Specifieke stappen in de levens duur van een activiteit die is bereikt. Tijdens een sessie is een gebruiker bijvoorbeeld gelijkmatig verdeeld over een bepaalde host. vervolgens is de gebruiker aangemeld tijdens een verbinding, enzovoort.
 
 Verbindingen die zich niet in het virtuele bureau blad van Windows bevinden, worden niet weer gegeven in de resultaten van diagnostische gegevens omdat de functie Service diagnostiek zelf deel uitmaakt van Windows virtueel bureau blad. Er kunnen problemen met de Windows-verbinding met virtueel bureau blad optreden wanneer de gebruiker problemen met de netwerk verbinding ondervindt.
 
@@ -146,7 +134,7 @@ De volgende voorbeeld query's laten zien hoe de diagnostische functie een rappor
 
 Voer de volgende cmdlet uit om een lijst op te halen met de verbindingen die uw gebruikers hebben gemaakt:
 
-```powershell
+```kusto
 WVDConnections 
 | project-away TenantId,SourceSystem 
 | summarize arg_max(TimeGenerated, *), StartTime =  min(iff(State== 'Started', TimeGenerated , datetime(null) )), ConnectTime = min(iff(State== 'Connected', TimeGenerated , datetime(null) ))   by CorrelationId 
@@ -169,45 +157,29 @@ WVDConnections
 
 De feed-activiteit van uw gebruikers weer geven:
 
-```powershell
+```kusto
 WVDFeeds  
-
 | project-away TenantId,SourceSystem  
-
 | join kind=leftouter (  
-
     WVDErrors  
-
     |summarize Errors=makelist(pack('Code', Code, 'CodeSymbolic', CodeSymbolic, 'Time', TimeGenerated, 'Message', Message ,'ServiceError', ServiceError, 'Source', Source)) by CorrelationId  
-
     ) on CorrelationId      
-
 | join kind=leftouter (  
-
    WVDCheckpoints  
-
    | summarize Checkpoints=makelist(pack('Time', TimeGenerated, 'Name', Name, 'Parameters', Parameters, 'Source', Source)) by CorrelationId  
-
    | mv-apply Checkpoints on  
-
     (  
-
         order by todatetime(Checkpoints['Time']) asc  
-
         | summarize Checkpoints=makelist(Checkpoints)  
-
     )  
-
    ) on CorrelationId  
-
 | project-away CorrelationId1, CorrelationId2  
-
 | order by  TimeGenerated desc 
 ```
 
 Alle verbindingen voor één gebruiker zoeken: 
 
-```powershell
+```kusto
 |where UserName == "userupn" 
 |take 100 
 |sort by TimeGenerated asc, CorrelationId 
@@ -216,7 +188,7 @@ Alle verbindingen voor één gebruiker zoeken:
 
 Zoeken naar het aantal keren dat een gebruiker is verbonden per dag:
 
-```powershell
+```kusto
 WVDConnections 
 |where UserName == "userupn" 
 |take 100 
@@ -227,7 +199,7 @@ WVDConnections
 
 Sessie duur zoeken op gebruiker:
 
-```powershell
+```kusto
 let Events = WVDConnections | where UserName == "userupn" ; 
 Events 
 | where State == "Connected" 
@@ -242,15 +214,15 @@ on CorrelationId
 
 Fouten voor een specifieke gebruiker zoeken:
 
-```powershell
+```kusto
 WVDErrors
-| where UserName == "johndoe@contoso.com" 
+| where UserName == "userupn" 
 |take 100
 ```
 
 Nagaan of er een specifieke fout is opgetreden:
 
-```powershell
+```kusto
 WVDErrors 
 | where CodeSymbolic =="ErrorSymbolicCode" 
 | summarize count(UserName) by CodeSymbolic 
@@ -258,7 +230,7 @@ WVDErrors
 
 Zoeken naar een fout voor alle gebruikers:
 
-```powershell
+```kusto
 WVDErrors 
 | where ServiceError =="false" 
 | summarize usercount = count(UserName) by CodeSymbolic 
