@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: integration
 ms.date: 11/17/2017
-ms.author: mezha
-ms.openlocfilehash: fa71f472294b91baebc2a6075ddb2b50123e545d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.author: mazha
+ms.openlocfilehash: 491f413f9bf189b1a46d04042fd7223a47af1f24
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "67593396"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82929125"
 ---
 # <a name="securing-azure-cdn-assets-with-token-authentication"></a>Azure CDN-assets beveiligen met token verificatie
 
@@ -29,7 +29,7 @@ ms.locfileid: "67593396"
 
 Token verificatie is een mechanisme waarmee u kunt voor komen dat de Azure-Content Delivery Network (CDN) assets levert aan niet-geautoriseerde clients. Token verificatie wordt doorgaans uitgevoerd om *hotlinking* te voor komen, waarbij een andere website, zoals een berichten bord, uw assets zonder toestemming gebruikt. Hotlinking kan invloed hebben op de leverings kosten van uw inhoud. Door token verificatie in CDN in te scha kelen, worden aanvragen door de CDN Edge-server geverifieerd voordat de CDN de inhoud levert. 
 
-## <a name="how-it-works"></a>Hoe werkt het?
+## <a name="how-it-works"></a>Hoe het werkt
 
 Token verificatie verifieert of aanvragen worden gegenereerd door een vertrouwde site door aanvragen te vereisen die een token waarde bevatten die gecodeerde informatie over de aanvrager bevat. Inhoud wordt alleen aan een aanvrager geleverd als de gecodeerde gegevens voldoen aan de vereisten. anders worden aanvragen geweigerd. U kunt de vereisten instellen met behulp van een of meer van de volgende para meters:
 

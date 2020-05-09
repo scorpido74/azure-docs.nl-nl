@@ -6,12 +6,12 @@ ms.topic: quickstart
 description: In deze Quick Start leert u hoe u Azure dev Spaces en de opdracht regel gebruikt om een toepassing te ontwikkelen met een bestaande helm-grafiek in de Azure Kubernetes-service
 keywords: Docker, Kubernetes, azure, AKS, Azure Kubernetes service, containers, helm, service-net, service mesh routing, kubectl, K8S
 manager: gwallace
-ms.openlocfilehash: e767b1ade2a80882ee33ff1fdd718c691dcefcf3
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: c37ea0b04e99cf1bba555e098bdf33b8a8558cfa
+ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82033562"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "82996684"
 ---
 # <a name="quickstart-develop-an-application-with-an-existing-helm-chart-on-kubernetes---azure-dev-spaces"></a>Quick Start: een toepassing ontwikkelen met een bestaande helm-grafiek op Kubernetes-Azure dev Spaces
 In deze handleiding leert u het volgende:
@@ -96,7 +96,7 @@ Press Ctrl+C to detach
 ...
 ```
 
-U ziet de service die wordt uitgevoerd door de open bare URL te openen, die wordt weer gegeven in `azds up` de uitvoer van de opdracht. In dit voor beeld is *http://dev.service.1234567890abcdef1234.eus.azds.io/* de open bare URL.
+U ziet de service die wordt uitgevoerd door de open bare URL te openen, die wordt weer gegeven in `azds up` de uitvoer van de opdracht. In dit voor beeld is `http://dev.service.1234567890abcdef1234.eus.azds.io/`de open bare URL.
 
 > [!NOTE]
 > Wanneer u tijdens het uitvoeren `azds up`naar uw service navigeert, worden de traceringen van de HTTP-aanvraag ook weer `azds up` gegeven in de uitvoer van de opdracht. Deze traceringen kunnen u helpen bij het oplossen van problemen met uw service en fout opsporing. U kunt deze traceringen uitschakelen met `--disable-http-traces` wanneer u `azds up`uitvoert.

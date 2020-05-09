@@ -1,5 +1,5 @@
 ---
-title: 'Zelf studie: prijs van auto Mobile voors pellen met de ontwerp functie'
+title: "Zelf studie: de prijzen van auto's voors pellen met de ontwerper"
 titleSuffix: Azure Machine Learning
 description: Meer informatie over het trainen, beoordelen en implementeren van een machine learning model met behulp van een slepen-en-neerzetten-interface. Deze zelf studie is deel één van een serie met twee delen voor het voors pellen van de prijzen van auto's met behulp van lineaire regressie.
 author: peterclu
@@ -8,13 +8,13 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
-ms.date: 03/12/2020
-ms.openlocfilehash: 47288c5da5b32a9f9640b1ee65c646885bf5cbab
-ms.sourcegitcommit: d662eda7c8eec2a5e131935d16c80f1cf298cb6b
+ms.date: 05/12/2020
+ms.openlocfilehash: d730eb64f5025daa740e4fad0fce0a95300363e1
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82653229"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82983394"
 ---
 # <a name="tutorial-predict-automobile-price-with-the-designer-preview"></a>Zelf studie: prijs van auto Mobile voors pellen met de ontwerp functie (preview)
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
@@ -280,7 +280,7 @@ Nu de pijp lijn is ingesteld op alle instellingen, kunt u een pijplijn uitvoerin
 
     1. Voer een beschrijvende naam in voor de **nieuwe naam**van het experiment.
 
-    1. Selecteer **Indienen**.
+    1. Selecteer **Verzenden**.
     
     U kunt de uitvoerings status en-gegevens weer geven in de rechter bovenhoek van het canvas.
     

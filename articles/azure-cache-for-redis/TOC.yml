@@ -27,10 +27,13 @@
   items:
     - name: Voorbeelden voor Azure Cache voor Redis
       href: cache-redis-samples.md
-    - name: Azure PowerShell
+    - name: Azure
       href: cache-how-to-manage-redis-cache-powershell.md
     - name: Azure CLI
       href: cli-samples.md
+    - name: Ingebouwde modules voor Azure Policy
+      displayName: 'samples, policies, definitions'
+      href: ./policy-samples.md
 - name: Concepten
   items:
     - name: Beveiliging
@@ -97,7 +100,7 @@
           href: cache-how-to-redis-cli-tool.md
         - name: TLS 1.0 en 1.1 verwijderen
           href: cache-remove-tls-10-11.md
-    - name: Bewaken
+    - name: Controleren
       items:
         - name: Bewaken in Azure Portal
           href: cache-how-to-monitor.md
@@ -130,7 +133,7 @@
     - name: .NET
       href: /dotnet/api/microsoft.azure.management.redis
     - name: Java
-      href: /java/api/com.microsoft.azure.management.redis._redis_cache
+      href: /java/api/com.microsoft.azure.management.redis.rediscache
     - name: Redis-clients
       href: 'https://redis.io/clients'
     - name: Redis-opdrachten
@@ -139,9 +142,9 @@
       href: 'https://docs.microsoft.com/rest/api/redis/'
     - name: Resource Manager-sjabloon
       href: /azure/templates/microsoft.cache/allversions
-- name: Bronnen
+- name: Resources
   items:
-    - name: Ontwikkel uw vaardigheden met Microsoft Learn
+    - name: Uw vaardigheden ontwikkelen met Microsoft Learn
       href: /learn/browse/?products=azure-redis-cache
     - name: Azure-roadmap
       href: 'https://azure.microsoft.com/roadmap/?category=databases'

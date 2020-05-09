@@ -15,17 +15,17 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/19/2019
 ms.author: jeedes
-ms.openlocfilehash: 712e7bcf513592f97950902faff2f7754093b9fc
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 9e44aecc5015986079afb3190101cdaabc4a6874
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "76549288"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82981949"
 ---
+# <a name="tutorial-azure-active-directory-integration-with-smarteru"></a>Zelf studie: integratie Azure Active Directory met SmarterU
+
 > [!NOTE]
 > Het proces voor het integreren van SmarterU met Azure Active Directory wordt ook gedocumenteerd en bijgehouden in het [Help-systeem van SmarterU](https://help.smarteru.com/ID2053086).
-
-# <a name="tutorial-azure-active-directory-integration-with-smarteru"></a>Zelf studie: integratie Azure Active Directory met SmarterU
 
 In deze zelf studie leert u hoe u SmarterU integreert met Azure Active Directory (Azure AD).
 Het integreren van SmarterU met Azure AD biedt de volgende voor delen:
@@ -173,7 +173,7 @@ Het doel van deze sectie is om in de Azure-portal een testgebruiker met de naam 
 
     c. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak Wachtwoord.
 
-    d. Klik op **maken**.
+    d. Klik op **Maken**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>De Azure AD-testgebruiker toewijzen
 
