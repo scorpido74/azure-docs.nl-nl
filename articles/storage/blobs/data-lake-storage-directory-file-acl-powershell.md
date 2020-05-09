@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 04/21/2020
 ms.author: normesta
 ms.reviewer: prishet
-ms.openlocfilehash: db098210d6de28d9dc1db7e264459f57bc0f4d86
-ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
+ms.openlocfilehash: c859176857f64559b9a2994c9cfc2d4ec5f61e57
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/26/2020
-ms.locfileid: "82161020"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82691079"
 ---
 # <a name="use-powershell-to-manage-directories-files-and-acls-in-azure-data-lake-storage-gen2"></a>Power shell gebruiken voor het beheren van mappen, bestanden en Acl's in Azure Data Lake Storage Gen2
 
@@ -351,15 +351,25 @@ In dit voor beeld hebben de gebruiker die eigenaar is en de groep die eigenaar i
 
 ### <a name="set-acls-on-all-items-in-a-file-system"></a>Acl's instellen voor alle items in een bestands systeem
 
-U kunt de `Get-AzDataLakeGen2Item` en de `-Recurse` para meter samen met de `Update-AzDataLakeGen2Item` cmdlet recursief gebruiken om de toegangs beheer lijst van alle mappen en bestanden in een bestands systeem in te stellen. 
+U kunt de `Get-AzDataLakeGen2Item` en de `-Recurse` para meter samen met de `Update-AzDataLakeGen2Item` CMDLET recursief gebruiken om de ACL voor mappen en bestanden in een bestands systeem in te stellen. 
 
 ```powershell
 $filesystemName = "my-file-system"
 $acl = set-AzDataLakeGen2ItemAclObject -AccessControlType user -Permission rw- 
 $acl = set-AzDataLakeGen2ItemAclObject -AccessControlType group -Permission rw- -InputObject $acl 
 $acl = set-AzDataLakeGen2ItemAclObject -AccessControlType other -Permission -wx -InputObject $acl
-Get-AzDataLakeGen2ChildItem -Context $ctx -FileSystem $filesystemName -Recurse | Update-AzDataLakeGen2Item -Acl $acl
+
+$Token = $Null
+do
+{
+     $items = Get-AzDataLakeGen2ChildItem -Context $ctx -FileSystem $filesystemName -Recurse -ContinuationToken $Token    
+     if($items.Length -le 0) { Break;}
+     $items | Update-AzDataLakeGen2Item -Acl $acl
+     $Token = $items[$items.Count -1].ContinuationToken;
+}
+While ($Token -ne $Null) 
 ```
+
 ### <a name="add-or-update-an-acl-entry"></a>Een ACL-vermelding toevoegen of bijwerken
 
 Haal eerst de ACL op. Gebruik vervolgens de `set-AzDataLakeGen2ItemAclObject` cmdlet om een ACL-vermelding toe te voegen of bij te werken. Gebruik de `Update-AzDataLakeGen2Item` cmdlet om de ACL door te voeren.

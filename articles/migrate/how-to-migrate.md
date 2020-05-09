@@ -1,32 +1,21 @@
 ---
 title: Migratie hulpprogramma's toevoegen in Azure Migrate
 description: Meer informatie over het toevoegen van hulpprogram ma's voor migratie in Azure Migrate.
-author: rayne-wiselman
-ms.service: azure-migrate
-ms.manager: carmonm
 ms.topic: article
-ms.date: 11/18/2019
-ms.author: raynew
-ms.openlocfilehash: 6bcb65912627356215769ccc8380ee1a7404f6f7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 04/26/2020
+ms.openlocfilehash: e7d36a642f41b77e3b4c4125bae64f02def3b306
+ms.sourcegitcommit: 0fda81f271f1a668ed28c55dcc2d0ba2bb417edd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74185966"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82901451"
 ---
 # <a name="add-migration-tools"></a>Migratiehulpprogramma's toevoegen
 
 In dit artikel wordt beschreven hoe u migratie hulpprogramma's toevoegt in [Azure migrate](migrate-overview.md).
 
-Azure Migrate biedt een hub van hulpprogram ma's voor de evaluatie en migratie naar Azure. Het bevat systeem eigen hulpprogram ma's, hulpprogram ma's van andere Azure-Services en ISV-aanbiedingen (Independent Software Vendor) van derden.
-
-Als u een hulp programma voor migratie wilt toevoegen en nog geen Azure Migrate project hebt ingesteld, volgt u dit [artikel](how-to-add-tool-first-time.md).
-
-
-
-## <a name="selecting-an-isv-tool"></a>Een ISV-hulp programma selecteren
-
-Als u een [ISV-hulp programma](migrate-services-overview.md#isv-integration) kiest voor migratie, kunt u beginnen met het verkrijgen van een licentie of het aanmelden voor een gratis proef versie, conform het ISV-beleid. In elk hulp programma is er een optie om verbinding te maken met Azure Migrate. Implementeer het hulp programma en volg de instructies en documentatie van het hulp programma om de werk ruimte van het hulp programma te verbinden met Azure Migrate. 
+- Als u een hulp programma voor migratie wilt toevoegen en nog geen Azure Migrate project hebt ingesteld, volgt u dit [artikel](how-to-add-tool-first-time.md).
+- Als u een ISV-hulp programma voor migratie hebt toegevoegd, [volgt u de stappen](prepare-isv-movere.md)om te voor bereiding op het werken met het hulp programma.
 
 ## <a name="select-a-migration-scenario"></a>Een migratie scenario selecteren
 

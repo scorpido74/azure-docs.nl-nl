@@ -8,14 +8,16 @@ ms.technology: integration-services
 author: swinarko
 ms.author: sawinark
 ms.reviewer: maghan
-ms.openlocfilehash: 630a8ead409ad60b9146838f062210a3301b43b5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 36660854b9a7ae13431545392ef551694b48e97c
+ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81760197"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82628909"
 ---
 # <a name="open-and-save-files-on-premises-and-in-azure-with-ssis-packages-deployed-in-azure"></a>Bestanden openen en opslaan op locatie en in azure met SSIS-pakketten die zijn geïmplementeerd in azure
+
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
 In dit artikel wordt beschreven hoe u bestanden on-premises en in azure opent en opslaat wanneer u SSIS-pakketten die gebruikmaken van lokale bestands systemen in SSIS opneemt en verschuift in Azure.
 

@@ -1,6 +1,6 @@
 ---
-title: Roldefinities weer geven in azure RBAC met behulp van Azure Portal, Azure PowerShell, Azure CLI of REST API | Microsoft Docs
-description: Meer informatie over het vermelden van ingebouwde en aangepaste rollen in azure RBAC met behulp van Azure Portal, Azure PowerShell, Azure CLI of REST API.
+title: De definities van Azure-functies weer geven-Azure RBAC
+description: Leer hoe u ingebouwde en aangepaste rollen van Azure kunt weer geven met behulp van Azure Portal, Azure PowerShell, Azure CLI of REST API.
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -11,19 +11,19 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 03/19/2020
+ms.date: 05/06/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: aa888eedc81ceb3188f801e273c70722207bf512
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e691e37a85604132a6b1c4b2af3501f2c8636e18
+ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80062989"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82891257"
 ---
-# <a name="list-role-definitions-in-azure-rbac"></a>Roldefinities in azure RBAC weer geven
+# <a name="list-azure-role-definitions"></a>Definities van Azure-rollen weer geven
 
-Een roldefinitie is een verzameling machtigingen die kan worden uitgevoerd, zoals lezen, schrijven en verwijderen. Normaal gesp roken wordt gewoon een rol genoemd. [Op rollen gebaseerd toegangs beheer (RBAC) van Azure](overview.md) heeft meer dan 120 [ingebouwde rollen](built-in-roles.md) of u kunt uw eigen aangepaste rollen maken. In dit artikel wordt beschreven hoe u de ingebouwde en aangepaste rollen vermeldt die u kunt gebruiken om toegang te verlenen tot Azure-resources.
+Een roldefinitie is een verzameling machtigingen die kan worden uitgevoerd, zoals lezen, schrijven en verwijderen. Normaal gesp roken wordt gewoon een rol genoemd. [Toegangs beheer op basis van rollen (Azure RBAC) van Azure](overview.md) heeft meer dan 120 [ingebouwde rollen](built-in-roles.md) of u kunt uw eigen aangepaste rollen maken. In dit artikel wordt beschreven hoe u de ingebouwde en aangepaste rollen vermeldt die u kunt gebruiken om toegang te verlenen tot Azure-resources.
 
 Zie [beheerders rollen in azure Active Directory](../active-directory/users-groups-roles/directory-assign-admin-roles.md)voor een overzicht van de beheerders rollen voor Azure Active Directory.
 
@@ -344,6 +344,55 @@ Als u roldefinities wilt weer geven, gebruikt u de [functie definities-lijst](/r
     > | `$filter=atScopeAndBelow()` | Hiermee worden roldefinities voor het opgegeven bereik en eventuele subbereiken weer gegeven. |
     > | `$filter=type+eq+'{type}'` | Hiermee wordt een lijst met roldefinities van het opgegeven type weer gegeven. Type rol kan of `CustomRole` `BuiltInRole`zijn. |
 
+De volgende aanvraag bevat aangepaste roldefinities in het abonnements bereik:
+
+```http
+GET https://management.azure.com/subscriptions/{subscriptionId1}/providers/Microsoft.Authorization/roleDefinitions?api-version=2015-07-01&$filter=type+eq+'CustomRole'
+```
+
+Hieronder ziet u een voor beeld van de uitvoer:
+
+```json
+{
+    "value": [
+        {
+            "properties": {
+                "roleName": "Billing Reader Plus",
+                "type": "CustomRole",
+                "description": "Read billing data and download invoices",
+                "assignableScopes": [
+                    "/subscriptions/{subscriptionId1}"
+                ],
+                "permissions": [
+                    {
+                        "actions": [
+                            "Microsoft.Authorization/*/read",
+                            "Microsoft.Billing/*/read",
+                            "Microsoft.Commerce/*/read",
+                            "Microsoft.Consumption/*/read",
+                            "Microsoft.Management/managementGroups/read",
+                            "Microsoft.CostManagement/*/read",
+                            "Microsoft.Billing/invoices/download/action",
+                            "Microsoft.CostManagement/exports/*"
+                        ],
+                        "notActions": [
+                            "Microsoft.CostManagement/exports/delete"
+                        ]
+                    }
+                ],
+                "createdOn": "2020-02-21T04:49:13.7679452Z",
+                "updatedOn": "2020-02-21T04:49:13.7679452Z",
+                "createdBy": "{createdByObjectId1}",
+                "updatedBy": "{updatedByObjectId1}"
+            },
+            "id": "/subscriptions/{subscriptionId1}/providers/Microsoft.Authorization/roleDefinitions/{roleDefinitionId1}",
+            "type": "Microsoft.Authorization/roleDefinitions",
+            "name": "{roleDefinitionId1}"
+        }
+    ]
+}
+```
+
 ### <a name="list-a-role-definition"></a>Een roldefinitie weer geven
 
 Als u de details van een specifieke rol wilt weer geven, gebruikt u de [functie definities-ophalen](/rest/api/authorization/roledefinitions/get) of [roldefinities-ophalen op id](/rest/api/authorization/roledefinitions/getbyid) rest API.
@@ -372,9 +421,45 @@ Als u de details van een specifieke rol wilt weer geven, gebruikt u de [functie 
      
 1. Vervang *{roledefinitionid hebben}* door de roldefinitie-id.
 
+De volgende aanvraag bevat een lijst met de definitie van de rol van [lezer](built-in-roles.md#reader) :
+
+```http
+GET https://management.azure.com/providers/Microsoft.Authorization/roleDefinitions/acdd72a7-3385-48ef-bd42-f606fba81ae7?api-version=2015-07-01
+```
+
+Hieronder ziet u een voor beeld van de uitvoer:
+
+```json
+{
+    "properties": {
+        "roleName": "Reader",
+        "type": "BuiltInRole",
+        "description": "Lets you view everything, but not make any changes.",
+        "assignableScopes": [
+            "/"
+        ],
+        "permissions": [
+            {
+                "actions": [
+                    "*/read"
+                ],
+                "notActions": []
+            }
+        ],
+        "createdOn": "2015-02-02T21:55:09.8806423Z",
+        "updatedOn": "2019-02-05T21:24:35.7424745Z",
+        "createdBy": null,
+        "updatedBy": null
+    },
+    "id": "/providers/Microsoft.Authorization/roleDefinitions/acdd72a7-3385-48ef-bd42-f606fba81ae7",
+    "type": "Microsoft.Authorization/roleDefinitions",
+    "name": "acdd72a7-3385-48ef-bd42-f606fba81ae7"
+}
+```
+
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Ingebouwde rollen voor Azure-resources](built-in-roles.md)
-- [Aangepaste rollen voor Azure-resources](custom-roles.md)
-- [Roltoewijzingen weer geven met behulp van Azure RBAC en de Azure Portal](role-assignments-list-portal.md)
-- [Roltoewijzingen toevoegen of verwijderen met behulp van Azure RBAC en de Azure Portal](role-assignments-portal.md)
+- [Ingebouwde rollen van Azure](built-in-roles.md)
+- [Aangepaste Azure-rollen](custom-roles.md)
+- [Azure-roltoewijzingen weer geven met behulp van de Azure Portal](role-assignments-list-portal.md)
+- [Azure-roltoewijzingen toevoegen of verwijderen met behulp van de Azure Portal](role-assignments-portal.md)

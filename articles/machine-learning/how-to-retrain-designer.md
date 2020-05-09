@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.author: keli19
 author: likebupt
 ms.date: 04/06/2020
-ms.openlocfilehash: 77c1cc6ef5a7353d246958d1b047f054d5f49890
-ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
+ms.openlocfilehash: fb0122833dabe4030232efb3ca07557ce1826aff
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82837155"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82981898"
 ---
 # <a name="retrain-models-with-azure-machine-learning-designer-preview"></a>Modellen opnieuw trainen met de Azure Machine Learning-ontwerpfunctie (preview)
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
@@ -38,7 +38,7 @@ In dit artikel wordt ervan uitgegaan dat u basis kennis hebt van het bouwen van 
 
 ### <a name="sample-pipeline"></a>Voorbeeld pijplijn
 
-De pijp lijn die in dit artikel wordt gebruikt, is een gewijzigde versie van voor [Beeld 3: inkomen voor spelling](samples-designer.md#classification-samples). De pijp lijn gebruikt de module [gegevens importeren](algorithm-module-reference/import-data.md) in plaats van de voor beeld-gegevensset om te laten zien hoe u modellen traint met uw eigen gegevens.
+De pijp lijn die in dit artikel wordt gebruikt, is een gewijzigde versie van voor [Beeld 3: inkomen voor spelling](samples-designer.md#classification). De pijp lijn gebruikt de module [gegevens importeren](algorithm-module-reference/import-data.md) in plaats van de voor beeld-gegevensset om te laten zien hoe u modellen traint met uw eigen gegevens.
 
 ![Scherm opname van de aangepaste voorbeeld pijplijn met een vak waarin de module import data is gemarkeerd](./media/how-to-retrain-designer/modified-sample-pipeline.png)
 
@@ -105,7 +105,7 @@ Voer de volgende stappen uit om een uit te voeren hulp programma voor het uitvoe
 1. Ga naar de pagina **eind punten** in uw studio-werk ruimte.
 1. Selecteer het tabblad **pijplijn eindpunten** . Selecteer vervolgens het eind punt van de pijp lijn.
 1. Selecteer het tabblad **gepubliceerde pijp lijnen** . Selecteer vervolgens de pijplijn versie die u wilt uitvoeren.
-1. Selecteer **Indienen**.
+1. Selecteer **Verzenden**.
 1. In het dialoog venster Setup kunt u de parameter waarden voor de run opgeven. Voor dit voor beeld werkt u het gegevenspad bij om uw model te trainen met een niet-Amerikaanse gegevensset.
 
 ![Scherm afbeelding die laat zien hoe u een door para meters uitgestelde pijplijn uitvoering kunt instellen in de ontwerp functie](./media/how-to-retrain-designer/published-pipeline-run.png)

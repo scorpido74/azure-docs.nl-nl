@@ -3,17 +3,17 @@ title: De levens cyclus van Azure Storage beheren
 description: Meer informatie over het maken van levenscyclus beleids regels voor het overstappen van verouderde gegevens van dynamische naar coole en archief lagen.
 author: mhopkins-msft
 ms.author: mhopkins
-ms.date: 05/21/2019
+ms.date: 04/24/2020
 ms.service: storage
 ms.subservice: common
 ms.topic: conceptual
 ms.reviewer: yzheng
-ms.openlocfilehash: 238c12baf55b525a24107a727d09588ef06a6bef
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 255e440586af2a5c9115023f45fbf02e25c57ab6
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77598303"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82692129"
 ---
 # <a name="manage-the-azure-blob-storage-lifecycle"></a>De levenscyclus van Azure Blob-opslag beheren
 
@@ -24,7 +24,7 @@ Met het levenscyclus beheer beleid kunt u:
 - Overgangs-blobs naar een koele opslaglaag (warm naar koud, Hot-to-Archive of koud naar archief) om te optimaliseren voor prestaties en kosten
 - Blobs verwijderen aan het einde van de levens cycli
 - Regels definiëren die één keer per dag moeten worden uitgevoerd op het niveau van het opslag account
-- Regels Toep assen op containers of een subset van blobs (met voor voegsels als filters)
+- Regels Toep assen op containers of een subset van blobs (met behulp van naam voorvoegsels of [BLOB-index Tags](storage-manage-find-blobs.md) als filters)
 
 Houd rekening met een scenario waarbij gegevens veelvuldig toegankelijk zijn tijdens de vroege fase van de levens cyclus, maar af en toe slechts af en toe na twee weken. Na de eerste maand wordt de gegevensset zelden geopend. In dit scenario is hot Storage het beste tijdens de eerste fasen. Cool Storage is het meest geschikt voor incidentele toegang. Archief opslag is de beste laag optie nadat de gegevens gedurende een maand zijn verouderd. Door opslag lagen aan te passen ten opzichte van de leeftijd van gegevens, kunt u de minst dure opslag opties voor uw behoeften ontwerpen. Voor deze overgang zijn levenscyclus beheer beleids regels beschikbaar om verouderde gegevens naar koele lagen te verplaatsen.
 
@@ -46,7 +46,7 @@ De functie levenscyclus beheer is beschikbaar in alle Azure-regio's.
 
 U kunt een beleid toevoegen, bewerken of verwijderen met een van de volgende methoden:
 
-* [Azure Portal](https://portal.azure.com)
+* [Azure-portal](https://portal.azure.com)
 * [Azure PowerShell](https://github.com/Azure/azure-powershell/releases)
 * [Azure-CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)
 * [REST-API’s](https://docs.microsoft.com/rest/api/storagerp/managementpolicies)
@@ -67,7 +67,7 @@ Er zijn twee manieren om een beleid toe te voegen via de Azure Portal.
 
 #### <a name="azure-portal-list-view"></a>Lijst weergave Azure Portal
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
+1. Meld u aan bij [Azure Portal](https://portal.azure.com).
 
 2. Zoek en selecteer uw opslag account in de Azure Portal. 
 
@@ -88,7 +88,7 @@ Er zijn twee manieren om een beleid toe te voegen via de Azure Portal.
 9. Selecteer **toevoegen** om het nieuwe beleid toe te voegen.
 
 #### <a name="azure-portal-code-view"></a>Code weergave Azure Portal
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
+1. Meld u aan bij [Azure Portal](https://portal.azure.com).
 
 2. Zoek en selecteer uw opslag account in de Azure Portal.
 
@@ -128,7 +128,7 @@ Er zijn twee manieren om een beleid toe te voegen via de Azure Portal.
 
 6. Zie de secties [beleid](#policy) en [regels](#rules) voor meer informatie over dit JSON-voor beeld.
 
-# <a name="powershell"></a>[Zo](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 Het volgende Power shell-script kan worden gebruikt om een beleid toe te voegen aan uw opslag account. De `$rgname` variabele moet worden geïnitialiseerd met de naam van de resource groep. De `$accountName` variabele moet worden geïnitialiseerd met de naam van uw opslag account.
 
@@ -235,7 +235,7 @@ Elke regel in het beleid heeft verschillende para meters:
 | Parameternaam | Parameter type | Opmerkingen | Vereist |
 |----------------|----------------|-------|----------|
 | `name`         | Tekenreeks |De naam van een regel kan Maxi maal 256 alfanumerieke tekens bevatten. De regel naam is hoofdletter gevoelig.  Het moet uniek zijn binnen een beleid. | True |
-| `enabled`      | Booleaans | Een optionele Booleaanse waarde waarmee een regel tijdelijk kan worden uitgeschakeld. De standaard waarde is True als deze niet is ingesteld. | False | 
+| `enabled`      | Boolean-waarde | Een optionele Booleaanse waarde waarmee een regel tijdelijk kan worden uitgeschakeld. De standaard waarde is True als deze niet is ingesteld. | False | 
 | `type`         | Een Enum-waarde | Het huidige geldige type is `Lifecycle`. | True |
 | `definition`   | Een object dat de levenscyclus regel definieert | Elke definitie bestaat uit een set filters en een Actieset. | True |
 
@@ -292,7 +292,11 @@ Filters omvatten:
 | Bestandsnaam | Filtertype | Opmerkingen | Is vereist |
 |-------------|-------------|-------|-------------|
 | blobTypes   | Een matrix met vooraf gedefinieerde Enum-waarden. | De huidige versie ondersteunt `blockBlob`. | Ja |
-| prefixMatch | Een matrix met teken reeksen voor voor voegsels die overeenkomen. Elke regel kan Maxi maal 10 voor voegsels definiëren. Een voorvoegsel teken reeks moet beginnen met een container naam. Als u bijvoorbeeld wilt zoeken naar alle blobs onder `https://myaccount.blob.core.windows.net/container1/foo/...` een regel, is `container1/foo`de prefixMatch. | Als u prefixMatch niet definieert, is de regel van toepassing op alle blobs in het opslag account.  | Nee |
+| prefixMatch | Een matrix met teken reeksen voor voor voegsels die moeten worden vergeleken. Elke regel kan Maxi maal 10 voor voegsels definiëren. Een voorvoegsel teken reeks moet beginnen met een container naam. Als u bijvoorbeeld wilt zoeken naar alle blobs onder `https://myaccount.blob.core.windows.net/container1/foo/...` een regel, is `container1/foo`de prefixMatch. | Als u prefixMatch niet definieert, is de regel van toepassing op alle blobs in het opslag account.  | Nee |
+| blobIndexMatch | Een matrix met woordenlijst waarden die bestaan uit BLOB-index Tags sleutel en waarden die moeten worden vergeleken. Elke regel kan Maxi maal 10 BLOB-index code voorwaarde definiëren. Als u bijvoorbeeld alle blobs wilt vergelijken met `Project = Contoso` onder `https://myaccount.blob.core.windows.net/` voor een regel, is `{"name": "Project","op": "==","value": "Contoso"}`de blobIndexMatch. | Als u blobIndexMatch niet definieert, is de regel van toepassing op alle blobs in het opslag account. | Nee |
+
+> [!NOTE]
+> BLOB-index bevindt zich in de open bare preview en is beschikbaar in de regio's **Frankrijk-centraal** en **Frankrijk-Zuid** . Zie voor meer informatie over deze functie, samen met bekende problemen en beperkingen, [gegevens beheren en zoeken op Azure Blob Storage met Blob-index (preview)](storage-manage-find-blobs.md).
 
 ### <a name="rule-actions"></a>Regel acties
 
@@ -300,7 +304,7 @@ Acties worden toegepast op de gefilterde blobs wanneer wordt voldaan aan de voor
 
 Levenscyclus beheer ondersteunt het trapsgewijs en verwijderen van blobs en het verwijderen van BLOB-moment opnamen. Definieer ten minste één actie voor elke regel op blobs of BLOB-moment opnamen.
 
-| Bewerking        | Basis-BLOB                                   | Momentopname      |
+| Actie        | Basis-BLOB                                   | Momentopname      |
 |---------------|---------------------------------------------|---------------|
 | tierToCool    | Ondersteuning voor blobs momenteel op warme laag         | Niet ondersteund |
 | tierToArchive | Ondersteuning voor blobs momenteel op warme of koud niveau | Niet ondersteund |
@@ -405,6 +409,42 @@ Sommige gegevens worden verwacht dagen of maanden na het maken. U kunt een leven
 }
 ```
 
+### <a name="delete-data-with-blob-index-tags"></a>Gegevens verwijderen met Blob-index Tags
+Sommige gegevens mogen alleen worden verlopen als deze expliciet zijn gemarkeerd voor verwijdering. U kunt een levenscyclus beheer beleid configureren om gegevens te laten verlopen die zijn gelabeld met kenmerken sleutel/waarde van BLOB-index. In het volgende voor beeld ziet u een beleid waarmee alle blok-blobs worden verwijderd die zijn gelabeld met `Project = Contoso`. Zie voor meer informatie over de BLOB-index [gegevens beheren en zoeken op Azure Blob Storage met Blob-index (preview)](storage-manage-find-blobs.md).
+
+```json
+{
+    "rules": [
+        {
+            "enabled": true,
+            "name": "DeleteContosoData",
+            "type": "Lifecycle",
+            "definition": {
+                "actions": {
+                    "baseBlob": {
+                        "delete": {
+                            "daysAfterModificationGreaterThan": 0
+                        }
+                    }
+                },
+                "filters": {
+                    "blobIndexMatch": [
+                        {
+                            "name": "Project",
+                            "op": "==",
+                            "value": "Contoso"
+                        }
+                    ],
+                    "blobTypes": [
+                        "blockBlob"
+                    ]
+                }
+            }
+        }
+    ]
+}
+```
+
 ### <a name="delete-old-snapshots"></a>Oude moment opnamen verwijderen
 
 Voor gegevens die regel matig worden gewijzigd en geopend gedurende de levens duur, worden moment opnamen vaak gebruikt voor het bijhouden van oudere versies van de gegevens. U kunt een beleid maken waarmee oude moment opnamen worden verwijderd op basis van de leeftijd van de moment opname. De leeftijd van de moment opname wordt bepaald door de aanmaak tijd van de moment opname te evalueren. Met deze beleids regel worden blok-BLOB-moment `activedata` opnamen binnen een container verwijderd die 90 dagen of ouder zijn nadat het maken van een moment opname is gemaakt.
@@ -448,3 +488,7 @@ Wanneer een BLOB wordt verplaatst van de ene toegangs laag naar een andere, vera
 Meer informatie over het herstellen van gegevens na onbedoeld verwijderen:
 
 - [Voorlopig verwijderen voor Azure Storage-blobs](../blobs/storage-blob-soft-delete.md)
+
+Meer informatie over het beheren en zoeken van gegevens met Blob-index:
+
+- [Gegevens in Azure Blob Storage beheren en zoeken met Blob-index](storage-manage-find-blobs.md)

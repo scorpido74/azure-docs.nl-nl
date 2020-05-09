@@ -5,14 +5,14 @@ author: yashesvi
 ms.reviewer: yashar
 ms.service: cost-management-billing
 ms.topic: conceptual
-ms.date: 03/30/2020
+ms.date: 04/30/2020
 ms.author: banders
-ms.openlocfilehash: 4baa06ad0011b06da50fd7a83aaa3e87db62c6ac
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: ae94a5c8d7e9ff93098e85535aea3699206b9e03
+ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81417514"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82626954"
 ---
 # <a name="what-are-azure-reservations"></a>Wat zijn Azure-reserveringen?
 
@@ -86,11 +86,11 @@ Zie [Selfservice voor omruiling en terugbetaling van Azure-reserveringen](exchan
 
 ## <a name="charges-covered-by-reservation"></a>Kosten die onder de reservering vallen
 
-- **Gereserveerde VM-instantie**: een reservering dekt alleen de rekenkosten van de virtuele machine. Aanvullende kosten voor software, Windows, netwerken of opslag vallen hier niet onder.
+- **Gereserveerde VM-instantie**: een reservering dekt alleen de rekenkosten van de virtuele machine en cloudservices. Aanvullende kosten voor software, Windows, netwerken of opslag vallen hier niet onder.
 - **Gereserveerde Azure Storage-capaciteit**: onder een reservering valt de opslagcapaciteit voor standaardopslagaccounts voor Blob Storage of Azure Data Lake Gen2 Storage. De tarieven voor bandbreedte of transacties vallen niet onder de reservering.
 - **Gereserveerde Azure Cosmos DB-capaciteit**: onder een reservering valt de doorvoer die voor uw resources is ingericht. De opslag- en netwerkkosten vallen hier niet onder.
 - **Gereserveerde SQL Database-vCore**: alleen de rekenkosten worden opgenomen in een reservering. De SQL-licentie wordt afzonderlijk gefactureerd.
-- **SQL Data Warehouse**: onder een reservering valt het cDWU-gebruik. Een reservering omvat geen opslag- en netwerkkosten die samenhangen met het gebruik van SQL Data Warehouse.
+- **Azure Synapse Analytics**: een reservering omvat cDWU-gebruik. Een reservering omvat geen opslag- en netwerkkosten die samenhangen met het gebruik van Azure Synapse Analytics.
 - **Azure Databricks**: onder een reservering valt alleen het DBU-gebruik. Andere kosten, bijvoorbeeld voor berekeningen, opslag en netwerken, worden afzonderlijk toegepast.
 - **App Service-zegelkosten**: onder een reservering valt het gebruik van zegels. De reservering is niet van toepassing op werkrollen, dus alle andere resources die aan de zegel zijn gekoppeld, worden afzonderlijk in rekening gebracht.
 - **Azure Database for MySQL**: alleen de rekenkosten worden opgenomen in een reservering. Onder een reservering vallen niet de kosten voor software, netwerk of opslag die betrekking hebben op de MySQL Database-server.

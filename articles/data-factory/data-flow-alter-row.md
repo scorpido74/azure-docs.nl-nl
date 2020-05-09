@@ -8,12 +8,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 05/06/2020
-ms.openlocfilehash: 0a8864555798d3b64d675c70728ab97d191be81f
-ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
-ms.translationtype: HT
+ms.openlocfilehash: c3858756a0140481c0ab249e29c95f76c4b90da5
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82891376"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82982646"
 ---
 # <a name="alter-row-transformation-in-mapping-data-flow"></a>Rij transformatie wijzigen in gegevens stroom toewijzen
 
@@ -61,13 +61,15 @@ Voor de Sink-trans formatie is een enkele sleutel of een reeks sleutels vereist 
 
 ADF-gegevens stromen bieden ondersteuning voor samen voegingen van Azure SQL Database-en Synapse-database groep (Data Warehouse) met de optie upsert.
 
-U kunt echter scenario's uitvoeren waarbij uw doel database schema gebruik maakt van de identiteits eigenschap van sleutel kolommen. Voor ADF moeten de sleutels worden geïdentificeerd die u gaat gebruiken om te voldoen aan de rijwaarden voor updates en upsert. Maar als voor de doel kolom de eigenschap identiteit is ingesteld en u het upsert-beleid gebruikt, kunt u in de doel database niet naar de kolom schrijven.
+U kunt echter scenario's uitvoeren waarbij uw doel database schema gebruik maakt van de identiteits eigenschap van sleutel kolommen. Voor ADF moeten de sleutels worden geïdentificeerd die u gaat gebruiken om te voldoen aan de rijwaarden voor updates en upsert. Maar als voor de doel kolom de eigenschap identiteit is ingesteld en u het upsert-beleid gebruikt, kunt u in de doel database niet naar de kolom schrijven. Er kunnen ook fouten optreden wanneer u probeert te upserten op basis van de distributie kolom van een gedistribueerde tabel.
 
-U hebt hiervoor twee opties:
+Hier volgen manieren om dit op te lossen:
 
-1. Gebruik de voor verwerking van de SQL-optie Sink ```SET IDENTITY_INSERT tbl_content ON```trans formatie voor bereiding:. Schakel deze vervolgens uit met de SQL-eigenschap na de verwerking: ```SET IDENTITY_INSERT tbl_content OFF```.
+1. Ga naar de instellingen voor Sink-trans formatie en stel ' Schrijf sleutel kolommen overs Laan ' in. Dit geeft aan dat de kolom die u hebt geselecteerd als de sleutel waarde voor uw toewijzing niet wordt geschreven.
 
-2. In plaats van upsert te gebruiken, moet u uw logica overzetten om de update voorwaarden van de invoeg voorwaarden te scheiden met behulp van een voorwaardelijke Splits-trans formatie. Op deze manier kunt u de toewijzing instellen op het pad van de update om de sleutel kolom toewijzing te negeren.
+2. Als deze sleutel kolom niet de kolom is die het probleem voor identiteits kolommen veroorzaakt, kunt u de volgende SQL-optie voor het verwerken van Sink- ```SET IDENTITY_INSERT tbl_content ON```trans formatie gebruiken:. Schakel deze vervolgens uit met de SQL-eigenschap na de verwerking: ```SET IDENTITY_INSERT tbl_content OFF```.
+
+3. Voor zowel het identiteits-als het kolom distributie-object kunt u uw logica overschakelen van Upsert naar het gebruik van een afzonderlijke update voorwaarde en een afzonderlijke invoeg voorwaarde met behulp van een voorwaardelijke Splits-trans formatie. Op deze manier kunt u de toewijzing instellen op het pad van de update om de sleutel kolom toewijzing te negeren.
 
 ## <a name="data-flow-script"></a>Script voor gegevensstroom
 

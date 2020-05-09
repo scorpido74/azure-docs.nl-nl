@@ -7,14 +7,14 @@ ms.reviewer: craigg
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 02/05/2020
+ms.date: 05/05/2020
 ms.author: jingwang
-ms.openlocfilehash: 7b554ea5c2868559574979c58697fd31f8d2a2c4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2e26a2ed81ed215d7ef2029123349b39e6e67d25
+ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81686268"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82890930"
 ---
 # <a name="json-format-in-azure-data-factory"></a>JSON-indeling in Azure Data Factory
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -90,16 +90,15 @@ Ondersteunde **instellingen voor json-schrijf bewerkingen** onder `formatSetting
 | Eigenschap      | Beschrijving                                                  | Vereist                                              |
 | ------------- | ------------------------------------------------------------ | ----------------------------------------------------- |
 | type          | Het type formatSettings moet zijn ingesteld op **JsonWriteSettings**. | Ja                                                   |
-| filePattern |Hiermee geeft u het patroon aan van gegevens die zijn opgeslagen in elk JSON-bestand. Toegestane waarden zijn **setOfObjects** en **arrayOfObjects**. De **standaardwaarde** is **setOfObjects**. Zie het gedeelte [JSON-bestandpatronen](#json-file-patterns) voor meer informatie over deze patronen. |Nee |
+| filePattern |Hiermee geeft u het patroon aan van gegevens die zijn opgeslagen in elk JSON-bestand. Toegestane waarden zijn: **setOfObjects** (JSON Lines) en **arrayOfObjects**. De **standaardwaarde** is **setOfObjects**. Zie het gedeelte [JSON-bestandpatronen](#json-file-patterns) voor meer informatie over deze patronen. |Nee |
 
 ### <a name="json-file-patterns"></a>JSON-bestandpatronen
 
-Met de Kopieer activiteit kan de volgende patronen van JSON-bestanden automatisch worden gedetecteerd en geparseerd. 
+Bij het kopiëren van gegevens uit JSON-bestanden kan de Kopieer activiteit de volgende patronen van JSON-bestanden automatisch detecteren en parseren. Wanneer u gegevens naar JSON-bestanden schrijft, kunt u het bestands patroon configureren op Sink voor kopieer activiteit.
 
 - **Type I: setOfObjects**
 
-    Elk bestand bevat één object of meerdere door regels gescheiden/samengevoegde objecten. 
-    Wanneer deze optie is gekozen in Sink kopiëren-activiteit, produceert Kopieer activiteit één JSON-bestand met elk object per regel (regel scheidings teken).
+    Elk bestand bevat één object, JSON-lijnen of aaneengeschakelde objecten.
 
     * **voorbeeld van JSON-bestand met één object**
 
@@ -114,7 +113,7 @@ Met de Kopieer activiteit kan de volgende patronen van JSON-bestanden automatisc
         }
         ```
 
-    * **voorbeeld van JSON-bestand dat door regels is gescheiden**
+    * **JSON-lijnen (standaard voor Sink)**
 
         ```json
         {"time":"2015-04-29T07:12:20.9100000Z","callingimsi":"466920403025604","callingnum1":"678948008","callingnum2":"567834760","switch1":"China","switch2":"Germany"}

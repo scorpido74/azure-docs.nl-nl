@@ -1,6 +1,6 @@
 ---
 title: Azure Automation-en Log Analytics werkruimte toewijzingen
-description: In dit artikel worden de toewijzingen beschreven die zijn toegestaan tussen een Automation-account en een Log Analytics werk ruimte ter ondersteuning van de oplossing
+description: In dit artikel worden de toewijzingen beschreven die zijn toegestaan tussen een Automation-account en een Log Analytics-werk ruimte.
 services: automation
 ms.service: automation
 ms.subservice: process-automation
@@ -9,16 +9,16 @@ ms.author: magoedte
 ms.date: 04/23/2020
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 607cebca3e6e8ddd95900ecdbd7041e5f7bb50cc
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.openlocfilehash: 6b00b25dc4eaea5bc8a3f5fbd42389aff501f14a
+ms.sourcegitcommit: 0fda81f271f1a668ed28c55dcc2d0ba2bb417edd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "82165770"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82901011"
 ---
 # <a name="workspace-mappings"></a>Werkruimtetoewijzingen
 
-Bij het inschakelen van Updatebeheer, Wijzigingen bijhouden en inventaris of VM's buiten bedrijfsuren starten/stoppen worden alleen bepaalde regio's ondersteund voor het koppelen van een Log Analytics-werk ruimte en een Automation-account in uw abonnement. Deze toewijzing is alleen van toepassing op het Automation-account en de Log Analytics-werk ruimte. De Log Analytics-werk ruimte en het Automation-account moeten zich in hetzelfde abonnement bevinden, maar kunnen zich in verschillende resource groepen bevinden die in dezelfde regio zijn geïmplementeerd.
+In Azure Automation kunt u de volgende oplossingen inschakelen: ' Updatebeheer ', ' Wijzigingen bijhouden en inventariseren ' en ' Vm's starten/stoppen na kantoor uren '. Wanneer u dit doet, moet u er echter rekening mee houden dat alleen bepaalde regio's worden ondersteund voor het koppelen van een Log Analytics-werk ruimte en een Automation-account in uw abonnement. Deze toewijzing is alleen van toepassing op het Automation-account en de Log Analytics-werk ruimte. De Log Analytics-werk ruimte en het Automation-account moeten zich in hetzelfde abonnement bevinden, maar kunnen zich in verschillende resource groepen bevinden die in dezelfde regio zijn geïmplementeerd.
 
 Zie [log Analytics-werk ruimte en het Automation-account](../../azure-monitor/insights/solutions.md#log-analytics-workspace-and-automation-account)voor meer informatie.
 
@@ -45,31 +45,31 @@ De volgende tabel bevat de ondersteunde toewijzingen:
 |**US Gov**||
 |USGovVirginia|USGovVirginia|
 
-<sup>1</sup> -oostus toewijzing voor log Analytics werk ruimten aan Automation-accounts is geen exacte regio voor het toewijzen van regio's, maar is de juiste toewijzing.
+<sup>1</sup> -oostus toewijzing voor log Analytics-werk ruimten aan Automation-accounts is niet exact een regionale toewijzing, maar is de juiste toewijzing.
 
-<sup>2</sup> vanwege capaciteits beperkingen is de regio niet beschikbaar bij het maken van nieuwe resources. Dit omvat Automation-accounts en Log Analytics-werk ruimten. Al bestaande gekoppelde resources in de regio moeten echter blijven werken.
+<sup>2</sup> vanwege capaciteits beperkingen is de regio niet beschikbaar wanneer u nieuwe resources maakt. Dit omvat Automation-accounts en Log Analytics-werk ruimten. Al bestaande gekoppelde resources in de regio moeten echter blijven werken.
 
-## <a name="unlink-workspace"></a>Werkruimte ontkoppelen
+## <a name="unlink-a-workspace"></a>Een werk ruimte ontkoppelen
 
-Als u besluit dat u uw Automation-account niet meer wilt integreren met een Log Analytics-werk ruimte, kunt u uw account rechtstreeks van de Azure Portal ontkoppelen. Voordat u doorgaat, moet u eerst Updatebeheer, Wijzigingen bijhouden en inventaris, en VM's buiten bedrijfsuren starten/stoppen verwijderen als u deze gebruikt. Als u deze niet verwijdert, kunt u de ontkoppelings bewerking niet volt ooien. Bekijk het artikel voor elk dat u inschakelt om de stappen te begrijpen die nodig zijn om het te verwijderen.
+Als u besluit dat u uw Automation-account niet meer wilt integreren met een Log Analytics-werk ruimte, kunt u uw account rechtstreeks van de Azure Portal ontkoppelen. Voordat u doorgaat, moet u eerst Updatebeheer, Wijzigingen bijhouden en inventarisatie, en ' Vm's starten/stoppen na kantoor uren ' verwijderen als u deze gebruikt. Als u deze niet verwijdert, kunt u de ontkoppelings bewerking niet volt ooien. Raadpleeg het artikel voor elke oplossing die u inschakelt om de stappen te begrijpen die nodig zijn om deze te verwijderen.
 
 Nadat u deze hebt verwijderd, kunt u de volgende stappen uitvoeren om het Automation-account te ontkoppelen.
 
 > [!NOTE]
 > Sommige oplossingen, waaronder eerdere versies van de Azure SQL-bewakings oplossing, hebben mogelijk Automation-assets gemaakt en moeten mogelijk worden verwijderd voordat u de werk ruimte ontkoppelt.
 
-1. Open uw Automation-account vanuit het Azure Portal. Selecteer op de pagina Automation-account de optie **gekoppelde werk ruimte** onder **gerelateerde resources**.
+1. Open uw Automation-account vanuit het Azure Portal. Selecteer op de pagina **Automation-account** de optie **gekoppelde werk ruimte** onder **gerelateerde resources**.
 
-2. Klik op de pagina werk ruimte ontkoppelen op **werk ruimte ontkoppelen**. U ontvangt een prompt waarin u wordt gevraagd of u wilt door gaan.
+2. Op de pagina **werk ruimte ontkoppelen** selecteert u **werk ruimte ontkoppelen**. U ontvangt een prompt waarin u wordt gevraagd of u wilt door gaan.
 
 3. Terwijl Azure Automation probeert het account te ontkoppelen van uw Log Analytics-werk ruimte, kunt u de voortgang bijhouden onder **meldingen** in het menu.
 
-4. Als u Updatebeheer hebt gebruikt, wilt u desgewenst mogelijk de volgende items verwijderen die niet meer nodig zijn nadat u deze hebt verwijderd.
+4. Als u ' Updatebeheer ' hebt gebruikt, kunt u eventueel de volgende items verwijderen die niet meer nodig zijn nadat u deze hebt verwijderd.
 
     * Update schema's: elk heeft een naam die overeenkomt met een update-implementatie die u hebt gemaakt.
     * Hybrid worker-groepen die zijn gemaakt voor de oplossing: elk heeft `machine1.contoso.com_9ceb8108-26c9-4051-b6b3-227600d715c8`een naam die vergelijkbaar is met.
 
-5. Als u VM's buiten bedrijfsuren starten/stoppen hebt gebruikt, kunt u eventueel de volgende items verwijderen die niet meer nodig zijn nadat u deze hebt verwijderd.
+5. Als u ' Vm's starten/stoppen tijdens off-uren ' hebt gebruikt, kunt u desgewenst de volgende items verwijderen die niet meer nodig zijn nadat u deze hebt verwijderd.
 
     * VM-runbook-schema's starten en stoppen
     * VM-runbooks starten en stoppen
@@ -78,17 +78,17 @@ Nadat u deze hebt verwijderd, kunt u de volgende stappen uitvoeren om het Automa
 U kunt de werk ruimte ook ontkoppelen van uw Automation-account in de werk ruimte.
 
 1. Selecteer in de werk ruimte **Automation-account** onder **gerelateerde resources**. 
-2. Selecteer op de pagina Automation-account de optie **account loskoppelen**.
+2. Selecteer op de pagina **Automation-account** de optie **account loskoppelen**.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Meer informatie over het onboarden van Updatebeheer en Wijzigingen bijhouden en inventaris:
+* Meer informatie over het gebruik van ' Updatebeheer ' en ' Wijzigingen bijhouden en inventaris ':
 
-    * Van een [virtuele machine](../automation-onboard-solutions-from-vm.md)
-    * Vanuit uw [Automation-account](../automation-onboard-solutions-from-automation-account.md)
-    * Bij het [surfen op meerdere computers](../automation-onboard-solutions-from-browse.md)
-    * Vanuit een [runbook](../automation-onboard-solutions.md)
+    * Van een [virtuele machine](../automation-onboard-solutions-from-vm.md).
+    * Vanuit uw [Automation-account](../automation-onboard-solutions-from-automation-account.md).
+    * Wanneer u op [meerdere computers bladert](../automation-onboard-solutions-from-browse.md).
+    * Vanuit een [runbook](../automation-onboard-solutions.md).
 
-* Meer informatie over het voorbereiden van de VM's buiten bedrijfsuren starten/stoppen:
+* Meer informatie over het gebruik van ' Vm's starten/stoppen na ' uren ':
 
-    * [Overzicht van VM's buiten bedrijfsuren starten/stoppen](../automation-solution-vm-management.md)
+    * [Virtuele machines starten/stoppen tijdens het uitschakelen](../automation-solution-vm-management.md)van het overzicht.

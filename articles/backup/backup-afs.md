@@ -3,12 +3,12 @@ title: Back-ups maken van Azure-bestands shares in de Azure Portal
 description: Meer informatie over het gebruik van de Azure Portal voor het maken van back-ups van Azure-bestands shares in de Recovery Services kluis
 ms.topic: conceptual
 ms.date: 01/20/2020
-ms.openlocfilehash: da2c7fa4cc5c3b7b948604a6f6d3999671cb3697
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a77f7fd0ec21eae60a7313a9ffa889fbef4372c6
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82101267"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82977985"
 ---
 # <a name="back-up-azure-file-shares-in-a-recovery-services-vault"></a>Back-ups maken van Azure-bestands shares in een Recovery Services kluis
 
@@ -50,35 +50,70 @@ Het type opslag replicatie wijzigen:
 
 ## <a name="discover-file-shares-and-configure-backup"></a>Bestands shares detecteren en back-up configureren
 
-1. Open in de [Azure Portal](https://portal.azure.com/)de Recovery Services kluis die u wilt gebruiken om een back-up te maken van de bestands share.
+1. Open in de [Azure Portal](https://portal.azure.com/)de Recovery Services kluis die u wilt gebruiken voor het configureren van de back-up voor de bestands share.
 
-1. Selecteer **+ Backup**In het **Recovery Services kluis** -dash board.
+1. Selecteer in het deel venster **Recovery Services kluis** de **plus back-up** in het menu bovenaan.
 
    ![Recovery Services-kluis](./media/backup-afs/recovery-services-vault.png)
 
-    a. In **back-updoel**stelt u in **waar wordt uw workload uitgevoerd?** naar **Azure**.
+    1. In het deel venster doel van de **back-up** stelt u in **waar wordt uw workload uitgevoerd?** naar **Azure** door de optie **Azure** te selecteren in de vervolg keuzelijst.
 
-    ![Een Azure-bestands share kiezen als back-updoel](./media/backup-afs/backup-goal.png)
+          ![Kies Azure als workload](./media/backup-afs/backup-goal.png)
 
-    b.  Selecteer in **waarvan wilt u een back-up maken?** de optie **Azure-bestands share** in de vervolg keuzelijst.
+    2. Selecteer in **waarvan wilt u een back-up maken?** de optie **Azure-bestands share** in de vervolg keuzelijst.
 
-    c.  Selecteer **back-up** om de extensie van de Azure-bestands share in de kluis te registreren.
+          ![Azure-bestands share selecteren](./media/backup-afs/select-azure-file-share.png)
 
-    ![Selecteer back-up om de Azure-bestands share te koppelen aan de kluis](./media/backup-afs/register-extension.png)
+    3. Selecteer **back-up** om de extensie van de Azure-bestands share in de kluis te registreren.
 
-1. Nadat u **back-up**hebt geselecteerd, wordt het deel venster **back-up** geopend en wordt u gevraagd een opslag account te selecteren in een lijst met gedetecteerde ondersteunde opslag accounts. Ze zijn gekoppeld aan deze kluis of bevinden zich in dezelfde regio als de kluis, maar nog niet gekoppeld aan een Recovery Services kluis.
+          ![Selecteer back-up om de Azure-bestands share te koppelen aan de kluis](./media/backup-afs/register-extension.png)
 
-1. Selecteer een account in de lijst met gedetecteerde opslag accounts en selecteer **OK**. Azure zoekt naar het opslag account voor bestands shares waarvan een back-up kan worden gemaakt. Als u onlangs uw bestands shares hebt toegevoegd en deze niet in de lijst ziet, moet u enige tijd toestaan dat de bestands shares worden weer gegeven.
+1. Nadat u **back-up**hebt geselecteerd, wordt het deel venster **back-up** geopend. Als u het opslag account wilt selecteren dat als host fungeert voor de bestands share die u wilt beveiligen, klikt u op het tekstvak koppelings tekst onder het veld voor het **opslag account** **selecteren** .
 
-    ![Bestands shares detecteren](./media/backup-afs/discovering-file-shares.png)
+   ![Kies de koppeling selecteren](./media/backup-afs/choose-select-link.png)
 
-1. Selecteer in de lijst **Bestands shares** een of meer van de bestands shares waarvan u een back-up wilt maken. Selecteer **OK**.
+1. Het **deel venster opslag account selecteren** wordt aan de rechter kant weer gegeven, met een reeks gedetecteerde ondersteunde opslag accounts. Ze zijn gekoppeld aan deze kluis of bevinden zich in dezelfde regio als de kluis, maar nog niet gekoppeld aan een Recovery Services kluis.
+
+1. Selecteer een account in de lijst met gedetecteerde opslag accounts en selecteer **OK**.
+
+   ![Selecteer een van de gedetecteerde opslag accounts](./media/backup-afs/select-discovered-storage-account.png)
+
+1. De volgende stap is het selecteren van de bestands shares waarvan u een back-up wilt maken. Klik op de knop **toevoegen** in de sectie **Bestands shares naar back-up** .
+
+   ![Selecteer de bestands shares waarvan u een back-up wilt maken](./media/backup-afs/select-file-shares-to-back-up.png)
+
+1. Het deel venster **Bestands shares context selecteren** wordt aan de rechter kant geopend. Azure zoekt naar het opslag account voor bestands shares waarvan een back-up kan worden gemaakt. Als u onlangs uw bestands shares hebt toegevoegd en deze niet in de lijst ziet, moet u enige tijd toestaan dat de bestands shares worden weer gegeven.
+
+1. Selecteer in de lijst **Bestands shares selecteren** een of meer van de bestands shares waarvan u een back-up wilt maken. Selecteer **OK**.
 
    ![Selecteer de bestands shares](./media/backup-afs/select-file-shares.png)
 
-1. Nadat u de bestands shares hebt gekozen, wordt het menu **back-** up overgeschakeld naar het **back-upbeleid**. In dit menu selecteert u een bestaand back-upbeleid of maakt u een nieuwe. Selecteer vervolgens **back-up inschakelen**.
+1. Als u een back-upbeleid voor de bestands share wilt kiezen, hebt u drie opties:
 
-    ![Back-upbeleid selecteren](./media/backup-afs/select-backup-policy.png)
+   * Kies het standaard beleid.<br>
+   Met deze optie kunt u dagelijks een back-up inschakelen die 30 dagen wordt bewaard. Als u geen bestaand back-upbeleid in de kluis hebt, wordt het deel venster back-up geopend met de standaard beleids instellingen. Als u de standaard instellingen wilt kiezen, kunt u rechtstreeks op **back-up inschakelen**klikken.
+
+   * Een nieuw beleid maken <br>
+
+      1. Als u een nieuw back-upbeleid voor de bestands share wilt maken, klikt u op de koppelings tekst onder de vervolg keuzelijst in het gedeelte **back-upbeleid** .<br>
+
+         ![Nieuw beleid maken](./media/backup-afs/create-new-policy.png)
+
+      1. Het context venster **back-upbeleid** wordt aan de rechter kant geopend. Geef in het tekstvak een beleids naam op en kies de Bewaar periode volgens uw vereiste. Alleen de optie dagelijkse Bewaar periode is standaard ingeschakeld. Als u wekelijks, maandelijks of jaarlijks wilt bewaren, selecteert u het betreffende selectie vakje en geeft u de gewenste Bewaar waarde op.
+
+      1. Klik op OK nadat u de Bewaar waarden en een geldige beleids naam hebt opgegeven.<br>
+
+         ![Beleids naam en bewaar waarden opgeven](./media/backup-afs/policy-name.png)
+
+   * Kies een van de bestaande back-beleidsregels <br>
+
+   Als u een van de bestaande back-beleidsregels voor het configureren van beveiliging wilt kiezen, selecteert u het gewenste beleid in de vervolg keuzelijst **back-upbeleid** .<br>
+
+   ![Bestaand beleid kiezen](./media/backup-afs/choose-existing-policy.png)
+
+1. Klik op **back-up inschakelen** om te beginnen met het beveiligen van de bestands share.
+
+   ![Kies back-up inschakelen](./media/backup-afs/enable-backup.png)
 
 Nadat u een back-upbeleid hebt ingesteld, wordt er op het geplande tijdstip een moment opname van de bestands shares gemaakt. Het herstel punt wordt ook voor de gekozen periode bewaard.
 

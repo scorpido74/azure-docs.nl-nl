@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive,seoapr2020
-ms.date: 04/21/2020
-ms.openlocfilehash: d421811c18ac63952432cd853a6928db7c81f3db
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 05/04/2020
+ms.openlocfilehash: e2db6d1d60026a00fa8e766fbaa1c72975fa2e99
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82182426"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82786611"
 ---
 # <a name="plan-a-virtual-network-for-azure-hdinsight"></a>Een virtueel netwerk voor Azure HDInsight plannen
 
@@ -44,7 +44,7 @@ Hieronder vindt u de vragen die u moet beantwoorden bij het plannen van HDInsigh
 
 * Wilt u het binnenkomende of uitgaande verkeer beperken of omleiden naar HDInsight?
 
-    HDInsight moet onbeperkte communicatie met specifieke IP-adressen in het Azure-Data Center hebben. Er zijn ook verschillende poorten die moeten worden toegestaan via firewalls voor client communicatie. Zie de sectie [netwerk verkeer beheren](#networktraffic) voor meer informatie.
+    HDInsight moet onbeperkte communicatie met specifieke IP-adressen in het Azure-Data Center hebben. Er zijn ook verschillende poorten die moeten worden toegestaan via firewalls voor client communicatie. Zie [netwerk verkeer beheren](./control-network-traffic.md)voor meer informatie.
 
 ## <a name="add-hdinsight-to-an-existing-virtual-network"></a><a id="existingvnet"></a>HDInsight toevoegen aan een bestaand virtueel netwerk
 
@@ -201,57 +201,9 @@ Als u verbinding wilt maken met Apache Ambari en andere webpagina's via het virt
 
 2. Voor het bepalen van het knoop punt en de poort waarop een service beschikbaar is, raadpleegt u de [poorten die worden gebruikt door Hadoop-Services in HDInsight](./hdinsight-hadoop-port-settings-for-services.md) -document.
 
-## <a name="controlling-network-traffic"></a><a id="networktraffic"></a>Netwerk verkeer beheren
-
-### <a name="techniques-for-controlling-inbound-and-outbound-traffic-to-hdinsight-clusters"></a>Technieken voor het beheren van binnenkomend en uitgaand verkeer naar HDInsight-clusters
-
-Netwerk verkeer in een virtuele Azure-netwerken kan worden beheerd met behulp van de volgende methoden:
-
-* Met **netwerk beveiligings groepen** (NSG) kunt u inkomend en uitgaand verkeer filteren op het netwerk. Zie het document [netwerk verkeer filteren met netwerk beveiligings groepen](../virtual-network/security-overview.md) voor meer informatie.
-
-* **Virtuele netwerk apparaten** (NVA) kunnen alleen worden gebruikt met uitgaand verkeer. Nva's repliceert de functionaliteit van apparaten, zoals firewalls en routers. Zie het document [netwerk apparaten](https://azure.microsoft.com/solutions/network-appliances) voor meer informatie.
-
-Als beheerde service vereist HDInsight onbeperkte toegang tot de HDInsight-status-en beheer Services voor binnenkomend en uitgaand verkeer van het VNET. Wanneer u Nsg's gebruikt, moet u ervoor zorgen dat deze services nog steeds kunnen communiceren met het HDInsight-cluster.
-
-![Diagram van HDInsight-entiteiten die zijn gemaakt in een aangepast Azure-VNET](./media/hdinsight-plan-virtual-network-deployment/hdinsight-vnet-diagram.png)
-
-### <a name="hdinsight-with-network-security-groups"></a>HDInsight met netwerk beveiligings groepen
-
-Als u van plan bent om **netwerk beveiligings groepen** te gebruiken om netwerk verkeer te beheren, moet u de volgende acties uitvoeren voordat u HDInsight installeert:
-
-1. Bepaal de Azure-regio die u wilt gebruiken voor HDInsight.
-
-2. Bepaal welke service Tags vereist zijn voor HDInsight voor uw regio. Zie [NSG-service tags (netwerk beveiligings groep) voor Azure HDInsight](hdinsight-service-tags.md)voor meer informatie.
-
-3. Maak of wijzig de netwerk beveiligings groepen voor het subnet waarop u HDInsight wilt installeren.
-
-    * __Netwerk beveiligings groepen__: Allow __Inkomend__ verkeer op poort __443__ van de IP-adressen. Dit zorgt ervoor dat HDInsight-beheer Services het cluster kunnen bereiken van buiten het virtuele netwerk.
-
-Zie [overzicht van netwerk beveiligings groepen](../virtual-network/security-overview.md)voor meer informatie over netwerk beveiligings groepen.
-
-### <a name="controlling-outbound-traffic-from-hdinsight-clusters"></a>Uitgaand verkeer van HDInsight-clusters beheren
-
-Zie voor meer informatie over het beheren van uitgaand verkeer van HDInsight-clusters [uitgaand netwerk verkeer configureren beperking voor Azure HDInsight-clusters](hdinsight-restrict-outbound-traffic.md).
-
-#### <a name="forced-tunneling-to-on-premises"></a>Geforceerde tunneling naar on-premises
-
-Geforceerde tunneling is een door de gebruiker gedefinieerde routerings configuratie waarbij al het verkeer van een subnet wordt afgedwongen op een specifiek netwerk of locatie, zoals uw on-premises netwerk. HDInsight biedt __geen__ ondersteuning voor geforceerde tunneling van verkeer naar on-premises netwerken.
-
-## <a name="required-ip-addresses"></a><a id="hdinsight-ip"></a>Vereiste IP-adressen
-
-Zie [IP-adressen van HDInsight-beheer](hdinsight-management-ip-addresses.md)als u netwerk beveiligings groepen of door de gebruiker gedefinieerde routes gebruikt om verkeer te beheren.
-
-## <a name="required-ports"></a><a id="hdinsight-ports"></a>Vereiste poorten
-
-Als u van plan bent een **firewall** te gebruiken en u toegang te krijgen tot het cluster van buiten op bepaalde poorten, moet u mogelijk verkeer toestaan op de poorten die nodig zijn voor uw scenario. Standaard is er geen speciale white list nodig, zolang het Azure Management-verkeer dat in de vorige sectie wordt uitgelegd, het cluster op poort 443 mag bereiken.
-
-Voor een lijst met poorten voor specifieke services, zie de [poorten die worden gebruikt door Apache Hadoop Services in HDInsight](hdinsight-hadoop-port-settings-for-services.md) -document.
-
-Zie het scenario document van het [virtuele apparaat](../virtual-network/virtual-network-scenario-udr-gw-nva.md) voor meer informatie over Firewall regels voor virtuele apparaten.
-
 ## <a name="load-balancing"></a>Taakverdeling
 
-Wanneer u een HDInsight-cluster maakt, wordt er ook een load balancer gemaakt. Het type van deze load balancer bevindt zich op het niveau van de [basis-SKU](../load-balancer/concepts-limitations.md#skus), met bepaalde beperkingen. Een van deze beperkingen is dat als u twee virtuele netwerken in verschillende regio's hebt, u geen verbinding kunt maken met Basic load balancers. Zie de [Veelgestelde vragen over virtuele netwerken: beperkingen voor wereld wijde vnet-peering](../virtual-network/virtual-networks-faq.md#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers)voor meer informatie.
+Wanneer u een HDInsight-cluster maakt, wordt er ook een load balancer gemaakt. Het type van deze load balancer bevindt zich op het niveau van de [basis-SKU](../load-balancer/skus.md), met bepaalde beperkingen. Een van deze beperkingen is dat als u twee virtuele netwerken in verschillende regio's hebt, u geen verbinding kunt maken met Basic load balancers. Zie de [Veelgestelde vragen over virtuele netwerken: beperkingen voor wereld wijde vnet-peering](../virtual-network/virtual-networks-faq.md#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers)voor meer informatie.
 
 ## <a name="next-steps"></a>Volgende stappen
 
@@ -260,3 +212,4 @@ Wanneer u een HDInsight-cluster maakt, wordt er ook een load balancer gemaakt. H
 * Zie [overzicht van azure Virtual Network](../virtual-network/virtual-networks-overview.md)voor meer informatie over virtuele Azure-netwerken.
 * Zie [netwerk beveiligings groepen](../virtual-network/security-overview.md)voor meer informatie over netwerk beveiligings groepen.
 * Zie door de gebruiker [gedefinieerde routes en door sturen via IP](../virtual-network/virtual-networks-udr-overview.md)voor meer informatie over door de gebruiker gedefinieerde routes.
+* Zie [netwerk verkeer beheren](./control-network-traffic.md)voor meer informatie over het beheren van verkeer.

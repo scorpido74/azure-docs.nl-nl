@@ -2,7 +2,7 @@
 title: Stroom voor OAuth-autorisatie code-micro soft Identity-platform | Azure
 description: Bouw webtoepassingen met behulp van de micro soft Identity platform-implementatie van het OAuth 2,0-verificatie protocol.
 services: active-directory
-author: rwike77
+author: hpsin
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
@@ -12,12 +12,12 @@ ms.date: 01/31/2020
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: fcd80c052edf659f93f97800da3112c1f11309cc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: ed41150e8247a738d3222127243083470211f7a9
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81868494"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82689800"
 ---
 # <a name="microsoft-identity-platform-and-oauth-20-authorization-code-flow"></a>Micro soft Identity platform en OAuth 2,0-autorisatie code stroom
 

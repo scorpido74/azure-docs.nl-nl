@@ -10,12 +10,12 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 08/27/2019
-ms.openlocfilehash: 3e6cfde20d9f4d56af836e06b0c9a84010dea47b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 646254238f83166c53fe94a1821c68ff4dac8f04
+ms.sourcegitcommit: d662eda7c8eec2a5e131935d16c80f1cf298cb6b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80282814"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82651933"
 ---
 # <a name="deploy-a-machine-learning-model-to-azure-app-service-preview"></a>Een machine learning model implementeren op Azure App Service (preview-versie)
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -114,14 +114,14 @@ package.wait_for_creation(show_output=True)
 print(package.location)
 ```
 
-Wanneer `show_output=True`wordt de uitvoer van het docker-bouw proces weer gegeven. Zodra het proces is voltooid, is de afbeelding gemaakt in de Azure Container Registry voor uw werk ruimte. Zodra de installatie kopie is gemaakt, wordt de locatie in uw Azure Container Registry weer gegeven. De geretourneerde locatie heeft de indeling `<acrinstance>.azurecr.io/package:<imagename>`. Bijvoorbeeld `myml08024f78fd10.azurecr.io/package:20190827151241`.
+Wanneer `show_output=True`wordt de uitvoer van het docker-bouw proces weer gegeven. Zodra het proces is voltooid, is de afbeelding gemaakt in de Azure Container Registry voor uw werk ruimte. Zodra de installatie kopie is gemaakt, wordt de locatie in uw Azure Container Registry weer gegeven. De geretourneerde locatie heeft de indeling `<acrinstance>.azurecr.io/package@sha256:<imagename>`. Bijvoorbeeld `myml08024f78fd10.azurecr.io/package@sha256:20190827151241`.
 
 > [!IMPORTANT]
 > Sla de locatie gegevens op, zoals deze worden gebruikt bij het implementeren van de installatie kopie.
 
 ## <a name="deploy-image-as-a-web-app"></a>Een installatie kopie implementeren als een web-app
 
-1. Gebruik de volgende opdracht om de aanmeldings referenties op te halen voor de Azure Container Registry die de installatie kopie bevat. Vervangen `<acrinstance>` door de waarde die eerder is geretourneerd `package.location`door:
+1. Gebruik de volgende opdracht om de aanmeldings referenties op te halen voor de Azure Container Registry die de installatie kopie bevat. Vervang `<acrinstance>` door de waarde die u eerder `package.location`hebt geretourneerd van:
 
     ```azurecli-interactive
     az acr credential show --name <myacr>
@@ -162,7 +162,7 @@ Wanneer `show_output=True`wordt de uitvoer van het docker-bouw proces weer gegev
 1. Gebruik de volgende opdracht om de web-app te maken. Vervang `<app-name>` door de naam die u wilt gebruiken. Vervang `<acrinstance>` en `<imagename>` door de waarden die eerder `package.location` zijn geretourneerd:
 
     ```azurecli-interactive
-    az webapp create --resource-group myresourcegroup --plan myplanname --name <app-name> --deployment-container-image-name <acrinstance>.azurecr.io/package:<imagename>
+    az webapp create --resource-group myresourcegroup --plan myplanname --name <app-name> --deployment-container-image-name <acrinstance>.azurecr.io/package@sha256:<imagename>
     ```
 
     Deze opdracht retourneert informatie die lijkt op het volgende JSON-document:
@@ -191,7 +191,7 @@ Wanneer `show_output=True`wordt de uitvoer van het docker-bouw proces weer gegev
 1. Gebruik de volgende opdracht om de web-app te voorzien van de referenties die nodig zijn voor toegang tot het container register. Vervang `<app-name>` door de naam die u wilt gebruiken. Vervang `<acrinstance>` en `<imagename>` door de waarden die eerder `package.location` zijn geretourneerd. Vervang `<username>` en `<password>` door de ACR-aanmeldings gegevens die u eerder hebt opgehaald:
 
     ```azurecli-interactive
-    az webapp config container set --name <app-name> --resource-group myresourcegroup --docker-custom-image-name <acrinstance>.azurecr.io/package:<imagename> --docker-registry-server-url https://<acrinstance>.azurecr.io --docker-registry-server-user <username> --docker-registry-server-password <password>
+    az webapp config container set --name <app-name> --resource-group myresourcegroup --docker-custom-image-name <acrinstance>.azurecr.io/package@sha256:<imagename> --docker-registry-server-url https://<acrinstance>.azurecr.io --docker-registry-server-user <username> --docker-registry-server-password <password>
     ```
 
     Deze opdracht retourneert informatie die lijkt op het volgende JSON-document:
@@ -220,7 +220,7 @@ Wanneer `show_output=True`wordt de uitvoer van het docker-bouw proces weer gegev
     },
     {
         "name": "DOCKER_CUSTOM_IMAGE_NAME",
-        "value": "DOCKER|myml08024f78fd10.azurecr.io/package:20190827195524"
+        "value": "DOCKER|myml08024f78fd10.azurecr.io/package@sha256:20190827195524"
     }
     ]
     ```

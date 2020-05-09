@@ -4,12 +4,12 @@ description: Hiermee wordt een overzicht gegeven van de ondersteuning voor herst
 ms.topic: article
 ms.date: 01/10/2020
 ms.author: raynew
-ms.openlocfilehash: ea0b6763f4438033a8a5a1a4044479fc00f8456c
-ms.sourcegitcommit: 602e6db62069d568a91981a1117244ffd757f1c2
+ms.openlocfilehash: 2fc2a32c47991b9b3615417dfb8f50ca3e7c988f
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82864569"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82983496"
 ---
 # <a name="support-matrix-for-azure-vm-disaster-recovery-between-azure-regions"></a>Ondersteunings matrix voor herstel na nood geval voor Azure-VM'S tussen Azure-regio's
 
@@ -22,7 +22,7 @@ In dit artikel vindt u een overzicht van de ondersteuning en vereisten voor hers
 --- | ---
 **Azure Portal** | Ondersteund.
 **PowerShell** | Ondersteund. [Meer informatie](azure-to-azure-powershell.md)
-**REST-API** | Ondersteund.
+**REST API** | Ondersteund.
 **CLI** | Momenteel niet ondersteund
 
 
@@ -216,9 +216,9 @@ Coole en warme opslag | Niet ondersteund | VM-schijven worden niet ondersteund i
 Opslagruimten | Ondersteund |
 Versleuteling op rest (SSE) | Ondersteund | SSE is de standaard instelling voor opslag accounts.
 Versleuteling in rust (CMK) | Ondersteund | Zowel software-als HSM-sleutels worden ondersteund voor beheerde schijven
-Azure Disk Encryption (ADE) voor Windows-besturings systeem | Ondersteund voor virtuele machines met beheerde schijven. | Vm's met niet-beheerde schijven worden niet ondersteund. <br/><br/> Met HSM beveiligde sleutels worden niet ondersteund. |
-Azure Disk Encryption (ADE) voor Linux-besturings systeem | Ondersteund voor virtuele machines met beheerde schijven. | Vm's met niet-beheerde schijven worden niet ondersteund. <br/><br/> Met HSM beveiligde sleutels worden niet ondersteund. |
-Hot add    | Ondersteund | Het inschakelen van replicatie voor een gegevens schijf die u toevoegt aan een gerepliceerde Azure-VM wordt ondersteund voor virtuele machines die gebruikmaken van beheerde schijven.
+Azure Disk Encryption (ADE) voor Windows-besturings systeem | Ondersteund voor virtuele machines met beheerde schijven. | Vm's met niet-beheerde schijven worden niet ondersteund. <br/><br/> Met HSM beveiligde sleutels worden niet ondersteund. <br/><br/> Het versleutelen van afzonderlijke volumes op één schijf wordt niet ondersteund. |
+Azure Disk Encryption (ADE) voor Linux-besturings systeem | Ondersteund voor virtuele machines met beheerde schijven. | Vm's met niet-beheerde schijven worden niet ondersteund. <br/><br/> Met HSM beveiligde sleutels worden niet ondersteund. <br/><br/> Het versleutelen van afzonderlijke volumes op één schijf wordt niet ondersteund. |
+Hot add    | Ondersteund | Het inschakelen van replicatie voor een gegevens schijf die u toevoegt aan een gerepliceerde Azure-VM wordt ondersteund voor virtuele machines die gebruikmaken van beheerde schijven. <br/><br/> Er kan slechts één schijf dynamisch worden toegevoegd aan een virtuele machine van Azure. Het gelijktijdig toevoegen van meerdere schijven wordt niet ondersteund. |
 Hot Remove-schijf    | Niet ondersteund | Als u de gegevens schijf op de virtuele machine verwijdert, moet u de replicatie uitschakelen en de replicatie opnieuw inschakelen voor de virtuele machine.
 Schijf uitsluiten | Voor. U moet [Power shell](azure-to-azure-exclude-disks.md) gebruiken om te configureren. |    Tijdelijke schijven worden standaard uitgesloten.
 Opslagruimten direct  | Ondersteund voor crash consistente herstel punten. Toepassings consistente herstel punten worden niet ondersteund. |

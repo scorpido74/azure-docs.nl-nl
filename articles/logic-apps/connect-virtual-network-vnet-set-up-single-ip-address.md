@@ -3,19 +3,19 @@ title: Een openbaar uitgaand IP-adres instellen voor ISEs
 description: Meer informatie over het instellen van één openbaar uitgaand IP-adres voor integratie service omgevingen (ISEs) in Azure Logic Apps
 services: logic-apps
 ms.suite: integration
-ms.reviewer: klam, logicappspm
+ms.reviewer: jonfan, logicappspm
 ms.topic: conceptual
-ms.date: 02/10/2020
-ms.openlocfilehash: 619c68b84291bc35b8216194ac4534393fde454c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 05/06/2020
+ms.openlocfilehash: 2132dc464ee404339d9de03c0c797426aea04ce2
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77191503"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82927136"
 ---
 # <a name="set-up-a-single-ip-address-for-one-or-more-integration-service-environments-in-azure-logic-apps"></a>Stel één IP-adres in voor een of meer integratie service omgevingen in Azure Logic Apps
 
-Wanneer u met Azure Logic Apps werkt, kunt u een [ISE ( *Integration service Environment* )](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) instellen voor het hosten van logische apps die toegang nodig hebben tot bronnen in een [virtueel Azure-netwerk](../virtual-network/virtual-networks-overview.md). Wanneer u meerdere ISE-exemplaren hebt die toegang nodig hebben tot andere eind punten met IP-beperkingen, implementeert u een [Azure firewall](../firewall/overview.md) of een [virtueel netwerk apparaat](../virtual-network/virtual-networks-overview.md#filter-network-traffic) in uw virtuele netwerk en stuurt u uitgaand verkeer via die firewall of het virtuele netwerk apparaat. U kunt vervolgens alle ISE-exemplaren in uw virtuele netwerk gebruiken om een enkel, openbaar, statisch en voorspelbaar IP-adres te communiceren met behulp van doel systemen. Op die manier hoeft u geen aanvullende firewall-openingen op deze doel systemen in te stellen voor elke ISE.
+Wanneer u met Azure Logic Apps werkt, kunt u een [ISE ( *Integration service Environment* )](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) instellen voor het hosten van logische apps die toegang nodig hebben tot bronnen in een [virtueel Azure-netwerk](../virtual-network/virtual-networks-overview.md). Wanneer u meerdere ISE-exemplaren hebt die toegang nodig hebben tot andere eind punten met IP-beperkingen, implementeert u een [Azure firewall](../firewall/overview.md) of een [virtueel netwerk apparaat](../virtual-network/virtual-networks-overview.md#filter-network-traffic) in uw virtuele netwerk en stuurt u uitgaand verkeer via die firewall of het virtuele netwerk apparaat. U kunt de ISE-instanties in uw virtuele netwerk vervolgens gebruiken om één openbaar, statisch en voorspelbaar IP-adres te communiceren met de gewenste doel systemen. Op die manier hoeft u geen aanvullende firewall-openingen op uw doel systemen in te stellen voor elke ISE.
 
 In dit onderwerp wordt beschreven hoe u uitgaand verkeer via een Azure Firewall stuurt, maar u kunt vergelijk bare concepten Toep assen op een virtueel netwerk apparaat, zoals een firewall van derden vanuit Azure Marketplace. Dit onderwerp richt zich op het instellen van meerdere ISE-instanties, maar u kunt deze methode ook gebruiken voor één ISE wanneer uw scenario het aantal IP-adressen dat toegang nodig heeft beperken. Bepaal of de extra kosten voor de firewall of het virtuele netwerk apparaat logisch kunnen zijn voor uw scenario. Meer informatie over [Azure firewall prijzen](https://azure.microsoft.com/pricing/details/azure-firewall/).
 
@@ -52,10 +52,12 @@ In dit onderwerp wordt beschreven hoe u uitgaand verkeer via een Azure Firewall 
    | Eigenschap | Waarde | Beschrijving |
    |----------|-------|-------------|
    | **Routenaam** | <*unieke route naam*> | Een unieke naam voor de route in de route tabel |
-   | **Adres voorvoegsel** | <*doel adres*> | Het doel systeem adres waar u het verkeer wilt laten lopen. Zorg ervoor dat u [CIDR-notatie (Classless Inter-Domain Routing)](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) gebruikt voor dit adres. |
+   | **Adres voorvoegsel** | <*doel adres*> | Het adres voorvoegsel voor het doel systeem waar u uitgaand verkeer wilt doen. Zorg ervoor dat u [CIDR-notatie (Classless Inter-Domain Routing)](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) gebruikt voor dit adres. In dit voor beeld is dit adres voorvoegsel voor een SFTP-server, die wordt beschreven in de sectie [netwerk regel instellen](#set-up-network-rule). |
    | **Volgend hoptype** | **Virtueel apparaat** | Het [type hop](../virtual-network/virtual-networks-udr-overview.md#next-hop-types-across-azure-tools) dat wordt gebruikt door uitgaand verkeer |
    | **Adres van de volgende hop** | <*Firewall-persoonlijk IP-adres*> | Het privé-IP-adres voor uw firewall |
    |||
+
+<a name="set-up-network-rule"></a>
 
 ## <a name="set-up-network-rule"></a>Netwerk regel instellen
 
@@ -65,7 +67,7 @@ In dit onderwerp wordt beschreven hoe u uitgaand verkeer via een Azure Firewall 
 
 1. Voeg in de verzameling een regel toe die verkeer naar het doel systeem toestaat.
 
-   Stel bijvoorbeeld dat u een logische app hebt die in een ISE wordt uitgevoerd en moet communiceren met een SFTP-systeem. U maakt een netwerk regel verzameling met de naam `LogicApp_ISE_SFTP_Outbound`, die een netwerk regel bevat met `ISE_SFTP_Outbound`de naam. Deze regel staat het verkeer toe van het IP-adres van elk subnet waar uw ISE wordt uitgevoerd in uw virtuele netwerk naar het doel-SFTP-systeem met behulp van het privé-IP-adres van uw firewall.
+   Stel bijvoorbeeld dat u een logische app hebt die in een ISE wordt uitgevoerd en moet communiceren met een SFTP-server. U maakt een netwerk regel verzameling met de naam `LogicApp_ISE_SFTP_Outbound`, die een netwerk regel bevat met `ISE_SFTP_Outbound`de naam. Deze regel staat verkeer toe van het IP-adres van elk subnet waar uw ISE wordt uitgevoerd in uw virtuele netwerk naar de doel-SFTP-server met behulp van het privé-IP-adres van uw firewall.
 
    ![Netwerk regel voor Firewall instellen](./media/connect-virtual-network-vnet-set-up-single-ip-address/set-up-network-rule-for-firewall.png)
 
@@ -75,7 +77,7 @@ In dit onderwerp wordt beschreven hoe u uitgaand verkeer via een Azure Firewall 
    |----------|-------|-------------|
    | **Naam** | <*netwerk-regel-verzameling-naam*> | De naam voor uw netwerk regel verzameling |
    | **Prioriteiten** | <*prioriteits niveau*> | De volg orde van prioriteit die moet worden gebruikt voor het uitvoeren van de regel verzameling. Zie [Wat zijn enkele Azure firewall concepten](../firewall/firewall-faq.md#what-are-some-azure-firewall-concepts)? voor meer informatie. |
-   | **Actie** | **Dat** | Het actie type dat moet worden uitgevoerd voor deze regel |
+   | **Actie** | **Toestaan** | Het actie type dat moet worden uitgevoerd voor deze regel |
    |||
 
    **Eigenschappen van netwerk regel**
@@ -83,9 +85,9 @@ In dit onderwerp wordt beschreven hoe u uitgaand verkeer via een Azure Firewall 
    | Eigenschap | Waarde | Beschrijving |
    |----------|-------|-------------|
    | **Naam** | <*netwerk-regel naam*> | De naam voor uw netwerk regel |
-   | **Protocolsubstatus** | <*verbinding-protocollen*> | De verbindings protocollen die moeten worden gebruikt. Als u bijvoorbeeld NSG-regels gebruikt, selecteert u zowel **TCP** als **UDP**, niet alleen **TCP**. |
+   | **Protocol** | <*verbinding-protocollen*> | De verbindings protocollen die moeten worden gebruikt. Als u bijvoorbeeld NSG-regels gebruikt, selecteert u zowel **TCP** als **UDP**, niet alleen **TCP**. |
    | **Bron adressen** | <*ISE-subnet-adressen*> | Het subnet-IP-adres waar uw ISE wordt uitgevoerd en waar verkeer van uw logische app afkomstig is |
-   | **Doel adressen** | <*doel-IP-adres*> | Het IP-adres van het doel systeem waar u het verkeer wilt laten lopen |
+   | **Doel adressen** | <*doel-IP-adres*> | Het IP-adres van het doel systeem waar u uitgaand verkeer wilt. In dit voor beeld is dit IP-adres voor de SFTP-server. |
    | **Doel poorten** | <*doel poorten*> | Poorten die het doel systeem gebruikt voor binnenkomende communicatie |
    |||
 
