@@ -13,12 +13,12 @@ ms.workload: identity
 ms.date: 04/17/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: dc86dd488ff9e8649ae80f4768941791dd37fce6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 053e86f3493c7a11a3cbbaad0871e45345697878
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81726772"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82735331"
 ---
 # <a name="best-practices-for-azure-rbac"></a>Aanbevolen procedures voor Azure RBAC
 
@@ -26,13 +26,13 @@ In dit artikel worden enkele aanbevolen procedures beschreven voor het gebruik v
 
 ## <a name="only-grant-the-access-users-need"></a>Alleen de gebruikers die toegang nodig hebben, toestaan
 
-Met behulp van Azure RBAC kunt u de taken binnen uw team scheiden en alleen de hoeveelheid toegang verlenen aan gebruikers die ze nodig hebben om hun taken uit te voeren. In plaats van iedereen onbeperkte machtigingen te verlenen in uw Azure-abonnement of -resources, kunt u zelf bepalen welke acties er met een bepaalde bereik zijn toegestaan.
+Met op rollen gebaseerd toegangsbeheer van Azure kunt u taken scheiden binnen uw team en alleen de mate van toegang verlenen aan gebruikers die nodig is om de taken uit te voeren. In plaats van iedereen onbeperkte machtigingen te verlenen in uw Azure-abonnement of -resources, kunt u zelf bepalen welke acties er met een bepaalde bereik zijn toegestaan.
 
-Het is een aanbevolen procedure om tijdens het plannen van een strategie voor toegangsbeheer gebruikers minimale bevoegdheden te verlenen om hun werk gedaan te krijgen. In het volgende diagram wordt een voorgesteld patroon weergegeven voor het gebruik van RBAC.
+Het is een aanbevolen procedure om tijdens het plannen van een strategie voor toegangsbeheer gebruikers minimale bevoegdheden te verlenen om hun werk gedaan te krijgen. Het volgende diagram toont een voorgesteld patroon voor het gebruik van Azure RBAC.
 
-![RBAC en minimale bevoegdheden](./media/best-practices/rbac-least-privilege.png)
+![Azure RBAC en minimale bevoegdheid](./media/best-practices/rbac-least-privilege.png)
 
-Zie [roltoewijzingen toevoegen of verwijderen](role-assignments-portal.md)voor meer informatie over het toevoegen van roltoewijzingen.
+Voor informatie over het toevoegen van roltoewijzingen, raadpleegt u [Azure-roltoewijzingen toevoegen of verwijderen met behulp van de Azure Portal](role-assignments-portal.md).
 
 ## <a name="limit-the-number-of-subscription-owners"></a>Het aantal abonnements eigenaren beperken
 

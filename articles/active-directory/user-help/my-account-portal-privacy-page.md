@@ -11,12 +11,12 @@ ms.subservice: user-help
 ms.topic: conceptual
 ms.date: 10/28/2019
 ms.author: curtand
-ms.openlocfilehash: 94187cc7c0c3500a86d47a5f244457ee020581a3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a97b79f7927c56a737723060cd9cb3218b12bf55
+ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77062435"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82625490"
 ---
 # <a name="view-how-your-organization-uses-your-privacy-related-data"></a>Weer geven hoe uw organisatie uw privacy-gerelateerde gegevens gebruikt
 
@@ -24,7 +24,7 @@ U kunt zien hoe uw organisatie uw gegevens gebruikt op de pagina **Privacy** van
 
 ## <a name="view-your-privacy-related-info"></a>Uw aan privacy gerelateerde informatie bekijken
 
-1. Meld u aan bij uw werk-of school account en ga vervolgens https://myprofile.microsoft.com/ naar de pagina.
+1. Meld u aan bij uw werk-of school account en ga vervolgens https://myaccount.microsoft.com/ naar de pagina.
 
 2. Selecteer **Privacy** in het navigatie deel venster links of selecteer de koppeling **Privacy controleren** in het **Privacybeleid** blok.
 
