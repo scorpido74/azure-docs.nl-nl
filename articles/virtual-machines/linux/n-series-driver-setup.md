@@ -9,18 +9,18 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 01/09/2019
 ms.author: cynthn
-ms.openlocfilehash: b424361f318504f96a57ee67722e725fbafc6561
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: cb2d5c43b8c04829dd6830126b7bc01bee07133b
+ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78944559"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82628189"
 ---
 # <a name="install-nvidia-gpu-drivers-on-n-series-vms-running-linux"></a>NVIDIA GPU-Stuur Programma's installeren op Vm's met N-serie waarop Linux wordt uitgevoerd
 
-Als u gebruik wilt maken van de GPU-mogelijkheden van virtuele machines uit de Azure N-serie waarop Linux wordt uitgevoerd, moeten de NVIDIA GPU-Stuur Programma's zijn geïnstalleerd. Met de [uitbrei ding NVIDIA GPU-stuur programma](../extensions/hpccompute-gpu-linux.md) worden de juiste NVIDIA-CUDA of raster Stuur Programma's geïnstalleerd op een virtuele machine uit de N-serie. De uitbrei ding installeren of beheren met de Azure Portal of hulpprogram ma's, zoals de Azure CLI-of Azure Resource Manager-sjablonen. Zie de [documentatie voor NVIDIA GPU-Stuur Programma's](../extensions/hpccompute-gpu-linux.md) voor ondersteunde distributies en implementaties tappen.
+Als u gebruik wilt maken van de GPU-mogelijkheden van virtuele machines van Azure N-serie die worden ondersteund door NVIDIA-Gpu's, moet u NVIDIA GPU-Stuur Programma's installeren. Met de [uitbrei ding NVIDIA GPU-stuur programma](../extensions/hpccompute-gpu-linux.md) worden de juiste NVIDIA-CUDA of raster Stuur Programma's geïnstalleerd op een virtuele machine uit de N-serie. De uitbrei ding installeren of beheren met de Azure Portal of hulpprogram ma's, zoals de Azure CLI-of Azure Resource Manager-sjablonen. Zie de [documentatie voor NVIDIA GPU-Stuur Programma's](../extensions/hpccompute-gpu-linux.md) voor ondersteunde distributies en implementaties tappen.
 
-Als u ervoor kiest om GPU-Stuur Programma's hand matig te installeren, worden in dit artikel ondersteunde distributies, stuur Programma's en installatie-en verificatie stappen beschreven. Informatie over hand matige installatie van Stuur Programma's is ook beschikbaar voor [Windows-vm's](../windows/n-series-driver-setup.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+Als u ervoor kiest om de NVIDIA GPU-Stuur Programma's hand matig te installeren, worden in dit artikel ondersteunde distributies, stuur Programma's en installatie-en verificatie stappen beschreven. Informatie over hand matige installatie van Stuur Programma's is ook beschikbaar voor [Windows-vm's](../windows/n-series-driver-setup.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 
 Zie [GPU Linux VM-grootten](sizes-gpu.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)voor virtuele machines van de N-serie, opslag capaciteit en schijf Details. 
 
@@ -151,7 +151,7 @@ Als het stuur programma is geïnstalleerd, ziet u uitvoer die vergelijkbaar is m
 
 ## <a name="rdma-network-connectivity"></a>RDMA-netwerk verbinding
 
-RDMA-netwerk connectiviteit kan worden ingeschakeld op met RDMA geschikte virtuele machines uit de N-serie, zoals NC24r geïmplementeerd in dezelfde beschikbaarheidsset of in één plaatsings groep in een VM-schaalset. Het RDMA-netwerk ondersteunt MPI-verkeer (Message Passing Interface) voor toepassingen die worden uitgevoerd met Intel MPI 5. x of een latere versie. Aanvullende vereisten zijn als volgt:
+RDMA-netwerk connectiviteit kan worden ingeschakeld voor virtuele machines van de N-serie die geschikt zijn voor RDMA, zoals NC24r geïmplementeerd in dezelfde beschikbaarheidsset of in één plaatsings groep in een virtuele-machiine (VM)-schaalset. Het RDMA-netwerk ondersteunt MPI-verkeer (Message Passing Interface) voor toepassingen die worden uitgevoerd met Intel MPI 5. x of een latere versie. Aanvullende vereisten zijn als volgt:
 
 ### <a name="distributions"></a>Distributies
 
@@ -356,7 +356,7 @@ Maak vervolgens een vermelding voor uw update script in `/etc/rc.d/rc3.d` zodat 
 ## <a name="troubleshooting"></a>Problemen oplossen
 
 * U kunt de modus voor persistentie instellen met behulp `nvidia-smi` van zodat de uitvoer van de opdracht sneller is als u behoefte hebt aan een query uit te voeren op kaarten. Voer `nvidia-smi -pm 1`uit om de modus voor persistentie in te stellen. Houd er rekening mee dat als de virtuele machine opnieuw wordt opgestart, de instelling van de modus verdwijnt. U kunt de modus instelling altijd scripteren om uit te voeren bij het opstarten.
-* Als u de NVIDIA CUDA-Stuur Programma's hebt bijgewerkt naar de nieuwste versie en RDMA connectivcity niet meer werkt, [installeert u de RDMA-Stuur Programma's opnieuw](https://docs.microsoft.com/azure/virtual-machines/linux/n-series-driver-setup#rdma-network-connectivity) om die connectiviteit te reistablish. 
+* Als u de NVIDIA CUDA-Stuur Programma's hebt bijgewerkt naar de nieuwste versie en RDMA-connectiviteit niet meer werkt, [installeert u de RDMA-Stuur Programma's opnieuw](https://docs.microsoft.com/azure/virtual-machines/linux/n-series-driver-setup#rdma-network-connectivity) om die verbinding opnieuw tot stand te brengen. 
 
 ## <a name="next-steps"></a>Volgende stappen
 

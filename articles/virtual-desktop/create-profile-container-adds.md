@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 04/10/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: dd01b950435fadb96a961b6bb1c6b28ff436907a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 916d34abfaf8223e3cf29977e13dfddf15a3fbf9
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81265770"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82607279"
 ---
 # <a name="create-an-fslogix-profile-container-with-azure-files"></a>Een FSLogix-profiel container maken met Azure Files
 
@@ -219,7 +219,7 @@ Nu hoeft u alleen maar te controleren of het profiel dat u hebt gemaakt, bestaat
 
 Uw profiel verifiëren:
 
-1. Open een browser en ga naar [de web-client met virtueel bureau blad van Windows](https://rdweb.wvd.microsoft.com/webclient/index.html).
+1. Open een browser en ga naar [de web-client met virtueel bureau blad van Windows](https://rdweb.wvd.microsoft.com/arm/webclient).
 
 2. Meld u aan met het gebruikers account dat is toegewezen aan de Extern bureaublad groep.
 

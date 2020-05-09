@@ -2,14 +2,14 @@
 title: Resource beschikbaarheid per regio
 description: Beschik baarheid van reken-en geheugen resources voor de Azure Container Instances-service in verschillende Azure-regio's.
 ms.topic: article
-ms.date: 02/19/2020
+ms.date: 04/27/2020
 ms.author: danlep
-ms.openlocfilehash: c84ab7833f7c90d5d4b3c340c268fd9f75e20da9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 119c1202fe59e02a1b6ff802e3dbdc4d52133abe
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81399403"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82583894"
 ---
 # <a name="resource-availability-for-azure-container-instances-in-azure-regions"></a>Beschik baarheid van resources voor Azure Container Instances in azure-regio's
 
@@ -26,7 +26,7 @@ Zie [quota's en limieten voor Azure container instances](container-instances-quo
 
 De volgende regio's en maximum resources zijn beschikbaar voor container groepen met Linux en [ondersteunde](container-instances-faq.md#what-windows-base-os-images-are-supported) containers op Windows Server 2016.
 
-| Regio's | OS | Maximaal CPU-gebruik | Maxi maal geheugen (GB) | Opslag (GB) |
+| Regio's | Besturingssysteem | Maximaal CPU-gebruik | Maxi maal geheugen (GB) | Opslag (GB) |
 | -------- | -- | :---: | :-----------: | :---: |
 | Brazilië-zuid, Canada-centraal, Centraal-India, VS-midden, Azië-oost, VS-Oost, VS-Oost 2, Europa-noord, Zuid-Centraal VS, Zuidoost-Azië, India-zuid, UK-zuid, Europa-west, VS-West, VS-West 2 | Linux | 4 | 16 | 50 |
 | Australië-oost, Japan-Oost | Linux | 2 | 8 | 50 |
@@ -39,7 +39,7 @@ De volgende regio's en maximum resources zijn beschikbaar voor container groepen
 
 De volgende regio's en maximum resources zijn beschikbaar voor container groepen met Windows Server 2019-containers (preview).
 
-| Regio's | OS | Maximaal CPU-gebruik | Maxi maal geheugen (GB) | Opslag (GB) |
+| Regio's | Besturingssysteem | Maximaal CPU-gebruik | Maxi maal geheugen (GB) | Opslag (GB) |
 | -------- | -- | :---: | :-----------: | :---: |
 | Australië-oost, Brazilië-zuid, Canada-centraal, Centraal-India, centraal VS, Azië-oost, VS-Oost, Japan-Oost, Noord-Centraal VS, Europa-noord, Zuid-Centraal VS, Zuidoost-Azië, India-zuid, UK-zuid, Europa-west | Windows | 4 | 16 | 20 |
 | VS-Oost 2, VS-West 2 | Windows | 2 | 3,5 | 20 |

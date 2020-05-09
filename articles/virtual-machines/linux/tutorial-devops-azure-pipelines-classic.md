@@ -1,6 +1,6 @@
 ---
-title: Zelf studie-Rolling implementaties voor Azure Linux Virtual Machines configureren
-description: In deze zelf studie leert u hoe u een CD-pijp lijn (continue implementatie) kunt instellen die een groep Azure-Linux Virtual Machines incrementeel bijwerkt met behulp van de implementatie strategie voor rollen
+title: Zelf studie-Rolling implementaties configureren voor virtuele machines van Azure Linux
+description: In deze zelf studie leert u hoe u een pijp lijn met doorlopende implementatie (CD) kunt instellen. Met deze pijp lijn wordt een groep virtuele Azure Linux-machines incrementeel bijgewerkt met behulp van de implementatie strategie met rollen.
 author: moala
 manager: jpconnock
 tags: azure-devops-pipelines
@@ -12,75 +12,86 @@ ms.workload: infrastructure
 ms.date: 4/10/2020
 ms.author: moala
 ms.custom: devops
-ms.openlocfilehash: 75888b1ebbda33891296fe0b54c5d204955e32a3
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 28f093bc464a45862d3b253d628b7ae03810f81a
+ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82113477"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82871229"
 ---
-# <a name="tutorial---configure-rolling-deployment-strategy-for-azure-linux-virtual-machines"></a>Zelf studie-een strategie voor Rolling implementatie configureren voor Azure Linux Virtual Machines
+# <a name="tutorial---configure-the-rolling-deployment-strategy-for-azure-linux-virtual-machines"></a>Zelf studie-de strategie voor Rolling implementatie configureren voor virtuele Azure Linux-machines
 
-Azure DevOps is een ingebouwde Azure-service die elk deel van het DevOps-proces automatiseert met continue integratie en continue levering voor elke Azure-resource.
-Of uw app gebruikmaakt van virtuele machines, Web-apps, Kubernetes of een andere resource, u kunt de infra structuur implementeren als code, continue integratie, continue tests, continue levering en continue bewaking met Azure en Azure DevOps.  
+Azure DevOps is een ingebouwde Azure-service waarmee elk deel van het DevOps-proces voor elke Azure-resource wordt geautomatiseerd. Of uw app gebruikmaakt van virtuele machines, Web-apps, Kubernetes of een andere resource, u kunt infra structuur als code (IaaC), continue integratie, continue tests, continue levering en continue bewaking met Azure en Azure DevOps implementeren.
 
-![AzDevOps_portalView](media/tutorial-devops-azure-pipelines-classic/azdevops-view.png) 
+![De Azure Portal met Azure DevOps geselecteerd onder Services](media/tutorial-devops-azure-pipelines-classic/azdevops-view.png)
 
+## <a name="infrastructure-as-a-service-iaas---configure-cicd"></a>Infrastructure as a Service (IaaS)-CI/CD configureren
 
-## <a name="iaas---configure-cicd"></a>IaaS-CI/CD configureren 
-Azure-pijp lijnen bieden een volledige, volledig uitgeruste set hulpprogram ma's voor het automatiseren van CI/CD voor implementaties op virtuele machines. U kunt direct vanuit het Azure Portal een continue leverings pijplijn configureren voor een Azure-VM. Dit document bevat de stappen die zijn gekoppeld aan het instellen van een CI/CD-pijp lijn voor implementaties met meerdere machines van Azure Portal. U kunt ook een kijkje nemen op andere strategieën, zoals [Canarische](https://aka.ms/AA7jdrz) en [Blue-groen](https://aka.ms/AA83fwu), die out-of-box worden ondersteund vanuit Azure Portal. 
+Azure-pijp lijnen bieden een volledig uitgeruste set hulpprogram ma's voor CI/CD-automatisering voor implementaties op virtuele machines. U kunt een pijp lijn voor continue levering configureren voor een Azure-VM vanuit de Azure Portal.
 
+In dit artikel wordt beschreven hoe u een CI/CD-pijp lijn instelt voor implementaties met een rolling van de Azure Portal. De Azure Portal biedt ook ondersteuning voor andere strategieën, zoals [Canarische](https://aka.ms/AA7jdrz) en [Blue-groen](https://aka.ms/AA83fwu).
 
-**CI/CD op Virtual Machines configureren**
+### <a name="configure-cicd-on-virtual-machines"></a>CI/CD op virtuele machines configureren
 
-Virtuele machines kunnen worden toegevoegd als doelen aan een [implementatie groep](https://docs.microsoft.com/azure/devops/pipelines/release/deployment-groups) en kunnen worden gericht op het bijwerken van meerdere machines. Zodra de **implementatie geschiedenis** binnen een implementatie groep is geïmplementeerd, biedt de-configuratie een traceer baarheid van de VM naar de pijp lijn en vervolgens de door voer. 
- 
+U kunt virtuele machines als doelen toevoegen aan een [implementatie groep](https://docs.microsoft.com/azure/devops/pipelines/release/deployment-groups). U kunt deze vervolgens richten op updates voor alle machines. Nadat u op machines hebt geïmplementeerd, kunt u de **implementatie geschiedenis** binnen een implementatie groep bekijken. Met deze weer gave kunt u de virtuele machine traceren naar de pijp lijn en vervolgens naar de door voer.
 
-**Rolling implementaties**: bij een rolling implementatie worden exemplaren van de vorige versie van een toepassing vervangen door exemplaren van de nieuwe versie van de toepassing op een vaste set machines (Rolling set) in elke iteratie. Laten we eens kijken hoe u een rolling update naar virtuele machines kunt configureren.  
-U kunt Rolling updates configureren voor uw**virtuele machines**in de Azure Portal met behulp van de optie continue levering. 
+### <a name="rolling-deployments"></a>Rolling implementaties
 
-Hier volgt stapsgewijze instructies. 
-1. Meld u aan bij uw Azure Portal en navigeer naar een virtuele machine. 
-2. Ga in het linkerdeel venster van de VM naar het menu **doorlopende levering** . Klik vervolgens op **configureren**. 
+Bij elke iteratie vervangt een rolling implementatie exemplaren van de vorige versie van de toepassing. Ze worden vervangen door exemplaren van de nieuwe versie op een vaste set machines (Rolling set). De volgende procedure laat zien hoe u een rolling update kunt configureren voor virtuele machines.
 
-   ![AzDevOps_configure](media/tutorial-devops-azure-pipelines-classic/azure-devops-configure.png) 
-3. Klik in het deel venster configuratie op ' Azure DevOps-organisatie ' om een bestaand account te selecteren of er een te maken. Selecteer vervolgens het project waaronder u de pijp lijn wilt configureren.  
+Met de optie continue levering kunt u Rolling updates configureren voor uw virtuele machines in de Azure Portal. Dit is de stapsgewijze stapsgewijze instructies:
 
+1. Meld u aan bij de Azure Portal en navigeer naar een virtuele machine.
+1. Selecteer in het meest linkse deel venster van de VM-instellingen **continue levering**. Selecteer vervolgens **configureren**.
 
-   ![AzDevOps_project](media/tutorial-devops-azure-pipelines-classic/azure-devops-rolling.png) 
-4. Een implementatie groep is een logische set implementatie doel machines die de fysieke omgevingen vertegenwoordigen; bijvoorbeeld ' dev ', ' test ', ' bedoeld ' en ' productie '. U kunt een nieuwe implementatie groep maken of een bestaande implementatie groep selecteren. 
-5. Selecteer de build-pijp lijn die het pakket publiceert dat naar de virtuele machine moet worden geïmplementeerd. Houd er rekening mee dat het gepubliceerde pakket een implementatie script moet hebben voor _Deploy. ps1_ of _Deploy.sh_ in de `deployscripts` map van package root. Dit implementatie script wordt tijdens runtime uitgevoerd door de Azure DevOps-pijp lijn.
-6. Selecteer de implementatie strategie van uw keuze. In dit geval kunt u ' Rolling ' selecteren.
-7. Desgewenst kunt u de machine met de rol labelen. Bijvoorbeeld ' Web ', ' db ' enzovoort. Dit helpt u Vm's te richten die alleen specifieke rollen hebben.
-8. Klik op **OK** in het dialoog venster om de doorlopende bezorgings pijplijn te configureren. 
-9. Als u klaar bent, beschikt u over een continue leverings pijplijn die is geconfigureerd voor implementatie op de virtuele machine.  
+   ![Het deel venster continue levering met de knop configureren](media/tutorial-devops-azure-pipelines-classic/azure-devops-configure.png)
 
+1. Selecteer in het configuratie scherm de optie **Azure DevOps Organization** om een bestaand account te kiezen of maak een nieuwe. Selecteer vervolgens het project waaronder u de pijp lijn wilt configureren.  
 
-   ![AzDevOps_pipeline](media/tutorial-devops-azure-pipelines-classic/azure-devops-deployment-history.png)
-10. U ziet dat de implementatie van de virtuele machine wordt uitgevoerd. U kunt klikken op de koppeling om naar de pijp lijn te gaan. Klik op **Release-1** om de implementatie weer te geven. U kunt ook op de **bewerken** klikken om de release pijplijn definitie te wijzigen. 
-11. Als u meerdere Vm's wilt configureren, herhaalt u de stappen 2-4 voor andere virtuele machines die aan de implementatie groep moeten worden toegevoegd. Houd er rekening mee dat als u een implementatie groep selecteert waarvoor al een pijp lijn wordt uitgevoerd, de VM wordt toegevoegd aan de implementatie groep zonder nieuwe pijp lijnen te maken. 
-12. Als u klaar bent, klikt u op de pijplijn definitie, gaat u naar de Azure DevOps-organisatie en klikt u op release pijplijn **bewerken** . 
-   ![AzDevOps_edit_pipeline](media/tutorial-devops-azure-pipelines-classic/azure-devops-rolling-pipeline.png)
-13. Klik op de taak koppeling **1, 1 taak** in **dev** -fase. Klik op **implementatie** fase.
-   ![AzDevOps_deploymentGroup](media/tutorial-devops-azure-pipelines-classic/azure-devops-rolling-pipeline-tasks.png)
-14. In het deel venster configuratie aan de rechter kant kunt u het aantal machines opgeven dat u parallel wilt implementeren in elke iteratie. Als u op meerdere machines tegelijk wilt implementeren, kunt u deze met behulp van de schuif regelaar opgeven in termen van percentage.  
+   ![Het deel venster continu bezorgen](media/tutorial-devops-azure-pipelines-classic/azure-devops-rolling.png)
 
-15. De taak Deploy-script uitvoeren voert standaard het implementatie script _Deploy. ps1_ of _Deploy.sh_ in de map ' deployscripts ' uit in de hoofdmap van het gepubliceerde pakket.  
-![AzDevOps_publish_package](media/tutorial-deployment-strategy/package.png)
+1. Een implementatie groep is een logische set implementatie doel machines die de fysieke omgevingen vertegenwoordigen. Dev, testen, bedoeld en productie zijn voor beelden. U kunt een nieuwe implementatie groep maken of een bestaande implementeren.
+1. Selecteer de build-pijp lijn die het pakket publiceert dat naar de virtuele machine moet worden geïmplementeerd. Het gepubliceerde pakket moet een implementatie script met de naam Deploy. ps1 of deploy.sh hebben in de map deployscripts in de hoofdmap van het pakket. De pijp lijn voert dit implementatie script uit.
+1. Selecteer in **implementatie strategie** **Rolling**.
+1. U kunt desgewenst elke machine met de bijbehorende rol labelen. De Tags web en DB zijn voor beelden. Deze Tags helpen u bij het richten op alleen Vm's met een specifieke rol.
+1. Selecteer **OK** om de doorlopende bezorgings pijplijn te configureren.
+1. Nadat de configuratie is voltooid, hebt u een doorlopende pijp lijn geconfigureerd om te implementeren op de virtuele machine.  
+
+   ![Het deel venster continue levering met implementatie geschiedenis](media/tutorial-devops-azure-pipelines-classic/azure-devops-deployment-history.png)
+
+1. De implementatie Details voor de virtuele machine worden weer gegeven. U kunt de koppeling selecteren om naar de pijp lijn te gaan, **versie 1** om de implementatie te bekijken of **bewerken** om de release-pijplijn definitie te wijzigen.
+
+1. Als u meerdere Vm's configureert, herhaalt u stap 2 tot en met 4 om andere Vm's toe te voegen aan de implementatie groep. Als u een implementatie groep selecteert die al een pijplijn uitvoering heeft, worden de Vm's net aan de implementatie groep toegevoegd. Er worden geen nieuwe pijp lijnen gemaakt.
+1. Nadat de configuratie is voltooid, selecteert u de pijplijn definitie, gaat u naar de Azure DevOps-organisatie en selecteert u **bewerken** voor de release pijplijn.
+
+   ![De voortschrijdende pijp lijn bewerken](media/tutorial-devops-azure-pipelines-classic/azure-devops-rolling-pipeline.png)
+
+1. Selecteer **1 taak, 1 taak** in de **ontwikkelings** fase. Selecteer de **implementatie** fase.
+
+   ![Taken voor het uitvoeren van een pijp lijn met de geselecteerde taak implementeren](media/tutorial-devops-azure-pipelines-classic/azure-devops-rolling-pipeline-tasks.png)
+
+1. In het rechter deel venster configuratie kunt u het aantal machines opgeven dat u parallel wilt implementeren in elke iteratie. Als u op meerdere machines tegelijk wilt implementeren, kunt u het aantal machines opgeven als een percentage met behulp van de schuif regelaar.  
+
+1. De taak Deploy-script uitvoeren voert standaard het implementatie script Deploy. ps1 of deploy.sh uit. Het script bevindt zich in de map deployscripts in de hoofdmap van het gepubliceerde pakket.
+
+   ![Het deel venster artefacten met deploy.sh in de map deployscripts](media/tutorial-deployment-strategy/package.png)
 
 ## <a name="other-deployment-strategies"></a>Andere implementatie strategieën
 
-- [Strategie voor distributie op Canarische configureren](https://aka.ms/AA7jdrz)
-- [Strategie voor de implementatie van blauw en groen configureren](https://aka.ms/AA83fwu)
+- [De strategie voor de distributie van de Canarische implementatie configureren](https://aka.ms/AA7jdrz)
+- [De implementatie strategie voor blauw-groen configureren](https://aka.ms/AA83fwu)
 
+## <a name="azure-devops-projects"></a>Azure DevOps Projects
+
+U kunt eenvoudig aan de slag met Azure. Met Azure DevOps Projects kunt u uw toepassing in slechts drie stappen uitvoeren op elke Azure-service door het volgende te selecteren:
+
+- Een toepassings taal
+- Een runtime
+- Een Azure-service
  
-## <a name="azure-devops-project"></a>Azure DevOps-project 
-Ga gemakkelijker dan ooit aan de slag met Azure.
+[Meer informatie](https://azure.microsoft.com/features/devops-projects/).
  
-Met DevOps Projects kunt u uw toepassing in slechts drie stappen uitvoeren op elke Azure-service: Selecteer een toepassings taal, een runtime en een Azure-service.
- 
-[Meer informatie](https://azure.microsoft.com/features/devops-projects/ ).
- 
-## <a name="additional-resources"></a>Aanvullende bronnen 
-- [Implementeren in azure Virtual Machines met behulp van DevOps-project](https://docs.microsoft.com/azure/devops-project/azure-devops-project-vms)
-- [Continue implementatie van uw app implementeren in een Schaalset voor virtuele Azure-machines](https://docs.microsoft.com/azure/devops/pipelines/apps/cd/azure/deploy-azure-scaleset)
+## <a name="additional-resources"></a>Aanvullende bronnen
+
+- [Implementeren op virtuele machines van Azure met behulp van Azure DevOps Projects](https://docs.microsoft.com/azure/devops-project/azure-devops-project-vms)
+- [Continue implementatie van uw app implementeren in een schaalset voor virtuele Azure-machines](https://docs.microsoft.com/azure/devops/pipelines/apps/cd/azure/deploy-azure-scaleset)

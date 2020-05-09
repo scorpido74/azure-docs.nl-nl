@@ -108,7 +108,7 @@ Als de gebruiker kiest om te verwijderen met behulp van Power shell, resulteert 
 > <span style="color:red">Remove-AzureStorageBlob: de externe server heeft een fout geretourneerd: (412) er is momenteel een lease op de BLOB en er is geen lease-ID opgegeven in de aanvraag. HTTP-status code: 412-HTTP-fout bericht: er is momenteel een lease voor de BLOB en er is geen lease-ID opgegeven in de aanvraag.</span>
 
 
-## <a name="resolution-steps"></a>Oplossingen
+## <a name="resolution-steps"></a>Stappen om het probleem op te lossen
 
 ### <a name="to-remove-classic-disks"></a>Klassieke schijven verwijderen
 Volg deze stappen op de Azure Portal:

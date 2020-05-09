@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: article
 ms.date: 09/16/2019
 ms.author: allensu
-ms.openlocfilehash: 60032677594537f1e7791b7108eebd5d4cfad5b4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8af33e95c92cf51bdabe3325bd9249b4662b7d28
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75430351"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82583769"
 ---
 # <a name="create-a-private-endpoint-using-azure-powershell"></a>Een persoonlijk eind punt maken met Azure PowerShell
 Een persoonlijk eind punt is de fundamentele bouw steen voor privé-koppeling in Azure. Hiermee kunnen Azure-resources, zoals Virtual Machines (Vm's), privé communiceren met persoonlijke koppelings bronnen. 
@@ -137,7 +137,7 @@ $subnet = $virtualNetwork `
 $privateEndpoint = New-AzPrivateEndpoint -ResourceGroupName "myResourceGroup" `
   -Name "myPrivateEndpoint" `
   -Location "westcentralus" `
-  -Subnet  $subnet`
+  -Subnet  $subnet `
   -PrivateLinkServiceConnection $privateEndpointConnection
 ``` 
 
@@ -198,9 +198,10 @@ mstsc /v:<publicIpAddress>
 ## <a name="access-sql-database-server-privately-from-the-vm"></a>SQL Database Server privé benaderen vanuit de VM
 
 1. Open Power shell in de Extern bureaublad van myVM.
-2. Voer `nslookup myserver.database.windows.net` in. 
+2. Voer `nslookup myserver.database.windows.net` in. Vergeet niet door `myserver` de naam van uw SQL-Server te vervangen.
 
     U ontvangt een bericht dat er ongeveer als volgt uitziet:
+    
     ```azurepowershell
     Server:  UnKnown
     Address:  168.63.129.16
@@ -209,14 +210,21 @@ mstsc /v:<publicIpAddress>
     Address:  10.0.0.5
     Aliases:   myserver.database.windows.net
     ```
-3. SQL Server Management Studio installeren
-4. Typ of Selecteer in verbinding maken met server de volgende informatie: instelling van het type waarde-server data base-engine selecteren.
-      Server naam selecteren myserver.database.windows.net gebruikers naam Geef een gebruikers naam op die tijdens het maken is opgegeven.
-      Wacht woord voer een wacht woord in dat u hebt opgegeven tijdens het maken.
-      Wacht woord onthouden selecteren Ja.
-5. Selecteer Verbinden.
-6. Bladeren door data bases vanuit het menu links. 
-7. Eventueel Gegevens uit mydatabase maken of er een query op uitvoeren
+    
+3. Installeer SQL Server Management Studio.
+4. Typ of Selecteer in **verbinding maken met server**de volgende informatie:
+
+    | Instelling | Waarde |
+    | --- | --- |
+    | Servertype | Database Engine |
+    | Servernaam | myserver.database.windows.net |
+    | Gebruikersnaam | Voer de gebruikers naam in die tijdens het maken is opgegeven |
+    | Wachtwoord | Voer het wacht woord in dat u hebt opgegeven tijdens het maken |
+    | Wacht woord onthouden | Ja |
+    
+5. Selecteer **Verbinden**.
+6. Blader door **data bases** in het menu links. 
+7. Eventueel Gegevens uit mydatabase maken of er een query op uitvoeren.
 8. Sluit de verbinding met extern bureau blad met *myVM*. 
 
 ## <a name="clean-up-resources"></a>Resources opschonen 

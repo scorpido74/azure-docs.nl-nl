@@ -1,41 +1,43 @@
 ---
-title: Herstel na nood gevallen en failover van het opslag account (preview-versie)
+title: Herstel na nood geval en failover van het opslag account
 titleSuffix: Azure Storage
-description: Azure Storage ondersteunt de failover van een account (preview) voor geografisch redundante opslag accounts. Met account-failover kunt u het failover-proces voor uw opslag account initiëren als het primaire eind punt niet beschikbaar is.
+description: Azure Storage ondersteunt de failover van accounts voor geo-redundante opslag accounts. Met account-failover kunt u het failover-proces voor uw opslag account initiëren als het primaire eind punt niet beschikbaar is.
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 01/23/2020
+ms.date: 05/05/2020
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: 7340f419912324e488dc38e5aa0d884b150a44b7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6534e7d3a05434855503a9cbf1e675aa11799984
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "82176376"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82857785"
 ---
-# <a name="disaster-recovery-and-account-failover-preview"></a>Herstel na nood gevallen en failover van account (preview-versie)
+# <a name="disaster-recovery-and-storage-account-failover"></a>Herstel na nood geval en failover van het opslag account
 
 Micro soft streeft ernaar om ervoor te zorgen dat Azure-Services altijd beschikbaar zijn. Er kunnen echter niet-geplande service storingen optreden. Als uw toepassing tolerantie vereist, raadt micro soft aan geografisch redundante opslag te gebruiken, zodat uw gegevens naar een tweede regio worden gekopieerd. Daarnaast moeten klanten een nood herstel plan hebben voor het verwerken van een regionale service storing. Een belang rijk onderdeel van een plan voor herstel na nood gevallen is bezig met het voorbereiden van een failover naar het secundaire eind punt in het geval dat het primaire eind punt niet beschikbaar is.
 
-Azure Storage ondersteunt de failover van een account (preview) voor geografisch redundante opslag accounts. Met account-failover kunt u het failover-proces voor uw opslag account initiëren als het primaire eind punt niet beschikbaar is. De failover werkt het secundaire eind punt bij om het primaire eind punt voor uw opslag account te worden. Zodra de failover is voltooid, kunnen clients naar het nieuwe primaire eind punt gaan schrijven.
+Azure Storage ondersteunt de failover van accounts voor geo-redundante opslag accounts. Met account-failover kunt u het failover-proces voor uw opslag account initiëren als het primaire eind punt niet beschikbaar is. De failover werkt het secundaire eind punt bij om het primaire eind punt voor uw opslag account te worden. Zodra de failover is voltooid, kunnen clients naar het nieuwe primaire eind punt gaan schrijven.
 
-[!INCLUDE [updated-for-az](../../../includes/storage-data-lake-gen2-support.md)]
+Account-failover is beschikbaar voor de typen algemeen-en Blob Storage-opslag accounts voor algemene doel einden met Azure Resource Manager-implementaties. Account-failover wordt ondersteund voor alle open bare regio's, maar is op dit moment niet beschikbaar in soevereine of nationale Clouds.
 
-In dit artikel worden de concepten en het proces van een failover van een account beschreven en wordt uitgelegd hoe u uw opslag account voorbereidt voor herstel met de minste gevolgen voor de klant. Zie [een account-failover initiëren (preview)](storage-initiate-account-failover.md)voor meer informatie over het initiëren van een account-failover in de Azure portal of Power shell.
+In dit artikel worden de concepten en het proces van een failover van een account beschreven en wordt uitgelegd hoe u uw opslag account voorbereidt voor herstel met de minste gevolgen voor de klant. Zie [een account-failover initiëren](storage-initiate-account-failover.md)voor meer informatie over het initiëren van een account-failover in de Azure portal of Power shell.
+
+[!INCLUDE [storage-data-lake-gen2-support](../../../includes/storage-data-lake-gen2-support.md)]
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 ## <a name="choose-the-right-redundancy-option"></a>De juiste redundantie optie kiezen
 
-Azure Storage houdt meerdere kopieën van uw opslag account bij om duurzaamheid en hoge Beschik baarheid te garanderen. Welke redundantie optie u kiest voor uw account, is afhankelijk van de mate van tolerantie die u nodig hebt. Voor beveiliging tegen regionale storingen kiest u geografisch redundante opslag, met of zonder de optie Lees toegang vanuit de secundaire regio:  
+Azure Storage houdt meerdere kopieën van uw opslag account bij om duurzaamheid en hoge Beschik baarheid te garanderen. Welke redundantie optie u kiest voor uw account, is afhankelijk van de mate van tolerantie die u nodig hebt. Voor beveiliging tegen regionale uitval kunt u uw account configureren voor geografisch redundante opslag, met of zonder de optie Lees toegang vanuit de secundaire regio:  
 
-**Geografisch redundante opslag (GRS) of geo-zone-redundante opslag (GZRS) (preview)** kopieert uw gegevens asynchroon in twee geografische regio's die ten minste honderden kilo meters van elkaar zijn. Als de primaire regio een storing ondergaat, fungeert de secundaire regio als een redundante bron voor uw gegevens. U kunt een failover initiëren om het secundaire eind punt te transformeren naar het primaire eind punt.
+Met **geografisch redundante opslag (GRS) of geo-zone-redundante opslag (GZRS)** worden uw gegevens asynchroon gekopieerd in twee geografische regio's die minstens honderden kilo meters uit elkaar liggen. Als de primaire regio een storing ondergaat, fungeert de secundaire regio als een redundante bron voor uw gegevens. U kunt een failover initiëren om het secundaire eind punt te transformeren naar het primaire eind punt.
 
-**Geografisch redundante opslag met lees toegang (RA-GRS) of geo-zone-redundante opslag met lees toegang (RA-GZRS) (preview)** biedt geografisch redundante opslag met het extra voor deel van lees toegang tot het secundaire eind punt. Als er een storing optreedt in het primaire eind punt, kunnen toepassingen die zijn geconfigureerd voor RA-GRS en ontworpen voor maximale Beschik baarheid, blijven lezen van het secundaire eind punt. Micro soft raadt RA-GRS aan voor maximale tolerantie voor uw toepassingen.
+**Geografisch redundante opslag met lees toegang (RA-GRS) of geo-zone-redundante opslag met lees toegang (RA-GZRS)** voorziet in geografisch redundante opslag met het extra voor deel van lees toegang tot het secundaire eind punt. Als er een storing optreedt in het primaire eind punt, kunnen toepassingen die zijn geconfigureerd voor lees toegang tot de secundaire en die is ontworpen voor maximale Beschik baarheid, blijven lezen van het secundaire eind punt. Micro soft raadt RA-GZRS aan voor maximale Beschik baarheid en duurzaamheid voor uw toepassingen.
 
 Zie [Azure Storage redundantie](storage-redundancy.md)voor meer informatie over redundantie in azure Storage.
 
@@ -46,15 +48,15 @@ Zie [Azure Storage redundantie](storage-redundancy.md)voor meer informatie over 
 
 Het is belang rijk om uw toepassing te ontwerpen voor hoge Beschik baarheid vanaf het begin. Raadpleeg deze Azure-bronnen voor hulp bij het ontwerpen van uw toepassing en het plannen van nood herstel:
 
-- [Flexibele toepassingen ontwerpen voor Azure](/azure/architecture/checklist/resiliency-per-service): een overzicht van de belangrijkste concepten voor het ontwikkelen van Maxi maal beschik bare toepassingen in Azure.
-- [Beschikbaarheids controlelijst](/azure/architecture/checklist/resiliency-per-service): een controle lijst voor het controleren of uw toepassing de aanbevolen ontwerp procedures voor hoge Beschik baarheid implementeert.
-- [Ontwerpen van Maxi maal beschik bare toepassingen met Ra-GRS](storage-designing-ha-apps-with-ragrs.md): ontwerp richt lijnen voor het ontwikkelen van toepassingen om te profiteren van Ra-GRS.
+- [Flexibele toepassingen ontwerpen voor Azure](/azure/architecture/framework/resiliency/app-design): een overzicht van de belangrijkste concepten voor het ontwikkelen van Maxi maal beschik bare toepassingen in Azure.
+- [Controle lijst voor tolerantie](/azure/architecture/checklist/resiliency-per-service): een controle lijst voor het controleren of uw toepassing de aanbevolen ontwerp procedures voor hoge Beschik baarheid implementeert.
+- [Gebruik geo-redundantie om Maxi maal beschik bare toepassingen te ontwerpen](geo-redundant-design.md): ontwerp richt lijnen voor het bouwen van toepassingen om te profiteren van geografisch redundante opslag.
 - [Zelf studie: een Maxi maal beschik bare toepassing bouwen met Blob-opslag](../blobs/storage-create-geo-redundant-storage.md): een zelf studie waarin wordt uitgelegd hoe u een Maxi maal beschik bare toepassing bouwt die automatisch schakelt tussen eind punten als storingen en herstel bewerkingen worden gesimuleerd. 
 
 Houd bovendien de volgende aanbevolen procedures voor het onderhouden van hoge Beschik baarheid voor uw Azure Storage gegevens:
 
 - **Schijven:** Gebruik [Azure backup](https://azure.microsoft.com/services/backup/) om een back-up te maken van de VM-schijven die worden gebruikt door uw virtuele Azure-machines. U kunt ook [Azure site Recovery](https://azure.microsoft.com/services/site-recovery/) gebruiken om uw vm's te beschermen in het geval van een regionale nood situatie.
-- **Blok-blobs:** Schakel [zacht verwijderen](../blobs/storage-blob-soft-delete.md) in om te beschermen tegen verwijderingen op object niveau en overschrijvingen, of kopieer blok-blobs naar een ander opslag account in een andere regio met behulp van [AzCopy](storage-use-azcopy.md), [Azure PowerShell](/powershell/module/az.storage/)of de [Azure data verplaatsings bibliotheek](https://azure.microsoft.com/blog/introducing-azure-storage-data-movement-library-preview-2/).
+- **Blok-blobs:** Schakel [zacht verwijderen](../blobs/storage-blob-soft-delete.md) in om te beschermen tegen verwijderingen op object niveau en overschrijvingen, of kopieer blok-blobs naar een ander opslag account in een andere regio met behulp van [AzCopy](storage-use-azcopy.md), [Azure PowerShell](/powershell/module/az.storage/)of de [Azure data verplaatsings bibliotheek](storage-use-data-movement-library.md).
 - **Bestanden:** Gebruik [AzCopy](storage-use-azcopy.md) of [Azure PowerShell](/powershell/module/az.storage/) om uw bestanden te kopiëren naar een ander opslag account in een andere regio.
 - **Tabellen:** gebruik [AzCopy](storage-use-azcopy.md) om tabel gegevens te exporteren naar een ander opslag account in een andere regio.
 
@@ -66,7 +68,7 @@ Micro soft raadt u ook aan uw toepassing te ontwerpen om de mogelijkheid van sch
 
 ## <a name="understand-the-account-failover-process"></a>Meer informatie over het proces van failover van accounts
 
-Met een door de klant beheerde account-failover (preview) kunt u uw hele opslag account laten mislukken tot de secundaire regio als de primaire om een of andere reden niet beschikbaar is. Wanneer u een failover naar de secundaire regio afdwingt, kunnen clients beginnen met het schrijven van gegevens naar het secundaire eind punt nadat de failover is voltooid. De failover duurt doorgaans ongeveer een uur.
+Door de klant beheerde account-failover stelt u in staat om uw hele opslag account te laten overgaan naar de secundaire regio als de primaire om een of andere reden niet beschikbaar is. Wanneer u een failover naar de secundaire regio afdwingt, kunnen clients beginnen met het schrijven van gegevens naar het secundaire eind punt nadat de failover is voltooid. De failover duurt doorgaans ongeveer een uur.
 
 ### <a name="how-an-account-failover-works"></a>Hoe een accountfailover werkt
 
@@ -82,12 +84,12 @@ De klant initieert de account-failover naar het secundaire eind punt. Met het fa
 
 ![Klant initieert een failover van een account naar een secundair eind punt](media/storage-disaster-recovery-guidance/failover-to-secondary.png)
 
-Schrijf toegang wordt hersteld voor GRS-en RA-GRS-accounts nadat de DNS-vermelding is bijgewerkt en er aanvragen worden doorgestuurd naar het nieuwe primaire eind punt. Bestaande opslag service-eind punten voor blobs, tabellen, wacht rijen en bestanden blijven hetzelfde na de failover.
+Schrijf toegang wordt hersteld voor geo-redundante accounts nadat de DNS-vermelding is bijgewerkt en er aanvragen worden doorgestuurd naar het nieuwe primaire eind punt. Bestaande opslag service-eind punten voor blobs, tabellen, wacht rijen en bestanden blijven hetzelfde na de failover.
 
 > [!IMPORTANT]
-> Nadat de failover is voltooid, is het opslag account geconfigureerd om lokaal redundant te zijn in het nieuwe primaire eind punt. Als u de replicatie naar de nieuwe secundaire wilt hervatten, configureert u het account voor het opnieuw gebruiken van geo-redundante opslag (RA-GRS of GRS).
+> Nadat de failover is voltooid, is het opslag account geconfigureerd om lokaal redundant te zijn in het nieuwe primaire eind punt. Als u de replicatie naar de nieuwe secundaire wilt hervatten, configureert u het account voor geo-redundantie opnieuw.
 >
-> Houd er rekening mee dat het converteren van een LRS-account naar RA-GRS of GRS een kosten kost. Deze kosten zijn van toepassing op het bijwerken van het opslag account in de nieuwe primaire regio voor het gebruik van RA-GRS of GRS na een failover.  
+> Houd er rekening mee dat het converteren van een LRS-account voor het gebruik van geo-redundantie kosten kost. Deze kosten zijn van toepassing op het bijwerken van het opslag account in de nieuwe primaire regio na een failover.  
 
 ### <a name="anticipate-data-loss"></a>Verwachte gegevens verlies
 
@@ -104,7 +106,7 @@ Ontwerp uw toepassing als best practice, zodat u de laatste synchronisatie tijd 
 
 ### <a name="use-caution-when-failing-back-to-the-original-primary"></a>Wees voorzichtig bij het uitvoeren van een failback naar de oorspronkelijke primaire
 
-Nadat u een failover van de primaire naar de secundaire regio hebt uitgevoerd, is uw opslag account geconfigureerd om lokaal te worden redundant in de nieuwe primaire regio. U kunt het account voor geo-redundantie opnieuw configureren door het bij te werken voor gebruik van GRS of RA-GRS. Wanneer het account na een failover is geconfigureerd voor geo-redundantie, begint de nieuwe primaire regio onmiddellijk met het kopiëren van gegevens naar de nieuwe secundaire regio, wat de primaire is vóór de oorspronkelijke failover. Het kan echter enige tijd duren voordat de bestaande gegevens in de primaire server volledig zijn gekopieerd naar de nieuwe secundaire.
+Nadat u een failover van de primaire naar de secundaire regio hebt uitgevoerd, is uw opslag account geconfigureerd om lokaal te worden redundant in de nieuwe primaire regio. U kunt het account vervolgens opnieuw configureren voor geo-redundantie. Wanneer het account na een failover is geconfigureerd voor geo-redundantie, begint de nieuwe primaire regio onmiddellijk met het kopiëren van gegevens naar de nieuwe secundaire regio, wat de primaire is vóór de oorspronkelijke failover. Het kan echter enige tijd duren voordat de bestaande gegevens in de primaire server volledig zijn gekopieerd naar de nieuwe secundaire.
 
 Nadat het opslag account voor geo-redundantie opnieuw is geconfigureerd, is het mogelijk om een andere failover van de nieuwe primaire back-up naar de nieuwe secundaire te initiëren. In dit geval wordt de oorspronkelijke primaire regio voorafgaand aan de failover opnieuw de primaire regio en is deze geconfigureerd om lokaal redundant te zijn. Alle gegevens in de primaire regio na de failover (de oorspronkelijke secundaire) zijn dan verloren gegaan. Als het meren deel van de gegevens in het opslag account niet naar de nieuwe secundaire is gekopieerd voordat u een failback hebt uitgevoerd, kan dit een groot verlies van gegevens opleveren.
 
@@ -112,33 +114,27 @@ Als u een groot gegevens verlies wilt voor komen, controleert u de waarde van de
 
 ## <a name="initiate-an-account-failover"></a>Een failover van account initiëren
 
-U kunt een failover van een account initiëren vanuit de Azure Portal, Power shell, Azure CLI of de Azure Storage Resource provider-API. Zie [een account-failover initiëren (preview)](storage-initiate-account-failover.md)voor meer informatie over het initiëren van een failover.
+U kunt een failover van een account initiëren vanuit de Azure Portal, Power shell, Azure CLI of de Azure Storage Resource provider-API. Zie [een account-failover initiëren](storage-initiate-account-failover.md)voor meer informatie over het initiëren van een failover.
 
-## <a name="about-the-preview"></a>Over de preview-versie
+## <a name="additional-considerations"></a>Aanvullende overwegingen
 
-Account-failover is beschikbaar als preview-versie voor alle klanten die gebruikmaken van GRS of RA-GRS met Azure Resource Manager-implementaties. Algemeen gebruik v1, algemeen v2 en Blob Storage-account typen worden ondersteund. De failover van het account is momenteel beschikbaar in alle open bare regio's. De account-failover is op dit moment niet beschikbaar in soevereine/nationale Clouds.
+Bekijk de aanvullende overwegingen die in deze sectie worden beschreven om te begrijpen hoe uw toepassingen en services kunnen worden beïnvloed wanneer u een failover afdwingt.
 
-Het voor beeld is alleen bedoeld voor niet-productie gebruik. Service Level Agreements (Sla's) op het niveau van de productie zijn momenteel niet beschikbaar.
+### <a name="storage-account-containing-archived-blobs"></a>Opslag account met gearchiveerde blobs
 
-### <a name="additional-considerations"></a>Aanvullende overwegingen
+Opslag accounts met gearchiveerde blobs ondersteunen de failover van het account. Nadat de failover is voltooid, moeten alle gearchiveerde blobs opnieuw worden gehydrateerd naar een online-laag voordat het account voor geo-redundantie kan worden geconfigureerd.
 
-Bekijk de aanvullende overwegingen die in deze sectie worden beschreven om te begrijpen hoe uw toepassingen en services kunnen worden beïnvloed wanneer u een failover tijdens de preview-periode afdwingt.
-
-#### <a name="storage-account-containing-archived-blobs"></a>Opslag account met gearchiveerde blobs
-
-Opslag accounts met gearchiveerde blobs ondersteunen de failover van het account. Zodra de failover is voltooid, moet u het account weer converteren naar GRS of RA-GRS moeten alle gearchiveerde blobs eerst worden gemigreerd naar een online laag.
-
-#### <a name="storage-resource-provider"></a>Opslagresourceprovider
+### <a name="storage-resource-provider"></a>Opslagresourceprovider
 
 Nadat een failover is voltooid, kunnen clients opnieuw Azure Storage gegevens in de nieuwe primaire regio lezen en schrijven. Er wordt echter geen failover uitgevoerd voor de resource provider Azure Storage, zodat er nog steeds resource beheer bewerkingen in de primaire regio moeten worden uitgevoerd. Als de primaire regio niet beschikbaar is, kunt u geen beheer bewerkingen uitvoeren op het opslag account.
 
 Omdat er geen failover wordt uitgevoerd voor de resource provider van Azure Storage, retourneert de [locatie](/dotnet/api/microsoft.azure.management.storage.models.trackedresource.location) -eigenschap de oorspronkelijke primaire locatie nadat de failover is voltooid.
 
-#### <a name="azure-virtual-machines"></a>Virtuele machines van Azure
+### <a name="azure-virtual-machines"></a>Virtuele machines van Azure
 
 Virtuele Azure-machines (Vm's) mislukken niet als onderdeel van een account-failover. Als de primaire regio niet beschikbaar is en u een failover naar de secundaire regio wilt uitvoeren, moet u de virtuele machines na de failover opnieuw maken. Het is ook mogelijk dat er gegevens verloren gaan bij de failover van het account. Micro soft raadt de volgende [hoge Beschik baarheid](../../virtual-machines/windows/manage-availability.md) en richt lijnen voor [herstel na nood gevallen](../../virtual-machines/virtual-machines-disaster-recovery-guidance.md) aan die specifiek zijn voor virtuele machines in Azure.
 
-#### <a name="azure-unmanaged-disks"></a>Niet-beheerde Azure-schijven
+### <a name="azure-unmanaged-disks"></a>Niet-beheerde Azure-schijven
 
 Als best practice, raadt micro soft aan om niet-beheerde schijven te converteren naar beheerde schijven. Als u echter een failover wilt uitvoeren voor een account met niet-beheerde schijven die zijn gekoppeld aan virtuele Azure-machines, moet u de virtuele machine afsluiten voordat de failover wordt gestart.
 
@@ -155,30 +151,28 @@ Niet-beheerde schijven worden opgeslagen als pagina-blobs in Azure Storage. Wann
 
 Houd er wel bij dat alle gegevens die zijn opgeslagen op een tijdelijke schijf verloren gaan wanneer de virtuele machine wordt afgesloten.
 
-### <a name="unsupported-features-and-services"></a>Niet-ondersteunde functies en services
+## <a name="unsupported-features-and-services"></a>Niet-ondersteunde functies en services
 
-De volgende functies en services worden niet ondersteund voor account-failover voor de preview-versie:
+De volgende functies en services worden niet ondersteund voor account-failover:
 
 - Azure File Sync biedt geen ondersteuning voor de failover van het opslag account. Er mag geen failover-overschakeling worden uitgevoerd voor opslagaccounts met Azure-bestandsshares die worden gebruikt als cloudeindpunten in Azure File Sync. Als u dat wel doet, werkt de synchronisatie niet meer en kan dit leiden tot onverwacht gegevensverlies van bestanden in cloudlagen.
 - ADLS Gen2 opslag accounts (accounts waarvoor een hiërarchische naam ruimte is ingeschakeld) worden op dit moment niet ondersteund.
 - Er kan geen failover worden uitgevoerd voor een opslag account met Premium-blok-blobs. Opslag accounts die ondersteuning bieden voor Premium-blok-blobs ondersteunen momenteel geen geo-redundantie.
 - Er kan geen failover worden uitgevoerd voor een opslag account met een of meer [Onveranderbaarheid-beleids](../blobs/storage-blob-immutable-storage.md) containers waarvoor een virus is ingeschakeld. Een niet-vergrendelde/vergrendelde, op tijd gebaseerde Bewaar-en wettelijk Bewaar beleidsregels voor komen failover om naleving te behouden.
-- Nadat de failover is voltooid, kunnen de volgende functies niet meer werken als deze oorspronkelijk is ingeschakeld: [gebeurtenis abonnementen](../blobs/storage-blob-event-overview.md), [feed voor wijzigingen](../blobs/storage-blob-change-feed.md), [levenscyclus beleid](../blobs/storage-lifecycle-management-concepts.md)en [Opslaganalyse logboek registratie](storage-analytics-logging.md).
 
 ## <a name="copying-data-as-an-alternative-to-failover"></a>Gegevens kopiëren als alternatief voor failover
 
-Als uw opslag account is geconfigureerd voor RA-GRS, hebt u lees toegang tot uw gegevens via het secundaire eind punt. Als u de voor keur geeft aan een failover in het geval van een storing in de primaire regio, kunt u hulpprogram ma's zoals [AzCopy](storage-use-azcopy.md), [Azure PowerShell](/powershell/module/az.storage/)of de [Azure-bibliotheek voor gegevens verplaatsing](https://azure.microsoft.com/blog/introducing-azure-storage-data-movement-library-preview-2/) gebruiken om gegevens van uw opslag account in de secundaire regio te kopiëren naar een ander opslag account in een andere regio. U kunt vervolgens uw toepassingen naar dat opslag account laten wijzen voor zowel lees-als schrijf Beschik baarheid.
+Als uw opslag account is geconfigureerd voor lees toegang tot de secundaire, kunt u uw toepassing ontwerpen om te lezen van het secundaire eind punt. Als u de voor keur geeft aan een failover in het geval van een storing in de primaire regio, kunt u hulpprogram ma's zoals [AzCopy](storage-use-azcopy.md), [Azure PowerShell](/powershell/module/az.storage/)of de [Azure-bibliotheek voor gegevens verplaatsing](../common/storage-use-data-movement-library.md) gebruiken om gegevens van uw opslag account in de secundaire regio te kopiëren naar een ander opslag account in een andere regio. U kunt vervolgens uw toepassingen naar dat opslag account laten wijzen voor zowel lees-als schrijf Beschik baarheid.
 
 > [!CAUTION]
 > Een account-failover mag niet worden gebruikt als onderdeel van de strategie voor gegevens migratie.
 
-
 ## <a name="microsoft-managed-failover"></a>Door micro soft beheerde failover
 
-In uitzonderlijke omstandigheden waarbij een regio door een belang rijke nood geval verloren gaat, kan micro soft een regionale failover initiëren. In dit geval is er geen actie voor uw onderdeel vereist. Totdat de door micro soft beheerde failover is voltooid, hebt u geen schrijf toegang tot uw opslag account. Uw toepassingen kunnen lezen uit de secundaire regio als uw opslag account is geconfigureerd voor RA-GRS. 
+In uitzonderlijke omstandigheden waarbij een regio door een belang rijke nood geval verloren gaat, kan micro soft een regionale failover initiëren. In dit geval is er geen actie voor uw onderdeel vereist. Totdat de door micro soft beheerde failover is voltooid, hebt u geen schrijf toegang tot uw opslag account. Uw toepassingen kunnen lezen uit de secundaire regio als uw opslag account is geconfigureerd voor RA-GRS of RA-GZRS.
 
 ## <a name="see-also"></a>Zie ook
 
-- [Failover van een account initiëren (preview-versie)](storage-initiate-account-failover.md)
-- [Maximaal beschikbare toepassingen met RA-GRS ontwerpen](storage-designing-ha-apps-with-ragrs.md)
-- [Zelf studie: een Maxi maal beschik bare toepassing bouwen met Blob Storage](../blobs/storage-create-geo-redundant-storage.md) 
+- [Geo-redundantie gebruiken om Maxi maal beschik bare toepassingen te ontwerpen](geo-redundant-design.md)
+- [Een failover van account initiëren](storage-initiate-account-failover.md)
+- [Zelf studie: een Maxi maal beschik bare toepassing bouwen met Blob Storage](../blobs/storage-create-geo-redundant-storage.md)

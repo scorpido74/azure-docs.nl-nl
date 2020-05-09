@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: mahi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 383a28e90c093c0885c34af03371608261ece110
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.openlocfilehash: 88e58fbf6acc15b71fd135184cf8806a793140f3
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82692632"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82983207"
 ---
 # <a name="secure-your-synapse-workspace-preview"></a>Uw Synapse-werk ruimte beveiligen (preview-versie)
 
@@ -145,7 +145,7 @@ Synapse Studio werkt anders op basis van gebruikers rollen. Sommige items kunnen
 | Synapse Studio openen | JA | JA | JA |
 | Start hub weer geven | JA | JA | JA |
 | Data hub weer geven | JA | JA | JA |
-| Data hub/Zie gekoppelde ADLSGen2-accounts en containers | JA [1] | JA [1] | JA [1] |
+| Data hub/Zie gekoppelde ADLS Gen2 accounts en containers | JA [1] | JA [1] | JA [1] |
 | Data hub/Zie data bases | JA | JA | JA |
 | Data hub/Zie objecten in data bases | JA | JA | JA |
 | Data hub/toegang tot gegevens in data bases van SQL-groep | JA   | NO   | JA   |
@@ -179,8 +179,8 @@ Synapse Studio werkt anders op basis van gebruikers rollen. Sommige items kunnen
 
 
 > [!NOTE]
-> [1] toegang tot gegevens in containers is afhankelijk van het toegangs beheer in ADLSGen2. </br>
-> [2] SQL OD-tabellen en Spark-tabellen slaan hun gegevens op in ADLSGen2 en toegang vereist de juiste machtigingen voor ADLSGen2.
+> [1] toegang tot gegevens in containers is afhankelijk van het toegangs beheer in ADLS Gen2. </br>
+> [2] SQL-tabellen en Spark-tabellen bevatten hun gegevens in ADLS Gen2 en toegang vereist de juiste machtigingen voor ADLS Gen2.
 
 ## <a name="next-steps"></a>Volgende stappen
 

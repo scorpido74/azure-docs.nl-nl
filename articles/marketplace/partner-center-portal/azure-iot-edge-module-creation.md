@@ -1,36 +1,30 @@
 ---
-title: Een Azure IoT Edge-module aanbieding maken met het partner centrum-Azure Marketplace
-description: Meer informatie over het maken van een IoT Edge module-aanbod in azure Marketplace met behulp van partner centrum
+title: Een Azure IoT Edge-module aanbieding maken met het partner centrum in azure Marketplace
+description: Meer informatie over het maken, configureren en publiceren van een IoT Edge module aanbod in azure Marketplace met behulp van partner centrum
 author: anbene
 ms.author: mingshen
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/03/2020
-ms.openlocfilehash: cca54e4e456fe766b190f64657cd1aca1d9520e0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d69090eb07159c2c188c54499a167f127269df24
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81869148"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82857666"
 ---
-# <a name="create-an-iot-edge-module-offer"></a>Aanbieding voor IoT Edge-module maken
+# <a name="create-configure-and-publish-an-iot-edge-module-offer-in-azure-marketplace"></a>Een IoT Edge module-aanbod maken, configureren en publiceren in azure Marketplace
 
-> [!IMPORTANT]
-> We gaan het beheer van uw IoT Edge module aanbiedingen van Cloud Partner-portal naar het partner centrum verplaatsen. Totdat uw aanbiedingen zijn gemigreerd, volgt u de instructies in [IOT Edge module bieden publicatie overzicht](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/iot-edge-module/cpp-offer-process-parts) voor Cloud Partner-Portal voor het beheren van uw aanbiedingen.
-
-In dit artikel wordt beschreven hoe u een Internet of Things (IoT) Edge-module aanbieding voor Azure Marketplace maakt en publiceert.
-
-Voordat u een IoT Edge module-aanbod kunt maken, moet u een commercieel Marketplace-account hebben in het partner centrum. Als u nog geen account hebt gemaakt, raadpleegt u [een abonnement voor commerciële Marketplace maken in Partner Center](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account).
+In dit artikel wordt beschreven hoe u een Internet of Things (IoT) Edge-module aanbieding voor Azure Marketplace maakt en publiceert. Voordat u begint, moet u [een commercieel Marketplace-account maken in Partner Center](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account) als u dit nog niet hebt gedaan. Zorg ervoor dat uw account is inge schreven in het Commercial Marketplace-programma.
 
 ## <a name="create-a-new-offer"></a>Een nieuwe aanbieding maken
 
-1. Meld u aan bij Partnercentrum.
-2. Selecteer in het navigatie menu de optie **commerciële Marketplace** > -**overzicht**.
+1. Meld u aan bij [Partner Center](https://partner.microsoft.com/dashboard/home).
+2. Selecteer in het menu links de optie **commerciële Marketplace** > -**overzicht**.
+3. Selecteer op de pagina overzicht **+ nieuwe aanbieding** > **IOT Edge module**.
 
-    ![Illustreert het navigatie menu.](./media/cs-menu-overview.png)
-
-3. Selecteer **+ nieuwe aanbieding** > **IOT Edge module**. Het dialoog venster **nieuwe aanbieding** wordt weer gegeven.
+    ![Illustreert het navigatie menu.](./media/new-offer-iot-edge.png)
 
 > [!IMPORTANT]
 > Nadat een aanbieding is gepubliceerd, worden wijzigingen die in het partner centrum zijn aangebracht, alleen weer gegeven in de winkel wanneer u de aanbieding opnieuw publiceert. Zorg ervoor dat u altijd opnieuw publiceert nadat u wijzigingen hebt aangebracht.
@@ -41,14 +35,14 @@ Voer een **aanbiedings-id**in. Dit is een unieke id voor elke aanbieding in uw a
 
 - Deze ID is zichtbaar voor klanten in het webadres voor de Marketplace-aanbieding en Azure Resource Manager sjablonen, indien van toepassing.
 - Gebruik alleen kleine letters en cijfers. Dit kan afbreek streepjes en onderstrepings tekens bevatten, maar mag niet langer zijn dan 50. Als u bijvoorbeeld **test-aanbieding-1**invoert, is het webadres van de aanbieding `https://azuremarketplace.microsoft.com/marketplace/../test-offer-1`.
-- De aanbiedings-ID kan niet worden gewijzigd nadat u maken hebt geselecteerd.
+- De aanbiedings-ID kan niet worden gewijzigd nadat u **maken**hebt geselecteerd.
 
-Voer een **alias**voor de aanbieding in. Dit is de naam die wordt gebruikt om te verwijzen naar de aanbieding in Partner Center.
+Voer een **alias**voor de aanbieding in. Dit is de naam die wordt gebruikt voor de aanbieding in Partner Center.
 
 - Deze naam wordt niet gebruikt in Marketplace en wijkt af van de naam van de aanbieding en andere waarden die aan klanten worden weer gegeven.
 - Dit kan niet worden gewijzigd nadat u **maken**hebt geselecteerd.
 
-Nadat u deze twee waarden hebt ingevoerd, selecteert u **maken** voordat u doorgaat naar de volgende pagina, overzicht van de aanbieding.
+Selecteer **maken** om de aanbieding te genereren en door te gaan.
 
 ## <a name="offer-overview"></a>Overzicht van aanbieding
 
@@ -86,10 +80,10 @@ Hier volgen enkele aanvullende bronnen voor het beheer van leads:
 
 - [Overzicht Lead beheer](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-get-customer-leads)
 - [Veelgestelde vragen over leadmanagement](https://docs.microsoft.com/azure/marketplace/lead-management-for-cloud-marketplace#frequently-asked-questions)
-- [Algemene leadconfiguratiefouten](https://docs.microsoft.com/azure/marketplace/lead-management-for-cloud-marketplace#common-lead-configuration-errors-during-publishing-on-cloud-partner-portal)
+- [Algemene leadconfiguratiefouten](https://docs.microsoft.com/azure/marketplace/lead-management-for-cloud-marketplace#publishing-config-errors)
 - [Overzicht Lead beheer](https://assetsprod.microsoft.com/mpn/cloud-marketplace-lead-management.pdf) PDF (zorg ervoor dat de pop-upblokkering is uitgeschakeld).
 
-Selecteer **concept opslaan** voordat u doorgaat naar de volgende sectie, eigenschappen.
+Selecteer **concept opslaan** voordat u doorgaat.
 
 ### <a name="properties"></a>Eigenschappen
 

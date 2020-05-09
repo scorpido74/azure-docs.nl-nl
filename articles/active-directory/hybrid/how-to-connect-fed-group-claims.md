@@ -12,22 +12,22 @@ ms.topic: article
 ms.date: 02/27/2019
 ms.author: billmath
 author: billmath
-ms.openlocfilehash: b8708aec1137836516852135412c4c7cec2feba4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6a89c5e3fb84f797d9ad7f81626fb7185ce3e076
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79408399"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82854142"
 ---
-# <a name="configure-group-claims-for-applications-with-azure-active-directory-public-preview"></a>Groeps claims configureren voor toepassingen met Azure Active Directory (open bare preview)
+# <a name="configure-group-claims-for-applications-with-azure-active-directory"></a>Groeps claims configureren voor toepassingen met Azure Active Directory
 
 Azure Active Directory kunt een groepslid maatschap voor gebruikers gegevens opgeven in tokens voor gebruik in toepassingen.  Er worden twee hoofd patronen ondersteund:
 
-- Groepen die zijn geïdentificeerd met behulp van het OID-kenmerk (Azure Active Directory object-id) (algemeen beschikbaar)
-- Groepen die zijn geïdentificeerd door sAMAccountName of GroupSID Attributes voor Active Directory (AD) gesynchroniseerde groepen en gebruikers (open bare preview)
+- Groepen die zijn geïdentificeerd met het kenmerk OID (Azure Active Directory object-id)
+- Groepen die zijn geïdentificeerd door sAMAccountName-of GroupSID-kenmerken voor door Active Directory (AD) gesynchroniseerde groepen en gebruikers
 
 > [!IMPORTANT]
-> Er zijn een aantal opmerkingen voor deze preview-functie:
+> Er zijn een aantal opmerkingen voor deze functionaliteit:
 >
 >- Ondersteuning voor het gebruik van sAMAccountName-en SID-kenmerken (Security Identifier) die vanaf on-premises worden gesynchroniseerd, is ontworpen om bestaande toepassingen van AD FS en andere id-providers te verplaatsen. Groepen die worden beheerd in azure AD bevatten niet de kenmerken die nodig zijn om deze claims te verzenden.
 >- In grotere organisaties mag het aantal groepen waarvan een gebruiker lid is, de limiet overschrijden die Azure Active Directory zal toevoegen aan een token. 150 groepen voor een SAML-token en 200 voor een JWT. Dit kan leiden tot onvoorspelbare resultaten. Als uw gebruikers grote aantallen groepslid maatschappen hebben, raden we u aan de optie te gebruiken om de groepen die worden verzonden in claims te beperken tot de relevante groepen voor de toepassing.  
