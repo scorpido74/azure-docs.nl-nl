@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/22/2018
-ms.openlocfilehash: afc79badd19fa180e631f1f8fa9735567a0b1e33
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 83cb62efd98615b7eda7f52ebafe95dedc282355
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74978710"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82930451"
 ---
 # <a name="updating-azure-machine-learning-models-using-update-resource-activity"></a>Azure Machine Learning modellen bijwerken met resource activiteit bijwerken
 
@@ -44,7 +44,7 @@ Na verloop van tijd moeten de voorspellende modellen in de Score experimenten va
 1. Maak een experiment in [Azure machine learning Studio (klassiek)](https://studio.azureml.net).
 2. Wanneer u tevreden bent met het model, gebruikt u Azure Machine Learning Studio (klassiek) voor het publiceren van webservices voor zowel het **trainings experiment** als het scoren/**voorspellende experiment**.
 
-In de volgende tabel worden de webservices beschreven die in dit voor beeld worden gebruikt.  Zie [machine learning-modellen programmatisch opnieuw trainen](../../machine-learning/machine-learning-retrain-models-programmatically.md) voor meer informatie.
+In de volgende tabel worden de webservices beschreven die in dit voor beeld worden gebruikt.  Zie [Software modellen opnieuw trainen machine learning Studio (klassiek)](../../machine-learning/studio/retrain-machine-learning-model.md) voor meer informatie.
 
 - **Training-webservice** : ontvangt trainings gegevens en produceert getrainde modellen. De uitvoer van het opnieuw trainen is een. ilearner-bestand in een Azure Blob-opslag. Het **standaard eindpunt** wordt automatisch voor u gemaakt wanneer u het trainings experiment als een webservice publiceert. U kunt meer eind punten maken, maar in het voor beeld wordt alleen het standaard eindpunt gebruikt.
 - **Scores-webservice** : ontvangt voor beelden zonder gelabeld gegevens en maakt voor spellingen. De uitvoer van voor spellingen kan verschillende vormen hebben, zoals een CSV-bestand of rijen in een Azure-SQL database, afhankelijk van de configuratie van het experiment. Het standaard eindpunt wordt automatisch voor u gemaakt wanneer u het voorspellende experiment als een webservice publiceert. 

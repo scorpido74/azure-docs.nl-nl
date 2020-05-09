@@ -24,6 +24,11 @@
       href: learn/automation-tutorial-runbook-textual.md
     - name: Een Python-runbook maken
       href: learn/automation-tutorial-runbook-textual-python2.md
+- name: Voorbeelden
+  items:
+    - name: Ingebouwde modules voor Azure Policy
+      displayName: 'samples, policies, definitions'
+      href: ./policy-samples.md
 - name: Concepten
   items:
     - name: Overzicht van Automation-accountverificatie

@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 11/14/2019
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: e304841d09913aac59f5e6ba082d3e76ec791e81
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 7973ef9c56b70b6b43256db947e7f6f7210c178f
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81869350"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82930434"
 ---
 # <a name="windows-virtual-machines-in-azure"></a>Virtuele Windows-machines in Azure
 
@@ -67,7 +67,7 @@ Uw abonnement heeft een standaard [quotumlimiet](../../azure-resource-manager/ma
 ### <a name="operating-system-disks-and-images"></a>Schijven en installatiekopieën voor een besturingssysteem
 Virtuele machines gebruiken [virtuele harde schijven (vhd's)](managed-disks-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) om hun besturings systeem (OS) en gegevens op te slaan. VHD's worden ook gebruikt voor de installatiekopieën waarmee u een besturingssysteem kunt installeren. 
 
-Azure biedt veel [marketplace-installatiekopieën](https://azure.microsoft.com/marketplace/virtual-machines/) voor gebruik met verschillende versies en typen van de Windows Server-besturingssystemen. Marketplace-installatiekopieën worden aangeduid met uitgever, aanbieding, SKU en versie van de installatiekopie (de versie wordt meestal gespecificeerd als meest recente). Alleen 64-bits besturingssystemen worden ondersteund. Zie [Microsoft-serversoftwareondersteuning voor virtuele Microsoft Azure-machines](https://support.microsoft.com/help/2721672/microsoft-server-software-support-for-microsoft-azure-virtual-machines) voor meer informatie over de ondersteunde gastbesturingssystemen, rollen en onderdelen.
+Azure biedt veel [marketplace-installatiekopieën](https://azuremarketplace.microsoft.com/marketplace/apps?filters=virtual-machine-images%3Bwindows&page=1) voor gebruik met verschillende versies en typen van de Windows Server-besturingssystemen. Marketplace-installatiekopieën worden aangeduid met uitgever, aanbieding, SKU en versie van de installatiekopie (de versie wordt meestal gespecificeerd als meest recente). Alleen 64-bits besturingssystemen worden ondersteund. Zie [Microsoft-serversoftwareondersteuning voor virtuele Microsoft Azure-machines](https://support.microsoft.com/help/2721672/microsoft-server-software-support-for-microsoft-azure-virtual-machines) voor meer informatie over de ondersteunde gastbesturingssystemen, rollen en onderdelen.
 
 In deze tabel ziet u een aantal manieren waarop u de gegevens voor een installatiekopie kunt vinden.
 

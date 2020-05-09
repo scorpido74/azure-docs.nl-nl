@@ -10,12 +10,12 @@ author: FrancescaLazzeri
 ms.author: lazzeri
 ms.reviewer: cgronlun
 ms.date: 05/07/2020
-ms.openlocfilehash: 98f7edac5bbec7a88999c728b2e4db8be7a3d2b5
-ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
-ms.translationtype: HT
+ms.openlocfilehash: ad384896301e809940f6e99df2f5562cfdb6a6fe
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82891349"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82927578"
 ---
 # <a name="how-to-select-algorithms-for-azure-machine-learning"></a>Algoritmen voor Azure Machine Learning selecteren
 
@@ -148,6 +148,6 @@ U kunt ook de [permutatie functie urgentie module](https://docs.microsoft.com/az
 
 ## <a name="next-steps"></a>Volgende stappen
 
- - [Meer informatie over Azure Machine Learning Designer](https://docs.microsoft.com/azure/machine-learning/service/concept-designer?WT.mc_id=docs-article-lazzeri)
+ - [Meer informatie over Azure Machine Learning Designer](https://docs.microsoft.com/azure/machine-learning/concept-designer?WT.mc_id=docs-article-lazzeri)
  - Zie [machine learning design-algoritme en module referentie](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/module-reference?WT.mc_id=docs-article-lazzeri) voor beschrijvingen van alle machine learning-algoritmen die beschikbaar zijn in azure machine learning Designer.
- - Als u de relatie tussen diep leren, machine learning en AI wilt verkennen, raadpleegt u [uitgebreide informatie versus machine learning](https://docs.microsoft.com/azure/machine-learning/service/concept-deep-learning-vs-machine-learning?WT.mc_id=docs-article-lazzeri)
+ - Als u de relatie tussen diep leren, machine learning en AI wilt verkennen, raadpleegt u [uitgebreide informatie versus machine learning](https://docs.microsoft.com/azure/machine-learning/concept-deep-learning-vs-machine-learning?WT.mc_id=docs-article-lazzeri)

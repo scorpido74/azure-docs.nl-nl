@@ -3,12 +3,12 @@ title: Ondersteuning voor Hyper-V-evaluatie in Azure Migrate
 description: Meer informatie over ondersteuning voor Hyper-V-evaluatie met Azure Migrate server-evaluatie
 ms.topic: conceptual
 ms.date: 04/15/2020
-ms.openlocfilehash: 990d5026d9621c144c31635fabac4416eb9d20e6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 67fabebf805e38a6bca5dda6e691c263ee235219
+ms.sourcegitcommit: 3beb067d5dc3d8895971b1bc18304e004b8a19b3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81538168"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82744605"
 ---
 # <a name="support-matrix-for-hyper-v-assessment"></a>Ondersteunings matrix voor Hyper-V-evaluatie
 
@@ -19,7 +19,7 @@ Als u de Hyper-V VM-evaluatie wilt instellen, maakt u een Azure Migrate project 
 
 ## <a name="limitations"></a>Beperkingen
 
-**Ondersteuning** | **Nadere**
+**Ondersteuning** | **Details**
 --- | ---
 **Beoordelings limieten** | U kunt Maxi maal 35.000 Hyper-V-Vm's in één [Azure migrate project](migrate-support-matrix.md#azure-migrate-projects)detecteren en beoordelen.
 **Project limieten** | U kunt meerdere projecten maken in een Azure-abonnement. Naast virtuele Hyper-V-machines kan een project VMware-Vm's en fysieke servers bevatten, tot de evaluatie limieten voor elke.
@@ -32,7 +32,7 @@ Meer [informatie](concepts-assessment-calculation.md) over evaluaties.
 
 ## <a name="hyper-v-host-requirements"></a>Vereisten voor de Hyper-V-host
 
-| **Ondersteuning**                | **Nadere**               
+| **Ondersteuning**                | **Details**               
 | :-------------------       | :------------------- |
 | **Hyper-V-host**       | De Hyper-V-host kan zelfstandig zijn of in een cluster worden geïmplementeerd.<br/><br/> Op de Hyper-V-host kan Windows Server 2019, Windows Server 2016 of Windows Server 2012 R2 worden uitgevoerd.<br/> U kunt geen VM's beoordelen die zich bevinden op Hyper-V-hosts waarop Windows Server 2012 wordt uitgevoerd.
 | **Machtigingen**           | U hebt beheerders machtigingen nodig op de Hyper-V-host. <br/> Als u geen beheerders machtigingen wilt toewijzen, maakt u een lokaal of domein gebruikers account en voegt u het gebruikers account toe aan deze groepen: gebruikers van extern beheer, Hyper-V-Administrators en prestatie meter gebruikers. |
@@ -42,7 +42,7 @@ Meer [informatie](concepts-assessment-calculation.md) over evaluaties.
 
 ## <a name="hyper-v-vm-requirements"></a>Vereisten voor Hyper-V-virtuele machines
 
-| **Ondersteuning**                  | **Nadere**               
+| **Ondersteuning**                  | **Details**               
 | :----------------------------- | :------------------- |
 | **Besturingssysteem** | Alle [Windows](https://support.microsoft.com/help/2721672/microsoft-server-software-support-for-microsoft-azure-virtual-machines) -en [Linux](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros) -besturings systemen. |
 | **Integratie Services**       | [Hyper-V-integratie Services](https://docs.microsoft.com/virtualization/hyper-v-on-windows/reference/integration-services) moeten worden uitgevoerd op vm's die u controleert, om informatie over het besturings systeem vast te leggen. |
@@ -54,7 +54,7 @@ Azure Migrate gebruikt het [Azure migrate-apparaat](migrate-appliance.md) voor d
 
 - Meer informatie over de [vereisten voor apparaten](migrate-appliance.md#appliance---hyper-v) voor Hyper-V.
 - Meer informatie over Url's die het apparaat nodig heeft voor toegang tot [open bare](migrate-appliance.md#public-cloud-urls) en [overheids](migrate-appliance.md#government-cloud-urls) Clouds.
-- In Azure Government moet u het apparaat implementeren met behulp van het script.
+- In Azure Government moet u het apparaat implementeren [met behulp van het script](deploy-appliance-script-government.md).
 
 ## <a name="port-access"></a>Poort toegang
 
@@ -69,7 +69,7 @@ De volgende tabel bevat een overzicht van de poort vereisten voor evaluatie.
 
 [Afhankelijkheids analyse](concepts-dependency-visualization.md) helpt u bij het identificeren van afhankelijkheden tussen on-premises machines die u wilt beoordelen en migreren naar Azure. De tabel bevat een overzicht van de vereisten voor het instellen van afhankelijkheids analyse op basis van een agent. Hyper-V ondersteunt momenteel alleen visualisatie van afhankelijkheden op basis van een agent. 
 
-**Vereiste** | **Nadere** 
+**Vereiste** | **Details** 
 --- | --- 
 **Vóór implementatie** | Er moet een Azure Migrate project aanwezig zijn met het hulp programma voor Server evaluatie dat is toegevoegd aan het project.<br/><br/>  U kunt een afhankelijkheids visualisatie implementeren nadat u een Azure Migrate apparaat hebt ingesteld om uw on-premises computers te detecteren<br/><br/> [Meer informatie over](create-manage-projects.md) het maken van een project voor de eerste keer.<br/> [Meer informatie over het](how-to-assess.md) toevoegen van een evaluatie programma aan een bestaand project.<br/> Meer informatie over het instellen van het Azure Migrate-apparaat voor de evaluatie van [virtuele Hyper-V-machines](how-to-set-up-appliance-hyper-v.md).
 **Azure Government** | Visualisatie van afhankelijkheid is niet beschikbaar in Azure Government.

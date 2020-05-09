@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 11/27/2018
 ms.author: rajanaki
-ms.openlocfilehash: 600167e529e1ff8cfa65eeb3d0fb6fe26e9466bf
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9883065993f35054338079c8b9647a8420574414
+ms.sourcegitcommit: 291b2972c7f28667dc58f66bbe9d9f7d11434ec1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82137515"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82738062"
 ---
 # <a name="reprotect-failed-over-azure-vms-to-the-primary-region"></a>Failover van virtuele Azure-machines naar de primaire regio opnieuw beveiligen
 
@@ -95,6 +95,10 @@ De volgende voor waarden bepalen hoeveel gegevens worden gerepliceerd:
 |Bron regio heeft 1 VM met 1 TB Premium-schijf.<br/>Er worden slechts 20 GB gegevens gebruikt en de rest van de schijf is leeg.<br/>Schijf type is Premium met een doorvoer snelheid van 200 MBps.<br/>De eerste gegevens op de schijf direct na een failover zijn 15 GB. Er zijn 5 GB gegevens gewijzigd na de failover. De totale ingevulde gegevens zijn dus 20 GB| Geschatte tijd: 30-45 minuten.<br/>Omdat de gegevens die op de schijf zijn ingevuld, kleiner zijn dan 10% van de grootte van de schijf, voeren we een volledige initiële replicatie uit.<br/>De overdrachts snelheid is ongeveer 16% van de door Voer, of 32MBps. Daarom wordt de overdrachts tijd voor het Toep assen van de wijzigingen van 20 GB van 20 GB/32 MBps, ongeveer 11 minuten.<br/>Er is enige overhead tijd nodig om Site Recovery automatisch te schalen, ongeveer 20-30 minuten |
 
 Wanneer de virtuele machine opnieuw wordt beveiligd na een failback naar de primaire regio (als de virtuele machine opnieuw wordt beschermd vanuit de primaire regio naar een DR-regio), worden de doel-VM en de bijbehorende NIC ('s) verwijderd.
+
+Wanneer de virtuele machine opnieuw wordt beveiligd vanuit de DR-regio naar de primaire regio, worden de primaire virtuele machine van Erstwhile en de bijbehorende NIC (s) niet verwijderd.
+
+Wanneer de virtuele machine opnieuw wordt beveiligd na een failback naar de primaire regio (als de virtuele machine opnieuw wordt beschermd vanuit de primaire regio naar een DR-regio), worden de doel-VM en de bijbehorende NIC ('s) verwijderd. 
 
 Wanneer de virtuele machine opnieuw wordt beveiligd vanuit de DR-regio naar de primaire regio, worden de primaire virtuele machine van Erstwhile en de bijbehorende NIC (s) niet verwijderd.
 

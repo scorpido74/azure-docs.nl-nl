@@ -7,16 +7,16 @@ ms.service: virtual-machines
 ms.topic: article
 ms.date: 03/31/2020
 ms.author: jushiman
-ms.openlocfilehash: 0e7d61516b0b7fb9bab9aa0444a123ac932aaa56
-ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
+ms.openlocfilehash: 7b84537693b3ffc3f7398c6eb84615a96bf8e7df
+ms.sourcegitcommit: 3beb067d5dc3d8895971b1bc18304e004b8a19b3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82509173"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82744686"
 ---
 # <a name="m-series"></a>M-serie
 
-De M-serie biedt een hoog aantal vCPU (Maxi maal 128 Vcpu's) en een grote hoeveelheid geheugen (Maxi maal 3,8 TiB). Het is ook ideaal voor zeer grote data bases of andere toepassingen die profiteren van hoog aantal vCPU en grote hoeveel heden geheugen. Groottes uit de M-serie worden ondersteund door&reg; zowel&reg; de Intel Xeon CPU E7-8890 v3 @ 2,50 GHz als&reg; op&reg; de Intel Xeon Platinum 8280M 2.7 GHz (Cascade Lake).
+De M-serie biedt een hoog aantal vCPU (Maxi maal 128 Vcpu's) en een grote hoeveelheid geheugen (Maxi maal 3,8 TiB). Het is ook ideaal voor zeer grote data bases of andere toepassingen die profiteren van hoog aantal vCPU en grote hoeveel heden geheugen. Groottes uit de M-serie worden ondersteund door&reg; zowel&reg; de Intel Xeon CPU E7-8890 v3 @ 2,50 GHz als&reg; op&reg; de Intel Xeon Platinum 8280M (Cascade Lake).
 
 De Intel&reg; Hyper-Threading-technologie van de M-serie onderdeel.
 

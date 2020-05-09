@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 04/27/2020
-ms.openlocfilehash: e76c75e172e48866565cc292ac673f7bbddabf1f
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.date: 05/08/2020
+ms.openlocfilehash: 458925dd9f7f7386a9159256fdb024d027f7016c
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82232816"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82929312"
 ---
 # <a name="release-notes"></a>Releaseopmerkingen
 
@@ -48,17 +48,20 @@ Er zijn geen gedrags wijzigingen voor deze versie. Zie [aanstaande wijzigingen](
 ## <a name="upcoming-changes"></a>Aanstaande wijzigingen
 De volgende wijzigingen worden uitgevoerd in toekomstige releases. 
 
-### <a name="deprecate-spark-21-and-22-for-hdinsight-36-spark-cluster"></a>Spark 2,1 en 2,2 voor HDInsight 3,6 Spark-cluster afschaffen
-Vanaf juli 1 2020 kunnen klanten geen nieuwe Spark-clusters maken met Spark 2,1 en 2,2 op HDInsight 3,6. Bestaande clusters worden uitgevoerd zonder de ondersteuning van micro soft. Overweeg om over te stappen op Spark 2,3 op HDInight 3,6 van juni 30 2020 om mogelijke onderbreking van systeem/ondersteuning te voor komen.
+### <a name="deprecate-spark-21-and-22-in-hdinsight-36-spark-cluster"></a>Spark 2,1 en 2,2 in HDInsight 3,6 Spark-cluster afschaffen
+Vanaf juli 1 2020 kunnen klanten geen nieuwe Spark-clusters maken met Spark 2,1 en 2,2 op HDInsight 3,6. Bestaande clusters worden uitgevoerd zonder de ondersteuning van micro soft. Overweeg om over te stappen op Spark 2,3 op HDInsight 3,6 van juni 30 2020 om mogelijke onderbreking van systeem/ondersteuning te voor komen.
 
-### <a name="deprecate-spark-23-for-hdinsight-40-spark-cluster"></a>Spark 2,3 voor HDInsight 4,0 Spark terugafschaffen
-Vanaf juli 1 2020 kunnen klanten geen nieuwe Spark-clusters maken met Spark 2,3 op HDInsight 4,0. Bestaande clusters worden uitgevoerd zonder de ondersteuning van micro soft. Overweeg om over te stappen op Spark 2,4 op HDInight 4,0 van juni 30 2020 om mogelijke onderbreking van systeem/ondersteuning te voor komen.
+### <a name="deprecate-spark-23-in-hdinsight-40-spark-cluster"></a>Spark 2,3 in HDInsight-4,0 Spark-cluster afschaffen
+Vanaf juli 1 2020 kunnen klanten geen nieuwe Spark-clusters maken met Spark 2,3 op HDInsight 4,0. Bestaande clusters worden uitgevoerd zonder de ondersteuning van micro soft. Overweeg om de overstap naar Spark 2,4 op HDInsight 4,0 van 30 2020 juni te verplaatsen om potentiële systeem-en ondersteunings onderbrekingen te voor komen.
 
-### <a name="deprecate-kafka-11-for-hdinsight-40-kafka-cluster"></a>Kafka 1,1 voor HDInsight 4,0 Kafka-cluster afschaffen
-Vanaf juli 1 2020 kunnen klanten geen nieuwe Kafka-clusters maken met Kafka 1,1 op HDInsight 4,0. Bestaande clusters worden uitgevoerd zonder de ondersteuning van micro soft. Overweeg om over te stappen op Kafka 2,1 op HDInight 4,0 van juni 30 2020 om mogelijke onderbreking van systeem/ondersteuning te voor komen.
+### <a name="deprecate-kafka-11-in-hdinsight-40-kafka-cluster"></a>Kafka 1,1 in HDInsight 4,0 Kafka-cluster afschaffen
+Vanaf juli 1 2020 kunnen klanten geen nieuwe Kafka-clusters maken met Kafka 1,1 op HDInsight 4,0. Bestaande clusters worden uitgevoerd zonder de ondersteuning van micro soft. Overweeg om te overstappen op Kafka 2,1 op HDInsight 4,0 van juni 30 2020 om mogelijke onderbreking van systeem/ondersteuning te voor komen.
 
-### <a name="hbase-20-to-21"></a>HBase 2,0 tot 2,1
-In de aanstaande release van HDInsight 4,0 wordt de versie van HBase bijgewerkt van versie 2,0 naar 2,1.
+### <a name="hbase-20-to-216"></a>HBase 2,0 tot 2.1.6
+In de aanstaande release van HDInsight 4,0 wordt de versie van HBase bijgewerkt van versie 2,0 naar 2.1.6
+
+### <a name="spark-240-to-244"></a>Spark 2.4.0 naar 2.4.4
+In de aanstaande release van HDInsight 4,0 wordt Spark-versie bijgewerkt van versie 2.4.0 naar 2.4.4
 
 ### <a name="a-minimum-4-core-vm-is-required-for-head-node"></a>Er is een mini maal 4-core VM vereist voor het hoofd knooppunt 
 Voor het hoofd knooppunt is een mini maal 4-core VM vereist om te zorgen voor hoge Beschik baarheid en betrouw baarheid van HDInsight-clusters. Vanaf april 6 2020 kunnen klanten alleen kiezen voor 4-core of een hogere VM als hoofd knooppunt voor de nieuwe HDInsight-clusters. Bestaande clusters blijven op de verwachte manier worden uitgevoerd. 

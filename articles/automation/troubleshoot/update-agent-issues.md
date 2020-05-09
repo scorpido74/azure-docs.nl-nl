@@ -1,6 +1,6 @@
 ---
 title: Problemen met Windows Update agent oplossen in Azure Automation Updatebeheer
-description: Meer informatie over het oplossen van problemen met de Windows Update-Agent met behulp van de Updatebeheer-oplossing.
+description: Meer informatie over het oplossen van problemen met de Windows Update-Agent met behulp van de oplossing Updatebeheer.
 services: automation
 author: mgoedtel
 ms.author: magoedte
@@ -9,42 +9,45 @@ ms.topic: conceptual
 ms.service: automation
 ms.subservice: update-management
 manager: carmonm
-ms.openlocfilehash: 6983a2ac7ab5fafcb00aee0b72221a8540ea1668
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1b4467128fae3fd71a6e588e3c05d287c153e168
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81678975"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82927884"
 ---
 # <a name="troubleshoot-windows-update-agent-issues"></a>Problemen met Windows Update agent oplossen
 
-Er kunnen verschillende redenen zijn waarom uw computer niet wordt weer gegeven als gereed (in orde) in Updatebeheer. In Updatebeheer kunt u de status van een Hybrid Runbook Worker agent controleren om het onderliggende probleem te bepalen. In dit artikel wordt beschreven hoe u de probleem oplosser voor Azure-machines uitvoert vanaf de Azure Portal-en niet-Azure-machines in het [offline scenario](#troubleshoot-offline).
+Er kunnen verschillende redenen zijn waarom uw computer niet wordt weer gegeven als gereed (in orde) in Updatebeheer. U kunt de status van een Windows Hybrid Runbook Worker-agent controleren om het onderliggende probleem te bepalen. Hier volgen de drie gereedheids statussen voor een machine:
 
-Hier volgen de drie gereedheids statussen voor een machine:
-
-* Gereed: de Hybrid Runbook Worker is geïmplementeerd en is minder dan 1 uur geleden voor het laatst gezien.
-* De verbinding is verbroken: de Hybrid Runbook Worker is geïmplementeerd en is meer dan 1 uur geleden voor het laatst gezien.
+* Gereed: de Hybrid Runbook Worker is gedistribueerd en is minder dan één uur geleden voor het laatst gezien.
+* De verbinding is verbroken: de Hybrid Runbook Worker is geïmplementeerd en de laatste keer één uur geleden voor het laatst weer gegeven.
 * Niet geconfigureerd: de Hybrid Runbook Worker is niet gevonden of is niet gereed voor onboarding.
 
 > [!NOTE]
 > Er kan een lichte vertraging optreden tussen de Azure Portal weer geven en de huidige status van een machine.
 
+In dit artikel wordt beschreven hoe u de probleem Oplosser uitvoert voor Azure-machines vanaf het Azure Portal en niet-Azure-machines in het [offline scenario](#troubleshoot-offline). De probleem Oplosser bevat nu controles voor Windows Server Update Services (WSUS) en voor de sleutels autodownload en installatie.
+
+> [!NOTE]
+> Het script voor de probleem Oplosser stuurt momenteel geen verkeer via een proxy server als er een is geconfigureerd.
+
 ## <a name="start-the-troubleshooter"></a>De probleem Oplosser starten
 
-Voor Azure-machines klikt u op de koppeling **problemen oplossen** onder de gereedheids kolom van de **Update Agent** in de portal, wordt de pagina problemen met Update agent oplossen gestart. Voor niet-Azure-computers brengt de koppeling u naar dit artikel. Zie de [offline-instructies](#troubleshoot-offline) voor het oplossen van problemen met een niet-Azure-machine.
+Voor Azure-machines kunt u de pagina **problemen met Update agent oplossen** starten door de koppeling **problemen oplossen** te selecteren in de kolom **Update-gereedheid** in de portal. Voor niet-Azure-computers brengt de koppeling u naar dit artikel. Zie de [offline-instructies](#troubleshoot-offline) voor het oplossen van problemen met een niet-Azure-machine.
 
-![Update beheer lijst van virtuele machines](../media/update-agent-issues/vm-list.png)
+![Scherm afbeelding van de Updatebeheer lijst met virtuele machines](../media/update-agent-issues/vm-list.png)
 
 > [!NOTE]
 > De virtuele machine moet worden uitgevoerd om de status van de Hybrid Runbook Worker te controleren. Als de VM niet wordt uitgevoerd, wordt **de knop VM starten** weer gegeven.
 
-Selecteer op de pagina Update Agent voor problemen oplossen de optie **controles uitvoeren** om de probleem oplosser te starten. De probleem Oplosser gebruikt de [opdracht uitvoeren](../../virtual-machines/windows/run-command.md) om een script uit te voeren op de computer om afhankelijkheden te controleren. Wanneer de probleem Oplosser is voltooid, wordt het resultaat van de controles geretourneerd.
+Selecteer op de pagina **Update Agent voor problemen oplossen** de optie **controles uitvoeren** om de probleem oplosser te starten. De probleem Oplosser gebruikt de [opdracht uitvoeren](../../virtual-machines/windows/run-command.md) om een script uit te voeren op de computer om afhankelijkheden te controleren. Wanneer de probleem Oplosser is voltooid, wordt het resultaat van de controles geretourneerd.
 
-![Problemen met de pagina Update agent oplossen](../media/update-agent-issues/troubleshoot-page.png)
+![Scherm afbeelding van de pagina Update Agent voor problemen oplossen](../media/update-agent-issues/troubleshoot-page.png)
 
 De resultaten worden weer gegeven op de pagina wanneer ze klaar zijn. In de secties controles wordt weer gegeven wat er in elke controle is opgenomen.
 
-![Problemen met de Update Agent controleren](../media/update-agent-issues/update-agent-checks.png)
+![Scherm afbeelding van de controles van de Update agent oplossen](../media/update-agent-issues/update-agent-checks.png)
 
 ## <a name="prerequisite-checks"></a>Controles van vereisten
 
@@ -54,7 +57,7 @@ Met de controle van het besturings systeem wordt gecontroleerd of op de Hybrid R
 
 |Besturingssysteem  |Opmerkingen  |
 |---------|---------|
-|Windows Server 2012 en hoger |.NET Framework 4,6 of hoger is vereist. ([Down load de .NET Framework](/dotnet/framework/install/guide-for-developers))<br/> Windows Power shell 5,1 is vereist.  ([Down load Windows Management Framework 5,1](https://www.microsoft.com/download/details.aspx?id=54616))        |
+|Windows Server 2012 en hoger |.NET Framework 4,6 of hoger is vereist. ([Down load de .NET Framework](/dotnet/framework/install/guide-for-developers).)<br/> Windows Power shell 5,1 is vereist.  ([Down load Windows Management Framework 5,1](https://www.microsoft.com/download/details.aspx?id=54616).)        |
 
 ### <a name="net-462"></a>.NET-4.6.2
 
@@ -62,11 +65,11 @@ Met de .NET Framework controle wordt gecontroleerd of er mini maal [.NET Framewo
 
 ### <a name="wmf-51"></a>WMF 5.1
 
-De WMF-controle controleert of het systeem de vereiste versie van het Windows Management Framework (WMF)- [Windows Management framework 5,1](https://www.microsoft.com/download/details.aspx?id=54616)bevat.
+De WMF-controle controleert of het systeem beschikt over de vereiste versie van Windows Management Framework (WMF): [Windows Management framework 5,1](https://www.microsoft.com/download/details.aspx?id=54616).
 
 ### <a name="tls-12"></a>TLS 1.2
 
-Met deze controle wordt bepaald of u gebruikmaakt van TLS 1,2 om uw communicatie te versleutelen. TLS 1,0 wordt niet meer ondersteund door het platform. We raden aan dat clients TLS 1,2 gebruiken om te communiceren met Updatebeheer.
+Met deze controle wordt bepaald of u gebruikmaakt van TLS 1,2 om uw communicatie te versleutelen. TLS 1,0 wordt niet meer ondersteund door het platform. Gebruik TLS 1,2 om met Updatebeheer te communiceren.
 
 ## <a name="connectivity-checks"></a>Connectiviteits controles
 
@@ -98,13 +101,13 @@ Raadpleeg de [gids voor probleem oplossing](hybrid-runbook-worker.md#event-4502)
 
 ## <a name="access-permissions-checks"></a>Controles van toegangs machtigingen
 
-### <a name="machinekeys-folder-access"></a>Toegang tot mappen MachineKeys
+### <a name="crypto-folder-access"></a>Toegang tot crypto-map
 
 De toegangs controle voor de cryptografie mappen bepaalt of het lokale systeem account toegang heeft tot C:\ProgramData\Microsoft\Crypto\RSA.
 
 ## <a name="troubleshoot-offline"></a><a name="troubleshoot-offline"></a>Problemen met offline oplossen
 
-U kunt de probleem Oplosser op een Hybrid Runbook Worker offline gebruiken door het script lokaal uit te voeren. U kunt het script, [Troubleshooting-WindowsUpdateAgentRegistration](https://www.powershellgallery.com/packages/Troubleshoot-WindowsUpdateAgentRegistration), ophalen in de PowerShell Gallery. U moet WMF 4,0 of hoger hebben geïnstalleerd om het script uit te voeren. Zie [verschillende versies van Power Shell installeren](https://docs.microsoft.com/powershell/scripting/install/installing-powershell)voor informatie over het downloaden van de meest recente versie van Power shell.
+U kunt de probleem Oplosser op een Hybrid Runbook Worker offline gebruiken door het script lokaal uit te voeren. Haal het volgende script op uit de PowerShell Gallery: [Troubleshooting-WindowsUpdateAgentRegistration](https://www.powershellgallery.com/packages/Troubleshoot-WindowsUpdateAgentRegistration). Als u het script wilt uitvoeren, moet u WMF 4,0 of hoger hebben geïnstalleerd. Zie [verschillende versies van Power Shell installeren](https://docs.microsoft.com/powershell/scripting/install/installing-powershell)voor informatie over het downloaden van de meest recente versie van Power shell.
 
 De uitvoer van dit script ziet eruit als in het volgende voor beeld:
 
@@ -202,4 +205,4 @@ CheckResultMessageArguments : {}
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie [problemen met Hybrid Runbook Workers oplossen](hybrid-runbook-worker.md)om meer problemen met uw Hybrid runbook Workers op te lossen.
+[Problemen met Hybrid Runbook Workers oplossen](hybrid-runbook-worker.md)

@@ -9,9 +9,9 @@
 - name: Zelfstudie
   items:
     - name: Regressie met automatische machine learning
-      href: /azure/machine-learning/service/tutorial-auto-train-models?toc=/azure/open-datasets/toc.json&bc=/azure/open-datasets/breadcrumb/toc.json
+      href: /azure/machine-learning/tutorial-auto-train-models?toc=/azure/open-datasets/toc.json&bc=/azure/open-datasets/breadcrumb/toc.json
     - name: Een model voor de classificatie van afbeeldingen verrijken
-      href: /azure/machine-learning/service/tutorial-train-models-with-aml?toc=/azure/open-datasets/toc.json&bc=/azure/open-datasets/breadcrumb/toc.json
+      href: /azure/machine-learning/tutorial-train-models-with-aml?toc=/azure/open-datasets/toc.json&bc=/azure/open-datasets/breadcrumb/toc.json
 - name: Instructiegidsen
   items:
     - name: Gegevensset in Azure Machine Learning
