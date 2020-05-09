@@ -1,24 +1,24 @@
 ---
-title: Lijst met ingebouwde beleids definities voor Azure Database for PostgreSQL
-description: Een lijst met Azure Policy ingebouwde beleids definities voor Azure Database for PostgreSQL. Deze ingebouwde oplossingen bieden gang bare benaderingen voor het beheren van uw Azure-resources.
+title: Ingebouwde beleids definities voor Azure Database for PostgreSQL
+description: Een lijst met Azure Policy ingebouwde beleids definities voor Azure Database for PostgreSQL. Deze ingebouwde beleids definities bieden gang bare benaderingen voor het beheren van uw Azure-resources.
 ms.date: 04/30/2020
 ms.topic: sample
 author: jonels-msft
 ms.author: jonels
 ms.service: postgresql
 ms.custom: subject-policy-samples
-ms.openlocfilehash: 7eedae20a03a0c25c4fe6161e491cb443c9883b2
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.openlocfilehash: 206403e8ad9f6ad14a11996694a2ec24224cbe70
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 05/08/2020
-ms.locfileid: "82966160"
+ms.locfileid: "82983547"
 ---
 # <a name="azure-policy-built-in-policy-definitions-for-azure-database-for-postgresql"></a>Azure Policy ingebouwde beleids definities voor Azure Database for PostgreSQL
 
 Deze pagina bevat een index van [Azure Policy](../governance/policy/overview.md) ingebouwde beleids definities voor Azure database for PostgreSQL. Zie [Azure Policy ingebouwde definities](../governance/policy/samples/built-in-policies.md)voor aanvullende Azure Policy-invoeg toepassingen voor andere services.
 
-De naam van elke ingebouwde koppeling naar de beleids definitie in Azure Portal. Gebruik de koppeling in de kolom **bron** om de bron weer te geven op het [Azure Policy github opslag plaats](https://github.com/Azure/azure-policy).
+De naam van elke ingebouwde beleids definitie is gekoppeld aan de beleids definitie in de Azure Portal. Gebruik de koppeling in de kolom **github** om de bron weer te geven op het [Azure Policy github opslag plaats](https://github.com/Azure/azure-policy).
 
 ## <a name="azure-database-for-postgresql"></a>Azure Database for PostgreSQL
 

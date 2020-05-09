@@ -1,6 +1,6 @@
 ---
-title: Een lijst met de Azure Portal voor het weigeren van toewijzingen voor Azure-resources
-description: Meer informatie over het weer geven van de gebruikers, groepen, service-principals en beheerde identiteiten die toegang hebben gekregen tot specifieke Azure-resource acties voor bepaalde bereiken met behulp van de Azure Portal.
+title: Een lijst met Azure deny-toewijzingen maken met behulp van de Azure Portal-Azure RBAC
+description: Meer informatie over het weer geven van de gebruikers, groepen, service-principals en beheerde identiteiten die toegang hebben gekregen tot specifieke Azure-resource acties voor bepaalde bereiken met behulp van de Azure Portal en Azure op rollen gebaseerd toegangs beheer (Azure RBAC).
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -14,25 +14,25 @@ ms.workload: identity
 ms.date: 06/10/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 4db76e5c6191457346ca1f95678cf73843334d3b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 97c03d417f8bf123de3332142344f292de00e3b2
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77137430"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82734107"
 ---
-# <a name="list-deny-assignments-for-azure-resources-using-the-azure-portal"></a>Toewijzing van toewijzingen voor Azure-resources met behulp van de Azure Portal weer geven
+# <a name="list-azure-deny-assignments-using-the-azure-portal"></a>Azure deny-toewijzingen weer geven met behulp van de Azure Portal
 
-[Toewijzingen weigeren](deny-assignments.md) blok keren dat gebruikers specifieke Azure-resource acties kunnen uitvoeren, zelfs als een roltoewijzing deze toegang verleent. In dit artikel wordt beschreven hoe u toewijzingen voor weigeren kunt weer geven met behulp van de Azure Portal.
+Met [Azure deny-toewijzingen](deny-assignments.md) kunnen gebruikers specifieke Azure-resource acties uitvoeren, zelfs als een roltoewijzing deze toegang verleent. In dit artikel wordt beschreven hoe u toewijzingen voor weigeren kunt weer geven met behulp van de Azure Portal.
 
 > [!NOTE]
-> U kunt niet rechtstreeks uw eigen weigerings toewijzingen maken. Zie [toewijzingen weigeren](deny-assignments.md)voor meer informatie over hoe weigerings toewijzingen worden gemaakt.
+> U kunt niet rechtstreeks uw eigen weigerings toewijzingen maken. Zie [Azure deny-toewijzingen](deny-assignments.md)voor meer informatie over hoe weigerings toewijzingen worden gemaakt.
 
 ## <a name="prerequisites"></a>Vereisten
 
 Als u informatie wilt ophalen over een weiger toewijzing, hebt u het volgende nodig:
 
-- `Microsoft.Authorization/denyAssignments/read`toestemming, die deel uitmaakt van de meeste [ingebouwde rollen voor Azure-resources](built-in-roles.md).
+- `Microsoft.Authorization/denyAssignments/read`toestemming, die deel uitmaakt van de meeste [ingebouwde rollen van Azure](built-in-roles.md).
 
 ## <a name="list-deny-assignments"></a>Lijst met geweigerde toewijzingen weergeven
 
@@ -109,5 +109,5 @@ Volg deze stappen om aanvullende informatie over een weiger toewijzing weer te g
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Meer informatie over het weigeren van toewijzingen voor Azure-resources](deny-assignments.md)
-* [Toewijzing van toewijzingen voor Azure-resources in een lijst weigeren met Azure PowerShell](deny-assignments-powershell.md)
+* [Meer informatie over Azure deny-toewijzingen](deny-assignments.md)
+* [Azure deny-toewijzingen weer geven met Azure PowerShell](deny-assignments-powershell.md)

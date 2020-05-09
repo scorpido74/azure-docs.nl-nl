@@ -9,13 +9,13 @@ ms.reviewer: nigup
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
-ms.date: 04/22/2020
-ms.openlocfilehash: b777e6a45bdfe78889366982a6c28e10e21c4fbc
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.date: 05/08/2020
+ms.openlocfilehash: 2161a9e4460526113aaf89609b72250a09fc6af3
+ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82856995"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82891207"
 ---
 # <a name="plan-and-manage-costs-for-azure-machine-learning"></a>Kosten plannen en beheren voor Azure Machine Learning
 
@@ -63,7 +63,7 @@ Bekijk kosten in grafieken en tabellen voor verschillende tijds intervallen. Enk
 
 Er wordt geen apart service gebied voor Machine Learning weer geven.  In plaats daarvan ziet u de verschillende resources die u hebt toegevoegd aan uw Machine Learning-werk ruimten.
 
-## <a name="use-amlcompute"></a>AmlCompute gebruiken
+## <a name="use-azure-machine-learning-compute-cluster-amlcompute"></a>Azure Machine Learning Compute-Cluster (AmlCompute) gebruiken
 
 Met gegevens die voortdurend worden gewijzigd, moet u snelle en gestroomlijnde model training en retraining volgen om nauw keurige modellen te onderhouden. Doorlopende training is echter een kost prijs, met name voor diepe leer modellen op Gpu's. 
 
@@ -138,5 +138,7 @@ Azure Machine Learning Compute ondersteunt gereserveerde instanties inherent. Al
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Meer informatie over het beheren van kosten met [kosten analyse](../cost-management-billing/costs/quick-acm-cost-analysis.md).
-* Meer informatie over [Azure machine learning Compute](how-to-set-up-training-targets.md#amlcompute).
+Meer informatie over:
+* [Resource quota beheren en verhogen](how-to-manage-quotas.md)
+* [Kosten beheren met [kosten analyse](../cost-management-billing/costs/quick-acm-cost-analysis.md).
+* [Azure machine learning Compute](how-to-set-up-training-targets.md#amlcompute).
