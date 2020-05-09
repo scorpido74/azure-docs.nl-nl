@@ -10,12 +10,12 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 03/13/2020
-ms.openlocfilehash: d5edfab0963ec3fca24969d7a54038066ba08765
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3aecaf45a04c1428968791a71abece783c7eb7c0
+ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82188392"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82891322"
 ---
 # <a name="enterprise-security-for-azure-machine-learning"></a>Enter prise Security voor Azure Machine Learning
 
@@ -105,29 +105,9 @@ Azure Machine Learning maakt een extra toepassing (de naam begint met `aml-` of 
 
 Azure Machine Learning is afhankelijk van andere Azure-Services voor reken resources. Reken bronnen (Compute-doelen) worden gebruikt om modellen te trainen en te implementeren. U kunt deze reken doelen maken in een virtueel netwerk. U kunt bijvoorbeeld Azure Data Science Virtual Machine gebruiken om een model te trainen en het model vervolgens implementeren in AKS.  
 
-Zie [experimenten en interferentie uitvoeren in een virtueel netwerk](how-to-enable-virtual-network.md)voor meer informatie.
+Zie voor meer informatie [veilig experimenten en demijnen uitvoeren in een geïsoleerd virtueel netwerk](how-to-enable-virtual-network.md).
 
 U kunt ook een persoonlijke Azure-koppeling inschakelen voor uw werk ruimte. Met persoonlijke koppeling kunt u de communicatie met uw werk ruimte beperken vanuit een Azure-Virtual Network. Zie een [persoonlijke koppeling configureren](how-to-configure-private-link.md)voor meer informatie.
-
-> [!TIP]
-> U kunt een virtueel netwerk en een persoonlijke koppeling samen combi neren om de communicatie tussen uw werk ruimte en andere Azure-resources te beveiligen. Voor sommige combi Naties is echter een Enter prise Edition-werk ruimte vereist. Gebruik de volgende tabel om te begrijpen welke scenario's Enter prise Edition vereist:
->
-> | Scenario | Enterprise</br>editie | Basic</br>editie |
-> | ----- |:-----:|:-----:| 
-> | Geen virtueel netwerk of privé-koppeling | ✔ | ✔ |
-> | Werk ruimte zonder persoonlijke koppeling. Andere resources (met uitzonde ring van Azure Container Registry) in een virtueel netwerk | ✔ | ✔ |
-> | Werk ruimte zonder persoonlijke koppeling. Andere resources met persoonlijke koppeling | ✔ | |
-> | Werk ruimte met een persoonlijke koppeling. Andere resources (met uitzonde ring van Azure Container Registry) in een virtueel netwerk | ✔ | ✔ |
-> | Werk ruimte en alle andere resources met een persoonlijke koppeling | ✔ | |
-> | Werk ruimte met een persoonlijke koppeling. Andere resources zonder persoonlijke koppeling of virtueel netwerk | ✔ | ✔ |
-> | Azure Container Registry in een virtueel netwerk | ✔ | |
-> | Door de klant beheerde sleutels voor de werk ruimte | ✔ | |
-> 
-
-> [!WARNING]
-> De preview-versie van Azure Machine Learning Compute-exemplaren wordt niet ondersteund in een werk ruimte waar een persoonlijke koppeling is ingeschakeld.
-> 
-> Azure Machine Learning biedt geen ondersteuning voor het gebruik van een Azure Kubernetes-service waarvoor een persoonlijke koppeling is ingeschakeld. In plaats daarvan kunt u de Azure Kubernetes-service in een virtueel netwerk gebruiken. Zie voor meer informatie [beveiligd Azure ml-experimenten en de functies voor invallen binnen een Azure-Virtual Network](how-to-enable-virtual-network.md).
 
 ## <a name="data-encryption"></a>Gegevensversleuteling
 
@@ -265,7 +245,7 @@ Aan elke werk ruimte is een door het systeem toegewezen beheerde identiteit geko
 
 Micro soft kan gegevens over niet-gebruikers identificeren, zoals resource namen (bijvoorbeeld de naam van de gegevensset of de naam van het machine learning experiment) of taak omgevings variabelen voor diagnostische doel einden. Al deze gegevens worden opgeslagen met behulp van door micro soft beheerde sleutels in de opslag die wordt gehost in micro soft-abonnementen en [de standaard standaarden voor privacybeleid en gegevens verwerking van micro soft](https://privacy.microsoft.com/privacystatement)worden gevolgd.
 
-Micro soft adviseert ook niet om gevoelige informatie (zoals account sleutel geheimen) op te slaan in omgevings variabelen. Omgevings variabelen worden geregistreerd, versleuteld en opgeslagen door ons. En als u [runid](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run%28class%29?view=azure-ml-py)een naam geeft, moet u voor komen dat gevoelige informatie zoals gebruikers namen of namen van geheime projecten worden opgenomen. Deze informatie kan worden weer gegeven in telemetrie-logboeken die toegankelijk zijn voor Microsoft Ondersteuning engineers.
+Micro soft adviseert ook niet om gevoelige informatie (zoals account sleutel geheimen) op te slaan in omgevings variabelen. Omgevings variabelen worden geregistreerd, versleuteld en opgeslagen door ons. Zorg er ook voor dat u een naam [run_id](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run%28class%29?view=azure-ml-py)geeft, Vermijd het gebruik van gevoelige gegevens zoals gebruikers namen of geheime project namen. Deze informatie kan worden weer gegeven in telemetrie-logboeken die toegankelijk zijn voor Microsoft Ondersteuning engineers.
 
 U kunt zich afmelden van diagnostische gegevens die worden verzameld `hbi_workspace` door de `TRUE` para meter in te stellen op tijdens het inrichten van de werk ruimte. Deze functionaliteit wordt ondersteund bij het gebruik van de AzureML python SDK, CLI, REST-Api's of Azure Resource Manager sjablonen.
 

@@ -1,5 +1,5 @@
 ---
-title: Problemen met Automation-accounts oplossen
+title: Problemen met Azure Automation-account oplossen
 description: Meer informatie over het oplossen van problemen met een Azure-account.
 services: automation
 author: mgoedtel
@@ -8,16 +8,16 @@ ms.date: 03/24/2020
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: 7b5e7171ac679384966e9dce79425cd1fa881c53
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6a7defdaa9b4b0f0b3580a3ac6b1a0487434a97c
+ms.sourcegitcommit: 602e6db62069d568a91981a1117244ffd757f1c2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81679384"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82864127"
 ---
-# <a name="troubleshoot-the-automation-account"></a>Problemen met het Automation-account oplossen
+# <a name="troubleshoot-an-azure-automation-account"></a>Problemen met een Azure Automation-account oplossen
 
-In dit artikel worden oplossingen beschreven voor problemen die kunnen optreden wanneer u een Automation-account gebruikt. In de volgende secties worden specifieke fout berichten en mogelijke oplossingen voor elk weer gemarkeerd. Zie [een Azure-account maken](../automation-quickstart-create-account.md)voor algemene informatie over Automation-accounts.
+In dit artikel worden oplossingen beschreven voor problemen die kunnen optreden wanneer u een Azure Automation-account gebruikt. Zie [een Azure-account maken](../automation-quickstart-create-account.md)voor algemene informatie over Automation-accounts.
 
 ## <a name="scenario-unable-to-register-automation-resource-provider-for-subscriptions"></a><a name="rp-register"></a>Scenario: kan Automation-resource provider niet registreren voor abonnementen
 
@@ -39,7 +39,7 @@ Voer de volgende stappen uit in de Azure Portal om de resource provider Automati
 
 1. Ga in uw browser naar de [Azure Portal](https://portal.azure.com).
 
-2. Navigeer naar **abonnementen** en selecteer uw abonnement op de pagina Abonnementen.   
+2. Ga naar **abonnementen**en selecteer uw abonnement.   
 
 3. Onder **instellingen**selecteert u **resource providers**.
 
@@ -49,8 +49,8 @@ Voer de volgende stappen uit in de Azure Portal om de resource provider Automati
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Als uw probleem niet hierboven wordt weer geven of als u het probleem niet kunt oplossen, kunt u een van de volgende kanalen proberen voor aanvullende ondersteuning:
+Als u het probleem niet kunt oplossen met dit artikel, kunt u een van de volgende kanalen proberen voor aanvullende ondersteuning:
 
 * Krijg antwoorden van Azure-experts via [Azure-forums](https://azure.microsoft.com/support/forums/).
-* Maak verbinding [@AzureSupport](https://twitter.com/azuresupport)met, het officiële Microsoft Azure account voor het verbeteren van de gebruikers ervaring door de Azure-community te verbinden met de juiste resources: antwoorden, ondersteuning en experts.
-* Een ondersteunings incident voor Azure. Ga naar de [ondersteunings site van Azure](https://azure.microsoft.com/support/options/) en selecteer **ondersteuning verkrijgen**.
+* Verbinding maken [@AzureSupport](https://twitter.com/azuresupport)met. Dit is het officiële Microsoft Azure account voor het verbinden van de Azure-community met de juiste resources: antwoorden, ondersteuning en experts.
+* Een ondersteunings incident voor Azure. Ga naar de [ondersteunings site van Azure](https://azure.microsoft.com/support/options/)en selecteer **ondersteuning verkrijgen**.

@@ -1,5 +1,6 @@
 ---
-title: Micro soft Identity platform ID-token referentie
+title: Tokens van micro soft Identity platform ID | Azure
+titleSuffix: Microsoft identity platform
 description: Meer informatie over het gebruik van id_tokens die worden verzonden door de Azure AD v 1.0-en micro soft Identity platform (v 2.0)-eind punten.
 services: active-directory
 author: hpsin
@@ -8,21 +9,21 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 01/16/2020
+ms.date: 05/06/2020
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40
 ms:custom: fasttrack-edit
-ms.openlocfilehash: 0d1a5ee3ae56e8b5c4886308624159853c52b52c
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.openlocfilehash: e0e327d169c246d023be1aca27d6844b9b92f03e
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82690183"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82926711"
 ---
 # <a name="microsoft-identity-platform-id-tokens"></a>Tokens van micro soft Identity platform ID
 
-`id_tokens`worden verzonden naar de client toepassing als onderdeel van een [OpenID Connect Connect](v2-protocols-oidc.md) -stroom. Ze kunnen worden verzonden aan de zijkant of in plaats van een toegangs token en worden door de client gebruikt om de gebruiker te verifiëren.
+`id_tokens`worden verzonden naar de client toepassing als onderdeel van een OIDC-stroom ( [OpenID Connect Connect](v2-protocols-oidc.md) ). Ze kunnen worden verzonden aan de zijkant of in plaats van een toegangs token en worden door de client gebruikt om de gebruiker te verifiëren.
 
 ## <a name="using-the-id_token"></a>De id_token gebruiken
 
@@ -30,7 +31,7 @@ ID-tokens moeten worden gebruikt om te controleren of een gebruiker aan wie ze b
 
 ## <a name="claims-in-an-id_token"></a>Claims in een id_token
 
-`id_tokens`voor een micro soft-identiteit zijn [JWTs](https://tools.ietf.org/html/rfc7519), wat betekent dat ze bestaan uit een header, lading en hand tekening gedeelte. U kunt de header en hand tekening gebruiken om de authenticiteit van het token te controleren. de payload bevat de informatie over de gebruiker die door de client is aangevraagd. Tenzij anders vermeld, worden alle hier vermelde claims weer gegeven in de tokens v 1.0 en v 2.0.
+`id_tokens`voor een micro soft-identiteit zijn [JWTs](https://tools.ietf.org/html/rfc7519) (JSON-webtokens), wat betekent dat ze bestaan uit een header, lading en hand tekening gedeelte. U kunt de header en hand tekening gebruiken om de authenticiteit van het token te controleren. de payload bevat de informatie over de gebruiker die door de client is aangevraagd. Tenzij anders vermeld, worden alle hier vermelde JWT-claims weer gegeven in de tokens v 1.0 en v 2.0.
 
 ### <a name="v10"></a>v1.0
 
@@ -52,14 +53,14 @@ Bekijk dit v 2.0-voorbeeld token in [JWT.MS](https://jwt.ms/#id_token=eyJ0eXAiOi
 
 |Claim | Indeling | Beschrijving |
 |-----|--------|-------------|
-|`typ` | Teken reeks-altijd "JWT" | Geeft aan dat het token een JWT-waarde is.|
+|`typ` | Teken reeks-altijd "JWT" | Geeft aan dat het token een JWT-token is.|
 |`alg` | Tekenreeks | Hiermee wordt het algoritme aangegeven dat is gebruikt om het token te ondertekenen. Voor beeld: "RS256" |
 |`kid` | Tekenreeks | Vinger afdruk voor de open bare sleutel die wordt gebruikt om dit token te ondertekenen. Verzonden in zowel v 1.0 als v 2.0 `id_tokens`. |
 |`x5t` | Tekenreeks | Hetzelfde (in gebruik en waarde) als `kid`. Dit is echter een verouderde claim die alleen is verzonden in `id_tokens` v 1.0 voor compatibiliteits doeleinden. |
 
 ### <a name="payload-claims"></a>Nettolading claims
 
-In deze lijst worden de claims weer gegeven die standaard in de meeste id_tokens zijn (tenzij anders vermeld).  Uw app kan echter gebruikmaken van [optionele claims](active-directory-optional-claims.md) om aanvullende claims in de id_token aan te vragen.  Deze kunnen variëren van de `groups` claim tot informatie over de naam van de gebruiker.
+In deze lijst worden de JWT-claims weer gegeven die in de meeste id_tokens standaard zijn (tenzij anders vermeld).  Uw app kan echter gebruikmaken van [optionele claims](active-directory-optional-claims.md) om aanvullende JWT-claims in de id_token aan te vragen.  Deze kunnen variëren van de `groups` claim tot informatie over de naam van de gebruiker.
 
 |Claim | Indeling | Beschrijving |
 |-----|--------|-------------|
@@ -85,23 +86,23 @@ In deze lijst worden de claims weer gegeven die standaard in de meeste id_tokens
 |`uti` | Dekkende teken reeks | Een interne claim die door Azure wordt gebruikt om tokens opnieuw te valideren. Moet worden genegeerd. |
 |`ver` | Teken reeks, ofwel 1,0 of 2,0 | Hiermee wordt de versie van de id_token. |
 
-
 > [!NOTE]
-> De id_token v1 en v2 hebben verschillen in de hoeveelheid gegevens die ze in de bovenstaande voor beelden kunnen verwerken. Met de versie in wezen wordt het Azure AD-platform eindpunt opgegeven vanaf waar het is uitgegeven. [Azure AD OAuth-implementatie](https://docs.microsoft.com/azure/active-directory/develop/about-microsoft-identity-platform) is door de jaren ontwikkeld. Momenteel hebben we twee verschillende oAuth-eind punten voor AzureAD-toepassingen. U kunt elk van de nieuwe eind punten die zijn gecategoriseerd als v2 of de oude, gebruiken als v1. De OAuth-eind punten voor beide verschillen. Het v2-eind punt is de nieuwere versie van alle functies van v1-eind punt en raadt nieuwe ontwikkel aars aan om het v2-eind punt te gebruiken. 
+> De id_token v1 en v2 hebben verschillen in de hoeveelheid gegevens die ze in de bovenstaande voor beelden kunnen verwerken. Met de versie in wezen wordt het Azure AD-platform eindpunt opgegeven vanaf waar het is uitgegeven. [Azure AD OAuth-implementatie](https://docs.microsoft.com/azure/active-directory/develop/about-microsoft-identity-platform) is door de jaren ontwikkeld. Momenteel hebben we twee verschillende oAuth-eind punten voor AzureAD-toepassingen. U kunt elk van de nieuwe eind punten die zijn gecategoriseerd als v2 of de oude, gebruiken als v1. De OAuth-eind punten voor beide verschillen. Het v2-eind punt is de nieuwere versie van alle functies van v1-eind punt en raadt nieuwe ontwikkel aars aan om het v2-eind punt te gebruiken.
+>
 > - V1: Azure Active Directory eind punten:`https://login.microsoftonline.com/common/oauth2/authorize`
 > - V2: micro soft Identity platform-eind punten:`https://login.microsoftonline.com/common/oauth2/v2.0/authorize`
 
 ## <a name="validating-an-id_token"></a>Een id_token valideren
 
-Het valideren van `id_token` een is vergelijkbaar met de eerste stap bij het [valideren van een toegangs token](access-tokens.md#validating-tokens) . uw client moet controleren of de juiste uitgever het token terugstuurde en dat er niet mee is geknoeid. Omdat `id_tokens` er altijd een JWT is, zijn er veel bibliotheken voor het valideren van deze tokens. u wordt aangeraden een van deze te gebruiken in plaats van dit zelf te doen.
+Het valideren van `id_token` een is vergelijkbaar met de eerste stap bij het [valideren van een toegangs token](access-tokens.md#validating-tokens) . uw client moet controleren of de juiste uitgever het token terugstuurde en dat er niet mee is geknoeid. Omdat `id_tokens` er altijd een JWT-token is, bestaan er veel bibliotheken om deze tokens te valideren. u wordt aangeraden een van deze te gebruiken in plaats van dit zelf te doen.
 
-Als u het token hand matig wilt valideren, raadpleegt u de stappen voor het [valideren van een toegangs token](access-tokens.md#validating-tokens). Nadat de hand tekening op het token is gevalideerd, moeten de volgende claims worden gevalideerd in de id_token (dit kan ook worden gedaan door de bibliotheek voor token validatie):
+Als u het token hand matig wilt valideren, raadpleegt u de stappen voor het [valideren van een toegangs token](access-tokens.md#validating-tokens). Nadat de hand tekening op het token is gevalideerd, moeten de volgende JWT-claims worden gevalideerd in de id_token (dit kan ook worden gedaan door de bibliotheek voor token validatie):
 
-* Tijds tempels: de `iat`, `nbf`en `exp` de tijds tempels moeten alle vallen vóór of na de huidige tijd, indien van toepassing. 
+* Tijds tempels: de `iat`, `nbf`en `exp` de tijds tempels moeten alle vallen vóór of na de huidige tijd, indien van toepassing.
 * Doel groep: `aud` de claim moet overeenkomen met de app-id voor uw toepassing.
 * Nonce: de `nonce` claim in de payload moet overeenkomen met de nonce-para meter die is door gegeven aan het/authorize-eind punt tijdens de eerste aanvraag.
 
 ## <a name="next-steps"></a>Volgende stappen
 
 * Meer informatie over [toegangs tokens](access-tokens.md)
-* Pas de claims in uw id_token aan met behulp van [optionele claims](active-directory-optional-claims.md).
+* Pas de JWT-claims in uw id_token aan met behulp van [optionele claims](active-directory-optional-claims.md).

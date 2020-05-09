@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: overview
 ms.date: 01/06/2020
-ms.openlocfilehash: fee7c8eb73fe0bb7c9fd0bd9de9aa57bd8c40215
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: df970ad31c3fd132f9081b90aa8877f0e29e195b
+ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77580648"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82891557"
 ---
 # <a name="what-is-azure-cognitive-search"></a>Wat is Azure Cognitive Search?
 
@@ -154,11 +154,6 @@ U kunt ook [de voordelen voor MSDN-abonnees activeren](https://azure.microsoft.c
 
 Zoekmachines zijn de normale stuurprogramma’s voor het ophalen van informatie in mobiele apps, op het web en in zakelijke gegevensopslag. Azure Cognitive Search biedt u hulpprogram ma's voor het maken van een zoek ervaring die vergelijkbaar is met die op grote commerciële websites.
 
-In deze 9 minuten durende video van programmamanager Liam Cavanagh leert u hoe het integreren van een zoekmachine uw app kan verbeteren. Korte demo's hebben betrekking op belang rijke functies in azure Cognitive Search en een typische werk stroom. 
+In deze video van 15 minuten, introduceert Program Manager Luis Cabrera Azure Cognitive Search. 
 
->[!VIDEO https://channel9.msdn.com/Events/Connect/2016/138/player]
- 
-+ 0-3 minuten, gaat over de belangrijkste functies en gebruiksvoorbeelden.
-+ 3-4 minuten, gaat over het inrichten van de service. 
-+ 4-6 minuten, gaat over de wizard Gegevens importeren die wordt gebruikt om een index te maken met behulp van de ingebouwde vastgoedgegevensset.
-+ 6-9 minuten, gaat over Search Explorer en verschillende query’s.
+>[!VIDEO https://www.youtube.com/embed/kOJU0YZodVk?version=3]

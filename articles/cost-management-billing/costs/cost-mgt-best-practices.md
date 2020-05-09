@@ -3,17 +3,17 @@ title: Uw investeringen in de cloud optimaliseren met Azure Cost Management
 description: Dit artikel helpt u de meeste waarde uit uw investeringen in de cloud te halen, uw kosten te verlagen en te evalueren waar uw geld wordt uitgegeven.
 author: bandersmsft
 ms.author: banders
-ms.date: 04/07/2020
+ms.date: 05/04/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: adwise
 ms.custom: seodec18
-ms.openlocfilehash: 8df98514545a2670ea18a2b4b131a097244d7b46
-ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
+ms.openlocfilehash: 759c69544c083e95cbd5198eecf9f7bb0e882aa8
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80874582"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82791609"
 ---
 # <a name="how-to-optimize-your-cloud-investment-with-azure-cost-management"></a>Uw investeringen in de cloud optimaliseren met Azure Cost Management
 
@@ -104,6 +104,12 @@ Ga voor meer informatie over de verschillende opties naar [Hoe u Azure kunt kope
 
 - Opties voor monetaire toezeggingen vooraf
 - Toegang tot gereduceerde Azure-prijzen
+
+#### <a name="azure-in-csp"></a>[Azure in CSP](https://azure.microsoft.com/offers/ms-azr-0145p/)
+
+- CSP-partners zijn het eerste contactpunt voor de behoeften van hun klanten en staan centraal in de klantrelatie
+- CSP-partners richten nieuwe klanten in, bestellen abonnementen, beheren abonnementen en voeren namens hun klanten beheertaken uit
+- CSP-partners bundelen services met unieke oplossingen of verkopen Azure, waarbij zij de prijzen, voorwaarden en facturering beheren
 
 ## <a name="estimate-the-cost-of-your-solution"></a>De kosten van uw oplossing schatten
 

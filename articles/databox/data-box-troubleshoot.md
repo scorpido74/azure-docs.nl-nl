@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: article
-ms.date: 06/24/2019
+ms.date: 04/30/2020
 ms.author: alkohli
-ms.openlocfilehash: 51935516e26f263e44a926bf9b7d7ec24a5eeb9e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 12ca4df6e5dd4ba86ece8469255195e2fa1c155e
+ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77560062"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82628892"
 ---
 # <a name="troubleshoot-issues-related-to-azure-data-box-and-azure-data-box-heavy"></a>Problemen oplossen die verband houden met Azure Data Box en Azure Data Box Heavy
 
@@ -92,6 +92,17 @@ Dit zijn fouten met betrekking tot container-en share namen.
     - Voor beelden van namen die ongeldig zijn `my-folder_1`: `my`, `--myfolder`, `myfolder--`,,`myfolder!`
 
     Zie de Azure-naamgevings conventies voor [container namen](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata#container-names) en [share namen](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata#share-names)voor meer informatie.
+    
+### <a name="error_file_or_directory_name_illegal"></a>ERROR_FILE_OR_DIRECTORY_NAME_ILLEGAL
+
+**Fout beschrijving**: de map of de container namen bevatten ongeldige tekens.
+
+**Voorgestelde oplossing**: de map of de container namen die u hebt gekopieerd, bevatten niet-ondersteunde tekens.
+
+- Down load op de pagina verbinding maken en kopiëren van de lokale webinterface en controleer de fout bestanden om de mapnamen met problemen te identificeren. 
+- Wijzig de naam van de map of containers om er zeker van te zijn dat ze compatibel zijn met Azure-naamgevings conventies.
+
+Zie de Azure-naamgevings conventies voor [directory's](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata#directory-and-file-names) en [containers](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata#container-names)voor meer informatie.
 
 ## <a name="container-or-share-size-limit-errors"></a>Fouten in de container of share grootte beperken
 
