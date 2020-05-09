@@ -1,24 +1,24 @@
 ---
-title: Lijst met ingebouwde beleids definities voor Azure Storage
-description: Een lijst met Azure Policy ingebouwde beleids definities voor Azure Storage. Deze ingebouwde oplossingen bieden gang bare benaderingen voor het beheren van uw Azure-resources.
+title: Ingebouwde beleids definities voor Azure Storage
+description: Een lijst met Azure Policy ingebouwde beleids definities voor Azure Storage. Deze ingebouwde beleids definities bieden gang bare benaderingen voor het beheren van uw Azure-resources.
 ms.date: 04/30/2020
 ms.topic: sample
 author: tamram
 ms.author: tamram
 ms.service: storage
 ms.custom: subject-policy-samples
-ms.openlocfilehash: abf03bcb27a22cd09ee7ac8214eb1dd26c752ccf
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.openlocfilehash: 76ba59301d0719f298f98f189d76ffb33aa3a80b
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 05/08/2020
-ms.locfileid: "82966510"
+ms.locfileid: "82982918"
 ---
 # <a name="azure-policy-built-in-policy-definitions-for-azure-storage"></a>Azure Policy ingebouwde beleids definities voor Azure Storage
 
 Deze pagina bevat een index van [Azure Policy](../../governance/policy/overview.md) ingebouwde beleids definities voor Azure Storage. Zie [Azure Policy ingebouwde definities](../../governance/policy/samples/built-in-policies.md)voor aanvullende Azure Policy-invoeg toepassingen voor andere services.
 
-De naam van elke ingebouwde koppeling naar de beleids definitie in Azure Portal. Gebruik de koppeling in de kolom **bron** om de bron weer te geven op het [Azure Policy github opslag plaats](https://github.com/Azure/azure-policy).
+De naam van elke ingebouwde beleids definitie is gekoppeld aan de beleids definitie in de Azure Portal. Gebruik de koppeling in de kolom **github** om de bron weer te geven op het [Azure Policy github opslag plaats](https://github.com/Azure/azure-policy).
 
 ## <a name="microsoftstorage"></a>Microsoft.Storage
 

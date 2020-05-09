@@ -1,24 +1,24 @@
 ---
-title: Lijst met ingebouwde beleids definities voor Azure SQL Database
-description: Een lijst met Azure Policy ingebouwde beleids definities voor Azure SQL Database. Deze ingebouwde oplossingen bieden gang bare benaderingen voor het beheren van uw Azure-resources.
+title: Ingebouwde beleids definities voor Azure SQL Database
+description: Een lijst met Azure Policy ingebouwde beleids definities voor Azure SQL Database. Deze ingebouwde beleids definities bieden gang bare benaderingen voor het beheren van uw Azure-resources.
 ms.date: 04/30/2020
 ms.topic: sample
 author: stevestein
 ms.author: sstein
 ms.service: sql-database
 ms.custom: subject-policy-samples
-ms.openlocfilehash: 8621b088f75e267a8854b8a1619ee3f4dca29e0d
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
-ms.translationtype: HT
+ms.openlocfilehash: 74940313e0618e77358a522080b29dffb8b4c7eb
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 05/08/2020
-ms.locfileid: "82966307"
+ms.locfileid: "82983853"
 ---
 # <a name="azure-policy-built-in-policy-definitions-for-azure-sql-database"></a>Azure Policy ingebouwde beleids definities voor Azure SQL Database
 
 Deze pagina bevat een index van [Azure Policy](../governance/policy/overview.md) ingebouwde beleids definities voor Azure SQL database. Zie [Azure Policy ingebouwde definities](../governance/policy/samples/built-in-policies.md)voor aanvullende Azure Policy-invoeg toepassingen voor andere services.
 
-De naam van elke ingebouwde koppeling naar de beleids definitie in Azure Portal. Gebruik de koppeling in de kolom **bron** om de bron weer te geven op het [Azure Policy github opslag plaats](https://github.com/Azure/azure-policy).
+De naam van elke ingebouwde beleids definitie is gekoppeld aan de beleids definitie in de Azure Portal. Gebruik de koppeling in de kolom **github** om de bron weer te geven op het [Azure Policy github opslag plaats](https://github.com/Azure/azure-policy).
 
 ## <a name="azure-sql-database"></a>Azure SQL Database
 

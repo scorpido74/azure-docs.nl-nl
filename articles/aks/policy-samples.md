@@ -1,21 +1,21 @@
 ---
-title: Lijst met ingebouwde beleids definities voor de Azure Kubernetes-service
-description: Een lijst met Azure Policy ingebouwde beleids definities voor de Azure Kubernetes-service. Deze ingebouwde oplossingen bieden gang bare benaderingen voor het beheren van uw Azure-resources.
+title: Ingebouwde beleids definities voor de Azure Kubernetes-service
+description: Een lijst met Azure Policy ingebouwde beleids definities voor de Azure Kubernetes-service. Deze ingebouwde beleids definities bieden gang bare benaderingen voor het beheren van uw Azure-resources.
 ms.date: 04/30/2020
 ms.topic: sample
 ms.custom: subject-policy-samples
-ms.openlocfilehash: a8c123408e5a72d334d55aa36d2b27dcb9765db0
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
-ms.translationtype: HT
+ms.openlocfilehash: 256e6b0932cd08ed49e138d2f15e2339ee6249d2
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 05/08/2020
-ms.locfileid: "82966181"
+ms.locfileid: "82981422"
 ---
 # <a name="azure-policy-built-in-policy-definitions-for-azure-kubernetes-service"></a>Azure Policy ingebouwde beleids definities voor de Azure Kubernetes-service
 
 Deze pagina bevat een index van [Azure Policy](../governance/policy/overview.md) ingebouwde beleids definities voor de Azure Kubernetes-service. Zie [Azure Policy ingebouwde definities](../governance/policy/samples/built-in-policies.md)voor aanvullende Azure Policy-invoeg toepassingen voor andere services.
 
-De naam van elke ingebouwde koppeling naar de beleids definitie in Azure Portal. Gebruik de koppeling in de kolom **bron** om de bron weer te geven op het [Azure Policy github opslag plaats](https://github.com/Azure/azure-policy).
+De naam van elke ingebouwde beleids definitie is gekoppeld aan de beleids definitie in de Azure Portal. Gebruik de koppeling in de kolom **github** om de bron weer te geven op het [Azure Policy github opslag plaats](https://github.com/Azure/azure-policy).
 
 ## <a name="microsoftkubernetes"></a>Micro soft. Kubernetes
 
