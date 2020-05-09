@@ -1,10 +1,10 @@
 ---
 title: Netwerk toegangs beheer
-description: Overzicht van netwerk toegangs beheer voor Azure SQL Database en Data Warehouse voor het beheren van toegang en het configureren van een enkele of gegroepeerde Data Base.
+description: Overzicht van netwerk toegangs beheer voor Azure SQL Database en Azure Synapse Analytics voor het beheren van toegang en het configureren van een enkele of gegroepeerde Data Base.
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
-titleSuffix: Azure SQL Database and SQL Data Warehouse
+titleSuffix: Azure SQL Database and Azure Synapse Analytics
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
@@ -12,17 +12,17 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: vanto
 ms.date: 03/09/2020
-ms.openlocfilehash: 8b4ee679b21d904f997f727f5f26275c86acc9c5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: fdeb8ee3fbb01ea007205e02eb247925fb3baea1
+ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81414417"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82629572"
 ---
-# <a name="azure-sql-database-and-data-warehouse-network-access-controls"></a>Netwerk toegangs beheer van Azure SQL Database en Data Warehouse
+# <a name="azure-sql-database-and-azure-synapse-analytics-network-access-controls"></a>Azure SQL Database-en Azure Synapse Analytics-netwerk toegangs beheer
 
 > [!NOTE]
-> Dit artikel is van toepassing op Azure SQL Server en op zowel SQL Database-als SQL Data Warehouse-data bases die zijn gemaakt op de Azure SQL-Server. Voor het gemak wordt de term 'SQL Database' gebruikt wanneer er wordt verwezen naar zowel SQL Database als SQL Data Warehouse.
+> Dit artikel is van toepassing op Azure SQL Server en op zowel SQL Database-als Azure Synapse Analytics-data bases die zijn gemaakt op de Azure SQL-Server. SQL Database wordt gebruikt om te verwijzen naar zowel SQL Database als Azure Synapse Analytics.
 
 > [!IMPORTANT]
 > Dit artikel is *niet* van toepassing op **Azure SQL database Managed instance**. Zie [verbinding maken met een beheerd exemplaar](sql-database-managed-instance-connect-app.md) voor meer informatie over de netwerk configuratie.
@@ -56,7 +56,7 @@ U kunt deze instelling ook wijzigen via het deel venster Firewall nadat de Azure
 
 Als deze functie is ingesteld op **op** Azure SQL Server worden communicaties van alle resources binnen de Azure-grens toegestaan die al dan niet deel uitmaken van uw abonnement.
 
-In veel gevallen is de instelling **on** moeilijker dan de meeste klanten. Ze willen deze instelling mogelijk instellen op **uit** en vervangen door meer beperkende IP-firewall regels of Virtual Network Firewall regels. Dit heeft gevolgen voor de volgende functies die worden uitgevoerd op Vm's in azure die geen deel uitmaken van uw VNet en daarom verbinding maken met SQL data base via een Azure IP-adres.
+In veel gevallen is de instelling **on** moeilijker dan de meeste klanten. Ze willen deze instelling mogelijk instellen op **uit** en vervangen door meer beperkende IP-firewall regels of Virtual Network Firewall regels. Dit heeft gevolgen voor de volgende functies die worden uitgevoerd op Vm's in azure die geen deel uitmaken van uw VNet en daarom verbinding maken met SQL Database via een Azure IP-adres.
 
 ### <a name="import-export-service"></a>Import export service
 Import export service werkt niet wanneer **toegang tot Azure-Services toestaan** is ingesteld op **uit**. U kunt het probleem echter omzeilen [door sqlpackage. exe hand matig uit te voeren vanuit een Azure VM of door de export](https://docs.microsoft.com/azure/sql-database/import-export-from-vm) rechtstreeks in uw code uit te voeren met behulp van de DACFX-API.

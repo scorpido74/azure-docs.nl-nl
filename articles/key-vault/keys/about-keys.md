@@ -10,12 +10,12 @@ ms.subservice: keys
 ms.topic: overview
 ms.date: 09/04/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 3d89275e1418035fed8aad3ffddd8def2c1d59ce
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: f96ec80b529c594a383be8d668fd28b77372cd80
+ms.sourcegitcommit: 0fda81f271f1a668ed28c55dcc2d0ba2bb417edd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81686062"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82900923"
 ---
 # <a name="about-azure-key-vault-keys"></a>Over Azure Key Vault sleutels
 
@@ -103,7 +103,7 @@ Zie voor meer informatie [belang rijke bewerkingen in de referentie Key Vault re
 
 Zodra een sleutel is gemaakt in Key Vault, kunnen de volgende cryptografische bewerkingen worden uitgevoerd met behulp van de sleutel:  
 
--   **Ondertekenen en controleren**: alleen deze bewerking is ' Sign hash ' of ' verify hash ' omdat Key Vault geen ondersteuning biedt voor hashing van inhoud als onderdeel van het maken van een hand tekening. Toepassingen moeten de gegevens die lokaal worden ondertekend hashen en vervolgens aanvragen dat Key Vault de hash ondertekenen. Verificatie van ondertekende hashes wordt ondersteund als een gebruiks vriendelijke bewerking voor toepassingen die mogelijk geen toegang hebben tot het sleutel materiaal van [Public]. Controleer voor de beste toepassings prestaties of de bewerkingen lokaal worden uitgevoerd.  
+-   **Ondertekenen en controleren**: alleen deze bewerking is ' Sign hash ' of ' verify hash ' omdat Key Vault geen ondersteuning biedt voor hashing van inhoud als onderdeel van het maken van een hand tekening. Toepassingen moeten de gegevens die lokaal worden ondertekend hashen en vervolgens aanvragen dat Key Vault de hash ondertekenen. Verificatie van ondertekende hashes wordt ondersteund als een gebruiks vriendelijke bewerking voor toepassingen die mogelijk geen toegang hebben tot het sleutel materiaal van [Public]. Voor de beste prestaties van toepassingen moeten Controleer bewerkingen lokaal worden uitgevoerd.  
 -   **Sleutel versleuteling/-terugloop**: een sleutel die is opgeslagen in Key Vault kan worden gebruikt voor het beveiligen van een andere sleutel, meestal een symmetrische coderings sleutel voor inhoud (CEK). Wanneer de sleutel in Key Vault asymmetrisch is, wordt sleutel versleuteling gebruikt. RSA-OAEP en de WRAPKEY/sleutel uitpakken-bewerkingen zijn bijvoorbeeld gelijk aan versleutelen/ontsleutelen. Wanneer de sleutel in Key Vault symmetrisch is, wordt sleutel terugloop gebruikt. Bijvoorbeeld: AES-KW. De WRAPKEY-bewerking wordt ondersteund als gemak voor toepassingen die mogelijk geen toegang hebben tot het sleutel materiaal van [Public]. Voor de beste prestaties van toepassingen moeten WRAPKEY-bewerkingen lokaal worden uitgevoerd.  
 -   **Versleutelen en ontsleutelen**: een sleutel die is opgeslagen in Key Vault kan worden gebruikt voor het versleutelen of ontsleutelen van één gegevens blok. De grootte van het blok wordt bepaald door het sleutel type en het geselecteerde versleutelings algoritme. De versleutelings bewerking is beschikbaar voor het gemak, voor toepassingen die mogelijk geen toegang tot het sleutel materiaal van [Public] hebben. Voor de beste prestaties van toepassingen moeten versleutelings bewerkingen lokaal worden uitgevoerd.  
 

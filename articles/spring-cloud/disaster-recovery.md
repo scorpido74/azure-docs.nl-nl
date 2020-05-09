@@ -6,12 +6,12 @@ ms.service: spring-cloud
 ms.topic: conceptual
 ms.date: 10/24/2019
 ms.author: brendm
-ms.openlocfilehash: 4961e5a63e5bc1933cf19b1f291b521d89cbda0e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e8f32f574a4ff7be0cc3cc7915b8203b53824c63
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76279139"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82792323"
 ---
 # <a name="azure-spring-cloud-disaster-recovery"></a>Herstel na nood geval in de cloud van Azure lente
 
@@ -32,3 +32,32 @@ Voor hoge Beschik baarheid en bescherming tegen rampen moet u uw lente-Cloud toe
 [Azure Traffic Manager](../traffic-manager/traffic-manager-overview.md) biedt taak verdeling van verkeer op basis van DNS en kan netwerk verkeer distribueren over meerdere regio's.  Gebruik Azure Traffic Manager om klanten te leiden naar het dichtstbijzijnde Azure veer Cloud service-exemplaar.  Voor de beste prestaties en redundantie moet alle toepassings verkeer via Azure Traffic Manager worden doorgestuurd voordat het naar uw Azure lente-Cloud service wordt verzonden.
 
 Als u Azure lente-Cloud toepassingen in meerdere regio's hebt, kunt u Azure Traffic Manager gebruiken om de stroom van verkeer naar uw toepassingen in elke regio te beheren.  Definieer een Azure Traffic Manager-eind punt voor elke service met behulp van het service-IP-adres. Klanten moeten verbinding maken met een Azure Traffic Manager DNS-naam die verwijst naar de Azure lente-Cloud service.  Met Azure Traffic Manager Load wordt verkeer gespreid over de gedefinieerde eind punten.  Als een nood geval een Data Center doorgeeft, stuurt Azure Traffic Manager verkeer van die regio naar het bijbehorende paar, waardoor de continuïteit van de service wordt gegarandeerd.
+
+## <a name="create-azure-traffic-manager-for-azure-spring-cloud"></a>Azure-Traffic Manager maken voor Azure lente-Cloud
+
+1. Maak een Azure lente-Cloud in twee verschillende regio's.
+U hebt twee service-exemplaren van Azure lente-Cloud geïmplementeerd in twee verschillende regio's (VS-Oost en Europa-west). Start een bestaande Azure lente-Cloud toepassing met behulp van de Azure Portal om twee service-exemplaren te maken. Elk moet als primair en failover-eind punt voor verkeer fungeren. 
+
+**Twee informatie over service-exemplaren:**
+
+| Servicenaam | Locatie | Toepassing |
+|--|--|--|
+| service-voor beeld-a | VS - oost | Gateway/auth-service/account-service |
+| service-voor beeld-b | Europa -west | Gateway/auth-service/account-service |
+
+2. Aangepast domein voor service instellen Volg [aangepast domein document](spring-cloud-tutorial-custom-domain.md) voor het instellen van een aangepast domein voor deze twee bestaande service-exemplaren. Nadat de installatie is voltooid, worden beide service-exemplaren gebonden aan het aangepaste domein: bcdr-test.contoso.com
+
+3. Een Traffic Manager en twee eind punten maken: [Maak een Traffic Manager profiel met behulp van de Azure Portal](https://docs.microsoft.com/azure/traffic-manager/quickstart-create-traffic-manager-profile).
+
+Dit is het Traffic Manager-profiel:
+* Traffic Manager DNS-naam:http://asc-bcdr.trafficmanager.net
+* Eindpunt profielen: 
+
+| Profiel | Type | Doel | Prioriteit | Instellingen voor aangepaste header |
+|--|--|--|--|--|
+| Een profiel voor een eind punt | Extern eind punt | service-sample-a.asc-test.net | 1 | host: bcdr-test.contoso.com |
+| Endpoint B-profiel | Extern eind punt | service-sample-b.asc-test.net | 2 | host: bcdr-test.contoso.com |
+
+4. Maak een CNAME-record in DNS-zone: bcdr-test.contoso.com CNAME asc-bcdr.trafficmanager.net. 
+
+5. De omgeving is nu volledig ingesteld. Klanten moeten toegang kunnen krijgen tot de app via: bcdr-test.contoso.com

@@ -1,14 +1,14 @@
 ---
 title: Ondersteunde resource typen Resource Manager
 description: Geef een lijst op met de Resource Manager-resource typen die worden ondersteund door de Azure-resource grafiek en de wijzigings geschiedenis.
-ms.date: 04/24/2020
+ms.date: 04/29/2020
 ms.topic: reference
-ms.openlocfilehash: 7092a6dccc2870c7fd7b6dc6feb3af16f0fd3b7a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0ab079bcd1e7e8558d754a413068ca9f0ae276c6
+ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82141902"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82594250"
 ---
 # <a name="azure-resource-graph-table-and-resource-type-reference"></a>Naslag informatie over de tabel en het resource type van Azure resource Graph
 
@@ -62,6 +62,7 @@ De resource grafiek van Azure biedt ondersteuning voor de volgende **resource ty
 - micro soft. appconfiguration/configurationstores
 - micro soft. appplatform/lente
 - micro soft. Archive/Collections
+- micro soft. Attestation/attestationproviders
 - micro soft. Automation/automationaccounts
 - micro soft. Automation/automationaccounts/-configuraties
 - micro soft. Automation/automationaccounts/runbooks
@@ -75,6 +76,7 @@ De resource grafiek van Azure biedt ondersteuning voor de volgende **resource ty
 - micro soft. azureworden/sqlinstances
 - micro soft. azureworden/sqlserverregistrations
 - micro soft. azurestack/registraties
+- micro soft. azurestackhci/clusters
 - micro soft. baremetal/consoleconnections
 - micro soft. baremetal/crayservers
 - micro soft. baremetal/monitoringservers
@@ -146,6 +148,7 @@ De resource grafiek van Azure biedt ondersteuning voor de volgende **resource ty
 - micro soft. databricks/werk ruimten
 - micro soft. datacatalog/Catalogs
 - micro soft. datacatalog/datacatalogs
+- micro soft. datadog/monitors
 - micro soft. DataFactory/datafactories
 - micro soft. DataFactory/fabrieken
 - micro soft. datalakeanalytics/accounts

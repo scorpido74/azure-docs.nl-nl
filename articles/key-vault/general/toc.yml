@@ -96,6 +96,10 @@
           href: soft-delete-powershell.md
     - name: Azure Key Vault verplaatsen
       items:
+        - name: Key Vault verplaatsen naar een andere resourcegroep
+          href: keyvault-moveresourcegroup.md
+        - name: Key Vault verplaatsen naar een ander abonnement
+          href: keyvault-move-subscription.md
         - name: Key Vault verplaatsen naar een andere regio
           href: keyvault-moveregion.md
     - name: Problemen oplossen

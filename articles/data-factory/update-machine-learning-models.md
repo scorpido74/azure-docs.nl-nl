@@ -11,23 +11,23 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/16/2018
-ms.openlocfilehash: 4488c174ba5ff35ec2709d7c1b9f3093b4ee90a3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e8fb39e8762d31f00029a0eeea33f1e630fb15a6
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81409079"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82927391"
 ---
-# <a name="update-azure-machine-learning-models-by-using-update-resource-activity"></a>Azure Machine Learning-modellen bijwerken met de activiteit Resource bijwerken
+# <a name="update-ml-studio-classicv-models-by-using-update-resource-activity"></a>ML Studio (klassieke) v-modellen bijwerken met resource activiteit bijwerken
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-Dit artikel vormt een aanvulling op het belangrijkste Azure Data Factory-Azure Machine Learning-integratie artikel: [Maak voorspellende pijp lijnen met behulp van Azure machine learning en Azure Data Factory](transform-data-using-machine-learning.md). Als u dit nog niet hebt gedaan, raadpleegt u het hoofd artikel voordat u dit artikel leest.
+Dit artikel vormt een aanvulling op het belangrijkste Azure Data Factory-ML Studio (klassiek) integratie artikel: [Maak voorspellende pijp lijnen met behulp van Azure machine learning en Azure Data Factory](transform-data-using-machine-learning.md). Als u dit nog niet hebt gedaan, raadpleegt u het hoofd artikel voordat u dit artikel leest.
 
 ## <a name="overview"></a>Overzicht
-Als onderdeel van het proces van inzet Azure Machine Learning modellen wordt uw model getraind en opgeslagen. Vervolgens gebruikt u het om een voorspellende webservice te maken. De webservice kan vervolgens worden gebruikt in websites, Dash boards en mobiele apps.
+Als onderdeel van het proces van de inzet-modellen (klassieke ML Studio) wordt uw model getraind en opgeslagen. Vervolgens gebruikt u het om een voorspellende webservice te maken. De webservice kan vervolgens worden gebruikt in websites, Dash boards en mobiele apps.
 
-Modellen die u maakt met behulp van Machine Learning zijn doorgaans niet statisch. Wanneer er nieuwe gegevens beschikbaar zijn of wanneer de consumer van de API hun eigen gegevens heeft, moet het model opnieuw worden getraind. Raadpleeg [een machine learning model opnieuw trainen](../machine-learning/machine-learning-retrain-machine-learning-model.md) voor meer informatie over het opnieuw trainen van een model in azure machine learning.
+Modellen die u maakt met behulp van Machine Learning zijn doorgaans niet statisch. Wanneer er nieuwe gegevens beschikbaar zijn of wanneer de consumer van de API hun eigen gegevens heeft, moet het model opnieuw worden getraind. 
 
 Het opnieuw trainen kan regel matig worden uitgevoerd. Met de activiteit batch-uitvoering en update resource kunt u het Azure Machine Learning model opnieuw trainen en de voorspellende webservice bijwerken met behulp van Data Factory.
 
@@ -35,9 +35,9 @@ In de volgende afbeelding ziet u de relatie tussen training en voorspellende web
 
 ![Webservices](./media/update-machine-learning-models/web-services.png)
 
-## <a name="azure-machine-learning-update-resource-activity"></a>Resource activiteit Azure Machine Learning bijwerken
+## <a name="ml-studio-classic-update-resource-activity"></a>Resource-activiteit voor het bijwerken van ML Studio (klassiek)
 
-In het volgende JSON-code fragment wordt een Azure Machine Learning batch uitvoerings activiteit gedefinieerd.
+In het volgende JSON-code fragment wordt een ML Studio (klassieke) batch uitvoerings activiteit gedefinieerd.
 
 ```json
 {

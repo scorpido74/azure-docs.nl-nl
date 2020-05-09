@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d2ed7f27e2145f666f38eec5ddc6c985a4d32138
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1c685fa231bc1f40a78aae0d4fa89569ec146eea
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79266375"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82582909"
 ---
 # <a name="create-or-update-a-dynamic-group-in-azure-active-directory"></a>Een dynamische groep in Azure Active Directory maken of bijwerken
 
@@ -46,7 +46,7 @@ Zie voor voor beelden van de syntaxis, ondersteunde eigenschappen, Opera tors en
 
 ## <a name="to-create-a-group-membership-rule"></a>Een regel voor groepslid maatschap maken
 
-1. Meld u aan bij het [Azure AD-beheer centrum](https://aad.portal.azure.com) met een account dat zich in de rol globale beheerder, intune-beheerder of gebruikers beheerder in de Tenant bevindt.
+1. Meld u aan bij het [Azure AD-beheer centrum](https://aad.portal.azure.com) met een account dat zich in de rol globale beheerder, intune-beheerder of gebruikers beheerder in de Azure AD-organisatie bevindt.
 1. Zoek en selecteer **groepen**.
 1. Selecteer **alle groepen**en selecteer **nieuwe groep**.
 
@@ -66,7 +66,7 @@ Als de regel die u hebt ingevoerd niet geldig is, wordt uitgelegd waarom de rege
 
 ## <a name="to-update-an-existing-rule"></a>Een bestaande regel bijwerken
 
-1. Meld u aan bij het [Azure AD-beheer centrum](https://aad.portal.azure.com) met een account in de rol globale beheerder, groeps beheerder, intune-beheerder of gebruikers beheerder in de Tenant.
+1. Meld u aan bij het [Azure AD-beheer centrum](https://aad.portal.azure.com) met een account dat zich in de rol globale beheerder, groeps beheerder, intune-beheerder of gebruikers beheerder in de Azure AD-organisatie bevindt.
 1. Selecteer **groepen** > **alle groepen**.
 1. Selecteer een groep om het profiel ervan te openen.
 1. Selecteer op de profiel pagina voor de groep **dynamische lidmaatschaps regels**. De opbouw functie voor regels ondersteunt Maxi maal vijf expressies. Als u meer dan vijf expressies wilt toevoegen, moet u het tekstvak gebruiken.
@@ -102,7 +102,7 @@ De volgende status berichten kunnen worden weer gegeven voor het lidmaatschap va
 - Wordt **uitgevoerd**: updates worden momenteel uitgevoerd.
 - **Onbekend**: de tijd van de laatste update kan niet worden opgehaald. De groep is mogelijk nieuw.
 
-Als er een fout optreedt tijdens het verwerken van de lidmaatschaps regel voor een specifieke groep, wordt er een waarschuwing weer gegeven boven aan de **pagina overzicht** voor de groep. Als er voor meer dan 24 uur geen updates voor dynamische lidmaatschappen in behandeling kunnen worden verwerkt voor alle groepen in de Tenant, wordt een waarschuwing weer gegeven aan de bovenkant van **alle groepen**.
+Als er een fout optreedt tijdens het verwerken van de lidmaatschaps regel voor een specifieke groep, wordt er een waarschuwing weer gegeven boven aan de **pagina overzicht** voor de groep. Als er voor meer dan 24 uur geen updates voor dynamische lidmaatschappen in behandeling kunnen worden verwerkt voor alle groepen binnen de organisatie, wordt een waarschuwing weer gegeven aan de bovenkant van **alle groepen**.
 
 ![fout bericht waarschuwingen verwerken](./media/groups-create-rule/processing-error.png)
 

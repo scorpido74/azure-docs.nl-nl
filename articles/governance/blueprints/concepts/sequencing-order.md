@@ -1,14 +1,14 @@
 ---
 title: Meer informatie over de volg orde van de implementatie volgorde
 description: Meer informatie over de standaard volgorde waarmee blauw drukken artefacten worden geïmplementeerd tijdens een blauw druk-toewijzing en het aanpassen van de implementatie volgorde.
-ms.date: 08/22/2019
+ms.date: 05/06/2020
 ms.topic: conceptual
-ms.openlocfilehash: 41b1b1ada5b7c6c919f227927001570332eeccbf
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 91e11f8127ba2532ad48362de1689f4be2b6f935
+ms.sourcegitcommit: 602e6db62069d568a91981a1117244ffd757f1c2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80677564"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82864518"
 ---
 # <a name="understand-the-deployment-sequence-in-azure-blueprints"></a>Meer informatie over de implementatie volgorde in azure-blauw drukken
 
@@ -47,8 +47,7 @@ Bij het opstellen van grote blauw drukken-definities kan het nodig zijn om resou
 De volg orde wordt bereikt door een `dependsOn` eigenschap in de JSON te definiëren. De definitie van de blauw druk, voor resource groepen en artefact objecten ondersteunen deze eigenschap. `dependsOn`is een teken reeks matrix van artefact namen waarvan het specifieke artefact moet worden gemaakt voordat deze wordt gemaakt.
 
 > [!NOTE]
-> Wanneer u blauw drukken-objecten maakt, haalt elke artefact bron de naam van de bestands naam, indien [Power shell](/powershell/module/az.blueprint/new-azblueprintartifact)of het URL-eind punt wordt gebruikt als [rest API](/rest/api/blueprints/artifacts/createorupdate).
-> _resourceGroup_ verwijzingen in artefacten moeten overeenkomen met die in de definitie van de blauw druk.
+> Wanneer u blauw drukken-objecten maakt, haalt elke artefact bron de naam van de bestands naam, indien [Power shell](/powershell/module/az.blueprint/new-azblueprintartifact)of het URL-eind punt wordt gebruikt als [rest API](/rest/api/blueprints/artifacts/createorupdate). _resourceGroup_ verwijzingen in artefacten moeten overeenkomen met die in de definitie van de blauw druk.
 
 ### <a name="example---ordered-resource-group"></a>Voor beeld-bestelde resource groep
 
@@ -137,7 +136,8 @@ Het sjabloon artefact op abonnements niveau, afhankelijk van de resource groep *
 
 Tijdens het maken wordt een topologische sortering gebruikt voor het maken van de afhankelijkheids grafiek van de blauw drukken-artefacten. De controle zorgt ervoor dat elk niveau van afhankelijkheid tussen resource groepen en artefacten wordt ondersteund.
 
-Als een artefact afhankelijkheid is gedeclareerd en de standaard volgorde niet zou wijzigen, wordt er geen wijziging aangebracht. Een voor beeld is een resource groep die afhankelijk is van een beleid op abonnements niveau. Een ander voor beeld is een onderliggende beleids toewijzing van een resource groep, die afhankelijk is van de resource groep Standard-RG, de toewijzing van onderliggende rollen. In beide gevallen `dependsOn` is de standaard volgorde voor sequentiëren niet gewijzigd en worden er geen wijzigingen aangebracht.
+Als een artefact afhankelijkheid is gedeclareerd en de standaard volgorde niet zou wijzigen, wordt er geen wijziging aangebracht.
+Een voor beeld is een resource groep die afhankelijk is van een beleid op abonnements niveau. Een ander voor beeld is een onderliggende beleids toewijzing van een resource groep, die afhankelijk is van de resource groep Standard-RG, de toewijzing van onderliggende rollen. In beide gevallen `dependsOn` is de standaard volgorde voor sequentiëren niet gewijzigd en worden er geen wijzigingen aangebracht.
 
 ## <a name="next-steps"></a>Volgende stappen
 
