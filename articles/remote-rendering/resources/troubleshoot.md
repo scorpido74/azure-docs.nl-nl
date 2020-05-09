@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/25/2020
 ms.topic: troubleshooting
-ms.openlocfilehash: b86af2ff8fad3793fc47cec9399fd499c1cabba7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c1b807c6e4fa269ac2ab8d7eacd3ca1d4f81a1ca
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81681859"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82792612"
 ---
 # <a name="troubleshoot"></a>Problemen oplossen
 
@@ -98,6 +98,10 @@ Als deze twee stappen niet helpen, is het nodig om erachter te komen of video fr
 
 ### <a name="common-client-side-issues"></a>Veelvoorkomende problemen aan de client zijde
 
+**Het model overschrijdt de limieten van de geselecteerde virtuele machine, met name het maximum aantal veelhoeken:**
+
+Zie specifieke [beperkingen](../reference/limits.md#overall-number-of-polygons)voor de VM-grootte.
+
 **Het model bevindt zich niet in de weer gave-frustum:**
 
 In veel gevallen wordt het model correct weer gegeven, maar buiten de camera frustum. Een veelvoorkomende reden is dat het model is geëxporteerd met een uit de weg geplaatste draaiing, zodat het wordt geknipt door het ver knip vlak van de camera. Het helpt het model in het kader van een programma op te vragen en het vak met eenheid als een lijn vak te visualiseren of de waarden in het logboek voor fout opsporing af te drukken.
@@ -139,8 +143,20 @@ Azure remote rendering hooks in de unit weergave-pijp lijn voor het samen stelle
 
 ## <a name="unity-code-using-the-remote-rendering-api-doesnt-compile"></a>Unit code met behulp van de remote rendering API wordt niet gecompileerd
 
+### <a name="use-debug-when-compiling-for-unity-editor"></a>Fout opsporing gebruiken bij het compileren van Unity editor
+
 Schakel het *type Build* van unit Solution in op **debug**. Bij het testen van ARR in de eenheids `UNITY_EDITOR` editor is de definitie alleen beschikbaar in builds voor fout opsporing. Houd er rekening mee dat dit niet gerelateerd is aan het build-type dat wordt gebruikt voor [geïmplementeerde toepassingen](../quickstarts/deploy-to-hololens.md), waarbij u de voor keur geeft aan release-builds.
 
+### <a name="compile-failures-when-compiling-unity-samples-for-hololens-2"></a>Fouten compileren bij het compileren van unit-samples voor HoloLens 2
+
+Er zijn onlogische fouten gedetecteerd bij het compileren van unit-voor beelden (Quick Start, ShowCaseApp,..) voor HoloLens 2. Visual Studio klagen over het al dan niet kunnen kopiëren van bestanden, maar ze zijn er wel. Als u dit probleem ondervindt:
+* Verwijder alle tijdelijke unit-bestanden uit het project en probeer het opnieuw.
+* Zorg ervoor dat de projecten zich in een map op schijf bevinden met redelijk korte pad, omdat de Kopieer stap soms problemen met lange bestands namen ondervindt.
+* Als dat niet helpt, kan het zijn dat MS Sense de Kopieer stap verstoort. Als u een uitzonde ring wilt instellen, voert u deze register opdracht uit vanaf de opdracht regel (hiervoor zijn beheerders rechten vereist):
+    ```cmd
+    reg.exe ADD "HKLM\SOFTWARE\Policies\Microsoft\Windows Advanced Threat Protection" /v groupIds /t REG_SZ /d "Unity”
+    ```
+    
 ## <a name="unstable-holograms"></a>Onstabiele hologrammen
 
 In het geval dat gerenderde objecten samen met de hoofd bewegingen worden verplaatst, kunnen er problemen optreden met de *vertraagde fase* van het project (lsr). Raadpleeg de sectie over [vertraagde fase](../overview/features/late-stage-reprojection.md) ring van het project voor richt lijnen voor het aanpaken van een dergelijke situatie.

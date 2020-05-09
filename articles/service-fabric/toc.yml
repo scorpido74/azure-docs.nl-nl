@@ -655,7 +655,7 @@
             - name: Schalen
               items:
                 - name: Handmatig uitschalen
-                  href: service-fabric-cluster-scale-up-down.md
+                  href: service-fabric-cluster-scale-in-out.md
                 - name: Programmatisch uitschalen
                   href: service-fabric-cluster-programmatic-scaling.md
                 - name: Primair knooppunttype omhoog schalen

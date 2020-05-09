@@ -3,16 +3,16 @@ title: Logische apps bewerken en beheren met behulp van Visual Studio met Cloud 
 description: Bewerken, bijwerken, beheren, toevoegen aan broncode beheer en logische Apps implementeren met behulp van Visual Studio met Cloud Explorer
 services: logic-apps
 ms.suite: integration
-ms.reviewer: klam, logicappspm
+ms.reviewer: estfan, jonfan, logicappspm
 ms.topic: article
 ms.custom: mvc
-ms.date: 10/29/2019
-ms.openlocfilehash: 73df5b7f10e038b6894996eb83dec7b6914a4536
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 04/29/2020
+ms.openlocfilehash: 62807ef25fe6ee70844e72c90751eb383d0ece7c
+ms.sourcegitcommit: acc558d79d665c8d6a5f9e1689211da623ded90a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80803187"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82598433"
 ---
 # <a name="manage-logic-apps-with-visual-studio"></a>Logische apps beheren met Visual Studio
 
@@ -259,7 +259,11 @@ Als u uw logische app uit de Azure Portal wilt verwijderen, opent u in Cloud Exp
 ![Uw logische app verwijderen uit Azure Portal](./media/manage-logic-apps-with-visual-studio/delete-logic-app-from-azure-portal.png)
 
 > [!NOTE]
-> Wanneer u een logische app verwijdert, worden geen nieuwe uitvoeringen gemaakt. Alle uitvoeringen die bezig zijn en wachten op uitvoering worden geannuleerd. Als u duizenden uitvoeringen hebt, kan de annulering een aanzienlijke tijd in beslag nemen. 
+> Wanneer u een logische app verwijdert, worden geen nieuwe uitvoeringen gemaakt. Alle uitvoeringen die bezig zijn en wachten op uitvoering worden geannuleerd. Als u duizenden uitvoeringen hebt, kan de annulering een aanzienlijke tijd in beslag nemen.
+
+> [!NOTE]
+> Als u een onderliggende logische app verwijdert en opnieuw maakt, moet u de bovenliggende logische app opnieuw opslaan. De opnieuw gemaakte onderliggende app heeft andere meta gegevens.
+> Als u de bovenliggende logische app niet opnieuw opslaat nadat u het onderliggende element opnieuw hebt gemaakt, zullen de aanroepen naar de onderliggende logische app mislukken met de fout ' niet toegestaan '. Dit gedrag is van toepassing op bovenliggende en onderliggende logische apps, bijvoorbeeld die artefacten gebruiken in integratie accounts of Azure functions aanroepen.
 
 ## <a name="troubleshooting"></a>Problemen oplossen
 

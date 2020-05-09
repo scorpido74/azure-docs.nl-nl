@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: automation
 manager: carmonm
 ms.custom: has-adal-ref
-ms.openlocfilehash: 08325c8163073c083e927f84fecbde9a9d104572
-ms.sourcegitcommit: d662eda7c8eec2a5e131935d16c80f1cf298cb6b
-ms.translationtype: HT
+ms.openlocfilehash: 70f3c52adc10556c358ed75a75fd023ffb21a813
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82652799"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82855090"
 ---
 # <a name="troubleshoot-runbook-errors"></a>Problemen met runbook oplossen
 
@@ -49,7 +49,7 @@ Wanneer u fouten ontvangt tijdens het uitvoeren van een runbook in Azure Automat
     * [Vernieuw de webhook](../automation-webhooks.md#renew-a-webhook) als u probeert een verlopen webhook te gebruiken om het runbook te starten.
     * [Controleer de status](../automation-runbook-execution.md#job-statuses) van de taak om de huidige runbooknaam en enkele mogelijke oorzaken van het probleem vast te stellen.
     * [Voeg extra uitvoer](../automation-runbook-output-and-messages.md#message-streams) aan het runbook toe om te bepalen wat er gebeurt voordat het runbook wordt onderbroken.
-    * [Alle uitzonde ringen verwerken](../automation-runbook-execution.md#handling-exceptions) die door uw taak worden gegenereerd.
+    * [Alle uitzonde ringen verwerken](../automation-runbook-execution.md#exceptions) die door uw taak worden gegenereerd.
 
 1. Voer deze stap uit als de runbook-taak of de omgeving op Hybrid Runbook Worker niet reageert.
 
@@ -234,7 +234,7 @@ Het runbook gebruikt niet de juiste context wanneer het wordt uitgevoerd.
 
 ### <a name="resolution"></a>Oplossing
 
-De context van het abonnement kan verloren gaan wanneer een runbook meerdere runbooks aanroept. Als u er zeker van wilt zijn dat de context van het abonnement wordt door gegeven aan de runbooks, laat `Start-AzureRmAutomationRunbook` u het runbook `AzureRmContext` van de client de context door geven aan de cmdlet in de para meter. Gebruik de `Disable-AzureRmContextAutosave` cmdlet met de `Scope` para meter ingesteld `Process` op om ervoor te zorgen dat de opgegeven referenties alleen worden gebruikt voor het huidige runbook. Zie [werken met meerdere abonnementen](../automation-runbook-execution.md#working-with-multiple-subscriptions)voor meer informatie.
+De context van het abonnement kan verloren gaan wanneer een runbook meerdere runbooks aanroept. Als u er zeker van wilt zijn dat de context van het abonnement wordt door gegeven aan de runbooks, laat `Start-AzureRmAutomationRunbook` u het runbook `AzureRmContext` van de client de context door geven aan de cmdlet in de para meter. Gebruik de `Disable-AzureRmContextAutosave` cmdlet met de `Scope` para meter ingesteld `Process` op om ervoor te zorgen dat de opgegeven referenties alleen worden gebruikt voor het huidige runbook. Zie [abonnementen](../automation-runbook-execution.md#subscriptions)voor meer informatie.
 
 ```azurepowershell-interactive
 # Ensures that any credentials apply only to the execution of this runbook
@@ -634,7 +634,7 @@ Dit probleem kan optreden omdat Azure-sandboxes geen toegang tot alle out-of-pro
 
 ### <a name="resolution"></a>Oplossing
 
-Zie [Runbook-uitvoering in azure Automation](../automation-runbook-execution.md#where-to-run-your-runbooks)voor meer informatie over het gebruik van Azure-sandboxes.
+Zie voor meer informatie over het gebruik van Azure-sandboxs de [Runbook Execution Environment](../automation-runbook-execution.md#runbook-execution-environment).
 
 ## <a name="scenario-invalid-forbidden-status-code-when-using-key-vault-inside-a-runbook"></a>Scenario: ongeldige status code bij het gebruik van Key Vault in een runbook
 

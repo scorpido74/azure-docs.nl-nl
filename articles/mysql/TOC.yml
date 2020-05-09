@@ -9,12 +9,19 @@
 - name: Snelstartgidsen
   expanded: true
   items:
-    - name: Database maken - Portal
-      href: quickstart-create-mysql-server-database-using-azure-portal.md
-    - name: Database maken - Azure CLI
-      href: quickstart-create-mysql-server-database-using-azure-cli.md
-    - name: Database maken - up-opdracht in Azure CLI
-      href: quickstart-create-server-up-azure-cli.md
+    - name: Database maken
+      items:
+        - name: Database maken - Portal
+          href: quickstart-create-mysql-server-database-using-azure-portal.md
+        - name: Database maken - Azure CLI
+          href: quickstart-create-mysql-server-database-using-azure-cli.md
+        - name: Database maken - up-opdracht in Azure CLI
+          href: quickstart-create-server-up-azure-cli.md
+        - name: Database maken - Azure PowerShell
+          href: quickstart-create-mysql-server-database-using-azure-powershell.md
+        - name: Database maken - ARM-sjabloon
+          href: quickstart-create-mysql-server-database-using-arm-template.md
+          displayName: deploy azure resource manager template
     - name: Verbinding maken en query uitvoeren
       items:
         - name: PHP
@@ -43,6 +50,8 @@
           href: tutorial-design-database-using-portal.md
         - name: Azure CLI
           href: tutorial-design-database-using-cli.md
+        - name: Azure PowerShell
+          href: tutorial-design-database-using-powershell.md
         - name: Azure Resource Manager-sjabloon
           href: tutorial-provision-mysql-server-using-Azure-Resource-Manager-templates.md
     - name: 2 - Een web-app maken
@@ -59,6 +68,9 @@
       href: sample-scripts-azure-cli.md
     - name: Groepsgewijze Java-verbinding
       href: sample-scripts-java-connection-pooling.md
+    - name: Ingebouwde modules voor Azure Policy
+      displayName: 'samples, policies, definitions'
+      href: ./policy-samples.md
 - name: Concepten
   items:
     - name: DB en servers
@@ -160,6 +172,8 @@
           href: howto-restore-server-portal.md
         - name: Azure CLI
           href: howto-restore-server-cli.md
+        - name: Azure PowerShell
+          href: howto-restore-server-powershell.md
     - name: Een database migreren
       items:
         - name: Dumpen en terugzetten
@@ -186,12 +200,16 @@
           href: howto-server-parameters.md
         - name: Azure CLI
           href: howto-configure-server-parameters-using-cli.md
+        - name: Azure PowerShell
+          href: howto-configure-server-parameters-using-powershell.md
     - name: Opslag automatisch vergroten
       items:
         - name: Azure Portal
           href: howto-auto-grow-storage-portal.md
         - name: Azure CLI
           href: howto-auto-grow-storage-cli.md
+        - name: Azure PowerShell
+          href: howto-auto-grow-storage-powershell.md
     - name: Serverlogboeken openen
       items:
         - name: Logboeken voor langzame query's
@@ -218,6 +236,8 @@
           href: howto-read-replicas-portal.md
         - name: 'Leesreplica''s maken met de Azure CLI, REST API'
           href: howto-read-replicas-cli.md
+        - name: Leesreplica's maken met Azure PowerShell
+          href: howto-read-replicas-powershell.md
     - name: Problemen oplossen
       items:
         - name: Verbindingsfouten oplossen
@@ -250,6 +270,8 @@
           href: howto-data-encryption-portal.md
         - name: Azure CLI
           href: howto-data-encryption-cli.md
+        - name: Validatie voor gegevensversleuteling
+          href: howto-data-encryption-validation.md
     - name: Azure AD-integratie
       items:
         - name: Azure AD-integratie configureren
@@ -264,6 +286,8 @@
           href: howto-restart-server-portal.md
         - name: Azure CLI
           href: howto-restart-server-cli.md
+        - name: Azure PowerShell
+          href: howto-restart-server-powershell.md
 - name: Naslaginformatie
   items:
     - name: Azure CLI
