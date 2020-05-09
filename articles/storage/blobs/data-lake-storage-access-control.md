@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 03/16/2020
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.openlocfilehash: 93c21656a768ae458572e0b4917412c8103b2f2d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: dd23745f811cf67aa5e7ef7aa96b877b5980c270
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80992212"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82793122"
 ---
 # <a name="access-control-in-azure-data-lake-storage-gen2"></a>Toegangsbeheer in Data Lake Storage Gen2
 
@@ -287,7 +287,7 @@ Als HNS is uitgeschakeld, zijn de Azure RBAC-autorisatie regels nog steeds van t
 
 ### <a name="what-is-the-best-way-to-apply-acls"></a>Wat is de beste manier om Acl's toe te passen?
 
-Gebruik altijd Azure AD-beveiligings groepen als de toegewezen Principal in Acl's. Houd de kans om afzonderlijke gebruikers of service-principals rechtstreeks toe te wijzen. Met deze structuur kunt u gebruikers of service-principals toevoegen en verwijderen zonder dat u de Acl's opnieuw hoeft toe te passen op een volledige mapstructuur. ) In plaats daarvan moet u deze eenvoudigweg toevoegen aan of verwijderen uit de juiste Azure AD-beveiligings groep. Houd er wel van uit dat Acl's niet worden overgenomen en dat Acl's opnieuw moeten worden toegepast. hiervoor moet de toegangs beheer lijst voor elk bestand en elke submap worden bijgewerkt. 
+Gebruik altijd Azure AD-beveiligings groepen als de toegewezen Principal in Acl's. Houd de kans om afzonderlijke gebruikers of service-principals rechtstreeks toe te wijzen. Met deze structuur kunt u gebruikers of service-principals toevoegen en verwijderen zonder dat u de Acl's opnieuw hoeft toe te passen op een volledige mapstructuur. In plaats daarvan moet u deze eenvoudigweg toevoegen aan of verwijderen uit de juiste Azure AD-beveiligings groep. Houd er wel van uit dat Acl's niet worden overgenomen en dat Acl's opnieuw moeten worden toegepast. hiervoor moet de toegangs beheer lijst voor elk bestand en elke submap worden bijgewerkt. 
 
 ### <a name="which-permissions-are-required-to-recursively-delete-a-directory-and-its-contents"></a>Welke machtigingen zijn vereist voor het recursief verwijderen van een map en de inhoud ervan?
 

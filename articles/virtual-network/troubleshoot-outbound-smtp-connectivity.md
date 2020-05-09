@@ -12,15 +12,15 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/20/2018
 ms.author: genli
-ms.openlocfilehash: b8acb50978c5932fe6e6838be86b65c12a0984ac
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e5a878c8108706c4a3a175c920708beeeaa4aa12
+ms.sourcegitcommit: c8a0fbfa74ef7d1fd4d5b2f88521c5b619eb25f8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "71058937"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82801747"
 ---
 # <a name="troubleshoot-outbound-smtp-connectivity-issues-in-azure"></a>Problemen met uitgaande SMTP-connectiviteit in azure oplossen
-
+<p class="alert is-flex is-primary"><span class="has-padding-left-medium has-padding-top-extra-small"><a class="button is-primary" href="https://azurevirtualsupportagent.services.microsoft.com?content=027fa865-2329-23de-3740-cfbe35359302" target='_blank'>Begin</a></span>met<span class="has-padding-small">het snel oplossen van uw probleem door gebruik te maken van onze virtuele agent om <b>geautomatiseerde diagnostische gegevens</b> uit te voeren.</span> <div align="right"> <sub>Privacy Statement</sub> Privacyverklaring <span class="has-padding-small"> <a href="https://privacy.microsoft.com/privacystatement" target='_blank'></div></a></span></p>
 Vanaf 15 november 2017 worden uitgaande e-mail berichten die rechtstreeks naar externe domeinen (zoals outlook.com en gmail.com) worden verzonden vanaf een virtuele machine (VM), alleen beschikbaar gesteld voor bepaalde abonnements typen in Microsoft Azure. Uitgaande SMTP-verbindingen die gebruikmaken van TCP-poort 25, zijn geblokkeerd. (Poort 25 wordt voornamelijk gebruikt voor niet-geverifieerde e-mail bezorging.)
 
 Deze wijziging in gedrag geldt alleen voor nieuwe abonnementen en nieuwe implementaties sinds 15 november 2017.

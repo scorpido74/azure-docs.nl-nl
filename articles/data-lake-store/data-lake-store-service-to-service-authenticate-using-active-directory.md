@@ -1,22 +1,17 @@
 ---
-title: 'Service-naar-service-verificatie: Azure Data Lake Storage Gen1 met Azure Active Directory | Microsoft Docs'
-description: Meer informatie over service-to-service verificatie met Azure Data Lake Storage Gen1 met behulp van Azure Active Directory
-services: data-lake-store
-documentationcenter: ''
+title: Service-naar-service-verificatie-Data Lake Storage Gen1-Azure
+description: Meer informatie over het uitvoeren van service-to-service-verificatie met Azure Data Lake Storage Gen1 met behulp van Azure Active Directory.
 author: twooley
-manager: mtillman
-editor: cgronlun
 ms.service: data-lake-store
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: 3fbf2f2540e8f1ca84aad2759b9a1fc790e4065d
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.openlocfilehash: 74ad40eb7f7483bb010cf8eb002776893c50a256
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "66241361"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82688184"
 ---
 # <a name="service-to-service-authentication-with-azure-data-lake-storage-gen1-using-azure-active-directory"></a>Service-naar-service verificatie met Azure Data Lake Storage Gen1 met behulp van Azure Active Directory
 > [!div class="op_single_selector"]
@@ -73,7 +68,7 @@ Wanneer u zich programmatisch aanmeldt, hebt u de ID voor uw toepassing nodig. A
     ![Machtigingen toewijzen aan groep](./media/data-lake-store-authenticate-using-active-directory/adl.acl.4.png "Machtigingen toewijzen aan groep")
    
     Zie [Access Control in data Lake Storage gen1](data-lake-store-access-control.md)voor meer informatie over machtigingen in data Lake Storage gen1 en standaard-acl's.
-7. Klik op de Blade **aangepaste toegang toevoegen** op **OK**. De zojuist toegevoegde groep met de bijbehorende machtigingen wordt weer gegeven op de Blade **toegang** .
+7. Klik op de Blade **aangepaste toegang toevoegen** op **OK**. De toegevoegde groepen, met de bijbehorende machtigingen, worden weer gegeven op de Blade **toegang** .
    
     ![Machtigingen toewijzen aan groep](./media/data-lake-store-authenticate-using-active-directory/adl.acl.5.png "Machtigingen toewijzen aan groep")
 

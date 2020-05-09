@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 04/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: be76c665e1f5319b3e1ff1976e44fee9cd90ea6b
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: d46d5618d7e3dc26775401f4a90d0c98d75ea31a
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82607195"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82929210"
 ---
 # <a name="expand-an-existing-host-pool-with-new-session-hosts"></a>Een bestaande hostgroep uitbreiden met nieuwe sessie-hosts
 
@@ -58,7 +58,7 @@ U kunt als volgt uw hostgroep uitbreiden door virtuele machines toe te voegen:
 
 7. Selecteer de resource groep waarvoor u de virtuele machines wilt maken en selecteer vervolgens de regio. U kunt kiezen welke huidige regio u gebruikt of een nieuwe regio.
    
-8. Voer het nieuwe totale aantal sessie-hosts in dat u wilt in **aantal vm's**. Als u uw hostgroep bijvoorbeeld uitbreidt van vijf sessie-hosts tot acht, voert u **8**in. 
+8. Voer het aantal sessie-hosts in dat u wilt toevoegen aan uw hostgroep in **aantal vm's**. Als u uw hostgroep bijvoorbeeld met vijf hosts wilt uitbreiden, voert u **5**in.
    
     >[!NOTE]
     >U kunt de grootte of afbeelding van de Vm's niet bewerken omdat het belang rijk is om ervoor te zorgen dat alle virtuele machines in de hostgroep dezelfde grootte hebben.

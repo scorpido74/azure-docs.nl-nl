@@ -1,6 +1,6 @@
 ---
-title: Meer informatie over het weigeren van toewijzingen voor Azure-resources
-description: Meer informatie over het weigeren van toewijzingen in op rollen gebaseerd toegangs beheer (RBAC) voor Azure-resources.
+title: Meer informatie over Azure deny-toewijzingen-Azure RBAC
+description: Meer informatie over Azure deny-toewijzingen in azure op rollen gebaseerd toegangs beheer (Azure RBAC).
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -15,14 +15,14 @@ ms.date: 03/26/2020
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: ''
-ms.openlocfilehash: db249ccde1026cd468a1c30942891119482697ba
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a5f17f009caa9306631debf511f2c890f8f2a450
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80372489"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82733768"
 ---
-# <a name="understand-deny-assignments-for-azure-resources"></a>Meer informatie over het weigeren van toewijzingen voor Azure-resources
+# <a name="understand-azure-deny-assignments"></a>Meer informatie over Azure deny-toewijzingen
 
 Net als bij een roltoewijzing koppelt een *weigerings toewijzing* een reeks weigerings acties toe aan een gebruiker, groep of Service-Principal in een bepaald bereik voor het weigeren van de toegang. Toewijzingen weigeren blok keren dat gebruikers specifieke Azure-resource acties kunnen uitvoeren, zelfs als een roltoewijzing deze toegang verleent.
 
@@ -63,12 +63,12 @@ Het weigeren van toewijzingen volgt een vergelijkbaar patroon als roltoewijzinge
 > | `Permissions.DataActions` | Ten minste één actie of één DataActions | Teken reeks [] | Een matrix met teken reeksen waarmee de gegevens bewerkingen worden opgegeven waarnaar de weigerings toewijzing toegang blokkeert. |
 > | `Permissions.NotDataActions` | Nee | Teken reeks [] | Een matrix met teken reeksen waarmee de gegevens bewerkingen worden opgegeven die moeten worden uitgesloten van de weigerings toewijzing. |
 > | `Scope` | Nee | Tekenreeks | Een teken reeks die het bereik opgeeft waarop de weigerings toewijzing van toepassing is. |
-> | `DoNotApplyToChildScopes` | Nee | Booleaans | Hiermee geeft u op of de weigerings toewijzing van toepassing is op onderliggende bereiken. De standaard waarde is False. |
+> | `DoNotApplyToChildScopes` | Nee | Boolean-waarde | Hiermee geeft u op of de weigerings toewijzing van toepassing is op onderliggende bereiken. De standaard waarde is False. |
 > | `Principals[i].Id` | Ja | Teken reeks [] | Een matrix van Azure AD Principal-object-Id's (gebruiker, groep, Service-Principal of beheerde identiteit) waarop de weigerings toewijzing van toepassing is. Stel in op een lege `00000000-0000-0000-0000-000000000000` GUID om alle principals weer te geven. |
 > | `Principals[i].Type` | Nee | Teken reeks [] | Een matrix van object typen vertegenwoordigd door principals [i]. id. Stel in `SystemDefined` om alle principals weer te geven. |
 > | `ExcludePrincipals[i].Id` | Nee | Teken reeks [] | Een matrix van Azure AD Principal-object-Id's (gebruiker, groep, Service-Principal of beheerde identiteit) waarop de weigerings toewijzing niet van toepassing is. |
 > | `ExcludePrincipals[i].Type` | Nee | Teken reeks [] | Een matrix met object typen vertegenwoordigd door ExcludePrincipals [i]. id. |
-> | `IsSystemProtected` | Nee | Booleaans | Hiermee wordt aangegeven of deze deny-toewijzing is gemaakt door Azure en niet kan worden bewerkt of verwijderd. Op dit moment worden alle deny-toewijzingen met het systeem beveiligd. |
+> | `IsSystemProtected` | Nee | Boolean-waarde | Hiermee wordt aangegeven of deze deny-toewijzing is gemaakt door Azure en niet kan worden bewerkt of verwijderd. Op dit moment worden alle deny-toewijzingen met het systeem beveiligd. |
 
 ## <a name="the-all-principals-principal"></a>De principal alle principals
 
@@ -90,4 +90,4 @@ Alle principals kunnen worden gecombineerd met `ExcludePrincipals` om alle princ
 ## <a name="next-steps"></a>Volgende stappen
 
 * [Zelf studie: nieuwe resources beveiligen met Azure-blauw drukken resource vergrendelingen](../governance/blueprints/tutorials/protect-new-resources.md)
-* [Toewijzing van toewijzingen voor Azure-resources met behulp van de Azure Portal weer geven](deny-assignments-portal.md)
+* [Azure deny-toewijzingen weer geven met behulp van de Azure Portal](deny-assignments-portal.md)

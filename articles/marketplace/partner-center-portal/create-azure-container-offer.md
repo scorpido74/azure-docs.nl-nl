@@ -1,33 +1,33 @@
 ---
-title: Een Azure-container aanbieding maken in het Partner Center-Azure Marketplace
-description: In dit artikel wordt beschreven hoe u een container aanbod voor Azure Marketplace maakt en publiceert.
+title: Een Azure-container aanbod maken-Azure Marketplace
+description: In dit artikel wordt uitgelegd hoe u een container aanbod maakt en publiceert naar Azure Marketplace.
 author: mingshen
 ms.author: mingshen
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/07/2020
-ms.openlocfilehash: 3170849955485c0d098ed9f39c22332456e46fe4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f2a3b6355fdaa8cd90525fac9d29324270dfad02
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81867367"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82791932"
 ---
-# <a name="create-an-azure-container-offer"></a>Een Azure Container-aanbieding maken
+# <a name="create-an-azure-container-offer"></a>Een Azure-container aanbieding maken
 
 > [!IMPORTANT]
 > We verplaatsen het beheer van uw Azure-container aanbiedingen van Cloud Partner-portal naar het partner centrum. Totdat uw aanbiedingen zijn gemigreerd, volgt u de instructies in [containers](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/containers/cpp-containers-offer) voor Cloud Partner-Portal voor het beheren van uw aanbiedingen.
 
-In dit artikel wordt beschreven hoe u een container aanbod voor Azure Marketplace maakt en publiceert. Voordat u begint, moet u [een commercieel Marketplace-account maken in Partner Center](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account).
+In dit artikel wordt beschreven hoe u een container aanbod voor Azure Marketplace maakt en publiceert. Voordat u begint, moet u [een commercieel Marketplace-account maken in Partner Center](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account) als u dit nog niet hebt gedaan. Zorg ervoor dat uw account is inge schreven in het Commercial Marketplace-programma.
 
 ## <a name="create-a-new-offer"></a>Een nieuwe aanbieding maken
 
-1. Meld u aan bij [Partner Center](https://partner.microsoft.com/dashboard/home)en selecteer vervolgens **dash board**in het bovenste menu.
-2. Selecteer in het menu links de optie **commerciële Marketplace**en vervolgens **overzicht**.
-3. Selecteer op de pagina **overzicht** **+ nieuwe aanbieding**en vervolgens **Azure-container**. Het dialoog venster **nieuwe aanbieding** wordt weer gegeven.
+1. Meld u aan bij [Partner Center](https://partner.microsoft.com/dashboard/home).
+2. Selecteer in het menu links de optie **commerciële Marketplace** > -**overzicht**.
+3. Selecteer op de pagina overzicht **+ nieuwe** > **Azure-container**aanbod.
 
-:::image type="content" source="media/azure-create-container-offer-images/azure-create-new-container.png" alt-text="De overzichts pagina wordt geïllustreerd in Partner Center. De nieuwe aanbiedings knop en het advies service aanbod zijn gemarkeerd.":::
+    ![Illustreert het navigatie menu.](./media/new-offer-azure-container.png)
 
 > [!TIP]
 > Nadat een aanbieding is gepubliceerd, worden wijzigingen die in het partner centrum zijn aangebracht, alleen weer gegeven in de winkel wanneer u de aanbieding opnieuw publiceert. Zorg ervoor dat u altijd opnieuw publiceert nadat u wijzigingen hebt aangebracht.
@@ -36,16 +36,16 @@ In dit artikel wordt beschreven hoe u een container aanbod voor Azure Marketplac
 
 Voer een **aanbiedings-id**in. Dit is een unieke id voor elke aanbieding in uw account.
 
-- Deze ID kan worden gezien door klanten in het webadres voor de Marketplace-aanbieding en Azure Resource Manager sjablonen, indien van toepassing.
+- Deze ID is zichtbaar voor klanten in het webadres voor de Marketplace-aanbieding en Azure Resource Manager sjablonen, indien van toepassing.
 - Gebruik alleen kleine letters en cijfers. Dit kan afbreek streepjes en onderstrepings tekens bevatten, maar mag niet langer zijn dan 50. Als u bijvoorbeeld **test-aanbieding-1**invoert, is het webadres van de aanbieding `https://azuremarketplace.microsoft.com/marketplace/../test-offer-1`.
 - De aanbiedings-ID kan niet worden gewijzigd nadat u **maken**hebt geselecteerd.
 
-**Voer een** **alias**voor de aanbieding in. Dit is de naam die wordt gebruikt om te verwijzen naar de aanbieding in Partner Center.
+Voer een **alias**voor de aanbieding in. Dit is de naam die wordt gebruikt voor de aanbieding in Partner Center.
 
 - Deze naam wordt niet gebruikt in Marketplace en wijkt af van de naam van de aanbieding en andere waarden die aan klanten worden weer gegeven.
 - Dit kan niet worden gewijzigd nadat u **maken**hebt geselecteerd.
 
-Selecteer **maken** voordat u doorgaat.
+Selecteer **maken** om de aanbieding te genereren en door te gaan.
 
 ## <a name="offer-overview"></a>Overzicht van aanbieding
 
@@ -64,7 +64,7 @@ Volg deze stappen om uw aanbieding in te stellen.
 
 ### <a name="connect-lead-management--optional"></a>Lead beheer verbinden – optioneel
 
-Wanneer u uw aanbieding naar de Marketplace publiceert met het partner centrum, kunt u deze verbinding laten maken met uw CRM-systeem (Customer Relationship Management). Zo kunt u contact gegevens van klanten ontvangen zodra iemand interesse in of gebruikt voor uw product.
+Wanneer u uw aanbieding naar de commerciële Marketplace met het partner centrum publiceert, kunt u deze verbinding laten maken met uw CRM-systeem (Customer Relationship Management). Zo kunt u contact gegevens van klanten ontvangen zodra iemand interesse in of gebruikt voor uw product.
 
 1. **Selecteer de doel locatie van de lead waarnaar we leads van klanten willen verzenden**. Het partner Centrum ondersteunt de volgende CRM-systemen:
 
@@ -83,10 +83,10 @@ Hier volgen enkele aanvullende bronnen voor het beheer van leads:
 
 - [Overzicht Lead beheer](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-get-customer-leads)
 - [Veelgestelde vragen over leadmanagement](https://docs.microsoft.com/azure/marketplace/lead-management-for-cloud-marketplace#frequently-asked-questions)
-- [Algemene leadconfiguratiefouten](https://docs.microsoft.com/azure/marketplace/lead-management-for-cloud-marketplace#common-lead-configuration-errors-during-publishing-on-cloud-partner-portal)
+- [Algemene leadconfiguratiefouten](https://docs.microsoft.com/azure/marketplace/lead-management-for-cloud-marketplace#publishing-config-errors)
 - [Overzicht Lead beheer](https://assetsprod.microsoft.com/mpn/cloud-marketplace-lead-management.pdf) PDF (zorg ervoor dat de pop-upblokkering is uitgeschakeld)
 
-Selecteer **concept opslaan** voordat u doorgaat naar de volgende sectie, eigenschappen.
+Selecteer **concept opslaan** voordat u doorgaat.
 
 ### <a name="properties"></a>Eigenschappen
 
@@ -434,4 +434,4 @@ Als u uw aanbieding naar het publiek (of als een privé-aanbieding, naar een pri
 
 ## <a name="next-step"></a>Volgende stap
 
-- [Een bestaande aanbieding bijwerken in Commerciële Marketplace](https://docs.microsoft.com/azure/marketplace/partner-center-portal/update-existing-offer)
+- [Een bestaande aanbieding bijwerken in de commerciële Marketplace](https://docs.microsoft.com/azure/marketplace/partner-center-portal/update-existing-offer)

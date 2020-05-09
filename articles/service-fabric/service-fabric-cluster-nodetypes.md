@@ -5,12 +5,12 @@ ms.topic: conceptual
 ms.date: 03/23/2018
 ms.author: pepogors
 ms.custom: sfrev
-ms.openlocfilehash: 37d4c27d3033545c523cefc2f317073af531f095
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 03076a711041812f7587aa1c388b0889b49725d2
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78199713"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82787130"
 ---
 # <a name="azure-service-fabric-node-types-and-virtual-machine-scale-sets"></a>Azure Service Fabric-knooppunt typen en schaal sets voor virtuele machines
 
@@ -26,7 +26,7 @@ In de volgende afbeelding ziet u een cluster met twee knooppunt typen, front- *E
 
 Zoals in de voor gaande afbeelding wordt weer gegeven, beginnen de schaalset-instanties bij instantie 0 en nemen ze vervolgens toe met 1. De nummering wordt weer gegeven in de namen van knoop punten. Zo is het BackEnd_0 van knoop punt instantie 0 van de back-upschaalset. Deze schaalset heeft vijf instanties, met de naam BackEnd_0, BackEnd_1, BackEnd_2, BackEnd_3 en BackEnd_4.
 
-Wanneer u een schaalset opschaalt, wordt er een nieuw exemplaar gemaakt. De nieuwe instantie naam van de schaalset is doorgaans de naam van de schaalset plus het volgende exemplaar nummer. In ons voor beeld is het BackEnd_5.
+Wanneer u een schaalset uitbreidt, wordt er een nieuw exemplaar gemaakt. De nieuwe instantie naam van de schaalset is doorgaans de naam van de schaalset plus het volgende exemplaar nummer. In ons voor beeld is het BackEnd_5.
 
 ## <a name="map-scale-set-load-balancers-to-node-types-and-scale-sets"></a>Load balancers instellen voor de kaart schaal voor knooppunt typen en schaal sets
 
@@ -77,7 +77,7 @@ Hier volgen de eigenschaps beschrijvingen:
 | name | tekenreeks | Unieke naam voor extensie |
 | type | "ServiceFabricLinuxNode" of "ServiceFabricWindowsNode" | Geeft aan dat het besturings systeem Service Fabric Boots trapt |
 | autoUpgradeMinorVersion | waar of onwaar | Automatische upgrade van secundaire versies van SF runtime inschakelen |
-| uitgever | Micro soft. Azure. ServiceFabric | De naam van de uitgever van de Service Fabric extensie |
+| publisher | Micro soft. Azure. ServiceFabric | De naam van de uitgever van de Service Fabric extensie |
 | clusterEndpont | tekenreeks | URI: poort voor beheer eindpunt |
 | nodeTypeRef | tekenreeks | Naam van nodeType |
 | durabilityLevel | Bronze, Silver, Gold, Platinum | Tijd die is toegestaan voor het onderbreken van een onveranderlijke Azure-infra structuur |

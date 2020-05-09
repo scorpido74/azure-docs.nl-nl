@@ -11,13 +11,13 @@ author: linda33wj
 manager: shwang
 ms.reviewer: douglasl
 ms.custom: seo-lt-2019
-ms.date: 11/20/2019
-ms.openlocfilehash: c891cb4eca2c286b3ac636e5995714accd591772
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 05/06/2020
+ms.openlocfilehash: 255c39eac2285a23403da2db893d9de8835f7d2c
+ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81417346"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82891533"
 ---
 # <a name="copy-data-from-and-to-dynamics-365-common-data-service-or-dynamics-crm-by-using-azure-data-factory"></a>Gegevens kopiëren van en naar Dynamics 365 (Common Data Service) of Dynamics CRM door gebruik te maken van Azure Data Factory
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -60,6 +60,10 @@ Deze Dynamics-connector is gebaseerd op [Dynamics xRM-hulp middelen](https://doc
 
 >[!TIP]
 >U kunt de [Dynamics AX-connector](connector-dynamics-ax.md)gebruiken om gegevens uit **Dynamics 365-Financiën en-bewerkingen**te kopiëren.
+
+## <a name="prerequisites"></a>Vereisten
+
+Als u deze connector met AAD-Service-Principal-verificatie wilt gebruiken, moet u server-naar-Server-verificatie (S2S) in Common Data Service of Dynamics instellen. Raadpleeg [dit artikel](https://docs.microsoft.com/powerapps/developer/common-data-service/build-web-applications-server-server-s2s-authentication) voor gedetailleerde stappen.
 
 ## <a name="get-started"></a>Aan de slag
 
@@ -221,7 +225,7 @@ Als u gegevens wilt kopiëren van en naar Dynamics, worden de volgende eigenscha
 | type | De eigenschap type van de DataSet moet worden ingesteld op **DynamicsEntity**, **DynamicsCrmEntity**of **CommonDataServiceForAppsEntity**. |Ja |
 | entityName | De logische naam van de entiteit die moet worden opgehaald. | Nee voor bron (als ' query ' in de activiteit bron is opgegeven), ja voor Sink |
 
-**Hierbij**
+**Voorbeeld:**
 
 ```json
 {
@@ -260,7 +264,7 @@ Als u gegevens wilt kopiëren uit Dynamics, worden de volgende eigenschappen ond
 >- Wanneer u gegevens uit Dynamics kopieert, is expliciete kolom toewijzing van Dynamics naar Sink optioneel, maar is deze zeer opnieuw ingesteld om te zorgen voor een deterministisch Kopieer resultaat.
 >- Bij het importeren van het schema in de gebruikers interface, wordt het schema door ADF afgeleid door de bovenste rijen uit het query resultaat van de Dynamics te bemonsteren om de bron kolom lijst te initialiseren. in dat geval worden kolommen zonder waarden in de bovenste rijen wegge laten. Dit geldt ook voor het kopiëren van uitvoeringen als er geen expliciete toewijzing is. U kunt meer kolommen bekijken en toevoegen aan de toewijzing, die tijdens de Kopieer runtime worden nageleefd.
 
-**Hierbij**
+**Voorbeeld:**
 
 ```json
 "activities":[
@@ -331,7 +335,7 @@ Voor Dynamics 365 online geldt een limiet van [2 gelijktijdige batch-aanroepen p
 
 De optimale combi natie van '**writeBatchSize**' en '**parallelCopies**' is afhankelijk van het schema van uw entiteit, bijvoorbeeld het aantal kolommen, de Rijgrootte, het aantal invoeg toepassingen/werk stromen/werk stroom activiteiten dat is aangesloten op deze aanroepen, enzovoort. De standaard instelling van 10 writeBatchSize * 10 parallelCopies is de aanbeveling volgens de Dynamics-service. dit werkt voor de meeste Dynamics-entiteiten, maar mogelijk niet de beste prestaties. U kunt de prestaties afstemmen door de combi natie te wijzigen in de instellingen voor de Kopieer activiteit.
 
-**Hierbij**
+**Voorbeeld:**
 
 ```json
 "activities":[
@@ -374,7 +378,7 @@ Configureer het bijbehorende Data Factory gegevens type in een gegevensset struc
 | Dynamics-gegevens type | Data Factory tussentijds gegevens type | Ondersteund als bron | Ondersteund als Sink |
 |:--- |:--- |:--- |:--- |
 | AttributeTypeCode. BigInt | Omvang | ✓ | ✓ |
-| AttributeTypeCode. Boolean | Booleaans | ✓ | ✓ |
+| AttributeTypeCode. Boolean | Boolean-waarde | ✓ | ✓ |
 | AttributeType. klant | GUID | ✓ | |
 | AttributeType. DateTime | Datum/tijd | ✓ | ✓ |
 | AttributeType. decimaal | Decimal | ✓ | ✓ |
@@ -382,7 +386,7 @@ Configureer het bijbehorende Data Factory gegevens type in een gegevensset struc
 | AttributeType. EntityName | Tekenreeks | ✓ | ✓ |
 | AttributeType. integer | Int32 | ✓ | ✓ |
 | AttributeType. lookup | GUID | ✓ | ✓ (met één doel gekoppeld) |
-| AttributeType. ManagedProperty | Booleaans | ✓ | |
+| AttributeType. ManagedProperty | Boolean-waarde | ✓ | |
 | AttributeType. Memo | Tekenreeks | ✓ | ✓ |
 | AttributeType. geld | Decimal | ✓ | ✓ |
 | AttributeType. owner | GUID | ✓ | |

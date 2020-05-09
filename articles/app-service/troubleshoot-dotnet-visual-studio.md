@@ -6,12 +6,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 08/29/2016
 ms.custom: seodec18
-ms.openlocfilehash: cb68860af56914acede6c9cbf04d3e8ad3edbe04
-ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
-ms.translationtype: HT
+ms.openlocfilehash: 516c7f50f7ff9fe947475b12120a527fc69353bc
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82891061"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82926847"
 ---
 # <a name="troubleshoot-an-app-in-azure-app-service-using-visual-studio"></a>Problemen met een app in Azure App Service oplossen met Visual Studio
 ## <a name="overview"></a>Overzicht
@@ -634,7 +634,7 @@ Raadpleeg de volgende bronnen voor meer informatie over fout opsporing op afstan
 * [Inleiding tot externe fout opsporing op Azure App Service deel 3-omgeving met meerdere instanties en GIT](https://azure.microsoft.com/blog/2014/05/08/introduction-to-remote-debugging-on-azure-web-sites-part-3-multi-instance-environment-and-git/)
 * [Webjobs fout opsporing (video)](https://www.youtube.com/watch?v=ncQm9q5ZFZs&list=UU_SjTh-ZltPmTYzAybypB-g&index=1)
 
-Als uw app gebruikmaakt van een Azure Web API of Mobile Services back-end en u fouten wilt opsporen, raadpleegt u [fout opsporing in .net-back-end in Visual Studio](https://blogs.msdn.com/b/azuremobile/archive/2014/03/14/debugging-net-backend-in-visual-studio.aspx).
+Als uw app gebruikmaakt van een Azure Web API of Mobile Services back-end en u fouten wilt opsporen, raadpleegt u [fout opsporing in .net-back-end in Visual Studio](/archive/blogs/azuremobile/debugging-net-backend-in-visual-studio).
 
 ### <a name="tracing-in-aspnet-applications"></a>Tracering in ASP.NET-toepassingen
 Er zijn geen uitgebreide en recente inleidingen voor ASP.NET tracering beschikbaar op internet. U kunt het beste aan de slag gaan met oude inleidende materialen die zijn geschreven voor webformulieren, omdat MVC nog niet bestaat en als aanvulling op de nieuwe blog berichten die gericht zijn op specifieke problemen. Een aantal goede locaties om te starten zijn de volgende resources:
@@ -647,7 +647,7 @@ Er zijn geen uitgebreide en recente inleidingen voor ASP.NET tracering beschikba
   Informatie over traceer listeners, maar geen vermelding van de [WebPageTraceListener](/dotnet/api/system.web.webpagetracelistener).
 * [Walkthrough: ASP.NET tracering integreren met System. Diagnostics-tracering](/previous-versions/b0ectfxd(v=vs.140))<br/>
   Dit artikel is ook oud, maar bevat aanvullende informatie die niet geldt voor het inleidende artikel.
-* [Tracering in ASP.NET MVC-weer gaven](https://blogs.msdn.com/b/webdev/archive/2013/07/16/tracing-in-asp-net-mvc-razor-views.aspx)<br/>
+* [Tracering in ASP.NET MVC-weer gaven](https://devblogs.microsoft.com/aspnet/tracing-in-asp-net-mvc-razor-views/)<br/>
   Naast het traceren in haar weer gaven, wordt in het bericht ook uitgelegd hoe u een fout filter maakt om alle niet-verwerkte uitzonde ringen in een MVC-toepassing te registreren. Zie voor meer informatie over het registreren van alle niet-verwerkte uitzonde ringen in een Web Forms-toepassing het voor beeld Global. asax in het [volledige voor beeld voor fout afhandeling](/previous-versions/bb397417(v=vs.140)) op MSDN. Als u in MVC-of webformulieren bepaalde uitzonde ringen wilt vastleggen, maar de standaard verwerking van het Framework wilt laten gelden, kunt u deze ondervangen en opnieuw genereren, zoals in het volgende voor beeld:
 
     ```csharp
