@@ -13,16 +13,22 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 02/03/2020
 ms.author: mimckitt
-ms.openlocfilehash: e344d09497a30dec546dfaedd3d78f30c7d214d2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 738ce8dad7237f9703d3ccb998c221ffec29dc17
+ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79535694"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82629096"
 ---
 # <a name="azure-compute-unit-acu"></a>Azure Compute-eenheid (ACU)
 
-Het concept van de Azure Compute Unit (ACU) biedt een manier om Compute-prestaties (CPU) te vergelijken tussen Azure-Sku's. Op die manier kunt u eenvoudig bepalen welke SKU hoogstwaarschijnlijk aan uw prestatiebehoeften zal voldoen. ACU is momenteel gestandaardiseerd op 100 voor een kleine virtuele machine (Standard_A1). Alle andere SKU's geven vervolgens weer hoeveel sneller die SKU een standaardbenchmark ongeveer kan uitvoeren.
+Het concept van de Azure Compute Unit (ACU) biedt een manier om Compute-prestaties (CPU) te vergelijken tussen Azure-Sku's. Op die manier kunt u eenvoudig bepalen welke SKU hoogstwaarschijnlijk aan uw prestatiebehoeften zal voldoen. ACU is momenteel gestandaardiseerd op een kleine (Standard_A1) virtuele machine die wordt 100 en alle andere Sku's vertegenwoordigen vervolgens ongeveer de hoeveelheid sneller die SKU een standaard referentie kan uitvoeren
+
+* ACUs gebruik Intel® Turbo-technologie om de CPU-frequentie te verhogen en een hogere prestatie te bieden.  De omvang van de prestatie verhoging kan variëren op basis van de VM-grootte, werk belasting en andere workloads die op dezelfde host worden uitgevoerd.
+
+* * ACUs gebruik AMD® Boost-technologie om de CPU-frequentie te verhogen en een betere prestaties te leveren.  De omvang van de prestatie verhoging kan variëren op basis van de VM-grootte, werk belasting en andere workloads die op dezelfde host worden uitgevoerd.
+
+Hyper-Threaded en geschikt voor het uitvoeren van geneste virtualisatie
 
 > [!IMPORTANT]
 > De ACU is slechts een richtlijn. De resultaten voor uw workload kunnen verschillen.
@@ -49,16 +55,12 @@ Het concept van de Azure Compute Unit (ACU) biedt een manier om Compute-prestati
 | [D11-F16s](sizes-previous-gen.md) |210 - 250* | 1:1 |
 | [G1-G5](sizes-previous-gen.md) |180 - 240* | 1:1 |
 | [GS1-GS5](sizes-previous-gen.md) |180 - 240* | 1:1 |
-| [H](h-series.md) |290 - 300* | 1:1 |
+| [HxBxD](h-series.md) |290 - 300* | 1:1 |
 | [HB](hb-series.md) |199-216 * * | 1:1 |
 | [KM](hc-series.md) |297-315 * | 1:1 |
 | [L4s - L32s](sizes-previous-gen.md) |180 - 240* | 1:1 |
 | [L8s_v2-L80s_v2](lsv2-series.md) |150-175 * * | 2:1 |
 | [M](m-series.md) | 160-180 | 2:1\*\*\* |
-
-* ACUs gebruik Intel® Turbo-technologie om de CPU-frequentie te verhogen en een hogere prestatie te bieden.  De omvang van de prestatie verhoging kan variëren op basis van de VM-grootte, werk belasting en andere workloads die op dezelfde host worden uitgevoerd.
-* * ACUs gebruik AMD® Boost-technologie om de CPU-frequentie te verhogen en een betere prestaties te leveren.  De omvang van de prestatie verhoging kan variëren op basis van de VM-grootte, werk belasting en andere workloads die op dezelfde host worden uitgevoerd.
-Hyper-Threaded en geschikt voor het uitvoeren van geneste virtualisatie
 
 Hier vindt u koppelingen naar meer informatie over de verschillende grootten:
 

@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/01/2020
 ms.author: allensu
-ms.openlocfilehash: c7ca630b4a6a1bedeab21feacc22cd27a1a3ee7e
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
-ms.translationtype: HT
+ms.openlocfilehash: faf77411abca63516b00ac953bc7203da69f3ca9
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82794152"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82854086"
 ---
 # <a name="azure-load-balancer-skus"></a>Azure Load Balancer Sku's
 
@@ -49,6 +49,12 @@ Zelfstandige virtuele machines, beschikbaarheidssets en virtuele-machineschaalse
 | SLA | [99,99%](https://azure.microsoft.com/support/legal/sla/load-balancer/v1_0/) | Niet beschikbaar | 
 
 Zie [limieten voor load balancers](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#load-balancer)voor meer informatie. Zie [Overzicht](load-balancer-standard-overview.md), [Prijzen](https://aka.ms/lbpricing) en [SLA](https://aka.ms/lbsla) voor meer details over Standard Load Balancer.
+
+## <a name="limitations"></a>Beperkingen
+
+- Sku's zijn niet onveranderbaar. U kunt de SKU van een bestaande resource niet wijzigen.
+- Een zelfstandige resource voor de virtuele machine, de resource van de beschikbaarheidsset of de virtuele-machine schaalset kan verwijzen naar één SKU, nooit beide.
+- Het [verplaatsen van abonnements bewerkingen](../azure-resource-manager/management/move-resource-group-and-subscription.md) wordt niet ondersteund voor Standard Load Balancer en standaard open bare IP-resources.
 
 ## <a name="next-steps"></a>Volgende stappen
 

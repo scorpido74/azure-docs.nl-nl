@@ -8,12 +8,12 @@ ms.date: 03/11/2019
 ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
-ms.openlocfilehash: 897ae1fa474de8726ed0caa1def162a00e142dbe
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 03e5f1e888680f6020b45f51103e7b5cb6dc86ab
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79268403"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82692735"
 ---
 # <a name="azure-storage-analytics-metrics-classic"></a>Azure Storage Analytics-metrische gegevens (klassiek)
 
@@ -23,7 +23,7 @@ Opslaganalyse kunt metrische gegevens opslaan die geaggregeerde trans actie-stat
 
 > [!NOTE]
 > Er zijn Opslaganalyse metrische gegevens beschikbaar voor de blob-, wachtrij-, tabel-en bestands Services.
-> Opslaganalyse metrische gegevens zijn nu klassieke metrische gegevens. Micro soft raadt u [aan metrische opslag gegevens te gebruiken in azure monitor](storage-metrics-in-azure-monitor.md) in plaats van Opslaganalyse metrische gegevens.
+> Opslaganalyse metrische gegevens zijn nu klassieke metrische gegevens. Micro soft raadt u [aan metrische opslag gegevens te gebruiken in azure monitor](monitor-storage.md) in plaats van Opslaganalyse metrische gegevens.
 
 ## <a name="transaction-metrics"></a>Metrische gegevens voor transacties  
  Een robuuste set gegevens wordt vastgelegd in elk uur of per minuut intervallen voor elke opslag service en de aangevraagde API-bewerking, met inbegrip van binnenkomend/uitgaand, Beschik baarheid, fouten en gecategoriseerde aanvraag percentages. U ziet een volledige lijst met transactie gegevens in het onderwerp [Opslaganalyse metrische gegevens tabel schema](/rest/api/storageservices/storage-analytics-metrics-table-schema) .  

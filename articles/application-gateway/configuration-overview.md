@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 03/24/2020
 ms.author: absha
-ms.openlocfilehash: 89d894a5125a16f95e6ef8a15c2503d48f3a8e55
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 046946bb9d3ce1ae86d49409d024c862d2edb982
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80632175"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82856068"
 ---
 # <a name="application-gateway-configuration-overview"></a>Overzicht van Application Gateway configuratie
 
@@ -101,18 +101,18 @@ Voor dit scenario gebruikt u Nsg's in het subnet Application Gateway. Plaats de 
 
    U kunt een UDR maken om het 0.0.0.0/0-verkeer rechtstreeks naar Internet te verzenden. 
 
-  **Scenario 3**: UDR voor Azure Kubernetes service kubenet
+  **Scenario 3**: UDR for Azure Kubernetes service met kubenet
 
-  Als u kubenet met Azure Kubernetes service (AKS) en Application Gateway ingangs controller (AGIC) gebruikt, moet u een route tabel instellen zodat verkeer naar het Peul wordt doorgestuurd naar het juiste knoop punt. Dit is niet nodig als u Azure CNI gebruikt. 
+  Als u kubenet met Azure Kubernetes service (AKS) en Application Gateway ingangs controller (AGIC) gebruikt, hebt u een route tabel nodig om verkeer toe te staan van Application Gateway naar het juiste knoop punt wordt verzonden. Dit is niet nodig als u Azure CNI gebruikt. 
 
-   Voer de volgende stappen uit om de route tabel zo in te stellen dat kubenet kan worden gebruikt:
+  Volg de onderstaande stappen om de route tabel te gebruiken om kubenet toe te laten werken:
 
-  1. Maak een resource voor de route tabel in Azure. 
-  2. Nadat de app is gemaakt, gaat u naar de pagina **routes** . 
-  3. Een nieuwe route toevoegen:
+  1. Ga naar de resource groep die is gemaakt door AKS (de naam van de resource groep moet beginnen met ' MC_ ')
+  2. Zoek de route tabel die is gemaakt door AKS in die resource groep. De route tabel moet worden gevuld met de volgende gegevens:
      - Het adres voorvoegsel moet het IP-bereik zijn van het Peul dat u wilt bereiken in AKS. 
-     - Het type van de volgende hop moet **virtueel apparaat**zijn. 
-     - Het volgende hop-adres moet het IP-adres zijn van het knoop punt dat als host fungeert voor het gehele IP-bereik dat is gedefinieerd in het veld adres voorvoegsel. 
+     - Het type van de volgende hop moet virtueel apparaat zijn. 
+     - Het adres van de volgende hop moet het IP-adres zijn van het knoop punt dat als host fungeert voor het Peul.
+  3. Deze route tabel koppelen aan het Application Gateway subnet. 
     
   **v2 niet-ondersteunde scenario's**
 

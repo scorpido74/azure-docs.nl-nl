@@ -3,12 +3,12 @@ title: Antwoorden op veelgestelde vragen
 description: 'Antwoorden op veelgestelde vragen over de functies van Azure Backup, waaronder de Recovery Services-kluis, waarvan een back-up kan worden gemaakt, hoe het werkt, versleuteling en limieten. '
 ms.topic: conceptual
 ms.date: 07/07/2019
-ms.openlocfilehash: 039666c4b54da6ac5444f5aa5acda5f1bb438782
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ee6df940dd36a325d3638c3ad29ebfd8dec713d8
+ms.sourcegitcommit: c8a0fbfa74ef7d1fd4d5b2f88521c5b619eb25f8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80156052"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82801702"
 ---
 # <a name="azure-backup---frequently-asked-questions"></a>Azure Backup - veelgestelde vragen
 
@@ -75,14 +75,14 @@ Ja.
 
 Azure Backup biedt ondersteuning voor deze besturingssystemen voor het maken van back-ups van bestanden en mappen, en apps die worden beveiligd met Azure Backup Server en SCDPM.
 
-**Besturingssysteem** | **SKU** | **Nadere**
+**Besturingssysteem** | **SKU** | **Details**
 --- | --- | ---
 Werkstation | |
 Windows 10 64-bits | Enterprise, Pro, Home | Op machines moeten de nieuwste servicepacks en updates worden uitgevoerd.
 Windows 8.1 64-bits | Enterprise, Pro | Op machines moeten de nieuwste servicepacks en updates worden uitgevoerd.
 Windows 8 64-bits | Enterprise, Pro | Op machines moeten de nieuwste servicepacks en updates worden uitgevoerd.
 Windows 7 64-bits | Ultimate, Enterprise, Professional, Home Premium Home Basic, Starter | Op machines moeten de nieuwste servicepacks en updates worden uitgevoerd.
-server | |
+Server | |
 Windows Server 2019 64-bits | Standard, Datacenter, Essentials | Met de nieuwste servicepacks/updates.
 Windows Server 2016 64-bits | Standard, Datacenter, Essentials | Met de nieuwste servicepacks/updates.
 Windows Server 2012 R2 64-bits | Standard, Datacenter, Foundation | Met de nieuwste servicepacks/updates.
@@ -107,13 +107,13 @@ Windows 8 of hoger | 54.400 GB
 Windows 7 |1700 GB
 Windows Server 2012 of hoger | 54.400 GB
 Windows Server 2008, Windows Server 2008 R2 | 1700 GB
-Azure VM | 16 gegevensschijven<br/> Als u zich wilt aanmelden voor de persoonlijke preview-versie van VM's met meer dan 16 schijven (maximaal 32 schijven), stuurt u een bericht naar AskAzureBackupTeam@microsoft.com <br><br> Gegevensschijf van maximaal 32 TB
+Azure VM | 16 gegevensschijven<br/> Als u zich wilt aanmelden voor een beperkte preview van Vm's met 16 + schijven (Maxi maal 32 schijven), schrijft u naar ons opAskAzureBackupTeam@microsoft.com <br><br> Gegevensschijf van maximaal 32 TB
 
 ### <a name="how-is-the-data-source-size-determined"></a>Hoe wordt de grootte van de gegevensbron bepaald?
 
 In de volgende tabel wordt uitgelegd hoe de grootte voor elke gegevensbron wordt bepaald.
 
-**Gegevensbron** | **Nadere**
+**Gegevensbron** | **Details**
 --- | ---
 Volume |De hoeveelheid gegevens van één volume-VM waarvan een back-up wordt gemaakt.
 SQL Server-database |Grootte van één SQL-database waarvan een back-up wordt gemaakt.

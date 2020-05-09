@@ -59,6 +59,11 @@
       href: tutorial-kubernetes-app-update.md
     - name: 7 - Een cluster upgraden
       href: tutorial-kubernetes-upgrade-cluster.md
+- name: Voorbeelden
+  items:
+    - name: Ingebouwde modules voor Azure Policy
+      displayName: 'samples, policies, definitions'
+      href: ./policy-samples.md
 - name: Concepten
   items:
     - name: Clusters en werkbelastingen

@@ -5,17 +5,17 @@ description: Meer informatie over de gegevens en resources die worden verzameld 
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
+ms.topic: reference
 ms.reviewer: larryfr
 ms.author: aashishb
 author: aashishb
 ms.date: 04/27/2020
-ms.openlocfilehash: 1abd52c98cb1fa6ebe1014fc7a65e756d038d683
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e9a43f4a7da39869e002e2da9fb9638381e57cb8
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82187593"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82856029"
 ---
 # <a name="azure-machine-learning-monitoring-data-reference"></a>Naslag informatie voor Azure machine learning monitoring-gegevens
 
@@ -126,15 +126,15 @@ De volgende tabel geeft een lijst van de eigenschappen voor Azure Machine Learni
 
 In de volgende tabellen worden de platform gegevens weer gegeven die zijn verzameld voor Azure Machine Learning alle metrische gegevens worden opgeslagen in de naam ruimte **Azure machine learning-werkruimte**.
 
-**Activiteitsmodel**
+**Model**
 
 | Gegevens | Eenheid | Beschrijving |
 | ----- | ----- | ----- |
-| Model implementeren is mislukt | Count | Het aantal model implementaties dat is mislukt. |
-| Model implementeren gestart | Count | Het aantal model implementaties is gestart. |
-| Model implementeren is voltooid | Count | Het aantal model implementaties dat is geslaagd. |
-| Model register mislukt | Count | Het aantal model registraties dat is mislukt. |
-| Model registratie is voltooid | Count | Het aantal model registraties dat is geslaagd. |
+| Model implementeren is mislukt | Aantal | Het aantal model implementaties dat is mislukt. |
+| Model implementeren gestart | Aantal | Het aantal model implementaties is gestart. |
+| Model implementeren is voltooid | Aantal | Het aantal model implementaties dat is geslaagd. |
+| Model register mislukt | Aantal | Het aantal model registraties dat is mislukt. |
+| Model registratie is voltooid | Aantal | Het aantal model registraties dat is geslaagd. |
 
 **Quotum**
 
@@ -142,19 +142,19 @@ Quota gegevens zijn alleen voor het berekenen van Azure Machine Learning.
 
 | Gegevens | Eenheid | Beschrijving |
 | ----- | ----- | ----- |
-| Actieve kernen | Count | Het aantal actieve reken kernen. |
-| Actieve knoop punten | Count | Het aantal actieve knoop punten. |
-| Niet-actieve kernen | Count | Het aantal niet-actieve Compute-kernen. |
-| Niet-actieve knoop punten | Count | Het aantal niet-actieve reken knooppunten. |
-| Kernen verlaten | Count | Het aantal Leave-kernen. |
-| Knoop punten verlaten | Count | Het aantal knoop punten dat de poort verlaat. |
-| Afgebroken kernen | Count | Het aantal afgebroken kernen. |
-| Knoop punten die zijn afgebroken | Count | Het aantal knoop punten dat is afgebroken. |
+| Actieve kernen | Aantal | Het aantal actieve reken kernen. |
+| Actieve knoop punten | Aantal | Het aantal actieve knoop punten. |
+| Niet-actieve kernen | Aantal | Het aantal niet-actieve Compute-kernen. |
+| Niet-actieve knoop punten | Aantal | Het aantal niet-actieve reken knooppunten. |
+| Kernen verlaten | Aantal | Het aantal Leave-kernen. |
+| Knoop punten verlaten | Aantal | Het aantal knoop punten dat de poort verlaat. |
+| Afgebroken kernen | Aantal | Het aantal afgebroken kernen. |
+| Knoop punten die zijn afgebroken | Aantal | Het aantal knoop punten dat is afgebroken. |
 | Percentage quotum gebruik | Percentage | Het percentage van de gebruikte quota. |
-| Totaal aantal cores | Count | Het totale aantal kernen. |
-| Totaal aantal knoop punten | Count | Het totale aantal knoop punten. |
-| Onbruikbaar aantal kern geheugens | Count | Het aantal onbruikbaar kern geheugens. |
-| Niet-bruikbare knoop punten | Count | Het aantal niet-bruikbare knoop punten. |
+| Totaal aantal cores | Aantal | Het totale aantal kernen. |
+| Totaal aantal knoop punten | Aantal | Het totale aantal knoop punten. |
+| Onbruikbaar aantal kern geheugens | Aantal | Het aantal onbruikbaar kern geheugens. |
+| Niet-bruikbare knoop punten | Aantal | Het aantal niet-bruikbare knoop punten. |
 
 Hieronder ziet u dimensies die kunnen worden gebruikt voor het filteren van quotum metrieken:
 
@@ -186,9 +186,9 @@ Informatie over trainings uitvoeringen.
 
 | Gegevens | Eenheid | Beschrijving |
 | ----- | ----- | ----- |
-| Voltooide uitvoeringen | Count | Het aantal voltooide uitvoeringen. |
-| Mislukte uitvoeringen | Count | Het aantal mislukte uitvoeringen. |
-| Gestart uitvoeringen | Count | Het aantal gestarte uitvoeringen. |
+| Voltooide uitvoeringen | Aantal | Het aantal voltooide uitvoeringen. |
+| Mislukte uitvoeringen | Aantal | Het aantal mislukte uitvoeringen. |
+| Gestart uitvoeringen | Aantal | Het aantal gestarte uitvoeringen. |
 
 Hieronder ziet u dimensies die kunnen worden gebruikt voor het filteren van metrische gegevens voor uitvoering:
 

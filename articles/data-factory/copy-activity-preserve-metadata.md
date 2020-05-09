@@ -9,14 +9,14 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 03/24/2020
+ms.date: 05/06/2020
 ms.author: jingwang
-ms.openlocfilehash: 5ce1b85394a7bb604841f7fb941bdebf12c0bca2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a1527195296237eb8c9c309f8ac4a5911136cf77
+ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81414157"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82891758"
 ---
 #  <a name="preserve-metadata-and-acls-using-copy-activity-in-azure-data-factory"></a>Meta gegevens en Acl's behouden met Kopieer activiteit in Azure Data Factory
 
@@ -32,6 +32,8 @@ De Kopieer activiteit biedt ondersteuning voor het behouden van de volgende kenm
 
 - **Alle door de klant opgegeven meta gegevens** 
 - En de volgende **vijf ingebouwde systeem eigenschappen van het gegevens archief**: `contentType`, `contentLanguage` (behalve voor Amazon S3), `contentEncoding`, `contentDisposition`, `cacheControl`,.
+
+**Verschillen in meta gegevens afhandelen:** Amazon S3 en Azure Storage staan verschillende sets tekens toe aan de sleutels van de door de klant opgegeven meta gegevens. Wanneer u ervoor kiest om meta gegevens te bewaren met behulp van Copy acivity, worden de ongeldige tekens automatisch vervangen door _.
 
 Wanneer u bestanden kopieert als-afkomstig van Amazon S3/Azure data Lake Storage Gen2/Azure Blob naar Azure data Lake Storage Gen2/Azure Blob met binaire indeling, kunt u de optie **behouden** vinden op het tabblad**instellingen** van de **Kopieer activiteit** > voor het ontwerpen van activiteiten of de pagina **instellingen** in gegevens kopiëren hulp programma.
 
