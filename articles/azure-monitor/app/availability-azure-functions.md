@@ -2,15 +2,15 @@
 title: Aangepaste beschikbaarheids tests maken en uitvoeren met behulp van Azure Functions
 description: In dit document wordt beschreven hoe u een Azure-functie maakt met TrackAvailability () die regel matig wordt uitgevoerd op basis van de configuratie gegeven in de functie Timer trigger. De resultaten van deze test worden verzonden naar uw Application Insights-resource, waar u de gegevens van beschikbaarheids resultaten kunt opvragen en waarschuwen. Aangepaste tests bieden u de mogelijkheid om complexere beschikbaarheids tests te schrijven dan mogelijk is met behulp van de portal-gebruikers interface, een app te bewaken in uw Azure VNET, het eindpunt adres te wijzigen of een beschikbaarheids test te maken als deze niet beschikbaar is in uw regio.
 ms.topic: conceptual
-author: morgangrobin
-ms.author: mogrobin
-ms.date: 11/22/2019
-ms.openlocfilehash: 476d66c51c10a5fcfb3cb0319c47b3338d28812c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+author: mrbullwinkle
+ms.author: mbullwin
+ms.date: 05/04/2020
+ms.openlocfilehash: 81040adf6cfbb8820ec7f306c7d614830e3a2613
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77665796"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82791103"
 ---
 # <a name="create-and-run-custom-availability-tests-using-azure-functions"></a>Aangepaste beschikbaarheids tests maken en uitvoeren met behulp van Azure Functions
 
@@ -160,12 +160,10 @@ public async static Task RunAvailbiltyTestAsync(ILogger log)
 Om ervoor te zorgen dat alles werkt, kunt u de grafiek bekijken op het tabblad Beschik baarheid van uw Application Insights-resource.
 
 > [!NOTE]
-> Als u uw eigen bedrijfs logica in runAvailabilityTest. CSX hebt geïmplementeerd, ziet u succes volle resultaten als in de onderstaande scherm afbeeldingen. als dat niet het geval is, ziet u niet de resultaten.
+> Als u uw eigen bedrijfs logica in runAvailabilityTest. CSX hebt geïmplementeerd, ziet u succes volle resultaten als in de onderstaande scherm afbeeldingen. als dat niet het geval is, ziet u niet de resultaten. Tests die zijn `TrackAvailability()` gemaakt met, worden weer gegeven met **aangepaste** naast de naam van de test.
 
 >[!div class="mx-imgBorder"]
->![Tabblad Beschik baarheid met succes volle resultaten](media/availability-azure-functions/availtab.png)
-
-Wanneer u uw test instelt met behulp van Azure Functions ziet u dat in tegens telling tot het gebruik van **test toevoegen** op het tabblad Beschik baarheid, de naam van uw test niet wordt weer gegeven en u er geen interactie mee kunt doen. De resultaten worden gevisualiseerd, maar er wordt een overzichts weergave weer gegeven in plaats van de gedetailleerde weer gave die u krijgt wanneer u een beschikbaarheids test maakt via de portal.
+>![Tabblad Beschik baarheid met succes volle resultaten](media/availability-azure-functions/availability-custom.png)
 
 Als u de details van de end-to-end-trans actie wilt bekijken, selecteert u **geslaagd** of **mislukt** onder inzoomen en selecteert u vervolgens een voor beeld. U kunt ook naar de end-to-end-transactie details gaan door een gegevens punt in de grafiek te selecteren.
 

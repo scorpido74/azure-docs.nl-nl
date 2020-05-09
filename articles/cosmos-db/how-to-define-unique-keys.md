@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 12/02/2019
 ms.author: thweiss
-ms.openlocfilehash: fa62495a7b51c9a06a91102299378c15e811eae0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: af68d733dfb0e0d1c257c8db03656112eec7381b
+ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74872108"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82871000"
 ---
 # <a name="define-unique-keys-for-an-azure-cosmos-container"></a>Unieke sleutels voor een Azure Cosmos-container definiëren
 
@@ -39,7 +39,9 @@ In dit artikel worden de verschillende manieren beschreven waarop u [unieke sleu
 
 Als u een container met unieke sleutels wilt maken, gaat u naar [een Azure Cosmos-container maken met een unieke sleutel en TTL](manage-with-powershell.md#create-container-unique-key-ttl)
 
-## <a name="use-the-net-sdk-v2"></a>De .NET SDK v2 gebruiken
+## <a name="use-the-net-sdk"></a>De .NET SDK gebruiken
+
+# <a name="net-sdk-v2"></a>[.NET SDK V2](#tab/dotnetv2)
 
 Wanneer u een nieuwe container maakt met behulp van de [.NET SDK v2](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB/), kan een `UniqueKeyPolicy` object worden gebruikt voor het definiëren van unieke sleutel beperkingen.
 
@@ -59,7 +61,7 @@ client.CreateDocumentCollectionAsync(UriFactory.CreateDatabaseUri("database"), n
 });
 ```
 
-## <a name="use-the-net-sdk-v3"></a>De .NET SDK v3 gebruiken
+# <a name="net-sdk-v3"></a>[.NET SDK V3](#tab/dotnetv3)
 
 Wanneer u een nieuwe container maakt met behulp van de [.NET SDK v3](https://www.nuget.org/packages/Microsoft.Azure.Cosmos/), gebruikt u de Fluent API van de SDK voor het declareren van unieke sleutels op een beknopte en lees bare manier.
 
@@ -75,6 +77,7 @@ await client.GetDatabase("database").DefineContainer(name: "container", partitio
     .Attach()
     .CreateIfNotExistsAsync();
 ```
+---
 
 ## <a name="use-the-java-sdk"></a>De Java-SDK gebruiken
 

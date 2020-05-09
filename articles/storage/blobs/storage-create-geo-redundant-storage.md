@@ -1,30 +1,30 @@
 ---
 title: 'Zelf studie: een Maxi maal beschik bare toepassing bouwen met Blob Storage'
 titleSuffix: Azure Storage
-description: Geografisch redundante opslag met lees toegang gebruiken om uw toepassings gegevens Maxi maal beschikbaar te maken.
+description: Gebruik opslag met geo-zone-redundante (RA-GZRS) met lees toegang om uw toepassings gegevens Maxi maal beschikbaar te maken.
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: tutorial
-ms.date: 02/10/2020
+ms.date: 04/16/2020
 ms.author: tamram
 ms.reviewer: artek
 ms.custom: mvc
 ms.subservice: blobs
-ms.openlocfilehash: 27f90edf84fd51e5c13bc082cfaba50e26c54780
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 19812ad8e8b81984bb7a314345d5fd53f917d239
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81606027"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82856125"
 ---
 # <a name="tutorial-build-a-highly-available-application-with-blob-storage"></a>Zelf studie: een Maxi maal beschik bare toepassing bouwen met Blob Storage
 
 Deze zelfstudie is deel één van een serie. In deze zelfstudie leert u hoe u uw toepassingsgegevens maximaal beschikbaar maakt in Azure.
 
-Wanneer u deze zelfstudie hebt afgerond, hebt u een consoletoepassing die een blob uploadt en ophaalt uit een [geografisch redundant](../common/storage-redundancy.md) opslagaccount met leestoegang (RA-GRS).
+Wanneer u deze zelf studie hebt voltooid, hebt u een console toepassing die een BLOB uploadt en ophaalt uit een GZRS-opslag account met [Lees toegang](../common/storage-redundancy.md) .
 
-RA-GRS werkt door transacties te repliceren van een primaire regio naar een secundaire regio. Dit replicatieproces zorgt ervoor dat de gegevens in de secundaire regio uiteindelijk consistent zijn. De toepassing gebruikt het patroon [Circuit Breaker](/azure/architecture/patterns/circuit-breaker) om te bepalen met welk eindpunt er verbinding moet worden gemaakt, waarbij er automatisch wordt overgeschakeld tussen eindpunten terwijl er fouten en herstelbewerkingen worden gesimuleerd.
+Met geo-redundantie in Azure Storage worden trans acties asynchroon gerepliceerd van een primaire regio naar een secundaire regio die honderden kilo meters is. Dit replicatieproces zorgt ervoor dat de gegevens in de secundaire regio uiteindelijk consistent zijn. De console toepassing maakt gebruik van het patroon [circuit onderbreker](/azure/architecture/patterns/circuit-breaker) om te bepalen met welk eind punt verbinding moet worden gemaakt. automatisch overschakelen tussen eind punten als storingen en herstel bewerkingen worden gesimuleerd.
 
 Als u nog geen abonnement op Azure hebt, [Maak dan een gratis account](https://azure.microsoft.com/free/) aan voordat u begint.
 
@@ -58,31 +58,30 @@ Vereisten om deze zelfstudie te voltooien:
 
 ## <a name="sign-in-to-the-azure-portal"></a>Aanmelden bij Azure Portal
 
-Meld u aan bij de [Azure-portal](https://portal.azure.com/).
+Meld u aan bij [Azure Portal](https://portal.azure.com/).
 
 ## <a name="create-a-storage-account"></a>Create a storage account
 
 Een opslagaccount biedt een unieke naamruimte voor het opslaan en openen van uw Azure Storage-gegevensobjecten.
 
-Volg deze stappen om een account voor geografisch redundante opslag met leestoegang te maken:
+Volg deze stappen voor het maken van een opslag account met geo-zone-redundante Lees toegang (RA-GZRS):
 
-1. Selecteer de knop **Een resource maken** in de linkerbovenhoek van Azure Portal.
-2. Selecteer **Opslag** op de pagina **Nieuw**.
-3. Selecteer **Storage-account: Blob, File, Table, Queue** onder **Aanbevolen**.
+1. Selecteer de knop **een resource maken** in het Azure Portal.
+2. Selecteer **opslag account-blob, bestand, tabel, wachtrij** op de pagina **Nieuw** .
 4. Vul het formulier voor het opslagaccount in met de informatie uit de volgende afbeelding en selecteer **Maken**:
 
-   | Instelling       | Voorgestelde waarde | Beschrijving |
+   | Instelling       | Voorbeeldwaarde | Beschrijving |
    | ------------ | ------------------ | ------------------------------------------------- |
-   | **Naam** | mystorageaccount | Een unieke naam voor uw opslagaccount |
-   | **Implementatie model** | Resource Manager  | Resource Manager bevat de nieuwste functies.|
-   | **Soort account** | StorageV2 | Zie [Typen opslagaccounts](../common/storage-introduction.md#types-of-storage-accounts) voor meer informatie over de verschillende typen accounts |
-   | **Prestaties** | Standard | Standard is voldoende voor het voorbeeldscenario. |
-   | **Replicatie**| Geografisch redundante opslag met leestoegang (RA-GRS) | Dit is nodig om het voorbeeld te laten werken. |
-   |**Abonnement** | uw abonnement |Zie [Abonnementen](https://account.azure.com/Subscriptions) voor meer informatie over uw abonnementen. |
-   |**ResourceGroup** | myResourceGroup |Zie [Naming conventions](/azure/architecture/best-practices/resource-naming) (Naamgevingsconventies) voor geldige namen van resourcegroepen. |
-   |**Locatie** | VS - oost | Kies een locatie. |
+   | **Abonnement** | *Mijn abonnement* | Zie [Abonnementen](https://account.azure.com/Subscriptions) voor meer informatie over uw abonnementen. |
+   | **ResourceGroup** | *myResourceGroup* | Zie [Naming conventions](/azure/architecture/best-practices/resource-naming) (Naamgevingsconventies) voor geldige namen van resourcegroepen. |
+   | **Naam** | *mystorageaccount* | Een unieke naam voor uw opslag account. |
+   | **Locatie** | *VS - oost* | Kies een locatie. |
+   | **Prestaties** | *Standaard* | Standaard prestaties zijn een goede optie voor het voorbeeld scenario. |
+   | **Soort account** | *StorageV2* | U wordt aangeraden v2-opslag account voor algemeen gebruik te gebruiken. Zie [overzicht van opslag](../common/storage-account-overview.md)accounts voor meer informatie over typen Azure-opslag accounts. |
+   | **Replicatie**| *Geo-zone-redundante opslag met lees toegang (RA-GZRS)* | De primaire regio is zone-redundant en wordt gerepliceerd naar een secundaire regio, met lees toegang tot de secundaire regio ingeschakeld. |
+   | **Toegangs niveau**| *Dynamisch* | Gebruik de warme laag voor gegevens die vaak worden gebruikt. |
 
-![opslagaccount maken](media/storage-create-geo-redundant-storage/createragrsstracct.png)
+    ![opslagaccount maken](media/storage-create-geo-redundant-storage/createragrsstracct.png)
 
 ## <a name="download-the-sample"></a>Het voorbeeld downloaden
 
@@ -173,7 +172,7 @@ Installeer de vereiste afhankelijkheden. Hiertoe opent u een opdracht prompt, na
 
 Druk in Visual Studio op **F5** of selecteer **Start** om foutopsporing van de toepassing te starten. Visual Studio herstelt automatisch ontbrekende NuGet-pakketten als dit zo is geconfigureerd. Ga naar [Installing and reinstalling packages with package restore](https://docs.microsoft.com/nuget/consume-packages/package-restore#package-restore-overview) (Pakketten installeren en opnieuw installeren met pakketherstel) voor meer informatie.
 
-Er wordt een consolevenster geopend en de toepassing wordt gestart. De toepassing uploadt de afbeelding **HelloWorld.png** vanuit de oplossing naar het opslagaccount. De toepassing controleert of de afbeelding is gerepliceerd naar het secundaire RA-GRS-eindpunt. Daarna wordt de afbeelding maximaal 999 keer gedownload. Elke Lees bewerking wordt weer gegeven door een **P** of **S**. Waarbij **P** staat voor het primaire eind punt en **S** staat voor het secundaire eind punt.
+Er wordt een consolevenster geopend en de toepassing wordt gestart. De toepassing uploadt de afbeelding **HelloWorld.png** vanuit de oplossing naar het opslagaccount. De toepassing controleert of de installatie kopie is gerepliceerd naar het secundaire RA-GZRS-eind punt. Daarna wordt de afbeelding maximaal 999 keer gedownload. Elke Lees bewerking wordt weer gegeven door een **P** of **S**. Waarbij **P** staat voor het primaire eind punt en **S** staat voor het secundaire eind punt.
 
 ![Console-app die wordt uitgevoerd](media/storage-create-geo-redundant-storage/figure3.png)
 
@@ -181,7 +180,7 @@ In de voorbeeldcode wordt de taak `RunCircuitBreakerAsync` in het bestand `Progr
 
 # <a name="python"></a>[Python](#tab/python)
 
-Als u de toepassing wilt uitvoeren op een terminal of opdrachtprompt, gaat u naar de map **circuitbreaker.py** en voert u `python circuitbreaker.py` in. De toepassing uploadt de afbeelding **HelloWorld.png** vanuit de oplossing naar het opslagaccount. De toepassing controleert of de afbeelding is gerepliceerd naar het secundaire RA-GRS-eindpunt. Daarna wordt de afbeelding maximaal 999 keer gedownload. Elke Lees bewerking wordt weer gegeven door een **P** of **S**. Waarbij **P** staat voor het primaire eind punt en **S** staat voor het secundaire eind punt.
+Als u de toepassing wilt uitvoeren op een terminal of opdrachtprompt, gaat u naar de map **circuitbreaker.py** en voert u `python circuitbreaker.py` in. De toepassing uploadt de afbeelding **HelloWorld.png** vanuit de oplossing naar het opslagaccount. De toepassing controleert of de installatie kopie is gerepliceerd naar het secundaire RA-GZRS-eind punt. Daarna wordt de afbeelding maximaal 999 keer gedownload. Elke Lees bewerking wordt weer gegeven door een **P** of **S**. Waarbij **P** staat voor het primaire eind punt en **S** staat voor het secundaire eind punt.
 
 ![Console-app die wordt uitgevoerd](media/storage-create-geo-redundant-storage/figure3.png)
 
@@ -343,9 +342,9 @@ const pipeline = StorageURL.newPipeline(sharedKeyCredential, {
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deel één van de serie hebt u geleerd hoe u een toepassing maximaal beschikbaar maakt met RA-GRS-opslagaccounts.
+In deel één van de serie hebt u geleerd hoe u een toepassing Maxi maal beschikbaar maakt met RA-GZRS-opslag accounts.
 
-Ga naar deel twee van de serie voor informatie over hoe u een fout simuleert en uw toepassing dwingt om het secundaire RA-GRS-eindpunt te gebruiken.
+Ga door naar deel twee van de reeks voor meer informatie over het simuleren van een storing en het afdwingen van de toepassing om het secundaire RA-GZRS-eind punt te gebruiken.
 
 > [!div class="nextstepaction"]
-> [Een fout in het lezen van de primaire regio simuleren](storage-simulate-failure-ragrs-account-app.md)
+> [Een fout in het lezen van de primaire regio simuleren](simulate-primary-region-failure.md)

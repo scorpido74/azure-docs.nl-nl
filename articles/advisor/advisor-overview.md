@@ -3,12 +3,12 @@ title: Inleiding tot Azure Advisor
 description: Gebruik Azure Advisor om uw Azure-implementaties te optimaliseren.
 ms.topic: article
 ms.date: 02/01/2019
-ms.openlocfilehash: 600bda282d46f86979d0366719826c3a6c1323e0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 74048073677cdf0f9f57d84469959a84e78cd6c7
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75443082"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82854428"
 ---
 # <a name="introduction-to-azure-advisor"></a>Inleiding tot Azure Advisor
 
@@ -24,7 +24,7 @@ Met Advisor kunt u het volgende doen:
 
 U hebt toegang tot Advisor via de [Azure Portal](https://aka.ms/azureadvisordashboard). Meld u aan bij de [Portal](https://portal.azure.com), zoek **Advisor** in het navigatie menu of zoek ernaar in het menu **alle services** .
 
-In het Advisor-dash board worden persoonlijke aanbevelingen voor al uw abonnementen weer gegeven.  U kunt filters toep assen om aanbevelingen voor specifieke abonnementen en resource typen weer te geven.  De aanbevelingen zijn onderverdeeld in vier categorieën: 
+In het Advisor-dash board worden persoonlijke aanbevelingen voor al uw abonnementen weer gegeven.  U kunt filters toep assen om aanbevelingen voor specifieke abonnementen en resource typen weer te geven.  De aanbevelingen zijn onderverdeeld in vijf categorieën: 
 
 * **Hoge Beschik baarheid**: om de continuïteit van uw bedrijfs kritieke toepassingen te garanderen en te verbeteren. Zie [aanbevelingen voor hoge Beschik baarheid voor Advisor](advisor-high-availability-recommendations.md)voor meer informatie.
 * **Beveiliging**: voor het detecteren van bedreigingen en beveiligings problemen die kunnen leiden tot inbreuk op de beveiliging. Zie [Advisor Security aanbevelingen](advisor-security-recommendations.md)voor meer informatie.
