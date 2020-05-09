@@ -675,6 +675,8 @@
           href: how-to-fixed-width.md
         - name: Verwerking van foutrijen
           href: how-to-data-flow-error-rows.md
+        - name: Azure SQL DB naar CosmosDB
+          href: how-to-sqldb-to-cosmosdb.md
     - name: SSIS-migratie van on-premises
       items:
         - name: Overzicht SSIS-gegevensmigratie

@@ -7,15 +7,17 @@ author: luiscabrer
 ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 02/20/2020
-ms.openlocfilehash: 78f5f6eda28bed164668445b5671dad92f8dedd7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 05/06/2020
+ms.openlocfilehash: 7a1a2aa92549bcab35532120c4af5bd0b6904f58
+ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77500256"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82891249"
 ---
 # <a name="how-to-add-a-custom-skill-to-an-azure-cognitive-search-enrichment-pipeline"></a>Een aangepaste vaardigheid toevoegen aan een Azure Cognitive Search-verrijkings pijplijn
+
+> [!VIDEO https://www.youtube.com/embed/fHLCE-NZeb4?version=3&start=172&end=221]
 
 Een [verrijkings pijplijn](cognitive-search-concept-intro.md) in azure Cognitive Search kan worden samengesteld op basis van [ingebouwde cognitieve vaardig heden](cognitive-search-predefined-skills.md) en [aangepaste vaardig heden](cognitive-search-custom-skill-web-api.md) die u persoonlijk maakt en toevoegt aan de pijp lijn. In dit artikel leert u hoe u een aangepaste vaardigheid maakt waarmee een interface wordt weer gegeven, zodat deze kan worden opgenomen in een AI-verrijkings pijplijn. 
 
@@ -39,6 +41,10 @@ Zorg ervoor dat de URI veilig is (HTTPS).
 Momenteel is het enige mechanisme voor interactie met een aangepaste vaardigheid via een web API-interface. De Web-API moet voldoen aan de vereisten die in deze sectie worden beschreven.
 
 ### <a name="1--web-api-input-format"></a>1. Web-API-invoer indeling
+
+
+> [!VIDEO https://www.youtube.com/embed/fHLCE-NZeb4?version=3&start=294&end=340]
+
 
 De Web-API moet een matrix accepteren met records die moeten worden verwerkt. Elke record moet een ' eigenschappen verzameling ' bevatten die de invoer is van uw web-API. 
 
@@ -158,6 +164,7 @@ Wanneer u een web API-verrijker maakt, kunt u HTTP-headers en-para meters beschr
 
 In dit artikel worden de interface vereisten behandeld die nodig zijn voor het integreren van een aangepaste vaardigheid in een vaardig heden. Klik op de volgende koppelingen voor meer informatie over aangepaste vaardig heden en vaardigheidset-samen stelling.
 
++ [Bekijk onze video over aangepaste vaardig heden](https://youtu.be/fHLCE-NZeb4)
 + [Power vaardig heden: een opslag plaats met aangepaste vaardig heden](https://github.com/Azure-Samples/azure-search-power-skills)
 + [Voor beeld: een aangepaste vaardigheid maken voor AI-verrijking](cognitive-search-create-custom-skill-example.md)
 + [Een vaardig heden definiëren](cognitive-search-defining-skillset.md)

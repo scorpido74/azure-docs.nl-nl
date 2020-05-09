@@ -9,15 +9,15 @@ ms.service: sql-database
 ms.workload: data-services
 ms.topic: article
 ms.date: 01/08/2020
-ms.openlocfilehash: c718daa4bc99bffd6fcfeb084299bed6682fe884
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2aed3a66f70864b3445418a51b0e79280e6884bd
+ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75780507"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82629198"
 ---
 # <a name="how-to-migrate-your-sqlite-database-to-azure-sql-database-serverless"></a>Uw SQLite-data base naar Azure SQL Database Server migreren
-Voor veel mensen biedt SQLite hun eerste ervaring met data bases en SQL-programmering. Het is opgenomen in veel besturings systemen en populaire toepassingen maakt SQLite één de meest uitgebreide en gebruikte data base-engines in de wereld. En omdat het waarschijnlijk de eerste data base-engine is die veel mensen gebruiken, kan deze vaak worden beëindigd als een centraal deel van projecten of toepassingen. In dergelijke gevallen, wanneer het project of de toepassing de eerste SQLite-implementatie uitbreidt, moeten ontwikkel aars hun gegevens mogelijk migreren naar een betrouw bare, gecentraliseerde gegevens opslag.
+Voor veel mensen biedt SQLite hun eerste ervaring met data bases en SQL-programmering. Het is opgenomen in veel besturings systemen en populaire toepassingen maakt SQLite een van de meest uitgebreide geïmplementeerde en gebruikte data base-engines ter wereld. En omdat het waarschijnlijk de eerste data base-engine is die veel mensen gebruiken, kan deze vaak worden beëindigd als een centraal deel van projecten of toepassingen. In dergelijke gevallen, wanneer het project of de toepassing de eerste SQLite-implementatie uitbreidt, moeten ontwikkel aars hun gegevens mogelijk migreren naar een betrouw bare, gecentraliseerde gegevens opslag.
 
 Azure SQL Database serverloos is een compute-laag voor afzonderlijke data bases waarmee de berekening automatisch wordt geschaald op basis van de werkbelasting vraag en facturen voor de hoeveelheid reken kracht die per seconde wordt gebruikt. De compute-laag zonder server onderbreekt ook automatisch data bases tijdens inactieve Peri Oden wanneer alleen opslag wordt gefactureerd en automatisch data bases hervat wanneer de activiteit wordt geretourneerd.
 

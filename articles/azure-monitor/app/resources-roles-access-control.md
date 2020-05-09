@@ -3,12 +3,12 @@ title: Resources, rollen en toegangs beheer in Azure-toepassing inzichten | Micr
 description: Eigen aren, mede werkers en lezers van de inzichten van uw organisatie.
 ms.topic: conceptual
 ms.date: 02/14/2019
-ms.openlocfilehash: 1e57af269c4052d0dcd4a8f7970ca23017024299
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ee14fee66e3aa6f4e8d999f6f98debe361387515
+ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79473129"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82628228"
 ---
 # <a name="resources-roles-and-access-control-in-application-insights"></a>Resources, rollen en toegangs beheer in Application Insights
 
@@ -40,11 +40,6 @@ Eerst worden enkele definities:
 ## <a name="control-access-in-the-resource-group"></a><a name="access"></a>Toegang beheren in de resource groep
 
 Het is belang rijk om te begrijpen dat naast de resource die u hebt gemaakt voor uw toepassing, ook afzonderlijke verborgen resources voor waarschuwingen en webtests worden weer gegeven. Ze zijn gekoppeld aan dezelfde [resource groep](#resource-group) als uw Application Insights-resource. Mogelijk hebt u ook andere Azure-Services in daar geplaatst, zoals websites of opslag.
-
-Om de toegang tot deze resources te beheren, is het aanbevolen om:
-
-* Toegang beheren op het niveau van de **resource groep of het abonnement** .
-* Wijs de rol Inzender voor het **Application Insights onderdeel** toe aan gebruikers. Hierdoor kunnen ze webtests, waarschuwingen en Application Insights resources bewerken zonder dat ze toegang hebben tot andere services in de groep.
 
 ## <a name="to-provide-access-to-another-user"></a>Om toegang te verlenen aan een andere gebruiker
 

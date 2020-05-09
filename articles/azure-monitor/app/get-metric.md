@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 04/28/2020
-ms.openlocfilehash: 6d0d05f13f592fc981d3df52d107b385bdbbb21e
-ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
-ms.translationtype: MT
+ms.openlocfilehash: 309e467f5831961b6bc5a94ad2ce05fd3b991794
+ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82515285"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82629266"
 ---
 # <a name="custom-metric-collection-in-net-and-net-core"></a>Aangepaste metrische verzameling in .NET en .NET core
 
@@ -190,7 +190,7 @@ Multidimensionale metrische gegevens in de metrische Explorer-ervaring zijn niet
 
 ### <a name="how-to-use-metricidentifier-when-there-are-more-than-three-dimensions"></a>MetricIdentifier gebruiken wanneer er meer dan drie dimensies zijn
 
-Momenteel worden 10 dimensies ondersteund, maar voor meer dan drie dimensies is de gebruiker `metricIdentifier`van:
+Momenteel worden 10 dimensies ondersteund, maar voor meer dan drie dimensies is het gebruik `MetricIdentifier`van vereist:
 
 ```csharp
 // Add "using Microsoft.ApplicationInsights.Metrics;" to use MetricIdentifier

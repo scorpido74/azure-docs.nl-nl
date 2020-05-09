@@ -7,16 +7,16 @@ ms.reviewer: gamal
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 11/01/2019
-ms.openlocfilehash: 71df574602518fdc252d9d86859ed772a17be443
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3b8632eaf7662d705235adaad7cd03d2e7e4904b
+ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81408987"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82626868"
 ---
 # <a name="what-are-wrangling-data-flows"></a>Wat zijn wrangling-gegevens stromen?
 
-[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
 Organisaties moeten gegevens voorbereiding en wrangling voor nauw keurige analyse van complexe gegevens die steeds elke dag blijven groeien. Het voorbereiden van gegevens is vereist zodat organisaties de gegevens in verschillende bedrijfs processen kunnen gebruiken en de tijd tot waarde kan verlagen.
 

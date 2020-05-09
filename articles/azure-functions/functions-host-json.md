@@ -2,13 +2,13 @@
 title: host. json-verwijzing voor Azure Functions 2. x
 description: Referentie documentatie voor het Azure Functions host. JSON-bestand met v2 runtime.
 ms.topic: conceptual
-ms.date: 01/06/2020
-ms.openlocfilehash: 7967cdc7f5f7cbb92c12de15d31471fda8aa6569
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 04/28/2020
+ms.openlocfilehash: 39e6ce5d6807a554cc1714a3970bed8303c31ce8
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81758848"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82690886"
 ---
 # <a name="hostjson-reference-for-azure-functions-2x-and-later"></a>host. json-verwijzing voor Azure Functions 2. x en hoger 
 
@@ -24,6 +24,8 @@ Het meta gegevensbestand van de *host. json* bevat globale configuratie opties d
 Andere opties voor de configuratie van de functie-app worden beheerd in de [app-instellingen](functions-app-settings.md) (voor geïmplementeerde apps) of het bestand [Local. settings. json](functions-run-local.md#local-settings-file) (voor lokale ontwikkeling).
 
 Configuraties in host. json die betrekking hebben op bindingen, worden op dezelfde manier toegepast op elke functie in de functie-app. 
+
+U kunt ook [instellingen per omgeving negeren of Toep assen](#override-hostjson-values) met behulp van toepassings instellingen.
 
 ## <a name="sample-hostjson-file"></a>Voor beeld van host. JSON-bestand
 
@@ -145,13 +147,13 @@ Zie het eerder volgende voor beeld van een [host. JSON-bestand](#sample-hostjson
 
 | Eigenschap | Standaard | Beschrijving |
 | --------- | --------- | --------- | 
-| samplingSettings | N.v.t. | Zie [applicationInsights. samplingSettings](#applicationinsightssamplingsettings). |
+| samplingSettings | n.v.t. | Zie [applicationInsights. samplingSettings](#applicationinsightssamplingsettings). |
 | enableLiveMetrics | waar | Hiermee wordt de verzameling Live Metrics ingeschakeld. |
 | enableDependencyTracking | waar | Hiermee schakelt u het bijhouden van afhankelijkheden in. |
 | enablePerformanceCountersCollection | waar | Hiermee schakelt u de verzameling kudu-prestatie meter items. |
 | liveMetricsInitializationDelay | 00:00:15 | Alleen voor intern gebruik. |
-| httpAutoCollectionOptions | N.v.t. | Zie [applicationInsights. httpAutoCollectionOptions](#applicationinsightshttpautocollectionoptions). |
-| snapshotConfiguration | N.v.t. | Zie [applicationInsights. snapshotConfiguration](#applicationinsightssnapshotconfiguration). |
+| httpAutoCollectionOptions | n.v.t. | Zie [applicationInsights. httpAutoCollectionOptions](#applicationinsightshttpautocollectionoptions). |
+| snapshotConfiguration | n.v.t. | Zie [applicationInsights. snapshotConfiguration](#applicationinsightssnapshotconfiguration). |
 
 ### <a name="applicationinsightssamplingsettings"></a>applicationInsights. samplingSettings
 
@@ -188,9 +190,9 @@ Voor meer informatie over moment opnamen raadpleegt u [debug-moment opnamen op u
 | failedRequestLimit | 3 | De limiet voor het aantal mislukte aanvragen voor het aanvragen van moment opnamen voordat de telemetrie-processor wordt uitgeschakeld.|
 | handleUntrackedExceptions | waar | Hiermee wordt het bijhouden van uitzonde ringen die niet worden bijgehouden door Application Insights telemetrie, in-of uitgeschakeld. |
 | isEnabled | waar | Hiermee wordt de momentopname verzameling in-of uitgeschakeld | 
-| isEnabledInDeveloperMode | false | Hiermee wordt de momentopname verzameling ingeschakeld of uitgeschakeld in de ontwikkelaars modus. |
+| isEnabledInDeveloperMode | onjuist | Hiermee wordt de momentopname verzameling ingeschakeld of uitgeschakeld in de ontwikkelaars modus. |
 | isEnabledWhenProfiling | waar | Hiermee wordt het maken van een moment opname in-of uitgeschakeld, zelfs als er een gedetailleerde profilerings sessie wordt verzameld door de Application Insights Profiler. |
-| isExceptionSnappointsEnabled | false | Hiermee wordt het filteren van uitzonde ringen in-of uitgeschakeld. |
+| isExceptionSnappointsEnabled | onjuist | Hiermee wordt het filteren van uitzonde ringen in-of uitgeschakeld. |
 | isLowPrioritySnapshotUploader | waar | Hiermee wordt bepaald of het SnapshotUploader-proces op de normale prioriteit moet worden uitgevoerd. |
 | maximumCollectionPlanSize | 50 | Het maximum aantal problemen dat kan worden gevolgd op elk gewenst moment in een bereik van 1 tot en met 9999. |
 | maximumSnapshotsRequired | 3 | Het maximum aantal moment opnamen dat voor één probleem wordt verzameld, in een bereik van 1 tot 999. Een probleem kan worden beschouwd als een afzonderlijke instructie throw in uw toepassing. Zodra het aantal moment opnamen dat voor een probleem is verzameld deze waarde bereikt, worden er geen moment opnamen meer verzameld voor dat probleem totdat de probleem tellers opnieuw `problemCounterResetInterval`zijn ingesteld ( `thresholdForSnapshotting` Zie) en de limiet opnieuw wordt bereikt. |
@@ -303,9 +305,9 @@ Hiermee bepaalt u het gedrag van logboek registratie van de functie-app, met inb
 |Eigenschap  |Standaard | Beschrijving |
 |---------|---------|---------|
 |fileLoggingMode|debugOnly|Hiermee wordt gedefinieerd welk niveau van bestands logboek registratie is ingeschakeld.  Opties zijn `never`, `always`, `debugOnly`. |
-|logLevel|N.v.t.|Object dat de logboek categorie filtering definieert voor functies in de app. Versie 2. x en hoger volgen de ASP.NET Core indeling voor het filteren van de logboek categorie. Met deze instelling kunt u logboek registratie voor specifieke functies filteren. Zie [logboek filtering](https://docs.microsoft.com/aspnet/core/fundamentals/logging/?view=aspnetcore-2.1#log-filtering) in de ASP.net core-documentatie voor meer informatie. |
-|console|N.v.t.| De instelling voor de logboek registratie van de [console](#console) . |
-|applicationInsights|N.v.t.| De instelling [applicationInsights](#applicationinsights) . |
+|logLevel|n.v.t.|Object dat de logboek categorie filtering definieert voor functies in de app. Versie 2. x en hoger volgen de ASP.NET Core indeling voor het filteren van de logboek categorie. Met deze instelling kunt u logboek registratie voor specifieke functies filteren. Zie [logboek filtering](https://docs.microsoft.com/aspnet/core/fundamentals/logging/?view=aspnetcore-2.1#log-filtering) in de ASP.net core-documentatie voor meer informatie. |
+|console|n.v.t.| De instelling voor de logboek registratie van de [console](#console) . |
+|applicationInsights|n.v.t.| De instelling [applicationInsights](#applicationinsights) . |
 
 ## <a name="console"></a>console
 
@@ -325,7 +327,7 @@ Deze instelling is een onderliggend item van [logboek registratie](#logging). He
 
 |Eigenschap  |Standaard | Beschrijving |
 |---------|---------|---------| 
-|isEnabled|false|Hiermee wordt de logboek registratie van de console in-of uitgeschakeld.| 
+|isEnabled|onjuist|Hiermee wordt de logboek registratie van de console in-of uitgeschakeld.| 
 
 ## <a name="manageddependency"></a>managedDependency
 
@@ -373,7 +375,7 @@ Configuratie-instellingen voor het gedrag van Singleton-vergren deling. Zie [git
 |listenerLockPeriod|00:01:00|De periode waarin de luister vergrendelingen worden uitgevoerd.| 
 |listenerLockRecoveryPollingInterval|00:01:00|Het tijds interval dat wordt gebruikt voor het herstel van de listener-vergren deling als tijdens het opstarten geen listener-vergrendeling kan worden verkregen.| 
 |lockAcquisitionTimeout|00:01:00|De maximale hoeveelheid tijd die de runtime probeert een vergren deling te verkrijgen.| 
-|lockAcquisitionPollingInterval|N.v.t.|Het interval tussen overname pogingen voor vergren delen.| 
+|lockAcquisitionPollingInterval|n.v.t.|Het interval tussen overname pogingen voor vergren delen.| 
 
 ## <a name="version"></a>versie
 
@@ -386,6 +388,23 @@ Een set [gedeelde code mappen](functions-reference-csharp.md#watched-directories
 ```json
 {
     "watchDirectories": [ "Shared" ]
+}
+```
+
+## <a name="override-hostjson-values"></a>Host. json-waarden opheffen
+
+Het kan voor komen dat u specifieke instellingen in een host. JSON-bestand wilt configureren of wijzigen voor een specifieke omgeving, zonder het bestand host. json zelf te wijzigen.  U kunt specifieke host. json-waarden overschrijven om een equivalente waarde te maken als een toepassings instelling. Wanneer de runtime een toepassings instelling in de indeling `AzureFunctionsJobHost__path__to__setting`vindt, wordt de overeenkomende host. json-instelling die zich in de `path.to.setting` JSON bevindt, overschreven. Wanneer wordt uitgedrukt als een toepassings instelling, wordt de`.`punt () die wordt gebruikt om de JSON-hiërarchie aan te`__`geven, vervangen door een dubbel streepje (). 
+
+Stel bijvoorbeeld dat u inzicht in de voorbeeld toepassing van toepassingen wilt uitschakelen wanneer u lokaal uitvoert. Als u het bestand local host. json hebt gewijzigd om Application Insights uit te scha kelen, wordt deze wijziging mogelijk tijdens de implementatie naar uw productie-app gepusht. De veiligste manier om dit te doen is door in plaats daarvan een `"AzureFunctionsJobHost__logging__applicationInsights__samplingSettings__isEnabled":"false"` toepassings instelling `local.settings.json` te maken die zich in het bestand bevindt. U kunt dit zien in het volgende `local.settings.json` bestand, dat niet wordt gepubliceerd:
+
+```json
+{
+    "IsEncrypted": false,
+    "Values": {
+        "AzureWebJobsStorage": "{storage-account-connection-string}",
+        "FUNCTIONS_WORKER_RUNTIME": "{language-runtime}",
+        "AzureFunctionsJobHost__logging__applicationInsights__samplingSettings__isEnabled":"false"
+    }
 }
 ```
 

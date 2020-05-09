@@ -5,20 +5,20 @@ author: bandersmsft
 ms.reviewer: yashar
 ms.service: cost-management-billing
 ms.topic: conceptual
-ms.date: 03/22/2020
+ms.date: 04/30/2020
 ms.author: banders
-ms.openlocfilehash: 1b639da3494c0527141347ca61e77980d29a59ea
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: feee7475dcadc6d06693d9e60020097f8dc9149c
+ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80135552"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82628602"
 ---
 # <a name="determine-what-reservation-to-purchase"></a>Bepalen welke reservering u moet aanschaffen
 
 Alle reserveringen, met uitzondering van Azure Databricks, worden per uur toegepast. U moet reserveringen aanschaffen op basis van consistent basisgebruik. Er zijn meerdere manieren om te bepalen wat u moet aanschaffen, en dit artikel helpt u te bepalen welke reservering voor u de beste keuze is.
 
-Als u meer capaciteit aanschaft dan past bij uw historische gebruik, resulteert dit in een onderbenutte reservering. Vermijd onderbenutting zoveel mogelijk. Niet-gebruikte gereserveerde capaciteit kunt u niet meenemen naar het volgende uur.  Gebruik dat de gereserveerde hoeveelheid overschrijdt, wordt gefactureerd tegen hogere tarieven voor betalen per gebruik.
+Als u meer capaciteit aanschaft dan past bij uw historische gebruik, resulteert dit in een onderbenutte reservering. Vermijd onderbenutting zoveel mogelijk. Niet-gebruikte gereserveerde capaciteit kunt u niet meenemen naar het volgende uur. Gebruik dat de gereserveerde hoeveelheid overschrijdt, wordt gefactureerd tegen hogere tarieven voor betalen per gebruik.
 
 ## <a name="analyze-usage-data"></a>Gebruiksgegevens analyseren
 
@@ -40,11 +40,11 @@ Negeer resources met een gebruik van minder dan 24 uur per dag.
 
 Als u de instantiegrootte wilt analyseren op familieniveau, kunt u de flexibiliteitswaarden voor de instantiegrootte ophalen uit [https://isfratio.blob.core.windows.net/isfratio/ISFRatio.csv](https://isfratio.blob.core.windows.net/isfratio/ISFRatio.csv). Combineer de waarden met uw gegevens om de analyse uit te voeren. Zie [Flexibiliteit van de VM-grootte met gereserveerde VM-instanties](../../virtual-machines/windows/reserved-vm-instance-size-flexibility.md) voor meer informatie over flexibiliteit met instantiegrootten.
 
-### <a name="analyze-usage-for-a-sql-database-reserved-instance-purchase"></a>Gebruik analyseren voor de aankoop van een gereserveerde SQL Database-instantie
+### <a name="analyze-usage-for-an-azure-synapse-analytics-reserved-instance-purchase"></a>Gebruik analyseren voor de aankoop van een gereserveerd exemplaar voor Azure Synapse Analytics
 
-Gereserveerde capaciteit is van toepassing op SQL Databas vCore-rekenprijzen. Deze is niet van toepassing op DTU-prijzen, SQL-licentiekosten, of enige andere kosten, buiten de rekenkosten.
+Gereserveerde capaciteit is van toepassing op DWU-prijzen voor Azure Synapse Analytics. Deze is niet van toepassing op Azure Synapse Analytics-licentiekosten of enige andere kosten, buiten de rekenkosten.
 
-Als u de analyse wilt beperken tot in aanmerking komend SQL-gebruik, past u de volgende filters toe op uw gebruiksgegevens:
+Als u de analyse wilt beperken tot in aanmerking komend gebruik, past u de volgende filters toe op uw gebruiksgegevens:
 
 
 - Filter **MeterCategory** voor **SQL Database**.
@@ -60,22 +60,22 @@ De gegevens informeren u over het consistente gebruik voor:
 - Generatie. Bijvoorbeeld: Gen 5.
 - Resourcelocatie
 
-### <a name="analysis-for-sql-data-warehouse"></a>Analyse voor SQL Data Warehouse
+### <a name="analysis-for-azure-synapse-analytics"></a>Analyse voor Azure Synapse Analytics
 
-Gereserveerde capaciteit is van toepassing op SQL Data Warehouse DWU-gebruik en wordt aangeschaft in stappen van 100 DWU. Als u de analyse wilt beperken tot in aanmerking komend SQL-gebruik, past u de volgende filters toe op uw gebruiksgegevens:
+Gereserveerde capaciteit is van toepassing op DWU-gebruik voor Azure Synapse Analytics en wordt aangeschaft in stappen van 100 DWU. Als u de analyse wilt beperken tot in aanmerking komend gebruik, past u de volgende filters toe op uw gebruiksgegevens:
 
 - Filter **MeterName** voor **100 DWU’s**.
 - Filter **Metersubcategorie** voor **Berekening geoptimaliseerde Gen2**.
 
-Gebruik het veld **Resourcelocatie** om het gebruik van SQL DW in een regio te bepalen.
+Gebruik het veld **Resourcelocatie** om het gebruik van Azure Synapse Analytics in een regio te bepalen.
 
-SQL Data Warehouse-gebruik kan gedurende de hele dag omhoog en omlaag worden geschaald. Neem contact op met het team dat de SQL Data Warehouse-instantie heeft beheerd, voor meer informatie over het basisgebruik.
+Azure Synapse Analytics-gebruik kan gedurende de hele dag omhoog en omlaag worden geschaald. Neem contact op met het team dat de Azure Synapse Analytics-instantie heeft beheerd, voor meer informatie over het basisgebruik.
 
-Ga naar Reserveringen in de Azure-portal en koop gereserveerde SQL Data Warehouse-capaciteit in veelvouden van 100 DWU's.
+Ga naar Reserveringen in de Azure-portal en koop gereserveerde Azure Synapse Analytics-capaciteit in veelvouden van 100 DWU's.
 
 ## <a name="reservation-purchase-recommendations"></a>Aanbevelingen voor reserveringsaankopen
 
-Aanbevelingen voor reserveringsaankopen worden berekend door uw gebruiksgegevens per uur te analyseren voor de afgelopen 7, 30 of 60 dagen. Azure berekent wat de kosten met een reservering zouden zijn geweest, en vergelijkt dit met uw werkelijke kosten voor betalen per gebruik die in rekening zijn gebracht gedurende deze tijdsperiode. De berekening wordt uitgevoerd voor elk aantal dat u hebt gebruikt tijdens het tijdsbestek. De hoeveelheid waarbij de besparingen het grootst zijn, is de aanbevolen hoeveelheid. 
+Aanbevelingen voor reserveringsaankopen worden berekend door uw gebruiksgegevens per uur te analyseren voor de afgelopen 7, 30 of 60 dagen. Azure berekent wat de kosten met een reservering zouden zijn geweest, en vergelijkt dit met uw werkelijke kosten voor betalen per gebruik die in rekening zijn gebracht gedurende deze tijdsperiode. De berekening wordt uitgevoerd voor elk aantal dat u hebt gebruikt tijdens het tijdsbestek. De hoeveelheid waarbij de besparingen het grootst zijn, is de aanbevolen hoeveelheid.
 
 U gebruikt bijvoorbeeld mogelijk gedurende het grootste gedeelte van de tijd 500 VM’s, met af en toe een piek naar 700 VM’s. In dit voorbeeld wordt in Azure uw besparing berekend voor het gebruik van zowel 500 als 700 VM’s. Aangezien het gebruik van 700 VM’s slechts sporadisch voorkomt, wordt met de aanbevelingsberekening bepaald dat de besparingen het grootst zijn bij een aankoop van 500 VM-reserveringen en wordt de aanbeveling gedaan voor een hoeveelheid van 500.
 

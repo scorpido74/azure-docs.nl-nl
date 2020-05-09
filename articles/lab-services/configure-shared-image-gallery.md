@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/05/2019
 ms.author: spelluru
-ms.openlocfilehash: 9593d60f76802cd515ca85616bce028cf3aa0d49
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7591f22286f9ac451a15dd926adab0212adb190e
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77589314"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82691285"
 ---
 # <a name="configure-a-shared-image-gallery-in-azure-devtest-labs"></a>Een gedeelde galerie met installatiekopieën configureren in Azure DevTest Labs
 DevTest Labs ondersteunt nu de functie [gedeelde installatie kopie galerie](../virtual-machines/windows/shared-image-galleries.md) . Hiermee kunnen Lab-gebruikers toegang krijgen tot installatie kopieën vanaf een gedeelde locatie tijdens het maken van Lab-resources. Het helpt u ook om structuur en organisatie te bouwen rond uw door aangepaste beheerde VM-installatie kopieën. De functie Gedeelde afbeeldingen galerie ondersteunt:
@@ -44,7 +44,7 @@ Als u een groot aantal beheerde installatie kopieën hebt dat u wilt behouden en
 - Hoewel in DevTest Labs automatisch een beste poging wordt gedaan om ervoor te zorgen dat de galerie met gedeelde afbeeldingen installatie kopieën repliceert naar de regio waarin het lab zich bevindt, is het niet altijd mogelijk. Om te voor komen dat gebruikers problemen hebben met het maken van Vm's van deze installatie kopieën, moet u ervoor zorgen dat de installatie kopieën al worden gerepliceerd naar de regio van het lab.
 
 ## <a name="use-azure-portal"></a>Azure Portal gebruiken
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
+1. Meld u aan bij [Azure Portal](https://portal.azure.com).
 1. Selecteer **alle services** in het navigatie menu links.
 1. Selecteer **DevTest Labs** uit de lijst.
 1. Selecteer in de lijst met Labs uw **Lab**.
@@ -91,9 +91,21 @@ Als u een Azure Resource Manager sjabloon gebruikt om een galerie met gedeelde a
 
 Voor een volledig voor beeld van een resource manager-sjabloon raadpleegt u deze resource manager-sjabloon voorbeelden in onze open bare GitHub-opslag plaats: [een galerie met gedeelde afbeeldingen configureren tijdens het maken van een Lab](https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/QuickStartTemplates/101-dtl-create-lab-shared-gallery-configured).
 
-## <a name="use-api"></a>API gebruiken
+## <a name="use-rest-api"></a>REST API gebruiken
 
-### <a name="shared-image-galleries---create-or-update"></a>Galerieën met gedeelde afbeeldingen-maken of bijwerken
+### <a name="get-a-list-of-labs"></a>Een lijst met Labs ophalen 
+
+```rest
+GET  https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs?api-version= 2018-10-15-preview
+```
+
+### <a name="get-the-list-of-shared-image-galleries-associated-with-a-lab"></a>De lijst met gedeelde afbeeldings galerieën ophalen die zijn gekoppeld aan een Lab
+
+```rest
+GET  https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/sharedgalleries?api-version= 2018-10-15-preview
+   ```
+
+### <a name="create-or-update-shared-image-gallery"></a>Galerie met gedeelde afbeeldingen maken of bijwerken
 
 ```rest
 PUT https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/sharedgalleries/{name}?api-version= 2018-10-15-preview
@@ -107,12 +119,11 @@ Body:
 
 ```
 
-### <a name="shared-image-galleries-images---list"></a>Afbeeldingen van de galerie met gedeelde afbeeldingen-lijst 
+### <a name="list-images-in-a-shared-image-gallery"></a>Afbeeldingen weer geven in een galerie met gedeelde afbeeldingen
 
 ```rest
 GET  https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/sharedgalleries/{name}/sharedimages?api-version= 2018-10-15-preview
 ```
-
 
 
 
