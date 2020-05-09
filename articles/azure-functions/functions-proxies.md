@@ -5,12 +5,12 @@ author: alexkarcher-msft
 ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: alkarche
-ms.openlocfilehash: 09e4616bc7cbb4361ad067ed64984ed95e9a20c5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5e756258bb92d7def195959d909068e87e765c0f
+ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74849187"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82562063"
 ---
 # <a name="work-with-azure-functions-proxies"></a>Werken met Azure Functions-proxy's
 
@@ -30,7 +30,7 @@ In deze sectie wordt beschreven hoe u een proxy maakt in de functions-Portal.
 3. Geef een naam op voor uw proxy.
 4. Configureer het eind punt dat wordt weer gegeven in deze functie-app door de **route sjabloon** en **http-methoden**op te geven. Deze para meters gedragen zich op basis van de regels voor [http-triggers].
 5. Stel de **back-end-URL** in op een ander eind punt. Dit eind punt kan een functie zijn in een andere functie-app of een andere API. De waarde hoeft niet statisch te zijn en kan verwijzen naar [Toepassings instellingen] en- [para meters van de oorspronkelijke client aanvraag].
-6. Klik op **maken**.
+6. Klik op **Maken**.
 
 Uw proxy bestaat nu als een nieuw eind punt in uw functie-app. Vanuit een client perspectief is het gelijk aan een http trigger in Azure Functions. U kunt de nieuwe proxy proberen door de proxy-URL te kopiëren en deze te testen met uw favoriete HTTP-client.
 
@@ -184,8 +184,8 @@ Proxy's lezen alle teken reeksen uit een JSON-bestand met behulp van \ als een e
 Het requestOverrides-object definieert wijzigingen die in de aanvraag zijn aangebracht wanneer de back-end-resource wordt aangeroepen. Het object wordt gedefinieerd door de volgende eigenschappen:
 
 * **back-endserver**: de HTTP-methode die wordt gebruikt om de back-end aan te roepen.
-* **back-end. Request. query string. Para \<-name: een query reeks parameter die kan worden ingesteld voor de aanroep van de back-\>** end. Vervang * \<de para\> meter* name door de naam van de para meter die u wilt instellen. Houd er rekening mee dat als de lege teken reeks wordt opgegeven, de para meter nog steeds wordt opgenomen in de back-end-aanvraag.
-* **back-end. Request. headers. \<Kopnaam: een header die kan worden ingesteld voor de aanroep van de back-\>** end. Vervang * \<kopnaam\> * door de naam van de koptekst die u wilt instellen. Als u de lege teken reeks opgeeft, wordt de header niet opgenomen in de back-end-aanvraag.
+* **back-end. Request. query string. Para \<-name: een query reeks parameter die kan worden ingesteld voor de aanroep van de back-\>** end. Vervang * \<de para\> meter* name door de naam van de para meter die u wilt instellen. Houd er rekening mee dat als er een lege teken reeks wordt opgegeven, de para meter nog steeds wordt opgenomen in de back-end-aanvraag.
+* **back-end. Request. headers. \<Kopnaam: een header die kan worden ingesteld voor de aanroep van de back-\>** end. Vervang * \<kopnaam\> * door de naam van de koptekst die u wilt instellen. Houd er rekening mee dat als er een lege teken reeks wordt opgegeven, de para meter nog steeds wordt opgenomen in de back-end-aanvraag.
 
 Waarden kunnen verwijzen naar toepassings instellingen en para meters van de oorspronkelijke client aanvraag.
 

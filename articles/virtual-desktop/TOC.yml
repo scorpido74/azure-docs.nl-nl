@@ -1,22 +1,20 @@
-- name: Windows Virtual Desktop
+- name: Release van Windows Virtual Desktop van lente 2020
   href: index.yml
 - name: Overzicht
   items:
     - name: Wat is Windows Virtual Desktop?
       href: overview.md
+    - name: Documentatie voor de release van najaar 2019
+      href: ./virtual-desktop-fall-2019/tenant-setup-azure-active-directory.md
 - name: Zelfstudies
   items:
-    - name: 1. Een tenant maken in Windows Virtual Desktop
-      href: tenant-setup-azure-active-directory.md
-    - name: 2. Service-principals en roltoewijzingen maken met behulp van PowerShell
-      href: create-service-principal-role-powershell.md
-    - name: 3. Een hostpool maken met behulp van Azure Marketplace
+    - name: 1. Een hostpool maken met de Azure-portal
       href: create-host-pools-azure-marketplace.md
-    - name: 4. Appgroepen beheren
+    - name: 2. Appgroepen beheren
       href: manage-app-groups.md
-    - name: 5. Een hostpool voor het valideren van service-updates maken
+    - name: 3. Een hostpool voor het valideren van service-updates maken
       href: create-validation-host-pool.md
-    - name: 6. Servicewaarschuwingen instellen
+    - name: 4. Servicewaarschuwingen instellen
       href: set-up-service-alerts.md
 - name: Uitleg
   items:
@@ -32,18 +30,18 @@
           href: connect-macos.md
         - name: Verbinding maken met de iOS-client
           href: connect-ios.md
+    - name: De PowerShell-module installeren
+      href: powershell-module.md
     - name: Een hostpool en sessiehosts maken
       items:
-        - name: Azure Resource Manager-sjabloon
-          href: create-host-pools-arm-template.md
         - name: PowerShell
           href: create-host-pools-powershell.md
-        - name: Een virtuele Windows 7-machine implementeren
-          href: deploy-windows-7-virtual-machine.md
         - name: Een sessiehost op basis van GPU implementeren
           href: configure-vm-gpu.md
         - name: Een bestaande hostpool uitbreiden
           href: expand-existing-host-pool.md
+        - name: App-groepen beheren met PowerShell
+          href: manage-app-groups-powershell.md
     - name: Een profielcontainer maken
       items:
         - name: Een bestandsshare op VM-basis gebruiken
@@ -68,20 +66,10 @@
           href: set-up-customize-master-image.md
         - name: Office installeren op een master-VHD-installatiekopie
           href: install-office-on-wvd-master-image.md
-    - name: Sessiehosts automatisch schalen
-      href: set-up-scaling-script.md
     - name: Feed aanpassen
       href: customize-feed-for-virtual-desktop-users.md
-    - name: Hulpprogramma voor beheer implementeren
-      items:
-        - name: Azure Resource Manager-sjabloon
-          href: manage-resources-using-ui.md
-        - name: PowerShell
-          href: manage-resources-using-ui-powershell.md
     - name: Diagnostische gegevens van de service gebruiken
       items:
-        - name: Het diagnosehulpprogramma implementeren
-          href: deploy-diagnostics.md
         - name: Diagnostische gegevens met Log Analytics gebruiken
           href: diagnostics-log-analytics.md
     - name: Ingebouwde apps publiceren
@@ -124,10 +112,6 @@
       href: troubleshoot-set-up-issues.md
     - name: Configuratie van sessiehost-VM's
       href: troubleshoot-vm-configuration.md
-    - name: Problemen met virtuele Windows 7-machines in Windows Virtual Desktop oplossen
-      href: troubleshoot-windows-7-vm.md
-    - name: Problemen met het beheerprogramma voor Windows Virtual Desktop oplossen
-      href: troubleshoot-management-tool.md
     - name: Verbindingen voor Extern bureaublad-service
       href: troubleshoot-service-connection.md
     - name: Problemen met Extern bureaublad-client
@@ -140,10 +124,6 @@
   items:
     - name: Linux Support
       href: linux-overview.md
-    - name: PowerShell
-      href: /powershell/windows-virtual-desktop/overview
-    - name: REST-API
-      href: /rest/api/virtual-desktop/
     - name: Ondersteunde RDP-bestandsinstellingen
       href: 'https://docs.microsoft.com/windows-server/remote/remote-desktop-services/clients/rdp-files?context=/azure/virtual-desktop/context/context'
     - name: Netwerkrichtlijnen

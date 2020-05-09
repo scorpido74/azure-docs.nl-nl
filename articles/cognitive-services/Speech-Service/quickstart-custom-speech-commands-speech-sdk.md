@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 12/09/2019
 ms.author: donkim
-ms.openlocfilehash: 9e324af0b90f595b5b7af2a417a562efb193d854
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 186b684cc7e4442d1a8ce14f06e16c839e117a26
+ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "76156774"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82872487"
 ---
 # <a name="quickstart-connect-to-a-custom-commands-application-with-the-speech-sdk-preview"></a>Quick Start: verbinding maken met een toepassing voor aangepaste opdrachten met de spraak-SDK (preview)
 
@@ -24,19 +24,20 @@ Nadat u een gehoste aangepaste opdrachten toepassing hebt gemaakt, kunt u aan de
 In dit artikel voert u de volgende handelingen uit:
 
 - Een toepassing voor aangepaste opdrachten publiceren en een toepassings-id ophalen (App-ID)
-- Een client-app maken met behulp van de Speech SDK zodat u kunt communiceren met uw toepassing voor aangepaste opdrachten
+- Een Universeel Windows-platform-client-app (UWP) maken met behulp van de Speech SDK zodat u kunt praten met uw toepassing voor aangepaste opdrachten
 
 ## <a name="prerequisites"></a>Vereisten
 
 Er is een toepassing voor aangepaste opdrachten vereist om dit artikel te volt ooien. Als u nog geen toepassing voor aangepaste opdrachten hebt gemaakt, kunt u dit doen in deze vorige Snelstartgids:
-
-- [Snelstartgids: een aangepaste opdracht maken (preview)](./quickstart-custom-speech-commands-create-new.md)
-- [Snelstartgids: een aangepaste opdracht maken met para meters (preview)](./quickstart-custom-speech-commands-create-parameters.md)
+> [!div class = "checklist"]
+> * [Snelstartgids: een aangepaste opdracht maken (preview)](./quickstart-custom-speech-commands-create-new.md)
+> * [Snelstartgids: een aangepaste opdracht maken met para meters (preview)](./quickstart-custom-speech-commands-create-parameters.md)
 
 U hebt ook het volgende nodig:
-
-- [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/)
-- Een Azure-abonnements sleutel voor spraak Services. [Ontvang een gratis versie](get-started.md) of maak deze op de [Azure Portal](https://portal.azure.com)
+> [!div class = "checklist"]
+> * [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/)
+> * Een Azure-abonnements sleutel voor spraak Services. [Ontvang een gratis versie](get-started.md) of maak deze op de [Azure Portal](https://portal.azure.com)
+> * [Uw apparaat inschakelen voor ontwikkeling](https://docs.microsoft.com/windows/uwp/get-started/enable-your-device-for-development)
 
 ## <a name="optional-get-started-fast"></a>Optioneel: snel aan de slag
 
@@ -44,12 +45,13 @@ In deze Snelstartgids wordt stapsgewijs beschreven hoe u een client toepassing k
 
 ## <a name="step-1-publish-custom-commands-application"></a>Stap 1: de toepassing voor het publiceren van aangepaste opdrachten
 
-1. Open uw [eerder gemaakte toepassing voor aangepaste opdrachten](./quickstart-custom-speech-commands-create-new.md) en selecteer **publiceren**
+1. Open de [eerder gemaakte toepassing voor aangepaste opdrachten (preview)](./quickstart-custom-speech-commands-create-new.md) en selecteer **publiceren**
 
    > [!div class="mx-imgBorder"]
    > ![Uw toepassing publiceren](media/custom-speech-commands/fulfill-sdk-publish-application.png)
 
 1. De App-ID uit de publicatie melding kopiëren voor later gebruik
+1. Kopieer de spraak bron sleutel voor later gebruik
 
 ## <a name="step-2-create-a-visual-studio-project"></a>Stap 2: een Visual Studio-project maken
 
@@ -129,7 +131,7 @@ Voeg als volgt de code-behind bron toe:
 
 1. Open in **Solution Explorer**het bron bestand `MainPage.xaml.cs` van de code-behind (gegroepeerd `MainPage.xaml`onder)
 
-1. Vervang de inhoud van het bestand door de volgende code:
+1. Vervang de inhoud van het bestand door de volgende code: 
 
    ```csharp
    using Microsoft.CognitiveServices.Speech;
@@ -298,6 +300,11 @@ Voeg als volgt de code-behind bron toe:
        }
    }
    ```
+    > [!NOTE]
+    > Als u fout ziet: ' het type ' object ' is gedefinieerd in een assembly waarnaar niet wordt verwezen '
+    > 1. Rechts-client uw oplossing.
+    > 1. Kies **NuGet-pakketten beheren voor oplossing**, selecteer **updates** 
+    > 1. Als u **micro soft. NetCore. UniversalWindowsPlatform** in de update lijst ziet, werkt u **micro soft. NetCore. UniversalWindowsPlatform** bij naar de nieuwste versie
 
 1. Voeg de volgende code toe aan de methode hoofdtekst van`InitializeDialogServiceConnector`
 
@@ -419,3 +426,6 @@ Voeg als volgt de code-behind bron toe:
 > [!div class="nextstepaction"]
 > [Procedure: opdrachten op de client uitvoeren met de Speech-SDK (preview)](./how-to-custom-speech-commands-fulfill-sdk.md)
 > [procedure: validaties toevoegen aan aangepaste opdracht parameters (preview-versie)](./how-to-custom-speech-commands-validations.md)
+
+## <a name="sample-source-code"></a>Voorbeeld bron code
+Bekijk onze client sample codes op [github-VoiceAssistant](https://github.com/Azure-Samples/Cognitive-Services-Voice-Assistant)

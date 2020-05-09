@@ -5,12 +5,12 @@ ms.subservice: B2C
 ms.topic: include
 ms.date: 04/07/2020
 ms.author: mimart
-ms.openlocfilehash: 31a6d116ae1afce9afdd3786747490980963d823
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 818f33abfdb0655d96c0a8873a43903ee972b3bf
+ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81678047"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82925451"
 ---
 ## <a name="register-an-azure-ad-app"></a>Een Azure AD-app registreren
 
@@ -36,7 +36,7 @@ Als u het aanmelden voor gebruikers van een specifieke Azure AD-organisatie wilt
 
 ### <a name="configuring-optional-claims"></a>Optionele claims configureren
 
-Als u de `family_name` en `given_name` claims van Azure ad wilt ophalen, kunt u optionele claims voor uw toepassing configureren in de Azure Portal gebruikers interface of het toepassings manifest. Zie [optionele claims voor uw Azure AD-app bieden](/active-directory/develop/active-directory-optional-claims.md)voor meer informatie.
+Als u de `family_name` en `given_name` claims van Azure ad wilt ophalen, kunt u optionele claims voor uw toepassing configureren in de Azure Portal gebruikers interface of het toepassings manifest. Zie [optionele claims voor uw Azure AD-app bieden](/azure/active-directory/develop/active-directory-optional-claims)voor meer informatie.
 
 1. Meld u aan bij de [Azure-portal](https://portal.azure.com). Zoek naar **Azure Active Directory** en selecteer deze optie.
 1. Selecteer in de sectie **beheren** de optie **app-registraties**.
@@ -45,4 +45,4 @@ Als u de `family_name` en `given_name` claims van Azure ad wilt ophalen, kunt u 
 1. Selecteer **optionele claim toevoegen**.
 1. Selecteer **id**voor het **token type**.
 1. Selecteer de optionele claims om toe te `family_name` voegen en `given_name`.
-1. Klik op **Add**.
+1. Klik op **Toevoegen**.

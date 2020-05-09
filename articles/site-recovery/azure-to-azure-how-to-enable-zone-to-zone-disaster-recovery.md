@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 04/28/2020
 ms.author: sideeksh
-ms.openlocfilehash: 4d103001ba655ea6540c9dd00e937087b7b6311c
-ms.sourcegitcommit: 291b2972c7f28667dc58f66bbe9d9f7d11434ec1
+ms.openlocfilehash: 27b433ba33d287a183d8ce6cc05d87649b2d0b00
+ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82738310"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82891500"
 ---
 # <a name="enable-zone-to-zone-disaster-recovery-for-azure-virtual-machines"></a>Zone inschakelen voor herstel na nood geval voor Azure virtual machines
 
@@ -106,16 +106,16 @@ Meld u aan bij de Azure Portal.
 
 ## <a name="faqs"></a>Veelgestelde vragen
 
-1. Hoe werkt de prijs voor zone-herstel na nood gevallen?
+**1. Hoe werkt de prijs voor een zone voor een nood herstel van zones?**
 De prijzen voor zone-naar-zone herstel na nood gevallen zijn gelijk aan de prijs van Azure tot Azure nood herstel. U vindt [hier](https://azure.microsoft.com/pricing/details/site-recovery/) meer informatie over de pagina met [prijzen.](https://azure.microsoft.com/blog/know-exactly-how-much-it-will-cost-for-enabling-dr-to-your-azure-vm/) Houd er rekening mee dat de kosten voor uitgaand verkeer die u in de zone zou zien, voor een nood herstel van de zone lager zijn dan de regio naar regio herstel na nood gevallen.
 
-2. Wat is de SLA voor RTO en RPO?
-De SLA voor RTO is hetzelfde als die voor Site Recovery totaal. Promise RTO <= 2 uur. Er is geen SLA voor RPO gedefinieerd.
+**2. Wat is de SLA voor RTO en RPO?**
+De SLA voor RTO is hetzelfde als die voor Site Recovery totaal. We beloofen RTO tot twee uur. Er is geen SLA voor RPO gedefinieerd.
 
-3. Is de capaciteit gegarandeerd in de secundaire zone?
+**3. is de capaciteit gegarandeerd in de secundaire zone?**
 Het team van de Site Recovery-team en het Azure Capacity Management-abonnement voor voldoende infrastructuur capaciteit. Wanneer u een failover start, kunnen de teams er ook voor zorgen dat VM-exemplaren die worden beveiligd door Site Recovery worden geïmplementeerd in de doel zone.
 
-4. Welke besturings systemen worden ondersteund?
+**4. welke besturings systemen worden ondersteund?**
 Zone-naar-zone herstel na nood gevallen ondersteunt dezelfde besturings systemen als Azure voor herstel na nood gevallen. Raadpleeg [hier](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-support-matrix)de ondersteunings matrix.
 
 ## <a name="next-steps"></a>Volgende stappen

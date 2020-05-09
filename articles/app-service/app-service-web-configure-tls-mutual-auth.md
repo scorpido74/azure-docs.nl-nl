@@ -5,12 +5,12 @@ ms.assetid: cd1d15d3-2d9e-4502-9f11-a306dac4453a
 ms.topic: article
 ms.date: 10/01/2019
 ms.custom: seodec18
-ms.openlocfilehash: 2f6dd455024aba184cbb16b5b9c7cfffd032dc70
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 143317cd424428d7f480f4880d3aab750853890b
+ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80811723"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82592363"
 ---
 # <a name="configure-tls-mutual-authentication-for-azure-app-service"></a>Wederzijdse TLS-verificatie voor Azure App Service configureren
 
@@ -24,7 +24,7 @@ U kunt de toegang tot uw Azure App Service-app beperken door verschillende verif
 
 ## <a name="enable-client-certificates"></a>Client certificaten inschakelen
 
-Als u uw app wilt instellen op client certificaten vereist, moet u de `clientCertEnabled` instelling voor uw app instellen op `true`. Als u de instelling wilt instellen, voert u de volgende opdracht uit in de [Cloud shell](https://shell.azure.com).
+Als u uw app wilt instellen op het vereisen van client certificaten, kunt u overstappen **op** het selectie vakje binnenkomend certificaat door algemene **configuratie** > -**instellingen** te selecteren `clientCertEnabled` in azure portal of de `true`instelling voor uw app in te stellen op. Als u de instelling wilt instellen, voert u de volgende opdracht uit in de [Cloud shell](https://shell.azure.com).
 
 ```azurecli-interactive
 az webapp update --set clientCertEnabled=true --name <app_name> --resource-group <group_name>

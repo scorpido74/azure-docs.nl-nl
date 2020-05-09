@@ -5,12 +5,12 @@ services: automation
 ms.subservice: update-management
 ms.date: 05/17/2019
 ms.topic: conceptual
-ms.openlocfilehash: 00cde5255f9c9a2baa7c7042ae2a8f73448da0ae
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f55ebb3270fdd97a1fdbbf5a56f9703c08933f9f
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81679994"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82855338"
 ---
 # <a name="manage-pre-scripts-and-post-scripts"></a>Pre-scripts en post-scripts beheren
 
@@ -21,7 +21,7 @@ Pre-scripts en post scripts zijn runbooks die in uw Azure Automation-account wor
 
 ## <a name="pre-script-and-post-script-requirements"></a>Pre-script-en post script-vereisten
 
-Een runbook kan alleen worden gebruikt als een pre-script of post script als u het wilt importeren in uw Automation-account en [het runbook wilt publiceren](manage-runbooks.md#publishing-a-runbook).
+Een runbook kan alleen worden gebruikt als een pre-script of post script als u het wilt importeren in uw Automation-account en [het runbook wilt publiceren](manage-runbooks.md#publish-a-runbook).
 
 ## <a name="pre-script-and-post-script-parameters"></a>Pre-script en post-script-para meters
 

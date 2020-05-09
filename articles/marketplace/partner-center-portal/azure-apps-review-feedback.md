@@ -1,20 +1,20 @@
 ---
-title: Verwerkings feedback voor Azure apps-aanbieding in de commerciële Marketplace
-description: Beoordelings feedback voor Azure apps-aanbieding verwerken voor het aanbieden of verkopen in azure Marketplace, AppSource of via het programma Cloud Solution Provider (CSP) met behulp van de portal voor commerciële Marketplace in micro soft Partner Center.
+title: Verwerkings feedback voor Azure apps-aanbieding in micro soft Commercial Marketplace
+description: Bekijk de feedback van de aanbieding voor Azure-apps in de Azure Marketplace, AppSource of via de portal voor de Cloud Solution Provider (CSP) met behulp van de commerciële Marketplace in het micro soft partner centrum.
 author: dsindona
 ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/11/2019
-ms.openlocfilehash: 3932f3fc71dc6427b6cdf93d3a7bc58534a9981c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 464f4d5434c8c0b8615e24eb1a323ae66a52273c
+ms.sourcegitcommit: 3beb067d5dc3d8895971b1bc18304e004b8a19b3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80279790"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82744876"
 ---
-# <a name="handling-review-feedback"></a>Beoordelingsfeedback verwerken
+# <a name="handling-review-feedback-for-azure-apps-offer-before-publishing-in-the-azure-marketplace"></a>Verwerkings feedback voor Azure apps bieden vóór publicatie in azure Marketplace
 
 In dit artikel wordt uitgelegd hoe u toegang krijgt tot de Azure DevOps-omgeving die wordt gebruikt door het Microsoft Azure Marketplace beoordelings team. Als er in uw Azure-toepassings aanbieding kritieke problemen zijn gevonden tijdens de stap van **micro soft Review** , kunt u zich aanmelden bij dit systeem om gedetailleerde informatie over deze problemen te bekijken (feedback beoordelen). Nadat u al deze problemen hebt opgelost, moet u uw aanbieding opnieuw verzenden om deze te kunnen publiceren op de Azure Marketplace. In het volgende diagram ziet u hoe dit feedback proces is gekoppeld aan het publicatie proces.
 

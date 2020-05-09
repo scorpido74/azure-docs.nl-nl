@@ -1,22 +1,17 @@
 ---
-title: 'Service-naar-service-verificatie: .NET SDK met Azure Data Lake Storage Gen1 met behulp van Azure Active Directory | Microsoft Docs'
+title: .NET-service-naar-service-verificatie-Data Lake Storage Gen1
 description: Meer informatie over het uitvoeren van service-to-service-verificatie met Azure Data Lake Storage Gen1 met behulp Azure Active Directory met behulp van .NET SDK
-services: data-lake-store
-documentationcenter: ''
 author: twooley
-manager: cgronlun
-editor: cgronlun
 ms.service: data-lake-store
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: 96c496ef67e26a3079577bf52e9d019d963467b8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: bac5fa95ca5ce4e289d4dd18cba9238da7b8a2e2
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79265530"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82691620"
 ---
 # <a name="service-to-service-authentication-with-azure-data-lake-storage-gen1-using-net-sdk"></a>Service-naar-service verificatie met Azure Data Lake Storage Gen1 met behulp van .NET SDK
 > [!div class="op_single_selector"]
