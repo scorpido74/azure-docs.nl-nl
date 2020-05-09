@@ -9,19 +9,16 @@ ms.author: magoedte
 ms.date: 04/16/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: d0801bb44fc0c08df1adee1f817e8fccab166fb5
-ms.sourcegitcommit: d662eda7c8eec2a5e131935d16c80f1cf298cb6b
-ms.translationtype: HT
+ms.openlocfilehash: 4c9e7b6d93fb4bbc3e3b05d9346ec84197665a55
+ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82652815"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "82995310"
 ---
-# <a name="troubleshoot-issues-with-azure-automation-state-configuration"></a>Problemen met de configuratie van de Azure Automation-status oplossen
+# <a name="troubleshoot-azure-automation-state-configuration-issues"></a>Configuratie problemen met Azure Automation status oplossen
 
 Dit artikel bevat informatie over het oplossen van problemen die zich voordoen tijdens het compileren of implementeren van configuraties in Azure Automation status configuratie.
-
->[!NOTE]
->Dit artikel is bijgewerkt voor het gebruik van de nieuwe Azure PowerShell Az-module. De AzureRM-module kan nog worden gebruikt en krijgt bugoplossingen tot ten minste december 2020. Zie voor meer informatie over de nieuwe Az-module en compatibiliteit met AzureRM [Introductie van de nieuwe Az-module van Azure PowerShell](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.5.0). Zie [de module Azure PowerShell installeren](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0)voor de installatie-instructies voor AZ module op uw Hybrid Runbook Worker. Voor uw Automation-account kunt u uw modules bijwerken naar de nieuwste versie door de stappen in de [Azure PowerShell-modules in azure Automation](../automation-update-azure-modules.md)bij te werken.
 
 ## <a name="diagnose-an-issue"></a>Een probleem vaststellen
 
@@ -112,7 +109,7 @@ VM has reported a failure when processing extension 'Microsoft.Powershell.DSC / 
 
 ### <a name="cause"></a>Oorzaak
 
-Dit probleem wordt veroorzaakt door een onjuist of verlopen certificaat. Zie het [verlopen en opnieuw registreren van certificaten](../automation-dsc-onboarding.md#re-registering-a-node).
+Dit probleem wordt veroorzaakt door een onjuist of verlopen certificaat. Zie [een knoop punt opnieuw registreren](../automation-dsc-onboarding.md#re-register-a-node).
 
 Dit probleem kan ook worden veroorzaakt door een proxy configuratie waarmee geen toegang tot ***. Azure-Automation.net**wordt toegestaan. Zie [configuratie van particuliere netwerken](../automation-dsc-overview.md#network-planning)voor meer informatie. 
 
@@ -239,11 +236,11 @@ U hebt een referentie in een configuratie gebruikt, maar u beschikt `Configurati
 
 Zorg ervoor dat de juiste `ConfigurationData` waarde wordt ingesteld `PSDscAllowPlainTextPassword` op True voor elke knooppunt configuratie die wordt vermeld in de configuratie. Zie [DSC-configuraties compileren in de configuratie van de Azure Automation-status](../automation-dsc-compile.md).
 
-## <a name="scenario-failure-processing-extension-error-when-onboarding-from-a-dsc-extension"></a><a name="failure-processing-extension"></a>Scenario: ' fout bij het verwerken van de extensie ' tijdens het voorbereiden van een DSC-uitbrei ding
+## <a name="scenario-failure-processing-extension-error-when-enabling-a-machine-from-a-dsc-extension"></a><a name="failure-processing-extension"></a>Scenario: ' fout bij het verwerken van de uitbrei ding ' bij het inschakelen van een machine vanuit een DSC-uitbrei ding
 
 ### <a name="issue"></a>Probleem
 
-Wanneer u een DSC-extensie gebruikt voor onboarding, treedt er een fout op die de fout bevat:
+Wanneer u een machine inschakelt met behulp van een DSC-extensie, treedt er een fout op die de fout bevat:
 
 ```error
 VM has reported a failure when processing extension 'Microsoft.Powershell.DSC'. Error message: \"DSC COnfiguration 'RegistrationMetaConfigV2' completed with error(s). Following are the first few: Registration of the Dsc Agent with the server <url> failed. The underlying error is: The attempt to register Dsc Agent with Agent Id <ID> with the server <url> return unexpected response code BadRequest. .\".
@@ -256,7 +253,7 @@ Deze fout treedt doorgaans op wanneer aan het knoop punt een naam voor de knoopp
 ### <a name="resolution"></a>Oplossing
 
 * Zorg ervoor dat u het knoop punt toewijst met een naam die exact overeenkomt met de naam in de service.
-* U kunt ervoor kiezen om de naam van de configuratie van het knoop punt niet op te stellen, wat resulteert in het onboarding van het knoop punt, maar geen knooppunt configuratie toewijst.
+* U kunt ervoor kiezen om de naam van de configuratie van het knoop punt niet op te maken, wat resulteert in het inschakelen van het knoop punt, maar geen knooppunt configuratie toewijst.
 
 ## <a name="scenario-one-or-more-errors-occurred-error-when-registering-a-node-by-using-powershell"></a><a name="cross-subscription"></a>Scenario: fout ' er zijn een of meer fouten opgetreden ' bij het registreren van een knoop punt met behulp van Power shell
 
@@ -274,10 +271,10 @@ Deze fout treedt op wanneer u een knoop punt probeert te registreren in een afzo
 
 ### <a name="resolution"></a>Oplossing
 
-Het knoop punt voor meerdere abonnementen behandelen alsof het is gedefinieerd voor een afzonderlijke Cloud, of on-premises. Registreer het knoop punt met behulp van een van deze opties voor onboarding:
+Het knoop punt voor meerdere abonnementen behandelen alsof het is gedefinieerd voor een afzonderlijke Cloud, of on-premises. Registreer het knoop punt met een van de volgende opties voor het inschakelen van computers:
 
-* Windows: [fysieke/virtuele Windows-machines on-premises of in een andere Cloud dan Azure/AWS](../automation-dsc-onboarding.md#onboarding-physicalvirtual-windows-machines).
-* Linux: [fysieke/virtuele Linux-machines on-premises of in een andere Cloud dan Azure](../automation-dsc-onboarding.md#onboarding-physicalvirtual-linux-machines).
+* Windows: [fysieke/virtuele Windows-machines on-premises of in een andere Cloud dan Azure/AWS](../automation-dsc-onboarding.md#enable-physicalvirtual-windows-machines).
+* Linux: [fysieke/virtuele Linux-machines on-premises of in een andere Cloud dan Azure](../automation-dsc-onboarding.md#enable-physicalvirtual-linux-machines).
 
 ## <a name="scenario-provisioning-has-failed-error-message"></a><a name="agent-has-a-problem"></a>Scenario: het inrichten is mislukt
 

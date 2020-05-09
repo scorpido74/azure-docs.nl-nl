@@ -9,18 +9,18 @@ ms.author: nibaccam
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 03/27/2020
-ms.openlocfilehash: a0d5bf795e4759a105b9a235770f37aa10bd6751
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 52716e070437dd7a6b3b880a5a7f3a4afafe8738
+ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80385543"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "82995018"
 ---
 # <a name="distributed-training-with-azure-machine-learning"></a>Gedistribueerde training met Azure Machine Learning
 
 In dit artikel vindt u meer informatie over gedistribueerde trainingen en hoe Azure Machine Learning deze ondersteunt voor diepe leer modellen. 
 
-In de gedistribueerde training wordt de werk belasting voor het trainen van een model opgesplitst en gedeeld met meerdere mini processors, die werk knooppunten worden genoemd. Deze worker-knoop punten werken parallel met het versnellen van model training. Gedistribueerde training kan worden gebruikt voor traditionele ML-modellen, maar is beter geschikt voor reken-en tijdrovende taken, zoals [diepe](concept-deep-learning-vs-machine-learning.md) training voor het trainen van diepe Neural-netwerken.
+In de gedistribueerde training wordt de werk belasting voor het trainen van een model opgesplitst en gedeeld met meerdere mini processors, die werk knooppunten worden genoemd. Deze worker-knoop punten werken parallel met het versnellen van model training. Gedistribueerde training kan worden gebruikt voor traditionele ML-modellen, maar is beter geschikt voor reken-en tijdrovende taken, zoals [diepe](concept-deep-learning-vs-machine-learning.md) training voor het trainen van diepe Neural-netwerken. 
 
 ## <a name="deep-learning-and-distributed-training"></a>Diep gaande lessen en gedistribueerde trainingen 
 
@@ -36,7 +36,9 @@ Voor ML-modellen waarvoor geen gedistribueerde training nodig is, raadpleegt u [
 
 Gegevens parallellisme is de eenvoudigste manier om de twee gedistribueerde trainings benaderingen te implementeren en is voldoende voor de meeste gebruiks scenario's.
 
-In deze benadering worden de gegevens onderverdeeld in partities, waarbij het aantal partities gelijk is aan het totale aantal beschik bare knoop punten in het berekenings cluster. Het model wordt in elk van deze worker-knoop punten gekopieerd en elke werk nemer werkt op een eigen subset van de gegevens. Houd er rekening mee dat elk knoop punt de capaciteit moet hebben voor de ondersteuning van het model dat wordt getraind. het model moet volledig op elk knoop punt passen.
+In deze benadering worden de gegevens onderverdeeld in partities, waarbij het aantal partities gelijk is aan het totale aantal beschik bare knoop punten in het berekenings cluster. Het model wordt in elk van deze worker-knoop punten gekopieerd en elke werk nemer werkt op een eigen subset van de gegevens. Houd er rekening mee dat elk knoop punt de capaciteit moet hebben voor de ondersteuning van het model dat wordt getraind. het model moet volledig op elk knoop punt passen. Het volgende diagram biedt een visuele demonstratie van deze benadering.
+
+![Data-parallellisme-concept diagram](./media/concept-distributed-training/distributed-training.svg)
 
 Elk knoop punt berekent onafhankelijk de fouten tussen de voor spellingen van de trainings voorbeelden en de gelabelde uitvoer. Elk knoop punt werkt op zijn beurt het model bij op basis van de fouten en moet alle wijzigingen door geven aan de andere knoop punten om de bijbehorende modellen bij te werken. Dit betekent dat de worker-knoop punten de model parameters, of verlopen, aan het einde van de batch berekening moeten synchroniseren om ervoor te zorgen dat ze een consistent model trainen. 
 
