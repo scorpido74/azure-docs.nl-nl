@@ -5,27 +5,27 @@ services: automation
 ms.subservice: change-inventory-management
 ms.date: 07/03/2018
 ms.topic: conceptual
-ms.openlocfilehash: 7dc218416e3b91998a6f06a62670ff8d2158d533
-ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
+ms.openlocfilehash: 8ca1bd7a724d3256bc2e171ce39fd6a06e2e5935
+ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82509130"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82779294"
 ---
 # <a name="manage-change-tracking-and-inventory"></a>Wijzigingen bijhouden en inventaris beheren
 
 Wanneer u een nieuw bestand of een nieuwe register sleutel toevoegt om bij te houden, Azure Automation deze optie inschakelen voor de functie [Wijzigingen bijhouden en inventaris](change-tracking.md) . Dit artikel bevat procedures voor het werken met deze functie.
 
-## <a name="enable-the-full-change-tracking-and-inventory-solution"></a>De volledige oplossing voor Wijzigingen bijhouden en inventaris inschakelen
+## <a name="enable-the-full-change-tracking-and-inventory-feature"></a>De functie volledige Wijzigingen bijhouden en inventaris inschakelen
 
-Als u [Azure Security Center FIM (File Integrity Monitoring)](https://docs.microsoft.com/azure/security-center/security-center-file-integrity-monitoring)hebt ingeschakeld, kunt u de volledige wijzigingen bijhouden-en inventaris oplossing gebruiken zoals hieronder wordt beschreven. Uw instellingen worden niet verwijderd door dit proces.
+Als u [FIM (File Integrity Monitoring) hebt Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-file-integrity-monitoring)ingeschakeld, kunt u de functie volledige wijzigingen bijhouden en inventaris gebruiken, zoals hieronder wordt beschreven. Uw instellingen worden niet verwijderd door dit proces.
 
 > [!NOTE]
-> Het inschakelen van de volledige Wijzigingen bijhouden-en voorraad oplossing kan extra kosten veroorzaken. Zie [prijzen voor Automation](https://azure.microsoft.com/pricing/details/automation/).
+> Het inschakelen van de functie volledige Wijzigingen bijhouden en inventarisatie kan extra kosten veroorzaken. Zie [prijzen voor Automation](https://azure.microsoft.com/pricing/details/automation/).
 
 1. Verwijder de bewakings oplossing door te navigeren naar de werk ruimte en te zoeken in de [lijst met geïnstalleerde bewakings oplossingen](../azure-monitor/insights/solutions.md#list-installed-monitoring-solutions).
 2. Klik op de naam van de oplossing om de overzichts pagina te openen en klik vervolgens op **verwijderen**, zoals beschreven in [een bewakings oplossing verwijderen](../azure-monitor/insights/solutions.md#remove-a-monitoring-solution).
-3. Als u de oplossing opnieuw wilt inschakelen, gaat u naar het Automation-account en selecteert u **Wijzigingen bijhouden** onder **configuratie beheer**.
+3. Als u Wijzigingen bijhouden en inventaris opnieuw wilt inschakelen, gaat u naar het Automation-account en selecteert u **Wijzigingen bijhouden** onder **configuratie beheer**.
 4. Kies de Log Analytics werk ruimte en het Automation-account, bevestig de instellingen van uw werk ruimte en klik op **inschakelen**.
 
 ## <a name="onboard-machines-to-change-tracking-and-inventory"></a><a name="onboard"></a>Computers onboarden naar Wijzigingen bijhouden en inventaris
