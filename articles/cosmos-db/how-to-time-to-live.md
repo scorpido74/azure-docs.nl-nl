@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 03/27/2020
 ms.author: anfeldma
-ms.openlocfilehash: 72653a3b28181316a2bf7dd7e73f2685c3afcf73
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3019e9f78a51a991d5c6e96655f5dbae1f224620
+ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80384259"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82869882"
 ---
 # <a name="configure-time-to-live-in-azure-cosmos-db"></a>Time to Live configureren in Azure Cosmos DB
 
@@ -49,7 +49,11 @@ Als u TTL wilt maken of inschakelen voor een container, raadpleegt u
 
 ## <a name="enable-time-to-live-on-a-container-using-sdk"></a>Time to Live inschakelen op een container met behulp van de SDK
 
-### <a name="net-sdk-v2-microsoftazuredocumentdb"></a><a id="dotnet-enable-noexpiry"></a>.NET SDK v2 (micro soft. Azure. DocumentDB)
+### <a name="net-sdk"></a><a id="dotnet-enable-noexpiry"></a>.NET-SDK
+
+# <a name="net-sdk-v2"></a>[.NET SDK V2](#tab/dotnetv2)
+
+.NET SDK v2 (micro soft. Azure. DocumentDB)
 
 ```csharp
 // Create a new container with TTL enabled and without any expiration value
@@ -63,7 +67,9 @@ DocumentCollection ttlEnabledCollection = await client.CreateDocumentCollectionA
     collectionDefinition);
 ```
 
-### <a name="net-sdk-v3-microsoftazurecosmos"></a><a id="dotnet-enable-noexpiry"></a>.NET SDK v3 (micro soft. Azure. Cosmos)
+# <a name="net-sdk-v3"></a>[.NET SDK V3](#tab/dotnetv3)
+
+.NET SDK v3 (micro soft. Azure. Cosmos)
 
 ```csharp
 // Create a new container with TTL enabled and without any expiration value
@@ -74,8 +80,13 @@ await client.GetDatabase("database").CreateContainerAsync(new ContainerPropertie
     DefaultTimeToLive = -1 //(never expire by default)
 });
 ```
+---
 
-### <a name="java-sdk-v4-maven-comazureazure-cosmos"></a><a id="java4-enable-noexpiry"></a>Java SDK v4 (maven com. Azure:: Azure-Cosmos)
+### <a name="java-sdk"></a><a id="java-enable-noexpiry"></a>Java-SDK
+
+# <a name="java-sdk-v4"></a>[Java SDK v4](#tab/javav4)
+
+Java SDK v4 (maven com. Azure:: Azure-Cosmos)
 
 ```java
 CosmosAsyncContainer container;
@@ -86,7 +97,9 @@ containerProperties.setDefaultTimeToLiveInSeconds(-1);
 container = database.createContainerIfNotExists(containerProperties, 400).block().getContainer();
 ```
 
-### <a name="java-sdk-v3-maven-commicrosoftazureazure-cosmos"></a><a id="java3-enable-noexpiry"></a>Java SDK v3 (maven com. micro soft. Azure:: Azure-Cosmos)
+# <a name="java-sdk-v3"></a>[Java SDK v3](#tab/javav3)
+
+Java SDK v3 (maven com. micro soft. Azure:: Azure-Cosmos)
 
 ```java
 CosmosContainer container;
@@ -96,12 +109,17 @@ CosmosContainerProperties containerProperties = new CosmosContainerProperties("m
 containerProperties.defaultTimeToLive(-1);
 container = database.createContainerIfNotExists(containerProperties, 400).block().container();
 ```
+---
 
 ## <a name="set-time-to-live-on-a-container-using-sdk"></a>Time to Live instellen op een container met behulp van de SDK
 
 Als u de Time to Live voor een container wilt instellen, dient u een positief getal (geen nul) op te geven die de tijd in seconden aangeeft. Op basis van de geconfigureerde TTL-waarde worden alle items in de container verwijderd na het laatste gewijzigde tijdstempel `_ts` van het item.
 
-### <a name="net-sdk-v2-microsoftazuredocumentdb"></a><a id="dotnet-enable-withexpiry"></a>.NET SDK v2 (micro soft. Azure. DocumentDB)
+### <a name="net-sdk"></a><a id="dotnet-enable-withexpiry"></a>.NET-SDK
+
+# <a name="net-sdk-v2"></a>[.NET SDK V2](#tab/dotnetv2)
+
+.NET SDK v2 (micro soft. Azure. DocumentDB)
 
 ```csharp
 // Create a new container with TTL enabled and a 90 day expiration
@@ -115,7 +133,9 @@ DocumentCollection ttlEnabledCollection = await client.CreateDocumentCollectionA
     collectionDefinition;
 ```
 
-### <a name="net-sdk-v3-microsoftazurecosmos"></a><a id="dotnet-enable-withexpiry"></a>.NET SDK v3 (micro soft. Azure. Cosmos)
+# <a name="net-sdk-v3"></a>[.NET SDK V3](#tab/dotnetv3)
+
+.NET SDK v3 (micro soft. Azure. Cosmos)
 
 ```csharp
 // Create a new container with TTL enabled and a 90 day expiration
@@ -126,6 +146,36 @@ await client.GetDatabase("database").CreateContainerAsync(new ContainerPropertie
     DefaultTimeToLive = 90 * 60 * 60 * 24; // expire all documents after 90 days
 });
 ```
+---
+
+### <a name="java-sdk"></a><a id="java-enable-defaultexpiry"></a>Java-SDK
+
+# <a name="java-sdk-v4"></a>[Java SDK v4](#tab/javav4)
+
+Java SDK v4 (maven com. Azure:: Azure-Cosmos)
+
+```java
+CosmosAsyncContainer container;
+
+// Create a new container with TTL enabled with default expiration value
+CosmosContainerProperties containerProperties = new CosmosContainerProperties("myContainer", "/myPartitionKey");
+containerProperties.setDefaultTimeToLiveInSeconds(90 * 60 * 60 * 24);
+container = database.createContainerIfNotExists(containerProperties, 400).block().getContainer();
+```
+
+# <a name="java-sdk-v3"></a>[Java SDK v3](#tab/javav3)
+
+Java SDK v3 (maven com. micro soft. Azure:: Azure-Cosmos)
+
+```java
+CosmosContainer container;
+
+// Create a new container with TTL enabled with default expiration value
+CosmosContainerProperties containerProperties = new CosmosContainerProperties("myContainer", "/myPartitionKey");
+containerProperties.defaultTimeToLive(90 * 60 * 60 * 24);
+container = database.createContainerIfNotExists(containerProperties, 400).block().container();
+```
+---
 
 ### <a name="nodejs-sdk"></a><a id="nodejs-enable-withexpiry"></a>NodeJS-SDK
 
@@ -139,28 +189,6 @@ async function createcontainerWithTTL(db: Database, containerDefinition: Contain
       containerDefinition.defaultTtl = defaultTtl;
       await db.containers.create(containerDefinition);
 }
-```
-
-### <a name="java-sdk-v4-maven-comazureazure-cosmos"></a><a id="java4-enable-defaultexpiry"></a>Java SDK v4 (maven com. Azure:: Azure-Cosmos)
-
-```java
-CosmosAsyncContainer container;
-
-// Create a new container with TTL enabled with default expiration value
-CosmosContainerProperties containerProperties = new CosmosContainerProperties("myContainer", "/myPartitionKey");
-containerProperties.setDefaultTimeToLiveInSeconds(90 * 60 * 60 * 24);
-container = database.createContainerIfNotExists(containerProperties, 400).block().getContainer();
-```
-
-### <a name="java-sdk-v3-maven-commicrosoftazureazure-cosmos"></a><a id="java3-enable-defaultexpiry"></a>Java SDK v3 (maven com. micro soft. Azure:: Azure-Cosmos)
-
-```java
-CosmosContainer container;
-
-// Create a new container with TTL enabled with default expiration value
-CosmosContainerProperties containerProperties = new CosmosContainerProperties("myContainer", "/myPartitionKey");
-containerProperties.defaultTimeToLive(90 * 60 * 60 * 24);
-container = database.createContainerIfNotExists(containerProperties, 400).block().container();
 ```
 
 ## <a name="set-time-to-live-on-an-item"></a>Geldigheidsduur voor een item instellen
@@ -240,7 +268,11 @@ const itemDefinition = {
         };
 ```
 
-### <a name="java-sdk-v4-maven-comazureazure-cosmos"></a><a id="java4-enable-itemexpiry"></a>Java SDK v4 (maven com. Azure:: Azure-Cosmos)
+### <a name="java-sdk"></a><a id="java-set-ttl-item"></a>Java-SDK
+
+# <a name="java-sdk-v4"></a>[Java SDK v4](#tab/javav4)
+
+Java SDK v4 (maven com. Azure:: Azure-Cosmos)
 
 ```java
 // Include a property that serializes to "ttl" in JSON
@@ -275,7 +307,9 @@ SalesOrder salesOrder = new SalesOrder(
 
 ```
 
-### <a name="java-sdk-v3-maven-commicrosoftazureazure-cosmos"></a><a id="java3-enable-itemexpiry"></a>Java SDK v3 (maven com. micro soft. Azure:: Azure-Cosmos)
+# <a name="java-sdk-v3"></a>[Java SDK v3](#tab/javav3)
+
+Java SDK v3 (maven com. micro soft. Azure:: Azure-Cosmos)
 
 ```java
 // Include a property that serializes to "ttl" in JSON
@@ -309,12 +343,17 @@ SalesOrder salesOrder = new SalesOrder(
 );
 
 ```
+---
 
 ## <a name="reset-time-to-live"></a>Time to Live opnieuw instellen
 
 U kunt Time to Live opnieuw voor een item instellen door een schrijf- of bijwerkbewerking voor het item uit te voeren. Met de schrijf- of bijwerkbewerking wordt `_ts` ingesteld op de huidige tijd en de TTL voor dat item begint van voren af aan. Als u de TTL van een item wilt wijzigen, kunt u het veld op dezelfde manier bijwerken als elk ander veld.
 
-### <a name="net-sdk-v2-microsoftazuredocumentdb"></a><a id="dotnet-extend-ttl-item"></a>.NET SDK v2 (micro soft. Azure. DocumentDB)
+### <a name="net-sdk"></a><a id="dotnet-extend-ttl-item"></a>.NET-SDK
+
+# <a name="net-sdk-v2"></a>[.NET SDK V2](#tab/dotnetv2)
+
+.NET SDK v2 (micro soft. Azure. DocumentDB)
 
 ```csharp
 // This examples leverages the Sales Order class above.
@@ -328,7 +367,9 @@ readDocument.ttl = 60 * 30 * 30; // update time to live
 response = await client.ReplaceDocumentAsync(readDocument);
 ```
 
-### <a name="net-sdk-v3-microsoftazurecosmos"></a><a id="dotnet-extend-ttl-item"></a>.NET SDK v3 (micro soft. Azure. Cosmos)
+# <a name="net-sdk-v3"></a>[.NET SDK V3](#tab/dotnetv3)
+
+.NET SDK v3 (micro soft. Azure. Cosmos)
 
 ```csharp
 // This examples leverages the Sales Order class above.
@@ -338,8 +379,13 @@ ItemResponse<SalesOrder> itemResponse = await client.GetContainer("database", "c
 itemResponse.Resource.ttl = 60 * 30 * 30; // update time to live
 await client.GetContainer("database", "container").ReplaceItemAsync(itemResponse.Resource, "SO05");
 ```
+---
 
-### <a name="java-sdk-v4-maven-comazureazure-cosmos"></a><a id="java4-enable-modifyitemexpiry"></a>Java SDK v4 (maven com. Azure:: Azure-Cosmos)
+### <a name="java-sdk"></a><a id="java-enable-modifyitemexpiry"></a>Java-SDK
+
+# <a name="java-sdk-v4"></a>[Java SDK v4](#tab/javav4)
+
+Java SDK v4 (maven com. Azure:: Azure-Cosmos)
 
 ```java
 // This examples leverages the Sales Order class above.
@@ -352,7 +398,9 @@ CosmosAsyncItemResponse<SalesOrder> itemResponse = container.readItem("SO05", ne
 }).block();
 ```
 
-### <a name="java-sdk-v3-maven-commicrosoftazureazure-cosmos"></a><a id="java3-enable-modifyitemexpiry"></a>Java SDK v3 (maven com. micro soft. Azure:: Azure-Cosmos)
+# <a name="java-sdk-v3"></a>[Java SDK v3](#tab/javav3)
+
+SDK v3 (maven com. micro soft. Azure:: Azure-Cosmos)
 
 ```java
 // This examples leverages the Sales Order class above.
@@ -369,12 +417,17 @@ container.getItem("SO05", new PartitionKey("CO18009186470")).read()
             return container.createItem(salesOrder);
 }).block();
 ```
+---
 
 ## <a name="turn-off-time-to-live"></a>Time to Live uitzetten
 
 Als Time to Live voor een item is ingesteld en u wilt dat item niet langer laten verlopen, dan haalt u dat item op, verwijdert u het TTL-veld en vervangt u het item op de server. Als het TTL-veld van het item wordt verwijderd, wordt de standaardwaarde van de TTL die aan de container is toegewezen, op het item toegepast. Stel de TTL-waarde in op -1 om te voorkomen dat een item verloopt en dat de TTL-waarde van de container wordt overgenomen.
 
-### <a name="net-sdk-v2-microsoftazuredocumentdb"></a><a id="dotnet-turn-off-ttl-item"></a>.NET SDK v2 (micro soft. Azure. DocumentDB)
+### <a name="net-sdk"></a><a id="dotnet-turn-off-ttl-item"></a>.NET-SDK
+
+# <a name="net-sdk-v2"></a>[.NET SDK V2](#tab/dotnetv2)
+
+.NET SDK v2 (micro soft. Azure. DocumentDB)
 
 ```csharp
 // This examples leverages the Sales Order class above.
@@ -389,7 +442,9 @@ readDocument.ttl = null; // inherit the default TTL of the container
 response = await client.ReplaceDocumentAsync(readDocument);
 ```
 
-### <a name="net-sdk-v3-microsoftazurecosmos"></a><a id="dotnet-turn-off-ttl-item"></a>.NET SDK v3 (micro soft. Azure. Cosmos)
+# <a name="net-sdk-v3"></a>[.NET SDK V3](#tab/dotnetv3)
+
+.NET SDK v3 (micro soft. Azure. Cosmos)
 
 ```csharp
 // This examples leverages the Sales Order class above.
@@ -399,8 +454,13 @@ ItemResponse<SalesOrder> itemResponse = await client.GetContainer("database", "c
 itemResponse.Resource.ttl = null; // inherit the default TTL of the container
 await client.GetContainer("database", "container").ReplaceItemAsync(itemResponse.Resource, "SO05");
 ```
+---
 
-### <a name="java-sdk-v4-maven-comazureazure-cosmos"></a><a id="java4-enable-itemdefaultexpiry"></a>Java SDK v4 (maven com. Azure:: Azure-Cosmos)
+### <a name="java-sdk"></a><a id="java-enable-itemdefaultexpiry"></a>Java-SDK
+
+# <a name="java-sdk-v4"></a>[Java SDK v4](#tab/javav4)
+
+Java SDK v4 (maven com. Azure:: Azure-Cosmos)
 
 ```java
 // This examples leverages the Sales Order class above.
@@ -413,7 +473,9 @@ CosmosAsyncItemResponse<SalesOrder> itemResponse = container.readItem("SO05", ne
 }).block();
 ```
 
-### <a name="java-sdk-v3-maven-commicrosoftazureazure-cosmos"></a><a id="java3-enable-itemdefaultexpiry"></a>Java SDK v3 (maven com. micro soft. Azure:: Azure-Cosmos)
+# <a name="java-sdk-v3"></a>[Java SDK v3](#tab/javav3)
+
+Java SDK v3 (maven com. micro soft. Azure:: Azure-Cosmos)
 
 ```java
 // This examples leverages the Sales Order class above.
@@ -430,12 +492,17 @@ container.getItem("SO05", new PartitionKey("CO18009186470")).read()
             return container.createItem(salesOrder);
 }).block();
 ```
+---
 
 ## <a name="disable-time-to-live"></a>Time to Live uitschakelen
 
 Als u Time to Live voor een container wilt uitschakelen en het achtergrondproces dat op verlopen items controleert, wilt stoppen, moet eigenschap `DefaultTimeToLive` op de container worden verwijderd. Het verwijderen van deze eigenschap is iets anders dan het instellen ervan op -1. Als u de eigenschap op -1 instelt, zullen nieuwe items die aan de container worden toegevoegd, nooit verlopen. U kunt deze waarde echter voor bepaalde items in de container overschrijven. Wanneer u de eigenschap TTL uit de container verwijdert, blijven de items nooit verlopen, zelfs als ze expliciet de vorige standaard TTL-waarde hebben overschreven.
 
-### <a name="net-sdk-v2-microsoftazuredocumentdb"></a><a id="dotnet-disable-ttl"></a>.NET SDK v2 (micro soft. Azure. DocumentDB)
+### <a name="net-sdk"></a><a id="dotnet-disable-ttl"></a>.NET-SDK
+
+# <a name="net-sdk-v2"></a>[.NET SDK V2](#tab/dotnetv2)
+
+.NET SDK v2 (micro soft. Azure. DocumentDB)
 
 ```csharp
 // Get the container, update DefaultTimeToLive to null
@@ -445,7 +512,9 @@ collection.DefaultTimeToLive = null;
 await client.ReplaceDocumentCollectionAsync(collection);
 ```
 
-### <a name="net-sdk-v3-microsoftazurecosmos"></a><a id="dotnet-disable-ttl"></a>.NET SDK v3 (micro soft. Azure. Cosmos)
+# <a name="net-sdk-v3"></a>[.NET SDK V3](#tab/dotnetv3)
+
+.NET SDK v3 (micro soft. Azure. Cosmos)
 
 ```csharp
 // Get the container, update DefaultTimeToLive to null
@@ -454,8 +523,13 @@ ContainerResponse containerResponse = await client.GetContainer("database", "con
 containerResponse.Resource.DefaultTimeToLive = null;
 await client.GetContainer("database", "container").ReplaceContainerAsync(containerResponse.Resource);
 ```
+---
 
-### <a name="java-sdk-v4-maven-comazureazure-cosmos"></a><a id="java4-enable-disableexpiry"></a>Java SDK v4 (maven com. Azure:: Azure-Cosmos)
+### <a name="java-sdk"></a><a id="java-enable-disableexpiry"></a>Java-SDK
+
+# <a name="java-sdk-v4"></a>[Java SDK v4](#tab/javav4)
+
+Java SDK v4 (maven com. Azure:: Azure-Cosmos)
 
 ```java
 CosmosContainerProperties containerProperties = new CosmosContainerProperties("myContainer", "/myPartitionKey");
@@ -465,7 +539,9 @@ containerProperties.setDefaultTimeToLiveInSeconds(null);
 container.replace(containerProperties).block();
 ```
 
-### <a name="java-sdk-v3-maven-commicrosoftazureazure-cosmos"></a><a id="java3-enable-disableexpiry"></a>Java SDK v3 (maven com. micro soft. Azure:: Azure-Cosmos)
+# <a name="java-sdk-v3"></a>[Java SDK v3](#tab/javav3)
+
+Java SDK v3 (maven com. micro soft. Azure:: Azure-Cosmos)
 
 ```java
 CosmosContainer container;
@@ -477,6 +553,7 @@ containerProperties.defaultTimeToLive(null);
 // Update container settings
 container = database.createContainerIfNotExists(containerProperties, 400).block().container();
 ```
+---
 
 ## <a name="next-steps"></a>Volgende stappen
 

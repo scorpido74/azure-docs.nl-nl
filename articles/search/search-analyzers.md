@@ -8,16 +8,21 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 12/10/2019
-ms.openlocfilehash: 2e4a6ab8825982969ffa4654c2418f7a9d168d2e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d7be56fa48887e2ee500f1b253c078bde16d91e6
+ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75460716"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82891236"
 ---
 # <a name="analyzers-for-text-processing-in-azure-cognitive-search"></a>Analyse functies voor tekst verwerking in azure Cognitive Search
 
 Een *Analyzer* is een onderdeel van de [Zoek machine voor volledige tekst](search-lucene-query-architecture.md) die verantwoordelijk is voor het verwerken van tekst in query reeksen en geïndexeerde documenten. Verschillende analyse functies bewerken tekst op verschillende manieren, afhankelijk van het scenario. Language analyzers verwerken tekst met taal kundige regels om de zoek kwaliteit te verbeteren, terwijl andere analyse functies meer basis taken uitvoeren, zoals het omzetten van tekens in kleine letters, bijvoorbeeld. 
+
+Het volgende video segment wordt snel doorgestuurd naar een uitleg over hoe tekst verwerking werkt in azure Cognitive Search.
+
+> [!VIDEO https://www.youtube.com/embed/Y_X6USgvB1g?version=3&start=132&end=189]
+
 
 Taal analyse functies worden het vaakst gebruikt en er is een standaardtaal analyse toegewezen aan elk Doorzoek bare veld in een Azure Cognitive Search-index. De volgende taal transformaties zijn gebruikelijk tijdens de analyse van tekst:
 

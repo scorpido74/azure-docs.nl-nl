@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 03/31/2020
-ms.openlocfilehash: 2760033cd66e99a7a7f6d331e03c6f98c486d286
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 93015da810f163a48529704e69e1747ac1aec401
+ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82231965"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82889401"
 ---
 # <a name="known-issues-and-troubleshooting-azure-machine-learning"></a>Bekende problemen en Azure Machine Learning voor probleem oplossing
 
@@ -39,7 +39,7 @@ Soms kan het nuttig zijn als u Diagnostische gegevens kunt opgeven wanneer u om 
 Meer informatie over de [resource quota](how-to-manage-quotas.md) die u kunt tegen komen bij het werken met Azure machine learning.
 
 ## <a name="installation-and-import"></a>Installatie en import
-
+                           
 * **PIP-installatie: afhankelijkheden zijn niet gegarandeerd consistent met de installatie van één regel**: 
 
    Dit is een bekende beperking van PIP, omdat er geen werkende afhankelijkheids conflict Oplosser is wanneer u als één regel installeert. De eerste unieke afhankelijkheid is de enige die er wordt weer gegeven. 
@@ -56,7 +56,29 @@ Meer informatie over de [resource quota](how-to-manage-quotas.md) die u kunt teg
         pip install azure-ml-datadrift
         pip install azureml-train-automl 
      ```
-
+     
+* **Het uitleg pakket wordt niet guarateed geïnstalleerd tijdens de installatie van de azureml-Train-automl-client:** 
+   
+   Wanneer u een externe automl uitvoert met model uitleg is ingeschakeld, wordt er een fout bericht weer gegeven met de tekst ' "Installeer het pakket voor azureml-uitleg-model voor de beschrijving van het model '. Dit is een bekend probleem en als tijdelijke oplossing volgt u een van de onderstaande stappen:
+  
+  1. Installeer het model voor azureml-uitleg-lokaal.
+   ```
+      pip install azureml-explain-model
+   ```
+  2. Schakel de uitleg functie volledig uit door model_explainability = False door te geven in de configuratie van automl.
+   ```
+      automl_config = AutoMLConfig(task = 'classification',
+                             path = '.',
+                             debug_log = 'automated_ml_errors.log',
+                             compute_target = compute_target,
+                             run_configuration = aml_run_config,
+                             featurization = 'auto',
+                             model_explainability=False,
+                             training_data = prepped_data,
+                             label_column_name = 'Survived',
+                             **automl_settings)
+    ``` 
+    
 * **Panda-fouten: normaal gezien tijdens het AutoML-experiment:**
    
    Wanneer u uw environmnet hand matig instelt met behulp van PIP, ziet u kenmerk fouten (met name van Panda), omdat er niet-ondersteunde pakket versies worden geïnstalleerd. Als u dergelijke fouten wilt voor komen, [installeert u de AUTOML SDK met behulp van de automl_setup. cmd](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/README.md):

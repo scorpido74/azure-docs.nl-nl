@@ -8,21 +8,22 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 03/16/2020
+ms.date: 04/29/2020
 ms.custom: seodec18
-ms.openlocfilehash: 648578563a0e53d3ed5bda6ab47f85c3c6a2a24e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1487cbb7885711beca969604316fd151defb114a
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79476651"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82580599"
 ---
 # <a name="time-series-model-in-azure-time-series-insights-preview"></a>Time Series-model in Azure Time Series Insights preview
 
 In dit artikel wordt beschreven hoe u een tijdreeks model, de mogelijkheden en het maken en bijwerken van uw eigen modellen in de Azure Time Series Insights voorbeeld omgeving kunt beginnen.
 
 > [!TIP]
->  * Ga naar de [Contoso wikkeling-Farm demo](https://insights.timeseries.azure.com/preview/samples) omgeving voor een live time series model-voor beeld.
+>
+> * Ga naar de [Contoso wikkeling-Farm demo](https://insights.timeseries.azure.com/preview/samples) omgeving voor een live time series model-voor beeld.
 > * Meer informatie over de [Azure time series Insights preview Explorer](time-series-insights-update-explorer.md) om te leren hoe u kunt navigeren in de gebruikers interface van uw tijd reeks model.
 > * Meer informatie [over het werken met een time series-model](time-series-insights-update-how-to-tsm.md) met behulp van de time series Insights Web Explorer.
 
@@ -51,9 +52,9 @@ Deze beperkingen onthulden het belang van slimme gegevens aggregatie en visualis
 
 [![Voor beeld van een Smart oven voor time series model](media/v2-update-tsm/time-series-model-smart-oven.png)](media/v2-update-tsm/time-series-model-smart-oven.png#lightbox)
 
-* Time Series-model speelt een cruciale rol in query's en navigatie, omdat deze gegevens contextualizes, doordat er vergelijkingen kunnen worden gemaakt over Peri Oden en tussen sensor-en apparaattypen. (**A**) 
+* Time Series-model speelt een cruciale rol in query's en navigatie, omdat deze gegevens contextualizes, doordat er vergelijkingen kunnen worden gemaakt over Peri Oden en tussen sensor-en apparaattypen. (**A**)
 * Gegevens worden nader gecontextd, omdat de gegevens die in het tijdreeks model worden bewaard, de tijdreeks query berekeningen als variabelen behouden en ze opnieuw gebruiken op het moment van de query.
-* Met de time series-model worden gegevens ingedeeld en geaggregeerd voor verbeterde visualisatie-en beheer mogelijkheden. (**B**) 
+* Met de time series-model worden gegevens ingedeeld en geaggregeerd voor verbeterde visualisatie-en beheer mogelijkheden. (**B**)
 
 ### <a name="key-capabilities"></a>Belangrijkste mogelijkheden
 
@@ -290,7 +291,7 @@ Time Series Insights typen kunnen veel variabelen hebben waarmee formule-en reke
 
 Elke variabele kan een van de volgende drie *typen*zijn: *numeric*, *categorische*en *aggregatie*.
 
-* **Numerieke** soorten werken met doorlopende waarden. 
+* **Numerieke** soorten werken met doorlopende waarden.
 * **Categorische** -soorten werken met een gedefinieerde set discrete waarden.
 * **Aggregatie** waarden combi neren meerdere variabelen van één soort (ofwel alle numerieke of alle categorische).
 

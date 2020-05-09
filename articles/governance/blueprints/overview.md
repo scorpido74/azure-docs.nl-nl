@@ -1,18 +1,18 @@
 ---
 title: Overzicht van Azure Blueprints
 description: Meer informatie over hoe u met de Azure-service voor blauw drukken artefacten kunt maken, definiëren en implementeren in uw Azure-omgeving.
-ms.date: 11/21/2019
+ms.date: 05/06/2020
 ms.topic: overview
-ms.openlocfilehash: 4787f2d559daffcbf5d4057ac381f0f7e1ae0c57
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 68baeb8030caa17a9880cb0846688f1db6a15c87
+ms.sourcegitcommit: 602e6db62069d568a91981a1117244ffd757f1c2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80677419"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82864501"
 ---
 # <a name="what-is-azure-blueprints"></a>Wat is Azure Blueprints?
 
-Net zoals een blauwdruk het een ingenieur of architect mogelijk maakt om de ontwerpparameters voor een project te schetsen, stelt Azure Blueprints cloudarchitecten en centrale IT-groepen in staat om een ​​herhaalbare set Azure-resources te definiëren die voldoet aan de normen, patronen en vereisten van een organisatie en deze implementeert. Met Azure Blueprints kunnen ontwikkelteams snel nieuwe omgevingen bouwen en instellen in het volste vertrouwen dat ze voldoen aan de vereisten van de organisatie, met een set ingebouwde componenten, zoals netwerken, om de ontwikkeling en levering te versnellen.
+Net zoals een blauwdruk het een ingenieur of architect mogelijk maakt om de ontwerpparameters voor een project te schetsen, stelt Azure Blueprints cloudarchitecten en centrale IT-groepen in staat om een ​​herhaalbare set Azure-resources te definiëren die voldoet aan de normen, patronen en vereisten van een organisatie en deze implementeert. Met Azure-blauw drukken kunnen ontwikkel teams snel nieuwe omgevingen bouwen en maken met vertrouwen die ze bouwen binnen de organisatie naleving met een reeks ingebouwde onderdelen, zoals netwerken, om de ontwikkeling en levering te versnellen.
 
 Blauwdrukken zijn een declaratieve manier om de implementatie van diverse resourcesjablonen en andere artefacten te orkestreren, zoals:
 
@@ -21,12 +21,11 @@ Blauwdrukken zijn een declaratieve manier om de implementatie van diverse resour
 - Azure Resource Manager-sjablonen
 - Resourcegroepen
 
-De Azure Blueprints-service wordt gesteund door de wereldwijd gedistribueerde [Azure Cosmos DB](../../cosmos-db/introduction.md).
-Blauwdrukobjecten worden naar meerdere Azure-regio's gerepliceerd. Deze replicatie biedt een lage latentie, hoge Beschik baarheid en consistente toegang tot uw Blue-objecten, ongeacht in welke regio Azure-blauw drukken uw resources implementeert.
+De Azure Blueprints-service wordt gesteund door de wereldwijd gedistribueerde [Azure Cosmos DB](../../cosmos-db/introduction.md). Blauwdrukobjecten worden naar meerdere Azure-regio's gerepliceerd. Deze replicatie biedt een lage latentie, hoge Beschik baarheid en consistente toegang tot uw Blue-objecten, ongeacht in welke regio Azure-blauw drukken uw resources implementeert.
 
 ## <a name="how-its-different-from-resource-manager-templates"></a>Waarin verschilt het van Resource Manager-sjablonen?
 
-De service is ontworpen om u te helpen met de _setup van de omgeving_. Deze setup bestaat vaak uit een set resourcegroepen, beleidsmaatregelen, roltoewijzingen en Resource Manager-sjabloonimplementaties. Een blauwdruk is een pakket waarmee al deze _artefact_typen bij elkaar worden gebracht en u in staat wordt gesteld om dat pakket samen te stellen en versies ervan te beheren – ook via een CI/CD-pijplijn. Uiteindelijk wordt elke blauwdruk toegewezen aan een abonnement in één bewerking die kan worden gecontroleerd en bijgehouden.
+De service is ontworpen om u te helpen met de _setup van de omgeving_. Deze setup bestaat vaak uit een set resourcegroepen, beleidsmaatregelen, roltoewijzingen en Resource Manager-sjabloonimplementaties. Een blauw druk is een pakket dat elk van deze _artefact_ typen samenbrengt en u in staat stelt dat pakket samen te stellen en te maken, met inbegrip van een CI/cd-pijp lijn. Uiteindelijk wordt elke blauwdruk toegewezen aan een abonnement in één bewerking die kan worden gecontroleerd en bijgehouden.
 
 Bijna alles dat u wilt opnemen voor de implementatie in azure-blauw drukken kan worden uitgevoerd met een resource manager-sjabloon. Een Resource Manager-sjabloon is echter een document dat niet in Azure zelf bestaat. Elke sjabloon wordt lokaal of in broncodebeheer opgeslagen. De sjabloon wordt gebruikt voor de implementatie van een of meer Azure-resources, maar zodra die resources zijn geïmplementeerd, is er geen actieve verbinding of relatie meer met de sjabloon.
 

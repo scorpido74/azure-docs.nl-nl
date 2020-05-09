@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 04/28/2019
+ms.date: 05/07/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 1f7be4d01dd930e9ff421b2a163f1648f1793da9
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: ea8c40faad4ee709ae98f868e36fd42e46501bea
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82230910"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82927034"
 ---
 # <a name="azure-ad-b2c-session"></a>Azure AD B2C sessie
 
@@ -99,22 +99,20 @@ Bij een afmeldings aanvraag Azure AD B2C:
    - SAML: als de meta gegevens van de identiteits provider de `SingleLogoutService` locatie bevatten.
 1. U kunt zich optioneel afmelden bij andere toepassingen. Zie de sectie voor [eenmalige afmelding](#single-sign-out) voor meer informatie.
 
-> [!NOTE]
-> Met de afmelding wordt de status voor eenmalige aanmelding van de gebruiker met Azure AD B2C gewist, maar de gebruiker kan de gebruikers naam niet van de provider sessie van de sociale id ondertekenen. Als de gebruiker tijdens een volgende aanmelding dezelfde id-provider selecteert, kunnen ze opnieuw worden geverifieerd zonder hun referenties in te voeren. Als een gebruiker zich wil afmelden bij de toepassing, betekent dit niet noodzakelijkerwijs dat ze zich willen afmelden bij hun Facebook-account. Als lokale accounts echter worden gebruikt, wordt de sessie van de gebruiker op de juiste wijze beëindigd.
+Met de afmelding wordt de status voor eenmalige aanmelding van de gebruiker met Azure AD B2C gewist, maar de gebruiker kan de gebruikers naam niet van de provider sessie van de sociale id ondertekenen. Als de gebruiker tijdens een volgende aanmelding dezelfde id-provider selecteert, kunnen ze opnieuw worden geverifieerd zonder hun referenties in te voeren. Als een gebruiker zich wil afmelden bij de toepassing, betekent dit niet noodzakelijkerwijs dat ze zich willen afmelden bij hun Facebook-account. Als lokale accounts echter worden gebruikt, wordt de sessie van de gebruiker op de juiste wijze beëindigd.
 
-### <a name="single-sign-out"></a>Eenmalige afmelding
+### <a name="single-sign-out"></a>Eenmalige afmelding 
+
+
+> [!NOTE]
+> Deze functie is beperkt tot [aangepast beleid](custom-policy-overview.md).
 
 Wanneer u de gebruiker omleidt naar het eind punt van de Azure AD B2C-afmelding (voor zowel OAuth2-als SAML-protocollen), Azure AD B2C de gebruikers sessie wissen uit de browser. De gebruiker kan echter nog steeds zijn aangemeld bij andere toepassingen die Azure AD B2C voor verificatie gebruiken. Om ervoor te zorgen dat deze toepassingen de gebruiker tegelijk kunnen ondertekenen, stuurt Azure AD B2C een HTTP GET-aanvraag `LogoutUrl` naar de registratie van alle toepassingen waarbij de gebruiker momenteel is aangemeld.
 
-Toepassingen moeten reageren op deze aanvraag door een wille keurige sessie te wissen waarmee de `200` gebruiker wordt geïdentificeerd en een antwoord wordt geretourneerd. Als u eenmalige afmelding in uw toepassing wilt ondersteunen, moet u een `LogoutUrl` in de code van uw toepassing implementeren. U kunt de `LogoutUrl` van de Azure Portal instellen:
 
-1. Navigeer naar het [Azure Portal](https://portal.azure.com).
-1. Kies uw Active B2C-Directory door te klikken op uw account in de rechter bovenhoek van de pagina.
-1. Kies in het navigatie paneel aan de linkerkant **Azure AD B2C**, selecteer **app-registraties**en selecteer vervolgens uw toepassing.
-1. Selecteer **instellingen**, selecteer **Eigenschappen**en zoek het tekstvak **afmeldings-URL** . 
-
+Toepassingen moeten reageren op deze aanvraag door een wille keurige sessie te wissen waarmee de `200` gebruiker wordt geïdentificeerd en een antwoord wordt geretourneerd. Als u eenmalige afmelding in uw toepassing wilt ondersteunen, moet u een `LogoutUrl` in de code van uw toepassing implementeren. 
 
 ## <a name="next-steps"></a>Volgende stappen
 
 - Meer informatie over het [configureren van het gedrag van sessies in de gebruikers stroom](session-behavior.md).
-- Meer informatie over het [configureren van het gedrag van sessies in een aangepast beleid](custom-policy-manage-sso-and-token-config.md#session-behavior-and-sso).
+- Meer informatie over het [configureren van het gedrag van sessies in aangepaste beleids regels](session-behavior-custom-policy.md).

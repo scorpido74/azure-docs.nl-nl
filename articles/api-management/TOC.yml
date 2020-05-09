@@ -53,6 +53,8 @@
           href: api-management-policies.md
     - name: Beveiliging
       items:
+        - name: Beveiligingsbasislijn
+          href: security-baseline.md
         - name: Ingebouwde beveiligingsmaatregelen
           href: api-management-security-controls.md
     - name: Abonnementen
@@ -101,10 +103,12 @@
           href: api-management-howto-deploy-multi-region.md
         - name: Een zelf-hostende gateway inrichten
           href: api-management-howto-provision-self-hosted-gateway.md
+        - name: Een zelf-hostende gateway implementeren op Azure Kubernetes Service
+          href: how-to-deploy-self-hosted-gateway-azure-kubernetes-service.md
         - name: Een zelf-hostende gateway implementeren op Kubernetes
-          href: api-management-howto-deploy-self-hosted-gateway-to-k8s.md
+          href: how-to-deploy-self-hosted-gateway-kubernetes.md
         - name: Een zelf-hostende gateway implementeren op Docker
-          href: api-management-howto-deploy-self-hosted-gateway-to-docker.md
+          href: how-to-deploy-self-hosted-gateway-docker.md
         - name: Aangepast domein configureren voor zelf-hostende gateway
           href: api-management-howto-configure-custom-domain-gateway.md
     - name: Cache
@@ -209,12 +213,20 @@
           href: api-management-transformation-policies.md
     - name: Beheren tijdens productie
       items:
+        - name: API's exporteren naar Power Platform
+          href: export-api-power-platform.md
         - name: Groepen beheren
           href: api-management-howto-create-groups.md
         - name: IP-adressen ophalen
           href: api-management-howto-ip-addresses.md
         - name: Gebeurtenissen registreren bij Azure Event Hubs
           href: api-management-howto-log-event-hubs.md
+        - name: Aanvragen registreren met Azure Application Insights
+          href: api-management-howto-app-insights.md
+        - name: Metrische gegevens en logboeken voor de cloud configureren voor zelf-hostende gateway
+          href: how-to-configure-cloud-metrics-logs.md
+        - name: Lokale metrische gegevens en logboeken voor zelf-hostende gateway configureren
+          href: how-to-configure-local-metrics-logs.md
         - name: Aanvragen registreren met Azure Application Insights
           href: api-management-howto-app-insights.md
         - name: DR instellen met back-up/herstellen
@@ -245,7 +257,7 @@
       href: /rest/api/apimanagement/ApiManagementREST/api-management-REST
     - name: Resource Manager-sjabloon
       href: /azure/templates/microsoft.apimanagement/allversions
-- name: Bronnen
+- name: Resources
   items:
     - name: Veelgestelde vragen
       href: api-management-faq.md

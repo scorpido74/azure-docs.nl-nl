@@ -9,12 +9,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 05/04/2020
 ms.author: sstein
-ms.openlocfilehash: aa8d1634c015f338053a4d167db34ef0b5a83505
-ms.sourcegitcommit: c8a0fbfa74ef7d1fd4d5b2f88521c5b619eb25f8
-ms.translationtype: HT
+ms.openlocfilehash: 2d89320b4e5237017b51d19495c60c03ce6288f7
+ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
+ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 05/05/2020
-ms.locfileid: "82801685"
+ms.locfileid: "82838481"
 ---
 # <a name="sql-database-release-notes"></a>Opmerkingen bij de release SQL Database
 
@@ -93,12 +93,12 @@ De volgende functies zijn ingeschakeld in het implementatie model voor beheerde 
 |[@queryde para meter wordt niet ondersteund in sp_send_db_mail](#-parameter-not-supported-in-sp_send_db_mail)|Apr 2019|Geen tijdelijke oplossing| |
 |[Transactionele replicatie moet opnieuw worden geconfigureerd na geo-failover](#transactional-replication-must-be-reconfigured-after-geo-failover)|Mrt 2019|Geen tijdelijke oplossing| |
 |[Er wordt een tijdelijke data base gebruikt tijdens de herstel bewerking](#temporary-database-is-used-during-restore-operation)||Heeft tijdelijke oplossing| |
-|[TEMPDB-structuur en-inhoud worden opnieuw gemaakt](#tempdb-structure-and-content-is-re-created)||Geen tijdelijke oplossing| |
-|[Opslag ruimte overschrijden met kleine database bestanden](#exceeding-storage-space-with-small-database-files)||Heeft tijdelijke oplossing| |
-|[GUID-waarden die worden weer gegeven in plaats van database namen](#guid-values-shown-instead-of-database-names)||Heeft tijdelijke oplossing| |
+|[TEMPDB-structuur en-inhoud worden opnieuw gemaakt](#tempdb-structure-and-content-is-re-created)| |Geen tijdelijke oplossing| |
+|[Opslag ruimte overschrijden met kleine database bestanden](#exceeding-storage-space-with-small-database-files)| |Heeft tijdelijke oplossing| |
+|[GUID-waarden die worden weer gegeven in plaats van database namen](#guid-values-shown-instead-of-database-names) ||Heeft tijdelijke oplossing| |
 |[Fouten logboeken zijn niet persistent gemaakt](#error-logs-arent-persisted)||Geen tijdelijke oplossing| |
-|[Het transactie bereik van twee data bases binnen hetzelfde exemplaar wordt niet ondersteund](#transaction-scope-on-two-databases-within-the-same-instance-isnt-supported)||Heeft tijdelijke oplossing|Mrt 2020|
-|[CLR-modules en gekoppelde servers kunnen soms niet verwijzen naar een lokaal IP-adres](#clr-modules-and-linked-servers-sometimes-cant-reference-a-local-ip-address)||Heeft tijdelijke oplossing| |
+|[CLR-modules en gekoppelde servers kunnen soms niet verwijzen naar een lokaal IP-adres](#clr-modules-and-linked-servers-sometimes-cant-reference-a-local-ip-address)| |Heeft tijdelijke oplossing| |
+|[Het transactie bereik van twee data bases binnen hetzelfde exemplaar wordt niet ondersteund](#transaction-scope-on-two-databases-within-the-same-instance-isnt-supported)| |Opgelost|Mrt 2020|
 |Consistentie van de data base is niet geverifieerd met DBCC CHECKDB na het herstellen van de data base van Azure Blob Storage.| |Opgelost|Nov 2019|
 |Het terugzetten van een tijdgebonden data base van Bedrijfskritiek laag naar Algemeen laag mislukt als de bron database in-memory OLTP-objecten bevat.| |Opgelost|Okt 2019|
 |Database Mail functie met externe e-mail servers (niet-Azure) via een beveiligde verbinding| |Opgelost|Okt 2019|

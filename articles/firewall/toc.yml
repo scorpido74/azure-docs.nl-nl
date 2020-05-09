@@ -23,6 +23,9 @@
     - name: Implementeren met meerdere adressen
       displayName: Resource Manager
       href: quick-create-multiple-ip-template.md
+    - name: Implementeren met beschikbaarheidszones
+      displayName: Resource Manager
+      href: deploy-template.md
 - name: Voorbeelden
   items:
     - name: Azure PowerShell
@@ -61,8 +64,6 @@
       href: tutorial-hybrid-ps.md
     - name: Implementeren met behulp van Azure CLI
       href: deploy-cli.md
-    - name: Implementeren met behulp van een sjabloon
-      href: deploy-template.md
     - name: Implementeren met meerdere openbare IP-adressen
       href: deploy-multi-public-ip-powershell.md
     - name: Implementeren met beschikbaarheidszones
@@ -75,6 +76,8 @@
       href: snat-private-range.md
     - name: IP-groepen maken
       href: create-ip-group.md
+    - name: Windows Virtual Desktop beschermen
+      href: protect-windows-virtual-desktop.md
 - name: Naslaginformatie
   items:
     - name: Azure CLI

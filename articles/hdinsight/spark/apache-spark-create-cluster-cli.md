@@ -7,16 +7,18 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: quickstart
 ms.date: 02/03/2020
-ms.openlocfilehash: e4679d5a04be7b8c0145fd93818e4187170b4194
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 02113988c76dd2565c7109c2ac18c3d1287189db
+ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77049687"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82891130"
 ---
 # <a name="quickstart-create-apache-spark-cluster-in-azure-hdinsight-using-azure-cli"></a>Snelstartgids: Apache Spark cluster maken in azure HDInsight met behulp van Azure CLI
 
 In deze Quick Start leert u hoe u een Apache Spark cluster maakt in azure HDInsight met behulp van de Azure-opdracht regel interface (CLI). Azure HDInsight is een beheerde, zeer uitgebreide open-source analyseservice voor bedrijven. Met het Apache Spark-Framework voor HDInsight kunt u snel gegevens analyses en cluster computing gebruiken met in-Memory verwerking. De Azure CLI is de platformoverschrijdende opdrachtregelervaring van Microsoft voor het beheren van Azure-resources.
+
+Als u meerdere clusters tegelijk gebruikt, wilt u een virtueel netwerk maken. Als u een Spark-cluster gebruikt, wilt u ook de Hive-Warehouse connector gebruiken. Zie voor meer informatie [een virtueel netwerk voor Azure HDInsight plannen](../hdinsight-plan-virtual-network-deployment.md) en [Apache Spark en Apache Hive integreren met de Hive-Warehouse connector](../interactive-query/apache-hive-warehouse-connector.md).
 
 ## <a name="prerequisites"></a>Vereisten
 
