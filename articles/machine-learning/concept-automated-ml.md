@@ -10,12 +10,12 @@ ms.reviewer: jmartens
 author: cartacioS
 ms.author: sacartac
 ms.date: 04/22/2020
-ms.openlocfilehash: f592a7f5a4af38988bcf433f0adc89d9be7579cb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ce51a1b25453a5bbacbd268b37f2bd21cfe37fea
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82082006"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82983462"
 ---
 # <a name="what-is-automated-machine-learning-automl"></a>Wat is geautomatiseerde machine learning (AutoML)?
 
@@ -130,11 +130,72 @@ Er zijn ook aanvullende geavanceerde preverwerkings-en parametrisatie beschikbaa
 
 + Python-SDK: `"feauturization": 'auto' / 'off' / 'FeaturizationConfig'` opgeven voor de [ `AutoMLConfig` klasse](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig). 
 
+
+
+## <a name="ensemble-models"></a><a name="ensemble"></a>Ensemble-modellen
+
+Automatische machine learning ondersteunt ensemble-modellen die standaard zijn ingeschakeld. Ensemble Learning verbetert de machine learning resultaten en voorspellende prestaties door het combi neren van meerdere modellen, in tegens telling tot het gebruik van één model. De ensembles herhalingen worden weer gegeven als de laatste herhalingen van de uitvoering. Automatische machine learning maakt gebruik van zowel stem-als gestapelde ensemble-methoden voor het combi neren van modellen:
+
+* **Stem**: voor speld op basis van het gewogen gemiddelde van voorspelde klasse-kansen (voor classificatie taken) of voorspelde regressie doelen (voor regressie taken).
+* **Stapelen**: stacking combineert heterogene-modellen en treinen een meta model op basis van de uitvoer van de afzonderlijke modellen. De huidige standaard-META modellen zijn LogisticRegression voor classificatie taken en ElasticNet voor regressie-en prognose taken.
+
+Het [selectie algoritme van Caruana ensemble](http://www.niculescu-mizil.org/papers/shotgun.icml04.revised.rev2.pdf) met gesorteerde ensemble-initialisatie wordt gebruikt om te bepalen welke modellen er moeten worden gebruikt in de ensemble. Op hoog niveau initialiseert dit algoritme de ensemble met Maxi maal vijf modellen met de beste afzonderlijke scores en verifieert dat deze modellen binnen 5% drempelwaarde van de beste score zijn om een slechte initiële ensemble te voor komen. Vervolgens wordt voor elke ensemble-iteratie een nieuw model toegevoegd aan de bestaande ensemble en wordt de resulterende score berekend. Als een nieuw model de bestaande ensemble-score heeft verbeterd, wordt de ensemble bijgewerkt met het nieuwe model.
+
+Zie de [procedure](how-to-configure-auto-train.md#ensemble) voor het wijzigen van standaard-ensemble-instellingen in automatische machine learning.
+
+## <a name="guidance-on-local-vs-remote-managed-ml-compute-targets"></a><a name="local-remote"></a>Richt lijnen voor lokale versus extern beheerde ML Compute-doelen
+
+De webinterface voor automatische ML maakt altijd gebruik van een extern [Compute-doel](concept-compute-target.md).  Maar wanneer u de python-SDK gebruikt, kiest u een lokale Compute of een extern Compute-doel voor de automatische ML-training.
+
+* **Lokale Compute**: training vindt plaats op de computer van uw lokale laptop of virtuele machine. 
+* **Externe Compute**: training vindt plaats op machine learning compute-clusters.  
+
+### <a name="choose-compute-target"></a>Reken doel kiezen
+Houd rekening met deze factoren bij het kiezen van het berekenings doel:
+
+ * **Kies een lokale Compute**: als uw scenario wordt gebruikt voor initiële onderzoeken of demo's met behulp van kleine gegevens en korte treinen (d.w.z. seconden of een paar minuten per onderliggend item), kan de training op uw lokale computer een betere keuze zijn.  Er is geen instel tijd, de infrastructuur resources (uw PC of virtuele machine) zijn direct beschikbaar.
+ * **Kies een Remote ml Compute-Cluster**: als u training hebt met grotere gegevens sets, zoals in productie training, modellen maken die langere treinen nodig hebben, biedt externe Compute veel betere end- `AutoML` to-end tijd prestaties, omdat parallelliseren-treinen worden verdeeld over de knoop punten van het cluster. Op een externe Compute wordt de start tijd voor de interne infra structuur ongeveer 1,5 minuten per onderliggende uitvoering toegevoegd, plus extra minuten voor de cluster infrastructuur als de virtuele machines nog niet actief zijn.
+
+### <a name="pros-and-cons"></a>Voor-en nadelen
+Houd rekening met deze voor delen en nadelen bij het kiezen van lokaal versus extern.
+
+|  | Professionals (voor delen)  |Nadelen (handicaps)  |
+|---------|---------|---------|---------|
+|**Lokaal Compute-doel** |  <li> Geen omgevings start tijd   | <li>  Subset van functies<li>  Kan parallelliseren niet uitvoeren <li> Erger voor grote gegevens. <li>Geen gegevens streaming tijdens training <li>  Geen DNN-parametrisatie <li> Alleen python SDK |
+|**Remote ML compute-clusters**|  <li> Volledige set functies <li> Parallelliseren onderliggende uitvoeringen <li>   Ondersteuning voor grote gegevens<li>  Op DNN gebaseerde parametrisatie <li>  Dynamische schaal baarheid van berekenings cluster op aanvraag <li> Er is ook geen code-ervaring (Web-UI) beschikbaar  |  <li> Start tijd voor cluster knooppunten <li> Start tijd voor elke onderliggende uitvoering    |
+
+### <a name="feature-availability"></a>Beschikbaarheid van functies 
+
+ Meer functies zijn beschikbaar wanneer u de externe Compute gebruikt, zoals wordt weer gegeven in de volgende tabel. Sommige van deze functies zijn alleen beschikbaar in een bedrijfs werkruimte.
+
+| Onderdeel                                                    | Externe | Lokaal | Nodig <br>Enter prise-werk ruimte |
+|------------------------------------------------------------|--------|-------|-------------------------------|
+| Gegevens streaming (ondersteuning voor grote gegevens, Maxi maal 100 GB)          | ✓      |       | ✓                             |
+| DNN: op BERT gebaseerde tekst parametrisatie en training             | ✓      |       | ✓                             |
+| Out-of-the-box GPU-ondersteuning (training en interferentie)        | ✓      |       | ✓                             |
+| Ondersteuning voor afbeeldings classificatie en labeling                  | ✓      |       | ✓                             |
+| Automatische ARIMA-, Prophet-en ForecastTCN-modellen voor prognoses | ✓      |       | ✓                             |
+| Meerdere uitvoeringen/herhalingen parallel                       | ✓      |       | ✓                             |
+| Modellen maken met interpretiteit in de gebruikers interface van AutoML Studio Web Experience      | ✓      |       | ✓                             |
+| Functie techniek aanpassen in de gebruikers interface van Studio Web Experience                        | ✓      |       | ✓                              |
+| Azure ML afstemming tuning                             | ✓      |       |                               |
+| Ondersteuning voor werk stromen van Azure ML-pipeline                         | ✓      |       |                               |
+| Een uitvoering voortzetten                                             | ✓      |       |                               |
+| Prognose                                                | ✓      | ✓     | ✓                             |
+| Experimenten maken en uitvoeren in notitie blokken                    | ✓      | ✓     |                               |
+| Info en metrische gegevens van experimenten registreren en visualiseren in de gebruikers interface | ✓      | ✓     |                               |
+| Gegevens Guardrails                                            | ✓      | ✓     |                               |
+
+
+## <a name="automated-ml-in-azure-machine-learning"></a>Automatische ML in Azure Machine Learning
+
+Azure Machine Learning biedt twee ervaring voor het werken met automatische ML
+
+* Voor code ervaring klanten [Azure machine learning PYTHON SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) 
+
+* Voor klanten met een beperkte of geen code ervaring Azure Machine Learning Studio op[https://ml.azure.com](https://ml.azure.com/)  
+
 <a name="parity"></a>
-
-## <a name="the-studio-vs-sdk"></a>De Studio VS SDK
-
-Meer informatie over de pariteit en verschillen tussen de functies voor automatische Beschik baarheid op hoog niveau die beschikbaar zijn via de python-SDK en de studio in Azure Machine Learning. 
 
 ### <a name="experiment-settings"></a>Instellingen voor experimenteren 
 
@@ -181,17 +242,6 @@ Met deze instellingen kunt u de uitvoeringen van uw experiment en de onderliggen
 |Guardrails ophalen| ✓|✓|
 |Uitvoeringen onderbreken & hervatten| ✓| |
 
-## <a name="ensemble-models"></a><a name="ensemble"></a>Ensemble-modellen
-
-Automatische machine learning ondersteunt ensemble-modellen die standaard zijn ingeschakeld. Ensemble Learning verbetert de machine learning resultaten en voorspellende prestaties door het combi neren van meerdere modellen, in tegens telling tot het gebruik van één model. De ensembles herhalingen worden weer gegeven als de laatste herhalingen van de uitvoering. Automatische machine learning maakt gebruik van zowel stem-als gestapelde ensemble-methoden voor het combi neren van modellen:
-
-* **Stem**: voor speld op basis van het gewogen gemiddelde van voorspelde klasse-kansen (voor classificatie taken) of voorspelde regressie doelen (voor regressie taken).
-* **Stapelen**: stacking combineert heterogene-modellen en treinen een meta model op basis van de uitvoer van de afzonderlijke modellen. De huidige standaard-META modellen zijn LogisticRegression voor classificatie taken en ElasticNet voor regressie-en prognose taken.
-
-Het [selectie algoritme van Caruana ensemble](http://www.niculescu-mizil.org/papers/shotgun.icml04.revised.rev2.pdf) met gesorteerde ensemble-initialisatie wordt gebruikt om te bepalen welke modellen er moeten worden gebruikt in de ensemble. Op hoog niveau initialiseert dit algoritme de ensemble met Maxi maal vijf modellen met de beste afzonderlijke scores en verifieert dat deze modellen binnen 5% drempelwaarde van de beste score zijn om een slechte initiële ensemble te voor komen. Vervolgens wordt voor elke ensemble-iteratie een nieuw model toegevoegd aan de bestaande ensemble en wordt de resulterende score berekend. Als een nieuw model de bestaande ensemble-score heeft verbeterd, wordt de ensemble bijgewerkt met het nieuwe model.
-
-Zie de [procedure](how-to-configure-auto-train.md#ensemble) voor het wijzigen van standaard-ensemble-instellingen in automatische machine learning.
-
 <a name="use-with-onnx"></a>
 
 ## <a name="automl--onnx"></a>AutoML & ONNX
@@ -202,20 +252,19 @@ Lees hoe u kunt converteren naar ONNX-indeling [in dit Jupyter notebook-voor bee
 
 De ONNX-runtime biedt ook ondersteuning voor C#, zodat u het model dat automatisch in uw C#-apps is gebouwd, kunt gebruiken zonder dat u hoeft te coderen of een van de netwerk latenties die REST-eind punten introduceren. Meer informatie over [het AFONNXen van modellen met de ONNX runtime C# API](https://github.com/Microsoft/onnxruntime/blob/master/docs/CSharp_API.md). 
 
-
-
 ## <a name="next-steps"></a>Volgende stappen
 
 Bekijk voor beelden en leer hoe u modellen bouwt met geautomatiseerde machine learning:
-
-+ Volg de [zelf studie: automatisch een regressie model trainen met Azure machine learning](tutorial-auto-train-models.md)
 
 + De instellingen voor automatische training-experiment configureren:
   + In Azure Machine Learning Studio [gaat u](how-to-use-automated-ml-for-ml-models.md)als volgt te werk.
   + Gebruik de python-SDK om de [volgende stappen uit te voeren](how-to-configure-auto-train.md).
 
++ Meer informatie over het gebruik van een [extern Compute-doel](how-to-auto-train-remote.md)
+
++ Volg de [zelf studie: automatisch een regressie model trainen met Azure machine learning](tutorial-auto-train-models.md) 
+
 + Meer informatie over het automatisch trainen van Time Series-gegevens met behulp van [deze stappen](how-to-auto-train-forecast.md).
 
 + [Jupyter notebook voor beelden uitproberen voor automatische machine learning](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/)
-
 * Automatische ML is ook beschikbaar in andere micro soft-oplossingen, zoals [ml.net](https://docs.microsoft.com/dotnet/machine-learning/automl-overview), [HDInsight](../hdinsight/spark/apache-spark-run-machine-learning-automl.md), [Power bi](https://docs.microsoft.com/power-bi/service-machine-learning-automated) en [SQL Server](https://cloudblogs.microsoft.com/sqlserver/2019/01/09/how-to-automate-machine-learning-on-sql-server-2019-big-data-clusters/)

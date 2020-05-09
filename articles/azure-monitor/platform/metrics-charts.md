@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 01/22/2019
 ms.author: vitalyg
 ms.subservice: metrics
-ms.openlocfilehash: 8d15c217f2e65877ea3baa18f6ba847492bc7fa1
-ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
+ms.openlocfilehash: e6ff33b6a23cb85649a8811a8bef27ab455ab9e6
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82509819"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82980895"
 ---
 # <a name="advanced-features-of-azure-metrics-explorer"></a>Geavanceerde functies van Azure Metrics Explorer
 
@@ -137,9 +137,6 @@ Nadat u de grafieken hebt geconfigureerd, krijgen de grafiek lijnen automatisch 
 Als u de kleur van een grafiek lijn wilt wijzigen, klikt u op de gekleurde balk in de legenda die overeenkomt met de grafiek. Het dialoog venster Kleuren kiezer wordt geopend. Gebruik de kleur kiezer om de kleur voor de regel te configureren.
 
 Nadat de grafiek kleuren zijn geconfigureerd, blijven ze die manier behouden wanneer u de grafiek vastmaakt aan een dash board. In de volgende sectie ziet u hoe u een grafiek vastmaakt.
-
-> [!NOTE]
-> Als gevolg van de beperkingen van het release-en publicatie schema, moet u voor het wijzigen van de kleuren van de grafiek regels een speciale para meter **? feature. ColorPicker = True** door geven bij het starten van Azure Portal [https://portal.azure.com/?feature.colorpicker=true](https://portal.azure.com/?feature.colorpicker=true). Deze beperking zal binnenkort worden verwijderd. 
 
 ![afbeelding van metrische gegevens](./media/metrics-charts/018.png)
 

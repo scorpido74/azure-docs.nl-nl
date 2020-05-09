@@ -8,13 +8,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.author: makromer
-ms.date: 04/25/2020
-ms.openlocfilehash: 78ef749f36e9ffd3aae510d201b0700e5e197065
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 04/30/2020
+ms.openlocfilehash: a2e80b9320509144456663672ac5ae03f522459a
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82183293"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82735382"
 ---
 # <a name="data-flow-activity-in-azure-data-factory"></a>Gegevens stroom activiteit in Azure Data Factory
 
@@ -57,7 +57,7 @@ Gebruik de activiteit gegevens stroom om gegevens te transformeren en te verplaa
 Eigenschap | Beschrijving | Toegestane waarden | Vereist
 -------- | ----------- | -------------- | --------
 stroom | De verwijzing naar de gegevens stroom die wordt uitgevoerd | DataFlowReference | Ja
-integrationRuntime | De compute-omgeving waarop de gegevens stroom wordt uitgevoerd. Als deze niet is opgegeven, wordt de Azure Integration runtime automatisch opgelost. | IntegrationRuntimeReference | Nee
+integrationRuntime | De compute-omgeving waarop de gegevens stroom wordt uitgevoerd. Als deze niet is opgegeven, wordt Azure Integration runtime automatisch opgelost. Alleen Integration runtimes van de regio automatisch oplossen worden ondersteund. | IntegrationRuntimeReference | Nee
 compute. coreCount | Het aantal kern geheugens dat in het Spark-cluster wordt gebruikt. Kan alleen worden opgegeven als Azure Integration runtime automatisch wordt opgelost | 8, 16, 32, 48, 80, 144, 272 | Nee
 compute. computeType | Het type berekening dat in het Spark-cluster wordt gebruikt. Kan alleen worden opgegeven als Azure Integration runtime automatisch wordt opgelost | "Algemeen", "ComputeOptimized", "MemoryOptimized" | Nee
 staging. linkedService | Als u een SQL DW-bron of-sink gebruikt, wordt het opslag account dat wordt gebruikt voor poly base staging | Linkedservicereference is | Alleen als de gegevens stroom leest of schrijft naar een SQL DW
@@ -75,13 +75,13 @@ De eigenschappen kern aantal en reken type kunnen dynamisch worden ingesteld om 
 
 ### <a name="data-flow-integration-runtime"></a>Data flow Integration runtime
 
-Kies welke Integration Runtime moet worden gebruikt voor de uitvoering van de activiteit van de gegevens stroom. Data Factory maakt standaard gebruik van het automatisch oplossen van Azure Integration runtime met vier worker-kernen en geen TTL (time to Live). Deze IR heeft een reken type voor algemeen gebruik en wordt uitgevoerd in dezelfde regio als uw fabriek. U kunt uw eigen Azure Integration Runtimes maken voor het definiëren van specifieke regio's, reken type, kern aantallen en TTL voor de uitvoering van de gegevens stroom activiteit.
+Kies welke Integration Runtime moet worden gebruikt voor de uitvoering van de activiteit van de gegevens stroom. Data Factory maakt standaard gebruik van het automatisch oplossen van Azure Integration runtime met vier worker-kernen en geen TTL (time to Live). Deze IR heeft een reken type voor algemeen gebruik en wordt uitgevoerd in dezelfde regio als uw fabriek. U kunt uw eigen Azure Integration Runtimes maken voor het definiëren van specifieke regio's, reken type, kern aantallen en TTL voor de uitvoering van de gegevens stroom activiteit. Op dit moment worden alleen integratie-runtimes van de regio automatisch opgelost ondersteund in de activiteit gegevens stroom.
 
 Voor de uitvoering van pijp lijnen is het cluster een taak cluster, dat enkele minuten in beslag neemt voordat de uitvoering wordt gestart. Als er geen TTL is opgegeven, is deze opstart tijd vereist op elke pijplijn uitvoering. Als u een TTL opgeeft, blijft een warme cluster groep actief gedurende de tijd die na de laatste uitvoering is opgegeven, wat resulteert in kortere opstart tijden. Als u bijvoorbeeld een TTL van 60 minuten hebt en een gegevens stroom eenmaal per uur uitvoert, blijft de cluster groep actief. Zie [Azure Integration runtime](concepts-integration-runtime.md)voor meer informatie.
 
 ![Azure Integration Runtime](media/data-flow/ir-new.png "Azure Integration Runtime")
 
-> [!NOTE]
+> [!IMPORTANT]
 > De Integration Runtime selectie in de activiteit gegevens stroom is alleen van toepassing op *geactiveerde uitvoeringen* van de pijp lijn. Fout opsporing voor de pijp lijn met gegevens stromen worden uitgevoerd op het cluster dat is opgegeven in de foutopsporingssessie.
 
 ### <a name="polybase"></a>PolyBase
@@ -98,9 +98,7 @@ Als uw gegevens stroom gebruikmaakt van parameter gegevens sets, stelt u de para
 
 ### <a name="parameterized-data-flows"></a>Gegevens stromen met para meters
 
-Als uw gegevens stroom is para meters, stelt u de dynamische waarden van de para meters voor de gegevens stroom in op het tabblad **para meters** . U kunt de taal van de ADF-pipeline-expressie of de data flow-expressie taal gebruiken om dynamische of letterlijke parameter waarden toe te wijzen. Zie [Data flow-para meters](parameters-data-flow.md)voor meer informatie. Als u pijplijn eigenschappen wilt opnemen als onderdeel van uw expressie om door te geven aan een para meter voor de gegevens stroom, kiest u pijplijn expressies.
-
-![Voor beeld van para meter voor gegevens stroom uitvoeren](media/data-flow/parameter-example.png "Parameter voorbeeld")
+Als uw gegevens stroom is para meters, stelt u de dynamische waarden van de para meters voor de gegevens stroom in op het tabblad **para meters** . U kunt de taal van de ADF-pipeline-expressie of de data flow-expressie taal gebruiken om dynamische of letterlijke parameter waarden toe te wijzen. Zie [Data flow-para meters](parameters-data-flow.md)voor meer informatie.
 
 ### <a name="parameterized-compute-properties"></a>Reken eigenschappen met para meters.
 

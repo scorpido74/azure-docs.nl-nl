@@ -11,19 +11,16 @@ ms.topic: article
 ms.custom: seodec18
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/27/2018
+ms.date: 05/05/2020
 ms.author: allensu
-ms.openlocfilehash: 0a21af683d9fa7849d3e96c545983c9f40a8d4c6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7563eb4d22048021886925f6864e3616bed83a75
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76935322"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82858765"
 ---
 # <a name="azure-monitor-logs-for-public-basic-load-balancer"></a>Azure Monitor-logboeken voor openbare Basic Azure Load Balancer
-
->[!IMPORTANT]
->Azure Load Balancer ondersteunt twee verschillende typen: Basic en Standard. In dit artikel wordt Basic Load Balancer beschreven. Voor meer informatie over Standard Load Balancer raadpleegt u [Standard Load Balancer Overview](load-balancer-standard-overview.md) , waarmee u telemetrie kunt weer geven via multidimensionale metrische gegevens in azure monitor.
 
 U kunt verschillende typen logboeken in azure gebruiken om Basic load balancers te beheren en problemen op te lossen. Sommige van deze logboeken kunnen worden geopend via de portal. Logboeken kunnen worden gestreamd naar een Event Hub-of Log Analytics-werk ruimte. Alle logboeken kunnen worden geëxtraheerd uit Azure Blob-opslag en worden weer gegeven in verschillende hulpprogram ma's, zoals Excel en Power BI.  In de onderstaande lijst vindt u meer informatie over de verschillende typen logboeken.
 
@@ -38,7 +35,7 @@ U kunt verschillende typen logboeken in azure gebruiken om Basic load balancers 
 
 Activiteitenlogboekregistratie is automatisch ingeschakeld voor elke Resource Manager-resource. Schakel logboek registratie voor gebeurtenis-en status controle in om te beginnen met het verzamelen van de gegevens die beschikbaar zijn via deze logboeken. Gebruik de volgende stappen om logboek registratie in te scha kelen.
 
-Meld u aan bij de [Azure-portal](https://portal.azure.com). Als u nog geen load balancer hebt, [maakt u een Load Balancer](https://docs.microsoft.com/azure/load-balancer/quickstart-create-basic-load-balancer-portal) voordat u doorgaat.
+Meld u aan bij [Azure Portal](https://portal.azure.com). Als u nog geen load balancer hebt, [maakt u een Load Balancer](https://docs.microsoft.com/azure/load-balancer/quickstart-create-basic-load-balancer-portal) voordat u doorgaat.
 
 1. Klik in de portal op **resource groepen**.
 2. Selecteer ** \<resource-group-name>** waarbij uw Load Balancer.

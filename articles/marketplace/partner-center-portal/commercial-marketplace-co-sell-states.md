@@ -1,22 +1,22 @@
 ---
-title: Status-en provincie codes voor co-verkoop | Azure Marketplace
-description: Gebruik deze provincie-en provincie codes bij het verstrekken van contact gegevens op de pagina voor co-sell van uw aanbieding.
+title: Status-en provincie codes in azure Marketplace samen verkopen
+description: Haal de beschik bare provincie codes op wanneer u contact gegevens verstrekt op de pagina voor co-sell van uw aanbieding in azure Marketplace.
 author: dsindona
 ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/01/2020
-ms.openlocfilehash: 782f2d6facb28630989f086a68c551314e02e48e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a39cb5f49c9f038f567b7f3322b5962bc1dc9fc8
+ms.sourcegitcommit: 3beb067d5dc3d8895971b1bc18304e004b8a19b3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80619366"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82744705"
 ---
-# <a name="co-sell-state-and-province-codes"></a>Status-en provincie codes co-sell
+# <a name="co-sell-state-and-province-codes-in-azure-marketplace"></a>Status-en provincie codes in azure Marketplace samen verkopen
 
-Gebruik, indien van toepassing, deze codes om informatie over de staat/provincie te verstrekken bij het [verstrekken van contact gegevens op de pagina voor co-sell van uw aanbieding](commercial-marketplace-co-sell.md#contacts).
+In dit artikel vindt u een lijst met de beschik bare provincie codes voor het verstrekken van contact gegevens op de pagina voor co-sell van uw aanbieding. Gebruik, indien van toepassing, deze codes om informatie over de staat/provincie te verstrekken bij het [verstrekken van contact gegevens op de pagina voor co-sell van uw aanbieding](commercial-marketplace-co-sell.md#contacts).
 
 ## <a name="us-states-and-territories"></a>Staten en regio's in de VS
 

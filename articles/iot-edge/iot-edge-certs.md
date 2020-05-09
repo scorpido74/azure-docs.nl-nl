@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mqtt
-ms.openlocfilehash: d3e456d57d98b796fb1aea2e82de51f9fae40c68
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1b299cf21652c23451aed735b10597adb85dc3db
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81733168"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82982725"
 ---
 # <a name="understand-how-azure-iot-edge-uses-certificates"></a>Meer informatie over het gebruik van Azure IoT Edge certificaten
 
@@ -36,7 +36,7 @@ De certificerings instantie of ' CA ' voor korte, is een entiteit die digitale c
 
 ### <a name="root-ca-certificate"></a>Basis-CA-certificaat
 
-Een basis-CA-certificaat is de basis van de vertrouwens relatie van het hele proces. In productie scenario's wordt dit CA-certificaat meestal gekocht van een vertrouwde commerciële certificerings instantie, zoals Baltimore, VeriSign of DigiCert. Als u volledige controle hebt over de apparaten die verbinding maken met uw IoT Edge apparaten, is het mogelijk om een certificerings instantie op bedrijfs niveau te gebruiken. In beide gevallen wordt de volledige certificaat keten van de IoT Edge-hub omhoog Gerolt, zodat de Blade IoT-apparaten het basis certificaat moeten vertrouwen. U kunt het basis-CA-certificaat opslaan in het archief van de vertrouwde basis certificerings instantie of de certificaat gegevens opgeven in de code van uw toepassing.
+Een basis-CA-certificaat is de basis van de vertrouwens relatie van het hele proces. In productie scenario's wordt dit CA-certificaat meestal gekocht van een vertrouwde commerciële certificerings instantie, zoals Baltimore, VeriSign of DigiCert. Als u volledige controle hebt over de apparaten die verbinding maken met uw IoT Edge apparaten, is het mogelijk om een certificerings instantie op bedrijfs niveau te gebruiken. In beide gevallen moet de volledige certificaat keten van de IoT Edge-hub ernaar worden geroot, zodat de Blade IoT-apparaten het basis certificaat moeten vertrouwen. U kunt het basis-CA-certificaat opslaan in het archief van de vertrouwde basis certificerings instantie of de certificaat gegevens opgeven in de code van uw toepassing.
 
 ### <a name="intermediate-certificates"></a>Tussenliggende certificaten
 

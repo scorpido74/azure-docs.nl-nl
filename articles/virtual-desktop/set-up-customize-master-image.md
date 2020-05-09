@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 10/14/2019
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: aba444e618a6ee2c6808b7f6d9d706fdf18fe546
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: fc6eb22f81279003a5355993db231ffec8e31b7d
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82209040"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82611956"
 ---
 # <a name="prepare-and-customize-a-master-vhd-image"></a>Een VHD-hoofdinstallatiekopie voorbereiden en aanpassen
 
@@ -203,7 +203,7 @@ In de volgende instructies wordt uitgelegd hoe u uw master installatie kopie upl
 
 Nu u een installatie kopie hebt, kunt u hostgroepen maken of bijwerken. Raadpleeg de volgende artikelen voor meer informatie over het maken en bijwerken van hostgroepen:
 
-- [Een hostpool maken met een Azure Resource Manager-sjabloon](create-host-pools-arm-template.md)
+- [Een hostpool maken met een Azure Resource Manager-sjabloon](./virtual-desktop-fall-2019/create-host-pools-arm-template.md)
 - [Zelf studie: een hostgroep maken met Azure Marketplace](create-host-pools-azure-marketplace.md)
 - [Een hostpool maken met PowerShell](create-host-pools-powershell.md)
 - [Een profielcontainer maken voor een hostpool met behulp van een bestandsshare](create-host-pools-user-profile.md)
