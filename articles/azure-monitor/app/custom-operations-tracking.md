@@ -4,12 +4,12 @@ description: Aangepaste bewerkingen bijhouden met Azure-toepassing Insights .NET
 ms.topic: conceptual
 ms.date: 11/26/2019
 ms.reviewer: sergkanz
-ms.openlocfilehash: 31c1fb366e7b109ea1fa4977d8e2f908e766e0f2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 316c1b7ea32f661b009bfee7a89cb7e5ed082f3b
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79276099"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82690868"
 ---
 # <a name="track-custom-operations-with-application-insights-net-sdk"></a>Aangepaste bewerkingen bijhouden met Application Insights .NET SDK
 
@@ -38,7 +38,7 @@ Laten we eens kijken hoe dergelijke bewerkingen kunnen worden gevolgd.
 Op hoog niveau is de taak het maken `RequestTelemetry` en instellen van bekende eigenschappen. Wanneer de bewerking is voltooid, kunt u de telemetrie bijhouden. In het volgende voor beeld wordt deze taak gedemonstreerd.
 
 ### <a name="http-request-in-owin-self-hosted-app"></a>HTTP-aanvraag in Owin zelf-hostende app
-In dit voor beeld wordt de tracerings context door gegeven volgens het [http-protocol voor correlatie](https://github.com/dotnet/corefx/blob/master/src/System.Diagnostics.DiagnosticSource/src/HttpCorrelationProtocol.md). U verwacht headers te ontvangen die daar worden beschreven.
+In dit voor beeld wordt de tracerings context door gegeven volgens het [http-protocol voor correlatie](https://github.com/dotnet/runtime/blob/master/src/libraries/System.Diagnostics.DiagnosticSource/src/HttpCorrelationProtocol.md). U verwacht headers te ontvangen die daar worden beschreven.
 
 ```csharp
 public class ApplicationInsightsMiddleware : OwinMiddleware
@@ -117,7 +117,7 @@ public class ApplicationInsightsMiddleware : OwinMiddleware
 Het HTTP-protocol voor correlatie declareert ook `Correlation-Context` de header. Dit wordt hier echter voor eenvoud wegge laten.
 
 ## <a name="queue-instrumentation"></a>Instrumentatie in wachtrij plaatsen
-Hoewel er sprake is van een [W3C-tracerings context](https://www.w3.org/TR/trace-context/) en een [http-protocol](https://github.com/dotnet/corefx/blob/master/src/System.Diagnostics.DiagnosticSource/src/HttpCorrelationProtocol.md) om correlatie Details met een HTTP-aanvraag door te geven, moet elk wachtrij protocol definiëren hoe dezelfde details worden door gegeven aan het wachtrij bericht. In sommige wachtrij protocollen (zoals AMQP) is het door geven van aanvullende meta gegevens en enkele andere (Azure Storage wachtrij) mogelijk, moet de context worden gecodeerd in de bericht lading.
+Hoewel er sprake is van een [W3C-tracerings context](https://www.w3.org/TR/trace-context/) en een [http-protocol](https://github.com/dotnet/runtime/blob/master/src/libraries/System.Diagnostics.DiagnosticSource/src/HttpCorrelationProtocol.md) om correlatie Details met een HTTP-aanvraag door te geven, moet elk wachtrij protocol definiëren hoe dezelfde details worden door gegeven aan het wachtrij bericht. In sommige wachtrij protocollen (zoals AMQP) is het door geven van aanvullende meta gegevens en enkele andere (Azure Storage wachtrij) mogelijk, moet de context worden gecodeerd in de bericht lading.
 
 > [!NOTE]
 > * **Tracering van meerdere onderdelen wordt nog niet ondersteund voor wacht rijen** Als uw producent en consument telemetrie verzenden naar verschillende Application Insights resources, worden de trans acties voor de diagnose van de werk wijze en de toepassings toewijzing weer gegeven en worden de end-to-end-berichten toegewezen. In het geval van wacht rijen, wordt dit nog niet ondersteund. 
@@ -346,7 +346,7 @@ Wanneer u het verwijderen van een bericht instrumenteert, moet u ervoor zorgen d
 
 ### <a name="dependency-types"></a>Afhankelijkheids typen
 
-Application Insights maakt gebruik van afhankelijkheids type voor cusomize UI-ervaringen. Voor wacht rijen herkent het de volgende `DependencyTelemetry` typen waarmee de ervaring voor het [diagnosticeren van trans acties](/azure/azure-monitor/app/transaction-diagnostics)wordt verbeterd:
+Application Insights maakt gebruik van afhankelijkheids type om UI-ervaringen aan te passen. Voor wacht rijen herkent het de volgende `DependencyTelemetry` typen waarmee de ervaring voor het [diagnosticeren van trans acties](/azure/azure-monitor/app/transaction-diagnostics)wordt verbeterd:
 - `Azure queue`voor Azure Storage wachtrijen
 - `Azure Event Hubs`voor Azure Event Hubs
 - `Azure Service Bus`voor Azure Service Bus
@@ -482,4 +482,4 @@ Elke Application Insights bewerking (aanvraag of afhankelijkheid) `Activity` omv
 - Zie het [gegevens model](../../azure-monitor/app/data-model.md) voor Application Insights typen en het gegevens model.
 - Aangepaste [gebeurtenissen en metrische gegevens](../../azure-monitor/app/api-custom-events-metrics.md) rapporteren aan Application Insights.
 - Bekijk de standaard [configuratie](configuration-with-applicationinsights-config.md#telemetry-initializers-aspnet) voor de verzameling context eigenschappen.
-- Raadpleeg de [Gebruikers handleiding van System. Diagnostics. activity](https://github.com/dotnet/corefx/blob/master/src/System.Diagnostics.DiagnosticSource/src/ActivityUserGuide.md) om te zien hoe we telemetrie correleren.
+- Raadpleeg de [Gebruikers handleiding van System. Diagnostics. activity](https://github.com/dotnet/runtime/blob/master/src/libraries/System.Diagnostics.DiagnosticSource/src/ActivityUserGuide.md) om te zien hoe we telemetrie correleren.
